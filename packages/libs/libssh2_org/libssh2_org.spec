@@ -29,6 +29,8 @@ Source1:        https://www.libssh2.org/download/%{pkg_name}-%{version}.tar.xz.a
 Source2:        baselibs.conf
 Source3:        libssh2_org.keyring
 Patch0:         libssh2-ocloexec.patch
+# PATCH-FIX-UPSTREAM bsc#1218127 CVE-2023-48795: Add 'strict KEX' to fix Terrapin Attack
+Patch1:         libssh2_org-CVE-2023-48795.patch
 BuildRequires:  libtool
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig

@@ -50,4 +50,41 @@
     <comment></comment>
     <requestid>1130379</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6582edee0f6d9817237b318a7bb67b3b</srcmd5>
+    <version>3.5.2</version>
+    <time>1703800954</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.5.2:
+  * skip pandas ``pd.NA`` similar to ``None``
+  * add ``score_multiplier`` argument to ``process.cdist`` which
+    allows multiplying the end result scores
+  * with a constant factor.
+  * drop support for Python 3.7
+  * improve performance of simd implementation for ``LCS`` /
+    ``Indel`` / ``Jaro`` / ``JaroWinkler``
+  * improve performance of Jaro and Jaro Winkler for long
+    sequences
+  * implement ``process.extract`` with ``limit=1`` using
+    ``process.extractOne`` which can be faster
+  * the preprocessing function was always called through Python
+    due to a broken C-API version check
+  * fix wraparound issue in simd implementation of Jaro and Jaro
+    Winkler
+  * upgrade to ``Cython==3.0.3``
+  * add simd implementation for Jaro and Jaro Winkler
+  * add missing tag for python 3.12 support
+  * upgrade to ``Cython==3.0.2``
+  * implement the remaining missing features from the C++
+    implementation in the pure Python implementation
+  * added support for Python 3.12
+  * build x86 with sse2/avx2 runtime detection
+  * upgrade to ``taskflow==3.6``
+  * added keyword argument ``pad`` to Hamming distance. This
+    controls whether sequences of different
+  * length should be padded or lead to a ``ValueError``
+  * improve consistency of exception messages between the C++ and
+    pure Python implementation</comment>
+    <requestid>1135345</requestid>
+  </revision>
 </revisionlist>

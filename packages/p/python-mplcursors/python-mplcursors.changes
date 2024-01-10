@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 29 21:21:45 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Add mplcursors-fix-stem-api.patch, fixing API change in
+  Matplotlib 3.8
+
+-------------------------------------------------------------------
 Mon Jan  9 21:07:06 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to v0.5.2

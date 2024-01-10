@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec 28 12:53:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.5 (bsc#1218432):
+  * Fix invalid memory access (reading beyond allocated memory)
+    due to missing integer overflow check.
+
+-------------------------------------------------------------------
 Sat Oct  8 16:46:32 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.4.4
@@ -34,7 +41,7 @@ Tue Feb 23 11:47:12 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.2:
   * Fixed several heap overflow bugs in the `ReadData` functions of
-    various data type classes. This fixes CVE-2021-3405. 
+    various data type classes. This fixes CVE-2021-3405.
 
 -------------------------------------------------------------------
 Tue Jan  5 09:53:07 UTC 2021 - aloisio@gmx.com
@@ -178,7 +185,7 @@ Wed Feb 11 08:12:05 UTC 2015 - dimstar@opensuse.org
 
 -------------------------------------------------------------------
 Sun Feb  1 16:03:53 UTC 2015 - jengelh@inai.de
-	
+
 - Update to new upstream release 1.3.1
 * EbmlMaster: Fixed read() trying to calculate the end position of
   elements with an unknown size. This avoids endless loops and
@@ -201,14 +208,14 @@ Tue Feb 11 19:54:48 UTC 2014 - dimstar@opensuse.org
 -------------------------------------------------------------------
 Thu Jan 16 18:00:42 UTC 2014 - crrodriguez@opensuse.org
 
-- revert last change, breaks mkvtoolnix that uses 
+- revert last change, breaks mkvtoolnix that uses
   internal and symbols that are not annotated as public :(
   keep inlines-hidden though.
 
 -------------------------------------------------------------------
 Sun Jan 12 15:57:53 UTC 2014 - crrodriguez@opensuse.org
 
-- Support C++ visibility by reusing win32 code for the same 
+- Support C++ visibility by reusing win32 code for the same
   purpose.
 - added patches:
   * libebml-visibility.patch
@@ -241,7 +248,7 @@ Sat Mar 23 14:17:54 UTC 2013 - zaitor@opensuse.org
 -------------------------------------------------------------------
 Thu May 10 02:01:36 UTC 2012 - crrodriguez@opensuse.org
 
-- Do not use gcc -ansi flag. 
+- Do not use gcc -ansi flag.
 
 -------------------------------------------------------------------
 Sun Sep 25 23:35:22 UTC 2011 - reddwarf@opensuse.org
@@ -269,7 +276,7 @@ Thu Jun 30 12:16:17 CEST 2011 - dimstar@opensuse.org
 -------------------------------------------------------------------
 Tue Apr 19 00:18:56 CEST 2011 - ro@suse.de
 
-- update baselibs.conf 
+- update baselibs.conf
 
 -------------------------------------------------------------------
 Sun Jan 30 17:16:02 UTC 2011 - reddwarf@opensuse.org
@@ -285,7 +292,7 @@ Sun Jan 30 17:16:02 UTC 2011 - reddwarf@opensuse.org
 -------------------------------------------------------------------
 Wed Dec  8 23:40:32 UTC 2010 - cristian.rodriguez@opensuse.org
 
-- fix -devel package dependencies 
+- fix -devel package dependencies
 
 -------------------------------------------------------------------
 Wed Jul 28 09:37:04 UTC 2010 - coolo@novell.com
@@ -315,7 +322,7 @@ Sat May 15 13:21:04 UTC 2010 - cmorve69@yahoo.es
 -------------------------------------------------------------------
 Mon Mar 16 22:56:09 CET 2009 - crrodriguez@suse.de
 
-- remove static libraries 
+- remove static libraries
 
 -------------------------------------------------------------------
 Wed Mar  5 16:39:04 CET 2008 - seife@suse.de
@@ -362,7 +369,7 @@ Tue Nov 15 14:49:33 CET 2005 - uli@suse.de
 -------------------------------------------------------------------
 Wed Nov  2 21:41:22 CET 2005 - dmueller@suse.de
 
-- don't build as root 
+- don't build as root
 
 -------------------------------------------------------------------
 Tue Jul  5 13:43:56 CEST 2005 - seife@suse.de

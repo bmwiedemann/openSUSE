@@ -191,4 +191,15 @@
   * Added individual test case docstring support and tests</comment>
     <requestid>1129175</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>7f5e9ca30d8c2428854d8484a85c44b4</srcmd5>
+    <version>1.7.1</version>
+    <time>1704829748</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.7.1:
+  * Update flake8 configuration
+  * Remove Python 2.7 classifiers as the project is now Python 3+
+    only</comment>
+    <requestid>1137643</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Nov 20 16:14:19 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
+
+- Add support for new rtas kernel interface for VPD and sysparm (jsc#PED-4541).
+  * 0001-librtas-expose-low-level-RTAS-call-APIs-internally.patch
+  * 0002-librtas-move-VPD-code-into-separate-module.patch
+  * 0003-librtas-move-system-parameter-code-to-separate-modul.patch
+  * 0004-librtas-vendor-papr-miscdev.h.patch
+  * 0005-librtas-vpd-prefer-dev-papr-vpd-when-available.patch
+  * 0006-librtas-sysparm-prefer-dev-papr-sysparm-when-availab.patch
+  * link-lpthread.patch
+  * tests: activate-firmware-regress vpdupdate-regress
+
+-------------------------------------------------------------------
 Mon Nov 20 14:50:54 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
 
 - Update to version 2.0.5 (jsc#PED-554)

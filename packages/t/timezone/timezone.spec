@@ -22,7 +22,7 @@ License:        BSD-3-Clause AND SUSE-Public-Domain
 Group:          System/Base
 URL:            http://www.iana.org/time-zones
 # COMMON-BEGIN
-Version:        2023c
+Version:        2023d
 Release:        0
 Source:         https://www.iana.org/time-zones/repository/releases/tzdata%{version}.tar.gz
 Source1:        https://www.iana.org/time-zones/repository/releases/tzcode%{version}.tar.gz
@@ -63,7 +63,7 @@ LC_ALL=POSIX
 AREA=%{AREA}
 ZONE=%{ZONE}
 export AREA LANG LC_ALL ZONE
-make %{?_smp_mflags} TZDIR=%{_datadir}/zoneinfo CFLAGS="%{optflags} -DHAVE_GETTEXT=1 -DTZDEFAULT='\"/etc/localtime\"' -DTM_GMTOFF=tm_gmtoff -DTM_ZONE=tm_zone -Dlint" AWK=awk BUGEMAIL="opensuse-support@opensuse.org"
+make %{?_smp_mflags} TZDIR=%{_datadir}/zoneinfo CC="gcc" CFLAGS="%{optflags} -DHAVE_GETTEXT=1 -DTZDEFAULT='\"/etc/localtime\"' -DTM_GMTOFF=tm_gmtoff -DTM_ZONE=tm_zone -Dlint" AWK=awk BUGEMAIL="opensuse-support@opensuse.org"
 make %{?_smp_mflags} TZDIR=zoneinfo AWK=awk zones
 # Generate posixrules
 ./zic -b fat -y ./yearistype -d zoneinfo -p %{AREA}/%{ZONE}

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Dec 14 09:16:56 UTC 2023 - Petr Gajdos <pgajdos@suse.com>
+
+- update to 0.7.0:
+  * Make all Element with Template pickable natively
+  * Make _parse_size robust to already parsed values
+  * StepColormap: inclusive lower bound
+  * Add color schemes: plasma, inferno, magma
+  * Allow branca ColorMap in write_png
+  * More flexible _parse_size
+
+-------------------------------------------------------------------
 Wed Dec 21 21:59:34 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Fix build requirements and version metadata
@@ -31,7 +42,7 @@ Fri Sep 23 02:40:27 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
   * Pass caption when converting colormap to steps (@ndswaef #87)
 
 - Update to version 0.4.2
-  * Fix special char encoding in notebooks, store as percent-encoded (@conengmo #76) 
+  * Fix special char encoding in notebooks, store as percent-encoded (@conengmo #76)
 
 -------------------------------------------------------------------
 Tue Jun 28 08:51:59 UTC 2022 - Daniel García Moreno <dani@danigm.net>

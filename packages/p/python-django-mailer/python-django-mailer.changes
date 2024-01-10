@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan  8 21:00:01 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.1:
+  * Fixed rare crasher in runmailer_pg when notifications list is
+    empty.
+
+-------------------------------------------------------------------
 Mon Oct  2 11:03:48 UTC 2023 - pgajdos@suse.com
 
 - version update to 2.3

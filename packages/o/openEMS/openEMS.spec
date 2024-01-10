@@ -1,7 +1,7 @@
 #
 # spec file for package openEMS
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,44 +18,30 @@
 
 Name:           openEMS
 %define octpkg  openems
-Version:        0.0.35
+Version:        0.0.36
 Release:        0
 Summary:        Electromagnetic field solver using the EC-FDTD method
 License:        GPL-3.0-only
 Group:          Productivity/Scientific/Physics
-Url:            http://openems.de
+URL:            https://openems.de/start
 # source - openEMS component only, not openEMS-Project
-Source0:        https://github.com/thliebig/%{name}/archive/v%{version}.tar.gz
-# PATCH-FIX-UPSTREAM openEMS-vtk.patch -- Fix linking for VTK >= 6.3
-Patch1:         0001-Fix-linking-for-VTK-6.3.patch
+Source0:        https://github.com/thliebig/%{name}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE openEMS-octave-openEMS-load.patch -- Fix openEMS.sh load
 Patch2:         0002-Fix-openEMS.sh-load.patch
 # PATCH-FIX-OPENSUSE openEMS-octave-nf2ff-load.patch -- Fix nf2ff load
 Patch3:         0003-Fix-nf2ff-load.patch
 # PATCH-FIX-OPENSUSE openEMS-readme-octave-package.patch -- Add correct instruction about Octave and MATLAB packages
 Patch4:         0004-Add-correct-instruction-about-Octave-and-MATLAB-pack.patch
-# PATCH-FIX-UPSTREAM openEMS-hdf5.patch -- Fix build with HDF5
-Patch5:         0005-Fix-build-with-HDF5.patch
-# PATCH-FIX-UPSTREAM openEMS-no-return.patch
-Patch6:         0006-Add-missing-return-statement.patch
-# PATCH-FIX-OPENSUSE 0001-Fix-build-error-due-to-ambigous-overload-of-isnan-is.patch -- Fix ambigous isnan/std::isnan
-Patch7:         0001-Fix-build-error-due-to-ambigous-overload-of-isnan-is.patch
-# PATCH-FIX-OPENSUSE 0001-Guard-xmmintrin.h-include-so-it-is-only-used-when-ne.patch -- Only include xmmintrin.h on x86
-Patch8:         0001-Guard-xmmintrin.h-include-so-it-is-only-used-when-ne.patch
 
 BuildRequires:  CSXCAD-devel
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  hdf5-devel
-%if %{suse_version} >= 1500
 BuildRequires:  libboost_chrono-devel
 BuildRequires:  libboost_date_time-devel
 BuildRequires:  libboost_serialization-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
-%else
-BuildRequires:  boost-devel
-%endif
 BuildRequires:  octave-devel
 BuildRequires:  tinyxml-devel
 BuildRequires:  vtk-devel
@@ -63,9 +49,7 @@ BuildRequires:  cmake(Qt5Sql)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  pkgconfig(fparser)
 BuildRequires:  pkgconfig(python3)
-BuildRequires:  pkgconfig(sm)
-BuildRequires:  pkgconfig(xt)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+ExcludeArch:    %{ix86}
 
 %description
 Electromagnetic field solver using the EC-FDTD method.
@@ -85,7 +69,7 @@ Group:          System/Libraries
 Electromagnetic field solver using the EC-FDTD method library.
 
 %package        devel
-Summary:        openEMS development files
+Summary:        Development files for openEMS
 Group:          Development/Libraries/C and C++
 Requires:       libnf2ff0 = %{version}
 Requires:       libopenEMS0 = %{version}
@@ -121,14 +105,7 @@ This package provides MATLAB interface for openEMS.
 
 %prep
 %setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
+%autopatch -p1
 
 echo "Name: %{octpkg}" >> DESCRIPTION
 echo "Version: %{version}" >> DESCRIPTION
@@ -183,7 +160,7 @@ export CXXFLAGS="%{optflags} -DSSE_CORRECT_DENORMALS"
 %endif
 %cmake
 
-%make_jobs
+%cmake_build
 
 cd ..
 pushd octave_build

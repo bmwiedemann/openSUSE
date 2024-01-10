@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Wed Jan  3 10:45:48 UTC 2024 - Egbert Eich <eich@suse.com>
+
+- Update to 23.02.6 to fix (CVE-2023-49933 - bsc#1218046, CVE-2023-49935 -
+  bsc#1218049, CVE-2023-49936 - bsc#1218050, CVE-2023-49937 - bsc#1218051,
+  CVE-2023-49938 - bsc#1218053)
+  * Security Fixes:
+    + Add `JobAcctGatherParams=DisableGPUAcct` to disable gpu accounting.
+    + `acct_gather_energy/ipmi` - Improve logging of DCMI issues.
+    + `gpu/oneapi` - Add support for new env vars `ZE_FLAT_DEVICE_HIERARCHY`
+      and `ZE_ENABLE_PCI_ID_DEVICE_ORDER`.
+    + `data_parser/v0.0.39` - skip empty string when parsing QOS ids.
+    + Remove error message from `assoc_mgr_update_assocs` when purposefully
+      resetting the default QOS.
+  * Bug Fixes:
+    + `libslurm_nss` - Avoid causing glibc to assert due to an unexpected
+      return from slurm_nss due to an error during lookup.
+    + Fix job requests with `--tres-per-task` sometimes resulting in bad
+      allocations that cannot run subsequent job steps.
+    + Fix issue with `slurmd` where `srun` fails to be warned when a node
+      prolog script runs beyond `MsgTimeout` set in `slurm.conf`.
+    + `gres/shard` - Fix plugin functions to have matching parameter orders.
+    + `gpu/nvml` - Fix issue that resulted in the wrong MIG devices being
+      constrained to a job
+    + `gpu/nvml` - Fix linking issue with MIGs that prevented multiple MIGs
+      being used in a single job for certain MIG configurations
+    + Fix file descriptor leak in slurmd when using `acct_gather_energy/ipmi`
+      with DCMI devices.
+    + `sview` - avoid crash when job has a node list string > 49 characters.
+    + Prevent `slurmctld` crash during reconfigure when packing job start
+      messages.
+    + Preserve reason uid on reconfig.
+    + Update node reason with updated `INVAL` state reason if different from
+      last registration.
+    + `conmgr` - Avoid NULL dereference when using `auth/none`.
+    + `data_parser/v0.0.39` - Fixed how deleted QOS and associations for jobs
+      are dumped.
+    + `burst_buffer/lua` - fix stage in counter not decrementing when a job is
+      cancelled during stage in. This counter is used to enforce the limit of
+      128 scripts per stage.
+    + `data_parser/v0.0.39` - Fix how the `INVALID` nodes state is dumped.
+    + `data_parser/v0.0.39` - Fix parsing of flag arrays to allow muliple
+      flags to be set.
+    + Avoid leaking sockets when an x11 application is closed in an allocation.
+    + Fix missing mutex unlock in group cache code which could cause slurmctld
+      to freeze.
+    + Fix scrontab monthly jobs possibly skipping a month if added near the
+      end of the month.
+    + Fix loading of the gpu account gather energy plugin.
+    + Fix `slurmctld` segfault when reconfiguring after a job resize.
+    + Fix crash in slurmstepd that can occur when launching tasks via mpi using
+      the `pmi2` plugin and using the `route/topology` plugin.
+    + Fix `qos <id> doesn't exist` error message in `assoc_mgr_update_assocs`
+      to print the attempted new default qos, rather than the current default
+      qos.
+    + `data_parser/v0.0.39` - Fix segfault when POSTing data with association
+      usage.
+  * Other Changes and Improvements:
+    + Prevent message extension attacks that could bypass the message hash.
+      CVE-2023-49933.
+    + Prevent message hash bypass in slurmd which can allow an attacker to
+      reuse root-level MUNGE tokens and escalate permissions. CVE-2023-49935.
+    + Prevent NULL pointer dereference on `size_valp` overflow. CVE-2023-49936.
+    + Prevent double-xfree() on error in `_unpack_node_reg_resp()`.
+      CVE-2023-49937.
+    + Prevent modified `sbcast` RPCs from opening a file with the wrong group
+      permissions. CVE-2023-49938.
+- Fix %do_obsoletes macro expansion to work with SLE-12.
+
+-------------------------------------------------------------------
 Thu Nov 30 18:52:44 UTC 2023 - Egbert Eich <eich@suse.com>
 
 - Add missing service file for slurmrestd (boo#1217711).

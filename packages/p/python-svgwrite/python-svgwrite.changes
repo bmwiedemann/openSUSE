@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan  5 12:40:40 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Tue Oct 11 07:54:28 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v1.4.3

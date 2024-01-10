@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec 29 07:20:38 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 1.0.8:
+  * Add AF_VSOCK support
+  * Fixed minor memory leak
+  * Build system upkeep
+
+-------------------------------------------------------------------
 Wed May  6 07:00:14 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.0.7 (no changelog) 

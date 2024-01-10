@@ -2191,4 +2191,49 @@ successfully tested on Tumbleweed x86_64</comment>
     <comment></comment>
     <requestid>1125117</requestid>
   </revision>
+  <revision rev="230" vrev="1">
+    <srcmd5>d4a6a2051bb62fc37f5a98fb9d30f6aa</srcmd5>
+    <version>3.8.4</version>
+    <time>1703527477</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1134744</requestid>
+  </revision>
+  <revision rev="231" vrev="2">
+    <srcmd5>6717e3300a0f64d2d20906676aa2cf1b</srcmd5>
+    <version>3.8.4</version>
+    <time>1703800513</time>
+    <user>anag+factory</user>
+    <comment>- update default configuration to enable the long-term fix for
+  bsc#1218304, CVE-2023-51764, SMTP smuggling attack:
+  * smtpd_forbid_bare_newline = yes
+  * smtpd_forbid_bare_newline_exclusions = $mynetworks
+
+- update to 3.8.4 (bsc#1218304, CVE-2023-51764):
+    https://www.postfix.org/smtp-smuggling.html
+- Syntax error in update_postmaps script (bsc#1216061)
+  (bsc#1215372)
+  (bsc#1192314)
+  Adapt proposed change: using &quot;cp -afL&quot; by copying.
+  Define HAS_CLOSEFROM
+  (bsc#1189101)
+  (bsc#1188477)
+  (bsc#1066854)
+  For more see /usr/share/doc/packages/postfix/RELEASE_NOTES
+  (bsc#1181381) [Build 130.3] openQA test fails in mta, mutt -
+  postfix broken: &quot;queue file write error&quot; and &quot;error: unsupported
+- bsc#1176650 L3: What is regularly triggering the &quot;fillup&quot;
+  o add patch for main.cf for postfix-bdb package
+- Delete postfix-SUSE/README.SuSE, company name spelled wrong,
+- bsc#1162891 server:mail/postfix: cond_slp bug on TW after
+- bsc#1160413 postfix fails with -fno-common
+- bsc#1142881 - mkpostfixcert from Postfix still uses md
+  o Major changes
+      Postfix 3.4.4 fixes both.
+  o Removing setting smtpd_sasl_path and smtpd_sasl_type to empty
+- Replace references to /var/adm/fillup-templates with new
+- bnc#1059512 L3: Postfix Problem
+    seems to be obsolete)</comment>
+    <requestid>1135431</requestid>
+  </revision>
 </revisionlist>

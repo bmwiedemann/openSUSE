@@ -1,7 +1,7 @@
 #
 # spec file for package tinyxml
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,6 +35,7 @@ Source5:        Makefile.am.docs
 Patch0:         tinyxml-c_headers.patch
 Patch1:         tinyxml-entity.patch
 Patch2:         tinyxml-2.62-fix-infinite-loop.patch
+Patch3:         tinyxml-null-byte-assert.patch
 URL:            http://sourceforge.net/projects/tinyxml
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  gcc-c++
@@ -87,6 +88,7 @@ libtinyxml
 %patch0
 %patch1
 %patch2 -p1
+%patch3 -p1
 mkdir -p m4
 cp %{S:1} %{S:2} %{S:3} %{S:4} .
 cp %{S:5} docs/Makefile.am

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Dec 28 18:17:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.35:
+  * fix null pointer dereference on bad status format
+  * add "%kbitrate%", "%audioformat%", "%samplerate%", "%bits%"
+    and "%channels%" options to the "status" command
+  * the "%state%" option of the "status" command now returns
+    "stopped" when the MPD server is stopped
+  * add commands "lsdirs", "addplaylist", "delplaylist",
+    "moveplaylist", "renplaylist", "clearplaylist"
+  * add "playlist" option "--with-prio"
+  * bash completion: pass "--" to mpc to allow parameters with
+    dash
+  * bash completion: fix filenames with paranetheses
+  * bash completion: override $MPC_FORMAT
+
+-------------------------------------------------------------------
 Fri Dec 10 16:05:06 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Updated to 0.34

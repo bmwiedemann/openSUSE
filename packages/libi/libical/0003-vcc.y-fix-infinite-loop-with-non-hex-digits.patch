@@ -15,11 +15,11 @@ References: #353
  src/libicalvcal/vcc.y | 38 ++++++++++++++++----------------------
  2 files changed, 32 insertions(+), 44 deletions(-)
 
-diff --git a/src/libicalvcal/vcc.c b/src/libicalvcal/vcc.c
-index 29354df4..f723a4e1 100644
---- a/src/libicalvcal/vcc.c
-+++ b/src/libicalvcal/vcc.c
-@@ -1146,31 +1146,25 @@ static char* lexGetQuotedPrintable()
+Index: libical-3.0.17/src/libicalvcal/vcc.c
+===================================================================
+--- libical-3.0.17.orig/src/libicalvcal/vcc.c
++++ libical-3.0.17/src/libicalvcal/vcc.c
+@@ -1005,31 +1005,25 @@ static char* lexGetQuotedPrintable(void)
          cur = lexGetc();
          switch (cur) {
              case '=': {
@@ -67,11 +67,11 @@ index 29354df4..f723a4e1 100644
                  break;
                  } /* '=' */
              case '\n': {
-diff --git a/src/libicalvcal/vcc.y b/src/libicalvcal/vcc.y
-index a052e9a2..4f52fe35 100644
---- a/src/libicalvcal/vcc.y
-+++ b/src/libicalvcal/vcc.y
-@@ -967,31 +967,25 @@ static char* lexGetQuotedPrintable()
+Index: libical-3.0.17/src/libicalvcal/vcc.y
+===================================================================
+--- libical-3.0.17.orig/src/libicalvcal/vcc.y
++++ libical-3.0.17/src/libicalvcal/vcc.y
+@@ -969,31 +969,25 @@ static char* lexGetQuotedPrintable()
          cur = lexGetc();
          switch (cur) {
              case '=': {
@@ -119,6 +119,3 @@ index a052e9a2..4f52fe35 100644
                  break;
                  } /* '=' */
              case '\n': {
--- 
-2.19.1
-

@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Thu Jan 04 17:55:55 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.18.0:
+  * Add `#ObjectReference` to Timoni's CUE schemas
+  * feat: add values argument to vet command
+  * Add `--blueprint` arg to `timoni mod init` cmd
+  * Mark cue.mod as vendored
+  * Allow connecting to insecure container registries
+  * Exclude blueprints
+  * Publish starter blueprint to GHCR
+  * Bump golang.org/x/crypto from 0.16.0 to 0.17.0
+  * Vet and format blueprints
+  * Add starter blueprint
+  * Bump the ci group with 1 update
+  * Document managed-by label usage
+  * Init blueprint
+  * Document the Timoni's CUE schemas
+  * Refactor redis module using latest schemas
+  * Refactor init module using latest schemas
+  * Update cue version info
+  * Add `timoni artifact tag` command
+  * Compose `#LabelSelector` in `#Metadata`
+  * Add `#MetaComponent` generator to Timoni's CUE schemas
+  * Add `--name` flag to `timoni mod vet` command (#272)
+  * Workaround for preserve-unknown-fields arrays issue For CRDs
+    with arrays the `parentPath` function doesn't walk back to the
+    spec. To not miss `x-kubernetes-preserve-unknown-fields` we do
+    partial matching which could open more fields than desired if
+    the field names overlap.
+  * Prove that preserve-unknown-fields doesn't work with arrays If
+    an array type is present in the CRD, the `parentPath` function
+    fails to compose the full path to the spec parent for all
+    fields declared after the array.
+  * Format with cue v0.7.0
+  * Update `cuelang.org/go` to v0.7.0
+  * Bump the ci group with 2 updates
+  * Add image pull secret generator to Timoni's CUE schemas
+  * Fix label selector schema
+  * Run `cue vet` for schemas in CI
+  * Add semver validation to Timoni's CUE schemas
+  * Add resource requirements to Timoni's CUE schemas
+  * Add instance definitions to Timoni's CUE schemas
+  * Run `cue fmt` in CI
+  * Add managed-by to default labels
+  * Add standard Kubernetes labels to metadata
+  * Document the module config required fields
+  * Improve cmd test coverage
+
+-------------------------------------------------------------------
 Wed Nov 29 05:46:00 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.17.0:

@@ -16,7 +16,6 @@
 #
 
 
-%define         skip_python2 1
 Name:           python-mplcursors
 Version:        0.5.2
 Release:        0
@@ -24,6 +23,8 @@ Summary:        Interactive data selection cursors for Matplotlib
 License:        MIT
 URL:            https://github.com/anntzer/mplcursors
 Source:         https://files.pythonhosted.org/packages/source/m/mplcursors/mplcursors-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM mplcursors-fix-stem-api.patch main branch -- fix Matplotlib 3.8 API change
+Patch0:         https://github.com/anntzer/mplcursors/commit/689b4adefaf0302a9338bb28bd3c3f0ef1c95ce7.patch#/mplcursors-fix-stem-api.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}

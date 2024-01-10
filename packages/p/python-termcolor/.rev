@@ -121,4 +121,17 @@
   * Add light shades, dark grey and black</comment>
     <requestid>1129210</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>58088f88e00bf7eadd3274f9ec54fd11</srcmd5>
+    <version>2.4.0</version>
+    <time>1703800961</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.4.0:
+  * document terminal colour detection overrides (#60) @hugovk
+  * Add support for Python 3.13 (#55) @hugovk
+  * Improve isatty check (#56) @XiaoliChan
+  * Improve typing (#44) @marcin-serwin
+  * Drop support for EOL Python 3.7 (#47) @hugovk</comment>
+    <requestid>1135347</requestid>
+  </revision>
 </revisionlist>

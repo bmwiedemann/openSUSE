@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 29 09:57:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.0:
+  * Add boolean formatting option
+
+-------------------------------------------------------------------
 Tue Jun 27 12:45:39 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
@@ -12,20 +18,20 @@ Tue Dec  6 17:01:27 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 - Update to 1.6.6
   * Fix regression introduced in 1.6.5 release (#83)
 
-- Update to 1.6.5 
+- Update to 1.6.5
   * Modify setup.py to include missing stub file in wheel package (#82)
 
 -------------------------------------------------------------------
 Mon Feb 14 21:54:33 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.4:
-  * Fix alignment bug when deco is modified 
+  * Fix alignment bug when deco is modified
 
 -------------------------------------------------------------------
 Sun Dec 20 09:44:50 UTC 2020 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.3:
-  * Improve int conversion  
+  * Improve int conversion
 
 -------------------------------------------------------------------
 Mon Jul 22 12:41:17 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
@@ -43,14 +49,14 @@ Fri Feb 15 12:46:31 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
 Fri Feb 15 01:35:10 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to 1.6.0
-  * Added texttable.pyi 
+  * Added texttable.pyi
   * Added missing set_header_align method stub
   * Allow chaining of method calls
   * Replace distutils with setuptools
-  * Create a method for redefining the max_width 
+  * Create a method for redefining the max_width
   * Switch to MIT License
   * Use wcwidth if available for better rendering (basic emoji support)
-  * Update README.md 
+  * Update README.md
 
 -------------------------------------------------------------------
 Fri Jul 20 11:36:41 UTC 2018 - tchvatal@suse.com
@@ -71,7 +77,7 @@ Thu Dec  7 13:10:46 UTC 2017 - sebix+novell.com@sebix.at
 -------------------------------------------------------------------
 Tue Aug 18 09:06:05 UTC 2015 - jmassaguerpla@suse.com
 
-- fix license to LGPL-3.0+ as in LICENSE file 
+- fix license to LGPL-3.0+ as in LICENSE file
 
 -------------------------------------------------------------------
 Thu Apr  9 16:11:51 UTC 2015 - fcastelli@suse.com

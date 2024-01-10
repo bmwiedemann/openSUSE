@@ -1,7 +1,7 @@
 #
 # spec file for package python-pylast
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,23 +16,25 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-pylast
-Version:        4.5.0
+Version:        5.2.0
 Release:        0
 Summary:        A python interface to Last.fm
 License:        Apache-2.0
 URL:            https://github.com/pylast/pylast
 Source0:        https://files.pythonhosted.org/packages/source/p/pylast/pylast-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module hatch_vcs}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
+Requires:       python-httpx
 # SECTION test requirements
 BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module flaky}
+BuildRequires:  %{python_module httpx}
 BuildRequires:  %{python_module pyaml}
 BuildRequires:  %{python_module pycodestyle}
 BuildRequires:  %{python_module pyflakes}
@@ -58,10 +60,10 @@ Features:
 %setup -q -n pylast-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}/%{python_sitelib}
 
 %check
@@ -74,7 +76,7 @@ Features:
 %doc README.md
 %license COPYING
 %dir %{python_sitelib}/pylast
-%{python_sitelib}/pylast/*
-%{python_sitelib}/pylast-%{version}-py*.egg-info
+%{python_sitelib}/pylast
+%{python_sitelib}/pylast-%{version}.dist-info
 
 %changelog

@@ -102,4 +102,25 @@
     <comment></comment>
     <requestid>1081853</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>def4155f73ad32e1611bf78485eb721c</srcmd5>
+    <version>0.14.0</version>
+    <time>1704753915</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.14.0;
+  * Add official support for python3.12
+  * Remove support for python3.6 and python3.7
+  * Remove support for python2 and older python3 versions
+  * Fix support for python3.12 to avoid warnings about addDuration.
+  * nose2 package metadata is converted to pyproject.toml format, using
+    setuptools.
+  * nose2 license metadata has been corrected in format and content to be
+    distributed in the sdist and wheel distributions correctly.
+- Add patch support-python312.patch:
+  * Support changes made upstream in Python 3.12.1.
+- Switch to autosetup macro.
+- Instruct pip it isn't allowed to reach PyPi and teach it where to look for
+  wheels.</comment>
+    <requestid>1137466</requestid>
+  </revision>
 </revisionlist>

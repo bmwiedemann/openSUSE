@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Dec 21 08:23:54 UTC 2023 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add mutter-fix-text-input-delete-surrounding.patch: text-input-v3
+  requrires byte based offset but Clutter uses char based offset
+  for delete_surrounding_text, fix it by converting before passing
+  arguments (glgo#GNOME/mutter#2146, glgo#GNOME/mutter!2712).
+
+-------------------------------------------------------------------
+Mon Dec 18 06:47:32 UTC 2023 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add mutter-fix-x11-restart.patch: glgo#GNOME/mutter!2445 breaks
+  restarting under x11 accidentally because it redirects subwindows
+  after redirecting windows, this patch fix it by redirecting
+  subwindows first (glgo#GNOME/gnome-shell#7050,
+  glgo#GNOME/mutter!3329).
+
+-------------------------------------------------------------------
 Thu Dec  7 15:09:40 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 45.2:

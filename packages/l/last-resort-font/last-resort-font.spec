@@ -1,7 +1,7 @@
 #
 # spec file for package last-resort-font
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,22 @@
 
 
 Name:           last-resort-font
-Version:        13.001
+Version:        15.100
 Release:        0
 Summary:        A special-purpose font that includes a collection of glyphs to represent types of Unicode characters
 License:        OFL-1.1
 Group:          System/X11/Fonts
 URL:            https://github.com/unicode-org/last-resort-font
 Source0:        https://github.com/unicode-org/last-resort-font/releases/download/%{version}/LastResortHE-Regular.ttf
-Source1:        https://raw.githubusercontent.com/unicode-org/last-resort-font/main/LICENSE.md
+Source1:        https://raw.githubusercontent.com/unicode-org/last-resort-font/%{version}/LICENSE
 BuildRequires:  fontpackages-devel
 BuildArch:      noarch
 %reconfigure_fonts_prereq
 
 %description
-Last Resort is a special-purpose font that includes a collection of glyphs to represent types of Unicode characters.
-These glyphs are specifically designed to allow users to recognize that a code point is one of the following:
+Last Resort is a special-purpose font that includes a collection of glyphs to
+represent types of Unicode characters.  These glyphs are specifically designed
+to allow users to recognize that a code point is one of the following:
 
 * A specific type of Unicode character
 * In the PUA (Private Use Area) for which no agreement exists
@@ -50,7 +51,7 @@ install -m 0644 %{SOURCE0} %{buildroot}%{_ttfontsdir}
 %reconfigure_fonts_scriptlets
 
 %files
-%license LICENSE.md
+%license LICENSE
 %{_ttfontsdir}
 
 %changelog

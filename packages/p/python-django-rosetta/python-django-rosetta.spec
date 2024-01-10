@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           python-django-rosetta
-Version:        0.9.9
+Version:        0.10.0
 Release:        0
 Summary:        Django application that eases the translation of Django projects
 License:        MIT

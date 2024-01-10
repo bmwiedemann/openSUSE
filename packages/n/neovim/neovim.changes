@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Dec 31 07:11:58 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to version 0.9.5:
+  This is a maintenance release, focusing on bugfixes.
+  Notably, fixes were made for issues with using and testing Nvim
+  on less common platforms, like big endian platforms.
+
+-------------------------------------------------------------------
 Fri Nov  3 06:58:28 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - msgpack has changed its pkgconfig name, follow suit in neovim.

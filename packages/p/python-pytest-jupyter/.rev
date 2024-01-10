@@ -23,4 +23,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1083771</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>66003b9ebb2b3f13efeb513968764f47</srcmd5>
+    <version>0.8.0</version>
+    <time>1703527465</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.8.0
+  * Allow passing request_timeout to client_fetch #67 (@afbarbaro)
+  * code maintenance
+- Disable the -server subpackage for Ring1</comment>
+    <requestid>1134997</requestid>
+  </revision>
 </revisionlist>

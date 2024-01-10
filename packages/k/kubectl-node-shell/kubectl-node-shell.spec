@@ -1,7 +1,7 @@
 #
 # spec file for package kubectl-node-shell
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define executable_name kubectl-node_shell
 
 Name:           kubectl-node-shell
-Version:        1.8.0
+Version:        1.8.1
 Release:        0
 Summary:        Exec into node via kubectl
 License:        Apache-2.0

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Dec 20 18:39:01 UTC 2023 - Lee Duncan <lduncan@suse.com>
+
+- Updated to latest upstream: two small changes, with no known
+  functional changes:
+  * Incorrect documentation for `iscsiadm -m session` print level
+    (upstream issue #432)
+  * Stop using deprecated inet_aton and inet_ntoa (upstream issue
+    #435)
+- Also, stopped using pre-prepared tarballs for the build, instead
+  now using a service file to get latest SUSE srouces directly.
+  This removed these two files:
+  * open-iscsi-2.1.9-suse.tar.bz2, and
+  * open-iscsi-SUSE-latest.diff.bz2
+  whcih were both created by a shell script, and added a service-
+  file-generated file of the form:
+  * open-iscsi-2.1.9.suse+TAG_OFFSET.tar.xz
+  where TAG_OFFSET is of the form "COMMIT_COUNT.HASH", where
+  COMMIT_COUNT is the count of commits since 2.1.9-suse (in this
+  case), and HASH is the git commit hash being used.
+
+-------------------------------------------------------------------
 Wed Oct 25 18:48:01 UTC 2023 - Lee Duncan <lduncan@suse.com>
 
 - Updated to latest upstream, which includes (bsc#1210514):

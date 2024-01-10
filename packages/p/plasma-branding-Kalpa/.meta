@@ -1,0 +1,6 @@
+<package name="plasma-branding-Kalpa" project="openSUSE:Factory">
+  <title>MicroOS Desktop KDE Plasma Default Settings</title>
+  <description>This branding-style package sets default applications in KDE Plasma in
+MicroOS Desktop </description>
+  <devel project="devel:microos:kalpa" package="plasma-branding-Kalpa"/>
+</package>

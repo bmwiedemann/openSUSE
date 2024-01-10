@@ -12,10 +12,10 @@ Signed-off-by: Hannes Reinecke <hare@suse.com>
  dasdfmt/dasdfmt.h |  1 +
  3 files changed, 58 insertions(+), 9 deletions(-)
 
-Index: s390-tools-2.29.0/dasdfmt/dasdfmt.8
+Index: s390-tools-2.30.0/dasdfmt/dasdfmt.8
 ===================================================================
---- s390-tools-2.29.0.orig/dasdfmt/dasdfmt.8
-+++ s390-tools-2.29.0/dasdfmt/dasdfmt.8
+--- s390-tools-2.30.0.orig/dasdfmt/dasdfmt.8
++++ s390-tools-2.30.0/dasdfmt/dasdfmt.8
 @@ -7,7 +7,7 @@
  dasdfmt \- formatting of DASD (ECKD) disk drives.
  
@@ -51,12 +51,12 @@ Index: s390-tools-2.29.0/dasdfmt/dasdfmt.8
 +
 +.TP
  \fB-l\fR \fIvolser\fR or \fB--label\fR=\fIvolser\fR
- Specify the volume serial number or volume identifier to be written 
- to disk after formatting. If no label is specified, a sensible default 
-Index: s390-tools-2.29.0/dasdfmt/dasdfmt.c
+ Specify the volume serial number or volume identifier to be written
+ to disk after formatting. If no label is specified, a sensible default
+Index: s390-tools-2.30.0/dasdfmt/dasdfmt.c
 ===================================================================
---- s390-tools-2.29.0.orig/dasdfmt/dasdfmt.c
-+++ s390-tools-2.29.0/dasdfmt/dasdfmt.c
+--- s390-tools-2.30.0.orig/dasdfmt/dasdfmt.c
++++ s390-tools-2.30.0/dasdfmt/dasdfmt.c
 @@ -13,6 +13,7 @@
  #include <sys/sysmacros.h>
  #include <sys/time.h>
@@ -142,7 +142,7 @@ Index: s390-tools-2.29.0/dasdfmt/dasdfmt.c
 -	for (i = 0; i < numdev; i++)
 -	{
 -		strncpy(g.dev_path, g.dev_path_array[i], strlen(g.dev_path_array[i])+1);
--		strncpy(g.dev_node, g.dev_node_array[i], strlen(g.dev_node_array[i])+1);	
+-		strncpy(g.dev_node, g.dev_node_array[i], strlen(g.dev_node_array[i])+1);
 -		process_dasd(&vlabel, format_params);
 +	for (numproc = 0; numproc < numdev; numproc++) {
 +		chpid = fork();

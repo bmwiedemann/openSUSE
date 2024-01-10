@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan  2 21:21:09 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.15:
+  * Remove python 2.x support.
+  * Update to PEP517 compliance.
+  * Migrate CI to github actions.
+
+-------------------------------------------------------------------
 Sun Jan 16 12:18:43 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.14

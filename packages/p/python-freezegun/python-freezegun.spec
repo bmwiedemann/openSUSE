@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-freezegun
-Version:        1.3.1
+Version:        1.4.0
 Release:        0
 Summary:        Mock time date for Python
 License:        Apache-2.0

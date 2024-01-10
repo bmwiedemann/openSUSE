@@ -48,4 +48,24 @@
     <comment></comment>
     <requestid>1081844</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>75791c1ae9c22cca32b986f39d4ca2c1</srcmd5>
+    <version>16.9.0</version>
+    <time>1704491927</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 16.9.0:
+  * Features - Added Path.iterdir() and deprecated
+    Path.listdir().
+  * Use '.' as the default path.
+  * Set stacklevel=2 in deprecation warning for .text.
+  * Added .permissions attribute.
+  * Require Python 3.8 or later.
+
+- Update to version 16.6.0
+- Update to version 16.5.0
+  * Removed path.path. Clients must now refer to the canonical
+  * Added support for resolving certain directories on a system to
+  * In order to support &quot;multipath&quot; results, where multiple paths</comment>
+    <requestid>1136260</requestid>
+  </revision>
 </revisionlist>

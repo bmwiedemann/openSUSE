@@ -17,7 +17,7 @@
 
 
 Name:           iwd
-Version:        2.9
+Version:        2.12
 Release:        0
 Summary:        Wireless daemon for Linux
 License:        LGPL-2.1-or-later
@@ -28,10 +28,10 @@ Source1:        https://kernel.org/pub/linux/network/wireless/%{name}-%{version}
 Source2:        %{name}.keyring
 # needed for the tests to generate certificates
 # BuildRequires:  openssl
-BuildRequires:  pkgconfig
+BuildRequires:  pkg-config
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(dbus-1)
-BuildRequires:  pkgconfig(ell) >= 0.60
+BuildRequires:  pkgconfig(ell) >= 0.61
 BuildRequires:  pkgconfig(readline)
 BuildRequires:  pkgconfig(systemd)
 %{?systemd_ordering}

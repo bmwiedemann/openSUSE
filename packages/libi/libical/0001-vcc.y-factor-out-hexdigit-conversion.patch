@@ -9,11 +9,46 @@ References: https://github.com/libical/libical/pull/354
  src/libicalvcal/vcc.y | 17 +++++++++++------
  2 files changed, 22 insertions(+), 12 deletions(-)
 
-diff --git a/src/libicalvcal/vcc.c b/src/libicalvcal/vcc.c
-index d47bc099..c2a743c2 100644
---- a/src/libicalvcal/vcc.c
-+++ b/src/libicalvcal/vcc.c
-@@ -1126,6 +1126,15 @@ static int match_begin_end_name(int end) {
+Index: libical-3.0.17/src/libicalvcal/vcc.c
+===================================================================
+--- libical-3.0.17.orig/src/libicalvcal/vcc.c
++++ libical-3.0.17/src/libicalvcal/vcc.c
+@@ -985,6 +985,15 @@ static int match_begin_end_name(int end)
+     return 0;
+     }
+ 
++static int hexdigit_decode(char c)
++{
++       if (c >= '0' && c <= '9')
++               return c - '0';
++       if (c >= 'A' && c <= 'F')
++               return c - 'A' + 10;
++       return -1;
++}
++
+ static char* lexGetQuotedPrintable(void)
+     {
+     char cur;
+@@ -998,12 +1007,8 @@ static char* lexGetQuotedPrintable(void)
+                 int next[2];
+                 int i;
+                 for (i = 0; i < 2; i++) {
+-                    next[i] = lexGetc();
+-                    if (next[i] >= '0' && next[i] <= '9')
+-                        c = c * 16 + next[i] - '0';
+-                    else if (next[i] >= 'A' && next[i] <= 'F')
+-                        c = c * 16 + next[i] - 'A' + 10;
+-                    else
++                    next[i] = hexdigit_decode(lexGetc());
++                    if (next[i] < 0)
+                         break;
+                     }
+                 if (i == 0) {
+Index: libical-3.0.17/src/libicalvcal/vcc.y
+===================================================================
+--- libical-3.0.17.orig/src/libicalvcal/vcc.y
++++ libical-3.0.17/src/libicalvcal/vcc.y
+@@ -949,6 +949,15 @@ static int match_begin_end_name(int end)
      return 0;
      }
  
@@ -29,7 +64,7 @@ index d47bc099..c2a743c2 100644
  static char* lexGetQuotedPrintable()
      {
      char cur;
-@@ -1139,12 +1148,8 @@ static char* lexGetQuotedPrintable()
+@@ -962,12 +971,8 @@ static char* lexGetQuotedPrintable()
                  int next[2];
                  int i;
                  for (i = 0; i < 2; i++) {
@@ -44,41 +79,3 @@ index d47bc099..c2a743c2 100644
                          break;
                      }
                  if (i == 0) {
-diff --git a/src/libicalvcal/vcc.y b/src/libicalvcal/vcc.y
-index d97ea83b..45243df6 100644
---- a/src/libicalvcal/vcc.y
-+++ b/src/libicalvcal/vcc.y
-@@ -947,6 +947,15 @@ static int match_begin_end_name(int end) {
-     return 0;
-     }
- 
-+static int hexdigit_decode(char c)
-+{
-+	if (c >= '0' && c <= '9')
-+		return c - '0';
-+	if (c >= 'A' && c <= 'F')
-+		return c - 'A' + 10;
-+	return -1;
-+}
-+
- static char* lexGetQuotedPrintable()
-     {
-     char cur;
-@@ -960,12 +969,8 @@ static char* lexGetQuotedPrintable()
-                 int next[2];
-                 int i;
-                 for (i = 0; i < 2; i++) {
--                    next[i] = lexGetc();
--                    if (next[i] >= '0' && next[i] <= '9')
--                        c = c * 16 + next[i] - '0';
--                    else if (next[i] >= 'A' && next[i] <= 'F')
--                        c = c * 16 + next[i] - 'A' + 10;
--                    else
-+                    next[i] = hexdigit_decode(lexGetc());
-+                    if (next[i] < 0)
-                         break;
-                     }
-                 if (i == 0) {
--- 
-2.19.1
-

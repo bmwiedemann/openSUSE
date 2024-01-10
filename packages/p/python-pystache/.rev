@@ -57,4 +57,19 @@
 - Add %{?sle15_python_module_pythons}</comment>
     <requestid>1101080</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>66f5aaa94e1672aa0ec71c7b2f0b6e19</srcmd5>
+    <version>0.6.5</version>
+    <time>1704281458</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.6.5:
+  * Use the content-type for RST that pypi now wants
+  * Add full sphinx apidoc build, include readme/extras.
+  * Fix included filename and link cleanup.
+  * Remove more py2 cruft from doctesting (py3.10 warnings)
+  * Update maintainer info and spec test cmd.
+  * Use updated bandit action and workflow excludes (exclude test)
+  * Use current org-level coverage workflow.</comment>
+    <requestid>1136321</requestid>
+  </revision>
 </revisionlist>

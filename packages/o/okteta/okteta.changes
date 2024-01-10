@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Jan  5 08:55:46 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.26.15
+  * Improved: translations
+  * Improved: Decoding table now supports DnD of data entry
+  * Improved: String extraction tool now supports DnD of string
+    entry
+  * Improved: Structures tool now supports drag of data entry
+  * Improved: Statistics tool also adds HTML variant to data
+    copy & DnD
+  * Improved: Statistics tool now supports DnD of selected
+    statistic data
+  * Improved: views tab bar now supports changing current tab on
+    hovering DnD
+  * Improved: Decoding table display numeric values localized
+  * Improved: File info now has MIME type & size text
+    mouse-selectable/-copyable
+  * Fixed: Byte array views had wrong selection background next
+    to markers
+  * Fixed: Structures tool ignored edits in second half of
+    primitive type arrays
+  * Fixed: Structures tool missed change update of arrays with
+    primitive types
+
+-------------------------------------------------------------------
 Wed Dec 13 08:34:09 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.26.14

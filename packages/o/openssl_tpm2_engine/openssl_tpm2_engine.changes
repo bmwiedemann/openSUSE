@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jan  1 16:07:25 UTC 2024 - James.Bottomley@HansenPartnership.com
+
+- Update to version 4.1.1
+  * fix 32 bit build
+
+-------------------------------------------------------------------
+Mon Dec 31 03:55:34 UTC 2023 - James.Bottomley@HansenPartnership.com
+
+- Update to version 4.1.0
+  * implement tpm2_PolicySecret
+
+-------------------------------------------------------------------
 Mon Dec  5 03:53:40 UTC 2023 - James.Bottomley@HansenPartnership.com
 
 - Update to version 4.0.2

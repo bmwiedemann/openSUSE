@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec 19 11:25:35 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Security fix: [bsc#1218127, CVE-2023-48795]
+  * Add 'strict KEX' to fix CVE-2023-48795 "Terrapin Attack"
+  * Add libssh2_org-CVE-2023-48795.patch
+
+-------------------------------------------------------------------
 Tue Jun 20 08:17:25 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 1.11.0:

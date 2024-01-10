@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep 19 08:10:49 UTC 2023 - Joey Lee <jlee@suse.com>
+
+- Sync change log to prepare for sending mokutil 0.6.0 to SLE15-SP6
+  (jsc#PED-6528)
+    - Removed the following backported patches because they are merged
+      to 0.6.0:
+	- mokutil-fix-missing-header.patch
+	  b15e7c4d7 util: add the missing stdio.h  
+	- mokutil-enable-setting-fallback-verbosity-and-norebo.patch (bsc#1198458)
+	  57bc38582 mokutil: enable setting fallback verbosity and noreboot mode
+	- mokutil-SBAT-revocation-update-support.patch (bsc#1198458)
+	  6c9890730 SBAT revocation update support  
+
+-------------------------------------------------------------------
 Fri Aug 18 07:07:08 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Remove modhash (bsc#1214358)

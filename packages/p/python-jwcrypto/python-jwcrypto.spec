@@ -1,7 +1,7 @@
 #
 # spec file for package python-jwcrypto
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-
-%define skip_python2 1
-
 Name:           python-jwcrypto
-Version:        1.5.0
+Version:        1.5.1
 Release:        0
 Summary:        Python module package implementing JOSE Web standards
 License:        LGPL-3.0-only
@@ -29,8 +25,10 @@ URL:            https://github.com/latchset/jwcrypto
 Source:         https://files.pythonhosted.org/packages/source/j/jwcrypto/jwcrypto-%{version}.tar.gz
 BuildRequires:  %{python_module Deprecated}
 BuildRequires:  %{python_module cryptography >= 3.4}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Deprecated
@@ -51,10 +49,10 @@ RFC 7520 - Examples of Protecting Content Using JSON Object Signing and Encrypti
 %setup -q -n jwcrypto-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 rm -rv %{buildroot}%{_datadir}/doc/jwcrypto
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -62,7 +60,8 @@ rm -rv %{buildroot}%{_datadir}/doc/jwcrypto
 %pytest jwcrypto
 
 %files %{python_files}
-%{python_sitelib}/*
+%{python_sitelib}/jwcrypto
+%{python_sitelib}/jwcrypto-%{version}.dist-info
 %license LICENSE
 %doc README.md
 

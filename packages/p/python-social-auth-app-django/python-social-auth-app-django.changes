@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jan  6 13:10:06 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.4.0:
+  * Improved JSON field migration performance
+  * Introduce configuration to request POST only requests for
+    social authentication
+  * Updated list of supported Django and Python versions
+  * Uses Django native JSON field
+  * Removed support for Django<3.2
+  * Fixed missing migration issue
+  * Compatibility with recent Django and Python versions
+  * Coding style improvements
+  * Improved error handling in SocialAuthExceptionMiddleware
+
+-------------------------------------------------------------------
 Tue Mar 28 03:56:09 UTC 2023 - John Vandenberg <jayvdb@gmail.com>
 
 - Add dependency python-jose
@@ -58,7 +73,7 @@ Fri Nov 30 10:20:04 UTC 2018 - Matthias Fehring <buschmann23@opensuse.org>
 
 - Update to version 3.1.0
   * Updated JSONField.from_db_value signature to support multiple
-    Django versions by accepting just the needed parameters. 
+    Django versions by accepting just the needed parameters.
 - Changes from version 3.0.0
   * Reduce log level of exceptions to INFO if messages app is installed
   * Encode association secret with encodebytes if available

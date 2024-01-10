@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Dec 14 07:30:04 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 1.4
+  * Don't always require curl/wget to build locales by @jirislaby in #43
+  * Fix compilation with newer LLVM/Clang versions: make int-conversion a
+    warning by @251 in #44
+  * Remove deprecated llvm-gcc by @251 in #45
+  * Fixing null dereference in realpath by @davidtr1037 in #47
+  * Add missing variables for GitHub CI by @MartinNowack in #46
+- remove extra-locale-Makefile-don-t-always-require-curl-wget.patch
+  (it's upstream)
+- switch to llvm 16
+
+-------------------------------------------------------------------
 Thu Jun 15 05:10:10 UTC 2023 - jslaby@suse.cz
 
 - require python3-base, not python-base as we need py3

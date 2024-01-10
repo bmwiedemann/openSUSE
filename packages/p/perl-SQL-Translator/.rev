@@ -145,4 +145,12 @@ See e.g. script/sqlt (forwarded request 185916 from babelworx)</comment>
     <comment></comment>
     <requestid>1070666</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ff08e9d5f8f0dc1e2a15feef668d96ba</srcmd5>
+    <version>1.640.0</version>
+    <time>1704383242</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1136854</requestid>
+  </revision>
 </revisionlist>

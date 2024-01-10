@@ -26,42 +26,48 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-hatch%{psuffix}
-Version:        1.7.0
+Version:        1.9.1
 Release:        0
 Summary:        Modern, extensible Python project management
 License:        MIT
 URL:            https://hatch.pypa.io/latest/
 # SourceRepository: https://github.com/pypa/hatch
 Source:         https://github.com/pypa/hatch/archive/refs/tags/hatch-v%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix-sdist-target.patch -- gh#pypa/hatch@1b10663e645e
-Patch0:         fix-sdist-target.patch
-# PATCH-FIX-UPSTREAM hatch-pr828-pth-tests.patch, gh#pypa/hatch#828
-Patch1:         hatch-pr828-pth-tests.patch
-# PATCH-FIX-UPSTREAM CI.patch, gh#pypa/hatch#940
-Patch2:         CI.patch
-# PATCH-FIX-UPSTREAM packaging232.patch gh#pypa/hatch#989
-Patch3:         packaging232.patch
-BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module hatchling >= 1.14}
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module hatch-vcs >= 0.3}
+BuildRequires:  %{python_module hatchling >= 1.19}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildArch:      noarch
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Requires:       git-core
-%{?python_enable_dependency_generator}
+Requires:       python-click >= 8.0.6
+Requires:       python-hatchling >= 1.21.0
+Requires:       python-httpx >= 0.22.0
+Requires:       python-hyperlink >= 21.0.0
+Requires:       python-keyring >= 23.5.0
+Requires:       python-packaging >= 21.3
+Requires:       python-platformdirs >= 2.5.0
+Requires:       python-rich >= 11.2.0
+Requires:       python-shellingham >= 1.4.0
+Requires:       python-tomli-w >= 1.0
+Requires:       python-tomlkit >= 0.11.1
+Requires:       python-virtualenv >= 20.16.2
+Requires:       python-zstandard < 1
+Requires:       (python-pexpect >= 4.8 with python-pexpect < 5)
+Requires:       (python-userpath >= 1.7 with python-userpath < 2)
 %if %{with test}
 BuildRequires:  %{python_module filelock >= 3.7.1}
 BuildRequires:  %{python_module hatch = %{version}}
-# Due to Patch1, gh#pypa/hatch#828
-BuildRequires:  %{python_module hatchling >= 1.17.1}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module trustme}
+BuildRequires:  cargo
+%else
+BuildArch:      noarch
 %endif
-
 %python_subpackages
 
 %description
@@ -78,11 +84,13 @@ Features
 %prep
 %autosetup -p1 -n hatch-hatch-v%{version}
 
-%if !%{with test}
 %build
+%if !%{with test}
 %pyproject_wheel
+%endif
 
 %install
+%if !%{with test}
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/hatch
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
@@ -94,7 +102,19 @@ export LANG=en_US.UTF-8
 # tests expect this to be unset and use their own reproducible value. Nothing installed from here.
 # https://hatch.pypa.io/latest/config/build/#reproducible-builds
 unset SOURCE_DATE_EPOCH
-%pytest
+# finds bash instead of expected sh as default shell inside obs
+donttest="(test_install and test_already_installed_update_prompt)"
+donttest="$donttest or (test_install and test_already_installed_update_flag)"
+donttest="$donttest or (test_install and test_all)"
+# platform distribution selection errors: https://github.com/pypa/hatch/issues/1145
+%ifnarch x86_64
+donttest="$donttest or (test_resolve and test_resolution_error)"
+%endif
+%ifarch s390x
+# Console width different
+donttest="$donttest or test_context_formatting"
+%endif
+%pytest -v -k "not ($donttest)"
 %endif
 
 %post

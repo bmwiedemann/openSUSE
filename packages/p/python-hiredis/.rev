@@ -104,4 +104,31 @@
     <comment></comment>
     <requestid>1092289</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>798b3d00f54e7337f1f8511083a2d913</srcmd5>
+    <version>2.3.2</version>
+    <time>1703198308</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.3.2:
+  * Added Python 3.12 to test matrix and classifiers (#174)
+  * Linking to Redis learning resources (#173)
+  * Updating client license to clear, MIT (#170)
+  * Integrating spellcheck into CI (#169)
+  * hiredis 1.2.0 support, versioning as 2.3.0 (#168)
+  * Fix including tests in sdist (#166)
+  * Use absolute imports and remove __init__.py from tests.
+  * Implement garbage collection support in Reader (#162) (#163)
+
+  * wrong encoding is used when opening README.md in setup.py
+  * (BREAKING CHANGE) Add ability to control how unicode decoding</comment>
+    <requestid>1134334</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>4d0b41d241b4c6b6781dc53feb40be14</srcmd5>
+    <version>2.3.2</version>
+    <time>1704491962</time>
+    <user>dimstar_suse</user>
+    <comment>- require setuptools</comment>
+    <requestid>1136311</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,2 @@
+# empty entrypoints is okay
+addFilter("zero-length .*dist-info/entry_points.txt")

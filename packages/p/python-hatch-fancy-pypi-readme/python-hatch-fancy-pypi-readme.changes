@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Jan  7 18:17:04 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 24.1.0:
+  The last release [broke
+  _scikit-build-core_](https://github.com/scikit-build/scikit-build-core/issues/592)
+  so this one adds a default argument value. No user-visible
+  changes.
+  *  Added a default to an internal API that is used by
+     *scikit-build-core*.
+
+-------------------------------------------------------------------
+Sun Jan  7 18:15:38 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 23.2.0:
+  There's only one change but I think it's really cool: you can now
+  add the package version into your PyPI readme by adding the
+  string `$HFPR_VERSION` to it!
+    * `$HFPR_VERSION` is now replaced by the package version in the
+    PyPI readme. The version is not available in CLI mode, therefore
+    it's replaced by the dummy value of `42.0`.
+
+-------------------------------------------------------------------
 Mon May 22 07:30:03 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 23.1.0 (there is no 23.0.0):
@@ -9,7 +31,7 @@ Mon May 22 07:30:03 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 -------------------------------------------------------------------
 Tue May 16 14:27:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- break dependency cycle between attrs (pulled by pytest) and pytest-hatch-fancy-pypi-readme 
+- break dependency cycle between attrs (pulled by pytest) and pytest-hatch-fancy-pypi-readme
 
 -------------------------------------------------------------------
 Fri Apr 21 12:26:07 UTC 2023 - Dirk Müller <dmueller@suse.com>

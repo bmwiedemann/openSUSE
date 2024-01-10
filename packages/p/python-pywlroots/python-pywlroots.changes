@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Dec 17 06:15:33 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Limit wlroots version to 0.16.x and before 0.17.x
+
+-------------------------------------------------------------------
 Sat Oct 21 23:17:45 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Use %{?sle15_python_module_pythons}

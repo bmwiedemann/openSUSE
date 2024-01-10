@@ -1,7 +1,7 @@
 #
 # spec file for package python-jaraco.classes
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jaraco.classes
-Version:        3.2.3
+Version:        3.3.0
 Release:        0
 Summary:        Tools to work with classes
 License:        MIT
 URL:            https://github.com/jaraco/jaraco.classes
 Source0:        https://files.pythonhosted.org/packages/source/j/jaraco.classes/jaraco.classes-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module more-itertools}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
@@ -55,9 +55,9 @@ jaraco.classes Tools for working with classes.
 
 %files %{python_files}
 %license LICENSE
-%doc docs/*.rst README.rst CHANGES.rst
+%doc docs/*.rst README.rst NEWS.rst
 %dir %{python_sitelib}/jaraco
 %{python_sitelib}/jaraco/classes
-%{python_sitelib}/jaraco.classes-%{version}*-info
+%{python_sitelib}/jaraco.classes-%{version}.dist-info
 
 %changelog

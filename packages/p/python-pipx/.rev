@@ -81,4 +81,26 @@
 </comment>
     <requestid>1132378</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>95e02c5cf84086390e13a2fc14817afc</srcmd5>
+    <version>1.4.0</version>
+    <time>1704281433</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.1:
+  * Set default logging level to WARNING
+  * Remove `-q` from `list --json` test
+- update to 1.4.0:
+  * Fix minor grammar error in comparisons.md
+  * Add Scoop installation instructions
+  * Update the installation instructions in docs
+  * Be more user-friendly by pointing to PyPA specifications
+    instead of PEPs
+  * Update troubleshooting URL in bug report template
+  * Allow installing multiple applications at once
+  * [pre-commit.ci] pre-commit autoupdate
+  * Pass real paths when running subprocesses
+
+  - test_alternative_names.patch</comment>
+    <requestid>1136247</requestid>
+  </revision>
 </revisionlist>

@@ -1473,4 +1473,20 @@ Look at the license file (forwarded request 143855 from babelworx)</comment>
   * Running &quot;sudo -ll command&quot; now produces verbose output that</comment>
     <requestid>1128361</requestid>
   </revision>
+  <revision rev="150" vrev="1">
+    <srcmd5>0cdf42117e09f829dfe7c19ad83caa6b</srcmd5>
+    <version>1.9.15p4</version>
+    <time>1703102465</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1134040</requestid>
+  </revision>
+  <revision rev="151" vrev="1">
+    <srcmd5>2e0d34ac30e490d545a77a4287d63a75</srcmd5>
+    <version>1.9.15p5</version>
+    <time>1704280980</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1136065</requestid>
+  </revision>
 </revisionlist>

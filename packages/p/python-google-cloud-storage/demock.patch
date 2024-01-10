@@ -1,7 +1,8 @@
-diff -Nru google-cloud-storage-2.8.0.orig/tests/system/test_blob.py google-cloud-storage-2.8.0/tests/system/test_blob.py
---- google-cloud-storage-2.8.0.orig/tests/system/test_blob.py	2023-03-29 23:18:24.000000000 +0200
-+++ google-cloud-storage-2.8.0/tests/system/test_blob.py	2023-03-30 12:03:21.658159496 +0200
-@@ -21,7 +21,7 @@
+Index: google-cloud-storage-2.14.0/tests/system/test_blob.py
+===================================================================
+--- google-cloud-storage-2.14.0.orig/tests/system/test_blob.py
++++ google-cloud-storage-2.14.0/tests/system/test_blob.py
+@@ -21,7 +21,7 @@ import uuid
  import warnings
  
  import pytest
@@ -10,9 +11,10 @@ diff -Nru google-cloud-storage-2.8.0.orig/tests/system/test_blob.py google-cloud
  
  from google import resumable_media
  from google.api_core import exceptions
-diff -Nru google-cloud-storage-2.8.0.orig/tests/unit/test_acl.py google-cloud-storage-2.8.0/tests/unit/test_acl.py
---- google-cloud-storage-2.8.0.orig/tests/unit/test_acl.py	2023-03-29 23:18:24.000000000 +0200
-+++ google-cloud-storage-2.8.0/tests/unit/test_acl.py	2023-03-30 12:03:21.714159988 +0200
+Index: google-cloud-storage-2.14.0/tests/unit/test_acl.py
+===================================================================
+--- google-cloud-storage-2.14.0.orig/tests/unit/test_acl.py
++++ google-cloud-storage-2.14.0/tests/unit/test_acl.py
 @@ -14,7 +14,7 @@
  
  import unittest
@@ -22,10 +24,11 @@ diff -Nru google-cloud-storage-2.8.0.orig/tests/unit/test_acl.py google-cloud-st
  
  from google.cloud.storage.retry import (
      DEFAULT_RETRY,
-diff -Nru google-cloud-storage-2.8.0.orig/tests/unit/test_batch.py google-cloud-storage-2.8.0/tests/unit/test_batch.py
---- google-cloud-storage-2.8.0.orig/tests/unit/test_batch.py	2023-03-29 23:18:24.000000000 +0200
-+++ google-cloud-storage-2.8.0/tests/unit/test_batch.py	2023-03-30 12:03:21.706159918 +0200
-@@ -17,7 +17,7 @@
+Index: google-cloud-storage-2.14.0/tests/unit/test_batch.py
+===================================================================
+--- google-cloud-storage-2.14.0.orig/tests/unit/test_batch.py
++++ google-cloud-storage-2.14.0/tests/unit/test_batch.py
+@@ -17,7 +17,7 @@ from http.client import SERVICE_UNAVAILA
  from http.client import NO_CONTENT
  import unittest
  
@@ -34,10 +37,11 @@ diff -Nru google-cloud-storage-2.8.0.orig/tests/unit/test_batch.py google-cloud-
  import requests
  
  
-diff -Nru google-cloud-storage-2.8.0.orig/tests/unit/test_blob.py google-cloud-storage-2.8.0/tests/unit/test_blob.py
---- google-cloud-storage-2.8.0.orig/tests/unit/test_blob.py	2023-03-29 23:18:24.000000000 +0200
-+++ google-cloud-storage-2.8.0/tests/unit/test_blob.py	2023-03-30 12:03:21.694159812 +0200
-@@ -24,7 +24,7 @@
+Index: google-cloud-storage-2.14.0/tests/unit/test_blob.py
+===================================================================
+--- google-cloud-storage-2.14.0.orig/tests/unit/test_blob.py
++++ google-cloud-storage-2.14.0/tests/unit/test_blob.py
+@@ -24,7 +24,7 @@ import http.client
  from unittest.mock import patch
  from urllib.parse import urlencode
  
@@ -46,9 +50,10 @@ diff -Nru google-cloud-storage-2.8.0.orig/tests/unit/test_blob.py google-cloud-s
  import pytest
  
  from google.cloud.storage import _helpers
-diff -Nru google-cloud-storage-2.8.0.orig/tests/unit/test_bucket.py google-cloud-storage-2.8.0/tests/unit/test_bucket.py
---- google-cloud-storage-2.8.0.orig/tests/unit/test_bucket.py	2023-03-29 23:18:24.000000000 +0200
-+++ google-cloud-storage-2.8.0/tests/unit/test_bucket.py	2023-03-30 12:03:21.714159988 +0200
+Index: google-cloud-storage-2.14.0/tests/unit/test_bucket.py
+===================================================================
+--- google-cloud-storage-2.14.0.orig/tests/unit/test_bucket.py
++++ google-cloud-storage-2.14.0/tests/unit/test_bucket.py
 @@ -15,7 +15,7 @@
  import datetime
  import unittest
@@ -58,10 +63,11 @@ diff -Nru google-cloud-storage-2.8.0.orig/tests/unit/test_bucket.py google-cloud
  import pytest
  
  from google.cloud.storage.retry import DEFAULT_RETRY
-diff -Nru google-cloud-storage-2.8.0.orig/tests/unit/test_client.py google-cloud-storage-2.8.0/tests/unit/test_client.py
---- google-cloud-storage-2.8.0.orig/tests/unit/test_client.py	2023-03-29 23:18:24.000000000 +0200
-+++ google-cloud-storage-2.8.0/tests/unit/test_client.py	2023-03-30 12:03:21.706159918 +0200
-@@ -17,7 +17,7 @@
+Index: google-cloud-storage-2.14.0/tests/unit/test_client.py
+===================================================================
+--- google-cloud-storage-2.14.0.orig/tests/unit/test_client.py
++++ google-cloud-storage-2.14.0/tests/unit/test_client.py
+@@ -17,7 +17,7 @@ import http.client
  import io
  import json
  from unittest.mock import patch
@@ -70,10 +76,11 @@ diff -Nru google-cloud-storage-2.8.0.orig/tests/unit/test_client.py google-cloud
  import pytest
  import re
  import requests
-diff -Nru google-cloud-storage-2.8.0.orig/tests/unit/test_fileio.py google-cloud-storage-2.8.0/tests/unit/test_fileio.py
---- google-cloud-storage-2.8.0.orig/tests/unit/test_fileio.py	2023-03-29 23:18:24.000000000 +0200
-+++ google-cloud-storage-2.8.0/tests/unit/test_fileio.py	2023-03-30 12:03:21.702159882 +0200
-@@ -18,7 +18,7 @@
+Index: google-cloud-storage-2.14.0/tests/unit/test_fileio.py
+===================================================================
+--- google-cloud-storage-2.14.0.orig/tests/unit/test_fileio.py
++++ google-cloud-storage-2.14.0/tests/unit/test_fileio.py
+@@ -18,7 +18,7 @@ import unittest
  import io
  import string
  
@@ -82,9 +89,10 @@ diff -Nru google-cloud-storage-2.8.0.orig/tests/unit/test_fileio.py google-cloud
  
  from google.api_core.exceptions import RequestRangeNotSatisfiable
  from google.cloud.storage.retry import DEFAULT_RETRY
-diff -Nru google-cloud-storage-2.8.0.orig/tests/unit/test__helpers.py google-cloud-storage-2.8.0/tests/unit/test__helpers.py
---- google-cloud-storage-2.8.0.orig/tests/unit/test__helpers.py	2023-03-29 23:18:24.000000000 +0200
-+++ google-cloud-storage-2.8.0/tests/unit/test__helpers.py	2023-03-30 12:03:21.702159882 +0200
+Index: google-cloud-storage-2.14.0/tests/unit/test__helpers.py
+===================================================================
+--- google-cloud-storage-2.14.0.orig/tests/unit/test__helpers.py
++++ google-cloud-storage-2.14.0/tests/unit/test__helpers.py
 @@ -14,7 +14,7 @@
  
  import unittest
@@ -94,18 +102,19 @@ diff -Nru google-cloud-storage-2.8.0.orig/tests/unit/test__helpers.py google-clo
  
  from google.cloud.storage.retry import DEFAULT_RETRY
  from google.cloud.storage.retry import DEFAULT_RETRY_IF_METAGENERATION_SPECIFIED
-@@ -556,7 +556,7 @@
+@@ -561,8 +561,6 @@ class Test__base64_md5hash(unittest.Test
          self.assertEqual(SIGNED_CONTENT, b"kBiQqOnIz21aGlQrIp/r/w==")
  
      def test_it_with_stubs(self):
 -        import mock
-+        from unittest import mock
- 
+-
          class _Buffer(object):
              def __init__(self, return_vals):
-diff -Nru google-cloud-storage-2.8.0.orig/tests/unit/test_hmac_key.py google-cloud-storage-2.8.0/tests/unit/test_hmac_key.py
---- google-cloud-storage-2.8.0.orig/tests/unit/test_hmac_key.py	2023-03-29 23:18:24.000000000 +0200
-+++ google-cloud-storage-2.8.0/tests/unit/test_hmac_key.py	2023-03-30 12:03:21.714159988 +0200
+                 self.return_vals = return_vals
+Index: google-cloud-storage-2.14.0/tests/unit/test_hmac_key.py
+===================================================================
+--- google-cloud-storage-2.14.0.orig/tests/unit/test_hmac_key.py
++++ google-cloud-storage-2.14.0/tests/unit/test_hmac_key.py
 @@ -14,7 +14,7 @@
  
  import unittest
@@ -115,9 +124,10 @@ diff -Nru google-cloud-storage-2.8.0.orig/tests/unit/test_hmac_key.py google-clo
  
  from google.cloud.storage.retry import DEFAULT_RETRY
  from google.cloud.storage.retry import DEFAULT_RETRY_IF_ETAG_IN_JSON
-diff -Nru google-cloud-storage-2.8.0.orig/tests/unit/test__http.py google-cloud-storage-2.8.0/tests/unit/test__http.py
---- google-cloud-storage-2.8.0.orig/tests/unit/test__http.py	2023-03-29 23:18:24.000000000 +0200
-+++ google-cloud-storage-2.8.0/tests/unit/test__http.py	2023-03-30 12:03:21.686159742 +0200
+Index: google-cloud-storage-2.14.0/tests/unit/test__http.py
+===================================================================
+--- google-cloud-storage-2.14.0.orig/tests/unit/test__http.py
++++ google-cloud-storage-2.14.0/tests/unit/test__http.py
 @@ -15,7 +15,7 @@
  import unittest
  from unittest.mock import patch
@@ -126,10 +136,11 @@ diff -Nru google-cloud-storage-2.8.0.orig/tests/unit/test__http.py google-cloud-
 +from unittest import mock
  
  from google.cloud.storage import _helpers
- from tests.unit.test__helpers import GCCL_INVOCATION_TEST_CONST
-diff -Nru google-cloud-storage-2.8.0.orig/tests/unit/test_notification.py google-cloud-storage-2.8.0/tests/unit/test_notification.py
---- google-cloud-storage-2.8.0.orig/tests/unit/test_notification.py	2023-03-29 23:18:24.000000000 +0200
-+++ google-cloud-storage-2.8.0/tests/unit/test_notification.py	2023-03-30 12:03:21.690159777 +0200
+ 
+Index: google-cloud-storage-2.14.0/tests/unit/test_notification.py
+===================================================================
+--- google-cloud-storage-2.14.0.orig/tests/unit/test_notification.py
++++ google-cloud-storage-2.14.0/tests/unit/test_notification.py
 @@ -14,7 +14,7 @@
  
  import unittest
@@ -139,10 +150,11 @@ diff -Nru google-cloud-storage-2.8.0.orig/tests/unit/test_notification.py google
  
  from google.cloud.storage.retry import DEFAULT_RETRY
  
-diff -Nru google-cloud-storage-2.8.0.orig/tests/unit/test_retry.py google-cloud-storage-2.8.0/tests/unit/test_retry.py
---- google-cloud-storage-2.8.0.orig/tests/unit/test_retry.py	2023-03-29 23:18:24.000000000 +0200
-+++ google-cloud-storage-2.8.0/tests/unit/test_retry.py	2023-03-30 12:03:21.710159953 +0200
-@@ -16,7 +16,7 @@
+Index: google-cloud-storage-2.14.0/tests/unit/test_retry.py
+===================================================================
+--- google-cloud-storage-2.14.0.orig/tests/unit/test_retry.py
++++ google-cloud-storage-2.14.0/tests/unit/test_retry.py
+@@ -16,7 +16,7 @@ import unittest
  
  from google.cloud.storage import _helpers
  
@@ -151,10 +163,11 @@ diff -Nru google-cloud-storage-2.8.0.orig/tests/unit/test_retry.py google-cloud-
  
  
  class Test_should_retry(unittest.TestCase):
-diff -Nru google-cloud-storage-2.8.0.orig/tests/unit/test__signing.py google-cloud-storage-2.8.0/tests/unit/test__signing.py
---- google-cloud-storage-2.8.0.orig/tests/unit/test__signing.py	2023-03-29 23:18:24.000000000 +0200
-+++ google-cloud-storage-2.8.0/tests/unit/test__signing.py	2023-03-30 12:03:21.698159847 +0200
-@@ -23,7 +23,7 @@
+Index: google-cloud-storage-2.14.0/tests/unit/test__signing.py
+===================================================================
+--- google-cloud-storage-2.14.0.orig/tests/unit/test__signing.py
++++ google-cloud-storage-2.14.0/tests/unit/test__signing.py
+@@ -23,7 +23,7 @@ import time
  import unittest
  import urllib.parse
  
@@ -163,10 +176,11 @@ diff -Nru google-cloud-storage-2.8.0.orig/tests/unit/test__signing.py google-clo
  import pytest
  
  from . import _read_local_json
-diff -Nru google-cloud-storage-2.8.0.orig/tests/unit/test_transfer_manager.py google-cloud-storage-2.8.0/tests/unit/test_transfer_manager.py
---- google-cloud-storage-2.8.0.orig/tests/unit/test_transfer_manager.py	2023-03-29 23:18:24.000000000 +0200
-+++ google-cloud-storage-2.8.0/tests/unit/test_transfer_manager.py	2023-03-30 12:03:21.710159953 +0200
-@@ -23,7 +23,7 @@
+Index: google-cloud-storage-2.14.0/tests/unit/test_transfer_manager.py
+===================================================================
+--- google-cloud-storage-2.14.0.orig/tests/unit/test_transfer_manager.py
++++ google-cloud-storage-2.14.0/tests/unit/test_transfer_manager.py
+@@ -24,7 +24,7 @@ from google.resumable_media.common impor
  
  import os
  import tempfile

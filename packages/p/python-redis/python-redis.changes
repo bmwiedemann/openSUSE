@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan  2 11:21:25 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to increase timeouts in s390x where tests take longer
+  to run:
+  * increase-test-timeout.patch
+
+-------------------------------------------------------------------
 Mon Oct 30 13:09:20 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Disable broken tests for ppc64le, bsc#1216606

@@ -1,7 +1,7 @@
 #
 # spec file for package upplay
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           upplay
-Version:        1.6.3
+Version:        1.7.2
 Release:        0
 Summary:        UPnP and OpenHome audio Control Point
 License:        GPL-2.0-or-later
@@ -25,6 +25,7 @@ URL:            https://www.lesbonscomptes.com/upplay/
 Source0:        https://www.lesbonscomptes.com/upplay/downloads/upplay-%{version}.tar.gz
 Source1:        https://www.lesbonscomptes.com/upplay/downloads/upplay-%{version}.tar.gz.asc
 Source2:        https://www.lesbonscomptes.com/pages/jf-at-dockes.org.pub#/%{name}.keyring
+Patch0:         use-webengine.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -33,7 +34,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5WebEngine)
 BuildRequires:  pkgconfig(jsoncpp)
-BuildRequires:  pkgconfig(libupnpp)
+BuildRequires:  pkgconfig(libupnpp) >= 0.24.1
 BuildRequires:  pkgconfig(mpris-qt5)
 
 %description
@@ -42,9 +43,10 @@ managed by your UPnP/DLNA media servers to your UPnP/DLNA/OpenHome players (rend
 
 %prep
 %setup -q
+%patch0
 
 %build
-%qmake5 'WEBPLATFORM=webengine' QMAKE_POST_LINK='$(STRIP) $(TARGET)'
+%qmake5 QMAKE_POST_LINK='$(STRIP) $(TARGET)'
 %make_build STRIP=%{_bindir}/strip
 
 %install

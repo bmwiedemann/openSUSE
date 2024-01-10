@@ -1,7 +1,7 @@
 #
 # spec file for package osinfo-db
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           osinfo-db
-Version:        20231027
+Version:        20231215
 Release:        0
 Summary:        Osinfo database files
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later

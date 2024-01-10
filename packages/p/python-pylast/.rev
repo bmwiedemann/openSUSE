@@ -107,4 +107,37 @@
     <comment>- drop unneeded six dependency</comment>
     <requestid>1010214</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8c2407189f3cd6509fefa89b1ec98765</srcmd5>
+    <version>5.2.0</version>
+    <time>1704753887</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.2.0:
+  * Support for Python 3.12
+  * Drop support for EOL Python 3.7
+  * Publish to PyPI with a Trusted Publisher
+  * Document how to authenticate with a session key
+- update to 5.1.0:
+  * Support Python 3.11 (#399)
+  * Migrate from setuptools + setuptools_scm to hatchling +
+    hatch-vcs (#413) @hugovk
+- update to 5.0.0:
+  * Replace `http.client` with HTTPX (#379) @hugovk
+  * Log method names at INFO level, also log API return data at
+    DEBUG level
+  * Drop support for Python 3.6 (#387) @hugovk
+  * Remove deprecated `is_streamable` and
+    `is_fulltrack_available` (#388) @hugovk
+  * If album has no MBID, `album.get_getmbid()` returns None
+
+  * [pre-commit.ci] pre-commit autoupdate (#362) @pre-commit-ci
+- use python_expand for fdupes
+  * Added
+  * Changed
+  * Fixed
+    * Added
+    * Removed
+      * Remove deprecated Artist.get_cover_image,</comment>
+    <requestid>1137449</requestid>
+  </revision>
 </revisionlist>

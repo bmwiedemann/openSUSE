@@ -18,12 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-FormEncode
-Version:        2.0.1
+Version:        2.1.0
 Release:        0
 Summary:        HTML form validation, generation, and conversion package
 License:        Python-2.0
 Group:          Development/Languages/Python
-URL:            http://formencode.org
+URL:            https://formencode.org
 Source:         https://files.pythonhosted.org/packages/source/F/FormEncode/FormEncode-%{version}.tar.gz
 BuildRequires:  %{python_module dnspython}
 BuildRequires:  %{python_module pip}
@@ -52,14 +52,12 @@ for filling and generating forms.
 
 %install
 %pyproject_install
-rm %{buildroot}%{_prefix}/LICENSE.txt
 # trick find-lang.sh into finding the translation files
 %python_expand mv %{buildroot}%{$python_sitelib}/formencode/{i18n,locale}
 %python_find_lang FormEncode
 sed -i s/locale/i18n/ python*-FormEncode.lang
 %python_expand mv %{buildroot}%{$python_sitelib}/formencode/{locale,i18n}
 # remove misplaced documentation
-%python_expand rm -r %{buildroot}%{$python_sitelib}/docs
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

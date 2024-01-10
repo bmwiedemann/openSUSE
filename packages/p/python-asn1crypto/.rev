@@ -140,4 +140,23 @@
 </comment>
     <requestid>1088776</requestid>
   </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>b999ac7ccd53624ec49596f4df264eed</srcmd5>
+    <version>1.5.1</version>
+    <time>1704290011</time>
+    <user>dimstar_suse</user>
+    <comment>- require setuptools
+
+ * core.ObjectIdentifier and all derived classes now obey X.660 §7.6
+  * Fixed a TypeError when trying to call .untag() or .copy() on a core.UTCTime()
+  * Added asn1crypto.load_order(), which returns a list of unicode strings of the names
+    of the fully-qualified module names for all of submodules of the package. The module
+    names are listed in their dependency load order. This is primarily intended
+  * BREAKING CHANGE: Removed functionality to calculate public key
+    values from private key values. Alternatives have been added to
+  * Significantly improved parsing of core.UTCTime() and core.GeneralizedTime()
+  * No longer try to load optional performance dependency, libcrypto,
+  * Add support for explicit RSA SSA PSS to keys.PublicKeyInfo()</comment>
+    <requestid>1136430</requestid>
+  </revision>
 </revisionlist>

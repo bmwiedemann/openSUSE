@@ -87,4 +87,13 @@ for me important as dependency for XMPP client poezio, which is 7 years outdated
     <comment></comment>
     <requestid>1082015</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>164b51257d387d3015de43aacc1888a0</srcmd5>
+    <version>3.1.1</version>
+    <time>1702673194</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.1.1:
+  * Add PEP-561 with py.typed</comment>
+    <requestid>1133402</requestid>
+  </revision>
 </revisionlist>

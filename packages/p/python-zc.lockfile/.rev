@@ -61,4 +61,25 @@
     <comment></comment>
     <requestid>1092241</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>65bcc8a29fab5f36efcd39824ba7981d</srcmd5>
+    <version>3.0.post1</version>
+    <time>1704491894</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.post1:
+  * Add ``python_requires`` to ``setup.py`` to prevent installing
+    on not supported old Python versions.
+  * Add support for Python 3.9, 3.10, 3.11.
+  * Drop support for Python 2.7, 3.5, 3.6.
+  * Drop support for deprecated ``python setup.py test``.
+
+  * Extracted new SimpleLockFile that removes implicit behavior
+    writing to the lock file, and instead allows a subclass to
+    define that behavior.
+  * SimpleLockFile and thus LockFile are now new-style classes. Any
+    clients relying on LockFile being an old-style class will need
+  * Stop logging failure to acquire locks. Clients can do that if
+- Initial Package, Version 1.0.0</comment>
+    <requestid>1135598</requestid>
+  </revision>
 </revisionlist>

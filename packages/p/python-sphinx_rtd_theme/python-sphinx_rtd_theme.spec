@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-sphinx_rtd_theme%{psuffix}
-Version:        1.3.0
+Version:        2.0.0
 Release:        0
 Summary:        ReadTheDocs.org theme for Sphinx
 License:        Apache-2.0 AND MIT AND OFL-1.1

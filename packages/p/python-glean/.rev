@@ -79,4 +79,41 @@
     <comment></comment>
     <requestid>914856</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8df29dc12d35d94ec1214b0962b4726e</srcmd5>
+    <version>1.23.0</version>
+    <time>1704659985</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.23.0:
+  * redhat-ish platforms: refactor simplification of interface
+    writing
+  * tests: stub out fields
+  * testing: add vexxhost sample config
+  * redhat-ish platforms: handle ipv6\_slaac metadata
+  * redhat-ish platforms: use IPV6\_DEFAULTGW
+  * redhat-ish platforms: write out ipv6 configuration
+  * tests: symlink same files together
+  * \_network\_info: refactor to add ipv4 info at the end
+  * \_network\_info: Clean up TYPE=Ethernet handling
+  * write\_redhat\_interfaces: pass multiple networks to output
+    functions
+  * write\_redhat\_interfaces: refactor to walk interfaces first
+  * Revert &quot;Add option to ignore config drive interfaces info&quot;
+  * Handle udev move events in addition to add events
+  * Install older voluptuous on py27 due to import error
+  * Remove rebuild-test-output.sh
+  * Add Rocky Linux support
+  * distro: sync to 3.6
+  * testing: drop centos-8, add 8-stream and 9-stream
+  * Remove debian-stable, add focal/bullseye testing
+  * Remove Fedora 32 job
+  * Cleanup glean.sh variable names
+  * Run a glean-early service to mount configdrive
+  * Create &quot;legacy&quot; script path
+  * Stop requiring /usr/local/bin links for glean.sh
+  * Move to Zuul standard hacking rules
+  * Update hacking and fix pep8 violations
+  * Fix Gentoo &quot;is&quot; comparisons</comment>
+    <requestid>1137293</requestid>
+  </revision>
 </revisionlist>

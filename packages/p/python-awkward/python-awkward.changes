@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Dec 15 16:14:10 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.5.1:
+  * feat: add enforce_concatenated_form
+    (gh#scikit-hep/awkward#2860).
+  * feat: add Form.is_equal_to (gh#scikit-hep/awkward#2862).
+  * feat: Implement Indexed builder (gh#scikit-hep/awkward#2883).
+  * fix: ufunc handling of attrs (gh#scikit-hep/awkward#2837).
+  * fix: only compare scalars in full_like
+    (gh#scikit-hep/awkward#2857).
+  * fix: Array.__getitem__ should set attrs on result
+    (gh#scikit-hep/awkward#2866).
+  * fix: errors in existing cuda_kernels
+    (gh#scikit-hep/awkward#2877).
+  * fix: register Numba in test (gh#scikit-hep/awkward#2879).
+  * fix: failing tests after #2877 (gh#scikit-hep/awkward#2886).
+  * fix: support revertable for concatenate in pyarrow logic
+    (gh#scikit-hep/awkward#2889).
+- Bump required version of python-awkward-cpp to 27.
+
+-------------------------------------------------------------------
 Wed Nov 22 13:44:35 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update required version for python-awkward-cpp to 26.

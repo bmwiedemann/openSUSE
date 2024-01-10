@@ -59,7 +59,7 @@ index 380288ca4..9839cb19c 100644
  }
  
  static void
-@@ -258,6 +263,186 @@ AddVTAtoms(CallbackListPtr *pcbl, void *data, void *screen)
+@@ -258,6 +263,189 @@ AddVTAtoms(CallbackListPtr *pcbl, void *data, void *screen)
                     "Failed to register VT properties\n");
  }
  
@@ -89,6 +89,9 @@ index 380288ca4..9839cb19c 100644
 +        int y;
 +    } *outputConfigs;
 +    int outputConfigsCount = 0, outputConfigsUsed = 0;
++
++    if (!dixPrivateKeyRegistered(rrPrivKey))
++        return;
 +
 +    pMasterScrPriv = rrGetScrPriv(pMasterScreen);
 +    if (!pMasterScrPriv)

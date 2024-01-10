@@ -71,4 +71,21 @@
     <comment></comment>
     <requestid>950925</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>45967439225530f07ddef20e44d83dc1</srcmd5>
+    <version>1.0.25.1</version>
+    <time>1702673163</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.25.1:
+  * Introduced use_kerberos keyword to allow Kerberos authentication
+  * Added new test cases to verify setxattr() input and getxattr()
+    output
+  * smbc/context.c: Fix PY_MAJOR_VERSION define
+
+- Remove python2 guard so we always Provide/Obsolete the old name.
+- Add pkgconfig to BuildRequires to fix build
+- Add python-smbc-pkg-config.patch, fixes build with samba 4.
+- Fix build with python 2.7, by fixing a filename in the file list.</comment>
+    <requestid>1133194</requestid>
+  </revision>
 </revisionlist>

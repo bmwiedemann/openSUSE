@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Sun Dec 24 09:21:51 UTC 2023 - Boris Manojlovic <boris@steki.net>
+
+- updated to latest release 6.0.25
+- fixes for bsc#1218199 (CVE-2023-32727), bsc#1218185 (CVE-2023-32725),bsc#1218193 (CVE-2023-32726)
+- New Features and Improvements
+  + ZBXNEXT-8857 Updated max supported TimescaleDB version to 2.13
+  + ZBXNEXT-8800 Backported support of additional SSH options for ssh.run[] item as the 5th parameter
+  + ZBXNEXT-8705 Implemented new tablespace item to retrieve percentage about
+    current tablespace usage from max for both Oracle templates
+  + ZBXNEXT-8708 Added version metric to Oracle plugin in Zabbix agent 2
+  + ZBXNEXT-8729 Updated max supported TimescaleDB version to 2.12
+  + ZBXNEXT-8522 Added HPE iLO by HTTP template
+  + ZBXNEXT-7486 Added openshift-state-metrics in Kubernetes cluster state by HTTP
+  + ZBXNEXT-8552 Added FortiGate by SNMP and FortiGate by HTTP templates
+  + ZBXNEXT-8727 Added additional metrics in Cisco Meraki organization by HTTP template
+  + ZBXNEXT-7097 Added item and trigger for monitoring PostgreSQL version into PostgreSQL
+    by ODBC and PostgreSQL by Zabbix agent 2 templates
+  + ZBXNEXT-8283 Implemented role-based authentication for AWS monitoring
+  + ZBXNEXT-8575 Added Nextcloud template
+  + ZBXNEXT-8469 Increased PostgreSQL maximum supported version to 16
+  + ZBXNEXT-8714 Increased MariaDB maximum supported version to 11.1
+- Bug Fixes
+  + ZBX-23559 Fixed SLI dropping when maintenance is set with pre-existing problem
+  + ZBX-23471 Fixed sha256 sum calculation on AIX, HP-UX and Solaris, fixed crash on HP-UX
+  + ZBX-23787,ZBX-23755 Fixed crash on empty HTTP response;
+    fixed Zabbix agent build on Windows with libcurl
+  + ZBX-23683 Fixed calculation of vmware.datastore.read/write items taking into
+    account VMware HV maintenance status
+  + ZBX-21132 Fixed Top hosts widget not showing all items by selected item name
+  + ZBX-23764 Added an additional field for new events in SIGNL4 media type
+  + ZBX-23342 Fixed Zabbix agent 2 MySQL plugin connection not taking into account TLS parameters
+  + ZBX-23685 Added read-only transaction to the list of recoverable errors on PostgreSQL
+  + ZBX-23580 Fixed aggregated item key conversion to calculated item formula when
+    item key includes 'last' function and a fourth parameter
+  + ZBX-22493 Fixed foreign key support with SQLite3 database
+  + ZBX-23490 Improved HTTP agent, web scenarios, web checks and JavaScript to convert to UTF-8
+    from charset specified in HTTP header or HTTP meta tag
+  + ZBX-23621 Fixed SNMP discovery looping forever with empty trend response
+  + ZBX-23644 Fixed Zabbix agent compilation on AIX
+  + ZBX-23525 Fixed template tab name in template configuration form
+  + ZBX-23620 Reordered sub-templates in READMEs of Acronis, Control-M and Openstack templates
+  + ZBX-23381 Fixed unit for FreeStorageSpace metric in JavaScript AWS RDS instance by HTTP template
+  + ZBX-23269 Fixed sizes of loading modal windows
+  + ZBX-22400 Fixed Web scenarios configuration form to display parent web scenarios on page refresh
+  + ZBX-23290 Fixed gap when filtering by tags in Latest data
+  + ZBX-23430 Fixed selected filter tab in high contrast themes being indistinguishable from others when collapsed
+  + ZBX-23639 Changed value type for 'Pool Percent Used' item prototype in Ceph by Zabbix agent 2 template
+  + ZBX-21891 Fixed messages about enabling, disabling and updating modules being different from other places
+  + ZBX-23521 Fixed password field label not changing to key passphrase and
+    back for SSH agent item when changing authentication method
+  + ZBX-23431 Fixed non-working "Network timeout for item test" setting
+  + ZBX-23285 Added missing bottom border for disabled button dropdown on hover for inherited macros
+  + ZBX-23615 Fixed receiving data from the database twice the first time it is loaded
+  + ZBX-19531 Fixed tables with header text vertical rotation
+  + ZBX-23235 Fixed function macros to expand in notifications
+  + ZBX-23173 Fixed memory leak in agent 2 for Windows Events processing on MS Windows
+  + ZBX-23265 Fixed transfer of PSK encryption details when cloning proxy
+  + ZBX-23563 Fixed JSONPath for rowshare locks metric in PostgreSQL by Zabbix agent 2 template
+  + ZBX-22907 Removed unused LLD macro in PostgreSQL by Zabbix agent template
+  + ZBX-23377 Added support for VMware perfCounter with nanosecond type
+  + ZBX-23012 Possible optimization of the SQL queries when updating LLD items
+  + ZBX-23325 Fixed ability to add duplicate ICMP ping checks to discovery rule configuration form via popup
+  + ZBX-23270 Renamed trigger name condition to event name condition
+  + ZBX-23340 Fixed TLS parameter handling in MySQL plugin for Zabbix agent 2
+  + ZBX-23461 Fixed output of redundant data in DCdump_interfaces
+  + ZBX-23528 Fixed inability to resize trigger expression field horizontally
+  + ZBX-22977 Fixed positioning of hidden checkbox inputs and fixed autofocus in template/host mass update
+  + ZBX-23494 Added SNMP fallback item to TrueNAS by SNMP template, updated
+    uptime item and template descriptions, added preprocessing to free swap percentage calculation
+  + ZBX-23404 Fixed Zabbix agent crashes on HP-UX 11.23
+  + ZBX-22666 Disabled severity filter for Geomap widget in dashboard edit mode
+  + ZBX-22735 Fixed confusing error message on user parameter reload in Zabbix agent 2
+  + ZBX-23393 Fixed unquoted macro parsing in trigger function parameters
+  + ZBX-23064 Simplified trend synchronization queries to improve performance
+  + ZBX-23373 Fixed result for script.get API call with selectActions option
+  + ZBX-23014 Fixed Zabbix agent build on HP-UX
+  + ZBX-23164 Added timespan parameter in JavaScript Cisco Meraki template
+  + ZBX-23455 Fixed inconsistency in button naming, confirmation messages,
+    success and error messages in item and web scenario list pages
+  + ZBX-20038 Fixed master host parameter for MySQL replication.get_slave_status key in Zabbix agent 2
+  + ZBX-23301 Removed checks for PostgreSQL-TimescaleDB versions combination
+  + ZBX-23211 Fixed host dashboard view for multi-page dashboard where the first page is empty
+
+-------------------------------------------------------------------
 Tue Oct 17 20:03:33 UTC 2023 - Boris Manojlovic <boris@steki.net>
 
 - updated to latest upstream release 6.0.22

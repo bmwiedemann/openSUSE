@@ -845,4 +845,78 @@ eplacement for google-api-python-client, follow our naming convention</comment>
     <comment></comment>
     <requestid>1128300</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>94d5f63359e69969c75dd7fdfa18db91</srcmd5>
+    <version>2.111.0</version>
+    <time>1702845142</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.111.0:
+  * Add support for Python 3.12 (#2288)
+  * **aiplatform:** Update the api
+  * **alloydb:** Update the api
+  * **androidpublisher:** Update the api
+  * **baremetalsolution:** Update the api
+  * **batch:** Update the api
+  * **bigquery:** Update the api
+  * **cloudbilling:** Update the api
+  * **clouddeploy:** Update the api
+  * **connectors:** Update the api
+  * **container:** Update the api
+  * **datacatalog:** Update the api
+  * **dataflow:** Update the api
+  * **dns:** Update the api
+  * **gkehub:** Update the api
+  * **gkeonprem:** Update the api
+  * **metastore:** Update the api
+  * **monitoring:** Update the api
+  * **networkmanagement:** Update the api
+  * **networksecurity:** Update the api
+  * **networkservices:** Update the api
+  * **playdeveloperreporting:** Update the api
+  * **pubsub:** Update the api
+  * **script:** Update the api
+  * **securitycenter:** Update the api
+  * **vpcaccess:** Update the api
+  * Replace deprecated utcnow, utcfromtimestamp (#2286)
+
+- Update to version 2.70.0</comment>
+    <requestid>1133646</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>1aacddc31c5a170acc31ea095f6e8e78</srcmd5>
+    <version>2.112.0</version>
+    <time>1704487485</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.112.0:
+  * **accesscontextmanager:** Update the api
+  * **admin:** Update the api
+  * **aiplatform:** Update the api
+  * **alloydb:** Update the api
+  * **apigee:** Update the api
+  * **artifactregistry:** Update the api
+  * **backupdr:** Update the api
+  * **chat:** Update the api
+  * **checks:** Update the api
+  * **chromepolicy:** Update the api
+  * **chromeuxreport:** Update the api
+  * **cloudbuild:** Update the api
+  * **cloudchannel:** Update the api
+  * **cloudfunctions:** Update the api
+  * **cloudprofiler:** Update the api
+  * **cloudsupport:** Update the api
+  * **connectors:** Update the api
+  * **container:** Update the api
+  * **dataflow:** Update the api
+  * **dataform:** Update the api
+  * **dataproc:** Update the api
+  * **dialogflow:** Update the api
+  * **discoveryengine:** Update the api
+  * **dlp:** Update the api
+  * **drivelabels:** Update the api
+  * **firebaseappdistribution:** Update the api
+  * **gkehub:** Update the api
+  * **gmail:** Update the api
+  * **healthcare:** Update the api</comment>
+    <requestid>1137006</requestid>
+  </revision>
 </revisionlist>

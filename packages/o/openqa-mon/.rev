@@ -77,4 +77,32 @@
 * Bump dependency versions (forwarded request 1101177 from ph03nix)</comment>
     <requestid>1101211</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d77f8124f9d96c53dcacc0e0ac45c1d4</srcmd5>
+    <version>1.2.0</version>
+    <time>1703281292</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.2.0:
+  * Bump version to 1.2.0
+  * Add temporary status fields
+  * Refactor style suggestions
+  * Display reviewed jobs in summary as reviewed
+  * Bump golang.org/x/crypto from 0.13.0 to 0.17.0
+  * Rename jeos, wicked, wsl
+  * Update QE-C configuration files
+  * Bump actions/setup-go from 4 to 5
+  * Separate SLEM for PC from SLEM
+  * Update dependencies
+  * Set lastest state of job groups to config
+  * Bump actions/checkout from 2 to 4
+- Update to version 1.1.0:
+  * Bump version to 1.1.0
+  * Add failsafe to not open more than 10 links
+  * Follow jobs
+  * Update the SLEM review
+  * Add ALP example config
+  * Add reconnect handler for RabbitMQ
+- Add changesgenerate to service file (forwarded request 1134388 from ph03nix)</comment>
+    <requestid>1134567</requestid>
+  </revision>
 </revisionlist>

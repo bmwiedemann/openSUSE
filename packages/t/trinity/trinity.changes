@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jan  9 09:06:32 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.9+git.20230710:
+  * ioctls/drm: fix DRM_MGA check (#45)
+  * ioctls/drm: check i810,mga,r128 and savage support (#44)
+  * update i386 syscall list
+  * Avoid array access out of bounds error during initialzation of fd providers. (#43)
+  * kvm: drop KVM_SET_MEMORY_REGION (#42)
+- Switch _service to manual
+- Drop upstreamed 0001-kvm-drop-KVM_SET_MEMORY_REGION.patch
+
+-------------------------------------------------------------------
 Thu Mar 16 09:48:44 UTC 2023 - jslaby@suse.cz
 
 - Update to version 1.9+git.20230109:

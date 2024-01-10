@@ -1,8 +1,8 @@
-Index: subversion-1.14.2/Makefile.in
+Index: subversion-1.14.3/Makefile.in
 ===================================================================
---- subversion-1.14.2.orig/Makefile.in
-+++ subversion-1.14.2/Makefile.in
-@@ -738,7 +738,6 @@ doc-api: mkdir-init
+--- subversion-1.14.3.orig/Makefile.in
++++ subversion-1.14.3/Makefile.in
+@@ -741,7 +741,6 @@ doc-api: mkdir-init
  doc-javahl:
  	$(JAVADOC) -d $(abs_builddir)/doc/javadoc \
  	  -sourcepath $(top_srcdir)/subversion/bindings/javahl/src \

@@ -70,4 +70,22 @@
     <comment></comment>
     <requestid>1121288</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5889b9533dd69ef2fea16199e9af7515</srcmd5>
+    <version>2023.11.29</version>
+    <time>1703800494</time>
+    <user>anag+factory</user>
+    <comment>- update to 2023.11.13:
+  * Update release.yml
+  * Added PySimpleGUI versions 4 and 5 as a Framework
+  * Add Odoo 17 trove classifier
+
+  * fix: incorrect specification of mypy section in pyproject.toml
+  * Add classifier for Wagtail 5
+  * Add Pycsou Framework trove-classifier
+- Update to v2022.12.1
+- Update to v2022.10.19
+- Update to version 2022.9.26</comment>
+    <requestid>1135340</requestid>
+  </revision>
 </revisionlist>

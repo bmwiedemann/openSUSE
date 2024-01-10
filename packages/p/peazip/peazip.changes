@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Dec 22 06:31:46 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 9.6.0:
+  BACKEND
+    * Pea 1.16
+  CODE
+    * All scripts are now exported as UTF-8 encoded files, without BOM
+    * Improved integrity self-checking of app's binaries
+    * Libraries (.dll, .so, etc) and sfx modules are now checked (as for executables, matching SHA256 hash values with whitelisted known values)
+  FILE MANAGER
+    * Improved file / archive manager
+    * Added an icon-only Compact sidebar displaying links to most commonly used system paths
+    * Compact side bar can be set visible / hidden separately from the main Side bar
+    * The Compact side bar is mainly meant for use when Side bar is hidden or in tree view mode
+    * Improved browsing archives with some specific TOC issues (duplicated entries for same item, duplicates names with different cases)
+    * Improved smart sorting of file names
+    * Improved theming
+    * All alternative tab styles (Button, Links, and Tabs) can now ne either centered or left aligned
+    * Link tab style is now rendered with graphic as the other styles
+    * Introduced profiles to store all configuration data (everything in conf path - except Profiles subfolder) to be loaded / saved in a single pass, either for different users or for different purposes, or to easily export all the conf data to another machine
+    * Profiles are stored as *.profile.7z archives in "Profiles" subfolder in conf path and can be optionally encrypted with password/keyfile
+    * It is possible to load / save profiles from main menu, Options
+    * Various fixes and improvements
+    * Fixed breadcrumb issues in full screen and immersive modes
+    * Improved handling encrypted ARC files
+    * Browsing ARC archive with encrypted filenames now correctly triggers password request
+    * Extraction from context menu now correctly triggers password request, and can be terminated by the user if wrong password is provided
+    * Input name and path is now correctly reported during archiving / extraction / list / test operations
+  EXTRACTION and ARCHIVING
+    * Improved archives extraction, "Extract then move to destination" is not applied when extracting to new folder, as naming conflict analysis is not needed
+
+-------------------------------------------------------------------
 Wed Aug 30 05:57:55 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 9.4.0:

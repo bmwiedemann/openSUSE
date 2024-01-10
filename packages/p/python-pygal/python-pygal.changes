@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Dec 14 21:24:19 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.4:
+  * Missing declaration of importlib_metadata dependency in setup.py
+  * Failure with tox due to missing README.md
+  * Misused entry_points causing failure with Python 3.12
+  * Prevent installing with Python versions < 3.8
+  * Replace unmaintained pytest-flake8 with plain flake8
+  * Remove Iterable import deprecation warning
+  * Remove invalid escape sequence warnings in tests
+  * Fix test failures due to removed pytest attribute
+  * Fix linting errors with latest isort and flake8
+- use packaged COPYING
+
+-------------------------------------------------------------------
 Fri Apr 21 12:30:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
@@ -12,7 +27,7 @@ Thu Apr 13 22:43:40 UTC 2023 - Matej Cepl <mcepl@suse.com>
 Wed Feb  1 22:46:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - skip python 2.x (no longer supported) and enable CairoSVG
-  for all python flavors not just the main one 
+  for all python flavors not just the main one
 
 -------------------------------------------------------------------
 Thu Dec  9 10:19:36 UTC 2021 - Matej Cepl <mcepl@suse.com>

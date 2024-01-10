@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan  4 09:08:45 UTC 2024 - cloud-devel@suse.de
+
+- update to version 4.3.0
+  - Imported Translations from Zanata
+  - Moves supported python runtimes from version 3.8 to 3.10
+  - Revert "Moves supported python runtimes from version 3.8 to 3.10"
+  - Update master for stable/2023.1
+  - Update master for stable/2023.2
+  - Add PBM WSDL for vSphere 8.0
+  - Bump bandit and make oslo.messaging compatible with latest rules
+
+-------------------------------------------------------------------
 Mon Mar  6 15:49:40 UTC 2023 - cloud-devel@suse.de
 
 - update to version 4.1.1

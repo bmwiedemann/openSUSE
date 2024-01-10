@@ -34,6 +34,8 @@ Patch2:         libsoup2-extend-test-cert.patch
 Patch3:         https://gitlab.gnome.org/GNOME/libsoup/-/commit/4d12c3e5.patch
 # PATCH-FIX-UPSTREAM 48b3b611.patch -- lib: Add names to various GSources
 Patch4:         https://gitlab.gnome.org/GNOME/libsoup/-/commit/48b3b611.patch
+# PATCH-FIX-UPSTREAM ced3c5d8.patch -- Fix build with libxml2-2.12.0 and clang-17
+Patch5:         https://gitlab.gnome.org/GNOME/libsoup/-/commit/ced3c5d8.patch
 
 BuildRequires:  glib-networking
 BuildRequires:  meson >= 0.50

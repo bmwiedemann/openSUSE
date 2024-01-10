@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2013 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,14 +27,16 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-zope.configuration%{psuffix}
-Version:        4.4.1
+Version:        5.0
 Release:        0
 Summary:        Zope Configuration Markup Language (ZCML)
 License:        ZPL-2.1
 Group:          Development/Languages/Python
 URL:            http://www.python.org/pypi/zope.configuration
 Source:         https://files.pythonhosted.org/packages/source/z/zope.configuration/zope.configuration-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-zope.i18nmessageid

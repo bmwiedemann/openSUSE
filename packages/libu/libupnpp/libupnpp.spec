@@ -1,7 +1,7 @@
 #
 # spec file for package libupnpp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define so_ver  12
+%define so_ver  16
 Name:           libupnpp
-Version:        0.22.2
+Version:        0.25.0
 Release:        0
 Summary:        Library providing a higher level API over libnpupnp or libupnp
 License:        GPL-2.0-or-later
@@ -31,7 +31,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(libcurl)
-BuildRequires:  pkgconfig(libnpupnp) >= 5.0.0
+BuildRequires:  pkgconfig(libnpupnp) >= 6.0.0
 
 %description
 Libupnpp is a C++ wrapper for libupnp a.k.a Portable UPnP (up to branch 0.17),

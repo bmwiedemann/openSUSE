@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec 19 10:53:05 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Disable RDP support for the time being: vinagre has been archived
+  upstream and does not support freerdp 3.0. If you rely on RDP
+  connections, please switch to GNOME Connections.
+
+-------------------------------------------------------------------
 Mon Sep 20 20:21:08 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove obsolete translation-update-upstream support

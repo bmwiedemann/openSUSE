@@ -17,15 +17,14 @@
 
 
 %define lname   libKF5Activities5
-%define _tar_path 5.103
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
-# Only needed for the package signature condition
+%define qt5_version 5.15.2
 %bcond_without released
 Name:           kactivities5
-Version:        5.112.0
+Version:        5.113.0
 Release:        0
 Summary:        KDE Plasma Activities support
 License:        GPL-2.0-or-later
@@ -35,21 +34,19 @@ Source:         kactivities-%{version}.tar.xz
 Source1:        kactivities-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
-BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
+BuildRequires:  extra-cmake-modules >= %{_kf5_version}
 BuildRequires:  fdupes
-BuildRequires:  kf5-filesystem
 BuildRequires:  libboost_headers-devel
-BuildRequires:  xz
-BuildRequires:  cmake(KF5Config) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5CoreAddons) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5WindowSystem) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(Qt5Core) >= 5.15.0
-BuildRequires:  cmake(Qt5DBus) >= 5.15.0
-BuildRequires:  cmake(Qt5Gui) >= 5.15.0
-BuildRequires:  cmake(Qt5Qml) >= 5.15.0
-BuildRequires:  cmake(Qt5Quick) >= 5.15.0
-BuildRequires:  cmake(Qt5Sql) >= 5.15.0
-BuildRequires:  cmake(Qt5Test) >= 5.15.0
+BuildRequires:  cmake(KF5Config) >= %{_kf5_version}
+BuildRequires:  cmake(KF5CoreAddons) >= %{_kf5_version}
+BuildRequires:  cmake(KF5WindowSystem) >= %{_kf5_version}
+BuildRequires:  cmake(Qt5Core) >= %{qt5_version}
+BuildRequires:  cmake(Qt5DBus) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Gui) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Qml) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Quick) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Sql) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Test) >= %{qt5_version}
 
 %description
 Kactivities provides an API for using and interacting with the Plasma Activities Manager.
@@ -77,8 +74,7 @@ QML imports.
 %package devel
 Summary:        KDE Plasma Activities support
 Requires:       %{lname} = %{version}
-Requires:       extra-cmake-modules >= 1.7.0
-Requires:       cmake(Qt5Core) >= 5.15.0
+Requires:       cmake(Qt5Core) >= %{qt5_version}
 
 %description devel
 Kactivities provides an API for using and interacting with the Plasma Activities Manager.

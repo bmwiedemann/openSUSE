@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Dec 31 04:38:23 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to 1.10:
+  * RISC OS: push backtrace extensions into Makefile.gcc
+  * makefiles: move __postshared after all
+  * makefiles/Makefile.top: dependencies for PRE_ and POST_TARGETS
+  * makefiles: support building shared libs on Darwin
+  * RISC OS: support gnueabi as well as gnueabihf
+  * Tweak RISC OS host detection for new tooling
+  * makefiles: Use install -C by default
+
+-------------------------------------------------------------------
 Wed Aug 26 12:08:36 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch to not expect which to be in /bin:

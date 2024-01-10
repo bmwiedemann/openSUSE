@@ -45,4 +45,20 @@
     <comment>py38 fix</comment>
     <requestid>783205</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>39b8bf5b85fc9f9fbb48115dc9c8e4b2</srcmd5>
+    <version>1.6.0</version>
+    <time>1704660064</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.6.0:
+  * PyOtherSide now supports Qt 6 while retaining source
+    compatibility with Qt 5.
+  * PyGLArea is currently broken with Qt 6, use PyFBO
+    instead.
+
+- update plugins.qmltypes (commit 067e3a6 on 27 Aug 2018)
+- disable qtquicktests (debug files)
+- cleanup spec file</comment>
+    <requestid>1137428</requestid>
+  </revision>
 </revisionlist>

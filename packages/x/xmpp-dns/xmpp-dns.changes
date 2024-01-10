@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec 26 08:10:24 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.3.10:
+  * Fix stream initialization bug with StartTLS
+  * Further improve StartTLS stream initialization.
+  * Improve error messages when server closes connection.
+
+-------------------------------------------------------------------
 Fri Nov 10 19:29:21 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.3.9:

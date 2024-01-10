@@ -1,0 +1,12 @@
+Index: jsonpickle-3.0.2/tests/ecdsa_test.py
+===================================================================
+--- jsonpickle-3.0.2.orig/tests/ecdsa_test.py
++++ jsonpickle-3.0.2/tests/ecdsa_test.py
+@@ -7,6 +7,7 @@ import pytest
+ from helper import SkippableTest
+ 
+ import jsonpickle
++import jsonpickle.ext.gmpy
+ 
+ 
+ @pytest.fixture(scope='module', autouse=True)

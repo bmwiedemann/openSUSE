@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,6 @@ Source0:        https://files.pythonhosted.org/packages/source/p/pdm/pdm-%{versi
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module importlib-metadata if %python-base <= 3.9}
 BuildRequires:  %{python_module pdm-backend}
-BuildRequires:  %{python_module pdm-pep517 >= 1.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

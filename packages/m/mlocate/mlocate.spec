@@ -1,7 +1,7 @@
 #
 # spec file for package mlocate
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ Summary:        A utility for finding files by name
 License:        GPL-2.0-only
 Group:          System/Monitoring
 URL:            https://pagure.io/mlocate
-Source0:        https://fedorahosted.org/releases/m/l/%{name}/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
 Source1:        updatedb.conf
 Source2:        sysconfig.locate
 # apparmor profile

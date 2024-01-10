@@ -49,6 +49,7 @@ Patch3:         opensuse-version-checks.patch
 Patch4:         kubeadm-opensuse-flexvolume.patch
 # Patch to revert renaming of coredns image location to match how it's done on download.opensuse.org
 Patch5:         revert-coredns-image-renaming.patch
+Patch6:         kubernetes-trimpath.patch
 BuildRequires:  fdupes
 BuildRequires:  git
 BuildRequires:  go >= 1.20.10
@@ -224,6 +225,7 @@ Fish command line completion support for %{name}-client.
 %patch3 -p1
 %patch4 -p0
 %patch5 -p1
+%patch6 -p1
 
 %build
 # This is fixing bug bsc#1065972

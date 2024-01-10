@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Dec 11 08:51:46 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 23.4.3:
+  * Fix many Coverity code issues
+  * fix hdr cpu timeing long latency issue
+  * Add BGRP format support
+  * Reshape oversized buffer to texture on Small bar environment
+  * fix RGB565 output width issue
+  * XRGB force to do swizzle for AVC/HEVC
+  * Fix cm rt leak
+  * [Encode] fix slc header size issue
+  * [CM] Fix coverity CM resource leak issue
+
+-------------------------------------------------------------------
 Mon Dec  4 12:08:31 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - This includes latest version of one of the components needed for

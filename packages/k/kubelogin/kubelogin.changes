@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Jan 07 17:50:50 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.1.0:
+  * v0.1.0 release (#388)
+  * Bump github.com/google/uuid from 1.4.0 to 1.5.0 (#383)
+  * fix: downgrade reuqired go version (#386)
+  * Bump go.uber.org/mock from 0.3.0 to 0.4.0 (#385)
+  * Bump github.com/Azure/azure-sdk-for-go/sdk/azcore from 1.8.0 to
+    1.9.1 (#372)
+  * Bump github.com/golang-jwt/jwt/v5 from 5.0.0 to 5.2.0 (#370)
+  * Bump golang.org/x/crypto from 0.14.0 to 0.17.0 (#378)
+  * Bump github.com/spf13/cobra from 1.7.0 to 1.8.0 (#359)
+  * [library usage] Implement library token provider (#380)
+  * [library usage] Refine internal token types (#379)
+  * [library usage] Update module version usages (#377)
+  * [library usage] Move modules under `pkg` to `pkg/internal`
+    (#376)
+
+-------------------------------------------------------------------
 Sun Dec 03 18:52:05 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.0.34:

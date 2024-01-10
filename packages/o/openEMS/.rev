@@ -87,4 +87,22 @@
     <comment></comment>
     <requestid>658622</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0c5e1f0cde3a90078d2b8dbe99f1bf70</srcmd5>
+    <version>0.0.36</version>
+    <time>1704289995</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.0.36
+- Drop obsolete/upstream patches:
+  * 0001-Fix-linking-for-VTK-6.3.patch
+  * 0005-Fix-build-with-HDF5.patch
+  * 0006-Add-missing-return-statement.patch
+  * 0001-Fix-build-error-due-to-ambigous-overload-of-isnan-is.patch
+  * 0001-Guard-xmmintrin.h-include-so-it-is-only-used-when-ne.patch
+- More spec file cleanup:
+  * Drop Leap 42.x conditionals
+  * Update URL to use https
+</comment>
+    <requestid>1136043</requestid>
+  </revision>
 </revisionlist>

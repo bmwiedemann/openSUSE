@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
+Fri Dec 15 22:46:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.1.1:
+  * https://github.com/robotframework/robotframework/blob/master/doc/releasenotes/rf-6.1.rst
+
+-------------------------------------------------------------------
 Wed Dec  7 22:22:26 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 6.0.1 
+- Update to version 6.0.1
   * Robot Framework 6.0.1 is the first bug fix release in the RF 6.0 series.
     It mainly fixes a bug in using localized BDD prefixes consisting of more than one word (#4515) as well as a regression
     related to the library search order (#4516).
@@ -27,7 +33,7 @@ Wed Dec  7 22:22:26 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 -------------------------------------------------------------------
 Sat Oct 29 00:32:45 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to 6.0.0 
+- Update to 6.0.0
   Most important enhancements
   * Localization
   * Enhancements to using keywords with embedded arguments
@@ -67,13 +73,13 @@ Tue Oct 11 01:55:27 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
   * Regression using `TypedDict` as type hint
   * Continue-on-failure mode can be controlled using tags
   * Python 3.10 support
-  * Catching exceptions with `EXCEPT` 
+  * Catching exceptions with `EXCEPT`
 - Remove pointless BuildRequires on python
 
 -------------------------------------------------------------------
 Wed Oct  7 13:34:10 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
-- switch to pypi tarball 
+- switch to pypi tarball
 
 -------------------------------------------------------------------
 Tue Sep 29 19:50:04 UTC 2020 - Flávio Ramalho <framalho@suse.com>
@@ -141,7 +147,7 @@ Fri Sep 11 13:43:05 UTC 2020 - framalho@suse.com
   * Changes from 3.1.2:
     Fixes:
     * Creating scalar variables in resource files with custom separator
-    * Using keywords accepting embedded arguments when library is imported multiple times using the WITH 
+    * Using keywords accepting embedded arguments when library is imported multiple times using the WITH
       NAME syntax
     * The Tidy tool both handles new style for loops (FOR ... END) correctly and converts old style loops
       (:FOR ... \ ...) to new style loops automatically

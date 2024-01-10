@@ -1,7 +1,7 @@
 #
 # spec file for package nftables
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,11 @@
 #
 
 
+# configure subpackage rewriter for the python3XX-nftables bindings
+%define python_subpackage_only 1
+# check py/src/nftable.py:NFTABLES_VERSION
+%define pyversion 0.1
+
 Name:           nftables
 Version:        1.0.9
 Release:        0
@@ -28,7 +33,9 @@ URL:            https://netfilter.org/projects/nftables/
 Source:         http://ftp.netfilter.org/pub/%name/%name-%version.tar.xz
 Source2:        http://ftp.netfilter.org/pub/%name/%name-%version.tar.xz.sig
 Source3:        %name.keyring
+Source4:        nftables.rpmlintrc
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  asciidoc
 BuildRequires:  bison
@@ -78,15 +85,17 @@ This package contains the header files for the library.
 %package -n python-nftables
 Summary:        Python bindings for nftables
 Group:          Development/Languages/Python
-Conflicts:      python3-nftables
 # uses dlopen
 Requires:       libnftables1
+BuildArch:      noarch
 
 %description -n python-nftables
 Python bindings for nftables
 
 %prep
 %autosetup -p1
+# remove unused shebang
+sed -i '1{/bin/d}' py/src/nftables.py
 
 %build
 autoreconf -fi
@@ -119,7 +128,7 @@ mv -v "$b/%_datadir/nftables"/*.nft "$b/%_docdir/%name/examples/"
 %post   -n libnftables1 -p /sbin/ldconfig
 %postun -n libnftables1 -p /sbin/ldconfig
 
-%files -n nftables
+%files
 %license COPYING
 %_sysconfdir/nftables/
 %_sbindir/nft
@@ -130,13 +139,14 @@ mv -v "$b/%_datadir/nftables"/*.nft "$b/%_docdir/%name/examples/"
 %files -n libnftables1
 %_libdir/libnftables.so.1*
 
-%files -n nftables-devel
+%files devel
 %_includedir/%name/
 %_libdir/libnftables.so
 %_libdir/pkgconfig/*.pc
 %_mandir/man3/*.3*
 
-%files %{python_files}
-%{python_sitelib}/nftables*
+%files %{python_files nftables}
+%{python_sitelib}/nftables
+%{python_sitelib}/nftables-%{pyversion}.dist-info
 
 %changelog

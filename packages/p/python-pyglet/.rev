@@ -273,4 +273,41 @@
     <comment></comment>
     <requestid>1117152</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>fb6261a67499797635fe700cb44ba4e9</srcmd5>
+    <version>2.0.10</version>
+    <time>1702673314</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.0.10:
+  * sprite: moving Sprites is now about 35% faster (as tested on
+    R5 5600X)
+  * gui: Add TextEntry.focus property to allow programmatic focus
+    control
+  * gui: Allow set TextEntry.width and TextEntry.height
+  * Window: Add experimental Window.get_clipboard_text and
+    Window.set_clipboard_text methods
+  * experimental: Add new pyglet.experimental package for easier
+    wider testing of new ideas
+  * experimental: Add `geoshader_sprite.py` that is more complex,
+    but faster than the standard Sprite
+  * experimental: Add `net` module with Server/Client proof of
+    concept
+  * tests: Add new interactive spot test to visually confirm
+    shapes are working as expected
+  * shapes: Move rotate functionality to ShapeBase class, and
+    allow all shapes to rotate
+  * VertexDomain: bind all buffers to VAO in __init__, and avoid
+    binding each draw
+  * gl.Context: Add a new cached `Context.create_program` method
+    to assist in shader reuse
+  * examples.model.fpscamera: fix drifting input, and other
+    improvements
+  * contrib.qt_sprite_preview.py: Modify to allow using either
+    PySide2 or PyQt5 (#959)
+  * examples: Carry over the soundspace example (#972)
+  * media: The &quot;Silent&quot; audio driver now behaves more like a real
+    driver
+  * text: Add RGB color setter fallback for HTML labels, assuming</comment>
+    <requestid>1133208</requestid>
+  </revision>
 </revisionlist>

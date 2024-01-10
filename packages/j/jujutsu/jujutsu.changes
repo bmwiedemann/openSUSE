@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Jan  7 15:42:43 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.13.0:
+  * Breaking changes
+    - `jj git fetch` no longer imports new remote branches as local
+      branches. Set `git.auto-local-branch = true` to restore the
+      old behavior.
+  * New features
+    - Information about new and resolved conflicts is now printed
+      by every command.
+    - `jj branch` has gained a new `rename` subcommand that allows
+      changing a branch name atomically. `jj branch help rename`
+      for details.
+  * Fixed bugs
+    - Command aliases can now be loaded from repository config
+      relative to the current working directory.
+      [#2414](https://github.com/martinvonz/jj/issues/2414)
+
+-------------------------------------------------------------------
 Wed Dec  6 12:15:35 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 0.12.0:

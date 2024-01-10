@@ -16,14 +16,14 @@
 #
 
 
-%define _tar_path 5.103
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
+%define qt5_version 5.15.2
 %bcond_without released
 Name:           kdesignerplugin
-Version:        5.112.0
+Version:        5.113.0
 Release:        0
 Summary:        Framework for integration of KDE frameworks widgets with Qt Designer
 License:        LGPL-2.1-or-later
@@ -33,14 +33,13 @@ Source:         %{name}-%{version}.tar.xz
 Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
-BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
-BuildRequires:  kf5-filesystem
-BuildRequires:  cmake(KF5Config) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5CoreAddons) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5DocTools) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(Qt5Core) >= 5.15.0
-BuildRequires:  cmake(Qt5Designer) >= 5.15.0
-BuildRequires:  cmake(Qt5LinguistTools) >= 5.15.0
+BuildRequires:  extra-cmake-modules >= %{_kf5_version}
+BuildRequires:  cmake(KF5Config) >= %{_kf5_version}
+BuildRequires:  cmake(KF5CoreAddons) >= %{_kf5_version}
+BuildRequires:  cmake(KF5DocTools) >= %{_kf5_version}
+BuildRequires:  cmake(Qt5Core) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Designer) >= %{qt5_version}
+BuildRequires:  cmake(Qt5LinguistTools) >= %{qt5_version}
 
 %description
 This framework provides plugins for Qt Designer that allow it to display
@@ -51,8 +50,7 @@ from ini-style description files.
 %package devel
 Summary:        Build environment for kdesignerplugin, a framework for integration of KDE frameworks widgets
 Requires:       %{name} = %{version}
-Requires:       extra-cmake-modules
-Requires:       cmake(Qt5Core) >= 5.15.0
+Requires:       cmake(Qt5Core) >= %{qt5_version}
 
 %description devel
 This framework provides plugins for Qt Designer that allow it to display

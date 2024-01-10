@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Dec  7 03:06:29 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.18.0
+   see /usr/share/doc/packages/perl-DBD-Pg/Changes
+
+  Version 3.18.0 (released December 6, 2023)
+
+   - Support new PQclosePrepared function, added in Postgres 17
+     [Greg Sabino Mullane]
+
+   - Better docs about ping always returning a value
+     (Github issue #121)
+
+-------------------------------------------------------------------
 Thu Aug 24 03:06:13 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.17.0

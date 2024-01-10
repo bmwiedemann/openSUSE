@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Dec 31 03:07:16 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.59
+   see /usr/share/doc/packages/perl-Digest-MD5/Changes
+
+  2.59 Sat Dec 30 2023
+  - Remove meaningless const type qualifier to silence HPUX builds.
+  - remove useless perl 5.6 check
+  - convert bits.t test to use Test::More
+  - Update Digest::MD5 Synopsis and Examples. Add `my` to synopsis
+  - MD5.xs: eliminate C++ guards
+
+-------------------------------------------------------------------
 Tue Oct  6 03:09:48 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.58

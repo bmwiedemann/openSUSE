@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 28 01:45:05 UTC 2023 - Yifan Jiang <yfjiang@suse.com>
+
+- Rebase tracker-miners-drop-syscalls-in-seccomp.patch
+
+-------------------------------------------------------------------
 Tue Nov 28 11:51:27 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -p N instead of deprecated %patchN.
@@ -51,7 +56,7 @@ Wed Aug 16 07:07:46 UTC 2023 - Rahul Jain <rahul.jain@suse.com>
 
 - Update 
   + Fix the tracker miner spec file to build for SLE_15
-  + Rebase patch: tracker-miners-drop-syscalls-in-seccomp.patch 
+  + Rebase patch: tracker-miners-drop-syscalls-in-seccomp.patch
 
 -------------------------------------------------------------------
 Fri Aug 11 10:56:34 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>

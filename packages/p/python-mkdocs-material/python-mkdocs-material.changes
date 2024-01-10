@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jan  7 18:23:14 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.5.3:
+  * Limited version range of MkDocs to < 1.6
+  * Updated Macedonian translations
+  * Fixed #6520: Group plugin crashes when using mike
+  * Fixed #6494: Hide author's email address if disabled in
+    git-authors plugin
+
+-------------------------------------------------------------------
 Mon Dec 11 17:44:53 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 9.5.2:
@@ -326,7 +336,7 @@ Wed Sep  6 15:01:52 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
     - Improved clarity of `site_url` warning in social plugin
     - Improved blog plugin to automatically setup directory
       structure
-    - Switched info plugin to `importlib` to mitigate deprecations 
+    - Switched info plugin to `importlib` to mitigate deprecations
     - Automatically download ResizeObserver polyfill when necessary
     - Automatically add iframe-worker polyfill when necessary in
       offline plugin

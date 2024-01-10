@@ -145,4 +145,12 @@
     <comment>- Update to release 7.8.0</comment>
     <requestid>1075703</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>7057122b8a3f443de72f51aca99d580e</srcmd5>
+    <version>7.8.2</version>
+    <time>1702844932</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 7.8.2</comment>
+    <requestid>1133559</requestid>
+  </revision>
 </revisionlist>

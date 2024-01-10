@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jan 02 08:18:51 UTC 2024 - emiliano.langella@suse.com
+
+- Update to version 4.9.0+git0.18d82db:
+  * prepare for 4.9.0
+  * Fix REGEXP_COUNT and REGEXP_SUBSTR function to have the same behavior than Oracle with newline characters and the use of dot in the pattern.
+  * Added a test case about dbms_sql.debug_cursor
+  * don't try to show content of variable when it is null. fix issue #247
+  * mark some func parallel safe
+  * When third argument of substr function is zero, then oracle returns null, but orafce returns empty string. This commit forces oracle's behaviour by default, but allows (by compatibility option orafce.using_substring_zero_width_in_substr set original orafce's behaviour. fix issue #240
+  * copy to_char(text) from orafce--4.7--4.8.sql to orafce--4.8.sql
+  * mark some func parallel safe; fix makefile
+  * add orafce--4.8.sql (rename orafce--4.7.sql)
+  * add func: to_char(text)
+  * mark lpad, rpad, to_char, to_number parallel safe
+  * mark btrim,ltrim,rtrim parallel(because not support postgres version < 9.6, so directly change it)
+  * doesn't support postgresql extensions
+  * Create c-cpp.yml
+
+-------------------------------------------------------------------
 Fri Oct 13 07:52:00 UTC 2023 - emiliano.langella@suse.com
 
 - Update to version 4.7.0+git1.fca4108:

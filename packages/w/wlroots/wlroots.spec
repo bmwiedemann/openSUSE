@@ -1,7 +1,7 @@
 #
 # spec file for package wlroots
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define libname libwlroots11
+%define libname libwlroots12
 %bcond_without  drm_backend
 %bcond_without  libinput_backend
 %bcond_without  x11_backend
@@ -24,7 +24,7 @@
 %bcond_without  xcb_errors
 
 Name:           wlroots
-Version:        0.16.2
+Version:        0.17.1
 Release:        0
 Summary:        Modular Wayland compositor library
 License:        MIT
@@ -37,13 +37,13 @@ BuildRequires:  glslang-devel
 BuildRequires:  meson >= 0.59.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(egl)
-BuildRequires:  pkgconfig(freerdp2)
 BuildRequires:  pkgconfig(gbm) >= 17.1.0
 BuildRequires:  pkgconfig(glesv2)
 BuildRequires:  pkgconfig(hwdata)
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
+BuildRequires:  pkgconfig(libdisplay-info)
 BuildRequires:  pkgconfig(libdrm) >= 2.4.113
 %if %{with libinput_backend}
 BuildRequires:  pkgconfig(libinput) >= 1.14.0
@@ -69,13 +69,12 @@ BuildRequires:  pkgconfig(xcb-render)
 BuildRequires:  pkgconfig(xcb-renderutil)
 BuildRequires:  pkgconfig(xcb-xfixes)
 BuildRequires:  pkgconfig(xcb-xkb)
+BuildRequires:  pkgconfig(xwayland)
+BuildRequires:  pkgconfig(xwaylandproto)
 %if %{with xcb_errors}
 BuildRequires:  pkgconfig(xcb-errors)
 %endif
 %endif
-
-# PATCH-FIX-UPSTREAM fix-frame-number-deprecated.patch glfo#wlroots/wlroots!4036
-Patch0:         fix-frame-number-deprecated.patch
 
 %description
 Pluggable, composable modules for building a Wayland compositor.

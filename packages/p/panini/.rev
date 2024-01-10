@@ -33,4 +33,14 @@
     <comment></comment>
     <requestid>931911</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f2c179d60673bde85928bbcc8224a844</srcmd5>
+    <version>0.74.0</version>
+    <time>1703102602</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.74.0:
+  * Use QErrorMessage instead of static QMessageBox in error handler (#10)
+  * Fix C++17 does not allow register storage class specifier (#16)</comment>
+    <requestid>1134277</requestid>
+  </revision>
 </revisionlist>

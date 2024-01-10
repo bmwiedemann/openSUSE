@@ -1,4 +1,86 @@
 -------------------------------------------------------------------
+Fri Jan  5 09:06:34 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.112.0:
+  * **accesscontextmanager:** Update the api
+  * **admin:** Update the api
+  * **aiplatform:** Update the api
+  * **alloydb:** Update the api
+  * **apigee:** Update the api
+  * **artifactregistry:** Update the api
+  * **backupdr:** Update the api
+  * **chat:** Update the api
+  * **checks:** Update the api
+  * **chromepolicy:** Update the api
+  * **chromeuxreport:** Update the api
+  * **cloudbuild:** Update the api
+  * **cloudchannel:** Update the api
+  * **cloudfunctions:** Update the api
+  * **cloudprofiler:** Update the api
+  * **cloudsupport:** Update the api
+  * **connectors:** Update the api
+  * **container:** Update the api
+  * **dataflow:** Update the api
+  * **dataform:** Update the api
+  * **dataproc:** Update the api
+  * **dialogflow:** Update the api
+  * **discoveryengine:** Update the api
+  * **dlp:** Update the api
+  * **drivelabels:** Update the api
+  * **firebaseappdistribution:** Update the api
+  * **gkehub:** Update the api
+  * **gmail:** Update the api
+  * **healthcare:** Update the api
+  * **integrations:** Update the api
+  * **migrationcenter:** Update the api
+  * **monitoring:** Update the api
+  * **networkmanagement:** Update the api
+  * **networkservices:** Update the api
+  * **oslogin:** Update the api
+  * **playintegrity:** Update the api
+  * **prod_tt_sasportal:** Update the api
+  * **retail:** Update the api
+  * **run:** Update the api
+  * **sasportal:** Update the api
+  * **securitycenter:** Update the api
+  * **serviceconsumermanagement:** Update the api
+  * **vault:** Update the api
+  * **workloadmanager:** Update the api
+  * **workstations:** Update the api
+
+-------------------------------------------------------------------
+Sat Dec 16 20:23:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.111.0:
+  * Add support for Python 3.12 (#2288)
+  * **aiplatform:** Update the api
+  * **alloydb:** Update the api
+  * **androidpublisher:** Update the api
+  * **baremetalsolution:** Update the api
+  * **batch:** Update the api
+  * **bigquery:** Update the api
+  * **cloudbilling:** Update the api
+  * **clouddeploy:** Update the api
+  * **connectors:** Update the api
+  * **container:** Update the api
+  * **datacatalog:** Update the api
+  * **dataflow:** Update the api
+  * **dns:** Update the api
+  * **gkehub:** Update the api
+  * **gkeonprem:** Update the api
+  * **metastore:** Update the api
+  * **monitoring:** Update the api
+  * **networkmanagement:** Update the api
+  * **networksecurity:** Update the api
+  * **networkservices:** Update the api
+  * **playdeveloperreporting:** Update the api
+  * **pubsub:** Update the api
+  * **script:** Update the api
+  * **securitycenter:** Update the api
+  * **vpcaccess:** Update the api
+  * Replace deprecated utcnow, utcfromtimestamp (#2286)
+
+-------------------------------------------------------------------
 Wed Nov 22 17:12:38 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Remove pandas from the BuildRequires. It's not really needed.
@@ -1204,7 +1286,7 @@ Fri Mar  3 14:58:29 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
 -------------------------------------------------------------------
 Thu Jan  5 19:36:47 UTC 2023 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 2.70.0 
+- Update to version 2.70.0
   * Features
   appengine: update the api https://togithub.com/googleapis/google-api-python-client/commit/f3ae3793e74aae883aa8f3bca7d2d75227c99cbd (1506e28)
   bigquery: update the api https://togithub.com/googleapis/google-api-python-client/commit/9d8a28de9f2709a066cc62765132688f5a4eeba3 (1506e28)
@@ -1237,7 +1319,7 @@ Wed Dec 14 08:50:40 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 -------------------------------------------------------------------
 Tue Dec 13 15:32:43 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 2.69.0 
+- Update to version 2.69.0
   * Features
   analyticsadmin: update the api https://togithub.com/googleapis/google-api-python-client/commit/1277148ed4bb16c03802a6d11bb15ab138bf6c19 (fa65fca)
   assuredworkloads: update the api https://togithub.com/googleapis/google-api-python-client/commit/0777a539623f6a0e5c0ee8a0014c49797e14a826 (fa65fca)
@@ -1360,7 +1442,7 @@ Wed Nov 30 12:14:13 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
 -------------------------------------------------------------------
 Fri Oct 28 17:22:24 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to 2.65.0: 
+- Update to 2.65.0:
   Features
   * alertcenter: update the api https://togithub.com/googleapis/google-api-python-client/commit/99b94eeb1cf0f695d921ac1d9081c0841f6b1693 (5d54a7d)
   * analyticsadmin: update the api https://togithub.com/googleapis/google-api-python-client/commit/41818c6eb42aa3551fc2a326208f9cc083cb1953 (7110d89)

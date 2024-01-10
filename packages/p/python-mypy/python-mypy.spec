@@ -1,7 +1,7 @@
 #
 # spec file for package python-mypy
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,11 @@
 
 %{?sle15_python_module_pythons}
 %bcond_without test
-%define skip_python2 1
 %define typed_ast_version 1.5.8.7
 %define types_psutil_version 5.9.5.16
 %define types_setuptools_version 68.1.0.0
 Name:           python-mypy
-Version:        1.5.1
+Version:        1.8.0
 Release:        0
 Summary:        Optional static typing for Python
 License:        MIT
@@ -46,8 +45,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-mypy_extensions >= 0.4.3
 Requires:       python-typing_extensions >= 3.10
-Requires:       (python-tomli >= 1.1.0 if python3-base < 3.11)
-Requires:       (python-typed-ast >= 1.4.0 if python3-base < 3.8)
+Requires:       (python-tomli >= 1.1.0 if python-base < 3.11)
+Requires:       (python-typed-ast >= 1.4.0 if python-base < 3.8)
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 %if "%{python_flavor}" == "python3" || "%{?python_provides}" == "python3"

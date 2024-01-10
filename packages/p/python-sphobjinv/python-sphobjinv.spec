@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphobjinv
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-sphobjinv
-Version:        2.2.2
+Version:        2.3.1
 Release:        0
 Summary:        Sphinx objectsinv Inspection/Manipulation Tool
 License:        MIT
@@ -41,9 +41,9 @@ BuildRequires:  %{python_module attrs >= 19.4}
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module dictdiffer}
 BuildRequires:  %{python_module jsonschema >= 3.0}
-BuildRequires:  %{python_module pytest-check}
+BuildRequires:  %{python_module pytest >= 4.4.0}
+BuildRequires:  %{python_module pytest-check >= 1.1.2}
 BuildRequires:  %{python_module pytest-timeout}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module sphinx_rtd_theme}
 # /SECTION
 %python_subpackages

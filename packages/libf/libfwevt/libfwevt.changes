@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jan  3 02:30:45 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20240101
+  * Marked the ``libfwevt_template_get_data`` function as deprecated
+
+-------------------------------------------------------------------
+Sun Dec 31 10:31:02 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20231231
+  * More format support functions
+
+-------------------------------------------------------------------
+Sat Dec 30 13:41:35 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20231230
+  * Add functions for channels and templates
+
+-------------------------------------------------------------------
 Wed Dec  6 09:28:52 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20231119

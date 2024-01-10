@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan  8 20:02:39 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.2.12:
+  * small fix for tests
+  * fix docs
+  * An option to sort sections
+- drop sphinx72.patch (upstream)
+
+-------------------------------------------------------------------
 Mon Aug 28 12:45:01 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Add patch sphinx72.patch
@@ -51,7 +60,7 @@ Thu Aug  4 09:17:21 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
 -------------------------------------------------------------------
 Fri Jun 24 00:30:34 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Remove guard on upper Sphinx version. 
+- Remove guard on upper Sphinx version.
 
 -------------------------------------------------------------------
 Mon May  2 21:38:13 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
@@ -74,7 +83,7 @@ Sun Apr 18 12:32:09 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.2.3
   * This Release makes autodocsumm compatible with sphinx 3.4 and
-    3.5. See #42 
+    3.5. See #42
 - Release 0.2.2
   * This release fixes a bug that included imported members in the
     autosummary table (see #32, #33) and includes the sorting

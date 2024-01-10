@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec 13 08:56:23 UTC 2023 - Ludwig Nussel <lnussel@suse.com>
+
+- Require build-key instead of openSUSE-build-key. This allows for
+  forked projects to include their own keys.
+- remove Obsoletes: suse-build-key. Doesn't seem to be the job of a
+  pattern.
+
+-------------------------------------------------------------------
 Sat Nov  8 18:00:46 PM UTC 2023 - Luca Di Maio <luca.dimaio1@gmail.com>
 
 - Remove grub as it breaks systemd-boot

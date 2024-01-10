@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 20 19:23:49 UTC 2023 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- add: prereq "pam-config" in baselibs.conf
+  * post scriptlet in pam_pwquality-32bit runs: pam-config
+
+-------------------------------------------------------------------
 Mon Dec 26 10:03:04 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 1.4.5:

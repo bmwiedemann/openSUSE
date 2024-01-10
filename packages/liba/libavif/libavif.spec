@@ -27,7 +27,7 @@
 %bcond_with yuv
 %endif
 Name:           libavif
-Version:        1.0.2
+Version:        1.0.3
 Release:        0
 Summary:        Library for encoding and decoding .avif files
 License:        BSD-2-Clause

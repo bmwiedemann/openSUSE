@@ -28,6 +28,7 @@ Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://kid3.kde.org/
 Source0:        https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz
 Source1:        https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz.sig
+BuildRequires:  extra-cmake-modules
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  id3lib-devel
 BuildRequires:  kf5-filesystem

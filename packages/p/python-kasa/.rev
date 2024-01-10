@@ -35,4 +35,31 @@
   * Changelog: https://github.com/python-kasa/python-kasa/releases/tag/0.5.0</comment>
     <requestid>1070520</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a37f650dd3d01ce25b3b1471a729e82c</srcmd5>
+    <version>0.5.4</version>
+    <time>1703800932</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.5.4:
+  * Support to the alternative discovery protocol and
+    foundational work to support other communication protocols,
+    thanks to @sdb9696.
+  * Reliability improvements by avoiding overflowing device
+    buffers, thanks to @cobryan05.
+  * Optimizations for downstream device accesses, thanks to
+    @bdraco.
+  * Support for both pydantic v1 and v2.
+  * This release adds support for defining the device port and
+    introduces dependency on async-timeout which improves timeout
+    handling.
+  * Adds optional dependency for for `orjson` and `kasa-crypt` to
+    speed-up protocol handling by an order of magnitude.
+  * Drops Python 3.7 support as it is no longer maintained.
+  * Add benchmarks for speedups \#473 (@bdraco)
+  * Add fixture for KP405 Smart Dimmer Plug \#470 (@xinud190)
+  * Remove importlib-metadata dependency \#457 (@rytilahti)
+
+- skip python 3.6 (only compatible with python 3.7+)</comment>
+    <requestid>1135323</requestid>
+  </revision>
 </revisionlist>

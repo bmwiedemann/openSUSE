@@ -16,14 +16,14 @@
 #
 
 
-%define _tar_path 5.103
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
+%define qt5_version 5.15.2
 %bcond_without released
 Name:           kinit
-Version:        5.112.0
+Version:        5.113.0
 Release:        0
 Summary:        Helper library to speed up start of applications on KDE workspaces
 License:        LGPL-2.1-or-later
@@ -37,24 +37,23 @@ Source2:        frameworks.keyring
 Patch0:         fpie.patch
 # PATCH-FIX-OPENSUSE
 Patch1:         0001-Only-move-XAUTHORITY-if-it-s-temporary.patch
-BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
+BuildRequires:  extra-cmake-modules >= %{_kf5_version}
 BuildRequires:  fdupes
-BuildRequires:  kf5-filesystem
 BuildRequires:  libcap-devel
 BuildRequires:  libcap-progs
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(KF5Config) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5Crash) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5DBusAddons) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5DocTools) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5I18n) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5KIO) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5Service) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5WindowSystem) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(Qt5Core) >= 5.15.0
-BuildRequires:  cmake(Qt5DBus) >= 5.15.0
-BuildRequires:  cmake(Qt5Gui) >= 5.15.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.15.0
+BuildRequires:  cmake(KF5Config) >= %{_kf5_version}
+BuildRequires:  cmake(KF5Crash) >= %{_kf5_version}
+BuildRequires:  cmake(KF5DBusAddons) >= %{_kf5_version}
+BuildRequires:  cmake(KF5DocTools) >= %{_kf5_version}
+BuildRequires:  cmake(KF5I18n) >= %{_kf5_version}
+BuildRequires:  cmake(KF5KIO) >= %{_kf5_version}
+BuildRequires:  cmake(KF5Service) >= %{_kf5_version}
+BuildRequires:  cmake(KF5WindowSystem) >= %{_kf5_version}
+BuildRequires:  cmake(Qt5Core) >= %{qt5_version}
+BuildRequires:  cmake(Qt5DBus) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Gui) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Widgets) >= %{qt5_version}
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb)
 
@@ -64,7 +63,6 @@ booting UNIX.
 
 %package devel
 Summary:        Helper library to speed up start of applications on KDE workspaces
-Requires:       extra-cmake-modules
 
 %description devel
 Kdeinit is a process launcher somewhat similar to the famous init used for

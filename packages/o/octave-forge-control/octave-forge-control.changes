@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Jan  5 16:14:20 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 3.6.1:
+  * use current version of the SLICOT-Reference routines v5.8
+    from Github
+  * fixed phase in bode plot for system with poles/zeros at
+    the origin
+  * fixed duration of time responses like step for systems with
+    oscillations ans improved graphical output
+
+-------------------------------------------------------------------
+Wed Jan  3 09:49:57 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 3.6.1:
+  + Bugfix: numeric constants are converted into proper lti
+    systems before being interconnected to discrete time-systems
+- Update to version 3.6.0:
+  + zgrid: new function for grid lines with constant eigenfrequency
+    and damping for discrete-time pole/zero maps
+  + pzamp: added unit circle (for discrete-time) systems and axes
+    to the pole/zero maps
+  + allow discrete-time purely static gain systems with a
+    sampling time
+  + added metainfo file octave-control.metainfo.xml
+- Update to version 3.5.2:
+  + fix build errors when installing in Octave 6
+- Update to version 3.5.1:
+  + fix build errors when installing in Octave 9
+  + more robust tests for some model reduction and identification
+    functions
+
+-------------------------------------------------------------------
 Wed Feb 16 00:52:20 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.4.0:

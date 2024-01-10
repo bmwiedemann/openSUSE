@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Sat Dec 30 21:03:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.18 (bsc#1214918, CVE-2023-28366, bsc#1215865,
+                    CVE-2023-0809, bsc#1215864, CVE-2023-3592):
+  * Fix crash on subscribe under certain unlikely conditions.
+  * Fix mosquitto_rr not honouring `-R`. Closes #2893.
+  * Fix `max_queued_messages 0` stopping clients from receiving
+    messages.
+  * Fix `max_inflight_messages` not being set correctly.
+  * Fix `mosquitto_passwd -U` backup file creation.
+  * CVE-2023-28366: Fix memory leak in broker when clients send
+    multiple QoS 2 messages with the same message ID, but then
+    never respond to the PUBREC commands.
+  * CVE-2023-0809: Fix excessive memory being allocated based on
+    malicious initial packets that are not CONNECT packets.
+  * CVE-2023-3592: Fix memory leak when clients send v5 CONNECT
+    packets with a will message that contains invalid property
+    types.
+  * Broker will now reject Will messages that attempt to publish
+    to $CONTROL/.
+  * Broker now validates usernames provided in a TLS certificate
+    or TLS-PSK identity are valid UTF-8.
+  * Fix potential crash when loading invalid persistence file.
+  * Library will no longer allow single level wildcard
+    certificates, e.g. *.com
+  * Fix $SYS messages being expired after 60 seconds and hence
+    unchanged values disappearing.
+  * Fix some retained topic memory not being cleared immediately
+    after used.
+  * Fix error handling related to the `bind_interface` option.
+  * Fix std* files not being redirected when daemonising, when
+    built with assertions removed.
+  * Fix default settings incorrectly allowing TLS v1.1.
+  * Use line buffered mode for stdout.
+  * Fix bridges with non-matching cleansession/local_cleansession
+    being expired on start after restoring from persistence
+  * Fix connections being limited to 2048 on Windows. The limit
+    is now 8192, where supported.
+  * Broker will log warnings if sensitive files are world
+    readable/writable, or if the owner/group is not the same as
+    the user/group the broker is running as. In future versions
+    the broker will refuse to open these files.
+  * mosquitto_memcmp_const is now more constant time.
+  * Only register with DLT if DLT logging is enabled.
+  * Fix any possible case where a json string might be
+    incorrectly loaded. This could have caused a crash if a
+    textname or textdescription field of a role was not a string,
+    when loading the dynsec config from file only.
+  * Dynsec plugin will not allow duplicate clients/groups/roles
+    when loading config from file, which matches the behaviour
+    for when creating them.
+  * Fix heap overflow when reading corrupt config with "log_dest
+    file".
+  * Use CLOCK_BOOTTIME when available, to keep track of time.
+    This solves the problem of the client OS sleeping and the
+    client hence not being able to calculate the actual time for
+    keepalive purposes.
+  * Fix default settings incorrectly allowing TLS v1.1. Closes
+  * Fix high CPU use on slow TLS connect.
+  * Fix incorrect topic-alias property value in mosquitto_sub
+    json output.
+  * Fix confusing message on TLS certificate verification.
+  * mosquitto_passwd uses mkstemp() for backup files.
+  * `mosquitto_ctrl dynsec init` will refuse to overwrite an
+    existing file, without a race-condition.
+
+-------------------------------------------------------------------
 Mon Aug 22 21:15:33 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.15:
@@ -1049,19 +1116,19 @@ Sun Aug 19 16:38:42 UTC 2018 - mardnh@gmx.de
   * Fix building for libwebsockets < 1.6.
   * Fix accessor functions for username and client id when used in plugin auth
     check.
-  
+
   Library:
   * Fix some places where return codes were incorrect, including to the
     on_disconnect() callback. This has resulted in two new error codes,
     MOSQ_ERR_KEEPALIVE and MOSQ_ERR_LOOKUP.
   * Fix connection problems when mosquitto_loop_start() was called before
     mosquitto_connect_async().
-  
+
   Clients:
   * When compiled using WITH_TLS=no, the default port was incorrectly being set
     to -1. This has been fixed.
   * Fix compiling on Mac OS X <10.12.
-  
+
   Build:
   * Fixes for building on NetBSD.
   * Fixes for building on FreeBSD.
@@ -1074,7 +1141,7 @@ Thu May  3 18:47:04 UTC 2018 - mardnh@gmx.de
   Security:
   * Fix memory leak that could be caused by a malicious CONNECT packet. This
     does not yet have a CVE assigned. Closes #533493 (on Eclipse bugtracker)
-  
+
   Broker features:
   * Add per_listener_settings to allow authentication and access control to be
     per listener.
@@ -1152,7 +1219,7 @@ Thu May  3 18:47:04 UTC 2018 - mardnh@gmx.de
   * When a client with an in-use client-id connects, if the old client has a
     will, send the will message. Closes #26.
   * Fix parsing of configuration options that end with a space. Closes #804.
-  
+
   Client library features:
   * Outgoing messages with QoS>1 are no longer retried after a timeout period.
     Messages will be retried when a client reconnects.
@@ -1182,7 +1249,7 @@ Thu May  3 18:47:04 UTC 2018 - mardnh@gmx.de
   * Add MOSQ_OPT_SSL_CTX_WITH_DEFAULTS to work with MOSQ_OPT_SSL_CTX and have
     the default libmosquitto SSL_CTX configuration applied to the user provided
     SSL_CTX. Closes #567.
-  
+
   Client library fixes:
   * Fix incorrect PSK key being used if it had leading zeroes.
   * Initialise "result" variable as soon as possible in
@@ -1204,10 +1271,10 @@ Thu May  3 18:47:04 UTC 2018 - mardnh@gmx.de
   * Default to using port 8883 when using TLS.
   * mosquitto_sub doesn't continue to keep connecting if CONNACK tells it the
     connection was refused.
-  
+
   Client fixes:
   * Correctly handle empty files with "mosquitto_pub -l". Closes #676.
-  
+
   Build:
   * Add WITH_STRIP option (defaulting to "no") that when set to "yes" will strip
     executables and shared libraries when installing.
@@ -1216,7 +1283,7 @@ Thu May  3 18:47:04 UTC 2018 - mardnh@gmx.de
   * Don't run TLS-PSK tests if TLS-PSK disabled at compile time. Closes #636.
   * Support for openssl versions 1.0.0 and 1.0.1 has been removed as these are
     no longer supported by openssl.
-  
+
   Documentation:
   * Replace mentions of deprecated 'c_rehash' with 'openssl rehash'.
 
@@ -1238,7 +1305,7 @@ Thu Mar  1 14:37:54 UTC 2018 - mardnh@gmx.de
     limiting the size of remaining length to valid values. A "memory_limit"
     configuration option has also been added to allow the overall memory used by
     the broker to be limited.
-  
+
   Broker:
   * Use constant time memcmp for password comparisons.
   * Fix incorrect PSK key being used if it had leading zeroes.
@@ -1255,7 +1322,7 @@ Thu Mar  1 14:37:54 UTC 2018 - mardnh@gmx.de
   * Fix upgrade_outgoing_qos for retained message. Closes #534.
   * Fix CONNACK message not being sent for unauthorised connect on websockets.
     Closes #8.
-  
+
   Client library:
   * Fix incorrect PSK key being used if it had leading zeroes.
   * Initialise "result" variable as soon as possible in
@@ -1263,10 +1330,10 @@ Thu Mar  1 14:37:54 UTC 2018 - mardnh@gmx.de
   * No need to close socket again if setting non-blocking failed. Closes #649.
   * Fix mosquitto_topic_matches_sub() not correctly matching foo/bar against
     foo/+/#. Closes #670.
-  
+
   Clients:
   * Correctly handle empty files with "mosquitto_pub -l". Closes #676.
-  
+
   Build:
   * Don't run TLS-PSK tests if TLS-PSK disabled at compile time. Closes #636.
 -------------------------------------------------------------------
@@ -1303,7 +1370,7 @@ Wed Jul  5 20:35:17 UTC 2017 - mardnh@gmx.de
       This can also be fixed administratively, by restricting
       access to the directory in which the persistence file
       is stored.
-  
+
   * Broker:
     - Fix for poor websockets performance.
     - Fix lazy bridges not timing out for idle_timeout.
@@ -1319,7 +1386,7 @@ Wed Jul  5 20:35:17 UTC 2017 - mardnh@gmx.de
       option.  Partially closes #462.
     - Restrictions for CVE-2017-7650 have been relaxed - '/' is
       allowed in usernames/client ids. Remainder of fix for #462.
-  
+
   Clients:
     - Don't use / in auto-generated client ids.
 

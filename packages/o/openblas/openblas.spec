@@ -254,6 +254,7 @@ Summary:        An optimized BLAS library based on GotoBLAS2, %{flavor} version
 Group:          System/Libraries
 %if %{without hpc}
 Requires(post): update-alternatives
+Requires(post): coreutils
 Requires(preun):update-alternatives
  %if "%flavor" == "serial"
 Obsoletes:      lib%{pname}%{so_v} < %{version}
@@ -313,6 +314,8 @@ This package contains the static libraries.
 Summary:        Development headers and libraries for OpenBLAS
 Group:          Development/Libraries/C and C++
 Requires:       (%{pname}-devel(default) or %{pname}-devel(other))
+Requires(pre):  coreutils
+Requires(post): coreutils
 Obsoletes:      %{pname}-devel < %version
 Obsoletes:      %{pname}-devel-headers < %version
 Provides:       %{pname}-devel-headers = %version

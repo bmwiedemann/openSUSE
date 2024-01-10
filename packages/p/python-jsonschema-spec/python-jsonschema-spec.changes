@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan  4 09:54:56 UTC 2024 - Jiri Srain <jsrain@suse.com>
+
+- Remove the upstream URL due to the project rename to
+  jsonschema-path, while still having packages requiring
+  jsonschema-spec version 0.2.x
+
+-------------------------------------------------------------------
 Wed Jul 19 14:50:44 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Cleanup requirements

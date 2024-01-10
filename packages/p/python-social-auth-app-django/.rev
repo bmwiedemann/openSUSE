@@ -79,4 +79,24 @@
     <comment></comment>
     <requestid>1074815</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>7a303f8ada99f3105e0335d09ce07191</srcmd5>
+    <version>5.4.0</version>
+    <time>1704558626</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.4.0:
+  * Improved JSON field migration performance
+  * Introduce configuration to request POST only requests for
+    social authentication
+  * Updated list of supported Django and Python versions
+  * Uses Django native JSON field
+  * Removed support for Django&lt;3.2
+  * Fixed missing migration issue
+  * Compatibility with recent Django and Python versions
+  * Coding style improvements
+  * Improved error handling in SocialAuthExceptionMiddleware
+
+    Django versions by accepting just the needed parameters.</comment>
+    <requestid>1137244</requestid>
+  </revision>
 </revisionlist>

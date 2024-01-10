@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Dec 25 11:21:46 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 23.12.0:
+  * Input text selection was cleared when right-clicking on it
+    (gh#wxMaxima-developers/wxmaxima#1845).
+  * Pressing both mouse buttons simultaneously caused an assert
+    (gh#wxMaxima-developers/wxmaxima#1844).
+  * Corrected the cursor position after unsuccessful
+    autocompletes.
+  * Corrected the handling of question prompts from maxima
+    (gh#wxMaxima-developers/wxmaxima#1827).
+  * Bug corrections in the search functionality.
+  * RegEx search works again.
+  * Clicking on the notification now is more likely to focus the
+    worksheet.
+  * Corrected the cell folding logic
+    (gh#wxMaxima-developers/wxmaxima#1853).
+  * Folded cells are no more evaluated
+    (gh#wxMaxima-developers/wxmaxima#1853).
+  * Now we try to generate a backtrace on crashes
+    (gh#wxMaxima-developers/wxmaxima#1802).
+  * Corrected the position of integral limits.
+  * Nicer product, sum and integral signs.
+  * Hidden cells weren't restored from wxm files
+    (gh#wxMaxima-developers/wxmaxima#1855).
+  * diff() no longer causes spurious multiplication dots
+    (gh#wxMaxima-developers/wxmaxima#1825).
+
+-------------------------------------------------------------------
 Mon Nov 20 02:35:51 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 23.11.0:

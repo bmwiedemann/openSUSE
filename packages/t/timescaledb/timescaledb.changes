@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jan  9 12:52:34 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 2.13.1
+  https://github.com/timescale/timescaledb/releases/tag/2.13.1
+
+-------------------------------------------------------------------
+Tue Nov 28 15:10:39 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- enable pg 16
+
+-------------------------------------------------------------------
+Tue Nov 28 15:10:05 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 2.13.0
+  https://github.com/timescale/timescaledb/releases/tag/2.13.0
+
+-------------------------------------------------------------------
 Fri Oct 20 09:39:13 UTC 2023 - Emiliano Langella <emiliano.langella@suse.com>
 
 - Update to version 2.12.2

@@ -16,9 +16,9 @@
 #
 
 
-%define shortversion 2.2
+%define shortversion 2.2.1
 Name:           python-jupyter-lsp
-Version:        2.2.0
+Version:        2.2.1
 Release:        0
 Summary:        LSP for Jupyter Notebook/Lab server
 License:        BSD-3-Clause

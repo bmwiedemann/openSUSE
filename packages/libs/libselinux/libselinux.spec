@@ -16,9 +16,9 @@
 #
 
 
-%define libsepol_ver 3.5
+%define libsepol_ver 3.6
 Name:           libselinux
-Version:        3.5
+Version:        3.6
 Release:        0
 Summary:        SELinux runtime library and utilities
 License:        SUSE-Public-Domain
@@ -130,6 +130,7 @@ install -m 0755 %{SOURCE3} %{buildroot}%{_sbindir}/selinux-ready
 %files -n selinux-tools
 %{_sbindir}/avcstat
 %{_sbindir}/getenforce
+%{_sbindir}/getpolicyload
 %{_sbindir}/getsebool
 %{_sbindir}/matchpathcon
 %{_sbindir}/selabel_digest
@@ -156,9 +157,7 @@ install -m 0755 %{SOURCE3} %{buildroot}%{_sbindir}/selinux-ready
 %{_sbindir}/validatetrans
 %{_sbindir}/getpidprevcon
 %{_mandir}/man5/*
-%{_mandir}/ru/man5/*
 %{_mandir}/man8/*
-%{_mandir}/ru/man8/*
 
 %files -n libselinux1
 %{_libdir}/libselinux.so.*

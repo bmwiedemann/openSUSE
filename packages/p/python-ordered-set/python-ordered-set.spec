@@ -37,14 +37,14 @@ Summary:        Custom MutableSet that remembers its order
 License:        MIT
 URL:            https://github.com/rspeer/ordered-set
 Source:         https://files.pythonhosted.org/packages/source/o/%{modname}/%{modname}-%{version}.tar.gz
-# this package is build dependency of setuptools
 BuildRequires:  %{python_module base}
+BuildRequires:  %{python_module flit-core >= 3.2}
+BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
 %endif
 # work around boo#1186870
 Provides:       %{mypython}%{python_version}dist(%modname) = %{version}
@@ -59,15 +59,13 @@ entry has an index that can be looked up.
 
 %prep
 %setup -q -n %{modname}-%{version}
-# we are build dep of setuptools
-sed -i -e 's:from setuptools :from distutils.core :g' setup.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -81,8 +79,7 @@ sed -i -e 's:from setuptools :from distutils.core :g' setup.py
 %license MIT-LICENSE
 %doc README.md
 %{python_sitelib}/%{dir_name}/
-# Note: The distutils generated egg-info is not a directory
-%{python_sitelib}/%{dir_name}-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/%{dir_name}-%{version}.dist-info
 %endif
 
 %changelog

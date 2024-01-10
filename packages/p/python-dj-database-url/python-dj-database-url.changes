@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan  8 20:52:51 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.0:
+  * fix: parse options with numerical values as int
+- update to 2.0.0:
+  * setup.py: Fix `project_urls` parameter name
+  * Redo as a package to fix mypy issues
+
+-------------------------------------------------------------------
 Mon May  8 14:28:44 UTC 2023 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - python-typing_extensions is always required
@@ -31,7 +40,7 @@ Thu Dec 22 19:19:28 UTC 2022 - Torsten Gruner <simmphonie@opensuse.org>
 -------------------------------------------------------------------
 Sun Jul 31 14:37:49 UTC 2022 - Torsten Gruner <simmphonie@opensuse.org>
 
-- Update to 1.0.0 
+- Update to 1.0.0
   * Add support for cockroachdb.
   * Add support for the offical MSSQL connector.
   * Update License to be compatible with Jazzband.

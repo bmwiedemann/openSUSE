@@ -13,10 +13,10 @@ Signed-off-by: Hannes Reinecke <hare@suse.com>
  dasdfmt/dasdfmt.c | 8 ++++++++
  2 files changed, 13 insertions(+), 1 deletion(-)
 
-Index: s390-tools-2.29.0/dasdfmt/dasdfmt.8
+Index: s390-tools-2.30.0/dasdfmt/dasdfmt.8
 ===================================================================
---- s390-tools-2.29.0.orig/dasdfmt/dasdfmt.8
-+++ s390-tools-2.29.0/dasdfmt/dasdfmt.8
+--- s390-tools-2.30.0.orig/dasdfmt/dasdfmt.8
++++ s390-tools-2.30.0/dasdfmt/dasdfmt.8
 @@ -11,7 +11,7 @@ dasdfmt \- formatting of DASD (ECKD) dis
  .br
          [-r \fIcylinder\fR] [-b \fIblksize\fR] [-l \fIvolser\fR] [-d \fIlayout\fR]
@@ -34,13 +34,13 @@ Index: s390-tools-2.29.0/dasdfmt/dasdfmt.8
 +Specify device to format. For backwards compability only.
 +
 +.TP
- \fB-y\fR 
+ \fB-y\fR
  Start formatting without further user-confirmation.
  
-Index: s390-tools-2.29.0/dasdfmt/dasdfmt.c
+Index: s390-tools-2.30.0/dasdfmt/dasdfmt.c
 ===================================================================
---- s390-tools-2.29.0.orig/dasdfmt/dasdfmt.c
-+++ s390-tools-2.29.0/dasdfmt/dasdfmt.c
+--- s390-tools-2.30.0.orig/dasdfmt/dasdfmt.c
++++ s390-tools-2.30.0/dasdfmt/dasdfmt.c
 @@ -113,6 +113,10 @@ static struct util_opt opt_vec[] = {
  		.desc = "Format devices in parallel",
  		.flags = UTIL_OPT_FLAG_NOLONG,

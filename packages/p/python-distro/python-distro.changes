@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Dec 27 09:21:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9.0:
+  * Refactor distro.info() method to return an InfoDict [#360]
+  * Ignore the file '/etc/board-release' [#353]
+  * Ignore the file '/etc/ec2_version' [#359]
+  * Test on modern versions of CPython and PyPy and macOS [#362]
+  * Add support for ALT Linux Server 10.1 distribution [#354]
+  * Add Debian Testing to the tests [#356]
+  * Update archlinux resource for tests [#352]
+
+-------------------------------------------------------------------
 Mon Sep 18 16:28:25 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove duplicate files calling %fdupes
@@ -121,7 +133,7 @@ Tue Feb  5 11:48:38 CET 2019 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Wed Jun 13 16:52:25 UTC 2018 - mcepl@suse.com
 
-- Enable tests properly (this is pytest, not unittest), 
+- Enable tests properly (this is pytest, not unittest),
   it is necessary to explicitly set locale to an Unicode one
   (https://github.com/nir0s/distro/issues/223)
 

@@ -29,6 +29,7 @@ Source1:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source2:        applications.keyring
 %endif
 BuildRequires:  bison
+BuildRequires:  extra-cmake-modules
 BuildRequires:  flex
 BuildRequires:  cmake(KF5Holidays)
 BuildRequires:  cmake(KF5I18n)

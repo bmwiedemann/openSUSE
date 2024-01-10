@@ -47,7 +47,8 @@
 
 %define iscsi_minor_release 1
 %define iscsi_patch_release 9
-%define iscsi_patch_release_suse %{iscsi_patch_release}-suse
+%define iscsi_patch_release_suse %{iscsi_patch_release}.suse
+%define iscsi_service_tag 844.d557967bc9ae
 %define libname libopeniscsiusr0
 %define libversion 0.2.0
 Name:           open-iscsi
@@ -57,8 +58,7 @@ Summary:        Linux iSCSI Software Initiator
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
 URL:            https://www.open-iscsi.com
-Source:         %{name}-2.%{iscsi_minor_release}.%{iscsi_patch_release_suse}.tar.bz2
-Patch1:         %{name}-SUSE-latest.diff.bz2
+Source:         %{name}-2.%{iscsi_minor_release}.%{iscsi_patch_release_suse}+%{iscsi_service_tag}.tar.xz
 BuildRequires:  bison
 BuildRequires:  db-devel < 5
 BuildRequires:  fdupes
@@ -142,8 +142,7 @@ include files and documentation. These are used to compile against
 the libopeniscsiusr library.
 
 %prep
-%setup -q -n %{name}-2.%{iscsi_minor_release}.%{iscsi_patch_release_suse}
-%patch1 -p1
+%setup -q -n %{name}-2.%{iscsi_minor_release}.%{iscsi_patch_release_suse}+%{iscsi_service_tag}
 
 %build
 [ -z "$SOURCE_DATE_EPOCH" ] || export KBUILD_BUILD_TIMESTAMP=@$SOURCE_DATE_EPOCH

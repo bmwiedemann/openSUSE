@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Nov 30 17:54:10 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.18.1
+  * Add missing chain-up to parent in constructed()
+  * Add runtime guard for XfceSMClient
+  * build: Restrict XfceSMClient to X11
+  * build: Use XDT_CHECK_OPTIONAL_FEATURE
+  * Small UI Improvements
+  * parole-conf: Fix critical warning and memory leak
+  * build: Define our own windowing macro instead of extending GDK's
+  * plugins: Disable systray icon outside X11
+  * Guard X11 code paths
+  * Fix invisible mouse (Issue #125)
+  * Add middle click actions to tray icon (Fixes #88)
+  * docs: Remove useless check
+  * mpris2: Properly disconnect signal handlers
+  * powermanager: Add missing sanity check
+  * Only use header bar if gtk-dialogs-use-header (Fixes #117)
+  * build: Add -export-dynamic to LDFLAGS
+  * Add icons at missing sizes, clean up SVG metadata
+  * Translation Updates
+
+-------------------------------------------------------------------
 Sat Feb 18 21:48:41 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 4.18.0

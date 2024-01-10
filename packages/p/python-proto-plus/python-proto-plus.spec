@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %define skip_python2 1
 %define modname proto-plus
 Name:           python-proto-plus%{psuffix}
-Version:        1.22.3
+Version:        1.23.0
 Release:        0
 Summary:        Pythonic Protocol Buffers
 License:        Apache-2.0
@@ -63,11 +63,11 @@ that largely behave like native Python types.
 %autosetup -p1 -n %{modname}-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -82,7 +82,7 @@ that largely behave like native Python types.
 %license LICENSE
 %doc README.rst
 %{python_sitelib}/proto
-%{python_sitelib}/proto_plus-%{version}*-info
+%{python_sitelib}/proto_plus-%{version}.dist-info
 %endif
 
 %changelog

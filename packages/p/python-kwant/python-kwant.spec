@@ -19,7 +19,7 @@
 %define modname kwant
 %{?sle15_python_module_pythons}
 Name:           python-kwant
-Version:        1.4.3
+Version:        1.4.4
 Release:        0
 Summary:        Python library for numerical quantum transport calculations
 License:        BSD-2-Clause

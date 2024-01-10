@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec 14 09:13:05 UTC 2023 - Petr Gajdos <pgajdos@suse.com>
+
+- update to 1.6:
+  * Switch to ``aiohttp.web.AppKey``, and deprecate the old
+    'static_root_url' key.
+  * Drop Python 3.7, add Python 3.12.
+
+-------------------------------------------------------------------
 Tue Jul  4 11:30:42 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

@@ -132,4 +132,16 @@
     keysize requirement</comment>
     <requestid>1131710</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>efde27b2ba8526fc31a13708cc1093c7</srcmd5>
+    <version>1.5.1</version>
+    <time>1704491949</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.1:
+  * Fix X22519 import/export from PEM
+  * Read the Docs now requires a config file
+  * chore: refactor for removing pdb symbols
+  * Fix potential DoS issue with p2c header</comment>
+    <requestid>1136285</requestid>
+  </revision>
 </revisionlist>

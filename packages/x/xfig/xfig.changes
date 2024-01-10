@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan  8 08:53:08 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Add patches from upstream alert
+  * Fix-exporting-only-active-layers-ticket-163.patch
+  * Sanitize-a-call-to-realloc-ticket-165.patch
+ 
+-------------------------------------------------------------------
 Mon Sep 25 06:55:31 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Allow more uptodate urw-base35-fonts instead ghostscript-fonts-std-converted

@@ -1,0 +1,33 @@
+From: Martin Nowack <m.nowack@imperial.ac.uk>
+Date: Mon, 30 Oct 2023 14:50:51 +0000
+Subject: Fix test case: using unsupported `CHECK_NEXT` instead of `CHECK-NEXT`
+Patch-mainline: no
+References: llvm16
+
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ test/Concrete/_testingUtils.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/test/Concrete/_testingUtils.c b/test/Concrete/_testingUtils.c
+index fa395820..d51c6969 100644
+--- a/test/Concrete/_testingUtils.c
++++ b/test/Concrete/_testingUtils.c
+@@ -69,12 +69,11 @@ int main(int argc, char *argv[])
+         printf("print_i1(0)\n");
+         print_i1(0);
+         // CHECK: i1(0)
+-        // CHECK_NEXT: 0
++        // CHECK-NEXT: 0
+ 
+         printf("print_i1(1)\n");
+         print_i1(1);
+         // CHECK: i1(1)
+-        // CHECK_NEXT: 1
+-
++        // CHECK-NEXT: 1
+ }
+ #endif
+-- 
+2.43.0
+

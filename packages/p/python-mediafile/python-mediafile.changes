@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Dec 16 20:48:28 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.12.0:
+  * Add the multiple-valued properties artists_credit, artists_sort,
+    albumartists_credit, and albumartists_sort.
+- drop python-mediafile-pyupgrade.patch
+- add python-mediafile-remove-six.patch
+
+-------------------------------------------------------------------
 Tue Apr 25 06:53:17 UTC 2023 - pgajdos@suse.com
 
 - drop python 2 support
@@ -18,7 +27,7 @@ Mon Jan  2 15:27:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Fri Oct 28 18:25:16 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 0.10.0 
+- Update to version 0.10.0
   * Add the multiple-valued properties albumtypes, catalognums and languages.
   * The catalognum property now refers to additional file tags named CATALOGID and DISCOGS_CATALOG (but only for reading, not writing).
   * The multi-valued albumartists property now refers to additional file tags named ALBUM_ARTIST and ALBUM ARTISTS. (The latter is used only for reading.)

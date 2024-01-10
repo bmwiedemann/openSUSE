@@ -1,7 +1,7 @@
 #
 # spec file for package pass-import
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           pass-import
-Version:        3.3
+Version:        3.4
 Release:        0
 Summary:        A pass extension for importing data from most of the existing password manager
 License:        GPL-3.0-only
@@ -25,23 +25,25 @@ URL:            https://github.com/roddhjav/pass-import
 Source:         https://github.com/roddhjav/%{name}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fdupes
+BuildRequires:  pandoc
 BuildRequires:  password-store
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-PyYAML
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-pypandoc
+BuildRequires:  python3-pip
 BuildRequires:  python3-requests
+BuildRequires:  python3-setuptools
+BuildRequires:  python3-wheel
 BuildRequires:  python3-zxcvbn
 BuildRequires:  zsh
 Requires:       python3-PyYAML
+Requires:       python3-requests
+Requires:       python3-zxcvbn
 Suggests:       python3-cryptography
 Suggests:       python3-defusedxml
 Suggests:       python3-file-magic
 Suggests:       python3-pykeepass
 Suggests:       python3-secretstorage
 BuildArch:      noarch
-# We don't have pandoc for these platforms
-ExcludeArch:    %{ix86}
 
 %description
 A pass extension for importing data from most of the existing password manager.
@@ -53,10 +55,24 @@ sed -i 's|#!\s*%{_bindir}/env|#!%{_bindir}/bash|' import.bash
 sed -i '1{\@^#!%{_bindir}/env python@d}' pass_import/__main__.py
 
 %build
-%python3_build
+for md in share/man/man1/*.md ; do
+  pandoc -s -t man $md -o ${md%*.md}.1
+done
+%python3_pyproject_wheel
 
 %install
-%python3_install
+%python3_pyproject_install
+# gh#roddhjav/pass-import#198
+install -D -t %{buildroot}%{_usr}/lib/password-store/extensions \
+    %{buildroot}%{python3_sitelib}%{_usr}/lib/password-store/extensions/import.bash
+rm -rf %{buildroot}%{python3_sitelib}%{_usr}
+
+install -D -m 0644 -t %{buildroot}%{_datadir}/zsh/site-functions/ \
+    share/zsh/site-functions/*
+install -D -m 0644 -t %{buildroot}%{_datadir}/bash-completion/completions/ \
+    share/bash-completion/completions/*
+install -D -m 0644 -t %{buildroot}%{_mandir}/man1/ \
+    share/man/man1/*.1*
 %fdupes %{buildroot}%{python3_sitelib}
 
 %files

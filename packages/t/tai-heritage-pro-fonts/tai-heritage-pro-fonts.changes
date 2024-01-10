@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Dec 27 21:07:59 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.600:
+  * Fixed several bugs in the OpenType code. The fonts should now
+    work in OpenType applications that use the Universal Shaping
+    Engine on Windows 10.
+  * Eliminated minor discrepancies between Graphite and OpenType in
+    how combining marks are positioned in the Regular weight.
+  * Added WOFF versions of the fonts to the distribution, for the
+    benefit of web developers.
+
+-------------------------------------------------------------------
 Thu Oct 17 09:05:27 UTC 2013 - pgajdos@suse.com
 
 - initial version 2.500

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Dec 14 09:12:51 UTC 2023 - Petr Gajdos <pgajdos@suse.com>
+
+- update to 23.2.1:
+  * Import `os.statvfs` conditionally to fix importing on non-
+    UNIX systems.
+  * #171 #172
+  * aiofiles is now also tested on Windows.
+update to 23.2.0:
+  * # 23.2.0
+
+  * aiofiles is now tested on Python 3.12 too.
+  * #166 #168
+  * On Python 3.12, `aiofiles.tempfile.NamedTemporaryFile` now
+    accepts a `delete_on_close` argument, just like the stdlib
+    version.
+  * On Python 3.12, `aiofiles.tempfile.NamedTemporaryFile` no
+    longer exposes a `delete` attribute, just like the stdlib
+    version.
+  * Added `aiofiles.os.statvfs` and `aiofiles.os.path.ismount`.
+  * #162
+  * Use PDM instead of Poetry.
+  * #169
+
+-------------------------------------------------------------------
 Sun Jun 11 13:37:03 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

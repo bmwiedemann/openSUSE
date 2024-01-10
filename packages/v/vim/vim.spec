@@ -1,7 +1,7 @@
 #
 # spec file for package vim
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define pkg_version 9.0
-%define patchlevel 2146
+%define pkg_version 9.1
+%define patchlevel 0000
 %define patchlevel_compact %{patchlevel}
-%define VIM_SUBDIR vim90
+%define VIM_SUBDIR vim91
 %define site_runtimepath %{_datadir}/vim/site
 %define make make VIMRCLOC=%{_sysconfdir} VIMRUNTIMEDIR=%{_datadir}/vim/current MAKE="make -e" %{?_smp_mflags}
 %if 0%{?suse_version} > 1500
@@ -33,7 +33,6 @@ Version:        %{pkg_version}.%{patchlevel_compact}
 Release:        0
 Summary:        Vi IMproved
 License:        Vim
-Group:          Productivity/Text/Editors
 URL:            https://www.vim.org/
 Source:         https://github.com/vim/vim/archive/v%{pkg_version}.%{patchlevel}.tar.gz#/vim-%{pkg_version}.%{patchlevel}.tar.gz
 Source3:        suse.vimrc
@@ -137,7 +136,6 @@ file name completion, block operations, and editing of binary data.
 
 %package data
 Summary:        Data files needed for extended vim functionality
-Group:          Productivity/Text/Editors
 Requires:       vim-data-common = %{version}-%{release}
 # Used to be in vim-plugins package
 Obsoletes:      vim-plugin-matchit <= 1.13.2
@@ -152,7 +150,6 @@ This package contains optional runtime & syntax files for vim.
 
 %package data-common
 Summary:        Common Data files for vim & gvim
-Group:          Productivity/Text/Editors
 BuildArch:      noarch
 
 %description data-common
@@ -160,7 +157,6 @@ This package contains basic runtime & syntax files for vim
 
 %package -n gvim
 Summary:        A GUI for Vi
-Group:          Productivity/Text/Editors
 Requires:       gvim_client
 Requires:       vim-data = %{version}-%{release}
 Requires:       xxd = %{version}-%{release}
@@ -188,7 +184,6 @@ want less features, you might want to install vim instead.
 
 %package small
 Summary:        Vim with reduced features
-Group:          Productivity/Text/Editors
 Requires:       vim-data-common = %{version}-%{release}
 Provides:       vi
 Provides:       vim_client

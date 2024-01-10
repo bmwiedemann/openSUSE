@@ -16,7 +16,7 @@
 #
 
 
-%bcond_with     test
+%bcond_without     test
 
 Name:           qtile
 Version:        0.23.0
@@ -50,16 +50,16 @@ BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(libinput)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libudev)
-BuildRequires:  pkgconfig(wlroots)
+BuildRequires:  pkgconfig(wlroots) >= 0.16.0
+BuildConflicts: pkgconfig(wlroots) >= 0.17.0
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(xwayland)
+Requires:       gdk-pixbuf-loader-rsvg
+Requires:       pango-tools
 Requires:       python3-cairocffi >= 0.9.0
-Requires:       python3-cairocffi-pixbuf >= 0.9.0
 Requires:       python3-cffi >= 1.1.0
-Requires:       python3-pycairo >= 1.25.1
 Requires:       python3-pywayland
 Requires:       python3-pywlroots
-Requires:       python3-pyxdg
 Requires:       python3-xcffib >= 0.10.1
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -71,9 +71,11 @@ Recommends:     python3-keyring
 Recommends:     python3-psutil
 Recommends:     python3-python-dateutil
 Recommends:     python3-python-mpd2
+Recommends:     python3-pyxdg
 Recommends:     sensors
 Recommends:     xdg-desktop-portal-gtk
 Recommends:     xdg-desktop-portal-wlr
+Recommends:     xorg-x11-server-extra
 # XDP-WLR alternative. This could be installed with no-recommends flag
 Suggests:       xdg-desktop-portal-hyprland
 # v0.21.0 has lots of additional failures on i586
@@ -82,13 +84,10 @@ ExcludeArch:    %{ix86} %arm %arm64
 %if %{with test}
 BuildRequires:  ImageMagick
 BuildRequires:  dbus-1
-BuildRequires:  gdk-pixbuf-loader-rsvg
 BuildRequires:  graphviz
 BuildRequires:  libgtk-3-0
 BuildRequires:  libnotify
-# libnotify-tools seems to introduce more fails in v0.21.0
-# BuildRequires:  libnotify-tools
-BuildRequires:  librsvg
+BuildRequires:  libnotify-tools
 BuildRequires:  procps
 BuildRequires:  python3-bowler
 BuildRequires:  python3-cairocffi-pixbuf
@@ -96,6 +95,8 @@ BuildRequires:  python3-curses
 BuildRequires:  python3-dbus_next
 BuildRequires:  python3-gobject
 BuildRequires:  python3-gobject-Gdk
+BuildRequires:  python3-importlib-metadata
+BuildRequires:  python3-importlib-resources
 BuildRequires:  python3-mypy
 BuildRequires:  python3-pytest
 BuildRequires:  python3-pyxdg
@@ -156,10 +157,14 @@ ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadi
 
 %if %{with test}
 %check
+mkdir -vp ${PWD}/bin
+ln -svf %{buildroot}%{_bindir}/qtile ${PWD}/bin/qtile
 export CFLAGS="%optflags $(pkg-config --cflags wayland-client libinput xkbcommon wlroots) -I/usr/include/wlr"
+export LC_TYPE=en_US.UTF-8
 export PYTHONPATH=%{buildroot}%{python3_sitearch}:%{python3_sitearch}
-pytest -vv -rs --backend x11
-pytest -vv -rs --backend wayland
+export PATH="${PWD}/bin:${PATH}"
+export PYTHONDONTWRITEBYTECODE=1
+%{_bindir}/xvfb-run python3 -m pytest -vv -rs --backend x11 --backend wayland
 %endif
 
 %post
@@ -167,8 +172,10 @@ pytest -vv -rs --backend wayland
   default-xsession.desktop %{_datadir}/xsessions/qtile.desktop 20
 
 %postun
-[ -f %{_datadir}/xsessions/qtile.desktop ] || %{_sbindir}/update-alternatives \
+if [ ! -f %{_datadir}/xsessions/qtile.desktop ] ; then
+  %{_sbindir}/update-alternatives \
   --remove default-xsession.desktop %{_datadir}/xsessions/qtile.desktop
+fi
 
 %files
 %ghost %{_sysconfdir}/alternatives/default-xsession.desktop

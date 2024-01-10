@@ -499,4 +499,14 @@ the core is LGPL-3.0+ but most of what is outside the code is BSD-3-Clause (forw
 update to latest version</comment>
     <requestid>1103605</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>49e344de00adb7873c03cad85273c974</srcmd5>
+    <version>25.1.2</version>
+    <time>1704558557</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 25.1.2:
+  * Fix builds with some recent compilers and bundled libzmq
+  * Fix builds with upcoming Cython 3.1</comment>
+    <requestid>1137124</requestid>
+  </revision>
 </revisionlist>

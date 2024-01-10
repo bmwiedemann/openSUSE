@@ -81,4 +81,18 @@
     deeper than it was created</comment>
     <requestid>1089352</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>205683a01273fd9e062eca45933489dc</srcmd5>
+    <version>2.9.1</version>
+    <time>1704659991</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.9.1:
+  * Allow dominate to work in async contexts
+
+    deeper than it was created
+- Update to 2.7.0:
+  * Add get_current() to return the current active element in a with context
+  * The `dominate.svg` module contains SVG tags similar to how</comment>
+    <requestid>1137302</requestid>
+  </revision>
 </revisionlist>

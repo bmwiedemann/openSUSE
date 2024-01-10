@@ -50,6 +50,7 @@ Patch1:         e59f703bbcc0af949ee365206426b6394c340c6f.patch
 Patch3:         rrdtool-tclsegfault.patch
 # PATCH-FIX-UPSTREAM -- bnc#793636
 Patch12:        rrdtool-zero_vs_nothing.patch
+Patch14:        harden_rrdcached.service.patch
 # Needed for tests
 BuildRequires:  bc
 BuildRequires:  cairo-devel >= 1.2
@@ -68,7 +69,6 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  zlib-devel
 Requires:       dejavu
-Patch14:        harden_rrdcached.service.patch
 %if %{with python}
 BuildRequires:  %{python}-devel
 BuildRequires:  %{python}-setuptools
@@ -214,11 +214,7 @@ big setups in mind which usually runs into I/O related problems.  This
 daemon was written to alleviate these problems.
 
 %prep
-%setup -q
-%patch1 -p1
-%patch3
-%patch12 -p1
-%patch14 -p1
+%autosetup -p1
 
 # rrd_tool/rrd_cgi: use the date of the last change
 modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{_sourcedir}/%{name}.changes")"

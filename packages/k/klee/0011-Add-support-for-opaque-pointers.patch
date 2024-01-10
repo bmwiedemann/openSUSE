@@ -1,0 +1,385 @@
+From: Martin Nowack <m.nowack@imperial.ac.uk>
+Date: Mon, 30 Oct 2023 14:46:22 +0000
+Subject: Add support for opaque pointers
+Patch-mainline: no
+References: llvm16
+
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ lib/Core/Executor.cpp                | 119 ++++++++++++++++++++++-----
+ lib/Core/ExternalDispatcher.cpp      |  20 ++++-
+ lib/Core/GetElementPtrTypeIterator.h |   8 --
+ lib/Module/FunctionAlias.cpp         |   8 +-
+ lib/Module/IntrinsicCleaner.cpp      |  11 ++-
+ 5 files changed, 132 insertions(+), 34 deletions(-)
+
+diff --git a/lib/Core/Executor.cpp b/lib/Core/Executor.cpp
+index b4da6a08..58c15141 100644
+--- a/lib/Core/Executor.cpp
++++ b/lib/Core/Executor.cpp
+@@ -14,7 +14,9 @@
+ #include "CoreStats.h"
+ #include "ExecutionState.h"
+ #include "ExternalDispatcher.h"
++#if LLVM_VERSION_CODE <= LLVM_VERSION(14, 0)
+ #include "GetElementPtrTypeIterator.h"
++#endif
+ #include "ImpliedValue.h"
+ #include "Memory.h"
+ #include "MemoryManager.h"
+@@ -67,6 +69,9 @@
+ #include "llvm/IR/LLVMContext.h"
+ #include "llvm/IR/Module.h"
+ #include "llvm/IR/Operator.h"
++#if LLVM_VERSION_CODE >= LLVM_VERSION(15, 0)
++#include "llvm/IR/GetElementPtrTypeIterator.h"
++#endif
+ #include "llvm/Support/CommandLine.h"
+ #include "llvm/Support/ErrorHandling.h"
+ #include "llvm/Support/FileSystem.h"
+@@ -1464,24 +1469,25 @@ MemoryObject *Executor::serializeLandingpad(ExecutionState &state,
+   stateTerminated = false;
+ 
+   std::vector<unsigned char> serialized;
+-
+   for (unsigned current_clause_id = 0; current_clause_id < lpi.getNumClauses();
+        ++current_clause_id) {
+-    llvm::Constant *current_clause = lpi.getClause(current_clause_id);
+     if (lpi.isCatch(current_clause_id)) {
+       // catch-clause
+       serialized.push_back(0);
+ 
+       std::uint64_t ti_addr = 0;
+ 
+-      llvm::BitCastOperator *clause_bitcast =
+-          dyn_cast<llvm::BitCastOperator>(current_clause);
+-      if (clause_bitcast) {
+-        llvm::GlobalValue *clause_type =
++      llvm::Constant *catchClause = lpi.getClause(current_clause_id);
++      llvm::Constant *typeInfo = catchClause->stripPointerCasts();
++      if (auto *gv = dyn_cast<llvm::GlobalVariable>(typeInfo)) {
++        ti_addr = globalAddresses[gv]->getZExtValue();
++      } else if (auto *clause_bitcast =
++                     dyn_cast<llvm::BitCastOperator>(catchClause)) {
++        auto *clause_type =
+             dyn_cast<GlobalValue>(clause_bitcast->getOperand(0));
+ 
+         ti_addr = globalAddresses[clause_type]->getZExtValue();
+-      } else if (current_clause->isNullValue()) {
++      } else if (catchClause->isNullValue()) {
+         ti_addr = 0;
+       } else {
+         terminateStateOnExecError(
+@@ -1493,15 +1499,16 @@ MemoryObject *Executor::serializeLandingpad(ExecutionState &state,
+       serialized.resize(old_size + 8);
+       memcpy(serialized.data() + old_size, &ti_addr, sizeof(ti_addr));
+     } else if (lpi.isFilter(current_clause_id)) {
+-      if (current_clause->isNullValue()) {
++      llvm::Constant *filter_clause = lpi.getClause(current_clause_id);
++
++      if (filter_clause->isNullValue()) {
+         // special handling for a catch-all filter clause, i.e., "[0 x i8*]"
+         // for this case we serialize 1 element..
+         serialized.push_back(1);
+         // which is a 64bit-wide 0.
+         serialized.resize(serialized.size() + 8, 0);
+       } else {
+-        llvm::ConstantArray const *ca =
+-            cast<llvm::ConstantArray>(current_clause);
++        const auto *ca = cast<llvm::ConstantArray>(filter_clause);
+ 
+         // serialize `num_elements+1` as unsigned char
+         unsigned const num_elements = ca->getNumOperands();
+@@ -1520,18 +1527,16 @@ MemoryObject *Executor::serializeLandingpad(ExecutionState &state,
+ 
+         // serialize the exception-types occurring in this filter-clause
+         for (llvm::Value const *v : ca->operands()) {
+-          llvm::BitCastOperator const *bitcast =
+-              dyn_cast<llvm::BitCastOperator>(v);
+-          if (!bitcast) {
+-            terminateStateOnExecError(state,
+-                                      "Internal: expected value inside a "
+-                                      "filter-clause to be a bitcast");
+-            stateTerminated = true;
+-            return nullptr;
++          llvm::GlobalValue const *clause_value = nullptr;
++
++          if (auto const *bitcast = dyn_cast<llvm::BitCastOperator>(v)) {
++            clause_value = dyn_cast<GlobalValue>(bitcast->getOperand(0));
++          }
++
++          if (auto *gv = dyn_cast<llvm::GlobalVariable>(v)) {
++            clause_value = gv;
+           }
+ 
+-          llvm::GlobalValue const *clause_value =
+-              dyn_cast<GlobalValue>(bitcast->getOperand(0));
+           if (!clause_value) {
+             terminateStateOnExecError(state,
+                                       "Internal: expected value inside a "
+@@ -2150,7 +2155,7 @@ void Executor::executeInstruction(ExecutionState &state, KInstruction *ki) {
+           unwindToNextLandingpad(state);
+         } else {
+           // a clause (or a catch-all clause or filter clause) matches:
+-          // remember the stack index and switch to cleanup phase
++          // remember the stack index and switch to clean-up phase
+           state.unwindingInformation =
+               std::make_unique<CleanupPhaseUnwindingInformation>(
+                   sui->exceptionObject, cast<ConstantExpr>(result),
+@@ -2457,8 +2462,12 @@ void Executor::executeInstruction(ExecutionState &state, KInstruction *ki) {
+ 
+     if (f) {
+       const FunctionType *fType = f->getFunctionType();
++#if LLVM_VERSION_MAJOR >= 15
++      const FunctionType *fpType = cb.getFunctionType();
++#else
+       const FunctionType *fpType =
+           dyn_cast<FunctionType>(fp->getType()->getPointerElementType());
++#endif
+ 
+       // special case the call with a bitcast case
+       if (fType != fpType) {
+@@ -3365,10 +3374,17 @@ template <typename TypeIt>
+ void Executor::computeOffsetsSeqTy(KGEPInstruction *kgepi,
+                                    ref<ConstantExpr> &constantOffset,
+                                    uint64_t index, const TypeIt it) {
++#if LLVM_VERSION_CODE <= LLVM_VERSION(14, 0)
+   assert(it->getNumContainedTypes() == 1 &&
+          "Sequential type must contain one subtype");
+   uint64_t elementSize =
+       kmodule->targetData->getTypeStoreSize(it->getContainedType(0));
++#else
++  assert(it.isSequential() && "Called with non-sequential type");
++  // Get the size of a single element
++  uint64_t elementSize =
++      kmodule->targetData->getTypeStoreSize(it.getIndexedType());
++#endif
+   const Value *operand = it.getOperand();
+   if (const Constant *c = dyn_cast<Constant>(operand)) {
+     ref<ConstantExpr> index =
+@@ -3387,13 +3403,21 @@ void Executor::computeOffsets(KGEPInstruction *kgepi, TypeIt ib, TypeIt ie) {
+     ConstantExpr::alloc(0, Context::get().getPointerWidth());
+   uint64_t index = 1;
+   for (TypeIt ii = ib; ii != ie; ++ii) {
++#if LLVM_VERSION_CODE <= LLVM_VERSION(14, 0)
+     if (StructType *st = dyn_cast<StructType>(*ii)) {
++#else
++    if (StructType *st = ii.getStructTypeOrNull()) {
++#endif
+       const StructLayout *sl = kmodule->targetData->getStructLayout(st);
+       const ConstantInt *ci = cast<ConstantInt>(ii.getOperand());
+       uint64_t addend = sl->getElementOffset((unsigned) ci->getZExtValue());
+       constantOffset = constantOffset->Add(ConstantExpr::alloc(addend,
+                                                                Context::get().getPointerWidth()));
++#if LLVM_VERSION_CODE <= LLVM_VERSION(14, 0)
+     } else if (ii->isArrayTy() || ii->isVectorTy() || ii->isPointerTy()) {
++#else
++    } else if (ii.isSequential()) {
++#endif
+       computeOffsetsSeqTy(kgepi, constantOffset, index, ii);
+     } else
+       assert("invalid type" && 0);
+@@ -3405,15 +3429,66 @@ void Executor::computeOffsets(KGEPInstruction *kgepi, TypeIt ib, TypeIt ie) {
+ void Executor::bindInstructionConstants(KInstruction *KI) {
+   if (GetElementPtrInst *gepi = dyn_cast<GetElementPtrInst>(KI->inst)) {
+     KGEPInstruction *kgepi = static_cast<KGEPInstruction *>(KI);
+-    computeOffsets(kgepi, gep_type_begin(gepi), gep_type_end(gepi));
++#if LLVM_VERSION_CODE <= LLVM_VERSION(14, 0)
++    computeOffsets(kgepi, klee::gep_type_begin(gepi), klee::gep_type_end(gepi));
++#else
++    computeOffsets(kgepi, llvm::gep_type_begin(gepi), llvm::gep_type_end(gepi));
++#endif
+   } else if (InsertValueInst *ivi = dyn_cast<InsertValueInst>(KI->inst)) {
+     KGEPInstruction *kgepi = static_cast<KGEPInstruction *>(KI);
++#if LLVM_VERSION_CODE <= LLVM_VERSION(10, 0)
+     computeOffsets(kgepi, iv_type_begin(ivi), iv_type_end(ivi));
+     assert(kgepi->indices.empty() && "InsertValue constant offset expected");
++#else
++    llvm::Value *agg = ivi->getAggregateOperand();
++    llvm::Type *current_type = agg->getType();
++    uint64_t offset = 0;
++    for (auto index : ivi->indices()) {
++      if (StructType *st = dyn_cast<llvm::StructType>(current_type)) {
++        const StructLayout *sl = kmodule->targetData->getStructLayout(st);
++        uint64_t addend = sl->getElementOffset(index);
++        offset = offset + addend;
++      } else if (current_type->isArrayTy() || current_type->isVectorTy() ||
++                 current_type->isPointerTy()) {
++        uint64_t elementSize = kmodule->targetData->getTypeStoreSize(
++            current_type->getArrayElementType());
++        offset += elementSize * index;
++      } else {
++        assert(0 && "Unknown type");
++      }
++
++      current_type = GetElementPtrInst::getTypeAtIndex(current_type, index);
++    }
++    kgepi->offset = offset;
++#endif
+   } else if (ExtractValueInst *evi = dyn_cast<ExtractValueInst>(KI->inst)) {
+     KGEPInstruction *kgepi = static_cast<KGEPInstruction *>(KI);
++#if LLVM_VERSION_CODE <= LLVM_VERSION(10, 0)
+     computeOffsets(kgepi, ev_type_begin(evi), ev_type_end(evi));
+     assert(kgepi->indices.empty() && "ExtractValue constant offset expected");
++#else
++
++    llvm::Value *agg = evi->getAggregateOperand();
++    llvm::Type *current_type = agg->getType();
++    uint64_t offset = 0;
++    for (auto index : evi->indices()) {
++      if (StructType *st = dyn_cast<llvm::StructType>(current_type)) {
++        const StructLayout *sl = kmodule->targetData->getStructLayout(st);
++        uint64_t addend = sl->getElementOffset(index);
++        offset = offset + addend;
++      } else if (current_type->isArrayTy() || current_type->isVectorTy() ||
++                 current_type->isPointerTy()) {
++        uint64_t elementSize = kmodule->targetData->getTypeStoreSize(
++            current_type->getArrayElementType());
++        offset += elementSize * index;
++      } else {
++        assert(0 && "Unknown type");
++      }
++
++      current_type = GetElementPtrInst::getTypeAtIndex(current_type, index);
++    }
++    kgepi->offset = offset;
++#endif
+   }
+ }
+ 
+diff --git a/lib/Core/ExternalDispatcher.cpp b/lib/Core/ExternalDispatcher.cpp
+index 718b1c31..7b43218b 100644
+--- a/lib/Core/ExternalDispatcher.cpp
++++ b/lib/Core/ExternalDispatcher.cpp
+@@ -250,7 +250,7 @@ bool ExternalDispatcherImpl::runProtectedCall(Function *f, uint64_t *args) {
+ }
+ 
+ // FIXME: This might have been relevant for the old JIT but the MCJIT
+-// has a completly different implementation so this comment below is
++// has a completely different implementation so this comment below is
+ // likely irrelevant and misleading.
+ //
+ // For performance purposes we construct the stub in such a way that the
+@@ -283,13 +283,20 @@ Function *ExternalDispatcherImpl::createDispatcher(KCallable *target,
+ 
+   llvm::IRBuilder<> Builder(dBB);
+   // Get a Value* for &gTheArgsP, as an i64**.
++#if LLVM_VERSION_CODE >= LLVM_VERSION(15, 0)
++  auto argI64sp = Builder.CreateIntToPtr(
++      ConstantInt::get(Type::getInt64Ty(ctx), (uintptr_t)&gTheArgsP),
++      PointerType::getUnqual(PointerType::getUnqual(Type::getInt64Ty(ctx))),
++      "argsp");
++  auto argI64s = Builder.CreateLoad(Builder.getPtrTy(), argI64sp, "args");
++#else
+   auto argI64sp = Builder.CreateIntToPtr(
+       ConstantInt::get(Type::getInt64Ty(ctx), (uintptr_t)(void *)&gTheArgsP),
+       PointerType::getUnqual(PointerType::getUnqual(Type::getInt64Ty(ctx))),
+       "argsp");
+   auto argI64s = Builder.CreateLoad(
+       argI64sp->getType()->getPointerElementType(), argI64sp, "args");
+-
++#endif
+   // Get the target function type.
+   FunctionType *FTy = target->getFunctionType();
+ 
+@@ -306,6 +313,14 @@ Function *ExternalDispatcherImpl::createDispatcher(KCallable *target,
+     if (argTy->isX86_FP80Ty() && idx & 0x01)
+       idx++;
+ 
++#if LLVM_VERSION_CODE >= LLVM_VERSION(15, 0)
++    auto argI64p =
++        Builder.CreateGEP(Builder.getPtrTy(), argI64s,
++                          ConstantInt::get(Type::getInt32Ty(ctx), idx));
++
++    auto argp = Builder.CreateBitCast(argI64p, PointerType::getUnqual(argTy));
++    args[i] = Builder.CreateLoad(argTy, argp);
++#else
+     auto argI64p =
+         Builder.CreateGEP(argI64s->getType()->getPointerElementType(), argI64s,
+                           ConstantInt::get(Type::getInt32Ty(ctx), idx));
+@@ -313,6 +328,7 @@ Function *ExternalDispatcherImpl::createDispatcher(KCallable *target,
+     auto argp = Builder.CreateBitCast(argI64p, PointerType::getUnqual(argTy));
+     args[i] =
+         Builder.CreateLoad(argp->getType()->getPointerElementType(), argp);
++#endif
+ 
+     unsigned argSize = argTy->getPrimitiveSizeInBits();
+     idx += ((!!argSize ? argSize : 64) + 63) / 64;
+diff --git a/lib/Core/GetElementPtrTypeIterator.h b/lib/Core/GetElementPtrTypeIterator.h
+index d8b0e097..4e0314cb 100644
+--- a/lib/Core/GetElementPtrTypeIterator.h
++++ b/lib/Core/GetElementPtrTypeIterator.h
+@@ -144,14 +144,6 @@ public:
+     return iv_type_iterator::end(IV->idx_end());
+   }
+ 
+-  inline vce_type_iterator vce_type_begin(const llvm::ConstantExpr *CE) {
+-    return vce_type_iterator::begin(CE->getOperand(0)->getType(),
+-                                    CE->getIndices().begin());
+-  }
+-  inline vce_type_iterator vce_type_end(const llvm::ConstantExpr *CE) {
+-    return vce_type_iterator::end(CE->getIndices().end());
+-  }
+-
+   template <typename ItTy>
+   inline generic_gep_type_iterator<ItTy> gep_type_begin(llvm::Type *Op0, ItTy I,
+                                                         ItTy E) {
+diff --git a/lib/Module/FunctionAlias.cpp b/lib/Module/FunctionAlias.cpp
+index aa80b35d..c00bde58 100644
+--- a/lib/Module/FunctionAlias.cpp
++++ b/lib/Module/FunctionAlias.cpp
+@@ -134,10 +134,16 @@ bool FunctionAliasPass::runOnModule(Module &M) {
+ }
+ 
+ const FunctionType *FunctionAliasPass::getFunctionType(const GlobalValue *gv) {
++#if LLVM_VERSION_CODE >= LLVM_VERSION(15, 0)
++  if (auto *ft = dyn_cast<FunctionType>(gv->getType()))
++    return ft;
++  return dyn_cast<FunctionType>(gv->getValueType());
++#else
+   const Type *type = gv->getType();
+   while (type->isPointerTy())
+     type = type->getPointerElementType();
+-  return cast<FunctionType>(type);
++  return dyn_cast<FunctionType>(type);
++#endif
+ }
+ 
+ bool FunctionAliasPass::checkType(const GlobalValue *match,
+diff --git a/lib/Module/IntrinsicCleaner.cpp b/lib/Module/IntrinsicCleaner.cpp
+index ad7c0631..40ff2874 100644
+--- a/lib/Module/IntrinsicCleaner.cpp
++++ b/lib/Module/IntrinsicCleaner.cpp
+@@ -100,9 +100,14 @@ bool IntrinsicCleanerPass::runOnBasicBlock(BasicBlock &b, Module &M) {
+               Builder.CreatePointerCast(dst, i8pp, "vacopy.cast.dst");
+           auto castedSrc =
+               Builder.CreatePointerCast(src, i8pp, "vacopy.cast.src");
++#if LLVM_VERSION_CODE >= LLVM_VERSION(15, 0)
++          auto load = Builder.CreateLoad(Builder.getInt8PtrTy(), castedSrc,
++                                         "vacopy.read");
++#else
+           auto load =
+               Builder.CreateLoad(castedSrc->getType()->getPointerElementType(),
+                                  castedSrc, "vacopy.read");
++#endif
+           Builder.CreateStore(load, castedDst, false /* isVolatile */);
+         } else {
+           assert(WordSize == 8 && "Invalid word size!");
+@@ -110,9 +115,13 @@ bool IntrinsicCleanerPass::runOnBasicBlock(BasicBlock &b, Module &M) {
+           auto pDst = Builder.CreatePointerCast(dst, i64p, "vacopy.cast.dst");
+           auto pSrc = Builder.CreatePointerCast(src, i64p, "vacopy.cast.src");
+ 
++#if LLVM_VERSION_CODE >= LLVM_VERSION(15, 0)
++          auto pSrcType = Builder.getPtrTy();
++          auto pDstType = Builder.getPtrTy();
++#else
+           auto pSrcType = pSrc->getType()->getPointerElementType();
+           auto pDstType = pDst->getType()->getPointerElementType();
+-
++#endif
+           auto val = Builder.CreateLoad(pSrcType, pSrc);
+           Builder.CreateStore(val, pDst, ii);
+ 
+-- 
+2.43.0
+

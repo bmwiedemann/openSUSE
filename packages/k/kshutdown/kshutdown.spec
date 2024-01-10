@@ -1,9 +1,9 @@
 #
 # spec file for package kshutdown
 #
+# Copyright (c) 2020 SUSE LLC
 # Copyright © 2010 Lubos Lunak <llunak@novell.com>
 # Copyright © 2011 Buschmann <buschmann23@opensuse.org>
-# Copyright © 2016 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright © 2014–2019 Markus S <kamikazow@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -14,36 +14,40 @@
 # case the license is the MIT License). An "Open Source License" is a
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-Name:             kshutdown
-Version:          5.2
-Release:          0
-Summary:          Graphical shutdown utility
-License:          GPL-2.0-or-later
-Url:              https://kshutdown.sourceforge.io/
-Group:            System/GUI/KDE
-Source0:          %{name}-source-%{version}.zip
+
+Name:           kshutdown
+Version:        5.2
+Release:        0
+Summary:        Graphical shutdown utility
+License:        GPL-2.0-or-later
+Group:          System/GUI/KDE
+URL:            https://kshutdown.sourceforge.io/
+Source0:        %{name}-source-%{version}.zip
+BuildRequires:  extra-cmake-modules
 Requires(post):   hicolor-icon-theme
 Requires(post):   update-desktop-files
 Requires(postun): hicolor-icon-theme
 Requires(postun): update-desktop-files
-BuildRequires:    cmake(KF5Config)
-BuildRequires:    cmake(KF5ConfigWidgets)
-BuildRequires:    cmake(KF5Crash)
-BuildRequires:    cmake(KF5DBusAddons)
-BuildRequires:    cmake(KF5GlobalAccel)
-BuildRequires:    cmake(KF5I18n)
-BuildRequires:    cmake(KF5IdleTime)
-BuildRequires:    cmake(KF5Notifications)
-BuildRequires:    cmake(KF5NotifyConfig)
-BuildRequires:    cmake(KF5XmlGui)
-BuildRequires:    pkgconfig(Qt5Core)
-BuildRequires:    pkgconfig(Qt5DBus)
-BuildRequires:    pkgconfig(Qt5Gui)
-BuildRequires:    pkgconfig(Qt5Widgets)
-BuildRequires:    unzip
-BuildRoot:        %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  unzip
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5ConfigWidgets)
+BuildRequires:  cmake(KF5Crash)
+BuildRequires:  cmake(KF5DBusAddons)
+BuildRequires:  cmake(KF5GlobalAccel)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5IdleTime)
+BuildRequires:  cmake(KF5Notifications)
+BuildRequires:  cmake(KF5NotifyConfig)
+BuildRequires:  cmake(KF5XmlGui)
+BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(Qt5DBus)
+BuildRequires:  pkgconfig(Qt5Gui)
+BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 KShutdown is a graphical shutdown utility that works

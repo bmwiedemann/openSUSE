@@ -1,6 +1,6 @@
 --- a/src/format_ext2_kernel.ml
 +++ b/src/format_ext2_kernel.ml
-@@ -225,6 +225,16 @@ and get_kernel_version debug kernel_file
+@@ -252,6 +252,16 @@ and get_kernel_version debug kernel_file
    | None ->
       (* Try to work it out from the filename instead. *)
       let basename = Filename.basename kernel_file in

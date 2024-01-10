@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5DNSSD5
-%define _tar_path 5.103
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
+%define qt5_version 5.15.2
 %bcond_without released
 Name:           kdnssd-framework
-Version:        5.112.0
+Version:        5.113.0
 Release:        0
 Summary:        Network service discovery using Zeroconf
 License:        LGPL-2.1-or-later
@@ -35,12 +35,11 @@ Source1:        kdnssd-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
 BuildRequires:  avahi-compat-mDNSResponder-devel
-BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
+BuildRequires:  extra-cmake-modules >= %{_kf5_version}
 BuildRequires:  fdupes
-BuildRequires:  kf5-filesystem
-BuildRequires:  cmake(Qt5DBus) >= 5.15.0
-BuildRequires:  cmake(Qt5LinguistTools) >= 5.15.0
-BuildRequires:  cmake(Qt5Network) >= 5.15.0
+BuildRequires:  cmake(Qt5DBus) >= %{qt5_version}
+BuildRequires:  cmake(Qt5LinguistTools) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Network) >= %{qt5_version}
 
 %description
 KDNSSD is a library for handling the DNS-based Service Discovery Protocol
@@ -63,8 +62,7 @@ centralized infrastructure.
 %package devel
 Summary:        Network service discovery using Zeroconf
 Requires:       %{lname} = %{version}
-Requires:       extra-cmake-modules
-Requires:       cmake(Qt5Network) >= 5.15.0
+Requires:       cmake(Qt5Network) >= %{qt5_version}
 
 %description devel
 KDNSSD is a library for handling the DNS-based Service Discovery Protocol

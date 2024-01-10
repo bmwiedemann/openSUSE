@@ -49,4 +49,14 @@
   * Build wheels for PyPI. [#200]</comment>
     <requestid>1130392</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>99084ace226d5deae20ebc9fdfd3de51</srcmd5>
+    <version>1.0.2</version>
+    <time>1703800878</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.2:
+  * lonlat_to_healpix now correctly returns -1 if the longitude
+    or latitude is NaN or infinite. [#208]</comment>
+    <requestid>1135247</requestid>
+  </revision>
 </revisionlist>

@@ -18,14 +18,18 @@
 
 %define sover 0
 Name:           lsof
-Version:        4.99.0
+Version:        4.99.3
 Release:        0
 Summary:        A Program That Lists Information about Files Opened by Processes
 License:        Zlib
 Group:          System/Monitoring
 URL:            https://github.com/lsof-org/lsof
-Source:         https://github.com/lsof-org/lsof/releases/download/%{version}/%{name}-%{version}.tar.gz
+Source:         https://github.com/lsof-org/lsof/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         lsof-4.99.3-fix-version-in-configure-ac.patch
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  groff
+BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libselinux)
 BuildRequires:  pkgconfig(libtirpc)
@@ -61,6 +65,7 @@ This package contains the files required to build with liblsof.
 %autosetup -p1
 
 %build
+autoreconf -fiv
 %configure
 %make_build
 
@@ -82,7 +87,7 @@ echo 'int main () { return 77; }' > tests/LTbasic2.c
 
 %files
 %license COPYING
-%doc  ChangeLog README 00*
+%doc ChangeLog README 00*
 %{_bindir}/lsof
 %{_mandir}/man8/lsof.8%{?ext_man}
 

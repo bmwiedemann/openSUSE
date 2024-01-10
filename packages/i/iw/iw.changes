@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Jan  4 08:18:35 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.7:
+  * update nl80211.h
+  * bump version to 6.7
+  * update nl80211.h
+  * iw: allow extra cflags
+  * iw: S1G: add 802.11ah support for link command display
+  * update nl80211.h
+  * iw: connect: Fix segfault during open authentication
+  * iw: fix attribute size mismatch
+  * iw: add more extended capa bits
+  * iw: Fix EHT rates printing.
+  * iw: S1G: add list command support for 802.11ah
+  * iw: S1G: add parsing for 802.11ah scan IE's
+  * iw: S1G: add frequency set in kHz and offset options
+  * util: don't print EHT info if not present
+  * interface: print links
+  * link: update for MLO
+  * link: fix some formatting
+  * iw: scan: set NL80211_SCAN_FLAG_COLOCATED_6GHZ in case of full sched scan
+  * util: add support for 320MHz bandwidth without cf1
+  * util: add support for 320Mhz bandwidth
+  * update nl80211.h
+  * iw: event: fix printf format error
+  * iw: add support for retrieving keys
+  * iw: info: fix bug reading preambles and bandwidths
+  * iw: add cac background command
+  * iw: info: print PMSR capabilities
+
+-------------------------------------------------------------------
 Tue May 31 08:34:22 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 5.19:

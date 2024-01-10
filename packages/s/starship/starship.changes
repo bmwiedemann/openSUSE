@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Dec 29 03:13:08 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 1.17.0:
+  * Features:
+    - add additional exit status code meanings from libc.
+    - add typst module.
+    - aws: Adding the AWS SSO CLI env variable to profile list.
+    - direnv: add new direnv module.
+    - fossil_metrics: add fossil_metrics module.
+    - hostname: add detect_env_vars as option.
+    - kubernetes: Add styling based on current context.
+    - R lang packages version, remove .Rprofile from rlang detection.
+    - scanner: add option not to follow symlinks.
+    - shell: allow distinguishing between pwsh and powershell.
+  * Bug Fixes:
+    - bash: unbound variable error with STARSHIP_PREEXEC_READY.
+    - docker_context: ignore unix domain socket path from 
+      Docker Context.
+    - git_status: Avoid printing error on missing stash ref.
+    - git: prevent core.fsmonitor from executing external commands.
+    - pastel-powerline: remove $path from docker-context module 
+      format string.
+  * Performance Improvements:
+    - git_status: avoid running in bare repos.
+    - Skip unnecessary indirection in starship init zsh.
+
+-------------------------------------------------------------------
 Mon Jul 31 04:14:13 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 1.16.0:

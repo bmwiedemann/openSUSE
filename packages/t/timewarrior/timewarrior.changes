@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jan  2 19:37:12 UTC 2024 - Benedikt Fein <benedikt.fein@gmail.com>
+
+- Update to 1.7.0
+  * #205    Wrap annotations in summary
+  * #493    :lastweek doesn't count last Sunday
+  * #494    Expand annotations in summary
+  * #566    Set table width dynamically to terminal width
+  * #573    Filter summary based on ids
+  * #576    Fix quoting of tags in DOM output
+  *         Add ':today' hint
+  *         Refactor holidays/refresh script
+  *         Update task-timewarrior-hook script to
+            87a3426d8153f92aaee2edf36b2de62e48c4de0e
+- Update URL to timewarrior.net
+
+-------------------------------------------------------------------
 Wed Sep 27 06:53:15 UTC 2023 - Benedikt Fein <benedikt.fein@gmail.com>
 
 - Update to 1.6.0

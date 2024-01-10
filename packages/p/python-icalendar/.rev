@@ -332,4 +332,41 @@
     The master branch will be for the remaining Python versions that we support.</comment>
     <requestid>1007443</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>412638f87a7a2bb0ad97658a3d67dece</srcmd5>
+    <version>5.0.11</version>
+    <time>1702845191</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.0.11:
+  * The cli utility now displays start and end datetimes in the
+    user's local timezone.
+  * Added fuzzing harnesses, for integration to OSSFuzz.
+  * icalendar releases are deployed to Github releases
+  * CATEGORIES field now accepts a string as argument
+  * Multivalue FREEBUSY property is now parsed properly
+  * Compare equality and inequality of calendars more completely
+  * Use non legacy timezone name.
+  * Add some compare functions.
+  * Change OSS Fuzz build script to point to harnesses in fuzzing
+    directory
+  * Component._encode stops ignoring parameters argument on
+    native values, now merges them
+  * PERIOD values now set the timezone of their start and end.
+  * No longer run the ``plone.app.event`` tests.
+  * Add documentation on how to parse ``.ics`` files. #152
+  * Move pip caching into Python setup action.
+  * Check that issue #165 can be closed.
+  * Updated about.rst for issue #527
+  * Avoid ``vText.__repr__`` BytesWarning.
+  * Calendar components are now properly compared
+  * to_ical() now accepts RRULE BYDAY values&gt;=10 #518
+  * Adjusted duration regex
+  * Added support for BYWEEKDAY in vRecur ref: #268
+  * Fix problem with ORGANIZER in FREE/BUSY #348
+  * vDDDTypes is hashable #487 #492 [niccokunzmann]
+  * Minor changes:
+  * Refactored cal.py, tools.py and completed remaining minimal
+    refactoring in parser.py. Ref: #481 [pronoym99]</comment>
+    <requestid>1133683</requestid>
+  </revision>
 </revisionlist>

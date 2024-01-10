@@ -308,4 +308,23 @@
     <comment></comment>
     <requestid>995204</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>e8992278856cde04ef7c1e947d8c4825</srcmd5>
+    <version>0.11.0~20231201T052657</version>
+    <time>1702673387</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.11.0~20231201T052657:
+  * optionally maximise panel size in presence of maximised windows
+- remove -lang tarball to use po files from git instead
+- hardlink svg duplicate with fdupes (forwarded request 1132276 from iDesmI)</comment>
+    <requestid>1133353</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>e5adcccc27fb61a89f148d4e22aeb588</srcmd5>
+    <version>0.11.0~20231201T052657</version>
+    <time>1702845090</time>
+    <user>anag+factory</user>
+    <comment>Require extra-cmake-modules at build time</comment>
+    <requestid>1133542</requestid>
+  </revision>
 </revisionlist>

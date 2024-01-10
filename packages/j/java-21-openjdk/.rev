@@ -31,4 +31,12 @@
     <comment>Make this preferred JDK</comment>
     <requestid>1120846</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>3ebfb7fdcfae6ad98272e784c30a9cb9</srcmd5>
+    <version>21.0.1.0</version>
+    <time>1702673223</time>
+    <user>anag+factory</user>
+    <comment>fix fips mode</comment>
+    <requestid>1133105</requestid>
+  </revision>
 </revisionlist>

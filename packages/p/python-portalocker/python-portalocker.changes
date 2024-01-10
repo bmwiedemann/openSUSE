@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jan  7 20:28:35 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.8.2:
+  * Removed docs from build to fix #88 again
+- update to 2.8.0:
+  * Added support for Python 3.11 and 3.12
+    Made the package fully ruff, pyright and mypy compliant with
+    automated testsing using both tox and Github actions
+
+-------------------------------------------------------------------
 Fri May  5 07:31:01 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 2.7.0:

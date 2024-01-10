@@ -29,4 +29,12 @@ Please, put in  openSUSE:Factory:Staging:adi:18 </comment>
     <comment></comment>
     <requestid>1081991</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>43bcb4c72bb083cbaea5d5a4f450b8be</srcmd5>
+    <version>2.2.2</version>
+    <time>1703527484</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1134635</requestid>
+  </revision>
 </revisionlist>

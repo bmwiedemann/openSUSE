@@ -16,9 +16,9 @@
 #
 
 
-%define libver  4_5_5
+%define libver  4_6_3
 Name:           rssguard
-Version:        4.5.5
+Version:        4.6.3
 Release:        0
 Summary:        RSS/ATOM/RDF feed reader
 Group:          Productivity/Networking/News/Clients
@@ -44,6 +44,7 @@ BuildRequires:  cmake(Qt5Sql)
 BuildRequires:  cmake(Qt5WebEngine)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
+BuildRequires:  pkgconfig(mpv)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(zlib)
 Recommends:     nodejs
@@ -75,7 +76,7 @@ Shared library for %{name} to be used by external plugins.
 find src/librssguard -name "*.h" -exec chmod -x {} \;
 
 %build
-%cmake
+%cmake -DBUILD_WITH_QT6:BOOL=OFF
 %cmake_build
 
 %install

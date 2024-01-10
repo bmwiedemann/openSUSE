@@ -128,4 +128,12 @@ packages. This library is fasted, easier to maintain and easier for a user to co
 </comment>
     <requestid>1132774</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fc3582b4faa623ec83073496bb155ee9</srcmd5>
+    <version>0.9.0</version>
+    <time>1704281239</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1135890</requestid>
+  </revision>
 </revisionlist>

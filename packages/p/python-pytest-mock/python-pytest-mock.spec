@@ -24,6 +24,8 @@ Summary:        Thin-wrapper around the mock package for easier use with pytest
 License:        MIT
 URL:            https://github.com/pytest-dev/pytest-mock
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-mock/pytest-mock-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM: fix-tests-python3117.patch gh#pytest-dev/pytest-mock#403
+Patch0:         fix-tests-python3117.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pytest >= 5}
 BuildRequires:  %{python_module pytest-asyncio}

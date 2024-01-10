@@ -4660,4 +4660,24 @@ oddjob-gpupdate isn't blocked)</comment>
   * Revert &quot;Disable Mageia CI builds due to system problem&quot;</comment>
     <requestid>1132520</requestid>
   </revision>
+  <revision rev="463" vrev="1">
+    <srcmd5>7b60ad9b8c9d740af3b75bdb6e280532</srcmd5>
+    <version>2.5.0+git20231214.5f62def</version>
+    <time>1702673246</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.5.0+git20231214.5f62def:
+  * Fix Aeon/Kalpa whitelisting distinct filenames (bsc#1217706, bsc#1217707)
+- Update to version 2.5.0+git20231214.ab9d731:
+  * polkit rules whitelisting: add gamemode rules (bsc#1217915)
+</comment>
+    <requestid>1133150</requestid>
+  </revision>
+  <revision rev="464" vrev="1">
+    <srcmd5>a92c41c0f2b95b16dce1283f29e64649</srcmd5>
+    <version>2.5.0+git20231220.9e24b84</version>
+    <time>1703198286</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1134284</requestid>
+  </revision>
 </revisionlist>

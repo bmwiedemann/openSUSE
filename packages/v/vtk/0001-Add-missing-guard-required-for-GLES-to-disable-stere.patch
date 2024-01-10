@@ -80,23 +80,6 @@ index 46064d3360..f5b7f6f0c3 100644
  
    ostate->vtkglDrawBuffer(this->DoubleBuffer ? GL_BACK_LEFT : GL_FRONT_LEFT);
    // bind the read buffer to detach the display framebuffer to be safe
-diff --git a/ThirdParty/glew/vtk_glew.h.in b/ThirdParty/glew/vtk_glew.h.in
-index 1763e79319..8b3074b357 100644
---- a/ThirdParty/glew/vtk_glew.h.in
-+++ b/ThirdParty/glew/vtk_glew.h.in
-@@ -52,10 +52,8 @@
- 
- /* some fixes for both ES 2 and 3 */
- #ifdef GL_ES_VERSION_3_0
--#define GL_BACK_LEFT 0
--#define GL_BACK_RIGHT 0
--#define GL_FRONT_LEFT 0
--#define GL_FRONT_RIGHT 0
-+#define GL_BACK_LEFT GL_BACK
-+#define GL_FRONT_LEFT GL_FRONT
- 
- /* this sends all the data each time as opposed to allowing a subset */
- #define glMultiDrawElements(mode, counts, type, indicies, primcount)                               \
 -- 
 2.33.1
 

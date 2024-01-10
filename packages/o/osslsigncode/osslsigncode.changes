@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Dec 20 09:35:53 UTC 2023 - Radoslav Kolev <radoslav.kolev@suse.com>
+
+- update to 2.7.0
+  * fixed signing CAB files (by Michael Brown)
+  * fixed handling of unsupported commands (by Maxim Bagryantsev)
+  * fixed writing DIFAT sectors
+  * added APPX support (by Maciej Panek and Małgorzata Olszówka)
+  * added a built-in TSA response generation (-TSA-certs, -TSA-key
+    and -TSA-time options)
+  * added verification of CRLs specified in the signing certificate
+  * added MSI DIFAT sectors support (by Max Bagryantsev)
+  * added the "-h" option to set the cryptographic hash function for the
+    "attach -signature" and "add" commands
+  * set the default hash function to "sha256"
+  * added the "attach-signature" option to compute and compare the leaf
+    certificate hash for the "add" command
+  * renamed the "-st" option "-time"
+  * updated the "-time" option to also set explicit verification time
+  * added the "-ignore-timestamp" option
+  * removed the "-timestamp-expiration" option
+  * numerous bugfixes
+  * documentation updates
+- build system changed to cmake
+- use source code tag instead of release artifact for source
+- updated URL
+- removed gpg check, signature no longer available from upstream
+
+-------------------------------------------------------------------
 Sun Apr 10 15:30:02 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.3.0:

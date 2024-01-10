@@ -1,7 +1,7 @@
 #
 # spec file for package sudo
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%if %{defined _distconfdir}
+%if %{defined _distconfdir} && 0%{?suse_version} >= 1600
 %define confdir %{_distconfdir}
 %define confmode 0444
 %else
@@ -25,7 +25,7 @@
 %endif
 
 Name:           sudo
-Version:        1.9.15p2
+Version:        1.9.15p5
 Release:        0
 Summary:        Execute some commands as root
 License:        ISC

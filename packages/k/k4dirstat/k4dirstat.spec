@@ -23,7 +23,7 @@ Summary:        Graphical Disk Usage Utility
 License:        GPL-2.0-only AND LGPL-2.0-only
 URL:            https://github.com/jeromerobert/k4dirstat
 Source0:        https://github.com/jeromerobert/k4dirstat/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  kf5-filesystem
+BuildRequires:  extra-cmake-modules
 BuildRequires:  update-desktop-files
 BuildRequires:  zlib-devel
 BuildRequires:  cmake(KF5CoreAddons)

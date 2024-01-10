@@ -97,4 +97,21 @@
     <comment></comment>
     <requestid>1101762</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f45268c83633c30b1a06888a3ab76b15</srcmd5>
+    <version>2.16.1</version>
+    <time>1703800956</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.16.1:
+  * Require ``setuptools_scm`` version ``1.5.4``\+
+  * Add ``docs`` requirements to ``pyproject.toml``
+  * Fixed caching issue in ``LRUStoreCache``.
+
+  * More maintenance changes, special thanks to Outreachy participants
+  * Improve Zarr V3 support, adding partial store read/write and
+  * N5 nows supports Blosc. Remove warnings emitted when using N5Store
+  * Implement more extensive fallback of getitem/setitem for
+- required by dask</comment>
+    <requestid>1135342</requestid>
+  </revision>
 </revisionlist>

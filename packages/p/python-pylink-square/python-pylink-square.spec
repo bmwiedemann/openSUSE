@@ -18,16 +18,16 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pylink-square
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Python interface for SEGGER J-Link
 License:        Apache-2.0
 URL:            http://www.github.com/Square/pylink
 Source:         https://files.pythonhosted.org/packages/source/p/pylink-square/pylink-square-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module psutil >= 5.2.2}
@@ -38,7 +38,7 @@ BuildRequires:  fdupes
 Requires:       python-psutil >= 5.2.2
 Requires:       python-six
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 

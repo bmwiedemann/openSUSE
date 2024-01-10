@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Jan  4 13:38:59 MST 2024 - carnold@suse.com
+
+- Update to virt-v2v 2.4.0 (jsc#PED-6305)
+  * New --block-driver option which can be used to choose to
+    install either virtio-blk or virtio-scsi drivers
+  * The virt-v2v --key option now recognizes LVM names like
+    /dev/mapper/rhel_bootp--73--75--123-root
+  * The --key option also supports a new --key all:... selector to
+    try the same key on all devices.
+  * Conversions now set the host-model CPU in the output metadata,
+    except where the source hypervisor overrides this. The
+    exception is -o qemu mode which uses -cpu host.
+  * virt-v2v will now look for bootloader configuration in
+    /boot/grub/grub.cfg for UEFI guests
+  * Invoke pnputil (if available) to install drivers, fixing some
+    Windows conversions
+  * Skip SELinux relabelling if the guest has disabled SELinux
+  * Several output modes now generate metadata to indicate whether
+    the guest requires the RTC to be set to UTC (Linux) or
+    localtime (most Windows). For example with -o libvirt this
+    generates <clock offset="utc|localtime"/>.
+  * -i ova mode is now less strict about parsing the manifest file,
+    which helps when converting some non-conforming OVA files.
+  * Input modes using -it ssh now use the correct quoting
+  * -i vmx mode now rejects VMDK files explicitly, reducing a
+    source of user confusion
+  * Multiple fixes to -o kubevirt mode. Also implement -oo
+    compressed for this mode.
+  * -o libvirt mode now supports Rocky Linux
+  * -o openstack documentation for cloud configurations fixed
+  * -o rhv-upload mode has an improved error when the -os parameter
+    is invalid or missing
+  * Remove support for RHEL 3
+  * Various language translation updates
+- Drop patches
+  fix-compiler-error-Stdlib.stderr.patch
+  fix-linker-error.patch
+
+-------------------------------------------------------------------
 Thu Nov 30 22:22:22 UTC 2023 - olaf@aepfle.de
 
 - Remove obsolete requirement for ocaml-gettext-stub-devel

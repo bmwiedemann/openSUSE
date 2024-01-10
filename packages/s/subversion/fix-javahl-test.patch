@@ -1,8 +1,6 @@
-Index: subversion/bindings/javahl/tests/org/apache/subversion/javahl/BasicTests.java
-===================================================================
---- subversion/bindings/javahl/tests/org/apache/subversion/javahl/BasicTests.java.orig
-+++ subversion/bindings/javahl/tests/org/apache/subversion/javahl/BasicTests.java
-@@ -4743,7 +4743,19 @@ public class BasicTests extends SVNTests
+--- a/subversion/bindings/javahl/tests/org/apache/subversion/javahl/BasicTests.java.orig
++++ b/subversion/bindings/javahl/tests/org/apache/subversion/javahl/BasicTests.java
+@@ -4744,7 +4744,19 @@ public class BasicTests extends SVNTests
                  ex.printStackTrace();
          }
  

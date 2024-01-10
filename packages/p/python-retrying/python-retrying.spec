@@ -1,7 +1,7 @@
 #
 # spec file for package python-retrying
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,16 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-retrying
 Version:        1.3.4
 Release:        0
 Summary:        Retrying library for Python
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/rholder/retrying
 Source:         https://files.pythonhosted.org/packages/source/r/retrying/retrying-%{version}.tar.gz
-BuildRequires:  %{python_module base}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-six >= 1.7.0
@@ -40,15 +40,17 @@ simplify the task of adding retry behavior to just about anything.
 %setup -q -n retrying-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %license LICENSE
 %doc AUTHORS.rst README.rst
-%{python_sitelib}/*
+%{python_sitelib}/retrying.py
+%pycache_only %{python_sitelib}/__pycache__/retrying.*.py*
+%{python_sitelib}/retrying-%{version}.dist-info
 
 %changelog

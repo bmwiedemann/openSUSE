@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Dec 27 16:08:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.14.1:
+  * Remove deprecated code from vispy.color.get\_colormap
+  * Cache make_pattern on DashAtlas
+  * Add push/pop gl_state for visuals
+  * Add primitive picking filters for Mesh and Markers visuals
+  * Fix spherical markers depth buffer with scaling='visual'
+  * Fix mesh shading with flipped normals
+
+-------------------------------------------------------------------
 Wed Jul 19 04:42:21 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.13.0:
@@ -9,7 +20,7 @@ Wed Jul 19 04:42:21 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
     meshes
   * Instanced mesh example
   * Use QNativeEventGesture for touchpad gesture input
-  * Fix TypeError with pinch-to-zoom 
+  * Fix TypeError with pinch-to-zoom
 - Replace setuptools_scm_git_archive BuildRequires with setuptools_scm.
 
 -------------------------------------------------------------------
@@ -38,7 +49,7 @@ Sat Mar 20 12:41:30 UTC 2021 - Michael Ströder <michael@stroeder.com>
 -------------------------------------------------------------------
 Fri Feb 12 15:01:08 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- skip python 3.6 from build 
+- skip python 3.6 from build
 
 -------------------------------------------------------------------
 Wed Feb  5 14:10:31 UTC 2020 - Todd R <toddrme2178@gmail.com>
@@ -64,21 +75,21 @@ Wed Feb  5 14:10:31 UTC 2020 - Todd R <toddrme2178@gmail.com>
     * Fixed a bug in linking two flycameras
   + Merged pull requests
     * Fix additional numpy warnings when dealing with dtypes of size 1
-    
+
 -------------------------------------------------------------------
 Tue Nov 19 20:01:11 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to 0.16.2
   + Enhancements
-    * Switch to setuptools_scm for automatic version numbering 
-    * Improve PanZoom camera performance when non-+z direction is used 
+    * Switch to setuptools_scm for automatic version numbering
+    * Improve PanZoom camera performance when non-+z direction is used
   + Fixed bugs
-    * Fix Python 3.8 compatibility in Canvas 'keys' update 
-    * Fix VolumeVisual modifying user provided data in-place 
-    * Fix depth buffer precision 
-    * Volume visual has unset variable texture2D\_LUT 
-    * Fix MarkersVisual.set_data crash when pos is None 
-    * Fix numpy futurewarning in dtype creation 
+    * Fix Python 3.8 compatibility in Canvas 'keys' update
+    * Fix VolumeVisual modifying user provided data in-place
+    * Fix depth buffer precision
+    * Volume visual has unset variable texture2D\_LUT
+    * Fix MarkersVisual.set_data crash when pos is None
+    * Fix numpy futurewarning in dtype creation
 
 -------------------------------------------------------------------
 Fri Aug  2 15:27:16 UTC 2019 - Todd R <toddrme2178@gmail.com>

@@ -1,7 +1,41 @@
 -------------------------------------------------------------------
+Sat Jan  6 17:59:29 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 4.5.1:
+  * fix bzip3 build failures (previously patched)
+- drop ugrep-4.5.0-fix-bzip3-configure.patch
+
+-------------------------------------------------------------------
+Sat Jan  6 09:14:00 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 4.5.0:
+  * 7zip archive search with option -z
+  * apply Unicode normalization to canonicalize literal combining
+    characters in regex patterns
+  * improved TUI TAB directory navigation when searching from the FS
+    root
+- drop ugrep-4.4.1-remove-shebang-from-bash-completion.patch
+- add ugrep-4.5.0-fix-bzip3-configure.patch
+
+-------------------------------------------------------------------
+Tue Dec 19 17:46:14 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- 4.4.1
+  * ship shell completions (bash,zsh,fish)
+  * option -t (--file-type) now also accepts filename extensions as
+    shortcuts, when unambiguous, for example, the shorter form -tpy
+     for -tpython to select files to search
+  * TUI ALT-SHIFT-% switches between "bool query lines" mode,
+    "bool query files" mode, and bool queries off
+    TUI boolF mode (-%FQ) now applies syntax highlighting
+  * support legacy grep long options without = to bind option
+    arguments
+- add ugrep-4.4.1-remove-shebang-from-bash-completion.patch
+
+-------------------------------------------------------------------
 Sat Dec  9 00:00:41 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
-- update to 3.4.6:
+- update to 4.3.6:
   * fix an issue with option -Zbest fuzzy matching
   * updated option --index for accelerated index-based search, now
     also indexes and searches archives and compressed files with

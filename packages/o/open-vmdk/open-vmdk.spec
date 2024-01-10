@@ -17,7 +17,7 @@
 
 
 Name:           open-vmdk
-Version:        0.3.1.0
+Version:        0.3.6.0
 Release:        0
 Summary:        Tools to create OVA files from raw disk images
 License:        Apache-2.0

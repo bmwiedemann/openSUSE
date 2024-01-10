@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec 15 05:22:51 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Remove Obsoletes/Provides: rust-analyzer.
+  If the user has installed rust-analyzer RPM from another source,
+  this tag makes zypper try to remove the system rustc installation,
+  which is rather counterproductive.
+
+-------------------------------------------------------------------
 Sat Jun 03 02:57:57 UTC 2023 - william.brown@suse.com
 
 - Update to version 1.26.0~0:

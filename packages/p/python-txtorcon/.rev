@@ -126,4 +126,17 @@
     <comment></comment>
     <requestid>1112330</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>64197022cb43734528ff94520eb99795</srcmd5>
+    <version>23.11.0</version>
+    <time>1704281012</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 23.11.0:
+ * Fix test-failures on Python 3.12
+ * Particular GETINFO hanging
+   (ultra-long lines over 16KiB caused problems in the protocol)
+ * Use built-in `mock` only
+ * Remove `incremental`</comment>
+    <requestid>1135604</requestid>
+  </revision>
 </revisionlist>

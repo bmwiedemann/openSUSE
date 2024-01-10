@@ -1,7 +1,7 @@
 #
 # spec file for package perl-File-Rename
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,9 @@
 
 %define cpan_name File-Rename
 Name:           perl-File-Rename
-Version:        2.10.0
+Version:        2.20.0
 Release:        0
-%define cpan_version 2.01
+%define cpan_version 2.02
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Perl extension for renaming multiple files
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -32,7 +32,9 @@ BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 7.36
-Provides:       perl(File::Rename) = 2.10.0
+# needed for tests
+BuildRequires:  perl(Pod::Parser)
+Provides:       perl(File::Rename) = %{version}
 Provides:       perl(File::Rename::Options) = 2.10.0
 Provides:       perl(File::Rename::Unicode) = 1.30
 %define         __perllib_provides /bin/true

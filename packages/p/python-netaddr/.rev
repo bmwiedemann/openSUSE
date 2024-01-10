@@ -256,4 +256,35 @@
     <comment></comment>
     <requestid>1113440</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>3dd0fda2560c29b4510024ed2b74c24a</srcmd5>
+    <version>0.10.1</version>
+    <time>1704753877</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.10.1:
+  * Get rid of some warnings
+  * Add an :data:`INET_ATON` flag to explicitly request
+    ``inet_aton()`` IPv4 parsing semantics from :class:`IPAddress`.
+  * Add an :meth:`IPAddress.is_ipv4_private_use` convenience
+    method.
+  * Add an :meth:`IPAddress.is_global` convenience method to
+    allow determining if an address is considered globally reachable.
+  * Add an :meth:`IPAddress.is_ipv6_unique_local` convenience
+    method.
+  * Improve Python 3.13 compatibility, thank you John Eckersberg.
+  * Deprecate Python 3.7 support.
+  * Deprecate abbreviated CIDR format support in
+    :class:`IPNetwork`
+  * Deprecate accepting leading zeros when parsing IPv4 addresses
+    in :data:`INET_PTON` mode (it's been allowed on some platforms).
+    If you need to allow and discard leading zeros use the
+    :data:`ZEROFILL` flag.
+  * Raise an exception if invalid flags are passed to
+    ``IPAddress``, ``IPNetwork`` or ``IPRange``.
+  * Improve the documentation substantially.
+  * Update the DB files to the latest versions (2023-12-23).
+
+    - IP recognition failure</comment>
+    <requestid>1137444</requestid>
+  </revision>
 </revisionlist>

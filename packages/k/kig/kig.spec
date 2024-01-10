@@ -28,7 +28,7 @@ Source:         https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  kf5-filesystem
+BuildRequires:  extra-cmake-modules
 BuildRequires:  libboost_python3-devel
 BuildRequires:  python3-devel
 BuildRequires:  update-desktop-files

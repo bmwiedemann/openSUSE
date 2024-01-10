@@ -21,7 +21,7 @@
 %{!?python2_sitearch: %global python2_sitearch %(python -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
 %bcond_without python2
 Name:           newt
-Version:        0.52.23
+Version:        0.52.24
 Release:        0
 Summary:        A library for text mode user interfaces
 License:        LGPL-2.1-or-later

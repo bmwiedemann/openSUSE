@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Dec 18 22:43:02 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Remove sed line
+
+-------------------------------------------------------------------
+Mon Dec 18 22:28:26 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Remove cargo_config
+- Update to version 1.3.1:
+  * New features
+    - CLI fuzzy selector (--chooseoutput) for screenshots
+  * Improvements
+    - Switch log crate with tracing and parallelize image alterations
+    - Moved multi-monitor logic from wayshot to libwayshot
+    - Remove uneeded resizes and rotations of image buffers
+    - Deprecate xdpw fork in favor of the luminous portal
+    - Update wayland crates
+- Note that libwayshot contains breaking changes and improvements
+  as well but will not be mentioned here since this is wayshot, the cli.
+
+-------------------------------------------------------------------
 Tue Aug 29 01:29:21 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Remove cargotoml param in _service.

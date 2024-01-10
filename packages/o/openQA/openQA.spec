@@ -1,7 +1,7 @@
 #
 # spec file for package openQA
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -78,7 +78,7 @@
 %define devel_requires %devel_no_selenium_requires chromedriver
 
 Name:           openQA
-Version:        4.6.1702049559.97f9359
+Version:        4.6.1704466891.4d4e5b7
 Release:        0
 Summary:        The openQA web-frontend, scheduler and tools
 License:        GPL-2.0-or-later

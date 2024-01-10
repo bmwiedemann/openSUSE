@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 25 16:26:00 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
+
+- Use autosetup
+
+-------------------------------------------------------------------
 Wed Mar 22 12:56:56 UTC 2023 - Adam Majer <adam.majer@suse.de>
 
 - Decouple e59f703bbcc0af949ee365206426b6394c340c6f.patch from

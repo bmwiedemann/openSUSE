@@ -1,7 +1,7 @@
 #
 # spec file for package python-khard
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,22 +15,20 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-# TODO:
-# generate documentation
 
 %define skip_python2 1
 Name:           python-khard
-Version:        0.18.0
+Version:        0.19.1
 Release:        0
 Summary:        Console carddav client
 License:        GPL-3.0-only
 URL:            https://github.com/lucc/khard
 Source0:        https://files.pythonhosted.org/packages/source/k/khard/khard-%{version}.tar.gz
 BuildArch:      noarch
-BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test
@@ -46,7 +44,7 @@ Requires:       python-configobj
 Requires:       python-ruamel.yaml
 Requires:       python-vobject
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Suggests:       python3-vdirsyncer
 %python_subpackages
 
@@ -82,7 +80,7 @@ sed -i -e '1{/^#!\/usr\/bin\/env python/d}' khard/__main__.py
 %doc CHANGES README.md todo.txt
 %doc doc/source/examples/khard.conf.example
 %{python_sitelib}/khard
-%{python_sitelib}/khard-%{version}*-info
+%{python_sitelib}/khard-%{version}.dist-info
 %python_alternative %{_bindir}/khard
 
 %changelog

@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-auth-oauthlib
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Google authentication library
 License:        Apache-2.0
@@ -26,7 +26,8 @@ URL:            https://github.com/googleapis/google-auth-library-python-oauthli
 Source:         https://files.pythonhosted.org/packages/source/g/google-auth-oauthlib/google-auth-oauthlib-%{version}.tar.gz
 # https://github.com/googleapis/google-auth-library-python-oauthlib/issues/207
 Patch0:         python-google-auth-oauthlib-no-mock.patch
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-google-auth >= 2.14.0
@@ -49,14 +50,15 @@ This library provides oauthlib integration with google-auth.
 %prep
 %setup -q -n google-auth-oauthlib-%{version}
 %patch0 -p1
+rm -rf docs
 rm -rf tests/__pycache__/
 rm -rf tests/*.pyc
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/google-oauthlib-tool
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -73,6 +75,7 @@ rm -rf tests/*.pyc
 %doc README.rst
 %license LICENSE
 %python_alternative %{_bindir}/google-oauthlib-tool
-%{python_sitelib}/google_auth_oauthlib*
+%{python_sitelib}/google_auth_oauthlib
+%{python_sitelib}/google_auth_oauthlib-%{version}.dist-info
 
 %changelog

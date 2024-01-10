@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec 15 21:30:49 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Require extra-cmake-modules at build time
+
+-------------------------------------------------------------------
 Tue Dec  5 14:19:47 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.4

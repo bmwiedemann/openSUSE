@@ -20,7 +20,7 @@
 %{!?python_sitelib: %global python_sitelib %(python -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 %endif
 Name:           mercurial
-Version:        6.6
+Version:        6.6.1
 Release:        0
 Summary:        Scalable Distributed SCM
 License:        GPL-2.0-or-later
@@ -40,7 +40,6 @@ BuildRequires:  python3-devel
 BuildRequires:  python3-xml
 Requires:       python3-curses
 Requires:       python3-xml
-Recommends:     %{name}-lang
 Provides:       hg = %{version}
 %if 0%{?suse_version} < 1210
 BuildRequires:  docutils

@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-poetry-plugin-export%{psuffix}
-Version:        1.5.0
+Version:        1.6.0
 Release:        0
 Summary:        Poetry plugin to export the dependencies to various formats
 License:        MIT

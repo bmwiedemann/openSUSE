@@ -52,4 +52,17 @@
     <comment></comment>
     <requestid>1063986</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>738ffd9c3ad5ff22d3f011267b936198</srcmd5>
+    <version>0.7.6</version>
+    <time>1702845255</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.7.6:
+  * Add missing #include &lt;exception&gt;
+  * Fix promote_type with two complex floats and one double
+  * test/CMakeLists.txt: remove extra find_package(Threads)
+  * Fixed half errhandling throw except
+  * Resolve issue promoting multiple std::complex</comment>
+    <requestid>1133733</requestid>
+  </revision>
 </revisionlist>

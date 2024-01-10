@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan  6 10:38:45 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.0:
+  * Added isds_set_xferinfo_callback() as a replacement for
+    isds_set_progress_callback(). Marked
+    isds_set_progress_callback() as deprecated.
+
+-------------------------------------------------------------------
 Mon Dec  4 10:59:57 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
 
 - update to 0.5.1

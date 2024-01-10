@@ -182,4 +182,20 @@
 </comment>
     <requestid>1103952</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9f1b27c8c22501bc846719acbb3200b7</srcmd5>
+    <version>0.18.0</version>
+    <time>1703024156</time>
+    <user>anag+factory</user>
+    <comment>- Remove 0001-fix-life-in-zola-serve.patch. Part of 0.18.0 release now.
+- Remove cargo_config. Part of vendored tarball now.
+- Update to version 0.18.0:
+  * update dependencies
+  * remove some dummy file
+  * fix taxonomies missing lang in sitemap
+  * remove code blocks from search index
+  * elasticlunr-rs hu language support
+</comment>
+    <requestid>1133926</requestid>
+  </revision>
 </revisionlist>

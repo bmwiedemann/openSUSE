@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 14 12:42:08 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add ced3c5d8.patch: Fix build with libxml2-2.12.0 and clang-17.
+
+-------------------------------------------------------------------
 Mon Jul 31 11:46:03 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add upstream bug fixes:

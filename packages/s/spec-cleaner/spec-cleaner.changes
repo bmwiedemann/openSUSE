@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Oct 26 11:54:41 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Clean up the SPEC file
+
+-------------------------------------------------------------------
+Wed Oct 25 15:49:31 UTC 2023 - Kristyna Streitova <kstreitova@suse.com>
+
+- Update to 1.2.2 bsc#1099674:
+  * Expand python sitelib glob usage in files
+  * Add new head category for PSP macros
+  * Make flake8 happy and fix C416
+  * avoid adding curly braces to apparmor_reload
+  * Bump CodeQL Actions version
+  * Do not put curly brackets around python_libalternatives_reset_alternative
+  * Try to fix coveralls in github actions
+  * Update to actions/checkout@v3 and setup-python@v4
+  * Try to increase timeout for urlopen
+  * Make flake8 and mypy happy
+  * Set headers for urlopen to avoid 403 code
+  * ubuntu-latest doesn't support 3.6 anymore
+  * Replace calls to w3m with calls to curl
+  * move logic that tries to change the URL field to https into _make_secure_url
+  * Fix pep8 errors to pass flake8 tests (#296)
+  * Extend support for patterns (boo#1195092)
+  * update coveralls config
+  * Ignore error N818 from pep8-naming for now
+  * Fix URL expectations on tests
+  * Do not put brackets on %obsolete_legacy_pattern
+  * Fix #287: Incorrect curlification for more systemd-macros
+  * Add new script for rpmlint.
+  * Use github token directly
+- Remove spec-cleaner-psp-macros.patch that is already included in
+  1.2.2 release
+- Install new *.toml files with licenses
+- Add fix_tests_needing_web_connection.patch to temporarily fix
+  tests that need internet connection that is not available during
+  OBS build. Already fixed upstream in fd0f649
+
+-------------------------------------------------------------------
 Tue Oct 24 13:45:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add spec-cleaner-psp-macros.patch to avoid spec-cleaner

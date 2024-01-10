@@ -690,4 +690,12 @@ fix the offset of the read buffer (forwarded request 909201 from aplanas)</comme
     <comment></comment>
     <requestid>1087676</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>eab2c85231eb859b5f9053e8bce996db</srcmd5>
+    <version>5.6</version>
+    <time>1703800519</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1135462</requestid>
+  </revision>
 </revisionlist>

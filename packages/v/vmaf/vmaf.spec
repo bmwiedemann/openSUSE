@@ -16,13 +16,13 @@
 #
 
 
-%define sonum  1
+%define sonum  3
 %define lname   libvmaf%sonum
 
 # undefined reference to `vmaf_cpu_cpuid'
 %define _lto_cflags %nil
 Name:           vmaf
-Version:        2.3.1
+Version:        3.0.0
 Release:        0
 Summary:        Perceptual video quality assessment algorithm
 License:        BSD-2-Clause-Patent AND BSD-3-Clause
@@ -37,7 +37,7 @@ BuildRequires:  nasm
 BuildRequires:  pkg-config
 # Need /usr/bin/xxd for build
 BuildRequires:  vim
-Provides:       bundled(libsvm) = 3.18
+Provides:       bundled(libsvm) = 3.24
 
 %description
 VMAF is a perceptual video quality assessment algorithm.

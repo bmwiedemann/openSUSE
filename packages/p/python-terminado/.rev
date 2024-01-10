@@ -180,4 +180,14 @@
 </comment>
     <requestid>1056890</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>b68e3764bd0f6e9667d151af003b9351</srcmd5>
+    <version>0.18.0</version>
+    <time>1703801025</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.18.0
+  * code maintenance updates: typing, linting
+  * drop Python 3.7</comment>
+    <requestid>1135501</requestid>
+  </revision>
 </revisionlist>

@@ -23,7 +23,7 @@ index b209f37..a51260b 100644
    typedef signed char int8;
    typedef unsigned char uint8;
 @@ -69,9 +70,11 @@ typedef unsigned long ulong;
-   #if defined(_WIN32) || defined(_WIN64)
+   #if defined(_WIN32)
      /* assume ILP32 or LLP64 (MSVC, MinGW) */
      #define ZFP_LLP64 1
 -  #else

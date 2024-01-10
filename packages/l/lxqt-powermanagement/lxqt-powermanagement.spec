@@ -73,6 +73,8 @@ LXQt daemon for power management and auto-suspend
 %files
 %license LICENSE
 %doc AUTHORS README.md
+%dir %{_datadir}/icons/hicolor/scalable
+%{_datadir}/icons/hicolor/scalable/devices
 %{_bindir}/lxqt*
 %{_datadir}/applications/*.desktop
 %{_datadir}/icons/hicolor/scalable/devices/*.svg

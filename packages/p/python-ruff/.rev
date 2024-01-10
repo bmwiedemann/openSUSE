@@ -311,4 +311,78 @@
    * Apply unnecessary index rule prior to enumerate rewrite</comment>
     <requestid>1133053</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5a20b7b15eec01a412bdbacfaa4df246</srcmd5>
+    <version>0.1.9</version>
+    <time>1703281285</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.1.9
+ * Breaking changes
+   * Add site-packages to default exclusions
+ * Preview features
+   * Fix: Avoid parenthesizing subscript targets and values
+   * [pylint] Implement too-many-locals (PLR0914)
+   * Implement reimplemented_operator (FURB118)
+   * Add a rule to detect string members in runtime-evaluated unions
+   * Implement no_blank_line_before_class_docstring preview style
+ * Rule changes
+   * CONSTANT_CASE variables are improperly flagged for yoda violation (SIM300)
+   * [flake8-pyi] Cover ParamSpecs and TypeVarTuples (PYI018)
+   * [flake8-bugbear] Add fix for zip-without-explicit-strict (B905)
+   * Add fix to automatically remove print and pprint statements (T201, T203)
+   * Prefer Never to NoReturn in auto-typing in Python &gt;= 3.11 (ANN201)
+ * Formatter
+   * can_omit_optional_parentheses: Exit early for unparenthesized expressions
+   * Fix dynamic mode with doctests so that it doesn't exceed configured line width
+   * Fix can_omit_optional_parentheses for expressions with a right most fstring
+   * Add target_version to formatter options
+ * CLI
+   * Update ruff format --check to display message for already formatted files
+ * Bug fixes
+   * Reverse order of arguments for operator.contains
+   * Iterate over lambdas in deferred type annotations
+   * Fix panic in D208 with multibyte indent
+   * Add support for NoReturn in auto-return-typing
+   * Allow removal of typing from exempt-modules
+   * Avoid mutable-class-default violations for Pydantic subclasses
+   * Fix dropped union expressions for piped non-types in PYI055 autofix</comment>
+    <requestid>1134560</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>fd2c0403fd8696943829157fbac84672</srcmd5>
+    <version>0.1.11</version>
+    <time>1704753973</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.1.11
+   * [pylint] Implement super-without-brackets (W0245) 
+   * Check path string properly in python -m ruff invocations 
+ * Documentation
+   * Tweak relative-imports message 
+   * Add fix safety note for yield-in-for-loop 
+ * 0.1.10
+ * Preview features
+   * Improve dummy_implementations preview style formatting 
+   * Normalise Hex and unicode escape sequences in strings 
+   * Parenthesize long type annotations in annotated assignments 
+   * Parenthesize multi-context managers in with statements 
+   * [flake8-pyi] Implement generator-return-from-iter-method (PYI058) 
+   * [pylint] Implement empty-comment (PLR2044) 
+   * [refurb] Implement bit-count (FURB161) 
+   * [ruff] Add never-union rule to detect redundant typing.NoReturn and typing.Never 
+ * CLI
+   * Add paths to TOML parse errors 
+   * Add row and column numbers to formatter parse errors 
+   * Improve responsiveness when invoked via Python 
+   * Short rule messages should not end with a period 
+ * Configuration
+   * Respect runtime-required decorators on functions 
+ * Bug fixes
+   * Avoid asyncio-dangling-task for nonlocal and global bindings 
+   * Escape trailing placeholders in rule documentation 
+   * Fix continuation detection following multi-line strings 
+   * Fix scoping for generators in named expressions in classes 
+   * Port from obsolete wsl crate to is-wsl 
+   * Remove special pre-visit for module docstrings</comment>
+    <requestid>1137528</requestid>
+  </revision>
 </revisionlist>

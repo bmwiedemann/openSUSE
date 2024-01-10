@@ -1,7 +1,7 @@
 #
 # spec file for package libguestfs
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libguestfs
 ExclusiveArch:  x86_64 ppc64 ppc64le s390x aarch64 riscv64
-Version:        1.51.9
+Version:        1.52.0
 Release:        0
 Summary:        Access and modify virtual machine disk images
 License:        GPL-2.0-or-later
@@ -43,6 +43,7 @@ BuildRequires:  gperf
 BuildRequires:  libtool
 BuildRequires:  ocaml-augeas-devel
 BuildRequires:  ocaml-hivex-devel
+BuildRequires:  ocaml-rpm-macros
 BuildRequires:  po4a
 BuildRequires:  readline-devel
 BuildRequires:  supermin >= 5.1.18
@@ -90,8 +91,23 @@ schemes, qcow, qcow2, vmdk.
 %autosetup -p1
 
 sed -i 's|RPMVSF_MASK_NOSIGNATURES|_RPMVSF_NOSIGNATURES|' daemon/rpm-c.c
+sed -i 's/tar zcf/tar -zcf/' appliance/Makefile.am
 
 %build
+# provide a wrapper to tar that creates bit-reproducible output (boo#1218191)
+# used in supermin for base.tar.gz, in %install for zz-winsupport.tar.gz zz-scripts.tar.gz and in appliance/Makefile.am for 3 more .tar.gz files
+SOURCE_DATE_EPOCH=${SOURCE_DATE_EPOCH:-$(date -r %{SOURCE0} +%%s)}
+mkdir ~/bin ; cat >~/bin/tar <<EOF
+#!/bin/sh
+exec /usr/bin/tar \
+  --sort=name --clamp-mtime --mtime=@$SOURCE_DATE_EPOCH \
+  --owner=0 --group=0 --numeric-owner \
+  --pax-option=exthdr.name=%%d/PaxHeaders/%%f,delete=atime,delete=ctime \
+  "\$@"
+EOF
+chmod a+x ~/bin/tar
+PATH=~/bin:$PATH
+
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 # use 'env LIBGUESTFS_HV=/path/to/kvm libguestfs-test-tool' to verify
 %define kvm_binary /bin/false
@@ -187,6 +203,7 @@ make \
 build_it %{?_smp_mflags} || build_it
 
 %install
+PATH=~/bin:$PATH
 %make_install \
 	INSTALLDIRS=vendor \
 	udevrulesdir=%{_udevrulesdir}
@@ -202,11 +219,9 @@ cp %{S:5} %{buildroot}/etc/profile.d
 # Perl
 find %{buildroot}/ -name "*.bs" -size 0c -print -delete
 %perl_process_packlist
-%perl_gen_filelist
-# The macro above packages everything, here only the perl files are desired
-grep "%perl_vendorarch/" %{name}.files | tee t
-mv t %{name}.files
 
+# OCaml
+%ocaml_create_file_list
 # Supermin
 pushd $RPM_BUILD_ROOT%{_libdir}/guestfs/supermin.d
 
@@ -252,7 +267,7 @@ done
 cp %{S:101} winsupport
 
 pushd winsupport
-tar zcf %{buildroot}%{_libdir}/guestfs/supermin.d/zz-winsupport.tar.gz .
+tar -czf %{buildroot}%{_libdir}/guestfs/supermin.d/zz-winsupport.tar.gz .
 popd
 
 cat > %{buildroot}%{_libdir}/guestfs/supermin.d/zz-packages-winsupport << EOF
@@ -630,21 +645,10 @@ for %{name}.
 %files inspect-icons
 # no files
 
-%files -n ocaml-%{name}
-%{_libdir}/ocaml/guestfs
-%exclude %{_libdir}/ocaml/guestfs/*.a
-%exclude %{_libdir}/ocaml/guestfs/*.cmxa
-%exclude %{_libdir}/ocaml/guestfs/*.cmx
-%exclude %{_libdir}/ocaml/guestfs/*.mli
-%{_libdir}/ocaml/stublibs/dllmlguestfs.so
-%{_libdir}/ocaml/stublibs/dllmlguestfs.so.owner
+%files -n ocaml-%{name} -f %name.files
 
-%files -n ocaml-%{name}-devel
+%files -n ocaml-%{name}-devel -f %name.files.devel
 %doc ocaml/examples/*.ml ocaml/html
-%{_libdir}/ocaml/guestfs/*.a
-%{_libdir}/ocaml/guestfs/*.cmxa
-%{_libdir}/ocaml/guestfs/*.cmx
-%{_libdir}/ocaml/guestfs/*.mli
 %{_mandir}/man3/guestfs-ocaml.3*
 
 %files -n perl-Sys-Guestfs

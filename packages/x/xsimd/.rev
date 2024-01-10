@@ -39,4 +39,18 @@
   * Provide a generic version for float to uint32_t conversion</comment>
     <requestid>1128937</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d5f2cb26b944e061c70753cb030cbf75</srcmd5>
+    <version>12.1.1</version>
+    <time>1702845254</time>
+    <user>anag+factory</user>
+    <comment>- update to 12.1.1:
+  * Update readme with a section on adoption, and a section on
+    the history of the project
+  * Fix/avx512vnni implementation
+  * Fix regression on XSIMD_NO_SUPPORTED_ARCHITECTURE
+
+  * Use intrinsic instead of generic implementation of ldexp on avx512f</comment>
+    <requestid>1133732</requestid>
+  </revision>
 </revisionlist>

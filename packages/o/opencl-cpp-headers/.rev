@@ -119,4 +119,21 @@
 </comment>
     <requestid>1080206</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0800a8acb8046115fffdba2539211a24</srcmd5>
+    <version>2023.12.14</version>
+    <time>1703024154</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2023.12.14.
+  * Synchronize with OpenCL v3.0.15 specification release.
+  * The device query for CL_DEVICE_PLATFORM now returns a
+    cl::Platform instead of a cl_platform_id. Code wanting a
+    cl_platform_id instead can access this from a cl::Platform
+    using operator().
+  * Querying the device handle list for a semaphore now requires
+    using the semaphore-specific CL_SEMAPHORE_DEVICE_HANDLE_LIST_KHR
+    enum, since the CL_DEVICE_HANDLE_LIST_KHR enum has been removed.
+</comment>
+    <requestid>1133927</requestid>
+  </revision>
 </revisionlist>

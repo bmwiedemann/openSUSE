@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Mon Dec 18 08:20:07 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 0.7.1:
+  * General
+    - Bump axios from 0.26.1 to 1.6.0 in
+      /install/docker-extension/ui @dependabot (#9340)
+    - [chore] upgrade to meshkit v0.7.0 @MUzairS15 (#9606)
+  * Meshery CLI
+    - [feat] add enhancements, fix latency while searching models
+      @VihasMakwana (#9573)
+  * Meshery UI
+    - [UI] Changed User.js from class based component to functional
+      component @Mohith234 (#8918)
+    - [feat] add enhancements, fix latency while searching models
+      @VihasMakwana (#9573)
+  * Bug Fixes
+    - [server][fix]: don't exit in case of context is persisted
+      @VihasMakwana (#9608)
+
+-------------------------------------------------------------------
+Mon Dec 18 07:55:41 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 0.7.0:
+  * General
+    - fix gcp icons @aabidsofi19 (#9605)
+    - [Meshmodel] Update Annotations and add capabities
+      @aabidsofi19 (#9603)
+    - [Relationships] Update relationships definitions to include
+      RoleBinding to Service Account mapping. @MUzairS15 (#9601)
+    - add capabilities to flow chart shapes @aabidsofi19 (#9596)
+    - chore: relocate and rename conn and cred @leecalcote (#9559)
+    - [Model] Flowchart Shapes: Document, MultipleDocuments,
+      Process, StoredData @leecalcote (#9563)
+    - [server][meshsync] hard reset database @VihasMakwana (#9545)
+  * Meshery UI
+    - [UI] Fix K8s formatter for meshery controller statuses.
+      @MUzairS15 (#9597)
+    - Fix Issue #9590 in component "DashboardComponent" in UI.
+      @Dananjay996 (#9594)
+    - Bump @babel/types from 7.23.0 to 7.23.5 in /ui @dependabot
+      (#9528)
+    - [Fixes - Documentation] update the CONTRIBUTING.md with
+      Issues & Pull Requests sections @sandramsc (#9579)
+    - Bump cypress from 13.4.0 to 13.6.1 in /provider-ui
+      @dependabot (#9591)
+    - [UI] Dashboard: Styling for details view in grids @leecalcote
+      (#9593)
+    - [UI] Dashboard enhancement @theBeginner86 (#9589)
+    - fix: fix bug where node name is empty @VihasMakwana (#9511)
+    - [UI] Fixes eslint warnings/errors in Provider UI @Pushkarm029
+      (#9576)
+  * Maintenance
+    - Bump github.com/prometheus/client_golang from 1.16.0 to
+      1.17.0 @dependabot (#9534)
+    - Bump @babel/types from 7.23.0 to 7.23.5 in /ui @dependabot
+      (#9528)
+    - Bump cypress from 13.4.0 to 13.6.1 in /provider-ui
+      @dependabot (#9591)
+  * Documentation
+    - Added about uninstalling meshery using a Docker Extension
+      platform @Srishtihere (#8638)
+    - [Docs] Add code for additional alert types and eliminate
+      duplicate entries @coder12git (#9225)
+    - Updated creating-a-meshery-design.md @nwanduka (#9507)
+    - Add setup instructions for using WSL2 on contributing UI page
+      w/signoff @gyancodes (#9585)
+
+-------------------------------------------------------------------
 Thu Nov 30 12:01:18 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 0.6.185:

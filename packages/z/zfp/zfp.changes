@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Dec 31 22:06:35 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 1.0.1
+  https://github.com/LLNL/zfp/releases/tag/1.0.1
+- Drop upstream patches:
+  * fix_math_check.patch
+
+-------------------------------------------------------------------
 Sat Oct  1 02:55:45 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 1.0.0

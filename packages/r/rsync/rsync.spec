@@ -56,6 +56,7 @@ Source12:       %{name}.keyring
 Source13:       rsyncd
 Patch0:         rsync-no-libattr.patch
 Patch1:         rsync-fortified-strlcpy-fix.patch
+Patch2:         rsync-usr-etc.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  c++_compiler
@@ -113,6 +114,9 @@ export LDFLAGS="-Wl,-z,relro,-z,now -fPIE -pie"
   --with-included-popt=no \
   --with-included-zlib=no \
   --disable-debug \
+%if 0%{?suse_version} > 1500
+  --with-rsyncd-distconf=%{_distconfdir}/rsyncd.conf \
+%endif
 %if !%{with xxhash}
   --disable-xxhash\
 %endif
@@ -142,12 +146,16 @@ install -m 755 support/rsyncstats %{buildroot}%{_bindir}
 %if 0%{?suse_version} > 1500
 install -d %{buildroot}%{_distconfdir}/logrotate.d
 install -m 644 %{SOURCE2} %{buildroot}%{_distconfdir}/logrotate.d/rsync
+install -m 644 %{SOURCE5} %{buildroot}%{_distconfdir}/rsyncd.conf
+install -m 600 %{SOURCE6} %{buildroot}%{_distconfdir}/rsyncd.secrets
+echo "# This is a template only. Create your own entries in /etc/rsyncd.secrets" >>%{buildroot}%{_distconfdir}/rsyncd.secrets
+echo
 %else
 install -d %{buildroot}%{_sysconfdir}/logrotate.d
 install -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/logrotate.d/rsync
-%endif
 install -m 644 %{SOURCE5} %{buildroot}%{_sysconfdir}/rsyncd.conf
 install -m 600 %{SOURCE6} %{buildroot}%{_sysconfdir}/rsyncd.secrets
+%endif
 install -D -m 0644 %{SOURCE9} %{buildroot}%{_unitdir}/rsyncd@.service
 install -D -m 0644 %{SOURCE8} %{buildroot}%{_unitdir}/rsyncd.service
 install -D -m 0644 %{SOURCE3} %{buildroot}%{_unitdir}/rsyncd.socket
@@ -157,7 +165,7 @@ ln -sf service %{buildroot}%{_sbindir}/rcrsyncd
 %service_add_pre rsyncd.service
 %if 0%{?suse_version} > 1500
 # Prepare for migration to /usr/etc; save any old .rpmsave
-for i in logrotate.d/rsync ; do
+for i in logrotate.d/rsync rsyncd.conf rsyncd.secrets; do
    test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
 done
 %endif
@@ -165,7 +173,7 @@ done
 %if 0%{?suse_version} > 1500
 %posttrans
 # Migration to /usr/etc, restore just created .rpmsave
-for i in logrotate.d/rsync ; do
+for i in logrotate.d/rsync rsyncd.conf rsyncd.secrets; do
    test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
 done
 %endif
@@ -185,12 +193,14 @@ done
 %{_unitdir}/rsyncd@.service
 %{_unitdir}/rsyncd.service
 %{_unitdir}/rsyncd.socket
-%config(noreplace) %{_sysconfdir}/rsyncd.conf
-%config(noreplace) %{_sysconfdir}/rsyncd.secrets
 %if 0%{?suse_version} > 1500
 %{_distconfdir}/logrotate.d/rsync
+%{_distconfdir}/rsyncd.conf
+%{_distconfdir}/rsyncd.secrets
 %else
 %config(noreplace) %{_sysconfdir}/logrotate.d/rsync
+%config(noreplace) %{_sysconfdir}/rsyncd.conf
+%config(noreplace) %{_sysconfdir}/rsyncd.secrets
 %endif
 %{_sbindir}/rcrsyncd
 %{_sbindir}/rsyncd

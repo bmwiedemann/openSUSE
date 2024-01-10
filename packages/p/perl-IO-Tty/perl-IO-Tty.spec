@@ -1,7 +1,7 @@
 #
 # spec file for package perl-IO-Tty
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,9 @@
 
 %define cpan_name IO-Tty
 Name:           perl-IO-Tty
-Version:        1.180.0
+Version:        1.200.0
 Release:        0
-%define cpan_version 1.18
+%define cpan_version 1.20
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Pseudo ttys and constants
 URL:            https://metacpan.org/release/%{cpan_name}

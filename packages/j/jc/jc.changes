@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Dec 17 23:01:33 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.24.0
+  * Add debconf-show command parser.
+  * Add iftop command parser.
+  * Add pkg-index-apk parser for Alpine Linux Package Index files.
+  * Add pkg-index-deb parser for Debian/Ubuntu Package Index files.
+  * Add proc-cmdline parser for /proc/cmdline file.
+  * Add swapon command parser.
+  * Add tune2fs command parser.
+  * Remove iso-datetime parser deprecated since v1.22.1.
+    (use datetime-iso instead).
+  * Refactor acpi command parser for code cleanup.
+  * Fix iptables parser for cases where the target field is blank
+    in a rule.
+  * Fix vmstat parsers for some cases where wide output is used.
+  * Fix mount parser for cases with spaces in the mount point name.
+  * Fix xrandr parser for infinite loop issues.
+
+-------------------------------------------------------------------
 Fri Nov 24 13:29:55 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.23.6

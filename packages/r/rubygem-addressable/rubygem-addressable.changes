@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 25 15:13:23 UTC 2023 - Илья Индиго <ilya@ilya.cf>
+
+- Updated to 2.8.6
+  * Memoize regexps for common character classes.
+
+-------------------------------------------------------------------
 Thu Nov  2 14:29:46 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
 
 - # Addressable 2.8.5
@@ -9,7 +15,6 @@ Thu Nov  2 14:29:46 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
 [#508]: https://github.com/sporkmonger/addressable/pull/508
 [#509]: https://github.com/sporkmonger/addressable/pull/509
 [#515]: https://github.com/sporkmonger/addressable/pull/515
-
 
 -------------------------------------------------------------------
 Sat Jun 10 14:08:24 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
@@ -312,4 +317,3 @@ Sun Jul 26 16:20:03 CEST 2009 - dmacvicar@suse.de
 Mon Mar 23 18:40:39 CET 2009 - dmacvicar@suse.de
 
 - initial package
-

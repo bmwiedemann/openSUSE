@@ -66,4 +66,18 @@
     @patroqueeet)</comment>
     <requestid>1082878</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>150e55ee80a4f4bf5d41852d4149847b</srcmd5>
+    <version>0.10.0</version>
+    <time>1703800874</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.10.0:
+  * Fix link to polib. (#277, thanks @gamboz)
+  * Deepl: use the PRO API endpoint when using a PRO API key.
+  * Limit supported versions to Django 4.2 and 5.0, using Python
+    3.9, 3.10, 3.11 and 3.12
+
+- Remove unneeded BuildRequires on python-python-memcached.</comment>
+    <requestid>1135256</requestid>
+  </revision>
 </revisionlist>

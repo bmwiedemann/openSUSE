@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jan  6 17:16:41 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.14.0:
+  * Add Adaptive MT API
+  * Fixes a typo in docs
+
+-------------------------------------------------------------------
+Sat Dec 16 20:28:46 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.13.0:
+  * Add support for python 3.12
+  * Introduce compatibility with native namespace packages
+  * Require proto-plus >= 1.22.3
+  * Use retry_async instead of retry in async client
+
+-------------------------------------------------------------------
 Thu Dec  7 10:23:17 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.12.1

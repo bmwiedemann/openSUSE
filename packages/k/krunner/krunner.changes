@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Dec  5 11:17:57 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.113.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.113.0
+- Changes since 5.112.0:
+  * Deprecate old QueryMatch::setType which will be removed in KF6
+  * Backport KF6 API to set categoryRelevance for QueryMatch
+
+-------------------------------------------------------------------
 Mon Nov  6 09:14:06 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.112.0

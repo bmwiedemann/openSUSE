@@ -2,16 +2,16 @@ Index: matomo/plugins/CoreUpdater/Commands/Update.php
 ===================================================================
 --- matomo.orig/plugins/CoreUpdater/Commands/Update.php
 +++ matomo/plugins/CoreUpdater/Commands/Update.php
-@@ -79,8 +79,11 @@ class Update extends ConsoleCommand
-                     $this->writeSuccessMessage($output, array(Piwik::translate('CoreUpdater_DbUpgradeNotExecuted')));
+@@ -79,7 +79,12 @@ class Update extends ConsoleCommand
+                     $this->writeSuccessMessage(array(Piwik::translate('CoreUpdater_DbUpgradeNotExecuted')));
                  }
  
 +                // Only show if autoupdate is enabled. Don't show if update through distribution package update.
 +                $enableAutoUpdate = (bool) Config::getInstance()->General['enable_auto_update'];
 +                if ($enableAutoUpdate === true){
-                 $this->writeAlertMessageWhenCommandExecutedWithUnexpectedUser($output);
--
+                 $this->writeAlertMessageWhenCommandExecutedWithUnexpectedUser();
 +                }
- 
++
              } catch (NoUpdatesFoundException $e) {
                  // Do not fail if no updates were found
+                 $this->writeSuccessMessage(array($e->getMessage()));

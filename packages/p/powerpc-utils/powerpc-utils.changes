@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan  4 16:11:51 UTC 2024 - Michal Suchanek <msuchanek@suse.com>
+
+- Fix support for nvme devices with nsid greater than 10 (bsc#1217925 ltc#204474)
+  + powerpc-utils-scripts-ofpathname-handle-nsid-of-nvme.patch
+
+-------------------------------------------------------------------
 Tue Aug 15 13:07:50 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
 
 - Tell kernel about the SMT value set by ppc64_cpu (bsc#1214285 bsc#1205462 ltc#200161 ltc#200588).

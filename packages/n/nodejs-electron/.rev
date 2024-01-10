@@ -802,4 +802,20 @@ to Staging:F with it</comment>
     <comment></comment>
     <requestid>1130366</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>303920542720ce38d7d74929114f78f9</srcmd5>
+    <version>27.2.0</version>
+    <time>1703281350</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1134640</requestid>
+  </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>1d0408974039cdf593724ff465cf8f7a</srcmd5>
+    <version>27.2.1</version>
+    <time>1704487352</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1136907</requestid>
+  </revision>
 </revisionlist>

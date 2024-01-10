@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Mon Jan  1 00:51:49 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 0.17.1:
+  * backend/x11: don't send ConfigureRequest with the same size
+  * backend/x11: check buffer format in output_test()
+  * tinywl: fix wlroots dependency constraint in Makefile
+  * viewporter: rename state var in viewport_handle_surface_commit()
+  * viewporter: listen to client_commit
+  * viewporter: fix src buffer bounds check
+  * render/egl: fallback to GBM FD if EGLDevice is not available
+  * render: disable linux-dmabuf without DRM FD
+  * cursor: send surface scale events
+  * cursor: fix initial cursor position for new outputs
+  * xcursor: fix duplicate cursor check check in load_callback()
+  * input-method-v2: drop unnecessary variable and cast
+  * output-layout: fix missing global for outputs with a custom mode
+  * build: bump vesion to 0.17.1
+  * types/output: emit destroy event before destroying global
+  * input-method-v2: free current strings on commit
+  * input-method-v2: validate commit serial
+
+-------------------------------------------------------------------
+Thu Dec 21 07:58:43 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix installation: do not pass
+  --libdir=%{_libdir}/wlroots-%{version} to meson: this results in
+  the library and the .pc file to installed into private locations
+  and not being usable without extra hacks.
+
+-------------------------------------------------------------------
+Wed Dec 20 21:37:28 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Remove pkgconfig(freerdp2) BuildRequires: there is no mention of
+  freerdp in the source tree.
+
+-------------------------------------------------------------------
+Mon Dec 18 09:17:43 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Adjust libdir and includedir to wlroots-<version>
+
+-------------------------------------------------------------------
+Sat Dec 16 03:59:15 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 0.17.0
+  * New protocol implementations:
+    - content-type-v1 to tag surfaces with their content type (audio, video,
+    - game, etc).
+    - xwayland-shell-v1 to improve XWayland reliability.
+    - wp-fractional-scale-v1 to allow clients to submit buffers with a
+    - non-integer scale factor matching the output.
+    - tearing-control to allow clients to opt-in for tearing page-flips.
+    - security-context-v1 to identify clients running in sandboxes.
+    - cursor-shape-v1 for server-side cursor themes.
+  * Introduce a new output layers API to leverage KMS planes.
+  * Add a new renderer API with improved design and performance. Add an API to
+  * query the time taken to render.
+  * Continued work on the Vulkan renderer: add more RGB formats, add YUV buffers,
+  * add interoperability with implicit synchronization instead of blocking.
+  * Add support for the new wl_surface.preferred_buffer_{scale,transform} events.
+  * Improved scene-graph, including support for linux-dmabuf feedback and
+  * clipping surfaces.
+  * Improved wlr_cursor which now keeps track of the current cursor image.
+  * Add an implementation of the wl_shm interface, replacing libwayland's for
+  * improved reliability and performance.
+  * The Wayland backend supports embedding a wlroots compositor inside an
+  * existing Wayland client.
+  * wl_surface roles have been refactored.
+- Remove fix-frame-number-deprecated.patch. Patch is part of release now.
+- Added a new dependencies: 
+  * libdisplay-info-devel
+  * xwayland-devel
+
+-------------------------------------------------------------------
 Sat May 13 00:06:13 UTC 2023 - Chris Bradbury <opensuse@chrbrd.com>
 
 - Add fix-frame-number-deprecated.patch

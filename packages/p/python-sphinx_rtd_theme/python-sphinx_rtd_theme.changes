@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Dec 29 10:06:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.0:
+  * Fix #1522: fix 'str' object has no attribute 'attributes'
+  * Increment for next potential release
+  * Fix AttributeError when one of css_files is a string
+  * Add support for docutils==0.20.x
+  * Use css_tag helper to inject CSS files
+
+-------------------------------------------------------------------
 Tue Aug 29 21:32:58 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Clean up the SPEC file
@@ -18,14 +28,14 @@ Fri May  5 14:19:59 UTC 2023 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Fri May  5 06:15:47 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Add missing BuildRequires on sphinxcontrib-jquery. 
+- Add missing BuildRequires on sphinxcontrib-jquery.
 
 -------------------------------------------------------------------
 Thu May  4 20:34:59 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.2.0:
   * python 3.11 support
-  * translation updates 
+  * translation updates
 
 -------------------------------------------------------------------
 Fri Apr 21 12:34:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
@@ -59,7 +69,7 @@ Mon Nov  8 15:47:35 UTC 2021 - Dirk Müller <dmueller@suse.com>
 - update to 1.0.0:
   * compatibility with docutils 0.17
   * sphinx 4.1+ support
-- drop sphinx41.patch: upstream 
+- drop sphinx41.patch: upstream
 
 -------------------------------------------------------------------
 Tue Jul 13 06:56:38 UTC 2021 - Markéta Machová <mmachova@suse.com>
@@ -80,7 +90,7 @@ Mon Apr 19 09:32:44 UTC 2021 - Matthias Fehring <buschmann23@opensuse.org>
 -------------------------------------------------------------------
 Tue Mar  2 00:35:37 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- update to 0.5.1 
+- update to 0.5.1
   * no upstream changelog available
 
 -------------------------------------------------------------------

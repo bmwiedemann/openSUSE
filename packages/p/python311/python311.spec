@@ -94,7 +94,7 @@
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 %bcond_without profileopt
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.11.6
+Version:        3.11.7
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
@@ -165,9 +165,6 @@ Patch39:        skip_if_buildbot-extend.patch
 # Detect email address parsing errors and return empty tuple to
 # indicate the parsing error (old API)
 Patch40:        CVE-2023-27043-email-parsing-errors.patch
-# PATCH-FIX-UPSTREAM Revert-gh105127-left-tests.patch bsc#1210638 mcepl@suse.com
-# Partially revert previous patch
-Patch41:        Revert-gh105127-left-tests.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -428,7 +425,6 @@ other applications.
 %patch36 -p1
 %patch39 -p1
 %patch40 -p1
-%patch41 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac

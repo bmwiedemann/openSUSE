@@ -29,7 +29,7 @@
 %bcond_with     test
 %endif
 Name:           tpm2.0-tools
-Version:        5.5
+Version:        5.6
 Release:        0
 Summary:        Trusted Platform Module (TPM) 2.0 administration tools
 License:        BSD-3-Clause
@@ -38,6 +38,7 @@ URL:            https://github.com/tpm2-software/tpm2-tools/releases
 Source0:        https://github.com/tpm2-software/tpm2-tools/releases/download/%{version}/tpm2-tools-%{version}.tar.gz
 Source1:        https://github.com/tpm2-software/tpm2-tools/releases/download/%{version}/tpm2-tools-%{version}.tar.gz.asc
 # git show william-roberts-pub javier-martinez-pub joshua-lock-pub idesai-pub > tpm2-tools.keyring
+# The key can be accessed by "curl https://github.com/UNAME.gpg"
 Source2:        tpm2-tools.keyring
 BuildRequires:  gcc-c++
 BuildRequires:  libcurl-devel

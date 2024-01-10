@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Mon Nov 27 08:54:27 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 10.1.0:
+  * Added TrueType default font to allow for different sizes
+  * Fixed invalid argument warning #7442
+  * Added ImageOps cover method #7412
+  * Catch struct.error from truncated EXIF when reading JPEG DPI
+  * Consider default image when selecting mode for PNG save_all
+  * Support BGR;15, BGR;16 and BGR;24 access, unpacking and
+    putdata #7303
+  * Added CMYK to RGB unpacker #7310
+  * Improved flexibility of XMP parsing #7274
+  * Support reading 8-bit YCbCr TIFF images #7415
+  * Allow saving I;16B images as PNG #7302
+  * Corrected drawing I;16 points and writing I;16 text #7257
+  * Set blue channel to 128 for BC5S #7413
+  * Increase flexibility when reading IPTC fields #7319
+  * Set C palette to be empty by default #7289
+  * Added gs_binary to control Ghostscript use on all platforms
+  * Read bounding box information from the trailer of EPS files
+    if specified #7382
+  * Added reading 8-bit color DDS images #7426
+  * Added has_transparency_data #7420
+  * Fixed bug when reading BC5S DDS images #7401
+  * Prevent TIFF orientation from being applied more than once
+  * Use previous pixel alpha for QOI_OP_RGB #7357
+  * Added BC5U reading #7358
+  * Allow getpixel() to accept a list #7355
+  * Allow GaussianBlur and BoxBlur to accept a sequence of x and
+    y radii #7336
+  * Expand JPEG buffer size when saving optimized or progressive
+  * Added session type check for Linux in
+    ImageGrab.grabclipboard() #7332
+  * Allow "loop=None" when saving GIF images #7329
+  * Fixed transparency when saving P mode images to PDF #7323
+  * Added saving LA images as PDFs #7299
+  * Set SMaskInData to 1 for PDFs with alpha #7316, #7317
+  * Changed Image mode property to be read-only by default #7307
+  * Silence exceptions in _repr_jpeg_ and _repr_png_ #7266
+  * Do not use transparency when saving GIF if it has been
+    removed when normalizing mode #7284
+  * Fix missing symbols when libtiff depends on libjpeg #7270
+
+-------------------------------------------------------------------
 Mon Sep 18 15:21:40 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 10.0.1
@@ -537,12 +581,12 @@ Wed Mar  3 07:41:14 UTC 2021 - Adrian Schröter <adrian@suse.de>
   * CVE-2021-25291: In TiffDecode.c, invalid tile boundaries could lead to an OOB Read in TiffReadRGBATile
   * CVE-2021-25292: The PDF parser has a catastrophic backtracking regex that could be used as a DOS attack.
   * CVE-2021-25293: There is an Out of Bounds Read in SGIRleDecode.c, since pillow 4.3.0.
-  
+
   There is an Exhaustion of Memory DOS in the ICNS, ICO, and BLP container formats where Pillow
   did not properly check the reported size of the contained image. These images could cause
   arbitrariliy large memory allocations. This was reported by Jiayi Lin, Luke Shaffer, Xinran Xie,
   and Akshay Ajayan of ASU.edu.
-  
+
   Other Changes
   A crash with the feature flags for LibJpeg and Webp on unreleased Python 3.10 has been fixed
 
@@ -556,26 +600,26 @@ Thu Jan 28 15:07:09 UTC 2021 - Oliver Kurz <okurz@suse.com>
 Sun Jan 24 11:00:39 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.1.0 (bsc#1180833, bsc#1180834, bsc#1180832):
-  * Fix TIFF OOB Write error. CVE-2020-35654 
-  * Fix for Read Overflow in PCX Decoding. CVE-2020-35653 
-  * Fix for SGI Decode buffer overrun. CVE-2020-35655 
-  * Fix OOB Read when saving GIF of xsize=1 
-  * Makefile updates 
-  * Add support for PySide6 
-  * Use disposal settings from previous frame in APNG 
-  * Added exception explaining that _repr_png_ saves to PNG 
-  * Use previous disposal method in GIF load_end 
-  * Allow putpalette to accept 1024 integers to include alpha values 
-  * Fix OOB Read when writing TIFF with custom Metadata 
-  * Added append_images support for ICO 
-  * Block TIFFTAG_SUBIFD 
-  * Fixed dereferencing potential null pointers 
-  * Deprecate FreeType 2.7 
-  * Moved warning to end of execution 
-  * Removed unused fromstring and tostring C methods 
-  * init() if one of the formats is unrecognised 
-  * Moved string_dimension CVE image to pillow-depends 
-  * Support raw rgba8888 for DDS 
+  * Fix TIFF OOB Write error. CVE-2020-35654
+  * Fix for Read Overflow in PCX Decoding. CVE-2020-35653
+  * Fix for SGI Decode buffer overrun. CVE-2020-35655
+  * Fix OOB Read when saving GIF of xsize=1
+  * Makefile updates
+  * Add support for PySide6
+  * Use disposal settings from previous frame in APNG
+  * Added exception explaining that _repr_png_ saves to PNG
+  * Use previous disposal method in GIF load_end
+  * Allow putpalette to accept 1024 integers to include alpha values
+  * Fix OOB Read when writing TIFF with custom Metadata
+  * Added append_images support for ICO
+  * Block TIFFTAG_SUBIFD
+  * Fixed dereferencing potential null pointers
+  * Deprecate FreeType 2.7
+  * Moved warning to end of execution
+  * Removed unused fromstring and tostring C methods
+  * init() if one of the formats is unrecognised
+  * Moved string_dimension CVE image to pillow-depends
+  * Support raw rgba8888 for DDS
 - drop patches python-Pillow-tiff-4.2.0.patch
   python-Pillow-tiff-fix-oob-read.patch (upstream)
 
@@ -1224,7 +1268,7 @@ Mon Jan 15 10:01:18 UTC 2018 - tchvatal@suse.com
 -------------------------------------------------------------------
 Fri Jan 12 12:52:24 UTC 2018 - idonmez@suse.com
 
-- Add freetype-2.9.patch to fix tests with FreeType 2.9 gh#2954 
+- Add freetype-2.9.patch to fix tests with FreeType 2.9 gh#2954
 
 -------------------------------------------------------------------
 Wed Jan 10 13:31:48 UTC 2018 - tchvatal@suse.com
@@ -1438,7 +1482,7 @@ Wed Apr 12 17:33:12 UTC 2017 - toddrme2178@gmail.com
 
 - Update to 4.1.0
   * Close files after loading if possible #2330
-  * Fix Image Access to be reloadable when embedding the Python interpreter 
+  * Fix Image Access to be reloadable when embedding the Python interpreter
     #2296
   * Fetch DPI from EXIF if not specified in JPEG header #2449, #2472
   * Removed winbuild checksum verification #2468
@@ -1448,12 +1492,12 @@ Wed Apr 12 17:33:12 UTC 2017 - toddrme2178@gmail.com
   * Pure Python Decoders, including Python decoder to fix for MSP images #1938
   * Reorganized GifImagePlugin, fixes #2314.  #2374
   * Doc: Reordered operating systems in Compatibility Matrix #2436
-  * Test: Additional tests for BurfStub, Eps, Container, GribStub, IPTC, Wmf, 
+  * Test: Additional tests for BurfStub, Eps, Container, GribStub, IPTC, Wmf,
     XVThumb, ImageDraw, ImageMorph ImageShow #2425
   * Health fixes #2437
-  * Test: Correctness tests ContainerIO, XVThumbImagePlugin, 
-    BufrStubImagePlugin, GribStubImagePlugin, FitsStubImagePlugin, 
-    Hdf5StubImagePlugin, PixarImageFile, PsdImageFile #2443, #2442, #2441, #2440, 
+  * Test: Correctness tests ContainerIO, XVThumbImagePlugin,
+    BufrStubImagePlugin, GribStubImagePlugin, FitsStubImagePlugin,
+    Hdf5StubImagePlugin, PixarImageFile, PsdImageFile #2443, #2442, #2441, #2440,
     #2431, #2430, #2428, #2427
   * Remove unused imports #1822
   * Replaced KeyError catch with dictionary get method #2424
@@ -1468,7 +1512,7 @@ Wed Apr 12 17:33:12 UTC 2017 - toddrme2178@gmail.com
   * Test: Fixed Qt tests for QT5 and saving 1 bit PNG #2394
   * Test: docker builds for Arch and Debian Stretch #2394
   * Updated libwebp to 0.6.0 on appveyor #2395
-  * More explicit error message when saving to a file with invalid extension 
+  * More explicit error message when saving to a file with invalid extension
     #2399
   * Docs: Update some http urls to https #2403
   * Preserve aux/alpha channels when performing Imagecms transforms #2355
@@ -1479,13 +1523,13 @@ Wed Apr 12 17:33:12 UTC 2017 - toddrme2178@gmail.com
   * Exclude .travis and contents from manifest #2386
   * Remove 'MIT-like' from license #2145
   * Tests: Add tests for several Image operations #2379
-  * PNG: Moved iCCP chunk before PLTE chunk when saving as PNG, restricted 
+  * PNG: Moved iCCP chunk before PLTE chunk when saving as PNG, restricted
     chunks known value/ordering #2347
-  * Default to inch-interpretation for missing ResolutionUnit in 
+  * Default to inch-interpretation for missing ResolutionUnit in
     TiffImagePlugin #2365
   * Bug: Fixed segfault when using ImagingTk on pypy Issue #2376, #2359.
   * Bug: Fixed Integer overflow using ImagingTk on 32 bit platforms #2359
-  * Tests: Added docker images for testing alternate platforms. See also 
+  * Tests: Added docker images for testing alternate platforms. See also
     https://github.com/python-pillow/docker-images. #2368
   * Removed PIL 1.0 era TK readme that concerns Windows 95/NT #2360
   * Prevent `nose -v` printing docstrings #2369
@@ -1493,7 +1537,7 @@ Wed Apr 12 17:33:12 UTC 2017 - toddrme2178@gmail.com
   * Added context managers for file handling #2307
   * Expose registered file extensions in Image #2343
   * Make mode descriptor cache initialization thread-safe. #2351
-  * Updated Windows test dependencies: Freetype 2.7.1, zlib 1.2.11 #2331, 
+  * Updated Windows test dependencies: Freetype 2.7.1, zlib 1.2.11 #2331,
     #2332, #2357
   * Followed upstream pngquant packaging reorg to libimagquant #2354
   * Fix invalid string escapes #2352
@@ -1841,7 +1885,7 @@ Thu Sep 29 01:13:38 UTC 2016 - badshah400@gmail.com
 Mon May 23 00:16:32 CEST 2016 - ro@suse.de
 
 - ignore make check errors on all bigendian archs
-  (adding ppc s390 s390x) 
+  (adding ppc s390 s390x)
 
 -------------------------------------------------------------------
 Sun Mar 13 20:32:48 UTC 2016 - dmueller@suse.com
@@ -1858,13 +1902,13 @@ Tue Mar  1 21:05:58 UTC 2016 - normand@linux.vnet.ibm.com
 Mon Feb 29 12:28:34 UTC 2016 - michael@stroeder.com
 
 - update to version 3.1.1 with security fixes:
-  * Fixed an integer overflow in Resample.c causing writes in the Python heap. 
-  * Fixed a buffer overflow in PcdDecode.c causing a segfault when opening 
+  * Fixed an integer overflow in Resample.c causing writes in the Python heap.
+  * Fixed a buffer overflow in PcdDecode.c causing a segfault when opening
     PhotoCD files. CVE-2016-TBD
-  * Fixed a buffer overflow in FliDecode.c causing a segfault when opening 
+  * Fixed a buffer overflow in FliDecode.c causing a segfault when opening
     FLI files. CVE-2016-0775 (fixes bsc#965582)
-  * Fixed a buffer overflow in TiffDecode.c causing an arbitrary amount of 
-    memory to be overwritten when opening a specially crafted invalid TIFF 
+  * Fixed a buffer overflow in TiffDecode.c causing an arbitrary amount of
+    memory to be overwritten when opening a specially crafted invalid TIFF
     file. CVE-2016-0740 (fixes bsc#965579)
 
 -------------------------------------------------------------------
@@ -2084,7 +2128,7 @@ Tue Apr 21 14:13:51 UTC 2015 - tbechtold@suse.com
 Fri Feb  6 08:25:34 UTC 2015 - hpj@urpla.net
 
 - fix test for lossy webp alpha deviation of earlier lib versions
-  * Add Pillow-fixtests.patch 
+  * Add Pillow-fixtests.patch
 
 -------------------------------------------------------------------
 Thu Jan  8 10:55:04 UTC 2015 - tbechtold@suse.com
@@ -2291,9 +2335,9 @@ Tue Jan  7 19:19:05 UTC 2014 - marko.kohtala@gmail.com
 -------------------------------------------------------------------
 Wed Dec 11 20:08:40 UTC 2013 - hrvoje.senjan@gmail.com
 
-- Added use-recommended-freetype-include.patch -- Freetype upstream 
-  recommends using their macros together with ft2build include. 
-  Positive sideeffect is that this patch makes it build with both 
+- Added use-recommended-freetype-include.patch -- Freetype upstream
+  recommends using their macros together with ft2build include.
+  Positive sideeffect is that this patch makes it build with both
   freetype2 2.5.1, and older version
 
 -------------------------------------------------------------------

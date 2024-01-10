@@ -635,4 +635,20 @@ SLE identical and thus derived from a common source. Thanks!
   Release notes https://github.com/kubevirt/kubevirt/releases/tag/v1.1.0</comment>
     <requestid>1127309</requestid>
   </revision>
+  <revision rev="69" vrev="2">
+    <srcmd5>2a3eabb37b695df324cf0f005dacf118</srcmd5>
+    <version>1.1.0</version>
+    <time>1704290034</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1136512</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>bf48bcb5b6ee03414005364422ecc073</srcmd5>
+    <version>1.1.1</version>
+    <time>1704487472</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1137022</requestid>
+  </revision>
 </revisionlist>

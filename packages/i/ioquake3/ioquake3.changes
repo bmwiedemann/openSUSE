@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Thu Dec 28 20:20:53 UTC 2023 - lnussel@suse.com
+
+- Update to version 1.36+git.20231226:
+  * Fix building QVMs on Linux with Windows line endings
+  * OpenGL2: Fix parsing q3gl2_sun without two additional tokens
+  * OpenGL2: Fix q3map2 lightstyles effects
+  * OpenGL2: Fix updating the loading screen with r_cubeMapping 1
+  * OpenGL2: Fix FB-MSAA on AMD Windows driver
+  * OpenGL2: Fix r_clear when using HDR/FB-MSAA
+  * OpenGL2: Fix border for cg_viewsize using HDR/FB-MSAA w/postProcess
+  * Build QVMs even if there is no QVM JIT
+  * Improve AppStream metainfo
+  * Update org.ioquake3.ioquake3.metainfo.xml
+  * Add AppStream metadata
+  * Don't list mod directories at Windows drive root
+  * nsis: Only uninstall protocol handler for this installation
+  * nsis: Fix CustomUrlArguments for protocol handler
+  * nsis: Add better descriptions for OpenAL and libcurl
+  * nsis: Display ioquake3 version
+  * nsis: Require installing SDL
+  * nsis: Remove Speex library
+  * Fix macOS client/server failing to start from terminal
+  * Update CI actions version
+  * Update CI to macOS 11
+  * Fix bad client reliableAcknowledge DOS exploit
+  * Add protocol handler support
+  * Update SECURITY.md
+  * Update CI to Ubuntu 20.04
+  * Document USE_INTERNAL_VORBIS in README
+  * Update MSVC .lib files to SDL 2.24.0
+  * Fix running make-macosx{,-ub2}.sh on Linux
+  * Update macOS UB1 to SDL 2.0.22
+  * Update to SDL 2.24.0 and add separate macOS UB2 dylib
+  * Added .gitignore to msvc folder
+  * Added .gitignore to msvc11 folder
+  * Add .gitignore to msvc10 folder
+  * Updated .gitgnore to latest GitHub template
+  * Minor typo correction to be_aas_file.c
+  * Fixed another minor typo or two
+
+-------------------------------------------------------------------
 Sun Jan 22 05:48:34 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 1.36+git.20221123:

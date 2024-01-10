@@ -101,4 +101,29 @@
 - drop python-parsel-drop-python-2.patch (upstream)</comment>
     <requestid>1056833</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>108a9fc89cecafe218cd6b3f9e98fbfd</srcmd5>
+    <version>1.8.1</version>
+    <time>1703198309</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.8.1:
+  * Remove a Sphinx reference from NEWS to fix the PyPI
+    description
+  * Add support for JMESPath: you can now create a selector for a
+    JSON document and call ``Selector.jmespath()``.
+  * Selectors can now be constructed from ``bytes`` (using the
+    ``body`` and ``encoding`` arguments) instead of ``str``
+    (using the ``text`` argument), so that there is no internal
+    conversion from ``str`` to ``bytes`` and the memory
+    usage is lower.
+  * Typing improvements
+  * The ``pkg_resources`` module (which was absent from the
+    requirements) is no longer used
+  * New requirements:
+  * ``jmespath``
+  * ``typing_extensions`` (on Python 3.7)
+
+- Initial package build.</comment>
+    <requestid>1134335</requestid>
+  </revision>
 </revisionlist>

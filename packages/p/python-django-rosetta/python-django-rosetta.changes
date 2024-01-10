@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec 27 09:46:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.10.0:
+  * Fix link to polib. (#277, thanks @gamboz)
+  * Deepl: use the PRO API endpoint when using a PRO API key.
+  * Limit supported versions to Django 4.2 and 5.0, using Python
+    3.9, 3.10, 3.11 and 3.12
+
+-------------------------------------------------------------------
 Wed Apr 26 06:22:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.9.9:
@@ -21,7 +30,7 @@ Wed Apr 26 06:22:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Fri Dec 16 07:04:13 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Remove unneeded BuildRequires on python-python-memcached. 
+- Remove unneeded BuildRequires on python-python-memcached.
 
 -------------------------------------------------------------------
 Mon Nov 28 12:10:58 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>

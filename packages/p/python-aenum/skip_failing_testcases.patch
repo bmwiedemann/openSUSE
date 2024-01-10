@@ -2,10 +2,10 @@
  aenum/test.py |    2 ++
  1 file changed, 2 insertions(+)
 
-Index: aenum-3.1.11/aenum/test_v3.py
+Index: aenum-3.1.15/aenum/test_v3.py
 ===================================================================
---- aenum-3.1.11.orig/aenum/test_v3.py
-+++ aenum-3.1.11/aenum/test_v3.py
+--- aenum-3.1.15.orig/aenum/test_v3.py
++++ aenum-3.1.15/aenum/test_v3.py
 @@ -65,6 +65,7 @@ class TestEnumV3(TestCase):
          self.Holiday = Holiday
  
@@ -14,10 +14,10 @@ Index: aenum-3.1.11/aenum/test_v3.py
      def test_stdlib_inheritence(self):
          # 3.4
          self.assertTrue(issubclass(self.Season, StdlibEnum))
-@@ -1883,6 +1884,7 @@ class TestExtendEnumV3(TestCase):
+@@ -1885,6 +1886,7 @@ class TestExtendEnumV3(TestCase):
          self.assertTrue(issubclass(Color, StdlibFlag))
  
-     @unittest.skipUnless(StdlibFlag, 'Stdlib Flag not available')
+     @unittest.skipUnless(StdlibFlag and pyver < PY3_11, 'Stdlib Flag not available')
 +    @unittest.skip('Failing test')
      def test_extend_flag_backwards_stdlib(self):
          class Color(StdlibFlag):

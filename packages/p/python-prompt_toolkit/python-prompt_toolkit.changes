@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Dec 30 17:31:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.43:
+  * Fix regression on Pypy: Don't use `ctypes.pythonapi` to
+    restore SIGINT if not available.
+  * Make `formatted_text.split_lines()` accept an iterable
+    instead of lists only.
+  * Disable the IPython workaround (from 3.0.41) for IPython >=
+    8.18.
+  * Restore signal.SIGINT handler between prompts.
+
+-------------------------------------------------------------------
 Tue Dec  5 13:27:22 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 -  Update to 3.0.41 (bsc#1217693):
@@ -57,7 +69,7 @@ Tue Apr  4 20:16:51 UTC 2023 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Tue Dec 13 16:16:08 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 3.0.36 
+- Update to version 3.0.36
   * Fixes:
   - Another Python 3.6 fix for a bug that was introduced in 3.0.34.
 
@@ -78,7 +90,7 @@ Tue Dec 13 16:16:08 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 -------------------------------------------------------------------
 Tue Dec  6 04:28:29 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 3.0.33: 
+- Update to version 3.0.33:
   Fixes:
   - Improve termination of `Application`. Don't suppress `CancelledError`. This
   fixes a race condition when an `Application` gets cancelled while we're
@@ -89,7 +101,7 @@ Tue Dec  6 04:28:29 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 -------------------------------------------------------------------
 Wed Nov  9 16:32:15 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 3.0.32: 
+- Update to version 3.0.32:
   Bug fixes:
   - Use `DummyInput` by default in `create_input()` if `sys.stdin` does not have
   a valid file descriptor. This fixes errors when `sys.stdin` is patched in

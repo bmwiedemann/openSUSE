@@ -227,4 +227,35 @@ versioned.patch: refreshed</comment>
 - fix_ci_tests.patch: adapt for openssl 3.1.4</comment>
     <requestid>1120765</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>3db851ff14a61e843a5b803ddc650625</srcmd5>
+    <version>20.10.0</version>
+    <time>1703024127</time>
+    <user>anag+factory</user>
+    <comment>- Update to 20.10.0:
+  * --experimental-default-type flag to flip module defaults
+  * The new flag --experimental-detect-module can be used to
+  automatically run ES modules when their syntax can be detected.
+  * Added flush option in file system functions for fs.writeFile functions
+  * Added experimental WebSocket client
+  * vm: fix V8 compilation cache support for vm.Script. This fixes
+  performance regression since v16.x when support for
+  importModuleDynamically was added to vm.Script
+For details, see
+https://github.com/nodejs/node/blob/main/doc/changelogs/CHANGELOG_V20.md#20.10.0
+- nodejs20-zlib-1.3.patch: upstreamed, removed
+- fix_ci_tests.patch, node-gyp-addon-gypi.patch: refreshed
+
+- Update to 20.9.0:
+  * No changes, just LTS transition</comment>
+    <requestid>1133875</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>157c8758adc3a6575495027496f16d25</srcmd5>
+    <version>20.10.0</version>
+    <time>1704380212</time>
+    <user>dimstar_suse</user>
+    <comment>- c-ares-fixes.patch: fixes unit tests for new c-ares</comment>
+    <requestid>1136241</requestid>
+  </revision>
 </revisionlist>

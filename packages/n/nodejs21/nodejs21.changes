@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Jan  2 14:25:03 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- c-ares-fixes.patch: fixes unit tests for new c-ares
+
+-------------------------------------------------------------------
+Mon Dec 11 07:31:07 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- Update to 21.4.0:
+  * fs: introduce dirent.parentPath
+  * fs: use default w flag for writeFileSync with utf8 encoding
+
+- Changes in 21.3.0:
+  * New --disable-warning flag
+  * Fast fs.writeFileSync with UTF-8 Strings
+
+For details, see
+https://github.com/nodejs/node/blob/main/doc/changelogs/CHANGELOG_V21.md#21.4.0
+
+- fix_ci_tests.patch: added workaround for missing deps
+
+-------------------------------------------------------------------
+Thu Nov 23 10:44:16 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- node-gyp-addon-gypi.patch: fix misapplied patch (bsc#1217424)
+
+-------------------------------------------------------------------
 Wed Nov 15 15:18:00 UTC 2023 - Adam Majer <adam.majer@suse.de>
 
 - Update to 21.2.0

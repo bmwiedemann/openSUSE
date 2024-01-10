@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,19 +23,19 @@
 
 %define asan_build 0
 %define debug_build 0
-%define srcver 2.1.5.1
+%define srcver 3.0.1
 %if "%{flavor}" == "libjpeg-turbo"
 %define major    8
-%define minor    2
+%define minor    3
 %define micro    2
 %define tmajor   0
-%define tminor   2
+%define tminor   3
 %define tmicro   0
 %define tlibver  %{tmajor}.%{tminor}.%{tmicro}
 %endif
 %if "%{flavor}" == "libjpeg62-turbo"
 %define major   62
-%define minor   3
+%define minor   4
 %define micro   0
 %endif
 %define libver   %{major}.%{minor}.%{micro}
@@ -44,9 +44,9 @@ Version:        %{srcver}
 Release:        0
 Summary:        A SIMD-accelerated library for manipulating JPEG image files
 License:        BSD-3-Clause
-URL:            https://sourceforge.net/projects/libjpeg-turbo
-Source0:        https://downloads.sf.net/libjpeg-turbo/libjpeg-turbo-%{version}.tar.gz
-Source1:        https://downloads.sf.net/libjpeg-turbo/libjpeg-turbo-%{version}.tar.gz.sig
+URL:            https://libjpeg-turbo.org/
+Source0:        https://github.com/libjpeg-turbo/libjpeg-turbo/releases/download/%{version}/libjpeg-turbo-%{version}.tar.gz
+Source1:        https://github.com/libjpeg-turbo/libjpeg-turbo/releases/download/%{version}/libjpeg-turbo-%{version}.tar.gz.sig
 Source2:        libjpeg-turbo.keyring
 Source3:        baselibs.conf
 Patch1:         libjpeg-turbo-1.3.0-tiff-ojpeg.patch
@@ -145,6 +145,8 @@ MYCFLAGS="$MYCFLAGS -O0 -g"
 %endif
 %ifarch armv6l armv6hl
     -DWITH_SIMD=FALSE \
+%else
+    -DREQUIRE_SIMD=TRUE \
 %endif
     -DCMAKE_SHARED_LINKER_FLAGS="$MYLDFLAGS" \
     -DENABLE_STATIC=OFF \

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Dec 27 10:38:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to update to 0.20.3:
+  * Deprecated MSC2716 methods and added new Beeper-
+    specific batch send methods, as upstream MSC2716 support has
+    been abandoned.
+  * *(util.async_db)* Added `PRAGMA synchronous = NORMAL;` to
+    default pragmas.
+  * *(types)* Fixed `guest_can_join` field name in room directory
+    response
+
+-------------------------------------------------------------------
 Sat Oct 21 08:21:20 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 0.20.2:
@@ -360,10 +372,10 @@ Tue Mar 16 17:58:51 UTC 2021 - Matej Cepl <mcepl@suse.com>
 Mon Jan  4 11:41:20 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 0.8.6:
-  * Switched to secrets.token_urlsafe for generating tokens 
+  * Switched to secrets.token_urlsafe for generating tokens
     (e.g. registration hs/as_tokens).
   * Changed sync error logging to warning instead of exception.
-  * Allowed sending read receipts even if appservice user is not 
+  * Allowed sending read receipts even if appservice user is not
     in room (#34).
 
 -------------------------------------------------------------------
@@ -371,15 +383,15 @@ Tue Dec 29 15:21:33 UTC 2020 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 0.8.5:
   * Made SerializableEnum work with int value
-  * Added TraceLogger type hints to command handling classes 
+  * Added TraceLogger type hints to command handling classes
 
 -------------------------------------------------------------------
 Thu Nov 19 04:21:19 UTC 2020 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 0.8.3:
-  * Fixed typo in HTML reply fallback generation when target 
+  * Fixed typo in HTML reply fallback generation when target
     message is plaintext.
-  * Made CommandEvent.mark_read async instead of returning an 
+  * Made CommandEvent.mark_read async instead of returning an
     awaitable, because sometimes it didn't return an awaitable.
 
 -------------------------------------------------------------------
@@ -397,4 +409,4 @@ Fri Feb 28 14:18:48 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 -------------------------------------------------------------------
 Thu Feb 27 13:11:59 UTC 2020 - Dead Mozay <dead_mozay@opensuse.org>
 
-- Initial package 
+- Initial package

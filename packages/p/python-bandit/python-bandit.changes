@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Dec 14 09:15:32 UTC 2023 - Petr Gajdos <pgajdos@suse.com>
+
+- update to 1.7.6:
+  * Fixes for sphinx build
+  * refactor: remove \`importlib-metadata\` fallback
+  * Fix crash on pyproject.toml without bandit config
+  * Add official support of Python 3.12
+  * Use mirror repository for black pre-commit hook
+  * fix(plugins/B507): also detect class instances
+  * Fix for ReadtheDocs build
+  * Bump actions/checkout from 3 to 4
+  * Fix dependabot to update github actions
+  * Support ignoring blacklists by name
+  * Update blacklist call documentation
+  * Avoid gitpyhon CVE-2022-24439
+  * django\_rawsql\_used: support keyword arguments used in
+    \`RawSQL\`
+  * Simplify \`wrap\_file\_object\`
+  * Update asserts.py documentation
+  * Remove support for Python 3.7 due to end-of-life
+  * Make pre-commit run Bandit hook using a single process
+  * Switch from open collective to PSF
+  * Replace pbr in favor of importlib
+  * Add a copy button to all code snippets in docs
+  * Add \`random.Random\` to B311 checks
+  * Update pre-commit hooks
+  * Update versions of used GitHub Actions
+  * Skip unnecessary \`pip install\` commands in the
+    pythonpackage.yml workflow
+  * Switch to tox 4
+  * Adds check for crypt module usage as weak hash
+  * language and linting updates
+  * xmlrpclib replaced with xmlrpc in Python3
+  * Improper detection of non-requests module
+  * Remove checks for Python2 urllib
+  * Render Python 3.10 in drop down correctly
+  * Update bug report to include version 1.7.5
+
+-------------------------------------------------------------------
 Mon Jul 24 20:22:50 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.7.5:

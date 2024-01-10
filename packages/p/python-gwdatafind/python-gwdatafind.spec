@@ -19,7 +19,7 @@
 %define skip_python2 1
 
 Name:           python-gwdatafind
-Version:        1.1.3
+Version:        1.2.0
 Release:        0
 License:        GPL-3.0-only
 Summary:        Client library for the LIGO Data Replicator (LDR) service
@@ -30,12 +30,12 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module ligo-segments}
-BuildRequires:  %{python_module igwn-auth-utils-requests >= 0.3.1}
+BuildRequires:  %{python_module igwn-auth-utils}
 BuildRequires:  %{python_module pytest >= 2.8.0}
 BuildRequires:  %{python_module requests-mock}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-igwn-auth-utils-requests >= 0.3.1
+Requires:       python-igwn-auth-utils
 Requires:       python-ligo-segments
 BuildArch:      noarch
 Requires(post): update-alternatives

@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Jan 07 18:08:16 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.5.5:
+  * build(deps): bump github.com/google/go-containerregistry
+  * bump upload/download github actions
+  * build(deps): bump google.golang.org/api from 0.152.0 to 0.154.0
+  * build(deps): bump github.com/lima-vm/lima from 0.18.0 to 0.19.1
+  * build(deps): bump github.com/containerd/containerd from 1.7.7
+    to 1.7.11
+  * build(deps): bump github.com/go-git/go-git/v5 from 5.10.0 to
+    5.11.0
+  * build(deps): bump golang.org/x/crypto from 0.15.0 to 0.17.0
+  * build(deps): bump cloud.google.com/go/storage from 1.35.1 to
+    1.36.0
+  * convert: sort packages alphabetically
+  * build(deps): bump sigstore/cosign-installer from 3.2.0 to 3.3.0
+  * build(deps): bump actions/setup-go from 4 to 5
+  * build(deps): bump github.com/kubescape/go-git-url from 0.0.25
+    to 0.0.26
+  * Set a default env var for GOMODCACHE.
+  * Pull in `go-apk` with `provider_priority` `ini` fix.
+  * Mark update.manual as an optional field.
+  * update release to add some clarification regarding the homebrew
+
+-------------------------------------------------------------------
 Tue Dec 05 06:06:45 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.5.4:

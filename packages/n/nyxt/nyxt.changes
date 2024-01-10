@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan  8 16:02:31 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to version 3.11.0:
+  * UI/UX
+    - Built-in modes and special pages have a dedicated menu area now.
+      This menu allows access to common functions that are defined within the mode. 
+  * Bug fixes
+    - Fix commands reopen-last-buffer (unbound) and reopen-buffer (Ctrl+/).
+    - Fix performance issues related to hint-mode
+    - Fix logic behind actions-on-marks
+  
+-------------------------------------------------------------------
 Mon Dec 11 15:54:29 UTC 2023 - Michael Pujos <pujos.michael@gmail.com>
 
 - Update to version 3.10.0:

@@ -19,7 +19,7 @@
 %define libname libsepol2
 
 Name:           libsepol
-Version:        3.5
+Version:        3.6
 Release:        0
 Summary:        SELinux binary policy manipulation library
 License:        LGPL-2.1-or-later
@@ -111,7 +111,6 @@ make %{?_smp_mflags}
 %{_bindir}/sepol_compute_relabel
 %{_bindir}/sepol_validate_transition
 %{_mandir}/man8/*.8%{ext_man}
-%{_mandir}/ru/man8/*.8%{ext_man}
 
 %files -n %{libname}
 %defattr(-,root,root)

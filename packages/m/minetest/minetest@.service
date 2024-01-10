@@ -21,7 +21,8 @@ Restart=on-failure
 User=minetest
 Group=minetest
 Type=simple
-ExecStart=/usr/bin/minetestserver --config /etc/minetest/%i.conf --world /var/lib/minetest/%i/
+EnvironmentFile=/etc/minetest/%i.env
+ExecStart=/usr/bin/minetestserver --config /etc/minetest/%i.conf --world /var/lib/minetest/%i/ $MINETEST_OPTIONS
 
 [Install]
 WantedBy=multi-user.target

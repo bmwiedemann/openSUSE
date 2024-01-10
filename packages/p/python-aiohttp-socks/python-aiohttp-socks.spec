@@ -1,7 +1,7 @@
 #
 # spec file for package python-aiohttp-socks
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ License:        Apache-2.0
 URL:            https://github.com/romis2012/aiohttp-socks
 Source:         https://files.pythonhosted.org/packages/source/a/aiohttp_socks/aiohttp_socks-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
@@ -35,6 +36,7 @@ Requires:       python-python-socks >= 2.0.0
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module aiohttp >= 2.3.2}
+BuildRequires:  %{python_module async_timeout}
 BuildRequires:  %{python_module attrs >= 1.0.1}
 BuildRequires:  %{python_module python-socks >= 2.0.0}
 # /SECTION

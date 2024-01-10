@@ -157,4 +157,21 @@
     <comment></comment>
     <requestid>1095995</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>d495477954a6aa8a449267b89c63ce23</srcmd5>
+    <version>2.12</version>
+    <time>1703024124</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.12:
+  * fixed bug in RegexMatcher.reset() not retaining ownership
+    of string
+    - added wrappers for TimeZoneNames class
+    - added wrapper for TimeZone.getIanaID()
+    - added wrapper for
+  * added support for ICU 74.1
+
+- add missing six declaration for testsuite
+  * Support ICU 69</comment>
+    <requestid>1133871</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package intel-graphics-compiler
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,11 @@
 
 
 %global llvm_commit llvmorg-14.0.5
-%global opencl_clang_commit 78c5e3f59e49f337c6a9af7818f0c8b918bee4bf
-%global spirv_llvm_translator_commit 23f398bf369093b1fd67459db8071ffcc6b92658
-%global vc_intrinsics_commit v0.12.3
+%global opencl_clang_commit cf95b338d14685e4f3402ab1828bef31d48f1fd6
+%global spirv_llvm_translator_commit 43baf90f96fb9df607595b63858fd9e85fbb2604
+%global vc_intrinsics_commit v0.13.0
 Name:           intel-graphics-compiler
-Version:        1.0.14062.11
+Version:        1.0.15136.4
 Release:        1%{?dist}
 Summary:        Intel Graphics Compiler for OpenCL
 License:        MIT
@@ -33,6 +33,7 @@ Source2:        https://github.com/KhronosGroup/SPIRV-LLVM-Translator/archive/%{
 Source3:        https://github.com/llvm/llvm-project/archive/%{llvm_commit}/llvm-project.tar.gz
 Source4:        https://github.com/intel/vc-intrinsics/archive/%{vc_intrinsics_commit}/vc-intrinsics.zip
 Patch0:         0001-Use-patch-instead-of-git-to-apply-opencl-clang-patch.patch
+Patch1:         0001-Fix-PromotePredicate-to-keep-sequence-of-instruction.patch
 BuildRequires:  bison
 BuildRequires:  cmake
 BuildRequires:  flex
@@ -43,6 +44,7 @@ BuildRequires:  memory-constraints
 BuildRequires:  patch
 BuildRequires:  pkgconfig
 BuildRequires:  python3
+BuildRequires:  python3-Mako
 BuildRequires:  spirv-headers
 BuildRequires:  spirv-tools-devel
 BuildRequires:  unzip
@@ -128,6 +130,7 @@ popd
 mkdir igc
 tar -xzf %{_sourcedir}/igc-%{version}.tar.gz -C igc --strip-components=1
 pushd igc
+%patch1 -p1
 popd
 
 %build

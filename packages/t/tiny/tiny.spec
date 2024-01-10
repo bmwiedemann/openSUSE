@@ -1,7 +1,7 @@
 #
 # spec file for package tiny
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           tiny
-Version:        0.11.0+git7
+Version:        0.12.0+git0
 Release:        0
 Summary:        Terminal IRC client written in Rust
 License:        (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR ISC OR MIT) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT) AND (Apache-2.0 OR MIT OR BSD-2-Clause) AND (MIT OR Unlicense) AND Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND CC0-1.0 AND ISC AND MIT AND MIT
@@ -35,7 +35,7 @@ A terminal IRC client written in Rust.
 
 %prep
 %autosetup -a1
-mkdir .cargo
+mkdir -p .cargo
 cp %{SOURCE2} .cargo/config
 
 %build

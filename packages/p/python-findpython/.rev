@@ -77,4 +77,16 @@
   * We need to use pdm-pep517, to avoid circular requirements.</comment>
     <requestid>1132417</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>bcfb4946b0c2f4a637bf436868a9d355</srcmd5>
+    <version>0.4.1</version>
+    <time>1704562874</time>
+    <user>dimstar_suse</user>
+    <comment>- drop revert-back-to-pdm-pep517.patch:
+  try to resolve build cycle differently
+
+- Update to 0.2.2
+- Initial packaging for findpython 0.1.6.</comment>
+    <requestid>1137128</requestid>
+  </revision>
 </revisionlist>

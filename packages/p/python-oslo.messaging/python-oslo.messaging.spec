@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslo.messaging
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           python-oslo.messaging
-Version:        14.3.1
+Version:        14.5.0
 Release:        0
 Summary:        OpenStack oslo.messaging library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/oslo.messaging
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.messaging/oslo.messaging-14.3.1.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.messaging/oslo.messaging-14.5.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-PyYAML >= 3.13
 BuildRequires:  python3-WebOb >= 1.7.1
@@ -98,7 +98,7 @@ of different messaging transports.
 This package contains the documentation.
 
 %prep
-%autosetup -p1 -n oslo.messaging-14.3.1
+%autosetup -p1 -n oslo.messaging-14.5.0
 %py_req_cleanup
 
 %build
@@ -118,7 +118,7 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 # fail without it
 rm -rf oslo_messaging/tests/functional
 # 3 cyrus tests fail on rdo with time out
-%{openstack_stestr_run} --black-regex '^oslo_messaging.tests.(functional|drivers.test_amqp_driver.TestCyrusAuthentication.test_authentication_(ok|ignore_default_realm|default_realm))'
+%{openstack_stestr_run} --exclude-regex '^oslo_messaging.tests.(functional|drivers.test_amqp_driver.TestCyrusAuthentication.test_authentication_(ok|ignore_default_realm|default_realm))'
 
 %files -n python3-oslo.messaging
 %license LICENSE

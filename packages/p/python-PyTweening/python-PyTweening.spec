@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyTweening
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,14 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-PyTweening
-Version:        1.0.4
+Version:        1.0.7
 Release:        0
 Summary:        A collection of tweening / easing functions
 License:        BSD-3-Clause
 URL:            https://github.com/asweigart/pytweening
 Source:         https://files.pythonhosted.org/packages/source/P/PyTweening/pytweening-%{version}.tar.gz
-Source99:       https://raw.githubusercontent.com/asweigart/pytweening/master/LICENSE.txt
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
@@ -38,7 +37,6 @@ A collection of tweening / easing functions implemented in Python.
 
 %prep
 %setup -q -n pytweening-%{version}
-cp %{SOURCE99} .
 dos2unix README.md
 
 %build
@@ -51,6 +49,7 @@ dos2unix README.md
 %files %{python_files}
 %doc README.md
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/pytweening
+%{python_sitelib}/pytweening-%{version}*info
 
 %changelog

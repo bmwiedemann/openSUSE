@@ -35,10 +35,10 @@ Signed-off-by: Peter Oberparleiter <oberpar@linux.ibm.com>
  zdev/src/zdev-root-update.dracut |    6 ------
  1 file changed, 6 deletions(-)
 
-Index: s390-tools-2.29.0/zdev/src/zdev-root-update.dracut
+Index: s390-tools-2.30.0/zdev/src/zdev-root-update.dracut
 ===================================================================
---- s390-tools-2.29.0.orig/zdev/src/zdev-root-update.dracut
-+++ s390-tools-2.29.0/zdev/src/zdev-root-update.dracut
+--- s390-tools-2.30.0.orig/zdev/src/zdev-root-update.dracut
++++ s390-tools-2.30.0/zdev/src/zdev-root-update.dracut
 @@ -20,10 +20,4 @@ dracut -f || {
  	exit 1
  }

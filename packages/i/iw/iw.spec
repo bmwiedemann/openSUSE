@@ -1,7 +1,7 @@
 #
 # spec file for package iw
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,10 @@
 
 
 Name:           iw
-Version:        5.19
+Version:        6.7
 Release:        0
 Summary:        Configuration utility for nl80211 based wireless drivers
 License:        ISC
-Group:          Hardware/Wifi
 URL:            https://wireless.wiki.kernel.org/en/users/documentation/iw
 Source:         iw-%{version}.tar.gz
 BuildRequires:  pkgconfig
@@ -33,7 +32,7 @@ supports almost all new drivers that have been added to the kernel
 recently.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 # FIXME: -fno-strict-aliasing seems to be obsolete, but upstream Makefile requires it.

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Dec 28 18:09:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.21.2:
+  * New compile-defined limit LIBRAW_MAX_PROFILE_SIZE_MB:
+    limits allocation/read size for embedded color profile
+    Embedded color profile allocation/read size: limited by input
+    file size.
+  * Multiple fixes (mostly inspired by oss-fuzz) to improve
+    library stability and/or input checks.
+  * raw-identify: use fallback if PATH_MAX not available
+  * Disabled color conversion for Canon 16-bit thumbnails
+  * docs/changelog: explained the case when no thumbnail is found
+    in specific file
+  * swapXX renamed to libraw_swapXX to avoid name conflict
+  * better striped thumbnails handling
+- drop libraw-CVE-2023-1729.patch (upstream)
+
+-------------------------------------------------------------------
 Thu Sep 14 14:57:19 UTC 2023 - pgajdos@suse.com
 
 - security update
@@ -91,13 +109,13 @@ Mon Oct 26 08:19:42 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.20.2:
   * corrected GPS EXIF output
-  * Olympus XZ-1: do not provide linear_max 
+  * Olympus XZ-1: do not provide linear_max
   * Pentax Optio 33WR: maker index was incorrect
   * dcraw_emu: corrected help line for -6 option.
   * raw-identify: corrected range check for color matrices print
   * use_camera_matrix option: fixed a bug introduced when making compiler more happy
-  * multiple camera support improvements  
- 
+  * multiple camera support improvements
+
 -------------------------------------------------------------------
 Fri Jul 24 08:58:33 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
@@ -264,7 +282,7 @@ Fri Mar  9 12:41:28 UTC 2018 - kbabioch@suse.com
 - Updated to version 0.18.8:
   * leaf_hdr_load_raw: check for image pointer for demosaiced raw
   * NOKIARAW parser: check image dimensions readed from file
-  * quicktake_100_load_raw: check width/height limits 
+  * quicktake_100_load_raw: check width/height limits
 - Dropped libraw-glibc-2.27.patch: No longer needed
 
 -------------------------------------------------------------------
@@ -303,14 +321,14 @@ Mon Sep 25 12:42:43 UTC 2017 - pgajdos@suse.com
     Fix for possible buffer overrun in kodak_65000 decoder
     Fix for possible heap overrun in Canon makernotes parser
     Fix for CVE-2017-13735
-    CVE-2017-14265: Additional check for X-Trans CFA pattern data 
+    CVE-2017-14265: Additional check for X-Trans CFA pattern data
 - remove upstreamed libraw-out-of-bounds-kodak.patch
 
 -------------------------------------------------------------------
 Wed Sep 13 10:25:35 UTC 2017 - pgajdos@suse.com
 
 - updated to 0.18.4:
- * Fix for possible heap overrun in Canon makernotes parser 
+ * Fix for possible heap overrun in Canon makernotes parser
    (CVE-2017-14348)
  * Fix for CVE-2017-13735
  * CVE-2017-14265: Additional check for X-Trans CFA pattern data
@@ -326,12 +344,12 @@ Tue May 23 06:54:04 UTC 2017 - pgajdos@suse.com
     Fixed several errors (Secunia advisory SA75000)
     ACES colorspace output option included in dcraw_emu help page
     Avoided possible 32-bit overflows in Sony metadata parser
-    Phase One flat field code called even for half-size output  
+    Phase One flat field code called even for half-size output
     Camera Support: Sigma Quattro H
     Fixed bug in FujiExpoMidPointShift parser
     Fixed wrong black level in Sony A350
     Added standard integer types for VisualStudio 2008 and earlier
-- added missing parts of the fix for CVE-2017-6887 
+- added missing parts of the fix for CVE-2017-6887
   and CVE-2017-6886
     + libraw-CVE-2017-6887,6886.patch
 - added missing fix for CVE-2017-6890 and CVE-2017-6899
@@ -423,7 +441,7 @@ Thu Dec  3 13:56:58 UTC 2015 - pgajdos@suse.com
 
 - updated to 0.17.1:
 * fixed two errors found by fuzzer (CVE-2015-8367)
-* phase_one_correct always returns value; handle P1 return codes 
+* phase_one_correct always returns value; handle P1 return codes
   in postprocessing
 - removed upstreamedretval.diff
 
@@ -436,12 +454,12 @@ Fri Nov 13 16:27:05 UTC 2015 - jengelh@inai.de
 * More metadata parsing/extraction: XMP packet extracted (if
   exists), DNG Color information parsed, GPS data (partially)
   parsed, EXIF/Makernotes parsed for used optics (for both RAW
-  files and DNG converted by Adobe convertor). 
+  files and DNG converted by Adobe convertor).
 * Exif/Makernotes parser callback (called for each processed tag)
 * Sony ARW2.3 decoder: params.sony_arw2_hack removed, decoded data
   are always in 0...17k range (note the difference with dcraw!);
   Additional processing options for Sony lossy compression techincal
-  analysis. 
+  analysis.
 * Dcraw 9.26 imported (but some changes not approved because Libraw
   does it better) with some exceptions: no Pentax K3-II frame
   selection code; and no built-in JPEG decompressor.
@@ -451,7 +469,7 @@ Fri Nov 13 16:27:05 UTC 2015 - jengelh@inai.de
 * 224 camera models added to supported camera list. Some of them are
   new (released since LibRaw 0.16 come out), some was supported
   before, but missed from the list.
-* Fujifilm F700/S20Pro second frame support 
+* Fujifilm F700/S20Pro second frame support
 - Add retval.diff to resolve new compiler warnings
 
 -------------------------------------------------------------------
@@ -497,7 +515,7 @@ Mon Sep  9 13:33:01 UTC 2013 - pgajdos@suse.com
         Panasonic LF1
         Canon EOS 70D
         Sony RX100II, RX1R
-        Olympus E-P5 
+        Olympus E-P5
 
 -------------------------------------------------------------------
 Mon Jul 29 09:16:30 UTC 2013 - pgajdos@suse.com
@@ -543,8 +561,8 @@ Wed Jul 11 11:08:57 UTC 2012 - lists.nico.k@googlemail.com
      Powershot SX200; Nikon D4,D800/D800E and D3200; Fuji X-S1 and
      HS30EXR; Casio EX-Z8; Olympus E-M5; Panasonic GF5;
      Sony NEX-F3, SLT-A37 and SLT-A57; Samsung NX20 and NX210;
-   - Support for updated Samsung NX200 firmware. 
- * Makefile.msvc: easy additional compiler flag editing. 
+   - Support for updated Samsung NX200 firmware.
+ * Makefile.msvc: easy additional compiler flag editing.
 - update to 0.14.6
  * Casio EX-Z500 support
  * (possible) I/O exceptions on file open catched in
@@ -552,12 +570,12 @@ Wed Jul 11 11:08:57 UTC 2012 - lists.nico.k@googlemail.com
  * Fixed possible read-after-buffer in Sony ARW2 decoder
  * Fixed mingw32 errors when compiling LibRaw_windows_datastream
  * Makefile.msvc: support of OpenMP and LCMS (uncomment to use)
- * Fixed decoding of some Leaf Aptus II files 
+ * Fixed decoding of some Leaf Aptus II files
 - update to 0.14.5
  * Fixed bug (uninitialized variable) in SMAL format decoding.
  * Imported new dcraw 9.12 (1.446): support for Leica V-LUX 3,
    updated color data for Canon S100, Fujifilm X10, Nikon 1 J1/V1,
-   Panasonic GX1, Samsung NX200, Sony NEX-7 
+   Panasonic GX1, Samsung NX200, Sony NEX-7
 - update to 0.14.4
  * Fixes to Panasonic/Leica file parser to prevent crash on
    broken jpegs.
@@ -565,16 +583,16 @@ Wed Jul 11 11:08:57 UTC 2012 - lists.nico.k@googlemail.com
    compile with KDEWIN
  * Floating-point DNGs are rejected on early processing stage.
  * Support for new cameras: Canon S100, Fuji X10, Panasonic GX1,
-   Samsung NX200, Sony NEX-7. 
+   Samsung NX200, Sony NEX-7.
 - update to 0.14.3
  * Bug fixes in black level subtraction code for PhaseOne files
  * New API call LibRaw::get_internal_data_pointer() for developers
    who need access to libraw_internal_data fields
    (i.e. Fuji SuperCCD layout).
- * doc/API-overview fixes to reflect 0.14 changes 
+ * doc/API-overview fixes to reflect 0.14 changes
 - update to 0.14.2
  * Fixed bug in Canon 1D and 1Ds files decoding.
- * New decoder information bit DECODER_HASRAWCURVE 
+ * New decoder information bit DECODER_HASRAWCURVE
 - update to 0.14.1
  * Imported dcraw 9.11/1.445:
    - Support for new cameras added: Fujifilm F600EXR, Nikon P7100,
@@ -583,9 +601,9 @@ Wed Jul 11 11:08:57 UTC 2012 - lists.nico.k@googlemail.com
    - Updated color data for: Olympus E-P3, Panasonic G3 and GF3,
      PhaseOne H25, P40 and P65, Sony NEX-C3, NEX-5, NEX-3, A35
      and A55.
-   - Support for dark frame extraction on Sony cameras. 
+   - Support for dark frame extraction on Sony cameras.
  * DCB demosaicing: reserving 6 pixels instead of 3 to suppress
-   colored image frame. 
+   colored image frame.
 - update to 0.14.0
  * Multiple rendering (LibRaw::dcraw_process() calls) allowed
    without re-opening RAW file thrfough the sequence of
@@ -614,7 +632,7 @@ Wed Jul 11 11:08:57 UTC 2012 - lists.nico.k@googlemail.com
    - New C-API calls
      libraw_raw2image() - C API for LibRaw::raw2image()
      libraw_free_image() - C API for LibRaw::free_image()
-     libraw_get_decoder_info() - C API for LibRaw::get_decoder_info() 
+     libraw_get_decoder_info() - C API for LibRaw::get_decoder_info()
    If your code uses usual open()/unpack()/dcraw_process() call
    sequence, then NOTHING CHANGED: your program should produce
    same results. For interactive programs you may skip open()/unpack()
@@ -649,7 +667,7 @@ Wed Jul 11 11:08:57 UTC 2012 - lists.nico.k@googlemail.com
      * If you use own LibRaw_datastream implementation, you should
        implement make_jas_stream() call for your datastream. See
        bottom of src/libraw_cxx.cpp for implementations in datafile
-       and mem-buffer LibRaw streams. 
+       and mem-buffer LibRaw streams.
    - Bugfix: green matching is turned off if output image is
      shrinked due to wavelet filtering or aberration correction.
    - Removed imgdata.sizes.bottom_margin and right_margin data
@@ -671,8 +689,8 @@ Wed Jul 11 11:08:57 UTC 2012 - lists.nico.k@googlemail.com
    - New sample samples/postprocessing_benchmark.cpp This sample
      measures postprocessing speed. All demosaic methods, averaged
      white balance, median filtering, wavelet filtration, highlight
-     recovery, and cropping are supported. 
- * all client code should be recompiled due to internals change. 
+     recovery, and cropping are supported.
+ * all client code should be recompiled due to internals change.
 - update to 0.13.8
  * Imported dcraw 9.10 (1.444), support for new cameras added:
    ARRIRAW format, Canon SX30 IS, Leica D-LUX 5 and V-LUX2,
@@ -685,12 +703,12 @@ Wed Jul 11 11:08:57 UTC 2012 - lists.nico.k@googlemail.com
    - bad pixels map and dark frame subtraction is turned off if
      cropping enabled
    - for technical reasons, coordinates of top-left corner of crop
-     box are rounded to multiple of 4 for Fuji files. 
+     box are rounded to multiple of 4 for Fuji files.
  * ./configure stuff fixes:
    - install static libraries only when --enable-static is set
    - compiled samples are dynamically linked if shared library not
      disabled.
- * OpenMP enabled for Visual Studio 2008 SP1+, but not for RTM 
+ * OpenMP enabled for Visual Studio 2008 SP1+, but not for RTM
 - update to 0.13.6
  * Cosmetic cleanup in Libraw_memmgr code
  * Permit OpenMP support on MS VS2008
@@ -699,11 +717,11 @@ Wed Jul 11 11:08:57 UTC 2012 - lists.nico.k@googlemail.com
    - New call copy_mem_image can copy bitmap into buffer with
      different color order (RGB/BGR) and line stride
    - dcraw_make_mem_image() uses calls mentioned above
-   - see documentation for info on these function parameters. 
+   - see documentation for info on these function parameters.
  * libraw/librawwindows.h implements LibRaw_datastream class based
    on Windows memory mapped files.Win32/64-only Thanks to
    Linc Brookes.
- * Fixed parallel make errors in configure/Makefile.am 
+ * Fixed parallel make errors in configure/Makefile.am
 
 -------------------------------------------------------------------
 Wed Mar 14 19:29:33 UTC 2012 - dimstar@opensuse.org
@@ -713,7 +731,7 @@ Wed Mar 14 19:29:33 UTC 2012 - dimstar@opensuse.org
 -------------------------------------------------------------------
 Wed Aug 24 11:53:14 UTC 2011 - idonmez@novell.com
 
-- Stop using _service files 
+- Stop using _service files
 
 -------------------------------------------------------------------
 Tue Aug  9 20:03:58 UTC 2011 - toddrme2178@gmail.com
@@ -729,7 +747,7 @@ Sun Jun 12 00:07:49 UTC 2011 - Nico.Laus.2001@gmx.de
     New color data for Canon 600D and 1100D, Fuji S200EXR
     New camera supported: Fuji HS20EXR and F550EXR, Kodak Z990,
       Nikon D5100, Olympus E-PL1s and XZ-1, Samsung NX11,
-      Sony A230 and 290. 
+      Sony A230 and 290.
 - update to 0.13.4
 * Imported new dcraw 9.07/1.442:
     support for Canon 600D and 1100D, Hasselblad H4D-60, Olympus E-PL2
@@ -741,7 +759,7 @@ Sun Jun 12 00:07:49 UTC 2011 - Nico.Laus.2001@gmx.de
 * Fixed possible after the end of buffer read when working with
     in-memory RAW data.
 * Fixed possible loss of JPEG stream sync marks in LJPEG decoder
-    (this bug was found only for Leaf Aptus II RAWs). 
+    (this bug was found only for Leaf Aptus II RAWs).
 
 -------------------------------------------------------------------
 Sun Mar 13 12:50:34 UTC 2011 - coolo@novell.com
@@ -750,19 +768,19 @@ Sun Mar 13 12:50:34 UTC 2011 - coolo@novell.com
 * This version contains several big changes, improvements and bug fixes:
 
     New low-level buffering code for Huffman decompression. Canon CR2
-      files are opened about 1.5x times faster than on LibRaw 0.12, other 
+      files are opened about 1.5x times faster than on LibRaw 0.12, other
       huffman-comressed files unpacks in 1.2-1.3 times faster.
-    Exposure correction code based on linear-cubic root combination. 
+    Exposure correction code based on linear-cubic root combination.
       Correction range is from 0.25 (-2 stops) to 8 (+3 stops)
     All 0.12.x features, including new cameras support and half-size/green-matching fixes.
     Changes and additions in demosaic-packs:
         Banding suppression code.
         High-frequency noise suppression.
         Green channels local averaging to suppress maze artifacts.
-        OpenMP speed-up in median filters and green equilibration. 
+        OpenMP speed-up in median filters and green equilibration.
     Bug fixes and improvements:
         Better parsing of unknown command-line params in dcraw_emu sample
-        Brigtness table in ahd_demosaic is calculated in reversed order to prevent 
+        Brigtness table in ahd_demosaic is calculated in reversed order to prevent
         possible (very unlikely) multithreaded app problem.
         Fixed file extension in half_mt.c sample.
         Fixed incomplete data fields reset in LibRaw::recycle()
@@ -782,9 +800,9 @@ Fri Jan  7 19:53:50 UTC 2011 - andreas.hanke@gmx-topmail.de
 Fri Jan  7 13:57:57 UTC 2011 - adrian@suse.de
 
 - Update to version 0.12.2
-  * Fuji FinePix S5500 size adjusted to ignore (rare?) garbage 
+  * Fuji FinePix S5500 size adjusted to ignore (rare?) garbage
     at top of frame.
-  * Sigma DPx processing disabled because of unsupported 
+  * Sigma DPx processing disabled because of unsupported
     compession scheme and incompatible metadata format.
     These cameras will be supported only if dcraw will
     support them.
@@ -805,16 +823,16 @@ Sun Dec 12 23:13:11 UTC 2010 - mrdocs@opensuse.org
  + DCB interpolation and FBDD denoising integrated into main LibRaw.
  + Two addtional demosaic packs:   GPL2-licensed: AFD, LMMSE, VCD, Modified AHD and AHD+VCD interpolations.
  + Additional median filters from 'Modified DCRAW' package. Foveon support also included in this pack.
- + GPL3-licensed: AMaZE interpolation and chromatic aberrations correction from RawTherapee 
+ + GPL3-licensed: AMaZE interpolation and chromatic aberrations correction from RawTherapee
  +LCMS 2.x support
  +New ./configure script, based on GNU autotools.
  +Bugfixes:Fix in green_matching code to support nonstandard Bayer pattern
- + Fixed bug in add_masked_borders_to_bitmap() call for cameras with masked border composed of odd number of pixels. 
+ + Fixed bug in add_masked_borders_to_bitmap() call for cameras with masked border composed of odd number of pixels.
 
 -------------------------------------------------------------------
 Tue Nov 16 21:18:09 UTC 2010 - mrdocs@opensuse.org
 
-- add the right configure flags 
+- add the right configure flags
 
 -------------------------------------------------------------------
 Tue Nov 16 20:35:55 UTC 2010 - mrdocs@opensuse.org
@@ -827,10 +845,10 @@ Tue Nov 16 20:35:55 UTC 2010 - mrdocs@opensuse.org
     Nikon: D3100, D7000, P7000
     Panasonic: FZ40, FZ100, LX5
     Pentax: K-r, K-5, 645D
-    Samsung GX20, WB2000  
+    Samsung GX20, WB2000
 -  added LCMS support so libRaw is color management capable
 -  added openMP threading support for multi-core machines
-   
+
 -------------------------------------------------------------------
 Wed Nov 10 14:17:44 CET 2010 - vuntz@opensuse.org
 

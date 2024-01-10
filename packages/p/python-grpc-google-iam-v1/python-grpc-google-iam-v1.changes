@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jan  3 09:52:13 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- require setuptools
+
+-------------------------------------------------------------------
+Sat Dec 16 21:28:27 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.13.0:
+  * Add support for Python 3.12 (#64)
+  * Introduce compatibility with native namespace packages (#59)
+
+-------------------------------------------------------------------
 Tue Dec  5 13:58:23 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.12.7

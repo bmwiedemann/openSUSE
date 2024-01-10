@@ -1,4 +1,21 @@
 --------------------------------------------------------------------
+Wed Dec 20 11:35:25 UTC 2023 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/perl-bootloader#160
+- fix 'pbl --version' to show correct version number
+- 1.10
+
+--------------------------------------------------------------------
+Thu Dec 14 17:41:41 UTC 2023 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/perl-bootloader#159
+- rewrite pbl in sh (bsc#1214361)
+- adjust Makefile
+- add tests
+- Makefile cleanup
+- 1.9
+
+--------------------------------------------------------------------
 Thu Sep 7 17:05:41 UTC 2023 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/perl-bootloader#158

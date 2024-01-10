@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -25,19 +24,18 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%define skip_python2 1
 %define modname path
 %{?sle15_python_module_pythons}
 Name:           python-path%{psuffix}
-Version:        16.6.0
+Version:        16.9.0
 Release:        0
 Summary:        A module wrapper for os.path
 License:        MIT
 URL:            https://github.com/jaraco/path
 Source:         https://files.pythonhosted.org/packages/source/p/path/%{modname}-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module more-itertools}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools >= 56}
 BuildRequires:  %{python_module setuptools_scm >= 3.4.1}
 BuildRequires:  %{python_module tomli}
 BuildRequires:  %{python_module wheel}
@@ -83,9 +81,9 @@ export LANG=en_US.UTF-8
 %if !%{with test}
 %files %{python_files}
 %license LICENSE
-%doc CHANGES.rst README.rst
+%doc NEWS.rst README.rst
 %{python_sitelib}/path
-%{python_sitelib}/path-%{version}*-info
+%{python_sitelib}/path-%{version}.dist-info
 %endif
 
 %changelog

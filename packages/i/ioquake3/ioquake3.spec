@@ -20,7 +20,7 @@
 # Some arch have no VM (aarch64, ...)
 %define arch_with_vm  %{ix86} x86_64 ppc ppc64 armv7l armv7hl
 Name:           ioquake3
-Version:        1.36+git.20221123
+Version:        1.36+git.20231226
 Release:        0
 Summary:        Quake III
 License:        GPL-2.0-or-later

@@ -1,7 +1,7 @@
 #
 # spec file for package python-autodocsumm
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,14 @@
 #
 
 
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-autodocsumm
-Version:        0.2.11
+Version:        0.2.12
 Release:        0
 Summary:        Extended sphinx autodoc including automatic autosummaries
 License:        Apache-2.0
 URL:            https://github.com/Chilipp/autodocsumm
 Source:         https://github.com/Chilipp/autodocsumm/archive/v%{version}.tar.gz#/autodocsumm-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/Chilipp/autodocsumm/pull/88 fix build with Sphinx 7.2
-Patch:          sphinx72.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module versioneer}
 BuildRequires:  %{python_module wheel}
@@ -63,6 +60,6 @@ sed -i 's/,<5.0//' setup.py
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/autodocsumm
-%{python_sitelib}/autodocsumm-%{version}*-info
+%{python_sitelib}/autodocsumm-%{version}.dist-info
 
 %changelog

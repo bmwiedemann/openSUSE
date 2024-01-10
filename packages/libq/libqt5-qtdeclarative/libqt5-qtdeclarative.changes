@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Dec 29 13:25:40 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.12+kde31, rebased upstream:
+  * QML: Fortify qmlExecuteDeferred some more
+  * QV4: Avoid memory corruption in Reflect.apply
+  * Blacklist 1 tests in tst_qquickanimations on macos
+  * doc: Add note to PinchHandler.translation property about macOS trackpad
+  * Revert "masm: Treat Android as generic Posix regarding mmap and friends"
+  * QML: Check for stack overflows when creating objects
+  * Fix wrong item-sizeHint-cache when StackLayout children were reordered
+  * Doc: Add missing QQuickWindow constructor
+  * Handle missing stops gracefully in Shape gradients
+  * Do not crash if madvise() fails on MADV_WILLNEED
+  * Blacklist 1 tests in tst_qquickbehaviors on macos
+  * Avoid double applyDelegateChange in QQIV::setDelegate
+  * QSGGeometry: add Q_DISABLE_COPY_MOVE
+  * Qml: Don't crash on bad grouped properties
+  * Fix TypeError in dynamicview1 example
+  * Fix broken Text rendering when noantialiased NativeRendering is used
+  * Trim file names before adding them to qml components and scripts
+  * masm: Treat Android as generic Posix regarding mmap and friends
+  * Bump version to 5.15.12
+  * Move StackLayout tests from qtquickcontrols.git (5.15)
+
+-------------------------------------------------------------------
 Fri Oct  6 06:38:21 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.11+kde30, rebased upstream:

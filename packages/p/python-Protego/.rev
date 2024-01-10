@@ -23,4 +23,26 @@
     <comment></comment>
     <requestid>1012109</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>dc19fc2928ccc1825e86c8d071a44f5b</srcmd5>
+    <version>0.3.0</version>
+    <time>1704660064</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.3.0:
+  * Dropped support for Python 2.7, 3.5, 3.6, and 3.7, and
+    added support for 3.11 and for the upcoming 3.12.
+  * six is no longer a dependency.
+  * Added support for the ``Visit-Time`` directive.
+  * Fixed leading asterisks in allow and disallow values not
+    being properly interpreted.
+  * Protego.parse() now raises value error when *content*
+    is not a string.
+- drop python-Protego-no-six.patch (upstream)
+
+- - Rename README.md to README.rst in %doc section
+- Update to 0.2.1
+- Update to 0.2.0
+  Upgrade Protego version to 0.2.0</comment>
+    <requestid>1137429</requestid>
+  </revision>
 </revisionlist>

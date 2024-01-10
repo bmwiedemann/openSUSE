@@ -1,7 +1,7 @@
 #
 # spec file for package love
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without mpg123
 Name:           love
-Version:        11.4
+Version:        11.5
 Release:        0
 Summary:        2D gaming engine written in Lua
 License:        Zlib

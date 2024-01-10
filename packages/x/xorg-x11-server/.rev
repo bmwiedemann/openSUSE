@@ -3966,4 +3966,18 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
 </comment>
     <requestid>1132834</requestid>
   </revision>
+  <revision rev="422" vrev="3">
+    <srcmd5>1dd3d40becdf210098dc6f2dbe195cf1</srcmd5>
+    <version>21.1.9</version>
+    <time>1704659947</time>
+    <user>dimstar_suse</user>
+    <comment>- n_xserver-optimus-autoconfig-hack.patch
+  u_randr-Do-not-crash-if-slave-screen-does-not-have-pro.patch
+  u_xfree86-activate-GPU-screens-on-autobind.patch
+  * check dixPrivateKeyRegistered(rrPrivKey) before calling
+    rrGetScrPriv() to avoid xserver crash when Xinerama is enabled
+    (boo#1218240)
+ -------------------------------------------------------------------</comment>
+    <requestid>1137260</requestid>
+  </revision>
 </revisionlist>

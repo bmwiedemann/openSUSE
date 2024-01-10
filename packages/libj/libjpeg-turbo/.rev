@@ -1073,4 +1073,41 @@ Adds an explicit provides line, so that &quot;zypper in jpegtran&quot; will work
     <comment>- merge two spec files into one</comment>
     <requestid>1095708</requestid>
   </revision>
+  <revision rev="70" vrev="77">
+    <srcmd5>db0eb681cd6a94db3d45b93225e88128</srcmd5>
+    <version>unknown</version>
+    <time>1704380110</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.1 (bsc#1211542, CVE-2023-2804):
+  * The x86-64 SIMD functions now use a standard stack frame,
+    prologue, and epilogue so that debuggers and profilers can
+    reliably capture backtraces from within the functions.
+  * Fixed two minor issues in the interblock smoothing algorithm
+    that caused mathematical (but not necessarily perceptible)
+    edge block errors when decompressing progressive JPEG images
+    exactly two MCU blocks in width or that use vertical
+    chrominance subsampling.
+  * The TurboJPEG API now supports 4:4:1 (transposed 4:1:1)
+    chrominance subsampling, which allows losslessly transposed or
+    rotated 4:1:1 JPEG images to be losslessly cropped, partially
+    decompressed, or decompressed to planar YUV images.
+  * Fixed various segfaults and buffer overruns (CVE-2023-2804)
+  * that occurred when attempting to decompress various
+    specially-crafted malformed 12-bit-per-component and
+    16-bit-per-component lossless JPEG images using color
+    quantization or merged chroma upsampling/color conversion.  The
+    underlying cause of these issues was that the color
+    quantization and merged chroma upsampling/color conversion
+    algorithms were not designed with lossless decompression
+    in mind.  Since libjpeg-turbo explicitly does not support color
+    conversion when compressing or decompressing lossless JPEG
+    images, merged chroma upsampling/color conversion never should
+    have been enabled for such images.  Color quantization is a
+    legacy feature that serves little or no purpose with lossless
+    JPEG images, so it is also now disabled when decompressing such
+    images.  (As a result, djpeg can no longer decompress a
+    lossless JPEG image into a GIF image.)
+  * Fixed an oversight in 1.4 beta1[8] that caused various (forwarded request 1136025 from dirkmueller)</comment>
+    <requestid>1136149</requestid>
+  </revision>
 </revisionlist>

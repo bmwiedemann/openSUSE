@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Dec 20 07:12:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2023.9.26:
+  * Remove phasor and lifetime methods from VistaIfli (breaking).
+  * Rename SimfcsFbd and SimfcsFbf to FlimboxFbd and FlimboxFbf
+    (breaking).
+  * Deprecate SimfcsFbd and SimfcsFbf.
+  * Support int16 FLIMbox cross correlation phase indices (bins).
+  * Add FlimboxFbs class for ISS VistaVision FLIMbox settings.
+  * Add decoder for 32-bit, 16 windows, 4 channels FlimboxFbd
+    (untested).
+  * Rewrite VistaIfli based on file format specification
+    (breaking).
+  * Define positional and keyword parameters (breaking).
+  * SimfcsFbd.asarray returns bins only (breaking).
+  * Fix type hint issues.
+  * Add py.typed marker.
+  * Specify encoding of text files.
+  * Fix linting issues.
+
+-------------------------------------------------------------------
 Wed May 31 19:29:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2023.4.20:
@@ -40,7 +61,7 @@ Wed May 31 19:29:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Sun Feb 14 16:41:15 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- skip python 3.6 build (no tifffile as it uses scipy) 
+- skip python 3.6 build (no tifffile as it uses scipy)
 
 -------------------------------------------------------------------
 Thu Nov 26 07:06:44 UTC 2020 - andy great <andythe_great@pm.me>
@@ -48,7 +69,7 @@ Thu Nov 26 07:06:44 UTC 2020 - andy great <andythe_great@pm.me>
 - Update to version 2020.9.18.
   * Remove support for Python 3.6.
   * Support os.PathLike file names.
-  * Fix writing contiguous series to TIFF files with 
+  * Fix writing contiguous series to TIFF files with
     tifffile >= 2020.9.3.
 
 -------------------------------------------------------------------
@@ -71,7 +92,7 @@ Mon Jun  1 02:04:12 UTC 2020 - andy great <andythe_great@pm.me>
   *Add B64, Z64, and I64 write functions.
   *Remove support for Python 2.7 and 3.5.
   *Update copyright.
- 
+
 
 -------------------------------------------------------------------
 Mon Mar  4 07:41:58 AM UTC 2019 - John Vandenberg <jayvdb@gmail.com>

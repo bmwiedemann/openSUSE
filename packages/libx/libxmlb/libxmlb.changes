@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jan  6 13:01:11 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.3.15:
+  * Sprinkle __attribute__((nonnull)) to give a little more
+    compile-time safety
+  * Accept text/xml as an alternative to application/xml
+  * Do not inline shared code
+  * Fix compiling with Visual Studio
+  * Fix the exported api test on Windows
+  * Generate and use .def file for clang-cl builds
+    Fan)
+  * Release source file handles early
+
+-------------------------------------------------------------------
 Tue Oct 10 08:03:30 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - baselibs.conf: don't build libxmlb2-32bit; baselibs.conf was
@@ -61,7 +75,7 @@ Fri Jul 22 21:52:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * Ignore all hidden files when using _WATCH_DIRECTORY (Richard Hughes)
   * Show the value bindings when using XB_SILO_PROFILE_FLAG_XPATH (Richard Hughes)
   * Use the correct lookup method for the python3 script interpreter (Eli Schwartz)
- 
+
 -------------------------------------------------------------------
 Wed Dec 22 12:07:22 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
@@ -147,7 +161,7 @@ Fri Sep 20 12:07:24 UTC 2019 - ecsos@opensuse.org
 - Update to version 0.1.11:
   + New Features:
     - Add xb_node_query_first_full() convenience helper
-    - Rebuild the XbMachine parser to support 'and' and 'or' 
+    - Rebuild the XbMachine parser to support 'and' and 'or'
       predicates.
     - Verify we never break the ABI.
   + Bugfixes:

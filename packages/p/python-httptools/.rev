@@ -47,4 +47,21 @@
     <comment>- restrict to older Cython</comment>
     <requestid>1103715</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>36d5ded916bec7b50a01fa42535e5a49</srcmd5>
+    <version>0.6.1</version>
+    <time>1704659933</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.6.1:
+  * Explicit Python 3.12 support and build wheels, change min
+    version to 3.8
+  * Do not install the *.c sources in wheels
+- update to 0.6.0 (bsc#1212582, CVE-2023-30589):
+  * Bump bundled llhttp to 8.1.1
+  * Fixes CVE-2023-30589
+
+- restrict to older Cython
+- Update to version 0.5.0</comment>
+    <requestid>1137303</requestid>
+  </revision>
 </revisionlist>

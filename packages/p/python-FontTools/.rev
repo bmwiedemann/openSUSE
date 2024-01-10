@@ -182,4 +182,12 @@ This version fixes the conflict from the previous version.</comment>
     <comment></comment>
     <requestid>1117744</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>697c14db3d2ee0982b89a090747784b2</srcmd5>
+    <version>4.47.0</version>
+    <time>1704487291</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1137072</requestid>
+  </revision>
 </revisionlist>

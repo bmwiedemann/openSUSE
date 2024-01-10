@@ -42,4 +42,16 @@
   - Fix logging labales --&gt; labels</comment>
     <requestid>1069688</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6f0bd5d4cdc4524f4a6c9200dd6181b3</srcmd5>
+    <version>0.7.0</version>
+    <time>1704380355</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.7.0
+  - Update master for stable/2023.1
+  - Revert &quot;Moves supported python runtimes from version 3.8 to 3.10&quot;
+  - Bump bandit and make oslo.metrics compatible with latest rules
+  - Moves supported python runtimes from version 3.8 to 3.10</comment>
+    <requestid>1136701</requestid>
+  </revision>
 </revisionlist>

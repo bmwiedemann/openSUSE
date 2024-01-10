@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jan  3 03:08:23 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 5.511
+   see /usr/share/doc/packages/perl-MIME-tools/ChangeLog
+
+  5.511	  2024-01-02  Dianne Skoll <dianne@skoll.ca>
+
+  	* VERSION 5.511 RELEASED
+
+  	* Silence a warning if used with a development version of
+  	  MIME::QuotedPrint
+  	  https://rt.cpan.org/Ticket/Display.html?id=150118
+  	  https://rt.cpan.org/Ticket/Display.html?id=149225
+
+-------------------------------------------------------------------
 Thu Jul  7 03:06:24 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 5.510

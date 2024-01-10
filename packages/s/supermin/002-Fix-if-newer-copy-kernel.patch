@@ -1,0 +1,33 @@
+Subject: src: Fix --if-newer --copy-kernel
+From: Richard W.M. Jones rjones@redhat.com Mon Jun 12 13:02:37 2023 +0100
+Date: Mon Jun 12 13:07:51 2023 +0100:
+Git: 8c38641042e274a713a18daf7fc85584ca0fc9bb
+
+We previously copied the kernel into the appliance using 'cp -p' which
+preserves the datestamps of the installed kernel.  This can confuse
+the --if-newer calculation, if for example the package database is
+newer than the date on the installed kernel (which quite often is the
+case).  This makes it think that the appliance is always older than
+the package database, thus forcing a rebuild.
+
+We can fix this using 'cp' instead of 'cp -p'.  We don't need the
+permissions and datestamps on the copied kernel to be preserved anyway
+(in fact, it could cause problems if the permissions are restrictive).
+
+Fixes: commit 30de2cb603cdde33524a66d5466f6a9b986ce8a6
+
+diff --git a/src/format_ext2_kernel.ml b/src/format_ext2_kernel.ml
+index c592703..6d2e699 100644
+--- a/src/format_ext2_kernel.ml
++++ b/src/format_ext2_kernel.ml
+@@ -311,6 +311,9 @@ and copy_or_symlink_file copy_kernel src dest =
+   if not copy_kernel then
+     symlink src dest
+   else (
+-    let cmd = sprintf "cp -p %s %s" (quote src) (quote dest) in
++    (* NB: Do not use -p here, we want the kernel to appear newer
++     * so that --if-newer works.
++     *)
++    let cmd = sprintf "cp %s %s" (quote src) (quote dest) in
+     run_command cmd
+   )

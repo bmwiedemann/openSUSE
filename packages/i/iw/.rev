@@ -299,4 +299,38 @@ Look at the license file in the sources (forwarded request 143986 from babelworx
   * iw: Print local EHT capabilities</comment>
     <requestid>980062</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>f7b199580be955a9fed950cb94e69641</srcmd5>
+    <version>6.7</version>
+    <time>1704380148</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.7:
+  * update nl80211.h
+  * bump version to 6.7
+  * update nl80211.h
+  * iw: allow extra cflags
+  * iw: S1G: add 802.11ah support for link command display
+  * update nl80211.h
+  * iw: connect: Fix segfault during open authentication
+  * iw: fix attribute size mismatch
+  * iw: add more extended capa bits
+  * iw: Fix EHT rates printing.
+  * iw: S1G: add list command support for 802.11ah
+  * iw: S1G: add parsing for 802.11ah scan IE's
+  * iw: S1G: add frequency set in kHz and offset options
+  * util: don't print EHT info if not present
+  * interface: print links
+  * link: update for MLO
+  * link: fix some formatting
+  * iw: scan: set NL80211_SCAN_FLAG_COLOCATED_6GHZ in case of full sched scan
+  * util: add support for 320MHz bandwidth without cf1
+  * util: add support for 320Mhz bandwidth
+  * update nl80211.h
+  * iw: event: fix printf format error
+  * iw: add support for retrieving keys
+  * iw: info: fix bug reading preambles and bandwidths
+  * iw: add cac background command
+  * iw: info: print PMSR capabilities</comment>
+    <requestid>1136700</requestid>
+  </revision>
 </revisionlist>

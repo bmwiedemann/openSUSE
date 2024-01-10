@@ -1,0 +1,23 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9e6ea9803a8d8753182d873f312d839f</srcmd5>
+    <version>0.16.2</version>
+    <time>1703102479</time>
+    <user>anag+factory</user>
+    <comment>I want to add wlroots-0_16 to openSUSE:Factory.
+
+Do not merge yet until wlroots package is updated to version 0.17.0 in openSUSE:Factory.
+
+The added change here resolves conflicts with wlroots-devel
+</comment>
+    <requestid>1133833</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4522b95ac7af2faea5b24ea6048452cb</srcmd5>
+    <version>0.16.2</version>
+    <time>1703198302</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1134408</requestid>
+  </revision>
+</revisionlist>

@@ -63,4 +63,22 @@
     <comment>fix (forwarded request 1117695 from mimi_vx)</comment>
     <requestid>1117696</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f6d5692e807ff4c1acfbbb9d992813e5</srcmd5>
+    <version>0.3.1</version>
+    <time>1703800491</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.3.1:
+  * Hypothesis &gt;= 6.89.0 made some internal changes which broke
+    our `from_grammar()`. This patch restores compatibility, and
+    requires the new Hypothesis.
+
+- Update to version 0.2.3
+  * Use importlib.resources to load the Python grammar (zip-safe)
+  * Drop support for Python 3.6, add 3.10 and 3.11 to CI
+  Fixed rare internal error when from_node() generated misplaced except: clauses
+  * Fix internal error in `from_grammar(&quot;single_input&quot;)
+  * Emit more debug info to diagnose a compile() issue in CPython</comment>
+    <requestid>1135285</requestid>
+  </revision>
 </revisionlist>

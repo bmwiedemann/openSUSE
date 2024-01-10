@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Dec 20 21:59:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.8:
+  * Populate the `Token.end_*` fields for ignored tokens
+  * Include .lark files in package data
+  * Add an error message when using Lark.save() when
+    parser!='lalr'
+  * Add and improve docstrings
+  * Small update to PR #1338
+  * Fix 1345 attempt two
+  * Earley now uses OrderedSet for better output stability
+  * ContextualLexer now uses self.basic_lexer for easy
+    extensibility (iss…
+  * Improved typing around LALR and ParserState
+  * Typing fixes. Mypy now produces 0 type errors
+  * Standalone: Added support for interactive parser.
+- update to 1.1.7:
+  * Bugfix in propagate_positions (issue #1304)
+- update to 1.1.6:
+  * Added strict-mode, enabled by `strict=True`, implemented
+    using interegular by @MegaIng
+  * Read more here: https://lark-
+    parser.readthedocs.io/en/latest/how_to_use.html#strict-mode
+  * Cache: Replace md5 hashing with sha256.
+  * Support for Python-style comments in Lark grammar
+  * Updates to python.lark
+  * Bugfixes and cleanup
+
+-------------------------------------------------------------------
 Tue Oct 24 10:45:58 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove not needed python-Js2Py BuildRequires
@@ -16,7 +45,7 @@ Thu Apr 13 22:42:25 UTC 2023 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Tue Dec 13 15:41:34 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to v1.1.5 
+- Update to v1.1.5
   * What's Changed
   setup.cfg: Replace deprecated license_file with license_files by @mgorny in #1209
   Fix Github shenanigans by @erezsh in #1220
@@ -27,7 +56,7 @@ Tue Dec 13 15:41:34 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 -------------------------------------------------------------------
 Fri Dec  2 18:23:05 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to v1.1.4 
+- Update to v1.1.4
   ci: Python 3.11 final by @henryiii in #1204
   Add __all__ to __init__ by @aspizu in #1200
   PropagatePositions: Allow any object to carry the metadata,
@@ -40,7 +69,7 @@ Fri Dec  2 18:23:05 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 -------------------------------------------------------------------
 Fri Oct 28 17:58:49 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to v1.1.3 
+- Update to v1.1.3
   Various fixes and refactors
   * Add user to cache filename; better handle cache load/save failures by @klauer in #1179
   * refactor: add 'usedforsecurity=False' arg to hashlib.md5 usage by @cquick01 in #1190
@@ -66,7 +95,7 @@ Fri Oct 28 17:58:49 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 -------------------------------------------------------------------
 Sun Oct  9 10:06:19 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
-- Rename to python-lark 
+- Rename to python-lark
 - Update dependencies
 - Fix License identifier: LICENSE was changed 6 years ago
 
@@ -145,20 +174,20 @@ Wed Apr 15 10:54:30 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 - Update to 0.8.5
   * Updated js2py version (for the optional nearley support)
   * Added the g_regex_flags option, to allow applying flags to all terminals.
-  * The standalone parser is now MPL2, instead of GPL. The Mozilla 
-    Public License is much less restrictive, so this shouldn't affect 
-    anyone who's already using the standalone parser. But it should 
+  * The standalone parser is now MPL2, instead of GPL. The Mozilla
+    Public License is much less restrictive, so this shouldn't affect
+    anyone who's already using the standalone parser. But it should
     make it easier for other users to adopt it.
-  * The biggest change to this release is a new LALR engine, that is 
+  * The biggest change to this release is a new LALR engine, that is
     capable of dealing with a few edge cases that the previous parser couldn't.
-  * Transformers now visit tokens, as well as rules (an alternative to 
+  * Transformers now visit tokens, as well as rules (an alternative to
     lexer_callbacks)
 
 -------------------------------------------------------------------
 Sun Oct 27 14:28:26 UTC 2019 - Lars Vogdt <lars@linux-schulserver.de>
 
 - Update to 0.7.7:
-  * Fixed a bug in Earley where running it from different threads 
+  * Fixed a bug in Earley where running it from different threads
     produced bad results
   * Improved error reporting when using LALR
   * Added 'edit_terminals' option, to allow programmatical manipulation

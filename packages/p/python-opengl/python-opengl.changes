@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 27 13:49:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.7:
+  * refreshed bindings
+
+-------------------------------------------------------------------
 Sat Jun 10 09:49:18 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
@@ -7,7 +13,7 @@ Sat Jun 10 09:49:18 UTC 2023 - ecsos <ecsos@opensuse.org>
 Sat Mar 26 19:20:43 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.1.6:
-  * python 3.8-3.10 support 
+  * python 3.8-3.10 support
 
 -------------------------------------------------------------------
 Tue Mar 23 21:49:55 UTC 2021 - Ben Greiner <code@bnavigator.de>
@@ -20,7 +26,7 @@ Thu Apr 30 18:15:00 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to 3.1.5
 - move to pytest-xvfb for tests
-- the runtime requirement of Mesa-dri was not picked up automatically 
+- the runtime requirement of Mesa-dri was not picked up automatically
 
 -------------------------------------------------------------------
 Mon Sep  9 09:30:18 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
@@ -103,7 +109,7 @@ Thu Aug  6 14:52:13 CEST 2009 - matejcik@suse.cz
 -------------------------------------------------------------------
 Wed Jun 10 17:04:15 CEST 2009 - ro@suse.de
 
-- buildreq: replace gle by libgle-devel for >= 11.2 
+- buildreq: replace gle by libgle-devel for >= 11.2
 
 -------------------------------------------------------------------
 Mon May  4 12:09:40 CEST 2009 - ro@suse.de
@@ -147,7 +153,7 @@ Mon Jan 23 16:47:21 CET 2006 - jmatejek@suse.cz
 -------------------------------------------------------------------
 Mon Jun 20 16:10:57 CEST 2005 - ltinkl@suse.cz
 
-- added freeglut* packages to fix dependencies (#80605), plus 
+- added freeglut* packages to fix dependencies (#80605), plus
   optional (but recommended) dependency on python-imaging (pil)
 
 -------------------------------------------------------------------

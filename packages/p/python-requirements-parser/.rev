@@ -75,4 +75,22 @@
     <comment></comment>
     <requestid>1085080</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e158f56207d0d3aae365f554178d4415</srcmd5>
+    <version>0.5.0</version>
+    <time>1703800965</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.5.0:
+  * Support all documented options in requirements files #62
+  * Library is now typed according to PEP561 (`0e1bb6a`)
+  * Readthedocs config (`ac1e7fb`)
+  * Added some typing (`169ff6e`)
+  * Removed Python 2 code (`82f9473`)
+  * Removed version from __init__ (`4e83b9d`)
+- drop
+  0001-Dont-fail-with-valid-options-in-requirements_txt-files.patch,
+  remove-nose.patch: upstream
+- add dont-install-readme.patch</comment>
+    <requestid>1135351</requestid>
+  </revision>
 </revisionlist>

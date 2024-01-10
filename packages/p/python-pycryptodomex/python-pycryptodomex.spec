@@ -1,7 +1,7 @@
 #
 # spec file for package python-pycryptodomex
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pycryptodomex
-Version:        3.19.0
+Version:        3.19.1
 Release:        0
 Summary:        Cryptographic library for Python
 License:        BSD-2-Clause
@@ -27,6 +27,7 @@ URL:            https://www.pycryptodome.org
 Source:         https://github.com/Legrandin/pycryptodome/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

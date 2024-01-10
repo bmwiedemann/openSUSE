@@ -16,4 +16,13 @@
   * http://www.alcyone.com/software/empy/ANNOUNCE.html#changes</comment>
     <requestid>1131686</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>30df8fa38d8fee88cd77518501c82f20</srcmd5>
+    <version>4.0.1</version>
+    <time>1703800863</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.0.1:
+  * bugfixes over 4.0, no dedicated changelog available</comment>
+    <requestid>1135239</requestid>
+  </revision>
 </revisionlist>

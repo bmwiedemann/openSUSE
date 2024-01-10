@@ -77,4 +77,36 @@
 </comment>
     <requestid>1077600</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3cb4d331b8dfa329fce508ced406bc1e</srcmd5>
+    <version>3.11</version>
+    <time>1704281352</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.11
+  Fixes
+  * Fixed build on FreeBSD.
+  * Fixed current track sometimes not showing as playing in tracks list.
+  * Fixed progress slider performing double click actions with some styles.
+  * Fixed HTML tags in playlists descriptions not displaying properly.
+  * Fixed some systems not being able to open links or files properly.
+  * Fixed &quot;Added&quot; sometimes showing negative values on just added tracks.
+  Changes
+  * Much improved performance when loading playlists.
+  * Added support for track queue.
+  * Added an option to ignore unavailable tracks in playlists.
+  * Added support for librespot v0.5.0.
+  * Added tooltips for links for artists.
+  * Much improved performance with a lot of liked tracks.
+  * Added support for passing custom arguments to Spotify client.
+  * Added history.
+  * Improved resizing with expanded album art.
+  * Added an option for tabbed library and playlists.
+  * The main toolbar can now be placed at the bottom of the window.
+  * Settings can now be saved, even if an invalid Spotify client path is provided.
+  * The shape of the album art can now be changed.
+  * Improved performance with &quot;Recent&quot; playlist sorting.
+  * Added new tooltips for tracks, albums, and playlists.
+</comment>
+    <requestid>1136034</requestid>
+  </revision>
 </revisionlist>

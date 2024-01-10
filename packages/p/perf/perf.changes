@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan  9 11:34:18 UTC 2024 - Jiri Slaby <jslaby@suse.cz>
+
+- remove 6.5 code
+- fix build with 6.7 (tar also arch/*/tools)
+
+-------------------------------------------------------------------
 Mon Sep 18 10:19:26 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
 
 - fix build for 6.6

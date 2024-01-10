@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sun Jan  7 17:40:00 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to ripgrep 14.1.0:
+  * bug fix for unbounded memory growth while walking a directory tree. 
+  * improvements to the completions for the fish shell
+
+- Update to ripgrep 14.0.3:
+  * This is a patch release with a bug fix for the --sortr flag.
+
+- Update to ripgrep 14.0.0:
+  * a new major version release of ripgrep that has some new features, performance improvements and a lot of bug fixes.
+  * The headlining feature in this release is hyperlink support. In this release, they are an opt-in feature but may 
+    change to an opt-out feature in the future. To enable them, try passing --hyperlink-format default. 
+    If you use VS Code, then try passing --hyperlink-format vscode. 
+    Please report your experience with hyperlinks, positive or negative.
+
+  * Another headlining development in this release is that it contains a rewrite of its regex engine. 
+    You generally shouldn't notice any changes, except for some searches may get faster. 
+    You can read more about the regex engine rewrite on my blog. 
+    Please report your performance improvements or regressions that you notice.
+
+  * Finally, ripgrep switched the library it uses for argument parsing. Users should not notice a difference in most cases 
+    (error messages have changed somewhat), but flag overrides should generally be more consistent. 
+    For example, things like --no-ignore --ignore-vcs work as one would expect 
+    (disables all filtering related to ignore rules except for rules found in version control systems such as git).
+
+  * BREAKING CHANGES:
+    rg -C1 -A2 used to be equivalent to rg -A2, but now it is equivalent to rg -B1 -A2. 
+    That is, -A and -B no longer completely override -C. Instead, they only partially override -C.
+
+- dropped ruby build dependency and embedded shell completions/man generation in the build process
+
+
+-------------------------------------------------------------------
 Sat Dec 24 23:22:38 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Enable building of the pcre2 feature.

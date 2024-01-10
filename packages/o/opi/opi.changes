@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jan  2 13:54:57 UTC 2024 - Dominik Heidler <dheidler@suse.de>
+
+- Version 4.4.0
+  * Match repos by alias when searching local repos
+  * Rephrase OSS alternative hints
+  * Fix typo in rpmbuild.py
+
+-------------------------------------------------------------------
+Fri Dec 15 18:10:08 UTC 2023 - Dominik Heidler <dheidler@suse.de>
+
+- Version 4.3.0
+  * Hint open source alternatives
+  * Fix issue with installing from existing openh264 repo
+
+-------------------------------------------------------------------
 Tue Dec 12 12:40:43 UTC 2023 - Dominik Heidler <dheidler@suse.de>
 
 - Version 4.2.0

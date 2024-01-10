@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan  4 13:40:35 UTC 2024 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Make sure not to get escape sequences (for colors) into the 
+  output of the 'journalctl --output json' command, even if
+  $SYSTEMD_COLORS is set in the environment (bsc#1218106)
+- 5.0.1
+
+-------------------------------------------------------------------
 Wed Aug 30 20:16:10 UTC 2023 - Josef Reidinger <jreidinger@suse.cz>
 
 - 5.0.0 (bsc#1185510)

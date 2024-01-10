@@ -236,4 +236,22 @@
   - Add if_exists and **kwargs columns to db_set</comment>
     <requestid>1093366</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>58a8962de40a2d819c8e17eff64a155c</srcmd5>
+    <version>2.5.0</version>
+    <time>1704487298</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.5.0
+  - Update master for stable/2023.2
+  - TAAS: Add commands for creating Mirrors
+  - Add support for ecmp routes
+  - Ensure LrpAddCommand may_exits works without peers
+  - Add some basic usage documentation
+  - Handle events with conditions and match_fn
+  - nb: provide 'route_table' in lr-route-{add,del,list}
+  - nb: allow to add route even if learned route exists
+  - venv: unit tests don't work for 'hardware_vtep'
+  - nb: add 'nexthop' argument to 'lr_route_del'</comment>
+    <requestid>1136724</requestid>
+  </revision>
 </revisionlist>

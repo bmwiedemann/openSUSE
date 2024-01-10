@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Dec 27 16:02:48 UTC 2023 - Manfred Schwarb <manfred99@gmx.ch>
+
+- Update to version 5.1.9:
+  * updates ncremap to employ new TempestRemap weight-generation algorithms,
+      updates ncremap to recognize new names for existing algorithms,
+      changes ncremap's default treatment of filling empty areas with missing values,
+      and fixes a long-standing bug with ncra and ncrcat subcycle and interleave options
+- Update to version 5.1.8:
+  * recognizes NC_STRING as valid alternatives to NC_CHAR attributes,
+      infers MPAS grids stored in radians when units attributes are not present,
+      and support checks for adherence to NASA DIWG (and CF) recommendations
+      for valid identiers, and for the missing_value attribute
+
+-------------------------------------------------------------------
 Tue Aug  1 22:44:54 UTC 2023 - Manfred Schwarb <manfred99@gmx.ch>
 
 - Update to version 5.1.7:

@@ -146,4 +146,41 @@
     <comment></comment>
     <requestid>1093786</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f22f87a778256788592ca7515869022d</srcmd5>
+    <version>60.2</version>
+    <time>1704281065</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 60.2:
+  * Fix SVG markers size, position and drawing
+  * Draw background behind absolutely positioned replaced boxes
+  * Don’t crash with bitmap fonts with no &quot;glyf&quot; table
+  * Improve SVG text-anchor attribute
+  * Fix crash caused by wrong UTF-8 indices
+  * Print form fields
+  * Add support for textLength and lengthAdjust in SVG text
+    elements
+  * Handle &lt;wbr&gt; tag
+  * Handle y offset of glyphs
+  * Add a --timeout option
+  * Bug fixes:
+  * Fix footnote-call displayed incorrectly for some fonts
+  * Fix page-margin boxes layout algorithm
+  * Fix IndexError when rendering PDF version 1.4
+  * Apply text transformations to first-letter pseudo elements
+  * Avoid footnote appearing before its call
+  * Fix balance before &quot;column-span: all&quot;
+  * Only draw required glyph with OpenType-SVG fonts
+  * Don’t draw clipPath when defined after reference
+  * Don’t ignore min-width when computing cell size
+  * Fix named pages inheritance
+  * Avoid page breaks caused by children of overflow hidden boxes
+  * Use bleed area for page’s painting area
+  * Use margin box of children to define available width for
+    leaders
+
+- Update to version 56.1
+- Update to 55.0</comment>
+    <requestid>1135635</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-flufl.i18n
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,19 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-flufl.i18n
-Version:        4.1.1
+Version:        5.0.2
 Release:        0
 Summary:        High level API for internationalizing Python libraries and applications
 License:        Apache-2.0
 URL:            https://gitlab.com/warsaw/flufl.i18n
-Source:         https://files.pythonhosted.org/packages/source/f/flufl.i18n/flufl.i18n-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/f/flufl.i18n/flufl_i18n-%{version}.tar.gz
 BuildRequires:  %{python_module pdm}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module atpublic}
-BuildRequires:  %{python_module pdm-pep517}
+BuildRequires:  %{python_module pdm-backend}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module sybil}
@@ -47,7 +46,7 @@ BuildArch:      noarch
 High level API for internationalizing Python libraries and applications.
 
 %prep
-%autosetup -n flufl.i18n-%{version} -p1
+%autosetup -n flufl_i18n-%{version} -p1
 
 %build
 %pyproject_wheel
@@ -64,7 +63,6 @@ High level API for internationalizing Python libraries and applications.
 %license LICENSE
 %dir %{python_sitelib}/flufl
 %{python_sitelib}/flufl/i18n*
-%{python_sitelib}/flufl.i18n*
-%{python_sitelib}/flufl.i18n-%{version}*info
+%{python_sitelib}/flufl_i18n-%{version}.dist-info
 
 %changelog

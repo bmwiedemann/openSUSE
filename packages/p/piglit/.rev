@@ -243,4 +243,41 @@
 - Update _constraints to 10G disk space</comment>
     <requestid>1093882</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>20119058d419bf8cb534f4f8f0a2b931</srcmd5>
+    <version>1~20231228</version>
+    <time>1704380347</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1~20231228:
+  * ext_render_snorm-render: Fix deprecated-non-prototype warning
+  * version-mixing: Fix deprecated-non-prototype warning
+  * draw-prim-rate: test more varying counts
+  * glsl-1.10/built-in-uniform-state: don't test Infs due to undefined behavior
+  * arb_vertex_program/property-bindings: don't test Infs due to undefined behavior
+  * glsl-1.40: add a UBO test that I don't remember why I needed it
+  * glsl-1.10: test a smooth color input with glShadeModel(GL_FLAT)
+  * arb_fragment_layer_viewport: don't test out-of-range gl_Layer values
+  * ext_render_snorm-render: lower test ctx version requirement
+  * Implement piglit_subprocess for Windows
+  * modifiers: Make a single list of the known modifiers.
+  * modifiers: Allow specifying format and modifier
+  * modifiers: Improve the presentation of results
+  * modifiers: Add clear reimport subtest
+  * modifiers: Add stress subtest
+  * modifiers: Indent an inner loop
+  * modifiers: Try to autogenerate dmabufs
+  * framework: Add piglit_drm_create_dma_buf_modifiers
+  * framework: Add an n_planes field
+  * ext_image_dma_buf_import: Add a test for modifiers
+  * ext_image_dma_buf_import: Support non-external textures
+  * ext_image_dma_buf_import: Require GL_EXT_EGL_image_storage
+  * Import the drm_fourcc/drm.h header and use them.
+  * arb_tessellation_shader: Add new test tesslevels-indirect
+  * ext_image_dma_buf_import: add a multithread refcount test
+  * ext_image_dma_buf_import-export-tex: Print normal info to stdout, not stderr.
+  * arb_separate_shader_objects/atomic-counter: Add missing GLSL requirement.
+  * GL_ARB_arrays_of_arrays: Fix a missing extension requirement.
+  * arb_shader_texture_lod: Fix incorrect require directive for the ext.</comment>
+    <requestid>1136697</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-pymod2pkg
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 %global sname pymod2pkg
 Name:           python-pymod2pkg
-Version:        0.26.0
+Version:        0.28.0
 Release:        0
 Summary:        OpenStack Packaging - python module name to package name map
 License:        Apache-2.0
 Group:          Development/Libraries/Python
 URL:            https://wiki.openstack.org/wiki/Rpm-packaging
-Source0:        https://files.pythonhosted.org/packages/source/p/pymod2pkg/pymod2pkg-0.26.0.tar.gz
-Patch1:         0001-add-suse_py39-flavor-to-explicitly-render-templates-.patch
+Source0:        https://files.pythonhosted.org/packages/source/p/pymod2pkg/pymod2pkg-0.28.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-distro
 BuildRequires:  python3-pbr >= 2.0.0
@@ -61,7 +60,7 @@ BuildRequires:  python3-openstackdocstheme
 Documentation for python module name to package name map library.
 
 %prep
-%autosetup -p1 -n pymod2pkg-0.26.0
+%autosetup -p1 -n pymod2pkg-0.28.0
 %py_req_cleanup
 
 %build
@@ -82,7 +81,9 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 %license LICENSE
 %doc README*
 %{_bindir}/pymod2pkg
-%{python3_sitelib}/*
+%{_bindir}/reqs2pkg
+%{python3_sitelib}/pymod2pkg
+%{python3_sitelib}/pymod2pkg-%{version}*-info
 
 %files -n python-pymod2pkg-doc
 %doc doc/build/html

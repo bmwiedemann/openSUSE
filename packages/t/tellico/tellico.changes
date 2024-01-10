@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jan  5 08:53:34 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 3.5.3
+  * Improved some entry matching heuristics when updating from
+    other sources.
+  * Updated the author search for the Open Library data source.
+  * Updated Kino-Teatr data source.
+  * Fixed compilation for versions of KDE Frameworks < 5.94.
+  * Fixed layout bug in Fancy template for custom collections
+    with no image.
+
+-------------------------------------------------------------------
 Tue Oct 24 06:58:56 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 3.5.2.

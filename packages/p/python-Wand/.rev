@@ -60,4 +60,25 @@
     <comment></comment>
     <requestid>1102344</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>cf80649cd9ea767074dfdf3b94aa89a4</srcmd5>
+    <version>0.6.13</version>
+    <time>1702845100</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.6.13:
+  * Removed broken `pyproject.toml` file from source
+    distribution.
+  * Fixed behavior when passing zero to :meth:`Image.chop()
+    &lt;wand.image.BaseImage.chop&gt;`.
+  * Fixed `libmagick` yield `MagickCore` library on Linux.
+  * Fixed removing mask when passing :const:`None` to
+    :meth:`Image.write_mask() &lt;wand.image.BaseImage.write_mask&gt;`
+    method. [:issue:`636`]
+  * Added new :const:`COMPOSITE_OPERATORS
+    &lt;wand.image.COMPOSITE_OPERATORS&gt;` operators.
+  * [DOC] Updated Sphinx version to 7.2.6
+
+  * [TEST] Added Python 3.10 regression tests for github actions.</comment>
+    <requestid>1133534</requestid>
+  </revision>
 </revisionlist>

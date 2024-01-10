@@ -39,13 +39,12 @@
 
 %bcond_without test
 Name:           molecule
-Version:        6.0.2
+Version:        6.0.3
 Release:        0
 Summary:        Aids in the development and testing of Ansible roles
 License:        MIT
 URL:            https://github.com/ansible-community/molecule
 Source:         https://files.pythonhosted.org/packages/source/m/molecule/molecule-%{version}.tar.gz
-Patch1:         4ab4f1c7_improve_test_names.patch
 BuildRequires:  python-rpm-macros
 BuildRequires:  %{ansible_python}-pip
 BuildRequires:  %{ansible_python}-setuptools
@@ -110,9 +109,6 @@ testing scenarios.
 
 %install
 %pyproject_install
-
-sed -i '1{\@^#!/usr/bin/python@d}' %{buildroot}%{ansible_python_sitelib}/molecule/test/scenarios/verifier/molecule/testinfra-pre-commit/tests/test_testinfra_pre_commit.py
-
 %fdupes %{buildroot}%{ansible_python_sitelib}
 
 %check

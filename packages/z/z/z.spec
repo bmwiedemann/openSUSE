@@ -23,8 +23,8 @@ Release:        0
 Summary:        Frontend for compressing and uncompressing
 License:        GPL-2.0-only
 Group:          Productivity/Archiving/Compression
-URL:            https://www.cs.indiana.edu/~kinzler/z/
-Source:         http://www.cs.indiana.edu/~kinzler/z/z-%{version}.tgz
+URL:            https://kinzler.com/me/z/
+Source:         https://kinzler.com/me/z/z-%{version}.tgz
 BuildArch:      noarch
 
 %description

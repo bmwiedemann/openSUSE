@@ -229,4 +229,34 @@
     <comment></comment>
     <requestid>1103295</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>0082b3a9f0946017e791488e353033b7</srcmd5>
+    <version>8.13.26</version>
+    <time>1702673300</time>
+    <user>anag+factory</user>
+    <comment>- update to 8.13.26:
+  Updated phone metadata for region code(s): EH, HK, HR, MA, MK,
+    PK, RO, TJ
+  - Updated geocoding data for country calling code(s): 212 (en, fr)
+  - Updated carrier data for country calling code(s):
+    40 (en), 45 (en), 86 (en, zh), 92 (en), 228 (en), 385 (en),
+    852 (en, zh), 992 (en)
+- use packaged LICENSE
+
+- Update to version 8.13.2
+- Update to version 8.13.0
+- Update to version 8.12.56
+   968 (en), 974 (en)</comment>
+    <requestid>1133190</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>295e95ef5679499c4737ba0a60c23f4f</srcmd5>
+    <version>8.13.27</version>
+    <time>1704660060</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 8.13.27:
+  * Use re.fullmatch when available
+  * merge upstream 8.13.27 phonenumber fixes</comment>
+    <requestid>1137426</requestid>
+  </revision>
 </revisionlist>

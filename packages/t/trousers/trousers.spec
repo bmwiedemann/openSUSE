@@ -36,6 +36,8 @@ BuildRequires:  pkg-config
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(udev)
 Requires(pre):  user(tss)
+Requires(post): udev
+Requires(post): coreutils
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description

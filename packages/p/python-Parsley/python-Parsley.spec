@@ -1,7 +1,7 @@
 #
 # spec file for package python-Parsley
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2013 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,11 +25,15 @@ Version:        1.3
 Release:        0
 Summary:        PEG algorithm based parser generator
 License:        MIT
-URL:            https://github.com/washort/parsley
+URL:            https://github.com/pyga/parsley
 Source:         https://files.pythonhosted.org/packages/source/P/%{modname}/%{modname}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#pyga/parsley#82
+Patch0:         support-python312.patch
 BuildRequires:  %{python_module Twisted}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
@@ -52,17 +56,17 @@ as yacc, bison or PLY.
 The binaries are prefixed with parsley-.
 
 %prep
-%setup -q -n %{modname}-%{version}
+%autosetup -p1 -n %{modname}-%{version}
 # Remove with bump, missing fixtures
 rm -f ometa/test/test_vm_builder.py
 
 %build
 export LANG=en_US.UTF-8
-%python_build
+%pyproject_wheel
 
 %install
 export LANG=en_US.UTF-8
-%python_install
+%pyproject_install
 mkdir %{buildroot}/%{_bindir}
 # rename binaries in order to avoid name clashes with other system packages
 for f in {generate_parser,stage}; do
@@ -93,6 +97,10 @@ export LANG=en_US.UTF-8
 %doc NEWS PKG-INFO README
 %python_alternative %{_bindir}/parsley-stage
 %python_alternative %{_bindir}/parsley-generate_parser
-%{python_sitelib}/*
+%{python_sitelib}/parsley.py
+%pycache_only %{python_sitelib}/__pycache__/parsley.*.py*
+%{python_sitelib}/terml
+%{python_sitelib}/ometa
+%{python_sitelib}/Parsley-%{version}.dist-info
 
 %changelog

@@ -19,7 +19,7 @@
 #
 %define modname odfpy
 %define binaries csv2ods mailodf odf2mht odf2xhtml odf2xml odfimgimport odflint odfmeta odfoutline odfuserfield xml2odf
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-%{modname}
 Version:        1.4.2
 Release:        0

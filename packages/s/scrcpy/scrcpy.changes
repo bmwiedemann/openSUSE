@@ -1,0 +1,1890 @@
+-------------------------------------------------------------------
+Sat Dec  2 11:56:54 UTC 2023 - munix9@googlemail.com
+
+- Update to version 2.3.1:
+  * Add workaround for issues on Samsung devices (#4467)
+  * Fix error in a headless environment without display (#4477)
+  * Fix AV1 demuxing (#4487)
+  * Fix build issue on macOS (4135c41)
+
+-------------------------------------------------------------------
+Sun Nov 26 06:14:25 UTC 2023 - munix9@googlemail.com
+
+- Update to version 2.3:
+  * Add flipped display orientation (#1380, #3819, #4441)
+  * Add recording rotation (#4441)
+  * Add FLAC audio codec (#4410)
+  * Add raw audio (WAV) recording (2004881)
+  * Fix turn screen off for Android 14 (#3927, #4456)
+  * Fix camera issues on many devices (#4392)
+  * Fix clipboard synchronization when no video (#4418)
+  * Fix screen refresh on device rotation (7e3b935)
+  * Fix .desktop files on Linux (#4448)
+  * Upgrade SDL to 2.28.5 in Windows releases
+  * Various technical fixes
+
+-------------------------------------------------------------------
+Thu Nov  2 19:18:01 UTC 2023 - munix9@googlemail.com
+
+- Clean up spec file, don't use _service anymore, get files
+  and infos from github release page.
+
+- Extended description for release 2.2:
+  Changes since v2.1.1:
+  * Add option to mirror camera (#241, #4213)
+  * Add --pause-on-exit (#4130)
+  * Rename --display (deprecated) to --display-id
+  * Fix device disconnection detection with --no-video (#4207)
+  * Accept --turn-screen-off without video playback (#4175)
+  * Upgrade SDL to 2.28.4 in Windows releases
+  * Upgrade platform-tools to 34.0.5 (adb) in Windows releases
+  * Various technical fixes
+
+-------------------------------------------------------------------
+Wed Nov 01 18:30:29 UTC 2023 - munix9@googlemail.com
+
+- Update to version 2.2:
+  * Bump version to v2.2
+  * Upgrade SDL (2.28.4) for Windows
+  * Upgrade platform-tools (34.0.5) for Windows
+  * Shutdown connection before joining threads
+  * Disable default stdout/stderr
+  * Improve manpage formatting
+  * Simplify URLs in manpage
+  * Always print device model and version
+  * Add camera documentation
+  * Add support for high frame rate camera capture
+  * Add --camera-fps
+  * Do not arbitrary limit --max-fps to 1000
+  * Fail-fast camera mirroring on Android 11 and older
+  * Support camera size selection using -m/--camera-ar
+  * Add --camera-facing
+  * Make camera id optional
+  * Handle camera disconnection
+  * Automatically select audio source
+  * Add camera mirroring
+  * Add --list-camera-sizes
+  * Add --list-cameras
+  * Factorize --list- options handling
+  * Extract SurfaceCapture from ScreenEncoder
+  * Force server exit at the end of main()
+  * Rename --display to --display-id
+  * Make separator configurable for parsing integers
+  * Fix incorrect comment about AV1 constant
+  * Move empty string test for crop option parsing
+  * Replace raw number by its name
+  * Replace sprintf() with safer snprintf()
+  * Use `char *` for pointer arithmetic
+  * Enable missing-prototypes warning
+  * Declare local functions as static
+  * Wrap macros in do-while(0)
+  * Fix --pause-on-exit parsing
+  * Add missing `void`s for empty parameter list
+  * Make sc_usb_devices_destroy() static
+  * Remove redundant `;`
+  * Use `void` for empty function parameter list
+  * Add scrcpy-server to .gitignore
+  * Use --pause-on-exit from launchers
+  * Add --pause-on-exit
+  * Make fillBaseContext() method private
+  * Add missing 'final' in Java classes
+  * Fix warning typo
+  * Report device disconnection on audio EOS
+  * Do not disable controls without video playback
+  * Fix TCP/IP link in README
+  * Add missing syntax highlighting in audio doc
+  * Add Encoder section
+  * Extract device connection to a separate doc page
+  * Move display section to video documentation
+  * Update links to v2.1.1
+
+-------------------------------------------------------------------
+Sat Jul 15 06:07:48 UTC 2023 - munix9@googlemail.com
+
+- Update to version 2.1.1:
+  * Bump version to 2.1.1
+  * Fix meizu deadlock
+  * Increase attempts to start AudioRecord
+  * Log device selection at INFO level
+  * Fix fedora package in build instructions
+  * Fix possible division by zero
+  * Add direct links to donations
+  * Ignore fold change events for other display ids
+  * Remove superfluous log
+  * Update links to v2.1
+
+-------------------------------------------------------------------
+Thu Jun 22 15:01:04 UTC 2023 - munix9@googlemail.com
+
+- Update to version 2.1:
+  * Bump version to 2.1
+  * Fix adb forward initialization
+  * Fix code style
+  * Accept failure in rotation or fold registration
+  * Register DisplayFoldListener only for Android 10+
+  * Upgrade platform-tools (34.0.3) for Windows
+  * Update developer documentation
+  * Fix build without gradle
+  * Upgrade SDL (2.28.0) for Windows
+  * Add workarounds for Honor devices
+  * Move workarounds execution
+  * Log device BRAND
+  * Fix lint warning
+  * Add InputManagerGlobal for Android 14 beta 3
+  * Add --time-limit
+  * Improve recording documentation
+  * Rename raw_video_stream to raw_stream
+  * Remove spurious empty line
+  * Reformat Java code
+  * Name Java threads
+  * Add missing shortcut in documentation
+  * Add option to kill adb on close
+  * Fix adb server vs adb daemon confusion
+  * Fix options alphabetical order
+  * Simplify command in documentation
+  * Fix typo in recording documentation
+  * Fix PTS when not monotonically increasing
+  * Extract stream-specific structure in recorder
+  * Fix recorder waiting when stream disabled
+  * Use a single condvar in recorder
+  * Mention how to interrupt scrcpy without video
+  * Reorder options in alphabetical order
+  * Add option to select audio source
+  * Extract AudioCapture creation
+  * Reset video capture on folding event
+  * Rename rotationChanged to resetCapture
+  * Update demuxer comment
+  * Fix stream offset on audio buffer underflow
+  * Reorder options to maintain alphabetical order
+  * Turn device screen off after set up
+  * Document --no-{video,audio}-playback
+  * Add separate video and audio playback options
+  * Simplify V4L2/USB ifdefs
+  * Define v4l2_buffer only if HAVE_V4L2
+  * Fix V4L2 error message when disabled
+  * Reorder command line options checks
+  * Rename --no-mirror to --no-playback
+  * Create AudioRecord by reflection as a fallback
+  * Rename FORMAT to ENCODING
+  * Extract audio source to a static constant
+  * Delay window resize when minimized
+  * Accept texture failures
+  * Document installation via winget on Windows
+  * Upgrade FFmpeg build to 6.0-scrcpy-4
+  * Update audio recording documentation
+  * Upgrade FFmpeg build to 6.0-scrcpy-3
+  * Add recording to aac file
+  * Add recording to opus file
+  * Accept .m4a and .mka
+  * Refactor command line checks
+  * Factorize record format parsing
+  * Add --no-video
+  * Remove unnecessary 'else'
+  * Convert screen encoder to async processor
+  * Add missing @Override annotations
+  * Close connection at the end of finally-block
+  * Disable controls on --no-mirror
+  * Rename --no-display to --no-mirror
+  * Clarify API versions that support Audio Forwarding
+  * Fix build for FFmpeg < 3.3
+  * Force OpenGL Core Profile context on macOS
+  * Add missing --no-audio option in manpage
+  * Remove Options setters
+  * Move options parsing to Options class
+  * Fix checkstyle violation
+  * Extract sc_display from sc_screen
+  * Pass const pointers to events
+  * Add Android version check in raw audio recorder
+  * Fix "ip route" parsing
+  * Fix copy-paste for some devices
+  * Specify in README that OTG does not require adb
+  * Simplify clock estimation
+  * Fix documentation link in FAQ
+  * Fix typo in FAQ
+  * Fix debug build by adding compat.c to tests
+  * Mention necessary reboot
+  * Reference FAQ from HID/OTG documentation
+  * Adapt FakeContext for Android 14
+  * Adapt clipboard wrappers to Android 14
+  * Replace "bit-rate" with "bit rate"
+  * Fix typo in doc/audio.md
+  * Use separate audio capture code for Android 11
+  * Make 3 attempts to start AudioRecord
+  * List available encoders on failure
+  * Fix pause message
+  * Simplify logic in setScreenPowerMode()
+  * Clarify V4L2 feature in README
+  * Document missing Opus encoder error
+  * Add --audio-output-buffer
+  * Fix bash auto-completion handling
+  * Add missing auto-completion for --audio-buffer
+  * Split workarounds to fix audio on some devices
+  * Fix linux desktop files validation
+  * Update Gentoo instructions
+  * Fail on empty AudioRecord read()
+  * Update broken link in documentation
+  * Replace link to enable USB debugging in README
+  * Add references to prerequisites
+  * Add blogpost link about scrcpy 2.0
+  * Fix v4l2 sink
+  * Fix build issue on FFmpeg < 5.1
+  * Fix comparison warning
+  * Fix an "expected expression" error
+  * Fix broken link in Windows download page
+  * Fix broken link in shortcuts documentation
+  * Update links to v2.0
+
+-------------------------------------------------------------------
+Sun Mar 12 06:41:21 UTC 2023 - munix9@googlemail.com
+
+- Update to version 2.0:
+  * Bump version to 2.0
+  * Rework README and documentation
+  * Happy new year 2023!
+  * Document audio player
+  * Apply new compensation only if it changed
+  * Disable clock drift compensation for tiny values
+  * Fail on deprecated options
+  * Remove dead code about the deprecated -F option
+  * Remove deprecated option --render-expired-frames
+  * Upgrade platform-tools (34.0.1) for Windows
+  * Upgrade SDL (2.26.4) for Windows
+  * Remove unused IOException
+  * Compute buffering and compensation without lock
+  * Do not read avg_buffering from the player thread
+  * Simplify bytebuf naming
+  * Add audio sample ring-buffer
+  * Define the audio output buffer in milliseconds
+  * Pass video size as codec metadata
+  * Report errors on screen event error
+  * Rename sendCodecId to sendCodecMeta
+  * Copy codec parameters from context
+  * Simplify recorder
+  * Create recorder streams from packet sinks ops
+  * Pass AVCodecContext to packet sinks
+  * Enable log signaling buffering threshold exceeded
+  * Stop and join sc_file_pusher only if initialized
+  * Initialize interrupted field explicitly
+  * Decrease recorder thread priority
+  * Increase audio thread priority
+  * Add thread priority API
+  * Print info logs to stdout
+  * Print server logs and newline in one call
+  * Warn on ignored audio options
+  * Add --audio-codec=raw option
+  * Add raw audio recorder
+  * Extract async processor interface
+  * Extract audio capture
+  * Stop on decoder frame push error
+  * Add --audio-buffer
+  * Add compat support for FFmpeg < 5.1
+  * Add audio player
+  * Optionally do not delay the first frame
+  * Accept clock estimation with a single point
+  * Remove anonymous struct in delay buffer
+  * Use delay buffer as a frame source/sink
+  * Use frame source trait in decoder
+  * Introduce frame source trait
+  * Use packet source trait in demuxer
+  * Introduce packet source trait
+  * Extract sc_delay_buffer
+  * Fix buffering pts conversion
+  * Report video buffer downstream errors
+  * Stop the video buffer on error
+  * Fix possible race condition on video_buffer end
+  * Remove sc_queue
+  * Remove cbuf
+  * Use VecDeque in aoa_hid
+  * Use VecDeque in file_pusher
+  * Use VecDeque in controller
+  * Use VecDeque in video_buffer
+  * Use VecDeque in recorder
+  * Introduce VecDeque
+  * Add sc_allocarray() util
+  * Use reallocarray() in sc_vector
+  * Add compat for reallocarray()
+  * Call avcodec_receive_frame() in a loop
+  * Add --require-audio
+  * Add workaround to capture audio on Android 11
+  * Add two-step write feature to bytebuf
+  * Introduce bytebuf util
+  * Pass AVCodecContext to frame sinks
+  * Add an audio decoder
+  * Give a name to decoder instances
+  * Rename decoder to video_decoder
+  * Log display sizes in display list
+  * Add --list-displays
+  * Move log message helpers to LogUtils
+  * Quit on audio configuration failure
+  * Add --list-encoders
+  * Move await_for_server() logs
+  * Add --audio-encoder
+  * Extract unknown encoder error message
+  * Add --audio-codec-options
+  * Extract application of codec options
+  * Add support for AAC audio codec
+  * Add --audio-codec
+  * Add --audio-bit-rate
+  * Disable MethodLength checkstyle on createOptions()
+  * Rename --encoder to --video-encoder
+  * Rename --codec-options to --video-codec-options
+  * Rename --bit-rate to --video-bit-rate
+  * Rename --codec to --video-codec
+  * Remove default bit-rate on client side
+  * Record at least video packets on stop
+  * Disable audio before Android 11
+  * Disable audio on initialization error
+  * Add audio recording support
+  * Rename video-specific variables in recorder
+  * Do not merge config audio packets
+  * Add an audio demuxer
+  * Force --no-audio if no display and no recording
+  * Give a name to demuxer instances
+  * Rename demuxer to video_demuxer
+  * Extract OPUS extradata
+  * Use a streamer to send the audio stream
+  * Encode recorded audio on the device
+  * Make streamer more generic
+  * Capture device audio
+  * Add a new socket for audio stream
+  * Add --no-audio option
+  * Use FakeContext for Application instance
+  * Use shell package name for workarounds
+  * Use ROOT_UID from FakeContext
+  * Use PACKAGE_NAME from FakeContext
+  * Use AttributionSource from FakeContext
+  * Add a fake Android Context
+  * Improve error message for unknown encoder
+  * Rename "codec" variable to "mediaCodec"
+  * Make streamer independent of codec type
+  * Pass all args to ScreenEncoder constructor
+  * Move screen encoder initialization
+  * Write streamer header from ScreenEncoder
+  * Use VideoStreamer directly from ScreenEncoder
+  * Simplify error handling on socket creation
+  * Reorder initialization
+  * Refactor recorder logic
+  * Move last packet recording
+  * Add start() function for recorder
+  * Open recording file from the recorder thread
+  * Inline packet_sink impl in recorder
+  * Initialize recorder fields from init()
+  * Report recorder errors
+  * Move previous packet to a local variable
+  * Move pts_origin to a local variable
+  * Change PTS origin type from uint64_t to int64_t
+  * Fix --encoder documentation
+  * Do not print stacktraces when unnecessary
+  * Fix --no-clipboard-autosync bash completion
+  * Split server stop() and join()
+  * Print FFmpeg logs
+  * Move FFmpeg callback initialization
+  * Upgrade FFmpeg custom builds for Windows
+  * Upgrade FFmpeg (6.0) for Windows
+  * Use minimal prebuilt FFmpeg for Windows
+  * Simplify libusb prebuilt scripts
+  * Silence lint warning about constant in API 29
+  * Remove manifest package name
+  * Upgrade gradle build tools to 7.4.0
+  * Fix useless garbage initialization
+  * Fix MIN/MAX macros
+  * Initialize server->serial in all cases
+  * Fix error message on icon loading failure
+  * Do not use avformat network
+  * Accept Windows Sockets from version 1.1
+  * Fix WSAStartup() error check on Windows
+  * Fix --bit-rate option in bash completion script
+  * Add auto-completion for --codec option
+  * Use enum for long options constants
+  * Initialize mouse_input_mode explicitly
+  * Accept muxing AV1 into MP4 container
+  * Fix inconsistent quotes
+  * Suggest commands with an explicit '='
+  * Move finally-block to fix deadlock on stop
+  * Remove unnecessary error logs
+  * Document default video codec
+  * Fix command-line help typo
+  * Prefix receiver by sc_
+  * Fix demuxer error message
+  * Log non-EPIPE I/O exceptions
+  * Rename 'uid' to 'scid'
+  * Extract packet merging
+  * Remove unused parser
+  * Log component stopped in finally clause
+  * Join all threads before end of main
+  * Properly report demuxer errors
+  * Prefix UI events constants by SC_
+  * Split codec_id reading
+  * Fix error return value
+  * Fix demuxer error message
+  * Remove unused codec context
+  * Remove unused constant
+  * Add Fedora instructions in README
+  * Set power mode on all physical displays
+  * Add support for AV1
+  * Add support for H265
+  * Add option to select video codec
+  * Simplify server info initialization
+  * Extract video streaming to a separate class
+  * Move variable assignment
+  * Compute relative PTS on the client-side
+  * Improve workarounds call comments
+  * Move Workarounds call
+  * Do not expose controller threads
+  * Fix manpage formatting
+  * Inject additional ACTION_BUTTON_* events for mouse
+  * Fix mouse pointer state update
+  * Forward action button to device
+  * Retry on spurious error
+  * Extract retry handling
+  * Move local variables declarations
+  * Remove useless setSize() method
+  * Remove useless configure() method
+  * Keep the same MediaCodec instance across sessions
+  * Remove useless destroyDisplay() method
+  * Keep the same display binder across sessions
+  * Terminate loop explicitly on interrupted
+  * Use Java lambdas where possible
+  * Support Java lambdas in build_without_gradle.sh
+  * Add missing final modifiers
+  * Use try-with-resources
+  * Use random name for device socket
+  * Add random util
+  * Add jrand48()/nrand48() compat functions
+  * Use separate gen dir to build without gradle
+  * Remove "on Linux" in FAQ
+  * Add FAQ section about HID/OTG on Windows
+  * Avoid unnecessary copy on config packets demuxing
+  * Revert "Remove continuous resizing workaround for Windows"
+  * Use "meson setup" from install_release.sh
+  * Update links to v1.25
+
+-------------------------------------------------------------------
+Fri Dec 23 17:47:47 UTC 2022 - munix9@googlemail.com
+
+- Update to version 1.25:
+  * Bump version to 1.25
+  * Upgrade FFmpeg (5.1.2) for Windows 64-bit
+  * Upgrade SDL (2.26.1) for Windows
+  * Upgrade platform-tools (33.0.3) for Windows
+  * Force mouse source when --forward-all-clicks
+  * Remove continuous resizing workaround for Windows
+  * Add parent directory in release zipfile
+  * Use "meson setup"
+  * Adapt ClipboardManager for Android 13
+  * Upgrade junit to 4.13.2
+  * Use current adb port (if any) for --tcpip
+  * Fix CommandParserTest code style
+  * Always use --key=value in README
+  * Fix DisplayInfo parsing for Android Q
+  * Support wchar_t in argv for Windows
+  * Avoid string concatenation in crossfiles
+  * Build log.c for test_cli
+  * Add missing include <string.h> for strlen()
+  * Add missing include <string.h> for memmove()
+  * Add -s auto-completion for zsh
+  * Add -s auto-completion for bash
+  * Make ServiceManager and Settings methods static
+  * Fix typo in logs
+  * Add fallback to get DisplayInfo
+  * Use /dev/null instead of closing fds
+  * Extract $BUILD_TOOLS_DIR
+  * Add scrcpy-console.desktop
+  * Use shell environment to execute launcher
+  * Add desktop entry file for Linux app launchers
+  * Replace hardcoded 'share/' by datadir variable
+  * Upgrade Android SDK to 33
+  * Upgrade gradle build tools to 7.2.2
+  * Move from jcenter() to mavenCentral()
+  * Use precise scrolling values
+  * Add conversion from float to fixed-point i16
+  * Add unit test for float encoding
+  * Extract conversion from float to u16 fixed-point
+  * Rename buffer_util.h to binary.h
+  * Add unit test for float decoding
+  * Extract conversion from u16 fixed-point to float
+  * Move toUnsigned() to a Binary util class
+  * Remove deprecated meson.source_root()
+  * Move README and FAQ translations to the wiki
+  * Fix FAQ formatting
+  * Use DisplayManagerGlobal instance
+  * Rename net_listen() parameter
+  * Replace '%g' by '%f' as printf format
+  * Detect Windows using _WIN32 in network util
+  * Fix protocol documentation in comments
+  * Add missing allocation failure check
+  * Add missing LOG_OOM() on malloc failure
+  * Remove useless dependencies reference
+  * Document envvars for all platforms
+  * Fix environment variable configuration in FAQ
+  * Remove unused stream.h
+  * Rename function to simplify
+  * Add missing return 0 in tests
+  * Fix function declarations
+  * Reduce SHA-256 size in README and BUILD
+  * Update links to v1.24
+
+-------------------------------------------------------------------
+Sat Apr 30 13:14:23 UTC 2022 - munix9@googlemail.com
+
+- Update to version 1.24:
+  * Bump version to 1.24
+  * Revert "Make OTG window resizable"
+  * Fix inverted check
+  * Fix release script for platform-tools 33.0.1
+  * Use quotes for commands in documentation
+  * Update installed files list in BUILD documentation
+  * Upgrade FFmpeg (5.0.1) for Windows 64-bit
+  * Upgrade SDL (2.0.22) for Windows
+  * Enable linear filtering in OTG mode
+  * Make OTG window resizable
+  * Apply requested window size in OTG mode
+  * Create OTG window with HIGHDPI flag
+  * Add option to not power on on start
+  * Add missing mouse shortcuts in --help
+  * Fix GitHub case in BUILD
+  * Fix typo in German README
+  * Fix typos in Indonesian README
+  * Upgrade libusb (1.0.26) for Windows
+  * Upgrade platform-tools (33.0.1) for Windows
+  * Remove obsolete alternative injection method
+  * Adapt event injection to Android 13
+  * Improve README
+  * Fix typos/grammar issues in README
+  * Update README.it.md to v1.23
+  * Add missing SC_ prefix to header guards
+  * Add missing include
+  * Fix reference to FAQ in README
+  * Fix icon path in ./run
+  * Fix OpenGL ES prefix skip
+  * Improve README.zh-Hans.md
+  * Consider emulators as TCP/IP devices
+  * Log an error on unexpected device state
+  * Use $ANDROID_SERIAL if no selector is specified
+  * Document exit status in --help
+  * Add specific exit code for device disconnection
+  * Report server connection state
+  * Improve HID event push error message
+  * Fix typo in error message
+  * Add libusb error log
+  * Fix icon path in README
+  * Update links to v1.23
+
+-------------------------------------------------------------------
+Thu Mar 17 08:59:49 UTC 2022 - munix9@googlemail.com
+
+- Update to version 1.23:
+  * Bump version to 1.23
+  * Add missing include for vector
+  * Add contact links to the README
+  * Add Bash completion script
+  * Add ZSH completion script
+  * Move "Device unauthorized" in FAQ
+  * Update FAQ to match the latest version
+  * Remove spurious empty line
+  * Mention adb wireless option for Android 11+
+  * Make step more explicit in wireless section
+  * Add troubleshooting in wireless section
+  * Improve phrasing in wireless section
+  * Renumber steps in wireless section
+  * Add an explicit first step in wireless section
+  * Update HID/OTG features in README
+  * Reorder --tcpip option in cli
+  * Also retry on IllegalArgumentException
+  * Increase `adb devices -l` max output size
+  * Use vector for listing ADB devices
+  * Use vector for listing USB devices
+  * Add sc_vector
+  * Move data/ to app/
+  * Disable USB features for win32
+  * Forbid HID input without OTG on Windows
+  * Kill adb daemon in OTG mode on Windows
+  * Make intr optional for adb commands
+  * Remove obsolete text in error message
+  * Build for Windows with libusb support
+  * Fix libusb callback for Windows
+  * Avoid PRIx16 printf format on Windows
+  * Remove USB hotplug callback error log
+  * Report USB device disconnection when detected
+  * Work around mouse capture SDL bug on macOS
+  * Pass screen instance to mouse capture functions
+  * Remove "linux-only" mentions for HID/OTG features
+  * Build on macOS with libusb support
+  * Fix typo
+  * Remove useless '\n' in log
+  * Remove fprintf() in tests
+  * Add --print-fps to enable FPS counter on start
+  * Move FPS counter start/stop logs
+  * Update FAQ about Windows scaling behavior
+  * Use sc_prefix for fps counter
+  * Fix links in German README
+  * Enforce deadline reached on timeout
+  * Fix fps_counter tick type
+  * Add German translation of README.md
+  * Add --no-cleanup option
+  * Fix order of options
+  * Add compilation flag for USB features
+  * Add compilation flag for V4L2 feature
+  * Fix double adb tunnel closing
+  * Rename buffer util functions with sc_ prefix
+  * Rename HEADER_SIZE to SC_PACKET_HEADER_SIZE
+  * Remove unused BUFSIZE
+  * Remove sc_demuxer_parse()
+  * Pass key frame flag from the device
+  * Store packet flags in PTS most significant bits
+  * Indent ifdef for clarity
+  * Improve error message for unsupported usb hotplug
+  * Do not duplicate relative mouse mode state
+  * Fix USB device leak on connection error
+  * Move prebuilt-deps/ to app/
+  * Reorder release.mk recipes
+  * Pass --buildtype=release as a single meson arg
+  * Print libusb version on --version
+  * Print both compiled and linked versions of libs
+  * Move version handling to a separate file
+  * Log device opening errors during listing
+  * Mention --select-usb and --select-tcpip in README
+  * Add option to select USB or TCP/IP devices
+  * Introduce adb device selector
+  * Execute adb start-server
+  * Remove sc_adb_get_serialno()
+  * Allow selecting a device from IP without port
+  * Expose simple API to select a single adb device
+  * Expose function to test if a serial is TCP/IP
+  * Add adb devices parser
+  * Refactor device configuration
+  * List and select USB devices separately
+  * Expose simple API to select a single USB device
+  * Add move-function for sc_usb_device
+  * Move SC_PRIsizet to compat.h
+  * Rename function to destroy a list of USB devices
+  * Add generic LOG() macro with level parameter
+  * Remove LOGC()
+  * Improve USB device open log
+  * Inline USB device opening
+  * Remove log_libusb_error()
+  * Remove confusing sc_str_truncate()
+  * Fix adb connect parsing
+  * Fix adb get-serialno parsing
+  * Fix adb getprop parsing
+  * Fix adb device ip parsing
+  * Store actual serial in sc_server
+  * Simplify switch to TCPIP function
+  * Build adb argv statically
+  * Expose adb executable path publicly
+  * Rename adb_command to adb_executable
+  * Assert non-NULL serial
+  * Assert "adb disconnect" is called with an argument
+  * Remove useless undef
+  * Remove screensaver log
+  * Remove platform-tools installation suggestion
+  * Use sc_ prefix for adb
+  * Move ADB code to adb/
+  * Simplify demuxer
+  * Rename stream to sc_demuxer
+  * Use sc_ prefix for recorder
+  * Use sc_ prefix for decoder
+  * Add missing spaces in help
+  * Downscale and retry also on early MediaCodec error
+  * Fix include for standard library header
+  * Add warning in function documentation
+  * Fix sc_str_truncate() documentation
+  * Fix comment typo
+  * Update FAQ.zh-Hans.md to v1.22
+  * Update README.zh-Hans.md to v1.22
+  * Update links to v1.22
+
+-------------------------------------------------------------------
+Tue Jan 11 11:12:11 UTC 2022 - alarrosa@suse.com
+
+- Update to version 1.21:
+  * Bump version to 1.21
+  * Clarify TCP/IP mode in README
+  * Always synchronize clipboard on explicit COPY/CUT
+  * Expose sync mode for injecting events
+  * Move acknowledgment handling
+  * Fix set_clipboard message log
+  * Upgrade gradle build tools to 7.0.3
+  * Add --raw-key-events
+  * Use enum for key injection mode
+  * Use static maps to convert input events
+  * Fix code style in keyboard_inject
+  * Improve HID keyboard documentation
+  * Document --tcpip in README
+  * Add --tcpip feature
+  * Extract interruptible sleep for server
+  * Add function to read an adb property
+  * Add function to switch device to TCP/IP mode
+  * Add function to find the device IP address
+  * Add util function to remove trailing '\r'
+  * Add util function to locate a column in a string
+  * Workaround "adb connect" error detection
+  * Add adb connect and disconnect
+  * Add adb flag to disable execution error logs
+  * Use flags for adb commands
+  * Expose flags for process execution
+  * Remove obsolete precision in README
+  * Simplify Windows process inheritance configuration
+  * Remove intermediate static functions from adb.c
+  * Set CLOEXEC flag on sockets
+  * Check process success locally for adb commands
+  * Extract command argv building
+  * Use unsigned for connection attempts count
+  * Reorder cli sanity checks
+  * Fix adb get-serialno error handling
+  * Add OutOfMemory log helper
+  * Remove unreachable return statements
+  * Add missing return on file_handler failure
+  * Add missing includes
+  * Make lockVideoOrientation option name uniform
+  * Do not pass default values to the server
+  * Pass server parameters as key=value pairs
+  * Allocate and format server command args
+  * Parse codec options early
+  * Remove local "serial" variable
+  * Add (v)asprintf compatibility functions
+  * Move check_functions in meson script
+  * Add missing includes in compat implementation
+  * Define common feature test macros for all systems
+  * Add option to disable clipboard autosync
+  * Wait SET_CLIPBOARD ack before Ctrl+v via HID
+  * Move PRIu64 Windows workaround to compat.h
+  * Make the device acknowledge device clipboard
+  * Add device clipboard set acknowledgement
+  * Add sequence number to set_clipboard request
+  * Add acksync helper to wait for acks
+  * Explicitly indicate when device clipboard is set
+  * Do not inject Ctrl+v if clipboard sync failed
+  * Synchronize computer-to-device empty clipboard
+  * Use UINT64_C macro for uint64_t constant in tests
+  * Document remote ADB server in README
+  * Force adb forward if tunnel host/port is provided
+  * Add options to configure tunnel host and port
+  * Add function to parse IPv4 addresses
+  * Configure feature test macros in meson
+  * Add missing include config.h
+  * Improve SSH tunnel documentation in README
+  * Print scrcpy header first
+  * Print help to stdout
+  * Assert that long options are correctly set
+  * Simplify adb_tunnel
+  * Privatize low-level adb functions
+  * Use new user-friendly adb API
+  * Expose new user-friendly adb functions
+  * Rename adb functions to adb_exec_*
+  * Use sc_intr in file_handler
+  * Simplify file_handler
+  * Improve file_handler readability
+  * Simplify adb_execute_p()
+  * Make "adb get-serialno" interruptible
+  * Add interruptible function to read from pipe
+  * Simplify sc_str_truncate()
+  * Generalize string trunctation util function
+  * Expose util function to truncate first line
+  * Assume non-NULL serial in file_handler
+  * Always retrieve device serial
+  * Add missing error handling
+  * Close process on check success
+  * Configure init and cleanup asynchronously
+  * Do not quit on cleanup configuration failure
+  * Move init and cleanup to a separate method
+  * Read/write settings via command on Android >= 12
+  * Add throwable parameter to Log.w()
+  * Report settings errors via Exceptions
+  * Wrap settings management into a Settings class
+  * Update Simplified Chinese README to 1.20
+  * Fix wrong package to install for Ubuntu/Debian
+  * Inherit only specific handles on Windows
+  * Factorize resource release after CreateProcess()
+  * Remove useless assignments on error
+  * Fix Windows sc_pipe function names
+  * Stop connection attempts if interrupted
+  * Fix compilation errors with old SDL versions
+  * Update links to v1.20
+  * Bump version to 1.20
+  * Update script to build without gradle to SDK 31
+  * Extract ANDROID_JAR path in build script
+  * Fix word order in README
+  * Mention crash on Android 12 on old scrcpy in FAQ
+  * Adapt icon in README
+  * Replace "connected on" to "connected via"
+  * Improve scrcpy presentation in README
+  * Increase delay to inject HID on Ctrl+v
+  * Use sc_ prefix for server
+  * Move str_util to str
+  * Improve string util API
+  * Rename SC_INVALID_SOCKET to SC_SOCKET_NONE
+  * Extract adb tunnel to a separate component
+  * Move IPV4_LOCALHOST to net.h
+  * Interrupt on process terminated
+  * Make server interruptible
+  * Add interruptor utilities
+  * Introduce interruptor tool
+  * Run the server from a dedicated thread
+  * Wait using a condition variable in server
+  * Reorder server functions
+  * Copy server params
+  * Reorder server and server_params
+  * Split socket creation and connect/listen
+  * Set video and control sockets only on success
+  * Initialize tunnel_enabled flag internally
+  * Introduce process observer
+  * Improve process API
+  * Factorize common impl of process_execute()
+  * Remove duplicate function declaration
+  * Improve file API
+  * Move functions from process to file
+  * Make screen_render() static
+  * Upgrade junit to 4.13.1
+  * Adapt help to terminal size
+  * Add util function to get terminal size
+  * Generate getopt params from option structures
+  * Structure shortcuts help
+  * Structure command line options help
+  * Add line wrapper
+  * Add string buffer util
+  * Remove deprecated -T option
+  * Remove deprecated -c option
+  * Document --power-off-on-close
+  * Mention drag & drop for non-APK files in help
+  * Mention drag & drop APK in README
+  * Remove extra space in README
+  * Fix typos in help
+  * Add missing include "common.h"
+  * Wrap device name and size in a struct
+  * Update README.jp.md to v1.19
+  * Remove unnecessary variable
+  * Disable synthetic mouse events from touch events
+  * Split SDL initialization
+  * Move SDL initialization
+  * Set SDL hints before initialization
+  * Extract SDL hints
+  * Factorize SDL event push
+  * Handle SDL_PushEvent() errors
+  * Use sc_ prefix for size, position and point
+  * Upgrade gradle build tools to 7.0.2
+  * Upgrade Android checkstyle to 9.0.1
+  * Upgrade Android SDK to 31
+  * Fix typo in clock comments
+  * Define v4l2 option field only if HAVE_V4L2
+  * Define default options as const struct
+  * Move scrcpy option structs to options.h
+  * Expose socket interruption
+  * Add socket wrapper
+  * Use net_send() from net_send_all()
+  * Use sc_ prefix for sockets
+  * Move net_init() and net_cleanup() upwards
+  * Update FAQ to mention HID keyboard
+  * Delay HID events on Ctrl+v
+  * Synchronize HID keyboard state on first event
+  * Retrieve device serial for AOA
+  * Expose function to get the device serial
+  * Add read_pipe_all()
+  * Expose adb execution with redirection
+  * Add command execution with redirection
+  * Add support for USB HID keyboard over AOAv2
+  * Extract mouse processor trait
+  * Extract keyboard processor trait
+  * Fix trait header guards
+  * Remove unused markdown link in README
+  * Mention SCRCPY_ICON_PATH envvar in README
+  * Add scrcpy icon to README
+  * Remove legacy scrcpy icon
+  * Add icon source in SVG format
+  * Use a new scrcpy icon
+  * Add support for palette icon formats
+  * Add icon loader
+  * Move common instruction out of ifdef
+  * Extract util function to build a local file path
+  * Fix code style
+  * Fix "Could not find v4l2 muxer"
+  * Simplify net_send_all()
+  * Update Readme.pt-br.md to v1.19
+  * Update italian translation to v1.19
+  * Fix workarounds for Meizu
+  * Add missing includes
+  * Fix link in README
+  * Add support for expandNotificationsPanel() variant
+  * Update links to v1.19
+
+-------------------------------------------------------------------
+Wed Oct 06 02:46:57 UTC 2021 - jonathan@jontech.app
+
+- Update to version 1.19:
+  * Bump version to 1.19
+  * Retrieve correct error messages on Windows
+  * Compute scrcpy directory manually
+  * Fix typo in manpage
+  * Use SOURCE_MOUSE for scroll events
+  * Upgrade SDL (2.0.16) for Windows
+  * Upgrade platform-tools (31.0.3) for Windows
+  * Declare callbacks static
+  * Add Simplified Chinese translation of FAQ
+  * Add a FAQ section for Wayland support
+  * Add README file in Turkish
+  * Fix OBS project ref URL
+  * Fix typo in DEVELOP.md
+  * Fix type for assignment
+  * Fix net_send_all()
+  * Fix code style
+  * Improve slope estimation on start
+  * Add buffering debugging tools
+  * Add clock tests
+  * Add buffering command line options
+  * Implement buffering
+  * Notify new frames via callbacks
+  * Extract current video_buffer to frame_buffer
+  * Rename video_buffer to sc_video_buffer
+  * Relax v4l2_sink lock constraints
+  * Replace delay by deadline in timedwait()
+  * Wrap tick API
+  * Add missing error log
+  * Move include fps_counter
+  * Remove obsolete comment
+  * Rename queue to sc_queue
+  * Fix manpage formatting
+  * Fix --lock-video-orientation syntax in help
+  * Remove unnecessary calls to av_packet_unref()
+  * Fix v4l2 data race
+  * Initialize fields before starting a thread
+  * Fix assertion race condition in debug mode
+  * Initialize controller even if there is no display
+  * Update scrcpy-server in install-release.sh
+  * Update links to v1.18 in README and BUILD
+
+-------------------------------------------------------------------
+Sat Aug 14 19:04:55 UTC 2021 - mardnh@gmx.de
+
+- Update to version 1.18:
+  * Add support for Android 12.
+  * Add support for V4L2 (device screen capture as a webcam).
+  * Add an option to lock the initial video orientation.
+  * Add an option to power off the device on close.
+  * Bind 4th mouse button to APP_SWITCH.
+  * Bind 5th mouse button to expand notification panel.
+  * Expand settings panel on double-expand notification panel.
+  * Push to /sdcard/Download by default.
+  * Center the window on resize-to-fit.
+  * Increase possible display id range.
+  * Log input events in verbose mode.
+  * Fix touch events parameters.
+  * Fix left click on Samsung Browser.
+  * Remove option --render-expired-frames.
+  * Various technical fixes.
+
+-------------------------------------------------------------------
+Thu Apr 22 09:40:22 UTC 2021 - benoit.monin@gmx.fr
+
+- Update to version 1.17:
+  * Bump version to 1.17
+  * Kill the server only after a small delay
+  * Call CloseHandle() after wait on Windows
+  * Initialize server struct dynamically
+  * Interrupt device threads on stop
+  * Mention how to add default arguments on Windows
+  * Happy new year 2021!
+  * Upgrade SDL (2.0.14) for Windows
+  * Rename release.make to release.mk
+  * Unify release makefile
+  * Replace noconsole binary by a wrapper script
+  * Improve rotation documentation
+  * Document Windows command line usage
+  * Remove duplicate include
+  * Upgrade JUnit to 4.13
+  * Pause on error from a wrapper script
+  * Reference encoder section from FAQ
+  * Reference FFmpeg Windows builds from GitHub
+  * Upgrade platform-tools (30.0.5) for Windows
+  * Fix build errors for macOS
+  * Document shell command to get the device IP
+  * Upgrade gradle build tools to 4.0.1
+  * Fix size_t format specifier for Windows
+  * Document --encoder option
+  * List available encoders on invalid name specified
+  * Log encoder name
+  * Adding new option --encoder
+  * Add option to force legacy method for pasting
+  * Add an option to forward all clicks
+  * Add local.properties to gitignore
+  * Remove spurious space
+  * Mention version of Indonesian translation
+  * Add Indonesian translation for README.md
+  * Enable Java deprecation warnings details
+  * Remove deprecation warning
+  * Fix options order
+  * Fix FAQ.ko.md
+  * Fix "press Enter key" message
+  * Remove unused field
+  * Add missing mutex unlock on error
+  * Add simplified Chinese translation for README.md
+  * Fix README indentation
+  * Upgrade Android SDK to 30
+  * Use portable shebang for all bash scripts
+  * Use a more portable shebang for bash
+  * Use "/usr/bin/env bash" for build-wrapper.sh
+  * Adapt call() on ContentProvider for Android 11
+  * Fix feature test macro
+  * Fix more log format warning
+  * Reset power mode only if screen is on
+  * Make Device methods static when possible
+  * Add undetected device error message in FAQ
+  * List available shortcut keys on error
+  * Reference --shortcut-mod from shortcuts list
+  * Update links to v1.16 in README and BUILD
+- Use meson_install macro to fix build
+
+-------------------------------------------------------------------
+Sat Aug 15 12:50:10 UTC 2020 - dmueller@suse.com
+
+- Update to version 1.16:
+  * Bump version to 1.16
+  * Add pinch-to-zoom simulation
+  * Add reference of the translations in README
+  * Add Traditional Chinese translation for README
+  * Fix clipboard paste condition
+  * Revert "Inject WAKEUP instead of POWER"
+  * Fix missing change of Ctrl key in README
+  * Add packaging status
+  * Update links to v1.15.1 in README and BUILD
+  * Bump version to 1.15.1
+  * Fix uninitialized repeat count in key events
+  * Update links to v1.15 in README and BUILD
+  * Bump version to 1.15
+  * Upgrade FFmpeg (4.3.1) for Windows
+  * Upgrade platform-tools (30.0.4) for Windows
+  * Keep the screen off on powering on
+  * Add --no-key-repeat cli option
+  * Pass full options struct to static functions
+  * Copy the options used in input manager init
+  * Mention that MENU unlocks screen
+  * Use <kbd> HTML tag for keys
+  * Mention in README that Ctrl is forwarded
+  * Update copy-paste section in README
+  * Swap paste shortcuts
+  * Add shortcuts for COPY and CUT
+  * Change "resize to fit" shortcut to MOD+w
+  * Remove "get clipboard" call
+  * Set computer clipboard only if necessary
+  * Set device clipboard only if necessary
+  * Synchronize clipboard on Ctrl+v
+  * Forward Shift to the device
+  * Forward Ctrl to the device
+  * Ignore text events for shortcuts
+  * Accept Super as shortcut modifier
+  * Customize shortcut modifier
+  * Use Ctrl for all shortcuts
+  * Make expression order consistent
+  * Simplify PASTE option for "set clipboard"
+  * Declare main() with argc/argv params in tests
+  * Inject WAKEUP instead of POWER
+  * Restore power mode to normal on cleanup
+  * Warn on ignored touch event
+  * Send touch event without pressure on button up
+  * Update BUILD.md
+  * Fix constants name in comment
+  * Make setScreenPowerMode() method static
+  * Do not crash on missing clipboard manager
+  * README: Add Fedora install instructions
+  * Fix touch events HiDPI-scaling
+  * Improve linguistic
+  * Handle repeating keycodes
+  * Make scrcpy.h independant of other headers
+  * Remove fprintf() call in tests
+  * Add option for disabling screensaver
+  * Fix typo in README.md
+  * Make message buffer static
+  * Increase clipboard size from 4k to 256k
+  * Fix receiver on partial device messages
+  * Serialize text size on 4 bytes
+  * Rename MSG_SERIALIZED_MAX_SIZE to MSG_MAX_SIZE
+  * Add unit test for big clipboard device message
+  * Rename test names from "event" to "msg"
+  * Avoid additional copy on Java text parsing
+  * Reorganize message size constants
+  * Mention sndcpy
+  * Add missing file in build_without_gradle.sh
+  * Configure log level for application only
+  * Fix incorrect log return value
+  * Git-ignore release directories
+  * Avoid repetition for some shortcuts
+  * Mention stay awake limitation
+
+-------------------------------------------------------------------
+Tue Jun 02 15:55:49 UTC 2020 - pousaduarte@gmail.com
+
+- Update to version 1.14:
+  * Mention how to turn the screen on in README
+  * Update links to v1.14 in README and BUILD
+  * Bump version to 1.14
+  * Reactivate "turn device screen on" feature
+  * Push clipboard text only if not null
+  * Improve manpage formatting
+  * Initialize a default log level
+  * Upgrade platform-tools (30.0.0) for Windows
+  * Paste on "set clipboard" if possible
+  * Fix union typo
+
+-------------------------------------------------------------------
+Sun May  3 18:01:37 UTC 2020 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.13
+  * Add option to lock video orientation (#218, #1151)
+  * Add shortcuts to rotate the display (#218, #1274)
+  * Mirror secondary displays (#397, #898, #1177, #1238)
+  * Enable trilinear filtering when possible (#40, #1284)
+  * Add --render-driver parameter (#1284)
+  * Accept --max-fps before Android 10 (#488)
+  * Accept negative window position (#1242)
+  * Use another local port if 27183 is not available (#945, #951)
+  * Forward NumPad keys when NumLock is disabled (#1188)
+  * Fix issues when directory contains non-ASCII chars on Windows (#1002)
+  * Do not print irrelevant workarounds errors (#994)
+  * Fix possible BufferUnderflowException on touch event (#1245)
+  * Upgrade FFmpeg to 4.2.2 in Windows releases
+  * Upgrade SDL to 2.0.12 in Windows releases
+
+-------------------------------------------------------------------
+Tue Feb 25 18:23:52 UTC 2020 - ecsos@opensuse.org
+
+- Update to 1.12.1
+  * Fix bit-rate parsing when "long" is 32 bits (#995)
+
+- Changes from 1.12.0
+  * Add shortcut (Ctrl+r) to rotate device screen (#11)
+  * Respect scrolling configuration on macOS (#966)
+  * Initialize Application object (fix crashes on some devices) (#940)
+  * Restore the .jar extension on the device (fix crashes on some
+  * devices) (#944)
+  * Inject mouse events with a virtual device id (fix crashes on some
+  * devices) (#962)
+  * Refuse to push server if it points to a directory (#956)
+
+- Run spec-cleaner.
+
+-------------------------------------------------------------------
+Wed Nov 20 18:16:54 UTC 2019 - ecsos@opensuse.org
+
+- Update to version 1.11:
+  * Add support for touchscreens/multitouch (#22, #865)
+  * Add --max-fps to limit the frame rate (Android 10 only) (#488)
+  * Add options to set an initial window size and position (#762)
+  * Add option to disable window decorations (#762)
+  * Add --prefer-text option (#650)
+  * Add manpage
+  * Fix copy-paste on Android 10 devices (#796)
+  * Fix "turn screen off" on Android 10 devices (#835)
+  * Fix clicks not working in some games (#635)
+  * Fix device rotation while the window is maximized (#750)
+  * Fix scrcpy-noconsole.exe (#691)
+  * Fix HiDPI support (#829)
+  * Fix segfault on empty file recorded (#918)
+  * Fix recorded video to avoid crashes in Adobe Premiere (#702)
+  * Fix segfault on recording with old FFmpeg versions (#707)
+  * Fix several crashes on some devices (like Meizu) (#240, #365, #921)
+  * Upgrade FFmpeg to 4.2.1 in Windows releases
+  * Upgrade platform-tools to 29.0.5 (adb) in Windows releases
+
+-------------------------------------------------------------------
+Mon Aug 05 11:20:09 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.10:
+  * Update links to v1.10 in README and BUILD
+  * Bump version to 1.10
+  * List scrcpy characteristics in README
+  * Upgrade SDL (2.0.10) for Windows
+  * Update platform-tools (29.0.2) for Windows
+  * Upgrade FFmpeg (4.1.4) for Windows
+  * Initialize queue "last" field
+  * Use Cmd instead of Ctrl on macOS when possible
+  * Use generic FIFO queue for recording
+  * Add generic intrusive FIFO queue
+  * Fix cbuf documentation
+  * Remove unnecessary backslash in cbuf
+  * Remove root directory from Windows zip releases
+  * Log recording failure
+  * Log scrcpy version and URL on start
+  * Record asynchronously
+  * Reduce latency by 1 frame
+  * Add option to change the push target
+  * Document --window-title in README
+  * Add option --window-title
+
+-------------------------------------------------------------------
+Sat Aug 03 17:28:19 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.9~git20190730:
+  * Add unit test for device message serialization
+  * Rename "build_" to "compile_"
+  * Update README.md
+  * Add me as copyright owner
+
+-------------------------------------------------------------------
+Sun Jul 14 14:50:51 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.9~git20190712:
+  * Fix double-free on error
+
+-------------------------------------------------------------------
+Thu Jun 27 20:45:30 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.9~git20190626:
+  * Close decoder on stream ended
+  * Replace "cannot" by "could not"
+  * Fix expected parameters count in error message
+
+-------------------------------------------------------------------
+Sat Jun 22 10:49:08 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.9~git20190620:
+  * Close socket on error
+  * Prevent to turn screen off if no control
+  * Reference USBaudio from README
+  * Fix --serial help
+
+-------------------------------------------------------------------
+Sat Jun 15 22:06:38 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.9~git20190615:
+  * Fix required java package for Fedora
+  * Remove useless else
+  * Improve comment
+  * Use getPhysicalDisplayToken on Anroid Q+ instead of getBuiltInDisplay
+  * Remove compilation flag "skip_frames"
+  * Disable portable build by default
+  * Fix a spell mistake
+  * Add link to Snap package in README
+  * Fix typo in README
+  * Update links to v1.9 in README and BUILD
+  * Bump version to 1.9
+  * Upgrade tarketSdkVersion to 29
+  * Fix deprecation warning in Java unit test
+  * Fix typo in test name
+  * Remove obsolete detail in README
+  * Remove obsolete explanation in FAQ
+  * Update DEVELOP.md
+  * Update platform-tools (29.0.1) for Windows
+  * Downgrade SDL to 2.0.8 for Windows
+  * Upgrade FFmpeg (4.1.3) for Windows
+  * Improve portable builds
+  * Add functions to convert wide char to UTF-8
+  * Extract "scrcpy-server.jar" string
+  * Simplify portable build configuration
+  * Simplify scrcpy-server path configuration
+  * Never return 0 for stream protocol
+  * Truncate device name at UTF-8 code point boundary
+  * Inline lock_util functions
+  * Improve framerate counting
+  * Add cond_wait_timeout()
+  * Fix controller cleanup
+  * Add runtime option to render expired frames
+  * Indent command-line options
+  * Add README section explaining --turn-screen-off
+  * Add option to turn device screen off
+  * Indent command-line options
+  * Disable server controller if --no-control
+  * Group server params in a struct
+  * Use positive options names internally
+  * Rename unused field
+  * Remove "turn device screen on" feature
+  * Rename function to "power on"
+  * Improve key processing readability
+  * Use net_close() to close sockets
+  * Remove unused import
+  * Implement device screen off while mirroring
+  * Fix comment style
+  * Prevent socket leak on error
+  * Use consistent variable names
+  * Add clipboard logs
+  * Do not minimize on focus loss
+  * Prefix server logs
+  * Rename "event" to "message"
+  * Correct return value type in handle_event
+  * server/meson.build: Prevent using input field for directory
+  * Update DEVELOP after recent refactorings
+  * Implement computer-to-device clipboard copy
+  * Extract control event String parsing
+  * Fix control event String parsing
+  * Implement device-to-computer clipboard copy
+  * Add device event sender
+  * Add device event receiver
+  * Add GET_CLIPBOARD device event
+  * Use two sockets for video and control
+  * Extract control event string serialization
+  * Truncate UTF-8 properly
+  * Add helpers to truncate UTF-8 at code points
+  * Add unit tests for control events serialization
+  * Fix wrong comment in unit test
+  * Use custom class Point
+  * Merge commands with other control events
+  * Stop stream immediately on quit
+  * Close server socket before killing process
+  * Simplify cleanup
+  * Use net_recv() to read only one byte
+  * Simplify server_connect_to()
+  * Make server_connect_to() return a bool
+  * Add missing return 0 in unit test
+  * Use cbuf for file handler request queue
+  * Use cbuf for control event queue
+  * Add generic circular buffer
+  * Add buffer_read16be()
+  * Make buffer util functions accept const buffers
+  * Make control_event_serialize() return size_t
+  * Fix memory leak on error
+  * Fix event ownership comment
+  * Prefix control event constants by namespace
+  * Make macro expansion-safe
+  * Remove unused includes
+  * Fix indentation
+  * Format meson.build for readability
+  * Replace SDL_bool by bool in tests
+  * Always use SDL_malloc() and SDL_free()
+  * Fix checkstyle warning
+  * Log characters failed to be injected
+  * Return success count in injectText
+  * Recover if expand/collapse panels is not available
+  * Add method to log error without throwable
+  * Upgrade gradle
+  * Do not call codec.stop() on exception
+
+-------------------------------------------------------------------
+Mon Jun 10 11:00:58 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.8~git20190605:
+  * Replace android-tools-adb by adb
+  * Fix dependencies
+
+-------------------------------------------------------------------
+Mon May 27 12:51:31 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.8~git20190527:
+  * Bind Home key to MOVE_HOME
+  * Make owned filename a pointer-to-non-const
+  * Make owned serial a pointer-to-non-const
+  * Remove useless casts to (void *)
+
+-------------------------------------------------------------------
+Fri May 24 14:05:06 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.8~git20190524:
+  * Explain how to customize path in README
+  * Continue on icon loading failure
+  * Check surface returned for icon
+
+-------------------------------------------------------------------
+Mon May 13 12:45:46 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.8~git20190512:
+  * Print adb command on error
+  * Use size_t for command length
+
+-------------------------------------------------------------------
+Mon May 06 12:39:09 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.8~git20190505:
+  * Disable X11 compositor bypass
+  * Fix mouse focus clickthrough
+
+-------------------------------------------------------------------
+Wed Apr 03 19:00:48 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.8~git20190331:
+  * Fix link error on Windows Subsystem for Linux
+
+-------------------------------------------------------------------
+Sat Mar 30 14:36:49 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.8~git20190327:
+  * Run server tests on release
+  * Run tests with ASAN enabled
+  * Fix server checkstyle errors
+
+-------------------------------------------------------------------
+Mon Mar 25 13:43:32 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.8~git20190325:
+  * Fix overflow in test
+
+-------------------------------------------------------------------
+Mon Mar 11 13:31:39 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.8~git20190310:
+  * Remove deprecated Arch Linux package
+
+-------------------------------------------------------------------
+Sat Mar 09 17:32:34 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.8~git20190307:
+  * Update developer documentation for v1.8
+  * Add note about Ctrl+C on Windows while recording
+  * Update links to v1.8 in README and BUILD
+  * Bump version to 1.8
+  * Log "new texture" at INFO level
+  * Remove empty line
+  * Add more consts
+  * Explicitly pass control flag to input manager
+  * Do not init SDL video subsystem if no display
+  * Use explicit output parameter for skipped frame
+  * Make owned serial a pointer-to-non-const
+  * Replace SDL types by C99 standard types
+  * Add option to mirror in read-only
+  * Rename -n/--no-window to -N/--no-display
+  * Add missing no_window initialization
+  * Avoid unnecessary call if display is disabled
+  * Extract event processing out of event_loop()
+  * Update code style
+  * Replace uint64_t by Uint64 for consistency
+  * Describe the --no-window feature in README
+  * Implement the --no-window flag
+  * Add a new option: -n/--no-window
+  * Add stream layer
+  * Store the recording request in a local bool
+  * Fix cleanup order
+  * Fix recording with old decoding/encoding API
+  * Rename "stop" to "interrupt"
+  * Rename "frames" to "video_buffer"
+  * Remove unused mutex field in decoder
+  * Add shortcut to expand/collapse notification panel
+
+-------------------------------------------------------------------
+Sun Mar 03 15:32:16 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.7~git20190303:
+  * server/meson.build: support relative path for prebuilt_server
+
+-------------------------------------------------------------------
+Sat Feb 16 21:07:26 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.7~git20190216:
+  * Use "always on top" only for SDL >= 2.0.5
+  * Move all compat ifdefs definitions to compat.h
+  * Update links to v1.7 in README and BUILD
+  * Bump version to 1.7
+  * Allocate extradata with av_malloc()
+  * Regroup Windows-ifdefs in command.h
+  * Create process with wide chars on Windows
+  * Add recording logs
+  * Support recording to MKV
+  * Rescale packet timestamp to container time base
+  * Write header file with correct extradata
+  * Forward FFmpeg logs
+  * Add log verbose macro
+  * Fix memory leak on close
+  * app: add always_on_top
+  * Fix expected mouse event sizes
+
+-------------------------------------------------------------------
+Sun Jan 27 21:28:36 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.6~git20190126:
+  * Add release script
+  * tests: fix test_control_event_serialize
+
+-------------------------------------------------------------------
+Tue Jan 22 13:23:17 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.6~git20190122:
+  * Fix incorrect comment
+
+-------------------------------------------------------------------
+Mon Jan 21 13:48:12 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.6~git20190120:
+  * Update links to v1.6 in README and BUILD
+  * Bump version to 1.6
+  * Update FFmpeg (4.1) for Windows
+  * Do not disable screensaver
+  * input_manager: don't ignore double click event when clicking inside device
+  * Mirror "secure" content
+  * Make the server unlink itself
+  * Handle mouse events outside device screen
+  * Always use non-empty arguments
+  * Always expect 5 parameters for the server
+
+-------------------------------------------------------------------
+Fri Jan 18 13:53:33 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5fixversion~git20190116:
+  * prepare-dep: use variable for better readability
+
+-------------------------------------------------------------------
+Sun Nov 25 22:01:55 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5fixversion~git20181125:
+  * Add a note to allow simulating input in README
+
+-------------------------------------------------------------------
+Mon Nov 19 13:29:07 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5fixversion~git20181119:
+  * Add ninja-build to the packages list to install
+
+-------------------------------------------------------------------
+Sun Nov 18 20:41:30 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5fixversion~git20181118:
+  * Ignore mouse events outside device screen
+
+-------------------------------------------------------------------
+Sat Nov 17 22:18:59 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5fixversion~git20181115:
+  * Point out that ninja must not be run as root
+
+-------------------------------------------------------------------
+Tue Nov 13 21:31:53 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5fixversion~git20181113:
+  * Move drag&drop features in README
+
+-------------------------------------------------------------------
+Mon Nov 12 13:57:51 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5fixversion~git20181112:
+  * Fix read_packet() return value on error or EOF
+  * Configure version at meson project level
+  * Update links to v1.5-fixversion
+  * Bump version to 1.5
+  * Update links to v1.5 in README and BUILD
+  * Improve features presentation in README
+  * Do not queue invalid PTS
+  * Store queue of PTS for pending frames
+  * Send frame meta only if recording is enabled
+  * Rename --output-file to --record
+  * Wrap receiver state into separate struct
+  * Avoid partial header reads
+  * Move buffer reader functions to buffer_util.h
+  * Support AVStream.codec for old FFmpeg versions
+  * recorder: use av_oformat_next to support older FFmpeg
+  * Reenable custom SDL signal handlers
+  * Do not transmit MediaCodec flags
+  * Assign PTS to the right frame
+  * Decode and push frame before recording
+  * Only set valid PTS/DTS
+  * Add recorder
+  * Enable video output file, with pts set by server
+  * Fix SDL 2.0.9 for Windows
+  * Update SDL (2.0.9) for Windows
+
+-------------------------------------------------------------------
+Sun Nov 11 12:32:54 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.4~git20181111:
+  * Extract bit operations to buffer_util.h
+  * Explain how to install up-to-date meson
+
+-------------------------------------------------------------------
+Sat Nov 10 16:43:57 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.4~git20181110:
+  * Add feature test macro to declare kill()
+  * Fix memory leak on error
+
+-------------------------------------------------------------------
+Thu Nov 01 23:09:43 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.4~git20181101:
+  * Replace Ctrl by Meta for volume shortcuts on MacOS
+  * Refactor to support Meta in shortcuts
+
+-------------------------------------------------------------------
+Tue Oct 30 14:02:28 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.4~git20181027:
+  * input_manager: fix potential memory leak on text
+
+-------------------------------------------------------------------
+Thu Oct 25 23:13:09 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.4~git20181024:
+  * Capture Alt and Meta keys
+
+-------------------------------------------------------------------
+Mon Oct 22 18:09:29 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.4~git20181021:
+  * Factorize Windows command building
+
+-------------------------------------------------------------------
+Wed Oct 10 12:40:03 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.4~git20181009:
+  * Work around Os.write() not updating position
+
+-------------------------------------------------------------------
+Fri Oct 05 11:37:18 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.4~git20181004:
+  * Support paths containing spaces on Windows
+  * Declare fun(void) functions with no parameters
+  * Update links to v1.4 in README and BUILD
+  * Update platform-tools (28.0.1) for Windows
+  * Bump version to 1.4
+  * Handle alpha and space chars as raw events
+  * prevent closing console right after process error in windows
+  * Fix header guard name
+  * Use specific error for missing binary on Windows
+  * Avoid additional buffer copy in userspace
+  * Present fullscreen option in README
+  * Add option to start in fullscreen
+  * Do not handle system-specific values in command.c
+  * Notify adb missing
+  * Update FFmpeg (4.0.2) for Windows
+  * Update platform-tools (28.0.0) for Windows
+  * Add missing include for lock_util.h
+  * Separate multi-words filenames by '_'
+  * Document "push file" feature
+  * Make request_queue functions static
+  * Simplify SDL_assert() calls
+  * Add missing include config.h
+  * Support drag&drop a file to transfer it to device
+  * installer -> file_handler
+
+-------------------------------------------------------------------
+Thu Sep 20 12:27:21 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.3~git20180919:
+  * Add link to Gentoo Ebuild in README
+
+-------------------------------------------------------------------
+Tue Aug 21 07:38:52 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.3~git20180820:
+  * Add link to FLAG_SECURE in FAQ
+
+-------------------------------------------------------------------
+Fri Aug 17 20:29:17 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.3~git20180817:
+  * Explain how to install adb on Mac OS
+  * Separate build instructions from README
+
+-------------------------------------------------------------------
+Thu Aug 16 13:19:47 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.3~git20180815:
+  * Reset current installer process
+  * Return non-zero value on connection loss
+  * Remove AINPUT_SOURCE_ANY value
+  * Replace Uint32 by int to fix warnings in tinyxpm
+  * Explicitly use ISO C11
+
+-------------------------------------------------------------------
+Sun Aug 12 21:42:33 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.3~git20180812:
+  * Destroy mutex if strdup failed
+  * remove redundant semicolon
+
+-------------------------------------------------------------------
+Fri Aug 10 16:41:03 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.3~git20180809:
+  * Update links to v1.3 in README
+  * Bump version to 1.3
+  * Add crop feature
+  * Move annotation comment
+  * Extract video size computation
+  * Increase "adb forward" connection attempts
+  * Do not call deprecated av_register_all()
+
+-------------------------------------------------------------------
+Tue Jul 17 18:48:23 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.2~git20180716:
+  * Simplify README for Windows users
+
+-------------------------------------------------------------------
+Mon Jun 25 17:14:26 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.2~git20180624:
+  * Forward repeated volume events
+  * Send separate DOWN/UP key events
+  * Improve English comment
+
+-------------------------------------------------------------------
+Sat Jun 23 11:59:43 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.2~git20180622:
+  * Prevent killing unexpected process
+  * Fix missing installer initialization
+
+-------------------------------------------------------------------
+Fri Jun 08 17:47:01 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.2~git20180608:
+  * Fix meson error: ‘for’ loop initial declarations are only allowed in C99 mode.
+  * Use a meson option to crossbuild for Windows
+  * Fix clean recipe in cross Makefile
+  * Upgrade gradle
+
+-------------------------------------------------------------------
+Tue May 29 12:32:40 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.2~git20180528:
+  * Update links to v1.2 in README
+  * Bump version to 1.2
+  * Rename SHA256SUM to SHA256SUMS
+  * Make CreateProcess() flags depend on "noconsole"
+  * Update README and FAQ for the new Windows releases
+  * Also build "noconsole" binary for Windows
+  * Add cross-compilation scripts for Windows
+  * Indicate that libs are included for Windows
+  * Indicate that scrcpy also works over TCP/IP
+  * Document APK drag & drop
+  * Quote apk path on Windows
+  * Drag and drop to install apk files from computer
+  * Fix net_send_all() warning
+  * Fix proc_show_touches warning
+  * Release controller lock while processing events
+  * Fix leak on server start error
+  * Add missing includes
+  * Change volume shortcuts
+  * Improve startup time when show_touches is enabled
+  * Disable "show touches" once window is closed
+  * Add an option to enable "show touches"
+  * Group scrcpy options into a struct
+  * Swap MENU and APP_SWITCH shortcuts
+  * Rename "shake" to "menu"
+  * Add support for CTRL+S to send hardware "shake" to device w/readme
+
+-------------------------------------------------------------------
+Tue Apr 10 13:06:03 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.1~git20180408:
+  * Map numpad ENTER key
+
+-------------------------------------------------------------------
+Thu Apr 05 12:40:37 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.1~git20180405:
+  * Add FAQ section about KWin crash
+
+-------------------------------------------------------------------
+Wed Apr 04 11:39:14 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.1~git20180404:
+  * Avoid pointer arithmetic on "void *"
+  * Use const pointers when possible
+
+-------------------------------------------------------------------
+Sat Mar 31 11:02:02 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.1~git20180331:
+  * Document 32 bits packages Windows in README
+
+-------------------------------------------------------------------
+Thu Mar 29 10:04:47 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.1~git20180328:
+  * Make checkstyle happy
+  * Install on macOS via Homebrew in README
+
+-------------------------------------------------------------------
+Wed Mar 28 10:58:32 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.1~git20180328:
+  * Document how to make a portable build on Windows
+
+-------------------------------------------------------------------
+Tue Mar 27 10:59:57 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.1~git20180327:
+  * Factorize texture creation
+
+-------------------------------------------------------------------
+Mon Mar 26 12:54:43 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.1~git20180326:
+  * Forward double-click events
+
+-------------------------------------------------------------------
+Sun Mar 25 12:54:55 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.1~git20180325:
+  * Add instructions to install Java 8 on macOS
+  * Update README.md
+  * Add instructions to run via Docker
+
+-------------------------------------------------------------------
+Sat Mar 24 10:34:49 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.1~git20180324:
+  * Change links to wikipedia
+  * Add links to FFmpeg and LibSDL2 dependencies
+  * Process the last video frame
+  * Unref last packet on exit
+  * Clarify adb requirements
+  * Describe workaround to get output on Windows
+
+-------------------------------------------------------------------
+Wed Mar 21 21:38:36 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 1.1~git20180321:
+  * Disable custom SDL signal handlers
+  * Remove useless blocks in switch/case
+
+-------------------------------------------------------------------
+Wed Mar 21 20:13:18 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 1.1~git20180320:
+  * Include source root directory
+
+-------------------------------------------------------------------
+Sun Mar 18 16:45:01 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.1~git20180318:
+  * Document the step to clone the project
+  * Increase the number of connection attempts
+  * Fix win32 build
+  * Remove useless cast
+  * Fix warning message
+  * Fix switch/case code style
+
+-------------------------------------------------------------------
+Thu Mar 15 15:27:53 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.1~git20180315:
+  * Add FAQ section about mouse clicks
+
+-------------------------------------------------------------------
+Wed Mar 14 18:37:56 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.1~git20180314:
+  * Add link to the article for v1.1 in README
+  * Update FAQ after v1.1 release
+  * Update links to v1.1 in README
+  * Bump version to 1.1
+  * Remove useless argument
+  * Immediately close the server socket on the device
+  * Workaround continuous resizing on Windows/MacOS
+  * Remove black borders on double-click
+  * Make it work over tcpip
+  * Store serial in server instance
+  * Always use the best render scale quality available
+  * Fix mouse clicks on LG devices
+  * Support screens with dimensions not divisible by 8
+  * Map middle-click to HOME
+  * Map right-click to BACK if screen is on
+  * Fix text input event segfault
+
+-------------------------------------------------------------------
+Tue Mar 13 10:23:31 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.0~git20180313:
+  * Disable stdout/stderr buffering on Windows
+
+-------------------------------------------------------------------
+Mon Mar 12 16:45:14 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.0~git20180312:
+  * Add links to AUR packages in README
+  * Reverse horizontal scrolling behavior
+  * Use one subsection by distribution in README
+  * Document how to install on Fedora
+  * Improve dependencies in README
+  * Add a FAQ for common issues
+  * Add empty lines around code blocks
+  * removed "$" and changed Mac OS ---> MacOS
+  * added "$" in front of terminal commands
+  * Unref the packet on error
+

@@ -18,11 +18,11 @@
 
 %define qt5_snapshot 1
 %define base_name libqt5
-%define real_version 5.15.11
-%define so_version 5.15.11
+%define real_version 5.15.12
+%define so_version 5.15.12
 %define tar_version qtimageformats-everywhere-src-%{version}
 Name:           libqt5-qtimageformats
-Version:        5.15.11+kde12
+Version:        5.15.12+kde10
 Release:        0
 Summary:        Qt 5 Image Format Plugins
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)

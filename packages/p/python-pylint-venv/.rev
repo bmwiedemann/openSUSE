@@ -15,4 +15,15 @@
     <comment></comment>
     <requestid>1105908</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>838c7aabbf82a2834bb95171ece15509</srcmd5>
+    <version>3.0.3</version>
+    <time>1702845099</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.0.3:
+  * Official support for Pylint 3.
+  * Official support for Python 3.12.
+  * Documentation for configuration within `pyproject.toml`</comment>
+    <requestid>1133533</requestid>
+  </revision>
 </revisionlist>

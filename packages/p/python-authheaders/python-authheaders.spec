@@ -1,7 +1,7 @@
 #
 # spec file for package python-authheaders
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,18 +24,21 @@ Summary:        A library wrapping email authentication header verification and 
 License:        MIT
 URL:            https://github.com/ValiMail/authentication-headers
 Source:         https://files.pythonhosted.org/packages/source/a/authheaders/authheaders-%{version}.tar.gz
+Patch0:         https://github.com/ValiMail/authentication-headers/pull/28.patch#/authheaders-importlib-resources.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-authres >= 1.0.1
 Requires:       python-dkimpy >= 0.7.1
 Requires:       python-dnspython
+Requires:       python-importlib_resources
 Requires:       python-publicsuffix2
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module authres >= 1.2.0}
 BuildRequires:  %{python_module dkimpy >= 0.7.1}
 BuildRequires:  %{python_module dnspython}
+BuildRequires:  %{python_module importlib_resources}
 BuildRequires:  %{python_module publicsuffix2}
 BuildRequires:  %{python_module pytest}
 # /SECTION
@@ -45,7 +48,7 @@ BuildRequires:  %{python_module pytest}
 A library wrapping email authentication header verification and generation.
 
 %prep
-%setup -q -n authheaders-%{version}
+%autosetup -p1 -n authheaders-%{version}
 
 %build
 export LANG=en_US.UTF-8

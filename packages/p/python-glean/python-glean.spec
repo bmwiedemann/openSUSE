@@ -1,7 +1,7 @@
 #
 # spec file for package python-glean
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-glean
-Version:        1.19.0
+Version:        1.23.0
 Release:        0
 Summary:        Program to write static config from config-drive
 License:        Apache-2.0
@@ -26,11 +26,13 @@ Group:          Development/Languages/Python
 URL:            https://opendev.org/opendev/glean
 Source:         https://files.pythonhosted.org/packages/source/g/glean/glean-%{version}.tar.gz
 BuildRequires:  %{python_module pbr}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 # The OpenStack package oslotest is only available for the primary python3 flavor on TW.
@@ -54,13 +56,12 @@ notably Rackspace, use configuration provided via a configuration drive.
 %setup -q -n glean-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
-%python_clone -a %{buildroot}%{_bindir}/glean-install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/glean
-%python_clone -a %{buildroot}%{_bindir}/glean.sh
+%python_clone -a %{buildroot}%{_bindir}/glean-install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -69,21 +70,17 @@ export PYTHON=%{_bindir}/python3
 python3 setup.py testr
 
 %post
-%python_install_alternative glean-install
-%python_install_alternative glean
-%python_install_alternative glean.sh
+%python_install_alternative glean glean-install
 
 %postun
-%python_uninstall_alternative glean-install
-%python_uninstall_alternative glean
-%python_uninstall_alternative glean.sh
+%python_uninstall_alternative glean glean-install
 
 %files %{python_files}
 %doc AUTHORS ChangeLog README.rst
 %license LICENSE
-%python_alternative %{_bindir}/glean.sh
 %python_alternative %{_bindir}/glean
 %python_alternative %{_bindir}/glean-install
-%{python_sitelib}/*
+%{python_sitelib}/glean
+%{python_sitelib}/glean-%{version}.dist-info
 
 %changelog

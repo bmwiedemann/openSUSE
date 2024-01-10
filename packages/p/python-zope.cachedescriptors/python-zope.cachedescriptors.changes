@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan  9 04:40:10 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use zope-testrunner to run the test suite.
+- Switch to pyproject and autosetup macros.
+- Stop using greedy globs in %files.
+
+-------------------------------------------------------------------
 Fri May  5 14:26:02 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.0:

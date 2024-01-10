@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Dec 18 14:22:11 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20231213:
+  * util: gTLD data autopull updates for 2023-12-12T15:13:54 UTC (#1910)
+  * util: gTLD data autopull updates for 2023-12-06T15:14:08 UTC (#1908)
+  * Place -v after -C in github actions workflows (#1906)
+  * Introduce Go Modules to tooling (#1901)
+  * util: gTLD data autopull updates for 2023-11-21T15:13:46 UTC (#1902)
+  *  Handle EBEROs: Use DelegationDate alongside ContractTerminated (#1894)
+  * util: gTLD data autopull updates for 2023-11-18T15:11:52 UTC (#1898)
+
+-------------------------------------------------------------------
 Tue Nov 14 12:30:21 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20231108:

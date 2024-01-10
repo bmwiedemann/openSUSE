@@ -1,10 +1,18 @@
 -------------------------------------------------------------------
+Wed Jan  3 10:27:22 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.4:
+  * https://www.tornadoweb.org/en/stable/releases/v6.4.0.html
+  * Python 3.12 is now supported.
+- drop py312-datetime.patch (upstream)
+
+-------------------------------------------------------------------
 Thu Sep 21 10:04:28 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Update to 6.3.3
-  * The Content-Length header and chunked Transfer-Encoding sizes 
-    are now parsed more strictly (according to the relevant RFCs) 
-    to avoid potential request-smuggling vulnerabilities when 
+  * The Content-Length header and chunked Transfer-Encoding sizes
+    are now parsed more strictly (according to the relevant RFCs)
+    to avoid potential request-smuggling vulnerabilities when
     deployed behind certain proxies.
 - Add py312-datetime.patch to fix build with Python 3.12
 
@@ -229,7 +237,7 @@ Fri Aug 19 16:29:16 UTC 2022 - Dirk Müller <dmueller@suse.com>
 Thu Apr 28 07:13:53 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch remove-multiheader-http-test.patch:
-  * Do not test multi-line headers. 
+  * Do not test multi-line headers.
 
 -------------------------------------------------------------------
 Sat Dec 11 16:16:20 UTC 2021 - Ben Greiner <code@bnavigator.de>
@@ -1092,7 +1100,7 @@ Tue Jun 13 14:57:15 UTC 2017 - jmatejek@suse.com
 -------------------------------------------------------------------
 Wed May 31 19:25:46 UTC 2017 - dmueller@suse.com
 
-- require python-backports.ssl_hostname only on python 2.x 
+- require python-backports.ssl_hostname only on python 2.x
 
 -------------------------------------------------------------------
 Fri Apr  7 19:59:28 UTC 2017 - toddrme2178@gmail.com
@@ -1151,7 +1159,7 @@ Tue Dec  8 10:51:12 UTC 2015 - kkaempf@suse.com
 
   Deprecation notice
   - This will be the last release of Tornado to support Python 2.6
-    or 3.2. 
+    or 3.2.
 
   See http://www.tornadoweb.org/en/stable/releases/v4.3.0.html
 
@@ -1183,25 +1191,25 @@ Thu Sep 10 19:39:18 UTC 2015 - aboe76@gmail.com
 
 - Update to 4.2.1:
   Security fix:
-  * This release fixes a path traversal vulnerability in StaticFileHandler, 
-  in which files whose names started with the static_path directory 
+  * This release fixes a path traversal vulnerability in StaticFileHandler,
+  in which files whose names started with the static_path directory
   but were not actually in that directory could be accessed.
 - Update to 4.2:
   Backwards-compatibility:
-  * SSLIOStream.connect and IOStream.start_tls now 
+  * SSLIOStream.connect and IOStream.start_tls now
     validate certificates by default.
-  * Certificate validation will now use the system CA root certificates 
-    instead of certifi when possible (i.e. Python 2.7.9+ or 3.4+). 
+  * Certificate validation will now use the system CA root certificates
+    instead of certifi when possible (i.e. Python 2.7.9+ or 3.4+).
     This includes IOStream and simple_httpclient, but not curl_httpclient
-  * The default SSL configuration has become stricter, 
-    using ssl.create_default_context where available on the client side. 
-    (On the server side, applications are encouraged to migrate from 
+  * The default SSL configuration has become stricter,
+    using ssl.create_default_context where available on the client side.
+    (On the server side, applications are encouraged to migrate from
     the ssl_options dict-based API to pass an ssl.SSLContext instead).
-  * The deprecated classes in the tornado.auth module, GoogleMixin, 
+  * The deprecated classes in the tornado.auth module, GoogleMixin,
     FacebookMixin, and FriendFeedMixin have been removed.
   * see more details:
     http://www.tornadoweb.org/en/stable/releases/v4.2.0.html
-  
+
 -------------------------------------------------------------------
 Wed Aug 12 14:29:56 UTC 2015 - seife+obs@b1-systems.com
 
@@ -1229,7 +1237,7 @@ Thu Oct  2 16:05:54 UTC 2014 - toddrme2178@gmail.com
 
 - Remove python-pycares BuildRequires since it is optional and
   not in openSUSE:Factory
-  
+
 -------------------------------------------------------------------
 Wed Oct  1 15:23:31 UTC 2014 - toddrme2178@gmail.com
 
@@ -1280,7 +1288,7 @@ Wed Oct  1 15:23:31 UTC 2014 - toddrme2178@gmail.com
       in addition to its old single-callback interface.
     * New module `tornado.tcpclient` creates TCP connections with non-blocking
       DNS, SSL handshaking, and support for IPv6.
-  + See more release details at 
+  + See more release details at
     http://www.tornadoweb.org/en/stable/releases/v4.0.0.html
 - Update to version 3.2.2
   + Security fixes
@@ -1395,7 +1403,7 @@ Mon Apr 30 13:06:58 UTC 2012 - toddrme2178@gmail.com
 -------------------------------------------------------------------
 Sat Apr 28 05:42:29 UTC 2012 - highwaystar.ru@gmail.com
 
-- added python3 package 
+- added python3 package
 
 -------------------------------------------------------------------
 Tue Apr 24 11:01:28 UTC 2012 - alexandre@exatati.com.br

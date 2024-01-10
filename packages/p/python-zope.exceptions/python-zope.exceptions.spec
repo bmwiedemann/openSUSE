@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-zope.exceptions%{psuffix}
-Version:        4.6
+Version:        5.0.1
 Release:        0
 Summary:        Zope Exceptions
 License:        ZPL-2.1

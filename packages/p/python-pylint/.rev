@@ -577,4 +577,29 @@
   * Setting ``min-similarity-lines`` to 0 now makes the similarty</comment>
     <requestid>1129239</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>5a8421cd8c11831f6b630dae30489f93</srcmd5>
+    <version>3.0.3</version>
+    <time>1702936565</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.0.3:
+  * Fixed false positive for ``unnecessary-lambda`` when the call
+    has keyword arguments but not the lambda.
+  * Fixed incorrect suggestion for shallow copy in unnecessary-
+    comprehension
+  * After changing b = [x for x in a] to b = a based on the
+    suggestion, the script now prints [0, 2, 3]. The correct
+    suggestion should be use list(a) to preserve the original
+    behavior.
+  * Fix false positives for ``undefined-variable`` and ``unused-
+    argument`` for classes and functions using Python 3.12 generic
+    type syntax.
+  * Fixed ``pointless-string-statement`` false positive for
+    docstrings on Python 3.12 type aliases.
+  * Fix false positive for ``invalid-exception-operation`` when
+    concatenating tuples of exception types.
+  * Fix a bug where pylint was unable to walk recursively through
+    a directory if the directory has an `__init__.py` file.</comment>
+    <requestid>1133805</requestid>
+  </revision>
 </revisionlist>

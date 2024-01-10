@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jan  7 07:25:21 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Add support-Qt-5_15_12.patch 
+
+-------------------------------------------------------------------
 Sun Dec 10 06:55:48 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
 
 - Don't install libudev-mini1 for building 

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan  2 22:49:44 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- require setuptools
+
+-------------------------------------------------------------------
 Thu Jul 20 13:09:51 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Clean up the SPEC file.
@@ -45,13 +50,13 @@ Thu Oct  6 22:41:33 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
   Changed a link archive of the reference page in case it's down. - @ahonnecke
   Removed unnecessary try-except around OrderedDict usage - @sozofaan
   Update documentation link to json module + use https - @deronnax
-  Dropped 3.5 support. - @bringhurst 
+  Dropped 3.5 support. - @bringhurst
 
 -------------------------------------------------------------------
 Sat Nov  6 18:37:44 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.2:
-  * drop python 3.4 support 
+  * drop python 3.4 support
 
 -------------------------------------------------------------------
 Fri May 28 08:49:54 UTC 2021 - pgajdos@suse.com

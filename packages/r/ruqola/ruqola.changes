@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Dec 15 22:04:05 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Require extra-cmake-modules at build time
+
+-------------------------------------------------------------------
+Wed Oct  4 23:06:58 UTC 2023 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 2.0.0
+  * bug fixes
+  * translation updates
+
+-------------------------------------------------------------------
+Mon Jul 24 13:18:25 UTC 2023 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.9.2
+  * bug fixes
+  * translation updates
+- Remove allow_build_without_deprecated_method.patch,
+  is part of release
+
+-------------------------------------------------------------------
 Tue Mar 14 14:50:34 UTC 2023 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Add allow_build_without_deprecated_method.patch

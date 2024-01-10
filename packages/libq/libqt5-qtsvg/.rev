@@ -478,4 +478,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment></comment>
     <requestid>1121285</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>fc57e68d4b576e6f897d5914d5f1decb</srcmd5>
+    <version>5.15.12+kde6</version>
+    <time>1704380097</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.12 (+ some .16), untested (forwarded request 1135706 from favogt)</comment>
+    <requestid>1136123</requestid>
+  </revision>
 </revisionlist>

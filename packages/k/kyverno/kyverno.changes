@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Fri Jan 05 13:50:45 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.11.3:
+  * release 1.11.3 (#9346)
+  * fix: update CLI to use store for fetching regclient (#9345)
+  * fix: non-trigger resources should be skipped for background
+    policies regardless of `skipBackgroundRequests` settings
+    (#9333) (#9337)
+
+-------------------------------------------------------------------
+Thu Jan 04 17:54:18 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.11.2:
+  * Add Chainsaw Test for Conditional Anchor (#9295) (#9304)
+  * release 1.11.2 (#9302)
+  * fix(cli): handle excluded resources as pass (cherry-pick #9274)
+    (#9300)
+  * feat: add deprecation warnings in the CLI (#9222) (#9294)
+  * fix: updaterequests stuck in pending/fail infinite loop
+    (cherry-pick #9119) (#9293)
+  * chore: update chart.yaml with the changes (#9292)
+  * cherry-picj #9151 (#9291)
+  * Support more signature algorithms (#9102) (#9289)
+  * fix: large table row ID number format in CLI (#9281) (#9287)
+  * fix: remove skip increment when resource not found in cli apply
+    (#9282) (#9284)
+  * chore: disable policy library kuttl tests in 1.11 (#9259)
+  * fix: use http.MaxBytesReader instead of content length for API
+    Calls (#9265) (#9268)
+  * Add imagePullSecrets to post-upgrade job (#9264) (#9273)
+  * release v1.11.2-rc.1 (#9252)
+  * chore: bump k8s to 1.29 stable (release 1.11) (#9257)
+  * fix: convert chainsaw tests to kuttl (#9242)
+  * fix: bump k8s to 0.29-alpha.3 and add support for fips
+    endpoints in AWS authentication (cherry-pick: #9233) (#9244)
+  * fix launch.json (#9239) (#9245)
+  * cherry-pick #9230 (#9234)
+  * fix: add chainsaw test for mutate existing (#9210) (#9221)
+  * fix: add `skipBackgoundRequests` to configure loop protection
+    option (#9157) (#9207)
+  * fix: limit the trigger name to a maximum of 63 characters for
+    mutate existing rules (#9162) (#9195)
+  * fix: enable additional report printers by default (#9194)
+    (#9196)
+  * improve messages (#9168) (#9169)
+  * fix: add tolerations and affinity to the post-upgrate hook
+    (#9156) (#9164)
+  * fix: allow changes to preexisting resource in violation of a
+    policy in Enforce (#9027) (#9139)
+  * (cherry-pick) Fix Helm chart to not error when replicas defined
+    (#9066) (#9073)
+  * fix: add nodeSelector to the reports cleanup helm hook (#9065)
+    (#9069)
+  * fix: ttl cleanup not working with cluster wide resources
+    (#9060) (#9063)
+
+-------------------------------------------------------------------
 Wed Nov 29 05:46:24 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.11.1:

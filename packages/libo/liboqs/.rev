@@ -97,4 +97,14 @@
 - major library version 4 (forwarded request 1117608 from msmeissn)</comment>
     <requestid>1117610</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>748ec111b134f9d736b6ab1e492241e2</srcmd5>
+    <version>0.9.1</version>
+    <time>1703527559</time>
+    <user>anag+factory</user>
+    <comment>- updated to 0.9.1:
+  - Key encapsulation mechanisms
+    - Kyber: C, AVX2, and aarch64 implementation updated (forwarded request 1134979 from msmeissn)</comment>
+    <requestid>1134980</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-hatch-fancy-pypi-readme%{psuffix}
-Version:        23.1.0
+Version:        24.1.0
 Release:        0
 Summary:        Fancy PyPI READMEs with Hatch
 License:        MIT

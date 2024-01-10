@@ -1,7 +1,7 @@
-Index: s390-tools-2.29.0/etc/sysconfig/dumpconf
+Index: s390-tools-2.30.0/etc/sysconfig/dumpconf
 ===================================================================
---- s390-tools-2.29.0.orig/etc/sysconfig/dumpconf
-+++ s390-tools-2.29.0/etc/sysconfig/dumpconf
+--- s390-tools-2.30.0.orig/etc/sysconfig/dumpconf
++++ s390-tools-2.30.0/etc/sysconfig/dumpconf
 @@ -1,71 +1,137 @@
 +## Path:		System/Dumpconf
 +## Description:		Configures the actions which should be performed after a kernel panic

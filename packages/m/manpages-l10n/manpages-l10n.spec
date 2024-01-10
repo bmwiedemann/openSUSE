@@ -18,12 +18,12 @@
 
 
 Name:           manpages-l10n
-Version:        4.20.0
+Version:        4.21.0
 Release:        0
 Summary:        Translation of man pages
 License:        GPL-3.0-or-later
 URL:            https://manpages-l10n-team.pages.debian.net/manpages-l10n
-Source0:        https://salsa.debian.org/manpages-l10n-team/manpages-l10n/-/archive/%{version}/%{name}-%{version}.tar.bz2
+Source0:        https://salsa.debian.org/manpages-l10n-team/manpages-l10n/-/archive/v%{version}/%{name}-%{version}.tar.bz2
 Source1:        macros.%{name}
 # PATCH-FIX-UPSTREAM manpages-l10n-4.20.0-fix-links.patch -- Fix incorrect links in man2 (boo#1202798)
 Patch0:         manpages-l10n-4.20.0-fix-links.patch
@@ -49,6 +49,7 @@ This package provides translations of man pages in multiple languages.
 %man_lang_package nl Dutch
 %man_lang_package pl Polish
 %man_lang_package pt_BR %{quote:Brazilian Portuguese}
+%man_lang_package ko Korean
 %man_lang_package ro Romanian
 %man_lang_package ru Russian
 %man_lang_package sr Serbian
@@ -57,7 +58,7 @@ This package provides translations of man pages in multiple languages.
 %man_lang_package vi Vietnamese
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{name}-v%{version}-d1df32843d4a0989104c1764c3d61f1ecdc66fd3
 
 %build
 %configure --enable-distribution=%{distribution_id}

@@ -1,5 +1,55 @@
 -------------------------------------------------------------------
-Wed Nov 15 07:55:09 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+Sun Dec 17 05:48:56 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Updated the .spec file to use gcc13 (bsc#1217838) 
+- Amended read_values for '-S' option (bsc#1217923)
+
+-------------------------------------------------------------------
+Mon Dec  4 13:34:09 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Upgrade s390-tools to version 2.30
+    (jsc#PED-5783, jsc#PED-6785, jsc#PED-7136, jsc#PED-6539, jsc#PED-4604, 
+     jsc#PED-6649, jsc#PED-7138 )
+- Add new tools / libraries:
+  * lspai: Tool to display PAI counter sets
+  * s390-tools: Provide a ShellCheck configuration
+- Changes of existing tools / libraries:
+  * cpumf/pai: Add command line option for realtime scheduling
+  * dbginfo.sh: enhance ethtool collection for ROCE
+  * libutil/util_lockfile: add routine to return owning pid of file lock
+  * lszcrypt: Improve lszcrypt output on SE guests
+  * rust: Use a single workspace for all rust tools
+  * zdev: limit the derivation of ZDEV_SITE_ID
+  * zdump/df_s390: Update 'zgetdump -i' output with zlib info
+  * zdump/dfi_s390: Support reading compressed s390_ext dumps
+  * zipl/boot: Integrate zlib compression to single volume DASD dumper
+  * zipl/boot: compile the bootloaders only if HOST_ARCH is s390x
+  * zipl: Add --no-compress option to zipl command
+  * zkey: Also check for deconfigured and check-stopped cards
+- Bug Fixes:
+  * ap_tools/ap-check: handle get-attributes between pre and post event
+  * libutil: fix util_file_read_*() using wrong format specifiers
+  * rust/pv: fix Invalid write of size  
+- Amended the SUSE patches for version 2.30
+- Revendored vendor.tar.gz
+- Removed an obsolete patch
+  * s390-tools-sles15sp6-zkey-Support-EP11-AES-keys-with-prepended-header-to-.patch
+
+-------------------------------------------------------------------
+Fri Nov 24 07:51:10 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Provide s390-tools on x86_64 to enable Secure Execution in the Cloud
+    (jsc#PED-578, jsc#PED-7136, and jsc#PED-7138)
+  * Selected tools from the s390-tools package need to be made available on x86_64.
+    This will enable the integration of IBM Z machines running Secure Execution in a 
+    cloud environment where users don't necessarily need to have an s390x environment.
+    - genprotimg    - (for building secure images) 
+    - pvsecret      - 
+    - pvattest      - (for external attestation)
+    - pvextract-hdr -
+
+-------------------------------------------------------------------
+Wed Nov 15 07:31:45 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Fixed a logic error in read_values.c 
 

@@ -42,6 +42,8 @@ Source3:        requests.inv
 Source4:        readthedocs.inv
 Source5:        update-intersphinx.sh
 Source99:       python-Sphinx.keyring
+# PATCH-FIX-UPSTREAM: fix-autodoc-tests-python-3117.patch gh#sphinx-doc/sphinx#11793
+Patch01:        fix-autodoc-tests-python-3117.patch
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}

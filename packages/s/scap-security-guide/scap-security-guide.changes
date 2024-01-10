@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Dec 19 11:04:09 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- updated to 0.1.71 (jsc#ECO-3319)
+  - Add RHEL 9 STIG
+  - Add support for Debian 12
+  - Update PCI-DSS profile for RHEL
+  - lots of bugfixes and improvements for SLE
+
+-------------------------------------------------------------------
+Wed Dec  6 12:21:53 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- ssg-fix-journald.patch: switch buggy journald plugindir remediation
+  to write into journald.conf. (bsc#1217832)
+
+-------------------------------------------------------------------
 Tue Oct 17 14:44:03 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - updated to 0.1.70 (jsc#ECO-3319)

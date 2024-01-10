@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Code-TidyAll
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,13 @@
 
 %define cpan_name Code-TidyAll
 Name:           perl-Code-TidyAll
-Version:        0.83
+Version:        0.840.0
 Release:        0
+%define cpan_version 0.84
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Engine for tidyall, your all-in-one code tidier and validator
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -87,6 +88,42 @@ Requires:       perl(Text::Diff) >= 1.44
 Requires:       perl(Text::Diff::Table)
 Requires:       perl(Time::Duration::Parse)
 Requires:       perl(Try::Tiny)
+Provides:       perl(Code::TidyAll) = %{version}
+Provides:       perl(Code::TidyAll::Cache) = %{version}
+Provides:       perl(Code::TidyAll::CacheModel) = %{version}
+Provides:       perl(Code::TidyAll::CacheModel::Shared) = %{version}
+Provides:       perl(Code::TidyAll::Config::INI::Reader) = %{version}
+Provides:       perl(Code::TidyAll::Git::Precommit) = %{version}
+Provides:       perl(Code::TidyAll::Git::Prereceive) = %{version}
+Provides:       perl(Code::TidyAll::Git::Util) = %{version}
+Provides:       perl(Code::TidyAll::Plugin) = %{version}
+Provides:       perl(Code::TidyAll::Plugin::CSSUnminifier) = %{version}
+Provides:       perl(Code::TidyAll::Plugin::GenericTransformer) = %{version}
+Provides:       perl(Code::TidyAll::Plugin::GenericValidator) = %{version}
+Provides:       perl(Code::TidyAll::Plugin::JSBeautify) = %{version}
+Provides:       perl(Code::TidyAll::Plugin::JSHint) = %{version}
+Provides:       perl(Code::TidyAll::Plugin::JSLint) = %{version}
+Provides:       perl(Code::TidyAll::Plugin::JSON) = %{version}
+Provides:       perl(Code::TidyAll::Plugin::MasonTidy) = %{version}
+Provides:       perl(Code::TidyAll::Plugin::PHPCodeSniffer) = %{version}
+Provides:       perl(Code::TidyAll::Plugin::PerlCritic) = %{version}
+Provides:       perl(Code::TidyAll::Plugin::PerlTidy) = %{version}
+Provides:       perl(Code::TidyAll::Plugin::PerlTidySweet) = %{version}
+Provides:       perl(Code::TidyAll::Plugin::PodChecker) = %{version}
+Provides:       perl(Code::TidyAll::Plugin::PodSpell) = %{version}
+Provides:       perl(Code::TidyAll::Plugin::PodTidy) = %{version}
+Provides:       perl(Code::TidyAll::Plugin::SortLines) = %{version}
+Provides:       perl(Code::TidyAll::Result) = %{version}
+Provides:       perl(Code::TidyAll::Role::GenericExecutable) = %{version}
+Provides:       perl(Code::TidyAll::Role::HasIgnore) = %{version}
+Provides:       perl(Code::TidyAll::Role::RunsCommand) = %{version}
+Provides:       perl(Code::TidyAll::Role::Tempdir) = %{version}
+Provides:       perl(Code::TidyAll::SVN::Precommit) = %{version}
+Provides:       perl(Code::TidyAll::SVN::Util) = %{version}
+Provides:       perl(Code::TidyAll::Util::Zglob) = %{version}
+Provides:       perl(Code::TidyAll::Zglob) = %{version}
+Provides:       perl(Test::Code::TidyAll) = %{version}
+%define         __perllib_provides /bin/true
 Recommends:     perl(Parallel::ForkManager)
 %{perl_requires}
 
@@ -96,8 +133,9 @@ This is the engine used by tidyall - read that first to get an overview.
 You can call this API from your own program instead of executing 'tidyall'.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+%autosetup  -n %{cpan_name}-%{cpan_version}
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

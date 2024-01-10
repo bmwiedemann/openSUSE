@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Dec 22 17:12:31 CET 2023 - ma@suse.de
+
+- CheckAccessDeleted: fix 'running in container' filter
+  (bsc#1218291)
+- version 17.31.27 (22)
+
+-------------------------------------------------------------------
+Thu Dec 21 18:14:32 CET 2023 - ma@suse.de
+
+- Call zypp commit plugins during transactional update (fixes #506)
+- Add support for loongarch64 (fixes #504)
+- Teach MediaMultiCurl to download HTTP Multibyte ranges.
+- Teach zsync downloads to MultiCurl.
+- Expand RepoVars in URLs downloading a .repo file (bsc#1212160)
+  Convenient and helps documentation as it may refer to a single
+  command for a bunch of distributions. Like e.g. "zypper ar
+  'https://server.my/$releasever/my.repo'".
+- version 17.31.26 (22)
+
+-------------------------------------------------------------------
+Thu Dec 14 11:09:24 CET 2023 - ma@suse.de
+
+- Fix build issue with zchunk build flags (fixes #500)
+- version 17.31.25 (22)
+
+-------------------------------------------------------------------
+Thu Dec 14 10:48:01 CET 2023 - ma@suse.de
+
+- Open rpmdb just once during execution of %posttrans scripts
+  (bsc#1216412)
+- Avoid using select() since it does not support fd numbers >
+  1024 (fixes #447)
+- tools/DownloadFiles: use standard zypp progress bar (fixes #489)
+- Revert "Color download progress bar" (fixes #475)
+  Cyan is already used for the output of RPM scriptlets. Avoid this
+  colorific collision between download progress bar and scriptlet
+  output.
+- Fix ProgressBar's calculation of the printed tag position (fixes #494)
+- Switch zypp::Digest to Openssl 3.0 Provider API (fixes #144)
+- Fix usage of deprecated CURL features (fixes #486)
+- version 17.31.24 (22)
+
+-------------------------------------------------------------------
 Wed Oct 25 16:03:51 CEST 2023 - ma@suse.de
 
 - Stop using boost version 1 timer library (fixes #489,

@@ -28,7 +28,7 @@
 %global zopfli_min_version     0.1.4
 
 Name:           python-weasyprint
-Version:        59.0
+Version:        60.2
 Release:        0
 Summary:        Python module to convert web documents to PDF
 License:        BSD-3-Clause

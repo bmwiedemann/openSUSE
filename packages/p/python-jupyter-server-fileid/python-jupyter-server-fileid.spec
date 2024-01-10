@@ -16,8 +16,8 @@
 #
 
 
-%define pyversion 0.9.0
-%define distversion 0.9
+%define pyversion 0.9.1
+%define distversion 0.9.1
 %if 0%{?suse_version} > 1500
 %bcond_without libalternatives
 %else

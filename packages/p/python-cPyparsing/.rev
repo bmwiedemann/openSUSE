@@ -99,4 +99,12 @@
   * Performance tuning.</comment>
     <requestid>1129800</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>a601ca013cf65075ff9e2767d6006d48</srcmd5>
+    <version>2.4.7.2.3.2</version>
+    <time>1704281563</time>
+    <user>dimstar_suse</user>
+    <comment>- require setuptools</comment>
+    <requestid>1136454</requestid>
+  </revision>
 </revisionlist>

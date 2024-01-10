@@ -78,4 +78,27 @@
 - Add %{?sle15_python_module_pythons}</comment>
     <requestid>1094470</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a69272b074760603b1bd1bc2111967bb</srcmd5>
+    <version>0.20.7</version>
+    <time>1702673377</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.20.7:
+    * Support Python 3.12
+- update to 0.20.6
+    * fix: sanitize path when write (#525)
+    * fix: allow specify target path in relative path (#530)
+    * Avoid AttributeError on OpenBSD (#521)
+    * Error appending file: KeyError: 'lastwritetime' (#517)
+    * Fixing a string quote in user_guide document(#524)</comment>
+    <requestid>1133368</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b5109f228a31a78538afb2f5f15deb76</srcmd5>
+    <version>0.20.8</version>
+    <time>1704380298</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1136541</requestid>
+  </revision>
 </revisionlist>

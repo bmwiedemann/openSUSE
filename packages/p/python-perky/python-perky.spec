@@ -1,7 +1,7 @@
 #
 # spec file for package python-perky
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,15 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-perky
-Version:        0.5.5
+Version:        0.9.2
 Release:        0
 Summary:        A parser for the perky text file format
 License:        MIT
 URL:            https://github.com/larryhastings/perky/
 Source:         https://files.pythonhosted.org/packages/source/p/perky/perky-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module flit}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -39,10 +41,10 @@ problem as "INI" files, "TOML" files, and "JSON" files.
 sed -i '1{/\/usr\/bin\/env python*/d;}' perky/utility.py perky/__init__.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -53,6 +55,6 @@ sed -i '1{/\/usr\/bin\/env python*/d;}' perky/utility.py perky/__init__.py
 %doc README.md
 %license LICENSE
 %{python_sitelib}/perky/
-%{python_sitelib}/perky-%{version}*-info
+%{python_sitelib}/perky-%{version}.dist-info
 
 %changelog

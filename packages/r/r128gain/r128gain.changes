@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 21 06:37:33 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove unneeded Requires on python3-future. 
+
+-------------------------------------------------------------------
 Sat Mar 25 20:23:48 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.0.7

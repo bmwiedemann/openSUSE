@@ -1,6 +1,7 @@
 #
 # spec file for package libdict
 #
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2022, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +19,7 @@
 
 %define sover 1_0
 Name:           libdict
-Version:        1.0.1
+Version:        1.0.3
 Release:        0
 Summary:        C library of key-value data structures with an object-oriented interface
 License:        BSD-2-Clause

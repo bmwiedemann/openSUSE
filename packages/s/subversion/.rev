@@ -1678,4 +1678,41 @@
     <comment></comment>
     <requestid>1094373</requestid>
   </revision>
+  <revision rev="193" vrev="1">
+    <srcmd5>75ad142b6a37a732c9a7eb0e6b143dc5</srcmd5>
+    <version>1.14.3</version>
+    <time>1704380188</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.14.3:
+  * Fix svn:mergeinfo diff parser bug when parsing forward merges
+  * Fix redirected URL handling with file externals
+  * swig-rb: Fix uses of 'File.exist?', deprecated since Ruby 2.1
+  * Build: Fix uses of deprecated Python APIs
+  * Build: Retain ability to build SWIG Python 2 bindings
+  * Fix reading WC lock status with svn_wc_status2_t
+  * JavaHL: Add @Deprecated to silence compiler warnings
+  * JavaHL: Fix crash in case of null message in getMessage
+  * Fix build breakage of release tarballs by installed swig
+  * Add regression test for issue #4711 &quot;invalid xml file&quot;
+  * swig-py: Fix building with SWIG 4.1.0 (r1904167)
+  * Makefile.in: Fix cleaning of __pycache__ dirs and *.pyc
+  * swig-py: Avoid deprecated options to SWIG &gt;= 4.1.0 (r1904198,
+    r1904287)
+  * swig-py: Use sysconfig to allow building with Python 3.12
+  * INSTALL: Document not to use SVN with APR 1.7.3 on Windows
+  * Fix test suite broken by syntax error when --enable-sasl
+  * swig-py: Fix issues #4916, #4917, #4918 (r1912500 et al)
+  * swig-py: Improve error when no external diff (r1912724, -743,
+    issue #1778)
+  * autogen.sh: Fix building when Python is not named &quot;python&quot;
+- drop ruby32-fixes.patch, swig4.patch: upstream/obsolete
+- rebase all patches to -p1 to be able to switch to autosetup
+
+- add swig4.patch for better support with SWIG 4.x (bsc#1209110)
+- add ruby32-fixes.patch (https://svn.apache.org/viewvc?view=revision&amp;revision=1904472)
+  * fix-javahl-test.patch-
+  rpm output
+  /usr/lib/tmpfiles.d/svnserve.conf:1: Line references path below</comment>
+    <requestid>1135766</requestid>
+  </revision>
 </revisionlist>

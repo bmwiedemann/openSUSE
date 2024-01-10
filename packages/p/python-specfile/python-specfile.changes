@@ -1,9 +1,21 @@
 -------------------------------------------------------------------
+Fri Dec 29 10:17:19 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.26.0:
+  * When accessing tags or macro definitions by name, specfile
+    now takes validity into account when looking for the best
+    match. For example if there are two instances of `Version`
+    tag, one in the true and one in the false branch of a
+    condition, `Specfile.version` will always access the one that
+    is in the true branch. (#328)
+  * Third pre-release for testing Packit support.
+
+-------------------------------------------------------------------
 Thu Nov 23 07:47:50 UTC 2023 - David Anes <david.anes@suse.com>
 
 - Update to 0.25.0:
-  - There is a new method, Specfile.update_version(), that allows 
-    updating spec file version even if it is a pre-release. (#317) 
+  - There is a new method, Specfile.update_version(), that allows
+    updating spec file version even if it is a pre-release. (#317)
 
 -------------------------------------------------------------------
 Wed Nov  8 10:08:44 UTC 2023 - Matej Cepl <mcepl@suse.com>
@@ -22,8 +34,8 @@ Wed Nov  8 10:08:44 UTC 2023 - Matej Cepl <mcepl@suse.com>
 Mon Oct 30 10:14:03 UTC 2023 - David Anes <david.anes@suse.com>
 
 - Update to 0.23.0:
-  - Sources now have a valid property that indicates whether a 
-    source is valid in the current context, meaning it is not 
+  - Sources now have a valid property that indicates whether a
+    source is valid in the current context, meaning it is not
     present in a false branch of any condition.
 
 -------------------------------------------------------------------
@@ -35,7 +47,7 @@ Tue Oct 17 07:30:54 UTC 2023 - David Anes <david.anes@suse.com>
 -------------------------------------------------------------------
 Mon Sep  4 10:43:44 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- reduce buildrequires to git-core 
+- reduce buildrequires to git-core
 
 -------------------------------------------------------------------
 Sun Sep  3 17:13:37 UTC 2023 - Martin Schreiner <martin.schreiner@suse.com>
@@ -75,15 +87,15 @@ Wed Jul 19 04:53:41 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 -------------------------------------------------------------------
 Mon May 29 09:50:26 UTC 2023 - David Anes <david.anes@suse.com>
 
-- Update to version 0.18.0: 
+- Update to version 0.18.0:
   * Specfile library now handles multiple %changelog sections. (#230)
 
 -------------------------------------------------------------------
 Thu May 11 12:19:01 UTC 2023 - David Anes <david.anes@suse.com>
 
-- Update to version 0.17.0: 
+- Update to version 0.17.0:
   * Added a new guess_packager() function that uses similar
-    heuristics as rpmdev-packager, meaning that the 
+    heuristics as rpmdev-packager, meaning that the
     Specfile.add_changelog_entry() method no longer requires
     rpmdev-packager to guess the changelog entry author. (#220)
   * The Specfile.add_changelog_entry() method now uses dates based
@@ -93,15 +105,15 @@ Thu May 11 12:19:01 UTC 2023 - David Anes <david.anes@suse.com>
 Tue Apr 25 07:18:46 UTC 2023 - David Anes <david.anes@suse.com>
 
 - Update to version 0.16.0:
-  * Added Specfile.has_autorelease property to detect if a spec 
+  * Added Specfile.has_autorelease property to detect if a spec
     file uses the %autorelease macro. (#221)
 
 -------------------------------------------------------------------
 Mon Mar 13 12:34:39 UTC 2023 - David Anes <david.anes@suse.com>
 
-- Update to version 0.15.0: 
+- Update to version 0.15.0:
   * Parsing the spec file by RPM is now performed only if really
-    necessary, greatly improving performance in certain scenarios. 
+    necessary, greatly improving performance in certain scenarios.
     (#212)
   * Checked that license is a valid SPDX license.
 
@@ -109,27 +121,27 @@ Mon Mar 13 12:34:39 UTC 2023 - David Anes <david.anes@suse.com>
 Sat Feb 25 12:10:44 UTC 2023 - David Anes <david.anes@suse.com>
 
 - Update to version 0.14.0:
-  * Fixed a bug that broke parsing in case spec file contained 
+  * Fixed a bug that broke parsing in case spec file contained
     conditionalized macro definitions or similar constructs
-  * Specfile no longer depends on rpm-py-installer, it now depends 
+  * Specfile no longer depends on rpm-py-installer, it now depends
     directly on rpm.
 
 -------------------------------------------------------------------
 Mon Feb  6 06:32:11 UTC 2023 - David Anes <david.anes@suse.com>
 
 - Update to version 0.13.2:
-  * Fixed infinite loop that occured when section options were 
+  * Fixed infinite loop that occured when section options were
     followed by whitespace.
 
 -------------------------------------------------------------------
 Mon Jan 23 15:38:33 UTC 2023 - David Anes <david.anes@suse.com>
 
 - Update to version 0.13.1:
-  * Fixed a bug in section parsing that caused sections to be 
+  * Fixed a bug in section parsing that caused sections to be
     ignored when there were macro definitions spread across the spec
     file and not cumulated at the top.
 
-- Update to version 0.13.0: 
+- Update to version 0.13.0:
   * Added Section.options attribute for convenient manipulation of
     section options.
   * specfile now supports single-line sections where section content
@@ -148,11 +160,11 @@ Thu Jan 12 10:27:28 UTC 2023 - David Anes <david.anes@suse.com>
 
 - Update to version 0.12.0:
   * All classes including `Specfile` itself can now be copied using
-    the standard `copy()` and `deepcopy()` functions from `copy` 
+    the standard `copy()` and `deepcopy()` functions from `copy`
     module.
-  * `Section.name` attribute has been renamed to a more fitting 
+  * `Section.name` attribute has been renamed to a more fitting
     `Section.id`.
-  * `setup.cfg` now uses `license_files` instead of deprecated 
+  * `setup.cfg` now uses `license_files` instead of deprecated
     `license_file`.
 
 -------------------------------------------------------------------
@@ -162,38 +174,38 @@ Tue Dec 13 08:20:36 UTC 2022 - David Anes <david.anes@suse.com>
   * python-specfile-improve-setup-cfg.patch
 
 - Update to version 0.11.1
-  * Tags enclosed in conditional macro expansions are not ignored 
+  * Tags enclosed in conditional macro expansions are not ignored
     anymore.
   * Fixed context managers being shared between Specfile instances.
 
-- Update to version 0.11.0 
+- Update to version 0.11.0
   * Context managers (Specfile.sections(), Specfile.tags() etc.) can
-    now be nested and combined together (with one exception - 
-    Specfile.macro_definitions()), and it is also possible to use 
-    tag properties (e.g. Specfile.version, Specfile.license) inside 
-    them. It is also possible to access the data directly, avoiding 
-    the with statement, by using the content property 
-    (e.g. Specfile.tags().content), but be aware that no 
-    modifications done to such data will be preserved. You must use 
+    now be nested and combined together (with one exception -
+    Specfile.macro_definitions()), and it is also possible to use
+    tag properties (e.g. Specfile.version, Specfile.license) inside
+    them. It is also possible to access the data directly, avoiding
+    the with statement, by using the content property
+    (e.g. Specfile.tags().content), but be aware that no
+    modifications done to such data will be preserved. You must use
     with to make changes.
 
 -------------------------------------------------------------------
 Wed Nov 30 17:15:22 UTC 2022 - David Anes <david.anes@suse.com>
 
-- Update to version 0.10.0 
-  * Fixed an issue that caused empty lines originally inside 
+- Update to version 0.10.0
+  * Fixed an issue that caused empty lines originally inside
     changelog entries to appear at the end. (#140)
-  * Renamed the ignore_missing_includes option to a more general 
-    force_parse. If specified, it allows to attempt to parse the 
-    spec file even if one or more sources required to be present at 
-    parsing time are not available. Such sources include sources 
-    referenced from shell expansions in tag values and sources 
+  * Renamed the ignore_missing_includes option to a more general
+    force_parse. If specified, it allows to attempt to parse the
+    spec file even if one or more sources required to be present at
+    parsing time are not available. Such sources include sources
+    referenced from shell expansions in tag values and sources
     included using the %include directive. (#137)
 
 -------------------------------------------------------------------
 Wed Nov  9 19:02:12 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 0.9.0 
+- Update to version 0.9.0
   * Added utility classes for working with (N)EVR. (#113)
   * Fixed an issue with multiple instances of Specfile not expanding macros in the right context. (#117)
 

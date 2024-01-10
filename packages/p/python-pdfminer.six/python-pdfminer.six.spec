@@ -1,7 +1,7 @@
 #
 # spec file for package python-pdfminer.six
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,18 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pdfminer.six
-Version:        20221105
+Version:        20231228
 Release:        0
 Summary:        PDF parser and analyzer
 License:        MIT
 URL:            https://github.com/pdfminer/pdfminer.six
 Source:         https://github.com/pdfminer/pdfminer.six/archive/%{version}.tar.gz#/pdfminer.six-%{version}.tar.gz
-# https://github.com/pdfminer/pdfminer.six/pull/489
-Patch0:         import-from-non-pythonpath-files.patch
 BuildRequires:  %{python_module charset-normalizer >= 2.0.0}
 BuildRequires:  %{python_module cryptography >= 36.0.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools-git-versioning}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-charset-normalizer >= 2.0.0
@@ -49,17 +49,16 @@ page directly from the sourcecode of the PDF. It can also be used to get
 the exact location, font or color of the text.
 
 %prep
-%setup -q -n pdfminer.six-%{version}
-%autopatch -p1
+%autosetup -p1 -n pdfminer.six-%{version}
 sed -i -e '/^#!\//, 1d' pdfminer/psparser.py
 sed -i '1i #!%{_bindir}/python3' tools/dumppdf.py tools/pdf2txt.py
 sed -i "s/__VERSION__/%{version}/g" pdfminer/__init__.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 mv %{buildroot}%{_bindir}/dumppdf.py %{buildroot}%{_bindir}/dumppdf
@@ -83,6 +82,7 @@ mv %{buildroot}%{_bindir}/pdf2txt.py %{buildroot}%{_bindir}/pdf2txt
 %doc README.md
 %python_alternative %{_bindir}/dumppdf
 %python_alternative %{_bindir}/pdf2txt
-%{python_sitelib}/pdfminer*
+%{python_sitelib}/pdfminer
+%{python_sitelib}/pdfminer.six-*.dist-info
 
 %changelog

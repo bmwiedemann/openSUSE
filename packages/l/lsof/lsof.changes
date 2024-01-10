@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Dec 17 07:50:22 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- lsof 4.99.3:
+  * Fix compilation error when HASIPv6 is not defined
+  * Add configure option --disable-liblsof to disable installation
+    of liblsof
+- add lsof-4.99.3-fix-version-in-configure-ac.patch
+
+-------------------------------------------------------------------
 Sun Dec 10 18:20:14 UTC 2023 - Andreas Schwab <schwab@suse.de>
 
 - Skip tests that are difficult to emulate by qemu

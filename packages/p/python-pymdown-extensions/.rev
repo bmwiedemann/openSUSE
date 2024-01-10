@@ -31,4 +31,27 @@
     <comment>update to 10.5</comment>
     <requestid>1133071</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7e810ae330dd686b93fe1f7aafecec63</srcmd5>
+    <version>10.7</version>
+    <time>1704281229</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 10.7:
+  * NEW: Emoji: Update Twemoji and Gemoji data to latest.
+  * NEW: Emoji: Due to recent Gemoji update, non-standard emoji
+    are no longer indexed. So emoji such as :octocat: are no
+    longer resolved.
+  * NEW: Highlight: Added new option default_lang which will
+    cause code blocks with no language specifier to be
+    highlighted with the specified default language instead of
+    plain text. This affects indented code blocks and code blocks
+    defined with SuperFences.
+  * NEW: InlineHilite: style_plain_text can be specified with a
+    language string (in addition to its previous boolean
+    requirement) to treat inline code blocks with no explicit
+    language specifier with a specific default language.
+  * NEW: MagicLink: Allow configuring custom
+    repository providers based off the existing providers.</comment>
+    <requestid>1135879</requestid>
+  </revision>
 </revisionlist>

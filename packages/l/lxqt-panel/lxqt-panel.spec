@@ -63,6 +63,8 @@ BuildRequires:  pkgconfig(xkbcommon-x11)
 BuildRequires:  pkgconfig(xrender)
 BuildRequires:  pkgconfig(xtst)
 Requires:       lxqt-menu-data
+# boo#1218288 -- mvetter@suse.com
+Requires:       liblxqt
 Recommends:     %{name}-lang
 
 %description

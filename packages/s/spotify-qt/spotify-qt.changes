@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Jan  1 23:42:13 UTC 2024 - Jens K. <karatekhd@opensuse.org>
+
+- Update to version 3.11
+  Fixes
+  * Fixed build on FreeBSD.
+  * Fixed current track sometimes not showing as playing in tracks list.
+  * Fixed progress slider performing double click actions with some styles.
+  * Fixed HTML tags in playlists descriptions not displaying properly.
+  * Fixed some systems not being able to open links or files properly.
+  * Fixed "Added" sometimes showing negative values on just added tracks.
+
+  Changes
+  * Much improved performance when loading playlists.
+  * Added support for track queue.
+  * Added an option to ignore unavailable tracks in playlists.
+  * Added support for librespot v0.5.0.
+  * Added tooltips for links for artists.
+  * Much improved performance with a lot of liked tracks.
+  * Added support for passing custom arguments to Spotify client.
+  * Added history.
+  * Improved resizing with expanded album art.
+  * Added an option for tabbed library and playlists.
+  * The main toolbar can now be placed at the bottom of the window.
+  * Settings can now be saved, even if an invalid Spotify client path is provided.
+  * The shape of the album art can now be changed.
+  * Improved performance with "Recent" playlist sorting.
+  * Added new tooltips for tracks, albums, and playlists.
+
+-------------------------------------------------------------------
 Sat Mar 25 10:56:19 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.10

@@ -141,7 +141,7 @@ rm -v src/third_party/node/node_modules.tar.gz
 
 echo ">>>>>> Get node modules for electron"
 pushd src/electron || cleanup_and_exit 1
-yarn install --frozen-lockfile --ignore-engines --ignore-scripts --link-duplicates
+yarn install --frozen-lockfile --ignore-engines --ignore-platform --ignore-scripts --link-duplicates
 if [ $? -ne 0 ]; then
     echo "ERROR: yarn install failed"
     cleanup_and_exit 1

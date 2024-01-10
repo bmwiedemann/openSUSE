@@ -350,4 +350,14 @@
     <user>dimstar_suse</user>
     <comment>  * Unable to determine file-lock storage limits per datacenter</comment>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>d04c94d962215fc35e5bcc0d0a70a3d0</srcmd5>
+    <version>6.1.11</version>
+    <time>1704281039</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.1.11:
+  * Added vlan trunks on the server detail page
+  * Added a thread capable client.cf_call() function</comment>
+    <requestid>1135609</requestid>
+  </revision>
 </revisionlist>

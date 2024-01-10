@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Dec 14 21:35:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.0:
+  * fixed multiple use of "group" in list command
+  * fix unmount command not working
+  * added binarylimit command
+  * Implement abstract socket support
+  * missing import / wrong variable
+  * also test python3.12
+  * asyncio: fix race condition in command queue
+
+-------------------------------------------------------------------
 Mon Apr 11 13:08:14 UTC 2022 - Markéta Machová <mmachova@suse.com>
 
 - Update to 3.0.5

@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyAutoGUI
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-PyAutoGUI
-Version:        0.9.53
+Version:        0.9.54
 Release:        0
 Summary:        A Python module for GUI automation that can control the keyboard and mouse
 License:        BSD-3-Clause

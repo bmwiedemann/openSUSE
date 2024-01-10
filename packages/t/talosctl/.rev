@@ -15,4 +15,20 @@
     <comment></comment>
     <requestid>1124733</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4f50dfce6fd2e33c9a8464fee019434f</srcmd5>
+    <version>1.6.0</version>
+    <time>1702673410</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1133417</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5c6b611cd2362ddec01ea39b71d23cd2</srcmd5>
+    <version>1.6.1</version>
+    <time>1704660133</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1137399</requestid>
+  </revision>
 </revisionlist>

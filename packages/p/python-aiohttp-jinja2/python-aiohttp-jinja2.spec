@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-aiohttp-jinja2
-Version:        1.5.1
+Version:        1.6
 Release:        0
 Summary:        Jinja2 template renderer for aiohttp.web
 License:        Apache-2.0
@@ -39,6 +39,7 @@ BuildArch:      noarch
 BuildRequires:  %{python_module Jinja2 >= 3.0}
 BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module pytest-aiohttp}
+BuildRequires:  %{python_module pytest-cov}
 # /SECTION
 %python_subpackages
 

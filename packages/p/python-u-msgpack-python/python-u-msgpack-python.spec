@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-u-msgpack-python
-Version:        2.7.2
+Version:        2.8.0
 Release:        0
 Summary:        A MessagePack serializer and deserializer
 License:        MIT
@@ -55,8 +54,7 @@ export LANG=en_US.UTF-8
 
 %files %{python_files}
 %license LICENSE
-%pycache_only %{python_sitelib}/__pycache__
-%{python_sitelib}/umsgpack.py*
+%{python_sitelib}/umsgpack
 %{python_sitelib}/u_msgpack_python-%{version}-py%{python_version}.egg-info
 
 %changelog

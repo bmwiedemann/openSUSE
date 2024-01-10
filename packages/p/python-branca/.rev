@@ -65,4 +65,20 @@ Required by python-ipyleaflet and python-folium</comment>
     <comment></comment>
     <requestid>1044214</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4a3f233c922bf6ae38b7906727ded59c</srcmd5>
+    <version>0.7.0</version>
+    <time>1702673419</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.7.0:
+  * Make all Element with Template pickable natively
+  * Make _parse_size robust to already parsed values
+  * StepColormap: inclusive lower bound
+  * Add color schemes: plasma, inferno, magma
+  * Allow branca ColorMap in write_png
+  * More flexible _parse_size
+
+  * Fix special char encoding in notebooks, store as percent-encoded (@conengmo #76)</comment>
+    <requestid>1133414</requestid>
+  </revision>
 </revisionlist>

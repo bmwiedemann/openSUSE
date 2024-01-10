@@ -16,8 +16,9 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-python-crfsuite
-Version:        0.9.9
+Version:        0.9.10
 Release:        0
 Summary:        Python binding for CRFsuite
 License:        MIT

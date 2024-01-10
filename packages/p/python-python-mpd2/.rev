@@ -64,4 +64,19 @@
     <comment></comment>
     <requestid>969216</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>84e3bb609c34fe29fc773869851ffdc9</srcmd5>
+    <version>3.1.0</version>
+    <time>1702673312</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.1.0:
+  * fixed multiple use of &quot;group&quot; in list command
+  * fix unmount command not working
+  * added binarylimit command
+  * Implement abstract socket support
+  * missing import / wrong variable
+  * also test python3.12
+  * asyncio: fix race condition in command queue</comment>
+    <requestid>1133207</requestid>
+  </revision>
 </revisionlist>

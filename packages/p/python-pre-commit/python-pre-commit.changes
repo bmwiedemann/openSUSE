@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Jan  3 17:04:33 UTC 2024 - Marina Latini <marina.latini@suse.com>
+
+- Specify a Group tag for Leap and SUSE Linux Enterprise 
+
+-------------------------------------------------------------------
+Wed Jan  3 16:13:53 UTC 2024 - Marina Latini <marina.latini@suse.com>
+
+- Disable Perl install test as that requires network for
+  CPAN initialisation also on SUSE Linux Enterprise. 
+
+-------------------------------------------------------------------
+Wed Dec 13 12:28:25 UTC 2023 - Matthias Bach <marix@marix.org> - 3.6.0
+
+- Update to version 3.6.0
+  * Features
+    + Check minimum_pre_commit_version first when parsing configs.
+  * Fixes
+    + Fix deprecation warnings for importlib.resources.
+    + Fix deprecation warnings for rmtree.
+
+-------------------------------------------------------------------
 Mon Nov 27 20:27:50 UTC 2023 - Matthias Bach <marix@marix.org> - 3.5.0
 
 - For Leap, build this on modern Python as 3.6 is no longer supported.

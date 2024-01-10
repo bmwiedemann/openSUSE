@@ -1,6 +1,6 @@
-diff -Nru oci-cli-3.37.0.orig/requirements.txt oci-cli-3.37.0/requirements.txt
---- oci-cli-3.37.0.orig/requirements.txt	2023-12-05 06:02:52.000000000 +0100
-+++ oci-cli-3.37.0/requirements.txt	2023-12-07 15:07:53.083631085 +0100
+diff -Nru oci-cli-3.37.1.orig/requirements.txt oci-cli-3.37.1/requirements.txt
+--- oci-cli-3.37.1.orig/requirements.txt	2023-12-12 10:31:25.000000000 +0100
++++ oci-cli-3.37.1/requirements.txt	2024-01-03 13:20:59.131874288 +0100
 @@ -2,47 +2,47 @@
  # (https://pip.pypa.io/en/stable/reference/pip_install/#requirements-file-format),
  # you may need to use the --extra-index-url option instead.
@@ -18,11 +18,18 @@ diff -Nru oci-cli-3.37.0.orig/requirements.txt oci-cli-3.37.0/requirements.txt
 -jmespath==0.10.0
 -ndg-httpsclient==0.4.2
 -mock==2.0.0
--oci==2.117.0
+-oci==2.118.0
 -packaging==20.2
 -pluggy==0.13.0
 -py==1.11.0
 -pyasn1==0.2.3
+-pyOpenSSL>=17.5.0,<24.0.0
+-pycparser==2.20
+-pyparsing==2.2.0
+-pytest==4.6.10; python_version <= '3.9'
+-pytest==7.1.2; python_version >= '3.10'
+-pytest-cov==2.5.1
+-python-dateutil>=2.5.3,<3.0.0
 +click>=8.0.4
 +coverage>=4.5.2
 +cryptography>=3.2.1
@@ -31,18 +38,12 @@ diff -Nru oci-cli-3.37.0.orig/requirements.txt oci-cli-3.37.0/requirements.txt
 +jmespath>=0.10.0
 +ndg-httpsclient>=0.4.2
 +mock>=2.0.0
-+oci>=2.117.0
++oci>=2.118.0
 +packaging>=20.2
 +pluggy>=0.13.0
 +py>=1.11.0
 +pyasn1>=0.2.3
- pyOpenSSL>=17.5.0,<24.0.0
--pycparser==2.20
--pyparsing==2.2.0
--pytest==4.6.10; python_version <= '3.9'
--pytest==7.1.2; python_version >= '3.10'
--pytest-cov==2.5.1
--python-dateutil>=2.5.3,<3.0.0
++pyOpenSSL>=17.5.0
 +pycparser>=2.20
 +pyparsing>=2.2.0
 +pytest>=4.6.10; python_version <= '3.9'
@@ -84,15 +85,15 @@ diff -Nru oci-cli-3.37.0.orig/requirements.txt oci-cli-3.37.0/requirements.txt
 +setuptools>=59.6.0; python_version >= '3.6'
  # this is required because of python 3.6 requests dependency version bound
  urllib3<=1.26.15
-diff -Nru oci-cli-3.37.0.orig/setup.py oci-cli-3.37.0/setup.py
---- oci-cli-3.37.0.orig/setup.py	2023-12-05 06:02:52.000000000 +0100
-+++ oci-cli-3.37.0/setup.py	2023-12-07 15:07:20.340265628 +0100
+diff -Nru oci-cli-3.37.1.orig/setup.py oci-cli-3.37.1/setup.py
+--- oci-cli-3.37.1.orig/setup.py	2023-12-12 10:31:25.000000000 +0100
++++ oci-cli-3.37.1/setup.py	2024-01-03 13:20:00.861254190 +0100
 @@ -30,23 +30,23 @@
      readme = f.read()
  
  requires = [
--    'oci==2.117.0',
-+    'oci>=2.117.0',
+-    'oci==2.118.0',
++    'oci>=2.118.0',
      'arrow>=1.0.0',
      'certifi',
 -    'click==8.0.4',

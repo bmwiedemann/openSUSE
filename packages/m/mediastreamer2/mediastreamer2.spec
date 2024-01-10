@@ -31,6 +31,11 @@ Patch0:         mediastreamer2-fix-pkgconfig.patch
 Patch1:         fix-srtp2-linphone.patch
 Patch2:         fix-build-ffmpeg5.patch
 Patch3:         set_current_version.patch
+%if 0%{?suse_version} >= 1600
+BuildRequires:  liboqs-devel
+# At the time of writing (22/Dec/2023), PQCE is only available on Tumbleweed.
+BuildRequires:  postquantumcryptoengine-devel
+%endif
 BuildRequires:  Mesa-libGL-devel
 BuildRequires:  bcmatroska2-devel >= 0.23
 BuildRequires:  broadvoice16-devel
@@ -50,7 +55,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  spandsp-devel
 BuildRequires:  sqlite3-devel
 BuildRequires:  vim
-%if 0%{?suse_version} > 1690
+%if 0%{?suse_version} >= 1600
 %ifarch x86_64
 BuildRequires:  libyuv-devel
 BuildRequires:  zxing-cpp-devel
@@ -133,7 +138,7 @@ export CFLAGS="%(echo %{optflags}) -fcommon -Wno-implicit-function-declaration"
 export CXXFLAGS="$CFLAGS"
 %cmake \
     -DCMAKE_SHARED_LINKER_FLAGS="-flto=auto -Wl,--as-needed -Wl,-z,now" \
-%if 0%{?suse_version} > 1690
+%if 0%{?suse_version} >= 1600
 %ifarch x86_64
     -DENABLE_QT_GL=ON \
 %endif
@@ -156,7 +161,7 @@ mv -T %{buildroot}%{_datadir}/doc/%{name}-%{version}/ \
 %license LICENSE.txt
 %{_bindir}/mediastream
 %{_bindir}/mkvstream
-%if 0%{?suse_version} > 1690
+%if 0%{?suse_version} >= 1600
 %ifarch x86_64
 %dir %{_libdir}/mediastreamer
 %dir %{_libdir}/mediastreamer/plugins

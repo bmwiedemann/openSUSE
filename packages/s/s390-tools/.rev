@@ -775,4 +775,12 @@
     <comment>Reworked: Upgrade s390-tools (directly) from version 2.25.0 to version 2.29.0</comment>
     <requestid>1126535</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>78bb07112bff41f57cbc95d79d70cfcc</srcmd5>
+    <version>2.30.0</version>
+    <time>1702845217</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1133718</requestid>
+  </revision>
 </revisionlist>

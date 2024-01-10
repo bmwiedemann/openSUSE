@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Sep 17 08:33:37 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to 0.15.1:
+  Fixed:
+  * Allow mmap in seccomp sandbox
+- Added systemd services from git contrib
+
+-------------------------------------------------------------------
+Fri Sep 15 20:03:33 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to 0.15:
+  Added:
+  * Added bar orientation = horizontal | vertical
+  * Look for config file in /etc/wob/wob.ini
+  * New optional build dependency on cmocka (to run tests)
+  Changed:
+  * Replace inputting colors via stdin with styles
+
+-------------------------------------------------------------------
 Mon Nov 28 19:45:31 UTC 2022 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to 0.14.2

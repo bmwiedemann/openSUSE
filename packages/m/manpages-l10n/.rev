@@ -192,4 +192,12 @@ This will obsolete current packages man-pages-fr &amp; man-pages-fr-extra (to be
     <comment></comment>
     <requestid>1109131</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>171dec58b05099f9729d0ff1a4a6634d</srcmd5>
+    <version>4.21.0</version>
+    <time>1702936544</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1133762</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Dec 17 10:14:02 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 12.1.1:
+  * Update readme with a section on adoption, and a section on
+    the history of the project
+  * Fix/avx512vnni implementation
+  * Fix regression on XSIMD_NO_SUPPORTED_ARCHITECTURE
+
+-------------------------------------------------------------------
 Sun Nov 26 13:53:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 11.2.0:
@@ -37,7 +46,7 @@ Sat Dec  3 16:55:40 UTC 2022 - Dirk Müller <dmueller@suse.com>
 - update to 10.0.0:
   * SVE: Implement scatter/gather
   * SVE: Implement nearbyint and ldexp
-  * Use intrinsic instead of generic implementation of ldexp on avx512f 
+  * Use intrinsic instead of generic implementation of ldexp on avx512f
   * SVE: Implement fused operations for all types
 - drop 0001-Only-use-_mm_insert_epi64-on-64-bit-architecture.patch (upstream)
 

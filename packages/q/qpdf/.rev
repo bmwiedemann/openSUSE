@@ -850,4 +850,52 @@
 - Add qpdf-nostrip.patch: don't strip libraries</comment>
     <requestid>1121012</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>74b3b93180d874b40e7603a20ecc68aa</srcmd5>
+    <version>11.6.4</version>
+    <time>1702844927</time>
+    <user>anag+factory</user>
+    <comment>- update to 11.6.4:
+  * Install fix: include cmake files with the dev component.
+  * Build AppImage with an older Linux distribution to support
+    AWS Lambda. Fixes #1086.</comment>
+    <requestid>1133444</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>9b626ddf0525f9da559c4083ec449c6a</srcmd5>
+    <version>11.7.0</version>
+    <time>1703800503</time>
+    <user>anag+factory</user>
+    <comment>- update to 11.7.0:
+  * Add QPDFAcroFormDocumentHelper::disableDigitalSignatures,
+    which disables any digital signature fields, leaving their
+    visual representations intact.
+    The --remove-restrictions command-line argument now calls this.
+  * Generate a more complete qpdf &quot;man page&quot; from the same source
+    as qpdf --help. Fixes #1064.
+  * Allow the syntax &quot;--encrypt --user-password=user-password
+    --owner-password=owner-password --bits={40,128,256}&quot; when
+    encrypting PDF files. This is an alternative to the syntax
+    &quot;--encrypt user-password owner-password {40,128,256}&quot;, which
+    will continue to be supported. The new syntax works better with
+    shell completion and allows creation of passwords that start
+    with &quot;-&quot;.
+  * When setting a check box value, allow any value other than
+    /Off to mean checked. This is permitted by the spec.
+  * Fix to QPDF JSON: a floating point number that appears in
+    scientific notation will be converted to fixed-point notation,
+    rounded to six digits after the decimal point.
+  * Fix to QPDF JSON: the syntax &quot;n:/pdf-syntax&quot; is now accepted
+    as an alternative way to represent names. This can be used for
+    any name (e.g. &quot;n:/text#2fplain&quot;), but it is necessary when the
+    name contains binary characters.
+  * Update code and tests so that qpdf's test suite no longer
+    depends on the output of any specific zlib implementation.
+    This makes it possible to get a fully passing test suite with any
+    API-compatible zlib library. CI tests with the default zlib
+    as well as zlib-ng (including verifying that zlib-ng is not the
+    default), but any zlib implementation should work. Fixes
+    #774.</comment>
+    <requestid>1135299</requestid>
+  </revision>
 </revisionlist>

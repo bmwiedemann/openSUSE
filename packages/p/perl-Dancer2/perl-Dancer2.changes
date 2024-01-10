@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Dec 14 03:07:50 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.1.0
+   see /usr/share/doc/packages/perl-Dancer2/Changes
+
+  1.1.0     2023-12-11 20:28:26-05:00 America/New_York
+      [ BUG FIXES ]
+      * None
+      [ ENHANCEMENTS ]
+      * GH #33: Named routes; add uri_for_route keyword (Sawyer X)
+      [ DOCUMENTATION ]
+      * None
+      [ DEPRECATED ]
+      * None
+      [ MISC ]
+      * None
+
+-------------------------------------------------------------------
 Tue Oct 10 03:06:14 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.0.0

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Dec 28 15:21:52 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 7.13.1
+  * Restore removed import #2086 (@blink1073)
+- Release 7.13.0
+  * Add table, td, tr to allowed list of tags #2083 (@yuvipanda)
+
+-------------------------------------------------------------------
+Sat Dec 16 12:53:12 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.12.0:
+  * Allow to load config from env.
+  * Use ruff on notebooks and update typings
+  * update Python version support in docs
+  * Support es modules in js includes
+  * Clean up lint handling and list generics
+  * Remove not needed pytest-dependency test requirement
+  * Update to mermaid 10.6.0, docs keyboard navigation
+  * Fix typing for traitlets 5.13
+  * Adopt ruff format
+  * Update typings and remove dead link
+  * Update to mermaid 10.6.0, docs keyboard navigation
+
+-------------------------------------------------------------------
 Mon Oct  9 18:11:53 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 7.9.2
@@ -296,7 +320,7 @@ Thu Jan  6 11:23:57 UTC 2022 - Ben Greiner <code@bnavigator.de>
     in #1696
   * Update nbconvert_library.ipynb by @letterphile in #1695
   * Changelog for 6.4 by @blink1073 in #1697
-- Remove the doc package 
+- Remove the doc package
 
 -------------------------------------------------------------------
 Fri Dec 31 16:57:55 UTC 2021 - Ben Greiner <code@bnavigator.de>
@@ -845,8 +869,8 @@ Thu Mar 30 19:45:08 UTC 2017 - toddrme2178@gmail.com
   * General documentation improvements. For example, testing, installation, custom exporters.
   * Improved link handling for LaTeX output
   * Refactored the automatic id generation.
-  * New kernel_manager_class configuration option for allowing systems to be set up to resolve kernels in different ways. 
-  * Kernel errors now will be logged for debugging purposes when executing notebooks. 
+  * New kernel_manager_class configuration option for allowing systems to be set up to resolve kernels in different ways.
+  * Kernel errors now will be logged for debugging purposes when executing notebooks.
 - Update to 4.3
   * added live widget rendering for html output, nbviewer by extension
 - Update to 4.2

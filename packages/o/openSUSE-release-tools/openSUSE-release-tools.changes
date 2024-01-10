@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Dec 13 07:17:56 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20231213.02b3886:
+  * Revert "factory-package-news.py: Compress data files with zstd"
+
+-------------------------------------------------------------------
+Tue Dec 12 15:07:26 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20231212.8e4cdc3:
+  * factory-package-news.py: Port from pyzstd to zstandard
+  * factory-package-news.py: Compress data files with zstd
+
+-------------------------------------------------------------------
 Tue Dec 05 08:36:01 UTC 2023 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20231205.2925abf:

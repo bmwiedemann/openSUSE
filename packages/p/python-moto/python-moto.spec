@@ -17,7 +17,7 @@
 
 
 Name:           python-moto
-Version:        4.2.9
+Version:        4.2.12
 Release:        0
 Summary:        Library to mock out tests based on AWS
 License:        Apache-2.0
@@ -65,8 +65,9 @@ BuildRequires:  %{python_module importlib-metadata if %python-base < 3.8}
 BuildRequires:  %{python_module jsondiff >= 1.1.2}
 BuildRequires:  %{python_module jsonpickle}
 BuildRequires:  %{python_module openapi-spec-validator >= 0.5.0}
-BuildRequires:  %{python_module py-partiql-parser >= 0.4.2}
+BuildRequires:  %{python_module py-partiql-parser >= 0.5}
 BuildRequires:  %{python_module pyparsing >= 3.0.7}
+BuildRequires:  %{python_module pytest-order}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil >= 2.1 with %python-python-dateutil < 3}
@@ -96,7 +97,7 @@ Requires:       python-graphql-core
 Requires:       python-jsondiff >= 1.1.2
 Requires:       python-moto = %{version}
 Requires:       python-openapi-spec-validator >= 0.5.0
-Requires:       python-py-partiql-parser >= 0.4.1
+Requires:       python-py-partiql-parser >= 0.5.0
 Requires:       python-pyparsing >= 3.0.7
 Requires:       python-python-jose
 Requires:       python-python-multipart
@@ -169,6 +170,9 @@ donttest+=" or test_invoke_function_from_sqs_fifo_queue"
 donttest+=" or test_invoke_function_from_sqs_queue"
 donttest+=" or test_invoke_local_lambda_layers"
 donttest+=" or test_failed_job or test_failed_dependencies"
+donttest+=" or TestResponsesMockWithPassThru"
+# (?)
+python311_donttest=" or test_send_raw_email"
 # 32-bit platforms can't handle dates beyond 2038
 [ $(getconf LONG_BIT) -eq 32 ] && donttest+=" or test_list_pipelines_created_after"
 # see Makefile

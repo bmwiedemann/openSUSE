@@ -16,25 +16,24 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%global skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-pygal
-Version:        3.0.0
+Version:        3.0.4
 Release:        0
 Summary:        A python svg graph plotting library
 License:        LGPL-3.0-or-later
 Group:          Development/Languages/Python
 URL:            http://pygal.org/
 Source:         https://files.pythonhosted.org/packages/source/p/pygal/pygal-%{version}.tar.gz
-Source10:       https://raw.githubusercontent.com/Kozea/pygal/%{version}/COPYING
 BuildRequires:  %{python_module CairoSVG}
 BuildRequires:  %{python_module Flask}
+BuildRequires:  %{python_module importlib-metadata}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module pyquery}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-importlib-metadata
 Requires:       python-lxml
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -54,8 +53,6 @@ It supports various chart types and CSS styling.
 
 # not sure where to report
 sed -Ei 's:.pytest-runner.,?::' setup.py
-
-cp %{SOURCE10} .
 
 %build
 %python_build

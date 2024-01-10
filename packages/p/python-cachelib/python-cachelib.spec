@@ -29,23 +29,19 @@ Source:         https://files.pythonhosted.org/packages/source/c/cachelib/cachel
 # skip failing tests
 Patch0:         skip-failing-tests.patch
 BuildRequires:  %{python_module pylibmc}
-BuildRequires:  %{python_module redis}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  redis
 Recommends:     python-pylibmc
-Recommends:     python-redis
 BuildArch:      noarch
 # SECTION test
-BuildRequires:  %{python_module boto3}
 BuildRequires:  %{python_module pluggy}
 BuildRequires:  %{python_module pylibmc}
 BuildRequires:  %{python_module pyparsing}
 BuildRequires:  %{python_module pytest-xprocess}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}
-BuildRequires:  %{python_module redis}
 BuildRequires:  %{python_module urllib3 < 2}
 BuildRequires:  memcached
 # /SECTION

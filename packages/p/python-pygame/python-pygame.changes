@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sat Dec 30 16:59:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.5.2:
+  * Added a gamepad mapping for the G-Shark GS-GP702
+  * Fixed touchpad events for the Razer Wolverine V2 Pro in PS5
+    mode
+  * Fix white bar in docs
+  * manylinux: Fix sdl version typo
+  * include: rect: C API docs for Rect
+  * draw: Fix arc width > 1 so it doesn't have gaps
+  * setup: tox: Add 31 and 32 to list of pythons
+  * docs: c_api/rect: Fix return code for pgRect_Check
+  * setup: src_c: Require Cython to generate source files in dev
+  * Added import information in camera and sdl2 controller
+    modules docs
+  * Fix: Grammatical Error in MoveIt.rst
+  * examples: Fix music_drop_fade with type checker
+  * stubs: Add pygame.__version__ to type stubs
+  * gitignore: Add cython generated files to ignore list
+  * examples/midi: Refactor to fix typing issues
+  * display set_mode: Remove SDL_WINDOW_FULLSCREEN_DESKTOP
+  * buildconfig/manylinux: Bump SDL 2.28.3
+  * docs: Fix READMEs with a good Sphinx version
+- update to 2.5.1:
+  * Fixed crash at shutdown when using the D3D11 renderer
+  * Fixed setting the viewport when using the D3D12 renderer
+  * Fixed 8BitDo gamepad mapping when in XInput mode on Linux
+  * Fixed controller lockup initializing some unofficial PS4
+    replica controllers
+  * Fixed video initialization on headless Linux systems using
+    VNC
+  * Fixed large mouse jump when changing relative mouse mode on
+    macOS
+  * Fixed hardware keyboard text input on iPadOS
+  * Added support for the Nintendo Online Famicom controllers
+  * Improved support for third-party Nintendo Switch controllers
+  * Fixed setting the player LED on Nintendo Switch controllers
+  * Added Linux controller mapping for the Logitech Chillstream
+  * Fixed appending to a file greater than 4GB in size on Windows
+
+-------------------------------------------------------------------
 Mon Sep 11 14:54:31 UTC 2023 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Correction of licenses based on the diff against old report
@@ -454,7 +495,7 @@ Fri Aug 12 19:46:06 UTC 2022 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferr
 -------------------------------------------------------------------
 Fri Feb  4 23:20:17 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- fix portmidi configuration detection 
+- fix portmidi configuration detection
 
 -------------------------------------------------------------------
 Wed Jan  5 06:49:40 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
@@ -471,7 +512,7 @@ Wed Jan  5 06:49:40 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
     @MyreMylar in #2815
   * Remove most SDL1/SDL2 compatibility c code by @Starbuck5 in #2823
   * Ubuntu 18/20 SDL2 sdist CI, mac CI pp36 drop by @ankith26 in #2821
-  * SDL1 buildconfig removal by @robertpfeiffer and @illume in #2824 
+  * SDL1 buildconfig removal by @robertpfeiffer and @illume in #2824
 - Drop support-SDL2-2.0.16.patch.
 
 -------------------------------------------------------------------

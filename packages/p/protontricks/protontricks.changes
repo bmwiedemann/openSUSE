@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jan  5 22:51:47 UTC 2024 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Update to version 1.11.0:
+  * Show app icons for custom shortcuts in the app selector
+  * Verbose flag can be enabled with -vv for additional debug logging
+  * Fix Protontricks not recognizing supported Steam Runtime
+    installation due to changed name
+  * Fix Protontricks not recognizing default Proton installation for
+    games with different Proton preselected by Valve testing
+  * Fix Protontricks crash when app has an unidentifiable app icon
+
+-------------------------------------------------------------------
 Mon Oct 23 09:31:03 UTC 2023 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Fix incorrect use of mode parameter in _service file mentioned at

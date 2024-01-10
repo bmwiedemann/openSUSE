@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Dec 14 09:12:26 UTC 2023 - Petr Gajdos <pgajdos@suse.com>
+
+- update to 3.1.15
+  * remove Python 2.6 code
+  * add Python 3.12 enhancements
+  * split source code into separate files
+  * Enum and Flag inherit from stdlib versions
+  * support inheriting from empty NamedTuples
+  * prevent test_v3.py from being run as main
+  * Move Py2/3 specific code to dedicated files
+
+-------------------------------------------------------------------
 Mon Nov 13 09:13:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons for SLE15 build

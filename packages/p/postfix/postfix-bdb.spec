@@ -59,10 +59,10 @@
 %endif
 %bcond_without ldap
 Name:           postfix-bdb
-Version:        3.8.3
+Version:        3.8.4
 Release:        0
 Summary:        A fast, secure, and flexible mailer
-License:        IPL-1.0 OR EPL-2.0
+License:        EPL-2.0 OR IPL-1.0
 Group:          Productivity/Networking/Email/Servers
 URL:            http://www.postfix.org
 Source0:        http://cdn.postfix.johnriley.me/mirrors/postfix-release/official/postfix-%{version}.tar.gz
@@ -108,8 +108,8 @@ Requires(post): permissions
 Requires(pre):  %fillup_prereq
 Requires(pre):  permissions
 Conflicts:      exim
-Conflicts:      sendmail
 Conflicts:      postfix
+Conflicts:      sendmail
 Provides:       smtp_daemon
 %{?systemd_ordering}
 %if %{with lmdb}
@@ -127,15 +127,15 @@ Requires(pre):  group(%{mail_group})
 Requires(pre):  shadow
 %endif
 # /usr/lib/postfix/bin//post-install: line 667: ed: command not found
-Requires(pre):    ed
-Requires(preun):  ed
-Requires(post):   ed
-Requires(postun): ed
+Requires(pre):  ed
+Requires(preun):ed
+Requires(post): ed
+Requires(postun):ed
 # /usr/sbin/config.postfix needs perl
-Requires(pre):    perl
-Requires(preun):  perl
-Requires(post):   perl
-Requires(postun): perl
+Requires(pre):  perl
+Requires(preun):perl
+Requires(post): perl
+Requires(postun):perl
 
 %description
 Postfix aims to be an alternative to the widely-used sendmail program with bdb support
@@ -395,6 +395,7 @@ rm -rf %{buildroot}/%{_includedir}/postfix/
 %if 0%{?suse_version} >= 1330
 %pre -f postfix.pre
 %else
+
 %pre
 getent group postfix >/dev/null || groupadd -g %{pf_gid} -o -r postfix
 getent group maildrop >/dev/null || groupadd -g %{maildrop_gid} -o -r maildrop

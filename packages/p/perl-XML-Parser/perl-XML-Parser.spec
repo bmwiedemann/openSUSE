@@ -1,7 +1,7 @@
 #
 # spec file for package perl-XML-Parser
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,23 @@
 #
 
 
-Name:           perl-XML-Parser
-Version:        2.46
-Release:        0
 %define cpan_name XML-Parser
-Summary:        Perl module for parsing XML documents
+Name:           perl-XML-Parser
+Version:        2.470.0
+Release:        0
+%define cpan_version 2.47
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/T/TO/TODDR/%{cpan_name}-%{version}.tar.gz
+Summary:        Perl module for parsing XML documents
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/T/TO/TODDR/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 Patch0:         XML-Parser-2.40.diff
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(LWP::UserAgent)
 Requires:       perl(LWP::UserAgent)
+Provides:       perl(XML::Parser) = %{version}
+%define         __perllib_provides /bin/true
 %{perl_requires}
 # MANUAL BEGIN
 BuildRequires:  libexpat-devel
@@ -57,16 +58,16 @@ When underlying handlers get called, they receive as their first parameter
 the _Expat_ object, not the Parser object.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
-%patch0 
+%autosetup  -n %{cpan_name}-%{cpan_version} -p0
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 # MANUAL BEGIN
 chmod 644 samples/{canonical,xml*}
 # MANUAL END
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -77,7 +78,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes README samples
+%doc Changes README README.md samples
+%license LICENSE
 
 %changelog

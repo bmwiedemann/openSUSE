@@ -1,7 +1,7 @@
 #
 # spec file for package python-protonvpn-nm-lib
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,7 @@ Source:         https://github.com/ProtonVPN/protonvpn-nm-lib/archive/refs/tags/
 Patch0:         exclude-tests.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyxdg}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection

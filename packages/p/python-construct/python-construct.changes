@@ -1,29 +1,45 @@
 -------------------------------------------------------------------
+Fri Dec 29 18:13:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.10.70:
+  * all exceptions docstrings were defined.
+  * stream_size stream_iseof now raise properly StreamError
+  * Keep track of offsets within substreams where possible
+  * Fix missing objects in Struct._emitbuild's context
+  * Fix ExprMixin for and/or being compiled as logical instead of
+    bitwise
+  * Issue 1046: Docs updated accordingly.
+  * enum34 module renamed to enum, etc.
+  * Use builtin dict instead of collections.OrderedDict for class
+    Contain…
+  * Implement __getstate__ and __setstate__ on Container
+
+-------------------------------------------------------------------
 Sun Mar 27 11:07:33 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.10.68:
   * declared compatibility with python 3.10
-  * documentation updates 
+  * documentation updates
 
 -------------------------------------------------------------------
 Tue Oct 26 20:40:31 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.10.67:
-  * no changelog available 
+  * no changelog available
 
 -------------------------------------------------------------------
 Sat Feb 13 22:25:12 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.10.60
   * no changelog
-- Skip NumPy tests on pyhton36 flavor. Due to NEP29, python36-numpy 
+- Skip NumPy tests on pyhton36 flavor. Due to NEP29, python36-numpy
   is being dropped in TW, but it is just optional for construct.
 
 -------------------------------------------------------------------
 Tue Jun 23 14:27:05 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Add source dir to PYTHONPATH just as upstream does.
-  Necessary due change in pytest macro gh#openSUSE/python-rpm-macros#48 
+  Necessary due change in pytest macro gh#openSUSE/python-rpm-macros#48
 - don't benchmark, just run the tests once
 
 -------------------------------------------------------------------

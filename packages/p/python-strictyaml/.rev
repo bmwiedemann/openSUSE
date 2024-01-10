@@ -81,4 +81,12 @@
 - Update to 1.6.2</comment>
     <requestid>1132129</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>f93351a04811560419ab330e707fc47f</srcmd5>
+    <version>1.7.3</version>
+    <time>1704281469</time>
+    <user>dimstar_suse</user>
+    <comment>- require setuptools</comment>
+    <requestid>1136320</requestid>
+  </revision>
 </revisionlist>

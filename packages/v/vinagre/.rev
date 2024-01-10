@@ -799,4 +799,14 @@
     <comment>Scripted push from GNOME:Next (forwarded request 920983 from dimstar)</comment>
     <requestid>921659</requestid>
   </revision>
+  <revision rev="106" vrev="16">
+    <srcmd5>c042b116a37020e1f9f9c34fecd058a4</srcmd5>
+    <version>3.22.0</version>
+    <time>1703102458</time>
+    <user>anag+factory</user>
+    <comment>- Disable RDP support for the time being: vinagre has been archived
+  upstream and does not support freerdp 3.0. If you rely on RDP
+  connections, please switch to GNOME Connections. (forwarded request 1134009 from dimstar)</comment>
+    <requestid>1134011</requestid>
+  </revision>
 </revisionlist>

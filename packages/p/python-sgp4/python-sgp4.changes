@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec  8 12:32:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.23:
+  * Tweaked tests to resolve breakage introduced by Python 3.12.
+
+-------------------------------------------------------------------
 Wed May 31 19:48:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.22:
@@ -17,7 +23,7 @@ Wed May 31 19:48:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
   * Fixed the ``Satrec`` attribute ``.error``, which was previously
     building a nonsense integer from the wrong data in memory.
   * Removed ``.whichconst`` from Python ``Satrec``, to help users avoid
-    writing code that will break when the C++ extension is available. 
+    writing code that will break when the C++ extension is available.
 
 -------------------------------------------------------------------
 Sun Jul  4 12:03:54 UTC 2021 - Ben Greiner <code@bnavigator.de>
@@ -82,14 +88,14 @@ Fri Oct 16 09:49:21 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to version 2.13
   *  Enhanced sgp4init() with custom code that also sets the
-     epochdays and epochyr satellite attributes. 
+     epochdays and epochyr satellite attributes.
 
 -------------------------------------------------------------------
 Fri Jul 10 10:21:48 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
-- yank Python 2 package 
+- yank Python 2 package
 
 -------------------------------------------------------------------
 Thu Jul  9 20:46:40 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
-- initial package with version 2.12 
+- initial package with version 2.12

@@ -42,6 +42,7 @@ Source4:        ownCloud.conf
 BuildRequires:  cmake >= 2.8.11
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
+BuildRequires:  extra-cmake-modules
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files

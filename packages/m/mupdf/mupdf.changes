@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Dec 20 08:50:28 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.23.7:
+  * Fix rendering issue concerning group alpha.
+  * Fix unexpected HTML table rectangles on subsequent pages.
+  * Fix text extraction of control characters from PDF.
+  * Fix bug concerning Stories having page-break-after set.
+  * Ignore broken structure trees instead of reporting an error.
+  * Various fixes for pymupdf.
+
+-------------------------------------------------------------------
 Tue Nov 28 07:04:21 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.23.6:

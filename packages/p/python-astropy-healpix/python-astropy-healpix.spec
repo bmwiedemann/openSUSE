@@ -17,7 +17,7 @@
 
 
 Name:           python-astropy-healpix
-Version:        1.0.1
+Version:        1.0.2
 Release:        0
 Summary:        HEALPix for Astropy
 License:        BSD-3-Clause

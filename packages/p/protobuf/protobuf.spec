@@ -24,6 +24,7 @@
 %bcond_with    check
 %bcond_without java
 %bcond_without python3
+%{?sle15_python_module_pythons}
 Name:           protobuf
 Version:        23.4
 %global         sover 23_4_0
@@ -38,7 +39,7 @@ Source2:        baselibs.conf
 Source1000:     %{name}-rpmlintrc
 Patch0:         add-missing-stdint-header.patch
 BuildRequires:  %{python_module abseil}
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  abseil-cpp-devel >= 20230125
@@ -56,8 +57,8 @@ BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local >= 6
 %endif
 
-%if 0%{?suse_version} >= 1550
-# TW: generate subpackages for every python3 flavor
+%if 0%{?suse_version} >= 1500
+# generate subpackages for every python3 flavor
 %define python_subpackage_only 1
 %python_subpackages
 %else

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan  3 10:02:32 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- require setuptools
+
+-------------------------------------------------------------------
 Thu Jul  6 11:17:14 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

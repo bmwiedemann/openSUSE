@@ -1,7 +1,7 @@
 #
 # spec file for package python-kmatch
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-kmatch
-Version:        0.4.0
+Version:        0.5.0
 Release:        0
 Summary:        A language for matching/validating/filtering Python dictionaries
 License:        MIT

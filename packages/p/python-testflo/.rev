@@ -82,4 +82,13 @@
 - Update to version 1.4.9</comment>
     <requestid>1132850</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b102a8a698294308bc0cb3adbd18a95e</srcmd5>
+    <version>1.4.15</version>
+    <time>1704281054</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.15:
+  * handle python 3.12.1 change to skip behavior</comment>
+    <requestid>1136318</requestid>
+  </revision>
 </revisionlist>

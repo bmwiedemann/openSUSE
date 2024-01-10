@@ -1,7 +1,7 @@
 #
 # spec file for package python-pystache
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,18 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pystache
-Version:        0.6.0
+Version:        0.6.5
 Release:        0
 Summary:        Mustache for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/defunkt/pystache
 Source:         https://files.pythonhosted.org/packages/source/p/pystache/pystache-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -49,16 +52,16 @@ https://github.com/mustache/spec.
 %setup -q -n pystache-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/pystache
 %python_clone -a %{buildroot}%{_bindir}/pystache-test
 %{python_expand %fdupes %{buildroot}%$python_sitelib/}
 
 %check
-%pytest build/lib/pystache
+%pytest
 
 %post
 %{python_install_alternative pystache pystache-test}
@@ -68,10 +71,10 @@ https://github.com/mustache/spec.
 
 %files %{python_files}
 %license LICENSE
-%doc HISTORY.md README.md TODO.md
+%doc HISTORY.md README.rst TODO.rst
 %python_alternative %{_bindir}/pystache
 %python_alternative %{_bindir}/pystache-test
 %{python_sitelib}/pystache/
-%{python_sitelib}/pystache-*
+%{python_sitelib}/pystache-%{version}.dist-info
 
 %changelog

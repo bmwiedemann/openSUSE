@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Wed Jan  3 08:16:27 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Updated to version 4.14.2
+  * Show original senders name in reply to forward information.
+  * Use original senders color / emoji pattern in forwards.
+  * Highlight active saved messages chat in list.
+  * Fix chats list scrolling on X11 (Linux).
+
+-------------------------------------------------------------------
+Tue Jan  2 12:25:48 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Updated to version 4.14.1
+  * Fix crash in "Author Hidden" chat in "Saved Messages".
+  * Improve jump-to-original button layout in "Saved Messages".
+  * Show my own chat as "My Notes" in "Saved Messages".
+  * In screen sharing source window select first screen by default.
+
+- Updated to version 4.14.0
+  * Improved saved messages.
+  * One-time voice messages.
+
+- Add new script tg_owt-packager.sh for updating tg_owt-master.zip
+- Update tg_owt-master.zip to commit afd9d5d31798d3eacf9ed6c30601e91d0f1e4d60
+
+-------------------------------------------------------------------
+Tue Dec 26 08:42:39 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Updated to version 4.13.1
+  * Fix crash in chat history right click.
+  * Fix user emoji status display in main menu, profile and settings.
+
+- Updated to version 4.13.0
+  * Support setting channel wallpaper.
+  * Support setting channel emoji status.
+  * Allow gifting premium to several recipients at once.
+
+-------------------------------------------------------------------
 Sun Dec  3 14:34:27 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Updated to version 4.12.2

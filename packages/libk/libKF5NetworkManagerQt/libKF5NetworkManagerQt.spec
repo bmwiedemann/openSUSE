@@ -17,15 +17,14 @@
 
 
 %define soversion 6
-%define _tar_path 5.103
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
-# Only needed for the package signature condition
+%define qt5_version 5.15.2
 %bcond_without released
 Name:           libKF5NetworkManagerQt
-Version:        5.112.0
+Version:        5.113.0
 Release:        0
 Summary:        A Qt wrapper for NetworkManager DBus API
 License:        LGPL-2.1-only OR LGPL-3.0-only
@@ -36,12 +35,11 @@ Source1:        networkmanager-qt-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
 BuildRequires:  cmake
-BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
-BuildRequires:  kf5-filesystem
+BuildRequires:  extra-cmake-modules >= %{_kf5_version}
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(Qt5Core) >= 5.15.0
-BuildRequires:  cmake(Qt5DBus) >= 5.15.0
-BuildRequires:  cmake(Qt5Network) >= 5.15.0
+BuildRequires:  cmake(Qt5Core) >= %{qt5_version}
+BuildRequires:  cmake(Qt5DBus) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Network) >= %{qt5_version}
 BuildRequires:  pkgconfig(libnm) >= 1.0.0
 
 %description
@@ -53,9 +51,9 @@ settings which are used in DBus communication.
 %package devel
 Summary:        A Qt wrapper for NetworkManager DBus API
 Requires:       libKF5NetworkManagerQt%{soversion} = %{version}
-Requires:       cmake(Qt5Core) >= 5.15.0
-Requires:       cmake(Qt5DBus) >= 5.15.0
-Requires:       cmake(Qt5Network) >= 5.15.0
+Requires:       cmake(Qt5Core) >= %{qt5_version}
+Requires:       cmake(Qt5DBus) >= %{qt5_version}
+Requires:       cmake(Qt5Network) >= %{qt5_version}
 Requires:       pkgconfig(libnm) >= 1.0.0
 
 %description devel

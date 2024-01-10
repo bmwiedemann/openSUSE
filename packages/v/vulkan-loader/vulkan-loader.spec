@@ -74,7 +74,8 @@ to make use of Vulkan.
 %cmake \
 	-DVulkanHeaders_INCLUDE_DIR:PATH="%_includedir" \
 	-DVulkanRegistry_DIR:PATH="%_datadir/vulkan/registry" \
-	-DLIB_SUFFIX:STRING=""
+	-DLIB_SUFFIX:STRING="" \
+	-DFALLBACK_CONFIG_DIRS="/etc/xdg:/usr/local/etc/xdg:/usr/etc/xdg"
 
 %cmake_build
 

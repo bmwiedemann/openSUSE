@@ -49,7 +49,10 @@ export CFLAGS="%{optflags}"
 %python_install
 
 %check
+# This is incompatible with qemu emulation
+%if !0%{?qemu_user_space_build}
 %pytest_arch
+%endif
 
 %files %{python_files}
 %doc HISTORY.rst README.rst

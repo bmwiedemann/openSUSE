@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5Bookmarks5
-%define _tar_path 5.103
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
+%define qt5_version 5.15.2
 %bcond_without released
 Name:           kbookmarks
-Version:        5.112.0
+Version:        5.113.0
 Release:        0
 Summary:        Framework for manipulating bookmarks in XBEL format
 License:        LGPL-2.1-or-later
@@ -34,19 +34,18 @@ Source:         %{name}-%{version}.tar.xz
 Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
-BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
+BuildRequires:  extra-cmake-modules >= %{_kf5_version}
 BuildRequires:  fdupes
-BuildRequires:  kf5-filesystem
-BuildRequires:  cmake(KF5Codecs) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5Config) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5ConfigWidgets) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5CoreAddons) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5WidgetsAddons) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5XmlGui) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(Qt5LinguistTools) >= 5.15.0
-Requires:       cmake(Qt5DBus) >= 5.15.0
-Requires:       cmake(Qt5Widgets) >= 5.15.0
-Requires:       cmake(Qt5Xml) >= 5.15.0
+BuildRequires:  cmake(KF5Codecs) >= %{_kf5_version}
+BuildRequires:  cmake(KF5Config) >= %{_kf5_version}
+BuildRequires:  cmake(KF5ConfigWidgets) >= %{_kf5_version}
+BuildRequires:  cmake(KF5CoreAddons) >= %{_kf5_version}
+BuildRequires:  cmake(KF5WidgetsAddons) >= %{_kf5_version}
+BuildRequires:  cmake(KF5XmlGui) >= %{_kf5_version}
+BuildRequires:  cmake(Qt5LinguistTools) >= %{qt5_version}
+Requires:       cmake(Qt5DBus) >= %{qt5_version}
+Requires:       cmake(Qt5Widgets) >= %{qt5_version}
+Requires:       cmake(Qt5Xml) >= %{qt5_version}
 
 %description
 This is a framework for accessing and manipulating bookmarks using
@@ -62,10 +61,9 @@ the XBEL format.
 %package devel
 Summary:        Development files for kbookmarks, a XBEL format bookmark manipulation framework
 Requires:       %{lname} = %{version}
-Requires:       extra-cmake-modules
-Requires:       cmake(KF5WidgetsAddons) >= %{_kf5_bugfix_version}
-Requires:       cmake(Qt5Widgets) >= 5.15.0
-Requires:       cmake(Qt5Xml) >= 5.15.0
+Requires:       cmake(KF5WidgetsAddons) >= %{_kf5_version}
+Requires:       cmake(Qt5Widgets) >= %{qt5_version}
+Requires:       cmake(Qt5Xml) >= %{qt5_version}
 
 %description devel
 Development files for kbookmarks, a framework for accessing and

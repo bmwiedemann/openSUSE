@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 # Check file META in sources: update so_version to (API_CURRENT - API_AGE)
 %define so_version 39
 # Make sure to update `upgrades` as well!
-%define ver 23.02.6
+%define ver 23.02.7
 %define _ver _23_02
 #%%define rc_v 0rc1
 %define dl_ver %{ver}
@@ -92,7 +92,7 @@ Conflicts:      %{*} >= %{ver_m}.99 }
 
 %define upgrade_dep() %{?upgrade: #
 Provides:       %{*} = %{version}
-%{do_obsoletes  %{*}}
+%{expand:%%do_obsoletes  %{*}}
 Conflicts:      %{*} }
 
 %if 0%{?suse_version} >= 1500
@@ -405,8 +405,6 @@ Requires:       libpmix%{pmix_so}
 Requires:       pmix
 %endif
 Requires:       %{name}-config = %{version}
-# This may be removed once older versions have all been fixed.
-%{base_conflicts %{pname}-sview}
 
 %description plugins
 This package contains the SLURM plugins (loadable shared objects)

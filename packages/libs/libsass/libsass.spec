@@ -1,7 +1,7 @@
 #
 # spec file for package libsass
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ URL:            https://github.com/sass/libsass
 Source:         https://github.com/sass/libsass/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch1:         libsass-am.diff
 Patch2:         libsass-vers.diff
+# PATCH-FIX-UPSTREAM -- mvetter@suse.com -- bsc#1214573, bsc#1214575, bsc#1214576, gh/sass/libsass#3184
+Patch3:         libsass-CVE-2022-43357,CVE-2022-43358,CVE-2022-26592.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -55,6 +57,7 @@ This package provides development header files for libsass.
 %prep
 %setup -q
 %patch -P 1 -P 2 -p1
+%patch3 -p1
 
 %build
 if [ ! -f VERSION ]; then

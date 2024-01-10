@@ -1,7 +1,7 @@
 #
 # spec file for package teleport
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           teleport
-Version:        14.2.2
+Version:        14.3.0
 Release:        0
 Summary:        Identity-aware, multi-protocol access proxy
 License:        Apache-2.0

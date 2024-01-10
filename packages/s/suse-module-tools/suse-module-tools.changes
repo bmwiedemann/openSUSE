@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Jan  3 09:59:35 UTC 2024 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.42:
+  * 60-io-scheduler.rules: test for "scheduler" sysfs attribute (boo#1216717)
+
+-------------------------------------------------------------------
+Tue Jan  2 15:35:07 UTC 2024 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.41:
+  * rpm-script: fix issue during installation (bsc#1217775)
+  * rpm-script: preun: remove stale .vmlinuz.hmac file
+
+-------------------------------------------------------------------
+Mon Dec 18 20:12:46 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+  * add blacklist entry for reiserfs (jsc#PED-6167)
+  * rpm-script: add symlink /boot/.vmlinuz.hmac (bsc#1217775)
+  * Remove kmp-install (boo#1214360)
+
+-------------------------------------------------------------------
+Thu Dec 14 19:59:57 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.39:
+  * Add more modules to file system blacklist (jsc#PED-6167)
+    Blacklisted filesystem modules that aren't officially supported
+    by SUSE: f2fs, hfsplus, jfss2, kafs, ntfs3, orangefs, pstore, romfs, zonefs.
+    As usual, the blacklist entries can be removed by running an
+    explicit "modrobe $FS_MODULE" command.
+
+-------------------------------------------------------------------
 Fri Oct 27 15:48:07 UTC 2023 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 16.0.38:

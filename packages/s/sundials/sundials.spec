@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package sundials
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -87,12 +87,12 @@ ExclusiveArch:  do_not_build
 %define shlib_idas      libsundials_idas5%{?my_suffix}
 %define shlib_kinsol    libsundials_kinsol6%{?my_suffix}
 %define shlib_nvec      libsundials_nvec6%{?my_suffix}
-%define shlib_sunlinsol libsundials_sunlinsol4_6_2%{?my_suffix}
+%define shlib_sunlinsol libsundials_sunlinsol4%{?my_suffix}
 %define shlib_sunmatrix libsundials_sunmatrix4%{?my_suffix}
-%define shlib_sunnonlin libsundials_sunnonlin3_6_2%{?my_suffix}
+%define shlib_sunnonlin libsundials_sunnonlin3%{?my_suffix}
 
 Name:           %{package_name}
-Version:        6.6.2
+Version:        6.7.0
 Release:        0
 Summary:        Suite of nonlinear solvers
 # SUNDIALS is licensed under BSD with some additional (but unrestrictive) clauses.

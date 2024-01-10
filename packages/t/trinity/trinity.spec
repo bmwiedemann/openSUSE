@@ -1,7 +1,7 @@
 #
 # spec file for package trinity
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,12 @@
 
 
 Name:           trinity
-Version:        1.9+git.20230109
+Version:        1.9+git.20230710
 Release:        0
 Summary:        A Linux System call fuzz tester
 License:        GPL-2.0-only
 URL:            https://github.com/kernelslacker/trinity
 Source0:        %{name}-%{version}.tar.gz
-Patch0:         0001-kvm-drop-KVM_SET_MEMORY_REGION.patch
 
 %description
 The basic idea is fairly simple. As 'fuzz testing' suggests, we call syscalls
@@ -32,7 +31,7 @@ done many times before on Linux, and on other operating systems.  Where
 Trinity differs is that the arguments it passes are not purely random.
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
 export CFLAGS="%{optflags}"

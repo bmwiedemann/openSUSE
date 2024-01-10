@@ -1,7 +1,7 @@
 #
 # spec file for package python-imreg
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,16 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-imreg
-Version:        2022.9.27
+Version:        2024.1.2
 Release:        0
 Summary:        FFT based image registration
 License:        BSD-3-Clause
-URL:            https://www.lfd.uci.edu/~gohlke/
+URL:            https://github.com/cgohlke/imreg/
 Source:         https://files.pythonhosted.org/packages/source/i/imreg/imreg-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy >= 1.15
@@ -44,15 +47,16 @@ translation, rotation and scale-invariant image registration.
 %setup -q -n imreg-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/imreg
+%{python_sitelib}/imreg-%{version}.dist-info
 
 %changelog

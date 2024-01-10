@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 25 20:35:46 UTC 2023 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- update to 3.34.1:
+  https://changelog.qgis.org/en/qgis/version/3.34/
+  Drop exiv2-0.28.patch (included upstream)
+
+-------------------------------------------------------------------
 Thu Oct  5 12:05:10 UTC 2023 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - update to bugfix release 3.32.3

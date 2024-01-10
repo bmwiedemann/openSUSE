@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan  3 10:05:02 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- require setuptools
+
+-------------------------------------------------------------------
 Mon Nov 27 18:45:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - require new mistune

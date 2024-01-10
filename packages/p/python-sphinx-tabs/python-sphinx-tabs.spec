@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinx-tabs
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,21 +31,19 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-sphinx-tabs
-Version:        3.4.1
+Version:        3.4.4
 Release:        0
 Summary:        Tabbed views for Sphinx
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/executablebooks/sphinx-tabs
 # Use the github tag instead of the pythonhosted.org to get the tests folder
 Source:         https://github.com/executablebooks/sphinx-tabs/archive/refs/tags/v%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/executablebooks/sphinx-tabs/commit/f60a10e13b3a6a8d1d27f285d9942b57ab07d0a8 Make the tests pass with Sphinx 7.1
-Patch1:          sphinx71.patch
-# PATCH-FIX-UPSTREAM https://github.com/executablebooks/sphinx-tabs/pull/179 Fix tests for Sphinx 7.2
-Patch2:          sphinx72.patch
 BuildRequires:  %{python_module Pygments}
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module docutils}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Pygments
@@ -67,11 +65,11 @@ Create tabbed content in Sphinx documentation when building HTML.
 %autosetup -p1 -n sphinx-tabs-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -84,7 +82,7 @@ Create tabbed content in Sphinx documentation when building HTML.
 %if !%{with test}
 %files %{python_files}
 %{python_sitelib}/sphinx_tabs
-%{python_sitelib}/sphinx_tabs-%{version}*-info
+%{python_sitelib}/sphinx_tabs-%{version}.dist-info
 %endif
 
 %changelog

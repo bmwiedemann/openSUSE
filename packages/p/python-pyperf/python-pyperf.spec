@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyperf
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,17 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-pyperf
-Version:        2.5.0
+Version:        2.6.2
 Release:        0
 Summary:        Python module to run and analyze benchmarks
 License:        MIT
 URL:            https://github.com/vstinner/pyperf
 Source:         https://files.pythonhosted.org/packages/source/p/pyperf/pyperf-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
@@ -45,10 +46,10 @@ Python module to run and analyze benchmarks.
 %setup -q -n pyperf-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/pyperf
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 

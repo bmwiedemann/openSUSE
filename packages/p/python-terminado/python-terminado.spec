@@ -17,14 +17,14 @@
 
 
 Name:           python-terminado
-Version:        0.17.1
+Version:        0.18.0
 Release:        0
 Summary:        Terminals served to termjs using Tornado websockets
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/jupyter/terminado
 Source:         https://files.pythonhosted.org/packages/source/t/terminado/terminado-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatchling >= 0.25}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module ptyprocess}

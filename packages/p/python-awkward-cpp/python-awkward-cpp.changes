@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 15 15:46:14 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 27:
+  * Remove obsolete cuda_kernels (gh#scikit-hep/awkward#2876).
+
+-------------------------------------------------------------------
 Tue Nov 14 12:04:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 26:

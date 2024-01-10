@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,55 +24,46 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-# there is no platformdirs for python2 on any of the target distributions
-%define skip_python2 1
+
 %{?sle15_python_module_pythons}
 Name:           python-virtualenv%{psuffix}
-Version:        20.24.5
+Version:        20.25.0
 Release:        0
 Summary:        Virtual Python Environment builder
 License:        MIT
 URL:            http://www.virtualenv.org/
+# SourceRepository: https://github.com/pypa/virtualenv
 Source:         https://files.pythonhosted.org/packages/source/v/virtualenv/virtualenv-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE fix-tests-hookimpls.patch
-Patch1:         fix-tests-hookimpls.patch
-BuildRequires:  %{python_module distlib >= 0.3.7}
-BuildRequires:  %{python_module filelock >= 3.12.2}
-BuildRequires:  %{python_module hatch-vcs >= 0.3}
-BuildRequires:  %{python_module hatchling >= 1.14}
-BuildRequires:  %{python_module importlib-metadata >= 6.6 if %python-base < 3.8}
-BuildRequires:  %{python_module importlib_resources >= 1.0 if %python-base < 3.7}
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module platformdirs}
-BuildRequires:  %{python_module setuptools >= 41.0.0}
-BuildRequires:  %{python_module wheel}
-BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-distlib >= 0.3.7
-Requires:       python-filelock >= 3.12.2
-Requires:       python-platformdirs
+%if !%{with test}
+# Don't install the build requirements during testing, see setuptools_scm comment below
+BuildRequires:  %{python_module hatch-vcs >= 0.3}
+BuildRequires:  %{python_module hatchling >= 1.17.1}
+BuildRequires:  fdupes
+%else
+# Conflict with setuptools_scm giving a warning, https://github.com/pypa/virtualenv/issues/2668
+BuildConflicts: %{python_module setuptools_scm}
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module flaky >= 3.7}
+BuildRequires:  %{python_module packaging >= 23.1}
+BuildRequires:  %{python_module pytest >= 7.4}
+BuildRequires:  %{python_module pytest-env >= 0.8.2}
+BuildRequires:  %{python_module pytest-mock >= 3.11.1}
+BuildRequires:  %{python_module pytest-timeout >= 2.1}
+BuildRequires:  %{python_module setuptools >= 68}
+BuildRequires:  %{python_module time-machine >= 2.10}
+BuildRequires:  %{python_module virtualenv = %{version}}
+%endif
+Requires:       (python-distlib >= 0.3.7 with python-distlib < 1)
+Requires:       (python-filelock >= 3.12.2 with python-filelock < 4)
+Requires:       (python-platformdirs >= 3.9.1 with python-platformdirs < 5)
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
 %if 0%{python_version_nodots} < 38
-Requires:       python-importlib-metadata >= 6.4.1
-%endif
-%if 0%{python_version_nodots} < 37
-Requires:       python-importlib_resources >= 1.0
-%endif
-%if %{with test}
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module flaky >= 3}
-BuildRequires:  %{python_module packaging >= 20.0}
-BuildRequires:  %{python_module pytest >= 4.0.0}
-BuildRequires:  %{python_module pytest-env >= 0.6.2}
-# note: is unmaintained, was upstream-replaced by pytest-freezer, which we don't have in the distribution yet
-# but they both contain the needed fixture, so this is OK until pytest-freezegun dies for good
-BuildRequires:  %{python_module pytest-freezegun >= 0.4.1}
-BuildRequires:  %{python_module pytest-mock >= 2.0.0}
-BuildRequires:  %{python_module pytest-timeout >= 1.3.4}
-BuildRequires:  %{python_module time-machine}
-BuildRequires:  ca-certificates
+Requires:       python-importlib-metadata >= 6.6
 %endif
 %python_subpackages
 
@@ -100,41 +91,36 @@ libraries either).
 # Dependencies on all those shells are too cumbersome.
 rm -r tests/unit/activation
 
+%if !%{with test}
 %build
 %pyproject_wheel
 
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-
-%if %{with test}
-rm %{buildroot}%{_bindir}/virtualenv
-%else
 %python_clone -a %{buildroot}%{_bindir}/virtualenv
 %endif
 
-%check
 %if %{with test}
-export LANG="en_US.UTF8"
-export PIP_CERT="%{_sysconfdir}/ssl/ca-bundle.pem"
-export PYTHONPATH=$PWD/src
+%check
 # online tests downloads from pypi
 donttest="test_seed_link_via_app_data"
-# gh#pypa/virtualenv!2431
-donttest+=" or test_py_pyc_missing"
-%pytest -k "not ($donttest)"
-
-# Uninstall everything to avoid errors of files not being packaged
-%python_expand rm -r %{buildroot}%{$python_sitelib}
+# fails on python312 because it cannot find setuptools and wheel https://virtualenv.pypa.io/en/latest/changelog.html#features-20-23-0
+python312_extratest=" or test_can_build_c_extensions"
+%pytest -k "not ($donttest ${$python_extratest})"
+# test the special case with the bundles (for all flavors)
+export VIRTUALENV_SETUPTOOLS=bundle
+export VIRTUALENV_WHEEL=bundle
+%pytest -k "${python312_extratest:4}"
 %endif
 
-%if !%{with test}
 %post
 %python_install_alternative virtualenv
 
 %postun
 %python_uninstall_alternative virtualenv
 
+%if !%{with test}
 %files %{python_files}
 %license LICENSE
 %doc README.md

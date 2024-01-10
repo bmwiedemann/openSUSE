@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Dec 30 14:34:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.14.3:
+  * Fix svn:mergeinfo diff parser bug when parsing forward merges
+  * Fix redirected URL handling with file externals
+  * swig-rb: Fix uses of 'File.exist?', deprecated since Ruby 2.1
+  * Build: Fix uses of deprecated Python APIs
+  * Build: Retain ability to build SWIG Python 2 bindings
+  * Fix reading WC lock status with svn_wc_status2_t
+  * JavaHL: Add @Deprecated to silence compiler warnings
+  * JavaHL: Fix crash in case of null message in getMessage
+  * Fix build breakage of release tarballs by installed swig
+  * Add regression test for issue #4711 "invalid xml file"
+  * swig-py: Fix building with SWIG 4.1.0 (r1904167)
+  * Makefile.in: Fix cleaning of __pycache__ dirs and *.pyc
+  * swig-py: Avoid deprecated options to SWIG >= 4.1.0 (r1904198,
+    r1904287)
+  * swig-py: Use sysconfig to allow building with Python 3.12
+  * INSTALL: Document not to use SVN with APR 1.7.3 on Windows
+  * Fix test suite broken by syntax error when --enable-sasl
+  * swig-py: Fix issues #4916, #4917, #4918 (r1912500 et al)
+  * swig-py: Improve error when no external diff (r1912724, -743,
+    issue #1778)
+  * autogen.sh: Fix building when Python is not named "python"
+- drop ruby32-fixes.patch, swig4.patch: upstream/obsolete
+- rebase all patches to -p1 to be able to switch to autosetup
+
+-------------------------------------------------------------------
 Wed Jun 21 12:45:29 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update _constraints to avoid some aarch64 workers for
@@ -7,12 +35,12 @@ Wed Jun 21 12:45:29 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 -------------------------------------------------------------------
 Fri Mar 10 08:48:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- add swig4.patch for better support with SWIG 4.x (bsc#1209110) 
+- add swig4.patch for better support with SWIG 4.x (bsc#1209110)
 
 -------------------------------------------------------------------
 Fri Jan  6 21:04:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- add ruby32-fixes.patch (https://svn.apache.org/viewvc?view=revision&revision=1904472) 
+- add ruby32-fixes.patch (https://svn.apache.org/viewvc?view=revision&revision=1904472)
 
 -------------------------------------------------------------------
 Thu Nov 17 13:45:40 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
@@ -44,7 +72,7 @@ Mon Mar  7 09:43:08 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Fix testCrash_RequestChannel_nativeRead_AfterException test on
   aarch64 and ppc64le, bsc#1195486 bsc#1193778
-  * fix-javahl-test.patch- 
+  * fix-javahl-test.patch-
 
 -------------------------------------------------------------------
 Wed Nov 24 09:59:19 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
@@ -102,8 +130,8 @@ Sat Sep 26 09:25:36 UTC 2020 - d_werner@gmx.net
 Fri Sep 25 15:04:51 UTC 2020 - d_werner@gmx.net
 
 - update the tmpfiles.d/ drop-in file as requested by the
-  rpm output 
-  /usr/lib/tmpfiles.d/svnserve.conf:1: Line references path below 
+  rpm output
+  /usr/lib/tmpfiles.d/svnserve.conf:1: Line references path below
   legacy directory /var/run/, updating /var/run/svnserve → /run/svnserve;
 
 -------------------------------------------------------------------
@@ -300,10 +328,10 @@ Fri Oct 12 17:53:43 UTC 2018 - astieger@suse.com
   * Fix conflict resolver endless scan in some cases
   * Fix "Accept incoming deletion" on locally deleted file
   * Fix "resolver adds unrelated moves to move target list"
-  * Reject bad PUT before CHECKOUT in v1 HTTP protocol 
+  * Reject bad PUT before CHECKOUT in v1 HTTP protocol
   * Let 'svnadmin recover' prune the rep-cache even if disabled
   * Allow commands like 'svn ci --file X' to work when X is a FIFO
-  * 'svnadmin verify --keep-going --quiet' shows an error summary 
+  * 'svnadmin verify --keep-going --quiet' shows an error summary
   * Fix error in german translation for 'svn help merge'
 
 -------------------------------------------------------------------
@@ -376,7 +404,7 @@ Tue Dec 19 06:59:02 UTC 2017 - fstrba@suse.com
 -------------------------------------------------------------------
 Thu Nov 23 13:45:36 UTC 2017 - rbrown@suse.com
 
-- Replace references to /var/adm/fillup-templates with new 
+- Replace references to /var/adm/fillup-templates with new
   %_fillupdir macro (boo#1069468)
 
 -------------------------------------------------------------------
@@ -406,7 +434,7 @@ Fri Aug 11 09:14:24 UTC 2017 - tchvatal@suse.com
 -------------------------------------------------------------------
 Thu Aug 10 15:04:45 UTC 2017 - astieger@suse.com
 
-- Apache Subversion 1.9.7: 
+- Apache Subversion 1.9.7:
   * CVE-2017-9800: A remote attacker could have caused svn clients
     to execute arbitrary code via specially crafted URLs in
     svn:externals and svn:sync-from-url properties. (bsc#1051362)
@@ -584,7 +612,7 @@ Thu Apr 28 00:00:00 UTC 2016 - astieger@suse.com
 Wed Mar  2 19:43:18 UTC 2016 - astieger@suse.com
 
 - make the subversion package conflict with KWallet and Gnome
-  Keyring packages with do not require matching subversion versions 
+  Keyring packages with do not require matching subversion versions
   in SLE 12 and openSUSE Leap 42.1 and thus break the main package
   upon partial upgrade. Fix/workaround for boo#969159
 
@@ -657,7 +685,7 @@ Thu Sep  3 13:28:33 UTC 2015 - astieger@suse.com
   * Fix incomplete membuffer cache initialization
   * svnfsfs: fix some bugs and inconsistencies in load-index
   * Fix memory corruption in copy source SWIG bindings
-- drop subversion-1.8.14-httpd-version-number-detection.patch, 
+- drop subversion-1.8.14-httpd-version-number-detection.patch,
   change is upstream
 - adjust subversion-1.9.0-allow-httpd-2.4.6.patch for upstream
   changes
@@ -693,7 +721,7 @@ Tue Aug 11 06:38:11 UTC 2015 - astieger@suse.com
   * Python 2.7
 - To continue to allow building against blacklisted httpd 2.4.6
   which has the required patches in openSUSE:13.1:Update, update
-  subversion-1.8.9-allow-httpd-2.4.6.patch to 
+  subversion-1.8.9-allow-httpd-2.4.6.patch to
   subversion-1.9.0-allow-httpd-2.4.6.patch
 - removed upstreamed patches:
   * subversion-1.8.10-fix-bashisms.patch
@@ -769,7 +797,7 @@ Tue Mar 31 12:00:00 UTC 2015 - astieger@suse.com
   * Subversion HTTP servers with FSFS repositories were vulnerable
     to a remotely triggerable excessive memory use with certain
     REPORT requests.
-    (bsc#923793 CVE-2015-0202) 
+    (bsc#923793 CVE-2015-0202)
   * Subversion mod_dav_svn and svnserve were vulnerable to a
     remotely triggerable assertion DoS vulnerability for certain
     requests with dynamically evaluated revision numbers.
@@ -828,8 +856,8 @@ Thu Jan  8 15:41:32 UTC 2015 - bwiedemann@suse.com
 -------------------------------------------------------------------
 Fri Jan  2 09:46:08 UTC 2015 - tchvatal@suse.com
 
-- Sec update bnc#909935 CVE-2014-3580, CVE-2014-8108                           
-  * subversion-CVE-2014-3580.patch                                             
+- Sec update bnc#909935 CVE-2014-3580, CVE-2014-8108
+  * subversion-CVE-2014-3580.patch
   * subversion-CVE-2014-8108.patch
 
 -------------------------------------------------------------------
@@ -1083,7 +1111,7 @@ Wed Feb 19 00:00:00 UTC 2014 - andreas.stieger@gmx.de
 - removed patches:
   * subversion-1.8.x-SQLite-3.8.patch, committed upstream
   * subversion-1.8.x-fix-ppc-tests.patch, committed upstream
-  * subversion-CVE-2014-0032.patch, now upstream 
+  * subversion-CVE-2014-0032.patch, now upstream
 - packaging changes:
   * only require and build with junit when building with java and
     running regression tests
@@ -1117,9 +1145,9 @@ Sun Dec  1 22:14:24 UTC 2013 - andreas.stieger@gmx.de
 
 - add repository benchmarking tool svn-bench to tools subpackage
 - add repository statistics tool fsfs-stats to tools subpackage
-- fix performance problems when dynamically linking against 
+- fix performance problems when dynamically linking against
   SQLite 3.8. While this does not create a new working copy format
-  version, working copies that were created with a 1.8 client 
+  version, working copies that were created with a 1.8 client
   linked against SQLite 3.7 need to have "svn upgrade" run once
   to enjoy the benefits, while otherwise maintaining compatibility.
   The step is optional and not required for new working copies.
@@ -1166,7 +1194,7 @@ Mon Nov 25 00:00:00 UTC 2013 - andreas.stieger@gmx.de
 Tue Nov 19 18:36:45 UTC 2013 - andreas.stieger@gmx.de
 
 - print error logs on on regression test failures
-- always build with and statically link to in-tree SQLite to 
+- always build with and statically link to in-tree SQLite to
   prevent performance problems and test failures with SQLite 3.8
 - fix regression tests for ppc/ppc64 architectures, found in
   openSUSE package build and fixed with upstream developers, adding
@@ -1319,7 +1347,7 @@ Wed Jul 24 17:37:14 UTC 2013 - andreas.stieger@gmx.de
 
  Developer-visible changes
   - General:
-    * ra_serf: fix some test runner issues on Windows 
+    * ra_serf: fix some test runner issues on Windows
     * fix two issues in reverse svn_ra_get_file_revs()
     * handle --compatible-version=1.8 in the C tests
     * improve clang compatibility
@@ -1379,10 +1407,10 @@ Tue Jun 18 00:00:00 UTC 2013 - andreas.stieger@gmx.de
     https://subversion.apache.org/docs/release-notes/1.8.html#compatibility
     https://subversion.apache.org/docs/release-notes/1.8.html#fsfs-enhancements
   * Required configuration changes when using mod_dav_svn with Apache httpd2:
-    The MaxKeepAliveRequests option in httpd.conf needs to be increased 
-    from 100 (the default) to at least 1000 (there is no reason why it 
-    could not be 10000). This will improve performance by allowing serf 
-    clients to use fewer TCP connections to the server. Clients using 
+    The MaxKeepAliveRequests option in httpd.conf needs to be increased
+    from 100 (the default) to at least 1000 (there is no reason why it
+    could not be 10000). This will improve performance by allowing serf
+    clients to use fewer TCP connections to the server. Clients using
     neon will also work fine with this configuration.
 - many minor features and improvements listed in:
   https://subversion.apache.org/docs/release-notes/1.8.html
@@ -1417,12 +1445,12 @@ Tue Jun 18 00:00:00 UTC 2013 - andreas.stieger@gmx.de
   * build ruby bindings again for openSUSE 12.3 and Factory
   * fix detection of ruby sitelib directory
   * remove obsolete tool svnmerge.py
-  * update contrib package to r1485350 
+  * update contrib package to r1485350
 
 -------------------------------------------------------------------
 Sat Jun 15 23:20:09 UTC 2013 - andreas.stieger@gmx.de
 
-- fix build for 12.3 x86_64 due to choice for libjpeg-devel 
+- fix build for 12.3 x86_64 due to choice for libjpeg-devel
   needed by libmng-devel: libjpeg62-devel libjpeg8-devel
 
 -------------------------------------------------------------------
@@ -1433,8 +1461,8 @@ Fri Jun  7 07:17:35 UTC 2013 - andreas.stieger@gmx.de
 -------------------------------------------------------------------
 Mon Jun  3 18:38:09 UTC 2013 - andreas.stieger@gmx.de
 
-- build with -std=gnu99 on 12.3 and later to match apache httpd to 
-  avoid configure warning 
+- build with -std=gnu99 on 12.3 and later to match apache httpd to
+  avoid configure warning
 
 -------------------------------------------------------------------
 Fri May 31 20:44:34 UTC 2013 - andreas.stieger@gmx.de
@@ -1470,7 +1498,7 @@ Tue May 21 19:41:36 UTC 2013 - andreas.stieger@gmx.de
 - use svnserveautocheck.sh and davautocheck.sh for unit tests,
   greatly reducing complexity of spec file and adding support
   for running unit tests with httpd 2.4 in factory
-- add subversion-1.7.9-davautocheck-LD_LIBRARY_PATH.patch to 
+- add subversion-1.7.9-davautocheck-LD_LIBRARY_PATH.patch to
   not overwrite LD_LIBRARY_PATH in davautocheck.sh to make
   auth-test pass
 
@@ -1487,7 +1515,7 @@ Mon May 20 19:30:52 UTC 2013 - andreas.stieger@gmx.de
 -------------------------------------------------------------------
 Tue May 14 21:52:35 UTC 2013 - andreas.stieger@gmx.de
 
-- package verify-po.py and other hook scripts as documentation 
+- package verify-po.py and other hook scripts as documentation
   [bnc#781982]
 
 -------------------------------------------------------------------
@@ -1498,7 +1526,7 @@ Fri Apr 12 20:28:50 UTC 2013 - andreas.stieger@gmx.de
 -------------------------------------------------------------------
 Sun Apr  7 20:15:46 UTC 2013 - andreas.stieger@gmx.de
 
-- update to 1.7.9 [bnc#813913], addressing remotely triggerable 
+- update to 1.7.9 [bnc#813913], addressing remotely triggerable
   vulnerabilities in mod_dav_svn which may result in denial of service:
   + CVE-2013-1845: mod_dav_svn excessive memory usage from property changes
   + CVE-2013-1846: mod_dav_svn crashes on LOCK requests against activity URLs
@@ -1571,7 +1599,7 @@ Mon Dec 17 00:00:00 UTC 2012 - andreas.stieger@gmx.de
 -------------------------------------------------------------------
 Sat Dec  8 12:11:19 UTC 2012 - andreas.stieger@gmx.de
 
-- for package maintainers, add support to run regression tests 
+- for package maintainers, add support to run regression tests
   over ra_neon and ra_serf (http://) via Apache / mod_dav_svn
   when built --with=regression_tests
 
@@ -1593,7 +1621,7 @@ Sat Oct  6 10:44:48 UTC 2012 - andreas.stieger@gmx.de
     * fix unknown password stores in config file cause error
     * fix assertions in ra_serf running against server root
     * fix ra_serf checkout/export aborts early on Windows
- 
+
   - Server-side bugfixes:
     * fix an assert with SVNAutoVersioning in mod_dav_svn
     * fix unbounded memory use with SVNPathAuthz short_circuit
@@ -1632,7 +1660,7 @@ Wed Aug 15 00:00:00 UTC 2012 - andreas.stieger@gmx.de
       * sort output of 'svn status'
       * avoid a filestat per working copy find operation
       * optimize 'svn upgrade' performance on large working copies
-      * allow 'file:///C:\repos' style arguments on Windows, like 1.6 
+      * allow 'file:///C:\repos' style arguments on Windows, like 1.6
       * fix ra_serf against Subversion 1.2 servers
       * fix 'svn upgrade' on working copies with certain tree conflicts
       * avoid workqueue references to system temp dir
@@ -1642,25 +1670,25 @@ Wed Aug 15 00:00:00 UTC 2012 - andreas.stieger@gmx.de
       * fix relocate with server-relative externals
       * change two asserts into errors for TortoiseSVN
       * don't attempt to anchor an operation outside a wc root
-  
+
     - Server-side bugfixes:
       * partial sync drops properties when converting to adds
       * replaying a copy and delete of an unreadable child fails
       * allow svnlook to operate on r0
       * make FSFS revision files independent of APR hash order
-  
+
     - Other tool improvements and bugfixes:
       * move mod_dontdothat to install-tools
-  
+
    Developer-visible changes:
     - General:
       * fix running tests against httpd 2.4
       * use constant struct initialisers for C89 compatibility
-  
+
     - Bindings:
       * JavaHL: Don't assert on some invalid input
       * JavaHL: Add missing new in 1.7 notifications
-  
+
 - refresh subversion-no-build-date.patch
 
 -------------------------------------------------------------------
@@ -1682,7 +1710,7 @@ Thu Jun  7 17:08:01 UTC 2012 - andreas.stieger@gmx.de
 -------------------------------------------------------------------
 Mon May 21 19:58:48 UTC 2012 - andreas.stieger@gmx.de
 
-- Allow unit tests to be run for Factory: --with=regression_tests 
+- Allow unit tests to be run for Factory: --with=regression_tests
   replacing the inline conditional
 
 -------------------------------------------------------------------
@@ -1901,7 +1929,7 @@ Sun Oct 23 17:34:20 CEST 2011 - dmueller@suse.de
 - update to 1.7.1
   * Based on many fixes by stsp.elego.de, many thanks!
   * License changed to Apache License, version 2
-  * Detecting MIME types with libmagic 
+  * Detecting MIME types with libmagic
   * Optimizations of diff, merge and blame
   * See http://subversion.apache.org/docs/release-notes/1.7
     for details
@@ -1910,7 +1938,7 @@ Sun Oct 23 17:34:20 CEST 2011 - dmueller@suse.de
 Fri Oct 21 18:01:34 CEST 2011 - dmueller@suse.de
 
 - merge in fixes from stsp.elego.de:
- * Simplify tools install and ship a smaller amount of tools. 
+ * Simplify tools install and ship a smaller amount of tools.
    Should fix rpmlint complaining about .libs/ directories
    and various other illegal files ending up in the package.
    Users are better off downloading the scripts previously shipped
@@ -1925,7 +1953,7 @@ Fri Oct 21 17:56:21 CEST 2011 - dmueller@suse.de
 Fri Oct 21 17:46:18 CEST 2011 - dmueller@suse.de
 
 - reenable gnome-keyring/kde4-keyring support for older distros
-  (bnc#713919) 
+  (bnc#713919)
 
 -------------------------------------------------------------------
 Thu Sep 29 09:44:52 UTC 2011 - stsp@elego.de
@@ -1971,7 +1999,7 @@ Wed Jul 27 16:15:24 CEST 2011 - dmueller@suse.de
 Mon May 30 14:07:41 UTC 2011 - stsp@elego.de
 
 - update to 1.6.17 (bnc#698205):
-  includes security fixes [CVE-2011-1752, CVE-2011-1783, CVE-2011-1921] 
+  includes security fixes [CVE-2011-1752, CVE-2011-1783, CVE-2011-1921]
   User-visible changes:
     * improve checkout speed on Windows (issue #3719)
     * make 'blame -g' more efficient on with large mergeinfo (r1094692)
@@ -2098,7 +2126,7 @@ Wed Nov 24 18:33:47 CET 2010 - stsp@elego.de
 -------------------------------------------------------------------
 Wed Nov 24 11:28:51 CET 2010 - dmueller@suse.de
 
-- correct instructions on how to create the svn account (bnc#655094) 
+- correct instructions on how to create the svn account (bnc#655094)
 
 -------------------------------------------------------------------
 Sat Oct  2 20:36:52 UTC 2010 - pascal.bleser@opensuse.org
@@ -2143,7 +2171,7 @@ Mon Sep 27 10:31:48 UTC 2010 - dimstar@opensuse.org
 Mon Sep 20 16:22:25 UTC 2010 - cristian.rodriguez@opensuse.org
 
 - Do not include build date in binaries
-- refresh patches 
+- refresh patches
 
 -------------------------------------------------------------------
 Tue Jun 22 21:50:10 UTC 2010 - pascal.bleser@opensuse.org
@@ -2617,7 +2645,7 @@ Sun Mar  8 23:29:34 CET 2009 - pascal.bleser@opensuse.org
 -------------------------------------------------------------------
 Wed Feb 18 00:49:55 CET 2009 - crrodriguez@suse.de
 
-- all apache modules must require %{apache_mmn} 
+- all apache modules must require %{apache_mmn}
 
 -------------------------------------------------------------------
 Mon Jan 12 15:31:22 CET 2009 - olh@suse.de
@@ -2722,12 +2750,12 @@ Mon Sep  1 11:23:54 CEST 2008 - olh@suse.de
    * fixed: perl bindings errors in non-English locale (issue #3258)
    * fixed: 'svn merge' incorrectly reverses previous merges (r32494, -522, -523)
    * fixed: 'svn merge' errors with subtree mergeinfo (issue #3067)
- 
+
   Developer-visible changes:
    * make libsvn_ra_neon initialization thread-safe (r32497, r32510)
    * respect LDFLAGS in Swig bindings (r32416, r32421, r32442)
    * fixed: test failures in non-English locales (r32491)
- 
+
 -------------------------------------------------------------------
 Tue Jul 29 08:32:56 CEST 2008 - olh@suse.de
 
@@ -2761,7 +2789,7 @@ Tue Jul 29 08:32:56 CEST 2008 - olh@suse.de
    * fixed: serf merge bug too complex to describe here (r32056)
    * fixed: 'svn log -g' correctness and speed (issue #3220, issue #3235)
    * fixed: merge chokes on renamed subtrees (issue #3174)
- 
+
   Developer-visible changes:
    * export svn_path_is_url() to the bindings (r31603)
    * don't clobber LDFLAGS in configure when given '--with-zlib' (r31825)
@@ -2844,11 +2872,11 @@ Wed May 25 23:01:54 CEST 2008 - poeml@suse.de
 
 - build the Build Service package from openSUSE:Factory again --
   thereby updating to subversion 1.5 release candidate (r31325)
- 
+
    *** installations that have been running earlier pre-1.5 ***
    *** versions may need to dump/reload. This can still be  ***
    *** done after upgrading to 1.5.                         ***
- 
+
 - build fixes to get the Factory package building in the Build
   Service again:
   * change BuildRequires java2-devel-packages to java-devel, which
@@ -2952,7 +2980,7 @@ Tue Jan 22 13:52:08 CET 2008 - schwab@suse.de
 -------------------------------------------------------------------
 Mon Jan 21 01:09:13 CET 2008 - ro@suse.de
 
-- fix wrong requires for python2.2 
+- fix wrong requires for python2.2
 
 -------------------------------------------------------------------
 Sat Jan 19 10:58:35 CET 2008 - olh@suse.de
@@ -2978,7 +3006,7 @@ Tue Nov 27 00:57:52 CET 2007 - crrodriguez@suse.de
 
 - neon-config should be called with --libs instead of --la-file
   in order to fix build with recent neon package
-- fix -devel package dependencies 
+- fix -devel package dependencies
 
 -------------------------------------------------------------------
 Mon Nov 26 10:23:15 CET 2007 - olh@suse.de
@@ -3021,7 +3049,7 @@ Mon Oct 29 11:06:19 CET 2007 - olh@suse.de
 -------------------------------------------------------------------
 Thu Oct 25 09:57:02 CEST 2007 - dmueller@suse.de
 
-- fix subversion headers to be compileable with -pedantic 
+- fix subversion headers to be compileable with -pedantic
 
 -------------------------------------------------------------------
 Mon Oct 15 17:13:09 CEST 2007 - olh@suse.de
@@ -3036,7 +3064,7 @@ Mon Oct 15 16:38:15 CEST 2007 - dmueller@suse.de
 - update to 1.4.5:
   * Security fix (for w32 only)
   * no other changelog available
-- fix build 
+- fix build
 
 -------------------------------------------------------------------
 Fri Oct 12 10:58:41 CEST 2007 - olh@suse.de
@@ -3066,7 +3094,7 @@ Wed Jun 20 13:40:22 CEST 2007 - olh@suse.de
     * fixed: svnsync cannot sync unreadable modified dir copies (issue #2705)
     * fixed: ra_dav litters empty transactions if initial setup fails (r23594)
     * fixed: inconsistent expansion of revision number keywords (issue #1743)
-    * fixed: security flaw in 'svn prop*' commands [CVE-2007-2448] 
+    * fixed: security flaw in 'svn prop*' commands [CVE-2007-2448]
           (r25095, -099, -104, -105, -10)
 
   - Server:
@@ -3226,7 +3254,7 @@ Sun Oct 29 13:00:18 CET 2006 - meissner@suse.de
 -------------------------------------------------------------------
 Thu Sep 28 00:33:39 CEST 2006 - ro@suse.de
 
-- use source=1.4 for java compilation 
+- use source=1.4 for java compilation
 
 -------------------------------------------------------------------
 Mon Sep 25 10:55:08 CEST 2006 - olh@suse.de
@@ -3283,7 +3311,7 @@ Fri Sep 15 08:07:14 CEST 2006 - poeml@suse.de
 -------------------------------------------------------------------
 Wed Sep 13 17:22:58 CEST 2006 - olh@suse.de
 
-- Version 1.4.0 
+- Version 1.4.0
   User-visible-changes:
   - Client:
     * new 'svnsync' commandline tool for repository replication
@@ -3565,7 +3593,7 @@ Sun Mar  5 16:32:34 CET 2006 - olh@suse.de
 -------------------------------------------------------------------
 Mon Feb 27 15:40:05 CET 2006 - olh@suse.de
 
-- fix viewcvs buglink patch 
+- fix viewcvs buglink patch
 
 -------------------------------------------------------------------
 Mon Feb 27 10:48:44 CET 2006 - olh@suse.de
@@ -3613,7 +3641,7 @@ Mon Jan  9 23:16:28 CET 2006 - olh@suse.de
 -------------------------------------------------------------------
 Mon Jan  2 19:49:56 CET 2006 - dmueller@suse.de
 
-- build against apache 2.2.x 
+- build against apache 2.2.x
 
 -------------------------------------------------------------------
 Sun Jan  1 12:55:53 CET 2006 - olh@suse.de
@@ -3689,7 +3717,7 @@ Sun Jan  1 12:55:53 CET 2006 - olh@suse.de
   * working copy is now storing repos_root as separate field (issue #960)
   * keywords are now stored in an internal hash (issue #890)
   * client status APIs now makes more server-side info available (r16344)
-  * new public APIs:  
+  * new public APIs:
      - new transfer progress callback for DAV (r15948)
      - svn_ra_initialize(), svn_client_open_ra_session()
      - svn_fs_closest_copy(), svn_fs_type()
@@ -3707,7 +3735,7 @@ Sun Jan  1 12:55:53 CET 2006 - olh@suse.de
        - new accessors for svn_lock_t, svn_fs_access_t
        - a number of bugfixes
   * javahl bindings:
-    - add streamy API for fetching file contents (r15584) 
+    - add streamy API for fetching file contents (r15584)
     - fixed: let tests run before bindings are installed (issue #2040)
     - fixed: lock command not raising errors properly (issue #2394)
     - fixed: ignored errors from svn_client_blame2() (r16434)
@@ -3856,7 +3884,7 @@ Tue Jul 12 20:32:51 CEST 2005 - olh@suse.de
 -------------------------------------------------------------------
 Tue Jul 12 11:27:41 CEST 2005 - poeml@suse.de
 
-- double check that all repository access schemes are compiled 
+- double check that all repository access schemes are compiled
 
 -------------------------------------------------------------------
 Sun Jul  3 20:34:33 CEST 2005 - olh@suse.de
@@ -3883,7 +3911,7 @@ Sun Jul  3 20:34:33 CEST 2005 - olh@suse.de
     * fixed: mod_dav_svn bug sets content-type incorrectly (r15046)
  Developer-visible-changes:
  * fixed:  OBOE with 'limit' parameter of svn_repos_get_logs3(). (r15119)
- * perl bindings:  
+ * perl bindings:
       - accessors for svn_lock_t (r15082)
       - call utf_initialize, adjust global pool usage (r15076, r15080,
                                                        r15081, r15117)
@@ -3946,8 +3974,8 @@ Sat May 21 19:09:42 CEST 2005 - olh@suse.de
     * fixed: 'svn copy' shouldn't copy into schedule-delete area (issue #2020)
     * fixed: 'svn copy dir dir' infinite recursion (issue #2224)
     * fixed: 'svn log' throws error on unversioned target (issue #1551)
-    * fixed: 'svn log' in r0 working copy shows r1 log msg (issue #1950) 
-    * fixed: 'svn export' bugs on deleted dirs or nonexistents (#2226, r13226) 
+    * fixed: 'svn log' in r0 working copy shows r1 log msg (issue #1950)
+    * fixed: 'svn export' bugs on deleted dirs or nonexistents (#2226, r13226)
     * fixed: 'svn export' on single file from working copy (issue #1708)
     * fixed: 'svn import' creating an empty revision (r14293)
     * fixed: 'svn commit' ignores --encoding when editing externally (#2244)
@@ -3989,7 +4017,7 @@ Sat May 21 19:09:42 CEST 2005 - olh@suse.de
     * new switches added:
        - 'svnlook diff --no-diff-added'        - suppress added files (#2180)
        - 'svnlook propget/proplist --revprop'  - show revision props (#2181)
-       - 'svnadmin load --use-pre-commit-hook'  
+       - 'svnadmin load --use-pre-commit-hook'
          'svnadmin load --use-post-commit-hook'- invoke hooks when loading
     * fixed: FSFS race condition on posix platforms (issue #2265)
     * fixed: change FSFS revprops atomically and safely (issue #2193)
@@ -4009,7 +4037,7 @@ Sat May 21 19:09:42 CEST 2005 - olh@suse.de
    - Both:
     * new 'locking' feature (issue #1478, see release notes for details):
         - new: 'svn lock/unlock', 'svnadmin lslocks/rmlocks', 'svnlook lock'
-        - new: 'svn:needs-lock' property to enable communication         
+        - new: 'svn:needs-lock' property to enable communication
         - 'svn st [-u]' shows local or remote lock overview
         - 'svn info wc | URL'  shows local or remote lock details
         - 'svn commit' sends locks, 'svn up' removes stale locks
@@ -4048,7 +4076,7 @@ Sun May  1 20:58:13 CEST 2005 - olh@suse.de
      * fixed: two dataloss bugs in svndumpfilter (r12630, r12636)
      * fixed: wasteful memory usage in svndumpfilter (r12637, r12640)
      * fixed: mod_dav_svn segfaults when client sends bogus paths (issue #2199)
- 
+
 -------------------------------------------------------------------
 Wed Apr 20 00:50:25 CEST 2005 - ro@suse.de
 
@@ -4080,7 +4108,7 @@ Wed Feb 23 15:14:50 CET 2005 - olh@suse.de
 -------------------------------------------------------------------
 Tue Feb 22 17:43:51 CET 2005 - ro@suse.de
 
-- search also for "other" java on a biarch platform 
+- search also for "other" java on a biarch platform
 
 -------------------------------------------------------------------
 Sat Feb 19 20:15:10 CET 2005 - olh@suse.de
@@ -4247,7 +4275,7 @@ Mon Mar  8 11:56:00 CET 2004 - olh@suse.de
 -------------------------------------------------------------------
 Thu Mar  4 15:37:59 CET 2004 - poeml@suse.de
 
-- add patch for ViewCVS 
+- add patch for ViewCVS
   http://cvs.sourceforge.net/viewcvs.py/viewcvs/viewcvs/lib/ezt.py?r1=1.22&r2=1.23
 
 -------------------------------------------------------------------
@@ -4337,7 +4365,7 @@ Sat Jul 12 13:15:11 CEST 2003 - olh@suse.de
 -------------------------------------------------------------------
 Sat Jul  5 00:17:13 CEST 2003 - olh@suse.de
 
-- add subversion-python_bytecode-path-pr1131.patch 
+- add subversion-python_bytecode-path-pr1131.patch
   do not compile in RPM_BUILD_ROOT, use builddir instead
 
 -------------------------------------------------------------------
@@ -4372,7 +4400,7 @@ Fri May  2 15:58:30 CEST 2003 - olh@suse.de
 -------------------------------------------------------------------
 Fri Apr 11 01:02:07 CEST 2003 - ro@suse.de
 
-- fix deprecated head/tail calling syntax (-1) 
+- fix deprecated head/tail calling syntax (-1)
 
 -------------------------------------------------------------------
 Wed Mar 19 21:32:02 CET 2003 - olh@suse.de

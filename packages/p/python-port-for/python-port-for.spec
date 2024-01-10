@@ -1,7 +1,7 @@
 #
 # spec file for package python-port-for
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,19 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-port-for
-Version:        0.6.2
+Version:        0.7.2
 Release:        0
 License:        MIT
 Summary:        Utility that helps with local TCP ports managment
 URL:            https://github.com/kmike/port-for/
 Group:          Development/Languages/Python
 Source:         https://github.com/kmike/port-for/archive/refs/tags/v%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
@@ -72,17 +74,16 @@ return a new unused port:
 %setup -q -n port-for-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand rm -f %{buildroot}%{$python_sitelib}/port_for/tests.py* %{buildroot}%{$python_sitelib}/port_for/__pycache__/tests.*
 %python_clone -a %{buildroot}%{_bindir}/port-for
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-sed -i '/^addopts =/d' setup.cfg
-%pytest --doctest-modules src/port_for/utils.py tests/test*.py
+%pytest
 
 %post
 %python_install_alternative port-for
@@ -93,7 +94,8 @@ sed -i '/^addopts =/d' setup.cfg
 %files %{python_files}
 %license LICENSE.txt
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/port_for
+%{python_sitelib}/port_for-%{version}.dist-info
 %python_alternative %{_bindir}/port-for
 
 %changelog

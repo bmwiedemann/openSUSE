@@ -18,12 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-setuptools-git-versioning
-Version:        1.13.2
+Version:        1.13.5
 Release:        0
 Summary:        Use git repo data for building a version number according PEP-440
 License:        MIT
 URL:            https://setuptools-git-versioning.readthedocs.io
-# no sdist on PyPI, needs full git metadata for bootstrap, run osc service runall to update
+# SourceDist:    https://github.com/dolfinus/setuptools-git-versioning
+# the sdist on PyPI does not have the tests, we needs full git metadata for bootstrap, run osc service runall to update
 Source:         setuptools-git-versioning-%{version}.tar.xz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -31,7 +32,6 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       git-core
-Requires:       python-Deprecated
 Requires:       python-packaging
 Requires:       python-setuptools
 Requires(post): update-alternatives
@@ -39,13 +39,13 @@ Requires(postun):update-alternatives
 Provides:       python-setuptools_git_versioning = %{version}-%{release}
 BuildArch:      noarch
 %if 0%{python_version_nodots} < 311
-Requires:       python-toml
+Requires:       python-toml >= 0.10.2
 %endif
 # SECTION test
-BuildRequires:  %{python_module Deprecated}
 BuildRequires:  %{python_module build}
 BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module packaging}
+BuildRequires:  %{python_module pytest-rerunfailures}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -83,10 +83,6 @@ echo _current_flavor >> .git/info/exclude
 sed -i  '/assert get_version(repo, isolated=True)/d' tests/test_integration/test_config.py
 # test tries to get a wheel wheel in isolated build env
 donttest="test_substitution_env"
-# short git hash has only 7 characters on i586
-donttest="$donttest or (test_version_file_count_commits and sha)"
-# broken under Python 3.11
-donttest="$donttest or test_substitution_timestamp"
 %pytest -k "not ($donttest)" -n auto
 
 %post

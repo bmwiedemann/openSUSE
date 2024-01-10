@@ -1,7 +1,7 @@
 #
 # spec file for package podman
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{!?_user_tmpfilesdir: %global _user_tmpfilesdir %{_datadir}/user-tmpfiles.d}
 %define project        github.com/containers/podman
 Name:           podman
-Version:        4.8.2
+Version:        4.8.3
 Release:        0
 Summary:        Daemon-less container engine for managing containers, pods and images
 License:        Apache-2.0
@@ -52,20 +52,14 @@ Recommends:     apparmor-parser
 # requirement for `podman machine`
 Recommends:     gvisor-tap-vsock
 Requires:       catatonit >= 0.1.7
-# provide both cni and netavark on TW
-# but "prefer" netavark especially for
-# fresh installations (bsc#1217828)
-%if 0%{?suse_version} > 1600
-Requires:       (netavark or cni)
-Suggests:       netavark
-%else
-# default to Netavark on ALP
+# Needs a network backend
+Requires:       (netavark or cni-plugins)
+# Force netavark on ALP
 %if 0%{suse_version} >= 1600 && !0%{?is_opensuse}
 Requires:       netavark
 %else
-Requires:       cni
-Requires:       cni-plugins
-%endif
+# Prefer netavark for fresh installations (bsc#1217828)
+Suggests:       netavark
 %endif
 Requires:       conmon >= 2.0.24
 Requires:       fuse-overlayfs

@@ -48,4 +48,41 @@
 </comment>
     <requestid>1119951</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a5daf7dd8e32dd1bb62eb62bdb058dd2</srcmd5>
+    <version>1.1.8</version>
+    <time>1703198269</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.1.8:
+  * Populate the `Token.end_*` fields for ignored tokens
+  * Include .lark files in package data
+  * Add an error message when using Lark.save() when
+    parser!='lalr'
+  * Add and improve docstrings
+  * Small update to PR #1338
+  * Fix 1345 attempt two
+  * Earley now uses OrderedSet for better output stability
+  * ContextualLexer now uses self.basic_lexer for easy
+    extensibility (iss…
+  * Improved typing around LALR and ParserState
+  * Typing fixes. Mypy now produces 0 type errors
+  * Standalone: Added support for interactive parser.
+- update to 1.1.7:
+  * Bugfix in propagate_positions (issue #1304)
+- update to 1.1.6:
+  * Added strict-mode, enabled by `strict=True`, implemented
+    using interegular by @MegaIng
+  * Read more here: https://lark-
+    parser.readthedocs.io/en/latest/how_to_use.html#strict-mode
+  * Cache: Replace md5 hashing with sha256.
+  * Support for Python-style comments in Lark grammar
+  * Updates to python.lark
+  * Bugfixes and cleanup
+
+- Update to v1.1.5
+- Update to v1.1.4
+- Update to v1.1.3
+- Rename to python-lark</comment>
+    <requestid>1134338</requestid>
+  </revision>
 </revisionlist>

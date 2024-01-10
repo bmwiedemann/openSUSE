@@ -113,4 +113,22 @@
   Backport upstream fix for Qt 6.4 build failure (forwarded request 1071801 from tux93)</comment>
     <requestid>1074774</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>438f160f05f1f6429a63a64468bdae15</srcmd5>
+    <version>2.0.0</version>
+    <time>1702845102</time>
+    <user>anag+factory</user>
+    <comment>- Require extra-cmake-modules at build time
+
+- Update to version 2.0.0
+  * bug fixes
+  * translation updates
+
+- Update to version 1.9.2
+  * bug fixes
+  * translation updates
+- Remove allow_build_without_deprecated_method.patch,
+  is part of release</comment>
+    <requestid>1133549</requestid>
+  </revision>
 </revisionlist>

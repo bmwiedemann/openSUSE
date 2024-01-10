@@ -17,14 +17,14 @@
 
 
 %define sonum   5
-%define _tar_path 5.103
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
+%define qt5_version 5.15.2
 %bcond_without released
 Name:           kconfig
-Version:        5.112.0
+Version:        5.113.0
 Release:        0
 Summary:        Advanced configuration system
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
@@ -36,15 +36,14 @@ Source2:        frameworks.keyring
 %endif
 # PATCH-FEATURE-OPENSUSE
 Patch0:         kconfig-desktop-translations.patch
-BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
+BuildRequires:  extra-cmake-modules >= %{_kf5_version}
 BuildRequires:  fdupes
-BuildRequires:  kf5-filesystem
-BuildRequires:  cmake(Qt5Core) >= 5.15.0
-BuildRequires:  cmake(Qt5DBus) >= 5.15.0
-BuildRequires:  cmake(Qt5Gui) >= 5.15.0
-BuildRequires:  cmake(Qt5LinguistTools) >= 5.15.0
-BuildRequires:  cmake(Qt5Qml) >= 5.15.0
-BuildRequires:  cmake(Qt5Xml) >= 5.15.0
+BuildRequires:  cmake(Qt5Core) >= %{qt5_version}
+BuildRequires:  cmake(Qt5DBus) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Gui) >= %{qt5_version}
+BuildRequires:  cmake(Qt5LinguistTools) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Qml) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Xml) >= %{qt5_version}
 
 %description
 KConfig provides an advanced configuration system. It is made of three parts:
@@ -110,13 +109,12 @@ This package contains the kconf_update tool.
 
 %package devel
 Summary:        KConfig Development files
-Requires:       extra-cmake-modules
 Requires:       kconf_update5 = %{version}
 Requires:       libKF5ConfigCore%{sonum} = %{version}
 Requires:       libKF5ConfigGui%{sonum} = %{version}
 Requires:       libKF5ConfigQml%{sonum} = %{version}
-Requires:       cmake(Qt5DBus) >= 5.15.0
-Requires:       cmake(Qt5Xml) >= 5.15.0
+Requires:       cmake(Qt5DBus) >= %{qt5_version}
+Requires:       cmake(Qt5Xml) >= %{qt5_version}
 
 %description devel
 KConfig provides an advanced configuration system. It is made of two parts:

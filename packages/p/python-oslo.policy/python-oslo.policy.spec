@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslo.policy
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,17 @@
 
 
 Name:           python-oslo.policy
-Version:        4.2.0
+Version:        4.2.1
 Release:        0
 Summary:        OpenStack Oslo Policy library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/oslo.policy
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.policy/oslo.policy-4.2.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.policy/oslo.policy-4.2.1.tar.gz
 Patch1:         0001-Avoid-TypeError-when-building-with-Sphinx-6.1.1-and-.patch
 BuildRequires:  openstack-macros
 BuildRequires:  python3-PyYAML >= 5.1
+BuildRequires:  python3-defusedxml
 BuildRequires:  python3-oslo.config >= 6.0.0
 BuildRequires:  python3-oslo.context >= 2.22.0
 BuildRequires:  python3-oslo.i18n >= 3.15.3
@@ -46,6 +47,7 @@ RBAC policy enforcement library for OpenStack.
 %package -n python3-oslo.policy
 Summary:        OpenStack Oslo Policy library
 Requires:       python3-PyYAML >= 5.1
+Requires:       python3-defusedxml
 Requires:       python3-oslo.config >= 6.0.0
 Requires:       python3-oslo.context >= 2.22.0
 Requires:       python3-oslo.i18n >= 3.15.3
@@ -74,7 +76,7 @@ BuildRequires:  python3-sphinxcontrib-apidoc
 Documentation for the Oslo Policy library.
 
 %prep
-%autosetup -p1 -n oslo.policy-4.2.0
+%autosetup -p1 -n oslo.policy-4.2.1
 %py_req_cleanup
 
 %build

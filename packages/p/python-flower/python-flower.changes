@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jan  6 20:11:53 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.1:
+  * Ask for safe args strings when calling inspect.active
+  * Enable basic auth for api, fixes
+  * Allow non integer rate limits like 3/m
+  * Provide support for Python 3.10 and 3.11
+  * Drop python 3.6 support
+  * Improve error message
+- drop remove-mock.patch: upstream
+- drop backport_run_in_executor.patch: obsolete
+
+-------------------------------------------------------------------
 Wed Jul 13 01:41:44 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.1.0:
@@ -35,7 +48,7 @@ Tue May 17 12:28:23 UTC 2022 - pgajdos@suse.com
 -------------------------------------------------------------------
 Tue Jan 11 20:58:26 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- add python-rpm-macros dependency 
+- add python-rpm-macros dependency
 
 -------------------------------------------------------------------
 Tue Feb  2 00:18:01 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
@@ -82,57 +95,57 @@ Fri Mar 22 01:59:49 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
   * Upgrade tornado
   * Fix the out-dated doc link in Worker.html
   * Declare futures dependency using environment markers
-  * Fixing GitHub OAuth callback handling 
+  * Fixing GitHub OAuth callback handling
   * Correct spelling error
   * Correct spelling and grammatical errors
-  * Switch away from Google+ OAuth2 
+  * Switch away from Google+ OAuth2
   * restrict release dependencies with version upper-bound
 - from v0.9.2
   * Add logout button
-  * Fix a bug in humanizing timestamps on the tasks page 
+  * Fix a bug in humanizing timestamps on the tasks page
   * Handle errors in custom format_task functions
   * Pending tasks don't have a worker
   * Fix result encoding
-  * Removed 500px height limitation 
+  * Removed 500px height limitation
   * Do not show debug information on 500 error
-  * Fixed Python 3 mistake in Github Login Handler 
-  * Support environment variables in tornado 4.2.0 and >=4.3 
-  * Fix XSS on tasks page 
+  * Fixed Python 3 mistake in Github Login Handler
+  * Support environment variables in tornado 4.2.0 and >=4.3
+  * Fix XSS on tasks page
   * Enable cross-origin websockets
   * Fix bugreport
   * Resolve relative config file names
   * Fix broker api validation
   * Loosen broker api validation
-  * Replace websokets with ajax 
-  * Fix bug in tasks page template 
-  * Fix celery version comparsion 
-  * Refactor version comparision 
+  * Replace websokets with ajax
+  * Fix bug in tasks page template
+  * Fix celery version comparsion
+  * Refactor version comparision
   * Fixes in config documents
   * Fix invalid URL used for datatable query
-  * Use redis as default broker 
-  * Update dashboard counters on worker table updates 
-  * Move shut down group button to worker page 
-  * Update navbar title 
-  * Add a script for calling tasks 
-  * Add a link to worker name 
-  * Remove active task start time from worker page 
-  * Fix py3 json serialization 
+  * Use redis as default broker
+  * Update dashboard counters on worker table updates
+  * Move shut down group button to worker page
+  * Update navbar title
+  * Add a script for calling tasks
+  * Add a link to worker name
+  * Remove active task start time from worker page
+  * Fix py3 json serialization
   * Fix Error 500 because task.worker is None
   * HTML escape task args
   * Disable broker cert verification
-  * Enable all tasks columns with --tasks-options=all 
-  * Add runtime to default tasks columns 
-  * Document --tasks-columns=all 
-  * Refactor redis broker 
+  * Enable all tasks columns with --tasks-options=all
+  * Add runtime to default tasks columns
+  * Document --tasks-columns=all
+  * Refactor redis broker
   * Support CELERY_QUEUES option
-  * Remove rabbitmq-plugins enable warning 
+  * Remove rabbitmq-plugins enable warning
   * Fix broken link to celery configuration document
 - from v0.9.1
   * Improve envvar handling
   * By default update worker cache
   * Fix task sorting for py3
-  * Fix missing workername 
-  * Fix monitor tab problem of missing graphs 
+  * Fix missing workername
+  * Fix monitor tab problem of missing graphs
 - from v0.9.0
   * workers can be sorted and filtered
   * tasks can be sorted, filtered by name, state, worker, runtime, etc.
@@ -168,7 +181,7 @@ Wed Feb 20 08:09:01 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
   * Fix bug, `events.Task.as_dict` is new in `Celery 3.1.7`
   * events.Task.as_dict is new in Celery 3.1.7
   * Refactor /api/tasks/ #515
-  * Use pprint instead of ast #491	
+  * Use pprint instead of ast #491
   * Define CELERY_ACCEPT_CONTENT for examples
   * Fix task searching #480
 

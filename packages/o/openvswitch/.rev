@@ -828,4 +828,41 @@ Changes:
     <comment></comment>
     <requestid>1130936</requestid>
   </revision>
+  <revision rev="71" vrev="17">
+    <srcmd5>4e8782b72f71f5d5b1b116f6da609d6a</srcmd5>
+    <version>unknown</version>
+    <time>1702673212</time>
+    <user>anag+factory</user>
+    <comment>- convert to sysuser generated users
+
+- Add BuildRequires on python-setuptools. Previously this was pulled
+  by python-Sphinx in the build environment.
+       CVE-2023-3152.patch
+     CVE-2023-1668.patch
+   Some of the features are,
+   -For more details, check
+   - Added ovsb tool install patch,
+     * install-ovsdb-tools.patch
+- add openssl(cli) dependency on pki (bsc#1185839)
+  https://github.com/openvswitch/ovs/blob/v2.14.2/NEWS
+  (bsc#1181742).
+- Fix wrong default directories for OVS python utilities (bsc#1176273).
+  https://github.com/openvswitch/ovs/blob/v2.14.0/NEWS
+  https://github.com/ovn-org/ovn/blob/v20.06.2/NEWS
+- add missing provides/obsoletes for python3-openvswitch-test
+- Update openvswitch to 2.13.0.
+    https://github.com/openvswitch/ovs/blob/v2.13.0/NEWS
+  https://github.com/openvswitch/ovs/blob/master/NEWS
+- Update DPDK dependency to support DPDK 18.11.2.
+  * 0001-rhel-secure-openvswitch-useropts.patch
+- Use temporary directory for python build.
+  including:
+     - Support for the kernel versions 4.18.x
+ * 0001-python-c-ext-Fix-memory-leak-in-Parser_finish.patch
+  * 0001-utilities-Add-script-to-support-DPDK-option-migratio.patch
+- Replace references to /var/adm/fillup-templates with new
+  removed (bsc#1050896)
+  builds on aarch64 now</comment>
+    <requestid>1133086</requestid>
+  </revision>
 </revisionlist>

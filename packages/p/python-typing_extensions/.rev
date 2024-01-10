@@ -213,4 +213,30 @@
 </comment>
     <requestid>1118944</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>ea7e245de3ebe3a65a08d1034890fc8b</srcmd5>
+    <version>4.9.0</version>
+    <time>1704829707</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.9.0:
+  * This feature release adds `typing_extensions.ReadOnly`, as
+    specified by PEP 705, and makes various other improvements,
+    especially to `@typing_extensions.deprecated()`.
+  * Add support for PEP 705, adding `typing_extensions.ReadOnly`.
+  * All parameters on `NewType.__call__` are now positional-only.
+    This means that the signature of
+    `typing_extensions.NewType.__call__` now exactly matches the
+  * signature of `typing.NewType.__call__`.
+  * Fix bug with using `@deprecated` on a mixin class.
+  * Exclude `__match_args__` from `Protocol` members.
+  * When creating a `typing_extensions.NamedTuple` class, ensure
+    `__set_name__` is called on all objects that define
+    `__set_name__` and exist in the values of the `NamedTuple`
+    class's class dictionary.
+
+  * Support most use cases for PEP 612 with Generic
+- add transitional typing-extensions provides
+  * Fix tests for Python 3.9</comment>
+    <requestid>1135644</requestid>
+  </revision>
 </revisionlist>

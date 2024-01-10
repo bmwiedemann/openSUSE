@@ -410,4 +410,19 @@
   - remove unicode literal from code</comment>
     <requestid>1073021</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>f764dec175a6dae3d775948bd939def0</srcmd5>
+    <version>4.3.0</version>
+    <time>1704487300</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.3.0
+  - Imported Translations from Zanata
+  - Moves supported python runtimes from version 3.8 to 3.10
+  - Revert &quot;Moves supported python runtimes from version 3.8 to 3.10&quot;
+  - Update master for stable/2023.1
+  - Update master for stable/2023.2
+  - Add PBM WSDL for vSphere 8.0
+  - Bump bandit and make oslo.messaging compatible with latest rules</comment>
+    <requestid>1136725</requestid>
+  </revision>
 </revisionlist>

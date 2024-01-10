@@ -176,4 +176,12 @@
   - Fix check if rebootmgrctl is installed</comment>
     <requestid>1128573</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>8f5f49e62429318172fdf593e6cce8be</srcmd5>
+    <version>1.14</version>
+    <time>1704753949</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1137511</requestid>
+  </revision>
 </revisionlist>

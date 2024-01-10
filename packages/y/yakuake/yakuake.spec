@@ -34,7 +34,7 @@ BuildRequires:  fdupes
 BuildRequires:  gcc10-PIE
 BuildRequires:  gcc10-c++
 %endif
-BuildRequires:  kf5-filesystem
+BuildRequires:  extra-cmake-modules
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5Config)

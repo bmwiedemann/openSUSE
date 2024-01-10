@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan  8 10:00:07 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add CVE-2023-27043-email-parsing-errors.patch to
+  gh#python/cpython!111116, fixing bsc#1210638 (CVE-2023-27043).
+
+-------------------------------------------------------------------
 Mon Nov 27 16:30:33 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
 
 - Add CVE-2022-48560-after-free-heappushpop.patch fixing

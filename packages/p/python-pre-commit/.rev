@@ -177,4 +177,25 @@
     <comment></comment>
     <requestid>1129479</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>3c96baa1d4738ee92cebbe15b8910639</srcmd5>
+    <version>3.6.0</version>
+    <time>1702673307</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.6.0
+  * Features
+    + Check minimum_pre_commit_version first when parsing configs.
+  * Fixes
+    + Fix deprecation warnings for importlib.resources.
+    + Fix deprecation warnings for rmtree. (forwarded request 1132881 from theMarix)</comment>
+    <requestid>1133197</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>3cc1255058131747ab401fe149d917ae</srcmd5>
+    <version>3.6.0</version>
+    <time>1704380328</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1136657</requestid>
+  </revision>
 </revisionlist>

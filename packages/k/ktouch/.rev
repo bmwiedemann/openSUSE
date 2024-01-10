@@ -1267,4 +1267,12 @@
     <comment>KDE Release gear 23.08.4 (forwarded request 1131017 from krop)</comment>
     <requestid>1131933</requestid>
   </revision>
+  <revision rev="160" vrev="2">
+    <srcmd5>fc405aabb62e1e1d732a910a65c237c7</srcmd5>
+    <version>23.08.4</version>
+    <time>1702845077</time>
+    <user>anag+factory</user>
+    <comment>Require extra-cmake-modules at build time</comment>
+    <requestid>1133520</requestid>
+  </revision>
 </revisionlist>

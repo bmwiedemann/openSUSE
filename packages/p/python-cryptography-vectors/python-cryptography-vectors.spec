@@ -1,7 +1,7 @@
 #
 # spec file for package python-cryptography-vectors
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ Source0:        https://files.pythonhosted.org/packages/source/c/cryptography_ve
 Source2:        %{name}.keyring
 Source3:        python-cryptography-vectors-rpmlintrc
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

@@ -1,7 +1,7 @@
 #
 # spec file for package python-itemloaders
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,25 +21,27 @@
 # Scrapy and thus itemadapter on TW have disabled python36 due to uvloop
 %define skip_python36 1
 Name:           python-itemloaders
-Version:        1.0.6
+Version:        1.1.0
 Release:        0
 Summary:        Base library for scrapy's ItemLoader
 License:        BSD-3-Clause
 URL:            https://github.com/scrapy/itemloaders
 # Use Github archive, the PyPI sdist does not bundle the tests
 Source:         https://github.com/scrapy/itemloaders/archive/refs/tags/v%{version}.tar.gz#/itemloaders-%{version}-gh.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-itemadapter >= 0.1.0
 Requires:       python-jmespath >= 0.9.5
-Requires:       python-parsel >= 1.5.0
+Requires:       python-parsel >= 1.8.1
 Requires:       python-w3lib >= 1.17.0
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module itemadapter >= 0.1.0}
 BuildRequires:  %{python_module jmespath >= 0.9.5}
-BuildRequires:  %{python_module parsel >= 1.5.0}
+BuildRequires:  %{python_module parsel >= 1.8.1}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module w3lib >= 1.17.0}
 # /SECTION
@@ -52,10 +54,10 @@ Library to populate items using XPath and CSS with a convenient API
 %setup -q -n itemloaders-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -65,6 +67,6 @@ Library to populate items using XPath and CSS with a convenient API
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/itemloaders
-%{python_sitelib}/itemloaders-%{version}*-info
+%{python_sitelib}/itemloaders-%{version}.dist-info
 
 %changelog

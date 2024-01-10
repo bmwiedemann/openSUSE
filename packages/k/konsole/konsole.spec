@@ -36,8 +36,8 @@ Source23:       utilities-terminal-su-32.png
 Source24:       utilities-terminal-su-48.png
 Source25:       utilities-terminal-su-64.png
 Source26:       utilities-terminal-su-128.png
+BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
-BuildRequires:  kf5-filesystem
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Bookmarks)

@@ -32,6 +32,7 @@ BuildRequires:  fdupes
 BuildRequires:  libtool
 BuildRequires:  ocaml-findlib
 BuildRequires:  pkg-config
+BuildRequires:  ocaml-rpm-macros
 BuildRequires:  ocaml(compiler)
 BuildRequires:  perl(Pod::Man)
 BuildRequires:  perl(Pod::Simple)
@@ -133,6 +134,8 @@ find "%{buildroot}" -name '*.la' -delete
 # Delete the golang man page since we're not distributing the bindings.
 rm %{buildroot}/%{_mandir}/man3/libnbd-golang.3*
 
+%ocaml_create_file_list
+
 %check
 # All fuse tests fail in Koji with:
 # fusermount: entry for fuse/test-*.d not found in /etc/mtab
@@ -163,26 +166,15 @@ done
 %{_mandir}/man1/nbddump.1*
 %{_mandir}/man1/nbdinfo.1*
 
-%files -n libnbd%{sover}
+%files -n libnbd%{sover} -f %name.files
 %license COPYING.LIB
 %{_libdir}/libnbd.so.%{sover}
 %{_libdir}/libnbd.so.%{sover}.*
-%dir %{_libdir}/ocaml/nbd
-%{_libdir}/ocaml/nbd/META
-%{_libdir}/ocaml/nbd/NBD.cmi
-%{_libdir}/ocaml/nbd/mlnbd.cma
-%{_libdir}/ocaml/stublibs/dllmlnbd.so
-%{_libdir}/ocaml/stublibs/dllmlnbd.so.owner
 
-%files devel
+%files devel -f %name.files.devel
 %{_includedir}/libnbd.h
 %{_libdir}/libnbd.so
 %{_libdir}/pkgconfig/libnbd.pc
-%{_libdir}/ocaml/nbd/NBD.cmx
-%{_libdir}/ocaml/nbd/mlnbd.cmxa
-%{_libdir}/ocaml/nbd/NBD.mli
-%{_libdir}/ocaml/nbd/mlnbd.a
-%{_libdir}/ocaml/nbd/libmlnbd.a
 %{_mandir}/man3/libnbd.3*
 %{_mandir}/man3/libnbd-ocaml.3.gz
 %{_mandir}/man1/libnbd-release-notes-1.*.1*

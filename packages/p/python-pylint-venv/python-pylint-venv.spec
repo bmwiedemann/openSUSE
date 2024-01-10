@@ -16,8 +16,9 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-pylint-venv
-Version:        3.0.2
+Version:        3.0.3
 Release:        0
 Summary:        Use the same Pylint installation with different virtual environments
 License:        MIT

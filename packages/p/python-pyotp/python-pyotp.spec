@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-pyotp
-Version:        2.8.0
+Version:        2.9.0
 Release:        0
 Summary:        Python One Time Password Library
 License:        MIT

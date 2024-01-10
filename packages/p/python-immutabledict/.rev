@@ -46,4 +46,13 @@
     - Fix key/value typing missing for ImmutableOrderedDict</comment>
     <requestid>1131733</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a40d0517e16bdc053ed48ef3b7bd8e15</srcmd5>
+    <version>4.1.0</version>
+    <time>1702845181</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.1.0:
+  * Do not store cached hash value when pickling</comment>
+    <requestid>1133665</requestid>
+  </revision>
 </revisionlist>

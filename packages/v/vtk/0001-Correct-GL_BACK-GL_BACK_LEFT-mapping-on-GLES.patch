@@ -15,7 +15,7 @@ diff --git a/Rendering/OpenGL2/vtkOpenGLRenderWindow.cxx b/Rendering/OpenGL2/vtk
 index 9bbbc2ba54..4bda9330b6 100644
 --- a/Rendering/OpenGL2/vtkOpenGLRenderWindow.cxx
 +++ b/Rendering/OpenGL2/vtkOpenGLRenderWindow.cxx
-@@ -719,6 +719,10 @@ int vtkOpenGLRenderWindow::GetColorBufferSizes(int* rgba)
+@@ -849,6 +849,10 @@ int vtkOpenGLRenderWindow::GetColorBufferSizes(int* rgba)
  #ifdef GL_DRAW_BUFFER
      glGetIntegerv(GL_DRAW_BUFFER, &attachment);
  #endif
@@ -26,7 +26,7 @@ index 9bbbc2ba54..4bda9330b6 100644
      // GL seems odd with its handling of left/right.
      // if it says we are using GL_FRONT or GL_BACK
      // then convert those to GL_FRONT_LEFT and
-@@ -731,6 +735,7 @@ int vtkOpenGLRenderWindow::GetColorBufferSizes(int* rgba)
+@@ -861,6 +865,7 @@ int vtkOpenGLRenderWindow::GetColorBufferSizes(int* rgba)
      {
        attachment = GL_BACK_LEFT;
      }

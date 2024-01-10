@@ -156,4 +156,21 @@
   * no upstream changelog</comment>
     <requestid>1113220</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>a5360d230039b591bdc3f1dbcc7511d2</srcmd5>
+    <version>0.18.1</version>
+    <time>1703527527</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.18.1
+  * Add &quot;collapsed&quot; property to the &quot;LayersControl&quot; by @gjmooney in
+    #1156
+  * Add &quot;index&quot; argument to the Map's &quot;add&quot; method by @gjmooney in
+    #1156
+- Release 0.18.0
+  * Removed the unwanted character from Python code. by @frankwwu
+    in #1139
+  * Added Jupyter Lab 4 support by @cdanielw in #1146
+  * Add support for PMTiles by @giswqs in #1138</comment>
+    <requestid>1134921</requestid>
+  </revision>
 </revisionlist>

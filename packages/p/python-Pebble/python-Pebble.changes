@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 27 13:52:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.0.6:
+  * issue #124: handle `BaseException` in pools' workers
+
+-------------------------------------------------------------------
 Sun Dec 10 21:37:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.0.5:

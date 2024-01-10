@@ -19,14 +19,13 @@
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 
 Name:           kubie
-Version:        0.22.0
+Version:        0.23.0
 Release:        0
 Summary:        A Kubernetes context switcher
 License:        Zlib
 URL:            https://github.com/sbstp/kubie
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
-Source2:        cargo_config
 Recommends:     fzf
 BuildRequires:  cargo
 BuildRequires:  rust >= 1.67.0
@@ -61,9 +60,6 @@ Fish command line completion support for %{name}.
 
 %prep
 %autosetup -a1
-
-mkdir .cargo
-cp %{SOURCE2} .cargo/config
 
 %build
 RUSTFLAGS=%{rustflags} cargo build --release --no-default-features

@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sun Jan  7 20:04:31 UTC 2024 - cloud-devel@suse.de
+
+- removed 0001-add-suse_py39-flavor-to-explicitly-render-templates-.patch
+- update to version 0.28.0
+  - Moving IRC network reference to OFTC
+  - Remove retired Qinling support
+  - Remove retired Searchlight usage
+  - add suse_py39 flavor to explicitly render templates for py39
+  - Remove retired karbor usage
+  - Add RDO mapping for psycopg2-binary
+  - Remove retired Karbor support
+  - Update package rules for some packages in the Redhat ecosystems
+  - update to zed level jobs
+  - Add python2 and python3 return values
+  - Bump some requirements in lower-constraints.txt
+  - Convert from "-" to "_" in setup.cfg
+  - Add RDO mapping for semantic-version
+  - Revert "Fix PyYAML mapping for RDO"
+  - bump py37 to py38 in tox.ini
+  - Move CLI code into it's own module
+  - [tox] Update constraints, flake8 settings and default envlist
+  - Add reqs2pkg
+  - Use py3 as the default runtime for tox
+  - remove unicode from code
+  - [community goal] Update contributor documentation
+  - Add doc/requirements
+  - Retire django-openstack-auth
+  - add suse_py311 flavor to explicitly render templates for py311
+  - Add RDO mapping for suds-community
+  - Add RDO mapping for prometheus-client
+  - Change RDO mapping for sympy and protobuf
+
+-------------------------------------------------------------------
 Fri Mar  3 21:32:18 UTC 2023 - cloud-devel@suse.de
 
 - added 0001-add-suse_py39-flavor-to-explicitly-render-templates-.patch

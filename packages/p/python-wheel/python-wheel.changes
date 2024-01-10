@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Dec 22 15:31:14 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.42.0
+  * Allowed removing build tag with wheel tags --build ""
+  * Fixed wheel pack and wheel tags writing updated WHEEL fields
+    after a blank line, causing other tools to ignore them
+  * Fixed wheel pack and wheel tags writing WHEEL with CRLF line
+    endings or a mix of CRLF and LF
+  * Fixed wheel pack --build-number "" not removing build tag from
+    WHEEL (above changes by Benjamin Gilbert)
+- Release 0.41.3
+  * Updated vendored packaging to 23.2
+  * Fixed ABI tag generation for CPython 3.13a1 on Windows (PR by
+    Sam Gross)
+- Remove pip dependency for easier bootstrap
+
+-------------------------------------------------------------------
 Mon Sep  4 03:35:21 UTC 2023 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Update to 0.41.2:

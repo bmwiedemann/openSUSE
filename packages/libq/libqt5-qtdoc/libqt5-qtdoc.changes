@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Dec 29 15:43:50 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Update to 5.15.12:
+  * See individual module packages for changelogs
+
+-------------------------------------------------------------------
+Tue Dec 19 09:46:13 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Update to 5.15.11:
+  * See individual module packages for changelogs
+- Drop patches, now upstream:
+  * 0002-Build-fixes-for-GCC-11.patch
+  * 0001-Partially-revert-813a928c7c3cf98670b6043149880ed5c95.patch
+
+-------------------------------------------------------------------
 Wed Apr 26 20:44:31 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Replace BuildRequire on xorg-x11-devel by pkgconfig(...)

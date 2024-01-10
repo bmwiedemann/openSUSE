@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-traitlets
-Version:        5.11.2
+Version:        5.14.0
 Release:        0
 Summary:        Traitlets Python configuration system
 License:        BSD-3-Clause
@@ -41,7 +41,7 @@ A configuration system for Python applications.
 
 %prep
 %autosetup -p1 -n traitlets-%{version}
-sed -i 's/--color yes//' pyproject.toml
+sed -i 's/"--color=yes",//' pyproject.toml
 
 %build
 %pyproject_wheel
@@ -51,7 +51,8 @@ sed -i 's/--color yes//' pyproject.toml
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# no mypy testing in Ring1
+%pytest --ignore tests/test_typing.py
 
 %files %{python_files}
 %doc README.md

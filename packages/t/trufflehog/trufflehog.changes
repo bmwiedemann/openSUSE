@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Sat Dec 23 19:28:02 UTC 2023 - felix.niederwanger@suse.com
+
+- Update to version 3.63.7:
+  * Use directory iterator instead of walkdir (#2260)
+  * Add handlerOpts back (#2258)
+  * Skip all binaries (#2256)
+  * Add skip archive support (#2257)
+
+-------------------------------------------------------------------
+Fri Dec 22 19:34:15 UTC 2023 - felix.niederwanger@suse.com
+
+- Update to version 3.63.6:
+  * use walk dir for tmp cleanup (#2255)
+  * [fixup] -  Refactor to Pass Reader for Binary Diffs and Archived Data; Optimize /tmp Directory Cleanup (#2253)
+  * Dedupe some source log keys (#2250)
+  * Fix goroutine leak (#2251)
+  * [chore] - lower logging level (#2249)
+  * [chore] - add additional binary extensions to skip (#2235)
+  * use snake_case for naming (#2238)
+  * [bug] - Bug archive handler memory leak (#2247)
+  * Add missing import (#2246)
+  * fix(snowflake): avoid extraneous attempts (#2057)
+
+-------------------------------------------------------------------
+Tue Dec 19 07:49:30 UTC 2023 - felix.niederwanger@suse.de
+
+- Update to version 3.63.5:
+  * move cleanup to run (#2245)
+  * Adds basic if/else check if pid slice is empty (#2244)
+  * fix(deps): update module golang.org/x/crypto to v0.17.0 [security] (#2243)
+  * add secretID to chunk (#2242)
+
+-------------------------------------------------------------------
+Mon Dec 18 12:33:54 UTC 2023 - felix.niederwanger@suse.de
+
+- Update to version 3.63.4:
+  * feat(shortcut): use tri-state verification (#2211)
+  * feat(huggingface): enhance extradata (#2222)
+  * fix(myfreshworks): check for valid JSON (#2212)
+  * ci: don't run detector tests on forks (#2234)
+  * [chore] Add skip_binaries field to AzureRepos proto message (#2232)
+  * [feat] - Make skipping binaries configurable (#2226)
+  * [chore] Prevent panic when ChunkError has a nil Unit (#2227)
+  * chore: don't run test workflow in forks (#2221)
+  * fix(github): remove unused 'members' var (#2202)
+  * Check for SourceUnit support dynamically in the SourceManager (#2205)
+  * fix(gitlab): check for valid JSON (#2218)
+  * Avoid reading decompressed data into memory (#2196)
+  * fix(gitparse): don't trim filename (#2201)
+  * fix(giturl): encode '%' in path (#2214)
+  * build: upgrade bodgit/sevenzip to v1.4.5 (#2215)
+  * Fix emoji in README (#2217)
+
+-------------------------------------------------------------------
+Thu Dec 14 15:05:21 UTC 2023 - felix.niederwanger@suse.de
+
+- Update to version 3.63.3:
+  * Bump github.com/docker/docker (#2213)
+  * Update metabase verification to check for a valid JSON response (#2210)
+  * [chore] Remove unnecessary string conversion in tefter detector (#2209)
+  * fix and refactor browserstack detector (#2208)
+  * Fix azurestorage detector (#2207)
+  * [chore] Remove omitempty tags on JobProgressMetrics and UnitMetrics (#2204)
+  * Add disk buffer tempfile cleanup (#2130)
+  * Use bad json in slackwebhooks (#2193)
+  * [bug] - close file after reading (#2203)
+  * chore: propagate log context to handlers (#2191)
+  * feat(privatekey): run checks concurrently (#2139)
+  * [fixup] - skip files in the archive handler (#2195)
+  * move logic to main Chunks method (#2194)
+  * add metrics for gitlab (#2190)
+  * [chore] - Refactor common code into a separate function (#2179)
+  * Remove java archives from ignored extensions (#2188)
+  * [chore] - Compile regex once (#2176)
+
+-------------------------------------------------------------------
 Thu Dec 07 10:40:06 UTC 2023 - felix.niederwanger@suse.de
 
 - Update to version 3.63.2:

@@ -630,4 +630,12 @@ Reason 1.1.x will not be supported to EOL of openSUSE 12.2, see also Bugzilla Bu
     <comment></comment>
     <requestid>1073695</requestid>
   </revision>
+  <revision rev="87" vrev="3">
+    <srcmd5>d12cf96143d843708b83b77051280f58</srcmd5>
+    <version>1.2.13</version>
+    <time>1703198254</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1134276</requestid>
+  </revision>
 </revisionlist>

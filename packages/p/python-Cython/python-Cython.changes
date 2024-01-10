@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Jan  2 22:01:07 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- require setuptools
+
+-------------------------------------------------------------------
+Thu Dec 21 16:15:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.7:
+  * In the iterator of generator expressions, ``await`` and
+    ``yield`` were not correctly analysed.
+  * ``cpdef`` enums with the same name cimported from different
+    modules could lead to invalid C code.
+  * Some declarations in ``cpython.unicode`` were fixed and
+    extended.
+  * Compiling fused types used in pxd files could crash Cython in
+    Python 3.11+.
+  * Source files with non-ASCII file names could crash Cython.
+  * Includes all bug-fixes and features from the 0.29 maintenance
+    branch
+
+-------------------------------------------------------------------
 Mon Nov 27 08:49:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.0.6:

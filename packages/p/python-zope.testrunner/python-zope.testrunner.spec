@@ -1,7 +1,7 @@
 #
 # spec file for package python-zope.testrunner
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,13 +26,15 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-zope.testrunner
-Version:        6.2
+Version:        6.2.1
 Release:        0
 Summary:        Zope testrunner script
 License:        ZPL-2.1
 URL:            https://github.com/zopefoundation/zope.testrunner
 Source:         https://files.pythonhosted.org/packages/source/z/zope.testrunner/zope.testrunner-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module zope.exceptions}
 BuildRequires:  %{python_module zope.interface}
 BuildRequires:  fdupes
@@ -57,11 +59,11 @@ This package provides a flexible test runner with layer support.
 find -size 0 -delete
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %python_clone -a %{buildroot}%{_bindir}/zope-testrunner
@@ -83,7 +85,9 @@ find -size 0 -delete
 %license LICENSE.md
 %doc README.rst
 %python_alternative %{_bindir}/zope-testrunner
-%{python_sitelib}/zope*
+%{python_sitelib}/zope/testrunner
+%{python_sitelib}/zope.testrunner-%{version}-py*-nspkg.pth
+%{python_sitelib}/zope.testrunner-%{version}.dist-info
 %endif
 
 %changelog

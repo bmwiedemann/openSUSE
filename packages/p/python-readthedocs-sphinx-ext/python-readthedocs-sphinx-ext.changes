@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Dec 29 10:04:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.5:
+  * Revert "Keep default Search.init behavior if addons injected
+
+-------------------------------------------------------------------
+Fri Dec 15 22:48:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.4:
+  * Reduce loglevel to info
+  * Keep default Search.init behavior if addons injected
+
+-------------------------------------------------------------------
 Thu Sep  7 11:41:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.2.2:

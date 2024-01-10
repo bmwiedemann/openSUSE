@@ -306,4 +306,14 @@
 </comment>
     <requestid>1117772</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>d04af2b3c04cfd4a740dc258e041e092</srcmd5>
+    <version>7.0.6</version>
+    <time>1703801024</time>
+    <user>anag+factory</user>
+    <comment>- Update to 7.0.6
+  * Updated fav-icon Base URL from JupyterLab PageConfig. #7109
+    (@jayeshsingh9767)</comment>
+    <requestid>1135500</requestid>
+  </revision>
 </revisionlist>

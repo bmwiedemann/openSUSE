@@ -703,4 +703,44 @@
     <comment></comment>
     <requestid>1133070</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>d5cf690db62035cbd1fab10728ebdfb6</srcmd5>
+    <version>0.54.4</version>
+    <time>1702673361</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1133244</requestid>
+  </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>3fa78827c0f41586ece0dfe819f7e6cb</srcmd5>
+    <version>0.54.5</version>
+    <time>1702845226</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1133722</requestid>
+  </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>513abfa702277b423fc57a0fae41e1f9</srcmd5>
+    <version>0.54.7</version>
+    <time>1703102588</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1134195</requestid>
+  </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>b9962c216ba45fa7dea0b9fd03f8149f</srcmd5>
+    <version>0.54.9</version>
+    <time>1703198383</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1134524</requestid>
+  </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>e4bc158c8bac6baad202581dcbb23a7d</srcmd5>
+    <version>0.54.12</version>
+    <time>1704487373</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1136922</requestid>
+  </revision>
 </revisionlist>

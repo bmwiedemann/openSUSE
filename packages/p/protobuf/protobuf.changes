@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 21 13:53:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- build against modern python on sle15
+
+-------------------------------------------------------------------
 Mon Oct 30 10:47:11 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Build with source and target levels 8
@@ -137,7 +142,7 @@ Mon Apr 24 12:30:51 UTC 2023 - Adrian Schröter <adrian@suse.de>
 - python sub packages version is set 4.22.3 as defined in
   python/google/protobuf/__init__.py to stay compatible
 - skip python2 builds by default
-- drop patches: 
+- drop patches:
   * 10355.patch,
   * gcc12-disable-__constinit-with-c++-11.patch (merged upstream)
 - added patches:
@@ -206,7 +211,7 @@ Mon Sep 19 07:27:02 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 21.6:
   C++:
-  * Reduce memory consumption of MessageSet parsing 
+  * Reduce memory consumption of MessageSet parsing
 
 -------------------------------------------------------------------
 Wed Aug 17 19:33:06 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -252,7 +257,7 @@ Mon Jul 25 07:11:14 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * Python
     * Make //:protobuf_python and //:well_known_types_py_pb2 public (#10118)
   * Bazel
-     * Add back a filegroup for :well_known_protos (#10061) 
+     * Add back a filegroup for :well_known_protos (#10061)
 
 -------------------------------------------------------------------
 Sun Jul  3 07:50:16 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
@@ -517,31 +522,31 @@ Mon Jan 24 13:08:10 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
     * Make proto2::Message::DiscardUnknownFields() non-virtual
     * Separate RepeatedPtrField into its own header file
     * For default floating point values of 0, consider all bits significant
-    * Fix shadowing warnings 
-    * Fix for issue #8484, constant initialization doesn't compile in msvc clang-cl environment 
+    * Fix shadowing warnings
+    * Fix for issue #8484, constant initialization doesn't compile in msvc clang-cl environment
   Java:
     * Improve performance characteristics of UnknownFieldSet parsing
     * For default floating point values of 0, consider all bits significant
     * Annotate //java/com/google/protobuf/util/... with nullness annotations
-    * Use ArrayList copy constructor 
+    * Use ArrayList copy constructor
   Bazel:
     * Ensure that release archives contain everything needed for Bazel
     * Align dependency handling with Bazel best practices
   Javascript:
-    * Fix ReferenceError: window is not defined when getting the global object 
+    * Fix ReferenceError: window is not defined when getting the global object
   Ruby:
-    * Fix memory leak in MessageClass.encode 
-    * Override Map.clone to use Map's dup method 
-    * Ruby: build extensions for arm64-darwin 
-    * Add class method Timestamp.from_time to ruby well known types 
-    * Adopt pure ruby DSL implementation for JRuby 
+    * Fix memory leak in MessageClass.encode
+    * Override Map.clone to use Map's dup method
+    * Ruby: build extensions for arm64-darwin
+    * Add class method Timestamp.from_time to ruby well known types
+    * Adopt pure ruby DSL implementation for JRuby
     * Add size to Map class
-    * Fix for descriptor_pb.rb: google/protobuf should be required first 
+    * Fix for descriptor_pb.rb: google/protobuf should be required first
   Python:
     * Proto2 DecodeError now includes message name in error message
     * Make MessageToDict convert map keys to strings
-    * Add python-requires in setup.py 
-    * Add python 3.10 
+    * Add python-requires in setup.py
+    * Add python 3.10
 
 -------------------------------------------------------------------
 Wed Jul 28 08:00:56 UTC 2021 - Fridrich Strba <fstrba@suse.com>

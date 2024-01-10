@@ -119,4 +119,19 @@
 - Add patch sphinx72.patch</comment>
     <requestid>1108040</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>29df9db0215962df32d7aa9dba62c47b</srcmd5>
+    <version>0.2.12</version>
+    <time>1704829744</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.2.12:
+  * small fix for tests
+  * fix docs
+  * An option to sort sections
+- drop sphinx72.patch (upstream)
+
+- Remove guard on upper Sphinx version.
+    3.5. See #42</comment>
+    <requestid>1137627</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2013 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,21 +28,22 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-zope.location%{psuffix}
-Version:        4.3
+Version:        5.0
 Release:        0
 Summary:        Zope Location
 License:        ZPL-2.1
 Group:          Development/Languages/Python
-URL:            http://www.python.org/pypi/zope.location
+URL:            https://www.python.org/pypi/zope.location
 Source:         https://files.pythonhosted.org/packages/source/z/zope.location/zope.location-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module zope.schema >= 4.2.2}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-zope.interface >= 4.0.2
 Requires:       python-zope.proxy >= 4.0.1
 Requires:       python-zope.schema >= 4.2.2
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module zope.component >= 4.0.1}
 BuildRequires:  %{python_module zope.configuration}
@@ -50,7 +51,6 @@ BuildRequires:  %{python_module zope.copy >= 4.0}
 BuildRequires:  %{python_module zope.proxy}
 BuildRequires:  %{python_module zope.testrunner}
 %endif
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -61,11 +61,11 @@ In Zope3, location are special objects that has a structural location.
 rm -rf src/zope.location.egg-info
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -76,8 +76,8 @@ rm -rf src/zope.location.egg-info
 
 %if !%{with test}
 %files %{python_files}
-%defattr(-,root,root,-)
-%doc COPYRIGHT.txt LICENSE.txt CHANGES.rst README.rst
+%license LICENSE.txt
+%doc COPYRIGHT.txt CHANGES.rst README.rst
 %{python_sitelib}/*
 %endif
 

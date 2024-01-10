@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-fsspec%{psuffix}
-Version:        2023.10.0
+Version:        2023.12.2
 Release:        0
 Summary:        Filesystem specification package
 License:        BSD-3-Clause
@@ -63,16 +63,19 @@ BuildRequires:  %{python_module fastparquet}
 BuildRequires:  %{python_module fusepy}
 BuildRequires:  %{python_module gcsfs}
 BuildRequires:  %{python_module lz4}
+BuildRequires:  %{python_module mistune}
 BuildRequires:  %{python_module notebook}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module panel}
 BuildRequires:  %{python_module paramiko}
 BuildRequires:  %{python_module pyarrow}
 BuildRequires:  %{python_module pyftpdlib}
+BuildRequires:  %{python_module pygit2}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-snappy}
 BuildRequires:  %{python_module requests}
+BuildRequires:  git-core
 # Too tight of a aiobotocore pinning: gh#fsspec/s3fs#615, gh#aio-libs/aiobotocore#971
 #BuildRequires:  %%{python_module s3fs}
 BuildRequires:  %{python_module smbprotocol}
@@ -110,6 +113,8 @@ donttest+=" or test_dbfs"
 donttest+=" or test_find"
 # does not like the '.' from the version in the build path
 donttest+=" or (test_local and test_make_path_posix)"
+# no fuse module loaded
+donttest+=" or test_fuse"
 %pytest -rfEs  -k "not ($donttest)"
 %endif
 

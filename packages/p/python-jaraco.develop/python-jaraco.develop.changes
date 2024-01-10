@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Jan  6 18:25:56 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.6.0:
+  * Features - In merge, ensure that an uncommented RTD badge
+    isn't lost when resolving placeholders.
+
+-------------------------------------------------------------------
+Wed Jan  3 17:25:53 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Tue Dec 19 08:55:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.5.0:
+  * Update merge resolver to re-substitute placeholders to honor
+    upstream changes.
+  * Add 'projects-run' script for running a command across all of
+    the projects.
+  * Adding script for syncing a backport (configparser,
+    singledispatch) to a CPython branch.
+
+-------------------------------------------------------------------
 Thu Aug 17 10:36:24 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Initial packaging (v8.2.0), needed by setuptools:test

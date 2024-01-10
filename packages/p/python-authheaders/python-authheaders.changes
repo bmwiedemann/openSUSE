@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan  8 08:47:41 UTC 2024 - Andreas Schneider <asn@cryptomilk.org>
+
+- Fix importing resources
+  * Added authheaders-importlib-resources.patch
+
+-------------------------------------------------------------------
 Thu Nov  2 09:03:06 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to version 0.15.3

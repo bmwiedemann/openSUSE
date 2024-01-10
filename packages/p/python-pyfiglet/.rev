@@ -31,4 +31,38 @@
     <comment></comment>
     <requestid>807661</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>42f0cdf54f8cfaeef19f8bbd896b6a2a</srcmd5>
+    <version>1.0.2</version>
+    <time>1704753879</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.2:
+  * Close file handle in preloadFont
+  * Add python3.9 to testing
+  * subprocess32 no longer needed
+  * Add python_requires &gt;= 3.9
+- update to 1.0.0:
+  * Update setup.py for python 3.6 and 3.7
+  * Add 'make publish' which also publishes wheel (0.8.post1)
+  * Add support for zipped fonts
+  * Fix simple typo: compatability -&gt; compatibility
+  * make color parameter caps
+  * add options for handling surrounding whitespace
+  * Fix for #89 - clarify font licensing
+  * Update __init__.py
+  * Add loading German Umlaute
+  * Added fonts
+  * Support caca2tlf converted fonts better
+  * add blocky font
+  * Fix setup
+  * Revert &quot;Fix setup&quot;
+  * Update test.yml python versions
+  * Port to importlib.resources
+  * seek to the start of the file after checking for a zip header
+  * Fix for various font issues
+  * Fix most reming font issues
+  * Fix #95 - Default fonts if user just runs setup.py
+  * Setup auto publish</comment>
+    <requestid>1137446</requestid>
+  </revision>
 </revisionlist>

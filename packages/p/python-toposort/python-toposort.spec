@@ -1,7 +1,7 @@
 #
 # spec file for package python-toposort
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-toposort
-Version:        1.7
+Version:        1.10
 Release:        0
 Summary:        Implements a topological sort algorithm
 License:        Apache-2.0
@@ -53,10 +53,10 @@ sed -i '/unittest.main/d' test/test_toposort.py
 %pyunittest -v
 
 %files %{python_files}
-%doc CHANGES.txt README.txt
+%doc CHANGES.txt README.md
 %license LICENSE.txt
 %{python_sitelib}/toposort.py*
 %pycache_only %{python_sitelib}/__pycache__/toposort*
-%{python_sitelib}/toposort-%{version}*-info
+%{python_sitelib}/toposort-%{version}.dist-info
 
 %changelog

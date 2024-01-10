@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Dec 27 09:43:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.108.0:
+  * Upgrade Starlette to `>=0.29.0,<0.33.0`, update docs and
+    usage of templates with new Starlette arguments.
+
+-------------------------------------------------------------------
+Thu Dec 14 10:14:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.105.0:
+  * Add support for multiple Annotated annotations, e.g.
+    `Annotated[str, Field(), Query()]`.
+  * Remove unused NoneType.
+  * Tweak default suggested configs for generating clients.
+
+-------------------------------------------------------------------
 Tue Nov  7 14:13:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.104.1:

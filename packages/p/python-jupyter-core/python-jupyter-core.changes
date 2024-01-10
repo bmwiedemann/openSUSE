@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Dec 23 19:23:58 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.5.1
+  * Account for read only file systems in migration #379
+    (@blink1073)
+
+-------------------------------------------------------------------
 Sun Nov 26 15:56:10 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 5.5.0

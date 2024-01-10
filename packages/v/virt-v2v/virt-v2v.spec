@@ -1,7 +1,7 @@
 #
 # spec file for package virt-v2v
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,16 +20,14 @@
 # If there are patches which touch autotools files, set this to 1.
 %global patches_touch_autotools 1
 # The source directory.
-%global source_directory 2.2-stable
+%global source_directory 2.4-stable
 Name:           virt-v2v
-Version:        2.2.0
+Version:        2.4.0
 Release:        0
 Summary:        Tools to convert a virtual machine to run on KVM
 License:        GPL-2.0-or-later
 Group:          System/Management
 URL:            https://github.com/libguestfs/virt-v2v
-Patch0:         fix-linker-error.patch
-Patch1:         fix-compiler-error-Stdlib.stderr.patch
 Source0:        https://download.libguestfs.org/virt-v2v/%{source_directory}/%{name}-%{version}.tar.gz
 Source1:        https://download.libguestfs.org/virt-v2v/%{source_directory}/%{name}-%{version}.tar.gz.sig
 
@@ -45,7 +43,6 @@ BuildRequires:  libosinfo-devel
 BuildRequires:  libvirt-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  mkisofs
-BuildRequires:  ocaml(ocaml_base_version) >= 4.07
 BuildRequires:  ocaml-fileutils-devel
 BuildRequires:  ocaml-findlib-devel
 BuildRequires:  ocaml-gettext-devel
@@ -58,6 +55,7 @@ BuildRequires:  pcre2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  po4a
 BuildRequires:  qemu-tools
+BuildRequires:  ocaml(ocaml_base_version) >= 4.07
 BuildRequires:  perl(Sys::Guestfs)
 BuildRequires:  pkgconfig(bash-completion) >= 2.0
 BuildRequires:  pkgconfig(libnbd)
@@ -195,6 +193,7 @@ mkdir -p %{buildroot}/%{_datadir}/virt-tools
 %{_mandir}/man1/virt-v2v-output-rhv.1%{?ext_man}
 %{_mandir}/man1/virt-v2v-release-notes-1.42.1%{?ext_man}
 %{_mandir}/man1/virt-v2v-release-notes-2.0.1%{?ext_man}
+%{_mandir}/man1/virt-v2v-release-notes-2.4.1%{?ext_man}
 %{_mandir}/man1/virt-v2v-support.1%{?ext_man}
 %{_mandir}/man1/virt-v2v-inspector.1.gz
 %{_mandir}/man1/virt-v2v-release-notes-2.2.1.gz

@@ -1,4 +1,97 @@
 --------------------------------------------------------------------
+Thu Jan 4 16:29:11 UTC 2024 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#976
+- make more use of new SystemCmd interface
+- use in-class member initialization
+- inhibit colored output from udevadm
+- fixed typos
+- 4.5.170
+
+--------------------------------------------------------------------
+Tue Jan 2 10:55:06 UTC 2024 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#975
+- reduce number of udevadm settle calls during probing
+- use in-class member initialization
+- proved probe function taking SystemInfo as an additional argument
+- fixed typos
+- moved code
+- 4.5.169
+
+--------------------------------------------------------------------
+Fri Dec 22 12:29:33 UTC 2023 - aschnell@suse.com
+
+- Translated using Weblate (Slovak) (bsc#1149754)
+- 4.5.168
+
+--------------------------------------------------------------------
+Fri Dec 22 12:29:32 UTC 2023 - freek@opensuse.org
+
+- Translated using Weblate (Dutch) (bsc#1149754)
+
+--------------------------------------------------------------------
+Fri Dec 22 12:29:31 UTC 2023 - aschnell@suse.com
+
+- Translated using Weblate (Japanese) (bsc#1149754)
+
+--------------------------------------------------------------------
+Fri Dec 22 12:29:30 UTC 2023 - aschnell@suse.com
+
+- Translated using Weblate (Czech) (bsc#1149754)
+
+--------------------------------------------------------------------
+Fri Dec 22 10:13:59 UTC 2023 - aschnell@suse.com
+
+- Translated using Weblate (Catalan) (bsc#1149754)
+
+--------------------------------------------------------------------
+Fri Dec 22 09:04:36 UTC 2023 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#974
+- updated pot and po files
+- 4.5.167
+
+--------------------------------------------------------------------
+Fri Dec 22 08:37:33 UTC 2023 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#973
+- fixed typos
+- 4.5.166
+
+--------------------------------------------------------------------
+Thu Dec 21 16:20:34 UTC 2023 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#972
+- added note about nvme json output
+- 4.5.165
+
+--------------------------------------------------------------------
+Thu Dec 21 12:21:32 UTC 2023 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#971
+- adapted to changed nvme json output (bsc#1218306)
+- 4.5.164
+
+--------------------------------------------------------------------
+Tue Dec 19 09:58:22 UTC 2023 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#970
+- consistent (and original) naming of bcache operations
+- coding style
+- improved logging
+- updated integration tests
+- fixed typo
+- 4.5.163
+
+--------------------------------------------------------------------
+Fri Dec 15 09:28:16 UTC 2023 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#969
+- factor out common code
+- 4.5.162
+
+--------------------------------------------------------------------
 Fri Dec 8 10:59:47 UTC 2023 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#968

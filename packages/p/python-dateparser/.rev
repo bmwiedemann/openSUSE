@@ -236,4 +236,31 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1119297</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>6d9332ae7de213754876b2bb9a2b57ce</srcmd5>
+    <version>1.2.0</version>
+    <time>1703800516</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.2.0:
+  * New ``PREFER_MONTH_OF_YEAR`` setting (#1146)
+  * Absolute years in Russian are no longer being treated as a
+    number of years in the past (#1129)
+  * Cleanups and internal improvements:
+  * Removed the use of ``datetime.utcnow``, deprecated on Python
+    3.12 (#1179)
+  * Applied Black formatting to the code base (#1158)
+  * Initial integration with OSSFuzz (#1198)
+  * Extended test cases (#1191)
+
+- Update to 1.1.3
+- Update to 1.1.2
+  * Implement a PARSERS setting
+  * Add support for `PREFER_DATES_FROM` in relative/freshness parser
+  * Add support for `PREFER_DAY_OF_MONTH` in base-formats parser
+  * Added UTC -00:00 as a valid offset
+  * Fix support for “one”
+  * Fix tokenizer for non recognized characters
+  * Prevent installing regex 2019.02.19</comment>
+    <requestid>1135449</requestid>
+  </revision>
 </revisionlist>

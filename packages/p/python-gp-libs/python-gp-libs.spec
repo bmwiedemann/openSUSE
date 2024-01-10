@@ -17,18 +17,18 @@
 
 
 Name:           python-gp-libs
-Version:        0.0.4
+Version:        0.0.5
 Release:        0
 Summary:        Internal utilities for projects following git-pull python package spec
 License:        MIT
 URL:            https://gp-libs.git-pull.com
 Source:         https://files.pythonhosted.org/packages/source/g/gp-libs/gp_libs-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module wheel}
-BuildRequires:  %{python_module poetry-core >= 1.0.0}
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module myst-parser}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core >= 1.0.0}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
 # SECTION test
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest-rerunfailures}

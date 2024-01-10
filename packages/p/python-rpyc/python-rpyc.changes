@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Dec 29 09:53:28 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.3.1:
+  * `#527`_ Resolved timeout issue that was introduced in 5.2.1
+  * `#525`_ and `#524`_ Fixed experimental thread binding struct
+    for platforms where unsigned long is 8-bits
+    While the fix for thread binding is not backwards compatible,
+    it only impacts people using an experimental feature. Hence,
+    I did a patch version bump.
+
+-------------------------------------------------------------------
 Tue Feb 21 08:31:28 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Disable broken test for python 3.11
@@ -6,7 +17,7 @@ Tue Feb 21 08:31:28 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 -------------------------------------------------------------------
 Tue Dec  6 15:32:20 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 5.3.0 
+- Update to version 5.3.0
   #515 Support for Python 3.11 is available after teleportation bug fix
   #507 Experimental support for threading is added (default is disabled for now)
   #516 Resolved server-side exceptions due to the logic for checking if a name is in ModuleNamespace
@@ -124,33 +135,33 @@ Fri May 24 10:59:46 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
   * fix default hostname for ipv6 in rpyc_classic.py
   * fix ThreadPoolServer not working
   4.0.1
-  * fix ValueError during install due to absolute PATH in SOURCES.txt 
+  * fix ValueError during install due to absolute PATH in SOURCES.txt
   4.0.0 (see upstream Release Change Log for more)
-  * classic.teleport_function now executes the function in the 
+  * classic.teleport_function now executes the function in the
     connection’s namespace by default
-  * Changed signature of Service.on_connect and on_disconnect, 
+  * Changed signature of Service.on_connect and on_disconnect,
     adding the connection as argument.
-  * Changed signature of Service.__init__, removing the connection 
+  * Changed signature of Service.__init__, removing the connection
     argument
   * no longer store connection as self._conn.
-  * SlaveService is now split into two asymetric classes: 
+  * SlaveService is now split into two asymetric classes:
     SlaveService and MasterService. If you want old SlaveService
     behaviour, use ClassicService
   * Removed modules rpyc.experimental.splitbrain and rpyc.experimental.retunnel.
   * bin/rpyc_classic.py will bind to 127.0.0.1 instead of 0.0.0.0 by default
-  * Exposed attributes no longer hide plain attributes if one 
-    otherwise has the required permissions to access the plain attribute. 
-  * teleported functions will now be defined by default in the 
+  * Exposed attributes no longer hide plain attributes if one
+    otherwise has the required permissions to access the plain attribute.
+  * teleported functions will now be defined by default in the
     globals dict
   * fix deadlock with connections talking to each other multithreadedly
   * handle timeouts cumulatively
   * fix __hash__ for netrefs
-  * add gevent Server. For now, this requires using gevent.monkey.patch_all() 
+  * add gevent Server. For now, this requires using gevent.monkey.patch_all()
     before importing for rpyc. Client connections can already be made
     without further changes to rpyc, just using gevent’s monkey patching.
-  * fix problem with MongoDB, or more generally any remote objects 
+  * fix problem with MongoDB, or more generally any remote objects
     that have a catch-all __getattr__
-  * service can now easily override protocol handlers, by updating 
+  * service can now easily override protocol handlers, by updating
     conn._HANDLERS in _connect or on_connect.
 - implement multibuild to fix some tests, skip some other failing tests
 

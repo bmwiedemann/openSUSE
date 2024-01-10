@@ -23,7 +23,7 @@
 %define mod_name vagrant-vbguest
 %define mod_full_name %{mod_name}-%{version}
 Name:           vagrant-vbguest
-Version:        0.31.0
+Version:        0.32.0
 Release:        0
 Summary:        Vagrant provider for vbguest
 License:        MIT

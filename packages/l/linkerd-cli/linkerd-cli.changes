@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jan 04 18:46:36 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.14.8:
+  * This stable release fixes an issue in the control plane where
+    discovery for pod IP addresses could hang indefinitely
+    (#11815).
+
+-------------------------------------------------------------------
+Thu Dec 21 17:39:25 UTC 2023 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.14.7:
+  * stable-2.14.7
+  * Keep other controller statuses when updating httproute status
+    (#11705)
+  * Destination controller should initialize jobs metadata api
+    (#11541)
+
+-------------------------------------------------------------------
 Thu Dec 07 19:00:24 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.14.6:

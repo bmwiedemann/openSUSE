@@ -243,4 +243,23 @@
     <comment>- Update vendored dependencies</comment>
     <requestid>1129555</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>4951441d4df665337f55e5f6f32b692a</srcmd5>
+    <version>1.0.9</version>
+    <time>1703024129</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0.9:
+  * Update Cargo.lock
+  * [build] Check Cargo.lock while it is updated
+  * Bump version to 1.0.9
+  * [build] Sync dependencies versions between Cargo.lock and Cargo.toml
+  * [thin_check] Extend the --clear-needs-check-flag option to have auto-repair caps
+  * [build] Require that Cargo.lock is up to date
+  * [all] Fix clippy lints for Rust 1.74.0
+  * Update cargo.lock
+  * bump version nr to 1.0.8
+  * [sync io engine] Stop reusing the same gap buffer.
+  * [tests] Fix extra arguments for IO tests</comment>
+    <requestid>1133877</requestid>
+  </revision>
 </revisionlist>

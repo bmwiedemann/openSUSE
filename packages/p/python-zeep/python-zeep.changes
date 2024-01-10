@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Dec 15 06:34:59 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.2.1:
+  * Fix error regarding closing session in async transport (#1347)
+  * Drop support for Python 3.6
+  * Allow embedding CDATA elements in simple types (#1339)
+  * Allow to pass in a pre parsed Document (#1330)
+  * Fix httpx DeprecationWarning for post data (#1326)
+  * Add BinaryMemorySignature (#1300)
+  * Fix IndexError when empty body response (#1287)
+  * Add support for context manager on Client (#1166)
+  * Allow Ws Addressing plugin to use a different URL (#1328)
+  * Accept strings for xsd base64Binary (#1072)
+- Drop patches httpx-test.patch, python-zeep-no-mock.patch:
+  * Included upstream.
+- Add patch xfail-network-tests.patch:
+  * XFAIL, rather than FAIL tests that require a network connection.
+- Switch to autosetup and pyproject macros.
+- BuildRequire xmlsec unilaterally and install the openssl library.
+- No longer ignore some test files
+
+-------------------------------------------------------------------
 Wed Jun  8 21:55:35 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Re-enable python310: xmlsec is optional

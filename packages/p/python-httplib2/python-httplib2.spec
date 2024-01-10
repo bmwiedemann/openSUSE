@@ -1,7 +1,7 @@
 #
 # spec file for package python-httplib2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ License:        Apache-2.0 AND MIT AND (GPL-2.0-or-later OR MPL-1.1 OR LGPL-2.1-
 URL:            https://github.com/httplib2/httplib2
 Source:         https://files.pythonhosted.org/packages/source/h/httplib2/httplib2-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

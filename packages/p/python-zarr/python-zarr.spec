@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-zarr
-Version:        2.16.0
+Version:        2.16.1
 Release:        0
 Summary:        An implementation of chunked, compressed, N-dimensional arrays for Python
 License:        MIT

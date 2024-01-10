@@ -1,7 +1,7 @@
 #
 # spec file for package python-argh
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-argh
-Version:        0.30.4
+Version:        0.31.0
 Release:        0
 Summary:        An argparse wrapper
 License:        LGPL-3.0-or-later

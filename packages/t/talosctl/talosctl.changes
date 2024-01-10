@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Jan  7 18:02:13 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to 1.6.1:
+  Changelog for Talos 1.6.1 is here:
+  https://github.com/siderolabs/talos/releases/tag/v1.6.1
+  Apparently no changes regarding the CLI
+
+-------------------------------------------------------------------
+Fri Dec 15 11:52:32 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.6.0:
+  Changelog for Talos 1.6.0 is here:
+  https://github.com/siderolabs/talos/releases/tag/v1.6.0
+  Changes for the CLI:
+  * The command 'images' deprecated in Talos 1.5 was removed,
+    please use 'talosctl images default' instead.
+
+-------------------------------------------------------------------
 Thu Nov 09 14:49:20 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.5.5:

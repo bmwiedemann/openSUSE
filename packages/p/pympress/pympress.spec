@@ -21,12 +21,12 @@
 # Do not support python 2, and build a single package
 %define pythons python3
 Name:           pympress
-Version:        1.8.4
+Version:        1.8.5
 Release:        0
 Summary:        A simple and powerful dual-screen PDF reader designed for presentations
 License:        GPL-2.0-or-later
 URL:            https://github.com/Cimbali/pympress/
-Source0:        pympress-1.8.4.tar.gz
+Source0:        pympress-1.8.5.tar.gz
 BuildRequires:  coreutils
 BuildRequires:  fdupes
 BuildRequires:  findutils

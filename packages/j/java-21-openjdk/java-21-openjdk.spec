@@ -476,6 +476,7 @@ bash ../configure \
 %if %{is_release}
     --with-version-pre="" \
 %endif
+    --with-version-build="%{buildver}" \
     --with-version-opt="suse-%{release}-%{_arch}" \
 %if %{with zero}
     --with-jvm-variants=zero \

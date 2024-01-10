@@ -7370,4 +7370,78 @@ always built-in because vim has direct perl dependencies anyway.
  *  Can't detect angular &amp; mustache filetypes</comment>
     <requestid>1131553</requestid>
   </revision>
+  <revision rev="359" vrev="1">
+    <srcmd5>3033e3ccc1eb89695e4deef1045e88f9</srcmd5>
+    <version>9.0.2181</version>
+    <time>1703198276</time>
+    <user>anag+factory</user>
+    <comment>- update to 9.0.2181: 
+ *  Vim9: missing error messages
+ *  update helptags
+ *  POSIX function name in exarg causes issues
+ *  no filetype detection for execline scripts
+ *  reg_executing() wrong for :normal with range
+ *  Wrong cursor position when dragging out of window
+ *  Update Serbian messages translation
+ *  runtime(netrw): prevent E11 on FocusGained autocommand
+ *  Update Japanese translation
+ *  runtime(8th): updated 8th syntax
+ *  change dependabot prefix to &quot;CI&quot;
+ *  Update change.txt
+ *  Compile error with Motif UI + mouse support
+ *  Create Changelog until v9.0.2175
+ *  Update Italian translations
+ *  Update tmux syntax rules
+ *  Update Turkish translations
+ *  Compiler warning for uninitialized var
+ *  update fortran syntax rules and doc notes
+ *  Vim9: segfault when assigning to type
+ *  remove deprecation warning for gdefault
+ *  Vim9: crash when compiling for statement and non-existing type
+ *  Vim9: compiling :defer may fail
+ *  Updated Irish translation
+ *  Update Logtalk runtime files for the latest language spec
+ *  update Racket runtime files
+ *  Update colorschemes
+ *  The options[] array is still not sorted alphabetically
+ *  Vim9: no support for const/final class/objects vars</comment>
+    <requestid>1134416</requestid>
+  </revision>
+  <revision rev="360" vrev="1">
+    <srcmd5>8cc81492ecb2c5c96d1897e81640dd3b</srcmd5>
+    <version>9.1.0000</version>
+    <time>1704380215</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 9.1.0000
+ add missing help tags
+ regenerate synmenu
+ proto files need update
+ improve filetype detection for *.v (V/Verilog/Coq)
+ Update sh syntax and add local keyword for bash 
+ Update ftplugin and omni-complete 
+ Update Version9.txt for release 9.1 
+ Add help tags to items in version9.txt 
+ Updated German translation 
+ Improve Turkish documentation 
+ update syntax and documentation 
+ Wrong display with 'briopt=sbr' and 'nobreakindent'
+ Updates to indent and syntax
+ Fix folding of code blocks
+ Provide sass_recommended_style option
+ Updates to ftplugin and syntax
+ Make diffs foldable
+ Add small ftplugin
+ add Hungarian translation 
+ Updated Russian translation 
+ remove coveralls, move runtime/lang/Make_mvc.mak 
+ correct the :public example 
+ adjust tutor/README.ru.utf-8.txt 
+ Update Italian translations
+ missing undo_ftplugin for indentkeys
+ cursor wrong after { in single line buffer
+ Visual not drawn with 'breakindent' when line doesn't fit
+ add help tag multiple-constructors. 
+ fix indentation</comment>
+    <requestid>1136291</requestid>
+  </revision>
 </revisionlist>

@@ -28,7 +28,7 @@
 %global systemd_units %{?with_boot_sysctl:boot-sysctl.service} %{?with_kernel_sysctl:kernel-sysctl.service}
 
 # List of legacy file systems to be blacklisted by default
-%global fs_blacklist adfs affs bfs befs cramfs efs erofs exofs freevxfs hfs hpfs jfs minix nilfs2 ntfs omfs qnx4 qnx6 sysv ufs
+%global fs_blacklist adfs affs bfs befs cramfs efs erofs exofs f2fs freevxfs hfs hfsplus hpfs jffs2 jfs kafs minix nilfs2 ntfs ntfs3 omfs orangefs pstore qnx4 qnx6 reiserfs romfs sysv ufs zonefs
 
 # List of all files installed under modprobe.d
 # Note: this list contains files installed by previous versions, like 00-system-937216.conf!
@@ -36,7 +36,7 @@
 %global modprobe_conf_rpmsave %(echo "%{modprobe_conf_files}" | sed 's,\\([^ ]*\\),%{_sysconfdir}/modprobe.d/\\1.conf.rpmsave,g')
 
 Name:           suse-module-tools
-Version:        16.0.38
+Version:        16.0.42
 Release:        0
 Summary:        Configuration for module loading and SUSE-specific utilities for KMPs
 License:        GPL-2.0-or-later
@@ -127,7 +127,6 @@ for i in "pre" "preun" "post" "posttrans" "postun" ; do
 done
 
 install -d -m 755 "%{buildroot}%{_prefix}/bin"
-install -pm 755 kmp-install "%{buildroot}%{_bindir}/"
 
 # systemd service(s) to load kernel-specific sysctl settings
 install -d -m 755 "%{buildroot}%{_unitdir}/systemd-sysctl.service.d"
@@ -223,7 +222,6 @@ exit 0
 %dir %{_sysconfdir}/modprobe.d
 %{depmod_dir}
 %dir %{_sysconfdir}/depmod.d
-%{_bindir}/kmp-install
 %dir /usr/lib/module-init-tools
 /usr/lib/module-init-tools/driver-check.sh
 /usr/lib/module-init-tools/lsinitrd-quick

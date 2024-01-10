@@ -1,7 +1,7 @@
 #
 # spec file for package linkerd-cli
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define linkerd_executable_name linkerd
 
 Name:           linkerd-cli
-Version:        2.14.6
+Version:        2.14.8
 Release:        0
 Summary:        CLI for the linkerd service mesh for Kubernetes
 License:        Apache-2.0

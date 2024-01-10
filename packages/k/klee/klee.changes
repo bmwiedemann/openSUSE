@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Thu Dec 14 07:40:13 UTC 2023 - jslaby@suse.cz
+
+- Update to version 3.0+20231023:
+  * replace deprecated (as of c++20) std::is_pod with std::trivial &&
+    std::is_standard_layout
+  * Make KDAlloc the default memory allocator
+  * Remove broken experimental optimisation for validity (--cex-cache-exp)
+  * Add code to only keep in the --help menu the KLEE/Kleaver option categories
+  * Move some options to the klee namespace and declare them in
+    OptionCategories.h
+  * Replaced --suppress-external-warnings and --all-external-warnings with
+    --external-call-warnings=none|once-per-function|all.
+  * Combine all `ConstantExpr::toMemory` cases into one.
+  * Using std::memcpy prevents alignment problems and removes an unnecessary
+    special case
+  * Implement getLocationInfo in the same style as getSize
+  * Have CoWPtr::get and CoWPtr::getOwned return pointers instead of references
+  * rename Allocator::location_info to Allocator::locationInfo for consistency
+  * Consistently use ".ktest" when referring to .ktest files in the help menu
+  * Remove parentheses around klee_ intrinsics from the help menu
+  * Fixed a couple of spelling issues in the help menu
+  * Improved help message for --exit-on-error-type=Abort
+  * and more
+- clean up spec file and switch to manual service
+- switch to LLVM 16
+- added patches
+  * 0001-Add-support-to-build-newer-LLVM-versions.patch
+  * 0001-test-disable-failing-tests-with-llvm-15.patch
+  * 0002-Add-support-for-newer-libc-Simplify-path-detection.patch
+  * 0003-Replace-libcxx_include-with-libcxx_includes-for-mult.patch
+  * 0004-Fix-klee-libc-memchr.c-compiler-warning.patch
+  * 0005-Fix-klee_eh_cxx.cpp-compiler-error.patch
+  * 0006-Refactor-invocation-of-old-pass-manager-into-legacy-.patch
+  * 0007-Use-KLEE-s-uClibc-v1.4-as-default-to-support-the-com.patch
+  * 0008-Assume-C-compiler-s-default-standard-is-std-gnu17.patch
+  * 0009-Explicitly-build-KLEE-s-exception-handling-runtime-w.patch
+  * 0010-Explicitly-enable-opaque-pointer-support-for-LLVM-15.patch
+  * 0011-Add-support-for-opaque-pointers.patch
+  * 0012-Fix-test-cases-to-support-opaque-pointers.patch
+  * 0013-Fix-test-case-using-unsupported-CHECK_NEXT-instead-o.patch
+  * 0014-Use-APIs-of-newer-LLVM-versions-instead-of-unsupport.patch
+  * 0015-Add-support-for-Intrinsic-get_rounding-for-LLVM-16.patch
+  * 0016-Add-support-to-aligned_alloc-generated-by-LLVM.patch
+  * 0017-Disable-unsupported-passes-for-newer-LLVM-versions.patch
+  * 0018-Disable-2018-10-30-llvm-pr39177.ll-for-newer-LLVM-ve.patch
+  * 0019-Handle-check-for-thrown-libc-exceptions-more-general.patch
+  * 0020-Update-test-case-for-expressions-using-udiv-urem-sdi.patch
+  * 0021-Support-newer-LLVM-versions-in-lit.patch
+  * 0022-Enable-CI-to-test-newer-LLVM-versions.patch
+- removed patches
+  * 0001-test-disable-until-it-is-fixed.patch (appears to be unnecessary now)
+
+-------------------------------------------------------------------
 Thu Jun 15 06:54:19 UTC 2023 - jslaby@suse.cz
 
 - Update to version 3.0+20230611:

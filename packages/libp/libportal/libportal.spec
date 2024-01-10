@@ -21,7 +21,7 @@
 Name:           libportal
 Version:        0.7.1
 Release:        0
-Summary:        A GIO-style async APIs for most Flatpak portals
+Summary:        A GIO-style async API for most Flatpak portals
 License:        LGPL-3.0-or-later
 URL:            https://github.com/flatpak/libportal
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
@@ -44,61 +44,61 @@ BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(vapigen)
 
 %description
-A GIO-style async APIs for most Flatpak portals.
+A GIO-style async API for most Flatpak portals.
 
 %package     -n %{name}%{sover}
-Summary:        Shared library for %{name}
+Summary:        A GIO-style async API for most Flatpak portals
 Obsoletes:      libportal-1
 Provides:       libportal-1
 
 %description -n %{name}%{sover}
-A GIO-style async APIs for most Flatpak portals.
+A GIO-style async API for most Flatpak portals.
 This package contains the shared library of %{name}.
 
 %package     -n %{name}-gtk3-%{sover}
-Summary:        Shared library for %{name}
+Summary:        GTK3 integration for libportal
 
 %description -n %{name}-gtk3-%{sover}
-A GIO-style async APIs for most Flatpak portals.
+A GIO-style async API for most Flatpak portals.
 This package contains the shared library of %{name}.
 
 %package     -n %{name}-gtk4-%{sover}
-Summary:        Shared library for %{name}
+Summary:        GTK4 integration for libportal
 
 %description -n %{name}-gtk4-%{sover}
-A GIO-style async APIs for most Flatpak portals.
+A GIO-style async API for most Flatpak portals.
 This package contains the shared library of %{name}.
 
 %package     -n %{name}-qt5-%{sover}
-Summary:        Shared library for %{name}
+Summary:        Qt5 integration for libportal
 
 %description -n %{name}-qt5-%{sover}
-A GIO-style async APIs for most Flatpak portals.
+A GIO-style async API for most Flatpak portals.
 This package contains the shared library of %{name}.
 
 %package -n     typelib-1_0-Xdp-1_0
 Summary:        Introspections files for libportal
 
 %description -n typelib-1_0-Xdp-1_0
-A GIO-style async APIs for most Flatpak portals.
+A GIO-style async API for most Flatpak portals.
 This package contains the introspection files of %{name}.
 
 %package -n     typelib-1_0-XdpGtk3-1_0
 Summary:        Introspections files for libportal
 
 %description -n typelib-1_0-XdpGtk3-1_0
-A GIO-style async APIs for most Flatpak portals.
+A GIO-style async API for most Flatpak portals.
 This package contains the introspection files of %{name}.
 
 %package -n     typelib-1_0-XdpGtk4-1_0
 Summary:        Introspections files for libportal
 
 %description -n typelib-1_0-XdpGtk4-1_0
-A GIO-style async APIs for most Flatpak portals.
+A GIO-style async API for most Flatpak portals.
 This package contains the introspection files of %{name}.
 
 %package devel
-Summary:        A GIO-style async APIs for most Flatpak portals -- Development files
+Summary:        Headers for libportal, a GIO async API for Flatpak portals
 Requires:       %{name}%{sover} = %{version}
 Requires:       typelib-1_0-Xdp-1_0 = %{version}
 
@@ -107,7 +107,7 @@ The %{name}-devel package contains libraries, build data, and
 header files for developing applications that use %{name}.
 
 %package gtk3-devel
-Summary:        A GIO-style async APIs for most Flatpak portals -- Development files
+Summary:        Headers for the libportal GTK3 integration library
 Requires:       %{name}-gtk3-%{sover} = %{version}
 Requires:       typelib-1_0-XdpGtk3-1_0 = %{version}
 
@@ -116,7 +116,7 @@ The %{name}-gtk3-devel package contains libraries, build data, and
 header files for developing applications that use %{name}.
 
 %package gtk4-devel
-Summary:        A GIO-style async APIs for most Flatpak portals -- Development files
+Summary:        Headers for the libportal GTK4 integration library
 Requires:       %{name}-gtk4-%{sover} = %{version}
 Requires:       typelib-1_0-XdpGtk4-1_0 = %{version}
 
@@ -125,7 +125,7 @@ The %{name}-gtk4-devel package contains libraries, build data, and
 header files for developing applications that use %{name}.
 
 %package qt5-devel
-Summary:        A GIO-style async APIs for most Flatpak portals -- Development files
+Summary:        Headers for libportal Qt5 integration library
 Requires:       %{name}-qt5-%{sover} = %{version}
 
 %description qt5-devel

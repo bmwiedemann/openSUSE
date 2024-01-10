@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,21 +18,20 @@
 
 %global modname caldav
 Name:           python-%{modname}
-Version:        0.10.0
+Version:        1.3.9
 Release:        0
 Summary:        CalDAV (RFC4791) client library for Python
 License:        Apache-2.0 AND GPL-3.0-or-later
 Group:          Development/Languages/Python
 URL:            https://pypi.python.org/pypi/%{modname}
 Source:         https://files.pythonhosted.org/packages/source/c/caldav/%{modname}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM drop-python2-support.patch gh#python-caldav/caldav#228
-Patch1:         drop-python2-support.patch
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module vobject}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-icalendar
 Requires:       python-lxml
 Requires:       python-requests
 Requires:       python-vobject

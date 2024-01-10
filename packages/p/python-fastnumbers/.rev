@@ -109,4 +109,18 @@
 - Ensure that SLE-15 uses gcc-12.</comment>
     <requestid>1101334</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>fa28b85a749d5513e6e5c996984947f0</srcmd5>
+    <version>5.1.0</version>
+    <time>1704281098</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.1.0:
+  * Added the ``denoise`` option to convert floats to int without
+  * numerical noise (issues #69 and #77)
+  * Support for Python 3.12 (issues #73 and #75)
+- switch to gcc 13 on SLE15
+
+      that is now hidden in 3.9)</comment>
+    <requestid>1135700</requestid>
+  </revision>
 </revisionlist>

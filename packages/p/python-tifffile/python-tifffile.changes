@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Dec 27 16:04:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2023.12.9:
+  * Read 32-bit Indica Labs TIFF as float32.
+  * Fix UnboundLocalError reading big LSM files without time
+    axis.
+  * Use os.sched_getaffinity, if available, to get the number of
+    CPUs (#231).
+  * Limit the number of default worker threads to 32.
+  * Lazily convert dask array to ndarray when writing.
+  * Allow to specify buffersize for reading and writing.
+  * Fix IndexError reading some corrupted files with
+    ZarrTiffStore (#227).
+  * Raise exception when writing non-volume data with volumetric
+    tiles (#225).
+  * Improve multi-threaded writing of compressed multi-page
+    files.
+  * Fix fsspec reference for big-endian files with predictors.
+
+-------------------------------------------------------------------
 Tue Sep 12 08:45:57 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Update to 2023.8.30
@@ -99,7 +119,7 @@ Sat Apr  1 09:28:28 UTC 2023 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Tue Feb 21 01:18:38 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Inject multibuild to fix a bootstrapping issue. 
+- Inject multibuild to fix a bootstrapping issue.
 
 -------------------------------------------------------------------
 Sat Jan 21 13:23:43 UTC 2023 - Ben Greiner <code@bnavigator.de>
@@ -428,7 +448,7 @@ Sat Dec 19 19:26:05 UTC 2020 - andy great <andythe_great@pm.me>
 -------------------------------------------------------------------
 Tue Nov 17 13:48:44 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
-- Add _constraints file to avoid OOM 
+- Add _constraints file to avoid OOM
 
 -------------------------------------------------------------------
 Mon Nov  2 20:06:00 UTC 2020 - andy great <andythe_great@pm.me>
@@ -445,10 +465,10 @@ Fri Sep 18 21:20:20 UTC 2020 - andy great <andythe_great@pm.me>
   * Do not write contiguous series by default (breaking).
   * Allow to write to SubIFDs (WIP).
   * Fix writing F-contiguous numpy arrays.
-- Ignore test_write_ome, test_class_omexml_attributes, 
-  test_class_omexml_multiimage, and test_class_omexml because it 
+- Ignore test_write_ome, test_class_omexml_attributes,
+  test_class_omexml_multiimage, and test_class_omexml because it
   need network connection.
-  
+
 -------------------------------------------------------------------
 Fri Aug 28 08:59:26 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
@@ -467,8 +487,8 @@ Sat Aug 22 07:28:47 UTC 2020 - andy great <andythe_great@pm.me>
 -------------------------------------------------------------------
 Thu Aug 13 13:51:48 UTC 2020 - andy great <andythe_great@pm.me>
 
-- Fix ERROR: download_files is configured to fail when the 
-  upstream file is different than the committed file. 
+- Fix ERROR: download_files is configured to fail when the
+  upstream file is different than the committed file.
 
 -------------------------------------------------------------------
 Sun Aug  9 05:16:14 UTC 2020 - andy great <andythe_great@pm.me>
@@ -479,13 +499,13 @@ Sun Aug  9 05:16:14 UTC 2020 - andy great <andythe_great@pm.me>
 -------------------------------------------------------------------
 Mon Jul 20 18:22:50 UTC 2020 - andy great <andythe_great@pm.me>
 
-- Fix spec file build condition. 
+- Fix spec file build condition.
 
 -------------------------------------------------------------------
 Tue Jun  2 20:12:38 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 2020.5.30.
-  * Re-add pure Python PackBits decoder. 
+  * Re-add pure Python PackBits decoder.
 
 -------------------------------------------------------------------
 Mon Mar  4 07:37:11 AM UTC 2019 - John Vandenberg <jayvdb@gmail.com>

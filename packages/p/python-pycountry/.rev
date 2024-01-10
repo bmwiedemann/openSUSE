@@ -96,4 +96,31 @@
     <comment></comment>
     <requestid>1081788</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>edaa2516453909b9748a14618e11d3fa</srcmd5>
+    <version>23.12.11</version>
+    <time>1704491909</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 23.12.11:
+  * Added fallback to name when common_name or official_name
+    country attributes are missing
+  * Added support for adding and removing country records, as well
+    as casting to dict
+  * Improve performance speed by checking for non-ascii chars
+    before removing accents
+  * Added search_fuzzy method to subdivisions
+  * Added type hinting, created py.typed file, and added mypy
+    checks to CI
+  * Dropped support for end-of-life Python 3.6 and 3.7.
+  * Added support for Python 3.11 and Python 3.12.
+  * Added dependency on importlib-resources for Python 3.8.
+  * Dropped implicit dependency on setuptools for pkg_resources.
+  * Update to iso-codes 4.15.0. (Thanks to alanorth!)
+  * Removes iso3166.mo files and opts for newer iso3166-1.mo and
+    iso3166-3.mo files for Country and Historic Country Translations
+    respectively.
+
+  encoding when opening description files in setup.py</comment>
+    <requestid>1135777</requestid>
+  </revision>
 </revisionlist>

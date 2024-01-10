@@ -1,4 +1,196 @@
 -------------------------------------------------------------------
+Sat Dec 30 15:45:53 UTC 2023 - i@guoyunhe.me
+
+- Update to version 0.0.29~git20231230:
+  * rsx: Fix detiler shader compilation
+  * rsx: Pick tiler/detiler according to actual block size
+  * rsx: Avoid out of bounds write for tiled memory
+  * Metainfo: Update number of compatible games
+  * Metainfo: Add German translations and more URLs
+  * Metainfo: Sort tags with jdAppStreamEdit
+  * Fix display_length tag and add screenshot caption
+  * msvc/debug: set mainCRTStartup as entry point
+  * msvc/debug: remove outdated qtmaind.lib dependency
+  * msvc/debug: Pass c++ standard to Qt
+  * Docs: Add clarifications regarding Visual Studio 2019 version requirements.
+  * Fix sceNpManagerGetNetworkTime called before rpcn connection
+  * rpcn 0.8
+  * sys/cellGame: Fix hdd game dir name
+  * Qt/input: separate num keys from other keys
+  * SPU/Savestates: Remove reservation hack, allow its saving
+  * Savestates: Save build version and creation time
+  * Suggest using SPU Savestates-Compatible Mode on failure to save
+  * SPU LLVM: Fix savestates with LLVM
+  * Fix idm::allocate_id at fixed position
+  * Invalidate savestates
+  * Savestates/vm: rewrite memory saving for better compression
+  * Savestates: Fix audio_out_configuration initialization
+  * Add savestate data validity asserts
+  * rsx: Fix typo
+  * rsx: Support DMA tiling in the CPU blit path
+  * rsx: De-spaghettify nv3089::image_in
+  * Use asmjit main repo
+  * Typemap: Set init to false after each individual destructor
+  * Remove destructor dependencies on nph
+  * Do not include profiling headers
+  * Fix nph and nt interderp
+  * Qt: use default colors for native styles
+  * Qt: use initial style as default style
+  * Fixup np_handler ctor
+  * Fix warning
+  * overlays: move debug overlay to native overlay
+  * sceNpDrm: improve error handling of rap files
+  * Fix sys_fs_fcntl default_sys_fs_container use
+  * Game Settings: Add an option to create game config using default settings
+  * Replace condition_variable with atomic_t
+  * Qt: allow to use native styles
+  * Do not allow running RPCS3 from Rar directories
+  * Fix some warnings
+  * Fix HLE sys_lwcond_signal_to
+  * Savestates: Fix pair serialization
+  * Fix tcp_timeout_monitor abort
+  * vm.h: Cleanup and fix some warnings
+  * Remove some fxo->need calls
+  * Util/fixed_typemap.hpp: Fix thread-safety issue with init
+  * Util/fixed_typemap.hpp: set unitialiazed data to trap values
+  * Postpone thread launching on g_fxo->init
+  * Fix some warnings
+  * Update asmjit
+  * update_manager: replace deprecated LookToRead2_Init nonsense with regular c++ default initializer
+  * Update 7z to 23.01
+  * rsx: Avoid data loss in blit engine when WCB/WDB + RCB/RDB is active
+  * sys_usbd: Fix up sys_usbd_get_descriptor() error handling according to hardware test
+  * sys_usbd: Prevent sys_usbd_get_descriptor() from buffer overflow
+  * Correct the link of glslanglibs_mt.7z in BUILDING.md according to #14870
+  * Start/Stop IPC when changing the config setting
+  * Fix fxo dependencies
+  * Trophy Manager: allow to lock/unlock trophies
+  * Fix initialization order for network_thread
+  * input/evdev: handle flatness deadzone value
+  * rsxaudio: fix ensure order
+  * Update soundtouch to 2.3.2
+  * Force sending a FIN packet on rpcn disconnect
+  * Qt: Cleanup game-install assistant pull request
+  * sceNp/vm: Fix strings read, implement safe string reader
+  * windows/glslang: remove build dir after clean
+  * build/ci: Fix glslang build on msvc
+  * build/ci: Pick latest glslang from rpcs3 glslang fork
+  * Update Vulkan SDK to 1.3.268.0
+  * curl: use native CA store instead of deploying cacert.pem
+  * Update curl to 8.5.0
+  * Update FAudio to 23.12
+  * macOS CI: use 7-Zip for artifacts (#14881)
+  * Qt: Post Game-Installation Assistant
+  * asm.hpp: fix usage of _mm_prefetch
+  * rsx: Improve strict mode check in 308a::color
+  * rsx: Let 308a::color have a synchronization side-effect in strict mode
+  * Mac CI: Install python before updating
+  * Savestates: Fix compressed serialization handler deadlock
+  * cellRec: Remove outdated frame size check
+  * Qt: only allow double leftclick in screenshot manager
+  * PPU/sys_dbg: Implement self-modifying code
+  * Qt: Remove default "Unknown" in GameInfo struct
+  * Qt: Properly use ICON1.PAM from game data dir if available
+  * Qt: force hover event handling for flow widget items
+  * recording: Implement audio recording for rsx audio
+  * audio: fix time stretching regression
+  * recording: use scoped_lock
+  * cellRec: only access global video provider if necessary
+  * recording: optimize access to video recorder
+  * Qt 6.6.1
+  * Qt: implement hover pam in game list
+  * Qt: use vector for camera video sink buffer
+  * fix Clang warnings
+  * rsx: Remove unnecessary "else" clauses
+  * rsx: Code quality and readability improvements
+  * SPU: Fixup SPU Cache progress in first game boot
+  * Qt: notify progress dialog cancelation when closing the game window
+  * Qt: fix random segfaults when canceling batch operations
+  * serialization.hpp: Fix some warning
+  * SPU LLVM: Do not wait for Progress Dialog to clear before starting
+  * PPU Progress Dialog: Add "Applying PPU Code" stage
+  * macOS CI: link ffmpeg after building it from source (#14843)
+  * TAR: Improve logging
+  * Fix file_view::read_at and file_view::get_stat
+  * Savestates: Asynchronous compression
+  * Fixup Firmware install
+  * Savestates: Add basic statistics in log
+  * vm: Minor optimization for memory serialization
+  * Rewrite global zipping buffer function
+  * Explicitly add qtsvg to freebsd
+  * Savestates: Add errored state for compressed stream
+  * Savestates: Add TAR and VM assert
+  * Savestates: Fix optional_savestate_state use
+  * Savestates: Implement 'autostart off' mode for debugging
+  * Savestates: Compressed state files
+  * Change PPU/SPU Cache
+  * Qt: add trophy count column to trophy manager game list
+  * cellRec: fix pausing and resuming
+  * cellRec: fix downmix
+  * recording: add h264/aac, better logging of output formats
+  * recording: rename audio_sample to audio_frame
+  * recording: fix subsequent recordings, reset sample counter to 0
+  * cellRec: fix member reset between recordings
+  * recording: cleanup audio config members
+  * recording: improve pts accuracy and consistency
+  * cellRec: fix internal video frame ringbuffer pts
+  * recording: Fix flush. We want to clear the whole queue...
+  * cellRec: implement audio mixing
+  * recording: decrease log spam
+  * cellRec: implement audio encoding (no mixing yet)
+  * cellRec: Don't present frames/samples if external audio/video is used
+  * recording: remove unused duration member variable
+  * recording: fix warning
+  * recording: use av_interleaved_write_frame
+  * recording: fix default sample rate
+  * cellRec: use constant for block samples
+  * recording: initial audio recording
+  * rsx: Always enable ROP output rounding if shader precision is higher than low
+  * gl: Fix static sampler bindings
+  * rsx: Fix vertex input validation failure
+  * Fix file_view::read_at
+  * Don't close moved file
+  * rsx: fix reading zipped captures
+  * rsx: zip and unzip rsx captures
+  * Savestates: Implement initial RAM ventilation system
+  * Replace some fmt::format with fmt::append
+  * rsx/vp: Emit more efficient code
+  * rsx: Fix vertex program analyser bug
+  * Update dependencies
+  * Midi: improve error handling
+  * Switch official AppImage deployment to clang
+  * Fix Firmware tree checkboxes
+  * sys_net: fix some warnings
+  * fix Clang compilation warnings
+  * fix deprecation warning
+  * fix unused parameter warning
+  * unzip: check deflateInit and inflateInit results
+  * Update moltenvk comment
+  * Add MVK 1.2.6 to the Mac build script
+  * Bump MVK to 1.2.6
+  * vk: Add chip detection for INTEL DG2 cards
+  * vk: Drop obsolete ANV workaround
+  * rsx: Add note explaining padding behavior in linear-swizzle conversion fallback code.
+  * Reduce log level for missing gamecontrollerdb.txt to warning
+  * cellPhotoImport: better log channel name for string search in logs
+  * overlays/media_list_dialog: Fix path logging
+  * cellPhotoDecodeFromFile: allow decoding files inside dev_hdd1
+  * Utilities/Thread.cpp: Fix threads memory leak
+  * SPU/MFC: Add block has to command history
+  * [Bugfix] USIO: Fixed switch-kind buttons got released when game window lost focus
+  * cellSaveData: Fix SAVEDATA_OP_LIST_DELETE
+  * VFS: fix rename
+  * Disables jack being forcibly linked by rtmidi
+  * Update curl
+  * Update dependencies
+  * Add --parents to mkdir to avoid error if directory exists
+  * llvm: add support for LLVM 17
+  * Qt: allow to use zipped logs in config checker
+  * Qt: Allow to use .gz files in Log viewer
+  * rsx: Detiler improvements
+  * PPU Loader: Fix relocation offset verification
+
+-------------------------------------------------------------------
 Tue Oct 10 14:32:06 UTC 2023 - i@guoyunhe.me
 
 - Update to version 0.0.29~git20231010:

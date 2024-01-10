@@ -1,7 +1,7 @@
 #
 # spec file for package suse-prime
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %global modprobe_d_files 09-nvidia-modprobe-bbswitch-G04.conf 09-nvidia-modprobe-pm-G05.conf
 
 Name:           suse-prime
-Version:        0.8.14
+Version:        0.8.15
 Release:        0
 Summary:        GPU (nvidia/intel) selection for NVIDIA optimus laptops with bbswitch support
 License:        SUSE-Public-Domain
@@ -38,8 +38,8 @@ Provides:       suse-prime-bbswitch = %{version}
 BuildRequires:  pkgconfig(systemd)
 BuildArch:      noarch
 Requires:       coreutils
-Requires:       sudo
 Requires:       pciutils
+Requires:       sudo
 %{?systemd_ordering}
 
 %description
@@ -78,6 +78,8 @@ mkdir -p %{buildroot}/usr/lib/udev/rules.d
 install -m 0644 90-nvidia-udev-pm-G05.rules %{buildroot}/usr/lib/udev/rules.d
 mkdir -p %{buildroot}/usr/sbin
 ln -snf service %{buildroot}/usr/sbin/rcprime-select
+mkdir -p %{buildroot}%{_bindir}
+install -m 0755 prime-run %{buildroot}%{_bindir}
 
 %pre
 %service_add_pre prime-select.service
@@ -137,6 +139,7 @@ rm -f /etc/dracut.conf.d/50-nvidia-default.conf
 %{_datadir}/prime/xorg-nvidia-prime-render-offload.conf
 %ghost %dir %{_sysconfdir}/prime
 %ghost %config(noreplace) %{_sysconfdir}/prime/current_type
+%{_bindir}/prime-run
 %{_sbindir}/prime-select
 %{_sbindir}/rcprime-select
 %dir %{_modprobedir}

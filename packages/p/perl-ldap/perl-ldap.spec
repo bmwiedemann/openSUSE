@@ -1,7 +1,7 @@
 #
 # spec file for package perl-ldap
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,13 +33,11 @@ BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.42
 BuildRequires:  perl(Text::Soundex)
 Requires:       perl(Convert::ASN1) >= 0.2
 Recommends:     perl(Authen::SASL) >= 2.00
-Recommends:     perl(IO::Socket::INET6)
 Recommends:     perl(IO::Socket::SSL) >= 1.26
 Recommends:     perl(URI::ldap) >= 1.10
 %{perl_requires}
 # MANUAL BEGIN
 BuildRequires:  perl(Digest::MD5)
-BuildRequires:  perl(IO::Socket::INET6)
 BuildRequires:  perl(IO::Socket::IP)
 BuildRequires:  perl(JSON)
 BuildRequires:  perl(MIME::Base64)

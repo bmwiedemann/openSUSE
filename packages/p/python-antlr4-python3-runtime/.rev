@@ -81,4 +81,12 @@
     target:javascript, target:typescript) (forwarded request 1126772 from glaubitz)</comment>
     <requestid>1126799</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>65dc62a7ff0f187d8243a3bd4b8b9524</srcmd5>
+    <version>4.13.1</version>
+    <time>1704290009</time>
+    <user>dimstar_suse</user>
+    <comment>- require setuptools</comment>
+    <requestid>1136428</requestid>
+  </revision>
 </revisionlist>

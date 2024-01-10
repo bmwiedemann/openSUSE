@@ -38,4 +38,28 @@ This package is eventually going to be needed by Kitty, when someone manages to 
   * Add support for meta description</comment>
     <requestid>1056770</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3d235e0a6c6e7a3cb03ad31ef43652db</srcmd5>
+    <version>0.9.1</version>
+    <time>1702936594</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.9.1:
+  * Test Sphinx 7
+  * Fix default Roboto font not being found by the matplotlib
+    FontManager
+- update to 0.9.0:
+  * make matplotlib optional
+  * Drop EOL Python 3.7, Bump PyPy to 3.9
+- update to 0.8.2:
+  * Fix DeprecationWarning: The 'warn' method is deprecated, use
+    'warning' instead
+  * FIX: Social media twitter card tags
+- update to 0.8.1:
+  * Add exception for SVG images
+- update to V0.8.0:
+  * Format with Black 23.1.0
+
+- Update to version 0.6.3</comment>
+    <requestid>1133821</requestid>
+  </revision>
 </revisionlist>

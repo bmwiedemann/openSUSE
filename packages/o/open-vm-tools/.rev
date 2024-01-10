@@ -1008,4 +1008,13 @@ this is ever going to be fixed</comment>
     <comment></comment>
     <requestid>1132558</requestid>
   </revision>
+  <revision rev="122" vrev="3">
+    <srcmd5>624bfb7318095db2dde46061954ceddd</srcmd5>
+    <version>12.3.5</version>
+    <time>1703198259</time>
+    <user>anag+factory</user>
+    <comment>- Own %{_modulesloaddir}: used to be present via udev-mini -&gt; kmod
+  -&gt; suse-module-tools dependency before.</comment>
+    <requestid>1134303</requestid>
+  </revision>
 </revisionlist>

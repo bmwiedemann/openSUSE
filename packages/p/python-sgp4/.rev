@@ -95,4 +95,12 @@ Submitting because it is an optional package for python-astropy</comment>
     writing code that will break when the C++ extension is available.</comment>
     <requestid>1090088</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>68072be70bc03666a131c5c599040fb7</srcmd5>
+    <version>2.23</version>
+    <time>1702673435</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1133439</requestid>
+  </revision>
 </revisionlist>

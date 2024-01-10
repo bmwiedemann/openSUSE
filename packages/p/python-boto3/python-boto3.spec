@@ -19,28 +19,28 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-boto3
-Version:        1.29.6
+Version:        1.33.11
 Release:        0
 Summary:        Amazon Web Services Library
 License:        Apache-2.0
 URL:            https://github.com/boto/boto3
 Source:         https://github.com/boto/boto3/archive/%{version}.tar.gz
 # Related test dependencies
-BuildRequires:  %{python_module botocore < 1.33.0}
-BuildRequires:  %{python_module botocore >= 1.32.6}
+BuildRequires:  %{python_module botocore < 1.34.0}
+BuildRequires:  %{python_module botocore >= 1.33.11}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module s3transfer < 0.8.0}
-BuildRequires:  %{python_module s3transfer >= 0.7.0}
+BuildRequires:  %{python_module s3transfer < 0.9.0}
+BuildRequires:  %{python_module s3transfer >= 0.8.2}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-botocore < 1.33.0
-Requires:       python-botocore >= 1.32.6
+Requires:       python-botocore < 1.34.0
+Requires:       python-botocore >= 1.33.11
 Requires:       python-jmespath < 2.0.0
 Requires:       python-jmespath >= 0.7.1
-Requires:       python-s3transfer < 0.8.0
-Requires:       python-s3transfer >= 0.7.0
+Requires:       python-s3transfer < 0.9.0
+Requires:       python-s3transfer >= 0.8.2
 BuildArch:      noarch
 %python_subpackages
 
@@ -60,9 +60,12 @@ http://boto3.readthedocs.org/en/latest/
 
 
 
+
+
 # Note to maintainers also familia with python-boto:
 # The documentation generation requires access to AWS, thus it is not
 # possible to generate the documentation in OBS
+
 %prep
 %setup -q -n boto3-%{version}
 

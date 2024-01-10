@@ -69,4 +69,13 @@
     <comment></comment>
     <requestid>1081830</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fb1a30ce2df52f151c9bcc38cc5cf6ea</srcmd5>
+    <version>3.2.0</version>
+    <time>1704753859</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.2.0:
+  * Require Python 3.8 or later.</comment>
+    <requestid>1137447</requestid>
+  </revision>
 </revisionlist>

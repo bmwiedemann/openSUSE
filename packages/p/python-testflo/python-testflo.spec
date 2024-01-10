@@ -1,7 +1,7 @@
 #
 # spec file for package python-testflo
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,18 @@
 #
 
 
-%define skip_python36 1
+%{?sle15_python_module_pythons}
 Name:           python-testflo
-Version:        1.4.14
+Version:        1.4.15
 Release:        0
 Summary:        A flow-based testing framework
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/OpenMDAO/testflo
 Source:         https://files.pythonhosted.org/packages/source/t/testflo/testflo-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
@@ -53,10 +55,10 @@ using unittest.TestCase objects that they are familiar with.
 %setup -q -n testflo-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/testflo
 
@@ -75,6 +77,6 @@ using unittest.TestCase objects that they are familiar with.
 %doc README.md
 %python_alternative %{_bindir}/testflo
 %{python_sitelib}/testflo
-%{python_sitelib}/testflo-*.egg-info
+%{python_sitelib}/testflo-%{version}.dist-info
 
 %changelog

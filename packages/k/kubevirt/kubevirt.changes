@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Jan  4 06:47:58 UTC 2024 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Update to version 1.1.1
+  Release notes https://github.com/kubevirt/kubevirt/releases/tag/v1.1.1
+- Drop upstreamed patches
+  0001-Update-google.golang.org-grpc-to-1.56.3.patch
+  0002-virt-launcher-fix-qemu-non-root-path.patch
+  0003-cgroupsv2-reconstruct-device-allowlist.patch
+  0004-seccomp-Use-Names-field-to-define-the-syscall.patch
+
+-------------------------------------------------------------------
+Wed Jan  3 09:53:18 UTC 2024 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Fix seccomp profile for post-copy migration
+  0004-seccomp-Use-Names-field-to-define-the-syscall.patch
+- Set ExclusiveArch conditionally depending on the distro
+- Remove SLE15 SP4 from the distro check (end of general support)
+
+-------------------------------------------------------------------
 Tue Nov 14 07:36:17 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Update to version 1.1.0

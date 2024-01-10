@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sun Jan  7 03:55:54 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Respect lock and revert cargo update
+
+-------------------------------------------------------------------
+Sat Dec 30 00:00:07 UTC 2023 - uncomfy+openbuildservice@uncomfyhalomacro.pl
+
+- Update to version 0.3.1:
+  * add ruby tree sitter queries
+  * fix editor scroll
+  * bump floem
+  * bump floem and use floem::Clipboard
+  * feat: implement `Format Document` command
+  * fix: save without formatting now calls save
+  * create_dir_all when saving
+  * Reworked cursor rendering, fixing several bugs
+  * Fix invalid unicode filenames not being displayed
+  * Fix non_canonical_partial_ord_impl clippy lints
+  * Add explicit static lifetime to consts
+  * move cursor blink timer to window
+  * update the language in the status bar
+  * bump floem
+  * Add UI inspector command
+  * Bump Floem
+  * run.toml on remote fix
+  * Auto-surround config
+  * fix language name used in status bar
+  * Don't mark nonexistent files as read only
+  * fix FocusText view
+  * bump floem
+  * display visual line and visual block mode
+  * bump floem
+  * bump floem
+  * fix version matching on lapce-proxy
+  * don't panic if log file can't be created
+  * update screenshot
+
+-------------------------------------------------------------------
 Tue Nov 21 23:27:47 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
 
 - Update to version 0.3.0:

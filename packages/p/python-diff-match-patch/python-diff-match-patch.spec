@@ -1,7 +1,7 @@
 #
 # spec file for package python-diff-match-patch
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,17 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-diff-match-patch
-Version:        20200713
+Version:        20230430
 Release:        0
 Summary:        Repackaging of Google's Diff Match and Patch libraries
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/diff-match-patch-python/diff-match-patch
 Source:         https://files.pythonhosted.org/packages/source/d/diff-match-patch/diff-match-patch-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE make-tests-runable.patch -- running tests is too complicated to put that into the specfile
 Patch0:         make-tests-runable.patch
-BuildRequires:  %{python_module setuptools >= 38.6.0}
+BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Provides:       python-diff_match_patch
@@ -39,23 +38,23 @@ BuildArch:      noarch
 Offers algorithms to perform the operations required for synchronizing plain text
 
 %prep
-%setup -q -n diff-match-patch-%{version}
+%autosetup -p1 -n diff-match-patch-%{version}
 find . -name "*.py" -type f -exec sed -i '1s/^#!.*//' {} \+
-%patch0 -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec -m unittest diff_match_patch.tests.run_all
+%pyunittest diff_match_patch.tests.run_all
 
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/diff_match_patch
+%{python_sitelib}/diff_match_patch-%{version}.dist-info
 
 %changelog

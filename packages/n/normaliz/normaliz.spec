@@ -26,6 +26,7 @@ Group:          Productivity/Scientific/Math
 URL:            https://www.normaliz.uni-osnabrueck.de/
 
 Source:         https://github.com/Normaliz/Normaliz/releases/download/v%version/%name-%version.tar.gz
+Patch1:         0001-Add-FLINT-3-support.patch
 BuildRequires:  e-antic-devel >= 1.0.1
 BuildRequires:  flint-devel
 BuildRequires:  gcc-c++

@@ -7,7 +7,7 @@
 set -e
 
 tar Jxf node-v*.tar.xz
-cd node-v.*/tools/doc
+cd node-v*/tools/doc
 npm ci
 cd ../..
 exec tar Jcf ../node_modules.tar.xz tools/doc/node_modules

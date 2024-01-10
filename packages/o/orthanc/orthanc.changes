@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Dec 21 09:13:15 UTC 2023 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.12.2 - see NEWS for full changelog
+  libboost.diff removed (included in source)
+
+-------------------------------------------------------------------
+Mon Dec 18 14:13:12 UTC 2023 - Axel Braun <axel.braun@gmx.de>
+
+- libboost.diff to fix build error with boost 1.84 
+
+-------------------------------------------------------------------
 Wed Jul  5 17:24:07 UTC 2023 - Axel Braun <axel.braun@gmx.de>
 
 - version 1.12.1

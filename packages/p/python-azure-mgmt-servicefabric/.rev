@@ -98,4 +98,12 @@
 - Remove temporary version override (forwarded request 917744 from glaubitz)</comment>
     <requestid>917746</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d33719c12073f1feb2d1d323bece0982</srcmd5>
+    <version>2.1.0</version>
+    <time>1704380391</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1136748</requestid>
+  </revision>
 </revisionlist>

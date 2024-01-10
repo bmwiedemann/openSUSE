@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Dec 14 21:36:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.10:
+  * sprite: moving Sprites is now about 35% faster (as tested on
+    R5 5600X)
+  * gui: Add TextEntry.focus property to allow programmatic focus
+    control
+  * gui: Allow set TextEntry.width and TextEntry.height
+  * Window: Add experimental Window.get_clipboard_text and
+    Window.set_clipboard_text methods
+  * experimental: Add new pyglet.experimental package for easier
+    wider testing of new ideas
+  * experimental: Add `geoshader_sprite.py` that is more complex,
+    but faster than the standard Sprite
+  * experimental: Add `net` module with Server/Client proof of
+    concept
+  * tests: Add new interactive spot test to visually confirm
+    shapes are working as expected
+  * shapes: Move rotate functionality to ShapeBase class, and
+    allow all shapes to rotate
+  * VertexDomain: bind all buffers to VAO in __init__, and avoid
+    binding each draw
+  * gl.Context: Add a new cached `Context.create_program` method
+    to assist in shader reuse
+  * examples.model.fpscamera: fix drifting input, and other
+    improvements
+  * contrib.qt_sprite_preview.py: Modify to allow using either
+    PySide2 or PyQt5 (#959)
+  * examples: Carry over the soundspace example (#972)
+  * media: The "Silent" audio driver now behaves more like a real
+    driver
+  * text: Add RGB color setter fallback for HTML labels, assuming
+    255 alpha
+  * shapes: Add a new (unfilled) Box shape
+  * gl: Take threading into account when deleting OpenGL objects
+
+-------------------------------------------------------------------
 Wed Oct 11 15:08:53 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Replace freetype buildRequires with freetype2-devel: freetype is
@@ -134,7 +171,7 @@ Fri Nov  4 06:47:54 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 -------------------------------------------------------------------
 Wed Oct 12 14:13:18 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 1.5.27 
+- Update to version 1.5.27
   * Bugfixes
    - Windows - stop setting HWND_TOPMOST for fullscreen windows
    - obj decoder - Fix GL_SHININESS (Ns) value parsing
@@ -275,7 +312,7 @@ Fri Aug  7 14:38:30 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
   * Many long deprecated methods and attributes have now been removed.
   * Many more bugfixes and small improvements
 - Updated pyglet-1.2.4-fix-image-import.patch
-- Dropped pypng-license.patch 
+- Dropped pypng-license.patch
 
 -------------------------------------------------------------------
 Sun Sep 15 07:07:32 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
@@ -337,7 +374,7 @@ Wed Feb 14 16:21:19 UTC 2018 - toddrme2178@gmail.com
       These include ADSR, linear decay, tremolo, and flat envelopes.
   + Improvements
     * Improved font rendering for fonts with negative bearing (#99)
-    * Sprites now have `scale_x` and `scale_y` attributes, allowing for aspect ratio changes. The 
+    * Sprites now have `scale_x` and `scale_y` attributes, allowing for aspect ratio changes. The
       existing `scale` attribute sets the overall scaling, and functions as before.
     * Sprites have a new `update` method which allows simultaneous changing of position, scale, and
       rotation. This reduces some overhead when changing multiple attributes at once.

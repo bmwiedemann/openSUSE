@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec 29 09:56:02 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.7.5:
+  * Fixed issue with spaces in filename when using custom git
+    prefix.
+  * Support binary patch format.
+
+-------------------------------------------------------------------
 Mon Jun 27 07:35:14 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Update to version 0.7.4

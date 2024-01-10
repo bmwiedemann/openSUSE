@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-lxml
-Version:        4.9.3
+Version:        4.9.4
 Release:        0
 Summary:        Pythonic XML processing library
 License:        BSD-3-Clause AND GPL-2.0-or-later
@@ -42,9 +42,6 @@ Patch3:         ISO-Schematron-schema-optional.patch
 # PATCH-FIX-UPSTREAM remove-ISO-Schematron-schema.patch gl#fedora/legal/fedora-license-data/-#154 mcepl@suse.com
 # Actually remove the schema
 Patch4:         remove-ISO-Schematron-schema.patch
-# PATCH-FIX-UPSTREAM libxml2212-tests.patch https://github.com/lxml/lxml/pull/383
-# Make Unicode recovery test work with upcoming libxml2 2.12
-Patch5:         libxml2212-tests.patch
 BuildRequires:  %{python_module Cython >= 0.29.7 with %python-Cython < 3}
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module cssselect >= 0.9.1}

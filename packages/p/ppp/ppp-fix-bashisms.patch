@@ -1,7 +1,6 @@
-diff -Ndur ppp-2.4.7/scripts/redialer ppp-2.4.7-fix-bashisms/scripts/redialer
---- ppp-2.4.7/scripts/redialer	2014-08-09 15:31:39.000000000 +0300
-+++ ppp-2.4.7-fix-bashisms/scripts/redialer	2014-11-19 05:09:46.168864978 +0200
-@@ -31,7 +31,7 @@
+--- scripts/redialer.orig
++++ scripts/redialer
+@@ -31,7 +31,7 @@ PASSWORD=my_password
  # Function to initialize the modem and ensure that it is in command
  # state. This may not be needed, but it doesn't hurt.
  #
@@ -10,7 +9,7 @@ diff -Ndur ppp-2.4.7/scripts/redialer ppp-2.4.7-fix-bashisms/scripts/redialer
  {
      chat -v TIMEOUT 3 '' AT 'OK-+++\c-OK'
      return
-@@ -41,7 +41,7 @@
+@@ -41,7 +41,7 @@ function initialize
  #
  # Script to dial a telephone
  #
@@ -19,7 +18,7 @@ diff -Ndur ppp-2.4.7/scripts/redialer ppp-2.4.7-fix-bashisms/scripts/redialer
  {
  chat -v							\
  	ABORT		'\nBUSY\r'			\
-@@ -66,7 +66,7 @@
+@@ -66,7 +66,7 @@ chat -v							\
  #
  # Script to dial any telephone number
  #

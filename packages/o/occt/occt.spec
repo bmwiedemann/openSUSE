@@ -1,7 +1,7 @@
 #
 # spec file for package occt
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,20 @@
 #
 
 
-%define OCCT_TAG V7_7_0
+%if 0%{?suse_version} >= 1600
+%bcond_without docs
+%else
+%bcond_with    docs
+%endif
+
+%define OCCT_TAG V7_7_2
 
 Name:           occt
-Version:        7.7.0
+Version:        7.7.2
 Release:        0
-%define soname 7_7
-%define sover  7.7
+%define soname 7_7_2
+%define sover  7.7.2
+%define sover_len 3
 Summary:        OpenCASCADE Official Edition
 License:        LGPL-2.1-only WITH OCCT-exception-1.0
 Group:          Productivity/Graphics/CAD
@@ -32,15 +39,11 @@ URL:            https://www.opencascade.com/open-cascade-technology/
 # getting it from git for patch level releases not existing as tar ball
 # Source0:        https://github.com/Open-Cascade-SAS/OCCT/archive/refs/tags/V%%{OCCT_TAG}.tar.gz#/occt-%%{version}.tar.gz
 Source0:        https://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=refs/tags/%{OCCT_TAG};sf=tgz#/occt-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM
-Patch0:         https://git.dev.opencascade.org/gitweb/?p=occt.git;a=patch;h=b15892da313c8f8e47a4dbf749764105d639a0cf#/fix_missing_limits_header.patch
 BuildRequires:  bison
 BuildRequires:  cmake
-BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  gcc-c++
-BuildRequires:  mathjax
 BuildRequires:  tcl-devel
 BuildRequires:  tk-devel
 BuildRequires:  pkgconfig(RapidJSON)
@@ -50,6 +53,10 @@ BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xmu)
+%if %{with docs}
+BuildRequires:  doxygen
+BuildRequires:  mathjax
+%endif
 
 %description
 OpenCASCADE is a suite for 3D surface and solid modeling, visualization, data
@@ -98,6 +105,7 @@ Developer documentation for OpenCASCADE
 %package -n libopencascade-applicationframework%{soname}
 Summary:        OpenCASCADE application framework libraries
 Group:          System/Libraries
+Conflicts:      libopencascade-applicationframework7_7 = %{version}
 
 %description -n libopencascade-applicationframework%{soname}
 This package contains the OpenCASCADE libraries from the
@@ -108,6 +116,7 @@ OpenCASCADE application framework module:
 %package -n libopencascade-dataexchange%{soname}
 Summary:        OpenCASCADE data exchange libraries
 Group:          System/Libraries
+Conflicts:      libopencascade-dataexchange7_7 = %{version}
 
 %description -n libopencascade-dataexchange%{soname}
 This package contains the OpenCASCADE libraries from the
@@ -120,6 +129,7 @@ OpenCASCADE data exchange module:
 Summary:        OpenCASCADE Draw support libraries
 Group:          System/Libraries
 Requires:       %{name}-resources
+Conflicts:      libopencascade-draw7_7 = %{version}
 
 %description -n libopencascade-draw%{soname}
 This package contains support libraries for the
@@ -128,6 +138,7 @@ OpenCASCADE DRAWEXE test harness.
 %package -n libopencascade-foundationclasses%{soname}
 Summary:        OpenCASCADE foundation classes libraries
 Group:          System/Libraries
+Conflicts:      libopencascade-foundationclasses7_7 = %{version}
 
 %description -n libopencascade-foundationclasses%{soname}
 This package contains the OpenCASCADE libraries from the
@@ -137,6 +148,7 @@ OpenCASCADE foundation classes module:
 %package -n libopencascade-modelingalgorithms%{soname}
 Summary:        OpenCASCADE modeling algorithms libraries
 Group:          System/Libraries
+Conflicts:      libopencascade-modelingalgorithms7_7 = %{version}
 
 %description -n libopencascade-modelingalgorithms%{soname}
 This package contains the OpenCASCADE libraries from the
@@ -147,6 +159,7 @@ OpenCASCADE modeling module:
 %package -n libopencascade-modelingdata%{soname}
 Summary:        OpenCASCADE modeling data libraries
 Group:          System/Libraries
+Conflicts:      libopencascade-modelingdata7_7 = %{version}
 
 %description -n libopencascade-modelingdata%{soname}
 This package contains the OpenCASCADE libraries from the
@@ -156,6 +169,7 @@ OpenCASCADE modeling module:
 %package -n libopencascade-visualization%{soname}
 Summary:        OpenCASCADE visualization libraries
 Group:          System/Libraries
+Conflicts:      libopencascade-visualization7_7 = %{version}
 
 %description -n libopencascade-visualization%{soname}
 This package contains the OpenCASCADE libraries from the
@@ -181,11 +195,14 @@ harness executable.
   -DUSE_RAPIDJSON:BOOL=true \
   -DINSTALL_DIR_LIB=%{_lib} \
   -DINSTALL_DIR_CMAKE=%{_lib}/cmake/opencascade \
+  -DBUILD_SOVERSION_NUMBERS=%{sover_len} \
   ..
 %cmake_build
 
+%if %{with docs}
 cd ..
 ./gendoc -refman -html -mathjax="%{_datadir}/javascript/mathjax"
+%endif
 
 %install
 %cmake_install
@@ -311,7 +328,9 @@ rm -rf %buildroot/usr/share/doc
 %{_libdir}/lib*.so
 %{_bindir}/ExpToCasExe*
 
+%if %{with docs}
 %files devel-doc
 %doc doc/refman/html
+%endif
 
 %changelog

@@ -1,5 +1,5 @@
 <services>
-  <service name="obs_scm" mode="disabled">
+  <service name="obs_scm" mode="manual">
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="url">https://git.kernel.org/pub/scm/linux/kernel/git/jberg/iw.git</param>
     <param name="scm">git</param>
@@ -12,6 +12,6 @@
     <param name="compression">gz</param>
     <param name="file">*.tar</param>
   </service>
-  <service name="set_version" mode="disabled">
+  <service name="set_version" mode="manual">
   </service>
 </services>

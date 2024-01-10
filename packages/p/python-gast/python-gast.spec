@@ -1,7 +1,7 @@
 #
 # spec file for package python-gast
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ License:        BSD-3-Clause
 URL:            https://github.com/serge-sans-paille/gast/
 Source:         https://github.com/serge-sans-paille/gast/archive/%{version}.tar.gz#/%{srcname}-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements

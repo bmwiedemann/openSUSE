@@ -63,4 +63,24 @@
     <comment></comment>
     <requestid>1132727</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>bb6653f448dc88f6427c1641f77992f6</srcmd5>
+    <version>1.6.0~beta5</version>
+    <time>1702845224</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1133723</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f4cf91c79c4044719f4878e9f73d1fbd</srcmd5>
+    <version>1.6.0~rc1</version>
+    <time>1703102514</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.6.0~rc1:
+  * Bump version. (#1038)
+  * Fixes #980: Remove Packagecloud instructions (#1036)
+  * Fixes #908: Migration guide (#1021)
+  * Re-add ssh and bash to Dockerfile (#1034)</comment>
+    <requestid>1134102</requestid>
+  </revision>
 </revisionlist>

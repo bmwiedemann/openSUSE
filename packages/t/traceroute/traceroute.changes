@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Dec 19 18:58:12 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.1.5:
+  * Parse interface information (rfc5837) for ICMP extensions
+  * Add `fastopen' tcp module option (cookie negotiation only)
+  * Complete tcp module option `mss' to discover possible mss
+    clamping along the path being traced. 
+  * Complete tcp module option `info' to print returned tcp header
+    options too (all those that can be set or altered by `-O' for
+    tcp module).
+
+-------------------------------------------------------------------
 Fri Nov 10 13:53:09 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1.3:

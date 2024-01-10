@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct 30 12:36:17 UTC 2023 - pgajdos@suse.com
+
+- update to version 1.17.3
+  update to 1.17.3:
+  * Essentially just #645 which fixes compilation on OS X
+  update to 1.17.2:
+  * Fixed memory leak reported in #633
+- drop unneeded denose.patch (they switched to pytest)
+
+-------------------------------------------------------------------
 Mon Jan  2 14:23:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to v1.17.1:

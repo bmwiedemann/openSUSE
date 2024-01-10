@@ -1142,4 +1142,41 @@
 </comment>
     <requestid>1118008</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>736f37e83b0379ff1580d7f81d2f3e83</srcmd5>
+    <version>69.0.2</version>
+    <time>1703527480</time>
+    <user>anag+factory</user>
+    <comment>- Add patch allow-only-direct-compilation.patch:
+  * Allow forcing direct compilation.
+
+- update to 69.0.2:
+  * Added missing estimated date for removing
+    ``setuptools.dep_util`` (deprecated in v69.0.0).
+  * Fixed imports of ``setuptools.dep_util.newer_group``.
+  * A deprecation warning is issued instead of a hard failure.
+  * Include type information (``py.typed``, ``*.pyi``) by default
+    (#3136) -- by :user:`Danie-1`,
+  * Exported ``distutils.dep_util`` and ``setuptools.dep_util``
+    through ``setuptools.modified``
+  * Merged with pypa/distutils@7a04cbda0fc714.
+  * Replaced hardcoded numeric values with :obj:`dis.opmap`,
+    fixing problem with 3.13.0a1. (#4094)
+  * Configuring project ``version`` and ``egg_info.tag_*`` in
+    such a way that results in invalid version strings
+    (according to :pep:`440`) is no longer permitted. (#4066)
+  * Removed deprecated ``egg_base`` option from ``dist_info``.
+  * The parsing of the deprecated ``metadata.license_file`` and
+    ``metadata.requires`` fields in ``setup.cfg`` is no longer
+    supported.
+  * Users are expected to move to ``metadata.license_files`` and
+    ``options.install_requires`` (respectively). (#4066)
+  * Passing ``config_settings`` to ``setuptools.build_meta`` with
+    deprecated values for ``--global-option`` is no longer
+    allowed. (#4066)
+  * Removed deprecated ``namespace-packages`` from
+    ``pyproject.toml``.
+  * Added strict enforcement for ``project.dynamic`` in</comment>
+    <requestid>1134566</requestid>
+  </revision>
 </revisionlist>

@@ -29,8 +29,8 @@ Source1:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source2:        applications.keyring
 %endif
 Patch1:         desktop-files.diff
+BuildRequires:  extra-cmake-modules
 BuildRequires:  update-desktop-files
-BuildRequires:  xz
 BuildRequires:  cmake(KF5ConfigWidgets)
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5DocTools)

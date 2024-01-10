@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan  2 21:58:50 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Remove the dependency on perl(IO::Socket::INET6) as it has been
+  deprecated by upstream, is no longer suitable for use and its not
+  being maintained. A compatible replacement for this package is
+  perl(IO::Socket::IP) which is shipped by the perl-base package.
+
+-------------------------------------------------------------------
 Mon Sep 27 16:18:03 UTC 2021 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - fix build with perl 5.34.0

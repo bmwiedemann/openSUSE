@@ -15,4 +15,12 @@
     <comment>KDE Release Gear 23.08.0</comment>
     <requestid>1105869</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>bdb11a26ed436b890a229eec3680b1ce</srcmd5>
+    <version>1.4.1</version>
+    <time>1702845060</time>
+    <user>anag+factory</user>
+    <comment>Require extra-cmake-modules at build time</comment>
+    <requestid>1133519</requestid>
+  </revision>
 </revisionlist>

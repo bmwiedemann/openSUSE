@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec 27 15:55:49 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2023.11.13:
+  * Update release.yml
+  * Added PySimpleGUI versions 4 and 5 as a Framework
+  * Add Odoo 17 trove classifier
+
+-------------------------------------------------------------------
 Mon Oct 30 15:43:58 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 2023.10.18:
@@ -26,13 +34,13 @@ Mon Oct 30 15:43:58 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 Thu May  4 20:22:46 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2023.5.2:
-  * fix: incorrect specification of mypy section in pyproject.toml 
+  * fix: incorrect specification of mypy section in pyproject.toml
   * Add Pydantic :: 2 classifier.
   * Add JSON and JSON Schema classifiers
-  * Add classifier for Wagtail 5 
+  * Add classifier for Wagtail 5
   * Add `Environment :: WebAssembly` classifiers (#129)
   * Add Django :: 4.2 classifier.
-  * Add Pycsou Framework trove-classifier  
+  * Add Pycsou Framework trove-classifier
 
 -------------------------------------------------------------------
 Mon May  1 18:58:56 UTC 2023 - Ben Greiner <code@bnavigator.de>
@@ -53,19 +61,19 @@ Tue Apr 18 22:41:03 UTC 2023 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Wed Dec  7 22:30:07 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to v2022.12.1 
+- Update to v2022.12.1
   * Add django CMS 4.1 (#122)
 
 -------------------------------------------------------------------
 Sat Oct 29 16:19:27 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to v2022.10.19 
+- Update to v2022.10.19
   * add cuda 11.8
 
 -------------------------------------------------------------------
 Tue Oct 11 16:14:11 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 2022.9.26 
+- Update to version 2022.9.26
   * Add "Framework :: Odoo :: 16.0" classifier (#117)
   * The Odoo 16.0 branch has been created and it will be released in October.
 

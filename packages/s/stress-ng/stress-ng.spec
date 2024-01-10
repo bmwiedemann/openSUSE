@@ -18,13 +18,13 @@
 
 
 Name:           stress-ng
-Version:        0.16.04
+Version:        0.17.03
 Release:        0
 Summary:        Tool to load and stress a computer
 License:        GPL-2.0-only
 Group:          System/Benchmark
 URL:            https://github.com/ColinIanKing/stress-ng
-Source:         https://github.com/ColinIanKing/stress-ng/archive/refs/tags/V%{version}.tar.gz
+Source:         https://github.com/ColinIanKing/stress-ng/archive/refs/tags/V%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  keyutils-devel
 BuildRequires:  libaio-devel
 BuildRequires:  libapparmor-devel

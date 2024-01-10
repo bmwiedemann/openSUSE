@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Dec 26 15:44:10 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Thu Dec 14 21:30:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.9.0:
+  * Add `parse_uri()` support for Steam TOTP (#153)
+  * Test and documentation improvements
+
+-------------------------------------------------------------------
 Mon Jan  2 18:54:50 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to v2.8.0:

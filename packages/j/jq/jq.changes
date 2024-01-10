@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Wed Dec 13 20:28:23 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.7.1
+  Security
+  * Fix CVE-2023-50246 (boo#1218034)
+    + Fix heap buffer overflow in jvp_literal_number_literal.
+  * Fix CVE-2023-50268 (boo#1218038)
+      fix stack-buffer-overflow if comparing nan with payload.
+  CLI changes
+  * Make the default background color more suitable for bright
+    backgrounds.
+  * Allow passing the inline jq script after --.
+  * Fix possible uninitialised value dereference if jq_init() fails
+  Language changes
+  * Simplify paths/0 and paths/1.
+  * Reject U+001F in string literals.
+  * Remove unused nref accumulator in block_bind_library.
+  * Remove a bunch of unused variables, and useless assignments.
+  * main.c: Remove unused EXIT_STATUS_EXACT option.
+  * Actually use the number correctly casted from double to int as
+    index.
+  * src/builtin.c: remove unnecessary jv_copy-s in
+    type_error/type_error2.
+  * Remove undefined behavior caught by LLVM 10 UBSAN.
+  * Convert decnum to binary64 (double) instead of decimal64.
+    This makes jq behave like the JSON specification suggests and
+    more similar to other languages.
+  * Fix memory leaks on invalid input for ltrimstr/1 and
+    rtrimstr/1.
+  * Fix memory leak on failed get for setpath/2.
+  * Fix nan from json parsing also for nans with payload that 
+    start with 'n'.
+  * Allow carriage return characters in comments.
+  Documentation changes
+  * Generate links in the man page.
+  libjq
+  * Add extern C for C++.
+
+-------------------------------------------------------------------
 Wed Nov 15 10:26:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - build with valgrind only on 64 bit architectures

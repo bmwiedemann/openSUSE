@@ -1,7 +1,7 @@
 #
 # spec file for package python-xarray
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-xarray
-Version:        2023.8.0
+Version:        2023.12.0
 Release:        0
 Summary:        N-D labeled arrays and datasets in Python
 License:        Apache-2.0
@@ -27,12 +27,10 @@ Source:         https://files.pythonhosted.org/packages/source/x/xarray/xarray-%
 # PATCH-FEATURE-UPSTREAM local_dataset.patch gh#pydata/xarray#5377 mcepl@suse.com
 # fix xr.tutorial.open_dataset to work with the preloaded cache.
 Patch0:         local_dataset.patch
-# PATCH-FIX-UPSTREAM xarray-pr8139-pandas-fill_value.patch gh#pydata/xarray#8125, gh#pydata/xarray#8139
-Patch1:         https://github.com/pydata/xarray/pull/8139.patch#/xarray-pr8139-pandas-fill_value.patch
 BuildRequires:  %{python_module base >= 3.9}
-BuildRequires:  %{python_module numpy-devel >= 1.20}
+BuildRequires:  %{python_module numpy-devel >= 1.22}
 BuildRequires:  %{python_module packaging >= 21.3}
-BuildRequires:  %{python_module pandas >= 1.3}
+BuildRequires:  %{python_module pandas >= 1.4}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
@@ -117,6 +115,8 @@ if [ $(getconf LONG_BIT) -eq 32 ]; then
   # tests for 64bit types
   donttest="$donttest or TestZarrDictStore or TestZarrDirectoryStore or TestZarrWriteEmpty"
 fi
+# h5py was built without ROS3 support, can't use ros3 driver
+donttest="$donttest or TestH5NetCDFDataRos3Driver"
 %pytest -n auto -rsEf -k "not ($donttest)" xarray
 
 %files %{python_files}

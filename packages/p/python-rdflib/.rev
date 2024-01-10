@@ -263,4 +263,12 @@
 - Drop unneeded BuildRequires on python3-2to3</comment>
     <requestid>952276</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>77d6b7f9d30787b456984abfad738d57</srcmd5>
+    <version>6.1.1</version>
+    <time>1702673196</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1133427</requestid>
+  </revision>
 </revisionlist>

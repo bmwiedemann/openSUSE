@@ -17,10 +17,8 @@
 
 
 %{?sle15_python_module_pythons}
-
-%define upname rope
 Name:           python-rope
-Version:        1.9.0
+Version:        1.11.0
 Release:        0
 Summary:        A python refactoring library
 License:        LGPL-3.0-or-later
@@ -29,7 +27,6 @@ URL:            https://github.com/python-rope/rope
 Source:         https://files.pythonhosted.org/packages/source/r/rope/rope-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 # SECTION test
 # Requires full stdlib

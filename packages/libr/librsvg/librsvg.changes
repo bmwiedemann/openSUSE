@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jan  4 17:19:37 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.57.1:
+  + Fix small-caps and bump the version of Pango required to 1.50.0.
+  + Fix panic when using negative scaling transforms on the
+    toplevel.
+  + Support "var(--foo, #aabbcc)" just for colors.  This is the
+    minimum required to render color SVG emoji fonts that provide
+    color fallbacks, but it is not yet full support for CSS var().
+  + Fix the VS2017 build.
+  + Update cairo-rs.
+  + Update the project metadata files.
+
+-------------------------------------------------------------------
 Thu Nov 30 12:36:14 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Run service with new obs-service-cargo, drop cargo_config as

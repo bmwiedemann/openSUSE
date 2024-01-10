@@ -19,7 +19,7 @@
 %bcond_with docs
 %{?sle15_python_module_pythons}
 Name:           python-aiohttp
-Version:        3.9.0
+Version:        3.9.1
 Release:        0
 Summary:        Asynchronous HTTP client/server framework
 License:        Apache-2.0
@@ -31,9 +31,9 @@ Patch1:         remove-re-assert.patch
 Requires:       python-aiosignal >= 1.1.2
 Requires:       python-attrs >= 17.3.0
 Requires:       python-frozenlist >= 1.1.1
-# %if %python_version_nodots < 311
+%if 0%{?python_version_nodots} < 311
 Requires:       (python-async_timeout >= 4.0 with python-async_timeout < 5)
-# %endif
+%endif
 Requires:       (python-charset-normalizer >= 2.0 with python-charset-normalizer < 4)
 Requires:       (python-multidict >= 4.5 with python-multidict < 7)
 Requires:       (python-yarl >= 1.0 with python-yarl < 2)
@@ -130,11 +130,14 @@ donttest+=" or test_client_session_timeout_zero or test_requote_redirect_url_def
 # flaky
 donttest+=" or test_https_proxy_unsupported_tls_in_tls"
 # not running under pytest ?!
-donttest+=" or test_circular_imports"
+donttest+=" or test_circular_imports or test_import_time"
 # requires python-on-whales
 rm -v tests/autobahn/test_autobahn.py
+# randomly fails on xdist splits
+single_runs="test_run_app"
 test -d aiohttp && mv aiohttp aiohttp.bkp
-%pytest_arch %{?jobs: -n %jobs} tests -k "not ($donttest ${$python_donttest})"
+%pytest_arch %{?jobs: -n %jobs} tests -k "not ($donttest or ${single_runs})"
+%pytest_arch tests -k "${single_runs}"
 
 %files %{python_files}
 %license LICENSE.txt

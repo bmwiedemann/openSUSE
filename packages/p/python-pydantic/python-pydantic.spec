@@ -1,7 +1,7 @@
 #
 # spec file for package python-pydantic
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pydantic
-Version:        1.10.9
+Version:        1.10.13
 Release:        0
 Summary:        Data validation and settings management using python type hinting
 License:        MIT
@@ -28,6 +28,7 @@ Source:         https://github.com/pydantic/pydantic/archive/v%{version}.tar.gz#
 # PATCH-FIX-OPENSUSE Ignore DeprecationWarning until requests-toolbelt is fixed
 # (Pulled in by email-validator)
 Patch0:         ignore-urllib3-pyopenssl-warning.patch
+Patch1:         Fix-Python-3.12-test-failures.patch
 BuildRequires:  %{python_module email-validator >= 1.0.3}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pytest-mock}

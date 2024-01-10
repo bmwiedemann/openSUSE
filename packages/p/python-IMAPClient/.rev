@@ -47,4 +47,37 @@
     <comment></comment>
     <requestid>1034200</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>be8285a2064ec00989bb91fcc824eddb</srcmd5>
+    <version>3.0.1</version>
+    <time>1704659987</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.1:
+  * Fix missing test files
+- update to 3.0.0:
+  * Remove support for Python 2
+  * Default contexts should use SERVER_AUTH not CLIENT_AUTH
+  * New function `uid_expunge`, which requires the capability
+    UIDPLUS.
+  * fix: broken `get()` &amp; `getboolean()`
+  * Remove configparser deprecation warnings
+  * chore: convert from `optparse` to `argparse`
+  * Fix typos in docs' index file
+  * Update documentation links
+  * Remove usage of deprecated imp module
+  * Update actions to current versions
+  * Fix license in setup.py
+  * Add use of the `isort` linter
+  * Initial framework for adding type-hints and added type-hints
+    to `version.py`
+  * Bump flake8 from 4.0.1 to 6.1.0
+  * Bump black from 22.3.0 to 23.7.0
+- drop python-IMAPClient-no-python2.patch (upstream)
+
+    - 2x faster _maybe_int_to_bytes for Python 2 (#375)
+    - Fix _proc_folder_list quadratic runtime (#374)
+  - Support the Deleted special folder used by Outlook (thanks Samir M)
+- initial packaging</comment>
+    <requestid>1137294</requestid>
+  </revision>
 </revisionlist>

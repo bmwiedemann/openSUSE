@@ -1,7 +1,7 @@
 #
 # spec file for package libunibreak
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,20 @@
 
 
 %define         libversion 5
-%define         altver  5_0
+%define         altver  5_1
 Name:           libunibreak
-Version:        5.0
+Version:        5.1
 Release:        0
 Summary:        Unicode line-breaking library
 License:        Zlib
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/adah1972/libunibreak
 Source0:        https://github.com/adah1972/libunibreak/releases/download/libunibreak_%{altver}/%{name}-%{version}.tar.gz
-Source1:        http://www.unicode.org/Public/UNIDATA/auxiliary/LineBreakTest.txt
-Source2:        http://www.unicode.org/Public/UNIDATA/auxiliary/WordBreakTest.txt
-Source3:        http://www.unicode.org/Public/UNIDATA/auxiliary/GraphemeBreakTest.txt
+# PATCH-FIX-UPSTREAM libunibreak-include-test-data.patch gh#adah1972/libunibreak#41 badshah400@gmail.com -- Include working unicode data for tests, as tests fail against upstream unicode 15 data files; upstream commits b992362 and 839f06f
+Patch0:         libunibreak-include-test-data.patch
+# Needed because Patch0 modifies Makefile.am files
+BuildRequires:  libtool
+# /
 BuildRequires:  pkgconfig
 Obsoletes:      liblinebreak < 2.1
 Provides:       liblinebreak = 2.1
@@ -64,12 +66,12 @@ algorithm as described in Unicode Standard Annex 14 and Unicode Standard
 Annex 29.
 
 %prep
-%setup -q
-for source in %{SOURCE1} %{SOURCE2} %{SOURCE3}; do
-	install -m0644 $source src/
-done
+%autosetup -p1
 
 %build
+# Patch0 modifies Makefile.am
+autoreconf -fvi
+# /
 %configure \
 	--disable-static
 %make_build

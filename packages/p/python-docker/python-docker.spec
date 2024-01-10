@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-docker
-Version:        6.1.3
+Version:        7.0.0
 Release:        0
 Summary:        A Python library for the Docker Engine API
 License:        Apache-2.0

@@ -1,7 +1,7 @@
 #
 # spec file for package python-dj-database-url
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-dj-database-url
-Version:        1.3.0
+Version:        2.1.0
 Release:        0
 Summary:        Utility to use database URLs in Django applications
 License:        BSD-3-Clause
@@ -67,8 +67,7 @@ Oracle, Oracle (GIS), and SQLite.
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/dj_database_url.py
+%{python_sitelib}/dj_database_url
 %{python_sitelib}/dj_database_url-%{version}.dist-info
-%pycache_only %{python_sitelib}/__pycache__
 
 %changelog

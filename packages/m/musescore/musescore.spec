@@ -21,11 +21,11 @@
 # Workaround boo#1189991
 %define _lto_cflags %{nil}
 %define rname   mscore
-%define version_lesser 4.1
+%define version_lesser 4.2
 %define fontdir %{_datadir}/fonts/%{name}
 %define docdir  %{_docdir}/%{name}
 Name:           musescore
-Version:        4.1.1
+Version:        4.2.0
 Release:        0
 Summary:        A WYSIWYG music score typesetter
 # Licenses in MuseScore are a mess. To help other maintainers I give the following overview:
@@ -51,7 +51,7 @@ Summary:        A WYSIWYG music score typesetter
 License:        Apache-2.0 AND BSD-3-Clause AND FTL AND GPL-2.0-only AND SUSE-GPL-3.0-with-font-exception AND GPL-2.0-or-later AND GFDL-1.2-only AND LGPL-2.0-only AND LGPL-2.1-only AND (GPL-2.0-only OR GPL-3.0-only) AND MIT
 Group:          Productivity/Multimedia/Sound/Editors and Convertors
 URL:            https://musescore.org
-Source0:        https://github.com/musescore/MuseScore/archive/v%{version}/MuseScore-%{version}.tar.gz
+Source0:        https://github.com/musescore/MuseScore/archive/refs/tags/v%{version}.tar.gz#/MuseScore-%{version}.tar.gz
 # MuseScore expect to be able to download the latest version of its soundfonts
 # They are downloaded from the link conteinde in CMakeLists.text
 # They are newer versions than the one included in the MuseScore tarball itself
@@ -180,11 +180,11 @@ export CXX=g++-12
        -DCMAKE_BUILD_TYPE=RelWithDebInfo \
        -DMUSESCORE_BUILD_CONFIGURATION=app \
        -DMUSESCORE_BUILD_MODE=release \
-       -DBUILD_UNIT_TESTS=OFF \
-       -DUSE_SYSTEM_FREETYPE=ON \
-       -DBUILD_JACK:BOOL=ON \
-       -DBUILD_UPDATE_MODULE:BOOL=OFF \
-       -DBUILD_CRASHPAD_CLIENT=OFF \
+       -DMUE_BUILD_UNIT_TESTS=OFF \
+       -DMUE_COMPILE_USE_SYSTEM_FREETYPE=ON \
+       -DMUE_ENABLE_AUDIO_JACK=OFF \
+       -DMUE_BUILD_UPDATE_MODULE=OFF \
+       -DMUE_BUILD_CRASHPAD_CLIENT=OFF \
        -Wno-dev
 %cmake_build
 
@@ -213,19 +213,13 @@ mv fonts/leland/LICENSE.txt      fonts/leland/LICENSE.txt.leland
 mkdir -p %{buildroot}%{_datadir}/%{rname}-%{version_lesser}/demos
 install -p -m 644 demos/*.mscz %{buildroot}%{_datadir}/%{rname}-%{version_lesser}/demos
 
-# Remove all devel files
-rm -r %{buildroot}%{_includedir}
-rm -r %{buildroot}%{_libdir}
-# Delete crashpad binary
-rm %{buildroot}%{_bindir}/crashpad_handler
-
 # collect doc files
 install -d -m 755 %{buildroot}%docdir
 install -p -m 644 README.SUSE                         %{buildroot}%docdir/
 install -p -m 644 thirdparty/beatroot/COPYING         %{buildroot}%docdir/COPYING.beatroot
 install -p -m 644 thirdparty/beatroot/README.txt      %{buildroot}%docdir/README.txt.beatroot
 install -p -m 644 thirdparty/dtl/COPYING              %{buildroot}%docdir/COPYING.BSD.dtl
-install -p -m 644 thirdparty/freetype/README          %{buildroot}%docdir/README.freetype
+install -p -m 644 src/framework/draw/thirdparty/freetype/freetype-2.13.1/README          %{buildroot}%docdir/README.freetype
 install -p -m 644 thirdparty/intervaltree/README      %{buildroot}%docdir/README.intervaltree
 install -p -m 644 thirdparty/rtf2html/ChangeLog       %{buildroot}%docdir/ChangeLog.rtf2html
 install -p -m 644 thirdparty/rtf2html/COPYING.LESSER  %{buildroot}%docdir/COPYING.LESSER.rtf2html
@@ -242,7 +236,7 @@ install -p -m 644 share/wallpapers/COPYRIGHT          %{buildroot}%docdir/COPYIN
 %fdupes %{buildroot}%{_prefix}
 
 %files
-%license LICENSE.GPL
+%license LICENSE.txt
 %{_bindir}/%{rname}
 %{_datadir}/metainfo/org.musescore.MuseScore.appdata.xml
 %{_datadir}/applications/org.musescore.MuseScore.desktop
@@ -254,6 +248,8 @@ install -p -m 644 share/wallpapers/COPYRIGHT          %{buildroot}%docdir/COPYIN
 %doc README.md README.SUSE
 %dir %docdir
 %doc %docdir/*
+%exclude %{_includedir}/
+%exclude %{_libdir}/
 
 %files fonts
 %dir %{fontdir}

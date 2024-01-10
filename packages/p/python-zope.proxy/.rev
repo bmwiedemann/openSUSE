@@ -121,4 +121,24 @@
     <comment></comment>
     <requestid>1092192</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>5a12b284c9f21930b7707c476e721c78</srcmd5>
+    <version>5.1</version>
+    <time>1702844933</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.1:
+  * Add support for Python 3.12.
+  * Drop support for Python 2.7, 3.5, 3.6.
+  * Remove proxying code for names that no longer exist in Python
+    3 like ``__long__`` and some others.
+
+- Update to version 4.6.1
+- Update to version 4.6.0
+- Update to version 4.5.1
+  * Add support for Python 3.10.
+  * Fix indexing pure-Python proxies with slices under Python 3,
+    and restore the use of __getslice__ (if implemented by the
+- Provides/Obsoletes should be on the -devel package since</comment>
+    <requestid>1133582</requestid>
+  </revision>
 </revisionlist>

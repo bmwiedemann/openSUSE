@@ -1,7 +1,7 @@
 #
 # spec file for package kubelogin
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           kubelogin
-Version:        0.0.34
+Version:        0.1.0
 Release:        0
 Summary:        Kubernetes client credential plugin implementing Azure authentication
 License:        MIT

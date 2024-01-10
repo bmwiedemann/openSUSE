@@ -25,7 +25,7 @@ Summary:        IMA/EVM control utility
 License:        LGPL-2.1-or-later
 Group:          System/Base
 URL:            https://sourceforge.net/projects/linux-ima/
-Source0:        https://downloads.sourceforge.net/project/linux-ima/ima-evm-utils/%{name}-%{version}.tar.gz
+Source0:        https://github.com/mimizohar/ima-evm-utils/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Patch1:         0001-fsverity.test-Add-usr-sbin-into-PATH.patch
 BuildRequires:  asciidoc
 BuildRequires:  attr

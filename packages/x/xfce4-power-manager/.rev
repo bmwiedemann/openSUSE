@@ -848,4 +848,50 @@
     <comment></comment>
     <requestid>1090115</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>1f9f0846e2703657e9e3a1f5e394c767</srcmd5>
+    <version>4.18.3</version>
+    <time>1702936548</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 4.18.3
+  * power: Fix inhibition management
+  * settings: Present window to the user when already opened
+  * settings: Remove useless g_application_hold/release()
+  * A review of signal handlers disconnection
+  * Remove #ifdefs DEBUG
+  * brightness: Rework min level management
+  * Refactor XfpmBrightness
+  * Remove useless logs
+  * backlight: Adjust some spacing for consistency / readability
+  * backlight: Return earlier when brightness key event should not be 
+    handled
+  * backlight: fix &quot;handle display brightness keys&quot; setting
+  * Simplify brightness level management (Fixes #139)
+  * Add missing properties for panel plugin settings
+  * Use same debug function everywhere (V2)
+  * brightness: Silence more warnings
+  * Fix previous commit (again)
+  * Fix previous commit
+  * Fix g_spawn*_sync() wait status management
+  * brightness: Fix g_spawn() wait status management
+  * Silence some more warnings
+  * Update docs url
+  * power: Fix memory leak
+  * settings: Fix hidden widgets when !has_lcd_brightness
+  * backlight: Fix xfconf warning about cancelled operation
+  * Lower some warning levels
+  * Use same debug function everywhere
+  * Fix upower object management
+  * plugin: Fix non unreffed objects on finalize
+  * systray-icon: Fix &quot;floating object&quot; warning on finalize
+  * systray-icon: Fix &quot;invalid property&quot; warnings
+  * Suspend system if lock screen fails on lid close (Fixes #209)
+  * Add energy rate into device details
+  * power: Fix use of g_hash_table_get_values()
+  * Fix light locker integration (Fixes #201)
+  * Add app icon at 64px, 96px, clean up SVG metadata
+  * Fix description for pending states.
+  * Translation Updates (forwarded request 1130082 from manfred-h)</comment>
+    <requestid>1133766</requestid>
+  </revision>
 </revisionlist>

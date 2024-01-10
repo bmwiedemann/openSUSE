@@ -11,11 +11,11 @@ Subject: [PATCH] Fix compatibility issues with Python 3.11
  tests/test_fuzz.py   |  2 +-
  2 files changed, 11 insertions(+), 11 deletions(-)
 
-diff --git a/tests/test_compat.py b/tests/test_compat.py
-index ad36683..c8e6aca 100644
---- a/tests/test_compat.py
-+++ b/tests/test_compat.py
-@@ -96,16 +96,16 @@ def test_basic(self):
+Index: iniparse-0.5/tests/test_compat.py
+===================================================================
+--- iniparse-0.5.orig/tests/test_compat.py
++++ iniparse-0.5/tests/test_compat.py
+@@ -92,16 +92,16 @@ class TestCaseBase(unittest.TestCase):
          eq(cf.get('Spaces', 'key with spaces'), 'value')
          eq(cf.get('Spaces', 'another with spaces'), 'splat!')
  
@@ -36,7 +36,7 @@ index ad36683..c8e6aca 100644
                      "remove_option() failed to report non-existance of option"
                      " that was removed")
  
-@@ -127,10 +127,10 @@ def test_case_sensitivity(self):
+@@ -123,10 +123,10 @@ class TestCaseBase(unittest.TestCase):
          eq(cf.options("a"), ["b"])
          eq(cf.get("a", "b"), "value",
             "could not locate option, expecting case-insensitive option names")
@@ -49,7 +49,7 @@ index ad36683..c8e6aca 100644
                  cf.has_option("A", opt),
                  "has_option() returned false for option which should exist")
          eq(cf.options("A"), ["a-b"])
-@@ -147,7 +147,7 @@ def test_case_sensitivity(self):
+@@ -143,7 +143,7 @@ class TestCaseBase(unittest.TestCase):
          # SF bug #561822:
          cf = self.fromstring("[section]\nnekey=nevalue\n",
                               defaults={"key":"value"})
@@ -58,7 +58,7 @@ index ad36683..c8e6aca 100644
  
      def test_default_case_sensitivity(self):
          cf = self.newconfig({"foo": "Bar"})
-@@ -182,7 +182,7 @@ def test_query_errors(self):
+@@ -178,7 +178,7 @@ class TestCaseBase(unittest.TestCase):
          cf = self.newconfig()
          self.assertEqual(cf.sections(), [],
                           "new ConfigParser should have no defined sections")
@@ -67,7 +67,7 @@ index ad36683..c8e6aca 100644
                      "new ConfigParser should have no acknowledged sections")
          self.assertRaises(ConfigParser.NoSectionError,
                            cf.options, "Foo")
-@@ -221,8 +221,8 @@ def test_boolean(self):
+@@ -217,8 +217,8 @@ class TestCaseBase(unittest.TestCase):
              "E5=FALSE AND MORE"
              )
          for x in range(1, 5):
@@ -78,11 +78,11 @@ index ad36683..c8e6aca 100644
              self.assertRaises(ValueError,
                                cf.getboolean, 'BOOLTEST', 'e%d' % x)
  
-diff --git a/tests/test_fuzz.py b/tests/test_fuzz.py
-index df568bb..874ef2e 100644
---- a/tests/test_fuzz.py
-+++ b/tests/test_fuzz.py
-@@ -102,7 +102,7 @@ def test_fuzz(self):
+Index: iniparse-0.5/tests/test_fuzz.py
+===================================================================
+--- iniparse-0.5.orig/tests/test_fuzz.py
++++ iniparse-0.5/tests/test_fuzz.py
+@@ -102,7 +102,7 @@ class TestFuzz(unittest.TestCase):
                  cc = compat.RawConfigParser()
                  cc.readfp(StringIO(s))
                  cc_py = configparser.RawConfigParser()

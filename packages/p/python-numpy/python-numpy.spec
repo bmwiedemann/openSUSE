@@ -94,8 +94,13 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyproject-metadata >= 0.7.1}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  cmake
+%if 0%{?suse_version} <= 1600
+BuildRequires:  gcc12
+BuildRequires:  gcc12-c++
+%else
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  ninja >= 1.8.2
 BuildRequires:  patchelf
 BuildRequires:  python-rpm-macros >= 20210929
@@ -196,6 +201,10 @@ sed -i '1s/^#!.*$//' numpy/random/_examples/cython/*.pyx
 rm -f PKG-INFO
 
 %build
+%if 0%{?suse_version} <= 1600
+export CC=gcc-12
+export CXX=g++-12
+%endif
 %define _lto_cflags %{nil}
 %if %{with hpc}
 %hpc_setup

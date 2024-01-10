@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan  8 20:00:05 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.7.1:
+  * Incorrect setup of the logger is now fixed.
+  * Fixed missing environment variable in the docs.
+
+-------------------------------------------------------------------
 Sat Nov 25 12:56:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.7.0:

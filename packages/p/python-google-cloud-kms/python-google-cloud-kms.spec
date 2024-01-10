@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
+%{?sle15_python_module_pythons}
 Name:           python-google-cloud-kms
-Version:        2.19.2
+Version:        2.20.0
 Release:        0
 Summary:        Cloud Key Management Service (KMS) API API client library
 License:        Apache-2.0
@@ -28,24 +27,20 @@ URL:            https://github.com/GoogleCloudPlatform/google-cloud-python
 Source:         https://files.pythonhosted.org/packages/source/g/google-cloud-kms/google-cloud-kms-%{version}.tar.gz
 BuildRequires:  %{python_module google-api-core >= 1.34.0}
 BuildRequires:  %{python_module grpc-google-iam-v1 >= 0.12.4}
-BuildRequires:  %{python_module proto-plus >= 1.22.0}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module proto-plus >= 1.22.3}
 BuildRequires:  %{python_module protobuf >= 3.19}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-google-api-core >= 1.34.0
 Requires:       python-grpc-google-iam-v1 >= 0.12.4
+Requires:       python-proto-plus >= 1.22.3
 Requires(post): update-alternatives
 Requires(preun):update-alternatives
 BuildArch:      noarch
-%if %{with python2}
-BuildRequires:  python-enum34
-%endif
-%ifpython2
-Requires:       python-enum34
-%endif
 %python_subpackages
 
 %description
@@ -55,10 +50,10 @@ Cloud Key Management Service (KMS) API API client library
 %setup -q -n google-cloud-kms-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -67,6 +62,8 @@ Cloud Key Management Service (KMS) API API client library
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/google/cloud/kms
+%{python_sitelib}/google/cloud/kms_v1
+%{python_sitelib}/google_cloud_kms-%{version}.dist-info
 
 %changelog

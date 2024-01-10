@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package petsc
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -436,56 +436,56 @@ export ARCHCFLAGS=-fPIC
 %endif
 
 python%{python_ver} ./config/configure.py \
-	--CFLAGS="$RPM_OPT_FLAGS $ARCHCFLAGS" \
-	--FFLAGS="$RPM_OPT_FLAGS $ARCHCFLAGS" \
-	--CXXFLAGS="$RPM_OPT_FLAGS $ARCHCFLAGS" \
-	--prefix=%{p_prefix} \
-        --with-clanguage=C++ \
-        --with-c-support \
-	--with-fortran-interfaces=1 \
-	--with-debugging=no \
-	--with-python-exec=python%{python_ver} \
-	--with-shared-libraries \
-	--with-batch=0 \
+  --CFLAGS="$RPM_OPT_FLAGS $ARCHCFLAGS" \
+  --FFLAGS="$RPM_OPT_FLAGS $ARCHCFLAGS" \
+  --CXXFLAGS="$RPM_OPT_FLAGS $ARCHCFLAGS" \
+  --prefix=%{p_prefix} \
+  --with-clanguage=C++ \
+  --with-c-support \
+  --with-fortran-interfaces=1 \
+  --with-debugging=no \
+  --with-python-exec=python%{python_ver} \
+  --with-shared-libraries \
+  --with-batch=0 \
 %if %{without hpc}
-        --with-suitesparse=1 \
-        --with-suitesparse-lib=[%{_libdir}/libklu.so,%{_libdir}/libumfpack.so,%{_libdir}/libcholmod.so,%{_libdir}/libcolamd.so,%{_libdir}/libccolamd.so,%{_libdir}/libcamd.so,%{_libdir}/libamd.so,%{_libdir}/libspqr.so,%{_libdir}/libsuitesparseconfig.so] \
-        --with-suitesparse-include=%{_includedir}/suitesparse \
+  --with-suitesparse=1 \
+  --with-suitesparse-lib=[%{_libdir}/libklu.so,%{_libdir}/libumfpack.so,%{_libdir}/libcholmod.so,%{_libdir}/libcolamd.so,%{_libdir}/libccolamd.so,%{_libdir}/libcamd.so,%{_libdir}/libamd.so,%{_libdir}/libspqr.so,%{_libdir}/libsuitesparseconfig.so] \
+  --with-suitesparse-include=%{_includedir}/suitesparse \
  %if %{without mpi}
-	--with-mpi=0 \
+  --with-mpi=0 \
  %else
-	--with-mpi=1 \
-        --with-mpi-dir=%{p_base}\
-        --with-blacs=1 \
-        --with-blacs-include=%{p_base}/include \
-        --with-blacs-lib=[%{p_libdir}/libblacs.so] \
+  --with-mpi=1 \
+  --with-mpi-dir=%{p_base}\
+  --with-blacs=1 \
+  --with-blacs-include=%{p_base}/include \
+  --with-blacs-lib=[%{p_libdir}/libblacs.so] \
   %if %{with pastix}
-        --with-pastix=1 \
-        --with-pastix-pkg-config=%{p_libdir}/pkgconfig \
+  --with-pastix=1 \
+  --with-pastix-pkg-config=%{p_libdir}/pkgconfig \
   %endif
-        --with-ptscotch=1 \
-        --with-ptscotch-include=%{p_base}/include \
-        --with-ptscotch-lib=[%{p_libdir}/libptscotch.so,%{p_libdir}/libptscotcherr.so,%{p_libdir}/libptscotcherrexit.so,%{p_libdir}/libptscotchparmetis.so] \
-        --with-scalapack=1 \
-        --with-scalapack-include=%{p_base}/include \
-        --with-scalapack-lib=[%{p_libdir}/libscalapack.so] \
+  --with-ptscotch=1 \
+  --with-ptscotch-include=%{p_base}/include \
+  --with-ptscotch-lib=[%{p_libdir}/libptscotch.so,%{p_libdir}/libptscotcherr.so,%{p_libdir}/libptscotcherrexit.so,%{p_libdir}/libptscotchparmetis.so] \
+  --with-scalapack=1 \
+  --with-scalapack-include=%{p_base}/include \
+  --with-scalapack-lib=[%{p_libdir}/libscalapack.so] \
   %if %{with hypre}
-        --with-superlu=1 \
-        --with-hypre=1 \
-        --with-hypre-include=%{p_base}/include/hypre \
-        --with-hypre-lib=[%{p_libdir}/libHYPRE.so] \
+  --with-superlu=1 \
+  --with-hypre=1 \
+  --with-hypre-include=%{p_base}/include/hypre \
+  --with-hypre-lib=[%{p_libdir}/libHYPRE.so] \
   %endif
-        --with-hdf5=1 \
-        --with-hdf5-lib=[%{p_libdir}/libhdf5.so] \
-        --with-hdf5-include=%{p_base}/include \
+  --with-hdf5=1 \
+  --with-hdf5-lib=[%{p_libdir}/libhdf5.so] \
+  --with-hdf5-include=%{p_base}/include \
         || cat configure.log
  %endif
 %else
-        --with-blas-lapack-lib=$OPENBLAS_LIB/libopenblas.so \
-        --with-scalapack-dir=$SCALAPACK_DIR \
-        --with-hdf5=1 \
-        --with-hdf5-lib=$HDF5_LIB/libhdf5.so \
-        --with-hdf5-include=$HDF5_INC
+  --with-blas-lapack-lib=$OPENBLAS_LIB/libopenblas.so \
+  --with-scalapack-dir=$SCALAPACK_DIR \
+  --with-hdf5=1 \
+  --with-hdf5-lib=$HDF5_LIB/libhdf5.so \
+  --with-hdf5-include=$HDF5_INC
 %endif
 
 %make_build
@@ -657,6 +657,13 @@ chmod a+x $i %{buildroot}%{p_prefix}/lib/petsc/bin/*
 sed -i -e '/^MAKE_/ { /MAKE_NP/ d ; /MAKE_LOAD/ d ; /MAKE_TEST_NP/ d }; /^NPMAX/ d' \
   %{buildroot}%{p_prefix}/lib/petsc/conf/petscvariables
 
+%if %{without hpc}
+# Make pkgconfig file visible to pkg-config
+mkdir -p %{buildroot}%{p_libdir}/pkgconfig
+ln -s %{p_libdir}/petsc/%{version}/%{petsc_arch}/lib/pkgconfig/petsc.pc \
+      %{buildroot}%{p_libdir}/pkgconfig/
+%endif
+
 %fdupes %{buildroot}%{p_include}
 %fdupes %{buildroot}%{p_libdir}
 %fdupes %{buildroot}%{p_prefix}/share/petsc/examples
@@ -691,6 +698,7 @@ sed -i -e '/^MAKE_/ { /MAKE_NP/ d ; /MAKE_LOAD/ d ; /MAKE_TEST_NP/ d }; /^NPMAX/
 %{p_prefix}/lib/petsc
 %{p_prefix}/%{!?with_hpc:lib}%{?with_hpc:%_lib}/pkgconfig
 %{p_libdir}/*.so
+%{p_libdir}/pkgconfig/*.pc
   %if %{without hpc}
 %{p_prefix}/lib/*.so
 %dir %{_datadir}/modules/%{name}-%{petsc_arch}

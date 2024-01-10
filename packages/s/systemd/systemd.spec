@@ -18,7 +18,7 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 
-%define archive_version +suse.17.gce08cd5f66
+%define archive_version +suse.21.g071ac409a0
 
 %define _testsuitedir %{_systemd_util_dir}/tests
 %define xinitconfdir %{?_distconfdir}%{!?_distconfdir:%{_sysconfdir}}/X11/xinit
@@ -306,7 +306,9 @@ URL:            http://www.kernel.org/pub/linux/utils/kernel/hotplug/udev.html
 Requires:       %{name} = %{version}-%{release}
 %systemd_requires
 Requires:       filesystem
+%if %{without bootstrap}
 Requires:       kmod
+%endif
 Requires:       system-group-hardware
 Requires:       group(kvm)
 Requires:       group(lp)

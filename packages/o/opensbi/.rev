@@ -161,4 +161,25 @@
   * Designware GPIO driver (forwarded request 1099547 from Andreas_Schwab)</comment>
     <requestid>1099548</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>9a7500f79528fd8c2035bd3cd3dc2f55</srcmd5>
+    <version>1.4</version>
+    <time>1703800971</time>
+    <user>anag+factory</user>
+    <comment>- Update to opensbi 1.4
+  * Synopsys DesignWare APB GPIO driver
+  * Zicntr and Zihpm support
+  * Console print improvements
+  * Smepmp support
+  * Simple FDT based syscon regmap driver
+  * Syscon based reboot and poweroff driver
+  * Non-contiguous hpm counters
+  * Smcntrpmf support
+  * Full sparse hartid support
+  * IPI improvements
+  * RFENCE improvements
+  * Zkr support
+  * Andes custom PMU support (forwarded request 1135365 from Andreas_Schwab)</comment>
+    <requestid>1135366</requestid>
+  </revision>
 </revisionlist>

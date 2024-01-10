@@ -138,4 +138,13 @@ kernel)</comment>
     + mtd-utils: Fix printf format specifiers with the wrong type</comment>
     <requestid>846148</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2abba6e84bbf9f4f05101518454ab6c0</srcmd5>
+    <version>2.1.6</version>
+    <time>1703102564</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.1.6:
+  * See news at http://www.linux-mtd.infradead.org for full list of changes</comment>
+    <requestid>1134150</requestid>
+  </revision>
 </revisionlist>

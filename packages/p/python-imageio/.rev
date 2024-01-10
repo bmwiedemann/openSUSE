@@ -150,4 +150,14 @@
 - Update to 2.22.0</comment>
     <requestid>1129223</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>9f2455e80110e7b46a1aebfc5fff6b54</srcmd5>
+    <version>2.33.1</version>
+    <time>1702845129</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.33.1:
+  * Replace mktemp with mkstemp when caching to disk for legacy
+    plugins</comment>
+    <requestid>1133613</requestid>
+  </revision>
 </revisionlist>

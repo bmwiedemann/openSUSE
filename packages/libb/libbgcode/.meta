@@ -1,0 +1,15 @@
+<package name="libbgcode" project="openSUSE:Factory">
+  <title>Prusa Block &amp; Binary G-code reader / writer / converter</title>
+  <description>A new G-code file format featuring the following improvements over the legacy G-code:
+1) Block structure with distinct blocks for metadata vs. G-code
+2) Faster navigation
+3) Coding &amp; compression for smaller file size
+4) Checksum for data validity
+5) Extensivity through new (custom) blocks. For example, a file signature block may be welcome by corporate customers.
+
+bgcode is a command line application which allows to convert gcode files from ascii to binary format and viceversa.
+
+</description>
+  <devel project="science" package="libbgcode"/>
+  <url>https://github.com/prusa3d/libbgcode</url>
+</package>

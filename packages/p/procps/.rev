@@ -1380,4 +1380,13 @@ There are also man pages translations but they doesn't get installed automatical
     <comment>- procps-ng-3.3.17-logind.patch: Fix crash of &quot;w -s -h&quot; (forwarded request 1121081 from kukuk)</comment>
     <requestid>1125698</requestid>
   </revision>
+  <revision rev="135" vrev="16">
+    <srcmd5>4ce427c82fbf58eedd37dd3607aae2eb</srcmd5>
+    <version>3.3.17</version>
+    <time>1702673227</time>
+    <user>anag+factory</user>
+    <comment>- procps-3.3.17-ignore-sysctl_conf.patch: ignore dangling symlink
+  to missing /etc/sysctl.conf file [bsc#1217990] (forwarded request 1133107 from kukuk)</comment>
+    <requestid>1133112</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jan  3 10:54:17 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Remove coverage check
+- Fix zsh test failures: avoid coloring terminal
+
+-------------------------------------------------------------------
+Fri Dec 29 18:27:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.1:
+  *  Allow explicit zsh global completion activation (#467)
+  *  Fix and test global completion in zsh (#463, #466)
+  *  Add –yes option to activate-global-python-argcomplete (#461)
+  *  Test suite improvements
+- drop without_zsh.patch: obsolete
+
+-------------------------------------------------------------------
 Mon Nov 27 15:26:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.1.6:

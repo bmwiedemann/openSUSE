@@ -1,7 +1,7 @@
 #
 # spec file for package kea
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,13 +23,13 @@
 %define cryptolink_sover 38
 %define d2srv_sover 30
 %define database_sover 48
-%define dhcppp_sover 73
+%define dhcppp_sover 74
 %define dhcp_ddns_sover 41
-%define dhcpsrv_sover 89
+%define dhcpsrv_sover 90
 %define dnspp_sover 42
 %define eval_sover 52
 %define exceptions_sover 23
-%define hooks_sover 77
+%define hooks_sover 78
 %define http_sover 56
 %define log_sover 48
 %define mysql_sover 53
@@ -45,7 +45,7 @@
 %bcond_with    regen_files
 %endif
 Name:           kea
-Version:        2.4.0
+Version:        2.4.1
 Release:        0
 Summary:        Dynamic Host Configuration Protocol daemon
 License:        MPL-2.0

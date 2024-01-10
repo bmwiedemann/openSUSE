@@ -150,4 +150,12 @@
 - Update Requires from setup.py</comment>
     <requestid>1101106</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>69ce1a8d77e6182410d5095fbd61692a</srcmd5>
+    <version>17.2.0</version>
+    <time>1704380386</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1136743</requestid>
+  </revision>
 </revisionlist>

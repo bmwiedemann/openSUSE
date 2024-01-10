@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Dec 18 14:03:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 23.11.0:
+  * Support for specifying task type
+  * Use function to calculate timestamps
+  * Do not truncate operating system names
+  * Filter for correct target
+- update to 23.10.0:
+  * Auto-merge workflow, to enable squash auto-merge in open PRs
+  * Improve application-detection requests
+  * Group dependabot updates
+  * Fix param use in generate-random-reports
+  * Fix getting hosts in application-detection
+  * Remove superfluous output from check-gmp
+- update to 23.9.0:
+  * Allow to auto re-build the docs on changes via livehtml
+  * Add installation instructions using pipx because of PEP 668
+  * CERT-Bund Advisory script, parsing reports to CSV (#964)
+  * Drop support for Python 3.7 and 3.8
+  * Remove obsolete project files
+  * Convert docs to use markdown formatting
+  * Update copyright year in README
+  * Adjust docker image for Debian Bookworm
+  * Use generic reusable workflows
+  * Create conventional commits for dependabot
+  * Remove `cache: "true"` input (#1004)
+  * Fix conventional commits workflow
+  * Set permissions for conventional commits workflow
+
+-------------------------------------------------------------------
 Tue Aug  1 08:46:57 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - update to 23.4.0
@@ -59,12 +89,12 @@ Thu Feb 17 10:32:18 UTC 2022 - pgajdos@suse.com
 -------------------------------------------------------------------
 Wed Aug 25 05:36:04 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Do not build for Python 3.6 or 3.9 due to python-python-gvm. 
+- Do not build for Python 3.6 or 3.9 due to python-python-gvm.
 
 -------------------------------------------------------------------
 Mon Oct 26 23:17:55 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
-- Kill dephell dependency 
+- Kill dephell dependency
 
 -------------------------------------------------------------------
 Sun Oct 25 16:20:59 UTC 2020 - Martin Hauke <mardnh@gmx.de>

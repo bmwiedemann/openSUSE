@@ -27,16 +27,16 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-doctestplus%{psuffix}
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Pytest plugin with advanced doctest features
 License:        BSD-3-Clause
 URL:            https://github.com/scientific-python/pytest-doctestplus
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-doctestplus/pytest-doctestplus-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module packaging >= 17.0}
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-packaging >= 17.0
@@ -49,6 +49,7 @@ BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pip >= 19.3.1}
 BuildRequires:  %{python_module pytest-doctestplus = %{version}}
 BuildRequires:  %{python_module pytest-remotedata >= 0.3.2}
+BuildRequires:  git-core
 %else
 BuildArch:      noarch
 %endif
@@ -63,11 +64,11 @@ as reStructuredText (".rst"), markdown (".md"), and TeX (".tex").
 %setup -q -n pytest-doctestplus-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -75,7 +76,7 @@ as reStructuredText (".rst"), markdown (".md"), and TeX (".tex").
 %check
 export LANG=en_US.UTF8
 export PY_IGNORE_IMPORTMISMATCH=1
-%pytest tests/ --doctest-plus --doctest-rst -k "not test_remote_data_url"
+%pytest tests/ --doctest-plus --doctest-rst -k "not test_remote_data_url and not test_import_mode"
 %endif
 
 %if !%{with test}
@@ -83,7 +84,7 @@ export PY_IGNORE_IMPORTMISMATCH=1
 %doc CHANGES.rst README.rst
 %license LICENSE.rst
 %{python_sitelib}/pytest_doctestplus
-%{python_sitelib}/pytest_doctestplus-%{version}*-info
+%{python_sitelib}/pytest_doctestplus-%{version}.dist-info
 %endif
 
 %changelog

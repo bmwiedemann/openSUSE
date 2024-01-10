@@ -104,4 +104,12 @@
     <comment>Update to 3.4.3</comment>
     <requestid>1119919</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>879f15be6e0ee74cd3148e09223d992b</srcmd5>
+    <version>3.4.3</version>
+    <time>1703801029</time>
+    <user>anag+factory</user>
+    <comment>- Require extra-cmake-modules at build time</comment>
+    <requestid>1135503</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,16 @@
+<package name="xtensor" project="openSUSE:Factory">
+  <title>xtensor</title>
+  <description>xtensor is a C++ library meant for numerical analysis with multi-dimensional array expressions.
+
+xtensor provides
+
+    an extensible expression system enabling lazy broadcasting.
+    an API following the idioms of the C++ standard library.
+    tools to manipulate array expressions and build upon xtensor.
+
+Containers of xtensor are inspired by NumPy, the Python array programming library. Adaptors for existing data structures to be plugged into our expression system can easily be written.
+
+In fact, xtensor can be used to process NumPy data structures inplace using Python's buffer protocol. Similarly, we can operate on Julia and R arrays. For more details on the NumPy, Julia and R bindings, check out the xtensor-python, xtensor-julia and xtensor-r projects respectively.</description>
+  <devel project="devel:libraries:c_c++" package="xtensor"/>
+  <url>https://github.com/xtensor-stack/xtensor</url>
+</package>

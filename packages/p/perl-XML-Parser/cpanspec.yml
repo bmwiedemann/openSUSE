@@ -8,7 +8,7 @@
 #  - source1
 #  - source2
 patches:
-  XML-Parser-2.40.diff:
+  XML-Parser-2.40.diff: -p0
 #  foo.patch: -p1
 #  bar.patch:
 preamble: |-

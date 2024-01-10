@@ -80,4 +80,23 @@
     This is nowadays defined on all distributions we build for.</comment>
     <requestid>1128370</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>61eb3c8422c59ed96f349015cfd43e08</srcmd5>
+    <version>1.8.0</version>
+    <time>1703102540</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.8.0:
+  * Changes:
+  * #312
+  * #313
+  * #317
+  * #320
+  * #327
+  * #329
+  * #330
+- drop python-nodeenv-no-mock.patch (obsolete)
+
+  * M1 support</comment>
+    <requestid>1134138</requestid>
+  </revision>
 </revisionlist>

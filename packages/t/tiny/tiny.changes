@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Jan  1 17:02:42 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to version 0.12.0:
+  New features:
+  * New TUI text attributes italic and strikethrough added to the
+    config file parser. These can be combined with the existing
+    bold and underline attributes. (#409, #404)
+  * Added support for key bindings that run commands. Example:
+    key_map:
+      ctrl_d:
+        command: quit (#403, #410)
+  Bug fixes and other improvements:
+  * Default config updated with better comments, color config
+    for join/part messages. (#412)
+  * /join command errors now print usage help once instead of
+    twice. (c512887)
+  * Fix showing timestamp of the next message or activity
+    after a /clear. (#417)
+  * Fix a crash when the config file is deleted before
+    a /reload. (3ea5678)
+
+-------------------------------------------------------------------
 Wed Sep 13 12:14:08 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Fix and update vendored tarball

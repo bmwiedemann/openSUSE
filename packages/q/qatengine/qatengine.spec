@@ -1,7 +1,7 @@
 #
 # spec file for package qatengine
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           qatengine
-Version:        0.6.18
+Version:        1.5.0
 Release:        0
 Summary:        Intel QuickAssist Technology (QAT) QATengine Library
 License:        BSD-3-Clause
@@ -46,7 +46,7 @@ module that utilises QAT.
 %build
 %{set_build_flags}
 autoreconf -fiv
-%configure
+%configure --enable-qat_insecure_algorithms
 %make_build
 
 %install

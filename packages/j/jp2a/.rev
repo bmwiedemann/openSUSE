@@ -47,4 +47,14 @@
 </comment>
     <requestid>936121</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>427205f02a4e1e826dc8d7b406288b79</srcmd5>
+    <version>1.2.0</version>
+    <time>1704753933</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.2.0:
+ * Add edge shading - edge shading can be enabled by setting the desired edge threshold with --edge-threshold=N.N. 
+</comment>
+    <requestid>1137490</requestid>
+  </revision>
 </revisionlist>

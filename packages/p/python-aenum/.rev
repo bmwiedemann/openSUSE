@@ -140,4 +140,12 @@ https://build.opensuse.org/request/show/612101</comment>
   * add _create_pseudo_member_values_</comment>
     <requestid>1125419</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>41e1b7cd8fc40f3ed744d3541f1067ae</srcmd5>
+    <version>3.1.15</version>
+    <time>1703281325</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1134618</requestid>
+  </revision>
 </revisionlist>

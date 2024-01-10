@@ -19,4 +19,14 @@
   * Test Python 3.5 - Python 3.11</comment>
     <requestid>1055865</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8fffe3b5ea15d50d558b68d513177e02</srcmd5>
+    <version>0.5.6</version>
+    <time>1704829774</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.5.6:
+  * Fix PEP420 Implicit name space thanks @MocioF
+  * Test Python 3.12 support</comment>
+    <requestid>1137631</requestid>
+  </revision>
 </revisionlist>

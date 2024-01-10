@@ -441,4 +441,12 @@ See the COPYING file. There are GPL-2.0+ (with openssl linking exceptions for pg
     add support for recent features, such as ``sslcertmode``.</comment>
     <requestid>1129668</requestid>
   </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>35359bf7bbaaf96a2fd93621964cb98d</srcmd5>
+    <version>2.9.9</version>
+    <time>1704281571</time>
+    <user>dimstar_suse</user>
+    <comment>- require setuptools</comment>
+    <requestid>1136458</requestid>
+  </revision>
 </revisionlist>

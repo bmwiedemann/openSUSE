@@ -234,4 +234,15 @@
   * Support multibyte utf8 return values with new versions of MariaDB.</comment>
     <requestid>1129231</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>60395ae9435a0b23fc44ad36032bfd24</srcmd5>
+    <version>2.2.1</version>
+    <time>1702844939</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.2.1:
+  * ``Connection.ping()`` avoid using ``MYSQL_OPT_RECONNECT``
+    option until ``reconnect=True`` is specified.
+    MySQL 8.0.33 start showing warning when the option is used.</comment>
+    <requestid>1133633</requestid>
+  </revision>
 </revisionlist>

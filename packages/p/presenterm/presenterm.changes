@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Dec 22 16:13:10 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.4.1:
+  * Cause an error if an unknown field name is found on a theme, config
+    file, or front matter (#102).
+  * Explicitly disable kitty/iterm protocols when printing images in export
+    PDF mode as this was causing PDF generation in macOS to fail (#101).
+
+-------------------------------------------------------------------
+Sun Dec 17 00:57:36 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.4.0:
+  * Add support for all of bat's code highlighting themes (#67).
+  * Add terminal-dark and terminal-light themes that preserve
+    the terminal's colors and background (#68 #69).
+  * Allow placing themes in $HOME/.config/presenterm/themes
+    to make them available automatically as if they were
+    built-in themes (#73).
+  * Allow configuring the default theme in
+    $HOME/.config/presenterm/config.yaml (#74).
+  * Add support for rendering LaTeX and typst code blocks
+    automatically as images (#75 #76 #79 #81).
+  * Add syntax highlighting support for nix and diff (#78 #82).
+  * Add comment command to jump into the middle of a slide (#86).
+  * Add configuration option to have implicit slide ends (#87 #89).
+  * Add configuration option to have custom comment-command prefix (#91).
+
+-------------------------------------------------------------------
 Fri Nov 24 21:05:16 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.3.0:

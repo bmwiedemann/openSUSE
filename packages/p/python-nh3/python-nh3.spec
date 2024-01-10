@@ -16,21 +16,21 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-nh3
-Version:        0.2.13
+Version:        0.2.15
 Release:        0
 Summary:        Ammonia HTML sanitizer Python binding
 License:        MIT
 URL:            https://github.com/messense/nh3
 Source:         https://files.pythonhosted.org/packages/source/n/nh3/nh3-%{version}.tar.gz
 Source1:        vendor.tar.zst
-Source2:        cargo_config
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module maturin >= 1.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  cargo
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildRequires:  zstd
 %python_subpackages
 
@@ -39,8 +39,6 @@ Ammonia HTML sanitizer Python binding
 
 %prep
 %autosetup -a1 -p1 -n nh3-%{version}
-mkdir .cargo
-cp %{SOURCE2} .cargo/config
 rm -v Cargo.lock
 
 %build

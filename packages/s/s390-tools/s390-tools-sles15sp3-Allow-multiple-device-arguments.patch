@@ -11,10 +11,10 @@ Signed-off-by: Hannes Reinecke <hare@suse.com>
  dasdfmt/dasdfmt.c | 175 ++++++++++++++++++++++++++++++------------------------
  2 files changed, 100 insertions(+), 80 deletions(-)
 
-Index: s390-tools-2.29.0/dasdfmt/dasdfmt.8
+Index: s390-tools-2.30.0/dasdfmt/dasdfmt.8
 ===================================================================
---- s390-tools-2.29.0.orig/dasdfmt/dasdfmt.8
-+++ s390-tools-2.29.0/dasdfmt/dasdfmt.8
+--- s390-tools-2.30.0.orig/dasdfmt/dasdfmt.8
++++ s390-tools-2.30.0/dasdfmt/dasdfmt.8
 @@ -11,14 +11,15 @@ dasdfmt \- formatting of DASD (ECKD) dis
  .br
          [-r \fIcylinder\fR] [-b \fIblksize\fR] [-l \fIvolser\fR] [-d \fIlayout\fR]
@@ -25,18 +25,18 @@ Index: s390-tools-2.29.0/dasdfmt/dasdfmt.8
  .SH DESCRIPTION
 -\fBdasdfmt\fR formats a DASD (ECKD) disk drive to prepare it
 +\fBdasdfmt\fR formats one or several DASD (ECKD) disk drive to prepare it
- for usage with Linux for S/390. 
+ for usage with Linux for S/390.
  The \fIdevice\fR is the node of the device (e.g. '/dev/dasda').
- Any device node created by udev for kernel 2.6 can be used 
+ Any device node created by udev for kernel 2.6 can be used
  (e.g. '/dev/dasd/0.0.b100/disc').
 +It is possible to specify up to 512 devices.
  .br
  
- \fBWARNING\fR: Careless usage of \fBdasdfmt\fR can result in 
-Index: s390-tools-2.29.0/dasdfmt/dasdfmt.c
+ \fBWARNING\fR: Careless usage of \fBdasdfmt\fR can result in
+Index: s390-tools-2.30.0/dasdfmt/dasdfmt.c
 ===================================================================
---- s390-tools-2.29.0.orig/dasdfmt/dasdfmt.c
-+++ s390-tools-2.29.0/dasdfmt/dasdfmt.c
+--- s390-tools-2.30.0.orig/dasdfmt/dasdfmt.c
++++ s390-tools-2.30.0/dasdfmt/dasdfmt.c
 @@ -25,6 +25,8 @@
  
  #include "dasdfmt.h"
@@ -461,7 +461,7 @@ Index: s390-tools-2.29.0/dasdfmt/dasdfmt.c
 +	for (i = 0; i < numdev; i++)
 +	{
 +		strncpy(g.dev_path, g.dev_path_array[i], strlen(g.dev_path_array[i])+1);
-+		strncpy(g.dev_node, g.dev_node_array[i], strlen(g.dev_node_array[i])+1);	
++		strncpy(g.dev_node, g.dev_node_array[i], strlen(g.dev_node_array[i])+1);
 +		process_dasd(&vlabel, format_params);
 +	}
  

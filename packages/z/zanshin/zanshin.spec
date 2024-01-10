@@ -29,7 +29,7 @@ Source1:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source2:        applications.keyring
 %endif
 BuildRequires:  boost-devel
-BuildRequires:  kf5-filesystem
+BuildRequires:  extra-cmake-modules
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5Runner)

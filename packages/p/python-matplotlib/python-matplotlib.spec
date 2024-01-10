@@ -26,10 +26,11 @@ ExclusiveArch:  x86_64 aarch64
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%bcond_with ringdisabled
 
 %{?sle15_python_module_pythons}
 Name:           python-matplotlib%{psuffix}
-Version:        3.6.3
+Version:        3.8.2
 Release:        0
 Summary:        Plotting Library for Python
 License:        SUSE-Matplotlib
@@ -39,8 +40,7 @@ Source1:        matplotlib-mplsetup.cfg
 # Bundled version of freetype and qhull for testing purposes only
 Source98:       http://www.qhull.org/download/qhull-2020-src-8.0.2.tgz
 Source99:       https://downloads.sourceforge.net/project/freetype/freetype2/2.6.1/freetype-2.6.1.tar.gz
-# PATCH-FIX-OPENSUSE mmachova@suse.com workaround for boo#1213007 suggested in https://github.com/matplotlib/matplotlib/issues/26152#issuecomment-1607594392
-Patch:          pyparsing-workaround-setName.patch
+Source100:      python-matplotlib.rpmlintrc
 Recommends:     ghostscript
 Recommends:     libxml2-tools
 Recommends:     poppler-tools
@@ -49,11 +49,12 @@ Recommends:     (%{python_flavor}-matplotlib-tk if tk)
 Provides:       python-matplotlib-gtk = %{version}
 Obsoletes:      python-matplotlib-gtk < %{version}
 # SECTION build
-BuildRequires:  %{python_module devel >= 3.8}
+BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module numpy-devel >= 1.19}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pybind11-devel >= 2.6}
+BuildRequires:  %{python_module setuptools >= 64}
 BuildRequires:  %{python_module setuptools_scm >= 7}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
@@ -70,13 +71,16 @@ BuildRequires:  pkgconfig(tcl)
 # SECTION runtime
 Requires:       python-Cycler >= 0.10
 Requires:       python-FontTools >= 4.22.0
-Requires:       python-Pillow >= 6.2.0
+Requires:       python-Pillow >= 8
 Requires:       python-contourpy >= 1.0.1
-Requires:       python-kiwisolver >= 1.0.1
-Requires:       python-numpy >= 1.19
+Requires:       python-kiwisolver >= 1.3.1
 Requires:       python-packaging >= 20.0
-Requires:       python-pyparsing > 2.2.1
+Requires:       python-pyparsing > 2.3.1
 Requires:       python-python-dateutil >= 2.7
+Requires:       (python-numpy >= 1.21 with python-numpy < 2)
+%if 0%{?python_version_nodots} < 310
+Requires:       python-importlib-resources >= 3.2.0
+%endif
 # /SECTION
 # SECTION test
 %if %{with test}
@@ -84,6 +88,7 @@ BuildRequires:  %{python_module matplotlib = %{version}}
 BuildRequires:  %{python_module matplotlib-cairo = %{version}}
 BuildRequires:  %{python_module matplotlib-gtk3 = %{version}}
 BuildRequires:  %{python_module matplotlib-gtk4 = %{version}}
+BuildRequires:  %{python_module matplotlib-nbagg = %{version}}
 BuildRequires:  %{python_module matplotlib-qt5 = %{version}}
 BuildRequires:  %{python_module matplotlib-testdata = %{version}}
 BuildRequires:  %{python_module matplotlib-tk = %{version}}
@@ -93,12 +98,33 @@ BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest-xvfb}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytz}
 # SECTION latex test dependencies
 BuildRequires:  %{python_module matplotlib-latex = %{version}}
 BuildRequires:  ghostscript
 BuildRequires:  inkscape
 BuildRequires:  poppler-tools
-# /SECTION
+# /SECTION latex
+# SECTION cairo backend options
+BuildRequires:  %{python_module cairo >= 1.14.0}
+BuildRequires:  %{python_module cairocffi >= 0.8}
+# /SECTION cairo
+# SECTION nbagg backend tests
+%if !%{with ringdisabled}
+BuildRequires:  %{python_module nbconvert}
+BuildRequires:  %{python_module nbformat}
+%endif
+# /SECTION nbagg
+# SECTION qt backends: Only test PyQt5 in Minimal-X
+BuildRequires:  %{python_module qt5}
+%if !%{with ringdisabled}
+BuildRequires:  %{python_module PyQt6}
+%if 0%{?suse_version} > 1500
+BuildRequires:  python3-pyside2
+BuildRequires:  python3-pyside6
+%endif
+%endif
+# /SECTION qt
 # /SECTION test
 %endif
 %python_subpackages
@@ -113,7 +139,7 @@ application servers, and six graphical user interface toolkits.
 %package        cairo
 Summary:        Cairo backend for %{name}
 Requires:       %{name} = %{version}
-Requires:       python-cairo
+Requires:       (python-cairo or python-cairocffi)
 
 %description    cairo
 This package includes the non-interactive Cairo-based backend
@@ -149,6 +175,15 @@ Requires:       python-gobject-cairo
 This package provides code common for the GTK3 and GTK4 backends
 for the %{name} plotting package
 
+%package        nbagg
+Summary:        Jupyter nbagg backend for %{name}
+Requires:       %{name} = %{version}
+Requires:       python-ipykernel
+
+%description    nbagg
+This package includes the Jupyter notebook backend
+for the %{name} plotting package
+
 %package        latex
 Summary:        Allow rendering latex in %{name}
 Requires:       %{name} = %{version}
@@ -165,6 +200,7 @@ Requires:       texlive-sfmath
 Requires:       texlive-tex
 Requires:       texlive-txfonts
 Requires:       texlive-xcolor
+Requires:       texlive-xetex
 Requires:       tex(avant.sty)
 Requires:       tex(chancery.sty)
 Requires:       tex(charter.sty)
@@ -185,16 +221,20 @@ BuildArch:      noarch
 This package allows %{name} to display latex in plots
 and figures.
 
-%package        qt5
-Summary:        Qt5 backend for %{name}
+%package        qt
+Summary:        Qt backend for %{name}
 Requires:       %{name} = %{version}
-Requires:       python-qt5
+Requires:       (python-qt5 or python-PyQt6 >= 6.1 or python-pyside2 or python-pyside6)
 Provides:       %{name}-qt-shared = %{version}
+Provides:       %{name}-qt5 = %{version}
 Obsoletes:      %{name}-qt-shared < %{version}
+# Renamed at upgrade from MPL 3.6.3 to 3.8.2
+Obsoletes:      %{name}-qt5 < 3.8.2
 
-%description    qt5
-This package includes the Qt5-based pyqt5 backend
+%description    qt
+This package includes the Qt-based backend
 for the %{name} plotting package
+PyQt5, PyQt6, Pyside2 or Pyside 6 may be used
 
 %package        testdata
 Summary:        Test data for %{name}
@@ -209,7 +249,7 @@ Summary:        Tk backend for %{name}
 Requires:       %{name} = %{version}
 Requires:       python-Pillow-tk
 Requires:       python-tk
-Requires:       tcl >= 8.3
+Requires:       tcl >= 8.5
 
 %description    tk
 This package includes the Tk-based tkagg backend
@@ -235,19 +275,19 @@ for %{name} plotting package
 
 %prep
 %autosetup -p1 -n matplotlib-%{version}
-# Copy freetype to the right location, so that matplotlib will not try to download it
-mkdir -p ~/.cache/matplotlib/
-SHA=($(sha256sum %{SOURCE98}))
-cp %{SOURCE98} ~/.cache/matplotlib/${SHA}
-SHA=($(sha256sum %{SOURCE99}))
-cp %{SOURCE99} ~/.cache/matplotlib/${SHA}
+%{python_expand # Extract freetype and qhull to the right location, so that matplotlib will not try to download it
+mkdir build
+pushd build
+tar xfz %{SOURCE98}
+tar xfz %{SOURCE99}
+popd
+}
 
 chmod -x lib/matplotlib/mpl-data/images/*.svg
-find examples lib/matplotlib lib/mpl_toolkits/mplot3d -type f -name "*.py" -exec sed -i "s|#!\/usr\/bin\/env python||" {} \;
-find examples lib/matplotlib lib/mpl_toolkits/mplot3d -type f -name "*.py" -exec sed -i "s|#!\/usr\/bin\/python||" {} \;
+find lib/matplotlib lib/mpl_toolkits/mplot3d -type f -name "*.py" -exec sed -i "1{/#!.*python/ d}" {} \;
 cp %{SOURCE1} mplsetup.cfg
 # The setup procedure wants certifi to download packages over https. Not applicable here.
-sed -i '/"certifi>=.*"/ d' setup.py
+sed -i '/"certifi>=.*"/ d' pyproject.toml
 
 %build
 %if !%{with test}
@@ -284,33 +324,41 @@ skip_tests+=" or _sigint"
 skip_tests+=" or test_get_font_names"
 # different default font
 skip_tests+=" or test_bold_font_output_with_none_fonttype"
+# different position values on python311 (different version in a dependency or different font?)
+skip_tests+=" or test_compressed1"
 %ifnarch x86_64
 # image comparison failures due to precisions dicrepancies to the x86 produced references
 skip_tests+=" or png or svg or pdf"
 %endif
 # backend tests landing in the wrong xdist process may fail with an error. Test them without xdist.
 no_xdist="test_backend or test_span_selector_animated_artists_callback"
-%{pytest_arch --pyargs matplotlib.tests \
-              --pyargs mpl_toolkits.tests \
-              -n auto \
-              -m "not network" \
-              -vv \
-              -k "not (${no_xdist} ${skip_tests})"
+%{python_expand # see https://matplotlib.org/devdocs/devel/testing.html#testing
+# if one of the pyargs modules is not present, the xargs collection looks empty
+$python -m pytest --pyargs matplotlib.tests \
+                           mpl_toolkits.axes_grid1.tests \
+                           mpl_toolkits.axisartist.tests \
+                           mpl_toolkits.mplot3d.tests \
+                  -n auto \
+                  -m "not network" \
+                  -vv -rsfE \
+                  -k "not (${no_xdist} ${skip_tests})"
+$python -m pytest --pyargs matplotlib.tests \
+                  -vv -rsfE \
+                  -k "(${no_xdist}) and not (${skip_tests:4})"
 }
-
-%pytest_arch --pyargs matplotlib.tests -k "(${no_xdist}) and not (${skip_tests:4})"
 %endif
 
 %if !%{with test}
 %files %{python_files}
-%doc README.rst
-%doc examples/
+%doc README.md
 %license LICENSE/
 %license doc/users/project/license.rst
-%{python_sitearch}/matplotlib/
+%{python_sitearch}/matplotlib
 %{python_sitearch}/matplotlib-%{version}.dist-info
-%{python_sitearch}/matplotlib-%{version}-py*-nspkg.pth
-%{python_sitearch}/mpl_toolkits
+%dir %{python_sitearch}/mpl_toolkits
+%{python_sitearch}/mpl_toolkits/axes_grid1
+%{python_sitearch}/mpl_toolkits/axisartist
+%{python_sitearch}/mpl_toolkits/mplot3d
 %{python_sitearch}/pylab.py*
 %pycache_only %{python_sitearch}/__pycache__/pylab.*
 %exclude %{python_sitearch}/matplotlib/backends/_backend_tk.py
@@ -322,6 +370,7 @@ no_xdist="test_backend or test_span_selector_animated_artists_callback"
 %exclude %{python_sitearch}/matplotlib/backends/backend_gtk4.*
 %exclude %{python_sitearch}/matplotlib/backends/backend_gtk4agg.*
 %exclude %{python_sitearch}/matplotlib/backends/backend_gtk4cairo.*
+%exclude %{python_sitearch}/matplotlib/backends/backend_nbagg.*
 %exclude %{python_sitearch}/matplotlib/backends/backend_qt5.*
 %exclude %{python_sitearch}/matplotlib/backends/backend_qt5agg.*
 %exclude %{python_sitearch}/matplotlib/backends/backend_qt5cairo.py*
@@ -344,6 +393,7 @@ no_xdist="test_backend or test_span_selector_animated_artists_callback"
 %exclude %{python_sitearch}/matplotlib/backends/__pycache__/backend_gtk4.*.py*
 %exclude %{python_sitearch}/matplotlib/backends/__pycache__/backend_gtk4agg.*.py*
 %exclude %{python_sitearch}/matplotlib/backends/__pycache__/backend_gtk4cairo.*.py*
+%exclude %{python_sitearch}/matplotlib/backends/__pycache__/backend_nbagg.*.py*
 %exclude %{python_sitearch}/matplotlib/backends/__pycache__/backend_qt5.*.py*
 %exclude %{python_sitearch}/matplotlib/backends/__pycache__/backend_qt5agg.*.py*
 %exclude %{python_sitearch}/matplotlib/backends/__pycache__/backend_qt5cairo.*.py*
@@ -356,8 +406,10 @@ no_xdist="test_backend or test_span_selector_animated_artists_callback"
 %exclude %{python_sitearch}/matplotlib/backends/__pycache__/backend_wxcairo.*.py*
 %exclude %{python_sitearch}/matplotlib/backends/__pycache__/qt_compat.*.py*
 %exclude %{python_sitearch}/matplotlib/tests/baseline_images
+%exclude %{python_sitearch}/mpl_toolkits/axes_grid1/tests/baseline_images
+%exclude %{python_sitearch}/mpl_toolkits/axisartist/tests/baseline_images
+%exclude %{python_sitearch}/mpl_toolkits/mplot3d/tests/baseline_images
 %exclude %{python_sitearch}/matplotlib/tests/tinypages
-%exclude %{python_sitearch}/mpl_toolkits/tests/baseline_images
 
 # Dummy package to pull in latex dependencies.
 %files %{python_files latex}
@@ -396,7 +448,13 @@ no_xdist="test_backend or test_span_selector_animated_artists_callback"
 %{python_sitearch}/matplotlib/backends/_backend_gtk.py
 %pycache_only %{python_sitearch}/matplotlib/backends/__pycache__/_backend_gtk.*.py*
 
-%files %{python_files qt5}
+%files %{python_files nbagg}
+%license LICENSE/
+%license doc/users/project/license.rst
+%{python_sitearch}/matplotlib/backends/backend_nbagg.py*
+%pycache_only %{python_sitearch}/matplotlib/backends/__pycache__/backend_nbagg.*.py*
+
+%files %{python_files qt}
 %license LICENSE/
 %license doc/users/project/license.rst
 %{python_sitearch}/matplotlib/backends/backend_qt5.py*
@@ -413,8 +471,10 @@ no_xdist="test_backend or test_span_selector_animated_artists_callback"
 %license LICENSE/
 %license doc/users/project/license.rst
 %{python_sitearch}/matplotlib/tests/baseline_images
+%{python_sitearch}/mpl_toolkits/axes_grid1/tests/baseline_images
+%{python_sitearch}/mpl_toolkits/axisartist/tests/baseline_images
+%{python_sitearch}/mpl_toolkits/mplot3d/tests/baseline_images
 %{python_sitearch}/matplotlib/tests/tinypages
-%{python_sitearch}/mpl_toolkits/tests/baseline_images
 %exclude %{python_sitearch}/matplotlib/tests/tinypages/.gitignore
 %exclude %{python_sitearch}/matplotlib/tests/tinypages/_static/.gitignore
 

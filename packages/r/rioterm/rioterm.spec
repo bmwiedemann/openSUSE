@@ -18,14 +18,13 @@
 
 
 Name:           rioterm
-Version:        0.0.29
+Version:        0.0.32
 Release:        0
 Summary:        A hardware-accelerated GPU terminal emulator powered by WebGPU
 License:        MIT
 URL:            https://raphamorim.io/rio/
 Source0:        rio-%{version}.tar.zst
 Source1:        vendor.tar.zst
-Source2:        cargo_config
 Requires:       rioterm-terminfo
 BuildRequires:  cargo-packaging
 BuildRequires:  cmake
@@ -52,7 +51,6 @@ The official terminfo for rioterm.
 
 %prep
 %setup -a1 -qn rio-%{version}
-install -D -m 644 %{SOURCE2} .cargo/config
 
 %build
 %{cargo_build} --no-default-features --features=x11,wayland

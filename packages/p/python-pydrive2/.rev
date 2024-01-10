@@ -23,4 +23,30 @@
     <comment></comment>
     <requestid>1131641</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>08a65c90415abae9286febb548886b32</srcmd5>
+    <version>1.17.0</version>
+    <time>1702673297</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.18.0:
+  * Delete .github/release-drafter.yml
+  * Delete .github/workflows/release-drafter.yml
+  * **Full Changelog**:
+    https://github.com/iterative/PyDrive2/compare/1.16.2...1.18.0
+
+- Disabled tests - they all fail on OBS because they need network
+  * Initial package created with py2pack</comment>
+    <requestid>1133186</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>947f6853e140dba1f6a01bf936daa55d</srcmd5>
+    <version>1.18.1</version>
+    <time>1703800853</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.18.1:
+  * fix(fs): remove DVC-specific broken cache optimization
+  * **Full Changelog**:
+    https://github.com/iterative/PyDrive2/compare/1.16.2...1.18.1</comment>
+    <requestid>1135197</requestid>
+  </revision>
 </revisionlist>

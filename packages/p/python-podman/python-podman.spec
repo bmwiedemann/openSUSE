@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-podman%{psuffix}
-Version:        4.8.0
+Version:        4.8.2
 Release:        0
 Summary:        A library to interact with a Podman server
 License:        Apache-2.0

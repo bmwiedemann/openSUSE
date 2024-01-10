@@ -1,7 +1,7 @@
-Index: s390-tools-2.29.0/etc/udev/rules.d/59-dasd.rules
+Index: s390-tools-2.30.0/etc/udev/rules.d/59-dasd.rules
 ===================================================================
---- s390-tools-2.29.0.orig/etc/udev/rules.d/59-dasd.rules
-+++ s390-tools-2.29.0/etc/udev/rules.d/59-dasd.rules
+--- s390-tools-2.30.0.orig/etc/udev/rules.d/59-dasd.rules
++++ s390-tools-2.30.0/etc/udev/rules.d/59-dasd.rules
 @@ -15,7 +15,7 @@ KERNEL=="dasd*[!0-9]", ENV{ID_XUID}=="?*
  
  LABEL="dasd_block_end"

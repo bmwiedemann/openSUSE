@@ -18,13 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-aiofiles
-Version:        23.1.0
+Version:        23.2.1
 Release:        0
 Summary:        File support for asyncio
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/Tinche/aiofiles
 Source:         https://github.com/Tinche/aiofiles/archive/v%{version}.tar.gz#/aiofiles-%{version}.tar.gz
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
 BuildRequires:  fdupes
@@ -40,7 +41,7 @@ BuildArch:      noarch
 aiofiles: file support for asyncio
 
 %prep
-%setup -q -n aiofiles-%{version}
+%autosetup -p1 -n aiofiles-%{version}
 
 %build
 %pyproject_wheel
@@ -54,7 +55,7 @@ aiofiles: file support for asyncio
 
 %files %{python_files}
 %license LICENSE
-%doc README.rst
+%doc README.md
 %{python_sitelib}/aiofiles*
 
 %changelog

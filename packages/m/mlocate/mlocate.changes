@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan  8 11:10:30 UTC 2024 - Frederic Crozat <fcrozat@suse.com>
+
+- Drop url from source, fedorahosted.org is no longer running.
+
+-------------------------------------------------------------------
 Fri Mar 17 11:14:00 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
 
 - Set umask 0022 before running /usr/bin/updatedb (boo#1209409)

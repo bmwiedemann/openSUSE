@@ -351,4 +351,12 @@
   * obsoletes wheel_cve_2022_40898.patch in older dists</comment>
     <requestid>1109362</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>b59732583386f33d2ee67460dfb7acc9</srcmd5>
+    <version>0.42.0</version>
+    <time>1703800481</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1135267</requestid>
+  </revision>
 </revisionlist>

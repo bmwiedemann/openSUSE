@@ -33,4 +33,20 @@
     <comment></comment>
     <requestid>1034429</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6389d4be4ef078252b8c145cedc44c66</srcmd5>
+    <version>0.6.1</version>
+    <time>1702673320</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.6.1:
+  * Fix broken ``single_reference=True`` usage.
+  * Add ability to compare to Pandas DataFrames and store them as
+    HDF5 files
+  * Fix ``array_compare`` so that the ``atol`` parameter is
+    correctly used with FITS files.
+  * Test inside ``pytest_runtest_call`` hook.
+
+- Do not build :test on Python 3.6, due to no NumPy.</comment>
+    <requestid>1133204</requestid>
+  </revision>
 </revisionlist>

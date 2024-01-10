@@ -77,6 +77,9 @@ BuildRequires:  pkgconfig(libudf)
 BuildRequires:  pkgconfig(protobuf)
 BuildRequires:  pkgconfig(sqlite3) >= 3.9
 BuildRequires:  pkgconfig(taglib) >= 1.11.1
+%if 0%{?suse_version} > 1600
+BuildRequires:  cmake(KDSingleApplication-qt6)
+%endif
 
 Requires:       qt6-sql-sqlite
 

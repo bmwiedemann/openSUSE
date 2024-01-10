@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec 14 10:21:02 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.11.0:
+  * Always set default HTTPS port to 443
+  * Drop support for Python 3.6
+  * Include tests in sdist
+  * Fix `__iter__` return type to Iterator
+
+-------------------------------------------------------------------
 Sat Dec  2 17:07:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.10.0:

@@ -392,6 +392,11 @@ Requires:       systemd-zram-service
 Requires:       spice-vdagent
 Requires:       qemu-guest-agent
 
+# bug#1211835
+Requires:       tpm2.0-abrmd
+Requires:       tpm2-0-tss
+Requires:       tpm2.0-tools
+
 %description base
 This is the openSUSE Aeon base system. It contains only fully working immutable desktop system.
 

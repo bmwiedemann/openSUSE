@@ -1,7 +1,7 @@
 #
 # spec file for package python-reno
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 # uses openstack packages: build and depend on default python3 provider only
 %define pythons python3
 Name:           python-reno
-Version:        3.5.0
+Version:        4.0.0
 Release:        0
 Summary:        RElease NOtes manager
 License:        Apache-2.0

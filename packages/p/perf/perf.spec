@@ -1,7 +1,7 @@
 #
 # spec file for package perf
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -115,7 +115,7 @@ There is no reason to install this package.
 
 %prep
 # copy necessary files from kernel-source since we need to modify them
-(cd %{_prefix}/src/linux ; tar -cf - COPYING CREDITS README tools include scripts Kbuild Makefile arch/*/{include,lib,Makefile} lib kernel/bpf/disasm.[ch]) | tar -xf -
+(cd %{_prefix}/src/linux ; tar -cf - COPYING CREDITS README tools include scripts Kbuild Makefile arch/*/{include,lib,tools,Makefile} lib kernel/bpf/disasm.[ch]) | tar -xf -
 chmod +x tools/perf/util/generate-cmdlist.sh
 
 # don't error out on deprecated definitions in gtk2.h
@@ -155,13 +155,6 @@ make -f Makefile.perf V=1 PYTHON=python3 EXTRA_CFLAGS="%{optflags}" \
 	%{_perf_unwind} \
 	install install-doc
 
-# === remove this (and in %%files below) when 6.6 hits factory
-%if %{version_pure} == 65
-mkdir -p %{buildroot}/%{_docdir}/perf/examples/bpf
-mv %{buildroot}%{_prefix}/lib/perf/examples/bpf/* %{buildroot}/%{_docdir}/perf/examples/bpf
-%endif
-# === up to here
-
 mkdir -p %{buildroot}%{_datadir}/bash-completion/completions/
 mv %{buildroot}%{_sysconfdir}/bash_completion.d/perf %{buildroot}%{_datadir}/bash-completion/completions/
 
@@ -181,11 +174,6 @@ rm -rf %{buildroot}/%{_libdir}/traceevent
 %{_prefix}/lib/%{name}-core
 %{_datadir}/%{name}-core
 %{_mandir}/man1/perf*
-%if %{version_pure} == 65
-%dir %{_docdir}/perf/examples
-%dir %{_docdir}/perf/examples/bpf
-%{_docdir}/perf/examples/bpf/*
-%endif
 
 %files gtk
 %{_libdir}/libperf-gtk.so

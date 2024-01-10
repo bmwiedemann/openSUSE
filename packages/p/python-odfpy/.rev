@@ -190,4 +190,12 @@ See setup.py (forwarded request 137513 from babelworx)</comment>
   * Fix bug in __replaceGenerator()</comment>
     <requestid>1055975</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>4dfd7e018d6535cb2ef18294a2fdbb72</srcmd5>
+    <version>1.4.2</version>
+    <time>1703198374</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1134475</requestid>
+  </revision>
 </revisionlist>

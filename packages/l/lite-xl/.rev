@@ -78,4 +78,12 @@
   * Change AppID (#1187)</comment>
     <requestid>1104471</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9789846773839f3c89dfbc251a02d8f6</srcmd5>
+    <version>2.1.2+git20231229.b68efcd</version>
+    <time>1704561110</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1137152</requestid>
+  </revision>
 </revisionlist>

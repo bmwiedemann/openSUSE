@@ -56,7 +56,7 @@
 %endif
 
 Name:           rspamd
-Version:        3.7.4
+Version:        3.7.5
 Release:        0
 Summary:        Spam filtering system
 License:        Apache-2.0
@@ -67,8 +67,7 @@ Source1:        usr.bin.rspamd
 Patch0:         rspamd-conf.patch
 Patch1:         rspamd-after-redis-target.patch
 Patch2:         fix_missing_return.patch
-Patch3:         rspamd-d907a95.patch
-Patch4:         fix_stack_smash.patch
+Patch3:         fix_stack_smash.patch
 %if !0%{?is_opensuse}
 # because 80-check-malware-scan-clamav triggered in SLE-15-SP2
 BuildRequires:  -post-build-checks-malwarescan

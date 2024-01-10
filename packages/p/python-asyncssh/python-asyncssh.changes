@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Dec 18 15:55:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.14.2 (bsc#1218165, CVE-2023-48795):
+  * Implemented "strict kex" support and other countermeasures to
+  * protect against the Terrapin Attack described in
+    CVE-2023-48795
+  * Fixed config parser to properly an optional equals delimiter
+    in all config arguments.
+  * Fixed TCP send error handling to avoid race condition when
+    receiving incoming disconnect message.
+  * Improved type signature in SSHConnection async context
+    manager.
+
+-------------------------------------------------------------------
 Fri Nov 10 12:34:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.14.1 (bsc#1217028, CVE-2023-46445):

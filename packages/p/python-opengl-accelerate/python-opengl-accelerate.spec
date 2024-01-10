@@ -1,7 +1,7 @@
 #
 # spec file for package python-opengl-accelerate
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define tarname PyOpenGL-accelerate
-%define _version 3.1.6
+%define _version 3.1.7
+%{?sle15_python_module_pythons}
 Name:           python-opengl-accelerate
 Version:        %{_version}
 Release:        0
@@ -27,10 +27,6 @@ License:        BSD-3-Clause
 Group:          Development/Libraries/Python
 URL:            http://pyopengl.sourceforge.net
 Source0:        %{tarname}-%{_version}.tar.gz
-# test files: GitHub repo has no tags, use commit hash
-Source1:        https://github.com/mcfletch/pyopengl/raw/c26398b91a/accelerate/tests/test_arraydatatypeaccel.py
-Source2:        https://github.com/mcfletch/pyopengl/raw/c26398b91a/accelerate/tests/test_numpyaccel.py
-#
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module opengl >= %{version}}
@@ -70,7 +66,7 @@ export CFLAGS="%{optflags} -DGLX_GLXEXT_LEGACY"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%pytest_arch %{SOURCE1} %{SOURCE2}
+%pytest_arch
 
 %files %{python_files}
 %license license.txt

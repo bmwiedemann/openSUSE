@@ -116,4 +116,41 @@
   * Several improvements and bug fixes to the snapgene parser</comment>
     <requestid>1065974</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ce7cc729a80faafcdae5209ad31ea71f</srcmd5>
+    <version>1.82</version>
+    <time>1703800876</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.82:
+  * The ``inplace`` argument of ``complement`` and
+    ``reverse_complement`` in ``Bio.Seq`` now always default to
+    ``False`` both for ``Seq`` and ``MutableSeq`` objects.
+    To modify a ``MutableSeq`` in-place, use ``inplace=True``.
+  * A new class ``CodonAligner`` was added to ``Bio.Align``. A
+    ``CodonAligner`` object can align a nucleotide sequence to the
+    amino acid sequence it encodes, using a dynamic programming
+    algorithm modeled on ``PairwiseAligner`` to take frame shifts
+    into account. The ``CodonAligner`` returns ``Alignment``
+    objects.
+  * By calling the new ``mapall`` method on an ``Alignment``
+    object storing a multiple sequence alignment of amino acid
+    sequences, with nucleotide-to-amino acid alignments generated
+    by ``CodonAligner`` as the argument, a codon-by-codon
+    multiple sequence alignment of nucleotide sequences can be
+    obtained. The new submodule ``Bio.Align.analysis`` provides
+    functions to estimate synonymous and nonsynonymous mutations
+    and to perform the McDonald-Kreitman test on the codon
+    multiple sequence alignments. Together, this provides the
+    same functionality as the ``Bio.codonalign`` module, but uses
+    the standard ``Alignment`` class, and does not rely on regular
+    expression searching to align a nucleotide sequence to
+    an amino acid sequence.
+  * The ``hmmer3-text`` SearchIO format now also extracts the
+    similarity string of the parsed alignments.
+  * HMMER results with the full path to the hmmer executable in
+    the banner are now parsed correctly.
+  * We now have basic type hint annotations in various modules
+    including ``Seq``, ``SeqRecord``, and ``SeqIO``.</comment>
+    <requestid>1135235</requestid>
+  </revision>
 </revisionlist>

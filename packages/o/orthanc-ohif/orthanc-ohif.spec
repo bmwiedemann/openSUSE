@@ -1,7 +1,7 @@
 #
 # spec file for package orthanc-ohif
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2023 Dr. Axel Braun <DocB@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -16,15 +16,17 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%{?sle15_python_module_pythons}
 Name:           orthanc-ohif
 Summary:        OHIF plugin for Orthanc
 License:        AGPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
-Version:        1.0
+Version:        1.1
 Release:        0
 URL:            https://orthanc-server.com
-Source0:        https://www.orthanc-server.com/downloads/get.php?path=/plugin-ohif/OrthancOHIF-%{version}.tar.gz
-Source1:        https://lsb.orthanc-server.com/plugin-ohif/%{version}/dist.zip
+Source0:        https://orthanc.uclouvain.be/downloads/sources/%{name}/OrthancOHIF-%{version}.tar.gz
+Source1:        https://orthanc.uclouvain.be/downloads/linux-standard-base/orthanc-ohif/1.1/dist.zip
 
 BuildRequires:  cmake
 BuildRequires:  e2fsprogs-devel
@@ -41,8 +43,16 @@ BuildRequires:  openssl-devel
 BuildRequires:  orthanc-devel
 BuildRequires:  orthanc-source
 BuildRequires:  pugixml-devel
+BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 BuildRequires:  uuid-devel
+%if %{?suse_version} > 1550
+BuildRequires:  python3-base >= 3.8
+%define __mybuildpython %__python3
+%else
+BuildRequires:  %{python_module base >= 3.8}
+%define __mybuildpython %{expand:%%__%pythons}
+%endif
 
 Requires:       orthanc
 
@@ -71,7 +81,8 @@ unzip %{S:1} -d OHIF
        -DORTHANC_FRAMEWORK_SOURCE=path \
        -DBoost_NO_BOOST_CMAKE=ON \
        -DORTHANC_FRAMEWORK_ROOT=/usr/src/orthanc/OrthancFramework/Sources \
-       -DLIB_INSTALL_DIR=%{_libdir}/share/orthanc/plugins/
+       -DLIB_INSTALL_DIR=%{_libdir}/share/orthanc/plugins/ \
+       -DPYTHON_EXECUTABLE=%{__mybuildpython}
 
 %cmake_build %{?_smp_mflags}
 

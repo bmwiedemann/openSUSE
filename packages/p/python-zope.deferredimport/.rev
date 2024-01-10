@@ -40,4 +40,21 @@
     <comment></comment>
     <requestid>1092197</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6ee4b38e3ec2f05712549354b83e794c</srcmd5>
+    <version>5.0</version>
+    <time>1704491903</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.0:
+  * Drop support for Python 2.7, 3.5, 3.6.
+  * Add support for Python 3.11.
+
+- update to 5.0:
+  * Drop support for Python 2.7, 3.5, 3.6.
+  * Add support for Python 3.11.
+
+- Update to 4.4:
+  * Drop support for Python 3.4.</comment>
+    <requestid>1135654</requestid>
+  </revision>
 </revisionlist>

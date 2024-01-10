@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %bcond_without tests
 Name:           python-pylint
-Version:        3.0.2
+Version:        3.0.3
 Release:        0
 Summary:        Syntax and style checker for Python code
 License:        GPL-2.0-or-later

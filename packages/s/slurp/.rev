@@ -91,4 +91,16 @@
     <comment></comment>
     <requestid>1040531</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>36962688e2d26b724bd5e26ff2c706f6</srcmd5>
+    <version>1.5.0</version>
+    <time>1702673278</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.5.0:
+  * extract cursor state initialization
+  * Implement wp_cursor_shape_v1
+  * build: move to `meson setup build` command
+  * Fix crosshair cursor is not scaled</comment>
+    <requestid>1133078</requestid>
+  </revision>
 </revisionlist>

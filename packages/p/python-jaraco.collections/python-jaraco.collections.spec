@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jaraco.collections
-Version:        4.3.0
+Version:        5.0.0
 Release:        0
 Summary:        Tools to work with collections
 License:        MIT
@@ -60,10 +60,7 @@ Models and classes to supplement the stdlib ‘collections’ module.
 %files %{python_files}
 %license LICENSE
 %doc docs/*.rst README.rst NEWS.rst
+%{python_sitelib}/jaraco/collections
 %{python_sitelib}/jaraco.collections-%{version}*-info
-%dir %{python_sitelib}/jaraco
-%{python_sitelib}/jaraco/collections.py*
-%pycache_only %dir %{python_sitelib}/jaraco/__pycache__
-%pycache_only %{python_sitelib}/jaraco/__pycache__/collections*.py*
 
 %changelog

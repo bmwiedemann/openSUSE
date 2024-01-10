@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jan  5 18:15:23 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.0:
+  * Add support to format indented selections of code. This
+    requires Black 23.11.0+
+  * Change entrypoint name to be `black`. This changes the
+    options namespace for this plugin from `pylsp.pylsp_black`
+    to `pylsp.black`.
+  * Drop support for Python 3.7.
+
+-------------------------------------------------------------------
 Wed Nov  1 15:46:08 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Revert the last change. The error message was genuine and showed
@@ -7,7 +18,7 @@ Wed Nov  1 15:46:08 UTC 2023 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Wed Nov  1 06:12:25 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Be clear that we require lsp-jsonrpc, because the test suite does. 
+- Be clear that we require lsp-jsonrpc, because the test suite does.
 
 -------------------------------------------------------------------
 Sat Jul  1 13:42:33 UTC 2023 - Ben Greiner <code@bnavigator.de>

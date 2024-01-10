@@ -1,7 +1,7 @@
 #
 # spec file for package mpclient
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           mpclient
-Version:        0.34
+Version:        0.35
 Release:        0
 Summary:        A minimalist command line interface to MPD
 License:        GPL-2.0-or-later

@@ -45,4 +45,14 @@
   * Drop support for Python 2.7, 3.5, 3.6.</comment>
     <requestid>1085133</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>cdb0cac9f3af31ce1da7f052db305a8a</srcmd5>
+    <version>5.0</version>
+    <time>1704829822</time>
+    <user>anag+factory</user>
+    <comment>- Use zope-testrunner to run the test suite.
+- Switch to pyproject and autosetup macros.
+- Stop using greedy globs in %files.</comment>
+    <requestid>1137660</requestid>
+  </revision>
 </revisionlist>

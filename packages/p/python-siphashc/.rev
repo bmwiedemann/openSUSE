@@ -57,4 +57,15 @@
     <comment></comment>
     <requestid>1096485</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c21baa2f54745960584547e69f18a656</srcmd5>
+    <version>2.3</version>
+    <time>1703800963</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.3:
+  * Tested with Python 3.9, 3.10, 3.11, and 3.12, no changes
+    needed.
+  * Dropped support for Python 3.5, 3.6, and 3.7.</comment>
+    <requestid>1135348</requestid>
+  </revision>
 </revisionlist>

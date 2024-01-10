@@ -176,4 +176,16 @@
     <comment></comment>
     <requestid>1078365</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>b30803ea750bbffae93d9c5e10a66200</srcmd5>
+    <version>0.9.12</version>
+    <time>1702845117</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.9.12:
+  * Restore all MIDI channels synth-engine funcionality, when the
+    output peak-meters aren't opted in.
+  * Preppings to next development cycle (Qt &gt;= 6.6)
+  * Optimized audio output peak-meters.</comment>
+    <requestid>1133580</requestid>
+  </revision>
 </revisionlist>

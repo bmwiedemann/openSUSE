@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Dec 20 21:53:12 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.1:
+  * Remove a Sphinx reference from NEWS to fix the PyPI
+    description
+  * Add support for JMESPath: you can now create a selector for a
+    JSON document and call ``Selector.jmespath()``.
+  * Selectors can now be constructed from ``bytes`` (using the
+    ``body`` and ``encoding`` arguments) instead of ``str``
+    (using the ``text`` argument), so that there is no internal
+    conversion from ``str`` to ``bytes`` and the memory
+    usage is lower.
+  * Typing improvements
+  * The ``pkg_resources`` module (which was absent from the
+    requirements) is no longer used
+  * New requirements:
+  * ``jmespath``
+  * ``typing_extensions`` (on Python 3.7)
+
+-------------------------------------------------------------------
 Sat Jan  7 23:13:46 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.7.0:
@@ -102,5 +122,5 @@ Thu Dec 21 22:54:25 UTC 2017 - mpluskal@suse.com
 -------------------------------------------------------------------
 Thu Jun  2 17:42:59 UTC 2016 - jacobwinski@gmail.com
 
-- Initial package build. 
+- Initial package build.
 

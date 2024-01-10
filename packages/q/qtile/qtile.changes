@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Dec 17 05:32:19 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Reenable tests. 
+- Added python-importlib-resources and python-importlib-metadata as part of tests.
+- Update required and recommended dependencies.
+
+-------------------------------------------------------------------
+Sun Dec 17 05:05:38 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update alternatives is done wrong in postuninstall. fixed.
+
+-------------------------------------------------------------------
 Wed Nov 15 12:33:04 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not use the pythons flavor expansion, as this package simply

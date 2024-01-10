@@ -170,4 +170,41 @@
 - Add patch support-python-311.patch:</comment>
     <requestid>1068107</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>cd8c5d8e1a4b62136a2fe93d2c84560e</srcmd5>
+    <version>3.2.4</version>
+    <time>1704829804</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.2.4:
+  * allow underscore in env name
+  * support for 'entrypoint-path' in FLASK_APP
+  * dynaconf_merge=False on nested structures
+  * non-str key raising type error
+  * pin hvac minimum version
+  * Hooking: Add support for changing the wrapped class
+  * Hotfix bypass evaluation #984
+  * Fix #976 from envvars parse True/False as booleans
+  * Fix #982 glob on settings_files
+  * docker compose is available on CI no need to install
+  * fix(django): fix #1000 AttributeError on admin
+  * Fix(django): fix #1000 AttributeError on admin (#1002) [Bruno
+    Rocha]
+  * Chore(lint): pep8 errors (#995) [Anderson Sousa]
+  * Hooking: Add support for changing the wrapped class
+  * Hotfix bypass evaluation #984
+  * Fix #976 from envvars parse True/False as booleans
+  * Fix #982 glob on settings_files
+  * docker compose is available on CI no need to install
+  * minor &quot;utils.inspect&quot; internal renames
+  * re-write docstrings in sphinx-style (:param foo)
+  * expose 'get_history'
+  * refactor 'test_cli.py': use more robust test isolation
+    strategy
+  * add data return to 'inspect_settings' for cleaner testing
+  * Docker compose is available on CI no need to install. [Bruno
+    Rocha]
+  * Fix #982 glob on settings_files (#987) [Bruno Rocha]
+  * Fix #976 from envvars parse True/False as booleans (#983)</comment>
+    <requestid>1137645</requestid>
+  </revision>
 </revisionlist>

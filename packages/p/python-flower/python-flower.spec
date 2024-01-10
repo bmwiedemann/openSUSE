@@ -1,7 +1,7 @@
 #
 # spec file for package python-flower
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,31 +17,25 @@
 
 
 Name:           python-flower
-Version:        1.1.0
+Version:        2.0.1
 Release:        0
 Summary:        A web frontend for monitoring and administrating Celery clusters
 License:        BSD-3-Clause
 URL:            https://github.com/mher/flower
 Source:         https://files.pythonhosted.org/packages/source/f/flower/flower-%{version}.tar.gz
-# Tornado 5+ update blocked by salt, so backport the missing piece
-Patch0:         backport_run_in_executor.patch
-# PATCH-FIX-UPSTREAM gh#mher/flower#1228
-Patch1:         remove-mock.patch
-BuildRequires:  %{python_module Babel >= 1.0}
 BuildRequires:  %{python_module celery >= 5.0.0}
-BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module humanize}
 BuildRequires:  %{python_module kombu}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module prometheus_client >= 0.8.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tornado >= 5.0.0}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Babel >= 1.0
 Requires:       python-celery >= 5.0.0
-Requires:       python-certifi
 Requires:       python-humanize
 Requires:       python-prometheus_client >= 0.8.0
 Requires:       python-pytz
@@ -58,10 +52,10 @@ Flower is a web based tool for monitoring and administrating Celery clusters.
 %autosetup -p1 -n flower-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -70,6 +64,7 @@ Flower is a web based tool for monitoring and administrating Celery clusters.
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/flower
+%{python_sitelib}/flower-%{version}.dist-info
 
 %changelog

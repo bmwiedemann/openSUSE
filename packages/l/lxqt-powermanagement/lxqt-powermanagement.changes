@@ -1,14 +1,19 @@
 -------------------------------------------------------------------
+Mon Jan  1 07:29:25 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
+
+- Added %dir declarations for icon directories, to clear buildfail
+
+-------------------------------------------------------------------
 Sun Nov  5 22:14:58 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to 1.4.0:
   * Override DPMS on enabling idleness watcher (to fix the problem
-    of default TPMS timeouts being in conflict with 
+    of default TPMS timeouts being in conflict with
     lxqt-powermanagement).
   * Suspend screensaver when idle watcher is enabled (to prevent
     the screensaver timeout from kicking in and interfere with
     our daemon).
-  * Removed "Ask" option from lid and idle watchers. 
+  * Removed "Ask" option from lid and idle watchers.
 
 -------------------------------------------------------------------
 Sat Apr 15 19:04:25 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>

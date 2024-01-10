@@ -16,17 +16,18 @@
 #
 
 
-%define         skip_python2 1
-%define         skip_python36 1
+%{?sle15_python_module_pythons}
 Name:           python-kasa
-Version:        0.5.1
+Version:        0.5.4
 Release:        0
 Summary:        Python API for TP-Link Kasa Smarthome products
 License:        GPL-3.0-or-later
 URL:            https://github.com/python-kasa/python-kasa
 Source0:        https://github.com/python-kasa/python-kasa/archive/refs/tags/%{version}.tar.gz#/python-kasa-%{version}.tar.gz
 BuildRequires:  %{python_module anyio}
+BuildRequires:  %{python_module async-timeout}
 BuildRequires:  %{python_module asyncclick}
+BuildRequires:  %{python_module orjson}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry}
 BuildRequires:  %{python_module pydantic}
@@ -40,7 +41,9 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # Runtime requires
 Requires:       python-anyio
+Requires:       python-async-timeout
 Requires:       python-asyncclick
+Requires:       python-orjson
 Requires:       python-pydantic
 Requires:       python-setuptools
 Requires:       python-voluptuous

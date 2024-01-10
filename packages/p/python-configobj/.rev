@@ -185,4 +185,12 @@ Refers only to the license available at http://www.voidspace.org.uk/python/licen
     <comment>- Add CVE-2023-26112.patch (bsc#1210070)</comment>
     <requestid>1108906</requestid>
   </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>83cb2b24310253b2e258182b9a626f41</srcmd5>
+    <version>5.0.8</version>
+    <time>1704491983</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1136641</requestid>
+  </revision>
 </revisionlist>

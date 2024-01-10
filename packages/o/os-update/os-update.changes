@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan  5 10:24:34 UTC 2024 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+
+- Do not overwrite os-update.conf on Leap
+
+-------------------------------------------------------------------
 Fri Nov 24 13:27:21 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 1.14

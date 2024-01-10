@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-lxqt
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %bcond_with betatest
 
 Name:           patterns-lxqt
-Version:        20220914
+Version:        20231212
 Release:        0
 Summary:        Patterns for Installation (LXQt)
 License:        MIT
@@ -38,8 +38,9 @@ This particular package contains the LXQt patterns.
 
 
 
-################################################################################
 
+
+################################################################################
 %package lxqt
 %pattern_graphicalenvironments
 Summary:        LXQt Desktop Environment
@@ -63,6 +64,8 @@ Requires:       lxqt-runner
 Requires:       lxqt-session
 Requires:       lxqt-sudo
 Requires:       lxqt-themes
+# boo#1218288 -- mvetter@suse.com
+Requires:       liblxqt
 Requires:       oxygen5-icon-theme
 Requires:       pattern() = x11
 Recommends:     xdg-desktop-portal-lxqt

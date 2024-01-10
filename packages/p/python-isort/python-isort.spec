@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-isort%{psuffix}
-Version:        5.12.0
+Version:        5.13.2
 Release:        0
 Summary:        A Python utility / library to sort Python imports
 License:        MIT

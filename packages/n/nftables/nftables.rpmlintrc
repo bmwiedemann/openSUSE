@@ -1,0 +1,2 @@
+# dlopen of python package not recognized by rpm requirements generator
+addFilter("explicit-lib-dependency libnftables1")

@@ -17,7 +17,7 @@
 
 
 Name:           thin-provisioning-tools
-Version:        1.0.7
+Version:        1.0.9
 Release:        0
 Summary:        Thin Provisioning Tools
 License:        GPL-3.0-only

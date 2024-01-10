@@ -1,7 +1,7 @@
 From: Matthias Bach <marix@marix.org>
 Date: Sat, 7 Jan 2023 15:15:25 +0100
 Subject: [PATCH] Fix compatibility with Python 3.11
-References: https://github.com/dschep/ntfy/issues/257
+References: https://github.com/dschep/ntfy/pull/271
 Upstream: submitted
 
 We had still been using the function inspect.getargspec() that had

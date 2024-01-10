@@ -213,4 +213,14 @@
     <comment>- Update to release 3.2.6</comment>
     <requestid>951726</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>7a866ce1e9c56e7aca2e3778d0b5d11e</srcmd5>
+    <version>3.2.7</version>
+    <time>1703801041</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.2.7:
+  * SNDFILE filter: ignore .BIN files
+  * SNDFILE filter: fix signalling of read errors (forwarded request 1135511 from dirkmueller)</comment>
+    <requestid>1135522</requestid>
+  </revision>
 </revisionlist>

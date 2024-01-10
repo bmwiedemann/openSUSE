@@ -1,4 +1,273 @@
 -------------------------------------------------------------------
+Sun Dec 17 17:11:09 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.8.2
+  * Bugfix release without API changes
+- API Changes for 3.8.1
+  ## Behaviour
+  * Default behaviour of hexbin with C provided requires at least 1
+    point
+  ## Deprecations
+  * Deprecations removed in contour
+- What's new in 3.8
+  ## Type Hints
+  ## Plotting and Annotation improvements
+  * Support customizing antialiasing for text and annotation
+  * rcParams for AutoMinorLocator divisions
+  * Axline setters and getters
+  * Clipping for contour plots
+  * Axes.ecdf
+  * Figure.get_suptitle(), Figure.get_supxlabel(),
+    Figure.get_supylabel()
+  * Ellipse.get_vertices(), Ellipse.get_co_vertices()
+  * Remove inner ticks in label_outer()
+  * Configurable legend shadows
+  * offset parameter for MultipleLocator
+  * Add a new valid color format (matplotlib_color, alpha)
+  * The pie chart shadow can be controlled
+  * PolyQuadMesh is a new class for drawing quadrilateral meshes
+  * Shadow shade can be controlled
+  * SpinesProxy now supports calling the set() method
+  * Allow setting the tick label fonts with a keyword argument
+  ## Figure, Axes, and Legend Layout
+  * pad_inches="layout" for savefig
+  * Add a public method to modify the location of Legend
+  * rcParams['legend.loc'] now accepts float-tuple inputs
+  ## Mathtext improvements
+  * Boldsymbol mathtext command \boldsymbol
+  * mathtext has more sizable delimiters
+  * mathtext documentation improvements
+  * mathtext now supports \substack
+  * mathtext now supports \middle delimiter
+  * mathtext operators
+  * mathtext spacing corrections
+  * mathtext now supports \text
+  * Bold-italic mathtext command \mathbfit
+  ## 3D plotting improvements
+  * Specify ticks and axis label positions for 3D plots
+  * 3D hover coordinates
+  * 3D plots can share view angles
+  ## Other improvements
+  * matplotlib.mpl_toolkits is now an implicit namespace package
+  * Plot Directive now can make responsive images with "srcset"
+- API Changes for 3.8.0
+  ## Behaviour Changes
+  * Tk backend respects file format selection when saving figures
+  * Placing of maximum and minimum minor ticks
+  * hexbin now defaults to rcParams["patch.linewidth"]
+  * TwoSlopeNorm now auto-expands to always have two slopes
+  * Event objects emitted for axes_leave_event
+  * Streamplot now draws streamlines as one piece if no width or no
+    color variance
+  * canvas argument now required for FigureFrameWx
+  * ContourSet is now a single Collection
+  * SubFigure default facecolor is now transparent
+  * Reject size related keyword arguments to MovieWriter grab_frame
+    method
+  * Changes of API after deprecation
+  * Invalid types for Annotation xycoords now raise TypeError
+  * Default antialiasing behavior changes for Text and Annotation
+  * ScalarMappable.to_rgba() now respects the mask of RGB(A) arrays
+  * Text.get_rotation_mode return value
+  * PostScript paper type adds option to use figure size
+  * hexbin mincnt parameter made consistently inclusive
+  ## Deprecations
+  * Calling paths.get_path_collection_extents with empty offsets
+  * axes_grid1.axes_divider API changes
+  * bbox.anchored() with no explicit container
+  * Functions in mpl_toolkits.mplot3d.proj3d
+  * Arguments other than renderer to get_tightbbox
+  * The object returned by pcolor() has changed to a PolyQuadMesh
+    class
+  * LocationEvent.lastevent
+  * allsegs, allkinds, tcolors and tlinewidths attributes of
+    ContourSet
+  * ContourSet.collections
+  * INVALID_NON_AFFINE, INVALID_AFFINE, INVALID attributes of
+    TransformNode
+  * Grouper.clean()
+  * GridHelperCurveLinear.get_data_boundary
+  * np_load parameter of cbook.get_sample_data
+  * RendererAgg.tostring_rgb and FigureCanvasAgg.tostring_rgb
+  * The parameter of Annotation.contains and Legend.contains is
+    renamed to mouseevent
+  * Accessing event.guiEvent after event handlers return
+  * Widgets
+  * Method parameters renamed to match base classes
+  * numdecs parameter and attribute of LogLocator
+  * NavigationToolbar2QT.message is deprecated
+  * ft2font.FT2Image.draw_rect and ft2font.FT2Font.get_xys
+  * backend_ps.psDefs
+  * Callable axisartist Axes
+  * AnchoredEllipse is deprecated
+  * Automatic papersize selection in PostScript
+  * Tick.set_label1 and Tick.set_label2
+  * Passing extra positional arguments to Figure.add_axes
+  * CbarAxesBase.toggle_label
+  * TexManager.texcache
+  * Artists explicitly passed in will no longer be filtered by
+    legend() based on their label
+  * FigureCanvasBase.switch_backends
+  * cbook.Stack is deprecated
+  * inset_location.InsetPosition is deprecated
+  * axisartist.axes_grid and axisartist.axes_rgb
+  * ContourSet.antialiased
+  * Passing non-int or sequence of non-int to
+    Table.auto_set_column_width
+  * PdfPages(keep_empty=True)
+  * Auto-closing of figures when switching backend
+  * Support for passing the "frac" key in annotate(...,
+    arrowprops={"frac": ...})
+  ## Removals
+  * cbook removals
+  * Groupers from get_shared_x_axes / get_shared_y_axes are
+    immutable
+  * Deprecated modules removed
+  * Parameters to plt.figure() and the Figure constructor
+  * stem(..., use_line_collection=False)
+  * Positional / keyword arguments
+  * Methods to set parameters in LogLocator and LogFormatter*
+  * Axes.get_renderer_cache
+  * Unused methods in Axis, Tick, XAxis, and YAxis
+  * mlab.stride_windows
+  * Axes3D
+  * 3D Axis
+  * checkdep_usetex removed
+  * date_ticker_factory removed
+  * transforms.Affine2D.identity()
+  * Removals in testing.decorators
+  * text.get_rotation()
+  * Passing too many positional arguments to tripcolor
+  * The filled argument to Colorbar is removed
+  * Widgets
+  * Axes3D.set_frame_on and Axes3D.get_frame_on removed
+  * Miscellaneous internals
+  * Backend-specific removals
+  * Removal of deprecated APIs
+- What's new in 3.7
+  ## Plotting and Annotation improvements
+  * hatch parameter for pie
+  * Polar plot errors drawn in polar coordinates
+  * Additional format string options in bar_label
+  * ellipse boxstyle option for annotations
+  * The extent of imshow can now be expressed with units
+  * Reversed order of legend entriespcolormesh accepts RGB(A)
+    colors
+  * View current appearance settings for ticks, tick labels, and
+    gridlines
+  * Style files can be imported from third-party packages
+  ## Improvements to 3D Plotting
+  * 3D plot pan and zoom buttons
+  * adjustable keyword argument for setting equal aspect ratios in
+    3D
+  * Poly3DCollection supports shading
+  * rcParam for 3D pane color
+  ## Figure and Axes Layout
+  * colorbar now has a location keyword argument
+  * Figure legends can be placed outside figures using
+    constrained_layout
+  * Per-subplot keyword arguments in subplot_mosaic
+  * subplot_mosaic no longer provisional
+  ## Widget Improvements
+  * Custom styling of button widgets
+  * Blitting in Button widgets
+  ## Other Improvements
+  * Source links can be shown or hidden for each Sphinx plot
+    directive
+  * Figure hooks
+- API Changes in 3.7
+  ## Behaviour Changes
+  * All Axes have get_subplotspec and get_gridspec methods now,
+    which returns None for Axes not positioned via a gridspec
+  * HostAxesBase.get_aux_axes now defaults to using the same base
+    axes class as the host axes
+  * plt.get_cmap and matplotlib.cm.get_cmap return a copy
+  * TrapezoidMapTriFinder uses different random number generator
+  * FuncAnimation(save_count=None)
+  * CenteredNorm halfrange is not modified when vcenter changes
+  * fig.subplot_mosaic no longer passes the gridspec_kw args to
+    nested gridspecs.
+  * HPacker alignment with bottom or top are now correct
+  * On Windows only fonts known to the registry will be discovered
+  * QuadMesh.set_array now always raises ValueError for inputs with
+    incorrect shapes
+  * contour and contourf auto-select suitable levels when given
+    boolean inputs
+  * contour no longer warns if no contour lines are drawn.
+  * AxesImage.set_extent now raises TypeError for unknown keyword
+    arguments
+  * Change of legend(loc="best") behavior
+  ## Deprecations
+  * Axes subclasses should override clear instead of cla
+  * rcParams type
+  * Deprecation aliases in cbook
+  * draw_gouraud_triangle
+  * matplotlib.pyplot.get_plot_commands
+  * matplotlib.tri submodules are deprecated
+  * Passing undefined label_mode to Grid
+  * Colorbars for orphaned mappables are deprecated, but no longer
+    raise
+  * Animation attributes
+  * contour.ClabelText and ContourLabeler.set_label_props
+  * ContourLabeler attributes
+  * backend_ps.PsBackendHelper and backend_ps.ps_backend_helper
+  * backend_webagg.ServerThread is deprecated
+  * parse_fontconfig_pattern will no longer ignore unknown constant
+    names
+  * BufferRegion.to_string and BufferRegion.to_string_argb
+  * num2julian, julian2num and JULIAN_OFFSET
+  * unit_cube, tunit_cube, and tunit_edges
+  * Most arguments to widgets have been made keyword-only
+  * SimpleEvent
+  * RadioButtons.circles
+  * CheckButtons.rectangles and CheckButtons.lines
+  * OffsetBox.get_extent_offsets and OffsetBox.get_extent
+  * legend.legendHandles
+  * ticklabels parameter of Axis.set_ticklabels renamed to labels
+  * offsetbox.bbox_artist
+  * Quiver.quiver_doc and Barbs.barbs_doc
+  * Deprecate unused parameter x to TextBox.begin_typing
+  * Deprecation of top-level cmap registration and access functions
+    in mpl.cm
+  * BrokenBarHCollection is deprecated
+  * Passing inconsistent loc and nth_coord to axisartist helpers
+  * passthru_pt
+  * axes3d.vvec, axes3d.eye, axes3d.sx, and axes3d.sy
+  * Line2D
+  ## Removals
+  * epoch2num and num2epoch are removed
+  * Locator and Formatter wrapper methods
+  * Interactive cursor details
+  * auto_add_to_figure=True for Axes3D
+  * The first parameter of Axes.grid and Axis.grid has been renamed
+    to visible
+  * Removal of deprecations in the Selector widget API
+  * backend_template.show
+  * Unused positional parameters to print_<fmt> methods
+  * QuadMesh signature
+  * Expiration of FancyBboxPatch deprecations
+  * Testing support
+  * Auto-removal of grids by pcolor and pcolormesh
+  * Modification of Axes children sublists
+  * Passing incorrect types to Axes.add_* methods
+  * ConversionInterface.convert no longer accepts unitless values
+  * Normal list of Artist objects now returned by
+    HandlerLine2D.create_artists
+  * rcParams will no longer cast inputs to str
+  * Case-insensitive scales
+  * Support for nx1 = None or ny1 = None in AxesLocator and
+    Divider.locate
+  * change signature of .FigureCanvasBase.enter_notify_event
+  * Colorbar tick update parameters
+  * plot directive removals
+  * Miscellaneous removals
+- Drop pyparsing-workaround-setName.patch
+- Update the -qt5 backend module name to -qt since it also supports
+  PyQt6 and PySide{2,6}
+- Add nbagg backend subpackage
+- Test some optional stuff outside of Ring1
+
+-------------------------------------------------------------------
 Tue Jul 11 11:10:04 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - add pyparsing-workaround-setName.patch as a part of a workaround

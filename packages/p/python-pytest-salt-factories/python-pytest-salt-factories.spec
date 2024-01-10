@@ -83,6 +83,7 @@ A pytest plugin for testing Salt.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+export PYTHONDONTWRITEBYTECODE=1
 export PYTHONPATH=%{buildroot}%{python_sitelib}
 
 # Run test and exclude some that doesn't work fine in OBS.

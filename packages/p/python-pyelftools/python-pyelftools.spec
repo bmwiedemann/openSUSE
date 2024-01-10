@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyelftools
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyelftools
-Version:        0.29
+Version:        0.30
 Release:        0
 Summary:        Library for analyzing ELF files and DWARF debugging information
 License:        SUSE-Public-Domain

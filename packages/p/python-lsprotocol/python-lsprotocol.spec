@@ -17,7 +17,7 @@
 
 
 Name:           python-lsprotocol
-Version:        2023.0.0b1
+Version:        2023.0.0
 Release:        0
 Summary:        Python implementation of the Language Server Protocol
 License:        MIT

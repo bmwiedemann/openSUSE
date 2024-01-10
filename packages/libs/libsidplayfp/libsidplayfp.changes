@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jan  1 10:04:11 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.6.0
+  * residfp is now thread-safe.
+  * residfp: fixed SSE2 version of convolve.
+  * residfp: updated combined waveforms model.
+  * residfp: amplify the output by a model dependent scale factor.
+  * a couple of autotools fixes.
+
+-------------------------------------------------------------------
+Sat Dec 23 11:33:14 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- >Update to version 2.5.1
+  * Check for {g,}od at configure time.
+  * residfp: fix a 6581 filter bug where values could actually go
+    negative.
+  * Sync resid with upstream.
+- Drop patch:
+  * fix-missing-include.patch (not longer needed)
+
+-------------------------------------------------------------------
 Thu Jul  6 20:55:10 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 2.5.0

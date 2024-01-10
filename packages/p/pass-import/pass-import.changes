@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan  9 14:21:56 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 3.4:
+  - Added a --dry-run option #188
+  - Dropped support for python 3.7
+  - The manpage is now generated during the release
+    process.
+  - Automated release process.
+  - Fix KDBX import bug #190
+
+-------------------------------------------------------------------
 Tue Sep 20 19:21:20 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.3:

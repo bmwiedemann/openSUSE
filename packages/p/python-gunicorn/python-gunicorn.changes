@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jan  8 23:05:51 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Clean up the SPEC file
+
+-------------------------------------------------------------------
+Mon Jan  8 09:03:41 UTC 2024 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 21.2.0
+  * See https://github.com/benoitc/gunicorn/blob/21.2.0/docs/source/news.rst
+    or the packaged news.rst
+- Removed support-eventlet-30-3.patch
+
+-------------------------------------------------------------------
 Sun Apr 23 23:07:34 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Switch documentation to be within the main package.

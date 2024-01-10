@@ -17,7 +17,7 @@
 
 
 Name:           python-papermill
-Version:        2.4.0
+Version:        2.5.0
 Release:        0
 Summary:        Tool to parametrize and run Jupyter and nteract Notebooks
 License:        BSD-3-Clause
@@ -30,29 +30,27 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML
-Requires:       python-ansiwrap
 Requires:       python-click
 Requires:       python-entrypoints
 Requires:       python-nbclient >= 0.2.0
 Requires:       python-nbformat >= 5.1.2
 Requires:       python-requests >= 2.21.0
-Requires:       python-tenacity
+Requires:       python-tenacity >= 5.0.2
 Requires:       python-tqdm >= 4.32.2
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Recommends:     python-azure-datalake-store >= 0.0.30
-Recommends:     python-azure-storage-blob
-# https://build.opensuse.org/request/show/1083380#comments
-Requires:       (python-typing_extensions if python-azure-storage-blob)
+Recommends:     python-azure-identity >= 1.3.1
+Recommends:     python-azure-storage-blob >= 12.1.0
 Recommends:     python-black
 Recommends:     python-boto3
 Recommends:     python-gcsfs >= 0.2.0
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module ansiwrap}
-BuildRequires:  %{python_module azure-datalake-store}
-BuildRequires:  %{python_module azure-storage-blob}
+BuildRequires:  %{python_module azure-datalake-store >= 0.0.30}
+BuildRequires:  %{python_module azure-identity >= 1.3.1}
+BuildRequires:  %{python_module azure-storage-blob >= 12.1.0}
 BuildRequires:  %{python_module boto3}
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module entrypoints}
@@ -71,7 +69,7 @@ BuildRequires:  %{python_module pytest-env}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.21.0}
-BuildRequires:  %{python_module tenacity}
+BuildRequires:  %{python_module tenacity >= 5.0.2}
 BuildRequires:  %{python_module tqdm >= 4.32.2}
 # /SECTION
 %python_subpackages
@@ -82,12 +80,14 @@ and analyzing Jupyter Notebooks.
 
 %prep
 %autosetup -p1 -n papermill-%{version}
+# docs subfolder not in sdist https://github.com/nteract/papermill/issues/737
+sed -i '/docs_/d' setup.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/papermill
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -107,6 +107,6 @@ donttest="TestBrokenNotebook2"
 %license LICENSE
 %python_alternative %{_bindir}/papermill
 %{python_sitelib}/papermill
-%{python_sitelib}/papermill-%{version}*-info
+%{python_sitelib}/papermill-%{version}.dist-info
 
 %changelog

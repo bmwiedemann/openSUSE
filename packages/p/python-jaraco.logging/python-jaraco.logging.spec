@@ -1,7 +1,7 @@
 #
 # spec file for package python-jaraco.logging
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,19 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-jaraco.logging
-Version:        3.1.2
+Version:        3.3.0
 Release:        0
 Summary:        Tools to work with logging
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/jaraco/jaraco.logging
 Source0:        https://files.pythonhosted.org/packages/source/j/jaraco.logging/jaraco.logging-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools >= 56}
 BuildRequires:  %{python_module setuptools_scm >= 3.4.1}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tempora}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -60,7 +59,7 @@ cp -r %{python3_sitelib}/jaraco/* jaraco/
 
 %files %{python_files}
 %license LICENSE
-%doc docs/*.rst README.rst CHANGES.rst
+%doc docs/*.rst README.rst
 %{python_sitelib}/jaraco.logging-%{version}*-info
 %{python_sitelib}/jaraco/logging.py*
 %dir %{python_sitelib}/jaraco

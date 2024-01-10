@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Dec 20 08:04:09 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 2.0.2:
+  * Fixed “Undefined behavior when with hash(...) on non-aligned bytes due to murmurHash cast[ptr int32]” (#22387)
+  * Fixed “async/closure environment does not align local variables” (#22419)
+  * Fixed “Debugging/stepping is broken in 2.0.0 and 2.1.1” (#22366)
+  * Fixed “when picks wrong branch with static int” (#22474)
+  * Fixed “Regression from 1.6.14 to 2.0.0 - nimble test crashes with a core dump” (#22357)
+  * Fixed “Long-term arc-closure iterator problem” (#22619)
+  * Fixed “-d:useMalloc broken with --mm:none and threads on” (#22262)
+  * Fixed “Crash of compiler on array type check” (#5780)
+  * Fixed “Undefined behaviorwith set card() on non-aligned pointer from cardSetImpl/countBits64cast on ptr uint64” (#22481)
+  * Fixed “elementType from std/typetraits doesn’t work in generic procs” (#21532)
+  * Fixed “peg matchLen can raise an unlisted exception: Exception” (#22541)
+  * Fixed “Piece of code output c compiler error “ (#17197)
+  * Fixed “Missing type inference in loop + case + if + continue” (#22604)
+  * Fixed “Invalid type mismatch in generic” (#17509)
+  * Fixed “std/nativesockets getHostByAddr should support IPv6” (#22834)
+  * Fixed “std/nre leaks memory on every created Regex due to auto-translated finalizers behaving differently under ARC/ORC” (#22868)
+  * Fixed “Destructor not called for temp objects passed as arguments” (#22866)
+  * Fixed “nimsuggest inlay hints for types shown in the wrong place for exported vars and consts” (#23067)
+  * Fixed “[Regression] static integers in quote do” (#22947)
+
+-------------------------------------------------------------------
 Sat Aug  5 03:33:26 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Remove move of $TARGET/tools since it does not exist.

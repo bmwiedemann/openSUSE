@@ -1,7 +1,7 @@
 #
 # spec file for package zfp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,15 +20,13 @@
 %define minor 0
 %define libname libzfp%{major}
 Name:           zfp
-Version:        %{major}.%{minor}.0
+Version:        %{major}.%{minor}.1
 Release:        0
 Summary:        Read and write numerical arrays
 License:        BSD-3-Clause
 Group:          Productivity/Archiving/Compression
 URL:            https://computing.llnl.gov/projects/zfp
-Source0:        https://github.com/LLNL/zfp/releases/download/1.0.0/zfp-1.0.0.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM
-Patch0:         https://github.com/LLNL/zfp/commit/6d7d2424ed082eb41d696036b26831636650a614.patch#/fix_math_check.patch
+Source0:        https://github.com/LLNL/zfp/releases/download/%{version}/zfp-%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM
 Patch1:         0001-Fix-64-bit-integer-types-on-32-bit-archs.patch
 BuildRequires:  cmake

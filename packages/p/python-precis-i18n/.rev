@@ -61,4 +61,29 @@
   *  Update copyright year (2023).</comment>
     <requestid>1055997</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>147f0948868539f5fafdefa94aae5c3e</srcmd5>
+    <version>1.1.0</version>
+    <time>1703800948</time>
+    <user>anag+factory</user>
+    <comment>- Update specfile for PEP517 and python packaging best practices
+
+- update to 1.1.0:
+  * Fixed an issue in the Nickname profile implementation that
+    trimmed extra leading/trailing white space beyond the `Zs`
+    category prescribed in RFC 8266. Python treats certain
+    Unicode control characters as white space. If these appeared
+    as leading/trailing spaces in a Nickname string, they
+    were stripped. With this release, the Nickname profile will
+    raise a UnicodeEncodeError `DISALLOWED/controls` if any control
+    characters are encountered. (Issue #29)
+  * Update internal tables for Unicode 15.1.
+  * Change format of README and CHANGELOG files to Markdown.
+  * Drop support for Python 3.3 and 3.4.
+
+  * get_profile now supports alternative unicodedata2 module
+  * get_profile maps ':' to '_' before looking up profile name
+- Drop support_unicode_12.1_for_python_3.8.patch</comment>
+    <requestid>1135333</requestid>
+  </revision>
 </revisionlist>

@@ -198,4 +198,12 @@
   * Blacklist pandas read\_pickle and add functional test for it</comment>
     <requestid>1100808</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>28b138c91b3bc6d1e7afabd0526b9842</srcmd5>
+    <version>1.7.6</version>
+    <time>1702673420</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1133415</requestid>
+  </revision>
 </revisionlist>

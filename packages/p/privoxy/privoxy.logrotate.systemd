@@ -7,8 +7,8 @@
 	rotate 99
 	size 4M
 	#maxage 365
-	postrotate
 	missingok
+	postrotate
 		/usr/bin/systemctl reload privoxy
 	endscript
 }
@@ -22,8 +22,8 @@
 	rotate 99
 	size 4M
 	#maxage 365
-	postrotate
 	missingok
+	postrotate
 		/usr/bin/systemctl reload privoxy
 	endscript
 }

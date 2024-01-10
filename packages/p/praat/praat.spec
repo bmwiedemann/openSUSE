@@ -1,7 +1,7 @@
 #
 # spec file for package praat
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           praat
-Version:        6.4.01
+Version:        6.4.02
 Release:        0
 Summary:        Phonetics by computer
 License:        GPL-3.0-or-later
@@ -40,6 +40,7 @@ BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(gsl)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(jack)
+BuildRequires:  pkgconfig(lame)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(opusfile)

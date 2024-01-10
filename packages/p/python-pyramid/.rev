@@ -178,4 +178,37 @@
     <comment></comment>
     <requestid>1092227</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>6ea3a7b0b28756971d8b00b81ff855b9</srcmd5>
+    <version>2.0.2</version>
+    <time>1704281453</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.2:
+  * Removed support for null-bytes in the path when making a
+    request for a file
+  * Backward Incompatibilities - Requests to a static_view are no
+    longer allowed to contain a null-byte in any
+
+    usage to .daemon = True.
+  * The authentication and authorization policies of Pyramid 1.x have been
+    merged into a single security policy in Pyramid 2.0. New security APIs
+  * It is now possible to control whether a route pattern contains
+  * Deprecated the authentication and authorization interfaces and
+    principal-based support.
+  * Deprecated several ACL-related aspects of pyramid.security. Equivalent
+- Remove python2 support, due to pyton-venusian being only python3
+- use the PyPI tarball instead of github
+    This should mitigate attacks from Flash (See CVE-2014-4671).
+  * Fix regression where pserve --reload would not work when running as a daemon.
+    command, introduced the method column for displaying available request methods, and
+    improved the view output by showing the module instead of just __repr__.
+    tables creation.  See https://github.com/Pylons/pyramid/pull/1049.  Backport
+    http-related exceptions when you wanted that exception view to override the
+  + When the ``pyramid.reload_templates`` setting was true, and a Chameleon
+    template was reloaded, and the renderer specification named a macro
+    was reloaded due to a file change would produce the entire template body
+    instead of just a rendering of the macro.  See
+  + Fix an obscure problem when combining a virtual root with a route with a</comment>
+    <requestid>1136288</requestid>
+  </revision>
 </revisionlist>

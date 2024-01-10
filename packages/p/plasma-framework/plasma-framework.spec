@@ -17,14 +17,14 @@
 
 
 %define lname libKF5Plasma5
-%define _tar_path 5.103
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
+%define qt5_version 5.15.2
 %bcond_without released
 Name:           plasma-framework
-Version:        5.112.0
+Version:        5.113.0
 Release:        0
 Summary:        Plasma library and runtime components based upon KF5 and Qt5
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
@@ -34,43 +34,41 @@ Source:         %{name}-%{version}.tar.xz
 Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
-BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
+BuildRequires:  extra-cmake-modules >= %{_kf5_version}
 BuildRequires:  fdupes
-BuildRequires:  kf5-filesystem
 BuildRequires:  libxcb-devel
 BuildRequires:  pkgconfig
-BuildRequires:  xz
-BuildRequires:  cmake(KF5Activities) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5Archive) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5Config) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5ConfigWidgets) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5CoreAddons) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5DBusAddons) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5Declarative) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5DocTools) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5GlobalAccel) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5GuiAddons) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5I18n) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5IconThemes) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5KIO) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5Kirigami2) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5Notifications) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5Package) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5Parts) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5Service) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5Wayland) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5WindowSystem) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5XmlGui) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(Qt5Concurrent) >= 5.15.0
-BuildRequires:  cmake(Qt5Gui) >= 5.15.0
-BuildRequires:  cmake(Qt5Qml) >= 5.15.0
-BuildRequires:  cmake(Qt5Quick) >= 5.15.0
-BuildRequires:  cmake(Qt5QuickControls2) >= 5.15.0
-BuildRequires:  cmake(Qt5Sql) >= 5.15.0
-BuildRequires:  cmake(Qt5Svg) >= 5.15.0
-BuildRequires:  cmake(Qt5Test) >= 5.15.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.15.0
-BuildRequires:  cmake(Qt5X11Extras) >= 5.15.0
+BuildRequires:  cmake(KF5Activities) >= %{_kf5_version}
+BuildRequires:  cmake(KF5Archive) >= %{_kf5_version}
+BuildRequires:  cmake(KF5Config) >= %{_kf5_version}
+BuildRequires:  cmake(KF5ConfigWidgets) >= %{_kf5_version}
+BuildRequires:  cmake(KF5CoreAddons) >= %{_kf5_version}
+BuildRequires:  cmake(KF5DBusAddons) >= %{_kf5_version}
+BuildRequires:  cmake(KF5Declarative) >= %{_kf5_version}
+BuildRequires:  cmake(KF5DocTools) >= %{_kf5_version}
+BuildRequires:  cmake(KF5GlobalAccel) >= %{_kf5_version}
+BuildRequires:  cmake(KF5GuiAddons) >= %{_kf5_version}
+BuildRequires:  cmake(KF5I18n) >= %{_kf5_version}
+BuildRequires:  cmake(KF5IconThemes) >= %{_kf5_version}
+BuildRequires:  cmake(KF5KIO) >= %{_kf5_version}
+BuildRequires:  cmake(KF5Kirigami2) >= %{_kf5_version}
+BuildRequires:  cmake(KF5Notifications) >= %{_kf5_version}
+BuildRequires:  cmake(KF5Package) >= %{_kf5_version}
+BuildRequires:  cmake(KF5Parts) >= %{_kf5_version}
+BuildRequires:  cmake(KF5Service) >= %{_kf5_version}
+BuildRequires:  cmake(KF5Wayland) >= %{_kf5_version}
+BuildRequires:  cmake(KF5WindowSystem) >= %{_kf5_version}
+BuildRequires:  cmake(KF5XmlGui) >= %{_kf5_version}
+BuildRequires:  cmake(Qt5Concurrent) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Gui) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Qml) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Quick) >= %{qt5_version}
+BuildRequires:  cmake(Qt5QuickControls2) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Sql) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Svg) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Test) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Widgets) >= %{qt5_version}
+BuildRequires:  cmake(Qt5X11Extras) >= %{qt5_version}
 #FIXME: Figure how to add it properly
 BuildRequires:  libQt5PlatformHeaders-devel
 BuildRequires:  pkgconfig(egl)
@@ -112,7 +110,7 @@ Plasma QML and runtime components based upon KF5 and Qt5
 %package desktoptheme
 Summary:        Desktop themes usable by Plasma 5 or Plasma 6
 # Split from the main package
-Conflicts:      plasma-framework < 5.112.0
+Conflicts:      plasma-framework < 5.113.0
 
 %description desktoptheme
 Desktop themes usable by plasma 5 or plasma 6.
@@ -123,14 +121,13 @@ Requires:       %{lname} = %{version}
 Requires:       %{name} = %{version}
 Requires:       %{name}-components = %{version}
 Requires:       %{name}-private = %{version}
-Requires:       extra-cmake-modules >= 1.7.0
 Requires:       kf5-filesystem
-Requires:       cmake(KF5Package) >= %{_kf5_bugfix_version}
-Requires:       cmake(KF5Service) >= %{_kf5_bugfix_version}
-Requires:       cmake(KF5WindowSystem) >= %{_kf5_bugfix_version}
-Requires:       cmake(Qt5Gui) >= 5.15.0
-Requires:       cmake(Qt5Qml) >= 5.15.0
-Requires:       cmake(Qt5Quick) >= 5.15.0
+Requires:       cmake(KF5Package) >= %{_kf5_version}
+Requires:       cmake(KF5Service) >= %{_kf5_version}
+Requires:       cmake(KF5WindowSystem) >= %{_kf5_version}
+Requires:       cmake(Qt5Gui) >= %{qt5_version}
+Requires:       cmake(Qt5Qml) >= %{qt5_version}
+Requires:       cmake(Qt5Quick) >= %{qt5_version}
 Conflicts:      kapptemplate <= 15.12.3
 
 %description devel
@@ -192,7 +189,5 @@ fi
 %{_kf5_sharedir}/kdevappwizard
 
 %files lang -f %{name}.lang
-# LC_SCRIPTS is not recognized by find-lang.sh
-%lang(lt) %{_datadir}/locale/lt/LC_SCRIPTS
 
 %changelog

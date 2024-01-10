@@ -421,4 +421,20 @@
     <comment></comment>
     <requestid>1083122</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>bcf765223dffbd13755071b9aedecbe8</srcmd5>
+    <version>5.15.11</version>
+    <time>1703024199</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1134012</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>3efc83ea4207c6b2d37da2c3429dd188</srcmd5>
+    <version>5.15.12</version>
+    <time>1704380260</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.12 (+ some .16), untested (forwarded request 1135706 from favogt)</comment>
+    <requestid>1136104</requestid>
+  </revision>
 </revisionlist>

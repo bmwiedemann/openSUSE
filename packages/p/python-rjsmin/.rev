@@ -79,4 +79,28 @@
     <comment></comment>
     <requestid>1094310</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>132f2277081cbe5aac2fec376183ade2</srcmd5>
+    <version>1.2.2</version>
+    <time>1704281465</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.2:
+  * Add musllinux wheels
+  * Add support for Python 3.12
+  * Update project boilerplate
+- drop reproducible.patch (upstream)
+
+- Update to version 1.2.1
+- Add check phase to spec
+- Add initial rJSmin version 1.0.12</comment>
+    <requestid>1136303</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>772fa9e07750cd7e550d0e9a35a07b00</srcmd5>
+    <version>1.2.2</version>
+    <time>1704753923</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1137482</requestid>
+  </revision>
 </revisionlist>

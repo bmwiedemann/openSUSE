@@ -578,4 +578,23 @@
   - Update master for stable/2023.1</comment>
     <requestid>1093367</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>34cabc8885ef47c931787875e432bdf6</srcmd5>
+    <version>14.5.0</version>
+    <time>1704487306</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 14.5.0
+  - Imported Translations from Zanata
+  - Bump bandit and make oslo.messaging compatible with latest rules
+  - Add some logs when sending RPC messages
+  - Set default heartbeat_rate to 3
+  - Move integration jobs to Ubuntu 22.04 (Jammy)
+  - Only allow safe context fields in notifications
+  - Deprecate the amqp1 driver and Remove qpid functional tests
+  - Update master for stable/2023.2
+  - Add is_admin to safe fields list for notifications
+  - Add Python3 antelope unit tests
+  - test py311 job</comment>
+    <requestid>1136729</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-FontTools%{psuffix}
-Version:        4.39.4
+Version:        4.47.0
 Release:        0
 Summary:        Suite of Tools and Libraries for Manipulating Fonts
 License:        MIT AND OFL-1.1
@@ -37,6 +37,7 @@ URL:            https://github.com/fonttools/fonttools
 Source:         https://github.com/fonttools/fonttools/archive/refs/tags/%{version}.tar.gz#/fonttools-%{version}.tar.gz
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -45,18 +46,21 @@ BuildRequires:  unzip
 Requires:       python-fs >= 2.2.0
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
-Recommends:     python-Brotli >= 1.0.1
-Recommends:     python-lxml >= 4.0
+Recommends:     python-Brotli >= 1.1.0
+Recommends:     python-freetype-py >= 2.4.0
+Recommends:     python-lxml >= 4.9.3
 Recommends:     python-munkres >= 1.1.4
 Recommends:     python-reportlab
-Recommends:     python-sympy
-Recommends:     python-unicodedata2 >= 14.0.0
-Recommends:     python-zopfli >= 0.1.6
+Recommends:     python-scipy >= 1.11.4
+Recommends:     python-sympy >= 1.12
+Recommends:     python-ufoLib2 >= 0.16.0
+Recommends:     python-unicodedata2 >= 15.1.0
+Recommends:     python-zopfli >= 0.2.3
 Provides:       python-fonttools = %{version}-%{release}
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module Brotli >= 1.0.1}
-BuildRequires:  %{python_module fs >= 2.2.0}
+BuildRequires:  %{python_module Brotli >= 1.1.0}
+BuildRequires:  %{python_module fs >= 2.4.16}
 BuildRequires:  %{python_module pytest}
 %endif
 %if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec 20 11:37:21 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Fix tests with python 3.11.7
+- Add patch python3117.patch (gh#candlepin/python-iniparse#29) and
+  refresh patch python311-compat.patch
+
+-------------------------------------------------------------------
 Mon Aug 14 21:46:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add python311-compat.patch to fix build with python 3.11/12 

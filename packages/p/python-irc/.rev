@@ -282,4 +282,29 @@ Dependencies:
     <comment></comment>
     <requestid>942842</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>cac8ba35259f4344ea771e67bb5113a2</srcmd5>
+    <version>20.3.1</version>
+    <time>1704659990</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 20.3.1:
+  * Added support for SASL login.
+  * Better handling of escape sequences in message tags.
+  * Require Python 3.8 or later.
+  * Pinned against jaraco.text 3.10 due to change in interface.
+  * In irc.bot, avoid hanging idle when the first
+    connection attempt fails.
+  * SingleServerIRCBot no longer accepts reconnection_interval as
+    a parameter.
+  * Added server support for NOTICE commands.
+
+- update to 20.0.0:
+  * ``SingleServerIRCBot`` no longer accepts ``reconnection_interval``
+    as a parameter.
+  * Added server support for NOTICE commands.
+  * Require Python 3.7 or later.
+
+- Update to 19.0.1</comment>
+    <requestid>1137300</requestid>
+  </revision>
 </revisionlist>

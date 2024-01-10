@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 12 12:12:12 UTC 2023 - ohering@suse.de
+
+- Use ocaml-rpm-macros to track OCaml ABI
+
+-------------------------------------------------------------------
 Thu Feb  9 14:11:01 MST 2023 - carnold@suse.com
 
 - Initial creation of the ocaml-augeas package. This code was

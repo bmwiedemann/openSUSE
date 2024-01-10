@@ -56,4 +56,17 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>993881</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>02b3fd59e057b87a0880bf14760a2235</srcmd5>
+    <version>0.5.0</version>
+    <time>1703800931</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.5.0:
+  * Add support for python 3.9
+  * Drop support for python 3.5, 3.6
+
+- Remove unneeded BuildRequires on mock.
+  * no upstream changelog</comment>
+    <requestid>1135321</requestid>
+  </revision>
 </revisionlist>

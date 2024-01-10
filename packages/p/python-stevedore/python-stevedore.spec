@@ -1,7 +1,7 @@
 #
 # spec file for package python-stevedore
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,15 +21,27 @@ Version:        5.1.0
 Release:        0
 Summary:        Manage dynamic plugins for Python applications
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/stevedore/latest/
-Source0:        https://files.pythonhosted.org/packages/source/s/stevedore/stevedore-5.1.0.tar.gz
-BuildRequires:  openstack-macros
-BuildRequires:  python3-docutils
-BuildRequires:  python3-pbr >= 2.0.0
-BuildRequires:  python3-pytest
-BuildRequires:  python3-testtools
+Source:         https://files.pythonhosted.org/packages/source/s/stevedore/stevedore-%{version}.tar.gz
+BuildRequires:  %{python_module pbr >= 2.0.0}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
+# SECTION test requirements
+BuildRequires:  %{python_module Sphinx >= 2.0.0}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module testtools}
+# /SECTION
+BuildRequires:  fdupes
+Requires:       python-importlib-metadata
+Requires:       python-pbr
+%if "%{?python_provides}" == "python3"
+Provides:       python3-stevedore = %{version}
+Obsoletes:      python3-stevedore <= %{version}
+%endif
 BuildArch:      noarch
+%python_subpackages
 
 %description
 Python makes loading code dynamically easy, allowing you to configure
@@ -42,70 +54,23 @@ for managing entry points tends to be repetitive, though, so stevedore
 provides manager classes for implementing common patterns for using
 dynamically loaded extensions.
 
-%package -n python3-stevedore
-Summary:        Manage dynamic plugins for Python applications
-Requires:       python3-importlib-metadata
-Requires:       python3-pbr >= 2.0.0
-
-%description -n python3-stevedore
-Python makes loading code dynamically easy, allowing you to configure
-and extend your application by discovering and loading extensions
-(plugins) at runtime. Many applications implement their own
-library for doing this, using ``__import__`` or ``importlib``.
-stevedore avoids creating yet another extension
-mechanism by building on top of setuptools entry points. The code
-for managing entry points tends to be repetitive, though, so stevedore
-provides manager classes for implementing common patterns for using
-dynamically loaded extensions.
-
-This package contains the Python 3.x module
-
-%package -n python-stevedore-doc
-Summary:        Documentation for %{name}
-Group:          Documentation/HTML
-BuildRequires:  python3-Sphinx
-
-%description -n python-stevedore-doc
-Python makes loading code dynamically easy, allowing you to configure
-and extend your application by discovering and loading extensions
-(plugins) at runtime. Many applications implement their own
-library for doing this, using ``__import__`` or ``importlib``.
-stevedore avoids creating yet another extension
-mechanism by building on top of setuptools entry points. The code
-for managing entry points tends to be repetitive, though, so stevedore
-provides manager classes for implementing common patterns for using
-dynamically loaded extensions.
-
-This package contains documentation in HTML format.
-
 %prep
 %autosetup -p1 -n stevedore-%{version}
-%py_req_cleanup
 
 %build
-%py3_build
-
-# generate html docs
-PBR_VERSION=5.1.0 PYTHONPATH=. %sphinx_build -b html doc/source doc/build/html
-# remove the Sphinx-build leftovers
-rm -rf doc/build/html/.{doctrees,buildinfo}
+%pyproject_wheel
 
 %install
-%py3_install
+%pyproject_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# use pytest instead of stestr to break a build cycle between python-cliff, python-stestr and python-stevedore
-# Skipping test_extension as it fails with Python 3.10 on 22/05/09
-python3 -m pytest stevedore/tests -k "not test_extension"
+%pytest
 
-%files -n python3-stevedore
+%files %{python_files}
+%doc AUTHORS ChangeLog README.rst
 %license LICENSE
-%doc README.rst
-%{python3_sitelib}/stevedore
-%{python3_sitelib}/stevedore-*.egg-info
-
-%files -n python-stevedore-doc
-%license LICENSE
-%doc doc/build/html
+%{python_sitelib}/stevedore
+%{python_sitelib}/stevedore-%{version}.dist-info
 
 %changelog

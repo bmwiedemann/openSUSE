@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2013-2022 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,14 +27,16 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-zope.hookable%{psuffix}
-Version:        5.4
+Version:        6.0
 Release:        0
 Summary:        Zope hookable
 License:        ZPL-2.1
 URL:            https://github.com/zopefoundation/zope.hookable
 Source:         https://files.pythonhosted.org/packages/source/z/zope.hookable/zope.hookable-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION documentation requirements
@@ -73,13 +75,13 @@ rm -rf zope.hookable.egg-info
 
 %build
 %if !%{with test}
-%python_build
+%pyproject_wheel
 sphinx-build -b html docs build/sphinx/html && rm -r build/sphinx/html/.{buildinfo,doctrees} build/sphinx/html/objects.inv
 %endif
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %{python_expand rm -f %{buildroot}%{$python_sitearch}/zope/hookable/_zope_hookable.c
   %fdupes %{buildroot}%{$python_sitearch}
 }

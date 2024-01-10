@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Dec 15 22:03:31 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Require extra-cmake-modules at build time
+
+Fri Dec  8 20:48:26 UTC 2023 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Update to version 0.11.0~20231201T052657:
+  * optionally maximise panel size in presence of maximised windows
+- remove -lang tarball to use po files from git instead
+- hardlink svg duplicate with fdupes
+
+-------------------------------------------------------------------
 Thu Aug 11 03:23:49 UTC 2022 - Tranter Madi <trmdi@yandex.com>
 
 -  Remove unused keyring file

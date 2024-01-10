@@ -732,4 +732,21 @@
   cause mpd to pull in ffmpeg-4 on installation.</comment>
     <requestid>1107984</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>fd8c42df1e3b7a409eecbb17ed512ce5</srcmd5>
+    <version>0.23.15</version>
+    <time>1703801047</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.23.15:
+  * ffmpeg: fix build failure with FFmpeg 6.1
+  * alsa: limit buffer time to 2 seconds
+  * flac: fix scanning files with non-ASCII names on Windows
+  * mad: fix calculation of LAME peak values
+  * wasapi: fix problem setting volume
+  * more libfmt 10 fixes
+  * fix auto-detected systemd unit directory
+- Disable libchromaprint requirement and disable feature. This would
+  cause mpd to pull in ffmpeg-4 on installation.</comment>
+    <requestid>1135538</requestid>
+  </revision>
 </revisionlist>

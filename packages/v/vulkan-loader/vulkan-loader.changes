@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan  8 12:00:30 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
+
+- Align the fallback XDG config dirs with SUSE spec in-case it
+  can't read it from the environment
+
+-------------------------------------------------------------------
 Fri Oct 27 03:50:42 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release SDK-1.3.268.0

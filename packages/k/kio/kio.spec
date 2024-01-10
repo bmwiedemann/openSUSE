@@ -16,14 +16,14 @@
 #
 
 
-%define _tar_path 5.103
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
+%define qt5_version 5.15.2
 %bcond_without released
 Name:           kio
-Version:        5.112.0
+Version:        5.113.0
 Release:        0
 Summary:        Network transparent access to files and data
 License:        LGPL-2.1-or-later
@@ -35,55 +35,54 @@ Source2:        frameworks.keyring
 %endif
 # PATCH-FIX-OPENSUSE kio_help-fallback-to-kde4-docs.patch -- allow kio_help to see into kde4 documentation, needed especially for khelpcenter5
 Patch0:         kio_help-fallback-to-kde4-docs.patch
-BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
+BuildRequires:  extra-cmake-modules >= %{_kf5_version}
 BuildRequires:  fdupes
 # gcc7 is too old for std::transform_reduce
 %if 0%{?suse_version} == 1500
 BuildRequires:  gcc10-c++
 BuildRequires:  gcc10-PIE
 %endif
-BuildRequires:  kf5-filesystem
 BuildRequires:  krb5-devel
 BuildRequires:  libacl-devel
 BuildRequires:  libattr-devel
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(KF5Archive) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5Bookmarks) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5Completion) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5Config) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5ConfigWidgets) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5CoreAddons) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5Crash) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5DBusAddons) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5DocTools) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5GuiAddons) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5I18n) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5IconThemes) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5ItemViews) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5JobWidgets) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5Notifications) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5Service) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5Solid) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5TextWidgets) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5Wallet) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5WidgetsAddons) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5WindowSystem) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5XmlGui) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(Qt5Concurrent) >= 5.15.0
-BuildRequires:  cmake(Qt5Core) >= 5.15.0
-BuildRequires:  cmake(Qt5DBus) >= 5.15.0
-BuildRequires:  cmake(Qt5Network) >= 5.15.0
-BuildRequires:  cmake(Qt5Qml) >= 5.15.0
-BuildRequires:  cmake(Qt5Test) >= 5.15.0
-BuildRequires:  cmake(Qt5UiPlugin) >= 5.15.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.15.0
-BuildRequires:  cmake(Qt5X11Extras) >= 5.15.0
-BuildRequires:  cmake(Qt5Xml) >= 5.15.0
+BuildRequires:  cmake(KF5Archive) >= %{_kf5_version}
+BuildRequires:  cmake(KF5Bookmarks) >= %{_kf5_version}
+BuildRequires:  cmake(KF5Completion) >= %{_kf5_version}
+BuildRequires:  cmake(KF5Config) >= %{_kf5_version}
+BuildRequires:  cmake(KF5ConfigWidgets) >= %{_kf5_version}
+BuildRequires:  cmake(KF5CoreAddons) >= %{_kf5_version}
+BuildRequires:  cmake(KF5Crash) >= %{_kf5_version}
+BuildRequires:  cmake(KF5DBusAddons) >= %{_kf5_version}
+BuildRequires:  cmake(KF5DocTools) >= %{_kf5_version}
+BuildRequires:  cmake(KF5GuiAddons) >= %{_kf5_version}
+BuildRequires:  cmake(KF5I18n) >= %{_kf5_version}
+BuildRequires:  cmake(KF5IconThemes) >= %{_kf5_version}
+BuildRequires:  cmake(KF5ItemViews) >= %{_kf5_version}
+BuildRequires:  cmake(KF5JobWidgets) >= %{_kf5_version}
+BuildRequires:  cmake(KF5Notifications) >= %{_kf5_version}
+BuildRequires:  cmake(KF5Service) >= %{_kf5_version}
+BuildRequires:  cmake(KF5Solid) >= %{_kf5_version}
+BuildRequires:  cmake(KF5TextWidgets) >= %{_kf5_version}
+BuildRequires:  cmake(KF5Wallet) >= %{_kf5_version}
+BuildRequires:  cmake(KF5WidgetsAddons) >= %{_kf5_version}
+BuildRequires:  cmake(KF5WindowSystem) >= %{_kf5_version}
+BuildRequires:  cmake(KF5XmlGui) >= %{_kf5_version}
+BuildRequires:  cmake(Qt5Concurrent) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Core) >= %{qt5_version}
+BuildRequires:  cmake(Qt5DBus) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Network) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Qml) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Test) >= %{qt5_version}
+BuildRequires:  cmake(Qt5UiPlugin) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Widgets) >= %{qt5_version}
+BuildRequires:  cmake(Qt5X11Extras) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Xml) >= %{qt5_version}
 BuildRequires:  pkgconfig(mount)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(x11)
 Requires:       %{name}-core = %{version}
-Requires:       kded >= %{_kf5_bugfix_version}
+Requires:       kded >= %{_kf5_version}
 # KIO/FileDialog uses klauncher directly, but we can't add Requires, as that would introduce dep cycle
 Recommends:     kinit
 # Only useful for laptops with hybrid GPU
@@ -109,20 +108,19 @@ KIO core libraries, ioslave and daemons.
 Summary:        Network transparent access to files and data
 Requires:       %{name} = %{version}
 Requires:       %{name}-core = %{version}
-Requires:       extra-cmake-modules
-Requires:       cmake(KF5Bookmarks) >= %{_kf5_bugfix_version}
-Requires:       cmake(KF5Completion) >= %{_kf5_bugfix_version}
-Requires:       cmake(KF5Config) >= %{_kf5_bugfix_version}
-Requires:       cmake(KF5CoreAddons) >= %{_kf5_bugfix_version}
-Requires:       cmake(KF5ItemViews) >= %{_kf5_bugfix_version}
-Requires:       cmake(KF5JobWidgets) >= %{_kf5_bugfix_version}
-Requires:       cmake(KF5Service) >= %{_kf5_bugfix_version}
-Requires:       cmake(KF5Solid) >= %{_kf5_bugfix_version}
-Requires:       cmake(KF5WindowSystem) >= %{_kf5_bugfix_version}
-Requires:       cmake(KF5XmlGui) >= %{_kf5_bugfix_version}
-Requires:       cmake(Qt5Concurrent) >= 5.15.0
-Requires:       cmake(Qt5DBus) >= 5.15.0
-Requires:       cmake(Qt5Network) >= 5.15.0
+Requires:       cmake(KF5Bookmarks) >= %{_kf5_version}
+Requires:       cmake(KF5Completion) >= %{_kf5_version}
+Requires:       cmake(KF5Config) >= %{_kf5_version}
+Requires:       cmake(KF5CoreAddons) >= %{_kf5_version}
+Requires:       cmake(KF5ItemViews) >= %{_kf5_version}
+Requires:       cmake(KF5JobWidgets) >= %{_kf5_version}
+Requires:       cmake(KF5Service) >= %{_kf5_version}
+Requires:       cmake(KF5Solid) >= %{_kf5_version}
+Requires:       cmake(KF5WindowSystem) >= %{_kf5_version}
+Requires:       cmake(KF5XmlGui) >= %{_kf5_version}
+Requires:       cmake(Qt5Concurrent) >= %{qt5_version}
+Requires:       cmake(Qt5DBus) >= %{qt5_version}
+Requires:       cmake(Qt5Network) >= %{qt5_version}
 
 %description devel
 This framework implements almost all the file management functions you

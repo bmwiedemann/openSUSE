@@ -1,4 +1,106 @@
 -------------------------------------------------------------------
+Thu Dec 14 00:25:16 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 6.10.0+git20231213.c680f331:
+  * add doc note re snag found on last commit
+  * update go 1.18 -> 1.19 in more spots
+  * update path in create_release_tarball
+  * miller 6.10.0 (#1442)
+  * neaten
+  * Update to Go 1.19 (#1441)
+  * Bump actions/setup-go from 4.1.0 to 5.0.0 (#1436)
+  * Absent variable on left side of boolean OR (`||`) expression makes it absent (#1434)
+  * Bump golang.org/x/term from 0.14.0 to 0.15.0 (#1432)
+  * Fix ragged-CSV auto-pad (#1428)
+  * Add a `--files` option (#1426)
+  * JSONL output does not properly handle keys with quotes (#1425)
+
+-------------------------------------------------------------------
+Wed Nov 08 18:20:32 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 6.9.0+git20231108.f2a9ae5c:
+  * Bump golang.org/x/term from 0.13.0 to 0.14.0 (#1423)
+  * Bump golang.org/x/sys from 0.13.0 to 0.14.0 (#1420)
+  * Bump golang.org/x/text from 0.13.0 to 0.14.0 (#1419)
+  * transformers/grep: avoid allocations with `(*regexp.Regexp).MatchString` (#1416)
+  * neaten README.md
+  * add `winget` to README (#1414)
+  * Bump actions/checkout from 4.1.0 to 4.1.1 (#1412)
+  * Bump github.com/mattn/go-isatty from 0.0.19 to 0.0.20 (#1411)
+  * Bump golang.org/x/term from 0.12.0 to 0.13.0 (#1404)
+  * Bump actions/checkout from 4.0.0 to 4.1.0 (#1400)
+  * Bump goreleaser/goreleaser-action from 4.6.0 to 5.0.0 (#1396)
+  * Include `null` in `any` typemask (#1395)
+  * Name-neaten for #1392 (#1393)
+  * Better API example (#1392)
+  * doc tweaks
+  * Export library code in `pkg/` (#1391)
+  * Bump actions/cache from 3.3.1 to 3.3.2 (#1390)
+  * Bump actions/upload-artifact from 3.1.2 to 3.1.3 (#1387)
+  * Bump goreleaser/goreleaser-action from 4.4.0 to 4.6.0 (#1385)
+  * Bump actions/checkout from 3.6.0 to 4.0.0 (#1383)
+  * Bump golang.org/x/term from 0.11.0 to 0.12.0 (#1380)
+  * Bump golang.org/x/sys from 0.11.0 to 0.12.0 (#1381)
+  * Bump golang.org/x/text from 0.12.0 to 0.13.0 (#1382)
+  * `macos` -> `darwin` in `.goreleaser.yml` (#1377)
+  * Remove `replacements` from `.goreleaser.yaml` (#1376)
+
+-------------------------------------------------------------------
+Thu Aug 31 13:34:50 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 6.9.0+git20230831.acc10cdc:
+  * miller 6.9.0
+  * Fatal-on-data-error `mlr -x` option (#1373)
+  * Typofix in `uif`/`uof` percentiles (#1375)
+  * docmods for typofix
+  * typofix
+  * New `contains` DSL function (#1374)
+  * Update 2015-era Python sketch to Python 3 (#1372)
+  * Treat empty like absent in `+` `-` `*` (#1371)
+  * typofix
+  * Summing up empty data (#1370)
+  * doc-neaten
+  * make dev
+  * typofix
+  * more doc-neatens for percentiles on-line help
+  * neaten online help for the percentiles function
+  * typofixes
+  * DSL functions for summary stats over arrays / maps (#1364)
+  * Bump actions/checkout from 3.5.3 to 3.6.0 (#1369)
+  * make-dev artifacts from previous commit
+  * 1366 follow-up
+  * filename options for `split` (iss. #1365) (#1366)
+  * Remove redundant nil check (#1367)
+  * fix codespell ci
+  * fix some broken links in README-dev.md
+  * Can't use ${field_name} if it contains UTF-8 characters also encodeable as Latin-1 (#1363)
+  * Do wildcard globbing on Windows (#1362)
+  * `sub`, `gsub`, and `ssub` verbs (#1361)
+  * Support ZSTD compression in-process (#1360)
+  * Support comments in `mlr -s` files (#1359)
+  * Bump golang.org/x/term from 0.10.0 to 0.11.0 (#1348)
+  * Bump goreleaser/goreleaser-action from 4.3.0 to 4.4.0 (#1354)
+  * Small typos in documentation of `mlr nest` (#1352)
+  * Bump actions/setup-go from 4.0.1 to 4.1.0 (#1351)
+  * Bump golang.org/x/text from 0.11.0 to 0.12.0 (#1349)
+  * Bump golang.org/x/sys from 0.10.0 to 0.11.0 (#1347)
+  * Update Fedora link (#1339)
+  * Bump golang.org/x/term from 0.9.0 to 0.10.0 (#1338)
+  * Bump golang.org/x/sys from 0.9.0 to 0.10.0 (#1336)
+  * Bump golang.org/x/text from 0.10.0 to 0.11.0 (#1337)
+  * Add `%s` format specifier for `strftime` (#1335)
+  * Add `%N` and `%O` for `strfntime` (#1334)
+  * Add empty-key check to `mlr check` (#1330)
+  * todo
+  * Add DSL functions for integer nanoseconds since the epoch (#1326)
+  * Bump golang.org/x/text from 0.9.0 to 0.10.0 (#1322)
+  * Bump goreleaser/goreleaser-action from 4.2.0 to 4.3.0 (#1320)
+  * Bump golang.org/x/term from 0.8.0 to 0.9.0 (#1321)
+  * Bump github/codeql-action from 2.3.6 to 2.13.4 (#1318)
+  * Bump actions/checkout from 3.5.2 to 3.5.3 (#1319)
+  * Fix `mlr grep` docs re OFS/OPS (#1309)
+
+-------------------------------------------------------------------
 Mon Jun 05 15:07:25 UTC 2023 - scott.bradnick@suse.com
 
 - Update to version 6.8.0+git20230604.4050f566:

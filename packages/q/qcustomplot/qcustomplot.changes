@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jan  4 14:43:01 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Re-download QCustomPlot-sharedlib.tar.gz and QCustomPlot.tar.gz
+  based on the fixed download URL.
+- Rebase relwithdebug.patch to apply against the new tarball (CRLF
+  line endings).
+
+-------------------------------------------------------------------
+Thu Dec 21 14:33:19 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
+
+- Fix invalid download url.
+
+-------------------------------------------------------------------
 Wed Mar  1 10:58:39 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Add missing requirement to qcustomplot-devel

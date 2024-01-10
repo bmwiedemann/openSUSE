@@ -1707,4 +1707,12 @@ So all in all: this fixes the build failures for openSUSE Tumblewee (forwarded r
     <comment></comment>
     <requestid>1129646</requestid>
   </revision>
+  <revision rev="169" vrev="5">
+    <srcmd5>07fb4477886282f5901f33340e84f552</srcmd5>
+    <version>9.3p2</version>
+    <time>1703024140</time>
+    <user>anag+factory</user>
+    <comment>Added openssh-cve-2023-48795.patch (forwarded request 1133932 from hpjansson)</comment>
+    <requestid>1133933</requestid>
+  </revision>
 </revisionlist>

@@ -38,6 +38,7 @@ BuildRequires:  flac-devel
 BuildRequires:  gcc10-c++
 BuildRequires:  gcc10-PIE
 %endif
+BuildRequires:  extra-cmake-modules
 BuildRequires:  gperf
 BuildRequires:  kdsoap-devel
 BuildRequires:  kf5-filesystem

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec 14 13:24:11 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * fips.patch
+    + use the system crypto-policies provided configuration file
+      by default (bsc#1218061)
+
+-------------------------------------------------------------------
 Fri Oct 27 05:18:42 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Set priority and make it the preferred JDK

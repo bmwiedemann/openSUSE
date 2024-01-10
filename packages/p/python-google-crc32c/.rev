@@ -42,4 +42,12 @@
     <comment></comment>
     <requestid>1001656</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>5a875141fd136eeaa245cd1915bbaf38</srcmd5>
+    <version>1.5.0</version>
+    <time>1702845139</time>
+    <user>anag+factory</user>
+    <comment>- use modern python stack for sle15</comment>
+    <requestid>1133641</requestid>
+  </revision>
 </revisionlist>

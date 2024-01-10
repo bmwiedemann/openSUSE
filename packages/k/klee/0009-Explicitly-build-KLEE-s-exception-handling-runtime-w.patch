@@ -1,0 +1,29 @@
+From: Martin Nowack <m.nowack@imperial.ac.uk>
+Date: Mon, 30 Oct 2023 12:03:22 +0000
+Subject: Explicitly build KLEE's exception handling runtime with C++11
+Patch-mainline: no
+References: llvm16
+
+Currently, we assume C++11 support being used to by the tested software.
+This needs to change if newer C++ standards should be supported.
+
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ runtime/klee-eh-cxx/CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/runtime/klee-eh-cxx/CMakeLists.txt b/runtime/klee-eh-cxx/CMakeLists.txt
+index 470e3f0a..b51b8544 100644
+--- a/runtime/klee-eh-cxx/CMakeLists.txt
++++ b/runtime/klee-eh-cxx/CMakeLists.txt
+@@ -17,6 +17,7 @@ set(ADDITIONAL_CXX_FLAGS
+         -I "${KLEE_LIBCXXABI_SRC_DIR}/src"
+         -I "${KLEE_LIBCXXABI_SRC_DIR}/include"
+         -I "${KLEE_LIBCXX_INCLUDE_PATH}"
++        -std=c++11
+ )
+ 
+ if (KLEE_LIBCXX_PLATFORM_INCLUDE_PATH)
+-- 
+2.43.0
+

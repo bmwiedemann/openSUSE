@@ -492,4 +492,34 @@ python-logilab-common is in openSUSE:Factory so this builds now.</comment>
     <comment></comment>
     <requestid>1118346</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>06bd87ad0f6707622241a5064fcc41a4</srcmd5>
+    <version>3.0.2</version>
+    <time>1703800472</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.0.2:
+  * Avoid duplicate inference results for some uses of
+    ``typing.X`` constructs like ``Tuple[Optional[int], ...]``.
+    This was causing pylint to occasionally omit messages like
+    ``deprecated-typing-alias``.
+
+- Correct Requires for typing_extensions.
+- Update to 2.12.13:
+- Update to 2.12.12:
+    set to None.
+  Closes #1755
+    FunctionDef parent but are now correctly parented to their
+- Drop part_rm_dep_imp.patch fixed upstream
+  * Properly construct the arguments of infered property descriptors
+  * Properly analyze CFFI compiled extensions.
+    * brain plugins can now register hooks to handle failed imports,
+    * Fix names grabed using wildcard import in &quot;absolute import mode&quot;
+      (ie with absolute_import activated from the __future__ or with
+    * fix #20760: crash on pyreverse : AttributeError: 'Subscript'
+    by Dave Borowitz
+  * new InstanceMethod node introduced to wrap bound method (eg
+  * compatibility with python2.3 and logilab-common 0.21
+  * .locals and .globals on scoped node handle now a list of</comment>
+    <requestid>1135253</requestid>
+  </revision>
 </revisionlist>

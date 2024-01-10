@@ -1,9 +1,9 @@
 <services>
-  <service name="download_files" mode="disabled"/>
-  <service name="cargo_vendor" mode="disabled">
-    <param name="srcdir">nh3-0.2.13</param>
+  <service name="download_files" mode="manual"/>
+  <service name="cargo_vendor" mode="manual">
+    <param name="srcdir">nh3-0.2.15</param>
     <param name="compression">zst</param>
   </service>
-  <service name="cargo_audit" mode="disabled">
+  <service name="cargo_audit" mode="manual">
   </service>
 </services>

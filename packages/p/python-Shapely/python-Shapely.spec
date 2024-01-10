@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-Shapely
 Version:        2.0.2
 Release:        0
@@ -31,7 +32,11 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 # SECTION test
 BuildRequires:  %{python_module pytest}
+# Don't test with matplotlib until 15.x has python311-matplotlib.
+# (It's currently in devel:languages:python:backports but not in the Leap :Update repositories)
+%if 0%{?suse_version} > 1500
 BuildRequires:  %{python_module matplotlib}
+%endif
 # /SECTION
 BuildRequires:  fdupes
 BuildRequires:  geos-devel >= 3.5

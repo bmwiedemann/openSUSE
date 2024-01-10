@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan  6 14:36:30 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix compatibility with SoQt 1.6.2/Coin3D 4.0.2
+
+-------------------------------------------------------------------
 Wed Jan  4 19:56:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.6.8:

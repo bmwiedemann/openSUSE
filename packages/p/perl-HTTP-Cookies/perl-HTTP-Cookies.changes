@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Dec  8 03:07:00 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.11
+   see /usr/share/doc/packages/perl-HTTP-Cookies/Changes
+
+  6.11      2023-12-07 16:36:52Z
+      - Replace "Test" with "Test::More" (GH#70) (James Raspass)
+
+-------------------------------------------------------------------
 Tue Jan  5 03:07:23 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.10

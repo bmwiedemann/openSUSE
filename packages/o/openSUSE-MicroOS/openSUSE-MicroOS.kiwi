@@ -697,6 +697,8 @@
         <package name="growpart-generator"/>
         <package name="sdbootutil-snapper"/>
         <package name="sdbootutil-rpm-scriptlets"/>
+        <package name="disk-encryption-tool"/>
+        <package name="dracut-pcr-signature"/>
         <package name="shim"/>
         <package name="efibootmgr"/>
         <package name="uefi_mbr" arch="x86_64"/>

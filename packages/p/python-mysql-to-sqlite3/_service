@@ -1,13 +1,13 @@
 <services>
-  <service mode="disabled" name="obs_scm">
-    <param name="url">git://github.com/techouse/mysql-to-sqlite3.git</param>
+  <service mode="manual" name="obs_scm">
+    <param name="url">https://github.com/techouse/mysql-to-sqlite3.git</param>
     <param name="scm">git</param>
-<!--
-    <param name="revision">release30</param>
--->
-    <param name="versionformat">v1.4.3</param>
+    <param name="revision">v2.1.6</param>
+    <param name="versionformat">v2.1.6</param>
+    <param name="changesgenerate">enable</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
   </service>
-  <service mode="disabled" name="set_version"/>
+  <service mode="manual" name="set_version"/>
   <service mode="buildtime" name="tar"/>
   <service mode="buildtime" name="recompress">
     <param name="compression">gz</param>

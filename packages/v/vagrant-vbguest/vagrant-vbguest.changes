@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec 19 23:12:08 UTC 2023 - Илья Индиго <ilya@ilya.cf>
+
+- Updated to 0.32.0.
+  * Fixed testing for running GuestAdditions on Linux,
+    when reading /proc/modules returns in multiple chunks.
+  * Don't unmount the GuestAdditions iso when it's not mounted.
+    Ignore errors during un-mounting.
+
+-------------------------------------------------------------------
 Tue Feb 21 11:28:48 UTC 2023 - Илья Индиго <ilya@ilya.cf>
 
 - Added %global macros for correctly determine the version of ruby.

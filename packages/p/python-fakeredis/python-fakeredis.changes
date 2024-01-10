@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 18 09:28:02 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.20.1:
+  * Fix `XREAD` bug #256
+  * Testing for python 3.12
+
+-------------------------------------------------------------------
 Mon Dec  4 21:41:12 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.20.0:

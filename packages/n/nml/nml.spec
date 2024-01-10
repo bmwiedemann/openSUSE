@@ -24,6 +24,7 @@ License:        GPL-2.0-or-later
 Group:          Development/Tools/Building
 URL:            http://dev.openttdcoop.org/projects/nml
 Source:         https://github.com/OpenTTD/nml/releases/download/%{version}/%{name}-%{version}.tar.gz
+Patch0:         reproducible.patch
 BuildRequires:  gcc
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
@@ -40,6 +41,7 @@ A tool to compile nml files to grf or nfo files, making newgrf coding easier.
 
 %prep
 %setup -q -n %{name}-%{version}
+%patch0 -p1
 
 %build
 make

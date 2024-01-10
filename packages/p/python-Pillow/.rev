@@ -674,4 +674,41 @@ This should fix the problems reported with the previous openSUSE:Factory submiss
     <comment>Add link to cve in changelog: (bsc#1216894, CVE-2023-44271)</comment>
     <requestid>1125429</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>81461eef3532be5c7b75ada6cb45ed6b</srcmd5>
+    <version>10.1.0</version>
+    <time>1703527460</time>
+    <user>anag+factory</user>
+    <comment>- update to 10.1.0:
+  * Added TrueType default font to allow for different sizes
+  * Fixed invalid argument warning #7442
+  * Added ImageOps cover method #7412
+  * Catch struct.error from truncated EXIF when reading JPEG DPI
+  * Consider default image when selecting mode for PNG save_all
+  * Support BGR;15, BGR;16 and BGR;24 access, unpacking and
+    putdata #7303
+  * Added CMYK to RGB unpacker #7310
+  * Improved flexibility of XMP parsing #7274
+  * Support reading 8-bit YCbCr TIFF images #7415
+  * Allow saving I;16B images as PNG #7302
+  * Corrected drawing I;16 points and writing I;16 text #7257
+  * Set blue channel to 128 for BC5S #7413
+  * Increase flexibility when reading IPTC fields #7319
+  * Set C palette to be empty by default #7289
+  * Added gs_binary to control Ghostscript use on all platforms
+  * Read bounding box information from the trailer of EPS files
+    if specified #7382
+  * Added reading 8-bit color DDS images #7426
+  * Added has_transparency_data #7420
+  * Fixed bug when reading BC5S DDS images #7401
+  * Prevent TIFF orientation from being applied more than once
+  * Use previous pixel alpha for QOI_OP_RGB #7357
+  * Added BC5U reading #7358
+  * Allow getpixel() to accept a list #7355
+  * Allow GaussianBlur and BoxBlur to accept a sequence of x and
+    y radii #7336
+  * Expand JPEG buffer size when saving optimized or progressive
+  * Added session type check for Linux in</comment>
+    <requestid>1129060</requestid>
+  </revision>
 </revisionlist>

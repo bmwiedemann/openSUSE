@@ -265,4 +265,24 @@
     <comment></comment>
     <requestid>1131630</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>2cdf861acb2d86e2e78cbc0949e395a3</srcmd5>
+    <version>2.15.0</version>
+    <time>1702845144</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.15.0:
+  * Add support for Python 3.12
+  * Add type annotations to wrapped grpc calls
+  * Add universe_domain argument to ClientOptions
+  * Introduce compatibility with native namespace packages
+  * Fix regression in `bidi` causing `Thread-
+    ConsumeBidirectionalStream caught unexpected exception  and
+    will exit` (#562)
+  * Replace deprecated `datetime.datetime.utcnow()`
+
+- To avoid a build cycle, switch to multibuild.
+  * Update intersphinx mapping for requests.
+  * Update pins of ‘googleapis-common-protos.</comment>
+    <requestid>1133662</requestid>
+  </revision>
 </revisionlist>

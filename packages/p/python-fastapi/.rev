@@ -308,4 +308,26 @@
 - Update to version 0.96.0:</comment>
     <requestid>1124010</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>e0b1b8b0baae82aa82fcb5819e795702</srcmd5>
+    <version>0.105.0</version>
+    <time>1702673207</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.105.0:
+  * Add support for multiple Annotated annotations, e.g.
+    `Annotated[str, Field(), Query()]`.
+  * Remove unused NoneType.
+  * Tweak default suggested configs for generating clients.</comment>
+    <requestid>1133051</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>d5246a107f487cb835122dc26a58f667</srcmd5>
+    <version>0.108.0</version>
+    <time>1703800473</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.108.0:
+  * Upgrade Starlette to `&gt;=0.29.0,&lt;0.33.0`, update docs and
+    usage of templates with new Starlette arguments.</comment>
+    <requestid>1135254</requestid>
+  </revision>
 </revisionlist>

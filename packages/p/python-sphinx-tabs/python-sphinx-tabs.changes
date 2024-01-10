@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jan  3 10:24:00 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- require setuptools
+
+-------------------------------------------------------------------
+Thu Dec 21 06:24:22 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.4.4:
+  * Added
+    + Testing for Python 3.11 and 3.12
+  * Removed
+    + Dependency on unsupported sphinx_testing package
+  * Fixed
+    + tests for sphinx 7.2
+    + slice assignment in update_context(), which was removing JS scripts
+      from other sphinx extensions/themes on pages where tabs were not used
+- Drop patches sphinx71.patch and sphinx72.patch, included upstream.
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Mon Oct  9 14:41:57 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Fix build error: patch defined multible times.
@@ -28,4 +48,4 @@ Wed Nov 17 11:03:54 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
 -------------------------------------------------------------------
 Tue Jun 29 09:47:05 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- Initial package 
+- Initial package

@@ -1,7 +1,7 @@
 #
 # spec file for package talosctl
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           talosctl
-Version:        1.5.5
+Version:        1.6.1
 Release:        0
 Summary:        CLI to interact with Talos Linux
 License:        MPL-2.0

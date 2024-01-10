@@ -663,4 +663,16 @@ Show aggregation and make compatible with Fedora declaration (forwarded request 
   without -u (bsc#1215720, bsc#1216355)</comment>
     <requestid>1119163</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>eb8f90104c4cf804e4693356ee998ab8</srcmd5>
+    <version>1.48+6.7f43e14</version>
+    <time>1704829713</time>
+    <user>anag+factory</user>
+    <comment>- Upstream bug fixes for sg3_utils 1.48 (bsc#1218591)
+  * sg_turs: fix missing CDB on several codepaths
+  * sg_dd: fix bug that identified all block devices as NVME
+  * rescan-scsi-bus.sh: avoid root FS going read-only with
+    &quot;rescan-scsi-bus.sh -r&quot; (gh#doug-gilbert/sg3_utils#46)</comment>
+    <requestid>1137516</requestid>
+  </revision>
 </revisionlist>

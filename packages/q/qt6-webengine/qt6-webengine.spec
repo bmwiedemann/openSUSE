@@ -1,5 +1,5 @@
 #
-# spec file for package qt6-webengine
+# spec file
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -45,6 +45,8 @@ URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-webengine-rpmlintrc
 # Patches 0-100 are upstream patches #
+# PATCH-FIX-UPSTREAM https://codereview.qt-project.org/c/qt/qtwebengine/+/526880
+Patch0:         0001-Fix-race-condition-generating-docs.patch
 # Patches 100-200 are openSUSE and/or non-upstream(able) patches #
 Patch100:       rtc-dont-use-h264.patch
 #
@@ -129,10 +131,15 @@ BuildRequires:  pkgconfig(libva)
 BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libxslt)
+BuildRequires:  pkgconfig(minizip)
 BuildRequires:  pkgconfig(nss) >= 3.26
 BuildRequires:  pkgconfig(opus) >= 1.3.1
 BuildRequires:  pkgconfig(poppler-cpp)
+%if 0%{?suse_version} <= 1500
+BuildRequires:  pkgconfig(re2) < 11
+%else
 BuildRequires:  pkgconfig(re2)
+%endif
 BuildRequires:  pkgconfig(vpx) >= 1.10.0
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcomposite)
@@ -149,7 +156,6 @@ BuildRequires:  pkgconfig(xshmfence)
 BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(xtst)
 BuildRequires:  pkgconfig(zlib)
-BuildRequires:  pkgconfig(minizip)
 # Picked from chromium.spec
 BuildRequires:  (python3 >= 3.7 or python3-dataclasses)
 %if "%{qt6_flavor}" == "docs"

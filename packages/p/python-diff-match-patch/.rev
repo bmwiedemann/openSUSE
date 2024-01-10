@@ -15,4 +15,19 @@
     <comment></comment>
     <requestid>828009</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cec96debaeca328f89a3e26bdce09b63</srcmd5>
+    <version>20230430</version>
+    <time>1703102531</time>
+    <user>anag+factory</user>
+    <comment>- Update to 20230430:
+  * Replaced deprecated `imp` usage with `importlib` (#7)
+  * Migrated to PEP 621 metadata, flit
+  * Reformated with updated black/µsort/µfmt
+  * Tested on Python 3.7 - 3.11
+  * Dropped support for Python 2.7, 3.5, and 3.6
+- Switch to pyproject, autosetup and pyunittest macros.
+- Stop using greedy globs in %files.</comment>
+    <requestid>1134117</requestid>
+  </revision>
 </revisionlist>

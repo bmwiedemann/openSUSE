@@ -1837,4 +1837,20 @@ Use capabilities for capture. bsc#957624</comment>
     <comment></comment>
     <requestid>1129844</requestid>
   </revision>
+  <revision rev="214" vrev="1">
+    <srcmd5>6d697ac4e93e526e9603be6d3fd1344c</srcmd5>
+    <version>4.2.1</version>
+    <time>1704380150</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1136703</requestid>
+  </revision>
+  <revision rev="215" vrev="1">
+    <srcmd5>9035df6f5263a833e4ef0b28dc92ad25</srcmd5>
+    <version>4.2.2</version>
+    <time>1704487266</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1136995</requestid>
+  </revision>
 </revisionlist>

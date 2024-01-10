@@ -25,7 +25,7 @@
 %{!?_distconfdir:%global _distconfdir /etc}
 
 Name:           perl-Bootloader
-Version:        1.8
+Version:        1.10
 Release:        0
 Requires:       coreutils
 Requires:       perl-base = %{perl_version}

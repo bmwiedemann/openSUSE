@@ -26,19 +26,18 @@
 %define oldpython python
 %{?sle15_python_module_pythons}
 Name:           python-Babel
-Version:        2.12.1
+Version:        2.14.0
 Release:        0
 Summary:        Internationalization utilities
 License:        BSD-3-Clause
-URL:            http://babel.pocoo.org/
+URL:            https://babel.pocoo.org/
 Source:         https://files.pythonhosted.org/packages/source/B/Babel/Babel-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM: fix-tests.patch, gh#python-babel/babel#998
-Patch0:         fix-tests.patch
 BuildRequires:  %{python_module freezegun}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module py >= 1.4.14}
 BuildRequires:  %{python_module pytest >= 2.3.5}
 BuildRequires:  %{python_module pytz >= 2015.7}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
 Requires:       python-pytz >= 2015.7
@@ -67,10 +66,10 @@ A collection of tools for internationalizing Python applications.
 %autosetup -p1 -n Babel-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/pybabel
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -95,6 +94,6 @@ A collection of tools for internationalizing Python applications.
 %doc CHANGES.rst
 %python_alternative %{_bindir}/pybabel
 %{python_sitelib}/babel
-%{python_sitelib}/Babel-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/Babel-%{version}.dist-info
 
 %changelog

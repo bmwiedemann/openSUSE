@@ -725,4 +725,41 @@
     <comment></comment>
     <requestid>1110444</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>bff580913d0fc21c510ba0181a7d5282</srcmd5>
+    <version>2.5.2</version>
+    <time>1704289984</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.5.2:
+  * Added a gamepad mapping for the G-Shark GS-GP702
+  * Fixed touchpad events for the Razer Wolverine V2 Pro in PS5
+    mode
+  * Fix white bar in docs
+  * manylinux: Fix sdl version typo
+  * include: rect: C API docs for Rect
+  * draw: Fix arc width &gt; 1 so it doesn't have gaps
+  * setup: tox: Add 31 and 32 to list of pythons
+  * docs: c_api/rect: Fix return code for pgRect_Check
+  * setup: src_c: Require Cython to generate source files in dev
+  * Added import information in camera and sdl2 controller
+    modules docs
+  * Fix: Grammatical Error in MoveIt.rst
+  * examples: Fix music_drop_fade with type checker
+  * stubs: Add pygame.__version__ to type stubs
+  * gitignore: Add cython generated files to ignore list
+  * examples/midi: Refactor to fix typing issues
+  * display set_mode: Remove SDL_WINDOW_FULLSCREEN_DESKTOP
+  * buildconfig/manylinux: Bump SDL 2.28.3
+  * docs: Fix READMEs with a good Sphinx version
+- update to 2.5.1:
+  * Fixed crash at shutdown when using the D3D11 renderer
+  * Fixed setting the viewport when using the D3D12 renderer
+  * Fixed 8BitDo gamepad mapping when in XInput mode on Linux
+  * Fixed controller lockup initializing some unofficial PS4
+    replica controllers
+  * Fixed video initialization on headless Linux systems using
+    VNC
+  * Fixed large mouse jump when changing relative mouse mode on</comment>
+    <requestid>1136480</requestid>
+  </revision>
 </revisionlist>

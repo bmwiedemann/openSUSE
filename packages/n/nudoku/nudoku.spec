@@ -1,7 +1,7 @@
 #
 # spec file for package nudoku
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           nudoku
-Version:        2.1.0
+Version:        3.0.0
 Release:        0
 Summary:        Ncurses based sudoku game
 License:        GPL-3.0-only
@@ -42,7 +42,7 @@ nudoku is a ncurses based sudoku game.
 %build
 autoreconf -fi
 %configure --enable-cairo
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install

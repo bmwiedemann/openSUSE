@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Dec 27 13:59:12 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.20.8:
+  * Detect brotli import error (#543)
+  * refactor: hardening SevenZipFile constructor (#547)
+  * refactor: improve type safe functions (#545)
+
+-------------------------------------------------------------------
+Fri Dec 15 06:16:51 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- update to 0.20.7:
+    * Support Python 3.12
+- update to 0.20.6
+    * fix: sanitize path when write (#525)
+    * fix: allow specify target path in relative path (#530)
+    * Avoid AttributeError on OpenBSD (#521)
+    * Error appending file: KeyError: 'lastwritetime' (#517)
+    * Fixing a string quote in user_guide document(#524)
+
+-------------------------------------------------------------------
 Wed Jun 21 11:10:29 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

@@ -1,4 +1,94 @@
 -------------------------------------------------------------------
+Wed Dec 13 11:33:41 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.11.0:
+  * Allow deleting remotely deleted files locally in case of
+    upload errors (gh#nextcloud/desktop#6014).
+  * Bugfix/lock state spam (gh#nextcloud/desktop#6022).
+  * Remove locketimeout condition (gh#nextcloud/desktop#6027).
+  * fixed detection of server version in cmd client similar to gui
+    client (2nd try, signed off) (gh#nextcloud/desktop#6023).
+  * Add compatibility with the new libcloudproviders integration
+    (gh#nextcloud/desktop#6031).
+  * Store the new etag into local database when opening with
+    auto-locking… (gh#nextcloud/desktop#6038).
+  * Fix visual bug with folder size confirmation combo box in
+    general settings (gh#nextcloud/desktop#6035).
+  * Display correct conflict part in multiple conflicts resolution
+    dialog (gh#nextcloud/desktop#6043).
+  * Rewrite share expiration date field's date handling, fixing
+    issues (gh#nextcloud/desktop#5961).
+  * Use a standardised locale to create log file filenames
+    (gh#nextcloud/desktop#6012).
+  * Bugfix/multiple accounts migration
+    (gh#nextcloud/desktop#6046).
+  * Remove unused shareuserline ui component
+    (gh#nextcloud/desktop#6042).
+  * once we call done on a sync file item, return is needed
+    (gh#nextcloud/desktop#6053).
+  * Bugfix/infinite sync (gh#nextcloud/desktop#6056).
+  * do not check every 5 seconds files with infinite timeout (= 0)
+    (gh#nextcloud/desktop#6059).
+  * FileProvider: Add missing AccountState State case for
+    notifying account state to extension
+    (gh#nextcloud/desktop#6006).
+  * Fix folder wizard warning color for local path in dark mode
+    (gh#nextcloud/desktop#5968).
+  * Fix residual typos found by codespell
+    (gh#nextcloud/desktop#5860).
+  * Fix new typos found by codespell (gh#nextcloud/desktop#6069).
+  * Remove dead OAuth code (gh#nextcloud/desktop#6005).
+  * Fix Chunk v2 upload headers (gh#nextcloud/desktop#6084).
+  * Bugfix/activity list fixes (gh#nextcloud/desktop#6064).
+  * Optimize CaseConflictRecords search in local DB during the
+    sync (gh#nextcloud/desktop#6083).
+  * Bugfix/legacy migration (gh#nextcloud/desktop#6072).
+  * Prevent empty password being passed into share creation
+    (gh#nextcloud/desktop#6100).
+  * Unhide discovery logs for file deleted on the server and for
+    discovered file (gh#nextcloud/desktop#6112).
+  * Use material icon for folders (gh#nextcloud/desktop#6114).
+  * Fix chunk v2 destination header (gh#nextcloud/desktop#6133).
+  * Bugfix/restore folders recursively
+    (gh#nextcloud/desktop#6134).
+  * Show more informative error message when VFS hydration fails.
+    Displaya popup and put an error into activity list. More
+    detailed logs (gh#nextcloud/desktop#6140).
+  * Improve Settings dialog design (gh#nextcloud/desktop#6150).
+  * Do not show failure popul for VFS when hydration finished with
+    code 200 or 204 (gh#nextcloud/desktop#6160).
+  * Bump peter-evans/create-or-update-comment from 3.0.1 to 3.0.2
+    (gh#nextcloud/desktop#6091).
+  * Enforce virtual file type when it is falsely marked as
+    non-virtual. Added more logs for scenarios when virtual
+    placeholder gets marked as non-virtual
+    (gh#nextcloud/desktop#6158).
+  * Fix crash when clicking on import legacy account dialog 'Skip'
+    button (gh#nextcloud/desktop#6184).
+  * Fix crash. Remove unnecessary dependency injection causing
+    crash (gh#nextcloud/desktop#6178).
+  * Bugfix/vfs toggle fix (gh#nextcloud/desktop#6223).
+  * Fix. Bulk upload. Accumulate sent bytes. Fix negative value in
+    UI (gh#nextcloud/desktop#6227).
+  * Don't log notification successes as warnings
+    (gh#nextcloud/desktop#6234).
+  * avoid restore algorithm by setting the data fingerprint from
+    sync DB (gh#nextcloud/desktop#6216).
+  * docs(troubleshooting): Add warning about sensitive data in
+    logs (gh#nextcloud/desktop#6237).
+  * add a cmake flag to not build with Qt5 WebEngine
+    (gh#nextcloud/desktop#6257).
+  * Change logging for sparkle update to qCInfo
+    (gh#nextcloud/desktop#6161).
+  * maintain lock state if unlock happens during sync
+    (gh#nextcloud/desktop#6236).
+  * avoid modifying a placeholder (virtual files) when not needed
+    (gh#nextcloud/desktop#6263).
+  * Fix build with latest NextcloudKit, caused by search for
+    XCTest and friends (gh#nextcloud/desktop#6265).
+  * Feature/client status reporting (gh#nextcloud/desktop#6283).
+
+-------------------------------------------------------------------
 Sat Dec  9 03:43:16 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.10.2:

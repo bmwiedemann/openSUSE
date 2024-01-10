@@ -402,4 +402,12 @@
     <comment>- Update required version for python-awkward-cpp to 26.</comment>
     <requestid>1128142</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>a95a2cbb6faef56fe71307f4ac1e2186</srcmd5>
+    <version>2.5.1</version>
+    <time>1702845149</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1133623</requestid>
+  </revision>
 </revisionlist>

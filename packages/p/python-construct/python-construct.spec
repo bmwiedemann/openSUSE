@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -24,16 +23,18 @@
 %else
 %bcond_with test
 %endif
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-construct%{?psuffix}
-Version:        2.10.68
+Version:        2.10.70
 Release:        0
 Summary:        A declarative parser/builder for binary data
 License:        MIT
 URL:            https://github.com/construct/construct
 Source:         https://github.com/construct/construct/archive/v%{version}.tar.gz#/construct-%{version}.tar.gz
 Patch0:         split_debug.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-arrow
@@ -45,11 +46,12 @@ BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module arrow}
 BuildRequires:  %{python_module cloudpickle}
+BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module lz4}
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module ruamel.yaml}
-BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
 %endif
 %python_subpackages
 
@@ -71,12 +73,12 @@ rm -rf tests/deprecated_gallery
 
 %build
 %if %{without test}
-%python_build
+%pyproject_wheel
 %endif
 
 %install
 %if %{without test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -94,7 +96,7 @@ python36_donttest="numpy or test_overall_parse or test_overall_build or test_com
 %license LICENSE
 %doc README.rst
 %{python_sitelib}/construct
-%{python_sitelib}/construct-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/construct-%{version}.dist-info
 %endif
 
 %changelog

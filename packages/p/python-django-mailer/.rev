@@ -39,4 +39,14 @@
     <comment></comment>
     <requestid>1114933</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2c9d5c9c2d7f0e20a09602a6fd6c9b4d</srcmd5>
+    <version>2.3.1</version>
+    <time>1704829797</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.3.1:
+  * Fixed rare crasher in runmailer_pg when notifications list is
+    empty.</comment>
+    <requestid>1137641</requestid>
+  </revision>
 </revisionlist>

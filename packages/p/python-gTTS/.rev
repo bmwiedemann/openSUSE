@@ -182,4 +182,16 @@ Features
     <comment></comment>
     <requestid>1132551</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>14ea60952f2df8994e87bb661e109089</srcmd5>
+    <version>2.5.0</version>
+    <time>1704281091</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.5.0:
+  * Add connection timeout + misc improvements (#440)
+
+  - Adds a language fallback feature for deprecated languages to maintain compatiblity
+    (e.g. ``en-us`` becomes ``en``). Fallback can be disabled with ``lang_check=False``</comment>
+    <requestid>1135656</requestid>
+  </revision>
 </revisionlist>

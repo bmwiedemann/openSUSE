@@ -29,20 +29,18 @@
   %define python_sitearch %{python3_sitearch}
   %define python_sitelib %{python3_sitelib}
 %endif
-%bcond_without gnome
-%bcond_without kde
-%bcond_with	python_ctypes
-%bcond_with	all_regression_tests
 %global flavor @BUILD_FLAVOR@%{nil}
-
 %if "%{flavor}" == "testsuite"
 %global psuffix -testsuite
 %else
 %global psuffix %{nil}
 %endif
-
+%bcond_without gnome
+%bcond_without kde
+%bcond_with	python_ctypes
+%bcond_with	all_regression_tests
 Name:           subversion%{psuffix}
-Version:        1.14.2
+Version:        1.14.3
 Release:        0
 Summary:        Subversion version control system
 License:        Apache-2.0
@@ -66,7 +64,6 @@ Patch11:        subversion.libtool-verbose.patch
 Patch20:        subversion-swig-perl-install_vendor.patch
 Patch23:        subversion-swig-perl-Wall.patch
 Patch30:        subversion-1.8.0-rpath.patch
-Patch31:        ruby32-fixes.patch
 Patch37:        subversion-no-build-date.patch
 Patch39:        subversion-fix-parallel-build-support-for-perl-bindings.patch
 Patch40:        subversion-perl-underlinking.patch
@@ -77,7 +74,6 @@ Patch46:        remove-kdelibs4support-dependency.patch
 # PATCH-FIX-UPSTREAM danilo.spinella@suse.com bsc#1195486 bsc#1193778
 # Fix testCrash_RequestChannel_nativeRead_AfterException test on aarch64 and ppc64le
 Patch47:        fix-javahl-test.patch
-Patch48:        swig4.patch
 BuildRequires:  apache-rpm-macros
 BuildRequires:  apache2-devel >= 2.2.0
 BuildRequires:  apache2-prefork
@@ -112,13 +108,13 @@ BuildRequires:  pkgconfig(zlib)
 BuildConflicts: pkgconfig(liblz4) = 124
 Requires:       libsqlite3-0 >= %{sqlite_minimum_version}
 Requires(post): %fillup_prereq
-%sysusers_requires
 # workaround for boo#969159
 Conflicts:      libsvn_auth_kwallet-1-0 < %{version}
 Conflicts:      libsvn_auth_kwallet-1-0 > %{version}
 Conflicts:      libsvn_gnome_keyring-1-0 < %{version}
 Conflicts:      libsvn_gnome_keyring-1-0 > %{version}
 Provides:       subversion-javahl = %{version}-%{release}
+%sysusers_requires
 %{?systemd_requires}
 %if %{with all_regression_tests}
 # tools required for network based tests
@@ -245,22 +241,7 @@ Bash command line completion support for subversion - completion of subcommands,
 parameters and keywords for the svn command and other tools.
 
 %prep
-%setup -q -a 4 -n subversion-%{version}
-%patch0 -p1
-%patch1 -p1
-%patch11 -p1
-%patch20 -p1
-%patch23 -p1
-%patch30 -p1
-%patch31 -p1
-%patch37 -p1
-%patch39
-%patch40 -p1
-%patch42 -p1
-%patch45 -p1
-%patch46 -p1
-%patch47
-%patch48 -p1
+%autosetup -p1 -a 4 -n subversion-%{version}
 
 # do not use 'env python'
 sed -i -e 's#%{_bindir}/env python#%{_bindir}/python3#' subversion/tests/cmdline/*.py

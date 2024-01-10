@@ -100,4 +100,39 @@
   * tools: add mavmerge to merge two tlogs</comment>
     <requestid>1110409</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ddb000c9edfc26d8aab2d557cfce8e68</srcmd5>
+    <version>2.4.41</version>
+    <time>1704562864</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.4.41:
+  * mavfft_pid: allow PID target and error frequencies to be
+    visualized
+  * Fix Wireshark dissector and add snapshot tests
+  * tools: added extract_batch_imu.py
+  * examples: added dup_samples.py
+  * Fix bitshifting issue on 8bit AVR boards when using msgid &gt;
+    255 with generated C libs
+  * mavgen_c: added XXX_encode_status bindings
+  * mavextra: added RotateMag
+  * mavutil: Add circle mode for rover
+  * DFReader: recognise VER.BU for build type
+  * Generator: Lua: allow strings
+  * rotmat: added more euler 321 and 312 functions
+  * generators: js: fix sinon dependency to 15.2.0, add node
+    tests
+  * mavutil: fixed multicast on windows
+  * tools: fix mavplayback.py
+  * sertotcp: auto-reopen serial port
+  * Mavgen WLua: Support 64-bit flag fields
+  * mavschema - Typo 10E5 should be 1E5
+  * tools: Add option to mavgen.py to return exit code if
+    generation fails
+  * github: test against Python 3.11
+  * fixed mavplayback and split
+
+- Update to version 2.4.35
+- Update to version 2.4.34</comment>
+    <requestid>1137112</requestid>
+  </revision>
 </revisionlist>

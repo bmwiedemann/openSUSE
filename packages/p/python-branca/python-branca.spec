@@ -1,7 +1,7 @@
 #
 # spec file for package python-branca
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-branca
-Version:        0.6.0
+Version:        0.7.0
 Release:        0
 Summary:        HTML+JS page generator
 License:        MIT
@@ -35,6 +35,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-Jinja2
 BuildArch:      noarch
 # SECTION test requirements
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module ipykernel}
 BuildRequires:  %{python_module nbconvert}
@@ -47,7 +48,7 @@ BuildRequires:  %{python_module selenium}
 Generate HTML+JS pages with Python.
 
 %prep
-%setup -q -n branca-%{version}
+%autosetup -p1 -n branca-%{version}
 
 %build
 export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}

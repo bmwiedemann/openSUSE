@@ -17,7 +17,7 @@
 
 
 Name:           putty
-Version:        0.79
+Version:        0.80
 Release:        0
 Summary:        SSH client with optional GTK-based terminal emulator frontend
 License:        MIT

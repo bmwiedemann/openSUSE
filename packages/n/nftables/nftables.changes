@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jan  4 08:04:39 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- buildrequire setuptools explicitly as pip drops the dependency
+
+-------------------------------------------------------------------
+Wed Jan  3 10:05:39 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Fix the python bindings subpackages
+  * The PEP517 python build requires setuptools
+  * Actually use the rpm subpackage definition
+  * The version is actually python3dist(nftables) = 0.1
+  * is noarch and requires libnftables1 through dlopen, tell
+    rpmlint
+  * remove unused shebang
+
+-------------------------------------------------------------------
 Thu Oct 19 23:42:57 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.0.9
@@ -6,7 +22,7 @@ Thu Oct 19 23:42:57 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
     units other than seconds.
   * Allow combination of dnat with numgen.
   * Allow for using constants as key in dynamic sets.
-  * Support for matching on the target address of a IPv6 neighbour                                                               
+  * Support for matching on the target address of a IPv6 neighbour
     solicitation/advertisement.
   * Restore bitwise operations in combination with maps, e.g. jump
     to chain depending on bitwise operation on packet mark.
@@ -57,7 +73,7 @@ Wed Aug 17 19:21:15 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * Fixes for the -o/--optimize, run this --optimize option to automagically
     compact your ruleset using sets, maps and concatenations
   * Fix ethernet and vlan concatenations, eg. define a dynamic set which
-    is populated from the packet path 
+    is populated from the packet path
   * Fix ruleset listing with interface wildcard map
   * Fix several regressions in the input lexer which broke valid rulesets.
   * Fix slowdown with large lists of singleton interval elements.

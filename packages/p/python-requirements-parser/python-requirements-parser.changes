@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Dec 27 16:21:19 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.5.0:
+  * Support all documented options in requirements files #62
+  * Library is now typed according to PEP561 (`0e1bb6a`)
+  * Readthedocs config (`ac1e7fb`)
+  * Added some typing (`169ff6e`)
+  * Removed Python 2 code (`82f9473`)
+  * Removed version from __init__ (`4e83b9d`)
+- drop
+  0001-Dont-fail-with-valid-options-in-requirements_txt-files.patch,
+  remove-nose.patch: upstream
+- add dont-install-readme.patch
+
+-------------------------------------------------------------------
 Fri May  5 11:15:29 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - add sle15_python_module_pythons

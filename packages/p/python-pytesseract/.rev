@@ -100,4 +100,21 @@
 </comment>
     <requestid>1063382</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6fededfc715230d3a698c05186b60e99</srcmd5>
+    <version>0.3.13</version>
+    <time>1702673296</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.3.13:
+  * Add support for Python 3.12
+- update to 0.3.12:
+  * New functionality `run_and_get_multiple_output` #511
+- update to 0.3.11:
+  * Fix for config parsing on Windows (#356 and #501)
+  * Fixes for the default hocr and boxing configs (#106 and #454)
+  * get_tesseract_version caching is optional and disabled by
+    default for the user (#411)
+  * Various CI upgrades</comment>
+    <requestid>1133185</requestid>
+  </revision>
 </revisionlist>

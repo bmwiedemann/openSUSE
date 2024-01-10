@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jan  6 10:37:49 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7:
+  * Moved GitLab URL to <https://gitlab.com/gsasl/libntlm>.
+  * Use gnulib ./bootstrap for building from version
+    controlled sources.
+  * API and ABI modifications:
+    + No changes since last version.
+
+-------------------------------------------------------------------
 Mon May 22 16:12:37 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
 
 - Update url and download locations for tarball.

@@ -17,8 +17,8 @@
 
 
 %define major 13
-%define minor 5
-%define third 3
+%define minor 6
+%define third 5
 %define sover  %{major}.%{minor}
 %define soname %{major}_%{minor}
 %define plugin_dir %{_libdir}/OGRE%{soname}
@@ -47,6 +47,8 @@ Patch1:         0001-Vulkan-Use-find_package-to-support-system-wide-insta.patch
 # PATCH-FIX-UPSTREAM fix-sse-detection.patch -- Fix detection of sse for x86 (vs x64)
 Patch2:         fix-sse-detection.patch
 Patch3:         swig-3-cpp11.patch
+# PATCH-FIX-OPENSUSE fix-gslang-cpp17.patch -- Our GLSlang package requires c++17
+Patch4:         fix-gslang-cpp17.patch
 BuildRequires:  cmake >= 3.10
 BuildRequires:  dos2unix
 BuildRequires:  doxygen

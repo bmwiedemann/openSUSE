@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Dec  3 14:29:46 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.2.10
+  * Add xfce4cpp to EXTRA_DIST
+- Use a newer gcc/g++ version on Leap or SLE.
+
+- Update to version 1.2.9
+  * Don't update tooltip string when tooltip is not visible
+  * Improve CPU hotplugging on Linux
+  * Use "xfce_spawn_command_line()"
+  * Code refactor
+  * Update source code for the new xfce4cpp library
+  * Rework of xfce4cpp library
+  * Reduce the minimum width from 10 to 1
+  * Add missing include
+  * Translation Updates
+
+-------------------------------------------------------------------
 Sun Jul 23 07:20:33 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 1.2.8

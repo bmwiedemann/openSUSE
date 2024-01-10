@@ -59,7 +59,7 @@ BuildRequires:  libQt5PlatformHeaders-devel >= 5.4.0
 BuildRequires:  libicu-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  cmake(AppStreamQt) >= 0.10.4
+BuildRequires:  (cmake(AppStreamQt5) >= 1.0.0 or cmake(AppStreamQt) < 1.0.0)
 BuildRequires:  cmake(Breeze) >= %{_plasma5_bugfix}
 BuildRequires:  cmake(KDED) >= %{kf5_version}
 BuildRequires:  cmake(KF5Activities) >= %{kf5_version}

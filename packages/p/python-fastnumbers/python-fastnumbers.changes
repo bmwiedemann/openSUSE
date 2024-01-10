@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Dec 29 18:35:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.1.0:
+  * Added the ``denoise`` option to convert floats to int without
+  * numerical noise (issues #69 and #77)
+  * Support for Python 3.12 (issues #73 and #75)
+- switch to gcc 13 on SLE15
+
+-------------------------------------------------------------------
 Mon Jul 10 15:53:34 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 5.0.1
@@ -33,7 +42,7 @@ Mon Apr 19 05:54:56 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
       interpret a given input
   * Fixed
     + Support for Python 3.9 (eliminate use of private Python C function
-      that is now hidden in 3.9)  
+      that is now hidden in 3.9)
 
 -------------------------------------------------------------------
 Thu Jan 30 14:50:20 UTC 2020 - Todd R <toddrme2178@gmail.com>

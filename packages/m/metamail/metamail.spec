@@ -57,6 +57,7 @@ those using the Andrew toolkit) with elm.
     make
     make -C fonts
     pushd ../mimegrep-0.2
+	sed -i 's/`date/`date -u -r ChangeLog/' configure.ac #https://github.com/bitstreamout/mimegrep/pull/1
 	./autogen.sh
 	%configure
 	make %{?_smp_mflags}

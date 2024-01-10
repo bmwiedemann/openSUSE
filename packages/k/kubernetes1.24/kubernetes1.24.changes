@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan  3 10:00:14 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add kubernetes-trimpath.patch for reproducible builds (boo#1062303)
+
+-------------------------------------------------------------------
 Wed Sep 20 18:12:25 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - fixes for bsc#1214406

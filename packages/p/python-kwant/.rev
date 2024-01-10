@@ -34,4 +34,17 @@
   * Various maintenance.</comment>
     <requestid>1090076</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>90d92a953c4d7922098f2098c557c230</srcmd5>
+    <version>1.4.4</version>
+    <time>1702845183</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.4.4:
+  * Ensure compatibility with recent versions of SymPy,
+    matplotlib and Sphinx.
+  * Fix current density plotting when sites coincide.
+
+- skip python36 (scipy)</comment>
+    <requestid>1133664</requestid>
+  </revision>
 </revisionlist>

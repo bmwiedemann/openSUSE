@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jan  9 08:02:25 UTC 2024 - Kyle Scheuing <kyle@kylescheuing.com>
+
+- Update to 1.27.2
+  * Bugfixes:
+    #9041: cli subcommand does not use STHOMEDIR env var
+    #9183: Filesystem watching (kqueue) is enabled … with a lot of files
+    #9274: Missing lock in DeviceStatistics ("fatal error: concurrent map read and map write")
+
+  * Enhancements:
+    #7406: Add UPnP support for IPv6
+
+  * Other Issues:
+    #9247: Embed binary releases signing key as a file instead of hardcoding a string
+    #9287: quic-go v0.40.1 (CVE-2023-49295)
+
+-------------------------------------------------------------------
 Mon Dec 11 09:44:00 UTC 2023 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to 1.27.1

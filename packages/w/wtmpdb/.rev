@@ -97,4 +97,22 @@
     db entry</comment>
     <requestid>1120586</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3e70a1fab8db63f47358f4ed06a3c980</srcmd5>
+    <version>0.10.0</version>
+    <time>1703102467</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.10.0
+  - last: support matching for username and/or tty</comment>
+    <requestid>1134046</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8d148da47cff394dbdef6789a10951f4</srcmd5>
+    <version>0.11.0</version>
+    <time>1704829737</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.11.0
+  - last: add support for time-format option</comment>
+    <requestid>1137589</requestid>
+  </revision>
 </revisionlist>

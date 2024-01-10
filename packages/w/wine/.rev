@@ -4997,4 +4997,28 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
 - update staging to 9.0-rc1 release</comment>
     <requestid>1132436</requestid>
   </revision>
+  <revision rev="427" vrev="1">
+    <srcmd5>c9f503b4e8684379ce1919db590fd4d1</srcmd5>
+    <version>9.0~rc2</version>
+    <time>1703024142</time>
+    <user>anag+factory</user>
+    <comment>- Add libxkbcommon and libxkbregistry as build requirements to
+  enable building the Wayland driver
+
+- Updated to 9.0-rc2 release
+  - Bug fixes only, we are in code freeze.
+- update staging to 9.0-rc2 release
+- updated C library bundled provides</comment>
+    <requestid>1133609</requestid>
+  </revision>
+  <revision rev="428" vrev="1">
+    <srcmd5>75671d30f16ebd2f71ddbbd47623a351</srcmd5>
+    <version>9.0~rc3</version>
+    <time>1703527505</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 9.0-rc3 release
+  - Bug fixes only, we are in code freeze.
+- update staging to 9.0-rc3 release</comment>
+    <requestid>1134721</requestid>
+  </revision>
 </revisionlist>

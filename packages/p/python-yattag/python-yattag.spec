@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           python-yattag
-Version:        1.15.1
+Version:        1.15.2
 Release:        0
 Summary:        Generate HTML or XML in a pythonic way
 License:        LGPL-2.1-only

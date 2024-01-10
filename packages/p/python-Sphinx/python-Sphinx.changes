@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 20 12:48:53 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add upstream patch fix-autodoc-tests-python-3117.patch to make it
+  work with python 3.11.7 gh#sphinx-doc/sphinx#11793
+
+-------------------------------------------------------------------
 Tue Dec  5 20:12:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - avoid xdist - not used by upstream and unstable (and not

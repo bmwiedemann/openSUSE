@@ -240,7 +240,7 @@ BuildArch:      i686
 
 
 Name:           nodejs-electron
-Version:        27.1.3
+Version:        27.2.1
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
 License:        AFL-2.0 AND Apache-2.0 AND blessing AND BSD-2-Clause AND BSD-3-Clause AND BSD-Protection AND BSD-Source-Code AND bzip2-1.0.6 AND IJG AND ISC AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND MIT AND MIT-CMU AND MIT-open-group AND (MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later) AND MPL-2.0 AND OpenSSL AND SGI-B-2.0 AND SUSE-Public-Domain AND X11
@@ -485,7 +485,7 @@ BuildRequires:  plasma-wayland-protocols
 BuildRequires:  python3-json5
 BuildRequires:  python%{PYVER}-jinja2 >= 3.0.2
 BuildRequires:  python3-mako
-BuildRequires:  python3-ply
+BuildRequires:  python%{PYVER}-ply
 BuildRequires:  python%{PYVER}-PyYAML >= 6
 BuildRequires:  python%{PYVER}-six
 %if %{with system_simdutf}
@@ -624,7 +624,11 @@ BuildRequires:  pkgconfig(libxxhash)
 BuildRequires:  pkgconfig(libyuv) >= 1855
 %endif
 %if 0%{?fedora}
+%if 0%{?fedora} >= 40
+BuildRequires:  minizip-ng-compat-devel
+%else
 BuildRequires:  minizip-compat-devel
+%endif
 %else
 BuildRequires:  pkgconfig(minizip)
 %endif
@@ -826,7 +830,7 @@ export PATH="$(pwd)/python3-path:${PATH}"
 #HACK: Those packages on Leap are available only in python3.6 versions.
 %if 0%{?suse_version}  && 0%{?suse_version} < 1550
 install -d -m 0755 python3-site
-cp -pr %{python3_sitelib}/{json5,mako,ply} -t "$(pwd)/python3-site"
+cp -pr %{python3_sitelib}/{json5,mako} -t "$(pwd)/python3-site"
 export PYTHONPATH="$(pwd)/python3-site"
 %endif
 

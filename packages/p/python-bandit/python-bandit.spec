@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -29,7 +28,7 @@
 %define pythons python3
 %bcond_without  builddocs
 Name:           python-bandit
-Version:        1.7.5
+Version:        1.7.6
 Release:        0
 Summary:        Security oriented static analyser for Python code
 License:        Apache-2.0

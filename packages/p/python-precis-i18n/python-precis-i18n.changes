@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Dec 27 15:12:17 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update specfile for PEP517 and python packaging best practices
+
+-------------------------------------------------------------------
+Wed Dec 27 14:54:32 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.0:
+  * Fixed an issue in the Nickname profile implementation that
+    trimmed extra leading/trailing white space beyond the `Zs`
+    category prescribed in RFC 8266. Python treats certain
+    Unicode control characters as white space. If these appeared
+    as leading/trailing spaces in a Nickname string, they
+    were stripped. With this release, the Nickname profile will
+    raise a UnicodeEncodeError `DISALLOWED/controls` if any control
+    characters are encountered. (Issue #29)
+  * Update internal tables for Unicode 15.1.
+  * Change format of README and CHANGELOG files to Markdown.
+  * Drop support for Python 3.3 and 3.4.
+
+-------------------------------------------------------------------
 Wed Jan  4 20:08:03 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.5:
@@ -28,15 +49,15 @@ Sun May  2 14:26:42 UTC 2021 - Ben Greiner <code@bnavigator.de>
   * Use Github Actions for continuous integration.
   * Update copyright year (2021).
 - Release 1.0.2
-  * get_profile now supports alternative unicodedata2 module 
+  * get_profile now supports alternative unicodedata2 module
     (Issue #8).
-  * get_profile maps ':' to '_' before looking up profile name 
+  * get_profile maps ':' to '_' before looking up profile name
     (Issue #10).
   * Test Unicode 12.1 for Python 3.8.
   * Test Unicode 12.0 (Using optional unicodedata2 module)
   * Test Unicode 13.0 for Python 3.9 (Issue #9).
 Update copyright year (2020).
-- Drop support_unicode_12.1_for_python_3.8.patch 
+- Drop support_unicode_12.1_for_python_3.8.patch
 
 -------------------------------------------------------------------
 Wed Mar 11 20:40:12 UTC 2020 - Benoît Monin <benoit.monin@gmx.fr>

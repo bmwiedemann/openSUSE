@@ -18,7 +18,7 @@
 
 %define jq_sover 1
 Name:           jq
-Version:        1.7
+Version:        1.7.1
 Release:        0
 Summary:        A lightweight and flexible command-line JSON processor
 License:        CC-BY-3.0 AND MIT

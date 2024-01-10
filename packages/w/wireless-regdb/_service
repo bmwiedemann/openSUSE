@@ -1,12 +1,12 @@
 <services>
-  <service mode="disabled" name="obs_scm">
+  <service mode="manual" name="obs_scm">
     <param name="url">https://git.kernel.org/pub/scm/linux/kernel/git/sforshee/wireless-regdb.git</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
     <param name="filename">wireless-regdb</param>
     <param name="versionformat">%cd</param>
   </service>
-  <service mode="disabled" name="set_version"/>
+  <service mode="manual" name="set_version"/>
   <service name="tar" mode="buildtime"/>
   <service name="recompress" mode="buildtime">
     <param name="file">*.tar</param>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-pygit2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2019 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,16 +17,14 @@
 #
 
 
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-pygit2
-Version:        1.12.2
+Version:        1.13.3
 Release:        0
 Summary:        Python bindings for libgit2
 License:        GPL-2.0-only
 URL:            https://github.com/libgit2/pygit2
 Source:         https://files.pythonhosted.org/packages/source/p/pygit2/pygit2-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM support-libgit2-1.7.patch https://github.com/libgit2/pygit2/commit/1473e8eb6eb59dc7521dcd5f8a4c9390e9b53223
-Patch0:         support-libgit2-1.7.patch
 BuildRequires:  %{python_module cached-property}
 BuildRequires:  %{python_module cffi >= 1.4.0}
 BuildRequires:  %{python_module devel}

@@ -1,7 +1,7 @@
 #
 # spec file for package python-google-resumable-media
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-google-resumable-media
-Version:        2.6.0
+Version:        2.7.0
 Release:        0
 Summary:        Utilities for Google Media Downloads and Resumable Uploads
 License:        Apache-2.0
@@ -56,7 +56,11 @@ Utilities for Google Media Downloads and Resumable Uploads
 
 %check
 export PYTEST_ADDOPTS="--import-mode=importlib"
-%pytest tests/unit
+# skip online tests
+donttest="test_brotli"
+donttest="$donttest or test_constructor"
+donttest="$donttest or test_decompress"
+%pytest tests/unit -k "not ($donttest)"
 
 %files %{python_files}
 %license LICENSE

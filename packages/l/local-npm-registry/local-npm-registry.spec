@@ -44,10 +44,10 @@ cp -r dist node_modules %{buildroot}%{_datadir}/%{name}
 cat > %{buildroot}%{_bindir}/local-npm-registry << EOF
 #!/bin/sh
 
-if [ "x$QUILT_COMMAND" = "xsetup" ]
+if [ "x\$QUILT_COMMAND" = "xsetup" ]
 then
         echo "Run in setup mode. 'npm install' skipped. Run 'npm ci' manually."
-        cp "$RPM_SOURCE_DIR/package-lock.json" .
+        cp "\$RPM_SOURCE_DIR/package-lock.json" .
         exit 0
 fi
 

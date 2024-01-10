@@ -80,4 +80,17 @@
     <comment></comment>
     <requestid>1128340</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>13907a5193df7b12c5721db6e99b4d8b</srcmd5>
+    <version>1.14</version>
+    <time>1704562872</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.14:
+  * Produce binary wheels for macOS/arm64
+
+- Update to 1.9
+  Fix memory leak when using end_array (issue #160)
+    #130 and PR #131, thanks to Sebastian Pipping)</comment>
+    <requestid>1137126</requestid>
+  </revision>
 </revisionlist>

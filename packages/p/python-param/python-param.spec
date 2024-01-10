@@ -16,15 +16,14 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define modname param
 Name:           python-param
-Version:        2.0.0
+Version:        2.0.1
 Release:        0
 Summary:        Declarative Python programming using Parameters
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-URL:            http://param.pyviz.org/
+URL:            https://param.holoviz.org/index.html
 Source:         https://files.pythonhosted.org/packages/source/p/param/param-%{version}.tar.gz
 Source100:      python-param-rpmlintrc
 BuildRequires:  %{python_module base >= 3.8}
@@ -66,8 +65,6 @@ echo '{"git_describe": "v%{version}", "version_string": "%{version}"}' > param/.
 
 %install
 %pyproject_install
-# move docs to the param folder
-%python_expand mv %{buildroot}%{$python_sitelib}/doc %{buildroot}%{$python_sitelib}/param/
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

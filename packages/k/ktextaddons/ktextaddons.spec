@@ -112,12 +112,13 @@ This package provides a library containing graphical widgets to build
 user interfaces handling emoticons.
 
 %package -n libKF5TextUtils%{sonum}
-Summary:        TextUtils library
+Summary:        Core library providing utilities for working with text. 
 License:        LGPL-2.1-or-later
 Requires:       libKF5TextEmoticonsCore%{sonum} = %{version}
 
 %description -n libKF5TextUtils%{sonum}
-The TextUtils library.
+This package provides a library containing utility functions for working
+with text.
 
 %package devel
 Summary:        Development files for ktextaddons, a library for handling texts
@@ -162,7 +163,6 @@ This package provides development files to use ktextaddons in other applications
 %ldconfig_scriptlets -n libKF5TextEmoticonsWidgets%{sonum}
 %ldconfig_scriptlets -n libKF5TextAddonsWidgets%{sonum}
 %ldconfig_scriptlets -n libKF5TextUtils%{sonum}
-
 
 %files
 %dir %{_kf5_plugindir}/kf5/

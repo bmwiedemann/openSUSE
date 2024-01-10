@@ -407,4 +407,12 @@ break cycle to pkgconfig(vulkan)</comment>
     <comment>new_version</comment>
     <requestid>1120702</requestid>
   </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>1744e6b7366d6a551f7d46950f6943f2</srcmd5>
+    <version>1.3.268.0</version>
+    <time>1704829733</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1137564</requestid>
+  </revision>
 </revisionlist>

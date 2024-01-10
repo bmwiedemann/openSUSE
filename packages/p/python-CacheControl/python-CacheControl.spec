@@ -37,14 +37,12 @@ Provides:       python-cachecontrol = %{version}-%{release}
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Recommends:     python-filelock >= 3.8.0
-Suggests:       python-redis >= 2.10.5
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module CherryPy}
 BuildRequires:  %{python_module filelock >= 3.8.0}
 BuildRequires:  %{python_module msgpack >= 0.5.2}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module redis >= 2.10.5}
 BuildRequires:  %{python_module requests >= 2.16.0}
 # /SECTION
 %python_subpackages

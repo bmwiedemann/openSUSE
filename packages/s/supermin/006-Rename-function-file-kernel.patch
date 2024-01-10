@@ -1,0 +1,29 @@
+Subject: src/format_ext2_kernel.ml: Rename function file -> kernel
+From: Richard W.M. Jones rjones@redhat.com Fri Nov 10 08:55:25 2023 +0000
+Date: Fri Nov 10 08:55:25 2023 +0000:
+Git: 9a0d078dc35fde7a715666bce6c765ed5fe5e916
+
+No change, just rename the function.
+
+diff --git a/src/format_ext2_kernel.ml b/src/format_ext2_kernel.ml
+index 4589552..36514c6 100644
+--- a/src/format_ext2_kernel.ml
++++ b/src/format_ext2_kernel.ml
+@@ -54,7 +54,7 @@ let rec build_kernel debug host_cpu copy_kernel kernel =
+     printf "supermin: kernel: modpath %s\n%!" modpath;
+   );
+ 
+-  copy_or_symlink_file copy_kernel kernel_file kernel;
++  copy_or_symlink_kernel copy_kernel kernel_file kernel;
+ 
+   (kernel_version, modpath)
+ 
+@@ -308,7 +308,7 @@ and read_string chan offset len =
+   really_input chan buf 0 len;
+   Bytes.to_string buf
+ 
+-and copy_or_symlink_file copy_kernel src dest =
++and copy_or_symlink_kernel copy_kernel src dest =
+   if not copy_kernel then
+     symlink src dest
+   else (

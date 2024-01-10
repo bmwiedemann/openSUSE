@@ -34,6 +34,10 @@ Source0:        %{name}-%{version}.tar.zst
 Patch1:         mutter-disable-cvt-s390x.patch
 # PATCH-FIX-OPENSUSE mutter-window-actor-Special-case-shaped-Java-windows.patch -- window-actor: Special-case shaped Java windows
 Patch2:         mutter-window-actor-Special-case-shaped-Java-windows.patch
+# PATCH-FIX-UPSTREAM mutter-fix-x11-restart.patch glgo#GNOME/gnome-shell#7050 glgo#GNOME/mutter!3329 alynx.zhou@suse.com -- Fix crash on restarting mutter under x11
+Patch3:         mutter-fix-x11-restart.patch
+# PATCH-FIX-UPSTREAM mutter-fix-text-input-delete-surrounding.patch glgo#GNOME/mutter#2146 glgo#GNOME/mutter!2712 alynx.zhou@suse.com -- Fix delete_surrounding_text of text-input-v3
+Patch4:         mutter-fix-text-input-delete-surrounding.patch
 
 ## SLE-only patches start at 1000
 # PATCH-FEATURE-SLE mutter-SLE-bell.patch FATE#316042 bnc#889218 idonmez@suse.com -- make audible bell work out of the box.
@@ -145,6 +149,8 @@ applications that want to make use of the mutter library.
 %else
 %patch -P 1 -p1
 %patch -P 2 -p1
+%patch -P 3 -p1
+%patch -P 4 -p1
 %endif
 # SLE-only patches and translations.
 %if 0%{?sle_version}

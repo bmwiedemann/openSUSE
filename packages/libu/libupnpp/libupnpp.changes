@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Dec 23 14:40:29 UTC 2023 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to version 0.25.0:
+  * Control: description: store the download url in the parsed
+    description structure.
+  * Control: make sure that the requested search window is not smaller
+    than the npupnp minimum as this would result in insufficient waiting
+    for the initial search.
+  * Control: discovery: add interface to perform unicast search.
+  * Add init option to pass a bootid value to libnpupnp.
+- Update to version 0.24.1:
+  * Don't extend URLs escaping by default (was causing issues with Yamaha
+    renderers).
+  * so version and debian packaging cleanup.
+- Update to version 0.24.0:
+  * Rebuilt for rpi 1 (armv6) compatibility
+  * Control: ohproduct: export a parseSourceXML static method.
+  * Control: add timeout optional parameters to OHRadio::id(),
+    OHPlaylist::id(), and AVTransport::getPositionInfo(). Add options
+    structure parameter to the base Service class methods.
+- Update to version 0.23.0:  
+  * Device: added a LibUPnP::setWebServerDocumentRoot method, for
+    activating the libnpupnp HTTP server local file service.
+- Update to version 0.22.5:      
+  * Small internal changes: eliminate explicit memory allocations, improve
+    url sanitizing.
+- Update to version 0.23.3:    
+  * Control Point: sanitize unsufficiently quoted URLs from content
+    directory. 
+
+-------------------------------------------------------------------
 Sat Aug 13 10:34:18 UTC 2022 - Michael Pujos <pujos.michael@gmail.com>
 
 - Update to version 0.22.2:

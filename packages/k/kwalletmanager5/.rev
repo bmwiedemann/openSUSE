@@ -833,4 +833,12 @@ Needs KF 5.59 and SR 710707</comment>
     <comment>KDE Release gear 23.08.4 (forwarded request 1131017 from krop)</comment>
     <requestid>1131938</requestid>
   </revision>
+  <revision rev="105" vrev="2">
+    <srcmd5>e65f3647c3833ace53887f545db02362</srcmd5>
+    <version>23.08.4</version>
+    <time>1702845061</time>
+    <user>anag+factory</user>
+    <comment>Require extra-cmake-modules at build time</comment>
+    <requestid>1133521</requestid>
+  </revision>
 </revisionlist>

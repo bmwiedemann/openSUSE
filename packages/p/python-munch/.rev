@@ -63,4 +63,14 @@
     <comment></comment>
     <requestid>1091747</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f7437bdb7f9268fe34a04c64f8fc8d4e</srcmd5>
+    <version>4.0.0</version>
+    <time>1702844949</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.0.0:
+  * Remove six dependency
+- drop python-munch-no-six.patch (upstream)</comment>
+    <requestid>1133681</requestid>
+  </revision>
 </revisionlist>

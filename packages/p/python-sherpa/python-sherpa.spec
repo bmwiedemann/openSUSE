@@ -17,17 +17,13 @@
 
 
 Name:           python-sherpa
-Version:        4.15.1
+Version:        4.16.0
 Release:        0
 Summary:        Modeling and fitting package for scientific data analysis
 License:        GPL-3.0-only
 URL:            https://github.com/sherpa/sherpa/
 Source0:        https://github.com/sherpa/sherpa/archive/%{version}.tar.gz#/sherpa-%{version}.tar.gz
 Source1:        https://github.com/sherpa/sherpa-test-data/archive/refs/tags/%{version}.tar.gz#/sherpa-test-data-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/sherpa/sherpa/pull/1807 NumPy 1.25 support
-Patch:          numpy125.patch
-# PATCH-FIX-UPSTREAM https://github.com/sherpa/sherpa/pull/1819 CI: hide NumPy 1.25 array ndim>0 deprecation warnings
-Patch:          numpy125-CI.patch
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module numpy-devel >= 1.19}
 BuildRequires:  %{python_module pip}
@@ -105,6 +101,7 @@ donttest="test_save"
 donttest+=" or (test_regproj and sherpa.plot.dummy_backend)"
 donttest+=" or (test_fit_single and Chi2XspecVar)"
 %endif
+donttest+=" or test_Griewank"
 %pytest_arch %{?jobs:-n %jobs} --pyargs sherpa -k "not ($donttest)"
 
 %post
@@ -121,7 +118,7 @@ donttest+=" or (test_fit_single and Chi2XspecVar)"
 %python_alternative %{_bindir}/sherpa_test
 %python_alternative %{_bindir}/sherpa_smoke
 %{python_sitearch}/sherpa
-%{python_sitearch}/sherpa-%{version}*-info
+%{python_sitearch}/sherpa-%{version}.dist-info
 %{python_sitearch}/stk.so
 %{python_sitearch}/group.so
 

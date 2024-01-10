@@ -1445,4 +1445,41 @@ bsc#1024677</comment>
     <comment></comment>
     <requestid>1075145</requestid>
   </revision>
+  <revision rev="150" vrev="1">
+    <srcmd5>00dd21a1be72a485ee9088731568c990</srcmd5>
+    <version>2023d</version>
+    <time>1703800449</time>
+    <user>anag+factory</user>
+    <comment>- update to 2023d:
+  * Ittoqqortoormiit, Greenland changes time zones on
+    2024-03-31.
+  * Vostok, Antarctica changed time zones on 2023-12-18.
+  * Casey, Antarctica changed time zones five times since
+    2020.
+  * Code and data fixes for Palestine timestamps starting in
+    2072.
+  * A new data file zonenow.tab for timestamps starting now.
+  * Fix predictions for DST transitions in Palestine in
+    2072-2075, correcting a typo introduced in 2023a.
+  * Vostok, Antarctica changed to +05 on 2023-12-18.  It had
+    been at +07 (not +06) for years.
+  * Change data for Casey, Antarctica to agree with
+    timeanddate.com, by adding five time zone changes since 2020.
+    Casey is now at +08 instead of +11.
+  * Much of Greenland, represented by America/Nuuk, changed
+    its standard time from -03 to -02 on 2023-03-25, not on
+    2023-10-28.
+  * localtime.c no longer mishandles TZif files that contain
+    a single transition into a DST regime.  Previously,
+    it incorrectly assumed DST was in effect before the transition
+    too.
+  * tzselect no longer creates temporary files.
+  * tzselect no longer mishandles the following:
+  * Spaces and most other special characters in BUGEMAIL,
+    PACKAGE, TZDIR, and VERSION.
+  * TZ strings when using mawk 1.4.3, which mishandles
+    regular expressions of the form /X{2,}/.
+  * ISO 6709 coordinates when using an awk that lacks the</comment>
+    <requestid>1135296</requestid>
+  </revision>
 </revisionlist>

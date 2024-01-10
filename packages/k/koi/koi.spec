@@ -23,7 +23,7 @@ Summary:        Theme scheduling for the KDE Plasma Desktop
 License:        LGPL-3.0-only
 URL:            https://github.com/baduhai/Koi
 Source:         https://github.com/baduhai/Koi/archive/refs/tags/%{version}.tar.gz
-BuildRequires:  cmake
+BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5CoreAddons)

@@ -48,4 +48,18 @@
     <comment></comment>
     <requestid>1040388</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>07dd06339ca56da2c564cf96074d587d</srcmd5>
+    <version>0.27</version>
+    <time>1704281044</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.27:
+  * add svg width height properties, override SVG style
+  * reformat sources with black, adjust flake8 rules accordingly
+  * remove redundant wheel dep from pyproject.toml
+  * create output file with unique file name
+
+- Update to version 0.24.1</comment>
+    <requestid>1135617</requestid>
+  </revision>
 </revisionlist>

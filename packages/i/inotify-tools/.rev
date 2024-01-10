@@ -106,4 +106,31 @@
     <comment></comment>
     <requestid>983714</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>84736045fe5e2aee80f38a5732534554</srcmd5>
+    <version>4.23.9.0</version>
+    <time>1704491908</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.23.9.0:
+  * support cross compile for Android
+  * libinotifytools: Rename init variable to fix conflict with
+    entry point
+  * Add CodeQL workflow for GitHub code scanning
+  * Fix build with musl and add Alpine buildnode to CI
+  * Update Cirrus CI FreeBSD images
+  * Fix enabling of fanotify/fsnotify.
+  * Fix fanotify_supported()
+  * Combine to one build machine, reduce test iteration to 64
+  * Add -fanalyzer to build
+  * Enable CentOS Stream 9 build
+  * Add debian 12
+  * Ensure C++ libraries are not linked in
+
+  * update path for includes in stats.h
+  * various static code analyse annotations and fixes
+  * New maintainer
+- Build noarch package for doc only for newer suse version, otherwise
+- initial package</comment>
+    <requestid>1135769</requestid>
+  </revision>
 </revisionlist>

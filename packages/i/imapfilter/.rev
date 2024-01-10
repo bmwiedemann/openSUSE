@@ -377,4 +377,30 @@ It now only builds for &gt;12.2, not sure if there is a simple fix to get it to 
     mailbox is selected.</comment>
     <requestid>1089470</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>458e469ad4b4a72b4326d7aa47ed1b74</srcmd5>
+    <version>2.8.2</version>
+    <time>1704281151</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.8.2:
+  * Add IMAP support for UTF-8 (RFC 6855) when &quot;charset&quot; is
+    set to &quot;UTF-8&quot;
+  * Don't use FETCH FAST macro use for better compatibility
+  * Bug fix; recovery mechanism error on Lua 5.1
+
+  * Bug fix; &quot;certificates&quot; option incorrectly controlled hostname validation.
+- fix build failure with lua 5.3. missing include directory.
+  * New makefile dist target, which can be used to create distribution archives.
+  - Bug fix; various corrections in the recovery mechanism.
+- update to version 2.5.2
+- fix build
+    library
+    multiple searching rules.
+    to set an alternative environment for the installation path.
+- fix segfault at start
+- fix requires
+- use pkgconfig to get lua libs
+- create package</comment>
+    <requestid>1135768</requestid>
+  </revision>
 </revisionlist>

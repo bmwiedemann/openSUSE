@@ -470,6 +470,7 @@ systemctl try-restart vmtoolsd.service || :
 
 %files
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
+%dir %_modulesloaddir
 %_modulesloaddir/vmw_vsock_vmci_transport.conf
 %endif
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 0120300

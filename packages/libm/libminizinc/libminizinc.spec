@@ -17,16 +17,21 @@
 
 
 Name:           libminizinc
-Version:        2.7.6
+Version:        2.8.2
 Release:        0
 Summary:        A high-level constraint modelling language
 Group:          Productivity/Scientific/Math
 License:        MPL-2.0
 URL:            https://www.minizinc.org/
 Source:         https://github.com/MiniZinc/libminizinc/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FEATURE-OPENSUSE - Be more verbose on thrown exceptions
+Patch0:         0001-Disambiguate-UNKNOWN-EXCEPTION.patch
+Patch1:         0002-Catch-std-exception-by-const-reference.patch
+Patch2:         0003-Try-to-get-some-more-information-when-catching.patch
 BuildRequires:  cmake >= 3.4.0
 BuildRequires:  gcc-c++
 BuildRequires:  gecode-devel
+BuildRequires:  gecode-minizinc
 BuildRequires:  pkgconfig(mpfr)
 
 %description
@@ -60,6 +65,21 @@ MiniZinc is a free and open-source constraint modeling language.
 
 %install
 %cmake_install
+
+%check
+cat > t.mzn <<EOF
+var 1..5: x;
+EOF
+cat > t1.mzc.mzn <<EOF
+output["SIMPLE CHECK"];
+EOF
+cat > t2.mzc.mzn <<EOF
+int: data :: add_to_output = 2;
+EOF
+export LD_LIBRARY_PATH=./build/
+./build/minizinc --solvers
+./build/minizinc t1.mzc.mzn t.mzn --output-mode json --output-time --output-objective --output-output-item --statistics
+./build/minizinc t2.mzc.mzn t.mzn --output-mode json --output-time --output-objective --output-output-item --statistics
 
 %post -n minizinc -p /sbin/ldconfig
 %postun -n minizinc -p /sbin/ldconfig

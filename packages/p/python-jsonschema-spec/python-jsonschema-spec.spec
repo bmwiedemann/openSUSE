@@ -1,7 +1,7 @@
 #
 # spec file for package python-jsonschema-spec
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,19 +23,22 @@ Release:        0
 Summary:        JSONSchema Spec with object-oriented paths
 License:        Apache-2.0
 URL:            https://github.com/p1c2u/jsonschema-spec
-Source:         https://github.com/p1c2u/jsonschema-spec/archive/refs/tags/%{version}.tar.gz#/jsonschema-spec-%{version}.tar.gz
+# The source URL has changed to a redirect to jsonschema-path (which is meanwhile packaged as well, in more recent version).
+# Due to dependencies (e.g. python-openapi-core) we still need 0.2.x and cannot switch to recent jsonschema-path
+# Source:         https://github.com/p1c2u/jsonschema-spec/archive/refs/tags/%{version}.tar.gz#/jsonschema-spec-%{version}.tar.gz
+Source:         jsonschema-spec-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.8.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core >= 1}
-BuildRequires:  python-rpm-macros
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML >= 5.1}
 BuildRequires:  %{python_module pathable >= 0.4.1}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module referencing >= 0.28.0}
-BuildRequires:  %{python_module responses >= 0.23.0}
 BuildRequires:  %{python_module requests >= 2.31.0}
+BuildRequires:  %{python_module responses >= 0.23.0}
 # /SECTION
 Requires:       python-PyYAML >= 5.1
 Requires:       python-pathable >= 0.4.1

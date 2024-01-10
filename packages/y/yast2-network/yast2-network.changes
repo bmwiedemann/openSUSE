@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec 13 12:07:00 UTC 2023 - Knut Alejandro Anderssen González <kanderssen@suse.com>
+
+- Read all the driver modules from hwinfo instead of just the first
+  driver ones (bsc#1217652).
+- 5.0.1
+
+-------------------------------------------------------------------
 Wed Aug 30 20:16:10 UTC 2023 - Josef Reidinger <jreidinger@suse.cz>
 
 - 5.0.0 (bsc#1185510)

@@ -291,4 +291,14 @@
 - add upstream patch to test with pytest5 - fix_tests.patch</comment>
     <requestid>1124082</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>64dc95f3b8a73f3ed84f7c566dcfbf3d</srcmd5>
+    <version>3.12.0</version>
+    <time>1703198241</time>
+    <user>anag+factory</user>
+    <comment>- Fix tests with python 3.11.7
+- Add patch fix-tests-python3117.patch gh#pytest-dev/pytest-mock#403
+</comment>
+    <requestid>1134209</requestid>
+  </revision>
 </revisionlist>

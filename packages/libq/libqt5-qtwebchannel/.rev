@@ -287,4 +287,12 @@
     <comment>Qt 5.15.11. Not fully built yet, qtlocation needed a fix. (forwarded request 1116057 from favogt)</comment>
     <requestid>1116132</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>198817043d4f770c90b4b2e64fc72990</srcmd5>
+    <version>5.15.12+kde3</version>
+    <time>1704380103</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.12 (+ some .16), untested (forwarded request 1135706 from favogt)</comment>
+    <requestid>1136128</requestid>
+  </revision>
 </revisionlist>

@@ -143,4 +143,27 @@
     * pyside2 and py311 XPASS a test, gh#pytest-dev/pytest-qt#419</comment>
     <requestid>1095240</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1eb1ab27e615e522848d9db10ee793d5</srcmd5>
+    <version>4.3.1</version>
+    <time>1704487553</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.3.1:
+  * Added official support for Python 3.12.
+  * Python 3.7 is no longer supported.
+  * qapp now sets up the QApplication instance with a command
+    line argument like this QApplication([prog_name]) instead of
+    using an empty list QApplication([]). Here prog_name is the
+    name of the app which defaults to pytest-qt-app, but can be
+    redefined in the pytest.ini file, see :ref:`qapp
+    fixture&lt;setting-qapp-name&gt;`. Alternatively, the arguments
+    that will be passed to QApplication can be defined explicitly
+    using the qapp_args fixture. This means that the default
+    behavior of the qapp_args fixture is now also changed
+    accordingly: it now returns the list [prog_name] instead of
+    an empty list.
+
+    `@The-Compiler`_ for the PR.</comment>
+    <requestid>1137115</requestid>
+  </revision>
 </revisionlist>

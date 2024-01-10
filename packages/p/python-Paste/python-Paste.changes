@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Dec 12 13:21:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.7.1:
+  * The main change for 3.7.0 and beyond is dropping support for
+    Python 2. In the past it was possible to get Paste to work in
+    Python 2 with some effort. That's now no longer possible. If
+    Python 2 is required for some reason, use an older version of
+    Paste.
+- update to 3.6.1:
+  * Turn on github action for tests on pull requests
+  * Add a Makefile for simple automation
+
+-------------------------------------------------------------------
 Mon Aug 28 04:41:38 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 3.5.3:
@@ -23,7 +36,7 @@ Mon Jan  9 05:47:04 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 -------------------------------------------------------------------
 Fri Sep  9 11:24:27 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- update to 3.5.2: 
+- update to 3.5.2:
   * Fix py3 compatibility in paste.wsgilib.catch_errors (#70)
   * A Python 3 application might only define `__next__`, not `next`.  Use
     `six.next` instead.
@@ -55,7 +68,7 @@ Fri Oct  9 04:10:19 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 - Update to 3.4.6:
   * Explicit pkg_resource dependency to easy packaging.
   * Remove deprecated dependencies paste/fixture.py.
-  * Update setup.py to work with setuptools 50.1.0+ 
+  * Update setup.py to work with setuptools 50.1.0+
 
 -------------------------------------------------------------------
 Tue Aug  4 12:08:43 UTC 2020 - Dirk Mueller <dmueller@suse.com>
@@ -196,7 +209,7 @@ Tue Mar  6 17:00:13 UTC 2018 - aplanas@suse.com
 Tue Feb 27 13:47:03 UTC 2018 - aplanas@suse.com
 
 - Suggest only for SUSE
-- Use %{__python3} macro 
+- Use %{__python3} macro
 
 -------------------------------------------------------------------
 Wed Aug  9 16:21:38 UTC 2017 - tbechtold@suse.com

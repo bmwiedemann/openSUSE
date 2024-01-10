@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec 29 10:10:49 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.16:
+  * Fixed detection UTF-16 Strings files.
+  * Fixed detection of files with some special chars.
+  * Added support for Mobile Kotlin resources.
+
+-------------------------------------------------------------------
 Tue Mar 21 15:28:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.15:
@@ -9,7 +17,7 @@ Tue Mar 21 15:28:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Tue Oct 11 16:06:32 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 2.14 
+- Update to version 2.14
   * Released on 11th August 2022.
   * Added detection of XLIFF format variants.
   * Added support for TXT format.

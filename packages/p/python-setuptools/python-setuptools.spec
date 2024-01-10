@@ -38,7 +38,7 @@
 %define mypython python
 %{?sle15_python_module_pythons}
 Name:           python-setuptools%{psuffix}
-Version:        68.1.2
+Version:        69.0.2
 Release:        0
 Summary:        Download, build, install, upgrade, and uninstall Python packages
 License:        Apache-2.0 AND MIT AND BSD-2-Clause AND Python-2.0
@@ -47,8 +47,8 @@ Source:         https://files.pythonhosted.org/packages/source/s/setuptools/setu
 Patch0:         sort-for-reproducibility.patch
 # PATCH-FIX-OPENSUSE fix-get-python-lib-python38.patch bsc#1204395
 Patch2:         fix-get-python-lib-python38.patch
-# PATCH-FIX-UPSTREAM https://github.com/pypa/setuptools/pull/4023 Address circular imports complaints by Sphinx 7.2+
-Patch3:         sphinx72.patch
+# PATCH-FIX-OPENSUSE Allow forcing direct compilation, see gh#pypa/setuptools#4164
+Patch3:         allow-only-direct-compilation.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -105,6 +105,7 @@ rm -f setuptools/*.exe
 
 %install
 %if !%{with test} && !%{with wheel}
+export SETUPTOOLS_FORCE_DIRECT=True
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif

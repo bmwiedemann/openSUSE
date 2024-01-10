@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-video
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,20 @@
 
 %define octpkg  video
 Name:           octave-forge-%{octpkg}
-Version:        2.0.2
+Version:        2.1.1
 Release:        0
 Summary:        A wrapper for OpenCV's CvCapture_FFMPEG and CvVideoWriter_FFMPEG
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
-URL:            http://octave.sourceforge.net
-Source0:        http://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
+URL:            https://gnu-octave.github.io/packages/video/
+Source0:        https://github.com/Andy1978/octave-video/releases/download/%{version}/video-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  hdf5-devel
 BuildRequires:  pkgconfig(octave)
-BuildRequires:  pkgconfig(libavcodec) < 59
-BuildRequires:  pkgconfig(libavformat) < 59
-BuildRequires:  pkgconfig(libswscale) < 6
-Requires:       octave-cli >= 4.4.0
+BuildRequires:  pkgconfig(libavcodec) >= 58.35.100
+BuildRequires:  pkgconfig(libavformat) >= 58.20.100
+BuildRequires:  pkgconfig(libswscale) >= 5.3.100
+Requires:       octave-cli >= 4.4.1
 
 %description
 A wrapper for OpenCV's CvCapture_FFMPEG and CvVideoWriter_FFMPEG.

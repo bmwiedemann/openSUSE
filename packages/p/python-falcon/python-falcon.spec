@@ -1,7 +1,7 @@
 #
 # spec file for package python-falcon
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -55,7 +55,6 @@ BuildRequires:  %{python_module websockets if (%python-base without python36-bas
 # /SECTION
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-pygments-style-railscasts
 #Requires:       python-Cython
 Requires(post): update-alternatives
 Requires(postun):update-alternatives

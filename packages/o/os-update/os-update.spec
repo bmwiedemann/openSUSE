@@ -1,7 +1,7 @@
 #
 # spec file for package os-update
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -91,7 +91,11 @@ install -m 644 -D etc/default/systemd-status-mail %{buildroot}%{_distconfdir}/de
 %files
 %license COPYING
 %doc README.md
+%if 0%{?suse_version} < 1550
+%config(noreplace) %{_sysconfdir}/os-update.conf
+%else
 %{_distconfdir}/os-update.conf
+%endif
 %{_libexecdir}/os-update
 %{_prefix}/lib/systemd/system/os-update.service
 %{_prefix}/lib/systemd/system/os-update.timer

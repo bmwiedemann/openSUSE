@@ -24,6 +24,7 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Other
 URL:            https://apps.kde.org/kronometer
 Source:         https://download.kde.org/stable/kronometer/%{version}/src/%{name}-%{version}.tar.xz
+BuildRequires:  extra-cmake-modules
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5Crash)
 BuildRequires:  cmake(KF5DocTools)

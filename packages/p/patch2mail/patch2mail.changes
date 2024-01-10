@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov  3 18:00:17 UTC 2023 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Migrate from cron to systemd-timers. 
+
+-------------------------------------------------------------------
 Tue Aug 20 11:26:06 CEST 2019 - kukuk@suse.de
 
 - BuildRequire cron, as it contains now the cron directories

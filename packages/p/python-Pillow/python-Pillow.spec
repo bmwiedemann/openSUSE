@@ -16,12 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
-%define skip_python36 1
 %{?sle15_python_module_pythons}
 Name:           python-Pillow
-Version:        10.0.1
+Version:        10.1.0
 Release:        0
 Summary:        Python Imaging Library (Fork)
 License:        HPND

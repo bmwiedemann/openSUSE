@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Thu Dec 21 14:30:24 UTC 2023 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to 1.21.0:
+  * Add parent context modifier for path fields
+
+-------------------------------------------------------------------
+Wed Dec 13 20:28:22 UTC 2023 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to 1.20.0:
+  * Added:
+    + Add bypass-selection option to the wheel build target to
+      allow for empty (metadata-only) wheels
+  * Fixed:
+    + Fix regression in 1.19.1 that allowed exclude to count toward
+      inclusion selection, thus bypassing the default inclusion
+      selection heuristics
+    + Fix writing optional dependency core metadata in situations
+      where there are multiple environment markers
+- additional changes from version 1.19.1:
+  * Fixed:
+    + Add better error message when the wheel build target cannot
+      determine what to ship
+    + Consider forced inclusion patterns and build-time artifacts
+      as file selection since some build hooks generate the entire
+      wheel contents without user configuration
+- additional changes from version 1.19.0:
+  * Changed:
+    + An error will now be raised if a force-included path does not
+      exist
+    + An error will now be raised for the wheel build target if no
+      file selection options are defined
+  * Added:
+    + Officially support Python 3.12
+    + Allow using an empty string for the sources option to add a
+      prefix to distribution paths
+  * Fixed:
+    + Properly handle non-zero version epoch for the standard
+      version scheme
+    + Fix the wheel build target for case insensitive file systems
+      when the project metadata name does not match the directory
+      name on disk
+    + The app build target no longer has suppressed output
+    + Prevent duplicate paths when projects require the sources
+      option while build hooks overwrite included paths
+    + Properly escape spaces for URI context formatting
+
+-------------------------------------------------------------------
 Wed Jun 21 08:25:58 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.18.0

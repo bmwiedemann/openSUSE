@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec 12 20:24:21 UTC 2023 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 6.0.11:
+  * Resolve cgi module deprecation warnings. (#330)
+- remove python_module definition: provided by python-rpm-macros
+- drop python-xml requirement: not needed anymore
+
+-------------------------------------------------------------------
 Tue Jun 27 13:08:16 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Dec 15 12:27:39 UTC 2023 - me@cimba.li
+
+-   Update to v1.8.5
+    *   Include missing standard PDF fonts on Windows, which caused
+        pdfs that don't include fonts (e.g. images from ggplot2) to
+        have symbols that were not rendered
+    *   Fix high-DPI (scaling ≥ 200%) blurriness on Windows
+    *   document and improve error messaging for Gstreamer's Gtk
+        plugin dependency (libgstgtk)
+
+-------------------------------------------------------------------
 Thu Sep  7 14:21:28 UTC 2023 - me@cimba.li
 
 -   Update to v1.8.4

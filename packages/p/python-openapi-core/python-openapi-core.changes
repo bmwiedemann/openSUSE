@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Dec 17 02:22:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.18.2:
+  * Deprecated spec validator fix + warnings resolved #717
+
+-------------------------------------------------------------------
 Sat Sep 23 10:34:22 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.18.1
@@ -110,7 +116,7 @@ Fri Dec  2 21:23:01 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
   Multi type unmarshaller #433
   Unmarshaller format refactor #434
 
-- Update to 0.16.1: 
+- Update to 0.16.1:
   lists as additional properties fix #429
   x-model extension optional #431
 
@@ -153,7 +159,7 @@ Wed Oct  5 05:34:35 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
   * Get rid of create_spec shortcut #393
   * Request and Response protocols #407
   * validator factories removed from validation shortcuts #408
-  * Predefined openapi validators #409 
+  * Predefined openapi validators #409
 - Drop Python 2 parts.
 - Fix {Build,}Requires.
 

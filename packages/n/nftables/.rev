@@ -269,4 +269,23 @@
     <comment>- Update to release 1.0.9</comment>
     <requestid>1119119</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>a894b5350eb2862a61dd418de1a9e47c</srcmd5>
+    <version>1.0.9</version>
+    <time>1704380156</time>
+    <user>dimstar_suse</user>
+    <comment>- buildrequire setuptools explicitly as pip drops the dependency
+
+  * Support for matching on the target address of a IPv6 neighbour
+    is populated from the packet path (forwarded request 1136698 from dirkmueller)</comment>
+    <requestid>1136762</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>45806e8fc2d74a258e3527a894cf86c2</srcmd5>
+    <version>1.0.9</version>
+    <time>1704659945</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1137257</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-graphene
-Version:        3.2.1
+Version:        3.3.0
 Release:        0
 Summary:        GraphQL Framework for Python
 License:        MIT

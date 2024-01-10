@@ -4,6 +4,7 @@ Mon Mar  6 16:32:02 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
 - Update to 0.9.6:
   * CVE-2023-1018: tpm2: Fixed out of bounds read in CryptParameterDecryption (bsc#1206023)
   * CVE-2023-1017: tpm2: Fixed out of bounds write in CryptParameterDecryption (bsc#1206022)
+- 0001-tpm2-Check-size-of-buffer-before-accessing-it-CVE-20.patch: upstreamed
 
 -------------------------------------------------------------------
 Sat Dec  3 09:56:13 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -45,6 +46,10 @@ Thu Dec  9 19:57:51 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
   * tpm2: bug fixes
 - Drop upstream fixed libtpms-CVE-2021-3746.patch
 - Fixed CVE-2021-3623 (bsc#1187767)
+- Used in SLE:
+  0001-tpm2-Reset-TPM2B-buffer-sizes-after-test-fails-for-v.patch
+  0002-tpm2-Add-maxSize-parameter-to-TPM2B_Marshal-for-sani.patch
+  0003-tpm2-Restore-original-value-if-unmarsalled-value-was.patch
 
 -------------------------------------------------------------------
 Tue Aug 31 16:36:31 UTC 2021 - pgajdos@suse.com

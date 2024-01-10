@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Wed Dec 20 15:41:29 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 4.3.8.0:
+  * added random push delay for rocks, nuts and bombs to Emerald Mine game engine
+  * added support for fading in and fading out global animations
+  * added support for setting alpha value for global animations
+  * added support for setting alpha value for envelope style request dialogs
+  * added showing game actions after game end when request dialog opens/closes
+  * fixed bug with invisible envelope request if request background is masked
+  * fixed using masked elements when using element graphic for empty space
+  * fixed bug with loading artwork if only one “special” artwork set exists
+  * fixed various bugs and problems with global animations (thanks, Eizzoux!)
+
+- Update to version 4.3.7.0:
+  * added highlighting similar elements in editor when pressing Alt+Shift keys
+  * added highlighting single MM wall tiles in editor when pressing Alt key
+  * added options “played_header” and “played” to music file info
+  * added support for custom elements triggering global animations
+  * added support for CE change pages triggering global animations
+  * added setting global animation position from CE triggering that animation
+  * added option to not trigger further animations if CE change event consumed
+  * added pausing global animations on playfield if game engine is paused
+  * added new animation mode “level_nr” to select frame according to level
+  * added selecting element for group elements according to current level
+  * added options “game.forced_scroll_x” and “game.forced_scroll_y”
+  * fixed drawing (maybe redefined) empty space around MM style level in editor
+  * fixed crash bug on info screen if music set has no unconfigured music
+  * fixed bugs when using music sets without unconfigured game music
+  * fixed broken animation of CE that can not change, but has CE delay action
+  * fixed bug with checking for mouse events used by custom elements
+  * fixed playfield redraw bug when closing envelope after asking to play again
+  * fixed setting global animation sync frame when started with “.init_event”
+  * fixed one-frame delay when global animations leave “init” state
+  * fixed CE condition that checks touching the player at some side
+  * fixed drawing envelope request to be always on top of tile cursor
+  * fixed drawing envelope request to be always on top of global animations
+  * fixed bug with CE change setting the player to its current position
+  * fixed bug with CE replacing exploding player, causing half-dead player
+  * fixed broken player option “no centering when relocating”
+  * fixed half-tile shifting when teleporting between playfield borders
+  * fixed bug with using wrong global border when restarting the game
+
+-------------------------------------------------------------------
 Mon Jul  3 12:56:48 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 4.3.6.0:

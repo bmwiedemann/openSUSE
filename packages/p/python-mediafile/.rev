@@ -35,4 +35,18 @@
     <comment></comment>
     <requestid>1082794</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>cf7961ec095e7789ba0c15121f9aa28c</srcmd5>
+    <version>0.12.0</version>
+    <time>1702845172</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.12.0:
+  * Add the multiple-valued properties artists_credit, artists_sort,
+    albumartists_credit, and albumartists_sort.
+- drop python-mediafile-pyupgrade.patch
+- add python-mediafile-remove-six.patch
+
+- Update to version 0.10.0</comment>
+    <requestid>1133651</requestid>
+  </revision>
 </revisionlist>

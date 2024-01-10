@@ -1,7 +1,7 @@
 #
 # spec file for package python-merge3
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ License:        GPL-2.0-or-later
 URL:            https://www.breezy-vcs.org/
 Source:         https://files.pythonhosted.org/packages/source/m/merge3/merge3-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

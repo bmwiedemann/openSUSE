@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jan  6 17:11:21 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- SUSEPrime-0.8.14
+  * added prime-run script for easier offload mode usage (github issue#96) 
+
+-------------------------------------------------------------------
 Thu May  4 17:55:50 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add explicit pciutils Requires: prime-select.sh expects lspci to

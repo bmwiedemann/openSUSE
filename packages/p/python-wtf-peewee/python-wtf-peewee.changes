@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 29 10:23:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- udpate to 3.0.5:
+  * Workaround for backwards-incompatible clown change in wtforms
+    3.1.0
+
+-------------------------------------------------------------------
 Sat Apr 16 18:18:59 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.0.4:
@@ -21,7 +28,7 @@ Sat Apr 16 12:29:46 UTC 2022 - Matej Cepl <mcepl@suse.com>
   - optional if 1) null=True or 2) has a default value or 3) can
     be blank…
   - fixed tests
-  - Indicate python3 compatible in setup.py 
+  - Indicate python3 compatible in setup.py
   - Fix old peewee reference.
   - Small tweaks.
   - Update app.py

@@ -12,24 +12,15 @@ to do it. As we have a vendor suffix, no filename conflicts can occur.
 One needs to look at the diff between versions. If in doubt, just
 always bump, specifically(!) the SO major.
 
-Index: wxWidgets-3.2.1/build/aclocal/bakefile.m4
+---
+ Makefile.in               |    5 +++--
+ build/aclocal/bakefile.m4 |    3 +--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+Index: wxWidgets-3.2.4/Makefile.in
 ===================================================================
---- wxWidgets-3.2.1.orig/build/aclocal/bakefile.m4
-+++ wxWidgets-3.2.1/build/aclocal/bakefile.m4
-@@ -408,8 +408,7 @@ AC_DEFUN([AC_BAKEFILE_SHARED_VERSIONS],
-             SONAME_FLAG="-Wl,-soname,"
-         fi
-         USE_SOVERSION=1
--        USE_SOVERLINUX=1
--        USE_SOTWOSYMLINKS=1
-+        USE_SOVERSOLARIS=1
-       ;;
- 
-       *-*-solaris2* )
-Index: wxWidgets-3.2.1/Makefile.in
-===================================================================
---- wxWidgets-3.2.1.orig/Makefile.in
-+++ wxWidgets-3.2.1/Makefile.in
+--- wxWidgets-3.2.4.orig/Makefile.in
++++ wxWidgets-3.2.4/Makefile.in
 @@ -2225,6 +2225,7 @@ LOCALE_LINGUAS = ca cs da de el es fi fr
  @COND_OFFICIAL_BUILD_0_PLATFORM_WIN32_1@WXCOMPILER = _gcc
  @COND_OFFICIAL_BUILD_1_PLATFORM_WIN32_1@WXCOMPILER \
@@ -48,11 +39,25 @@ Index: wxWidgets-3.2.1/Makefile.in
  COND_wxUSE_REGEX_builtin___wxregex___depname = \
  	$(LIBDIRNAME)/$(LIBPREFIX)wxregex$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR)-$(WX_RELEASE)$(HOST_SUFFIX)$(LIBEXT)
 @@ -13981,7 +13982,7 @@ COND_MONOLITHIC_0_SHARED_1_USE_GUI_1_USE
- @COND_PLATFORM_MACOSX_1_USE_SOVERSION_1@	= .0.2.1.$(SO_SUFFIX)
+ @COND_PLATFORM_MACOSX_1_USE_SOVERSION_1@	= .0.2.2.$(SO_SUFFIX)
  @COND_USE_SOVERCYGWIN_1_USE_SOVERSION_1@dll___targetsuf3 = -0.$(SO_SUFFIX)
  @COND_USE_SOVERSION_0@dll___targetsuf3 = .$(SO_SUFFIX)
 -@COND_USE_SOVERSION_1_USE_SOVERSOLARIS_1@dll___targetsuf3 = .$(SO_SUFFIX).0
-+@COND_USE_SOVERSION_1_USE_SOVERSOLARIS_1@dll___targetsuf3 = .$(SO_SUFFIX).9.0.0
++@COND_USE_SOVERSION_1_USE_SOVERSOLARIS_1@dll___targetsuf3 = .$(SO_SUFFIX).10.0.0
  @COND_TOOLKIT_MSW@__RCDEFDIR_p = --include-dir \
  @COND_TOOLKIT_MSW@	$(LIBDIRNAME)/wx/include/$(TOOLCHAIN_FULLNAME)
  @COND_USE_GUI_1_wxUSE_LIBTIFF_builtin@__LIB_TIFF_p \
+Index: wxWidgets-3.2.4/build/aclocal/bakefile.m4
+===================================================================
+--- wxWidgets-3.2.4.orig/build/aclocal/bakefile.m4
++++ wxWidgets-3.2.4/build/aclocal/bakefile.m4
+@@ -408,8 +408,7 @@ AC_DEFUN([AC_BAKEFILE_SHARED_VERSIONS],
+             SONAME_FLAG="-Wl,-soname,"
+         fi
+         USE_SOVERSION=1
+-        USE_SOVERLINUX=1
+-        USE_SOTWOSYMLINKS=1
++        USE_SOVERSOLARIS=1
+       ;;
+ 
+       *-*-solaris2* )

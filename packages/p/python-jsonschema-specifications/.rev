@@ -65,4 +65,13 @@ update to 2023.6.1</comment>
     <comment></comment>
     <requestid>1130174</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>25aff5358de40980d20f9d57b5222ca4</srcmd5>
+    <version>2023.12.1</version>
+    <time>1703800487</time>
+    <user>anag+factory</user>
+    <comment>- update to 2023.12.1:
+  * Ignore dotfiles when collectimg schemas</comment>
+    <requestid>1135282</requestid>
+  </revision>
 </revisionlist>

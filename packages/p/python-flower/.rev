@@ -114,4 +114,41 @@
 - Clean up python 2 bcond, it is no longer supported.</comment>
     <requestid>988794</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>59d4d43a996f88c7dea6f6f4b0208f24</srcmd5>
+    <version>2.0.1</version>
+    <time>1704659983</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.1:
+  * Ask for safe args strings when calling inspect.active
+  * Enable basic auth for api, fixes
+  * Allow non integer rate limits like 3/m
+  * Provide support for Python 3.10 and 3.11
+  * Drop python 3.6 support
+  * Improve error message
+- drop remove-mock.patch: upstream
+- drop backport_run_in_executor.patch: obsolete
+
+- add python-rpm-macros dependency
+  * Fixing GitHub OAuth callback handling
+  * Switch away from Google+ OAuth2
+  * Fix a bug in humanizing timestamps on the tasks page
+  * Removed 500px height limitation
+  * Fixed Python 3 mistake in Github Login Handler
+  * Support environment variables in tornado 4.2.0 and &gt;=4.3
+  * Fix XSS on tasks page
+  * Replace websokets with ajax
+  * Fix bug in tasks page template
+  * Fix celery version comparsion
+  * Refactor version comparision
+  * Use redis as default broker
+  * Update dashboard counters on worker table updates
+  * Move shut down group button to worker page
+  * Update navbar title
+  * Add a script for calling tasks
+  * Add a link to worker name
+  * Remove active task start time from worker page
+  * Fix py3 json serialization</comment>
+    <requestid>1137292</requestid>
+  </revision>
 </revisionlist>

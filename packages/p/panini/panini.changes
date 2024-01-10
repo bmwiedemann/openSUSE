@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec 20 14:34:54 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.74.0:
+  * Use QErrorMessage instead of static QMessageBox in error handler (#10)
+  * Fix C++17 does not allow register storage class specifier (#16)
+
+-------------------------------------------------------------------
 Tue Nov 16 13:57:12 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Disable on Arm, since build fails

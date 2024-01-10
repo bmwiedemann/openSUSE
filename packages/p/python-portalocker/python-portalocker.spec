@@ -1,7 +1,7 @@
 #
 # spec file for package python-portalocker
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,17 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-portalocker
-Version:        2.7.0
+Version:        2.8.2
 Release:        0
 Summary:        Locking library for Python
 License:        Python-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/WoLpH/portalocker
 Source:         https://github.com/WoLpH/portalocker/archive/v%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 3.4.0}
 BuildRequires:  %{python_module setuptools >= 38.3.0}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Suggests:       python-redis
@@ -47,10 +49,10 @@ recommended however.
 rm pytest.ini
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -62,6 +64,6 @@ rm pytest.ini
 %license LICENSE
 %doc README.rst
 %{python_sitelib}/portalocker
-%{python_sitelib}/portalocker-%{version}*-info
+%{python_sitelib}/portalocker-%{version}.dist-info
 
 %changelog

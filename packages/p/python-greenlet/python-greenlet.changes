@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jan  3 10:40:03 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- require setuptools
+
+-------------------------------------------------------------------
+Sun Dec 17 01:45:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.2:
+  * Packaging: Add a minimal ``pyproject.toml`` to sdists.
+  * Packaging: Various updates to macOS wheels.
+  * Fix a test case on Arm32. Note that this is not a supported
+    platform (there is no CI for it) and support is best effort;
+
+-------------------------------------------------------------------
 Mon Nov 27 15:46:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.0.1:

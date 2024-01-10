@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 20 15:57:44 UTC 2023 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- minor fixes for setup-pulseaudio
+  * be sure /etc/profile.d/pulseaudio.sh exists before using grep
+
+-------------------------------------------------------------------
 Wed Sep 20 09:41:37 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Remove with_old_webrtc define since webrtc-audio-processing 1.3

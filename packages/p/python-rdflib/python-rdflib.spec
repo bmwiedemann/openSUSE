@@ -26,6 +26,7 @@ Summary:        A Python library for working with RDF
 License:        BSD-3-Clause
 URL:            http://rdflib.net/
 Source:         https://files.pythonhosted.org/packages/source/r/rdflib/rdflib-%{version}.tar.gz
+Patch0:         reproducible.patch
 BuildRequires:  %{python_module html5lib}
 BuildRequires:  %{python_module isodate}
 BuildRequires:  %{python_module pyparsing}
@@ -66,6 +67,7 @@ The library also contains both in-memory and persistent Graph backends.
 
 %prep
 %setup -q -n rdflib-%{version}
+%patch0 -p1
 # remove unwanted shebang
 find rdflib -name "*.py" | xargs sed -i '1 { /^#!/ d }'
 

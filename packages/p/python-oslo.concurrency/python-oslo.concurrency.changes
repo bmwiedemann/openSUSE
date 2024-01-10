@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jan  4 09:11:38 UTC 2024 - cloud-devel@suse.de
+
+- update to version 5.2.0
+  - Update master for stable/2023.1
+  - Imported Translations from Zanata
+  - Revert "Moves supported python runtimes from version 3.8 to 3.10"
+  - Bump bandit
+  - Moves supported python runtimes from version 3.8 to 3.10
+
+-------------------------------------------------------------------
+Wed May  3 12:25:13 UTC 2023 - cloud-devel@suse.de
+
+- update to version 5.1.1
+  - Fix issues related to tox4
+  - Cleanup py27 support
+  - Imported Translations from Zanata
+
+-------------------------------------------------------------------
 Mon Mar  6 15:22:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - avoid eventlet lockup

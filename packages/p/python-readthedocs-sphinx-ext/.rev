@@ -117,4 +117,23 @@
 - Update to version 2.1.9</comment>
     <requestid>1109531</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>95d7a7e9ed09a516c370529d735be984</srcmd5>
+    <version>2.2.4</version>
+    <time>1702844931</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.2.4:
+  * Reduce loglevel to info
+  * Keep default Search.init behavior if addons injected</comment>
+    <requestid>1133554</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>1d55618d41383db8982f85345e0c9193</srcmd5>
+    <version>2.2.5</version>
+    <time>1704491897</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.2.5:
+  * Revert &quot;Keep default Search.init behavior if addons injected</comment>
+    <requestid>1135627</requestid>
+  </revision>
 </revisionlist>

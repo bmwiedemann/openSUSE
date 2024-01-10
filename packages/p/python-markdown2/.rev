@@ -162,4 +162,19 @@ of Markdown.</comment>
   * [pull #513] Fix relative links not working in safe mode</comment>
     <requestid>1131747</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>60abc6857c50678f0dfef10c74ae31a6</srcmd5>
+    <version>2.4.12</version>
+    <time>1703198312</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.4.12:
+  * Update `markdown-in-html` extra to handle markdown on same
+    line as HTML (#546)
+  * Fix tables with trailing whitespace not being recognized
+  * Fix multiple instances of strong emphasis (`**`)
+    in one line (#541)
+  * Fix incorrect parsing of links after square
+    brackets (#552)</comment>
+    <requestid>1134336</requestid>
+  </revision>
 </revisionlist>

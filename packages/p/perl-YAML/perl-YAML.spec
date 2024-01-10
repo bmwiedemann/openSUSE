@@ -1,7 +1,7 @@
 #
 # spec file for package perl-YAML
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,23 +16,45 @@
 #
 
 
-Name:           perl-YAML
-Version:        1.30
-Release:        0
 %define cpan_name YAML
-Summary:        YAML Ain't Markup Language™
+Name:           perl-YAML
+Version:        1.310.0
+Release:        0
+%define cpan_version 1.31
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/T/TI/TINITA/%{cpan_name}-%{version}.tar.gz
+Summary:        YAML Ain't Markup Language™
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/I/IN/INGY/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Test::Deep)
 BuildRequires:  perl(Test::More) >= 0.88
 BuildRequires:  perl(Test::YAML) >= 1.05
+Provides:       perl(YAML) = %{version}
+Provides:       perl(YAML::Any) = %{version}
+Provides:       perl(YAML::Dumper)
+Provides:       perl(YAML::Dumper::Base)
+Provides:       perl(YAML::Error)
+Provides:       perl(YAML::Loader)
+Provides:       perl(YAML::Loader::Base)
+Provides:       perl(YAML::Marshall)
+Provides:       perl(YAML::Mo)
+Provides:       perl(YAML::Node)
+Provides:       perl(YAML::Tag)
+Provides:       perl(YAML::Type::blessed)
+Provides:       perl(YAML::Type::code)
+Provides:       perl(YAML::Type::glob)
+Provides:       perl(YAML::Type::ref)
+Provides:       perl(YAML::Type::regexp)
+Provides:       perl(YAML::Type::undef)
+Provides:       perl(YAML::Types)
+Provides:       perl(YAML::Warning)
+Provides:       perl(yaml_mapping)
+Provides:       perl(yaml_scalar)
+Provides:       perl(yaml_sequence)
+%define         __perllib_provides /bin/true
 %{perl_requires}
 
 %description
@@ -46,11 +68,11 @@ programming languages. (Including Perl!!!)
 For information on the YAML syntax, please refer to the YAML specification.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -61,7 +83,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes CONTRIBUTING README
 %license LICENSE
 

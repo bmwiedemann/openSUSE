@@ -1,15 +1,15 @@
 <services>
-  <service mode="disabled" name="tar_scm">
+  <service mode="manual" name="tar_scm">
     <param name="url">https://github.com/ioquake/ioq3.git</param>
-    <param name="revision">70d07d91d62dcdd2f2268d1ac401bfb697b4c991</param>
+    <param name="revision">main</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
     <param name="filename">ioquake3</param>
     <param name="versionformat">1.36+git.%cd</param>
   </service>
-  <service mode="disabled" name="recompress">
+  <service mode="manual" name="recompress">
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>
-  <service mode="disabled" name="set_version"/>
+  <service mode="manual" name="set_version"/>
 </services>

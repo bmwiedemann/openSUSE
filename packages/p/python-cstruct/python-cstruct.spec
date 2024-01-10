@@ -1,7 +1,7 @@
 #
 # spec file for package python-cstruct
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2020-2022, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           python-cstruct
-Version:        5.2
+Version:        5.3
 Release:        0
 Summary:        C-style structs for Python
 License:        MIT

@@ -382,4 +382,12 @@ adds .desktop files</comment>
   inspired by https://github.com/exg/rxvt-unicode/commit/16634bc8dd5fc4af62faf899687dfa8f27768d15</comment>
     <requestid>1117664</requestid>
   </revision>
+  <revision rev="46" vrev="3">
+    <srcmd5>932ef5319090c77c365be10cdbe5de00</srcmd5>
+    <version>9.31</version>
+    <time>1704380253</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1135993</requestid>
+  </revision>
 </revisionlist>

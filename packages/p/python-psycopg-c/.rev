@@ -15,4 +15,22 @@
     <comment></comment>
     <requestid>1128591</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>789c4e82182c09a36065ea264c235973</srcmd5>
+    <version>3.1.15</version>
+    <time>1702673305</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.1.15:
+  * Fix use of service in connection string
+  * Fix async connection to hosts resolving to multiple IP
+    addresses
+  * Respect the PGCONNECT_TIMEOUT environment variable to
+    determine the connection timeout.
+  * Psycopg 3.1.14
+  * Fix interaction with gevent (ticket #527).
+  * Add support for PyPy (ticket #686).
+
+- Initial release of 3.1.9</comment>
+    <requestid>1133195</requestid>
+  </revision>
 </revisionlist>

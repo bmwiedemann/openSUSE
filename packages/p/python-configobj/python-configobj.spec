@@ -1,7 +1,7 @@
 #
 # spec file for package python-configobj
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%define oldpython python
 %{?sle15_python_module_pythons}
 Name:           python-configobj
 Version:        5.0.8
@@ -25,23 +24,22 @@ Summary:        Config file reading, writing and validation
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/DiffSK/configobj
-Source:         https://files.pythonhosted.org/packages/source/c/configobj/configobj-%{version}.tar.gz
+# No tests in PyPI sdist
+Source:         https://github.com/DiffSK/configobj/archive/refs/tags/v%{version}.tar.gz#/configobj-%{version}-gh.tar.gz
 # PATCH-FIX-UPSTREAM https://github.com/DiffSK/configobj/pull/236 Address CVE-2023-26112 ReDoS
 Patch0:         CVE-2023-26112.patch
 # PATCH-FIX-UPSTREAM remove_six.patch gh#DiffSK/configobj#239 mcepl@suse.com
 # We don't need six anymore
 Patch1:         remove_six.patch
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-six
 BuildArch:      noarch
-# There are no real docs!
-%ifpython2
-Obsoletes:      %{oldpython}-configobj-docs < %{version}
-Provides:       %{oldpython}-configobj-docs = %{version}
-%endif
+# SECTION test
+BuildRequires:  %{python_module pytest}
+# /SECTION
 %python_subpackages
 
 %description
@@ -73,9 +71,12 @@ It has lots of other features though:
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
+%check
+%pytest
+
 %files %{python_files}
 %{python_sitelib}/configobj
 %{python_sitelib}/validate
-%{python_sitelib}/configobj-%{version}*-info
+%{python_sitelib}/configobj-%{version}.dist-info
 
 %changelog

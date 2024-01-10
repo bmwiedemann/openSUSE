@@ -1,7 +1,7 @@
 #
 # spec file for package mrboom
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2018, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,16 +18,13 @@
 
 
 Name:           mrboom
-Version:        4.9
+Version:        5.3
 Release:        0
 Summary:        A Bomberman clone
 License:        MIT
 Group:          Amusements/Games/Action/Other
-URL:            http://mrboom.mumblecore.org
-#Git-Clone:     https://github.com/Javanaise/mrboom-libretro.git
-Source:         https://github.com/Javanaise/%{name}-libretro/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE mrboom-fix-build.patch mardnh@gmx.de -- Fix broken Makefile for standalone builds.
-Patch0:         mrboom-fix-build.patch
+URL:            https://github.com/Javanaise/mrboom-libretro
+Source:         https://github.com/Javanaise/mrboom-libretro/releases/download/%{version}/MrBoom-src-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
@@ -42,15 +39,13 @@ This is an SDL2 version of the original 1999 version of Mr. Boom.
 The goal of the game is to bomb away enemies and other players.
 
 %prep
-%setup -q -n %{name}-libretro-%{version}
-%patch0 -p1
-sed -i 's|GIT_VERSION := " $(shell git rev-parse --short HEAD)"|GIT_VERSION := " %{version}"|g' Makefile
+%setup -q -n MrBoom-src-%{version}
 
 %build
 export CFLAGS="%{optflags} -fPIE"
 export CXXFLAGS="%{optflags} -fPIE"
 export LDFLAGS="-pie"
-make mrboom LIBSDL2=1 %{?_smp_mflags}
+make mrboom LIBSDL2=1 %{?_smp_mflags} GIT_VERSION=" SUSE"
 
 %install
 %make_install PREFIX=%{_prefix} MANDIR=share/man/man6
@@ -60,14 +55,6 @@ for i in 16x16 32x32 48x48 256x256; do
 done
 # desktop file
 %suse_update_desktop_file -c %{name} %{name} "8 player Bomberman clone" %{name} %{name} Game ArcadeGame ActionGame
-
-%if 0%{?suse_version} < 1500
-%post
-%desktop_database_post
-
-%postun
-%desktop_database_postun
-%endif
 
 %files
 %doc README.md

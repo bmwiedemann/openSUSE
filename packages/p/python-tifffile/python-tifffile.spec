@@ -25,7 +25,7 @@
 %bcond_with test
 %endif
 Name:           python-tifffile%{psuffix}
-Version:        2023.8.30
+Version:        2023.12.9
 Release:        0
 Summary:        Read and write TIFF files
 License:        BSD-2-Clause

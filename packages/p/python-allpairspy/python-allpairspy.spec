@@ -1,7 +1,7 @@
 #
 # spec file for package python-allpairspy
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,14 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-allpairspy
-Version:        2.5.0
+Version:        2.5.1
 Release:        0
 License:        MIT
 Summary:        Pairwise test combinations generator
 URL:            https://github.com/thombashi/allpairspy
 Group:          Development/Languages/Python
 Source:         https://github.com/thombashi/allpairspy/archive/v%{version}.tar.gz#/allpairspy-%{version}.tar.gz
-# https://github.com/thombashi/allpairspy/commit/f6dcb1f3e5bc50b98422fee9c6d6fa8d5e7bc038
-Patch0:         python-allpairspy-no-six.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements

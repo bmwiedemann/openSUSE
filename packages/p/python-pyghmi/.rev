@@ -378,4 +378,33 @@
   * Add support for HTTP access to system configuration</comment>
     <requestid>1093365</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>47f904f885c5ee06c6d6a256e4abbc5c</srcmd5>
+    <version>1.5.63</version>
+    <time>1704487296</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.63:
+  * Provide generic redfish push update support
+  * Return empty tuple rather than None
+  * Expect timeout on reseat
+  * Reset seek on unwrapped zip
+  * Prefer first PCI device id
+  * Provide error checking using XCC hints
+  * Handle unseekable data
+  * Fix capitilazation consistency
+  * Trigger unwrapping only with singular update
+  * Apply uxz payload rather than whole zip to XCC
+  * Implement XCC override for health in redfish
+  * Avoid error on unexpected shutdown
+  * Add missing class to generic redfish support
+  * Correct missing lookup in generic OEM redfish
+  * Prepare redfish for OEM health
+  * Add deduplicated events and let XCC events control entirely
+  * Fix compatibility with python2
+  * Clear any logonwaiters on broken
+  * Handle non-numeric with 0 number format
+
+- Initial package (0.5.8)</comment>
+    <requestid>1136723</requestid>
+  </revision>
 </revisionlist>

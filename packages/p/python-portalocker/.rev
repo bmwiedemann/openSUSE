@@ -110,4 +110,17 @@
 </comment>
     <requestid>1084960</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3d15066db37216ae2e51f4459e68f65b</srcmd5>
+    <version>2.8.2</version>
+    <time>1704660166</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.8.2:
+  * Removed docs from build to fix #88 again
+- update to 2.8.0:
+  * Added support for Python 3.11 and 3.12
+    Made the package fully ruff, pyright and mypy compliant with
+    automated testsing using both tox and Github actions</comment>
+    <requestid>1137440</requestid>
+  </revision>
 </revisionlist>

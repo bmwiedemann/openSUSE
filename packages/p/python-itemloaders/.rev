@@ -23,4 +23,20 @@
     <comment></comment>
     <requestid>1006901</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>317271bdced8391121c4462bd276ab6d</srcmd5>
+    <version>1.1.0</version>
+    <time>1704659988</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.0:
+  * Added JMESPath support (`ItemLoader.add_jmes` etc.),
+    requiring Parsel 1.8.1+
+  * Added official support for Python 3.11
+  * Removed official support for Python 3.6
+  * Internal code cleanup
+
+- Update to v1.0.6
+- Required by python-Scrapy 2.5.0</comment>
+    <requestid>1137296</requestid>
+  </revision>
 </revisionlist>

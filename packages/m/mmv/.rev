@@ -142,4 +142,18 @@
   * https://github.com/rrthomas/mmv/commits/master</comment>
     <requestid>1094818</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>e8f23407a442fbe07f18b343b449e946</srcmd5>
+    <version>2.5.1</version>
+    <time>1704281397</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.5.1:
+  * This release fixes a crash introduced in 2.5, which seems to
+    be related to an unneeded update of gnulib. Hence, this
+    release simply reverts to the previous version of gnulib.
+- update to 2.5:
+  * This release stops mmv trying to copy a directory into
+    itself. (forwarded request 1135526 from dirkmueller)</comment>
+    <requestid>1136154</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package micropython
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           micropython
-Version:        1.20.0
+Version:        1.22.0
 Release:        0
 Summary:        Implementation of Python 3 with very low memory footprint
 License:        MIT

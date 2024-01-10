@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-parsel
-Version:        1.7.0
+Version:        1.8.1
 Release:        0
 Summary:        Library to extract data from HTML and XML using XPath and CSS selectors
 License:        BSD-3-Clause
@@ -27,14 +27,18 @@ Group:          Development/Languages/Python
 URL:            https://github.com/scrapy/parsel
 Source:         https://files.pythonhosted.org/packages/source/p/parsel/parsel-%{version}.tar.gz
 BuildRequires:  %{python_module cssselect >= 0.9}
+BuildRequires:  %{python_module jmespath}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module typing-extensions}
 BuildRequires:  %{python_module w3lib >= 1.19.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-cssselect >= 0.9
+Requires:       python-jmespath
 Requires:       python-lxml
+Requires:       python-typing-extensions
 Requires:       python-w3lib >= 1.19.0
 BuildArch:      noarch
 %ifpython2

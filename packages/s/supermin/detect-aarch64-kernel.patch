@@ -1,10 +1,10 @@
 References: bsc#1187532 - virt-make-fs hangs forever
 
-Index: supermin-5.2.2/src/format_ext2_kernel.ml
+Index: supermin-5.3.3/src/format_ext2_kernel.ml
 ===================================================================
---- supermin-5.2.2.orig/src/format_ext2_kernel.ml
-+++ supermin-5.2.2/src/format_ext2_kernel.ml
-@@ -129,7 +129,7 @@ and find_kernel_from_boot debug host_cpu
+--- supermin-5.3.3.orig/src/format_ext2_kernel.ml
++++ supermin-5.3.3/src/format_ext2_kernel.ml
+@@ -155,7 +155,7 @@ and find_kernel_from_boot debug host_cpu
      if files <> [] then files
      else (
        (* In original: ls -1dvr /boot/vmlinuz-* 2>/dev/null | grep -v xen *)
@@ -13,7 +13,7 @@ Index: supermin-5.2.2/src/format_ext2_kernel.ml
        let files = ignore_unbootable_kernels host_cpu files in
        files
      ) in
-@@ -235,9 +235,14 @@ and get_kernel_version debug kernel_file
+@@ -262,9 +262,14 @@ and get_kernel_version debug kernel_file
         else (
           basename
         ) in

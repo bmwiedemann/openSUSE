@@ -67,4 +67,14 @@
 - Do not build for Python 3.6, due to no NumPy.</comment>
     <requestid>1128725</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7fb5b95d9b5d1b79ee5cb741a053be54</srcmd5>
+    <version>0.7.1</version>
+    <time>1704829773</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.7.1:
+  * Incorrect setup of the logger is now fixed.
+  * Fixed missing environment variable in the docs.</comment>
+    <requestid>1137624</requestid>
+  </revision>
 </revisionlist>

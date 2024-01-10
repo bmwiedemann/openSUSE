@@ -1,7 +1,7 @@
 #
 # spec file for package ripgrep
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,8 @@
 
 
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
-
 Name:           ripgrep
-Version:        13.0.0
+Version:        14.1.0
 Release:        0
 Summary:        A search tool that combines ag with grep
 License:        MIT AND Unlicense
@@ -31,9 +30,9 @@ Source2:        cargo_config
 Source999:      README.suse-maint.md
 BuildRequires:  cargo
 BuildRequires:  pkgconf
+BuildRequires:  pkgconfig
 BuildRequires:  rust >= 1.31
 BuildRequires:  pkgconfig(libpcre2-posix)
-BuildRequires:  rubygem(asciidoctor)
 
 %description
 ripgrep is a line oriented search tool that combines the usability of
@@ -81,16 +80,20 @@ cargo build --release --features 'pcre2' %{?_smp_mflags}
 
 %install
 export RUSTFLAGS=%{rustflags}
-cargo install --path . --root=%{buildroot}%{_prefix}
+cargo install --path . --features 'pcre2' --root=%{buildroot}%{_prefix}
 
 # remove residue crate file
 rm -f %{buildroot}%{_prefix}/.crates*
 
-TARGETDIR=$(ls -d target/release/build/ripgrep-*/out|head -n1)
-install -Dm 644 ${TARGETDIR}/rg.1 %{buildroot}%{_mandir}/man1/rg.1
-install -Dm 644 ${TARGETDIR}/rg.bash %{buildroot}%{_datadir}/bash-completion/completions/rg
-install -Dm 644 ${TARGETDIR}/rg.fish %{buildroot}%{_datadir}/fish/vendor_completions.d/rg.fish
-install -Dm 644 complete/_rg %{buildroot}%{_datadir}/zsh/site-functions/_rg
+TARGETBIN=target/release/rg
+$TARGETBIN --generate man > rg.1
+$TARGETBIN --generate complete-bash > rg.bash
+$TARGETBIN --generate complete-fish > rg.fish
+$TARGETBIN --generate complete-zsh > rg.zsh
+install -Dm 644 rg.1 %{buildroot}%{_mandir}/man1/rg.1
+install -Dm 644 rg.bash %{buildroot}%{_datadir}/bash-completion/completions/rg
+install -Dm 644 rg.fish %{buildroot}%{_datadir}/fish/vendor_completions.d/rg.fish
+install -Dm 644 rg.zsh %{buildroot}%{_datadir}/zsh/site-functions/_rg
 
 %files
 %license LICENSE-MIT UNLICENSE

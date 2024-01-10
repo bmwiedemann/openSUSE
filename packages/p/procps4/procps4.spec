@@ -62,6 +62,8 @@ Patch33:        procps-ng-3.3.11-pmap4suse.patch
 Patch37:        procps-ng-4.0.0-floats.dif
 # PATCH-FIX-SUSE -- with 4.0.4 the totals on -X option are always reset for each pid
 Patch38:        procps-ng-4.0.4-pmapX-not-twice-anymore.patch
+# PATCH-FIX-SUSE -- ignore dangling symlink to missing /etc/sysctl.conf file
+Patch39:        procps-ng-4.0.4-ignore-sysctl_conf.patch
 BuildRequires:  automake
 BuildRequires:  dejagnu
 BuildRequires:  diffutils
@@ -149,6 +151,7 @@ the process information pseudo-file system.
 %patch -P33 -b .pmap4us
 %patch -P37
 %patch -P38
+%patch -P39
 
 %build
 test -s .tarball-version || echo %{version} > .tarball-version

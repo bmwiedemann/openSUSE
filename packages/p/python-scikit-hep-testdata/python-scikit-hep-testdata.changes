@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Dec 15 15:52:58 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.4.35:
+  * feat: for gh#scikit-hep/uproot5#1043.
+
+-------------------------------------------------------------------
+Mon Oct 23 12:56:48 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.4.34:
+  * feat: add uproot ntuple 6.29/01 files
+    (gh#scikit-hep/scikit-hep-testdata#131).
+
+-------------------------------------------------------------------
 Sun Oct  8 00:58:33 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.4.33:

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan  5 14:32:01 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 1.8:
+  * H2 queries to get data use wrong order for LIMIT and OFFSET (#5580)
+  * Cleaning some mess with limitQuery
+  * fix issue #5571, #5229, #5581, #5585
+  * update documentation and copyright year
+
+-------------------------------------------------------------------
 Fri Dec  1 15:04:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.7.12:

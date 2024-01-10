@@ -1394,4 +1394,12 @@
     <comment>Update to 1.27.1</comment>
     <requestid>1132460</requestid>
   </revision>
+  <revision rev="145" vrev="1">
+    <srcmd5>59c615e3566a5e14b82486f824a37347</srcmd5>
+    <version>1.27.2</version>
+    <time>1704829847</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1137683</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package uperf
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,15 @@
 
 
 Name:           uperf
-Version:        1.0.7
+Version:        1.0.8
 Release:        0
 Summary:        Unified Network Performance Tool
 License:        GPL-3.0-only
 Group:          Productivity/Networking/Diagnostic
 URL:            http://www.uperf.org/
-Source0:        https://github.com/uperf/uperf/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/uperf/uperf/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  lksctp-tools-devel
 BuildRequires:  openssl-devel
 
@@ -54,9 +56,10 @@ Some of the questions you could answer using uperf are
 and much more!
 
 %prep
-%setup -q
+%autosetup
 
 %build
+autoreconf --install
 %configure \
   --datadir="%{_datadir}/%{name}" \
   --enable-cpc \

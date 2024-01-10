@@ -45,9 +45,6 @@ BuildRequires:  pkgconfig(openssl)
 Requires:       gcc
 ExclusiveArch:  %{rust_tier1_arches}
 
-# Rustup now provides rust-analyzer which we take over.
-Provides:       rust-analyzer = 2022.09.11
-Obsoletes:      rust-analyzer < 2022.09.11
 
 # Ensure we can upgrate from ancient versions of rust that used
 # to ship these tools. We can probably remove this in the future.

@@ -207,4 +207,25 @@
     <comment></comment>
     <requestid>1126234</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>df1a780503b06a5ac9c3287f419d825d</srcmd5>
+    <version>2023.09.2</version>
+    <time>1702673189</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2023.09.02:
+  updates for Intel Meteor Lake (jsc#PED-6123,jsc#PED-6114,
+  jsc#PED-6104,jsc#PED-6067,jsc#PED-6045,jsc#PED-6036)
+
+  fixes for Intel Meteor Lake platforms (jsc#PED-6123,jsc#PED-6114,
+  jsc#PED-6104,jsc#PED-6067,jsc#PED-6045,jsc#PED-6036)</comment>
+    <requestid>1133359</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>a72a0945b0e5d5495a7191dd837d658d</srcmd5>
+    <version>2023.12</version>
+    <time>1704380112</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1136209</requestid>
+  </revision>
 </revisionlist>

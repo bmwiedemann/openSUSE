@@ -22,7 +22,7 @@
 %define with_gcc 11
 %endif
 Name:           jurand
-Version:        1.3.1
+Version:        1.3.2
 Release:        0
 Summary:        A tool for manipulating Java symbols
 License:        Apache-2.0
@@ -30,7 +30,7 @@ Group:          Development/Languages/Java
 URL:            https://github.com/fedora-java/jurand
 Source0:        https://github.com/fedora-java/jurand/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         jurand-cxx20.patch
-BuildRequires:  asciidoc
+BuildRequires:  %{rb_default_ruby_suffix}-rubygem-asciidoctor
 BuildRequires:  diffutils
 BuildRequires:  make
 BuildRequires:  xmlto
@@ -76,6 +76,6 @@ export CC=gcc-%{with_gcc}
 %dir %{_rpmconfigdir}
 %dir %{_rpmmacrodir}
 %license LICENSE NOTICE
-%doc README.md
+%doc README.adoc
 
 %changelog

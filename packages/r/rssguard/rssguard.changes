@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Wed Dec 20 22:32:55 UTC 2023 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to version 4.6.3
+  * Added:
+    - Lite internal web browser now properly decodes all HTML pages according
+      to their declared encoding.
+    - Image downscaling in lite browser is faster.
+    - Icon for classic RSS/ATOM accounts is now changeable.
+      (gh#martinrotter/rssguard#695)
+    - If main window is active then "fetching started" notifications are not
+      delivered. (gh#martinrotter/rssguard#597)
+    - Number of child feed/categories is now shown for each category.
+      (gh#martinrotter/rssguard#1183)
+  * Fixed:
+    - MPV libs were moved to separate Git submodule.
+      (gh#martinrotter/rssguard#1250)
+    - Applied workaround to fix PC not sleeping after sound is played.
+      (gh#martinrotter/rssguard#1118)
+    - Fixed problem with disappearing tabs.
+- Update to version 4.6.2
+  * Fixed:
+    - Fixed "Browse" button not working in "Media player" tab of settings
+      dialog. (gh#martinrotter/rssguard#1245)
+    - Was crashing on Linux. (gh#martinrotter/rssguard#1244)
+- Update to version 4.6.0
+  * Added:
+    - Media/podcast player capabilities. (gh#martinrotter/rssguard#1226)
+    - Indication of which feed is actually fetching at the moment can be
+      enabled in settings. (gh#martinrotter/rssguard#1203)
+    - Newspaper view was removed as it was slow and very buggy. It might be
+      replaced by something better in the future.
+    - Sections of settings now have icons.
+    - Docs updated.
+    - Layout of articles in default nudus-* skins was unified for full/lite
+      versions. Formatting is now very similar.
+    - Image size/wrapping behavior was greatly improved in article viewer,
+      particularly in lite version.
+  * Fixed:
+    - Context menus in both full/lite article viewer are now more similar.
+    - Fixed crashing when editing e-mail via Gmail plugin.
+    - No more warning journal messages generated on Linux.
+      (gh#martinrotter/rssguard#1207)
+    - Updated and fixed some languages. (gh#martinrotter/rssguard#1205)
+
+-------------------------------------------------------------------
 Tue Nov 14 21:29:15 UTC 2023 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Update to version 4.5.5

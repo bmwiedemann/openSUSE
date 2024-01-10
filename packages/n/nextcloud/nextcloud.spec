@@ -47,7 +47,7 @@
 %endif
 
 Name:           nextcloud
-Version:        27.1.4
+Version:        28.0.1
 Release:        0
 Summary:        File hosting service
 License:        AGPL-3.0-only
@@ -73,7 +73,7 @@ BuildRequires:  unzip
 Requires:       cron
 Requires:       curl
 Requires:       libxml2-2
-Requires:       mariadb >= 10.2
+Requires:       mariadb >= 10.3
 Requires:       php-bz2
 Requires:       php-dom
 Requires:       php-gd
@@ -85,7 +85,7 @@ Requires:       php-posix
 Requires:       php-zip
 #
 %if 0%{?fedora_version} || 0%{?rhel} || 0%{?rhel_version} || 0%{?centos_version}
-Requires:       php < 8.3.0
+Requires:       php < 8.4.0
 Requires:       php >= 8.0.0
 Requires:       php-process
 Requires:       php-xml
@@ -140,7 +140,7 @@ Group:          Productivity/Networking/Web/Utilities
 BuildRequires:  apache2 >= 2.4
 Requires:       %{name} = %{version}
 Requires:       apache2
-Requires:       mod_php_any < 8.3.0
+Requires:       mod_php_any < 8.4.0
 Requires:       mod_php_any >= 8.0.0
 Supplements:    packageand(apache2:%name)
 

@@ -359,4 +359,15 @@
   - Remove 'type' attribute of &lt;script&gt; element</comment>
     <requestid>1099139</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>dc77ba295617ae2623a2e36f53e20fb5</srcmd5>
+    <version>3.2.0</version>
+    <time>1704660049</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.2.0
+  - Fix stylesheet setting in theme.conf files
+  - Sphinx 7.2.0 updates
+  - Stop including Sphinx' standard JS files in script_footer.html</comment>
+    <requestid>1137424</requestid>
+  </revision>
 </revisionlist>

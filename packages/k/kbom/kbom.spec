@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           kbom
-Version:        0.2.4
+Version:        0.2.5
 Release:        0
 Summary:        Kubernetes Bill of Materials
 License:        Apache-2.0

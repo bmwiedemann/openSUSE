@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Wed Dec 27 09:35:46 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.13.1:
+  * Fixed :class:`.Rewriter` so that more than two instances
+    could be chained together correctly, also allowing multiple
+    ``process_revision_directives`` callables to be chained.
+  * Fixed issue where the method
+    :meth:`.EnvironmentContext.get_x_argument` using the
+    :paramref:`.EnvironmentContext.get_x_argument.as_dictionary`
+    parameter would fail if an argument key were passed on the
+    command line as a name alone, that is, without an equal sign
+    ``=`` or a value. Behavior is repaired where this condition is
+    detected and will return a blank string for the given key,
+    consistent with the behavior where the ``=`` sign is
+    present and no value.
+  * Fixed issue where the "unique" flag of an ``Index`` would not
+    be maintained when generating downgrade migrations.
+  * Fixed bug in versioning model where a downgrade across a
+    revision with two down revisions with one down revision
+    depending on the other, would produce an erroneous state in
+    the alembic_version table, making upgrades impossible
+    without manually repairing the table.
+  * Updated pep-484 typing to pass mypy "strict" mode, however
+    including per-module qualifications for specific typing
+    elements not yet complete.
+  * This allows us to catch specific typing issues that have been
+    ongoing such as import symbols not properly exported.
+
+-------------------------------------------------------------------
+Thu Dec 14 09:13:53 UTC 2023 - Petr Gajdos <pgajdos@suse.com>
+
+- update to 1.13.0:
+  * Fixed issue where the ``alembic check`` command did not
+    function correctly with upgrade structures that have multiple,
+    top-level elements, as are generated from the "multi-env"
+    environment template.
+  * Updated logic introduced in :ticket:`151` to allow
+    ``if_exists`` and ``if_not_exists`` on index operations also
+    on SQLAlchemy  1.4 series. Previously this feature was
+    mistakenly requiring the 2.0 series.
+  * Replaced ``python-dateutil`` with the standard library module
+    zoneinfo.
+  * Alembic 1.13 now supports Python 3.8 and above.
+  * Fixed autogenerate issue where ``create_table_comment()`` and
+    ``drop_table_comment()`` rendering in a batch table modify
+    would include the "table" and "schema" arguments, which are
+    not accepted in batch as these are already part of the top
+    level block.
+  * Additional fixes to PostgreSQL expression index compare
+    feature. The compare now correctly accommodates casts and
+    differences in spacing.
+  * Added detection logic for operation clauses inside the
+    expression, skipping the compare of these expressions.
+  * To accommodate these changes the logic for the comparison of
+    the indexes and unique constraints was moved to the dialect
+    implementation, allowing greater flexibility.
+
+-------------------------------------------------------------------
 Tue Nov 14 12:40:19 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.12.1:

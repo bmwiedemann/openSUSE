@@ -1,0 +1,11 @@
+--- procps-3.3.17/sysctl.c.old	2021-02-09 11:11:25.000000000 +0100
++++ procps-3.3.17/sysctl.c	2023-12-14 13:56:36.785976315 +0100
+@@ -546,6 +546,8 @@
+ 		fp = (globbuf.gl_pathv[j][0] == '-' && !globbuf.gl_pathv[j][1])
+ 		    ? stdin : fopen(globbuf.gl_pathv[j], "r");
+ 		if (!fp) {
++		        if (strcmp ("/usr/lib/sysctl.d/99-sysctl.conf", globbuf.gl_pathv[j]) == 0)
++			        continue;
+ 			xwarn(_("cannot open \"%s\""), globbuf.gl_pathv[j]);
+ 			rc = -1;
+ 			goto out;

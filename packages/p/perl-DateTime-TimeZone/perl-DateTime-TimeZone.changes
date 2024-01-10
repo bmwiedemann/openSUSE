@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Dec 31 03:06:30 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.61
+   see /usr/share/doc/packages/perl-DateTime-TimeZone/Changes
+
+  2.61    2023-12-30
+
+  - This release is based on version 2023d of the Olson database. This release
+    includes contemporary changes for Antarctica, Greenland, and Palestine.
+
+-------------------------------------------------------------------
 Thu Mar 30 03:06:26 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.60

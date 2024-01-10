@@ -316,4 +316,35 @@
     `--include` (#3976)</comment>
     <requestid>1127150</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>46555699429404e8fb6387951ec271a1</srcmd5>
+    <version>23.12.1</version>
+    <time>1704491922</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 23.12.1:
+  * Fixed a bug that included dependencies from the `d` extra by
+    default
+  * This release (23.12.0) will still produce the 2023 style.
+    Most but not all of the changes in `--preview` mode will be
+    in the 2024 stable style.
+  * Fix bug where `# fmt: off` automatically dedents when used
+    with the `--line-ranges` option, even when it is not within
+    the specified line range.
+  * Fix feature detection for parenthesized context managers
+  * Prefer more equal signs before a break when splitting chained
+    assignments
+  * Standalone form feed characters at the module level are no
+    longer removed
+  * Additional cases of immediately nested tuples, lists, and
+    dictionaries are now indented less
+  * Allow empty lines at the beginning of all blocks, except
+    immediately before a docstring
+  * Fix crash in preview mode when using a short `--line-length`
+  * Keep suites consisting of only an ellipsis on their own lines
+    if they are not functions or class definitions
+  * `--line-ranges` now skips _Black_'s internal stability check
+    in `--safe` mode. This avoids a crash on rare inputs that have
+    many unformatted same-content lines.</comment>
+    <requestid>1136067</requestid>
+  </revision>
 </revisionlist>

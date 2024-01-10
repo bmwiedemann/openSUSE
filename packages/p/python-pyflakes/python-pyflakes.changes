@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan  5 15:26:55 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.0:
+  * Add support for *T (TypeVarTuple) and **P (ParamSpec) in PEP
+    695 annotations.
+
+-------------------------------------------------------------------
 Tue Aug  8 06:20:25 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 3.1.0:

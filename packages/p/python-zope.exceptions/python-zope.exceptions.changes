@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Dec 16 09:02:46 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.0.1:
+  * Fix issue introduced in the last release which is breaking
+  * ``HTMLExceptionFormatter`` when using non-str
+    ``__traceback_info__``.
+  * Drop support for Python 2.7, 3.5, 3.6.
+
+-------------------------------------------------------------------
 Fri Jun  9 12:41:41 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
@@ -35,7 +44,7 @@ Fri Apr  5 07:06:22 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 - update to version 4.3
   * Add support for Python 3.6 and 3.7.
   * Drop support for Python 3.3.
-  * Fix handling of unicode supplemental traceback information on 
+  * Fix handling of unicode supplemental traceback information on
     Python 2.
 - drop *-doc subpackage, use multibuild instead
 

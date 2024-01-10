@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jan  7 21:37:36 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.7.0:
+  * Important: Python 3.7 is the minimum supported version, due
+    to difficulty of testing old releases, and the fact that
+    everything older has been deprecated a long time ago
+    (e.g. 3.6 at the end of 2021).
+  * Improve error handling in some corner cases (not expected to
+    have any real-life impact, but who knows).
+  * Improved testing coverage and test infrastructure.
+  * Modernise parts of the C code based on recent Python version
+  * guidelines.
+  * Add a simple security policy and contribution guidelines.
+
+-------------------------------------------------------------------
 Fri Sep  1 13:21:16 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
@@ -48,7 +63,7 @@ Sat Mar 26 19:52:42 UTC 2022 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Mon Feb 24 15:28:16 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
-- apply a manually merged version of 
+- apply a manually merged version of
   09c5bd80cf811a0e7b81ceddfb525d576885e097.patch, in order to fix
   build with 32 bit archs https://github.com/iustin/pylibacl/issues/13
 
@@ -71,11 +86,11 @@ Sun Oct 18 16:07:28 UTC 2015 - ecsos@opensuse.org
 
 - update to 0.5.3
   - Enable all FreeBSD versions after 7.x at level 2
-  - Make test suite pass under FreeBSD, which has a stricter 
-    behaviour with regards to invalid ACLs (which we do exercise 
+  - Make test suite pass under FreeBSD, which has a stricter
+    behaviour with regards to invalid ACLs (which we do exercise
     in the test suite)
 - update to 0.5.2
-  - No visible changes release: just fix tests when running under 
+  - No visible changes release: just fix tests when running under
     pypy.
 
 -------------------------------------------------------------------

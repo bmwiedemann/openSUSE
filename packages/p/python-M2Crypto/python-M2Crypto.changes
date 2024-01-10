@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan  3 09:51:38 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- require setuptools
+
+-------------------------------------------------------------------
 Tue Oct 24 15:13:16 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 0.40.0:
@@ -84,7 +89,7 @@ Thu Mar 16 10:35:33 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
 -------------------------------------------------------------------
 Mon Nov  7 20:14:16 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- add openssl-stop-parsing-header.patch (bsc#1205042) 
+- add openssl-stop-parsing-header.patch (bsc#1205042)
 - add m2crypto-0.38-ossl3-tests.patch
 
 -------------------------------------------------------------------
@@ -162,18 +167,18 @@ Wed Jan 13 08:16:04 UTC 2021 - Matej Cepl <mcepl@suse.com>
 Tue Dec  8 17:58:23 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Update to 0.37.1:
-    - Remove support for CentOS 6 and Python 2.6 (remove 
+    - Remove support for CentOS 6 and Python 2.6 (remove
       tests.vendor module). Python 2.7 is still fully supported.
     - Remodel CI:
       - on GitHub switched from Travis-CI to GH Actions
       - on GitLab-CI: stop testing 2.7 on Fedora, add centos7
       - update appveyor.yml
-    - Stop playing with swig in setup.py, we don't support swig 1.* 
+    - Stop playing with swig in setup.py, we don't support swig 1.*
       anymore.
     - Fix dereferencing of pointers (gl#m2crypto/m2crypto#281)
-    - Replace deprecated PyObject_AsReadBuffer with our own shim 
+    - Replace deprecated PyObject_AsReadBuffer with our own shim
       (thanks to Casey Deccio for saving my bacon there).
-    - Use parametrized to create parametrized tests (new external 
+    - Use parametrized to create parametrized tests (new external
       dependency).
     - Only use DigestSign() and DigestUpdate() with OpenSSL >= 1.1.1
     - Expose all the X509_V_FLAG
@@ -206,7 +211,7 @@ Update to 0.36.0:
     - Make tests pass again. <Matěj Cepl>
     - Stop using string module, which has been deprecated. <Matěj Cepl>
     - Tiny fixes to make pyls more happy <Matěj Cepl>
-    - CI: Rework Fedora CI configuration <Neal Gompa> 
+    - CI: Rework Fedora CI configuration <Neal Gompa>
 - Remove upstream merged patch 001-fix-buffering-for-python38.patch.
 
 -------------------------------------------------------------------
@@ -217,9 +222,9 @@ Wed Apr  8 12:30:32 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 -------------------------------------------------------------------
 Mon Mar  9 09:56:49 UTC 2020 - Marco Strigl <marco.strigl@suse.com>
 
-- in python3.8 the fp is wrapped in a Buffer. SSL.Connection.makefile 
+- in python3.8 the fp is wrapped in a Buffer. SSL.Connection.makefile
   returns a socketIO which is no buffer.
-  Added: 001-fix-buffering-for-python38.patch 
+  Added: 001-fix-buffering-for-python38.patch
 
 -------------------------------------------------------------------
 Mon Jun 10 13:59:24 CEST 2019 - Matej Cepl <mcepl@suse.com>
@@ -270,8 +275,8 @@ Tue Mar  5 09:01:46 CET 2019 - Matej Cepl <mcepl@suse.com>
 
 - Update to 0.32.0:
     * 471582f - setup.py: use ${CPP} as path to cpp <Duncan Macleod>
-    * efb1580 - Bump pipeline OpenSSL from 1.1.0i to 1.1.0j 
-    * 35bb71b - Stub wchar_t helpers and ignore unused WCHAR defs 
+    * efb1580 - Bump pipeline OpenSSL from 1.1.0i to 1.1.0j
+    * 35bb71b - Stub wchar_t helpers and ignore unused WCHAR defs
     * effc7be - Add type comment to setup.py  <Matěj Cepl>
 
 -------------------------------------------------------------------
@@ -364,7 +369,7 @@ Wed Oct 25 20:07:14 UTC 2017 - michael@stroeder.com
 -------------------------------------------------------------------
 Fri Oct 20 13:51:00 UTC 2017 - alarrosa@suse.com
 
-- Remove unnecessary fdupes call 
+- Remove unnecessary fdupes call
 
 -------------------------------------------------------------------
 Wed Oct 18 07:13:58 UTC 2017 - alarrosa@suse.com
@@ -412,7 +417,7 @@ Sat May  6 03:33:01 UTC 2017 - toddrme2178@gmail.com
 -------------------------------------------------------------------
 Thu Apr 27 15:56:24 UTC 2017 - alarrosa@suse.com
 
-- Add python-typing as a dependency 
+- Add python-typing as a dependency
 
 -------------------------------------------------------------------
 Wed Apr 26 15:50:39 UTC 2017 - alarrosa@suse.com
@@ -459,7 +464,7 @@ Sat Dec  5 20:42:42 UTC 2015 - opensuse@dstoecker.de
 -------------------------------------------------------------------
 Thu Nov 26 09:35:28 UTC 2015 - hpj@urpla.net
 
-- SLE12 requires swig3 for a successful build, too 
+- SLE12 requires swig3 for a successful build, too
 
 -------------------------------------------------------------------
 Tue Nov 17 17:54:49 UTC 2015 - hpj@urpla.net

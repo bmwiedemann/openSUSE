@@ -1,7 +1,7 @@
 #
 # spec file for package python-pygame
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define skip_python36 1
+%{?sle15_python_module_pythons}
 Name:           python-pygame
-Version:        2.5.0
+Version:        2.5.2
 Release:        0
 Summary:        A Python Module for Interfacing with the SDL Multimedia Library
 License:        Apache-2.0 AND LGPL-2.1-or-later AND BSD-2-Clause AND BSD-3-Clause AND libpng-2.0
@@ -27,6 +27,7 @@ Source0:        https://files.pythonhosted.org/packages/source/p/pygame/pygame-%
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  bitstream-vera-fonts
 BuildRequires:  fdupes

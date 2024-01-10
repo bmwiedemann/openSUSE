@@ -1,7 +1,7 @@
 Index: bindings/tcl/tclrrd.c
 ===================================================================
---- bindings/tcl/tclrrd.c.orig
-+++ bindings/tcl/tclrrd.c
+--- a/bindings/tcl/tclrrd.c
++++ b/bindings/tcl/tclrrd.c
 @@ -472,6 +472,12 @@ static int Rrd_Graph(
      char    **argv2;
      CONST84 char *save;

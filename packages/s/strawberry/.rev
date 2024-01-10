@@ -1352,4 +1352,13 @@ Fixes a critical bug in version 0.6.2, crashes when using internet services.
 </comment>
     <requestid>1132280</requestid>
   </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>8fb9deff827783fa7d2dd343ff86b4c2</srcmd5>
+    <version>1.0.22</version>
+    <time>1703102508</time>
+    <user>anag+factory</user>
+    <comment>- Add BuildRequires for KDSingleApplication-qt6 with Tumbleweed.
+</comment>
+    <requestid>1134092</requestid>
+  </revision>
 </revisionlist>

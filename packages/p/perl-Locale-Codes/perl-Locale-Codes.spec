@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Locale-Codes
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,9 @@
 
 %define cpan_name Locale-Codes
 Name:           perl-Locale-Codes
-Version:        3.760.0
+Version:        3.770.0
 Release:        0
-%define cpan_version 3.76
+%define cpan_version 3.77
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Distribution of modules to handle locale codes
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -30,33 +30,33 @@ BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Test::Inter) >= 1.09
-Provides:       perl(Locale::Codes) = 3.760.0
-Provides:       perl(Locale::Codes::Constants) = 3.760.0
-Provides:       perl(Locale::Codes::Country) = 3.760.0
-Provides:       perl(Locale::Codes::Country_Codes) = 3.760.0
-Provides:       perl(Locale::Codes::Country_Retired) = 3.760.0
-Provides:       perl(Locale::Codes::Currency) = 3.760.0
-Provides:       perl(Locale::Codes::Currency_Codes) = 3.760.0
-Provides:       perl(Locale::Codes::Currency_Retired) = 3.760.0
-Provides:       perl(Locale::Codes::LangExt) = 3.760.0
-Provides:       perl(Locale::Codes::LangExt_Codes) = 3.760.0
-Provides:       perl(Locale::Codes::LangExt_Retired) = 3.760.0
-Provides:       perl(Locale::Codes::LangFam) = 3.760.0
-Provides:       perl(Locale::Codes::LangFam_Codes) = 3.760.0
-Provides:       perl(Locale::Codes::LangFam_Retired) = 3.760.0
-Provides:       perl(Locale::Codes::LangVar) = 3.760.0
-Provides:       perl(Locale::Codes::LangVar_Codes) = 3.760.0
-Provides:       perl(Locale::Codes::LangVar_Retired) = 3.760.0
-Provides:       perl(Locale::Codes::Language) = 3.760.0
-Provides:       perl(Locale::Codes::Language_Codes) = 3.760.0
-Provides:       perl(Locale::Codes::Language_Retired) = 3.760.0
-Provides:       perl(Locale::Codes::Script) = 3.760.0
-Provides:       perl(Locale::Codes::Script_Codes) = 3.760.0
-Provides:       perl(Locale::Codes::Script_Retired) = 3.760.0
-Provides:       perl(Locale::Country) = 3.760.0
-Provides:       perl(Locale::Currency) = 3.760.0
-Provides:       perl(Locale::Language) = 3.760.0
-Provides:       perl(Locale::Script) = 3.760.0
+Provides:       perl(Locale::Codes) = %{version}
+Provides:       perl(Locale::Codes::Constants) = %{version}
+Provides:       perl(Locale::Codes::Country) = %{version}
+Provides:       perl(Locale::Codes::Country_Codes) = %{version}
+Provides:       perl(Locale::Codes::Country_Retired) = %{version}
+Provides:       perl(Locale::Codes::Currency) = %{version}
+Provides:       perl(Locale::Codes::Currency_Codes) = %{version}
+Provides:       perl(Locale::Codes::Currency_Retired) = %{version}
+Provides:       perl(Locale::Codes::LangExt) = %{version}
+Provides:       perl(Locale::Codes::LangExt_Codes) = %{version}
+Provides:       perl(Locale::Codes::LangExt_Retired) = %{version}
+Provides:       perl(Locale::Codes::LangFam) = %{version}
+Provides:       perl(Locale::Codes::LangFam_Codes) = %{version}
+Provides:       perl(Locale::Codes::LangFam_Retired) = %{version}
+Provides:       perl(Locale::Codes::LangVar) = %{version}
+Provides:       perl(Locale::Codes::LangVar_Codes) = %{version}
+Provides:       perl(Locale::Codes::LangVar_Retired) = %{version}
+Provides:       perl(Locale::Codes::Language) = %{version}
+Provides:       perl(Locale::Codes::Language_Codes) = %{version}
+Provides:       perl(Locale::Codes::Language_Retired) = %{version}
+Provides:       perl(Locale::Codes::Script) = %{version}
+Provides:       perl(Locale::Codes::Script_Codes) = %{version}
+Provides:       perl(Locale::Codes::Script_Retired) = %{version}
+Provides:       perl(Locale::Country) = %{version}
+Provides:       perl(Locale::Currency) = %{version}
+Provides:       perl(Locale::Language) = %{version}
+Provides:       perl(Locale::Script) = %{version}
 %define         __perllib_provides /bin/true
 %{perl_requires}
 

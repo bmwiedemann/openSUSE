@@ -1,7 +1,7 @@
 #
 # spec file for package python-zc.lockfile
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2013 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-zc.lockfile
-Version:        2.0
+Version:        3.0.post1
 Release:        0
 Summary:        Basic inter-process locks
 License:        ZPL-2.1

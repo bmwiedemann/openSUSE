@@ -18,7 +18,7 @@
 
 Name:           rpma
 %define lname   librpma0
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        Remote Persistent Memory Access
 License:        BSD-3-Clause

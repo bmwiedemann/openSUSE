@@ -29,6 +29,10 @@ Source0:        https://linuxtv.org/downloads/%{name}/%{name}-%{version}.tar.bz2
 Source98:       baselibs.conf
 # PATCH-FIX-UPSTREAM: fix build against python 3.11 - https://github.com/mchehab/zbar/commit/9bb0cc43f7f9e9c676e07b2e511f03bfa1c491cb
 Patch1:         py311.patch
+# PATCH-FIX-UPSTREAM -- mvetter@suse.com -- bsc#1214770
+Patch2:         zbar-CVE-2023-40889.patch
+# PATCH-FIX-UPSTREAM -- mvetter@suse.com -- bsc#1214771
+Patch3:         zbar-CVE-2023-40890.patch
 BuildRequires:  libjpeg-devel
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  xmlto

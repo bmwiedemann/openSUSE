@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec 29 12:13:52 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Use %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Mon Oct 30 08:22:57 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch from upstream to fix compatibility with Werkzeug 3.0.x

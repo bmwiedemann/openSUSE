@@ -1,5 +1,5 @@
 #
-# spec file for package wxWidgets-3_2
+# spec file
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -19,7 +19,7 @@
 %global flavor @BUILD_FLAVOR@%nil
 %if "%flavor" == ""
 # default flavor is GTK2
-Name:           wxWidgets-3_2
+%define this_spec wxWidgets-3_2
 %define variant suse
 %define gtk_version 2
 %define toolkit gtk%gtk_version
@@ -28,23 +28,22 @@ Name:           wxWidgets-3_2
 %endif
 
 %if "%{flavor}" == "doc"
-Name:           wxWidgets-3_2-doc
+%define this_spec wxWidgets-3_2-doc
 %define variant %{nil}
 %define toolkit %{nil}
 %endif
 
 %if "%flavor" == "GTK3"
-Name:           wxGTK3-3_2
+%define this_spec wxGTK3-3_2
 %define variant suse
 %define gtk_version 3
 %define toolkit gtk%gtk_version
-# build non-UI toolkit related packages
 %define base_packages 1
 %bcond_without webview
 %endif
 
 %if "%flavor" == "GTK3-nostl"
-Name:           wxWidgets-3_2-nostl
+%define this_spec wxWidgets-3_2-nostl
 %define variant suse-nostl
 %define gtk_version 3
 %define toolkit gtk%gtk_version
@@ -56,22 +55,21 @@ wxString and instead rely on the wxChar pointer API.
 %endif
 
 %if "%flavor" == "Qt"
-Name:           wxQt-3_2
+%define this_spec wxQt-3_2
 %define variant suse
 %define toolkit qt
 %define base_packages 0
 %bcond_with webview
 %endif
 
+# At most one Name: line to not confuse quilt(1)
 %define base_name wxWidgets-3_2
-# Use default debug level, enabling exceptions
-# Other valid values: yes/no/max
-%define wx_debug %nil
-%define psonum 9_0_0
-%define sonum 9.0.0
-Version:        3.2.2.1
-Release:        0
 %define wx_minor 3.2
+%define psonum 10_0_0
+%define sonum 10.0.0
+Name:           %this_spec
+Version:        3.2.4
+Release:        0
 Summary:        C++ Library for Cross-Platform Development
 License:        LGPL-2.1-or-later WITH WxWindows-exception-3.1
 Group:          Development/Libraries/C and C++
@@ -83,6 +81,7 @@ Source5:        wxWidgets-3_2-rpmlintrc
 # identify and backport wxPython fixes to wxWidgets.
 Source6:        wxpython-mkdiff.sh
 Patch1:         soversion.diff
+Patch2:         autoconf-2_72.diff
 %if "%{flavor}" == "doc"
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -124,6 +123,9 @@ BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(xtst)
 %endif
+# Use default debug level, enabling exceptions
+# Other valid values: yes/no/max
+%define wx_debug %nil
 
 %description
 wxWidgets is a C++ library abstraction layer for a number of GUI

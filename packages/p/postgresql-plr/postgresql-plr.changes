@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jan  8 11:04:24 UTC 2024 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- update to bugfix release 8.4.6 adding support to postgresql16
+  - Refactored AssertArg to Assert
+  - Release with R version 4.1.3 and 4.2.3
+- update copyright notice
+- remove postgresql11 build
+
+-------------------------------------------------------------------
+Thu Sep 28 21:02:30 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- enable pg 16
+
+-------------------------------------------------------------------
 Wed Apr 19 13:56:23 UTC 2023 - Reinhard Max <max@suse.com>
 
 - PostgreSQL 10 is EOL.
@@ -37,7 +51,7 @@ Wed Jun 30 14:26:41 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 -------------------------------------------------------------------
 Fri Sep 25 16:29:51 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
-- enable pg 13 
+- enable pg 13
 
 -------------------------------------------------------------------
 Fri Sep 25 16:27:43 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
@@ -97,7 +111,7 @@ Tue Jul 25 14:06:34 UTC 2017 - bruno@ioda-net.ch
 - Packaging
   + Make comment versionable
   + Remove obsoleted macro (mkdir, install)
-  + Fix copyright line 
+  + Fix copyright line
 
 -------------------------------------------------------------------
 Wed Jul 12 14:47:07 UTC 2017 - bruno@ioda-net.ch
@@ -107,8 +121,8 @@ Wed Jul 12 14:47:07 UTC 2017 - bruno@ioda-net.ch
 -------------------------------------------------------------------
 Sat Jan 14 17:28:25 UTC 2017 - bruno@ioda-net.ch
 
-- Undo the rename of postgresql-plr.changes.in to make happy 
-  factory auto-bot 
+- Undo the rename of postgresql-plr.changes.in to make happy
+  factory auto-bot
 
 -------------------------------------------------------------------
 Wed Jan 11 17:13:28 UTC 2017 - bruno@ioda-net.ch
@@ -120,7 +134,7 @@ Wed Jan 11 17:13:28 UTC 2017 - bruno@ioda-net.ch
     Documentation is build outside of the package to avoid texlive
   + Redone patch-Makefile-ldflags.patch to current sources
   + Rename postgresql-plr.changes.in to postgresql-plr.changes to
-    ease osc vc edition, adapt pre_checking.sh to this change. 
+    ease osc vc edition, adapt pre_checking.sh to this change.
 
 Fri Dec  21 07:35:00 UTC 2015 - bruno@ioda-net.ch
 -------------------------------------------------------------------
@@ -130,7 +144,7 @@ Fri Dec  21 07:35:00 UTC 2015 - bruno@ioda-net.ch
 -------------------------------------------------------------------
 Fri Feb  13 13:13:13 UTC 2015 - bruno@ioda-net.ch
 
-- Update to last upstream tar.gz 
+- Update to last upstream tar.gz
   Due to missing root plr, and documentation (Conway)
 - Removed upgrade alter extension, this doesn't work yet
 
@@ -142,8 +156,8 @@ Mon Feb  9 16:58:26 UTC 2015 - bruno@ioda-net.ch
    Update for PostgreSQL 9.5dev compatibility
    Update copyrights
    Add check and throw an error when don't have an expectedDesc.
-   Remove autocommit setting -- it has been removed in PostgreSQL 
-   9.5, and it has been ineffective for a long time. 
+   Remove autocommit setting -- it has been removed in PostgreSQL
+   9.5, and it has been ineffective for a long time.
      Reported by Peter E.
    Fix RPM spec file (redhat)
 
@@ -155,7 +169,7 @@ Mon Feb  9 16:58:26 UTC 2015 - bruno@ioda-net.ch
 Thu Jan 23 19:38:09 UTC 2014 - bruno@ioda-net.ch
 
 - Revised year
-- Added pre_checkin.sh methode to create variant packages 
+- Added pre_checkin.sh methode to create variant packages
 
 -------------------------------------------------------------------
 Fri Dec  6 10:30:35 UTC 2013 - bruno@ioda-net.ch
@@ -171,7 +185,7 @@ Fri Dec  6 10:30:35 UTC 2013 - bruno@ioda-net.ch
 -------------------------------------------------------------------
 Mon Nov 18 15:50:05 UTC 2013 - bruno@ioda-net.ch
 
-- Packaging postgresql-plr 
+- Packaging postgresql-plr
   Added postgresql-server as BuildRequires so rpmlint doesn't complain about
   owner of postgresql base install directory
 
@@ -199,12 +213,12 @@ Wed Jan  2 14:32:34 UTC 2013 - darin@darins.net
 
 * Upgrade to 8.3.0.13.1
  - Fix CREATE FUNCTION statements so that they work
-   with PostgreSQL 9.2.x 
+   with PostgreSQL 9.2.x
 
 -------------------------------------------------------------------
 Mon Apr 16 18:19:12 UTC 2012 - bruno@ioda-net.ch
 
-- Make factory happy added R-base as Build-Require 
+- Make factory happy added R-base as Build-Require
 
 -------------------------------------------------------------------
 Sun Apr  1 13:01:25 UTC 2012 - bruno@ioda-net.ch
@@ -214,7 +228,7 @@ Sun Apr  1 13:01:25 UTC 2012 - bruno@ioda-net.ch
 -------------------------------------------------------------------
 Fri Mar 30 13:59:57 UTC 2012 - bruno@ioda-net.ch
 
-- Fix installation directory : goes to extension now 
+- Fix installation directory : goes to extension now
 - Added missing expected plr.out to doc as sample howto
 
 -------------------------------------------------------------------
@@ -222,7 +236,7 @@ Sat Mar  3 19:45:10 UTC 2012 - bruno@ioda-net.ch
 
 - Split documentation to postgresql-plr
 - Add more informations (first step and test to readme.SUSE)
-- Try to use -rpath (following darix advise) but no success 
+- Try to use -rpath (following darix advise) but no success
 
 -------------------------------------------------------------------
 Mon Oct 17 05:52:14 UTC 2011 - bruno@ioda-net.ch
@@ -230,20 +244,20 @@ Mon Oct 17 05:52:14 UTC 2011 - bruno@ioda-net.ch
 * Upgrade to 8.3.0.13
  - Fix Makefile so that msvc scripts can process it successfully
  - Add support for pgsql 9.1 CREATE EXTENSION
- - Put in safeguard to prevent attempted return of non-data (e.g. 
+ - Put in safeguard to prevent attempted return of non-data (e.g.
    closure) types from R unless the pg return type is BYTEA
  - Correct thinko from earlier pass-by-val array optimization
- - Fix crashbug related to conversion of R data.frame to Postgres 
+ - Fix crashbug related to conversion of R data.frame to Postgres
    array on function return
  - Add plr_version() function: outputs a version string
- - New feature: allow PL/R functions to be declared and used 
+ - New feature: allow PL/R functions to be declared and used
    as WINDOW functions
  - Minor fixes for compiler warnings by updated gcc
  - Fix missing calls to UNPROTECT. Report and patch by Ben Leiting.
- - Take SIGINT back into Postgres control from R. Report and test case 
+ - Take SIGINT back into Postgres control from R. Report and test case
    by Terry Schmitt.
  - Don't try to free an array element value when the array element is NULL
- - Allow pg.spi.prepare/pg.spi.execp to use parameters which are 1D arrays- 
+ - Allow pg.spi.prepare/pg.spi.execp to use parameters which are 1D arrays-
 
 -------------------------------------------------------------------
 Fri Jun 17 08:53:01 UTC 2011 - bruno@ioda-net.ch

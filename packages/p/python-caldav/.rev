@@ -185,4 +185,27 @@
 </comment>
     <requestid>1033143</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>4988714b2c6da1a0743b04d469386dc9</srcmd5>
+    <version>1.3.9</version>
+    <time>1702673415</time>
+    <user>anag+factory</user>
+    <comment>- deleted patches
+  - drop-python2-support.patch (upstreamed)
+- update to 1.3.9
+  [1.3.9] - 2023-12-12
+  * Some bugfixes.
+  [1.3.6] - 2023-07-20
+  * One of the tests has been partially disabled, ref #300 , #320 and #321
+  [1.3.3] - 2023-07-19
+  * Support for very big events, credits to github user @aaujon in #301
+  * Custom HTTP headers was added in v1.2, but documentation and unit test is added in v1.3
+  * More test code in #308
+  * Add props parameter to search function, credits to github user @ge-lem in #315
+  * Set an id field in calendar objects when populated through CalendarSet.calendars()
+  * get_relatives-method, #294
+  * get_dtend-method
+</comment>
+    <requestid>1133409</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jan  5 13:24:46 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 20.25.0
+  * Allow platformdirs v4 by @alex in #2664
+  * Upgrade embedded wheels
+- Drop fix-tests-hookimpls.patch
+- Update requirements
+- Update test execution: Remove obsolete hacks, don't build again
+  on test flavor. Accomodate changed behavior with bundled
+  setuptools on Python 3.12
+- Conflict with setuptools_scm for tests gh#pypa/virtualenv#2668
+
+-------------------------------------------------------------------
 Tue Oct  3 07:10:17 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add fix-tests-hookimpls.patch to fix tests with latest pytest in

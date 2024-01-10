@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-uncertainties
 Version:        3.1.7
 Release:        0

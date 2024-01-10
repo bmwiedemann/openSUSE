@@ -638,4 +638,13 @@
     <comment>- fix build for 6.6</comment>
     <requestid>1111941</requestid>
   </revision>
+  <revision rev="74" vrev="83">
+    <srcmd5>5d97fca87ffbf1b7b04d6dff283bca87</srcmd5>
+    <version>MACRO</version>
+    <time>1704829876</time>
+    <user>anag+factory</user>
+    <comment>- remove 6.5 code
+- fix build with 6.7 (tar also arch/*/tools)</comment>
+    <requestid>1137712</requestid>
+  </revision>
 </revisionlist>

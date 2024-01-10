@@ -1,7 +1,7 @@
 #
 # spec file for package jbigkit
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,8 @@ URL:            http://www.cl.cam.ac.uk/~mgk25/jbigkit/
 Source0:        http://www.cl.cam.ac.uk/~mgk25/download/%{name}-%{version}.tar.gz
 Source42:       baselibs.conf
 Patch0:         %{name}-%{version}-shlib.patch
+# CVE-2022-1210 [bsc#1198146], Malicious file leads to a denial of service in TIFF File Handler
+Patch1:         jbigkit-CVE-2022-1210.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %define libname libjbig
@@ -69,8 +71,7 @@ The jbigkit package contains tools for converting between PBM and JBIG1
 formats.
 
 %prep
-%setup
-%patch0 -p1
+%autosetup -p1
 
 %build
 export CFLAGS="%optflags -I../libjbig" CXXFLAGS="%optflags"

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 29 12:02:12 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.0:
+  * Drop support for Python 2.7, 3.5, 3.6.
+  * Add support for Python 3.12.
+
+-------------------------------------------------------------------
 Wed Jul 26 07:30:49 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Drop sphinx doctrees for reproducible builds

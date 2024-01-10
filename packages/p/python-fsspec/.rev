@@ -362,4 +362,36 @@ Required by the latest version of python-gcsfs</comment>
     <comment></comment>
     <requestid>1126463</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>13f3cf3981f4b2d82be8be70b779c44f</srcmd5>
+    <version>2023.12.2</version>
+    <time>1702845121</time>
+    <user>anag+factory</user>
+    <comment>- update to 2023.12.2:
+  * top-level glob in ZIP (#1454)
+  * append mode on local ZIP files/truncate (#1449)
+  * restrict &quot;:&quot; as protocol marker to data: (#1452)
+  * sftp relative paths (#1451)
+  * http encoding in HTTP FS put_file (#1450)
+
+- update to 2023.12.1:
+  * Remove trailing &quot;/&quot; from directory names in zipFS (#1445)
+  * allow HTTP size guess in more circumstances (#1440)
+  * allow kwargs passed to GUI to be dict (#1437)
+  * transaction support for writing via a cache FS (#1434)
+  * make cached FSs work better with async backends (#1429)
+  * allow FSs to set their transaction implementation (#1424)
+  * add dataFS (#1421, 1415)
+  * allow basic auth in webHDFS (#1409)
+  * in referenceFS, maintain order when some keys are omitted in
+    cat (#1436)
+  * nested subdirectory listing in referenceFS (#1433)
+  * allow &quot;=&quot; in webHDF paths (#1428)
+  * fix file mode to consistent &quot;r+b&quot; format (#1426)
+  * pass on kwargs in HTTP glob (#1422)
+  * allow Path in can_be_local and open_local (#1419, #1418)
+  * fix parent for cachedFS (#1413)
+  * &quot;ends&quot; list in _cat_ranges was incorrect (#1402)</comment>
+    <requestid>1133605</requestid>
+  </revision>
 </revisionlist>

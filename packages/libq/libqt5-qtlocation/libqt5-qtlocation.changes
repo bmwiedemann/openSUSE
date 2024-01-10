@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Dec 29 13:29:13 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.12+kde6, rebased upstream:
+  * Fix HereMap plugin not supporting authentication via apiKey
+  * Fix build of Qt.labs.location QML plugin
+  * PositionSource: fix lastKnownPosition request at startup
+  * Bump version to 5.15.12
+- Drop patches, now upstream:
+  * 0001-Fix-build-of-Qt.labs.location-QML-plugin.patch
+
+-------------------------------------------------------------------
 Fri Oct  6 06:40:54 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.11+kde4, rebased upstream:

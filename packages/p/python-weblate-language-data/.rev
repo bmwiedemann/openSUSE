@@ -39,4 +39,16 @@
     <comment></comment>
     <requestid>1042862</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>deb2837673c3b303d450d7c471fede79</srcmd5>
+    <version>2023.9</version>
+    <time>1704281043</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2023.9:
+  * translation updates
+
+- Update to version 2022.9
+- Update to version 2022.7</comment>
+    <requestid>1135613</requestid>
+  </revision>
 </revisionlist>

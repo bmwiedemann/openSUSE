@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan  2 23:52:59 UTC 2024 - Jiri Srain <jsrain@suse.com>
+
+- removed unneeded build dependency on python3-pygments-style-railscasts
+
+-------------------------------------------------------------------
 Sun Jun 11 13:33:16 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

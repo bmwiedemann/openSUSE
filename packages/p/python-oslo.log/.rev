@@ -427,4 +427,21 @@
     <comment>- skip failing tests, run fdupes</comment>
     <requestid>1103323</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>7432152be3ab7adffadf9912c6a33392</srcmd5>
+    <version>5.4.0</version>
+    <time>1703800997</time>
+    <user>anag+factory</user>
+    <comment>- update to version 5.4.0
+  - Cleanup py27 support
+  - Deprecate Windows support
+  - Update master for stable/2023.2
+  - Imported Translations from Zanata
+  - Moves supported python runtimes from version 3.8 to 3.10
+  - Revert &quot;Moves supported python runtimes from version 3.8 to 3.10&quot;
+  - Catch RuntimeError when loading log config file
+  - Bump bandit
+  - Update master for stable/2023.1</comment>
+    <requestid>1135455</requestid>
+  </revision>
 </revisionlist>

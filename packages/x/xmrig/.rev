@@ -607,4 +607,27 @@
   * Add x86 to README</comment>
     <requestid>1097894</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>4ec27d042b09d5cf25d007eee396e3c1</srcmd5>
+    <version>6.21.0</version>
+    <time>1702936619</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 6.21.0:
+  * v6.21.0
+  * v6.21.0-dev
+  * Zephyr solo mining: handle multiple outputs
+  * Updated pricing record size for Zephyr solo mining
+  * Update sse2neon.h
+  * ARM64 JIT: don't use `x18` register
+  * Update cn_main_loop.asm
+  * Update cn_main_loop.asm
+  * Added SNI option for TLS connections
+  * Add &quot;built for OS/architecture/bits&quot; to &quot;ABOUT&quot;
+  * Fixed huge pages availability info on Linux.
+  * Make Platform::hasKeepalive() constexpr where always supported and code cleanup.
+  * Disable TCP keepalive before closing socket
+  * Enabled keepalive for Windows (&gt;= Vista)
+  * v6.20.1-dev</comment>
+    <requestid>1133864</requestid>
+  </revision>
 </revisionlist>

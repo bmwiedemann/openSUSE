@@ -7,4 +7,36 @@
     <comment>Initial release of 3.1.7</comment>
     <requestid>1098279</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8637632796f5943ff9099718e608834d</srcmd5>
+    <version>3.2.0</version>
+    <time>1702673294</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.2.0:
+  * Add support for async reconnect_failed callbacks in
+    AsyncConnectionPool (ticket #520).
+  * Add check parameter to the pool constructor and check_connection()
+    method. (ticket #656).
+  * Make connection pool classes generic on the connection type (ticket
+    #559).
+  * Raise a warning if sync pools rely an implicit open=True and the
+    pool context is not used. In the future the default will become
+    False (ticket #659).
+  * Raise a warning if async pools are opened in the constructor. In
+    the future it will become an error. (ticket #659).</comment>
+    <requestid>1133176</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cdc9aaca1c0eee0095f62a4927906759</srcmd5>
+    <version>3.2.1</version>
+    <time>1704660062</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2.1:
+  * Respect the timeout parameter on connection() when check fails.
+    Also avoid a busy-loop of checking; separate check attempts
+    using an exponential backoff (ticket #709).
+  * Use typing.Self as a more correct return value annotation of
+    context managers and other self-returning methods (see ticket</comment>
+    <requestid>1137427</requestid>
+  </revision>
 </revisionlist>

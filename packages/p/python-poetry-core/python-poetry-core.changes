@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jan  2 19:14:12 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.1:
+  * Fix an issue where git URLs starting with `git+` could not be
+    parsed anymore (#657).
+  * Add `3.12` to the list of available Python versions (#631).
+  * Add support for creating packages dynamically in the build
+    script
+  * Improve marker logic for `extra` markers (#636).
+  * Update list of supported licenses (#635,
+  * #646).
+  * Deprecate `Dependency.transitive_python_versions` (#648).
+  * Deprecate `Dependency.transitive_python_constraint` (#649).
+  * Fix an issue where projects with extension modules were not
+    installed in editable mode (#633).
+  * Fix an issue where the wrong or no `lib` folder was added to
+    the wheel (#634).
+  * Replace `jsonschema` with `fastjsonschema`.
+  * `lark==1.1.8`
+  * `packaging==23.2`
+
+-------------------------------------------------------------------
 Sat Sep 23 10:06:31 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.7.0
@@ -38,7 +60,7 @@ Mon May 29 17:00:46 UTC 2023 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Mon May 22 20:41:26 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
-- Update description 
+- Update description
 
 -------------------------------------------------------------------
 Mon May 22 07:52:37 UTC 2023 - Dan Čermák <dcermak@suse.com>
@@ -123,7 +145,7 @@ Tue Dec 13 17:40:10 UTC 2022 - Benjamin Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Tue Dec 13 16:06:09 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 1.4.0 
+- Update to version 1.4.0
   * Added
   The PEP 517 metadata_directory is now respected as an input to the build_wheel hook (#487).
   * Changed
@@ -289,7 +311,7 @@ Wed Apr 14 21:43:18 UTC 2021 - Ben Greiner <code@bnavigator.de>
   * Fixed the PEP-508 representation of some dependencies (#103).
   * Fixed the Requires-Python metadata generation (#127).
   * Fixed an error where pre-release versions were accepted in
-    version constraints (#128). 
+    version constraints (#128).
 
 -------------------------------------------------------------------
 Tue Oct 20 11:20:59 UTC 2020 - Dan Čermák <dcermak@suse.com>
@@ -305,7 +327,7 @@ Fri Oct 16 17:01:46 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Sat Oct 10 20:06:27 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
-- unbundle vendored packages 
+- unbundle vendored packages
 
 -------------------------------------------------------------------
 Thu Oct  8 18:49:33 UTC 2020 - Benjamin Greiner <code@bnavigator.de>

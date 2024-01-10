@@ -21,7 +21,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           krb5
-Version:        1.21.1
+Version:        1.21.2
 Release:        0
 Summary:        MIT Kerberos5 implementation
 License:        MIT

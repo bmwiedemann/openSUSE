@@ -293,4 +293,20 @@
   * Recommend using status2() instead of status()</comment>
     <requestid>1056769</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>8c7183fb686288e9f1ea86c3e1d72b26</srcmd5>
+    <version>1.9.22</version>
+    <time>1702673315</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.9.22:
+  * Python 3.12 support
+
+- In reference to pysvn in Fedora package, use manual install
+- Should fix bsc#1182048.
+  * Binary kits limited to using currently support versions of
+    Subversion and Python. However python 2.7 kits will be provided
+- fix typo in specfile
+- renamed macro _realname</comment>
+    <requestid>1133209</requestid>
+  </revision>
 </revisionlist>

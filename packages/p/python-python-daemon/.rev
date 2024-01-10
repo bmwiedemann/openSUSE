@@ -261,4 +261,30 @@
     <comment></comment>
     <requestid>1085085</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>19e8195eb7de727853c3140a467e2692</srcmd5>
+    <version>3.0.1</version>
+    <time>1702845098</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.0.1:
+  * Declare dependency on Setuptools &gt;= 62.4.0.
+  * Refactor calculation of file descriptor ranges to close.
+  * When the range of candidate file descriptors is very large,
+    the code that computes file descriptors to close when the
+    daemon starts attempted to allocate a large amount of memory
+    and took a long time to compute.
+  * Document a `ServiceRunner` class as an example of using
+    `DaemonContext`.
+  * Raise a TypeError if any `exclude` values are not valid file
+    descriptors.
+  * Remove the obsolete `runner` module.
+    This module was deprecated starting in `python-daemon`
+    version 2.1.2, and is now removed as unmaintained.
+
+- Update to 2.3.2
+- Skip broken test
+- BuildRequire lowercase python-minimock
+- Add Provides for the old python-daemon name</comment>
+    <requestid>1133522</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package libspatialite
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,16 @@
 #
 
 
-%define sover   7
+%define sover   8
 %define libname %{name}%{sover}
 Name:           libspatialite
-Version:        5.0.1
+Version:        5.1.0
 Release:        0
 Summary:        Spatial SQLite
 License:        MPL-1.1
 Group:          Development/Libraries/C and C++
 URL:            https://www.gaia-gis.it/fossil/libspatialite/index
-Source:         https://www.gaia-gis.it/gaia-sins/%{name}-%{version}.tar.gz
+Source:         https://www.gaia-gis.it/gaia-sins/libspatialite-sources/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libgeos-devel
@@ -64,6 +64,11 @@ The SpatiaLite extension enables SQLite to support spatial data too
 Summary:        Development files for %{name}
 Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
+Requires:       pkgconfig(freexl)
+Requires:       pkgconfig(libxml-2.0)
+Requires:       pkgconfig(minizip)
+Requires:       pkgconfig(proj)
+Requires:       pkgconfig(rttopo)
 
 %description devel
 This package contains all necessary include files and libraries needed
@@ -74,11 +79,13 @@ to compile and develop applications that use libspatialite.
 
 %build
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
+# build tests
+%make_build check TESTS=""
 
 %check
 # Don't fail build - four failures (reported to upstream)
-make check %{?_smp_mflags} || :
+%make_build check || :
 
 %install
 %make_install

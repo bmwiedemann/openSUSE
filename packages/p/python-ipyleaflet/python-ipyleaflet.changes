@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Dec 23 18:45:01 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.18.1
+  * Add "collapsed" property to the "LayersControl" by @gjmooney in
+    #1156
+  * Add "index" argument to the Map's "add" method by @gjmooney in
+    #1156
+- Release 0.18.0
+  * Removed the unwanted character from Python code. by @frankwwu
+    in #1139
+  * Added Jupyter Lab 4 support by @cdanielw in #1146
+  * Add support for PMTiles by @giswqs in #1138
+
+-------------------------------------------------------------------
 Sat Sep 23 16:56:46 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.17.4

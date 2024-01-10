@@ -514,4 +514,48 @@ Could not find any LGPL-2.1 &quot;only&quot; licensed files in the pacakge (forw
     <comment></comment>
     <requestid>1129452</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>4114e9a3fadd4f60d1a9ddd1551e8d70</srcmd5>
+    <version>3.6</version>
+    <time>1704753831</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.6
+  https://github.com/SELinuxProject/selinux/releases/tag/3.6
+  * Add notself support for neverallow rules
+  * Improve man pages
+  * man pages: Remove the Russian translations
+  * Add notself and other support to CIL
+  * Add support for deny rules
+  * Translations updated from
+    https://translate.fedoraproject.org/projects/selinux/
+  * Bug fixes
+- Remove keys from keyring since they expired:
+  - E853C1848B0185CF42864DF363A8AD4B982C4373
+    Petr Lautrbach &lt;plautrba@redhat.com&gt;
+  - 63191CE94183098689CAB8DB7EF137EC935B0EAF
+    Jason Zaman &lt;jasonzaman@gmail.com&gt;  
+- Add key to keyring:   
+  - B8682847764DF60DF52D992CBC3905F235179CF1   
+    Petr Lautrbach &lt;lautrbach@redhat.com&gt;
+- Update to version 3.6
+  https://github.com/SELinuxProject/selinux/releases/tag/3.6
+  * Add notself support for neverallow rules
+  * Improve man pages                       
+  * man pages: Remove the Russian translations
+  * Add notself and other support to CIL    
+  * Add support for deny rules
+  * Translations updated from
+    https://translate.fedoraproject.org/projects/selinux/
+  * Bug fixes
+- Remove keys from keyring since they expired:
+  - E853C1848B0185CF42864DF363A8AD4B982C4373
+    Petr Lautrbach &lt;plautrba@redhat.com&gt;
+  - 63191CE94183098689CAB8DB7EF137EC935B0EAF
+    Jason Zaman &lt;jasonzaman@gmail.com&gt;  
+- Add key to keyring:   
+  - B8682847764DF60DF52D992CBC3905F235179CF1   
+    Petr Lautrbach &lt;lautrbach@redhat.com&gt;
+</comment>
+    <requestid>1137570</requestid>
+  </revision>
 </revisionlist>

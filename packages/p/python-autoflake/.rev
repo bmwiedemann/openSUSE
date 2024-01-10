@@ -95,4 +95,39 @@
 </comment>
     <requestid>1101580</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d001d10a69e0186ed235fec2957cc479</srcmd5>
+    <version>2.2.1</version>
+    <time>1702673401</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.2.1:
+  * Add type annotations and validate with pyright
+  * Remove test_fuzz_pypi
+  * Revert &quot;Support .toml configuration format with --config flag
+  * Support .toml configuration format with --config flag
+  * Fix a typo in a link to pre-commit
+  * Update standard_paths so it only checks existing directories
+  * Upgrade minimum version of pyflakes
+  * Add upper limit to pyflake's version &lt;3.0 to support handling
+    of python 2.x
+  * fix: Ignore pass multiple lines after docstring with flag
+  * Fixed multiprocessing issue on win64 with more than 60 cores
+  * Fix default value for `--imports`
+  * Use regular dictionary instead of defaultdict
+  * Properly consider options from config file and flags
+  * Update merge_configuration_file to prefer values from flags
+  * Unified output to stdout when using --check
+  * add config-file option
+  * Fix Namespace check
+  * Add --check-diff flag which combines check and diff
+  * Use black for formatting code
+  * Migrate to tomli
+  * PEP 621: Migrate to pyproject.toml
+  * Add option to keep pass statements
+
+- reenable build for python38, issue got fixed in current release
+- Update to v1.5.2
+- Switch from setup.py test to pytest</comment>
+    <requestid>1133401</requestid>
+  </revision>
 </revisionlist>

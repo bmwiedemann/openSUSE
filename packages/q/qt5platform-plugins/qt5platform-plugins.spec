@@ -1,7 +1,7 @@
 #
 # spec file for package qt5platform-plugins
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2023 Hillwood Yang <hillwood@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -29,6 +29,7 @@ Patch0:         support-Qt-5_15_8.patch
 Patch1:         support-Qt-5_15_9.patch
 Patch2:         support-Qt-5_15_10.patch
 Patch3:         support-Qt-5_15_11.patch
+Patch4:         support-Qt-5_15_12.patch
 BuildRequires:  -libudev-mini1
 BuildRequires:  git-core
 BuildRequires:  libQt5Core-private-headers-devel

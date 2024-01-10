@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Jan  7 21:12:19 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.2.0:
+  * Support for Python 3.12
+  * Drop support for EOL Python 3.7
+  * Publish to PyPI with a Trusted Publisher
+  * Document how to authenticate with a session key
+- update to 5.1.0:
+  * Support Python 3.11 (#399)
+  * Migrate from setuptools + setuptools_scm to hatchling +
+    hatch-vcs (#413) @hugovk
+- update to 5.0.0:
+  * Replace `http.client` with HTTPX (#379) @hugovk
+  * Log method names at INFO level, also log API return data at
+    DEBUG level
+  * Drop support for Python 3.6 (#387) @hugovk
+  * Remove deprecated `is_streamable` and
+    `is_fulltrack_available` (#388) @hugovk
+  * If album has no MBID, `album.get_getmbid()` returns None
+
+-------------------------------------------------------------------
 Wed Oct 12 11:31:13 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - drop unneeded six dependency
@@ -23,29 +44,29 @@ Sat Mar 26 18:47:58 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * Remove artist.shout("<3") in README.md (#369) @tieubinhco
   * Bugfix for get_userloved and get_userplaycount resulting in an empty response from the server
   * Fix unsafe creation of temp file for caching, and improve exception raising (#356) @kvanzuijlen
-  * [pre-commit.ci] pre-commit autoupdate (#362) @pre-commit-ci 
+  * [pre-commit.ci] pre-commit autoupdate (#362) @pre-commit-ci
 
 -------------------------------------------------------------------
 Tue Mar 15 08:50:28 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- use python_expand for fdupes 
+- use python_expand for fdupes
 
 -------------------------------------------------------------------
 Mon Feb 22 07:20:38 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Update to 4.1.0.
-  * Added 
+  * Added
     * Add support for streaming (#336) @kvanzuijlen
-  * Changed 
+  * Changed
     * Update copyright year (#360) @hugovk
     * Replace Travis CI with GitHub Actions
-  * Fixed 
+  * Fixed
     * Set limit to 50 by default, not 1
   * Updates for 4.0.0.
-    * Added 
+    * Added
       * Add support for Python 3.9.
-    * Removed 
-      * Remove deprecated Artist.get_cover_image, 
+    * Removed
+      * Remove deprecated Artist.get_cover_image,
         User.get_artist_tracks and STATUS_TOKEN_ERROR.
 
 -------------------------------------------------------------------
@@ -121,7 +142,7 @@ Fri Mar 24 19:47:29 UTC 2017 - alarrosa@suse.com
   * switch from HTTPConnection to HTTPSConnection
   * Add missing dependency in README, update gitignore for JetBrains
   * Update Libre.fm URL
- 
+
 
 -------------------------------------------------------------------
 Mon May 16 15:38:42 UTC 2016 - arun@gmx.de

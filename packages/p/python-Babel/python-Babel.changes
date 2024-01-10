@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Wed Dec 27 09:37:51 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.14.0:
+  * ``Locale.number_symbols`` will now have first-level keys for
+    each numbering system.
+  * Babel no longer directly depends on either ``distutils`` or
+    ``setuptools``; if you had been using the Babel setuptools
+    command extensions, you would need explicitly depend on
+    ``setuptools``
+  * CLDR/Numbers: Add support of local numbering systems for
+    number symbols
+  * CLDR: Upgrade to CLDR 43
+  * Frontend: Allow last_translator to be passed as an option to
+    extract_message
+  * Frontend: Decouple `pybabel` CLI frontend from
+    distutils/setuptools
+  * Numbers: Improve parsing of malformed decimals
+
+-------------------------------------------------------------------
+Thu Dec 14 11:11:50 UTC 2023 - pgajdos@suse.com
+
+- deleted patches
+  - fix-tests.patch (upstreamed)
+
+-------------------------------------------------------------------
+Thu Dec 14 09:15:20 UTC 2023 - Petr Gajdos <pgajdos@suse.com>
+
+- update to 2.13.1:
+  * Fix a typo in ``_locales_to_names``
+  * Fix ``setuptools`` dependency for Python 3.12
+  * This version, Babel 2.13, is the last version of Babel to
+    support Python 3.7.
+  * Add flag to ignore POT-Creation-Date for updates
+  * Support 't' specifier in keywords
+  * Add f-string parsing for Python 3.12 (PEP 701)
+  * Various typing-related fixes
+  * babel.messages.catalog: deduplicate _to_fuzzy_match_key logic
+  * Freeze format_time() tests to a specific date to fix test
+    failures
+  * Spelling and grammar fixes
+  * Renovate lint tools
+  * Use SPDX license identifier
+  * Use aware UTC datetimes internally
+
+-------------------------------------------------------------------
 Mon May  8 10:00:09 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add fix-tests.patch to make tests work with EST/EDT swap,
@@ -52,7 +97,7 @@ Thu Apr 13 22:40:11 UTC 2023 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Mon Nov  7 20:02:22 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to 2.11.0 
+- Update to 2.11.0
   Upcoming deprecation
   * This version, Babel 2.11, is the last version of Babel to support Python 3.6. Babel 2.12 will require Python 3.7 or newer.
   Improvements
@@ -80,11 +125,11 @@ Mon Nov  7 20:02:22 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 Fri Jun 17 19:38:24 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 
-- update to 2.10.3 
+- update to 2.10.3
   This is a bugfix release for Babel 2.10.2, which was mistakenly packaged with outdated locale data.
   Thanks to Michał Górny for pointing this out and Jun Omae for verifying.
   This and future Babel PyPI packages will be built by a more automated process, which should make problems like this less likely to occur
-- update to 2.10.2 
+- update to 2.10.2
   This is a bugfix release for Babel 2.10.1.
   * Fallback count=”other” format in format_currency() (#872) - Jun Omae
   * Fix get_period_id() with dayPeriodRule across 0:00 (#871) - Jun Omae
@@ -95,38 +140,38 @@ Fri Jun 17 19:38:24 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 Sat Jun  4 18:08:57 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.10.1:
-  * Messages: Fix ``distutils`` import. Regressed in :gh:`843`. 
+  * Messages: Fix ``distutils`` import. Regressed in :gh:`843`.
   * The ``get_next_timezone_transition
     likely as soon as Babel 2.11.
-  * CLDR: Upgrade to CLDR 41.0. 
+  * CLDR: Upgrade to CLDR 41.0.
      * The ``c`` and ``e`` plural form operands introduced in CLDR 40 are parsed
      * Non-nominative forms of units are currently ignored.
-  * Messages: Implement ``--init-missing`` option for ``pybabel update`` 
+  * Messages: Implement ``--init-missing`` option for ``pybabel update``
   * Messages: For ``extract``, you can now replace the built-in ``.*`` / ``_*``
-    ignored directory patterns with ones of your own. 
-  * Messages: Add ``--check`` to verify if catalogs are up-to-date 
-  * Messages: Add ``--header-comment`` to override default header comment 
+    ignored directory patterns with ones of your own.
+  * Messages: Add ``--check`` to verify if catalogs are up-to-date
+  * Messages: Add ``--header-comment`` to override default header comment
   * Dates: ``parse_time`` now supports 12-hour clock, and is better at parsing
     partial times.
   * Dates: ``parse_date`` and ``parse_time`` now raise ``ParseError``, a subclass
     of ``ValueError``, in certain cases.
   * Dates: ``parse_date`` and ``parse_time`` now accept the ``format`` parameter.
-  * The internal ``babel/_compat.py`` module is no more 
-  * Python 3.10 is officially supported 
-  * There's now a friendly GitHub issue template. 
+  * The internal ``babel/_compat.py`` module is no more
+  * Python 3.10 is officially supported
+  * There's now a friendly GitHub issue template.
   * Don't use the deprecated format_number function internally or in tests
-  * Add GitHub URL for PyPi 
-  * Python 3.12 compatibility: Prefer setuptools imports to distutils imports 
-  * Python 3.11 compatibility: Add deprecations to l*gettext variants 
-  * CI: Babel is now tested with PyPy 3.7. 
-  * Date formatting: Allow using ``other`` as fallback form 
+  * Add GitHub URL for PyPi
+  * Python 3.12 compatibility: Prefer setuptools imports to distutils imports
+  * Python 3.11 compatibility: Add deprecations to l*gettext variants
+  * CI: Babel is now tested with PyPy 3.7.
+  * Date formatting: Allow using ``other`` as fallback form
   * Locales: ``Locale.parse
-  * A typo in the plural format for Maltese is fixed. 
-  * Messages: Catalog date parsing is now timezone independent. 
-  * Messages: Fix duplicate locations when writing without lineno 
-  * Messages: Fix missing trailing semicolon in plural form headers 
-  * CLI: Fix output of ``--list-locales`` to not be a bytes repr 
-  * Documentation is now correctly built again, and up to date 
+  * A typo in the plural format for Maltese is fixed.
+  * Messages: Catalog date parsing is now timezone independent.
+  * Messages: Fix duplicate locations when writing without lineno
+  * Messages: Fix missing trailing semicolon in plural form headers
+  * CLI: Fix output of ``--list-locales`` to not be a bytes repr
+  * Documentation is now correctly built again, and up to date
 
 -------------------------------------------------------------------
 Tue Oct  5 14:53:29 UTC 2021 - Stefan Schubert <schubi@suse.de>
@@ -136,7 +181,7 @@ Tue Oct  5 14:53:29 UTC 2021 - Stefan Schubert <schubi@suse.de>
 -------------------------------------------------------------------
 Thu Sep 30 15:35:45 UTC 2021 - Stefan Schubert <schubi@suse.de>
 
-- Use libalternatives instead of update-alternatives. 
+- Use libalternatives instead of update-alternatives.
 
 -------------------------------------------------------------------
 Tue May 11 21:40:39 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -214,7 +259,7 @@ Tue Jun  4 05:31:14 UTC 2019 - pgajdos@suse.com
     ``collections.OrderedDict`` from The Python standard library.
   Improvements
   * CLDR: Upgrade to CLDR 35.1 - Alberto Mardegan, Aarni Koskela (#626, #643)
-  * General: allow anchoring path patterns to the start of a string - 
+  * General: allow anchoring path patterns to the start of a string -
     Brian Cappello (#600)
   * General: Bumped version requirement on pytz - @chrisbrake (#592)
   * Messages: `pybabel compile`: exit with code 1 if errors were encountered
@@ -365,7 +410,7 @@ Mon May  2 19:00:01 UTC 2016 - dmueller@suse.com
   * CLDR: The lxml library is no longer used for CLDR importing, so it should not cause strange failures e
   * CLI: Every last single CLI usage regression should now be gone, and both distutils and stand-alone CLI
   * CLI: Usage regressions that had snuck in between 2.2 and 2.3 should be no more. (https://github.com/py
-  * Dates: Period (am/pm) formatting was broken in certain locales (namely zh_TW). Thanks to @jun66j5 for 
+  * Dates: Period (am/pm) formatting was broken in certain locales (namely zh_TW). Thanks to @jun66j5 for
   * CLDR: Add an API for territory language data (https://github.com/python-babel/babel/pull/315)
   * Core: Character order and measurement system data is imported and exposed (https://github.com/python-b
   * Dates: Add an API for time interval formatting (https://github.com/python-babel/babel/pull/316)
@@ -446,7 +491,7 @@ Mon Feb  1 10:40:23 UTC 2016 - toddrme2178@gmail.com
 - add skip-dst-tests.patch: drop DST related tests (workaround
   issue #156)
 - Add fix-timezone-test.patch: already included upstream
-- Remove 0001-disable_timezone_tests.patch in favor of 
+- Remove 0001-disable_timezone_tests.patch in favor of
   fix-timezone-test.patch
 
 -------------------------------------------------------------------
@@ -468,7 +513,7 @@ Sat Nov 08 17:11:00 UTC 2014 - Led <ledest@gmail.com>
 -------------------------------------------------------------------
 Fri Aug 15 11:42:11 UTC 2014 - sfalken@opensuse.org
 
-- Removed un-needed BuildRequire for timezone 
+- Removed un-needed BuildRequire for timezone
 
 -------------------------------------------------------------------
 Fri Aug 15 02:54:46 UTC 2014 - sfalken@opensuse.org
@@ -578,7 +623,7 @@ Fri Sep 27 19:59:09 UTC 2013 - dmueller@suse.com
 - run tests
 - use setuptools, not distribute
 - add missing dependency on pytz
- 
+
 -------------------------------------------------------------------
 Thu Sep  1 14:26:07 UTC 2011 - saschpe@suse.de
 
@@ -609,11 +654,11 @@ Thu Sep  1 14:17:39 UTC 2011 - saschpe@suse.de
     string does not contain any string formattings (ticket #150).
   * Fix Serbian plural forms (ticket #213).
   * Small speed improvement in format_date() (ticket #216).
-  * Fix number formatting for locales where CLDR specifies alt or draft 
+  * Fix number formatting for locales where CLDR specifies alt or draft
     items (ticket #217)
   * Fix bad check in format_time (ticket #257, reported with patch and tests by
     jomae)
-  * Fix so frontend.CommandLineInterface.run does not accumulate logging 
+  * Fix so frontend.CommandLineInterface.run does not accumulate logging
     handlers (#227, reported with initial patch by dfraser)
   * Fix exception if environment contains an invalid locale setting (#200)
 - Renamed to python-Babel (from python-babel)

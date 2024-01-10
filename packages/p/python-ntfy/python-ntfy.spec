@@ -1,7 +1,7 @@
 #
 # spec file for package python-ntfy
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2020 Matthias Bach <marix@marix.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -31,6 +31,7 @@ Patch0:         python-ntfy-no-mock.patch
 Patch1:         emoji-2.0-compatibility.patch
 Patch2:         drop-misleading-shebangs.patch
 Patch3:         python-311-compat.patch
+Patch4:         python-312-compat.patch
 BuildRequires:  %{python_module appdirs}
 # test requirements
 BuildRequires:  %{python_module emoji >= 1.6.2}
@@ -94,6 +95,7 @@ Quickstart
 %doc README.rst
 %license LICENSE
 %python_alternative %{_bindir}/ntfy
-%{python_sitelib}/*
+%{python_sitelib}/ntfy
+%{python_sitelib}/ntfy-%{version}*-info
 
 %changelog

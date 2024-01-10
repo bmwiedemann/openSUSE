@@ -88,4 +88,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1120936</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>b9c3b208679a4ac16adf99c5d3e7e2b8</srcmd5>
+    <version>0.16.6</version>
+    <time>1702845219</time>
+    <user>anag+factory</user>
+    <comment>- Limit wlroots version to 0.16.x and before 0.17.x
+</comment>
+    <requestid>1133712</requestid>
+  </revision>
 </revisionlist>

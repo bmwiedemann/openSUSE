@@ -16,22 +16,23 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-grimoirelab-toolkit
-Version:        0.3.4
+Version:        0.4.1
 Release:        0
 Summary:        Toolkit of common functions used across GrimoireLab
 License:        GPL-3.0-or-later
 URL:            https://chaoss.github.io/grimoirelab/
 Source:         https://files.pythonhosted.org/packages/source/g/grimoirelab-toolkit/grimoirelab_toolkit-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core >= 1.0.0}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module python-dateutil >= 2.8}
+BuildRequires:  %{python_module python-dateutil >= 2.8.2}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-Requires:       python-python-dateutil >= 2.8
+Requires:       python-python-dateutil >= 2.8.2
 %python_subpackages
 
 %description

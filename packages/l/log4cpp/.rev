@@ -34,4 +34,23 @@
     <comment></comment>
     <requestid>661958</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>eaa524d215d76c07e4f99c5ea51f1507</srcmd5>
+    <version>1.1.4</version>
+    <time>1704281547</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.1.4
+  * fix for bug 152: use timespec and clock_settime for c++11 and
+    higher; use stime for glibc version lower than 2.31; none for
+    other cases
+  * Replace obsolete auto_ptr removed in C++17 with newer
+    unique_ptr since C++11
+  * Replace older Non-throwing dynamic exception specification
+    throw() removed in C++20 with newer noexcept since C++11
+  * Patch #49 C99 compatibility fix for snprintf configure check
+  * va_copy is here since c++11; fallback to simple copy if
+    standard is not specified or less than c++11
+- Replace _service with full URL in Source (forwarded request 1136382 from StefanBruens)</comment>
+    <requestid>1136398</requestid>
+  </revision>
 </revisionlist>

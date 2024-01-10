@@ -414,4 +414,12 @@ The COPYING file shows that the package is predominantly BSD-2-Clause licensed (
   * fix 2 year 2038 issues</comment>
     <requestid>1100374</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>8263b232529f3a921aa83d3fb0070cf6</srcmd5>
+    <version>3.7.2</version>
+    <time>1704380223</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1135735</requestid>
+  </revision>
 </revisionlist>

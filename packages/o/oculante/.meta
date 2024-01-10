@@ -1,0 +1,7 @@
+<package name="oculante" project="openSUSE:Factory">
+  <title>A minimalistic crossplatform image viewer written in rust</title>
+  <description>Oculante's vision is to be a fast, unobtrusive, portable image viewer with wide image format support, offering image analysis and basic editing tools.
+</description>
+  <devel project="graphics" package="oculante"/>
+  <url>https://github.com/woelper/oculante</url>
+</package>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan  2 22:01:37 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- require setuptools
+
+-------------------------------------------------------------------
 Mon Jul 10 19:03:16 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Clean up SPEC file.
@@ -55,7 +60,7 @@ Mon Apr  3 19:58:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.29.34:
   * A refence leak of the for-loop list/tuple iterable was
-    resolved if the for-loop's  ``else:`` branch executes 
+    resolved if the for-loop's  ``else:`` branch executes
     a ``break`` for an outer loop.
   * Some C compile failures in CPython 3.12 were resolved.
   * Some old usages of the deprecated Python ``imp`` module were
@@ -72,7 +77,7 @@ Sat Jan  7 12:27:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
   * The ``cythonize`` and ``cython`` commands have a new option ``-M`` /
     ``--depfile`` to generate ``.dep`` dependency files for the
     compilation unit.  This can be used by external build tools to
-    track these dependencies. 
+    track these dependencies.
   * ``const`` fused types could not be used with memory views.
   * ``wstr`` usage was removed in Python 3.12 and later (PEP-623).
   * A type check assertion for Cython functions failed in debug Python
@@ -145,7 +150,7 @@ Wed May 18 08:35:39 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 - update to 0.29.30:
   * Avoid acquiring the GIL at the end of nogil functions. This change
     was backported in order to avoid generating wrong C code that
-    would trigger C compiler warnings with tracing support enabled. 
+    would trigger C compiler warnings with tracing support enabled.
   * Function definitions in finally: clauses were not correctly generated.
   * A case where C-API functions could be called with a live exception
     set was fixed.
@@ -227,7 +232,7 @@ Wed Jul 14 08:28:08 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
   * The attributes ``gen.gi_frame`` and ``coro.cr_frame`` of Cython compiled
     generators and coroutines now return an actual frame object for introspection,
     instead of ``None``.
-- Drop cython_use_imgmath.patch 
+- Drop cython_use_imgmath.patch
 
 -------------------------------------------------------------------
 Wed Apr 21 21:19:17 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -246,7 +251,7 @@ Wed Apr 21 21:19:17 UTC 2021 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Tue Feb 23 07:22:13 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
-- Update to 0.29.22 
+- Update to 0.29.22
   * Some declarations were added to the provided pxd includes.
     Patches by Zackery Spytz and John Kirkham.
     (Github issues #3811, #3882, #3899, #3901)
@@ -483,8 +488,8 @@ Mon Jun  3 13:37:55 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.29.10
  * Fix compile errors in CPython 3.8b1 due to the new "tp_vectorcall" slots.
- * Remove an incorrect cast when using true-division in C++ operations. 
- * C compile errors with CPython 3.8 were resolved. 
+ * Remove an incorrect cast when using true-division in C++ operations.
+ * C compile errors with CPython 3.8 were resolved.
  * Python tuple constants that compare equal but have different item types
      could incorrectly be merged into a single constant.
  * Non-ASCII characters in unprefixed strings could crash the compiler
@@ -566,7 +571,7 @@ Sun Jan 20 04:34:42 UTC 2019 - Arun Persaud <arun@gmx.de>
 Thu Dec  6 09:45:54 UTC 2018 - ncutler@suse.com
 
 - revert to version 0.28.5 to restore support for subinterpreters
-  needed by Ceph - stopgap measure until issue can be addressed 
+  needed by Ceph - stopgap measure until issue can be addressed
   upstream (bsc#1118611)
 
 -------------------------------------------------------------------
@@ -1308,7 +1313,7 @@ Fri Jul 10 21:59:38 UTC 2015 - termim@gmail.com
     checks were not propagated.
   * Runtime reported file paths of source files (e.g for profiling
     and tracing) are now relative to the build root directory instead
-    of the main source file. 
+    of the main source file.
   * Tracing exception handling code could enter the trace function with an
     active exception set.
   * The internal generator function type was not shared across modules.
@@ -1400,7 +1405,7 @@ Thu Jan  8 12:22:10 UTC 2015 - dimstar@opensuse.org
 Thu Dec 18 10:48:28 UTC 2014 - p.drouand@gmail.com
 
 - Improve update-alternatives.
-- Remove Cython-fix-version-detection.patch 
+- Remove Cython-fix-version-detection.patch
   (got fixed upstream)
 - update to version 0.21.1:
   * Features added
@@ -1443,11 +1448,11 @@ Fri Sep 12 10:52:18 UTC 2014 - toddrme2178@gmail.com
 - Add Cython-fix-version-detection.patch
   This is a patch from upstream that restores version information
   whose removal is preventing several packages from correctly
-  detecting Cython's presence.  It is already merged upstream and 
+  detecting Cython's presence.  It is already merged upstream and
   so should be in the next release.
-  Note that despite what upstream says, 
+  Note that despite what upstream says,
   python-tables/python3-tables is NOT the only package affected by
-  this, which is why the patch is going here instead of 
+  this, which is why the patch is going here instead of
   python-tables/python3-tables.
   python-bcolz/python3-bcolz is an example of another package
   affected.
@@ -1550,7 +1555,7 @@ Thu Sep 11 09:30:20 UTC 2014 - toddrme2178@gmail.com
     * Removed support for CPython 2.4, 2.5 and 3.1.
     * The licensing implications on the generated code were clarified
       to avoid legal constraints for users.
-      
+
 -------------------------------------------------------------------
 Thu Jul 31 16:26:07 UTC 2014 - dimstar@opensuse.org
 
@@ -1774,11 +1779,11 @@ Fri Sep  2 11:03:40 UTC 2011 - saschpe@suse.de
 Fri Sep  2 09:50:25 UTC 2011 - saschpe@suse.de
 
 - Update to version 0.15:
-  * For loop docs fix and pointer iteration. 
+  * For loop docs fix and pointer iteration.
   * Pure decorators now implemented.
   * fix bug #707: optimised dict iteration over non-trivial expressions fail...
   * optimise object.pop() for sets
-  * Py2.4 fix: PySet_Pop() appeared in Py2.5 
+  * Py2.4 fix: PySet_Pop() appeared in Py2.5
   * Py3.3 test fix
   * Support module level control flow and Entry-level error on uninitialized
 - Spec file cleanup:

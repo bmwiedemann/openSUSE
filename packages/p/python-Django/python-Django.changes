@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan  4 09:27:51 UTC 2024 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to 4.2.9:
+  * Fixed a regression in Django 4.2.8 where admin fields on the same
+    line could overflow the page and become non-interactive
+
+-------------------------------------------------------------------
 Mon Dec  4 10:21:00 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to 4.2.8
@@ -155,7 +162,8 @@ Tue Jun  6 06:35:28 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
 Thu May  4 07:02:58 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to 4.2.1
-  + CVE-2023-31047: Potential bypass of validation when uploading multiple files using one form field
+  + CVE-2023-31047: Potential bypass of validation when uploading
+    multiple files using one form field (bsc#1210866)
   + Bugfixes
     * Fixed a regression in Django 4.2 that caused a crash of
       QuerySet.defer() when deferring fields by attribute names

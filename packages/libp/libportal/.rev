@@ -49,4 +49,12 @@
   https://en.opensuse.org/openSUSE:Shared_library_packaging_policy#Package_naming (forwarded request 1126530 from yfjiang)</comment>
     <requestid>1127340</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>c5843d39868d379bd0254032791f41ca</srcmd5>
+    <version>0.7.1</version>
+    <time>1704487253</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1136902</requestid>
+  </revision>
 </revisionlist>

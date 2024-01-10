@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan  5 18:37:26 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Bump to flake8 v7 gh#python-lsp/python-lsp-server#510
+  * python-lsp-server-pr510-flake8-7.patch
+
+-------------------------------------------------------------------
 Fri Nov 24 20:13:48 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.9.0

@@ -19,7 +19,7 @@
 %define libver 2
 %bcond_with tools
 Name:           podofo
-Version:        0.10.2
+Version:        0.10.3
 Release:        0
 Summary:        Tools to work with PDF files
 License:        GPL-2.0-or-later

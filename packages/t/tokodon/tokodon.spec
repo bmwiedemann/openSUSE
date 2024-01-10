@@ -28,8 +28,9 @@ Source:         https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  hicolor-icon-theme
 BuildRequires:  breeze5-icons
+BuildRequires:  extra-cmake-modules
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5CoreAddons)

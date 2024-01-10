@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec 21 07:29:27 UTC 2023 - Dmitry Markov <werwolf131313@gmail.com>
+
+- Change gameid set (boo#1218223)
+  * Add environment with additional startup options
+  * Change ExecStart with additional startup options env
+
+-------------------------------------------------------------------
 Sat Dec  9 13:00:13 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
 
 - Update to version 5.8.0:

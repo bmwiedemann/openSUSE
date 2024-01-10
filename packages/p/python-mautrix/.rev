@@ -87,4 +87,26 @@
     <comment></comment>
     <requestid>1119336</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ca940367fb4531d45c1958e766ffed31</srcmd5>
+    <version>0.20.3</version>
+    <time>1703800889</time>
+    <user>anag+factory</user>
+    <comment>- update to update to 0.20.3:
+  * Deprecated MSC2716 methods and added new Beeper-
+    specific batch send methods, as upstream MSC2716 support has
+    been abandoned.
+  * *(util.async_db)* Added `PRAGMA synchronous = NORMAL;` to
+    default pragmas.
+  * *(types)* Fixed `guest_can_join` field name in room directory
+    response
+
+  * Switched to secrets.token_urlsafe for generating tokens
+  * Allowed sending read receipts even if appservice user is not
+  * Added TraceLogger type hints to command handling classes
+  * Fixed typo in HTML reply fallback generation when target
+  * Made CommandEvent.mark_read async instead of returning an
+- Initial package</comment>
+    <requestid>1135265</requestid>
+  </revision>
 </revisionlist>

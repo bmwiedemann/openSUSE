@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Dec 29 13:29:31 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.12+kde2, rebased upstream:
+  * Fix crash on macos13 with iphone camera
+  * VideoOutput: Always update geometry when video surface format changes
+  * VideoOutput: fix resize of a finished video
+  * Bump version to 5.15.12
+  * Windows: Fix cropping for HEVC-encoded videos
+
+-------------------------------------------------------------------
 Fri Oct  6 06:41:22 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.11+kde2, rebased upstream:

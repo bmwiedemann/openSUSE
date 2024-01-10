@@ -1,7 +1,7 @@
 #
 # spec file for package qcustomplot
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,8 +24,8 @@ Summary:        Qt widget for plotting and data visualization
 License:        GPL-3.0-or-later
 URL:            https://www.qcustomplot.com/
 Group:          Development/Libraries/C and C++
-Source0:        https://www.qcustomplot.com/release/%{version}fixed/QCustomPlot.tar.gz
-Source1:        https://www.qcustomplot.com/release/%{version}fixed/QCustomPlot-sharedlib.tar.gz
+Source0:        https://www.qcustomplot.com/release/%{version}/QCustomPlot.tar.gz
+Source1:        https://www.qcustomplot.com/release/%{version}/QCustomPlot-sharedlib.tar.gz
 # PATCH-FIX-OPENSUSE relwithdebug.diff -- build with debug symbols
 Patch1:         relwithdebug.patch
 BuildRequires:  fdupes

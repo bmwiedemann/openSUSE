@@ -47,4 +47,20 @@
     <comment></comment>
     <requestid>1105566</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>041b27a87e7c02fc1c7408b08229c1b2</srcmd5>
+    <version>1.0.15136.4</version>
+    <time>1704281366</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1136081</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>c408fbe9c72127e5f71a5bec943d2c9b</srcmd5>
+    <version>1.0.15136.4</version>
+    <time>1704380367</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1136718</requestid>
+  </revision>
 </revisionlist>

@@ -16,15 +16,14 @@
 #
 
 
-# Only needed for the package signature condition
+%define qt5_version 5.15.2
 %bcond_without released
-%define _tar_path 5.103
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 Name:           kapidox
-Version:        5.112.0
+Version:        5.113.0
 Release:        0
 Summary:        Scripts and data for building API documentation
 License:        BSD-2-Clause
@@ -36,15 +35,15 @@ Source2:        frameworks.keyring
 %endif
 # PATCH-FIX-UPSTREAM
 Patch0:         0001-Fix-broken-installation.patch
+BuildRequires:  extra-cmake-modules >= %{_kf5_version}
 BuildRequires:  fdupes
-BuildRequires:  kf5-filesystem
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3
 BuildRequires:  python3-setuptools
 Requires:       doxygen
 Requires:       graphviz
 Requires:       graphviz-gd
-Requires:       libqt5-qttools
+Requires:       libqt5-qttools >= %{qt5_version}
 Requires:       python3-Jinja2
 Requires:       python3-xml
 Recommends:     python3-PyYAML

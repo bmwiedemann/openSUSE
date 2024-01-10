@@ -34,4 +34,22 @@
 </comment>
     <requestid>1033064</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>a1c4beae741fa5b17835dbbf78fb3740</srcmd5>
+    <version>0.5.10</version>
+    <time>1703024160</time>
+    <user>anag+factory</user>
+    <comment>- Add patch support-python312.patch:
+  * Support Python 3.12 by using assertEqual.
+- Switch to pyproject macros.</comment>
+    <requestid>1133931</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>392450aaae5bdfc99f8527f4d97b7581</srcmd5>
+    <version>0.5.10</version>
+    <time>1704281223</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1135868</requestid>
+  </revision>
 </revisionlist>

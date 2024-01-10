@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Tue Dec 19 02:34:10 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Remove unsatisfactory architectures that does not guaranteed to build.
+  It seems x86_64 is the guaranteed to work anyway.
+
+-------------------------------------------------------------------
+Tue Dec 19 02:28:16 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Specfile cleanup:
+  * specify more dependencies
+    - openlibm-devel
+    - julia-devel or julia-compat-devel which provides libjulia.so
+
+-------------------------------------------------------------------
+Mon Dec 18 22:35:16 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Some dependencies require to be explicit since Julia uses dlopen
+  on it's stdlib and other julia scripts
+
+-------------------------------------------------------------------
+Mon Dec 18 14:24:24 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Specfile cleanup:
+  * Exclude now only bundled libs
+    - LLVM, uv, ccalltest, llvmcalltest, openblas with INTERFACE64 enabled,
+      libjulia-internal and libjulia-codegen
+  * Fdupe only /usr/share/julia.
+  * Define some dependencies that are dlopened
+
+-------------------------------------------------------------------
+Mon Dec 18 06:20:48 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- There should be a package libjulia1. 
+- CFLAGS and CXXFLAGS use provided %optflags.
+- libjulia-compat1 should provide libjulia1 to fulfill soname shlib naming policies.
+- Remove unused rpmlints:
+  * devel-dependency
+- Turn all eol encondings to unix to all files
+- Add rpmlint for "W: hidden-file-or-dir /usr/share/julia/stdlib/v1.9/Pkg/test/test_packages/AugmentedPlatform/.pkg"
+  That contains julia scripts. Leave it alone.
+- fdupes at the end of the install section.
+
+-------------------------------------------------------------------
 Wed Dec 13 00:36:26 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Update specfile

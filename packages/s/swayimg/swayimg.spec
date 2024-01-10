@@ -17,7 +17,7 @@
 
 
 Name:           swayimg
-Version:        1.12
+Version:        2.0
 Release:        0
 Summary:        Image viewer for Sway/Wayland
 License:        MIT
@@ -27,11 +27,12 @@ BuildRequires:  giflib-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(OpenEXR)
+BuildRequires:  pkgconfig(OpenEXR) >= 3.1
 BuildRequires:  pkgconfig(bash-completion)
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(json-c)
+BuildRequires:  pkgconfig(libavif)
 BuildRequires:  pkgconfig(libexif)
 BuildRequires:  pkgconfig(libheif)
 BuildRequires:  pkgconfig(libjxl)
@@ -65,6 +66,8 @@ opening the image directly in a terminal window.
 %license LICENSE
 %doc README.md
 %{_bindir}/swayimg
+%dir %{_datadir}/swayimg
+%{_datadir}/swayimg/swayimgrc
 %{_datadir}/applications/swayimg.desktop
 %{_datadir}/bash-completion/completions/swayimg
 %{_datadir}/icons/hicolor/64x64/apps/swayimg.png

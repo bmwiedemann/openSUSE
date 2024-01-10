@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 29 09:17:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.1.11:
+  * Added vlan trunks on the server detail page
+  * Added a thread capable client.cf_call() function
+
+-------------------------------------------------------------------
 Fri Dec  8 16:45:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.1.10:

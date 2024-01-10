@@ -76,6 +76,11 @@ BuildRequires:  sgmltool
 %else
 BuildRequires:  linuxdoc-tools
 %endif
+%if 0%{?suse_version} >= 1600
+BuildRequires:  liboqs-devel
+# At the time of writing (22/Dec/2023), PQCE is only available on Tumbleweed.
+BuildRequires:  postquantumcryptoengine-devel
+%endif
 BuildRequires:  soci-devel
 BuildRequires:  soci-sqlite3-devel
 BuildRequires:  xsd

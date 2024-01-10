@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Dec  3 12:24:27 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Make a symlink to the real pkgconfig dir (for example, in an
+  installed system) for package's absurdly located pkgconfig file.
+  This is a minimal workaround to boo#1217751, I guess.
+- Cosmetic touch-ups.
+
+-------------------------------------------------------------------
 Mon Oct 23 19:21:28 UTC 2023 - Egbert Eich <eich@suse.com>
 
 - Disable HPC flavors on i586

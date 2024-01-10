@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Jan 03 07:31:51 UTC 2024 - otto.hollmann@suse.com
+
+- Update to version 2.3.7+git12:
+  * Increase version number
+  * Update rootcerts.pem
+  * test: add test for EME_PKCS1_OAEP and fix openssl >= 3.2 does not failing anymore when decrypting with the wrong key
+  * plugins/qca-ossl: Announce tripledes unconditionally again
+
+-------------------------------------------------------------------
+Sat Dec 23 17:11:10 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add a _service to pick up fixes from git
+- Update to version 2.3.7+git8:
+  * CI: Also verify that presence of the ossl legacy provider impacts qca
+  * plugins/qca-ossl: Actually try loading the legacy provider
+  * plugins/qca-ossl: Neither PKCS12 nor 3DES are legacy
+    (boo#1218254)
+  * unittest/keybundle: Regenerate keys and certificates
+  * CI: Use clang-format-16
+  * GIT_SILENT: Port to new gitlab ci template
+  * Replace sys/termios.h include for just termios.h
+  * Sign self-signed certs with SHA256
+
+-------------------------------------------------------------------
 Tue Jul 25 08:29:57 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 2.3.7

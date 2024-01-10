@@ -114,6 +114,8 @@ Patch62:        xemacs-libX11-boo1175028.patch
 # PATCH-FIX-SUSE sys_siglist is deprecated
 Patch63:        xemacs-21.5.34-strsignal.patch
 Patch64:        xemacs-21.5.34-fix2038.patch
+# PATCH-FIX-SUSE drop hostname+timestamp from .elc
+Patch65:        reproducible.patch
 Requires(pre):  permissions
 Requires:       ctags
 Requires:       efont-unicode
@@ -229,6 +231,7 @@ exit 1
 %endif
 %endif
 %patch64 -p1
+%patch65 -p1
 
 %build
   cflags ()

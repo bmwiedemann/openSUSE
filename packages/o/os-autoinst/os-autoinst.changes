@@ -1,4 +1,103 @@
 -------------------------------------------------------------------
+Tue Jan 09 11:42:01 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1704800512.e4a4cf7:
+  * Override existing video when external video encoder is used
+  * Make default click times configurable via variables
+  * Add TEST_GIT_URL/NEEDLES_GIT_URL to vars
+  * systemd: Fix too strict os-autoinst-openvswitch init timeout
+  * Add usb-kbd on riscv64 as well
+  * Make qemu-img compress file using multiple threads
+  * Improve zone handling in setup-multi-machine
+  * Improve `sudo`-usage in `t/20-openqa-isotovideo-utils.t`
+  * Consider code as generally uncoverable when testing relies on `sudo`
+  * Fix CI failures due to `sudo` usage
+  * Set MTU in `os-autoinst-setup-multi-machine` also using NetworkManager
+  * Adjust MTU in `os-autoinst-setup-multi-machine`
+  * openvswitch: Add reference for the specific value selection
+  * Increase bootindex of network devices if PXEBOOT is enabled
+  * Speedup isotovideo test slightly by disabling the video encoder
+  * Avoid sleep after cloning via Git failed and retries are exhausted
+  * Speed up isotovideo test
+  * openvswitch: Ensure a consistent MTU size compatible with GRE tunnels
+  * Fix connection delete behavior when no connection is present
+  * Refactor common parts
+  * Add support for NetworkManager in setup multi-machine script
+  * Fix shell-check warnings
+  * dist: Add missing dependency on ssh in s390_zvm_requires
+  * Rewrite s390 console to work with arbitrary IP and Hostname combinations
+  * t/18-backend-qemu.t: Test for uppercase OVMF file names
+  * backend/qemu: Preserve case when modifying OVMF file names
+  * Disable SVIRT_WORKER_CACHE by default
+  * Unify perl linting rules
+  * Use commit message checks from os-autoinst-common
+  * backend::baseclass: Fix wording of informative message
+  * Slightly simplify backend::baseclass
+  * Fix character encoding of JSON result file
+  * Remove unused tools/absolutize
+  * git subrepo commit (merge) external/os-autoinst-common
+  * CI: Align commit message check to current in openQA
+  * Warn when modifying files under external directly
+  * Fix rsync command when asset name contains a colon
+  * Document important caveat of SVIRT_WORKER_CACHE setting
+  * Simplify log message when copying asset to svirt host
+  * Fixed python linter errors
+  * Stable Function signatures for Python Modules
+  * Enforce in tests that Python does not support `run_args`
+  * Get the python code to snitch its version
+  * Fix table of svirt backend variables
+  * Make use of openQA worker cache within the svirt backend optional
+  * Mention undocumented behavior from RAIDLEVEL
+  * os-autoinst-setup-multi-machine: Ensure wicked network daemon
+  * Revert "os-autoinst-setup-multi-machine: Missing dir for gre-up-script"
+  * os-autoinst-setup-multi-machine: Fix missing dir for gre-up-script
+  * Add dependency on ipxe-bootimgs
+  * Fix the ipxe rom file path from installed package 'ipxe-bootimgs'
+
+-------------------------------------------------------------------
+Sun Dec 24 05:23:35 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1703243806.d525e04:
+  * Add TEST_GIT_URL/NEEDLES_GIT_URL to vars
+  * systemd: Fix too strict os-autoinst-openvswitch init timeout
+  * Add usb-kbd on riscv64 as well
+  * Disable isa-fdc only on architectures which use ISA
+  * Make qemu-img compress file using multiple threads
+
+-------------------------------------------------------------------
+Thu Dec 21 21:24:16 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1703186166.3e0b4eb:
+  * systemd: Fix too strict os-autoinst-openvswitch init timeout
+  * Add usb-kbd on riscv64 as well
+  * Disable isa-fdc only on architectures which use ISA
+  * Make qemu-img compress file using multiple threads
+  * Improve zone handling in setup-multi-machine
+
+-------------------------------------------------------------------
+Tue Dec 19 13:35:36 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1702845126.bd10c5a:
+  * Make qemu-img compress file using multiple threads
+  * Improve zone handling in setup-multi-machine
+  * Improve `sudo`-usage in `t/20-openqa-isotovideo-utils.t`
+  * Consider code as generally uncoverable when testing relies on `sudo`
+  * Fix CI failures due to `sudo` usage
+  * Unify perl linting rules
+
+-------------------------------------------------------------------
+Fri Dec 15 14:35:30 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1702650922.5d50a17:
+  * Improve zone handling in setup-multi-machine
+  * Improve `sudo`-usage in `t/20-openqa-isotovideo-utils.t`
+  * Consider code as generally uncoverable when testing relies on `sudo`
+  * Fix CI failures due to `sudo` usage
+  * Set MTU in `os-autoinst-setup-multi-machine` also using NetworkManager
+  * Adjust MTU in `os-autoinst-setup-multi-machine`
+  * Unify perl linting rules
+
+-------------------------------------------------------------------
 Sun Dec 10 02:25:56 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1702036503.3b9f3a2:

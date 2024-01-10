@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Jan 07 13:19:15 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.34.0:
+  * build(deps): bump github.com/open-policy-agent/opa from 0.59.0
+    to 0.60.0 (#470)
+  * build(deps): bump actions/upload-artifact and
+    actions/download-artifact from 3 to 4 (#467)
+  * build(deps): bump github.com/spf13/viper from 1.18.1 to 1.18.2
+    (#469)
+  * build(deps): bump github.com/spf13/viper from 1.17.0 to 1.18.1
+    (#461)
+  * build(deps): bump golang from 1.21.4-alpine to 1.21.5-alpine
+    (#462)
+  * build(deps): bump alpine from 3.18.4 to 3.19.0 (#463)
+  * build(deps): bump k8s.io/apiextensions-apiserver from 0.28.4 to
+    0.29.0 (#466)
+  * build(deps): bump actions/setup-go from 4 to 5 (#464)
+
+-------------------------------------------------------------------
 Fri Dec 01 05:59:28 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.33.0:

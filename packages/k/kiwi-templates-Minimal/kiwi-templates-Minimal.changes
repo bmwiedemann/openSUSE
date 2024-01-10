@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Dec 28 08:43:34 UTC 2023 - Ludwig Nussel <lnussel@suse.com>
+
+- Handle new sources in spec file too
+
+-------------------------------------------------------------------
+Tue Dec 19 07:37:37 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- cloud-init no longer requires wicked, so install NetworkManager
+  everywhere (boo#1218129)
+- Switch all images from vmx to oem to use kiwi's resize
+  (boo#1206238)
+
+-------------------------------------------------------------------
+Thu Dec 14 09:52:18 UTC 2023 - Ludwig Nussel <lnussel@suse.com>
+
+- Add systemd-boot flavor with disk encryption
+
+-------------------------------------------------------------------
 Thu Aug 17 12:49:28 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Add combustion (jsc#PED-5843)

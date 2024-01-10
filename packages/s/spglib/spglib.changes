@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sat Jan  6 12:53:47 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to 2.2.0:
+  * Breaking Changes:
+    + refactor(database): standardize Hall symbols
+  * New Features:
+    + Increase max attempts for reduced cells
+  * Bug fixes:
+    fix: Fortran pkg-config file
+  * Documentation
+    + Improve release documentation
+- update to 2.1.0:
+  * Breaking Changes:
+    + Fortran spg get symmetry with site tensors
+  * New Features:
+    + Add setup.cfg for python interface
+    + Add layer group python interface
+    + Improve cmake build
+    + Move to pyproject.toml build
+    + Add fortran tests and clean cmake
+    + Add fortran interface test
+    + Readthedocs
+    + Change SPGCONST to const
+    + Initial refactor for layer group implementation
+    + tests: Refactor testing framework
+  * Bug fixes:
+    + Fix a bug in layer groups
+    + fix(layergroup): fix unique axis of monocli system
+    + Validate type of MSG
+    + Ensure thread-safety
+    + Various fixes
+  * Documentation:
+    + Update examples in C and Fortran
+    + Clean up and documentation fix
+- Enable unit tests
+
+-------------------------------------------------------------------
 Sat Dec  3 20:52:00 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.2:

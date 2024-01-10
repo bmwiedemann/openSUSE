@@ -33,6 +33,8 @@ Patch1:         python-iniparse-no-python2.patch
 Patch2:         python-iniparse-no-six.patch
 # from https://github.com/candlepin/python-iniparse/pull/24
 Patch3:         python311-compat.patch
+# PATCH-FIX-UPSTREAM: python3117.patch gh#candlepin/python-iniparse#29
+Patch4:         python3117.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -55,6 +57,7 @@ are preserved when data is updated), and is more convenient to use.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 chmod 644 html/index.html
 sed -i "/.*test_multiprocessing.*/d" tests/__init__.py # NOTE(saschpe): Doesn't work and I'm lazy

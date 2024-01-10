@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Dec 29 16:14:00 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Fix check that was testing the version package of python3-httpx.
+  That's not available in SLE so we now use python311-httpx
+  instead which allows the package to build fine in SLE's Python
+  3.11 stack.
+
+-------------------------------------------------------------------
+Tue Dec 26 15:49:11 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Tue Oct 31 17:34:29 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
 
 - Update to version 3.12.0:

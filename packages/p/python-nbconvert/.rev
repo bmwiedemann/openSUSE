@@ -374,4 +374,38 @@
   * Fixup typings #2048 (@blink1073)</comment>
     <requestid>1116519</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>51804e45a3bf52cd041c0ba78c34b543</srcmd5>
+    <version>7.12.0</version>
+    <time>1702845126</time>
+    <user>anag+factory</user>
+    <comment>- update to 7.12.0:
+  * Allow to load config from env.
+  * Use ruff on notebooks and update typings
+  * update Python version support in docs
+  * Support es modules in js includes
+  * Clean up lint handling and list generics
+  * Remove not needed pytest-dependency test requirement
+  * Update to mermaid 10.6.0, docs keyboard navigation
+  * Fix typing for traitlets 5.13
+  * Adopt ruff format
+  * Update typings and remove dead link
+  * Update to mermaid 10.6.0, docs keyboard navigation
+
+- Remove the doc package
+  * New kernel_manager_class configuration option for allowing systems to be set up to resolve kernels in different ways.
+  * Kernel errors now will be logged for debugging purposes when executing notebooks.</comment>
+    <requestid>1133611</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>d668dcf169fef386c7079294fab4e8a1</srcmd5>
+    <version>7.13.1</version>
+    <time>1703801022</time>
+    <user>anag+factory</user>
+    <comment>- Update to 7.13.1
+  * Restore removed import #2086 (@blink1073)
+- Release 7.13.0
+  * Add table, td, tr to allowed list of tags #2083 (@yuvipanda)</comment>
+    <requestid>1135497</requestid>
+  </revision>
 </revisionlist>

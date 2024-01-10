@@ -17,7 +17,7 @@
 
 
 Name:           xmpp-dns
-Version:        0.3.9
+Version:        0.3.10
 Release:        0
 Summary:        A CLI tool to check XMPP SRV records
 License:        BSD-2-Clause

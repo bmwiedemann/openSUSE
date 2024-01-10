@@ -1,7 +1,28 @@
 -------------------------------------------------------------------
+Tue Jan  2 21:53:17 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.10.post1:
+  * #309 ModuleNotFoundError: No module named 'looseversion'
+- update to 2.4.10:
+  * #298 Asyncio usage no longer supports Python 3.4
+  * Support for Python 3.10-3.12, via
+  * #296 Remove loop params that break in Python 3.10
+  * #298 Replace asyncio.coroutine attributes with async def
+  * #300 Update LooseVersion dependency
+  * #303 Specify 'coverage' package version in requirements.txt
+  * #267 and #304 Wait for wait_closed (on Python 3.7 and
+    greater) in asyncio mode by @dpineiden
+  * #308 Make 'restore' command's `-i db.table` option work again
+  * #290 Fix bug in stringified query representation logic by
+    @liranbg
+  * #296 Also, fix warning or error when "is not" is used with an
+    empty string
+  * We have a new dependency on `looseversion==1.3.0`.
+
+-------------------------------------------------------------------
 Fri Oct  7 15:02:43 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- version update to 2.4.9 
+- version update to 2.4.9
   * No breaking change.
   * #276 Fix dump command password reading by @besworks
   * #253 Fix Fix deprecated import collections by @metal3d

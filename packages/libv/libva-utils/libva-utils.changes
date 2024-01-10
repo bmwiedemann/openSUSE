@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec 28 08:47:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.20.1:
+  * [Encode] Fix some coverity issues exposed in encode
+  * [Encode] Fix some coverity issues exposed in encode
+  * Fixed VPP coverity issues.
+  * Fix some coverity issues exposed in decode
+
+-------------------------------------------------------------------
 Mon Dec  4 12:45:09 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - This includes latest version of one of the components needed for
@@ -39,7 +48,7 @@ Mon May 29 19:30:19 UTC 2023 - Dirk Müller <dmueller@suse.com>
   * fix: Correct maximum display luminance per VAAPI definition.
   * fix: Fix possible memory leak
   * fix: Fix coding issues of function return type & ref_frame_idx
-    idx too large 
+    idx too large
 
 -------------------------------------------------------------------
 Sat Apr 15 17:22:58 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
@@ -146,14 +155,14 @@ Tue Dec 22 09:50:03 UTC 2020 - Dirk Müller <dmueller@suse.com>
   * add Mediacopy Sample code
   * Enable new caps for rate control TCBRC
   * Add support for a --repeat command line option to vp8enc.
-  * fix one null pointer dereference risk 
+  * fix one null pointer dereference risk
 
 -------------------------------------------------------------------
 Sun Oct 18 17:16:59 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 2.9.1:
   * Fix one KW issue
-  * Fix null pointer dereference 
+  * Fix null pointer dereference
 
 -------------------------------------------------------------------
 Sat Oct 10 20:35:24 UTC 2020 - Dirk Mueller <dmueller@suse.com>
@@ -165,7 +174,7 @@ Sat Oct 10 20:35:24 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 -------------------------------------------------------------------
 Mon Aug 31 17:24:40 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
-- version 2.8.0 needed for jira#SLE/SLE-12712 
+- version 2.8.0 needed for jira#SLE/SLE-12712
 
 -------------------------------------------------------------------
 Sat Aug 15 22:30:56 UTC 2020 - Dirk Mueller <dmueller@suse.com>
@@ -249,7 +258,7 @@ Sun May  6 12:43:37 UTC 2018 - bjorn.lie@gmail.com
 -------------------------------------------------------------------
 Mon Mar 19 23:17:13 UTC 2018 - sndirsch@suse.com
 
-- disabled wayland build on Leap 42.3 
+- disabled wayland build on Leap 42.3
 
 -------------------------------------------------------------------
 Fri Nov 17 10:28:40 UTC 2017 - zaitor@opensuse.org
@@ -297,12 +306,12 @@ Wed Aug 16 17:27:10 UTC 2017 - chris@computersalat.de
 Fri Aug  4 14:03:25 UTC 2017 - sndirsch@suse.com
 
 - Version 1.8.2
-  * Bump version to 1.8.2 
+  * Bump version to 1.8.2
 
 -------------------------------------------------------------------
 Thu Jun 29 12:30:05 UTC 2017 - sndirsch@suse.com
 
-- changed Group to Development/Tools/Other 
+- changed Group to Development/Tools/Other
 
 -------------------------------------------------------------------
 Wed Apr 19 19:10:38 UTC 2017 - chris@computersalat.de

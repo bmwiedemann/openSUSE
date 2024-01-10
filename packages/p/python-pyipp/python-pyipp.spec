@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyipp
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,27 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
-%define skip_python36 1
+%{?sle15_python_module_pythons}
 Name:           python-pyipp
-Version:        0.11.0
+Version:        0.14.4
 Release:        0
 Summary:        Asynchronous Python client for Internet Printing Protocol (IPP)
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/ctalkington/python-ipp
-Source:         https://github.com/ctalkington/python-ipp/archive/%{version}.tar.gz#/pyipp-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/pyipp/pyipp-%{version}.tar.gz
+Source1:        https://github.com/ctalkington/python-ipp/archive/%{version}.tar.gz#/pyipp-%{version}-gh-tests.tar.gz
 BuildRequires:  %{python_module aiohttp >= 3.6.2}
+BuildRequires:  %{python_module async-timeout}
+BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module covdefaults}
 BuildRequires:  %{python_module deepmerge >= 0.1.0}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core}
+BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module yarl >= 1.4.2}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -44,14 +50,15 @@ BuildArch:      noarch
 Asynchronous Python client for Internet Printing Protocol (IPP).
 
 %prep
-%setup -q -n python-ipp-%{version}
+%autosetup -p1 -n pyipp-%{version} -a1
+ln -s python-ipp-%{version}/tests/ tests
 rm tests/test_client.py  tests/test_interface.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -60,6 +67,7 @@ rm tests/test_client.py  tests/test_interface.py
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/pyipp
+%{python_sitelib}/pyipp-%{version}.dist-info
 
 %changelog

@@ -18,14 +18,14 @@
 
 %define rname kxmlrpcclient
 %define lname libKF5XmlRpcClient5
-%define _tar_path 5.103
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
+%define qt5_version 5.15.2
 %bcond_without released
 Name:           kxmlrpcclient5
-Version:        5.112.0
+Version:        5.113.0
 Release:        0
 Summary:        Library containing simple XML-RPC Client support
 License:        BSD-2-Clause
@@ -35,11 +35,10 @@ Source:         %{rname}-%{version}.tar.xz
 Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
-BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
-BuildRequires:  kf5-filesystem
-BuildRequires:  cmake(KF5I18n) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5KIO) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(Qt5Test) >= 5.15.0
+BuildRequires:  extra-cmake-modules >= %{_kf5_version}
+BuildRequires:  cmake(KF5I18n) >= %{_kf5_version}
+BuildRequires:  cmake(KF5KIO) >= %{_kf5_version}
+BuildRequires:  cmake(Qt5Test) >= %{qt5_version}
 
 %description
 Library containing simple XML-RPC Client support.
@@ -53,7 +52,7 @@ Library containing simple XML-RPC Client support.
 %package devel
 Summary:        Library containing simple XML-RPC Client support: Build Environment
 Requires:       %{lname} = %{version}
-Requires:       cmake(KF5KIO) >= %{_kf5_bugfix_version}
+Requires:       cmake(KF5KIO) >= %{_kf5_version}
 
 %description devel
 Library containing simple XML-RPC Client support. Development files.

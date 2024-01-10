@@ -253,4 +253,23 @@
 </comment>
     <requestid>1130986</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>e174549ff8a6d7f92d9c7d5276998385</srcmd5>
+    <version>3.0.43</version>
+    <time>1704491912</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.43:
+  * Fix regression on Pypy: Don't use `ctypes.pythonapi` to
+    restore SIGINT if not available.
+  * Make `formatted_text.split_lines()` accept an iterable
+    instead of lists only.
+  * Disable the IPython workaround (from 3.0.41) for IPython &gt;=
+    8.18.
+  * Restore signal.SIGINT handler between prompts.
+
+- Update to version 3.0.36
+- Update to version 3.0.33:
+- Update to version 3.0.32:</comment>
+    <requestid>1135791</requestid>
+  </revision>
 </revisionlist>

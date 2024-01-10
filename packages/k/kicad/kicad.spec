@@ -1,7 +1,7 @@
 #
 # spec file for package kicad
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,8 +20,8 @@
 # symbol libraries from version 7.0.0
 %define compatversion 7.0.0
 Name:           kicad
-Version:        7.0.9
-%define file_version 7.0.9
+Version:        7.0.10
+%define file_version 7.0.10
 Release:        0
 Summary:        EDA software suite for the creation of schematics and PCB
 License:        AGPL-3.0-or-later AND GPL-3.0-or-later
@@ -38,6 +38,10 @@ BuildRequires:  gcc-c++ >= 8
 BuildRequires:  gcc11-PIE
 BuildRequires:  gcc11-c++ >= 8
 %endif
+BuildConflicts: libicu65_1-ledata
+BuildConflicts: libicu-suse65_1
+# BuildConflicts: libwebkit2gtk-4_0-37
+
 BuildRequires:  gettext
 BuildRequires:  glm-devel >= 0.9.8
 BuildRequires:  libboost_filesystem-devel-impl

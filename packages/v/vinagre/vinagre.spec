@@ -1,7 +1,7 @@
 #
 # spec file for package vinagre
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%bcond_without rdp
+%bcond_with rdp
 
 Name:           vinagre
 Version:        3.22.0

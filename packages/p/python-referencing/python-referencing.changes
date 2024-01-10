@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jan 07 13:33:05 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.32.1:
+  * We CannotDetermineSpecification for $schema kyes that aren't
+    strs
+  * [pre-commit.ci] pre-commit autoupdate
+  * Update requirements.
+  * Enable more ruff rulesets.
+  * Remove an unneeded doc ext, we have no CLI.
+  * [pre-commit.ci] pre-commit autoupdate
+  * Bump actions/setup-python from 4 to 5
+  * Update pre-commit hooks.
+
+-------------------------------------------------------------------
 Thu Dec 07 15:40:29 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.32.0:

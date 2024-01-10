@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Mon Jan  8 20:42:40 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.9.2:
+  * optimize initialization from strings by not constantly
+    resizing buffer
+  * optimize util.hex2ba() and util.base2ba() by avoiding
+    unnecessary copies
+  * optimize util.base2ba() and util.ba2base() for n=16
+    (hexadecimal)
+
+-------------------------------------------------------------------
+Wed Dec 27 09:29:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.9.1:
+  * avoid buffer being unnecessarily initialized with 0s in
+    several functions of the ``bitarray.util`` module
+  * fix ``.count()`` type hint in pyi-file
+  * improve testing
+  * deprecate support for Python 2 - Python 2.7 support will be
+    removed in bitarray version 3.0
+  * ``bitarray(n)`` for integer initializer ``n`` will always
+    return a bitarray of length ``n`` with all items initialized
+    to ``0``
+  * allow sub-bitarray in ``.count()``, `#212
+  * add ``util.ones()`` ``.find()`` and ``.index()``:
+    add keyword argument ``right`` for rightmost index
+  * ``.itersearch()``: add start and stop argument, and keyword
+  * argument ``right``
+  * deprecate ``util.rindex()`` (will be removed in 3.0 release),
+  * use ``.index(..., right=True)`` instead
+  * deprecate ``util.make_endian()`` (will be removed in 3.0
+    release),
+  * use ``bitarray(..., endian=...)`` instead
+
+-------------------------------------------------------------------
+Mon Dec 11 22:13:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.8.5:
+  * speedup unaligned copies by always using word shifts (in
+    combination with builtin byte swap 64 when available) when
+    bit-endianness and machine byte-order are opposite
+  * add ``HAVE_BUILTIN_BSWAP64`` to header
+  * avoid misaligned pointers when casting to ``(uint64_t *)``
+  * add tests
+
+-------------------------------------------------------------------
 Tue Dec  5 17:42:19 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.8.4:

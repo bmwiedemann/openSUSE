@@ -25,8 +25,9 @@
 %bcond_with test
 %endif
 
+%define distversion 0.5
 Name:           python-jupyter-server-terminals%{psuffix}
-Version:        0.4.4
+Version:        0.5.0
 Release:        0
 Summary:        A Jupyter Server Extension Providing Terminals
 License:        BSD-3-Clause
@@ -56,7 +57,7 @@ A Jupyter Server Extension Providing Terminals.
 
 %package -n jupyter-server-terminals
 Summary:        Jupyter Server Extension registration for python*-jupyter-server-terminals
-Requires:       python3dist(jupyter-server-terminals)
+Requires:       python3dist(jupyter-server-terminals) = %{distversion}
 
 %description -n jupyter-server-terminals
 A Jupyter Server Extension Providing Terminals.

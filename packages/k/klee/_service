@@ -1,5 +1,5 @@
 <services>
-  <service name="obs_scm" mode="disabled">
+  <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/klee/klee</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
@@ -7,7 +7,7 @@
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
   </service>
-  <service name="set_version" mode="disabled" />
+  <service name="set_version" mode="manual" />
 
   <service name="tar" mode="buildtime"/>
   <service name="recompress" mode="buildtime">

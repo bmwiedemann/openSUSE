@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Dec 17 16:47:49 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Enable sle15_python_module_pythons, but don't test with MPL
+
+-------------------------------------------------------------------
 Mon Nov 20 14:09:13 UTC 2023 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Update to 2.0.2 

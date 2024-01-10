@@ -1,7 +1,7 @@
 #
 # spec file for package python-ZODB
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2013 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ZODB
-Version:        5.8.0
+Version:        5.8.1
 Release:        0
 Summary:        Zope Object Database: object database and persistence
 License:        ZPL-2.1

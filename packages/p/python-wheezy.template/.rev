@@ -29,4 +29,19 @@
 </comment>
     <requestid>1090039</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e57c3d6f83702c0446eabfaf395298f5</srcmd5>
+    <version>3.2.2</version>
+    <time>1704281082</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2.2:
+  * fix: added none type to builder rule union for value
+  * fix: updated build markup value type with union of str and
+    none
+
+- update to 3.2.1:
+  * fix: typing issues with cython.
+  * fix: test nocover pragma for conditional type definition.</comment>
+    <requestid>1136485</requestid>
+  </revision>
 </revisionlist>

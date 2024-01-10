@@ -18,11 +18,11 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-girder-client
-Version:        3.1.20
+Version:        3.1.24
 Release:        0
 Summary:        Python Girder client
 License:        Apache-2.0
-URL:            https://girder.readthedocs.org/en/latest/python-client.html
+URL:            https://girder.readthedocs.io/en/latest/python-client.html
 Source:         https://files.pythonhosted.org/packages/source/g/girder-client/girder-client-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}

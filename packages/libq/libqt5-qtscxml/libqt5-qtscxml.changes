@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 29 13:31:08 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.12+kde0, rebased upstream:
+  * Fix history state index handling
+  * Bump version to 5.15.12
+
+-------------------------------------------------------------------
 Fri Oct  6 06:42:34 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.11+kde0, rebased upstream:

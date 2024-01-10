@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec 27 09:22:59 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.0:
+  * Fix support for `publicPath: auto` in Webpack config
+  * Add support for Python 3.12
+  * Add support for Django 5.0
+
+-------------------------------------------------------------------
 Tue Jun 20 17:41:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.1:

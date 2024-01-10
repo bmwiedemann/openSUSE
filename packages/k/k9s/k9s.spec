@@ -1,7 +1,7 @@
 #
 # spec file for package k9s
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           k9s
-Version:        0.29.1
+Version:        0.30.8
 Release:        0
 Summary:        Curses based terminal UI for Kubernetes clusters
 License:        Apache-2.0

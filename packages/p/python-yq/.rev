@@ -148,4 +148,12 @@
   * Documentation improvements</comment>
     <requestid>1114071</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>3c9c1c70deb70fd31e308d2ddb4e1bd7</srcmd5>
+    <version>3.2.3</version>
+    <time>1704390813</time>
+    <user>dimstar_suse</user>
+    <comment>- require setuptools</comment>
+    <requestid>1136268</requestid>
+  </revision>
 </revisionlist>

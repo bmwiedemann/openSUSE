@@ -254,4 +254,18 @@
 - Switch to pyproject macros</comment>
     <requestid>1100515</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>8ea9432da28955f189e477130ec364c6</srcmd5>
+    <version>1.13.0</version>
+    <time>1704558624</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.13.0:
+  * Support Python 3.12
+
+- Update to version 1.11.0
+- Update to version 1.10.0
+  * Correct the bytes v str problem
+  * Fix pep8 errors in doc string</comment>
+    <requestid>1137248</requestid>
+  </revision>
 </revisionlist>

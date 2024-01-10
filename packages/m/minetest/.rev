@@ -242,4 +242,15 @@ New upstream version.</comment>
     <comment></comment>
     <requestid>1132729</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>9837bc8ec6caa288a254cf5af2fad514</srcmd5>
+    <version>5.8.0</version>
+    <time>1703198338</time>
+    <user>anag+factory</user>
+    <comment>- Change gameid set (boo#1218223)
+  * Add environment with additional startup options
+  * Change ExecStart with additional startup options env
+</comment>
+    <requestid>1134387</requestid>
+  </revision>
 </revisionlist>

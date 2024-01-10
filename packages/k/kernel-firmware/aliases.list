@@ -2915,6 +2915,10 @@ msm: of:N*T*Cqcom,sm6115-dpu
 msm: of:N*T*Cqcom,sm6115-dpuC*
 msm: of:N*T*Cqcom,sm6115-mdss
 msm: of:N*T*Cqcom,sm6115-mdssC*
+msm: of:N*T*Cqcom,sm6125-dpu
+msm: of:N*T*Cqcom,sm6125-dpuC*
+msm: of:N*T*Cqcom,sm6125-mdss
+msm: of:N*T*Cqcom,sm6125-mdssC*
 msm: of:N*T*Cqcom,sm6350-dpu
 msm: of:N*T*Cqcom,sm6350-dpuC*
 msm: of:N*T*Cqcom,sm6350-mdss
@@ -3010,6 +3014,13 @@ mt7921e: pci:v000014C3d00000608sv*sd*bc*sc*i*
 mt7921e: pci:v000014C3d00000616sv*sd*bc*sc*i*
 mt7921e: pci:v000014C3d00007922sv*sd*bc*sc*i*
 mt7921e: pci:v000014C3d00007961sv*sd*bc*sc*i*
+mt7921s: sdio:c*v037Ad7901*
+mt7921u: usb:v0846p9060d*dc*dsc*dp*icFFiscFFipFFin*
+mt7921u: usb:v0E8Dp7961d*dc*dsc*dp*icFFiscFFipFFin*
+mt7921u: usb:v3574p6211d*dc*dsc*dp*icFFiscFFipFFin*
+mt7925e: pci:v000014C3d00000717sv*sd*bc*sc*i*
+mt7925e: pci:v000014C3d00007925sv*sd*bc*sc*i*
+mt7925u: usb:v0E8Dp7925d*dc*dsc*dp*icFFiscFFipFFin*
 mtk_scp: of:N*T*Cmediatek,mt8183-scp
 mtk_scp: of:N*T*Cmediatek,mt8183-scpC*
 mtk_scp: of:N*T*Cmediatek,mt8186-scp
@@ -3019,6 +3030,8 @@ mtk_scp: of:N*T*Cmediatek,mt8188-scpC*
 mtk_scp: of:N*T*Cmediatek,mt8192-scp
 mtk_scp: of:N*T*Cmediatek,mt8192-scpC*
 mtk_scp: of:N*T*Cmediatek,mt8195-scp
+mtk_scp: of:N*T*Cmediatek,mt8195-scp-dual
+mtk_scp: of:N*T*Cmediatek,mt8195-scp-dualC*
 mtk_scp: of:N*T*Cmediatek,mt8195-scpC*
 mtk_vpu: of:N*T*Cmediatek,mt8173-vpu
 mtk_vpu: of:N*T*Cmediatek,mt8173-vpuC*
@@ -3324,6 +3337,8 @@ qcom_q6v5_mss: of:N*T*Cqcom,sc7180-mss-pil
 qcom_q6v5_mss: of:N*T*Cqcom,sc7180-mss-pilC*
 qcom_q6v5_mss: of:N*T*Cqcom,sc7280-mss-pil
 qcom_q6v5_mss: of:N*T*Cqcom,sc7280-mss-pilC*
+qcom_q6v5_mss: of:N*T*Cqcom,sdm660-mss-pil
+qcom_q6v5_mss: of:N*T*Cqcom,sdm660-mss-pilC*
 qcom_q6v5_mss: of:N*T*Cqcom,sdm845-mss-pil
 qcom_q6v5_mss: of:N*T*Cqcom,sdm845-mss-pilC*
 qcom_q6v5_pas: of:N*T*Cqcom,msm8226-adsp-pil
@@ -3346,6 +3361,8 @@ qcom_q6v5_pas: of:N*T*Cqcom,qcs404-cdsp-pas
 qcom_q6v5_pas: of:N*T*Cqcom,qcs404-cdsp-pasC*
 qcom_q6v5_pas: of:N*T*Cqcom,qcs404-wcss-pas
 qcom_q6v5_pas: of:N*T*Cqcom,qcs404-wcss-pasC*
+qcom_q6v5_pas: of:N*T*Cqcom,sc7180-adsp-pas
+qcom_q6v5_pas: of:N*T*Cqcom,sc7180-adsp-pasC*
 qcom_q6v5_pas: of:N*T*Cqcom,sc7180-mpss-pas
 qcom_q6v5_pas: of:N*T*Cqcom,sc7180-mpss-pasC*
 qcom_q6v5_pas: of:N*T*Cqcom,sc7280-mpss-pas
@@ -3368,6 +3385,8 @@ qcom_q6v5_pas: of:N*T*Cqcom,sdm845-adsp-pas
 qcom_q6v5_pas: of:N*T*Cqcom,sdm845-adsp-pasC*
 qcom_q6v5_pas: of:N*T*Cqcom,sdm845-cdsp-pas
 qcom_q6v5_pas: of:N*T*Cqcom,sdm845-cdsp-pasC*
+qcom_q6v5_pas: of:N*T*Cqcom,sdm845-slpi-pas
+qcom_q6v5_pas: of:N*T*Cqcom,sdm845-slpi-pasC*
 qcom_q6v5_pas: of:N*T*Cqcom,sdx55-mpss-pas
 qcom_q6v5_pas: of:N*T*Cqcom,sdx55-mpss-pasC*
 qcom_q6v5_pas: of:N*T*Cqcom,sm6115-adsp-pas
@@ -3382,6 +3401,12 @@ qcom_q6v5_pas: of:N*T*Cqcom,sm6350-cdsp-pas
 qcom_q6v5_pas: of:N*T*Cqcom,sm6350-cdsp-pasC*
 qcom_q6v5_pas: of:N*T*Cqcom,sm6350-mpss-pas
 qcom_q6v5_pas: of:N*T*Cqcom,sm6350-mpss-pasC*
+qcom_q6v5_pas: of:N*T*Cqcom,sm6375-adsp-pas
+qcom_q6v5_pas: of:N*T*Cqcom,sm6375-adsp-pasC*
+qcom_q6v5_pas: of:N*T*Cqcom,sm6375-cdsp-pas
+qcom_q6v5_pas: of:N*T*Cqcom,sm6375-cdsp-pasC*
+qcom_q6v5_pas: of:N*T*Cqcom,sm6375-mpss-pas
+qcom_q6v5_pas: of:N*T*Cqcom,sm6375-mpss-pasC*
 qcom_q6v5_pas: of:N*T*Cqcom,sm8150-adsp-pas
 qcom_q6v5_pas: of:N*T*Cqcom,sm8150-adsp-pasC*
 qcom_q6v5_pas: of:N*T*Cqcom,sm8150-cdsp-pas
@@ -3489,6 +3514,7 @@ r8152: usb:v04E8pA101d*dc*dsc*dp*icFFisc*ip*in*
 r8152: usb:v0955p09FFd*dc*dsc*dp*ic*isc*ip*in*
 r8152: usb:v0955p09FFd*dc*dsc*dp*ic02isc06ip00in*
 r8152: usb:v0955p09FFd*dc*dsc*dp*icFFisc*ip*in*
+r8152: usb:v0B05p1976d*dc*dsc*dp*ic*isc*ip*in*
 r8152: usb:v0BDAp8050d*dc*dsc*dp*ic*isc*ip*in*
 r8152: usb:v0BDAp8050d*dc*dsc*dp*ic02isc06ip00in*
 r8152: usb:v0BDAp8050d*dc*dsc*dp*icFFisc*ip*in*
@@ -5232,6 +5258,7 @@ snd_hda_scodec_cs35l41_i2c: acpi*:CLSA0100%3A*
 snd_hda_scodec_cs35l41_i2c: acpi*:CLSA0101%3A*
 snd_hda_scodec_cs35l41_i2c: acpi*:CSC3551%3A*
 snd_hda_scodec_cs35l41_spi: acpi*:CSC3551%3A*
+snd_hda_scodec_tas2781_i2c: acpi*:TIAS2781%3A*
 snd_intel_sst_acpi: acpi*:80860F28%3A*
 snd_intel_sst_acpi: acpi*:808622A8%3A*
 snd_intel_sst_acpi: sst

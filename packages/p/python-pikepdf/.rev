@@ -198,4 +198,23 @@
     <comment></comment>
     <requestid>1133036</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>fbf4d72a6d8b5c525ec38dc8649a2117</srcmd5>
+    <version>8.10.1</version>
+    <time>1703800923</time>
+    <user>anag+factory</user>
+    <comment>- update to 8.10.1:
+  * Rebuilt with QPDF 11.6.4.
+  * Replaced use of a custom C++ logger with sharing QPDF's.
+    It is still relayed to the Python logger.
+  * Added a simpler API for adding attachments from bytes data.
+  * Deprecated use of Object.parse(str) in favor of
+    Object.parse(bytes).
+
+    The former, unfortunately, implemented some operations backwards
+    are used in a page
+    with multiple compression filters
+  * Documentation updates.</comment>
+    <requestid>1135318</requestid>
+  </revision>
 </revisionlist>

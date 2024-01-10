@@ -1,14 +1,14 @@
-Index: dkimpy-1.0.3/dkim/__init__.py
+Index: dkimpy-1.1.5/dkim/__init__.py
 ===================================================================
---- dkimpy-1.0.3.orig/dkim/__init__.py
-+++ dkimpy-1.0.3/dkim/__init__.py
-@@ -40,18 +40,9 @@ import sys
- import time
- import binascii
+--- dkimpy-1.1.5.orig/dkim/__init__.py
++++ dkimpy-1.1.5/dkim/__init__.py
+@@ -43,18 +43,9 @@ import binascii
+ # Set to False to not use async functions even though aiodns is installed.
+ USE_ASYNC = True
  
 -# only needed for arc
 -try:
--    from authres import AuthenticationResultsHeader
+-    import authres
 -except ImportError:
 -    pass
 -
@@ -18,9 +18,18 @@ Index: dkimpy-1.0.3/dkim/__init__.py
 -    import nacl.encoding
 -except ImportError:
 -    pass
-+from authres import AuthenticationResultsHeader
++import authres
 +import nacl.signing
 +import nacl.encoding
  
  from dkim.canonicalization import (
      CanonicalizationPolicy,
+@@ -1181,7 +1172,7 @@ class ARC(DomainSigner):
+     if chain_validation_status == CV_Fail:
+       self.headers.reverse()
+     if b'h' in as_fields:
+-        raise ValidationError("h= tag not permitted in ARC-Seal header field")    
++        raise ValidationError("h= tag not permitted in ARC-Seal header field")
+     res = self.gen_header(as_fields, as_include_headers, canon_policy,
+                            b"ARC-Seal", pk, standardize)
+ 

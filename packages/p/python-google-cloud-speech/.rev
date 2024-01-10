@@ -211,4 +211,18 @@
   * test_list_phrase_set (forwarded request 1131330 from glaubitz)</comment>
     <requestid>1131340</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3b84f85532dc0ae0287c794ea8fd7282</srcmd5>
+    <version>2.23.0</version>
+    <time>1702845140</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.23.0:
+  * Add support for python 3.12
+  * Introduce compatibility with native namespace packages
+  * Require proto-plus &gt;= 1.22.3 (e9655df)
+  * Use retry_async instead of retry in async client
+
+  * Add SpeakerDiarizationConfig, deprecate enable_speaker_diarization</comment>
+    <requestid>1133642</requestid>
+  </revision>
 </revisionlist>

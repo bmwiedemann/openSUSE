@@ -1,8 +1,8 @@
-Index: b/GNUmakefile
+Index: cryptopp-CRYPTOPP_8_9_0/GNUmakefile
 ===================================================================
---- a/GNUmakefile
-+++ b/GNUmakefile
-@@ -173,7 +173,7 @@ else
+--- cryptopp-CRYPTOPP_8_9_0.orig/GNUmakefile
++++ cryptopp-CRYPTOPP_8_9_0/GNUmakefile
+@@ -198,7 +198,7 @@ else
    PC_PREFIX = $(PREFIX)
  endif
  ifeq ($(LIBDIR),)
@@ -11,7 +11,7 @@ Index: b/GNUmakefile
    PC_LIBDIR = $${prefix}/lib
  else
    PC_LIBDIR = $(LIBDIR)
-@@ -1128,7 +1128,7 @@ SOLIB_COMPAT_SUFFIX=.$(LIB_MAJOR)
+@@ -1151,7 +1151,7 @@ SOLIB_COMPAT_SUFFIX=.$(LIB_MAJOR)
  ifneq ($(IS_LINUX)$(IS_HURD),00)
  # Linux uses full version suffix for shared library
  SOLIB_VERSION_SUFFIX=.$(LIB_MAJOR).$(LIB_MINOR).$(LIB_PATCH)

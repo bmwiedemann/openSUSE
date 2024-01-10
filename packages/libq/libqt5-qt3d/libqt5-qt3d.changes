@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Dec 29 13:11:59 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.12+kde0, rebased upstream:
+  * Blacklist 1 tests in tst_RayCasting on ubuntu-20.04
+  * OpenGL SubmissionContext: reset defaultFBO every time we begin drawing
+  * Unpin previously used image units during render command parameter setup
+  * Scene3DItem: increase number of frames needed to flush pipeline
+  * ShaderParameterPack: check we only store a single UBO/SSBO per BlockBinding
+  * OpenGL graphics helpers fixes
+  * Quick3DNodeInstantiator: fix crash when using async
+  * GLTFGeometryLoader: prevent early return on option bufferview target property
+  * Scene3DRenderer: reset OpenGL state when skipping frames
+  * Bump version to 5.15.12
+
+-------------------------------------------------------------------
 Fri Oct  6 06:35:32 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.11+kde0, rebased upstream:

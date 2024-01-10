@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Jan  8 08:59:59 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 23.2.0:
+  * The type annotation for `attrs.resolve_types()` is now
+    correct.
+  * Type stubs now use `typing.dataclass_transform` to decorate
+    dataclass-like decorators, instead of the non-standard
+    `__dataclass_transform__` special form, which is only
+    supported by Pyright.
+  * Fixed serialization of namedtuple fields using
+    `attrs.asdict/astuple()` with `retain_collection_types=True`.
+  * `attrs.AttrsInstance` is now a `typing.Protocol` in both type
+    hints and code.
+  * This allows you to subclass it along with another `Protocol`.
+  * If *attrs* detects that `__attrs_pre_init__` accepts more
+    than just `self`, it will call it with the same arguments as
+    `__init__` was called.
+  * This allows you to, for example, pass arguments to
+    `super().__init__()`.
+  * Slotted classes now transform `functools.cached_property`
+    decorated methods to support equivalent semantics.
+  * Added *class_body* argument to `attrs.make_class()` to
+    provide additional attributes for newly created classes.
+  * It is, for example, now possible to attach methods.
+
+-------------------------------------------------------------------
 Thu Jun 22 07:04:50 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - remove outdated constructs, we no longer support < 3.8
@@ -277,7 +303,7 @@ Mon Mar  4 20:07:57 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
  * Attributes with init=False now can follow after kw_only=True attributes.
  * attrs now has first class support for defining exception classes.
  * Clarified documentation for hashing to warn that hashable objects should
-    be deeply immutable 
+    be deeply immutable
 
 -------------------------------------------------------------------
 Thu Dec  6 10:06:08 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
@@ -605,5 +631,5 @@ Thu Jun  2 07:58:54 UTC 2016 - tbechtold@suse.com
 -------------------------------------------------------------------
 Thu Jun  2 07:10:13 UTC 2016 - jacobwinski@gmail.com
 
-- Initial version 
+- Initial version
 

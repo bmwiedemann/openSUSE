@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 15 10:05:12 UTC 2023 - Jacob Michalskie <hel@lcp.world>
+
+- Add python-xapian-haystack-term-too-long.patch
+  * Make sure that xapian doesn't error out on too long terms
+
+-------------------------------------------------------------------
 Sun Jul 30 18:45:04 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Clean up SPEC file.

@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-ptpython
-Version:        3.0.23
+Version:        3.0.25
 Release:        0
 Summary:        Python REPL build on top of prompt_toolkit
 License:        ISC

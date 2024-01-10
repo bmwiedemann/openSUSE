@@ -1,7 +1,7 @@
 #
 # spec file for package spotify-qt
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           spotify-qt
-Version:        3.10
+Version:        3.11
 Release:        0
 Summary:        Lightweight Spotify client using Qt
 License:        GPL-3.0-only

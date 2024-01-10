@@ -75,4 +75,13 @@
   * Fix variable name resolving with references</comment>
     <requestid>1129214</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>18e154bf94fd3ab5079dfafefdaf6d0e</srcmd5>
+    <version>2.19.1</version>
+    <time>1704491906</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.19.1:
+  * Fixed date format to accept only two digit months and days</comment>
+    <requestid>1135686</requestid>
+  </revision>
 </revisionlist>

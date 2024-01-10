@@ -96,4 +96,22 @@
   * Fix quoting when calling dracut (forwarded request 1126270 from lnussel)</comment>
     <requestid>1126272</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e3952a64afad510f124b97524b2ef8d4</srcmd5>
+    <version>1+git20231214.b186b2d</version>
+    <time>1702673244</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1+git20231214.b186b2d:
+  * Fix exit code
+  * Revert &quot;Add pcr predictions to initrd for now&quot; (forwarded request 1133114 from lnussel)</comment>
+    <requestid>1133123</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8bdbad04ea8caf6b976c0298b22aa890</srcmd5>
+    <version>1+git20231221.42797ab</version>
+    <time>1704380219</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1135444</requestid>
+  </revision>
 </revisionlist>

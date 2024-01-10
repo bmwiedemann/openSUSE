@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Dec 28 09:42:52 UTC 2023 - cloud-devel@suse.de
+
+- update to version 3.2.0
+  - Update master for stable/2023.1
+  - Imported Translations from Zanata
+  - Revert "Moves supported python runtimes from version 3.8 to 3.10"
+  - Bump bandit and make oslo.versionedobjects compatible with latest rules
+  - Moves supported python runtimes from version 3.8 to 3.10
+
+-------------------------------------------------------------------
 Mon Mar  6 21:17:08 UTC 2023 - cloud-devel@suse.de
 
 - added 0001-Avoid-TypeError-when-building-for-Sphinx-6.1.1-and-a.patch

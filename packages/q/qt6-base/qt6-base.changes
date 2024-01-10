@@ -1,7 +1,26 @@
 -------------------------------------------------------------------
+Wed Jan  3 08:52:06 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add upstream patches to fix an incorrect integer overflow check
+  (boo#1218413, CVE-2023-51714):
+  * 0001-HPack-fix-a-Yoda-Condition.patch
+  * 0002-HPack-fix-incorrect-integer-overflow-check.patch
+- Add upstream patch to fix a potential overflow in
+  assemble_hpack_block():
+  * 0001-Http2-fix-potential-overflow-in-assemble_hpack_block.patch
+
+-------------------------------------------------------------------
+Sat Dec 30 14:51:31 UTC 2023 - Luca Beltrame <lbeltrame@kde.org>
+
+- Add upstream patch for a bug in QMimeDatabase which makes
+  impossible to save JPEG files in Qt6 applications:
+  * 0001-QMimeDatabase-collect-glob-patterns-from.patch
+  * https://code.qt.io/cgit/qt/qtbase.git/commit/?id=4e9944e6c8a456353d243ab268cb0f01ff006faa
+
+-------------------------------------------------------------------
 Mon Dec  4 19:11:49 UTC 2023 - Kacper Koniuszy <kacper.koniuszy@tuta.io>
 
-- Add upstream patch for a bug in QMimeDatabase that causes some 
+- Add upstream patch for a bug in QMimeDatabase that causes some
   applications to hang:
   * 0001-QMimeDatabase-handle-buggy-type-definitions.patch
   * https://code.qt.io/cgit/qt/qtbase.git/commit/?id=54656da9ace06caf4a0eeb1832989c0ab211a4a0
@@ -131,6 +150,7 @@ Mon Apr  3 10:01:48 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.5.0
   * https://www.qt.io/blog/qt-6.5-lts-released
+  * Includes fix for boo#1215178, QTBUG-109474, QTCREATORBUG-28593
 - Drop patch, merged upstream:
   * 0001-Avoid-resetting-CMAKE_AUTOMOC_MACRO_NAMES.patch
 
@@ -147,7 +167,7 @@ Thu Mar 16 09:59:57 UTC 2023 - Christophe Marin <christophe@krop.fr>
 -------------------------------------------------------------------
 Wed Feb  8 17:48:36 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
-- Fix a possible DOS in the Qt ODBC driver plugin (CVE-2023-24607, 
+- Fix a possible DOS in the Qt ODBC driver plugin (CVE-2023-24607,
   bsc#1209616):
   * CVE-2023-24607-qtbase-6.4.diff
 

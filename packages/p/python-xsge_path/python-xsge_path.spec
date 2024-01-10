@@ -1,7 +1,7 @@
 #
 # spec file for package python-xsge_path
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,13 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
-%define skip_python36 1
+%{?sle15_python_module_pythons}
 Name:           python-xsge_path
-Version:        1.0.2
+Version:        1.0.3
 Release:        0
 Summary:        xSGE Path
-License:        GPL-3.0-or-later
-URL:            http://xsge.nongnu.org
+License:        LGPL-3.0-or-later
+URL:            https://python-sge.github.io/
 Source:         https://files.pythonhosted.org/packages/source/x/xsge_path/xsge_path-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

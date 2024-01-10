@@ -32,7 +32,7 @@ ExclusiveArch:  aarch64 ppc64 ppc64le riscv64 s390x x86_64
 
 %define     pkg ocaml-qcheck
 Name:           %pkg%nsuffix
-Version:        0.21.2
+Version:        0.21.3
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        QuickCheck inspired property-based testing for OCaml
@@ -42,8 +42,7 @@ URL:            https://opam.ocaml.org/packages/qcheck
 Source0:        %pkg-%version.tar.xz
 BuildRequires:  ocaml(ocaml_base_version) >= 4.08
 BuildRequires:  ocaml-dune >= 2.8
-BuildRequires:  ocaml-rpm-macros >= 20230101
-BuildRequires:  ocamlfind(bytes)
+BuildRequires:  ocaml-rpm-macros >= 20231101
 BuildRequires:  ocamlfind(ounit2)
 BuildRequires:  ocamlfind(ppxlib)
 BuildRequires:  ocamlfind(ppx_deriving)

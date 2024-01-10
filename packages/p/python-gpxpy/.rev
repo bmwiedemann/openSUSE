@@ -51,4 +51,24 @@
     <comment></comment>
     <requestid>1006891</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>30dbc06d2e238e3923c2caff1f5cf7d6</srcmd5>
+    <version>1.6.2</version>
+    <time>1702936646</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.6.2:
+  * NameError: free variable from_start_to_end referenced before
+    assignment in enclosing scope #256
+  * Ignore points with no elevation when calculatin uphill/downhill
+  * Use python-build to also make wheels #237
+  * timezone lost in fields when cloning/copying parsed GPX file
+  * Parsing timezone-unaware GPX files #183
+  * Use python3 code
+
+  * Added type definitions
+  * get_nearest_location(location) has the property that if 'location'
+    is a point on the track, the point after 'location' on the track
+- Initial package (v1.3.5)</comment>
+    <requestid>1133908</requestid>
+  </revision>
 </revisionlist>

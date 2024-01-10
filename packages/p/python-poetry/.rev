@@ -446,4 +446,41 @@
   * Fixed export of requirements.txt when project</comment>
     <requestid>1114133</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>1d0e8a52698e2556f7ff1d29c6f75906</srcmd5>
+    <version>1.7.1</version>
+    <time>1704494556</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.7.1:
+  * Fix an issue where sdists that call CLI tools of their build
+    requirements could not be installed (#8630).
+  * Fix an issue where sdists with symlinks could not be
+    installed due to a broken tarfile datafilter (#8649).
+  * Fix an issue where `poetry init` failed when trying to add
+    dependencies (#8655).
+  * Fix an issue where `poetry install` failed if
+    `virtualenvs.create` was set to `false` (#8672).
+  * Add official support for Python 3.12 (#7803, #8544).
+  * Add `poetry-install` pre-commit hook (#8327).
+  * Add `--next-phase` option to `poetry version` (#8089).
+  * Print a warning when overwriting files from another package
+    at installation (#8386).
+  * Print a warning if the current project cannot be installed
+    (#8369).
+  * Report more details on build backend exceptions (#8464).
+  * Set Poetry as `user-agent` for all HTTP requests (#8394).
+  * Do not install `setuptools` per default in Python 3.12
+  * Do not install `wheel` per default (#7803).
+  * Remove `setuptools` and `wheel` when running `poetry install
+    --sync` if they are not required by the project (#8600).
+  * Improve error message about PEP-517 support (#8463).
+  * Improve `keyring` handling (#8227).
+  * Read the `description` field when extracting metadata from
+    `setup.py` files (#8545).
+  * Fix an issue where dependencies of inactive extras were
+    locked and installed (#8399).
+  * Fix an issue where build requirements were not installed
+    due to a race condition in the artifact cache (#8517).</comment>
+    <requestid>1136488</requestid>
+  </revision>
 </revisionlist>

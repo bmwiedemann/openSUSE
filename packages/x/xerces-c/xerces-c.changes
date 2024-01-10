@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec 27 11:53:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.5 (bsc#1159552, CVE-2018-1311):
+  * [XERCESC-2163] - XercesMessages_en_US.cat is installed to
+    wrong directory
+  * [XERCESC-2188] - Use-after-free on external DTD scan
+
+-------------------------------------------------------------------
 Wed Oct 26 22:33:32 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.4:
@@ -19,13 +27,13 @@ Wed Oct 26 22:33:32 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * [XERCESC-2235] - DFAContentModel::buildDFA(): correctly zero-initialize fFollowList
   * [XERCESC-2236] - Dependencies aren't loaded when using provided CMake config package
   * [XERCESC-2241] - Integer overflows in DFAContentModel class
-  * [XERCESC-2242] - Non-default curl location breaks autoconf link detection 
+  * [XERCESC-2242] - Non-default curl location breaks autoconf link detection
 
 -------------------------------------------------------------------
 Sat Aug 15 19:33:22 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 3.2.3:
-  * Custom HTTP headers missing with CURL NetAccessor 
+  * Custom HTTP headers missing with CURL NetAccessor
   * Type Confusion from DTDGrammar to SchemaGrammar
   * Patch to build with older GCC
    * fix build without pthread
@@ -110,40 +118,40 @@ Mon Sep 28 16:19:17 UTC 2015 - mpluskal@suse.com
   * bug fixes
     + Wrong temporary token type causes regex construction to fail
     + IGXMLScanner can fail to properly set its XSModel.
-    + ICUTransService and IconvGNUransService CAN NOT deal with 
+    + ICUTransService and IconvGNUransService CAN NOT deal with
       huge file.
     + xsi:type is not applied to root element
-    + Problem in prefix parsing while creating Documnet, Element, 
+    + Problem in prefix parsing while creating Documnet, Element,
       Attributes on all platforms : Issue is in poolString creation
-    + Whitespace in xsi:type 
-    + XMLUTF8Transcoder::transcodeTo fails with an exception when 
-      transcoding single characters that require 3 or more bytes as 
+    + Whitespace in xsi:type
+    + XMLUTF8Transcoder::transcodeTo fails with an exception when
+      transcoding single characters that require 3 or more bytes as
       UTF8.
     + getWholeText leaks memory
     + Missing Libs.private in the xerces-c pkg-config file
-    + XMLUni::fgXercesLoadSchema[] is not null-terminated in 
+    + XMLUni::fgXercesLoadSchema[] is not null-terminated in
       XMLUni.cpp
-    + XMLURL.cpp: isHexDigit() and xlatHexDigit() accept whole 
+    + XMLURL.cpp: isHexDigit() and xlatHexDigit() accept whole
       alphabet
-    + Xerces livelocks while reading external DTD if socket closes 
+    + Xerces livelocks while reading external DTD if socket closes
       prematurely
-    + Memory leak occurs if an exception is thrown in 
+    + Memory leak occurs if an exception is thrown in
       TranscodeToStr or TranscodeFromStr constructors
-    + DOMDocumentImpl:: getPooledNString(const XMLCh *in, 
+    + DOMDocumentImpl:: getPooledNString(const XMLCh *in,
       XMLSize_t n) returns incorrect string
-    + OutOfMemoryException being thrown on creation of an LS 
+    + OutOfMemoryException being thrown on creation of an LS
       Serializer
-    + TranscodeToStr::transcode throws an exception when 
+    + TranscodeToStr::transcode throws an exception when
       transcoding to UTF-8
-    + ContentSpecNode::getMaxTotalRange: Operator precedence 
+    + ContentSpecNode::getMaxTotalRange: Operator precedence
       flaw
-    + Add support for GNU/Hurd by using POSIX.1-2001 and 
+    + Add support for GNU/Hurd by using POSIX.1-2001 and
       POSIX.1-2008 functions
-    + enumeration value ‘Loop’ not handled in switch 
+    + enumeration value ‘Loop’ not handled in switch
       src/SEnumVal/SEnumVal.cpp:
     + bit operation error in DOMNodeImpl::reverseTreeOrderBitPattern
     + build xerces-c with icu on mingw gcc 4.7.2
-    + Xerces 3.1.1 Xerces.Lib fails to build with new Visual 
+    + Xerces 3.1.1 Xerces.Lib fails to build with new Visual
       Studio 2012 Update 1 when v110_xp platform is chosen
     + Off-by-one error in TranscodeFromStr (with ICU)
     + Use icu, which is built with features
@@ -152,12 +160,12 @@ Mon Sep 28 16:19:17 UTC 2015 - mpluskal@suse.com
     + Janitor<BinInputStream>::~Janitor() throws in unwind
     + String pooling in DOMDocumentImpl is unsafe, particularly on
       64-bit platforms
-    + Code analysis revealed multiple potential NULL derefence 
+    + Code analysis revealed multiple potential NULL derefence
       conditions (currently unconfirmed)
     + XMLString sizeToText/binToText produce mixed case
     + Crash while parsing malformed documents
   * improvements
-    + MacOSUnicodeConverter.cpp: ISO C++ forbids comparison 
+    + MacOSUnicodeConverter.cpp: ISO C++ forbids comparison
       between pointer of type 'void *' and pointer-to-function
     + Allow compiling Xerces-C using C++11 (especially Clang)
     + VS2012 Project
@@ -174,7 +182,7 @@ Thu Feb 19 12:39:37 UTC 2015 - mpluskal@suse.com
 -------------------------------------------------------------------
 Thu Dec 12 21:58:01 UTC 2013 - zaitor@opensuse.org
 
-- Add baselib.conf in order to build -32Bit. 
+- Add baselib.conf in order to build -32Bit.
 
 -------------------------------------------------------------------
 Sun Oct 20 21:38:44 UTC 2013 - hrvoje.senjan@gmail.com
@@ -185,20 +193,20 @@ Sun Oct 20 21:38:44 UTC 2013 - hrvoje.senjan@gmail.com
 Fri Apr 13 17:58:48 UTC 2012 - behrisch@users.sourceforge.net
 
 - updated to 3.1.1
-  * Check that we have non-NULL host before trying to connect (XERCESC-1920). 
-  * Recover from the mismatching start/end even count which may happen when we continue parsing an invalid document (XERCESC-1919). 
-  * If the transcoder doesn't process any input, throw an exception (XERCESC-1916). 
-  * Delay the recursive expansion of includes until the document fragment has been placed in the final location (XERCESC-1918). 
-  * The code formatting a content model was skipping the cardinality indicators (*, +, ?) (XERCESC-1914). 
-  * Fix a few bugs and memory leaks in XInclude code. 
-  * Give proper name to 64-bit PDB file in static build (XERCESC-1907). 
-  * Spelling fixes (XERCESC-1911). 
-  * Don't include cpuid.h if we are using intrin.h (XERCESC-1912). 
-  * Fix socket leak. 
-  * Set scanner object on validation context. Needed during QName validation. Don't re-validate default/fixed values in preContentValidation when called from loadGrammar. This values are already validated in TraverseSchema. 
-  * Remove explicit setting of prefix for cloned elements and attributes since it is done properly by the create*() functions (XERCESC-1913). 
-  * Initializing unitialized variables in TranscodeToStr and TranscodeFromStr (#XERCESC-1858). 
-  * Fixed a bug when transcoding small strings using TranscodeToStr (XERCESC-1858). 
+  * Check that we have non-NULL host before trying to connect (XERCESC-1920).
+  * Recover from the mismatching start/end even count which may happen when we continue parsing an invalid document (XERCESC-1919).
+  * If the transcoder doesn't process any input, throw an exception (XERCESC-1916).
+  * Delay the recursive expansion of includes until the document fragment has been placed in the final location (XERCESC-1918).
+  * The code formatting a content model was skipping the cardinality indicators (*, +, ?) (XERCESC-1914).
+  * Fix a few bugs and memory leaks in XInclude code.
+  * Give proper name to 64-bit PDB file in static build (XERCESC-1907).
+  * Spelling fixes (XERCESC-1911).
+  * Don't include cpuid.h if we are using intrin.h (XERCESC-1912).
+  * Fix socket leak.
+  * Set scanner object on validation context. Needed during QName validation. Don't re-validate default/fixed values in preContentValidation when called from loadGrammar. This values are already validated in TraverseSchema.
+  * Remove explicit setting of prefix for cloned elements and attributes since it is done properly by the create*() functions (XERCESC-1913).
+  * Initializing unitialized variables in TranscodeToStr and TranscodeFromStr (#XERCESC-1858).
+  * Fixed a bug when transcoding small strings using TranscodeToStr (XERCESC-1858).
 
 -------------------------------------------------------------------
 Sat Jan 28 22:15:56 UTC 2012 - jengelh@medozas.de
@@ -252,7 +260,7 @@ Mon Aug 18 13:46:40 CEST 2008 - prusnak@suse.cz
 -------------------------------------------------------------------
 Mon Aug 18 00:57:38 CEST 2008 - ro@suse.de
 
-- disable parallel build for now, breaks 
+- disable parallel build for now, breaks
 
 -------------------------------------------------------------------
 Thu Aug 14 16:14:35 CEST 2008 - prusnak@suse.cz
@@ -264,9 +272,9 @@ Mon Apr  7 18:41:17 CEST 2008 - zpetrova@suse.CZ
 
 - update to version 2.8.0
   - this version should fix large number of bugs.
-  - Exponential growth of memory block (from 16KB to 128KB) 
+  - Exponential growth of memory block (from 16KB to 128KB)
     that are allocated by the DOM heap.
-  - The NODE_CLONED notification is now sent to each node's user data 
+  - The NODE_CLONED notification is now sent to each node's user data
     handler when cloning the entire DOMDocument.
   - Allow whitespace-only nodes to be added as children of a DOMDocument.
   - When a node is cloned or imported the type information (PSVI)
@@ -286,7 +294,7 @@ Tue Aug  7 00:19:23 CEST 2007 - mrueckert@suse.de
 -------------------------------------------------------------------
 Mon Aug  6 22:12:13 CEST 2007 - mrueckert@suse.de
 
-- added provides/obsoletes for the package rename 
+- added provides/obsoletes for the package rename
 
 -------------------------------------------------------------------
 Mon Aug  6 09:45:51 CEST 2007 - zpetrova@suse.cz
@@ -311,7 +319,7 @@ Wed Jan 11 09:50:07 CET 2006 - zpetrova@suse.cz
 -------------------------------------------------------------------
 Fri Sep  9 11:30:56 CEST 2005 - zpetrova@suse.cz
 
-- endelementfix.patch - namespace bug (#114685) 
+- endelementfix.patch - namespace bug (#114685)
 
 -------------------------------------------------------------------
 Tue Jan 11 15:38:15 CET 2005 - didge@suse.de
@@ -323,7 +331,7 @@ Tue Jan 11 15:38:15 CET 2005 - didge@suse.de
 -------------------------------------------------------------------
 Thu Mar 18 16:34:05 CET 2004 - didge@suse.de
 
-- fixed bug #36229 with patch, provided there 
+- fixed bug #36229 with patch, provided there
 
 -------------------------------------------------------------------
 Mon Feb 23 12:11:31 CET 2004 - didge@suse.de

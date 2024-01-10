@@ -786,4 +786,63 @@
 - obsoletes CVE-2021-42771-rel-path-traversal.patch in older dists</comment>
     <requestid>1109065</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>bf7158780c78ce96492016e8d327203b</srcmd5>
+    <version>2.13.1</version>
+    <time>1702673199</time>
+    <user>anag+factory</user>
+    <comment>- deleted patches
+  - fix-tests.patch (upstreamed)
+
+- update to 2.13.1:
+  * Fix a typo in ``_locales_to_names``
+  * Fix ``setuptools`` dependency for Python 3.12
+  * This version, Babel 2.13, is the last version of Babel to
+    support Python 3.7.
+  * Add flag to ignore POT-Creation-Date for updates
+  * Support 't' specifier in keywords
+  * Add f-string parsing for Python 3.12 (PEP 701)
+  * Various typing-related fixes
+  * babel.messages.catalog: deduplicate _to_fuzzy_match_key logic
+  * Freeze format_time() tests to a specific date to fix test
+    failures
+  * Spelling and grammar fixes
+  * Renovate lint tools
+  * Use SPDX license identifier
+  * Use aware UTC datetimes internally
+
+- Update to 2.11.0
+- update to 2.10.3
+- update to 2.10.2
+  * Messages: Fix ``distutils`` import. Regressed in :gh:`843`.
+  * CLDR: Upgrade to CLDR 41.0.
+  * Messages: Implement ``--init-missing`` option for ``pybabel update``
+    ignored directory patterns with ones of your own.
+  * Messages: Add ``--check`` to verify if catalogs are up-to-date
+  * Messages: Add ``--header-comment`` to override default header comment
+  * The internal ``babel/_compat.py`` module is no more</comment>
+    <requestid>1133432</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>6ee1bbdd4eb71c81d050e8e88056467d</srcmd5>
+    <version>2.14.0</version>
+    <time>1703800470</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.14.0:
+  * ``Locale.number_symbols`` will now have first-level keys for
+    each numbering system.
+  * Babel no longer directly depends on either ``distutils`` or
+    ``setuptools``; if you had been using the Babel setuptools
+    command extensions, you would need explicitly depend on
+    ``setuptools``
+  * CLDR/Numbers: Add support of local numbering systems for
+    number symbols
+  * CLDR: Upgrade to CLDR 43
+  * Frontend: Allow last_translator to be passed as an option to
+    extract_message
+  * Frontend: Decouple `pybabel` CLI frontend from
+    distutils/setuptools
+  * Numbers: Improve parsing of malformed decimals</comment>
+    <requestid>1135251</requestid>
+  </revision>
 </revisionlist>

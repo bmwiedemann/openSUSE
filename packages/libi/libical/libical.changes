@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Nov 18 19:52:45 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.17:
+  * Escape commas in x-property TEXT values
+  * Built-in timezones updated to tzdata2023c
+  * icalparser_ctrl setting defines how to handle invalid CONTROL
+    characters during parsing
+  * New publicly available functions:
+    + get_zone_directory()
+    + icalparser_get_ctrl
+    + icalparser_set_ctrl
+
+-------------------------------------------------------------------
 Wed Oct 19 09:14:47 UTC 2022 - Chris Coutinho <chrisbcoutinho@gmail.com>
 
 - Update to 3.0.16
@@ -45,7 +58,7 @@ Sat Dec 11 09:22:05 UTC 2021 - Dirk Müller <dmueller@suse.com>
   * Handle if DTEND and DURATION are both missing
   * Improved FindICU (copied from official CMake)
   * Buildsystem fixes (especially for the Ninja generator)
-  * Built-in timezones updated to tzdata2021e 
+  * Built-in timezones updated to tzdata2021e
 
 -------------------------------------------------------------------
 Mon Dec  6 07:48:27 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -63,8 +76,8 @@ Mon Dec  6 07:48:27 UTC 2021 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Tue Apr 20 09:08:38 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
-- update to 3.0.10: 
-  * Fix generating wrong recurrence rules 
+- update to 3.0.10:
+  * Fix generating wrong recurrence rules
   * Fix a bug computing transitions in tzfiles
   * Fix reading TZif files to use TZ string in the footer as the last
     (non-terminating) transitions
@@ -74,7 +87,7 @@ Tue Apr 20 09:08:38 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 -------------------------------------------------------------------
 Wed Apr  7 21:07:41 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- filelist fix for the glib build 
+- filelist fix for the glib build
 
 -------------------------------------------------------------------
 Sun Jan 24 20:01:42 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -91,7 +104,7 @@ Sun Jan 24 20:01:42 UTC 2021 - Dirk Müller <dmueller@suse.com>
   * Add backwards compatibility for previous TZIDs
   * Built-in timezones updated to tzdata2020d
   * Fix build with newer libicu
-  * Fix cross-compile support in libical-glib 
+  * Fix cross-compile support in libical-glib
 - remove 0001-Fix-build-with-icu-68.1.patch libical-read-v2-v3-data.patch:
   upstream
 

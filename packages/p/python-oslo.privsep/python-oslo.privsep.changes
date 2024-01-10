@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Dec 27 14:37:50 UTC 2023 - cloud-devel@suse.de
+
+- update to version 3.2.0
+  - Update master for stable/2023.1
+  - Revert "Moves supported python runtimes from version 3.8 to 3.10"
+  - Moves supported python runtimes from version 3.8 to 3.10
+  - setgid should be called before setuid
+  - Imported Translations from Zanata
+
+-------------------------------------------------------------------
+Mon Mar  6 15:47:54 UTC 2023 - cloud-devel@suse.de
+
+- update to version 3.1.0
+  - Add Python3 antelope unit tests
+  - Setup logging without fixing evenlet logging
+  - Update master for stable/zed
+
+-------------------------------------------------------------------
 Sun Oct  2 14:48:40 UTC 2022 - cloud-devel@suse.de
 
 - update to version 3.0.1

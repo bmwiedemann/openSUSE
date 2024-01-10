@@ -129,4 +129,26 @@
     <comment>- limit to Cython &lt; 3</comment>
     <requestid>1103795</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>3b1c6052ef0e856b9a77c5befc2194f8</srcmd5>
+    <version>0.19.0</version>
+    <time>1704491966</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.19.0:
+  * Drop support of Python 3.7 and update CI (#578)
+  * Restore uvloop.new_event_loop and other missing uvloop
+    members to typing (#573)
+  * Fix docstring of loop.shutdown_default_executor (#535)
+- update to 0.18.0:
+  * CI fixes (#520, #553)
+  * Make extract_stack resilient to lacking frames. (#563)
+  * Port uvloop to Python 3.12 (#570)
+
+- limit to Cython &lt; 3
+- Update to version 0.17.0
+  * visit https://github.com/MagicStack/uvloop/releases/tag/v0.17.0 for more changelog for 0.17.0
+- update to 0.12.1
+ * ssl.CertificateError is no longer logged as it's delivered to</comment>
+    <requestid>1136315</requestid>
+  </revision>
 </revisionlist>

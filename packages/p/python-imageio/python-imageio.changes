@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Dec 16 18:59:15 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.33.1:
+  * Replace mktemp with mkstemp when caching to disk for legacy
+    plugins
+
+-------------------------------------------------------------------
 Mon Nov 27 19:06:27 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.33.0:

@@ -660,4 +660,19 @@
 </comment>
     <requestid>1129309</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>665c4aeb84e97815483b7cd6b9a7b341</srcmd5>
+    <version>1.23.7</version>
+    <time>1703102567</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.23.7:
+  * Fix rendering issue concerning group alpha.
+  * Fix unexpected HTML table rectangles on subsequent pages.
+  * Fix text extraction of control characters from PDF.
+  * Fix bug concerning Stories having page-break-after set.
+  * Ignore broken structure trees instead of reporting an error.
+  * Various fixes for pymupdf.
+</comment>
+    <requestid>1134152</requestid>
+  </revision>
 </revisionlist>

@@ -82,4 +82,20 @@
   * Add preliminary support for Python 3.13a2.</comment>
     <requestid>1125873</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f9697f6c4d29b57262397405083c080c</srcmd5>
+    <version>5.4</version>
+    <time>1703800862</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.4:
+  * Fix ``UnknownTimeZoneError`` when unpickling
+    ``DateTime.DateTime().asdatetime()``.
+  * Repair equality comparison between DateTime instances and
+    other types.
+
+- Update to version 4.7:
+- Update to version 4.6:
+  * Fix __format__ method for DateTime objects (#39)</comment>
+    <requestid>1135232</requestid>
+  </revision>
 </revisionlist>

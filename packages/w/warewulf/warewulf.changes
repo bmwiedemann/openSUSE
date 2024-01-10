@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 20 15:10:15 UTC 2023 - Christian Goll <cgoll@suse.com>
+
+- added make-build-of-cpio-reproduceable.patch to make cpio files
+  reproduceableb (bsc#1217973)
+
+-------------------------------------------------------------------
 Thu Dec  7 08:58:23 UTC 2023 - Christian Goll <cgoll@suse.com>
 
 - updated ownership of dirs

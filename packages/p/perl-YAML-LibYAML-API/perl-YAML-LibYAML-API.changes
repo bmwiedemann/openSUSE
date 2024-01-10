@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jan  5 03:09:03 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.14.0
+   see /usr/share/doc/packages/perl-YAML-LibYAML-API/Changes
+
+  v0.14.0 2024-01-04 23:06:22+01:00
+
+      - Add unicode option to emitter functions (before broken
+        unicode was emitted)
+      - Change module versioning scheme
+
+-------------------------------------------------------------------
 Tue Apr 12 03:07:01 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.013

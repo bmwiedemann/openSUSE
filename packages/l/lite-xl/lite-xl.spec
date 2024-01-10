@@ -17,7 +17,7 @@
 
 
 Name:           lite-xl
-Version:        2.1.1+git20230805.3979730
+Version:        2.1.2+git20231229.b68efcd
 Release:        0
 Summary:        A lightweight text editor written in Lua
 Group:          Productivity/Text/Editors
@@ -31,14 +31,11 @@ BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(lua) >= 5.4
 BuildRequires:  pkgconfig(sdl2)
-# These can be managed by 'lite-xl-plugin-manager' (lpm)
-#Suggests:       %%{name}-colors
-#Suggests:       %%{name}-plugins
-#Suggests:       %%{name}-widgets
 Requires:       %{name}-plugin-manager
-Obsoletes:      %{name}-colors
-Obsoletes:      %{name}-plugins
-Obsoletes:      %{name}-widgets
+# These can be managed by 'lite-xl-plugin-manager' (lpm)
+Conflicts:      %{name}-colors <= %{version}
+Conflicts:      %{name}-plugins <= %{version}
+Conflicts:      %{name}-widgets <= %{version}
 
 %description
 Lite XL is derived from lite.
@@ -52,8 +49,10 @@ reduce CPU usage.
 %autosetup
 
 %build
-%meson
+%meson -Duse_system_lua=true
 %meson_build
+#meson setup --buildtype=release --prefix %%{_prefix} build
+#meson compile -C build
 
 %install
 %meson_install
@@ -67,11 +66,9 @@ rm -rfv %{buildroot}%{_datadir}/doc/%{name}
 %dir %{_datadir}/icons/hicolor/scalable/apps
 %dir %{_datadir}/%{name}
 %{_bindir}/%{name}
-#%%{_datadir}/applications/org.lite_xl.lite_xl.desktop
-%{_datadir}/applications/com.lite_xl.LiteXL.desktop
+%{_datadir}/applications/org.lite_xl.lite_xl.desktop
 %{_datadir}/icons/hicolor/scalable/apps/lite-xl.svg
 %{_datadir}/%{name}/*
-#%%{_datadir}/metainfo/org.lite_xl.lite_xl.appdata.xml
-%{_datadir}/metainfo/com.lite_xl.LiteXL.appdata.xml
+%{_datadir}/metainfo/org.lite_xl.lite_xl.appdata.xml
 
 %changelog

@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Fri Jan  5 11:47:52 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 5.0.1
+  * matomo-org/device-detector
+    - #7527 TV Detection Improvements
+    - #7528 Various Devices Detection Improvement
+    - #7535 Vestel Production TV Devices
+    - #7536 VIDAA OS / Hisense Production TV Devices
+    - #7537 Android Set-Top-Boxes
+    - #7539 Amazon Fire TV Detection by Build Models
+    - #7540 Adds detection for Altimo, AmazonBasics, Atlantic Electrics,
+      Black Box, Canal+, Cecotec, DIORA, Dinalink, Elektroland, - FITCO,
+      Filimo, Graetz, HOFER, Homatics, Kendo, Maxwell, MEGA VISION, MEO,
+      NABO, NetBox, OCEANIC, Orava, Play Now, PROSONIC, Sagemcom, SEHMAX,
+      Silva Schneider, Solas, Super General, TADAAM, TAUBE, VANGUARD,
+      Walker, We. by Loewe., WONDER brands. improves detection for other brands,
+      improves version detection for Fire OS
+    - #7541 CaptiveNetworkSupport agent not all identified
+    - #7542 Adds detection for Express LUCK, Ooredoo, Tsinghua Tongfang,
+      XGEM brands, Nuanti Meta browser, DIGA, YouView mediaplayers
+      and improves detection for various brands
+    - #7546 Adds detection for OWLer and BBC bots, improves version detection for iOS and macOS
+  * matomo-org/tag-manager
+    - #212 Support variables in Custom JavaScript variable
+    - #731 Added code to support variables in Custom JS variable
+    - #740 [Bug] Unable to use “Publish a new version now” when changing tags or triggers
+    - #741 Fix issue with publish new version link
+  * matomo-org/matomo
+    - #21016 Optimize segment SQL when segment subqueries are used
+    - #21625 Apply max execution time limit to goals live query
+    - #21653 Improve performance of queries for complex custom reports using segments
+    - #21617 Adds new license key section to plugin menu
+    - #21666 Add new diagnostic commands to provide archiving status information
+    - #21413 Fix: strnatcasecmp(): Passing null to parameter #1 ($string1) of type string is deprecated
+    - #21645 [Bug] First/Last visit displayed date doesn’t take website timezone into account.
+    - #21657 [Bug] Transition popover does not work for rows with “%”
+    - #21677 [Bug] mktime(): Argument #1 ($hour) must be of type int,
+      string given in /mnt/efs/plugins/VisitTime/functions.php line 18
+    - #21708 Hide all sites item in site selector for custom dimension management
+    - #21719 Improve escaping of values in CSV exports
+    - #21738 Avoid possible update problem with MyISAM tables on MySQL 8
+
+-------------------------------------------------------------------
+Tue Dec 19 09:41:27 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 5.0.0
+  Too many changes to list here. See instead:
+  https://matomo.org/changelog/matomo-5-0-0/
+- Rebase matomo-package_update.patch
+
+-------------------------------------------------------------------
 Tue Nov 28 17:11:44 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 4.16.0

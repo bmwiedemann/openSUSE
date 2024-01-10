@@ -171,7 +171,7 @@ def find_package_version(package, rpm_dir):
         version = find_package_version_in_obsinfo('.', package)
 
     if version is None:
-        raise Exception('Package version not found')
+        raise Exception(f'Package {package} version not found')
     return str(version)
 
 

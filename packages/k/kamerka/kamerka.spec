@@ -26,7 +26,7 @@ URL:            https://github.com/dos1/kamerka
 Source:         https://github.com/dos1/kamerka/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE kamerka-suse-qimageblitz.patch sor.alexei@meowr.ru
 Patch0:         kamerka-suse-qimageblitz.patch
-BuildRequires:  kf5-filesystem
+BuildRequires:  extra-cmake-modules
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Config)

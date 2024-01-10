@@ -74,4 +74,12 @@
     <comment>- Update to release 202301015</comment>
     <requestid>1058442</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>24da4d399acf26a65e60ccf0371a23f3</srcmd5>
+    <version>20240104</version>
+    <time>1704487413</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20240104</comment>
+    <requestid>1136949</requestid>
+  </revision>
 </revisionlist>

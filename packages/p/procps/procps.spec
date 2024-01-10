@@ -70,6 +70,7 @@ Patch36:        CVE-2023-4016.patch
 Patch42:        procps-3.3.17-library-bsc1181475.patch
 Patch43:        procps-3.3.17-top-bsc1181475.patch
 Patch44:        procps-ng-3.3.17-logind.patch
+Patch45:        procps-3.3.17-ignore-sysctl_conf.patch
 BuildRequires:  automake
 BuildRequires:  dejagnu
 BuildRequires:  diffutils
@@ -156,6 +157,7 @@ the process information pseudo-file system.
 %patch42
 %patch43
 %patch44 -p1
+%patch45 -p1
 
 %build
 test -s .tarball-version || echo %{version} > .tarball-version

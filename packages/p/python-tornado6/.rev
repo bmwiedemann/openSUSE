@@ -147,4 +147,33 @@
     <comment></comment>
     <requestid>1112880</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>6a0d4b53760583c189a1f089866b3c3d</srcmd5>
+    <version>6.4</version>
+    <time>1704491981</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.4:
+  * https://www.tornadoweb.org/en/stable/releases/v6.4.0.html
+  * Python 3.12 is now supported.
+- drop py312-datetime.patch (upstream)
+
+  * The Content-Length header and chunked Transfer-Encoding sizes
+    are now parsed more strictly (according to the relevant RFCs)
+    to avoid potential request-smuggling vulnerabilities when
+  * Do not test multi-line headers.
+- require python-backports.ssl_hostname only on python 2.x
+    or 3.2.
+  * This release fixes a path traversal vulnerability in StaticFileHandler,
+  in which files whose names started with the static_path directory
+  * SSLIOStream.connect and IOStream.start_tls now
+  * Certificate validation will now use the system CA root certificates
+    instead of certifi when possible (i.e. Python 2.7.9+ or 3.4+).
+  * The default SSL configuration has become stricter,
+    using ssl.create_default_context where available on the client side.
+    (On the server side, applications are encouraged to migrate from
+  * The deprecated classes in the tornado.auth module, GoogleMixin,
+  + See more release details at
+- added python3 package</comment>
+    <requestid>1136473</requestid>
+  </revision>
 </revisionlist>

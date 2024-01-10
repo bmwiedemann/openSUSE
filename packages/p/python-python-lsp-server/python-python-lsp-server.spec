@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-lsp-server
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ Summary:        Python Language Server for the Language Server Protocol
 License:        MIT
 URL:            https://github.com/python-lsp/python-lsp-server
 Source:         https://files.pythonhosted.org/packages/source/p/python-lsp-server/python-lsp-server-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM python-lsp-server-pr510-flake8-7.patch gh#/python-lsp/python-lsp-server#510
+Patch0:         python-lsp-server-pr510-flake8-7.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 61.2}
@@ -35,7 +37,7 @@ BuildRequires:  python-rpm-macros >= 20210628
 BuildRequires:  %{python_module docstring-to-markdown}
 BuildRequires:  %{python_module PyQt5}
 BuildRequires:  %{python_module autopep8 >= 2.0.4 with %python-autopep8 < 2.1.0}
-BuildRequires:  %{python_module flake8 >= 6.1.0 with %python-flake8 < 7}
+BuildRequires:  %{python_module flake8 >= 7 with %python-flake8 < 8}
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module importlib_metadata > 4.8.3 if %python-base < 3.10}
 BuildRequires:  %{python_module jedi >= 0.17.2 with %python-jedi < 0.20}
@@ -72,14 +74,14 @@ Suggests:       python-yapf >= 0.33
 Suggests:       python-whatthepatch >= 1.0.2
 Conflicts:      python-whatthepatch >= 2
 # SECTION flake8 pins
-Suggests:       python-flake8 >= 6.1.0
-Conflicts:      python-flake8 >= 7
+Suggests:       python-flake8 >= 7
+Conflicts:      python-flake8 >= 8
 Suggests:       python-mccabe >= 0.7.0
 Conflicts:      python-mccabe >= 0.8.0
 Suggests:       python-pycodestyle >= 2.11.0
 Conflicts:      python-pycodestyle >= 2.12.0
-Suggests:       python-pyflakes >= 3.1.0
-Conflicts:      python-pyflakes >= 3.2.0
+Suggests:       python-pyflakes >= 3.2.0
+Conflicts:      python-pyflakes >= 3.3.0
 # /SECTION
 BuildArch:      noarch
 Requires(post): update-alternatives

@@ -5,5 +5,8 @@ addFilter("E: arch-dependent-file-in-usr-share*")
 # We should not unstrip sofiles or binaries generated from this package
 # https://github.com/JuliaLang/julia/issues/17941
 addFilter("unstripped-binary-or-object")
-# Julia should be an exception. Otherwise, it fails to execute :)
+addFilter("W: hidden-file-or-dir /usr/share/julia/stdlib/v1.9/Pkg/test/test_packages/AugmentedPlatform/*")
+# Julia is unique that rpm cant detect what it needs because
+# it is dlopened
+addFilter("explicit-lib-dependency")
 addFilter("devel-dependency")

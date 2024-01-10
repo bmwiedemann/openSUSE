@@ -70,4 +70,13 @@
   input history (forwarded request 1062690 from bnavigator)</comment>
     <requestid>1062691</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5e13d149dea2c64a05a7373f45cd9b04</srcmd5>
+    <version>0.3.0</version>
+    <time>1703527543</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.3.0
+  * no release notes</comment>
+    <requestid>1134934</requestid>
+  </revision>
 </revisionlist>

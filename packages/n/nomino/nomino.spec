@@ -17,14 +17,13 @@
 
 
 Name:           nomino
-Version:        1.3.2
+Version:        1.3.3
 Release:        0
 Summary:        Batch rename utility for developers
 License:        Apache-2.0 OR MIT
 URL:            https://github.com/yaa110/nomino
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
-Source2:        cargo_config
 BuildRequires:  cargo-packaging
 
 %description
@@ -32,7 +31,6 @@ nomino is a batch rename utility for developers
 
 %prep
 %autosetup -a 1
-install -D -m 644 %{SOURCE2} .cargo/config
 
 %build
 %{cargo_build}

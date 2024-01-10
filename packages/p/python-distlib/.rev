@@ -313,4 +313,19 @@
     used.</comment>
     <requestid>1102885</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>34c3dd01046e3905c047587057ea24d2</srcmd5>
+    <version>0.3.8</version>
+    <time>1703102443</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.3.8:
+  * Fix #209: use legacy version implementation for Python
+    versions.
+  * Fix #204: use symlinks in venv creation during test.
+  * Fix #208: handle deprecation removals in Python 3.13.
+
+  * Handle a single trailing comma following a version.
+- drop python-distlib-2048-bit-key.patch (obsolete)</comment>
+    <requestid>1133992</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package luit
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,16 @@
 #
 
 
+%define tarballver 2.0.
+
 Name:           luit
-Version:        20221028
+Version:        20230201
 Release:        0
 Summary:        Locale and ISO 2022 support for Unicode terminals
 License:        MIT
 Group:          System/X11/Utilities
 URL:            http://invisible-island.net/luit/
-Source0:        ftp://ftp.invisible-island.net/%{name}/%{name}-%{version}.tgz
+Source0:        https://invisible-island.net/archives/%{name}/current/%{name}-%{tarballver}%{version}.tgz
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(fontenc)
 BuildRequires:  pkgconfig(x11)
@@ -39,7 +41,7 @@ locale's encoding into UTF-8, and convert terminal input from UTF-8 into
 the locale's encoding.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{tarballver}%{version}
 
 %build
 %configure --with-localealiasfile=%{_datadir}/X11/locale/locale.alias

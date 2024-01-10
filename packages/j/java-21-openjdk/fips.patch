@@ -2057,7 +2057,7 @@ index 5149edba0e5..8227d650a03 100644
 +# using the system properties file stored at
 +# /etc/crypto-policies/back-ends/java.config
 +#
-+security.useSystemPropertiesFile=false
++security.useSystemPropertiesFile=true
 +
  #
  # Determines the default key and trust manager factory algorithms for

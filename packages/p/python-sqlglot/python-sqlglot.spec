@@ -1,7 +1,7 @@
 #
 # spec file for package python-sqlglot
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ Source:         https://github.com/tobymao/%{modname}/archive/refs/tags/v%{versi
 # Skip over duckdb requiring tests until it is packaged
 Patch0:         missing-duckdb.patch
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

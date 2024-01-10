@@ -1,8 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan  1 07:11:52 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
+
+- Fixed %dir declarations to clear buildfail
+
+-------------------------------------------------------------------
 Mon Nov  6 03:20:36 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to 1.4.0:
-  * Updated translations and bumped the version. 
+  * Updated translations and bumped the version.
 
 -------------------------------------------------------------------
 Sat Apr 15 18:00:28 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>

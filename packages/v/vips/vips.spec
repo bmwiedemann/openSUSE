@@ -23,7 +23,7 @@
 %define short_version_ 8.0
 %define somajor 42
 Name:           vips
-Version:        8.14.2
+Version:        8.15.0
 Release:        0
 Summary:        C/C++ library for processing large images
 License:        LGPL-2.1-only
@@ -35,6 +35,7 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gettext
 BuildRequires:  giflib-devel
+BuildRequires:  libarchive-devel
 BuildRequires:  libjxl-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig
@@ -161,7 +162,7 @@ formats.
 
 %files modules-%{short_version}
 %license LICENSE
-%{_libdir}/vips-modules-8.14/
+%{_libdir}/vips-modules-8.15/
 
 %files -n typelib-1_0-Vips-%{short_version_}
 %license LICENSE

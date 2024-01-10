@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan  7 13:04:00 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Skip tests which hang during SSL handshakes in python312
+- Switch to PEP517 build
+
+-------------------------------------------------------------------
 Wed Oct 18 14:30:31 UTC 2023 - Daniel Garcia Moreno <daniel.garcia@suse.com>
 
 - update to 1.26.18 (bsc#1216377, CVE-2023-45803):

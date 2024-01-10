@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-crontab
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,17 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-python-crontab
-Version:        2.7.1
+Version:        3.0.0
 Release:        0
 Summary:        Python Crontab API
 License:        LGPL-3.0-only
 Group:          Development/Languages/Python
 URL:            https://gitlab.com/doctormo/python-crontab/
 Source:         https://files.pythonhosted.org/packages/source/p/python-crontab/python-crontab-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-python-dateutil
@@ -50,10 +52,10 @@ accessing the system cron automatically using an API.
 %setup -q -n python-crontab-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -63,7 +65,8 @@ ln -s %{_bindir}/$python build/bin/python
 }
 export PATH=$PWD/build/bin:$PATH
 # test_07_non_posix_shell - only for Windows
-%pytest -k "not test_07_non_posix_shell"
+# test_20_frequency_at_year - broken test which fails in leap years
+%pytest -k "not test_07_non_posix_shell and not test_20_frequency_at_year"
 
 %files %{python_files}
 %doc README.rst
@@ -71,7 +74,7 @@ export PATH=$PWD/build/bin:$PATH
 %{python_sitelib}/cronlog.py
 %{python_sitelib}/crontab.py
 %{python_sitelib}/crontabs.py
-%{python_sitelib}/python_crontab-%{version}*-info
+%{python_sitelib}/python_crontab-%{version}.dist-info
 %pycache_only %{python_sitelib}/__pycache__
 
 %changelog

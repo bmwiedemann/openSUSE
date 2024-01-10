@@ -23,4 +23,26 @@
     <comment>- Fix building without python2</comment>
     <requestid>797838</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a3092953a57de04c050bab8a898c0c0b</srcmd5>
+    <version>0.7.6</version>
+    <time>1703800934</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.7.6:
+  * #70, #67 : Support M1 Mac
+- update to 0.7.5:
+  * #50 : Enable passing Py3 bytes as pixels for constructor with
+    StorageType
+  * #51 : Fix screwed parameters
+- update to 0.7.4:
+  * fix libboost_python filename for macOSX environment with
+    Homebrew. ( 8ad8f917e93ba66c49d01952ba5488cd473a4fc4 )
+  * `setup.py` now looks for `libboost_python2x`,
+    `libboost_python2x-mt`, `libboost_python3x` and
+    `libboost_python3x-mt` as well.
+- drop reproducible.patch (upstream)
+
+  * fix libboost_python filename for macOSX environment with</comment>
+    <requestid>1135324</requestid>
+  </revision>
 </revisionlist>

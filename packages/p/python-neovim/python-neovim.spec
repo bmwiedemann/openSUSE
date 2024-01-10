@@ -1,7 +1,7 @@
 #
 # spec file for package python-neovim
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,8 @@
 
 
 %define modname pynvim
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%if 0%{?rhel} >= 7
-%define python_module() python34-%{**}
-%endif
 Name:           python-neovim
-Version:        0.4.3
+Version:        0.5.0
 Release:        0
 Summary:        Python client to Neovim
 License:        Apache-2.0
@@ -38,9 +34,9 @@ BuildRequires:  %{python_module msgpack}
 BuildRequires:  %{python_module greenlet}
 BuildRequires:  neovim
 # /SECTION
-Requires:       neovim >= 0.1.6
-Requires:       python-greenlet
-Requires:       python-msgpack-python
+Requires:       neovim >= 0.9.0
+Requires:       %{python_module greenlet}
+Requires:       %{python_module msgpack}
 Provides:       python-nvim
 BuildArch:      noarch
 %python_subpackages

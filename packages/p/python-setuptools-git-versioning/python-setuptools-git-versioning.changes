@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Dec 25 11:20:47 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.13.5
+  * [bugfix] Import setuptools before importing distutils. Thanks
+    to @tjni
+  * [bugfix] Move zip-safe option to tool.setuptools section of
+     pyproject.toml. Thanks to @cclecle
+- Accomodate upstream's usage of reruns: some tag
+  tests fail with commit hashes starting with 0.
+
+-------------------------------------------------------------------
 Fri Jun  9 09:22:01 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

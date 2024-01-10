@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec 19 09:34:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.1:
+  * Fix documentation for custom strategies
+  * Update Python versions
+  * Make predefined merge strategies work with built-in
+    collections subtypes
+
+-------------------------------------------------------------------
 Tue May 30 04:26:09 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - change URL to https://github.com/toumorokoshi/deepmerge

@@ -13,10 +13,10 @@ Signed-off-by: Robert Milasan <rmilasan@suse.de>
  etc/udev/rules.d/59-dasd.rules | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Index: s390-tools-2.29.0/etc/udev/rules.d/59-dasd.rules
+Index: s390-tools-2.30.0/etc/udev/rules.d/59-dasd.rules
 ===================================================================
---- s390-tools-2.29.0.orig/etc/udev/rules.d/59-dasd.rules
-+++ s390-tools-2.29.0/etc/udev/rules.d/59-dasd.rules
+--- s390-tools-2.30.0.orig/etc/udev/rules.d/59-dasd.rules
++++ s390-tools-2.30.0/etc/udev/rules.d/59-dasd.rules
 @@ -6,7 +6,7 @@
  SUBSYSTEM!="block", GOTO="dasd_symlinks_end"
  KERNEL!="dasd*", GOTO="dasd_symlinks_end"

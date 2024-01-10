@@ -1,7 +1,7 @@
 #
 # spec file for package python-redis
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ License:        MIT
 URL:            https://github.com/redis/redis-py
 Source0:        https://files.pythonhosted.org/packages/source/r/redis/redis-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/redis/redis-py/5.0/pytest.ini
+Patch0:         increase-test-timeout.patch
 BuildRequires:  %{python_module async-timeout >= 4.0.2}
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module packaging}
@@ -50,9 +51,12 @@ BuildArch:      noarch
 The Python interface to the Redis key-value store.
 
 %prep
-%autosetup -p1 -n redis-%{version}
+%autosetup -N -n redis-%{version}
 # pytest.ini for pytest markers
 cp %SOURCE1 .
+%ifarch s390x
+%patch -P 0 -p1
+%endif
 
 # This test passes locally but fails in obs with different
 # environment, like ALP build...

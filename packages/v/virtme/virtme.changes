@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 13 09:36:30 UTC 2023 - Robert Frohl <rfrohl@suse.com>
+
+- Require qemu-tools instead virtiofsd for older SLE/Leap versions 
+
+-------------------------------------------------------------------
 Thu Nov 30 11:22:25 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
 
 - Update to version 1.18

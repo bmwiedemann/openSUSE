@@ -95,4 +95,16 @@
 </comment>
     <requestid>1118598</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8a706891c57b062f8e904caa55114a0f</srcmd5>
+    <version>0.2.11</version>
+    <time>1704829834</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.2.11:
+  * Convert aperture and focal length from mm to meters.
+  * Fix not loading String properties.
+- Add fix-projver.patch.
+</comment>
+    <requestid>1137669</requestid>
+  </revision>
 </revisionlist>

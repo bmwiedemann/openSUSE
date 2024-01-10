@@ -18,19 +18,20 @@
 
 
 Name:           spec-cleaner
-Version:        1.2.1
+Version:        1.2.2
 Release:        0
 Summary:        .spec file cleaner
 License:        BSD-3-Clause
 URL:            https://github.com/rpm-software-management/spec-cleaner
 Source0:        https://github.com/rpm-software-management/spec-cleaner/archive/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM: https://github.com/rpm-software-management/spec-cleaner/commit/914c432eb26bae6af766f2da6e81587251ebf1c0
-Patch1:         spec-cleaner-psp-macros.patch
+# PATCH-FIX-UPSTREAM: https://github.com/rpm-software-management/spec-cleaner/commit/fd0f64930a399dfcf4ff5d3e22a8ec9afa37043a
+Patch0:         fix_tests_needing_web_connection.patch
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  python3-pip
 BuildRequires:  python3-pytest
-BuildRequires:  python3-setuptools
+BuildRequires:  python3-wheel
 # For the pkg_resources used in the binary loader
-Requires:       python3-setuptools
 BuildArch:      noarch
 
 %description
@@ -55,7 +56,7 @@ rm pytest.ini
 %if 0%{?mageia}
 %py3_build
 %else
-%python3_build
+%python3_pyproject_wheel
 %endif
 
 %check
@@ -66,8 +67,9 @@ python3 -m pytest -k "not webtest" tests/*-tests.py
 %if 0%{?mageia}
 %py3_install
 %else
-%python3_install
+%python3_pyproject_install
 %endif
+%fdupes %{buildroot}%{python3_sitelib}
 
 %files
 %license COPYING
@@ -76,44 +78,9 @@ python3 -m pytest -k "not webtest" tests/*-tests.py
 %dir %{_prefix}/lib/obs/service/
 %{_prefix}/lib/obs/service/clean_spec_file
 %{_prefix}/lib/obs/service/clean_spec_file.service
-%dir %{python3_sitelib}/spec_cleaner/
-%{python3_sitelib}/spec_cleaner/__init__.py
-%{python3_sitelib}/spec_cleaner/__main__.py
-%{python3_sitelib}/spec_cleaner/dependency_parser.py
-%{python3_sitelib}/spec_cleaner/fileutils.py
-%{python3_sitelib}/spec_cleaner/rpmbuild.py
-%{python3_sitelib}/spec_cleaner/rpmcheck.py
-%{python3_sitelib}/spec_cleaner/rpmcleaner.py
-%{python3_sitelib}/spec_cleaner/rpmcopyright.py
-%{python3_sitelib}/spec_cleaner/rpmdescription.py
-%{python3_sitelib}/spec_cleaner/rpmexception.py
-%{python3_sitelib}/spec_cleaner/rpmfiles.py
-%{python3_sitelib}/spec_cleaner/rpmhelpers.py
-%{python3_sitelib}/spec_cleaner/rpminstall.py
-%{python3_sitelib}/spec_cleaner/rpmpreamble.py
-%{python3_sitelib}/spec_cleaner/rpmpreambleelements.py
-%{python3_sitelib}/spec_cleaner/rpmprep.py
-%{python3_sitelib}/spec_cleaner/rpmprune.py
-%{python3_sitelib}/spec_cleaner/rpmregexp.py
-%{python3_sitelib}/spec_cleaner/rpmrequirestoken.py
-%{python3_sitelib}/spec_cleaner/rpmpackage.py
-%{python3_sitelib}/spec_cleaner/rpmscriplets.py
-%{python3_sitelib}/spec_cleaner/rpmsection.py
-%{python3_sitelib}/spec_cleaner/__pycache__
-%if 0%{?mageia}
-%{python3_sitelib}/*.egg-info
-%else
-%{python3_sitelib}/spec_cleaner-%{version}-py%{py3_ver}.egg-info
-%endif
-%dir %{_datadir}/%{name}/
-%{_datadir}/%{name}/excludes-bracketing.txt
-%{_datadir}/%{name}/licenses_changes.txt
-%{_datadir}/%{name}/pkgconfig_conversions.txt
-%{_datadir}/%{name}/allowed_groups.txt
-%{_datadir}/%{name}/licenses_exceptions.txt
-%{_datadir}/%{name}/cmake_conversions.txt
-%{_datadir}/%{name}/perl_conversions.txt
-%{_datadir}/%{name}/tex_conversions.txt
+%{python3_sitelib}/spec_cleaner
+%{python3_sitelib}/spec_cleaner-%{version}*-info
+%{_datadir}/%{name}
 
 %files format_spec_file
 %{_prefix}/lib/obs/service/format_spec_file

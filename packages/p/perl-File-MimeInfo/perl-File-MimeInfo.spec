@@ -1,7 +1,7 @@
 #
 # spec file for package perl-File-MimeInfo
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,13 @@
 
 %define cpan_name File-MimeInfo
 Name:           perl-File-MimeInfo
-Version:        0.33
+Version:        0.340.0
 Release:        0
+%define cpan_version 0.34
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Determine file types
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/M/MI/MICHIELB/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/M/MI/MICHIELB/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -35,6 +36,11 @@ BuildRequires:  perl(Test::More) >= 0.88
 Requires:       perl(Encode::Locale)
 Requires:       perl(File::BaseDir) >= 0.03
 Requires:       perl(File::DesktopEntry) >= 0.04
+Provides:       perl(File::MimeInfo) = %{version}
+Provides:       perl(File::MimeInfo::Applications) = %{version}
+Provides:       perl(File::MimeInfo::Magic) = %{version}
+Provides:       perl(File::MimeInfo::Rox) = %{version}
+%define         __perllib_provides /bin/true
 %{perl_requires}
 # MANUAL BEGIN
 BuildRequires:  shared-mime-info
@@ -58,8 +64,9 @@ This module loads the various data files when needed. If you want to hash
 data earlier see the 'rehash' methods below.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+%autosetup  -n %{cpan_name}-%{cpan_version}
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

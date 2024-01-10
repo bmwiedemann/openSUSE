@@ -19,7 +19,7 @@
 
 %define sover 1
 Name:           protobuf-c
-Version:        1.4.1
+Version:        1.5.0
 Release:        0
 Summary:        C bindings for Google's Protocol Buffers
 License:        BSD-3-Clause
@@ -33,9 +33,7 @@ BuildRequires:  glibc-devel
 BuildRequires:  libtool
 BuildRequires:  make
 BuildRequires:  pkgconfig
-# not compatible with v22 due to https://protobuf.dev/news/2022-08-03/#cpp-changes
-# see https://github.com/protobuf-c/protobuf-c/issues/544
-BuildRequires:  (protobuf-devel >= 2.6.0 with protobuf-devel < 22)
+BuildRequires:  protobuf-devel >= 22
 
 %description
 This package provides a code generator and runtime libraries to use Protocol
@@ -90,7 +88,6 @@ make check
 %_libdir/libprotobuf-c.so.%sover.*
 
 %files -n libprotobuf-c-devel
-%doc ChangeLog TODO
 %dir %_includedir/protobuf-c
 %dir %_includedir/google
 %dir %_includedir/google/protobuf-c

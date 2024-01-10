@@ -18,12 +18,12 @@
 
 
 Name:           quakespasm
-Version:        0.96.0
+Version:        0.96.1
 Release:        0
 Summary:        A Quake Engine
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/3D/Shoot
-URL:            http://quakespasm.sourceforge.net/
+URL:            https://quakespasm.sourceforge.net/
 Source:         https://sourceforge.net/projects/quakespasm/files/Source/%{name}-%{version}.tar.gz
 Source99:       %{name}.changes
 Source100:      quakespasm.appdata.xml

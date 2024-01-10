@@ -215,4 +215,16 @@
   - Fix formatting of release list</comment>
     <requestid>1069738</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>04b9d0c9c3734f45b486bb5897f61383</srcmd5>
+    <version>7.1.0</version>
+    <time>1703800927</time>
+    <user>anag+factory</user>
+    <comment>- update to version 7.1.0
+  - Bump bandit
+  - Moves supported python runtimes from version 3.8 to 3.10
+  - Update master for stable/2023.1
+  - Revert &quot;Moves supported python runtimes from version 3.8 to 3.10&quot;</comment>
+    <requestid>1135326</requestid>
+  </revision>
 </revisionlist>

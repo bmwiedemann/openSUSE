@@ -330,4 +330,25 @@ Other changes:
     default values.</comment>
     <requestid>1131208</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>5a5a5bd91b395368dcde1ecc66fb001c</srcmd5>
+    <version>24.1.0</version>
+    <time>1704562498</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 24.1.0:
+  * Y062: Disallow duplicate elements inside `Literal[]` slices.
+  * Support flake8&gt;=7.0.0
+  * Y061 is no longer emitted in situations where Y062 would also
+    be emitted.
+  * Improve error message for Y060.
+  * Y023 now bans more imports from `typing_extensions` now that
+    typeshed has dropped support for Python 3.7.
+  * Y016: Fix false positive if a method had positional-only
+    parameters (using PEP 570 syntax and the first
+    positional-or-keyword parameter following the positional-only
+    parameters used a custom TypeVar (see #455).
+  * Y046: Fix false negative where an unused protocol would not
+    be detected if the protocol was generic.</comment>
+    <requestid>1137279</requestid>
+  </revision>
 </revisionlist>

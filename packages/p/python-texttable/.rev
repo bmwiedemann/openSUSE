@@ -82,4 +82,21 @@ https://build.opensuse.org/request/show/318310</comment>
     <comment></comment>
     <requestid>1095656</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b80aaa80191daade1eabb3e5164c89ea</srcmd5>
+    <version>1.7.0</version>
+    <time>1704281053</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.7.0:
+  * Add boolean formatting option
+
+- Update to 1.6.5
+  * Fix alignment bug when deco is modified
+  * Improve int conversion
+  * Added texttable.pyi
+  * Create a method for redefining the max_width
+  * Update README.md
+- fix license to LGPL-3.0+ as in LICENSE file</comment>
+    <requestid>1135624</requestid>
+  </revision>
 </revisionlist>

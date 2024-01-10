@@ -21,7 +21,7 @@
 %define libname libtumbler-1-0
 
 Name:           tumbler
-Version:        4.18.1
+Version:        4.18.2
 Release:        0
 Summary:        Thumbnail Management for Xfce
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later

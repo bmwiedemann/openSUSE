@@ -178,4 +178,20 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1077998</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>aa653f360d28991d0cc4934de871e49b</srcmd5>
+    <version>3.7.3</version>
+    <time>1704281430</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1136248</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>e9fdb60c66f199380c1f4bebabd3c253</srcmd5>
+    <version>3.7.4</version>
+    <time>1704487456</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1136998</requestid>
+  </revision>
 </revisionlist>

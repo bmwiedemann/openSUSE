@@ -24,10 +24,9 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%define         skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-google-api-core
-Version:        2.14.0
+Version:        2.15.0
 Release:        0
 Summary:        Google API client core library
 License:        Apache-2.0
@@ -38,7 +37,6 @@ Patch0:         python-google-api-core-no-mock.patch
 BuildRequires:  %{python_module google-auth >= 2.14.1}
 BuildRequires:  %{python_module googleapis-common-protos >= 1.53.0}
 BuildRequires:  %{python_module grpcio >= 1.33.2}
-BuildRequires:  %{python_module grpcio-gcp >= 0.2.2}
 BuildRequires:  %{python_module grpcio-status >= 1.33.2}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module protobuf >= 3.19.5 with %python-protobuf < 5.0.0.dev0}
@@ -64,7 +62,6 @@ Requires:       python-pytz
 Requires:       python-requests >= 2.18.0
 Requires:       python-setuptools >= 40.3.0
 Requires:       (python-protobuf >= 3.19.5 with python-protobuf < 5.0.0.dev0)
-Suggests:       python-grpcio-gcp >= 0.2.2
 BuildArch:      noarch
 %python_subpackages
 
@@ -95,7 +92,6 @@ Core Library for Google Client Libraries.
 %license LICENSE
 %doc README.rst
 %{python_sitelib}/google/api_core
-%{python_sitelib}/google_api_core-%{version}*-nspkg.pth
 %{python_sitelib}/google_api_core-%{version}*-info
 %endif
 

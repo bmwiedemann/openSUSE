@@ -57,4 +57,13 @@
 - Update to version 1.6.0</comment>
     <requestid>1132837</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>51074bfe47c90dadd1a8bb186a29181b</srcmd5>
+    <version>1.7.2</version>
+    <time>1703800950</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.7.2:
+  * Add support for rich formatting in epilog text [#146]</comment>
+    <requestid>1135339</requestid>
+  </revision>
 </revisionlist>

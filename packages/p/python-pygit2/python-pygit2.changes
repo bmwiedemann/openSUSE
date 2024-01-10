@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Jan  6 20:59:47 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.13.3:
+  * New API for filters in Python #1237 #1244
+  * Shallow repositories: New depth optional argument for
+    clone_repository(...) and Remote.fetch(...) #1245 #1246
+  * New submodule init(...), update(...) and reload(...)
+    functions #1248
+  * Release GIL in Walker.__next__ #1249
+  * Type hints for submodule functions in Repository #1247
+  * Support Python 3.12
+  * Documentation updates #1242
+  * Fix crash in reference rename #1233
+  * Upgrade to libgit2 v1.7.1
+  * Don't distribute wheels for pypy, only universal wheels for
+    macOS
+  * New Repository.remotes.create_anonymous(url) #1229
+  * docs: update links to pypi, pygit2.org #1228
+  * Prep work for Python 3.12 (not yet supported) #1223
+- drop support-libgit2-1.7.patch (upstream)
+
+-------------------------------------------------------------------
 Tue Jul 25 14:29:15 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.12.2:
@@ -45,7 +67,7 @@ Sat Dec  3 20:06:29 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
   * New notify/progress callbacks for checkout and stash #1167 #1169
   * New Repository.remotes.names() #1159
   * Now refname argument in RemoteCallbacks.push_update_reference(...) is a string, not bytes #1168
-  * Add missing newline at end of pygit2/decl/pack.h #1163 
+  * Add missing newline at end of pygit2/decl/pack.h #1163
 
 -------------------------------------------------------------------
 Mon Sep 19 16:53:05 UTC 2022 - Stephan Kulow <coolo@suse.com>
@@ -71,7 +93,7 @@ Thu Jul 21 14:44:55 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
   * New Repository.create_commit_string(...) and
     Repository.create_commit_with_signature(...) #1142
   * Linux and macOS wheels updated to libgit2 v1.4.3
-  * Remove redundant line #1139 
+  * Remove redundant line #1139
 - Add patch support-libgit-1.5.patch:
   * Suppot libgit 1.5.0
 
@@ -282,7 +304,7 @@ Fri Apr  7 22:12:04 UTC 2017 - toddrme2178@gmail.com
 - Update to 0.25.0.
   * Make pygit2 throw if tree of a commit is not found
   * fixed cached memory tests
-  *  Added mwindow_mapped_limit, cached_memory, enable_caching, 
+  *  Added mwindow_mapped_limit, cached_memory, enable_caching,
      cache_max_size, cache_object_limit options
 - Implement singlespec version.
 

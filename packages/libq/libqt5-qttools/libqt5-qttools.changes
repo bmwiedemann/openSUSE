@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 29 13:31:38 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.12+kde4, rebased upstream:
+  * qdoc: Ensure the generated temporary header file is closed properly
+  * Bump version to 5.15.12
+
+-------------------------------------------------------------------
 Fri Oct  6 06:43:06 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.11+kde3, rebased upstream:

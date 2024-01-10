@@ -433,4 +433,21 @@
   * catch exceptions.RefreshError</comment>
     <requestid>1131735</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>cc9ab0552eda341cb29b9489756dd67d</srcmd5>
+    <version>2.25.2</version>
+    <time>1702844939</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.25.2:
+  * Fix user cred universe domain issue (#1436)</comment>
+    <requestid>1133637</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>03309adde4b2852acad7c521ca21b22e</srcmd5>
+    <version>2.26.1</version>
+    <time>1704491995</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1136770</requestid>
+  </revision>
 </revisionlist>

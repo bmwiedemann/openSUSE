@@ -669,4 +669,16 @@ installing all /icons/hicolor/*/*/*   might have been only some png and a single
   * Fixed bug in selection handling introduced in 3.4.</comment>
     <requestid>1120845</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>4b82d66a908da52bd5e5312906cdc209</srcmd5>
+    <version>3.4.2</version>
+    <time>1703527507</time>
+    <user>anag+factory</user>
+    <comment>- Poedit 3.4.2:
+  * Compatibility fixes for wxWidgets 3.2 and latest ICU versions.
+  * Updated bundled GNU gettext to 0.22.3.
+  * Assorted UI improvements/fixes.
+</comment>
+    <requestid>1134724</requestid>
+  </revision>
 </revisionlist>

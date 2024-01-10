@@ -63,4 +63,15 @@ fix multibuild</comment>
     extra were not generated correctly (#209).</comment>
     <requestid>1113186</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5bbcbacca8314c39be84d2bd968e4445</srcmd5>
+    <version>1.6.0</version>
+    <time>1702673303</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.6.0:
+  * Add an --all-extras option
+
+  * Drop some compatibility code and bump minimum required</comment>
+    <requestid>1133192</requestid>
+  </revision>
 </revisionlist>

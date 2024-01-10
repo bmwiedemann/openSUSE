@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyramid
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2014-2017 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyramid
-Version:        2.0.1
+Version:        2.0.2
 Release:        0
 Summary:        The Pyramid web application development framework
 License:        BSD-4-Clause AND ZPL-2.1 AND MIT
@@ -65,6 +65,8 @@ Requires:       python-repoze.lru >= 0.4
 Pyramid is a Python web application development framework
 produced by the Pylons Project (http://pylonsproject.org).
 It was previously known as repoze.bfg (http://bfg.repoze.org).
+
+
 
 
 

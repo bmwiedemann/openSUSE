@@ -1,7 +1,7 @@
 #
 # spec file for package kernel-64kb
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,8 @@
 
 
 %define srcversion 6.6
-%define patchversion 6.6.6
-%define git_commit a946a9f9d865a849717a570675413f097b229184
+%define patchversion 6.6.10
+%define git_commit e04388ed79f6d15fba9ab58fb2ba0ac47fc955f9
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -113,9 +113,9 @@ Name:           kernel-64kb
 Summary:        Kernel with 64kb PAGE_SIZE
 License:        GPL-2.0-only
 Group:          System/Kernel
-Version:        6.6.6
+Version:        6.6.10
 %if 0%{?is_kotd}
-Release:        <RELEASE>.ga946a9f
+Release:        <RELEASE>.ge04388e
 %else
 Release:        0
 %endif
@@ -173,7 +173,6 @@ Source35:       group-source-files.pl
 Source36:       README.PATCH-POLICY.SUSE
 Source37:       README.SUSE
 Source38:       README.KSYMS
-Source39:       config-options.changes.txt
 Source40:       source-timestamp
 Source46:       split-modules
 Source47:       modversions
@@ -243,7 +242,6 @@ NoSource:       35
 NoSource:       36
 NoSource:       37
 NoSource:       38
-NoSource:       39
 NoSource:       40
 NoSource:       46
 NoSource:       47
@@ -298,7 +296,11 @@ NoSource:       113
 NoSource:       114
 NoSource:       120
 NoSource:       121
+%if ! 0%{?is_kotd} || ! %{?is_kotd_qa}%{!?is_kotd_qa:0}
 ExclusiveArch:  aarch64
+%else
+ExclusiveArch:  do_not_build
+%endif
 %ifarch %ix86
 # Only i386/default supports i586, mark other flavors' packages as i686
 %if ! %build_default

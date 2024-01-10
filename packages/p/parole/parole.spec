@@ -17,7 +17,7 @@
 
 
 Name:           parole
-Version:        4.18.0
+Version:        4.18.1
 Release:        0
 Summary:        Media Player for the Xfce Desktop Environment
 License:        GPL-2.0-or-later

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Dec 22 09:57:26 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
+
+- On Leap build with re2-10 even when re2-11 is available (bsc#1217257).
+  re2-11 pulls in system abseil which is incompatible with bundled abseil
+  causing build failure.
+
+-------------------------------------------------------------------
+Wed Dec 20 12:16:07 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to force pdf_attributions.qdoc to be generated before
+  qtpdf, fixing a race condition that made the docs subpackage
+  build not reproducible (boo#1217774):
+  * 0001-Fix-race-condition-generating-docs.patch
+
+-------------------------------------------------------------------
 Mon Nov 27 14:00:22 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.6.1:

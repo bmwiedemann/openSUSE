@@ -7,4 +7,41 @@
     <comment>used by home-assistant</comment>
     <requestid>865379</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6e176c246d70ec26554accb65318a4b9</srcmd5>
+    <version>0.14.4</version>
+    <time>1704281573</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.14.4:
+  * Fix type of info.printer_uri_supported
+  * fix: remove I/O in the event loop when creating IPP
+  * Convert client class to dataclass
+- update to 0.14.0:
+  * Export all models
+  * Thaw models
+- update to 0.13.0:
+  * Allow for markers and URIs being single values
+  * Improvements to serializer
+  * Improve typing
+  * Refactor models
+  * Configure Renovate
+  * Improvements to serializer
+  * Improve typing
+  * Define exports
+  * Improve models test coverage
+  * Refactor models
+  * Development workflow updates
+- update to 0.12.1:
+  * Add marker/other attributes to default attributes
+- update to 0.12.0:
+  * This release requires Python 3.9
+  * Use encoded value length when serializing attributes
+  * Accept successful and informational status codes
+  * Add additional tags/enum cleanup. Fix date parsing.
+  * Adding printer-more-info support
+  * Packaging Overhaul (Python 3.9)
+  * Add Kyocera to known makes
+  * Parse unsupported-attributes group</comment>
+    <requestid>1136462</requestid>
+  </revision>
 </revisionlist>

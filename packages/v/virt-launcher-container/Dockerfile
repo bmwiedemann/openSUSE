@@ -63,10 +63,9 @@ RUN zypper clean -a
 
 RUN ln -s ncat /usr/bin/nc
 
-RUN mkdir -p /usr/share/OVMF
-
 #!ArchExclusiveLine: x86_64
 RUN if [ "$(uname -m)" = "x86_64" ]; then \
+        mkdir -p /usr/share/OVMF && \
         ln -s ../qemu/ovmf-x86_64-code.bin /usr/share/OVMF/OVMF_CODE.fd && \
         ln -s ../qemu/ovmf-x86_64-vars.bin /usr/share/OVMF/OVMF_VARS.fd && \
         ln -s ../qemu/ovmf-x86_64-code.bin /usr/share/OVMF/OVMF_CODE.cc.fd && \
@@ -76,8 +75,9 @@ RUN if [ "$(uname -m)" = "x86_64" ]; then \
 
 #!ArchExclusiveLine: aarch64
 RUN if [ "$(uname -m)" = "aarch64" ]; then \
-        ln -s ../qemu/aavmf-aarch64-code.bin /usr/share/OVMF/AAVMF_CODE.fd && \
-        ln -s ../qemu/aavmf-aarch64-vars.bin /usr/share/OVMF/AAVMF_VARS.fd ; \
+        mkdir -p /usr/share/AAVMF && \
+        ln -s ../qemu/aavmf-aarch64-code.bin /usr/share/AAVMF/AAVMF_CODE.fd && \
+        ln -s ../qemu/aavmf-aarch64-vars.bin /usr/share/AAVMF/AAVMF_VARS.fd ; \
     fi;
 
 # KubeVirt expects virtiofsd to be installed in /usr/libexec

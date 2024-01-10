@@ -1,7 +1,7 @@
 #
 # spec file for package python-khal
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,28 +16,24 @@
 #
 
 
-%define skip_python36 1
-%define oldpython python
+%{?sle15_python_module_pythons}
 Name:           python-khal
-Version:        0.10.5
+Version:        0.11.2
 Release:        0
 Summary:        CLI calendar with CalDAV support
 License:        MIT
 Group:          Productivity/Office/Organizers
 URL:            https://lostpackets.de/khal/
 Source0:        https://files.pythonhosted.org/packages/source/k/khal/khal-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix tests with latest pytz version
-# https://github.com/pimutils/khal/commit/f6c9b8a53a0f12222b2ee25c82229b0605b8785a
-Patch0:         fix-pytz-tests.patch
+BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module atomicwrites >= 0.1.7}
 BuildRequires:  %{python_module click >= 3.2}
 BuildRequires:  %{python_module click-log >= 0.2.0}
 BuildRequires:  %{python_module configobj}
 BuildRequires:  %{python_module dateutil}
 BuildRequires:  %{python_module freezegun}
+BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module icalendar >= 4.0.3}
-# Test dependency added by Patch0
-BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
@@ -54,7 +50,7 @@ Requires:       python-click-log
 Requires:       python-configobj
 Requires:       python-dateutil
 Requires:       python-icalendar
-Requires:       python-pytz
+Requires:       python-pytz >= 2018
 Requires:       python-pyxdg
 Requires:       python-tzlocal
 Requires:       python-urwid

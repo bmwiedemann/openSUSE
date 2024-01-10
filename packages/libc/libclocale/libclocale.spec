@@ -1,7 +1,7 @@
 #
 # spec file for package libclocale
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libclocale
 %define lname	libclocale1
-Version:        20221218
+Version:        20240107
 Release:        0
 Summary:        Library for C locale functions
 License:        LGPL-3.0-or-later
@@ -29,7 +29,7 @@ Source2:        https://github.com/libyal/libclocale/releases/download/%version/
 Source3:        %name.keyring
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libcerror) >= 20220101
+BuildRequires:  pkgconfig(libcerror) >= 20240101
 # Various notes: https://en.opensuse.org/libyal
 
 %description

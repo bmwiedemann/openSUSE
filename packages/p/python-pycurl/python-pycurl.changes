@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 15 01:53:16 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch pause-unpause-xfail.patch:
+  * XFAIL a test due to gh#pycurl/pycurl#729 (bsc#1218062)
+
+-------------------------------------------------------------------
 Thu Oct 12 14:09:12 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
 
 - Skip test_multi_socket_select (gh#pycurl/pycurl#819),

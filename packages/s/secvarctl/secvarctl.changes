@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec 14 16:03:34 UTC 2023 - msuchanek@suse.com
+
+- Update to version 1.0.0~rc3 (jsc#PED-5449):
+  * Guest/verify: fix misbehaviour of verify and write with -p
+  * Guest/generate: trustedcadb variable allow only CA certificates
+  * Guest/Verify: -w option allowed when use -u with -p
+  * guest/generate: fix potential null reference in pk/append special case
+
+-------------------------------------------------------------------
 Fri Oct 13 14:04:07 UTC 2023 - msuchanek@suse.com
 
 - Update to version 1.0.0~rc2+git1.1f96bad:

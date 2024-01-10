@@ -127,4 +127,12 @@ part of summer 2013 libyal refresh for opensuse 13.1</comment>
     <comment>- Add signature and keyring</comment>
     <requestid>1130601</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ff232a83761fb83a6c349c4e9ffd4f77</srcmd5>
+    <version>20240106</version>
+    <time>1704558614</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20240106</comment>
+    <requestid>1137224</requestid>
+  </revision>
 </revisionlist>

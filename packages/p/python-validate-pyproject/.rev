@@ -58,4 +58,18 @@
     * Improve validation of ``attr`` directives, #101</comment>
     <requestid>1089776</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>03b866ecb49f93340d2cfa29bf5cce74</srcmd5>
+    <version>0.15</version>
+    <time>1702844930</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.15:
+  * Update ``setuptools`` schema definitions, #112
+  * Add ``__repr__`` to plugin wrapper
+  * Fix standard ``$schema`` ending ``#``
+  * Ensure reporting show more detailed error messages for
+    ``RedefiningStaticFieldAsDynamic``
+  * Add support for ``repo-review``</comment>
+    <requestid>1133500</requestid>
+  </revision>
 </revisionlist>

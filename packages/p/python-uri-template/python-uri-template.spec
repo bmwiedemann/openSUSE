@@ -18,14 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-uri-template
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        RFC 6570 URI Template Processor
 License:        MIT
 URL:            https://github.com/plinss/uri_template/
-Source:         https://github.com/plinss/uri_template/archive/refs/tags/v%{version}.tar.gz#/uri_template-%{version}-gh.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/u/uri-template/uri-template-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -38,7 +38,6 @@ RFC 6570 URI Template Processor
 
 %prep
 %setup -q -n uri-template-%{version}
-sed -i "s/version='0.0.0',.*edit/version='%{version}',/" setup.py
 
 %build
 %pyproject_wheel

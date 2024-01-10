@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 28 02:43:38 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.7.6
+  * Add option to set compound_max_elements in lt-proc
+
+-------------------------------------------------------------------
 Tue Nov  1 09:02:40 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.7.1

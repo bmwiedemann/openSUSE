@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan  6 17:15:11 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.1:
+  * Update flake8 configuration
+  * Remove Python 2.7 classifiers as the project is now Python 3+
+    only
+
+-------------------------------------------------------------------
 Mon Nov 27 15:42:45 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.7.0:

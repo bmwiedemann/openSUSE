@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec  7 20:42:15 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.0
+  * Removal of deprecated API compute_vmaf().
+  * First release to include vmaf_cuda_* APIs.
+  * Speedups and bug fixes.
+
+-------------------------------------------------------------------
 Thu Mar 16 21:06:47 UTC 2023 - Jakob Lorenz <onlyjak0b@mailbox.org>
 
 - Fix "no such built-in model" due to missing build dependency

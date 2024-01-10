@@ -7,4 +7,19 @@
     <comment>Initial release of 0.2.0</comment>
     <requestid>1070065</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b939aaf85c18031e2662b8e7c5cbbd3b</srcmd5>
+    <version>0.3.0</version>
+    <time>1704281450</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.3.0:
+  * Replace nullable_visit with NullableVisitor
+  * Implement nullable detection via NullableVisitor
+  * Support Python 3.11 and 3.12
+  * Support Python 3.12 f-strings in grammar actions
+  * Fix typing in parser class and minor f-string fix
+
+- Initial release of 0.2.0</comment>
+    <requestid>1136287</requestid>
+  </revision>
 </revisionlist>

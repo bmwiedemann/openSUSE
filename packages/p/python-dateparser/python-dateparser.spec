@@ -16,10 +16,9 @@
 #
 
 
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-dateparser
-Version:        1.1.8
+Version:        1.2.0
 Release:        0
 Summary:        Date parsing library designed to parse dates from HTML pages
 License:        BSD-3-Clause
@@ -84,7 +83,9 @@ export NO_NETWORK=1
 ignoretestfiles="--ignore tests/test_dateparser_data_integrity.py"
 # https://github.com/scrapinghub/dateparser/issues/1053
 ignoretestfiles="$ignoretestfiles --ignore tests/test_search.py"
-%pytest $ignoretestfiles
+# overflow on 32bit
+donttest="(not test_timezone_offset_calculation)"
+%pytest -k "$donttest" $ignoretestfiles
 
 %post
 %python_install_alternative dateparser-download

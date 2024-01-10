@@ -1,7 +1,7 @@
 #
 # spec file for package uwsgi
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,13 +29,13 @@
 %endif
 
 Name:           uwsgi
-Version:        2.0.22
+Version:        2.0.23
 Release:        0
 Summary:        Application Container Server for Networked/Clustered Web Applications
 License:        Apache-2.0 AND GPL-2.0-only WITH GCC-exception-2.0
 Group:          Productivity/Networking/Web/Servers
 URL:            https://uwsgi-docs.readthedocs.io/en/latest/
-Source:         https://github.com/unbit/uwsgi/archive/refs/tags/%{version}.tar.gz
+Source:         https://github.com/unbit/uwsgi/archive/refs/tags/%{version}.tar.gz#/uwsgi-%{version}.tar.gz
 Source1:        opensuse.ini.in
 Source2:        uwsgi.service
 Source3:        django.ini.example

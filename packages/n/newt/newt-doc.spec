@@ -17,7 +17,7 @@
 
 
 Name:           newt-doc
-Version:        0.52.23
+Version:        0.52.24
 Release:        0
 Summary:        Tutorial for Nifty Erik's Windowing Toolkit
 License:        LGPL-2.1-or-later

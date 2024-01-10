@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan 08 18:58:13 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.0.3:
+  * Fixed issues
+    - Refactor and Improve Code for Kubescape Version Compatibility
+      Check by @cbrom in #1494
+    - fix install.sh when sudo is required to delete
+      /usr/local/bin/kubescape by @matthyx in #1474
+    - Hotfix gitlab url by @dwertent in #1572
+
+-------------------------------------------------------------------
 Wed Nov 01 19:11:35 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 3.0.1:

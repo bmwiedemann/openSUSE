@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan  3 10:09:25 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- require setuptools
+
+-------------------------------------------------------------------
 Mon Sep 25 14:37:24 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Clean up the SPEC file

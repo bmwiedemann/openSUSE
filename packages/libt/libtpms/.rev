@@ -178,4 +178,16 @@
   * CVE-2023-1017: tpm2: Fixed out of bounds write in CryptParameterDecryption (bsc#1206022)</comment>
     <requestid>1069859</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>e23b032e5e2cf7c9a5cec070e464f45e</srcmd5>
+    <version>0.9.6</version>
+    <time>1704281243</time>
+    <user>dimstar_suse</user>
+    <comment>- 0001-tpm2-Check-size-of-buffer-before-accessing-it-CVE-20.patch: upstreamed
+- Used in SLE:
+  0001-tpm2-Reset-TPM2B-buffer-sizes-after-test-fails-for-v.patch
+  0002-tpm2-Add-maxSize-parameter-to-TPM2B_Marshal-for-sani.patch
+  0003-tpm2-Restore-original-value-if-unmarsalled-value-was.patch (forwarded request 1134474 from msmeissn)</comment>
+    <requestid>1135332</requestid>
+  </revision>
 </revisionlist>

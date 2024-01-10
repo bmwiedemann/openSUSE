@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan  2 13:28:11 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to tag 0.12.5.6924
+  * Addressed CVE-2023-26157 [boo#1218473]
+
+-------------------------------------------------------------------
 Mon Aug 21 09:42:33 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Set -D_GNU_SOURCE to work around strcasestr being undeclared

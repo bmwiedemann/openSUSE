@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan  2 21:17:44 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.2:
+  * Removed support for null-bytes in the path when making a
+    request for a file
+  * Backward Incompatibilities - Requests to a static_view are no
+    longer allowed to contain a null-byte in any
+
+-------------------------------------------------------------------
 Sun Jun 11 08:51:18 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
@@ -20,7 +29,7 @@ Mon Feb 20 05:45:21 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
     have been deprecated in Python's gettext module since 3.8, and removed
     in Python 3.11.
   * Avoid setDaemon(True) deprecation warning by updating threading API
-    usage to .daemon = True. 
+    usage to .daemon = True.
 
 -------------------------------------------------------------------
 Mon Aug  2 11:21:49 UTC 2021 - Markéta Machová <mmachova@suse.com>
@@ -28,17 +37,17 @@ Mon Aug  2 11:21:49 UTC 2021 - Markéta Machová <mmachova@suse.com>
 - Update to 2.0
   * Add Python 3.8 and 3.9
   * Drop Python 2.7, 3.4 and 3.5
-  * The authentication and authorization policies of Pyramid 1.x have been 
-    merged into a single security policy in Pyramid 2.0. New security APIs 
+  * The authentication and authorization policies of Pyramid 1.x have been
+    merged into a single security policy in Pyramid 2.0. New security APIs
     have been added.
-  * It is now possible to control whether a route pattern contains 
+  * It is now possible to control whether a route pattern contains
     a trailing slash.
   * pcreate and the builtin scaffolds have been removed in favor of
     using the cookiecutter tool and the pyramid-cookiecutter-starter
     cookiecutter.
-  * Deprecated the authentication and authorization interfaces and 
-    principal-based support. 
-  * Deprecated several ACL-related aspects of pyramid.security. Equivalent 
+  * Deprecated the authentication and authorization interfaces and
+    principal-based support.
+  * Deprecated several ACL-related aspects of pyramid.security. Equivalent
     objects should now be imported from the pyramid.authorization module.
 
 -------------------------------------------------------------------
@@ -59,7 +68,7 @@ Tue Mar 17 10:42:38 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 -------------------------------------------------------------------
 Sun Mar 15 19:47:10 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
 
-- Remove python2 support, due to pyton-venusian being only python3 
+- Remove python2 support, due to pyton-venusian being only python3
 
 -------------------------------------------------------------------
 Fri Jun 21 08:13:38 UTC 2019 - pgajdos@suse.com
@@ -268,7 +277,7 @@ Sun Jul 16 08:31:15 UTC 2017 - aloisio@gmx.com
 -------------------------------------------------------------------
 Tue Jan  5 18:43:19 UTC 2016 - hpj@urpla.net
 
-- use the PyPI tarball instead of github 
+- use the PyPI tarball instead of github
 
 -------------------------------------------------------------------
 Tue Jan  5 14:31:05 UTC 2016 - hpj@urpla.net
@@ -282,7 +291,7 @@ Thu Jul 30 14:16:47 UTC 2015 - hpj@urpla.net
 
 - 1.5.7 (2015-04-28)
   * Further fix the JSONP renderer by prefixing the returned content with a comment.
-    This should mitigate attacks from Flash (See CVE-2014-4671). 
+    This should mitigate attacks from Flash (See CVE-2014-4671).
     See https://github.com/Pylons/pyramid/pull/1648
   * Allow periods and brackets ([]) in the JSONP callback. The original fix was
     overly-restrictive and broke Angular. See https://github.com/Pylons/pyramid/pull/1648
@@ -296,7 +305,7 @@ Thu Jul 30 14:16:47 UTC 2015 - hpj@urpla.net
     https://github.com/Pylons/pyramid/pull/1626
 
 - 1.5.4 (2015-02-24)
-  * Fix regression where pserve --reload would not work when running as a daemon. 
+  * Fix regression where pserve --reload would not work when running as a daemon.
     Backported from https://github.com/Pylons/pyramid/pull/1592
 
 - 1.5.3 (2015-02-22)
@@ -305,8 +314,8 @@ Thu Jul 30 14:16:47 UTC 2015 - hpj@urpla.net
   * Fixed a failing unittest caused by differing mimetypes on various OS platforms.
     See https://github.com/Pylons/pyramid/issues/1405
   * Overall improvments for the proutes command. Added --format and --glob arguments to the
-    command, introduced the method column for displaying available request methods, and 
-    improved the view output by showing the module instead of just __repr__. 
+    command, introduced the method column for displaying available request methods, and
+    improved the view output by showing the module instead of just __repr__.
     See: https://github.com/Pylons/pyramid/pull/1542
   * The pyramid.renderers.JSONP renderer would raise an exception if used without a request
     object. It will now fallback to behave like the pyramid.renderers.JSON renderer if
@@ -848,18 +857,18 @@ Sun Nov 24 21:13:45 UTC 2013 - p.drouand@gmail.com
 
 - Update to version 1.4.5
   + The ``alchemy`` scaffold would break when the database was MySQL during
-    tables creation.  See https://github.com/Pylons/pyramid/pull/1049.  Backport 
+    tables creation.  See https://github.com/Pylons/pyramid/pull/1049.  Backport
     from master.
   + It was not possible to use ``pyramid.httpexceptions.HTTPException`` as
     the ``context`` of an exception view as very general catchall for
-    http-related exceptions when you wanted that exception view to override the 
+    http-related exceptions when you wanted that exception view to override the
     default exception view. See https://github.com/Pylons/pyramid/issues/985.
     Backport from master.
-  + When the ``pyramid.reload_templates`` setting was true, and a Chameleon 
-    template was reloaded, and the renderer specification named a macro 
+  + When the ``pyramid.reload_templates`` setting was true, and a Chameleon
+    template was reloaded, and the renderer specification named a macro
     (e.g. ``foo#macroname.pt``), renderings of the template after the template
-    was reloaded due to a file change would produce the entire template body 
-    instead of just a rendering of the macro.  See 
+    was reloaded due to a file change would produce the entire template body
+    instead of just a rendering of the macro.  See
     https://github.com/Pylons/pyramid/issues/1013.  Backport from master.
   + Fixed a Mako renderer bug returning a tuple with a previous defname value
     in some circumstances. See https://github.com/Pylons/pyramid/issues/1037 for
@@ -867,7 +876,7 @@ Sun Nov 24 21:13:45 UTC 2013 - p.drouand@gmail.com
   + Make ``pserve.cherrypy_server_runner`` Python 3 compatible. See
     https://github.com/Pylons/pyramid/issues/718.  Backport from master.
 - Changes from version 1.4.4
-  + Fix an obscure problem when combining a virtual root with a route with a 
+  + Fix an obscure problem when combining a virtual root with a route with a
     ``*traverse`` in its pattern.  Now the traversal path generated in
     such a configuration will be correct, instead of an element missing
     a leading slash.

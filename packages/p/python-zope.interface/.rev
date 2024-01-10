@@ -297,4 +297,20 @@
   * + `zope.interface.classProvides`</comment>
     <requestid>1085003</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>7e8a4265bac027519b51046355eeced6</srcmd5>
+    <version>6.1</version>
+    <time>1703527474</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1134716</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>977a1ca2937d7b1fde43bc90cef29e2d</srcmd5>
+    <version>6.1</version>
+    <time>1704491947</time>
+    <user>dimstar_suse</user>
+    <comment>- remove python2 specific codepaths</comment>
+    <requestid>1136282</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Jan  4 09:06:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.63:
+  * Provide generic redfish push update support
+  * Return empty tuple rather than None
+  * Expect timeout on reseat
+  * Reset seek on unwrapped zip
+  * Prefer first PCI device id
+  * Provide error checking using XCC hints
+  * Handle unseekable data
+  * Fix capitilazation consistency
+  * Trigger unwrapping only with singular update
+  * Apply uxz payload rather than whole zip to XCC
+  * Implement XCC override for health in redfish
+  * Avoid error on unexpected shutdown
+  * Add missing class to generic redfish support
+  * Correct missing lookup in generic OEM redfish
+  * Prepare redfish for OEM health
+  * Add deduplicated events and let XCC events control entirely
+  * Fix compatibility with python2
+  * Clear any logonwaiters on broken
+  * Handle non-numeric with 0 number format
+
+-------------------------------------------------------------------
 Thu Jun 15 20:20:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.5.61:
@@ -842,5 +866,5 @@ Fri Feb 14 09:40:33 UTC 2014 - speilicke@suse.com
 -------------------------------------------------------------------
 Fri Sep 27 10:04:23 UTC 2013 - dmueller@suse.com
 
-- Initial package (0.5.8) 
+- Initial package (0.5.8)
 

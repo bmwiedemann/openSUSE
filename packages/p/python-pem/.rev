@@ -48,4 +48,22 @@
     <comment>- Add %{?sle15_python_module_pythons}</comment>
     <requestid>1096555</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>38ac69d1ef48a9e5250be73da39b3169</srcmd5>
+    <version>23.1.0</version>
+    <time>1704753894</time>
+    <user>anag+factory</user>
+    <comment>- update to 23.1.0:
+  * Support for Python 2.7, 3.5, and 3.6 has been dropped.
+  * Support for RFC 4880 OpenPGP private &amp; public keys:
+    `pem.OpenPGPPublicKey` and `pem.OpenPGPPrivateKey`.
+  * Support for intra-payload headers like the ones used in
+    OpenPGP keys using the `meta_headers` property.
+  * `pem.parse_file()` now accepts also `pathlib.Path` objects.
+  * `pem.parse()` now also accepts `str`.
+  * Added `text_payload`, `bytes_payload` and `decoded_payload`
+    properties to all PEM objects that allow to directly access
+    the payload without the envelope and possible headers.</comment>
+    <requestid>1137454</requestid>
+  </revision>
 </revisionlist>

@@ -16,9 +16,9 @@
 #
 
 
-%define libselinux_ver   3.5
+%define libselinux_ver   3.6
 Name:           restorecond
-Version:        3.5
+Version:        3.6
 Release:        0
 Summary:        Daemon to restore SELinux contexts
 License:        GPL-2.0-or-later
@@ -73,6 +73,5 @@ ln -s /sbin/service %{buildroot}%{_sbindir}/rcrestorecond
 %{_sbindir}/rcrestorecond
 %{_datadir}/dbus-1/services/org.selinux.Restorecond.service
 %{_mandir}/man8/restorecond.8%{?ext_man}
-%{_mandir}/ru/man8/restorecond.8%{?ext_man}
 
 %changelog

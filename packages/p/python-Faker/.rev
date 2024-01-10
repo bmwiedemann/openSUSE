@@ -551,4 +551,60 @@
   - Fix area codes for fr_FR mobile phone numbers. Thanks</comment>
     <requestid>1118367</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>82e613d5f8e8db1589d27a16293f9d7f</srcmd5>
+    <version>21.0.0</version>
+    <time>1702844944</time>
+    <user>anag+factory</user>
+    <comment>- update to 21.0.0:
+  * Fix: random sign in `pyfloat` when `positive=False`.
+  * Add company provider and NUSS for `es_ES` locale.
+  * Add official support for Python 3.12.
+  * Make `unix_time` always return floats.
+  * Fix `pydecimal` crash on float `min_value` or `max_value`.
+  * Fix type hint for `unix_time`.
+  * Support platform-specific second precision. Thanks @cknv.
+  * Add more entries in `cs_CZ`'s geo
+  * Fix latest days of the month as birth day in italian SSN.
+  * Add `geo` provider for `cs_CZ`
+  * Fix handling for finnish ssn where `min_age` and `max_age`
+    are the same
+  * Add a few street names to `cs_CZ`
+  * Add words to lorem for `cs_CZ`
+  * Add color for `cs_CZ`
+
+  distribution anymore
+  * Add banks for en_IN locale. Thanks @ChiragMangukia.
+- Update to v15.1.1
+  * automotive: add de_CH license plates. Thanks @gsilvan.
+- Update to 6.3.0:
+    phone number format for th_TH. Thanks @bact.
+  * Remove datetime_safe shim subclass in favor of native Python datetime.datetime. Thanks @samcrang.
+  * Breaking change: Only allow providers to use OrderedDict s, to
+  * Remove some validations from Faker and delegate it to an
+  * Add min and max values for ``pyfloat`` and ``pydecimal``.</comment>
+    <requestid>1133656</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>84b03f7500ccc448a807cd31cd922571</srcmd5>
+    <version>22.0.0</version>
+    <time>1704659951</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 22.0.0:
+  * Remove dot from `file_name` when `extention` is the empty
+    string.
+  * Allow extension in `file_path` to take a list of allowed
+    extensions, or empty for &quot;no extension&quot;.
+  * Fix typo in `ru_RU` company names.</comment>
+    <requestid>1137275</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>2fc463fc9a3efd54e99345e6bf032730</srcmd5>
+    <version>22.1.0</version>
+    <time>1704829747</time>
+    <user>anag+factory</user>
+    <comment>- update to 22.1.0:
+  * Add support for multiple file systems path rules.</comment>
+    <requestid>1137642</requestid>
+  </revision>
 </revisionlist>

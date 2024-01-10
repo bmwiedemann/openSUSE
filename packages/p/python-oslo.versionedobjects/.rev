@@ -229,4 +229,17 @@
   - Add Python3 antelope unit tests</comment>
     <requestid>1069751</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>cbafaf806f753821bf5a7ff07a42557e</srcmd5>
+    <version>3.2.0</version>
+    <time>1703800999</time>
+    <user>anag+factory</user>
+    <comment>- update to version 3.2.0
+  - Update master for stable/2023.1
+  - Imported Translations from Zanata
+  - Revert &quot;Moves supported python runtimes from version 3.8 to 3.10&quot;
+  - Bump bandit and make oslo.versionedobjects compatible with latest rules
+  - Moves supported python runtimes from version 3.8 to 3.10</comment>
+    <requestid>1135457</requestid>
+  </revision>
 </revisionlist>

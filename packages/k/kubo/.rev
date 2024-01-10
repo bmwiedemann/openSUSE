@@ -53,4 +53,12 @@ now with fixed build</comment>
   * Experimental Transport: WebRTC Direct</comment>
     <requestid>1127487</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>7926066d9e27868d7b32c5c38b6c202e</srcmd5>
+    <version>0.24.0</version>
+    <time>1702845258</time>
+    <user>anag+factory</user>
+    <comment>Add 10243.patch to fix FUSE mounts</comment>
+    <requestid>1133743</requestid>
+  </revision>
 </revisionlist>

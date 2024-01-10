@@ -27,6 +27,8 @@ Source1:        LICENSE
 Requires:       fdupes
 Requires:       python-rpm-macros
 Recommends:     python3-sip-devel
+Conflicts:      python3-pyqt-rpm-macros
+Obsoletes:      python3-pyqt-rpm-macros
 BuildArch:      noarch
 
 %description

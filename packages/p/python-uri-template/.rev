@@ -23,4 +23,16 @@
     <comment></comment>
     <requestid>1087341</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e006a078ecea3f9636ad0477f0abfcd6</srcmd5>
+    <version>1.3.0</version>
+    <time>1703800496</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.3.0:
+  * Allow overriding charset in subclasses
+  * Switch test code to f-strings
+  * Add variable keys
+- switch to pypi release</comment>
+    <requestid>1135350</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-empy
-Version:        4.0
+Version:        4.0.1
 Release:        0
 Summary:        A templating system for Python
 License:        BSD-3-Clause

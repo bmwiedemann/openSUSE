@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Dec 19 16:37:06 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.6.4:
+  * [XrdHttp] Fix segfault with macaroons (gh#xrootd/xrootd#2114).
+  * [XrdPss] Fix segfault if pss.origin uses https protocol with
+    no port (gh#xrootd/xrootd#2140).
+  * [CMake] Fix include path in XRootDConfig.cmake
+    (gh#xrootd/xrootd#2142).
+  * [Headers] Fix header dependencies and missing
+    includes/declarations (gh#xrootd/xrootd#2119).
+  * [Server] Initialize pidFN to pidpath base directory if an
+    error occurs.
+  * [XrdCl] Don't try to enable TCP_CORK in GNU/Hurd
+    (gh#xrootd/xrootd#2115).
+  * [XrdCl] Reapply fix for null-characters in error output
+    (gh#xrootd/xrootd#2138, gh#xrootd/xrootd#1501).
+  * [XrdEc] Fix alignment issues on SPARC (gh#xrootd/xrootd#2131).
+  * [XrdHttp,XrdNet] Adapt Scitag min and max value to change in
+    spec (gh#xrootd/xrootd#2139).
+  * [XrdSciTokens] Initialize SecEntity.addrInfo to avoid SEGV
+    (gh#xrootd/xrootd#2128).
+  * [XrdTls] Switch from using a cert file to a cert chain file
+    (gh#xrootd/xrootd#2126).
+  * [CMake] Install CMake config file into lib/lib64 rather than
+    share (gh#xrootd/xrootd#2116).
+  * [Tests] Convert tests to GoogleTest and run without containers
+    (gh#xrootd/xrootd#2055, GSoC 2023).
+  * [Tests] Other fixes and improvements to tests
+    (gh#xrootd/xrootd#2115, gh#xrootd/xrootd#2129,
+    gh#xrootd/xrootd#2130, gh#xrootd/xrootd#2137,
+    gh#xrootd/xrootd#2141).
+- Use source tarballs from Github as the previously used website
+  can be hit or miss sometimes.
+
+-------------------------------------------------------------------
 Sun Nov 12 09:40:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.6.3:

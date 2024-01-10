@@ -1,7 +1,7 @@
 #
 # spec file for package lapce
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           lapce
-Version:        0.3.0
+Version:        0.3.1
 Release:        0
 Summary:        Lightning-fast and Powerful Code Editor written in Rust
 URL:            https://github.com/lapce/lapce
@@ -25,7 +25,6 @@ License:        (0BSD OR Apache-2.0 OR MIT) AND (Apache-2.0 OR MIT) AND (Apache-
 Group:          Productivity/Text/Editors
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
-Source2:        cargo_config
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
 BuildRequires:  cargo-packaging
@@ -55,8 +54,6 @@ Wgpu Graphics API for rendering.
 
 %prep
 %autosetup -a1
-mkdir .cargo
-cp %{SOURCE2} .cargo/config
 
 %build
 # We disable default feature as they include auto-update.

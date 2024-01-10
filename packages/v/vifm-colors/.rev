@@ -80,4 +80,22 @@
   Add new color scheme: paper</comment>
     <requestid>1004518</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6a7673c20dc4d346eab029ca8f0eb55c</srcmd5>
+    <version>0.13</version>
+    <time>1703102609</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.13:
+  * Add new color scheme: truedark
+  * Add new color scheme: afterglow
+  * Fix invalid cterm=default in astrell.vifm
+
+  * Add new color scheme: ansa
+  * Add new color scheme: monochrome
+  * Add new color scheme: crown_24bit
+  * Add new color scheme: nord
+  * Add new color scheme: fargo
+  * Add new color scheme: paper</comment>
+    <requestid>1134278</requestid>
+  </revision>
 </revisionlist>

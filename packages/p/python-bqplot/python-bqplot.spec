@@ -16,8 +16,8 @@
 #
 
 
-%define         pyver 0.12.40
-%define         jupver 0.5.41
+%define         pyver 0.12.42
+%define         jupver 0.5.43
 Name:           python-bqplot
 Version:        %{pyver}
 Release:        0

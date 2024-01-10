@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Dec 14 21:08:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.15:
+  * Fix use of service in connection string
+  * Fix async connection to hosts resolving to multiple IP
+    addresses
+  * Respect the PGCONNECT_TIMEOUT environment variable to
+    determine the connection timeout.
+  * Psycopg 3.1.14
+  * Fix interaction with gevent (ticket #527).
+  * Add support for PyPy (ticket #686).
+
+-------------------------------------------------------------------
 Fri Nov 24 13:58:45 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 3.1.13:
@@ -59,4 +72,4 @@ Fri Nov 24 13:58:45 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 -------------------------------------------------------------------
 Wed Jul 12 05:34:34 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Initial release of 3.1.9 
+- Initial release of 3.1.9

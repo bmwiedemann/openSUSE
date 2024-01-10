@@ -1,7 +1,7 @@
 #
 # spec file for package rnnoise
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,11 @@
 
 %define libname librnnoise0
 Name:           rnnoise
-Version:        0.git20210122.1cbdbcf
+Version:        0.git20210312.7f449bf
 Release:        0
 Summary:        Recurrent neural network for audio noise reduction
 License:        BSD-3-Clause
-URL:            https://github.com/xiph/rnnoise
+URL:            https://gitlab.xiph.org/xiph/rnnoise
 Source:         %{name}-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -68,9 +68,9 @@ rm -rf %{buildroot}%{_datadir}/doc/%{name}/{AUTHORS,COPYING,README}
 %postun -n %{libname} -p /sbin/ldconfig
 
 %files -n %{libname}
-%doc AUTHORS README TRAINING-README
+%doc README TRAINING-README
 %license COPYING
-%{_libdir}/librnnoise.so.*
+%{_libdir}/librnnoise.so.0*
 
 %files devel
 %{_includedir}/rnnoise.h

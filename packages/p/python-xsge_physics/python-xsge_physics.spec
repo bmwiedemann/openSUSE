@@ -1,7 +1,7 @@
 #
 # spec file for package python-xsge_physics
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,17 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
-%define skip_python36 1
+%{?sle15_python_module_pythons}
 Name:           python-xsge_physics
-Version:        0.13.2
+Version:        0.13.3
 Release:        0
 Summary:        xSGE Physics Framework
-License:        GPL-3.0-or-later
+License:        LGPL-3.0-or-later
 URL:            http://xsge.nongnu.org
 Source:         https://files.pythonhosted.org/packages/source/x/xsge_physics/xsge_physics-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-sge-pygame >= 1.0
@@ -45,15 +45,16 @@ This can be useful for platformers.
 %setup -q -n xsge_physics-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %doc README
 %license xsge_physics/COPYING
-%{python_sitelib}/*
+%{python_sitelib}/xsge_physics
+%{python_sitelib}/xsge_physics-%{version}.dist-info
 
 %changelog

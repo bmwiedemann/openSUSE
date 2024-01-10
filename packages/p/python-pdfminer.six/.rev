@@ -57,4 +57,41 @@
     <comment></comment>
     <requestid>1133035</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ed602ac4fc69944fc1ff55a1e5e047ce</srcmd5>
+    <version>20231228</version>
+    <time>1704753874</time>
+    <user>anag+factory</user>
+    <comment>- update to 20231228:
+  * Removed Support for Python 3.6 and 3.7
+  * Output converter for the hOCR format
+  * Font name aliases for Arial, Courier New and Times New Roman
+  * Documentation on why special characters can sometimes not be
+    extracted
+  * Storing Bezier path and dashing style of line in LTCurve
+  * Broken CI/CD pipeline by setting upper version limit for
+    black, mypy, pip and setuptools
+  * `flake8` failures
+  * `ValueError` when bmp images with 1 bit channel are decoded
+  * `ValueError` when trying to decrypt empty metadata values
+  * Sphinx errors during building of documentation
+  * `TypeError` when getting default width of font
+  * Installing typing-extensions on Python 3.6 and 3.7
+  * `TypeError` in cmapdb.py when parsing null characters
+  * Color &quot;convenience operators&quot; now (per spec) also set color
+    space
+  * `ValueError` when extracting images, due to breaking changes
+    in Pillow
+  * Small typo's and issues in the documentation
+  * Ignore non-Unicode cmaps in TrueType fonts
+  * Using non-hardcoded version string and setuptools-git-
+    versioning to enable installation from source and building on
+    Python 3.12
+  * Usage of `if __name__ == &quot;__main__&quot;` where it was only
+    intended for testing purposes
+- drop import-from-non-pythonpath-files.patch (upstream)
+
+  - Option to disable boxes flow layout analysis when using pdf2txt</comment>
+    <requestid>1137442</requestid>
+  </revision>
 </revisionlist>

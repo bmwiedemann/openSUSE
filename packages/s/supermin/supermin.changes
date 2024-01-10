@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Jan  4 11:07:03 MST 2024 - carnold@suse.com
+
+- Update to version 5.3.3 (jsc#PED-6305)
+  * initrd: Support ztd-compressed modules
+  * pacman: Recognise Artix, an Arch derivative
+  * Add a separate variable to store link flags, and use that to
+    supply
+  * Add appropriate globs for arm based kernels. The file names end
+    in -arm64 but the architecture is named aarch64.
+  * Add support for OCaml 5.0
+  * Add LFS support for fts functions
+  * Numerous bug fixes
+- Upstream bug fixes and features
+  001-Improved-debugging-of-the-supermin-if-newer-calculation.patch
+  002-Fix-if-newer-copy-kernel.patch
+  003-Fix-kernel-filtering-for-aarch64-architecture.patch
+  004-Use-output-complete-exe-instead-of-custom.patch
+  005-Only-supply-output-complete-exe-to-final-link.patch
+  006-Rename-function-file-kernel.patch
+  007-Uncompress-kernel-on-RISC-V.patch
+  008-Fix-link-to-renamed-kernel-documentation.patch
+  009-New-mailing-list-email-address.patch
+- Dropped initrd_support_ztd-compressed_modules.patch
+
+-------------------------------------------------------------------
 Tue Dec 27 15:59:57 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - Enable build on riscv64

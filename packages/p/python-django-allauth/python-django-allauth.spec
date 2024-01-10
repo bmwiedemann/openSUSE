@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-allauth
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-django-allauth
-Version:        0.59.0
+Version:        0.60.0
 Release:        0
 Summary:        Django authentication, registration, account management
 License:        MIT

@@ -83,9 +83,9 @@ BuildRequires:  postgresql-server-devel
 %endif
 Requires:       %{name}-data = %{version}
 Requires:       opengl-games-utils
+Recommends:     %{name}-game
 Recommends:     %{name}-lang
-Recommends:     minetest-game
-Provides:       minetest-runtime = %{version}
+Provides:       %{name}-runtime = %{version}
 Provides:       bundled(irrlicht) = %{irrlichtmt_version}
 
 %description
@@ -100,8 +100,8 @@ License:        LGPL-2.1-or-later
 Group:          Amusements/Games/3D/Simulation
 Requires:       %{name}-data = %{version}
 Requires(pre):  shadow
-Recommends:     minetest-game
-Provides:       minetest-runtime = %{version}
+Recommends:     %{name}-game
+Provides:       %{name}-runtime = %{version}
 %{?systemd_requires}
 
 %description -n %{name}server
@@ -190,8 +190,13 @@ done
 %fdupes %{buildroot}%{_datadir}/
 
 install -Dpm 0644 %{SOURCE2} %{buildroot}%{_unitdir}/%{name}@.service
-install -Dpm 0644 minetest.conf.example \
-  %{buildroot}%{_sysconfdir}/%{name}/minetest.conf.example
+install -Dpm 0644 %{name}.conf.example \
+  %{buildroot}%{_sysconfdir}/%{name}/%{name}.conf.example
+
+cat >%{buildroot}%{_sysconfdir}/%{name}/%{name}.env.example <<%%
+# mintestet options for further configuration, e.g. to set the gameid with "--gameid ..."
+MINETEST_OPTIONS=""
+%%
 
 mkdir -p %{buildroot}%{_localstatedir}/lib/%{name}/
 
@@ -234,7 +239,9 @@ getent passwd %{name} > /dev/null || \
 %attr(0755,%{minetestuser},%{minetestgroup}) %{_localstatedir}/lib/%{name}/
 %{_mandir}/man6/%{name}server.6%{?ext_man}
 %dir %{_sysconfdir}/%{name}
-%config %{_sysconfdir}/%{name}/minetest.conf.example
+%config %{_sysconfdir}/%{name}/%{name}.conf.example
+%config %{_sysconfdir}/%{name}/%{name}.env.example
+
 %{_unitdir}/%{name}@.service
 
 %files data

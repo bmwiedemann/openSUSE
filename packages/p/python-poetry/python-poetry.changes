@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Tue Jan  2 19:19:07 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.1:
+  * Fix an issue where sdists that call CLI tools of their build
+    requirements could not be installed (#8630).
+  * Fix an issue where sdists with symlinks could not be
+    installed due to a broken tarfile datafilter (#8649).
+  * Fix an issue where `poetry init` failed when trying to add
+    dependencies (#8655).
+  * Fix an issue where `poetry install` failed if
+    `virtualenvs.create` was set to `false` (#8672).
+  * Add official support for Python 3.12 (#7803, #8544).
+  * Add `poetry-install` pre-commit hook (#8327).
+  * Add `--next-phase` option to `poetry version` (#8089).
+  * Print a warning when overwriting files from another package
+    at installation (#8386).
+  * Print a warning if the current project cannot be installed
+    (#8369).
+  * Report more details on build backend exceptions (#8464).
+  * Set Poetry as `user-agent` for all HTTP requests (#8394).
+  * Do not install `setuptools` per default in Python 3.12
+  * Do not install `wheel` per default (#7803).
+  * Remove `setuptools` and `wheel` when running `poetry install
+    --sync` if they are not required by the project (#8600).
+  * Improve error message about PEP-517 support (#8463).
+  * Improve `keyring` handling (#8227).
+  * Read the `description` field when extracting metadata from
+    `setup.py` files (#8545).
+  * Fix an issue where dependencies of inactive extras were
+    locked and installed (#8399).
+  * Fix an issue where build requirements were not installed
+    due to a race condition in the artifact cache (#8517).
+  * Fix an issue where packages included in the system site
+    packages were installed even though
+    `virtualenvs.options.system-site-packages` was set (#8359).
+  * Fix an issue where git dependencies' submodules with relative
+    URLs were handled incorrectly (#8020).
+  * Fix an issue where a failed installation of build
+    dependencies was not noticed directly (#8479).
+  * Fix an issue where `poetry shell` did not work completely
+    with `nushell` (#8478).
+  * Fix an issue where a confusing error messages was displayed
+    when running `poetry config pypi-token.pypi` without a value
+    (#8502).
+  * Fix an issue where a cryptic error message is printed if
+    there is no metadata entry in the lockfile (#8523).
+  * Fix an issue with the encoding with special characters in the
+    virtualenv's path (#8565).
+  * Fix an issue where the connection pool size was not adjusted
+    to the number of workers (#8559).
+  * ### Docs
+  * Improve the wording regarding a project's supported Python
+    range (#8423).
+  * Make `pipx` the preferred (first mentioned) installation
+    method (#8090).
+  * Add a warning about `poetry self` on Windows (#8090).
+  * Fix example for `poetry add` with a git dependency (#8438).
+  * Add information about auto-included files in wheels and sdist
+    (#8555).
+  * Fix documentation of the `POETRY_REPOSITORIES_` variables
+    docs (#8492).
+  * Add `CITATION.cff` file (#8510).
+  * ### poetry-core (`1.8.1`)
+  * Add support for creating packages dynamically in the build
+    script (#629).
+  * Improve marker logic for `extra` markers (#636).
+  * Update list of supported licenses (#635, #646).
+  * Fix an issue where projects with extension modules were not
+    installed in editable mode (#633).
+  * Fix an issue where the wrong or no `lib` folder was added to
+    the wheel (#634).
+  * ### poetry-plugin-export (`^1.6.0`)
+  * Add an `--all-extras` option (#241).
+  * Fix an issue where git dependencies are exported with the
+    branch name instead of the resolved commit hash (#213).
+-  drop build-1.patch, poetry-pr8447-fastjsonschema.patch
+   (upstream)
+
+-------------------------------------------------------------------
 Thu Sep 28 18:49:43 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Drop unlimit-jsonschema.patch in favor of

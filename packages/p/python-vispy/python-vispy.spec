@@ -18,7 +18,7 @@
 
 %bcond_without  ext_deps
 Name:           python-vispy
-Version:        0.13.0
+Version:        0.14.1
 Release:        0
 Summary:        Interactive visualization in Python
 License:        BSD-3-Clause

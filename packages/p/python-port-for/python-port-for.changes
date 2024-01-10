@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Jan  7 20:22:40 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.7.2:
+  * Drop support for python 3.7
+  * Support Python 3.12
+  * #152, #166, #170
+  * Add PortType type alias for easier typing related code
+  * get_port will now allow passing additional exclude_ports
+    parameter - these ports will not be chosen.
+  * Add python 3.11 to the list of supported python versions.
+  * Use towncrier as a changelog management tool.
+  * Moved development dependencies to be managed by pipenv. All
+    development process can be managed  with it - which means
+    automatic isolation.
+  * Migrate versioning tool to tbump, and move package definition
+    to pyproject.toml
+  * Moved as much of the setup.cfg settings into the
+    pyproject.toml as possible. Dropped pydocstyle support.
+
+-------------------------------------------------------------------
 Wed Apr  6 14:29:40 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Remove forgotten tarball port-for-0.6.2.tar.gz

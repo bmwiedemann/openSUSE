@@ -26,15 +26,13 @@
 BuildArch:      noarch
 %endif
 
-%define         plainpython python
-#
 %if 0%{?suse_version} > 1500
 %bcond_without libalternatives
 %else
 %bcond_with libalternatives
 %endif
 Name:           python-notebook%{psuffix}
-Version:        7.0.5
+Version:        7.0.6
 Release:        0
 Summary:        Jupyter Notebook interface
 License:        BSD-3-Clause

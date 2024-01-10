@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Dec 29 15:08:13 UTC 2023 - egotthold@suse.com
+
+- Update to version v2.1.6:
+  * [FIX] fix invalid column_type error message
+  * [CHORE] publish first containerized release
+  * [FIX] throw more comprehensive error messages when translating column types
+  * [CHORE] add support for Python 3.12
+  * [CHORE] bump minimum version of MySQL Connector/Python to 8.2.0
+  * [CHORE] drop support for Python 3.7
+
+-------------------------------------------------------------------
 Thu Jul 22 08:23:34 UTC 2021 - Enno Gotthold <egotthold@suse.com>
 
 - Use python-click instead of non existent python-Click as a requirement

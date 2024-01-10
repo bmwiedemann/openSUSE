@@ -1,7 +1,7 @@
 #
 # spec file for package python-extension-helpers
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-extension-helpers
-Version:        1.0.0
+Version:        1.1.1
 Release:        0
 Summary:        Utilities for building and installing packages in the Astropy ecosystem
 License:        BSD-3-Clause
@@ -64,10 +64,10 @@ dependency in pyproject.toml files.
 
 %check
 # do not test local source dir
-%pytest --pyargs extension_helpers
+%pytest --pyargs extension_helpers -k "not pyproject"
 
 %files %{python_files}
-%doc CHANGES.rst README.rst
+%doc CHANGES.md README.rst
 %license LICENSE.rst licenses/LICENSE_ASTROSCRAPPY.rst
 %{python_sitelib}/extension_helpers
 %{python_sitelib}/extension_helpers-%{version}*-info

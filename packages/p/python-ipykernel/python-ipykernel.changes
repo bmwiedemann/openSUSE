@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 20 21:56:25 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.27.1:
+  * Fix edit magic payload type #1171 (@blink1073)
+
+-------------------------------------------------------------------
 Sun Nov 26 15:27:03 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 6.27.0
@@ -245,7 +251,7 @@ Sat Jul  9 13:30:40 UTC 2022 - Arun Persaud <arun@gmx.de>
 Fri Jul  8 10:57:40 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-hatchling-14.patch:
-  * Support hatchling >= 1.4 
+  * Support hatchling >= 1.4
 
 -------------------------------------------------------------------
 Wed Jun 22 21:40:53 UTC 2022 - Ben Greiner <code@bnavigator.de>
@@ -490,13 +496,13 @@ Mon Aug 30 19:28:52 UTC 2021 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Wed Jul 28 12:08:06 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
-- Skip pickle tests to get rid of ipyparallel dependency which we 
+- Skip pickle tests to get rid of ipyparallel dependency which we
   don't want in Ring1 stagings
 
 -------------------------------------------------------------------
 Fri Jul 23 08:22:28 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
-- Update to version 6.0.3 
+- Update to version 6.0.3
   * KernelApp: rename ports variable to avoid override #731
     (@amorenoz)
 - Release version 6.0.2
@@ -606,13 +612,13 @@ Mon Dec 14 22:47:01 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - update to version 5.4.2
   * Revert "Fix stop_on_error_timeout blocking other messages in
-    queue" 
+    queue"
 - changes in 5.4.1
   * Invalid syntax in ipykernel/log.py.
 - changes in 5.4.0
   5.4.0 is generally focused on code quality improvements and
   tornado asyncio compatibility.
-  * Add github actions, bail on asyncio patch for tornado 6.1. 
+  * Add github actions, bail on asyncio patch for tornado 6.1.
   * Start testing on Python 3.9.
   * Fix stack levels for ipykernel's deprecation warnings and stop
     using some deprecated APIs.

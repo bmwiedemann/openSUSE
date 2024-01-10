@@ -100,4 +100,24 @@
     <comment></comment>
     <requestid>1040390</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>31fe5c997f5baceeb8baec01626cac4b</srcmd5>
+    <version>3.1</version>
+    <time>1702845114</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.1:
+  * Add support for Python 3.12.
+  * Fix ``NameError`` in ``.fastpickle`` and ``.slowpickle``.
+  * Build Linux binary wheels for Python 3.11.
+  * Add preliminary support for Python 3.12a5.
+  * Drop support for Python 2.7, 3.5, 3.6.
+  * Drop support for deprecated ``python setup.py test``.
+
+- Update to version 2.6
+- Update to version 2.5
+- Update to version 2.4.0
+- version update to 2.3.0
+- Use python_module macro for BuildRequires on the testsuite module</comment>
+    <requestid>1133585</requestid>
+  </revision>
 </revisionlist>

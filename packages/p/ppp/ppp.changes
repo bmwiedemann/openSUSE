@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Apr 21 11:52:53 UTC 2023 - Reinhard Max <max@suse.com>
+
+- Update to version 2.5.0. This release is a major release of pppd
+  which contains breaking changes for third-party plugins, a
+  complete revamp of the build-system and that allows for
+  flexibility of configuring features as needed.
+  * CVE-2022-4603, bsc#1218251: improper validation of array index
+    of the component pppdump
+  * Support for PEAP authentication
+  * Support for loading PKCS12 certificate envelopes
+  * Adoption of GNU Autoconf / Automake build environment
+  * Support for pkgconfig
+  * Bunch of fixes and cleanup to PPPoE and IPv6 support
+  * Major revision to PPPD's Plugin API
+  * Lots of internal fixes and cleanups for Radius and PPPoE
+  * Dropped IPX support, as Linux has dropped it in version 5.15
+  * Pppd is no longer installed setuid-root
+  * New pppd options:
+    - ipv6cp-noremote, ipv6cp-nosend, ipv6cp-use-remotenumber,
+      ipv6-up-script, ipv6-down-script
+    - -v, show-options
+    - usepeerwins, ipcp-no-address, ipcp-no-addresses, nosendip
+  * On Linux, any baud rate can be set on a serial port provided
+    the kernel serial driver supports that.
+- Obsoleted patches:
+  * ppp-lib64.patch
+  * ppp-compiling-with-clang-encounters-an-error-in-eap-tls..patch
+  * ppp-pie.patch
+- Source file pppoe-discovery.8.gz is now part of the tarball.
+- Enable support for systemd notification.
+
+-------------------------------------------------------------------
 Wed Dec 28 14:32:02 UTC 2022 - Stefan Schubert <schubi@suse.com>
 
 - Migration of PAM settings to /usr/lib/pam.d. 

@@ -55,4 +55,21 @@
     <comment></comment>
     <requestid>1035239</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ace1f17386785bcdef07f8227c02a013</srcmd5>
+    <version>2.6.2</version>
+    <time>1704660163</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.6.2:
+  * Now, pystats stats are collected during warmups.
+  * system: Fix detection of battery.
+  * Fix a possible attribute error in argument parsing.
+  * Inherit PYTHONPATH environment variable by default.
+  * Runner.bench_async_func() takes an optional loop_factory to
+    support custom loop construction.
+
+- Update to version 2.5.0
+- version update to 2.4.1</comment>
+    <requestid>1137437</requestid>
+  </revision>
 </revisionlist>

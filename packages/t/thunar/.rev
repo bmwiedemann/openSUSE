@@ -1783,4 +1783,19 @@
   * Translation Updates (forwarded request 1120508 from manfred-h)</comment>
     <requestid>1121312</requestid>
   </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>3939f280760144cb586223dad02f1916</srcmd5>
+    <version>4.18.10</version>
+    <time>1704281235</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.18.10:
+  * Prevent infinite reload loop for symlinks (#1270)
+- Update to 4.18.9:
+  * g_file_get_basename over realpath (#1030)
+  * Fix and simplify symlink resolver (#1260)
+  * Fix thumbnailer symlink support (#1260)
+  * Prevent GLib GIO CRITICAL (#1204) 
+  * Translation Updates (forwarded request 1135848 from manfred-h)</comment>
+    <requestid>1135885</requestid>
+  </revision>
 </revisionlist>

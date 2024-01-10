@@ -1013,4 +1013,41 @@ Send to Staging:E.
     <comment></comment>
     <requestid>1129127</requestid>
   </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>b812ea2ef01903bfc827885a44b6a018</srcmd5>
+    <version>4.9.4</version>
+    <time>1703198270</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.9.4:
+  * LP#2046398: Inserting/replacing an ancestor into a node's
+    children could loop indefinitely.
+  * LP#1980767, GH#379: ``TreeBuilder.close()`` could fail with a
+    ``TypeError`` after parsing incorrect input.
+  * LP#1522052: A file-system specific test is now optional and
+    should no longer fail on systems that don't support it.
+  * Built with Cython 0.29.37.
+- drop libxml2212-tests.patch (upstream)
+
+- remove python 2.x from testing
+- allow building against any libxml2 version in sle15
+  * Built with Cython 0.29.28.
+  * LP#1835708: ElementInclude incorrectly rejected repeated
+  * LP#1755825: iterwalk() failed to return the 'start' event for the initial
+  - ElementTree.write() has a new option doctype that writes out
+    a doctype string before the serialisation, in the same way as
+  - GH#220: xmlfile allows switching output methods at an element
+  - LP#1595781, GH#240: added a PyCapsule Python API and C-level
+    API for passing externally generated libxml2 documents into
+  - GH#244: error log entries have a new property path with an
+    XPath expression (if known, None otherwise) that points to the
+  - The namespace prefix mapping that can be used in ElementPath
+  - GH#238: Character escapes were not hex-encoded in the xmlfile
+  - GH#229: fix for externally created XML documents.
+    strips the option values specified in form attributes but only
+  - LP#1551797: revert previous fix for XSLT error logging as it
+  - LP#1673355, GH#233: fromstring() html5parser failed to parse
+  - The previously undocumented docstring option in
+    ElementTree.write() produces a deprecation warning and will</comment>
+    <requestid>1134342</requestid>
+  </revision>
 </revisionlist>

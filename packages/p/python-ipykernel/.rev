@@ -505,4 +505,19 @@
 </comment>
     <requestid>1128957</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>06d44b32a548a11038875a06babd37f8</srcmd5>
+    <version>6.27.1</version>
+    <time>1703198314</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.27.1:
+  * Fix edit magic payload type #1171 (@blink1073)
+
+  * Support hatchling &gt;= 1.4
+- Skip pickle tests to get rid of ipyparallel dependency which we
+- Update to version 6.0.3
+    queue&quot;
+  * Add github actions, bail on asyncio patch for tornado 6.1.</comment>
+    <requestid>1134337</requestid>
+  </revision>
 </revisionlist>

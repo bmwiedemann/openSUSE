@@ -23,7 +23,7 @@
 %define lver    23
 %define lname	libraw%{lver}
 Name:           libraw
-Version:        0.21.1
+Version:        0.21.2
 Release:        0
 Summary:        Library for reading RAW files obtained from digital photo cameras
 License:        CDDL-1.0 OR LGPL-2.1-only
@@ -32,10 +32,8 @@ URL:            https://www.libraw.org/
 #Git-Clone:	git://github.com/LibRaw/LibRaw
 Source0:        https://www.libraw.org/data/%tar_name-%version.tar.gz
 Source1:        baselibs.conf
-# CVE-2023-1729 [bsc#1210720], a heap-buffer-overflow in raw2image_ex()
-Patch0:         libraw-CVE-2023-1729.patch
-# CVE-2020-22628 [bsc#1215308], stretch() function in librawsrcpostprocessingspect_ratio.cpp
-Patch1:         libraw-CVE-2020-22628.patch
+# CVE-2020-22628 [bsc#1215308], stretch() function in librawsrcpostprocessing
+Patch0:         libraw-CVE-2020-22628.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes

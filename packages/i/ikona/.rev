@@ -15,4 +15,12 @@
     <comment>Disable services so version won't get changed, allowing local build to work</comment>
     <requestid>735466</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>ded551ca46e32436c2f1b1f6918a7326</srcmd5>
+    <version>0.7.1</version>
+    <time>1702845084</time>
+    <user>anag+factory</user>
+    <comment>Require extra-cmake-modules at build time</comment>
+    <requestid>1133537</requestid>
+  </revision>
 </revisionlist>

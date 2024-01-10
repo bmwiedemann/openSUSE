@@ -50,4 +50,16 @@
     <comment></comment>
     <requestid>1040543</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7c717be9eb2363b2e1129bdb68e890a2</srcmd5>
+    <version>5.3</version>
+    <time>1704829788</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.3:
+  * fix struct in struct array parsing
+  * Python 3.12 support
+
+- Update to version 5.1</comment>
+    <requestid>1137640</requestid>
+  </revision>
 </revisionlist>

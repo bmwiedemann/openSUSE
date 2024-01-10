@@ -62,7 +62,7 @@ Index: xorg-server-1.20.5/hw/xfree86/common/xf86Init.c
  #include "picturestr.h"
  #include "randrstr.h"
  #include "glxvndabi.h"
-@@ -294,6 +295,231 @@ AddVTAtoms(CallbackListPtr *pcbl, void *
+@@ -294,6 +295,237 @@ AddVTAtoms(CallbackListPtr *pcbl, void *
                     "Failed to register VT properties\n");
  }
  
@@ -91,6 +91,9 @@ Index: xorg-server-1.20.5/hw/xfree86/common/xf86Init.c
 +        int y;
 +    } *outputConfigs;
 +    int outputConfigsCount = 0, outputConfigsUsed = 0;
++
++    if (!dixPrivateKeyRegistered(rrPrivKey))
++        return;
 +
 +    pMasterScrPriv = rrGetScrPriv(pMasterScreen);
 +    if (!pMasterScrPriv)
@@ -252,6 +255,9 @@ Index: xorg-server-1.20.5/hw/xfree86/common/xf86Init.c
 +    RRProviderPtr slave_provider;
 +    rrScrPrivPtr master_rp;
 +    rrScrPrivPtr slave_rp;
++
++    if (!dixPrivateKeyRegistered(rrPrivKey))
++        return;
 +
 +    master_rp = rrGetScrPriv(master);
 +    slave_rp = rrGetScrPriv(slave);

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Dec 28 18:26:12 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 20231221:
+  * A smallish release, this month.
+  * Plenty of bug-fixes, but the majority of the changes happened
+    behind the scenes.
+  * #4126 - add alias 'tags:'
+  * #4115 - create HelpBar after colours
+  * #4116 - Fix Batch Sending of Emails
+  * #4119 - Fix Header Cache Key Handling
+  * #4121 - mutt_oauth2.py: error out if ENCRYPTION_PIPE was not
+    supplied
+  * #4124 - config: fix flag overlaps
+  * #4125 - compose: restore view-text/pager/mailcap
+  * color: fix attr_color_copy()
+  * fix :color dump
+  * fix leak in completion
+  * force mail check on current mailbox after ``
+  * Allow sending an empty mail
+  * mutt_oauth2.py: Use readline to overcome macOS input()
+    restrictions
+
+-------------------------------------------------------------------
 Mon Nov 13 10:46:52 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 20231103:
@@ -227,7 +250,7 @@ Tue Mar 28 09:53:00 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 -------------------------------------------------------------------
 Tue Jun 14 13:41:01 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- fix build for older dists 
+- fix build for older dists
 
 -------------------------------------------------------------------
 Wed May 25 10:15:40 UTC 2022 - Lars Marowsky-Bree <lmb@suse.com>
@@ -260,7 +283,7 @@ Wed May 25 10:15:40 UTC 2022 - Lars Marowsky-Bree <lmb@suse.com>
   * Code
   * menu: eliminate custom_redraw()
   * modernise mixmaster
-  * Kill global and Propagate display attach status through State- 
+  * Kill global and Propagate display attach status through State-
 - update to 20220415:
   * Security
   * Fix uudecode buffer overflow (CVE-2022-1328)
@@ -434,7 +457,7 @@ Wed Jan  5 10:06:24 UTC 2022 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Sat Apr 24 18:01:40 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- stop owning directories provided by filesystem (bsc#1184787) 
+- stop owning directories provided by filesystem (bsc#1184787)
 
 -------------------------------------------------------------------
 Thu Mar 25 12:53:16 UTC 2021 - lmb <lmb@suse.com>
@@ -472,7 +495,7 @@ Mon Mar  8 09:16:00 UTC 2021 - Dirk Müller <dmueller@suse.com>
     - Update to latest acutest
     - Update to latest autosetup
     - Make the location of /tmp configurable
-   
+
 -------------------------------------------------------------------
 Fri Nov 27 15:50:29 UTC 2020 - Kai Liu <kai.liu@suse.com>
 

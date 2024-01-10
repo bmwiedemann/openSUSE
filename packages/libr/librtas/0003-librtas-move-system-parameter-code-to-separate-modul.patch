@@ -1,0 +1,230 @@
+From 80dfb541257cb88519855543324478cbb0f1f1b3 Mon Sep 17 00:00:00 2001
+From: Nathan Lynch <nathanl@linux.ibm.com>
+Date: Mon, 25 Sep 2023 11:32:33 -0500
+Subject: [PATCH 3/6] librtas: move system parameter code to separate module
+
+This code will gain the ability to access system parameters using a
+different interface exposed by newer kernels. This will involve adding
+a nontrivial amount of code, so move it out of syscall_calls.c.
+
+Signed-off-by: Nathan Lynch <nathanl@linux.ibm.com>
+---
+ Makefile.am                 |  3 +-
+ librtas_src/syscall_calls.c | 84 -----------------------------------
+ librtas_src/sysparm.c       | 88 +++++++++++++++++++++++++++++++++++++
+ 3 files changed, 90 insertions(+), 85 deletions(-)
+ create mode 100644 librtas_src/sysparm.c
+
+diff --git a/Makefile.am b/Makefile.am
+index 37df243..1385ac7 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -31,7 +31,8 @@ librtas_la_SOURCES = \
+ 	librtas_src/vpd.c \
+ 	librtas_src/ofdt.c \
+ 	librtas_src/syscall_calls.c \
+-	librtas_src/syscall_rmo.c
++	librtas_src/syscall_rmo.c \
++	librtas_src/sysparm.c
+ 
+ library_include_HEADERS += librtas_src/librtas.h
+ noinst_HEADERS += librtas_src/internal.h
+diff --git a/librtas_src/syscall_calls.c b/librtas_src/syscall_calls.c
+index 05f3c7c..b28af2d 100644
+--- a/librtas_src/syscall_calls.c
++++ b/librtas_src/syscall_calls.c
+@@ -674,44 +674,6 @@ int rtas_get_sensor(int sensor, int index, int *state)
+ 	return rc ? rc : status;
+ }
+ 
+-/**
+- * rtas_get_sysparm
+- * @brief Interface to the ibm,get-system-parameter rtas call
+- *
+- * On successful completion the data parameter will contain the system
+- * parameter results
+- *
+- * @param parameter system parameter to retrieve
+- * @param length data buffer length
+- * @param data reference to buffer to return parameter in
+- * @return 0 on success, !0 otherwise
+- */
+-int rtas_get_sysparm(unsigned int parameter, unsigned int length, char *data)
+-{
+-	uint32_t kernbuf_pa;
+-	void *kernbuf;
+-	int rc, status;
+-
+-	rc = sanity_check();
+-	if (rc)
+-		return rc;
+-
+-	rc = rtas_get_rmo_buffer(length, &kernbuf, &kernbuf_pa);
+-	if (rc)
+-		return rc;
+-
+-	rc = rtas_call("ibm,get-system-parameter", 3, 1, htobe32(parameter),
+-		       htobe32(kernbuf_pa), htobe32(length), &status);
+-
+-	if (rc == 0)
+-		memcpy(data, kernbuf, length);
+-
+-	(void)rtas_free_rmo_buffer(kernbuf, kernbuf_pa, length);
+-
+-	dbg("(%u, %u, %p) = %d\n", parameter, length, data, rc ? rc : status);
+-	return rc ? rc : status;
+-}
+-
+ /**
+  * rtas_get_time
+  * @brief Interface to get-time-of-day rtas call
+@@ -1109,52 +1071,6 @@ int rtas_set_poweron_time(uint32_t year, uint32_t month, uint32_t day,
+ 	return rc ? rc : status;
+ }
+ 
+-/**
+- * rtas_set_sysparm
+- * @brief Interface to the ibm,set-system-parameter rtas call
+- *
+- * @param parameter
+- * @param data
+- * @return 0 on success, !0 otherwise
+- */
+-int rtas_set_sysparm(unsigned int parameter, char *data)
+-{
+-	uint32_t kernbuf_pa;
+-	void *kernbuf;
+-	int rc, status;
+-	uint16_t size;
+-
+-	rc = sanity_check();
+-	if (rc)
+-		return rc;
+-	/*
+-	 * We have to copy the contents of @data to a RMO buffer. The
+-	 * caller has encoded the data length in the first two bytes
+-	 * of @data in MSB order, and we can't assume any
+-	 * alignment. So interpret @data as:
+-	 *
+-	 * struct {
+-	 *     unsigned char len_msb;
+-	 *     unsigned char len_lsb;
+-	 *     char [(len_msb << 8) + len_lsb];
+-	 * }
+-	 */
+-	size = 2 + (((unsigned char)data[0] << 8) | (unsigned char)data[1]);
+-	rc = rtas_get_rmo_buffer(size, &kernbuf, &kernbuf_pa);
+-	if (rc)
+-		return rc;
+-
+-	memcpy(kernbuf, data, size);
+-
+-	rc = rtas_call("ibm,set-system-parameter", 2, 1, htobe32(parameter),
+-		       htobe32(kernbuf_pa), &status);
+-
+-	(void)rtas_free_rmo_buffer(kernbuf, kernbuf_pa, size);
+-
+-	dbg("(%u, %p) = %d\n", parameter, data, rc ? rc : status);
+-	return rc ? rc : status;
+-}
+-
+ /**
+  * rtas_set_time
+  * @brief Interface to the set-time-of-day rtas call
+diff --git a/librtas_src/sysparm.c b/librtas_src/sysparm.c
+new file mode 100644
+index 0000000..40af55e
+--- /dev/null
++++ b/librtas_src/sysparm.c
+@@ -0,0 +1,88 @@
++#include <stdint.h>
++#include <string.h>
++#include "internal.h"
++#include "librtas.h"
++
++/**
++ * rtas_get_sysparm
++ * @brief Interface to the ibm,get-system-parameter rtas call
++ *
++ * On successful completion the data parameter will contain the system
++ * parameter results
++ *
++ * @param parameter system parameter to retrieve
++ * @param length data buffer length
++ * @param data reference to buffer to return parameter in
++ * @return 0 on success, !0 otherwise
++ */
++int rtas_get_sysparm(unsigned int parameter, unsigned int length, char *data)
++{
++	uint32_t kernbuf_pa;
++	void *kernbuf;
++	int rc, status;
++
++	rc = sanity_check();
++	if (rc)
++		return rc;
++
++	rc = rtas_get_rmo_buffer(length, &kernbuf, &kernbuf_pa);
++	if (rc)
++		return rc;
++
++	rc = rtas_call("ibm,get-system-parameter", 3, 1, htobe32(parameter),
++		       htobe32(kernbuf_pa), htobe32(length), &status);
++
++	if (rc == 0)
++		memcpy(data, kernbuf, length);
++
++	(void)rtas_free_rmo_buffer(kernbuf, kernbuf_pa, length);
++
++	dbg("(%u, %u, %p) = %d\n", parameter, length, data, rc ? rc : status);
++	return rc ? rc : status;
++}
++
++/**
++ * rtas_set_sysparm
++ * @brief Interface to the ibm,set-system-parameter rtas call
++ *
++ * @param parameter
++ * @param data
++ * @return 0 on success, !0 otherwise
++ */
++int rtas_set_sysparm(unsigned int parameter, char *data)
++{
++	uint32_t kernbuf_pa;
++	void *kernbuf;
++	int rc, status;
++	uint16_t size;
++
++	rc = sanity_check();
++	if (rc)
++		return rc;
++	/*
++	 * We have to copy the contents of @data to a RMO buffer. The
++	 * caller has encoded the data length in the first two bytes
++	 * of @data in MSB order, and we can't assume any
++	 * alignment. So interpret @data as:
++	 *
++	 * struct {
++	 *     unsigned char len_msb;
++	 *     unsigned char len_lsb;
++	 *     char [(len_msb << 8) + len_lsb];
++	 * }
++	 */
++	size = 2 + (((unsigned char)data[0] << 8) | (unsigned char)data[1]);
++	rc = rtas_get_rmo_buffer(size, &kernbuf, &kernbuf_pa);
++	if (rc)
++		return rc;
++
++	memcpy(kernbuf, data, size);
++
++	rc = rtas_call("ibm,set-system-parameter", 2, 1, htobe32(parameter),
++		       htobe32(kernbuf_pa), &status);
++
++	(void)rtas_free_rmo_buffer(kernbuf, kernbuf_pa, size);
++
++	dbg("(%u, %p) = %d\n", parameter, data, rc ? rc : status);
++	return rc ? rc : status;
++}
+-- 
+2.42.0
+

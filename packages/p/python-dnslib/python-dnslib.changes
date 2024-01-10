@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jan  6 17:11:17 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.24:
+  * #49 - Generate README.md (via symlink)
+  * #51 - Update Github CI checkout & setup-python actions (and
+    remove Python 2.7 CI support)
+  * #54 - Support for RP records
+  * #57 - Support for LOC record
+
+-------------------------------------------------------------------
 Wed Jan  4 14:44:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.9.23:
@@ -15,7 +25,7 @@ Wed Jan  4 14:44:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Tue Sep 27 18:30:29 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- update to 0.9.21: 
+- update to 0.9.21:
   *  Issue #43 (0.9.21 Raises TypeError instead of DNSError when failing to parse HTTPS records)
   *  setup.py
 
@@ -35,7 +45,7 @@ Sun Jan 23 16:53:04 UTC 2022 - Dirk Müller <dmueller@suse.com>
 Sat Jan 15 15:36:07 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.9.18:
-  * Validate TXID in client.py  
+  * Validate TXID in client.py
 
 -------------------------------------------------------------------
 Tue Aug 17 11:46:14 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>

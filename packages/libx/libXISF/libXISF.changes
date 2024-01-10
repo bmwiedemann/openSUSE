@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan  9 07:16:01 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.2.11:
+  * Convert aperture and focal length from mm to meters.
+  * Fix not loading String properties.
+- Add fix-projver.patch.
+
+-------------------------------------------------------------------
 Wed Oct 18 13:40:40 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.2.10:

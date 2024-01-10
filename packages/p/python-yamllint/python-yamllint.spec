@@ -18,23 +18,19 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-yamllint
-Version:        1.32.0
+Version:        1.33.0
 Release:        0
 Summary:        A linter for YAML files
 License:        GPL-3.0-only
 Group:          Development/Languages/Python
 URL:            https://github.com/adrienverge/yamllint
 Source:         https://files.pythonhosted.org/packages/source/y/yamllint/yamllint-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.6}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML
 Requires:       python-pathspec >= 0.5.3
-%if 0%{python_version_nodots} < 38
-# boo#1151703, See below
-Requires:       python-setuptools
-%endif
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch

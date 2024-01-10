@@ -42,14 +42,14 @@
 %if 0%{?suse_version} < 1599
 %bcond_without libnsl
 %else
-%bcond_with libnsl 
+%bcond_with libnsl
 %endif
 %bcond_without ldap
 Name:           postfix
-Version:        3.8.3
+Version:        3.8.4
 Release:        0
 Summary:        A fast, secure, and flexible mailer
-License:        IPL-1.0 OR EPL-2.0
+License:        EPL-2.0 OR IPL-1.0
 Group:          Productivity/Networking/Email/Servers
 URL:            http://www.postfix.org
 Source0:        http://cdn.postfix.johnriley.me/mirrors/postfix-release/official/postfix-%{version}.tar.gz
@@ -109,15 +109,15 @@ BuildRequires:  openldap2-devel
 BuildRequires:  libnsl-devel
 %endif
 # /usr/lib/postfix/bin//post-install: line 667: ed: command not found
-Requires(pre):    /usr/bin/ed
-Requires(preun):  /usr/bin/ed
-Requires(post):   /usr/bin/ed
-Requires(postun): /usr/bin/ed
+Requires(pre):  /usr/bin/ed
+Requires(preun):/usr/bin/ed
+Requires(post): /usr/bin/ed
+Requires(postun):/usr/bin/ed
 # /usr/sbin/config.postfix needs perl
-Requires(pre):    perl
-Requires(preun):  perl
-Requires(post):   perl
-Requires(postun): perl
+Requires(pre):  perl
+Requires(preun):perl
+Requires(post): perl
+Requires(postun):perl
 
 %description
 Postfix aims to be an alternative to the widely-used sendmail program.

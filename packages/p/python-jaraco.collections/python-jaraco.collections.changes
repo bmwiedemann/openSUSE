@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Dec 16 20:57:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.0.0:
+  * Moved collections into a package and declared as typed.
+  * Deprecations and Removals
+  * Removed DictFilter.
+
+-------------------------------------------------------------------
 Mon Oct  9 06:57:30 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 4.3.0
@@ -32,13 +40,13 @@ Sun Mar  5 18:56:10 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
 -------------------------------------------------------------------
 Fri Dec  2 18:07:12 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to 3.8.0 
+- Update to 3.8.0
   * Made DictStack mutable.
 
 -------------------------------------------------------------------
 Tue Nov  8 17:12:30 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to 3.7.0: 
+- Update to 3.7.0:
   * Added RangeMap.left.
 
 -------------------------------------------------------------------

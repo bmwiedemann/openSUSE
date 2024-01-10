@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Dec 30 20:31:27 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.7.1:
+  * Remove various unused imports.
+  * Fix build backend. This should prevent version from being set
+    when building wheels.
+  * Fix compatibility with Python 3.12.
+  * Add typing in various modules (still lacking full coverage).
+  * Drop the 'test' command for distutils. This has been
+    deprecated since 2.6.0. (Jelmer Vernooĳ)
+  * Drop support for Python 3.6.
+
+-------------------------------------------------------------------
 Thu May  4 21:18:15 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.6.0:
@@ -82,7 +95,7 @@ Sat Oct 16 19:29:27 UTC 2021 - Dirk Müller <dmueller@suse.com>
   * Test on GitHub Actions
   * Remove stray six import
   * Testtools 2.4.0 is the last to support Python 2.7
-- remove python-testtools-no-unittest2.patch (upstream) 
+- remove python-testtools-no-unittest2.patch (upstream)
 
 -------------------------------------------------------------------
 Thu Jun 11 08:21:52 UTC 2020 - pgajdos@suse.com
@@ -186,7 +199,7 @@ Sun Apr  2 09:48:51 UTC 2017 - aloisio@gmx.com
 -------------------------------------------------------------------
 Mon Feb 27 07:31:26 UTC 2017 - shshyukriev@suse.com
 
-- BuildRequires also using extras>=1.0.0 
+- BuildRequires also using extras>=1.0.0
 
 -------------------------------------------------------------------
 Thu Sep  1 12:43:29 UTC 2016 - tbechtold@suse.com
@@ -407,7 +420,7 @@ Tue Aug 30 11:41:55 UTC 2016 - tbechtold@suse.com
 -------------------------------------------------------------------
 Mon Dec  1 22:48:47 UTC 2014 - dmueller@suse.com
 
-- fix typo in last change 
+- fix typo in last change
 
 -------------------------------------------------------------------
 Mon Dec  1 17:04:18 UTC 2014 - rhafer@suse.com
@@ -532,7 +545,7 @@ Thu Aug  8 13:47:56 UTC 2013 - speilicke@suse.com
 Thu Aug  8 13:22:20 UTC 2013 - speilicke@suse.com
 
 - Totally disable testing to bootstrap ppc64. Actually the build conditional is
-  supposed to do just that. 
+  supposed to do just that.
 
 -------------------------------------------------------------------
 Tue Jun 25 11:35:04 UTC 2013 - speilicke@suse.com
@@ -559,7 +572,7 @@ Fri Jun 21 08:21:16 UTC 2013 - speilicke@suse.com
 -------------------------------------------------------------------
 Mon May  6 11:25:43 UTC 2013 - dmueller@suse.com
 
-- add python-mmimeparse dependency 
+- add python-mmimeparse dependency
 
 -------------------------------------------------------------------
 Tue Apr 23 09:33:35 UTC 2013 - p.drouand@gmail.com
@@ -595,13 +608,13 @@ Tue Jan 15 16:43:28 UTC 2013 - p.drouand@gmail.com
 Mon Jan 14 12:38:00 UTC 2013 - saschpe@suse.de
 
 - Update to version 0.9.24:
-  * testtools.run discover will now sort the tests it discovered. This is a 
+  * testtools.run discover will now sort the tests it discovered. This is a
     workaround for http://bugs.python.org/issue16709. Non-standard test suites
     are preserved, and their sort_tests() method called (if they have such an
     attribute). testtools.testsuite.sorted_tests(suite, True) can be used by
     such suites to do a local sort.
   * ThreadsafeForwardingResult now defines a stub progress method, which
-    fixes testr run of streams containing progress markers (by discarding the 
+    fixes testr run of streams containing progress markers (by discarding the
     progress data).
 - Changes from version 0.9.23:
   * run.TestToolsTestRunner now accepts the verbosity, buffer and failfast

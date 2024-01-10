@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Dec 16 21:14:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.4:
+  * Ensure compatibility with recent versions of SymPy,
+    matplotlib and Sphinx.
+  * Fix current density plotting when sites coincide.
+
+-------------------------------------------------------------------
 Wed May 31 19:24:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.3:
@@ -15,7 +23,7 @@ Sat May 15 09:26:24 UTC 2021 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Fri Feb 12 20:16:23 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- skip python36 (scipy) 
+- skip python36 (scipy)
 
 -------------------------------------------------------------------
 Wed Jul  8 17:00:33 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>

@@ -16,18 +16,14 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-boltons
-Version:        21.0.0
+Version:        23.1.1
 Release:        0
 Summary:        The "Boltons" utility package for Python
 License:        BSD-3-Clause
 URL:            https://github.com/mahmoud/boltons
-Source:         https://github.com/mahmoud/boltons/archive/%{version}.tar.gz#/boltons-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM Support Python 3.10 gh#mahmoud/boltons#270e974975984f662f998c8f6eb0ebebd964de82
-Patch0:         fix-ecoutil-imports.patch
-# PATCH-FIX-UPSTREAM Adds support for Python 3.11. gh#mahmoud/boltons#75cd86b3ea6534d5bd8d3c83c3cf1b493e7c9102
-Patch1:         getstate-to-through-methods.patch
+Source:         https://files.pythonhosted.org/packages/source/b/boltons/boltons-%{version}.tar.gz
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

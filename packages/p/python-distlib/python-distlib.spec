@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-distlib
-Version:        0.3.7
+Version:        0.3.8
 Release:        0
 Summary:        Distribution utilities
 License:        Python-2.0

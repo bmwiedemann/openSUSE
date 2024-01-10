@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Dec 28 18:14:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.5.1:
+  * This release fixes a crash introduced in 2.5, which seems to
+    be related to an unneeded update of gnulib. Hence, this
+    release simply reverts to the previous version of gnulib.
+- update to 2.5:
+  * This release stops mmv trying to copy a directory into
+    itself.
+
+-------------------------------------------------------------------
 Fri Jun 23 09:27:04 UTC 2023 - pgajdos@suse.com
 
 - version update to 2.4

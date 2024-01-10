@@ -26,16 +26,23 @@
 %global __provides_exclude_from ^%{_libdir}/%{name}/.*\\.so$
 
 # List all bundled libraries.
-%global _privatelibs lib(LLVM-.*|ccalltest|dSFMT|git2|llvmcalltest|openlibm|suitesparse_wrapper|mbedcrypto|mbedtls|mbedx509|uv)\\.so.*
+%global _privatelibs lib(LLVM-.*|ccalltest|llvmcalltest|uv|openblas.*|sys|julia.*)\\.so.*
 %global __provides_exclude ^(%{_privatelibs})$
 %global __requires_exclude ^(%{_privatelibs})$
 
 %define libjulia_sover_major 1
 %define libjulia_sover_minor 9
+
 %if "@BUILD_FLAVOR@%{nil}" == "compat"
 %define compat_mode  1
 %else
 %define compat_mode  0
+%endif
+
+%if 0%{?compat_mode}
+%define libname              libjulia-compat%{libjulia_sover_major}
+%else
+%define libname              libjulia%{libjulia_sover_major}
 %endif
 
 # LTO currently makes building blastrampoline and Julia itself fail
@@ -68,6 +75,7 @@ BuildRequires:  blas-devel
 BuildRequires:  ca-certificates
 BuildRequires:  cmake
 BuildRequires:  dSFMT-devel
+BuildRequires:  dos2unix
 BuildRequires:  double-conversion-devel
 BuildRequires:  fdupes
 BuildRequires:  fftw3-threads-devel >= 3.3.4
@@ -110,6 +118,35 @@ BuildRequires:  zlib-devel
 Requires:       ca-certificates
 Requires:       p7zip >= 16
 Requires:       readline
+
+# Libraries used by CompilerSupportLibraries_jll, blastrampoline,
+# nghttp2_jll but not detected as they are dlopen()ed but not linked to
+%if 0%{?__isa_bits} == 64
+Requires:       libgfortran.so.5()(64bit)
+Requires:       libgomp.so.1()(64bit)
+Requires:       libnghttp2.so.14()(64bit)
+%else
+Requires:       libgfortran.so.5
+Requires:       libgomp.so.1
+Requires:       libnghttp2.so.14
+%endif
+
+# Same as the previous comment. But the difference
+# is that we applied julia-hardcoded-libs.patch
+# so therefore it is needed
+Requires:       libblastrampoline-devel
+Requires:       libnghttp2-devel
+Requires:       openlibm-devel
+Requires:       suitesparse-devel
+
+# Julia requires the devel package as well
+# specifically libjulia.so
+%if 0%{?compat_mode}
+Requires:       julia-compat-devel
+%else
+Requires:       julia-devel
+%endif
+
 Requires(post): %{_sbindir}/update-alternatives
 Requires(post): %{_sbindir}/ldconfig
 Requires(postun):%{_sbindir}/update-alternatives
@@ -139,14 +176,10 @@ Group:          Development/Languages/Other
 Conflicts:      julia
 Provides:       julia = %{version}
 %endif
-# Since the 32-bit julia package is already being built using MARCH=pentium4,
-# which is the most generic flag supported, then the julia-compat mode only
-# makes sense for 64-bit architectures.
-%if 0%{?compat_mode}
+
+# Let's not be optimistic towards 32 bit support and other architectures
+# openSUSE cannot guarantee to support, shall we?
 ExclusiveArch:  x86_64
-%else
-ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 ppc64le
-%endif
 
 %description
 Julia is a high-level, high-performance dynamic programming language for
@@ -163,10 +196,10 @@ to use julia, please install juliaup instead.
 %package        devel
 Summary:        Julia development, debugging and testing files
 Group:          Development/Languages/Other
-Requires:       %{name} = %{version}
+Requires:       %{libname} = %{version}
 %if 0%{?compat_mode}
 Conflicts:      julia-devel
-Provides:       julia-devel = %{version}
+Provides:       julia-devel
 %endif
 
 %description    devel
@@ -175,6 +208,17 @@ linking to the Julia library, in particular embedding it, as well as tests and a
 debugging version of Julia. This package is normally not needed when programming
 in the Julia language, but rather for embedding Julia into external programs or
 debugging Julia itself.
+
+%package -n     %{libname}
+Summary:        Julia shared object libraries
+Group:          System/Libraries
+%if 0%{?compat_mode}
+Conflicts:      libjulia%{libjulia_sover_major}
+Provides:       libjulia%{libjulia_sover_major}
+%endif
+
+%description -n %{libname}
+Contains library files for interacting with Julia through C interfaces.
 
 %prep
 %setup -q -n julia-%{version}
@@ -246,15 +290,12 @@ sed "s/ \$(build_prefix)\\/manifest\\/zlib//" -i deps/llvm.mk
     %define julia_march x86-64
 %endif
 
-%ifarch armv6l armv6hl aarch64
+%ifarch armv6l armv6hl
 export LDFLAGS="$LDFLAGS -latomic"
 %endif
 
-# We need these compilation flags to avoid error when building MBEDTLS with
-# GCC-11.
-# Ref.: https://build.opensuse.org/package/show/security:tls/mbedtls
-export CFLAGS="%{optflags} -Wno-stringop-overflow -Wno-maybe-uninitialized"
-export CXXFLAGS="%{optflags} -Wno-stringop-overflow -Wno-maybe-uninitialized"
+export CFLAGS="%{optflags}"
+export CXXFLAGS="%{optflags}"
 export LD_LIBRARY_PATH=%{_builddir}/%{buildsubdir}/build/usr/lib:%{_builddir}/%{buildsubdir}/build%{_libdir}:%{_builddir}/%{buildsubdir}/usr/lib
 
 pushd deps
@@ -327,11 +368,13 @@ fi
 # make %{?_smp_mflags} test
 
 %install
-# We need these compilation flags to avoid error when building MBEDTLS with
-# GCC-11.
-# Ref.: https://build.opensuse.org/package/show/security:tls/mbedtls
-export CFLAGS="%{optflags} -Wno-stringop-overflow -Wno-maybe-uninitialized"
-export CXXFLAGS="%{optflags} -Wno-stringop-overflow -Wno-maybe-uninitialized"
+
+%ifarch armv6l armv6hl
+export LDFLAGS="$LDFLAGS -latomic"
+%endif
+
+export CFLAGS="%{optflags}"
+export CXXFLAGS="%{optflags}"
 export LD_LIBRARY_PATH=%{_builddir}/%{buildsubdir}/build/usr/lib:%{_builddir}/%{buildsubdir}/build%{_libdir}:%{_builddir}/%{buildsubdir}/usr/lib
 
 make install DESTDIR=%{buildroot} \
@@ -424,9 +467,6 @@ rm -rf %{buildroot}%{_docdir}/julia/
 rm %{buildroot}%{_datadir}/appdata/julia.appdata.xml
 %endif
 
-# Remove duplicated files.
-%fdupes %{buildroot}
-
 %suse_update_desktop_file -r julia Science Math
 
 mv %{buildroot}%{_bindir}/julia %{buildroot}%{_bindir}/julia-base
@@ -434,10 +474,19 @@ mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 
 if [ "x%{_lib}" != xlib ] ; then
     mkdir -p %{buildroot}%{_prefix}/lib
-    ln -sf %{_libdir}/julia %{buildroot}%{_prefix}/lib/julia 
+    ln -sf %{_libdir}/julia %{buildroot}%{_prefix}/lib/julia
 fi
 
 ln -sf %{_sysconfdir}/alternatives/julia %{buildroot}%{_bindir}/julia
+
+# Convert all eol encodings to Unix
+find %{buildroot} -type f -execdir dos2unix -k {} \;
+
+# make it executable
+chmod +x %{buildroot}%{_datadir}/julia/stdlib/v1.9/SparseArrays/gen/generator.jl
+
+# Remove duplicated files.
+%fdupes %{buildroot}%{_datadir}/julia
 
 %post
 %{_sbindir}/update-alternatives --install %{_bindir}/julia \
@@ -450,8 +499,10 @@ if [ ! -f %{_bindir}/julia-base ] ; then
 fi
 %{_sbindir}/ldconfig
 
-%post   devel -p /sbin/ldconfig
-%postun devel -p /sbin/ldconfig
+%post   devel -p %{_sbindir}/ldconfig
+%postun devel -p %{_sbindir}/ldconfig
+%post   -n %{libname} -p %{_sbindir}/ldconfig
+%postun -n %{libname} -p %{_sbindir}/ldconfig
 
 %files
 %doc CONTRIBUTING.md NEWS.md README.md
@@ -477,7 +528,6 @@ fi
 %{_datadir}/applications/julia.desktop
 %{_prefix}/lib/julia
 %{_libdir}/julia/
-%{_libdir}/libjulia.so.%{libjulia_sover_major}.%{libjulia_sover_minor}
 %{_mandir}/man1/julia.1%{?ext_man}
 %dir %{_sysconfdir}/julia/
 %config(noreplace) %{_sysconfdir}/julia/startup.jl
@@ -486,7 +536,9 @@ fi
 %{_datadir}/julia/test/
 %{_datadir}/julia/julia-config.jl
 %{_includedir}/julia/
-%{_libdir}/libjulia.so.%{libjulia_sover_major}
 %{_libdir}/libjulia.so
+
+%files -n %{libname}
+%{_libdir}/libjulia.so.*
 
 %changelog

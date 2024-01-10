@@ -526,4 +526,12 @@
     <comment></comment>
     <requestid>990716</requestid>
   </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>524a59326bf59bbb6af3dae88d17017f</srcmd5>
+    <version>0.14.0</version>
+    <time>1702845093</time>
+    <user>anag+factory</user>
+    <comment>Require extra-cmake-modules at build time</comment>
+    <requestid>1133544</requestid>
+  </revision>
 </revisionlist>

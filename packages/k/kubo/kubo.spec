@@ -28,6 +28,7 @@ URL:            https://%{repo}
 # bundle with all deps from ./fetch.sh and ./findfiles.sh :
 Source0:        kubo-%version.tar
 Source1:        vendor.tar.zst
+Patch0:         https://github.com/ipfs/kubo/pull/10243.patch
 
 BuildRequires:  git
 # >= 1.14.4 is ambiguous

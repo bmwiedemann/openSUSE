@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Dec 20 13:44:11 UTC 2023 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.7+20231219.0f7f88312 (Pacemaker-2.1.7):
+- attrd: Regression in transient attr deletions (gh#ClusterLabs/pacemaker#3283)
+
+-------------------------------------------------------------------
+Mon Dec 11 07:54:29 UTC 2023 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.6+20231207.80f8a320e (Pacemaker-2.1.7-rc3):
+- agents: handle dampening parameter consistently and correctly
+
+-------------------------------------------------------------------
 Wed Dec 06 08:13:35 UTC 2023 - Yan Gao <ygao@suse.com>
 
 - Update to version 2.1.6+20231205.0f6fbd59f:
@@ -140,7 +152,7 @@ Thu Nov 16 12:29:45 UTC 2023 - Yan Gao <ygao@suse.com>
 - tools: Convert crm_node -n/-N to use formatted output.
 - libcrmcommon: Bump feature set for crm_node formatted output
 - libpacemaker: Change the type of the node_id argument.
-- libcrmcommon: wait for reply from appropriate controller commands
+- libcrmcommon: wait for reply from appropriate controller commands (bsc#1218312, rh#2225631, rh#2221084)
 - daemons: Disable sync points in certain circumstances.
 - tools: Fix a bug in clone resource description display (rh#2106642)
 - tools: The dampen parameter is disabled when setting values with attrd_updater.

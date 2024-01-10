@@ -1,7 +1,7 @@
 #
 # spec file for package ppp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define _group dialout
 Name:           ppp
-Version:        2.4.9
+Version:        2.5.0
 Release:        0
 Summary:        The Point to Point Protocol for Linux
 License:        BSD-3-Clause AND LGPL-2.1-or-later AND GPL-2.0-or-later
@@ -41,7 +41,6 @@ Source9:        pppoe-rp-peers
 Source10:       pppoatm-peers
 Source11:       ppp-peers
 Source12:       pptp-peers
-Source13:       pppoe-discovery.8.gz
 # modem files
 Source14:       modem.chat
 Source15:       modem@.service
@@ -50,10 +49,6 @@ Source16:       modem.rules
 Source17:       %{name}.keyring
 # PATCH-FEATURE-OPENSUSE ppp-smpppd.patch -- Add more log output for smpppd (move from debug to info log)
 Patch0:         ppp-smpppd.patch
-# PATCH-FIX-OPENSUSE ppp-pie.patch -- Build position independent code
-Patch1:         ppp-pie.patch
-# PATCH-FIX-OPENSUSE ppp-lib64.patch -- Install into lib64 on 64bit systems
-Patch2:         ppp-lib64.patch
 # PATCH-FIX-UPSTREAM ppp-var_run_resolv_conf.patch -- Move resolv.conf to /var/run
 Patch3:         ppp-var_run_resolv_conf.patch
 # PATCH-FIX-UPSTREAM ppp-fix-bashisms.patch -- Remove bashism from posix shell interpreted script https://github.com/ppp-project/ppp/issues/348
@@ -62,14 +57,13 @@ Patch4:         ppp-fix-bashisms.patch
 Patch5:         ppp-fork-fix.patch
 # misc tiny stuff
 Patch6:         ppp-misc.patch
-# PATCH-FIX-UPSTREAM ppp-fork-fix.patch -- fix E: executable-stack (Badness: 10000) /usr/sbin/pppd
-Patch7:         ppp-compiling-with-clang-encounters-an-error-in-eap-tls..patch
 # Of cause any other compatible libc would work, like musl, but 2.24 required for SOL_NETLINK
 BuildRequires:  glibc-devel >= 2.24
 BuildRequires:  libpcap-devel
 BuildRequires:  linux-atm-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pam-devel
+BuildRequires:  pkgconfig(libsystemd)
 Requires:       group(%{_group})
 Requires(pre):  group(%{_group})
 
@@ -111,16 +105,10 @@ you can disable unnecessary or disable everything.
 %prep
 %setup -q
 %patch0
-%patch1 -p1
-%patch3 -p1
-%patch4 -p1
+%patch3
+%patch4
 %patch5
 %patch6
-%patch7 -p1
-
-%if "%{_lib}" == "lib64"
-%patch2 -p1
-%endif
 
 sed -i -e '1s/local\///' scripts/secure-card
 find scripts -type f | xargs chmod a-x
@@ -128,14 +116,16 @@ find -type f -name '*.orig' | xargs rm -f
 
 # Have to patch this in the Makefile, because setting it on the make
 # command line only is not enough.
-sed -i '/#HAVE_LIBATM/s/#//' pppd/plugins/pppoatm/Makefile.linux
+#sed -i '/#HAVE_LIBATM/s/#//' pppd/plugins/pppoatm/Makefile.linux
 
 %build
-%configure --cflags "%{optflags} -fno-strict-aliasing -fPIC $SP"
-%make_build CHAPMS=y CBCP=y HAS_SHADOW=y USE_PAM=y FILTER=y HAVE_INET6=y HAVE_LOGWTMP=y
+%configure --enable-cbcp --with-pam --enable-multilink --enable-systemd
+%make_build
+
+#CHAPMS=y CBCP=y HAS_SHADOW=y USE_PAM=y FILTER=y HAVE_INET6=y HAVE_LOGWTMP=y
 
 %install
-make install DESTDIR=%{buildroot}%{_prefix}
+make install DESTDIR=%{buildroot}
 install -dm 750 %{buildroot}%{_sysconfdir}/ppp
 install -m 644 %{SOURCE5} %{buildroot}%{_sysconfdir}/ppp/options
 install -m 644 %{SOURCE6} %{buildroot}%{_sysconfdir}/ppp/filters
@@ -157,7 +147,6 @@ install -m 644 %{SOURCE4} %{buildroot}%{_pam_vendordir}/ppp
 install -d 755 %{buildroot}%{_sysconfdir}/pam.d
 install -m 644 %{SOURCE4} %{buildroot}%{_sysconfdir}/pam.d/ppp
 %endif
-install -m 644 %{SOURCE13} %{buildroot}%{_mandir}/man8/pppoe-discovery.8.gz
 install -Dm 644 %{SOURCE14} %{buildroot}%{_sysconfdir}/ppp/chatscripts/modem.chat
 install -Dm 644 %{SOURCE15} %{buildroot}%{_unitdir}/modem@.service
 install -Dm 644 %{SOURCE16} %{buildroot}%{_udevrulesdir}/90-modem.rules
@@ -183,6 +172,8 @@ done
 %config(noreplace) %{_sysconfdir}/ppp/filters
 %config(noreplace) %{_sysconfdir}/ppp/pap-secrets
 %config(noreplace) %{_sysconfdir}/ppp/chap-secrets
+%config(noreplace) %{_sysconfdir}/ppp/eaptls-*
+%config(noreplace) %{_sysconfdir}/ppp/openssl.cnf
 %config(noreplace) %{_sysconfdir}/ppp/peers/p*
 %if 0%{?suse_version} > 1500
 %{_pam_vendordir}/ppp
@@ -202,6 +193,8 @@ done
 
 %files devel
 %{_includedir}/pppd
+%_libdir/pkgconfig/*
+%{_libdir}/pppd/%{version}/*.la
 
 %files modem
 %dir %{_sysconfdir}/ppp/peers

@@ -473,4 +473,35 @@
   * remove use of deprecated ast</comment>
     <requestid>1090388</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>de83a6eb3b1cc6410a51fd4bbc391025</srcmd5>
+    <version>3.15.0</version>
+    <time>1703800850</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.15.0:
+  * Implement defaultdict lambda fixer
+  * update import symbols for 3.12 release
+  * constant fold isinstance / issubclass / except
+  * slight improvement to except fix
+  * document TimeoutError rewrites
+  * also rewrite os.error -&gt; OSError
+  * prevent rewriting unittest module functions with additional
+    arguments
+  * fix string formatting with named escape adjacent to placeholder
+  * regenerate with latest reorder-python-imports
+  * slightly cleaner plugin union registering
+  * remove python 2 notes about invalid escapes
+  * correct minimum requirement
+  * fix weird-ws empty set literals
+  * automatically rewrite to shlex.join in --py38-plus
+  * posonlyargs are always present in 3.8+
+  * updates for add-trailing-comma 3.x￼
+  * 3.12 TypeVar bounds are always unquotable
+  * support PEP 563 rewrites for 3.12+ TypeVar bounds
+
+- Update to version 3.2.1
+- Update to version 3.2.0
+ - upgrade mypy to get typeshed fix</comment>
+    <requestid>1135194</requestid>
+  </revision>
 </revisionlist>

@@ -24,9 +24,13 @@ Summary:        A library to create a command-line program from a function
 License:        LGPL-3.0-only
 URL:            https://github.com/Lucretiel/autocommand
 Source:         https://files.pythonhosted.org/packages/source/a/autocommand/autocommand-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM setuptools-dynamic-license.patch gh#Lucretiel/autocommand#31
+Patch0:         setuptools-dynamic-license.patch
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -41,10 +45,10 @@ called as __main__. In effect, it lets your create a smart main function.
 %autosetup -p1 -n autocommand-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -54,6 +58,6 @@ called as __main__. In effect, it lets your create a smart main function.
 %license LICENSE
 %doc README.md
 %{python_sitelib}/autocommand
-%{python_sitelib}/autocommand-%{version}*-info
+%{python_sitelib}/autocommand-%{version}.dist-info
 
 %changelog

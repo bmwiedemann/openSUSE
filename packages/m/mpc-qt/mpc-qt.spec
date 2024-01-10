@@ -17,7 +17,7 @@
 
 
 Name:           mpc-qt
-Version:        23.02
+Version:        23.12
 Release:        0
 Summary:        Media Player Classic Qute Theater
 License:        GPL-2.0-only
@@ -25,18 +25,18 @@ URL:            https://github.com/cmdrkotori/mpc-qt
 Source0:        https://github.com/mpc-qt/mpc-qt/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}.changes
 BuildRequires:  libQt5Gui-private-headers-devel
-BuildRequires:  libqt5-linguist
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.4
-BuildRequires:  pkgconfig(Qt5X11Extras)
+BuildRequires:  qt6-tools-linguist
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6DBus)
+BuildRequires:  pkgconfig(Qt6Gui)
+BuildRequires:  pkgconfig(Qt6Network)
+BuildRequires:  pkgconfig(Qt6OpenGLWidgets)
+BuildRequires:  pkgconfig(Qt6Widgets)
 BuildRequires:  pkgconfig(mpv) >= 1.101.0
 %if 0%{?suse_version} > 1500
 BuildRequires:  gcc-c++
 %else
-BuildRequires:  gcc7-c++
+BuildRequires:  gcc10-c++
 %endif
 
 %description
@@ -48,10 +48,11 @@ rm -rf mpv-dev
 
 %build
 export CXX=g++
-test -x "$(type -p g++-7)" && export CXX=g++-7
-qmake-qt5 \
-  QMAKE_CFLAGS+="%{optflags}" QMAKE_CXXFLAGS+="%{optflags}" \
-  QMAKE_CC="${CC}" QMAKE_CXX="${CXX}" PREFIX=%{_prefix} \
+test -x "$(type -p g++-10)" && export CXX=g++-10
+qmake6 \
+  QMAKE_CFLAGS+="%{optflags} -fpie" QMAKE_CXXFLAGS+="%{optflags} -fpie" \
+  QMAKE_LFLAGS="%{optflags} -pie" QMAKE_CC="${CC}" QMAKE_CXX="${CXX}" \
+  PREFIX=%{_prefix} MPCQT_VERSION=%{version} \
   mpc-qt.pro
 %make_build
 
@@ -62,8 +63,8 @@ mkdir -p %{buildroot}/%{_bindir} \
          %{buildroot}/%{_datadir}/%{name}/translations
 install -m 0755 %{name} %{buildroot}/%{_bindir}
 install -m 0644 images/icon/mpc-qt.svg %{buildroot}/%{_datadir}/pixmaps/%{name}.svg
-install -m 0644 resources/translations/%{name}_*.qm -t %{buildroot}/%{_datadir}/%{name}/translations
-install -m 0644 io.github.mpc_qt.Mpc-Qt.desktop %{buildroot}/%{_datadir}/applications/Media\ Player\ Classic\ Qute\ Theater.desktop
+install -m 0644 %{name}_*.qm -t %{buildroot}/%{_datadir}/%{name}/translations
+install -m 0644 mpc-qt.desktop %{buildroot}/%{_datadir}/applications/Media\ Player\ Classic\ Qute\ Theater.desktop
 
 %files
 %doc README.md

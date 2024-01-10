@@ -33,7 +33,11 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 Requires:       busybox-static
 Requires:       qemu
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} <= 150500
+Requires:       qemu-tools
+%else
 Requires:       virtiofsd
+%endif
 BuildArch:      noarch
 
 %description

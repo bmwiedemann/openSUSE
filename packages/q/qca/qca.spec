@@ -1,7 +1,7 @@
 #
-# spec file for package qca
+# spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,15 +36,18 @@ ExclusiveArch:  do_not_build
 %endif
 #
 %define _soversion 2
+%define realversion 2.3.8
 %bcond_without pkcs11
 Name:           qca%{pkgname_suffix}
-Version:        2.3.7
+Version:        2.3.7+git12
 Release:        0
 Summary:        Qt Cryptographic Architecture 2
 License:        LGPL-2.1-or-later
 URL:            https://userbase.kde.org/QCA
-Source0:        https://download.kde.org/stable/qca/%{version}/qca-%{version}.tar.xz
-Source1:        https://download.kde.org/stable/qca/%{version}/qca-%{version}.tar.xz.sig
+# Using git for now
+Source0:        qca-%{version}.tar.xz
+#Source0:        https://download.kde.org/stable/qca/%%{version}/qca-%%{version}.tar.xz
+#Source1:        https://download.kde.org/stable/qca/%%{version}/qca-%%{version}.tar.xz.sig
 Source2:        qca.keyring
 BuildRequires:  ca-certificates-mozilla
 BuildRequires:  cmake
@@ -192,7 +195,7 @@ export QT_PLUGIN_PATH=%{buildroot}%{_qt6_pluginsdir}:%{_qt6_pluginsdir}
 %license COPYING
 %doc README
 %{_libdir}/libqca-%{flavor}.so.%{_soversion}
-%{_libdir}/libqca-%{flavor}.so.%{version}
+%{_libdir}/libqca-%{flavor}.so.%{realversion}
 
 %files devel
 %{_bindir}/mozcerts-%{flavor}

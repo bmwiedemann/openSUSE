@@ -1,7 +1,7 @@
 #
 # spec file for package perl-UUID
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,21 @@
 
 %define cpan_name UUID
 Name:           perl-UUID
-Version:        0.310.0
+Version:        0.320.0
 Release:        0
-%define cpan_version 0.31
+%define cpan_version 0.32
 License:        Artistic-2.0
-Summary:        DCE compatible Universally Unique Identifier library for Perl
+Summary:        Universally Unique Identifier library for Perl
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/J/JR/JRM/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(CPAN::Meta)
-BuildRequires:  perl(Devel::CheckLib) >= 1.14
+BuildRequires:  perl(Devel::CheckLib)
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.64
-Provides:       perl(UUID) = 0.310.0
+BuildRequires:  perl(Text::Patch)
+Provides:       perl(UUID) = %{version}
 %define         __perllib_provides /bin/true
 %{perl_requires}
 # MANUAL BEGIN
@@ -49,6 +50,10 @@ system, and unique across all systems, and are compatible with those
 created by the Open Software Foundation (OSF) Distributed Computing
 Environment (DCE) utility uuidgen.
 
+All generated UUIDs are either type 1 from *UUID::generate_time()*, or type
+4 from *UUID::generate_random()*. And all are variant 1, meaning compliant
+with the OSF DCE standard as described in RFC4122.
+
 %prep
 %autosetup  -n %{cpan_name}-%{cpan_version}
 
@@ -65,7 +70,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes README
+%doc Changes README util
 %license LICENSE
 
 %changelog

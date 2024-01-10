@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Dec 14 03:10:36 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 20231213
+   see /usr/share/doc/packages/perl-Mozilla-CA/Changes
+
+  20231213
+    - Update from Mozilla repository to 2023-12-13
+    - Added certificates:
+      - CommScope Public Trust ECC Root-01
+        sha256: 11437cda7bb45e41365f45b39a38986b0de00def348e0c7bb0873633800bc38b
+      - CommScope Public Trust ECC Root-02
+        sha256: 2ffb7f813bbbb3c89ab4e8162d0f16d71509a830cc9d73c262e5140875d1ad4a
+      - CommScope Public Trust RSA Root-01
+        sha256: 02bdf96e2a45dd9bf18fc7e1dbdf21a0379ba3c9c2610344cfd8d606fec1ed81
+      - CommScope Public Trust RSA Root-02
+        sha256: ffe943d793424b4f7c440c1c3d648d5363f34b82dc87aa7a9f118fc5dee101f1
+      - TrustAsia Global Root CA G3
+        sha256: e0d3226aeb1163c2e48ff9be3b50b4c6431be7bb1eacc5c36b5d5ec509039a08
+      - TrustAsia Global Root CA G4
+        sha256: be4b56cb5056c0136a526df444508daa36a0b54f42e4ac38f72af470e479654c
+    - Removed certificates:
+      - Security Communication Root CA
+        sha256: e75e72ed9f560eec6eb4800073a43fc3ad19195a392282017895974a99026b6c
+
+-------------------------------------------------------------------
 Tue Aug 22 03:07:53 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 20230821

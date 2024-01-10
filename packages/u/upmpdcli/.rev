@@ -118,4 +118,19 @@
     <comment>Update to 1.7.7</comment>
     <requestid>1074007</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>2f58c4553fc46ca24002032822bb35e8</srcmd5>
+    <version>1.8.6</version>
+    <time>1703800843</time>
+    <user>anag+factory</user>
+    <comment>- each Content Directory plugin is now packaged in its own noarch package
+  instead of being bundled in the main package
+- added upmpdcli-config package, a Qt5 config editor.
+  Global upmpdcli config can be edited with command:
+  xdg-su upmpdcli-config /etc/upmpdcli.conf
+- fixed permission on /etc/upmpdcli.conf preventing plugins to read
+  their configuration
+- Update to 1.8.6</comment>
+    <requestid>1135178</requestid>
+  </revision>
 </revisionlist>

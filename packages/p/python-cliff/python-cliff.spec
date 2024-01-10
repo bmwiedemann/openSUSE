@@ -1,7 +1,7 @@
 #
 # spec file for package python-cliff
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,87 +17,62 @@
 
 
 Name:           python-cliff
-Version:        3.10.1
+Version:        4.4.0
 Release:        0
 Summary:        Command Line Interface Formulation Framework
 License:        Apache-2.0
-Group:          Development/Languages/Python
-URL:            https://docs.openstack.org/cliff
-Source0:        https://files.pythonhosted.org/packages/source/c/cliff/cliff-3.10.1.tar.gz
-BuildRequires:  openstack-macros
-BuildRequires:  python3-PrettyTable
-BuildRequires:  python3-PyYAML
-BuildRequires:  python3-autopage
-BuildRequires:  python3-cmd2
-BuildRequires:  python3-docutils
-BuildRequires:  python3-fixtures
-BuildRequires:  python3-pbr
-BuildRequires:  python3-pytest
-BuildRequires:  python3-python-subunit
-BuildRequires:  python3-stevedore
-BuildRequires:  python3-testscenarios
-BuildRequires:  python3-testtools
+URL:            https://docs.openstack.org/cliff/latest/
+Source:         https://files.pythonhosted.org/packages/source/c/cliff/cliff-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
+# SECTION test requirements
+BuildRequires:  %{python_module autopage >= 0.4.0}
+BuildRequires:  %{python_module PrettyTable >= 0.7.2}
+BuildRequires:  %{python_module PyYAML >= 3.12}
+BuildRequires:  %{python_module Sphinx >= 2.0.0}
+BuildRequires:  %{python_module cmd2 >= 1.0.0}
+BuildRequires:  %{python_module coverage >= 4.0}
+BuildRequires:  %{python_module fixtures}
+BuildRequires:  %{python_module importlib_metadata >= 4.4}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module stevedore >= 2.0.1}
+BuildRequires:  %{python_module testscenarios >= 0.4}
+BuildRequires:  %{python_module testtools >= 2.2.0}
+# /SECTION
+BuildRequires:  fdupes
+Requires:       python-PrettyTable >= 0.7.2
+Requires:       python-PyYAML >= 3.12
+Requires:       python-autopage >= 0.4.0
+Requires:       python-cmd2 >= 1.0.0
+Requires:       python-importlib_metadata >= 4.4
+Requires:       python-stevedore >= 2.0.1
 BuildArch:      noarch
+%python_subpackages
 
 %description
-cliff is a framework for building command line programs. It uses
-setuptools entry points to provide subcommands, output formatters, and
-other extensions.
-
-%package -n python3-cliff
-Summary:        Command Line Interface Formulation Framework
-Requires:       python3-PrettyTable
-Requires:       python3-PyYAML
-Requires:       python3-autopage
-Requires:       python3-cmd2
-Requires:       python3-pyparsing
-Requires:       python3-stevedore
-
-%description -n python3-cliff
-cliff is a framework for building command line programs. It uses
-setuptools entry points to provide subcommands, output formatters, and
-other extensions.
-
-This package contains the Python 3.x module.
-
-%package -n python-cliff-doc
-Summary:        %{summary} - Documentation
-Group:          Documentation/HTML
-BuildRequires:  python3-Sphinx
-BuildRequires:  python3-openstackdocstheme
-
-%description -n python-cliff-doc
-cliff is a framework for building command line programs. It uses
-setuptools entry points to provide subcommands, output formatters, and
-other extensions.
-
-This package contains documentation files for %{name}.
+Command Line Interface Formulation Framework
 
 %prep
-%autosetup -p1 -n cliff-3.10.1
-%py_req_cleanup
+%autosetup -p1 -n cliff-%{version}
 
 %build
-%py3_build
-PBR_VERSION=3.10.1 PYTHONPATH=. %sphinx_build -b html doc/source doc/build/html
-rm -rf doc/build/html/.{doctrees,buildinfo}
+%pyproject_wheel
 
 %install
-%py3_install
+%pyproject_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # doesn't work with pytest atm
 rm -v cliff/tests/test_commandmanager.py
-python3 -m pytest cliff/tests
+%pytest cliff/tests
 
-%files -n python3-cliff
+%files %{python_files}
+%doc AUTHORS ChangeLog README.rst
 %license LICENSE
-%doc ChangeLog README.rst
-%{python3_sitelib}/cliff
-%{python3_sitelib}/*.egg-info
-
-%files -n python-cliff-doc
-%license LICENSE
-%doc doc/build/html
+%{python_sitelib}/cliff
+%{python_sitelib}/cliff-%{version}.dist-info
 
 %changelog

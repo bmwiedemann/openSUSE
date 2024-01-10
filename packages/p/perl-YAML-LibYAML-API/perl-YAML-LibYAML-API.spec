@@ -1,7 +1,7 @@
 #
 # spec file for package perl-YAML-LibYAML-API
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %define cpan_name YAML-LibYAML-API
 Name:           perl-YAML-LibYAML-API
-Version:        0.013
+Version:        0.14.0
 Release:        0
 License:        MIT
 Summary:        Wrapper around the C libyaml library
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/T/TI/TINITA/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/T/TI/TINITA/%{cpan_name}-v%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -49,7 +49,7 @@ build this module with the system libyaml instead, if you remove the
 libyaml sources and call 'Makefile.PL' with 'WITH_SYSTEM_LIBYAML=1'.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-v%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"

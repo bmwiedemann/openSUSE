@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Fri Dec 22 04:10:44 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch allow-only-direct-compilation.patch:
+  * Allow forcing direct compilation.
+
+-------------------------------------------------------------------
+Mon Dec 18 08:01:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 69.0.2:
+  * Added missing estimated date for removing
+    ``setuptools.dep_util`` (deprecated in v69.0.0).
+  * Fixed imports of ``setuptools.dep_util.newer_group``.
+  * A deprecation warning is issued instead of a hard failure.
+  * Include type information (``py.typed``, ``*.pyi``) by default
+    (#3136) -- by :user:`Danie-1`,
+  * Exported ``distutils.dep_util`` and ``setuptools.dep_util``
+    through ``setuptools.modified``
+  * Merged with pypa/distutils@7a04cbda0fc714.
+  * Replaced hardcoded numeric values with :obj:`dis.opmap`,
+    fixing problem with 3.13.0a1. (#4094)
+  * Configuring project ``version`` and ``egg_info.tag_*`` in
+    such a way that results in invalid version strings
+    (according to :pep:`440`) is no longer permitted. (#4066)
+  * Removed deprecated ``egg_base`` option from ``dist_info``.
+  * The parsing of the deprecated ``metadata.license_file`` and
+    ``metadata.requires`` fields in ``setup.cfg`` is no longer
+    supported.
+  * Users are expected to move to ``metadata.license_files`` and
+    ``options.install_requires`` (respectively). (#4066)
+  * Passing ``config_settings`` to ``setuptools.build_meta`` with
+    deprecated values for ``--global-option`` is no longer
+    allowed. (#4066)
+  * Removed deprecated ``namespace-packages`` from
+    ``pyproject.toml``.
+  * Added strict enforcement for ``project.dynamic`` in
+    ``pyproject.toml``.
+    This removes the transitional ability of users configuring
+    certain parameters via ``setup.py`` without making the
+    necessary changes to ``pyproject.toml``
+  * Removed handling of ``--config-settings["--build-option"]``
+    in ``setuptools.build_meta`` from build-backend API hooks
+    *other than* ``build_wheel``.
+  * Improve backwards compatibility with deprecated CLI
+    practices. (#4048)
+  * Avoid using caching attributes in ``Distribution.metadata``
+    for requirements. This is done for backwards compatibility
+    with customizations that attempt to modify ``install_requires``
+    or ``extras_require`` at a late point (still not recommended).
+  * Rework how ``setuptools`` internally handles
+    ``dependencies/install_requires`` and
+    ``optional-dependencies/extras_require``. (#3903)
+  * Improve the generated ``PKG-INFO`` files, by adding
+    ``Requires-Dist`` fields.
+  * Previously, these fields would be omitted in favour of a non-
+    standard ``*.egg-info/requires.txt`` file (which is still
+    generated for the time being). (#3904)
+  * Improve atomicity when writing ``PKG-INFO`` files to avoid
+    race conditions with ``importlib.metadata``. (#3904)
+  * Fix the name given to the ``*-nspkg.pth`` files in editable
+    installs, ensuring they are unique per distribution. (#4041)
+  * Workaround some limitations on ``pkg_resources``-style legacy
+    namespaces in the meta path finder for editable installations.
+- drop sphinx72.patch (upstream)
+
+-------------------------------------------------------------------
 Mon Oct 16 12:03:15 UTC 2023 - Daniel Garcia Moreno <daniel.garcia@suse.com>
 
 - Do not ship bundled exes
@@ -7,22 +72,22 @@ Mon Oct 16 12:03:15 UTC 2023 - Daniel Garcia Moreno <daniel.garcia@suse.com>
 Tue Aug 22 13:02:46 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - update to 68.1.2
-  * Fix editable install finder handling of nested packages, by only 
-    handling 1 level of nesting and relying on importlib.machinery 
-    to find the remaining modules based on the parent package path. 
+  * Fix editable install finder handling of nested packages, by only
+    handling 1 level of nesting and relying on importlib.machinery
+    to find the remaining modules based on the parent package path.
 - add sphinx72.patch: address circular imports in sphinx 7.2+
 
 -------------------------------------------------------------------
 Wed Aug 16 07:53:31 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - update to 68.1.0
-  * Removed code referencing bdist_wininst in install_scripts. 
+  * Removed code referencing bdist_wininst in install_scripts.
   * Promote pyproject.toml’s [tool.setuptools] out of beta.
-  * Automatically add files listed in Extension.depends to sdists, 
-    as long as they are contained in the project directory 
+  * Automatically add files listed in Extension.depends to sdists,
+    as long as they are contained in the project directory
   * Require Python 3.8 or later.
   * Use default encoding to create .pth files with editable_wheel.
-  * Detects (and complain about) scripts and gui-scripts set via 
+  * Detects (and complain about) scripts and gui-scripts set via
     setup.py when pyproject.toml does not include them in dynamic.
 
 -------------------------------------------------------------------
@@ -81,7 +146,7 @@ Wed May  3 02:23:58 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
     don’t raise error
   * #3849: Overhaul warning system for better visibility.
   * #3884: Add a stacklevel parameter to warnings.warn() to provide more
-    information to the user. 
+    information to the user.
 - Add patch use-tarfile-extraction_filter.patch:
   * Set an extraction_filter to avoid a warning.
 
@@ -847,7 +912,7 @@ Wed Jul 13 09:01:18 UTC 2022 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Fri Mar 25 01:13:50 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Refresh remove_mock.patch to add a missing file to it. 
+- Refresh remove_mock.patch to add a missing file to it.
 
 -------------------------------------------------------------------
 Mon Feb  7 10:59:43 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -995,7 +1060,7 @@ Thu Aug 13 11:03:41 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 Tue Jun 23 15:41:14 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - use local source dir for pytest imports
-  gh#openSUSE/python-rpm-macros#48 
+  gh#openSUSE/python-rpm-macros#48
 
 -------------------------------------------------------------------
 Mon Apr  6 17:14:11 UTC 2020 - Matej Cepl <mcepl@suse.com>
@@ -1076,10 +1141,10 @@ Wed Oct 16 11:55:57 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 Fri Oct 11 09:29:35 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 41.4.0
-  * In declarative config, now traps errors when invalid python_requires 
+  * In declarative config, now traps errors when invalid python_requires
     values are supplied.
-  * When storing extras, rely on OrderedSet to retain order of extras 
-    as indicated by the packager, which will also be deterministic 
+  * When storing extras, rely on OrderedSet to retain order of extras
+    as indicated by the packager, which will also be deterministic
     on Python 2.7 (with PYTHONHASHSEED unset) and Python 3.6+.
   * Fixed failing integration test triggered by 'long_description_content_type' in packaging.
 
@@ -1688,7 +1753,7 @@ Thu Feb 16 15:58:12 UTC 2017 - jmatejek@suse.com
 -------------------------------------------------------------------
 Mon Dec 12 12:57:12 UTC 2016 - hpj@urpla.net
 
-- make sure, that setuptools-certpath.patch is applied 
+- make sure, that setuptools-certpath.patch is applied
   unconditionally (fixes traceback in setuptools/ssl_support.py)
 
 -------------------------------------------------------------------
@@ -2127,7 +2192,7 @@ Mon Feb  1 10:57:28 UTC 2016 - toddrme2178@gmail.com
 Thu Oct 22 13:50:42 UTC 2015 - toddrme2178@gmail.com
 
 - Update to 18.4
-  * Test command now always invokes unittest, 
+  * Test command now always invokes unittest,
     even if no test suite is supplied.
 
 -------------------------------------------------------------------
@@ -2453,7 +2518,7 @@ Fri Mar 27 14:30:44 UTC 2015 - tbechtold@suse.com
 -------------------------------------------------------------------
 Thu Jan 15 17:48:35 CET 2015 - lchiquitto@suse.de
 
-- Add package to SLE 12 SDK (FATE#318137, bnc#913229) 
+- Add package to SLE 12 SDK (FATE#318137, bnc#913229)
 
 -------------------------------------------------------------------
 Wed Jul 23 08:54:56 UTC 2014 - sleep_walker@suse.cz
@@ -2522,24 +2587,24 @@ Thu May  8 11:25:32 UTC 2014 - toddrme2178@gmail.com
 Thu Apr 17 11:57:05 UTC 2014 - toddrme2178@gmail.com
 
 - Update to version 3.4.4
-  * Issue #184: Correct failure where find_package over-matched 
+  * Issue #184: Correct failure where find_package over-matched
     packages when directory traversal isn't short-circuited.
 - Update to version 3.4.3
   * Issue #183: Really fix test command with Python 3.1.
 - Update to version 3.4.2
-  * Issue #183: Fix additional regression in test command on 
+  * Issue #183: Fix additional regression in test command on
     Python 3.1.
 - Update to version 3.4.1
-  * Issue #180: Fix regression in test command not caught 
+  * Issue #180: Fix regression in test command not caught
     by py.test-run tests.
 - Update to version 3.4
-  * Issue #176: Add parameter to the test command to support a 
+  * Issue #176: Add parameter to the test command to support a
     custom test runner: --test-runner or -r.
-  * Issue #177: Now assume most common invocation to install 
-    command on platforms/environments without stack support 
-    (issuing a warning). Setuptools now installs naturally on 
+  * Issue #177: Now assume most common invocation to install
+    command on platforms/environments without stack support
+    (issuing a warning). Setuptools now installs naturally on
     IronPython. Behavior on CPython should be unchanged.
-- Remove %check, which now depends on pytest and thus introduces 
+- Remove %check, which now depends on pytest and thus introduces
   a dependency loop (setuptools->pytest->py->setuptools)
 
 -------------------------------------------------------------------
@@ -2623,7 +2688,7 @@ Fri Nov  8 13:29:36 UTC 2013 - aj@ajaissle.de
 - New upstream version
   * Fixed behavior of NameError handling in 'script template (dev).py' (script launcher for 'develop' installs).
   * ez_setup.py now ensures partial downloads are cleaned up following a failed download.
-  * Distribute #363 and Issue #55: Skip an sdist test that fails on locales other than UTF-8. 
+  * Distribute #363 and Issue #55: Skip an sdist test that fails on locales other than UTF-8.
 
 -------------------------------------------------------------------
 Fri Oct 11 08:40:08 UTC 2013 - speilicke@suse.com
@@ -2682,7 +2747,7 @@ Fri Oct 11 08:40:08 UTC 2013 - speilicke@suse.com
 -------------------------------------------------------------------
 Sun Aug 18 13:12:32 UTC 2013 - toddrme2178@gmail.com
 
-- Re-add Requires: python.  Not needed for recent releases, but a 
+- Re-add Requires: python.  Not needed for recent releases, but a
   lot of SLE packages fail without it.
 
 -------------------------------------------------------------------

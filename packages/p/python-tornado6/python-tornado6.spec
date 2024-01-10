@@ -1,7 +1,7 @@
 #
 # spec file for package python-tornado6
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %define         skip_python2 1
 Name:           python-tornado6
-Version:        6.3.3
+Version:        6.4
 Release:        0
 Summary:        Open source version of scalable, non-blocking web server that power FriendFeed
 License:        Apache-2.0
@@ -28,13 +28,12 @@ Source:         https://files.pythonhosted.org/packages/source/t/tornado/tornado
 Source99:       python-tornado6-rpmlintrc
 # PATCH-FIX-OPENSUSE ignore-resourcewarning-doctests.patch -- ignore resource warnings on OBS
 Patch0:         ignore-resourcewarning-doctests.patch
-# PATCH-FIX-UPSTREAM https://github.com/tornadoweb/tornado/commit/4d4d80c1d076dcb4e051c969ae4b66557d3856b8 Adapt to deprecation of datetime utc methods
-Patch:          py312-datetime.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pycares}
 BuildRequires:  %{python_module pycurl}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -90,7 +89,6 @@ rm -r %{buildroot}%{$python_sitearch}/tornado/test
 # install demos into docdir and deduplicate
 pdocdir=%{buildroot}%{_docdir}/$python-tornado6
 mkdir -p ${pdocdir}
-cp -r demos ${pdocdir}/
 find ${pdocdir} -name "*.py" -exec sed -i "1{s|^#!.*$|%{_bindir}/$python|}" {} \;
 find ${pdocdir} -type f -exec chmod a-x {} \;
 %fdupes ${pdocdir}

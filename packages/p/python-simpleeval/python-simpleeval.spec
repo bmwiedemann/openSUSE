@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2015 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define modname simpleeval
 Name:           python-%{modname}
-Version:        0.9.12
+Version:        0.9.13
 Release:        0
 Summary:        A simple, safe single expression evaluator library
 License:        MIT

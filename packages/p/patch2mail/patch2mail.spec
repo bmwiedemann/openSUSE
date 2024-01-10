@@ -1,7 +1,7 @@
 #
 # spec file for package patch2mail
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2008-2015 Christian Boltz
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,25 +25,19 @@
 Name:           patch2mail
 Version:        1.1.2
 Release:        0
-#
-#
 Summary:        Patch and package update notification via mail
-#BuildRequires: bash
-#
-#Url:            http://blog.cboltz.de/plugin/tag/patch2mail
 License:        GPL-2.0-or-later
 Group:          System/Packages
-Url:            https://github.com/openSUSE/zypp-utils/tree/master/patch2mail
-Source:         %{name}-%{version}.tar.bz2
-#
+URL:            https://github.com/openSUSE/zypp-utils/tree/master/patch2mail
+Source0:        %{name}-%{version}.tar.bz2
+Source1:        %{name}.service
+Source2:        %{name}.timer
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
-
-BuildRequires:  cron
+BuildRequires:  systemd-rpm-macros
 Requires:       /bin/hostname
 Requires:       /bin/rm
 Requires:       /usr/bin/xsltproc
-Requires:       cron
 Requires:       grep
 Requires:       mail
 Requires:       mktemp
@@ -66,36 +60,35 @@ if any patches or updated packages (configureable) are available.
 
 %install
 %{__install} -d -m 0755 %{buildroot}%{_datadir}/%{name}
-%{__install} -d -m 0755 %{buildroot}%{_sysconfdir}/cron.daily
 %{__install} -d -m 0755 %{buildroot}%{_fillupdir}/
+%{__install} -D -m 0644 %{SOURCE1} %{buildroot}/%{_unitdir}/%{name}.service
+%{__install} -D -m 0644 %{SOURCE2} %{buildroot}/%{_unitdir}/%{name}.timer
+%{__install} -D -m 0755 patch2mail %{buildroot}%{_bindir}/patch2mail
+%{__install} -m 0644 patch2mail.sysconfig %{buildroot}%{_fillupdir}/sysconfig.patch2mail
 
 %{__install} -m 0644 patch2mail.xsl %{buildroot}%{_datadir}/%{name}/patch2mail.xsl
 %if 0%{?suse_version} < 1030
 	%{__install} -m 0644 patch2mail.xsl_10.2 %{buildroot}%{_datadir}/%{name}/patch2mail.xsl
 %endif
 
-%{__install} -m 0755 patch2mail %{buildroot}%{_sysconfdir}/cron.daily/patch2mail
-%if 0%{?suse_version} < 1110
-	%{__install} -m 0755 patch2mail_11.0 %{buildroot}%{_sysconfdir}/cron.daily/patch2mail
-%endif
-%if 0%{?suse_version} < 1100
-	%{__install} -m 0755 patch2mail_10.3 %{buildroot}%{_sysconfdir}/cron.daily/patch2mail
-%endif
-%{__install} -m 0644 patch2mail.sysconfig %{buildroot}%{_fillupdir}/sysconfig.patch2mail
+%pre
+%service_add_pre %{name}.service %{name}.timer
 
-echo ==== Buildroot: %{buildroot} ====
-find %{buildroot}
-echo ================================
-
-%clean
-%{__rm} -rf %{buildroot}
+%preun
+%service_del_preun %{name}.service %{name}.timer
 
 %post
 %{fillup_only -n patch2mail}
+%service_add_post %{name}.service %{name}.timer
+
+%postun
+%service_del_postun %{name}.service %{name}.timer
 
 %files
 %defattr(-,root,root)
-%{_sysconfdir}/cron.daily/%{name}
+%{_bindir}/%{name}
+%{_unitdir}/%{name}.service
+%{_unitdir}/%{name}.timer
 %{_datadir}/%{name}
 %{_fillupdir}/sysconfig.patch2mail
 %doc README COPYING

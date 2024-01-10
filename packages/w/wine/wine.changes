@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Dec 23 08:41:39 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 9.0-rc3 release
+  - Bug fixes only, we are in code freeze.
+- update staging to 9.0-rc3 release
+
+-------------------------------------------------------------------
+Sat Dec 16 15:27:29 UTC 2023 - llyyr <llyyr.public@gmail.com>
+
+- Add libxkbcommon and libxkbregistry as build requirements to
+  enable building the Wayland driver
+
+-------------------------------------------------------------------
+Sat Dec 16 07:24:54 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 9.0-rc2 release
+  - Bug fixes only, we are in code freeze.
+- update staging to 9.0-rc2 release
+- updated C library bundled provides
+
+-------------------------------------------------------------------
 Sat Dec  9 13:25:34 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 9.0-rc1 release

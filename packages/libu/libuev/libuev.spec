@@ -1,7 +1,7 @@
 #
 # spec file for package libuev
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2018, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define sover 3
 Name:           libuev
-Version:        2.4.0
+Version:        2.4.1
 Release:        0
 Summary:        Event loop library
 License:        MIT

@@ -1,7 +1,7 @@
 #
 # spec file for package python-google-api-python-client
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,9 @@
 #
 
 
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-google-api-python-client
-Version:        2.103.0
+Version:        2.112.0
 Release:        0
 Summary:        Google APIs Python Client
 License:        Apache-2.0
@@ -30,9 +29,10 @@ BuildRequires:  %{python_module google-auth >= 1.19.0}
 BuildRequires:  %{python_module google-auth-httplib2 >= 0.1.0}
 BuildRequires:  %{python_module httplib2 >= 0.15.0}
 BuildRequires:  %{python_module parameterized}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module uritemplate  >= 3.0.1}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-google-api-core >= 1.31.5
@@ -54,10 +54,10 @@ Google APIs Client Library for Python
 %autosetup -p1 -n google-api-python-client-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -73,6 +73,6 @@ donttest="$donttest or TestAuthWithOAuth2Client or test_oauth2client_crendential
 %license LICENSE
 %{python_sitelib}/apiclient
 %{python_sitelib}/googleapiclient
-%{python_sitelib}/google_api_python_client-%{version}*-info
+%{python_sitelib}/google_api_python_client-%{version}.dist-info
 
 %changelog

@@ -39,4 +39,38 @@
     cause images to overlap with text (#57).</comment>
     <requestid>1128654</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1484fcedba08bd144a2781f079701f8d</srcmd5>
+    <version>0.4.0+0</version>
+    <time>1702845194</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.4.0:
+  * Add support for all of bat's code highlighting themes (#67).
+  * Add terminal-dark and terminal-light themes that preserve
+    the terminal's colors and background (#68 #69).
+  * Allow placing themes in $HOME/.config/presenterm/themes
+    to make them available automatically as if they were
+    built-in themes (#73).
+  * Allow configuring the default theme in
+    $HOME/.config/presenterm/config.yaml (#74).
+  * Add support for rendering LaTeX and typst code blocks
+    automatically as images (#75 #76 #79 #81).
+  * Add syntax highlighting support for nix and diff (#78 #82).
+  * Add comment command to jump into the middle of a slide (#86).
+  * Add configuration option to have implicit slide ends (#87 #89).
+  * Add configuration option to have custom comment-command prefix (#91).</comment>
+    <requestid>1133672</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0a3c21aef1452ab0c769ef20601918c1</srcmd5>
+    <version>0.4.1+0</version>
+    <time>1703281370</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.4.1:
+  * Cause an error if an unknown field name is found on a theme, config
+    file, or front matter (#102).
+  * Explicitly disable kitty/iterm protocols when printing images in export
+    PDF mode as this was causing PDF generation in macOS to fail (#101).</comment>
+    <requestid>1134652</requestid>
+  </revision>
 </revisionlist>

@@ -47,4 +47,16 @@
     <comment></comment>
     <requestid>1117679</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8be06eb072feb8175528680df2391a64</srcmd5>
+    <version>1.0.0~rc3+git0.6f4d730</version>
+    <time>1702845122</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0.0~rc3 (jsc#PED-5449):
+  * Guest/verify: fix misbehaviour of verify and write with -p
+  * Guest/generate: trustedcadb variable allow only CA certificates
+  * Guest/Verify: -w option allowed when use -u with -p
+  * guest/generate: fix potential null reference in pk/append special case (forwarded request 1133155 from michals)</comment>
+    <requestid>1133590</requestid>
+  </revision>
 </revisionlist>

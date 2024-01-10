@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5Completion5
-%define _tar_path 5.103
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
+%define qt5_version 5.15.2
 %bcond_without released
 Name:           kcompletion
-Version:        5.112.0
+Version:        5.113.0
 Release:        0
 Summary:        Widgets with advanced completion support
 License:        LGPL-2.1-or-later
@@ -34,14 +34,13 @@ Source:         %{name}-%{version}.tar.xz
 Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
-BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
+BuildRequires:  extra-cmake-modules >= %{_kf5_version}
 BuildRequires:  fdupes
-BuildRequires:  kf5-filesystem
-BuildRequires:  cmake(KF5Config) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5WidgetsAddons) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(Qt5LinguistTools) >= 5.15.0
-BuildRequires:  cmake(Qt5UiPlugin) >= 5.15.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.15.0
+BuildRequires:  cmake(KF5Config) >= %{_kf5_version}
+BuildRequires:  cmake(KF5WidgetsAddons) >= %{_kf5_version}
+BuildRequires:  cmake(Qt5LinguistTools) >= %{qt5_version}
+BuildRequires:  cmake(Qt5UiPlugin) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Widgets) >= %{qt5_version}
 
 %description
 KCompletion provides widgets with advanced completion support as well as a
@@ -57,8 +56,7 @@ lower-level completion class which can be used with your own widgets.
 %package devel
 Summary:        Header files for kcompletion, a widget collection with completion support
 Requires:       %{lname} = %{version}
-Requires:       extra-cmake-modules
-Requires:       cmake(Qt5Widgets) >= 5.15.0
+Requires:       cmake(Qt5Widgets) >= %{qt5_version}
 
 %description devel
 Development files for KCompletion, a widget collection with advanced

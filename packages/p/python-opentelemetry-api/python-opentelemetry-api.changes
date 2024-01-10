@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec 27 11:03:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.22.0:
+  * Prometheus exporter sanitize info metric (#3572)
+  * Remove Jaeger exporters (#3554)
+  * Log stacktrace on `UNKNOWN` status OTLP export error  (#3536)
+  * Fix OTLPExporterMixin shutdown timeout period (#3524)
+  * Handle `taskName` `logrecord` attribute (#3557)
+
+-------------------------------------------------------------------
 Sun Dec 10 21:48:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.21.0:

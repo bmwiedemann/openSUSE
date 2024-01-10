@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Jan  9 15:03:22 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update dependencies
+
+-------------------------------------------------------------------
+Sun Jan  7 19:20:21 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.8:
+  * Can't include nested data files in built wheel
+  * Update domain name
+- update to 2.1.7:
+  * Rename tag-pattern to tag_regex in the docs
+  * Copytree handle existing dirs
+  * Normalize the dist info name in the wheel
+- update to 2.1.6:
+  * Path to uri expansion in dependency string
+- update to 2.1.5:
+  * Don't quote project root in file:// urls Fix #190
+  * Write version to file doesn't work for editable installs
+- update to 2.1.4:
+  * Write version file for sdist build as well
+- update to 2.1.3:
+  * Remove duplicate files when building wheel
+- update to 2.1.2:
+  * Fix file permissions to 644 for wheel
+- update to 2.1.1:
+  * Pdm-backend should not normalize names in project metadata
+
+-------------------------------------------------------------------
 Mon Jun 19 13:41:44 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add importlib-metadata dependency

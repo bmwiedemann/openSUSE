@@ -1,14 +1,13 @@
-<!--
-# vim: set syntax=xml
--->
-
 <services>
-  <service name="tar_scm" mode="disabled">
+  <service name="tar_scm" mode="manual">
     <param name="url">https://github.com/mcfletch/pyopengl</param>
     <param name="scm">git</param>
     <param name="include">accelerate</param>
-    <!--  INFO: This is latest revision as of 20220401
-    <param name="revision">227f9c66976d9f5dadf62b9a97e6beaec84831ca</param>
+    <!--
+          INFO: This is latest revision as of 20220401
+          <param name="revision">227f9c66976d9f5dadf62b9a97e6beaec84831ca</param>
+          INFO: This is latest revision as of 20240103
+          <param name="revision">29b79e8966ba2930a5c44829b02dffc1ca600752</param>
     -->
     <param name="versionformat">%h</param>
     <!--  Not sure if it's because of a lack of tagging, etc
@@ -16,11 +15,15 @@
           Not sure if it's a limitation of 'obs-service-tar_scm'
           or my understanding of it.
     -->
-    <param name="versionrewrite-pattern">227f9c66</param>
+    <!--
+    <param name="versionrewrite-pattern">227f9c6</param>
     <param name="versionrewrite-replacement">3.1.6</param>
+    -->
+    <param name="versionrewrite-pattern">29b79e8</param>
+    <param name="versionrewrite-replacement">3.1.7</param>
     <param name="filename">PyOpenGL-accelerate</param>
   </service>
-  <service name="recompress" mode="disabled">
+  <service name="recompress" mode="manual">
     <param name="file">*.tar</param>
     <param name="compression">gz</param>
   </service>

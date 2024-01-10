@@ -18,20 +18,21 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-fastnumbers
-Version:        5.0.1
+Version:        5.1.0
 Release:        0
 Summary:        Drop-in replacement for Python's int and float
 License:        MIT
 URL:            https://github.com/SethMMorton/fastnumbers
 Source:         https://files.pythonhosted.org/packages/source/f/fastnumbers/fastnumbers-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module typing-extensions}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %if 0%{?suse_version} <= 1500
-BuildRequires:  gcc12
-BuildRequires:  gcc12-c++
+BuildRequires:  gcc13
+BuildRequires:  gcc13-c++
 %else
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
@@ -61,14 +62,14 @@ fastnumbers is a Python module with three objectives:
 
 %build
 %if 0%{?suse_version} <= 1500
-export CC=gcc-12
-export CXX=g++-12
+export CC=gcc-13
+export CXX=g++-13
 %endif
-export CFLAGS="%{optflags}"
-%python_build
+export CFLAGS="%{optflags} -Wno-error=return-type"
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -80,6 +81,6 @@ pytest-%{$python_bin_suffix}
 %doc README.rst
 %license LICENSE
 %{python_sitearch}/fastnumbers
-%{python_sitearch}/fastnumbers-%{version}*-info
+%{python_sitearch}/fastnumbers-%{version}.dist-info
 
 %changelog

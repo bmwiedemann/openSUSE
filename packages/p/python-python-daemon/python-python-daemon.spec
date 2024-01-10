@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-python-daemon
-Version:        2.3.2
+Version:        3.0.1
 Release:        0
 Summary:        Library to implement a well-behaved Unix daemon process
 License:        Apache-2.0 AND GPL-3.0-only
@@ -28,23 +28,25 @@ Source:         https://files.pythonhosted.org/packages/source/p/python-daemon/p
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module importlib_resources}
 BuildRequires:  %{python_module lockfile >= 0.10}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module testscenarios >= 0.4}
 BuildRequires:  %{python_module testtools}
-BuildRequires:  %{python_module twine}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-lockfile >= 0.10
+Requires:       python-setuptools >= 62.4.0
 BuildArch:      noarch
 %python_subpackages
 
 %description
-This library implements the well-behaved daemon specification of PEP 3143, "Standard daemon
-process library".
+This library implements the well-behaved daemon specification of PEP 3143,
+"Standard daemon process library".
 
-A well-behaved Unix daemon process is tricky to get right, but the required steps are much the
-same for every daemon program. A DaemonContext instance holds the behaviour and configured
-process environment for the program; use the instance as a context manager to enter a daemon state.
+A well-behaved Unix daemon process is tricky to get right, but the required
+steps are much the same for every daemon program. A DaemonContext instance
+holds the behaviour and configured process environment for the program; use the
+instance as a context manager to enter a daemon state.
 
 %prep
 %autosetup -p1 -n python-daemon-%{version}
@@ -52,10 +54,10 @@ process environment for the program; use the instance as a context manager to en
 sed -i '/docutils/d' setup.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -64,6 +66,7 @@ sed -i '/docutils/d' setup.py
 %files %{python_files}
 %license LICENSE.ASF-2 LICENSE.GPL-3
 %doc README ChangeLog doc/*
-%{python_sitelib}/*
+%{python_sitelib}/daemon
+%{python_sitelib}/python_daemon-%{version}.dist-info
 
 %changelog

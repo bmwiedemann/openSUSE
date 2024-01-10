@@ -18,7 +18,7 @@
 
 
 Name:           level-zero
-Version:        1.15.1
+Version:        1.15.8
 Release:        0
 Summary:        oneAPI Level Zero Specification Headers and Loader
 License:        MIT

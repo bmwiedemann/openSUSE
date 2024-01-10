@@ -1,7 +1,7 @@
 #
 # spec file for package libcdirectory
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lname	libcdirectory1
 Name:           libcdirectory
-Version:        20220105
+Version:        20240105
 Release:        0
 Summary:        Library for Windows NT data types
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
@@ -29,9 +29,9 @@ Source2:        https://github.com/libyal/libcdirectory/releases/download/%versi
 Source3:        %name.keyring
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libcerror) >= 20220101
-BuildRequires:  pkgconfig(libclocale) >= 20210526
-BuildRequires:  pkgconfig(libuna) >= 20210801
+BuildRequires:  pkgconfig(libcerror) >= 20240101
+BuildRequires:  pkgconfig(libclocale) >= 20221218
+BuildRequires:  pkgconfig(libuna) >= 20230710
 # Various notes: https://en.opensuse.org/libyal
 
 %description

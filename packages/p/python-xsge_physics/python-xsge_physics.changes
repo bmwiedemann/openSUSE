@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jan  2 21:00:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- require setuptools
+
+-------------------------------------------------------------------
+Wed Dec 27 16:00:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.13.3:
+  * Made the platformer example use xsge_tiled now.
+  * Relicensed to GNU LGPL.
+
+-------------------------------------------------------------------
 Wed May 26 04:55:19 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.13.2:

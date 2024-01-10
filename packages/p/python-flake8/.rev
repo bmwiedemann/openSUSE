@@ -434,4 +434,18 @@
 - Switch to pyproject macros.</comment>
     <requestid>1102807</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>ee92fd219d75e6b045e165d99eac5032</srcmd5>
+    <version>7.0.0</version>
+    <time>1704558554</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.0.0:
+  * Remove ``--include-in-doctest`` and ``--exclude-from-doctest``
+    options.
+  * Pyflakes has been updated to &gt;= 3.2.0, &lt; 3.3.0
+
+  * Ignore unfixed warning.
+- remove remove_mock_dependency.patch</comment>
+    <requestid>1137099</requestid>
+  </revision>
 </revisionlist>

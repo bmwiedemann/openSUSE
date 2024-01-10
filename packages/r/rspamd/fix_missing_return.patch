@@ -1,8 +1,8 @@
-Index: rspamd-3.3/src/libserver/symcache/symcache_item.hxx
+Index: rspamd-3.7.5/src/libserver/symcache/symcache_item.hxx
 ===================================================================
---- rspamd-3.3.orig/src/libserver/symcache/symcache_item.hxx
-+++ rspamd-3.3/src/libserver/symcache/symcache_item.hxx
-@@ -77,6 +77,7 @@ constexpr static auto item_type_to_str(s
+--- rspamd-3.7.5.orig/src/libserver/symcache/symcache_item.hxx
++++ rspamd-3.7.5/src/libserver/symcache/symcache_item.hxx
+@@ -78,6 +78,7 @@ constexpr static auto item_type_to_str(s
  	case symcache_item_type::VIRTUAL:
  		return "virtual";
  	}

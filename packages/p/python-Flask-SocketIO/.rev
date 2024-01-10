@@ -44,4 +44,18 @@
 - Add %{?sle15_python_module_pythons}</comment>
     <requestid>1131368</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>afbf1645b6ba7cf0679f144154b48d32</srcmd5>
+    <version>5.3.6</version>
+    <time>1702936611</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.3.6:
+  * Fixes in the test client to support recent changes in Socket.IO
+    dependencies
+
+- Update to version 5.1.1
+- Update to 5.0.3
+- Initial version</comment>
+    <requestid>1133839</requestid>
+  </revision>
 </revisionlist>

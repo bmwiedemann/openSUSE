@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Dec 20 15:15:38 UTC 2023 - filippo.bonazzi@suse.com
+
+- Update to version 2.5.0+git20231220.9e24b84:
+  * cron-whitelist: update cronie-anacron digest (bsc#1218107)
+  * SUIDPermissionsCheck: fix broken warnings and harmonize code
+
+-------------------------------------------------------------------
+Thu Dec 14 15:09:40 UTC 2023 - filippo.bonazzi@suse.com
+
+- Update to version 2.5.0+git20231214.5f62def:
+  * Fix Aeon/Kalpa whitelisting distinct filenames (bsc#1217706, bsc#1217707)
+
+-------------------------------------------------------------------
+Thu Dec 14 10:31:53 UTC 2023 - filippo.bonazzi@suse.com
+
+- Update to version 2.5.0+git20231214.ab9d731:
+  * polkit rules whitelisting: add gamemode rules (bsc#1217915)
+
+-------------------------------------------------------------------
 Mon Dec 11 14:41:17 UTC 2023 - matthias.gerstner@suse.com
 
 - Update to version 2.5.0+git20231211.15d0caff:

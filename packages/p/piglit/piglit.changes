@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Thu Jan  4 07:37:36 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1~20231228:
+  * ext_render_snorm-render: Fix deprecated-non-prototype warning
+  * version-mixing: Fix deprecated-non-prototype warning
+  * draw-prim-rate: test more varying counts
+  * glsl-1.10/built-in-uniform-state: don't test Infs due to undefined behavior
+  * arb_vertex_program/property-bindings: don't test Infs due to undefined behavior
+  * glsl-1.40: add a UBO test that I don't remember why I needed it
+  * glsl-1.10: test a smooth color input with glShadeModel(GL_FLAT)
+  * arb_fragment_layer_viewport: don't test out-of-range gl_Layer values
+  * ext_render_snorm-render: lower test ctx version requirement
+  * Implement piglit_subprocess for Windows
+  * modifiers: Make a single list of the known modifiers.
+  * modifiers: Allow specifying format and modifier
+  * modifiers: Improve the presentation of results
+  * modifiers: Add clear reimport subtest
+  * modifiers: Add stress subtest
+  * modifiers: Indent an inner loop
+  * modifiers: Try to autogenerate dmabufs
+  * framework: Add piglit_drm_create_dma_buf_modifiers
+  * framework: Add an n_planes field
+  * ext_image_dma_buf_import: Add a test for modifiers
+  * ext_image_dma_buf_import: Support non-external textures
+  * ext_image_dma_buf_import: Require GL_EXT_EGL_image_storage
+  * Import the drm_fourcc/drm.h header and use them.
+  * arb_tessellation_shader: Add new test tesslevels-indirect
+  * ext_image_dma_buf_import: add a multithread refcount test
+  * ext_image_dma_buf_import-export-tex: Print normal info to stdout, not stderr.
+  * arb_separate_shader_objects/atomic-counter: Add missing GLSL requirement.
+  * GL_ARB_arrays_of_arrays: Fix a missing extension requirement.
+  * arb_shader_texture_lod: Fix incorrect require directive for the ext.
+  * Use piglit_require_minimum_getinteger(GL_MAX_DRAW_BUFFERS) more.
+  * fbo-mrt-alphatest: Actually require MRTs to be available.
+  * piglit: Make a general helper for required glGetIntegerv values.
+  * arb_copy_image: test copying of different mipmap levels of a texture
+  * arb_copy_image: test copying of different mipmap levels of a texture
+  * rendermode-feedback: fix stack-use-after-scope
+  * readme: Update vkrunner link
+  * add a test to verify that null attachments don't clamp fb size
+  * shader_runner: allow -1 to indicate a null fb attachment
+  * delete invalid gl_Layer/gl_Viewport tests
+  * shader_runner: support setting GL_CLIP_DISTANCE enums
+  * ext_render_snorm-render: test some negative values also
+  * arb_blend_func_extended: Don't print expected compile fails to stderr.
+  * shaders@glsl-max-varyings: reduce size of pixels
+  * ci: test with Python 3.11
+  * cmake: Add Python 3.12 to supported versions
+  * ext_external_objects: simplification for check_bound_fbo_status
+  * ext_external_objects: cleanup, remove some global parameters
+  * amd_gpu_shader_half_float: fix modf tests
+  * EGL_EXT_image_dma_buf_import: add VYUY format support
+  * EGL_EXT_image_dma_buf_import: add YVYU format support
+  * EGL_EXT_image_dma_buf_import: add NV21 format support
+  * ext_transform_feedback/api-errors: stop xfb before shutdown
+  * nv_copy_image-simple: Use red instead of green
+  * cmake: workaround BASH_COMPLETION_COMPLETIONSDIR pointing into wrong path
+  * bash-completion: Remove #! from non-executable file
+  * docs: Fix README link
+  * arb_bindless_texture: add additional uniform struct test
+  * glsl-1.10: add tests for clamp(abs(x)) and clamp(-x)
+  * glsl-1.10: extend glsl-vs-copy-propagation-1 test
+  * util: Pass explicit "-" for spirv-as input filename
+
+-------------------------------------------------------------------
 Mon Jun 19 13:05:22 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1~20230615:

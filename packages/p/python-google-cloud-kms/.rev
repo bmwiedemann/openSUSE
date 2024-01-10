@@ -163,4 +163,14 @@
   * add ProtectionLevel.External enum; standardize use of 'optional'</comment>
     <requestid>1131707</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>d2f4bd7c61b71b27b7562cff643cb714</srcmd5>
+    <version>2.20.0</version>
+    <time>1702845138</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.20.0:
+  * Require proto-plus &gt;= 1.22.3
+  * Use retry_async instead of retry in async client</comment>
+    <requestid>1133640</requestid>
+  </revision>
 </revisionlist>

@@ -182,4 +182,12 @@
     <comment>- Update to release 20231202</comment>
     <requestid>1130522</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>8093c0a243b5dbf38b3f1a3f2716c11c</srcmd5>
+    <version>20231228</version>
+    <time>1704487394</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1136938</requestid>
+  </revision>
 </revisionlist>

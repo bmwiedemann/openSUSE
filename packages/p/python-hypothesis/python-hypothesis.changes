@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Sat Jan  6 20:28:21 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.92.2:
+  * updates vendored list of top-level domains
+
+-------------------------------------------------------------------
+Wed Dec 27 10:12:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.92.1:
+  * This release adds an experimental :wikipedia:`observability
+  * This patch fixes an issue where
+    :func:`~hypothesis.strategies.builds` could not be used with
+    :pypi:`attrs` objects that defined private attributes (i.e.
+    attributes with a leading underscore). See also
+  * This release adds an optional ``payload`` argument to
+    :func:`hypothesis.event`, so that you can clearly express
+    the difference between the label and the value of an
+    observation.
+  * This patch supports assigning ``settings = settings(...)`` as
+    a class attribute on a subclass of a ``.TestCase`` attribute
+    of a :class:`~hypothesis.stateful.RuleBasedStateMachine`.
+  * This release makes it an error to assign ``settings =
+    settings(...)`` as a class attribute on a
+    :class:`~hypothesis.stateful.RuleBasedStateMachine`.
+  * This patch refactors some internals.  There is no user-
+    visible change, but we hope to improve performance and unlock
+    support for alternative backends such as :pypi:`symbolic
+    execution with crosshair in future (:issue:`3086`).
+  * This release teaches :func:`~hypothesis.strategies.from_type`
+    to handle constraints implied by the :pypi:`annotated-types`
+    package - as used by e.g. :pypi:`Pydantic`.
+  * This patch adds a warning when :func:`@st.composite
+    wraps a function annotated as returning a
+    :class:`~hypothesis.strategies.SearchStrategy`,
+    since this is usually an error (:issue:`3786`).
+  * This patch refactors ``from_type(typing.Tuple)``, allowing
+    :func:`~hypothesis.strategies.register_type_strategy` to take
+    effect for tuples instead of being silently ignored
+  * This patch improves the speed of the explain phase on python
+    3.12+, by using the new :mod:`sys.monitoring` module to collect
+    coverage, instead of :obj:`sys.settrace`.
+
+-------------------------------------------------------------------
 Wed Nov  1 15:02:50 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Update to 6.88.1
@@ -14,7 +57,7 @@ Mon Oct 16 14:10:17 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
  * This release allows strategy-generating functions registered
      with register_type_strategy() to conditionally not return
      a strategy, by returning NotImplemented
- * When randoms( was called with use_true_randoms=False, 
+ * When randoms( was called with use_true_randoms=False,
      calling sample on it with an empty sequence and 0 elements
      would result in an error, when it should have returned
      an empty sequence to agree with the normal behaviour of
@@ -38,7 +81,7 @@ Wed Oct 11 09:18:10 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
  * Hotfix for :issue:`3747`, a bug in explain mode which is so rare
  that we missed it in six months of dogfooding. Thanks to :pypi:`mygrad`
  for discovering and promptly reporting this!
- * This patch improves the documentation of 
+ * This patch improves the documentation of
  :obj:`@example(...).xfail() <hypothesis.example.xfail>` by adding a note
  about PEP 614, similar to :obj:`@example(...).via() <hypothesis.example.via>`,
  and adds a warning when a strategy generates a test case which
@@ -74,7 +117,7 @@ Wed Oct 11 09:18:10 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
  removing previously-hard-coded limitations. With fullmatch=False and alphabet=characters(),
  surrogate characters are now possible in leading and trailing text as well as the body
  of the match. Negated character classes such as [^A-Z] or \S had a hard-coded
- exclusion of control characters and surrogate characters; now they permit 
+ exclusion of control characters and surrogate characters; now they permit
  anything in alphabet= consistent with the class, and control characters
  are permitted by default.
  * Add a health check that detects if the same test is executed several times
@@ -447,16 +490,16 @@ Sun Oct 16 17:44:52 UTC 2022 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Sun Oct  9 21:39:51 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
-- Update to 6.56.1 
+- Update to 6.56.1
   * This patch improves the error message when Hypothesis detects
     “flush to zero” mode for floating-point: we now report which
     package(s) enabled this, which can make debugging much easier.
     See issue #3458 for details.
-- Release 6.56.0 
+- Release 6.56.0
   * This release defines __bool__() on SearchStrategy. It always
     returns True, like before, but also emits a warning to help
     with cases where you intended to draw a value (issue #3463).
-- Release 6.55.0 
+- Release 6.55.0
   * In preparation for future versions of the Array API standard,
     make_strategies_namespace() now accepts an optional api_version
     argument, which determines the version conformed to by the
@@ -466,15 +509,15 @@ Sun Oct  9 21:39:51 UTC 2022 - Ben Greiner <code@bnavigator.de>
     currently equivalent to the existing xps.numeric_dtypes()
     strategy, but exists because the latter is expected to include
     complex numbers in the next version of the standard.
-- Release 6.54.6 
+- Release 6.54.6
   * If multiple explicit examples (from @example()) raise a Skip
     exception, for consistency with generated examples we now
     re-raise the first instead of collecting them into an
     ExceptionGroup (issue #3453).
-- Release 6.54.5 
+- Release 6.54.5
   * This patch updates our autoformatting tools, improving our code
     style without any API changes.
-- Release 6.54.4 
+- Release 6.54.4
   * This patch fixes some type annotations for Python 3.9 and
     earlier (issue #3397), and teaches explain mode about certain
     locations it should not bother reporting (issue #3439).
@@ -482,15 +525,15 @@ Sun Oct  9 21:39:51 UTC 2022 - Ben Greiner <code@bnavigator.de>
  *  This patch teaches the Ghostwriter an additional check for
     function and class locations that should make it use public
     APIs more often.
-- Release 6.54.2 
+- Release 6.54.2
   * This patch fixes our workaround for a pytest bug where the
     inner exceptions in an ExceptionGroup are not displayed (issue
     #3430).
-- Release 6.54.1 
+- Release 6.54.1
   * This patch makes FailedHealthCheck and DeadlineExceeded
     exceptions picklable, for compatibility with Django’s parallel
     test runner (issue #3426).
-- Release 6.54.0 
+- Release 6.54.0
   * Reporting of multiple failing examples now uses the PEP 654
     ExceptionGroup type, which is provided by the exceptiongroup
     backport on Python 3.10 and earlier (issue #3175).
@@ -499,68 +542,68 @@ Sun Oct  9 21:39:51 UTC 2022 - Ben Greiner <code@bnavigator.de>
     exception notes, which ensures that they will always appear
     together with the traceback and other information about their
     respective error.
-- Release 6.53.0 
+- Release 6.53.0
   * from_field() now supports UsernameField from
     django.contrib.auth.forms.
   * Thanks to Afonso Silva for reporting and working on issue
     #3417.
-- Release 6.52.4 
+- Release 6.52.4
   * This patch improves the error message when you pass filenames
     to the hypothesis write CLI, which takes the name of a module
     or function (e.g. hypothesis write gzip or hypothesis write
     package.some_function rather than hypothesis write script.py).
   * Thanks to Ed Rogers for implementing this as part of the SciPy
     2022 sprints!
-- Release 6.52.3 
+- Release 6.52.3
   * This patch ensures that the warning for non-interactive
     .example() points to your code instead of Hypothesis internals
     (issue #3403).
   * Thanks to @jameslamb for this fix.
-- Release 6.52.2 
+- Release 6.52.2
   * This patch makes integers() more likely to generate boundary
     values for large two-sided intervals (issue #2942).
-- Release 6.52.1 
+- Release 6.52.1
   * This patch adds filter rewriting for math.isfinite(),
     math.isinf(), and math.isnan() on integers() or floats() (issue
     #2701).
   * Thanks to Sam Clamons at the SciPy Sprints!
-- Release 6.52.0 
+- Release 6.52.0
   * This release adds the allow_subnormal argument to
     complex_numbers() by applying it to each of the real and
     imaginary parts separately. Closes issue #3390.
   * Thanks to Evan Tey for this fix.
-- Release 6.51.0 
+- Release 6.51.0
   * Issue a deprecation warning if a function decorated with
     @composite does not draw any values (issue #3384).
   * Thanks to Grzegorz Zieba, Rodrigo Girão, and Thomas Ball for
     working on this at the EuroPython sprints!
-- Release 6.50.1 
+- Release 6.50.1
   * This patch improves the error messages in @example() argument
     validation following the recent release of 6.49.1.
-- Release 6.50.0 
+- Release 6.50.0
   * This release allows from_dtype() to generate Unicode strings
     which cannot be encoded in UTF-8, but are valid in Numpy arrays
     (which use UTF-32).
   * This logic will only be used with Numpy >= 1.19, because
     earlier versions have an issue which led us to revert
     Hypothesis 5.2 last time!
-- Release 6.49.1 
+- Release 6.49.1
   * This patch fixes some inconsistency between argument handling
     for @example and @given (2706).
-- Release 6.49.0 
+- Release 6.49.0
   * This release uses PEP 612 typing.ParamSpec (or the
     typing_extensions backport) to express the
     first-argument-removing behaviour of @st.composite and
     signature-preservation of functions() to IDEs, editor plugins,
     and static type checkers such as mypy.
-- Release 6.48.3 
+- Release 6.48.3
   * hypothesis.event() now works for hashable objects which do not
     support weakrefs, such as integers and tuples.
-- Release 6.48.2 
+- Release 6.48.2
   * This patch tidies up some internal introspection logic, which
     will improve support for positional-only arguments in a future
     release (issue #2706).
-- Release 6.48.1 
+- Release 6.48.1
   * This release automatically rewrites some simple filters, such
     as floats().filter(lambda x: x >= 10) to the more efficient
     floats(min_value=10), based on the AST of the predicate.
@@ -569,25 +612,25 @@ Sun Oct  9 21:39:51 UTC 2022 - Ben Greiner <code@bnavigator.de>
     “Checks” where you already have a simple predicate and
     translating manually is really annoying. See issue #2701 for
     details.
-- Release 6.48.0 
+- Release 6.48.0
   * This release raises SkipTest for which never executed any
     examples, for example because the phases setting excluded the
     explicit, reuse, and generate phases. This helps to avoid cases
     where broken tests appear to pass, because they didn’t actually
     execute (issue #3328).
-- Release 6.47.5 
+- Release 6.47.5
   * This patch fixes type annotations that had caused the signature
     of @given to be partially-unknown to type-checkers for Python
     versions before 3.10.
-- Release 6.47.4 
+- Release 6.47.4
   * This patch fixes from_type() on Python 3.11, following
     python/cpython#93754.
-- Release 6.47.3 
+- Release 6.47.3
   * This patch makes the too_slow health check more consistent with
     long deadline tests (issue #3367) and fixes an install issue
     under pipenv which was introduced in Hypothesis 6.47.2 (issue
     #3374).
-- Release 6.47.2 
+- Release 6.47.2
   * We now use the PEP 654 ExceptionGroup type - provided by the
     exceptiongroup backport on older Pythons - to ensure that if
     multiple errors are raised in teardown, they will all
@@ -901,7 +944,7 @@ Sun Dec 12 11:40:54 UTC 2021 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Mon Dec  6 18:10:30 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- fix requires 
+- fix requires
 
 -------------------------------------------------------------------
 Mon Dec  6 09:35:44 UTC 2021 - Matej Cepl <mcepl@suse.com>
@@ -918,7 +961,7 @@ Sun Dec  5 18:29:41 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 Sat Dec  4 18:31:49 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 
 - update 6.30.0
-  tests/test_api disabled as recommended 
+  tests/test_api disabled as recommended
   https://github.com/HypothesisWorks/hypothesis/issues/3178
 
 -------------------------------------------------------------------
@@ -970,7 +1013,7 @@ Wed Nov 11 12:15:41 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 5.41.2:
   * long list of changes and improvements, see
-  https://hypothesis.readthedocs.io/en/latest/changes.html#v5-41-2 
+  https://hypothesis.readthedocs.io/en/latest/changes.html#v5-41-2
 
 -------------------------------------------------------------------
 Wed Aug 12 20:51:26 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
@@ -988,28 +1031,28 @@ Wed Aug 12 20:51:26 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
     and complex_numbers() strategies.
 - Update to version 5.24.1
   * This patch updates some docstrings, without changing runtime
-    behaviour. 
+    behaviour.
 - add comment about source archive
 
 -------------------------------------------------------------------
 Tue Aug 11 12:28:11 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to version 5.24.0
-  * The functions() strategy has a new argument pure=True, 
-    which ensures that the same return value is generated 
-    for identical calls to the generated function (issue 
+  * The functions() strategy has a new argument pure=True,
+    which ensures that the same return value is generated
+    for identical calls to the generated function (issue
     #2538).
-  * Thanks to Zac Hatfield-Dodds and Nikita Sobolev for this 
+  * Thanks to Zac Hatfield-Dodds and Nikita Sobolev for this
     feature!
 - Update to version 5.23.12
-  * This release removes a number of Hypothesis's internal 
-    "shrink passes" - transformations it makes to a 
-    generated test case during shrinking - which appeared to 
+  * This release removes a number of Hypothesis's internal
+    "shrink passes" - transformations it makes to a
+    generated test case during shrinking - which appeared to
     be redundant with other transformations.
-  * It is unlikely that you will see much impact from this. 
-    If you do, it will likely show up as a change in 
-    shrinking performance (probably slower, maybe faster), 
-    or possibly in worse shrunk results. If you encounter 
+  * It is unlikely that you will see much impact from this.
+    If you do, it will likely show up as a change in
+    shrinking performance (probably slower, maybe faster),
+    or possibly in worse shrunk results. If you encounter
     the latter, please let us know.
 - remove rpmlintrc again
 - use only github source repository (python subdir) in obscpio
@@ -1018,7 +1061,7 @@ Tue Aug 11 12:28:11 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 Sat Aug  8 08:41:01 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Use PyPI source for package and test it with tests from the
-  Github repository -- source hypothesis-python-tests-5.23.11 
+  Github repository -- source hypothesis-python-tests-5.23.11
   as direct CPIO archive hypothesis-python-tests-5.23.11.obscpio
   created by (locally run) obs_scm service
 - Reenable django and pandas tests
@@ -1028,110 +1071,110 @@ Sat Aug  8 08:41:01 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
   * Trims total build time by a large factor despite now running
     pandas and django tests too!
 - Drop failing-test_array_values_are_unique_high_collision.patch
-  * Fix the test instead gh#HypothesisWorks/hypothesis#2447    
+  * Fix the test instead gh#HypothesisWorks/hypothesis#2447
 - python-hypothesis-rpmlintrc -- filter empty types file
-- Sync requirements versions to setup.py 
+- Sync requirements versions to setup.py
   * newer versions probably came from wrong interpretation of
     upstream's version pinning
-- Update to version 5.23.11 
-  * This release fixes a bug in some internal Hypothesis support 
-    code. It has no user visible impact.    
+- Update to version 5.23.11
+  * This release fixes a bug in some internal Hypothesis support
+    code. It has no user visible impact.
 - Update to version 5.23.10
-  * This release improves the quality of shrunk test cases in some 
-    special cases. Specifically, it should get shrinking unstuck in 
-    some scenarios which require simultaneously changing two parts 
-    of the generated test case.    
+  * This release improves the quality of shrunk test cases in some
+    special cases. Specifically, it should get shrinking unstuck in
+    some scenarios which require simultaneously changing two parts
+    of the generated test case.
 - Update to version 5.23.9
-  * This release improves the performance of some internal support 
-    code. It has no user visible impact, as that code is not 
+  * This release improves the performance of some internal support
+    code. It has no user visible impact, as that code is not
     currently run during normal Hypothesis operation.
 - Update to version 5.23.8
-  * This release adds a heuristic to detect when shrinking has 
-    finished despite the fact that there are many more possible 
-    transformations to try. This will be particularly useful for 
-    tests where the minimum failing test case is very large despite 
-    there being many smaller test cases possible, where it is 
-    likely to speed up shrinking dramatically.    
-  * In some cases it is likely that this will result in worse 
-    shrunk test cases. In those cases rerunning the test will 
-    result in further shrinking.    
+  * This release adds a heuristic to detect when shrinking has
+    finished despite the fact that there are many more possible
+    transformations to try. This will be particularly useful for
+    tests where the minimum failing test case is very large despite
+    there being many smaller test cases possible, where it is
+    likely to speed up shrinking dramatically.
+  * In some cases it is likely that this will result in worse
+    shrunk test cases. In those cases rerunning the test will
+    result in further shrinking.
 - Update to version 5.23.7
-  * This release makes some performance improvements to shrinking. 
-    They should only be noticeable for tests that are currently 
+  * This release makes some performance improvements to shrinking.
+    They should only be noticeable for tests that are currently
     particularly slow to shrink.
 - Update to version 5.23.6
-  * This patch adds some more internal functions to support a new 
-    feature we're working on, like version 5.18.3. There is still 
+  * This patch adds some more internal functions to support a new
+    feature we're working on, like version 5.18.3. There is still
     no user-visible changes yet.
-- Update to version 5.23.5  
-  * This release makes some changes to internal support code that 
-    is not currently used in production Hypothesis. It has no user 
+- Update to version 5.23.5
+  * This release makes some changes to internal support code that
+    is not currently used in production Hypothesis. It has no user
     visible effect at present.
 - Update to version 5.23.4
   * This release improves shrinking quality in some special cases.
-- Update to version 5.23.3  
-  * This release fixes issue #2507, where lazy evaluation meant 
-    that the values drawn from a sampled_from() strategy could 
-    depend on mutations of the sampled sequence that happened after 
+- Update to version 5.23.3
+  * This release fixes issue #2507, where lazy evaluation meant
+    that the values drawn from a sampled_from() strategy could
+    depend on mutations of the sampled sequence that happened after
     the strategy was constructed.
 - Update to version 5.23.2
-  * This patch fixes issue #2462, a bug in our handling of 
-    unittest.TestCase.subTest(). Thanks to Israel Fruchter for 
+  * This patch fixes issue #2462, a bug in our handling of
+    unittest.TestCase.subTest(). Thanks to Israel Fruchter for
     fixing this at the EuroPython sprints!
 - Update to version 5.23.1
-  * This release improves the behaviour of the characters() 
-    strategy when shrinking, by changing which characters are 
-    considered smallest to prefer more "normal" ascii 
+  * This release improves the behaviour of the characters()
+    strategy when shrinking, by changing which characters are
+    considered smallest to prefer more "normal" ascii
     characters where available.
-- Update to version 5.23.0  
-  * The default print_blob setting is now smarter. It defaults to 
-    True in CI and False for local development.    
-  * Thanks to Hugo van Kemenade for implementing this feature at 
+- Update to version 5.23.0
+  * The default print_blob setting is now smarter. It defaults to
+    True in CI and False for local development.
+  * Thanks to Hugo van Kemenade for implementing this feature at
     the EuroPython sprints!
-- Update to version 5.22.0 
-  * The slices() strategy can now generate slices for empty 
-    sequences, slices with negative start and stop indices (from 
-    the end of the sequence), and step=None in place of step=1.    
-  * Thanks to Sangarshanan for implementing this feature at the 
+- Update to version 5.22.0
+  * The slices() strategy can now generate slices for empty
+    sequences, slices with negative start and stop indices (from
+    the end of the sequence), and step=None in place of step=1.
+  * Thanks to Sangarshanan for implementing this feature at the
     EuroPython sprints!
-- Update to version 5.21.0   
-  * This release ensures that tests which raise RecursionError are 
-    not reported as flaky simply because we run them from different 
+- Update to version 5.21.0
+  * This release ensures that tests which raise RecursionError are
+    not reported as flaky simply because we run them from different
     initial stack depths (issue #2494).
 - Update to version 5.20.4
-  * This release improves the performance of the sample method on 
-    objects obtained from randoms() when use_true_random=False. 
-    This should mostly only be noticeable when the sample size is a 
-    large fraction of the population size, but may also help avoid 
+  * This release improves the performance of the sample method on
+    objects obtained from randoms() when use_true_random=False.
+    This should mostly only be noticeable when the sample size is a
+    large fraction of the population size, but may also help avoid
     health check failures in some other cases.
 - Update to version 5.20.3
-  * This release makes some internal changes for testing purposes 
+  * This release makes some internal changes for testing purposes
     and should have no user visible effect.
 - Update to version 5.20.2
-  * This release fixes a small caching bug in Hypothesis internals 
-    that may under some circumstances have resulted in a less 
-    diverse set of test cases being generated than was intended.    
-  * Fixing this problem revealed some performance problems that 
-    could occur during targeted property based testing, so this 
-    release also fixes those. Targeted property-based testing 
-    should now be significantly faster in some cases, but this may 
+  * This release fixes a small caching bug in Hypothesis internals
+    that may under some circumstances have resulted in a less
+    diverse set of test cases being generated than was intended.
+  * Fixing this problem revealed some performance problems that
+    could occur during targeted property based testing, so this
+    release also fixes those. Targeted property-based testing
+    should now be significantly faster in some cases, but this may
     be at the cost of reduced effectiveness.
 - Update to version 5.20.1
-  * This patch updates our formatting to use isort 5. There is no 
+  * This patch updates our formatting to use isort 5. There is no
     user-visible change.
 - Update to version 5.20.0
-  * The basic_indices() strategy can now generate bare indexers in 
+  * The basic_indices() strategy can now generate bare indexers in
     place of length-one tuples. Thanks to Andrea for this patch!
 - Update to version 5.19.3
-  * This patch removes an internal use of distutils in order to 
+  * This patch removes an internal use of distutils in order to
     avoid this setuptools warning for some users.
 - Update to version 5.19.2
-  * This patch contains a small internal refactoring with no 
-    user-visible impact.  
+  * This patch contains a small internal refactoring with no
+    user-visible impact.
     Thanks to Andrea for writing this at the SciPy 2020 Sprints!
 - Update to version 5.19.1
-  * This release slightly improves shrinking behaviour. This should 
-    mainly only impact stateful tests, but may have some minor 
+  * This release slightly improves shrinking behaviour. This should
+    mainly only impact stateful tests, but may have some minor
     positive impact on shrinking collections (lists, sets, etc).
 
 -------------------------------------------------------------------
@@ -1817,7 +1860,7 @@ Thu Jun  6 09:01:21 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 4.24.2
  * Deprecation messages for functions in hypothesis.extra.django.models
-   now explicitly name the deprecated function to make it easier to track down usages. 
+   now explicitly name the deprecated function to make it easier to track down usages.
  * a spurious bug raised when a @st.composite function was passed a keyword-only argument.
  * deprecates GenericStateMachine, in favor of RuleBasedStateMachine.
  * This patch clarifies some error messages when the test function signature
@@ -2800,7 +2843,7 @@ update to version 3.45.3
   * Update pygithub from 1.35 to 1.36
 - Use pythonhosted.org sdist for Source
 - Comment BuildRequires for tests. Tests in %check section are
-  currently disabled 
+  currently disabled
 
 -------------------------------------------------------------------
 Wed Jan 17 15:46:40 UTC 2018 - tchvatal@suse.com
@@ -2977,7 +3020,7 @@ Sun Dec 17 01:26:12 UTC 2017 - arun@gmx.de
 -------------------------------------------------------------------
 Fri Dec 15 08:55:52 UTC 2017 - ecsos@opensuse.org
 
-- Add patch python-hypothesis-build.patch 
+- Add patch python-hypothesis-build.patch
   to fix Factory build error
 
 -------------------------------------------------------------------
@@ -3363,60 +3406,60 @@ Mon May  9 17:57:36 UTC 2016 - toddrme2178@gmail.com
       storage directory (usually in home). This fixes that.
 - Update to 3.1.2
   + Single bug fix release:
-    * Anything which used a text() or characters() strategy was broken on 
+    * Anything which used a text() or characters() strategy was broken on
       Windows and I hadn’t updated appveyor to use the new repository location
       so I  didn’t notice. This is now fixed and windows support should work
       correctly.
 - Update to 3.1.1
   + Minor bug fix release.
-    * Fix concurrency issue when running tests that use text() from multiple 
+    * Fix concurrency issue when running tests that use text() from multiple
       processes at once (Bug #302, thanks to Alex Chan).
-    * Improve performance of code using lists with max_size (thanks to Cristi 
+    * Improve performance of code using lists with max_size (thanks to Cristi
       Cobzarenco).
-    * Fix install on Python 2 with ancient versions of pip so that it installs 
+    * Fix install on Python 2 with ancient versions of pip so that it installs
       the enum34 backport (thanks to Donald Stufft for telling me how to do
       this).
-    * Remove duplicated __all__ exports from hypothesis.strategies (thanks to 
+    * Remove duplicated __all__ exports from hypothesis.strategies (thanks to
       Piët Delport).
     * Update headers to point to new repository location.
-    * Allow use of strategies that can’t be used in find() (e.g. choices) in 
+    * Allow use of strategies that can’t be used in find() (e.g. choices) in
       stateful testing.
 - Update to 3.1.0
   * Add a ‘nothing’ strategy that never successfully generates values.
-  * sampled_from() and one_of() can both now be called with an empty argument 
+  * sampled_from() and one_of() can both now be called with an empty argument
     list, in which case they also never generate any values.
-  * one_of may now be called with a single argument that is a collection of 
+  * one_of may now be called with a single argument that is a collection of
     strategies as well as as varargs.
-  * Add a ‘runner’ strategy which returns the instance of the current test 
+  * Add a ‘runner’ strategy which returns the instance of the current test
     object if there is one.
-  * ‘Bundle’ for RuleBasedStateMachine is now a normal(ish) strategy and can be 
+  * ‘Bundle’ for RuleBasedStateMachine is now a normal(ish) strategy and can be
     used as such.
   * Tests using RuleBasedStateMachine should now shrink significantly better.
-  * Hypothesis now uses a pretty-printing library internally, compatible with 
+  * Hypothesis now uses a pretty-printing library internally, compatible with
     IPython’s pretty printing protocol (actually using the same code). This may
     improve the quality of output in some cases.
-  * As a ‘phases’ setting that allows more fine grained control over which 
+  * As a ‘phases’ setting that allows more fine grained control over which
     parts of the process Hypothesis runs
-  * Add a suppress_health_check setting which allows you to turn off specific 
+  * Add a suppress_health_check setting which allows you to turn off specific
     health checks in a fine grained manner.
-  * Fix a bug where lists of non fixed size would always draw one more element 
-    than they included. This mostly didn’t matter, but if would cause problems with 
+  * Fix a bug where lists of non fixed size would always draw one more element
+    than they included. This mostly didn’t matter, but if would cause problems with
     empty strategies or ones with side effects.
-  * Add a mechanism to the Django model generator to allow you to explicitly 
+  * Add a mechanism to the Django model generator to allow you to explicitly
     request the default value (thanks to Jeremy Thurgood for this one).
 - Update to 3.0.5
   * Fix a bug where Hypothesis would now error on py.test development versions.
 - Update to 3.0.4
-  * Fix a bug where Hypothesis would error when running on Python 2.7.3 or 
-    earlier because it was trying to pass a bytearray object to struct.unpack 
+  * Fix a bug where Hypothesis would error when running on Python 2.7.3 or
+    earlier because it was trying to pass a bytearray object to struct.unpack
     (which is only supported since 2.7.4).
 - Update to 3.0.3
   * Fix version parsing of py.test to work with py.test release candidates
-  * More general handling of the health check problem where things could fail 
+  * More general handling of the health check problem where things could fail
     because of a cache miss - now one “free” example is generated before the
     start  of the health check run.
 - Update to 3.0.2
-  * Under certain circumstances, strategies involving text() buried inside some 
+  * Under certain circumstances, strategies involving text() buried inside some
     other strategy (e.g. text().filter(...) or recursive(text(), ...)) would
     cause  a test to fail its health checks the first time it ran. This was
     caused by  having to compute some related data and cache it to disk. On
@@ -3425,180 +3468,180 @@ Mon May  9 17:57:36 UTC 2016 - toddrme2178@gmail.com
     is now fixed for all the known cases, although there could be others
     lurking.
 - Update to 3.0.1
-  * Fix a case where it was possible to trigger an “Unreachable” assertion when 
+  * Fix a case where it was possible to trigger an “Unreachable” assertion when
     running certain flaky stateful tests.
-  * Improve shrinking of large stateful tests by eliminating a case where it 
+  * Improve shrinking of large stateful tests by eliminating a case where it
     was hard to delete early steps.
-  * Improve efficiency of drawing binary(min_size=n, max_size=n) significantly 
+  * Improve efficiency of drawing binary(min_size=n, max_size=n) significantly
     by provide a custom implementation for fixed size blocks that can bypass a
     lot of machinery.
-  * Set default home directory based on the current working directory at the 
+  * Set default home directory based on the current working directory at the
     point Hypothesis is imported, not whenever the function first happens to be
     called.
 - Update to 3.0.0
-  + Externally this looks like a very small release. It has one small breaking 
+  + Externally this looks like a very small release. It has one small breaking
     change that probably doesn’t affect anyone at all (some behaviour that
     never really worked correctly is now outright forbidden) but necessitated a
     major version bump and one visible new feature.
-    Internally this is a complete rewrite. Almost nothing other than the 
+    Internally this is a complete rewrite. Almost nothing other than the
     public API is the same.
   + New features:
-    * Addition of data() strategy which allows you to draw arbitrary data 
+    * Addition of data() strategy which allows you to draw arbitrary data
       interactively within the test.
-    * New “exploded” database format which allows you to more easily check the 
+    * New “exploded” database format which allows you to more easily check the
       example database into a source repository while supporting merging.
     * Better management of how examples are saved in the database.
-    * Health checks will now raise as errors when they fail. It was too easy to 
+    * Health checks will now raise as errors when they fail. It was too easy to
       have the warnings be swallowed entirely.
   + New limitations:
-    * choices and streaming strategies may no longer be used with find(). 
+    * choices and streaming strategies may no longer be used with find().
       Neither may data() (this is the change that necessitated a major version
       bump).
   + Feature removal:
-    * The ForkingTestCase executor has gone away. It may return in some more 
+    * The ForkingTestCase executor has gone away. It may return in some more
       working form at a later date.
   + Performance improvements:
-    * A new model which allows flatmap, composite strategies and stateful 
+    * A new model which allows flatmap, composite strategies and stateful
       testing to perform much better. They should also be more reliable.
-    * Filtering may in some circumstances have improved significantly. This 
+    * Filtering may in some circumstances have improved significantly. This
       will help especially in cases where you have lots of values with
       individual filters on them, such as lists(x.filter(...)).
-    * Modest performance improvements to the general test runner by avoiding 
+    * Modest performance improvements to the general test runner by avoiding
       expensive operations
-    * In general your tests should have got faster. If they’ve instead got 
+    * In general your tests should have got faster. If they’ve instead got
       significantly slower, I’m interested in hearing about it.
   + Data distribution:
-    * The data distribution should have changed significantly. This may uncover 
+    * The data distribution should have changed significantly. This may uncover
       bugs the previous version missed. It may also miss bugs the previous
       version could have uncovered. Hypothesis is now producing less strongly
       correlated data than it used to, but the correlations are extended over
       more of the structure.
   + Shrinking:
-    * Shrinking quality should have improved. In particular Hypothesis can now 
-      perform simultaneous shrinking of separate examples within a single test 
+    * Shrinking quality should have improved. In particular Hypothesis can now
+      perform simultaneous shrinking of separate examples within a single test
       (previously it was only able to do this for elements of a single
-      collection). 
+      collection).
       In some cases performance will have improved, in some cases it will have
       got worse but generally shouldn’t have by much.
 - Update to 2.0.0
-  + This release cleans up all of the legacy that accrued in the course of 
+  + This release cleans up all of the legacy that accrued in the course of
     Hypothesis 1.0. These are mostly things that were emitting deprecation
     warnings in 1.19.0, but there were a few additional changes.
     In particular:
-    * non-strategy values will no longer be converted to strategies when used 
+    * non-strategy values will no longer be converted to strategies when used
       in given or find.
     * FailedHealthCheck is now an error and not a warning.
-    * Handling of non-ascii reprs in user types have been simplified by using 
+    * Handling of non-ascii reprs in user types have been simplified by using
       raw strings in more places in Python 2.
     * given no longer allows mixing positional and keyword arguments.
     * given no longer works with functions with defaults.
-    * given no longer turns provided arguments into defaults - they will not 
+    * given no longer turns provided arguments into defaults - they will not
       appear in the argspec at all.
     * the basic() strategy no longer exists.
     * the n_ary_tree strategy no longer exists.
-    * the average_list_length setting no longer exists. Note: If you’re using 
+    * the average_list_length setting no longer exists. Note: If you’re using
       using recursive() this will cause you a significant slow down. You should
       pass explicit average_size parameters to collections in recursive calls.
     * @rule can no longer be applied to the same method twice.
-    * Python 2.6 and 3.3 are no longer officially supported, although in 
+    * Python 2.6 and 3.3 are no longer officially supported, although in
       practice they still work fine.
   + This also includes two non-deprecation changes:
-    * given’s keyword arguments no longer have to be the rightmost arguments 
+    * given’s keyword arguments no longer have to be the rightmost arguments
       and can appear anywhere in the method signature.
     * The max_shrinks setting would sometimes not have been respected.
 - Update to 1.19.0
-  + This release heralds the beginning of a new and terrible age of Hypothesis 
+  + This release heralds the beginning of a new and terrible age of Hypothesis
       2.0.
-    It’s primary purpose is some final deprecations prior to said release. The 
+    It’s primary purpose is some final deprecations prior to said release. The
       goal is that if your code emits no warnings under this release then it
       will probably run unchanged under Hypothesis 2.0 (there are some caveats
       to this: 2.0 will drop support for some Python versions, and if you’re
       using internal APIs then as usual that may break without warning).
   + It does have two new features:
-    * New @seed() decorator which allows you to manually seed a test. This may 
+    * New @seed() decorator which allows you to manually seed a test. This may
       be harmlessly combined with and overrides the derandomize setting.
-    * settings objects may now be used as a decorator to fix those settings to 
+    * settings objects may now be used as a decorator to fix those settings to
       a particular @given test.
   + API changes (old usage still works but is deprecated):
-    * Settings has been renamed to settings (lower casing) in order to make the 
+    * Settings has been renamed to settings (lower casing) in order to make the
       decorator usage more natural.
-    * Functions for the storage directory that were in hypothesis.settings are 
+    * Functions for the storage directory that were in hypothesis.settings are
       now in a new hypothesis.configuration module.
   + Additional deprecations:
-    * the average_list_length setting has been deprecated in favour of being 
+    * the average_list_length setting has been deprecated in favour of being
       explicit.
-    * the basic() strategy has been deprecated as it is impossible to support 
+    * the basic() strategy has been deprecated as it is impossible to support
       it under a Conjecture based model, which will hopefully be implemented at
       some point in the 2.x series.
-    * the n_ary_tree strategy (which was never actually part of the public API) 
+    * the n_ary_tree strategy (which was never actually part of the public API)
       has been deprecated.
-    * Passing settings or random as keyword arguments to given is deprecated 
+    * Passing settings or random as keyword arguments to given is deprecated
       (use the new functionality instead)
   + Bug fixes:
-    * No longer emit PendingDeprecationWarning for __iter__ and StopIteration 
+    * No longer emit PendingDeprecationWarning for __iter__ and StopIteration
       in streaming() values.
-    * When running in health check mode with non strict, don’t print quite so 
+    * When running in health check mode with non strict, don’t print quite so
       many errors for an exception in reify.
-    * When an assumption made in a test or a filter is flaky, tests will now 
+    * When an assumption made in a test or a filter is flaky, tests will now
       raise Flaky instead of UnsatisfiedAssumption.
 - Update to 1.18.1
   + Two behind the scenes changes:
-    * Hypothesis will no longer write generated code to the file system. This 
+    * Hypothesis will no longer write generated code to the file system. This
       will improve performance on some systems (e.g. if you’re using
       PythonAnywhere which is running your code from NFS) and prevent some
       annoying interactions with auto-restarting systems.
-    * Hypothesis will cache the creation of some strategies. This can 
+    * Hypothesis will cache the creation of some strategies. This can
       significantly improve performance for code that uses flatmap or composite
       and thus has to instantiate strategies a lot.
 - Update to 1.18.0
   + Features:
-    * Tests and find are now explicitly seeded off the global random module. 
+    * Tests and find are now explicitly seeded off the global random module.
       This means that if you nest one inside the other you will now get a
       health check error. It also means that you can control global
       randomization by seeding random.
-    * There is a new random_module() strategy which seeds the global random 
+    * There is a new random_module() strategy which seeds the global random
       module for you and handles things so that you don’t get a health check
       warning if you use it inside your tests.
-    * floats() now accepts two new arguments: allow_nan and allow_infinity. 
+    * floats() now accepts two new arguments: allow_nan and allow_infinity.
       These default to the old behaviour, but when set to False will do what
       the names suggest.
   + Bug fixes:
-    * Fix a bug where tests that used text() on Python 3.4+ would not actually 
+    * Fix a bug where tests that used text() on Python 3.4+ would not actually
       be deterministic even when explicitly seeded or using the derandomize
       mode, because generation depended on dictionary iteration order which was
       affected by hash randomization.
-    * Fix a bug where with complicated strategies the timing of the initial 
+    * Fix a bug where with complicated strategies the timing of the initial
       health check could affect the seeding of the subsequent test, which would
       also render supposedly deterministic tests non-deterministic in some
       scenarios.
-    * In some circumstances flatmap() could get confused by two structurally 
+    * In some circumstances flatmap() could get confused by two structurally
       similar things it could generate and would produce a flaky test where the
       first time it produced an error but the second time it produced the other
       value, which was not an error. The same bug was presumably also possible
       in composite().
-    * flatmap() and composite() initial generation should now be moderately 
+    * flatmap() and composite() initial generation should now be moderately
       faster. This will be particularly noticeable when you have many values
-      drawn from the same strategy in a single run, e.g. constructs like 
+      drawn from the same strategy in a single run, e.g. constructs like
       lists(s.flatmap(f)). Shrinking performance may have suffered, but this
       didn’t actually produce an interestingly worse result in any of the
       standard scenarios tested.
 - Update to 1.17.1
-  * A small bug fix release, which fixes the fact that the ‘note’ function 
-      could not be used on tests which used the @example decorator to provide 
+  * A small bug fix release, which fixes the fact that the ‘note’ function
+      could not be used on tests which used the @example decorator to provide
       explicit examples.
 - Update to 1.17.0
-  + This is actually the same release as 1.16.1, but 1.16.1 has been pulled 
+  + This is actually the same release as 1.16.1, but 1.16.1 has been pulled
     because it contains the following additional change that was not intended
     to be in a patch release (it’s perfectly stable, but is a larger change
     that should  have required a minor version bump):
-    * Hypothesis will now perform a series of “health checks” as part of 
+    * Hypothesis will now perform a series of “health checks” as part of
       running your tests. These detect and warn about some common error
       conditions that people often run into which wouldn’t necessarily have
       caued the test to  fail but would cause e.g. degraded performance or
       confusing results.
 - Update to 1.16.1
-  * A small bugfix release that allows bdists for Hypothesis to be built under 
-      2.7 - the compat3.py file which had Python 3 syntax wasn’t intended to be 
+  * A small bugfix release that allows bdists for Hypothesis to be built under
+      2.7 - the compat3.py file which had Python 3 syntax wasn’t intended to be
       loaded under Python 2, but when building a bdist it was. In particular
       this would break running setup.py test.
 

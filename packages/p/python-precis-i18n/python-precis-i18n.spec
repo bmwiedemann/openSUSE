@@ -16,22 +16,23 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
 %define _name   precis_i18n
 Name:           python-precis-i18n
-Version:        1.0.5
+Version:        1.1.0
 Release:        0
 Summary:        Internationalised Usernames and Passwords
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/byllyfish/precis_i18n
 Source:         https://github.com/byllyfish/precis_i18n/archive/v%{version}.tar.gz#/%{_name}-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Suggests:       python-unicodedata2
 BuildArch:      noarch
+Provides:       python-%{_name} = %{version}-%{release}
 %python_subpackages
 
 %description
@@ -51,10 +52,10 @@ This module implements the PRECIS Framework as described in:
 %autosetup -n %{_name}-%{version} -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/
 
 %check
@@ -62,8 +63,8 @@ This module implements the PRECIS Framework as described in:
 
 %files %{python_files}
 %license LICENSE.txt
-%doc CHANGELOG.rst README.rst
+%doc CHANGELOG.md README.md
 %{python_sitelib}/%{_name}/
-%{python_sitelib}/%{_name}-*
+%{python_sitelib}/%{_name}-%{version}.dist-info
 
 %changelog

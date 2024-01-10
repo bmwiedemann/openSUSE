@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Dec 24 06:53:10 UTC 2023 - Gordon Leung <pirateclip@protonmail.com>
+
+- Update to 0.14.14
+ * Features
+  - cli: Change module load error to suggestion for how to install 3rd party modules
+  - languages: U+00A0 non-breaking space must be stretchable by default
+  - typesetters: Support U+00AD soft hyphen as discretionary break
+ * Bug Fixes
+  - cli: Stop outputting error messages twice on failure to process main file
+  - core: Use nil-safe and Lua-version-robust table utils
+  - packages: Adjust dropcap logic for letters with a depth
+
+-------------------------------------------------------------------
 Tue Oct 31 17:28:13 UTC 2023 - Gordon Leung <pirateclip@protonmail.com>
 
 - Update to 0.14.13

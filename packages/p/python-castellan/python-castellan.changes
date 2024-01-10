@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Jan  4 09:15:28 UTC 2024 - cloud-devel@suse.de
+
+- update to version 4.3.0
+  - Revert "Implement force parameter"
+  - Revert "Moves supported python runtimes from version 3.8 to 3.10"
+  - Update master for stable/zed
+  - Revert "Add secret consumers documentation and release note"
+  - Moves supported python runtimes from version 3.8 to 3.10
+  - Initial change to add secret consumers
+  - Add Python3 antelope unit tests
+  - Revert "Add secret consumers functional tests"
+  - Add force parameter functional tests
+  - Update master for stable/2023.1
+  - Implement force parameter
+  - Add support for specifying Vault KV path
+  - Add secret consumers
+  - Add secret consumers functional tests
+  - Add secret consumers documentation and release note
+  - Update TOX_CONSTRAINTS_FILE for stable/2023.2
+  - Revert "Add secret consumers"
+  - Make tests more consistent
+  - Fix tox4 error
+  - Update .gitreview for stable/2023.2
+  - Revert "Add force parameter functional tests"
+
+-------------------------------------------------------------------
 Mon Mar  6 21:01:20 UTC 2023 - cloud-devel@suse.de
 
 - update to version 4.0.0

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan  5 07:24:32 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.4.1:
+  * Update README with list of moden Linux APIs used
+  * Fix #27: possible buffer overrun in uev_run()
+
+-------------------------------------------------------------------
 Sat Oct  9 12:49:52 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - libuev 2.4.0:

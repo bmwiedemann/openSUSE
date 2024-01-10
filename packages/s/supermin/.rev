@@ -159,4 +159,20 @@
     <comment></comment>
     <requestid>1046569</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>f79e1d3d25b3e5fa4a942a7ffae7bb3a</srcmd5>
+    <version>5.3.3</version>
+    <time>1704487403</time>
+    <user>dimstar_suse</user>
+    <comment>Update supermin to version 5.3.3</comment>
+    <requestid>1136944</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>7f8024e7dce69dfc244dc1b727510ae8</srcmd5>
+    <version>5.3.3</version>
+    <time>1704753918</time>
+    <user>anag+factory</user>
+    <comment>Add Jira request number to changelog. No code change.</comment>
+    <requestid>1137604</requestid>
+  </revision>
 </revisionlist>

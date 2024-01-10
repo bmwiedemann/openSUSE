@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyzmq
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %bcond_with     tests
 %endif
 Name:           python-pyzmq
-Version:        25.1.1
+Version:        25.1.2
 Release:        0
 Summary:        Python bindings for 0MQ
 License:        BSD-3-Clause AND LGPL-3.0-or-later

@@ -164,4 +164,41 @@
     <comment></comment>
     <requestid>1104003</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>827576ee8d48a5e6294a1e96eab1506b</srcmd5>
+    <version>5.1</version>
+    <time>1704753854</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.1:
+  * Add support for Python 3.12.
+- drop python312.patch (upstream)
+
+- add python312.patch to build with python 3.12
+  * Fix copying of PersistentList and PersistentMapping using copy.copy
+  * Fix the Python implementation of the PickleCache to be able to
+    store objects that cannot be weakly referenced.
+  * Packaging-only release: get manylinux wheel built
+  * Avoid raising a SystemError: error return without exception
+    set when loading an object with slots whose jar generates an
+  * Fix the hashcode of Python TimeStamp objects on 64-bit
+    Python on Windows. See
+  * Stop calling gc.collect every time PickleCache.incrgc is
+    called (every transaction boundary) in pure-Python mode (PyPy).
+    This means that the reported size of the cache may be wrong
+  * Stop clearing the dict and slots of objects added to
+    PickleCache.new_ghost (typically these values are passed to
+  * Fix __setstate__ interning when state parameter is not a
+  * Drop use of ctypes for determining maximum integer size, to
+    increase pure-Python compatibility. See
+  * Ensure that __slots__ attributes are cleared when a
+    override __new__. See
+  * Fix the hashcode of C TimeStamp objects on 64-bit Python 3
+  * Fixed the Python(/PYPY) implementation TimeStamp.timeTime
+  * When testing PURE_PYTHON environments under tox, avoid
+  * Fix manifest and re-upload to fix stray files included in
+  * Make the Python implementation of Persistent and PickleCache
+    behave more similarly to the C implementation. In particular,
+    the Python version can now run the complete ZODB and ZEO test</comment>
+    <requestid>1137436</requestid>
+  </revision>
 </revisionlist>

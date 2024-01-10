@@ -188,4 +188,20 @@
     <comment></comment>
     <requestid>1121478</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ab697ec23acc96ed2eb2bb64b908c1ce</srcmd5>
+    <version>0.14.14</version>
+    <time>1703527550</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.14.14
+ * Features
+  - cli: Change module load error to suggestion for how to install 3rd party modules
+  - languages: U+00A0 non-breaking space must be stretchable by default
+  - typesetters: Support U+00AD soft hyphen as discretionary break
+ * Bug Fixes
+  - cli: Stop outputting error messages twice on failure to process main file
+  - core: Use nil-safe and Lua-version-robust table utils
+  - packages: Adjust dropcap logic for letters with a depth</comment>
+    <requestid>1134957</requestid>
+  </revision>
 </revisionlist>

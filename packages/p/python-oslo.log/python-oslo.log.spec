@@ -17,15 +17,16 @@
 
 
 Name:           python-oslo.log
-Version:        5.2.0
+Version:        5.4.0
 Release:        0
 Summary:        OpenStack log library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/oslo.log
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.log/oslo.log-5.2.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.log/oslo.log-5.4.0.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  openstack-macros
+BuildRequires:  python3-eventlet
 BuildRequires:  python3-monotonic
 BuildRequires:  python3-oslo.config >= 5.2.0
 BuildRequires:  python3-oslo.context >= 2.21.0
@@ -77,14 +78,14 @@ BuildRequires:  python3-openstackdocstheme
 Documentation for the oslo.log library.
 
 %prep
-%autosetup -p1 -n oslo.log-5.2.0
+%autosetup -p1 -n oslo.log-5.4.0
 %py_req_cleanup
 
 %build
 %{py3_build}
 
 # generate html docs
-PYTHONPATH=. PBR_VERSION=5.2.0 %sphinx_build -b html doc/source doc/build/html
+PYTHONPATH=. PBR_VERSION=5.4.0 %sphinx_build -b html doc/source doc/build/html
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install

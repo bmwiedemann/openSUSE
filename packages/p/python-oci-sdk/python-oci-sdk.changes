@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jan  3 10:42:52 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.118.0
+  * Support for changing compartments of configurations in the PostgreSQL service
+  * Support for granular policies including compartments, resource types,
+    and recommendations in the Optimizer service
+  * Support for token exchanges in the Identity Domains service
+  * Support for Apache HTTP server discovery and monitoring in the Stack Monitoring service
+  * Support for resource locking in the Data Catalog service
+  * Support for concurrency throttling in the Data Integration service
+  * Support for reboot migrations for VMs on dedicated hosts in the Compute service
+  * Support for connection routing method settings and subnet update in the GoldenGate service
+  * Support for data discovery of commonly used sensitive types in the Data Safe service
+  * Support for incremental extract and updates to the workflows in the Data Integration service
+  * Support for default retries on the operations of the Optimizer service
+
+-------------------------------------------------------------------
 Thu Dec  7 10:01:04 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.117.0

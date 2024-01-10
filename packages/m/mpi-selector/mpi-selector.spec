@@ -29,6 +29,7 @@ Group:          System/Console
 Source:         http://www.openfabrics.org/downloads/mpi-selector/%{name}-%{version}.tar.gz
 Patch3:         mpi-selector-perl_path.patch
 Patch4:         mpi-selector-no_bang_line.patch
+Patch5:         reproducible.patch
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
@@ -46,9 +47,7 @@ The default can be changed easily via the mpi-selector command --
 editing of shell startup files is not required.
 
 %prep
-%setup -q
-%patch3 -p1
-%patch4
+%autosetup -p1
 
 %build
 %configure --with-shell-startup-dir=/etc/profile.d --localstatedir=%{data_dir}

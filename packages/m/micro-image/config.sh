@@ -1,6 +1,6 @@
 #!/bin/bash
 # SPDX-License-Identifier: MIT
-# SPDX-FileCopyrightText: (c) 2022-2023 SUSE LLC
+# SPDX-FileCopyrightText: (c) 2022-2024 SUSE LLC
 
 set -euo pipefail
 

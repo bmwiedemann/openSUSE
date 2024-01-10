@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Dec 13 17:40:08 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.29.1:
+  * Telegraf v1.29.1
+  * Update changelog for v1.29.1
+  * Update build_version.txt for v1.29.1
+  * fix(inputs.clickhouse): Omit zookeeper metrics on clickhouse cloud (#14443)
+  *  docs(inputs.memcached): Correct typo in README.md (#14448)
+  * fix(inputs.php-fpm): Parse JSON output (#14430)
+  * docs(inputs.ldap): Correct plugin name in sample config (#14446)
+  * chore(deps): Update all github.com/aws/aws-sdk-go-v2 dependencies (#14441)
+  * fix(inputs.procstat): Revert unintended renaming of 'systemd_unit' option (#14440)
+  * chore(deps): Bump github.com/go-ldap/ldap/v3 from 3.4.5 to 3.4.6 (#14435)
+  * chore(deps): Bump github.com/klauspost/compress from 1.17.3 to 1.17.4 (#14433)
+  * chore(deps): Bump github.com/openzipkin/zipkin-go from 0.4.1 to 0.4.2 (#14432)
+  * chore(deps): Bump github.com/tidwall/gjson from 1.14.4 to 1.17.0 (#14431)
+
+-------------------------------------------------------------------
 Mon Dec 11 19:35:38 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 1.29.0:

@@ -855,4 +855,41 @@
 </comment>
     <requestid>1127960</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>26e3a93f00851570ad2b739b3c34d300</srcmd5>
+    <version>23.3.2</version>
+    <time>1703024135</time>
+    <user>anag+factory</user>
+    <comment>- update to 23.3.2:
+  * Fix a bug in extras handling for link requirements (`#12372
+  * Fix mercurial revision &quot;parse error&quot;: use ``--rev={ref}``
+    instead of ``-r={ref}`` (`#12373
+
+- Finally drop csv23, it has been removed upstream since 2021.
+    ``setup.py``.
+- Use libalternatives instead of update-alternatives.
+    * Document that certain removals can be fast tracked.
+  * use %python_clone and %python_install_alternative for sip and
+  * Make the setup.py install deprecation warning less
+    noisy. We warn only when setup.py install succeeded and
+    setup.py bdist_wheel failed, as situations where both
+    fails are most probably irrelevant to this deprecation.
+- 20.2.2
+  * Only attempt to use the keyring once and if it fails, don’t try
+    again. This prevents spamming users with several keyring unlock
+  * Fix regression that distributions in system site-packages are
+    not correctly found when a virtual environment is configured
+  * Disable caching for range requests, which causes corrupted
+    wheels when pip tries to obtain metadata using the feature
+  * Always use UTF-8 to read pyvenv.cfg to match the built-in venv.
+  * 2020 Resolver: Correctly handle marker evaluation in
+    constraints and exclude them if their markers do not match the
+  * Correctly find already-installed distributions with dot (.) in
+  * Trace a better error message on installation failure due to
+  * Fix SVN version detection for alternative SVN distributions.
+  * New resolver: Correctly include the base package when specified
+  * Use UTF-8 to handle ZIP archive entries on Python 2 according
+    to PEP 427, so non-ASCII paths can be resolved as expected.</comment>
+    <requestid>1133888</requestid>
+  </revision>
 </revisionlist>

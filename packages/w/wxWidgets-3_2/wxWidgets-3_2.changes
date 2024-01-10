@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Dec 26 14:28:08 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Add autoconf-2_72.diff
+
+-------------------------------------------------------------------
+Sat Nov 11 17:38:28 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.2.4
+  * Allow creating wxArrays from std::initializer_list
+  * Fix regression in wxTranslations::AddCatalog() return value
+  * Fix possible crash when dragging pages in wxAuiNotebook
+  * Don't crash in console apps linked with GUI libraries
+  * Fix possible crash and too high CPU use when using EGL
+  * Fix losing clipboard contents when clearing a different selection
+
+-------------------------------------------------------------------
+Fri Nov  3 09:54:45 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.2.3
+  * Add move ctor and assignment operator to wxString
+  * Enable large file support in Unix CMake builds
+  * Make wxSocket::Peek() work with UDP too
+  * Fix infinite loop in wxFTP::GetFilesList()
+  * Add wxUILocale::GetMonthName() and GetWeekDayName()
+  * Add EVT_FULLSCREEN event macro
+  * Fix crash when deleting selected item in wxGenericListCtrl
+
+-------------------------------------------------------------------
 Wed May 24 09:29:25 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Use more pkgconfig(..) in BuildRequires

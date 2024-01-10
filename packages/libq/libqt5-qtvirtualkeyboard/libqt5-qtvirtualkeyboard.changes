@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec 29 13:31:50 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.12+kde0, rebased upstream:
+  * Doc: Improve locale section of technical guide
+  * Fix visible area in the basic example
+  * Bump version to 5.15.12
+
+-------------------------------------------------------------------
 Fri Oct  6 06:43:22 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.11+kde0, rebased upstream:

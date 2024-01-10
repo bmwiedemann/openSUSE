@@ -313,4 +313,20 @@
     <comment>- temporarly disable tests</comment>
     <requestid>1093383</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>89b5236221ed6167a184e3266928c931</srcmd5>
+    <version>6.2.0</version>
+    <time>1703800997</time>
+    <user>anag+factory</user>
+    <comment>- update to version 6.2.0
+  - Moves supported python runtimes from version 3.8 to 3.10
+  - tox: Remove 'ignore_base_python_conflict'
+  - Revert &quot;Moves supported python runtimes from version 3.8 to 3.10&quot;
+  - Imported Translations from Zanata
+  - Update master for stable/2023.1
+
+- drop unused dependencies
+- Initial package (0.1.0)</comment>
+    <requestid>1135454</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
-# spec file for package python-pymetar
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2012 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,23 +18,22 @@
 
 
 %define         modname pymetar
-%define         oldpython python
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-%{modname}
-Version:        1.1
+Version:        1.4
 Release:        0
 Summary:        METAR weather report parser
 License:        GPL-2.0-or-later
 Group:          Development/Languages/Python
 URL:            https://www.schwarzvogel.de/software-pymetar.shtml
-Source0:        http://www.schwarzvogel.de/pkgs/pymetar-%{version}.tar.gz
+Source0:        https://www.schwarzvogel.de/pkgs/pymetar-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
-Obsoletes:      %{oldpython}-%{modname}
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -46,14 +45,11 @@ it and provides easy access to all the data found in the report.
 %setup -q -n %{modname}-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
-%python_clone -a %{buildroot}%{_mandir}/man1/%{modname}.1
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/%{modname}
-# we install docs on our own
-rm -r %{buildroot}%{_datadir}/doc/
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -64,16 +60,17 @@ mkdir logs
 cd -
 
 %post
-%python_install_alternative %{modname} %{modname}.1
+%python_install_alternative %{modname}
 
 %postun
-%python_uninstall_alternative %{modname} %{modname}.1
+%python_uninstall_alternative %{modname}
 
 %files %{python_files}
 %doc README.md
 %license COPYING
 %python_alternative %{_bindir}/%{modname}
-%{python_sitelib}/*
-%python_alternative %{_mandir}/man1/%{modname}.1%{?ext_man}
+%{python_sitelib}/pymetar.py
+%pycache_only %{python_sitelib}/__pycache__/pymetar*
+%{python_sitelib}/pymetar-%{version}.dist-info
 
 %changelog

@@ -17,7 +17,7 @@
 
 
 Name:           mcstrans
-Version:        3.5
+Version:        3.6
 Release:        0
 Summary:        SELinux Translation Daemon
 License:        GPL-2.0-or-later
@@ -91,9 +91,7 @@ mv %{buildroot}/sbin/mcstransd %{buildroot}/usr/sbin/mcstransd
 /usr/sbin/mcstransd
 %{_sbindir}/rcmcstrans
 %{_mandir}/man5/*.5%{?ext_man}
-%{_mandir}/ru/man5/*.5%{?ext_man}
 %{_mandir}/man8/*.8%{?ext_man}
-%{_mandir}/ru/man8/*.8%{?ext_man}
 %dir %{_datadir}/doc/packages/%{name}
 %{_datadir}/doc/packages/%{name}/*
 

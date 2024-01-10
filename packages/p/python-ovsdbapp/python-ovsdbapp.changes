@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jan  4 09:07:26 UTC 2024 - cloud-devel@suse.de
+
+- update to version 2.5.0
+  - Update master for stable/2023.2
+  - TAAS: Add commands for creating Mirrors
+  - Add support for ecmp routes
+  - Ensure LrpAddCommand may_exits works without peers
+  - Add some basic usage documentation
+  - Handle events with conditions and match_fn
+  - nb: provide 'route_table' in lr-route-{add,del,list}
+  - nb: allow to add route even if learned route exists
+  - venv: unit tests don't work for 'hardware_vtep'
+  - nb: add 'nexthop' argument to 'lr_route_del'
+
+-------------------------------------------------------------------
 Thu Jun 15 20:21:45 UTC 2023 - cloud-devel@suse.de
 
 - update to version 2.3.0

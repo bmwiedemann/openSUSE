@@ -466,4 +466,20 @@
   * Replaced set_async_mode(..) with factory template.</comment>
     <requestid>1126931</requestid>
   </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>8b36f81c78d9326bcc7af268d314b255</srcmd5>
+    <version>1.12.0</version>
+    <time>1703800475</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1135257</requestid>
+  </revision>
+  <revision rev="32" vrev="5">
+    <srcmd5>19894ca921de9dc08d2df71412df51a0</srcmd5>
+    <version>1.12.0</version>
+    <time>1704280983</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1136092</requestid>
+  </revision>
 </revisionlist>

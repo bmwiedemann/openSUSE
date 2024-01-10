@@ -1,7 +1,7 @@
 #
 # spec file for package python-Protego
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Protego
-Version:        0.2.1
+Version:        0.3.0
 Release:        0
 Summary:        Pure-Python robotstxt parser with support for modern conventions
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/scrapy/protego
 Source:         https://files.pythonhosted.org/packages/source/P/Protego/Protego-%{version}.tar.gz
-# https://github.com/scrapy/protego/issues/31
-Patch0:         python-Protego-no-six.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
@@ -41,7 +39,6 @@ Protego is a pure-Python `robots.txt` parser with support for modern conventions
 
 %prep
 %setup -q -n Protego-%{version}
-%patch0 -p1
 
 %build
 %python_build

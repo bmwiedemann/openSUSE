@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 20 00:45:42 UTC 2023 - James Fehlig <jfehlig@suse.com>
+
+- apparmor: Add capabilities for PCI passthrough to virtxend profile
+  bsc#1216656
+
+-------------------------------------------------------------------
 Fri Dec  8 22:34:55 UTC 2023 - James Fehlig <jfehlig@suse.com>
 
 - Add upstream commit 1a2f33cb59 to fix memory corruption in the

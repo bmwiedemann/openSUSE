@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec 14 21:14:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.4.4:
+  * Reconnect race condition in ReconnectLDAPObject is now fixed
+  * Socket ownership is now claimed once we've passed it to
+    libldap LDAP_set_option string formats are now compatible
+    with Python 3.12
+
+-------------------------------------------------------------------
 Mon Aug 14 06:14:37 UTC 2023 - William Brown <william.brown@suse.com>
 
 - Re-run source download due to file differences.
@@ -628,7 +637,7 @@ Mon May 12 14:17:53 CEST 2003 - mcihar@suse.cz
 -------------------------------------------------------------------
 Fri Jan 31 00:33:50 CET 2003 - ro@suse.de
 
-- use sasl2 
+- use sasl2
 
 -------------------------------------------------------------------
 Fri Jan 10 17:37:27 CET 2003 - mcihar@suse.cz
@@ -640,7 +649,7 @@ Fri Jan 10 17:37:27 CET 2003 - mcihar@suse.cz
 -------------------------------------------------------------------
 Mon Aug 26 12:34:03 CEST 2002 - rhafer@suse.de
 
-- LDAP_FILT_MAXSIZ isn't defined in libldap anymore 
+- LDAP_FILT_MAXSIZ isn't defined in libldap anymore
 
 -------------------------------------------------------------------
 Wed Aug 14 13:32:28 CEST 2002 - vinil@suse.cz
@@ -670,7 +679,7 @@ Thu Mar 15 14:05:43 CET 2001 - kukuk@suse.de
 -------------------------------------------------------------------
 Thu Mar 15 13:04:03 CET 2001 - ro@suse.de
 
-- changed for openldap2 
+- changed for openldap2
 
 -------------------------------------------------------------------
 Thu Mar 15 01:08:35 CET 2001 - ro@suse.de
@@ -687,7 +696,7 @@ Wed Nov 22 10:48:46 CET 2000 - mt@suse.de
 -------------------------------------------------------------------
 Mon Nov  6 10:03:38 CET 2000 - ro@suse.de
 
-- fixed neededforbuild (added ldaplib) 
+- fixed neededforbuild (added ldaplib)
 
 -------------------------------------------------------------------
 Sun Oct 29 09:52:22 CET 2000 - kukuk@suse.de

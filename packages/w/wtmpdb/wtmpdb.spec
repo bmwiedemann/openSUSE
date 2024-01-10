@@ -1,7 +1,7 @@
 #
 # spec file for package wtmpdb
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %define lname   libwtmpdb0
 Name:           wtmpdb
-Version:        0.9.3
+Version:        0.11.0
 Release:        0
 Summary:        Database for recording the last logged in users and system reboots
 License:        BSD-2-Clause
 URL:            https://github.com/thkukuk/wtmpdb
-Source:         https://github.com/thkukuk/wtmpdb/releases/download/v0.7.1/%{name}-%{version}.tar.xz
+Source:         https://github.com/thkukuk/wtmpdb/releases/download/v0.10.0/%{name}-%{version}.tar.xz
 BuildRequires:  docbook5-xsl-stylesheets
 BuildRequires:  meson
 BuildRequires:  pkgconfig

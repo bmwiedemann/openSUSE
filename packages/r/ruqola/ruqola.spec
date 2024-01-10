@@ -16,21 +16,17 @@
 #
 
 
-%bcond_without released
 Name:           ruqola
-Version:        1.9.1
+Version:        2.0.0
 Release:        0
 Summary:        Rocket.chat Client
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Instant Messenger
 URL:            https://invent.kde.org/network/ruqola
 Source0:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz
-%if %{with released}
 Source1:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
-%endif
-# PATCH-FIX-UPSTREAM: Fix build error with Qt 6.4
-Patch0:         allow_build_without_deprecated_method.patch
+BuildRequires:  extra-cmake-modules
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5CoreAddons)
@@ -49,6 +45,11 @@ BuildRequires:  cmake(KF5Purpose)
 BuildRequires:  cmake(KF5Sonnet)
 BuildRequires:  cmake(KF5SyntaxHighlighting)
 BuildRequires:  cmake(KF5TextWidgets)
+BuildRequires:  cmake(KF5TextTranslator)
+BuildRequires:  cmake(KF5TextAutoCorrectionWidgets)
+BuildRequires:  cmake(KF5TextEditTextToSpeech)
+BuildRequires:  cmake(KF5TextEmoticonsWidgets)
+BuildRequires:  cmake(KF5TextUtils)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(KUserFeedback)
@@ -80,9 +81,7 @@ It's a native alternative to the official embedded browser type of desktop app a
 %install
 %kf5_makeinstall -C build
 
-%if %{with released}
 %find_lang %{name}
-%endif
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -94,12 +93,9 @@ It's a native alternative to the official embedded browser type of desktop app a
 %{_kf5_libdir}/libruqolacore.so.*
 %{_kf5_libdir}/libruqolawidgets.so.*
 %{_kf5_libdir}/librocketchatrestapi-qt5*
-%{_kf5_libdir}/libruqola-*
 %dir %{_kf5_plugindir}/ruqolaplugins
 %dir %{_kf5_plugindir}/ruqolaplugins/authentication
 %{_kf5_plugindir}/ruqolaplugins/authentication/ruqola_passwordauthenticationplugin.so
-%dir %{_kf5_plugindir}/kf5/ruqola-translator
-%{_kf5_plugindir}/kf5/ruqola-translator/*
 %dir %{_kf5_plugindir}/ruqolaplugins/textplugins
 %{_kf5_plugindir}/ruqolaplugins/textplugins/ruqola_*.so
 # upstream installs with execute bit, gives a linter warning
@@ -111,8 +107,6 @@ It's a native alternative to the official embedded browser type of desktop app a
 %{_kf5_debugdir}/ruqola.categories
 %{_kf5_debugdir}/ruqola.renamecategories
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog

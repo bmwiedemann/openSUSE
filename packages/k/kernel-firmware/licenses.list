@@ -38,6 +38,7 @@ mwl8k:		marvell		LICENCE.Marvell
 mwifiex:	marvell		LICENCE.Marvell
 iwlwifi:	iwlwifi		LICENCE.iwlwifi_firmware
 ipu3-imgu:	intel		LICENSE.ipu3_firmware
+mei-vsc-hw:	intel		LICENSE.ivsc
 cx231xx:	media
 ixp4xx-npe:	platform	LICENSE.ixp4xx
 tehuti:		network
@@ -73,6 +74,7 @@ ath3k:		atheros		LICENCE.atheros_firmware
 mga:		platform
 r128:		platform
 radeon:		radeon		LICENSE.radeon
+en8811h:	network		LICENSE.airoha
 amdgpu:		amdgpu		LICENSE.amdgpu
 s2255drv:	platform
 rtl8192e:	realtek
@@ -112,6 +114,7 @@ Atheros:	atheros		LICENCE.atheros_firmware
 ath6kl:		atheros		LICENCE.atheros_firmware
 ath10k:		ath10k		ath10k/QCA988X/hw2.0/notice_ath10k_firmware-4.txt ath10k/QCA988X/hw2.0/notice_ath10k_firmware-5.txt ath10k/QCA6174/hw3.0/notice_ath10k_firmware-6.txt ath10k/QCA6174/hw3.0/notice_ath10k_firmware-sdio-6.txt ath10k/QCA9377/hw1.0/notice_ath10k_firmware-sdio-5.txt LICENSE.QualcommAtheros_ath10k
 ath11k:		ath11k		ath11k/IPQ6018/hw1.0/Notice.txt LICENSE.QualcommAtheros_ath10k
+ath12k:		ath12k		ath12k/WCN7850/hw2.0/Notice.txt LICENSE.QualcommAtheros_ath10k
 myri10ge:	network		LICENCE.myri10ge_firmware
 drxk:		media
 ene-ub6250:	platform	LICENCE.ene_firmware
@@ -163,6 +166,7 @@ mt76x2u:	mediatek	LICENCE.mediatek
 mt7615e:	mediatek	LICENCE.mediatek
 mt7921:		mediatek	LICENCE.mediatek
 mt7922:		mediatek	LICENCE.mediatek
+mt7925:		mediatek	LICENCE.mediatek
 mt7988:		mediatek	LICENCE.mediatek
 nfp:		nfp		LICENCE.Netronome
 wil6210:	atheros		LICENSE.QualcommAtheros_ath10k
@@ -189,3 +193,7 @@ btnxpuart:	platform	LICENSE.nxp
 qcom-sc8280xp:	sound		LICENCE.linaro
 amlogic:	bluetooth	LICENSE.amlogic
 powervr:	platform	LICENSE.powervr
+qcom-sm8550:	sound		LICENCE.linaro
+qcom-sm8650:	sound		LICENCE.linaro
+ti-tas2781:	sound		GPL-2 GPL-3
+ti-tas2563:	sound		GPL-2 GPL-3

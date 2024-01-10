@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Dec 31 09:44:01 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 23.12
+  * Port to Qt 6.
+  * Fixed some more fractional scaling bugs.
+  * Tidied up the unimplemented options in the settings dialog.
+  * Implement fullscreen switcher combobox.
+  * Implement systray icon.
+  * Fix default tracks logic.
+  * Fix wayland icon.
+  * Add option to use Wayland.
+  * Mute button state is preserved across restarts.
+- Use g++10 on Leap
+- Enable PIE
+
+-------------------------------------------------------------------
 Fri Feb 10 08:52:54 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 23.02

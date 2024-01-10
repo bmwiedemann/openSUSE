@@ -23,4 +23,21 @@
     <comment></comment>
     <requestid>1035248</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fe63be55cf6a3f3b97b301920f7d5bb5</srcmd5>
+    <version>0.21.1</version>
+    <time>1704281041</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.21.1:
+  * Allow to specify __match_args__.
+  * Add @as_record adapter for def-style decalarations of
+    dataclasses that are considered as just a struct.
+  * The option fast_new will be removed in 0.22. It will be
+    always as fast_new=True by creation.
+  * Fix issues with `_PyUnicodeWriter`  for python 3.13.
+
+  * Add __match_args__ to support match protocol for dataobject-based subclasses.
+  Make to compile, to build and to test successfully for python 3.11.</comment>
+    <requestid>1135612</requestid>
+  </revision>
 </revisionlist>

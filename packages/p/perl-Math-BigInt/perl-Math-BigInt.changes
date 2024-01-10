@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Wed Dec 27 03:08:03 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.003001
+   see /usr/share/doc/packages/perl-Math-BigInt/CHANGES
+
+  2.003001 2023-12-26
+   * Add configuration methods trap_inf() and trap_nan(). Previously it was only
+     possible to modify these properties by using the config() method.
+   * Fix CPAN RT #150796 so that config() no longer modifies the input when it is
+     a hash ref.
+   * Fix CPAN RT #150797 so that both accuracy and precision can be set
+     simultaneously with config().
+   * Add the following methods to Math::BigInt
+     - bilog2()   base 2 logarithm rounded downwards, i.e., int(log2(x))
+     - bilog10()  base 10 logarithm rounded downwards, i.e., int(log10(x))
+     - bclog2()   base 2 logarithm rounded upwards, i.e., ceil(log2(x))
+     - bclog10()  base 10 logarithm rounded upwards, i.e., ceil(log10(x))
+   * Add the following backend library methods to Math::BigInt::Lib. These
+     methods do the core computations for the corresponding methods in
+     Math::BigInt (see above).
+     - _ilog2()   base 2 logarithm rounded downwards
+     - _ilog10()  base 10 logarithm rounded downwards
+     - _clog2()   base 2 logarithm rounded upwards
+     - _clog10()  base 10 logarithm rounded upwards
+  2.002001 2023-12-09
+   * Fix CPAN RT #150523
+  2.002000 2023-12-02
+   * Fix bug in Math::BigFloat method bsin(). It can now handle any argument to
+     any precision. Also improve downgrading. This fixes CPAN RT #150590 and the
+     bsin() part of CPAN RT #107604.
+   * Fix bug in Math::BigFloat method bexp(). Specifying precision (rather than
+     accuracy) used to give a NaN. Also improve downgrading.
+   * Improve upgrading in Math::BigInt methods bsin() and bcos(). They now
+     upgrade only when necessary.
+  2.001001 2023-11-21
+   * Fix CPAN RT #150469
+  2.001000 2023-11-13
+   * Fix rounding bug in bsqrt() in Math::BigInt. Also make bsqrt() upgrade only
+     when necessary.
+   * Simplify and speed up bsqrt() (for computing the square root) in
+     Math::BigFloat. The computation time now mainly depends on the desired
+     accuracy, not the number of digits in the significand.
+   * Add support for using "div_scale" as import parameter, like this
+         use Math::BigFloat div_scale => 80;
+   * Add better argument checking when the "div_scale" value is set by the
+     user.
+  2.000000 2023-10-29
+   * Merge the Math-BigRat distribution into the Math-BigInt distribution. This
+     merge eliminates the problems that users have experienced when incompatible
+     versions of the two distributions have been installed. This fixes CPAN RT
+     #143228.
+   * Add method from_dec() to Math::BigRat to make Math::BigRat more consistent
+     with Math::BigInt and Math::BigFloat.
+  * To be consistent with Math::BigInt and Math::BigFloat, make it possible to
+    use "require" with Math::BigRat, e.g.,
+         require Math::BigRat;
+         $x = Math::BigRat -> bone();
+   * Fix cases where "require" doesn't work for Math::BigInt and Math::BigFloat,
+     and add tests to verify that "require" works for Math::BigInt, Math::BigRat,
+     and Math::BigFloat.
+   * Add methods bblsft() and bbrsft() to Math::BigRat to make Math::BigRat
+     consistent with Math::BigInt and Math::BigFloat. These methods do bitwise
+     left and right shift, respectively.
+   * Fix bug in to_oct() and to_bin() in Math::BigFloat. They called to_hex()
+     when upgrading, but should have called to_oct() and to_bin(), respectively.
+   * Add to_hex(), to_oct(), to_bin() to Math::BigRat.
+   * Add new method binv() to Math::BigInt, Math::BigFloat, and Math::BigRat.
+   * Improve as_float() and as_rat().
+   * POD updates.
+
+-------------------------------------------------------------------
 Thu Sep 28 03:07:38 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.999842

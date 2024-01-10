@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec 28 15:24:31 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 7.0.6
+  * Updated fav-icon Base URL from JupyterLab PageConfig. #7109
+    (@jayeshsingh9767)
+
+-------------------------------------------------------------------
 Sat Oct 14 08:31:25 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 7.0.5

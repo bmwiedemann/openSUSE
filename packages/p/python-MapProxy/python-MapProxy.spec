@@ -16,10 +16,15 @@
 #
 
 
-%bcond_without test
+%if 0%{?suse_version} >= 1550
+# Restrict to primary python on Tumbleweed
 %define pythons python3
+%else
+%{?sle15_python_module_pythons}
+%endif
+
 Name:           python-MapProxy
-Version:        1.16.0
+Version:        2.0.0
 Release:        0
 Summary:        Proxy for geospatial data
 License:        Apache-2.0
@@ -30,20 +35,18 @@ Source0:        https://files.pythonhosted.org/packages/source/M/MapProxy/MapPro
 Source1:        https://github.com/mapproxy/mapproxy/raw/%{version}/mapproxy/test/system/fixture/cache.gpkg
 Source2:        https://github.com/mapproxy/mapproxy/raw/%{version}/mapproxy/test/unit/polygons/polygons.geojson
 Source99:       python-MapProxy-rpmlintrc
-# PATCH-FIX-UPSTREAM MapProxy-pr749-shapely2.patch gh#mapproxy/mapproxy#749
-Patch0:         MapProxy-pr749-shapely2.patch
-# PATCH-FIX-UPSTREAM MapProxy-pr750-Pillow10.patch gh#mapproxy/mapproxy#750
-Patch1:         MapProxy-pr750-Pillow10.patch
+# PATCH-FIX-UPSTREAM mapproxy-pr846-nofreetype.patch gh#mapproxy/mapproxy#846
+Patch0:         mapproxy-pr846-nofreetype.patch
 BuildRequires:  %{python_module GDAL}
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module PyYAML >= 3.0}
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-%if %{with test}
+# SECTION test
 BuildRequires:  %{python_module Paste}
 BuildRequires:  %{python_module Shapely >= 2}
 BuildRequires:  %{python_module WebTest}
@@ -58,14 +61,17 @@ BuildRequires:  %{python_module pyproj}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module redis}
 BuildRequires:  %{python_module requests}
-BuildRequires:  libgeos_c1
+BuildRequires:  geos-devel
 BuildRequires:  proj
-%endif
-Requires:       libgeos_c1
+# /SECTION
+# MapProxy calls the GEOS libs libgeos and libgeos_c via ctypes in python scripts, undetected by rpm ld analyzer.
+# use requires_eq in order to be detectable by the python_subpackages rewriter
+%requires_eq    %(rpm -q --requires geos-devel | grep libgeos)
 Requires:       proj
 Requires:       python-Pillow
 Requires:       python-PyYAML >= 3.0
 Recommends:     python-Shapely >= 1.8
+Provides:       python-mapproxy = %{version}-%{release}
 BuildArch:      noarch
 Requires(post): update-alternatives
 Requires(postun):update-alternatives

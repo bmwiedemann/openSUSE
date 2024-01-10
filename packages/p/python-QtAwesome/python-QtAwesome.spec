@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %define skip_python2 1
 Name:           python-QtAwesome
-Version:        1.2.3
+Version:        1.3.0
 Release:        0
 Summary:        FontAwesome icons in PyQt and PySide applications
 License:        MIT

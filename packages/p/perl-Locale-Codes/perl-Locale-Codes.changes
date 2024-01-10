@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Dec  2 03:10:08 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.77
+   see /usr/share/doc/packages/perl-Locale-Codes/Changes
+
+  3.77  expected 2023-12-01  sbeck
+    -  NEW CODE(s)
+    -  Changed RELEASE_TESTING variable
+           Now use a release-specific testing variable rather than
+           RELEASE_TESTING. See GitHub #17 for details.
+
+-------------------------------------------------------------------
 Tue Sep  5 16:49:47 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.76

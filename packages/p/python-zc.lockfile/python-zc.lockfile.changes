@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Dec 29 08:59:15 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.post1:
+  * Add ``python_requires`` to ``setup.py`` to prevent installing
+    on not supported old Python versions.
+  * Add support for Python 3.9, 3.10, 3.11.
+  * Drop support for Python 2.7, 3.5, 3.6.
+  * Drop support for deprecated ``python setup.py test``.
+
+-------------------------------------------------------------------
 Sat Jun 10 09:15:59 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
@@ -12,11 +22,11 @@ Thu Sep 23 09:53:37 UTC 2021 - pgajdos@suse.com
 Mon Aug 12 10:35:36 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 2.0
-  * Extracted new SimpleLockFile that removes implicit behavior 
-    writing to the lock file, and instead allows a subclass to 
-    define that behavior. 
-  * SimpleLockFile and thus LockFile are now new-style classes. Any 
-    clients relying on LockFile being an old-style class will need 
+  * Extracted new SimpleLockFile that removes implicit behavior
+    writing to the lock file, and instead allows a subclass to
+    define that behavior.
+  * SimpleLockFile and thus LockFile are now new-style classes. Any
+    clients relying on LockFile being an old-style class will need
     to be adapted.
   * Drop support for Python 3.4.
   * Add support for Python 3.8b3.
@@ -27,7 +37,7 @@ Tue Apr  9 11:06:01 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 - update to version 1.4
   * Claim support for Python 3.4, 3.5, 3.6 and 3.7.
   * Drop Python 2.6, 3.2 and 3.3.
-  * Stop logging failure to acquire locks. Clients can do that if 
+  * Stop logging failure to acquire locks. Clients can do that if
     they wish.
 
 -------------------------------------------------------------------
@@ -72,5 +82,5 @@ Wed Nov 10 12:49:38 UTC 2010 - coolo@novell.com
 -------------------------------------------------------------------
 Wed Jun  2 14:14:44 UTC 2010 - hvogel@novell.com
 
-- Initial Package, Version 1.0.0 
+- Initial Package, Version 1.0.0
 

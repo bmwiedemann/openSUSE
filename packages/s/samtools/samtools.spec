@@ -1,7 +1,7 @@
 #
 # spec file for package samtools
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define htsminversion 1.16
+%define htsminversion 1.19
 
 Name:           samtools
-Version:        1.16.1
+Version:        1.19
 Release:        0
 Summary:        Tools for manipulating next-generation sequencing data
 License:        MIT
@@ -59,7 +59,7 @@ sed -i "s:/usr/bin/env perl:${perlbin}:" %{buildroot}/%{_bindir}/plot-ampliconst
 
 %files
 %license LICENSE
-%doc NEWS README
+%doc NEWS.md README
 %{_bindir}/*
 %{_mandir}/man1/*
 

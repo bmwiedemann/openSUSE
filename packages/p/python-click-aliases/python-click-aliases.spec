@@ -1,7 +1,7 @@
 #
 # spec file for package python-click-aliases
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,17 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-click-aliases
-Version:        1.0.1
+Version:        1.0.4
 Release:        0
 Summary:        Command aliases for Click
 License:        MIT
 URL:            https://github.com/click-contrib/click-aliases
-Source:         https://files.pythonhosted.org/packages/source/c/click-aliases/click-aliases-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+Source:         https://github.com/click-contrib/click-aliases/archive/refs/tags/v%{version}.tar.gz#/click-aliases-%{version}-gh.tar.gz
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-click
@@ -44,10 +46,10 @@ Command aliases for Click.
 %setup -q -n click-aliases-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -58,6 +60,7 @@ export LANG=en_US.UTF-8
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/click_aliases
+%{python_sitelib}/click_aliases-%{version}.dist-info
 
 %changelog

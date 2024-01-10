@@ -1,7 +1,7 @@
 #
 # spec file for package python-pgmagick
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,15 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without  python2
+%{?sle15_python_module_pythons}
 Name:           python-pgmagick
-Version:        0.7.4
+Version:        0.7.6
 Release:        0
 Summary:        Yet Another Python wrapper for GraphicsMagick
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/hhatto/pgmagick/
 Source:         https://files.pythonhosted.org/packages/source/p/pgmagick/pgmagick-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/hhatto/pgmagick/pull/47
-Patch0:         reproducible.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -50,8 +47,7 @@ The pgmagick package is a yet another boost.python based
 wrapper for GraphicsMagick.
 
 %prep
-%setup -q -n pgmagick-%{version}
-%patch0 -p1
+%autosetup -p1 -n pgmagick-%{version}
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"

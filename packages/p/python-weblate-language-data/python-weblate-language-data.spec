@@ -1,7 +1,7 @@
 #
 # spec file for package python-weblate-language-data
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,14 +20,15 @@
 %define modname weblate-language-data
 %define skip_python2 1
 Name:           python-weblate-language-data
-Version:        2022.9
+Version:        2023.9
 Release:        0
 Summary:        Language Data for Weblate
 License:        MIT
 URL:            https://github.com/WeblateOrg/language-data
 Source0:        https://files.pythonhosted.org/packages/source/w/%{modname}/%{modname}-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module translate-toolkit >= 3.1}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -42,15 +43,16 @@ when used as an Django application).
 %setup -q -n %{modname}-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/weblate_language_data
 
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/weblate_language_data
+%{python_sitelib}/weblate_language_data-%{version}.dist-info
 
 %changelog

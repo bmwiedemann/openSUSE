@@ -1,7 +1,7 @@
 #
 # spec file for package python-ptr
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,22 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-ptr
-Version:        20.2.26
+Version:        22.7.12
 Release:        0
 Summary:        Parallel asyncio Python setup(cfg|py) test runner
 License:        MIT
 URL:            https://github.com/facebookincubator/ptr
 Source:         https://files.pythonhosted.org/packages/source/p/ptr/ptr-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module tomli}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 # Conflicts on site-packages/ptr.py
 Conflicts:      python-pytest-runner
 BuildArch:      noarch
@@ -44,10 +46,10 @@ sed -i 's/test_config/_test_config/' ptr_tests.py
 sed -i '1{/^#!/d}' *.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/ptr
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -63,6 +65,8 @@ sed -i '1{/^#!/d}' *.py
 %files %{python_files}
 %doc CHANGES.md README.md
 %python_alternative %{_bindir}/ptr
-%{python_sitelib}/*
+%{python_sitelib}/ptr.py
+%pycache_only %{python_sitelib}/__pycache__/ptr.*
+%{python_sitelib}/ptr-%{version}.dist-info
 
 %changelog

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Dec 20 18:41:05 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.1.0:
+  * Added test for the Terrapin message prefix truncation
+    vulnerability (CVE-2023-48795).
+  * Dropped support for Python 3.7 (EOL was reached in June 2023).
+  * Added Python 3.12 support.
+  * In server policies, reduced expected DH modulus sizes from
+    4096 to 3072 to match the online hardening guides (note that
+    3072-bit moduli provide the equivalent of 128-bit symmetric
+    security).
+  * In Ubuntu 22.04 client policy, moved host key types
+    sk-ssh-ed25519@openssh.com and ssh-ed25519 to the end of all
+    certificate types.
+  * Updated Ubuntu Server & Client policies for 20.04 and 22.04
+    to account for key exchange list changes due to Terrapin
+    vulnerability patches.
+  * Re-organized option host key types for OpenSSH 9.2 server
+    policy to correspond with updated Debian 12 hardening guide.
+  * Added built-in policies for OpenSSH 9.5 and 9.6.
+  * Added an additional_notes field to the JSON output.
+
+-------------------------------------------------------------------
 Sat Sep  9 16:52:36 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.0.0

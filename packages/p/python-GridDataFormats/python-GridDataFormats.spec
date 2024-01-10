@@ -18,7 +18,7 @@
 
 %define skip_python36 1
 Name:           python-GridDataFormats
-Version:        1.0.1
+Version:        1.0.2
 Release:        0
 Summary:        Python Tools for Reading and writing of data on regular grids
 License:        GPL-3.0-only

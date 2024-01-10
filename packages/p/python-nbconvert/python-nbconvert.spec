@@ -30,9 +30,9 @@
 %bcond_with libalternatives
 %endif
 # X.X.0 gets abbreviated by pythondistdeps
-%define shortversion 7.9.2
+%define shortversion 7.13.1
 Name:           python-nbconvert%{psuffix}
-Version:        7.9.2
+Version:        7.13.1
 Release:        0
 Summary:        Conversion of Jupyter Notebooks
 License:        BSD-3-Clause AND MIT
@@ -80,9 +80,9 @@ Requires(postun):update-alternatives
 %if %{with test}
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module ipykernel}
-BuildRequires:  %{python_module ipywidgets >= 7}
+BuildRequires:  %{python_module ipywidgets >= 7.5}
 BuildRequires:  %{python_module nbconvert = %{version}}
-BuildRequires:  %{python_module pytest-dependency}
+BuildRequires:  %{python_module pytest}
 %endif
 %python_subpackages
 

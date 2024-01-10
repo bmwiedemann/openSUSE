@@ -1,7 +1,7 @@
 #
 # spec file for package ugrep
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 Name:           ugrep
-Version:        4.3.6
+Version:        4.5.1
 Release:        0
 Summary:        Universal grep: a feature-rich grep implementation with focus on speed
 License:        BSD-3-Clause
 Group:          Productivity/File utilities
 URL:            https://github.com/Genivia/ugrep
 Source:         https://github.com/Genivia/ugrep/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(bzip2)
@@ -34,7 +35,7 @@ BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(zlib)
 # the bzip3 version seems to old, the tests break with decompression errors
-%if 0%{?suse_version} >= 1600
+%if 0%{?suse_version} > 1599
 BuildRequires:  pkgconfig(bzip3)
 %endif
 
@@ -43,6 +44,41 @@ Ugrep supports an interactive query UI and can search file systems, source
 code, text, binary files, archives, compressed files, documents and use
 fuzzy search.
 
+%package bash-completion
+Summary:        Bash completion for ugrep
+Requires:       %{name} = %{version}
+Requires:       bash-completion
+Supplements:    (%{name} and bash-completion)
+BuildArch:      noarch
+
+%description bash-completion
+
+This package contains the bash completion for ugrep.
+
+%package zsh-completion
+Summary:        Zsh completion for ugrep
+BuildRequires:  zsh
+Requires:       %{name} = %{version}
+Requires:       zsh
+Supplements:    (%{name} and zsh)
+BuildArch:      noarch
+
+%description zsh-completion
+
+This package contains the zsh completion for ugrep.
+
+%package fish-completion
+Summary:        Fish completion for ugrep
+BuildRequires:  fish
+Requires:       %{name} = %{version}
+Requires:       fish
+Supplements:    (%{name} and fish)
+BuildArch:      noarch
+
+%description fish-completion
+
+This package contains the fish completion for ugrep.
+
 %prep
 %autosetup -p1
 
@@ -50,7 +86,7 @@ fuzzy search.
 %configure \
 	--disable-avx \
 	--enable-color \
-%if 0%{?suse_version} >= 1600
+%if 0%{?suse_version} > 1599
 	--with-bzip3 \
 %endif
 	%{nil}
@@ -58,6 +94,7 @@ fuzzy search.
 
 %install
 %make_install
+%fdupes %{buildroot}%{_datadir}/%{name}
 
 %check
 %make_build test
@@ -68,5 +105,17 @@ fuzzy search.
 %{_bindir}/*
 %{_mandir}/man1/*.1%{?ext_man}
 %{_datadir}/ugrep
+
+%files bash-completion
+%license LICENSE.txt
+%{_datadir}/bash-completion/completions/*
+
+%files zsh-completion
+%license LICENSE.txt
+%{_datadir}/zsh/site-functions/*
+
+%files fish-completion
+%license LICENSE.txt
+%{_datadir}/fish/vendor_completions.d/*.fish
 
 %changelog

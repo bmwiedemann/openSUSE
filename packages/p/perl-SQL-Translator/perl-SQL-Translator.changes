@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Dec 23 03:08:28 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.64
+   see /usr/share/doc/packages/perl-SQL-Translator/Changes
+
+   FEATURES
+  1.64 - 2023-12-22
+   * support EXCLUDE constraints in Postgres (thansk @KES777)
+   * Improve enums in the PostgrSQL family (thanks @nrdvana)
+   * Add index length options for MySQL (thanks @abeverley)
+     * you can pass fields for an index now as { name => $name, prefix_length => 9001 }
+
+   FIXES
+   * fix spurious on_update/on_delete in diffs (thanks @nrdvana)
+   * CI improvements (thanks @eserte)
+   * AUTOINCREMENT is now correctly parsed for SQLite (thanks @nrdvana)
+
+-------------------------------------------------------------------
 Fri Feb 24 03:07:52 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.63

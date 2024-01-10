@@ -1,7 +1,7 @@
 #
 # spec file for package libfwevt
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lname	libfwevt1
 Name:           libfwevt
-Version:        20231119
+Version:        20240101
 Release:        0
 Summary:        Library for Windows XML Event Log (EVTX) data types
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later

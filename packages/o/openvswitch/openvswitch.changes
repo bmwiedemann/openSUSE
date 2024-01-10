@@ -1,22 +1,27 @@
 -------------------------------------------------------------------
+Thu Dec 14 11:55:19 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- convert to sysuser generated users
+
+-------------------------------------------------------------------
 Mon Dec  4 15:52:33 UTC 2023 - Ana Guerrero <ana.guerrero@suse.com>
 
-- Add BuildRequires on python-setuptools. Previously this was pulled 
-  by python-Sphinx in the build environment. 
+- Add BuildRequires on python-setuptools. Previously this was pulled
+  by python-Sphinx in the build environment.
 
 -------------------------------------------------------------------
 Thu Sep  7 07:55:29 UTC 2023 - Duraisankar P <Duraisankar.pitchumani@suse.com>
 
 - Fix CVE-2023-3153 [bsc#1212125], VUL-0: CVE-2023-3153: openvswitch,openvswitch3: service monitor MAC flow is not rate limited
 - Added patch,
-       CVE-2023-3152.patch 
+       CVE-2023-3152.patch
 
 -------------------------------------------------------------------
 Wed May 17 09:46:44 UTC 2023 - Duraisankar P <Duraisankar.pitchumani@suse.com>
 
 - Fix CVE-2023-1668 [bsc#1210054], openvswitch: remote traffic denial of service via crafted packets with IP proto 0
 - Added patch,
-     CVE-2023-1668.patch 
+     CVE-2023-1668.patch
 
 -------------------------------------------------------------------
 Tue May  2 07:48:43 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
@@ -28,7 +33,7 @@ Tue May  2 07:48:43 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 Wed Apr  5 21:14:59 UTC 2023 - Duraisankar P <Duraisankar.pitchumani@suse.com>
 
 - Update OVS version to v3.1.0 and OVN version to v23.03.0
-   Some of the features are, 
+   Some of the features are,
    - ovs-vswitchd now detects changes in CPU affinity and adjusts the number
      of handler and revalidator threads if necessary.
    - AF_XDP:
@@ -71,7 +76,7 @@ Wed Apr  5 21:14:59 UTC 2023 - Duraisankar P <Duraisankar.pitchumani@suse.com>
      * Add new experimental PMD load based sleeping feature. PMD threads can
        request to sleep up to a user configured 'pmd-maxsleep' value under
        low load conditions.
-   -For more details, check 
+   -For more details, check
       https://github.com/openvswitch/ovs/blob/v3.1.0/NEWS
    -Includes secrity fix for CVE-2022-4338 (bsc#1206580) and CVE-2022-4337 (bsc#1206581)
    - Removed patches,
@@ -88,8 +93,8 @@ Wed Apr  5 21:14:59 UTC 2023 - Duraisankar P <Duraisankar.pitchumani@suse.com>
      * 0001-Run-ovn-as-openvswitch-openvswitch.patch
      * 0001-Use-strongswan-for-openvswitch-ipsec-service.patch
      * 0001-Run-openvswitch-as-openvswitch-openvswitch.patch
-   - Added ovsb tool install patch, 
-     * install-ovsdb-tools.patch 
+   - Added ovsb tool install patch,
+     * install-ovsdb-tools.patch
 
 -------------------------------------------------------------------
 Thu Sep 29 11:58:47 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -279,7 +284,7 @@ Sat Feb 26 00:56:03 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 -------------------------------------------------------------------
 Mon May 10 10:28:32 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- add openssl(cli) dependency on pki (bsc#1185839) 
+- add openssl(cli) dependency on pki (bsc#1185839)
 
 -------------------------------------------------------------------
 Thu Apr 29 16:05:49 UTC 2021 - Jaime Caamaño Ruiz <jcaamano@suse.com>
@@ -291,9 +296,9 @@ Thu Apr 29 16:05:49 UTC 2021 - Jaime Caamaño Ruiz <jcaamano@suse.com>
 Fri Feb 12 10:36:03 UTC 2021 - Jaime Caamaño Ruiz <jcaamano@suse.com>
 
 - Update openvswitch to 2.14.2. For a list of changes, check
-  https://github.com/openvswitch/ovs/blob/v2.14.2/NEWS 
+  https://github.com/openvswitch/ovs/blob/v2.14.2/NEWS
   Includes security fix for CVE-2020-27827 (bsc#1181345) and CVE-2020-35498
-  (bsc#1181742). 
+  (bsc#1181742).
 - Removed patches no longer applying to code base:
   * 0001-rhel-Fix-reload-of-OVS_USER_ID-on-startup.patch
   * 0001-ipsec-Fix-Strongswan-configuration-syntax.patch
@@ -307,7 +312,7 @@ Tue Nov  3 10:50:49 UTC 2020 - Jaime Caamaño Ruiz <jcaamano@suse.com>
 -------------------------------------------------------------------
 Tue Sep 29 10:41:30 UTC 2020 - Jaime Caamaño Ruiz <jcaamano@suse.com>
 
-- Fix wrong default directories for OVS python utilities (bsc#1176273). 
+- Fix wrong default directories for OVS python utilities (bsc#1176273).
 - Add upstream patches to fix openvswitch-ipsec service (bsc#1176273).
   * 0001-ipsec-Fix-Strongswan-configuration-syntax.patch
 
@@ -315,9 +320,9 @@ Tue Sep 29 10:41:30 UTC 2020 - Jaime Caamaño Ruiz <jcaamano@suse.com>
 Tue Sep  1 13:50:47 UTC 2020 - Jaime Caamaño Ruiz <jcaamano@suse.com>
 
 - Update openvswitch to 2.14.0. For a list of changes, check
-  https://github.com/openvswitch/ovs/blob/v2.14.0/NEWS 
+  https://github.com/openvswitch/ovs/blob/v2.14.0/NEWS
 - Update OVN to 20.06.2. For a list of changes, check
-  https://github.com/ovn-org/ovn/blob/v20.06.2/NEWS 
+  https://github.com/ovn-org/ovn/blob/v20.06.2/NEWS
 
 -------------------------------------------------------------------
 Mon Jun 15 13:21:22 UTC 2020 - Jaime Caamaño Ruiz <jcaamano@suse.com>
@@ -333,14 +338,14 @@ Mon Jun 15 13:21:22 UTC 2020 - Jaime Caamaño Ruiz <jcaamano@suse.com>
 -------------------------------------------------------------------
 Wed Jun  3 14:53:21 UTC 2020 - Jaime Caamaño Ruiz <jcaamano@suse.com>
 
-- add missing provides/obsoletes for python3-openvswitch-test 
+- add missing provides/obsoletes for python3-openvswitch-test
 
 -------------------------------------------------------------------
 Mon May  4 11:38:26 UTC 2020 - Jaime Caamaño Ruiz <jcaamano@suse.com>
 
-- Update openvswitch to 2.13.0. 
+- Update openvswitch to 2.13.0.
   * For a list of changes, check
-    https://github.com/openvswitch/ovs/blob/v2.13.0/NEWS 
+    https://github.com/openvswitch/ovs/blob/v2.13.0/NEWS
   * This version drops python2 binding support. Only python3 bindings
     provided going forward.
   * Tool ovs-vlan-bug-workaround is no longer provided.
@@ -378,7 +383,7 @@ Thu Feb 13 18:06:02 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 Mon Oct 28 14:56:34 UTC 2019 - Jaime Caamaño Ruiz <jcaamano@suse.com>
 
 - Update openvswitch to 2.12.0. For a list of changes, check
-  https://github.com/openvswitch/ovs/blob/master/NEWS 
+  https://github.com/openvswitch/ovs/blob/master/NEWS
 - Removed patches that are already included upstream:
   * 0001-rhel-secure-openvswitch-useropts.patch
   * 0002-rhel-let-ctl-handle-runtime-directory.patch
@@ -399,25 +404,25 @@ Tue Jul 16 09:10:42 UTC 2019 -  <jcaamano@suse.com>
 -------------------------------------------------------------------
 Thu Jun 20 12:00:42 UTC 2019 -  <jcaamano@suse.com>
 
-- Update DPDK dependency to support DPDK 18.11.2. 
+- Update DPDK dependency to support DPDK 18.11.2.
 
 -------------------------------------------------------------------
 Mon Jun 10 17:12:00 UTC 2019 -  <jcaamano@suse.com>
 
 - Add upstream patches to fix bsc#1135884:
-  * 0001-rhel-secure-openvswitch-useropts.patch  
+  * 0001-rhel-secure-openvswitch-useropts.patch
   * 0002-rhel-let-ctl-handle-runtime-directory.patch
 
 -------------------------------------------------------------------
 Mon May  6 17:08:26 UTC 2019 -  <jcaamano@suse.com>
 
-- Use temporary directory for python build. 
+- Use temporary directory for python build.
 
 -------------------------------------------------------------------
 Mon Apr 29 14:12:36 UTC 2019 -  <jcaamano@suse.com>
 
 - Fix problem preventing new installs to run as non root (bsc#1132029),
-  including: 
+  including:
   * Align with upstream so that no running configuration is changed on
     upgrades, specifically to avoid changes on the user Open vSwitch runs
     under.
@@ -489,7 +494,7 @@ Thu Feb 28 11:16:58 UTC 2019 - jcaamano@suse.com
 - Version bump to 2.11.0. Some of the changes are:
    * Linux datapath:
      - Support for the kernel versions 4.16.x and 4.17.x.
-     - Support for the kernel versions 4.18.x 
+     - Support for the kernel versions 4.18.x
    * OpenFlow:
      - OFPMP_TABLE_FEATURES_REQUEST can now modify table features.
    * ovs-ofctl:
@@ -594,7 +599,7 @@ Thu Jan 24 11:34:15 UTC 2019 - Jaime Caamaño (jcaamano@suse.com)
 - Remove upstreamed patch:
   * 0001-python-c-ext-Fix-memory-leak-in-Parser_finish.patch
 - Remove DISABLE_RESTART_ON_UPDATE and DISABLE_STOP_ON_REMOVAL options (bsc#1117483).
- 
+
 -------------------------------------------------------------------
 Sun Jan 20 07:58:20 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
 
@@ -605,7 +610,7 @@ Sun Jan 20 07:58:20 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
 Mon Nov 26 11:07:30 UTC 2018 - jcaamano@suse.com
 
 - Backport upstream fix for python json parser memory leak (bsc#1116437)
- * 0001-python-c-ext-Fix-memory-leak-in-Parser_finish.patch 
+ * 0001-python-c-ext-Fix-memory-leak-in-Parser_finish.patch
 
 -------------------------------------------------------------------
 Thu Nov  8 11:17:38 UTC 2018 - Markos Chandras <mchandras@suse.de>
@@ -901,7 +906,7 @@ Thu Mar  1 10:39:54 UTC 2018 - mchandras@suse.de
   * 0003-netdev-dpdk-vHost-IOMMU-support.patch
 - Get rid of the old openvswitch DPDK migration steps everybody should have
   migrated from <2.6 to latest releases by now.
-  * 0001-utilities-Add-script-to-support-DPDK-option-migratio.patch 
+  * 0001-utilities-Add-script-to-support-DPDK-option-migratio.patch
 
 -------------------------------------------------------------------
 Tue Jan  9 16:25:48 UTC 2018 - mchandras@suse.de
@@ -936,7 +941,7 @@ Wed Dec  6 14:00:55 UTC 2017 - mchandras@suse.de
 -------------------------------------------------------------------
 Thu Nov 23 13:38:56 UTC 2017 - rbrown@suse.com
 
-- Replace references to /var/adm/fillup-templates with new 
+- Replace references to /var/adm/fillup-templates with new
   %_fillupdir macro (boo#1069468)
 
 -------------------------------------------------------------------
@@ -1036,7 +1041,7 @@ Thu Jul 27 13:05:42 UTC 2017 - mchandras@suse.de
 - Do not restart the ovs-vswitchd, ovsdb-server and openvswitch
   services on package removals. This facilitates potential future
   package moves but also preserves connectivity when the package is
-  removed (bsc#1050896) 
+  removed (bsc#1050896)
 
 -------------------------------------------------------------------
 Wed Jul 19 07:32:59 UTC 2017 - mchandras@suse.de
@@ -1163,7 +1168,7 @@ Tue Feb 28 09:24:48 UTC 2017 - mchandras@suse.de
     subpackage.
   * Split OVN package to ovn-common, ovn-central, ovn-docker, ovn-host and
     ovn-controller similar to the Debian and RedHat packages.
-   
+
 -------------------------------------------------------------------
 Fri Nov 25 16:36:40 UTC 2016 - mchandras@suse.de
 
@@ -1259,7 +1264,7 @@ Tue Sep  6 10:11:49 UTC 2016 - mchandras@suse.de
 Sun Aug 14 11:05:59 CEST 2016 - ro@suse.de
 
 - enable openvswitch-dpdk on aarch64 since dpdk
-  builds on aarch64 now 
+  builds on aarch64 now
 
 -------------------------------------------------------------------
 Sun Aug  7 21:11:51 CEST 2016 - ro@suse.de
@@ -1671,12 +1676,12 @@ Sun Dec 28 21:27:49 UTC 2014 - andrea@opensuse.org
 -------------------------------------------------------------------
 Tue Oct 21 11:24:25 UTC 2014 - dmueller@suse.com
 
-- fix rcX link  
+- fix rcX link
 
 -------------------------------------------------------------------
 Tue Sep 23 08:40:15 UTC 2014 - dmueller@suse.com
 
-- disable shipped kmp module build for newer distros 
+- disable shipped kmp module build for newer distros
 
 -------------------------------------------------------------------
 Mon Sep 22 07:11:35 UTC 2014 - dmueller@suse.com
@@ -1811,7 +1816,7 @@ Thu Mar 27 12:56:32 UTC 2014 - dmueller@suse.com
 -------------------------------------------------------------------
 Thu Mar 27 12:55:44 UTC 2014 - dmueller@suse.com
 
-- allow to use kmod as well 
+- allow to use kmod as well
 
 -------------------------------------------------------------------
 Mon Feb  3 17:13:36 UTC 2014 - dmueller@suse.com
@@ -1821,22 +1826,22 @@ Mon Feb  3 17:13:36 UTC 2014 - dmueller@suse.com
 -------------------------------------------------------------------
 Mon Jan 27 10:42:05 UTC 2014 - dmueller@suse.com
 
-- fix logrotate configuration 
+- fix logrotate configuration
 
 -------------------------------------------------------------------
 Tue Jan 21 08:48:03 UTC 2014 - dmueller@suse.com
 
-- add openvswitch.service for systemd distros 
+- add openvswitch.service for systemd distros
 
 -------------------------------------------------------------------
 Tue Jan 14 15:03:56 UTC 2014 - dmueller@suse.com
 
-- add kernel-312.diff (build against Kernel 3.12.x) 
+- add kernel-312.diff (build against Kernel 3.12.x)
 
 -------------------------------------------------------------------
 Fri Jan  3 17:54:10 UTC 2014 - dmueller@suse.com
 
-- do not build with valgrind-devel on aarch64 (doesn't exist) 
+- do not build with valgrind-devel on aarch64 (doesn't exist)
 
 -------------------------------------------------------------------
 Thu Dec  5 13:14:11 UTC 2013 - dmueller@suse.com
@@ -1907,7 +1912,7 @@ Fri Sep 13 15:25:40 UTC 2013 - dmueller@suse.com
 -------------------------------------------------------------------
 Fri Sep 13 10:09:18 UTC 2013 - dmueller@suse.com
 
-- sign modules for secure boot (bnc#839838) 
+- sign modules for secure boot (bnc#839838)
 
 -------------------------------------------------------------------
 Tue Jul  2 17:08:11 UTC 2013 - tpaszkowski@novell.com
@@ -1925,7 +1930,7 @@ Sun Jun 16 05:30:24 UTC 2013 - vuntz@suse.com
 -------------------------------------------------------------------
 Thu Jun  6 14:28:07 UTC 2013 - tpaszkowski@novell.com
 
-- mark openvswitch module shipped with package as supported 
+- mark openvswitch module shipped with package as supported
 
 -------------------------------------------------------------------
 Fri May 17 11:58:32 UTC 2013 - dmueller@suse.com
@@ -1970,7 +1975,7 @@ Tue Mar 12 13:36:57 UTC 2013 - tpaszkowski@suse.com
 -------------------------------------------------------------------
 Fri Mar  8 14:16:57 UTC 2013 - tpaszkowski@suse.com
 
-- Provides and Obsolete for former openvswitch-common package 
+- Provides and Obsolete for former openvswitch-common package
 
 -------------------------------------------------------------------
 Thu Mar  7 21:49:09 UTC 2013 - tpaszkowski@suse.com
@@ -2118,7 +2123,7 @@ Mon Feb 20 23:39:50 UTC 2012 - on@morlock.nu
 Fri Sep  2 09:11:21 UTC 2011 - andrea@opensuse.org
 
 - new uopstream version 1.2.1
-  * The release only contains bug fixes for the 1.2.0 release 
+  * The release only contains bug fixes for the 1.2.0 release
 
 -------------------------------------------------------------------
 Mon Aug  8 17:47:58 UTC 2011 - andrea@opensuse.org
@@ -2128,18 +2133,18 @@ Mon Aug  8 17:47:58 UTC 2011 - andrea@opensuse.org
    * Packaging for Red Hat (RHEL) 5.6 and 6.0
    * Datapath support for Linux kernels up to 3.0
    * And many others.  See the full change log here:
-         http://openvswitch.org/releases/ChangeLog-1.2.0 
-- rebased openvswitch-1.1.0-suse.patch as 
+         http://openvswitch.org/releases/ChangeLog-1.2.0
+- rebased openvswitch-1.1.0-suse.patch as
   openvswitch-1.2.0-suse.patch to apply to the files
 -------------------------------------------------------------------
 Thu Jun 23 06:49:16 UTC 2011 - andrea@opensuse.org
 
 - new upstream version 1.1.1
-  * bug fix release 
+  * bug fix release
 
 -------------------------------------------------------------------
 Wed May 18 10:09:45 UTC 2011 - andrea@opensuse.org
- 
+
 - re-enabled kmp package since openvswitch_mod.ko and
   brcompat_mod.ko are not available on suse kernel rpms
 
@@ -2150,14 +2155,14 @@ Tue May 17 12:04:05 UTC 2011 - andrea@opensuse.org
 - spec file clean up
 - added as dependency all python modules to enable additional
   functionalities
-- rebase patches 
+- rebase patches
 - build pyside support only if pyside is available
 
 -------------------------------------------------------------------
 Fri Dec 31 15:26:59 UTC 2010 - pmullaney@novell.com
 
 - updates for build issues
-- fixes for libvirt integration 
+- fixes for libvirt integration
 
 -------------------------------------------------------------------
 Sat Dec 11 19:57:28 UTC 2010 - pmullaney@novell.com

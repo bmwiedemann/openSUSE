@@ -1221,4 +1221,14 @@
 - remove setuptools requires</comment>
     <requestid>1131205</requestid>
   </revision>
+  <revision rev="103" vrev="3">
+    <srcmd5>591164584013f41053b95ad3c9a0206f</srcmd5>
+    <version>7.2.6</version>
+    <time>1703198249</time>
+    <user>anag+factory</user>
+    <comment>- Add upstream patch fix-autodoc-tests-python-3117.patch to make it
+  work with python 3.11.7 gh#sphinx-doc/sphinx#11793
+</comment>
+    <requestid>1134224</requestid>
+  </revision>
 </revisionlist>

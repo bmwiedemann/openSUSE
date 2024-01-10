@@ -16,19 +16,18 @@
 #
 
 
-%define real_name pycountry
-%{?!python_module:%define python_module() python3-%{**}}
-%global skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-pycountry
-Version:        22.3.5
+Version:        23.12.11
 Release:        0
 Summary:        Databases for ISO standards 639 3166 3166-2 4217 15924
 License:        LGPL-2.1-only
 Group:          Development/Libraries/Python
 URL:            https://pypi.python.org/pypi/pycountry/
-Source:         https://pypi.io/packages/source/p/%{real_name}/%{real_name}-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+Source:         https://pypi.io/packages/source/p/pycountry/pycountry-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-lxml
@@ -46,13 +45,13 @@ packaged into pycountry and made accessible through a Python API.
 Translation files for the various strings are included as well.
 
 %prep
-%setup -q -n %{real_name}-%{version}
+%setup -q -n pycountry-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -61,6 +60,7 @@ Translation files for the various strings are included as well.
 %files %{python_files}
 %license LICENSE.txt
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/pycountry
+%{python_sitelib}/pycountry-%{version}.dist-info
 
 %changelog

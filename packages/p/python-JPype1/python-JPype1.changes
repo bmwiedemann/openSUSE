@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Jan  6 17:12:01 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.0:
+  * Support for Python 3.12
+  * Switched __eq__ and __ne__ operator to use equals rather than
+    compareTo for comparable objects to avoid exception when
+    comparing object of different types.
+  * Fixed segmentation fault when comparing Java Comparable to
+    primitives.
+  * Java exceptions that occur in inequality comparisons now map
+    to Python TypeError.
+  * Fixed crash when calling subscript on JArray.
+  * Fixed direct byte buffers not reporting nbytes correctly when
+    cast to memoryview.
+  * Expand the defintion for Functional interface to include
+    classes without FunctionInterface annotation.
+  * Add additional matching level for derived types to resolve
+    ambiguities when a derived type is used in place of base
+    class when determining the method overload.  This will
+    resolve some previous ambiguities between methods.
+
+-------------------------------------------------------------------
 Mon Jun 12 11:00:29 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Do not hardcode java-15-openjdk, since this can be built with

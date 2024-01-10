@@ -78,4 +78,24 @@
   * Use unittest.mock.</comment>
     <requestid>1131740</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>04cd093d6efb988dc8d9a6cb75670999</srcmd5>
+    <version>1.33.0</version>
+    <time>1703800901</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.33.0:
+  * add metrics endpoint for load balancers and servers (#331)
+  * fallback to error code when message is unset (#328)</comment>
+    <requestid>1135281</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>42c378d4f7489b316338e96a985fffb7</srcmd5>
+    <version>1.33.2</version>
+    <time>1704487487</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.33.2:
+  * publish package to PyPI using OIDC auth
+  * private object not exported in top level module</comment>
+    <requestid>1137007</requestid>
+  </revision>
 </revisionlist>

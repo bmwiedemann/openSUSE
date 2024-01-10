@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Sun Jan 07 05:11:39 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1704466891.4d4e5b7:
+  * Update perl-DBD-Pg-3.18.0
+  * Download shepherd.js from cdn.jsdelivr.net
+  * ObsRsync: Include URL in GRU task
+
+-------------------------------------------------------------------
+Thu Jan 04 18:06:49 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1704307071.9c8a390:
+  * docs: Document how click points work
+  * CI: Shift nightly schedule further trying to avoid download problems
+
+-------------------------------------------------------------------
+Sun Dec 24 05:11:34 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1703255154.b96c049:
+  * Handle no job group filter matches gracefully
+  * Add group filter options for /tests
+  * Prevent ambiguous PRJDIR ending up in vars.json
+
+-------------------------------------------------------------------
+Thu Dec 21 21:11:17 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1703176922.1f7eb61:
+  * doc: Improve wording of the introduction to MM tests
+  * doc: Improve punctuation/formatting in `WritingTests.asciidoc`
+  * doc: Rewrap lines in `WritingTests.asciidoc` to 80 characters per line
+  * doc: Move "Job dependencies" out of "Writing multi-machine tests"
+  * Remove unnecessary newline
+  * Introduce --skip-checks in openqa-clone-job
+  * Add a note for `Mojo::Base` in Documentation for Tests
+  * t: Use consistent 'Mojo::Base' instead of strict+warnings
+  * Extend tests of dependency graph to better cover restarting
+  * Fix dependencies not showing up in graph under certain conditions
+
+-------------------------------------------------------------------
+Tue Dec 19 13:11:37 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1702976108.a4cd34a:
+  * Document further ovs commands
+
+-------------------------------------------------------------------
+Sun Dec 17 02:14:53 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1702649526.dcd6122:
+  * Use postgresql recursive feature for getting scheduled product
+
+-------------------------------------------------------------------
+Thu Dec 14 05:44:35 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1702503492.e68161c:
+  * Improve documentation of cache service related variables in config
+  * Support for native asciidoc with fallback to rubygems bundle
+  * Add support for non-root installation of ruby dependencies
+  * Wrap lines in networking documentation at 80 characters
+  * Improve instructions for setting up VM to debug MM setup manually
+  * Simplify generation of documentation
+
+-------------------------------------------------------------------
 Sun Dec 10 02:14:35 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1702049559.97f9359:

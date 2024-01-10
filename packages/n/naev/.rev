@@ -125,4 +125,26 @@
     <comment></comment>
     <requestid>1098179</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>795afc5a4daf6ed676c5d395492b2622</srcmd5>
+    <version>0.11.0</version>
+    <time>1703800936</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.11.0
+  * Reworked universe map to fit existing lore
+  * House Sirius completely reworked
+  * Improved autonav that uses lanes and is configurable
+  * Reworked structural outfits and number of ship slots
+  * Weapon sets are more simple with no distinction between
+    weapons and non-weapons
+  * Possible to legally obtain all &quot;standard&quot; factional ships
+    and outfits
+  * Point defense weapons that automatically fire at fighters
+    and missiles
+  * A lot more content
+  * Significant engine speed-ups
+  * Full changelog: 
+    https://github.com/naev/naev/releases/tag/v0.11.0 (forwarded request 1135241 from Kieltux)</comment>
+    <requestid>1135322</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 14 13:26:05 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- procps-3.3.17-ignore-sysctl_conf.patch: ignore dangling symlink
+  to missing /etc/sysctl.conf file [bsc#1217990]
+
+-------------------------------------------------------------------
 Mon Oct 30 07:03:50 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - procps-ng-3.3.17-logind.patch: Fix crash of "w -s -h"

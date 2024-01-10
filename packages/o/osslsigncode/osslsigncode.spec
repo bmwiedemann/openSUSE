@@ -1,7 +1,7 @@
 #
 # spec file for package osslsigncode
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,14 @@
 
 
 Name:           osslsigncode
-Version:        2.3.0
+Version:        2.7
 Release:        0
 Summary:        Platform-independent tool for Authenticode signing of EXE/CAB files
 License:        GPL-3.0-only
 Group:          Productivity/Security
-URL:            http://osslsigncode.sourceforge.net/
-Source0:        https://github.com/mtrojnar/osslsigncode/releases/download/2.3/osslsigncode-%{version}.tar.gz
-Source1:        https://github.com/mtrojnar/osslsigncode/releases/download/2.3/osslsigncode-%{version}.tar.gz.asc
-Source2:        https://raw.githubusercontent.com/mtrojnar/osslsigncode/master/LICENSE.txt
-Source3:        https://raw.githubusercontent.com/mtrojnar/osslsigncode/master/COPYING.txt
-Source99:       %{name}.keyring
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  libgsf-devel
+URL:            https://github.com/mtrojnar/osslsigncode
+Source0:        https://github.com/mtrojnar/osslsigncode/archive/%{version}/osslsigncode-%{version}.tar.gz
+BuildRequires:  cmake
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libcrypto) >= 1.1
 BuildRequires:  pkgconfig(libcurl)
@@ -43,12 +37,11 @@ files and executables.
 %setup -q
 
 %build
-cp -p %{SOURCE2} %{SOURCE3} .
-%configure
-%make_build
+%cmake
+%cmake_build
 
 %install
-%make_install
+%cmake_install
 
 %files
 %license COPYING.txt LICENSE.txt

@@ -61,4 +61,18 @@
   * Honor `--builtins` option from flake8</comment>
     <requestid>1046240</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>445ceb62329b294f76f9332afae6bbbf</srcmd5>
+    <version>2.2.0</version>
+    <time>1703800885</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.2.0:
+  * Drop python 3.7 support.
+  * Test pre-release of python 3.12.
+  * Use `pyproject.toml` rather than `setup.py`.
+  * Switch from `setuptools` to `hatchling`.
+  * Add rule for import shadowing (`A004`).
+  * Switch to `main` branch.</comment>
+    <requestid>1135263</requestid>
+  </revision>
 </revisionlist>

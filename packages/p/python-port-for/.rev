@@ -41,4 +41,27 @@
 </comment>
     <requestid>967345</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>64ab1179b6e5d27cece1e3cba1f45e25</srcmd5>
+    <version>0.7.2</version>
+    <time>1704660165</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.7.2:
+  * Drop support for python 3.7
+  * Support Python 3.12
+  * #152, #166, #170
+  * Add PortType type alias for easier typing related code
+  * get_port will now allow passing additional exclude_ports
+    parameter - these ports will not be chosen.
+  * Add python 3.11 to the list of supported python versions.
+  * Use towncrier as a changelog management tool.
+  * Moved development dependencies to be managed by pipenv. All
+    development process can be managed  with it - which means
+    automatic isolation.
+  * Migrate versioning tool to tbump, and move package definition
+    to pyproject.toml
+  * Moved as much of the setup.cfg settings into the
+    pyproject.toml as possible. Dropped pydocstyle support.</comment>
+    <requestid>1137438</requestid>
+  </revision>
 </revisionlist>

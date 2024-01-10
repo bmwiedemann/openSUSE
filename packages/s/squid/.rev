@@ -1183,4 +1183,12 @@ and CVE references,
   * documentation changes</comment>
     <requestid>1122203</requestid>
   </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>ef0c5c1f56cd52ef07106123af82be72</srcmd5>
+    <version>6.6</version>
+    <time>1704281197</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1135832</requestid>
+  </revision>
 </revisionlist>

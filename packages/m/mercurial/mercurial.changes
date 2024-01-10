@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Dec 22 20:40:40 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not recommend mercurial-lang: the -lang package already
+  contains supplements, that trigger on package plus selected
+  locales.
+
+-------------------------------------------------------------------
+Wed Dec 20 16:12:02 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to Mercurial 6.6.1.
+  The first two patches fix aborted transactions that could happen since 6.6.
+  * revlog: avoid exposing delayed index entry too widely in non-inline revlog
+  * revlog: avoid wrongly updating the data file location on "divert"
+  * tests: do not fail tests in a state with uncommitted .py file removal
+  * perf-tags: fix the --clear-fnode-cache-rev code
+  * perf-tags: fix clear_cache_fnodes to actually clear that cache
+  * censor: fix things around inlining
+  * Various Python 3 cleanups
+  * Various Windows test suite fixes
+
+-------------------------------------------------------------------
 Tue Nov 21 18:02:41 UTC 2023 - Andrei Dziahel <develop7@develop7.info>
 
 - Mercurial 6.6

@@ -19,7 +19,7 @@
 %define packagename pysvn
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pysvn
-Version:        1.9.20
+Version:        1.9.22
 Release:        0
 Summary:        Highlevel Subversion Python Bindings
 License:        Apache-1.1

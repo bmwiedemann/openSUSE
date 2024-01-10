@@ -17,17 +17,17 @@
 
 
 Name:           starship
-Version:        1.16.0
+Version:        1.17.0
 Release:        0
 Summary:        A customizable prompt for many shells
 License:        ISC
 URL:            https://starship.rs/
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.zst
-Source2:        cargo_config
 BuildRequires:  cargo-packaging
 BuildRequires:  cmake
 BuildRequires:  pkgconfig(openssl)
+ExclusiveArch:  %{rust_tier1_arches}
 
 %description
 Starship generates shell code which modifies the current shell
@@ -40,8 +40,6 @@ dash is not supported as of 1.10.2.
 
 %prep
 %autosetup -a1
-mkdir -p .cargo
-cp %{SOURCE2} .cargo/config
 
 %build
 %{cargo_build}

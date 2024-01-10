@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec 19 23:43:07 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- Specify the module to test to avoid Python 3.12 failures.
+- Stop using greedy globs in %files.
+
+-------------------------------------------------------------------
 Mon Dec 14 01:05:48 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Requires mock for Python2/Leap

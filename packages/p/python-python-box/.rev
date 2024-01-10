@@ -100,4 +100,41 @@
     <comment></comment>
     <requestid>1035242</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9645078cd298d9ed22a96e1b037c64ef</srcmd5>
+    <version>7.1.1</version>
+    <time>1702845099</time>
+    <user>anag+factory</user>
+    <comment>- update to 7.1.1:
+  * Fixing Cython optimized build deployments for linux
+  * Adding #255 defer ipython import for large import speed
+    improvements (thanks to Eric Prestat)
+  * Adding testing for Python 3.12
+  * Fixing #253 merge_update box list merge types not populated
+    to sub dictionaries (thanks to lei wang)
+  * Fixing #257 Two test failures due to arguments having
+    incorrect types (thanks to Michał Górny)
+  * Fixing stub files to match latest code signatures
+  * Removing #251 support for circular references in lists
+  * Removing support for Python 3.7 as it is EOL
+  * Switching off of poetry due to multiple build issues
+  * Adding #169 default functions with the box_instance and key
+    parameter (thanks to Коптев Роман Викторович)
+  * Adding #170 Be able to initialize with a flattened dict - by
+    using DDBox (thanks to Ash A.)
+  * Adding #192 box_dots treats all keys with periods in them as
+    separate keys (thanks to Rexbard)
+  * Adding #211 support for properties and setters in subclasses
+  * Adding #226 namespace to track changes to the box
+  * Adding #236 iPython detection to prevent adding attribute
+    lookup words
+  * Adding #238 allow ``|`` and ``+`` for frozen boxes
+  * Adding new DDBox class (Default Dots Box) that is a subclass
+    of SBox
+  * Fixing #235 how ``|`` and ``+`` updates were performed for
+    right operations
+  * Fixing #234 typos
+  * Fixing no implicit optionals with type hinting</comment>
+    <requestid>1133530</requestid>
+  </revision>
 </revisionlist>

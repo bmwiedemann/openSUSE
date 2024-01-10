@@ -1,7 +1,7 @@
 #
 # spec file for package perl-YAML-Tidy
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %define cpan_name YAML-Tidy
 Name:           perl-YAML-Tidy
-Version:        0.007
+Version:        0.8.0
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Tidy YAML files
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/T/TI/TINITA/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/T/TI/TINITA/%{cpan_name}-v%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -32,14 +32,14 @@ BuildRequires:  perl(Getopt::Long::Descriptive)
 BuildRequires:  perl(Test::Deep)
 BuildRequires:  perl(Test::More) >= 0.98
 BuildRequires:  perl(Test::Warnings) >= 0.029
-BuildRequires:  perl(YAML::LibYAML::API) >= 0.013
+BuildRequires:  perl(YAML::LibYAML::API) >= v0.14.0
 BuildRequires:  perl(YAML::LibYAML::API::XS)
 BuildRequires:  perl(YAML::PP::Common)
 BuildRequires:  perl(YAML::PP::Highlight)
 BuildRequires:  perl(YAML::PP::Parser)
 BuildRequires:  perl(experimental)
 Requires:       perl(Getopt::Long::Descriptive)
-Requires:       perl(YAML::LibYAML::API) >= 0.013
+Requires:       perl(YAML::LibYAML::API) >= v0.14.0
 Requires:       perl(YAML::LibYAML::API::XS)
 Requires:       perl(YAML::PP::Common)
 Requires:       perl(YAML::PP::Highlight)
@@ -48,14 +48,18 @@ Requires:       perl(experimental)
 %{perl_requires}
 
 %description
-yamltidy can automatically tidy formatting in your YAML files, for example
-adjust indentation and remove trailing spaces.
+yamltidy is a linter or rather a formatter for YAML files.
 
-For more information, see https://github.com/perlpunk/yamltidy.
+It can adjust formatting without removing comments or blank lines.
+
+For examples see https://perlpunk.github.io/yamltidy
+
+The code can be found at https://github.com/perlpunk/yamltidy.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+%autosetup  -n %{cpan_name}-v%{version}
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

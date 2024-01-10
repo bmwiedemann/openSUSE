@@ -111,4 +111,12 @@ These issues are now fixed with a patch, hence this new submission.</comment>
     <comment>Update to version 3.10.0</comment>
     <requestid>1132534</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>fad0f5e9d91f4bd26c746d16855ada94</srcmd5>
+    <version>3.11.0</version>
+    <time>1704754005</time>
+    <user>anag+factory</user>
+    <comment>Update to version 3.11.0</comment>
+    <requestid>1137608</requestid>
+  </revision>
 </revisionlist>

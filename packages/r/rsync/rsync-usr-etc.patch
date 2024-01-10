@@ -1,0 +1,76 @@
+Nur in a: .cirrus.yml.
+diff -ur a/clientserver.c b/clientserver.c
+--- a/clientserver.c	2023-11-28 17:12:41.643268046 +0100
++++ b/clientserver.c	2023-11-28 17:25:30.476279700 +0100
+@@ -1261,10 +1261,16 @@
+ static int load_config(int globals_only)
+ {
+ 	if (!config_file) {
+-		if (am_daemon < 0 && am_root <= 0)
++		if (am_daemon < 0 && am_root <= 0) {
+ 			config_file = RSYNCD_USERCONF;
+-		else
++		} else {
+ 			config_file = RSYNCD_SYSCONF;
++#ifdef RSYNCD_DISTCONF
++			STRUCT_STAT st;
++			if (do_stat(RSYNCD_SYSCONF, &st) != 0)
++				config_file = RSYNCD_DISTCONF;
++#endif
++		}
+ 	}
+ 	return lp_load(config_file, globals_only);
+ }
+diff -ur a/configure.ac b/configure.ac
+--- a/configure.ac	2023-11-28 17:12:41.647268046 +0100
++++ b/configure.ac	2023-11-28 17:40:15.678280030 +0100
+@@ -175,7 +175,7 @@
+ AC_DEFINE_UNQUOTED(RSYNC_PATH, "$RSYNC_PATH", [location of rsync on remote machine])
+ 
+ AC_ARG_WITH(rsyncd-conf,
+-	AS_HELP_STRING([--with-rsyncd-conf=PATH],[set configuration file for rsync server to PATH (default: /etc/rsyncd.conf)]),
++	AS_HELP_STRING([--with-rsyncd-conf=PATH],[set user/admin defined configuration file for rsync server to PATH (default: /etc/rsyncd.conf)]),
+ 	[ if test ! -z "$with_rsyncd_conf" ; then
+ 		case $with_rsyncd_conf in
+ 			yes|no)
+@@ -193,7 +193,27 @@
+ 	fi ],
+ 	[ RSYNCD_SYSCONF="/etc/rsyncd.conf" ])
+ 
+-AC_DEFINE_UNQUOTED(RSYNCD_SYSCONF, "$RSYNCD_SYSCONF", [location of configuration file for rsync server])
++AC_DEFINE_UNQUOTED(RSYNCD_SYSCONF, "$RSYNCD_SYSCONF", [location of user/admin defined configuration file for rsync server])
++
++AC_ARG_WITH(rsyncd-distconf,
++	AS_HELP_STRING([--with-rsyncd-distconf=PATH],[set vendor configuration file for rsync server to PATH (default: not set)]),
++	[ if test ! -z "$with_rsyncd_distconf" ; then
++		case $with_rsyncd_distconf in
++			yes|no)
++				RSYNCD_DISTCONF="/usr/etc/rsyncd.conf"
++				;;
++			/*)
++				RSYNCD_DISTCONF="$with_rsyncd_distconf"
++				;;
++			*)
++                                AC_MSG_ERROR(You must specify an absolute path to --with-rsyncd-distconf=PATH)
++				;;
++		esac
++	fi
++	],
++	[])
++
++AC_DEFINE_UNQUOTED(RSYNCD_DISTCONF, "$RSYNCD_DISTCONF", [location of vendor configuration file for rsync server])
+ 
+ AC_ARG_WITH(rsh,
+ 	AS_HELP_STRING([--with-rsh=CMD],[set remote shell command to CMD (default: ssh)]))
+diff -ur a/rsyncd.conf.5.md b/rsyncd.conf.5.md
+--- a/rsyncd.conf.5.md	2023-11-28 17:12:41.643268046 +0100
++++ b/rsyncd.conf.5.md	2023-11-29 13:08:32.125333095 +0100
+@@ -1235,7 +1235,7 @@
+ 
+ ## FILES
+ 
+-/etc/rsyncd.conf or rsyncd.conf
++rsyncd.conf or /etc/rsyncd.conf or /usr/etc/rsyncd.conf
+ 
+ ## SEE ALSO
+ 

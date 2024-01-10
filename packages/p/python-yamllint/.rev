@@ -152,4 +152,16 @@
     <comment></comment>
     <requestid>1090262</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b8b370e86167585a6625c38d6acb167d</srcmd5>
+    <version>1.33.0</version>
+    <time>1702845103</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.33.0:
+  * Add support for Python 3.12, drop support for Python 3.7
+  * Rule ``document-end``: fix spurious &quot;missing document end&quot;
+  * Rule ``empty-values``: add ``forbid-in-block-sequences``
+    option</comment>
+    <requestid>1133548</requestid>
+  </revision>
 </revisionlist>

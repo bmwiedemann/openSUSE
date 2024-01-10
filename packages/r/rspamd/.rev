@@ -223,4 +223,12 @@
   enough memory for an array (bsc#1216830)</comment>
     <requestid>1132069</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>53eaf167fbc2d6e12b1ed39dcd99c67f</srcmd5>
+    <version>3.7.5</version>
+    <time>1703281376</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1134658</requestid>
+  </revision>
 </revisionlist>

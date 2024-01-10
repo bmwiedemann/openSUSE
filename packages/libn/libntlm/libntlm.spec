@@ -1,7 +1,7 @@
 #
 # spec file for package libntlm
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,12 @@
 
 Name:           libntlm
 %define lname	libntlm0
-Version:        1.6
+Version:        1.7
 Release:        0
 Summary:        Implementation of Microsoft's NTLMv1 authentication
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://gitlab.com/gsasl/libntlm/
-
 #Git-Clone:	https://gitlab.com/gsasl/libntlm.git
 #DL-URL:	https://download.savannah.nongnu.org/releases/libntlm/
 Source:         https://download.savannah.nongnu.org/releases/libntlm/%name-%version.tar.gz

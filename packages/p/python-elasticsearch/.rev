@@ -180,4 +180,16 @@
 - fix Source url, use pypi package</comment>
     <requestid>1129218</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ab171a66d783971c5bc91e987c737b3a</srcmd5>
+    <version>8.11.1</version>
+    <time>1703800477</time>
+    <user>anag+factory</user>
+    <comment>- update to 8.11.1:
+  * Added missing `role_templates` to `security.put_role_mapping`
+    API
+  * Added interactive examples page to documentation
+  * Changed API reference to have one page per sub-client</comment>
+    <requestid>1135258</requestid>
+  </revision>
 </revisionlist>

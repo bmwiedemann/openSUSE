@@ -1381,4 +1381,41 @@
     <comment>- Add missing service file for slurmrestd (boo#1217711). (forwarded request 1130096 from eeich)</comment>
     <requestid>1130097</requestid>
   </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>bbe32e7ae815ca74f049d8a3aa6db5a1</srcmd5>
+    <version>23.02.7</version>
+    <time>1704487515</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 23.02.6 to fix (CVE-2023-49933 - bsc#1218046, CVE-2023-49935 -
+  bsc#1218049, CVE-2023-49936 - bsc#1218050, CVE-2023-49937 - bsc#1218051,
+  CVE-2023-49938 - bsc#1218053)
+  * Security Fixes:
+    + Add `JobAcctGatherParams=DisableGPUAcct` to disable gpu accounting.
+    + `acct_gather_energy/ipmi` - Improve logging of DCMI issues.
+    + `gpu/oneapi` - Add support for new env vars `ZE_FLAT_DEVICE_HIERARCHY`
+      and `ZE_ENABLE_PCI_ID_DEVICE_ORDER`.
+    + `data_parser/v0.0.39` - skip empty string when parsing QOS ids.
+    + Remove error message from `assoc_mgr_update_assocs` when purposefully
+      resetting the default QOS.
+  * Bug Fixes:
+    + `libslurm_nss` - Avoid causing glibc to assert due to an unexpected
+      return from slurm_nss due to an error during lookup.
+    + Fix job requests with `--tres-per-task` sometimes resulting in bad
+      allocations that cannot run subsequent job steps.
+    + Fix issue with `slurmd` where `srun` fails to be warned when a node
+      prolog script runs beyond `MsgTimeout` set in `slurm.conf`.
+    + `gres/shard` - Fix plugin functions to have matching parameter orders.
+    + `gpu/nvml` - Fix issue that resulted in the wrong MIG devices being
+      constrained to a job
+    + `gpu/nvml` - Fix linking issue with MIGs that prevented multiple MIGs
+      being used in a single job for certain MIG configurations
+    + Fix file descriptor leak in slurmd when using `acct_gather_energy/ipmi`
+      with DCMI devices.
+    + `sview` - avoid crash when job has a node list string &gt; 49 characters.
+    + Prevent `slurmctld` crash during reconfigure when packing job start
+      messages.
+    + Preserve reason uid on reconfig.
+    + Update node reason with updated `INVAL` state reason if different from (forwarded request 1136624 from eeich)</comment>
+    <requestid>1137045</requestid>
+  </revision>
 </revisionlist>

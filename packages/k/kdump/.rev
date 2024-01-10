@@ -1290,4 +1290,12 @@ URL-decode the target URL. (forwarded request 234827 from ptesarik)</comment>
   * udev: don't reload kdump if kernel handles hotplug (jsc#PED-5077)</comment>
     <requestid>1132926</requestid>
   </revision>
+  <revision rev="144" vrev="2">
+    <srcmd5>54e2cb72942f71beed85fa5be0022869</srcmd5>
+    <version>2.0.0</version>
+    <time>1703102471</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1134051</requestid>
+  </revision>
 </revisionlist>

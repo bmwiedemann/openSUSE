@@ -1,7 +1,7 @@
 #
 # spec file for package python-netaddr
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-netaddr
-Version:        0.9.0
+Version:        0.10.1
 Release:        0
 Summary:        Pythonic manipulation of IPv4, IPv6, CIDR, EUI and MAC network addresses
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/drkjam/netaddr
 Source:         https://files.pythonhosted.org/packages/source/n/netaddr/netaddr-%{version}.tar.gz
-BuildRequires:  %{python_module importlib-metadata}
-BuildRequires:  %{python_module importlib_resources}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module xml}

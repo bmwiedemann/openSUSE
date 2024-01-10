@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan  2 21:42:52 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.2.1:
+  * Work around Python 3.12.1+ no longer calling startTest for
+    skipped tests
+
+-------------------------------------------------------------------
 Mon Dec 11 08:13:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.2:

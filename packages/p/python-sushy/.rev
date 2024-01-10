@@ -254,4 +254,16 @@
   - Requests must always have a read/connect timeout</comment>
     <requestid>1130304</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>90e23eac9f56e83b754c635d70cb687f</srcmd5>
+    <version>4.7.0</version>
+    <time>1704380357</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.7.0
+  - Fix missing ETag when patching Redfish resource
+  - Update master for stable/2023.2
+  - Adds an option for setting the http boot uri
+  - Fix wrong _get_registry logic in ResourceBase</comment>
+    <requestid>1136721</requestid>
+  </revision>
 </revisionlist>

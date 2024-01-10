@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Dec 16 19:54:19 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.20.0:
+  * Require proto-plus >= 1.22.3
+  * Use retry_async instead of retry in async client
+
+-------------------------------------------------------------------
 Thu Dec  7 21:55:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.19.2:

@@ -291,4 +291,16 @@
     <comment></comment>
     <requestid>1126666</requestid>
   </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>2398331a877c4b06cb233dba1f79edce</srcmd5>
+    <version>0.23.0</version>
+    <time>1702845221</time>
+    <user>anag+factory</user>
+    <comment>- Reenable tests. 
+- Added python-importlib-resources and python-importlib-metadata as part of tests.
+- Update required and recommended dependencies.
+- Update alternatives is done wrong in postuninstall. fixed.
+</comment>
+    <requestid>1133752</requestid>
+  </revision>
 </revisionlist>

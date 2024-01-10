@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-trans
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-trans
-Version:        84.87.20231121.7869d671a6
+Version:        84.87.20240105.ae431f155e
 Release:        0
 Summary:        YaST2 - Translation Container Package
 License:        GPL-2.0-or-later

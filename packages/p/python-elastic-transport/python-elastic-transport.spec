@@ -18,12 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-elastic-transport
-Version:        8.10.0
+Version:        8.11.0
 Release:        0
 Summary:        Transport classes and utilities shared among Python Elastic client libraries
 License:        Apache-2.0
 URL:            https://github.com/elastic/elastic-transport-python
 Source:         https://github.com/elastic/elastic-transport-python/archive/refs/tags/v%{version}.tar.gz#/elastic-transport-python-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

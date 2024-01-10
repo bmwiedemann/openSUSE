@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-termcolor
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 Summary:        ANSII Color formatting for output in terminal
 License:        MIT

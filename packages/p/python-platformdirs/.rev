@@ -111,4 +111,22 @@
     - Use ruff in #189</comment>
     <requestid>1124419</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>63632977b957918882c549507083317a</srcmd5>
+    <version>4.1.0</version>
+    <time>1704491921</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.1.0:
+  * docs: fix Linux user_log_dir example in README
+  * Drop support for EOL Python 3.7
+- update to 4.0.0:
+  * site_cache_dir: Use `/var/cache` again instead of `/var/tmp`
+    on UNIX
+
+  - unix: Optionally create the opinionated log/ in user_log_dir()
+  - git ls-files -z -- .github/workflows/check.yml | xargs -0
+  * Declare support for Python 3.11 by @hugovk in #103
+  * python 3.6 removal</comment>
+    <requestid>1136016</requestid>
+  </revision>
 </revisionlist>

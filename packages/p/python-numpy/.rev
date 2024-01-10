@@ -1249,4 +1249,12 @@ The Python versions supported in this release are 3.9-3.11.
   package, it is not installed.</comment>
     <requestid>1132800</requestid>
   </revision>
+  <revision rev="124" vrev="3">
+    <srcmd5>bc1179a222c289bfc418d7d5572c3ead</srcmd5>
+    <version>1.26.2</version>
+    <time>1704491993</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1136755</requestid>
+  </revision>
 </revisionlist>

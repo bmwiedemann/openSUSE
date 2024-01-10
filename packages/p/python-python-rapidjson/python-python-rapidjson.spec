@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-rapidjson
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define rjversion 1.1.0+git20211015.4d6cb081
 %{?sle15_python_module_pythons}
 Name:           python-python-rapidjson
-Version:        1.13
+Version:        1.14
 Release:        0
 Summary:        Python wrapper around rapidjson
 License:        MIT

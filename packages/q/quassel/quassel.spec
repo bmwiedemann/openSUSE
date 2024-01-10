@@ -34,6 +34,7 @@ Source2:        sysconfig.%{name}core
 Source3:        logrotate.%{name}core
 Source5:        quassel-rpmlintrc
 BuildRequires:  boost-devel
+BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  git
 BuildRequires:  hicolor-icon-theme

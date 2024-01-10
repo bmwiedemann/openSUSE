@@ -1,7 +1,7 @@
 #
 # spec file for package python-psycopg-pool
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-psycopg-pool
-Version:        3.1.7
+Version:        3.2.1
 Release:        0
 Summary:        Connection Pool for Psycopg
 License:        LGPL-3.0-only
@@ -28,7 +28,7 @@ BuildRequires:  %{python_module setuptools >= 49.2.0}
 BuildRequires:  %{python_module wheel >= 0.37}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-typing-extensions >= 3.10
+Requires:       python-typing-extensions >= 4.4
 BuildArch:      noarch
 %python_subpackages
 

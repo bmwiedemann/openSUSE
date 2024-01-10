@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Dec 17 15:04:50 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.10:
+  * Fix build on ARM Macs.
+
+-------------------------------------------------------------------
 Sat Dec 10 20:00:47 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.09

@@ -43,4 +43,15 @@
 </comment>
     <requestid>1067998</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>437a8b66e92278d7dc7f3e684e86e92b</srcmd5>
+    <version>0.9.10</version>
+    <time>1703800851</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.9.10:
+  * Add support for python 3.12 and drop python 2.7 support
+
+    fix the build for Python 3.10.</comment>
+    <requestid>1135196</requestid>
+  </revision>
 </revisionlist>

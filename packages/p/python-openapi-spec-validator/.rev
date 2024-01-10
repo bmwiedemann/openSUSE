@@ -130,4 +130,29 @@
     <comment></comment>
     <requestid>1101375</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ec889299182b633fe4403e3fe2e19261</srcmd5>
+    <version>0.7.1</version>
+    <time>1702845206</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.7.1:
+  * Move to jsonschema-path package #292
+  * Validator accepts any schema (schema dictionary or
+    SchemaPath) #293
+  * `validate` and `validate_url` shortcuts #294
+  * `validate_spec` shortcut in deprecated. Use`validate`
+    instead.
+  * `validate_spec_url` shortcut is deprecated. Use
+    `validate_url` instead.
+- update to 0.7.0:
+  * Allow validate multiple files (also with pre-commit hook)
+  * Validators and keywords refactor #286
+  * Python 3.12 support #290
+  * Bump docker image python from 3.11.5-alpine to 3.12.0-alpine
+  * `openapi_*_spec_validator` objects are deprecated. Use
+    `*SpecValidator` classes instead.
+
+  * schemas and validators lazy loading proxy #170</comment>
+    <requestid>1133688</requestid>
+  </revision>
 </revisionlist>

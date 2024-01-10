@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Dec  5 11:17:28 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.113.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.113.0
+- Changes since 5.112.0:
+  * Make testLoadHints pass with the PatchCollection
+  * KAboutLicense::byKeyword: handle SPDX ids with -or-later
+  * kdirwatch: find fam as part of the tests now that we include _p.h
+  * kdirwatch: don't crash after moving threads
+  * kdirwatch: don't leave relative entries dangling
+  * kdirwatch: expand ref counting system to keep account of public instances
+  * kdirwatch: always unref d, and unset d from inside d
+
+-------------------------------------------------------------------
 Mon Nov  6 09:13:47 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.112.0

@@ -23,7 +23,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-psutil
-Version:        5.9.6
+Version:        5.9.7
 Release:        0
 Summary:        A process utilities module for Python
 License:        BSD-3-Clause
@@ -36,8 +36,6 @@ Patch2:         skip_failing_tests.patch
 Patch3:         skip_rlimit_tests_on_python2.patch
 # PATCH-FIX-SLE adopt change of used memory of procps
 Patch4:         mem-used-bsc1181475.patch
-# PATCH-FIX-UPSTREAM logind_y2038.patch gh#giampaolo/psutil#2300 aplanas@suse.com
-Patch5:         logind_y2038.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -60,8 +58,7 @@ BuildRequires:  procps
 A graphical interface that lets you easily analyze and introspect unaltered running Python processes.
 
 %prep
-%setup -q -n psutil-%{version}
-%autopatch -p1
+%autosetup -p1 -n psutil-%{version}
 
 %build
 %pyproject_wheel

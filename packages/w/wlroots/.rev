@@ -387,4 +387,46 @@
     <comment></comment>
     <requestid>1087218</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>4ef88822a45c20bc8b2a208b5532d6f8</srcmd5>
+    <version>0.17.0</version>
+    <time>1703024196</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1133990</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>7f888a62fafad1dcf43226780b8e8ab6</srcmd5>
+    <version>0.17.0</version>
+    <time>1703198301</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1134407</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>ab8ff712c6308730d62a99ed48b6f142</srcmd5>
+    <version>0.17.1</version>
+    <time>1704281251</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.17.1:
+  * backend/x11: don't send ConfigureRequest with the same size
+  * backend/x11: check buffer format in output_test()
+  * tinywl: fix wlroots dependency constraint in Makefile
+  * viewporter: rename state var in viewport_handle_surface_commit()
+  * viewporter: listen to client_commit
+  * viewporter: fix src buffer bounds check
+  * render/egl: fallback to GBM FD if EGLDevice is not available
+  * render: disable linux-dmabuf without DRM FD
+  * cursor: send surface scale events
+  * cursor: fix initial cursor position for new outputs
+  * xcursor: fix duplicate cursor check check in load_callback()
+  * input-method-v2: drop unnecessary variable and cast
+  * output-layout: fix missing global for outputs with a custom mode
+  * build: bump vesion to 0.17.1
+  * types/output: emit destroy event before destroying global
+  * input-method-v2: free current strings on commit
+  * input-method-v2: validate commit serial
+</comment>
+    <requestid>1135923</requestid>
+  </revision>
 </revisionlist>

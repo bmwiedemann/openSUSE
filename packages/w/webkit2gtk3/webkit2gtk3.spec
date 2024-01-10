@@ -74,7 +74,7 @@ ExclusiveArch:  do-not-build
 Name:           webkit2%{_gtknamesuffix}
 ### FIXME ### Drop the disabling of LTO on next release/versionbump
 %define _lto_cflags %{nil}
-Version:        2.42.3
+Version:        2.42.4
 Release:        0
 Summary:        Library for rendering web content, GTK+ Port
 License:        BSD-3-Clause AND LGPL-2.0-or-later
@@ -430,6 +430,7 @@ A small test browswer from webkit, useful for testing features.
 
 
 # Expand %%lang_package to Obsoletes its older-name counterpart
+
 %package -n WebKitGTK-%{_apiver}-lang
 Summary:        Translations for package %{name}
 Group:          System/Localization

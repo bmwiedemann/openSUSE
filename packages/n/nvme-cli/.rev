@@ -674,4 +674,20 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1124997</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>4eb1e2d8b146c97e1c37f69fa2bce02e</srcmd5>
+    <version>2.7</version>
+    <time>1703102430</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1134176</requestid>
+  </revision>
+  <revision rev="72" vrev="6">
+    <srcmd5>106eec96603dd63d13d82a48bf0fb032</srcmd5>
+    <version>2.6</version>
+    <time>1703198282</time>
+    <user>anag+factory</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1218306</comment>
+    <requestid>1134429</requestid>
+  </revision>
 </revisionlist>

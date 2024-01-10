@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -25,10 +24,9 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%global skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-lazy-object-proxy%{psuffix}
-Version:        1.9.0
+Version:        1.10.0
 Release:        0
 Summary:        Rebuild a new abstract syntax tree from Python's ast
 License:        BSD-2-Clause

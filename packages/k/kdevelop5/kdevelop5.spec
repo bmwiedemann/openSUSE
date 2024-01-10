@@ -39,6 +39,7 @@ BuildRequires:  clang-devel
 BuildRequires:  gcc10-c++
 BuildRequires:  gcc10-PIE
 %endif
+BuildRequires:  extra-cmake-modules
 BuildRequires:  okteta-devel
 BuildRequires:  shared-mime-info
 BuildRequires:  subversion-devel

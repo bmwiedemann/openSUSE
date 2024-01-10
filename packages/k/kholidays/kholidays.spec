@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5Holidays5
-%define _tar_path 5.103
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
+%define qt5_version 5.15.2
 %bcond_without released
 Name:           kholidays
-Version:        5.112.0
+Version:        5.113.0
 Release:        0
 Summary:        Holiday calculation library
 License:        LGPL-2.1-or-later
@@ -34,11 +34,10 @@ Source:         %{name}-%{version}.tar.xz
 Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
-BuildRequires:  extra-cmake-modules
-BuildRequires:  kf5-filesystem
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  cmake(Qt5Qml)
+BuildRequires:  extra-cmake-modules >= %{_kf5_version}
+BuildRequires:  cmake(Qt5Core) >= %{qt5_version}
+BuildRequires:  cmake(Qt5LinguistTools) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Qml) >= %{qt5_version}
 
 %description
 This package contains a library which helps developers determining when holidays occur.
@@ -54,7 +53,7 @@ This package contains a library which helps developers determining when holidays
 %package devel
 Summary:        Development files for the KDE PIM Holiday API
 Requires:       %{lname} = %{version}
-Requires:       cmake(Qt5Core)
+Requires:       cmake(Qt5Core) >= %{qt5_version}
 
 %description devel
 This package contains necessary include files and libraries needed

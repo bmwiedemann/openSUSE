@@ -218,4 +218,18 @@
   * Switch to newer openstackdocstheme version</comment>
     <requestid>925736</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>496a8b2b1e2f4ade1886e322c709ccf6</srcmd5>
+    <version>4.0.0</version>
+    <time>1703800953</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.0.0:
+  * Order branches according to OpenStack release names
+  * Fix scanner tests failing with modern Git
+  * Remove python-dev from bindep
+  * remove unicode from code
+  * Don't attempt to pull from empty cache file
+  * Update CI to use unversioned jobs template</comment>
+    <requestid>1135344</requestid>
+  </revision>
 </revisionlist>

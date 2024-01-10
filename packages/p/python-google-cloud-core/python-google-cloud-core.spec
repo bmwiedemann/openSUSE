@@ -16,33 +16,27 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
+%{?sle15_python_module_pythons}
 Name:           python-google-cloud-core
-Version:        2.3.3
+Version:        2.4.1
 Release:        0
 Summary:        Google Cloud API client core library
 License:        Apache-2.0
 URL:            https://github.com/googleapis/python-cloud-core
 Source:         https://files.pythonhosted.org/packages/source/g/google-cloud-core/google-cloud-core-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module google-api-core >= 1.31.6}
 BuildRequires:  %{python_module google-auth >= 1.25.0}
 BuildRequires:  %{python_module grpcio >= 1.38.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-google-api-core >= 1.31.6
 Requires:       python-google-auth >= 1.25.0
-Requires:       python-six >= 1.12.0
 Recommends:     python-grpcio >= 1.38.0
 BuildArch:      noarch
-%if %{with python2}
-BuildRequires:  python-futures
-%endif
-%ifpython2
-Requires:       python-futures >= 3.2.0
-%endif
 %python_subpackages
 
 %description
@@ -55,10 +49,10 @@ common helpers (e.g. base ``Client`` classes) used by all of the
 %setup -q -n google-cloud-core-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -68,6 +62,7 @@ export PYTEST_ADDOPTS="--import-mode=importlib"
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/google/cloud
+%{python_sitelib}/google_cloud_core-%{version}.dist-info
 
 %changelog

@@ -179,4 +179,41 @@
     <comment></comment>
     <requestid>1128302</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>67699d2189b0deaedbe7d6e066ecbe99</srcmd5>
+    <version>0.26.0</version>
+    <time>1704281063</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.26.0:
+  * When accessing tags or macro definitions by name, specfile
+    now takes validity into account when looking for the best
+    match. For example if there are two instances of `Version`
+    tag, one in the true and one in the false branch of a
+    condition, `Specfile.version` will always access the one that
+    is in the true branch. (#328)
+  * Third pre-release for testing Packit support.
+
+  - There is a new method, Specfile.update_version(), that allows
+    updating spec file version even if it is a pre-release. (#317)
+  - Sources now have a valid property that indicates whether a
+    source is valid in the current context, meaning it is not
+- reduce buildrequires to git-core
+- Update to version 0.18.0:
+- Update to version 0.17.0:
+    heuristics as rpmdev-packager, meaning that the
+  * Added Specfile.has_autorelease property to detect if a spec
+- Update to version 0.15.0:
+    necessary, greatly improving performance in certain scenarios.
+  * Fixed a bug that broke parsing in case spec file contained
+  * Specfile no longer depends on rpm-py-installer, it now depends
+  * Fixed infinite loop that occured when section options were
+  * Fixed a bug in section parsing that caused sections to be
+- Update to version 0.13.0:
+    the standard `copy()` and `deepcopy()` functions from `copy`
+  * `Section.name` attribute has been renamed to a more fitting
+  * `setup.cfg` now uses `license_files` instead of deprecated
+  * Tags enclosed in conditional macro expansions are not ignored
+- Update to version 0.11.0</comment>
+    <requestid>1135634</requestid>
+  </revision>
 </revisionlist>

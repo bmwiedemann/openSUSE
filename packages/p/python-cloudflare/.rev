@@ -194,4 +194,51 @@
   * add importlib_resources info for older Python versions</comment>
     <requestid>1129789</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3cb14b33043dca48d4b794f1d536dc25</srcmd5>
+    <version>2.14.3</version>
+    <time>1702936593</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.14.3:
+  * /live added - but does not response yet
+  * handle {account-identifier} with a dash vs underscore.</comment>
+    <requestid>1133820</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>161d82634cb2f23f6f9fe5bbea8efc17</srcmd5>
+    <version>2.16.0</version>
+    <time>1704829791</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.16.0:
+  * added CloudFlare/tests as a package - a better place to
+    keep tests
+  * return http code 200 and
+    more 2xx now accepted, check for decode() errors
+  * confine account to first one
+  * testing pdf uploading and downloading
+  * cleanup to show correct sequence of firewall and filter
+    creation and deletion
+  * added workers create and delete
+  * moved /tests to /CloudFlare/tests
+    api_decode_from_web.py as the old api.cloudflare.com website
+    has gone away
+  * OpenAPI code now returns clean errors and version number.
+  * openapi url now in code where it belongs, args checked for
+    type str, logging messgaes for various errors, http error
+    code 400 &amp; 429 handled
+  * --openapi call now with optional argument as url is built
+    into code
+  * all tests now similar
+    structure, callable from command line, debug on by default
+    for command line calls
+  * move OPENAPI_URL into code where it belongs
+  * only create one logger - longstanding issue solved
+  * added openapi_url config - rarely used outside of development
+  * deal with /certificates case - which is unique
+  * do not run tests if nothing has changed
+  * make zone choice random, add delay for import as it is rate limited
+  * remove excess code
+  * moved to use tempfile.TemporaryFile so more portable over many systems</comment>
+    <requestid>1137644</requestid>
+  </revision>
 </revisionlist>

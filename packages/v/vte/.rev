@@ -1208,4 +1208,16 @@ New upstream release</comment>
     <comment></comment>
     <requestid>1129586</requestid>
   </revision>
+  <revision rev="153" vrev="1">
+    <srcmd5>73a287da22f0b9710da081ca2c837d61</srcmd5>
+    <version>0.74.2</version>
+    <time>1703102455</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.74.2:
+  * lib,bidi: Work on the heap rather than the stack
+  * stream: Fix a rare corruption when advancing the tail
+  * widget: Fix initial cursor blink state
+  * build: Post release version bump (forwarded request 1134007 from dimstar)</comment>
+    <requestid>1134010</requestid>
+  </revision>
 </revisionlist>

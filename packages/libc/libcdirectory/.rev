@@ -63,4 +63,12 @@
     <comment>- Add signature and keyring</comment>
     <requestid>1130585</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b94913b3674d0c58e74e1add1b2799cf</srcmd5>
+    <version>20240105</version>
+    <time>1704487432</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20240105</comment>
+    <requestid>1136992</requestid>
+  </revision>
 </revisionlist>

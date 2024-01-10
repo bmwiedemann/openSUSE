@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Dec 15 21:31:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.1.1:
+  * Fixing Cython optimized build deployments for linux
+  * Adding #255 defer ipython import for large import speed
+    improvements (thanks to Eric Prestat)
+  * Adding testing for Python 3.12
+  * Fixing #253 merge_update box list merge types not populated
+    to sub dictionaries (thanks to lei wang)
+  * Fixing #257 Two test failures due to arguments having
+    incorrect types (thanks to Michał Górny)
+  * Fixing stub files to match latest code signatures
+  * Removing #251 support for circular references in lists
+  * Removing support for Python 3.7 as it is EOL
+  * Switching off of poetry due to multiple build issues
+  * Adding #169 default functions with the box_instance and key
+    parameter (thanks to Коптев Роман Викторович)
+  * Adding #170 Be able to initialize with a flattened dict - by
+    using DDBox (thanks to Ash A.)
+  * Adding #192 box_dots treats all keys with periods in them as
+    separate keys (thanks to Rexbard)
+  * Adding #211 support for properties and setters in subclasses
+  * Adding #226 namespace to track changes to the box
+  * Adding #236 iPython detection to prevent adding attribute
+    lookup words
+  * Adding #238 allow ``|`` and ``+`` for frozen boxes
+  * Adding new DDBox class (Default Dots Box) that is a subclass
+    of SBox
+  * Fixing #235 how ``|`` and ``+`` updates were performed for
+    right operations
+  * Fixing #234 typos
+  * Fixing no implicit optionals with type hinting
+
+-------------------------------------------------------------------
 Wed Nov  9 18:38:35 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 6.1.0
@@ -52,7 +86,7 @@ Wed Dec  8 09:55:04 UTC 2021 - pgajdos@suse.com
   -------------
   * Adding testing for Python 3.9
   * Fixing #165 `box_dots` to work with `default_box`
-  
+
 -------------------------------------------------------------------
 Wed Aug  5 15:02:55 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 

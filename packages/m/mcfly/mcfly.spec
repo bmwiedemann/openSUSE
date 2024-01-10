@@ -17,7 +17,7 @@
 
 
 Name:           mcfly
-Version:        0.8.2+0
+Version:        0.8.4+0
 Release:        0
 Summary:        Shell history helper
 License:        MIT
@@ -25,7 +25,6 @@ Group:          Development/Tools/Other
 URL:            https://github.com/cantino/mcfly
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
-Source2:        cargo_config
 BuildRequires:  cargo-packaging
 BuildRequires:  libopenssl-devel
 
@@ -34,8 +33,6 @@ McFly replaces your default ctrl-r shell history search with an intelligent sear
 
 %prep
 %autosetup -a1
-mkdir -p .cargo
-cp %{SOURCE2} .cargo/config
 
 %build
 %{cargo_build}

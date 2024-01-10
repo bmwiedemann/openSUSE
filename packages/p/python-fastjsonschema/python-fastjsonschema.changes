@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 29 16:18:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.19.1:
+  * Fixed date format to accept only two digit months and days
+
+-------------------------------------------------------------------
 Mon Nov 27 18:48:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.19.0:

@@ -1,4 +1,95 @@
 -------------------------------------------------------------------
+Sun Jan  7 18:18:50 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 14.3.0:
+  This release of Teleport contains multiple security fixes,
+  improvements and bug fixes.
+  * Security fixes
+    - Teleport Proxy now restricts SFTP for normal users as
+      described under Advisory
+      https://github.com/gravitational/teleport/security/advisories/GHSA-c9v7-wmwj-vf6x
+    - Fixed an issue that would allow for SSRF via Teleport's
+      reverse tunnel subsystem. Documented under the advisory
+      -https://github.com/gravitational/teleport/security/advisories/GHSA-hw4x-mcx5-9q36
+    - On macOS, Teleport filters the environment to prevent code
+      execution via `DYLD_` variables. Documented under
+      https://github.com/gravitational/teleport/security/advisories/GHSA-vfxf-76hv-v4w4
+    - A fix was applied to Access Lists to prevent possible
+      privilege escalation of list owners.  Documented under
+      https://github.com/gravitational/teleport/security/advisories/GHSA-76cc-p55w-63g3
+  * Other Fixes & Improvements
+    -  Added the ability to promote an access request to an access
+       list in Teleport Connect
+    -  Fixed an issue that would prevent websocket upgrades from
+       completing.
+    -  Enhanced the audit events related to Teleport's SAML IdP
+    -  Added support for STS session tags in the database
+       configuration for granular DynamoDB access.
+    -  Added support for the IAM join method in ca-west-1.
+    -  Improved the formatting of access list notifications in tsh.
+    -  Fixed downgrade logic of KubernetesResources to Role v6
+    -  Fixed potential panic during early phases of SSH service
+       lifetime
+    -  Added a `tsh latency` command to monitor ssh connection
+       latency in realtime
+    -  Support GitHub joining from Enterprise accounts with
+       `include_enterprise_slug` enabled.
+    -  Added vpc-id as a label to auto-discovered RDS databases
+    -  Improved teleport agent performance when handling a large
+       number of TCP forwarding requests.
+    -  Bump golang.org/x/crypto to v0.17.0, which addresses the
+       Terrapin vulnerability (CVE-2023-48795)
+    -  Include the lock expiration time in `lock.create` audit
+       events
+    -  Add custom attribute mapping to the
+       `saml_idp_service_provider` spec.
+    -  Fixed PIV not being available on Windows tsh binaries
+    -  Restored direct dial SSH server compatibility with certain
+       SSH tools such as `ssh-keyscan` (#35647)
+    -  Prevent users from deleting their last passwordless device
+    -  the `teleport-kube-agent` chart now supports passing extra
+       arguments to the updater.
+    -  New access lists with an unspecified NextAuditDate now pick
+       a new date instead of being rejected
+    -  Changed the minimal supported macOS version of Teleport
+       Connect to 10.15 (Catalina)
+    -  Add non-AD desktops to Enroll New Resource
+    -  Fixed a bug in `teleport-kube-agent` chart when using both
+       `appResources` and the `discovery` role.
+    -  Fixed session upload audit events sometimes containing an
+       incorrect URL for the session recording.
+    -  Prevent tsh from re-authenticating if the MFA ceremony fails
+       during `tsh ssh`
+    -  Prevent attempts to join a nonexistent SSH session from
+       hanging forever
+    -  Improved Windows hosts registration with a new
+       `static_hosts` configuration field
+    -  Fixed the sorting of name and description columns for user
+       groups when creating an access request
+
+-------------------------------------------------------------------
+Fri Dec 15 06:33:22 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 14.2.3:
+  * Prevent Cloud tenants from being a leaf cluster. #35687
+  * Added "Show All Labels" button in the unified resources list
+    view. #35666
+  * Added auto approval flow to servicenow plugin. #35658
+  * Added guided SAML entity descriptor creation when entity
+    descriptor XML is not yet available. #35657
+  * Added a connection test when enrolling a new Connect My
+    Computer resource in Web UI. #35649
+  * Fixed regression of Kubernetes Server Address when Teleport
+    runs in multiplex mode. #35633
+  * When using the Slack plugin, users will now be notified
+    directly of access requests and their approvals or denials.
+    #35577
+  * Fixed bug where configuration errors with an individual SSO
+    connector impacted other connectors. #35576
+  * Fixed client IP propagation from the Proxy to the Auth during
+    IdP initiated SSO. #35545
+
+-------------------------------------------------------------------
 Sat Dec  9 19:51:14 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 14.2.2:
@@ -6791,7 +6882,7 @@ Tue Apr 26 19:47:35 UTC 2022 - kastl@b1-systems.de
 Tue Apr 26 18:54:52 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - introduce new executable tbot for new feature Machine ID
-  https://goteleport.com/docs/machine-id/getting-started/ 
+  https://goteleport.com/docs/machine-id/getting-started/
 
 -------------------------------------------------------------------
 Tue Apr 26 06:24:53 UTC 2022 - kastl@b1-systems.de

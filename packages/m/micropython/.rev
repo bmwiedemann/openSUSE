@@ -82,4 +82,15 @@
 </comment>
     <requestid>1084191</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>43c2a7e9bea3ff9633233a5253ea7f8e</srcmd5>
+    <version>1.22.0</version>
+    <time>1704753907</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.22.0:
+  * https://github.com/micropython/micropython/releases/tag/v1.22.0
+  * objslice: validate that the argument to indices() is an integer
+    (CVE-2023-7158, bsc#1218446)</comment>
+    <requestid>1137463</requestid>
+  </revision>
 </revisionlist>

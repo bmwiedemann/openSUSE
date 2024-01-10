@@ -165,4 +165,18 @@
     <comment></comment>
     <requestid>1115634</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>25758cbdf69fc1951e0095fb5364d977</srcmd5>
+    <version>1.1.0</version>
+    <time>1704281231</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.0:
+  * Added --doctest-plus-generate-diff to update documentation
+    based on actual output.
+  * Fix module level __doctest_requires__.
+  * Versions of Python &lt;3.8 are no longer supported.
+  * Fix erroneous attempt to import __main__.py by skipping it.
+  * Respect pytest --import-mode.</comment>
+    <requestid>1135878</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jan  4 09:09:06 UTC 2024 - cloud-devel@suse.de
+
+- update to version 6.3.0
+  - Mask chapsecret
+  - Update master for stable/2023.2
+  - versionutil: Remove trailing alpha/beta/rc suffix
+  - Imported Translations from Zanata
+  - Fix missing PyYAML dependency
+
+-------------------------------------------------------------------
+Fri Dec  1 16:35:00 UTC 2023 - cloud-devel@suse.de
+
+- update to version 6.2.1
+  - Imported Translations from Zanata
+
+-------------------------------------------------------------------
 Tue Jul 18 16:41:01 UTC 2023 - cloud-devel@suse.de
 
 - update to version 6.2.0

@@ -150,4 +150,14 @@
 - Update to version 0.5.3</comment>
     <requestid>1115768</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>a9901ceccb64e6e608560eda976337c4</srcmd5>
+    <version>1.2.0</version>
+    <time>1702845142</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.2.0:
+  * Add support for Python 3.12 (#318)
+  * Use setuptools.find_namespace_packages (#321)</comment>
+    <requestid>1133645</requestid>
+  </revision>
 </revisionlist>

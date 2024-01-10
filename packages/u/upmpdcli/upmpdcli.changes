@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sat Dec 23 15:54:47 UTC 2023 - Michael Pujos <pujos.michael@gmail.com>
+
+- each Content Directory plugin is now packaged in its own noarch package
+  instead of being bundled in the main package
+- added upmpdcli-config package, a Qt5 config editor.
+  Global upmpdcli config can be edited with command:
+  xdg-su upmpdcli-config /etc/upmpdcli.conf
+- fixed permission on /etc/upmpdcli.conf preventing plugins to read
+  their configuration
+- Update to 1.8.6:
+  * Fix issues in the HTTP streaming proxy. They were preventing its use with Kodi.
+- Update to 1.8.5:
+  * Remove deezer support, it was not working any more.
+- Update to 1.8.4:
+  * Rebuilt for new npupnp/upnpp libs version numbering.
+  * Rebuilt for rpi 1 (armv6) compatibility
+  * Misc. improvements to the Tidal, Subsonic,and Radio Paradise Media
+    Server plugins.
+  * New Mother Earth Radio Media Server plugin.
+- Update to 1.8.3:
+  * Completely new Tidal plugin by Giovanni Fulco. Tidal access is
+    working again !
+  * Media Server: change the internal URL format to avoid characters
+    needing quoting in XML: work around misc. device bugs.
+  * Qobuz: add option to obtain actual item resource info when listing
+    a container.
+- Update to 1.8.1:
+  * Add configuration variable to enable the internal WEB server local
+    file serving function, mostly for use by Media Server plugins for
+    serving icons. Off by default.
+  * Subsonic/Navidrome plugin: misc. updates and improvements.
+  * Uprcl: fix using the 'albumartist' tag in priority when it is set.
+- Update to 1.7.9:
+  * Media Server: new Subsonic connector plugin by Giovanni Fulco:
+    allows streaming music from a Subsonic/Navidrome server to an UPnP renderer. 
+
+-------------------------------------------------------------------
 Thu Mar 23 15:45:50 UTC 2023 - Michael Pujos <pujos.michael@gmail.com>
 
 - Update to 1.7.7:

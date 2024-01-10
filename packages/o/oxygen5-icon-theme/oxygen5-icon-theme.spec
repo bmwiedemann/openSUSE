@@ -16,23 +16,22 @@
 #
 
 
-%define _tar_path 5.103
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_with autotests
-# Only needed for the package signature condition
+%define qt5_version 5.15.2
 %bcond_without released
 Name:           oxygen5-icon-theme
-Version:        5.112.0
+Version:        5.113.0
 Release:        0
 Summary:        Oxygen Icon Theme
 License:        LGPL-3.0-only
 URL:            https://www.kde.org
-Source:         oxygen-icons5-%{version}.tar.xz
+Source:         oxygen-icons-%{version}.tar.xz
 %if %{with released}
-Source1:        oxygen-icons5-%{version}.tar.xz.sig
+Source1:        oxygen-icons-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
 Source3:        22x22-package-manager-icon.png
@@ -48,23 +47,21 @@ Source12:       16x16_folder-html.png
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
-BuildRequires:  kf5-filesystem
-BuildRequires:  xz
 Requires:       hicolor-icon-theme
 Recommends:     oxygen5-icon-theme-large
 Provides:       oxygen-icon-theme = 15.08
 Obsoletes:      oxygen-icon-theme < 15.08
 BuildArch:      noarch
 %if %{with autotests}
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5Core) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Test) >= %{qt5_version}
 %endif
 
 %description
 This package contains the non-scalable icons of the Oxygen icon theme.
 
 %prep
-%autosetup -p1 -n oxygen-icons5-%{version}
+%autosetup -p1 -n oxygen-icons-%{version}
 
 %if %{without autotests}
 sed -i -e's/.*autotests/# \0/' CMakeLists.txt

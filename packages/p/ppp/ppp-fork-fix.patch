@@ -1,6 +1,6 @@
 --- pppd/main.c.orig
 +++ pppd/main.c
-@@ -1551,14 +1551,6 @@ safe_fork(int infd, int outfd, int errfd
+@@ -1632,14 +1632,6 @@ ppp_safe_fork(int infd, int outfd, int e
  	int fd, pipefd[2];
  	char buf[1];
  
@@ -15,7 +15,7 @@
  	if (pipe(pipefd) == -1)
  		pipefd[0] = pipefd[1] = -1;
  	pid = fork();
-@@ -1582,25 +1574,31 @@ safe_fork(int infd, int outfd, int errfd
+@@ -1663,25 +1655,31 @@ ppp_safe_fork(int infd, int outfd, int e
  		tdb_close(pppdb);
  #endif
  
@@ -64,7 +64,7 @@
  		close(log_to_fd);
  	if (the_channel->close)
  		(*the_channel->close)();
-@@ -1608,12 +1606,18 @@ safe_fork(int infd, int outfd, int errfd
+@@ -1689,12 +1687,18 @@ ppp_safe_fork(int infd, int outfd, int e
  		close(devfd);	/* some plugins don't have a close function */
  	close(fd_ppp);
  	close(fd_devnull);

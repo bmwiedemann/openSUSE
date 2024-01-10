@@ -20,36 +20,36 @@
 typeface family, designed for writing code, using in terminals, and\
 preparing technical documents.
 Name:           iosevka-fonts
-Version:        27.3.5
+Version:        28.0.3
 Release:        0
 Summary:        Slender typeface for source code
 License:        OFL-1.1
 Group:          System/X11/Fonts
 URL:            https://typeof.net/Iosevka/
-Source0:        https://github.com/be5invis/Iosevka/releases/download/v%{version}/super-ttc-iosevka-%{version}.zip
-Source1:        https://github.com/be5invis/Iosevka/releases/download/v%{version}/super-ttc-iosevka-slab-%{version}.zip
-Source2:        https://github.com/be5invis/Iosevka/releases/download/v%{version}/super-ttc-iosevka-curly-%{version}.zip
-Source3:        https://github.com/be5invis/Iosevka/releases/download/v%{version}/super-ttc-iosevka-curly-slab-%{version}.zip
-Source4:        https://github.com/be5invis/Iosevka/releases/download/v%{version}/super-ttc-iosevka-aile-%{version}.zip
-Source5:        https://github.com/be5invis/Iosevka/releases/download/v%{version}/super-ttc-iosevka-etoile-%{version}.zip
-Source6:        https://github.com/be5invis/Iosevka/releases/download/v%{version}/super-ttc-iosevka-ss01-%{version}.zip
-Source7:        https://github.com/be5invis/Iosevka/releases/download/v%{version}/super-ttc-iosevka-ss02-%{version}.zip
-Source8:        https://github.com/be5invis/Iosevka/releases/download/v%{version}/super-ttc-iosevka-ss03-%{version}.zip
-Source9:        https://github.com/be5invis/Iosevka/releases/download/v%{version}/super-ttc-iosevka-ss04-%{version}.zip
-Source10:       https://github.com/be5invis/Iosevka/releases/download/v%{version}/super-ttc-iosevka-ss05-%{version}.zip
-Source11:       https://github.com/be5invis/Iosevka/releases/download/v%{version}/super-ttc-iosevka-ss06-%{version}.zip
-Source12:       https://github.com/be5invis/Iosevka/releases/download/v%{version}/super-ttc-iosevka-ss07-%{version}.zip
-Source13:       https://github.com/be5invis/Iosevka/releases/download/v%{version}/super-ttc-iosevka-ss08-%{version}.zip
-Source14:       https://github.com/be5invis/Iosevka/releases/download/v%{version}/super-ttc-iosevka-ss09-%{version}.zip
-Source15:       https://github.com/be5invis/Iosevka/releases/download/v%{version}/super-ttc-iosevka-ss10-%{version}.zip
-Source16:       https://github.com/be5invis/Iosevka/releases/download/v%{version}/super-ttc-iosevka-ss11-%{version}.zip
-Source17:       https://github.com/be5invis/Iosevka/releases/download/v%{version}/super-ttc-iosevka-ss12-%{version}.zip
-Source18:       https://github.com/be5invis/Iosevka/releases/download/v%{version}/super-ttc-iosevka-ss13-%{version}.zip
-Source19:       https://github.com/be5invis/Iosevka/releases/download/v%{version}/super-ttc-iosevka-ss14-%{version}.zip
-Source20:       https://github.com/be5invis/Iosevka/releases/download/v%{version}/super-ttc-iosevka-ss15-%{version}.zip
-Source21:       https://github.com/be5invis/Iosevka/releases/download/v%{version}/super-ttc-iosevka-ss16-%{version}.zip
-Source22:       https://github.com/be5invis/Iosevka/releases/download/v%{version}/super-ttc-iosevka-ss17-%{version}.zip
-Source23:       https://github.com/be5invis/Iosevka/releases/download/v%{version}/super-ttc-iosevka-ss18-%{version}.zip
+Source0:        https://github.com/be5invis/Iosevka/releases/download/v%{version}/SuperTTC-Iosevka-%{version}.zip
+Source1:        https://github.com/be5invis/Iosevka/releases/download/v%{version}/SuperTTC-IosevkaSlab-%{version}.zip
+Source2:        https://github.com/be5invis/Iosevka/releases/download/v%{version}/SuperTTC-IosevkaCurly-%{version}.zip
+Source3:        https://github.com/be5invis/Iosevka/releases/download/v%{version}/SuperTTC-IosevkaCurlySlab-%{version}.zip
+Source4:        https://github.com/be5invis/Iosevka/releases/download/v%{version}/SuperTTC-IosevkaAile-%{version}.zip
+Source5:        https://github.com/be5invis/Iosevka/releases/download/v%{version}/SuperTTC-IosevkaEtoile-%{version}.zip
+Source6:        https://github.com/be5invis/Iosevka/releases/download/v%{version}/SuperTTC-IosevkaSS01-%{version}.zip
+Source7:        https://github.com/be5invis/Iosevka/releases/download/v%{version}/SuperTTC-IosevkaSS02-%{version}.zip
+Source8:        https://github.com/be5invis/Iosevka/releases/download/v%{version}/SuperTTC-IosevkaSS03-%{version}.zip
+Source9:        https://github.com/be5invis/Iosevka/releases/download/v%{version}/SuperTTC-IosevkaSS04-%{version}.zip
+Source10:       https://github.com/be5invis/Iosevka/releases/download/v%{version}/SuperTTC-IosevkaSS05-%{version}.zip
+Source11:       https://github.com/be5invis/Iosevka/releases/download/v%{version}/SuperTTC-IosevkaSS06-%{version}.zip
+Source12:       https://github.com/be5invis/Iosevka/releases/download/v%{version}/SuperTTC-IosevkaSS07-%{version}.zip
+Source13:       https://github.com/be5invis/Iosevka/releases/download/v%{version}/SuperTTC-IosevkaSS08-%{version}.zip
+Source14:       https://github.com/be5invis/Iosevka/releases/download/v%{version}/SuperTTC-IosevkaSS09-%{version}.zip
+Source15:       https://github.com/be5invis/Iosevka/releases/download/v%{version}/SuperTTC-IosevkaSS10-%{version}.zip
+Source16:       https://github.com/be5invis/Iosevka/releases/download/v%{version}/SuperTTC-IosevkaSS11-%{version}.zip
+Source17:       https://github.com/be5invis/Iosevka/releases/download/v%{version}/SuperTTC-IosevkaSS12-%{version}.zip
+Source18:       https://github.com/be5invis/Iosevka/releases/download/v%{version}/SuperTTC-IosevkaSS13-%{version}.zip
+Source19:       https://github.com/be5invis/Iosevka/releases/download/v%{version}/SuperTTC-IosevkaSS14-%{version}.zip
+Source20:       https://github.com/be5invis/Iosevka/releases/download/v%{version}/SuperTTC-IosevkaSS15-%{version}.zip
+Source21:       https://github.com/be5invis/Iosevka/releases/download/v%{version}/SuperTTC-IosevkaSS16-%{version}.zip
+Source22:       https://github.com/be5invis/Iosevka/releases/download/v%{version}/SuperTTC-IosevkaSS17-%{version}.zip
+Source23:       https://github.com/be5invis/Iosevka/releases/download/v%{version}/SuperTTC-IosevkaSS18-%{version}.zip
 Source100:      https://github.com/be5invis/Iosevka/raw/v%{version}/LICENSE.md
 Source101:      https://github.com/be5invis/Iosevka/raw/v%{version}/README.md
 Source102:      https://github.com/be5invis/Iosevka/raw/v%{version}/CHANGELOG.md
@@ -306,7 +306,7 @@ This package contains the Iosevka SS18 typeface (monospace, Input Mono style).
 
 %prep
 %autosetup -cT
-for s in %{_sourcedir}/super-ttc-iosevka*%{version}.zip; do
+for s in %{_sourcedir}/SuperTTC-Iosevka*%{version}.zip; do
 	unzip -qq $s '*.ttc'
 done
 cp %{SOURCE100} %{SOURCE101} %{SOURCE102} .
@@ -315,16 +315,7 @@ cp %{SOURCE100} %{SOURCE101} %{SOURCE102} .
 
 %install
 install -d %{buildroot}%{_ttfontsdir}
-install -m0644 iosevka.ttc %{buildroot}%{_ttfontsdir}/Iosevka.ttc
-install -m0644 iosevka-aile.ttc %{buildroot}%{_ttfontsdir}/IosevkaAile.ttc
-install -m0644 iosevka-curly.ttc %{buildroot}%{_ttfontsdir}/IosevkaCurly.ttc
-install -m0644 iosevka-curly-slab.ttc %{buildroot}%{_ttfontsdir}/IosevkaCurlySlab.ttc
-install -m0644 iosevka-etoile.ttc %{buildroot}%{_ttfontsdir}/IosevkaEtoile.ttc
-install -m0644 iosevka-curly-slab.ttc %{buildroot}%{_ttfontsdir}/IosevkaCurlySlab.ttc
-install -m0644 iosevka-slab.ttc %{buildroot}%{_ttfontsdir}/IosevkaSlab.ttc
-for i in $(seq -w 1 18); do
-	install -m0644 iosevka-ss$i.ttc %{buildroot}%{_ttfontsdir}/IosevkaSS$i.ttc
-done
+install -m0644 *.ttc %{buildroot}%{_ttfontsdir}
 
 %reconfigure_fonts_scriptlets
 %reconfigure_fonts_scriptlets -n iosevka-slab-fonts

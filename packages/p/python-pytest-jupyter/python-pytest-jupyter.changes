@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Dec 24 14:14:51 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.8.0
+  * Allow passing request_timeout to client_fetch #67 (@afbarbaro)
+  * code maintenance
+- Disable the -server subpackage for Ring1
+
+-------------------------------------------------------------------
 Sun Apr 23 17:24:28 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.7.0

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Dec 20 22:04:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.9.4:
+  * LP#2046398: Inserting/replacing an ancestor into a node's
+    children could loop indefinitely.
+  * LP#1980767, GH#379: ``TreeBuilder.close()`` could fail with a
+    ``TypeError`` after parsing incorrect input.
+  * LP#1522052: A file-system specific test is now optional and
+    should no longer fail on systems that don't support it.
+  * Built with Cython 0.29.37.
+- drop libxml2212-tests.patch (upstream)
+
+-------------------------------------------------------------------
 Mon Nov 27 12:36:51 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Add libxml2212-tests.patch to fix tests with new libxml2
@@ -7,7 +20,7 @@ Mon Nov 27 12:36:51 UTC 2023 - Markéta Machová <mmachova@suse.com>
 Wed Sep  6 20:04:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - skip html5lib tests - cyclic dependency with html5lib tests
-- remove python 2.x from testing 
+- remove python 2.x from testing
 
 -------------------------------------------------------------------
 Sun Aug 13 18:55:19 UTC 2023 - Dirk Müller <dmueller@suse.com>
@@ -59,7 +72,7 @@ Thu Apr 13 22:42:31 UTC 2023 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Thu Feb 16 20:17:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- allow building against any libxml2 version in sle15 
+- allow building against any libxml2 version in sle15
 
 -------------------------------------------------------------------
 Fri Jan 20 16:00:15 UTC 2023 - Matej Cepl <mcepl@suse.com>
@@ -113,7 +126,7 @@ Fri Feb 18 00:36:08 UTC 2022 - Dirk Müller <dmueller@suse.com>
     override the default namespace of the factory.
   * GH#338: In lxml.objectify, the XSI float annotation "nan" and "inf" were spelled in
     lower case, whereas XML Schema datatypes define them as "NaN" and "INF" respectively.
-  * Built with Cython 0.29.28. 
+  * Built with Cython 0.29.28.
 
 -------------------------------------------------------------------
 Mon Jan 10 23:09:05 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -232,7 +245,7 @@ Thu Mar  5 12:44:43 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 Wed Jan 22 13:55:03 UTC 2020 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
 - Update to 4.4.2:
-  * LP#1835708: ElementInclude incorrectly rejected repeated 
+  * LP#1835708: ElementInclude incorrectly rejected repeated
     non-recursive includes as recursive.
   * Remove patch lxml-libxml-2.9.10.patch which is now upstream
 
@@ -373,7 +386,7 @@ Tue Aug  7 15:34:31 UTC 2018 - toddrme2178@gmail.com
 Wed Mar 28 17:05:30 UTC 2018 - hpj@urpla.net
 
 - Version update to 4.2.1:
-  * LP#1755825: iterwalk() failed to return the 'start' event for the initial 
+  * LP#1755825: iterwalk() failed to return the 'start' event for the initial
     element if a tag selector is used.
   * LP#1756314: Failure to import 4.2.0 into PyPy due to a missing library symbol.
   * LP#1727864, GH#258: Add "-isysroot" linker option on MacOS as needed by XCode 9.
@@ -472,37 +485,37 @@ Fri Jul 28 17:24:27 UTC 2017 - ecsos@opensuse.org
 
 - update to 3.8.0
   Features added
-  - ElementTree.write() has a new option doctype that writes out 
-    a doctype string before the serialisation, in the same way as 
+  - ElementTree.write() has a new option doctype that writes out
+    a doctype string before the serialisation, in the same way as
     tostring().
-  - GH#220: xmlfile allows switching output methods at an element 
+  - GH#220: xmlfile allows switching output methods at an element
     level. Patch by Burak Arslan.
-  - LP#1595781, GH#240: added a PyCapsule Python API and C-level 
-    API for passing externally generated libxml2 documents into 
+  - LP#1595781, GH#240: added a PyCapsule Python API and C-level
+    API for passing externally generated libxml2 documents into
     lxml.
-  - GH#244: error log entries have a new property path with an 
-    XPath expression (if known, None otherwise) that points to the 
+  - GH#244: error log entries have a new property path with an
+    XPath expression (if known, None otherwise) that points to the
     tree element responsible for the error. Patch by Bob Kline.
-  - The namespace prefix mapping that can be used in ElementPath 
+  - The namespace prefix mapping that can be used in ElementPath
     now injects a default namespace when passing a None prefix.
   Bugs fixed
-  - GH#238: Character escapes were not hex-encoded in the xmlfile 
+  - GH#238: Character escapes were not hex-encoded in the xmlfile
     serialiser. Patch by matejcik.
-  - GH#229: fix for externally created XML documents. 
+  - GH#229: fix for externally created XML documents.
     Patch by Theodore Dubois.
   - LP#1665241, GH#228: Form data handling in lxml.html no longer
-    strips the option values specified in form attributes but only 
+    strips the option values specified in form attributes but only
     the text values. Patch by Ashish Kulkarni.
-  - LP#1551797: revert previous fix for XSLT error logging as it 
+  - LP#1551797: revert previous fix for XSLT error logging as it
     breaks multi-threaded XSLT processing.
-  - LP#1673355, GH#233: fromstring() html5parser failed to parse 
+  - LP#1673355, GH#233: fromstring() html5parser failed to parse
     byte strings.
   Other changes
-  - The previously undocumented docstring option in 
-    ElementTree.write() produces a deprecation warning and will 
+  - The previously undocumented docstring option in
+    ElementTree.write() produces a deprecation warning and will
     eventually be removed.
 - enable source url for pdf doc
-- remove patch lxml-fix-attribute-quoting.patch because it is now 
+- remove patch lxml-fix-attribute-quoting.patch because it is now
   in upstream
 
 -------------------------------------------------------------------
@@ -735,14 +748,14 @@ Thu Apr 24 06:48:15 UTC 2014 - toms@opensuse.org
   ** Features added
      n/a
   ** Bugs fixed
-    - HTML cleaning could fail to strip javascript links that mix 
+    - HTML cleaning could fail to strip javascript links that mix
       control characters into the link scheme.
   ** Other changes
      n/a
 
 - Changes in version 3.3.4:
   ** Features added
-    - Source line numbers above 65535 are available on Elements when 
+    - Source line numbers above 65535 are available on Elements when
       using libxml2 2.9 or later.
   ** Bugs fixed
     - lxml.html.fragment_fromstring() failed for bytes input in Py3.
@@ -794,9 +807,9 @@ Sat Feb 22 10:33:42 UTC 2014 - toms@opensuse.org
   ** Features added
      n/a
   ** Bugs fixed
-     - LP#1014290: HTML documents parsed with parser.feed() failed to 
+     - LP#1014290: HTML documents parsed with parser.feed() failed to
        find elements during tag iteration.
-     - LP#1273709: Building in PyPy failed due to missing support for 
+     - LP#1273709: Building in PyPy failed due to missing support for
        PyUnicode_Compare() and PyByteArray_*() in PyPy's C-API.
      - LP#1274413: Compilation in MSVC failed due to missing "stdint.h"
        standard header file.
@@ -825,21 +838,21 @@ Sun Jan 26 13:02:19 UTC 2014 - toms@opensuse.org
   ** Features added
      n/a
   ** Bugs fixed
-     - The heuristic that distinguishes file paths from URLs was 
+     - The heuristic that distinguishes file paths from URLs was
        tightened to produce less false negatives.
 
 - Changes from 3.3.0beta5
   ** Features added
-     - The PEP 393 unicode parsing support gained a fallback for 
+     - The PEP 393 unicode parsing support gained a fallback for
        wchar strings which might still be somewhat common on Windows systems.
   ** Bugs fixed
-     - Several error handling problems were fixed throughout the code base 
-       that could previously lead to exceptions being silently swallowed or 
+     - Several error handling problems were fixed throughout the code base
+       that could previously lead to exceptions being silently swallowed or
        not properly reported.
-     - The C-API function appendChild() is now deprecated as it does not 
-       propagate exceptions (its return type is void). The new function 
+     - The C-API function appendChild() is now deprecated as it does not
+       propagate exceptions (its return type is void). The new function
        appendChildToElement() was added as a safe replacement.
-     - Passing a string into fromstringlist() raises an exception instead of 
+     - Passing a string into fromstringlist() raises an exception instead of
        parsing the string character by character.
 
   ** Other changes

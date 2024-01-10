@@ -1,6 +1,6 @@
 --- pppd/main.c.orig
 +++ pppd/main.c
-@@ -1920,8 +1920,8 @@ forget_child(pid, status)
+@@ -1995,8 +1995,8 @@ forget_child(int pid, int status)
      if (WIFSIGNALED(status)) {
          warn("Child process %s (pid %d) terminated with signal %d",
  	     (chp? chp->prog: "??"), pid, WTERMSIG(status));

@@ -1,7 +1,7 @@
 #
 # spec file for package python-pdm-backend
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,21 +18,26 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pdm-backend
-Version:        2.1.0
+Version:        2.1.8
 Release:        0
 Summary:        Backend used by PDM
 License:        MIT
 URL:            https://github.com/pdm-project/pdm-backend
-Source:         https://files.pythonhosted.org/packages/8f/aa/df3ad85bf4eeb7a7a3364610ca399f56812e4827cff6495c2a20e4bf1bb4/pdm_backend-2.1.0.tar.gz
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module editables}
+Source:         https://files.pythonhosted.org/packages/source/p/pdm-backend/pdm_backend-%{version}.tar.gz
 BuildRequires:  %{python_module importlib-metadata >= 3.6.0 if %python-base < 3.10}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  fdupes
-BuildRequires:  git-core
 BuildRequires:  python-rpm-macros
+# SECTION test requirements
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module editables}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  git-core
+# /SECTION
+%if 0%{?python_version_nodots} < 310
 Requires:       python-importlib-metadata >= 3.6.0
+%endif
 BuildArch:      noarch
 %python_subpackages
 

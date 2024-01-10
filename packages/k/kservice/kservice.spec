@@ -16,14 +16,14 @@
 #
 
 
-%define _tar_path 5.103
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
+%define qt5_version 5.15.2
 %bcond_without released
 Name:           kservice
-Version:        5.112.0
+Version:        5.113.0
 Release:        0
 Summary:        Plugin framework for desktop services
 License:        LGPL-2.1-or-later
@@ -38,20 +38,19 @@ Patch0:         kservice-desktop-translations.patch
 # PATCH-FIX-OPENSUSE dont-show-yast-modules-in-the-applications-menu.patch -- hide the YaST modules from the application menu
 Patch1:         dont-show-yast-modules-in-the-applications-menu.patch
 BuildRequires:  bison
-BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
+BuildRequires:  extra-cmake-modules >= %{_kf5_version}
 BuildRequires:  fdupes
 BuildRequires:  flex
-BuildRequires:  kf5-filesystem
-BuildRequires:  cmake(KF5Config) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5CoreAddons) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5DBusAddons) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5DocTools) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5I18n) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(Qt5Concurrent) >= 5.15.0
-BuildRequires:  cmake(Qt5DBus) >= 5.15.0
-BuildRequires:  cmake(Qt5Test) >= 5.15.0
-BuildRequires:  cmake(Qt5Xml) >= 5.15.0
-Recommends:     kded >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5Config) >= %{_kf5_version}
+BuildRequires:  cmake(KF5CoreAddons) >= %{_kf5_version}
+BuildRequires:  cmake(KF5DBusAddons) >= %{_kf5_version}
+BuildRequires:  cmake(KF5DocTools) >= %{_kf5_version}
+BuildRequires:  cmake(KF5I18n) >= %{_kf5_version}
+BuildRequires:  cmake(Qt5Concurrent) >= %{qt5_version}
+BuildRequires:  cmake(Qt5DBus) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Test) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Xml) >= %{qt5_version}
+Recommends:     kded >= %{_kf5_version}
 Obsoletes:      libKF5Service4
 
 %description
@@ -62,9 +61,8 @@ application specific code.
 %package devel
 Summary:        Plugin framework for desktop services: Build Environment
 Requires:       %{name} = %{version}
-Requires:       extra-cmake-modules
-Requires:       cmake(KF5Config) >= %{_kf5_bugfix_version}
-Requires:       cmake(KF5CoreAddons) >= %{_kf5_bugfix_version}
+Requires:       cmake(KF5Config) >= %{_kf5_version}
+Requires:       cmake(KF5CoreAddons) >= %{_kf5_version}
 
 %description devel
 Provides a plugin framework for handling desktop services. Services can

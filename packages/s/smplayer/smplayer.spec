@@ -17,7 +17,7 @@
 
 
 Name:           smplayer
-Version:        23.6.0
+Version:        23.12.0
 Release:        0
 Summary:        Complete frontend for MPV
 License:        GPL-2.0-or-later
@@ -44,6 +44,7 @@ BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5PrintSupport)
+BuildRequires:  cmake(Qt5Qml)
 BuildRequires:  cmake(Qt5Script)
 BuildRequires:  cmake(Qt5Sql)
 BuildRequires:  cmake(Qt5Widgets)

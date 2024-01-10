@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Dec 28 07:57:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update default configuration to enable the long-term fix for
+  bsc#1218304, CVE-2023-51764, SMTP smuggling attack:
+  * smtpd_forbid_bare_newline = yes
+  * smtpd_forbid_bare_newline_exclusions = $mynetworks
+
+-------------------------------------------------------------------
+Fri Dec 22 17:57:57 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 3.8.4 (bsc#1218304, CVE-2023-51764):
+  * Security: this release adds support to defend
+    against an email spoofing attack (SMTP smuggling) on
+    recipients at a Postfix server. For background, see
+    https://www.postfix.org/smtp-smuggling.html
+
+-------------------------------------------------------------------
 Fri Nov  3 14:55:20 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 3.8.3
@@ -23,13 +40,13 @@ Fri Nov  3 14:55:20 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
 -------------------------------------------------------------------
 Mon Oct 23 07:43:31 UTC 2023 - Peter Varkoly <varkoly@suse.com>
 
-- Syntax error in update_postmaps script (bsc#1216061) 
+- Syntax error in update_postmaps script (bsc#1216061)
 
 -------------------------------------------------------------------
 Mon Sep 18 12:38:19 UTC 2023 - Peter Varkoly <varkoly@suse.com>
 
 - postfix: config.postfix causes too tight permission on main.cf
-  (bsc#1215372)  
+  (bsc#1215372)
 
 -------------------------------------------------------------------
 Tue Aug 15 09:07:07 UTC 2023 - Peter Varkoly <varkoly@suse.com>
@@ -279,7 +296,7 @@ Mon Apr 18 19:59:01 UTC 2022 - Michael Ströder <michael@stroeder.com>
 Mon Apr  4 09:01:56 UTC 2022 - Peter Varkoly <varkoly@suse.com>
 
 - config.postfix fails to set smtp_tls_security_level
-  (bsc#1192314) 
+  (bsc#1192314)
 
 -------------------------------------------------------------------
 Tue Mar 29 10:12:29 UTC 2022 - Илья Индиго <ilya@ilya.cf>
@@ -311,7 +328,7 @@ Wed Feb  9 09:22:41 UTC 2022 - Peter Varkoly <varkoly@suse.com>
 
 - config.postfix can't handle symlink'd /etc/resolv.cof
   (bsc#1195019)
-  Adapt proposed change: using "cp -afL" by copying. 
+  Adapt proposed change: using "cp -afL" by copying.
 
 -------------------------------------------------------------------
 Tue Jan 18 23:32:41 UTC 2022 - Michael Ströder <michael@stroeder.com>
@@ -391,8 +408,8 @@ Thu Aug 26 13:59:42 UTC 2021 - Peter Varkoly <varkoly@suse.com>
 Tue Aug 24 09:55:42 UTC 2021 - Peter Varkoly <varkoly@suse.com>
 
 - postfix fails with glibc 2.34
-  Define HAS_CLOSEFROM 
-  (bsc#1189101) 
+  Define HAS_CLOSEFROM
+  (bsc#1189101)
   add patch
   - postfix-3.6.2-glibc-234-build-fix.patch
 
@@ -405,7 +422,7 @@ Thu Aug  5 19:09:36 UTC 2021 - chris@computersalat.de
 Mon Jul 26 19:59:12 UTC 2021 - Peter Varkoly <varkoly@suse.com>
 
 - Syntax error in config.postfix
-  (bsc#1188477) 
+  (bsc#1188477)
 
 -------------------------------------------------------------------
 Sun Jul 25 23:22:23 UTC 2021 - Michael Ströder <michael@stroeder.com>
@@ -439,7 +456,7 @@ Sun Jul 25 23:22:23 UTC 2021 - Michael Ströder <michael@stroeder.com>
 Wed Jul 14 14:37:24 UTC 2021 - Peter Varkoly <varkoly@suse.com>
 
 - spamd wants to start before mail-transfer-agent.target, but that target doesn't exist
-  (bsc#1066854) 
+  (bsc#1066854)
 
 -------------------------------------------------------------------
 Tue Jul  6 22:23:17 UTC 2021 - Christian Wittmer <chris@computersalat.de>
@@ -505,7 +522,7 @@ Wed Jun  2 00:26:36 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
     otherwise long-running daemons (pickup, qmgr, verify, tlsproxy,
     postscreen) may fail to communicate with the rest of Postfix,
     causing mail delivery delays until Postfix is restarted.
-  For more see /usr/share/doc/packages/postfix/RELEASE_NOTES 
+  For more see /usr/share/doc/packages/postfix/RELEASE_NOTES
 - refreshed patches to apply cleanly again:
   fix-postfix-script.patch
   ipv6_disabled.patch
@@ -559,8 +576,8 @@ Fri Mar  5 13:22:42 UTC 2021 - Peter Varkoly <varkoly@suse.com>
 Fri Feb  5 17:51:49 UTC 2021 - Peter Varkoly <varkoly@suse.com>
 
 - (bsc#1180473) [Build 20201230] postfix has invalid default config
-  (bsc#1181381) [Build 130.3] openQA test fails in mta, mutt - 
-  postfix broken: "queue file write error" and "error: unsupported 
+  (bsc#1181381) [Build 130.3] openQA test fails in mta, mutt -
+  postfix broken: "queue file write error" and "error: unsupported
   dictionary type: hash"
   Export DEF_DB_TYPE before starting the perl script.
 
@@ -628,7 +645,7 @@ Thu Dec 24 14:09:32 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
 -------------------------------------------------------------------
 Tue Dec  8 13:36:35 UTC 2020 - Peter Varkoly <varkoly@suse.com>
 
-- bsc#1176650 L3: What is regularly triggering the "fillup" 
+- bsc#1176650 L3: What is regularly triggering the "fillup"
   command and changing modify-time of /etc/sysconfig/postfix?
   o Remove miss placed fillup_only call from %verifyscript
 
@@ -639,7 +656,7 @@ Thu Nov 26 15:30:10 UTC 2020 - Peter Varkoly <varkoly@suse.com>
   The pacakges postfix is build without Berkely DB support.
   lmdb will be used instead of BDB.
   The pacakges postfix-bdb is build with Berkely DB support.
-  o add patch for main.cf for postfix-bdb package 
+  o add patch for main.cf for postfix-bdb package
     postfix-bdb-main.cf.patch
 
 -------------------------------------------------------------------
@@ -714,7 +731,7 @@ Fri Jul  3 14:06:53 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 - Move /etc/postfix/system to /usr/lib/postfix/systemd [bsc#1173688]
 - Drop /var/adm/SuSEconfig from %post, it does nothing.
 - Rename postfix-SuSE to postfix-SUSE
-- Delete postfix-SUSE/README.SuSE, company name spelled wrong, 
+- Delete postfix-SUSE/README.SuSE, company name spelled wrong,
   completly outdated and not used.
 - Delete postfix-SUSE/SPAMASSASSIN+POSTFIX.SuSE, company name
   spelled wrong, outdated and not used.
@@ -829,13 +846,13 @@ Fri Mar 13 14:29:32 UTC 2020 - Michael Ströder <michael@stroeder.com>
 -------------------------------------------------------------------
 Fri Feb  7 17:07:39 UTC 2020 - Peter Varkoly <varkoly@suse.com>
 
-- bsc#1162891 server:mail/postfix: cond_slp bug on TW after 
+- bsc#1162891 server:mail/postfix: cond_slp bug on TW after
   moving /etc/services to /usr/etc/services
 
 -------------------------------------------------------------------
 Wed Feb  5 12:27:07 UTC 2020 - Peter Varkoly <varkoly@suse.com>
 
-- bsc#1160413 postfix fails with -fno-common 
+- bsc#1160413 postfix fails with -fno-common
 
 -------------------------------------------------------------------
 Mon Feb  3 12:31:48 UTC 2020 - Michael Ströder <michael@stroeder.com>
@@ -928,7 +945,7 @@ Fri Aug  9 14:50:12 UTC 2019 - chris@computersalat.de
 -------------------------------------------------------------------
 Fri Jul 26 08:26:07 UTC 2019 - Peter Varkoly <varkoly@suse.com>
 
-- bsc#1142881 - mkpostfixcert from Postfix still uses md 
+- bsc#1142881 - mkpostfixcert from Postfix still uses md
 
 -------------------------------------------------------------------
 Thu Jul 25 12:38:43 UTC 2019 - matthias.gerstner@suse.com
@@ -1014,7 +1031,7 @@ Mon Mar 18 09:56:11 UTC 2019 - Peter Varkoly <varkoly@suse.com>
     - The Postfix SMTP server announces CHUNKING (BDAT
       command) by default. In the unlikely case that this breaks some
       important remote SMTP client, disable the feature as follows:
-      
+
       /etc/postfix/main.cf:
           # The logging alternative:
           smtpd_discard_ehlo_keywords = chunking
@@ -1032,7 +1049,7 @@ Mon Mar 18 09:56:11 UTC 2019 - Peter Varkoly <varkoly@suse.com>
     - To set the tlsproxy process limit to zero:
       postconf -F tlsproxy/unix/process_limit=0
       postfix reload
-  o Major changes 
+  o Major changes
     - Postfix SMTP server support for RFC 3030 CHUNKING
       (the BDAT command) without BINARYMIME, in both smtpd(8) and
       postscreen(8). This has no effect on Milters, smtpd_mumble_restrictions,
@@ -1075,7 +1092,7 @@ Mon Mar 18 09:56:11 UTC 2019 - Peter Varkoly <varkoly@suse.com>
     - Andreas Schulze discovered that reject_multi_recipient_bounce
       was producing false rejects with BDAT commands. This problem
       already existed with Postfix 2.2 smtpd_end_of_data_restrictons.
-      Postfix 3.4.4 fixes both. 
+      Postfix 3.4.4 fixes both.
 
 -------------------------------------------------------------------
 Tue Mar  5 13:21:35 UTC 2019 - Jiri Slaby <jslaby@suse.com>
@@ -1205,7 +1222,7 @@ Mon Aug 27 09:38:29 UTC 2018 - tchvatal@suse.com
 Fri May 25 11:19:22 UTC 2018 - varkoly@suse.com
 
 - bsc#1087471 Unreleased Postfix update breaks SUSE Manager
-  o Removing setting smtpd_sasl_path and smtpd_sasl_type to empty 
+  o Removing setting smtpd_sasl_path and smtpd_sasl_type to empty
 
 -------------------------------------------------------------------
 Mon May 21 16:31:57 UTC 2018 - michael@stroeder.com
@@ -1307,7 +1324,7 @@ Thu Dec  7 15:02:14 UTC 2017 - dimstar@opensuse.org
 -------------------------------------------------------------------
 Thu Nov 23 13:43:17 UTC 2017 - rbrown@suse.com
 
-- Replace references to /var/adm/fillup-templates with new 
+- Replace references to /var/adm/fillup-templates with new
   %_fillupdir macro (boo#1069468)
 
 -------------------------------------------------------------------
@@ -1336,7 +1353,7 @@ Fri Oct 20 12:27:12 UTC 2017 - varkoly@suse.com
 - bnc#1059512 L3: Postfix Problem
   The applied changes breaks existing postfix configurations because
   daemon_directory was not adapted to the new value.
- 
+
 
 -------------------------------------------------------------------
 Sun Oct 15 22:47:29 UTC 2017 - chris@computersalat.de
@@ -1348,7 +1365,7 @@ Sun Oct 15 22:47:29 UTC 2017 - chris@computersalat.de
 -------------------------------------------------------------------
 Wed Oct  4 10:58:28 UTC 2017 - varkoly@suse.com
 
-- bnc#1059512 L3: Postfix Problem 
+- bnc#1059512 L3: Postfix Problem
   To manage multiple Postfix instances on a single host requires
   that daemon_directory and shlib_directory is different to
   avoid use of the shared directories also as per-instance directories.
@@ -1423,7 +1440,7 @@ Thu Apr 13 09:18:45 UTC 2017 - werner@suse.de
 
 - Some cleanups
   * Fix SUSE postfix-files to avoid chown errors (anyway this file
-    seems to be obsolete) 
+    seems to be obsolete)
   * Avoid installing shared libraries twice
   * Refresh patch postfix-linux45.patch
 
@@ -1431,7 +1448,7 @@ Thu Apr 13 09:18:45 UTC 2017 - werner@suse.de
 Sat Apr  8 15:06:14 UTC 2017 - chris@computersalat.de
 
 - update postfix-master.cf.patch
-  * recover lost (with 3.2.0 update) submission, smtps sections 
+  * recover lost (with 3.2.0 update) submission, smtps sections
   * merge with upstream update
 - update config.postfix
   * update master.cf generation for submission
@@ -1613,7 +1630,7 @@ Wed Jan 11 14:07:35 UTC 2017 - varkoly@suse.com
 -------------------------------------------------------------------
 Tue Jan  3 12:20:18 UTC 2017 - varkoly@suse.com
 
-- update to 3.1.4 
+- update to 3.1.4
   * The postscreen daemon did not merge the client test status information
     for concurrent sessions from the same IP address.
   * The Postfix SMTP server falsely rejected a sender address when validating
@@ -1719,7 +1736,7 @@ Tue May 24 13:18:55 UTC 2016 - varkoly@suse.com
 -------------------------------------------------------------------
 Tue May 24 04:29:41 UTC 2016 - varkoly@suse.com
 
-- bnc#981097 config.postfix creates broken main.cf for tls client configuration 
+- bnc#981097 config.postfix creates broken main.cf for tls client configuration
 - bnc#981099 /etc/sysconfig/postfix: POSTFIX_SMTP_TLS_CLIENT incomplete
 - update to 3.1.1:
 - The new address_verify_pending_request_limit
@@ -1730,7 +1747,7 @@ Tue May 24 04:29:41 UTC 2016 - varkoly@suse.com
   design avoids dependencies on global counters that get out of sync
   after a process or system crash.
 - Machine-readable, JSON-formatted queue listing with "postqueue -j"
-  (no "mailq" equivalent). 
+  (no "mailq" equivalent).
 - The milter_macro_defaults feature provides an optional list of macro
   name=value pairs. These specify default values for Milter macros when
   no value is available from the SMTP session context.
@@ -1738,12 +1755,12 @@ Tue May 24 04:29:41 UTC 2016 - varkoly@suse.com
   deliveries.  The following example inserts 20 seconds of delay
   between all deliveries with the SMTP transport, limiting the delivery
   rate to at most three messages per minute.
-      smtp_transport_rate_delay = 20s  
+      smtp_transport_rate_delay = 20s
 - Historically, the default setting "postscreen_dnsbl_ttl = 1h" assumes
   that a "not found" result from a DNSBL server will be valid for one
   hour.  This may have been adequate five years ago when postscreen
   was first implemented, but nowadays, that one hour can result in
-  missed opportunities to block new spambots. 
+  missed opportunities to block new spambots.
   To address this, postscreen now respects the TTL of DNSBL "not
   found" replies, as well as the TTL of DNSWL replies (both "found"
   and "not found").  The TTL for a "not found" reply is determined
@@ -1767,7 +1784,7 @@ Tue May 24 04:29:41 UTC 2016 - varkoly@suse.com
   policy service endpoint among multiple check_policy_service clients.
 - A new "postfix tls" command to quickly enable opportunistic TLS
   in the Postfix SMTP client or server, and to manage SMTP server keys
-  and certificates, including certificate signing requests and 
+  and certificates, including certificate signing requests and
   TLSA DNS records for DANE.
 
 -------------------------------------------------------------------
@@ -1804,7 +1821,7 @@ Sun Mar 20 08:19:23 UTC 2016 - mrueckert@suse.de
 Wed Mar  9 13:06:35 UTC 2016 - varkoly@suse.com
 
 - update to 3.1.0
-- Since version 3.0 postfix supports dynamic loading of cdb:, ldap:, 
+- Since version 3.0 postfix supports dynamic loading of cdb:, ldap:,
   lmdb:, mysql:, pcre:, pgsql:, sdbm:, and sqlite: database clients.
   Thats why the patches dynamic_maps.patch and dynamic_maps_pie.patch
   could be removed.
@@ -1821,11 +1838,11 @@ Wed Mar  9 13:06:35 UTC 2016 - varkoly@suse.com
   With NEW Postfix installs, you MUST install a main.cf file with
   the setting "compatibility_level = 2". See conf/main.cf for an
   example.
-  
+
   With UPGRADES of existing Postfix systems, you MUST NOT change the
   main.cf compatibility_level setting, nor add this setting if it
   does not exist.
-  
+
   Several Postfix default settings have changed with Postfix 3.0.  To
   avoid massive frustration with existing Postfix installations,
   Postfix 3.0 comes with a safety net that forces Postfix to keep
@@ -1860,12 +1877,12 @@ Wed Mar  9 13:06:35 UTC 2016 - varkoly@suse.com
   administrator the option to make an old default setting permanent
   in main.cf or to adopt the new default setting, before turning off
   backwards compatibility. See COMPATIBILITY_README for details.
-  
+
   [Incompat 20141001] A new backwards-compatibility safety net forces
   Postfix to run with backwards-compatible main.cf and master.cf
   default settings after an upgrade to a newer but incompatible Postfix
   version. See COMPATIBILITY_README for details.
-  
+
   While the backwards-compatible default settings are in effect,
   Postfix logs what services or what email would be affected by the
   incompatible change. Based on this the administrator can make some
@@ -1880,13 +1897,13 @@ Wed Mar  9 13:06:35 UTC 2016 - varkoly@suse.com
   limit by tempfailing probe messages that exceed the limit. This
   design avoids dependencies on global counters that get out of sync
   after a process or system crash.
-  
+
   Tempfailing verify requests is not as bad as one might think.  The
   Postfix verify cache proactively updates active addresses weeks
   before they expire. The address_verify_pending_request_limit affects
   only unknown addresses, and inactive addresses that have expired
   from the address verify cache (by default, after 31 days).
-  
+
 - Major changes - json support
   [Feature 20151129] Machine-readable, JSON-formatted queue listing
   with "postqueue -j" (no "mailq" equivalent).  The output is a stream
@@ -1894,77 +1911,77 @@ Wed Mar  9 13:06:35 UTC 2016 - varkoly@suse.com
   JSON object is formatted as one text line followed by one newline
   character. See the postqueue(1) manpage for a detailed description
   of the output format.
-  
+
 - Major changes - milter support
   [Feature 20150523] The milter_macro_defaults feature provides an
   optional list of macro name=value pairs. These specify default
   values for Milter macros when no value is available from the SMTP
   session context.
-  
+
   For example, with "milter_macro_defaults = auth_type=TLS", the
   Postfix SMTP server will send an auth_type of "TLS" to a Milter,
   unless the remote client authenticates with SASL.
-  
+
   This feature was originally implemented for a submission service
   that may authenticate clients with a TLS certificate, without having
   to make changes to the code that implements TLS support.
-  
+
 - Major changes - output rate control
-  
+
   [Feature 20150710] Destination-independent delivery rate delay
-  
+
   Support to enforce a destination-independent delay between email
   deliveries.  The following example inserts 20 seconds of delay
   between all deliveries with the SMTP transport, limiting the delivery
   rate to at most three messages per minute.
-  
+
   /etc/postfix/main.cf:
       smtp_transport_rate_delay = 20s
-  
+
   For details, see the description of default_transport_rate_delay
   and transport_transport_rate_delay in the postconf(5) manpage.
-  
+
 - Major changes - postscreen dnsbl
   [Feature 20150710] postscreen support for the TTL of DNSBL and DNSWL
   lookup results
-  
+
   Historically, the default setting "postscreen_dnsbl_ttl = 1h" assumes
   that a "not found" result from a DNSBL server will be valid for one
   hour.  This may have been adequate five years ago when postscreen
   was first implemented, but nowadays, that one hour can result in
   missed opportunities to block new spambots.
-  
+
   To address this, postscreen now respects the TTL of DNSBL "not
   found" replies, as well as the TTL of DNSWL replies (both "found"
   and "not found").  The TTL for a "not found" reply is determined
   according to RFC 2308 (the TTL of an SOA record in the reply).
-  
+
   Support for DNSBL or DNSWL reply TTL values is controlled by two
   configuration parameters:
-  
+
   postscreen_dnsbl_min_ttl (default: 60 seconds).
-  
+
       This parameter specifies a minimum for the amount of time that
       a DNSBL or DNSWL result will be cached in the postscreen_cache_map.
       This prevents an excessive number of postscreen cache updates
       when a DNSBL or DNSWL server specifies a very small reply TTL.
-  
+
   postscreen_dnsbl_max_ttl (default: $postscreen_dnsbl_ttl or 1 hour)
-  
+
       This parameter specifies a maximum for the amount of time that
       a DNSBL or DNSWL result will be cached in the postscreen_cache_map.
       This prevents cache pollution when a DNSBL or DNSWL server
       specifies a very large reply TTL.
-  
+
   The postscreen_dnsbl_ttl parameter is now obsolete, and has become
   the default value for the new postscreen_dnsbl_max_ttl parameter.
-  
+
 - Major changes - sasl auth safety
   [Feature 20151031] New "smtpd_client_auth_rate_limit" feature, to
   enforce an optional rate limit on AUTH commands per SMTP client IP
   address.  Similar to other smtpd_client_*_rate_limit features, this
   enforces a limit on the number of requests per $anvil_rate_time_unit.
-  
+
 - Major changes - smtpd policy
   [Feature 20150913] New SMTPD policy service attribute "policy_context",
   with a corresponding "smtpd_policy_service_policy_context" configuration
@@ -1974,7 +1991,7 @@ Wed Mar  9 13:06:35 UTC 2016 - varkoly@suse.com
 -------------------------------------------------------------------
 Wed Dec  9 14:05:22 UTC 2015 - varkoly@suse.com
 
-- bnc#958329 postfix fails to start when openslp is not installed 
+- bnc#958329 postfix fails to start when openslp is not installed
 
 -------------------------------------------------------------------
 Mon Oct 12 20:49:27 UTC 2015 - michael@stroeder.com
@@ -2038,7 +2055,7 @@ Mon Jun  1 22:25:51 UTC 2015 - crrodriguez@opensuse.org
   nss-lookup.target network.target local-fs.target time-sync.target
   should be Wanted or Required except by the services
   the implement the relevant functionality i.e network.target
-  is wanted/required by networkmanager, wicked, 
+  is wanted/required by networkmanager, wicked,
   systemd-network. other software must be ordered After them,
   see systemd.special(7)
 
@@ -2102,13 +2119,13 @@ Sun Feb  8 13:08:36 UTC 2015 - varkoly@suse.com
 Thu Jan 22 09:36:09 UTC 2015 - varkoly@suse.com
 
 - bnc#914086 syntax error in config.postfix
-- Adapt config.postfix to be able to run on SLE11 too. 
+- Adapt config.postfix to be able to run on SLE11 too.
 
 -------------------------------------------------------------------
 Mon Jan 19 22:15:30 UTC 2015 - mpluskal@suse.com
 
 - Don't install sysvinit script when systemd is used
-- Make explicit PreReq dependencies conditional only for older 
+- Make explicit PreReq dependencies conditional only for older
   systems
 - Don't try to set explicit attributes to symlinks
 - Cleanup spec file vith spec-cleaner
@@ -2116,7 +2133,7 @@ Mon Jan 19 22:15:30 UTC 2015 - mpluskal@suse.com
 -------------------------------------------------------------------
 Tue Jan 13 07:04:52 UTC 2015 - varkoly@suse.com
 
-- bnc#912594 config.postfix creates config based on old options 
+- bnc#912594 config.postfix creates config based on old options
 
 -------------------------------------------------------------------
 Tue Jan  6 14:26:51 UTC 2015 - varkoly@suse.com
@@ -2191,7 +2208,7 @@ Sat Sep 13 21:44:41 UTC 2014 - andreas.stieger@gmx.de
   * Enforce TLS when TLSA records exist, but all are unusable.
   * Don't leak memory when TLSA records exist, but all are unusable.
   * Prepend "-I. -I../../include" to the compiler command-line
-    options, to avoid name clashes with non-Postfix header files. 
+    options, to avoid name clashes with non-Postfix header files.
   * documentation fixes
   * logging fixes
 
@@ -2200,7 +2217,7 @@ Fri Aug 29 15:40:00 UTC 2014 - rusjako@rus.uni-stuttgart.de
 
 - fix dynamic_maps patch to enable memcache support, which does not
   need any libraries
-  
+
 -------------------------------------------------------------------
 Thu Jul 31 12:44:59 UTC 2014 - dimstar@opensuse.org
 
@@ -2229,7 +2246,7 @@ Mon Jun 23 21:41:23 UTC 2014 - jamesp@vicidial.com
 -------------------------------------------------------------------
 Mon Jun 23 15:17:52 UTC 2014 - varkoly@suse.com
 
-- bnc#816769 - config.postfix issues warnings about missing master.cf 
+- bnc#816769 - config.postfix issues warnings about missing master.cf
 
 -------------------------------------------------------------------
 Tue Jun 10 13:34:03 UTC 2014 - varkoly@suse.com
@@ -2240,7 +2257,7 @@ Tue Jun 10 13:34:03 UTC 2014 - varkoly@suse.com
 -------------------------------------------------------------------
 Mon Jun  9 12:17:35 UTC 2014 - varkoly@suse.com
 
-- bnc#863350 - SuSEconfig.postfix complains about modified /etc/postfix/main.cf after updating postfix 
+- bnc#863350 - SuSEconfig.postfix complains about modified /etc/postfix/main.cf after updating postfix
 
 -------------------------------------------------------------------
 Mon May 26 17:21:54 UTC 2014 - chris@computersalat.de
@@ -2260,7 +2277,7 @@ Wed Feb 12 15:10:27 UTC 2014 - varkoly@suse.com
 
 - Update to 2.11.0
   * TLS
-    o Support for PKI-less TLS server certificate verification, where 
+    o Support for PKI-less TLS server certificate verification, where
       the CA public key or the server certificate is identified via DNSSEC lookup
   * LMDB database support
   * master
@@ -2272,13 +2289,13 @@ Wed Feb 12 15:10:27 UTC 2014 - varkoly@suse.com
     o The postconf command produces more warnings
   * relay safety
     New smtpd_relay_restrictions parameter built-in default settings:
-    smtpd_relay_restrictions = 
-	permit_mynetworks 
-	permit_sasl_authenticated 
+    smtpd_relay_restrictions =
+	permit_mynetworks
+	permit_sasl_authenticated
 	defer_unauth_destination
   * postscreen whitelisting
     Allow a remote SMTP client to skip postscreen(8) tests based on
-    its postscreen_dnsbl_sites score. 
+    its postscreen_dnsbl_sites score.
 
 -------------------------------------------------------------------
 Fri Oct 11 13:32:32 UTC 2013 - matz@suse.de
@@ -2289,7 +2306,7 @@ Fri Oct 11 13:32:32 UTC 2013 - matz@suse.de
 Thu Oct  3 02:47:54 UTC 2013 - crrodriguez@opensuse.org
 
 - two improvements for 13.1 and factory
-* postfix-opensslconfig.patch call openSSL_config 
+* postfix-opensslconfig.patch call openSSL_config
   so postfix respects the system's openssl configuration
 * postfix-SuSE/postfix.service since a few months there
   is no mail-transfer-agent.target, units must be ordered
@@ -2298,7 +2315,7 @@ Thu Oct  3 02:47:54 UTC 2013 - crrodriguez@opensuse.org
 -------------------------------------------------------------------
 Fri Sep 20 04:48:08 UTC 2013 - varkoly@suse.com
 
-- Proc is not needed in chroot anymore 
+- Proc is not needed in chroot anymore
 
 -------------------------------------------------------------------
 Tue Jul 30 14:34:01 UTC 2013 - schwab@suse.de
@@ -2339,7 +2356,7 @@ Mon Apr 22 11:51:37 UTC 2013 - idonmez@suse.com
 -------------------------------------------------------------------
 Sat Apr 20 05:46:00 UTC 2013 - crrodriguez@opensuse.org
 
--  postfix-SuSE/postfix.service do not Require or 
+-  postfix-SuSE/postfix.service do not Require or
    order after syslog.target as it no longer exists
    postfix will fail to start in the next systemd version.
 
@@ -2352,20 +2369,20 @@ Sat Feb 23 09:33:08 UTC 2013 - rmilasan@suse.com
 -------------------------------------------------------------------
 Wed Feb  6 19:56:57 UTC 2013 - varkoly@suse.com
 
-- update to 2,9.6 
+- update to 2,9.6
   Bugfix: the local(8) delivery agent dereferenced a null pointer
    while delivering to null command (for example, "|" in a .forward file).
   Bugfix: memory leak in program initialization. tls/tls_misc.c.
-  Bugfix: he undocumented OpenSSL X509_pubkey_digest() function is 
-   unsuitable for computing certificate PUBLIC KEY fingerprints. 
+  Bugfix: he undocumented OpenSSL X509_pubkey_digest() function is
+   unsuitable for computing certificate PUBLIC KEY fingerprints.
    Postfix now provides a correct procedure that accounts for
-   the algorithm and parameters in addition to the key data.  Specify 
-   "tls_legacy_public_key_fingerprints = yes" if you need backwards compatibility. 
+   the algorithm and parameters in addition to the key data.  Specify
+   "tls_legacy_public_key_fingerprints = yes" if you need backwards compatibility.
 
 -------------------------------------------------------------------
 Thu Jan 17 22:01:16 UTC 2013 - varkoly@suse.com
 
-- bnc#796162 - script to assign path elements not working in postfix install Build-0284(iso) 
+- bnc#796162 - script to assign path elements not working in postfix install Build-0284(iso)
 
 -------------------------------------------------------------------
 Thu Jan 10 18:23:56 UTC 2013 - chris@computersalat.de
@@ -2447,7 +2464,7 @@ Sat Dec 15 16:33:24 UTC 2012 - chris@computersalat.de
       Bugfix: the postscreen_access_list feature was case-sensitive
       in the first character of permit, reject, etc. Reported by
       Feancis Picabia. File: global/server_acl.c.
-- rebase dynamic_maps_pie patch 
+- rebase dynamic_maps_pie patch
 - rpmlint
   * invalid-suse-version-check 1140
   * obsolete-suse-version-check 920 (changes file)
@@ -2455,14 +2472,14 @@ Sat Dec 15 16:33:24 UTC 2012 - chris@computersalat.de
 -------------------------------------------------------------------
 Fri Dec 14 06:03:42 UTC 2012 - varkoly@suse.com
 
-- bnc#790141 - Command SuSEconfig.postfix reports ERROR - 
-  "can not find /lib/YaST/SuSEconfig.functions!!" 
+- bnc#790141 - Command SuSEconfig.postfix reports ERROR -
+  "can not find /lib/YaST/SuSEconfig.functions!!"
 
 -------------------------------------------------------------------
 Thu Nov  8 11:33:33 UTC 2012 - varkoly@suse.com
 
 - bnc#782048 - postfix uses /sbin/conf.d
-- bnc#784659 - remove SuSEconfig calls from yast2-mail 
+- bnc#784659 - remove SuSEconfig calls from yast2-mail
 
 -------------------------------------------------------------------
 Fri Aug 10 18:56:59 UTC 2012 - chris@computersalat.de
@@ -2510,11 +2527,11 @@ Mon Jun 11 09:51:22 UTC 2012 - varkoly@suse.com
       command must wait until its requests have reached the pickup
       and qmgr servers before closing the UNIX-domain request
       sockets.  Files: postqueue/postqueue.c, postqueue/Makefile.in.
- 
+
 -------------------------------------------------------------------
 Wed May  9 10:07:10 UTC 2012 - varkoly@suse.com
 
-- bnc#753910 - {name} instead of %{name} in postfix .spec 
+- bnc#753910 - {name} instead of %{name} in postfix .spec
 - bnc#756452 - VUL-1: postfix: VRFY allows enumerating users
 
 -------------------------------------------------------------------
@@ -2551,22 +2568,22 @@ Thu May  3 16:47:11 UTC 2012 - chris@computersalat.de
 -------------------------------------------------------------------
 Thu Apr 12 08:15:06 UTC 2012 - varkoly@suse.com
 
-- bnc#756450 - postfix: remove version from banner 
+- bnc#756450 - postfix: remove version from banner
 
 -------------------------------------------------------------------
 Mon Apr  9 16:13:28 UTC 2012 - bruno@ioda-net.ch
 
-- add port 587 smtp-auth submission to postfix-fw bnc#756289 
+- add port 587 smtp-auth submission to postfix-fw bnc#756289
 
 -------------------------------------------------------------------
 Mon Apr  2 22:09:00 CEST 2012 - dmueller@suse.de
 
-- set exit code explicitely in cond_slp, systemd checks for it 
+- set exit code explicitely in cond_slp, systemd checks for it
 
 -------------------------------------------------------------------
 Tue Mar 13 13:35:13 UTC 2012 - varkoly@suse.com
 
-- Documentation for bnc#751994 - SuSEconfig module postfix does not exist 
+- Documentation for bnc#751994 - SuSEconfig module postfix does not exist
 
 -------------------------------------------------------------------
 Wed Mar  7 06:31:05 UTC 2012 - varkoly@suse.com
@@ -2611,32 +2628,32 @@ Wed Jan 25 15:12:38 UTC 2012 - varkoly@suse.com
 -------------------------------------------------------------------
 Tue Jan 17 11:14:30 UTC 2012 - varkoly@suse.com
 
-- bnc738693 - upgrade from 11.4 enables mysql service for systemd 
+- bnc738693 - upgrade from 11.4 enables mysql service for systemd
 
 -------------------------------------------------------------------
 Thu Jan 12 12:18:17 UTC 2012 - varkoly@suse.com
 
-- Add postmap rebuild script to systemv init script too 
+- Add postmap rebuild script to systemv init script too
 
 -------------------------------------------------------------------
 Wed Jan 11 14:21:21 UTC 2012 - varkoly@suse.com
 
-- bnc#738900 - cyrus-imapd not receiving mail from postfix 
+- bnc#738900 - cyrus-imapd not receiving mail from postfix
 
 -------------------------------------------------------------------
 Tue Dec 13 14:50:45 UTC 2011 - varkoly@suse.com
 
--  Move the post map rebuild script into the start script 
+-  Move the post map rebuild script into the start script
 
 -------------------------------------------------------------------
 Tue Dec  6 11:04:12 UTC 2011 - varkoly@suse.com
 
-- Fix the last change in %post 
+- Fix the last change in %post
 
 -------------------------------------------------------------------
 Fri Dec  2 06:44:28 UTC 2011 - varkoly@suse.com
 
-- bnc#728308 - warning output after update the postfix package 
+- bnc#728308 - warning output after update the postfix package
 
 -------------------------------------------------------------------
 Wed Nov  9 20:05:38 UTC 2011 - varkoly@suse.com
@@ -2646,7 +2663,7 @@ Wed Nov  9 20:05:38 UTC 2011 - varkoly@suse.com
   smtpd(8) did not sanitize newline characters in cleanup(8)
      REJECT messages, causing them to be sent out via SMTP as bare newline characters.
   smtpd(8) sent multi-line responses from a before-queue content filter as text with
-     bare <LF> instead of <CR><LF>.  
+     bare <LF> instead of <CR><LF>.
   Workaround: postscreen sent non-compliant SMTP responses (220- followed by 421)
      when it could not give a connection to a real smtpd process, causing some
      remote SMTP clients to bounce mail.
@@ -2654,7 +2671,7 @@ Wed Nov  9 20:05:38 UTC 2011 - varkoly@suse.com
 -------------------------------------------------------------------
 Thu Nov  3 15:56:23 UTC 2011 - varkoly@suse.com
 
-- Use the systemd macros in the spec file 
+- Use the systemd macros in the spec file
 
 -------------------------------------------------------------------
 Fri Oct 14 16:43:02 CEST 2011 - mhrusecky@suse.cz
@@ -2664,8 +2681,8 @@ Fri Oct 14 16:43:02 CEST 2011 - mhrusecky@suse.cz
 -------------------------------------------------------------------
 Sun Oct  9 04:30:54 UTC 2011 - crrodriguez@opensuse.org
 
- - Use SSL_MODE_RELEASE_BUFFERS if available, see 
-  SSL_CTX_set_mode man page and 
+ - Use SSL_MODE_RELEASE_BUFFERS if available, see
+  SSL_CTX_set_mode man page and
   http://www.imperialviolet.org/2010/06/25/overclocking-ssl.html
   for the full details.
 
@@ -2691,7 +2708,7 @@ Thu Aug 18 09:32:04 UTC 2011 - varkoly@novell.com
   SuSEconfig.postfix will be executed only once after installation
   automaticaly. Afterwards only you can start it manually or via
   yast2 mail module.
- 
+
 -------------------------------------------------------------------
 Fri Aug 12 16:40:40 UTC 2011 - werner@suse.de
 
@@ -2699,7 +2716,7 @@ Fri Aug 12 16:40:40 UTC 2011 - werner@suse.de
     /etc/postfix/system/update_chroot
     /etc/postfix/system/wait_qmgr
     /etc/postfix/system/cond_slp
-  and 
+  and
     /lib/systemd/system/postfix.service
   and also fill out the missing description.
 
@@ -2726,7 +2743,7 @@ Mon Jul 11 17:22:19 UTC 2011 - chris@computersalat.de
 Wed Jul  6 13:11:07 UTC 2011 - varkoly@novell.com
 
 - bnc#686436 - postfix bounces messages with improper use of 8-bit data in message body
-- Apply patch 
+- Apply patch
 
 -------------------------------------------------------------------
 Fri Jul  1 12:35:59 UTC 2011 - chris@computersalat.de
@@ -2749,12 +2766,12 @@ Thu Jun 30 20:15:40 UTC 2011 - chris@computersalat.de
 -------------------------------------------------------------------
 Sat May 28 04:22:22 UTC 2011 - varkoly@novell.com
 
-- fix spec for building on all repos 
+- fix spec for building on all repos
 
 -------------------------------------------------------------------
 Tue May 24 10:24:51 UTC 2011 - varkoly@novell.com
 
-- bnc#679187 - suseconfig/postfix: missing dependency 
+- bnc#679187 - suseconfig/postfix: missing dependency
 
 -------------------------------------------------------------------
 Tue May 17 22:31:46 UTC 2011 - chris@computersalat.de
@@ -2773,7 +2790,7 @@ Sun May 15 14:16:03 UTC 2011 - chris@computersalat.de
 
 - rework TLS stuff
   o reworked main.cf patch
-  o added postfix-SuSE patch 
+  o added postfix-SuSE patch
   o added post-install patch
     Editing /etc/postfix/master.cf, adding missing entry for tlsmgr service
     add only if it really does not exist
@@ -2792,13 +2809,13 @@ Wed May 11 08:23:56 UTC 2011 - varkoly@novell.com
 -------------------------------------------------------------------
 Tue May 10 09:20:23 UTC 2011 - varkoly@novell.com
 
-- update to 2.8.3 - VUL-0: postfix memory corruption 
+- update to 2.8.3 - VUL-0: postfix memory corruption
 
 -------------------------------------------------------------------
 Sun Apr 10 07:00:18 UTC 2011 - varkoly@novell.com
 
 - bnc#641271 - postfix-2.7.1: init script cannot properly stop
-  multi-instance configurations 
+  multi-instance configurations
 
 -------------------------------------------------------------------
 Wed Mar 30 21:21:16 UTC 2011 - varkoly@novell.com
@@ -2837,7 +2854,7 @@ Wed Mar 30 21:21:16 UTC 2011 - varkoly@novell.com
 -------------------------------------------------------------------
 Thu Feb 10 11:43:28 UTC 2011 - varkoly@novell.com
 
-- bnc#667299 - Postfix LICENSE not marked as documentation 
+- bnc#667299 - Postfix LICENSE not marked as documentation
 
 -------------------------------------------------------------------
 Mon Jan 17 09:56:32 UTC 2011 - chris@computersalat.de
@@ -2903,7 +2920,7 @@ Tue Dec  7 22:02:56 UTC 2010 - coolo@novell.com
 Thu Aug 12 18:57:14 UTC 2010 - varkoly@novell.com
 
 - Remove obsolate postscripts
-- bnc#625657 - SuSEconfig.postfix and smtp_use_tls 
+- bnc#625657 - SuSEconfig.postfix and smtp_use_tls
 - bnc#622873 - postfix doesn't start if ipv6 is disabled
 
 -------------------------------------------------------------------
@@ -2944,20 +2961,20 @@ Wed Apr  7 12:39:16 UTC 2010 - varkoly@novell.com
 
 - New file check_mail_queue. This script checks if there are some
   mails in the queue and starts postfix if necessary. After delivering
-  the mails postfix will be stoped. 
+  the mails postfix will be stoped.
 
 -------------------------------------------------------------------
 Thu Apr  1 10:28:09 UTC 2010 - varkoly@novell.com
 
 - bnc#559145 - Changed Domain name not reflected when sending mail
   First /var/run/dhcp-hostname will be evaluated
-- Now POSTFIX_SMTP_TLS_CLIENT is ternary : no yes must 
+- Now POSTFIX_SMTP_TLS_CLIENT is ternary : no yes must
 
 -------------------------------------------------------------------
 Sun Feb 28 18:38:18 UTC 2010 - varkoly@novell.com
 - update to 2.7.0
   * performance
-    - Periodic cache cleanup for the verify(8) cache database.    
+    - Periodic cache cleanup for the verify(8) cache database.
     - Improved before-queue filter performance.
   * sender reputation
     - The FILTER action in access maps or header/body_checks now supports sender
@@ -2965,11 +2982,11 @@ Sun Feb 28 18:38:18 UTC 2010 - varkoly@novell.com
   * address verification
     - The verify(8) service now uses a persistent cache by default.
   * content filter
-    - The meaning of an empty filter next-hop destination has changed. 
+    - The meaning of an empty filter next-hop destination has changed.
     - The FILTER action in access maps or header/body_checks now supports sender
       reputation schemes that dynamically choose the SMTP source IP address.
   * milter
-    - Support for header checks on Milter-generated message headers.  
+    - Support for header checks on Milter-generated message headers.
   Please read /usr/share/doc/packages/postfix/RELEASE_NOTES for details.
 -------------------------------------------------------------------
 Thu Feb 11 15:16:13 UTC 2010 - coolo@novell.com
@@ -3018,19 +3035,19 @@ Tue Dec  8 19:15:15 CET 2009 - varkoly@suse.de
 Mon Nov 16 17:14:39 CET 2009 - varkoly@suse.de
 
 - bnc#555814 – VUL-0: SMTPD_LISTEN_REMOTE="yes" by default
-- bnc#555732 - Invalid $(hostname -i) usage SuSEconfig.postfix 
+- bnc#555732 - Invalid $(hostname -i) usage SuSEconfig.postfix
 - bnc#547928 – Postfix does not start during boot process
-- Avoid append relay multiple times in POSTFIX_MAP_LIST 
+- Avoid append relay multiple times in POSTFIX_MAP_LIST
 
 -------------------------------------------------------------------
 Mon Oct 26 14:36:55 CET 2009 - varkoly@suse.de
 
-- bnc#549612 – SuSEconfig.postfix 
+- bnc#549612 – SuSEconfig.postfix
 
 -------------------------------------------------------------------
 Mon Sep 28 09:22:54 CEST 2009 - varkoly@suse.de
 
-- bnc#540538 – postfix-2.6.1-10.1 installs new files in /etc/postfix and does not generate <file>.db 
+- bnc#540538 – postfix-2.6.1-10.1 installs new files in /etc/postfix and does not generate <file>.db
 - bnc#519438 - Postfix: Running chrooted lets qmgr loosing his syslog-socket
 - remove obsolate version tests from SuSEconfig.postfix
 
@@ -3038,7 +3055,7 @@ Mon Sep 28 09:22:54 CEST 2009 - varkoly@suse.de
 Mon Sep 28 08:24:43 CEST 2009 - varkoly@suse.de
 
 - bnc#525825 - when using cyrus in a chroot environment Suseconfig does not
-  create socket /var/lib/imap/socket/lmtp 
+  create socket /var/lib/imap/socket/lmtp
 
 -------------------------------------------------------------------
 Mon Sep 14 11:34:41 UTC 2009 - chris@computersalat.de
@@ -3067,9 +3084,9 @@ Mon Apr 13 18:21:14 UTC 2009 - chris@computersalat.de
     to avoid user take all you disk space
   o Customizable "limit" message when the soft quota limit is reached.
     NOTE: message is sent to senders, but NOT to the owner of the mailbox.
-  o Limit only 'INBOX', because some people use IMAP and don't want 
+  o Limit only 'INBOX', because some people use IMAP and don't want
     the same limit in IMAP folder that are differents from INBOX.
-  o Support for 'Courier' style Maildir, usefull for people that 
+  o Support for 'Courier' style Maildir, usefull for people that
     use courier as pop3/imap server and to get fast soft quota summary.
     Note that it is also compatible with qmail maildir per default.
   o Supports for Courier 'maildirsize' file in Maildir folder that
@@ -3102,7 +3119,7 @@ Mon Apr 13 18:21:14 UTC 2009 - chris@computersalat.de
 -------------------------------------------------------------------
 Sun Mar 29 15:18:52 CEST 2009 - varkoly@suse.de
 
-- bnc#439287 - not all POSTFIX_ADD_* values are properly handled 
+- bnc#439287 - not all POSTFIX_ADD_* values are properly handled
                by SuSEconfig.postfix
 - bnc#483208 - Postfix configuration trashed after update
 - bnc#488268 - SuSEconfig.postfix chroot setup misses /etc/ssl/certs
@@ -3110,13 +3127,13 @@ Sun Mar 29 15:18:52 CEST 2009 - varkoly@suse.de
 -------------------------------------------------------------------
 Mon Jan 12 11:12:16 CET 2009 - varkoly@suse.de
 
-- bnc#465165 - postfix src package 
+- bnc#465165 - postfix src package
 
 -------------------------------------------------------------------
 Fri Jan  9 17:43:53 CET 2009 - varkoly@suse.de
 
 - bnc#464869 - SuSEconfig.postfix causes DNS lookup
-- bnc#460442 - amavisd-new and Postfix need fqdn-hostname in "uname -n" 
+- bnc#460442 - amavisd-new and Postfix need fqdn-hostname in "uname -n"
 
 -------------------------------------------------------------------
 Mon Jan  5 13:54:11 CET 2009 - varkoly@suse.de
@@ -3127,33 +3144,33 @@ Mon Jan  5 13:54:11 CET 2009 - varkoly@suse.de
 
   - Avoid reduced TCP performance when reusing an SMTP connection
     with a larger than 4096-byte TCP MSS value. In practice, this
-    could happen only with loopback (localhost) connections. 
+    could happen only with loopback (localhost) connections.
 
 -------------------------------------------------------------------
 Sun Nov 16 12:16:03 CET 2008 - varkoly@suse.de
 
-- (bnc#442456) - chrooted postfix and saslauthd 
+- (bnc#442456) - chrooted postfix and saslauthd
 
 -------------------------------------------------------------------
 Tue Nov  4 15:24:41 CET 2008 - ro@suse.de
 
-- fix build 
+- fix build
 
 -------------------------------------------------------------------
 Tue Nov  4 15:15:03 CET 2008 - varkoly@suse.de
 
-- upgrade must not be executed during installation 
+- upgrade must not be executed during installation
 
 -------------------------------------------------------------------
 Tue Oct 14 11:16:21 CEST 2008 - varkoly@suse.de
 
-- (bnc#403976) - permissions on /var/lib/postfix changed 
-- (bnc#433916) - postfix should be splitted into postfix and postfix-doc 
+- (bnc#403976) - permissions on /var/lib/postfix changed
+- (bnc#433916) - postfix should be splitted into postfix and postfix-doc
 
 -------------------------------------------------------------------
 Thu Sep 11 14:34:22 CEST 2008 - varkoly@suse.de
 
-- (bnc#415216) - Postfix RPM Install Displays Multiple Warnings 
+- (bnc#415216) - Postfix RPM Install Displays Multiple Warnings
 - clean up spec file
 
 -------------------------------------------------------------------
@@ -3163,7 +3180,7 @@ Tue Sep  9 09:57:35 CEST 2008 - varkoly@suse.de
   * Bugfix (introduced Postfix 2.4): epoll file descriptor leak.
 	With Postfix >= 2.4 on Linux >= 2.6, Postfix has an epoll
 	file descriptor leak when it executes non-Postfix commands
-	in, for example, user-controlled $HOME/.forward files.  
+	in, for example, user-controlled $HOME/.forward files.
   * Security: some systems have changed their link() semantics,
 	and will hardlink a symlink, contrary to POSIX and XPG4.
 	Sebastian Krahmer, SuSE. File: util/safe_open.c.
@@ -3177,7 +3194,7 @@ Tue Sep  9 09:57:35 CEST 2008 - varkoly@suse.de
 	link in a directory with less restrictive permissions.
    * Bugfix: dangling pointer in vstring_sprintf_prepend().
 	File: util/vstring.c.
- 
+
 -------------------------------------------------------------------
 Mon Aug 25 18:45:03 CEST 2008 - mt@suse.de
 
@@ -3187,15 +3204,15 @@ Mon Aug 25 18:45:03 CEST 2008 - mt@suse.de
 -------------------------------------------------------------------
 Wed Aug  6 13:33:01 CEST 2008 - varkoly@suse.de
 
-- (bnc#414959) postfix doesn't have any "Name: " tag in firewall definition 
+- (bnc#414959) postfix doesn't have any "Name: " tag in firewall definition
 - (bnc#405900) SuSEconfig.postfix changes owner and permissions of
-  /tmp if smtpd_tls_CApath is not set 
+  /tmp if smtpd_tls_CApath is not set
 
 - Update to Version 2.5 patchlevel 3
   * Cleanup of code
   * defer delivery when a mailbox file is not owned by the recipient.
     Requested by Sebastian Krahmer, SuSE.
-    Specify "strict_mailbox_ownership=no" to ignore ownership discrepancies. 
+    Specify "strict_mailbox_ownership=no" to ignore ownership discrepancies.
   * Bugfix: null-terminate CN comment string after sanitization.
   * Bugfix (introduced Postfix 2.0): after "warn_if_reject
     reject_unlisted_recipient/sender", the SMTP server mistakenly
@@ -3204,13 +3221,13 @@ Wed Aug  6 13:33:01 CEST 2008 - varkoly@suse.de
 -------------------------------------------------------------------
 Wed Jul  9 15:07:46 CEST 2008 - varkoly@suse.de
 
-- (fate#305005) Enable SMTPS in postfix ootb 
+- (fate#305005) Enable SMTPS in postfix ootb
 
 -------------------------------------------------------------------
 Tue Jun 17 12:27:10 CEST 2008 - varkoly@suse.de
 
 - (bnc#396985) sending of NUL character disallowed by RFC2822
-- (bnc#397127) without relay is silent about undeliverable mails 
+- (bnc#397127) without relay is silent about undeliverable mails
 
 -------------------------------------------------------------------
 Tue May 13 18:17:09 CEST 2008 - varkoly@suse.de
@@ -3221,7 +3238,7 @@ Tue May 13 18:17:09 CEST 2008 - varkoly@suse.de
 Tue Apr  1 16:17:31 CEST 2008 - mkoenig@suse.de
 
 - remove dir /usr/share/omc/svcinfo.d as it is provided now
-  by filesystem 
+  by filesystem
 
 -------------------------------------------------------------------
 Tue Feb 26 09:59:43 CET 2008 - varkoly@suse.de
@@ -3235,7 +3252,7 @@ Tue Feb 26 09:59:43 CET 2008 - varkoly@suse.de
   is used only by the obscure "smtp_sasl_auth_cache_name" and
   "lmtp_sasl_auth_cache_name" configuration parameters. Someone
   needed multi-line support for header/body Milter replies. The
-  LDAP client's TLS support was broken in several ways. 
+  LDAP client's TLS support was broken in several ways.
 
 -------------------------------------------------------------------
 Wed Feb 13 14:58:52 CET 2008 - varkoly@suse.de
@@ -3249,7 +3266,7 @@ Wed Jan 30 12:20:53 CET 2008 - varkoly@suse.de
 
     Major changes - critical
     ------------------------
-    
+
     [Incompat 20071224] The protocol to send Milter information from
     smtpd(8) to cleanup(8) processes was cleaned up. If you use the
     Milter feature, and upgrade a live Postfix system, you may see an
@@ -3258,74 +3275,74 @@ Wed Jan 30 12:20:53 CET 2008 - varkoly@suse.de
     incompatibility affects only systems that use the Milter feature.
     It does not cause loss of mail, just a minor delay until the remote
     SMTP client retries.
-    
+
     [Incompat 20071212] The allow_min_user feature now applies to both
     sender and recipient addresses in SMTP commands. With earlier Postfix
     versions, only recipients were subject to the allow_min_user feature,
     and the restriction took effect at mail delivery time, causing mail
     to be bounced later instead of being rejected immediately.
-    
+
     [Incompat 20071206] The "make install" and "make upgrade" procedures
     now create a Postfix-owned directory for Postfix-writable data files
     such as caches and random numbers. The location is specified with
     the "data_directory" parameter (default: "/var/lib/postfix"), and
     the ownership is specified with the "mail_owner" parameter.
-    
+
     [Incompat 20071206] The tlsmgr(8) and verify(8) servers no longer
     use root privileges when opening the address_verify_map,
     *_tls_session_cache_database, and tls_random_exchange_name cache
     files.  This avoids a potential security loophole where the ownership
     of a file (or directory) does not match the trust level of the
     content of that file (or directory).
-    
+
     [Incompat 20071206] The tlsmgr(8) and verify(8) cache files should
     now be stored as Postfix-owned files under the Postfix-owned
     data_directory.  As a migration aid, attempts to open these files
     under a non-Postfix directory are redirected to the Postfix-owned
     data_directory, and a warning is logged.
-    
+
     This is an example of the warning messages:
-    
+
         Dec  6 12:56:22 bristle postfix/tlsmgr[7899]: warning: request
     	to update file /etc/postfix/prng_exch in non-postfix directory
     	/etc/postfix
-    
+
         Dec  6 12:56:22 bristle postfix/tlsmgr[7899]: warning: redirecting
     	the request to postfix-owned data_directory /var/lib/postfix
-    
+
     If you wish to continue using a pre-existing tls_random_exchange_name
     or address_verify_map file, move it to the Postfix-owned data_directory
     and change ownership from root to Postfix (that is, change ownership
     to the account specified with the mail_owner configuration parameter).
-    
+
     [Feature 20071205] The "make install" and "make upgrade" procedures
     now create a Postfix-owned directory for Postfix-writable data files
     such as caches and random numbers. The location is specified with
     the "data_directory" parameter (default: "/var/lib/postfix"), and
     the ownership is specified with the "mail_owner" parameter.
-    
+
     [Incompat 20071203] The "make upgrade" procedure adds a new service
     "proxywrite" to the master.cf file, for read/write lookup table
     access. If you copy your old configuration file over the updated
     one, you may see warnings in the maillog file like this:
-    
+
        connect #xx to subsystem private/proxywrite: No such file or directory
-    
+
     To recover, run "postfix upgrade-configuration" again.
-    
+
     [Incompat 20070613] The pipe(8) delivery agent no longer allows
     delivery with the same group ID as the main.cf postdrop group.
-    
+
     Major changes - malware defense
     -------------------------------
-    
+
     [Feature 20080107] New "pass" service type in master.cf.  Written
     years ago, this allows future front-end daemons to accept all
     connections from the network, and to hand over connections from
     well-behaved clients to Postfix.  Since this feature uses file
     descriptor passing, it imposes no overhead once a connection is
     handed over to Postfix.  See master(5) for a few details.
-    
+
     [Feature 20070911] Stress-adaptive behavior. When a "public" network
     service runs into an "all processes are busy" condition, the master(8)
     daemon logs a warning, restarts the service, and runs it with "-o
@@ -3333,32 +3350,32 @@ Wed Jan 30 12:20:53 CET 2008 - varkoly@suse.de
     the service with "-o stress=" on the command line).  This can be
     used to make main.cf parameter settings stress dependent, for
     example:
-    
+
     /etc/postfix/main.cf:
         smtpd_timeout = ${stress?10}${stress:300}
         smtpd_hard_error_limit = ${stress?1}${stress:20}
-    
+
     Translation: under conditions of stress, use an smtpd_timeout value
     of 10 seconds instead of 300, and use smtpd_hard_error_limit of 1
     instead of 20. The syntax is explained in the postconf(5) manpage.
-    
+
     The STRESS_README file gives examples of how to mitigate flooding
     problems.
-    
+
     Major changes - tls support
     ---------------------------
-    
+
     [Incompat 20080109] TLS logging output has changed to make it more
     useful. Existing logfile parser regular expressions may need
     adjustment.
-    
+
     - More log entries include the "hostnamename[ipaddress]" of the
       remote SMTP peer.
-    
+
     - Certificate trust chain error reports show only the first
       error certificate (closest to the trust chain root), and the
       reporting is more human-readable for the most likely errors.
-    
+
     - After the completion of the TLS handshake, the session is logged
       with TLS loglevel >= 1 as either "Untrusted", "Trusted" or
       "Verified" (SMTP client only).
@@ -3371,43 +3388,43 @@ Wed Jan 30 12:20:53 CET 2008 - varkoly@suse.de
         - In the case of a destination name match, "Verified" also
           implies "Trusted".
         - In the case of a fingerprint match, CA trust is not applicable.
-    
+
     - The logging of protocol states with TLS loglevel >= 2 no longer
       reports bogus error conditions when OpenSSL asks Postfix to refill
       (or flush) network I/O buffers.  This loglevel is for debugging
       only; use 0 or 1 in production configurations.
-    
+
     [Feature 20080109] The Postfix SMTP client has a new "fingerprint"
     security level.  This avoids dependencies on CAs, and relies entirely
     on bi-lateral exchange of public keys (really self-signed or private
     CA signed X.509 public key certificates). Scalability is clearly
     limited. For details, see the fingerprint discussion in TLS_README.
-    
+
     [Feature 20080109] The Postfix SMTP server can now use SHA1 instead
     of MD5 to compute remote SMTP client certificate fingerprints. For
     backwards compatibility, the default algorithm is MD5.  For details,
     see the "smtpd_tls_fingerprint_digest" parameter in the postconf(5)
     manual.
-    
+
     [Feature 20080109] The maximum certificate trust chain depth
     (verifydepth) is finally implemented in the Postfix TLS library.
     Previously, the parameter had no effect. The default depth was
     changed to 9 (the OpenSSL default) for backwards compatibility.
-    
+
     If you have explicity limited the verification depth in main.cf,
     check that the configured limit meets your needs. See the
     "lmtp_tls_scert_verifydepth", "smtp_tls_scert_verifydepth" and
     "smtpd_tls_ccert_verifydepth" parameters in the postconf(5) manual.
-    
+
     [Feature 20080109] The selection of SSL/TLS protocols for mandatory
     TLS can now use exclusion rather than inclusion. Either form is
     acceptable; see the "lmtp_tls_mandatory_protocols",
     "smtp_tls_mandatory_protocols" and "smtpd_tls_mandatory_protocols"
     parameters in the postconf(5) manual.
-    
+
     Major changes - scheduler
     -------------------------
-    
+
     [Feature 20071130] Revised queue manager with separate mechanisms
     for per-destination concurrency control and for dead destination
     detection.  The concurrency control supports less-than-1 feedback
@@ -3415,53 +3432,53 @@ Wed Jan 30 12:20:53 CET 2008 - varkoly@suse.de
     to avoid rapid oscillations.  A destination is declared "dead" after
     a configurable number of pseudo-cohorts(*) reports connection or
     handshake failure.
-    
+
     (*) A pseudo-cohort is a number of delivery requests equal to a
         destination's delivery concurrency.
-    
+
     The drawbacks of the old +/-1 feedback scheduler are a) overshoot
     due to exponential delivery concurrency growth with each pseudo-cohort(*)
     (5-10-20...); b) throttling down to zero concurrency after a single
     pseudo-cohort(*) failure. The latter was especially an issue with
     low-concurrency channels where a single failure could be sufficient
     to mark a destination as "dead", and suspend further deliveries.
-    
+
     New configuration parameters: destination_concurrency_feedback_debug,
     default_destination_concurrency_positive_feedback,
     default_destination_concurrency_negative_feedback,
     default_destination_concurrency_failed_cohort_limit, as well as
     transport-specific versions of the same.
-    
+
     The default parameter settings are backwards compatible with older
     Postfix versions. This may change after better defaults are field
     tested.
-    
+
     The updated SCHEDULER_README document describes the theory behind
     the new concurrency scheduler, as well as Patrik Rak's preemptive
     job scheduler. See postconf(5) for more extensive descriptions of
     the configuration parameters.
-    
+
     Major changes - small/home office
     ---------------------------------
-    
+
     [Feature 20080115] Preliminary SOHO_README document that combines
     bits and pieces from other document in one place, so that it is
     easier to find. This document describes the "mail sending" side
     only.
-    
+
     [Feature 20071202] Output rate control in the queue manager. For
     example, specify "smtp_destination_rate_delay = 5m", to pause five
     minutes between message deliveries. More information in the postconf(5)
     manual under "default_destination_rate_delay".
-    
+
     Major changes - smtp client
     ---------------------------
-    
+
     [Incompat 20080114] The Postfix SMTP client now by default defers
     mail after a remote SMTP server rejects a SASL authentication
     attempt.  Specify "smtp_sasl_auth_soft_bounce = no" for the old
     behavior.
-    
+
     [Feature 20080114] The Postfix SMTP client can now avoid making
     repeated SASL login failures with the same server, username and
     password.  To enable this safety feature, specify for example
@@ -3470,29 +3487,29 @@ Wed Jan 30 12:20:53 CET 2008 - varkoly@suse.de
     to SASL authenticate, the Postfix SMTP client defers or bounces
     mail as controlled with the new smtp_sasl_auth_soft_bounce configuration
     parameter.
-    
+
     [Feature 20071111] Header/body checks are now available in the SMTP
     client, after the implementation was moved from the cleanup server
     to a library module.  The SMTP client provides only actions that
     don't change the message delivery time or destination: warn, replace,
     prepend, ignore, dunno, ok.
-    
+
     [Incompat 20070614] By default, the Postfix Cyrus SASL client no
     longer sends a SASL authoriZation ID (authzid); it sends only the
     SASL authentiCation ID (authcid) plus the authcid's password. Specify
     "send_cyrus_sasl_authzid = yes" to get the old behavior.
-    
+
     Major changes - smtp server
     ---------------------------
-    
+
     [Feature 20070724] Not really major. New support for RFC 3848
     (Received: headers with ESMTPS, ESMTPA, or ESMTPSA); updated SASL
     support according to RFC 4954, resulting in small changes to SMTP
     reply codes and (DSN) enhanced status codes.
-    
+
     Major changes - milter
     ----------------------
-    
+
     [Incompat 20071224] The protocol to send Milter information from
     smtpd(8) to cleanup(8) processes was cleaned up. If you use the
     Milter feature, and upgrade a live Postfix system, you may see an
@@ -3501,79 +3518,79 @@ Wed Jan 30 12:20:53 CET 2008 - varkoly@suse.de
     incompatibility affects only systems that use the Milter feature.
     It does not cause loss of mail, just a minor delay until the remote
     SMTP client retries.
-    
+
     [Feature 20071221] Support for most of the Sendmail 8.14 Milter
     protocol features.
-    
+
     To enable the new features specify "milter_protocol = 6" and link
     the filter application with a libmilter library from Sendmail 8.14
     or later.
-    
+
     Sendmail 8.14 Milter features supported at this time:
-    
-    - NR_CONN, NR_HELO, NR_MAIL, NR_RCPT, NR_DATA, NR_UNKN, NR_HDR, 
+
+    - NR_CONN, NR_HELO, NR_MAIL, NR_RCPT, NR_DATA, NR_UNKN, NR_HDR,
       NR_EOH, NR_BODY: The filter can tell Postfix that it won't reply
-      to some of the SMTP events that Postfix sends. This makes the      
+      to some of the SMTP events that Postfix sends. This makes the
       protocol less chatty and improves performance.
-    
-    - SKIP: The filter can tell Postfix to skip sending the rest of    
+
+    - SKIP: The filter can tell Postfix to skip sending the rest of
       the message body, which also improves performance.
-    
-    - HDR_LEADSPC: The filter can request that Postfix does not delete 
-      the first space character between header name and header value       
+
+    - HDR_LEADSPC: The filter can request that Postfix does not delete
+      the first space character between header name and header value
       when sending a header to the filter, and that Postfix does not
-      insert a space character between header name and header value 
+      insert a space character between header name and header value
       when receiving a header from the filter.  This fixes a limitation
       in the old Milter protocol that can break DKIM and DK signatures.
-    
+
     - SETSYMLIST: The filter can override one or more of the main.cf
       milter_xxx_macros parameter settings.
-     
+
     Sendmail 8.14 Milter features not supported at this time:
-    
-    - RCPT_REJ: report rejected recipients to the mail filter. 
-    
+
+    - RCPT_REJ: report rejected recipients to the mail filter.
+
     - CHGFROM: replace sender, with optional ESMTP command parameters.
-    
+
     - ADDRCPT_PAR: add recipient, with optional ESMTP command parameters.
-    
+
     It is unclear when (if ever) the missing features will be implemented.
     SMFIP_RCPT_REJ requires invasive changes in the SMTP server recipient
     processing and error handling.  SMFIR_CHGFROM and SMFIR_ADDRCPT_PAR
     require ESMTP command-line parsing in the cleanup server. Unfortunately,
     Sendmail's documentation does not specify what ESMTP options are
     supported, but only discusses examples of things that don't work.
-    
+
     Major changes - address verification
     ------------------------------------
-    
+
     [Incompat 20070514] The default sender address for address verification
     probes was changed from "postmaster" to "double-bounce", so that
     the Postfix SMTP server no longer causes surprising behavior by
     excluding "postmaster" from SMTP server access controls.
-    
+
     Major changes - ldap
     --------------------
-    
+
     [Incompat 20071216] Due to an incompatible API change between
     OpenLDAP 2.0.11 and 2.0.12, an LDAP client compiled for OpenLDAP
     version <= 2.0.11 will refuse to work with an OpenLDAP library
     version >= 2.0.12 and vice versa.
-    
+
     Major changes - logging
     -----------------------
-    
+
     [Incompat 20080109] TLS logging output has changed to make it more
     useful. Existing logfile parser regular expressions may need
     adjustment.
-    
+
     - More log entries include the "hostnamename[ipaddress]" of the
       remote SMTP peer.
-    
+
     - Certificate trust chain error reports show only the first
       error certificate (closest to the trust chain root), and the
       reporting is more human-readable for the most likely errors.
-    
+
     - After the completion of the TLS handshake, the session is logged
       with TLS loglevel >= 1 as either "Untrusted", "Trusted" or
       "Verified" (SMTP client only).
@@ -3586,18 +3603,18 @@ Wed Jan 30 12:20:53 CET 2008 - varkoly@suse.de
         - In the case of a destination name match, "Verified" also
           implies "Trusted".
         - In the case of a fingerprint match, CA trust is not applicable.
-    
+
     - The logging of protocol states with TLS loglevel >= 2 no longer
       reports bogus error conditions when OpenSSL asks Postfix to refill
       (or flush) network I/O buffers.  This loglevel is for debugging
       only; use 0 or 1 in production configurations.
-    
+
     [Incompat 20071216] The SMTP "transcript of session" email now
     includes the remote SMTP server TCP port number.
-    
+
     Major changes - loop detection
     ------------------------------
-    
+
     [Incompat 20070422] [Incompat 20070422] When the pipe(8) delivery
     agent is configured to create the optional Delivered-To: header,
     it now first checks if that same header is already present in the
@@ -3608,12 +3625,12 @@ Wed Jan 30 12:20:53 CET 2008 - varkoly@suse.de
 -------------------------------------------------------------------
 Tue Jan  8 10:00:12 CET 2008 - varkoly@suse.de
 
-- Remove previous fix 
+- Remove previous fix
 
 -------------------------------------------------------------------
 Sun Dec 30 19:58:02 CET 2007 - varkoly@suse.de
 
-- #301335 - [SuSEconfig]: Postfix module uses stderr 
+- #301335 - [SuSEconfig]: Postfix module uses stderr
 
 -------------------------------------------------------------------
 Tue Dec  4 09:02:19 CET 2007 - varkoly@suse.de
@@ -3624,17 +3641,17 @@ Tue Dec  4 09:02:19 CET 2007 - varkoly@suse.de
    policy client to allocate zero-length memory, triggering
    an assertion that it shouldn't do such things.  File:
    smtpd/smtpd_check.c.
- 
+
    Bugfix (introduced Postfix 2.4) missing initialization of
    event mask in the event_mask_drain() routine (used by the
    obsolete postkick(1) command). Found by Coverity.  File:
    util/events.c.
- 
+
    Workaround: the flush daemon forces an access time update
    for the per-destination logfile, to prevent an excessive
    rate of delivery attempts when the queue file system is
    mounted with "noatime".  File: flush/flush.c.
- 
+
 - #330276 – /sbin/conf.d/SuSEconfig.postfix could copy certs into smtpd_tls_CApath
 
 -------------------------------------------------------------------
@@ -3645,7 +3662,7 @@ Mon Oct 22 17:38:19 CEST 2007 - sbrabec@suse.cz
 -------------------------------------------------------------------
 Wed Oct 17 11:52:01 CEST 2007 - varkoly@suse.de
 
-- #333629 - saslauthd typo in SuSEconfig.postfix 
+- #333629 - saslauthd typo in SuSEconfig.postfix
 
 -------------------------------------------------------------------
 Mon Oct  8 12:37:39 CEST 2007 - varkoly@suse.de
@@ -3655,7 +3672,7 @@ Mon Oct  8 12:37:39 CEST 2007 - varkoly@suse.de
 -------------------------------------------------------------------
 Sun Sep  9 17:42:27 CEST 2007 - varkoly@suse.de
 
-- fix the last fix 
+- fix the last fix
 
 -------------------------------------------------------------------
 Tue Sep  4 00:38:58 CEST 2007 - cthiel@suse.de
@@ -3665,7 +3682,7 @@ Tue Sep  4 00:38:58 CEST 2007 - cthiel@suse.de
 -------------------------------------------------------------------
 Mon Sep  3 12:37:43 CEST 2007 - varkoly@suse.de
 
-- Fixing bug: #297622 - SMTPD_LISTEN_REMOTE has no effect 
+- Fixing bug: #297622 - SMTPD_LISTEN_REMOTE has no effect
 
 -------------------------------------------------------------------
 Mon Aug  6 00:26:31 CEST 2007 - mrueckert@suse.de
@@ -3789,7 +3806,7 @@ Tue Jul 31 18:21:11 CEST 2007 - varkoly@suse.de
 -------------------------------------------------------------------
 Thu Jun 21 08:30:45 CEST 2007 - varkoly@suse.de
 
-- Bug 285553  amavisd inconsistency 
+- Bug 285553  amavisd inconsistency
 
 -------------------------------------------------------------------
 Tue Jun 19 18:55:43 CEST 2007 - dmueller@suse.de
@@ -3813,8 +3830,8 @@ Thu May  3 12:09:13 CEST 2007 - varkoly@suse.de
     files on all systems. This prevents problems with GNU POP3D which
     subverts kernel locking by creating a new mailbox file and deleting
     the old one
-    
-  Major changes - Milter support 
+
+  Major changes - Milter support
   * The support for Milter header modification
     requests was revised.  With minimal change in the on-disk representation,
     the code was greatly simplified, and regression tests were updated
@@ -3829,7 +3846,7 @@ Thu May  3 12:09:13 CEST 2007 - varkoly@suse.de
     record that specifies the message content length.  Postfix 2.3 and
     older Postfix 2.4 snapshots will ignore this field, and will report
     the message size as it was before the body was replaced.
-    
+
   Major changes - TLS support
   * The check_smtpd_policy client sends TLS certificate
     attributes (client ccert_subject, ccert_issuer) only after successful
@@ -3926,7 +3943,7 @@ Mon Jan 15 13:14:07 CET 2007 - varkoly@suse.de
 - Implementing Fate #301840: Postfix XML Service Description Document
 
 - Enhancing /etc/sysconfig/postfix descripton to avoid problems
-  like Bug 228678 - Problems with setting up chroot environment if 
+  like Bug 228678 - Problems with setting up chroot environment if
   /var/spool is not on same filesystem as /var
 
 -------------------------------------------------------------------
@@ -3939,12 +3956,12 @@ Wed Nov 22 03:03:18 CET 2006 - mrueckert@suse.de
 -------------------------------------------------------------------
 Fri Nov 10 11:43:00 CET 2006 - varkoly@suse.de
 
-- #218229 - Postfix SuSEconfig script increases the max_proc line each run in master.cf 
+- #218229 - Postfix SuSEconfig script increases the max_proc line each run in master.cf
 
 -------------------------------------------------------------------
 Sat Oct 28 11:41:50 CEST 2006 - varkoly@suse.de
 
-- #206414 - /usr/lib/sasl2/smtpd.conf misplaced 
+- #206414 - /usr/lib/sasl2/smtpd.conf misplaced
 
 -------------------------------------------------------------------
 Tue Oct 24 22:32:45 CEST 2006 - varkoly@suse.de
@@ -3958,7 +3975,7 @@ Tue Oct 24 22:32:45 CEST 2006 - varkoly@suse.de
 -------------------------------------------------------------------
 Wed Aug 16 01:24:20 CEST 2006 - ro@suse.de
 
-- also add libpostfix-milter.so* 
+- also add libpostfix-milter.so*
 
 -------------------------------------------------------------------
 Mon Aug 14 12:34:37 CEST 2006 - varkoly@suse.de
@@ -3987,8 +4004,8 @@ Mon Aug 14 12:34:37 CEST 2006 - varkoly@suse.de
     verification.
   - SMTPD Access control based on the existence of an address->name mapping
 - Major changes - TLS
-  - New concept: TLS security levels ("none", "may", "encrypt", "verify" 
-    or "secure") in the Postfix SMTP client. 
+  - New concept: TLS security levels ("none", "may", "encrypt", "verify"
+    or "secure") in the Postfix SMTP client.
   - Both the Postfix SMTP client and server can be configured without a
     client or server certificate.
 - See
@@ -4005,7 +4022,7 @@ Wed Aug  2 16:18:30 CEST 2006 - varkoly@suse.de
 -------------------------------------------------------------------
 Mon Jul 10 16:21:31 CEST 2006 - varkoly@suse.de
 
-- Bugfix: #190639 Default number of processes for postfix 
+- Bugfix: #190639 Default number of processes for postfix
 - Bugfix: #190270 postfix-postgresql
 
 -------------------------------------------------------------------
@@ -4016,7 +4033,7 @@ Fri Jun  2 19:58:38 CEST 2006 - varkoly@suse.de
 -------------------------------------------------------------------
 Mon Apr 24 17:14:40 CEST 2006 - varkoly@suse.de
 
-- Bugfix: #165786 - yast2-mail modul uses obsolate postfix attributes 
+- Bugfix: #165786 - yast2-mail modul uses obsolate postfix attributes
 
 -------------------------------------------------------------------
 Mon Mar 20 10:21:55 CET 2006 - varkoly@suse.de
@@ -4025,7 +4042,7 @@ Mon Mar 20 10:21:55 CET 2006 - varkoly@suse.de
 - Reasons:
   Bugfix: the LMTP client would reuse a session after negative
         reply to the RSET command (which may happen when client and
-        server somehow get out of sync). 
+        server somehow get out of sync).
   Bugfix: race condition in the connection caching protocol,
         causing the SMTP delivery agent to hang after delivering
         mail, while trying to save a connection.
@@ -4075,7 +4092,7 @@ Fri Jan 27 02:19:42 CET 2006 - mls@suse.de
 -------------------------------------------------------------------
 Tue Jan 24 09:11:46 CET 2006 - varkoly@suse.de
 
-- Fixing the spec-file 
+- Fixing the spec-file
 - Bugfix: ID#143682 - Spurious (obsoleted?) configuration variable in postfix's main.cf
 
 -------------------------------------------------------------------
@@ -4093,7 +4110,7 @@ Fri Jan 20 11:56:24 CET 2006 - varkoly@suse.de
 -------------------------------------------------------------------
 Mon Jan 16 14:49:29 CET 2006 - varkoly@suse.de
 
-- removing openldap from "neededforbuild" 
+- removing openldap from "neededforbuild"
 
 -------------------------------------------------------------------
 Wed Nov 30 11:11:16 CET 2005 - choeger@suse.de
@@ -4284,7 +4301,7 @@ Thu Feb 10 09:08:18 CET 2005 - choeger@suse.de
 -------------------------------------------------------------------
 Thu Feb  3 10:00:38 CET 2005 - choeger@suse.de
 
-- s/X-UnitedLinux-Should-Start/Should-Start/ 
+- s/X-UnitedLinux-Should-Start/Should-Start/
 
 -------------------------------------------------------------------
 Wed Feb  2 16:44:34 CET 2005 - choeger@suse.de
@@ -4526,7 +4543,7 @@ Thu Mar 25 10:54:26 CET 2004 - choeger@suse.de
   - Bugfix: In Postfix snapshots, a #define was misplaced with the effect that
     IPv6 subnets were not included in auto- generated $mynetworks (i.e.,
     mynetworks not defined in main.cf, when also mynetworks_style=subnet) on
-    Linux 2.x systems.  File: utils/sys_defs.h 
+    Linux 2.x systems.  File: utils/sys_defs.h
 - now adding ::1 to inet_interfaces when SMTPD_LISTEN_REMOTE=no
   (related to Bugzilla ID#35884)
 - enabled ipv6 again
@@ -4541,7 +4558,7 @@ Thu Mar 18 12:37:44 CET 2004 - choeger@suse.de
     command, the pickup daemon is keps busy long enough that it it
     terminated by the watchdog timer (a feature that prevents Postfix
     from locking up permanently).
-  
+
   - Malformed addresses in SMTP commands could result in table looks
     with zero-length search strings, causing trouble with NIS lookups.
 
@@ -4806,7 +4823,7 @@ Mon May 19 12:42:36 CEST 2003 - choeger@suse.de
 -------------------------------------------------------------------
 Mon May 19 10:12:52 CEST 2003 - choeger@suse.de
 
-- path to ca, certificate and key is relative to $POSTFIX_SSL_PATH, 
+- path to ca, certificate and key is relative to $POSTFIX_SSL_PATH,
   added $POSTFIX_SSL_PATH/ to the relevant parts of SuSEconfig.postfix
 
 -------------------------------------------------------------------
@@ -4833,7 +4850,7 @@ Wed Apr 23 13:43:02 CEST 2003 - choeger@suse.de
 -------------------------------------------------------------------
 Tue Apr 15 10:27:13 CEST 2003 - ro@suse.de
 
-- fixed neededforbuild 
+- fixed neededforbuild
 
 -------------------------------------------------------------------
 Mon Apr  7 12:58:01 CEST 2003 - choeger@suse.de
@@ -5084,7 +5101,7 @@ Tue Aug  6 11:28:56 CEST 2002 - choeger@suse.de
 -------------------------------------------------------------------
 Mon Aug  5 16:38:49 CEST 2002 - choeger@suse.de
 
-- completed Prereq 
+- completed Prereq
 
 -------------------------------------------------------------------
 Fri Jul 19 16:49:57 CEST 2002 - choeger@suse.de
@@ -5236,7 +5253,7 @@ Mon Feb 25 13:58:05 CET 2002 - choeger@suse.de
   As this is a totally different behaviour compared to old releases,
   SMTPD_LISTEN_REMOTE will be set to "yes", if POSTFIX_CREATECF
   (now MAIL_CREATE_CONFIG) had been set to "yes" before the update.
-  
+
 -------------------------------------------------------------------
 Thu Feb 21 12:39:55 CET 2002 - choeger@suse.de
 
@@ -5324,7 +5341,7 @@ Mon Jan 28 15:00:07 CET 2002 - choeger@suse.de
 Tue Jan 22 12:08:43 CET 2002 - choeger@suse.de
 
 - renamed cleanup.fillup to sysconfig.postfix.cleanup
-- added postqueue patch, see 
+- added postqueue patch, see
   http://groups.yahoo.com/group/postfix-users/message/51611
   for more details
 
@@ -5396,7 +5413,7 @@ Thu Dec 13 11:25:44 CET 2001 - choeger@suse.de
 -------------------------------------------------------------------
 Thu Dec 13 01:16:57 CET 2001 - ro@suse.de
 
-- moved rc.config.d -> sysconfig 
+- moved rc.config.d -> sysconfig
 
 -------------------------------------------------------------------
 Wed Nov 28 18:36:10 CET 2001 - choeger@suse.de
@@ -5563,7 +5580,7 @@ Mon Mar  5 11:49:48 CET 2001 - choeger@suse.de
 -------------------------------------------------------------------
 Tue Feb 27 11:22:24 CET 2001 - ro@suse.de
 
-- added cyrus-sasl-devel to neededforbuild 
+- added cyrus-sasl-devel to neededforbuild
 
 -------------------------------------------------------------------
 Tue Feb 27 09:51:56 CET 2001 - choeger@suse.de
@@ -5599,7 +5616,7 @@ Mon Dec 18 14:47:53 CET 2000 - choeger@suse.de
 -------------------------------------------------------------------
 Wed Dec 13 15:52:43 CET 2000 - choeger@suse.de
 
-- Bugfix: postfix-script was not executable 
+- Bugfix: postfix-script was not executable
 
 -------------------------------------------------------------------
 Tue Dec 12 15:13:40 CET 2000 - choeger@suse.de
@@ -5612,7 +5629,7 @@ Tue Dec 12 15:13:40 CET 2000 - choeger@suse.de
 -------------------------------------------------------------------
 Thu Nov 30 08:35:09 CET 2000 - ro@suse.de
 
-- startscript sbin -> etc 
+- startscript sbin -> etc
 
 -------------------------------------------------------------------
 Thu Nov 23 09:55:37 CET 2000 - choeger@suse.de

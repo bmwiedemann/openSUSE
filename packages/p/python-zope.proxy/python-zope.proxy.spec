@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2013 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +17,6 @@
 #
 
 
-%{?sle15_python_module_pythons}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -26,16 +25,19 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+
+%{?sle15_python_module_pythons}
 Name:           python-zope.proxy%{psuffix}
-Version:        4.6.1
+Version:        5.1
 Release:        0
 Summary:        Generic Transparent Proxies
 License:        ZPL-2.1
 Group:          Development/Languages/Python
 URL:            https://github.com/zopefoundation/zope.proxy
 Source:         https://files.pythonhosted.org/packages/source/z/zope.proxy/zope.proxy-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module devel >= 3.8}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module zope.interface}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -68,11 +70,11 @@ This package contains the files needed for binding the %{name} C module.
 rm -rf zope.proxy.egg-info
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %{python_expand rm %{buildroot}%{$python_sitearch}/zope/proxy/_zope_proxy_proxy.c
   %fdupes %{buildroot}%{$python_sitearch}
 }
@@ -88,7 +90,9 @@ rm -rf zope.proxy.egg-info
 %license LICENSE.txt
 %doc COPYRIGHT.txt CHANGES.rst README.rst
 %exclude %{python_sitearch}/zope/proxy/proxy.h
-%{python_sitearch}/*
+%{python_sitearch}/zope/proxy
+%{python_sitearch}/zope.proxy-%{version}-py*-nspkg.pth
+%{python_sitearch}/zope.proxy-%{version}.dist-info
 
 %files %{python_files devel}
 %dir %{python_sysconfig_path include}/zope.proxy

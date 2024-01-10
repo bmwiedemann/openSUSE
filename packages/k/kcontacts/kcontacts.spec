@@ -16,14 +16,14 @@
 #
 
 
-%define _tar_path 5.103
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
+%define qt5_version 5.15.2
 %bcond_without released
 Name:           kcontacts
-Version:        5.112.0
+Version:        5.113.0
 Release:        0
 Summary:        KDE Frameworks based address book API
 License:        LGPL-2.1-or-later
@@ -34,14 +34,13 @@ Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= %{_kf5_version}
-BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(KF5Codecs) >= %{_kf5_version}
 BuildRequires:  cmake(KF5Config) >= %{_kf5_version}
 BuildRequires:  cmake(KF5CoreAddons) >= %{_kf5_version}
 BuildRequires:  cmake(KF5I18n) >= %{_kf5_version}
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5Quick)
-BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5Gui) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Quick) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Test) >= %{qt5_version}
 
 %description
 kcontacts is a Qt5 based library which provides an API

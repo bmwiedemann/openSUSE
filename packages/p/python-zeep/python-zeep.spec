@@ -1,7 +1,7 @@
 #
 # spec file for package python-zeep
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,17 @@
 
 %define skip_python2 1
 Name:           python-zeep
-Version:        4.1.0
+Version:        4.2.1
 Release:        0
 Summary:        A Python SOAP client based on lxml/requests
 License:        MIT
-Group:          Development/Languages/Python
 URL:            http://docs.python-zeep.org
 Source:         https://files.pythonhosted.org/packages/source/z/zeep/zeep-%{version}.tar.gz
-Patch1:         httpx-test.patch
-# https://github.com/mvantellingen/python-zeep/commit/1ddd118956870f9c68a24c9494207dc17441b416
-Patch2:         python-zeep-no-mock.patch
+# PATCH-FIX-OPENSUSE xfail tests that require network access
+Patch0:         xfail-network-tests.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-attrs >= 17.2.0
@@ -60,8 +60,8 @@ BuildRequires:  %{python_module requests >= 2.7.0}
 BuildRequires:  %{python_module requests-file >= 1.5.1}
 BuildRequires:  %{python_module requests-mock >= 0.7.0}
 BuildRequires:  %{python_module requests-toolbelt >= 0.7.1}
-# gh#mehcode/python-xmlsec#204
-BuildRequires:  %{python_module xmlsec >= 0.6.1 if %python-base < 3.10}
+BuildRequires:  %{python_module xmlsec >= 0.6.1}
+BuildRequires:  libxmlsec1-openssl1
 # /SECTION
 %python_subpackages
 
@@ -69,28 +69,23 @@ BuildRequires:  %{python_module xmlsec >= 0.6.1 if %python-base < 3.10}
 Python SOAP client based on python-lxml and python-requests
 
 %prep
-%setup -q -n zeep-%{version}
-%autopatch -p1
+%autosetup -p1 -n zeep-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export LANG=en_US.UTF-8
-# broken tests
-ignorefiles="--ignore tests/test_wsse_signature.py \
-             --ignore tests/test_wsse_username.py \
-             --ignore tests/test_wsse_utils.py"
-%pytest tests/ ${$python_ignore} $ignorefiles
+%pytest tests
 
 %files %{python_files}
 %doc CHANGES README.rst
 %license LICENSE
 %{python_sitelib}/zeep
-%{python_sitelib}/zeep-%{version}*-info
+%{python_sitelib}/zeep-%{version}.dist-info
 
 %changelog

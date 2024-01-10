@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec 19 12:07:52 UTC 2023 - pgajdos@suse.com
+
+- security update
+- added patches
+  fix CVE-2022-1210 [bsc#1198146], Malicious file leads to a denial of service in TIFF File Handler
+  + jbigkit-CVE-2022-1210.patch
+
+-------------------------------------------------------------------
 Wed Aug 24 10:46:45 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - Makefile is not parallel-safe

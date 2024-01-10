@@ -1,7 +1,7 @@
 #
 # spec file for package python-netpbmfile
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define packagename netpbmfile
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-netpbmfile
-Version:        2020.10.18
+Version:        2023.8.30
 Release:        0
 Summary:        Read and write image files in the Netpbm format
 License:        BSD-3-Clause
@@ -37,7 +37,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-matplotlib >= 3.2
 Requires:       python-numpy >= 1.15
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 

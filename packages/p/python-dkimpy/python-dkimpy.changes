@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Sat Jan  6 18:02:16 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.5:
+  * Use dns.resolver.resolve instead of dns.resolver.query
+    due to deprecation
+  * Treat dns.resolver.NoNameservers like NXDOMAIN (not an
+    error)
+  * Confine errors from dnspython to dnsplug and use dkim
+    errors, since dkim.__init__.py doesn't import dns and
+    needs dkim errors
+  * Catch nacl.exceptions.ValueError and raise
+    KeyFormatError, similar to how RSA key errors are treated
+  * Create ed25519 key files with secure permissions to
+    avoid risk of insecure chmode call/race condition
+  * Properly cleanup temporary directories in tests
+  * Verify correct AMS header is used for ARC seal
+    verification (André Cruz)
+  * Document dropping of Python 2 support
+  * Fix traceback when attempting to verify an unsigned
+    message using async verify
+  * Add domain validity check for ascii domains (no
+    specials)
+  * Add option to specify index number of signature to
+    verify to dkimverify
+  * Correct signature indexing error introduced in 1.0.0
+    that prevents verification of multiple signatures in a
+    single message
+  * Correct dkim.verify processing to avoid errors when
+    verifying messages with no DKIM signatures
+  * Update dnsplug for DNS Python (dns) 2.0 compatibility
+  * Provide more specific error message when ed25519
+    private key is invalid
+  * Add support for PKCS#8 for private keys, openssl 3
+    default
+  * Add limitations section to README to document current
+    IDN status
+  * Add USE_ASYNC flag to allow async to be disabled when
+    aiodns is installed (LP: #1954331)
+  * Add new dkim.DnsTimeoutError class to report queried
+    domain and selector along with timeout error from dnspython
+  * Invalid Authentication-Results header fields are
+    ignored for ARC signing
+
+-------------------------------------------------------------------
 Sun Jun 18 15:52:47 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
 
 - Use sle15_python_module_pythons

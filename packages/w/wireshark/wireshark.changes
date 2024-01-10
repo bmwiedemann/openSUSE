@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Jan  5 08:05:05 UTC 2024 - Robert Frohl <rfrohl@suse.com>
+
+- Wireshark 4.2.2: 
+  * minor bug fix release 
+- Further features, bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-4.2.2.html
+
+-------------------------------------------------------------------
+Thu Jan  4 08:14:07 UTC 2024 - Robert Frohl <rfrohl@suse.com>
+
+- Wireshark 4.2.1: 
+  * CVE-2024-0207: HTTP3 dissector crash (boo#1218503).
+  * CVE-2024-0208: GVCP dissector crash (boo#1218504).
+  * CVE-2024-0209: IEEE 1609.2 dissector crash (boo#1218505).
+  * CVE-2024-0210: Zigbee TLV dissector crash (boo#1218506).
+  * CVE-2024-0211: DOCSIS dissector crash (boo#1218507).
+- Further features, bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-4.2.1.html
+
+-------------------------------------------------------------------
 Wed Nov 29 15:05:49 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Install SDK using cmake --install --component Development instead

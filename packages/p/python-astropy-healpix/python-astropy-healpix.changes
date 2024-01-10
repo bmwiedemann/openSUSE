@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec 27 09:35:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.2:
+  * lonlat_to_healpix now correctly returns -1 if the longitude
+    or latitude is NaN or infinite. [#208]
+
+-------------------------------------------------------------------
 Sat Dec  2 08:50:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.1:

@@ -1,7 +1,7 @@
 #
 # spec file for package python-JPype1
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 # https://build.opensuse.org/package/show/Java:packages/h2database is not in Factory
 %bcond_with     test_jdbc
 Name:           python-JPype1
-Version:        1.4.1
+Version:        1.5.0
 Release:        0
 Summary:        Python to Java bridge
 License:        Apache-2.0

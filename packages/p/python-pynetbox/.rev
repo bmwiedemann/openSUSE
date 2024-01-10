@@ -282,4 +282,21 @@
     <comment></comment>
     <requestid>1109632</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>bac7339cef420de8c711b002bd9ba7ef</srcmd5>
+    <version>7.3.3</version>
+    <time>1704753896</time>
+    <user>anag+factory</user>
+    <comment>- update to 7.3.3:
+  * fix pypi release
+- update to 7.3.0:
+  * Add support for NetBox v3.7 by @markkuleinio #596
+  * Updated test suite by @abhi1693
+
+- Update to version 6.6.2
+    from NetBox 2.7
+  * Fixes infinite loop when filtering with paginated results.
+    turned into Record objects instead of</comment>
+    <requestid>1137455</requestid>
+  </revision>
 </revisionlist>

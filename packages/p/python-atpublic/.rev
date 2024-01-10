@@ -77,4 +77,12 @@
   * https://gitlab.com/warsaw/public/-/merge_requests/16</comment>
     <requestid>1131685</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>238ff09e9c2d6b3fe0fc3bcf6b838760</srcmd5>
+    <version>4.0</version>
+    <time>1704562867</time>
+    <user>dimstar_suse</user>
+    <comment>- remove obsolete pdm-pep517 dependency</comment>
+    <requestid>1137117</requestid>
+  </revision>
 </revisionlist>

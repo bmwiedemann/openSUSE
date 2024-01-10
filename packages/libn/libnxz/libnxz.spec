@@ -22,7 +22,7 @@ Name:           libnxz
 Version:        0.64
 Release:        0
 Summary:        Zlib implementation for POWER processors
-License:        GPL-2.0-or-later OR Apache-2.0
+License:        Apache-2.0 OR GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/%{name}/power-gzip
 Source:         %{url}/archive/v%{version}.tar.gz#:/%{name}-%{version}.tar.gz
@@ -35,7 +35,7 @@ ExclusiveArch:  ppc64 ppc64le
 libnxz implements a zlib-compatible API for Linux userspace programs that exploit the NX GZIP accelerator available on POWER9 and newer processors.
 
 %package -n %{libname}
-Summary:        Shared library for %{name}
+Summary:        Zlib implementation for POWER processors
 
 %description -n %{libname}
 libnxz implements a zlib-compatible API for Linux userspace programs that exploit the NX GZIP accelerator available on POWER9 and newer processors.

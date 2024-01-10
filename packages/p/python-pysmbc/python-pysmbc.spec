@@ -1,7 +1,7 @@
 #
 # spec file for package python-pysmbc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 # Tests need a running samba server
 %bcond_with     test
 Name:           python-pysmbc
-Version:        1.0.23
+Version:        1.0.25.1
 Release:        0
 Summary:        Python bindings for samba clients (libsmbclient)
 License:        GPL-2.0-or-later

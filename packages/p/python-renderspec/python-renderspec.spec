@@ -1,7 +1,7 @@
 #
 # spec file for package python-renderspec
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 %global oldpython python
 Name:           python-renderspec
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        Generate spec files from Jinja2 templates
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/renderspec
 Source0:        https://files.pythonhosted.org/packages/source/r/renderspec/renderspec-%{version}.tar.gz
-Patch1:         0001-Allow-selecting-suse_39-template.patch
 BuildRequires:  openstack-macros
 BuildRequires:  python3-Jinja2 >= 2.10
 BuildRequires:  python3-ddt
@@ -64,13 +63,13 @@ Documentation for the renderspec tool which is a tool to convert
 a spec.j2 Jinja2 template into a rpm .spec file.
 
 %prep
-%autosetup -p 1 -n renderspec-2.2.0
+%autosetup -p 1 -n renderspec-2.3.0
 %py_req_cleanup
 
 %build
 %{py3_build}
 
-PBR_VERSION=2.2.0 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=2.3.0 %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
@@ -85,7 +84,7 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 %doc README.rst ChangeLog
 %{_bindir}/renderspec
 %{python3_sitelib}/renderspec
-%{python3_sitelib}/*.egg-info
+%{python3_sitelib}/renderspec-%{version}-py*.egg-info
 
 %files -n python-renderspec-doc
 %doc doc/build/html

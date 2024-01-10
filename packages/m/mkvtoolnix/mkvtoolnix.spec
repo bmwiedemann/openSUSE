@@ -1,7 +1,7 @@
 #
 # spec file for package mkvtoolnix
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           mkvtoolnix
-Version:        81.0
+Version:        82.0
 Release:        0
 Summary:        Tools to Create, Alter, and Inspect Matroska Files
 License:        GPL-2.0-or-later
@@ -38,7 +38,7 @@ BuildRequires:  libboost_system-devel >= 1.66.0
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig(gmp)
 %else
-BuildRequires:  gcc8-c++
+BuildRequires:  gcc10-c++
 BuildRequires:  gmp-devel
 %endif
 BuildRequires:  gettext-tools
@@ -51,24 +51,14 @@ BuildRequires:  pugixml-devel
 BuildRequires:  ruby >= 1.9
 BuildRequires:  shared-mime-info
 BuildRequires:  utfcpp-devel
-%if 0%{?suse_version} > 1500
 BuildRequires:  pkgconfig(Qt6Concurrent)
-BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6Core) >= 6.2.0
 BuildRequires:  pkgconfig(Qt6DBus)
 BuildRequires:  pkgconfig(Qt6Gui)
 BuildRequires:  pkgconfig(Qt6Multimedia)
 BuildRequires:  pkgconfig(Qt6Network)
 BuildRequires:  pkgconfig(Qt6Svg)
 BuildRequires:  pkgconfig(Qt6Widgets)
-%else
-BuildRequires:  pkgconfig(Qt5Concurrent) >= 5.9.0
-BuildRequires:  pkgconfig(Qt5Core) >= 5.9.0
-BuildRequires:  pkgconfig(Qt5DBus) >= 5.9.0
-BuildRequires:  pkgconfig(Qt5Gui) >= 5.9.0
-BuildRequires:  pkgconfig(Qt5Multimedia) >= 5.9.0
-BuildRequires:  pkgconfig(Qt5Network) >= 5.9.0
-BuildRequires:  pkgconfig(Qt5Svg) >= 5.9.0
-%endif
 BuildRequires:  pkgconfig(dvdread)
 BuildRequires:  pkgconfig(flac)
 BuildRequires:  pkgconfig(fmt) >= 6.1.0
@@ -89,11 +79,7 @@ mkvextract, mkvinfo, mkvmerge and mkvpropedit.
 %package gui
 Summary:        Graphical user interface for mkvtoolnix utils
 Requires:       %{name} = %{version}
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150400
 Requires:       qt6-multimedia
-%else
-Requires:       qt5-multimedia
-%endif
 
 %description gui
 This package contains the graphical user interface for the mkvtoolnix utils.
@@ -111,7 +97,7 @@ rm -rf lib/{libebml,libmatroska,nlohmann-json,pugixml,fmt,utf8-cpp}
 
 %build
 export CXX=g++
-test -x "$(type -p g++-8)" && export CXX=g++-8
+test -x "$(type -p g++-10)" && export CXX=g++-10
 export CPPFLAGS="%{optflags} -I%{_includedir}/utf8cpp"
 %configure --disable-update-check --enable-debug --enable-optimization
 rake --verbose %{?_smp_mflags} V=1

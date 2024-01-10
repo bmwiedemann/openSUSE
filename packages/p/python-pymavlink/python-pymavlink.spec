@@ -1,7 +1,7 @@
 #
 # spec file for package python-pymavlink
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2019-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define binaries mavtomfile mavtogpx mavsummarize mavsigloss mavsearch mavplayback mavparms mavparmdiff mavmission mavloss mavlogdump mavlink_bitmask_decoder mavkml mavgraph mavgpslock mavgen mavflighttime mavflightmodes mavfft_isb mavfft mavextract magfit_motors magfit_gps magfit_delta magfit_WMM magfit MPU6KSearch
 Name:           python-pymavlink
-Version:        2.4.40
+Version:        2.4.41
 Release:        0
 Summary:        Python MAVLink code
 License:        LGPL-3.0-only

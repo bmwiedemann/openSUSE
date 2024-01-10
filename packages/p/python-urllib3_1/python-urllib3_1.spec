@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,8 +37,10 @@ Source:         https://files.pythonhosted.org/packages/source/u/urllib3/urllib3
 # remove dependency on the external module mock
 Patch0:         remove_mock.patch
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 #!BuildIgnore:  python-requests
@@ -54,11 +56,8 @@ BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module Brotli >= 1.0.9}
 BuildRequires:  %{python_module PySocks >= 1.5.6}
-BuildRequires:  %{python_module certifi}
-BuildRequires:  %{python_module cryptography >= 1.3.4}
 BuildRequires:  %{python_module dateutil}
 BuildRequires:  %{python_module flaky}
-BuildRequires:  %{python_module idna >= 2.0.0}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest-freezegun}
 BuildRequires:  %{python_module pytest-timeout}
@@ -67,10 +66,9 @@ BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module tornado >= 6}
 BuildRequires:  %{python_module trustme >= 0.5.3}
 BuildRequires:  %{python_module urllib3_1 >= %{version}}
-%else
+%endif
 Provides:       python-urllib3 = %{version}
 Conflicts:      python-urllib3 >= 2
-%endif
 %python_subpackages
 
 %description
@@ -102,11 +100,11 @@ rm test/with_dummyserver/test_poolmanager.py
 rm -r test/appengine/
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 
 %{python_expand # Unbundle six
 rm %{buildroot}/%{$python_sitelib}/urllib3/packages/six.py
@@ -134,7 +132,9 @@ skiplist="test_ssl_read_timeout or test_ssl_failed_fingerprint_verification or t
 skiplist+=" or test_recent_date"
 # too slow to run in obs (checks 2GiB of data)
 skiplist+=" or test_requesting_large_resources_via_ssl"
-%pytest -k "not (${skiplist})"
+# Python 3.12: SSL requests to localhost hang during handshake
+python312_skip=" or TestClientCerts or TestSSL or test_cannot_import_ssl or (TestProxyManager and test_connect)"
+%pytest -k "not (${skiplist} ${$python_skip})"  --no-success-flaky-report
 %endif
 
 %if ! %{with test}
@@ -142,7 +142,7 @@ skiplist+=" or test_requesting_large_resources_via_ssl"
 %license LICENSE.txt
 %doc CHANGES.rst README.rst
 %{python_sitelib}/urllib3
-%{python_sitelib}/urllib3-%{version}*-info
+%{python_sitelib}/urllib3-%{version}.dist-info
 %endif
 
 %changelog

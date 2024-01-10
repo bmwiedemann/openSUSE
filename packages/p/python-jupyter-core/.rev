@@ -251,4 +251,14 @@ Update to 4.6.1</comment>
 </comment>
     <requestid>1128958</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>762bb2f320e7ea46c18f2ab3e460cb56</srcmd5>
+    <version>5.5.1</version>
+    <time>1703527532</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.5.1
+  * Account for read only file systems in migration #379
+    (@blink1073)</comment>
+    <requestid>1134926</requestid>
+  </revision>
 </revisionlist>

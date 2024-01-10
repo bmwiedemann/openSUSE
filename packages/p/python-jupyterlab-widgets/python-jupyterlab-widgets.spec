@@ -16,8 +16,8 @@
 #
 
 
-%define pyver 3.0.8
-%define jupver 5.0.8
+%define pyver 3.0.9
+%define jupver 5.0.9
 Name:           python-jupyterlab-widgets
 Version:        %{pyver}
 Release:        0

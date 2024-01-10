@@ -16,19 +16,18 @@
 #
 
 
-%define llvm_version 14
+%define llvm_version 16
 
 Name:           klee-uclibc
 Summary:        Libc library for Klee
 License:        LGPL-2.1-or-later
 Group:          Development/Languages/Other
-Version:        1.3
+Version:        1.4
 Release:        0
 URL:            https://github.com/klee/klee-uclibc
 Source0:        https://github.com/klee/klee-uclibc/archive/klee_uclibc_v%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
 Source2:        uClibc-locale-030818.tgz
-Patch0:         extra-locale-Makefile-don-t-always-require-curl-wget.patch
 Patch1:         proper-compiler-flags-check.patch
 Patch2:         0001-strtod-fix-__strtofpmax.patch
 BuildRequires:  clang%{llvm_version}

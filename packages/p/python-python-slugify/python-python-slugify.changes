@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Dec 29 16:06:08 UTC 2023 - egotthold@suse.com
+
+- Update to version v8.0.1:
+  * Legal Notice / Readme
+  * Add note on licensing (#130)
+  * By default, prefer unidecode if installed
+  * Update import order for unidecode vs text_unidecode (#126)
+  * Support Matrix
+  * SemVer Table
+  * merge sandbox
+  * github action revert
+  * cmdline options
+  * update dev deps
+  * Up Version
+  * Add missing cmdLine options
+
+-------------------------------------------------------------------
 Wed May 10 08:54:14 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - add sle15_python_module_pythons

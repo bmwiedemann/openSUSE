@@ -739,4 +739,50 @@ This version fixes the license naming issue.</comment>
      as generic and provided to strategies like st.from_type(Sequence[int])</comment>
     <requestid>1121637</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>5db36750d539dc337b335000acfcecf0</srcmd5>
+    <version>6.92.1</version>
+    <time>1703800479</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.92.1:
+  * This release adds an experimental :wikipedia:`observability
+  * This patch fixes an issue where
+    :func:`~hypothesis.strategies.builds` could not be used with
+    :pypi:`attrs` objects that defined private attributes (i.e.
+    attributes with a leading underscore). See also
+  * This release adds an optional ``payload`` argument to
+    :func:`hypothesis.event`, so that you can clearly express
+    the difference between the label and the value of an
+    observation.
+  * This patch supports assigning ``settings = settings(...)`` as
+    a class attribute on a subclass of a ``.TestCase`` attribute
+    of a :class:`~hypothesis.stateful.RuleBasedStateMachine`.
+  * This release makes it an error to assign ``settings =
+    settings(...)`` as a class attribute on a
+    :class:`~hypothesis.stateful.RuleBasedStateMachine`.
+  * This patch refactors some internals.  There is no user-
+    visible change, but we hope to improve performance and unlock
+    support for alternative backends such as :pypi:`symbolic
+    execution with crosshair in future (:issue:`3086`).
+  * This release teaches :func:`~hypothesis.strategies.from_type`
+    to handle constraints implied by the :pypi:`annotated-types`
+    package - as used by e.g. :pypi:`Pydantic`.
+  * This patch adds a warning when :func:`@st.composite
+    wraps a function annotated as returning a
+    :class:`~hypothesis.strategies.SearchStrategy`,
+    since this is usually an error (:issue:`3786`).
+  * This patch refactors ``from_type(typing.Tuple)``, allowing
+    :func:`~hypothesis.strategies.register_type_strategy` to take
+    effect for tuples instead of being silently ignored</comment>
+    <requestid>1135262</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>e297593d8ec39d472a3f772553b8ac10</srcmd5>
+    <version>6.92.2</version>
+    <time>1704659930</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.92.2:
+  * updates vendored list of top-level domains</comment>
+    <requestid>1137295</requestid>
+  </revision>
 </revisionlist>

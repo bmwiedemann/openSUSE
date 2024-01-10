@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Dec  5 19:28:42 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 0.4.17:
+  * Fixes:
+    - Fix a reference counting issue in the object managers that
+      could cause crashes due to memory corruption.
+    - Fix an issue with filters linking to wrong targets, often
+      with two sets of links.
+    - Fix a crash in the endpoints policy that would show up when
+      log messages were enabled at level 3 or higher.
+
+-------------------------------------------------------------------
 Sun Nov 26 11:02:03 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 0.4.16:

@@ -1,7 +1,7 @@
 #
 # spec file for package leptonica
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define major   6
 Name:           leptonica
-Version:        1.83.1
+Version:        1.84.0
 Release:        0
 Summary:        Library for image processing and image analysis applications
 License:        BSD-2-Clause

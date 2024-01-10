@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan  4 12:59:26 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add Conflict/Obsoletes with the python3-pyqt-rpm-macros package
+  that was erroneously added to SLE15-SP4.
+
+-------------------------------------------------------------------
 Thu Sep  1 00:57:18 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Don't use python_module for Recommends.  

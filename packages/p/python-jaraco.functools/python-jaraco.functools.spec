@@ -1,7 +1,7 @@
 #
 # spec file for package python-jaraco.functools
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-jaraco.functools
-Version:        3.6.0
+Version:        4.0.0
 Release:        0
 Summary:        Tools to work with functools
 License:        MIT
@@ -69,10 +67,8 @@ rm -rf jaraco.functools.egg-info
 
 %files %{python_files}
 %license LICENSE
-%doc docs/*.rst README.rst CHANGES.rst
-%{python_sitelib}/jaraco.functools-%{version}*-info
-%{python_sitelib}/jaraco/functools.py*
-%dir %{python_sitelib}/jaraco/__pycache__
-%pycache_only %{python_sitelib}/jaraco/__pycache__/functools*.py*
+%doc docs/*.rst README.rst NEWS.rst
+%{python_sitelib}/jaraco/functools
+%{python_sitelib}/jaraco.functools-%{version}.dist-info
 
 %changelog

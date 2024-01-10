@@ -270,4 +270,33 @@
   - Drop python3.6/3.7 support in testing runtime</comment>
     <requestid>1130305</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>cd9847ffdf5e610965b1541ca67923b4</srcmd5>
+    <version>4.3.0</version>
+    <time>1704487312</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.3.0
+  - Revert &quot;Implement force parameter&quot;
+  - Revert &quot;Moves supported python runtimes from version 3.8 to 3.10&quot;
+  - Update master for stable/zed
+  - Revert &quot;Add secret consumers documentation and release note&quot;
+  - Moves supported python runtimes from version 3.8 to 3.10
+  - Initial change to add secret consumers
+  - Add Python3 antelope unit tests
+  - Revert &quot;Add secret consumers functional tests&quot;
+  - Add force parameter functional tests
+  - Update master for stable/2023.1
+  - Implement force parameter
+  - Add support for specifying Vault KV path
+  - Add secret consumers
+  - Add secret consumers functional tests
+  - Add secret consumers documentation and release note
+  - Update TOX_CONSTRAINTS_FILE for stable/2023.2
+  - Revert &quot;Add secret consumers&quot;
+  - Make tests more consistent
+  - Fix tox4 error
+  - Update .gitreview for stable/2023.2
+  - Revert &quot;Add force parameter functional tests&quot;</comment>
+    <requestid>1136733</requestid>
+  </revision>
 </revisionlist>

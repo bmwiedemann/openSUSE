@@ -16,31 +16,28 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-lark
-Version:        1.1.5
+Version:        1.1.8
 Release:        0
 Summary:        A parsing library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/lark-parser/lark
 Source:         https://github.com/lark-parser/lark/archive/%{version}.tar.gz#/lark-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest >= 6}
+BuildRequires:  %{python_module regex}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Suggests:       python-regex
 Suggests:       python-Js2Py
 Suggests:       python-atomicwrites
-# SECTION TEST
-BuildRequires:  %{python_module regex}
-BuildRequires:  %{python_module pytest >= 6}
-# /SECTION
-BuildArch:      noarch
+Suggests:       python-regex
 # Upstream renamed the package with v0.12.0, SUSE had the old name until 1.1.2
 Provides:       python-lark-parser = %{version}-%{release}
 Obsoletes:      python-lark-parser <= 1.1.2
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -52,10 +49,10 @@ With Lark, one can parse any context-free grammar with little code.
 %setup -q -n lark-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

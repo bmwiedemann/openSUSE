@@ -97,6 +97,8 @@ EOF
 %dir %{_libdir}/lxqt-config
 %dir %{_datadir}/lxqt
 %dir %{_datadir}/lxqt/icons
+%dir %{_datadir}/icons/hicolor/48x48
+%dir %{_datadir}/icons/hicolor/48x48/apps
 %config %{_sysconfdir}/ld.so.conf.d/lxqt-config.conf
 %{_bindir}/%{name}
 %{_bindir}/%{name}-appearance

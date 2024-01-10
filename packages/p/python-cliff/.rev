@@ -521,4 +521,41 @@
   - Colourise and automatically page help output</comment>
     <requestid>977241</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>e18029acfc3315ccfbf209306b69ea1e</srcmd5>
+    <version>4.4.0</version>
+    <time>1704487537</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.4.0:
+  * Handle complex objects in yaml formatter better
+  * Fix pre-commit issues
+  * Autofit table output if stdout is a tty
+  * Fix flake8 violation E721
+  * Use upper-constraint in doc generation
+  * Removing helper functions providing Python &lt; 3.3
+    compatibility
+  * Strip trailing periods when getting description
+  * Clarification of the algorithm used
+  * columns: Useful \_\_str\_\_, \_\_repr\_\_ implementation
+  * Add Python3 antelope unit tests
+  * Removing brackets around tested conditional
+  * Replace abc.abstractproperty with property and
+    abc.abstractmethod
+  * Remove final use of pkg\_resources
+  * Defer loading PyYAML
+  * Defer loading cmd2
+  * requirements: Remove explicit python-subunit dependency
+  * requirements: Remove explicit pbr dependency
+  * requirements: Remove explicit pyparsing dependency
+  * Update Python testing per Zed cycle testing runtime
+  * Migrate Python 3.6/7 jobs to Python 3.8
+  * Removing modindex link from docs
+  * Add Python3 yoga unit tests
+  * Automatically page interactive root help output
+  * Colourise and automatically page help output
+  * Update unit test to satisfy python3.10+
+  * Handle SIGPIPE exit gracefully
+  * Add conflict\_handler parameter as attribut in Command class</comment>
+    <requestid>1137085</requestid>
+  </revision>
 </revisionlist>

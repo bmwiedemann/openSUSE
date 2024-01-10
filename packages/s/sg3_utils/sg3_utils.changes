@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan  8 08:43:30 UTC 2024 - Martin Wilck <mwilck@suse.com>
+
+- Upstream bug fixes for sg3_utils 1.48 (bsc#1218591)
+  * sg_turs: fix missing CDB on several codepaths
+  * sg_dd: fix bug that identified all block devices as NVME
+  * rescan-scsi-bus.sh: avoid root FS going read-only with
+    "rescan-scsi-bus.sh -r" (gh#doug-gilbert/sg3_utils#46)
+
+-------------------------------------------------------------------
 Fri Oct 20 07:17:13 UTC 2023 - Martin Wilck <mwilck@suse.com>
 
 - rescan-scsi-bus.sh: remove /tmp/rescan-scsi-mpath-info.txt

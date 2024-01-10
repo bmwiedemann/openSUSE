@@ -1,7 +1,7 @@
 #
 # spec file for package libcryptopp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 %define major 8
-%define minor 8
+%define minor 9
 %define patch 0
 %define pkg_version %{major}%{minor}%patch
 # There is no upstream interface version information.
@@ -36,6 +36,10 @@ Source1:        precheckin_baselibs.sh
 Source2:        baselibs.conf
 # PATCH-FEATURE-OPENSUSE libcryptopp-shared.patch -- improve shared library creation
 Patch1:         libcryptopp-shared.patch
+# CVE-2023-50980 [bsc#1218219], DoS via malformed DER public key file
+Patch2:         libcryptopp-CVE-2023-50980.patch
+# CVE-2023-50981 [bsc#1218222], issue on ModularSquareRoot function leads to potential DoS
+Patch3:         libcryptopp-CVE-2023-50981.patch
 BuildRequires:  dos2unix
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -68,8 +72,7 @@ codes, hash functions, PKI crypto, key agreement schemes and elliptic
 curve crypto. This package is used for crypto++ development.
 
 %prep
-%setup -q -n "cryptopp-CRYPTOPP_%{major}_%{minor}_%patch"
-%autopatch -p1
+%autosetup -p1 -n "cryptopp-CRYPTOPP_%{major}_%{minor}_%patch"
 
 %build
 %ifarch %{arm} i586

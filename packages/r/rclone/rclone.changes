@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Jan 08 13:12:53 UTC 2024 - mrueckert@suse.de
+
+- Update to version 1.65.1:
+  * Version v1.65.1
+  * docs: Fix broken test_proxy.py link again
+  * operations: fix files moved by rclone move not being counted as transfers
+  * accounting: fix stats to show server side transfers
+  * onedrive: fix "unauthenticated: Unauthenticated" errors when uploading
+  * Revert "mount: fix macOS not noticing errors with --daemon"
+  * s3: fix crash if no UploadId in multipart upload
+  * serve s3: fix listing oddities
+  * protondrive: fix CVE-2023-45286 / GHSA-xwh9-gc39-5298
+  * build: fix docker build on arm/v6
+  * build(deps): bump golang.org/x/crypto to fix ssh terrapin CVE-2023-48795
+  * oauthutil: avoid panic when `*token` and `*ts.token` are the same
+  * ftp: fix multi-thread copy
+  * googlephotos: fix nil pointer exception when batch failed
+  * hasher: fix invalid memory address error when MaxAge == 0
+  * docs/librclone: the newer and recommended ucrt64 subsystem of msys2 can now be used for building on windows
+  * docs: fix broken link in serve webdav
+  * azure-files: fix storage base url
+  * oracle object storage: fix object storage endpoint for custom endpoints
+  * chunker,compress,crypt,hasher,union: fix rclone move a file over itself deleting the file
+  * docs: fix broken link
+  * dropbox: fix used space on dropbox team accounts
+  * vfs: note that --vfs-refresh runs in the background #6830
+  * docs: update contributor email
+  * build(deps): bump actions/setup-go from 4 to 5
+  * Doc change: Add the CreateBucket permission requirement for AWS S3
+  * nfsmount: compile for all unix oses, add --sudo and fix error/option handling
+  * serve nfs: Mark as experimental
+  * onedrive: fix error listing: unknown object type <nil>
+  * docs: fix typo in docs.md
+  * multipart copy create bucket if it doesn't exist.
+  * smb: fix shares not listed by updating go-smb2
+  * mount: fix macOS not noticing errors with --daemon
+  * install.sh: fix harmless error message on install
+  * Start v1.65.1-DEV development
+
+-------------------------------------------------------------------
 Sun Nov 26 19:04:28 UTC 2023 - mrueckert@suse.de
 
 - Update to version 1.65.0:

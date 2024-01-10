@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,12 +38,16 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML >= 3.10.0
+Requires:       python-cliff >= 2.8.0
+Requires:       python-dbm
 Requires:       python-fixtures >= 3.0.0
 Requires:       python-pbr >= 2.0.0
 Requires:       python-python-subunit >= 1.4.0
 Requires:       python-testtools >= 2.2.0
 Requires:       python-tomlkit >= 0.11.6
 Requires:       python-voluptuous >= 0.8.9
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module SQLAlchemy}
@@ -51,11 +55,6 @@ BuildRequires:  %{python_module ddt >= 1.0.1}
 BuildRequires:  %{python_module iso8601}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module stestr = %{version}}
-%endif
-%if "%{python_flavor}" == "python3" || "%{?python_provides}" == "python3"
-# cliff, required for the cli, is only available for the python3 flavor
-Requires:       python3-cliff
-Requires:       python-dbm
 %endif
 %if !0%{?_no_weakdeps}
 Recommends:     python-SQLAlchemy
@@ -83,26 +82,28 @@ between the two projects but the actual usage is not exactly the same.
 %if %{with test}
 %check
 export LC_ALL="en_US.UTF8"
-# can only test in python3: cliff unavailable elsewhere
-python3 -B -m pytest stestr/tests -v -k 'not test_empty_with_pretty_out'
+%pytest stestr/tests -v -k 'not test_empty_with_pretty_out'
 %endif
 
 %if ! %{with test}
 %build
-export LC_ALL="en_US.UTF8"
 %pyproject_wheel
 
 %install
-export LC_ALL="en_US.UTF8"
 %pyproject_install
+%python_clone -a %{buildroot}%{_bindir}/stestr
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%post
+%python_install_alternative stestr
+
+%postun
+%python_uninstall_alternative stestr
 
 %files %{python_files}
 %license LICENSE
 %doc ChangeLog README.rst
-%if "%{python_flavor}" == "python3" || "%{?python_provides}" == "python3"
-%{_bindir}/stestr
-%endif
+%python_alternative %{_bindir}/stestr
 %{python_sitelib}/stestr
 %{python_sitelib}/stestr-%{version}.dist-info
 %endif

@@ -47,4 +47,19 @@
     <comment></comment>
     <requestid>1041749</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3215b2d2c80988fcdf9754287e7c6749</srcmd5>
+    <version>6.1.1</version>
+    <time>1702845107</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.1.1:
+  * https://github.com/robotframework/robotframework/blob/master/doc/releasenotes/rf-6.1.rst
+
+- Update to version 6.0.1
+- Update to 6.0.0
+  * Catching exceptions with `EXCEPT`
+- switch to pypi tarball
+    * Using keywords accepting embedded arguments when library is imported multiple times using the WITH</comment>
+    <requestid>1133553</requestid>
+  </revision>
 </revisionlist>

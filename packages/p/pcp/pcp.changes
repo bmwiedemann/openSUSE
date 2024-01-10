@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 14 10:36:41 CET 2023 - mls@suse.de
+
+- declare the users/groups we create in the preinstall scripts
+  (this is needed for newer rpm versions)
+
+-------------------------------------------------------------------
 Tue Nov 28 00:33:12 UTC 2023 - Martin Schreiner <martin.schreiner@suse.com>
 
 - This version *does not* break API or ABI compatibility with the

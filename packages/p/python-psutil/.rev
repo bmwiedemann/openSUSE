@@ -776,4 +776,35 @@ It does not make sense to double the whole HISTORY of upstream source in .change
     <comment></comment>
     <requestid>1126805</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>4db4ff2c605605953bf2a50241565c63</srcmd5>
+    <version>5.9.7</version>
+    <time>1703800493</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.9.7:
+  * 2324_: enforce Ruff rule `raw-string-in-exception`, which
+    helps providing clearer tracebacks when exceptions are
+    raised by psutil.
+  * 2325_, [PyPy]: psutil did not compile on PyPy due to missing
+    `PyErr_SetExcFromWindowsErrWithFilenameObject` cPython API.
+- drop logind_y2038.patch (upstream)
+
+    we returned either ``None`` or an empty string.
+  * 887: [Linux] virtual_memory()'s 'available' and 'used'
+    values are more precise and match &quot;free&quot; cmdline utility.
+    &quot;available&quot; also takes into account LCX containers
+  * 891: procinfo.py script has been updated and provides a
+  * 825: [Linux] cpu_affinity; fix possible double close and
+  * 885: ValueError is raised if a negative integer is passed
+  * 892: [Linux] Process.cpu_affinity([-1]) raise SystemError
+  * #857: [SunOS] Process cpu_times(), cpu_percent(), threads() amd
+    memory_maps() may raise RuntimeError if attempting to query a 64bit
+  * #858: Process.as_dict() should not return memory_info_ex() because it's
+  * #866: [Windows] win_service_iter() and services in general are not able
+  * #869: [Windows] Process.wait() may raise TimeoutExpired with wrong
+    ValueError: ambiguos inode with multiple PIDs references
+- minor spec improvement
+- First import</comment>
+    <requestid>1135317</requestid>
+  </revision>
 </revisionlist>

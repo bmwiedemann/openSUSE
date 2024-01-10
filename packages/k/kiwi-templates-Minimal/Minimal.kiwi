@@ -9,6 +9,7 @@
         <specification>openSUSE Tumbleweed Minimal</specification>
     </description>
     <profiles>
+        <profile name="kvm-and-xen-sdboot" description="Minimal Image for KVM and Xen with systemd-boot" arch="aarch64,x86_64"/>
         <profile name="kvm-and-xen" description="Minimal Image for KVM and Xen" arch="aarch64,x86_64"/>
         <profile name="VMware" description="Minimal Image for VMware" arch="x86_64"/>
         <profile name="MS-HyperV" description="Minimal Image for Hyper-V" arch="aarch64,x86_64"/>
@@ -21,7 +22,7 @@
         <bootloader-theme>openSUSE</bootloader-theme>
         <rpm-excludedocs>true</rpm-excludedocs>
         <type
-            image="vmx"
+            image="oem"
             filesystem="btrfs"
             format="qcow2"
             bootloader="grub2"
@@ -49,13 +50,45 @@
         </type>
     </preferences>
 
+    <preferences profiles="kvm-and-xen-sdboot">
+        <version>1.0.0</version>
+        <packagemanager>zypper</packagemanager>
+        <rpm-excludedocs>true</rpm-excludedocs>
+        <type
+            image="vmx"
+            filesystem="btrfs"
+            format="qcow2"
+            bootloader="custom"
+            firmware="uefi"
+            efipartsize="500"
+            bootpartition="false"
+            bootkernel="custom"
+            initrd_system="none"
+            editbootinstall="editbootinstall_mbr.sh"
+            devicepersistency="by-uuid"
+            btrfs_quota_groups="true"
+            btrfs_root_is_snapshot="true"
+            bundle_format="%N-VM.%A-%M.%m.%p-%I"
+        >
+            <systemdisk>
+                <volume name="home"/>
+                <volume name="root"/>
+                <volume name="opt"/>
+                <volume name="srv"/>
+                <volume name="usr/local"/>
+                <volume name="var" copy_on_write="false"/>
+            </systemdisk>
+            <size unit="G">24</size>
+        </type>
+    </preferences>
+
     <preferences profiles="kvm-and-xen" arch="aarch64">
         <version>1.0.0</version>
         <packagemanager>zypper</packagemanager>
         <bootloader-theme>openSUSE</bootloader-theme>
         <rpm-excludedocs>true</rpm-excludedocs>
         <type
-            image="vmx"
+            image="oem"
             filesystem="btrfs"
             format="qcow2"
             bootloader="grub2"
@@ -88,7 +121,7 @@
         <bootloader-theme>openSUSE</bootloader-theme>
         <rpm-excludedocs>true</rpm-excludedocs>
         <type
-            image="vmx"
+            image="oem"
             filesystem="btrfs"
             format="vmdk"
             bootloader="grub2"
@@ -125,7 +158,7 @@
         <bootloader-theme>openSUSE</bootloader-theme>
         <rpm-excludedocs>true</rpm-excludedocs>
         <type
-            image="vmx"
+            image="oem"
             filesystem="xfs"
             format="qcow2"
             boottimeout="1"
@@ -148,7 +181,7 @@
         <bootloader-theme>openSUSE</bootloader-theme>
         <rpm-excludedocs>true</rpm-excludedocs>
         <type
-            image="vmx"
+            image="oem"
             filesystem="btrfs"
             format="vhdx"
             boottimeout="10"
@@ -183,7 +216,7 @@
         <bootloader-theme>openSUSE</bootloader-theme>
         <rpm-excludedocs>true</rpm-excludedocs>
         <type
-            image="vmx"
+            image="oem"
             filesystem="btrfs"
             format="vhdx"
             boottimeout="10"
@@ -270,10 +303,6 @@
         <package name="iputils"/>
         <package name="issue-generator"/> <!-- bsc#1084879 -->
         <package name="vim-small"/>
-        <package name="grub2"/>
-        <package name="grub2-arm64-efi" arch="aarch64"/>
-        <package name="grub2-branding-openSUSE" bootinclude="true"/>
-        <package name="grub2-x86_64-efi" arch="x86_64"/>
         <package name="haveged"/>
         <package name="less" />
         <package name="tar"/>
@@ -290,14 +319,22 @@
         <package name="systemd-logger"/> <!-- for openSUSE -->
         <package name="zypper-needs-restarting"/> <!-- Some deployment script use this (bsc#1173548) -->
         <package name="combustion &gt;= 1.2"/> <!-- 1.2+ has improved firstboot detection -->
+        <package name="NetworkManager"/>
+        <package name="dracut-kiwi-oem-repart"/>
+    </packages>
+
+    <packages type="image" profiles="kvm-and-xen,VMware,MS-HyperV,Cloud,RaspberryPi">
+        <package name="grub2"/>
+        <package name="grub2-arm64-efi" arch="aarch64"/>
+        <package name="grub2-branding-openSUSE" bootinclude="true"/>
+        <package name="grub2-x86_64-efi" arch="x86_64"/>
     </packages>
 
     <!-- Not needed in Cloud as it uses XFS and cloud-init -->
-    <packages type="image" profiles="kvm-and-xen,VMware,MS-HyperV,RaspberryPi">
+    <packages type="image" profiles="kvm-and-xen,kvm-and-xen-sdboot,VMware,MS-HyperV,RaspberryPi">
         <!-- Only for btrfs -->
         <package name="btrfsprogs"/>
         <package name="btrfsmaintenance"/>
-        <package name="grub2-snapper-plugin"/>  <!-- snapper - grub2 - integration, "small" -->
         <package name="snapper-zypp-plugin"/>   <!-- this is key snapper/zypp integration, as requested in the PRD -->
         <package name="snapper"/>
 
@@ -310,12 +347,11 @@
         <package name="firewalld"/>
     </packages>
 
-    <packages type="image" profiles="kvm-and-xen,MS-HyperV,RaspberryPi">
-        <!-- NM everywhere except that cloud-init needs wicked -->
-        <package name="NetworkManager"/>
+    <packages type="image" profiles="kvm-and-xen,VMware,MS-HyperV,RaspberryPi">
+        <package name="grub2-snapper-plugin"/>  <!-- snapper - grub2 - integration, "small" -->
     </packages>
 
-    <packages type="image" profiles="kvm-and-xen,VMware,MS-HyperV,Cloud">
+    <packages type="image" profiles="kvm-and-xen,kvm-and-xen-sdboot,VMware,MS-HyperV,Cloud">
         <!-- Shim for secure boot everywhere except for RPi -->
         <package name="shim" arch="aarch64,x86_64"/>
     </packages>
@@ -328,6 +364,22 @@
     <packages type="image" profiles="kvm-and-xen,Cloud">
         <package name="qemu-guest-agent"/>
     </packages>
+
+    <packages type="image" profiles="kvm-and-xen-sdboot">
+        <!-- kernel-default-base lacks dm-crypt -->
+        <package name="kernel-kvmsmall"/>
+
+        <package name="sdbootutil-snapper"/>
+        <package name="sdbootutil-rpm-scriptlets"/>
+        <package name="efibootmgr"/>
+        <package name="uefi_mbr" arch="x86_64"/>
+
+        <package name="systemd-experimental"/> <!-- XXX: pulls in python but needed for tpm files -->
+
+        <package name="disk-encryption-tool"/>
+        <package name="dracut-pcr-signature"/>
+    </packages>
+
     <packages type="image" profiles="VMware">
         <package name="cloud-init"/>
         <package name="cloud-init-config-suse"/>
@@ -351,8 +403,7 @@
         <package name="raspberrypi-firmware" arch="aarch64"/>
         <package name="raspberrypi-firmware-config" arch="aarch64"/>
         <package name="raspberrypi-firmware-dt" arch="aarch64"/>
-	<package name="arm-trusted-firmware-rpi4" arch="aarch64"/>
-        <package name="dracut-kiwi-oem-repart"/>
+        <package name="arm-trusted-firmware-rpi4" arch="aarch64"/>
         <package name="kernel-default"/>
         <!-- For WiFi: -->
         <package name="wireless-regdb"/>
@@ -375,7 +426,7 @@
         <package name="gzip"/>
     </packages>
 
-    <packages type="bootstrap" profiles="kvm-and-xen">
+    <packages type="bootstrap" profiles="kvm-and-xen,kvm-and-xen-sdboot">
         <package name="openSUSE-release-appliance-kvm"/>
     </packages>
     <packages type="bootstrap" profiles="Cloud">

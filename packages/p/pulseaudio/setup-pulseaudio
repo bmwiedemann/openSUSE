@@ -157,7 +157,8 @@ enable_openal() {
 enable_oss() {
     echo "Enabling PulseAudio for OSS..."
     for app in $LIST_OF_OSS_APPS; do
-	if grep -q "alias $app='padsp $app'" $PROFNAME; then
+        if test -f $PROFNAME &&
+	    grep -q "alias $app='padsp $app'" $PROFNAME; then
 	    echo "Application $app already setup for PulseAudio"
 	else
 	    echo "alias $app='padsp $app'" >> $PROFNAME
@@ -179,7 +180,8 @@ enable_sdl() {
 enable_timidity() {
     echo "Enabling PulseAudio for Timidity..."
     # Use esound output for timidity
-    if grep -q "alias timidity='timidity -Oe'" $PROFNAME; then
+    if test -f $PROFNAME &&
+        grep -q "alias timidity='timidity -Oe'" $PROFNAME; then
 	echo "Timidity already setup for using PulseAudio"
     else
 	echo "alias timidity='timidity -Oe'" >> $PROFNAME

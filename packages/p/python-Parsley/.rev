@@ -48,4 +48,16 @@
     <comment></comment>
     <requestid>1085118</requestid>
   </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>2c474625ab3370f1658cc8d3b97f09b5</srcmd5>
+    <version>1.3</version>
+    <time>1704829819</time>
+    <user>anag+factory</user>
+    <comment>- Add patch support-python312.patch:
+  * Support Python 3.12 by using non-removed assertion functions.
+- Switch to autosetup and pyproject macros.
+- Correct URL.
+- Stop using greedy globs in %files.</comment>
+    <requestid>1137657</requestid>
+  </revision>
 </revisionlist>

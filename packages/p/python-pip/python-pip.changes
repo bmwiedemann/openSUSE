@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec 18 14:18:45 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 23.3.2:
+  * Fix a bug in extras handling for link requirements (`#12372
+  * Fix mercurial revision "parse error": use ``--rev={ref}``
+    instead of ``-r={ref}`` (`#12373
+
+-------------------------------------------------------------------
 Tue Nov 21 10:38:00 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 23.3.1:
@@ -72,7 +80,7 @@ Tue Nov 21 10:38:00 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
 -------------------------------------------------------------------
 Mon Aug 28 03:30:09 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Finally drop csv23, it has been removed upstream since 2021. 
+- Finally drop csv23, it has been removed upstream since 2021.
 - Shift around sle15_python_module_pythons.
 
 -------------------------------------------------------------------
@@ -427,7 +435,7 @@ Sun Nov  7 17:07:30 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 21.3.1:
   * Always refuse installing or building projects that have no ``pyproject.toml`` nor
-    ``setup.py``. 
+    ``setup.py``.
   * Tweak running-as-root detection, to check ``os.getuid`` if it exists, on
     Unix-y and non-Linux/non-MacOS machines.
   * When installing projects with a ``pyproject.toml`` in editable mode, and the build
@@ -487,14 +495,14 @@ Sun Nov  7 17:07:30 UTC 2021 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Wed Sep  8 16:07:38 UTC 2021 - Stefan Schubert <schubi@suse.de>
 
-- Use libalternatives instead of update-alternatives. 
+- Use libalternatives instead of update-alternatives.
 
 -------------------------------------------------------------------
 Mon Jan  4 08:43:14 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 20.2.4:
   Deprecations and Removals
-    * Document that certain removals can be fast tracked. 
+    * Document that certain removals can be fast tracked.
     * Document that Python versions are generally supported until
       PyPI usage falls below 5%
   Features
@@ -554,7 +562,7 @@ Fri Oct 30 00:18:04 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 - Make executables setup compatible with multiple python3 flavors
   * gh#openSUSE/python-rpm-macros#66
   * update-alternatives for pip3
-  * use %python_clone and %python_install_alternative for sip and 
+  * use %python_clone and %python_install_alternative for sip and
     sip3
   * use original bin/sip%{python_bin_suffix} as is
   * effect: consistent shebangs and specifiers inside the
@@ -567,41 +575,41 @@ Sun Oct 11 13:08:15 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
   Deprecations and Removals
   * Deprecate support for Python 3.5 (#8181)
   Features
-  * Make the setup.py install deprecation warning less 
-    noisy. We warn only when setup.py install succeeded and 
-    setup.py bdist_wheel failed, as situations where both 
-    fails are most probably irrelevant to this deprecation. 
+  * Make the setup.py install deprecation warning less
+    noisy. We warn only when setup.py install succeeded and
+    setup.py bdist_wheel failed, as situations where both
+    fails are most probably irrelevant to this deprecation.
     (#8752)
-- 20.2.2 
+- 20.2.2
   Bug Fixes
-  * Only attempt to use the keyring once and if it fails, don’t try 
-    again. This prevents spamming users with several keyring unlock 
+  * Only attempt to use the keyring once and if it fails, don’t try
+    again. This prevents spamming users with several keyring unlock
     prompts when they cannot unlock or don’t want to do so. (#8090)
-  * Fix regression that distributions in system site-packages are 
-    not correctly found when a virtual environment is configured 
+  * Fix regression that distributions in system site-packages are
+    not correctly found when a virtual environment is configured
     with system-site-packages on. (#8695)
-  * Disable caching for range requests, which causes corrupted 
-    wheels when pip tries to obtain metadata using the feature 
+  * Disable caching for range requests, which causes corrupted
+    wheels when pip tries to obtain metadata using the feature
     fast-deps. (#8701, #8716)
-  * Always use UTF-8 to read pyvenv.cfg to match the built-in venv.    
+  * Always use UTF-8 to read pyvenv.cfg to match the built-in venv.
     (#8717)
-  * 2020 Resolver: Correctly handle marker evaluation in 
-    constraints and exclude them if their markers do not match the 
+  * 2020 Resolver: Correctly handle marker evaluation in
+    constraints and exclude them if their markers do not match the
     current environment. (#8724)
 - 20.2.1
   Features
   * Ignore require-virtualenv in pip list (#8603)
   Bug Fixes
-  * Correctly find already-installed distributions with dot (.) in 
+  * Correctly find already-installed distributions with dot (.) in
     the name and uninstall them when needed. (#8645)
-  * Trace a better error message on installation failure due to 
+  * Trace a better error message on installation failure due to
     invalid .data files in wheels. (#8654)
-  * Fix SVN version detection for alternative SVN distributions. 
+  * Fix SVN version detection for alternative SVN distributions.
     (#8665)
-  * New resolver: Correctly include the base package when specified 
+  * New resolver: Correctly include the base package when specified
     with extras in --no-deps mode. (#8677)
-  * Use UTF-8 to handle ZIP archive entries on Python 2 according 
-    to PEP 427, so non-ASCII paths can be resolved as expected. 
+  * Use UTF-8 to handle ZIP archive entries on Python 2 according
+    to PEP 427, so non-ASCII paths can be resolved as expected.
     (#8684)
   Improved Documentation
   * Add details on old resolver deprecation and removal to
@@ -613,71 +621,71 @@ Sun Oct 11 13:08:15 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
     info directory. (#6998, #8617)
   * Disallow passing install-location-related arguments in --
     install-options. (#7309)
-  * Add deprecation warning for invalid requirements format 
+  * Add deprecation warning for invalid requirements format
     “base>=1.0[extra]” (#8288)
-  * Deprecate legacy setup.py install when building a wheel failed 
+  * Deprecate legacy setup.py install when building a wheel failed
     for source distributions without pyproject.toml (#8368)
-  * Deprecate -b/--build/--build-dir/--build-directory. Its current 
-    behaviour is confusing and breaks in case different versions of 
-    the same distribution need to be built during the resolution 
-    process. Using the TMPDIR/TEMP/TMP environment variable, 
-    possibly combined with --no-clean covers known use cases. 
+  * Deprecate -b/--build/--build-dir/--build-directory. Its current
+    behaviour is confusing and breaks in case different versions of
+    the same distribution need to be built during the resolution
+    process. Using the TMPDIR/TEMP/TMP environment variable,
+    possibly combined with --no-clean covers known use cases.
     (#8372)
-  * Remove undocumented and deprecated option --always-unzip 
+  * Remove undocumented and deprecated option --always-unzip
     (#8408)
   Features
-  * Log debugging information about pip, in pip install --verbose. 
+  * Log debugging information about pip, in pip install --verbose.
     (#3166)
-  * Refine error messages to avoid showing Python tracebacks when 
+  * Refine error messages to avoid showing Python tracebacks when
     an HTTP error occurs. (#5380)
-  * Install wheel files directly instead of extracting them to a 
+  * Install wheel files directly instead of extracting them to a
     temp directory. (#6030)
-  * Add a beta version of pip’s next-generation dependency 
+  * Add a beta version of pip’s next-generation dependency
     resolver.
   * Move pip’s new resolver into beta, remove the --unstable-
     feature=resolver flag, and enable the --use-feature=2020-
-    resolver flag. The new resolver is significantly stricter and 
-    more consistent when it receives incompatible instructions, and 
-    reduces support for certain kinds of Constraints Files, so some 
-    workarounds and workflows may break. More details about how to 
-    test and migrate, and how to report issues, at Changes to the 
-    pip dependency resolver in 20.2 (2020) . Maintainers are 
-    preparing to release pip 20.3, with the new resolver on by 
+    resolver flag. The new resolver is significantly stricter and
+    more consistent when it receives incompatible instructions, and
+    reduces support for certain kinds of Constraints Files, so some
+    workarounds and workflows may break. More details about how to
+    test and migrate, and how to report issues, at Changes to the
+    pip dependency resolver in 20.2 (2020) . Maintainers are
+    preparing to release pip 20.3, with the new resolver on by
     default, in October. (#6536)
-  * Introduce a new ResolutionImpossible error, raised when pip 
+  * Introduce a new ResolutionImpossible error, raised when pip
     encounters un-satisfiable dependency conflicts (#8546, #8377)
-  * Add a subcommand debug to pip config to list available 
-    configuration sources and the key-value pairs defined in them. 
+  * Add a subcommand debug to pip config to list available
+    configuration sources and the key-value pairs defined in them.
     (#6741)
   * Warn if index pages have unexpected content-type (#6754)
   * Allow specifying --prefer-binary option in a requirements file (#7693)
-  * Generate PEP 376 REQUESTED metadata for user supplied 
+  * Generate PEP 376 REQUESTED metadata for user supplied
     requirements installed by pip. (#7811)
-  * Warn if package url is a vcs or an archive url with invalid 
+  * Warn if package url is a vcs or an archive url with invalid
     scheme (#8128)
   * Parallelize network operations in pip list. (#8504)
-  * Allow the new resolver to obtain dependency information through 
-    wheels lazily downloaded using HTTP range requests. To enable 
+  * Allow the new resolver to obtain dependency information through
+    wheels lazily downloaded using HTTP range requests. To enable
     this feature, invoke pip with --use-feature=fast-deps. (#8588)
   * Support --use-feature in requirements files (#8601)
   * Bug Fixes
-  * Use canonical package names while looking up already installed 
+  * Use canonical package names while looking up already installed
     packages. (#5021)
-  * Fix normalizing path on Windows when installing package on 
+  * Fix normalizing path on Windows when installing package on
     another logical disk. (#7625)
-  * The VCS commands run by pip as subprocesses don’t merge stdout 
-    and stderr anymore, improving the output parsing by subsequent 
+  * The VCS commands run by pip as subprocesses don’t merge stdout
+    and stderr anymore, improving the output parsing by subsequent
     commands. (#7968)
-  * Correctly treat non-ASCII entry point declarations in wheels so 
+  * Correctly treat non-ASCII entry point declarations in wheels so
     they can be installed on Windows. (#8342)
-  * Update author email in config and tests to reflect 
+  * Update author email in config and tests to reflect
     decommissioning of pypa-dev list. (#8454)
-  * Headers provided by wheels in .data directories are now 
-    correctly installed into the user-provided locations, such as 
-    --prefix, instead of the virtual environment pip is running in. 
+  * Headers provided by wheels in .data directories are now
+    correctly installed into the user-provided locations, such as
+    --prefix, instead of the virtual environment pip is running in.
     (#8521)
   Vendored Libraries
-  * Vendored htmlib5 no longer imports deprecated 
+  * Vendored htmlib5 no longer imports deprecated
     xml.etree.cElementTree on Python 3.
   * Upgrade appdirs to 1.4.4
   * Upgrade certifi to 2020.6.20
@@ -691,40 +699,40 @@ Sun Oct 11 13:08:15 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
   * Upgrade urllib3 to 1.25.9
   Improved Documentation
   * Add --no-input option to pip docs (#7688)
-  * List of options supported in requirements file are extracted 
-    from source of truth, instead of being maintained manually. 
+  * List of options supported in requirements file are extracted
+    from source of truth, instead of being maintained manually.
     (#7908)
-  * Fix pip config docstring so that the subcommands render 
+  * Fix pip config docstring so that the subcommands render
     correctly in the docs (#8072)
   * replace links to the old pypa-dev mailing list with https://
-    mail.python.org/mailman3/lists/distutils-sig.python.org/ 
+    mail.python.org/mailman3/lists/distutils-sig.python.org/
     (#8353)
-  * Fix example for defining multiple values for options which 
+  * Fix example for defining multiple values for options which
     support them (#8373)
-  * Add documentation for the ResolutionImpossible error that helps 
+  * Add documentation for the ResolutionImpossible error that helps
     the user fix dependency conflicts (#8459)
   * Add feature flags to docs (#8512)
-  * Document how to install package extras from git branch and 
+  * Document how to install package extras from git branch and
     source distributions. (#8576)
 - 20.2b1
   Bug Fixes
-  * Correctly treat wheels containing non-ASCII file contents so 
+  * Correctly treat wheels containing non-ASCII file contents so
     they can be installed on Windows. (#5712)
-  * Prompt the user for password if the keyring backend doesn’t 
+  * Prompt the user for password if the keyring backend doesn’t
     return one (#7998)
   Improved Documentation
-  * Add GitHub issue template for reporting when the dependency 
+  * Add GitHub issue template for reporting when the dependency
     resolver fails (#8207)
 - 20.1.1
   Deprecations and Removals
-  * Revert building of local directories in place, restoring the 
+  * Revert building of local directories in place, restoring the
     pre-20.1 behaviour of copying to a temporary directory. (#7555)
   * Drop parallelization from pip list --outdated. (#8167)
   Bug Fixes
-  * Fix metadata permission issues when umask has the executable 
+  * Fix metadata permission issues when umask has the executable
     bit set. (#8164)
-  * Avoid unnecessary message about the wheel package not being 
-    installed when a wheel would not have been built. Additionally, 
+  * Avoid unnecessary message about the wheel package not being
+    installed when a wheel would not have been built. Additionally,
     clarify the message. (#8178)
 - 20.1
   Process
@@ -733,60 +741,60 @@ Sun Oct 11 13:08:15 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
   * Add pip cache dir to show the cache directory. (#7350)
   Bug Fixes
   * Abort pip cache commands early when cache is disabled. (#8124)
-  * Correctly set permissions on metadata files during wheel 
-    installation, to permit non-privileged users to read from 
+  * Correctly set permissions on metadata files during wheel
+    installation, to permit non-privileged users to read from
     system site-packages. (#8139)
 - 20.1b1
   Deprecations and Removals
-  * Remove emails from AUTHORS.txt to prevent usage for spamming, 
-    and only populate names in AUTHORS.txt at time of release 
+  * Remove emails from AUTHORS.txt to prevent usage for spamming,
+    and only populate names in AUTHORS.txt at time of release
     (#5979)
   * Remove deprecated --skip-requirements-regex option. (#7297)
-  * Building of local directories is now done in place, instead of 
-    a temporary location containing a copy of the directory tree. 
+  * Building of local directories is now done in place, instead of
+    a temporary location containing a copy of the directory tree.
     (#7555)
-  * Remove unused tests/scripts/test_all_pip.py test script and the 
+  * Remove unused tests/scripts/test_all_pip.py test script and the
     tests/scripts folder. (#7680)
   Features
-  * pip now implements PEP 610, so pip freeze has better fidelity   
-    in presence of distributions installed from Direct URL 
+  * pip now implements PEP 610, so pip freeze has better fidelity
+    in presence of distributions installed from Direct URL
     requirements. (#609)
-  * Add pip cache command for inspecting/managing pip’s wheel 
+  * Add pip cache command for inspecting/managing pip’s wheel
     cache. (#6391)
-  * Raise error if --user and --target are used together in pip 
+  * Raise error if --user and --target are used together in pip
     install (#7249)
-  * Significantly improve performance when --find-links points to a 
+  * Significantly improve performance when --find-links points to a
     very large HTML page. (#7729)
-  * Indicate when wheel building is skipped, due to lack of the 
+  * Indicate when wheel building is skipped, due to lack of the
     wheel package. (#7768)
-  * Change default behaviour to always cache responses from 
+  * Change default behaviour to always cache responses from
     trusted-host source. (#7847)
   * An alpha version of a new resolver is available via --unstable-
     feature=resolver. (#988)
   Bug Fixes
-  * Correctly freeze a VCS editable package when it is nested 
+  * Correctly freeze a VCS editable package when it is nested
     inside another VCS repository. (#3988)
-  * Correctly handle %2F in URL parameters to avoid accidentally 
+  * Correctly handle %2F in URL parameters to avoid accidentally
     unescape them into /. (#6446)
   * Reject VCS URLs with an empty revision. (#7402)
   * Warn when an invalid URL is passed with --index-url (#7430)
-  * Use better mechanism for handling temporary files, when 
-    recording metadata about installed files (RECORD) and the 
+  * Use better mechanism for handling temporary files, when
+    recording metadata about installed files (RECORD) and the
     installer (INSTALLER). (#7699)
-  * Correctly detect global site-packages availability of virtual 
+  * Correctly detect global site-packages availability of virtual
     environments created by PyPA’s virtualenv>=20.0. (#7718)
-  * Remove current directory from sys.path when invoked as 
+  * Remove current directory from sys.path when invoked as
     python -m pip <command> (#7731)
   * Stop failing uninstallation, when trying to remove non-
     existent files. (#7856)
-  * Prevent an infinite recursion with pip wheel when $TMPDIR is 
+  * Prevent an infinite recursion with pip wheel when $TMPDIR is
     within the source directory. (#7872)
-  * Significantly speedup pip list --outdated by parallelizing 
+  * Significantly speedup pip list --outdated by parallelizing
     index interaction. (#7962)
-  * Improve Windows compatibility when detecting writability in 
+  * Improve Windows compatibility when detecting writability in
     folder. (#8013)
   Vendored Libraries
-  * Update semi-supported debundling script to reflect that   
+  * Update semi-supported debundling script to reflect that
     appdirs is vendored.
   * Add ResolveLib as a vendored dependency.
   * Upgrade certifi to 2020.04.05.1
@@ -802,14 +810,14 @@ Sun Oct 11 13:08:15 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
   * Add toml as a vendored dependency.
   * Upgrade urllib3 to 1.25.8.
   Improved Documentation
-  * Emphasize that VCS URLs using git, git+git and git+http are 
+  * Emphasize that VCS URLs using git, git+git and git+http are
     insecure due to lack of authentication and encryption (#1983)
   * Clarify the usage of --no-binary command. (#3191)
   * Clarify the usage of freeze command in the example of Using pip in your program (#7008)
   * Add a “Copyright” page. (#7767)
-  * Added example of defining multiple values for options which 
+  * Added example of defining multiple values for options which
     support them (#7803)
-- Test on test flavor without installing package 
+- Test on test flavor without installing package
 - Update pip-shipped-requests-cabundle.patch for newer certifi
 
 -------------------------------------------------------------------
@@ -866,7 +874,7 @@ Wed Feb  5 10:19:17 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  *  Fix the logging of cached HTTP response shown as downloading.
  *  Effectively disable the wheel cache when it is not writable, as is the case with the http cache.
  *  Correctly handle relative cache directory provided via --cache-dir.
- * 
+ *
 -------------------------------------------------------------------
 Fri Oct 18 11:28:38 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
@@ -1237,7 +1245,7 @@ Mon Jul 23 21:03:56 UTC 2018 - mimi.vx@gmail.com
  * Remove the shim for the old get-pip.py location
  * Introduce a new --prefer-binary flag, to prefer older wheels
      over newer source packages.
- * Improve autocompletion function on file name completion 
+ * Improve autocompletion function on file name completion
  * Add support for installing PEP 518 build dependencies from source
  * Improve status message when upgrade is skipped due to only-if-needed strategy
 
@@ -1929,7 +1937,7 @@ Fri Nov 22 12:53:53 UTC 2013 - speilicke@suse.com
 -------------------------------------------------------------------
 Thu Sep 26 11:33:58 UTC 2013 - rhafer@suse.com
 
-- Fixed missing Requires for python-xml (bnc#842516) 
+- Fixed missing Requires for python-xml (bnc#842516)
 
 -------------------------------------------------------------------
 Thu Aug  8 20:16:51 UTC 2013 - dmueller@suse.com
@@ -2201,7 +2209,7 @@ Wed Sep 15 02:38:50 UTC 2010 - alexandre@exatati.com.br
   - Added global –user flag as shortcut for
     –install-option=”–user”. From Ronny Pfannschmidt.
   - Added support for PyPI mirrors as defined in PEP 381, from Jannis Leidel.
-  - Fixed issue #138 - Git revisions ignored. 
+  - Fixed issue #138 - Git revisions ignored.
   - Fixed issue #95 - Initial editable install of github package from a tag fails.
   - Fixed issue #107 - Can’t install if a directory in cwd has the same name
     as the package you’re installing.
@@ -2213,7 +2221,7 @@ Wed Sep 15 02:38:50 UTC 2010 - alexandre@exatati.com.br
   - Various cleanup to make test-running more consistent and less fragile.
   - Real Windows support (with passing tests).
   - pip-2.7 etc. scripts are created (Python-version specific scripts)
-  - contrib/build-standalone script creates a runnable .zip form of pip, 
+  - contrib/build-standalone script creates a runnable .zip form of pip,
     from Jannis Leidel
   - Editable git repos are updated when reinstalled
   - Fix problem with --editable when multiple .egg-info/ directories are found.

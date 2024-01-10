@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan  2 21:26:32 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.8.5:
+  * Fix LineBoxBuilder: Take into account headers and footers
+    too, not just the body.
+  * switch from setup.py to pyproject.toml
+  * switch from tox to pytest
+
+-------------------------------------------------------------------
 Wed Jan  4 18:40:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.8.3:
@@ -34,7 +43,7 @@ Thu May 16 22:25:00 UTC 2019 - Hardik Italia <hitalia@suse.com>
   * Tesseract: optim: keep the get_version() in memory instead of calling
     Tesseract everytime (get_version() by psm_parameter() which is called each
     time a box file is parsed ...)
-- Update project url and source to gitlab 
+- Update project url and source to gitlab
 
 -------------------------------------------------------------------
 Tue Dec 26 15:53:23 UTC 2017 - mpluskal@suse.com

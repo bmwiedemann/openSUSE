@@ -1,7 +1,7 @@
 #
 # spec file for package libcpath
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libcpath
 %define lname	libcpath1
-Version:        20220108
+Version:        20240109
 Release:        0
 Summary:        Library for C path functions
 License:        LGPL-3.0-or-later
@@ -29,10 +29,10 @@ Source2:        https://github.com/libyal/libcpath/releases/download/%version/li
 Source9:        %name.keyring
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libcerror) >= 20220101
-BuildRequires:  pkgconfig(libclocale) >= 20220107
-BuildRequires:  pkgconfig(libcsplit) >= 20210411
-BuildRequires:  pkgconfig(libuna) >= 20210801
+BuildRequires:  pkgconfig(libcerror) >= 20240101
+BuildRequires:  pkgconfig(libclocale) >= 20240107
+BuildRequires:  pkgconfig(libcsplit) >= 20220109
+BuildRequires:  pkgconfig(libuna) >= 20230710
 # Various notes: https://en.opensuse.org/libyal
 
 %description

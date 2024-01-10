@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan  5 17:45:28 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- remove unnecessary pdm-pep517
+
+-------------------------------------------------------------------
 Wed Dec 13 02:58:14 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.10.4:
@@ -73,12 +78,12 @@ Mon Jun 19 14:02:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
     #2006
   * Pop up a warning when the deprecated parser argument is passed to
     BaseCommand.__init__() method. #2007
-  * Fix a bug that merging settings with AoTs causing a failure. #2011 
+  * Fix a bug that merging settings with AoTs causing a failure. #2011
 
 -------------------------------------------------------------------
 Thu Apr  6 06:26:23 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Remove pep517 requirement. 
+- Remove pep517 requirement.
 
 -------------------------------------------------------------------
 Tue Apr  4 06:45:30 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
@@ -255,7 +260,7 @@ Tue Nov 15 19:09:33 UTC 2022 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Wed Nov  9 16:22:05 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to v2.2.1 
+- Update to v2.2.1
   Features & Improvements#
   * Make sitecustomize.py respect the PDM_PROJECT_MAX_DEPTH environment variable #1471
   Bug Fixes#
@@ -426,7 +431,7 @@ Fri Jun 17 07:42:46 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
     resolution loop. #1119
   * Update the poetry importer to support the new [tool.poetry.build] config
     table. #1131
-  * Fix a bug where dependencies with requires-python pre-release versions 
+  * Fix a bug where dependencies with requires-python pre-release versions
     caused pdm update to fail with InvalidPyVersion. #1111
   * Fix a bug that dependencies are missing from the dep graph when they are
     depended by a requirement with extras. #1097
@@ -464,7 +469,7 @@ Fri Jun 17 07:42:46 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
   * Fix the hash calculation when generating direct_url.json for a local
     pre-built wheel. #861
   * Reduce the number of tests that require network, and mark the rest with
-    network marker. #858 
+    network marker. #858
 - Remove artifacts.tar.gz, it is now included in the source tarball.
 - Drop patches because they are included upstream:
   * mark-network-tests.patch

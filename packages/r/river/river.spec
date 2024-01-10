@@ -52,7 +52,8 @@ BuildRequires:  pkgconfig(wayland-cursor)
 BuildRequires:  pkgconfig(wayland-egl)
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.24
 BuildRequires:  pkgconfig(wayland-server) >= 1.20.0
-BuildRequires:  pkgconfig(wlroots) >= 0.15.0
+BuildRequires:  pkgconfig(wlroots) >= 0.16.0
+BuildConflicts: pkgconfig(wlroots) >= 0.17.0
 BuildRequires:  pkgconfig(xkbcommon)
 Recommends:     xorg-x11-server-wayland
 # To make Qt apps work somewhat okay on Wayland and auto use it

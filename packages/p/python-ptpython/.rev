@@ -87,4 +87,27 @@
   - Allow usage of `await` in assignment expressions or for-loops.</comment>
     <requestid>1132418</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4428d810c072ac4fa54f28e369f682d6</srcmd5>
+    <version>3.0.25</version>
+    <time>1703800922</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.0.25:
+  * Fix handling of 'config file does not exist' when embedding
+    ptpython.
+  * Don't show &quot;Impossible to read config file&quot; warnings when no
+    config file was passed to `run_config()`.
+  * Output printing fixes:
+    * Paginate exceptions if pagination is enabled.
+    * Handle big outputs without running out of memory.
+  * Asyncio REPL improvements:
+    * From now on, passing `--asyncio` is required to activate the
+      asyncio-REPL.
+    * This will ensure that an event loop is created at the
+      start in which we can run top-level await statements.
+  * Use `get_running_loop()` instead of `get_event_loop()`.
+  * Better handling of `SystemExit` and control-c in the async
+    REPL.</comment>
+    <requestid>1135315</requestid>
+  </revision>
 </revisionlist>

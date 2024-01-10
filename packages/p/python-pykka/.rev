@@ -7,4 +7,27 @@
     <comment>Renaming of the package according to the upstream change.</comment>
     <requestid>979570</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>cf179632dd4cfb53e1335ea1660fe823</srcmd5>
+    <version>4.0.1</version>
+    <time>1702673317</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.0.1:
+  * Update test suite to pass on Python 3.12 (#207)
+- update to 4.0.0:
+  * Require `block` and `timeout` arguments to always be keyword
+    arguments. (PR: #198)
+  * Remove support for Python 3.7. It reached end-of-life in June
+    2023. (PR: #190)
+  * Type hints: All typing stubs have been inlined in the source
+    code and have been greatly improved. They are now tested
+    using both Mypy and Pyright. (PR: #192, #193, #195)
+  * Type hints: Due to the dynamic nature of `ActorProxy`
+    objects, it is impossible to automatically type them
+    correctly. `pykka.typing` is a new module with helpers for
+    manually typing `ActorProxy` objects. Check out the docs for
+    how to use the helpers. (PR: #199)
+  * Linting: Replace flake8, isort, and friends with ruff</comment>
+    <requestid>1133211</requestid>
+  </revision>
 </revisionlist>

@@ -17,15 +17,14 @@
 
 
 %define lname   libKF5Emoticons5
-%define _tar_path 5.103
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
-# Only needed for the package signature condition
+%define qt5_version 5.15.2
 %bcond_without released
 Name:           kemoticons
-Version:        5.112.0
+Version:        5.113.0
 Release:        0
 Summary:        Emoticon to graphical emoticon text converter
 License:        LGPL-2.1-or-later
@@ -35,17 +34,16 @@ Source:         %{name}-%{version}.tar.xz
 Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
-BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
+BuildRequires:  extra-cmake-modules >= %{_kf5_version}
 BuildRequires:  fdupes
-BuildRequires:  kf5-filesystem
-BuildRequires:  cmake(KF5Archive) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5Config) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5CoreAddons) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5Service) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(Qt5DBus) >= 5.15.0
-BuildRequires:  cmake(Qt5Gui) >= 5.15.0
-BuildRequires:  cmake(Qt5Test) >= 5.15.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.15.0
+BuildRequires:  cmake(KF5Archive) >= %{_kf5_version}
+BuildRequires:  cmake(KF5Config) >= %{_kf5_version}
+BuildRequires:  cmake(KF5CoreAddons) >= %{_kf5_version}
+BuildRequires:  cmake(KF5Service) >= %{_kf5_version}
+BuildRequires:  cmake(Qt5DBus) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Gui) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Test) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Widgets) >= %{qt5_version}
 
 %description
 KEmoticons converts emoticons from text to a graphical representation with
@@ -64,10 +62,9 @@ from different providers.
 %package devel
 Summary:        Build environment for kemoticons, an emoticon text converter
 Requires:       %{lname} = %{version}
-Requires:       extra-cmake-modules
-Requires:       cmake(KF5Archive) >= %{_kf5_bugfix_version}
-Requires:       cmake(KF5Service) >= %{_kf5_bugfix_version}
-Requires:       cmake(Qt5Gui) >= 5.15.0
+Requires:       cmake(KF5Archive) >= %{_kf5_version}
+Requires:       cmake(KF5Service) >= %{_kf5_version}
+Requires:       cmake(Qt5Gui) >= %{qt5_version}
 
 %description devel
 KEmoticons converts emoticons from text to a graphical representation with

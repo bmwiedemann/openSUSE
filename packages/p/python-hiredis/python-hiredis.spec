@@ -1,7 +1,7 @@
 #
 # spec file for package python-hiredis
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-hiredis
-Version:        2.2.2
+Version:        2.3.2
 Release:        0
 Summary:        Python wrapper for hiredis
 License:        BSD-3-Clause
@@ -35,6 +35,7 @@ Patch1:         159-sdsalloc-to-alloc.patch
 Patch2:         161-use-system-hiredis.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  hiredis-devel >= 1.0.0

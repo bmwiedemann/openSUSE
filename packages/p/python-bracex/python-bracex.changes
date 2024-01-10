@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Dec 14 09:16:43 UTC 2023 - Petr Gajdos <pgajdos@suse.com>
+
+- update to 2.4:
+  *   **NEW**: Formally declare support for Python 3.11 and 3.12.
+  *   **NEW**: Drop Python 3.7 support.
+  * ## 2.3.post1
+  *   **CHORE**: Fix issue where tar ball did not include all
+    required files for running tests.
+  * ## 2.3
+  *   **NEW**: Drop Python 3.6 support.
+  *   **NEW**: Switch to Hatch build backend instead of
+    Setuptools.
+
+-------------------------------------------------------------------
 Fri May  5 11:56:21 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - add sle15_python_module_pythons

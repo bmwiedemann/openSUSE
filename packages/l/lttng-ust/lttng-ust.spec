@@ -1,7 +1,7 @@
 #
 # spec file for package lttng-ust
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define sover   1
 %define sover_ctl 5
 Name:           lttng-ust
-Version:        2.13.5
+Version:        2.13.6
 Release:        0
 Summary:        Linux Trace Toolkit Userspace Tracer library
 License:        GPL-2.0-only

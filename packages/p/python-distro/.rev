@@ -207,4 +207,21 @@
 </comment>
     <requestid>1112048</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>f49e670ddee804e8f799c246aed847c8</srcmd5>
+    <version>1.9.0</version>
+    <time>1703800466</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.9.0:
+  * Refactor distro.info() method to return an InfoDict [#360]
+  * Ignore the file '/etc/board-release' [#353]
+  * Ignore the file '/etc/ec2_version' [#359]
+  * Test on modern versions of CPython and PyPy and macOS [#362]
+  * Add support for ALT Linux Server 10.1 distribution [#354]
+  * Add Debian Testing to the tests [#356]
+  * Update archlinux resource for tests [#352]
+
+- Enable tests properly (this is pytest, not unittest),</comment>
+    <requestid>1135231</requestid>
+  </revision>
 </revisionlist>

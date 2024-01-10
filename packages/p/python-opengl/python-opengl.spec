@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,12 +28,12 @@
 %define tarname PyOpenGL
 %{?sle15_python_module_pythons}
 Name:           python-opengl%{psuffix}
-Version:        3.1.6
+Version:        3.1.7
 Release:        0
 Summary:        OpenGL bindings for Python
 License:        BSD-3-Clause
 Group:          Development/Libraries/Python
-URL:            http://pyopengl.sourceforge.net
+URL:            https://pyopengl.sourceforge.net
 Source0:        https://files.pythonhosted.org/packages/source/P/%{tarname}/%{tarname}-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

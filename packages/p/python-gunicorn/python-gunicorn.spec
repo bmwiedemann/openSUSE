@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,25 +27,17 @@
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-gunicorn%{psuffix}
-Version:        20.1.0
+Version:        21.2.0
 Release:        0
 Summary:        WSGI HTTP Server for UNIX
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://gunicorn.org
 Source:         https://files.pythonhosted.org/packages/source/g/gunicorn/gunicorn-%{version}.tar.gz
-Patch0:         support-eventlet-30-3.patch
+BuildRequires:  %{python_module importlib_metadata}
 BuildRequires:  %{python_module setuptools >= 3.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-Sphinx
-%if %{with test}
-BuildRequires:  %{python_module eventlet}
-BuildRequires:  %{python_module gevent >= 1.4}
-BuildRequires:  %{python_module gunicorn}
-BuildRequires:  %{python_module pytest}
-%endif
-Requires:       python-setuptools >= 3.0
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Suggests:       python-evenlet
@@ -54,6 +46,18 @@ Suggests:       python-gthread
 Suggests:       python-setproctitle
 Suggests:       python-tornado
 BuildArch:      noarch
+%if 0%{?sle_version} >= 150500
+# Fixes the build on Leap
+BuildRequires:  %{python_module Sphinx}
+%else
+BuildRequires:  python3-Sphinx
+%endif
+%if %{with test}
+BuildRequires:  %{python_module eventlet}
+BuildRequires:  %{python_module gevent >= 1.4}
+BuildRequires:  %{python_module gunicorn}
+BuildRequires:  %{python_module pytest}
+%endif
 %python_subpackages
 
 %description
@@ -108,13 +112,14 @@ sphinx-build -b html -d docs/build/doctrees docs/source docs/build/html
 %files %{python_files}
 %license LICENSE
 %python_alternative %{_bindir}/gunicorn
-%{python_sitelib}/*
+%{python_sitelib}/gunicorn
+%{python_sitelib}/gunicorn-%{version}*-info
 
 %if 0%{?suse_version} > 1500
 %files -n python-gunicorn-doc
 %license LICENSE
 %endif
-%doc README.rst NOTICE THANKS docs/build/html
+%doc README.rst NOTICE THANKS docs/build/html docs/source/news.rst
 %endif
 
 %changelog

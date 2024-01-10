@@ -1,7 +1,7 @@
 #
 # spec file for package inotify-tools
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           inotify-tools
-Version:        3.22.6.0
+Version:        4.23.9.0
 Release:        0
 Summary:        Tools for inotify
 License:        GPL-2.0-only WITH Linux-syscall-note AND GPL-2.0-or-later
@@ -28,6 +28,7 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
+BuildRequires:  gcc-c++
 BuildRequires:  glibc-devel
 BuildRequires:  libtool
 

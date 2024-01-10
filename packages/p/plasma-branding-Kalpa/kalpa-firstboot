@@ -1,0 +1,29 @@
+#!/bin/sh
+
+dbusRef=$(kdialog --title "openSUSE Kalpa Desktop Firstboot" --geometry 600x400 --progressbar "openSUSE Kalpa Desktop Firstboot" 8)
+
+run_task() {
+    local step="$1"
+    local label="$2"
+    shift 2
+
+    qdbus-qt5 $dbusRef setLabelText "$label"
+
+    if eval "$@"; then
+        qdbus-qt5 $dbusRef Set "" value "$step"
+    else
+        kdialog --error "Operation Failed: $label"
+        exit 1
+    fi
+}
+
+run_task 1 "Waiting for Internet connection" 'until /usr/bin/curl -s --max-time 5 https://flathub.org > /dev/null; do sleep 1; done'
+run_task 2 "Adding Flathub Repository" /usr/bin/flatpak remote-add --user --if-not-exists flathub /usr/share/kalpa/flathub.flatpakrepo
+run_task 3 "Installing Firefox" /usr/bin/flatpak install --user --noninteractive flathub org.mozilla.firefox
+run_task 4 "Installing KCalc" /usr/bin/flatpak install --user --noninteractive flathub org.kde.kcalc
+run_task 5 "Installing Ark" /usr/bin/flatpak install --user --noninteractive flathub org.kde.ark
+run_task 6 "Setting Default Browser" kwriteconfig5 --file ~/.config/kdeglobals --group General --key BrowserApplication org.mozilla.firefox.desktop
+
+run_task 7 "Cleaning up" rm -f ~/.config/autostart/kalpa-firstboot.desktop
+
+qdbus-qt5 $dbusRef close

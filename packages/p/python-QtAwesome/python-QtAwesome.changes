@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Dec 29 10:13:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.3.0:
+  * Update Codicons (`msc`) to 0.0.35
+  * Update Material Design Icons (`mdi6`) to 6.9.96
+  * Improvements to the icon browser application
+  * Update `readthedocs` config to version 2
+  * Add API to start/stop animations to the Spin
+    class
+  * Provide icon size when creating an `IconWidget`
+  * Remove usage of deprecated codecov package and
+    move to GitHub Action variant
+
+-------------------------------------------------------------------
 Fri Dec  8 16:26:59 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.2.3:

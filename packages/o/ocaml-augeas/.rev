@@ -7,4 +7,12 @@
     <comment>New Package ocaml-augeas. The source to this package originally lived in libguestfs but is now moved into its own package. ocaml-augeas as a standalone package is required in order to update libguestfs to version 1.50.0</comment>
     <requestid>1064297</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f921c4280de93ce5a0717d04102b407b</srcmd5>
+    <version>0.6</version>
+    <time>1704829760</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1137611</requestid>
+  </revision>
 </revisionlist>

@@ -1208,4 +1208,12 @@ SUSE- proprietary prefix added until Sendmail is accepted as valid SPDX license 
     fail to respond when it should.  Problem reported by</comment>
     <requestid>1094805</requestid>
   </revision>
+  <revision rev="120" vrev="2">
+    <srcmd5>d1ca14652a610e1d25d65f700e058ccd</srcmd5>
+    <version>8.17.2</version>
+    <time>1703611619</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1135112</requestid>
+  </revision>
 </revisionlist>

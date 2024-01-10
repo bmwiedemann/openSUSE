@@ -185,4 +185,30 @@
     <comment></comment>
     <requestid>1081611</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>8a03bff004aea72c9304dbb371f4508a</srcmd5>
+    <version>0.20.0</version>
+    <time>1704558555</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.20.0:
+  * Fix #245, never introduce new nodes during discard.
+  * Fix #268, do not rely on well implemented __ne__ for keys in
+    pmaps, instead do explicit inversion of equality
+    comparison when checking for inequality.
+  * Officially support Python 3.12.
+  * Officially drop support for Python 3.7.
+  * Fix #273, build more types of wheels.
+  * Fix #282, add generic types to types
+  * Fix #281, defaultdict can now be frozen. NB! This is a
+    backwards incompatible fix since defaultdict was not
+    previously frozen.
+
+   to 0.17.0. Thanks @cool-RR for this!
+  * Fix #166, Propagate 'ignore_extra' param in hierarchy. Thanks
+  * Fix #154, not possible to insert empty pmap as leaf node with
+  * Python 3.4 is no longer officially supported since it is EOL
+  * Fix #157, major improvements to type hints. Thanks @je-l for
+  * Fix #121, regression in PClass.set()</comment>
+    <requestid>1137122</requestid>
+  </revision>
 </revisionlist>

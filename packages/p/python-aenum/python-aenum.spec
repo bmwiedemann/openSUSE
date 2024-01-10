@@ -18,12 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-aenum
-Version:        3.1.12
+Version:        3.1.15
 Release:        0
 Summary:        Advanced Enumerations, NamedTuples, and NamedConstants
 License:        BSD-3-Clause
 URL:            https://github.com/ethanfurman/aenum
-Source:         https://files.pythonhosted.org/packages/source/a/aenum/aenum-%{version}.tar.gz
+Source:         https://github.com/ethanfurman/aenum/archive/refs/tags/%{version}.tar.gz#/aenum-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM tempdir_missing.patch gh#ethanfurman/aenum#12 mcepl@suse.com
 # Make test file into a proper one.
 Patch0:         tempdir_missing.patch

@@ -1,7 +1,7 @@
 #
 # spec file for package python-findpython
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,11 +24,9 @@ Summary:        Utility to find python versions on your system
 License:        MIT
 URL:            https://github.com/frostming/findpython
 Source:         https://files.pythonhosted.org/packages/source/f/findpython/findpython-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE pdm requires findpython, so we need to use pdm-pep517
-Patch0:         revert-back-to-pdm-pep517.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module packaging >= 20}
-BuildRequires:  %{python_module pdm-pep517}
+BuildRequires:  %{python_module pdm-backend}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  git

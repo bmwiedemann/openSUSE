@@ -1,7 +1,7 @@
-Index: grpcio-1.57.0/src/python/grpcio/grpc/_cython/_cygrpc/vtable.pyx.pxi
+Index: grpcio-1.60.0/src/python/grpcio/grpc/_cython/_cygrpc/vtable.pyx.pxi
 ===================================================================
---- grpcio-1.57.0.orig/src/python/grpcio/grpc/_cython/_cygrpc/vtable.pyx.pxi
-+++ grpcio-1.57.0/src/python/grpcio/grpc/_cython/_cygrpc/vtable.pyx.pxi
+--- grpcio-1.60.0.orig/src/python/grpcio/grpc/_cython/_cygrpc/vtable.pyx.pxi
++++ grpcio-1.60.0/src/python/grpcio/grpc/_cython/_cygrpc/vtable.pyx.pxi
 @@ -13,16 +13,16 @@
  # limitations under the License.
  
@@ -22,11 +22,11 @@ Index: grpcio-1.57.0/src/python/grpcio/grpc/_cython/_cygrpc/vtable.pyx.pxi
    if first_pointer < second_pointer:
      return -1
    elif first_pointer > second_pointer:
-Index: grpcio-1.57.0/src/python/grpcio/grpc/_cython/_cygrpc/credentials.pyx.pxi
+Index: grpcio-1.60.0/src/python/grpcio/grpc/_cython/_cygrpc/credentials.pyx.pxi
 ===================================================================
---- grpcio-1.57.0.orig/src/python/grpcio/grpc/_cython/_cygrpc/credentials.pyx.pxi
-+++ grpcio-1.57.0/src/python/grpcio/grpc/_cython/_cygrpc/credentials.pyx.pxi
-@@ -314,7 +314,7 @@ def server_credentials_ssl_dynamic_cert_
+--- grpcio-1.60.0.orig/src/python/grpcio/grpc/_cython/_cygrpc/credentials.pyx.pxi
++++ grpcio-1.60.0/src/python/grpcio/grpc/_cython/_cygrpc/credentials.pyx.pxi
+@@ -316,7 +316,7 @@ def server_credentials_ssl_dynamic_cert_
    return credentials
  
  cdef grpc_ssl_certificate_config_reload_status _server_cert_config_fetcher_wrapper(
@@ -35,10 +35,10 @@ Index: grpcio-1.57.0/src/python/grpcio/grpc/_cython/_cygrpc/credentials.pyx.pxi
    # This is a credentials.ServerCertificateConfig
    cdef ServerCertificateConfig cert_config = None
    if not user_data:
-Index: grpcio-1.57.0/src/python/grpcio/grpc/_cython/_cygrpc/aio/callback_common.pyx.pxi
+Index: grpcio-1.60.0/src/python/grpcio/grpc/_cython/_cygrpc/aio/callback_common.pyx.pxi
 ===================================================================
---- grpcio-1.57.0.orig/src/python/grpcio/grpc/_cython/_cygrpc/aio/callback_common.pyx.pxi
-+++ grpcio-1.57.0/src/python/grpcio/grpc/_cython/_cygrpc/aio/callback_common.pyx.pxi
+--- grpcio-1.60.0.orig/src/python/grpcio/grpc/_cython/_cygrpc/aio/callback_common.pyx.pxi
++++ grpcio-1.60.0/src/python/grpcio/grpc/_cython/_cygrpc/aio/callback_common.pyx.pxi
 @@ -50,7 +50,7 @@ cdef class CallbackWrapper:
      @staticmethod
      cdef void functor_run(
@@ -48,10 +48,10 @@ Index: grpcio-1.57.0/src/python/grpcio/grpc/_cython/_cygrpc/aio/callback_common.
          cdef CallbackContext *context = <CallbackContext *>functor
          cdef object waiter = <object>context.waiter
          if not waiter.cancelled():
-Index: grpcio-1.57.0/src/python/grpcio/grpc/_cython/_cygrpc/aio/callback_common.pxd.pxi
+Index: grpcio-1.60.0/src/python/grpcio/grpc/_cython/_cygrpc/aio/callback_common.pxd.pxi
 ===================================================================
---- grpcio-1.57.0.orig/src/python/grpcio/grpc/_cython/_cygrpc/aio/callback_common.pxd.pxi
-+++ grpcio-1.57.0/src/python/grpcio/grpc/_cython/_cygrpc/aio/callback_common.pxd.pxi
+--- grpcio-1.60.0.orig/src/python/grpcio/grpc/_cython/_cygrpc/aio/callback_common.pxd.pxi
++++ grpcio-1.60.0/src/python/grpcio/grpc/_cython/_cygrpc/aio/callback_common.pxd.pxi
 @@ -48,7 +48,7 @@ cdef class CallbackWrapper:
      @staticmethod
      cdef void functor_run(

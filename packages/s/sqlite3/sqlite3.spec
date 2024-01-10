@@ -22,7 +22,7 @@
 %bcond_with icu
 %bcond_without check
 Name:           sqlite3
-Version:        3.44.1
+Version:        3.44.2
 Release:        0
 Summary:        Embeddable SQL Database Engine
 License:        SUSE-Public-Domain

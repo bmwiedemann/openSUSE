@@ -1,7 +1,7 @@
 #
 # spec file for package libhts
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 # Upstream does not bump htscodecs SOVERSION on backwards incompatible changes
-%define htscodecsminversion 1.3.0
+%define htscodecsminversion 1.6.0
 
 Name:           libhts
-Version:        1.16
+Version:        1.19
 Release:        0
 %define   sonum 3
 Summary:        C library for high-throughput sequencing data formats
@@ -129,8 +129,6 @@ chmod 0755 %{buildroot}%{_libdir}/libhts.so.*
 
 %post   -n libhts%{sonum} -p /sbin/ldconfig
 %postun -n libhts%{sonum} -p /sbin/ldconfig
-%post   devel -p /sbin/ldconfig
-%postun devel -p /sbin/ldconfig
 
 %files -n libhts%{sonum}
 %{_libdir}/libhts.so.*
@@ -147,7 +145,9 @@ chmod 0755 %{buildroot}%{_libdir}/libhts.so.*
 %license LICENSE
 %doc NEWS README
 %{_bindir}/htsfile
+%{_bindir}/annot-tsv
 %{_mandir}/man1/htsfile*
+%{_mandir}/man1/annot-tsv*
 %{_mandir}/man5/*
 %{_mandir}/man7/*
 

@@ -1,5 +1,5 @@
 #
-# spec file for package python-python-slugify
+# spec file
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -17,19 +17,19 @@
 
 
 %{?sle15_python_module_pythons}
-Name:           python-python-slugify
-Version:        5.0.2
+%define short_name python-slugify
+Name:           python-%{short_name}
+Version:        8.0.1
 Release:        0
 Summary:        Slugify application that handles Unicode
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/un33k/python-slugify
-Source:         https://files.pythonhosted.org/packages/source/p/python-slugify/python-slugify-%{version}.tar.gz
+Source:         %{short_name}-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module text-unidecode >= 1.3}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-setuptools
 Requires:       python-text-unidecode >= 1.3
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -42,8 +42,7 @@ BuildArch:      noarch
 A Python Slugify application that handles Unicode.
 
 %prep
-%setup -q -n python-slugify-%{version}
-sed -i 's/==/>=/' setup.py
+%setup -q -n %{short_name}-%{version}
 
 %build
 %python_build

@@ -1,7 +1,7 @@
 #
 # spec file for package python-uvloop
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define modname uvloop
 %{?sle15_python_module_pythons}
 Name:           python-uvloop
-Version:        0.17.0
+Version:        0.19.0
 Release:        0
 Summary:        An asyncio event loop on top of libuv
 License:        Apache-2.0 AND MIT
@@ -30,9 +30,11 @@ Source1:        python-uvloop.rpmlintrc
 BuildRequires:  %{python_module Cython >= 0.28 with %python-Cython < 3}
 BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pyOpenSSL}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
@@ -54,10 +56,10 @@ sed -i -e "/self.use_system_libuv/s/False/True/" setup.py
 rm -vrf vendor/
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 # https://github.com/MagicStack/uvloop/issues/70
 %python_expand rm -vf %{buildroot}%{$python_sitearch}/%{modname}/_testbase.py
@@ -72,6 +74,7 @@ rm -vrf vendor/
 %files %{python_files}
 %license LICENSE-APACHE LICENSE-MIT
 %doc README.rst
-%{python_sitearch}/*
+%{python_sitearch}/uvloop
+%{python_sitearch}/uvloop-%{version}.dist-info
 
 %changelog

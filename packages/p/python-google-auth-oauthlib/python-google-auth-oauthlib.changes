@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Dec 16 20:21:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.0:
+  * Add support for Python 3.12 (#318)
+  * Use setuptools.find_namespace_packages (#321)
+
+-------------------------------------------------------------------
 Thu Oct  5 09:03:50 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.0:

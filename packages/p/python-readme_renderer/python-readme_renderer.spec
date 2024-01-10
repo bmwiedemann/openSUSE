@@ -18,23 +18,24 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-readme_renderer
-Version:        41.0
+Version:        42.0
 Release:        0
 Summary:        A library for rendering "readme" descriptions
 License:        Apache-2.0
 URL:            https://github.com/pypa/readme_renderer
 Source:         https://files.pythonhosted.org/packages/source/r/readme_renderer/readme_renderer-%{version}.tar.gz
 BuildRequires:  %{python_module Pygments >= 2.5.1}
-BuildRequires:  %{python_module bleach >= 2.1.0}
 BuildRequires:  %{python_module cmarkgfm >= 0.7.0}
 BuildRequires:  %{python_module docutils >= 0.13.1}
+BuildRequires:  %{python_module nh3 >= 0.2.14}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Pygments >= 2.5.1
-Requires:       python-bleach >= 2.1.0
 Requires:       python-docutils >= 0.13.1
+Requires:       python-nh3 >= 0.2.14
 Recommends:     python-cmarkgfm >= 0.7.0
 BuildArch:      noarch
 %python_subpackages
@@ -48,10 +49,10 @@ long_description for packages.
 %autosetup -p1 -n readme_renderer-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -62,6 +63,6 @@ export LANG=en_US.UTF-8
 %license LICENSE
 %doc CHANGES.rst README.rst
 %{python_sitelib}/readme_renderer
-%{python_sitelib}/readme_renderer-%{version}*-info
+%{python_sitelib}/readme_renderer-%{version}.dist-info
 
 %changelog

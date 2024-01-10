@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Dec 11 11:27:05 UTC 2023 - Jiri Srain <jsrain@suse.com>
+
+- fixed upstream tarball URL
+
+-------------------------------------------------------------------
+Mon Feb  6 10:49:22 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 2.0.20230201
+  * correct  conversion  to/from  codes  past  BMP  (patch by Ben Wong,
+    Debian #1027414)
+  * fix a few compiler-warnings in configure-checks
+
+-------------------------------------------------------------------
 Sat Oct 29 16:36:21 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 20221028

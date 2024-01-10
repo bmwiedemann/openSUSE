@@ -29,7 +29,8 @@ Source2:        ocaml-augeas.rpmlintrc
 Patch1:         caml_named_value-returns-const-value-pointer-in-OCam.patch
 
 BuildRequires:  make
-BuildRequires:  ocaml >= 3.09.0
+BuildRequires:  ocaml
+BuildRequires:  ocaml-rpm-macros
 BuildRequires:  ocaml-findlib-devel
 BuildRequires:  ocaml-ocamldoc
 BuildRequires:  augeas-devel >= 0.1.0
@@ -75,24 +76,13 @@ ocamlfind install augeas META *.mli *.cmx *.cma *.cmxa *.a augeas.cmi *.so
 
 chrpath --delete $OCAMLFIND_DESTDIR/stublibs/dll*.so
 
+%ocaml_create_file_list
 
-%files
-%doc COPYING.LIB
-%{_libdir}/ocaml/augeas
-%exclude %{_libdir}/ocaml/augeas/*.a
-%exclude %{_libdir}/ocaml/augeas/*.cmxa
-%exclude %{_libdir}/ocaml/augeas/*.cmx
-%exclude %{_libdir}/ocaml/augeas/*.mli
-%{_libdir}/ocaml/stublibs/*.so
-%{_libdir}/ocaml/stublibs/*.so.owner
+%files -f %name.files
+%license COPYING.LIB
 
-
-%files devel
+%files devel -f %name.files.devel
 %doc html
-%{_libdir}/ocaml/augeas/*.a
-%{_libdir}/ocaml/augeas/*.cmxa
-%{_libdir}/ocaml/augeas/*.cmx
-%{_libdir}/ocaml/augeas/*.mli
 
 
 %changelog

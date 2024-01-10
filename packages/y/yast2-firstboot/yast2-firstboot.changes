@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 14 20:38:43 UTC 2023 - Josef Reidinger <jreidinger@suse.com>
+
+- Allow selecting WSL systemd pattern (jsc#PED-5644, jsc#PED-5099)
+- 5.0.1
+
+-------------------------------------------------------------------
 Wed Aug 30 20:16:10 UTC 2023 - Josef Reidinger <jreidinger@suse.cz>
 
 - 5.0.0 (bsc#1185510)

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan  9 08:37:34 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 1.3.11:
+  * Fix redlock to make multiple threads be able to lock on the same RedMutex
+  * Asynchronously update slot-node mapping in some edge cases
+  * Use weak_ptr to avoid joining EvenLoop thread in itself
+  * Support setting connection name
+  * Support shard pub/sub
+
+-------------------------------------------------------------------
 Thu Aug 24 08:43:42 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Update URL

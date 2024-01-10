@@ -1,8 +1,10 @@
-Index: Flask-Security-Too-5.1.1/tests/conftest.py
-===================================================================
---- Flask-Security-Too-5.1.1.orig/tests/conftest.py
-+++ Flask-Security-Too-5.1.1/tests/conftest.py
-@@ -879,7 +879,7 @@ def client_nc(request, sqlalchemy_app):
+---
+ tests/conftest.py |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -891,7 +891,7 @@ def client_nc(request, sqlalchemy_app):
      return app.test_client(use_cookies=False)
  
  
@@ -11,7 +13,7 @@ Index: Flask-Security-Too-5.1.1/tests/conftest.py
  def clients(request, app, tmpdir, realdburl, realmongodburl):
      if request.param == "cl-sqlalchemy":
          ds = sqlalchemy_setup(request, app, tmpdir, realdburl)
-@@ -925,7 +925,7 @@ def get_message_local(app):
+@@ -937,7 +937,7 @@ def get_message_local(app):
  
  
  @pytest.fixture(

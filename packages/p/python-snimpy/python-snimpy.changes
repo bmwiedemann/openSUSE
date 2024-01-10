@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 29 10:26:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.2:
+  * Compatibility with Python 3.12 by adding dependency to
+    pyasyncore.
+
+-------------------------------------------------------------------
 Tue Aug  1 06:20:20 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.0.1:

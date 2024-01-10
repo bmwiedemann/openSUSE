@@ -202,4 +202,12 @@
 - update rpmlintrc filter to match the current output</comment>
     <requestid>1093217</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>2677fd6f3e030cd28db33cc60ba2dcfa</srcmd5>
+    <version>1.4</version>
+    <time>1703198348</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1134422</requestid>
+  </revision>
 </revisionlist>

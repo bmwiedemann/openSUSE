@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %bcond_with ringdisabled
 %{?sle15_python_module_pythons}
 Name:           python-%{pypi_name}
-Version:        9.0.0
+Version:        10.0.0
 Release:        0
 Summary:        Pure-python HTTP server
 License:        BSD-3-Clause
@@ -38,8 +38,8 @@ Source99:       cheroot.rpmlintrc
 Patch0:         no-pypytools.patch
 # PATCH-FIX-UPSTREAM no-relative-imports.patch bsc#[0-9]+ mcepl@suse.com
 Patch1:         no-relative-imports.patch
-# https://github.com/cherrypy/cheroot/commit/f3170d40a699219345abb5813395ff39319fec86
-Patch2:         python-cheroot-no-six.patch
+# PATCH-FIX-SUSE increase-tests-timeouts.patch alarrosa@suse.com Tests take longer to run in s390x
+Patch2:         increase-tests-timeouts.patch
 BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module importlib-metadata if %python-base < 3.8}
 BuildRequires:  %{python_module jaraco.functools}
@@ -71,9 +71,6 @@ BuildRequires:  %{python_module urllib3 >= 1.25}
 # /SECTION
 Requires:       python-jaraco.functools
 Requires:       python-more-itertools >= 2.6
-%if 0%{python_version_nodots} < 38
-Requires:       python-importlib-metadata
-%endif
 %if %{with libalternatives}
 Requires:       alts
 BuildRequires:  alts

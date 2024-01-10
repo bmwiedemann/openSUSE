@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec 27 09:22:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.4:
+  * Fix ``UnknownTimeZoneError`` when unpickling
+    ``DateTime.DateTime().asdatetime()``.
+  * Repair equality comparison between DateTime instances and
+    other types.
+
+-------------------------------------------------------------------
 Tue Nov 14 12:39:24 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.3:
@@ -37,14 +46,14 @@ Wed Jan  4 16:24:44 UTC 2023 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Sat Oct 29 19:12:36 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 4.7: 
+- Update to version 4.7:
   * Fix rounding problem with DateTime addition beyond the year 2038 (#41)
 
 -------------------------------------------------------------------
 Tue Oct 11 23:16:05 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 4.6: 
-  * Fix __format__ method for DateTime objects (#39) 
+- Update to version 4.6:
+  * Fix __format__ method for DateTime objects (#39)
 
 -------------------------------------------------------------------
 Tue Aug  2 12:25:41 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>

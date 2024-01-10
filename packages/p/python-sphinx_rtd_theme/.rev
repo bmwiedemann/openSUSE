@@ -172,4 +172,22 @@
 </comment>
     <requestid>1108016</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>4acbb5b8a74486a1f2e17f287aa70e87</srcmd5>
+    <version>2.0.0</version>
+    <time>1704491900</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.0:
+  * Fix #1522: fix 'str' object has no attribute 'attributes'
+  * Increment for next potential release
+  * Fix AttributeError when one of css_files is a string
+  * Add support for docutils==0.20.x
+  * Use css_tag helper to inject CSS files
+
+- Add missing BuildRequires on sphinxcontrib-jquery.
+  * translation updates
+- drop sphinx41.patch: upstream
+- update to 0.5.1</comment>
+    <requestid>1135629</requestid>
+  </revision>
 </revisionlist>

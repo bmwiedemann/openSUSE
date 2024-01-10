@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan  3 09:40:46 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- require setuptools
+
+-------------------------------------------------------------------
 Thu Jul  6 11:21:10 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
@@ -40,7 +45,7 @@ Tue Apr 13 05:46:11 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
   * Simplify parse_duration, build_duration will now be called with explicit None arguments when components of a prescribed duration are not present in the ISO 8601 duration string instead of being excluded from the call
   * Remove unused decimalfraction.find_separator
   * Remove unused PythonTimeBuilder._split_to_microseconds
-  * Removed NegativeDurationError 
+  * Removed NegativeDurationError
 - Switch %pyunittest macro for running tests.
 
 -------------------------------------------------------------------
@@ -54,8 +59,8 @@ Mon Feb  1 17:43:29 UTC 2021 - Dirk Müller <dmueller@suse.com>
   * Define long_description_content_type as text/x-rst
   * Simplify Sphinx configuration
   * Add compat.is_string method, returns True for str, unicode types, False
-    otherwise, used to fix 28 
-  
+    otherwise, used to fix 28
+
 -------------------------------------------------------------------
 Sun Dec 20 09:47:26 UTC 2020 - Dirk Müller <dmueller@suse.com>
 
@@ -74,11 +79,11 @@ Sun Dec 20 09:47:26 UTC 2020 - Dirk Müller <dmueller@suse.com>
   * Missing delimiter in datetime strings when calling parse_datetime now raises ISOFormatError
   * Missing delimiter in regular and repeating interval strings when calling parse_interval and parse_repeating_interval now raises ISOFormatError
   * get_time_resolution now correctly throws ISOFormatError when a time component has too many characters in a time using ":" as a separator
-  
+
 -------------------------------------------------------------------
 Thu Apr 23 04:38:25 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Only BuildRequire python-mock with Python 2. 
+- Only BuildRequire python-mock with Python 2.
 
 -------------------------------------------------------------------
 Thu Sep 26 07:52:13 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
@@ -114,4 +119,4 @@ Tue Dec  4 12:45:33 UTC 2018 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Sun Aug 19 19:27:49 UTC 2018 - mimi.vx@gmail.com
 
-- inital commit 
+- inital commit

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Dec 27 08:50:24 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 0.11.0
+  * Reworked universe map to fit existing lore
+  * House Sirius completely reworked
+  * Improved autonav that uses lanes and is configurable
+  * Reworked structural outfits and number of ship slots
+  * Weapon sets are more simple with no distinction between
+    weapons and non-weapons
+  * Possible to legally obtain all "standard" factional ships
+    and outfits
+  * Point defense weapons that automatically fire at fighters
+    and missiles
+  * A lot more content
+  * Significant engine speed-ups
+  * Full changelog: 
+    https://github.com/naev/naev/releases/tag/v0.11.0
+
+-------------------------------------------------------------------
 Fri Jul  7 16:13:24 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 0.10.6

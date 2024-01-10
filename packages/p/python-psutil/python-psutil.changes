@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Dec 27 13:53:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.9.7:
+  * 2324_: enforce Ruff rule `raw-string-in-exception`, which
+    helps providing clearer tracebacks when exceptions are
+    raised by psutil.
+  * 2325_, [PyPy]: psutil did not compile on PyPy due to missing
+    `PyErr_SetExcFromWindowsErrWithFilenameObject` cPython API.
+- drop logind_y2038.patch (upstream)
+
+-------------------------------------------------------------------
 Wed Nov 15 20:38:35 UTC 2023 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 5.9.6:
@@ -70,7 +81,7 @@ Wed May  3 09:04:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
     or `UserWarning` is raised.
   * there are cases where `Process.cwd()`_ cannot be
     determined (e.g. directory no longer exists), in which case
-    we returned either ``None`` or an empty string. 
+    we returned either ``None`` or an empty string.
     This was consolidated and we now return ``""`` on all
     platforms.
   * [UNIX]: if process is a zombie, and we can only
@@ -1030,7 +1041,7 @@ Tue Nov  8 21:15:33 UTC 2016 - toddrme2178@gmail.com
       fail without raising an exception.
     + 933: [Windows] memory leak in cpu_stats() and
       WindowsService.description().
-      
+
 -------------------------------------------------------------------
 Sat Nov  5 16:22:59 UTC 2016 - michael@stroeder.com
 
@@ -1044,18 +1055,18 @@ Tue Oct 25 18:13:08 UTC 2016 - michael@stroeder.com
   * 927: Popen.__del__() may cause maximum recursion depth error.
 - Update to version 4.4.0:
   Enhancements
-  * 887: [Linux] virtual_memory()'s 'available' and 'used' 
-    values are more precise and match "free" cmdline utility. 
-    "available" also takes into account LCX containers 
+  * 887: [Linux] virtual_memory()'s 'available' and 'used'
+    values are more precise and match "free" cmdline utility.
+    "available" also takes into account LCX containers
     preventing "available" to overflow "total".
-  * 891: procinfo.py script has been updated and provides a 
+  * 891: procinfo.py script has been updated and provides a
     lot more info.
   Bug fixes
-  * 825: [Linux] cpu_affinity; fix possible double close and 
+  * 825: [Linux] cpu_affinity; fix possible double close and
     use of unopened socket.
-  * 885: ValueError is raised if a negative integer is passed 
+  * 885: ValueError is raised if a negative integer is passed
     to cpu_percent() functions.
-  * 892: [Linux] Process.cpu_affinity([-1]) raise SystemError 
+  * 892: [Linux] Process.cpu_affinity([-1]) raise SystemError
     with no error set; now ValueError is raised.
 
 -------------------------------------------------------------------
@@ -1064,15 +1075,15 @@ Sat Sep 24 12:36:35 UTC 2016 - michael@stroeder.com
 - update to version 4.3.1:
   * #881: "make install" now works also when using a virtual env.
   * #854: Process.as_dict() raises ValueError if passed an erroneous attrs name.
-  * #857: [SunOS] Process cpu_times(), cpu_percent(), threads() amd 
-    memory_maps() may raise RuntimeError if attempting to query a 64bit 
+  * #857: [SunOS] Process cpu_times(), cpu_percent(), threads() amd
+    memory_maps() may raise RuntimeError if attempting to query a 64bit
     process with a 32bit python. "Null" values are returned as a fallback.
-  * #858: Process.as_dict() should not return memory_info_ex() because it's 
+  * #858: Process.as_dict() should not return memory_info_ex() because it's
     deprecated.
   * #863: [Windows] memory_map truncates addresses above 32 bits
-  * #866: [Windows] win_service_iter() and services in general are not able 
+  * #866: [Windows] win_service_iter() and services in general are not able
     to handle unicode service names / descriptions.
-  * #869: [Windows] Process.wait() may raise TimeoutExpired with wrong 
+  * #869: [Windows] Process.wait() may raise TimeoutExpired with wrong
     timeout unit (ms instead of sec).
   * #870: [Windows] Handle leak inside psutil_get_process_data.
 
@@ -1371,7 +1382,7 @@ Mon Feb  2 22:16:07 UTC 2015 - michael@stroeder.com
 
 - Update to 2.2.1:
   - Fixed #572
-    ValueError: ambiguos inode with multiple PIDs references 
+    ValueError: ambiguos inode with multiple PIDs references
 
 -------------------------------------------------------------------
 Tue Jan  6 23:46:40 UTC 2015 - michael@stroeder.com
@@ -1580,7 +1591,7 @@ Sat Oct  6 23:01:56 UTC 2012 - os-dev@jacraig.com
 Fri May 25 04:29:28 UTC 2012 - highwaystar.ru@gmail.com
 
 - python3 package added
-- minor spec improvement 
+- minor spec improvement
 
 -------------------------------------------------------------------
 Tue Apr 24 07:44:19 UTC 2012 - saschpe@suse.de
@@ -1597,5 +1608,5 @@ Fri Mar 23 09:44:42 UTC 2012 - saschpe@suse.de
 -------------------------------------------------------------------
 Mon Mar 19 22:00:43 UTC 2012 - cfarrell@suse.com
 
-- First import 
+- First import
 

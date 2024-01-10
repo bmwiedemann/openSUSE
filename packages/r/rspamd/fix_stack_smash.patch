@@ -7,10 +7,10 @@ The caller uses the value to size its memory allocation:
         struct iovec *iov = g_alloca(sizeof(struct iovec) * niov);
 and that faulted on aarch64.
 
-Index: rspamd-3.7.4/src/libserver/logger/logger.c
+Index: rspamd-3.7.5/src/libserver/logger/logger.c
 ===================================================================
---- rspamd-3.7.4.orig/src/libserver/logger/logger.c
-+++ rspamd-3.7.4/src/libserver/logger/logger.c
+--- rspamd-3.7.5.orig/src/libserver/logger/logger.c
++++ rspamd-3.7.5/src/libserver/logger/logger.c
 @@ -1046,25 +1046,7 @@ gsize rspamd_log_fill_iov(struct iovec *
  	gint r;
  
@@ -20,11 +20,11 @@ Index: rspamd-3.7.4/src/libserver/logger/logger.c
 -				return 4;
 -			}
 -			else {
--				return 3; /* No time component */
+-				return 2; /* No time component */
 -			}
 -		}
 -		else if (log_systemd) {
--			return 3;
+-			return 4;
 -		}
 -		else {
 -			if (log_color) {
@@ -38,10 +38,3 @@ Index: rspamd-3.7.4/src/libserver/logger/logger.c
  	}
  	else {
  		static gchar timebuf[64], modulebuf[64];
-@@ -1197,4 +1179,4 @@ gsize rspamd_log_fill_iov(struct iovec *
- 			return niov;
- 		}
- 	}
--}
-\ No newline at end of file
-+}

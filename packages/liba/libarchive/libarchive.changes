@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Dec 29 18:39:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- skip write tests on 32bit, they OOM
+
+-------------------------------------------------------------------
+Sun Sep 17 08:53:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.7.2:
+  * Multiple vulnerabilities have been fixed in the PAX writer
+  * bsdunzip(1) now correctly handles arguments following an
+    -x after the zipfile
+  * zstd filter now supports the "long" write option
+  * SEGV and stack buffer overflow in verbose mode of cpio
+  * bsdunzip updated to match latest upstream code
+  * miscellaneous functional bugfixes
+
+
+-------------------------------------------------------------------
 Mon Jul 24 06:36:59 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - update to 3.7.0
@@ -9,12 +27,20 @@ Mon Jul 24 06:36:59 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
 Fri Dec 23 07:57:09 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.6.2 (bsc#1205629, CVE-2022-36227)
-  * NULL pointer dereference vulnerability in archive_write.c 
+  * NULL pointer dereference vulnerability in archive_write.c
   * include ZSTD in Windows builds (#1688)
   * SSL fixes on Windows (#1714, #1723, #1724)
   * rar5 reader: fix possible garbled output with bsdtar -O (#1745)
   * mtree reader: support reading mtree files with tabs (#1783)
   * various small fixes for issues found by CodeQL
+- Drop upstream merged CVE-2022-36227.patch
+
+-------------------------------------------------------------------
+Tue Nov 22 14:20:36 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Fix CVE-2022-36227, Handle a calloc returning NULL
+  (CVE-2022-36227, bsc#1205629)
+  * CVE-2022-36227.patch
 
 -------------------------------------------------------------------
 Fri Apr  8 17:01:05 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -26,7 +52,15 @@ Fri Apr  8 17:01:05 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * RARv4 redaer: fix multiple issues in RARv4 filter code (introduced in libarchive 3.6.0)
   * fix heap use after free in archive_read_format_rar_read_data() (OSS-Fuzz 44547, 52efa50)
   * fix null dereference in read_data_compressed() (OSS-Fuzz 44843, 1271f77)
-  * fix heap user after free in run_filters() (OSS-Fuzz 46279, #1715) 
+  * fix heap user after free in run_filters() (OSS-Fuzz 46279, #1715)
+- Drop upstream merged fix-CVE-2022-26280.patch
+
+-------------------------------------------------------------------
+Tue Apr  7 16:28:45 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Fix CVE-2022-26280 out-of-bounds read via the component zipx_lzma_alone_init
+  (CVE-2022-26280, bsc#1197634)
+  * fix-CVE-2022-26280.patch
 
 -------------------------------------------------------------------
 Thu Feb 24 19:18:32 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
@@ -41,7 +75,19 @@ Thu Feb 24 19:18:32 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
   * tar: respect "--ignore-zeros" in c, r and u modes
   * reduced size of application binaries
   * internal code optimizations
-- Drop upstream merged fix-following-symlinks.patch
+- Drop upstream merged:
+  * fix-following-symlinks.patch
+  * fix-CVE-2021-36976.patch
+
+-------------------------------------------------------------------
+Mon Feb 23 14:44:21 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Fix CVE-2021-36976 use-after-free in copy_string
+  (CVE-2021-36976, bsc#1188572)
+  * fix-CVE-2021-36976.patch
+- The following issues have already been fixed in this package but
+  weren't previously mentioned in the changes file:
+  CVE-2017-5601, bsc#1022528, bsc#1189528
 
 -------------------------------------------------------------------
 Mon Nov 29 09:00:26 UTC 2021 - Adrian Schröter <adrian@suse.de>
@@ -55,7 +101,7 @@ Sun Nov  7 19:13:11 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.5.2:
   * CPIO: Support for PWB and v7 binary cpio formats
-  * ZIP reader: Support of deflate algorithm in symbolic link decompression 
+  * ZIP reader: Support of deflate algorithm in symbolic link decompression
   * security: fix handling of symbolic link ACLs on Linux (boo#1192425)
   * security: never follow symlinks when setting file flags on Linux (boo#1192426)
   * security: do not follow symlinks when processing the fixup list (boo#1192427)
@@ -65,7 +111,27 @@ Sun Nov  7 19:13:11 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
   * ZIP reader: fix excessive read for padded zip
   * CAB reader: fix double free
   * handle short writes from archive_write_callback
- 
+- Drop upstream mereged:
+  * CVE-2021-23177.patch
+  * CVE-2021-31566.patch
+  * bsc1192427.patch
+
+-------------------------------------------------------------------
+Fri Oct 21 14:18:01 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Fix CVE-2021-31566, modifies file flags of symlink target
+  (CVE-2021-31566, bsc#1192426.patch)
+  CVE-2021-31566.patch
+- Fix bsc#1192427, processing fixup entries may follow symbolic links
+  bsc1192427.patch
+
+-------------------------------------------------------------------
+Mon Sep 12 14:07:20 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Fix CVE-2021-23177, extracting a symlink with ACLs modifies ACLs of target
+  (CVE-2021-23177, bsc#1192425)
+  * CVE-2021-23177.patch
+
 -------------------------------------------------------------------
 Wed Jan  6 16:11:01 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
@@ -156,7 +222,7 @@ Fri Nov 22 13:17:53 UTC 2019 - Adrian Schröter <adrian@suse.de>
 -------------------------------------------------------------------
 Sun Aug 18 12:33:05 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
 
-- Switch to cmake build 
+- Switch to cmake build
 - Add lib-suffix.patch to honor LIB_SUFFIX
 - Add fix-zstd-test.patch to fix zstd test
 - Add fix-soversion.patch to fix the soversion to 13 as autotools
@@ -338,7 +404,7 @@ Tue Nov 11 12:07:46 UTC 2014 - jsegitz@novell.com
 -------------------------------------------------------------------
 Wed May 28 17:18:59 UTC 2014 - crrodriguez@opensuse.org
 
-- libarchive-xattr.patch, fix subtle wrong library check 
+- libarchive-xattr.patch, fix subtle wrong library check
   that causes this package to depend on libattr when it should
   be using glibc.
 
@@ -358,15 +424,15 @@ Tue Aug 20 05:34:09 UTC 2013 - crrodriguez@opensuse.org
 -------------------------------------------------------------------
 Mon Aug 19 21:14:38 UTC 2013 - crrodriguez@opensuse.org
 
-- libarchive-openssl.patch: Call OPENSSL_config where needed, 
-  otherwise on systems configured to use openSSL engines such 
+- libarchive-openssl.patch: Call OPENSSL_config where needed,
+  otherwise on systems configured to use openSSL engines such
   as via-padlock wont benefit from hardware acceleration.
 
 -------------------------------------------------------------------
 Fri Aug 16 20:07:27 UTC 2013 - andreas.stieger@gmx.de
 
 - update to 3.1.2
-  This is a maintenance update to fix issues with the new RAR 
+  This is a maintenance update to fix issues with the new RAR
   seeking feature.
 - libarchive's new website moved to http://www.libarchive.org.
 
@@ -435,22 +501,22 @@ Tue Aug  7 18:47:14 UTC 2012 - dimstar@opensuse.org
 -------------------------------------------------------------------
 Mon May  7 08:35:39 UTC 2012 - werner@suse.de
 
-- Enforce usage of reentrant versions of libc functions 
+- Enforce usage of reentrant versions of libc functions
 
 -------------------------------------------------------------------
 Mon Feb 13 18:19:49 UTC 2012 - dvaleev@suse.com
 
-- fix failed tests on ppc 
+- fix failed tests on ppc
 
 -------------------------------------------------------------------
 Wed Feb  8 10:57:45 UTC 2012 - idonmez@suse.com
 
-- Use %makeinstall to be SLES compatible 
+- Use %makeinstall to be SLES compatible
 
 -------------------------------------------------------------------
 Thu Dec 22 11:27:05 UTC 2011 - werner@suse.de
 
-- For SLES11 work around missing rpm macro 
+- For SLES11 work around missing rpm macro
 
 -------------------------------------------------------------------
 Tue Dec  6 16:00:48 UTC 2011 - coolo@suse.com
@@ -475,8 +541,8 @@ Fri Sep 30 08:15:50 UTC 2011 - coolo@suse.com
 -------------------------------------------------------------------
 Tue Apr 19 13:23:09 UTC 2011 - idoenmez@novell.com
 
-- Add suport for xz and xar archives 
-- Add libarchive-2.8.4-iso9660-data-types.patch: 
+- Add suport for xz and xar archives
+- Add libarchive-2.8.4-iso9660-data-types.patch:
   fix ISO9660 reader data type mismatches
 
 -------------------------------------------------------------------
@@ -523,7 +589,7 @@ Sat Sep  6 17:54:11 CEST 2008 - mrueckert@suse.de
 -------------------------------------------------------------------
 Wed Aug 15 12:58:06 CEST 2007 - ro@suse.de
 
-- fix dependency of devel package 
+- fix dependency of devel package
 
 -------------------------------------------------------------------
 Tue Aug  7 16:47:22 CEST 2007 - mrueckert@suse.de
@@ -549,7 +615,7 @@ Mon Jul 30 14:31:32 CEST 2007 - mrueckert@suse.de
 Fri Jun  8 01:35:37 CEST 2007 - ro@suse.de
 
 - added ldconfig to post scripts
-- remove minitar objects (leave binary there for now) 
+- remove minitar objects (leave binary there for now)
 
 -------------------------------------------------------------------
 Sun Apr  8 20:53:59 CEST 2007 - mrueckert@suse.de

@@ -795,4 +795,21 @@ Tests/
     <comment></comment>
     <requestid>1103858</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>ce17f4e0eb86739a5890fbc4b18eb6df</srcmd5>
+    <version>3.4.4</version>
+    <time>1702673308</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.4.4:
+  * Reconnect race condition in ReconnectLDAPObject is now fixed
+  * Socket ownership is now claimed once we've passed it to
+    libldap LDAP_set_option string formats are now compatible
+    with Python 3.12
+
+- use sasl2
+- LDAP_FILT_MAXSIZ isn't defined in libldap anymore
+- changed for openldap2
+- fixed neededforbuild (added ldaplib)</comment>
+    <requestid>1133198</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Dec 29 13:52:24 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to enable the gmpy test correctly:
+  * enable_gmpy_test.patch
+- Disable BuildRequies pandas and scikit-learn in SLE where
+  they're not available and only used for tests
+- Use python-bson instead of python-pymongo in SLE
+- Do not search for tests recursively in SLE but explicitly name
+  the directory/files containing tests. This solves an issue
+  building the package without pandas in SLE.
+
+-------------------------------------------------------------------
 Wed Dec 13 16:18:51 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 3.0.2

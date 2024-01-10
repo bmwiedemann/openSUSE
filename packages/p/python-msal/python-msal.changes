@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec  8 13:02:43 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.26.0
+  * Do not auto-detect region if app developer does not opt-in to region (#629, #630)
+  * Support Proof-of-Possession (PoP) for Public Client based on broker (#511)
+
+-------------------------------------------------------------------
 Fri Nov 24 10:25:59 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.25.0

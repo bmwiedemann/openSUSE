@@ -696,4 +696,13 @@ Latest changes:
     <comment></comment>
     <requestid>1084827</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>fcd8a5a81d4543ea7ca3a949eb22c80f</srcmd5>
+    <version>0.8.15</version>
+    <time>1704561828</time>
+    <user>dimstar_suse</user>
+    <comment>- SUSEPrime-0.8.14
+  * added prime-run script for easier offload mode usage (github issue#96)</comment>
+    <requestid>1137277</requestid>
+  </revision>
 </revisionlist>

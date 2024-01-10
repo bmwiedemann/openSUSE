@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Dec 30 03:07:10 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.7000
+   see /usr/share/doc/packages/perl-Math-BigInt-GMP/CHANGES
+
+  1.7000 2023-12-29
+   * Add new methods _to_hex(), _to_bin(), _to_oct(), _lcm(), _dfac(), _nok(),
+     _fib(), and _lucas(). These are now in XS code rather than being inherited.
+  1.6014 2023-12-27
+   * Sync test files with Math-BigInt.
+
+-------------------------------------------------------------------
 Thu Sep 21 03:08:54 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.6013

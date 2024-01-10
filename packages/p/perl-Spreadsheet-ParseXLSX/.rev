@@ -7,4 +7,12 @@
     <comment>- new dependency for perl-Spreadsheet-Read</comment>
     <requestid>696486</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>197cb30168ec0b3f34d475f268f1f318</srcmd5>
+    <version>0.290.0</version>
+    <time>1704383249</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1136861</requestid>
+  </revision>
 </revisionlist>

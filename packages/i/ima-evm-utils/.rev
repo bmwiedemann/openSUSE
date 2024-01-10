@@ -245,4 +245,12 @@
 - /usr/sbin to PATH (0001-fsverity.test-Add-usr-sbin-into-PATH.patch, sent to upstream ML) (forwarded request 1070704 from pevik)</comment>
     <requestid>1070713</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>30e084dc7635e7115b69d55200b7d506</srcmd5>
+    <version>1.5</version>
+    <time>1704380195</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1135992</requestid>
+  </revision>
 </revisionlist>

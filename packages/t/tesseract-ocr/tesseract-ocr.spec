@@ -18,7 +18,7 @@
 
 %define lname	libtesseract5
 Name:           tesseract-ocr
-Version:        5.3.1
+Version:        5.3.3
 Release:        0
 Summary:        Open Source OCR Engine
 License:        Apache-2.0 AND GPL-2.0-or-later

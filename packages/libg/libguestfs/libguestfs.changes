@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Jan  4 13:10:51 MST 2024 - carnold@suse.com
+
+- Update to version 1.52.0 (jsc#PED-6305)
+  * The Python bindings now use bytes (instead of str) for the
+    event callback message, since it may contain arbitrary 8 bit
+    data
+    Fix a rare crash, and avoid memory leaks in event callbacks
+  * Support for OCaml 5, and OCaml ≥ 4.07 is now the minimum
+  * The OCaml bindings now release the runtime lock around calls
+    to guestfs_close, since that call might be long-running (for
+    example it might have to shut down the appliance and synch disks).
+  * Support OpencloudOS
+  * SELinux relabelling now runs in parallel, meaning it's a lot
+    quicker
+  * Add support for lzma and zstd compression methods in tar APIs
+    (like guestfs_tar_in)
+  * guestfs_pvs_full previously didn't always return the correct
+    device names. This has now been fixed.
+  * guestfs_btrfs_filesystem_balance fixed so it now works with
+    more modern btrfs tools (Jürgen Hötzel).
+  * The guestfish(1) --key option now recognizes LVM names like
+    /dev/mapper/rhel_bootp--73--75--123-root
+  * guestfish --key option also supports a new --key all:...
+    selector to try the same key on all devices.
+  * In guestmount(1) avoid calling fclose(NULL) on error paths,
+    which might have caused a crash on some platforms.
+
+-------------------------------------------------------------------
+Tue Dec 19 09:00:54 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Provide a tar-wrapper that creates bit-reproducible output (boo#1218191)
+
+-------------------------------------------------------------------
+Tue Dec 12 12:12:12 UTC 2023 - ohering@suse.de
+
+- Use ocaml-rpm-macros to track OCaml ABI
+- Remove unused perl_gen_filelist
+
+-------------------------------------------------------------------
 Mon Dec 11 12:39:30 MST 2023 - carnold@suse.com
 
 - Update to version 1.51.9
@@ -47,6 +86,8 @@ Thu Mar 23 15:49:09 UTC 2023 - Martin Liška <mliska@suse.cz>
 -------------------------------------------------------------------
 Wed Mar 15 07:33:43 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
+- bsc#1213243 - KubeVirt needs libguestfs with the support of qcow2
+  appliances
 - Configure with --enable-appliance-format-auto to allow
   qcow2-format fixed appliances.
 
@@ -105,7 +146,7 @@ Thu Feb  9 12:55:46 MST 2023 - carnold@suse.com
 Fri Dec 16 09:08:08 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix build with RPM 4.18: rpm wants to do a proper cleanup, and
-  fails on the design choice to have /usr/lib65 without write
+  fails on the design choice to have /usr/lib64 without write
   permission. As we already tar'ed the content up, we can simply
   change the permissions of winsupport's content to allow proper
   erasing.

@@ -23,4 +23,14 @@
     <comment>- Disable test_invalid checks, quotes change in output</comment>
     <requestid>798104</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d20cc3ced0a47f763f5beb522fe0d874</srcmd5>
+    <version>1.0.4</version>
+    <time>1703800884</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.4:
+  * support new click versions
+  * convert to poetry</comment>
+    <requestid>1135261</requestid>
+  </revision>
 </revisionlist>

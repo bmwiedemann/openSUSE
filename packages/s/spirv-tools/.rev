@@ -332,4 +332,12 @@ join Staging:E</comment>
     <comment>new_version</comment>
     <requestid>1120700</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>aa15600f05a5877ae98d47d491675773</srcmd5>
+    <version>2023.6~rc1</version>
+    <time>1703800498</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 2023.6~rc1</comment>
+    <requestid>1134681</requestid>
+  </revision>
 </revisionlist>

@@ -21,7 +21,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 
 Name:           python-drgn
-Version:        0.0.24
+Version:        0.0.25
 Release:        0
 Summary:        Scriptable debugger library
 License:        LGPL-2.1-or-later

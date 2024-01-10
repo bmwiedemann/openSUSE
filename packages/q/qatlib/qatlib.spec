@@ -1,7 +1,7 @@
 #
 # spec file for package qatlib
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           qatlib
-Version:        22.07.2
+Version:        23.11.0
 Release:        0
 Summary:        Intel QuickAssist Technology Library
 License:        BSD-3-Clause
@@ -41,16 +41,16 @@ Summary:        QuickAssist memory management library
 %description -n libusdm0
 User space library for memory management.
 
-%package -n libqat3
+%package -n libqat4
 Summary:        QuickAssist device access library
 
-%description -n libqat3
+%description -n libqat4
 User space library for accessing Intel QAT devices.
 
 %package devel
 Summary:        Development files for qatlib
 Group:          Hardware/Other
-Requires:       libqat3 = %{version}-%{release}
+Requires:       libqat4 = %{version}-%{release}
 Requires:       libusdm0 = %{version}-%{release}
 
 %description
@@ -69,7 +69,7 @@ than the more general libkcapi.
 autoreconf -iv
 
 %build
-%configure --disable-static
+%configure --disable-static --enable-legacy-algorithms
 %make_build
 
 %install
@@ -78,7 +78,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 rm -f %{buildroot}%{_libdir}/*.so.[0-9]
 
 %ldconfig_scriptlets -n libusdm0
-%ldconfig_scriptlets -n libqat3
+%ldconfig_scriptlets -n libqat4
 
 %files
 %license LICENSE
@@ -90,8 +90,8 @@ rm -f %{buildroot}%{_libdir}/*.so.[0-9]
 %files -n libusdm0
 %{_libdir}/libusdm.so.0*
 
-%files -n libqat3
-%{_libdir}/libqat.so.3*
+%files -n libqat4
+%{_libdir}/libqat.so.4*
 
 %files devel
 %{_includedir}/qat

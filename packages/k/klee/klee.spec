@@ -16,8 +16,7 @@
 #
 
 
-%define llvm_version_major 14
-%define llvm_version %{llvm_version_major}
+%define llvm_version 16
 
 %ifarch x86_64
 %define with_uclibc 1
@@ -31,14 +30,37 @@ Name:           klee
 Summary:        LLVM Execution Engine
 License:        NCSA
 Group:          Development/Languages/Other
-Version:        3.0+20230611
+Version:        3.0+20231023
 Release:        0
 URL:            http://klee.github.io/
 Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
-Source2:        https://raw.githubusercontent.com/llvm/llvm-project/llvmorg-%{llvm_version_major}.0.0/llvm/utils/not/not.cpp
-Source3:        https://raw.githubusercontent.com/llvm/llvm-project/llvmorg-%{llvm_version_major}.0.0/llvm/utils/FileCheck/FileCheck.cpp
-Patch0:         0001-test-disable-until-it-is-fixed.patch
+Source2:        https://raw.githubusercontent.com/llvm/llvm-project/llvmorg-%{llvm_version}.0.0/llvm/utils/not/not.cpp
+Source3:        https://raw.githubusercontent.com/llvm/llvm-project/llvmorg-%{llvm_version}.0.0/llvm/utils/FileCheck/FileCheck.cpp
+Patch1:         0001-Add-support-to-build-newer-LLVM-versions.patch
+Patch2:         0002-Add-support-for-newer-libc-Simplify-path-detection.patch
+Patch3:         0003-Replace-libcxx_include-with-libcxx_includes-for-mult.patch
+Patch4:         0004-Fix-klee-libc-memchr.c-compiler-warning.patch
+Patch5:         0005-Fix-klee_eh_cxx.cpp-compiler-error.patch
+Patch6:         0006-Refactor-invocation-of-old-pass-manager-into-legacy-.patch
+Patch7:         0007-Use-KLEE-s-uClibc-v1.4-as-default-to-support-the-com.patch
+Patch8:         0008-Assume-C-compiler-s-default-standard-is-std-gnu17.patch
+Patch9:         0009-Explicitly-build-KLEE-s-exception-handling-runtime-w.patch
+Patch10:        0010-Explicitly-enable-opaque-pointer-support-for-LLVM-15.patch
+Patch11:        0011-Add-support-for-opaque-pointers.patch
+Patch12:        0012-Fix-test-cases-to-support-opaque-pointers.patch
+Patch13:        0013-Fix-test-case-using-unsupported-CHECK_NEXT-instead-o.patch
+Patch14:        0014-Use-APIs-of-newer-LLVM-versions-instead-of-unsupport.patch
+Patch15:        0015-Add-support-for-Intrinsic-get_rounding-for-LLVM-16.patch
+Patch16:        0016-Add-support-to-aligned_alloc-generated-by-LLVM.patch
+Patch17:        0017-Disable-unsupported-passes-for-newer-LLVM-versions.patch
+Patch18:        0018-Disable-2018-10-30-llvm-pr39177.ll-for-newer-LLVM-ve.patch
+Patch19:        0019-Handle-check-for-thrown-libc-exceptions-more-general.patch
+Patch20:        0020-Update-test-case-for-expressions-using-udiv-urem-sdi.patch
+Patch21:        0021-Support-newer-LLVM-versions-in-lit.patch
+Patch22:        0022-Enable-CI-to-test-newer-LLVM-versions.patch
+Patch100:       0001-test-disable-failing-tests-with-llvm-15.patch
+
 BuildRequires:  clang%{llvm_version}
 BuildRequires:  cmake
 BuildRequires:  gperftools-devel

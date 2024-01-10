@@ -1,7 +1,7 @@
 #
 # spec file for package python-pysendfile
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ URL:            https://github.com/giampaolo/pysendfile
 Source:         https://files.pythonhosted.org/packages/source/p/pysendfile/pysendfile-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 %python_subpackages

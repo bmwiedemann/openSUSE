@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 20 11:20:42 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Do not write non-deterministic .pyc files in tests
+
+-------------------------------------------------------------------
 Mon Oct 16 10:35:12 UTC 2023 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - Update to 1.0.0rc27:

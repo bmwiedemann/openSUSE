@@ -580,4 +580,41 @@ Let's see which package is missing in ringX for test flavor</comment>
     <comment>- Skip failing test with hypothesis gh#PyCQA/isort#2171 (forwarded request 1108058 from bnavigator)</comment>
     <requestid>1108059</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>1aca51815117197c83e6b1ed7edc12a2</srcmd5>
+    <version>5.13.2</version>
+    <time>1702845199</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.13.2:
+  * Apply the bracket fix from issue #471 only for
+    use_parentheses=True
+  * Confine pre-commit to stages
+  * Fixed colors extras
+  * Fixed integration tests
+  * Fixed normalizing imports from more than one level of parent
+    modules
+  * Remove optional dependencies without extras
+  * Cleanup deprecated extras
+  * Fixed #1989: settings lookup when working in stream based
+    mode
+  * Fixed 80 line length for wemake linter
+  * Add support for Python 3.12
+  * Fixed assertions in test_git_hook
+  * Removed check for include_trailing_comma for the Hanging
+    Indent wrap mode
+  * Use the standard library tomllib on sufficiently new python
+  * Fixed safety sept 2023
+  * chore: move configurations to pyproject.toml (#2115)
+  * Fixed typo in README
+  * Update version in pre-commit setup to avoid installation
+    issue with poetry
+  * Skip .pytype directory by default.
+  * Fixed a tip block styling in the Config Files section (#2097)
+
+  * Fixed #1556: Empty line added between imports that should be
+  * Improved packaging of test files alongside source distribution
+  * Fixed #1548: On rare occasions an unecessary empty line can be
+  * Fixed #1542: Bug in VERTICAL_PREFIX_FROM_MODULE_IMPORT wrap</comment>
+    <requestid>1133685</requestid>
+  </revision>
 </revisionlist>

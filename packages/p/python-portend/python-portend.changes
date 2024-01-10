@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan  7 21:06:09 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.0:
+  * Require Python 3.8 or later.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:29:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

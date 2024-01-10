@@ -1,6 +1,6 @@
 --- pppd/auth.c.orig
 +++ pppd/auth.c
-@@ -2105,9 +2105,10 @@ check_access(f, filename)
+@@ -2184,9 +2184,10 @@ check_access(FILE *f, char *filename)
  
      if (fstat(fileno(f), &sbuf) < 0) {
  	warn("cannot stat secret file %s: %m", filename);
@@ -16,7 +16,7 @@
  
 --- pppd/lcp.c.orig
 +++ pppd/lcp.c
-@@ -2302,7 +2302,7 @@ lcp_received_echo_reply (f, id, inp, len
+@@ -2243,7 +2243,7 @@ lcp_received_echo_reply (fsm *f, int id,
      if (lcp_gotoptions[f->unit].neg_magicnumber
  	&& magic == lcp_gotoptions[f->unit].magicnumber) {
  	warn("appear to have received our own echo-reply!");
@@ -25,9 +25,9 @@
      }
  
      /* Reset the number of outstanding echo frames */
---- pppd/pppd.h.orig
-+++ pppd/pppd.h
-@@ -873,15 +873,7 @@ extern void (*snoop_send_hook) __P((unsi
+--- pppd/pppd-private.h.orig
++++ pppd/pppd-private.h
+@@ -545,15 +545,7 @@ int parse_dotted_ip(char *, u_int32_t *)
  #define DEBUGCHAP	1
  #endif
  

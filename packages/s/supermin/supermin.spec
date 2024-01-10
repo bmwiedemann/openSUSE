@@ -1,7 +1,7 @@
 #
 # spec file for package supermin
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,28 @@
 
 
 Name:           supermin
-Version:        5.2.2
+Version:        5.3.3
 Release:        0
 Summary:        Bootstrapping tool for creating supermin appliances
 License:        GPL-3.0-or-later
 Group:          System/Filesystems
 URL:            https://libguestfs.org/
-Source0:        https://download.libguestfs.org/supermin/5.2-stable/supermin-5.2.2.tar.gz
-Source1:        https://download.libguestfs.org/supermin/5.2-stable/supermin-5.2.2.tar.gz.sig
+Source0:        https://download.libguestfs.org/supermin/5.3-development/supermin-5.3.3.tar.gz
+Source1:        https://download.libguestfs.org/supermin/5.3-development/supermin-5.3.3.tar.gz.sig
 Source9:        supermin.keyring
-# Pending upstream review
-Patch10:        suse_release.patch
-Patch11:        supermin-kernel_version_compressed.patch
-Patch12:        disable-test-if-newer-ext2.patch
-# Backport of https://github.com/libguestfs/supermin/commit/4306a131c6cde92f8d0a2dd9376f4096ee538eff.patch
-Patch13:        initrd_support_ztd-compressed_modules.patch
-Patch14:        detect-aarch64-kernel.patch
+Patch1:         001-Improved-debugging-of-the-supermin-if-newer-calculation.patch
+Patch2:         002-Fix-if-newer-copy-kernel.patch
+Patch3:         003-Fix-kernel-filtering-for-aarch64-architecture.patch
+Patch4:         004-Use-output-complete-exe-instead-of-custom.patch
+Patch5:         005-Only-supply-output-complete-exe-to-final-link.patch
+Patch6:         006-Rename-function-file-kernel.patch
+Patch7:         007-Uncompress-kernel-on-RISC-V.patch
+Patch8:         008-Fix-link-to-renamed-kernel-documentation.patch
+Patch9:         009-New-mailing-list-email-address.patch
+Patch30:        suse_release.patch
+Patch31:        supermin-kernel_version_compressed.patch
+Patch32:        disable-test-if-newer-ext2.patch
+Patch33:        detect-aarch64-kernel.patch
 BuildRequires:  augeas
 BuildRequires:  autoconf
 BuildRequires:  automake

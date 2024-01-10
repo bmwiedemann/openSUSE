@@ -137,4 +137,18 @@ New dependecy of python-Pyramid</comment>
     <comment></comment>
     <requestid>1100793</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>826e48f02f7a69b0ddf227bde4d740d8</srcmd5>
+    <version>6.1.0</version>
+    <time>1704491952</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.1.0:
+  * Add support for Python 3.12.
+
+- Update to version 5.1.1
+  * Fix the possibility of a rare crash in the C extension when
+  * Add attributes to support pluralization on a Message and update
+  * Fix a regression copying Message objects in the Python</comment>
+    <requestid>1136297</requestid>
+  </revision>
 </revisionlist>

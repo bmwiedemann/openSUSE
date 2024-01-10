@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Dec 29 09:02:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 23.11.0:
+ * Fix test-failures on Python 3.12
+ * Particular GETINFO hanging
+   (ultra-long lines over 16KiB caused problems in the protocol)
+ * Use built-in `mock` only
+ * Remove `incremental`
+
+-------------------------------------------------------------------
 Tue Sep 19 12:02:42 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 23.5.0

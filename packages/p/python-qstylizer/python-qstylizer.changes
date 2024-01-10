@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan  7 17:31:10 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Add qstylizer-pr17-fix-py12-mock.patch gh#blambright/qstylizer#17
+- Move to PEP517 build
+
+-------------------------------------------------------------------
 Fri Oct  7 03:46:52 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - version update to 0.2.2 

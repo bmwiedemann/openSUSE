@@ -1,7 +1,7 @@
 #
 # spec file for package rxvt-unicode
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,6 +43,7 @@ Patch4:         rxvt-unicode-hardening.patch
 Patch5:         rxvt-unicode-secondarywheel.patch
 Patch7:         handle-new-tic-and-dont-install-terminfo.patch
 Patch8:         dont-set-empty-local.patch
+Patch9:         confirm-paste-Change-y-p-n-to-y-f-n-to-preserve-comp.patch
 BuildRequires:  gcc-c++
 BuildRequires:  ncurses-devel
 BuildRequires:  perl

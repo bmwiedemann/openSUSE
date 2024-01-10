@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 14 09:12:38 UTC 2023 - Petr Gajdos <pgajdos@suse.com>
+
+- update to 3.1.1:
+  * Add PEP-561 with py.typed
+
+-------------------------------------------------------------------
 Fri Apr 21 12:21:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

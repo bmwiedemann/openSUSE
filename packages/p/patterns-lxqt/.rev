@@ -142,4 +142,13 @@
     <comment></comment>
     <requestid>1003707</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>798861710e1fdb51f1e58935a9f5e274</srcmd5>
+    <version>20231212</version>
+    <time>1703198356</time>
+    <user>anag+factory</user>
+    <comment>- boo#1218288: Require liblxqt
+  Other parts can depend on the binaries shipped there</comment>
+    <requestid>1134436</requestid>
+  </revision>
 </revisionlist>

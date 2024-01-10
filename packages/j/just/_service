@@ -6,11 +6,10 @@
     <param name="exclude">.git</param>
     <param name="exclude">.github</param>
     <param name="exclude">www</param>
-    <param name="revision">63c0234c968b5a12a7ecceb4ebc6540996274a85</param>
+    <param name="revision">2846df7e27e2baa9a9431a7af133545bd1eb1e7f</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
     <param name="changesgenerate">enable</param>
-    <param name="changesauthor">socvirnyl.estela@gmail.com</param>
   </service>
   <service mode="manual" name="recompress">
     <param name="file">*.tar</param>

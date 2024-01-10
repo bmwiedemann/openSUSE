@@ -304,4 +304,40 @@
     <comment>- added 0001-add-suse_py39-flavor-to-explicitly-render-templates-.patch</comment>
     <requestid>1109587</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>205d890bed149744dcf2f988c8b8667d</srcmd5>
+    <version>0.28.0</version>
+    <time>1704660051</time>
+    <user>dimstar_suse</user>
+    <comment>- removed 0001-add-suse_py39-flavor-to-explicitly-render-templates-.patch
+- update to version 0.28.0
+  - Moving IRC network reference to OFTC
+  - Remove retired Qinling support
+  - Remove retired Searchlight usage
+  - add suse_py39 flavor to explicitly render templates for py39
+  - Remove retired karbor usage
+  - Add RDO mapping for psycopg2-binary
+  - Remove retired Karbor support
+  - Update package rules for some packages in the Redhat ecosystems
+  - update to zed level jobs
+  - Add python2 and python3 return values
+  - Bump some requirements in lower-constraints.txt
+  - Convert from &quot;-&quot; to &quot;_&quot; in setup.cfg
+  - Add RDO mapping for semantic-version
+  - Revert &quot;Fix PyYAML mapping for RDO&quot;
+  - bump py37 to py38 in tox.ini
+  - Move CLI code into it's own module
+  - [tox] Update constraints, flake8 settings and default envlist
+  - Add reqs2pkg
+  - Use py3 as the default runtime for tox
+  - remove unicode from code
+  - [community goal] Update contributor documentation
+  - Add doc/requirements
+  - Retire django-openstack-auth
+  - add suse_py311 flavor to explicitly render templates for py311
+  - Add RDO mapping for suds-community
+  - Add RDO mapping for prometheus-client
+  - Change RDO mapping for sympy and protobuf</comment>
+    <requestid>1137433</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan  6 20:55:19 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 5.3.3:
+  Fix for CVE-2023-49438 (bsc#1218412).
+- Refresh patches:
+  - no-mongodb.patch
+  - use-pyqrcodeng.patch
+
+-------------------------------------------------------------------
 Thu Nov 30 13:24:31 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add %{?sle15_python_module_pythons}
@@ -185,6 +194,7 @@ Mon Feb 28 06:16:49 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
   * Add 2FA Validity Window so an application can configure how often the
     second factor has to be entered.
   * Add HTML5 Email input types to email fields.
+- 4.1.0 fixed bsc#1202105 CVE-2021-23385.
 - Refresh no-mongodb.patch
 - Drop patches:
   * no-setup-dependencies.patch
@@ -208,6 +218,7 @@ Tue Jun 15 16:37:41 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
     - GET on /login and /change could return the callers
       authentication_token. This is a security concern since GETs
       don't have CSRF protection. This bug was introduced in 3.3.0.
+      (bsc#1181058, CVE-2021-21241)
   * Backwards Compatibility Concerns. Fix CSRF vulnerability on
     /login and /change that could return the callers authentication
     token. Now, callers can only get the authentication token on

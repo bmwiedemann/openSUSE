@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Thu Dec 14 14:12:57 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2023.13
+  * Javadoc improvement.
+  * Bug with activity diagram arrows fork.
+  * Is is possible to change the milestone icon from a diamond?.
+  * Gantt crashes with specific Project start dates.
+  * Add support to style timeline fonts for gantt charts.
+  * Directory tree listing.
+  * Unable to set MaximumWidth style for legend.
+  * Wrong note shape in sequence diagram when arrow has only one
+    participant.
+  * GANTT: How to handle if a resource starts or terminates at a
+    specific date.
+  * Is it possible to set gantt tasks to be incomplete by default.
+  * [Style] Allow LineThickness style for awesome Actor on
+    Component/UC/Deployment diagram
+  * [Style] Allow multiple style stereotypes for backward element
+    on Activity diagram
+  * Syntax error on two and more array items in macros
+- Update to version 1.2023.12
+  * Crash on sample DITAA diagram.
+  * Only one transition permitted to State[H] in state diagram.
+  * Rendering issue when nesting different elements (partially).
+  * force notes to use inner namespaces not global namespace only.
+  * ASL distribution no longer includes graphiz.dat.
+  * ASL distribution no longer includes OpenIconic SVGs.
+- Update to version 1.2023.11
+  * [Style] Allow style for backward element on Activity diagram.
+  * Sequence diagram: Multi-level nested boxes overlaying each
+    other.
+  * Using -cypher does not always recognize restricted words.
+  * Verticals separators in gantt chart don't appear under certain
+    conditions.
+  * namespace/package consolidation broke existing remove/restore
+    behaviour when using namespace separators.
+  * Last label on last elseif branch does not get rendered.
+  * no colored border on state start/end.
+  * Qualifier labels and associations' lines not correctly drawn
+    for qualified associations.
+  * Notes on conditionnal elements.
+  * Update C4-PlantUML to v2.8.0.
+  * Handle @start/@end syntax error better.
+- Update to version 1.2023.10
+  * Exception error when adding note to timing diagram.
+  * Skinparam inconsistencies on class diagram grouping elements.
+  * Batik SVG rendering: The attribute "width" of the element
+    'rect' is required.
+  * skinParam fixCircleLabelOverlapping doesn't work anymore.
+  * Using an external style file by pointing to a URL or by using
+    a relative file path doesn't work.
+  * Add regex, files on Embedded Diagram.
+- Update to version 1.2023.9
+  * nwdiag possible misbehavior.
+  * Replace old ALLOW_PLANTUML_INCLUDE flag by security profile.
+    sprite transparent issue.
+  * Alpha feature: Directory tree listing.
+  * Smetana and ELK: Improve nested elements with last {}
+    declaration.
+  * [Font][Skinparam or Style] Issues on fall back font (partly).
+  * Decimal time values not accepted in parameters or procedures.
+- Update to version 1.2023.8
+  * First support for regular expression.
+  * !theme supports no calculated from path and no stdlib from
+    path.
+  * Grammar error occurs when specifying full-width digits with
+    the "as" keyword in timing diagrams.
+
+-------------------------------------------------------------------
 Mon Sep 18 15:01:33 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.2023.7

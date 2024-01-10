@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Dec 16 20:52:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.62.0:
+  * Add `auto_populated_fields` field of `MethodSettings` in
+    `google/api/client_pb2` (#194)
+  * Add support for Python 3.12 (#192)
+  * Migrate to native namespace packages (#187)
+
+-------------------------------------------------------------------
 Wed Dec  6 13:32:51 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.61.0
@@ -119,7 +128,7 @@ Mon Apr 25 09:17:13 UTC 2022 - Matej Cepl <mcepl@suse.com>
 Wed Sep 23 13:16:52 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.52.0
-  * create api-common-protos repo for python common protos 
+  * create api-common-protos repo for python common protos
 
 -------------------------------------------------------------------
 Wed Apr  8 12:14:23 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>

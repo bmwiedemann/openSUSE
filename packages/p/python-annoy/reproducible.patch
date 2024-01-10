@@ -3,28 +3,28 @@ Date: 2018-07-10
 
 https://bugzilla.opensuse.org/show_bug.cgi?id=1100677
 
-Index: annoy-1.17.1/setup.py
+Index: annoy-1.17.3/setup.py
 ===================================================================
---- annoy-1.17.1.orig/setup.py
-+++ annoy-1.17.1/setup.py
-@@ -39,17 +39,6 @@ with codecs.open('README.rst', encoding=
+--- annoy-1.17.3.orig/setup.py
++++ annoy-1.17.3/setup.py
+@@ -38,17 +38,6 @@ with codecs.open('README.rst', encoding=
+ # Various platform-dependent extras
  extra_compile_args = ['-D_CRT_SECURE_NO_WARNINGS', '-fpermissive']
  extra_link_args = []
- 
--# Not all CPUs have march as a tuning parameter
--cputune = ['-march=native',]
 -if platform.machine() == 'ppc64le':
 -    extra_compile_args += ['-mcpu=native',]
 -
 -if platform.machine() == 'x86_64':
--    extra_compile_args += cputune
+-    # do not apply march on Intel Darwin
+-    if platform.system() != 'Darwin':
+-        # Not all CPUs have march as a tuning parameter
+-        extra_compile_args += ['-march=native',]
 -
 -if os.name != 'nt':
 -    extra_compile_args += ['-O3', '-ffast-math', '-fno-associative-math']
--
+ 
  # Add multithreaded build flag for all platforms using Python 3 and
  # for non-Windows Python 2 platforms
- python_major_version = sys.version_info[0]
 @@ -59,11 +48,6 @@ if python_major_version == 3 or (python_
      if os.name != 'nt':
          extra_compile_args += ['-std=c++14']

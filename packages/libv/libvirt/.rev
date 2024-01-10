@@ -4500,4 +4500,13 @@ driver is disabled for ALP. Fix it.
   libvirt-daemon-{qemu,xen,lxc,vbox} subpackages</comment>
     <requestid>1132176</requestid>
   </revision>
+  <revision rev="389" vrev="2">
+    <srcmd5>be26bdc851bef6e89383015c5b059519</srcmd5>
+    <version>9.10.0</version>
+    <time>1703198265</time>
+    <user>anag+factory</user>
+    <comment>Apparmor: Add capabilities for PCI passthrough to virtxend profile
+bsc#1216656</comment>
+    <requestid>1134307</requestid>
+  </revision>
 </revisionlist>

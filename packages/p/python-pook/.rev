@@ -72,4 +72,14 @@
   * fix: remove print call (#81)</comment>
     <requestid>1058121</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>e4a4bc2dec745dbad64d1016d896b261</srcmd5>
+    <version>1.1.1</version>
+    <time>1704491919</time>
+    <user>dimstar_suse</user>
+    <comment>- Use %{?sle15_python_module_pythons}
+
+  * feat(History): add release changes</comment>
+    <requestid>1135870</requestid>
+  </revision>
 </revisionlist>

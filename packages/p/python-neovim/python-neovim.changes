@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Dec 28 11:53:21 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Remove deprecated python-rpm-macro definitions
+- Update to version 0.5.0:
+  * feat: Ex command ":py=" evaluate and print expression
+  * test: always use the same python regardless of $PATH
+  * packaging: Add pynvim.version attribute
+  * fix: ignore flaky OSError on windows
+  * fix: EOF error on piped stderr being closed on Windows
+  * fix: do not leak resources across tests so as to prevent side effects
+  * deps: Require greenlet >= 3.0 since it supports Python 3.12
+  * fix: broken dynamic import of rplugin modules
+  * fix: sphinx "invalid language code"
+  * fix: mypy type annotation warnings
+  * fix: sphinx "Unexpected indentation" warning
+  * fix: PEP 484 prohibits implicit Optional
+  * fix: undefined name 'original_find_module'
+  * fix(test): Unknown config option: timeout warning
+  * test_buffer: don't depend on version-dependent default values
+  * fix: imp module is deprecated
+  * Drop old python versions, add type annotations
+  * docs: python 2 is not supported
+  * test: update 'define' option default
+  * refactor: remove usage of imp
+  * packaging: conform to PEP 517 guidelines
+  * fix: vim.eval('v:true') should return python bool
+  * fix the first call to sync functions returning null
+
+-------------------------------------------------------------------
 Thu Mar 18 10:37:00 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to 0.4.3:

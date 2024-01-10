@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Dec 15 16:59:47 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.7.5
+  - Test updates for rspamd-3.7 branch by @fatalbanana in #4708
+  - Fix rspamadm lua logger in rspamd-3.7 (#/4727) by @fatalbanana
+    in #4729
+  - Some picks for rspamd-3.7 by @fatalbanana in #4731
+  - rspamd-3.7: fix systemd logging by @fatalbanana in #4734
+  - rspamd-3.7: [Fix] dkim_signing: siging_table: lowercase before
+    lookup by @fatalbanana in #4737
+- drop pwatches included in update:
+  rspamd-d907a95.patch
+- refreshed patches to apply cleanly again:
+  fix_missing_return.patch
+  rspamd-conf.patch
+- While the fix for the logging bug was accepted into master. The
+  3.7.5 release uses a different solution apparently. Update patch
+  fix_stack_smash.patch.
+
+  https://github.com/rspamd/rspamd/pull/4732#issuecomment-1858255236
+
+-------------------------------------------------------------------
 Wed Dec  6 15:28:07 UTC 2023 - Adam Majer <adam.majer@suse.de>
 
 - fix_stack_smash.patch: upstream rework of logging doesn't allocate

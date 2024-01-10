@@ -123,4 +123,17 @@
   * REUSE 3.0 compliance.</comment>
     <requestid>1073578</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>086ef7ee79012a5cf65516a06fd73eaf</srcmd5>
+    <version>2.16</version>
+    <time>1704281059</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.16:
+  * Fixed detection UTF-16 Strings files.
+  * Fixed detection of files with some special chars.
+  * Added support for Mobile Kotlin resources.
+
+- Update to version 2.14</comment>
+    <requestid>1135631</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Dec  5 03:08:17 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.39
+   see /usr/share/doc/packages/perl-XS-Parse-Keyword/Changes
+
+  0.39    2023-12-04
+          [CHANGES]
+           * Added optional variants of XPK_ARITHEXPR, XPK_TERMEXPR,
+             XPK_LISTEXPR and the context-forcing versions
+
+-------------------------------------------------------------------
 Thu Aug 10 03:08:05 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.38

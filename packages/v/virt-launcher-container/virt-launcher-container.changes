@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan  3 12:29:33 UTC 2024 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Fix firmware path for aarch64 (/usr/share/AAVMF)
+
+-------------------------------------------------------------------
 Wed Nov  8 14:08:15 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Do not chown /var/run

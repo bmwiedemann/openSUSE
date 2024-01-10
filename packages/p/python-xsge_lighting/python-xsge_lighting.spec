@@ -1,7 +1,7 @@
 #
 # spec file for package python-xsge_lighting
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,17 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
-%define skip_python36 1
+%{?sle15_python_module_pythons}
 Name:           python-xsge_lighting
-Version:        1.0.2
+Version:        1.0.3
 Release:        0
 Summary:        xSGE Lighting Library
-License:        GPL-3.0-or-later
+License:        LGPL-3.0-or-later
 URL:            https://python-sge.github.io/
 #Git-Clone:     https://github.com/python-sge/xsge
 Source:         https://files.pythonhosted.org/packages/source/x/xsge_lighting/xsge_lighting-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 Requires:       python-sge-pygame >= 1.0
 Requires:       python-six >= 1.4.0
@@ -47,15 +46,16 @@ This extension provides an interface for lighting.
 %setup -q -n xsge_lighting-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %doc README
 %license xsge_lighting/COPYING
-%{python_sitelib}/*
+%{python_sitelib}/xsge_lighting
+%{python_sitelib}/xsge_lighting-%{version}.dist-info
 
 %changelog

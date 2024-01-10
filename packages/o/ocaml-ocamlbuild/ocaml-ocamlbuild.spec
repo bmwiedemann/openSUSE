@@ -17,7 +17,7 @@
 
 
 Name:           ocaml-ocamlbuild
-Version:        0.14.2
+Version:        0.14.3
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Generic build tool for building OCaml library and programs
@@ -26,7 +26,7 @@ Group:          Development/Languages/OCaml
 URL:            https://opam.ocaml.org/packages/ocamlbuild
 Source:         %name-%version.tar.xz
 BuildRequires:  ocaml
-BuildRequires:  ocaml-rpm-macros >= 20230101
+BuildRequires:  ocaml-rpm-macros >= 20231101
 Requires:       %name-devel = %version
 
 %description

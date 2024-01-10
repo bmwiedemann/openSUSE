@@ -1,7 +1,7 @@
 #
 # spec file for package python-M2Crypto
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,7 @@ Source99:       python-M2Crypto.keyring
 Patch0:         32bit_ASN1_Time.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module typing}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes

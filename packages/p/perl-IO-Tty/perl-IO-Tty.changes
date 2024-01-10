@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Dec 29 03:06:58 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.20
+   see /usr/share/doc/packages/perl-IO-Tty/ChangeLog
+
+  1.20 2023-12-28 Todd Rinaldo <toddr@cpan.org>
+      * #32 - Skip t/pty_get_winsize.t tests on AIX
+      * #27 - Fix patchlevel check for util.h
+
+  1.19 2023-12-28 Todd Rinaldo <toddr@cpan.org>
+      * #37 - Remove --no-undefined from compiler test which is not compatible with all platforms.
+
+-------------------------------------------------------------------
 Tue Nov 28 03:07:45 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.18

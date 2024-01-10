@@ -16,15 +16,14 @@
 #
 
 
-%define _tar_path 5.103
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
-# Only needed for the package signature condition
+%define qt5_version 5.15.2
 %bcond_without released
 Name:           kwayland
-Version:        5.112.0
+Version:        5.113.0
 Release:        0
 Summary:        KDE Wayland library
 License:        LGPL-2.1-or-later
@@ -34,17 +33,16 @@ Source:         %{name}-%{version}.tar.xz
 Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
-BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
+BuildRequires:  extra-cmake-modules >= %{_kf5_version}
 BuildRequires:  fdupes
-BuildRequires:  kf5-filesystem
-BuildRequires:  libQt5Gui-private-headers-devel >= 5.15.0
-BuildRequires:  libqt5-qtwayland-private-headers-devel >= 5.15.0
+BuildRequires:  libQt5Gui-private-headers-devel >= %{qt5_version}
+BuildRequires:  libqt5-qtwayland-private-headers-devel >= %{qt5_version}
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(PlasmaWaylandProtocols) >= 1.2.1
-BuildRequires:  cmake(Qt5Concurrent) >= 5.15.0
-BuildRequires:  cmake(Qt5Gui) >= 5.15.0
-BuildRequires:  cmake(Qt5Test) >= 5.15.0
-BuildRequires:  cmake(Qt5WaylandClient) >= 5.15.0
+BuildRequires:  cmake(Qt5Concurrent) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Gui) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Test) >= %{qt5_version}
+BuildRequires:  cmake(Qt5WaylandClient) >= %{qt5_version}
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(wayland-client) >= 1.15.0
 BuildRequires:  pkgconfig(wayland-protocols)
@@ -61,8 +59,7 @@ KWayland provides a Qt-style Client and Server library wrapper for the Wayland l
 %package devel
 Summary:        KDE Wayland library: Build Environment
 Requires:       %{name} = %{version}
-Requires:       extra-cmake-modules >= %{_kf5_bugfix_version}
-Requires:       cmake(Qt5Gui) >= 5.15.0
+Requires:       cmake(Qt5Gui) >= %{qt5_version}
 
 %description devel
 KWayland provides a Qt-style Client and Server library wrapper for the Wayland libraries.

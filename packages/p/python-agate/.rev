@@ -154,4 +154,13 @@
 - Only BuildRequire unittest2 under Python 2.</comment>
     <requestid>1124989</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>fb2e14ab8727382c6613cc71c2d66f10</srcmd5>
+    <version>1.9.1</version>
+    <time>1703800880</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.9.1:
+  * Add Babel 2.14 support.</comment>
+    <requestid>1135259</requestid>
+  </revision>
 </revisionlist>

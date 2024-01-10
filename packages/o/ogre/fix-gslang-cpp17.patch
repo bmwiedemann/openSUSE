@@ -1,0 +1,21 @@
+diff -Nur ogre-13.6.5/CMakeLists.txt new/CMakeLists.txt
+--- ogre-13.6.5/CMakeLists.txt	2023-07-07 23:29:06.000000000 +0200
++++ new/CMakeLists.txt	2023-12-18 13:34:50.712483941 +0100
+@@ -16,7 +16,7 @@
+ 
+ cmake_minimum_required(VERSION 3.10.0)
+ 
+-set(CMAKE_CXX_STANDARD 11)
++set(CMAKE_CXX_STANDARD 17)
+ set(CMAKE_CXX_STANDARD_REQUIRED ON)
+ set(CMAKE_CXX_EXTENSIONS OFF)
+ 
+@@ -252,7 +252,7 @@
+   set(OGRE_STATIC TRUE CACHE BOOL "Forcing static build for Android" FORCE)
+ 
+   # workaround for the legacy android toolchain
+-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
++  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
+ elseif(EMSCRIPTEN)
+   add_definitions(-DEMSCRIPTEN=1 -D__EMSCRIPTEN__=1)
+   set(TargetPlatform "Emscripten")

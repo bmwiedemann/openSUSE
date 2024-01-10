@@ -20,7 +20,7 @@
 Name:           python-elasticsearch
 # DO NOT UPDATE until the compatible version of
 # python-elasticsearch-dsl is available
-Version:        8.11.0
+Version:        8.11.1
 Release:        0
 Summary:        Python client for Elasticsearch
 License:        Apache-2.0

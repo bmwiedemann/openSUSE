@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri Dec 15 20:14:10 UTC 2023 - androw95220@gmail.com
+
+- Update to version 0.0.32:
+  * prepare 0.0.32
+  * change on font order
+  * fix: add default values to keyboard config (#382)
+  * refactor(cross-winit): remove unnecessary cloning of key events (#381)
+  * disable deb build for nightly for now
+  * update sugarloaf/Cargo.toml
+  * update sugarloaf/Cargo.toml
+  * update sugarloaf/Cargo.toml
+  * prepare version 0.0.31
+  * disable clippy for Keyboard since it will fail for linux case but pass for the rest
+  * change font order priority
+  * disable_ctlseqs_alt
+  * keyboard config
+  * add Hide the cursor while typing info on docs
+  * implement [renderer] configuration property
+  * updat changelog
+  * fix: update padding top on config change (#378)
+  * update changelog
+  * fix: trim unix program name (#377)
+  * fix: remove duplicate kitty backspace keybinds (#375)
+  * fix order of modifiers
+  * move install-terminfo to outside make release-macos
+  * prepare 0.0.30
+  * remove canary from docs
+  * rename macos zip to unsigned
+  * update nightly release to keep there
+  * update canary name
+  * update logic for native tabs calculation
+  * move to nightly releases
+  * feat(i18n): add polish translation to landing page (#369)
+  * feat(i18n): add spanish translation to landing page (#368)
+  * feat(i18n): add spanish translation to landing page (#368)
+  * fix rustfmt after correct for ansi regression
+  * fix regression made with transaprency work
+  * fix regression with dynamic_background
+  * macos-hide-toolbar-buttons
+
+-------------------------------------------------------------------
 Wed Dec 06 20:04:53 UTC 2023 - androw95220@gmail.com
 
 - Update to version 0.0.29:

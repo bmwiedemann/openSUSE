@@ -245,4 +245,16 @@
     <comment></comment>
     <requestid>1113288</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>e24e769ee1dc0e8b7bff4dccc3d02b60</srcmd5>
+    <version>0.18.2</version>
+    <time>1702845207</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.18.2:
+  * Deprecated spec validator fix + warnings resolved #717
+
+- Update to 0.16.1:
+  * Predefined openapi validators #409</comment>
+    <requestid>1133689</requestid>
+  </revision>
 </revisionlist>

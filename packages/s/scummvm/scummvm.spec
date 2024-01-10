@@ -1,7 +1,7 @@
 #
 # spec file for package scummvm
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %bcond_without libmpeg2
 %bcond_without mad
 Name:           scummvm
-Version:        2.7.1
+Version:        2.8.0
 Release:        0
 Summary:        Interpreter for several adventure games
 License:        GPL-3.0-or-later
@@ -40,11 +40,16 @@ BuildRequires:  pkgconfig(alsa) >= 0.9
 BuildRequires:  pkgconfig(flac) >= 1.0.1
 BuildRequires:  pkgconfig(fluidsynth)
 BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(libmikmod)
 BuildRequires:  pkgconfig(libpng) >= 1.2.8
 BuildRequires:  pkgconfig(ogg)
+%if 0%{?suse_version} > 1500 || ( 0%{?sle_version} > 150500 && 0%{?is_opensuse} )
+BuildRequires:  pkgconfig(sonivox)
+%endif
 BuildRequires:  pkgconfig(theoradec) >= 1.0
 BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(vorbisfile)
+BuildRequires:  pkgconfig(vpx)
 BuildRequires:  pkgconfig(zlib)
 Suggests:       %{name}-extra
 Suggests:       %{name}-tools
@@ -131,10 +136,10 @@ rm %{buildroot}%{_docdir}/%{name}/COPYING*
 %attr(0755,-,-) %{_bindir}/scummvm
 %{_datadir}/scummvm
 %{_mandir}/man6/scummvm.6*
-%{_datadir}/applications/scummvm.desktop
-%{_datadir}/metainfo/scummvm.appdata.xml
+%{_datadir}/applications/org.scummvm.scummvm.desktop
+%{_datadir}/metainfo/org.scummvm.scummvm.metainfo.xml
 %{_datadir}/icons/hicolor/*/*/*
-%{_datadir}/pixmaps/scummvm.xpm
+%{_datadir}/pixmaps/org.scummvm.scummvm.xpm
 %{_docdir}/%{name}
 
 %files extra

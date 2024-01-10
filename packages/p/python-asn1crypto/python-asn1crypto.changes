@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan  3 09:43:39 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- require setuptools
+
+-------------------------------------------------------------------
 Tue May 23 22:54:06 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Clean up SPEC file
@@ -59,7 +64,7 @@ Mon May 24 12:20:00 UTC 2021 - pgajdos@suse.com
 Thu Aug 20 12:41:38 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 1.4.0
- * core.ObjectIdentifier and all derived classes now obey X.660 §7.6 
+ * core.ObjectIdentifier and all derived classes now obey X.660 §7.6
    and thus restrict the first arc to 0 to 2, and the second arc to less
    than 40 if the first arc is 0 or 1. This also fixes parsing of OIDs where
    the first arc is 2 and the second arc is greater than 39.
@@ -75,11 +80,11 @@ Fri Jan 17 12:41:04 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
   * Added Brainpool curves from RFC 5639 to keys.NamedCurve()
   * Fixed x509.Certificate().subject_directory_attributes_value
   * Fixed some incorrectly computed minimum elliptic curve primary key encoding sizes in keys.NamedCurve()
-  * Fixed a TypeError when trying to call .untag() or .copy() on a core.UTCTime() 
+  * Fixed a TypeError when trying to call .untag() or .copy() on a core.UTCTime()
     or core.GeneralizedTime(), or a value containing one, when using Python 2
-  * Added asn1crypto.load_order(), which returns a list of unicode strings of the names 
-    of the fully-qualified module names for all of submodules of the package. The module 
-    names are listed in their dependency load order. This is primarily intended 
+  * Added asn1crypto.load_order(), which returns a list of unicode strings of the names
+    of the fully-qualified module names for all of submodules of the package. The module
+    names are listed in their dependency load order. This is primarily intended
     for the sake of implementing hot reloading.
   * Added User ID to x509.NameType()
   * Added various EC named curves to keys.NamedCurve()
@@ -89,15 +94,15 @@ Fri Jan 17 12:41:04 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 Thu Oct  3 13:23:26 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 1.0.0
-  * BREAKING CHANGE: Removed functionality to calculate public key 
-    values from private key values. Alternatives have been added to 
+  * BREAKING CHANGE: Removed functionality to calculate public key
+    values from private key values. Alternatives have been added to
     oscrypto. (see upstream changelog)
-  * Significantly improved parsing of core.UTCTime() and core.GeneralizedTime() 
+  * Significantly improved parsing of core.UTCTime() and core.GeneralizedTime()
     values that include timezones and fractional seconds
   * core.Choice() may now be constructed by a 2-element tuple or a 1-key dict
-  * No longer try to load optional performance dependency, libcrypto, 
+  * No longer try to load optional performance dependency, libcrypto,
     on Mac or Linux
-  * Add support for explicit RSA SSA PSS to keys.PublicKeyInfo() 
+  * Add support for explicit RSA SSA PSS to keys.PublicKeyInfo()
     and keys.PrivateKeyInfo()
   * Add/improve few algorithms (RC4, secp256k1, SHA-3, SHAKE)
   * Added asn1crypto_tests package to PyPi

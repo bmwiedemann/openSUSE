@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec 21 21:24:54 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.4.4
+  * Fixed -n support for setting number of copies
+  * Fixed that papplPrinterSetDriverDefaults did not set the
+    ``orientation-requested-default`` value
+  * Fixed job file preservation logic
+
+-------------------------------------------------------------------
 Wed Nov 15 16:59:04 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.4.3

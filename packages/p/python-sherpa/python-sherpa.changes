@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Dec 15 03:54:30 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.16.0:
+  * enhancements:
+    + the grouping commands like group_counts and group_snr now default to
+      only grouping within the noticed range of channels, which is a change
+      in behaviour
+    + new plotting backend: Users can now choose between matplotlib and
+      bokeh (experimental) support use of arbitrary python functions when
+      linking model parameters
+    + updates to fake_pha, save_all, allowing to write out RMF/ARF files
+    + get_plot_prefs and get_contour_prefs call to simplify access to the
+      plot and contour preferences
+    + implementation of RMFPlot and DataIMGPlot classes and associated UI
+      functions (plot_rmf, get_rmf_plot)
+    + update support for XSPEC to include version 12.13.1, allow XSPEC
+      table models which include the ESCALE parameter, and provide
+      experimental support for writing out XSPEC table models.
+  * changes to use the NumPy random generator API
+  * bug fixes:
+    + PHA source plot Y axis scaling (#1825)
+    + fix model display for grouped data (#1779, #1784)
+    + Change in the ordering of operations when grouping background PHA
+      datasets. (#1881)
+- Drop patch numpy125.patch and numpy125-CI.patch: Included upstream.
+- Skip a misbehaving test.
+
+-------------------------------------------------------------------
 Thu Sep  7 12:24:59 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Add upstream patches numpy125.patch and numpy125-CI.patch

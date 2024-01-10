@@ -1,7 +1,7 @@
 #
 # spec file for package python-bson
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,21 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-bson
 Version:        0.5.10
 Release:        0
 Summary:        BSON codec for Python
 License:        Apache-2.0 AND BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/py-bson/bson
 Source:         https://github.com/py-bson/bson/archive/%{version}.tar.gz#/bson-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM drop-python2-support.patch gh#py-bson/bson#118
-Patch:          drop-python2-support.patch
+Patch0:         drop-python2-support.patch
+# PATCH-FIX-OPENSUSE Use assertEqual to support Python 3.12
+Patch1:         support-python312.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-python-dateutil >= 2.4.0
@@ -44,10 +48,10 @@ BSON codec for Python.
 sed -i '1 {/^#!/d}' bson/*.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -57,6 +61,6 @@ sed -i '1 {/^#!/d}' bson/*.py
 %doc README.rst
 %license LICENSE LICENSE_APACHE
 %{python_sitelib}/bson
-%{python_sitelib}/bson-%{version}*-info
+%{python_sitelib}/bson-%{version}.dist-info
 
 %changelog

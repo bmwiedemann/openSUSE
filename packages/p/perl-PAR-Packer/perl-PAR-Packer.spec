@@ -1,7 +1,7 @@
 #
 # spec file for package perl-PAR-Packer
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,9 @@
 
 %define cpan_name PAR-Packer
 Name:           perl-PAR-Packer
-Version:        1.59.0
+Version:        1.61.0
 Release:        0
-%define cpan_version 1.059
-Provides:       perl(PAR::Packer) = 1.59.0
+%define cpan_version 1.061
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        PAR Packager
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -54,6 +53,7 @@ Provides:       perl(PAR::Filter::Bytecode)
 Provides:       perl(PAR::Filter::Obfuscate)
 Provides:       perl(PAR::Filter::PatchContent)
 Provides:       perl(PAR::Filter::PodStrip)
+Provides:       perl(PAR::Packer) = %{version}
 Provides:       perl(PAR::StrippedPARL::Base) = 0.975
 Provides:       perl(pp) = 0.992
 %define         __perllib_provides /bin/true

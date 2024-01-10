@@ -17,7 +17,7 @@
 
 
 Name:           wl-screenrec
-Version:        0.1.0
+Version:        0.1.2
 License:        Apache-2.0
 Release:        0
 Summary:        High performance hardware accelerated wlroots screen recorder
@@ -44,21 +44,11 @@ Uses dma-buf transfers to get surface, and uses the GPU to do both the pixel for
 
 %prep
 %autosetup -a1
-mkdir -p .cargo/
-cp cargo_config .cargo/config
 
 %build
-export CC=clang
-export CXX=clang++
-export CFLAGS="%optflags"
-export CXXFLAGS="%optflags"
 %{cargo_build} --all-features
 
 %install
-export CC=clang
-export CXX=clang++
-export CFLAGS="%optflags"
-export CXXFLAGS="%optflags"
 %{cargo_install} --all-features
 
 %files

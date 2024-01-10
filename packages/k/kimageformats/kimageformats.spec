@@ -25,15 +25,14 @@
 %if 0%{?suse_version} > 1500 || (0%{?is_opensuse} && 0%{?sle_version} > 150400)
 %define with_jxl 1
 %endif
-%define _tar_path 5.103
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
-# Only needed for the package signature condition
+%define qt5_version 5.15.2
 %bcond_without released
 Name:           kimageformats
-Version:        5.112.0
+Version:        5.113.0
 Release:        0
 Summary:        Image format plugins for Qt
 License:        LGPL-2.1-or-later
@@ -43,14 +42,13 @@ Source:         %{name}-%{version}.tar.xz
 Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
-BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
+BuildRequires:  extra-cmake-modules >= %{_kf5_version}
 BuildRequires:  fdupes
-BuildRequires:  kf5-filesystem
 BuildRequires:  openexr-devel
-BuildRequires:  cmake(KF5Archive) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(Qt5Gui) >= 5.15.2
-BuildRequires:  cmake(Qt5PrintSupport) >= 5.15.2
-BuildRequires:  cmake(Qt5Test) >= 5.15.2
+BuildRequires:  cmake(KF5Archive) >= %{_kf5_version}
+BuildRequires:  cmake(Qt5Gui) >= %{qt5_version}
+BuildRequires:  cmake(Qt5PrintSupport) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Test) >= %{qt5_version}
 %if 0%{?with_avif}
 BuildRequires:  cmake(libavif) >= 0.8.2
 %endif

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 27 15:55:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.2:
+  * Add support for rich formatting in epilog text [#146]
+
+-------------------------------------------------------------------
 Wed Dec 13 10:13:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.7.2:

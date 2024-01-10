@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Sun Jan 07 15:59:45 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 20240105T050432Z:
+  * ILM rule type filter flags should work with --json (#4814)
+  * Add missing space between 'at' and filename (#4813)
+  * honor correct content-type for any files when passed via SQL
+    query (#4809)
+  * feat: support summary for mc mirror (#4811)
+
+-------------------------------------------------------------------
+Sun Jan 07 15:58:28 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 20231229T201529Z:
+  * Use correct target path during mirroring objects (#4807)
+  * fix: tree traversal issue with empty folders (#4810)
+  * properly ignore permission denied error with mirror (#4803)
+
+-------------------------------------------------------------------
+Sun Jan 07 15:56:55 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 20231223T084721Z:
+  * Add `ldap accesskey create`, update `accesskey list` with new
+    endpoint (#4760)
+  * Accept --license flag in `mc license register` (#4795)
+
+-------------------------------------------------------------------
+Wed Dec 20 12:54:16 UTC 2023 - opensuse_buildservice@ojkastl.de
+
+- Update to version 20231220T071422Z:
+  * Set exitcode on copy/mirror source failure (#4798)
+  * update dependencies to address new CVE (#4799)
+  * tier: Support AWS web identity token file for MinIO EKS pods
+    (#4789)
+  * use explicit operation handling for anonymous operations to
+    prevent undesirable checks (#4791)
+  * decom: status clearly shows that the it is about raw disk usage
+    (#4792)
+  * Read new key license_v2 from SUBNET response (#4788)
+
+-------------------------------------------------------------------
+Thu Dec 14 10:49:26 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20231214T003741Z:
+  * tier: Add support of service principal auth for Azure (#4787)
+  * support: --debug flag will print http requests for easier
+    debugging (#4776)
+  * fix: broken 'anonymous get-json'
+  * Use subnet package in pkg for license validation (#4784)
+
+-------------------------------------------------------------------
 Sat Dec 09 19:55:41 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 20231207T221317Z:

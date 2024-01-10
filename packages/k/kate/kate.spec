@@ -31,6 +31,7 @@ Source2:        applications.keyring
 %endif
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-Defuse-root-block.patch
+BuildRequires:  extra-cmake-modules
 BuildRequires:  libgit2-devel
 BuildRequires:  cmake(KF5Activities)
 BuildRequires:  cmake(KF5Config)

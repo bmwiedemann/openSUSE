@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jan  2 14:21:06 UTC 2024 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 2023.12:
+  * SOF v2.8 FW binaries: For older Intel platforms, FW from v2.2 stable
+  * SOF v2.8 tools: For older Intel platforms, tools from v2.2 stable
+  * SOF v2.8 DSP topologies: For older Intel platforms, topologies matching v2.2.8
+
+-------------------------------------------------------------------
+Tue Dec 26 16:03:13 UTC 2023 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- add Requires(post): coreutils
+  * the macro regenerate_initrd_post creates a post scriptlet that
+    uses mkdir and touch
+
+-------------------------------------------------------------------
+Fri Dec 15 09:18:33 UTC 2023 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 2023.09.02:
+  updates for Intel Meteor Lake (jsc#PED-6123,jsc#PED-6114,
+  jsc#PED-6104,jsc#PED-6067,jsc#PED-6045,jsc#PED-6036)
+
+-------------------------------------------------------------------
 Tue Nov 14 15:43:04 UTC 2023 - Takashi Iwai <tiwai@suse.com>
 
 - Update Supplements for new modules like AMD ACP
@@ -7,7 +29,8 @@ Tue Nov 14 15:43:04 UTC 2023 - Takashi Iwai <tiwai@suse.com>
 Thu Nov  9 16:14:27 UTC 2023 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 2023.09.1:
-  fixes for Intel Meteor Lake platforms
+  fixes for Intel Meteor Lake platforms (jsc#PED-6123,jsc#PED-6114,
+  jsc#PED-6104,jsc#PED-6067,jsc#PED-6045,jsc#PED-6036)
 
 -------------------------------------------------------------------
 Mon Oct  9 12:18:07 UTC 2023 - Takashi Iwai <tiwai@suse.com>

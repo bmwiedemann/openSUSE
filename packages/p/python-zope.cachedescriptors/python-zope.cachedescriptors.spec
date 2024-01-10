@@ -1,7 +1,7 @@
 #
 # spec file for package python-zope.cachedescriptors
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,20 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-zope.cachedescriptors
 Version:        5.0
 Release:        0
 Summary:        Method and property caching decorators
 License:        ZPL-2.1
-Group:          Development/Languages/Python
 URL:            https://github.com/zopefoundation/zope.cachedescriptors
 Source:         https://files.pythonhosted.org/packages/source/z/zope.cachedescriptors/zope.cachedescriptors-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  %{python_module zope.testrunner}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-setuptools
 BuildArch:      noarch
 %python_subpackages
 
@@ -45,22 +47,20 @@ persistent objects.
 %setup -q -n zope.cachedescriptors-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-cd build/lib
-%{python_expand \
-$python -m unittest -v zope.cachedescriptors.tests
-$python -m doctest -v zope/cachedescriptors/*.rst
-}
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} zope-testrunner-%{$python_bin_suffix} --test-path=src
 
 %files %{python_files}
 %doc CHANGES.rst README.rst
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/zope/cachedescriptors
+%{python_sitelib}/zope.cachedescriptors-%{version}-py*-nspkg.pth
+%{python_sitelib}/zope.cachedescriptors-%{version}.dist-info
 
 %changelog

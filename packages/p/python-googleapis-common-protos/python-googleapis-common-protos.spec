@@ -20,7 +20,7 @@
 %define pkgname %{lua:pname,_ = string.gsub(rpm.expand('%modname'), '-' , '_');print(pname)}
 %{?sle15_python_module_pythons}
 Name:           python-googleapis-common-protos
-Version:        1.61.0
+Version:        1.62.0
 Release:        0
 Summary:        Common protobufs used in Google APIs
 License:        Apache-2.0
@@ -31,7 +31,6 @@ Source1:        test_google_api_error_reason.py
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module protobuf >= 3.19.5}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -71,6 +70,5 @@ install -p -D -t tests/unit %{SOURCE1}
 %{python_sitelib}/google/gapic
 %{python_sitelib}/google/cloud
 %{python_sitelib}/%{pkgname}-%{version}*-info
-%{python_sitelib}/%{pkgname}-%{version}*-nspkg.pth
 
 %changelog

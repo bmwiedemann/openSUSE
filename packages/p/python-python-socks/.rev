@@ -41,4 +41,24 @@
 </comment>
     <requestid>1096900</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8806781044a86136d0875c6604db8b29</srcmd5>
+    <version>2.4.4</version>
+    <time>1704281283</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.4.4:
+  * Handle IndexError when loading socks5 reply
+  * Fix connection logic (api v2)
+  * Change empty reply error message (socks5)
+  * ConnectReply.loads: fix IndexError in case no data
+  * Redesign code base
+  * Remove obsolete protocol implementation
+  * Add Sans I/O based http proxy protocol implementation
+  * Add Sans I/O socks4 implementation
+  * Add simple Sans I/O based socks5 implementation
+
+- Update to 2.0.3:
+  * The code base has been completely redesigned</comment>
+    <requestid>1136322</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Dec 27 16:05:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.0:
+  * Order branches according to OpenStack release names
+  * Fix scanner tests failing with modern Git
+  * Remove python-dev from bindep
+  * remove unicode from code
+  * Don't attempt to pull from empty cache file
+  * Update CI to use unversioned jobs template
+
+-------------------------------------------------------------------
 Sat Oct 16 19:18:25 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.5.0:

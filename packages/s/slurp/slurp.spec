@@ -1,7 +1,7 @@
 #
 # spec file for package slurp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           slurp
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        Wayland region selector
 License:        MIT
@@ -29,7 +29,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  scdoc
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(wayland-client)
-BuildRequires:  pkgconfig(wayland-protocols) >= 1.14
+BuildRequires:  pkgconfig(wayland-protocols) >= 1.32
 BuildRequires:  pkgconfig(xkbcommon)
 
 %description

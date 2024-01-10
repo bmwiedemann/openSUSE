@@ -1,7 +1,7 @@
 #
 # spec file for package python-whitenoise
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-whitenoise
-Version:        6.2.0
+Version:        6.6.0
 Release:        0
 Summary:        Static file serving for WSGI applications
 License:        MIT
@@ -27,10 +27,11 @@ URL:            https://github.com/evansd/whitenoise
 Source:         https://github.com/evansd/whitenoise/archive/%{version}.tar.gz#/whitenoise-%{version}.tar.gz
 BuildRequires:  %{python_module Brotli >= 1.0.0}
 BuildRequires:  %{python_module Django >= 2.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Suggests:       python-Brotli >= 1.0.0
@@ -44,10 +45,10 @@ Static file serving for WSGI applications.
 %setup -q -n whitenoise-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -57,6 +58,7 @@ PYTHONPATH=$PWD
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/whitenoise
+%{python_sitelib}/whitenoise-%{version}.dist-info
 
 %changelog

@@ -77,6 +77,12 @@ sed -i -e "s,\r,," README.md LICENSE
 %build
 export CXX=g++
 test -x "$(type -p g++-8)" && export CXX=g++-8
+
+# spdlog embodies fmt ABI; add some symvers so both ld.so and rpm notice the change.
+v=v$(rpm -q --qf="%%{VERSION}" --whatprovides "pkgconfig(fmt)" | sed -e 's/\..*//')
+echo "FMT_$v { global: _ZN6spdlog*N3fmt${#v}${v}*; };" >spdlog.sym
+v="$PWD/spdlog.sym"
+
 %cmake -G Ninja \
     -DSPDLOG_BUILD_TESTS=ON \
     -DSPDLOG_BUILD_BENCH=OFF \
@@ -84,6 +90,7 @@ test -x "$(type -p g++-8)" && export CXX=g++-8
     -DCMAKE_BUILD_TYPE=Release \
     -DSPDLOG_BUILD_EXAMPLES=OFF \
     -DSPDLOG_BUILD_SHARED=ON \
+    -DCMAKE_SHARED_LINKER_FLAGS="%{?build_ldflags} -Wl,--as-needed -Wl,-z,now  -Wl,--version-script=$v" \
 ..
 %ninja_build
 

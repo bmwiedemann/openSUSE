@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Dec 17 15:01:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.2:
+  * ykpiv: Fix potential type casting bug.
+  * ykpiv: ykcs11: Fix building on certain architectures.
+  * ykpiv: cmd: Add support for compressing certificate upon
+    import
+  * ykcs11: Increase maximum number of slots to handle
+    overflow
+  * ykcs11: Add support for CKA_COPYABLE and CKA_DESTROYABLE
+    attributes
+
+-------------------------------------------------------------------
 Fri Mar  3 21:51:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.3.1:
@@ -69,7 +82,7 @@ Sun Feb 28 18:33:22 UTC 2021 - Dirk Müller <dmueller@suse.com>
   * ykcs11: Added the possibility to have debug output as a runtime setting
   * ykcs11: Added support to unblock PIN with PUK
   * ykcs11: Make C_SetPIN backwards compatible while also allowing unblock PIN
-  * tests: Improved tests 
+  * tests: Improved tests
 - run tests
 - add pthread-link.patch
 
@@ -214,7 +227,7 @@ Wed Aug 17 14:03:58 UTC 2016 - t.gruner@katodev.de
 Tue May 17 14:55:42 UTC 2016 - t.gruner@katodev.de
 
 - Version 1.4.0 (released 2016-05-03)
-  - Add attest action When used on a slot with a generated key, 
+  - Add attest action When used on a slot with a generated key,
     outputs a signed x509 certificate for that slot showing that
     the key was generated in hardware. Available in firmware 4.3.0 and newer.
   - Add cached parameter for touch-policy With cached, the touch is valid
@@ -261,7 +274,7 @@ Fri Dec 11 08:12:48 UTC 2015 - t.gruner@katodev.de
 Wed Nov 18 20:57:56 UTC 2015 - t.gruner@katodev.de
 
 - Version 1.1.2 (released 2015-11-13)
-  - Properly handle DER encoding in ECDSA signatures. 
+  - Properly handle DER encoding in ECDSA signatures.
 
 -------------------------------------------------------------------
 Thu Nov 12 14:30:09 UTC 2015 - t.gruner@katodev.de
@@ -274,7 +287,7 @@ Fri Nov  6 21:05:07 UTC 2015 - t.gruner@katodev.de
 
 - Version 1.1.0 (released 2015-11-06)
   - Add support for new YubiKey 4.
-  - Add ykcs11. 
+  - Add ykcs11.
 
 -------------------------------------------------------------------
 Tue Oct 13 07:47:50 UTC 2015 - t.gruner@katodev.de
@@ -310,13 +323,13 @@ Wed Jul  8 21:14:24 UTC 2015 - t.gruner@katodev.de
 - Version 1.0.0 (released 2015-06-23)
   - Add a test-decipher action.
   - Check that e is 0x10001 on importing rsa keys
-  - Use PCSC transactions when sending and receiving data 
+  - Use PCSC transactions when sending and receiving data
 
 -------------------------------------------------------------------
 Mon Apr 27 16:22:36 UTC 2015 - cdenicolo@suse.com
 
 - license update: GPL-3.0+
-  COPYING files says package is under GPL-3.0+. 
+  COPYING files says package is under GPL-3.0+.
 
 -------------------------------------------------------------------
 Thu Mar 26 12:47:38 UTC 2015 - t.gruner@katodev.de
@@ -331,7 +344,7 @@ Thu Mar 26 12:47:38 UTC 2015 - t.gruner@katodev.de
 Mon Feb  9 14:54:37 UTC 2015 - t.gruner@katodev.de
 
 - Version 0.1.5 (released 2015-02-04)
-    Revert the check for parity and just set parity before the weak check. 
+    Revert the check for parity and just set parity before the weak check.
 
 -------------------------------------------------------------------
 Tue Feb  3 13:43:10 UTC 2015 - t.gruner@katodev.de

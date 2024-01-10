@@ -129,4 +129,13 @@
   * use poll in channel implementation instead of select</comment>
     <requestid>1132368</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>d277aa61198c4b411ac0c21a92410b55</srcmd5>
+    <version>5.0.6</version>
+    <time>1703800921</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.0.6:
+  * issue #124: handle `BaseException` in pools' workers</comment>
+    <requestid>1135314</requestid>
+  </revision>
 </revisionlist>

@@ -125,4 +125,18 @@
     <comment></comment>
     <requestid>1092195</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>2f5bbdd1e8271674fcc9a9de479d8c45</srcmd5>
+    <version>5.0.1</version>
+    <time>1702844934</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.0.1:
+  * Fix issue introduced in the last release which is breaking
+  * ``HTMLExceptionFormatter`` when using non-str
+    ``__traceback_info__``.
+  * Drop support for Python 2.7, 3.5, 3.6.
+
+  * Fix handling of unicode supplemental traceback information on</comment>
+    <requestid>1133587</requestid>
+  </revision>
 </revisionlist>

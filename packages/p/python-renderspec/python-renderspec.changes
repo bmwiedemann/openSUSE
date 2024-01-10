@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jan  7 20:05:34 UTC 2024 - cloud-devel@suse.de
+
+- removed 0001-Allow-selecting-suse_39-template.patch
+- update to version 2.3.0
+  - Allow selecting suse_39 template
+  - Allow suse_py311 to be selected as template
+  - setup.cfg: Replace dashes with underscores
+  - Switch to Python3 zed unit test jobs
+
+-------------------------------------------------------------------
 Fri Mar  3 21:36:59 UTC 2023 - cloud-devel@suse.de
 
 - added 0001-Allow-selecting-suse_39-template.patch

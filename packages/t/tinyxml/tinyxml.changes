@@ -1,8 +1,16 @@
 -------------------------------------------------------------------
+Fri Dec 15 15:02:44 CET 2023 - aschnell@suse.com
+
+- avoid assertion on certain malformed input including null-byte
+  (bsc#1218040) (CVE-2023-34194)
+- added tinyxml-null-byte-assert.patch
+
+-------------------------------------------------------------------
 Mon Oct 25 14:32:25 UTC 2021 - Christian Vögl <christian.voegl@suse.com>
 
 - Added tinyxml-2.62-fix-infinite-loop.patch to fix an infinite loop
-  for inputs containing the sequence 0xEF0x00 (bsc#1191576) 
+  for inputs containing the sequence 0xEF0x00 (bsc#1191576)
+  (CVE-2021-42260)
 
 -------------------------------------------------------------------
 Sun May 13 12:19:58 UTC 2012 - lists.nico.k@googlemail.com
@@ -14,7 +22,7 @@ Sun May 13 12:19:58 UTC 2012 - lists.nico.k@googlemail.com
   * Removed the old, now unmaintained and likely not working,
     build files.
   * Fixed some static analysis issues reported by orbitcowboy
-    from cppcheck. 
+    from cppcheck.
   * Bayard 95 sent in analysis from a different analyzer - fixes
     applied from that as well.
   * Tim Kosse sent a patch fixing an infinite loop.
@@ -27,13 +35,13 @@ Sun May 13 12:19:58 UTC 2012 - lists.nico.k@googlemail.com
 -------------------------------------------------------------------
 Fri Mar  2 01:25:08 UTC 2012 - crrodriguez@opensuse.org
 
-- Ensure the generated config.h file gets included 
+- Ensure the generated config.h file gets included
   in all C++ files during build...
 
 -------------------------------------------------------------------
 Fri Mar  2 01:18:24 UTC 2012 - crrodriguez@opensuse.org
 
-- Make tinyxml slightly tinier by building it with 
+- Make tinyxml slightly tinier by building it with
   -fvisibility-inlines-hidden.
 - Also build with full RELRO and bsymbolic-functions
 
@@ -115,4 +123,3 @@ Fri Dec 14 00:00:00 CET 2007 - j.w.r.degoede@hhs.nl 2.5.3-2
 Fri Nov 30 00:00:00 CET 2007 - j.w.r.degoede@hhs.nl 2.5.3-1
 
 - Initial Fedora Package
-

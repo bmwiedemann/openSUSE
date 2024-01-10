@@ -202,4 +202,23 @@
     <comment>Qt 6.6.1 (forwarded request 1129814 from krop)</comment>
     <requestid>1130437</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>a9962d84513f8499a835e4695215ad3f</srcmd5>
+    <version>6.6.1</version>
+    <time>1703102612</time>
+    <user>anag+factory</user>
+    <comment>- Add patch to force pdf_attributions.qdoc to be generated before
+  qtpdf, fixing a race condition that made the docs subpackage
+  build not reproducible (boo#1217774):
+  * 0001-Fix-race-condition-generating-docs.patch (forwarded request 1134211 from alarrosa)</comment>
+    <requestid>1134292</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>8f86da70df254871fa9bafe8dead09db</srcmd5>
+    <version>6.6.1</version>
+    <time>1704487443</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1136999</requestid>
+  </revision>
 </revisionlist>

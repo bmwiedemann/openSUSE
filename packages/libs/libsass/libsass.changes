@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Dec 15 09:40:23 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- security update:
+  * CVE-2022-43357 [bsc#1214573]:
+    Fix stack overflow in Sass:CompoundSelector:has_real_parent_ref()
+  * CVE-2022-43358 [bsc#1214575]:
+    Fix stack overflow in Sass:ComplexSelector:has_placeholde()
+  * CVE-2022-26592 [bsc#1214576]:
+    Fix stack overflow in CompoundSelector:has_real_parent_ref function()
+    + libsass-CVE-2022-43357,CVE-2022-43358,CVE-2022-26592.patch
+
+-------------------------------------------------------------------
 Sat Jul 17 06:53:55 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.6.5:

@@ -240,4 +240,28 @@
     <comment>- drop unneeded dependencies</comment>
     <requestid>994200</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>bbab3a8ee5c2ba6ebe0619c5f966eb1d</srcmd5>
+    <version>4.2.0</version>
+    <time>1704380358</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.2.0
+  - Cap protobuf &lt; 4.x
+  - Loosen protobuf version that's used for docs/renos
+  - tox: set allowlist_externals
+  - [etcd3gw] create new lease if expired.
+  - Drop python3.6/3.7 support in testing runtime
+  - Fix mysql timeout
+  - Allow to pass ssl-related args for zookeeper
+  - Add TLS support for MySQL driver
+  - Support etcd3gw api version
+  - Revert &quot;Moves supported python runtimes from version 3.8 to 3.10&quot;
+  - remove unicode from code
+  - Fix: Add timeout for mysql driver
+  - Moves supported python runtimes from version 3.8 to 3.10
+  - Enable watch functionality for Etcd3Driver
+  - Fix inappropriate logic in memcachedlock.release()
+  - Add grouping support in etcd to compatibility matrix.</comment>
+    <requestid>1136722</requestid>
+  </revision>
 </revisionlist>

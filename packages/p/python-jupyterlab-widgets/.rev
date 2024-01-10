@@ -75,4 +75,14 @@
 - Require python for js files to work (forwarded request 1104763 from bnavigator)</comment>
     <requestid>1104766</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a0d27cba44b28d6623518eae7e65deeb</srcmd5>
+    <version>3.0.9</version>
+    <time>1703527544</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.0.9
+  * From ipywidgets 8.1.1: Raise error when copy method is used on
+    base widget class by @mmc1718 in #3780</comment>
+    <requestid>1134936</requestid>
+  </revision>
 </revisionlist>

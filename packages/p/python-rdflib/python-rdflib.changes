@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 13 08:40:59 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch for reproducible builds (boo#1062303)
+
+-------------------------------------------------------------------
 Mon Feb  7 23:38:10 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 6.1.1:

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Dec  3 03:10:27 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.04
+   see /usr/share/doc/packages/perl-Text-CSV/Changes
+
+  2.04  2023-12-02
+      - Imported tests/fixes from Text::CSV_XS 1.53
+        - Fixed skip_empty_rows('skip') and trailing newlines (GH#65, bugfood++)
+
+-------------------------------------------------------------------
 Sat Aug 12 03:09:28 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.03

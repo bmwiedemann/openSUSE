@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Wed Dec 20 08:29:03 UTC 2023 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to 4.2.0
+
+  New features:
+
+  * A new system for notating guitar bends, including playback support
+  * A new system for easily displaying alternate string tunings for
+    plucked string instruments
+  * Much improved control over synchronicity of notation elements
+    between main score and parts
+  * The ability to select individual sounds within SoundFonts, and
+    a bespoke system for categorising sounds in our default SoundFont, MS Basic
+  * An enhanced upload flow to audio.com, including the ability to
+    replace existing audio files online
+  * A convenient list view for seeing all your scores in the Home tab
+  * The ability to open scores in the desktop app directly from
+    musescore.com
+  * Playback support for harp glissandi via the harp pedal widget
+  * Microtonal playback support
+  * A new note input mode for Braille music notation (Thanks to @daisy
+    and @SMCenter)
+  * "A tempo" and "primo tempo" elements in Palettes (Thanks to
+    community contributor @rtbo)
+  * The option to import/export scores in the MEI file format (Thanks
+    to community contributors @lpugin and @rettinghaus).
+
+  In addition, please see this document (https://musescore.org/en/node/356876)
+  for a complete list of engraving improvements, including:
+
+  * Improved handling of arpeggios spanning multiple staves and voices,
+  * More placement options for ties
+  * Significant layout and interaction improvements
+  * MusicXML improvements
+  * A multitude of refinements to key signatures, time signatures
+    and parts (Thanks to community contributor @sammik).
+
+- Update source URL in spec
+- Update cmake flags
+- Use %exclude for unneeded development files
+- Update README.SUSE
+- Disable JACK as it wasn't actually used
+
+-------------------------------------------------------------------
 Thu Sep 14 13:41:17 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
 
 - Build as release again.

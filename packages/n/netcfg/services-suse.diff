@@ -145,7 +145,7 @@
  wnn6               22273/tcp    # wnn6  [Yasunari_Gon_Yamasit]
  wnn6               22273/udp    # wnn6  [Yasunari_Gon_Yamasit]
  cis                22305/tcp    # CompactIS Tunnel  [Justin_Paupore]
-@@ -12531,3 +12561,13 @@
+@@ -12531,3 +12561,15 @@
  nusdp-disc         49001/udp    # Nuance Unity Service Discovery Protocol  [Nuance_Communications_Inc3] [Andrew_Andrews]
  inspider           49150/tcp    # InSpider System  [AnRobot] [Zhang_Xinnan]
  #                  49150/udp    Reserved 
@@ -159,3 +159,5 @@
 +nbp                2/ddp        # Name Binding Protocol
 +echo               4/ddp        # AppleTalk Echo Protocol
 +zip                6/ddp        # Zone Information Protocol
++# Kerberos slave propagation
++krb-prop           754/tcp      krb_prop krb5_prop hprop

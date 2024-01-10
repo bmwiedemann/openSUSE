@@ -1,7 +1,7 @@
 #
 # spec file for package protontricks
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2019 Matthias Fehring <buschmann23@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %{!?python_sitelib: %global python_sitelib %(python -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 Name:           protontricks
-Version:        1.10.5
+Version:        1.11.0
 Release:        0
 Summary:        Winetricks for Proton-enabled Games
 License:        GPL-3.0-only

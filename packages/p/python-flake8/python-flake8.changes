@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan  5 15:25:36 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.0.0:
+  * Remove ``--include-in-doctest`` and ``--exclude-from-doctest``
+    options.
+  * Pyflakes has been updated to >= 3.2.0, < 3.3.0
+
+-------------------------------------------------------------------
 Tue Aug  8 06:18:12 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 6.1.0:
@@ -97,7 +105,7 @@ Tue Nov  9 08:06:25 UTC 2021 - Martin Liška <mliska@suse.cz>
 Fri Sep 24 09:06:44 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add ignore-selectable-groups-warning.patch:
-  * Ignore unfixed warning. 
+  * Ignore unfixed warning.
 
 -------------------------------------------------------------------
 Sun Jun  6 12:34:59 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -229,7 +237,7 @@ Thu May 14 08:48:44 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
   * optparse-style action='callback' setting for options is deprecated,
     use argparse action classes instead. This will be removed in a future
     version (See also GitLab!341)
-- remove remove_mock_dependency.patch 
+- remove remove_mock_dependency.patch
 - remove pyflakes-version.patch
 
 -------------------------------------------------------------------

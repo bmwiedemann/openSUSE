@@ -86,6 +86,7 @@ Patch41:        Add-lib-modules-opt_kversion-sysctl.conf-to-initfs-if-present.pa
 Patch42:        vnfs-Do-not-pull-in-recommended-packages-on-SUSE.patch
 Patch43:        Add-suse-to-overlay-template.patch
 Patch44:        vnfs-On-SUSE-don-t-copy-repository-information-into-chroot.patch
+Patch45:        make-build-of-cpio-reproduceable.patch
 
 %if "%{?flavor}" != "common"
 BuildRequires:  bsdtar
@@ -420,6 +421,8 @@ cp %{SOURCE101} ./common/README.SUSE-VM-CONFIG-RECIPE
 %patch32 -p1
 %patch33 -p1
 %patch34 -p1
+# reproduceable
+%patch45 -p1
 
 %build
 %if "%{?flavor}" == "common"

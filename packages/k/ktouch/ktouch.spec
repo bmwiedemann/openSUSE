@@ -28,9 +28,9 @@ Source:         https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
+BuildRequires:  extra-cmake-modules
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  xz
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5ConfigWidgets)
 BuildRequires:  cmake(KF5CoreAddons)

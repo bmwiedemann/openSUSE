@@ -1,7 +1,7 @@
 #
 # spec file for package python-frozenlist
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,16 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-frozenlist
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        Python list-like structure which implements MutableSequence
 License:        Apache-2.0
 URL:            https://github.com/aio-libs/frozenlist
 Source:         https://files.pythonhosted.org/packages/source/f/frozenlist/frozenlist-%{version}.tar.gz
-BuildRequires:  %{python_module Cython >= 0.29.24}
+Patch1:         no-pytest-cov.patch
+BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel >= 3.8}
+BuildRequires:  %{python_module expandvars}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wheel}
@@ -37,7 +39,7 @@ BuildRequires:  python-rpm-macros
 Python list-like structure which implements collections.abc.MutableSequence.
 
 %prep
-%setup -q -n frozenlist-%{version}
+%autosetup -p1 -n frozenlist-%{version}
 
 %build
 export CFLAGS="%{optflags}"

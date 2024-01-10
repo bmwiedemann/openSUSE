@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 18 12:19:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.3.6:
+  * Fixes in the test client to support recent changes in Socket.IO
+    dependencies
+
+-------------------------------------------------------------------
 Fri Dec  1 16:29:35 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add %{?sle15_python_module_pythons}
@@ -24,7 +31,7 @@ Wed Jun 21 19:56:26 UTC 2023 - Axel Braun <axel.braun@gmx.de>
 -------------------------------------------------------------------
 Sat Oct 23 15:18:45 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 
-- Update to version 5.1.1 
+- Update to version 5.1.1
   * Only use SSL socket if at least one SSL kwarg is not None #1639 (commit) (thanks JT Raber!)
   * Remove unused SSL arguments from eventlet server options #1639 (commit)
   * Remove executable permissions from files that lack shebang lines #1621 (commit) (thanks Ben Beasley!)
@@ -40,7 +47,7 @@ Sat Oct 23 15:18:45 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 -------------------------------------------------------------------
 Tue May 25 17:24:48 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
-- Update to 5.0.3 
+- Update to 5.0.3
   * Document the use of simple-websocket with the development web server (commit)
   * Show transport in example apps (commit)
   * Added Open Collective funding option (commit)
@@ -68,4 +75,4 @@ Thu Feb  1 15:46:27 UTC 2018 - gsmith@suse.com
 -------------------------------------------------------------------
 Wed Jan 31 21:01:27 UTC 2018 - gsmith@suse.com
 
-- Initial version 
+- Initial version

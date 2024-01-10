@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Dec 29 03:10:09 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.47
+   see /usr/share/doc/packages/perl-XML-Parser/Changes
+
+  2.47 2023-12-28 (by Todd Rinaldo)
+      - #84 use $fh instead of $foo
+  	- #85 Fix typo in documentation
+  	- #89 Devel::CheckLib to from 0.99 -> 1.14
+  	- Devel::CheckLibn 1.16
+  	- #91 POD fix for verbatim text
+  	- #97 Add a LICENSE file
+  	- #94 Don't ship Expat/Makefile
+  	- Various github workflow improvements. Windows is still not working.
+
+-------------------------------------------------------------------
 Thu Sep 26 09:30:17 UTC 2019 - Tina Mueller <tina.mueller@suse.com>
 
 - Fix syntax for patch in cpanspec.yml

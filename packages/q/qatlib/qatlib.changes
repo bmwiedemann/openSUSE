@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jan  3 10:37:20 UTC 2024 - Torsten Duwe <duwe@suse.com>
+
+- update to 23.11.0:
+  * use new --enable-legacy-algorithms to avoid regressions
+  * add support for data compression chaining (hash then compress)
+  * add support for additional configuration profiles
+  * add support DC NS (NoSession) APIs
+  * add support DC CompressBound APIs
+  * add Support for Chinese SM{2,3,4} ciphers
+  * bump shared library major to 4
+  * refactoring, bug fixes and documentation updates
+
+-------------------------------------------------------------------
 Tue May 30 07:33:31 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Implement shared library packaging guidelines

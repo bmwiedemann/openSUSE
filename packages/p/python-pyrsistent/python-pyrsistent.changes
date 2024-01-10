@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jan  5 17:29:47 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.20.0:
+  * Fix #245, never introduce new nodes during discard.
+  * Fix #268, do not rely on well implemented __ne__ for keys in
+    pmaps, instead do explicit inversion of equality
+    comparison when checking for inequality.
+  * Officially support Python 3.12.
+  * Officially drop support for Python 3.7.
+  * Fix #273, build more types of wheels.
+  * Fix #282, add generic types to types
+  * Fix #281, defaultdict can now be frozen. NB! This is a
+    backwards incompatible fix since defaultdict was not
+    previously frozen.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:31:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
@@ -71,7 +87,7 @@ Mon Sep 28 11:11:31 UTC 2020 - Dirk Mueller <dmueller@suse.com>
  * Remove Python 2 support code. This includes dropping some compatibility code and the dependency on
    six. Thanks @djailla for this.
  * Fix #200, python 3 exception chaining. This is a minor backwards incompatibility, hence stepping
-   to 0.17.0. Thanks @cool-RR for this! 
+   to 0.17.0. Thanks @cool-RR for this!
 
 -------------------------------------------------------------------
 Fri Jul 17 07:40:53 UTC 2020 - Dirk Mueller <dmueller@suse.com>
@@ -118,14 +134,14 @@ Thu Jul 18 09:38:13 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 Wed Jun  5 09:20:42 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 0.15.2
-  * Fix #166, Propagate 'ignore_extra' param in hierarchy. Thanks 
+  * Fix #166, Propagate 'ignore_extra' param in hierarchy. Thanks
     @ss18 for this!
   * Fix #167, thaw typing. Thanks @nattofriends for this!
-  * Fix #154, not possible to insert empty pmap as leaf node with 
+  * Fix #154, not possible to insert empty pmap as leaf node with
     transform.
-  * Python 3.4 is no longer officially supported since it is EOL 
+  * Python 3.4 is no longer officially supported since it is EOL
     since 2019-03-18.
-  * Fix #157, major improvements to type hints. Thanks @je-l for 
+  * Fix #157, major improvements to type hints. Thanks @je-l for
     working on this and @nattofriend for reviewing the PR!
 
 -------------------------------------------------------------------
@@ -156,7 +172,7 @@ Fri Aug 10 23:33:25 UTC 2018 - jsikes@suse.de
 
 - Version jump to 0.14.4
   * Fix PClass double-factory-ing in a few situations.
-  * Fix #121, regression in PClass.set() 
+  * Fix #121, regression in PClass.set()
   * Fix regression where type names break sequence fields
   * Allowing 'set' as a valid container for multiple fields.
   * Fix #131 Clarify that dot-notation can be used for element access on PMaps

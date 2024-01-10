@@ -1,7 +1,7 @@
 #
 # spec file for package python-usfm2osis
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,16 +22,17 @@ Name:           python-usfm2osis
 Version:        0.6.1+git.1613099315.8fda304
 Release:        0
 Summary:        Tools for converting Bibles from USFM to OSIS XML
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 URL:            https://github.com/chrislit/usfm2osis
 Source:         %{modname}-%{version}.tar.xz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-Requires(post):   update-alternatives
-Requires(postun):  update-alternatives
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 %python_subpackages
 
 %description

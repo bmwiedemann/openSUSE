@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytoolconfig
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,8 @@
 
 
 %{?sle15_python_module_pythons}
-
 Name:           python-pytoolconfig
-Version:        1.2.4
+Version:        1.2.6
 Release:        0
 Summary:        Python tool configuration
 License:        LGPL-3.0-or-later
@@ -27,7 +26,7 @@ URL:            https://github.com/bagel897/pytoolconfig
 Source:         https://files.pythonhosted.org/packages/source/p/pytoolconfig/pytoolconfig-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module packaging >= 22}
-BuildRequires:  %{python_module pdm-pep517 >= 1.0.5}
+BuildRequires:  %{python_module pdm-backend}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module tomli >= 2.0.1 if %python-base < 3.11}
 BuildRequires:  %{python_module typing-extensions >= 4.4.0 if %python-base < 3.8}

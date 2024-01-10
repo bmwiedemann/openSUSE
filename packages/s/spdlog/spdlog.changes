@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Dec 30 16:58:29 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update symbol versioning pattern to actually match symbols
+
+-------------------------------------------------------------------
+Thu Dec 14 09:47:07 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Add some symbol versions to ease rebuilds and transition on
+  user systems when fmt changes [boo#1217820]
+
+-------------------------------------------------------------------
 Thu Nov 16 13:08:02 UTC 2023 - Jiri Srain <jsrain@suse.com>
 
 - download 2823.patch from upstream again to fix metadata

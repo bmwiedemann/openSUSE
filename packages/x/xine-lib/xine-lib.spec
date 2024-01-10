@@ -66,9 +66,9 @@ BuildRequires:  pkgconfig(liba52)
 #Prevent building against ffmpeg 3
 BuildRequires:  pkgconfig(libavcodec) >= 58
 BuildRequires:  pkgconfig(libavformat) >= 58
-BuildRequires:  pkgconfig(libavutil)
+BuildRequires:  pkgconfig(libavutil) >= 56
 BuildRequires:  pkgconfig(libbluray)
-BuildRequires:  pkgconfig(libpostproc)
+BuildRequires:  pkgconfig(libpostproc) >= 55
 BuildRequires:  pkgconfig(mad)
 BuildRequires:  pkgconfig(smbclient)
 BuildRequires:  pkgconfig(vpx)

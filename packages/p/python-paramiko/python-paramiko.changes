@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Dec 20 06:57:15 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.4.0: (CVE-2023-48795, bsc#1218168)
+  * Transport grew a new packetizer_class kwarg for overriding the
+    packet-handler class used internally.
+  * Address CVE 2023-48795 (aka the "Terrapin Attack", a vulnerability found
+    in the SSH protocol re: treatment of packet sequence numbers) as follows:
+    + The vulnerability only impacts encrypt-then-MAC digest algorithms in
+      tandem with CBC ciphers, and ChaCha20-poly1305; of these, Paramiko
+      currently only implements hmac-sha2-(256|512)-etm in tandem with
+      AES-CBC.
+    + As the fix for the vulnerability requires both ends of the connection
+      to cooperate, the below changes will only take effect when the remote
+      end is OpenSSH >= 9.6 (or equivalent, such as Paramiko in server mode,
+      as of this patch version) and configured to use the new
+      "strict kex" mode.
+    + Paramiko will now raise an SSHException subclass (MessageOrderError)
+      when protocol messages are received in unexpected order. This includes
+      situations like receiving MSG_DEBUG or MSG_IGNORE during initial key
+      exchange, which are no longer allowed during strict mode.
+    + Key (re)negotiation -- i.e. MSG_NEWKEYS, whenever it is encountered --
+      now resets packet sequence numbers. (This should be invisible to users
+      during normal operation, only causing exceptions if the exploit is
+      encountered, which will usually result in, again, MessageOrderError.)
+    + Sequence number rollover will now raise SSHException if it occurs
+      during initial key exchange (regardless of strict mode status).
+  * Tweak ext-info-(c|s) detection during KEXINIT protocol phase; the
+    original implementation made assumptions based on an OpenSSH
+    implementation detail.
+- Add patch use-64-bit-maxsize-everywhere.patch:
+  * Use the 64-bit value of sys.maxsize.
+
+-------------------------------------------------------------------
 Fri Sep 29 22:29:46 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - refresh remove-icecream-dep.patch

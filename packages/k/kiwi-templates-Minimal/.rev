@@ -62,4 +62,20 @@
     <comment>- Add combustion (jsc#PED-5843)</comment>
     <requestid>1110654</requestid>
   </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>a1c2c88965e7528c893473abcf246cf3</srcmd5>
+    <version>84.87.1</version>
+    <time>1703102421</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1134168</requestid>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>b10ac88fc1131c6ee2198d1bafbb8f5f</srcmd5>
+    <version>84.87.1</version>
+    <time>1704380217</time>
+    <user>dimstar_suse</user>
+    <comment>- Handle new sources in spec file too (forwarded request 1135437 from lnussel)</comment>
+    <requestid>1135438</requestid>
+  </revision>
 </revisionlist>

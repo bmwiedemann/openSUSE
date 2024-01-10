@@ -83,4 +83,17 @@
     <comment></comment>
     <requestid>1088451</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>9436d74bee452daa18a0235bbdb0aaaf</srcmd5>
+    <version>1.7</version>
+    <time>1704659957</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.7:
+  * Moved GitLab URL to &lt;https://gitlab.com/gsasl/libntlm&gt;.
+  * Use gnulib ./bootstrap for building from version
+    controlled sources.
+  * API and ABI modifications:
+    + No changes since last version.</comment>
+    <requestid>1137357</requestid>
+  </revision>
 </revisionlist>

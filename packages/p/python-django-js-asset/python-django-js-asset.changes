@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec 18 01:34:37 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.2: 
+  * Added Django 5.0, Python 3.12.
+  * Fixed building with hatchling 1.19.
+- Stop using globs in %files, specify the path directly
+
+-------------------------------------------------------------------
 Wed Nov 29 11:54:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1:

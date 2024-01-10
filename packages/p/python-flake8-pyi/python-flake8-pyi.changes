@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Jan  6 17:19:24 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 24.1.0:
+  * Y062: Disallow duplicate elements inside `Literal[]` slices.
+  * Support flake8>=7.0.0
+  * Y061 is no longer emitted in situations where Y062 would also
+    be emitted.
+  * Improve error message for Y060.
+  * Y023 now bans more imports from `typing_extensions` now that
+    typeshed has dropped support for Python 3.7.
+  * Y016: Fix false positive if a method had positional-only
+    parameters (using PEP 570 syntax and the first
+    positional-or-keyword parameter following the positional-only
+    parameters used a custom TypeVar (see #455).
+  * Y046: Fix false negative where an unused protocol would not
+    be detected if the protocol was generic.
+
+-------------------------------------------------------------------
 Tue Dec  5 21:07:25 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 23.11.0:

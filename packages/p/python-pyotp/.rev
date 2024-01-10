@@ -50,4 +50,22 @@
   * Drop Python 3.6 support; introduce Python 3.11 support</comment>
     <requestid>1046273</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1cf0273da04e47518ccb16d7bb9c9f7c</srcmd5>
+    <version>2.9.0</version>
+    <time>1702673310</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.9.0:
+  * Add `parse_uri()` support for Steam TOTP (#153)
+  * Test and documentation improvements</comment>
+    <requestid>1133203</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>622e448cda06595d15e487836c49f6b6</srcmd5>
+    <version>2.9.0</version>
+    <time>1703800891</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1135273</requestid>
+  </revision>
 </revisionlist>

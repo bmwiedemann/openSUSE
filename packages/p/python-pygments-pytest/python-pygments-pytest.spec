@@ -1,7 +1,7 @@
 #
 # spec file for package python-pygments-pytest
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,9 @@
 #
 
 
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-pygments-pytest
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 Summary:        A pygments lexer for pytest output
 License:        MIT

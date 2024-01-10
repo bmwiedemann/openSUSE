@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-sgp4
-Version:        2.22
+Version:        2.23
 Release:        0
 Summary:        Track earth satellite TLE orbits using up-to-date 2010 version of SGP4
 License:        MIT

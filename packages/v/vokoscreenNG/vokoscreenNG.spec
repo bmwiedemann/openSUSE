@@ -1,7 +1,7 @@
 #
 # spec file for package vokoscreenNG
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           vokoscreenNG
-Version:        3.8.0
+Version:        4.0.0
 Release:        0
 Summary:        Screencast creator
 License:        GPL-2.0-only
@@ -30,15 +30,15 @@ BuildRequires:  appstream-glib
 BuildRequires:  gstreamer-devel >= 1.12.5
 BuildRequires:  libqt5-linguist
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Core) >= 5.14.0
-BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Multimedia)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5Test)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5X11Extras)
+BuildRequires:  pkgconfig(Qt6Core) >= 6.5.0
+BuildRequires:  pkgconfig(Qt6DBus)
+BuildRequires:  pkgconfig(Qt6Gui)
+BuildRequires:  pkgconfig(Qt6Multimedia)
+BuildRequires:  pkgconfig(Qt6Network)
+BuildRequires:  pkgconfig(Qt6Test)
+BuildRequires:  pkgconfig(Qt6Widgets)
 BuildRequires:  pkgconfig(gstreamer-video-1.0)
+BuildRequires:  pkgconfig(libpulse)
 
 %if 0%{?sle_version} && 0%{?sle_version} < 150300
 Requires:       pulseaudio
@@ -71,7 +71,7 @@ vokoscreenNG is a user friendly Open Source screencaster for Linux and Windows.
 
 %build
 cd src
-%qmake5
+%qmake6
 %make_jobs
 
 %install

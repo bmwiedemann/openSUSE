@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jan  3 16:47:32 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Remove six from the rpm requirements. Why would we have
+  remove_six.patch in the first place if we still require it?
+- Enable unit tests
+
+-------------------------------------------------------------------
+Wed Jan  3 09:46:30 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- require setuptools
+- remove python2 logic, this makes no sense after
+  "remove_six.patch"
+
+-------------------------------------------------------------------
 Wed Jul  5 07:29:38 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Add remove_six.patch (gh#DiffSK/configobj#239) removing the
@@ -31,7 +45,7 @@ Thu Apr 13 22:40:36 UTC 2023 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Mon Jan 16 21:16:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- require setuptools 
+- require setuptools
 
 -------------------------------------------------------------------
 Tue Dec  4 12:46:48 UTC 2018 - Matej Cepl <mcepl@suse.com>

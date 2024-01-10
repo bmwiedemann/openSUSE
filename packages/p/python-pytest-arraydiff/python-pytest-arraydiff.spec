@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 
 Name:           python-pytest-arraydiff%{psuffix}
-Version:        0.5.0
+Version:        0.6.1
 Release:        0
 Summary:        Pytest plugin to help with comparing array output from tests
 License:        BSD-2-Clause

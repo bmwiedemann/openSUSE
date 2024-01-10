@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jan  4 16:37:38 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.3.1:
+  + Make the Requires.private line in generated .pkgconfig files
+    reproducible.
+  + Always use posix paths when retrieving link name.
+  + dependencies/llvm: strip default include dirs also for
+    config-tool version.
+
+-------------------------------------------------------------------
 Tue Dec 12 01:47:37 UTC 2023 - Yifan Jiang <yfjiang@suse.com>
 
 - Make BuildRequires libstdc++6-devel-gcc11 more precise, for

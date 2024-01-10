@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyshark
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2019-2022, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,10 +17,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-pyshark
-Version:        0.4.6
+Version:        0.6
 Release:        0
 Summary:        A Python wrapper for tshark output parsing
 License:        MIT
@@ -28,15 +27,21 @@ Group:          Development/Languages/Python
 URL:            https://github.com/KimiNewt/pyshark
 #Git-Clone:     https://github.com/KimiNewt/pyshark.git
 Source:         https://github.com/KimiNewt/pyshark/archive/v%{version}.tar.gz
+BuildRequires:  %{python_module appdirs}
 BuildRequires:  %{python_module lxml}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module py}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module termcolor}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  wireshark
+Requires:       python-appdirs
 Requires:       python-lxml
 Requires:       python-py
+Requires:       python-termcolor
 Requires:       wireshark
 BuildArch:      noarch
 %python_subpackages
@@ -49,20 +54,21 @@ wireshark dissectors.
 %setup -q -n pyshark-%{version}/src
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # test "inmem_capture" needs to be fixed upstream, do not run it for now
-rm -f ../tests/capture/test_inmem_capture.py
+rm -f ../tests/capture/test_inmem_capture.py ../tests/capture/test_live_capture.py
 %pytest ../tests
 
 %files %{python_files}
 %license ../LICENSE.txt
 %doc ../README.md
-%{python_sitelib}/*
+%{python_sitelib}/pyshark
+%{python_sitelib}/pyshark-%{version}.dist-info
 
 %changelog

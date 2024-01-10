@@ -1,7 +1,7 @@
 #
 # spec file for package log4cxx
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,16 @@
 
 
 Name:           log4cxx
-Version:        0.13.0
+Version:        1.2.0
 Release:        0
-%define soname 13
+%define soname 15
 Summary:        Log4j like C++ Logging Library
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://logging.apache.org/log4cxx/latest_stable/
-Source:         https://downloads.apache.org/logging/log4cxx/%{version}/apache-log4cxx-%{version}.tar.gz
+Source0:        https://downloads.apache.org/logging/log4cxx/%{version}/apache-log4cxx-%{version}.tar.gz
+Source1:        https://downloads.apache.org/logging/log4cxx/%{version}/apache-log4cxx-%{version}.tar.gz.asc
+Source2:        log4cxx.keyring
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++

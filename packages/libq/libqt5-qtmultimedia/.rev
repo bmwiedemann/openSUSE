@@ -492,4 +492,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment>Qt 5.15.11. Not fully built yet, qtlocation needed a fix. (forwarded request 1116057 from favogt)</comment>
     <requestid>1116114</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>31c2e4d1c2c2a8509fbcc3c331c59ce1</srcmd5>
+    <version>5.15.12+kde2</version>
+    <time>1704380088</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.12 (+ some .16), untested (forwarded request 1135706 from favogt)</comment>
+    <requestid>1136110</requestid>
+  </revision>
 </revisionlist>

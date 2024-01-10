@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Dec 28 09:39:45 UTC 2023 - cloud-devel@suse.de
+
+- update to version 5.4.0
+  - Cleanup py27 support
+  - Deprecate Windows support
+  - Update master for stable/2023.2
+  - Imported Translations from Zanata
+  - Moves supported python runtimes from version 3.8 to 3.10
+  - Revert "Moves supported python runtimes from version 3.8 to 3.10"
+  - Catch RuntimeError when loading log config file
+  - Bump bandit
+  - Update master for stable/2023.1
+
+-------------------------------------------------------------------
 Thu Aug 10 11:43:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - skip failing tests, run fdupes

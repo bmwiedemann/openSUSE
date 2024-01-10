@@ -17,7 +17,7 @@
 
 
 Name:           liboqs
-Version:        0.9.0
+Version:        0.9.1
 Release:        0
 Summary:        C library for quantum-resistant cryptographic algorithms
 License:        MIT
@@ -83,7 +83,7 @@ rmdir %{buildroot}%{_prefix}/local/
 
 %files -n liboqs4
 %license LICENSE.txt
-%{_libdir}/liboqs.so.0.9.0
+%{_libdir}/liboqs.so.%version
 %{_libdir}/liboqs.so.4
 %doc README.md
 

@@ -6458,4 +6458,28 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>BEWARE, it is from hell: 6.6.6 &amp; 6.6.5 &amp; 6.6.4 &amp; other fixes</comment>
     <requestid>1132469</requestid>
   </revision>
+  <revision rev="713" vrev="1">
+    <srcmd5>3a2b3019b32ca2fd79eafc4a71a970b0</srcmd5>
+    <version>6.6.7</version>
+    <time>1703611610</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1135080</requestid>
+  </revision>
+  <revision rev="714" vrev="1">
+    <srcmd5>670b019b5c848406520dbb4900ee286e</srcmd5>
+    <version>6.6.9</version>
+    <time>1704380119</time>
+    <user>dimstar_suse</user>
+    <comment>6.6.9 &amp; 6.6.8 &amp; SMB CVE fix</comment>
+    <requestid>1136076</requestid>
+  </revision>
+  <revision rev="715" vrev="1">
+    <srcmd5>507846f33e89b64cdb585662f3a40ed3</srcmd5>
+    <version>6.6.10</version>
+    <time>1704829704</time>
+    <user>anag+factory</user>
+    <comment>6.6.10 &amp; drop config-options.changes &amp; multibuild support (not enabled yet)</comment>
+    <requestid>1137518</requestid>
+  </revision>
 </revisionlist>

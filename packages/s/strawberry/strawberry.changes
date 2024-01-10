@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 19 17:12:01 UTC 2023 - Jonas Kvinge <jonaski@opensuse.org>
+
+- Add BuildRequires for KDSingleApplication-qt6 with Tumbleweed.
+
+-------------------------------------------------------------------
 Sat Dec  9 22:26:41 UTC 2023 - Jonas Kvinge <jonaski@opensuse.org>
 
 - Update to version 1.0.22

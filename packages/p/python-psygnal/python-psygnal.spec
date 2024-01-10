@@ -17,7 +17,7 @@
 
 
 Name:           python-psygnal
-Version:        0.9.3
+Version:        0.9.5
 Release:        0
 Summary:        Fast python callback/event system modeled after Qt Signals
 License:        BSD-3-Clause

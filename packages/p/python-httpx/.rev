@@ -214,4 +214,24 @@
   * Do not leak data in httpx.URL.copy_with (bsc#1199002, CVE-2021-41945)</comment>
     <requestid>1129219</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>2d7cdab133a51ac97f9af96d94240bd4</srcmd5>
+    <version>0.26.0</version>
+    <time>1704659953</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.26.0:
+  * The `proxy` argument was added. You should use the `proxy`
+    argument instead of the deprecated `proxies`, or use
+    `mounts=` for more complex configurations.
+  * The `proxies` argument is now deprecated. It will still
+    continue to work, but it will be removed in the future.
+  * Fix cases of double escaping of URL path components. Allow /
+    as a safe character in the query portion.
+  * Handle `NO_PROXY` envvar cases when a fully qualified URL is
+    supplied as the value.
+  * Allow URLs where username or password contains unescaped '@'.
+  * Ensure ASGI `raw_path` does not include URL query component.
+  * Ensure `Response.iter_text()` cannot yield empty strings.</comment>
+    <requestid>1137276</requestid>
+  </revision>
 </revisionlist>

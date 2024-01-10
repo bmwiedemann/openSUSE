@@ -1,7 +1,7 @@
 #
 # spec file for package dtb-armv7l
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 %define srcversion 6.6
-%define patchversion 6.6.6
+%define patchversion 6.6.10
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -25,9 +25,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,klp-symbols,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           dtb-armv7l
-Version:        6.6.6
+Version:        6.6.10
 %if 0%{?is_kotd}
-Release:        <RELEASE>.ga946a9f
+Release:        <RELEASE>.ge04388e
 %else
 Release:        0
 %endif
@@ -35,7 +35,11 @@ Summary:        Device Tree files for $MACHINES
 License:        GPL-2.0-only
 Group:          System/Boot
 URL:            https://www.kernel.org/
+%if ! 0%{?is_kotd} || ! %{?is_kotd_qa}%{!?is_kotd_qa:0}
 ExclusiveArch:  armv7l armv7hl
+%else
+ExclusiveArch:  do_not_build
+%endif
 BuildRequires:  cpp
 BuildRequires:  dtc >= 1.4.3
 BuildRequires:  xz
@@ -54,7 +58,6 @@ Source35:       group-source-files.pl
 Source36:       README.PATCH-POLICY.SUSE
 Source37:       README.SUSE
 Source38:       README.KSYMS
-Source39:       config-options.changes.txt
 Source40:       source-timestamp
 Source46:       split-modules
 Source47:       modversions
@@ -124,7 +127,6 @@ NoSource:       35
 NoSource:       36
 NoSource:       37
 NoSource:       38
-NoSource:       39
 NoSource:       40
 NoSource:       46
 NoSource:       47

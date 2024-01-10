@@ -43,4 +43,24 @@
     <comment></comment>
     <requestid>1104635</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>42760581f43492e0803bf2ac0adb2c45</srcmd5>
+    <version>0.4.9</version>
+    <time>1702845178</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.4.9:
+  * detect linux-aarch6 correctly for ffmpeg filenames
+  * Add GH Sponsors Link
+  * Updated deprecated test approach + minor changes
+  * Fix format
+  * Enable py311 on ci
+  * Check CI pypy
+  * Add setuptools dependency
+  * correct `fps` parsing
+
+  * get_ffmpeg_exe always checks env var
+  * Fix pix_format parser to capture formats that have commas
+  A fix for closing the std stream.</comment>
+    <requestid>1133658</requestid>
+  </revision>
 </revisionlist>

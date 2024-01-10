@@ -45,4 +45,15 @@
 - Remove unneeded changes-in-Django.patch</comment>
     <requestid>1129783</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>90c2867ea6736da0988ac2c14e01cb3a</srcmd5>
+    <version>2.2</version>
+    <time>1702936561</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.2: 
+  * Added Django 5.0, Python 3.12.
+  * Fixed building with hatchling 1.19.
+- Stop using globs in %files, specify the path directly</comment>
+    <requestid>1133789</requestid>
+  </revision>
 </revisionlist>

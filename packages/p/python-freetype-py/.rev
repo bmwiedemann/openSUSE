@@ -78,4 +78,14 @@
   * Fix bug where outline and bitmap could be off by one grid unit</comment>
     <requestid>1131690</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>8336443775d4053290e3ad65c701d2d4</srcmd5>
+    <version>2.4.0</version>
+    <time>1704387556</time>
+    <user>dimstar_suse</user>
+    <comment>- Clean up the SPEC file.
+- Add %{?sle15_python_module_pythons}
+</comment>
+    <requestid>1136881</requestid>
+  </revision>
 </revisionlist>

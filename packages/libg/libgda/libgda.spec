@@ -39,6 +39,8 @@ Patch3:         libgda-no-gtkdoc-markers.patch
 Patch4:         https://gitlab.gnome.org/GNOME/libgda/-/commit/bebdffb4de586fb43fd07ac549121f4b22f6812d.patch
 # PATCH-FIX-UPSTREAM libgda-fix-meson-060.patch bjorn.lie@gmail.com -- Fix build with meson 0.61.0 and newer
 Patch5:         libgda-fix-meson-060.patch
+# PATCH-FIX-UPSTREAM https://gitlab.gnome.org/GNOME/libgda/-/merge_requests/192
+Patch6:         reproducible.patch
 
 BuildRequires:  db-devel
 BuildRequires:  fdupes

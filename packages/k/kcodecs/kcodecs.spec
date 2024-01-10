@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5Codecs5
-%define _tar_path 5.103
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
+%define qt5_version 5.15.2
 %bcond_without released
 Name:           kcodecs
-Version:        5.112.0
+Version:        5.113.0
 Release:        0
 Summary:        Method collection to manipulate strings using various encodings
 License:        LGPL-2.1-or-later
@@ -34,12 +34,11 @@ Source:         %{name}-%{version}.tar.xz
 Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
-BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
+BuildRequires:  extra-cmake-modules >= %{_kf5_version}
 BuildRequires:  fdupes
 BuildRequires:  gperf
-BuildRequires:  kf5-filesystem
-BuildRequires:  cmake(Qt5Core) >= 5.15.0
-BuildRequires:  cmake(Qt5LinguistTools) >= 5.15.0
+BuildRequires:  cmake(Qt5Core) >= %{qt5_version}
+BuildRequires:  cmake(Qt5LinguistTools) >= %{qt5_version}
 
 %description
 KCodecs provides a collection of methods to manipulate strings using various
@@ -56,8 +55,7 @@ encodings.
 %package devel
 Summary:        Header files for kcodecs, a method collection for string manipulation
 Requires:       %{lname} = %{version}
-Requires:       extra-cmake-modules
-Requires:       cmake(Qt5Core) >= 5.15.0
+Requires:       cmake(Qt5Core) >= %{qt5_version}
 
 %description devel
 Development files for KCodecs, a method collection to manipulate

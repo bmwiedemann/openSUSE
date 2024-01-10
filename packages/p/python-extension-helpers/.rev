@@ -23,4 +23,39 @@
     <comment></comment>
     <requestid>967131</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c253d6304cf474513744d9078c725904</srcmd5>
+    <version>1.1.1</version>
+    <time>1704829778</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.1.1:
+  * get_extensions: use shutil.copyfile to avoid PermissionError
+  * Fix bug that caused extension-helpers to not work correctly
+    if pyproject was the only configuration file present
+  * Replace all instances of distutils in docs with setuptools
+  * MNT: handle deprecation warnings seen in tests
+  * Add note about pinning extension-helpers
+  * DEP: drop dependency on tomli on Python 3.11 and newer
+  * TST: treat warnings as errors
+  * MNT: find and replace log.warn -&gt; log.warning (the warn
+    method is deprecated)
+  * Infrastructure updates
+  * Bump actions/checkout from 2 to 4
+  * Bump stefanzweifel/git-auto-commit-action from 4 to 5
+  * Add back support for absolute source paths but deprecate it
+- update to 1.1.0:
+  * Support enabling via `pyproject.toml`
+  * OpenMP functions should detect the Intel oneAPI compiler
+  * Skip hypothesis tests in downstream testing
+  * Set language for docs
+  * Update python requirements
+  * Add pre-commit configuration
+  * Set testpaths to avoid picking up other tests
+  * Added configuration required to update changelog when doing
+    release through GitHub UI
+
+  python36 (NEP 29)
+- initial package for vesion 0.1</comment>
+    <requestid>1137634</requestid>
+  </revision>
 </revisionlist>

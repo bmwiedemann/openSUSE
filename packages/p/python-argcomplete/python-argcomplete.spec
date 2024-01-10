@@ -1,7 +1,7 @@
 #
 # spec file for package python-argcomplete
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2013 Darin Perusich.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,26 +19,25 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-argcomplete
-Version:        3.1.6
+Version:        3.2.1
 Release:        0
 Summary:        Bash tab completion for argparse
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/kislyuk/argcomplete
 Source:         https://files.pythonhosted.org/packages/source/a/argcomplete/argcomplete-%{version}.tar.gz
-# Don't fail the test suite when zsh is not available
-Patch2:         without_zsh.patch
 # Use correct place for auxiliary bashrc.sh file from pexpect
 Patch3:         bash-repl.patch
-BuildRequires:  %{python_module coverage}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pexpect}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools >= 67.7.2}
+BuildRequires:  %{python_module setuptools >= 67.2}
 BuildRequires:  %{python_module setuptools_scm >= 6.2}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  ca-certificates
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  zsh
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
@@ -62,25 +61,24 @@ resources over the network).
 %autosetup -p1 -n argcomplete-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/register-python-argcomplete
 %python_clone -a %{buildroot}%{_bindir}/python-argcomplete-check-easy-install-script
-rm -rf %{buildroot}%{python_sitelib}/test
 rm %{buildroot}%{_bindir}/activate-global-python-argcomplete
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export LANG=en_US.UTF-8
+export TERM=xterm-mono
 %{python_expand \
   # https://github.com/kislyuk/argcomplete/issues/255
-  # https://github.com/kislyuk/argcomplete/issues/256
   # https://github.com/kislyuk/argcomplete/issues/299
-  sed -i -e "1s|#!.*python.*|#!%{_bindir}/$python|" test/prog scripts/*
+  sed -i -e "1s|#!.*python.*|#!%{__$python}|" test/prog test/*.py scripts/*
   sed -i -e "s|python3 |$python |g" test/test.py
-  PYTHONPATH=%{buildroot}%{$python_sitelib} $python -m coverage run --source=argcomplete --omit=argcomplete/packages/_shlex.py ./test/test.py -v
+  PYTHONPATH=%{buildroot}%{$python_sitelib} $python ./test/test.py -v
 }
 
 %post
@@ -94,7 +92,7 @@ export LANG=en_US.UTF-8
 %files %{python_files}
 %doc README.rst
 %license LICENSE.rst
-%{python_sitelib}/argcomplete-%{version}*-info
+%{python_sitelib}/argcomplete-%{version}.dist-info
 %{python_sitelib}/argcomplete
 %python_alternative %{_bindir}/python-argcomplete-check-easy-install-script
 %python_alternative %{_bindir}/register-python-argcomplete

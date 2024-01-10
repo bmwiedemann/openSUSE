@@ -350,4 +350,33 @@
 </comment>
     <requestid>1100661</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>01ad573dbfbb16667c72afe7f92db0c6</srcmd5>
+    <version>1.13.3</version>
+    <time>1704659993</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.13.3:
+  * New API for filters in Python #1237 #1244
+  * Shallow repositories: New depth optional argument for
+    clone_repository(...) and Remote.fetch(...) #1245 #1246
+  * New submodule init(...), update(...) and reload(...)
+    functions #1248
+  * Release GIL in Walker.__next__ #1249
+  * Type hints for submodule functions in Repository #1247
+  * Support Python 3.12
+  * Documentation updates #1242
+  * Fix crash in reference rename #1233
+  * Upgrade to libgit2 v1.7.1
+  * Don't distribute wheels for pypy, only universal wheels for
+    macOS
+  * New Repository.remotes.create_anonymous(url) #1229
+  * docs: update links to pypi, pygit2.org #1228
+  * Prep work for Python 3.12 (not yet supported) #1223
+- drop support-libgit2-1.7.patch (upstream)
+
+  * Add missing newline at end of pygit2/decl/pack.h #1163
+  * Remove redundant line #1139
+  *  Added mwindow_mapped_limit, cached_memory, enable_caching,</comment>
+    <requestid>1137305</requestid>
+  </revision>
 </revisionlist>

@@ -1,20 +1,46 @@
 -------------------------------------------------------------------
+Thu Dec 28 05:47:44 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 1.19.0:
+  * Add modules
+
+-------------------------------------------------------------------
+Mon Dec 25 01:03:38 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 1.18.1:
+  * Display a descriptive error for `!include` directives
+  * Tweak readme
+  * Stabilize `!include path` as `import 'path'`
+
+-------------------------------------------------------------------
+Wed Dec 20 04:53:24 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 1.17.0:
+  * Pass justfile path to default chooser
+  * Pass `--unstable` and `--color always` to default chooser
+  * Update Gentoo package repository
+  * Fix readme header level
+  * Document line continuations
+  * List included recipes in load order
+  * Rename Justfile::first → Justfile::default
+  * Don't default to included recipes
+
+-------------------------------------------------------------------
 Sat Dec 02 01:51:03 UTC 2023 - xtexchooser@duck.com
 
 - Update to version 1.16.0:
-  * Release 1.16.0 (#1720)
-  * Fix readme typo (#1717)
-  * Fix Fish completion script (#1710)
-  * Add ARMv6 release target (#1715)
-  * Add `semver_matches` function (#1713)
-  * Clean up error display (#1699)
-  * Misc fixes (#1700)
-  * Fix readme build badge (#1697)
-  * Add `dotenv-filename` and `dotenv-path` settings (#1692)
-  * Fix set tempdir grammar (#1695)
-  * Add version to attributes (#1694)
-  * Allow setting echoed recipe line color (#1670)
-  * Update README.md (#1691)
+  * Fix readme typo
+  * Fix Fish completion script
+  * Add ARMv6 release target
+  * Add `semver_matches` function
+  * Clean up error display
+  * Misc fixes
+  * Fix readme build badge
+  * Add `dotenv-filename` and `dotenv-path` settings
+  * Fix set tempdir grammar
+  * Add version to attributes
+  * Allow setting echoed recipe line color
+  * Update README.md
 
 -------------------------------------------------------------------
 Wed Oct 25 03:03:03 UTC 2023 - Soc Virnyl Estela <contact@uncomfyhalomacro.pl>

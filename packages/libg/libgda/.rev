@@ -756,4 +756,12 @@ file is not available on the system.
   pkgconfig(mysqlclient) instead (forwarded request 981295 from gmbr3)</comment>
     <requestid>981306</requestid>
   </revision>
+  <revision rev="96" vrev="7">
+    <srcmd5>e5b10b35646404528a9352f82b7ff378</srcmd5>
+    <version>6.0.0</version>
+    <time>1703198400</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1134549</requestid>
+  </revision>
 </revisionlist>

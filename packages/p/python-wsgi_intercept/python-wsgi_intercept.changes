@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jan  6 13:24:02 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.13.0:
+  * Support Python 3.12
+
+-------------------------------------------------------------------
 Tue Jul 25 03:03:51 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.12.1:
@@ -8,7 +14,7 @@ Tue Jul 25 03:03:51 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 -------------------------------------------------------------------
 Wed Nov  9 19:51:58 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 1.11.0 
+- Update to version 1.11.0
   * refer to pytest not py.test in tests (#69)
 
 - Update to version 1.10.0
@@ -21,7 +27,7 @@ Wed Nov  9 19:51:58 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 -------------------------------------------------------------------
 Tue Oct 11 17:19:22 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 1.10.0 
+- Update to version 1.10.0
   * No upstream changelog
 
 -------------------------------------------------------------------
@@ -117,8 +123,8 @@ Wed Sep 28 04:53:44 UTC 2016 - tbechtold@suse.com
 Tue Sep 27 21:31:45 UTC 2016 - dmueller@suse.com
 
 - update to 1.4.1
-  * Correct the bytes v str problem 
-  * Fix pep8 errors in doc string 
+  * Correct the bytes v str problem
+  * Fix pep8 errors in doc string
   * Move tests from the test dir into wsgi_intercept/tests
 
 -------------------------------------------------------------------

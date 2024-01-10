@@ -1,7 +1,7 @@
 #
 # spec file for package kernel-source
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 %define srcversion 6.6
-%define patchversion 6.6.6
-%define git_commit a946a9f9d865a849717a570675413f097b229184
+%define patchversion 6.6.10
+%define git_commit e04388ed79f6d15fba9ab58fb2ba0ac47fc955f9
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -31,9 +31,9 @@
 %endif
 
 Name:           kernel-source
-Version:        6.6.6
+Version:        6.6.10
 %if 0%{?is_kotd}
-Release:        <RELEASE>.ga946a9f
+Release:        <RELEASE>.ge04388e
 %else
 Release:        0
 %endif
@@ -67,7 +67,6 @@ Source35:       group-source-files.pl
 Source36:       README.PATCH-POLICY.SUSE
 Source37:       README.SUSE
 Source38:       README.KSYMS
-Source39:       config-options.changes.txt
 Source40:       source-timestamp
 Source46:       split-modules
 Source47:       modversions
@@ -122,7 +121,11 @@ Source113:      patches.kabi.tar.bz2
 Source114:      patches.drm.tar.bz2
 Source120:      kabi.tar.bz2
 Source121:      sysctl.tar.bz2
+%if ! 0%{?is_kotd} || ! %{?is_kotd_qa}%{!?is_kotd_qa:0}
 BuildArch:      noarch
+%else
+ExclusiveArch:  do_not_build
+%endif
 Prefix:         /usr/src
 # Source is only complete with devel files.
 Requires:       kernel-devel%variant = %version-%source_rel
@@ -254,7 +257,7 @@ popd
 # Install the documentation and example Kernel Module Package.
 DOC=/usr/share/doc/packages/%name-%kernelrelease
 mkdir -p %buildroot/$DOC
-cp %_sourcedir/README.SUSE %_sourcedir/config-options.changes.txt %buildroot/$DOC
+cp %_sourcedir/README.SUSE %buildroot/$DOC
 ln -s $DOC/README.SUSE %buildroot/%src_install_dir/
 
 %if "%variant" == ""

@@ -43,6 +43,7 @@ BuildRequires:  libdrm >= 2.4.113
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(wlroots) >= 0.16.0
+BuildConflicts: pkgconfig(wlroots) >= 0.17.0
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(xwayland)
 Requires:       python-pywayland

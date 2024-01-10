@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan  7 20:53:30 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.0:
+  * drop python 3.8 support
+
+-------------------------------------------------------------------
 Fri Apr 21 12:30:50 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
@@ -6,7 +12,7 @@ Fri Apr 21 12:30:50 UTC 2023 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Wed Nov 30 06:28:21 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
-- Remove python_module macro definition 
+- Remove python_module macro definition
 - More specific python_sitelib in %files
 - Update to 2.3.0:
   * Update azure-pipelines template repositories

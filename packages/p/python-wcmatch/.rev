@@ -23,4 +23,17 @@
     <comment></comment>
     <requestid>1085090</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8416e2a710a4fed4caab713117ef8577</srcmd5>
+    <version>8.5</version>
+    <time>1704281462</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 8.5:
+  * Formally support Python 3.11 (no change).
+  * Add support for Python 3.12 (`pathlib` changes).
+  * Drop Python 3.7 support.
+  * Fix handling of current directory when magic and
+    non-magic patterns are mixed in `glob` pattern list.</comment>
+    <requestid>1136300</requestid>
+  </revision>
 </revisionlist>

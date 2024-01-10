@@ -17,13 +17,14 @@
 
 
 Name:           python-parver
-Version:        0.4
+Version:        0.5
 Release:        0
 Summary:        Module to parse and manipulate version numbers
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/RazerM/parver
 Source:         https://files.pythonhosted.org/packages/source/p/parver/parver-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}

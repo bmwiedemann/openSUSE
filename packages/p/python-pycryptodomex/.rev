@@ -459,4 +459,23 @@
     * More meaningful exceptions in case of mismatch in IV length</comment>
     <requestid>1129189</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>cc202f45377e2ea8e9bdecb96cd77506</srcmd5>
+    <version>3.19.1</version>
+    <time>1704281144</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.19.1:
+  * Fixed a side-channel leakage with OAEP decryption that could be
+    exploited to carry out a Manger attack. Thanks to Hubert
+    Kario.</comment>
+    <requestid>1136276</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>1dbd0f170ec2aaa98ef24a6810bab975</srcmd5>
+    <version>3.19.1</version>
+    <time>1704829895</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.19.1 (bsc#1218564, CVE-2023-52323)</comment>
+    <requestid>1137746</requestid>
+  </revision>
 </revisionlist>

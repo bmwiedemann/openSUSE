@@ -1,7 +1,7 @@
 #
 # spec file for package python-jaraco.develop
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,22 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-jaraco.develop
-Version:        8.2.0
+Version:        8.6.0
 Release:        0
 Summary:        Development utilities by jaraco
 License:        MIT
 URL:            https://github.com/jaraco/jaraco.develop
-Source:         https://files.pythonhosted.org/packages/source/j/jaraco.develop/jaraco.develop-8.2.0.tar.gz
-BuildRequires:  python-rpm-macros
+Source:         https://files.pythonhosted.org/packages/source/j/jaraco.develop/jaraco.develop-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module setuptools >= 56}
 BuildRequires:  %{python_module setuptools_scm >= 3.4.1}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module autocommand}
+BuildRequires:  %{python_module PyNaCl}
 BuildRequires:  %{python_module build}
 BuildRequires:  %{python_module jaraco.collections}
 BuildRequires:  %{python_module jaraco.context}
@@ -39,11 +41,11 @@ BuildRequires:  %{python_module keyring}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module path}
 BuildRequires:  %{python_module pytest >= 6}
-BuildRequires:  %{python_module PyNaCl}
 BuildRequires:  %{python_module requests-toolbelt}
 BuildRequires:  %{python_module subprocess-tee}
 # /SECTION
 BuildRequires:  fdupes
+Requires:       python-PyNaCl
 Requires:       python-autocommand
 Requires:       python-build
 Requires:       python-jaraco.collections
@@ -53,7 +55,6 @@ Requires:       python-jaraco.vcs >= 1.1
 Requires:       python-keyring
 Requires:       python-packaging
 Requires:       python-path
-Requires:       python-PyNaCl
 Requires:       python-requests-toolbelt
 Requires:       python-setuptools
 Requires:       python-subprocess-tee

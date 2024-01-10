@@ -1,7 +1,7 @@
 #
 # spec file for package omniORBpy
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,9 +20,9 @@ Name:           omniORBpy
 Summary:        Python bindings for the omniORB CORBA implementation
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Libraries
-Version:        4.3.0
+Version:        4.3.1
 Release:        0
-URL:            http://omniorb.sourceforge.net
+URL:            https://omniorb.sourceforge.io
 Source0:        https://downloads.sourceforge.net/project/omniorb/%{name}/%{name}-%{version}/%{name}-%{version}.tar.bz2
 BuildRequires:  gcc-c++
 BuildRequires:  omniORB-devel

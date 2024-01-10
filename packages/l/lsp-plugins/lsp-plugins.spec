@@ -22,7 +22,7 @@
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
 
 Name:           lsp-plugins
-Version:        1.2.13
+Version:        1.2.14
 Release:        0
 Summary:        Linux Studio Plugins Project (Stand-alone)
 License:        LGPL-3.0-or-later

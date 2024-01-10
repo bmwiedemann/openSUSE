@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Dec 18 13:42:32 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.21.0:
+  * v6.21.0
+  * v6.21.0-dev
+  * Zephyr solo mining: handle multiple outputs
+  * Updated pricing record size for Zephyr solo mining
+  * Update sse2neon.h
+  * ARM64 JIT: don't use `x18` register
+  * Update cn_main_loop.asm
+  * Update cn_main_loop.asm
+  * Added SNI option for TLS connections
+  * Add "built for OS/architecture/bits" to "ABOUT"
+  * Fixed huge pages availability info on Linux.
+  * Make Platform::hasKeepalive() constexpr where always supported and code cleanup.
+  * Disable TCP keepalive before closing socket
+  * Enabled keepalive for Windows (>= Vista)
+  * v6.20.1-dev
+
+-------------------------------------------------------------------
 Mon Jul 10 08:05:13 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 6.20.0:

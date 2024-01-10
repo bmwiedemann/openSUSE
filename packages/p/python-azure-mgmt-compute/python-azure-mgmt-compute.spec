@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-mgmt-compute
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-mgmt-compute
-Version:        30.3.0
+Version:        30.4.0
 Release:        0
 Summary:        Microsoft Azure Compute Management Client Library
 License:        MIT

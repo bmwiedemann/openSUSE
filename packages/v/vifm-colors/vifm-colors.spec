@@ -1,7 +1,7 @@
 #
 # spec file for package vifm-colors
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           vifm-colors
-Version:        0.12
+Version:        0.13
 Release:        0
 Summary:        Color themes for vifm
 License:        GPL-2.0-only

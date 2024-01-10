@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5Su5
-%define _tar_path 5.103
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
+%define qt5_version 5.15.2
 %bcond_without released
 Name:           kdesu
-Version:        5.112.0
+Version:        5.113.0
 Release:        0
 Summary:        User interface for running shell commands with root privileges
 License:        LGPL-2.1-or-later
@@ -36,15 +36,14 @@ Source2:        frameworks.keyring
 %endif
 # PATCH-FIX-OPENSUSE
 Patch1:         0001-Unset-QT_QPA_PLATFORM-to-get-xcb.patch
-BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
+BuildRequires:  extra-cmake-modules >= %{_kf5_version}
 BuildRequires:  fdupes
-BuildRequires:  kf5-filesystem
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(KF5Config) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5CoreAddons) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5I18n) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5Pty) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(Qt5Core) >= 5.15.0
+BuildRequires:  cmake(KF5Config) >= %{_kf5_version}
+BuildRequires:  cmake(KF5CoreAddons) >= %{_kf5_version}
+BuildRequires:  cmake(KF5I18n) >= %{_kf5_version}
+BuildRequires:  cmake(KF5Pty) >= %{_kf5_version}
+BuildRequires:  cmake(Qt5Core) >= %{qt5_version}
 BuildRequires:  pkgconfig(x11)
 
 %description
@@ -64,9 +63,8 @@ kdessh use it to interface with su and ssh respectively.
 %package devel
 Summary:        User interface for running shell commands with root privileges
 Requires:       %{lname} = %{version}
-Requires:       extra-cmake-modules
-Requires:       cmake(KF5Pty) >= %{_kf5_bugfix_version}
-Requires:       cmake(KF5Service) >= %{_kf5_bugfix_version}
+Requires:       cmake(KF5Pty) >= %{_kf5_version}
+Requires:       cmake(KF5Service) >= %{_kf5_version}
 
 %description devel
 libkdesu provides functionality for building GUI front ends for

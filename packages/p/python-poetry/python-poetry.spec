@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-poetry%{psuffix}
-Version:        1.6.1
+Version:        1.7.1
 Release:        0
 Summary:        Python dependency management and packaging
 License:        MIT
@@ -35,18 +35,14 @@ Group:          Development/Languages/Python
 URL:            https://python-poetry.org/
 # PyPI sdist doesn't contain tests
 Source:         https://github.com/python-poetry/poetry/archive/%{version}.tar.gz#/poetry-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM build-1.patch gh#python-poetry/poetry#8400
-Patch0:         build-1.patch
-# PATCH-FIX-UPSTREAM poetry-pr8447-fastjsonschema.patch gh#python-poetry/poetry#8447
-Patch1:         poetry-pr8447-fastjsonschema.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry-core = 1.7.0}
+BuildRequires:  %{python_module poetry-core = 1.8.1}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-build >= 1.0.3
-Requires:       python-poetry-core = 1.7.0
-Requires:       python-poetry-plugin-export >= 1.5.0
+Requires:       python-poetry-core = 1.8.1
+Requires:       python-poetry-plugin-export >= 1.6.0
 # SECTION cachecontrol[filecache]
 Requires:       python-CacheControl >= 0.13
 Requires:       python-filelock >= 3.8.0
@@ -123,6 +119,7 @@ donttest="$donttest or test_installer_with_pypi_repository"
 # does not find the expected packages in venv
 donttest="$donttest or test_executor_should_write_pep610_url_references"
 donttest="$donttest or test_prepare_directory or test_prepare_sdist"
+donttest="$donttest or test_isolated_env_install_success"
 %{python_expand # pytest needs to be called from the virtualenv python interpreter gh#python-poetry/poetry#1645
 virtualenv-%{$python_bin_suffix} --system-site-packages testenv-%{$python_bin_suffix}
 source testenv-%{$python_bin_suffix}/bin/activate

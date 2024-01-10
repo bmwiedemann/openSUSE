@@ -3,29 +3,29 @@
  Misc/NEWS               |    2 +-
  2 files changed, 1 insertion(+), 3 deletions(-)
 
-Index: Python-3.12.0/Doc/using/configure.rst
+Index: Python-3.12.1/Doc/using/configure.rst
 ===================================================================
---- Python-3.12.0.orig/Doc/using/configure.rst
-+++ Python-3.12.0/Doc/using/configure.rst
-@@ -622,13 +622,11 @@ macOS Options
+--- Python-3.12.1.orig/Doc/using/configure.rst
++++ Python-3.12.1/Doc/using/configure.rst
+@@ -629,13 +629,11 @@ macOS Options
  
  See ``Mac/README.rst``.
  
--.. cmdoption:: --enable-universalsdk
- .. cmdoption:: --enable-universalsdk=SDKDIR
+-.. option:: --enable-universalsdk
+ .. option:: --enable-universalsdk=SDKDIR
  
     Create a universal binary build. *SDKDIR* specifies which macOS SDK should
     be used to perform the build (default is no).
  
--.. cmdoption:: --enable-framework
- .. cmdoption:: --enable-framework=INSTALLDIR
+-.. option:: --enable-framework
+ .. option:: --enable-framework=INSTALLDIR
  
     Create a Python.framework rather than a traditional Unix install. Optional
-Index: Python-3.12.0/Misc/NEWS
+Index: Python-3.12.1/Misc/NEWS
 ===================================================================
---- Python-3.12.0.orig/Misc/NEWS
-+++ Python-3.12.0/Misc/NEWS
-@@ -11953,7 +11953,7 @@ C API
+--- Python-3.12.1.orig/Misc/NEWS
++++ Python-3.12.1/Misc/NEWS
+@@ -12561,7 +12561,7 @@ C API
  - bpo-40939: Removed documentation for the removed ``PyParser_*`` C API.
  
  - bpo-43795: The list in :ref:`limited-api-list` now shows the public name

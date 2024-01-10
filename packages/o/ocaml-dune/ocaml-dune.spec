@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-dune
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %define     pkg ocaml-dune
 %global  _buildshell /bin/bash
 Name:           %pkg%nsuffix
-Version:        3.12.1
+Version:        3.12.2
 Release:        0
 %{?ocaml_preserve_bytecode}
 License:        MIT

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan  6 13:05:17 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.4.0:
+  * stty(1): Retranslated from coreutils 9.1.
+  * vt-is-UTF8(1): Dropped, tool already disappeared.
+  * Import and update coreutils 9.1 translation.
+
+-------------------------------------------------------------------
 Fri Oct 22 11:14:32 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.6.3.6

@@ -42,7 +42,7 @@
 %endif
 
 Name:           scap-security-guide
-Version:        0.1.70
+Version:        0.1.71
 Release:        0
 Summary:        XCCDF files for SUSE Linux and openSUSE
 License:        BSD-3-Clause
@@ -52,6 +52,7 @@ URL:            https://github.com/ComplianceAsCode/content
 Packager:       SUSE Security Team <security@suse.de>
 %endif
 Source:         https://github.com/ComplianceAsCode/content/archive/v%{version}.tar.gz
+Patch0:         ssg-fix-journald.patch
 
 # explicit require what is needed by the detection logic in the scripts
 Requires:       coreutils
@@ -190,6 +191,7 @@ Note that the included profiles are community supplied and not officially suppor
 
 %prep
 %setup -q -n content-%version
+%autopatch -p1
 
 %build
 cd build

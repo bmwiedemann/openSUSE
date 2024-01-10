@@ -1,0 +1,5 @@
+<package name="snpguest" project="openSUSE:Factory">
+  <title>snpguest</title>
+  <description>snpguest is a command line utility for interacting with the AMD Secure Encrypted Virtualization - Secure Nested Paging (SEV-SNP) guest environment (via the /dev/sev-guest device).</description>
+  <devel project="Virtualization" package="snpguest"/>
+</package>

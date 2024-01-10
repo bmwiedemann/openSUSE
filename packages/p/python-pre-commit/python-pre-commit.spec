@@ -1,7 +1,7 @@
 #
 # spec file for package python-pre-commit
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,15 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pre-commit
-Version:        3.5.0
+Version:        3.6.0
 Release:        0
 Summary:        Multi-language pre-commit hooks
 License:        MIT
 URL:            https://github.com/pre-commit/pre-commit
 Source:         https://github.com/pre-commit/pre-commit/archive/v%{version}.tar.gz#/pre-commit-%{version}.tar.gz
+%if 0%{?sle_version} <= 150600
+Group:          Development/Tools/Other
+%endif
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -33,7 +36,7 @@ Requires:       python-identify >= 1.0.0
 Requires:       python-nodeenv >= 0.11.1
 Requires:       python-virtualenv >= 20.10.0
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %if 0%{?sle_version} <= 150600 && 0%{?is_opensuse}
 BuildRequires:  lua53-devel
@@ -99,11 +102,10 @@ EXCLUDED_TESTS="$EXCLUDED_TESTS or test_local_python_repo_python2 or rust_test"
 EXCLUDED_TESTS="$EXCLUDED_TESTS or test_run_example_executable or test_run_dep or test_perl_additional_dependencies or test_lua_additional_dependencies"
 # requires swift
 EXCLUDED_TESTS="$EXCLUDED_TESTS or test_swift_language"
-%if 0%{?sle_version} <= 150600 && 0%{?is_opensuse}
-# requires network on Leap
+%if 0%{?sle_version} <= 150600
+# requires network on Leap or SUSE Linux Enterprise
 EXCLUDED_TESTS="$EXCLUDED_TESTS or test_perl_install"
 %endif
-
 
 # Fix issue with git submodule in OBS
 git config --global --add protocol.file.allow always

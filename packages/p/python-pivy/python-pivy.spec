@@ -1,7 +1,7 @@
 #
 # spec file for package python-pivy
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,6 +57,8 @@ Pivy allows:
 %if 0%{suse_version} < 1550
 sed -i -e '/find_package/ s/SWIG 4.0.0/SWIG/' CMakeLists.txt
 %endif
+# Coin 4.0.2 compat - see https://github.com/coin3d/pivy/pull/111
+touch fake_headers/cmath
 
 %build
 %{python_expand #

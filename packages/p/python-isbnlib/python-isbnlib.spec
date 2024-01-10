@@ -18,19 +18,17 @@
 
 %define modname isbnlib
 Name:           python-isbnlib
-Version:        3.10.12
+Version:        3.10.14
 Release:        0
 Summary:        Extract, clean, transform, hyphenate and metadata for ISBNs
 License:        LGPL-3.0-only
 URL:            https://github.com/xlcnd/isbnlib
 Source:         https://github.com/xlcnd/%{modname}/archive/refs/tags/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM mark-network-tests.patch gh#xlcnd/isbnlib#121 mcepl@suse.com
-# mark tests requiring network access so they may be skipped
-Patch0:         mark-network-tests.patch
 BuildRequires:  %{python_module anyio}
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-forked}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-xdist}

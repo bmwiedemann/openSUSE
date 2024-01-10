@@ -90,4 +90,35 @@
     <comment></comment>
     <requestid>1032190</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ca1228a2e69a72fe4cd73e011272dcdb</srcmd5>
+    <version>2.6.3</version>
+    <time>1702845201</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.6.3:
+  * Fixed wrapper for glfwGetMonitorWorkarea
+  * Implemented search for GLFW library specific to frozen
+    executables
+  * Revert changes made in 2.6.0
+  * Do not search for GLFW library when running in a frozen
+    executable
+  * Use multiprocessing for library version detection on non-
+    Windows systems
+  * Fixed package version in CHANGELOG.md and glfw/__init__.py
+  * Added more wrappers for unreleased macros
+  * Added support for PYGLFW_LIBRARY_VARIANT
+  * Added warnings for deprecated functions
+
+- [1.12.0] - 2020-07-10</comment>
+    <requestid>1133686</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>1c3bc57e33e93cb0d9fc22114cdefdee</srcmd5>
+    <version>2.6.4</version>
+    <time>1703198304</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.6.4:
+  * Updated to GLFW 3.3.9</comment>
+    <requestid>1134330</requestid>
+  </revision>
 </revisionlist>

@@ -70,6 +70,8 @@ PCManFM-Qt is the Qt port of the LXDE file manager PCManFM
 %doc AUTHORS
 %dir %{_datadir}/pcmanfm-qt
 %dir %{_datadir}/pcmanfm-qt/lxqt
+%dir %{_datadir}/icons/hicolor/scalable
+%dir %{_datadir}/icons/hicolor/scalable/apps
 %{_bindir}/%{name}
 %{_datadir}/applications/*.desktop
 %{_mandir}/man?/%{name}.?%{ext_man}

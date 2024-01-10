@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Wed Dec 27 16:06:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.5.2:
+  * skip pandas ``pd.NA`` similar to ``None``
+  * add ``score_multiplier`` argument to ``process.cdist`` which
+    allows multiplying the end result scores
+  * with a constant factor.
+  * drop support for Python 3.7
+  * improve performance of simd implementation for ``LCS`` /
+    ``Indel`` / ``Jaro`` / ``JaroWinkler``
+  * improve performance of Jaro and Jaro Winkler for long
+    sequences
+  * implement ``process.extract`` with ``limit=1`` using
+    ``process.extractOne`` which can be faster
+  * the preprocessing function was always called through Python
+    due to a broken C-API version check
+  * fix wraparound issue in simd implementation of Jaro and Jaro
+    Winkler
+  * upgrade to ``Cython==3.0.3``
+  * add simd implementation for Jaro and Jaro Winkler
+  * add missing tag for python 3.12 support
+  * upgrade to ``Cython==3.0.2``
+  * implement the remaining missing features from the C++
+    implementation in the pure Python implementation
+  * added support for Python 3.12
+  * build x86 with sse2/avx2 runtime detection
+  * upgrade to ``taskflow==3.6``
+  * added keyword argument ``pad`` to Hamming distance. This
+    controls whether sequences of different
+  * length should be padded or lead to a ``ValueError``
+  * improve consistency of exception messages between the C++ and
+    pure Python implementation
+  * upgrade required Cython version to ``Cython==3.0.0b3``
+  * allow the usage of ``Hamming`` for different string lengths.
+    Length differences are handled as insertions / deletions
+  * remove support for boolean preprocessor functions in
+    ``rapidfuzz.fuzz`` and ``rapidfuzz.process``.
+  * The processor argument is now always a callable or ``None``.
+  * update defaults of the processor argument to be ``None``
+    everywhere. For affected functions this can change results,
+    since strings are no longer preprocessed.
+  * fix incorrect tag dispatching implementation leading to AVX2
+    instructions in the SSE2 code path
+  * add wheels for windows arm64
+  * allow the usage of finite generators as choices in
+    ``process.extract``
+  * fix handling of non symmetric scorers in pure python version
+    of ``process.cdist``
+  * fix default dtype handling when using ``process.cdist`` with
+    pure python scorers
+
+-------------------------------------------------------------------
 Fri Dec  1 17:57:05 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Do not buildrequire PyInstaller nor pandas which aren't used

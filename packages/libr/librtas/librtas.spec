@@ -26,10 +26,20 @@ Group:          System/Libraries
 URL:            https://github.com/ibm-power-utilities/librtas
 Source0:        https://github.com/ibm-power-utilities/librtas/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
+Source2:        activate-firmware-regress
+Source3:        vpdupdate-regress
 Patch0:         librtas.fix_doc_path.patch
+Patch1:         0001-librtas-expose-low-level-RTAS-call-APIs-internally.patch
+Patch2:         0002-librtas-move-VPD-code-into-separate-module.patch
+Patch3:         0003-librtas-move-system-parameter-code-to-separate-modul.patch
+Patch4:         0004-librtas-vendor-papr-miscdev.h.patch
+Patch5:         0005-librtas-vpd-prefer-dev-papr-vpd-when-available.patch
+Patch6:         0006-librtas-sysparm-prefer-dev-papr-sysparm-when-availab.patch
+Patch7:         link-lpthread.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
+BuildRequires:  pkgconfig
 ExclusiveArch:  ppc ppc64 ppc64le
 
 %description
@@ -80,16 +90,17 @@ contents of RTAS events.
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 ./autogen.sh
 %configure
-%make_build CFLAGS="%{optflags} -fPIC -g -I $PWD/librtasevent_src" LIB_DIR="%{_libdir}"
+make -O V=1 VERBOSE=1 CFLAGS="%{optflags} -fPIC -g -I $PWD/librtasevent_src" LIB_DIR="%{_libdir}" %{?_smp_mflags}
 
 %install
 rm -rf doc/*/latex
 make install DESTDIR=%{buildroot} LIB_DIR="%{_libdir}"
 # documents are in -doc subpackage
-rm -rf %{buildroot}/%{_docdir}
+rm -rf %{buildroot}%{_docdir}
 /sbin/ldconfig -n %{buildroot}%{_libdir}
 chmod -x %{buildroot}%{_libdir}/*.a
 find %{buildroot} -type f -name "*.la" -delete -print
+install -v -m 755 -D -t %{buildroot}%{_docdir}/%{name} %{SOURCE2} %{SOURCE3}
 
 %post -n %{name}%{sover} -p /sbin/ldconfig
 %postun -n %{name}%{sover} -p /sbin/ldconfig
@@ -101,6 +112,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files devel
 %license COPYING.LESSER
+%{_docdir}/%{name}
 %{_libdir}/librtasevent.so
 %{_libdir}/librtas.so
 %{_includedir}/librtas.h

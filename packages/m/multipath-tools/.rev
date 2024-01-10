@@ -1880,4 +1880,20 @@ by an upstream reviewed commit. (forwarded request 1109432 from mwilck)</comment
     automatically) (forwarded request 1128106 from mwilck)</comment>
     <requestid>1128122</requestid>
   </revision>
+  <revision rev="159" vrev="1">
+    <srcmd5>bc3d5154d131222f0aee172b724a2730</srcmd5>
+    <version>0.9.7+93+suse.e2f2272</version>
+    <time>1704487287</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.7+93+suse.e2f2272:
+  * fix ANA prioritizer enablement logic (bsc#1218326)
+  * avoid setting queue_if_no_path on multipath maps for which the
+    no_path_retry timeout has expired
+  * the interactive commands &quot;restorequeueing map X&quot; and
+    &quot;restorequeing maps&quot; now only affect maps that had queueing
+    manually disabled using &quot;disablequeuing maps&quot; or
+    &quot;disablequeuing map X&quot; beforehand
+  * Spelling fixes (forwarded request 1137069 from mwilck)</comment>
+    <requestid>1137070</requestid>
+  </revision>
 </revisionlist>

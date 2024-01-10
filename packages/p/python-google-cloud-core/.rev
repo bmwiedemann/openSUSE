@@ -125,4 +125,20 @@
     <comment></comment>
     <requestid>1099265</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f4001dc9012c5e0f0f543982eff041a5</srcmd5>
+    <version>2.4.1</version>
+    <time>1702845136</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.4.1:
+  * Fix regression with `google.cloud._helpers._NOW` (#266)
+  * Add support for Python 3.12 (#256)
+  * Introduce compatibility with native namespace packages (#260)
+- switch to new python stack for SLE15
+
+  * add 'Client.from_service_account_info' factory (#54) (7e59360)
+  * add support for Python 3.8
+  * Updated client library documentation URLs. (#7307)</comment>
+    <requestid>1133638</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-cPyparsing
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ Source:         https://files.pythonhosted.org/packages/source/c/cPyparsing/cPyp
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

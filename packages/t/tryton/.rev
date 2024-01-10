@@ -151,4 +151,12 @@
     <comment>bugfix release</comment>
     <requestid>1127524</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>1b015a4c9130606b5f96f37c47791165</srcmd5>
+    <version>6.0.33</version>
+    <time>1704281154</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1135781</requestid>
+  </revision>
 </revisionlist>

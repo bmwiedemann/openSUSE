@@ -67,4 +67,20 @@
   a dependency issue. (forwarded request 1121656 from bnavigator)</comment>
     <requestid>1121657</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8a6a4f6317b84d65dd63dda46fe592eb</srcmd5>
+    <version>2.0.0</version>
+    <time>1704560959</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.0:
+  * Add support to format indented selections of code. This
+    requires Black 23.11.0+
+  * Change entrypoint name to be `black`. This changes the
+    options namespace for this plugin from `pylsp.pylsp_black`
+    to `pylsp.black`.
+  * Drop support for Python 3.7.
+
+- Be clear that we require lsp-jsonrpc, because the test suite does.</comment>
+    <requestid>1137135</requestid>
+  </revision>
 </revisionlist>

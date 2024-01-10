@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan  6 21:05:08 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.7.5:
+  * Fix build issue
+- drop python-imread-remove-nose.patch (upstream)
+
+-------------------------------------------------------------------
 Wed Oct 27 10:04:03 UTC 2021 - pgajdos@suse.com
 
 - %check: do not use nose for testing, use %pytest_arch macro
@@ -9,7 +16,7 @@ Wed Oct 27 10:04:03 UTC 2021 - pgajdos@suse.com
 -------------------------------------------------------------------
 Mon Apr 19 03:22:18 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Don't build on Python 3.6, due to no NumPy. 
+- Don't build on Python 3.6, due to no NumPy.
 
 -------------------------------------------------------------------
 Tue Apr 14 12:26:14 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
@@ -17,7 +24,7 @@ Tue Apr 14 12:26:14 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 - update to 0.7.4
   * Add missing data to distribution
   * Fix several memory access bugs in parsers (reported by Robert Scott)
-  
+
 -------------------------------------------------------------------
 Wed May 22 10:57:59 UTC 2019 - pgajdos@suse.com
 

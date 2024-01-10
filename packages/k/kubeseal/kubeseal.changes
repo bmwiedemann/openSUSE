@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jan 04 17:55:17 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.24.5:
+  * Release notes for v0.24.5 (#1399)
+  * Update golang to the latest tooling version (#1398)
+  * Bump github.com/onsi/ginkgo/v2 from 2.13.1 to 2.13.2 (#1397)
+  * Bump golang.org/x/crypto from 0.15.0 to 0.16.0 (#1394)
+  * feat: Helm - Add sources (#1383)
+  * Expose controller metrics in an isolated port (#1369)
+  * Bump k8s.io/client-go from 0.28.3 to 0.28.4 (#1389)
+  * Bump k8s.io/code-generator from 0.28.3 to 0.28.4 (#1390)
+  * Update carvel package to v2.13.3 (#1381)
+  * Release chart 2.13.3 (#1380)
+
+-------------------------------------------------------------------
 Thu Nov 16 14:29:43 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.24.4:

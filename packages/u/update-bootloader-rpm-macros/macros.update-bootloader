@@ -1,4 +1,4 @@
-%update_bootloader_requires %{nil}
+%update_bootloader_requires Requires(post): coreutils
 
 %update_bootloader_refresh_post() \
 mkdir -p %{_rundir}/update-bootloader/ \

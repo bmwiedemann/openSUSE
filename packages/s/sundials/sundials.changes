@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec 19 17:06:44 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.7.0:
+  * Many changes, see
+    https://github.com/LLNL/sundials/releases/tag/v6.7.0.
+- Adapt shlib names for sunlinsol and sunnonlin libraries in
+  keeping with upstream so versioning changes.
+
+-------------------------------------------------------------------
 Sun Dec  3 08:35:18 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 6.6.2:

@@ -6943,4 +6943,20 @@ handle manual pages that consist only of a .so directive such as
   4fe3653dab tmpfiles: ignore EINVAL with --graceful (bsc#1216628)</comment>
     <requestid>1132619</requestid>
   </revision>
+  <revision rev="410" vrev="8">
+    <srcmd5>a2d93faab1ebed410478e600da64a005</srcmd5>
+    <version>254.5</version>
+    <time>1703198243</time>
+    <user>anag+factory</user>
+    <comment>- udev: only require kmod in the full flavor. udev-mini is only
+  used inside OBS in a strictly defined setup and udev will never
+  have to load device drivers there.
+
+- Import commit 071ac409a0564863657d8f8a5a35e6a4f914695f
+  071ac409a0 rules: set up tty permissions and group for /dev/hvc* nodes
+  f693b3ed8a vconsole-setup: remember the correct error value when open_terminal() fails
+  963d838bad vconsole-setup: handle the case where the vc is in KD_GRAPHICS mode more gracefully (bsc#1215282)
+  6f53f71d2d vconsole-setup: simplify error handling</comment>
+    <requestid>1134212</requestid>
+  </revision>
 </revisionlist>

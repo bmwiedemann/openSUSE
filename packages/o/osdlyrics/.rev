@@ -100,4 +100,14 @@
   * Fix sources in the default search (forwarded request 1099194 from hillwood)</comment>
     <requestid>1099197</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>59c647ae382d466199fc8fd5c087067e</srcmd5>
+    <version>0.5.15</version>
+    <time>1704281233</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 0.5.15
+  * Remove 99% of Python2 support
+  * Remove dependency on future (forwarded request 1135875 from hillwood)</comment>
+    <requestid>1135876</requestid>
+  </revision>
 </revisionlist>

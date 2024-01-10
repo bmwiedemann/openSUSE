@@ -25,7 +25,7 @@
 %bcond_with test
 %endif
 Name:           python-panel%{psuffix}
-Version:        1.3.4
+Version:        1.3.6
 Release:        0
 Summary:        A high level app and dashboarding solution for Python
 License:        BSD-3-Clause
@@ -138,6 +138,7 @@ done
 
 %if %{with test}
 %check
+export PYTEST_DEBUG_TEMPROOT=$(mktemp -d -p ./)
 # DISABLE TESTS REQUIRING NETWORK ACCESS
 donttest="test_loading_a_image_from_url"
 donttest="$donttest or test_png_native_size_embed"
@@ -151,7 +152,7 @@ donttest="$donttest or (test_svg_stretch_ and True)"
 # flaky async test
 donttest="$donttest or test_server_async_callbacks"
 # flaky timeout
-donttest="$donttest or test_server_thread_pool_change_event"
+donttest="$donttest or test_server_thread_pool_change_event or test_server_on_load_after_init"
 # upstream skips it for win and osx, we skip it because it (flakily) terminates everything on aarch64
 donttest="$donttest or (test_terminal and test_subprocess)"
 # file sample.pdf missing

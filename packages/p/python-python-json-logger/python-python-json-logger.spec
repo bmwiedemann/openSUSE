@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-json-logger
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/madzak/python-json-logger
 Source:         https://files.pythonhosted.org/packages/source/p/python-json-logger/python-json-logger-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

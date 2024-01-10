@@ -1,7 +1,7 @@
 #
 # spec file for package timewarrior
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           timewarrior
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
 Summary:        Command line time tracker
 License:        MIT
 Group:          Productivity/Office/Organizers
-URL:            http://taskwarrior.org/docs/timewarrior/
+URL:            https://timewarrior.net/
 Source:         https://github.com/GothenburgBitFactory/timewarrior/releases/download/v%{version}/timew-%{version}.tar.gz
 Patch0:         timewarrior-build-compare.patch
 BuildRequires:  %{rubygem asciidoctor}

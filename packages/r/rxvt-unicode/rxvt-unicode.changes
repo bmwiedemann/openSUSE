@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Dec  2 12:46:49 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
+
+- Change the confirm-paste keys beck to what was used before 9.31 (bsc#1217732)
+  * Add confirm-paste-Change-y-p-n-to-y-f-n-to-preserve-comp.patch
+
+-------------------------------------------------------------------
 Fri Oct 13 12:06:04 UTC 2023 - Marcus 'darix' Rückert <mrueckert@suse.de>
 
 - added dont-set-empty-local.patch: (boo#1214136)

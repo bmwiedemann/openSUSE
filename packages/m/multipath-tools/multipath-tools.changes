@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jan  5 14:32:11 UTC 2024 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 0.9.7+93+suse.e2f2272:
+  * fix ANA prioritizer enablement logic (bsc#1218326)
+  * avoid setting queue_if_no_path on multipath maps for which the
+    no_path_retry timeout has expired
+  * the interactive commands "restorequeueing map X" and
+    "restorequeing maps" now only affect maps that had queueing
+    manually disabled using "disablequeuing maps" or
+    "disablequeuing map X" beforehand
+  * Spelling fixes
+
+-------------------------------------------------------------------
 Tue Nov 21 20:46:40 UTC 2023 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 0.9.7+76+suse.5f857af:

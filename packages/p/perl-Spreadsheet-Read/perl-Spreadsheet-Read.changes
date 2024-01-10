@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan  3 03:11:33 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.89
+   see /usr/share/doc/packages/perl-Spreadsheet-Read/Changes
+
+  0.89	- 02 Jan 2024, H.Merijn Brand
+      * Auto-use BOM in CSV *files* with xlscat script
+      * Fix duplicate option letter (typo) (Erix)
+      * It's 2024
+
+-------------------------------------------------------------------
 Wed Nov  8 03:07:47 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.88

@@ -1,7 +1,7 @@
 #
 # spec file for package spamassassin
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -136,7 +136,6 @@ BuildRequires:  perl(Devel::Cycle)
 BuildRequires:  perl(Email::Address::XS)
 BuildRequires:  perl(Encode::Detect::Detector)
 BuildRequires:  perl(HTTP::Date)
-BuildRequires:  perl(IO::Socket::INET6)
 BuildRequires:  perl(IO::Socket::IP)
 BuildRequires:  perl(IO::Socket::SSL) >= 1.76
 BuildRequires:  perl(IO::String)
@@ -170,7 +169,6 @@ Recommends:     perl(Email::Address::XS)
 Recommends:     perl(Encode::Detect::Detector)
 Recommends:     perl(Getopt::Long) >= 2.32
 Recommends:     perl(HTTP::Date)
-Recommends:     perl(IO::Socket::INET6)
 Recommends:     perl(IO::Socket::IP)
 Recommends:     perl(IO::Socket::SSL) >= 1.76
 Recommends:     perl(IO::String)

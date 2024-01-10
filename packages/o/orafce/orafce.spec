@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define		realname orafce
 
 Name:           %{pgname}-orafce
-Version:        4.7.0+git1.fca4108
+Version:        4.9.0+git0.18d82db
 Release:        0
 Summary:        Implementation of some Oracle functions into PostgreSQL
 Group:          Productivity/Databases/Tools

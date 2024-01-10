@@ -17,13 +17,13 @@
 
 
 Name:           plantuml
-Version:        1.2023.7
+Version:        1.2023.13
 Release:        0
 Summary:        Java UML Tool
 License:        GPL-3.0-or-later
 Group:          Productivity/Publishing/Other
-URL:            http://plantuml.com/
-Source0:        http://downloads.sourceforge.net/plantuml/%{name}-lgpl-%{version}.tar.gz
+URL:            https://plantuml.com/
+Source0:        https://github.com/plantuml/plantuml/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}.script
 Source10:       http://pdf.plantuml.net/PlantUML_Language_Reference_Guide_en.pdf
 Patch0:         build-with-javac-utf8-encoding.patch
@@ -57,12 +57,10 @@ Group:          Productivity/Publishing/Other
 This package contains the API documentation for %{name}.
 
 %prep
-%setup -q -c -n plantuml
+%setup -q
 %patch0 -p1
 cp %{SOURCE1} %{name}
 cp %{SOURCE10} .
-# only contains a single line pointing to website
-rm README
 
 %build
 ant

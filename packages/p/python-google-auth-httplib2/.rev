@@ -39,4 +39,15 @@
     <comment></comment>
     <requestid>1112018</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4021b6b1d16d92745320a807530536b9</srcmd5>
+    <version>0.2.0</version>
+    <time>1702845141</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.2.0:
+  * Add support for Python 3.12 (#126)
+  * Remove third-party mock library (#124)
+- drop python-google-auth-httplib2-no-mock.patch (upstream)</comment>
+    <requestid>1133644</requestid>
+  </revision>
 </revisionlist>

@@ -107,4 +107,24 @@
     <comment></comment>
     <requestid>1100754</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>267c4f6a68a4b03f15f78ad89c70da2f</srcmd5>
+    <version>1.2.10</version>
+    <time>1702936554</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.2.10
+  * Add xfce4cpp to EXTRA_DIST
+- Use a newer gcc/g++ version on Leap or SLE.
+- Update to version 1.2.9
+  * Don't update tooltip string when tooltip is not visible
+  * Improve CPU hotplugging on Linux
+  * Use &quot;xfce_spawn_command_line()&quot;
+  * Code refactor
+  * Update source code for the new xfce4cpp library
+  * Rework of xfce4cpp library
+  * Reduce the minimum width from 10 to 1
+  * Add missing include
+  * Translation Updates (forwarded request 1130595 from manfred-h)</comment>
+    <requestid>1133770</requestid>
+  </revision>
 </revisionlist>

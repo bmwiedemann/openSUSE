@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Mon Jan  8 21:06:07 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.4:
+  * allow underscore in env name
+  * support for 'entrypoint-path' in FLASK_APP
+  * dynaconf_merge=False on nested structures
+  * non-str key raising type error
+  * pin hvac minimum version
+  * Hooking: Add support for changing the wrapped class
+  * Hotfix bypass evaluation #984
+  * Fix #976 from envvars parse True/False as booleans
+  * Fix #982 glob on settings_files
+  * docker compose is available on CI no need to install
+  * fix(django): fix #1000 AttributeError on admin
+  * Fix(django): fix #1000 AttributeError on admin (#1002) [Bruno
+    Rocha]
+  * Chore(lint): pep8 errors (#995) [Anderson Sousa]
+  * Hooking: Add support for changing the wrapped class
+  * Hotfix bypass evaluation #984
+  * Fix #976 from envvars parse True/False as booleans
+  * Fix #982 glob on settings_files
+  * docker compose is available on CI no need to install
+  * minor "utils.inspect" internal renames
+  * re-write docstrings in sphinx-style (:param foo)
+  * expose 'get_history'
+  * refactor 'test_cli.py': use more robust test isolation
+    strategy
+  * add data return to 'inspect_settings' for cleaner testing
+  * Docker compose is available on CI no need to install. [Bruno
+    Rocha]
+  * Fix #982 glob on settings_files (#987) [Bruno Rocha]
+  * Fix #976 from envvars parse True/False as booleans (#983)
+  * Add tests for reverse_lazy for #858
+  * Add converter helper function
+  * Refactor adding custom converters
+  * Replace bare tries with suppress and increase codecov (#901)
+  * Fix incorrect reverse_lazy workaround in docs to be correct
+  * Fix anchor link in FAQ doc (#895)
+  * Fix / CLI command validate not working properly (#892)
+  * fix #879 with @type converter
+  * add type_map to convert quoted types to proper class types
+    ("int" to int)
+- drop support-python-311.patch (upstream)
+
+-------------------------------------------------------------------
 Tue Feb 28 06:08:59 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 3.1.11:
@@ -36,7 +81,7 @@ Tue Feb 28 06:08:59 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 -------------------------------------------------------------------
 Fri Jul  8 05:10:21 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Update to 3.1.4: 
+- Update to 3.1.4:
   * Environment variables filtering #470 (#474)
   * Test to ensure #467 is not an issue (#535)
   * Fix #478 Make alias for environment -> environments (#534)

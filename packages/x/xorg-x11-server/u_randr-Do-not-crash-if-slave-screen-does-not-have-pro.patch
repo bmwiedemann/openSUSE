@@ -25,9 +25,13 @@ Index: xorg-server-21.1.0/randr/randr.c
 ===================================================================
 --- xorg-server-21.1.0.orig/randr/randr.c
 +++ xorg-server-21.1.0/randr/randr.c
-@@ -651,7 +651,9 @@ RRTellChanged(ScreenPtr pScreen)
+@@ -650,8 +650,13 @@ RRTellChanged(ScreenPtr pScreen)
+             pScrPriv->crtcs[i]->changed = FALSE;
  
          xorg_list_for_each_entry(iter, &primary->secondary_list, secondary_head) {
++            if (!dixPrivateKeyRegistered(rrPrivKey)) {
++                break;
++            }
              pSecondaryScrPriv = rrGetScrPriv(iter);
 -            pSecondaryScrPriv->provider->changed = FALSE;
 +            if (pSecondaryScrPriv->provider) {

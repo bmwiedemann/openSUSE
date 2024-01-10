@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Dec 18 09:23:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.8.8:
+  * Fix re_evaluate not taking global_dict as argument.
+  * Fix parsing of simple complex numbers.  Now,
+    `ne.evaluate('1.5j')` works.
+  * Fixes for upcoming NumPy 2.0
+
+-------------------------------------------------------------------
 Mon Nov 27 19:44:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.8.7:

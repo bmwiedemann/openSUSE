@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslo.vmware
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,17 @@
 
 
 Name:           python-oslo.vmware
-Version:        4.1.1
+Version:        4.3.0
 Release:        0
 Summary:        Oslo VMware library for OpenStack projects
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/oslo.vmware
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.vmware/oslo.vmware-4.1.1.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.vmware/oslo.vmware-4.3.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-Babel
 BuildRequires:  python3-ddt
+BuildRequires:  python3-defusedxml >= 0.7.1
 BuildRequires:  python3-eventlet >= 0.18.2
 BuildRequires:  python3-fixtures
 BuildRequires:  python3-lxml >= 4.5.0
@@ -56,6 +57,7 @@ server.
 %package -n python3-oslo.vmware
 Summary:        Oslo VMware library for OpenStack projects
 Requires:       python3-PyYAML >= 3.13
+Requires:       python3-defusedxml >= 0.7.1
 Requires:       python3-eventlet >= 0.18.2
 Requires:       python3-lxml >= 4.5.0
 Requires:       python3-netaddr >= 0.7.18
@@ -88,7 +90,7 @@ BuildRequires:  python3-sphinxcontrib-apidoc
 Documentation for OpenStack common VMware library.
 
 %prep
-%autosetup -p1 -n oslo.vmware-4.1.1
+%autosetup -p1 -n oslo.vmware-4.3.0
 %py_req_cleanup
 
 %build

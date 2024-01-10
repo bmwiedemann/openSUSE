@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 21 10:17:42 UTC 2023 - Илья Индиго <ilya@ilya.cf>
+
+- Relaxed the ruby version requirement.
+
+-------------------------------------------------------------------
 Thu Nov 16 15:50:55 UTC 2023 - Dan Čermák <dcermak@suse.com>
 
 - relax webrick and rgl dependencies

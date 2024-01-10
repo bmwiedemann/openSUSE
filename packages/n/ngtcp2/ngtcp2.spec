@@ -21,7 +21,7 @@
 %global gnutls_soname libngtcp2_crypto_gnutls
 %global gnutls_sover 8
 Name:           ngtcp2
-Version:        1.0.1
+Version:        1.1.0
 Release:        0
 Summary:        Implementation of the IETF QUIC protocol
 License:        MIT

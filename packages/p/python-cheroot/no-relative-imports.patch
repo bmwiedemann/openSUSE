@@ -5,10 +5,10 @@
  cheroot/test/test_ssl.py    |   12 ++++++------
  4 files changed, 18 insertions(+), 18 deletions(-)
 
-Index: cheroot-9.0.0/cheroot/ssl/builtin.py
+Index: cheroot-10.0.0/cheroot/ssl/builtin.py
 ===================================================================
---- cheroot-9.0.0.orig/cheroot/ssl/builtin.py
-+++ cheroot-9.0.0/cheroot/ssl/builtin.py
+--- cheroot-10.0.0.orig/cheroot/ssl/builtin.py
++++ cheroot-10.0.0/cheroot/ssl/builtin.py
 @@ -25,11 +25,11 @@ except ImportError:
      except ImportError:
          DEFAULT_BUFFER_SIZE = -1
@@ -26,10 +26,10 @@ Index: cheroot-9.0.0/cheroot/ssl/builtin.py
  
  generic_socket_error = OSError
  
-Index: cheroot-9.0.0/cheroot/test/conftest.py
+Index: cheroot-10.0.0/cheroot/test/conftest.py
 ===================================================================
---- cheroot-9.0.0.orig/cheroot/test/conftest.py
-+++ cheroot-9.0.0/cheroot/test/conftest.py
+--- cheroot-10.0.0.orig/cheroot/test/conftest.py
++++ cheroot-10.0.0/cheroot/test/conftest.py
 @@ -9,12 +9,12 @@ import time
  
  import pytest
@@ -47,29 +47,31 @@ Index: cheroot-9.0.0/cheroot/test/conftest.py
  
  
  @pytest.fixture
-Index: cheroot-9.0.0/cheroot/test/test_server.py
+Index: cheroot-10.0.0/cheroot/test/test_server.py
 ===================================================================
---- cheroot-9.0.0.orig/cheroot/test/test_server.py
-+++ cheroot-9.0.0/cheroot/test/test_server.py
-@@ -12,10 +12,10 @@ import pytest
+--- cheroot-10.0.0.orig/cheroot/test/test_server.py
++++ cheroot-10.0.0/cheroot/test/test_server.py
+@@ -13,11 +13,11 @@ import pytest
  import requests
  import requests_unixsocket
  
 -from .._compat import bton, ntob
 -from .._compat import IS_LINUX, IS_MACOS, IS_WINDOWS, SYS_PLATFORM
 -from ..server import IS_UID_GID_RESOLVABLE, Gateway, HTTPServer
+-from ..workers.threadpool import ThreadPool
 -from ..testing import (
 +from cheroot._compat import bton, ntob
 +from cheroot._compat import IS_LINUX, IS_MACOS, IS_WINDOWS, SYS_PLATFORM
 +from cheroot.server import IS_UID_GID_RESOLVABLE, Gateway, HTTPServer
++from cheroot.workers.threadpool import ThreadPool
 +from cheroot.testing import (
      ANY_INTERFACE_IPV4,
      ANY_INTERFACE_IPV6,
      EPHEMERAL_PORT,
-Index: cheroot-9.0.0/cheroot/test/test_ssl.py
+Index: cheroot-10.0.0/cheroot/test/test_ssl.py
 ===================================================================
---- cheroot-9.0.0.orig/cheroot/test/test_ssl.py
-+++ cheroot-9.0.0/cheroot/test/test_ssl.py
+--- cheroot-10.0.0.orig/cheroot/test/test_ssl.py
++++ cheroot-10.0.0/cheroot/test/test_ssl.py
 @@ -16,11 +16,11 @@ import pytest
  import requests
  import trustme

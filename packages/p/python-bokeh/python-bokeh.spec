@@ -1,5 +1,5 @@
 #
-# spec file for package python-bokeh
+# spec file
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -29,7 +29,7 @@
 %bcond_with testexamples
 
 Name:           python-bokeh%{psuffix}
-Version:        3.3.0
+Version:        3.3.2
 Release:        0
 Summary:        Statistical interactive HTML plots for Python
 License:        BSD-3-Clause
@@ -95,6 +95,7 @@ BuildRequires:  %{python_module requests >= 1.2.3}
 BuildRequires:  %{python_module requests-unixsocket}
 BuildRequires:  %{python_module scikit-learn}
 BuildRequires:  %{python_module selenium}
+BuildRequires:  %{python_module toml}
 BuildRequires:  %{python_module tornado}
 BuildRequires:  npm
 %endif
@@ -124,7 +125,8 @@ with interactivity over large or streaming datasets.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/bokeh
 
-# Remove hidden files for git repos
+%python_expand find %{buildroot}%{$python_sitelib}/typings -name __init__.pyi -size 0 -delete
+
 %endif
 
 %if %{with test}
@@ -168,6 +170,10 @@ deselectname+=" or Test_webdriver_control"
 # fails when tested with pytest-xdist
 deselectname+=" or (TestModelCls and test_get_class)"
 deselectname+=" or test_external_js_and_css_resource_ordering"
+# No vermin pkg for openSUSE
+deselectname+=" or test_vermin"
+# network
+deselectname+=" or test__use_provided_session_header_autoload"
 # for finding the  sampledata (packaged in Source99)
 export HOME=$PWD
 export PYTEST_DEBUG_TEMPROOT=$(mktemp -d -p ./)
@@ -187,6 +193,7 @@ export PYTEST_DEBUG_TEMPROOT=$(mktemp -d -p ./)
 %python_alternative %{_bindir}/bokeh
 %{python_sitelib}/bokeh/
 %{python_sitelib}/bokeh-%{version}*-info
+%{python_sitelib}/typings/
 %endif
 
 %changelog

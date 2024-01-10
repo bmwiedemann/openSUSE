@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Sat Dec 23 14:29:44 UTC 2023 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to 6.0.1
+  * Switch UPnP version to 1.1.
+  * Add bootid, configid headers to the SSDP packets, and the corresponding
+    init() options. Set TTL to 2 instead of 4.
+  * Description parser utility. Store the download URL.
+  * Control: schedule events for sending the search packets instead of
+    sleeping in the client thread.
+  * Control: export the minimum and maximum values for the search window in
+    upnp.h, the client may need them.
+  * Add interface to perform unicast search.
+- Update to 5.1.1  
+  * Rebuilt for rpi 1 (armv6) compatibility
+  * Fix choosing interface to use for Gena callback URL: we could sometimes
+    choose an inactive interface.
+- Update to 5.1.0    
+  * Control: add milliseconds timeout option to SoapSendAction(). This is
+    mostly intended to enable polling a device health, and implemented by
+    checking the the responseData previously output-only, now input/output,
+    argument for additional parameters given as (nm, value) string
+    pairs. The only parameter checked at the moment is ("timeoutms",
+    "value"). This change is source and ABI compatible except in the quite
+    unlikely case where the existing code called the function with a
+    non-empty output array containing a pair with a "timeoutms" first
+    element.
+  * Control: added an interface to set an HTTP timeout for the
+    subscribe/unsubscribe operations. The default previous fixed value of
+    30 S is kept, but can now be overridden. The change does not change the
+    ABI for an existing program.
+  * Given that upplay/libupnpp is the only known user of the lib control
+    side, the package name or shared library major version were not
+    changed.
+- Update to 5.0.2      
+  * Minuscule internal changes. Sync with Windows version.
+- Update to 5.0.1        
+  * Web server: fixed bad HTTP protocol conformance when handling range
+    requests. Would bother a lot correct clients which check status codes
+    and headers instead of just using the data, (e.g.: vlc).
+  * New alternate Meson build.
+  * Misc small cleanups inspired by clang-tidy and other housekeeping.
+
+-------------------------------------------------------------------
 Sat Aug 13 10:08:52 UTC 2022 - Michael Pujos <pujos.michael@gmail.com>
 
 - update to 5.0.0:

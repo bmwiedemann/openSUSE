@@ -1,7 +1,7 @@
 #
 # spec file for package xerces-c
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define libname libxerces-c-3_2
 Name:           xerces-c
-Version:        3.2.4
+Version:        3.2.5
 Release:        0
 Summary:        A Validating XML Parser
 License:        Apache-2.0

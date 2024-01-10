@@ -35,11 +35,17 @@
 # Need haru/hpdf version with HPDF_SHADING, i.e. >= 2.4.0
 # PEGTL >= 3.0 not supported, https://gitlab.kitware.com/vtk/vtk/-/issues/18151
 %if 0%{?suse_version} <= 1500
+%bcond_with    fast_float
 %bcond_with    fmt
 %bcond_with    haru
+%if 0%{?sle_version} <= 150400
 %bcond_without pegtl
+%else
+%bcond_with    pegtl
+%endif
 %bcond_with    pugixml
 %else
+%bcond_without fast_float
 %bcond_without fmt
 %bcond_without haru
 %bcond_with    pegtl
@@ -86,9 +92,9 @@
 %define shlib   %{vtklib}
 
 Name:           vtk%{?my_suffix}
-Version:        9.2.6
+Version:        9.3.0
 Release:        0
-%define series  9.2
+%define series  9.3
 Summary:        The Visualization Toolkit - A high level 3D visualization library
 # This is a variant BSD license, a cross between BSD and ZLIB.
 # For all intents, it has the same rights and restrictions as BSD.
@@ -102,20 +108,20 @@ Source:         https://www.vtk.org/files/release/%{series}/VTK-%{version}.tar.g
 Source99:       vtk-rpmlintrc
 # PATCH-FIX-OPENSUSE bundled_libharu_add_missing_libm.patch stefan.bruens@rwth-aachen.de -- Add missing libm for linking (gh#libharu/libharu#213)
 Patch1:         bundled_libharu_add_missing_libm.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         fix_rendering_core_linkage.patch
 # PATCH-FIX-OPENSUSE -- Fix building with Qt GLES builds
 Patch7:         0001-Add-missing-guard-required-for-GLES-to-disable-stere.patch
 # PATCH-FIX-UPSTREAM -- Fix building with Qt GLES builds
 Patch8:         0001-Correct-GL_BACK-GL_BACK_LEFT-mapping-on-GLES.patch
 # PATCH-FIX-UPSTREAM -- Fix building with Qt GLES builds
 Patch9:         0002-Use-GL_DRAW_BUFFER0-instead-of-GL_DRAW_BUFFER-for-GL.patch
-# PATCH-FIX-UPSTREAM
-Patch10:        0001-GL_POINT_SPRITE-is-only-available-for-Compatibility-.patch
+# PATCH-FIX-OPENSUSE -- Fix building with Qt GLES builds
+Patch10:        Do-not-request-CUBE_MAP_SEAMLESS-on-GLES.patch
 # PATCH-FIX-UPSTREAM -- Always create python package metadata (egg-info)
 Patch17:        0001-Always-generate-Python-Metadata-when-WRAP_PYTHON-is-.patch
 # PATCH-FIX-UPSTREAM -- Copy generated metadata to the right directory
 Patch18:        0001-Consider-VTK_PYTHON_SITE_PACKAGES_SUFFIX-for-Python-.patch
-# PATCH-FIX-UPSTREAM -- Add missing cstdint header required by GCC 13
-Patch19:        https://gitlab.kitware.com/vtk/vtk/-/commit/b1a09529f3ab.patch#/add_missing_cstdint.patch
 BuildRequires:  cgns-devel
 BuildRequires:  chrpath
 BuildRequires:  cmake >= 3.12
@@ -185,6 +191,9 @@ BuildRequires:  hdf5-%{mpi_flavor}-devel
 BuildRequires:  libboost_mpi-devel
 BuildRequires:  netcdf-%{mpi_flavor}-devel
 BuildRequires:  python3-mpi4py-devel
+%endif
+%if %{with fast_float}
+BuildRequires:  cmake(FastFloat)
 %endif
 %if %{with pugixml}
 BuildRequires:  pkgconfig(pugixml) >= 1.11
@@ -387,6 +396,7 @@ languages.
 %prep
 %setup -n VTK-%{version}
 %patch1 -p1
+%patch2 -p1
 %if %{with gles}
 %patch7 -p1
 %patch8 -p1
@@ -395,7 +405,6 @@ languages.
 %endif
 %patch17 -p1
 %patch18 -p1
-%patch19 -p1
 
 # Replace relative path ../../../../VTKData with %%{_datadir}/vtkdata
 # otherwise it will break on symlinks.
@@ -406,6 +415,9 @@ sed -i -e '/set(vtk_sqlite_build_binary 1)/ s/.*/#\0/' CMakeLists.txt
 
 # Allow testing also without external downloads - https://gitlab.kitware.com/vtk/vtk/-/issues/18692
 sed -i -e '/set(vtk_enable_tests "OFF")/ s/.*/#\0/' CMakeLists.txt
+
+# Allow other versions for fast_float
+sed -i -e '/VERSION .*/ d' ThirdParty/fast_float/CMakeLists.txt
 
 %build
 %if %{with mpi}
@@ -466,6 +478,7 @@ export CXXFLAGS="%{optflags}"
     -DVTK_OPENGL_USE_GLES:BOOL=%{?with_gles:ON}%{!?with_gles:OFF} \
     -DVTK_USE_EXTERNAL:BOOL=ON \
     -DVTK_MODULE_USE_EXTERNAL_VTK_exprtk:BOOL=OFF \
+    -DVTK_MODULE_USE_EXTERNAL_VTK_fast_float:BOOL=%{?with_fast_float:ON}%{!?with_fast_float:OFF} \
     -DVTK_MODULE_USE_EXTERNAL_VTK_fmt:BOOL=%{?with_fmt:ON}%{!?with_fmt:OFF} \
     -DVTK_MODULE_USE_EXTERNAL_VTK_gl2ps=%{?with_gl2ps:ON}%{!?with_gl2ps:OFF} \
     -DVTK_MODULE_USE_EXTERNAL_VTK_ioss:BOOL=OFF \

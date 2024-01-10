@@ -1,7 +1,7 @@
 #
 # spec file for package powerpc-utils
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,7 @@ Patch5:         lparstat-Fix-negative-values-seen-while-running-lpar.patch
 Patch6:         lparstat-report-mixed-SMT-state.patch
 Patch7:         lparstat-Fix-offline-threads-uninitialized-entries.patch
 Patch8:         ppc64_cpu-Support-partial-SMT-level-through-SYS-FS-s.patch
+Patch9:         powerpc-utils-scripts-ofpathname-handle-nsid-of-nvme.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libnuma-devel

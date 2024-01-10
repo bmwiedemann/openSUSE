@@ -4053,4 +4053,12 @@ However, upstream development now focuses on 3.x series.
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1130832</requestid>
   </revision>
+  <revision rev="191" vrev="42">
+    <srcmd5>55fa02d4fff89cb1a70e07b0060c32c5</srcmd5>
+    <version>2.7.18</version>
+    <time>1704753835</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1137573</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jan  5 17:11:51 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.3.1:
+  * Added official support for Python 3.12.
+  * Python 3.7 is no longer supported.
+  * qapp now sets up the QApplication instance with a command
+    line argument like this QApplication([prog_name]) instead of
+    using an empty list QApplication([]). Here prog_name is the
+    name of the app which defaults to pytest-qt-app, but can be
+    redefined in the pytest.ini file, see :ref:`qapp
+    fixture<setting-qapp-name>`. Alternatively, the arguments
+    that will be passed to QApplication can be defined explicitly
+    using the qapp_args fixture. This means that the default
+    behavior of the qapp_args fixture is now also changed
+    accordingly: it now returns the list [prog_name] instead of
+    an empty list.
+
+-------------------------------------------------------------------
 Fri Jun 23 19:07:24 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Remove xfail_strict from pytest config
@@ -159,8 +177,8 @@ Mon Jun 14 15:02:19 UTC 2021 - Ben Greiner <code@bnavigator.de>
   * Errors related to the ``qt_compat`` module (such as an invalid
     ``PYTEST_QT_API`` setting or missing Qt API wrappers) are now shown as a more
     human-readable error message rather than an internal pytest error (`#355`_). Thanks
-    `@The-Compiler`_ for the PR. 
-  
+    `@The-Compiler`_ for the PR.
+
 -------------------------------------------------------------------
 Fri Sep 25 09:19:58 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 

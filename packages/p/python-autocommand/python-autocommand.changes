@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 22 13:12:16 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Add setuptools-dynamic-license.patch gh#Lucretiel/autocommand#31
+- Build PEP517
+
+-------------------------------------------------------------------
 Fri Apr 21 12:22:25 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

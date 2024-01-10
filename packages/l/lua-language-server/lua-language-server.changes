@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jan  5 07:30:11 UTC 2024 - Kyle Scheuing <kyle@kylescheuing.com>
+
+- Upgrade to 3.7.4:
+  - fix: doc.type.function resolve only existing arg.extends
+  - Add a rawdesc field to exported docs
+  - support c like comments
+  - translated some options to zh-cn
+
+-------------------------------------------------------------------
+Sun Dec 31 01:45:39 UTC 2023 - Kyle Scheuing <kyle@kylescheuing.com>
+
+- Upgrade to 3.7.3:
+  - fix: can not infer arg type in some cases
+
+-------------------------------------------------------------------
 Sat Apr  1 11:19:41 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Upgrade to 3.6.18:

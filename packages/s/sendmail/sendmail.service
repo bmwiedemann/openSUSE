@@ -14,7 +14,7 @@
 
 [Unit]
 Description=Sendmail Mail Transport Agent
-Requires=var-run.mount nss-lookup.target network.target local-fs.target
+Requires=nss-lookup.target network.target local-fs.target
 After=var-run.mount nss-lookup.target network.target local-fs.target
 Wants=time-sync.target nss-user-lookup.target
 After=time-sync.target nss-user-lookup.target

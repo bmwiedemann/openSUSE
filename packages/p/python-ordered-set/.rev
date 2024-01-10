@@ -91,4 +91,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1093649</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>6c4e163a6b9bd15b07887cc423dc6014</srcmd5>
+    <version>4.1.0</version>
+    <time>1703024161</time>
+    <user>anag+factory</user>
+    <comment>- Switch to pyproject macros, which also now means we now use flit-core
+  to build.</comment>
+    <requestid>1133934</requestid>
+  </revision>
 </revisionlist>

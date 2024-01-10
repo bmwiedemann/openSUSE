@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,7 @@
 %bcond_with     setuptools
 %bcond_without  mono
 Name:           meson%{name_ext}
-Version:        1.3.0
+Version:        1.3.1
 Release:        0
 Summary:        Python-based build system
 License:        Apache-2.0

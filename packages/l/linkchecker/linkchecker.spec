@@ -16,10 +16,10 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define pythons python3
+%{?sle15_python_module_pythons}
 Name:           linkchecker
-Version:        10.3.0
+Version:        10.4.0
 Release:        0
 Summary:        Tool to check websites and HTML documents for broken links
 License:        GPL-2.0-or-later

@@ -233,4 +233,41 @@
   * demock.patch (forwarded request 1075534 from glaubitz)</comment>
     <requestid>1075541</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>5a45ad993721f3e2835ca336f28895b0</srcmd5>
+    <version>2.14.0</version>
+    <time>1703102493</time>
+    <user>anag+factory</user>
+    <comment>- Fix tests, setting GOOGLE_CLOUD_PROJECT environment variable.
+- Add fake default credentials to fix tests
+
+- update to 2.14.0:
+  * Add support for Python 3.12
+  * Support object retention lock
+  * Clarify error message and docstrings in Blob class method
+  * Propagate timeout in BlobWriter
+  * Use native namespace to avoid pkg_resources warnings
+
+- Update to 2.13.0
+  * Add Autoclass v2.1 support (#1117)
+  * Add support for custom headers (#1121)
+  * Blob.from_string parse storage uri with regex (#1170)
+  * Bucket.delete(force=True) now works with version-enabled buckets (#1172)
+  * Fix typo in Bucket.clear_lifecycle_rules() (#1169)
+  * Fix exception field in tm reference docs (#1164)
+- from version 2.12.0
+  * Add additional_blob_attributes to upload_many_from_filenames (#1162)
+  * Add crc32c_checksum argument to download_chunks_concurrently (#1138)
+  * Add skip_if_exists to download_many (#1161)
+  * Launch transfer manager to GA (#1159)
+  * Bump python-auth version to fix issue and remove workaround (#1158)
+  * Mark _deprecate_threads_param as a wrapper to unblock introspection and docs (#1122)
+  * Add snippets for upload_chunks_concurrently and add chunk_size (#1135)
+  * Update formatting and wording in transfer_manager docstrings (#1163)
+- from version 2.11.0
+  * Add gccl-gcs-cmd field to X-Goog-API-Client header for Transfer Manager calls (#1119)
+  * Add transfer_manager.upload_chunks_concurrently using the XML MPU API (#1115)
+  * Support configurable retries in upload_chunks_concurrently (#1120)</comment>
+    <requestid>1134085</requestid>
+  </revision>
 </revisionlist>

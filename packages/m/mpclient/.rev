@@ -50,4 +50,24 @@
     <comment></comment>
     <requestid>940009</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>18768b98300c40e9d3b577bf43d8fef9</srcmd5>
+    <version>0.35</version>
+    <time>1703801045</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.35:
+  * fix null pointer dereference on bad status format
+  * add &quot;%kbitrate%&quot;, &quot;%audioformat%&quot;, &quot;%samplerate%&quot;, &quot;%bits%&quot;
+    and &quot;%channels%&quot; options to the &quot;status&quot; command
+  * the &quot;%state%&quot; option of the &quot;status&quot; command now returns
+    &quot;stopped&quot; when the MPD server is stopped
+  * add commands &quot;lsdirs&quot;, &quot;addplaylist&quot;, &quot;delplaylist&quot;,
+    &quot;moveplaylist&quot;, &quot;renplaylist&quot;, &quot;clearplaylist&quot;
+  * add &quot;playlist&quot; option &quot;--with-prio&quot;
+  * bash completion: pass &quot;--&quot; to mpc to allow parameters with
+    dash
+  * bash completion: fix filenames with paranetheses
+  * bash completion: override $MPC_FORMAT</comment>
+    <requestid>1135537</requestid>
+  </revision>
 </revisionlist>

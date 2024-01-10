@@ -1,7 +1,7 @@
 #
 # spec file for package python-atlassian-python-api
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,15 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-atlassian-python-api
-Version:        2.0.1
+Version:        3.41.4
 Release:        0
 Summary:        Python Atlassian REST API Wrapper
 License:        Apache-2.0
 URL:            https://github.com/atlassian-api/atlassian-python-api
 Source:         https://files.pythonhosted.org/packages/source/a/atlassian-python-api/atlassian-python-api-%{version}.tar.gz
+Source1:        python-atlassian-python-api.rpmlintrc
+BuildRequires:  %{python_module deprecated}
 BuildRequires:  %{python_module kerberos}
 BuildRequires:  %{python_module oauthlib}
 BuildRequires:  %{python_module pytest}
@@ -33,6 +34,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-deprecated
 Requires:       python-kerberos
 Requires:       python-oauthlib
 Requires:       python-requests
@@ -46,14 +48,13 @@ BuildArch:      noarch
 Python Atlassian REST API Wrapper
 
 %prep
-%setup -q -n atlassian-python-api-%{version}
+%autosetup -p1 -n atlassian-python-api-%{version}
 
 %build
 %python_build
 
 %install
 %python_install
-%python_expand rm -r %{buildroot}%{$python_sitelib}/tests
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -62,6 +63,7 @@ Python Atlassian REST API Wrapper
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/atlassian
+%{python_sitelib}/atlassian_python_api*-info
 
 %changelog

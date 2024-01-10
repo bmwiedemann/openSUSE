@@ -2605,4 +2605,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment></comment>
     <requestid>1129255</requestid>
   </revision>
+  <revision rev="151" vrev="1">
+    <srcmd5>cd5b880d86c7ff09954e5814575aff28</srcmd5>
+    <version>5.15.12+kde147</version>
+    <time>1704380114</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1136538</requestid>
+  </revision>
 </revisionlist>

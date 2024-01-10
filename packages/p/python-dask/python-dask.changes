@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Mon Dec 18 12:08:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2023.12.1:
+  * Dask DataFrames are now much more performant by using a
+    logical query planner.
+  * ``read_parquet`` will now infer the Arrow types
+    ``pa.date32()``, ``pa.date64()`` and
+    ``pa.decimal()`` as a ``ArrowDtype`` in pandas. These dtypes
+    are backed by the original Arrow array, and thus avoid the
+    conversion to NumPy object.
+  * This release contains several updates that fix a possible
+    deadlock introduced in 2023.9.2 and improve the robustness of
+    P2P-based merging when the cluster is dynamically scaling up.
+  * The ``distributed.scheduler.pickle`` configuration option is
+    no longer supported. As of the 2023.4.0 release, ``pickle`` is
+    used to transmit task graphs, so can no longer be disabled.
+    We now raise an informative error when
+    ``distributed.scheduler.pickle`` is set to ``False``.
+  * Update DataFrame page
+  * Add changelog entry for ``dask-expr`` switch
+  * [Dask.order] Remove non-runnable leaf nodes from ordering
+  * Update installation docs
+  * Fix software environment link in docs
+  * Avoid converting non-strings to arrow strings for
+    read_parquet
+  * Dask.order rewrite using a critical path approach
+  * Avoid substituting keys that occur multiple times
+  * Add missing image to docs
+  * Update landing page
+  * Make meta check simpler in dispatch
+  * Pin PR Labeler
+  * Reorganize docs index a bit
+  * Avoid ``RecursionError`` when failing to pickle key in
+    ``SpillBuffer`` and using ``tblib=3``
+  * Allow tasks to override ``is_rootish`` heuristic
+  * Remove GPU executor (:pr-distributed:`8399`) `Hendrik
+    Makait`_
+  * Do not rely on logging for subprocess cluster
+  * Update gpuCI ``RAPIDS_VER`` to ``24.02``
+  * Ensure output chunks in P2P rechunking are distributed
+    homogeneously (:pr-distributed:`8207`) `Florian Jetter`_
+  * Trivial: fix typo (:pr-distributed:`8395`)
+
+-------------------------------------------------------------------
 Sat Dec  2 14:09:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2023.12.0:

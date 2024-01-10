@@ -23,4 +23,15 @@
     <comment></comment>
     <requestid>946782</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3dd0c128d8ef366b5836d15845293797</srcmd5>
+    <version>1.15</version>
+    <time>1704281454</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.15:
+  * Remove python 2.x support.
+  * Update to PEP517 compliance.
+  * Migrate CI to github actions.</comment>
+    <requestid>1136292</requestid>
+  </revision>
 </revisionlist>

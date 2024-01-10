@@ -17,7 +17,7 @@
 
 
 Name:           python-netutils
-Version:        1.4.1
+Version:        1.6.0
 Release:        0
 Summary:        Common helper functions useful in network automation
 License:        Apache-2.0

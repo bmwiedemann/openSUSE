@@ -1113,4 +1113,31 @@
   * An error message was corrected.</comment>
     <requestid>1129058</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>2877eecf427fac9da3bfb98690e1936d</srcmd5>
+    <version>3.0.7</version>
+    <time>1703281251</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.0.7:
+  * In the iterator of generator expressions, ``await`` and
+    ``yield`` were not correctly analysed.
+  * ``cpdef`` enums with the same name cimported from different
+    modules could lead to invalid C code.
+  * Some declarations in ``cpython.unicode`` were fixed and
+    extended.
+  * Compiling fused types used in pxd files could crash Cython in
+    Python 3.11+.
+  * Source files with non-ASCII file names could crash Cython.
+  * Includes all bug-fixes and features from the 0.29 maintenance
+    branch</comment>
+    <requestid>1134501</requestid>
+  </revision>
+  <revision rev="80" vrev="2">
+    <srcmd5>30b26c925e9fd133faa7a249e191d141</srcmd5>
+    <version>3.0.7</version>
+    <time>1704491956</time>
+    <user>dimstar_suse</user>
+    <comment>- require setuptools</comment>
+    <requestid>1136305</requestid>
+  </revision>
 </revisionlist>

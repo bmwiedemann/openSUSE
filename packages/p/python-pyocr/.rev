@@ -52,4 +52,18 @@
   * Make the dependency on setuptools_scm optional</comment>
     <requestid>1055978</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1689d340c4d316c29eaf7d5802db200e</srcmd5>
+    <version>0.8.5</version>
+    <time>1704281455</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.8.5:
+  * Fix LineBoxBuilder: Take into account headers and footers
+    too, not just the body.
+  * switch from setup.py to pyproject.toml
+  * switch from tox to pytest
+
+- Update project url and source to gitlab</comment>
+    <requestid>1136293</requestid>
+  </revision>
 </revisionlist>

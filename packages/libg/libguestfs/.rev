@@ -1070,4 +1070,20 @@
     <comment>Update libguestfs to version 1.51.9</comment>
     <requestid>1132565</requestid>
   </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>e3e6f1ad49a4deca1f5da7f08222951e</srcmd5>
+    <version>1.52.0</version>
+    <time>1704487397</time>
+    <user>dimstar_suse</user>
+    <comment>Update libguestfs to version 1.52.0</comment>
+    <requestid>1136941</requestid>
+  </revision>
+  <revision rev="99" vrev="2">
+    <srcmd5>568575c487a41c65233725fcc42f0db8</srcmd5>
+    <version>1.52.0</version>
+    <time>1704753999</time>
+    <user>anag+factory</user>
+    <comment>Update libguestfs to version 1.52.0 with adjustments for reproducible builds and other minor tweaks.</comment>
+    <requestid>1137599</requestid>
+  </revision>
 </revisionlist>

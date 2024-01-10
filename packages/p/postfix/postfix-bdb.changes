@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Dec 22 17:57:57 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 3.8.4
+  * Security: this release adds support to defend
+    against an email spoofing attack (SMTP smuggling) on
+    recipients at a Postfix server. For background, see
+    https://www.postfix.org/smtp-smuggling.html.
+
+-------------------------------------------------------------------
 Fri Nov  3 14:55:20 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 3.8.3

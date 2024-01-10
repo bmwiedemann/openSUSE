@@ -471,4 +471,20 @@ __init__.py contains code derived from a Google owned Apache project. cacerts.tx
 </comment>
     <requestid>1096901</requestid>
   </revision>
+  <revision rev="57" vrev="4">
+    <srcmd5>73bae130063b2c1da1b28e581859d9dd</srcmd5>
+    <version>0.22.0</version>
+    <time>1704491960</time>
+    <user>dimstar_suse</user>
+    <comment>- require setuptools
+
+- Update to 0.21.0:
+- add pyparsing dependency
+  set first, othewise a &quot;ValueError: Cannot set
+  verify_mode to CERT_NONE when check_hostname
+  instead (bnc#761162)
+          item not in cache
+- initial version of python-httplib2 (0.2.0)</comment>
+    <requestid>1136309</requestid>
+  </revision>
 </revisionlist>

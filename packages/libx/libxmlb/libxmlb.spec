@@ -1,7 +1,7 @@
 #
 # spec file for package libxmlb
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2019 Bjørn Lie, Bryne, Norway.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define sover 2
 Name:           libxmlb
-Version:        0.3.14
+Version:        0.3.15
 Release:        0
 Summary:        Library for querying compressed XML metadata
 License:        LGPL-2.1-or-later

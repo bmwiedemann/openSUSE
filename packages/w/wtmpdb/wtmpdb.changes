@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan  8 14:53:09 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.11.0
+  - last: add support for time-format option
+
+-------------------------------------------------------------------
+Wed Dec 13 14:01:00 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.10.0
+  - last: support matching for username and/or tty
+
+-------------------------------------------------------------------
 Thu Oct 26 13:07:54 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 0.9.3

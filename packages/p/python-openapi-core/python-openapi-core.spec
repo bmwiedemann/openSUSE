@@ -17,7 +17,7 @@
 
 
 Name:           python-openapi-core
-Version:        0.18.1
+Version:        0.18.2
 Release:        0
 Summary:        Client- and server-side support for the OpenAPI Specification v3
 License:        BSD-3-Clause
@@ -42,7 +42,7 @@ BuildRequires:  %{python_module jsonschema-spec >= 0.2.3 with %python-jsonschema
 BuildRequires:  %{python_module more-itertools}
 BuildRequires:  %{python_module multidict >= 6.0.4}
 BuildRequires:  %{python_module openapi-schema-validator >= 0.6 with %python-openapi-schema-validator < 0.7}
-BuildRequires:  %{python_module openapi-spec-validator >= 0.6 with %python-openapi-spec-validator < 0.7}
+BuildRequires:  %{python_module openapi-spec-validator >= 0.7.1 with %python-openapi-spec-validator < 0.8}
 BuildRequires:  %{python_module parse}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module responses}
@@ -51,13 +51,11 @@ Requires:       python-Werkzeug
 Requires:       python-asgiref >= 3.6.0
 Requires:       python-isodate
 Requires:       python-more-itertools
-Requires:       python-openapi-schema-validator >= 0.6.0
-Requires:       python-openapi-spec-validator >= 0.6.0
 Requires:       python-parse
 Requires:       (python-jsonschema >= 4.18.0 with python-jsonschema < 5)
 Requires:       (python-jsonschema-spec >= 0.2.3 with python-jsonschema-spec < 0.3)
 Requires:       (python-openapi-schema-validator >= 0.6 with python-openapi-schema-validator < 0.7)
-Requires:       (python-openapi-spec-validator >= 0.6 with python-openapi-spec-validator < 0.7)
+Requires:       (python-openapi-spec-validator >= 0.7.1 with python-openapi-spec-validator < 0.8)
 BuildArch:      noarch
 %python_subpackages
 

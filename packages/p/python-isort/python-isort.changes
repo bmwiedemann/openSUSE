@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sun Dec 17 02:10:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.13.2:
+  * Apply the bracket fix from issue #471 only for
+    use_parentheses=True
+  * Confine pre-commit to stages
+  * Fixed colors extras
+  * Fixed integration tests
+  * Fixed normalizing imports from more than one level of parent
+    modules
+  * Remove optional dependencies without extras
+  * Cleanup deprecated extras
+  * Fixed #1989: settings lookup when working in stream based
+    mode
+  * Fixed 80 line length for wemake linter
+  * Add support for Python 3.12
+  * Fixed assertions in test_git_hook
+  * Removed check for include_trailing_comma for the Hanging
+    Indent wrap mode
+  * Use the standard library tomllib on sufficiently new python
+  * Fixed safety sept 2023
+  * chore: move configurations to pyproject.toml (#2115)
+  * Fixed typo in README
+  * Update version in pre-commit setup to avoid installation
+    issue with poetry
+  * Skip .pytype directory by default.
+  * Fixed a tip block styling in the Config Files section (#2097)
+
+-------------------------------------------------------------------
 Wed Aug 30 08:21:33 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Skip failing test with hypothesis gh#PyCQA/isort#2171
@@ -214,7 +243,7 @@ Sun Mar 21 18:33:47 UTC 2021 - Ben Greiner <code@bnavigator.de>
     top to avoid overriding explicitly defined imports.
   * Documented #1685: Skip doesn't support plain directory names,
     but skip_glob does.
- 
+
 -------------------------------------------------------------------
 Fri Jan 29 19:59:54 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
@@ -256,23 +285,23 @@ Fri Dec 11 23:19:12 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 Tue Oct 13 18:28:28 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to Version 5.6.4
-  * Fixed #1556: Empty line added between imports that should be 
+  * Fixed #1556: Empty line added between imports that should be
     skipped.
 - Version 5.6.3
-  * Improved packaging of test files alongside source distribution 
+  * Improved packaging of test files alongside source distribution
     (see: https://github.com/PyCQA/isort/pull/1555).
 - Version 5.6.2
-  * Fixed #1548: On rare occasions an unecessary empty line can be 
+  * Fixed #1548: On rare occasions an unecessary empty line can be
     added when an import is marked as skipped.
-  * Fixed #1542: Bug in VERTICAL_PREFIX_FROM_MODULE_IMPORT wrap 
+  * Fixed #1542: Bug in VERTICAL_PREFIX_FROM_MODULE_IMPORT wrap
     mode.
   * Fixed #1552: Pylama test dependent on source layout.
-  * Goal Zero: (Tickets related to aspirational goal of achieving 0 
+  * Goal Zero: (Tickets related to aspirational goal of achieving 0
     regressions for remaining 5.0.0 lifespan):
   * Zope added to integration test suite
   * Additional testing of CLI (simulate unseekable streams)
 - now only requires poetry.core as PEP517 backend
-  
+
 -------------------------------------------------------------------
 Fri Oct  9 16:47:11 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
@@ -282,44 +311,44 @@ Fri Oct  9 16:47:11 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 Thu Oct  8 15:56:53 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to 5.6.1
-  * Fixed #1546: Unstable (non-idempotent) behavior with certain 
+  * Fixed #1546: Unstable (non-idempotent) behavior with certain
     src trees.
 - Changelog for 5.6.0
-  * Implemented #1433: Provide helpful feedback in case a custom 
+  * Implemented #1433: Provide helpful feedback in case a custom
     config file is specified without a configuration.
-  * Implemented #1494: Default to sorting imports within .pxd 
+  * Implemented #1494: Default to sorting imports within .pxd
     files.
-  * Implemented #1502: Improved float-to-top behavior when there 
+  * Implemented #1502: Improved float-to-top behavior when there
     is an existing import section present at top-of-file.
-  * Implemented #1511: Support for easily seeing all files isort 
+  * Implemented #1511: Support for easily seeing all files isort
     will be ran against using isort . --show-files.
   * Implemented #1487: Improved handling of encoding errors.
-  * Improved handling of unsupported configuration option errors 
-    (see #1475).  
-  * Fixed #1463: Better interactive documentation for future 
+  * Improved handling of unsupported configuration option errors
+    (see #1475).
+  * Fixed #1463: Better interactive documentation for future
     option.
-  * Fixed #1461: Quiet config option not respected by file API in 
+  * Fixed #1461: Quiet config option not respected by file API in
     some circumstances.
   * Fixed #1482: pylama integration is not working correctly out-
     of-the-box.
   * Fixed #1492: --check does not work with stdin source.
-  * Fixed #1499: isort gets confused by single line, multi-line 
+  * Fixed #1499: isort gets confused by single line, multi-line
     style comments when using float-to-top.
   * Fixed #1525: Some warnings can't be disabled with --quiet.
-  * Fixed #1523: in rare cases isort can ignore direct from import 
+  * Fixed #1523: in rare cases isort can ignore direct from import
     if as import is also on same line.
   + Potentially breaking changes:
-  * Implemented #1540: Officially support Python 3.9 stdlib 
+  * Implemented #1540: Officially support Python 3.9 stdlib
     imports by default.
-  * Fixed #1443: Incorrect third vs first party categorization - 
+  * Fixed #1443: Incorrect third vs first party categorization -
     namespace packages.
   * Fixed #1486: "Google" profile is not quite Google style.
-  * Fixed "PyCharm" profile to always add 2 lines to be consistent 
+  * Fixed "PyCharm" profile to always add 2 lines to be consistent
     with what PyCharm "Optimize Imports" does.
   + Goal Zero:
   * Implemented #1472: Full testing of stdin CLI Options
   * Added additional branch coverage.
-  * More projects added to integration test suite. 
+  * More projects added to integration test suite.
 - Changelog for 5.5.5
   * Fixed #1539: in extremely rare cases isort 5.5.4 introduces
     syntax error by removing closing paren.
@@ -328,7 +357,7 @@ Thu Oct  8 15:56:53 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
     multiline strings after a yield statement.
   * Fixed #1505: Support case where known_SECTION points to a
     section not listed in sections.
-- Use upstream's way of PIP with Poetry PEP517 backend to install 
+- Use upstream's way of PIP with Poetry PEP517 backend to install
   the package so we can use Github archive only
 - A Poetry update required to modify the examples installation for
   testing
@@ -340,8 +369,8 @@ Mon Sep 21 11:48:02 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 - Update to 5.5.3
   * Fixed #1488: in rare cases isort can mangle yield from or raise
     from statements.
-- Version 5.5.2 
-  * Fixed #1469: --diff option is ignored when input is from stdin. 
+- Version 5.5.2
+  * Fixed #1469: --diff option is ignored when input is from stdin.
 
 -------------------------------------------------------------------
 Tue Sep  8 14:08:11 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
@@ -368,7 +397,7 @@ Tue Sep  8 10:45:42 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
   * Fixed #1399: --skip can error in the case of projects that
     contain recursive symlinks.
   * Fixed #1389: ensure_newline_before_comments doesn't work if
-    comment is at top of section and sections don't have lines 
+    comment is at top of section and sections don't have lines
     between them.
   * Fixed #1396: comments in imports with ";" can keep isort from
     recognizing import line.
@@ -419,7 +448,7 @@ Wed Aug 19 04:17:27 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
   * Implemented #1373: support for length sort only of direct (AKA
     straight) imports.
   * Fixed #1321: --combine-as loses # noqa.
-  * Fixed #1375: --dont-order-by-type CLI broken. 
+  * Fixed #1375: --dont-order-by-type CLI broken.
 
 -------------------------------------------------------------------
 Sat Aug  8 12:21:14 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
@@ -432,13 +461,13 @@ Sat Aug  8 12:21:14 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
 -------------------------------------------------------------------
 Thu Aug  6 13:53:40 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
-- do not test hypothesmith integration because we lack python-libcst 
+- do not test hypothesmith integration because we lack python-libcst
 
 -------------------------------------------------------------------
 Thu Aug  6 09:21:42 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to 5.3.0
-  * Implemented ability to treat all or select comments as code 
+  * Implemented ability to treat all or select comments as code
     (issue #1357)
   * Implemented ability to use different configs for different file
     extensions (issue #1162)
@@ -476,7 +505,7 @@ Wed Jul 29 10:39:20 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
   * Improved relative path detection for skip config usage.
   * Added recursive symbolic link protection.
   * Implemented #1177: Support for color output using --color.
-  * Implemented recursive symlink detection support. 
+  * Implemented recursive symlink detection support.
 
 -------------------------------------------------------------------
 Tue Jul 28 20:09:25 UTC 2020 - Benjamin Greiner <code@bnavigator.de>

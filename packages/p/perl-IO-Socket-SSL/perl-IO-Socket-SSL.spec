@@ -28,6 +28,8 @@ Source0:        https://cpan.metacpan.org/authors/id/S/SU/SULLR/%{cpan_name}-%{c
 Source1:        cpanspec.yml
 # PATCH-FIX-UPSTREAM (bsc1200295) perl-IO-Socket-SSL doesn't follow system "PROFILE=SYSTEM" openSSL ciphers - https://git.centos.org/rpms/perl-IO-Socket-SSL/blob/e0b0ae04f5cdb41b1f29cb7d76c23abba7ac35e9/f/SOURCES/IO-Socket-SSL-2.066-use-system-default-cipher-list.patch
 Patch0:         perl-IO-Socket-SSL-use-system-default-cipher-list.patch
+# PATCH-FIX-UPSTREAM (bsc#1218342) Fix the test t/core.t to build with OpenSSL 3.2.0
+Patch1:         perl-IO-Socket-SSL-Openssl32.patch
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros

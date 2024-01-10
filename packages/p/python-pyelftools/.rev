@@ -83,4 +83,22 @@
     <comment></comment>
     <requestid>1008121</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e322fe0cc350ada2ef59192094e7fb6b</srcmd5>
+    <version>0.30</version>
+    <time>1702673235</time>
+    <user>anag+factory</user>
+    <comment>- update to update to 0.30:
+  * Optimization: cache instantiation of DWARF structs
+  * DWARFv5 CU headers
+  * Bug fix in attribute reporting for DWA_FORM_indirect
+  * Support for RISC-V attributes
+  * Readelf used for testing upgraded to 2.41
+  * Support for MIPS64 object files
+  * LoongArch support
+
+  - Add auto-testing vs. llvm-dwarfdump (#428)
+- Intial package</comment>
+    <requestid>1133189</requestid>
+  </revision>
 </revisionlist>

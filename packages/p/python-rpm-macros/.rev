@@ -617,4 +617,21 @@ prerequisite for new python submission</comment>
     <comment></comment>
     <requestid>1116747</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>281c3c1360b6a8eabae6cf6b8fba6ea5</srcmd5>
+    <version>20231220.98427f3</version>
+    <time>1703198239</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20231220.98427f3:
+  * fix python2_compile macro
+- Update to version 20231207.46c2ec3:
+  * make FLAVOR_compile compatible with python2
+- Update to version 20231204.dd64e74:
+  * Combine fix_shebang in one line
+  * New macro FLAVOR_fix_shebang_path
+  * Use realpath in %python_clone macro shebang replacement
+  * Compile and fix_shebang in %python_install macros
+</comment>
+    <requestid>1134299</requestid>
+  </revision>
 </revisionlist>

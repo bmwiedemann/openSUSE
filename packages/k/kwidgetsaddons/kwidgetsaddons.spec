@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5WidgetsAddons5
-%define _tar_path 5.103
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
+%define qt5_version 5.15.2
 %bcond_without released
 Name:           kwidgetsaddons
-Version:        5.112.0
+Version:        5.113.0
 Release:        0
 Summary:        Large set of desktop widgets
 License:        LGPL-2.1-or-later
@@ -34,14 +34,13 @@ Source:         %{name}-%{version}.tar.xz
 Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
-BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
+BuildRequires:  extra-cmake-modules >= %{_kf5_version}
 BuildRequires:  fdupes
-BuildRequires:  kf5-filesystem
-BuildRequires:  cmake(Qt5LinguistTools) >= 5.15.0
-BuildRequires:  cmake(Qt5Test) >= 5.15.0
-BuildRequires:  cmake(Qt5UiPlugin) >= 5.15.0
-BuildRequires:  cmake(Qt5UiTools) >= 5.15.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.15.0
+BuildRequires:  cmake(Qt5LinguistTools) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Test) >= %{qt5_version}
+BuildRequires:  cmake(Qt5UiPlugin) >= %{qt5_version}
+BuildRequires:  cmake(Qt5UiTools) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Widgets) >= %{qt5_version}
 
 %description
 This repository contains add-on widgets and classes for applications
@@ -61,8 +60,7 @@ KDE Platform 4 "kdeui" library, you will find many of its classes here.
 %package devel
 Summary:        Large set of desktop widgets: Build Environment
 Requires:       %{lname} = %{version}
-Requires:       extra-cmake-modules
-Requires:       cmake(Qt5Widgets) >= 5.15.0
+Requires:       cmake(Qt5Widgets) >= %{qt5_version}
 
 %description devel
 This repository contains add-on widgets and classes for applications

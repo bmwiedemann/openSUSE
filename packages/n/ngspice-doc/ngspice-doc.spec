@@ -1,7 +1,7 @@
 #
 # spec file for package ngspice-doc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ngspice-doc
-Version:        40
+Version:        42
 Release:        0
 Summary:        Documentation for the ngspice Mixed-signal simulator
 Group:          Documentation/Other

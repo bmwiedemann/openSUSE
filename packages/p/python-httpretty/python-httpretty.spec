@@ -17,6 +17,11 @@
 
 
 %{?sle15_python_module_pythons}
+%if 0%{?suse_version} < 1550
+%bcond_with boto3
+%else
+%bcond_without boto3
+%endif
 Name:           python-httpretty
 Version:        1.1.4
 Release:        0
@@ -35,7 +40,9 @@ Patch2:         double-slash-paths.patch
 Patch3:         460-miliseconds_tests.patch
 # PATCH-FIX-OPENSUSE Relax the time for one test case from 2ms to 3ms.
 Patch4:         relax-test-callback-response.patch
+%if %{with boto3}
 BuildRequires:  %{python_module boto3}
+%endif
 BuildRequires:  %{python_module eventlet}
 BuildRequires:  %{python_module fakeredis}
 BuildRequires:  %{python_module freezegun}
@@ -59,6 +66,9 @@ It is similar to Ruby's FakeWeb.
 
 %prep
 %autosetup -p1 -n httpretty-%{version}
+%if !%{with boto3}
+rm tests/bugfixes/nosetests/test_416_boto3.py
+%endif
 
 %build
 %python_build

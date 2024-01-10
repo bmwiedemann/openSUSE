@@ -1,7 +1,7 @@
 #
 # spec file for package python-imread
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,19 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python36 1
+%{?sle15_python_module_pythons}
 Name:           python-imread
-Version:        0.7.4
+Version:        0.7.5
 Release:        0
 Summary:        Image reading library
 License:        MIT
 URL:            http://luispedro.org/software/imread
 Source:         https://files.pythonhosted.org/packages/source/i/imread/imread-%{version}.tar.gz
-# https://github.com/luispedro/imread/issues/39
-Patch0:         python-imread-remove-nose.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
 BuildRequires:  giflib-devel
@@ -58,15 +57,14 @@ imsave
 
 %prep
 %setup -q -n imread-%{version}
-%patch0 -p1
 
 %build
 export EXCLUDE_WEBP=0
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -77,6 +75,7 @@ pushd imread
 %files %{python_files}
 %doc ChangeLog README.rst
 %license COPYING.MIT
-%{python_sitearch}/*
+%{python_sitearch}/imread
+%{python_sitearch}/imread-%{version}.dist-info
 
 %changelog

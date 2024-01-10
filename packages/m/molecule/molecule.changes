@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Dec 13 14:40:56 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.0.3:
+  * Bugfixes
+    - Change molecule_inventory in podman example to remove ansible
+      warning (#4086) @buckaroogeek
+    - Update collection structure image in the docs (#4098)
+      @ajinkyau
+    - Enable ansible-lint (#4069) @ssbarnea
+    - Correct git-archival settings (#4071) @ssbarnea
+    - Docs: highlight importance of ansible_collections at root dir
+      (#4060) @felher
+    - Skip create step when created == true (#4038) @mluzarreta
+    - Address ansible-lint reported issues (#4056) @muellerbe
+    - Add podman driver option to podman config (#4062) @brandor5
+    - Fix docker and podman examples to work with multiple
+      platforms (#4068) @clickthisnick
+    - Update docs to remove references to Docker being the default
+      driver (#4065) @Qalthos
+    - Fix forbidden implicit octal value (#4049) @jooola
+    - Pin linkchecker version (#4050) @zhan9san
+    - Update getting-started.md (#4030) @aogier
+    - Address documentation username typo (#4031) @iamgini
+- remove patch 4ab4f1c7_improve_test_names.patch that was taken
+  from upstream originally and is included in this release
+
+-------------------------------------------------------------------
 Mon Nov 13 07:05:39 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - add patch 4ab4f1c7_improve_test_names.patch

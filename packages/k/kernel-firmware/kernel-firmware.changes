@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Tue Jan 02 13:54:59 UTC 2024 - tiwai@suse.com
+
+- Update to version 20240102 (git commit b83108216200):
+  * linux-firmware: add firmware for mediatek bluetooth chip (MT7925)
+  * linux-firmware: add firmware for MT7925
+  * ASoC: tas2563: Add dsp firmware for laptops or other mobile devices
+  * QCA: Add bluetooth firmware nvm files for QCA2066
+  * QCA: Update Bluetooth QCA2066 firmware to 2.1.0-00629
+- Update aliases
+
+-------------------------------------------------------------------
+Sun Dec 31 09:24:50 UTC 2023 - tiwai@suse.com
+
+- Update to version 20231226 (git commit abfcad8b1405):
+  * rtl_bt: Add firmware and config files for RTL8852BT/RTL8852BE-VT
+  * ASoC: tas2781: Add dsp firmware for different laptops
+  * ath11k: WCN6855 hw2.0: update to WLAN.HSP.1.1-03125-QCAHSPSWPL_V1_V2_SILICONZ_LITE-3.6510.36
+  * ath11k: WCN6855 hw2.0: update board-2.bin
+  * ath11k: WCN6750 hw1.0: update board-2.bin
+  * ath11k: IPQ8074 hw2.0: update board-2.bin
+  * ath10k: WCN3990 hw1.0: update board-2.bin
+  * ath10k: QCA9888 hw2.0: update board-2.bin
+  * ath10k: QCA4019 hw1.0: update board-2.bin
+  * ath10k: QCA6174 hw3.0: update firmware-6.bin to WLAN.RM.4.4.1-00309-
+  * ath12k: add new driver and firmware for WCN7850
+  * iwlwifi: update gl FW for core80-165 release
+  * intel: vsc: Add firmware for Visual Sensing Controller
+  * cirrus: Add CS35L41 firmware and tunings for ASUS Zenbook 2023 Models
+  * cirrus: Add CS35L41 firmware and tunings for ASUS Zenbook 2022 Models
+  * amdgpu: DMCUB updates for various AMDGPU ASICs
+- New subpackag kernel-firmware-ath12k
+- Update aliases
+
+-------------------------------------------------------------------
+Fri Dec 15 08:29:26 UTC 2023 - tiwai@suse.com
+
+- Update to version 20231214 (git commit b80907ec3a81):
+  * qcom: Add Audio firmware for SM8650 QRD
+  * qcom: Add Audio firmware for SM8550 QRD
+  * Add rdfind for deb/rpm build jobs
+  * wfx: update to firmware 3.17
+  * wfx: fix broken firmware
+
+-------------------------------------------------------------------
+Wed Dec 06 07:01:51 UTC 2023 - tiwai@suse.com
+
+- Update to version 20231205 (git commit bfc33c1e308e):
+  * linux-firmware: Update AMD cpu microcode
+  * cxgb4: Update firmware to revision 1.27.5.0
+  * linux-firmware: add firmware for en8811h 2.5G ethernet phy
+  * s5p-mfc: Add MFC v12 Firmware
+  * qcom: update qrb4210 firmware
+  * qcom: update qcm2290 firmware
+  * qcom: update qcm2290/qrb4210 WiFi firmware file
+  * qcom: update Venus firmware file for v6.0
+
+-------------------------------------------------------------------
 Wed Nov 29 08:21:09 UTC 2023 - tiwai@suse.com
 
 - Update to version 20231128 (git commit d9f6088f7e91):

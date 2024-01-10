@@ -38,6 +38,7 @@ mwl8k:		marvell
 mwifiex:	mwifiex		mwifiex mwifiex_pcie mwifiex_usb mwifiex_sdio btmrvl_sdio
 iwlwifi:	iwlwifi		iwlwifi iwl4965 iwl3945
 ipu3-imgu:	intel
+mei-vsc-hw:	intel
 cx231xx:	media		cx25840
 ixp4xx-npe:	platform
 tehuti:		network
@@ -73,6 +74,7 @@ ath3k:		atheros
 mga:		platform
 r128:		platform
 radeon:		radeon		radeon amdgpu
+en8811h:	network
 amdgpu:		amdgpu
 amd_pmf:	platform
 s2255drv:	platform
@@ -116,6 +118,7 @@ Atheros:	atheros		ar3k
 ath6kl:		atheros		ath6kl_sdio ath6kl_usb
 ath10k:		ath10k		ath10k_pci ath10k_sdio ath10k_usb
 ath11k:		ath11k		ath11k_pci
+ath12k:		ath12k		ath12k_pci
 myri10ge:	network
 drxk:		media
 ene-ub6250:	platform	ums_eneub6250
@@ -169,8 +172,9 @@ mt7615e:	mediatek
 mt7622:		mediatek	mt7615e
 mt7663:		mediatek	mt7615e
 mt7915e:	mediatek	mt7915
-mt7921:		mediatek	mt7921e
-mt7922:		mediatek
+mt7921:		mediatek	mt7921e mt7921s mt7921u
+mt7922:		mediatek	mt7921e mt7921s mt7921u
+mt7925:		mediatek	mt7925e mt7925u
 mt7988:		mediatek
 nfp:		nfp
 wil6210:	atheros
@@ -199,4 +203,8 @@ btnxpuart:	platform
 qcom-sc8280xp:	sound		snd-soc-sc8280xp
 amlogic:	bluetooth
 powervr:	platform
+qcom-sm8550:	sound		snd-soc-sc8280xp
+qcom-sm8650:	sound		snd-soc-sc8280xp
+ti-tas2781:	sound		snd-hda-scodec-tas2781-i2c
+ti-tas2563:	sound		snd-hda-scodec-tas2781-i2c
 ast:		platform

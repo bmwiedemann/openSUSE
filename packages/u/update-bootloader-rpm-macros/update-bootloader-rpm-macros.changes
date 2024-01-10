@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec 12 09:54:44 UTC 2023 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- add Requires(post): coreutils to the macro %update_bootloader_requires
+  * the post scriptlets use the commands mkdir and touch which would fail
+    if coreutils is not installed
+
+-------------------------------------------------------------------
 Mon Aug 15 19:07:05 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - avoid bashisms in update-bootloader scriptlets (bsc#1195391)

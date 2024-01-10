@@ -173,4 +173,18 @@
   * Add `IDENTIFIER` to `FieldBehavior` enum (2d39f37) (forwarded request 1131366 from glaubitz)</comment>
     <requestid>1131367</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>76cafa6e508f35845b39d0d6f26de912</srcmd5>
+    <version>1.62.0</version>
+    <time>1702845173</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.62.0:
+  * Add `auto_populated_fields` field of `MethodSettings` in
+    `google/api/client_pb2` (#194)
+  * Add support for Python 3.12 (#192)
+  * Migrate to native namespace packages (#187)
+
+  * create api-common-protos repo for python common protos</comment>
+    <requestid>1133652</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Jan  2 13:09:35 UTC 2024 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.30
+  * All: Extend depth test overlay to correctly report pass/fail
+    with shader exported depth.
+  * UI: Improve tooltips for settings determining Android SDK/JDK.
+  * UI: Improve buffer formatter help and link properly to help
+    documentation from UI.
+  * UI: Improve D3D12 line anti-aliasing on AMD.
+  * Vulkan: Add support for VK_EXT_extended_dynamic_state3
+    extension.
+  * Vulkan: Improve display of output parameters to strip
+    unnecessary gl_PerVertex noise.
+  * Android: Fade logo every 45 minutes to alleviate burn-in if
+    server is left running long term.
+  * Android: Add handling of limited devices that only support
+    64-bit ARM and not also 32-bit ARM.
+  * D3D12 & Vulkan: Implement support for mesh shading.
+    Interactions with multiview are not supported, and currently
+    there is no mesh input visualisation option and shader
+    debugging is disabled. NOTE: Currently there are known issues
+    both with mesa radv and with dxc's SPIR-V output which are both
+    being investigated.
+ 
+
+-------------------------------------------------------------------
 Tue Nov 28 12:54:48 UTC 2023 - Patrik Jakobsson <patrik.jakobsson@suse.com>
 
 - Update to version 1.29 

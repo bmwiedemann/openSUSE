@@ -92,4 +92,15 @@
     initialisation.</comment>
     <requestid>1125121</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3954861994f255dcdd8970460c2c97b2</srcmd5>
+    <version>0.3.10</version>
+    <time>1703800839</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.3.10:
+  * Fix stream initialization bug with StartTLS
+  * Further improve StartTLS stream initialization.
+  * Improve error messages when server closes connection.</comment>
+    <requestid>1135149</requestid>
+  </revision>
 </revisionlist>

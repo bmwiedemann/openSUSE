@@ -1,0 +1,38 @@
+From e515bcb38b7d8e662aaa056ef9c56cf6c425f416 Mon Sep 17 00:00:00 2001
+From: "Matwey V. Kornilov" <matwey.kornilov@gmail.com>
+Date: Thu, 4 Jan 2024 23:11:44 +0300
+Subject: [PATCH 1/2] Use L suffix for long double constants
+
+Partially fix #2328
+---
+ test/test_xcomplex.cpp | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/test/test_xcomplex.cpp b/test/test_xcomplex.cpp
+index d7ea9bef..56fd0eea 100644
+--- a/test/test_xcomplex.cpp
++++ b/test/test_xcomplex.cpp
+@@ -308,15 +308,15 @@ namespace xt
+     {
+         using cmplx = std::complex<long double>;
+         xt::xtensor<cmplx, 2> a = xt::empty<cmplx>({5, 5});
+-        xt::real(a) = 123.321;
+-        xt::imag(a) = -123.321;
++        xt::real(a) = 123.321L;
++        xt::imag(a) = -123.321L;
+ 
+-        EXPECT_EQ(a(4, 4), cmplx(123.321, -123.321));
++        EXPECT_EQ(a(4, 4), cmplx(123.321L, -123.321L));
+ 
+         xt::real(a) = xt::imag(a);
+ 
+-        EXPECT_EQ(a(0, 0), cmplx(-123.321, -123.321));
+-        EXPECT_EQ(a(4, 4), cmplx(-123.321, -123.321));
++        EXPECT_EQ(a(0, 0), cmplx(-123.321L, -123.321L));
++        EXPECT_EQ(a(4, 4), cmplx(-123.321L, -123.321L));
+     }
+ 
+     TEST(xcomplex, build_from_double)
+-- 
+2.35.3
+

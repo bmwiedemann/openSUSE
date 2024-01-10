@@ -126,4 +126,14 @@
   * Add default color CSS selectors to node text by</comment>
     <requestid>1117779</requestid>
   </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>1ec34acf465b2bec7ecf1013402f2192</srcmd5>
+    <version>unknown</version>
+    <time>1703527526</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.12.42, jupyter frontend 0.5.43
+  * fix: set domain to (0, 1) when no data is present by
+    @maartenbreddels in #1619</comment>
+    <requestid>1134920</requestid>
+  </revision>
 </revisionlist>

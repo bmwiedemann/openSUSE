@@ -17,7 +17,7 @@
 
 
 Name:           mmv
-Version:        2.4
+Version:        2.5.1
 Release:        0
 Summary:        Move/Copy/Append/Link Multiple Files by Wildcard Patterns
 License:        GPL-1.0-or-later

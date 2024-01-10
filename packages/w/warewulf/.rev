@@ -69,4 +69,12 @@
   wasn't used in previous commits (forwarded request 1131605 from mslacken)</comment>
     <requestid>1131606</requestid>
   </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>81334b5630ec6bb7d80085905b85eb14</srcmd5>
+    <version>3.8.1</version>
+    <time>1703102622</time>
+    <user>anag+factory</user>
+    <comment>updated patch (forwarded request 1134308 from mslacken)</comment>
+    <requestid>1134309</requestid>
+  </revision>
 </revisionlist>

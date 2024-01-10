@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Dec 17 20:06:52 UTC 2023 - Tobias Klausmann <tobias.klausmann@freenet.de>
+
+- dxvk need libxkbregistry0 for building -32bit variants, provide them.
+
+-------------------------------------------------------------------
 Mon Oct  9 02:55:17 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.6.0

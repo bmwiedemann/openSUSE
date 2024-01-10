@@ -95,4 +95,12 @@
 - Update URL.</comment>
     <requestid>886907</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>8e4baf7476ca43a3d19f52fdb5e0f7b8</srcmd5>
+    <version>2.2.3</version>
+    <time>1702845088</time>
+    <user>anag+factory</user>
+    <comment>Require extra-cmake-modules at build time</comment>
+    <requestid>1133540</requestid>
+  </revision>
 </revisionlist>

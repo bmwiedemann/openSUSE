@@ -115,4 +115,30 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1093691</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ed7579e5e438a7f7de15998094c1335c</srcmd5>
+    <version>23.11.0</version>
+    <time>1702845104</time>
+    <user>anag+factory</user>
+    <comment>- update to 23.11.0:
+  * When the collector passed to ``treq.collect(response,
+    collector)`` throws an exception, that error will now be
+    returned to the caller of ``collect()`` via the result
+    ``Deferred``, and the underlying HTTP transport will be
+    closed.
+  * Python 3.11 is now supported.
+  * Python 3.12 is now supported.
+  * PyPy 3.9 is now supported.
+  * PyPy 3.10 is now supported.
+  * Deprecations and Removals
+  * The minimum supported Twisted version has increased to
+    22.10.0. Older versions are no longer tested in CI.
+  * Support for Python 3.6, which has reached end of support, has
+    been dropped.
+  * Support for PyPy 3.7, which has reached end of support, has
+    been removed.
+  * Support for PyPy 3.8, which has reached end of support, is
+    deprecated.</comment>
+    <requestid>1133550</requestid>
+  </revision>
 </revisionlist>

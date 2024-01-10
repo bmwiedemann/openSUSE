@@ -1,7 +1,7 @@
 #
 # spec file for package perl-XS-Parse-Keyword
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,9 @@
 
 %define cpan_name XS-Parse-Keyword
 Name:           perl-XS-Parse-Keyword
-Version:        0.380.0
+Version:        0.390.0
 Release:        0
-%define cpan_version 0.38
+%define cpan_version 0.39
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        XS functions to assist in parsing keyword syntax
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -33,10 +33,10 @@ BuildRequires:  perl(ExtUtils::CChecker) >= 0.11
 BuildRequires:  perl(ExtUtils::ParseXS) >= 3.16
 BuildRequires:  perl(Module::Build) >= 0.4004
 BuildRequires:  perl(Test2::V0)
-Provides:       perl(XS::Parse::Infix) = 0.380.0
-Provides:       perl(XS::Parse::Infix::Builder) = 0.380.0
-Provides:       perl(XS::Parse::Keyword) = 0.380.0
-Provides:       perl(XS::Parse::Keyword::Builder) = 0.380.0
+Provides:       perl(XS::Parse::Infix) = %{version}
+Provides:       perl(XS::Parse::Infix::Builder) = %{version}
+Provides:       perl(XS::Parse::Keyword) = %{version}
+Provides:       perl(XS::Parse::Keyword::Builder) = %{version}
 %define         __perllib_provides /bin/true
 %{perl_requires}
 

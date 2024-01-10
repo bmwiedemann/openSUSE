@@ -202,4 +202,15 @@
     <comment></comment>
     <requestid>1103946</requestid>
   </revision>
+  <revision rev="28" vrev="6">
+    <srcmd5>4d125604715cd9599121d30bb3d75ac2</srcmd5>
+    <version>0.5</version>
+    <time>1703102436</time>
+    <user>anag+factory</user>
+    <comment>- Fix tests with python 3.11.7
+- Add patch python3117.patch (gh#candlepin/python-iniparse#29) and
+  refresh patch python311-compat.patch
+</comment>
+    <requestid>1134192</requestid>
+  </revision>
 </revisionlist>

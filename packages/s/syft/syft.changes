@@ -1,4 +1,123 @@
 -------------------------------------------------------------------
+Sat Jan 06 15:26:12 UTC 2024 - andrea.manzini@suse.com
+
+- Update to version 0.100.0:
+  * Add ability to extend the binaries cataloguers (#2469)
+  * chore(deps): bump anchore/sbom-action from 0.15.1 to 0.15.2
+    (#2464)
+  * fix: add missing purl for busybox (#2457)
+  * Fix diff error obfuscating binary test failures message (#2468)
+  * Replace `packages` command with `scan` (#2446)
+  * fix: PURLs with "nuget" type are dotnet packages (#2466)
+  * chore(deps): update tools to latest versions (#2459)
+  * chore(deps): update CPE dictionary index (#2458)
+  * chore: update binary to -x (#2456)
+  * Add more functionality to the ErLang parser (#2390)
+  * Added OpenSSL binary matcher (#2416)
+  * chore(deps): update stereoscope to
+    590920dabc5479216e755983d41367b6be3544f3 (#2452)
+  * chore(deps): update tools to latest versions (#2451)
+  * chore(deps): bump github/codeql-action from 3.22.11 to 3.22.12
+    (#2455)
+
+-------------------------------------------------------------------
+Thu Dec 21 16:26:53 UTC 2023 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.99.0:
+  * chore: remove execute from test fixtures (#2450)
+  * chore(deps): update tools to latest versions (#2447)
+  * fix: don't panic when hackage missing in haskell stack yaml
+    lock (#2448)
+  * Add binary classifier for the ERLang interpretter (#2417)
+  * Add binary classifier for Julia lang (#2427)
+  * Add binary detection for PHP composer (#2432)
+  * chore(deps): bump actions/upload-artifact from 3.1.3 to 4.0.0
+    (#2433)
+  * chore(deps): update CPE dictionary index (#2442)
+  * chore(deps): update stereoscope to
+    4b999b76ca8901d15bb97aef445dc94c38d11d5c (#2440)
+  * fix syft-json test to use pretty json for snapshot testing
+    (#2441)
+  * refactor pkg.Collection (#2439)
+  * refactor javascript cataloger to use configuration options when
+    creating packages (#2438)
+  * use single source of truth for archive options (#2437)
+  * fix file digest cataloger when passed coordinates (#2436)
+  * chore(deps): bump github.com/CycloneDX/cyclonedx-go from 0.7.2
+    to 0.8.0 (#2413)
+  * Look for a maven version in a pom from a parent dependency
+    management section (#2423)
+  * Parse Python licenses from LicenseExpression entry in the Wheel
+   Metadata (#2431)
+  * chore(deps): bump github/codeql-action from 2.22.10 to 3.22.11
+    (#2430)
+  * chore(deps): bump modernc.org/sqlite from 1.27.0 to 1.28.0
+    (#2429)
+  * chore(deps): update tools to latest versions (#2428)
+  * Parse Python licenses from LicenseFile entry in the Wheel
+    Metadata (#2331)
+  * fix: use filepath instead of path for file source exclusions
+    (#2411)
+  * chore(deps): bump github.com/charmbracelet/bubbletea (#2424)
+  * chore(deps): bump github.com/google/uuid from 1.4.0 to 1.5.0
+    (#2425)
+  * chore(deps): bump github/codeql-action from 2.22.9 to 2.22.10
+    (#2426)
+  * chore(deps): bump dawidd6/action-homebrew-bump-formula (#2420)
+  * feat: add the option to retrieve remote licenses for projects
+    defined in a maven pom (#2409)
+  * chore(deps): bump github/codeql-action from 2.22.8 to 2.22.9
+    (#2400)
+  * chore(deps): bump github.com/saferwall/pe from 1.4.7 to 1.4.8
+    (#2415)
+  * chore(deps): bump github.com/go-git/go-git/v5 from 5.10.1 to
+    5.11.0 (#2414)
+  * chore(deps): bump actions/setup-go from 4.1.0 to 5.0.0 (#2401)
+  * chore(deps): update tools to latest versions (#2408)
+  * chore(deps): update CPE dictionary index (#2412)
+  * fix(java): improve identification for org.codehaus.groovy
+    artifacts (#2404)
+  * fix(java): improve identification for commons-jelly artifacts
+    (#2399)
+  * fix(java): improve identification for io.minio artifacts
+    (#2398)
+  * fix(java): improve identification for com.graphql-java
+    artifacts (#2397)
+  * chore(deps): update tools to latest versions (#2395)
+  * chore: enhance java purl generation integration test (#2393)
+  * feat: add ability to retrieve remote licenses for yarn.lock
+    (#2338)
+  * chore(deps): bump anchore/sbom-action from 0.15.0 to 0.15.1
+    (#2392)
+  * Retrieve remote licenses using pom.properties when there is no
+    pom.xml (#2315)
+  * fix(java): improve identification for org.apache.tapestry
+    artifacts (#2384)
+  * fix(java): improve identification for io.ratpack artifacts
+    (#2379)
+  * fix(java): improve identification for org.apache.cassandra
+    artifacts (#2386)
+  * fix(java): improve identification for org.neo4j.procedure
+    artifacts (#2388)
+  * fix: bump fangs for ptr summarize fix (#2387)
+  * fix(java): improve identification for org.elasticsearch
+    artifacts (#2383)
+  * fix(java): improve identification for org.apache.geode
+    artifacts (#2382)
+  * fix(java): improve identification for org.apache.tomcat.embed
+    artifacts (#2381)
+  * fix(java): improve identification for io.projectreactor.netty
+    artifacts (#2378)
+  * fix(java): improve identification for org.eclipse.platform
+    artifacts (#2349)
+  * Generalize UI events for cataloging tasks (#2369)
+  * chore(deps): update tools to latest versions (#2376)
+  * chore(deps): bump github.com/google/go-containerregistry
+    (#2377)
+  * chore: fix tests failing due to Mac Rosetta cache (#2374)
+  * fix: improve dotnet portable executable identification (#2133)
+
+-------------------------------------------------------------------
 Thu Nov 30 08:14:13 UTC 2023 - andrea.manzini@suse.com
 
 - Update to version 0.98.0:

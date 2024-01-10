@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec 19 09:57:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.3.8:
+  * Fix #209: use legacy version implementation for Python
+    versions.
+  * Fix #204: use symlinks in venv creation during test.
+  * Fix #208: handle deprecation removals in Python 3.13.
+
+-------------------------------------------------------------------
 Tue Aug  8 11:07:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.3.7:
@@ -53,7 +62,7 @@ Sat Oct  1 12:43:32 UTC 2022 - Dirk Müller <dmueller@suse.com>
         Thanks to Pieter Pas for the patch.
       - Fixed #169: Removed usage of deprecated imp module in favour of importlib.
       - Fixed #172: Compute ABI correctly for Python < 3.8.
-  
+
 -------------------------------------------------------------------
 Sat Dec 11 12:07:02 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
@@ -76,7 +85,7 @@ Sun Nov  7 18:22:20 UTC 2021 - Dirk Müller <dmueller@suse.com>
 - update to 0.3.3:
   * Removed splituser() function which wasn't used and is deprecated.
   * Handle version comparisons correctly in environment markers.
-  * Handle a single trailing comma following a version. 
+  * Handle a single trailing comma following a version.
   * Fix incorrect handling of epochs.
   * Reverted handling of tags for Python >= 3.10
     (use 310 rather than 3_10). This is because PEP 641 was rejected.
@@ -86,7 +95,7 @@ Sun Nov  7 18:22:20 UTC 2021 - Dirk Müller <dmueller@suse.com>
   * added entry for SourcelessFileLoader to the finder registry.
   * allowed a trailing comma in constraints, to better handle faulty metadata
    already on PyPI
-- drop python-distlib-2048-bit-key.patch (obsolete) 
+- drop python-distlib-2048-bit-key.patch (obsolete)
 
 -------------------------------------------------------------------
 Wed Feb 10 19:44:20 UTC 2021 - Pedro Monreal <pmonreal@suse.com>

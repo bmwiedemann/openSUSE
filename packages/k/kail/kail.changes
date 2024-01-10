@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Jan 04 18:04:31 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.17.3:
+  * PATH changing to use krew
+  * fixes for directory changing
+  * debug
+  * add krew install
+  * fixes for Validate krew-index manifest
+  * add Validate krew-index manifest
+  * update krew-release-bot to 0.0.46
+  * fixes after
+    https://github.com/kubernetes-sigs/krew-index/pull/3557
+
+-------------------------------------------------------------------
+Thu Jan 04 18:01:14 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.17.2:
+  * build(deps): bump k8s.io/client-go from 0.28.3 to 0.29.0
+  * fix
+    https://github.com/kubernetes-sigs/krew-index/actions/runs/6868935681/job/18680638884,
+    after https://github.com/kubernetes-sigs/krew-index/pull/3488/
+
+-------------------------------------------------------------------
 Thu Nov 16 14:30:13 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.17.1:

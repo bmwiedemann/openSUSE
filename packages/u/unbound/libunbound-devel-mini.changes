@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Fri Nov 17 09:50:18 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.19.0:
+  * Features:
+    - Fix #850: [FR] Ability to use specific database in Redis, with
+      new redis-logical-db configuration option.
+    - Merge #944: Disable EDNS DO. Disable the EDNS DO flag in upstream
+      requests. This can be helpful for devices that cannot handle
+      DNSSEC information. But it should not be enabled otherwise, because
+      that would stop DNSSEC validation. The DNSSEC validation would not
+      work for Unbound itself, and also not for downstream users. Default
+      is no. The option is disable-edns-do: no
+    - Expose the script filename in the Python module environment 'mod_env'
+      instead of the config_file structure which includes the linked list
+      of scripts in a multi Python module setup; fixes #79.
+    - Expose the configured listening and outgoing interfaces, if any, as
+      a list of strings in the Python 'config_file' class instead of the
+      current Swig object proxy; fixes #79.
+    - Mailing list patches from Daniel Gröber for DNS64 fallback to plain
+      AAAA when no A record exists for synthesis, and minor DNS64 code
+      refactoring for better readability.
+    - Merge #951: Cachedb no store. The cachedb-no-store: yes option is
+      used to stop cachedb from writing messages to the backend storage.
+      It reads messages when data is available from the backend.
+      The default is no.
+  * Bug Fixes:
+    - Fix for version generation race condition that ignored changes.
+    - Fix #942: 1.18.0 libunbound DNS regression when built without OpenSSL.
+    - Fix for WKS call to getservbyname that creates allocation on exit in
+      unit test by testing numbers first and testing from the services list later.
+    - Fix autoconf 2.69 warnings in configure.
+    - Fix #927: unbound 1.18.0 make test error. Fix make test without SHA1.
+    - Merge #931: Prevent warnings from -Wmissing-prototypes.
+    - Fix to scrub resource records of type A and AAAA that have an
+      inappropriate size. They are removed from responses.
+    - Fix to move msgparse_rrset_remove_rr code to util/msgparse.c.
+    - Fix to add EDE text when RRs have been removed due to length.
+    - Fix to set ede match in unit test for rr length removal.
+    - Fix to print EDE text in readable form in output logs.
+    - Fix send of udp retries when ENOBUFS is returned. It stops looping
+      and also waits for the condition to go away. Reported by Florian Obser.
+    - Fix authority zone answers for obscured DNAMEs and delegations.
+    - Merge #936: Check for c99 with autoconf versions prior to 2.70.
+    - Fix to remove two c99 notations.
+    - Fix rpz tcp-only action with rpz triggers nsdname and nsip.
+    - Fix misplaced comment.
+    - Merge #881: Generalise the proxy protocol code.
+    - Fix #946: Forwarder returns servfail on upstream response noerror no data.
+    - Fix edns subnet so that queries with a source prefix of zero cause the
+      recursor send no edns subnet option to the upstream.
+    - Fix that printout of EDNS options shows the EDNS cookie option by name.
+    - Fix infinite loop when reading multiple lines of input on a broken remote
+      control socket. Addesses #947 and #948.
+    - Fix #949: "could not create control compt".
+    - Fix that cachedb does not warn when serve-expired is disabled about use
+      of serve-expired-reply-ttl and serve-expired-client-timeout.
+    - Fix for #949: Fix pythonmod/ubmodule-tst.py for Python 3.x.
+    - Better fix for infinite loop when reading multiple lines of input on a
+      broken remote control socket, by treating a zero byte line the same as
+      transmission end. Addesses #947 and #948.
+    - For multi Python module setups, clean previously parsed module functions
+      in __main__'s dictionary, if any, so that only current module functions
+      are registered.
+    - Fix #954: Inconsistent RPZ handling for A record returned along with CNAME.
+    - Fixes for the DNS64 patches.
+    - Update the dns64_lookup.rpl test for the DNS64 fallback patch.
+    - Merge #955 from buevsan: fix ipset wrong behavior.
+    - Update testdata/ipset.tdir test for ipset fix.
+    - Fix to print detailed errors when an SSL IO routine fails via SSL_get_error.
+    - Clearer configure text for missing protobuf-c development libraries.
+    - autoconf.
+    - Merge #930 from Stuart Henderson: add void to log_ident_revert_to_default
+      declaration.
+    - Fix #941: dnscrypt doesn't work after upgrade to 1.18 with suggestion by
+      dukeartem to also fix the udp_ancil with dnscrypt.
+    - Fix SSL compile failure for definition in log_crypto_err_io_code_arg.
+    - Fix SSL compile failure for other missing definitions in log_crypto_err_io_code_arg.
+    - Fix compilation without openssl, remove unused function warning.
+    - Mention flex and bison in README.md when building from repository source.
+
+-------------------------------------------------------------------
 Thu Sep  7 08:03:33 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 1.18.0:

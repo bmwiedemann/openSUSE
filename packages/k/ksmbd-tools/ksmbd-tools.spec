@@ -17,13 +17,15 @@
 
 
 Name:           ksmbd-tools
-Version:        3.4.9
+Version:        3.5.0
 Release:        0
 Summary:        ksmbd kernel server userspace utilities
 License:        GPL-2.0-or-later
 Group:          System/Filesystems
 URL:            https://github.com/cifsd-team/ksmbd-tools
 Source:         https://github.com/cifsd-team/ksmbd-tools/archive/refs/tags/%{version}.tar.gz
+# Patch submitted via https://github.com/cifsd-team/ksmbd-tools/pull/309
+Patch0:		ksmbd-tools-fix-worker_init_sa_handler-return-type.patch
 
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -38,7 +40,7 @@ Set of utilities for creating and managing SMB3 shares for the ksmbd kernel
 module.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 ./autogen.sh

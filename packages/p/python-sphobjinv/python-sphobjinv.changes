@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Dec 15 22:37:28 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.1:
+  * The printout of the inferred `intersphinx_mapping` item for
+    inventories retrieved by URL (`--url`) in the 'suggest' CLI
+    mode is now relocated to fall immediately below the
+    inventory-search output.
+  * The 'suggest' CLI mode output now includes dividers for
+    improved readability.
+  * `MANIFEST.in` was revised in order to provide a testable
+    (`pytest --nonloc`)
+  * sdist, in order to streamline packaging of `sphobjinv` for
+    conda-forge.
+  * The version constraint for `pytest-check` was raised to
+    `>=1.1.2`.
+  * The CLI now prints the project name and version for the
+    `objects.inv` as  part of the 'suggest' mode output.
+  * The CLI now prints an inferred `intersphinx_mapping` entry
+    for a remote docset as part of the 'suggest' mode output,
+    where such inference is possible. The output from this mapping
+    inference was added to the relevant tests, and a couple of
+    unit tests on some basic pieces of functionality were
+    written.
+  * The CLI now provides considerably more information about what
+    is happening with the URLs it checks when trying to retrieve a
+    remote inventory.
+  * CLI 'suggest' results output now displays more information
+    about the total number of objects in the inventory, the search
+    score threshold, and the number of results falling at/above
+    that threshold.
+  * A new CLI option, `-p`/`--paginate`, enables paging of the
+    results from the `suggest` feature. (#70)
+
+-------------------------------------------------------------------
 Thu Jul 14 17:08:37 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 2.2.2

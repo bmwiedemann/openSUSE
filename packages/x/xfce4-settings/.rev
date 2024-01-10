@@ -485,4 +485,22 @@
     <comment></comment>
     <requestid>1096712</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>af622da37bcc4c6a9abc5d7d4c8749f3</srcmd5>
+    <version>4.18.4</version>
+    <time>1702936550</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 4.18.4
+  * display-settings: Fix memory management of confirmation dialog
+  * xfsettingsd: displays: Always do some actions on RRScreenChangeNotify
+  * xfsettingsd: displays: Fix memory leak
+  * settings-manager: Support absolute path as icon name
+  * Replace deprecated xfce_spawn(_command_line)?_on_screen
+  * appearance: Match more dark themes (fixes #495)
+  * appearance: Check for presence of color-scheme key
+  * Apply matching xfwm4 when the switch is clicked
+  * displays: Lower warning level
+  * Translation Updates (forwarded request 1130083 from manfred-h)</comment>
+    <requestid>1133767</requestid>
+  </revision>
 </revisionlist>

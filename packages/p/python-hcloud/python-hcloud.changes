@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jan  5 09:11:16 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.33.2:
+  * publish package to PyPI using OIDC auth
+  * private object not exported in top level module
+
+-------------------------------------------------------------------
+Wed Dec 27 10:53:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.33.0:
+  * add metrics endpoint for load balancers and servers (#331)
+  * fallback to error code when message is unset (#328)
+
+-------------------------------------------------------------------
 Thu Dec  7 22:43:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.32.0:

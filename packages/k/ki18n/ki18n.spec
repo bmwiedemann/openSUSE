@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5I18n5
-%define _tar_path 5.103
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
+%define qt5_version 5.15.2
 %bcond_without released
 Name:           ki18n
-Version:        5.112.0
+Version:        5.113.0
 Release:        0
 Summary:        KDE Gettext-based UI text internationalization
 License:        LGPL-2.1-or-later
@@ -36,16 +36,15 @@ Source2:        frameworks.keyring
 %endif
 # PATCH-FIX-OPENSUSE fallbackLang.diff -- look for translations in locale/kf5 also
 Patch0:         fallbackLang.diff
-BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
+BuildRequires:  extra-cmake-modules >= %{_kf5_version}
 BuildRequires:  fdupes
 BuildRequires:  gettext-runtime
-BuildRequires:  kf5-filesystem
-BuildRequires:  libQt5Core-private-headers-devel
+BuildRequires:  libQt5Core-private-headers-devel >= %{qt5_version}
 BuildRequires:  python3
-BuildRequires:  cmake(Qt5Concurrent) >= 5.15.0
-BuildRequires:  cmake(Qt5Core) >= 5.15.0
-BuildRequires:  cmake(Qt5Qml) >= 5.15.0
-BuildRequires:  cmake(Qt5Test) >= 5.15.0
+BuildRequires:  cmake(Qt5Concurrent) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Core) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Qml) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Test) >= %{qt5_version}
 
 %description
 KI18n provides functionality for internationalizing user interface text
@@ -76,7 +75,6 @@ This package contains QML imports for the ki18n framework.
 %package devel
 Summary:        KDE Gettext-based UI text internationalization
 Requires:       %{lname} = %{version}
-Requires:       extra-cmake-modules
 Requires:       gettext-runtime
 Requires:       gettext-tools
 Requires:       python3

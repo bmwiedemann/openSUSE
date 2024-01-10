@@ -1974,4 +1974,44 @@
     <comment>submitted by yast2-maintainers via jenkins</comment>
     <requestid>1132096</requestid>
   </revision>
+  <revision rev="248" vrev="1">
+    <srcmd5>36aaa56660e670496008b41fa9623d47</srcmd5>
+    <version>4.5.162</version>
+    <time>1702673191</time>
+    <user>anag+factory</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1133370</requestid>
+  </revision>
+  <revision rev="249" vrev="1">
+    <srcmd5>6651f57432d1ffe5bfba3df13174175f</srcmd5>
+    <version>4.5.163</version>
+    <time>1703102446</time>
+    <user>anag+factory</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1133995</requestid>
+  </revision>
+  <revision rev="250" vrev="1">
+    <srcmd5>91851bef2983c7430ffc4c2c7474d8bc</srcmd5>
+    <version>4.5.168</version>
+    <time>1703527485</time>
+    <user>anag+factory</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1134646</requestid>
+  </revision>
+  <revision rev="251" vrev="1">
+    <srcmd5>46232b3ec79fe9014364395b2a95b044</srcmd5>
+    <version>4.5.169</version>
+    <time>1704380200</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1136146</requestid>
+  </revision>
+  <revision rev="252" vrev="1">
+    <srcmd5>4f7eb769ae71ff347bc606079588d184</srcmd5>
+    <version>4.5.170</version>
+    <time>1704487238</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1136884</requestid>
+  </revision>
 </revisionlist>

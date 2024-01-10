@@ -17,11 +17,11 @@
 
 
 Name:           python-django-js-asset
-Version:        2.1
+Version:        2.2
+%define intversion %{version}.0
 Release:        0
 Summary:        Script tag with additional attributes for django.formsMedia
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/matthiask/django-js-asset/
 Source:         https://github.com/matthiask/django-js-asset/archive/%{version}.tar.gz
 BuildRequires:  %{python_module Django}
@@ -57,6 +57,6 @@ injection.)
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/js_asset/
-%{python_sitelib}/*django_js_asset*/
+%{python_sitelib}/django_js_asset-%{intversion}.dist-info
 
 %changelog

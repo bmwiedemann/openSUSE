@@ -1,0 +1,19 @@
+From 932a0b3b1992497e23fd9b8d31116b9ca9b0f98d Mon Sep 17 00:00:00 2001
+From: Jiajie Chen <c@jia.je>
+Date: Sun, 17 Dec 2023 09:21:27 +0800
+Subject: [PATCH] fix version in configure.ac
+
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 65ab74b9..b98eac6b 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1,4 +1,4 @@
+-AC_INIT([lsof],[4.99.0])
++AC_INIT([lsof],[4.99.3])
+ AM_INIT_AUTOMAKE([subdir-objects])
+ LT_INIT([disable-fast-install]) # avoid lt-lsof naming
+ # Locate custom m4 macros

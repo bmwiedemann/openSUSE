@@ -1,13 +1,21 @@
 -------------------------------------------------------------------
+Wed Dec 20 14:48:09 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.13:
+  * Add new color scheme: truedark
+  * Add new color scheme: afterglow
+  * Fix invalid cterm=default in astrell.vifm
+
+-------------------------------------------------------------------
 Sun Sep 18 21:09:53 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.12:
-  Add new color scheme: ansa
-  Add new color scheme: monochrome
-  Add new color scheme: crown_24bit
-  Add new color scheme: nord
-  Add new color scheme: fargo
-  Add new color scheme: paper
+  * Add new color scheme: ansa
+  * Add new color scheme: monochrome
+  * Add new color scheme: crown_24bit
+  * Add new color scheme: nord
+  * Add new color scheme: fargo
+  * Add new color scheme: paper
 
 -------------------------------------------------------------------
 Thu Jul  8 09:08:29 UTC 2021 - Michael Vetter <mvetter@suse.com>

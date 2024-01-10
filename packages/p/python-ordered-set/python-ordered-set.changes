@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 19 02:01:25 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros, which also now means we now use flit-core
+  to build.
+
+-------------------------------------------------------------------
 Sat Jun 10 17:39:22 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

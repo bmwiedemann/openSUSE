@@ -1,7 +1,7 @@
 #
 # spec file for package libdatovka
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define libname %{name}6
 Name:           libdatovka
-Version:        0.5.1
+Version:        0.6.0
 Release:        0
 Summary:        Library for accessing the Czech Data Boxes
 License:        GPL-3.0-or-later

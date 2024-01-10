@@ -19,17 +19,16 @@
 # DNS tests won't work in OBS
 %bcond_with tests
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-aiodns
-Version:        3.0.0
+Version:        3.1.1
 Release:        0
 Summary:        Simple DNS resolver for asyncio
 License:        MIT
 Group:          Development/Libraries/Python
 URL:            https://github.com/saghul/aiodns/releases
-Source0:        https://github.com/saghul/aiodns/archive/aiodns-%{version}.tar.gz
+Source0:        https://github.com/saghul/aiodns/archive/refs/tags/v%{version}.tar.gz#/aiodns-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 Requires:       python-pycares >= 4.0.0
 BuildRequires:  fdupes
@@ -46,7 +45,7 @@ BuildArch:      noarch
 Simple DNS resolver for asyncio module.
 
 %prep
-%setup -q -n aiodns-aiodns-%{version}
+%autosetup -p1 -n aiodns-%{version}
 
 %build
 %python_build

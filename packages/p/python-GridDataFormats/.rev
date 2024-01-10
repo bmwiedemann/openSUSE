@@ -31,4 +31,20 @@
     <comment></comment>
     <requestid>1084004</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>70ba3ec267526f940ab2d58d1f22b879</srcmd5>
+    <version>1.0.2</version>
+    <time>1702845158</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.2:
+  * Python 3.12 is now supported (PR #128)
+  * Use new MDAnalysis docs theme (PR #127)
+  * updated versioneer to be able to run under Python 3.12
+  * replaced deprecated pkg_resources in tests with importlib
+
+- Do not build for Python 3.6, due to no NumPy.
+- updated to version 0.3.3
+- initial commit</comment>
+    <requestid>1133635</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan  8 02:06:11 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.22.0:
+  * https://github.com/micropython/micropython/releases/tag/v1.22.0
+  * objslice: validate that the argument to indices() is an integer
+    (CVE-2023-7158, bsc#1218446)
+
+-------------------------------------------------------------------
 Fri Apr 28 07:09:08 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.20.0:

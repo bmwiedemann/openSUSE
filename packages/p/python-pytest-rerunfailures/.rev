@@ -121,4 +121,22 @@
     would be rerun unless they matched every pattern.</comment>
     <requestid>1100456</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f5412feb0463eb90b78a4ef355045e34</srcmd5>
+    <version>13.0</version>
+    <time>1702673165</time>
+    <user>anag+factory</user>
+    <comment>- update to 13.0:
+  * Drop support for pytest &lt; 7.0.
+  * Add support for Python 3.12.
+  * Fix crashitem names mismatch between client and server.
+  * Fix crash when setup fails with --rerun-except flag.
+
+    ``--only-rerun`` pattern (if given) and none of the
+    ``--rerun-except`` patterns. Previously, using both
+    pytest &gt;= 6.1.0, as it was removed there. This is a quick fix,
+  * Add a new flag --only-rerun to allow for users to rerun only
+    (PR from @gnikonorov)</comment>
+    <requestid>1133200</requestid>
+  </revision>
 </revisionlist>

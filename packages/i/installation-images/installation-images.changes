@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Thu Dec 14 11:16:24 UTC 2023 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#677
+- include complete system-role-common-criteria package
+  (bsc#1217968)
+- 17.105
+
+--------------------------------------------------------------------
 Mon Nov 20 13:55:46 UTC 2023 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#674

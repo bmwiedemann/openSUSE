@@ -378,4 +378,12 @@
 - Stop using greedy globs in %files.</comment>
     <requestid>1106211</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>203c532f169a510a4ea3e7c308eb19d0</srcmd5>
+    <version>3.7.1</version>
+    <time>1703102462</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1134035</requestid>
+  </revision>
 </revisionlist>

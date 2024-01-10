@@ -72,4 +72,31 @@
     <comment></comment>
     <requestid>1130449</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>27c7231209821a3c2a765f8fa691ded9</srcmd5>
+    <version>1.17.0</version>
+    <time>1703102534</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.17.0:
+  * Pass justfile path to default chooser
+  * Pass `--unstable` and `--color always` to default chooser
+  * Update Gentoo package repository
+  * Fix readme header level
+  * Document line continuations
+  * List included recipes in load order
+  * Rename Justfile::first → Justfile::default
+  * Don't default to included recipes
+</comment>
+    <requestid>1134120</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6dbbefe37be1b2d3332107189ac4821f</srcmd5>
+    <version>1.19.0</version>
+    <time>1703800989</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.19.0:
+  * Add modules
+</comment>
+    <requestid>1135411</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed Dec 27 16:54:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.10:
+  * Drop support for Python 3.7 (Jendrik Seipp, #323).
+  * Add support for Python 3.12 (Jendrik Seipp, #332).
+  * Use `end_lineno` AST attribute to obtain more accurate line
+    counts (Jendrik Seipp).
+  * Use exit code 0 for `--help` and `--version` again (Jendrik
+    Seipp, #321).
+  * Use exit code 3 when dead code is found (whosayn, #319).
+  * Treat non-supported decorator names as "@" instead of
+    crashing (Llandy3d and Jendrik Seipp, #284).
+  * Drop support for Python 3.6 (Jendrik Seipp).
+  * Add `UnicodeEncodeError` exception handling to `core.py`
+  * Add whitelist for `Enum` attributes `_name_` and `_value_`
+  * Run tests and add PyPI trove for Python 3.11 (Jendrik Seipp).
+  * Ignore `setup_module()`, `teardown_module()`, etc. in pytest
+    `test_*.py` files (Jendrik Seipp).
+  * Add whitelist for
+    `socketserver.TCPServer.allow_reuse_address` (Ben Elliston).
+  * Clarify that `--exclude` patterns are matched against
+    absolute paths (Jendrik Seipp, #260).
+  * Add basic `match` statement support (kreathon, #276, #291).
+  * Mark imports in `__all__` as used (kreathon, #172, #282).
+  * Add whitelist for `pint.UnitRegistry.default_formatter` (Ben
+    Elliston, #258).
+  * Print absolute filepaths as relative again (as in version 2.1
+    and before)
+  * if they are below the current directory (The-Compiler, #246).
+  * Run tests and add PyPI trove for Python 3.10 (chayim, #266).
+  * Allow using the `del` keyword to mark unused variables
+    (sshishov, #279).
+  * Only parse format strings when being used with `locals()`
+  * Don't override paths in pyproject.toml with empty CLI paths
+  * Run continuous integration tests for Python 3.9 (ju-sh,
+  * Use pathlib internally (ju-sh, #226).
+
+-------------------------------------------------------------------
 Tue Jun 13 09:08:08 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

@@ -94,4 +94,15 @@
 - add sle15_python_module_pythons (jsc#PED-68)</comment>
     <requestid>1082230</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>983ec5b5b7469c8e7f2adc5a6e56d27d</srcmd5>
+    <version>2.4.0</version>
+    <time>1704753857</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.4.0:
+  * drop python 3.8 support
+
+- Remove python_module macro definition</comment>
+    <requestid>1137443</requestid>
+  </revision>
 </revisionlist>

@@ -15,10 +15,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
 
 Name:           python-Wand
-Version:        0.6.11
+Version:        0.6.13
 Release:        0
 Summary:        Ctypes-based simple MagickWand API binding for Python
 License:        MIT

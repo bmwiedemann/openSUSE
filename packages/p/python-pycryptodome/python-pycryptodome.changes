@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Dec 30 16:53:24 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.19.1 (bsc#1218564, CVE-2023-52323):
+  * Fixed a side-channel leakage with OAEP decryption that could be
+    exploited to carry out a Manger attack
+
+-------------------------------------------------------------------
 Mon Nov 27 15:55:12 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.19.0:

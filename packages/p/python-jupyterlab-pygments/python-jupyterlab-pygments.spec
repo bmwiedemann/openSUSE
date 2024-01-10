@@ -25,23 +25,23 @@
 %bcond_with test
 %endif
 
+%define distversion 0.3
 Name:           python-jupyterlab-pygments%{psuffix}
-Version:        0.2.2
+Version:        0.3.0
 Release:        0
 Summary:        Pygments theme for jupyterlab
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/jupyterlab/jupyterlab_pygments
-Source:         https://files.pythonhosted.org/packages/py2.py3/j/jupyterlab-pygments/jupyterlab_pygments-%{version}-py2.py3-none-any.whl
+Source:         https://files.pythonhosted.org/packages/py3/j/jupyterlab-pygments/jupyterlab_pygments-%{version}-py3-none-any.whl
 # Slightly modified from https://github.com/jupyterlab/jupyterlab_pygments/blob/0.2.2/notebooks/Example.ipynb
 Source1:        Example.ipynb
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  jupyter-rpm-macros
 BuildRequires:  python-rpm-macros
 Requires:       jupyter-jupyterlab-pygments = %{version}
-Requires:       python-pygments >= 2.4.1
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module jupyterlab-pygments = %{version}}
@@ -56,6 +56,7 @@ of the JupyterLab CSS variables.
 
 %package -n jupyter-jupyterlab-pygments
 Summary:        Pygments theme for jupyterlab -- Jupyterlab extension files
+Requires:       python3dist(jupyterlab-pygments) = %{distversion}
 
 %description -n jupyter-jupyterlab-pygments
 This package contains the Jupyterlab extension files for python-jupyterlab-pygments
@@ -70,7 +71,7 @@ This package contains the Jupyterlab extension files for python-jupyterlab-pygme
 %install
 %pyproject_install %{SOURCE0}
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-find %{buildroot}%{_prefix} -path '*/site-packages/jupyterlab_pygments-%{version}.dist-info/LICENSE' -exec cp {} . ';' -quit
+find %{buildroot}%{_prefix} -path '*/site-packages/jupyterlab_pygments-%{version}.dist-info/licenses/LICENSE' -exec cp {} . ';' -quit
 %endif
 
 %if %{with test}

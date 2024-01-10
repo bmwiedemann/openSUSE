@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Dec 28 05:28:42 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 9.3.0, see:
+  https://gitlab.kitware.com/vtk/vtk/-/blob/master/Documentation/release/9.3.md
+- Drop upstream patches:
+  * add add_missing_cstdint.patch
+  * 0001-GL_POINT_SPRITE-is-only-available-for-Compatibility-.patch
+- Rebase:
+  * 0002-Use-GL_DRAW_BUFFER0-instead-of-GL_DRAW_BUFFER-for-GL.patch
+- Add patches:
+  * fix_rendering_core_linkage.patch
+  * Do-not-request-CUBE_MAP_SEAMLESS-on-GLES.patch
+
+-------------------------------------------------------------------
 Tue Oct 31 22:56:50 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Build with java source and target levels 8

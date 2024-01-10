@@ -91,12 +91,16 @@ URL:            https://github.com/wxWidgets/Phoenix
 Source0:        wxPython-%{version}.tar.gz
 Source1:        python-wxPython-rpmlintrc
 Source2:        repack
+Patch1:         0001-Update-wxTextCtrl-OSX-overrides-since-they-re-now-do.patch
+Patch2:         0001-Handle-wxGLCanvas-CreateSurface-which-is-only-availa.patch
+# PATCH-FIX-UPSTREAM https://github.com/wxWidgets/Phoenix/pull/2497
+Patch3:         0001-Support-building-with-Doxygen-1.9.7.patch
 # PATCH-FIX-OPENSUSE
-Patch1:         use_stl_build.patch
+Patch12:        use_stl_build.patch
 # PATCH-FIX-UPSTREAM - https://github.com/wxWidgets/Phoenix/pull/2232
-Patch4:         0003-Make-pip-usage-in-wxget-optional.patch
+Patch13:        0003-Make-pip-usage-in-wxget-optional.patch
 # PATCH-FIX-OPENSUSE
-Patch5:         0004-Fix-time_t-ETG-typedef-extend-DateTime.FromTimeT-tes.patch
+Patch14:        0004-Fix-time_t-ETG-typedef-extend-DateTime.FromTimeT-tes.patch
 # PATCH-FIX-OPENSUSE - Test fixes/additions:
 Patch112:       0001-Check-HSV-values-in-image-test.patch
 BuildRequires:  %{python_module base}

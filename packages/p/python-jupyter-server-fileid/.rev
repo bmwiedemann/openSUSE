@@ -35,4 +35,15 @@
     <comment>- Suggest primary python package -- boo#1214354</comment>
     <requestid>1104445</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a0bc20733c62e060917699ace9ef8450</srcmd5>
+    <version>0.9.1</version>
+    <time>1703527533</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.9.1
+  * Add a simple REST API for fetching a file's ID #72 (@Zsailer)
+  * Allow db_path to be set to &quot;:memory:&quot; #70 (@cmd-ntrf)
+  * provides a summary description for pip #68 (@stonebig)</comment>
+    <requestid>1134928</requestid>
+  </revision>
 </revisionlist>

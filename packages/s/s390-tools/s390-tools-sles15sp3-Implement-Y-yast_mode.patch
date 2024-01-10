@@ -12,10 +12,10 @@ Signed-off-by: Hannes Reinecke <hare@suse.com>
  dasdfmt/dasdfmt.h |  1 +
  3 files changed, 27 insertions(+), 8 deletions(-)
 
-Index: s390-tools-2.29.0/dasdfmt/dasdfmt.8
+Index: s390-tools-2.30.0/dasdfmt/dasdfmt.8
 ===================================================================
---- s390-tools-2.29.0.orig/dasdfmt/dasdfmt.8
-+++ s390-tools-2.29.0/dasdfmt/dasdfmt.8
+--- s390-tools-2.30.0.orig/dasdfmt/dasdfmt.8
++++ s390-tools-2.30.0/dasdfmt/dasdfmt.8
 @@ -7,7 +7,7 @@
  dasdfmt \- formatting of DASD (ECKD) disk drives.
  
@@ -37,10 +37,10 @@ Index: s390-tools-2.29.0/dasdfmt/dasdfmt.8
  \fB-M\fR \fImode\fR or \fB--mode\fR=\fImode\fR
  Specify the \fImode\fR to be used to format the device. Valid modes are:
  .RS
-Index: s390-tools-2.29.0/dasdfmt/dasdfmt.c
+Index: s390-tools-2.30.0/dasdfmt/dasdfmt.c
 ===================================================================
---- s390-tools-2.29.0.orig/dasdfmt/dasdfmt.c
-+++ s390-tools-2.29.0/dasdfmt/dasdfmt.c
+--- s390-tools-2.30.0.orig/dasdfmt/dasdfmt.c
++++ s390-tools-2.30.0/dasdfmt/dasdfmt.c
 @@ -83,6 +83,7 @@ static struct dasdfmt_globals {
  	int   ese;
  	int   no_discard;

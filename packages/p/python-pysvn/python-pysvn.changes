@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 14 21:38:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9.22:
+  * Python 3.12 support
+
+-------------------------------------------------------------------
 Sat Jan  7 12:30:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.9.20:
@@ -32,9 +38,9 @@ Sun May  2 22:58:02 UTC 2021 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Tue Feb 23 17:46:13 UTC 2021 - andy great <andythe_great@pm.me>
 
-- In reference to pysvn in Fedora package, use manual install 
+- In reference to pysvn in Fedora package, use manual install
   instead of %python_install, the pysvn dev recommend to use it.
-- Should fix bsc#1182048.  
+- Should fix bsc#1182048.
 
 -------------------------------------------------------------------
 Sat Feb  6 06:07:30 UTC 2021 - andy great <andythe_great@pm.me>
@@ -55,8 +61,8 @@ Mon Dec 14 20:09:13 UTC 2020 - andy great <andythe_great@pm.me>
 Fri Dec 11 13:34:16 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 1.9.12.
-  * Binary kits limited to using currently support versions of 
-    Subversion and Python. However python 2.7 kits will be provided 
+  * Binary kits limited to using currently support versions of
+    Subversion and Python. However python 2.7 kits will be provided
     after python 2.7 goes end-of-life.
   * Add support for subversion 1.14
   * Build binary kits for Python 3.9b1
@@ -190,13 +196,13 @@ Tue Nov 18 12:25:00 CEST 2008 - toms@suse.de
 -------------------------------------------------------------------
 Wed Oct 29 01:03:47 CET 2008 - ro@suse.de
 
-- fix typo in specfile 
+- fix typo in specfile
 - remove doc files from INSTALLED_FILES
 
 -------------------------------------------------------------------
 Wed Oct 22 12:49:32 CEST 2008 - toms@suse.de
 
-- renamed macro _realname 
+- renamed macro _realname
 
 -------------------------------------------------------------------
 Wed Sep 25 08:46:00 CEST 2008 - toms@suse.de

@@ -78,4 +78,30 @@
     <comment></comment>
     <requestid>1101014</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0fcb0b78df534abe87be49019db3ceac</srcmd5>
+    <version>2.3.7+git8</version>
+    <time>1703611614</time>
+    <user>anag+factory</user>
+    <comment>- Add a _service to pick up fixes from git
+- Update to version 2.3.7+git8:
+  * CI: Also verify that presence of the ossl legacy provider impacts qca
+  * plugins/qca-ossl: Actually try loading the legacy provider
+  * plugins/qca-ossl: Neither PKCS12 nor 3DES are legacy
+    (boo#1218254)
+  * unittest/keybundle: Regenerate keys and certificates
+  * CI: Use clang-format-16
+  * GIT_SILENT: Port to new gitlab ci template
+  * Replace sys/termios.h include for just termios.h
+  * Sign self-signed certs with SHA256 (forwarded request 1134925 from Vogtinator)</comment>
+    <requestid>1135002</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8a90b46a37efd58d64580a3f465dc3bc</srcmd5>
+    <version>2.3.7+git12</version>
+    <time>1704380141</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1136537</requestid>
+  </revision>
 </revisionlist>

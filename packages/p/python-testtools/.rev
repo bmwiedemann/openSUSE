@@ -372,4 +372,28 @@
   * Replace deprecated ``cgi`` module usage with ``email``.</comment>
     <requestid>1084879</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>134687d85756f1cdfd53cb9901f13580</srcmd5>
+    <version>2.7.1</version>
+    <time>1704491915</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.7.1:
+  * Remove various unused imports.
+  * Fix build backend. This should prevent version from being set
+    when building wheels.
+  * Fix compatibility with Python 3.12.
+  * Add typing in various modules (still lacking full coverage).
+  * Drop the 'test' command for distutils. This has been
+    deprecated since 2.6.0. (Jelmer Vernooĳ)
+  * Drop support for Python 3.6.
+
+- remove python-testtools-no-unittest2.patch (upstream)
+- BuildRequires also using extras&gt;=1.0.0
+- fix typo in last change
+  supposed to do just that.
+- add python-mmimeparse dependency
+  * testtools.run discover will now sort the tests it discovered. This is a
+    fixes testr run of streams containing progress markers (by discarding the</comment>
+    <requestid>1135792</requestid>
+  </revision>
 </revisionlist>

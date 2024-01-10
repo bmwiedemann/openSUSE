@@ -41,4 +41,12 @@
   and Fedora does not have npm-default.</comment>
     <requestid>1101713</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>7be547e9214ccdbc89314ae39bbe54bb</srcmd5>
+    <version>1.0.1</version>
+    <time>1704380171</time>
+    <user>dimstar_suse</user>
+    <comment>- Escape `quilt setup` invoked section in the helper script</comment>
+    <requestid>1135647</requestid>
+  </revision>
 </revisionlist>

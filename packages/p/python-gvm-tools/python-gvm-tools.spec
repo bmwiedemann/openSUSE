@@ -17,20 +17,17 @@
 #
 
 
-%define skip_python2 1
-%define skip_python36 1
-%define skip_python39 1
+%{?sle15_python_module_pythons}
+%global skip_python39 1
 Name:           python-gvm-tools
-Version:        23.4.0
+Version:        23.11.0
 Release:        0
 Summary:        Tools to control a GSM/GVM over GMP or OSP
 License:        GPL-3.0-or-later
 URL:            https://github.com/greenbone/gvm-tools/
 Source:         https://github.com/greenbone/gvm-tools/archive/v%{version}.tar.gz#/gvm-tools-%{version}.tar.gz
-#Source98:       https://github.com/greenbone/gvm-tools/releases/download/v%%{version}/v%%{version}.tar.gz.asc#/gvm-tools-%%{version}.tar.gz.sig
-#Source99:       https://www.greenbone.net/GBCommunitySigningKey.asc#/gvm-tools.keyring
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-python-gvm >= 23.4.2

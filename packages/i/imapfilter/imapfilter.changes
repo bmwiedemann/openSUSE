@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Dec 30 16:37:02 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.8.2:
+  * Add IMAP support for UTF-8 (RFC 6855) when "charset" is
+    set to "UTF-8"
+  * Don't use FETCH FAST macro use for better compatibility
+  * Bug fix; recovery mechanism error on Lua 5.1
+
+-------------------------------------------------------------------
 Mon May 29 01:35:27 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.8.1:
@@ -26,7 +35,7 @@ Sun Dec 20 12:51:29 UTC 2020 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.7.5:
   * New "hostnames" option can be used to disable hostname validation.
-  * Bug fix; "certificates" option incorrectly controlled hostname validation. 
+  * Bug fix; "certificates" option incorrectly controlled hostname validation.
 
 -------------------------------------------------------------------
 Thu Nov 26 18:03:20 UTC 2020 - Arun Persaud <arun@gmx.de>
@@ -111,7 +120,7 @@ Wed Sep  6 00:10:10 UTC 2017 - jengelh@inai.de
 -------------------------------------------------------------------
 Tue Aug 22 13:11:15 UTC 2017 - crrodriguez@opensuse.org
 
-- fix build failure with lua 5.3. missing include directory. 
+- fix build failure with lua 5.3. missing include directory.
 
 -------------------------------------------------------------------
 Tue Feb 21 19:59:03 UTC 2017 - arun@gmx.de
@@ -215,7 +224,7 @@ Thu Dec  5 16:52:22 UTC 2013 - arun@gmx.de
   * Possible to build again with OpenSSL older than version 1.0.1 (was a
     requirement for the previous release due to new protocols TLS 1.1/1.2).
   * Support for reading the configuration from the standard input stream.
-  * New makefile dist target, which can be used to create distribution archives. 
+  * New makefile dist target, which can be used to create distribution archives.
 
 -------------------------------------------------------------------
 Mon Jul 15 15:39:19 UTC 2013 - arun@gmx.de
@@ -234,7 +243,7 @@ Fri Apr 19 00:15:31 UTC 2013 - arun@nubati.net
 - updated to IMAPFilter 2.5.4 - 9 Apr 2013
   - Some server responses are now parsed less stricly.
   - More detailed information is now printed when there's an error.
-  - Bug fix; various corrections in the recovery mechanism.  
+  - Bug fix; various corrections in the recovery mechanism.
 
 -------------------------------------------------------------------
 Wed Jul 25 18:26:05 UTC 2012 - arun@nubati.net
@@ -243,11 +252,11 @@ Wed Jul 25 18:26:05 UTC 2012 - arun@nubati.net
     - New implementation for international mailbox names.
     - Bug fix; wrong variable name in one of the examples on extending.
     - Bug fix; an OpenSSL compilation warning.
-    
+
 -------------------------------------------------------------------
 Sun Apr 22 10:43:13 UTC 2012 - puzel@suse.com
 
-- update to version 2.5.2 
+- update to version 2.5.2
   - Persistent errors or connection failures are now ignored when
     running in daemon mode, and a reconnection is attempted during
     the next loop iteration.
@@ -300,7 +309,7 @@ IMAPFilter 2.4 - 6 Dec 2011
 -------------------------------------------------------------------
 Sun Feb 26 15:06:18 CET 2012 - dmueller@suse.de
 
-- fix build 
+- fix build
 
 -------------------------------------------------------------------
 Sun Oct 23 21:29:15 UTC 2011 - arun@nubati.net
@@ -386,7 +395,7 @@ Mon Jan  7 09:44:05 CET 2008 - mskibbe@suse.de
 
 - update to version 2.0.9 which:
   o on some platforms it is necessary to link against the math
-    library 
+    library
   o the match_*() methods failed to match messages.
   o the match_*() methods failed with an error when no messages
     matched.
@@ -409,7 +418,7 @@ Fri Oct  5 11:25:05 CEST 2007 - mmaher@suse.de
   * The documentation was updated with details and examples on how to
     access mailboxes inside folders.
   * Examples were added on how to define composite filters that include
-    multiple searching rules. 
+    multiple searching rules.
 
 -------------------------------------------------------------------
 Fri Sep 28 08:49:44 CEST 2007 - mskibbe@suse.de
@@ -420,7 +429,7 @@ Fri Sep 28 08:49:44 CEST 2007 - mskibbe@suse.de
   * An additional searching method has been added to search for
     keyword flags set.
   * A new variable that was added to the Makefile makes it possible
-    to set an alternative environment for the installation path. 
+    to set an alternative environment for the installation path.
 - delete obsolete patches
 
 -------------------------------------------------------------------
@@ -444,17 +453,17 @@ Tue Jul 31 08:09:20 CEST 2007 - mskibbe@suse.de
 -------------------------------------------------------------------
 Thu Jan 11 07:52:39 CET 2007 - mskibbe@suse.de
 
-- fix segfault at start 
+- fix segfault at start
 
 -------------------------------------------------------------------
 Fri Nov 17 09:40:45 CET 2006 - mskibbe@suse.de
 
-- fix requires 
+- fix requires
 
 -------------------------------------------------------------------
 Fri Oct 20 01:45:24 CEST 2006 - ro@suse.de
 
-- use pkgconfig to get lua libs 
+- use pkgconfig to get lua libs
 
 -------------------------------------------------------------------
 Wed Aug  2 09:47:06 CEST 2006 - mskibbe@suse.de
@@ -476,6 +485,6 @@ Wed Aug  2 09:47:06 CEST 2006 - mskibbe@suse.de
 -------------------------------------------------------------------
 Mon Jul 17 16:08:44 CEST 2006 - mskibbe@suse.de
 
-- create package 
+- create package
 - add fix to build in BUILDROOT
 

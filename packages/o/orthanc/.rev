@@ -485,4 +485,20 @@
     <comment></comment>
     <requestid>1097000</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>f163ad661eb410d2343c9e33b0a45ad5</srcmd5>
+    <version>1.12.1</version>
+    <time>1703024178</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1133977</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>ff51aa07113650fa8ba05bf9a1aea76d</srcmd5>
+    <version>1.12.2</version>
+    <time>1704380237</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1134972</requestid>
+  </revision>
 </revisionlist>

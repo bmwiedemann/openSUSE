@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan  4 08:24:11 UTC 2024 - cloud-devel@suse.de
+
+- update to version 0.7.0
+  - Update master for stable/2023.1
+  - Revert "Moves supported python runtimes from version 3.8 to 3.10"
+  - Bump bandit and make oslo.metrics compatible with latest rules
+  - Moves supported python runtimes from version 3.8 to 3.10
+
+-------------------------------------------------------------------
 Mon Mar  6 15:46:52 UTC 2023 - cloud-devel@suse.de
 
 - update to version 0.6.0

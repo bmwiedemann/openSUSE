@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Thu Dec 14 19:35:03 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
+
+- Updated to Xdebug 3.3.1
+  * Fixed issue #2220: Test failure
+  * Fixed issue #2221: Crash when other extensions run PHP code
+    without the stack being initialised yet
+  * Fixed issue #2223: Xdebug's constants are not available with
+    `xdebug.mode=off`
+  * Fixed issue #2226: xdebug_get_function_stack(['from_exception'])
+    does not always find stored trace
+  * Fixed issue #2227: Crash with return value and observers
+  * Fixed issue #2228: Return value can not be fetched with
+    property_get if top frame is an internal function
+
+- Updated to Xdebug 3.3.0
+  * Fixed issue #2171: Support for PHP 8.3
+  * Fixed issue #1732: Add support for flame graph outputs
+  * Fixed issue #2219: Add control socket on Linux to obtain
+    information and initiate debugger or breakpoint
+  * Fixed issue #1562: Add 'local_vars' option to
+    'xdebug_get_function_stack' to include variables for each st
+  * Fixed issue #2194: Add 'params_as_values' option to
+    'xdebug_get_function_stack' to return data as values
+  * Fixed issue #2195: Add 'from_exception' option to
+    'xdebug_get_function_stack' to return the stack trace where an
+    exception was thrown
+  * Fixed issue #2077: Bring back xdebug.collect_params
+  * Fixed issue #2170: Show contents of Spl's ArrayIterator
+  * Fixed issue #2172: Show contents of SplDoublyLinkedList and
+    SplPriorityQueue
+  * Fixed issue #2183: Bubble up exception message when using code
+    evalution through protocol
+  * Fixed issue #2188: Step over with fibers does still step into fiber
+    routines
+  * Fixed issue #2197: Add time index and memory to output of
+    xdebug_get_function_stack
+  * Fixed issue #2203: Increase default max nesting time out from 256
+    to 512
+  * Fixed issue #2206: Optimise debugger breakpoints checking
+  * Fixed issue #2207: Add filenames for include and friends to
+    flamegraph output
+  * Fixed issue #2217: xdebug://gateway pseudo host does not support
+    IPv6
+  * Fixed issue #450: "Incomplete" backtraces when an exception gets
+    rethrown
+  * Fixed issue #476: Exception chaining does not work properly
+  * Fixed issue #1155: Local variables are not shown when execution
+    break in error_handler
+  * Fixed issue #2000: Debugger evaluate expression: "can't evaluate
+    expression"
+  * Fixed issue #2027: Branch/path code coverage for traits drops trait
+    name since 3.1.0
+  * Fixed issue #2132: Errors when mountinfo does not have enough
+    information for finding systemd private tmp directory
+  * Fixed issue #2200: PECL package file has wrong max PHP version
+    number, and peclweb refuses the package
+  * Fixed issue #2208: Superfluous `...` (three omission dots) in
+    var_dump()
+  * Fixed issue #2210: Flamegraphs crash when using `start_with_request`
+  * Fixed issue #2211: File wrappers get wrong filename location in
+    stack.
+  * Fixed issue #2214: Array keys aren't escaped in traces- 
+
+-------------------------------------------------------------------
 Thu Aug 17 20:22:02 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
 
 - Updated to version 3.2.2

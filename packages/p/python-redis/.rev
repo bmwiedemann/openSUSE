@@ -435,4 +435,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1124036</requestid>
   </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>0ffe4e77d620b4e804f1a72d21a0b8b0</srcmd5>
+    <version>5.0.1</version>
+    <time>1704491926</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to increase timeouts in s390x where tests take longer
+  to run:
+  * increase-test-timeout.patch
+</comment>
+    <requestid>1136240</requestid>
+  </revision>
 </revisionlist>

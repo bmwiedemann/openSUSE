@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Dec 22 13:46:25 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Fix pytest call
+- Update requirements
+
+-------------------------------------------------------------------
+Mon Nov 27 15:22:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.9.1:
+  * Fixed importing aiohttp under PyPy on Windows.
+  * Fixed async concurrency safety in websocket compressor.
+  * Fixed ``ClientResponse.close()`` releasing the connection
+    instead of closing.
+  * Fixed a regression where connection may get closed during
+    upgrade. -- by :user:`Dreamsorcerer`
+  * Fixed messages being reported as upgraded without an Upgrade
+    header in Python parser. -- by :user:`Dreamsorcerer`
+
+-------------------------------------------------------------------
 Sat Nov 25 22:51:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.9.0:

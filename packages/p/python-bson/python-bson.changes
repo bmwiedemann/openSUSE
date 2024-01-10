@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Dec 29 13:44:20 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Use %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Tue Dec 19 01:47:46 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-python312.patch:
+  * Support Python 3.12 by using assertEqual.
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Thu Nov  3 12:54:43 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add drop-python2-support.patch to remote python-six dep gh#py-bson/bson#118

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec 15 21:54:03 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.8.2
+  * Eliminate 'atomic_thread_fence is unsupported with tsan' gcc-11 warning
+  * Fix get_chunk for case of mmap area is located before AO_initial_heap
+  * Fix typo in AO_HAVE_compare_and_swap_double name in atomic_ops_stack.h
+
+-------------------------------------------------------------------
 Tue Mar 28 08:09:48 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 7.8.0

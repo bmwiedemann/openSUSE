@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Dec 14 09:18:38 UTC 2023 - Petr Gajdos <pgajdos@suse.com>
+
+- update to 5.5.1:
+  * Fixed ``CBORSimpleValue`` allowing the use of reserved values
+    (24 to 31) which resulted in invalid byte sequences
+  * Fixed encoding of simple values from 20 to 23 producing the
+    wrong byte sequences
+  * The ``cbor2.encoder``, ``cbor2.decoder`` or ``cbor2.types``
+    modules were deprecated – import their contents directly
+    from ``cbor2`` from now on. The old modules will be removed
+    in the next major release.
+  * Added support for Python 3.12
+  * Added type annotations
+  * Dropped support for Python 3.7
+  * Fixed bug in the ``fp`` attribute of the built-in version of
+    ``CBORDecoder`` and ``CBOREncoder`` where the getter returns
+    an invalid pointer if the ``read`` method of the file was a
+    built-in method
+
+-------------------------------------------------------------------
 Sun Jun 11 13:37:55 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
@@ -9,17 +29,17 @@ Sat Jan  7 23:33:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
 - update to 5.4.6:
   * Fix tag decoding error
   * fix potential memory leak
-  * Bump requirement to 3.7+ 
+  * Bump requirement to 3.7+
 
 -------------------------------------------------------------------
 Sat Jan 15 17:50:18 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.4.2:
-  * Fix segfault when initializing CBORTag with incorrect arguments 
-  * Fix sphinx build warnings 
-  * Fix SystemErrors when using C-backend, meaningful exceptions now raised 
-  * Fix precision loss when decoding base10 decimal fractions 
-  * Made CBORTag handling consistent between python and C-module 
+  * Fix segfault when initializing CBORTag with incorrect arguments
+  * Fix sphinx build warnings
+  * Fix SystemErrors when using C-backend, meaningful exceptions now raised
+  * Fix precision loss when decoding base10 decimal fractions
+  * Made CBORTag handling consistent between python and C-module
 
 -------------------------------------------------------------------
 Tue Jun  8 12:53:06 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -41,7 +61,7 @@ Thu Apr 22 20:17:32 UTC 2021 - Dirk Müller <dmueller@suse.com>
   * Bugfix: Fix segfault on loading huge arrays with C-backend (Sekenre)
   * Build system: Allow packagers to force C-backend building or disable using env var (jameshilliard)
   * Feature: :module:`cbor2.tool` Command line diagnostic tool (Sekenre)
-  * Feature: Ignore semantic tag used for file magic 55799 AKA "Self-Described CBOR" (kalcutter) 
+  * Feature: Ignore semantic tag used for file magic 55799 AKA "Self-Described CBOR" (kalcutter)
 
 -------------------------------------------------------------------
 Fri Aug 21 10:06:22 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
@@ -70,10 +90,10 @@ Fri Jan 24 13:45:03 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 5.0.1
   * Fix deprecation warning on python 3.7, 3.8
-  * BACKWARD INCOMPATIBLE CBOR does not have a bare DATE type, 
+  * BACKWARD INCOMPATIBLE CBOR does not have a bare DATE type,
     encoding dates as datetimes is disabled by default
   * few major changes in the API, see docs/versionhistory.rst
-  * Optional Pure C implementation by waveform80 that functions 
+  * Optional Pure C implementation by waveform80 that functions
     identically to the pure Python implementation
   * Drop Python 3.3 and 3.4 support from the build process
   * Added support for encoding and decoding IPv4 and IPv6 addresses

@@ -16,11 +16,14 @@
 #
 
 
-%define _tar_path 5.103
-# Only needed for the package signature condition
+# Full KF5 version (e.g. 5.33.0)
+%{!?_kf5_version: %global _kf5_version %{version}}
+# Last major and minor KF5 version (e.g. 5.33)
+%{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
+%define qt5_version 5.15.2
 %bcond_without released
 Name:           qqc2-desktop-style
-Version:        5.112.0
+Version:        5.113.0
 Release:        0
 Summary:        A Qt Quick Controls 2 Style for Desktop UIs
 License:        GPL-2.0-or-later
@@ -30,21 +33,19 @@ Source:         qqc2-desktop-style-%{version}.tar.xz
 Source1:        qqc2-desktop-style-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
-BuildRequires:  extra-cmake-modules
-# For dir ownership
-BuildRequires:  kf5-filesystem
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5ConfigWidgets)
-BuildRequires:  cmake(KF5IconThemes)
-BuildRequires:  cmake(KF5Kirigami2)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5DBus)
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5Network)
-BuildRequires:  cmake(Qt5Quick)
-BuildRequires:  cmake(Qt5QuickControls2)
-BuildRequires:  cmake(Qt5Svg)
-BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  extra-cmake-modules >= %{_kf5_version}
+BuildRequires:  cmake(KF5Config) >= %{_kf5_version}
+BuildRequires:  cmake(KF5ConfigWidgets) >= %{_kf5_version}
+BuildRequires:  cmake(KF5IconThemes) >= %{_kf5_version}
+BuildRequires:  cmake(KF5Kirigami2) >= %{_kf5_version}
+BuildRequires:  cmake(Qt5Core) >= %{qt5_version}
+BuildRequires:  cmake(Qt5DBus) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Gui) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Network) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Quick) >= %{qt5_version}
+BuildRequires:  cmake(Qt5QuickControls2) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Svg) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Widgets) >= %{qt5_version}
 # Make sure the required libqt5-qtquickcontrols2 package is usable
 # See https://bugs.kde.org/413829#c3
 %requires_eq    libqt5-qtquickcontrols2
@@ -64,7 +65,6 @@ to draw controls with QStyle.
 %package devel
 Summary:        Development Files for Qt Quick Controls 2 Desktop Style
 Requires:       %{name} = %{version}
-Requires:       extra-cmake-modules
 
 %description devel
 This file contains cmake files to be used by projects that depend on

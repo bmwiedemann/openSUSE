@@ -16,9 +16,9 @@
 #
 
 
-%define distver 0.7.1
+%define distver 0.8
 Name:           python-anywidget
-Version:        0.7.1
+Version:        0.8.0
 Release:        0
 Summary:        Custom jupyter widgets made easy
 License:        MIT

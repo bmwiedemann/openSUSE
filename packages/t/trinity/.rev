@@ -745,4 +745,19 @@
 - add 0001-kvm-drop-KVM_SET_MEMORY_REGION.patch</comment>
     <requestid>1072311</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>19f4fbd94ff647e9625c15f8ed80f548</srcmd5>
+    <version>1.9+git.20230710</version>
+    <time>1704829844</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.9+git.20230710:
+  * ioctls/drm: fix DRM_MGA check (#45)
+  * ioctls/drm: check i810,mga,r128 and savage support (#44)
+  * update i386 syscall list
+  * Avoid array access out of bounds error during initialzation of fd providers. (#43)
+  * kvm: drop KVM_SET_MEMORY_REGION (#42)
+- Switch _service to manual
+- Drop upstreamed 0001-kvm-drop-KVM_SET_MEMORY_REGION.patch</comment>
+    <requestid>1137684</requestid>
+  </revision>
 </revisionlist>

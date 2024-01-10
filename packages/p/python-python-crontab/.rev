@@ -55,4 +55,17 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1068159</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>349c91d7776f77be65da74e956f3b591</srcmd5>
+    <version>3.0.0</version>
+    <time>1704281280</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.0:
+  * Add frequency checks at specific timestamp
+  * Fix lots of pylint errors and improve test coverage
+  * Improve schedule running with more information about what was
+    returned
+  * Cause an error when setting an invalid frequency</comment>
+    <requestid>1136017</requestid>
+  </revision>
 </revisionlist>

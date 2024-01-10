@@ -158,4 +158,28 @@ New packages, see: http://lists.opensuse.org/opensuse-factory/2013-07/msg00135.h
   * documentation updates</comment>
     <requestid>965190</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>7f8b037dc8613ea29dc16daee8169239</srcmd5>
+    <version>2.10.70</version>
+    <time>1704491932</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.10.70:
+  * all exceptions docstrings were defined.
+  * stream_size stream_iseof now raise properly StreamError
+  * Keep track of offsets within substreams where possible
+  * Fix missing objects in Struct._emitbuild's context
+  * Fix ExprMixin for and/or being compiled as logical instead of
+    bitwise
+  * Issue 1046: Docs updated accordingly.
+  * enum34 module renamed to enum, etc.
+  * Use builtin dict instead of collections.OrderedDict for class
+    Contain…
+  * Implement __getstate__ and __setstate__ on Container
+
+  * documentation updates
+  * no changelog available
+- Skip NumPy tests on pyhton36 flavor. Due to NEP29, python36-numpy
+  Necessary due change in pytest macro gh#openSUSE/python-rpm-macros#48</comment>
+    <requestid>1136270</requestid>
+  </revision>
 </revisionlist>

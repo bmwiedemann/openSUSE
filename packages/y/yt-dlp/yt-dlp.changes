@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Dec 31 00:14:48 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2023.12.30
+  * ard: Overhaul extractors
+  * facebook: Fix Memories extraction
+  * youtube: Fix like_count extraction
+  * youtube:Improve detection of faulty HLS formats
+
+-------------------------------------------------------------------
 Thu Nov 16 01:40:29 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2023.11.16

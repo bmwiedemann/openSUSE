@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Jan  3 09:26:08 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.17.6:
+  * A couple of build fixes and bug fixes detected by fuzzing.
+
+  * Corrects these issues:
+  * CVE-2023-49462 - #1043
+  * CVE-2023-49463 - #1042
+- drop libheif-CVE-2023-49462.patch,
+  libheif-CVE-2023-49464.patch,
+  libheif-CVE-2023-49460.patch: upstream
+
+-------------------------------------------------------------------
+Tue Dec 19 10:40:25 UTC 2023 - pgajdos@suse.com
+
+- security update
+- added patches
+  fix CVE-2023-49460 [bsc#1217902], segmentation violation in decode_uncompressed_image()
+  + libheif-CVE-2023-49460.patch
+
+-------------------------------------------------------------------
+Mon Dec 18 18:18:18 UTC 2023 - olaf@aepfle.de
+
+- sync ExclusiveArch with SVT-AV1
+- move HEIF plugins from examples to separate package
+- make sure all subpackages use the same libheif1 ABI
+
+-------------------------------------------------------------------
+Tue Dec 12 12:12:12 UTC 2023 - olaf@aepfle.de
+
+- remove usage of presets to allow any cmake
+- remove plugin conditional, to provide plugins on Leap as well
+- remove rav1e conditional, because it is always available
+
+-------------------------------------------------------------------
 Mon Dec 11 12:26:56 UTC 2023 - pgajdos@suse.com
 
 - security update

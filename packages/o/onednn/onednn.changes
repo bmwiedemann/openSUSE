@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Dec 26 21:32:41 UTC 2023 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
+
+-------------------------------------------------------------------
+Fri Dec  1 04:33:49 UTC 2023 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
+
+- Update to 3.3.3:
+- This is a patch release containing the following changes to v3.3.2:
+  * Fixed performance regression in int8 convolutions on processors with Intel AVX-512 and Intel DL Boost support (a00661f)
+  * Fixed race condition during library initialization on Intel Data Center GPU Max Series (7dfcd11)
+  * Fixed accuracy issue in experimental Graph Compiler with LLVM code generator (8892e7e)
+  * Disabled int8 RNN implementation for cases with non-trivial strides (2195e4b)
+  * Fixed incorrect results in bfloat16 convolution implementation on processors with Intel AMX support (9f00af9)
+  * Fixed incorrect results in fp16 and int8 convolution on Intel Core Ultra integrated GPUs (69cef84, 79bc6cc, c9c0b09)
+
+-------------------------------------------------------------------
 Fri Dec  1 04:33:49 UTC 2023 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
 
 - Update to 3.3.1:

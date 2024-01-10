@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Dec 14 11:10:32 UTC 2023 - pgajdos@suse.com
+
+- deleted patches
+  - drop-python2-support.patch (upstreamed)
+
+-------------------------------------------------------------------
+Thu Dec 14 09:16:16 UTC 2023 - Petr Gajdos <pgajdos@suse.com>
+
+- update to 1.20.0:
+  * introduced `Terminal.get_fgcolor()` and
+    `Terminal.get_bgcolor()` to query
+  * the terminal for the currently set colors. #237 by
+    @stefanholek
+  * bugfix: Copy globals dict before iterating to avoid
+    `RuntimeError` in multithreaded
+  * applications, #248 by @adamnovak
+
+-------------------------------------------------------------------
 Mon Jun 26 06:59:29 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
 
 - Use sle15_python_module_pythons

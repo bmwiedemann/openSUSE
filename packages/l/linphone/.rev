@@ -236,4 +236,13 @@
     <comment></comment>
     <requestid>1123314</requestid>
   </revision>
+  <revision rev="22" vrev="6">
+    <srcmd5>449ef26d6411adc5e8e2b7da92ef1518</srcmd5>
+    <version>5.2.98</version>
+    <time>1703281309</time>
+    <user>anag+factory</user>
+    <comment>- Add missing deps on TW.
+</comment>
+    <requestid>1134592</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,7 @@
 
 
 Name:           qsynth
-Version:        0.9.10
+Version:        0.9.12
 Release:        0
 Summary:        Graphical User Interface for fluidsynth
 License:        GPL-2.0-or-later

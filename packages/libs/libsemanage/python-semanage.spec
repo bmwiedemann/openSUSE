@@ -19,12 +19,12 @@
 %define soversion 2
 %define libname libsemanage%{soversion}
 
-%define libsepol_ver     3.5
-%define libselinux_ver   3.5
+%define libsepol_ver     3.6
+%define libselinux_ver   3.6
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-semanage
-Version:        3.5
+Version:        3.6
 Release:        0
 Summary:        Python bindings for SELinux's policy management library
 License:        LGPL-2.1-only

@@ -1,5 +1,7 @@
---- conf/main.cf.orig	2022-11-14 15:57:24.689108581 +0100
-+++ conf/main.cf	2022-11-14 16:02:33.255317483 +0100
+Index: conf/main.cf
+===================================================================
+--- conf/main.cf.orig
++++ conf/main.cf
 @@ -285,7 +285,7 @@ unknown_local_recipient_reject_code = 55
  #
  #mynetworks = 168.100.3.0/28, 127.0.0.0/8
@@ -48,7 +50,7 @@
  
  # PARALLEL DELIVERY TO THE SAME DESTINATION
  #
-@@ -682,4 +683,149 @@ sample_directory =
+@@ -682,4 +683,155 @@ sample_directory =
  # readme_directory: The location of the Postfix README files.
  #
  readme_directory =
@@ -105,6 +107,12 @@
 +
 +smtpd_recipient_restrictions = 
 +
++# mitigation for CVE-2023-51764 - SMTP smuggling attack
++# but allow local clients with non-standard SMTP implementations
++# such as netcat, fax machines, or load balancer health checks.
++#
++smtpd_forbid_bare_newline = yes
++smtpd_forbid_bare_newline_exclusions = $mynetworks
 +
 +############################################################
 +# SASL stuff

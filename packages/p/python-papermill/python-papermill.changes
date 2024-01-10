@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Dec 28 15:30:12 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.5.0
+  * Added support for python 3.11 and 3.12 PR #733
+  * Dropped support for 3.7
+  * ABS added support for using a Service principle via EnvCreds PR
+    #728
+  * Added “github” extra deps. to the “all” extra PR #715
+  * Added a warning if non set parameter is passed through CLI PR
+    #701
+  * Skip black formatting when encountering attribute errors PR
+    #699
+  * Removed forced deepcopy of notebook objects PR #694
+  * Always update notebook version on execute PR #691
+  * Set minimum version for tenacity PR #682
+  * Removed use of ansiwrap PR #681
+
+-------------------------------------------------------------------
 Sat Apr 29 19:52:16 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Add typing extensions if azuore-storage-blob

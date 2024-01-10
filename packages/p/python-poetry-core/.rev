@@ -263,4 +263,34 @@
     file resulting in an empty wheel (#611).</comment>
     <requestid>1113184</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>d059302f112137879ffa42dd40dc35af</srcmd5>
+    <version>1.8.1</version>
+    <time>1704491930</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.8.1:
+  * Fix an issue where git URLs starting with `git+` could not be
+    parsed anymore (#657).
+  * Add `3.12` to the list of available Python versions (#631).
+  * Add support for creating packages dynamically in the build
+    script
+  * Improve marker logic for `extra` markers (#636).
+  * Update list of supported licenses (#635,
+  * #646).
+  * Deprecate `Dependency.transitive_python_versions` (#648).
+  * Deprecate `Dependency.transitive_python_constraint` (#649).
+  * Fix an issue where projects with extension modules were not
+    installed in editable mode (#633).
+  * Fix an issue where the wrong or no `lib` folder was added to
+    the wheel (#634).
+  * Replace `jsonschema` with `fastjsonschema`.
+  * `lark==1.1.8`
+  * `packaging==23.2`
+
+- Update description
+- Update to version 1.4.0
+    version constraints (#128).
+- unbundle vendored packages</comment>
+    <requestid>1136266</requestid>
+  </revision>
 </revisionlist>

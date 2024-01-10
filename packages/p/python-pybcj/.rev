@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>1095662</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d77da8d16fe032286dc421dd3e6053b4</srcmd5>
+    <version>1.0.2</version>
+    <time>1702673316</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.2:
+  * Support python 3.12</comment>
+    <requestid>1133210</requestid>
+  </revision>
 </revisionlist>

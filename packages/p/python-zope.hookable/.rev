@@ -143,4 +143,14 @@ New dependency of python-Pyramid</comment>
     <comment></comment>
     <requestid>1100789</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ff9d9370f417dbd37c98d2ed4ddba2bf</srcmd5>
+    <version>6.0</version>
+    <time>1704491943</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.0:
+  * Drop support for Python 2.7, 3.5, 3.6.
+  * Add support for Python 3.12.</comment>
+    <requestid>1136278</requestid>
+  </revision>
 </revisionlist>

@@ -1210,4 +1210,13 @@
     <comment></comment>
     <requestid>1123549</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>2ec8943369c35018dfee088171f5f19d</srcmd5>
+    <version>1.4.0</version>
+    <time>1703198358</time>
+    <user>anag+factory</user>
+    <comment>-  boo#1218288: Require liblxqt
+   Panel plugins can depend on lxqt-backlight_backend</comment>
+    <requestid>1134437</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,7 @@
 
 %{!?license: %global license %doc}
 Name:           mwic
-Version:        0.7.9
+Version:        0.7.10
 Release:        0
 Summary:        A spellchecker with grouping support
 License:        MIT

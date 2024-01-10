@@ -1,7 +1,7 @@
 #
 # spec file for package python-dynaconf
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,12 @@
 
 
 Name:           python-dynaconf
-Version:        3.1.11
+Version:        3.2.4
 Release:        0
 Summary:        The dynamic configurator for your Python Project
 License:        MIT
 URL:            https://github.com/rochacbruno/dynaconf
 Source:         https://github.com/rochacbruno/dynaconf/archive/%{version}.tar.gz#/dynaconf-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#dynaconf/dynaconf#830
-Patch0:         support-python-311.patch
 BuildRequires:  %{python_module setuptools >= 38.6.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

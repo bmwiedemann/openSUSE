@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-h5netcdf
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        A Python library to use netCDF4 files via h5py
 License:        BSD-3-Clause

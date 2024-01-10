@@ -1,7 +1,7 @@
 #
 # spec file for package konqueror
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,8 @@ Source:         https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
+# PATCH-FIX-UPSTREAM https://invent.kde.org/network/konqueror/-/merge_requests/284
+Patch1:         0001-Fix-bookmarks.desktop.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  libtidy-devel

@@ -25,7 +25,7 @@ License:        BSD-3-Clause AND SUSE-Public-Domain
 Group:          System/Base
 # COMMON-BEGIN
 # COMMON-BEGIN
-Version:        2023c
+Version:        2023d
 Release:        0
 Source:         https://www.iana.org/time-zones/repository/releases/tzdata%{version}.tar.gz
 Source1:        https://www.iana.org/time-zones/repository/releases/tzcode%{version}.tar.gz

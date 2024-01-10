@@ -1,7 +1,7 @@
 <services>
   <service name="download_files" mode="manual" />
   <service name="cargo_vendor" mode="manual">
-     <param name="srctar">wayshot-1.3.0.tar.gz</param>
+     <param name="srctar">wayshot-*.tar.gz</param>
      <param name="compression">zst</param>
      <param name="update">true</param>
   </service>

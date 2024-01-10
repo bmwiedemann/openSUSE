@@ -17,14 +17,14 @@
 
 
 %define rname kpeople
-%define _tar_path 5.103
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
+%define qt5_version 5.15.2
 %bcond_without released
 Name:           kpeople5
-Version:        5.112.0
+Version:        5.113.0
 Release:        0
 Summary:        Library for access to contacts and identity holders
 License:        LGPL-2.1-or-later
@@ -35,17 +35,16 @@ Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= %{_kf5_version}
-BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(KF5CoreAddons) >= %{_kf5_version}
 BuildRequires:  cmake(KF5I18n) >= %{_kf5_version}
 BuildRequires:  cmake(KF5ItemViews) >= %{_kf5_version}
 BuildRequires:  cmake(KF5WidgetsAddons) >= %{_kf5_version}
-BuildRequires:  cmake(Qt5DBus) >= 5.15.0
-BuildRequires:  cmake(Qt5Gui) >= 5.15.0
-BuildRequires:  cmake(Qt5Qml) >= 5.15.0
-BuildRequires:  cmake(Qt5Sql) >= 5.15.0
-BuildRequires:  cmake(Qt5Test) >= 5.15.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.15.0
+BuildRequires:  cmake(Qt5DBus) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Gui) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Qml) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Sql) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Test) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Widgets) >= %{qt5_version}
 
 %description
 A library that provides access to all contacts and the people who hold them.
@@ -53,7 +52,7 @@ A library that provides access to all contacts and the people who hold them.
 %package devel
 Summary:        Library for access to contacts and identity holders
 Requires:       %{name} = %{version}
-Requires:       cmake(Qt5Core) >= 5.15.0
+Requires:       cmake(Qt5Core) >= %{qt5_version}
 
 %description devel
 A library that provides access to all contacts and the people who hold them.

@@ -2,7 +2,6 @@
 # spec file for package libftdi0
 #
 # Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -13,8 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define realname libftdi
 %define sover 1
@@ -26,7 +26,7 @@ Release:        0
 Summary:        Library to program and control the FTDI USB controller
 License:        LGPL-2.1+ AND GPL-2.0-with-classpath-exception
 Group:          Hardware/Other
-Url:            http://www.intra2net.com/en/developer/libftdi
+URL:            http://www.intra2net.com/en/developer/libftdi
 Source:         http://www.intra2net.com/en/developer/libftdi/download/libftdi-%{version}.tar.gz
 %if 0%{?suse_version} > 1325
 BuildRequires:  libboost_headers-devel
@@ -38,8 +38,10 @@ BuildRequires:  gcc-c++
 BuildRequires:  libconfuse-devel
 BuildRequires:  libusb-compat-devel
 BuildRequires:  pkgconfig
+%if 0%{?suse_version} < 1500
 BuildRequires:  python-devel
 BuildRequires:  python-xml
+%endif
 BuildRequires:  swig
 
 %description

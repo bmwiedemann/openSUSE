@@ -17,12 +17,12 @@
 
 
 %define libaudit_ver     2.2
-%define libsepol_ver     3.5
-%define libsemanage_ver  3.5
-%define libselinux_ver   3.5
+%define libsepol_ver     3.6
+%define libsemanage_ver  3.6
+%define libselinux_ver   3.6
 %define setools_ver      4.1.1
 Name:           policycoreutils
-Version:        3.5
+Version:        3.6
 Release:        0
 Summary:        SELinux policy core utilities
 License:        GPL-2.0-or-later
@@ -44,7 +44,6 @@ Source18:       policycoreutils-rpmlintrc
 Patch0:         make_targets.patch
 Patch2:         get_os_version.patch
 Patch3:         run_init.pamd.patch
-Patch4:         reproducible-build.patch
 BuildRequires:  audit-devel >= %{libaudit_ver}
 BuildRequires:  bison
 BuildRequires:  dbus-1-glib-devel
@@ -180,7 +179,6 @@ semodule_utils_pwd="$PWD/semodule-utils-%{version}"
 %patch -P0 -p1
 %patch -P2 -p1
 %patch -P3 -p1
-%patch -P4 -p1
 mv ${setools_python_pwd}/audit2allow ${setools_python_pwd}/chcat ${setools_python_pwd}/semanage ${setools_python_pwd}/sepolgen ${setools_python_pwd}/sepolicy .
 mv ${semodule_utils_pwd}/semodule_expand ${semodule_utils_pwd}/semodule_link ${semodule_utils_pwd}/semodule_package .
 
@@ -342,27 +340,9 @@ done
 %{_mandir}/man8/sestatus.8%{?ext_man}
 %{_mandir}/man8/setfiles.8%{?ext_man}
 %{_mandir}/man8/setsebool.8%{?ext_man}
-%{_mandir}/ru/man8/fixfiles.8%{?ext_man}
-%{_mandir}/ru/man8/genhomedircon.8%{?ext_man}
-%{_mandir}/ru/man8/load_policy.8%{?ext_man}
-%{_mandir}/ru/man8/open_init_pty.8%{?ext_man}
-%{_mandir}/ru/man8/restorecon.8%{?ext_man}
-%{_mandir}/ru/man8/restorecon_xattr.8%{?ext_man}
-%{_mandir}/ru/man8/run_init.8%{?ext_man}
-%{_mandir}/ru/man8/semodule.8%{?ext_man}
-%{_mandir}/ru/man8/semodule_expand.8%{?ext_man}
-%{_mandir}/ru/man8/semodule_link.8%{?ext_man}
-%{_mandir}/ru/man8/semodule_package.8%{?ext_man}
-%{_mandir}/ru/man8/semodule_unpackage.8%{?ext_man}
-%{_mandir}/ru/man8/sestatus.8%{?ext_man}
-%{_mandir}/ru/man8/setfiles.8%{?ext_man}
-%{_mandir}/ru/man8/setsebool.8%{?ext_man}
 %{_mandir}/man5/selinux_config.5%{?ext_man}
 %{_mandir}/man5/sestatus.conf.5%{?ext_man}
-%{_mandir}/ru/man5/selinux_config.5%{?ext_man}
-%{_mandir}/ru/man5/sestatus.conf.5%{?ext_man}
 %{_mandir}/man1/secon.1%{?ext_man}
-%{_mandir}/ru/man1/secon.1%{?ext_man}
 %{_datadir}/bash-completion/completions/setsebool
 
 %files -n python3-%{name}
@@ -381,13 +361,9 @@ done
 /sbin/semanage
 %endif
 %{_mandir}/man1/audit2allow.1%{?ext_man}
-%{_mandir}/ru/man1/audit2allow.1%{?ext_man}
 %{_mandir}/man1/audit2why.1%{?ext_man}
-%{_mandir}/ru/man1/audit2why.1%{?ext_man}
 %{_mandir}/man8/chcat.8%{?ext_man}
-%{_mandir}/ru/man8/chcat.8%{?ext_man}
 %{_mandir}/man8/semanage*.8%{?ext_man}
-%{_mandir}/ru/man8/semanage*.8%{?ext_man}
 %{_datadir}/bash-completion/completions/semanage
 
 %files devel
@@ -405,16 +381,6 @@ done
 %{_mandir}/man8/sepolicy-transition.8%{?ext_man}
 %{_mandir}/man8/sepolicy.8%{?ext_man}
 %{_mandir}/man8/sepolgen.8%{?ext_man}
-%{_mandir}/ru/man8/sepolicy-booleans.8%{?ext_man}
-%{_mandir}/ru/man8/sepolicy-communicate.8%{?ext_man}
-%{_mandir}/ru/man8/sepolicy-generate.8%{?ext_man}
-%{_mandir}/ru/man8/sepolicy-gui.8%{?ext_man}
-%{_mandir}/ru/man8/sepolicy-interface.8%{?ext_man}
-%{_mandir}/ru/man8/sepolicy-manpage.8%{?ext_man}
-%{_mandir}/ru/man8/sepolicy-network.8%{?ext_man}
-%{_mandir}/ru/man8/sepolicy-transition.8%{?ext_man}
-%{_mandir}/ru/man8/sepolicy.8%{?ext_man}
-%{_mandir}/ru/man8/sepolgen.8%{?ext_man}
 %dir %{_localstatedir}/lib/sepolgen
 %{_localstatedir}/lib/sepolgen/perm_map
 %{_datadir}/bash-completion/completions/sepolicy
@@ -422,7 +388,6 @@ done
 %files newrole
 %verify(not mode) %attr(4755,root,root) %{_bindir}/newrole
 %{_mandir}/man1/newrole.1%{?ext_man}
-%{_mandir}/ru/man1/newrole.1%{?ext_man}
 %if 0%{?suse_version} > 1500
 %{_pam_vendordir}/newrole
 %else
@@ -449,9 +414,7 @@ done
 %{_datadir}/system-config-selinux/system-config-selinux.py
 %{_datadir}/system-config-selinux/*.ui
 %{_mandir}/man8/selinux-polgengui.8%{?ext_man}
-%{_mandir}/ru/man8/selinux-polgengui.8%{?ext_man}
 %{_mandir}/man8/system-config-selinux.8%{?ext_man}
-%{_mandir}/ru/man8/system-config-selinux.8%{?ext_man}
 %if 0%{?suse_version} > 1500
 %{_pam_vendordir}/system-config-selinux
 %{_pam_vendordir}/selinux-polgengui

@@ -17,14 +17,14 @@
 
 
 %define sonum   5
-%define _tar_path 5.103
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
+%define qt5_version 5.15.2
 %bcond_without released
 Name:           sonnet
-Version:        5.112.0
+Version:        5.113.0
 Release:        0
 Summary:        KDE spell checking library
 License:        LGPL-2.1-or-later
@@ -37,17 +37,16 @@ Source2:        frameworks.keyring
 #BuildRequires:  aspell-devel
 # Enchant plugin is currently disabled upstream
 #BuildRequires:  enchant-devel
-BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
+BuildRequires:  extra-cmake-modules >= %{_kf5_version}
 BuildRequires:  fdupes
-BuildRequires:  kf5-filesystem
 BuildRequires:  myspell-dictionaries
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(Qt5Core) >= 5.15.0
-BuildRequires:  cmake(Qt5LinguistTools) >= 5.15.0
-BuildRequires:  cmake(Qt5Quick)
-BuildRequires:  cmake(Qt5Test) >= 5.15.0
-BuildRequires:  cmake(Qt5UiPlugin) >= 5.15.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.15.0
+BuildRequires:  cmake(Qt5Core) >= %{qt5_version}
+BuildRequires:  cmake(Qt5LinguistTools) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Quick) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Test) >= %{qt5_version}
+BuildRequires:  cmake(Qt5UiPlugin) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Widgets) >= %{qt5_version}
 BuildRequires:  pkgconfig(hunspell)
 BuildRequires:  pkgconfig(libvoikko)
 
@@ -58,7 +57,7 @@ HSpell, Enchant, ASpell and HUNSPELL.
 
 %package -n libKF5SonnetCore%{sonum}
 Summary:        KDE spell checking library
-Requires:       %{name} >= %{_kf5_bugfix_version}
+Requires:       %{name} >= %{_kf5_version}
 %requires_ge    libQt5Core5
 Obsoletes:      libKF5SonnetCore4
 
@@ -93,10 +92,9 @@ QtQuick based applications.
 
 %package devel
 Summary:        KDE spell checking library: Build Environment
-Requires:       extra-cmake-modules
 Requires:       libKF5SonnetCore%{sonum} = %{version}
 Requires:       libKF5SonnetUi%{sonum} = %{version}
-Requires:       cmake(Qt5Core) >= 5.15.0
+Requires:       cmake(Qt5Core) >= %{qt5_version}
 
 %description devel
 Sonnet is a plugin-based spell checking library for Qt-based

@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,20 @@
 
 %define octpkg  control
 Name:           octave-forge-%{octpkg}
-Version:        3.4.0
+Version:        4.0.0
 Release:        0
 Summary:        Computer-Aided Control System Design (CACSD) Tools
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
-URL:            https://octave.sourceforge.io
-Source0:        https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
+URL:            https://gnu-octave.github.io/packages/%{octpkg}/
+Source0:        https://github.com/gnu-octave/pkg-control/releases/download/%{octpkg}-%{version}/%{octpkg}-%{version}.tar.gz
 BuildRequires:  blas-devel
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
 BuildRequires:  hdf5-devel
 BuildRequires:  lapack-devel
 BuildRequires:  octave-devel
-Requires:       octave-cli >= 3.8.0
+Requires:       octave-cli >= 4.0.0
 
 %description
 Computer-Aided Control System Design (CACSD) Tools for GNU Octave, based
@@ -58,7 +58,6 @@ This is part of Octave-Forge project.
 %octave --eval "pkg rebuild"
 
 %files
-%defattr(-,root,root)
 %{octpackages_dir}/%{octpkg}-%{version}
 %{octlib_dir}/%{octpkg}-%{version}
 

@@ -333,4 +333,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1117923</requestid>
   </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>8d36fa55bff9b23e846e87cfa9c29ce2</srcmd5>
+    <version>1.6.0</version>
+    <time>1702936519</time>
+    <user>anag+factory</user>
+    <comment>- dxvk need libxkbregistry0 for building -32bit variants, provide them.</comment>
+    <requestid>1133774</requestid>
+  </revision>
 </revisionlist>

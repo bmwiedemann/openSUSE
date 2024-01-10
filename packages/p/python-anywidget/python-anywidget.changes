@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Dec 23 18:33:46 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.8.0
+  * Remove re-export of @anywidget/vite from main package (#398)
+  * Breaking change. If using our Vite plugin, please make sure to
+    install @anywidget/vite (rather than importing from anywidget
+    main package). This change allows us to version the Vite plugin
+    and anywidget's core separately.
+    
+    // vite.config.mjs
+    import { defineConfig } from "vite";
+    -- import anywidget from "anywidget/vite";
+    ++ import anywidget from "@anywidget/vite";
+    
+    If you are already using @anywidget/vite, there are no changes
+    necessary.
+
+
+-------------------------------------------------------------------
 Sun Nov 26 15:22:49 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.7.1

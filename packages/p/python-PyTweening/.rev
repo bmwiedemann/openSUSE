@@ -32,4 +32,17 @@
     <comment></comment>
     <requestid>1001089</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5f7d6cadf1e16e5260f13993d6abf05e</srcmd5>
+    <version>1.0.7</version>
+    <time>1704560963</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.7:
+  * no upstream changelog available
+- use packaged LICENSE.txt
+
+- update to 1.0.4
+- Initial release of python-PyTweening 1.0.3</comment>
+    <requestid>1137139</requestid>
+  </revision>
 </revisionlist>

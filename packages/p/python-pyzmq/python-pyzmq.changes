@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan  5 17:31:56 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 25.1.2:
+  * Fix builds with some recent compilers and bundled libzmq
+  * Fix builds with upcoming Cython 3.1
+
+-------------------------------------------------------------------
 Thu Aug 10 21:58:06 UTC 2023 - Arun Persaud <arun@gmx.de>
 
 - update to version 25.1.1:

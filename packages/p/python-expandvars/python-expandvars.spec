@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-expandvars
 Version:        0.12.0
 Release:        0

@@ -34,4 +34,30 @@ https://github.com/nodejs/node/blob/main/doc/changelogs/CHANGELOG_V21.md#21.2.0
 - fix_ci_tests.patch: partially upstreamed</comment>
     <requestid>1126795</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>78ced2bb64e779650aa7821b97edd5c9</srcmd5>
+    <version>21.4.0</version>
+    <time>1702844928</time>
+    <user>anag+factory</user>
+    <comment>- Update to 21.4.0:
+  * fs: introduce dirent.parentPath
+  * fs: use default w flag for writeFileSync with utf8 encoding
+- Changes in 21.3.0:
+  * New --disable-warning flag
+  * Fast fs.writeFileSync with UTF-8 Strings
+For details, see
+https://github.com/nodejs/node/blob/main/doc/changelogs/CHANGELOG_V21.md#21.4.0
+- fix_ci_tests.patch: added workaround for missing deps
+
+- node-gyp-addon-gypi.patch: fix misapplied patch (bsc#1217424)</comment>
+    <requestid>1133448</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>5bbab65a95400f2c818bf17d78e1afd6</srcmd5>
+    <version>21.4.0</version>
+    <time>1704380210</time>
+    <user>dimstar_suse</user>
+    <comment>- c-ares-fixes.patch: fixes unit tests for new c-ares</comment>
+    <requestid>1136239</requestid>
+  </revision>
 </revisionlist>

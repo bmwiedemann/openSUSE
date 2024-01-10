@@ -1,7 +1,7 @@
 #
 # spec file for package python-greenlet
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2010 B1 Systems GmbH, Vohburg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-greenlet
-Version:        3.0.1
+Version:        3.0.2
 Release:        0
 Summary:        Lightweight in-process concurrent programming
 License:        MIT
@@ -31,6 +31,7 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module objgraph}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module psutil}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes

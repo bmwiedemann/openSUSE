@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Dec 23 18:38:44 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.12.42, jupyter frontend 0.5.43
+  * fix: set domain to (0, 1) when no data is present by
+    @maartenbreddels in #1619
+
+-------------------------------------------------------------------
 Sat Oct 14 09:06:04 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.12.40

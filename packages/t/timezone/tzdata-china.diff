@@ -1,7 +1,7 @@
-Index: timezone-2023a/asia
+Index: timezone-2023d/asia
 ===================================================================
---- timezone-2023a.orig/asia
-+++ timezone-2023a/asia
+--- timezone-2023d.orig/asia
++++ timezone-2023d/asia
 @@ -653,6 +653,8 @@ Rule	PRC	1987	1991	-	Apr	Sun>=11	 2:00	1
  Zone	Asia/Shanghai	8:05:43	-	LMT	1901
  			8:00	Shang	C%sT	1949 May 28
@@ -10,11 +10,11 @@ Index: timezone-2023a/asia
 +Link  Asia/Shanghai Asia/Beijing
  # Xinjiang time, used by many in western China; represented by Ürümqi / Ürümchi
  # / Wulumuqi.  (Please use Asia/Shanghai if you prefer Beijing time.)
- # Vostok base in Antarctica matches this since 1970.
-Index: timezone-2023a/zone.tab
+ Zone	Asia/Urumqi	5:50:20	-	LMT	1928
+Index: timezone-2023d/zone.tab
 ===================================================================
---- timezone-2023a.orig/zone.tab
-+++ timezone-2023a/zone.tab
+--- timezone-2023d.orig/zone.tab
++++ timezone-2023d/zone.tab
 @@ -142,6 +142,7 @@ CL	-3327-07040	America/Santiago	most of
  CL	-5309-07055	America/Punta_Arenas	Region of Magallanes
  CL	-2709-10926	Pacific/Easter	Easter Island
@@ -23,15 +23,15 @@ Index: timezone-2023a/zone.tab
  CN	+3114+12128	Asia/Shanghai	Beijing Time
  CN	+4348+08735	Asia/Urumqi	Xinjiang Time
  CO	+0436-07405	America/Bogota
-Index: timezone-2023a/zone1970.tab
+Index: timezone-2023d/zone1970.tab
 ===================================================================
---- timezone-2023a.orig/zone1970.tab
-+++ timezone-2023a/zone1970.tab
-@@ -125,6 +125,7 @@ CK	-2114-15946	Pacific/Rarotonga
+--- timezone-2023d.orig/zone1970.tab
++++ timezone-2023d/zone1970.tab
+@@ -126,6 +126,7 @@ CK	-2114-15946	Pacific/Rarotonga
  CL	-3327-07040	America/Santiago	most of Chile
  CL	-5309-07055	America/Punta_Arenas	Region of Magallanes
  CL	-2709-10926	Pacific/Easter	Easter Island
 +CN	+3955+11626	Asia/Beijing	China Standard Time
  CN	+3114+12128	Asia/Shanghai	Beijing Time
- CN,AQ	+4348+08735	Asia/Urumqi	Xinjiang Time, Vostok
+ CN	+4348+08735	Asia/Urumqi	Xinjiang Time
  CO	+0436-07405	America/Bogota

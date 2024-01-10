@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Dec 19 11:04:55 UTC 2023 - Cathy Hu <cathy.hu@suse.com>
+
+- Update to version 3.6
+  https://github.com/SELinuxProject/selinux/releases/tag/3.6
+  * libselinux: performance optimization for duplicate detection
+  * Introduce getpolicyload - a helper binary to print the number of policy reloads on the running system
+  * Add notself support for neverallow rules
+  * Improve man pages
+  * man pages: Remove the Russian translations
+  * Add notself and other support to CIL
+  * Add support for deny rules
+  * Translations updated from
+    https://translate.fedoraproject.org/projects/selinux/
+  * Bug fixes
+- Remove keys from keyring since they expired:
+  - E853C1848B0185CF42864DF363A8AD4B982C4373
+    Petr Lautrbach <plautrba@redhat.com>
+  - 63191CE94183098689CAB8DB7EF137EC935B0EAF
+    Jason Zaman <jasonzaman@gmail.com>  
+- Add key to keyring:   
+  - B8682847764DF60DF52D992CBC3905F235179CF1   
+    Petr Lautrbach <lautrbach@redhat.com> 
+
+-------------------------------------------------------------------
 Sun Oct  1 19:17:31 UTC 2023 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
 
 - Repair initrd libselinux check in selinux-ready

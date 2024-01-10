@@ -94,4 +94,34 @@
     <comment></comment>
     <requestid>1106283</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7c822e2d6265d8192bd5749416ca4fea</srcmd5>
+    <version>6.6.0</version>
+    <time>1703800968</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.6.0:
+  * Support Django 5.0.
+  * Drop Python 3.7 support.
+  * Support Python 3.12.
+  * Changed documentation site URL from
+    ``https://whitenoise.evans.io/`` to
+    ``https://whitenoise.readthedocs.io/``.
+  * Support Django 4.2.
+  * Remove further support for byte strings from the ``root`` and
+    ``prefix`` arguments to ``WhiteNoise``, and Django’s
+    ``STATIC_ROOT`` setting.
+  * Django does not support ``STATIC_ROOT`` being a byte string.
+  * Add some video file extensions to be ignored during
+    compression.
+  * Remove the behaviour of decoding byte strings passed for
+    settings that take strings.
+  * Document “hidden” feature of setting ``max_age`` to ``None``
+    to disable the ``Cache-Control`` header.
+  * Drop support for working as old-style Django middleware, as
+    support was `removed in Django 2.0
+
+- Update to version 6.2.0
+  * Add a manifest_strict setting to prevent Django throwing errors</comment>
+    <requestid>1135358</requestid>
+  </revision>
 </revisionlist>

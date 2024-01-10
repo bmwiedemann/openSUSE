@@ -60,4 +60,31 @@
   * Replace TIFF compress with compression parameter (breaking).</comment>
     <requestid>1090078</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0cbe5aac802f3d916492bfdb463318db</srcmd5>
+    <version>2023.9.26</version>
+    <time>1703102542</time>
+    <user>anag+factory</user>
+    <comment>- update to 2023.9.26:
+  * Remove phasor and lifetime methods from VistaIfli (breaking).
+  * Rename SimfcsFbd and SimfcsFbf to FlimboxFbd and FlimboxFbf
+    (breaking).
+  * Deprecate SimfcsFbd and SimfcsFbf.
+  * Support int16 FLIMbox cross correlation phase indices (bins).
+  * Add FlimboxFbs class for ISS VistaVision FLIMbox settings.
+  * Add decoder for 32-bit, 16 windows, 4 channels FlimboxFbd
+    (untested).
+  * Rewrite VistaIfli based on file format specification
+    (breaking).
+  * Define positional and keyword parameters (breaking).
+  * SimfcsFbd.asarray returns bins only (breaking).
+  * Fix type hint issues.
+  * Add py.typed marker.
+  * Specify encoding of text files.
+  * Fix linting issues.
+
+- skip python 3.6 build (no tifffile as it uses scipy)
+  * Fix writing contiguous series to TIFF files with</comment>
+    <requestid>1134139</requestid>
+  </revision>
 </revisionlist>

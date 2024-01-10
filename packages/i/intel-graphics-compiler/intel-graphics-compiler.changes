@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jan  3 14:14:10 UTC 2024 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- 0001-Fix-PromotePredicate-to-keep-sequence-of-instruction.patch
+  * This patch makes the build deterministic.
+
+-------------------------------------------------------------------
+Tue Dec 19 10:20:50 UTC 2023 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Don't specify the specific python3 version for Mako 
+
+-------------------------------------------------------------------
+Mon Dec 18 15:08:58 UTC 2023 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.0.15136.4
+- Update opencl_clang to cf95b338d14685e4f3402ab1828bef31d48f1fd6
+- Update spirv-llvm-translator to 43baf90f96fb9df607595b63858fd9e85fbb2604
+- Update vc_intrinsics to v0.13.0
+-------------------------------------------------------------------
 Wed Aug 23 08:12:50 UTC 2023 - Patrik Jakobsson <patrik.jakobsson@suse.com>
 
 - Update to version 1.0.14062.11

@@ -676,4 +676,12 @@
     <comment>- Update to release 3.25</comment>
     <requestid>1104717</requestid>
   </revision>
+  <revision rev="82" vrev="2">
+    <srcmd5>7b36af9f6f866aad231282061886b7f1</srcmd5>
+    <version>3.25</version>
+    <time>1703527561</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1134981</requestid>
+  </revision>
 </revisionlist>

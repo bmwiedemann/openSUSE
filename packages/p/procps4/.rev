@@ -136,4 +136,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1128164</requestid>
   </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>4d6ca073b5a59b6c3e32b5aa5f97c2da</srcmd5>
+    <version>4.0.4</version>
+    <time>1702673280</time>
+    <user>anag+factory</user>
+    <comment>- Add patch procps-ng-4.0.4-ignore-sysctl_conf.patch
+  * ignore dangling symlink to missing /etc/sysctl.conf file
+    [bsc#1217990] (Backport of the patch of Thorsten Kukuk)</comment>
+    <requestid>1133115</requestid>
+  </revision>
 </revisionlist>

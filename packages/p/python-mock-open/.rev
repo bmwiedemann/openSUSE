@@ -15,4 +15,14 @@
     <comment></comment>
     <requestid>855663</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>33dd6bf7860de4efa95fbe3eba06451e</srcmd5>
+    <version>1.4.0</version>
+    <time>1703102525</time>
+    <user>anag+factory</user>
+    <comment>- Switch to pyproject macros.
+- Specify the module to test to avoid Python 3.12 failures.
+- Stop using greedy globs in %files.</comment>
+    <requestid>1134114</requestid>
+  </revision>
 </revisionlist>

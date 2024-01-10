@@ -1,7 +1,7 @@
 #
 # spec file for package python-Cython0
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ Source:         https://files.pythonhosted.org/packages/source/C/Cython/Cython-%
 Source1:        python-Cython0-rpmlintrc
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module xml}
 BuildRequires:  fdupes

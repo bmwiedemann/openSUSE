@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/lnussel/sdbootutil.git</param>
-              <param name="changesrevision">6bcf1d399254a980cbcf1ce69d8d11698b1dfbf5</param></service></servicedata>
+              <param name="changesrevision">8a4e6e9bb0bbaa9c5a5463cdeb21bb9cf8777b48</param></service><service name="tar_scm">
+                <param name="url">https://github.com/openSUSE/sdbootutil.git</param>
+              <param name="changesrevision">42797ab975f71e0e1990cc0b496f3e90b22e67cc</param></service></servicedata>

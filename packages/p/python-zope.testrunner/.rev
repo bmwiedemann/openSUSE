@@ -174,4 +174,14 @@
 - Changes from 4.4.0</comment>
     <requestid>1132429</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>b360c02434164c0c45fd363fc598ca9e</srcmd5>
+    <version>6.2.1</version>
+    <time>1704491954</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.2.1:
+  * Work around Python 3.12.1+ no longer calling startTest for
+    skipped tests</comment>
+    <requestid>1136298</requestid>
+  </revision>
 </revisionlist>

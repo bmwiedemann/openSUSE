@@ -1,0 +1,13 @@
+On s390x, this test takes more than 6 seconds (build log says 12 seconds)
+
+--- nss/tests/dbtests/dbtests.sh.orig	2023-12-26 16:48:17.186506407 +0100
++++ nss/tests/dbtests/dbtests.sh	2023-12-26 16:49:13.323116874 +0100
+@@ -367,7 +367,7 @@ dbtest_main()
+       TIMEARRAY=(${RARRAY[1]//./ })
+       echo "${TIMEARRAY[0]} seconds"
+       # Was 5, but that is too small for OBS-workers.
+-      test ${TIMEARRAY[0]} -lt 6
++      test ${TIMEARRAY[0]} -lt 15
+       ret=$?
+       html_msg ${ret} 0 "certutil dump keys with explicit default trust flags"
+     fi

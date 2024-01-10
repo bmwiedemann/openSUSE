@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan  4 08:33:49 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Drop test_numpyaccel.py and test_arraydatatypeaccel.py as they are
+  already included in the downloaded tarball
+
+-------------------------------------------------------------------
+Wed Jan  3 16:22:55 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to 3.1.7
+- Changing to /master/ vs. hash for Source[1,2] files
+
+-------------------------------------------------------------------
 Fri Apr  1 18:52:20 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Adding _service file

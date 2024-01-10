@@ -23,7 +23,7 @@
 %endif
 
 Name:           stellarium
-Version:        23.3
+Version:        23.4
 Release:        0
 Summary:        Astronomical Sky Simulator
 License:        GPL-2.0-or-later
@@ -43,7 +43,9 @@ BuildRequires:  libxkbcommon-devel >= 0.5.0
 BuildRequires:  memory-constraints
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(exiv2)
 BuildRequires:  pkgconfig(libindi) >= 2.0.0
+BuildRequires:  pkgconfig(nlopt)
 BuildRequires:  pkgconfig(zlib)
 %if %{with Qt5}
 BuildRequires:  libQt5Core-private-headers-devel >= 5.9.0
@@ -63,6 +65,7 @@ BuildRequires:  pkgconfig(Qt5SerialPort)
 BuildRequires:  pkgconfig(Qt5Test)
 BuildRequires:  pkgconfig(Qt5UiTools)
 BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(Qt5WebEngineWidgets)
 %else
 BuildRequires:  qt6-core-private-devel >= 6.2.0
 BuildRequires:  qt6-gui-private-devel >= 6.2.0
@@ -81,6 +84,9 @@ BuildRequires:  pkgconfig(Qt6SerialPort)
 BuildRequires:  pkgconfig(Qt6Test)
 BuildRequires:  pkgconfig(Qt6UiTools)
 BuildRequires:  pkgconfig(Qt6Widgets)
+%ifarch aarch64 x86_64 riscv64
+BuildRequires:  pkgconfig(Qt6WebEngineWidgets)
+%endif
 Requires:       qt6-multimedia
 %endif
 %if 0%{?is_opensuse}
@@ -97,8 +103,8 @@ binoculars or a small telescope.
 %autosetup -p1
 
 %build
-# Require at least 4096 MB of memory per job
-%limit_build -m 4096
+# Require at least 4000 MB of memory per job
+%limit_build -m 4000
 export QT_HASH_SEED=0
 %cmake	-DCMAKE_BUILD_TYPE=Release \
 	-DCPM_USE_LOCAL_PACKAGES=yes \

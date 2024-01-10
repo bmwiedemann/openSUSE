@@ -100,4 +100,15 @@
   * Add support for Django 4.2</comment>
     <requestid>1094145</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>dbce0dec6162c8aabde753a3eef2b101</srcmd5>
+    <version>3.0.0</version>
+    <time>1703800871</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.0.0:
+  * Fix support for `publicPath: auto` in Webpack config
+  * Add support for Python 3.12
+  * Add support for Django 5.0</comment>
+    <requestid>1135233</requestid>
+  </revision>
 </revisionlist>

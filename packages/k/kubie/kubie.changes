@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Dec 12 17:08:13 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.23.0:
+  * Version 0.23.0
+  * fix(zsh): proxy original ZDOTDIR to user's .zshrc (#192)
+  * document export subcomannd (#191)
+  * Bump serde from 1.0.192 to 1.0.193 (#185)
+  * Bump tempfile from 3.8.0 to 3.8.1 (#186)
+  * Bump which from 4.4.0 to 5.0.0 (#188)
+  * Bump clap from 4.4.6 to 4.4.10 (#189)
+  * add start and stop hooks to zsh
+  * Update Arch Linux package URL in README.md (#182)
+  * Bump serde from 1.0.188 to 1.0.192 (#181)
+  * Bump libc from 0.2.148 to 0.2.150 (#180)
+  * Bump serde_yaml from 0.9.25 to 0.9.27 (#179)
+  * Bump serde_json from 1.0.107 to 1.0.108 (#177)
+  * Bump rustix from 0.38.4 to 0.38.19 (#176)
+  * Bump clap from 4.4.2 to 4.4.6 (#172)
+  * Bump libc from 0.2.147 to 0.2.148 (#168)
+  * Bump serde_json from 1.0.106 to 1.0.107 (#167)
+  * Bump clap from 4.4.1 to 4.4.2 (#165)
+  * Bump serde_json from 1.0.105 to 1.0.106 (#166)
+  * Bump clap from 4.3.23 to 4.4.1 (#164)
+  * Bump attohttpc from 0.26.0 to 0.26.1 (#163)
+  * Bump serde from 1.0.185 to 1.0.188 (#162)
+
+-------------------------------------------------------------------
 Wed Sep 06 07:57:37 UTC 2023 - rombert@apache.org
 
 - Update to version 0.22.0:

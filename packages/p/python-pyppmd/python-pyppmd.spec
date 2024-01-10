@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyppmd
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,16 @@
 #
 
 
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-pyppmd
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        PPMd compression/decompression library
 License:        LGPL-2.1-or-later
 URL:            https://codeberg.org/miurahr/pyppmd
 Source:         https://files.pythonhosted.org/packages/source/p/pyppmd/pyppmd-%{version}.tar.gz
-BuildRequires:  %{python_module devel >= 3.6}
+BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools >= 58.0}
 BuildRequires:  %{python_module setuptools_scm >= 6.0.1}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes

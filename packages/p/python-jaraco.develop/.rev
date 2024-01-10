@@ -7,4 +7,30 @@
     <comment>transitively needed by setuptools</comment>
     <requestid>1104639</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a069e6906e3350fca5bbcc7a668d96d9</srcmd5>
+    <version>8.5.0</version>
+    <time>1703800465</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1135150</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>9c1f7fda966faef4e66b3afcce6dde3d</srcmd5>
+    <version>8.5.0</version>
+    <time>1704491991</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1136658</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>58b65269c6c0a2156f9db190b0c97a9a</srcmd5>
+    <version>8.6.0</version>
+    <time>1704659956</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 8.6.0:
+  * Features - In merge, ensure that an uncommented RTD badge
+    isn't lost when resolving placeholders.</comment>
+    <requestid>1137285</requestid>
+  </revision>
 </revisionlist>

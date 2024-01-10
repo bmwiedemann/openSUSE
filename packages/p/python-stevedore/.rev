@@ -474,4 +474,19 @@
   - Revert &quot;Moves supported python runtimes from version 3.8 to 3.10&quot;</comment>
     <requestid>1093364</requestid>
   </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>f9a6a5912447a6bb4c88760297df9b36</srcmd5>
+    <version>5.1.0</version>
+    <time>1704487534</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to singlespec to get multipe flavors
+
+- remove unneeded dependencies
+- skip test that fails with python 3.10
+- add python-argparse dependency
+  drivers have the same name
+   managers which specifies whether exceptions are propagated up
+- add compatibility provides of 0.8.0 version</comment>
+    <requestid>1137083</requestid>
+  </revision>
 </revisionlist>

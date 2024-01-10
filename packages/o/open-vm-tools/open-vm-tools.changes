@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 20 17:14:46 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Own %{_modulesloaddir}: used to be present via udev-mini -> kmod
+  -> suse-module-tools dependency before.
+
+-------------------------------------------------------------------
 Mon Dec 11 18:16:29 UTC 2023 - Kirk Allan <kallan@suse.com>
 
 - Fix (bsc#1217796) - Fix outdated libxmlsec1 dependency version.

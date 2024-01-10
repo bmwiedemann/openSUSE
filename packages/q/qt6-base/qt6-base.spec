@@ -1,7 +1,7 @@
 #
-# spec file for package qt6-base
+# spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,6 +40,10 @@ Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{r
 Source99:       qt6-base-rpmlintrc
 # Patches 0-100 are upstream patches #
 Patch0:         0001-QMimeDatabase-handle-buggy-type-definitions.patch
+Patch1:         0001-QMimeDatabase-collect-glob-patterns-from.patch
+Patch2:         0001-HPack-fix-a-Yoda-Condition.patch
+Patch3:         0002-HPack-fix-incorrect-integer-overflow-check.patch
+Patch4:         0001-Http2-fix-potential-overflow-in-assemble_hpack_block.patch
 # Patches 100-200 are openSUSE and/or non-upstream(able) patches #
 Patch100:       0001-Tell-the-truth-about-private-API.patch
 # No need to pollute the library dir with object files, install them in the qt6 subfolder
@@ -580,8 +584,8 @@ BuildArch:      noarch
 %description -n qt6-docs-common
 This package contains common files used for building Qt documentation.
 
-### Static libraries ###
 
+### Static libraries ###
 %package -n qt6-exampleicons-devel-static
 Summary:        Qt ExampleIcons module
 # TODO
@@ -638,8 +642,8 @@ Requires:       qt6-platformsupport-devel-static = %{version}
 This package provides private headers of libQt6PlatformSupport that do not have
 any ABI or API guarantees.
 
-### Plugins ###
 
+### Plugins ###
 %package -n qt6-networkinformation-glib
 Summary:        Network information for QNetworkInformation using GNetworkMonitor
 

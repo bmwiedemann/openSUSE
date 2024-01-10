@@ -17,13 +17,13 @@
 
 
 Name:           iputils
-Version:        20221126
+Version:        20231222
 Release:        0
 Summary:        IPv4 and IPv6 Networking Utilities
 License:        BSD-3-Clause AND GPL-2.0-or-later
 Group:          Productivity/Networking/Other
 URL:            https://github.com/iputils/iputils
-Source0:        https://github.com/iputils/iputils/archive/%{version}.tar.gz
+Source0:        https://github.com/iputils/iputils/releases/download/20231222/iputils-%{version}.tar.xz
 BuildRequires:  docbook5-xsl-stylesheets
 BuildRequires:  docbook_5
 BuildRequires:  iproute2

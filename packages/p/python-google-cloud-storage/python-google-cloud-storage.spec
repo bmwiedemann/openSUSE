@@ -17,7 +17,6 @@
 
 
 %define skip_python2 1
-
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define test 1
@@ -27,10 +26,9 @@
 %define pkg_suffix %{nil}
 %bcond_with test
 %endif
-
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-google-cloud-storage%{pkg_suffix}
-Version:        2.8.0
+Version:        2.14.0
 Release:        0
 Summary:        Google Cloud Storage API python client library
 License:        Apache-2.0
@@ -45,19 +43,21 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-google-api-core >= 1.31.5
-Requires:       python-google-auth >= 1.25.0
-Requires:       python-google-cloud-core >= 1.6.0
-Requires:       python-google-resumable-media >= 2.3.2
+Requires:       python-google-auth >= 2.23.3
+Requires:       python-google-cloud-core >= 2.3.0
+Requires:       python-google-crc32c >= 1.0
+Requires:       python-google-resumable-media >= 2.6.0
 Requires:       python-googleapis-common-protos
 Requires:       python-requests >= 2.18.0
 BuildArch:      noarch
 # SECTION test requirements
 %if %{with test}
 BuildRequires:  %{python_module google-api-core >= 1.31.5}
-BuildRequires:  %{python_module google-auth >= 1.25.0}
+BuildRequires:  %{python_module google-auth >= 2.23.3}
 BuildRequires:  %{python_module google-cloud-core >= 2.3.0}
 BuildRequires:  %{python_module google-cloud-storage}
-BuildRequires:  %{python_module google-resumable-media >= 2.3.2}
+BuildRequires:  %{python_module google-crc32c >= 1.0}
+BuildRequires:  %{python_module google-resumable-media >= 2.6.0}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
@@ -88,8 +88,25 @@ to users via direct download. This package provides client to it.
 
 %if %{with test}
 %check
-#export PYTEST_ADDOPTS="--import-mode=importlib"
-%pytest -k 'not network and not w_custom_endpoint' tests/unit
+# Set Fake default credentials for tests
+mkdir -p $HOME/.config/gcloud
+cat > $HOME/.config/gcloud/application_default_credentials.json <<EOF
+{
+  "client_id": "111111111111-1qq1q1qq1qqq111qq1qqqq11q1qqqqqq.apps.googleusercontent.com",
+  "client_secret": "d-XXXXXXXXXXXXXXXXXXXXXX",
+  "refresh_token": "1//1111111111111111111111111111-XXXXXXXXX-AAAAAAAAAAA_BBBBBBBBBBBBBBBBBBBBBB-CCCCCCCCCCCCCCCCCCCCCCCCCC",
+  "type": "authorized_user"
+}
+EOF
+
+export PYTEST_ADDOPTS="--import-mode=importlib" PYTHONPATH="."
+# fails with the tests project env
+WITHOUT_PROJECT="test_ctor_w_custom_endpoint_bypass_auth"
+%pytest -k $WITHOUT_PROJECT tests/unit
+
+# Some tests needs the GOOGLE_CLOUD_PROJECT environment variable
+export GOOGLE_CLOUD_PROJECT="PROJECT"
+%pytest -k "not (network or $WITHOUT_PROJECT)" tests/unit
 %endif
 
 %if !%{with test}
@@ -100,7 +117,6 @@ to users via direct download. This package provides client to it.
 %dir %{python_sitelib}/google/cloud
 %{python_sitelib}/google/cloud/storage
 %{python_sitelib}/google_cloud_storage-%{version}*-info
-%{python_sitelib}/google_cloud_storage-%{version}*-nspkg.pth
 %endif
 
 %changelog

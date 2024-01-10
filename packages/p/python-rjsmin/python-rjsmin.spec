@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,27 +16,23 @@
 #
 
 
-%{?sle15_python_module_pythons}
 %define mod_name rjsmin
-%bcond_without python2
+%{?sle15_python_module_pythons}
 Name:           python-%{mod_name}
-Version:        1.2.1
+Version:        1.2.2
 Release:        0
 Summary:        A JavaScript minifier written in Python
 License:        Apache-2.0
 URL:            http://opensource.perlig.de/rjsmin/
 Source:         https://github.com/ndparker/rjsmin/archive/refs/tags/%{version}.tar.gz#/rjsmin-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE -- build without profiling
-Patch0:         reproducible.patch
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Obsoletes:      %{name}-doc
-%if %{with python2}
-BuildRequires:  python-mock
-%endif
 %python_subpackages
 
 %description
@@ -48,14 +44,14 @@ The module is a re-implementation targeting speed, so it can be used
 at runtime (rather than during a preprocessing step).
 
 %prep
-%setup -q -n %{mod_name}-%{version}
-%autopatch -p1
+%autosetup -p1 -n %{mod_name}-%{version}
 
 %build
-%python_build
+export CFLAGS="%optflags" # must be defined to build without -ftest-coverage instrumentation
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 rm -rf %{buildroot}%{_datadir}/doc/rjsmin
 
 %check
@@ -64,6 +60,9 @@ rm -rf %{buildroot}%{_datadir}/doc/rjsmin
 %files %{python_files}
 %license LICENSE
 %doc README.md docs/CHANGES
-%{python_sitearch}/*
+%{python_sitearch}/rjsmin.py
+%{python_sitearch}/_rjsmin*
+%pycache_only %{python_sitearch}/__pycache__/rjsmin*
+%{python_sitearch}/rjsmin-%{version}.dist-info
 
 %changelog

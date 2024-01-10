@@ -27,7 +27,7 @@ BuildRequires:  git-core
 %define git_version %{nil}
 %endif
 Name:           sdbootutil
-Version:        1+git20231114.6bcf1d3%{git_version}
+Version:        1+git20231221.42797ab%{git_version}
 Release:        0
 Summary:        script to install shim with sd-boot
 License:        MIT
@@ -35,10 +35,12 @@ URL:            https://en.opensuse.org/openSUSE:Usr_merge
 Source:         %{name}-%{version}.tar
 Requires:       efibootmgr
 Requires:       jq
+Requires:       pcr-oracle
 Requires:       sed
 Requires:       systemd-boot
 Supplements:    (systemd-boot and shim)
 Requires:       (%{name}-snapper if (snapper and btrfsprogs))
+ExclusiveArch:  aarch64 ppc64le riscv64 x86_64
 
 %description
 Hook scripts to install shim along with systemd-boot
@@ -96,6 +98,14 @@ install -d -m755 %{buildroot}%{_prefix}/lib/snapper/plugins
 for i in 10-sdbootutil.snapper; do
   install -m 755 $i %{buildroot}%{_prefix}/lib/snapper/plugins/$i
 done
+
+%transfiletriggerin -- /usr/lib/systemd/boot/efi /usr/share/efi/%_build_arch
+cat > /dev/null || :
+[ "$YAST_IS_RUNNING" != 'instsys' ] || exit 0
+[ -e /sys/firmware/efi/efivars ] || exit 0
+[ -z "$TRANSACTIONAL_UPDATE" ] || exit 0
+[ -z "$VERBOSE_FILETRIGGERS" ] || echo "%{name}-%{version}-%{release}: updating bootloader"
+sdbootutil update
 
 %files
 %license LICENSE

@@ -1,7 +1,7 @@
 #
 # spec file for package libredwg
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lname	libredwg0
 Name:           libredwg
-Version:        0.12.5.5907
+Version:        0.12.5.6924
 Release:        0
 Summary:        A library to handle DWG files
 License:        GPL-3.0-or-later
@@ -77,7 +77,6 @@ OpenDWG libraries. DWG is the native file format of AutoCAD.
 # No management of SO version despite ABI breaking changes:
 # Force-add some symvers so RPM can produce meaningful deps.
 echo 'V_%version { global: *; };' >src/sv.sym
-export CFLAGS="%optflags -D_GNU_SOURCE=1"
 %configure --disable-static
 %make_build libredwg_la_LDFLAGS=-Wl,-version-script,sv.sym libredwg_la_LIBADD=-lm
 

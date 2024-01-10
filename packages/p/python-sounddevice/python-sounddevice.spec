@@ -1,7 +1,7 @@
 #
 # spec file for package python-sounddevice
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
-%define skip_python36 1
+%{?sle15_python_module_pythons}
 Name:           python-sounddevice
-Version:        0.4.5
+Version:        0.4.6
 Release:        0
 Summary:        Module to play and record sound with Python
 License:        MIT
@@ -28,7 +26,9 @@ URL:            https://python-sounddevice.readthedocs.io/
 Source:         https://files.pythonhosted.org/packages/source/s/sounddevice/sounddevice-%{version}.tar.gz
 BuildRequires:  %{python_module cffi >= 1.0}
 BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  portaudio
 BuildRequires:  python-rpm-macros
@@ -47,16 +47,19 @@ convenience functions to play and record NumPy arrays containing audio signals.
 
 %build
 chmod 644 examples/*
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %doc NEWS.rst README.rst examples
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/{_sounddevice.py,sounddevice.py}
+%pycache_only %{python_sitelib}/__pycache__/{sounddevice,_sounddevice}*
+
+%{python_sitelib}/sounddevice-%{version}.dist-info
 
 %check
 # no upstream tests, examples needs devices

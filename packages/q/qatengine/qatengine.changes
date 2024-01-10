@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan  3 12:00:12 UTC 2024 - Torsten Duwe <duwe@suse.com>
+
+- update to 1.5.0:
+  * use new --enable-qat_insecure_algorithms to avoid regressions
+  * improve support for SM{2,3,4} ciphers
+  * improve SW fallback support
+  * many bug fixes, refactorisations and documentation updates
+
+-------------------------------------------------------------------
 Sat Jan 28 16:08:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.6.18:

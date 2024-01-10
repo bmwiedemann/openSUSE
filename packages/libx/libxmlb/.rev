@@ -148,4 +148,23 @@ Needed for future versions of fwupd</comment>
     <comment></comment>
     <requestid>1116625</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>393b7d65b1a29c70799d450b0470ccff</srcmd5>
+    <version>0.3.15</version>
+    <time>1704659941</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.3.15:
+  * Sprinkle __attribute__((nonnull)) to give a little more
+    compile-time safety
+  * Accept text/xml as an alternative to application/xml
+  * Do not inline shared code
+  * Fix compiling with Visual Studio
+  * Fix the exported api test on Windows
+  * Generate and use .def file for clang-cl builds
+    Fan)
+  * Release source file handles early
+
+    - Rebuild the XbMachine parser to support 'and' and 'or'</comment>
+    <requestid>1137237</requestid>
+  </revision>
 </revisionlist>

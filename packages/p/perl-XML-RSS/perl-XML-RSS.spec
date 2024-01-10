@@ -1,7 +1,7 @@
 #
 # spec file for package perl-XML-RSS
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,30 +16,38 @@
 #
 
 
-Name:           perl-XML-RSS
-Version:        1.62
-Release:        0
 %define cpan_name XML-RSS
-Summary:        Creates and updates RSS files
+Name:           perl-XML-RSS
+Version:        1.630.0
+Release:        0
+%define cpan_version 1.63
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
+Summary:        Creates and updates RSS files
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/S/SH/SHLOMIF/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/S/SH/SHLOMIF/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(DateTime::Format::Mail)
 BuildRequires:  perl(DateTime::Format::W3CDTF)
 BuildRequires:  perl(HTML::Entities)
-BuildRequires:  perl(Module::Build) >= 0.280000
+BuildRequires:  perl(Module::Build) >= 0.28
 BuildRequires:  perl(Test::More) >= 0.88
 BuildRequires:  perl(XML::Parser)
 Requires:       perl(DateTime::Format::Mail)
 Requires:       perl(DateTime::Format::W3CDTF)
 Requires:       perl(HTML::Entities)
 Requires:       perl(XML::Parser)
+Provides:       perl(XML::RSS) = %{version}
+Provides:       perl(XML::RSS::Private::Output::Base) = %{version}
+Provides:       perl(XML::RSS::Private::Output::Roles::ImageDims) = %{version}
+Provides:       perl(XML::RSS::Private::Output::Roles::ModulesElems) = %{version}
+Provides:       perl(XML::RSS::Private::Output::V0_9) = %{version}
+Provides:       perl(XML::RSS::Private::Output::V0_91) = %{version}
+Provides:       perl(XML::RSS::Private::Output::V1_0) = %{version}
+Provides:       perl(XML::RSS::Private::Output::V2_0) = %{version}
+%define         __perllib_provides /bin/true
 %{perl_requires}
 
 %description
@@ -78,21 +86,20 @@ formatted accordingly. E.g:
     );
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
-perl Build.PL installdirs=vendor
-./Build build flags=%{?_smp_mflags}
+perl Build.PL --installdirs=vendor
+./Build build --flags=%{?_smp_mflags}
 
 %check
 ./Build test
 
 %install
-./Build install destdir=%{buildroot} create_packlist=0
+./Build install --destdir=%{buildroot} --create_packlist=0
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes examples README TODO
 %license LICENSE
 

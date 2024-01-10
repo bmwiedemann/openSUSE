@@ -116,7 +116,6 @@ Recommends:     texlive-doublestroke
 Recommends:     texlive-picinpar
 Recommends:     texlive-shapepar
 Recommends:     texlive-sidecap
-%reconfigure_fonts_prereq
 
 %description
 LyX is a document processor that encourages an approach to writing
@@ -136,6 +135,7 @@ LyX uses ImageMagick to deal with images. For security reasons
 Summary:        Fonts for displaying math
 Group:          System/X11/Fonts
 BuildArch:      noarch
+%reconfigure_fonts_prereq
 
 %description fonts
 A collection of Math symbol fonts for LyX.
@@ -144,6 +144,13 @@ A collection of Math symbol fonts for LyX.
 %autosetup -p1
 
 %build
+#hack for tumbleweed and for 2.3.7 only: fix build failure
+#to be removed with lyx 2.4 as it already contains the fix
+%if 0%{?suse_version} > 1500
+if [[ %{version} = 2.3.7 ]]; then
+    sed -i '/static.*zoom_/s@static @@' src/frontends/qt4/GuiView.h
+fi
+%endif
 #./autogen.sh
 TEXMF=%{_datadir}/texmf
 %configure \

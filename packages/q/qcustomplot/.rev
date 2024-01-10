@@ -31,4 +31,17 @@
     <comment></comment>
     <requestid>1070959</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>975c9ce774b54be8d70212091578841e</srcmd5>
+    <version>2.1.1</version>
+    <time>1704384220</time>
+    <user>dimstar_suse</user>
+    <comment>- Re-download QCustomPlot-sharedlib.tar.gz and QCustomPlot.tar.gz
+  based on the fixed download URL.
+- Rebase relwithdebug.patch to apply against the new tarball (CRLF
+  line endings).
+- Fix invalid download url.
+</comment>
+    <requestid>1136848</requestid>
+  </revision>
 </revisionlist>

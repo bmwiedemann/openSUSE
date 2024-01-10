@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan  3 10:24:26 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- require setuptools
+
+-------------------------------------------------------------------
 Thu Oct 13 10:03:56 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Add missing-duckdb.patch until we package duckdb as well.

@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Dec 19 20:23:11 UTC 2023 - dmueller@suse.com
+
+- Update to version 1.6.0~rc1:
+  * Bump version. (#1038)
+  * Fixes #980: Remove Packagecloud instructions (#1036)
+  * Fixes #908: Migration guide (#1021)
+  * Re-add ssh and bash to Dockerfile (#1034)
+
+-------------------------------------------------------------------
+Sat Dec 16 19:01:11 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.6.0~beta5:
+  * Fixed fix for fix of GPG (#1024)
+  * Fixing release tag gating (#1023)
+  * Parametrized release (#1022)
+  * Bump version. (#1020)
+  * GPG build fixes (#1019)
+  * Weekly update. (#1015)
+  * Update changelog for hashicorp / opentofu only warning (#1016)
+  * Add a warning when multiple likely forks of a provider are
+    detected (#1009)
+  * Fix renaming mistakes in docs (#1012)
+  * Add Technical Steering Committee Summary for 2023-12-11 (#1010)
+  * Fixes #915: GPG signing of Debian and RPM packages (#1000)
+  * Replace additional Terraform -> OpenTofu (#1007)
+  * Find additional places where terraform should be replaced with
+    tofu (#1001)
+  * Improve unclear provider resolver error messages (#1003)
+  * 898 consolidate and remove tfe addr [part 2] (#998)
+
+-------------------------------------------------------------------
 Tue Dec 12 17:02:10 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.6.0~beta4:

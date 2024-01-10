@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Dec 21 16:26:20 UTC 2023 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.2.5:
+  * Update module github.com/google/uuid to v1.5.0
+  * Update kubernetes packages to v0.29.0
+  * Update github/codeql-action action to v3
+  * Update module github.com/spf13/viper to v1.18.2
+  * Bump go version in go.mod
+  * Add better support for cyclonedx
+  * Update alpine Docker tag to v3.19.0
+
+-------------------------------------------------------------------
 Thu Dec 07 15:37:15 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.2.4:

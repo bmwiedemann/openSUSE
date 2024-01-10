@@ -40,4 +40,22 @@
     <comment></comment>
     <requestid>1088690</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c73b4199b81de9e2b379172675c65787</srcmd5>
+    <version>3.2.0</version>
+    <time>1702845176</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.2.0:
+  * Require Python 3.8 or later.</comment>
+    <requestid>1133657</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>76705b4487c6a7b3bca53f1348091a64</srcmd5>
+    <version>3.3.0</version>
+    <time>1703800899</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.3.0:
+  * Replaced deprecated datetime.utcfromtimestamp. (#3)</comment>
+    <requestid>1135279</requestid>
+  </revision>
 </revisionlist>

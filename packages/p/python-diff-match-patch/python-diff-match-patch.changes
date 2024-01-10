@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Dec 20 02:07:58 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 20230430:
+  * Replaced deprecated `imp` usage with `importlib` (#7)
+  * Migrated to PEP 621 metadata, flit
+  * Reformated with updated black/µsort/µfmt
+  * Tested on Python 3.7 - 3.11
+  * Dropped support for Python 2.7, 3.5, and 3.6
+- Switch to pyproject, autosetup and pyunittest macros.
+- Stop using greedy globs in %files.
+
+-------------------------------------------------------------------
 Wed Aug 19 17:37:55 UTC 2020 - Matthias Fehring <buschmann23@opensuse.org>
 
 - Update to version 20200713

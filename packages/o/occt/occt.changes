@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Jan  7 16:30:06 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Use 3-digit soversion to fix BIC change between 7.7.0 and 7.7.1.
+- Disable documentation build on Leap 15.x, build fails otherwise.
+
+-------------------------------------------------------------------
+Mon Jan  1 02:04:02 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to version 7.7.2
+  * Details on
+    https://git.dev.opencascade.org/gitweb/?p=occt.git;a=shortlog;h=refs/heads/OCCT-772
+- update to version 7.7.1
+  * Details on
+    https://www.opencascade.com/open-cascade-technology-7-7-1-maintenance-release/
+- Drop upstream fix_missing_limits_header.patch
+
+-------------------------------------------------------------------
 Thu Dec 29 10:53:31 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - update to version 7.7.0

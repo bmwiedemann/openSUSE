@@ -1,7 +1,7 @@
 #
 # spec file for package python-softlayer-zeep
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %global skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-softlayer-zeep
@@ -24,10 +23,27 @@ Version:        5.0.0
 Release:        0
 Summary:        A modern/fast Python SOAP client based on lxml / requests
 License:        MIT
+#Git-Clone:     https://github.com/mvantellingen/python-zeep
 URL:            https://docs.python-zeep.org
 Source:         https://files.pythonhosted.org/packages/source/s/softlayer-zeep/softlayer-zeep-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+# PATCH-FIX-UPSTREAM skip-networked-test.patch gh#mvantellingen/python-zeep#1402 mcepl@suse.com
+# skip tests requiring network connection
+Patch0:         skip-networked-test.patch
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-attrs >= 17.2.0
+Requires:       python-isodate >= 0.5.4
+Requires:       python-lxml >= 4.6.0
+Requires:       python-platformdirs >= 1.4.0
+Requires:       python-pytz
+Requires:       python-requests >= 2.7.0
+Requires:       python-requests-file >= 1.5.1
+Requires:       python-requests-toolbelt >= 0.7.1
+Provides:       python-zeep = %{version}
+Obsoletes:      python-zeep < %{version}
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module attrs >= 17.2.0}
 BuildRequires:  %{python_module freezegun >= 0.3.15}
@@ -45,39 +61,28 @@ BuildRequires:  %{python_module requests-file >= 1.5.1}
 BuildRequires:  %{python_module requests-mock >= 0.7.0}
 BuildRequires:  %{python_module requests-toolbelt >= 0.7.1}
 # /SECTION
-BuildRequires:  fdupes
-Requires:       python-attrs >= 17.2.0
-Requires:       python-isodate >= 0.5.4
-Requires:       python-lxml >= 4.6.0
-Requires:       python-platformdirs >= 1.4.0
-Requires:       python-pytz
-Requires:       python-requests >= 2.7.0
-Requires:       python-requests-file >= 1.5.1
-Requires:       python-requests-toolbelt >= 0.7.1
-Provides:       python-zeep = %version
-Obsoletes:      python-zeep < %version
-BuildArch:      noarch
 %python_subpackages
 
 %description
 A modern/fast Python SOAP client based on lxml / requests
 
 %prep
-%setup -q -n softlayer-zeep-%{version}
+%autosetup -p1 -n softlayer-zeep-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+%pytest -k 'not network'
 
 %files %{python_files}
 %doc CHANGES README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/zeep
+%{python_sitelib}/softlayer_zeep-%{version}*-info
 
 %changelog

@@ -1,7 +1,7 @@
 #
 # spec file for package python-irc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,9 @@
 
 
 %define modname irc
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-irc
-Version:        19.0.1
+Version:        20.3.1
 Release:        0
 Summary:        A set of Python modules for IRC support
 License:        LGPL-2.1-or-later
@@ -33,10 +32,12 @@ BuildRequires:  %{python_module jaraco.logging}
 BuildRequires:  %{python_module jaraco.stream}
 BuildRequires:  %{python_module jaraco.text}
 BuildRequires:  %{python_module more-itertools}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module tempora >= 1.6}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-importlib-metadata
@@ -66,10 +67,10 @@ sed -i -e '1s!/env python!/python!' scripts/testbot.py
 rm pytest.ini
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -79,8 +80,9 @@ export PYTHONDONTWRITEBYTECODE=1
 
 %files %{python_files}
 %license LICENSE
-%doc CHANGES.rst README.rst
+%doc NEWS.rst README.rst
 %doc scripts/
-%{python_sitelib}/irc*
+%{python_sitelib}/irc
+%{python_sitelib}/irc-%{version}.dist-info
 
 %changelog

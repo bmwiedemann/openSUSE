@@ -85,7 +85,7 @@ Tue May 24 16:34:36 UTC 2022 - Gayane Osipyan <Gayane.Osipyan@suse.com>
   * Support dynamically linking against system double-conversion library (#508) @musicinmybrain
   * Add env var to control stripping debug info (#507) @musicinmybrain
   * Add JSONDecodeError (#498) @JustAnotherArchivist
-  * Fix buffer overflows (CVE-2021-45958) (#519) @JustAnotherArchivist
+  * Fix buffer overflows (CVE-2021-45958, bsc#1194261) (#519) @JustAnotherArchivist
   * Upgrade Black to fix Click (#515) @hugovk
   * simplify exception handling on integer overflow (#510) @RouquinBlanc
   * Remove dead code that used to handle the separate int type in Python 2 (#509) @JustAnotherArchivist

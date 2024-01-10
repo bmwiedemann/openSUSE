@@ -31,7 +31,7 @@ Summary:        Tool for building and distributing virtualized development envir
 License:        MIT
 Group:          Development/Languages/Ruby
 URL:            https://github.com/hashicorp/vagrant
-Source0:        %{URL}/archive/v%{version}/%{name}-%{version}.tar.gz
+Source0:        https://github.com/hashicorp/vagrant/archive/v%{version}/%{name}-%{version}.tar.gz
 Source11:       vagrant.1
 Source93:       vagrant_transfiletriggerin.rb
 Source94:       vagrant_transfiletriggerun.rb
@@ -79,15 +79,7 @@ Patch13:        0013-Bump-webrick-dependency-to-1.8.0.patch
 # Build dependencies
 #===============================================================================
 
-#  s.required_ruby_version     = ">= 3.0", "< 3.3"
-%if 0%{?suse_version} > 1500
-BuildRequires:  %{ruby} < 3.3
-%else
 BuildRequires:  %{ruby} >= 3.0
-%endif
-#
-#
-#
 BuildRequires:  %{rubygem bundler}
 #  s.add_dependency "bcrypt_pbkdf", "~> 1.1"
 BuildRequires:  %{rubygem bcrypt_pbkdf:1 >= 1.1 }

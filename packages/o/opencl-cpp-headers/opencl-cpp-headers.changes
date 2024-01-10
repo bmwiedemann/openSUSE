@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Dec 18 22:46:55 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 2023.12.14.
+  * Synchronize with OpenCL v3.0.15 specification release.
+  * The device query for CL_DEVICE_PLATFORM now returns a
+    cl::Platform instead of a cl_platform_id. Code wanting a
+    cl_platform_id instead can access this from a cl::Platform
+    using operator().
+  * Querying the device handle list for a semaphore now requires
+    using the semaphore-specific CL_SEMAPHORE_DEVICE_HANDLE_LIST_KHR
+    enum, since the CL_DEVICE_HANDLE_LIST_KHR enum has been removed.
+
+-------------------------------------------------------------------
 Tue Apr 18 21:04:48 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 2023.04.17.

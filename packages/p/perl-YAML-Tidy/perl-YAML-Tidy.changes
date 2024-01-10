@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jan  6 03:10:02 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.8.0
+   see /usr/share/doc/packages/perl-YAML-Tidy/Changes
+
+  v0.8.0 2024-01-05 22:38:36+01:00
+
+      - Fix tidying unicode files
+      - Require YAML::LibYAML::API v0.14.0
+      - Allow seralizing reused anchors
+      - Change module versioning scheme
+
+-------------------------------------------------------------------
 Sun Aug  7 03:08:05 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.007

@@ -68,4 +68,16 @@
     counting</comment>
     <requestid>1130520</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>424a49ca74c3b42ff119a834d9f75760</srcmd5>
+    <version>6.2.0</version>
+    <time>1703800872</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.2.0:
+  * Update documentation.
+  * Add new management command ``axes_reset_ip_username``.
+  * Add French translations.
+  * Avoid running data migration on incorrect databases.</comment>
+    <requestid>1135244</requestid>
+  </revision>
 </revisionlist>

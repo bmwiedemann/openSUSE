@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan  5 17:20:10 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.0.2:
+  * Fix the build backend.
+  * Drop Python 3.7 support.
+  * Bump dependencies.
+
+-------------------------------------------------------------------
 Tue Jun 13 16:10:05 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - tag sle15 build for new python stack
@@ -22,7 +30,7 @@ Wed Sep 28 15:29:41 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
   * Update to pdm 1.3.
   * Update dependencies.
   * Make sure the doctest teardown gets run.
-  * Add support for Python 3.11. 
+  * Add support for Python 3.11.
 
 -------------------------------------------------------------------
 Sat Jul  2 10:08:22 UTC 2022 - Matej Cepl <mcepl@suse.com>

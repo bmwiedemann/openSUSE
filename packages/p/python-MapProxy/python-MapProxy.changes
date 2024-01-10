@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Dec 30 09:58:55 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Add mapproxy-pr846-nofreetype.patch gh#mapproxy/mapproxy#846
+- Provide the lowercase name for canonical dependency specs
+
+-------------------------------------------------------------------
+Fri Dec 29 21:33:39 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.0.0
+  ## Breaking:
+  * Removal of old unsupported python versions 3.7
+  * Tested python version range is now 3.8 to 3.11
+  * Lots of dependency updates
+  ## Improvements:
+  * Add S3 performance option to request via urllib2
+  * Allow md5 calls to work in FIPS environments
+  * Several Redis Cache enhancements
+  * Coverage support for caches
+  ## Fixes:
+  * Configure image options for caches (fixes erratically white
+    tiles when requesting multiple cached layers)
+  * Fix for Legends in JSON Format
+  * Some more minor fixup
+- Drop MapProxy-pr749-shapely2.patch
+- Drop MapProxy-pr750-Pillow10.patch
+
+-------------------------------------------------------------------
 Sat Sep 23 11:08:41 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Add MapProxy-pr749-shapely2.patch

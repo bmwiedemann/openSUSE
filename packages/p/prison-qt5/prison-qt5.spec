@@ -19,15 +19,14 @@
 %define sonum   5
 %define rname prison
 %define _libname KF5Prison
-%define _tar_path 5.103
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
-# Only needed for the package signature condition
+%define qt5_version 5.15.2
 %bcond_without released
 Name:           prison-qt5
-Version:        5.112.0
+Version:        5.113.0
 Release:        0
 Summary:        Barcode abstraction layer library
 License:        MIT
@@ -37,14 +36,13 @@ Source:         %{rname}-%{version}.tar.xz
 Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
-BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
+BuildRequires:  extra-cmake-modules >= %{_kf5_version}
 BuildRequires:  fdupes
-BuildRequires:  kf5-filesystem
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(Qt5Core) >= 5.15.0
-BuildRequires:  cmake(Qt5Gui) >= 5.15.0
-BuildRequires:  cmake(Qt5Multimedia) >= 5.15.0
-BuildRequires:  cmake(Qt5Quick) >= 5.15.0
+BuildRequires:  cmake(Qt5Core) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Gui) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Multimedia) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Quick) >= %{qt5_version}
 BuildRequires:  cmake(ZXing) >= 1.2.0
 BuildRequires:  pkgconfig(libdmtx)
 BuildRequires:  pkgconfig(libqrencode)
@@ -73,7 +71,7 @@ uniform access to generation of barcodes with data.
 %package -n prison-qt5-devel
 Summary:        Development files for prison-qt5, a barcode abstraction library
 Requires:       lib%{_libname}%{sonum} = %{version}
-Requires:       cmake(Qt5Gui) >= 5.15.0
+Requires:       cmake(Qt5Gui) >= %{qt5_version}
 
 %description -n prison-qt5-devel
 Development files for prison, a barcode abstraction layer library providing

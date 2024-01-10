@@ -25,7 +25,7 @@
 %endif
 
 Name:           python-mautrix
-Version:        0.20.2
+Version:        0.20.3
 Release:        0
 Summary:        A Python 3 asyncio Matrix framework
 License:        MPL-2.0

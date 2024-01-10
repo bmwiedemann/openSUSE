@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Dec 29 03:09:14 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.66
+   see /usr/share/doc/packages/perl-Spreadsheet-ParseExcel/Changes
+
+  0.66 December 29 2023
+  ! Fix for CVE-2023-7101 [bsc#1218414]
+    https://github.com/runrig/spreadsheet-parseexcel/issues/33
+    * Unvalidated input can lead to arbitrary code execution.
+    * https://github.com/runrig/spreadsheet-parseexcel/issues/33
+
+-------------------------------------------------------------------
 Sat Mar 22 19:05:05 UTC 2014 - coolo@suse.com
 
 - updated to 0.65
@@ -74,4 +86,3 @@ Thu Aug 12 09:05:16 UTC 2010 - kai.blin@gmail.com
 
 - initial package 0.57
   * created by cpanspec 1.78
-

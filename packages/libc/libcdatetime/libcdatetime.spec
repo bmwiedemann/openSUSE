@@ -1,7 +1,7 @@
 #
 # spec file for package libcdatetime
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lname	libcdatetime1
 Name:           libcdatetime
-Version:        20230115
+Version:        20240104
 Release:        0
 Summary:        Library for C date and time functions
 License:        LGPL-3.0-or-later
@@ -29,7 +29,7 @@ Source2:        https://github.com/libyal/libcdatetime/releases/download/%versio
 Source9:        %name.keyring
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libcerror) >= 20220101
+BuildRequires:  pkgconfig(libcerror) >= 20240101
 
 %description
 Library for C date and time functions.

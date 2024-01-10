@@ -1,7 +1,7 @@
 #
 # spec file for package thunar-sendto-clamtk
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           thunar-sendto-clamtk
-Version:        0.06
+Version:        0.08
 Release:        0
 Summary:        Adds a right-click, context menu to scan files or folders in Thunar
-License:        GPL-1.0+
+License:        GPL-1.0-or-later
 Group:          Productivity/File utilities
-Url:            https://dave-theunsub.github.io/clamtk/
-Source:         https://bitbucket.org/davem_/thunar-sendto-clamtk/downloads/thunar-sendto-clamtk-%{version}.tar.xz
-Source1:        https://bitbucket.org/davem_/thunar-sendto-clamtk/downloads/thunar-sendto-clamtk-%{version}.tar.xz.asc
-Source2:        %{name}.keyring
+URL:            https://gitlab.com/dave_m/thunar-sendto-clamtk/
+Source:         https://gitlab.com/dave_m/thunar-sendto-clamtk/-/archive/v%{version}/thunar-sendto-clamtk-v%{version}.tar.gz
 BuildRequires:  gzip
 Requires:       clamtk >= 5.00
 Requires:       thunar
@@ -39,7 +37,7 @@ file. So, it stands to reason we should be able to just find that
 file and copy it, rather than having our own copy.
 
 %prep
-%setup -q
+%setup -qn %name-v%version
 
 %build
 gunzip thunar-sendto-clamtk.1.gz
@@ -49,7 +47,7 @@ install -Dm 644 thunar-sendto-clamtk.desktop %{buildroot}%{_usr}/share/Thunar/se
 install -Dm 644 thunar-sendto-clamtk.1 %{buildroot}%{_mandir}/man1/thunar-sendto-clamtk.1
 
 %files
-%doc CHANGES DISCLAIMER README
+%doc CHANGES DISCLAIMER README.md
 %license LICENSE
 %dir %{_usr}/share/Thunar/
 %dir %{_usr}/share/Thunar/sendto/
@@ -57,4 +55,3 @@ install -Dm 644 thunar-sendto-clamtk.1 %{buildroot}%{_mandir}/man1/thunar-sendto
 %{_mandir}/man1/thunar-sendto-clamtk.1%{?ext_man}
 
 %changelog
-

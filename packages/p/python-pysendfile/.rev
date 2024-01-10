@@ -79,4 +79,12 @@ Remove macros usage (forwarded request 156306 from posophe)</comment>
     <comment></comment>
     <requestid>1081604</requestid>
   </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>e450e5bdb3a48fbc961e91724d9c1c61</srcmd5>
+    <version>2.0.1</version>
+    <time>1704491934</time>
+    <user>dimstar_suse</user>
+    <comment>- require setuptools</comment>
+    <requestid>1136271</requestid>
+  </revision>
 </revisionlist>

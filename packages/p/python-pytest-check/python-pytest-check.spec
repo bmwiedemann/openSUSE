@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-check
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-check
-Version:        2.2.2
+Version:        2.2.3
 Release:        0
 Summary:        A pytest plugin that allows multiple failures per test
 License:        MIT

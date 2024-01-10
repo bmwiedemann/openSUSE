@@ -35,12 +35,11 @@ OSD Lyrics is released under GPL v3. See COPYING for more detail.
   <url type="homepage">https://github.com/osdlyrics/osdlyrics</url>
   <url type="bugtracker">https://github.com/osdlyrics/osdlyrics/issues</url>
   <releases>
-    <release version="0.5.14" date="2023-06-07">
+    <release version="0.5.15" date="2023-12-17">
       <description>
         <p>
-          fix Chinese encodings
-          fix proxy-password config
-          fix sources in the default search
+          Remove 99% of Python2 support
+          Remove dependency on future
         </p>
       </description>
     </release>

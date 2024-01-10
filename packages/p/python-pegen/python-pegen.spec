@@ -1,7 +1,7 @@
 #
 # spec file for package python-pegen
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           python-pegen
-Version:        0.2.0
+Version:        0.3.0
 Release:        0
 Summary:        CPython's PEG parser generator
 License:        MIT
 URL:            https://github.com/we-like-parsers/pegen
-Source:         https://files.pythonhosted.org/packages/source/p/pegen/pegen-0.2.0.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/pegen/pegen-%{version}.tar.gz
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}

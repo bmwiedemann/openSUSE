@@ -367,4 +367,22 @@
 - add sle15_python_module_pythons</comment>
     <requestid>1124380</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>c8aa14fb0f5a74a79d99aa063d277fd3</srcmd5>
+    <version>1.11.0</version>
+    <time>1704281046</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.11.0:
+  * #710, #561 Implement `except*` syntax
+  * #711 allow building documentation without having rope module
+    installed
+  * #719 Allows the in-memory db to be shared across threads
+  * #720 create one sqlite3.Connection per thread using a thread
+    local
+  * #715 change AutoImport's `get_modules` to be case sensitive
+  * #708, #709 Add support for Python 3.12 (@lieryan)
+
+  - Add pytest.ini to collect all tests &lt;Lie Ryan&gt;</comment>
+    <requestid>1135620</requestid>
+  </revision>
 </revisionlist>

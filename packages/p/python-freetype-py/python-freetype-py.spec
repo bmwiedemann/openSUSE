@@ -1,7 +1,7 @@
 #
 # spec file for package python-freetype-py
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-freetype-py
 Version:        2.4.0
 Release:        0
@@ -26,10 +25,11 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/rougier/freetype-py
 Source:         https://files.pythonhosted.org/packages/source/f/freetype-py/freetype-py-%{version}.zip
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module toml}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  freetype2
 BuildRequires:  python-rpm-macros
@@ -43,14 +43,14 @@ Freetype python provides bindings for the FreeType library.
 Only the high-level API is bound.
 
 %prep
-%setup -q -n freetype-py-%{version}
+%autosetup -p1 -n freetype-py-%{version}
 sed -i -e '/^#!\//, 1d' freetype/ft_structs.py freetype/ft_types.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -59,6 +59,7 @@ sed -i -e '/^#!\//, 1d' freetype/ft_structs.py freetype/ft_types.py
 %files %{python_files}
 %license LICENSE.txt
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/freetype
+%{python_sitelib}/freetype_py-%{version}*-info
 
 %changelog

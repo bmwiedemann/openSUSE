@@ -96,4 +96,22 @@
     <comment></comment>
     <requestid>1081798</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>5578a58fc5025b9b89e253102a1b4ef9</srcmd5>
+    <version>2.8.0</version>
+    <time>1703800452</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.8.0:
+  * Migrate module to package.
+  * Migrate documentation to Sphinx.
+  * Improve types and formatting in docstrings.
+  * Add type stubs.
+
+- Update to version 2.7.2
+  * Change string formatting from % to .format() throughout codebase.
+  * Fix handling of naive/aware datetime objects when packing the
+  * Make Ext base class a new-style object for cleaner inheritance
+  * Improve length comparisons and instance checks for minor</comment>
+    <requestid>1135352</requestid>
+  </revision>
 </revisionlist>

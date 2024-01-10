@@ -18,7 +18,7 @@
 
 %define soname  0
 Name:           iperf
-Version:        3.15
+Version:        3.16
 Release:        0
 Summary:        A tool to measure network performance
 License:        BSD-3-Clause

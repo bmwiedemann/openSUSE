@@ -1,7 +1,7 @@
 #
 # spec file for package kubevirt
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,21 @@
 #
 
 
+%if 0%{?sle_version} && !0%{?is_opensuse}
+# SLE
+%define _exclusive_arch x86_64
+%else
+%if 0%{?suse_version} == 1600
+# ALP
+%define _exclusive_arch x86_64
+%else
+# TW
+%define _exclusive_arch x86_64 aarch64
+%endif
+%endif
+
 Name:           kubevirt
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
 Summary:        Container native virtualization
 License:        Apache-2.0
@@ -28,9 +41,6 @@ Source1:        kubevirt_containers_meta
 Source2:        kubevirt_containers_meta.service
 Source3:        %{url}/releases/download/v%{version}/disks-images-provider.yaml
 Source100:      %{name}-rpmlintrc
-Patch1:         0001-Update-google.golang.org-grpc-to-1.56.3.patch
-Patch2:         0002-virt-launcher-fix-qemu-non-root-path.patch
-Patch3:         0003-cgroupsv2-reconstruct-device-allowlist.patch
 BuildRequires:  glibc-devel-static
 BuildRequires:  golang-packaging
 BuildRequires:  pkgconfig
@@ -38,7 +48,7 @@ BuildRequires:  rsync
 BuildRequires:  sed
 BuildRequires:  golang(API) >= 1.19
 BuildRequires:  pkgconfig(libvirt)
-ExclusiveArch:  x86_64 aarch64
+ExclusiveArch:  %{_exclusive_arch}
 
 %description
 Kubevirt is a virtual machine management add-on for Kubernetes
@@ -165,11 +175,6 @@ the Kubevirt container images.
 #
 distro='%{?sle_version}:%{?is_opensuse}%{!?is_opensuse:0}'
 case "${distro}" in
-150400:0)
-    tagprefix=suse/sles/15.4
-    labelprefix=com.suse.kubevirt
-    registry=registry.suse.com
-    ;;
 150500:0)
     tagprefix=suse/sles/15.5
     labelprefix=com.suse.kubevirt
@@ -186,14 +191,14 @@ case "${distro}" in
     registry=registry.opensuse.org
     ;;
 *)
-    %if 0%{?suse_version} == 1600
-        tagprefix=alp/kubevirt
-        labelprefix=com.suse.kubevirt
-        registry=registry.suse.com
-    %else
-        echo "Unsupported distro: ${distro}" >&2
-        exit 1
-    %endif
+%if 0%{?suse_version} == 1600
+    tagprefix=alp/kubevirt
+    labelprefix=com.suse.kubevirt
+    registry=registry.suse.com
+%else
+    echo "Unsupported distro: ${distro}" >&2
+    exit 1
+%endif
     ;;
 esac
 

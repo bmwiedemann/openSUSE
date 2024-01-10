@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,7 +57,7 @@
 %bcond_without	sodium
 
 Name:           %{pprefix}%{php_name}%{psuffix}
-Version:        8.2.13
+Version:        8.2.14
 Release:        0
 Summary:        Interpreter for the PHP scripting language version 8
 License:        MIT AND PHP-3.01

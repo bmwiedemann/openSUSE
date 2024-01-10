@@ -1,7 +1,7 @@
 #
 # spec file for package python-wcmatch
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %{?python_enable_dependency_generator}
 Name:           python-wcmatch
-Version:        8.4.1
+Version:        8.5
 Release:        0
 Summary:        Wildcard/glob file name matcher
 License:        MIT
@@ -67,6 +67,7 @@ is found where Wildcard Match seems to deviate in an illogical way, we'd love to
 %pytest
 
 %files %{python_files}
-%{python_sitelib}/wcmatch*
+%{python_sitelib}/wcmatch
+%{python_sitelib}/wcmatch-%{version}.dist-info
 
 %changelog

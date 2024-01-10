@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Wed Dec 27 09:23:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.82:
+  * The ``inplace`` argument of ``complement`` and
+    ``reverse_complement`` in ``Bio.Seq`` now always default to
+    ``False`` both for ``Seq`` and ``MutableSeq`` objects.
+    To modify a ``MutableSeq`` in-place, use ``inplace=True``.
+  * A new class ``CodonAligner`` was added to ``Bio.Align``. A
+    ``CodonAligner`` object can align a nucleotide sequence to the
+    amino acid sequence it encodes, using a dynamic programming
+    algorithm modeled on ``PairwiseAligner`` to take frame shifts
+    into account. The ``CodonAligner`` returns ``Alignment``
+    objects.
+  * By calling the new ``mapall`` method on an ``Alignment``
+    object storing a multiple sequence alignment of amino acid
+    sequences, with nucleotide-to-amino acid alignments generated
+    by ``CodonAligner`` as the argument, a codon-by-codon
+    multiple sequence alignment of nucleotide sequences can be
+    obtained. The new submodule ``Bio.Align.analysis`` provides
+    functions to estimate synonymous and nonsynonymous mutations
+    and to perform the McDonald-Kreitman test on the codon
+    multiple sequence alignments. Together, this provides the
+    same functionality as the ``Bio.codonalign`` module, but uses
+    the standard ``Alignment`` class, and does not rely on regular
+    expression searching to align a nucleotide sequence to
+    an amino acid sequence.
+  * The ``hmmer3-text`` SearchIO format now also extracts the
+    similarity string of the parsed alignments.
+  * HMMER results with the full path to the hmmer executable in
+    the banner are now parsed correctly.
+  * We now have basic type hint annotations in various modules
+    including ``Seq``, ``SeqRecord``, and ``SeqIO``.
+  * Calling ``iter`` on a ``PairwiseAlignments`` object returned
+    by a ``PairwiseAigner`` previously reset the iterator
+    such that it will start from the first alignment when iterating.
+  * The MMCIFParser now ignores '.' header values.
+  * Calling ``set_angle()`` on a residue dihedral angle
+    previously set only the specified angle, now the default
+    behavior is to update overlapping angles as well.
+  * Generating a structure with default internal coordinates,
+    e.g. from a sequence with ``read_PIC_seq()``,  previously
+    selected wrong default values in many cases.
+  * Added ``make_extended()`` to set a chain to an extended beta
+    strand conformation, as the default backbone values reflect
+    the more popular alpha helix in most cases.
+
+-------------------------------------------------------------------
 Wed Feb 15 14:03:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.81:
@@ -63,7 +110,7 @@ Sun Mar 27 13:57:19 UTC 2022 - Dirk Müller <dmueller@suse.com>
 - update to 1.79:
   * This is intended to be our final release supporting Python 3.6. It also
   supports Python 3.7, 3.8 and 3.9, and has also been tested on PyPy3.6.1 v7.1.1.
-  * Detailed list of changes see 
+  * Detailed list of changes see
   https://github.com/biopython/biopython/blob/biopython-179/NEWS.rst#1-june-2021-biopython-179
 
 -------------------------------------------------------------------
@@ -71,13 +118,13 @@ Sat Feb 20 19:29:23 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Update to version 1.7.8.
   * The main change is that Bio.Alphabet is no longer used. In some
-    cases you will now have to specify expected letters, molecule 
+    cases you will now have to specify expected letters, molecule
     type (DNA, RNA, protein), or gap character explicitly.
-  * Bio.SeqIO.parse() is faster with "fastq" format due to small 
+  * Bio.SeqIO.parse() is faster with "fastq" format due to small
     improvements in the Bio.SeqIO.QualityIO module.
-  * The SeqFeature object's .extract() method can now be used for 
+  * The SeqFeature object's .extract() method can now be used for
     trans-spliced locations via an optional dictionary of references.
-  * As in recent releases, more of our code is now explicitly 
+  * As in recent releases, more of our code is now explicitly
     available under either our original "Biopython License Agreement",
     or the very similar but more commonly used "3-Clause BSD License".
     See the LICENSE.rst file for more details.
@@ -304,10 +351,10 @@ Wed May  9 03:23:14 UTC 2018 - toddrme2178@gmail.com
     wrapper and include a new wrapper for fuzzpro.
   * The restriction enzyme list in Bio.Restriction has been updated to the
     November 2017 release of REBASE.
-  * New codon tables 27-31 from NCBI (NCBI genetic code table version 4.2) 
+  * New codon tables 27-31 from NCBI (NCBI genetic code table version 4.2)
     were added to Bio.Data.CodonTable. Note that tables 27, 28 and 31 contain
     no dedicated stop codons; the stop codons in these codes have a context
-    dependent encoding as either STOP or as amino acid. 
+    dependent encoding as either STOP or as amino acid.
   * In this release more of our code is now explicitly available under either our
     original "Biopython License Agreement", or the very similar but more commonly
     used "3-Clause BSD License".  See the ``LICENSE.rst`` file for more details.
@@ -410,7 +457,7 @@ Wed May 24 14:28:23 UTC 2017 - toddrme2178@gmail.com
 -------------------------------------------------------------------
 Thu Nov 17 10:10:59 UTC 2016 - alinm.elena@gmail.com
 
-- updated to version 1.68 
+- updated to version 1.68
 
 -------------------------------------------------------------------
 Mon Dec  9 16:00:01 UTC 2013 - toddrme2178@gmail.com
@@ -423,19 +470,19 @@ Mon Dec  9 16:00:01 UTC 2013 - toddrme2178@gmail.com
 Thu Sep 19 02:06:32 UTC 2013 - highwaystar.ru@gmail.com
 
 - upgrade to version 1.62
- * The translation functions will give a warning on any partial codons 
+ * The translation functions will give a warning on any partial codons
  * Phylo module now supports the file formats NeXML and CDAO
- * New module Bio.UniProt adds parsers for the GAF, GPA and GPI 
+ * New module Bio.UniProt adds parsers for the GAF, GPA and GPI
 formats from UniProt-GOA.
  * The BioSQL module is now supported in Jython.
- * Feature labels on circular GenomeDiagram figures now support 
+ * Feature labels on circular GenomeDiagram figures now support
  the label_position argument (start, middle or end)
- * The code for parsing 3D structures in mmCIF files was updated 
- to use the Python standard library's shlex module instead of C code 
+ * The code for parsing 3D structures in mmCIF files was updated
+ to use the Python standard library's shlex module instead of C code
  using flex.
- * The Bio.Sequencing.Applications module now includes a BWA 
+ * The Bio.Sequencing.Applications module now includes a BWA
  command line wrapper.
- * Bio.motifs supports JASPAR format files with multiple 
+ * Bio.motifs supports JASPAR format files with multiple
  position-frequence matrices.
 
 -------------------------------------------------------------------

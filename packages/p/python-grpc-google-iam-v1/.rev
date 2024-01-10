@@ -33,4 +33,22 @@
     <comment></comment>
     <requestid>1131007</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>856176ceee7bdc1e4ca61d0ac4f2fb69</srcmd5>
+    <version>0.13.0</version>
+    <time>1702845179</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.13.0:
+  * Add support for Python 3.12 (#64)
+  * Introduce compatibility with native namespace packages (#59)</comment>
+    <requestid>1133661</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>4a743fcd98b30f683f1e979a1e5f611b</srcmd5>
+    <version>0.13.0</version>
+    <time>1704290016</time>
+    <user>dimstar_suse</user>
+    <comment>- require setuptools</comment>
+    <requestid>1136439</requestid>
+  </revision>
 </revisionlist>

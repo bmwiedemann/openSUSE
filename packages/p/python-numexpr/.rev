@@ -220,4 +220,16 @@ Implement single-spec version</comment>
 - fix requiements for SLE 11</comment>
     <requestid>1129235</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>a5848ca06a7c88745760d2cd0de6c939</srcmd5>
+    <version>2.8.8</version>
+    <time>1702936591</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.8.8:
+  * Fix re_evaluate not taking global_dict as argument.
+  * Fix parsing of simple complex numbers.  Now,
+    `ne.evaluate('1.5j')` works.
+  * Fixes for upcoming NumPy 2.0</comment>
+    <requestid>1133817</requestid>
+  </revision>
 </revisionlist>

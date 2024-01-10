@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Dec 28 21:40:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 23.12:
+  * Make punch-in also start recording.
+  * Fix broken metronome flash in the transport.
+  * Fix solo affects archived tracks.
+  * Fix data loss when recording with loop on.
+  * Prevent archived tracks from recording.
+  * Fix arm status lost on save when archived.
+  * Fix armed+archive recording after load.
+  * Unarm archived Tracks when enforcing the arm rule: only one
+    Track can be armed per Instrument.
+  * Skip archived tracks when routing.
+  * Fix refresh artifacts on the Matrix piano keyboard.
+  * Fix error when rosegarden creates submaster outs.
+  * Fixed potential race conditions with audio files.
+  * Fix segment relabel dialog not showing original label.  Bug
+  * Fixed events with data1 == 121 being dropped.  Bug #1663.
+  * Fixed potential race conditions in the sequencer.
+  * Fix removing the first note of a slurred group creates an
+    unreachable rest.  Bug #1662.
+  * Fix cannot beam a group beginning or ending with a dotted
+    eighth note.  Bug #1666.
+  * Fix segment parameter box displaying translation of the
+    label.
+  * Improved sub-beat highlighting in the Matrix editor.
+  * Matrix editor preview note when hovering.
+  * Add metronome and solo toggles to main menu.
+  * Add MMC RECORD STROBE support.
+  * Add a preference to include ALSA port numbers when making
+    connections.
+  * Use regexp for plugin blacklist.
+  * Updated yoshimi.rgd.
+
+-------------------------------------------------------------------
 Sun Oct 29 16:07:50 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 23.06:

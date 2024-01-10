@@ -180,4 +180,17 @@
     <comment>- added 0001-Allow-selecting-suse_39-template.patch</comment>
     <requestid>1109584</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>d5e2d036f1fea4bde3669ec8705338e4</srcmd5>
+    <version>2.3.0</version>
+    <time>1704660160</time>
+    <user>dimstar_suse</user>
+    <comment>- removed 0001-Allow-selecting-suse_39-template.patch
+- update to version 2.3.0
+  - Allow selecting suse_39 template
+  - Allow suse_py311 to be selected as template
+  - setup.cfg: Replace dashes with underscores
+  - Switch to Python3 zed unit test jobs</comment>
+    <requestid>1137434</requestid>
+  </revision>
 </revisionlist>

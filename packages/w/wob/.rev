@@ -58,4 +58,23 @@ The issue mentioned in the superseded request was fixed.  </comment>
     <comment></comment>
     <requestid>1038851</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e163d92a66bd704d930dc54d64db7478</srcmd5>
+    <version>0.15.1</version>
+    <time>1704281211</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.15.1:
+  Fixed:
+  * Allow mmap in seccomp sandbox
+- Added systemd services from git contrib
+- Update to 0.15:
+  Added:
+  * Added bar orientation = horizontal | vertical
+  * Look for config file in /etc/wob/wob.ini
+  * New optional build dependency on cmocka (to run tests)
+  Changed:
+  * Replace inputting colors via stdin with styles
+</comment>
+    <requestid>1135850</requestid>
+  </revision>
 </revisionlist>

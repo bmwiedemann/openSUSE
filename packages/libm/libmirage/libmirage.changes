@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec 28 17:03:05 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.7:
+  * SNDFILE filter: ignore .BIN files
+  * SNDFILE filter: fix signalling of read errors
+
+-------------------------------------------------------------------
 Sat Feb  5 12:46:06 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.2.6

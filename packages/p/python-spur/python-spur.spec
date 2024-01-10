@@ -1,7 +1,7 @@
 #
 # spec file for package python-spur
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,16 @@
 
 
 Name:           python-spur
-Version:        0.3.22
+Version:        0.3.23
 Release:        0
 Summary:        Run commands and manipulate files locally or over SSH
 License:        BSD-2-Clause
 URL:            http://github.com/mwilliamson/spur.py
 Source:         https://github.com/mwilliamson/spur.py/archive/refs/tags/%{version}.tar.gz#/spur-%{version}-gh.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module paramiko >= 1.13.1}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-paramiko >= 1.13.1
 BuildArch:      noarch
 %python_subpackages

@@ -81,4 +81,31 @@
     <comment></comment>
     <requestid>1060583</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1d1aef5f65aadb693a0953d4da95883b</srcmd5>
+    <version>23.1.1</version>
+    <time>1702673392</time>
+    <user>anag+factory</user>
+    <comment>- update to 23.0.0:
+  * Overdue update for Python 3.10 and 3.11 support
+  * Add [iterutils.chunk_ranges][iterutils.chunk_ranges]
+  * Improvements to `SpooledBytesIO`/`SpooledStringIO`
+  * Bugfix for infinite daterange issue when start and stop is
+    the same ([#302][i302])
+  * Fix `Bits.as_list` behavior ([#315][i315])
+- deleted patches
+  - fix-ecoutil-imports.patch (upstreamed)
+  - getstate-to-through-methods.patch (upstreamed)
+
+  * jsonutils.reverse_iter_lines now works on Py3 and Windows</comment>
+    <requestid>1133365</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>f209f05de949120e2af6926e1e902d5b</srcmd5>
+    <version>23.1.1</version>
+    <time>1703800893</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1135274</requestid>
+  </revision>
 </revisionlist>

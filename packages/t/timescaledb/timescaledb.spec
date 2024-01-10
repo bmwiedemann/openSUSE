@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %{pg_version_from_name}
 
 Name:           %{pg_name}-%{ext_name}
-Version:        2.12.2
+Version:        2.13.1
 Release:        0
 Summary:        A time-series database extension for PostgreSQL
 License:        Apache-2.0

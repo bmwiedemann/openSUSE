@@ -1,0 +1,39 @@
+-------------------------------------------------------------------
+Sat Dec 30 13:13:33 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 5.1.1:
+  * Wayland with Fractional Scaling
+
+-------------------------------------------------------------------
+Fri Dec 22 07:02:39 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 5.1:
+  * Optimization for the use of the ESC key
+  * Disable the menu only for more than one user
+  * New chat at phone number
+  * Internal improvements
+
+-------------------------------------------------------------------
+Thu Dec 14 21:51:11 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 5.0:
+  * fix: Hide Wayland field when running in flatpak
+  * fix: Opens Settings by Tray
+  * feat: Little adjustments in settings
+  * feat: Hide shortcut label to deactivated
+  * feat: Frame separator
+  * feat: Icon organization in CardUser
+  * Card user account
+  * fix: Description of shortcuts in Account
+  * fix: Incorrect sizing and bad text rendering with WebEngine #17
+  * fix: Transparent Download Panel #22
+  * fix:  No icon in panel donations #23
+  * feat: Drawer for Settings window
+  * fix: Management of multiple users
+  * feat: Open WhatsappWeb settings shortcut
+  * fix: Position of the zapzap window is everytime on an new position #10
+
+-------------------------------------------------------------------
+Tue Dec 12 15:12:37 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Initial package of zapzap 4.5.5.3 for openSUSE

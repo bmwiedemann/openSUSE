@@ -1,7 +1,7 @@
 #
 # spec file for package rinutils
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rinutils
-Version:        0.10.1
+Version:        0.10.2
 Release:        0
 Summary:        Shlomi Fish's gnu11 C Library of Random headers
 License:        MIT

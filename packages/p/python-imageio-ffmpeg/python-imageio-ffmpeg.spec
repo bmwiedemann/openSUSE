@@ -18,15 +18,16 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-imageio-ffmpeg
-Version:        0.4.8
+Version:        0.4.9
 Release:        0
 Summary:        FFMPEG wrapper for Python
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/imageio/imageio-ffmpeg
 Source:         https://files.pythonhosted.org/packages/source/i/imageio-ffmpeg/imageio-ffmpeg-%{version}.tar.gz
-BuildRequires:  %{python_module pip > 19}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  ffmpeg-4
 BuildRequires:  python-rpm-macros
@@ -41,10 +42,10 @@ FFMPEG wrapper for working with video files in Python.
 %setup -q -n imageio-ffmpeg-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -54,6 +55,7 @@ FFMPEG wrapper for working with video files in Python.
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/imageio_ffmpeg
+%{python_sitelib}/imageio_ffmpeg-%{version}.dist-info
 
 %changelog

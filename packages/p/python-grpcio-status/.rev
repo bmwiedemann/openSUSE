@@ -47,4 +47,14 @@
     <comment></comment>
     <requestid>1110468</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>14c2e74d3194b462f6a82f945eb57474</srcmd5>
+    <version>1.60.0</version>
+    <time>1704829801</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.60.0:
+  * Change return of grpc.aio.ServicerContext.code() from integer
+    to grpc.StatusCode</comment>
+    <requestid>1137630</requestid>
+  </revision>
 </revisionlist>

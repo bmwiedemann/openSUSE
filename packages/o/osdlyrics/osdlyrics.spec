@@ -17,7 +17,7 @@
 
 
 Name:           osdlyrics
-Version:        0.5.14
+Version:        0.5.15
 Release:        0
 Summary:        A third-party lyrics display program
 License:        GPL-3.0-or-later
@@ -26,8 +26,6 @@ URL:            https://github.com/osdlyrics/osdlyrics
 Source0:        https://github.com/osdlyrics/osdlyrics/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        %{name}.appdata.xml
 BuildRequires:  fdupes
-BuildRequires:  gcc
-BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel
 BuildRequires:  glibc-devel
 BuildRequires:  gnome-common

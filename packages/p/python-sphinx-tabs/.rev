@@ -50,4 +50,32 @@
     <comment></comment>
     <requestid>1116816</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>00a6b2ccb0bd0cc3f738d7c7562f0ff8</srcmd5>
+    <version>3.4.4</version>
+    <time>1703198332</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.4.4:
+  * Added
+    + Testing for Python 3.11 and 3.12
+  * Removed
+    + Dependency on unsupported sphinx_testing package
+  * Fixed
+    + tests for sphinx 7.2
+    + slice assignment in update_context(), which was removing JS scripts
+      from other sphinx extensions/themes on pages where tabs were not used
+- Drop patches sphinx71.patch and sphinx72.patch, included upstream.
+- Switch to pyproject macros.</comment>
+    <requestid>1134376</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>67135271c7d195eca708d4919c4db3d3</srcmd5>
+    <version>3.4.4</version>
+    <time>1704281575</time>
+    <user>dimstar_suse</user>
+    <comment>- require setuptools
+
+- Initial package</comment>
+    <requestid>1136464</requestid>
+  </revision>
 </revisionlist>

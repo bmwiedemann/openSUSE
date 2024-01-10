@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Thu Dec 14 10:53:15 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.3.7:
+  no changelog available, only a diff
+  https://github.com/kubefirst/kubefirst/compare/v2.3.6...v2.3.7
+
+-------------------------------------------------------------------
+Thu Dec 14 10:47:58 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.3.6:
+  * fix: git label and repo (#1957)
+  * chore: bump chart version (#1956)
+  * chore: adopt latest metrics-client (#1955)
+  * chore: bump chart version (#1954)
+  * feat: move digitial ocean out of beta (#1952)
+  * add node type and node count flags to aws, civo, google, and
+    vultr
+  * return telemetry event
+  * remove close func that is no longer there
+  * WIP. add node type/ node count to cli
+  * feat: remove the ability to run cluster zero on atlas (#1944)
+  * chore: put back dummy account information after tests (#1947)
+  * chore: add exit code for aws assume script (#1946)
+  * chore: add a script to assume AWS role more easily (#1945)
+  * chore: add a Terraform plan to create an admin role in AWS to
+    be assumed (#1943)
+  * chore: add a warning about creating 1 GH issue per
+    bug/suggestion. (#1939)
+  * fix: hanging unknown commands (#1930)
+  * chore: bump launch version (#1929)
+  * fix: k3d branding (#1926)
+  * last try to fix the new combobox on bug report (#1923)
+  * chore: fixing the bug template (#1922)
+  * add a question about gitops-template being a fork or not
+    (#1919)
+  * fix: update messaging for launch up success for something
+    clearer (#1912)
+  * fix: hanging commands (#1904)
+  * chore: add a 'none specific option for OS' (#1899)
+  * fix: improve getting KUBECONFIG command for Civo (#1886)
+
+-------------------------------------------------------------------
 Thu Nov 02 05:59:19 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.3.5:

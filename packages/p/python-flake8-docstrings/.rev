@@ -84,4 +84,13 @@
   * Fix ``--ignore-noqa`` by disabling ``pydocstyle``'s ``noqa`` handling.</comment>
     <requestid>946649</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ab9512230b5629f7f8cf6ea99b482717</srcmd5>
+    <version>1.7.0</version>
+    <time>1703800867</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.7.0:
+  * Add ``--property-decorators`` option.</comment>
+    <requestid>1135246</requestid>
+  </revision>
 </revisionlist>

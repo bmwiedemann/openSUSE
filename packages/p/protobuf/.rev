@@ -819,4 +819,28 @@
     <comment></comment>
     <requestid>1121159</requestid>
   </revision>
+  <revision rev="77" vrev="8">
+    <srcmd5>75de0f5254e54379a5a093f7c72feddb</srcmd5>
+    <version>unknown</version>
+    <time>1703281245</time>
+    <user>anag+factory</user>
+    <comment>- build against modern python on sle15
+
+- drop patches:
+  * Reduce memory consumption of MessageSet parsing
+     * Add back a filegroup for :well_known_protos (#10061)
+    * Fix shadowing warnings
+    * Fix for issue #8484, constant initialization doesn't compile in msvc clang-cl environment
+    * Use ArrayList copy constructor
+    * Fix ReferenceError: window is not defined when getting the global object
+    * Fix memory leak in MessageClass.encode
+    * Override Map.clone to use Map's dup method
+    * Ruby: build extensions for arm64-darwin
+    * Add class method Timestamp.from_time to ruby well known types
+    * Adopt pure ruby DSL implementation for JRuby
+    * Fix for descriptor_pb.rb: google/protobuf should be required first
+    * Add python-requires in setup.py
+    * Add python 3.10</comment>
+    <requestid>1134467</requestid>
+  </revision>
 </revisionlist>

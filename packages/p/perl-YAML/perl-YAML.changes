@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec 28 03:10:15 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.31
+   see /usr/share/doc/packages/perl-YAML/Changes
+
+   1.31 Wed Dec 27 07:10:56 AM PST 2023
+    - Update docs to recommend YAML::PP
+
+-------------------------------------------------------------------
 Tue Jan 28 03:14:29 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 1.30

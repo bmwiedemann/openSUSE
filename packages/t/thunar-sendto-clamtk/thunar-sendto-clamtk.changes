@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jan  2 10:42:14 UTC 2024 - Sebastian Wagner <sebix@sebix.at>
+
+- Update to version 0.08:
+ * Add [mnw_MM] to language strings
+ * Fix Punjabi [pa] string in desktop file
+ * Minor man page updates
+ * Minor README.md updates
+ * Update years, 2021 - 2024
+
+-------------------------------------------------------------------
+Tue Nov  2 22:26:12 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 0.07:
+    * Update README to use markdown (README.md)
+    * Minor updates to other files to modernize
+    * Add license information relating to Launchpad's new terms
+    * Updated strings: Khmer (km), Thai (th)
+
+-------------------------------------------------------------------
 Sun Nov 19 15:15:15 UTC 2017 - sebix+novell.com@sebix.at
 
 - initial package version 0.06

@@ -1,7 +1,7 @@
 #
 # spec file for package python-pem
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,23 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pem
-Version:        21.2.0
+Version:        23.1.0
 Release:        0
 Summary:        PEM file parsing in Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/hynek/pem
-Source0:        https://github.com/hynek/pem/archive/%{version}/%{name}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/pem/pem-%{version}.tar.gz
 BuildRequires:  %{python_module Twisted-tls}
 BuildRequires:  %{python_module certifi}
+BuildRequires:  %{python_module hatch-fancy-pypi-readme}
+BuildRequires:  %{python_module hatch_vcs}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pretend}
 BuildRequires:  %{python_module pyOpenSSL}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -43,10 +48,10 @@ i.e. Base64 encoded DER keys and certificates.
 %setup -q -n pem-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_expand rm %{buildroot}/%{$python_sitelib}/pem/py.typed #zero length
 
@@ -55,8 +60,8 @@ i.e. Base64 encoded DER keys and certificates.
 
 %files %{python_files}
 %license LICENSE
-%doc README.rst
+%doc README.md CHANGELOG.md
 %{python_sitelib}/pem
-%{python_sitelib}/pem-%{version}*-info
+%{python_sitelib}/pem-%{version}.dist-info
 
 %changelog

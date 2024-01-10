@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec 14 21:06:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.25.1:
+  * Introduced use_kerberos keyword to allow Kerberos authentication
+  * Added new test cases to verify setxattr() input and getxattr()
+    output
+  * smbc/context.c: Fix PY_MAJOR_VERSION define
+
+-------------------------------------------------------------------
 Wed Feb  2 12:05:18 UTC 2022 - Samuel Cabrero <scabrero@suse.de>
 
 - Remove libsmbclient-devel BuildRequires in favor of
@@ -7,7 +16,7 @@ Wed Feb  2 12:05:18 UTC 2022 - Samuel Cabrero <scabrero@suse.de>
 -------------------------------------------------------------------
 Tue Nov 23 06:59:19 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Remove python2 guard so we always Provide/Obsolete the old name. 
+- Remove python2 guard so we always Provide/Obsolete the old name.
 
 -------------------------------------------------------------------
 Thu Jan 14 12:05:43 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
@@ -104,12 +113,12 @@ Fri Jan 15 15:49:39 UTC 2016 - termim@gmail.com
 -------------------------------------------------------------------
 Mon Jun  2 15:07:19 UTC 2014 - dvaleev@suse.com
 
-- Add pkgconfig to BuildRequires to fix build 
+- Add pkgconfig to BuildRequires to fix build
 
 -------------------------------------------------------------------
 Mon Sep  2 21:41:19 UTC 2013 - zaitor@opensuse.org
 
-- Add python-smbc-pkg-config.patch, fixes build with samba 4. 
+- Add python-smbc-pkg-config.patch, fixes build with samba 4.
 
 -------------------------------------------------------------------
 Tue Jan 15 21:33:03 UTC 2013 - p.drouand@gmail.com
@@ -146,7 +155,7 @@ Wed Nov 10 14:02:41 CET 2010 - vuntz@opensuse.org
 -------------------------------------------------------------------
 Mon Sep  6 14:35:08 UTC 2010 - coolo@novell.com
 
-- Fix build with python 2.7, by fixing a filename in the file list.  
+- Fix build with python 2.7, by fixing a filename in the file list.
 
 -------------------------------------------------------------------
 Mon Aug 23 10:22:33 CEST 2010 - dimstar@opensuse.org

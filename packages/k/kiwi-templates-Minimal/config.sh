@@ -126,3 +126,21 @@ sed -i 's/.*solver.onlyRequires.*/solver.onlyRequires = true/g' /etc/zypp/zypp.c
 # Disable installing documentation
 #--------------------------------------
 sed -i 's/.*rpm.install.excludedocs.*/rpm.install.excludedocs = yes/g' /etc/zypp/zypp.conf
+
+if rpm -q sdbootutil; then
+	for d in /usr/lib/modules/*; do
+		test -d "$d" || continue
+		depmod -a "${d##*/}"
+	done
+	sdbootpath=/usr/lib/systemd/boot/efi
+	# XXX: need /usr/lib/systemd-boot as hack in forked projects for secure boot to use the real one
+	if [ -d /usr/lib/systemd-boot ]; then
+		sdbootpath=/usr/lib/systemd-boot
+	fi
+	ENTRY_TOKEN=$(. /usr/lib/os-release; echo $ID)
+	mkdir -p /etc/kernel
+	echo "$ENTRY_TOKEN" > /etc/kernel/entry-token
+	echo "rw quiet systemd.show_status=1 console=ttyS0,115200 console=tty0" > /etc/kernel/cmdline
+	# FIXME: kiwi needs /boot/efi to exist before syncing the disk image
+	mkdir -p /boot/efi
+fi

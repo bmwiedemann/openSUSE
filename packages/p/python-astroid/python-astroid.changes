@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec 27 09:42:24 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.2:
+  * Avoid duplicate inference results for some uses of
+    ``typing.X`` constructs like ``Tuple[Optional[int], ...]``.
+    This was causing pylint to occasionally omit messages like
+    ``deprecated-typing-alias``.
+
+-------------------------------------------------------------------
 Tue Oct 17 15:32:34 UTC 2023 - Markéta Calábková <meggy.calabkova@gmail.com>
 
 - Update to 3.0.1
@@ -32,7 +41,7 @@ Sun Jul 16 11:40:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
   * Harden ``get_module_part()`` against ``"."``.
   * Avoid expensive list/tuple multiplication operations that
     would result in ``MemoryError``.
- 
+
 -------------------------------------------------------------------
 Mon May 15 16:15:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
@@ -42,7 +51,7 @@ Mon May 15 16:15:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Fri Apr 28 07:12:30 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Correct Requires for typing_extensions. 
+- Correct Requires for typing_extensions.
 
 -------------------------------------------------------------------
 Tue Apr 25 22:00:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
@@ -90,7 +99,7 @@ Sun Apr 16 09:20:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
     removed in the next minor release.
   * Fix ``are_exclusive`` function when a walrus operator is used
     inside ``IfExp.test`` field.
- 
+
 -------------------------------------------------------------------
 Thu Apr 13 22:40:04 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
@@ -111,7 +120,7 @@ Sat Jan  7 08:50:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Sat Dec  3 03:46:28 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to 2.12.13: 
+- Update to 2.12.13:
   * Prevent returning an empty list for ``ClassDef.slots()`` when the mro list contains one class & it is not ``object``.
   Refs PyCQA/pylint#5099
 
@@ -128,7 +137,7 @@ Sat Dec  3 03:46:28 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 -------------------------------------------------------------------
 Thu Oct 27 21:41:48 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to 2.12.12: 
+- Update to 2.12.12:
   * Add the ``length`` parameter to ``hash.digest`` & ``hash.hexdigest`` in the ``hashlib`` brain.
     Refs PyCQA/pylint#4039
   * Prevent a crash when a module's ``__path__`` attribute is unexpectedly missing.
@@ -142,7 +151,7 @@ Thu Oct 13 19:31:55 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.12.11:
   * Improve detection of namespace packages for the modules with ``__spec__``
-    set to None. 
+    set to None.
 
 -------------------------------------------------------------------
 Fri Sep 23 20:40:39 UTC 2022 - Ben Greiner <code@bnavigator.de>
@@ -181,7 +190,7 @@ Thu Sep 22 22:50:11 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
   Refs PyCQA/pylint#7365
   * Fix ``astroid.interpreter._import.util.is_namespace()`` incorrectly
   returning ``True`` for frozen stdlib modules on PyPy.
-  Closes #1755 
+  Closes #1755
 
 -------------------------------------------------------------------
 Sat Aug 27 10:10:36 UTC 2022 - Ben Greiner <code@bnavigator.de>
@@ -580,9 +589,9 @@ Sun Mar 21 23:20:02 UTC 2021 - Ben Greiner <code@bnavigator.de>
     `assignment-from-no-return` pylint check.
   * Corrected the parent of function type comment nodes.
     These nodes used to be parented to their original ast.
-    FunctionDef parent but are now correctly parented to their 
+    FunctionDef parent but are now correctly parented to their
     astroid.FunctionDef parent.
-- Drop part_rm_dep_imp.patch fixed upstream 
+- Drop part_rm_dep_imp.patch fixed upstream
 - Drop unpin-deps.patch unpinned upstream
 
 -------------------------------------------------------------------
@@ -602,7 +611,7 @@ Tue Jun 16 02:59:27 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.4.2:
   * `FunctionDef.is_generator` properly handles `yield` nodes in `While` tests
-  * Properly construct the arguments of infered property descriptors 
+  * Properly construct the arguments of infered property descriptors
 
 -------------------------------------------------------------------
 Thu May  7 04:36:24 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
@@ -651,7 +660,7 @@ Thu May  7 04:36:24 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
   * Handle StopIteration error in infer_int.
   * Can access per argument type comments for positional only and keyword only arguments.
   * Relax upper bound on `wrapt`
-  * Properly analyze CFFI compiled extensions. 
+  * Properly analyze CFFI compiled extensions.
 - Refresh unpin-deps.patch
 
 -------------------------------------------------------------------
@@ -958,7 +967,7 @@ Wed Jan 13 10:03:16 UTC 2016 - toddrme2178@gmail.com
     ... import ...` syntax. Also, we added a new fail import hook for
     six.moves, which fixes the import-error false positive from
     pylint. Closes issue #107.
-    
+
 -------------------------------------------------------------------
 Mon Mar 16 12:20:32 UTC 2015 - mcihar@suse.cz
 
@@ -1060,7 +1069,7 @@ Fri Nov 21 08:53:09 UTC 2014 - mcihar@suse.cz
       are now supported via some explicit detection code.
     * astroid.register_module_extender has been added to generalize
       the support for module extenders as used by many brain plugins.
-    * brain plugins can now register hooks to handle failed imports, 
+    * brain plugins can now register hooks to handle failed imports,
       as done by the gobject-introspection plugin.
     * The modules have been moved to a separate package directory,
       `setup.py develop` now works correctly.
@@ -1111,8 +1120,8 @@ Tue Aug 12 09:24:19 UTC 2014 - mcihar@suse.com
     * Backported most of the logilab.common.modutils module there, as
       most things there are for pylint/astroid only and we want to be
       able to fix them without requiring a new logilab.common release
-    * Fix names grabed using wildcard import in "absolute import mode" 
-      (ie with absolute_import activated from the __future__ or with 
+    * Fix names grabed using wildcard import in "absolute import mode"
+      (ie with absolute_import activated from the __future__ or with
       python 3). Fix pylint issue #58.
     * Add support in pylint-brain for understanding enum classes.
 
@@ -1191,7 +1200,7 @@ Sat Feb 18 16:21:22 UTC 2012 - toganm@opensuse.org
     needed
   * Lambda nodes should have a `name` attribute
   * only call transformers if modname specified
- 
+
 
 -------------------------------------------------------------------
 Thu Oct  6 08:48:58 CEST 2011 - dmueller@suse.de
@@ -1270,7 +1279,7 @@ Wed Apr  7 09:48:56 CEST 2010 - dmueller@suse.de
     * fix #20464: raises “TypeError: '_Yes' object is not iterable” on list inference
     * fix #19882: pylint hangs
     * fix #20759: crash on pyreverse UNARY_OP_METHOD KeyError '~'
-    * fix #20760: crash on pyreverse : AttributeError: 'Subscript' 
+    * fix #20760: crash on pyreverse : AttributeError: 'Subscript'
       object has no attribute 'infer_lhs'
     * fix #21980: [Python-modules-team] Bug#573229 : Pylint hangs;
       improving the cache yields a speed improvement on big projects
@@ -1363,8 +1372,8 @@ Fri Aug 22 18:21:14 CEST 2008 - garloff@suse.de
 - Update to version 0.17.2:
   * "with" statement support, patch provided by Brian Hawthorne
   * fixed recursion arguments in nodes_of_class method as notified
-    by Dave Borowitz 
-  * new InstanceMethod node introduced to wrap bound method (eg 
+    by Dave Borowitz
+  * new InstanceMethod node introduced to wrap bound method (eg
     Function node), patch provided by Dave Borowitz
 
 -------------------------------------------------------------------
@@ -1380,7 +1389,7 @@ Tue Jul 17 01:38:11 CEST 2007 - garloff@suse.de
 - changes from 0.16.2 to 0.16.3
   * fix simple inference for subscription and loop assignments
 - changes from 0.16.1 to 0.16.2
-  * compatibility with python2.3 and logilab-common 0.21 
+  * compatibility with python2.3 and logilab-common 0.21
 
 -------------------------------------------------------------------
 Tue Sep 26 20:02:09 CEST 2006 - cthiel@suse.de
@@ -1450,7 +1459,7 @@ Thu Dec 22 10:09:45 CET 2005 - garloff@suse.de
 - Version 0.13:
   * This package has been forked of python-logilab-common 0.12.
   * Fixes: lambda, Compare.as_string, manager.astng_from_module_name
-  * .locals and .globals on scoped node handle now a list of 
+  * .locals and .globals on scoped node handle now a list of
     references to each assigment statements instead of a single
     reference to the first assigment statement.
 

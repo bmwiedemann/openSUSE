@@ -25,14 +25,18 @@
 %bcond_with test
 %endif
 
+# defined at Ring1-MinimalX lettered staging prjconf
+# We do not want jupyter-server in ring1
+%bcond_with ringdisabled
+
 Name:           python-pytest-jupyter%{psuffix}
-Version:        0.7.0
+Version:        0.8.0
 Release:        0
 Summary:        A pytest plugin for testing Jupyter libraries and extensions
 License:        BSD-3-Clause AND MIT
 URL:            https://github.com/jupyter-server/pytest-jupyter
 Source:         https://files.pythonhosted.org/packages/source/p/pytest_jupyter/pytest_jupyter-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
@@ -41,10 +45,11 @@ Requires:       python-jupyter_core
 Requires:       python-pytest
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module nbformat}
 BuildRequires:  %{python_module pytest-jupyter = %{version}}
 BuildRequires:  %{python_module pytest-jupyter-client = %{version}}
+%if !%{with ringdisabled}
 BuildRequires:  %{python_module pytest-jupyter-server = %{version}}
+%endif
 BuildRequires:  %{python_module pytest-timeout}
 %endif
 %python_subpackages
@@ -54,8 +59,9 @@ A pytest plugin for testing Jupyter libraries and extensions.
 
 %package client
 Summary:        A pytest plugin for testing Jupyter libraries and extensions [client] extra
-Requires:       python-ipykernel
-Requires:       python-jupyter_client >= 7.4
+Requires:       python-ipykernel >= 6.14
+Requires:       python-jupyter-client >= 7.4
+Requires:       python-nbformat >= 5.3
 Requires:       python-pytest-jupyter = %{version}
 
 %description client
@@ -64,10 +70,11 @@ This subpackage provides the [client] extra dependencies
 
 %package server
 Summary:        A pytest plugin for testing Jupyter libraries and extensions [server] extra
+Requires:       python-ipykernel >= 6.14
+Requires:       python-jupyter-client >= 7.4
 Requires:       python-jupyter-server >= 1.21
 Requires:       python-nbformat >= 5.3
 Requires:       python-pytest-jupyter = %{version}
-Requires:       python-pytest-jupyter-client = %{version}
 
 %description server
 A pytest plugin for testing Jupyter libraries and extensions.
@@ -75,7 +82,10 @@ This subpackage provides the [server] extra dependencies
 
 %prep
 %setup -q -n pytest_jupyter-%{version}
-sed -i 's/--color=yes//' pyproject.toml
+sed -e 's/ "--color=yes",//' -i pyproject.toml
+%if %{with ringdisabled}
+sed -e "/jupyter_server/d" -i tests/conftest.py
+%endif
 
 %if !%{with test}
 %build
@@ -88,7 +98,8 @@ sed -i 's/--color=yes//' pyproject.toml
 
 %if %{with test}
 %check
-%pytest
+mv pytest_jupyter pytest_jupyter.moved
+%pytest %{?_with_ringdisabled:--ignore tests/test_jupyter_server.py}
 %endif
 
 %if !%{with test}
@@ -101,8 +112,10 @@ sed -i 's/--color=yes//' pyproject.toml
 %files %{python_files client}
 %license LICENSE
 
+%if !%{with ringdisabled}
 %files %{python_files server}
 %license LICENSE
+%endif
 %endif
 
 %changelog

@@ -29,7 +29,7 @@ Source:         https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  kf5-filesystem
+BuildRequires:  extra-cmake-modules
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5Auth)

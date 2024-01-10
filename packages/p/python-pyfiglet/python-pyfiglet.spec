@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyfiglet
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,23 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-pyfiglet
-Version:        0.8.post1
+Version:        1.0.2
 Release:        0
 Summary:        Pure Python FIGlet implementation
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/pwaller/pyfiglet
 Source:         https://files.pythonhosted.org/packages/source/p/pyfiglet/pyfiglet-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  figlet
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -44,10 +46,10 @@ sed -i -e '1{/^#!/d}' pyfiglet/__init__.py
 mv pyfiglet/test.py .
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 install -d -m 0755 %{buildroot}%{_mandir}/man1
 install -m 0644 doc/pyfiglet.1 %{buildroot}%{_mandir}/man1/
@@ -72,10 +74,11 @@ install -m 0644 doc/pyfiglet.1 %{buildroot}%{_mandir}/man1/
 %python_uninstall_alternative pyfiglet pyfiglet.1
 
 %files %{python_files}
-%doc README doc/figfont.txt
+%doc README.md doc/figfont.txt
 %license LICENSE
 %python_alternative %{_bindir}/pyfiglet
 %python_alternative %{_mandir}/man1/pyfiglet.1%{ext_man}
-%{python_sitelib}/*
+%{python_sitelib}/pyfiglet
+%{python_sitelib}/pyfiglet-%{version}.dist-info
 
 %changelog

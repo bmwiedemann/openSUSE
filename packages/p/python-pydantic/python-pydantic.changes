@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Nov 16 09:58:50 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.10.13:
+  * Fix: Add max length check to `pydantic.validate_email`
+  * Docs: Fix pip commands to install v1
+  * Fixes the `maxlen` property being dropped on `deque`
+    validation. Happened only if the deque item has been typed.
+    Changes the `_validate_sequence_like` func, #6581 by
+  * Importing create_model in tools.py through relative path
+    instead of absolute path - so that it doesn't import V2 code
+    when copied over to V2 branch, #6361 by @SharathHuddar
+  * Add Pydantic `Json` field support to settings management,
+  * Fixed literal validator errors for unhashable values
+  * Fixed bug with generics receiving forward refs
+  * Update install method of FastAPI for internal tests in CI,
+    #6117 by @Kludex
+- add Fix-Python-3.12-test-failures.patch: fix test fails with
+  Python 3.12
+
+-------------------------------------------------------------------
 Wed Jul  5 13:07:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.10.9:
@@ -168,7 +188,7 @@ Fri Sep  9 00:47:25 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 Tue Jul 19 09:20:43 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch remove-pkg_resources.patch:
-  * Use packaging, not pkg_resources for versions. 
+  * Use packaging, not pkg_resources for versions.
 
 -------------------------------------------------------------------
 Sat Jun 18 13:37:28 UTC 2022 - Michael Ströder <michael@stroeder.com>
@@ -200,7 +220,7 @@ Sat Jun 18 13:37:28 UTC 2022 - Michael Ströder <michael@stroeder.com>
 -------------------------------------------------------------------
 Wed Feb  2 04:12:37 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Skip some truculent tests. 
+- Skip some truculent tests.
 - Clean up non-required Python 3.6 {Build,}Requires.
 
 -------------------------------------------------------------------
@@ -224,7 +244,7 @@ Wed Jan  5 16:08:23 UTC 2022 - Ben Greiner <code@bnavigator.de>
 Thu May 13 11:07:30 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Update to 1.8.2 (bsc#1186019, CVE-2021-29510)
-  * Security fix: Fix date and datetime parsing so passing either 'infinity' 
+  * Security fix: Fix date and datetime parsing so passing either 'infinity'
     or float('inf') (or their negative values) does not cause an infinite loop
   * Allow passing json_encoders in class kwargs
   * support arbitrary types with custom __eq__
@@ -385,19 +405,19 @@ Thu Mar 19 13:25:26 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
   * Implement root_validator and rename root errors from __obj__ to __root__
   * Added initvars support to post_init_post_parse
   * complete rewrite of URL parsing logic
-  * BaseSettings now uses the special env settings to define which 
+  * BaseSettings now uses the special env settings to define which
     environment variables to read, not aliases
   * add support for assert statements inside validators
-  * Change the precedence of aliases so child model aliases override 
+  * Change the precedence of aliases so child model aliases override
     parent aliases, including using alias_generator
   * Add a mypy plugin for type checking BaseModel.__init__ and more
   * Add support for typing.Literal for Python 3.8
   * Add a ByteSize type for converting byte string (1GB) to plain bytes
-  * Add support for required Optional with name: Optional[AnyType] = Field(...) 
+  * Add support for required Optional with name: Optional[AnyType] = Field(...)
     and refactor ModelField creation to preserve required parameter value
   * Add __eq__ to SecretStr and SecretBytes to allow "value equals"
   * Add support for nested generic models
-  * alias precedence logic changed so aliases on a field always take 
+  * alias precedence logic changed so aliases on a field always take
     priority over an alias from alias_generator
   * many more fixes and improvements
 

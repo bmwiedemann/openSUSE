@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -25,15 +24,16 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-sphinxext-opengraph
-Version:        0.7.5
+Version:        0.9.1
 Release:        0
 Summary:        Sphinx Extension to enable OGP support
 License:        MIT
 URL:            https://github.com/wpilibsuite/sphinxext-opengraph
-Source:         https://github.com/wpilibsuite/sphinxext-opengraph/archive/v%{version}.tar.gz#/sphinxext-opengraph-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/s/sphinxext-opengraph/sphinxext-opengraph-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -71,7 +71,9 @@ Sphinx Extension to enable OGP support
 %files %{python_files}
 %doc README.md
 %license LICENSE.md
-%{python_sitelib}/sphinxext*
+%dir %{python_sitelib}/sphinxext
+%{python_sitelib}/sphinxext/opengraph
+%{python_sitelib}/sphinxext_opengraph-%{version}.dist-info
 %endif
 
 %changelog

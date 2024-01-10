@@ -74,4 +74,21 @@
     <comment></comment>
     <requestid>1093375</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8c878414a2c4a34acea2c43c5dd25709</srcmd5>
+    <version>8.0.2</version>
+    <time>1704562870</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 8.0.2:
+  * Update dependencies.
+  * Other minor improvements and cleanups.
+  * Minor documentation fix.
+  * Drop Python 3.7 support (GL#34)
+  * Added a claimfile property to Lock objects
+  * Switch to pdm- ackend (GL#33)
+  * Use ruff for linting, since its much faster.
+
+  * Update all dependencies eagerly.</comment>
+    <requestid>1137121</requestid>
+  </revision>
 </revisionlist>

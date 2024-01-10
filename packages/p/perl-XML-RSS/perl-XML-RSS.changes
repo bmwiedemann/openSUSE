@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Dec 27 03:09:27 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.63
+   see /usr/share/doc/packages/perl-XML-RSS/Changes
+
+  1.63    2023-12-26
+      - Add allow_empty .
+          - https://github.com/shlomif/perl-XML-RSS/issues/20
+          - Thanks to @johnhorner .
+
+-------------------------------------------------------------------
 Fri Oct 16 03:10:36 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.62

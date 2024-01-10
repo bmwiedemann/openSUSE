@@ -23,4 +23,41 @@
     <comment>- Do not build for Python 3.6, due to no NumPy.</comment>
     <requestid>895228</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0a8edd7e0d740145e08229cc318b4349</srcmd5>
+    <version>2.0</version>
+    <time>1704281081</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.0:
+  Additions:
+  + xsge_gui.RadioButton.group
+  + xsge_gui.button_bottom_sprite
+  + xsge_gui.button_bottomleft_sprite
+  + xsge_gui.button_bottomright_sprite
+  + xsge_gui.button_top_sprite
+  + xsge_gui.button_topleft_sprite
+  + xsge_gui.button_topright_sprite
+  + xsge_gui.button_pressed_bottom_sprite
+  + xsge_gui.button_pressed_bottomleft_sprite
+  + xsge_gui.button_pressed_bottomright_sprite
+  + xsge_gui.button_pressed_top_sprite
+  + xsge_gui.button_pressed_topleft_sprite
+  + xsge_gui.button_pressed_topright_sprite
+  + xsge_gui.button_selected_bottom_sprite
+  + xsge_gui.button_selected_bottomleft_sprite
+  + xsge_gui.button_selected_bottomright_sprite
+  + xsge_gui.button_selected_top_sprite
+  + xsge_gui.button_selected_topleft_sprite
+  + xsge_gui.button_selected_topright_sprite
+  + xsge_gui.button_color
+  + xsge_gui.button_pressed_color
+  + xsge_gui.button_selected_color
+  + xsge_gui.Button.get_height
+  + xsge_gui.textbox_color
+  + xsge_gui.textbox_top_sprite
+  + xsge_gui.textbox_topleft_sprite
+  + xsge_gui.textbox_topright_sprite
+  + xsge_gui.textbox_bottom_sprite</comment>
+    <requestid>1136307</requestid>
+  </revision>
 </revisionlist>

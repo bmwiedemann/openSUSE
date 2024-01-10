@@ -109,4 +109,26 @@
     <comment></comment>
     <requestid>1041345</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>912eb7849d46a540d8cf0c8a9d9e3a1c</srcmd5>
+    <version>3.2.1</version>
+    <time>1704281038</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2.1:
+  * Added 'timeout' and 'max_retry' parameters to all REST
+    methods
+  * Added exception to the method when a response contains a
+    message indicating a password change is required
+  * Adding missing newline to M-SEARCH requests
+  * Fixed the inspection of the USN response header from M-SEARCH
+    requests to allow for a multi-digit minor version
+  * Improved usage of the ServerDownOrUnreachableError exception
+    to not lose the original message
+
+- Update to 3.1.8
+- Update to 3.1.7:
+- Update to 3.1.6:
+- Drop patch collections-python310.patch, included upstream.</comment>
+    <requestid>1135608</requestid>
+  </revision>
 </revisionlist>

@@ -19,7 +19,7 @@
 %define panel_version 4.12.0
 %bcond_with git
 Name:           xfce4-power-manager
-Version:        4.18.2
+Version:        4.18.3
 Release:        0
 Summary:        Power Management for the Xfce Desktop Environment
 License:        GPL-2.0-or-later

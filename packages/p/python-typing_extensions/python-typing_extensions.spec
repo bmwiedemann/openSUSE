@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-typing_extensions%{psuffix}
-Version:        4.8.0
+Version:        4.9.0
 Release:        0
 Summary:        Backported and Experimental Type Hints for Python 3.8+
 License:        Python-2.0

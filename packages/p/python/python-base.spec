@@ -1,7 +1,7 @@
 #
 # spec file for package python-base
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -149,10 +149,10 @@ Patch75:        CVE-2023-24329-blank-URL-bypass.patch
 # PATCH-FIX-OPENSUSE PygmentsBridge-trime_doctest_flags.patch mcepl@suse.com
 # Build documentation even without PygmentsBridge.trim_doctest_flags
 Patch76:        PygmentsBridge-trime_doctest_flags.patch
-# # PATCH-FIX-UPSTREAM CVE-2023-27043-email-parsing-errors.patch bsc#1210638 mcepl@suse.com
-# # Detect email address parsing errors and return empty tuple to
-# # indicate the parsing error (old API)
-# Patch77:        CVE-2023-27043-email-parsing-errors.patch
+# PATCH-FIX-UPSTREAM CVE-2023-27043-email-parsing-errors.patch bsc#1210638 mcepl@suse.com
+# Detect email address parsing errors and return empty tuple to
+# indicate the parsing error (old API)
+Patch77:        CVE-2023-27043-email-parsing-errors.patch
 # PATCH-FIX-UPSTREAM CVE-2022-48565-plistlib-XML-vulns.patch bsc#1214685 mcepl@suse.com
 # Reject entity declarations in plists
 Patch78:        CVE-2022-48565-plistlib-XML-vulns.patch
@@ -316,7 +316,7 @@ other applications.
 %endif
 %patch -P 75 -p1
 %patch -P 76 -p1
-# %%patch -P 77 -p1
+%patch -P 77 -p1
 %patch -P 78 -p1
 %patch -P 79 -p1
 %patch -P 80 -p1

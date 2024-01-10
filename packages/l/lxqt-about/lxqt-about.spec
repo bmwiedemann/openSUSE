@@ -60,6 +60,8 @@ About dialog for LXQt
 %doc AUTHORS
 %{_bindir}/%{name}
 %{_datadir}/applications/*.desktop
+%dir %{_datadir}/icons/hicolor/scalable
+%dir %{_datadir}/icons/hicolor/scalable/apps
 %{_datadir}/icons/hicolor/scalable/apps/lxqt-about.svg
 
 %files lang -f %{name}.lang

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Dec 14 13:31:54 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.11
+  General
+  * Add datetime.date to SQLDATE conversion.
+  * Add encryption parameter to connect.
+  Bug fixes
+  * Fix version parsing in development.
+  * Add missing charset parameter when formatting query.
+  * Use four digits for the year in SP args binding.
+  * Fix convert_python_value to work with datetime.date.
+
+-------------------------------------------------------------------
 Mon Oct 30 20:52:41 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.2.10

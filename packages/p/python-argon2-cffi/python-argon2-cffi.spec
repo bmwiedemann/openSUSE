@@ -18,13 +18,16 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-argon2-cffi
-Version:        21.3.0
+Version:        23.1.0
 Release:        0
 Summary:        The Argon2 password hashing algorithm for Python
 License:        MIT
 URL:            https://github.com/hynek/argon2_cffi
-Source:         https://files.pythonhosted.org/packages/source/a/argon2-cffi/argon2-cffi-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/a/argon2-cffi/argon2_cffi-%{version}.tar.gz
 BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module hatch-fancy-pypi-readme}
+BuildRequires:  %{python_module hatch-vcs}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
@@ -33,8 +36,9 @@ BuildRequires:  python-rpm-macros
 # For test
 BuildRequires:  %{python_module argon2-cffi-bindings}
 Requires:       python-argon2-cffi-bindings
-Provides:       python-argon2_cffi
-Obsoletes:      python-argon2_cffi
+Provides:       python-argon2_cffi = %{version}
+Obsoletes:      python-argon2_cffi < %{version}
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -42,7 +46,7 @@ A Python module that uses CFFI to access the Argon2 password hashing
 C library.
 
 %prep
-%setup -q -n argon2-cffi-%{version}
+%autosetup -p1 -n argon2_cffi-%{version}
 
 %build
 export ARGON2_CFFI_USE_SYSTEM=1
@@ -56,7 +60,7 @@ export ARGON2_CFFI_USE_SYSTEM=1
 %pytest
 
 %files %{python_files}
-%doc README.rst AUTHORS.rst FAQ.rst
+%doc CHANGELOG.md FAQ.md README.md
 %license LICENSE
 %{python_sitelib}/argon2
 %{python_sitelib}/argon2_cffi-%{version}.dist-info

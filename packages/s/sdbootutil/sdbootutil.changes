@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Dec 21 16:24:56 UTC 2023 - lnussel@suse.com
+
+- Update to version 1+git20231221.42797ab:
+  * Do not fail if LUKS2 section is empty
+
+-------------------------------------------------------------------
+Thu Dec 14 13:40:50 UTC 2023 - lnussel@suse.com
+
+- Update to version 1+git20231214.b186b2d:
+  * Fix exit code
+  * Revert "Add pcr predictions to initrd for now"
+
+-------------------------------------------------------------------
+Wed Dec 13 16:12:47 UTC 2023 - lnussel@suse.com
+
+- Update to version 1+git20231213.2a07af6:
+  * Add update-predictions command
+  * Predict all the entries
+
+-------------------------------------------------------------------
+Mon Dec 11 07:48:29 UTC 2023 - lnussel@suse.com
+
+- Update to version 1+git20231211.01c6a76:
+  * Add ExclusiveArch for 64-bit EFI architectures
+
+-------------------------------------------------------------------
+Wed Nov 29 10:40:23 UTC 2023 - lnussel@suse.com
+
+- Update to version 1+git20231129.d7f3909:
+  * Add pcr predictions to initrd for now
+  * Generate new TPM2 predictions with pcr-oracle
+  * Update file triggers
+  * Fix exit code of update command
+  * Add a %transfiletriggerin to update EFI binaries
+  * Update help text
+
+-------------------------------------------------------------------
 Tue Nov 14 17:10:32 UTC 2023 - lnussel@suse.com
 
 - Update to version 1+git20231114.6bcf1d3:

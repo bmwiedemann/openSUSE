@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Dec 31 19:12:25 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to 4.3.1:
+  This is mainly a bugfix release, with minor new features.
+  * Support for building with Python 3.12 and later.
+  * Miscellaneous bug fixes. See update.log for details.
+
+-------------------------------------------------------------------
 Mon Feb 14 15:56:35 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 4.3.0:

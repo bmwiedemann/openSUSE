@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan  1 05:06:05 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Add krb-prop entry, fix for bsc#1211886.
+
+-------------------------------------------------------------------
 Tue Nov 21 08:39:54 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Fix syntax of localhost entries in hosts [bsc#1217355]

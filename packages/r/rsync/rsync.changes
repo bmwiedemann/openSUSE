@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 29 12:34:30 UTC 2023 - Stefan Schubert <schubi@suse.com>
+
+- Moved rsyncd.conf and rsyncd.secrets to /usr/etc.
+  * Add rsync-usr-etc.patch
+
+-------------------------------------------------------------------
 Wed Sep  6 09:52:41 UTC 2023 - David Anes <david.anes@suse.com>
 
 - Rename patch to follow naming patch policies:

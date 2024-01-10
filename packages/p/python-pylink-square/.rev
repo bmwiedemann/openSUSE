@@ -7,4 +7,15 @@
     <comment>required by python-spsdk (see SR#1095807), which is required by nitropy aka pynitrokey</comment>
     <requestid>1095819</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>54f252ec1cdd2912d3d49e53f4b58e29</srcmd5>
+    <version>1.2.0</version>
+    <time>1702673304</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.2.0:
+  * @cpattenden-sq: Fixed bug in `flash()` where return value was
+    being checked against a `void` function; would lead to
+    exceptions being raised unexpectedly.</comment>
+    <requestid>1133193</requestid>
+  </revision>
 </revisionlist>

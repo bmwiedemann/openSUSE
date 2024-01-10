@@ -108,4 +108,29 @@
 - Replace setuptools_scm_git_archive BuildRequires with setuptools_scm.</comment>
     <requestid>1099362</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>49817c8147130629fde7d98cec44aaa3</srcmd5>
+    <version>0.14.1</version>
+    <time>1703800959</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.14.1:
+  * Remove deprecated code from vispy.color.get\_colormap
+  * Cache make_pattern on DashAtlas
+  * Add push/pop gl_state for visuals
+  * Add primitive picking filters for Mesh and Markers visuals
+  * Fix spherical markers depth buffer with scaling='visual'
+  * Fix mesh shading with flipped normals
+
+  * Fix TypeError with pinch-to-zoom
+- skip python 3.6 from build
+    * Switch to setuptools_scm for automatic version numbering
+    * Improve PanZoom camera performance when non-+z direction is used
+    * Fix Python 3.8 compatibility in Canvas 'keys' update
+    * Fix VolumeVisual modifying user provided data in-place
+    * Fix depth buffer precision
+    * Volume visual has unset variable texture2D\_LUT
+    * Fix MarkersVisual.set_data crash when pos is None
+    * Fix numpy futurewarning in dtype creation</comment>
+    <requestid>1135346</requestid>
+  </revision>
 </revisionlist>

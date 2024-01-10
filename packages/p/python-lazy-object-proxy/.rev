@@ -160,4 +160,16 @@
     turns out it is slower on Python 3.</comment>
     <requestid>1085123</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>5f1d115bf74371e5d18b7ca4812fcf32</srcmd5>
+    <version>1.10.0</version>
+    <time>1702845174</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.10.0:
+  * Added Python 3.12 wheels.
+  * Dropped support for Python 3.7.
+  * Applied some reformatting and lint fixes using ruff to the
+    codebase (mostly more Python 2 leftover cleanups).</comment>
+    <requestid>1133655</requestid>
+  </revision>
 </revisionlist>

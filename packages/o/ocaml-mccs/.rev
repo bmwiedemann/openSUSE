@@ -74,4 +74,12 @@ Update: Package LICENSE files as %license.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1098784</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a1d73a775dff8a0ceaf4ed02d402daed</srcmd5>
+    <version>1.1+17</version>
+    <time>1703801002</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1135460</requestid>
+  </revision>
 </revisionlist>

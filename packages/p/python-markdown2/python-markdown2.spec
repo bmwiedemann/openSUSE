@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-markdown2
-Version:        2.4.11
+Version:        2.4.12
 Release:        0
 Summary:        A Python implementation of Markdown
 License:        MIT

@@ -30,7 +30,6 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  python3-setuptools
 Requires:       python3-crcmod >= 1.7
 Requires:       python3-ffmpeg-python >= 0.2
-Requires:       python3-future
 Requires:       python3-mutagen >= 1.43
 Requires:       python3-tqdm >= 4.28.1
 BuildArch:      noarch

@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Jan  8 20:44:33 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.1:
+  * get_extensions: use shutil.copyfile to avoid PermissionError
+  * Fix bug that caused extension-helpers to not work correctly
+    if pyproject was the only configuration file present
+  * Replace all instances of distutils in docs with setuptools
+  * MNT: handle deprecation warnings seen in tests
+  * Add note about pinning extension-helpers
+  * DEP: drop dependency on tomli on Python 3.11 and newer
+  * TST: treat warnings as errors
+  * MNT: find and replace log.warn -> log.warning (the warn
+    method is deprecated)
+  * Infrastructure updates
+  * Bump actions/checkout from 2 to 4
+  * Bump stefanzweifel/git-auto-commit-action from 4 to 5
+  * Add back support for absolute source paths but deprecate it
+- update to 1.1.0:
+  * Support enabling via `pyproject.toml`
+  * OpenMP functions should detect the Intel oneAPI compiler
+  * Skip hypothesis tests in downstream testing
+  * Set language for docs
+  * Update python requirements
+  * Add pre-commit configuration
+  * Set testpaths to avoid picking up other tests
+  * Added configuration required to update changelog when doing
+    release through GitHub UI
+
+-------------------------------------------------------------------
 Tue Apr  5 15:57:58 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.0
@@ -14,9 +43,9 @@ Tue Apr  5 15:57:58 UTC 2022 - Ben Greiner <code@bnavigator.de>
 Sat Feb 20 18:28:13 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Don't test python36-numpy. Numpy 1.20 in Tumbleweed dropped
-  python36 (NEP 29) 
+  python36 (NEP 29)
 
 -------------------------------------------------------------------
 Sun Jul  5 13:11:07 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
-- initial package for vesion 0.1 
+- initial package for vesion 0.1

@@ -24,13 +24,15 @@
 #
 
 Name:           rubygem-agama
-Version:        6
+Version:        7
 Release:        0
 %define mod_name agama
 %define mod_full_name %{mod_name}-%{version}
 # MANUAL
 %global rb_build_versions %{rb_default_ruby}
 BuildRequires:  dbus-1-common
+# "msgfmt" tool
+BuildRequires:  gettext-runtime
 Requires:       dbus-1-common
 # /MANUAL
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -40,7 +42,9 @@ BuildRequires:  ruby-macros >= 5
 BuildRequires:  update-alternatives
 URL:            https://github.com/openSUSE/agama
 Source:         %{mod_full_name}.gem
-Source1:        gem2rpm.yml
+Source1:        po.tar.bz2
+Source2:        install_translations.sh
+Source3:        gem2rpm.yml
 Summary:        Agama Installer Service
 License:        GPL-2.0-only
 Group:          Development/Languages/Ruby
@@ -65,6 +69,8 @@ install -D -m 0644 %{buildroot}%{gem_base}/gems/%{mod_full_name}/share/agama.ser
 install -D -m 0644 %{buildroot}%{gem_base}/gems/%{mod_full_name}/share/agama-proxy-setup.service %{buildroot}%{_unitdir}/agama-proxy-setup.service
 install --directory %{buildroot}/usr/share/agama/conf.d
 install -D -m 0644 %{buildroot}%{gem_base}/gems/%{mod_full_name}/conf.d/*.yaml %{buildroot}/usr/share/agama/conf.d/
+# run a script for installing the translations
+sh "%{SOURCE2}" "%{SOURCE1}"
 # /MANUAL
 
 %gem_packages

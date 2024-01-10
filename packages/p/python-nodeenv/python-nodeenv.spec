@@ -15,24 +15,23 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15allpythons}
 
 Name:           python-nodeenv
-Version:        1.7.0
+Version:        1.8.0
 Release:        0
 Summary:        Nodejs virtual environment builder
 License:        BSD-2-Clause
 URL:            https://github.com/ekalinin/nodeenv
 Source:         https://github.com/ekalinin/nodeenv/archive/%{version}.tar.gz#/nodeenv-%{version}.tar.gz
-# https://github.com/ekalinin/nodeenv/issues/302
-Patch0:         python-nodeenv-no-mock.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -40,8 +39,7 @@ BuildArch:      noarch
 Node.js virtual environment builder.
 
 %prep
-%setup -q -n nodeenv-%{version}
-%patch0 -p1
+%autosetup -p1 -n nodeenv-%{version}
 
 %build
 %python_build

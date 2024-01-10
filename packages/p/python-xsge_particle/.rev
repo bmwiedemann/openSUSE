@@ -17,4 +17,13 @@
 - Do not build for Python 3.6, due to no NumPy.</comment>
     <requestid>895442</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ad3e3ad50f7b643a99aeb6a07d5229fe</srcmd5>
+    <version>1.0.1</version>
+    <time>1704281010</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.1:
+  * relicensed to LGPL</comment>
+    <requestid>1135601</requestid>
+  </revision>
 </revisionlist>

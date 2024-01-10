@@ -24,7 +24,7 @@ Name:           qgis-ltr
 %else
 Name:           qgis
 %endif
-Version:        3.32.3
+Version:        3.34.1
 Release:        0
 Summary:        A Geographic Information System (GIS)
 License:        GPL-2.0-only
@@ -38,8 +38,6 @@ Source3:        qgis_sample_data.zip
 Patch1:         fix-fastcgi-include.patch
 # PATCH-FIX-UPSTREAM - scan for pdal-config instead of pdal in cmake
 Patch2:         qgis-fix-cmake-findpdal.patch
-# PATCH-FIX-UPSTREAM - https://github.com/qgis/QGIS/issues/53700#issuecomment-1623365356
-Patch3:         exiv2-0.28.patch
 BuildRequires:  FastCGI-devel
 BuildRequires:  PDAL-devel
 BuildRequires:  bison >= 2.4
@@ -107,6 +105,7 @@ BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5UiTools)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
+BuildRequires:  pkgconfig(draco)
 BuildRequires:  pkgconfig(expat) >= 1.95
 # Requires at least gdal 3.1 for GeoTIFF and Proj >= 6 - https://github.com/qgis/QGIS/issues/36699#issuecomment-633539864
 BuildRequires:  pkgconfig(gdal) >= 3.2.0
@@ -114,6 +113,7 @@ BuildRequires:  pkgconfig(Qt5Qwt6)
 BuildRequires:  pkgconfig(gsl) >= 1.8
 BuildRequires:  pkgconfig(libpq) > 9.4
 BuildRequires:  pkgconfig(libzip)
+BuildRequires:  pkgconfig(netcdf)
 BuildRequires:  pkgconfig(pdal) >= 2.2.0
 BuildRequires:  pkgconfig(proj) >= 7.2.0
 BuildRequires:  pkgconfig(python3) >= 3.7

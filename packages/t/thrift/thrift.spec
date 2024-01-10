@@ -1,7 +1,7 @@
 #
 # spec file for package thrift
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,8 +36,8 @@ Summary:        Framework for scalable cross-language services development
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://thrift.apache.org
-Source0:        https://www.apache.org/dist/thrift/%{version}/%{name}-%{version}.tar.gz
-Source1:        https://www.apache.org/dist/thrift/%{version}/%{name}-%{version}.tar.gz.asc
+Source0:        https://archive.apache.org/dist/%{name}/%{version}/%{name}-%{version}.tar.gz
+Source1:        https://archive.apache.org/dist/%{name}/%{version}/%{name}-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
 BuildRequires:  automake
 BuildRequires:  bison

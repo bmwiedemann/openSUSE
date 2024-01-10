@@ -17,21 +17,21 @@
 
 
 Name:           python-autoflake
-Version:        1.5.3
+Version:        2.2.1
 Release:        0
 Summary:        Program to removes unused Python imports and variables
 License:        MIT
 URL:            https://github.com/myint/autoflake
 Source:         https://files.pythonhosted.org/packages/source/a/autoflake/autoflake-%{version}.tar.gz
+Requires:       python-tomli
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pyflakes >= 1.1.0}
-BuildRequires:  %{python_module toml >= 0.10.2}
+BuildRequires:  %{python_module pyflakes >= 3.0.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-pyflakes >= 1.1.0
-Requires:       python-toml >= 0.10.2
+Requires:       python-pyflakes >= 3.0.0
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
@@ -49,14 +49,16 @@ unused variables is also disabled by default.
 autoflake also removes useless pass statements.
 
 %prep
-%setup -q -n autoflake-%{version}
+%autosetup -p1 -n autoflake-%{version}
 sed -i '1{/env python/d}' autoflake.py
+chmod -x autoflake.py
 
 %build
 %pyproject_wheel
 
 %install
 %pyproject_install
+%python_expand rm %{buildroot}%{$python_sitelib}/{LICENSE,README.md,test*.py,__pycache__/test*.pyc}
 %python_clone -a %{buildroot}%{_bindir}/autoflake
 %fdupes %{buildroot}%{$python_sitelib}
 

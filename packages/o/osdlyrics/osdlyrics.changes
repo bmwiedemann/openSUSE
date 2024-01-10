@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec 31 12:42:52 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 0.5.15
+  * Remove 99% of Python2 support
+  * Remove dependency on future
+
+-------------------------------------------------------------------
 Tue Jul 18 07:56:46 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 0.5.14

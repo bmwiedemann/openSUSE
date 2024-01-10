@@ -17,7 +17,7 @@
 
 
 Name:           python-specfile
-Version:        0.25.0
+Version:        0.26.0
 Release:        0
 Summary:        A library for parsing and manipulating RPM spec files
 License:        MIT

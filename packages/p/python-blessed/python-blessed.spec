@@ -18,14 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-blessed
-Version:        1.19.1
+Version:        1.20.0
 Release:        0
 Summary:        Wrapper around terminal styling, screen positioning, and keyboard input
 License:        MIT
 URL:            https://github.com/jquast/blessed
 Source:         https://files.pythonhosted.org/packages/source/b/blessed/blessed-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM drop-python2-support.patch gh#jquast/blessed#245
-Patch:          drop-python2-support.patch
 BuildRequires:  %{python_module curses}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}

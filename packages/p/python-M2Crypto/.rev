@@ -796,4 +796,26 @@ Update to 0.36.0:
 - Add 32bit_ASN1_Time.patch to quench errors on 32bit archs.</comment>
     <requestid>1120047</requestid>
   </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>8b1b5149f7ef028927b92ce6b4516c99</srcmd5>
+    <version>0.40.0</version>
+    <time>1704491972</time>
+    <user>dimstar_suse</user>
+    <comment>- require setuptools
+
+- add openssl-stop-parsing-header.patch (bsc#1205042)
+    - Remove support for CentOS 6 and Python 2.6 (remove
+    - Stop playing with swig in setup.py, we don't support swig 1.*
+    - Replace deprecated PyObject_AsReadBuffer with our own shim
+    - Use parametrized to create parametrized tests (new external
+    - CI: Rework Fedora CI configuration &lt;Neal Gompa&gt;
+- in python3.8 the fp is wrapped in a Buffer. SSL.Connection.makefile
+  Added: 001-fix-buffering-for-python38.patch
+    * efb1580 - Bump pipeline OpenSSL from 1.1.0i to 1.1.0j
+    * 35bb71b - Stub wchar_t helpers and ignore unused WCHAR defs
+- Remove unnecessary fdupes call
+- Add python-typing as a dependency
+- SLE12 requires swig3 for a successful build, too</comment>
+    <requestid>1136436</requestid>
+  </revision>
 </revisionlist>

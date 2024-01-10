@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Dec 29 09:51:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.11.0:
+  * #710, #561 Implement `except*` syntax
+  * #711 allow building documentation without having rope module
+    installed
+  * #719 Allows the in-memory db to be shared across threads
+  * #720 create one sqlite3.Connection per thread using a thread
+    local
+  * #715 change AutoImport's `get_modules` to be case sensitive
+  * #708, #709 Add support for Python 3.12 (@lieryan)
+
+-------------------------------------------------------------------
 Thu Nov  9 02:20:38 UTC 2023 - Giacomo Comes <gcomes.obs@gmail.com>
 
 - add sle15_python_module_pythons
@@ -273,7 +286,7 @@ Mon Oct 19 11:31:41 UTC 2020 - Matej Cepl <mcepl@suse.com>
   - Fix SimilarFinder/_ASTMatcher to consider 1/0 and True/False
     to be unequal <Lie Ryan>
   - Compatibility with Python 3.8
-  - Add pytest.ini to collect all tests <Lie Ryan> 
+  - Add pytest.ini to collect all tests <Lie Ryan>
 
 -------------------------------------------------------------------
 Tue May  5 16:25:43 UTC 2020 - Matej Cepl <mcepl@suse.com>
@@ -421,4 +434,4 @@ Wed Aug  5 16:03:28 CEST 2009 - hpj@urpla.net
 - Initial creation of package python-rope-0.9.2
 
 -------------------------------------------------------------------
-Wed Aug  5 16:03:28 CEST 2009 - 
+Wed Aug  5 16:03:28 CEST 2009 -

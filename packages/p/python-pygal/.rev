@@ -90,4 +90,24 @@
     <comment></comment>
     <requestid>1081786</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>057ee0c2cafb96fc0434d675de308377</srcmd5>
+    <version>3.0.4</version>
+    <time>1702673166</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.0.4:
+  * Missing declaration of importlib_metadata dependency in setup.py
+  * Failure with tox due to missing README.md
+  * Misused entry_points causing failure with Python 3.12
+  * Prevent installing with Python versions &lt; 3.8
+  * Replace unmaintained pytest-flake8 with plain flake8
+  * Remove Iterable import deprecation warning
+  * Remove invalid escape sequence warnings in tests
+  * Fix test failures due to removed pytest attribute
+  * Fix linting errors with latest isort and flake8
+- use packaged COPYING
+
+  for all python flavors not just the main one</comment>
+    <requestid>1133201</requestid>
+  </revision>
 </revisionlist>

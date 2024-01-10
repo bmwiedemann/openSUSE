@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Dec  1 03:08:24 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.302198
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302198  2023-11-30 10:07:14-08:00 America/Los_Angeles
+      - Remove use of defined-or operator
+  1.302197  2023-11-28 17:30:37-08:00 America/Los_Angeles
+      - Add ability to attach timestamps to trace objects via api or env var
+
+-------------------------------------------------------------------
 Wed Oct 25 03:07:49 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.302196

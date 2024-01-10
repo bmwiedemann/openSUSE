@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec 12 11:52:05 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.3.35
+
+- Add further dependencies that are needed to build Python versions
+  when calling "pyenv install".
+  List taken from https://github.com/pyenv/pyenv/wiki#suggested-build-environment
+
+
+-------------------------------------------------------------------
 Fri Dec  8 13:50:18 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.3.35
 
 - Update to 2.3.35

@@ -71,4 +71,12 @@
   * Add OCaml 5.1 support</comment>
     <requestid>1056075</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7938e36cdc36413bd6d0a7a02d3628ea</srcmd5>
+    <version>0.14.3</version>
+    <time>1703801003</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1135461</requestid>
+  </revision>
 </revisionlist>

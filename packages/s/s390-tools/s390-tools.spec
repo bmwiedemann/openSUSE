@@ -33,7 +33,7 @@
 %endif
 
 Name:           s390-tools
-Version:        2.29.0
+Version:        2.30.0
 Release:        0
 Summary:        S/390 tools like zipl and dasdfmt
 License:        MIT
@@ -152,17 +152,16 @@ Patch909:       s390-tools-sles12-fdasd-skip-partition-check-and-BLKRRPART-ioctl
 Patch910:       s390-tools-sles15sp1-11-zdev-Do-not-call-zipl-on-initrd-update.patch
 Patch911:       s390-tools-sles15sp5-remove-no-pie-link-arguments.patch
 Patch912:       s390-tools-ALP-zdev-live.patch
-Patch913:       s390-tools-sles15sp6-zkey-Support-EP11-AES-keys-with-prepended-header-to-.patch
 ###
 
 BuildRequires:  curl-devel
 BuildRequires:  dracut
 BuildRequires:  fuse3-devel
-BuildRequires:  gcc-c++
+BuildRequires:  gcc13
+BuildRequires:  gcc13-c++
 BuildRequires:  gettext-tools
 BuildRequires:  glib2-devel
 BuildRequires:  glibc-devel-static
-BuildRequires:  kernel-zfcpdump
 BuildRequires:  libcryptsetup-devel > 2.0.3
 BuildRequires:  libjson-c-devel
 BuildRequires:  libxml2-devel
@@ -171,10 +170,14 @@ BuildRequires:  ncurses-devel
 BuildRequires:  net-snmp-devel
 BuildRequires:  openssl-devel >= 1.1.1l
 BuildRequires:  pesign-obs-integration
-BuildRequires:  qclib-devel-static
 BuildRequires:  systemd-devel
 BuildRequires:  tcpd-devel
 BuildRequires:  zlib-devel-static
+### x86_64
+%ifarch s390x
+BuildRequires:  kernel-zfcpdump
+BuildRequires:  qclib-devel-static
+%endif
 ### Cargo
 BuildRequires:  rust
 BuildRequires:  cargo
@@ -195,7 +198,7 @@ Requires(post): permissions
 Requires(pre):  shadow
 Recommends:     blktrace
 Provides:       s390utils:/sbin/dasdfmt
-ExclusiveArch:  s390x
+### ExclusiveArch:  s390x x86_64
 
 %description
 This package contains the tools needed to use Linux on IBM z Systems
@@ -315,15 +318,16 @@ unavailable, the toolset checks for operational paths to the same
 volume. If available, it reconfigures the FCP re-IPL settings to use an
 operational path.
 
+### *** s390x ************************************************************************* ###
+%ifarch s390x
+
 %prep
 %autosetup -p1
 
 cp -vi %{SOURCE22} CAUTION
 
-###
 install -D -m 0644 %{SOURCE200} .cargo/config
-tar -xzvf %{SOURCE201}
-###
+tar -xzf %{SOURCE201}
 
 %build
 
@@ -333,13 +337,17 @@ tar -xzvf %{SOURCE201}
 
 export OPT_FLAGS="%{optflags}"
 export KERNELIMAGE_MAKEFLAGS="%%{?_smp_mflags}"
-%make_build \
+
+%make_build -v \
      ZFCPDUMP_DIR=%{_prefix}/lib/s390-tools/zfcpdump \
      DISTRELEASE=%{release} \
      UDEVRUNDIR=/run/udev \
      HAVE_CARGO=1 \
-     HAVE_DRACUT=1
-gcc -static -o read_values ${OPT_FLAGS} %{SOURCE86} -lqc
+     HAVE_DRACUT=1 \
+     CC=gcc-13 \
+     CXX=g++-13
+###     all
+gcc-13 -v -static -o read_values ${OPT_FLAGS} %{SOURCE86} -lqc
 
 %install
 mkdir -p %{buildroot}/boot/zipl
@@ -350,7 +358,10 @@ mkdir -p %{buildroot}%{_sysconfdir}/zkey/repository
      SYSTEMDSYSTEMUNITDIR=%{_unitdir} \
      UDEVRUNDIR=/run/udev \
      HAVE_CARGO=1 \
-     HAVE_DRACUT=1
+     HAVE_DRACUT=1 \
+     CC=gcc-13 \
+     CXX=g++-13
+###     all
 
 # The make install command puts things in /etc/sysconfig and not the
 # fillup-templates directory. Let's try moving them where they belong
@@ -734,5 +745,45 @@ done
 %{_prefix}/lib/udev/chreipl-fcp-mpath-try-change-ipl-path
 %{_udevrulesdir}/70-chreipl-fcp-mpath.rules
 %{_mandir}/man7/chreipl-fcp-mpath.7%{?ext_man}
+
+### _endif
+### *** !s390x ************************************************************************* ###
+### _ifarch x86_64
+%else
+
+%prep
+%autosetup -p1
+
+install -D -m 0644 %{SOURCE200} .cargo/config
+tar -xzf %{SOURCE201}
+
+%build
+export OPT_FLAGS="%{optflags}"
+export KERNELIMAGE_MAKEFLAGS="%%{?_smp_mflags}"
+%make_build \
+     DISTRELEASE=%{release} \
+     UDEVRUNDIR=/run/udev \
+     HAVE_CARGO=1 \
+     HAVE_DRACUT=1
+
+%install
+%make_install \
+     DISTRELEASE=%{release} \
+     SYSTEMDSYSTEMUNITDIR=%{_unitdir} \
+     UDEVRUNDIR=/run/udev \
+     HAVE_CARGO=1 \
+     HAVE_DRACUT=1
+
+%files
+%{_prefix}/bin/*
+%{_prefix}/share/s390-tools/*
+%dir /usr/share/s390-tools
+%{_mandir}/man1/*
+
+%files debuginfo
+%dir %{_prefix}/lib/debug
+%dir %{_prefix}/lib/debug/usr/bin
+
+%endif
 
 %changelog

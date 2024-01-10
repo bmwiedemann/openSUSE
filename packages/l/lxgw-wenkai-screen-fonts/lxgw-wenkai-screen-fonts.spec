@@ -25,6 +25,7 @@ URL:            https://github.com/lxgw/LxgwWenKai-Screen
 Source0:        https://github.com/lxgw/LxgwWenKai-Screen/releases/download/v%{version}/LXGWWenKaiScreen.ttf
 BuildRequires:  fontpackages-devel
 BuildArch:      noarch
+%reconfigure_fonts_prereq
 
 %description
 A Chinese font derived from Fontworks's Klee One.

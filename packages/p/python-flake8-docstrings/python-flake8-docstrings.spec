@@ -1,7 +1,7 @@
 #
 # spec file for package python-flake8-docstrings
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,14 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-flake8-docstrings
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
 Summary:        Extension for flake8 which uses pydocstyle to check docstrings
 License:        MIT
 URL:            https://gitlab.com/pycqa/flake8-docstrings
-Source:         https://files.pythonhosted.org/packages/source/f/flake8-docstrings/flake8-docstrings-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/f/flake8-docstrings/flake8_docstrings-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -37,7 +37,7 @@ BuildArch:      noarch
 A module that adds an extension for the pydocstyle tool to flake8.
 
 %prep
-%setup -q -n flake8-docstrings-%{version}
+%setup -q -n flake8_docstrings-%{version}
 
 %build
 %python_build

@@ -1,0 +1,6 @@
+<package name="tomlplusplus" project="openSUSE:Factory">
+  <title>Header-only TOML config file parser and serializer for C++17</title>
+  <description></description>
+  <devel project="devel:libraries:c_c++" package="tomlplusplus"/>
+  <url>https://marzer.github.io/tomlplusplus</url>
+</package>

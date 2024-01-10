@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Dec 19 00:19:31 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Remove 0001-fix-life-in-zola-serve.patch. Part of 0.18.0 release now.
+- Remove cargo_config. Part of vendored tarball now.
+- Update to version 0.18.0:
+  * update dependencies
+  * remove some dummy file
+  * fix taxonomies missing lang in sitemap
+  * remove code blocks from search index
+  * elasticlunr-rs hu language support
+
+-------------------------------------------------------------------
 Tue Aug 15 04:00:16 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Add 0001-fix-life-in-zola-serve.patch to address bsc#1214237

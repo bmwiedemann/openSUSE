@@ -1,7 +1,7 @@
 #
 # spec file for package mage
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,15 @@
 
 
 Name:           mage
-Version:        v1.11.0~git0.07afc7d
+Version:        1.15.0
 Release:        0
-Summary:	A make-like build tool using Go
-# FIXME: Select a correct license from https://github.com/openSUSE/spec-cleaner#spdx-licenses
+Summary:        A make-like build tool using Go
 License:        Apache-2.0
 URL:            https://github.com/magefile/mage
-Source:         mage-%{version}.tar.xz
+Source:         https://github.com/magefile/mage/archive/refs/tags/v%{version}.tar.gz
 BuildRequires:  go
-BuildRequires:  golang(API) >= 1.12
 BuildRequires:  golang-packaging
-
+BuildRequires:  golang(API) >= 1.12
 
 %description
 

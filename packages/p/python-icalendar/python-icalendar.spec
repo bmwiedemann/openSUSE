@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2011 open-slx GmbH <Sascha.Manns@open-slx.de>
 # Copyright (c) 2009 - 7/2011 Sascha Manns <saigkill@opensuse.org>
 #
@@ -18,10 +18,10 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define	modname icalendar
+%{?sle15_python_module_pythons}
 Name:           python-%{modname}
-Version:        4.1.0
+Version:        5.0.11
 Release:        0
 Summary:        Python parser/generator of iCalendar files package
 License:        BSD-2-Clause
@@ -29,10 +29,11 @@ Group:          Development/Languages/Python
 URL:            https://github.com/collective/icalendar
 Source0:        https://files.pythonhosted.org/packages/source/i/icalendar/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module hypothesis}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module pytz}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-python-dateutil
@@ -52,10 +53,10 @@ with Python. It follows the RFC 2445 (iCalendar) specification.
 %setup -q -n %{modname}-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/icalendar
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -72,7 +73,7 @@ with Python. It follows the RFC 2445 (iCalendar) specification.
 %license LICENSE.rst
 %doc README.rst CHANGES.rst
 %python_alternative %{_bindir}/icalendar
-%{python_sitelib}/%{modname}/
-%{python_sitelib}/%{modname}-%{version}-py%{python_version}.egg-info/
+%{python_sitelib}/%{modname}
+%{python_sitelib}/%{modname}-%{version}.dist-info
 
 %changelog

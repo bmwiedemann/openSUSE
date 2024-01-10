@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 27 12:57:32 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Fix build error for Leap. Need gcc >= 8.5
+
+-------------------------------------------------------------------
 Wed Dec 13 06:53:32 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Do not attempt to ship numpy.distutils C code in the Python 3.12 -devel

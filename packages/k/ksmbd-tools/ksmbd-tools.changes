@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Oct 31 09:45:20 UTC 2023 - David Disseldorp <ddiss@suse.com>
+
+- Update to version 3.5.0
+  * Fix potencial NULL deference errors.
+  * Improved and cleaned up incorrect Glib library usage.
+  * Fix memleak and several bugs.
+  * Replace std functions with glib ones.
+  * update manpages.
+  * Improve the validation of ksmbd-tools's files(subauth, pwddb, conf).
+  * Increase the minimum glib version(2.40 -> 2.44)
+  * Several clean-ups.
+  * Add --list option to ksmbd.control.
+
+- Add ksmbd-tools-fix-worker_init_sa_handler-return-type.patch
+
+-------------------------------------------------------------------
 Thu Jul 27 20:50:20 UTC 2023 - David Disseldorp <ddiss@suse.com>
 
 - Update to version 3.4.9:

@@ -619,4 +619,15 @@
     #1367 (@Wh1isper)</comment>
     <requestid>1130946</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>24e4999d13284f6e36518666c3c1e163</srcmd5>
+    <version>2.12.1</version>
+    <time>1703527534</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.12.1
+  * log extension import time at debug level unless it's actually
+    slow #1375 (@minrk)
+  * Add support for async Authorizers #1374 #1373 (@Zsailer)</comment>
+    <requestid>1134929</requestid>
+  </revision>
 </revisionlist>

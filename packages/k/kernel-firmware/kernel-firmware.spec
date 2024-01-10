@@ -1,7 +1,7 @@
 #
 # spec file for package kernel-firmware
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,11 +21,11 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define version_unconverted 20231128
+%define version_unconverted 20240102
 # Force bzip2 instead of lzma compression (bsc#1176981)
 %define _binary_payload w9.bzdio
 Name:           kernel-firmware
-Version:        20231128
+Version:        20240102
 Release:        0
 Summary:        Linux kernel firmware files
 License:        GPL-2.0-only AND SUSE-Firmware AND GPL-2.0-or-later AND MIT
@@ -117,6 +117,7 @@ Conflicts:      filesystem < 84
 Provides:       %{name}-amdgpu = %{version}
 Provides:       %{name}-ath10k = %{version}
 Provides:       %{name}-ath11k = %{version}
+Provides:       %{name}-ath12k = %{version}
 Provides:       %{name}-atheros = %{version}
 Provides:       %{name}-bluetooth = %{version}
 Provides:       %{name}-bnx2 = %{version}
@@ -185,6 +186,7 @@ Obsoletes:      compat-wireless-firmware < 4.4
 Requires:       %{name}-amdgpu = %{version}
 Requires:       %{name}-ath10k = %{version}
 Requires:       %{name}-ath11k = %{version}
+Requires:       %{name}-ath12k = %{version}
 Requires:       %{name}-atheros = %{version}
 Requires:       %{name}-bluetooth = %{version}
 Requires:       %{name}-bnx2 = %{version}
@@ -600,6 +602,24 @@ Supplements:    modalias(pci:v000017CBd00001104sv*sd*bc*sc*i*)
 %description ath11k
 This package contains compressed kernel firmware files for
 Atheros Qualcomm WiFi drivers.
+
+%package ath12k
+Summary:        Kernel firmware files for Atheros Qualcomm WiFi 7 chipset drivers
+Group:          System/Kernel
+Requires(post): /usr/bin/mkdir /usr/bin/touch
+Requires(postun):/usr/bin/mkdir /usr/bin/touch
+Requires(post): dracut >= 049
+Conflicts:      kernel < 5.3
+Conflicts:      kernel-firmware < %{version}
+Conflicts:      kernel-firmware-uncompressed
+%if 0%{?suse_version} >= 1550
+# make sure we have post-usrmerge filesystem package on TW
+Conflicts:      filesystem < 84
+%endif
+
+%description ath12k
+This package contains compressed kernel firmware files for
+Atheros Qualcomm WiFi 7 chipset drivers.
 
 %package atheros
 Summary:        Kernel firmware files for Atheros wireless drivers
@@ -3082,10 +3102,13 @@ Supplements:    modalias(of:N*T*Cmediatek,mt8188-scpC*)
 Supplements:    modalias(of:N*T*Cmediatek,mt8192-scp)
 Supplements:    modalias(of:N*T*Cmediatek,mt8192-scpC*)
 Supplements:    modalias(of:N*T*Cmediatek,mt8195-scp)
+Supplements:    modalias(of:N*T*Cmediatek,mt8195-scp-dual)
+Supplements:    modalias(of:N*T*Cmediatek,mt8195-scp-dualC*)
 Supplements:    modalias(of:N*T*Cmediatek,mt8195-scpC*)
 Supplements:    modalias(pci:v00000B48d00007922sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014C3d00000608sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014C3d00000616sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v000014C3d00000717sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014C3d00007602sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014C3d00007610sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014C3d00007611sv*sd*bc*sc*i*)
@@ -3096,9 +3119,11 @@ Supplements:    modalias(pci:v000014C3d00007650sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014C3d00007662sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014C3d00007663sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014C3d00007922sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v000014C3d00007925sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014C3d00007961sv*sd*bc*sc*i*)
 Supplements:    modalias(sdio:c*v037Ad7663*)
 Supplements:    modalias(sdio:c*v037Ad7668*)
+Supplements:    modalias(sdio:c*v037Ad7901*)
 Supplements:    modalias(sdio:c*v037Ad7961*)
 Supplements:    modalias(usb:v045Ep02E6d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v045Ep02FEd*dc*dsc*dp*ic*isc*ip*in*)
@@ -3108,6 +3133,7 @@ Supplements:    modalias(usb:v057Cp8503d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0586p3425d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v07B8p7610d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0846p9053d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v0846p9060d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0B05p17D1d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0B05p17D3d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0B05p17DBd*dc*dsc*dp*ic*isc*ip*in*)
@@ -3123,6 +3149,8 @@ Supplements:    modalias(usb:v0E8Dp7612d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0E8Dp7630d*dc*dsc*dp*icFFisc02ipFFin*)
 Supplements:    modalias(usb:v0E8Dp7632d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0E8Dp7650d*dc*dsc*dp*icFFisc02ipFFin*)
+Supplements:    modalias(usb:v0E8Dp7925d*dc*dsc*dp*icFFiscFFipFFin*)
+Supplements:    modalias(usb:v0E8Dp7961d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v13B1p003Ed*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v13D3p3431d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v13D3p3434d*dc*dsc*dp*ic*isc*ip*in*)
@@ -3147,6 +3175,7 @@ Supplements:    modalias(usb:v2955p1001d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v2955p1003d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v2A5Fp1000d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v2C4Ep0103d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v3574p6211d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v7392p7710d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v7392pA711d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v7392pB711d*dc*dsc*dp*ic*isc*ip*in*)
@@ -4208,6 +4237,8 @@ Supplements:    modalias(of:N*T*Cqcom,qcs404-cdsp-pas)
 Supplements:    modalias(of:N*T*Cqcom,qcs404-cdsp-pasC*)
 Supplements:    modalias(of:N*T*Cqcom,qcs404-wcss-pas)
 Supplements:    modalias(of:N*T*Cqcom,qcs404-wcss-pasC*)
+Supplements:    modalias(of:N*T*Cqcom,sc7180-adsp-pas)
+Supplements:    modalias(of:N*T*Cqcom,sc7180-adsp-pasC*)
 Supplements:    modalias(of:N*T*Cqcom,sc7180-dpu)
 Supplements:    modalias(of:N*T*Cqcom,sc7180-dpuC*)
 Supplements:    modalias(of:N*T*Cqcom,sc7180-mdss)
@@ -4246,6 +4277,8 @@ Supplements:    modalias(of:N*T*Cqcom,sc8280xp-nsp1-pas)
 Supplements:    modalias(of:N*T*Cqcom,sc8280xp-nsp1-pasC*)
 Supplements:    modalias(of:N*T*Cqcom,sdm660-adsp-pas)
 Supplements:    modalias(of:N*T*Cqcom,sdm660-adsp-pasC*)
+Supplements:    modalias(of:N*T*Cqcom,sdm660-mss-pil)
+Supplements:    modalias(of:N*T*Cqcom,sdm660-mss-pilC*)
 Supplements:    modalias(of:N*T*Cqcom,sdm845-adsp-pas)
 Supplements:    modalias(of:N*T*Cqcom,sdm845-adsp-pasC*)
 Supplements:    modalias(of:N*T*Cqcom,sdm845-cdsp-pas)
@@ -4256,6 +4289,8 @@ Supplements:    modalias(of:N*T*Cqcom,sdm845-mdss)
 Supplements:    modalias(of:N*T*Cqcom,sdm845-mdssC*)
 Supplements:    modalias(of:N*T*Cqcom,sdm845-mss-pil)
 Supplements:    modalias(of:N*T*Cqcom,sdm845-mss-pilC*)
+Supplements:    modalias(of:N*T*Cqcom,sdm845-slpi-pas)
+Supplements:    modalias(of:N*T*Cqcom,sdm845-slpi-pasC*)
 Supplements:    modalias(of:N*T*Cqcom,sdx55-mpss-pas)
 Supplements:    modalias(of:N*T*Cqcom,sdx55-mpss-pasC*)
 Supplements:    modalias(of:N*T*Cqcom,sm6115-adsp-pas)
@@ -4268,6 +4303,10 @@ Supplements:    modalias(of:N*T*Cqcom,sm6115-mdss)
 Supplements:    modalias(of:N*T*Cqcom,sm6115-mdssC*)
 Supplements:    modalias(of:N*T*Cqcom,sm6115-mpss-pas)
 Supplements:    modalias(of:N*T*Cqcom,sm6115-mpss-pasC*)
+Supplements:    modalias(of:N*T*Cqcom,sm6125-dpu)
+Supplements:    modalias(of:N*T*Cqcom,sm6125-dpuC*)
+Supplements:    modalias(of:N*T*Cqcom,sm6125-mdss)
+Supplements:    modalias(of:N*T*Cqcom,sm6125-mdssC*)
 Supplements:    modalias(of:N*T*Cqcom,sm6350-adsp-pas)
 Supplements:    modalias(of:N*T*Cqcom,sm6350-adsp-pasC*)
 Supplements:    modalias(of:N*T*Cqcom,sm6350-cdsp-pas)
@@ -4278,10 +4317,16 @@ Supplements:    modalias(of:N*T*Cqcom,sm6350-mdss)
 Supplements:    modalias(of:N*T*Cqcom,sm6350-mdssC*)
 Supplements:    modalias(of:N*T*Cqcom,sm6350-mpss-pas)
 Supplements:    modalias(of:N*T*Cqcom,sm6350-mpss-pasC*)
+Supplements:    modalias(of:N*T*Cqcom,sm6375-adsp-pas)
+Supplements:    modalias(of:N*T*Cqcom,sm6375-adsp-pasC*)
+Supplements:    modalias(of:N*T*Cqcom,sm6375-cdsp-pas)
+Supplements:    modalias(of:N*T*Cqcom,sm6375-cdsp-pasC*)
 Supplements:    modalias(of:N*T*Cqcom,sm6375-dpu)
 Supplements:    modalias(of:N*T*Cqcom,sm6375-dpuC*)
 Supplements:    modalias(of:N*T*Cqcom,sm6375-mdss)
 Supplements:    modalias(of:N*T*Cqcom,sm6375-mdssC*)
+Supplements:    modalias(of:N*T*Cqcom,sm6375-mpss-pas)
+Supplements:    modalias(of:N*T*Cqcom,sm6375-mpss-pasC*)
 Supplements:    modalias(of:N*T*Cqcom,sm8150-adsp-pas)
 Supplements:    modalias(of:N*T*Cqcom,sm8150-adsp-pasC*)
 Supplements:    modalias(of:N*T*Cqcom,sm8150-cdsp-pas)
@@ -5595,6 +5640,7 @@ Supplements:    modalias(usb:v0B05p17E8d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0B05p18F0d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0B05p18F0d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0B05p18F1d*dc*dsc*dp*icFFiscFFipFFin*)
+Supplements:    modalias(usb:v0B05p1976d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0BDAp0179d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0BDAp0179d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0BDAp018Ad*dc*dsc*dp*ic*isc*ip*in*)
@@ -6262,6 +6308,7 @@ Supplements:    modalias(acpi*:CSC3551%3A*)
 Supplements:    modalias(acpi*:INT33C8%3A*)
 Supplements:    modalias(acpi*:INT3438%3A*)
 Supplements:    modalias(acpi*:PNPB006%3A*)
+Supplements:    modalias(acpi*:TIAS2781%3A*)
 Supplements:    modalias(hdaudio:v11020011r*a01*)
 Supplements:    modalias(of:N*T*Cmediatek,mt8186-dsp)
 Supplements:    modalias(of:N*T*Cmediatek,mt8186-dspC*)
@@ -6628,6 +6675,15 @@ fi
 %posttrans ath11k
 %{?regenerate_initrd_posttrans}
 
+%post ath12k
+%{?regenerate_initrd_post}
+
+%postun ath12k
+%{?regenerate_initrd_post}
+
+%posttrans ath12k
+%{?regenerate_initrd_posttrans}
+
 %post atheros
 %{?regenerate_initrd_post}
 
@@ -6933,6 +6989,8 @@ fi
 %files -f files-ath10k ath10k
 
 %files -f files-ath11k ath11k
+
+%files -f files-ath12k ath12k
 
 %files -f files-atheros atheros
 

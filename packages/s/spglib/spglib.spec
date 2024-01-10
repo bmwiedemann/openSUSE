@@ -1,7 +1,7 @@
 #
 # spec file for package spglib
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,15 @@
 #
 
 
-%define shlib libsymspg1
+%if 0%{?suse_version} >= 1600
+%bcond_without tests
+%else
+%bcond_with    tests
+%endif
+
+%define shlib libsymspg2
 Name:           spglib
-Version:        2.0.2
+Version:        2.2.0
 Release:        0
 Summary:        Find and handle crystal symmetries
 License:        BSD-3-Clause
@@ -26,9 +32,15 @@ Group:          Productivity/Scientific/Physics
 URL:            https://spglib.github.io/spglib/
 Source0:        https://github.com/spglib/spglib/archive/v%{version}.tar.gz#/spglib-%{version}.tar.gz
 BuildRequires:  cmake
+BuildRequires:  c++_compiler
 BuildRequires:  python3-devel
 BuildRequires:  python3-numpy-devel
 BuildRequires:  python3-setuptools
+%if %{with tests}
+BuildRequires:  python3-pytest
+BuildRequires:  python3-PyYAML
+BuildRequires:  pkgconfig(gtest)
+%endif
 
 %description
 Spglib is a C library to find and handle crystal symmetries.
@@ -69,27 +81,28 @@ Spglib is a C library to find and handle crystal symmetries.
 %autopatch -p1
 
 %build
-pushd .
-%cmake
+%cmake \
+  -DSPGLIB_WITH_Python:BOOL=ON \
+  -DSPGLIB_WITH_TESTS:BOOL=%{?with_tests:ON}%{!?with_tests:OFF} \
+  %{nil}
 %cmake_build
-popd
-
-pushd python
-%python3_build
-popd
 
 %install
-pushd .
 %cmake_install
-rm %{buildroot}%{_libdir}/lib*.a
-popd
 
 # Fix "env-script-interpreter" rpmlint warning
 chmod 644 ruby/*.rb
 
-pushd python
-%python3_install
-popd
+# Remove shared library and header copies from python directory
+rm -Rf %{python3_sitearch}/spglib/include
+rm -Rf %{python3_sitearch}/spglib/libsymspg.so*
+
+%check
+%if %{with tests}
+export PYTHONPATH=%{buildroot}%{python_sitearch} 
+export PYTHONDONTWRITEBYTECODE=1
+%ctest
+%endif
 
 %post -n %{shlib} -p /sbin/ldconfig
 %postun -n %{shlib} -p /sbin/ldconfig
@@ -101,12 +114,11 @@ popd
 %files devel
 %doc example ruby
 %{_includedir}/spglib.h
-%{_includedir}/spglib_f08.f90
 %{_libdir}/libsymspg.so
+%{_libdir}/cmake/Spglib
 %{_libdir}/pkgconfig/spglib.pc
 
 %files -n python3-spglib
 %{python3_sitearch}/spglib
-%{python3_sitearch}/spglib*.egg-info
 
 %changelog

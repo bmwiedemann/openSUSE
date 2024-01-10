@@ -20,7 +20,7 @@
 %define soname_ctl liblttng-ctl
 %define sover_ctl 0
 Name:           lttng-tools
-Version:        2.13.9
+Version:        2.13.11
 Release:        0
 Summary:        Linux Trace Toolkit Next Generation userspace tools
 License:        GPL-2.0-only AND LGPL-2.1-only

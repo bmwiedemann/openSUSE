@@ -18,13 +18,12 @@
 
 %define modname qsymm
 Name:           python-qsymm
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        Symmetry finder and symmetric Hamiltonian generator
 License:        BSD-2-Clause
 URL:            https://gitlab.kwant-project.org/qt/qsymm
 Source:         https://files.pythonhosted.org/packages/source/q/qsymm/qsymm-%{version}.tar.gz
-Patch0:         support-sympy-1.12.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}

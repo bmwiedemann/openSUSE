@@ -1,7 +1,7 @@
 #
 # spec file for package sphinx
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -206,13 +206,11 @@ useradd -r -g %{sphinx_group} -d %{sphinx_home} -s /bin/sh \
 %postun -n libsphinxclient-%{soname} -p /sbin/ldconfig
 
 %files
-%defattr(750,root,root,-)
 %config %dir %{_sysconfdir}/%{name}
 %{_sysusersdir}/%{name}-user.conf
-# Restrict rights access to conf files they can contain sql db credentials
-%defattr(640,root,%{sphinx_group},-)
 %config %{_sysconfdir}/%{name}/example.sql
-%config(noreplace) %{_sysconfdir}/%{name}/%{name}.conf
+# Restrict rights access to conf files, because they can contain sql db credentials
+%config(noreplace) %attr(640,root,%{sphinx_group}) %{_sysconfdir}/%{name}/%{name}.conf
 %config %{_sysconfdir}/%{name}/%{name}.conf.dist
 %config %{_sysconfdir}/%{name}/%{name}-min.conf.dist
 %{_unitdir}/%{daemon}.service
@@ -220,18 +218,18 @@ useradd -r -g %{sphinx_group} -d %{sphinx_home} -s /bin/sh \
 %ghost /run/%{name}
 %{_sbindir}/rc%{daemon}
 %config %{_sysconfdir}/logrotate.d/%{name}
-%attr(755,root,root) %{_bindir}/spelldump
-%attr(755,root,root) %{_bindir}/indexer
-%attr(755,root,root) %{_bindir}/searchd
-%attr(755,root,root) %{_bindir}/indextool
-%attr(755,root,root) %{_bindir}/wordbreaker
+%{_bindir}/spelldump
+%{_bindir}/indexer
+%{_bindir}/searchd
+%{_bindir}/indextool
+%{_bindir}/wordbreaker
 %license COPYING
 %doc contrib/
 %doc doc/*.html doc/*.css doc/*.txt
-%doc %attr(644, root, man) %{_mandir}/man1/indexer.1*
-%doc %attr(644, root, man) %{_mandir}/man1/indextool.1*
-%doc %attr(644, root, man) %{_mandir}/man1/searchd.1*
-%doc %attr(644, root, man) %{_mandir}/man1/spelldump.1*
+%{_mandir}/man1/indexer.1*
+%{_mandir}/man1/indextool.1*
+%{_mandir}/man1/searchd.1*
+%{_mandir}/man1/spelldump.1*
 %dir %attr(0750, %{sphinx_user}, %{sphinx_group}) %{_localstatedir}/log/%{name}
 %ghost %attr(0640, %{sphinx_user}, root) %{_localstatedir}/log/%{name}/%{daemon}.log
 %ghost %attr(0640, %{sphinx_user}, root) %{_localstatedir}/log/%{name}/query.log
@@ -241,7 +239,7 @@ useradd -r -g %{sphinx_group} -d %{sphinx_home} -s /bin/sh \
 
 %files -n libsphinxclient-%{soname}
 %license COPYING
-%attr(755, root, root) %{_libdir}/libsphinxclient-0.0.1.so
+%{_libdir}/libsphinxclient-0.0.1.so
 
 %files -n libsphinxclient-devel
 %license COPYING

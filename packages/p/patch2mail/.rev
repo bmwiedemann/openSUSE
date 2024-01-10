@@ -140,4 +140,12 @@
     <comment>- BuildRequire cron, as it contains now the cron directories (forwarded request 724764 from kukuk)</comment>
     <requestid>724799</requestid>
   </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>b24665e63f5ab9670ec74904c4e216a2</srcmd5>
+    <version>1.1.2</version>
+    <time>1702845130</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1133612</requestid>
+  </revision>
 </revisionlist>

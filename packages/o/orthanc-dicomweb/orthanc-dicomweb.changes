@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Dec 23 17:24:28 UTC 2023 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.16
+  * Removed misleading log messages about transcoding.
+    https://discourse.orthanc-server.org/t/dicomweb-plugin-1-13-possible-unnecessary-transcoding/3979
+  * Fix parsing of Accept header "multipart/related; type=application/octet-stream; transfer-syntax=*" that is used by OHIF.
+  * When retrieving frames, WADO-RS may now retrieve transcoded instances from Orthanc StorageCache (for Orthanc >= 1.12.2)
+
+-------------------------------------------------------------------
 Sun Sep  3 22:23:04 UTC 2023 - Axel Braun <axel.braun@gmx.de>
 
 - Version 1.15 

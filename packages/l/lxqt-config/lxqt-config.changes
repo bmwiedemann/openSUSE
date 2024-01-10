@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan  1 07:36:32 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
+
+- Added %dir declarations for icon directories to clear buildfail
+
+-------------------------------------------------------------------
 Mon Nov  6 03:31:23 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
 
 - Updated to 1.4.0:
@@ -7,7 +12,7 @@ Mon Nov  6 03:31:23 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
     size when Xresources from /etc is read.
   * Use lxqt-menu-data
   * Corrected some typos and improved the message about default
-    monitor settings 
+    monitor settings
 
 -------------------------------------------------------------------
 Sat Apr 15 19:28:23 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>

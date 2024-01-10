@@ -1,7 +1,7 @@
 #
 # spec file for package python-pipx
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pipx
-Version:        1.3.3
+Version:        1.4.0
 Release:        0
 Summary:        Install and Run Python Applications in Isolated Environments
 License:        MIT

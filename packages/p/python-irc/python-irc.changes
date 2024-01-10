@@ -1,7 +1,30 @@
 -------------------------------------------------------------------
+Sat Jan  6 20:42:35 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 20.3.1:
+  * Added support for SASL login.
+  * Better handling of escape sequences in message tags.
+  * Require Python 3.8 or later.
+  * Pinned against jaraco.text 3.10 due to change in interface.
+  * In irc.bot, avoid hanging idle when the first
+    connection attempt fails.
+  * SingleServerIRCBot no longer accepts reconnection_interval as
+    a parameter.
+  * Added server support for NOTICE commands.
+
+-------------------------------------------------------------------
+Sat Mar 26 18:33:16 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 20.0.0:
+  * ``SingleServerIRCBot`` no longer accepts ``reconnection_interval``
+    as a parameter.
+  * Added server support for NOTICE commands.
+  * Require Python 3.7 or later.
+
+-------------------------------------------------------------------
 Wed Dec 22 15:02:42 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 
-- Update to 19.0.1 
+- Update to 19.0.1
   * #176: Fix issues with version number reporting. Restored
     version version number reporting in bot and client.
   * ``irc.client`` no longer exposes a ``VERSION`` or
@@ -268,7 +291,7 @@ Mon Apr 29 07:36:11 UTC 2013 - boris@steki.net
 - Use argument parsing to solicit optional port
 - Use argparse for argument parsing
 - Add and document global variable
- 
+
 
 -------------------------------------------------------------------
 Fri Mar 15 09:20:43 UTC 2013 - speilicke@suse.com

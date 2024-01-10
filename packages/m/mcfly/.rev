@@ -47,4 +47,20 @@
     or date range</comment>
     <requestid>1130622</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>85b3e970417287d001ea8669ed8e3e17</srcmd5>
+    <version>0.8.4+0</version>
+    <time>1703527583</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.8.4:
+  * Remove spurious print when moving files.
+  * PowerShell improvements
+
+- Update to 0.8.3:
+  * Add support for exporting command history matching a regex or
+    date range
+  * Add Windows and Powershell support
+  * Add deprecation warning on brew tap.</comment>
+    <requestid>1135079</requestid>
+  </revision>
 </revisionlist>

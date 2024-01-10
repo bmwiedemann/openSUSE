@@ -18,14 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-treq
-Version:        22.2.0
+Version:        23.11.0
 Release:        0
 Summary:        HTTP library inspired by python-requests
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/twisted/treq
 Source:         https://files.pythonhosted.org/packages/source/t/treq/treq-%{version}.tar.gz
-BuildRequires:  %{python_module Twisted-tls >= 18.7.0}
+BuildRequires:  %{python_module Twisted-tls >= 22.10.0}
 BuildRequires:  %{python_module attrs}
 BuildRequires:  %{python_module httpbin}
 BuildRequires:  %{python_module hyperlink >= 21.0.0}
@@ -37,7 +37,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Twisted-tls >= 18.7.0
+Requires:       python-Twisted-tls >= 22.10.0
 Requires:       python-attrs
 Requires:       python-hyperlink >= 21.0.0
 Requires:       python-incremental

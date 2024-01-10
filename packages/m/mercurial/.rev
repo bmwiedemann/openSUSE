@@ -1680,4 +1680,20 @@ As usual, a lot of patches don't make it to this list since they're more interna
     <comment></comment>
     <requestid>1128100</requestid>
   </revision>
+  <revision rev="190" vrev="1">
+    <srcmd5>48a3f3129de9a152c1c81f38ddb63357</srcmd5>
+    <version>6.6.1</version>
+    <time>1703198267</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1134311</requestid>
+  </revision>
+  <revision rev="191" vrev="2">
+    <srcmd5>e1834b9961a1ef7a89515dcb1fe923b5</srcmd5>
+    <version>6.6.1</version>
+    <time>1703527486</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1134674</requestid>
+  </revision>
 </revisionlist>

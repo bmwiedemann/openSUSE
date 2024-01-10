@@ -27,6 +27,8 @@ Summary:        Backend of Django-Haystack for the Xapian search engine
 License:        GPL-2.0-only
 URL:            https://github.com/notanumber/xapian-haystack
 Source:         https://files.pythonhosted.org/packages/source/x/xapian_haystack/%{modname}-%{version}.tar.gz
+#PATCH-FIX-UPSTREAM https://github.com/notanumber/xapian-haystack/pull/181 Add Xapian Omega solution to haystack backend to fix long term issues
+Patch:          python-xapian-haystack-term-too-long.patch
 BuildRequires:  %{python_module Django >= 2.2}
 BuildRequires:  %{python_module django-haystack >= 3.0}
 BuildRequires:  %{python_module pip}

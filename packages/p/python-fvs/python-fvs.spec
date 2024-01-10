@@ -1,7 +1,7 @@
 #
 # spec file for package python-fvs
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,8 @@
 #
 
 
-%define skip_python2 1
-# FVS requires Python 3.9 or higher
-%define skip_python37 1
-%define skip_python38 1
 %define modname FVS
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-fvs
 Version:        0.3.4
 Release:        0
@@ -29,8 +25,10 @@ Summary:        File Versioning System with hash comparison
 License:        MIT
 URL:            https://github.com/mirkobrombin/FVS
 Source:         https://github.com/mirkobrombin/%{modname}/archive/refs/tags/%{version}.tar.gz#/%{modname}-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module orjson}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

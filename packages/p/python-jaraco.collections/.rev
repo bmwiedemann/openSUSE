@@ -119,4 +119,18 @@
     <comment></comment>
     <requestid>1116435</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e1222e029ff1fa977c70f56ff368f943</srcmd5>
+    <version>5.0.0</version>
+    <time>1702844941</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.0.0:
+  * Moved collections into a package and declared as typed.
+  * Deprecations and Removals
+  * Removed DictFilter.
+
+- Update to 3.8.0
+- Update to 3.7.0:</comment>
+    <requestid>1133653</requestid>
+  </revision>
 </revisionlist>

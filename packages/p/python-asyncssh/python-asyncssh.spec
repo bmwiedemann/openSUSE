@@ -16,10 +16,9 @@
 #
 
 
-%define skip_python2 1
-%define skip_python36 1
+%{?sle15_python_module_pythons}
 Name:           python-asyncssh
-Version:        2.14.1
+Version:        2.14.2
 Release:        0
 Summary:        Asynchronous SSHv2 client and server library
 License:        EPL-2.0 OR GPL-2.0-or-later

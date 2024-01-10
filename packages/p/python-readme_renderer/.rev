@@ -139,4 +139,14 @@
  * Preserve lang attribute in pre (#247)</comment>
     <requestid>1109530</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0faca8775d8598df5c8c05e7820db687</srcmd5>
+    <version>42.0</version>
+    <time>1703800455</time>
+    <user>anag+factory</user>
+    <comment>- update to 42.0:
+  * Migrate from ``bleach`` to ``nh3`` (#295)
+  * Migrate from ``setup.py`` to ``pyproject.toml``</comment>
+    <requestid>1135356</requestid>
+  </revision>
 </revisionlist>

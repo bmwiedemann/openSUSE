@@ -1,7 +1,7 @@
 #
 # spec file for package opi
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           opi
-Version:        4.2.0
+Version:        4.4.0
 Release:        0
 Summary:        OBS Package Installer (CLI)
 License:        GPL-3.0-only

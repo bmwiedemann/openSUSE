@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Dec 14 09:14:35 UTC 2023 - Petr Gajdos <pgajdos@suse.com>
+
+- update to 23.1.0:
+  * The only new feature is the possibility to pass an own salt
+    to `argon2.PasswordHasher.hash()`, however a lot has changed
+    around documentation and packaging to make *argon2-cffi*
+    maintainable in the future.
+  * Python 3.6 is not supported anymore.
+  * The `InvalidHash` exception is deprecated in favor of
+    `InvalidHashError`. No plans for removal currently exist and
+    the names can (but shouldn't) be used interchangeably.
+  * `argon2.hash_password()`, `argon2.hash_password_raw()`, and
+    `argon2.verify_password()` that have been soft-deprecated
+    since 2016 are now hard-deprecated. They now raise
+    `DeprecationWarning`s and will be removed in 2024.
+  * Official support for Python 3.11 and 3.12. No code changes
+    were necessary.
+  * `argon2.exceptions.InvalidHashError` as a replacement for
+    `InvalidHash`.
+  * *salt* parameter to `argon2.PasswordHasher.hash()` to allow
+    for custom salts. This is only useful for specialized use-
+    cases -- leave it on None unless you know exactly what you
+    are doing. \#153
+
+-------------------------------------------------------------------
 Fri Jun  9 06:25:05 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

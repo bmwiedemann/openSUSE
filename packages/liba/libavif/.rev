@@ -228,4 +228,12 @@ This lib uses rav1e and dav1d for encoding and decoding.</comment>
     <comment></comment>
     <requestid>1129716</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>0b78adb252e5226b3936c87025ae4029</srcmd5>
+    <version>1.0.3</version>
+    <time>1703527475</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1134725</requestid>
+  </revision>
 </revisionlist>

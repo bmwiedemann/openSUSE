@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Nov 21 19:41:56 UTC 2023 - andreas.stieger@gmx.de
+
+- Update to version 0.3.6.0:
+  * -add a test for the manifest file
+  * add option to support sha256 checksum type
+  * add github workflow for pytest
+  * add basic tests with pytest
+  * do not fail if 'transports' or 'categories' are missing
+  * Update README.md for categories and extra_configs
+  * don't fail if no network is configured
+  * add 'no_default_configs' option to 'system'
+  * add categories, fixes issue #35
+  * add extra_configs
+  * Add doc for OVF properties to README.md
+  * fix for split failure when there is more than one equals sign in 'param'
+  * fix error when product section doesn't exist
+  * Add OVF template for hardware version 21
+  * Fix typo, from PR #29
+  * fix vmdisk ids
+  * add OVF properties
+
+-------------------------------------------------------------------
+Thu Nov 16 20:42:19 UTC 2023 - Guilherme Moro <gmoro@suse.com>
+
+- Patch: shebang.patch fix bash/sh shebang issue
+
+-------------------------------------------------------------------
 Fri Aug 25 09:07:10 UTC 2023 - gmoro@suse.com
 
 - Update to version 0.3.1.0:

@@ -1,7 +1,7 @@
 #
 # spec file for package python-alabaster
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,18 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-alabaster
-Version:        0.7.13
+Version:        0.7.15
 Release:        0
 Summary:        Modified Kr Sphinx doc theme
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/bitprophet/alabaster
 Source:         https://files.pythonhosted.org/packages/source/a/alabaster/alabaster-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -42,15 +43,16 @@ projects.
 %setup -q -n alabaster-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
-%{python_sitelib}/alabaster*
-%license LICENSE
+%license LICENSE.rst
 %doc README.rst
+%{python_sitelib}/alabaster
+%{python_sitelib}/alabaster-%{version}.dist-info
 
 %changelog

@@ -1026,4 +1026,22 @@ run -osc service localrun format_spec_file to fix copyright
     (#2518)</comment>
     <requestid>1113348</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>287c3367b71076b95baa21ad30e23e27</srcmd5>
+    <version>2.34</version>
+    <time>1703800841</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.34:
+  Added:
+  * latest_article_age feed attribute; it's similar to the age attribute of an
+    article, and can be used to e.g. hide feeds which were recently updated
+    (#2619)
+  * Updated translations
+  * Updated vendored library json.hpp to 3.11.3
+  * Bumped minimum supported Rust version to 1.70.0
+  Fixed:
+  * Articles in Mastodon feeds having no titles when using Newsboat with NextCloud
+    News (#2573)</comment>
+    <requestid>1135148</requestid>
+  </revision>
 </revisionlist>

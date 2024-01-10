@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-lzo
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-python-lzo
-Version:        1.14
+Version:        1.15
 Release:        0
 Summary:        Python bindings for the LZO data compression library
 License:        GPL-2.0-only
@@ -26,7 +26,9 @@ Group:          Development/Languages/Python
 URL:            https://github.com/jd-boyd/python-lzo
 Source:         https://files.pythonhosted.org/packages/source/p/python-lzo/python-lzo-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  lzo-devel
 BuildRequires:  python-rpm-macros
@@ -44,19 +46,19 @@ ratios at the expense of time.
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%pytest_arch tests/test.py
+%pytest_arch tests
 
 %files %{python_files}
 %doc NEWS
 %license COPYING
 %{python_sitearch}/lzo.*so
-%{python_sitearch}/python_lzo-%{version}*-info
+%{python_sitearch}/python_lzo-%{version}.dist-info
 
 %changelog

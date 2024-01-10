@@ -325,4 +325,22 @@
   - Imported Translations from Zanata</comment>
     <requestid>1069678</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>d2b0aa55a6e3d0705faaf2491bf941ff</srcmd5>
+    <version>5.2.0</version>
+    <time>1704487308</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 5.2.0
+  - Update master for stable/2023.1
+  - Imported Translations from Zanata
+  - Revert &quot;Moves supported python runtimes from version 3.8 to 3.10&quot;
+  - Bump bandit
+  - Moves supported python runtimes from version 3.8 to 3.10
+
+- update to version 5.1.1
+  - Fix issues related to tox4
+  - Cleanup py27 support
+  - Imported Translations from Zanata</comment>
+    <requestid>1136730</requestid>
+  </revision>
 </revisionlist>

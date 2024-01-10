@@ -199,4 +199,15 @@ providing the results. (forwarded request 695023 from mcepl)</comment>
   * Improved permission-denied test.</comment>
     <requestid>1130337</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ecc77be9abc367d8a93462d82551ca5c</srcmd5>
+    <version>0.5.2</version>
+    <time>1702673299</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.5.2:
+  * Fix #228: Clarify documentation for encryption/decryption.
+  * Make I/O buffer size configurable via ``buffer_size`` attribute
+    on a ``GPG`` instance.</comment>
+    <requestid>1133187</requestid>
+  </revision>
 </revisionlist>

@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5Parts5
-%define _tar_path 5.103
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
+%define qt5_version 5.15.2
 %bcond_without released
 Name:           kparts
-Version:        5.112.0
+Version:        5.113.0
 Release:        0
 Summary:        Plugin framework for user interface components
 License:        LGPL-2.1-or-later
@@ -34,24 +34,23 @@ Source:         %{name}-%{version}.tar.xz
 Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
-BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
+BuildRequires:  extra-cmake-modules >= %{_kf5_version}
 BuildRequires:  fdupes
-BuildRequires:  kf5-filesystem
-BuildRequires:  cmake(KF5Config) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5CoreAddons) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5I18n) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5IconThemes) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5JobWidgets) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5KIO) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5Service) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5TextWidgets) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5WidgetsAddons) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5XmlGui) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(Qt5Core) >= 5.15.0
-BuildRequires:  cmake(Qt5Network) >= 5.15.0
-BuildRequires:  cmake(Qt5Test) >= 5.15.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.15.0
-BuildRequires:  cmake(Qt5Xml) >= 5.15.0
+BuildRequires:  cmake(KF5Config) >= %{_kf5_version}
+BuildRequires:  cmake(KF5CoreAddons) >= %{_kf5_version}
+BuildRequires:  cmake(KF5I18n) >= %{_kf5_version}
+BuildRequires:  cmake(KF5IconThemes) >= %{_kf5_version}
+BuildRequires:  cmake(KF5JobWidgets) >= %{_kf5_version}
+BuildRequires:  cmake(KF5KIO) >= %{_kf5_version}
+BuildRequires:  cmake(KF5Service) >= %{_kf5_version}
+BuildRequires:  cmake(KF5TextWidgets) >= %{_kf5_version}
+BuildRequires:  cmake(KF5WidgetsAddons) >= %{_kf5_version}
+BuildRequires:  cmake(KF5XmlGui) >= %{_kf5_version}
+BuildRequires:  cmake(Qt5Core) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Network) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Test) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Widgets) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Xml) >= %{qt5_version}
 
 %description
 This library implements the framework for KDE parts, which are
@@ -70,10 +69,9 @@ elaborate widgets with a user-interface defined in terms of actions
 %package devel
 Summary:        Plugin framework for user interface components
 Requires:       %{lname} = %{version}
-Requires:       extra-cmake-modules
-Requires:       cmake(KF5KIO) >= %{_kf5_bugfix_version}
-Requires:       cmake(KF5TextWidgets) >= %{_kf5_bugfix_version}
-Requires:       cmake(KF5XmlGui) >= %{_kf5_bugfix_version}
+Requires:       cmake(KF5KIO) >= %{_kf5_version}
+Requires:       cmake(KF5TextWidgets) >= %{_kf5_version}
+Requires:       cmake(KF5XmlGui) >= %{_kf5_version}
 
 %description devel
 This library implements the framework for KDE parts, which are

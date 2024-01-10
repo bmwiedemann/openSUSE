@@ -1,7 +1,7 @@
 #
 # spec file for package sof-firmware
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,10 +24,11 @@ Name:           sof-firmware
 Summary:        Firmware data files for SOF Drivers
 License:        BSD-3-Clause
 Group:          Hardware/Other
-Version:        2023.09.1
+Version:        2023.12
 Release:        0
 URL:            https://www.sofproject.org/
 BuildRequires:  fdupes
+Requires(post): coreutils
 Source:         https://github.com/thesofproject/sof-bin/releases/download/v%{version}/sof-bin-%{version}.tar.gz
 Patch1:         install-use-cp.patch
 BuildArch:      noarch

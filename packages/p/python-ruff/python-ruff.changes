@@ -1,4 +1,100 @@
 -------------------------------------------------------------------
+Mon Jan  8 09:39:09 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.1.11
+   * [pylint] Implement super-without-brackets (W0245) 
+   * Check path string properly in python -m ruff invocations 
+ * Documentation
+   * Tweak relative-imports message 
+   * Add fix safety note for yield-in-for-loop 
+ * 0.1.10
+ * Preview features
+   * Improve dummy_implementations preview style formatting 
+   * Normalise Hex and unicode escape sequences in strings 
+   * Parenthesize long type annotations in annotated assignments 
+   * Parenthesize multi-context managers in with statements 
+   * [flake8-pyi] Implement generator-return-from-iter-method (PYI058) 
+   * [pylint] Implement empty-comment (PLR2044) 
+   * [refurb] Implement bit-count (FURB161) 
+   * [ruff] Add never-union rule to detect redundant typing.NoReturn and typing.Never 
+ * CLI
+   * Add paths to TOML parse errors 
+   * Add row and column numbers to formatter parse errors 
+   * Improve responsiveness when invoked via Python 
+   * Short rule messages should not end with a period 
+ * Configuration
+   * Respect runtime-required decorators on functions 
+ * Bug fixes
+   * Avoid asyncio-dangling-task for nonlocal and global bindings 
+   * Escape trailing placeholders in rule documentation 
+   * Fix continuation detection following multi-line strings 
+   * Fix scoping for generators in named expressions in classes 
+   * Port from obsolete wsl crate to is-wsl 
+   * Remove special pre-visit for module docstrings 
+   * Respect __str__ definitions from super classes 
+   * Respect unused-noqa via per-file-ignores 
+   * Respect attribute chains when resolving builtin call paths 
+   * Treat all typing_extensions members as typing aliases 
+   * Use Display for formatter parse errors 
+   * Wrap subscripted dicts in parens for f-string conversion 
+   * [flake8-annotations] Avoid adding return types to stub methods 
+   * [flake8-annotations] Respect mixed return and raise cases in return-type analysis 
+   * [flake8-bandit] Don't report violations when SafeLoader is imported from yaml.loader (S506) 
+   * [pylint] Avoid panic when comment is preceded by Unicode 
+   * [pylint] Change PLR0917 error message to match other PLR09XX messages 
+   * [refurb] Avoid false positives for math-constant (FURB152) 
+ * Documentation
+   * Expand target name for better rule documentation 
+   * Fix typos found by codespell 
+   * [perflint] Document PERF102 fix un-safety 
+   * [pyupgrade] Document UP007 fix un-safety  
+
+-------------------------------------------------------------------
+Thu Dec 21 23:27:31 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.1.9
+ * Breaking changes
+   * Add site-packages to default exclusions
+ * Preview features
+   * Fix: Avoid parenthesizing subscript targets and values
+   * [pylint] Implement too-many-locals (PLR0914)
+   * Implement reimplemented_operator (FURB118)
+   * Add a rule to detect string members in runtime-evaluated unions
+   * Implement no_blank_line_before_class_docstring preview style
+ * Rule changes
+   * CONSTANT_CASE variables are improperly flagged for yoda violation (SIM300)
+   * [flake8-pyi] Cover ParamSpecs and TypeVarTuples (PYI018)
+   * [flake8-bugbear] Add fix for zip-without-explicit-strict (B905)
+   * Add fix to automatically remove print and pprint statements (T201, T203)
+   * Prefer Never to NoReturn in auto-typing in Python >= 3.11 (ANN201)
+ * Formatter
+   * can_omit_optional_parentheses: Exit early for unparenthesized expressions
+   * Fix dynamic mode with doctests so that it doesn't exceed configured line width
+   * Fix can_omit_optional_parentheses for expressions with a right most fstring
+   * Add target_version to formatter options
+ * CLI
+   * Update ruff format --check to display message for already formatted files
+ * Bug fixes
+   * Reverse order of arguments for operator.contains
+   * Iterate over lambdas in deferred type annotations
+   * Fix panic in D208 with multibyte indent
+   * Add support for NoReturn in auto-return-typing
+   * Allow removal of typing from exempt-modules
+   * Avoid mutable-class-default violations for Pydantic subclasses
+   * Fix dropped union expressions for piped non-types in PYI055 autofix
+   * Enable annotation quoting for multi-line expressions
+   * Deduplicate edits when quoting annotations
+   * Prevent invalid utf8 indexing in cell magic detection
+   * Avoid nested quotations in auto-quoting fix
+   * Add base-class inheritance detection to flake8-django rules
+   * Avoid asyncio-dangling-task violations on shadowed bindings
+ * Documentation
+   * Fix blog post URL in changelog
+   * Add error suppression hint for multi-line strings
+   * Fix typo in SemanticModel.parent_expression docstring
+   * Document link between import sorting and formatter
+
+-------------------------------------------------------------------
 Thu Dec 14 10:14:53 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.1.8

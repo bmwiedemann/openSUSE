@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec 29 11:02:40 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- Escape `quilt setup` invoked section in the helper script
+
+-------------------------------------------------------------------
 Fri Jul 21 12:59:44 UTC 2023 - Adam Majer <adam.majer@suse.de> 1.0.1
 
 - update to 1.0.1

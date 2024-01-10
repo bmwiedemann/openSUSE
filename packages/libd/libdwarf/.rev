@@ -406,4 +406,23 @@
   no longer any two-stage aspect of the build.</comment>
     <requestid>1127452</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>856e4437de1a32fcadfb7ba4cfdcd28e</srcmd5>
+    <version>0.9.0</version>
+    <time>1703801020</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.9.0:
+  * Added support for reading Apple MacOS universal binaries.
+  * Added callers access to certain fields from object files
+    (for all three supported object formats), and
+  * added the --print-machine-arch option to dwarfdump to show the
+    fields.
+  * Three functions were added to the API, see the Changes section
+    of the latest documentation or in libdwarf.pdf in the release.
+    No functions were deleted or had their meaning changed.
+  * Vulnerabilities found by fuzzing were fixed.
+  * See https://www.prevanders.net/dwarfbug.html for vulnerability
+    details.</comment>
+    <requestid>1135481</requestid>
+  </revision>
 </revisionlist>

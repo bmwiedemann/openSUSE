@@ -1,7 +1,7 @@
 #
 # spec file for package python-phonenumbers
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,16 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-phonenumbers
-Version:        8.13.18
+Version:        8.13.27
 Release:        0
 Summary:        Python version of Google's common library for international phone numbers
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/daviddrysdale/python-phonenumbers
 Source:         https://files.pythonhosted.org/packages/source/p/phonenumbers/phonenumbers-%{version}.tar.gz
-# https://github.com/daviddrysdale/python-phonenumbers/issues/176 for missing LICENSE
-Source1:        https://raw.githubusercontent.com/daviddrysdale/python-phonenumbers/dev/LICENSE
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Provides:       python-phonenumberslite = %{version}
@@ -41,13 +40,12 @@ and validating international phone numbers.
 
 %prep
 %setup -q -n phonenumbers-%{version}
-cp %{SOURCE1} .
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -57,6 +55,6 @@ cp %{SOURCE1} .
 %doc README.md HISTORY.md
 %license LICENSE
 %{python_sitelib}/phonenumbers
-%{python_sitelib}/phonenumbers-%{version}-py*.egg-info/
+%{python_sitelib}/phonenumbers-%{version}.dist-info
 
 %changelog

@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>46aa12d0de52d24775ed0e36865dc06b</srcmd5>
+    <version>20231218</version>
+    <time>1703024119</time>
+    <user>anag+factory</user>
+    <comment>Supercede with changes to address https://build.opensuse.org/request/show/1132361#comment-1859996</comment>
+    <requestid>1133897</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7bfa317dab3d6b201064e4967049a6b0</srcmd5>
+    <version>20231227</version>
+    <time>1703801037</time>
+    <user>anag+factory</user>
+    <comment>- Added eval to kalpa-firstboot and kalpa-firstboot-aarch64
+  (boo#1218367)
+
+- Updated to 20231227
+- Fixed typos in kalpa-firstboot and kalpa-firstboot-aarch64
+  (boo#1218367)
+  * Removed improper &quot;&quot; around $dbusRef
+  * Corrected PATH for flathub remote
+  * Removed installation of kwrite flatpak, GUI text editor is
+    being provided via RPM in the pattern</comment>
+    <requestid>1135523</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>e41f0462bd6f6baa856b7e492b323b9a</srcmd5>
+    <version>20231227</version>
+    <time>1704558574</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1137177</requestid>
+  </revision>
+</revisionlist>

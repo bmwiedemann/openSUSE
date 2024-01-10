@@ -330,4 +330,41 @@
   * netlink: universal nlmsg.get()</comment>
     <requestid>1007453</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>996383d10b895417bd60de5b9a490bdd</srcmd5>
+    <version>0.7.10</version>
+    <time>1702673311</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.7.10:
+  * ss2: fix classful flow data
+  * ci: add Python versions 3.8 and 3.12, update platform
+    versions
+  * l2tp: fix get_tunnel/get_session
+  * ndb: compat fix
+  * ndb: recordset pipes
+  * netns: RISCV64 fix
+  * netns: loongarch support
+  * ethtool: statistics support
+  * ethtool: dynamic ioctl gstrings
+  * NetNS: set_netnsid fix
+  * iproute: nsid allocation
+  * iproute: dump mpls routes
+  * rtnl: CAN support
+  * minimal: fix for embedded envs
+  * diag: support CGROUP_ID
+  * iwutil: get/set interface (by ifindex) type
+  * tc: 'duplicate' parameter fix
+  * ss2: more fixes
+  * ss2: user context patch
+  * ndb: basic altname support
+  * nl80211: decoder improvements
+  * setup: static loader
+  * iproute: support altname in link_lookup()
+  * ethtool: fd leaks
+  * nlsocket: fix marshal reference
+  * rtnl: SRv6 updates
+  * connector: basic implementation
+  * nftables: sets draft</comment>
+    <requestid>1133205</requestid>
+  </revision>
 </revisionlist>

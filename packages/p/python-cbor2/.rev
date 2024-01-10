@@ -101,4 +101,37 @@
     <comment></comment>
     <requestid>1092388</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>bdc0ce625f16830ab4c8e8f81f6ee6aa</srcmd5>
+    <version>5.5.1</version>
+    <time>1702673393</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.5.1:
+  * Fixed ``CBORSimpleValue`` allowing the use of reserved values
+    (24 to 31) which resulted in invalid byte sequences
+  * Fixed encoding of simple values from 20 to 23 producing the
+    wrong byte sequences
+  * The ``cbor2.encoder``, ``cbor2.decoder`` or ``cbor2.types``
+    modules were deprecated – import their contents directly
+    from ``cbor2`` from now on. The old modules will be removed
+    in the next major release.
+  * Added support for Python 3.12
+  * Added type annotations
+  * Dropped support for Python 3.7
+  * Fixed bug in the ``fp`` attribute of the built-in version of
+    ``CBORDecoder`` and ``CBOREncoder`` where the getter returns
+    an invalid pointer if the ``read`` method of the file was a
+    built-in method
+
+  * Bump requirement to 3.7+
+  * Fix segfault when initializing CBORTag with incorrect arguments
+  * Fix sphinx build warnings
+  * Fix SystemErrors when using C-backend, meaningful exceptions now raised
+  * Fix precision loss when decoding base10 decimal fractions
+  * Made CBORTag handling consistent between python and C-module
+  * Feature: Ignore semantic tag used for file magic 55799 AKA &quot;Self-Described CBOR&quot; (kalcutter)
+  * BACKWARD INCOMPATIBLE CBOR does not have a bare DATE type,
+  * Optional Pure C implementation by waveform80 that functions</comment>
+    <requestid>1133371</requestid>
+  </revision>
 </revisionlist>

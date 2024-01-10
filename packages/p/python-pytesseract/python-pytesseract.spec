@@ -17,7 +17,7 @@
 
 
 Name:           python-pytesseract
-Version:        0.3.10
+Version:        0.3.13
 Release:        0
 Summary:        Python wrapper for Google's Tesseract-OCR
 License:        Apache-2.0

@@ -474,4 +474,28 @@
     <comment></comment>
     <requestid>1132183</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>58212b9b732da3987561025667baf81b</srcmd5>
+    <version>4.4.1</version>
+    <time>1703102512</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1134096</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>2f71dcb3b2264a75d1410b81d4fa6744</srcmd5>
+    <version>4.5.0</version>
+    <time>1704558590</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1137208</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>68786c225ff7aa1c03b2bfe18fce7087</srcmd5>
+    <version>4.5.1</version>
+    <time>1704659980</time>
+    <user>dimstar_suse</user>
+    <comment>ugrep 4.5.1</comment>
+    <requestid>1137283</requestid>
+  </revision>
 </revisionlist>

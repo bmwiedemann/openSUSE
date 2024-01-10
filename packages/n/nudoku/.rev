@@ -74,4 +74,17 @@
 - Drop nudoku-2.0.0-gettext.patch: upstreamed</comment>
     <requestid>849601</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b18d0ea957a01be12a96b24cc3d2f71b</srcmd5>
+    <version>3.0.0</version>
+    <time>1703198350</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.0.0:
+  * Fix build failure with ncurses 6.3
+  * Add call to PKG_PROG_PKG_CONFIG and pkg-check ncurses libs #46
+  * Fix build with musl
+  * Add highlighting of user input #56
+  * Fix toggling marks removing solution #51</comment>
+    <requestid>1134426</requestid>
+  </revision>
 </revisionlist>

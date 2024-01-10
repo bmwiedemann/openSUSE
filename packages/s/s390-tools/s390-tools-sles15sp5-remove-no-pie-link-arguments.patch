@@ -1,7 +1,7 @@
-Index: s390-tools-2.29.0/common.mak
+Index: s390-tools-2.30.0/common.mak
 ===================================================================
---- s390-tools-2.29.0.orig/common.mak
-+++ s390-tools-2.29.0/common.mak
+--- s390-tools-2.30.0.orig/common.mak
++++ s390-tools-2.30.0/common.mak
 @@ -338,8 +338,8 @@ export INSTALL CFLAGS CXXFLAGS \
         LDFLAGS CPPFLAGS ALL_CFLAGS ALL_CXXFLAGS ALL_LDFLAGS ALL_CPPFLAGS
  

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec 14 19:05:00 UTC 2023 - Yann BOYER <yann.boyer742@gmail.com>
+
+- update to 0.3.3:
+  * Implement a VTERM_PROP_FOCUSREPORT so applications can be told when focus reporting is enabled (LP1852009)
+  * Permit DECSM/DECRM on multiple mode arguments (LP2028786)
+  * Bugfix to on_csi() to recognise DECSTR (LP2029441)
+  * Correctly handle empty chunks while dealing with selection
+
+-------------------------------------------------------------------
 Mon May 29 20:34:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.3.2:

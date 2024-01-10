@@ -1,7 +1,7 @@
 /********************************************************************************/
-/*										*/
-/*	Copyright (C) 2014-2015, 2019-2023 SUSE LLC				*/
-/*										*/
+/*                                                                              */
+/*	Copyright (C) 2014-2015, 2019-2023 SUSE LLC                             */
+/*                                                                              */
 /*	All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -37,9 +37,9 @@ enum datatypes {
 #define	WITHOUT_KEY	0
 #define	WITH_KEY	1
 
-static char *versionstring	= "Version 1.0.3 2023-02-16 17:00";
+static char *versionstring	= "Version 1.0.4 2023-12-17 06:58";
 
-static char *version	   	= "1.0.3";
+static char *version	   	= "1.0.4";
 
 void	*configuration_handle	= NULL;
 int	layers			= -1;
@@ -85,18 +85,18 @@ struct machinetype {
 int	debug = 0;
 
 /******************************************************************************/
-/*									      */
-/*	Print the program version					      */
-/*									      */
+/*                                                                            */
+/*	Print the program version                                             */
+/*                                                                            */
 /******************************************************************************/
 void	print_version()
 {
 printf("Version: %s\n", version);
 }
 /******************************************************************************/
-/*									      */
-/*	Look for one attribute and print it				      */
-/*									      */
+/*                                                                            */
+/*	Look for one attribute and print it                                   */
+/*                                                                            */
 /******************************************************************************/
 void print_attribute(char *user_string, int level, enum qc_attr_id attribute, enum datatypes type, int print_key)
 { 
@@ -121,7 +121,7 @@ float		result_float = 0.0;
 	   }
 	if (erg == 1) {
 		if (print_key == WITH_KEY) {
-			printf("%s: ",(user_string == NULL? "NULL": user_string));
+			printf("%s : ",(user_string == NULL? "NULL": user_string));
 		} /* endif */
 		switch (type)
 		   {
@@ -139,15 +139,22 @@ float		result_float = 0.0;
 		   }
 	} /* endif */
 	else {
-	printf("Error: erg = %d, result_string = %s \n", erg, (result_string == NULL? "NULL": result_string));
+		if ( erg == 0 ) {
+                /*   printf("%s : Attribute exists, but is not set. \n", (user_string == NULL? "NULL": user_string)); */
+		} /* endif */
+		else if ( erg < 0) {
+	           printf("%s: An error occurred retrieving the attribute. Error: erg = %d, result_string = %s \n", user_string, erg, (result_string == NULL? "NULL": result_string));
+		} /* end else if */
+	/*                                             */	
 	/* TODO qc_get_attribute_string returned error */
+	/*                                             */	
 	}
 } /* print_attribute  */
 
 /********************************************************************************/
-/*										*/
-/*	Open the lib and get the handle						*/
-/*										*/
+/*                                                                              */
+/*	Open the lib and get the handle                                         */
+/*                                                                              */
 /********************************************************************************/
 int read_sysinfo()
 {
@@ -175,10 +182,10 @@ int	return_code;
 } /* read_sysinfo */
 
 /********************************************************************************/
-/*										*/
-/*	Look at the type of machine we're running on and print out a user	*/
-/*	friendly string								*/
-/*										*/
+/*                                                                              */
+/*	Look at the type of machine we're running on and print out a user       */
+/*	friendly string                                                         */
+/*                                                                              */
 /********************************************************************************/
 void print_cputype()
 {
@@ -217,26 +224,26 @@ Please file a bug report with this output:\n" , cpu_type);
 } /* print_cputype  */
 
 /********************************************************************************/
-/*										*/
-/*	Print out the values for SCC						*/
-/*										*/
-/*	To uniquely identify a machine the following information is used:	*/
-/*										*/
-/*	Type									*/
-/*	Sequence code								*/
-/*	CPUs total								*/
-/*	CPUs IFL								*/
-/*	LPAR Number								*/
-/*	LPAR Characteristics:							*/
-/*	LPAR CPUs								*/
-/*	LPAR IFLs								*/
-/*										*/
-/*	Optional:								*/
-/*										*/
-/*	VM00 Name								*/
-/*	VM00 Control Programm							*/
-/*	VM00 CPUs								*/
-/*										*/
+/*                                                                              */
+/*	Print out the values for SCC                                            */
+/*                                                                              */
+/*	To uniquely identify a machine the following information is used:       */
+/*                                                                              */
+/*	Type                                                                    */
+/*	Sequence code                                                           */
+/*	CPUs total                                                              */
+/*	CPUs IFL                                                                */
+/*	LPAR Number                                                             */
+/*	LPAR Characteristics:                                                   */
+/*	LPAR CPUs                                                               */
+/*	LPAR IFLs                                                               */
+/*                                                                              */
+/*	Optional:                                                               */
+/*                                                                              */
+/*	VM00 Name                                                               */
+/*	VM00 Control Programm                                                   */
+/*	VM00 CPUs                                                               */
+/*                                                                              */
 /********************************************************************************/
 void print_scc()
 {
@@ -288,18 +295,18 @@ int check_model (const char *cpu) {
 
         for ( i = 0; i < models; i++) {
 
-        if ( !strcmp(cpu,types[i]) ) {
-                return 1;
-                };
+           if ( !strcmp(cpu,types[i]) ) {
+              return 1;
+              };
         }
         return 0;
 } /* check_model */
 
 
 /******************************************************************************/
-/*									      */
-/*	print out whether secure boot is enabled			      */
-/*									      */
+/*                                                                            */
+/*	print out whether secure boot is enabled                              */
+/*                                                                            */
 /******************************************************************************/
 void print_secure_mode()
 {
@@ -308,6 +315,9 @@ int	release_major;
 int	release_sub;
 int	release_minor;
 const char	*cpu_type = NULL;
+int     cpu_okay = 0;
+int     Layer = 0;
+int     i = 0;
 /*
  *	First we have to check whether we have the appropriate kernel Level (>= 5.3)
  */
@@ -346,35 +356,40 @@ struct utsname uts;
 	printf("Print_secure called\n");
 #endif
 	/*
-	 *	Only the following machines support secure boot: z14, z14 ZR1, z15, z16
+	 *	Only the following machines support secure boot: 
+	 *     z14,        z15,        z16
 	 *	3906, 3907, 8561, 8562, 3931, 3932
 	 */
 	erg = qc_get_attribute_string(configuration_handle, qc_type, 0, &cpu_type);
 	if (erg == 1 && cpu_type != NULL) {
-		
-		if ( !check_model(cpu_type) ) {
+	        cpu_okay = check_model(cpu_type);	
+		if ( cpu_okay == 0 ) {
 			goto return_does_not_exist;
 		} /* endif */
 	} /* endif */
-	print_attribute("Secure mode on", 1, qc_has_secure, integer, WITH_KEY);
-	print_attribute("Secure mode used", 1, qc_secure, integer, WITH_KEY);
+
+	for ( i = 0; i < 8; i++) {
+            erg = qc_get_attribute_int(configuration_handle, qc_layer_type_num, i, &Layer);
+	    if (erg == 1) {
+	       print_attribute("Secure mode on  ", i, qc_has_secure, integer, WITH_KEY);
+	       print_attribute("Secure mode used", i, qc_secure,     integer, WITH_KEY);
+	       } /* endif */
+	    } /* endfor */
 return;
 
 return_does_not_exist:
 /*
  *	Software or hardware does not support secure boot.
  */
-	puts("Secure mode on: 0\nSecure mode used: 0");
+	puts("Secure mode on : 0\nSecure mode used : 0");
 return;
 } /* print_secure_mode */
 
 
 /******************************************************************************/
-/*									      */
-/*	print out the uuid for this machine				      */
-/*									      */
-/*									      */
-/*									      */
+/*                                                                            */
+/*	print out the uuid for this machine                                   */
+/*                                                                            */
 /******************************************************************************/
 int print_uuid()
 {
@@ -417,9 +432,9 @@ int print_uuid()
 } /* print_uuid */
 
 /******************************************************************************/
-/*									      */
-/*	print out the list of valid / found symbols			      */
-/*									      */
+/*                                                                            */
+/*	print out the list of valid / found symbols                           */
+/*                                                                            */
 /******************************************************************************/
 void list(char * list_attribute_param)
 {
@@ -427,9 +442,9 @@ return;
 } /* list */
 
 /******************************************************************************/
-/*									      */
-/*	print out the requested attribute				      */
-/*									      */
+/*                                                                            */
+/*	print out the requested attribute                                     */
+/*                                                                            */
 /******************************************************************************/
 void print_user_attribute(char *key, char *attribute_param, int layer)
 {
@@ -438,9 +453,9 @@ return;
 
 
 /******************************************************************************/
-/*									      */
-/*	Help Function							      */
-/*									      */
+/*                                                                            */
+/*	Help Function                                                         */
+/*                                                                            */
 /******************************************************************************/
 void help()
 {
@@ -470,9 +485,9 @@ Valid values for debug:\n\
 } /* help  */
 
 /******************************************************************************/
-/*									      */
-/*	Main								      */
-/*									      */
+/*                                                                            */
+/*	Main                                                                  */
+/*                                                                            */
 /******************************************************************************/
 int main(int argc, char **argv, char **envp)
 {
@@ -569,7 +584,7 @@ void	*configuration_handle_tmp = NULL;
 	   	fputs("Only one of the options a, c, L, s, S or u can be specified.\n",stderr);
 		return 1;
 	   } /* endif */
-	   /* still not im[plemented thatfore set to zero */
+	   /* still not implemented thatfore set to zero */
 	   list_attr = print_attr = 0;
 	   if (print_attr != 0) {
 	   	print_user_attribute(NULL, print_attribute_param, layers);

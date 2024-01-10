@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Dec 20 07:11:46 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.0:
+  * Changes:
+  * #312
+  * #313
+  * #317
+  * #320
+  * #327
+  * #329
+  * #330
+- drop python-nodeenv-no-mock.patch (obsolete)
+
+-------------------------------------------------------------------
 Thu Nov 23 09:54:32 UTC 2023 - Matthias Bach <marix@marix.org>
 
 - Also build for modern Python on Leap.
@@ -24,7 +38,7 @@ Thu Mar 24 11:47:05 UTC 2022 - pgajdos@suse.com
 Thu Jun 17 21:09:12 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.0:
-  * M1 support 
+  * M1 support
 
 -------------------------------------------------------------------
 Wed Sep 16 11:25:25 UTC 2020 - Dirk Mueller <dmueller@suse.com>

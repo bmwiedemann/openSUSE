@@ -1,7 +1,7 @@
 #
 # spec file for package python-enaml
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-enaml
-Version:        0.16.1
+Version:        0.17.0
 Release:        0
 # Source code is under BSD but images are under different licenses
 # and details are inside image_LICENSE.txt
@@ -27,7 +27,7 @@ License:        BSD-3-Clause AND LGPL-2.1-only
 URL:            https://github.com/nucleic/enaml
 Source:         https://files.pythonhosted.org/packages/source/e/enaml/enaml-%{version}.tar.gz
 BuildRequires:  %{python_module cppy >= 1.2.0}
-BuildRequires:  %{python_module devel >= 3.8}
+BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 61.2}
 BuildRequires:  %{python_module setuptools_scm >= 3.4.3}

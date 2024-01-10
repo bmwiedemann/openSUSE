@@ -595,4 +595,12 @@ this patch makes lxqt-config also include desktop files with the x-lxqt category
     <comment></comment>
     <requestid>1123559</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>be31756c1c4dbc70d5b2a1219c9167ab</srcmd5>
+    <version>1.4.0</version>
+    <time>1704753937</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1137497</requestid>
+  </revision>
 </revisionlist>

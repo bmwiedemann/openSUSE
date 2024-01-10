@@ -47,4 +47,29 @@
     <comment></comment>
     <requestid>1092829</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a41b70dcd2694f96626a0cdfed568bc1</srcmd5>
+    <version>1.5.0</version>
+    <time>1704659963</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.0:
+  * Support for Python 3.12
+  * Switched __eq__ and __ne__ operator to use equals rather than
+    compareTo for comparable objects to avoid exception when
+    comparing object of different types.
+  * Fixed segmentation fault when comparing Java Comparable to
+    primitives.
+  * Java exceptions that occur in inequality comparisons now map
+    to Python TypeError.
+  * Fixed crash when calling subscript on JArray.
+  * Fixed direct byte buffers not reporting nbytes correctly when
+    cast to memoryview.
+  * Expand the defintion for Functional interface to include
+    classes without FunctionInterface annotation.
+  * Add additional matching level for derived types to resolve
+    ambiguities when a derived type is used in place of base
+    class when determining the method overload.  This will
+    resolve some previous ambiguities between methods.</comment>
+    <requestid>1137273</requestid>
+  </revision>
 </revisionlist>

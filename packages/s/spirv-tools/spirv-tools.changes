@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Dec 22 20:14:02 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2023.6~rc1
+  * spirv-val: Loosen restriction on base type of
+    DebugTypePointer and DebugTypeQualifier
+  * spirv-val: Add WorkgroupMemoryExplicitLayoutKHR check for Block
+  * opt: Add ComputeDerivativeGroup*NV capabilities to trim
+    capabilities pass
+  * opt: Do not crash when tryingto fold unsupported spec constant
+  * opt: support 64-bit OpAccessChain index in FixStorageClass
+  * opt: add StorageImageReadWithoutFormat to cap trim
+  * opt: add PhysicalStorageBufferAddresses to trim
+
+-------------------------------------------------------------------
 Fri Oct 27 04:03:44 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2023.5~rc1

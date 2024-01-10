@@ -23,4 +23,23 @@
     <comment></comment>
     <requestid>1008709</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>51f7ec5589a5cbb405913a471fe9e95f</srcmd5>
+    <version>0.6.23</version>
+    <time>1703800853</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.6.23:
+  * fix: #912 Pillow&lt;=9.5 constraint entails security
+    vulnerability
+  * Add #909 Add imgW, imgH params to `shapes.add_ole_object()`
+  * fix: #754 _Relationships.items() raises
+  * fix: #758 quote in autoshape name must be escaped
+  * fix: #746 update Python 3.x support in docs
+  * fix: #748 setup's `license` should be short string
+  * fix: #762 AttributeError: module 'collections' has no
+    attribute 'abc'
+
+  Major refactoring of ancient package loading code.</comment>
+    <requestid>1135198</requestid>
+  </revision>
 </revisionlist>

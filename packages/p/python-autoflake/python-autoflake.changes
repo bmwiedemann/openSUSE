@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Dec 14 09:15:04 UTC 2023 - Petr Gajdos <pgajdos@suse.com>
+
+- update to 2.2.1:
+  * Add type annotations and validate with pyright
+  * Remove test_fuzz_pypi
+  * Revert "Support .toml configuration format with --config flag
+  * Support .toml configuration format with --config flag
+  * Fix a typo in a link to pre-commit
+  * Update standard_paths so it only checks existing directories
+  * Upgrade minimum version of pyflakes
+  * Add upper limit to pyflake's version <3.0 to support handling
+    of python 2.x
+  * fix: Ignore pass multiple lines after docstring with flag
+  * Fixed multiprocessing issue on win64 with more than 60 cores
+  * Fix default value for `--imports`
+  * Use regular dictionary instead of defaultdict
+  * Properly consider options from config file and flags
+  * Update merge_configuration_file to prefer values from flags
+  * Unified output to stdout when using --check
+  * add config-file option
+  * Fix Namespace check
+  * Add --check-diff flag which combines check and diff
+  * Use black for formatting code
+  * Migrate to tomli
+  * PEP 621: Migrate to pyproject.toml
+  * Add option to keep pass statements
+
+-------------------------------------------------------------------
 Mon Jul 31 18:49:08 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Remove upstreamed patch rm_assert_failing_310.patch.
@@ -6,7 +34,7 @@ Mon Jul 31 18:49:08 UTC 2023 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Mon Sep 12 08:00:46 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- reenable build for python38, issue got fixed in current release 
+- reenable build for python38, issue got fixed in current release
 
 -------------------------------------------------------------------
 Fri Sep  9 16:07:50 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
@@ -19,7 +47,7 @@ Fri Sep  9 16:07:50 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
   * Renamed the head branch
   * Remove Makefile and reference to travis.yml
 
-- Update to v1.5.2 
+- Update to v1.5.2
   * Remove usage of deprecated distutils module
   * Also add support for removing RHS of unused variables.
   * Use the new sysconfig module instead of distutils
@@ -48,7 +76,7 @@ Mon Aug 31 04:16:47 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.4:
   * No upstream changelog
-- Switch from setup.py test to pytest 
+- Switch from setup.py test to pytest
 
 -------------------------------------------------------------------
 Fri Sep 13 11:32:10 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>

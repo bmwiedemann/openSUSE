@@ -1,11 +1,18 @@
 -------------------------------------------------------------------
+Sat Dec 16 12:36:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2023.12.3post1:
+  * use same version when paginating list (#591)
+  * fix double asterisk glob test (#589)
+
+-------------------------------------------------------------------
 Tue Nov 14 20:04:58 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Update to 2023.10.0
  * Fix for transactions of small files
 
 -------------------------------------------------------------------
-Thu Oct 12 10:35:32 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com> 
+Thu Oct 12 10:35:32 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Update to 2023.9.2
  * bulk operations edge case
@@ -15,7 +22,7 @@ Thu Oct 12 10:35:32 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
  * maxdepth in find() (#566)
  * invalidate dircache (#564)
  * standard metadata field names (#563)
- * performance of building cache in find() (#561) 
+ * performance of building cache in find() (#561)
 
 -------------------------------------------------------------------
 Wed Jul  5 08:50:51 UTC 2023 - Ben Greiner <code@bnavigator.de>
@@ -159,7 +166,7 @@ Wed Aug 18 10:29:33 UTC 2021 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Mon May 24 03:49:24 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Do not build for Python 3.6, due to no NumPy. 
+- Do not build for Python 3.6, due to no NumPy.
 
 -------------------------------------------------------------------
 Tue Oct  6 19:15:04 UTC 2020 - Matej Cepl <mcepl@suse.com>

@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package xrootd
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -34,13 +34,13 @@
 %bcond_with    ceph
 
 Name:           %{pname}%{psuffix}
-Version:        5.6.3
+Version:        5.6.4
 Release:        0
 Summary:        An eXtended Root Daemon
 License:        LGPL-3.0-or-later
 Group:          System/Daemons
 URL:            https://xrootd.slac.stanford.edu/
-Source0:        https://xrootd.slac.stanford.edu/download/v%{version}/xrootd-%{version}.tar.gz
+Source0:        https://github.com/xrootd/xrootd/releases/download/v%{version}/%{pname}-%{version}.tar.gz
 Source1:        xrootd-user.conf
 Source100:      xrootd-rpmlintrc
 # PATCH-FEATURE-OPENSUSE Hardening patches
@@ -450,6 +450,7 @@ install -m 0644 %{SOURCE1} %{buildroot}%{_sysusersdir}/
 %files libs-devel
 %license COPYING.LGPL LICENSE
 %{_bindir}/xrootd-config
+%{_libdir}/cmake/XRootD/
 %{_libdir}/libXrdAppUtils.so
 %{_libdir}/libXrdCrypto.so
 %{_libdir}/libXrdCryptoLite.so

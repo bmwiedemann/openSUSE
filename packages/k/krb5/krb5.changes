@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec 20 23:18:05 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.21.2 (bsc#1218211, CVE-2023-39975):
+  * Fix double-free in KDC TGS processing [CVE-2023-39975].
+
+-------------------------------------------------------------------
 Sat Jul 15 18:19:32 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- update to 1.121.1 (CVE-2023-36054):
+- update to 1.21.1 (CVE-2023-36054):
   * Fix potential uninitialized pointer free in kadm5 XDR parsing
     [CVE-2023-36054].
   * Added a credential cache type providing compatibility with
@@ -257,7 +263,7 @@ Mon May  4 09:24:21 UTC 2020 - Samuel Cabrero <scabrero@suse.de>
   * Fix a compile error when building with musl libc on Linux.
   * Fix a compile error when building with gcc 4.x.
   * Change the KDC constrained delegation precedence order for consistency
-    with Windows KDCs. 
+    with Windows KDCs.
 - Remove 0009-Fix-null-dereference-qualifying-short-hostnames.patch
 
 -------------------------------------------------------------------

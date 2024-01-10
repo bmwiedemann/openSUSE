@@ -118,4 +118,12 @@ summer 2013 libyal refresh for opensuse 13.1 (forwarded request 184909 from greg
     <comment>delete system-libs.patch</comment>
     <requestid>1038449</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>16ac19492d9c1926d8c4b1eed528bc59</srcmd5>
+    <version>20240109</version>
+    <time>1704829851</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 20240109</comment>
+    <requestid>1137687</requestid>
+  </revision>
 </revisionlist>

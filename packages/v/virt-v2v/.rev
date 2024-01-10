@@ -79,4 +79,20 @@
     <comment></comment>
     <requestid>1130215</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1de93adbd9885ba06b7caddcae085237</srcmd5>
+    <version>2.4.0</version>
+    <time>1704487405</time>
+    <user>dimstar_suse</user>
+    <comment>Update virt-v2v to version 2.4.0</comment>
+    <requestid>1136945</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>c1bc173f99e0109691a8a30aa7cb0174</srcmd5>
+    <version>2.4.0</version>
+    <time>1704754001</time>
+    <user>anag+factory</user>
+    <comment>Add Jira request number to changelog. No code change.</comment>
+    <requestid>1137601</requestid>
+  </revision>
 </revisionlist>

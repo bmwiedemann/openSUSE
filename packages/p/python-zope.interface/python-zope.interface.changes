@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jan  2 20:59:45 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- remove python2 specific codepaths
+
+-------------------------------------------------------------------
+Sat Dec 16 08:59:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.1:
+  * Add support for Python 3.12.
+  * Fix building of the docs for non-final versions.
+
+-------------------------------------------------------------------
 Fri May  5 08:44:59 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.0:
@@ -24,19 +36,19 @@ Thu Apr 13 22:46:07 UTC 2023 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Mon Dec  5 13:50:37 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 5.5.2 
+- Update to version 5.5.2
   * Add support for building arm64 wheels on macOS.
 
 -------------------------------------------------------------------
 Wed Nov  9 19:57:13 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 5.5.1 
+- Update to version 5.5.1
   * Add support for final Python 3.11 release.
 
 -------------------------------------------------------------------
 Sat Oct 29 18:04:04 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 5.5.0 
+- Update to version 5.5.0
   * Add support for Python 3.10 and 3.11 (as of 3.11.0rc2).
   * Add missing Trove classifier showing support for Python 3.9.
   * Add some more entries to zope.interface.interfaces.__all__.

@@ -1,7 +1,7 @@
 #
 # spec file for package libvmime
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -29,6 +29,7 @@ URL:            http://vmime.org/
 Source:         vmime-%version.tar.xz
 Patch1:         libvmime-nodatetime.diff
 Patch2:         libvmime-soname.diff
+Patch3:         0001-Avoid-generating-illegal-Envelope-From-with-sendmail.patch
 BuildRequires:  cmake >= 2.8.3
 BuildRequires:  gcc-c++
 %if 0%{?centos_version}
@@ -46,8 +47,8 @@ BuildRequires:  xz
 BuildRequires:  ImageMagick
 BuildRequires:  doxygen
 BuildRequires:  inkscape
-BuildRequires:  texlive-latex
 BuildRequires:  texlive-collection-fontsrecommended
+BuildRequires:  texlive-latex
 BuildRequires:  tex(courier.sty)
 BuildRequires:  tex(fancyheadings.sty)
 BuildRequires:  tex(pcrr7t.tfm)

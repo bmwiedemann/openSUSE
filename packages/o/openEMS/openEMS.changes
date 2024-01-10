@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Dec 31 20:10:29 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to 0.0.36
+- Drop obsolete/upstream patches:
+  * 0001-Fix-linking-for-VTK-6.3.patch
+  * 0005-Fix-build-with-HDF5.patch
+  * 0006-Add-missing-return-statement.patch
+  * 0001-Fix-build-error-due-to-ambigous-overload-of-isnan-is.patch
+  * 0001-Guard-xmmintrin.h-include-so-it-is-only-used-when-ne.patch
+
+-------------------------------------------------------------------
+Mon Dec  7 10:58:54 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- More spec file cleanup:
+  * Drop Leap 42.x conditionals
+  * Update URL to use https
+
+-------------------------------------------------------------------
 Sat Dec 15 12:41:00 UTC 2018 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update 0001-Fix-linking-for-VTK-6.3.patch, avoid pulling in dependencies

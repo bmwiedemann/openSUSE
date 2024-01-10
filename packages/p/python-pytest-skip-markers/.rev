@@ -30,4 +30,16 @@
 - enable testsuite</comment>
     <requestid>1130720</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2d5efc065a4319d3003d0e9eee5626d1</srcmd5>
+    <version>1.5.1</version>
+    <time>1704487556</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.1:
+  * Bug Fixes - Also capture stderr so that no errors are seen on
+    console when checking for FIPS support
+  * Don't set the config value twice for the same marker
+  * Update copyright headers</comment>
+    <requestid>1137120</requestid>
+  </revision>
 </revisionlist>

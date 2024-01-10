@@ -456,4 +456,18 @@
 - Remove _service file (forwarded request 1079938 from manfred-h)</comment>
     <requestid>1079982</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>8b4b494c142154cab180e54a2ee48b7f</srcmd5>
+    <version>4.18.2</version>
+    <time>1702936552</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 4.18.2
+  * Disambiguate thumbnailer signals
+  * scheduler: Fix ready/error signal forwarding
+  * desktop-thumbnailer: Use empty path to build cmdline if it is null
+  * Update spec link in README
+  * xdg-cache: Fix temporary file management when saving thumbnail
+  * Add icon at 64px, clean up SVG metadata (forwarded request 1130085 from manfred-h)</comment>
+    <requestid>1133769</requestid>
+  </revision>
 </revisionlist>

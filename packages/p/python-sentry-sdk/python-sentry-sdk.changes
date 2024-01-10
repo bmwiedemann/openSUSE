@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Dec  8 16:03:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.38.0:
+  * Only add trace context to checkins and do not run
+    `event_processors` for checkins (#2536) by @antonpirker
+  * Metric span summaries (#2522) by @mitsuhiko
+  * Add source context to code locations (#2539) by @jan-auer
+  * Use in-app filepath instead of absolute path (#2541) by
+    @antonpirker
+  * Switch to `jinja2` for generating CI yamls (#2534) by
+    @sentrivana
+  * Fix `NameError` on `parse_version` with eventlet (#2532) by
+    @sentrivana
+  * build(deps): bump checkouts/data-schemas from `68def1e` to
+    `e9f7d58` (#2501) by @dependabot
+  * Move installed modules code to utils (#2429) by @sentrivana
+  * Note: We moved the internal function `_get_installed_modules`
+    from `sentry_sdk.integrations.modules` to `sentry_sdk.utils`.
+  * So if you use this function you have to update your imports
+  * Add code locations for metrics (#2526) by @jan-auer
+  * Add query source to DB spans (#2521) by @antonpirker
+  * Send events to Spotlight sidecar (#2524) by @HazAT
+  * Fix: Prevent global var from being discarded at shutdown
+    (#2530) by @antonpirker
+  * Fix: Scope transaction source not being updated in scope.span
+    setter (#2519) by @sl0thentr0py
+
+-------------------------------------------------------------------
 Tue Nov 21 19:14:03 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 1.36.0
@@ -158,7 +186,7 @@ Sun Jun 11 13:22:50 UTC 2023 - ecsos <ecsos@opensuse.org>
 -------------------------------------------------------------------
 Mon May 29 13:31:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- add mock.patch to use mock from stdlib 
+- add mock.patch to use mock from stdlib
 
 -------------------------------------------------------------------
 Tue May 23 10:39:34 UTC 2023 - ecsos <ecsos@opensuse.org>
@@ -324,7 +352,7 @@ Tue Feb  7 12:11:22 UTC 2023 - ecsos <ecsos@opensuse.org>
   - Profiling: Resolve inherited method class names (#1756)
 - Changes from 1.11.1
   - Move set_transaction_name out of event processor in fastapi/starlette (#1751)
-  - Expose proxy_headers as top level config and use in ProxyManager: 
+  - Expose proxy_headers as top level config and use in ProxyManager:
     https://docs.sentry.io/platforms/python/configuration/options/#proxy-headers (#1746)
 
 -------------------------------------------------------------------
@@ -525,7 +553,7 @@ Sun Jan 30 11:20:25 UTC 2022 - ecsos <ecsos@opensuse.org>
   - Sanic v21.12 support #1292
   - Support Celery abstract tasks #1287
 - Update to 1.5.1
-  - Fix django legacy url resolver regex substitution due to 
+  - Fix django legacy url resolver regex substitution due to
     upstream CVE-2021-44420 fix #1272
   - Record lost sample_rate events only if tracing is enabled #1268
   - Fix gevent version parsing for non-numeric parts #1243
@@ -601,25 +629,25 @@ Wed Mar 10 06:36:59 UTC 2021 - ecsos <ecsos@opensuse.org>
 - Update to 1.0.0
   - BREAKING CHANGE: Feat: Moved auto_session_tracking experimental
     flag to a proper option and removed explicitly setting
-    experimental session_mode in favor of auto detecting its value, 
+    experimental session_mode in favor of auto detecting its value,
     hence enabling release health by default #994
-  - Fixed Django transaction name by setting the name to 
+  - Fixed Django transaction name by setting the name to
     request.path_info rather than request.path
   - Fix for tracing by getting HTTP headers from span rather than
     transaction when possible #1035
   - Fix for Flask transactions missing request body in non errored
     transactions #1034
   - Fix for honoring the X-Forwarded-For header #1037
-  - Fix for worker that logs data dropping of events with level 
+  - Fix for worker that logs data dropping of events with level
     error #1032
 - Changes from 0.20.3
-  - Added scripts to support auto instrumentation of no code AWS 
+  - Added scripts to support auto instrumentation of no code AWS
     lambda Python functions
 - Changes from 0.20.2
   - Fix incorrect regex in craft to include wheel file in pypi
     release
 - Changes from 0.20.1
-  - Fix for error that occurs with Async Middlewares when the 
+  - Fix for error that occurs with Async Middlewares when the
     middleware is a function rather than a class
 - Changes from 0.20.0
   - Fix for header extraction for AWS lambda/API extraction
@@ -633,7 +661,7 @@ Wed Mar 10 06:36:59 UTC 2021 - ecsos <ecsos@opensuse.org>
     not based on release
   - Django integration now creates transaction spans for template
     rendering
-  - Fix headers not parsed correctly in ASGI middleware, 
+  - Fix headers not parsed correctly in ASGI middleware,
     Decode headers before creating transaction #984
   - Restored ability to have tracing disabled #991
   - Fix Django async views not behaving asynchronously
@@ -643,7 +671,7 @@ Wed Mar 10 06:36:59 UTC 2021 - ecsos <ecsos@opensuse.org>
 Thu Dec 10 13:23:46 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - Update to 0.19.5
-  - Fix two regressions added in 0.19.2 with regard to sampling 
+  - Fix two regressions added in 0.19.2 with regard to sampling
     behavior when reading the sampling decision from headers.
   - Increase internal transport queue size and make it configurable.
 

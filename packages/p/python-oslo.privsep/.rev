@@ -264,4 +264,22 @@
   - Drop python3.6/3.7 support in testing runtime</comment>
     <requestid>1007554</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>e8058d1a38a5bd0c849463707f723e8d</srcmd5>
+    <version>3.2.0</version>
+    <time>1703800925</time>
+    <user>anag+factory</user>
+    <comment>- update to version 3.2.0
+  - Update master for stable/2023.1
+  - Revert &quot;Moves supported python runtimes from version 3.8 to 3.10&quot;
+  - Moves supported python runtimes from version 3.8 to 3.10
+  - setgid should be called before setuid
+  - Imported Translations from Zanata
+
+- update to version 3.1.0
+  - Add Python3 antelope unit tests
+  - Setup logging without fixing evenlet logging
+  - Update master for stable/zed</comment>
+    <requestid>1135325</requestid>
+  </revision>
 </revisionlist>

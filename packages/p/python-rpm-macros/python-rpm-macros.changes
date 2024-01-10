@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Dec 20 16:33:59 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to version 20231220.98427f3:
+  * fix python2_compile macro
+
+-------------------------------------------------------------------
+Tue Dec 19 10:13:29 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to version 20231207.46c2ec3:
+  * make FLAVOR_compile compatible with python2
+
+-------------------------------------------------------------------
+Mon Dec 04 08:34:09 UTC 2023 - mcepl@cepl.eu
+
+- Update to version 20231204.dd64e74:
+  * Combine fix_shebang in one line
+  * New macro FLAVOR_fix_shebang_path
+  * Use realpath in %python_clone macro shebang replacement
+  * Compile and fix_shebang in %python_install macros
+
+-------------------------------------------------------------------
 Tue Oct 10 19:27:11 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 20231010.0a1f0d9:

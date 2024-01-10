@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         short_name openQA-client
 Name:           %{short_name}-test
-Version:        4.6.1702049559.97f9359
+Version:        4.6.1704466891.4d4e5b7
 Release:        0
 Summary:        Test package for %{short_name}
 License:        GPL-2.0-or-later

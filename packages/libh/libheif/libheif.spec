@@ -1,7 +1,7 @@
 #
 # spec file for package libheif
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,19 +19,15 @@
 %define gdk_pixbuf_binary_version 2.10.0
 %bcond_with x265
 %bcond_with kvazaar
-%bcond_with plugins
-%bcond_with rav1e
 %bcond_with svtenc
 %if 0%{?suse_version} > 1500
-%bcond_without plugins
-%bcond_without rav1e
-%ifarch x86_64
+%ifarch aarch64 riscv64 x86_64
 %bcond_without svtenc
 %endif
 %endif
 
 Name:           libheif
-Version:        1.17.5
+Version:        1.17.6
 Release:        0
 Summary:        HEIF/AVIF file format decoder and encoder
 License:        GPL-2.0-or-later
@@ -39,12 +35,8 @@ Group:          Productivity/Graphics/Other
 URL:            https://github.com/strukturag/libheif
 Source0:        %{url}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
-# CVE-2023-49462 [bsc#1217898], read16 segv
-Patch0:         libheif-CVE-2023-49462.patch
-# CVE-2023-49464 [bsc#1217900], UAF
-Patch1:         libheif-CVE-2023-49464.patch
 BuildRequires:  chrpath
-BuildRequires:  cmake >= 3.21
+BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -59,9 +51,7 @@ BuildRequires:  pkgconfig(libwebp)
 %if %{with kvazaar}
 BuildRequires:  pkgconfig(kvazaar)
 %endif
-%if %{with rav1e}
 BuildRequires:  pkgconfig(rav1e)
-%endif
 %if %{with svtenc}
 BuildRequires:  pkgconfig(SvtAv1Enc)
 %endif
@@ -91,11 +81,11 @@ coding, respectively, for the best compression ratios currently possible.
 For AVIF libaom, dav1d, or rav1e are used as codecs. HEIF support is not
 provided.
 
-%if %{with plugins}
 %package aom
 Summary:        Plugin AOM encoder and decoder for AVIF
 Group:          System/Libraries
 Supplements:    libheif1
+Requires:       libheif1 = %{version}-%{release}
 
 %description aom
 This plugin provides the AOM encoder and decoder for AVIF to libheif. Packaged separately
@@ -105,6 +95,7 @@ so that the libraries it requires are not pulled in by default by libheif.
 Summary:        Plugin dav1d decoder for AVIF
 Group:          System/Libraries
 Supplements:    libheif1
+Requires:       libheif1 = %{version}-%{release}
 
 %description dav1d
 This plugin provides the dav1d encoder for AVIF to libheif. Packaged separately
@@ -114,6 +105,7 @@ so that the libraries it requires are not pulled in by default by libheif.
 Summary:        Plugin FFMPEG decoder (HW acc) for HEIC
 Group:          System/Libraries
 Supplements:    libheif1
+Requires:       libheif1 = %{version}-%{release}
 
 %description ffmpeg
 This plugin provides the FFMPEG decoder (HW acc) for HEIC to libheif. Packaged separately
@@ -123,6 +115,7 @@ so that the libraries it requires are not pulled in by default by libheif.
 Summary:        Plugin encoder and decoder for JPEG in HEIF
 Group:          System/Libraries
 Supplements:    libheif1
+Requires:       libheif1 = %{version}-%{release}
 
 %description jpeg
 This plugin provides the encoder and decoder for JPEG in HEIF to libheif. Packaged separately
@@ -133,6 +126,7 @@ so that the libraries it requires are not pulled in by default by libheif.
 Summary:        Plugin kvazaar encoder for HEIC
 Group:          System/Libraries
 Supplements:    libheif1
+Requires:       libheif1 = %{version}-%{release}
 
 %description kvazaar
 This plugin provides the kvazaar encoder for HEIC to libheif. Packaged separately
@@ -143,32 +137,44 @@ so that the libraries it requires are not pulled in by default by libheif.
 Summary:        Plugin OpenJPEG J2K encoder and decoder for JPEG-2000 in HEIF
 Group:          System/Libraries
 Supplements:    libheif1
+Requires:       libheif1 = %{version}-%{release}
 
 %description openjpeg
 This plugin provides the OpenJPEG J2K encoder and decoder for JPEG to libheif. Packaged separately
 so that the libraries it requires are not pulled in by default by libheif.
 
-%if %{with rav1e}
 %package rav1e
 Summary:        Plugin rav1e encoder for AVIF
 Group:          System/Libraries
 Supplements:    libheif1
+Requires:       libheif1 = %{version}-%{release}
 
 %description rav1e
 This plugin provides the rav1e encoder for AVIF to libheif. Packaged separately
 so that the libraries it requires are not pulled in by default by libheif.
-%endif
 
 %if %{with svtenc}
 %package svtenc
 Summary:        Plugin SVT-AV1 encoder for AVIF
 Group:          System/Libraries
 Supplements:    libheif1
+Requires:       libheif1 = %{version}-%{release}
 
 %description svtenc
 This plugin provides the SVT-AV1 encoder for AVIF to libheif. Packaged separately
 so that the libraries it requires are not pulled in by default by libheif.
 %endif
+
+%if %{with x265}
+%package HEIF
+Summary:        Plugin for HEIF decoder and encoder
+Group:          System/Libraries
+Supplements:    libheif1
+Requires:       libheif1 = %{version}-%{release}
+
+%description HEIF
+This plugin provides an decoder and encoder for HEIF to libheif. Packaged separately
+so that the libraries it requires are not pulled in by default by libheif.
 %endif
 
 %package devel
@@ -184,6 +190,7 @@ This package contains the header files.
 Summary:        GDK PixBuf Loader for %{name}
 Group:          System/Libraries
 Supplements:    (libheif1 and libgdk_pixbuf-2_0-0)
+Requires:       libheif1 = %{version}-%{release}
 
 %description -n gdk-pixbuf-loader-libheif
 A ISO/IEC 23008-12:2017 HEIF file format decoder and encoder.
@@ -194,6 +201,7 @@ This package contains the GDK PixBuf Loader for %{name}.
 %package -n heif-examples
 Summary:        Example binary programs for %{name}
 Group:          Productivity/Graphics/Other
+Requires:       libheif1 = %{version}-%{release}
 
 %description -n heif-examples
 A ISO/IEC 23008-12:2017 HEIF file format decoder and encoder.
@@ -204,6 +212,7 @@ This package contains example binary programs for %{name}.
 Summary:        Thumbnailer for HEIF/AVIF image files
 Group:          Productivity/Graphics/Other
 Supplements:    libheif1
+Requires:       libheif1 = %{version}-%{release}
 
 %description -n heif-thumbnailer
 Allows to show thumbnail previews of HEIF and AVIF images using %{name}.
@@ -213,31 +222,60 @@ Allows to show thumbnail previews of HEIF and AVIF images using %{name}.
 %autosetup -p1
 
 %build
-%cmake --preset release \
-%if %{without kvazaar}
-    -DWITH_KVAZAAR=OFF \
-%endif
-%if %{without rav1e}
-    -DWITH_RAV1E=OFF \
-%endif
-%if %{without svtenc}
-    -DWITH_SvtEnc=OFF \
-%endif
-%if %{without x265}
-    -DWITH_LIBDE265=OFF \
-    -DWITH_X265=OFF \
-    -DWITH_EXAMPLES=OFF \
+%cmake \
+	-DWITH_AOM_DECODER=ON \
+	-DWITH_AOM_DECODER_PLUGIN=ON \
+	-DWITH_AOM_ENCODER=ON \
+	-DWITH_AOM_ENCODER_PLUGIN=ON \
+	-DWITH_DAV1D=ON \
+	-DWITH_DAV1D_PLUGIN=ON \
+%if %{with x265}
+	-DWITH_X265=ON \
+	-DWITH_LIBDE265=ON \
+	-DWITH_X265_PLUGIN=ON \
+	-DWITH_LIBDE265_PLUGIN=ON \
+	-DWITH_EXAMPLES=ON \
 %else
-    -DCMAKE_SKIP_RPATH=ON \
+	-DWITH_LIBDE265=OFF \
+	-DWITH_X265=OFF \
+	-DWITH_EXAMPLES=OFF \
 %endif
+	-DWITH_RAV1E=ON \
+	-DWITH_RAV1E_PLUGIN=ON \
+%if %{with svtenc}
+	-DWITH_SvtEnc=ON \
+	-DWITH_SvtEnc_PLUGIN=ON \
+%else
+	-DWITH_SvtEnc=OFF \
+%endif
+	-DWITH_JPEG_DECODER=ON \
+	-DWITH_JPEG_DECODER_PLUGIN=ON \
+	-DWITH_JPEG_ENCODER=ON \
+	-DWITH_JPEG_ENCODER_PLUGIN=ON \
+	-DWITH_UNCOMPRESSED_CODEC=ON \
+%if %{with kvazaar}
+	-DWITH_KVAZAAR=ON \
+	-DWITH_KVAZAAR_PLUGIN=ON \
+%else
+	-DWITH_KVAZAAR=OFF \
+%endif
+	-DWITH_OpenJPEG_DECODER=ON \
+	-DWITH_OpenJPEG_DECODER_PLUGIN=ON \
+	-DWITH_OpenJPEG_ENCODER=ON \
+	-DWITH_OpenJPEG_ENCODER_PLUGIN=ON \
+	-DWITH_FFMPEG_DECODER=ON \
+	-DWITH_FFMPEG_DECODER_PLUGIN=ON \
+	-DCMAKE_SKIP_RPATH=ON \
+	-DBUILD_TESTING=OFF \
+	-DWITH_REDUCED_VISIBILITY=ON \
+	-DWITH_DEFLATE_HEADER_COMPRESSION=ON \
+	-DWITH_LIBSHARPYUV=ON \
+	-DWITH_FUZZERS=OFF \
 %if 0%{?suse_version} <= 1500
-    -DCMAKE_CXX_FLAGS="-pthread" \
+	-DCMAKE_CXX_FLAGS="-pthread" \
 %endif
-%if %{with plugins}
-    -DPLUGIN_DIRECTORY=%{_libexecdir}/libheif
-%else
-    -DENABLE_PLUGIN_LOADING=OFF
-%endif
+	-DPLUGIN_DIRECTORY=%{_libexecdir}/libheif \
+	%nil
 %cmake_build
 
 %install
@@ -273,7 +311,6 @@ rm -f %{buildroot}%{_datadir}/thumbnailers/heif.thumbnailer
 %files -n libheif1
 %license COPYING
 %{_libdir}/libheif.so.*
-%if %{with plugins}
 %dir %{_libexecdir}/libheif
 
 %files aom
@@ -299,15 +336,18 @@ rm -f %{buildroot}%{_datadir}/thumbnailers/heif.thumbnailer
 %{_libexecdir}/libheif/libheif-j2kdec.so
 %{_libexecdir}/libheif/libheif-j2kenc.so
 
-%if %{with rav1e}
 %files rav1e
 %{_libexecdir}/libheif/libheif-rav1e.so
-%endif
 
 %if %{with svtenc}
 %files svtenc
 %{_libexecdir}/libheif/libheif-svtenc.so
 %endif
+
+%if %{with x265}
+%files HEIF
+%{_libexecdir}/libheif/libheif-libde265.so
+%{_libexecdir}/libheif/libheif-x265.so
 %endif
 
 %files devel
@@ -328,10 +368,6 @@ rm -f %{buildroot}%{_datadir}/thumbnailers/heif.thumbnailer
 %{_mandir}/man1/heif-convert.1%{?ext_man}
 %{_mandir}/man1/heif-enc.1%{?ext_man}
 %{_mandir}/man1/heif-info.1%{?ext_man}
-%if %{with plugins}
-%{_libexecdir}/libheif/libheif-libde265.so
-%{_libexecdir}/libheif/libheif-x265.so
-%endif
 
 %files -n heif-thumbnailer
 %{_bindir}/heif-thumbnailer

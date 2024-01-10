@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Fri Dec 22 00:48:08 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Upgrade to upstream version 3.25.7
+  * Added
+    + [GHA] Remove old comment that is no longer valid around jdks
+      and add jdk 17 (PR #4226 by @hazendaz)
+    + Fix: issue 3833 No enum constant
+      com.github.javaparser.ParserConfiguration.LanguageLevel.JAVA_18
+      (PR #4221 by @jlerbsc)
+  * Changed
+    + Refactoring: Move cache features to javaparser-core (PR #4238
+      by @jlerbsc)
+    + Fix: removes reference to coveralls plugin which is not
+      useful because codecov is used to track code coverage (PR
+      #4235 by @jlerbsc)
+    + Uses jakarta.json api, upgrades jakarta.json-api to the
+      latest version & uses new default Eclipse Parsson (PR #4234
+      by @jlerbsc)
+    + Move mockito to 4.11.0 and handle byte buddy consistently as
+      well as properly define its agent in argLine for surefire (PR
+      #4228 by @hazendaz)
+    + Cleanup poms, use jakarta provided (javax namespace),
+      hamcrest follow up, and switch coveralls plugin - Fixes #4111
+      (PR #4225 by @hazendaz)
+    + [pom] Switch from hamcrest-library (deprecated) to hamcrest
+      (PR #4200 by @hazendaz)
+    + Putting code in the .orElse that has a side effect that can
+      affect performance (PR #4199 by @jlerbsc)
+  * Fixed
+    + Fix: issue 3650 unreproducible MAVEN_BUILD_TIMESTAMP (PR
+      #4243 by @jlerbsc)
+    + Fix: issue 3972 StackOverflowError when resolving type of
+      scope of a MethodCall (PR #4236 by @jlerbsc)
+    + [fix] Jdk 18 enum stub was extended off java 16 post
+      processor not java17 (PR #4227 by @hazendaz)
+    + Fix: issue #4047 Symbol Solver mixes name with type (PR #4206
+      by @jlerbsc)
+    + Fix grammar (PR #4203 by @mernst)
+    + Minor changes : corrupted format, useless cast, javadoc (PR
+      #4198 by @jlerbsc)
+  * Developer Changes
+    + chore(deps): update actions/setup-java action to v4 (PR #4241
+      by @renovate[bot])
+    + chore(deps): bump org.codehaus.mojo:build-helper-maven-plugin
+      from 3.4.0 to 3.5.0 (PR #4223 by @dependabot[bot])
+    + Adds sponsor link to help the project live and grow (PR #4204
+      by @jlerbsc)
+    + chore(deps): bump org.codehaus.mojo:templating-maven-plugin
+      from 1.0.0 to 3.0.0 (PR #4195 by @dependabot[bot])
+    + chore(deps): update junit5 monorepo to v5.10.1 (PR #4193 by
+      @renovate[bot])
+  * Uncategorised
+    + Added unit tests for visitors (PR #4239 by @4everTheOne)
+    + Unit tests for class GenericListVisitorAdapter (PR #4237 by
+      @4everTheOne)
+    + Update readme.md (PR #4222 by @jlerbsc)
+
+-------------------------------------------------------------------
 Wed Nov 22 03:20:54 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Upgrade to upstream version 3.25.6

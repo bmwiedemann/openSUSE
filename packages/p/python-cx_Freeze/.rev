@@ -157,4 +157,14 @@
     ze/compare/6.15.10...6.15.11</comment>
     <requestid>1130470</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>791a88b099548b07e7b7d1ee99a5f815</srcmd5>
+    <version>6.15.12</version>
+    <time>1703800868</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.15.12:
+  * **Full Changelog**: https://github.com/marcelotduarte/cx_Free
+    ze/compare/6.15.11...6.15.12</comment>
+    <requestid>1135260</requestid>
+  </revision>
 </revisionlist>

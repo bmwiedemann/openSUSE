@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan  3 20:09:16 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fix Tumbleweed build (ownership of /usr/share/icons/hicolor/64x64)
+- fix license (bundled libqxt is BSD)
+- remove unneeded binaries
+- run tests
+
+-------------------------------------------------------------------
 Mon Nov  6 02:57:52 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to 1.4.0:

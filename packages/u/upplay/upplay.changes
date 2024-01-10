@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Dec 23 14:50:04 UTC 2023 - Michael Pujos <pujos.michael@gmail.com>
+
+- added use-webengine.patch to force use of Qt5WebEngine
+- update to 1.7.2
+  * Unicast search the last used renderer at startup (depending on lib version).
+- update to 1.7.1
+  * Add preference to use libupnpp extra URL quoting which is now non-default.
+- update to 1.7.0
+  * Avoid most ways that a stuck renderer could freeze the GUI.
+  * Windows: hopefully full support for keyboard traversal and screen
+    readers.
+  * Add menu for playlist mode settings (repeat, shuffle etc.). These were
+    not accessible with a keyboard otherwise.
+  * Fix playlist drag and drop: drag to first position is now possible.
+  * Avoid phantom track appearing in the playlist when connecting to
+    stopped upmpdcli in UPnP/AV mode
+  * Misc improvements and fixes.
+- update to 1.6.5
+  * Disabled non-functional last.FM interface (last.FM changed their
+    authentication method to something which would be complicated to support)
+- update to 1.6.4    
+  * Fix potential crash when removing tracks from UPnP/AV playlist
+
+-------------------------------------------------------------------
 Sat Aug 13 10:46:11 UTC 2022 - Michael Pujos <pujos.michael@gmail.com>
 
 - add upstream signing key and validate source signature

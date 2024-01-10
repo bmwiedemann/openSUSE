@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec 20 21:41:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.5:
+  * Added support for Python 3.12
+  * Removed support for Python 3.7
+
+-------------------------------------------------------------------
 Mon Mar 20 09:30:41 UTC 2023 - pgajdos@suse.com
 
 - version update to 0.4
@@ -22,7 +29,7 @@ Fri Jan 22 09:28:08 UTC 2021 - Markéta Machová <mmachova@suse.com>
 - update to 0.3.1
   * Grammar is parsed when first used to improve import time.
   * The minimum attrs version is now 19.2.
-  * Errors raised for keyword-only argument errors on Python 3 did 
+  * Errors raised for keyword-only argument errors on Python 3 did
     not have the right error message.
 
 -------------------------------------------------------------------

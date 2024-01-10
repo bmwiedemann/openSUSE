@@ -1182,4 +1182,24 @@ C API
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1128112</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>cfd267ec1100ef54fc669f9c6a35e366</srcmd5>
+    <version>3.11.6</version>
+    <time>1703102408</time>
+    <user>anag+factory</user>
+    <comment>- Refresh CVE-2023-27043-email-parsing-errors.patch to
+  gh#python/cpython!111116, fixing bsc#1210638 (CVE-2023-27043).
+- Thus we can remove Revert-gh105127-left-tests.patch, which is
+  now useless.
+</comment>
+    <requestid>1134084</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>9f96b1fd6100bb5179cfe76eb5639082</srcmd5>
+    <version>3.11.7</version>
+    <time>1704753822</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1136197</requestid>
+  </revision>
 </revisionlist>

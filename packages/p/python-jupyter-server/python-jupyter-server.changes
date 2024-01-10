@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Dec 23 19:39:32 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.12.1
+  * log extension import time at debug level unless it's actually
+    slow #1375 (@minrk)
+  * Add support for async Authorizers #1374 #1373 (@Zsailer)
+
+-------------------------------------------------------------------
 Tue Dec  5 09:59:47 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.11.2: Fix GHSA-h56g-gq9v-vc8r, CVE-2023-49080,

@@ -244,4 +244,25 @@ devel:languages:go/telegraf r7 (forwarded request 758639 from jfkw)</comment>
     <comment>- Update to version 1.29.0: (forwarded request 1132560 from jfkw)</comment>
     <requestid>1132562</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>b5b548f41d2377e718c43c18492641c7</srcmd5>
+    <version>1.29.1</version>
+    <time>1702673253</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.29.1:
+  * Telegraf v1.29.1
+  * Update changelog for v1.29.1
+  * Update build_version.txt for v1.29.1
+  * fix(inputs.clickhouse): Omit zookeeper metrics on clickhouse cloud (#14443)
+  *  docs(inputs.memcached): Correct typo in README.md (#14448)
+  * fix(inputs.php-fpm): Parse JSON output (#14430)
+  * docs(inputs.ldap): Correct plugin name in sample config (#14446)
+  * chore(deps): Update all github.com/aws/aws-sdk-go-v2 dependencies (#14441)
+  * fix(inputs.procstat): Revert unintended renaming of 'systemd_unit' option (#14440)
+  * chore(deps): Bump github.com/go-ldap/ldap/v3 from 3.4.5 to 3.4.6 (#14435)
+  * chore(deps): Bump github.com/klauspost/compress from 1.17.3 to 1.17.4 (#14433)
+  * chore(deps): Bump github.com/openzipkin/zipkin-go from 0.4.1 to 0.4.2 (#14432)
+  * chore(deps): Bump github.com/tidwall/gjson from 1.14.4 to 1.17.0 (#14431) (forwarded request 1132934 from jfkw)</comment>
+    <requestid>1132935</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec 19 10:36:38 UTC 2023 - dimstar@opensuse.org
+
+- Update to version 0.74.2:
+  * lib,bidi: Work on the heap rather than the stack
+  * stream: Fix a rare corruption when advancing the tail
+  * widget: Fix initial cursor blink state
+  * build: Post release version bump
+
+-------------------------------------------------------------------
 Tue Nov 28 11:55:23 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -p N instead of deprecated %patchN.

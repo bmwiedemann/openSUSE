@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 29 12:33:24 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Do not use python-boto3 when building in SLE where it's currently
+  not available for python311
+
+-------------------------------------------------------------------
 Tue Jun 13 08:37:50 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

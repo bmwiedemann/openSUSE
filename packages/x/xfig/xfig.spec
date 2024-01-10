@@ -1,7 +1,7 @@
 #
 # spec file for package xfig
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,6 +40,10 @@ Patch3:         xfig.3.2.3d-international-std-fonts.dif
 Patch5:         xfig.3.2.5b-null.dif
 Patch6:         xfig.3.2.5b-locale.dif
 Patch7:         xfig.3.2.5b-fixes.dif
+# PATCH-FIX-UPSTREAM
+Patch8:         Sanitize-a-call-to-realloc-ticket-165.patch
+# PATCH-FIX-UPSTREAM
+Patch9:         Fix-exporting-only-active-layers-ticket-163.patch
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  flex
@@ -97,12 +101,14 @@ find -type f | while read file; do
     fi
 done
 set -x
-%patch0
-%patch1   -b .dingbats
-%patch3   -b .international-std-fonts
-%patch5   -b .null
-%patch6   -b .locale
-%patch7   -b .fixes
+%patch -P0
+%patch -P1 -b .dingbats
+%patch -P3 -b .international-std-fonts
+%patch -P5 -b .null
+%patch -P6 -b .locale
+%patch -P7 -b .fixes
+%patch -P8 -p1
+%patch -P9 -p1
 cp %{SOURCE1} .
 test ! -e Libraries/Examples/aircraft.fig || { echo forbidden file found 1>&2; exit 1; }
 

@@ -17,7 +17,7 @@
 
 
 Name:           ocaml-mccs
-Version:        1.1+16
+Version:        1.1+17
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Stripped-down version of mccs with OCaml bindings
@@ -29,7 +29,7 @@ Patch0:         %name.patch
 BuildRequires:  gcc-c++
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20230101
+BuildRequires:  ocaml-rpm-macros >= 20231101
 BuildRequires:  ocamlfind(cudf)
 
 %description

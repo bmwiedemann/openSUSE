@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 18 14:17:33 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * pen.service
+
+-------------------------------------------------------------------
 Mon Aug 17 20:00:26 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.34.1:

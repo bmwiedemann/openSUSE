@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Dec 30 17:34:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 23.12.11:
+  * Added fallback to name when common_name or official_name
+    country attributes are missing
+  * Added support for adding and removing country records, as well
+    as casting to dict
+  * Improve performance speed by checking for non-ascii chars
+    before removing accents
+  * Added search_fuzzy method to subdivisions
+  * Added type hinting, created py.typed file, and added mypy
+    checks to CI
+  * Dropped support for end-of-life Python 3.6 and 3.7.
+  * Added support for Python 3.11 and Python 3.12.
+  * Added dependency on importlib-resources for Python 3.8.
+  * Dropped implicit dependency on setuptools for pkg_resources.
+  * Update to iso-codes 4.15.0. (Thanks to alanorth!)
+  * Removes iso3166.mo files and opts for newer iso3166-1.mo and
+    iso3166-3.mo files for Country and Historic Country Translations
+    respectively.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:30:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
@@ -48,7 +70,7 @@ Tue Sep 10 12:35:50 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 Fri Aug 16 06:52:52 UTC 2019 - Matthias Fehring <buschmann23@opensuse.org>
 
 - add pycountry-19.7.15-fix-reading-description.patch to fix wrong
-  encoding when opening description files in setup.py 
+  encoding when opening description files in setup.py
 
 -------------------------------------------------------------------
 Tue Jul 23 10:31:50 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>

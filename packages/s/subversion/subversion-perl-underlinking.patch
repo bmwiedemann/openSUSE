@@ -1,8 +1,8 @@
-Index: subversion-1.14.2/Makefile.in
+Index: subversion-1.14.3/Makefile.in
 ===================================================================
---- subversion-1.14.2.orig/Makefile.in
-+++ subversion-1.14.2/Makefile.in
-@@ -898,7 +898,7 @@ swig-pl: autogen-swig-pl $(SWIG_PL_DIR)/
+--- subversion-1.14.3.orig/Makefile.in
++++ subversion-1.14.3/Makefile.in
+@@ -901,7 +901,7 @@ swig-pl: autogen-swig-pl $(SWIG_PL_DIR)/
  	    fi; \
  	  done; \
  	fi
@@ -11,10 +11,10 @@ Index: subversion-1.14.2/Makefile.in
  
  check-swig-pl: swig-pl swig-pl-lib
  	cd $(SWIG_PL_DIR)/native; $(MAKE) test
-Index: subversion-1.14.2/subversion/bindings/swig/perl/native/Makefile.PL.in
+Index: subversion-1.14.3/subversion/bindings/swig/perl/native/Makefile.PL.in
 ===================================================================
---- subversion-1.14.2.orig/subversion/bindings/swig/perl/native/Makefile.PL.in
-+++ subversion-1.14.2/subversion/bindings/swig/perl/native/Makefile.PL.in
+--- subversion-1.14.3.orig/subversion/bindings/swig/perl/native/Makefile.PL.in
++++ subversion-1.14.3/subversion/bindings/swig/perl/native/Makefile.PL.in
 @@ -85,7 +85,7 @@ my %config = (
                   " -I$svnlib_builddir",
                   " -I$swig_srcdir -g"),

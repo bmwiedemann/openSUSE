@@ -737,4 +737,26 @@ source service setup which messed up my spec file.
   * modprobe.d: use softdep to load sd_mod and sg (boo#1216070)</comment>
     <requestid>1121300</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>409d923465e47c1e6fed1bd7e75bd231</srcmd5>
+    <version>16.0.39</version>
+    <time>1702673233</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 16.0.39:
+  * Add more modules to file system blacklist (jsc#PED-6167)
+    Blacklisted filesystem modules that aren't officially supported
+    by SUSE: f2fs, hfsplus, jfss2, kafs, ntfs3, orangefs, pstore, romfs, zonefs.
+    As usual, the blacklist entries can be removed by running an
+    explicit &quot;modrobe $FS_MODULE&quot; command. (forwarded request 1133179 from mwilck)</comment>
+    <requestid>1133180</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>81c439d38b1a0d89572d688db593b6c8</srcmd5>
+    <version>16.0.42</version>
+    <time>1704380226</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16.0.42:
+  * 60-io-scheduler.rules: test for &quot;scheduler&quot; sysfs attribute (boo#1216717) (forwarded request 1136444 from mwilck)</comment>
+    <requestid>1136446</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jan  7 22:04:34 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.3.3:
+  * fix pypi release
+- update to 7.3.0:
+  * Add support for NetBox v3.7 by @markkuleinio #596
+  * Updated test suite by @abhi1693
+
+-------------------------------------------------------------------
 Thu Sep  7 15:49:27 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 7.2.0
@@ -44,7 +53,7 @@ Sat Dec 10 20:46:27 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 -------------------------------------------------------------------
 Wed Oct  5 14:22:03 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 6.6.2 
+- Update to version 6.6.2
   * ci: test against the currently supported python versions by @raddessi in #446
     Fix pickling exception with custom errors by @kingtong in #459
 
@@ -272,7 +281,7 @@ Tue Feb 11 06:39:06 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.2.5
   * save() is not idempotent when dealing with choice objects
-    from NetBox 2.7 
+    from NetBox 2.7
 
 -------------------------------------------------------------------
 Sun Jan 12 09:18:34 UTC 2020 - Martin Hauke <mardnh@gmx.de>
@@ -292,7 +301,7 @@ Tue Dec 10 18:37:10 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 Wed Nov 27 07:16:18 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.2.1
-  * Fixes infinite loop when filtering with paginated results. 
+  * Fixes infinite loop when filtering with paginated results.
 
 -------------------------------------------------------------------
 Wed Nov 20 20:21:16 UTC 2019 - Martin Hauke <mardnh@gmx.de>
@@ -452,7 +461,7 @@ Wed Oct 10 18:42:42 UTC 2018 - mardnh@gmx.de
 
 - Update to version 3.4.6
   * Fixes issue with the values of data and config_context being
-    turned into Record objects instead of 
+    turned into Record objects instead of
 
 - Update to version 3.4.5
   * Fixes issue with IPRecord object throwing a ValueError when

@@ -1,7 +1,7 @@
 #
 # spec file for package python-qstylizer
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-qstylizer
 Version:        0.2.2
 Release:        0
@@ -25,8 +24,12 @@ License:        MIT
 URL:            https://github.com/blambright/qstylizer
 # no sdist on PyPI
 Source:         https://github.com/blambright/qstylizer/archive/refs/tags/%{version}.tar.gz#/qstylizer-%{version}-gh.tar.gz
+# PATCH-FIX-UPSTREAM qstylizer-pr17-fix-py12-mock.patch gh#blambright/qstylizer#17
+Patch0:         https://github.com/blambright/qstylizer/pull/17.patch#/qstylizer-pr17-fix-py12-mock.patch
 BuildRequires:  %{python_module pbr}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module inflection > 0.3.0}
@@ -51,11 +54,11 @@ A python package designed to help with the construction of PyQt/PySide styleshee
 
 %build
 export PBR_VERSION=%{version}
-%python_build
+%pyproject_wheel
 
 %install
 export PBR_VERSION=%{version}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -65,6 +68,6 @@ export PBR_VERSION=%{version}
 %doc README.rst
 %license LICENSE.txt
 %{python_sitelib}/qstylizer
-%{python_sitelib}/qstylizer-%{version}*-info
+%{python_sitelib}/qstylizer-%{version}.dist-info
 
 %changelog

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Jan 04 05:59:42 UTC 2024 - danish.prakash@suse.com
+
+- Update to version 4.8.3:
+  * Release v4.8.3
+  * Update RELEASE_NOTES.md for v4.8.3
+  * update module golang.org/x/crypto to v0.17.0 [security]
+  * Error on HyperV VM start when gvproxy has failed to start
+  * bump release to v4.8.3-dev
+
+-------------------------------------------------------------------
+Wed Dec 13 12:51:44 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Refactor network backend dependencies:
+  * podman requires either netavark or cni-plugins. On ALP, require
+    netavark, otherwise prefer netavark but don't force it.
+  * This fixes missing cni-plugins in some scenarios
+  * Default to netavark everywhere where it's available
+
+-------------------------------------------------------------------
 Mon Dec 11 16:13:48 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 4.8.2:

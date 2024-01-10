@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec  6 12:55:38 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.de>
+
+- Add 10243.patch to fix FUSE mounts
+
+-------------------------------------------------------------------
 Sat Nov 11 01:23:24 UTC 2023 - Bernhard M. Wiedemann <bwiedemann@suse.de>
 
 - Update to 0.24.0 - for details see

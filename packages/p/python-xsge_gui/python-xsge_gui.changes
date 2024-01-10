@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Fri Dec 29 10:32:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.0:
+  Additions:
+  + xsge_gui.RadioButton.group
+  + xsge_gui.button_bottom_sprite
+  + xsge_gui.button_bottomleft_sprite
+  + xsge_gui.button_bottomright_sprite
+  + xsge_gui.button_top_sprite
+  + xsge_gui.button_topleft_sprite
+  + xsge_gui.button_topright_sprite
+  + xsge_gui.button_pressed_bottom_sprite
+  + xsge_gui.button_pressed_bottomleft_sprite
+  + xsge_gui.button_pressed_bottomright_sprite
+  + xsge_gui.button_pressed_top_sprite
+  + xsge_gui.button_pressed_topleft_sprite
+  + xsge_gui.button_pressed_topright_sprite
+  + xsge_gui.button_selected_bottom_sprite
+  + xsge_gui.button_selected_bottomleft_sprite
+  + xsge_gui.button_selected_bottomright_sprite
+  + xsge_gui.button_selected_top_sprite
+  + xsge_gui.button_selected_topleft_sprite
+  + xsge_gui.button_selected_topright_sprite
+  + xsge_gui.button_color
+  + xsge_gui.button_pressed_color
+  + xsge_gui.button_selected_color
+  + xsge_gui.Button.get_height
+  + xsge_gui.textbox_color
+  + xsge_gui.textbox_top_sprite
+  + xsge_gui.textbox_topleft_sprite
+  + xsge_gui.textbox_topright_sprite
+  + xsge_gui.textbox_bottom_sprite
+  + xsge_gui.textbox_bottomleft_sprite
+  + xsge_gui.textbox_bottomright_sprite
+
+  Removals:
+  - xsge_gui.Window.event_close
+  - xsge_gui.button_sprite
+  - xsge_gui.button_pressed_sprite
+  - xsge_gui.button_selected_sprite
+  - xsge_gui.textbox_sprite
+
+  Misc changes:
+  * Windows no longer implicitly have a "close" button in the
+    top-right.
+  * Default fonts used are now in the Roboto family instead of the
+    obsolete Droid Sans.
+  * Default fonts are now much larger.
+  * Relicensed to GNU LGPL.
+
+-------------------------------------------------------------------
 Tue May 25 04:26:00 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Do not build for Python 3.6, due to no NumPy.

@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-py7zr%{psuffix}
-Version:        0.20.5
+Version:        0.20.8
 Release:        0
 Summary:        Library and utility to support 7zip
 License:        LGPL-2.1-or-later
@@ -40,19 +40,19 @@ BuildRequires:  %{python_module setuptools_scm >= 7.0.5}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Brotli >= 1.0.9
+Requires:       python-Brotli >= 1.1.0
 Requires:       python-multivolumefile >= 0.2.3
 Requires:       python-psutil
-Requires:       python-pybcj >= 0.6.0
-Requires:       python-pycryptodomex >= 3.6.6
-Requires:       python-pyzstd >= 0.14.4
+Requires:       python-pycryptodomex >= 3.16.0
+Requires:       python-pyzstd >= 0.15.9
 Requires:       python-texttable
-Requires:       (python-pyppmd >= 0.18.1 with python-pyppmd < 1.1.0)
+Requires:       (python-pybcj >= 1.0.0 with python-pybcj < 1.1.0)
+Requires:       (python-pyppmd >= 1.1.0 with python-pyppmd < 1.2.0)
 %if 0%{?python_version_nodots} < 38
 Requires:       python-importlib_metadata
 %endif
 %if 0%{?python_version_nodots} > 36
-Requires:       python-inflate64 >= 0.3.1
+Requires:       (python-inflate64 >= 1.0.0 with python-inflate64 < 1.1.0)
 %endif
 Requires(post): update-alternatives
 Requires(postun):update-alternatives

@@ -474,4 +474,24 @@
     time.  This was a regression from earlier 3.0.x releases.</comment>
     <requestid>1129185</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>b76219671a58d0720dcc02275ceb6cc4</srcmd5>
+    <version>3.0.2</version>
+    <time>1702844947</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.0.2:
+  * Packaging: Add a minimal ``pyproject.toml`` to sdists.
+  * Packaging: Various updates to macOS wheels.
+  * Fix a test case on Arm32. Note that this is not a supported
+    platform (there is no CI for it) and support is best effort;</comment>
+    <requestid>1133678</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>673cfa48e0d25f263730c5bf6e7b8038</srcmd5>
+    <version>3.0.2</version>
+    <time>1704829707</time>
+    <user>anag+factory</user>
+    <comment>- require setuptools</comment>
+    <requestid>1136486</requestid>
+  </revision>
 </revisionlist>

@@ -207,4 +207,12 @@
     <comment>- Use more pkgconfig(..) in BuildRequires</comment>
     <requestid>1088815</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>a40dd578d8c2a163e6d4afcb52c1a8cb</srcmd5>
+    <version>3.2.4</version>
+    <time>1703800457</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 3.2.4</comment>
+    <requestid>1135375</requestid>
+  </revision>
 </revisionlist>

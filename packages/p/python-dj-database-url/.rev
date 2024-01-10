@@ -82,4 +82,18 @@ See request 531880 : https://build.opensuse.org/request/show/531880</comment>
     <comment></comment>
     <requestid>1085628</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6ee70a1b61c9750d248e1caeda4b5bd1</srcmd5>
+    <version>2.1.0</version>
+    <time>1704829781</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.1.0:
+  * fix: parse options with numerical values as int
+- update to 2.0.0:
+  * setup.py: Fix `project_urls` parameter name
+  * Redo as a package to fix mypy issues
+
+- Update to 1.0.0</comment>
+    <requestid>1137636</requestid>
+  </revision>
 </revisionlist>

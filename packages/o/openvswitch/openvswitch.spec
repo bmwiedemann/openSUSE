@@ -63,6 +63,7 @@ URL:            http://openvswitch.org/
 Source0:        http://openvswitch.org/releases/openvswitch-%{version}.tar.gz
 Source1:        https://github.com/ovn-org/ovn/archive/v%{ovn_version}.tar.gz#/ovn-%{ovn_version}.tar.gz
 Source2:        preamble
+Source10:       openvswitch-user.conf
 Source89:       Module.supported.updates
 Source99:       openvswitch-rpmlintrc
 # OVS patches
@@ -116,10 +117,12 @@ Obsoletes:      %{name}-switch < 2.7.0
 %if 0%{?suse_version}
 BuildRequires:  libopenssl-devel
 BuildRequires:  python-rpm-macros
+BuildRequires:  sysuser-tools
 Requires(post): %fillup_prereq
 Requires(pre):  shadow
 Suggests:       logrotate
 %{?systemd_ordering}
+%sysusers_requires
 %else
 BuildRequires:  environment-modules
 BuildRequires:  openssl-devel
@@ -507,6 +510,8 @@ bash -x boot.sh
         PYTHON3=%{_bindir}/python3 \
         LDFLAGS=-L../%{ovs_dir}/lib/.libs
 %make_build
+popd
+%sysusers_generate_pre %{SOURCE10} openvswitch openvswitch.conf
 
 %check
 %if %{with check}
@@ -727,7 +732,9 @@ rm %{buildroot}%{_docdir}/ovn/conf.py
 # Done with OVN additional files.
 popd
 
-%pre
+install -D -m 0644 %{SOURCE10} %{buildroot}%{_sysusersdir}/openvswitch.conf
+
+%pre -f openvswitch.pre
 %if 0%{?suse_version}
     %service_add_pre ovsdb-server.service ovs-vswitchd.service openvswitch.service ovs-delete-transient-ports.service
 %endif
@@ -736,16 +743,9 @@ if [ "$1" -ge 1 ]; then
     # ownership of openvswitch.service from openvswitch-switch to
     # openvswitch.
     if [ x$(systemctl is-enabled openvswitch.service 2>/dev/null ||:) = "xenabled" ]; then
-        touch %{rpmstate}openvswitch
+        touch %{rpmstate}openvswitch || :
     fi
 fi
-
-getent group openvswitch >/dev/null || groupadd -r openvswitch
-getent passwd openvswitch >/dev/null || \
-    useradd -r -g openvswitch -d / -s /sbin/nologin \
-    -c "Open vSwitch Daemons" openvswitch
-
-exit 0
 
 %pre ipsec
 %if 0%{?suse_version}
@@ -1171,6 +1171,7 @@ fi
 %{_fillupdir}/sysconfig.openvswitch
 %{_datadir}/bash-completion/completions/ovs-appctl-bashcomp.bash
 %{_datadir}/bash-completion/completions/ovs-vsctl-bashcomp.bash
+%{_sysusersdir}/openvswitch.conf
 %else
 %config(noreplace) %{_sysconfdir}/sysconfig/openvswitch
 %{_sysconfdir}/bash_completion.d/ovs-appctl-bashcomp.bash

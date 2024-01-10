@@ -24,9 +24,9 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%global skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-rpyc%{psuffix}
-Version:        5.3.0
+Version:        5.3.1
 Release:        0
 Summary:        Remote Python Call (RPyC), a RPC library
 License:        MIT
@@ -100,7 +100,7 @@ donttest+=" or test_gdb"
 %python_alternative %{_bindir}/rpyc_classic
 %python_alternative %{_bindir}/rpyc_registry
 %{python_sitelib}/rpyc
-%{python_sitelib}/rpyc-%{version}*-info
+%{python_sitelib}/rpyc-%{version}.dist-info
 %endif
 
 %changelog

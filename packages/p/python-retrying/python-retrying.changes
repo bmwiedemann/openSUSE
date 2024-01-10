@@ -1,7 +1,18 @@
 -------------------------------------------------------------------
+Tue Jan  2 22:35:49 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- require setuptools
+
+-------------------------------------------------------------------
+Thu Dec 21 03:40:17 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- Stop using greedy globs in %files.
+
+-------------------------------------------------------------------
 Tue Dec  6 15:30:28 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 1.3.4 
+- Update to version 1.3.4
   * Added Greg Roodt as maintainer
   * Formatted code with black
   * Updated repository references
@@ -47,5 +58,5 @@ Thu Dec 11 13:02:33 UTC 2014 - dmueller@suse.com
 -------------------------------------------------------------------
 Sun Jul 13 18:27:55 UTC 2014 - dmueller@suse.com
 
-- Initial package 
+- Initial package
 

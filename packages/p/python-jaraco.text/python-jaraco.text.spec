@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jaraco.text
-Version:        3.11.1
+Version:        3.12.0
 Release:        0
 Summary:        Tools to work with text
 License:        MIT
@@ -76,7 +76,7 @@ fi
 
 %files %{python_files}
 %license LICENSE
-%doc README.rst CHANGES.rst
+%doc README.rst
 %{python_sitelib}/jaraco/text
 %{python_sitelib}/jaraco.text-%{version}.dist-info
 

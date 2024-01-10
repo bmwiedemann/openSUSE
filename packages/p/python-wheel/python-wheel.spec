@@ -32,16 +32,16 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-wheel%{psuffix}
-Version:        0.41.2
+Version:        0.42.0
 Release:        0
 Summary:        A built-package format for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/pypa/wheel
 Source:         https://github.com/pypa/wheel/archive/%{version}.tar.gz#/wheel-%{version}.tar.gz
+# Bootstrap: Don't BuildRequire setuptools or pip here!
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module flit-core}
-BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
 %if %{with libalternatives}
@@ -74,11 +74,21 @@ final locations) at any later time.
 %autosetup -p1 -n wheel-%{version}
 
 %build
-%pyproject_wheel
+%if !%{with test}
+%{python_expand # bootstrap with built-in pip
+$python -m venv build/env
+build/env/bin/python -m ensurepip
+export PYTHONPATH=build/env/lib/python%{$python_bin_suffix}/site-packages
+%{$python_pyproject_wheel}
+}
+%endif
 
 %install
 %if !%{with test}
-%pyproject_install
+%{python_expand # use pip bootstrapped above
+export PYTHONPATH=build/env/lib/python%{$python_bin_suffix}/site-packages
+%{$python_pyproject_install}
+}
 %python_clone -a %{buildroot}%{_bindir}/wheel
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif

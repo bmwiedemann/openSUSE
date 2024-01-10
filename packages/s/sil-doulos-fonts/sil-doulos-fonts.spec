@@ -1,7 +1,7 @@
 #
 # spec file for package sil-doulos-fonts
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 
 Name:           sil-doulos-fonts
 # Provides:       locale(vi)
-Version:        6.101
+Version:        6.200
 Release:        0
 Summary:        Doulos SIL Fonts Similar to Times
 License:        OFL-1.1

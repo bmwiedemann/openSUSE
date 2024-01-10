@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-skip-markers
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-pytest-skip-markers
-Version:        1.5.0
+Version:        1.5.1
 Release:        0
 Summary:        Pytest plugin for conditionally skipping tests
 License:        Apache-2.0

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan  5 17:15:58 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- remove obsolete pdm-pep517 dependency
+
+-------------------------------------------------------------------
 Thu Dec  7 20:11:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.0:

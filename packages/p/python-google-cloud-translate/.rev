@@ -141,4 +141,26 @@
     <comment></comment>
     <requestid>1131588</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>02bd13b422e6f0c64381683e4478f1ce</srcmd5>
+    <version>3.13.0</version>
+    <time>1702845144</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.13.0:
+  * Add support for python 3.12
+  * Introduce compatibility with native namespace packages
+  * Require proto-plus &gt;= 1.22.3
+  * Use retry_async instead of retry in async client</comment>
+    <requestid>1133647</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7b991962949f03bd2bdfdc78010b95ff</srcmd5>
+    <version>3.14.0</version>
+    <time>1704659977</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.14.0:
+  * Add Adaptive MT API
+  * Fixes a typo in docs</comment>
+    <requestid>1137278</requestid>
+  </revision>
 </revisionlist>

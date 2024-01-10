@@ -1,7 +1,7 @@
 #
 # spec file for package orthanc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2019-2023 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,13 +18,13 @@
 
 
 Name:           orthanc
-Version:        1.12.1
+Version:        1.12.2
 Release:        0
 Summary:        RESTful DICOM server for healthcare and medical research
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Visualization/Other
 URL:            https://www.orthanc-server.com/
-Source0:        https://www.orthanc-server.com/downloads/get.php?path=/orthanc/Orthanc-%{version}.tar.gz
+Source0:        https://orthanc.uclouvain.be/downloads/sources/%{name}/Orthanc-%{version}.tar.gz
 Source1:        orthanc.service
 Source2:        orthanc-readme.SUSE
 Source3:        serve-folders.json
@@ -38,6 +38,7 @@ Source11:       https://orthanc.osimis.io/ThirdPartyDownloads/dicom-web/axios-0.
 Source12:       https://orthanc.osimis.io/ThirdPartyDownloads/jquery-3.4.1.min.js
 Source13:       https://orthanc.osimis.io/ThirdPartyDownloads/dicom-web/vuejs-2.6.10.tar.gz
 
+## Patch0:         libboost.diff
 BuildRequires:  civetweb-devel
 BuildRequires:  cmake >= 2.8.0
 BuildRequires:  curl-devel
@@ -46,7 +47,6 @@ BuildRequires:  dcmtk-devel
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 BuildRequires:  googletest-devel
-BuildRequires:  protobuf-devel 
 BuildRequires:  help2man
 BuildRequires:  jsoncpp-devel
 BuildRequires:  libboost_date_time-devel >= 1.66
@@ -56,6 +56,7 @@ BuildRequires:  libboost_locale-devel >= 1.66
 BuildRequires:  libboost_regex-devel >= 1.66
 BuildRequires:  libboost_system-devel >= 1.66
 BuildRequires:  libboost_thread-devel >= 1.66
+BuildRequires:  protobuf-devel
 #Workaround for boo#1180359
 BuildRequires:  libbz2-devel
 BuildRequires:  libjpeg-devel
@@ -230,7 +231,6 @@ ln -s ../../../..%{_libdir}/%{name}/libServeFolders.so.%{version} \
 ln -s ../../../..%{_libdir}/%{name}/libModalityWorklists.so.%{version} \
    %{buildroot}%{_prefix}/share/%{name}/plugins/libModalityWorklists.so
 
-   
 # Prepare documentation: "index.html", Doxygen of plugin SDK, and sample codes
 cp -r %{S:5} %{buildroot}%{_docdir}/%{name}/
 cp -r OrthancServer/Resources/Samples/ %{buildroot}%{_docdir}/%{name}/Samples

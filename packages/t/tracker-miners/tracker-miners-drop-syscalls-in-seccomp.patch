@@ -1,17 +1,17 @@
-Index: tracker-miners/tracker-miners-3.5.2/src/libtracker-miners-common/tracker-seccomp.c
+Index: tracker-miners-3.6.2/src/libtracker-miners-common/tracker-seccomp.c
 ===================================================================
---- tracker-miners.orig/tracker-miners-3.5.2/src/libtracker-miners-common/tracker-seccomp.c
-+++ tracker-miners/tracker-miners-3.5.2/src/libtracker-miners-common/tracker-seccomp.c
-@@ -149,8 +149,6 @@ tracker_seccomp_init (void)
- 	ALLOW_RULE (lstat64);
- 	ALLOW_RULE (statx);
+--- tracker-miners-3.6.2.orig/src/libtracker-miners-common/tracker-seccomp.c
++++ tracker-miners-3.6.2/src/libtracker-miners-common/tracker-seccomp.c
+@@ -173,8 +173,6 @@ tracker_seccomp_init (void)
+ 	ALLOW_RULE (fstatfs);
+ 	ALLOW_RULE (fstatfs64);
  	ALLOW_RULE (access);
 -	ALLOW_RULE (faccessat);
 -	ALLOW_RULE (faccessat2);
  	ALLOW_RULE (getdents);
  	ALLOW_RULE (getdents64);
  	ALLOW_RULE (getcwd);
-@@ -163,9 +161,7 @@ tracker_seccomp_init (void)
+@@ -188,9 +186,7 @@ tracker_seccomp_init (void)
  	ERROR_RULE (fchown, EPERM);
  	/* Processes and threads */
  	ALLOW_RULE (clone);
@@ -21,7 +21,7 @@ Index: tracker-miners/tracker-miners-3.5.2/src/libtracker-miners-common/tracker-
  	ALLOW_RULE (set_robust_list);
  	ALLOW_RULE (rseq);
  	ALLOW_RULE (rt_sigaction);
-@@ -175,14 +171,12 @@ tracker_seccomp_init (void)
+@@ -200,7 +196,6 @@ tracker_seccomp_init (void)
  	ALLOW_RULE (sched_setattr);
  	ALLOW_RULE (nanosleep);
  	ALLOW_RULE (clock_nanosleep);
@@ -29,6 +29,7 @@ Index: tracker-miners/tracker-miners-3.5.2/src/libtracker-miners-common/tracker-
  	ALLOW_RULE (waitid);
  	ALLOW_RULE (waitpid);
  	ALLOW_RULE (wait4);
+@@ -208,7 +203,6 @@ tracker_seccomp_init (void)
  	/* Main loops */
  	ALLOW_RULE (poll);
  	ALLOW_RULE (ppoll);
@@ -36,11 +37,11 @@ Index: tracker-miners/tracker-miners-3.5.2/src/libtracker-miners-common/tracker-
  	ALLOW_RULE (fcntl);
  	ALLOW_RULE (fcntl64);
  	ALLOW_RULE (eventfd);
-@@ -198,7 +192,6 @@ tracker_seccomp_init (void)
+@@ -224,7 +218,6 @@ tracker_seccomp_init (void)
  	ALLOW_RULE (prctl);
  	ALLOW_RULE (getrandom);
  	ALLOW_RULE (clock_gettime);
 -	ALLOW_RULE (clock_gettime64);
  	ALLOW_RULE (clock_getres);
  	ALLOW_RULE (gettimeofday);
- 	/* Descriptors */
+ 	ALLOW_RULE (timerfd_create);

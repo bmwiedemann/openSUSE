@@ -15,14 +15,15 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define realversion 7.1.0b1
+
+%define realversion 7.1.0b4
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %if 0%{?suse_version} >= 1500
 %define skip_python2 1
 %endif
 Name:           python-azure-devops
-Version:        7.1.0~b1
+Version:        7.1.0~b4
 Release:        0
 Summary:        Python wrapper around the Azure DevOps 5x APIs
 License:        MIT

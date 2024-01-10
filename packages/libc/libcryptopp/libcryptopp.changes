@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Thu Jan  4 09:29:41 UTC 2024 - pgajdos@suse.com
+
+- security update
+- added patches
+  fix CVE-2023-50981 [bsc#1218222], issue on ModularSquareRoot function leads to potential DoS
+  https://github.com/weidai11/cryptopp/pull/1255
+  + libcryptopp-CVE-2023-50981.patch
+
+-------------------------------------------------------------------
+Thu Dec 21 13:48:35 UTC 2023 - pgajdos@suse.com
+
+- version update to 8.9.0
+  * Crypto++ 8.9 was released on October 1, 2023. The 8.9 release
+    was a minor, unplanned release. There were no CVEs and one
+    memory error.
+
+  * The 8.9 release was driven by the fix for `ProcessData`, and
+    the failures when `inString==outString`. Also see GH #1231,
+    Rabbit Produces null Keystream When inString == outString.
+
+  * Release notes
+  * ===========
+
+  * minor release, recompile of programs required
+  * expanded community input and support
+  * 88 unique contributors as of this release
+  * add additional tests to datatest.cpp
+  * fix SIMON128 Asan finding on POWER8
+  * fix AES/CFB and AES/CTR modes self test failures when using
+    Cryptogams AES on ARMv7
+  * fix ARIA/CTR mode self test failures when inString==outString
+  * fix HIGHT/CTR mode self test failures when
+    inString==outString
+  * fix Rabbit/CTR mode self test failures when
+    inString==outString
+  * fix HC128/CTR and HC256/CTR mode self test failures when
+    inString==outString
+  * fix Prime Table and dangling reference to a temporary
+  * fix Singleton::Ref() when using C++11 memory fences
+  * remove unneeded call to Crop() in Randomize()
+- modified patches
+  % libcryptopp-shared.patch (refreshed)
+- modified sources
+  % baselibs.conf
+- added patches
+  fix CVE-2023-50980 [bsc#1218219], DoS via malformed DER public key file
+  + libcryptopp-CVE-2023-50980.patch
+
+-------------------------------------------------------------------
 Sun Jul 16 18:55:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.8.0:

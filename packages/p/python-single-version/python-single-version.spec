@@ -1,7 +1,7 @@
 #
 # spec file for package python-single-version
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,20 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-single-version
-Version:        1.5.1
+Version:        1.6.0
 Release:        0
 Summary:        Have a single source of version in your code base
 License:        MIT
 URL:            https://github.com/hongquan/single-version
-Source0:        https://pypi.io/packages/source/s/single-version/single-version-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+Source0:        https://pypi.io/packages/source/s/single-version/single_version-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
-Requires:       python-importlib-metadata
 Requires:       python-first >= 2.0
+Requires:       python-importlib-metadata
 BuildArch:      noarch
 %python_subpackages
 
@@ -36,18 +37,18 @@ BuildArch:      noarch
 Utility to let you have a single source of version in your code base.
 
 %prep
-%autosetup -n single-version-%{version}
+%autosetup -n single_version-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/single_version
-%{python_sitelib}/single_version-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/single_version-%{version}.dist-info
 
 %changelog

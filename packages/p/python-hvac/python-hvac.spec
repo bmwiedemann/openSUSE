@@ -1,7 +1,7 @@
 #
 # spec file for package python-hvac
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           python-hvac
-Version:        1.2.1
+Version:        2.1.0
 Release:        0
 Summary:        HashiCorp Vault API client
 License:        BSD-3-Clause
-URL:            https://github.com/ianunruh/hvac
-Source:         https://github.com/hvac/hvac/archive/v%{version}.tar.gz
+URL:            https://github.com/hvac/hvac
+Source:         https://github.com/hvac/hvac/releases/download/v%{version}/hvac-%{version}.tar.gz
 BuildRequires:  %{python_module Authlib}
 BuildRequires:  %{python_module Flask-SQLAlchemy}
 BuildRequires:  %{python_module Flask}
@@ -32,6 +32,8 @@ BuildRequires:  %{python_module parameterized}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry}
 BuildRequires:  %{python_module pyhcl >= 0.3.10}
+BuildRequires:  %{python_module pytest-mock}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.21.0}
 BuildRequires:  %{python_module requests-mock}
@@ -64,8 +66,9 @@ find hvac -name "*.py" -exec sed -i -e '/^#!\//, 1d' {} \;
 %pytest
 
 %files %{python_files}
-%doc README.* CHANGELOG.*
+%doc README.* docs/changelog.rst
 %license LICENSE.txt
-%{python_sitelib}/hvac*
+%{python_sitelib}/hvac
+%{python_sitelib}/hvac-%{version}.dist-info
 
 %changelog

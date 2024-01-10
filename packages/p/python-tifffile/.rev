@@ -148,4 +148,36 @@ This should fix ERROR: download_files is configured to fail when the upstream fi
     <comment></comment>
     <requestid>1111068</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>7e309bf89ef4c674b0bc385ac0cb9cab</srcmd5>
+    <version>2023.12.9</version>
+    <time>1703800957</time>
+    <user>anag+factory</user>
+    <comment>- update to 2023.12.9:
+  * Read 32-bit Indica Labs TIFF as float32.
+  * Fix UnboundLocalError reading big LSM files without time
+    axis.
+  * Use os.sched_getaffinity, if available, to get the number of
+    CPUs (#231).
+  * Limit the number of default worker threads to 32.
+  * Lazily convert dask array to ndarray when writing.
+  * Allow to specify buffersize for reading and writing.
+  * Fix IndexError reading some corrupted files with
+    ZarrTiffStore (#227).
+  * Raise exception when writing non-volume data with volumetric
+    tiles (#225).
+  * Improve multi-threaded writing of compressed multi-page
+    files.
+  * Fix fsspec reference for big-endian files with predictors.
+
+- Inject multibuild to fix a bootstrapping issue.
+- Add _constraints file to avoid OOM
+- Ignore test_write_ome, test_class_omexml_attributes,
+  test_class_omexml_multiimage, and test_class_omexml because it
+- Fix ERROR: download_files is configured to fail when the
+  upstream file is different than the committed file.
+- Fix spec file build condition.
+  * Re-add pure Python PackBits decoder.</comment>
+    <requestid>1135343</requestid>
+  </revision>
 </revisionlist>

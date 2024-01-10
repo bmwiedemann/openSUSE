@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec 29 11:48:07 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Remove BuildRequires and Suggests python-redis since it's not
+  really used when building and there's no reason to suggest it
+  unless someone wants to explicitly use redis, this simplifies
+  the dependencies which is useful for SLE.
+
+-------------------------------------------------------------------
 Mon Jun 19 12:38:35 UTC 2023 - Torsten Gruner <simmphonie@opensuse.org>
 
 - Update to v0.13.1 

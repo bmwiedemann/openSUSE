@@ -1,7 +1,7 @@
 #
 # spec file for package openssl_tpm2_engine
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2017 James.Bottomley@HansenPartnership.com
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           openssl_tpm2_engine
-Version:        4.0.2
+Version:        4.1.1
 Release:        0
 Summary:        OpenSSL TPM 2.0 interface engine plugin
 License:        LGPL-2.1-only

@@ -1,7 +1,7 @@
 #
 # spec file for package kernel-obs-qa
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 # needsrootforbuild
 
 
-%define patchversion 6.6.6
+%define patchversion 6.6.10
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -28,13 +28,17 @@ BuildRequires:  kernel-default
 # here as well to avoid that qa and build package build parallel
 BuildRequires:  kernel-obs-build
 BuildRequires:  modutils
+%if ! 0%{?is_kotd} || %{?is_kotd_qa}%{!?is_kotd_qa:0}
 ExclusiveArch:  aarch64 armv6hl armv7hl ppc64le riscv64 s390x x86_64
+%else
+ExclusiveArch:  do_not_build
+%endif
 Summary:        Basic QA tests for the kernel
 License:        GPL-2.0-only
 Group:          SLES
-Version:        6.6.6
+Version:        6.6.10
 %if 0%{?is_kotd}
-Release:        <RELEASE>.ga946a9f
+Release:        <RELEASE>.ge04388e
 %else
 Release:        0
 %endif

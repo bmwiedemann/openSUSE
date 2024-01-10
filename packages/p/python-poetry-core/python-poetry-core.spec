@@ -1,7 +1,7 @@
 #
 # spec file for package python-poetry-core
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-poetry-core
-Version:        1.7.0
+Version:        1.8.1
 Release:        0
 Summary:        Poetry PEP 517 Build Backend
 License:        Apache-2.0 AND BSD-2-Clause AND MIT AND Python-2.0
@@ -50,14 +50,12 @@ PEP 517 compatible build frontends to build Poetry managed projects.
 %prep
 %setup -q -n poetry-core-%{version}
 mkdir vendoredlicenses
-cp src/poetry/core/_vendor/attrs/LICENSE             vendoredlicenses/attrs.LICENSE
-cp src/poetry/core/_vendor/jsonschema/COPYING        vendoredlicenses/jsonschema.COPYING
-cp src/poetry/core/_vendor/lark/LICENSE              vendoredlicenses/lark.LICENSE
-cp src/poetry/core/_vendor/packaging/LICENSE         vendoredlicenses/packaging.LICENSE
-cp src/poetry/core/_vendor/packaging/LICENSE.APACHE  vendoredlicenses/packaging.LICENSE.APACHE
-cp src/poetry/core/_vendor/packaging/LICENSE.BSD     vendoredlicenses/packaging.LICENSE.BSD
-cp src/poetry/core/_vendor/pyrsistent/LICENSE.mit    vendoredlicenses/pyrsistent.LICENSE.mit
-cp src/poetry/core/_vendor/tomli/LICENSE             vendoredlicenses/tomli.LICENSE
+cp -p src/poetry/core/_vendor/lark/LICENSE              vendoredlicenses/lark.LICENSE
+cp -p src/poetry/core/_vendor/fastjsonschema/LICENSE    vendoredlicenses/fastjsonschema.LICENSE
+cp -p src/poetry/core/_vendor/packaging/LICENSE         vendoredlicenses/packaging.LICENSE
+cp -p src/poetry/core/_vendor/packaging/LICENSE.APACHE  vendoredlicenses/packaging.LICENSE.APACHE
+cp -p src/poetry/core/_vendor/packaging/LICENSE.BSD     vendoredlicenses/packaging.LICENSE.BSD
+cp -p src/poetry/core/_vendor/tomli/LICENSE             vendoredlicenses/tomli.LICENSE
 
 %build
 %pyproject_wheel

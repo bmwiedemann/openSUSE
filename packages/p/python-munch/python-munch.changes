@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec 17 01:56:59 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.0:
+  * Remove six dependency
+- drop python-munch-no-six.patch (upstream)
+
+-------------------------------------------------------------------
 Thu Jun  8 14:12:23 UTC 2023 - pgajdos@suse.com
 
 - version update to 3.0.0

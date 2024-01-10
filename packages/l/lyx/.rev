@@ -876,4 +876,12 @@
 - Remove lyx-2.3.6-fix-gcc12.patch</comment>
     <requestid>1056088</requestid>
   </revision>
+  <revision rev="107" vrev="2">
+    <srcmd5>d82a9759642753848610077130ec34e6</srcmd5>
+    <version>2.3.7</version>
+    <time>1702936533</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1132911</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Dec 21 17:16:32 UTC 2023 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.11.2:
+  * Update release deps
+  * Maintenance release v0.11.2
+  * Bump golang.org/x/net from 0.3.1-0.20221206200815-1e63c2f08a10
+    to 0.7.0
+  * fix typo in README.md
+  * chore: remove refs to deprecated io/ioutil
+  * fix typo in README.md
+  * fix: check metrics before version in cluster sanitizer
+  * fix: call AddErr() when nodes list fails
+  * fix: call AddErr() when namespaces list fails
+  * fix: call AddErr() when clusterrolebindings list fails
+  * fix: call AddErr() when clusterroles list fails
+  * fix: call AddErr() when clusterroles list fails
+  * fix: call AddErr() when clusterrolebindings list fails
+  * feat: update POP-402 message
+  * feat: check metrics server in cluster sanitizer
+  * Bump golang.org/x/net from 0.3.1-0.20221206200815-1e63c2f08a10
+    to 0.7.0
+  * Fix README fred* namespaces exclusion
+
+-------------------------------------------------------------------
 Tue Feb 21 09:27:22 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.11.1:

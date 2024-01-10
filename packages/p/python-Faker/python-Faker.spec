@@ -1,7 +1,7 @@
 #
 # spec file for package python-Faker
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Faker
-Version:        19.10.0
+Version:        22.1.0
 Release:        0
 Summary:        Python package that generates fake data
 License:        MIT

@@ -126,4 +126,15 @@
     <comment></comment>
     <requestid>1039504</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>36d73c6cce8c6100b0bb3a2a3768b0d0</srcmd5>
+    <version>5.8.1</version>
+    <time>1704660028</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.8.1:
+  * Fix racetest problems. For details see #376.
+  * Fix --with-verify argument in script repozo --recover. For
+    details see #381.</comment>
+    <requestid>1137379</requestid>
+  </revision>
 </revisionlist>

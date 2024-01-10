@@ -1,0 +1,6 @@
+<package name="qtilitools" project="openSUSE:Factory">
+  <title>Scripts/commands used in the Qtilities organization</title>
+  <description></description>
+  <devel project="X11:LXQt" package="qtilitools"/>
+  <url>https://github.com/qtilities/qtilitools</url>
+</package>

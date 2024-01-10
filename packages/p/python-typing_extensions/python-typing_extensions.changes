@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Dec 27 11:35:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.9.0:
+  * This feature release adds `typing_extensions.ReadOnly`, as
+    specified by PEP 705, and makes various other improvements,
+    especially to `@typing_extensions.deprecated()`.
+  * Add support for PEP 705, adding `typing_extensions.ReadOnly`.
+  * All parameters on `NewType.__call__` are now positional-only.
+    This means that the signature of
+    `typing_extensions.NewType.__call__` now exactly matches the
+  * signature of `typing.NewType.__call__`.
+  * Fix bug with using `@deprecated` on a mixin class.
+  * Exclude `__match_args__` from `Protocol` members.
+  * When creating a `typing_extensions.NamedTuple` class, ensure
+    `__set_name__` is called on all objects that define
+    `__set_name__` and exist in the values of the `NamedTuple`
+    class's class dictionary.
+
+-------------------------------------------------------------------
 Thu Oct 19 10:26:29 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 4.8.0:
@@ -312,7 +331,7 @@ Sat Nov 13 20:42:04 UTC 2021 - Dirk Müller <dmueller@suse.com>
 - Update to 3.10.0.2:
   * Docs improvements
   * Fixes crash  and _GenericAlias import
-  * Support most use cases for PEP 612 with Generic 
+  * Support most use cases for PEP 612 with Generic
 
 -------------------------------------------------------------------
 Mon Jul 12 13:11:30 UTC 2021 - Markéta Machová <mmachova@suse.com>
@@ -339,7 +358,7 @@ Tue Jan 12 14:44:39 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Sun Dec 20 09:11:23 UTC 2020 - Dirk Müller <dmueller@suse.com>
 
-- add transitional typing-extensions provides 
+- add transitional typing-extensions provides
 
 -------------------------------------------------------------------
 Wed Nov  4 00:11:53 UTC 2020 - Matej Cepl <mcepl@suse.com>
@@ -351,7 +370,7 @@ Thu Oct 15 12:51:36 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to version 3.7.4.3:
   * enables PEP 613 Typealias to typing_extensions
-  * Fix tests for Python 3.9 
+  * Fix tests for Python 3.9
 
 -------------------------------------------------------------------
 Mon Apr  6 08:53:23 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>

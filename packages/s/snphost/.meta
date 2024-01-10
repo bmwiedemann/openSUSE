@@ -1,0 +1,5 @@
+<package name="snphost" project="openSUSE:Factory">
+  <title>snphost</title>
+  <description>snphost is a command line utility for interacting with the AMD Secure Encrypted Virtualization - Secure Nested Paging (SEV-SNP) host environment (via the /dev/sev device).</description>
+  <devel project="Virtualization" package="snphost"/>
+</package>

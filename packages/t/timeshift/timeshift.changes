@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jan  1 23:21:47 UTC 2024 - malcolmlewis@opensuse.org
+
+- Updated to version 23.12.2:
+  * Fix RAID handling in device lookup,
+    (gh#linuxmint/timeshift#252).
+  * Check /proc/cmdline for the live-session check.
+- Changes from version 23.12.1:
+  * Docs/man/meson.build: Use -N for help2man to avoid texinfo
+    section, (gh#linuxmint/timeshift#217).
+  * Docs/development.md: Fix meson setup command,
+    (gh#linuxmint/timeshift#224).
+  * Translation updates.
+
+-------------------------------------------------------------------
 Mon Sep  4 09:35:50 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 23.07.1:

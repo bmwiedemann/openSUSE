@@ -1,7 +1,7 @@
 #
 # spec file for package mtd-utils
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,10 @@
 
 
 Name:           mtd-utils
-Version:        2.1.2
+Version:        2.1.6
 Release:        0
 Summary:        Tools for maintaining Memory Technology Devices
 License:        GPL-2.0-or-later
-Group:          System/Filesystems
 URL:            http://www.linux-mtd.infradead.org/
 Source0:        ftp://ftp.infradead.org/pub/mtd-utils/mtd-utils-%{version}.tar.bz2
 Source1:        ftp://ftp.infradead.org/pub/mtd-utils/mtd-utils-%{version}.tar.bz2.asc
@@ -97,6 +96,13 @@ including JFFS2, M-Systems DiskOnChip devices, etc.
 %{_sbindir}/ubirmvol
 %{_sbindir}/ubirsvol
 %{_sbindir}/ubiupdatevol
+%{_sbindir}/fectest
+%{_sbindir}/flash_otp_erase
+%{_sbindir}/mount.ubifs
+%{_sbindir}/nandflipbits
+%{_sbindir}/ubiscan
+%dir %{_libexecdir}/mtd-utils
+%{_libexecdir}/mtd-utils/*
 %{_mandir}/man1/mkfs.jffs2.1%{?ext_man}
 %{_mandir}/man8/lsmtd.8%{?ext_man}
 %{_mandir}/man8/ubinize.8%{?ext_man}

@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-box
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,18 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-# python_requires='>=3.6'
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-python-box
-Version:        6.1.0
+Version:        7.1.1
 Release:        0
 Summary:        Advanced Python dictionaries with dot notation access
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/cdgriffith/Box
 Source:         https://github.com/cdgriffith/Box/archive/%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -49,10 +49,10 @@ Advanced Python dictionaries with dot notation access
 %setup -q -n Box-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -62,6 +62,7 @@ export PYTHONPATH='.'
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/box
+%{python_sitelib}/python_box-%{version}.dist-info
 
 %changelog

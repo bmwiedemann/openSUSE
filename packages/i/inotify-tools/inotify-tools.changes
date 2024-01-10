@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Dec 30 16:39:28 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.23.9.0:
+  * support cross compile for Android
+  * libinotifytools: Rename init variable to fix conflict with
+    entry point
+  * Add CodeQL workflow for GitHub code scanning
+  * Fix build with musl and add Alpine buildnode to CI
+  * Update Cirrus CI FreeBSD images
+  * Fix enabling of fanotify/fsnotify.
+  * Fix fanotify_supported()
+  * Combine to one build machine, reduce test iteration to 64
+  * Add -fanalyzer to build
+  * Enable CentOS Stream 9 build
+  * Add debian 12
+  * Ensure C++ libraries are not linked in
+
+-------------------------------------------------------------------
 Sun Jun 19 14:04:47 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.22.6.0:
@@ -17,7 +35,7 @@ Sat May  7 12:48:23 UTC 2022 - Dirk Müller <dmueller@suse.com>
 Sat Oct 16 15:13:57 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.21.9.6 (jsc#SLE-21025):
-  * update path for includes in stats.h 
+  * update path for includes in stats.h
   * Fix spellings in manpages
 
 -------------------------------------------------------------------
@@ -26,7 +44,7 @@ Mon Sep 27 17:35:18 UTC 2021 - Dirk Müller <dmueller@suse.com>
 - update to 3.21.9.5:
   * Fix Wrong pointer passed to realloc
   * Fix offset compiler warning
-  * various static code analyse annotations and fixes 
+  * various static code analyse annotations and fixes
 
 -------------------------------------------------------------------
 Sun Dec 20 12:56:31 UTC 2020 - Dirk Müller <dmueller@suse.com>
@@ -39,7 +57,7 @@ Sun Dec 20 12:56:31 UTC 2020 - Dirk Müller <dmueller@suse.com>
 Sun Aug 16 02:25:14 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 3.20.2:
-  * New maintainer 
+  * New maintainer
   * Fix potential buffer overflow
   * gcc 9 support
 
@@ -79,7 +97,7 @@ Fri Mar 20 08:42:45 UTC 2015 - jweberhofer@weberhofer.at
 -------------------------------------------------------------------
 Wed Mar 18 14:58:26 UTC 2015 - jweberhofer@weberhofer.at
 
-- Build noarch package for doc only for newer suse version, otherwise 
+- Build noarch package for doc only for newer suse version, otherwise
   build fails.
 
 -------------------------------------------------------------------
@@ -125,5 +143,5 @@ Mon Sep  2 19:29:52 UTC 2013 - stephan.barth@suse.com
 -------------------------------------------------------------------
 Tue Aug 27 08:54:12 UTC 2013 - stephan.barth@suse.com
 
-- initial package 
+- initial package
 

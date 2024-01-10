@@ -1,7 +1,7 @@
 #
 # spec file for package ikona
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ Group:          System/X11/Utilities
 URL:            https://invent.kde.org/KDE/ikona
 Source0:        %{name}-v%{version}.tar.gz
 BuildRequires:  cmake
+BuildRequires:  extra-cmake-modules
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5Kirigami2)
 BuildRequires:  cmake(KF5Plasma)

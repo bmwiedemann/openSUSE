@@ -10,4 +10,12 @@ This package is used by bottles to create snapshots of a Wine
 bottle for easier rollback in case the something went wrong.</comment>
     <requestid>1006076</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8fc8128df5c487a01ba80d552da0ab9c</srcmd5>
+    <version>0.3.4</version>
+    <time>1704290026</time>
+    <user>dimstar_suse</user>
+    <comment>- specl cleanups</comment>
+    <requestid>1136452</requestid>
+  </revision>
 </revisionlist>

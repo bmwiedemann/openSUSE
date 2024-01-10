@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Dec 16 21:22:46 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.19.1:
+  * Fix documentation builds on https://khard.readthedocs.io/
+  * Remove support for python 3.7
+  * Run tests on python 3.11 and 3.12 in CI
+  * Fix yaml conversion of multiple addresses with same label
+  * Improve error message for address book paths
+  * Add pyproject.toml file and deprecate setup.py
+  * Remove deprecated options from --help and zsh completion
+
+-------------------------------------------------------------------
 Sun Dec 18 21:32:07 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 0.18.0:

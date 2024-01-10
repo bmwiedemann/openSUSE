@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Dec 18 14:06:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.12:
+  * fixed bug in RegexMatcher.reset() not retaining ownership
+    of string
+    - added wrappers for TimeZoneNames class
+    - added wrapper for TimeZone.getIanaID()
+    - added wrapper for
+  * added support for ICU 74.1
+
+-------------------------------------------------------------------
 Thu Jun 29 07:13:31 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
 
 - Disable testTransition on Leap
@@ -58,7 +69,7 @@ Thu Nov 11 15:44:28 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 -------------------------------------------------------------------
 Mon Nov  8 10:34:34 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- add missing six declaration for testsuite 
+- add missing six declaration for testsuite
 
 -------------------------------------------------------------------
 Mon Aug 16 07:51:00 UTC 2021 - Axel Braun <axel.braun@gmx.de>
@@ -91,7 +102,7 @@ Fri Aug 13 17:36:21 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 Wed Apr 28 08:06:12 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-icu-69.patch:
-  * Support ICU 69 
+  * Support ICU 69
 
 -------------------------------------------------------------------
 Mon Dec 14 16:27:25 UTC 2020 - Callum Farmer <gmbr3@opensuse.org>

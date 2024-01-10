@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jan  7 19:46:27 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.0:
+  * PyOtherSide now supports Qt 6 while retaining source
+    compatibility with Qt 5.
+  * PyGLArea is currently broken with Qt 6, use PyFBO
+    instead.
+
+-------------------------------------------------------------------
 Mon Mar  9 09:15:05 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.5.9:
@@ -16,12 +25,12 @@ Fri May 10 11:47:54 UTC 2019 - t.gruner@katodev.de
 Tue Jan  1 11:56:07 UTC 2019 - t.gruner@katodev.de
 
 - fix build for Factory
-- update plugins.qmltypes (commit 067e3a6 on 27 Aug 2018)  
+- update plugins.qmltypes (commit 067e3a6 on 27 Aug 2018)
 
 -------------------------------------------------------------------
 Tue Apr 10 08:10:33 UTC 2018 - t.gruner@katodev.de
 
-- disable qtquicktests (debug files) 
+- disable qtquicktests (debug files)
 
 -------------------------------------------------------------------
 Thu Jan 25 14:45:59 UTC 2018 - t.gruner@katodev.de
@@ -31,7 +40,7 @@ Thu Jan 25 14:45:59 UTC 2018 - t.gruner@katodev.de
 -------------------------------------------------------------------
 Thu Jan  4 08:39:45 UTC 2018 - t.gruner@katodev.de
 
-- cleanup spec file 
+- cleanup spec file
 
 -------------------------------------------------------------------
 Fri Oct 27 23:43:12 UTC 2017 - dmacvicar@suse.de
@@ -43,4 +52,4 @@ Fri Oct 27 23:43:12 UTC 2017 - dmacvicar@suse.de
 Thu Jun  1 14:55:04 UTC 2017 - t.gruner@katodev.de
 
 - Initial release 1.5.1
- 
+

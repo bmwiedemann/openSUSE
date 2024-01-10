@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 20 12:28:16 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Fix tests with python 3.11.7
+- Add patch fix-tests-python3117.patch gh#pytest-dev/pytest-mock#403
+
+-------------------------------------------------------------------
 Tue Nov  7 19:35:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.12.0:

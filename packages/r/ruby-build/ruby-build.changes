@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec 26 00:43:59 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20231225.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20231225
+  * Use bats-core instead of archived version by @hsbt in #2325
+  * Add Ruby 3.3.0 by @k0kubun in #2326
+  * Switch 3.3.0-dev to ruby_3_3 branch by @hsbt in #2327
+
+-------------------------------------------------------------------
 Mon Dec 11 19:41:29 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20231211.

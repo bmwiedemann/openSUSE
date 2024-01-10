@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-rapidfuzz
-Version:        2.13.7
+Version:        3.5.2
 Release:        0
 Summary:        Rapid fuzzy string matching
 License:        MIT
@@ -45,7 +45,8 @@ BuildRequires:  gcc-c++
 %python_subpackages
 
 %description
-RapidFuzz is a fast string matching library for Python and C++, which is using the string similarity calculations from FuzzyWuzzy.
+RapidFuzz is a fast string matching library for Python and C++, which is using
+the string similarity calculations from FuzzyWuzzy.
 
 %prep
 %autosetup -p1 -n rapidfuzz-%{version}

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan  2 17:24:56 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.0:
+  * https://mypy-lang.blogspot.com/2023/12/mypy-18-released.html
+  * https://mypy-lang.blogspot.com/2023/11/mypy-17-released.html
+  * https://mypy-lang.blogspot.com/2023/10/mypy-16-released.html
+- fix dependencies
+
+-------------------------------------------------------------------
 Wed Aug 30 18:31:19 UTC 2023 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Update to 1.5.1:
@@ -39,7 +48,7 @@ Sun Aug 13 06:30:29 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
   - Fix strict optional handling in dataclasses (Ivan Levkivskyi, PR 15571)
   - Support optional types for custom dataclass descriptors (Marc Mueller, PR 15628)
   - Add __slots__ attribute to dataclasses (Nikita Sobolev, PR 15649)
-  - Support better __post_init__ method signature for dataclasses (Nikita Sobolev, PR 15503) 
+  - Support better __post_init__ method signature for dataclasses (Nikita Sobolev, PR 15503)
  - Mypyc Improvements
   - Support unsigned 8-bit native integer type: mypy_extensions.u8 (Jukka Lehtosalo, PR 15564)
   - Support signed 16-bit native integer type: mypy_extensions.i16 (Jukka Lehtosalo, PR 15464)
@@ -47,16 +56,16 @@ Sun Aug 13 06:30:29 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
   - Document more unsupported features and update supported features (Richard Si, PR 15524)
   - Fix final NamedTuple classes (Richard Si, PR 15513)
   - Use C99 compound literals for undefined tuple values (Jukka Lehtosalo, PR 15453)
-  - Don't explicitly assign NULL values in setup functions (Logan Hunt, PR 15379) 
+  - Don't explicitly assign NULL values in setup functions (Logan Hunt, PR 15379)
  - Stubgen Improvements
   - Teach stubgen to work with complex and unary expressions (Nikita Sobolev, PR 15661)
   - Support ParamSpec and TypeVarTuple (Ali Hamdan, PR 15626)
-  - Fix crash on non-str docstring (Ali Hamdan, PR 15623) 
+  - Fix crash on non-str docstring (Ali Hamdan, PR 15623)
  - Documentation Updates
   - Add documentation for additional error codes (Ivan Levkivskyi, PR 15539)
   - Improve documentation of type narrowing (Ilya Priven, PR 15652)
   - Small improvements to protocol documentation (Shantanu, PR 15460)
-  - Remove confusing instance variable example in cheat sheet (Adel Atallah, PR 15441) 
+  - Remove confusing instance variable example in cheat sheet (Adel Atallah, PR 15441)
  - Other Notable Fixes and Improvements
   - Constant fold additional unary and binary expressions (Richard Si, PR 15202)
   - Exclude the same special attributes from Protocol as CPython (Kyle Benesch, PR 15490)
@@ -74,7 +83,7 @@ Sun Aug 13 06:30:29 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
   - Remove parameters that no longer exist from NamedTuple._make() (Alex Waygood, PR 15578)
   - Allow using typing.Self in __new__ with an explicit @staticmethod decorator (Erik Kemperman, PR 15353)
   - Fix self types in subclass methods without Self annotation (Ivan Levkivskyi, PR 15541)
-  - Check for abstract class objects in tuples (Nikita Sobolev, PR 15366) 
+  - Check for abstract class objects in tuples (Nikita Sobolev, PR 15366)
  - Typeshed Updates
   - Typeshed is now modular and distributed as separate PyPI packages for everything except the standard library stubs. Please see git log for full list of typeshed changes.
 
@@ -150,7 +159,7 @@ Sun May  7 09:54:51 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
   - Support implicit default for "init" parameter in field specifiers (Wesley Collin Wright and Jukka Lehtosalo, PR 15010)
   - Support descriptors in dataclass transform (Jukka Lehtosalo, PR 15006)
   - Fix frozen_default in incremental mode (Wesley Collin Wright)
-  - Fix frozen behavior for base classes with direct metaclasses (Wesley Collin Wright, PR 14878) 
+  - Fix frozen behavior for base classes with direct metaclasses (Wesley Collin Wright, PR 14878)
  - Mypyc: Native Floats
   - Mypyc now uses a native, unboxed representation for values of type float. Previously these were heap-allocated Python objects. Native floats are faster and use less memory. Code that uses floating-point operations heavily can be several times faster when using native floats.
   - Various float operations and math functions also now have optimized implementations. Refer to the documentation for a full list.
@@ -162,7 +171,7 @@ Sun May  7 09:54:51 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
   - Related changes:
    - Use a native unboxed representation for floats (Jukka Lehtosalo, PR 14880)
    - Document native floats and integers (Jukka Lehtosalo, PR 14927)
-   - Fixes to float to int conversion (Jukka Lehtosalo, PR 14936) 
+   - Fixes to float to int conversion (Jukka Lehtosalo, PR 14936)
  - Mypyc: Native Integers
   - Mypyc now supports signed 32-bit and 64-bit integer types in addition to the arbitrary-precision int type. You can use the types mypy_extensions.i32 and mypy_extensions.i64 to speed up code that uses integer operations heavily.
   - Refer to the documentation for more information. This feature was contributed by Jukka Lehtosalo.
@@ -170,20 +179,20 @@ Sun May  7 09:54:51 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
   - Support iterating over a TypedDict (Richard Si, PR 14747)
   - Faster coercions between different tuple types (Jukka Lehtosalo, PR 14899)
   - Faster calls via type aliases (Jukka Lehtosalo, PR 14784)
-  - Faster classmethod calls via cls (Jukka Lehtosalo, PR 14789) 
+  - Faster classmethod calls via cls (Jukka Lehtosalo, PR 14789)
  - Fixes to Crashes
   - Fix crash on class-level import in protocol definition (Ivan Levkivskyi, PR 14926)
   - Fix crash on single item union of alias (Ivan Levkivskyi, PR 14876)
-  - Fix crash on ParamSpec in incremental mode (Ivan Levkivskyi, PR 14885) 
+  - Fix crash on ParamSpec in incremental mode (Ivan Levkivskyi, PR 14885)
  - Documentation Updates
   - Update adopting --strict documentation for 1.0 (Shantanu, PR 14865)
   - Some minor documentation tweaks (Jukka Lehtosalo, PR 14847)
-  - Improve documentation of top level mypy: disable-error-code comment (Nikita Sobolev, PR 14810) 
+  - Improve documentation of top level mypy: disable-error-code comment (Nikita Sobolev, PR 14810)
  - Error Reporting Improvements
   - Add error code to typing_extensions suggestion (Shantanu, PR 14881)
   - Add a separate error code for top-level await (Nikita Sobolev, PR 14801)
   - Don’t suggest two obsolete stub packages (Jelle Zijlstra, PR 14842)
-  - Add suggestions for pandas-stubs and lxml-stubs (Shantanu, PR 14737) 
+  - Add suggestions for pandas-stubs and lxml-stubs (Shantanu, PR 14737)
  - Other Fixes and Improvements
   - Multiple inheritance considers callable objects as subtypes of functions (Christoph Tyralla, PR 14855)
   - stubtest: Respect @final runtime decorator and enforce it in stubs (Nikita Sobolev, PR 14922)
@@ -200,7 +209,7 @@ Sun May  7 09:54:51 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
   - Fix unpack with overloaded __iter__ method (Nikita Sobolev, PR 14817)
   - Reduce size of JSON data in mypy cache (dosisod, PR 14808)
   - Improve “used before definition” checks when a local definition has the same name as a global definition (Stas Ilinskiy, PR 14517)
-  - Honor NoReturn as __setitem__ return type to mark unreachable code (sterliakov, PR 12572) 
+  - Honor NoReturn as __setitem__ return type to mark unreachable code (sterliakov, PR 12572)
 
 -------------------------------------------------------------------
 Wed Apr 12 12:37:48 UTC 2023 - Matej Cepl <mcepl@suse.com>
@@ -213,11 +222,11 @@ Wed Apr 12 12:37:48 UTC 2023 - Matej Cepl <mcepl@suse.com>
   - Typeshed updates
   - Plenty of fixes
 - Removed upstreamed patch testI64Cast-fix.patch
-  
+
 -------------------------------------------------------------------
 Tue Apr 11 07:15:55 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Sadly, six is still required for tests, re-add to BuildRequires. 
+- Sadly, six is still required for tests, re-add to BuildRequires.
 
 -------------------------------------------------------------------
 Tue Feb 14 06:02:49 UTC 2023 - Matej Cepl <mcepl@suse.com>
@@ -292,7 +301,7 @@ Tue Sep 27 16:01:57 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
     * Fix bad C generated for multiple assignment (Jukka Lehtosalo, PR 13147)
     * Update, simplify check version test (Shantanu, PR 13125)
 
-  The full release notes can be found here: 
+  The full release notes can be found here:
   https://mypy-lang.blogspot.com/2022/09/mypy-0981-released.html
 
 -------------------------------------------------------------------
@@ -487,7 +496,7 @@ Tue Jun 21 09:00:36 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
   - Avoid conflicts between type variables defined in different classes (Jukka Lehtosalo, PR 12590)
   - Fix __slots__ and __deletable__ in incremental mode (Jukka Lehtosalo, PR 12645)
   - Fix issue with ParamSpec serialization (Jukka Lehtosalo, PR 12654)
-  - Fix types of inherited attributes in generic dataclasses (Jukka Lehtosalo, PR 12656) 
+  - Fix types of inherited attributes in generic dataclasses (Jukka Lehtosalo, PR 12656)
 
 -------------------------------------------------------------------
 Mon Mar 28 15:33:14 UTC 2022 - Matej Cepl <mcepl@suse.com>
@@ -651,7 +660,7 @@ Fri Dec 31 19:58:41 UTC 2021 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Fri Dec 31 17:17:41 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
-- add missing g++ compiler for tests 
+- add missing g++ compiler for tests
 
 -------------------------------------------------------------------
 Fri Dec 31 16:40:37 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>

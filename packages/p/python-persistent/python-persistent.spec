@@ -1,7 +1,7 @@
 #
 # spec file for package python-persistent
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2013-2023 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,13 +19,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-persistent
-Version:        5.0
+Version:        5.1
 Release:        0
 Summary:        Translucent persistent objects
 License:        ZPL-2.1
 URL:            https://github.com/zopefoundation/persistent
 Source:         https://files.pythonhosted.org/packages/source/p/persistent/persistent-%{version}.tar.gz
-Patch1:         python312.patch
 BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module manuel}

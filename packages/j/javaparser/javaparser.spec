@@ -17,7 +17,7 @@
 
 
 Name:           javaparser
-Version:        3.25.6
+Version:        3.25.7
 Release:        0
 Summary:        Java Parser and Abstract Syntax Tree for Java
 License:        Apache-2.0 OR LGPL-3.0-or-later
@@ -53,7 +53,6 @@ sed -i 's/\r//' readme.md
 # Remove plugins unnecessary for RPM builds
 %pom_remove_plugin -r :jacoco-maven-plugin
 %pom_remove_plugin :maven-source-plugin
-%pom_remove_plugin :coveralls-maven-plugin
 
 %pom_add_dep org.checkerframework:checker-qual javaparser-symbol-solver-core
 

@@ -71,4 +71,22 @@
     <comment></comment>
     <requestid>1124262</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d641eba75306a3844a09b1e06d21fc70</srcmd5>
+    <version>1.23.0</version>
+    <time>1704281281</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.23.0:
+  * Add additional parameters to `to_json()` and `to_dict()`
+    methods (#384)
+  * Add support for proto.__version__ (#393)
+  * Add support for python 3.12 (#400)
+  * Add documentation on how to query the current oneof in a
+    given message (#408)
+  * Add example for __protobuf__ module level attribute (#409)
+
+- Add multibuild to defeat a build loop.
+    (gh#googleapis/proto-plus-python#512)</comment>
+    <requestid>1136319</requestid>
+  </revision>
 </revisionlist>

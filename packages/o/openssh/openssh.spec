@@ -124,6 +124,7 @@ Patch103:       openssh-6.6p1-privsep-selinux.patch
 Patch104:       openssh-6.6p1-keycat.patch
 Patch105:       openssh-6.6.1p1-selinux-contexts.patch
 Patch106:       openssh-7.6p1-cleanup-selinux.patch
+Patch107:       openssh-cve-2023-48795.patch
 BuildRequires:  audit-devel
 BuildRequires:  automake
 BuildRequires:  groff
@@ -349,8 +350,10 @@ install -m 644 %{SOURCE15} %{buildroot}%{_sysconfdir}/pam.d/sshd
 install -d -m 755 %{buildroot}%{_localstatedir}/lib/sshd
 install -d -m 755 %{buildroot}%{_sysconfdir}/ssh/ssh_config.d
 install -d -m 755 %{buildroot}%{_sysconfdir}/ssh/sshd_config.d
+%if 0%{?suse_version} < 1600
 install -d -m 755 %{buildroot}%{_sysconfdir}/slp.reg.d/
 install -m 644 %{SOURCE5} %{buildroot}%{_sysconfdir}/slp.reg.d/
+%endif
 install -D -m 0644 %{SOURCE10} %{buildroot}%{_unitdir}/sshd.service
 ln -s service %{buildroot}%{_sbindir}/rcsshd
 install -d -m 755 %{buildroot}%{_fillupdir}
@@ -500,8 +503,10 @@ test -f /etc/ssh/ssh_config.rpmsave && mv -v /etc/ssh/ssh_config.rpmsave /etc/ss
 %attr(0444,root,root) %{_mandir}/man8/sftp-server.8*
 %attr(0444,root,root) %{_mandir}/man8/sshd.8*
 %attr(0755,root,root) %{_libexecdir}/ssh/sftp-server
+%if 0%{?suse_version} < 1600
 %dir %{_sysconfdir}/slp.reg.d
 %config %{_sysconfdir}/slp.reg.d/ssh.reg
+%endif
 %{_fillupdir}/sysconfig.ssh
 %if 0%{?suse_version} < 1550
 %dir %{_fwdir}

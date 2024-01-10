@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Dec 31 13:42:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 10.7:
+  * NEW: Emoji: Update Twemoji and Gemoji data to latest.
+  * NEW: Emoji: Due to recent Gemoji update, non-standard emoji
+    are no longer indexed. So emoji such as :octocat: are no
+    longer resolved.
+  * NEW: Highlight: Added new option default_lang which will
+    cause code blocks with no language specifier to be
+    highlighted with the specified default language instead of
+    plain text. This affects indented code blocks and code blocks
+    defined with SuperFences.
+  * NEW: InlineHilite: style_plain_text can be specified with a
+    language string (in addition to its previous boolean
+    requirement) to treat inline code blocks with no explicit
+    language specifier with a specific default language.
+  * NEW: MagicLink: Allow configuring custom
+    repository providers based off the existing providers.
+
+-------------------------------------------------------------------
 Thu Dec 14 10:45:48 UTC 2023 - Elisei Roca <eroca@mailbox.org>
 
 - update to 10.5:

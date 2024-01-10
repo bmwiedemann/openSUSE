@@ -28,6 +28,8 @@ Source0:        https://files.pythonhosted.org/packages/source/m/mpld3/mpld3-%{v
 Source1:        https://github.com/mpld3/mpld3/raw/v%{version}/visualize_tests.py
 # PATCH-FIX-UPSTREAM mpld3-pr516-dasharray.patch gh#mpld3/mpld3#516
 Patch1:         mpld3-pr516-dasharray.patch
+# PATCH-FIX-UPSTREAM mpl-patches.patch gh#mpld3/mpld3#521
+Patch2:         mpl-patches.patch
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module pip}

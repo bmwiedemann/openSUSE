@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Jan  4 02:04:33 UTC 2024 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 5.8.0:
+  * New water textures (the old ones were non-free) (Lopano)
+  * Improve leaves textures in "Opaque Leaves" mode (Wuzzy)
+  * When a player dies in protected air, bones now spawn as a
+    block instead of dropping as an item (OgelGames)
+  * Add API for sapling growth (aegroto)
+  * Hook callbacks for default.set_inventory_action_loggers
+    (appgurueu)
+  * Fix logic error in bed rotation (fluxionary)
+  * Fix coral and kelp duplication glitch with sticky piston from
+    Mesecons mod (zmv7)
+  * Fix players being able to skip many nights at once by
+    spam-clicking bed (appgurueu)
+  * Fix not updating vessel shelf infotext (Niklp)
+  * Fix bookshelf infotext not updating when adding, removing or
+    moving items inside (Montandalar, appgurueu)
+  * Update translations: German (Wuzzy), Spanish (David Leal),
+    Ukrainian (Andriy), French (xin)
+
+-------------------------------------------------------------------
 Fri Apr 14 19:53:11 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
 
 - Update to version 5.7.0:

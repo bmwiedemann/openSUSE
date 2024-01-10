@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Sun Dec 17 02:03:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.0.11:
+  * The cli utility now displays start and end datetimes in the
+    user's local timezone.
+  * Added fuzzing harnesses, for integration to OSSFuzz.
+  * icalendar releases are deployed to Github releases
+  * CATEGORIES field now accepts a string as argument
+  * Multivalue FREEBUSY property is now parsed properly
+  * Compare equality and inequality of calendars more completely
+  * Use non legacy timezone name.
+  * Add some compare functions.
+  * Change OSS Fuzz build script to point to harnesses in fuzzing
+    directory
+  * Component._encode stops ignoring parameters argument on
+    native values, now merges them
+  * PERIOD values now set the timezone of their start and end.
+  * No longer run the ``plone.app.event`` tests.
+  * Add documentation on how to parse ``.ics`` files. #152
+  * Move pip caching into Python setup action.
+  * Check that issue #165 can be closed.
+  * Updated about.rst for issue #527
+  * Avoid ``vText.__repr__`` BytesWarning.
+  * Calendar components are now properly compared
+  * to_ical() now accepts RRULE BYDAY values>=10 #518
+  * Adjusted duration regex
+  * Added support for BYWEEKDAY in vRecur ref: #268
+  * Fix problem with ORGANIZER in FREE/BUSY #348
+  * vDDDTypes is hashable #487 #492 [niccokunzmann]
+  * Minor changes:
+  * Refactored cal.py, tools.py and completed remaining minimal
+    refactoring in parser.py. Ref: #481 [pronoym99]
+  * fixed setuptools deprecation warnings [mgorny]
+  * removed deprecated test checks [tuergeist]
+  * Fix: cli does not support DURATION #354 [mamico]
+  * Add changelog and contributing to readthedocs documentation
+    #428 [peleccom]
+  * fixed small typos #323 [rohnsha0]
+  * unittest to parametrized pytest refactoring [jacadzaca]
+  * Require Python 3.7 as minimum Python version.  [maurits]
+  * icalendar now takes a ics file directly as an input
+  * icalendar utility outputs a 'Duration' row
+  * icalendar can take multiple ics files as an input
+  * Changed tools.UIDGenerator instance methods to static methods
+  * proper handling of datetime objects with `tzinfo` generated
+    through zoneinfo.ZoneInfo.
+  * Timestamps in UTC does not need tzid
+  *  add ``__eq__`` to ``icalendar.prop.vDDDTypes`` #391
+  * Refactor deprecated unittest aliases for Python 3.11
+    compatibility #330 [tirkarthi]
+  * Drop support for Python 3.4, 3.5 and PyPy2.  [maurits]
+
+-------------------------------------------------------------------
 Mon Sep 26 11:05:11 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.1.0:
@@ -26,13 +79,13 @@ Sat Oct 16 19:14:11 UTC 2021 - Dirk Müller <dmueller@suse.com>
 Thu Nov 26 09:27:55 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 4.0.7:
-  - fixed rrule handling, re-enabled test_create_america_new_york 
+  - fixed rrule handling, re-enabled test_create_america_new_york
 
 -------------------------------------------------------------------
 Tue Jun  2 16:19:43 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 4.0.6:
-  - Use ``vText`` as default type, when convert recurrence definition to ical string. [kam193] 
+  - Use ``vText`` as default type, when convert recurrence definition to ical string. [kam193]
 
 -------------------------------------------------------------------
 Mon May 25 10:59:22 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
@@ -83,13 +136,13 @@ Thu Aug 23 08:09:51 UTC 2018 - tchvatal@suse.com
   * Added rudimentary command line interface.
   * Readme, setup and travis updates.
   * Drop support for Python 2.6 and 3.3.
-  * Accept Windows timezone identifiers as valid. #242 
+  * Accept Windows timezone identifiers as valid. #242
   * Fix ResourceWarnings in setup.py when Python warnings are enabled. #244
   * Fix invalid escape sequences in string and bytes literals. #245
   * Include license file in the generated wheel package. #243
   * Fix non-ASCII TZID and TZNAME parameter handling. #238
   * Docs: update install instructions. #240
-  * added vUTCOffset.ignore_exceptions to allow surpressing of failed TZOFFSET parsing (for now this ignores the check for offsets > 24h) 
+  * added vUTCOffset.ignore_exceptions to allow surpressing of failed TZOFFSET parsing (for now this ignores the check for offsets > 24h)
   * Fix VTIMEZONEs including RDATEs #234.
 - Update URL to point to the repo rather than to docs
 - Use %license for license install
@@ -98,19 +151,19 @@ Thu Aug 23 08:09:51 UTC 2018 - tchvatal@suse.com
 Tue Jul  4 06:59:44 UTC 2017 - aloisio@gmx.com
 
 - Update to version 3.11.5
-  * added an assertion that VTIMEZONE sub-components' DTSTART must 
+  * added an assertion that VTIMEZONE sub-components' DTSTART must
     be of type DATETIME [geier]
-  * Fix handling of VTIMEZONEs with subcomponents with the same 
+  * Fix handling of VTIMEZONEs with subcomponents with the same
     DTSTARTs and OFFSETs but which are of different types  [geier]
   3.11.4:
-  * Don't break on parameter values which contain equal signs, 
+  * Don't break on parameter values which contain equal signs,
     e.g. base64 encoded binary data [geier]
-  * Fix handling of VTIMEZONEs with subcomponents with the same 
+  * Fix handling of VTIMEZONEs with subcomponents with the same
     DTSTARTs. [geier]
   3.11.3:
-  * Removed ``setuptools`` as a dependency as it was only required 
+  * Removed ``setuptools`` as a dependency as it was only required
     by setup.py and not by the package.
-  * Don't split content lines on the unicode ``LINE SEPARATOR`` 
+  * Don't split content lines on the unicode ``LINE SEPARATOR``
     character ``\u2028`` but only on ``CRLF`` or ``LF``.
 
 - Converted to single-spec
@@ -162,7 +215,7 @@ Sat Jan 14 18:34:28 UTC 2017 - hpj@urpla.net
 -------------------------------------------------------------------
 Tue Mar 29 22:32:54 UTC 2016 - dmueller@suse.com
 
-- adjust to python-python-dateutil renaming 
+- adjust to python-python-dateutil renaming
 
 -------------------------------------------------------------------
 Thu Oct 22 14:09:21 UTC 2015 - mcihar@suse.cz
@@ -237,7 +290,7 @@ update to version 3.8.4 changelog from 3.5
 -------------------------------------------------------------------
 Sat Nov  9 11:03:21 UTC 2013 - p.drouand@gmail.com
 
-- Use tarball from https://pypi.python.org/ 
+- Use tarball from https://pypi.python.org/
 - Fix download link used as source
 
 -------------------------------------------------------------------
@@ -245,7 +298,7 @@ Fri Nov  8 13:53:51 UTC 2013 - aj@ajaissle.de
 
 - New upstream release 3.5
 - Changelog for 3.5
-  * Let to_unicode be more graceful for non-unicode strings, as like CMFPlone’s safe_unicode does it. [thet] 
+  * Let to_unicode be more graceful for non-unicode strings, as like CMFPlone’s safe_unicode does it. [thet]
 - Changelog for 3.4
   * Switch to unicode internally. This should fix all en/decoding errors. [thet]
   * Support for non-ascii parameter values. Fixes #88. [warvariuc]
@@ -325,27 +378,27 @@ Tue Jun 26 12:54:58 UTC 2012 - toddrme2178@gmail.com
 
 - Fix building on SLE 11
 - updated license to BSD-2-Clause
-- Note 1: The fork has taken over maintainership and is now the 
+- Note 1: The fork has taken over maintainership and is now the
   official version
-- Note 2: The previous package was a git version from what was the 
-  fork.  The git tarball had version number 3.0, but for 
+- Note 2: The previous package was a git version from what was the
+  fork.  The git tarball had version number 3.0, but for
   completeness this changes entry includes changes since the last
-  official release, 2.2  
+  official release, 2.2
 - Update to 3.0.1b2
   * For all TZID parameters in DATE-TIME properties, use timezone
-    identifiers (e.g. Europe/Vienna) instead of timezone names 
-    (e.g. CET), as required by RFC5545. Timezone names are used 
+    identifiers (e.g. Europe/Vienna) instead of timezone names
+    (e.g. CET), as required by RFC5545. Timezone names are used
     together with timezone identifiers in the Timezone components
   * Timezone parsing, issues and test fixes.
-  * Since we use pytz for timezones, also use UTC tzinfo object 
+  * Since we use pytz for timezones, also use UTC tzinfo object
     from the pytz  library instead of own implementation.
 - Update to 3.0.1b1
   * Update Release information.
 - Update to 3.0
-  * Add API for proper Timezone support. Allow creating ical 
-    DATE-TIME strings with timezone information from Python 
+  * Add API for proper Timezone support. Allow creating ical
+    DATE-TIME strings with timezone information from Python
     datetimes with pytz based timezone information and vice versa
-  * Unify API to only use to_ical and from_ical and remove string 
+  * Unify API to only use to_ical and from_ical and remove string
     casting as a requirement for Python 3 compatibility:
     * New: to_ical.
     * Old: ical, string, as_string and string casting via __str__
@@ -362,18 +415,18 @@ Thu Dec 15 10:34:22 UTC 2011 - coolo@suse.com
 Thu Sep 22 14:26:58 UTC 2011 - Sascha.Manns@open-slx.de
 
 - fixed license issue
-- closed bug bnx#714664 
+- closed bug bnx#714664
 
 -------------------------------------------------------------------
 Sun Aug 28 15:43:30 UTC 2011 - Sascha.Manns@open-slx.de
 
-- fixed fdupes issue 
+- fixed fdupes issue
 
 -------------------------------------------------------------------
 Sun Aug 28 15:24:58 UTC 2011 - Sascha.Manns@open-slx.de
 
 - updated Ownership
-- removed rpmlintrc 
+- removed rpmlintrc
 
 -------------------------------------------------------------------
 Sun Aug 28 10:09:54 CEST 2011 - hpj@urpla.net
@@ -383,17 +436,17 @@ Sun Aug 28 10:09:54 CEST 2011 - hpj@urpla.net
 -------------------------------------------------------------------
 Fri Dec 24 12:39:25 UTC 2010 - saigkill@opensuse.org
 
-- removed BuildArch: noarch 
+- removed BuildArch: noarch
 
 -------------------------------------------------------------------
 Mon Dec 14 18:07:59 UTC 2009 - saigkill@opensuse.org
 
-- updated to Version 2.1 
+- updated to Version 2.1
 
 -------------------------------------------------------------------
 Sun Aug  9 19:33:03 UTC 2009 - saigkill@opensuse.org
 
-- fixed some little Errors with the lib path 
+- fixed some little Errors with the lib path
 
 ------------------------------------------------------------------
 Sat Apr 18 19:52:33 CEST 2009 - saigkill@opensuse.org
@@ -403,7 +456,7 @@ Sat Apr 18 19:52:33 CEST 2009 - saigkill@opensuse.org
 ------------------------------------------------------------------
 Sat Apr 18 12:11:23 CEST 2009 - saigkill@opensuse.org
 
-- uses %%optflags, %%py_requires and 
+- uses %%optflags, %%py_requires and
   Sourcepackage (from remote to local)
 
 ------------------------------------------------------------------
@@ -417,11 +470,11 @@ Fri Jan 08 12:00:00 CET 2009 - saigkill@opensuse.org -
 - updated Specfile & Makros
 
 ------------------------------------------------------------------
-Fri Jan 02 12:00:00 CET 2009 - saigkill@opensuse.org 
+Fri Jan 02 12:00:00 CET 2009 - saigkill@opensuse.org
 
 - python Version 1.2 for openSUSE_11.0
 
 ------------------------------------------------------------------
-Thu Jan 01 12:00:00 CET 2009 - saigkill@opensuse.org 
+Thu Jan 01 12:00:00 CET 2009 - saigkill@opensuse.org
 
 - builded initial version iCalendar from SVN Version

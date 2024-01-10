@@ -438,4 +438,12 @@
     <comment>relax webrick and rgl dependencies</comment>
     <requestid>1126967</requestid>
   </revision>
+  <revision rev="54" vrev="3">
+    <srcmd5>f4d66ce060cb48a7d4d26e7094871b93</srcmd5>
+    <version>2.3.7</version>
+    <time>1703281239</time>
+    <user>anag+factory</user>
+    <comment>Relaxed the ruby version requirement.</comment>
+    <requestid>1134435</requestid>
+  </revision>
 </revisionlist>

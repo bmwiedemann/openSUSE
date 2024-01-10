@@ -146,4 +146,31 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1068126</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>5c6446d08bf5ced0b185c1d14ea46ca4</srcmd5>
+    <version>5.3.1</version>
+    <time>1704281047</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.3.1:
+  * `#527`_ Resolved timeout issue that was introduced in 5.2.1
+  * `#525`_ and `#524`_ Fixed experimental thread binding struct
+    for platforms where unsigned long is 8-bits
+    While the fix for thread binding is not backwards compatible,
+    it only impacts people using an experimental feature. Hence,
+    I did a patch version bump.
+
+- Update to version 5.3.0
+  * fix ValueError during install due to absolute PATH in SOURCES.txt
+  * classic.teleport_function now executes the function in the
+  * Changed signature of Service.on_connect and on_disconnect,
+  * Changed signature of Service.__init__, removing the connection
+  * SlaveService is now split into two asymetric classes:
+  * Exposed attributes no longer hide plain attributes if one
+    otherwise has the required permissions to access the plain attribute.
+  * teleported functions will now be defined by default in the
+  * add gevent Server. For now, this requires using gevent.monkey.patch_all()
+  * fix problem with MongoDB, or more generally any remote objects
+  * service can now easily override protocol handlers, by updating</comment>
+    <requestid>1135621</requestid>
+  </revision>
 </revisionlist>

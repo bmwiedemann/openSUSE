@@ -1,7 +1,7 @@
 #
 # spec file for package qt5integration
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -70,6 +70,7 @@ BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(xkbcommon-x11)
 BuildRequires:  pkgconfig(xrender)
+BuildRequires:  rpm_macro(_kf5_plugindir)
 
 %description
 Multiple Qt plugins to provide better Qt5 integration for DDE are included.

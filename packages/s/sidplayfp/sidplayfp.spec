@@ -1,8 +1,8 @@
 #
 # spec file for package sidplayfp
 #
-# Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2023, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2023-2024, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,14 @@
 
 
 Name:           sidplayfp
-Version:        2.5.0
+Version:        2.6.0
 Release:        0
 Summary:        SID chip music module player
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Players
 #Git-Clone:     https://github.com/libsidplayfp/sidplayfp.git
 URL:            https://sourceforge.net/projects/sidplay-residfp/
-Source0:        https://sourceforge.net/projects/sidplay-residfp/files/sidplayfp/2.5/sidplayfp-%{version}.tar.gz
+Source0:        https://sourceforge.net/projects/sidplay-residfp/files/sidplayfp/2.6/sidplayfp-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(alsa)

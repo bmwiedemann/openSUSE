@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-testtools%{psuffix}
-Version:        2.6.0
+Version:        2.7.1
 Release:        0
 Summary:        Extensions to the Python Standard Library Unit Testing Framework
 License:        MIT
@@ -34,15 +34,18 @@ Group:          Development/Languages/Python
 URL:            https://github.com/testing-cabal/testtools
 Source0:        https://files.pythonhosted.org/packages/source/t/testtools/testtools-%{version}.tar.gz
 Source99:       python-testtools.rpmlintrc
-BuildRequires:  %{python_module pbr}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module hatch_vcs}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-Twisted
 Requires:       python-pbr >= 0.11
 Requires:       python-python-mimeparse
 Requires:       python-traceback2
 BuildArch:      noarch
 %if %{with test}
+BuildRequires:  %{python_module fixtures}
 BuildRequires:  %{python_module python-mimeparse}
 BuildRequires:  %{python_module testscenarios}
 BuildRequires:  %{python_module traceback2}
@@ -61,12 +64,12 @@ also ports recent unittest changes all the way back to Python 2.4.
 
 %if !%{with test}
 %build
-%python_build
+%pyproject_wheel
 %endif
 
 %if !%{with test}
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -80,7 +83,7 @@ also ports recent unittest changes all the way back to Python 2.4.
 %license LICENSE
 %doc NEWS README.rst
 %{python_sitelib}/testtools
-%{python_sitelib}/testtools-%{version}-py*.egg-info
+%{python_sitelib}/testtools-%{version}.dist-info
 %endif
 
 %changelog

@@ -71,6 +71,8 @@ Image Viewer for LXQt and Thumbnail Generator for PCManFM-Qt
 %files
 %license COPYING
 %doc AUTHORS
+%dir %{_datadir}/icons/hicolor/48x48
+%dir %{_datadir}/icons/hicolor/48x48/apps
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}*.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.??g

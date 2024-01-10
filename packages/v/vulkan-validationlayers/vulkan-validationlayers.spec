@@ -25,6 +25,7 @@ Group:          Development/Tools/Other
 URL:            https://github.com/KhronosGroup/Vulkan-ValidationLayers
 Source:         https://github.com/KhronosGroup/Vulkan-ValidationLayers/archive/refs/tags/vulkan-sdk-%version.tar.gz
 Patch2:         xxhash.diff
+Patch3:         glslang14.diff
 BuildRequires:  cmake >= 3.7.12
 %if 0%{?suse_version} >= 1599
 BuildRequires:  gcc-c++

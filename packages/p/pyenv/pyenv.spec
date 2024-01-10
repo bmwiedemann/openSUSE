@@ -27,6 +27,30 @@ Group:          Development/Languages/Python
 URL:            https://github.com/pyenv/pyenv
 Source:         https://github.com/pyenv/pyenv/archive/refs/tags/v%{version}.tar.gz#/pyenv-%{version}.tar.gz
 #
+# Additional soft build requirements.
+# Use list from https://github.com/pyenv/pyenv/wiki#suggested-build-environment
+#
+# Once pyenv is installed and user requests a new Python version,
+# we need to make sure it will build:
+Recommends:     automake
+Recommends:     bzip2
+Recommends:     findutils
+Recommends:     gcc
+Recommends:     gdbm-devel
+Recommends:     libbz2-devel
+Recommends:     libffi-devel
+Recommends:     lzma-sdk-devel
+Recommends:     ncurses-devel
+Recommends:     openssl-devel
+Recommends:     patch
+Recommends:     readline5-devel
+Recommends:     sqlite3-devel
+Recommends:     tcl-devel
+Recommends:     tk-devel
+Recommends:     xz
+Recommends:     xz-devel
+Recommends:     zlib-devel
+#
 BuildRequires:  bash-completion
 BuildRequires:  fdupes
 BuildRequires:  fish

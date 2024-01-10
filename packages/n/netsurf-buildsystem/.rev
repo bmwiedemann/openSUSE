@@ -31,4 +31,12 @@
   * Fix quotation in case expansion for make selection</comment>
     <requestid>829743</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c2e7c3360dc5c0edb46b69757b5a196b</srcmd5>
+    <version>1.10</version>
+    <time>1704829719</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1137536</requestid>
+  </revision>
 </revisionlist>

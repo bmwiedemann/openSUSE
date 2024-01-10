@@ -352,4 +352,25 @@ Setting up scap-security-guide (0.1.56-30.1) ... (forwarded request 896944 from 
     <comment></comment>
     <requestid>1118850</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>587f03f1b413c9aed56615606ca60f0e</srcmd5>
+    <version>0.1.71</version>
+    <time>1703102486</time>
+    <user>anag+factory</user>
+    <comment>- updated to 0.1.71 (jsc#ECO-3319)
+  - Add RHEL 9 STIG
+  - Add support for Debian 12
+  - Update PCI-DSS profile for RHEL
+  - lots of bugfixes and improvements for SLE (forwarded request 1134022 from msmeissn)</comment>
+    <requestid>1134063</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>cca5c5532756cb5837da8d6f952420ae</srcmd5>
+    <version>0.1.71</version>
+    <time>1703198359</time>
+    <user>anag+factory</user>
+    <comment>- ssg-fix-journald.patch: switch buggy journald plugindir remediation
+  to write into journald.conf. (bsc#1217832)</comment>
+    <requestid>1134450</requestid>
+  </revision>
 </revisionlist>

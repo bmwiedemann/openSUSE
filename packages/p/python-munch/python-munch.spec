@@ -18,15 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-munch
-Version:        3.0.0
+Version:        4.0.0
 Release:        0
 Summary:        A dot-accessible dictionary
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Infinidat/munch
 Source:         https://files.pythonhosted.org/packages/source/m/munch/munch-%{version}.tar.gz
-# https://github.com/Infinidat/munch/issues/96
-Patch0:         python-munch-no-six.patch
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

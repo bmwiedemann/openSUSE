@@ -185,4 +185,12 @@ Fixed bugref (forwarded request 922054 from dimstar)</comment>
   + Updated translations.</comment>
     <requestid>1045393</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>37f5c98af7044ff19ba19aec384893ed</srcmd5>
+    <version>1.4.5</version>
+    <time>1703198280</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1134425</requestid>
+  </revision>
 </revisionlist>

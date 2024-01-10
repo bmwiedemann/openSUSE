@@ -260,4 +260,17 @@
 - Switch documentation to be within the main package.</comment>
     <requestid>1084405</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>32ea2a94aa42ec996f0fb449ddc4abec</srcmd5>
+    <version>21.2.0</version>
+    <time>1704829750</time>
+    <user>anag+factory</user>
+    <comment>- Clean up the SPEC file
+- Update to version 21.2.0
+  * See https://github.com/benoitc/gunicorn/blob/21.2.0/docs/source/news.rst
+    or the packaged news.rst
+- Removed support-eventlet-30-3.patch
+</comment>
+    <requestid>1137718</requestid>
+  </revision>
 </revisionlist>

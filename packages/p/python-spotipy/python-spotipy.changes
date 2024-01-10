@@ -1,7 +1,32 @@
 -------------------------------------------------------------------
+Fri Dec  8 13:45:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.23.0:
+  * Added optional `encoder_cls` argument to `CacheFileHandler`,
+    which overwrite default encoder for token before writing to
+    disk
+  * Integration tests for searching multiple types in multiple
+    markets (non-user endpoints)
+  * Publish to PyPI action
+  * Fixed the regex for matching playlist URIs with the format
+    spotify:user:USERNAME:playlist:PLAYLISTID.
+  * `search_markets` now factors the counts of all types in the
+    `total`  rather than just the first type (#534)
+  * Add alternative module installation instruction to README
+  * Added Comment to README - Getting Started for user to add URI
+    to app in Spotify Developer Dashboard.
+  * Added playlist_add_tracks.py to example folder
+  * Modified docstring for playlist_add_items() to accept "only
+    URIs or URLs",
+  * with intended deprecation for IDs in v3
+  * Path traversal vulnerability that may lead to type confusion
+    in URI handling code
+  * Update contributing.md
+
+-------------------------------------------------------------------
 Tue Dec 13 17:06:22 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 2.22.0 
+- Update to version 2.22.0
   * Added
   Integration tests via GHA (non-user endpoints)
   Unit tests for new releases, passing limit parameter with minimum and maximum values of 1 and 50
@@ -17,7 +42,7 @@ Tue Dec 13 17:06:22 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 -------------------------------------------------------------------
 Wed Nov  9 19:13:31 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 2.21.0 
+- Update to version 2.21.0
   Added
   * Added market parameter to album and albums to address #753
   * Added 'show_featured_artists.py' to 'examples'.

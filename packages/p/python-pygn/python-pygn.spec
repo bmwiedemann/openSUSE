@@ -1,7 +1,7 @@
 #
 # spec file for package python-pygn
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ Source:         https://files.pythonhosted.org/packages/source/p/pygn/pygn-%{ver
 BuildRequires:  %{python_module nntplib if %python-base >= 3.12}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module rply}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

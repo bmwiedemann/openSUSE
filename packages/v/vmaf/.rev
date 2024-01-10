@@ -65,4 +65,12 @@
     <comment>- Fix &quot;no such built-in model&quot; due to missing build dependency</comment>
     <requestid>1072487</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>71fa051deca6388f4dd3058aaf4941b0</srcmd5>
+    <version>3.0.0</version>
+    <time>1703800510</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 3.0</comment>
+    <requestid>1135305</requestid>
+  </revision>
 </revisionlist>

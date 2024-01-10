@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Dec  5 11:17:39 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.113.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.113.0
+- Changes since 5.112.0:
+  * Run dump utility as a test case
+  * Output generic file types from dump utility
+  * Check if file path passed to dump utility is a readable file
+  * [FFmpegExtractor] Bail out on first missing component during find_package
+  * Bump minimum Exiv2 version to 0.26
+  * [TaglibExtractor] Add support for Ogg stream with FLAC (audio/x-flac+ogg)
+  * Generate fromName hash table programmatically from PropertyInfo table
+  * Use proxy class for lowercase property name lookup
+  * Reduce PropertyInfo::fromName overhead
+  * [FFMpegExtractor] Support and check video/vnd.avi
+  * [TaglibExtractor] Adapt code to SMI changes for audio/x-wav -> /vnd.wave
+
+-------------------------------------------------------------------
 Mon Nov  6 09:13:53 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.112.0

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 29 16:27:50 UTC 2023 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Enclose IPv6 addresses within square brackets when calling
+  the mount command (bsc#1217637).
+- 5.0.3
+
+-------------------------------------------------------------------
 Tue Oct 31 12:40:00 UTC 2023 - Ladislav Slezák <lslezak@suse.com>
 
 - Refresh repositories with changed URL and reload them again

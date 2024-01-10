@@ -553,4 +553,20 @@
   - Update master for stable/2023.1</comment>
     <requestid>1099312</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>d15e301f4fd43c5a6047d7fb16098d21</srcmd5>
+    <version>6.3.0</version>
+    <time>1704487302</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 6.3.0
+  - Mask chapsecret
+  - Update master for stable/2023.2
+  - versionutil: Remove trailing alpha/beta/rc suffix
+  - Imported Translations from Zanata
+  - Fix missing PyYAML dependency
+
+- update to version 6.2.1
+  - Imported Translations from Zanata</comment>
+    <requestid>1136726</requestid>
+  </revision>
 </revisionlist>

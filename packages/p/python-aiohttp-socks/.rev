@@ -92,4 +92,12 @@
   * Make it compatible with aiohttp 2.x again</comment>
     <requestid>1124986</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>6103ddb9b0f48cf9d7aec276924b064e</srcmd5>
+    <version>0.8.4</version>
+    <time>1704380400</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing buildrequire to fix Leap build error.</comment>
+    <requestid>1136310</requestid>
+  </revision>
 </revisionlist>

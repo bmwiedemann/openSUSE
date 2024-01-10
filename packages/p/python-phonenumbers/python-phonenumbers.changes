@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Jan  7 19:22:18 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.13.27:
+  * Use re.fullmatch when available
+  * merge upstream 8.13.27 phonenumber fixes
+
+-------------------------------------------------------------------
+Thu Dec 14 21:00:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.13.26:
+  Updated phone metadata for region code(s): EH, HK, HR, MA, MK,
+    PK, RO, TJ
+  - Updated geocoding data for country calling code(s): 212 (en, fr)
+  - Updated carrier data for country calling code(s):
+    40 (en), 45 (en), 86 (en, zh), 92 (en), 228 (en), 385 (en),
+    852 (en, zh), 992 (en)
+- use packaged LICENSE
+
+-------------------------------------------------------------------
 Wed Aug  9 22:04:59 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 8.13.18
@@ -30,7 +49,7 @@ Thu Dec 29 12:27:00 UTC 2022 - Michael Ströder <michael@stroeder.com>
 -------------------------------------------------------------------
 Tue Dec 13 15:53:03 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 8.13.2 
+- Update to version 8.13.2
   * Prep for 8.13.2 release
 
 -------------------------------------------------------------------
@@ -39,7 +58,7 @@ Fri Dec  2 21:53:13 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 - Update to version 8.13.1
   * Prep for 8.13.1 release
 
-- Update to version 8.13.0  
+- Update to version 8.13.0
   * tools: don't use clean target in metaclean
       The clean target relies on the coverage tool being installed.
 
@@ -51,7 +70,7 @@ Sat Oct 15 22:55:14 UTC 2022 - Michael Ströder <michael@stroeder.com>
 -------------------------------------------------------------------
 Wed Oct 12 14:00:23 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 8.12.56 
+- Update to version 8.12.56
   * Metadata changes:
   - Updated phone metadata for region code(s): HR, MK, PT, SG, TT
   - Updated short number metadata for region code(s): BZ
@@ -102,7 +121,7 @@ Sat Mar 26 14:28:15 UTC 2022 - Dirk Müller <dmueller@suse.com>
  - Updated short number metadata for region code(s): PY
  - Updated carrier data for country calling code(s):
    33 (en), 65 (en), 358 (en), 383 (en), 420 (en), 502 (en), 856 (en), 966 (en),
-   968 (en), 974 (en) 
+   968 (en), 974 (en)
 
 -------------------------------------------------------------------
 Thu Jan  6 18:17:03 UTC 2022 - Michael Ströder <michael@stroeder.com>

@@ -476,4 +476,21 @@
   * Updated readthedocs integration to use YAML config file.</comment>
     <requestid>1124972</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>9d644c32f9aecab1482cd930cee3e628</srcmd5>
+    <version>2.14.2</version>
+    <time>1702936641</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.14.2 (bsc#1218165, CVE-2023-48795):
+  * Implemented &quot;strict kex&quot; support and other countermeasures to
+  * protect against the Terrapin Attack described in
+    CVE-2023-48795
+  * Fixed config parser to properly an optional equals delimiter
+    in all config arguments.
+  * Fixed TCP send error handling to avoid race condition when
+    receiving incoming disconnect message.
+  * Improved type signature in SSHConnection async context
+    manager.</comment>
+    <requestid>1133889</requestid>
+  </revision>
 </revisionlist>

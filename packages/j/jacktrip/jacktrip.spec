@@ -18,30 +18,34 @@
 
 
 Name:           jacktrip
-Version:        1.10.0
+Version:        2.1.0
 Release:        0
 Summary:        Multi-machine network music performance over the Internet
 License:        MIT
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://github.com/jcacerec/jacktrip
 Source0:        https://github.com/jcacerec/jacktrip/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        Simple-FFT.tar.gz
+Source1:        http://www.music.mcgill.ca/~gary/rtaudio/release/rtaudio-6.0.1.tar.gz
 BuildRequires:  gcc-c++
-BuildRequires:  libqt5-linguist
+BuildRequires:  help2man
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  python3-Jinja2
 BuildRequires:  python3-PyYAML
-BuildRequires:  rtaudio-devel
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5NetworkAuth)
-BuildRequires:  pkgconfig(Qt5Quick)
-BuildRequires:  pkgconfig(Qt5QuickControls2)
-BuildRequires:  pkgconfig(Qt5Svg)
-BuildRequires:  pkgconfig(Qt5WebSockets)
-BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  qt6-tools-linguist
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6Core5Compat)
+BuildRequires:  pkgconfig(Qt6Gui)
+BuildRequires:  pkgconfig(Qt6Network)
+BuildRequires:  pkgconfig(Qt6NetworkAuth)
+BuildRequires:  pkgconfig(Qt6Quick)
+BuildRequires:  pkgconfig(Qt6QuickControls2)
+BuildRequires:  pkgconfig(Qt6ShaderTools)
+BuildRequires:  pkgconfig(Qt6Svg)
+BuildRequires:  pkgconfig(Qt6WebEngineCore)
+BuildRequires:  pkgconfig(Qt6WebEngineQuick)
+BuildRequires:  pkgconfig(Qt6WebSockets)
+BuildRequires:  pkgconfig(Qt6Widgets)
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(jack)
 
@@ -54,12 +58,13 @@ audio signal streaming.
 %prep
 %autosetup
 pushd externals
-tar xf %{_sourcedir}/Simple-FFT.tar.gz
+tar xf %{_sourcedir}/rtaudio-6.0.1.tar.gz -C rtaudio
 popd
 
 %build
 mv build .build
-%meson
+# disable git submodule as we locally provide the library
+%meson -Drtaudio=disabled
 %meson_build
 
 %install
@@ -67,10 +72,12 @@ mv build .build
 
 %files
 %doc README.md
+%doc %{_mandir}/man*/*
 %license LICENSE.md
 %{_bindir}/jacktrip
 %{_datadir}/applications/*
 %{_datadir}/metainfo/*
+%dir %{_datadir}/icons/hicolor
 %dir %{_datadir}/icons/hicolor/48x48
 %dir %{_datadir}/icons/hicolor/48x48/apps
 %dir %{_datadir}/icons/hicolor/scalable

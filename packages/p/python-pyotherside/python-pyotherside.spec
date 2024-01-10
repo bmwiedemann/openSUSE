@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyotherside
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define srcname pyotherside
 %bcond_without test
 Name:           python-pyotherside
-Version:        1.5.9
+Version:        1.6.0
 Release:        0
 Summary:        Asynchronous Python 3 Bindings for Qt 5
 License:        ISC
@@ -64,7 +64,7 @@ xvfb-run -s '-screen 0, 1280x1024x24' -a  ./tests/tests
 %endif
 
 %files
-%doc README
+%doc README.md
 %license LICENSE
 %dir %{_libqt5_archdatadir}/qml/io/
 %dir %{_libqt5_archdatadir}/qml/io/thp/

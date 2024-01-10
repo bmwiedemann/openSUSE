@@ -1,7 +1,7 @@
 #
 # spec file for package python-antlr4-python3-runtime
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ URL:            https://www.antlr.org
 Source:         https://github.com/antlr/antlr4/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        LICENSE.txt
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

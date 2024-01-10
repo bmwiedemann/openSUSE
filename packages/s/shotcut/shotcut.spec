@@ -27,7 +27,7 @@
 #%%(pkg-config --modversion Qt6Core)
 %bcond_with    x264
 Name:           shotcut
-Version:        23.11.29
+Version:        23.12.15
 Release:        0
 Summary:        Video and audio editor and creator
 License:        GPL-3.0-or-later

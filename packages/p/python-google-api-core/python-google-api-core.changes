@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Dec 16 19:25:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.15.0:
+  * Add support for Python 3.12
+  * Add type annotations to wrapped grpc calls
+  * Add universe_domain argument to ClientOptions
+  * Introduce compatibility with native namespace packages
+  * Fix regression in `bidi` causing `Thread-
+    ConsumeBidirectionalStream caught unexpected exception  and
+    will exit` (#562)
+  * Replace deprecated `datetime.datetime.utcnow()`
+
+-------------------------------------------------------------------
 Thu Dec  7 13:49:02 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.14.0
@@ -174,7 +187,7 @@ Thu Apr  7 12:20:32 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
 -------------------------------------------------------------------
 Tue Sep  7 11:04:50 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
-- To avoid a build cycle, switch to multibuild. 
+- To avoid a build cycle, switch to multibuild.
 
 -------------------------------------------------------------------
 Mon Sep  6 05:22:42 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
@@ -303,9 +316,9 @@ Mon Aug 12 14:15:35 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 1.14.2
   * Forward ‘timeout’ arg from ‘exception’ to _blocking_poll.
-  * Update intersphinx mapping for requests. 
+  * Update intersphinx mapping for requests.
   * Firestore: Add should_terminate predicate for clean BiDi shutdown.
-  * Update pins of ‘googleapis-common-protos. 
+  * Update pins of ‘googleapis-common-protos.
 
 -------------------------------------------------------------------
 Tue Jul  2 14:51:05 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>

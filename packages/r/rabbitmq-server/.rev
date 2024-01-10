@@ -808,4 +808,61 @@ The new default is much safer and will reduce the effect application channel lea
     response.</comment>
     <requestid>1121010</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>905ef396c3e671cfea09732a2c398c1b</srcmd5>
+    <version>3.12.10</version>
+    <time>1702845251</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.12.10:
+  * Avoids two Shovels being started after an upgrade from 3.12.6
+    or older versions.
+  * When a topic permission was deleted, an internal event of type
+    permission.deleted was emitted in some cases, instead of
+    topic.permission.deleted.
+  * Shovels on 3.12.8 nodes failed during a rolling cluster upgrade
+    due to internal identifier format changes.
+  * Avoids an unnecessary warning in the logs.
+  * avoids a potential exception in the autoheal partition handler.
+  * raft.segment_max_entries is now validated to prevent the value
+    from overflowing its 16-bit segment file field. Maximum
+    supported value is now 65535.</comment>
+    <requestid>1133729</requestid>
+  </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>cecb967ba8aadadfa666a5006613bce0</srcmd5>
+    <version>3.12.11</version>
+    <time>1704558628</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.12.11:
+  * Quorum queue declared when one of cluster nodes was down
+    could trigger connection exceptions.
+  * Avoids a rare exception that could stop TCP socket writes on
+    a client connection.
+  * `queue_deleted` and `queue_created` internal events now
+    include queue type as a module name, and not an inconsistent
+    (with the other queue and stream types) value `classic`.
+  * Definition files that are virtual host-specific cannot be
+    imported on boot. Such files will now be detected early and
+    the import process will terminate after logging a more
+    informative message.
+  * Several AMQP 1.0 application properties are now more
+    correctly converted to AMQP 0-9-1 headers by
+    cross-protocol Shovels.
+  * The priority property now populates an AMQP 1.0 header with
+    the same name, per AMQP 1.0 spec.
+  * Metric label values now escape certain non-ASCII characters.
+  * Avoids an exception when an MQTT client that used a QoS 0
+    subscription reconnects and its original connection node
+    is down.
+  * Avoids an exception when an MQTT client connection was force-
+    closed via the HTTP API.
+  * Certain CLI commands could not be run in a shell script loop,
+    unless the script explicitly redirected standard input.
+  * `rabbitmq-diagnostics cluster_status` now responds much
+    quicker when a cluster node has gone down, were shut down,
+    or otherwise has become unreachable by the rest of the cluster.
+  * Reverted a change to `DELETE /api/queues/{vhost}/{name}` that
+    allowed removal of exclusive queues and introduced</comment>
+    <requestid>1137247</requestid>
+  </revision>
 </revisionlist>

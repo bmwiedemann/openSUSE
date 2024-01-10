@@ -27,7 +27,7 @@
 %bcond_with test
 %endif
 Name:           python-hypothesmith%{psuffix}
-Version:        0.3.0
+Version:        0.3.1
 Release:        0
 Summary:        Hypothesis strategies for generating Python programs, something like CSmith
 License:        MPL-2.0
@@ -38,13 +38,13 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-base >= 3.7
-Requires:       python-hypothesis >= 6.58.1
+Requires:       python-hypothesis >= 6.89.0
 Requires:       python-lark >= 0.10.1
 Requires:       python-libcst >= 0.4.0
 %if %{with test}
 BuildRequires:  %{python_module black}
 BuildRequires:  %{python_module exceptiongroup}
-BuildRequires:  %{python_module hypothesis >= 6.84.1}
+BuildRequires:  %{python_module hypothesis >= 6.89.0}
 BuildRequires:  %{python_module lark >= 0.10.1}
 BuildRequires:  %{python_module libcst >= 0.4.0}
 BuildRequires:  %{python_module parso}

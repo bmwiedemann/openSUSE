@@ -1,7 +1,7 @@
 #
 # spec file for package img2pdf
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           img2pdf
-Version:        0.5.0
+Version:        0.5.1
 Release:        0
 Summary:        Python module for converting images to PDF via direct JPEG inclusion
 License:        LGPL-3.0-or-later

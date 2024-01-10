@@ -243,4 +243,13 @@
     <comment>- Update to release 0.79</comment>
     <requestid>1106136</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>6f38266c5b6f5988b1b1632a83fcad1e</srcmd5>
+    <version>0.80</version>
+    <time>1703024147</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 0.80
+  * Fix CVE-2023-48795 [boo#1218128]</comment>
+    <requestid>1133917</requestid>
+  </revision>
 </revisionlist>

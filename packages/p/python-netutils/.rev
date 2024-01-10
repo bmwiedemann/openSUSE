@@ -23,4 +23,31 @@
     <comment></comment>
     <requestid>1085826</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>da971b866c12d74f0ef8ff302d644e0a</srcmd5>
+    <version>1.6.0</version>
+    <time>1703198306</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.6.0:
+  * Added `ubiquiti_airos` parser.
+  * Added `ACLRule` and `ACLRules` classes.
+  * Added the `ip` functions `is_ip_range`, `is_ip_within`,
+    `is_network`, and `get_range_ips`.
+  * Added the `asn` function `int_to_asn` in the function.
+  * Added `NETUTILSPARSER_LIB_MAPPER` and
+    `NETUTILSPARSER_LIB_MAPPER_REVERSE` to lib mapper.
+  * Added classy docs to view config parser classes.
+  * Added Mikrotik, fastiron, and Panos parsers.
+  * Added function to allow conversion from Panos curly bracket
+    to set format.
+  * Updated Interface mappings for FourHundredGigabitEthernet and
+    TwoGigabitEthernet.
+  * Added Encryption/Decryption/Comparison for Cisco &amp; Juniper
+    Type 9.
+  * Added Regex functions to primarily be used wihin your Jinja2
+    environment.
+
+  #122 Fixed encrypt type7</comment>
+    <requestid>1134333</requestid>
+  </revision>
 </revisionlist>

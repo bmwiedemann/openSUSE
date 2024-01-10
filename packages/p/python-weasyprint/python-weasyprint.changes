@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Dec 29 10:19:12 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 60.2:
+  * Fix SVG markers size, position and drawing
+  * Draw background behind absolutely positioned replaced boxes
+  * Don’t crash with bitmap fonts with no "glyf" table
+  * Improve SVG text-anchor attribute
+  * Fix crash caused by wrong UTF-8 indices
+  * Print form fields
+  * Add support for textLength and lengthAdjust in SVG text
+    elements
+  * Handle <wbr> tag
+  * Handle y offset of glyphs
+  * Add a --timeout option
+  * Bug fixes:
+  * Fix footnote-call displayed incorrectly for some fonts
+  * Fix page-margin boxes layout algorithm
+  * Fix IndexError when rendering PDF version 1.4
+  * Apply text transformations to first-letter pseudo elements
+  * Avoid footnote appearing before its call
+  * Fix balance before "column-span: all"
+  * Only draw required glyph with OpenType-SVG fonts
+  * Don’t draw clipPath when defined after reference
+  * Don’t ignore min-width when computing cell size
+  * Fix named pages inheritance
+  * Avoid page breaks caused by children of overflow hidden boxes
+  * Use bleed area for page’s painting area
+  * Use margin box of children to define available width for
+    leaders
+
+-------------------------------------------------------------------
 Wed Jun 14 11:42:32 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
 
 - instead of having to maintain version information in multiple
@@ -46,7 +77,7 @@ Wed Jun 14 04:42:21 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 -------------------------------------------------------------------
 Sat Sep  3 19:13:07 UTC 2022 - Klaas Freitag <opensuse@freisturz.de>
 
-- Update to version 56.1 
+- Update to version 56.1
   * Support format 5 for bitmap glyphs
   * #1666: Fix reproducible PDF generation with embedded images
   * #1668: Fix @page:nth() selector
@@ -56,7 +87,7 @@ Sat Sep  3 19:13:07 UTC 2022 - Klaas Freitag <opensuse@freisturz.de>
 -------------------------------------------------------------------
 Mon May 16 11:21:00 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
-- Update to 55.0 
+- Update to 55.0
   Python 3.7 is now the minimum requirement
   - Features
     - #1534: Support word-break: break-all
@@ -152,7 +183,7 @@ Mon Nov 22 10:52:42 UTC 2021 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Sun Nov 21 09:36:20 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 
-- enable all tests after upgrade of tinycss2 to 1.1.0 
+- enable all tests after upgrade of tinycss2 to 1.1.0
 
 -------------------------------------------------------------------
 Fri Nov 19 17:06:45 UTC 2021 - Axel Braun <axel.braun@gmx.de>

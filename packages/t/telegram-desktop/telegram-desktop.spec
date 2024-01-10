@@ -1,7 +1,7 @@
 #
 # spec file for package telegram-desktop
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,7 +34,7 @@
 %define qt_major_version 6
 
 Name:           telegram-desktop
-Version:        4.12.2
+Version:        4.14.2
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only
@@ -43,8 +43,11 @@ URL:            https://github.com/telegramdesktop/tdesktop
 Source0:        https://github.com/telegramdesktop/tdesktop/releases/download/v%{version}/tdesktop-%{version}-full.tar.gz
 # Use tg_owt-packager.py to prepare tg_owt-master.zip
 # Usage: python tg_owt-packager.py --repo-dir $PWD/tg_owt-master
+# Or use tg_owt-packager.sh to prepare tg_owt-master.zip
+# Usage: bash tg_owt-packager.sh
 Source1:        tg_owt-packager.py
-Source2:        tg_owt-master.zip
+Source2:        tg_owt-packager.sh
+Source3:        tg_owt-master.zip
 %if 0%{?suse_version} > 01500
 # PATCH-FIX-OPENSUSE
 Patch1:         0001-use-bundled-webrtc.patch
@@ -230,7 +233,7 @@ mv ../rnnoise-git20210122 ../Libraries/rnnoise
 %endif
 
 cd ../
-unzip -q %{SOURCE2}
+unzip -q %{SOURCE3}
 mv tg_owt-master Libraries/tg_owt
 
 %build

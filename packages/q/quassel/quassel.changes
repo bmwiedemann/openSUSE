@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec 15 22:03:57 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Require extra-cmake-modules at build time
+
+-------------------------------------------------------------------
 Tue Apr 12 11:09:50 UTC 2022 - Cronfox <cronfox@erinn.network>
 
 - Update to 0.14.0

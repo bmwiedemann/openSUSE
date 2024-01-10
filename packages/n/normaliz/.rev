@@ -183,4 +183,12 @@ systems
     <comment>- Update to release 3.10.1</comment>
     <requestid>1122964</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>81a8d824af61ba4e75c4dab622029f2e</srcmd5>
+    <version>3.10.1</version>
+    <time>1703527540</time>
+    <user>anag+factory</user>
+    <comment>- Add 0001-Add-FLINT-3-support.patch</comment>
+    <requestid>1134932</requestid>
+  </revision>
 </revisionlist>

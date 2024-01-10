@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Digest-MD5
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,20 @@
 #
 
 
-Name:           perl-Digest-MD5
-Version:        2.58
-Release:        0
 %define cpan_name Digest-MD5
-Summary:        Perl interface to the MD5 Algorithm
+Name:           perl-Digest-MD5
+Version:        2.590.0
+Release:        0
+%define cpan_version 2.59
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
+Summary:        Perl interface to the MD-5 algorithm
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/T/TO/TODDR/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/T/TO/TODDR/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
+Provides:       perl(Digest::MD5) = %{version}
+%define         __perllib_provides /bin/true
 %{perl_requires}
 
 %description
@@ -48,11 +49,11 @@ well as an object oriented interface that can handle messages of arbitrary
 length and which can read files directly.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -63,7 +64,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README rfc1321.txt
 
 %changelog

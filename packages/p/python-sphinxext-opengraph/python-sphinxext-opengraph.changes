@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Dec 18 09:32:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.1:
+  * Test Sphinx 7
+  * Fix default Roboto font not being found by the matplotlib
+    FontManager
+- update to 0.9.0:
+  * make matplotlib optional
+  * Drop EOL Python 3.7, Bump PyPy to 3.9
+- update to 0.8.2:
+  * Fix DeprecationWarning: The 'warn' method is deprecated, use
+    'warning' instead
+  * FIX: Social media twitter card tags
+- update to 0.8.1:
+  * Add exception for SVG images
+- update to V0.8.0:
+  * Format with Black 23.1.0
+
+-------------------------------------------------------------------
 Sat Jan  7 12:46:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to v0.7.5:
@@ -20,7 +39,7 @@ Sat Jan  7 12:46:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Tue Oct 11 15:31:19 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 0.6.3 
+- Update to version 0.6.3
   Fix first_image not resolving correctly when in subdirectories and ogp_image is defined. by @ItayZiv in #63
 
 - Update to version 0.6.2

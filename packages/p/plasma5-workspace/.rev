@@ -2164,4 +2164,12 @@ Tue Sep 23 20:24:35 UTC 2014 - hrvoje.senjan@gmail.com
     <comment>Plasma 5.27.10 (forwarded request 1131390 from Vogtinator)</comment>
     <requestid>1131445</requestid>
   </revision>
+  <revision rev="222" vrev="2">
+    <srcmd5>dee083eb339f9ab50ee5a0629bedd3c7</srcmd5>
+    <version>5.27.10</version>
+    <time>1703527482</time>
+    <user>anag+factory</user>
+    <comment>- Update appstream build requirement for compatibility with 1.0.0</comment>
+    <requestid>1134605</requestid>
+  </revision>
 </revisionlist>

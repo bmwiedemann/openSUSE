@@ -1567,4 +1567,16 @@ Administrator experience:
     <comment></comment>
     <requestid>1114991</requestid>
   </revision>
+  <revision rev="169" vrev="1">
+    <srcmd5>c382c57150e04b48cbc1f9a040f7c9d4</srcmd5>
+    <version>1.21.2</version>
+    <time>1703198272</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.21.2 (bsc#1218211, CVE-2023-39975):
+  * Fix double-free in KDC TGS processing [CVE-2023-39975].
+
+- update to 1.21.1 (CVE-2023-36054):
+    with Windows KDCs.</comment>
+    <requestid>1134351</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jan  4 18:01:51 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 27.2.1
+  * Fix multiple security issues in Chromium and V8 (bsc#1218048):
+    CVE-2023-6702 CVE-2023-6703 CVE-2023-6705 CVE-2023-6706 CVE-2023-6707
+  * Fix use after free in AVIF (CVE-2023-6704 bsc#1218303) (except Tumbleweed)
+
+-------------------------------------------------------------------
+Fri Dec 22 14:10:57 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 27.2.0
+  * Added an option in protocol.registerSchemesAsPrivileged to allow V8 code cache in custom schemes.
+  * Fixed an issue where font requests were incorrectly being sent to dev tools multiple times per resource.
+  * Fixed save to file option not working in performance tab of devtools.
+  * Fix use after free in MediaStream (CVE-2023-6508)
+  * Fix heap buffer overflow in WebRTC (CVE-2023-7024 bsc#1218302)
+
+-------------------------------------------------------------------
 Sat Dec  2 00:25:12 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 27.1.3

@@ -76,10 +76,10 @@ Suggests:       busybox-hostname
 Requires:       NetworkManager
 Requires:       NetworkManager-bluetooth
 Requires:       NetworkManager-wifi
+Requires:       build-key
 Requires:       iproute2
 Requires:       lastlog2
 Requires:       libnss_usrfiles2
-Requires:       openSUSE-build-key
 Requires:       pam
 Requires:       pam-config
 Requires:       procps
@@ -122,7 +122,6 @@ Requires:       terminfo-base
 Requires:       timezone
 Conflicts:      gettext-runtime-mini
 Conflicts:      krb5-mini
-Obsoletes:      suse-build-key < 12.1
 Requires:       yast2-logs
 
 %description base

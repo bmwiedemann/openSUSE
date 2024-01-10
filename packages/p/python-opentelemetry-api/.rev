@@ -149,4 +149,17 @@
   * Add experimental feature to detect resource detectors in auto</comment>
     <requestid>1132370</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>fbd690a551c4f88af9d01307e82ffb57</srcmd5>
+    <version>1.22.0</version>
+    <time>1703800910</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.22.0:
+  * Prometheus exporter sanitize info metric (#3572)
+  * Remove Jaeger exporters (#3554)
+  * Log stacktrace on `UNKNOWN` status OTLP export error  (#3536)
+  * Fix OTLPExporterMixin shutdown timeout period (#3524)
+  * Handle `taskName` `logrecord` attribute (#3557)</comment>
+    <requestid>1135287</requestid>
+  </revision>
 </revisionlist>

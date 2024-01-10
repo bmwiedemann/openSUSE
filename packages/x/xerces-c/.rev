@@ -250,4 +250,41 @@
   * [XERCESC-2242] - Non-default curl location breaks autoconf link detection</comment>
     <requestid>1031419</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>9c4878532bfc3399ff97cffc7caecba9</srcmd5>
+    <version>3.2.5</version>
+    <time>1703800501</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.2.5 (bsc#1159552, CVE-2018-1311):
+  * [XERCESC-2163] - XercesMessages_en_US.cat is installed to
+    wrong directory
+  * [XERCESC-2188] - Use-after-free on external DTD scan
+
+  * [XERCESC-2242] - Non-default curl location breaks autoconf link detection
+  * Custom HTTP headers missing with CURL NetAccessor
+    + ICUTransService and IconvGNUransService CAN NOT deal with
+    + Problem in prefix parsing while creating Documnet, Element,
+    + Whitespace in xsi:type
+    + XMLUTF8Transcoder::transcodeTo fails with an exception when
+      transcoding single characters that require 3 or more bytes as
+    + XMLUni::fgXercesLoadSchema[] is not null-terminated in
+    + XMLURL.cpp: isHexDigit() and xlatHexDigit() accept whole
+    + Xerces livelocks while reading external DTD if socket closes
+    + Memory leak occurs if an exception is thrown in
+    + DOMDocumentImpl:: getPooledNString(const XMLCh *in,
+    + OutOfMemoryException being thrown on creation of an LS
+    + TranscodeToStr::transcode throws an exception when
+    + ContentSpecNode::getMaxTotalRange: Operator precedence
+    + Add support for GNU/Hurd by using POSIX.1-2001 and
+    + enumeration value ‘Loop’ not handled in switch
+    + Xerces 3.1.1 Xerces.Lib fails to build with new Visual
+    + Code analysis revealed multiple potential NULL derefence
+    + MacOSUnicodeConverter.cpp: ISO C++ forbids comparison
+- Add baselib.conf in order to build -32Bit.
+  * Check that we have non-NULL host before trying to connect (XERCESC-1920).
+  * Recover from the mismatching start/end even count which may happen when we continue parsing an invalid document (XERCESC-1919).
+  * If the transcoder doesn't process any input, throw an exception (XERCESC-1916).
+  * Delay the recursive expansion of includes until the document fragment has been placed in the final location (XERCESC-1918).</comment>
+    <requestid>1135297</requestid>
+  </revision>
 </revisionlist>

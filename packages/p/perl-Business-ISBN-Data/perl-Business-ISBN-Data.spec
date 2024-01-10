@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Business-ISBN-Data
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,9 @@
 
 %define cpan_name Business-ISBN-Data
 Name:           perl-Business-ISBN-Data
-Version:        20231020.1.0
+Version:        20231220.1.0
 Release:        0
-%define cpan_version 20231020.001
+%define cpan_version 20231220.001
 License:        Artistic-2.0
 Summary:        Data pack for Business::ISBN
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -31,7 +31,7 @@ BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.64
 BuildRequires:  perl(Test::More) >= 1
-Provides:       perl(Business::ISBN::Data) = 20231020.1.0
+Provides:       perl(Business::ISBN::Data) = %{version}
 %define         __perllib_provides /bin/true
 %{perl_requires}
 

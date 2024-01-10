@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan  2 09:54:49 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 2.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove unzip package from BuildRequires
+- Switch source archive format to TAR.GZ
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
 Thu Mar 31 08:29:05 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release

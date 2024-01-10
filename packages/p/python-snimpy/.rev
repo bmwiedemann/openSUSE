@@ -53,4 +53,14 @@
 - Stop using greedy globs in %files.</comment>
     <requestid>1101629</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>37a94a94c7827ee3932053c2091641c5</srcmd5>
+    <version>1.0.2</version>
+    <time>1704281076</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.2:
+  * Compatibility with Python 3.12 by adding dependency to
+    pyasyncore.</comment>
+    <requestid>1135641</requestid>
+  </revision>
 </revisionlist>

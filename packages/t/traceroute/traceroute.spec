@@ -17,7 +17,7 @@
 
 
 Name:           traceroute
-Version:        2.1.3
+Version:        2.1.5
 Release:        0
 Summary:        Packet route path tracing utility
 License:        GPL-2.0-or-later
@@ -27,9 +27,9 @@ Source:         https://sourceforge.net/projects/traceroute/files/traceroute/tra
 Patch0:         traceroute-autotools.patch
 Patch1:         traceroute-secure_getenv.patch
 BuildRequires:  automake
-Provides:       net-tools:%{_sbindir}/%{name}
-Provides:       tcptraceroute
+Provides:       tcptraceroute = %{version}
 Obsoletes:      tcptraceroute <= 1.5.beta7
+Provides:       net-tools:%{_sbindir}/%{name}
 
 %description
 Traceroute tracks the route packets taken from an IP network on their way to a given host.

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 12 12:12:12 UTC 2023 - ohering@suse.de
+
+- Use ocaml-rpm-macros to track OCaml ABI
+
+-------------------------------------------------------------------
 Mon Nov 13 21:15:40 UTC 2023 - James Fehlig <jfehlig@suse.com>
 
 - Fix assertion in ext-mode BLOCK_STATUS, CVE-2023-5871

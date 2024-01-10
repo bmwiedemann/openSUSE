@@ -210,4 +210,18 @@
     <comment></comment>
     <requestid>1119206</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>b303a8d790167d5c1bfcc613b21e595c</srcmd5>
+    <version>2.13.1</version>
+    <time>1704829881</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.13.1
+  https://github.com/timescale/timescaledb/releases/tag/2.13.1
+
+- enable pg 16
+
+- Update to version 2.13.0
+  https://github.com/timescale/timescaledb/releases/tag/2.13.0</comment>
+    <requestid>1137725</requestid>
+  </revision>
 </revisionlist>

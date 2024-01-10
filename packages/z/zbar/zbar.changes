@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Dec 13 18:36:21 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- security update:
+  * CVE-2023-40889 [bsc#1214770]
+    Fix heap based buffer overflow in qr_reader_match_centers()
+    + zbar-CVE-2023-40889.patch
+  * CVE-2023-40890 [bsc#1214771]
+    Fix stack based buffer overflow in lookup_sequence()
+    + zbar-CVE-2023-40890.patch
+
+-------------------------------------------------------------------
 Tue Jun 20 11:21:51 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Modernise spec file

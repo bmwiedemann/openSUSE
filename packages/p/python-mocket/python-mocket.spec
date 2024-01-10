@@ -25,7 +25,7 @@
 %bcond_with test
 %endif
 
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-mocket%{psuffix}
 Version:        3.12.0
 Release:        0
@@ -104,7 +104,7 @@ sleep 2
 # Checks the ability to record a real request and response. Not available inside obs.
 donttest="test_asyncio_record_replay"
 # The reference recording has different headers in this case
-%if %{pkg_vcmp python3-httpx < 0.23}
+%if %{pkg_vcmp python311-httpx < 0.23}
 donttest="$donttest or test_truesendall_with_dump_from_recording"
 %endif
 # these fail after the python 3.11 patches

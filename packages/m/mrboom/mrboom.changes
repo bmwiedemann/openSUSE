@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Dec 28 18:22:12 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.3:
+  * libretro: init aspect_option variable
+  * sdl2: full screen + change ignition key for 1st player
+  * Fix missing settings before frontends call retro_init()
+  * Apply ABGR color correction
+
+-------------------------------------------------------------------
+Thu Apr 29 16:15:10 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 5.2
+  * AI improvements
+  * Victory: Show whole team together on stage
+  * Added X-mes easter egg
+  * Disease: Kangaroo jumping does not contaminate
+- Drop upstream merged mrboom-fix-build.patch
+
+-------------------------------------------------------------------
 Sun Jan  5 21:10:47 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.9

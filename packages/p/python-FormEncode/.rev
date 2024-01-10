@@ -158,4 +158,19 @@
 - Drop BuildRequires on setuptools_scm_git_archive</comment>
     <requestid>1099155</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>576b7cb0653de92c0a6b6cb5ccff26ab</srcmd5>
+    <version>2.1.0</version>
+    <time>1702844942</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.1.0:
+  * Add support for Python 3.7 to 3.12, end support for older Python
+    versions
+  * Context.set() now works as a context manager
+  * Fix binary of swedish translation
+  * Some internal code cleanup and modernization
+
+  * The method field_is_empty was added to</comment>
+    <requestid>1133654</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Dec 16 21:00:19 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.0:
+  * Add support for Python 3.7 to 3.12, end support for older Python
+    versions
+  * Context.set() now works as a context manager
+  * Fix binary of swedish translation
+  * Some internal code cleanup and modernization
+
+-------------------------------------------------------------------
 Tue Jul 18 02:48:07 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Clean up Python 2 leftovers.
@@ -142,7 +152,7 @@ Mon Aug  5 13:25:42 UTC 2013 - hpj@urpla.net
 Mon Jun 10 12:28:02 UTC 2013 - dmueller@suse.com
 
 - update to 1.2.5:
-  * The method field_is_empty was added to 
+  * The method field_is_empty was added to
   formencode.validators.FormValidator
   * Fix packaging issue with i18n files (from Juliusz Gonera)
 

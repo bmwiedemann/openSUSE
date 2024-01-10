@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 14 08:44:11 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Disable python build deps when not building python bindins.
+
+-------------------------------------------------------------------
 Sat Jun 17 14:53:10 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 -disable Python bindings for Tumbleweed

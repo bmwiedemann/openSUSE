@@ -16,8 +16,9 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-numexpr
-Version:        2.8.7
+Version:        2.8.8
 Release:        0
 Summary:        Numerical expression evaluator for NumPy
 License:        MIT
@@ -27,7 +28,6 @@ Source:         https://files.pythonhosted.org/packages/source/n/numexpr/numexpr
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module numpy-devel >= 1.13.3}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

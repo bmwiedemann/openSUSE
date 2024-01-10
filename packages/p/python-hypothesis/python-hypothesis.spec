@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,13 +37,13 @@ ExclusiveArch:  do_not_build
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-hypothesis%{psuffix}
-Version:        6.88.1
+Version:        6.92.2
 Release:        0
 Summary:        A library for property based testing
 License:        MPL-2.0
 URL:            https://github.com/HypothesisWorks/hypothesis
 # Source is the `hypothesis-python` subdir of the Github repository.
-# Edit the `_service` file and run `osc service runall` for updates.
+# Edit the `_service` file and run `osc service manualrun` for updates.
 # See also https://hypothesis.readthedocs.io/en/latest/packaging.html
 Source:         hypothesis-python-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.8}
@@ -147,6 +147,8 @@ sed -i 's/assert (arr == 0.0)/assert np.asarray(arr == 0.0)/' tests/numpy/test_g
 # https://github.com/HypothesisWorks/hypothesis/issues/2546
 donttest="test_updating_the_file_include_new_shrinkers"
 donttest+=" or test_can_learn_to_normalize_the_unnormalized"
+# requires a git checkout
+donttest+=" or test_observability"
 # Fail because typing comparison
 donttest+=" or test_ghostwriter_on_hypothesis"
 if [ $(getconf LONG_BIT) -eq 32 ]; then

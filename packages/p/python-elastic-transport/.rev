@@ -59,4 +59,16 @@
   * Added method for clients to use default ports for URL scheme.</comment>
     <requestid>1130493</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>36a73cb886445919f44a0c51508b127f</srcmd5>
+    <version>8.11.0</version>
+    <time>1702673210</time>
+    <user>anag+factory</user>
+    <comment>- update to 8.11.0:
+  * Always set default HTTPS port to 443
+  * Drop support for Python 3.6
+  * Include tests in sdist
+  * Fix `__iter__` return type to Iterator</comment>
+    <requestid>1133054</requestid>
+  </revision>
 </revisionlist>

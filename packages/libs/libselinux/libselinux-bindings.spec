@@ -18,10 +18,10 @@
 
 %{?sle15allpythons}
 %define python_subpackage_only 1
-%define libsepol_ver 3.5
+%define libsepol_ver 3.6
 %define upname libselinux
 Name:           libselinux-bindings
-Version:        3.5
+Version:        3.6
 Release:        0
 Summary:        SELinux runtime library and utilities
 License:        SUSE-Public-Domain
@@ -41,6 +41,7 @@ Patch6:         python3.8-compat.patch
 Patch7:         swig4_moduleimport.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  libselinux-devel = %{version}
@@ -114,7 +115,7 @@ make DESTDIR=%{buildroot} LIBDIR="%{_libdir}" SHLIBDIR="/%{_lib}" PYTHON=$python
 
 %files %{python_files selinux}
 %{python_sitearch}/selinux
-%{python_sitearch}/selinux-%{version}*-info
+%{python_sitearch}/selinux-%{version}.dist-info
 %{python_sitearch}/_selinux*
 
 %files -n ruby-selinux

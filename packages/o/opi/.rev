@@ -566,4 +566,25 @@
   * Expand repovar $basearch (to e.g. x86_64 or aarch64)</comment>
     <requestid>1132666</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>fb314a53b9537ac43725d5ef31984ae4</srcmd5>
+    <version>4.3.0</version>
+    <time>1702673457</time>
+    <user>anag+factory</user>
+    <comment>- Version 4.3.0
+  * Hint open source alternatives
+  * Fix issue with installing from existing openh264 repo</comment>
+    <requestid>1133488</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>8b347a316daee720d0d9d4b9d11d5812</srcmd5>
+    <version>4.4.0</version>
+    <time>1704281421</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 4.4.0
+  * Match repos by alias when searching local repos
+  * Rephrase OSS alternative hints
+  * Fix typo in rpmbuild.py</comment>
+    <requestid>1136186</requestid>
+  </revision>
 </revisionlist>

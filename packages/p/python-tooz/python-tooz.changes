@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Jan  4 09:04:25 UTC 2024 - cloud-devel@suse.de
+
+- update to version 4.2.0
+  - Cap protobuf < 4.x
+  - Loosen protobuf version that's used for docs/renos
+  - tox: set allowlist_externals
+  - [etcd3gw] create new lease if expired.
+  - Drop python3.6/3.7 support in testing runtime
+  - Fix mysql timeout
+  - Allow to pass ssl-related args for zookeeper
+  - Add TLS support for MySQL driver
+  - Support etcd3gw api version
+  - Revert "Moves supported python runtimes from version 3.8 to 3.10"
+  - remove unicode from code
+  - Fix: Add timeout for mysql driver
+  - Moves supported python runtimes from version 3.8 to 3.10
+  - Enable watch functionality for Etcd3Driver
+  - Fix inappropriate logic in memcachedlock.release()
+  - Add grouping support in etcd to compatibility matrix.
+
+-------------------------------------------------------------------
 Tue Jun 21 13:17:06 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - drop unneeded dependencies 

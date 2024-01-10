@@ -1,27 +1,42 @@
 -------------------------------------------------------------------
-Sat May 14 12:26:14 UTC 2022 - cloud-devel@suse.de
+Thu Jan  4 23:04:20 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
-- update to version 3.10.1
-  - Removing modindex link from docs
-  - Automatically page interactive root help output
-
--------------------------------------------------------------------
-Fri May 13 22:33:11 UTC 2022 - Dirk Müller <dmueller@suse.com>
-
-- remove six dependency 
-
--------------------------------------------------------------------
-Tue Oct 26 22:13:33 UTC 2021 - cloud-devel@suse.de
-
-- update to version 3.9.0
-  - Add Python3 xena unit tests
-  - Replace getargspec with getfullargspec
-  - Handle SIGPIPE exit gracefully
-  - setup.cfg: Replace dashes with underscores
-  - Update unit test to satisfy python3.10+
-  - Add conflict_handler parameter as attribut in Command class
-  - Use py3 as the default runtime for tox
-  - Colourise and automatically page help output
+- update to 4.4.0:
+  * Handle complex objects in yaml formatter better
+  * Fix pre-commit issues
+  * Autofit table output if stdout is a tty
+  * Fix flake8 violation E721
+  * Use upper-constraint in doc generation
+  * Removing helper functions providing Python < 3.3
+    compatibility
+  * Strip trailing periods when getting description
+  * Clarification of the algorithm used
+  * columns: Useful \_\_str\_\_, \_\_repr\_\_ implementation
+  * Add Python3 antelope unit tests
+  * Removing brackets around tested conditional
+  * Replace abc.abstractproperty with property and
+    abc.abstractmethod
+  * Remove final use of pkg\_resources
+  * Defer loading PyYAML
+  * Defer loading cmd2
+  * requirements: Remove explicit python-subunit dependency
+  * requirements: Remove explicit pbr dependency
+  * requirements: Remove explicit pyparsing dependency
+  * Update Python testing per Zed cycle testing runtime
+  * Migrate Python 3.6/7 jobs to Python 3.8
+  * Removing modindex link from docs
+  * Add Python3 yoga unit tests
+  * Automatically page interactive root help output
+  * Colourise and automatically page help output
+  * Update unit test to satisfy python3.10+
+  * Handle SIGPIPE exit gracefully
+  * Add conflict\_handler parameter as attribut in Command class
+  * setup.cfg: Replace dashes with underscores
+  * Replace getargspec with getfullargspec
+  * setup.cfg: Replace dashes with underscores
+  * Use py3 as the default runtime for tox
+  * Add Python3 xena unit tests
+- switch to singlespec
 
 -------------------------------------------------------------------
 Sun May  2 17:15:03 UTC 2021 - cloud-devel@suse.de
@@ -470,7 +485,7 @@ Thu Jun 26 09:37:02 UTC 2014 - dmueller@suse.com
 -------------------------------------------------------------------
 Thu Feb 13 11:53:51 UTC 2014 - dmueller@suse.com
 
-- add 0001-Move-pep8-dependency-into-pep8-tox-test.patch: remove global pep8 dependency 
+- add 0001-Move-pep8-dependency-into-pep8-tox-test.patch: remove global pep8 dependency
 
 -------------------------------------------------------------------
 Tue Jan 21 13:22:18 UTC 2014 - dmueller@suse.com
@@ -524,24 +539,24 @@ Fri May  3 09:55:16 UTC 2013 - speilicke@suse.com
 
 - Update to version 1.3.3:
   + Upstreamed:
-    - 0001-Restore-compatibility-with-Prettytable-0.7.2.patch 
-    - ignore-cmd2-requires.diff: 
+    - 0001-Restore-compatibility-with-Prettytable-0.7.2.patch
+    - ignore-cmd2-requires.diff:
 
 -------------------------------------------------------------------
 Thu May  2 10:42:04 UTC 2013 - dmueller@suse.com
 
-- add 0001-Restore-compatibility-with-Prettytable-0.7.2.patch 
+- add 0001-Restore-compatibility-with-Prettytable-0.7.2.patch
 
 -------------------------------------------------------------------
 Tue Apr 30 08:39:29 UTC 2013 - dmueller@suse.com
 
-- add ignore-cmd2-requires.diff: 
+- add ignore-cmd2-requires.diff:
   loosen cmd2 version requires
 
 -------------------------------------------------------------------
 Thu Apr 25 09:06:44 UTC 2013 - dmueller@suse.com
 
-- update to 1.3.2: 
+- update to 1.3.2:
   - Add ``convert_underscores`` parameter to ``CommandManager`` ``__init__``
     method to allow underscores to be used in command names. This optional
     argument is defaulted to True to maintain current behavior.
@@ -553,18 +568,18 @@ Thu Apr 25 09:06:44 UTC 2013 - dmueller@suse.com
 -------------------------------------------------------------------
 Wed Apr 24 15:04:28 UTC 2013 - dmueller@suse.com
 
-- buildrequire the right mock version 
+- buildrequire the right mock version
 
 -------------------------------------------------------------------
 Mon Mar 18 16:09:58 UTC 2013 - dmueller@suse.com
 
-- tighten requires on pyparsing 
+- tighten requires on pyparsing
 
 -------------------------------------------------------------------
 Wed Mar 13 12:26:50 UTC 2013 - dmueller@suse.com
 
 - add prettytable-0.7x.diff:
-  - Be compatible with PrettyTable 0.7 
+  - Be compatible with PrettyTable 0.7
 - tighten rpm dependencies
 
 -------------------------------------------------------------------
@@ -594,5 +609,5 @@ Fri Jul 27 10:46:22 UTC 2012 - saschpe@suse.de
 -------------------------------------------------------------------
 Fri Jul 27 08:28:53 UTC 2012 - cthiel@suse.com
 
-- initial package (version 1.0) 
+- initial package (version 1.0)
 

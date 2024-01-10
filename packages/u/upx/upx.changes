@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan  3 18:35:04 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.2.2
+  * Fix upx program crash on Oracle Cloud VM
+  * Fix upx program crash on ARM64 machines with 64K page size
+  * Fix a heap-buffer-overflow in upx
+
+-------------------------------------------------------------------
 Wed Nov  1 19:30:37 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.2.1

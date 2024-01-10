@@ -1,7 +1,7 @@
 #
 # spec file for package log4cpp
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,22 @@
 #
 
 
+%define sonum 5
+
 Name:           log4cpp
-Version:        1.1.3
+Version:        1.1.4
 Release:        0
 Summary:        C++ logging library
 License:        LGPL-2.1-only
 Group:          Development/Languages/C and C++
-Url:            http://%{name}.sourceforge.net/
-Source:         %{name}-%{version}.tar.xz
+URL:            https://log4cpp.sourceforge.net/
+Source:         https://downloads.sourceforge.net/project/log4cpp/log4cpp-1.1.x%20%28new%29/log4cpp-1.1/log4cpp-%{version}.tar.gz
 BuildRequires:  doxygen
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
-%if 0%{?suse_version}
-BuildRequires:  fdupes
-%endif
 
-%define libname lib%{name}5
+%define libname lib%{name}%{sonum}
 
 %description
 Log for C++ is a library of classes for flexible logging to files,
@@ -68,24 +68,20 @@ the popular doxygen documentation generation tool.
 
 %build
 %configure --enable-doxygen --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install mandir="%{buildroot}/%{_mandir}" docdir="%{buildroot}/%{_docdir}/%{name}"
 find %{buildroot} -type f -name "*.la" -delete -print
-%if 0%{?suse_version}
 %fdupes -s %{buildroot}/%{_docdir}/%{name}/api
-%endif
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
 
 %files -n %{libname}
-%defattr(-,root,root,-)
-%{_libdir}/*.so.*
+%{_libdir}/*.so.%{sonum}*
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/%{name}
 %{_mandir}/man3/%{name}*.3%{?ext_man}
 %{_bindir}/%{name}-config
@@ -95,7 +91,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %attr(644,root,root) %{_datadir}/aclocal/%{name}.m4
 
 %files doc
-%defattr(-,root,root)
 %doc AUTHORS ChangeLog NEWS README THANKS
 %doc %{_docdir}/%{name}
 %license COPYING

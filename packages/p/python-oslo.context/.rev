@@ -270,4 +270,24 @@
   - Remove unnecessary unicode prefixes</comment>
     <requestid>996555</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>59ab06b64729cdae046cd975caea318e</srcmd5>
+    <version>5.3.0</version>
+    <time>1703800995</time>
+    <user>anag+factory</user>
+    <comment>- update to version 5.3.0
+  - Revert &quot;Moves supported python runtimes from version 3.8 to 3.10&quot;
+  - Moves supported python runtimes from version 3.8 to 3.10
+  - Update master for stable/2023.2
+  - Bump bandit
+  - Update master for stable/2023.1
+  - Add method for getting redacted copy of context
+
+- update to version 5.1.1
+  - Update master for stable/zed
+  - Cleanup py27 support
+  - Add Python3 antelope unit tests
+  - Fix the docs job</comment>
+    <requestid>1135453</requestid>
+  </revision>
 </revisionlist>

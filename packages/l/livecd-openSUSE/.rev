@@ -1740,4 +1740,12 @@
     <comment></comment>
     <requestid>1132686</requestid>
   </revision>
+  <revision rev="218" vrev="218">
+    <srcmd5>d75831c74bc958a6239693301f15196e</srcmd5>
+    <version>unknown</version>
+    <time>1704443391</time>
+    <user>dimstar_suse</user>
+    <comment>- config.sh: drop intel vsc firmware (11MB): Visual Sensing Control
+  is potentially used for 'walk away lock'.</comment>
+  </revision>
 </revisionlist>

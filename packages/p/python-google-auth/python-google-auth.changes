@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Jan  4 09:50:33 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.26.1
+  * Ensure that refresh worker is pickle-able. (#1447)
+- from version 2.26.0
+  * Add optional non blocking refresh for sync auth code (a6dc2c3)
+  * Add optional non blocking refresh for sync auth code (#1368)
+  * External account user cred universe domain support (#1437)
+  * Guard delete statements. Add default fallback for _use_non_blocking_refresh. (#1445)
+- Refresh patches for new version
+  * python-google-auth-no-mock.patch
+
+-------------------------------------------------------------------
+Sat Dec 16 19:27:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.25.2:
+  * Fix user cred universe domain issue (#1436)
+
+-------------------------------------------------------------------
 Thu Dec  7 22:38:03 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.25.1:

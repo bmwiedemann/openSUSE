@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Dec 14 10:38:29 UTC 2023 - pgajdos@suse.com
+
+- deleted patches
+  - python-allpairspy-no-six.patch (upstreamed)
+
+-------------------------------------------------------------------
+Thu Dec 14 09:14:07 UTC 2023 - Petr Gajdos <pgajdos@suse.com>
+
+- update to 2.5.1:
+  * Fix typo in MANIFEST.in
+  * Add support for Python 3.9/3.10/3.11
+  * Drop support for Python 2.7/3.5/3.6
+  * Remove unused `setup.cfg`
+
+-------------------------------------------------------------------
 Tue Sep 13 15:29:12 UTC 2022 - pgajdos@suse.com
 
 - do not require six

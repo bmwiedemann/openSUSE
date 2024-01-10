@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan  8 08:16:06 UTC 2024 - Sebastian Wagner <sebix@sebix.at>
+
+- Update to version 1.2.0:
+ * Add edge shading - edge shading can be enabled by setting the desired edge threshold with --edge-threshold=N.N. 
+
+-------------------------------------------------------------------
 Mon Dec  6 20:10:29 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - change recommendations to supplements for bash completion sub-package

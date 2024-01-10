@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jan  6 15:12:29 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- n_xserver-optimus-autoconfig-hack.patch
+  u_randr-Do-not-crash-if-slave-screen-does-not-have-pro.patch
+  u_xfree86-activate-GPU-screens-on-autobind.patch
+  * check dixPrivateKeyRegistered(rrPrivKey) before calling
+    rrGetScrPriv() to avoid xserver crash when Xinerama is enabled
+    (boo#1218240)
+
+ -------------------------------------------------------------------
 Mon Dec  4 18:49:47 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - U_bsc1217765-Xi-allocate-enough-XkbActions-for-our-buttons.patch

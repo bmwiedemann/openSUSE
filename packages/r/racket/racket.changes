@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Dec 16 09:35:49 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.11.1:
+  * This bug-fix release repairs a problem with building from source
+    when using the “builtpkgs” source distribution
+
+-------------------------------------------------------------------
 Wed Nov 15 18:17:43 UTC 2023 - Fred Fu <moonsolo@gmail.com>
 
 - Update to 8.11:
@@ -100,7 +107,7 @@ Sun May 13 15:17:43 UTC 2023 - Fred Fu <moonsolo@gmail.com>
  * TCP output block buffering implies TCP_NODELAY. (cf. 15.3.1 TCP 3)
 
  * Submodules and Check Syntax require arrows work better together.
- 
+
  * Typed Racket's shallow check generation is improved.
 
  * Many other improvements and bug fixes are included!
@@ -110,9 +117,9 @@ Wed Feb 15 21:17:43 UTC 2023 - Fred Fu <moonsolo@gmail.com>
 - Update to 8.8:
   * The dependent contract form, ->i, supports a #:param element that specifies
     dependencies for parameter values that are set during the dynamic extent of
-    the function call. 
+    the function call.
 
-  * The copy-file library function supports permission-management arguments. 
+  * The copy-file library function supports permission-management arguments.
 
   * Pressing <SHIFT>-return in DrRacket’s interactions window makes it easier to
     edit and enter expressions without sending them to be evaluated.
@@ -128,7 +135,7 @@ Wed Feb 15 21:17:43 UTC 2023 - Fred Fu <moonsolo@gmail.com>
 -------------------------------------------------------------------
 Wed Dec 14 09:55:06 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
-- Update config.sub from upstream 
+- Update config.sub from upstream
 
 -------------------------------------------------------------------
 Mon Dec 5 10:17:43 UTC 2022 - Fred Fu <moonsolo@gmail.com>
@@ -144,19 +151,19 @@ Mon Dec 5 10:17:43 UTC 2022 - Fred Fu <moonsolo@gmail.com>
 
   * Programmers can disable definition shadowing using
     `(#%declare #:require=define)`.
-  
+
   * The module dependency graphs available using raco dependencies-graph
     and DrRacket's Module browser are faster and have new package
     filtering support.
-  
+
   * DrRacket is more responsive when killing programs that produce a lot
     of output.
-  
+
   * Plot 3D allows negative altitude values (e.g., looking at the plot
     from "below").
-  
+
   * The `scriblib/bibtex` and `scriblib/autobib` libraries support DOIs.
-  
+
   * There are many other repairs and improvements!
 
 -------------------------------------------------------------------
@@ -220,35 +227,35 @@ Sun May 8 18:26:11 UTC 2022 - Fred Fu <moonsolo@gmail.com>
 - Update to 8.5:
   * Racket's new `-y` flag automatically keeps compiled files up to date,
     reducing subsequent load times.
-  
+
   * Error-message realms allow Racket-hosted languages to adapt and
     rewrite error messages to make sense in a particular context.
-  
+
   * Nonprivileged users can control package installation scope using an
     "other-version" directory in the addon-dir.
-  
+
   * Racket CS runs on platforms where native-code generation is not
     currently supported (e.g., s390x or ppc64). See "README.txt" in the
     source distribution for more information on the --enable-pb flag to
     configure.
-  
+
   * DrRacket's new 'Reopen Closed Tab' file menu item will open previously
     closed tabs.
-  
+
   * Typed Racket has support for the `xml` library; use `typed/xml`.
-  
+
   * Rackunit reports source locations for failed test cases in the
     Typed Racket language.
-  
+
   * Plot has violin plots and improved box-and-whisker plots.
-  
+
   * Boxes are supported alongside lists, vectors etc. in place-channel
     messages.
-  
+
   * Those who manually configure Racket CS to use Zlib compression for
     compiled code should be aware of CVE-2018-25032; the next release and
     the current snapshot builds use a newer, safer version of zlib.
-  
+
   * The release includes many other repairs and changes!
 
 - Spec changes:
@@ -260,7 +267,7 @@ Sun May 8 18:26:11 UTC 2022 - Fred Fu <moonsolo@gmail.com>
 Sat Apr 16 15:26:11 UTC 2022 - Fred Fu <moonsolo@gmail.com>
 - Fix bug for boo#1198475
   * add a new build dependency, `ncurses-devel`, to enable `expeditor`
-  
+
 -------------------------------------------------------------------
 Sun Mar 6 15:26:11 UTC 2022 - Fred Fu <moonsolo@gmail.com>
 - Update to 8.4:

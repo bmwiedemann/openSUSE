@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Net-SSLeay
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        Artistic-2.0
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/C/CH/CHRISN/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
+# PATCH-FIX-UPSTREAM https://github.com/radiator-software/p5-net-ssleay/issues/449
+Patch0:         Use-constants-X509_VERSION_3-and-X509_REQ_VERSION_1-when-available.patch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 %{perl_requires}
@@ -42,7 +44,7 @@ This module provides Perl bindings for libssl (an SSL/TLS API) and
 libcrypto (a cryptography API).
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version} -p1
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build

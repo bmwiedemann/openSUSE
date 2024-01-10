@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 28 11:20:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.119:
+  * add amdgpu_va_get_start_addr
+
+-------------------------------------------------------------------
 Tue Nov 28 14:29:20 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - adjusted n_libdrm-drop-valgrind-dep-generic.patch,
