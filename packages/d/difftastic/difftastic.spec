@@ -1,7 +1,7 @@
 #
 # spec file for package difftastic
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2023 munix9@googlemail.com
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           difftastic
-Version:        0.53.1
+Version:        0.54.0
 Release:        0
 Summary:        A structural diff that understands syntax
 License:        Apache-2.0 AND MIT
@@ -30,6 +30,7 @@ BuildRequires:  cargo-packaging
 BuildRequires:  fdupes
 BuildRequires:  jq
 BuildRequires:  mdbook
+BuildRequires:  rust >= 1.63
 BuildRequires:  shared-mime-info
 Requires:       shared-mime-info
 Suggests:       %{name}-doc

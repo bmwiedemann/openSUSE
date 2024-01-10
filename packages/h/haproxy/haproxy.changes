@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Fri Dec 15 15:15:07 UTC 2023 - varkoly@suse.com
+
+- Update to version 2.9.1+git0.f72603ceb:
+  * [RELEASE] Released version 2.9.1
+  * DOC: config: also add arguments to the converters in the table
+  * DOC: config: add arguments to sample fetch methods in the table
+  * BUG/MEDIUM: mux-quic: report early error on stream
+  * BUG/MEDIUM: mux-h2: Report too large HEADERS frame only when rxbuf is empty
+  * CLEANUP: mux-h1: Fix a trace message about C-L header addition
+  * BUG/MEDIUM: mux-h1: Explicitly skip request's C-L header if not set originally
+  * BUG/MEDIUM: mux-h1: Cound data from input buf during zero-copy forwarding
+  * BUG/MEDIUM: stconn: Block zero-copy forwarding if EOS/ERROR on consumer side
+  * BUG/MEDIUM: quic: QUIC CID removed from tree without locking
+  * MINOR: version: mention that it's stable now
+  * BUG/MINOR: ext-check: cannot use without preserve-env
+  * BUG/MEDIUM: map/acl: pat_ref_{set,delete}_by_id regressions
+  * BUILD: ssl: update types in wolfssl cert selection callback
+  * BUG/MEDIUM: quic: Possible buffer overflow when building TLS records
+  * BUG/MINOR: mworker/cli: fix set severity-output support
+  * DOC: configuration: typo req.ssl_hello_type
+  * BUG/MINOR: lua: Wrong OCSP CID after modifying an SSL certficate (LUA)
+  * BUG/MINOR: ssl: Wrong OCSP CID after modifying an SSL certficate
+  * MINOR: ssl/cli: Add ha_(warning|alert) msgs to CLI ckch callback
+  * BUG/MINOR: ssl: Double free of OCSP Certificate ID
+
+-------------------------------------------------------------------
+Mon Dec 11 09:20:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 2.9.0+git0.fddb8c13b:
+  new major branch:
+  https://www.haproxy.com/blog/announcing-haproxy-2-9
+  https://www.mail-archive.com/haproxy@formilux.org/msg44400.html
+
+-------------------------------------------------------------------
+Thu Dec 07 14:28:36 UTC 2023 - mrueckert@suse.de
+
+- Update to version 2.8.5+git0.aaba8d090:
+  * [RELEASE] Released version 2.8.5
+  * BUG/MEDIUM: proxy: always initialize the default settings after init
+  * BUG/MINOR: lua: Wrong OCSP CID after modifying an SSL certficate (LUA)
+  * BUG/MINOR: ssl: Wrong OCSP CID after modifying an SSL certficate
+  * MINOR: ssl/cli: Add ha_(warning|alert) msgs to CLI ckch callback
+  * BUG/MINOR: ssl: Double free of OCSP Certificate ID
+  * BUG/MINOR: quic: Packet number spaces too lately initialized
+  * BUG/MINOR: quic: Missing QUIC connection path member initialization
+  * BUG/MINOR: quic: Possible leak of TX packets under heavy load
+  * BUG/MEDIUM: quic: Possible crash during retransmissions and heavy load
+  * BUG/MINOR: cache: Remove incomplete entries from the cache when stream is closed
+  * BUG/MEDIUM: peers: fix partial message decoding
+  * DOC: Clarify the differences between field() and word()
+  * BUG/MINOR: sample: Make the `word` converter compatible with `-m found`
+  * REGTESTS: sample: Test the behavior of consecutive delimiters for the field converter
+  * DOC: config: fix monitor-fail typo
+  * DOC: config: add matrix entry for "max-session-srv-conns"
+  * DOC: config: specify supported sections for "max-session-srv-conns"
+  * BUG/MINOR: cfgparse-listen: fix warning being reported as an alert
+  * BUG/MINOR: config: Stopped parsing upon unmatched environment variables
+  * BUG/MINOR: quic_tp: fix preferred_address decoding
+  * DOC: config: fix missing characters in set-spoe-group action
+  * BUG/MINOR: h3: always reject PUSH_PROMISE
+  * BUG/MINOR: h3: fix TRAILERS encoding
+  * BUG/MEDIUM: master/cli: Properly pin the master CLI on thread 1 / group 1
+  * BUG/MINOR: compression: possible NULL dereferences in comp_prepare_compress_request()
+  * BUG/MINOR: quic: fix CONNECTION_CLOSE_APP encoding
+  * DOC: lua: fix Proxy.get_mode() output
+  * DOC: lua: add sticktable class reference from Proxy.stktable
+  * REGTESTS: connection: disable http_reuse_be_transparent.vtc if !TPROXY
+  * DOC: config: fix timeout check inheritance restrictions
+  * DOC: 51d: updated 51Degrees repo URL for v3.2.10
+  * BUG/MINOR: server: do not leak default-server in defaults sections
+  * BUG/MINOR: quic: Possible RX packet memory leak under heavy load
+  * BUG/MEDIUM: quic: Possible crash for connections to be killed
+  * BUG/MINOR: sock: mark abns sockets as non-suspendable and always unbind them
+  * BUG/MINOR: startup: set GTUNE_SOCKET_TRANSFER correctly
+  * REGTESTS: http: add a test to validate chunked responses delivery
+  * BUG/MINOR: proxy/stktable: missing frees on proxy cleanup
+  * MINOR: stktable: add stktable_deinit function
+  * BUG/MINOR: stream/cli: report correct stream age in "show sess"
+  * BUG/MEDIUM: mux-fcgi: fail earlier on malloc in takeover()
+  * BUG/MEDIUM: mux-h1: fail earlier on malloc in takeover()
+  * BUG/MEDIUM: mux-h2: fail earlier on malloc in takeover()
+  * BUG/MAJOR: quic: complete thread migration before tcp-rules
+
+-------------------------------------------------------------------
 Fri Nov 24 11:31:13 UTC 2023 - mrueckert@suse.de
 
 - Update to version 2.8.4+git0.a4ebf9d3b:
@@ -192,7 +276,7 @@ Wed Aug 30 09:04:25 UTC 2023 - Peter Varkoly <varkoly@suse.com>
 
 - Apply upstream patch for the ppc64le issue:
   Add patch:
-  0001-IMPORT-xxhash-update-xxHash-to-version-0.8.2.patch 
+  0001-IMPORT-xxhash-update-xxHash-to-version-0.8.2.patch
   Remove patch:
   fix-invalid-parameter-combination-for-AltiVec-intrinsic-__builtin_vec_ld.patch
 
@@ -1002,7 +1086,7 @@ Thu Dec 01 15:25:38 UTC 2022 - mrueckert@suse.de
 -------------------------------------------------------------------
 Tue Nov 22 13:13:45 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
-- reenable the pcre jit after the last change 
+- reenable the pcre jit after the last change
 
 -------------------------------------------------------------------
 Fri Oct 14 11:20:34 UTC 2022 - Stephan Kulow <coolo@suse.com>
@@ -2207,7 +2291,7 @@ Fri May 14 08:31:04 UTC 2021 - mrueckert@suse.de
 
 - Update to version 2.4.0+git0.6cbbecf09:
   https://www.haproxy.com/blog/announcing-haproxy-2-4/
-  
+
   for all the details see /usr/share/doc/packages/haproxy/CHANGELOG
 - refreshed patches to apply cleanly again
   haproxy-1.6.0-makefile_lib.patch
@@ -2769,7 +2853,7 @@ Sat Oct 24 01:18:29 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 -------------------------------------------------------------------
 Fri Oct  2 14:38:51 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
-- use parallel build 
+- use parallel build
 
 -------------------------------------------------------------------
 Fri Oct 02 14:37:00 UTC 2020 - mrueckert@suse.de
@@ -4444,7 +4528,7 @@ Sun Mar  4 08:36:21 UTC 2018 - jengelh@inai.de
 -------------------------------------------------------------------
 Fri Mar  2 16:37:25 UTC 2018 - kgronlund@suse.com
 
-- Ensure haproxy home directory is not world readable (bsc#1077716) 
+- Ensure haproxy home directory is not world readable (bsc#1077716)
 
 -------------------------------------------------------------------
 Thu Feb 08 13:15:17 UTC 2018 - kgronlund@suse.com
@@ -4503,7 +4587,7 @@ Thu Feb 08 13:15:17 UTC 2018 - kgronlund@suse.com
 -------------------------------------------------------------------
 Thu Feb  8 07:21:58 UTC 2018 - kgronlund@suse.com
 
-- Add dependency on apparmor-profiles (bsc#1079985) 
+- Add dependency on apparmor-profiles (bsc#1079985)
 
 -------------------------------------------------------------------
 Sun Dec 31 02:26:13 UTC 2017 - mrueckert@suse.de
@@ -4630,7 +4714,7 @@ Mon Dec 04 10:33:40 UTC 2017 - kgronlund@suse.com
 -------------------------------------------------------------------
 Tue Nov 28 13:54:07 UTC 2017 - kgronlund@suse.com
 
-- License is now GPL-3.0+ and LGPL-2.1+ 
+- License is now GPL-3.0+ and LGPL-2.1+
 
 -------------------------------------------------------------------
 Mon Nov 27 13:40:32 UTC 2017 - mrueckert@suse.de
@@ -5837,7 +5921,7 @@ Wed Nov 26 11:50:42 UTC 2014 - mrueckert@suse.de
   - 0003-BUG-MEDIUM-ssl-force-a-full-GC-in-case-of-memory-sho.patch
   - 0004-BUG-MEDIUM-checks-fix-conflicts-between-agent-checks.patch
   - 0005-BUG-MINOR-config-don-t-inherit-the-default-balance-a.patch
-  - 0006-BUG-MAJOR-frontend-initialize-capture-pointers-earli.patch 
+  - 0006-BUG-MAJOR-frontend-initialize-capture-pointers-earli.patch
 
 -------------------------------------------------------------------
 Thu Nov 20 06:56:23 UTC 2014 - kgronlund@suse.com
@@ -5855,7 +5939,7 @@ Thu Nov 20 06:56:23 UTC 2014 - kgronlund@suse.com
   - 0003-BUG-MEDIUM-ssl-force-a-full-GC-in-case-of-memory-sho.patch
   - 0004-BUG-MEDIUM-checks-fix-conflicts-between-agent-checks.patch
   - 0005-BUG-MINOR-config-don-t-inherit-the-default-balance-a.patch
-  - 0006-BUG-MAJOR-frontend-initialize-capture-pointers-earli.patch 
+  - 0006-BUG-MAJOR-frontend-initialize-capture-pointers-earli.patch
 
 -------------------------------------------------------------------
 Sun Nov 09 21:52:00 UTC 2014 - Led <ledest@gmail.com>
@@ -5946,7 +6030,7 @@ Thu Oct  9 14:14:35 UTC 2014 - kgronlund@suse.com
 
 - BUG/MEDIUM: systemd: set KillMode to 'mixed'
 - Add patch:
-  - 0001-BUG-MEDIUM-systemd-set-KillMode-to-mixed.patch 
+  - 0001-BUG-MEDIUM-systemd-set-KillMode-to-mixed.patch
 
 -------------------------------------------------------------------
 Wed Oct  8 12:53:41 UTC 2014 - kgronlund@suse.com
@@ -5994,7 +6078,7 @@ Mon Oct  6 09:09:58 UTC 2014 - kgronlund@suse.com
   - 0018-BUG-MEDIUM-check-rule-less-tcp-check-must-detect-con.patch
   - 0019-BUG-MINOR-tcp-check-report-the-correct-failed-step-i.patch
   - 0020-BUG-MINOR-config-don-t-propagate-process-binding-for.patch
- 
+
 -------------------------------------------------------------------
 Thu Sep 25 16:10:08 UTC 2014 - kgronlund@suse.com
 
@@ -6230,12 +6314,12 @@ Tue Jun 24 12:23:55 UTC 2014 - mrueckert@suse.de
 -------------------------------------------------------------------
 Tue Jun 24 09:51:25 UTC 2014 - kgronlund@suse.com
 
-- Install vim file to a more appropriate location 
+- Install vim file to a more appropriate location
 
 -------------------------------------------------------------------
 Mon Jun 23 09:19:04 UTC 2014 - kgronlund@suse.com
 
-- added pre macro for systemd service file 
+- added pre macro for systemd service file
 
 -------------------------------------------------------------------
 Mon Jun 23 08:28:06 UTC 2014 - kgronlund@suse.com

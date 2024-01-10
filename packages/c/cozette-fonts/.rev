@@ -55,4 +55,24 @@
     <comment></comment>
     <requestid>1099844</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e0812ea9590dd022bad8394388b7b00d</srcmd5>
+    <version>1.23.1</version>
+    <time>1704281201</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove _service file
+- Remove otf font
+- Add README.md and CHANGELOG.md as sources.
+- Update to version 1.23.1:
+  * v.1.23.1 Emoji bugfix, new images
+  * v.1.23.0: the Uiua update.
+  * v.1.22.2 More math symbols
+  * docs: Add FreeBSD pkg
+  * v.1.22.1 Caron fixes
+  * v.1.22.0 the zodiac update
+  * v.1.21.0-woff - Fix OS/2 tables, add woff/woff2 export
+  * v.1.21.0 The BQN update
+  * Added BQN glyphs + some miscellaneous glyphs</comment>
+    <requestid>1136208</requestid>
+  </revision>
 </revisionlist>

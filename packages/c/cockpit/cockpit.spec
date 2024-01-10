@@ -34,6 +34,10 @@
 %define rhel %{centos}
 %endif
 
+%if 0%{?suse_version}
+%define enable_old_bridge 1
+%endif
+
 %define _hardened_build 1
 
 %define __lib lib
@@ -50,12 +54,13 @@ Summary:        Web Console for Linux servers
 License:        LGPL-2.1-or-later
 URL:            https://cockpit-project.org/
 
-Version:        300.1
+Version:        307
 Release:        0
 Source0:        cockpit-%{version}.tar
 Source1:        cockpit.pam
 Source2:        cockpit-rpmlintrc
 Source3:        cockpit-suse-theme.tar
+Source10:       vendor.tar.gz
 Source99:       README.packaging
 Source98:       package-lock.json
 Source97:       node_modules.spec.inc
@@ -113,6 +118,14 @@ Patch104:       selinux_libdir.patch
 %define disallow_root 1
 %endif
 
+# pcp stopped building on ix86
+%define build_pcp 1
+%if 0%{?fedora} >= 40 || 0%{?rhel} >= 10 || 0%{?suse_version} > 1500
+%ifarch %ix86
+%define build_pcp 0
+%endif
+%endif
+
 # Ship custom SELinux policy (but not for cockpit-appstream)
 %if 0%{?rhel} >= 9 || 0%{?fedora} || 0%{?suse_version} >= 1600 || 0%{?is_smo}
 %if "%{name}" == "cockpit"
@@ -131,6 +144,7 @@ BuildRequires: pam-devel
 BuildRequires: autoconf automake
 BuildRequires: make
 BuildRequires: /usr/bin/python3
+BuildRequires: python3-devel
 %if ( 0%{?rhel} && 0%{?rhel} <= 8 ) || 0%{?suse_version} <= 1500
 # RHEL 8's gettext does not yet have metainfo.its
 BuildRequires: gettext >= 0.19.7
@@ -159,17 +173,21 @@ BuildRequires: glib2-devel >= 2.50.0
 BuildRequires: pkgconfig(libsystemd) >= 235
 %if 0%{?suse_version}
 BuildRequires: distribution-release
+%if %{build_pcp}
 BuildRequires: libpcp-devel
 BuildRequires: pcp-devel
 BuildRequires: libpcp3
 BuildRequires: libpcp_import1
+%endif
 BuildRequires: openssh
 BuildRequires: distribution-logos
 BuildRequires: wallpaper-branding
 # needed for /var/lib/pcp directory ownership
 BuildRequires: pcp
 %else
+%if %{build_pcp}
 BuildRequires: pcp-libs-devel
+%endif
 BuildRequires: openssh-clients
 BuildRequires: docbook-style-xsl
 %endif
@@ -212,10 +230,10 @@ Suggests: cockpit-selinux
 Requires: subscription-manager-cockpit
 %endif
 
-%if %{cockpit_enable_python}
+%if 0%{?enable_old_bridge} == 0
 BuildRequires:  python3-devel
 BuildRequires:  python3-pip
-%if 0%{?rhel} == 0
+%if 0%{?rhel} == 0 && 0%{?suse_version} == 0
 # All of these are only required for running pytest (which we only do on Fedora)
 BuildRequires:  procps-ng
 BuildRequires:  pyproject-rpm-macros
@@ -252,6 +270,7 @@ cp %SOURCE1 tools/cockpit.pam
 #
 rm -rf node_modules package-lock.json
 local-npm-registry %{_sourcedir} install --also=dev --legacy-peer-deps
+cd vendor; tar zxfO %SOURCE10 | tar xvi; cd ..
 
 %build
 find node_modules -name \*.node -print -delete
@@ -270,12 +289,16 @@ autoreconf -fvi -I tools
     --docdir=%_defaultdocdir/%{name} \
 %endif
     --with-pamdir='%{pamdir}' \
-%if %{cockpit_enable_python}
-    --enable-pybridge \
+%if 0%{?enable_old_bridge}
+    --enable-old-bridge \
 %endif
 %if 0%{?build_basic} == 0
     --disable-ssh \
 %endif
+%if %{build_pcp} == 0
+    --disable-pcp \
+%endif
+
 
 %if 0%{?with_selinux}
 make -f /usr/share/selinux/devel/Makefile cockpit.pp
@@ -287,7 +310,7 @@ bzip2 -9 cockpit.pp
 %check
 make -j$(nproc) check
 
-%if %{cockpit_enable_python} && 0%{?rhel} == 0
+%if 0%{?enable_old_bridge} == 0 && 0%{?rhel} == 0 && 0%{?suse_version} == 0
 %tox
 %endif
 
@@ -329,12 +352,16 @@ echo '%dir %{_datadir}/cockpit/base1' >> base.list
 find %{buildroot}%{_datadir}/cockpit/base1 -type f -o -type l >> base.list
 echo '%{_sysconfdir}/cockpit/machines.d' >> base.list
 echo %{buildroot}%{_datadir}/polkit-1/actions/org.cockpit-project.cockpit-bridge.policy >> base.list
+%if 0%{?enable_old_bridge} && 0%{?build_basic}
 echo '%dir %{_datadir}/cockpit/ssh' >> base.list
 find %{buildroot}%{_datadir}/cockpit/ssh -type f >> base.list
+%endif
 echo '%{_libexecdir}/cockpit-ssh' >> base.list
 
+%if %{build_pcp}
 echo '%dir %{_datadir}/cockpit/pcp' > pcp.list
 find %{buildroot}%{_datadir}/cockpit/pcp -type f >> pcp.list
+%endif
 
 echo '%dir %{_datadir}/cockpit/shell' >> system.list
 find %{buildroot}%{_datadir}/cockpit/shell -type f >> system.list
@@ -378,7 +405,7 @@ find %{buildroot}%{_datadir}/cockpit/static -type f >> static.list
 
 # when not building basic packages, remove their files
 %if 0%{?build_basic} == 0
-for pkg in base1 branding motd kdump networkmanager selinux shell sosreport ssh static systemd users metrics; do
+for pkg in base1 branding motd kdump networkmanager selinux shell sosreport static systemd users metrics; do
     rm -r %{buildroot}/%{_datadir}/cockpit/$pkg
     rm -f %{buildroot}/%{_datadir}/metainfo/org.cockpit-project.cockpit-${pkg}.metainfo.xml
 done
@@ -387,7 +414,7 @@ for data in doc man pixmaps polkit-1; do
 done
 rm -r %{buildroot}/%{_prefix}/%{__lib}/tmpfiles.d
 find %{buildroot}/%{_unitdir}/ -type f ! -name 'cockpit-session*' -delete
-for libexec in cockpit-askpass cockpit-beiboot cockpit-session cockpit-ws cockpit-tls cockpit-wsinstance-factory cockpit-client cockpit-client.ui cockpit-desktop cockpit-certificate-helper cockpit-certificate-ensure; do
+for libexec in cockpit-askpass cockpit-session cockpit-ws cockpit-tls cockpit-wsinstance-factory cockpit-client cockpit-client.ui cockpit-desktop cockpit-certificate-helper cockpit-certificate-ensure; do
     rm -f %{buildroot}/%{_libexecdir}/$libexec
 done
 rm -r %{buildroot}/%{_sysconfdir}/pam.d %{buildroot}/%{_sysconfdir}/motd.d %{buildroot}/%{_sysconfdir}/issue.d
@@ -500,9 +527,8 @@ system on behalf of the web based user interface.
 %doc %{_mandir}/man1/cockpit-bridge.1.gz
 %{_bindir}/cockpit-bridge
 %{_libexecdir}/cockpit-askpass
-%if %{cockpit_enable_python}
+%if 0%{?enable_old_bridge} == 0
 %{python3_sitelib}/%{name}*
-%{_libexecdir}/cockpit-beiboot
 %endif
 
 %package doc
@@ -835,7 +861,6 @@ BuildArch: noarch
 The Cockpit component for managing storage.  This package uses udisks.
 
 %files -n cockpit-storaged -f storaged.list
-%dir %{_datadir}/cockpit/storaged/images
 %{_datadir}/metainfo/org.cockpit-project.cockpit-storaged.metainfo.xml
 
 %if 0%{?build_tests}
@@ -867,6 +892,7 @@ This package contains files used to develop cockpit modules
 %files devel
 %{_datadir}/cockpit/devel
 
+%if %{build_pcp}
 %package -n cockpit-pcp
 Summary: Cockpit PCP integration
 Requires: cockpit-bridge >= %{required_base}
@@ -881,6 +907,8 @@ Cockpit support for reading PCP metrics and loading PCP archives.
 
 %post -n cockpit-pcp
 systemctl reload-or-try-restart pmlogger
+
+%endif
 
 %package -n cockpit-packagekit
 Summary: Cockpit user interface for packages

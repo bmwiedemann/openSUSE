@@ -1,7 +1,7 @@
 #
 # spec file for package geekodoc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %bcond_without  tests
 #
 Name:           geekodoc
-Version:        2.2.2
+Version:        2.3.1
 Release:        0
 Summary:        DocBook based RNG Schema for SUSE Documentation
 License:        GPL-3.0-only
@@ -32,7 +32,7 @@ Source:         %{name}-%{version}.tar.bz2
 #               --output=/tmp/novdoc-20190201.tar.bz2 \
 #               --format=tar HEAD novdoc/ catalog.d/
 Source10:       novdoc-20190201.tar.bz2
-BuildRequires:  docbook_5 >= 5.1
+BuildRequires:  docbook_5 >= 5.2
 BuildRequires:  fdupes
 BuildRequires:  jing
 BuildRequires:  libxml2-tools
@@ -81,8 +81,8 @@ touch geekodoc/rng/geekodoc5.rnc
 %make_build -C novdoc/rng
 
 %install
-docbookxi_rnc="$(xmlcatalog /etc/xml/catalog http://www.docbook.org/xml/5.1/rng/docbookxi.rnc)"
-docbookxi_rng="$(xmlcatalog /etc/xml/catalog http://www.docbook.org/xml/5.1/rng/docbookxi.rng)"
+docbookxi_rnc="$(xmlcatalog /etc/xml/catalog http://www.docbook.org/xml/5.2/rng/docbookxi.rnc)"
+docbookxi_rng="$(xmlcatalog /etc/xml/catalog http://www.docbook.org/xml/5.2/rng/docbookxi.rng)"
 
 install -d %{buildroot}%{_datadir}/xml/{geekodoc/rng/{1_5.1,2_5.2},novdoc/rng} \
            %{buildroot}%{_sysconfdir}/xml/catalog.d

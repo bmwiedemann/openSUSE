@@ -79,4 +79,12 @@
     <comment>- Add flint3.diff to have the build succeed with flint-3.</comment>
     <requestid>1119392</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c78026633cf7b57c4841c542f0f3744f</srcmd5>
+    <version>2.0.0</version>
+    <time>1703527539</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 2.0.0</comment>
+    <requestid>1134931</requestid>
+  </revision>
 </revisionlist>

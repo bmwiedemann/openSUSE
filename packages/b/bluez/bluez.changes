@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jan  3 17:35:25 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- add fix-link-key-address-type.patch - thanks to
+  pallaswept for identifying the right patch for the pairing
+  regression
+
+-------------------------------------------------------------------
+Wed Dec 20 23:28:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.71:
+  * Fix issue with not registering CSIS service.
+  * Fix issue with registering pairing callbacks.
+  * Fix issue with corruption during discovery filter parsing.
+
+- drop CVE-2023-45866.patch,
+  Fix-.device_probe-failing-if-SDP-record-is-not.patch: upstream
+- update bluez-disable-broken-tests.diff: disable failing vcp test
+
+-------------------------------------------------------------------
 Wed Dec 13 09:34:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add CVE-2023-45866.patch (CVE-2023-45866, bsc#1217877)

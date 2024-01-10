@@ -1,7 +1,7 @@
 #
 # spec file for package chezmoi
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           chezmoi
-Version:        2.42.2
+Version:        2.43.0
 Release:        0
 Summary:        A multi-host manager for dotfiles
 License:        MIT

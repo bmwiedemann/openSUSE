@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20231214" schemaversion="4.1">
+<image name="OBS__MicroOS___20240109" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20231214</productvar>
+      <productvar name="VERSION">20240109</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20231214,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20240109,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20231214/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20240109/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -90,10 +90,8 @@
       <repopackage name="appmenu-gtk-module-common"/>
       <repopackage name="appmenu-gtk2-module"/>
       <repopackage name="appmenu-gtk3-module"/>
-      <repopackage name="AppStream"/>
       <repopackage name="appstream-glib"/>
       <repopackage name="appstream-glib-lang"/>
-      <repopackage name="AppStream-lang"/>
       <repopackage name="argyllcms"/>
       <repopackage name="arphic-ukai-fonts"/>
       <repopackage name="arphic-uming-fonts"/>
@@ -138,7 +136,7 @@
       <repopackage name="bluez-qt-imports"/>
       <repopackage name="bluez-qt-udev"/>
       <repopackage name="bolt"/>
-      <repopackage name="boost-license1_83_0"/>
+      <repopackage name="boost-license1_84_0"/>
       <repopackage name="branding-openSUSE"/>
       <repopackage name="breeze"/>
       <repopackage name="breeze5-cursors"/>
@@ -725,6 +723,7 @@
       <repopackage name="kernel-firmware-amdgpu"/>
       <repopackage name="kernel-firmware-ath10k"/>
       <repopackage name="kernel-firmware-ath11k"/>
+      <repopackage name="kernel-firmware-ath12k"/>
       <repopackage name="kernel-firmware-atheros"/>
       <repopackage name="kernel-firmware-bluetooth"/>
       <repopackage name="kernel-firmware-bnx2"/>
@@ -861,8 +860,8 @@
       <repopackage name="libappmenu-gtk2-parser0"/>
       <repopackage name="libappmenu-gtk3-parser0"/>
       <repopackage name="libappstream-glib8"/>
-      <repopackage name="libappstream4"/>
-      <repopackage name="libAppStreamQt2"/>
+      <repopackage name="libappstream5"/>
+      <repopackage name="libAppStreamQt5-3"/>
       <repopackage name="libarchive13"/>
       <repopackage name="libargon2-1"/>
       <repopackage name="libasm1"/>
@@ -912,10 +911,10 @@
       <repopackage name="libblogger2"/>
       <repopackage name="libbluetooth3"/>
       <repopackage name="libbluray2"/>
-      <repopackage name="libboost_filesystem1_83_0"/>
-      <repopackage name="libboost_iostreams1_83_0"/>
-      <repopackage name="libboost_locale1_83_0"/>
-      <repopackage name="libboost_thread1_83_0"/>
+      <repopackage name="libboost_filesystem1_84_0"/>
+      <repopackage name="libboost_iostreams1_84_0"/>
+      <repopackage name="libboost_locale1_84_0"/>
+      <repopackage name="libboost_thread1_84_0"/>
       <repopackage name="libbox2d2"/>
       <repopackage name="libbpf1"/>
       <repopackage name="libbreezecommon5-5"/>
@@ -1119,7 +1118,7 @@
       <repopackage name="libgjs0"/>
       <repopackage name="libglib-2_0-0"/>
       <repopackage name="libglibmm-2_4-1"/>
-      <repopackage name="libglslang13"/>
+      <repopackage name="libglslang14"/>
       <repopackage name="libGLU1"/>
       <repopackage name="libglvnd"/>
       <repopackage name="libgme0"/>
@@ -1807,7 +1806,7 @@
       <repopackage name="libspandsp3"/>
       <repopackage name="libspeechd2"/>
       <repopackage name="libspeex1"/>
-      <repopackage name="libSPIRV-Tools-2023_5_rc1"/>
+      <repopackage name="libSPIRV-Tools-2023_6_rc1"/>
       <repopackage name="libsqlite3-0"/>
       <repopackage name="libsratom-0-0"/>
       <repopackage name="libsrt1_5"/>
@@ -1892,7 +1891,7 @@
       <repopackage name="libvidstab1_1"/>
       <repopackage name="libvisio-0_1-1"/>
       <repopackage name="libvisual-0_4-0"/>
-      <repopackage name="libvmaf1"/>
+      <repopackage name="libvmaf3"/>
       <repopackage name="libvmtools0"/>
       <repopackage name="libvo-amrwbenc0"/>
       <repopackage name="libvorbis0"/>
@@ -2263,6 +2262,7 @@
       <repopackage name="patterns-yast-yast2_basis"/>
       <repopackage name="patterns-yast-yast2_desktop"/>
       <repopackage name="pciutils"/>
+      <repopackage name="pcr-oracle"/>
       <repopackage name="pcsc-lite"/>
       <repopackage name="pentaho-libxml"/>
       <repopackage name="pentaho-reporting-flow-engine"/>
@@ -2335,7 +2335,7 @@
       <repopackage name="pkgconf"/>
       <repopackage name="pkgconf-m4"/>
       <repopackage name="pkgconf-pkg-config"/>
-      <repopackage name="plasma-branding-MicroOS"/>
+      <repopackage name="plasma-branding-Kalpa"/>
       <repopackage name="plasma-browser-integration"/>
       <repopackage name="plasma-browser-integration-lang"/>
       <repopackage name="plasma-framework"/>

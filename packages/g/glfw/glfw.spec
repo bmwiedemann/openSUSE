@@ -24,7 +24,7 @@
 %endif
 %define sover  3
 Name:           glfw%{flavor}
-Version:        3.3.8
+Version:        3.3.9
 Release:        0
 Summary:        Framework for OpenGL application development
 License:        Zlib

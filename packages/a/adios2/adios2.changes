@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan  1 02:40:37 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix homepage URL.
+- Remove "-ffat-lto-objects" option, no static libs are shipped.
+- Remove unused/ineffective Requires from src package.
+- Add MPI flavor Requires to MPI shared libs package.
+- Spec file cleanup
+
+-------------------------------------------------------------------
 Wed Nov 02 00:00:00 UTC 2023 - Vicente Adolfo Bolea Sanchez <vicente.bolea@gmail.com> - 2.9.2
 
 - Added ADIOS2 v2.9.2:

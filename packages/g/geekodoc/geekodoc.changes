@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jan  9 12:35:53 UTC 2024 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.3.1
+
+- Release 2.3.1
+  Add test case for width with em unit
+  Regenerate archive
+
+-------------------------------------------------------------------
+Sat Dec  2 07:28:21 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.3.0
+
+- Release 2.3.0
+  - Disable unnecessary DocBook 5.2 elements (#116, #110)
+  - Add para between list title and following list element (#117, #105)
+  - Remove entityref from {audio,image,text,video}data (#117)
+  - Validate with attribute (float + unit) (#119, #103)
+
+-------------------------------------------------------------------
 Thu Jun 15 11:30:44 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire python3-importlib_metadata: mandatory when building

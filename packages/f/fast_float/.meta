@@ -1,0 +1,6 @@
+<package name="fast_float" project="openSUSE:Factory">
+  <title>fast_float number parsing library</title>
+  <description>The fast_float library provides fast header-only implementations for the C++ from_chars functions for float and double types as well as integer types.</description>
+  <devel project="science" package="fast_float"/>
+  <url>https://github.com/fastfloat/fast_float</url>
+</package>

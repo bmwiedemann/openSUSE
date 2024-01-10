@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Dec 19 02:11:18 UTC 2023 - william.brown@suse.com
+
+- Update to version 20231219:
+  * Assigned RUSTSEC-2023-0074 to zerocopy (#1839)
+  * zerocopy: Some Ref methods are unsound with some type params (#1837)
+  * Update CVSS score of RUSTSEC-2023-0071 (#1838)
+  * Assigned RUSTSEC-2023-0073 to candid (#1835)
+  * Add advisory for candid library decoding DoS vulnerability (#1834)
+  * RUSTSEC-2023-0071: add CVE-2023-49092 as alias (#1830)
+  * RUSTSEC-2023-0071.md: use '###' section headers (#1829)
+  * RUSTSEC-2023-0071: add CVSS, aliases, and new wording (#1828)
+  * Assigned RUSTSEC-2023-0072 to openssl (#1827)
+  * `openssl` `X509StoreRef::objects` is unsound (#1824)
+
+-------------------------------------------------------------------
 Fri Oct 27 03:02:30 UTC 2023 - william.brown@suse.com
 
 - Update to version 20231027:

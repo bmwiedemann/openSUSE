@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan  3 09:54:01 UTC 2024 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Set ExclusiveArch conditionally depending on the distro
+- Remove SLE15 SP4 from the distro check (end of general support)
+
+-------------------------------------------------------------------
 Tue Nov 21 17:52:42 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Update to version 1.58.0

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 15 08:52:06 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update appstream build requirement for compatibility with 1.0.0
+  (boo#1217047)
+- Remove obsolete version checks
+
+-------------------------------------------------------------------
 Wed Dec  6 11:45:59 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.10

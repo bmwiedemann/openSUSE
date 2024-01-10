@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan  1 00:46:54 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 0.21.2:
+  * Bugfix release, for details see
+    https://github.com/FreeCAD/FreeCAD/releases/tag/0.21.2
+
+-------------------------------------------------------------------
+Sun Dec 31 01:05:56 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build with VTK 9.3.0, add fix_vtk_9_3_compat.patch
+
+-------------------------------------------------------------------
 Mon Sep 11 10:52:51 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 0.21.1:

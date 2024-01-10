@@ -1,7 +1,7 @@
 #
 # spec file for package dropwatch
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ Group:          Productivity/Networking/Diagnostic
 URL:            https://github.com/nhorman/dropwatch
 Source:         https://github.com/nhorman/dropwatch/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch1:         old-readline.diff
+Patch2:         https://github.com/nhorman/dropwatch/pull/83.patch
+Patch3:         bfd-link-statically.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  binutils-devel
@@ -43,11 +45,12 @@ are dropped by the kernel
 %if 0%{?suse_version} <= 1590
 %patch1 -p1
 %endif
+%patch2 -p1
+%patch3 -p1
 ./autogen.sh
 %configure
 
 %build
-export CFLAGS="%{optflags}"
 %make_build
 
 %install

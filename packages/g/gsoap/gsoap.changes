@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan  2 13:24:51 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.8.132
+  * Added a missing ``WITH_COMPAT`` to the C++ DOM element
+    declarations.
+
+-------------------------------------------------------------------
 Wed Oct  4 07:54:57 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.8.131

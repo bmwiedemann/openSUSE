@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,8 +46,8 @@ Source2:        baselibs.conf
 Source3:        https://gnupg.org/signature_key.asc#/gpgme.keyring
 # used to have a fixed timestamp
 Source99:       gpgme.changes
-# PATCH-FIX-UPSTREAM support python 3.10  -- https://dev.gnupg.org/D545
-Patch1:         gpgme-D545-python310.patch
+# PATCH-FIX-UPSTREAM obsolete distutlils  -- https://dev.gnupg.org/D545
+Patch1:         gpgme-D545-obsolete-distutils.patch
 # PATCH-FIX-OPENSUSE gpgme-suse-nobetasuffix.patch code@bnavigator.de -- remove "-unknown" betasuffix boo#1205197
 Patch2:         gpgme-suse-nobetasuffix.patch
 BuildRequires:  autoconf
@@ -60,6 +60,9 @@ BuildRequires:  pkgconfig
 BuildRequires:  swig
 %if %{with python3}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools >= 62.4}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 %endif
 %if %{with qt}
@@ -344,7 +347,7 @@ GPGME_DEBUG=2:mygpgme.log %make_build check skip=%{?qt_skip:%{qt_skip}} || cat $
 %files %{python_files gpg}
 %license COPYING COPYING.LESSER LICENSES
 %{python_sitearch}/gpg
-%{python_sitearch}/gpg-%{version}-py%{python_version}.egg-info
+%{python_sitearch}/gpg-%{version}.dist-info
 %endif
 
 %if %{with qt}

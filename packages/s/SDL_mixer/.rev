@@ -248,4 +248,12 @@ silenced some RPMlint warnings (forwarded request 156238 from Mailaender)</comme
     <comment></comment>
     <requestid>280324</requestid>
   </revision>
+  <revision rev="36" vrev="9">
+    <srcmd5>bb6ecd40a54b98faf27bb717098fbd85</srcmd5>
+    <version>1.2.12</version>
+    <time>1703527529</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1134917</requestid>
+  </revision>
 </revisionlist>

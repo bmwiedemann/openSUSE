@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan  4 13:27:31 MST 2024 - carnold@suse.com
+
+- Update to version 1.52.0 (jsc#PED-6305)
+  * mltools/libosinfo-c.c: Fix off-by-one error
+  * Documentation fixes
+  * Fix bugs-in-changelog.sh: Use grep -E instead of egrep
+
+-------------------------------------------------------------------
 Mon Dec 11 12:45:24 MST 2023 - carnold@suse.com
 
 - Update to version 1.51.6

@@ -313,4 +313,12 @@
     <comment>- Add 0001-glusterfs-fix-heap-buffer-overflow-on-startup.patch</comment>
     <requestid>1098829</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>5d8f0b7193ed8a3559a90411f7edcf88</srcmd5>
+    <version>11.1</version>
+    <time>1703281261</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1134601</requestid>
+  </revision>
 </revisionlist>

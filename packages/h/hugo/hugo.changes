@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jan 05 16:10:21 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.121.2:
+  * build(deps): bump golang.org/x/crypto from 0.16.0 to 0.17.0
+  * tpl/math: Add math.Rand template function
+  * Adjust site benchmark
+  * Simplify baseline benchmark
+  * resources/images: Create AutoOrient image filter
+  * all: Remove unused code
+
+-------------------------------------------------------------------
 Sun Dec 10 14:55:05 UTC 2023 - rrahl0@proton.me
 
 - Update to version 0.121.1:

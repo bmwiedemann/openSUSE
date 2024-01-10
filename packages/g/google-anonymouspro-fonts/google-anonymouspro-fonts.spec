@@ -1,7 +1,7 @@
 #
 # spec file for package google-anonymouspro-fonts
 #
-# Copyright (c) 2012 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,11 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-%define fontname  anonymouspro
 
 Name:           google-anonymouspro-fonts
 Version:        1.002
@@ -24,13 +22,13 @@ Release:        0
 Summary:        A Free Monospace Font
 License:        OFL-1.1
 Group:          System/X11/Fonts
-Url:            http://www.ms-studio.com/FontSales/anonymouspro.html
-Source0:        %{fontname}.tar.bz2
+URL:            https://www.marksimonson.com/fonts/view/anonymous-pro
+Source0:        https://www.marksimonson.com/assets/content/fonts/AnonymousPro-1_002.zip
 BuildRequires:  dos2unix
 BuildRequires:  fontpackages-devel
-%reconfigure_fonts_prereq
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  unzip
 BuildArch:      noarch
+%reconfigure_fonts_prereq
 
 %description
 Anonymous Pro is a family of four fixed-width fonts designed especially
@@ -46,7 +44,7 @@ who need them.
 Designer: Mark Simonson
 
 %prep
-%setup -n %{fontname}
+%setup -q -n AnonymousPro-%{version}.001
 chmod 644 *.ttf
 
 %build
@@ -60,7 +58,6 @@ dos2unix OFL.txt
 %reconfigure_fonts_scriptlets
 
 %files
-%defattr(-, root,root)
 %doc README.txt FONTLOG.txt OFL.txt
 %dir %{_ttfontsdir}/
 %{_ttfontsdir}/*

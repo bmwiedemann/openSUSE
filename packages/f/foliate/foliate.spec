@@ -1,7 +1,7 @@
 #
 # spec file for package foliate
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define oname com.github.johnfactotum.Foliate
 Name:           foliate
-Version:        3.0.1
+Version:        3.1.0
 Release:        0
 Summary:        A GTK eBook reader
 License:        GPL-3.0-only

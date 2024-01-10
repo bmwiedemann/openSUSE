@@ -17,7 +17,7 @@
 
 
 Name:           fastfetch
-Version:        2.2.3
+Version:        2.4.0
 Release:        0
 Summary:        Neofetch-like tool written in C
 License:        MIT
@@ -63,10 +63,31 @@ displaying them in a pretty way.  It is written in pure c, with performance and
 customizability in mind. Currently Linux, Android, FreeBSD,
 MacOS and Windows 7+ are supported.
 
+%package        fish-completion
+Summary:        Fish Completion for %{name}
+Group:          System/Shells
+Supplements:    (%{name} and fish)
+Requires:       fish
+BuildArch:      noarch
+
+%description    fish-completion
+Fish command-line completion support for %{name}.
+
+%package        bash-completion
+Summary:        Bash Completion for %{name}
+Group:          System/Shells
+Supplements:    (%{name} and bash-completion)
+Requires:       bash-completion
+BuildArch:      noarch
+
+%description    bash-completion
+Bash command-line completion support for %{name}.
+
 %prep
 %setup -q
 
 sed -i "s|\#\!\/usr\/bin\/env bash||g" completions/bash
+sed -i "s|\#\!\/usr\/bin\/env fish||g" completions/fish
 
 %build
 %cmake
@@ -80,7 +101,17 @@ sed -i "s|\#\!\/usr\/bin\/env bash||g" completions/bash
 %doc README.md CHANGELOG.md
 %{_bindir}/flashfetch
 %{_bindir}/%{name}
+%{_mandir}/man1/%{name}.1%{?ext_man}
 %{_datadir}/%{name}/
-%{_datadir}/bash-completion/
+
+%files bash-completion
+%dir %{_datadir}/bash-completion
+%dir %{_datadir}/bash-completion/completions
+%{_datadir}/bash-completion/completions/fastfetch
+
+%files fish-completion
+%dir %{_datadir}/fish
+%dir %{_datadir}/fish/vendor_completions.d
+%{_datadir}/fish/vendor_completions.d/fastfetch.fish
 
 %changelog

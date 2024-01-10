@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan  6 11:38:48 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.5:
+  * Make SIGHUP checkpoint arp.dat
+  * Fix bug that prevented checkpoint() from being called until
+    after receiving a new arp/rarp packet
+
+-------------------------------------------------------------------
 Sun Oct 15 18:42:22 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.4:

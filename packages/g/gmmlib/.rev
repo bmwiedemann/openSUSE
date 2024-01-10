@@ -261,4 +261,12 @@
   Video (processing) hardware support on Intel GPUs (bsc#1217770)</comment>
     <requestid>1130826</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>8aa317c12be8be719cdc0f491421d346</srcmd5>
+    <version>22.3.16</version>
+    <time>1704558617</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1137245</requestid>
+  </revision>
 </revisionlist>

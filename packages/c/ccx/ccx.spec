@@ -1,7 +1,7 @@
 #
 # spec file for package ccx
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ccx
-Version:        2.20
+Version:        2.21
 Release:        0
 Summary:        An open source finite element package
 License:        BSD-3-Clause AND GPL-2.0-only AND SUSE-Public-Domain
@@ -29,7 +29,6 @@ Source2:        ccx-rpmlintrc
 # PATCH-FIX-OPENSUSE -- pass global optflags
 Patch0:         ccx-2.16-build.patch
 Patch1:         0001-Fixup-spooles-include-dir.patch
-Patch2:         0001-Use-interface-for-cubtri-callback-function.patch
 BuildRequires:  arpack-ng-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-fortran

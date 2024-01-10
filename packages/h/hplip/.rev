@@ -1428,4 +1428,25 @@
 - Update to hplip 3.23.8 (jsc#PED-5846)</comment>
     <requestid>1127274</requestid>
   </revision>
+  <revision rev="152" vrev="1">
+    <srcmd5>39924ec605f8503a3edcc721d25c1559</srcmd5>
+    <version>3.23.12</version>
+    <time>1704380144</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to hplip 3.23.12
+  * del fix-printer-attributes-parsing.patch (merged upstream)
+  * del hppsfilter-booklet-printing-change-insecure-fixed-tm.patch
+    (merged upstream)
+- Added support for new printers:  
+  * HP OfficeJet Pro 9130b series
+  * HP OfficeJet Pro 9120b series
+  * HP OfficeJet Pro 9110b series
+  * HP Color LaserJet Enterprise Flow MFP X58045z
+  * HP Color LaserJet Enterprise Flow MFP X58045zs
+  * HP Color LaserJet Enterprise MFP X58045dn 
+  * HP Color LaserJet Enterprise MFP X58045
+  * HP LaserJet Pro P1106 plus
+  * HP LaserJet Pro P1108 plus (forwarded request 1136612 from mwilck)</comment>
+    <requestid>1136615</requestid>
+  </revision>
 </revisionlist>

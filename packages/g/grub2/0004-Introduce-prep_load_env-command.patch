@@ -27,7 +27,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
 
 --- a/grub-core/Makefile.core.def
 +++ b/grub-core/Makefile.core.def
-@@ -2673,3 +2673,9 @@
+@@ -2679,3 +2679,9 @@
    common = lib/libtasn1_wrap/tests/Test_strings.c;
    common = lib/libtasn1_wrap/wrap_tests.c;
  };
@@ -39,7 +39,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
 +};
 --- /dev/null
 +++ b/grub-core/commands/prep_loadenv.c
-@@ -0,0 +1,230 @@
+@@ -0,0 +1,237 @@
 +#include <grub/dl.h>
 +#include <grub/mm.h>
 +#include <grub/file.h>
@@ -209,6 +209,13 @@ Signed-off-by: Michael Chang <mchang@suse.com>
 +  dev = grub_device_open (devname);
 +  if (!dev)
 +    return grub_errno;
++
++  /* Only needed for disk device */
++  if (!dev->disk)
++    {
++      err = GRUB_ERR_NONE;
++      goto out;
++    }
 +
 +  ret = grub_partition_iterate (dev->disk, part_hook, prep);
 +  if (ret == 1 && *prep)

@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri Dec 29 01:27:57 UTC 2023 - Luna D Dragon <luna.dragon@suse.com>
+
+- Update to version 1.4.0
+  + Deprecate SHA1 and MD5 hashes for sources
+  + Remove all usage of libsoup (bumps GLib requirement to 2.66)
+  + Fix errors in included manifests not being fatal
+  + Fix crash on empty manifests or incorrect JSON type
+  + Various updates to the JSON Schema
+  + Add meson buildsystem;
+  + Set the HTTP Referer header on file/archive Sources
+  + Fix no-autodownload in extensions incorrectly setting autodelete
+  + Reduce verbosity of unzip usage
+  + Ignore $schema properties in manifests
+  + Change git usage to be more forgiving about submodules
+  + Add installed_tests option to meson project
+  + Fix libglnx meson subproject when built from autotools dist
+  + Fix tests not running in parallel under meson
+  + Replace appstream-glib with libappstream
+  + Run tests in parallel respecting number of jobs set
+  + Add missing secret-env and secret-opts keys to the JSON schema
+  + Improve parsing of git submodules
+  + Meson build fixes
+  + Add rename-mime-file and rename-mime-icons properties
+  + Re-implement support for data: URIs
+  + Set download speed timeout for HTTP downloads
+  + Enabled compressed HTTP downloads
+  + Use meson setup with meson buildsystem to avoid warning
+  + Fix libappstream not handling ID's ending with .desktop
+  + Fix ostree deployment on 64-bit inode filesystems
+- remove 0001-builder-Fix-silent-truncation-of-gt-32-bit-inodes.patch
+- Add patch fusermount3.diff to enforce usage of fuse v3
+- Switch to meson build system
+- remove libsoup as a dependency
+- bump min glib version
+- Add dependency on Appstream & Appstream-compose 
+
+-------------------------------------------------------------------
 Mon Aug 28 17:21:44 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch from upstream to fix corrupted files when using a large

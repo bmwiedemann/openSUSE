@@ -17,10 +17,12 @@ unsorted:
   - AMF-docs 
   - ART 
   - AppCSXCAD 
+  - AppStream 
   - AppStream-compose 
   - AppStream-compose-devel 
   - AppStream-devel 
   - AppStream-doc 
+  - AppStream-lang 
   - AusweisApp 
   - AusweisApp2 
   - Bear 
@@ -36,7 +38,6 @@ unsorted:
   - CharLS-devel 
   - Coin-devel 
   - Coin4-devel 
-  - Coin4-devel-doc 
   - ColPack-devel 
   - ColPack-devel-32bit 
   - ColorFull-devel 
@@ -291,6 +292,7 @@ unsorted:
   - SDL2_sound-devel 
   - SDL2_ttf-devel 
   - SDL_Pango-devel 
+  - SDL_mixer-devel 
   - SDL_sound-devel 
   - SHERPA-MC-devel 
   - SVT-AV1 
@@ -310,7 +312,6 @@ unsorted:
   - StyLua 
   - SwayNotificationCenter 
   - ThePEG-devel 
-  - ThePEG-libs 
   - TreeMaker 
   - UEFITool 
   - UltimateDailyWallpaper 
@@ -783,6 +784,8 @@ unsorted:
   - appmenu-registrar 
   - appres 
   - appstream-glib-devel 
+  - appstream-qt5-devel 
+  - appstream-qt6-devel 
   - apptainer 
   - appx-util 
   - apr-devel 
@@ -1381,6 +1384,7 @@ unsorted:
   - blender-lang 
   - bless 
   - bless-doc 
+  - blis-devel 
   - bliss 
   - bliss-devel 
   - blitz-devel 
@@ -1453,21 +1457,21 @@ unsorted:
   - boost-gnu-openmpi4-hpc-devel 
   - boost-gnu-openmpi4-hpc-python3 
   - boost-jam 
-  - boost1_83_0-doc-html 
-  - boost1_83_0-doc-pdf 
-  - boost1_83_0-jam 
-  - boost1_83_0-quickbook 
-  - boost_1_83_0-gnu-hpc 
-  - boost_1_83_0-gnu-hpc-devel 
-  - boost_1_83_0-gnu-mpich-hpc 
-  - boost_1_83_0-gnu-mpich-hpc-devel 
-  - boost_1_83_0-gnu-mpich-hpc-python3 
-  - boost_1_83_0-gnu-mvapich2-hpc 
-  - boost_1_83_0-gnu-mvapich2-hpc-devel 
-  - boost_1_83_0-gnu-mvapich2-hpc-python3 
-  - boost_1_83_0-gnu-openmpi4-hpc 
-  - boost_1_83_0-gnu-openmpi4-hpc-devel 
-  - boost_1_83_0-gnu-openmpi4-hpc-python3 
+  - boost1_84_0-doc-html 
+  - boost1_84_0-doc-pdf 
+  - boost1_84_0-jam 
+  - boost1_84_0-quickbook 
+  - boost_1_84_0-gnu-hpc 
+  - boost_1_84_0-gnu-hpc-devel 
+  - boost_1_84_0-gnu-mpich-hpc 
+  - boost_1_84_0-gnu-mpich-hpc-devel 
+  - boost_1_84_0-gnu-mpich-hpc-python3 
+  - boost_1_84_0-gnu-mvapich2-hpc 
+  - boost_1_84_0-gnu-mvapich2-hpc-devel 
+  - boost_1_84_0-gnu-mvapich2-hpc-python3 
+  - boost_1_84_0-gnu-openmpi4-hpc 
+  - boost_1_84_0-gnu-openmpi4-hpc-devel 
+  - boost_1_84_0-gnu-openmpi4-hpc-python3 
   - booth 
   - booth-test 
   - bootiso 
@@ -1873,6 +1877,7 @@ unsorted:
   - cargo1.72 
   - cargo1.73 
   - cargo1.74 
+  - cargo1.75 
   - caribou 
   - caribou-common 
   - caribou-devel 
@@ -1883,6 +1888,8 @@ unsorted:
   - carla 
   - carla-devel 
   - carla-vst 
+  - cartridges 
+  - cartridges-lang 
   - casacore 
   - casacore-devel 
   - casacore-openmpi4 
@@ -2137,6 +2144,20 @@ unsorted:
   - clevis-luks 
   - clevis-systemd 
   - clevis-udisks2 
+  - clhep-Cast-devel 
+  - clhep-Evaluator-devel 
+  - clhep-Exceptions-devel 
+  - clhep-GenericFunctions-devel 
+  - clhep-Geometry-devel 
+  - clhep-Matrix-devel 
+  - clhep-Random-devel 
+  - clhep-RandomObjects-devel 
+  - clhep-RefCount-devel 
+  - clhep-Units-devel 
+  - clhep-Utility-devel 
+  - clhep-Vector-devel 
+  - clhep-devel 
+  - clhep-doc 
   - cli11-devel 
   - cli11-doc 
   - clinfo 
@@ -2248,7 +2269,6 @@ unsorted:
   - codespell 
   - cog 
   - cog-devel 
-  - cogctl 
   - cogl-devel 
   - coin-or-Cbc 
   - coin-or-Cbc-devel 
@@ -2422,6 +2442,7 @@ unsorted:
   - cool-retro-term 
   - coolkey 
   - coolkey-devel 
+  - coppwr 
   - coq 
   - coq-devel 
   - coq-doc 
@@ -2832,6 +2853,7 @@ unsorted:
   - dar-doc 
   - dar-lang 
   - dareader-devel 
+  - darkhttpd 
   - darktable 
   - darktable-tools-basecurve 
   - darktable-tools-noise 
@@ -3227,6 +3249,8 @@ unsorted:
   - dpkg-devel 
   - dpkg-lang 
   - dqlite-devel 
+  - draco 
+  - draco-devel 
   - dracut-extra 
   - dracut-fips 
   - dracut-kiwi-lib 
@@ -3412,6 +3436,7 @@ unsorted:
   - efl-examples 
   - efl-lang 
   - efl-testsuite 
+  - efm-langserver 
   - efont-serif-fonts 
   - eglexternalplatform-devel 
   - eiciel 
@@ -3651,7 +3676,6 @@ unsorted:
   - exec-maven-plugin-javadoc 
   - execstack 
   - exempi-tools 
-  - exfat-utils 
   - exfatprogs 
   - exif 
   - exiftool 
@@ -3714,8 +3738,11 @@ unsorted:
   - farstream-data 
   - farstream-devel 
   - fasd 
+  - fast_float-devel 
   - fasterxml-oss-parent 
   - fastfetch 
+  - fastfetch-bash-completion 
+  - fastfetch-fish-completion 
   - fastjar 
   - fastjet-contrib-devel 
   - fastjet-contrib-devel-static 
@@ -3830,12 +3857,9 @@ unsorted:
   - fd-fish-completion 
   - fd-zsh-completion 
   - fde-firstboot 
-  - fde-tools 
-  - fde-tools-bash-completion 
   - fde-tpm-helper-rpm-macros 
   - fdo-client 
   - fdo-client-devel 
-  - featherpad 
   - featherpad-lang 
   - fec-devel 
   - feedbackd 
@@ -4249,7 +4273,6 @@ unsorted:
   - fuse-devel 
   - fuse-devel-static 
   - fuse-doc 
-  - fuse-exfat 
   - fuse-oscfs 
   - fuse2fs 
   - fuse3-devel 
@@ -4311,6 +4334,160 @@ unsorted:
   - gammu-doc 
   - gammu-smsd 
   - ganglia-web 
+  - gap 
+  - gap-4ti2interface 
+  - gap-ace 
+  - gap-aclib 
+  - gap-agt 
+  - gap-alnuth 
+  - gap-anupq 
+  - gap-atlasrep 
+  - gap-autodoc 
+  - gap-automata 
+  - gap-automgrp 
+  - gap-autpgrp 
+  - gap-browse 
+  - gap-cap 
+  - gap-caratinterface 
+  - gap-cddinterface 
+  - gap-circle 
+  - gap-classicpres 
+  - gap-cohomolo 
+  - gap-congruence 
+  - gap-corelg 
+  - gap-crime 
+  - gap-crisp 
+  - gap-crypting 
+  - gap-cryst 
+  - gap-crystcat 
+  - gap-ctbllib 
+  - gap-cubefree 
+  - gap-curlinterface 
+  - gap-cvec 
+  - gap-datastructures 
+  - gap-deepthought 
+  - gap-design 
+  - gap-devel 
+  - gap-difsets 
+  - gap-digraphs 
+  - gap-edim 
+  - gap-example 
+  - gap-examplesforhomalg 
+  - gap-factint 
+  - gap-ferret 
+  - gap-fga 
+  - gap-fining 
+  - gap-float 
+  - gap-format 
+  - gap-forms 
+  - gap-fplsa 
+  - gap-fr 
+  - gap-full 
+  - gap-fwtree 
+  - gap-gapdoc 
+  - gap-gauss 
+  - gap-gaussforhomalg 
+  - gap-gbnp 
+  - gap-generalizedmorphismsforcap 
+  - gap-genss 
+  - gap-gradedmodules 
+  - gap-gradedringforhomalg 
+  - gap-grape 
+  - gap-groupoids 
+  - gap-grpconst 
+  - gap-guarana 
+  - gap-guava 
+  - gap-hap 
+  - gap-hapcryst 
+  - gap-hecke 
+  - gap-help 
+  - gap-homalg 
+  - gap-homalgtocas 
+  - gap-idrel 
+  - gap-images 
+  - gap-intpic 
+  - gap-io 
+  - gap-io_forhomalg 
+  - gap-irredsol 
+  - gap-itc 
+  - gap-json 
+  - gap-kan 
+  - gap-kbmag 
+  - gap-laguna 
+  - gap-liealgdb 
+  - gap-liepring 
+  - gap-liering 
+  - gap-linearalgebraforcap 
+  - gap-localizeringforhomalg 
+  - gap-loops 
+  - gap-lpres 
+  - gap-majoranaalgebras 
+  - gap-mapclass 
+  - gap-matgrp 
+  - gap-matricesforhomalg 
+  - gap-modisom 
+  - gap-modules 
+  - gap-monoidalcategories 
+  - gap-nconvex 
+  - gap-nilmat 
+  - gap-nock 
+  - gap-normalizinterface 
+  - gap-nq 
+  - gap-numericalsgps 
+  - gap-openmath 
+  - gap-orb 
+  - gap-patternclass 
+  - gap-permut 
+  - gap-polenta 
+  - gap-polycyclic 
+  - gap-polymaking 
+  - gap-primgrp 
+  - gap-profiling 
+  - gap-qpa 
+  - gap-quagroup 
+  - gap-radiroot 
+  - gap-rcwa 
+  - gap-rds 
+  - gap-recog 
+  - gap-repndecomp 
+  - gap-repsn 
+  - gap-resclasses 
+  - gap-ringsforhomalg 
+  - gap-rpm-devel 
+  - gap-sco 
+  - gap-scscp 
+  - gap-semigroups 
+  - gap-sglppow 
+  - gap-sgpviz 
+  - gap-simpcomp 
+  - gap-singular 
+  - gap-sl2reps 
+  - gap-sla 
+  - gap-smallgrp 
+  - gap-smallsemi 
+  - gap-sonata 
+  - gap-sophus 
+  - gap-spinsym 
+  - gap-standardff 
+  - gap-symbcompcc 
+  - gap-thelma 
+  - gap-tomlib 
+  - gap-toolsforhomalg 
+  - gap-toric 
+  - gap-toricvarieties 
+  - gap-transgrp 
+  - gap-ugaly 
+  - gap-unipot 
+  - gap-unitlib 
+  - gap-utils 
+  - gap-uuid 
+  - gap-walrus 
+  - gap-wedderga 
+  - gap-xgap 
+  - gap-xmod 
+  - gap-xmodalg 
+  - gap-yangbaxter 
+  - gap-zeromqinterface 
   - garlic 
   - garlic-doc 
   - gasket-driver 
@@ -6932,6 +7109,10 @@ unsorted:
   - go1.21-doc 
   - go1.21-libstd 
   - go1.21-race 
+  - go1.22 
+  - go1.22-doc 
+  - go1.22-libstd 
+  - go1.22-race 
   - go1.9 
   - go1.9-doc 
   - go1.9-race 
@@ -7006,10 +7187,12 @@ unsorted:
   - google-alegreya-sans-fonts 
   - google-allerta-fonts 
   - google-anonymouspro-fonts 
+  - google-arimo-fonts 
   - google-authenticator-libpam 
   - google-cabin-fonts 
   - google-caladea-fonts 
   - google-cardo-fonts 
+  - google-cousine-fonts 
   - google-errorprone-annotation 
   - google-errorprone-annotations 
   - google-errorprone-annotations-javadoc 
@@ -7110,6 +7293,7 @@ unsorted:
   - google-quiche-source 
   - google-roboto-mono-fonts 
   - google-roboto-slab-fonts 
+  - google-tinos-fonts 
   - google-worksans-fonts 
   - google-worksans-fonts-doc 
   - googleapis-source 
@@ -7674,6 +7858,8 @@ unsorted:
   - heaptrack-devel 
   - heaptrack-gui 
   - heaptrack-lang 
+  - heatshrink 
+  - heatshrink-devel 
   - hedgewars 
   - hedgewars-data 
   - heimdall 
@@ -7983,6 +8169,8 @@ unsorted:
   - id3lib-devel 
   - id3lib-examples 
   - id3v2 
+  - identity 
+  - identity-lang 
   - idep 
   - ido-devel 
   - idutils 
@@ -8732,7 +8920,6 @@ unsorted:
   - jupyter-bqplot-jupyterlab 
   - jupyter-bqplot-notebook 
   - jupyter-cadabra2-kernel 
-  - jupyter-calysto 
   - jupyter-collaboration 
   - jupyter-doc 
   - jupyter-ipydatawidgets 
@@ -8930,8 +9117,6 @@ unsorted:
   - kdbusaddons-devel 
   - kddockwidgets-devel 
   - kddockwidgets-qt6-devel 
-  - kde-inotify-survey 
-  - kde-inotify-survey-lang 
   - kde-l10n-devel 
   - kde-oxygen-fonts 
   - kde-theme-dracula 
@@ -9414,6 +9599,7 @@ unsorted:
   - kubectl-operator 
   - kubectl-tree 
   - kubectl-view-allocations 
+  - kubectl-view-secret 
   - kubectl-who-can 
   - kubectx 
   - kubefirst 
@@ -9912,6 +10098,9 @@ unsorted:
   - lf-bash-completion 
   - lf-fish-completion 
   - lf-zsh-completion 
+  - lfortran 
+  - lfortran-devel 
+  - lfortran-devel-static 
   - lha 
   - lhasa-devel 
   - lib2geom-devel 
@@ -9926,7 +10115,7 @@ unsorted:
   - libADLMIDI1 
   - libAPFEL0_0_0 
   - libAlembic1_8 
-  - libAppStreamQt-devel 
+  - libAppStreamQt3 
   - libArcus-devel 
   - libArcus3 
   - libAvogadro1 
@@ -9934,6 +10123,17 @@ unsorted:
   - libBulletInverseDynamicsUtils3_17 
   - libBulletWorldImporter3_17 
   - libBulletXmlWorldImporter3_17 
+  - libCLHEP-2_4_7_1 
+  - libCLHEP-Cast-2_4_7_1 
+  - libCLHEP-Evaluator-2_4_7_1 
+  - libCLHEP-Exceptions-2_4_7_1 
+  - libCLHEP-GenericFunctions-2_4_7_1 
+  - libCLHEP-Geometry-2_4_7_1 
+  - libCLHEP-Matrix-2_4_7_1 
+  - libCLHEP-Random-2_4_7_1 
+  - libCLHEP-RandomObjects-2_4_7_1 
+  - libCLHEP-RefCount-2_4_7_1 
+  - libCLHEP-Vector-2_4_7_1 
   - libCSXCAD0 
   - libCbc3 
   - libCgl1 
@@ -10076,26 +10276,26 @@ unsorted:
   - libOSMesa-devel-32bit 
   - libOSMesa8-32bit 
   - libOgreBites-devel 
-  - libOgreBites13_5 
-  - libOgreBitesQt13_5 
+  - libOgreBites13_6 
+  - libOgreBitesQt13_6 
   - libOgreMain-devel 
-  - libOgreMain13_5 
-  - libOgreMain13_5-codecs 
-  - libOgreMain13_5-plugins 
+  - libOgreMain13_6 
+  - libOgreMain13_6-codecs 
+  - libOgreMain13_6-plugins 
   - libOgreMeshLodGenerator-devel 
-  - libOgreMeshLodGenerator13_5 
+  - libOgreMeshLodGenerator13_6 
   - libOgreOverlay-devel 
-  - libOgreOverlay13_5 
+  - libOgreOverlay13_6 
   - libOgrePaging-devel 
-  - libOgrePaging13_5 
+  - libOgrePaging13_6 
   - libOgreProperty-devel 
-  - libOgreProperty13_5 
+  - libOgreProperty13_6 
   - libOgreRTShaderSystem-devel 
-  - libOgreRTShaderSystem13_5 
+  - libOgreRTShaderSystem13_6 
   - libOgreTerrain-devel 
-  - libOgreTerrain13_5 
+  - libOgreTerrain13_6 
   - libOgreVolume-devel 
-  - libOgreVolume13_5 
+  - libOgreVolume13_6 
   - libOkteta3 
   - libOpenCL1 
   - libOpenCL1-32bit 
@@ -10384,7 +10584,7 @@ unsorted:
   - libQuotientQt6-0_8 
   - libRaTools0 
   - libRecast1 
-  - libRivet-3_1_8 
+  - libRivet-3_1_9 
   - libSDL-1_2-0-32bit 
   - libSDL2-2_0-0-32bit 
   - libSDL2_Pango4 
@@ -10404,7 +10604,6 @@ unsorted:
   - libSDL_image-1_2-0 
   - libSDL_image-devel 
   - libSDL_mixer-1_2-0 
-  - libSDL_mixer-devel 
   - libSDL_net-1_2-0 
   - libSDL_net-devel 
   - libSDL_sound-1_0-1 
@@ -10418,8 +10617,8 @@ unsorted:
   - libSM-devel 
   - libSM-devel-32bit 
   - libSM6-32bit 
-  - libSPIRV-Tools-2023_5_rc1-32bit 
-  - libSRM-suse0 
+  - libSPIRV-Tools-2023_6_rc1-32bit 
+  - libSRM0 
   - libSampleICC-devel 
   - libSampleICC2 
   - libSavitar-devel 
@@ -10439,6 +10638,7 @@ unsorted:
   - libSvtAv1Dec0 
   - libTMCG-devel 
   - libTMCG18 
+  - libThePEG30 
   - libUTF0_3 
   - libUil4 
   - libUnitTest++-2_0_0 
@@ -10897,6 +11097,11 @@ unsorted:
   - libbfoverlay-devel 
   - libbfoverlay-tools 
   - libbfoverlay1 
+  - libbgcode 
+  - libbgcode-devel 
+  - libbgcode_binarize0_2_0 
+  - libbgcode_convert0_2_0 
+  - libbgcode_core0_2_0 
   - libbiblesync2_0 
   - libbinio-devel 
   - libbinio1 
@@ -10916,6 +11121,7 @@ unsorted:
   - libblas3-32bit 
   - libblastrampoline-devel 
   - libblastrampoline5 
+  - libblis4 
   - libbliss0_77 
   - libblitz0 
   - libblkid-devel 
@@ -10937,145 +11143,145 @@ unsorted:
   - libbobcat6 
   - libboinc7 
   - libboost_atomic-devel 
-  - libboost_atomic1_83_0 
-  - libboost_atomic1_83_0-32bit 
-  - libboost_atomic1_83_0-devel 
-  - libboost_atomic1_83_0-x86-64-v3 
+  - libboost_atomic1_84_0 
+  - libboost_atomic1_84_0-32bit 
+  - libboost_atomic1_84_0-devel 
+  - libboost_atomic1_84_0-x86-64-v3 
   - libboost_chrono-devel 
-  - libboost_chrono1_83_0 
-  - libboost_chrono1_83_0-devel 
+  - libboost_chrono1_84_0 
+  - libboost_chrono1_84_0-devel 
   - libboost_container-devel 
-  - libboost_container1_83_0 
-  - libboost_container1_83_0-32bit 
-  - libboost_container1_83_0-devel 
-  - libboost_container1_83_0-x86-64-v3 
+  - libboost_container1_84_0 
+  - libboost_container1_84_0-32bit 
+  - libboost_container1_84_0-devel 
+  - libboost_container1_84_0-x86-64-v3 
   - libboost_context-devel 
-  - libboost_context1_83_0 
-  - libboost_context1_83_0-32bit 
-  - libboost_context1_83_0-devel 
+  - libboost_context1_84_0 
+  - libboost_context1_84_0-32bit 
+  - libboost_context1_84_0-devel 
   - libboost_contract-devel 
-  - libboost_contract1_83_0 
-  - libboost_contract1_83_0-devel 
+  - libboost_contract1_84_0 
+  - libboost_contract1_84_0-devel 
   - libboost_coroutine-devel 
-  - libboost_coroutine1_83_0 
-  - libboost_coroutine1_83_0-32bit 
-  - libboost_coroutine1_83_0-devel 
+  - libboost_coroutine1_84_0 
+  - libboost_coroutine1_84_0-32bit 
+  - libboost_coroutine1_84_0-devel 
   - libboost_date_time-devel 
-  - libboost_date_time1_83_0 
-  - libboost_date_time1_83_0-32bit 
-  - libboost_date_time1_83_0-devel 
-  - libboost_date_time1_83_0-x86-64-v3 
+  - libboost_date_time1_84_0 
+  - libboost_date_time1_84_0-32bit 
+  - libboost_date_time1_84_0-devel 
+  - libboost_date_time1_84_0-x86-64-v3 
   - libboost_fiber-devel 
-  - libboost_fiber1_83_0 
-  - libboost_fiber1_83_0-32bit 
-  - libboost_fiber1_83_0-devel 
+  - libboost_fiber1_84_0 
+  - libboost_fiber1_84_0-32bit 
+  - libboost_fiber1_84_0-devel 
   - libboost_filesystem-devel 
-  - libboost_filesystem1_83_0-32bit 
-  - libboost_filesystem1_83_0-devel 
+  - libboost_filesystem1_84_0-32bit 
+  - libboost_filesystem1_84_0-devel 
   - libboost_graph-devel 
-  - libboost_graph1_83_0 
-  - libboost_graph1_83_0-32bit 
-  - libboost_graph1_83_0-devel 
-  - libboost_graph1_83_0-x86-64-v3 
+  - libboost_graph1_84_0 
+  - libboost_graph1_84_0-32bit 
+  - libboost_graph1_84_0-devel 
+  - libboost_graph1_84_0-x86-64-v3 
   - libboost_graph_parallel-devel 
-  - libboost_graph_parallel1_83_0 
-  - libboost_graph_parallel1_83_0-32bit 
-  - libboost_graph_parallel1_83_0-devel 
-  - libboost_graph_parallel1_83_0-x86-64-v3 
+  - libboost_graph_parallel1_84_0 
+  - libboost_graph_parallel1_84_0-32bit 
+  - libboost_graph_parallel1_84_0-devel 
+  - libboost_graph_parallel1_84_0-x86-64-v3 
   - libboost_headers-devel 
-  - libboost_headers1_83_0-devel 
+  - libboost_headers1_84_0-devel 
   - libboost_iostreams-devel 
-  - libboost_iostreams1_83_0-32bit 
-  - libboost_iostreams1_83_0-devel 
-  - libboost_json1_83_0 
-  - libboost_json1_83_0-32bit 
-  - libboost_json1_83_0-devel 
-  - libboost_json1_83_0-x86-64-v3 
+  - libboost_iostreams1_84_0-32bit 
+  - libboost_iostreams1_84_0-devel 
+  - libboost_json1_84_0 
+  - libboost_json1_84_0-32bit 
+  - libboost_json1_84_0-devel 
+  - libboost_json1_84_0-x86-64-v3 
   - libboost_locale-devel 
-  - libboost_locale1_83_0-32bit 
-  - libboost_locale1_83_0-devel 
+  - libboost_locale1_84_0-32bit 
+  - libboost_locale1_84_0-devel 
   - libboost_log-devel 
-  - libboost_log1_83_0 
-  - libboost_log1_83_0-devel 
+  - libboost_log1_84_0 
+  - libboost_log1_84_0-devel 
   - libboost_math-devel 
-  - libboost_math1_83_0 
-  - libboost_math1_83_0-32bit 
-  - libboost_math1_83_0-devel 
-  - libboost_math1_83_0-x86-64-v3 
+  - libboost_math1_84_0 
+  - libboost_math1_84_0-32bit 
+  - libboost_math1_84_0-devel 
+  - libboost_math1_84_0-x86-64-v3 
   - libboost_mpi-devel 
-  - libboost_mpi1_83_0 
-  - libboost_mpi1_83_0-32bit 
-  - libboost_mpi1_83_0-devel 
-  - libboost_mpi1_83_0-x86-64-v3 
-  - libboost_mpi_python-py3-1_83_0 
-  - libboost_mpi_python-py3-1_83_0-devel 
+  - libboost_mpi1_84_0 
+  - libboost_mpi1_84_0-32bit 
+  - libboost_mpi1_84_0-devel 
+  - libboost_mpi1_84_0-x86-64-v3 
+  - libboost_mpi_python-py3-1_84_0 
+  - libboost_mpi_python-py3-1_84_0-devel 
   - libboost_mpi_python3-devel 
   - libboost_nowide-devel 
-  - libboost_nowide1_83_0 
-  - libboost_nowide1_83_0-32bit 
-  - libboost_nowide1_83_0-devel 
-  - libboost_nowide1_83_0-x86-64-v3 
-  - libboost_numpy-py3-1_83_0 
-  - libboost_numpy-py3-1_83_0-devel 
+  - libboost_nowide1_84_0 
+  - libboost_nowide1_84_0-32bit 
+  - libboost_nowide1_84_0-devel 
+  - libboost_nowide1_84_0-x86-64-v3 
+  - libboost_numpy-py3-1_84_0 
+  - libboost_numpy-py3-1_84_0-devel 
   - libboost_numpy3-devel 
   - libboost_program_options-devel 
-  - libboost_program_options1_83_0 
-  - libboost_program_options1_83_0-32bit 
-  - libboost_program_options1_83_0-devel 
-  - libboost_program_options1_83_0-x86-64-v3 
-  - libboost_python-py3-1_83_0-32bit 
-  - libboost_python-py3-1_83_0-devel 
+  - libboost_program_options1_84_0 
+  - libboost_program_options1_84_0-32bit 
+  - libboost_program_options1_84_0-devel 
+  - libboost_program_options1_84_0-x86-64-v3 
+  - libboost_python-py3-1_84_0-32bit 
+  - libboost_python-py3-1_84_0-devel 
   - libboost_python3-devel 
   - libboost_random-devel 
-  - libboost_random1_83_0 
-  - libboost_random1_83_0-32bit 
-  - libboost_random1_83_0-devel 
-  - libboost_random1_83_0-x86-64-v3 
+  - libboost_random1_84_0 
+  - libboost_random1_84_0-32bit 
+  - libboost_random1_84_0-devel 
+  - libboost_random1_84_0-x86-64-v3 
   - libboost_regex-devel 
-  - libboost_regex1_83_0 
-  - libboost_regex1_83_0-32bit 
-  - libboost_regex1_83_0-devel 
-  - libboost_regex1_83_0-x86-64-v3 
+  - libboost_regex1_84_0 
+  - libboost_regex1_84_0-32bit 
+  - libboost_regex1_84_0-devel 
+  - libboost_regex1_84_0-x86-64-v3 
   - libboost_serialization-devel 
-  - libboost_serialization1_83_0 
-  - libboost_serialization1_83_0-32bit 
-  - libboost_serialization1_83_0-devel 
-  - libboost_serialization1_83_0-x86-64-v3 
+  - libboost_serialization1_84_0 
+  - libboost_serialization1_84_0-32bit 
+  - libboost_serialization1_84_0-devel 
+  - libboost_serialization1_84_0-x86-64-v3 
   - libboost_stacktrace-devel 
-  - libboost_stacktrace1_83_0 
-  - libboost_stacktrace1_83_0-32bit 
-  - libboost_stacktrace1_83_0-devel 
-  - libboost_stacktrace1_83_0-x86-64-v3 
+  - libboost_stacktrace1_84_0 
+  - libboost_stacktrace1_84_0-32bit 
+  - libboost_stacktrace1_84_0-devel 
+  - libboost_stacktrace1_84_0-x86-64-v3 
   - libboost_system-devel 
-  - libboost_system1_83_0 
-  - libboost_system1_83_0-32bit 
-  - libboost_system1_83_0-devel 
-  - libboost_system1_83_0-x86-64-v3 
+  - libboost_system1_84_0 
+  - libboost_system1_84_0-32bit 
+  - libboost_system1_84_0-devel 
+  - libboost_system1_84_0-x86-64-v3 
   - libboost_test-devel 
-  - libboost_test1_83_0 
-  - libboost_test1_83_0-32bit 
-  - libboost_test1_83_0-devel 
-  - libboost_test1_83_0-x86-64-v3 
+  - libboost_test1_84_0 
+  - libboost_test1_84_0-32bit 
+  - libboost_test1_84_0-devel 
+  - libboost_test1_84_0-x86-64-v3 
   - libboost_thread-devel 
-  - libboost_thread1_83_0-32bit 
-  - libboost_thread1_83_0-devel 
+  - libboost_thread1_84_0-32bit 
+  - libboost_thread1_84_0-devel 
   - libboost_timer-devel 
-  - libboost_timer1_83_0 
-  - libboost_timer1_83_0-devel 
+  - libboost_timer1_84_0 
+  - libboost_timer1_84_0-devel 
   - libboost_type_erasure-devel 
-  - libboost_type_erasure1_83_0 
-  - libboost_type_erasure1_83_0-32bit 
-  - libboost_type_erasure1_83_0-devel 
-  - libboost_type_erasure1_83_0-x86-64-v3 
-  - libboost_url1_83_0 
-  - libboost_url1_83_0-32bit 
-  - libboost_url1_83_0-devel 
-  - libboost_url1_83_0-x86-64-v3 
+  - libboost_type_erasure1_84_0 
+  - libboost_type_erasure1_84_0-32bit 
+  - libboost_type_erasure1_84_0-devel 
+  - libboost_type_erasure1_84_0-x86-64-v3 
+  - libboost_url1_84_0 
+  - libboost_url1_84_0-32bit 
+  - libboost_url1_84_0-devel 
+  - libboost_url1_84_0-x86-64-v3 
   - libboost_wave-devel 
-  - libboost_wave1_83_0 
-  - libboost_wave1_83_0-32bit 
-  - libboost_wave1_83_0-devel 
-  - libboost_wave1_83_0-x86-64-v3 
+  - libboost_wave1_84_0 
+  - libboost_wave1_84_0-32bit 
+  - libboost_wave1_84_0-devel 
+  - libboost_wave1_84_0-x86-64-v3 
   - libboringssl1 
   - libbotan-2-19 
   - libbotan-devel 
@@ -11233,7 +11439,7 @@ unsorted:
   - libcfile1 
   - libcg3-1 
   - libcglm0 
-  - libcgns4_3 
+  - libcgns4_4 
   - libchafa0 
   - libchamplain-0_12-0 
   - libchamplain-devel 
@@ -11362,7 +11568,7 @@ unsorted:
   - libcorrect0_0_0 
   - libcotp-devel 
   - libcotp3 
-  - libcourier-unicode7 
+  - libcourier-unicode8 
   - libcpath-devel 
   - libcpath1 
   - libcpg4-32bit 
@@ -11396,7 +11602,7 @@ unsorted:
   - libcryptmount-devel 
   - libcrypto50 
   - libcryptopp-devel 
-  - libcryptopp8_8_0 
+  - libcryptopp8_9_0 
   - libcryptsetup-devel 
   - libcryptsetup12-32bit 
   - libcryptui-devel 
@@ -11589,6 +11795,7 @@ unsorted:
   - libdovi3-32bit 
   - libdpdk-23 
   - libdqlite0 
+  - libdraco8 
   - libdrm-devel 
   - libdrm-devel-32bit 
   - libdrm-tools 
@@ -11653,7 +11860,7 @@ unsorted:
   - libeXosip2 
   - libeXosip2-15 
   - libeXosip2-devel 
-  - libeantic1 
+  - libeantic3 
   - libeb16 
   - libebml-devel 
   - libebur128-1 
@@ -12041,6 +12248,7 @@ unsorted:
   - libgammaray-shared-qt6-3_0_0 
   - libganesha_nfsd-devel 
   - libganesha_nfsd3_3 
+  - libgap8 
   - libgarcon-branding-upstream 
   - libgarcon-devel 
   - libgarcon-doc 
@@ -12092,7 +12300,7 @@ unsorted:
   - libgda-ui-6_0-tools 
   - libgda-xslt-6_0-6_0_0 
   - libgdal-drivers 
-  - libgdal33 
+  - libgdal34 
   - libgdata-devel 
   - libgdbm6-32bit 
   - libgdbm_compat4-32bit 
@@ -12181,7 +12389,7 @@ unsorted:
   - libglog0 
   - libgloox18 
   - libglpk40 
-  - libglslang13-32bit 
+  - libglslang14-32bit 
   - libgltf-0_1-1 
   - libgltf-devel 
   - libglusterfs0 
@@ -12197,7 +12405,7 @@ unsorted:
   - libgmodule-2_0-0-32bit 
   - libgmpxx4 
   - libgmpxx4-32bit 
-  - libgmsh4_11 
+  - libgmsh4_12 
   - libgmxapi0 
   - libgmxapi_mpi0 
   - libgnome-bluetooth13 
@@ -12215,7 +12423,7 @@ unsorted:
   - libgnt-devel 
   - libgnt0 
   - libgnuastro19 
-  - libgnuradio-3_10_8 
+  - libgnuradio-3_10_9 
   - libgnuradio-funcube-devel 
   - libgnuradio-funcube3_10_0 
   - libgnuradio-iqbalance-devel 
@@ -12298,7 +12506,7 @@ unsorted:
   - libgsm-utils 
   - libgsm1-32bit 
   - libgsmsd8 
-  - libgsoap-2_8_131 
+  - libgsoap-2_8_132 
   - libgssapi3 
   - libgssdp-1_6-0-32bit 
   - libgssdp-devel 
@@ -12513,6 +12721,8 @@ unsorted:
   - libhdhomerun-devel 
   - libhdhomerun2 
   - libhealpix_cxx3 
+  - libheatshrink0_4_1 
+  - libheatshrink_dynalloc0_4_1 
   - libheif-devel 
   - libheif1-32bit 
   - libheimbase1 
@@ -12555,7 +12765,7 @@ unsorted:
   - libhwloc15 
   - libhwy1-32bit 
   - libhx509-5 
-  - libhydrogen-core-1_2_1 
+  - libhydrogen-core-1_2_2 
   - libhydrogen-core-devel 
   - libhyphen0-32bit 
   - libi2c0 
@@ -12759,6 +12969,8 @@ unsorted:
   - libjsonrpc-glib-1_0-1 
   - libjte-devel 
   - libjthread1_3_3 
+  - libjulia-compat1 
+  - libjulia1 
   - libjxl-devel 
   - libjxl-tools 
   - libjxl0_8-32bit 
@@ -12801,13 +13013,13 @@ unsorted:
   - libkea-cryptolink38 
   - libkea-d2srv30 
   - libkea-database48 
-  - libkea-dhcp++73 
+  - libkea-dhcp++74 
   - libkea-dhcp_ddns41 
-  - libkea-dhcpsrv89 
+  - libkea-dhcpsrv90 
   - libkea-dns++42 
   - libkea-eval52 
   - libkea-exceptions23 
-  - libkea-hooks77 
+  - libkea-hooks78 
   - libkea-http56 
   - libkea-log48 
   - libkea-mysql53 
@@ -12941,6 +13153,7 @@ unsorted:
   - libleveldb1 
   - libleveldb1-x86-64-v3 
   - liblevmar2 
+  - liblfortran0 
   - libliftoff-devel 
   - libliftoff0 
   - liblightdm-qt5-3-0 
@@ -12993,7 +13206,7 @@ unsorted:
   - liblog4cplus-2_0-3 
   - liblog4cpp5 
   - liblog4cxx-devel 
-  - liblog4cxx13 
+  - liblog4cxx15 
   - liblog4shib-devel 
   - liblog4shib2 
   - liblogg44-devel 
@@ -13345,9 +13558,9 @@ unsorted:
   - libnbd-bash-completion 
   - libnbd-devel 
   - libnblib_gmx0 
-  - libnco-5_1_7 
+  - libnco-5_1_9 
   - libnco-devel 
-  - libnco_c++-5_1_7 
+  - libnco_c++-5_1_9 
   - libncurses5 
   - libncurses5-32bit 
   - libncurses6-32bit 
@@ -13434,9 +13647,6 @@ unsorted:
   - libnice 
   - libnice-devel 
   - libnice10-32bit 
-  - libnilfs0 
-  - libnilfscleaner0 
-  - libnilfsgc0 
   - libnitrokey-devel 
   - libnitrokey-udev 
   - libnitrokey3 
@@ -13472,7 +13682,7 @@ unsorted:
   - libnozzle1 
   - libnozzle1-devel 
   - libnpupnp-devel 
-  - libnpupnp9 
+  - libnpupnp13 
   - libnscd-devel 
   - libnsfdb-devel 
   - libnsfdb-tools 
@@ -13594,13 +13804,13 @@ unsorted:
   - libopenblas_serial-devel-32bit 
   - libopenblas_serial0 
   - libopenblas_serial0-32bit 
-  - libopencascade-applicationframework7_7 
-  - libopencascade-dataexchange7_7 
-  - libopencascade-draw7_7 
-  - libopencascade-foundationclasses7_7 
-  - libopencascade-modelingalgorithms7_7 
-  - libopencascade-modelingdata7_7 
-  - libopencascade-visualization7_7 
+  - libopencascade-applicationframework7_7_2 
+  - libopencascade-dataexchange7_7_2 
+  - libopencascade-draw7_7_2 
+  - libopencascade-foundationclasses7_7_2 
+  - libopencascade-modelingalgorithms7_7_2 
+  - libopencascade-modelingdata7_7_2 
+  - libopencascade-visualization7_7_2 
   - libopencl-clang14 
   - libopencore-amr-devel 
   - libopencore-amrnb0-32bit 
@@ -14123,7 +14333,7 @@ unsorted:
   - libqaccessibilityclient-qt6-0 
   - libqaccessibilityclient-qt6-devel 
   - libqalculate-devel 
-  - libqat3 
+  - libqat4 
   - libqatzip3 
   - libqb-devel 
   - libqb-devel-32bit 
@@ -14574,7 +14784,7 @@ unsorted:
   - librsb0 
   - librseq-devel 
   - librseq0 
-  - librssguard-4_5_5 
+  - librssguard-4_6_3 
   - librssguard-devel 
   - librsvg-2-2-32bit 
   - librsvg-devel 
@@ -14821,7 +15031,7 @@ unsorted:
   - libspandsp3-32bit 
   - libspatialindex6 
   - libspatialite-devel 
-  - libspatialite7 
+  - libspatialite8 
   - libspdlog1_12 
   - libspdlog1_12-32bit 
   - libspdylay7 
@@ -14954,15 +15164,15 @@ unsorted:
   - libsundials_nvec6 
   - libsundials_nvec6-mvapich2 
   - libsundials_nvec6-openmpi4 
-  - libsundials_sunlinsol4_6_2 
-  - libsundials_sunlinsol4_6_2-mvapich2 
-  - libsundials_sunlinsol4_6_2-openmpi4 
+  - libsundials_sunlinsol4 
+  - libsundials_sunlinsol4-mvapich2 
+  - libsundials_sunlinsol4-openmpi4 
   - libsundials_sunmatrix4 
   - libsundials_sunmatrix4-mvapich2 
   - libsundials_sunmatrix4-openmpi4 
-  - libsundials_sunnonlin3_6_2 
-  - libsundials_sunnonlin3_6_2-mvapich2 
-  - libsundials_sunnonlin3_6_2-openmpi4 
+  - libsundials_sunnonlin3 
+  - libsundials_sunnonlin3-mvapich2 
+  - libsundials_sunnonlin3-openmpi4 
   - libsuperlu-gnu-hpc 
   - libsuperlu6 
   - libsuperlu6-32bit 
@@ -14986,7 +15196,7 @@ unsorted:
   - libsybdb5-32bit 
   - libsymmetrica2 
   - libsympol0_1 
-  - libsymspg1 
+  - libsymspg2 
   - libsyn123-0 
   - libsyn123-0-32bit 
   - libsynce-devel 
@@ -15112,6 +15322,7 @@ unsorted:
   - libtolua5 
   - libtomcrypt-devel 
   - libtomcrypt-examples 
+  - libtomlplusplus3 
   - libtommath-devel 
   - libtommath-examples 
   - libtomoe-gtk0 
@@ -15262,7 +15473,7 @@ unsorted:
   - libupm1 
   - libupnp-devel 
   - libupnpp-devel 
-  - libupnpp12 
+  - libupnpp16 
   - libupower-glib-devel 
   - libupsclient6 
   - liburcu-devel 
@@ -15414,7 +15625,7 @@ unsorted:
   - libvma 
   - libvma-devel 
   - libvma9 
-  - libvmaf1-32bit 
+  - libvmaf3-32bit 
   - libvmdk-devel 
   - libvmdk-tools 
   - libvmdk1 
@@ -15535,8 +15746,8 @@ unsorted:
   - libwind0 
   - libwireshark17 
   - libwiretap14 
-  - libwlroots10 
   - libwlroots11 
+  - libwlroots12 
   - libwmf-0_2-7-32bit 
   - libwmf-devel 
   - libwmf-gnome 
@@ -15583,91 +15794,91 @@ unsorted:
   - libwv2-4 
   - libwx_base-suse-devel 
   - libwx_base-suse-nostl-devel 
+  - libwx_baseu-suse-nostl10_0_0 
   - libwx_baseu-suse-nostl3_0_5 
-  - libwx_baseu-suse-nostl9_0_0 
+  - libwx_baseu-suse10_0_0 
   - libwx_baseu-suse3_0_5 
-  - libwx_baseu-suse9_0_0 
+  - libwx_baseu_net-suse-nostl10_0_0 
   - libwx_baseu_net-suse-nostl3_0_5 
-  - libwx_baseu_net-suse-nostl9_0_0 
+  - libwx_baseu_net-suse10_0_0 
   - libwx_baseu_net-suse3_0_5 
-  - libwx_baseu_net-suse9_0_0 
+  - libwx_baseu_xml-suse-nostl10_0_0 
   - libwx_baseu_xml-suse-nostl3_0_5 
-  - libwx_baseu_xml-suse-nostl9_0_0 
+  - libwx_baseu_xml-suse10_0_0 
   - libwx_baseu_xml-suse3_0_5 
-  - libwx_baseu_xml-suse9_0_0 
   - libwx_gtk2u_adv-suse-nostl3_0_5 
+  - libwx_gtk2u_adv-suse10_0_0 
   - libwx_gtk2u_adv-suse3_0_5 
-  - libwx_gtk2u_adv-suse9_0_0 
   - libwx_gtk2u_aui-suse-nostl3_0_5 
+  - libwx_gtk2u_aui-suse10_0_0 
   - libwx_gtk2u_aui-suse3_0_5 
-  - libwx_gtk2u_aui-suse9_0_0 
   - libwx_gtk2u_core-suse-nostl3_0_5 
+  - libwx_gtk2u_core-suse10_0_0 
   - libwx_gtk2u_core-suse3_0_5 
-  - libwx_gtk2u_core-suse9_0_0 
   - libwx_gtk2u_gl-suse-nostl3_0_5 
+  - libwx_gtk2u_gl-suse10_0_0 
   - libwx_gtk2u_gl-suse3_0_5 
-  - libwx_gtk2u_gl-suse9_0_0 
   - libwx_gtk2u_html-suse-nostl3_0_5 
+  - libwx_gtk2u_html-suse10_0_0 
   - libwx_gtk2u_html-suse3_0_5 
-  - libwx_gtk2u_html-suse9_0_0 
   - libwx_gtk2u_media-suse-nostl3_0_5 
+  - libwx_gtk2u_media-suse10_0_0 
   - libwx_gtk2u_media-suse3_0_5 
-  - libwx_gtk2u_media-suse9_0_0 
   - libwx_gtk2u_propgrid-suse-nostl3_0_5 
+  - libwx_gtk2u_propgrid-suse10_0_0 
   - libwx_gtk2u_propgrid-suse3_0_5 
-  - libwx_gtk2u_propgrid-suse9_0_0 
   - libwx_gtk2u_qa-suse-nostl3_0_5 
+  - libwx_gtk2u_qa-suse10_0_0 
   - libwx_gtk2u_qa-suse3_0_5 
-  - libwx_gtk2u_qa-suse9_0_0 
   - libwx_gtk2u_ribbon-suse-nostl3_0_5 
+  - libwx_gtk2u_ribbon-suse10_0_0 
   - libwx_gtk2u_ribbon-suse3_0_5 
-  - libwx_gtk2u_ribbon-suse9_0_0 
   - libwx_gtk2u_richtext-suse-nostl3_0_5 
+  - libwx_gtk2u_richtext-suse10_0_0 
   - libwx_gtk2u_richtext-suse3_0_5 
-  - libwx_gtk2u_richtext-suse9_0_0 
   - libwx_gtk2u_stc-suse-nostl3_0_5 
+  - libwx_gtk2u_stc-suse10_0_0 
   - libwx_gtk2u_stc-suse3_0_5 
-  - libwx_gtk2u_stc-suse9_0_0 
   - libwx_gtk2u_xrc-suse-nostl3_0_5 
+  - libwx_gtk2u_xrc-suse10_0_0 
   - libwx_gtk2u_xrc-suse3_0_5 
-  - libwx_gtk2u_xrc-suse9_0_0 
-  - libwx_gtk3u_adv-suse-nostl9_0_0 
-  - libwx_gtk3u_adv-suse9_0_0 
-  - libwx_gtk3u_aui-suse-nostl9_0_0 
-  - libwx_gtk3u_aui-suse9_0_0 
-  - libwx_gtk3u_core-suse-nostl9_0_0 
-  - libwx_gtk3u_core-suse9_0_0 
-  - libwx_gtk3u_gl-suse-nostl9_0_0 
-  - libwx_gtk3u_gl-suse9_0_0 
-  - libwx_gtk3u_html-suse-nostl9_0_0 
-  - libwx_gtk3u_html-suse9_0_0 
-  - libwx_gtk3u_media-suse-nostl9_0_0 
-  - libwx_gtk3u_media-suse9_0_0 
-  - libwx_gtk3u_propgrid-suse-nostl9_0_0 
-  - libwx_gtk3u_propgrid-suse9_0_0 
-  - libwx_gtk3u_qa-suse-nostl9_0_0 
-  - libwx_gtk3u_qa-suse9_0_0 
-  - libwx_gtk3u_ribbon-suse-nostl9_0_0 
-  - libwx_gtk3u_ribbon-suse9_0_0 
-  - libwx_gtk3u_richtext-suse-nostl9_0_0 
-  - libwx_gtk3u_richtext-suse9_0_0 
-  - libwx_gtk3u_stc-suse-nostl9_0_0 
-  - libwx_gtk3u_stc-suse9_0_0 
-  - libwx_gtk3u_webview-suse9_0_0 
-  - libwx_gtk3u_xrc-suse-nostl9_0_0 
-  - libwx_gtk3u_xrc-suse9_0_0 
-  - libwx_qtu_adv-suse9_0_0 
-  - libwx_qtu_aui-suse9_0_0 
-  - libwx_qtu_core-suse9_0_0 
-  - libwx_qtu_gl-suse9_0_0 
-  - libwx_qtu_html-suse9_0_0 
-  - libwx_qtu_media-suse9_0_0 
-  - libwx_qtu_propgrid-suse9_0_0 
-  - libwx_qtu_qa-suse9_0_0 
-  - libwx_qtu_ribbon-suse9_0_0 
-  - libwx_qtu_richtext-suse9_0_0 
-  - libwx_qtu_stc-suse9_0_0 
-  - libwx_qtu_xrc-suse9_0_0 
+  - libwx_gtk3u_adv-suse-nostl10_0_0 
+  - libwx_gtk3u_adv-suse10_0_0 
+  - libwx_gtk3u_aui-suse-nostl10_0_0 
+  - libwx_gtk3u_aui-suse10_0_0 
+  - libwx_gtk3u_core-suse-nostl10_0_0 
+  - libwx_gtk3u_core-suse10_0_0 
+  - libwx_gtk3u_gl-suse-nostl10_0_0 
+  - libwx_gtk3u_gl-suse10_0_0 
+  - libwx_gtk3u_html-suse-nostl10_0_0 
+  - libwx_gtk3u_html-suse10_0_0 
+  - libwx_gtk3u_media-suse-nostl10_0_0 
+  - libwx_gtk3u_media-suse10_0_0 
+  - libwx_gtk3u_propgrid-suse-nostl10_0_0 
+  - libwx_gtk3u_propgrid-suse10_0_0 
+  - libwx_gtk3u_qa-suse-nostl10_0_0 
+  - libwx_gtk3u_qa-suse10_0_0 
+  - libwx_gtk3u_ribbon-suse-nostl10_0_0 
+  - libwx_gtk3u_ribbon-suse10_0_0 
+  - libwx_gtk3u_richtext-suse-nostl10_0_0 
+  - libwx_gtk3u_richtext-suse10_0_0 
+  - libwx_gtk3u_stc-suse-nostl10_0_0 
+  - libwx_gtk3u_stc-suse10_0_0 
+  - libwx_gtk3u_webview-suse10_0_0 
+  - libwx_gtk3u_xrc-suse-nostl10_0_0 
+  - libwx_gtk3u_xrc-suse10_0_0 
+  - libwx_qtu_adv-suse10_0_0 
+  - libwx_qtu_aui-suse10_0_0 
+  - libwx_qtu_core-suse10_0_0 
+  - libwx_qtu_gl-suse10_0_0 
+  - libwx_qtu_html-suse10_0_0 
+  - libwx_qtu_media-suse10_0_0 
+  - libwx_qtu_propgrid-suse10_0_0 
+  - libwx_qtu_qa-suse10_0_0 
+  - libwx_qtu_ribbon-suse10_0_0 
+  - libwx_qtu_richtext-suse10_0_0 
+  - libwx_qtu_stc-suse10_0_0 
+  - libwx_qtu_xrc-suse10_0_0 
   - libwxcode_gtk2u_wxsqlite3-3_2-0 
   - libwxlua 
   - libwxlua-wx32-3_1_0_0 
@@ -15772,6 +15983,7 @@ unsorted:
   - libxkbfile-devel-32bit 
   - libxkbfile1-32bit 
   - libxkbregistry-devel 
+  - libxkbregistry0-32bit 
   - libxkbui-devel 
   - libxkbui1 
   - libxklavier-devel 
@@ -15912,6 +16124,7 @@ unsorted:
   - libzip-devel 
   - libzip-tools 
   - libzip5-32bit 
+  - libzipios2 
   - libzita-convolver4 
   - libzita-resampler1 
   - libzix-0-0 
@@ -16181,10 +16394,13 @@ unsorted:
   - lomt-junction-fonts 
   - lomt-knewave-fonts 
   - lomt-leaguegothic-fonts 
+  - lomt-leaguespartan-fonts 
+  - lomt-leaguespartan-variable-fonts 
   - lomt-lindenhill-fonts 
   - lomt-orbitron-fonts 
   - lomt-ostrichsans-fonts 
   - lomt-prociono-fonts 
+  - lomt-raleway-fonts 
   - lomt-script1-fonts 
   - lomt-sniglet-fonts 
   - lomt-sortsmillgoudy-fonts 
@@ -16620,6 +16836,7 @@ unsorted:
   - mame-tools 
   - man-pages-fi 
   - man-pages-id 
+  - man-pages-ko 
   - man-pages-mk 
   - man-pages-nb 
   - man-pages-nl 
@@ -18198,7 +18415,6 @@ unsorted:
   - ngspice-scripts 
   - ngspice-xspice-cm 
   - nh2ps 
-  - nilfs-utils 
   - nilfs-utils-devel 
   - nim 
   - nimbus-icon-theme 
@@ -18872,6 +19088,7 @@ unsorted:
   - octave-forge-vrml 
   - octave-nlopt_optimize 
   - octave-openEMS 
+  - oculante 
   - oddjob 
   - oddjob-gpupdate 
   - oddjob-mkhomedir 
@@ -19384,6 +19601,7 @@ unsorted:
   - owncloud-client-dolphin 
   - owncloud-client-nautilus 
   - owncloud-client-nemo 
+  - owncloud-dolphin 
   - owntone 
   - oxygen5 
   - oxygen5-cursors 
@@ -19767,7 +19985,6 @@ unsorted:
   - pcp-system-tools 
   - pcp-testsuite 
   - pcp-zeroconf 
-  - pcr-oracle 
   - pcre-devel 
   - pcre-devel-static 
   - pcre-doc 
@@ -19787,6 +20004,7 @@ unsorted:
   - pcsc-reflex60 
   - pcsc-tools 
   - pcsc-towitoko-devel 
+  - pcsx2 
   - pdf2djvu 
   - pdf2djvu-lang 
   - pdf2svg 
@@ -21418,6 +21636,7 @@ unsorted:
   - plantuml-javadoc 
   - plasma-applet-weather-widget 
   - plasma-applet-weather-widget-lang 
+  - plasma-branding-MicroOS 
   - plasma-framework-devel 
   - plasma-nm5-fortisslvpn 
   - plasma-nm5-iodine 
@@ -21693,8 +21912,6 @@ unsorted:
   - postgresql11-pgsql-ogr-fdw 
   - postgresql11-plperl 
   - postgresql11-plpython 
-  - postgresql11-plr 
-  - postgresql11-plr-doc 
   - postgresql11-pltcl 
   - postgresql11-postgis 
   - postgresql11-postgis-utils 
@@ -21801,9 +22018,12 @@ unsorted:
   - postgresql16-orafce 
   - postgresql16-plperl 
   - postgresql16-plpython 
+  - postgresql16-plr 
+  - postgresql16-plr-doc 
   - postgresql16-pltcl 
   - postgresql16-server-devel 
   - postgresql16-test 
+  - postgresql16-timescaledb 
   - postgrey 
   - postorius 
   - postorius-web 
@@ -22161,7 +22381,6 @@ unsorted:
   - python-castellan-doc 
   - python-chewing 
   - python-cinderclient-doc 
-  - python-cliff-doc 
   - python-curses 
   - python-dbus-python-common-devel 
   - python-debtcollector-doc 
@@ -22174,7 +22393,6 @@ unsorted:
   - python-efl-examples 
   - python-fastcluster-doc 
   - python-flake8-doc 
-  - python-flup-doc 
   - python-freezerclient-doc 
   - python-gdbm 
   - python-gevent-doc 
@@ -22284,7 +22502,6 @@ unsorted:
   - python-sip6-doc 
   - python-six-doc 
   - python-sqlalchemy-migrate-doc 
-  - python-stevedore-doc 
   - python-sushy-doc 
   - python-swiftclient-doc 
   - python-tk 
@@ -22340,7 +22557,7 @@ unsorted:
   - python3-barbicanclient 
   - python3-bcc 
   - python3-boost_parallel_mpi 
-  - python3-boost_parallel_mpi1_83_0 
+  - python3-boost_parallel_mpi1_84_0 
   - python3-botan 
   - python3-bump2version 
   - python3-bytesize 
@@ -22360,7 +22577,6 @@ unsorted:
   - python3-clang15 
   - python3-clang16 
   - python3-clang17 
-  - python3-cliff 
   - python3-clingo 
   - python3-clinkgrammar 
   - python3-clustershell 
@@ -22386,7 +22602,6 @@ unsorted:
   - python3-dnf-plugin-versionlock 
   - python3-dnf-plugins-core 
   - python3-dnf-plugins-extras-common 
-  - python3-dogpile.cache 
   - python3-ec2imgutils 
   - python3-ec2metadata 
   - python3-espressomd 
@@ -22581,7 +22796,6 @@ unsorted:
   - python3-sss-murmur 
   - python3-sss_nss_idmap 
   - python3-sssd-config 
-  - python3-stevedore 
   - python3-stp 
   - python3-subliminal 
   - python3-susepubliccloudinfo 
@@ -22803,6 +23017,7 @@ unsorted:
   - python310-QtAwesome 
   - python310-QtPy 
   - python310-QtPy-test 
+  - python310-RangeHTTPServer 
   - python310-RegexOrder 
   - python310-Routes 
   - python310-Rtree 
@@ -23442,7 +23657,6 @@ unsorted:
   - python310-calmjs.parse 
   - python310-calmjs.types 
   - python310-calver 
-  - python310-calysto 
   - python310-cangjie 
   - python310-canonicaljson 
   - python310-capturer 
@@ -23509,6 +23723,7 @@ unsorted:
   - python310-click-repl 
   - python310-click-spinner 
   - python310-click-threading 
+  - python310-cliff 
   - python310-cligj 
   - python310-clikit 
   - python310-clint 
@@ -23684,7 +23899,6 @@ unsorted:
   - python310-dj-database-url 
   - python310-django-allauth 
   - python310-django-appconf 
-  - python310-django-assets 
   - python310-django-attachments 
   - python310-django-auth-ldap 
   - python310-django-avatar 
@@ -23801,6 +24015,7 @@ unsorted:
   - python310-docstring-to-markdown 
   - python310-docutils 
   - python310-docutils-ast-writer 
+  - python310-dogpile.cache 
   - python310-dogslow 
   - python310-dominate 
   - python310-dotmap 
@@ -23957,7 +24172,6 @@ unsorted:
   - python310-flufl.lock 
   - python310-flufl.testing 
   - python310-fluidity-sm 
-  - python310-flup 
   - python310-flynt 
   - python310-folium 
   - python310-fontMath 
@@ -24032,11 +24246,26 @@ unsorted:
   - python310-google-auth 
   - python310-google-auth-httplib2 
   - python310-google-auth-oauthlib 
+  - python310-google-cloud-appengine-logging 
+  - python310-google-cloud-artifact-registry 
+  - python310-google-cloud-audit-log 
+  - python310-google-cloud-build 
+  - python310-google-cloud-compute 
   - python310-google-cloud-core 
+  - python310-google-cloud-domains 
+  - python310-google-cloud-firestore 
+  - python310-google-cloud-iam 
   - python310-google-cloud-kms 
+  - python310-google-cloud-kms-inventory 
+  - python310-google-cloud-logging 
+  - python310-google-cloud-run 
+  - python310-google-cloud-secret-manager 
+  - python310-google-cloud-service-directory 
+  - python310-google-cloud-spanner 
   - python310-google-cloud-speech 
   - python310-google-cloud-storage 
   - python310-google-cloud-translate 
+  - python310-google-cloud-vpc-access 
   - python310-google-crc32c 
   - python310-google-resumable-media 
   - python310-google_trans_new 
@@ -24059,7 +24288,6 @@ unsorted:
   - python310-grimoirelab-toolkit 
   - python310-grpc-google-iam-v1 
   - python310-grpcio 
-  - python310-grpcio-gcp 
   - python310-grpcio-status 
   - python310-grpcio-tools 
   - python310-gscholar 
@@ -24089,6 +24317,7 @@ unsorted:
   - python310-hanzidentifier 
   - python310-happybase 
   - python310-haproxyctl 
+  - python310-hardware 
   - python310-hashids 
   - python310-hatch 
   - python310-hatch-fancy-pypi-readme 
@@ -24283,6 +24512,7 @@ unsorted:
   - python310-jsonschema 
   - python310-jsonschema-format 
   - python310-jsonschema-format-nongpl 
+  - python310-jsonschema-path 
   - python310-jsonschema-spec 
   - python310-jsonschema-specifications 
   - python310-jsonschema417 
@@ -24308,7 +24538,6 @@ unsorted:
   - python310-jupyter-server-terminals 
   - python310-jupyter-server-test 
   - python310-jupyter-sphinx 
-  - python310-jupyter-telemetry 
   - python310-jupyter-ydoc 
   - python310-jupyter_console 
   - python310-jupyterlab 
@@ -24512,7 +24741,8 @@ unsorted:
   - python310-matplotlib-gtk4 
   - python310-matplotlib-inline 
   - python310-matplotlib-latex 
-  - python310-matplotlib-qt5 
+  - python310-matplotlib-nbagg 
+  - python310-matplotlib-qt 
   - python310-matplotlib-testdata 
   - python310-matplotlib-tk 
   - python310-matplotlib-web 
@@ -24733,6 +24963,7 @@ unsorted:
   - python310-openpyxl 
   - python310-openqa_client 
   - python310-opentelemetry-api 
+  - python310-opentelemetry-semantic-conventions 
   - python310-opentracing 
   - python310-openwrt-luci-rpc 
   - python310-opt-einsum 
@@ -24958,6 +25189,7 @@ unsorted:
   - python310-pure-sasl 
   - python310-purl 
   - python310-py 
+  - python310-py-build-cmake 
   - python310-py-cpuinfo 
   - python310-py-espeak-ng 
   - python310-py-gitea-opensuse-org 
@@ -24997,6 +25229,7 @@ unsorted:
   - python310-pybars3 
   - python310-pybcj 
   - python310-pybeam 
+  - python310-pybgcode 
   - python310-pybind11 
   - python310-pybind11-devel 
   - python310-pybind11-stubgen 
@@ -25074,7 +25307,6 @@ unsorted:
   - python310-pyinstaller-hooks-contrib 
   - python310-pyipp 
   - python310-pyjavaproperties 
-  - python310-pyjnius 
   - python310-pyjokes 
   - python310-pyjsparser 
   - python310-pyjwkest 
@@ -25223,6 +25455,7 @@ unsorted:
   - python310-pytest-forked 
   - python310-pytest-freezegun 
   - python310-pytest-git 
+  - python310-pytest-grpc 
   - python310-pytest-helpers-namespace 
   - python310-pytest-html 
   - python310-pytest-httpbin 
@@ -25376,6 +25609,7 @@ unsorted:
   - python310-pytidylib 
   - python310-pytils 
   - python310-pytimeparse 
+  - python310-pytimeparse2 
   - python310-pytlv 
   - python310-pytoml 
   - python310-pytoolconfig 
@@ -25443,7 +25677,6 @@ unsorted:
   - python310-qtwebengine-qt5 
   - python310-qtwebengine-qt5-devel 
   - python310-quantities 
-  - python310-quantum-blackbird 
   - python310-queuelib 
   - python310-quicktions 
   - python310-quimb 
@@ -25682,6 +25915,7 @@ unsorted:
   - python310-sphinx-argparse 
   - python310-sphinx-autobuild 
   - python310-sphinx-autodoc-typehints 
+  - python310-sphinx-basic-ng 
   - python310-sphinx-book-theme 
   - python310-sphinx-bootstrap-theme 
   - python310-sphinx-click 
@@ -25750,6 +25984,7 @@ unsorted:
   - python310-statsmodels 
   - python310-stdeb 
   - python310-stestr 
+  - python310-stevedore 
   - python310-stomp.py 
   - python310-stomper 
   - python310-straight-plugin 
@@ -25906,6 +26141,7 @@ unsorted:
   - python310-typeguard 
   - python310-typepy 
   - python310-typer 
+  - python310-types-humanfriendly 
   - python310-types-python-dateutil 
   - python310-typing-inspect 
   - python310-typing_extensions 
@@ -26311,6 +26547,7 @@ unsorted:
   - python311-QtAwesome 
   - python311-QtPy 
   - python311-QtPy-test 
+  - python311-RangeHTTPServer 
   - python311-RegexOrder 
   - python311-Routes 
   - python311-Rtree 
@@ -26928,7 +27165,6 @@ unsorted:
   - python311-calmjs.parse 
   - python311-calmjs.types 
   - python311-calver 
-  - python311-calysto 
   - python311-cangjie 
   - python311-canonicaljson 
   - python311-capturer 
@@ -26991,6 +27227,7 @@ unsorted:
   - python311-click-repl 
   - python311-click-spinner 
   - python311-click-threading 
+  - python311-cliff 
   - python311-cligj 
   - python311-clikit 
   - python311-clint 
@@ -27155,7 +27392,6 @@ unsorted:
   - python311-dj-database-url 
   - python311-django-allauth 
   - python311-django-appconf 
-  - python311-django-assets 
   - python311-django-attachments 
   - python311-django-auth-ldap 
   - python311-django-avatar 
@@ -27270,6 +27506,7 @@ unsorted:
   - python311-docstring-to-markdown 
   - python311-docutils 
   - python311-docutils-ast-writer 
+  - python311-dogpile.cache 
   - python311-dogslow 
   - python311-dominate 
   - python311-dotmap 
@@ -27421,7 +27658,6 @@ unsorted:
   - python311-fluent 
   - python311-flufl.testing 
   - python311-fluidity-sm 
-  - python311-flup 
   - python311-flynt 
   - python311-folium 
   - python311-fontMath 
@@ -27493,11 +27729,26 @@ unsorted:
   - python311-google-auth 
   - python311-google-auth-httplib2 
   - python311-google-auth-oauthlib 
+  - python311-google-cloud-appengine-logging 
+  - python311-google-cloud-artifact-registry 
+  - python311-google-cloud-audit-log 
+  - python311-google-cloud-build 
+  - python311-google-cloud-compute 
   - python311-google-cloud-core 
+  - python311-google-cloud-domains 
+  - python311-google-cloud-firestore 
+  - python311-google-cloud-iam 
   - python311-google-cloud-kms 
+  - python311-google-cloud-kms-inventory 
+  - python311-google-cloud-logging 
+  - python311-google-cloud-run 
+  - python311-google-cloud-secret-manager 
+  - python311-google-cloud-service-directory 
+  - python311-google-cloud-spanner 
   - python311-google-cloud-speech 
   - python311-google-cloud-storage 
   - python311-google-cloud-translate 
+  - python311-google-cloud-vpc-access 
   - python311-google-crc32c 
   - python311-google-resumable-media 
   - python311-google_trans_new 
@@ -27518,7 +27769,6 @@ unsorted:
   - python311-grimoirelab-toolkit 
   - python311-grpc-google-iam-v1 
   - python311-grpcio 
-  - python311-grpcio-gcp 
   - python311-grpcio-status 
   - python311-grpcio-tools 
   - python311-gscholar 
@@ -27544,6 +27794,7 @@ unsorted:
   - python311-hanzidentifier 
   - python311-happybase 
   - python311-haproxyctl 
+  - python311-hardware 
   - python311-hashids 
   - python311-hatch 
   - python311-hatch-fancy-pypi-readme 
@@ -27721,6 +27972,7 @@ unsorted:
   - python311-jsonrpclib-pelix 
   - python311-jsonschema-format 
   - python311-jsonschema-format-nongpl 
+  - python311-jsonschema-path 
   - python311-jsonschema-spec 
   - python311-jsonschema417 
   - python311-jsonschema417-format 
@@ -27745,7 +27997,6 @@ unsorted:
   - python311-jupyter-server-terminals 
   - python311-jupyter-server-test 
   - python311-jupyter-sphinx 
-  - python311-jupyter-telemetry 
   - python311-jupyter-ydoc 
   - python311-jupyter_console 
   - python311-jupyterlab 
@@ -27939,7 +28190,8 @@ unsorted:
   - python311-matplotlib-gtk4 
   - python311-matplotlib-inline 
   - python311-matplotlib-latex 
-  - python311-matplotlib-qt5 
+  - python311-matplotlib-nbagg 
+  - python311-matplotlib-qt 
   - python311-matplotlib-testdata 
   - python311-matplotlib-tk 
   - python311-matplotlib-web 
@@ -28148,6 +28400,7 @@ unsorted:
   - python311-openpyxl 
   - python311-openqa_client 
   - python311-opentelemetry-api 
+  - python311-opentelemetry-semantic-conventions 
   - python311-opentracing 
   - python311-openwrt-luci-rpc 
   - python311-opt-einsum 
@@ -28360,6 +28613,7 @@ unsorted:
   - python311-pure-eval 
   - python311-pure-sasl 
   - python311-purl 
+  - python311-py-build-cmake 
   - python311-py-cpuinfo 
   - python311-py-espeak-ng 
   - python311-py-gitea-opensuse-org 
@@ -28397,6 +28651,7 @@ unsorted:
   - python311-pybars3 
   - python311-pybcj 
   - python311-pybeam 
+  - python311-pybgcode 
   - python311-pybind11 
   - python311-pybind11-devel 
   - python311-pybind11-stubgen 
@@ -28466,7 +28721,6 @@ unsorted:
   - python311-pyinstaller-hooks-contrib 
   - python311-pyipp 
   - python311-pyjavaproperties 
-  - python311-pyjnius 
   - python311-pyjokes 
   - python311-pyjsparser 
   - python311-pyjwkest 
@@ -28608,6 +28862,7 @@ unsorted:
   - python311-pytest-forked 
   - python311-pytest-freezegun 
   - python311-pytest-git 
+  - python311-pytest-grpc 
   - python311-pytest-helpers-namespace 
   - python311-pytest-html 
   - python311-pytest-httpbin 
@@ -28759,6 +29014,7 @@ unsorted:
   - python311-pytidylib 
   - python311-pytils 
   - python311-pytimeparse 
+  - python311-pytimeparse2 
   - python311-pytlv 
   - python311-pytoml 
   - python311-pytoolconfig 
@@ -28821,7 +29077,6 @@ unsorted:
   - python311-qtwebengine-qt5 
   - python311-qtwebengine-qt5-devel 
   - python311-quantities 
-  - python311-quantum-blackbird 
   - python311-queuelib 
   - python311-quicktions 
   - python311-quimb 
@@ -29040,6 +29295,7 @@ unsorted:
   - python311-sphinx-argparse 
   - python311-sphinx-autobuild 
   - python311-sphinx-autodoc-typehints 
+  - python311-sphinx-basic-ng 
   - python311-sphinx-book-theme 
   - python311-sphinx-bootstrap-theme 
   - python311-sphinx-click 
@@ -29108,6 +29364,7 @@ unsorted:
   - python311-statsmodels 
   - python311-stdeb 
   - python311-stestr 
+  - python311-stevedore 
   - python311-stomp.py 
   - python311-stomper 
   - python311-straight-plugin 
@@ -29260,6 +29517,7 @@ unsorted:
   - python311-typeguard 
   - python311-typepy 
   - python311-typer 
+  - python311-types-humanfriendly 
   - python311-types-python-dateutil 
   - python311-typing-inspect 
   - python311-typogrify 
@@ -29695,6 +29953,7 @@ unsorted:
   - python39-QtAwesome 
   - python39-QtPy 
   - python39-QtPy-test 
+  - python39-RangeHTTPServer 
   - python39-RegexOrder 
   - python39-Routes 
   - python39-Rtree 
@@ -30334,7 +30593,6 @@ unsorted:
   - python39-calmjs.parse 
   - python39-calmjs.types 
   - python39-calver 
-  - python39-calysto 
   - python39-cangjie 
   - python39-canonicaljson 
   - python39-capturer 
@@ -30402,6 +30660,7 @@ unsorted:
   - python39-click-repl 
   - python39-click-spinner 
   - python39-click-threading 
+  - python39-cliff 
   - python39-cligj 
   - python39-clikit 
   - python39-clint 
@@ -30576,7 +30835,6 @@ unsorted:
   - python39-dj-database-url 
   - python39-django-allauth 
   - python39-django-appconf 
-  - python39-django-assets 
   - python39-django-attachments 
   - python39-django-auth-ldap 
   - python39-django-avatar 
@@ -30693,6 +30951,7 @@ unsorted:
   - python39-docstring-to-markdown 
   - python39-docutils 
   - python39-docutils-ast-writer 
+  - python39-dogpile.cache 
   - python39-dogslow 
   - python39-dominate 
   - python39-dotmap 
@@ -30849,7 +31108,6 @@ unsorted:
   - python39-flufl.lock 
   - python39-flufl.testing 
   - python39-fluidity-sm 
-  - python39-flup 
   - python39-flynt 
   - python39-folium 
   - python39-fontMath 
@@ -30924,11 +31182,26 @@ unsorted:
   - python39-google-auth 
   - python39-google-auth-httplib2 
   - python39-google-auth-oauthlib 
+  - python39-google-cloud-appengine-logging 
+  - python39-google-cloud-artifact-registry 
+  - python39-google-cloud-audit-log 
+  - python39-google-cloud-build 
+  - python39-google-cloud-compute 
   - python39-google-cloud-core 
+  - python39-google-cloud-domains 
+  - python39-google-cloud-firestore 
+  - python39-google-cloud-iam 
   - python39-google-cloud-kms 
+  - python39-google-cloud-kms-inventory 
+  - python39-google-cloud-logging 
+  - python39-google-cloud-run 
+  - python39-google-cloud-secret-manager 
+  - python39-google-cloud-service-directory 
+  - python39-google-cloud-spanner 
   - python39-google-cloud-speech 
   - python39-google-cloud-storage 
   - python39-google-cloud-translate 
+  - python39-google-cloud-vpc-access 
   - python39-google-crc32c 
   - python39-google-resumable-media 
   - python39-google_trans_new 
@@ -30951,7 +31224,6 @@ unsorted:
   - python39-grimoirelab-toolkit 
   - python39-grpc-google-iam-v1 
   - python39-grpcio 
-  - python39-grpcio-gcp 
   - python39-grpcio-status 
   - python39-grpcio-tools 
   - python39-gscholar 
@@ -30980,6 +31252,7 @@ unsorted:
   - python39-hanzidentifier 
   - python39-happybase 
   - python39-haproxyctl 
+  - python39-hardware 
   - python39-hashids 
   - python39-hatch 
   - python39-hatch-fancy-pypi-readme 
@@ -31174,6 +31447,7 @@ unsorted:
   - python39-jsonschema 
   - python39-jsonschema-format 
   - python39-jsonschema-format-nongpl 
+  - python39-jsonschema-path 
   - python39-jsonschema-spec 
   - python39-jsonschema-specifications 
   - python39-jsonschema417 
@@ -31199,7 +31473,6 @@ unsorted:
   - python39-jupyter-server-terminals 
   - python39-jupyter-server-test 
   - python39-jupyter-sphinx 
-  - python39-jupyter-telemetry 
   - python39-jupyter-ydoc 
   - python39-jupyter_console 
   - python39-jupyterlab 
@@ -31402,7 +31675,8 @@ unsorted:
   - python39-matplotlib-gtk4 
   - python39-matplotlib-inline 
   - python39-matplotlib-latex 
-  - python39-matplotlib-qt5 
+  - python39-matplotlib-nbagg 
+  - python39-matplotlib-qt 
   - python39-matplotlib-testdata 
   - python39-matplotlib-tk 
   - python39-matplotlib-web 
@@ -31621,6 +31895,7 @@ unsorted:
   - python39-openpyxl 
   - python39-openqa_client 
   - python39-opentelemetry-api 
+  - python39-opentelemetry-semantic-conventions 
   - python39-opentracing 
   - python39-openwrt-luci-rpc 
   - python39-opt-einsum 
@@ -31846,6 +32121,7 @@ unsorted:
   - python39-pure-sasl 
   - python39-purl 
   - python39-py 
+  - python39-py-build-cmake 
   - python39-py-cpuinfo 
   - python39-py-espeak-ng 
   - python39-py-gitea-opensuse-org 
@@ -31885,6 +32161,7 @@ unsorted:
   - python39-pybars3 
   - python39-pybcj 
   - python39-pybeam 
+  - python39-pybgcode 
   - python39-pybind11 
   - python39-pybind11-devel 
   - python39-pybind11-stubgen 
@@ -31963,7 +32240,6 @@ unsorted:
   - python39-pyinstaller-hooks-contrib 
   - python39-pyipp 
   - python39-pyjavaproperties 
-  - python39-pyjnius 
   - python39-pyjokes 
   - python39-pyjsparser 
   - python39-pyjwkest 
@@ -32112,6 +32388,7 @@ unsorted:
   - python39-pytest-forked 
   - python39-pytest-freezegun 
   - python39-pytest-git 
+  - python39-pytest-grpc 
   - python39-pytest-helpers-namespace 
   - python39-pytest-html 
   - python39-pytest-httpbin 
@@ -32264,6 +32541,7 @@ unsorted:
   - python39-pytidylib 
   - python39-pytils 
   - python39-pytimeparse 
+  - python39-pytimeparse2 
   - python39-pytlv 
   - python39-pytoml 
   - python39-pytoolconfig 
@@ -32331,7 +32609,6 @@ unsorted:
   - python39-qtwebengine-qt5 
   - python39-qtwebengine-qt5-devel 
   - python39-quantities 
-  - python39-quantum-blackbird 
   - python39-queuelib 
   - python39-quicktions 
   - python39-quimb 
@@ -32570,6 +32847,7 @@ unsorted:
   - python39-sphinx-argparse 
   - python39-sphinx-autobuild 
   - python39-sphinx-autodoc-typehints 
+  - python39-sphinx-basic-ng 
   - python39-sphinx-book-theme 
   - python39-sphinx-bootstrap-theme 
   - python39-sphinx-click 
@@ -32638,6 +32916,7 @@ unsorted:
   - python39-statsmodels 
   - python39-stdeb 
   - python39-stestr 
+  - python39-stevedore 
   - python39-stomp.py 
   - python39-stomper 
   - python39-straight-plugin 
@@ -32793,6 +33072,7 @@ unsorted:
   - python39-typeguard 
   - python39-typepy 
   - python39-typer 
+  - python39-types-humanfriendly 
   - python39-types-python-dateutil 
   - python39-typing-inspect 
   - python39-typing_extensions 
@@ -33636,6 +33916,7 @@ unsorted:
   - qtermwidget-qt5-devel 
   - qtfm 
   - qtile 
+  - qtilitools 
   - qtkeychain-qt5-devel 
   - qtkeychain-qt6-devel 
   - qtkeychain-qt6-lang 
@@ -34142,7 +34423,6 @@ unsorted:
   - ruby3.2-rubygem-js-routes 
   - ruby3.2-rubygem-json-jwt 
   - ruby3.2-rubygem-lightbox2 
-  - ruby3.2-rubygem-lolcat 
   - ruby3.2-rubygem-openid_connect 
   - ruby3.2-rubygem-pundit 
   - ruby3.2-rubygem-rack-oauth2 
@@ -34159,7 +34439,6 @@ unsorted:
   - ruby3.2-rubygem-sprockets-rails 
   - ruby3.2-rubygem-stimulus-rails 
   - ruby3.2-rubygem-swd 
-  - ruby3.2-rubygem-tmuxinator 
   - ruby3.2-rubygem-turbo-rails 
   - ruby3.2-rubygem-validate_email 
   - ruby3.2-rubygem-validate_url 
@@ -34181,6 +34460,7 @@ unsorted:
   - rust1.72 
   - rust1.73 
   - rust1.74 
+  - rust1.75 
   - rustscan 
   - rustup 
   - rxp 
@@ -34196,6 +34476,7 @@ unsorted:
   - ryzenadj 
   - rzsz 
   - s-tui 
+  - s390-tools 
   - s3backer 
   - s3fs 
   - sablot 
@@ -34397,6 +34678,9 @@ unsorted:
   - scotch_6_1_0-gnu-hpc-devel-static 
   - scout 
   - scout-command-not-found 
+  - scrcpy 
+  - scrcpy-bash-completion 
+  - scrcpy-zsh-completion 
   - scream 
   - screen-message 
   - screencast 
@@ -34714,6 +34998,8 @@ unsorted:
   - snorenotify-qt5-devel 
   - snowball 
   - snowball-devel 
+  - snpguest 
+  - snphost 
   - soapy-osmo-devel 
   - soapy-remote-server 
   - soapy-sdr 
@@ -35108,7 +35394,9 @@ unsorted:
   - swingx-javadoc 
   - swipl 
   - switch_sles_sle-hpc 
+  - switcheroo 
   - switcheroo-control-doc 
+  - switcheroo-lang 
   - sword 
   - sword-devel 
   - swtcalendar 
@@ -44340,6 +44628,7 @@ unsorted:
   - tktable 
   - tkxcd 
   - tllist-devel 
+  - tlrc 
   - tls 
   - tlswrap 
   - tmate 
@@ -44389,6 +44678,7 @@ unsorted:
   - tomcat10-servlet-6_0-api 
   - tomcat10-webapps 
   - toml11-devel 
+  - tomlplusplus-devel 
   - tomoe 
   - tomoe-devel 
   - tomoe-doc 
@@ -44894,7 +45184,10 @@ unsorted:
   - uget-integrator 
   - uget-lang 
   - ugrep 
+  - ugrep-bash-completion 
+  - ugrep-fish-completion 
   - ugrep-indexer 
+  - ugrep-zsh-completion 
   - uhd-devel 
   - uhd-doc 
   - uhd-firmware 
@@ -44989,6 +45282,16 @@ unsorted:
   - uperf 
   - upm-devel 
   - upmpdcli 
+  - upmpdcli-bbc 
+  - upmpdcli-config 
+  - upmpdcli-hra 
+  - upmpdcli-mother-earth-radio 
+  - upmpdcli-radio-browser 
+  - upmpdcli-radio-paradise 
+  - upmpdcli-radios 
+  - upmpdcli-subsonic 
+  - upmpdcli-tidal 
+  - upmpdcli-uprcl 
   - upplay 
   - upsm 
   - upx 
@@ -45045,8 +45348,6 @@ unsorted:
   - utils-libnfs 
   - utmp-cli 
   - utox 
-  - utsushi 
-  - utsushi-lang 
   - uucp 
   - uucp-xinetd 
   - uudeview 
@@ -45271,6 +45572,7 @@ unsorted:
   - visio2svg-conv 
   - vit 
   - vitetris 
+  - viu 
   - vkbasalt 
   - vkbasalt-cli 
   - vkd3d-devel 
@@ -45537,8 +45839,8 @@ unsorted:
   - wlr-randr 
   - wlr-sunclock 
   - wlrctl 
+  - wlroots-0_16-devel 
   - wlroots-devel 
-  - wlroots10-devel 
   - wlsunset 
   - wm-icons 
   - wmenu 
@@ -46018,6 +46320,8 @@ unsorted:
   - xtables-addons-kmp-default 
   - xtables-geoip 
   - xteddy 
+  - xtensor-devel 
+  - xtensor-doc 
   - xterm-console 
   - xtexit 
   - xtl-devel 
@@ -46211,6 +46515,7 @@ unsorted:
   - zam-plugins-jack 
   - zanshin 
   - zanshin-lang 
+  - zapzap 
   - zathura 
   - zathura-bash-completion 
   - zathura-devel 
@@ -46248,6 +46553,8 @@ unsorted:
   - zinnia 
   - zinnia-devel 
   - zinnia-tomoe 
+  - zipios-devel 
+  - zipios-devel-doc 
   - zipkin-api-source 
   - zita-convolver-devel 
   - zita-resampler-devel 

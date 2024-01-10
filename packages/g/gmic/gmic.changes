@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Dec 28 15:59:44 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 3.3.2. No changelog.
+- Rebase krita5.patch
+
+-------------------------------------------------------------------
+Thu Dec 28 15:58:05 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Require extra-cmake-modules at build time
+
+-------------------------------------------------------------------
 Fri Oct  6 14:42:34 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 3.3.1. No changelog.

@@ -549,4 +549,22 @@ please use same ADI as https://build.opensuse.org/request/show/902766</comment>
   * Fix &quot;not attempting encryption&quot; warning (https://github.com/matrix-org/matrix-react-sdk/pull/11899). Contributed by @richvdh.</comment>
     <requestid>1131328</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>ff8ea7221d47bbf3a57e66e461218cef</srcmd5>
+    <version>1.11.52</version>
+    <time>1703102506</time>
+    <user>anag+factory</user>
+    <comment>1.11.52</comment>
+    <requestid>1134097</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>052a1cb623ebeecf03192e3f3a1b1325</srcmd5>
+    <version>1.11.53</version>
+    <time>1704389409</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 1.11.53
+  ## 🐛 Bug Fixes
+  * Fix a fresh login creating a new key backup (https://github.com/matrix-org/matrix-react-sdk/pull/12106).</comment>
+    <requestid>1136869</requestid>
+  </revision>
 </revisionlist>

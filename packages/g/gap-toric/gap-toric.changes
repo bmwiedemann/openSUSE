@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Fri Oct 14 17:23:15 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to new upstream release 1.9.5
+  * Transferred package maintenance to the GAP team
+  * Minor janitorial changes
+
+-------------------------------------------------------------------
+Sat Apr 29 23:37:06 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 1.9.4
+  * Added a test suite (based on existing examples)
+  * Removed access to the obsolete global variable `Revision`
+  * Removed IdealAffineToricVariety -- it returned incorrect
+    results and fixing it was non-trivial.
+
+-------------------------------------------------------------------
+Fri May 10 13:47:02 UTC 2013 - jengelh@inai.de
+
+- Split toric (version 1.8) off the gap RPM package

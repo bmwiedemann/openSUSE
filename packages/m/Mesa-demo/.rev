@@ -269,4 +269,12 @@ This avoids &quot;not owned by any package&quot; if only the &quot;-x&quot; subp
   package bitmap) {boo#1215185)</comment>
     <requestid>1110181</requestid>
   </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>86babf744ee42c246a647ae51a568d84</srcmd5>
+    <version>9.0.0</version>
+    <time>1704659943</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1137242</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan  9 14:09:06 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.8.0:
+  Added:
+  * Add no parameter --scram-mech-pinning.
+  Changed:
+  * Refuse to upload a file if upload slot doesn't provide https.
+  * Use XEP-0474 instead of SCRAM mechanism pinning to prevent
+    downgrade attacks
+
+-------------------------------------------------------------------
 Tue Nov 14 06:55:48 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.7.0:

@@ -1,7 +1,7 @@
 #
 # spec file for package cog
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,8 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           cog
-Version:        0.18.1
+Version:        0.18.2
 Release:        0
 Summary:        WPE launcher and webapp container
 License:        MIT
@@ -26,42 +27,34 @@ Source:         %{name}-%{version}.tar.xz
 Patch0:         cog-fix-include-dirs.patch
 Patch1:         cog-fix-load-backend-fdo-lib.patch
 
-BuildRequires: meson
-BuildRequires: ninja
-BuildRequires: pkg-config
-BuildRequires: cmake
-BuildRequires: pkgconfig(wpe-webkit-2.0)
-BuildRequires: pkgconfig(gio-2.0)
-BuildRequires: pkgconfig(libsoup-3.0)
-BuildRequires: pkgconfig(wpe-1.0)
-BuildRequires: pkgconfig(manette-0.2)
-BuildRequires: pkgconfig(wpebackend-fdo-1.0)
-BuildRequires: pkgconfig(epoxy)
-BuildRequires: pkgconfig(libdrm)
-BuildRequires: pkgconfig(libinput)
-BuildRequires: pkgconfig(libudev)
-BuildRequires: pkgconfig(cairo)
-BuildRequires: pkgconfig(egl)
-BuildRequires: pkgconfig(wayland-client)
-BuildRequires: pkgconfig(wayland-server)
-BuildRequires: pkgconfig(wayland-egl)
-BuildRequires: pkgconfig(wayland-scanner)
-BuildRequires: pkgconfig(wayland-protocols)
-BuildRequires: pkgconfig(wayland-cursor)
-BuildRequires: pkgconfig(gbm)
+BuildRequires:  cmake
+BuildRequires:  meson
+BuildRequires:  ninja
+BuildRequires:  pkg-config
+BuildRequires:  pkgconfig(cairo)
+BuildRequires:  pkgconfig(egl)
+BuildRequires:  pkgconfig(epoxy)
+BuildRequires:  pkgconfig(gbm)
+BuildRequires:  pkgconfig(gio-2.0)
+BuildRequires:  pkgconfig(libdrm)
+BuildRequires:  pkgconfig(libinput)
+BuildRequires:  pkgconfig(libsoup-3.0)
+BuildRequires:  pkgconfig(libudev)
+BuildRequires:  pkgconfig(manette-0.2)
+BuildRequires:  pkgconfig(wayland-client)
+BuildRequires:  pkgconfig(wayland-cursor)
+BuildRequires:  pkgconfig(wayland-egl)
+BuildRequires:  pkgconfig(wayland-protocols)
+BuildRequires:  pkgconfig(wayland-scanner)
+BuildRequires:  pkgconfig(wayland-server)
+BuildRequires:  pkgconfig(wpe-1.0)
+BuildRequires:  pkgconfig(wpe-webkit-2.0)
+BuildRequires:  pkgconfig(wpebackend-fdo-1.0)
+Obsoletes:      cogctl < %{version}
+Provides:       cogctl:%{_bindir}/cogctl
 
 %description
-Cog is a small single “window” launcher for the WebKit WPE port. It is small,
-provides no user interface, and is suitable to be used as a Web application
-container. The “window” may be fullscreen depending on the WPE backend
-being used.
-
-%package -n cogctl
-Summary:        Development files for %{name}
-Group:          Development/Libraries/C and C++
-
-%description -n cogctl
-Cog is a small single “window” launcher for the WebKit WPE port. It is small,
+Cog is a small single “window” launcher for the WebKit WPE port. It
 provides no user interface, and is suitable to be used as a Web application
 container. The “window” may be fullscreen depending on the WPE backend
 being used.
@@ -72,7 +65,7 @@ Group:          Development/Libraries/C and C++
 Requires:       cog = %{version}
 
 %description devel
-Cog is a small single “window” launcher for the WebKit WPE port. It is small,
+Cog is a small single “window” launcher for the WebKit WPE port. It
 provides no user interface, and is suitable to be used as a Web application
 container. The “window” may be fullscreen depending on the WPE backend
 being used.
@@ -88,20 +81,19 @@ being used.
 
 %install
 %meson_install
+cp -a data/cogctl.1 "%{buildroot}/%{_mandir}/man1/"
 
 %ldconfig_scriptlets
 
 %files
 %{_bindir}/cog
+%{_bindir}/cogctl
 %{_libdir}/libcogcore.so.*
 %dir %{_libdir}/cog
 %{_libdir}/cog/modules
 %{_mandir}/man1/cog*
 %license COPYING
 %doc NEWS
-
-%files -n cogctl
-%{_bindir}/cogctl
 
 %files devel
 %{_includedir}/cog

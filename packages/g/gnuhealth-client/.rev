@@ -277,4 +277,22 @@
     <comment></comment>
     <requestid>1118334</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>e7c3fdeb9c13250090fa714b1f67e479</srcmd5>
+    <version>4.2.1</version>
+    <time>1703281363</time>
+    <user>anag+factory</user>
+    <comment>- version 4.2.1
+  * Various Tryton-patches applied, see Changelog for details
+</comment>
+    <requestid>1134643</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>c66f938582a75ec4e7068bad1c098cb4</srcmd5>
+    <version>4.2.1</version>
+    <time>1704558604</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1137221</requestid>
+  </revision>
 </revisionlist>

@@ -30,6 +30,7 @@ Source1:        civetweb.conf
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libopenssl-devel
+BuildRequires:  zlib-devel
 
 %description
 civetweb is a C/C++ embeddable web server with optional CGI, SSL and Lua support.
@@ -73,9 +74,16 @@ rm .git* .clan*
 
 %build
 rm -rf build
-%cmake -DWITH_ALL=1 \
+
+export CFLAGS="%optflags -DUSE_X_DOM_SOCKET"
+
+%cmake -DCIVETWEB_ENABLE_WEBSOCKETS=ON \
        -DCIVETWEB_BUILD_TESTING=OFF \
        -DCIVETWEB_ENABLE_CXX=ON \
+       -DCIVETWEB_ENABLE_SSL=ON \
+       -DCIVETWEB_SSL_OPENSSL_API_1_1=OFF \
+       -DCIVETWEB_SSL_OPENSSL_API_3_0=ON \
+       -DCIVETWEB_ENABLE_ZLIB=ON \
        -DCIVETWEB_ENABLE_SSL_DYNAMIC_LOADING=OFF
 
 %cmake_build %{?_smp_mflags}

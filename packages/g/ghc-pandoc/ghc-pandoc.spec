@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        3.1.9
+Version:        3.1.11
 Release:        0
 Summary:        Conversion between markup formats
 License:        GPL-2.0-or-later
@@ -43,8 +43,8 @@ BuildRequires:  ghc-attoparsec-devel
 BuildRequires:  ghc-attoparsec-prof
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
-BuildRequires:  ghc-base64-devel
-BuildRequires:  ghc-base64-prof
+BuildRequires:  ghc-base64-bytestring-devel
+BuildRequires:  ghc-base64-bytestring-prof
 BuildRequires:  ghc-binary-devel
 BuildRequires:  ghc-binary-prof
 BuildRequires:  ghc-blaze-html-devel
@@ -201,6 +201,8 @@ Pandoc can convert mathematical content in documents between TeX, MathML, Word
 equations, roff eqn, typst, and plain text. It includes a powerful system for
 automatic citations and bibliographies, and it can be customized extensively
 using templates, filters, and custom readers and writers written in Lua.
+
+For the pandoc command-line program, see the 'pandoc-cli' package.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files

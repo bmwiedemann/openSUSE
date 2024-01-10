@@ -119,7 +119,6 @@ Patch2:         ffmpeg-new-coder-errors.diff
 Patch3:         ffmpeg-codec-choice.diff
 Patch4:         ffmpeg-4.2-dlopen-fdk_aac.patch
 Patch5:         soversion.patch
-Patch8:         vmaf-trim-usr-local.patch
 Patch9:         ffmpeg-4.4-CVE-2020-22046.patch
 Patch10:        ffmpeg-chromium.patch
 Patch11:        ffmpeg-libglslang-detection.patch
@@ -177,7 +176,6 @@ BuildRequires:  pkgconfig(libv4l2)
 BuildRequires:  pkgconfig(libva) >= 0.35.0
 BuildRequires:  pkgconfig(libva-drm)
 BuildRequires:  pkgconfig(libva-x11)
-BuildRequires:  pkgconfig(libvmaf) >= 1.3.9
 BuildRequires:  pkgconfig(libwebp) >= 0.4
 BuildRequires:  pkgconfig(libxml-2.0)
 %if %{with zmq}
@@ -697,7 +695,6 @@ LDFLAGS="%_lto_cflags" \
 %if %{with vidstab}
 	--enable-libvidstab \
 %endif
-	--enable-libvmaf \
 	--enable-libvorbis \
 	--enable-libv4l2 \
 	--enable-libvpx \

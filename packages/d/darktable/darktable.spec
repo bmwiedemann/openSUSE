@@ -72,6 +72,14 @@
 %bcond_with    libheif
 %endif
 
+%if 0%{?suse_version} >= 1550 || 0%{?fedora} >= 38
+%bcond_without libraw
+%global _use_system_libraw "ON"
+%else
+%bcond_with libraw
+%global _use_system_libraw "ON"
+%endif
+
 %ifarch ppc64le
 # The OpenCL kernels don't compile on ppc64le and if you get
 # them compiled there are funny runtime issues.
@@ -111,7 +119,7 @@
 %endif
 
 Name:           darktable
-Version:        4.4.2
+Version:        4.6.0
 Release:        0
 %global pkg_name darktable
 %global pkg_version %{version}
@@ -192,6 +200,9 @@ BuildRequires:  pkgconfig(libheif)
 %endif
 %if %{with jxl}
 BuildRequires:  pkgconfig(libjxl) >= 0.7.0
+%endif
+%if %{with libraw}
+BuildRequires:  pkgconfig(libraw) >= 0.21
 %endif
 BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  pkgconfig(libsecret-1)
@@ -299,6 +310,7 @@ rm -rf src/external/lua/
    -DUSE_OPENMP="%{_use_openmp}" \\\
    -DUSE_GMIC="%{_use_gmic}" \\\
    -DUSE_AVIF="%{_use_avif}" \\\
+   -DDONT_USE_INTERNAL_LIBRAW="%{_use_system_libraw}" \\\
    -DBUILD_NOISE_TOOLS=ON \\\
    -DBUILD_CURVE_TOOLS=ON
 

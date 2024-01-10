@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Sat Dec 23 11:24:26 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to version 6.8.0
+  * 6.8.0 (2023-12-08) Maintenance and bug fix release.
+    + New features:
+      ~ Add and use InvalidMethodSignatureException extending
+        ClassFormatException.
+      ~ Increase code coverage in Class2HTMLTestCase with new test
+        input Java4Example #186.
+      ~ Add verifier tests on some opcodes #180.
+      ~ Added signature test cases for class/method, and bad
+        signatures #182.
+      ~ Add Const.MAJOR_20.
+      ~ Add Const.MINOR_20.
+      ~ Add Const.MAJOR_21.
+      ~ Add Const.MINOR_21.
+      ~ [Bcelifier] stackmap support to pass JDK verifier #177.
+      ~ Fix SpotBugs [ERROR] Class org.apache.bcel.util.ClassVector
+        defines non-transient non-serializable instance field vec
+        [org.apache.bcel.util.ClassVector] In ClassVector.java
+        SE_BAD_FIELD.
+      ~ Fix SpotBugs [ERROR] Switch statement found in
+        org.apache.bcel.util.BCELFactory.visitAllocationInstruction(AllocationInstruction)
+        where one case falls through to the next case
+        [org.apache.bcel.util.BCELFactory,
+        org.apache.bcel.util.BCELFactory] At
+        BCELFactory.java:[lines 188-191]Another occurrence at
+        BCELFactory.java:[lines 192-196] SF_SWITCH_FALLTHROUGH.
+    + Fixed bugs:
+      ~ When parsing an class with an invalid constant reference,
+        ensure ClassParser.parse() throws ClassFormatException, not
+        NullPointerException.
+      ~ Ensure that references to a constant pool entry with index
+        zero trigger a ClassFormatException, not a
+        NullPointerException.
+      ~ Ensure that references to the unused constant pool entry
+        after a long/double entry triggers a ClassFormatException,
+        not a NullPointerException.
+      ~ Test and coverage of InstructionFactory #190.
+      ~ Verifier: test and coverage for SWAP instruction #188.
+      ~ Exception parsing Kotlin class with 'fun `method name with
+        () in it`()' #205.
+      ~ Fix null pointers in AnnotationEntry #213.
+      ~ Field not found, search field in both super class and
+        implemented interfaces (5x duplicated code to find field by
+        name and type is refactored to a new method and now
+        supports package-private) #181.
+      ~ BCEL-366: Use alternative name for broken classes under
+        test #220.
+      ~ BCEL-367: Fixes java.lang.IndexOutOfBoundsException for
+        ATHROW on empty stack #223.
+      ~ BCEL-368: Fixes java.lang.StackOverflowError in
+        Select#toString(boolean) #229.
+      ~ Fix for type.getType(...) use on non-signature type names
+        #221.
+      ~ Fix EmptyVisitorTestCase on Java 21.
+    + Changes:
+      ~ Bump commons-parent from 54 to 65 #189, #198, #222.
+      ~ Bump jna.version from 5.12.1 to 5.13.0 #203.
+      ~ Bump kotlin-stdlib from 1.8.10 to 1.9.21 #217, #219, #227,
+        #231, #235, #245, #247.
+      ~ Bump commons-io from 2.11.0 to 2.15.1.
+      ~ Bump commons-lang3 from 3.12.0 to 3.14.0.
+      ~ Bump org.codehaus.mojo:exec-maven-plugin from 3.1.0 to
+        3.1.1 #246.
+
+-------------------------------------------------------------------
 Thu Aug 31 08:38:22 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version 6.7.0

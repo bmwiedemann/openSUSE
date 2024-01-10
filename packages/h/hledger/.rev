@@ -167,4 +167,20 @@
     <comment>version update</comment>
     <requestid>1130929</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>da0cc29f3a2625404d43de77e7d65c94</srcmd5>
+    <version>1.32.1</version>
+    <time>1702845110</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1133557</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>b6d1638ca673c4d3996c09574c7f517d</srcmd5>
+    <version>1.32.1</version>
+    <time>1703527499</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1134684</requestid>
+  </revision>
 </revisionlist>

@@ -155,6 +155,8 @@ Group: System/Filesystems
 %endif
 URL: http://ceph.com/
 Source0: %{?_remote_tarball_prefix}ceph-16.2.14-66-g7aa6ce9419f.tar.bz2
+# PATCH-FIX-UPSTREAM ceph-cmake-3.28.patch -- Fix build with cmake 3.28 but without git
+Patch0: ceph-cmake-3.28.patch
 %if 0%{?suse_version}
 Source92: ceph-rpmlintrc
 Source93: checkin.sh

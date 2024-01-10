@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Dec 15 10:55:19 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.3.9
+  * Bugfix: glfwGetKeyScancode returned 0 on error when initialized
+    instead of -1.
+  * Bugfix: Failure to make a newly created context current could
+    cause segfault.
+  * [Wayland] Added improved fallback window decorations via
+    libdecor.
+  * [Wayland] Bugfix: Connecting a mouse after glfwInit would
+    segfault.
+  * [Wayland] Disabled alpha channel for opaque windows on systems
+    lacking EGL_EXT_present_opaque.
+  * [Wayland] Bugfix: Buffer would overrun when storing received
+    drag offer.
+  * [Wayland] Bugfix: Joysticks connected after glfwInit were not
+    detected.
+  * [Wayland] Bugfix: Fallback decorations emitted
+    GLFW_CURSOR_UNAVAILABLE errors.
+  * [Wayland] Bugfix: Some events could fail to end wait for new
+    events.
+  * [Linux] Bugfix: Joysticks without buttons were ignored.
+  * [Linux] Bugfix: A small amount of memory could leak if
+    initialization failed.
+  * [EGL] Added loading of glvnd libOpenGL.so.0 where available for
+    OpenGL.
+  * [EGL] Bugfix: EGL_EXT_present_opaque caused issues on X11 with
+    Nvidia blob.
+  * [EGL] Bugfix: Setting GLFW_CONTEXT_DEBUG caused creation to
+    fail.
+  * [GLX] Added loading of glvnd libGLX.so.0 where available.
+
+-------------------------------------------------------------------
 Mon May  8 14:41:35 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix Name tag: the two source builds must be uniquely identified,

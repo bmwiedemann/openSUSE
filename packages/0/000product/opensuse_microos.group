@@ -2,8 +2,6 @@
   <!-- ### AUTOMATICALLY GENERATED, DO NOT EDIT ### -->
   <packagelist relationship="recommends">
     <package name="7zip" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
-    <package name="AppStream" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
-    <package name="AppStream-lang" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="ImageMagick" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="ImageMagick-config-7-SUSE" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="Mesa" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
@@ -130,7 +128,7 @@
     <package name="bluez-qt-imports" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="bluez-qt-udev" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="bolt" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
-    <package name="boost-license1_83_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
+    <package name="boost-license1_84_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="branding-openSUSE" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="breeze" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="breeze5-cursors" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
@@ -715,6 +713,7 @@
     <package name="kernel-firmware-amdgpu" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="kernel-firmware-ath10k" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="kernel-firmware-ath11k" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
+    <package name="kernel-firmware-ath12k" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="kernel-firmware-atheros" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="kernel-firmware-bluetooth" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="kernel-firmware-bnx2" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
@@ -834,7 +833,7 @@
     <package name="layer-shell-qt5" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="less" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="lftp" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
-    <package name="libAppStreamQt2" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
+    <package name="libAppStreamQt5-3" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libFLAC12" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libFcitx5GClient2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libGLU1" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
@@ -1033,7 +1032,7 @@
     <package name="libQtQuick5" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libSDL2-2_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libSM6" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
-    <package name="libSPIRV-Tools-2023_5_rc1" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
+    <package name="libSPIRV-Tools-2023_6_rc1" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libSoundTouch1" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="libSvtAv1Enc1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libWPEBackend-fdo-1_0-1" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
@@ -1084,7 +1083,7 @@
     <package name="libappmenu-gtk2-parser0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libappmenu-gtk3-parser0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libappstream-glib8" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
-    <package name="libappstream4" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base-packagekit -->
+    <package name="libappstream5" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base-packagekit -->
     <package name="libarchive13" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libargon2-1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libasm1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
@@ -1134,10 +1133,10 @@
     <package name="libblogger2" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libbluetooth3" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libbluray2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
-    <package name="libboost_filesystem1_83_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
-    <package name="libboost_iostreams1_83_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
-    <package name="libboost_locale1_83_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
-    <package name="libboost_thread1_83_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
+    <package name="libboost_filesystem1_84_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
+    <package name="libboost_iostreams1_84_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
+    <package name="libboost_locale1_84_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
+    <package name="libboost_thread1_84_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libbox2d2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libbpf1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libbreezecommon5-5" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
@@ -1339,7 +1338,7 @@
     <package name="libgjs0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="libglib-2_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libglibmm-2_4-1" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
-    <package name="libglslang13" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
+    <package name="libglslang14" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libglvnd" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libgme0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="libgmodule-2_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
@@ -1913,7 +1912,7 @@
     <package name="libvidstab1_1" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libvisio-0_1-1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libvisual-0_4-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
-    <package name="libvmaf1" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
+    <package name="libvmaf3" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libvmtools0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
     <package name="libvo-amrwbenc0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libvorbis0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
@@ -2212,6 +2211,7 @@
     <package name="patterns-yast-yast2_basis" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="patterns-yast-yast2_desktop" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="pciutils" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
+    <package name="pcr-oracle" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
     <package name="pcsc-lite" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="pentaho-libxml" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="pentaho-reporting-flow-engine" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
@@ -2284,7 +2284,7 @@
     <package name="pkgconf" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="pkgconf-m4" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="pkgconf-pkg-config" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
-    <package name="plasma-branding-MicroOS" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
+    <package name="plasma-branding-Kalpa" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="plasma-browser-integration" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="plasma-browser-integration-lang" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="plasma-framework" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
@@ -2489,7 +2489,7 @@
     <package name="python311-setools" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="python311-setuptools" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="python311-simplejson" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
-    <package name="python311-six" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
+    <package name="python311-six" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="python311-sniffio" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
     <package name="python311-tornado6" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
     <package name="python311-typing_extensions" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->

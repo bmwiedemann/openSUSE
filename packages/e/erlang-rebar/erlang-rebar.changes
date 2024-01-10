@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Jan  4 14:46:57 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- HACK: do not build the -testsuite flavor in distro projects (i.e
+  in repositories called 'standard'). Allows to get fixes included
+  in the distro while the test suite actually still fails
+  (boo#1205140).
+
+-------------------------------------------------------------------
+Thu Aug 10 09:45:23 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add _multibuild: declare additional spec files as further flavors
+  to build. Allows OBS to build those spec files without the need
+  for linked packages.
+
+-------------------------------------------------------------------
+Wed Oct 12 17:49:50 UTC 2022 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Add 0001-Fix-rebar-xref-for-recent-Erlang.patch:
+  fix testsuite
+
+-------------------------------------------------------------------
 Wed Jun 30 12:41:37 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Move rpm macros from /etc/rpm to %{_rpmmacrodir} (boo#1185668).

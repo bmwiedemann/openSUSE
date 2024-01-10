@@ -10,4 +10,4 @@ Index: ginac-1.7.11.git20200829/doc/CMakeLists.txt
 +	set(_idx ${_basename}.idx)
  	set(_ind ${_dirname}/${_basename}.ind)
  	set(_pdf ${_dirname}/${_basename}.pdf)
- 	set(_fixupind ${CMAKE_SOURCE_DIR}/scripts/fixupind.py)
+ 	add_custom_command(

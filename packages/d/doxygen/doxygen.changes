@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Dec 25 20:11:52 UTC 2023 - Christoph G <foss@grueninger.de>
+
+- Update to doxygen 1.10.0
+  Full changelog see https://www.doxygen.nl/manual/changelog.html
+- Drop patches that are part of upstream since 1.9.7
+  Fix-boundingbox-parsing_part1.patch,
+  Fix-boundingbox-parsing_part2.patch,
+  Fix-boundingbox-parsing_part3.patch,
+  and Fix-boundingbox-parsing_part4.patch.
+- Drop patch reproducible.patch, it does no longer apply and
+  messing around with the internals of a C++ filesystem library
+  does not seem to be the right approach.
+
+-------------------------------------------------------------------
 Mon Jul 17 17:14:00 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch to make doxytags output reproducible (boo#1201579)

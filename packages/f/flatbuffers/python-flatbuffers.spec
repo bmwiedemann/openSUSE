@@ -1,7 +1,7 @@
 #
 # spec file for package python-flatbuffers
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-flatbuffers
 Version:        23.5.26
 Release:        0
@@ -46,6 +47,7 @@ Python runtime library for use with the Flatbuffers serialization format.
 
 %files %{python_files}
 %license ../LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/flatbuffers*
+%{python_sitelib}/flatbuffers-%{version}*-info
 
 %changelog

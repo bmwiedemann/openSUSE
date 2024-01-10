@@ -18,7 +18,7 @@
 
 %define libname libfcft4
 Name:           fcft
-Version:        3.1.6
+Version:        3.1.7
 Release:        0
 Summary:        A library for font loading and glyph rasterization using FreeType/pixman
 License:        MIT

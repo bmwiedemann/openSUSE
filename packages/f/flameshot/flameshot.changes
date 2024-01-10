@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 29 19:46:23 UTC 2023 - Patrick Poitras <patrick.f.poitras@gmail.com>
+
+- Add runtime dependency from libQt5Svg5. This solves the problem
+  of the pictures on the buttons not displaying.
+
+-------------------------------------------------------------------
 Tue May 16 09:22:22 UTC 2023 - Guido Berhoerster <guido+opensuse@berhoerster.name>
 
 - Add flameshot-remove-update-check.patch: Remove update check, updates are

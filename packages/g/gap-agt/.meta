@@ -1,0 +1,12 @@
+<package name="gap-agt" project="openSUSE:Factory">
+  <title>GAP: Algebraic Graph Theory</title>
+  <description>The AGT package contains a methods used for the determination of
+various algebraic and regularity properties of graphs, as well as
+certain substructures of graphs. The package also contains a library
+of strongly regular graphs, intended to be a resource for
+computational experiments.
+
+</description>
+  <devel project="science" package="gap-agt"/>
+  <url>https://gap-packages.github.io/agt/</url>
+</package>

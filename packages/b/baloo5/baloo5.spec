@@ -16,14 +16,14 @@
 #
 
 
-%define _tar_path 5.103
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
+%define qt5_version 5.15.2
 %bcond_without released
 Name:           baloo5
-Version:        5.112.0
+Version:        5.113.0
 Release:        0
 Summary:        Framework for searching and managing metadata
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-only
@@ -33,27 +33,26 @@ Source:         baloo-%{version}.tar.xz
 Source1:        baloo-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
-BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
-BuildRequires:  kf5-filesystem
+BuildRequires:  extra-cmake-modules >= %{_kf5_version}
 BuildRequires:  libattr-devel
 BuildRequires:  lmdb-devel
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  cmake(KF5Config) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5CoreAddons) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5Crash) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5DBusAddons) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5FileMetaData) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5I18n) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5IdleTime) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5KIO) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5Solid) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(Qt5Concurrent) >= 5.15.0
-BuildRequires:  cmake(Qt5Core) >= 5.15.0
-BuildRequires:  cmake(Qt5DBus) >= 5.15.0
-BuildRequires:  cmake(Qt5Qml) >= 5.15.0
-BuildRequires:  cmake(Qt5Quick) >= 5.15.0
-BuildRequires:  cmake(Qt5Test) >= 5.15.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.15.0
+BuildRequires:  cmake(KF5Config) >= %{_kf5_version}
+BuildRequires:  cmake(KF5CoreAddons) >= %{_kf5_version}
+BuildRequires:  cmake(KF5Crash) >= %{_kf5_version}
+BuildRequires:  cmake(KF5DBusAddons) >= %{_kf5_version}
+BuildRequires:  cmake(KF5FileMetaData) >= %{_kf5_version}
+BuildRequires:  cmake(KF5I18n) >= %{_kf5_version}
+BuildRequires:  cmake(KF5IdleTime) >= %{_kf5_version}
+BuildRequires:  cmake(KF5KIO) >= %{_kf5_version}
+BuildRequires:  cmake(KF5Solid) >= %{_kf5_version}
+BuildRequires:  cmake(Qt5Concurrent) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Core) >= %{qt5_version}
+BuildRequires:  cmake(Qt5DBus) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Qml) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Quick) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Test) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Widgets) >= %{qt5_version}
 
 %description
 Baloo is a framework for searching and managing metadata.
@@ -122,9 +121,9 @@ Summary:        Development package for baloo5
 Requires:       libKF5Baloo5 = %{version}
 Requires:       libKF5BalooEngine5 = %{version}
 Requires:       lmdb-devel
-Requires:       cmake(KF5CoreAddons) >= %{_kf5_bugfix_version}
-Requires:       cmake(KF5FileMetaData) >= %{_kf5_bugfix_version}
-Requires:       cmake(Qt5Core) >= 5.15.0
+Requires:       cmake(KF5CoreAddons) >= %{_kf5_version}
+Requires:       cmake(KF5FileMetaData) >= %{_kf5_version}
+Requires:       cmake(Qt5Core) >= %{qt5_version}
 # DBus interface file
 Conflicts:      baloo-devel
 

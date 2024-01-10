@@ -1,0 +1,32 @@
+From 5ae01fcf270864d379eefd81f1abc5b71907a72b Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sat, 30 Sep 2023 10:09:46 +0100
+Subject: [PATCH] Revert "nhlt-dmic-info.c: include sys/types.h"
+
+This reverts commit 0925ad7f09b2dc77015784f9ac2f5e34dd0dd5c3.
+
+This isn't necessary now that we use standard types (sys/types.h just
+defines some compatibility typedefs).
+
+Closes: https://github.com/alsa-project/alsa-utils/pull/234
+Signed-off-by: Sam James <sam@gentoo.org>
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ nhlt/nhlt-dmic-info.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/nhlt/nhlt-dmic-info.c b/nhlt/nhlt-dmic-info.c
+index eadf21a11bbc..f1b085742510 100644
+--- a/nhlt/nhlt-dmic-info.c
++++ b/nhlt/nhlt-dmic-info.c
+@@ -33,7 +33,6 @@
+ #include <fcntl.h>
+ #include <getopt.h>
+ #include <sys/stat.h>
+-#include <sys/types.h>
+ #include <arpa/inet.h>
+ 
+ int debug = 0;
+-- 
+2.35.3
+

@@ -15,4 +15,12 @@
     <comment>version update</comment>
     <requestid>1080321</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>01305d6c28354148cd2500654a081d45</srcmd5>
+    <version>0.1.0.2</version>
+    <time>1704281106</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1135715</requestid>
+  </revision>
 </revisionlist>

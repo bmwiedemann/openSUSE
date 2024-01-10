@@ -124,4 +124,41 @@
   * FIXED: Don't use undefined version string</comment>
     <requestid>866744</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>94f29cbc8db7ed6cbec142188b86baff</srcmd5>
+    <version>6.7.0</version>
+    <time>1703800903</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 6.7.0:
+  * version bump
+  * FIXED: Fix error detecting tables when indented in list items -- Thanks, @wnm3!
+  * Avoid space to be eaten aways after a slash in latex export
+  * UPDATED: Update github CI for multiple platforms
+  * UPDATED: Update github CI for multiple platforms
+  * UPDATED: Update github CI for multiple platforms
+  * UPDATED: Update github CI for multiple platforms
+  * UPDATED: Update github CI for multiple platforms
+  * ci: added github CI
+  * FIXED: Fix issue with reference links with leading space instead of tab
+  * FIXED: Fix edge case where table separator without leading pipe is treated as a list item
+  * FIXED: Fix architecture issue when running multimarkdown from Xcode
+  * FIXED: bibtex metadata should be raw
+  * FIXED: Fix typos in error messages
+  * UPDATED: standardize common source files
+  * ADDED: Add more token types
+  * FIXED: Don't output empty figure captions
+  * FIXED: Fix issue with certain nested lists
+  * use unsigned short in implementation, too
+  * specify unsigned short for functions in token.h
+  * FIXED: Use MultiMarkdown instead of libMultiMarkdown as title in version.h
+  * FIXED: Improve markup handling around definition lists and colons
+  * FIXED: Fix flow control error
+  * FIXED: Improve edge cases around fenced code blocks and setext headers
+  * FIXED: Fix trailing whitespace issues in headers/TOC
+  * FIXED: Improve token mapping in header blocks
+  * FIXED: Use UTC for timestamp
+  * ADDED: Add compiler flag (DISABLE_OBJECT_POOL) to disable token pools
+  * UPDATED: Update lexers with newer version of re2c</comment>
+    <requestid>1135290</requestid>
+  </revision>
 </revisionlist>

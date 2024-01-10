@@ -18,7 +18,7 @@
 
 
 Name:           gamemode
-Version:        1.7
+Version:        1.8.1
 Release:        0
 Summary:        Daemon/library combo for changing Linux system performance on demand
 License:        BSD-3-Clause
@@ -30,13 +30,13 @@ Source2:        gamemode-rpmlintrc
 Source3:        README.openSUSE
 Source4:        baselibs.conf
 Source5:        feral.keyring
-Patch0:         only-build-shared-library.patch
 BuildRequires:  cmake
 BuildRequires:  libinih-devel
 BuildRequires:  meson
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  polkit-devel
+BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(dbus-1)
 # Yes, it needs both
 BuildRequires:  pkgconfig(libsystemd)
@@ -66,12 +66,16 @@ For Steam games this can be done by editing the launch options:
 
     gamemoderun %%command%%
 
+Note that some functionalities, like modifying the CPU governor, require
+the user to be in the priviledged "gamemode" group.
+
 %package -n gamemoded
 Summary:        The GameMode daemon required by GameMode enabled games
 Group:          Amusements/Games/Other
 Recommends:     libgamemode
 Suggests:       gamemode
 Suggests:       libgamemodeauto
+%sysusers_requires
 
 %description -n gamemoded
 GameMode is a daemon/lib combo for Linux that allows games to request
@@ -132,9 +136,6 @@ built-in GameMode support.
 
 cp %{SOURCE3} .
 
-# Work around broken pidfd_open detection on Tumbleweed
-sed -i 's/pidfd_open = .*/pidfd_open = false/' meson.build
-
 %build
 %meson -Dwith-examples=false
 %meson_build
@@ -144,14 +145,17 @@ sed -i 's/pidfd_open = .*/pidfd_open = false/' meson.build
 
 %install
 %meson_install
-# We don't want to create the gamemode group as without further
-# configuration to actually use it, it does not provide any value
-rm %{buildroot}/%{_sysusersdir}/gamemode.conf
+
+# Fix gamemode PolKit rules being overriden by default rules
+mv %{buildroot}/%{_datadir}/polkit-1/rules.d/gamemode.rules %{buildroot}/%{_datadir}/polkit-1/rules.d/40-gamemode.rules
 
 %post -n libgamemode0 -p /sbin/ldconfig
 %postun -n libgamemode0 -p /sbin/ldconfig
 %post -n libgamemodeauto0 -p /sbin/ldconfig
 %postun -n libgamemodeauto0 -p /sbin/ldconfig
+
+%post -n gamemoded
+%sysusers_create %{name}.conf
 
 %files
 %{_bindir}/gamemodelist
@@ -163,12 +167,18 @@ rm %{buildroot}/%{_sysusersdir}/gamemode.conf
 %files -n gamemoded
 %{_bindir}/gamemoded
 %{_libexecdir}/cpugovctl
+%{_libexecdir}/cpucorectl
 %{_libexecdir}/gpuclockctl
+%{_libexecdir}/procsysctl
 %{_userunitdir}/gamemoded.service
 %{_datadir}/polkit-1/actions/com.feralinteractive.GameMode.policy
+%{_datadir}/polkit-1/rules.d/40-gamemode.rules
 %{_datadir}/dbus-1/services/com.feralinteractive.GameMode.service
 %{_datadir}/metainfo/io.github.feralinteractive.gamemode.metainfo.xml
 %{_mandir}/*/gamemoded*
+%{_sysusersdir}/%{name}.conf
+%dir %{_sysconfdir}/security/limits.d
+%config(noreplace) %{_sysconfdir}/security/limits.d/10-gamemode.conf
 %doc example/gamemode.ini README.openSUSE
 %license LICENSE.txt
 

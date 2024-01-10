@@ -17,7 +17,7 @@
 
 
 Name:           doxywizard
-Version:        1.9.6
+Version:        1.10.0
 Release:        0
 Summary:        Graphical User Interface for Doxygen
 # qtools are used for building and they are GPL-3.0 licensed
@@ -27,7 +27,7 @@ URL:            https://www.doxygen.nl/
 Source:         https://www.doxygen.nl/files/doxygen-%{version}.src.tar.gz
 Source1:        doxywizard.desktop
 BuildRequires:  bison
-BuildRequires:  cmake >= 2.8.12
+BuildRequires:  cmake >= 3.14
 BuildRequires:  flex
 %if 0%{?suse_version} <= 1500
 BuildRequires:  gcc9-c++

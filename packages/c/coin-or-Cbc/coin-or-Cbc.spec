@@ -18,7 +18,7 @@
 %define soversion 3
 
 Name:           coin-or-Cbc
-Version:        2.10.8
+Version:        2.10.11
 Release:        0
 Summary:        COIN-OR Branch-and-Cut solver
 License:        EPL-2.0

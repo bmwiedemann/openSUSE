@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 22 22:32:38 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update utility-ht to version 0.0.17 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Fri Apr 28 10:51:29 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update utility-ht to version 0.0.17.

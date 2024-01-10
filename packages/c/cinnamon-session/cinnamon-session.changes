@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec 20 23:22:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.0.1:
+  * autostart-app: don't try to add child watch to dbus activated
+  * util: Unset some environment variables on systemd
+
+-------------------------------------------------------------------
 Sat Dec  2 08:47:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.0.0:

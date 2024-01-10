@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Thu Dec 28 12:11:52 UTC 2023 - socvirnyl.estela@gmail.com
+
+- Update to version 1703745713.f01c8eed:
+  * OpenBSD: rt fix munmap system call
+  * OpenBSD: fix CI
+
+-------------------------------------------------------------------
+Sat Dec 23 02:20:15 UTC 2023 - socvirnyl.estela@gmail.com
+
+- Update to version 1703237889.6c1a836c:
+  * correct inotify_event to use [*]u8
+  * make rt/+{arch}/restore.s platform-specific to +linux
+  * rt/: prepare for IBT support
+  * strings: Further simplify sub
+  * os: handle errors on file system iteration
+  * strconv::stof32 fix doc
+- Update specfile
+  * Always be specific with harec versions. Some hare versions won't
+    work if harec version is not specified.
+
+-------------------------------------------------------------------
+Sat Dec 16 01:10:17 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Add filter to rpmlint
+  * filelist-forbidden-fhs23
+
+-------------------------------------------------------------------
+Sat Dec 16 01:03:47 UTC 2023 - Soc Virnyl Estela <contact@uncomfyhalomacro.pl>
+
+- Move SRCDIR and HAREPATHs to `/usr/src` instead from `/usr/lib`
+  or `/usr/lib64`. Respect defaults if possible.
+- Update to version 1702417101.ce67adb5:
+  * +libc: Avoid overriding the default linker script on other platforms
+  * FreeBSD: Fix build with +libc
+  * os fs.ha: s/errors::errno/fs_to_errno/
+  * OpenBSD: implement os::mkfifo and os::mkfile
+  * math: Accept types::signed instead of integer in absi
+  * cmd/{hare,haredoc}: remove unused imports
+  * cmd/{hare,haredoc}: Don't allocate tags
+  * haretype: use system architecture
+  * os: add arch type and functions
+  * cmd/haredoc: replace split with rtokenize
+  * io: improve seek and whence docs
+  * test: display special msg when no tests are run
+  * hare deps: print more intuitive msg when no deps
+  * os+linux: add mkfile
+  * os+linux: s/Unix/Unix-like/
+  * haredoc: submodules newline fixes
+  * hare build: fix order of flags
+  * getopt: improve docs
+  * all: always use tabs for indentation
+  * hare::parse::doc: add docs
+  * haredoc: error out when more than one arg supplied
+  * docs: rename hare-doc(5) to haredoc(5)
+  * os+openbsd: remove extra License: header
+  * rt+linux: fix some types
+  * hare::parse: improve assign expr error message
+  * strings: use type assertion in iter tests
+  * strings: test contains with no variadic arguments
+  * strings: test join with only one variadic argument
+  * strings: test concat with only one argument
+  * hare::ast: remove inaccurate comment
+  * path: mention fs::resolve in README
+  * docs/rfc-template: wrap at 72 columns
+  * memio+test: use defer for closing streams
+  * cmd/*: fix memory leaks
+  * ascii: add strlower_buf and strupper_buf
+  * hare::parse: disallow mixing @init, @fini, and @test
+  * hare::ast: s/constant/literal/g
+  * hare build: only overwrite executable files
+  * hare::parse+test: add labelled compound test
+  * hare::*: support for/switch/match labels
+  * all: update labelled loop syntax
+  * cmd::hare add comments and cleanup
+
+-------------------------------------------------------------------
 Fri Dec  8 14:27:46 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Add README-suse-maint.md

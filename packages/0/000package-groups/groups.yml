@@ -24,6 +24,12 @@ OUTPUT:
       includes:
         - common_locks
         - opensuse_aeon
+  - opensuse_kalpa:
+      recommends: true
+      require_all: true
+      includes:
+        - common_locks
+        - opensuse_kalpa
 
 common_locks:
   - dummy-release: [locked]
@@ -386,4 +392,9 @@ opensuse_microos_desktop:
 opensuse_aeon:
   - Aeon-release: [x86_64]
   - patterns-aeon-base: [x86_64]
+  - suse-module-tools-scriptlets
+
+opensuse_kalpa:
+  - Kalpa-release: [x86_64]
+  - patterns-kalpa-base: [x86_64]
   - suse-module-tools-scriptlets

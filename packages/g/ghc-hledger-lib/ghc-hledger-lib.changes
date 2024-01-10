@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Dec 14 19:04:21 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update hledger-lib to version 1.32.1 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Thu Dec  7 21:25:06 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update hledger-lib to version 1.32.1.
+  Upstream's change log file format is strange (too much unmodified
+  text at at the top). The automatic updater cannot extract the
+  relevant additions. You can find the file at:
+  http://hackage.haskell.org/package/hledger-lib-1.32.1/src/CHANGES.md
+
+-------------------------------------------------------------------
 Sat Dec  2 05:12:18 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update hledger-lib to version 1.32.

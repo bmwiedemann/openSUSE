@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec 27 11:33:47 UTC 2024 - Cliff Zhao <qzhao@suse.com>
+
+- Update ibus-libpinyin.spec: Change build requirement and installation
+  requirement from python310 to python311 in SLE-15-SP6 and later
+  release, since there's no python310 provided yet.
+  (bsc#1218160)
+
+-------------------------------------------------------------------
 Sun Dec  3 13:29:11 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.15.5

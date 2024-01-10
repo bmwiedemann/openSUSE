@@ -2289,4 +2289,18 @@ New stable rel</comment>
     <comment>Update to 3.50.2 (forwarded request 1130195 from dimstar)</comment>
     <requestid>1130311</requestid>
   </revision>
+  <revision rev="252" vrev="1">
+    <srcmd5>9923c563860b6796f8c2dc7474f65cdf</srcmd5>
+    <version>3.50.3</version>
+    <time>1704558552</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.50.3:
+  + Camel: Ignore errors about missing messages during filtering.
+  + Bug Fixes:
+    - sqlite3_enable_shared_cache is deprecated
+    - Camel: Hide errors from for-offline download
+    - IMAP: Copy/move messages in smaller batches
+  + Updated translations. (forwarded request 1137095 from dimstar)</comment>
+    <requestid>1137098</requestid>
+  </revision>
 </revisionlist>

@@ -255,4 +255,20 @@
     <comment>go1.19 is EOL, swith to go&gt;=1.20 [bsc#1215806] (forwarded request 1114120 from vlefebvre)</comment>
     <requestid>1114247</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>78bcda7454c0804c3d188be11668f60b</srcmd5>
+    <version>2.1.9</version>
+    <time>1702936524</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1133812</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>b82da3776deb7238847e3e3a75fd5480</srcmd5>
+    <version>2.1.10</version>
+    <time>1703102449</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1134004</requestid>
+  </revision>
 </revisionlist>

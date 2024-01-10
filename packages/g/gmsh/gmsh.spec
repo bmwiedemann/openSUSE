@@ -16,13 +16,13 @@
 #
 
 
-%define libver 4_11
+%define libver 4_12
 %bcond_with static_lib
 %bcond_with pdf_doc
 # julia dropped from oS:Factory [2022-06-10 13:57:27]
 %bcond_with julia
 Name:           gmsh
-Version:        4.11.1
+Version:        4.12.0
 Release:        0
 Summary:        A three-dimensional finite element mesh generator
 License:        Apache-2.0 AND GPL-2.0-or-later AND (GPL-2.0-or-later OR LGPL-3.0-or-later) AND LGPL-2.1-or-later AND MPL-2.0 AND BSD-2-Clause AND BSD-3-Clause AND BSL-1.0 AND CC0-1.0 AND X11
@@ -32,8 +32,6 @@ Source0:        https://gmsh.info/src/gmsh-%{version}-source.tgz
 Patch0:         link_dynamic_gl2ps.patch
 Patch1:         gmsh-2.10.1-implicit.patch
 Patch2:         gmsh-3.0.5-add-shebang-to-onelab.patch
-# PATCH-FIX-UPSTREAM - see https://gitlab.onelab.info/gmsh/gmsh/-/issues/2416
-Patch3:         0001-Add-missing-cstdint-header.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  cgns-devel >= 3.4.0
 BuildRequires:  cmake >= 2.8
@@ -140,7 +138,7 @@ Summary:        Python API for the gmsh mesh generator
 Group:          Development/Libraries
 Requires:       libgmsh%{libver}
 Suggests:       %{name}-demos
-Supplements:    packageand(python3-base:gmsh)
+Supplements:    (python3-base and gmsh)
 BuildArch:      noarch
 
 %description  -n python3-gmsh

@@ -29,6 +29,8 @@ Group:          Development/Libraries/C and C++
 URL:            http://www.gupnp.org/
 Source0:        https://download.gnome.org/sources/gupnp/1.6/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
+# PATCH-FIX-UPSTREAM 00514fb6.patch -- Fix compatibility with libxml2 2.12.x
+Patch0:         https://gitlab.gnome.org/GNOME/gupnp/-/commit/00514fb6.patch
 
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  meson >= 0.54.0
@@ -61,7 +63,7 @@ Group:          Development/Libraries/C and C++
 Obsoletes:      libgupnp-1_2-0
 
 %description -n libgupnp-%{soname}
-GUPnP implements the UPnP specification: resource announcement and
+	GUPnP implements the UPnP specification: resource announcement and
 discovery, description, control, event notification, and presentation
 (GUPnP includes basic web server functionality through libsoup). GUPnP
 does not include helpers for construction or control of specific

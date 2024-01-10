@@ -18,7 +18,7 @@
 
 %define dirbase ardour8
 Name:           ardour
-Version:        8.1.0
+Version:        8.2.0
 Release:        0
 Summary:        Multichannel Digital Audio Workstation
 # Legal: Ardour is a mix of GPL-2.0-or-later, [L]GPL-3.0-or-later and a couple copyleft
@@ -188,6 +188,7 @@ rm -r %{buildroot}%{_datadir}/appdata
 %doc doc README
 %dir %{_sysconfdir}/%{dirbase}
 %config(noreplace) %{_sysconfdir}/%{dirbase}/*
+%{_bindir}/ardour8-new_aaf_session
 %{_bindir}/%{dirbase}
 %{_bindir}/%{dirbase}-copy-mixer
 %{_bindir}/%{dirbase}-export

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 14 14:19:39 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add dcmtk-fix-pkgconfig.patch: Removed leading spaces in
+  dcmtk.pc.in. This in turn makes the .pc file actually valid.
+
+-------------------------------------------------------------------
 Thu May 11 14:31:47 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream change (boo#1206070, CVE-2022-43272):

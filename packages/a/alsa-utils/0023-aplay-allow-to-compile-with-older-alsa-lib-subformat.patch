@@ -1,0 +1,30 @@
+From 8e6351f19d803e969c5d2fc874033f3cf68b89c4 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Tue, 12 Dec 2023 13:47:03 +0100
+Subject: [PATCH] aplay: allow to compile with older alsa-lib (subformat)
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ aplay/aplay.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/aplay/aplay.c b/aplay/aplay.c
+index 03443df52d33..fc4bac697226 100644
+--- a/aplay/aplay.c
++++ b/aplay/aplay.c
+@@ -641,8 +641,12 @@ int main(int argc, char *argv[])
+ 			}
+ 			break;
+ 		case OPT_SUBFORMAT:
++#if SND_LIB_VER(1, 2, 10) < SND_LIB_VERSION
+ 			rhwparams.subformat = snd_pcm_subformat_value(optarg);
+ 			if (rhwparams.subformat == SND_PCM_SUBFORMAT_UNKNOWN) {
++#else
++			if (strcasecmp(optarg, "std") != 0 && strcasecmp(optarg, "standard") != 0) {
++#endif
+ 				error(_("wrong extended subformat '%s'"), optarg);
+ 				prg_exit(EXIT_FAILURE);
+ 			}
+-- 
+2.35.3
+

@@ -24,7 +24,7 @@
 %define devname lib%{name}-%{sorel}-devel
 %define typelibname typelib-1_0-Aravis-%{api}
 Name:           aravis
-Version:        0.8.27
+Version:        0.8.30
 Release:        0
 Summary:        Glib/gobject based library implementing a Genicam interface
 License:        LGPL-2.1-or-later
@@ -110,7 +110,7 @@ This package contains the development files for %{name}
 %install
 %meson_install
 
-%suse_update_desktop_file -r arv-viewer-%{api} AudioVideo AudioVideoEditing
+%suse_update_desktop_file -r org.aravis.viewer-%{api} AudioVideo AudioVideoEditing
 
 %find_lang %{name}-%{api}
 
@@ -134,8 +134,8 @@ This package contains the development files for %{name}
 %{_mandir}/man1/arv-viewer-*
 %{_datadir}/icons/hicolor/*/apps/aravis*
 %dir %{_datadir}/metainfo
-%{_datadir}/metainfo/arv-viewer-%{api}.appdata.xml
-%{_datadir}/applications/arv-viewer-%{api}.desktop
+%{_datadir}/metainfo/org.aravis.viewer-%{api}.appdata.xml
+%{_datadir}/applications/org.aravis.viewer-%{api}.desktop
 
 %files -n %{libname}
 %license COPYING

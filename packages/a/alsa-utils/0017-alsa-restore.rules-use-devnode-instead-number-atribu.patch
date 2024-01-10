@@ -1,0 +1,28 @@
+From b5591747fd432d6289c9594a481982a77d357ed5 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Wed, 15 Nov 2023 15:02:31 +0100
+Subject: [PATCH] alsa-restore.rules: use devnode instead number atribute
+
+Fixes: https://github.com/alsa-project/alsa-utils/issues/244
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ alsactl/90-alsa-restore.rules.in | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/alsactl/90-alsa-restore.rules.in b/alsactl/90-alsa-restore.rules.in
+index c0c1b232bb38..1a411c994870 100644
+--- a/alsactl/90-alsa-restore.rules.in
++++ b/alsactl/90-alsa-restore.rules.in
+@@ -2,7 +2,7 @@ ACTION=="add", SUBSYSTEM=="sound", KERNEL=="controlC*", KERNELS!="card*", TEST==
+ GOTO="alsa_restore_end"
+ 
+ LABEL="alsa_restore_go"
+-TEST!="@daemonswitch@", RUN+="@sbindir@/alsactl restore $attr{device/number}"
+-TEST=="@daemonswitch@", RUN+="@sbindir@/alsactl nrestore $attr{device/number}"
++TEST!="@daemonswitch@", RUN+="@sbindir@/alsactl restore $devnode"
++TEST=="@daemonswitch@", RUN+="@sbindir@/alsactl nrestore $devnode"
+ 
+ LABEL="alsa_restore_end"
+-- 
+2.35.3
+

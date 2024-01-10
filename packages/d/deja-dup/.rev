@@ -692,4 +692,12 @@ So preferably for 13.1 as well.</comment>
     <comment></comment>
     <requestid>1132651</requestid>
   </revision>
+  <revision rev="77" vrev="3">
+    <srcmd5>addcecc7b9fc667e4b4e780b82b7e148</srcmd5>
+    <version>45.1</version>
+    <time>1704380361</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop upstream merged deja-dup-vala-fix.patch</comment>
+    <requestid>1136699</requestid>
+  </revision>
 </revisionlist>

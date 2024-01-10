@@ -2290,4 +2290,21 @@ New Features
 </comment>
     <requestid>1126943</requestid>
   </revision>
+  <revision rev="204" vrev="1">
+    <srcmd5>cf0c405eb745ccedb7754658c43fc50d</srcmd5>
+    <version>9.18.21</version>
+    <time>1704487199</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 9.18.21
+  Removed Features:
+  * Support for using AES as the DNS COOKIE algorithm
+    (cookie-algorithm aes;) has been deprecated and will be removed
+    in a future release. Please use the current default,
+    SipHash-2-4, instead.
+  * The resolver-nonbackoff-tries and resolver-retry-interval
+    statements have been deprecated. Using them now causes a
+    warning to be logged.
+</comment>
+    <requestid>1136815</requestid>
+  </revision>
 </revisionlist>

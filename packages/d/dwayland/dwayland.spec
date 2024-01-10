@@ -1,7 +1,7 @@
 #
 # spec file for package dwayland
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define  sover  5
 
 Name:           dwayland
@@ -25,17 +26,18 @@ License:        LGPL-2.1-or-later
 Group:          System/GUI/Other
 URL:            https://github.com/linuxdeepin/dwayland
 Source0:        https://github.com/linuxdeepin/dwayland/archive/refs/tags/%{version}-deepin.1.4.tar.gz
-BuildRequires:  wayland-devel
-BuildRequires:  libqt5-qtwayland
+BuildRequires:  extra-cmake-modules
 BuildRequires:  libQt5Gui-private-headers-devel
-BuildRequires:  cmake(DeepinWaylandProtocols) 
+BuildRequires:  libqt5-qtwayland
+BuildRequires:  wayland-devel
+BuildRequires:  cmake(DeepinWaylandProtocols)
 BuildRequires:  cmake(KF5Wayland)
-BuildRequires:  pkgconfig(egl)
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5WaylandClient)
-BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Concurrent)
+BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(Qt5Gui)
+BuildRequires:  pkgconfig(Qt5WaylandClient)
 BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(wayland-protocols)
 
 %description
@@ -100,4 +102,3 @@ dwayland.
 %{_datadir}/qlogging-categories5/dwayland.*
 
 %changelog
-

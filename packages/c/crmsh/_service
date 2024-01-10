@@ -3,7 +3,9 @@
     <param name="url">https://github.com/ClusterLabs/crmsh.git</param>
     <param name="scm">git</param>
     <param name="filename">crmsh</param>
-    <param name="versionformat">4.6.0+%cd.%h</param>
+    <param name="versionformat">@PARENT_TAG@+%cd.%h</param>
+    <param name="versionrewrite-pattern">(\d+\.\d+\.\d+)(?:-rc\d+)?(.*)</param>
+    <param name="versionrewrite-replacement">\1\2</param>
     <param name="revision">crmsh-4.6</param>
     <param name="changesgenerate">enable</param>
   </service>

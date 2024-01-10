@@ -13,19 +13,12 @@
 # published by the Open Source Initiative.
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
-#
-# nodebuginfo
 
-
-# Disable binary stripping because bpftrace depends on debug symbols in its
-# implementation of the BEGIN trigger. See bsc#1178928.
-%undefine _build_create_debug
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 # Use the latest supported LLVM version, but Leap only has a slightly older one
 # so just use whatever version is available.
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150500
-%define llvm_major_version 15
+%if 0%{?suse_version} > 1600 || 0%{?sle_version} > 150500
+%define llvm_major_version 17
 %else
 %define llvm_major_version %{nil}
 %endif
@@ -46,6 +39,7 @@ BuildRequires:  clang%{llvm_major_version}-devel
 BuildRequires:  cmake
 BuildRequires:  flex
 BuildRequires:  libbpf-devel
+BuildRequires:  libdw-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  llvm%{llvm_major_version}-devel
 BuildRequires:  pkgconfig
@@ -84,11 +78,12 @@ find tools -name '*.bt' -type f \
 	-exec sed -i '1s|^#!%{_bindir}/env bpftrace|#!%{_bindir}/bpftrace|' '{}' ';'
 
 %build
-# We need to build with clang.
+# We need to build with clang, enable LTO via CMake instead.
 %define _lto_cflags %{nil}
 export CC="clang"
 export CXX="clang++"
 %cmake \
+	-DCMAKE_INTERPROCEDURAL_OPTIMIZATION:BOOL=TRUE \
 	-DLLVM_REQUESTED_VERSION="${LLVM_VERSION}" \
 	-DLIBBFD_LIBRARIES="${LIBBFD}" \
 	-DLIBOPCODES_LIBRARIES="${LIBOPCODES}" \

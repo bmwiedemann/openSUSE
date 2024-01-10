@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Jan  4 06:48:52 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 0.11.3:
+  + Fixed
+    - ndi: Mark a private type as such and remove a wrong `Clone`
+      impl of internal types.
+    - uriplaylistbin: Fix a minor clippy warning.
+    - fallbacksrc: Fix error during badly timed timeout scheduling.
+    - webrtcsink: Fail gracefully if webrtcbin pads can't be
+      requested instead of panicking.
+    - threadshare: Fix deadlock in `ts-udpsrc`
+      `notify::used-socket` signal emission.
+  + Changed
+    - Update to AWS SDK 1.0.
+    - Update to windows-sys 0.52.
+    - Update to async-tungstenite 0.24.
+    - Update to bitstream-io 2.0.
+    - tttocea608: De-duplicate some functions.
+    - gtk4: Use async-channel instead of deprecated GLib main
+      context channel.
+
+-------------------------------------------------------------------
+Wed Dec 27 13:55:40 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
+
+- Update BuildRequires on cargo-c >= 0.9.21.
+
+-------------------------------------------------------------------
 Thu Nov 16 12:11:54 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add arm to excluded arches.

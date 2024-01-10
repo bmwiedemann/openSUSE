@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec 27 10:56:08 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.61
+  * netconfig: Always set DHCP MAC address on start
+  * netlink: Add workaround for missing NLM_F_ACK_TLVS
+    and NLM_F_CAPPED
+
+-------------------------------------------------------------------
 Tue Nov 21 15:34:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.60:

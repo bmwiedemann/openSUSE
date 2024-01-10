@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Mon Apr 25 08:29:27 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.2.1
+  * Metadata changes only
+
+-------------------------------------------------------------------
+Fri Dec 22 19:43:17 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 3.1.0
+  * Support PARI 2.9.0
+
+-------------------------------------------------------------------
+Fri May 10 13:47:02 UTC 2013 - jengelh@inai.de
+
+- Split alnuth (version 3.0.0) off the gap RPM package

@@ -30,6 +30,7 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
+BuildRequires:  extra-cmake-modules
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Baloo) >= %{kf5_version}
 BuildRequires:  cmake(KF5Config) >= %{kf5_version}

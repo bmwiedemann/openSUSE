@@ -11,3 +11,9 @@ Although activated via D-Bus. The daemon is run using Systemd and can easily
 be restarted via systemctl.
 
     systemctl --user restart gamemoded
+
+Permissions
+===========
+
+Some feature, like renicing the process run in GameMode, require elevated priviledges.
+To grant these, add your user to the "gamemode" group.

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec 15 22:02:40 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Require extra-cmake-modules at build time
+
+-------------------------------------------------------------------
 Tue Nov 14 12:32:32 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Add patch to detect and use libexiv2 0.28.1

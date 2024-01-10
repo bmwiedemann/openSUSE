@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec 24 19:44:58 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20231224
+  * Add gh-trim-workflowruns script
+  * git-forest: port to Perl 5.38
+
+-------------------------------------------------------------------
 Wed Nov  1 10:24:42 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20231101

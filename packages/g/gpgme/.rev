@@ -825,4 +825,12 @@ See the HACKING file in the doc directory (forwarded request 176432 from babelwo
     <comment></comment>
     <requestid>1131307</requestid>
   </revision>
+  <revision rev="105" vrev="3">
+    <srcmd5>11060923f2ea98036fb5b96f84a8accf</srcmd5>
+    <version>1.23.2</version>
+    <time>1704659954</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1137281</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,5 @@
+<package name="darkhttpd" project="openSUSE:Factory">
+  <title>When you need a web server in a hurry.</title>
+  <description></description>
+  <devel project="server:http" package="darkhttpd"/>
+</package>

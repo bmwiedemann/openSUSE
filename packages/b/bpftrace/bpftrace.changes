@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Dec 20 22:44:04 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- No longer keep debug info: this is not needed since version 0.16
+  because of gh#iovisor/bpftrace#2264. This reduces binary and
+  package size significantly, and shouldn't regress on bsc#1178928.
+- Enable (Thin)LTO via CMake.
+
+-------------------------------------------------------------------
+Thu Dec 14 11:21:31 UTC 2023 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Bump LLVM major version to 17
+- Support DWARF parsing (boo#1217737)
+
+-------------------------------------------------------------------
 Mon Nov 13 09:17:21 UTC 2023 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
 - Update to 0.19.1

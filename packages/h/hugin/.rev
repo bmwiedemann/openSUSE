@@ -639,4 +639,13 @@
     <comment>- Add fix_build_with_exiv2_0-28.pach, fixing build with exiv2-0.28 (forwarded request 1096982 from tux93)</comment>
     <requestid>1099040</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>6c9dddf44e0f351e94d16128fdb3ee23</srcmd5>
+    <version>2023.0.0</version>
+    <time>1704281399</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2023.0.0.
+- Drop fix_build_with_exiv2_08.pach: upstreamed. (forwarded request 1136080 from badshah400)</comment>
+    <requestid>1136148</requestid>
+  </revision>
 </revisionlist>

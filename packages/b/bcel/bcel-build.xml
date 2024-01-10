@@ -10,8 +10,8 @@
 
   <property name="project.groupId" value="org.apache.bcel"/>
   <property name="project.artifactId" value="bcel"/>
-  <property name="project.version" value="6.7.0"/>
-  <property name="spec.version" value="6.7"/>
+  <property name="project.version" value="6.8.0"/>
+  <property name="spec.version" value="6.8"/>
 
   <property name="compiler.source" value="1.8"/>
   <property name="compiler.target" value="${compiler.source}"/>

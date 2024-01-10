@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Dec 20 18:19:12 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update typst-symbols to version 0.1.5 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Wed Nov 15 05:38:36 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update typst-symbols to version 0.1.5.
+  Upstream has not updated the file "CHANGELOG.md" since the last
+  release.
+
+-------------------------------------------------------------------
 Sat Aug 19 07:18:54 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update typst-symbols to version 0.1.4.

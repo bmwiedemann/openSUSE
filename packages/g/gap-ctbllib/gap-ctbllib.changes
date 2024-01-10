@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Tue Aug  1 00:25:55 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.3.6
+  * Adjust for building with future GAP 4.13
+
+-------------------------------------------------------------------
+Sun Jun 25 09:29:05 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.3.5
+  * No changelog was provided
+
+-------------------------------------------------------------------
+Sun Oct  2 16:31:59 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to new upstream version 1.3.4
+  * Added various new tables, including the 3-modular Brauer table
+    of U[3](8).(S[3] ×3).
+
+-------------------------------------------------------------------
+Fri May 10 13:47:02 UTC 2013 - jengelh@inai.de
+
+- Split ctbllib (version 1.2.2) off the gap RPM package

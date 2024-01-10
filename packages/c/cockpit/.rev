@@ -363,4 +363,20 @@
   * Copied selinux_libdir.patch from SLEM package</comment>
     <requestid>1112773</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>9726e6c7ea6adf4487d96252f7f533f2</srcmd5>
+    <version>307</version>
+    <time>1704380173</time>
+    <user>dimstar_suse</user>
+    <comment>- new version 307:
+  https://cockpit-project.org/blog/cockpit-307.html
+  https://cockpit-project.org/blog/cockpit-306.html
+  https://cockpit-project.org/blog/cockpit-305.html
+  https://cockpit-project.org/blog/cockpit-304.html
+  https://cockpit-project.org/blog/cockpit-303.html
+  https://cockpit-project.org/blog/cockpit-302.html
+  https://cockpit-project.org/blog/cockpit-301.html
+- css-overrides.patch, storage-btrfs.patch: refreshed</comment>
+    <requestid>1135660</requestid>
+  </revision>
 </revisionlist>

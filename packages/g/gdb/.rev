@@ -2594,4 +2594,24 @@ Please forward to 13.2, so we can have a working DrKonqi there (forwarded reques
 </comment>
     <requestid>1126771</requestid>
   </revision>
+  <revision rev="174" vrev="4">
+    <srcmd5>3bcf2795561866793949a58c97f00a2f</srcmd5>
+    <version>13.2</version>
+    <time>1703024132</time>
+    <user>anag+factory</user>
+    <comment>- Patches added (backport from gdb-patches, swo#30728):
+  * gdb-symtab-refactor-condition-in-scan_attributes.patch
+  * gdb-symtab-factor-out-m_die_range_map-usage.patch
+  * gdb-symtab-handle-nullptr-parent-in-parent_map-set_p.patch
+  * gdb-symtab-factor-out-m_deferred_entries-usage.patch
+  * gdb-symtab-resolve-deferred-entries-inter-shard-case.patch
+  * gdb-symtab-keep-track-of-processed-dies-in-shard.patch
+  * gdb-symtab-resolve-deferred-entries-intra-shard-case.patch
+  * gdb-symtab-don-t-defer-backward-refs-inter-cu-intra-.patch
+  * gdb-symtab-recurse-into-c-dw_tag_subprogram-dies-for.patch
+  * gdb-symtab-keep-track-of-all-parents-for-cooked-inde.patch
+  * gdb-symtab-fix-dw_tag_inlined_subroutine-entries-in-.patch
+</comment>
+    <requestid>1133867</requestid>
+  </revision>
 </revisionlist>

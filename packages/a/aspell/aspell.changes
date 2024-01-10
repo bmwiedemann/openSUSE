@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Dec 30 10:26:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.60.8.1:
+  * Fix memory leak in suggestion code introduced in 0.60.8.
+  * Various documentation fixes.
+  * Fix various warnings when compiling with -Wall.
+  * Fix two buffer overflows found by Google’s OSS-Fuzz.
+  * Other minor updates.
+- drop aspell-CVE-2019-25051.patch (upstream)
+
+-------------------------------------------------------------------
 Thu Jul  7 12:28:47 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - switch source urls to https
@@ -243,7 +254,7 @@ Fri Oct 26 18:55:18 CEST 2007 - nadvornik@suse.cz
 -------------------------------------------------------------------
 Wed Aug 22 15:29:31 CEST 2007 - lmichnovic@suse.cz
 
-- defining ncurses_wide library for configure to enable wide 
+- defining ncurses_wide library for configure to enable wide
   UTF-8 characters [#266153]
 
 -------------------------------------------------------------------
@@ -255,7 +266,7 @@ Thu Aug 16 16:38:45 CEST 2007 - lmichnovic@suse.cz
 -------------------------------------------------------------------
 Thu Aug 16 14:38:45 CEST 2007 - lmichnovic@suse.cz
 
-- changed dict- and data-dir back to /usr/{%lib} because dictionary 
+- changed dict- and data-dir back to /usr/{%lib} because dictionary
   files depends on endian.
 - fixed command execution in script "run-with-aspell" (quotes.patch)
 
@@ -270,7 +281,7 @@ Wed Aug 15 13:26:44 CEST 2007 - lmichnovic@suse.cz
 -------------------------------------------------------------------
 Sat Mar 31 19:23:54 CEST 2007 - rguenther@suse.de
 
-- add ncurses-devel BuildRequires. 
+- add ncurses-devel BuildRequires.
 
 -------------------------------------------------------------------
 Sat Mar 31 15:19:36 CEST 2007 - aj@suse.de
@@ -287,11 +298,11 @@ Thu Jan 11 12:28:38 CET 2007 - lmichnovic@suse.cz
 
 - update to version 0.60.5
    * Compile fix for gcc 4.1 (obsoletes gcc-warning.patch)
-   * Updated to Gettext 0.16.1, Libtool 1.5.22, Automake 1.10, 
+   * Updated to Gettext 0.16.1, Libtool 1.5.22, Automake 1.10,
      Autoconf 2.61
    * Documentation improvements, including an updated `man' page.
-   * Complain if more than one file is specified when checking 
-     files using the `aspell check' command, rather than ignoring 
+   * Complain if more than one file is specified when checking
+     files using the `aspell check' command, rather than ignoring
      the other files.
    * Large number of bug fixes.
 
@@ -314,7 +325,7 @@ Fri Jun 30 14:56:21 CEST 2006 - pnemec@suse.cz
 -------------------------------------------------------------------
 Mon Mar 20 13:34:06 CET 2006 - pnemec@suse.cz
 
-- removed virtual package dependency 
+- removed virtual package dependency
 - added aspell-en to Requires #158675
 
 -------------------------------------------------------------------
@@ -366,12 +377,12 @@ Tue Mar 15 15:34:11 CET 2005 - ltinkl@suse.cz
 -------------------------------------------------------------------
 Tue Nov 30 02:42:55 CET 2004 - ro@suse.de
 
-- fix file list 
+- fix file list
 
 -------------------------------------------------------------------
 Mon Nov 29 18:22:05 CET 2004 - ro@suse.de
 
-- fix libdir usage 
+- fix libdir usage
 
 -------------------------------------------------------------------
 Mon Nov 29 13:49:36 CET 2004 - ltinkl@suse.cz
@@ -453,7 +464,7 @@ Fri Nov 01 19:28:21 CET 2002 - pmladek@suse.cz
     * the name of the language-tag option has changed to lang
     * backward compatible the language-tag option will still work
     * english dictionaries are built from separate package
-    * see more details in /usr/share/doc/packages/aspell/README    
+    * see more details in /usr/share/doc/packages/aspell/README
 - removed obsolete config files
 - removed obsolete patches for automake, gcc3.x and x86_64
 - fixed list of documentation to install
@@ -532,7 +543,7 @@ Tue Jun 26 15:23:26 CEST 2001 - schwab@suse.de
 -------------------------------------------------------------------
 Mon Jun 11 17:55:05 CEST 2001 - ro@suse.de
 
-- libtoolize to build 
+- libtoolize to build
 
 -------------------------------------------------------------------
 Wed May 30 10:51:32 CEST 2001 - pmladek@suse.cz

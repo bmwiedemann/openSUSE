@@ -47,4 +47,21 @@
     <comment></comment>
     <requestid>979624</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>caa9de3ed70fa867c0ce7e62acbed946</srcmd5>
+    <version>4.4.0</version>
+    <time>1702936617</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1133861</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>d55c8f2cbba54d62ea3b6c8231f1cbcc</srcmd5>
+    <version>4.4.0</version>
+    <time>1703801043</time>
+    <user>anag+factory</user>
+    <comment>- Fix library package name
+</comment>
+    <requestid>1135545</requestid>
+  </revision>
 </revisionlist>

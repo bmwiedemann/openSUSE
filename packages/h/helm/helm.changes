@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec 14 10:57:32 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 3.13.3:
+  * Updating Helm libraries for k8s 1.28.4
+  * Remove excessive logging
+  * chore(create): indent to spaces
+
+-------------------------------------------------------------------
 Wed Nov 08 19:35:20 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 3.13.2 (bsc#1217013):

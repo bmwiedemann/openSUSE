@@ -18,7 +18,7 @@
 %define soversion 1
 
 Name:           coin-or-Cgl
-Version:        0.60.6
+Version:        0.60.8
 Release:        0
 Summary:        COIN-OR Cut Generator Library
 License:        EPL-2.0

@@ -29,7 +29,7 @@
 %define compiler_version_leap 10
 
 Name:           godot
-Version:        4.2
+Version:        4.2.1
 Release:        0
 Summary:        Cross-Platform Game Engine with an Integrated Editor
 License:        MIT

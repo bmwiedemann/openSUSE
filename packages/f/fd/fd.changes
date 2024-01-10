@@ -1,3 +1,29 @@
+-------------------------------------------------------------------
+Sat Dec 23 10:57:37 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
+
+- require rust >= 1.70.0 for clap_lex dependency
+
+-------------------------------------------------------------------
+Tue Dec 19 11:21:41 UTC 2023 - mvetter@suse.com
+
+- Update to version 9.0.0:
+  Performance:
+  * Performance has been significantly improved, both due to optimizations
+    in the underlying ignore crate (#1429), and in fd itself (#1422, #1408, #13620).
+    Benchmarks results show gains of 6-8x for full traversals of smaller directories
+    (100k files) and up to 13x for larger directories (1M files).
+  * The default number of threads is now constrained to be at most 64. This should
+    improve startup time on systems with many CPU cores. (#1203, #1410, #1412, #1431)
+  * New flushing behavior when writing output to stdout, providing better performance
+    for TTY and non-TTY use cases, see #1452 and #1313.
+  Features:
+  * Support character and block device file types, see #1213 and #1336
+  * Breaking: .git/ is now ignored by default when using --hidden / -H, use --no-ignore
+    / -I or --no-ignore-vcs to override, see #1387 and #1396
+  Bugfixes:
+  * Fix NO_COLOR support, see #1421
+  Other:
+  * Fixed documentation typos, see #1409
 
 -------------------------------------------------------------------
 Sat Oct 21 09:28:22 UTC 2023 - mvetter@suse.com

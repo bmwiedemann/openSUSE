@@ -701,4 +701,16 @@
     <comment></comment>
     <requestid>1129025</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>7b10635b390a727573eab08b23d59954</srcmd5>
+    <version>3.4.5</version>
+    <time>1704380166</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.4.5:
+  * Fix for centering the clock LED digits vertically
+  * Fix the KeyWinTile commands for multi-mon setups
+  * Fix the workspace buttons for right-to-left languages
+</comment>
+    <requestid>1135581</requestid>
+  </revision>
 </revisionlist>

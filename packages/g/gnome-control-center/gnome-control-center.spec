@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-control-center
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,6 +39,8 @@ Source99:       %{name}-rpmlintrc
 Patch1:         gnome-control-center-disable-error-message-for-NM.patch
 # PATCH-FIX-UPSTREAM gnome-control-center-add-user-button.patch bsc#1215556 glgo#GNOME/Settings!1927 xwang@suse.com -- Show add user button
 Patch2:         gnome-control-center-add-user-button.patch
+# PATCH-FIX-UPSTREAM gnome-control-center-fix-region-preview-crash.patch bsc#1218528 glgo#GNOME/gnome-control-center!2122 alynx.zhou@suse.com -- Fix crash of region preview dialog
+Patch3:         gnome-control-center-fix-region-preview-crash.patch
 
 ### patches for Leap >= 15 plus SLE >= 15, but not TW
 # PATCH-FEATURE-SLE gnome-control-center-info-never-use-gnome-software.patch bsc#999336 fezhang@suse.com -- info: Never search for gnome-software as an option when checking for updates on SLE and Leap 42.2, because we use gpk-update-viewer.
@@ -187,6 +189,7 @@ GNOME control center.
 %setup -q
 %patch -P 1 -p1
 %patch -P 2 -p1
+%patch -P 3 -p1
 
 # patches for Leap >= 15 plus SLE >= 15, but not TW
 %if 0%{?sle_version} >= 150000

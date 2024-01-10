@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Dec 21 20:13:21 UTC 2023 - Matthias Bach <marix@marix.org>
+
+- Fix package setting a wrong mode for /etc/security/limits.d.
+- Drop unused rpmlint filter.
+
+-------------------------------------------------------------------
+Wed Dec 13 11:54:01 UTC 2023 - Matthias Bach <marix@marix.org>
+
+- Fix GameMode's PolicyKit rules not applying.
+
+-------------------------------------------------------------------
+Wed Dec 13 08:03:00 UTC 2023 - Matthias Bach <marix@marix.org>
+
+- Update to version 1.8.1
+  * Fix syntax error in polkit rules.
+
+-------------------------------------------------------------------
+Fri Dec  8 18:07:49 UTC 2023 - Matthias Bach <marix@marix.org> - 1.8
+
+- Update to version 1.8
+  * Requires users to be a member of the "gamemode" group to
+    utilise priviledged functionality like modifying the CPU
+    governor.
+  * Adds CPU core pinning and parking capability.
+  * Allows disabling the Linux kernel split lock mitigation.
+  * Fixes building when pidfd_open is available.
+  * Unifies privileged group configuration between pam, systemd,
+    and polkit.
+  * Various other bugfixes and improved default configuration
+- Drop workaround for problematic pidfd_open dection on Tumbleweed
+  now that compilation with pidfd_open is fixed upstream.
+- Drop no longer required only-build-shared-library.patch.
+
+-------------------------------------------------------------------
 Wed May 10 20:35:53 UTC 2023 - Matthias Bach <marix@marix.org> - 1.7
 
 - Add a new gamemode binary package

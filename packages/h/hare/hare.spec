@@ -15,10 +15,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %bcond_without  test
 Name:           hare
 Release:        0
-Version:        1701969360.dbd2d7a5
+Version:        1703745713.f01c8eed
 Summary:        Hare system programming language
 Group:          Development/Tools/Building
 License:        MPL-2.0
@@ -26,14 +27,15 @@ URL:            https://harelang.org
 Source0:        %{name}-%{version}.tar.zst
 Source1:        %{name}-rpmlintrc
 Source2:        README-suse-maint.md
+BuildRequires:  binutils
 BuildRequires:  gcc
-BuildRequires:  harec
+# Always be specific on harec version
+BuildRequires:  harec = 1702179030.9d51b36
 BuildRequires:  make
 BuildRequires:  qbe
-BuildRequires:  binutils
 BuildRequires:  scdoc
-BuildRequires:  zstd
 BuildRequires:  timezone
+BuildRequires:  zstd
 Requires:       harec
 Requires:       qbe
 Requires:       timezone
@@ -55,8 +57,8 @@ cat > config.mk <<-SH
 PREFIX = %{_prefix}
 BINDIR = %{_bindir}
 MANDIR = %{_mandir}
-SRCDIR = %{_libdir}
-STDLIB = %{_libdir}/%{name}/stdlib
+SRCDIR = %{_prefix}/src
+STDLIB = %{_prefix}/src/%{name}/stdlib
 
 ## Build configuration
 
@@ -68,7 +70,6 @@ HARECFLAGS =
 QBEFLAGS =
 ASFLAGS =
 LDLINKFLAGS = --gc-sections -z noexecstack
-
 
 # commands used by the build script
 HAREC = harec
@@ -84,7 +85,7 @@ HARECACHE = .cache
 BINOUT = .bin
 
 # variables that will be embedded in the binary with the -D definitions
-HAREPATH = %{_libdir}/%{name}/stdlib:%{_libdir}/%{name}/third-party
+HAREPATH = %{_prefix}/src/%{name}/stdlib:%{_prefix}/src/%{name}/third-party
 VERSION  = %{version}
 
 # Cross-compiler toolchains
@@ -118,7 +119,7 @@ make %{?_smp_mflags} DESTDIR="%{buildroot}" install
 
 %if %{with test}
 %check
-# Enable only for tumbleweed/factory since 
+# Enable only for tumbleweed/factory since
 # Timezone package seems to fail this :D
 %if 0%{?suse_version} > 1600
 export CFLAGS="%optflags"
@@ -136,7 +137,7 @@ make %{?_smp_mflags} check
 %{_bindir}/%{name}doc
 %{_mandir}/man1/*
 %{_mandir}/man5/*
-%dir %{_libdir}/%{name}
-%{_libdir}/%{name}/*
+%dir %{_prefix}/src/hare
+%{_prefix}/src/hare/*
 
 %changelog

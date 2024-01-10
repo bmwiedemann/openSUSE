@@ -1,0 +1,71 @@
+-------------------------------------------------------------------
+Sun Jun 25 09:31:43 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.8.1
+  * Adjust to revised MatrixObj interface in GAP 4.13
+  * Adjust `CompanionMatrix`, `NewCompanionMatrix` output
+    to match the GAP documentation
+
+-------------------------------------------------------------------
+Sat Nov 19 04:16:37 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.7.6
+  * Fix error viewing empty semiechelon matrices
+  * Fix bug in MinimalPolynomialOfMatrixMC which could lead to an
+    infinite loop for certain inputs, in particular lower
+    triangular matrices with multiple eigenvalues
+  * Removed the (undocumented) Fold and Unfold method
+
+-------------------------------------------------------------------
+Fri Sep  7 12:34:44 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 2.6.1
+  * Fix crash in CLEANROWKERNEL
+  * Adapt to changes in GAP's MatrixObj interface (GAP 4.9)
+
+-------------------------------------------------------------------
+Fri Sep  8 16:47:26 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 2.5.7
+  * Remove CompatibleMatrix method (this *undocumented* API will be
+    removed in GAP 4.9).
+  * Fix several broken references in the manual.
+
+-------------------------------------------------------------------
+Mon Nov 21 15:05:47 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 2.5.6
+* Fixed a bug which resulted in cvec incorrectly
+  converting certain GAP matrices to cvec matrices.
+
+-------------------------------------------------------------------
+Sun Jun 19 10:29:08 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 2.5.5
+* Some functions accept slightly more general input. For example,
+  it is now in some cases acceptable to use finite field elements
+  like Z(4)^0 (which is equal, but not identical, to Z(2)^0) as
+  input when cvec is expecting elements of GF(2).
+* Fix EmptySemiEchelonBasis: its documentation said it expects a
+  sample vector, but the implementation expected a sample matrix.
+  Now both are possible, and both are documented.
+
+-------------------------------------------------------------------
+Fri Dec 12 11:21:42 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 2.5.3
+* Remove some leftover GAP 4.4 compatibility code
+
+-------------------------------------------------------------------
+Wed Jun 18 16:49:54 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 2.5.1
+* Add methods for \^ for cvecs and Frobenius automorphisms
+* Add methods for \^ for cmats and Frobenius automorphisms
+* Fix a bug in unpickling semi echelonised bases
+* Update and tweak the package build system
+
+-------------------------------------------------------------------
+Fri May 10 13:47:02 UTC 2013 - jengelh@inai.de
+
+- Split cvec (version 2.4) off the gap RPM package

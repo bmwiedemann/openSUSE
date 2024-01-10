@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Aug 20 08:22:31 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Specfile modernization
+- Rename devel package to just %name-devel, which is what most
+  our packages do.
+
+-------------------------------------------------------------------
 Tue Jan  6 12:27:02 UTC 2015 - jengelh@inai.de
 
 - Improve package summary and description. Drop --with-pic which

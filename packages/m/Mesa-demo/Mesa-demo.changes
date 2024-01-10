@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 21 02:30:52 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove old rpm constructs that are long defaulted.
+- Remove legalese from descriptions as per our wiki guidelines.
+
+-------------------------------------------------------------------
 Sun Sep 10 21:52:01 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - don't package "bitmap" sample (conflict with /usr/bin/bitmap of

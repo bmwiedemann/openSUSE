@@ -18,16 +18,18 @@
 
 %define fontname    Cozette
 Name:           cozette-fonts
-Version:        1.21.0
+Version:        1.23.1
 Release:        0
 Summary:        A bitmap programming font
 License:        MIT
 Group:          System/X11/Fonts
 URL:            https://github.com/slavfox/Cozette
-Source0:        Cozette-%{version}.tar.xz
-Source1:        https://github.com/slavfox/Cozette/releases/download/v.%{version}/CozetteVector.otf
+Source0:        https://github.com/slavfox/Cozette/releases/download/v.%{version}/CozetteFonts-v-1-23-1.zip
+Source1:        https://raw.githubusercontent.com/slavfox/Cozette/v.%{version}/README.md
+Source2:        https://raw.githubusercontent.com/slavfox/Cozette/v.%{version}/CHANGELOG.md
 BuildRequires:  %{suseconfig_fonts_prereq}
 BuildRequires:  fontpackages-devel
+BuildRequires:  unzip
 BuildArch:      noarch
 %reconfigure_fonts_prereq
 
@@ -36,20 +38,21 @@ A bitmap font with great coverage of all the glyphs
 that might encounter in the terminal.
 
 %prep
-%setup -q -n %{fontname}-%{version}
+%setup -q -n %{fontname}Fonts
+cp %{SOURCE1} .
+cp %{SOURCE2} .
 
 %build
 
 %install
 mkdir -p %{buildroot}%{_ttfontsdir}
-install -m 0644 %{SOURCE1} %{buildroot}%{_ttfontsdir}/
+find . -name "*.ttf" -execdir install -m 0644 {} %{buildroot}%{_ttfontsdir}/ \;
 
 %reconfigure_fonts_scriptlets
 
 %files
 %{_ttfontsdir}
-
 %license LICENSE
-%doc CHANGELOG.md README.md
+%doc README.md CHANGELOG.md
 
 %changelog

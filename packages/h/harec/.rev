@@ -52,4 +52,41 @@
 </comment>
     <requestid>1132121</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>3263f79d74d766297b318cc66d785f34</srcmd5>
+    <version>1701558776.08af325</version>
+    <time>1702673444</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1133458</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2f50ccba1634113b28305cb26d645ba8</srcmd5>
+    <version>1702179030.9d51b36</version>
+    <time>1702845112</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1702179030.9d51b36:
+  * scope: split up scope_lookup_ancestor
+  * Implement for labels
+  * Implement switch/match labels
+  * check: fix enum alias importing
+  * tests/34-declarations: add invalid symbol tests
+  * parse: disallow empty symbol
+  * type_store: fix tagged union segfault
+  * all: use literal/flexible in place of constant
+  * main: check for fmemopen error
+  * mod: remove unnecessary allocation
+  * tests: fix broken rejection tests
+  * type_store: make builtin_type_error have zero size/alignment
+</comment>
+    <requestid>1133561</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>1fa2457aa2905f5d992910353ff63829</srcmd5>
+    <version>1702179030.9d51b36</version>
+    <time>1704281113</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1135737</requestid>
+  </revision>
 </revisionlist>

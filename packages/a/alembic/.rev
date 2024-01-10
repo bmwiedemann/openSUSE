@@ -99,4 +99,35 @@
     <comment></comment>
     <requestid>1095054</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d6f94eab4c19c62234cb7ea48cfe3f10</srcmd5>
+    <version>1.8.6</version>
+    <time>1704281383</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.8.6:
+  * Introduce CPacke to top level CMake. (PR 425)
+  * Fix typo in a comment. (PR 417)
+  * Fix bug with OCurves, ONuPatch, OPoints, OPolyMesh, and OSubD
+    were not properly incrementing their number of set samples
+    when using setFromPrevious. (PR 433)
+  * Fix default values for float PODTraits. (PR 422)
+  * Introduce -hold argument which will use the previous set
+    sample instead of setting an empty sample for missing samples.
+- update to 1.8.5:
+  * Add test for fuzzer issue 53406.
+  * Address Issue 402 by not using deprecated kWrapExisting calls
+    when possible.
+  * Add missing vertex for cube test in the python bindings per
+    Issue 407.
+  * Fix several warnings mentioned in Issue 309, 398 and 412.
+  * Don't explicitly set MACOSX_RPATH as it is set by default in
+    CMake 3+. (PR404)
+  * Use install rpath for Imath 3. (PR405)
+  * Use STRING instead of PATH for ALEMBIC_LIB_INSTALL_DIR.
+  * Add CIFuzz as a GitHub action. (PR403)
+
+    of bools in OXform.
+- Avoid forcing SSE/SSE2 on %ix86, it is not guaranteed to exist.</comment>
+    <requestid>1136085</requestid>
+  </revision>
 </revisionlist>

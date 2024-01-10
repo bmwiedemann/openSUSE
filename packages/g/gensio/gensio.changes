@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec 27 21:47:46 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.8.2:
+  * Fix some initialization code I messed up in 2.8.1.
+  * A minor release to fix some Windows issues and clean up some
+    docs.
+
+-------------------------------------------------------------------
 Fri Nov 24 13:48:01 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.8.0

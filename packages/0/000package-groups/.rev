@@ -1845,4 +1845,12 @@ Main motivation is to have the license files in MicroOS also in /usr/, not in /e
     <time>1702298707</time>
     <user>dimstar_suse</user>
   </revision>
+  <revision rev="259" vrev="257">
+    <srcmd5>63894727bc9648bb1d3f265d216fb007</srcmd5>
+    <version>unknown</version>
+    <time>1703024116</time>
+    <user>anag+factory</user>
+    <comment>Added Kalpa product for upcoming release</comment>
+    <requestid>1132912</requestid>
+  </revision>
 </revisionlist>

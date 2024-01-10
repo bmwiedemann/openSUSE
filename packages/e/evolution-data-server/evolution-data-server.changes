@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jan  5 15:41:23 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.50.3:
+  + Camel: Ignore errors about missing messages during filtering.
+  + Bug Fixes:
+    - sqlite3_enable_shared_cache is deprecated
+    - Camel: Hide errors from for-offline download
+    - IMAP: Copy/move messages in smaller batches
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Dec  1 10:02:07 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.50.2:

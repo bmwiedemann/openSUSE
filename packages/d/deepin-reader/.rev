@@ -49,4 +49,13 @@
 - Add fix-return-type.patch</comment>
     <requestid>1000250</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>fa2f207a90de6abacac15051985bdda3</srcmd5>
+    <version>5.10.23</version>
+    <time>1703611623</time>
+    <user>anag+factory</user>
+    <comment>* Deal with docx document format (boo#1218382 and CVE-2023-50254)
+- Set pandoc-cli as Requires, fix docx document support (forwarded request 1135093 from hillwood)</comment>
+    <requestid>1135094</requestid>
+  </revision>
 </revisionlist>

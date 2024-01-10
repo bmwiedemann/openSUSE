@@ -831,14 +831,14 @@ fi
 for f in %info_files; do
   test "$f" = "info.info" && continue
   test -e "$f" || f="${f}.info"
-  %install_info --info-dir=%{_infodir} "%{_infodir}/$f.%{%ext_info}"
+  %install_info --info-dir=%{_infodir} "%{_infodir}/$f%{ext_info}"
 done
 
 %preun info
 for f in %info_files; do
   test "$f" = "info.info" && continue
   test -e "$f" || f="${f}.info"
-  %install_info_delete --info-dir=%{_infodir} "%{_infodir}/$f.%{%ext_info}"
+  %install_info_delete --info-dir=%{_infodir} "%{_infodir}/$f%{ext_info}"
 done
 %endif
 

@@ -1,0 +1,162 @@
+-------------------------------------------------------------------
+Fri Jan  5 16:58:34 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.3.3
+  * Update of bundled components (unused in openSUSE)
+
+-------------------------------------------------------------------
+Wed Jan  3 09:49:56 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Drop config.log and autom4te.cache for reproducible builds
+
+-------------------------------------------------------------------
+Sun Oct  8 03:53:01 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.3.2
+  * Restore support for GAP workspaces
+
+-------------------------------------------------------------------
+Tue Sep 19 16:21:18 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.3.1
+  * Improve congruence lattice code
+  * Fix some memory leaks
+
+-------------------------------------------------------------------
+Sun Mar  5 12:56:56 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.2.1
+  * This is a minor release with some changes for compatibility
+    with upcoming changes to GAP, and some updates to the build
+    system.
+
+-------------------------------------------------------------------
+Tue Dec 20 22:10:01 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.2.0
+  * This release contains a number of fixes and improvements, and
+    one new feature, which is a method for `IsSelfDualSemigroup`
+    and related functionality for semigroups satisfying
+    `CanUseFroidurePin`.
+
+-------------------------------------------------------------------
+Sat Nov 19 01:16:28 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.1.0
+  * The package now features a compiled C/C++ module which
+    interfaces with the libsemigroups C++ library to allow
+    high-speed computations for congruences and certain categories
+    of semigroup. There are also several new types of semigroup and
+    a variety of new methods which can be used with them.
+  * The kernel module has been simplified signficantly, to make it
+    easier to incorporate future changes in libsemigroups[], and
+    some superfluous functionality was withdrawn.
+  * The backwards incompatible changes in this release relate to
+    matrices over the integers or over a finite field.
+
+-------------------------------------------------------------------
+Mon Jun 20 13:48:02 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 2.8.0
+* Added `ApsisMonoid`, `CrossedApsisMonoid`,
+  `ModularPartitionMonoid`, `PlanarModularPartitionMonoid`,
+  `PlanarPartitionMonoid`, `PlanarUniformBlockBijectionMonoid`,
+  `SingularApsisMonoid`, `SingularCrossedApsisMonoid`,
+  `SingularModularPartitionMonoid`,
+  `SingularPlanarModularPartitionMonoid`,
+  `SingularPlanarPartitionMonoid`,
+  `SingularPlanarUniformBlockBijectionMonoid`,
+  `SingularUniformBlockBijectionMonoid`,
+  `UniformBlockBijectionMonoid`
+
+-------------------------------------------------------------------
+Wed Jun  8 20:02:45 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 2.7.4
+* This is a minor release to fix some manual examples, to correct
+  the package url in the `PackageInfo.g` file, and to fix some
+  issues with semigroups of bipartitions. It was formerly
+  possible to create semigroups of bipartitions where the
+  generators had different degrees, but the created semigroups
+  were invalid; this is fixed in version 2.7.3.
+* Require GAP 4.8.3 since the function `IsZeroSimpleSemigroup`
+  entered an infinite loop for some examples of semigroups of
+  partial permutations.
+
+-------------------------------------------------------------------
+Sat Mar 12 19:49:13 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 2.7.2
+* `IsomorphismReesZeroMatrixSemigroup` is introduced, and it is no
+  longer possible to apply `IsomorphismReesMatrixSemigroup` to a
+  0-simple semigroup.
+* The meaning of `IsMonoidAsSemigroup` was changed to be consistent
+  with the meaning of `IsGroupAsSemigroup`. In earlier versions,
+  `IsMonoidAsSemigroup` was `false` for semigroups in the category
+  `IsMonoid`.
+* `IsInverseSemigroup` sometimes returned true for semigroups
+  which were not inverse
+
+-------------------------------------------------------------------
+Sun Feb 22 11:24:21 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 2.2
+* New: the functions SmallestElementSemigroup,
+  LargestElementSemigroup, and GeneratorsSmallest.
+* Some minor corrections were made to the methods for creating the
+  ideals of some semigroups in standard examples semigroups, such
+  as SingularTransformationSemigroup.
+
+-------------------------------------------------------------------
+Fri Dec 12 13:35:58 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 2.1.1
+* extensive new features for computing with elements and
+  subsemigroups of the partition monoid.
+* support for ideals of transformation, partial permutation, and
+  bipartition semigroups, and subsemigroups of Rees 0-matrix
+  semigroups.
+* The new operations IsomorphismSemigroups, IsIsomorphicSemigroup,
+  and SmallestMultiplicationTable.
+* The new operation MaximalSubsemigroups, which returns the maximal
+  subsemigroups of an arbitrary semigroup.
+* The new operation Normalizer for computing a subgroup of a
+  permutation group consisting of those permutations that stabilise,
+  under conjugation, a transformation, partial perm, or bipartition
+  semigroup.
+* The new operation CharacterTableOfInverseSemigroup for finding the
+  character table of an inverse semigroup of partial permutations.
+* Methods for defining and manipulating the congruences of a Rees
+  0-matrix semigroup.
+* The operation EndomorphismsPartition that returns the monoid
+  of endomorphisms preserving a partition. This monoid is defined
+  using the minimum possible number of generators.
+* A lot more, see the detailed changelog in the package.
+
+-------------------------------------------------------------------
+Tue Feb  4 17:44:38 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 1.4
+* Package rename from citrus to semigroup. The package has been
+  completely overhauled, the performance has been improved, and the
+  code has been generalized so that in the future the same code can
+  be used to compute with other types of semigroups.
+* This release includes several new methods for inverse semigroups
+  of partial permutations and for free inverse semigroup. Most
+  notably among the new methods for inverse semigroups of partial
+  permutations are: "SmallerDegreePartialPermRepresentation" and
+  "VagnerPrestonRepresentation" for changing the representation of
+  an inverse semigroup of partial permutations.
+* The methods in Semigroups have been extended to apply to
+  arbitrary subsemigroups of regular Rees 0-matrix semigroups over
+  groups; 
+* A new method for MaximalSubsemigroups of Rees matrix semigroup
+  has been implemented;
+* The function Read/WriteSemigroups have been renamed
+  Read/WriteGenerators and their performance has been improved. It
+  is now possible to use WriteGenerators to write to a gzipped file.
+
+-------------------------------------------------------------------
+Fri May 10 13:47:02 UTC 2013 - jengelh@inai.de
+
+- Split citrus (version 0.9999) off the gap RPM package

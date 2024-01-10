@@ -1399,4 +1399,41 @@
     <comment>- Update to version 2.8.4+git0.a4ebf9d3b:</comment>
     <requestid>1128544</requestid>
   </revision>
+  <revision rev="138" vrev="1">
+    <srcmd5>34b170083954e671e2d197576010c823</srcmd5>
+    <version>2.9.0+git0.fddb8c13b</version>
+    <time>1703024209</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1134037</requestid>
+  </revision>
+  <revision rev="139" vrev="1">
+    <srcmd5>97750807a3f0433d352a533cb21a9dd4</srcmd5>
+    <version>2.9.1+git0.f72603ceb</version>
+    <time>1704754009</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.9.1+git0.f72603ceb:
+  * [RELEASE] Released version 2.9.1
+  * DOC: config: also add arguments to the converters in the table
+  * DOC: config: add arguments to sample fetch methods in the table
+  * BUG/MEDIUM: mux-quic: report early error on stream
+  * BUG/MEDIUM: mux-h2: Report too large HEADERS frame only when rxbuf is empty
+  * CLEANUP: mux-h1: Fix a trace message about C-L header addition
+  * BUG/MEDIUM: mux-h1: Explicitly skip request's C-L header if not set originally
+  * BUG/MEDIUM: mux-h1: Cound data from input buf during zero-copy forwarding
+  * BUG/MEDIUM: stconn: Block zero-copy forwarding if EOS/ERROR on consumer side
+  * BUG/MEDIUM: quic: QUIC CID removed from tree without locking
+  * MINOR: version: mention that it's stable now
+  * BUG/MINOR: ext-check: cannot use without preserve-env
+  * BUG/MEDIUM: map/acl: pat_ref_{set,delete}_by_id regressions
+  * BUILD: ssl: update types in wolfssl cert selection callback
+  * BUG/MEDIUM: quic: Possible buffer overflow when building TLS records
+  * BUG/MINOR: mworker/cli: fix set severity-output support
+  * DOC: configuration: typo req.ssl_hello_type
+  * BUG/MINOR: lua: Wrong OCSP CID after modifying an SSL certficate (LUA)
+  * BUG/MINOR: ssl: Wrong OCSP CID after modifying an SSL certficate
+  * MINOR: ssl/cli: Add ha_(warning|alert) msgs to CLI ckch callback
+  * BUG/MINOR: ssl: Double free of OCSP Certificate ID</comment>
+    <requestid>1137606</requestid>
+  </revision>
 </revisionlist>

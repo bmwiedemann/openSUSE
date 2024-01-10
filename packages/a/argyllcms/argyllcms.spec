@@ -19,7 +19,7 @@
 %define tarname Argyll
 
 Name:           argyllcms
-Version:        3.0.2
+Version:        3.1.0
 Release:        0
 Summary:        ICC compatible color management system
 License:        AGPL-3.0-only AND GPL-2.0-or-later AND MIT

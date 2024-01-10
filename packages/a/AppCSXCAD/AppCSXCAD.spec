@@ -1,7 +1,7 @@
 #
 # spec file for package AppCSXCAD
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,13 @@
 
 
 Name:           AppCSXCAD
-Version:        0.2.2
+Version:        0.2.3
 Release:        0
 Summary:        Minimal GUI Application using the QCSXCAD library
 License:        GPL-3.0-only
 Group:          Productivity/Scientific/Other
 URL:            https://openems.de
 Source0:        https://github.com/thliebig/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         qt5_use_modules.diff
-# PATCH-FIX-OPENSUSE
-Patch1:         AppCSXCAD-vtk.patch
 BuildRequires:  CSXCAD-devel
 BuildRequires:  QCSXCAD-devel
 BuildRequires:  cmake
@@ -48,12 +45,18 @@ Minimal GUI Application using the QCSXCAD library.
 %autosetup -p1
 
 %build
-%cmake
+%cmake \
+  -DCMAKE_INSTALL_LIBDIR:Path=%{_libdir} \
+  -DENABLE_RPATH:Bool=Off
 
 %cmake_build
+ls -l
+cat *install*
+readelf -d ./AppCSXCAD
 
 %install
 %cmake_install
+readelf -d %{buildroot}/%{_bindir}/AppCSXCAD
 
 %files
 %license COPYING

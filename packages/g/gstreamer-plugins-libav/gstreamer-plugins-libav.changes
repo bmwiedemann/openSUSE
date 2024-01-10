@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan  4 07:59:38 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.22.8:
+  + avviddec: Unlock stream lock while waiting for decoded frame.
+    Fixes potential deadlock
+  + avviddec: Calculate latency only for fixed framerate
+- Rebase reduce-required-meson.patch.
+
+-------------------------------------------------------------------
 Wed Nov 15 09:34:11 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 1.22.7:

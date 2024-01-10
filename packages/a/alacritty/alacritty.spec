@@ -17,14 +17,13 @@
 
 
 Name:           alacritty
-Version:        0.12.3
+Version:        0.13.0
 Release:        0
 Summary:        A GPU-accelerated terminal emulator
 License:        Apache-2.0
 URL:            https://github.com/alacritty/alacritty
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
-Source2:        cargo_config
 Source3:        README.suse-maint
 BuildRequires:  cargo-packaging
 BuildRequires:  cmake
@@ -33,6 +32,7 @@ BuildRequires:  freetype2-devel
 BuildRequires:  libxcb-devel
 BuildRequires:  libxkbcommon-devel
 BuildRequires:  pkgconfig
+BuildRequires:  scdoc
 BuildRequires:  update-desktop-files
 BuildRequires:  xclip
 BuildRequires:  pkgconfig(fontconfig)
@@ -70,8 +70,6 @@ The official zsh completion script for alacritty.
 
 %prep
 %autosetup -a1
-mkdir .cargo
-cp %{SOURCE2} .cargo/config
 
 %ifarch aarch64 ppc64le riscv64
 # Remove checksum of config.guess and config.sub since aarch64 and ppc64le modify them
@@ -92,20 +90,26 @@ install -D -m 0755 target/release/alacritty %{buildroot}%{_bindir}/alacritty
 # rm duplicate license and useless toml file
 rm -fr %{buildroot}%{_datadir}
 
-# install man page and completions
+# install completions
 install -Dm 0644 extra/linux/Alacritty.desktop \
     %{buildroot}/%{_datadir}/applications/Alacritty.desktop
 install -Dm 0644 extra/logo/alacritty-simple.svg \
     %{buildroot}/%{_datadir}/pixmaps/Alacritty.svg
 install -Dm 0644 extra/linux/org.alacritty.Alacritty.appdata.xml \
     %{buildroot}/%{_datadir}/appdata/org.alacritty.Alacritty.appdata.xml
-install -Dm 0644 extra/%{name}.man %{buildroot}/%{_mandir}/man1/%{name}.1
 install -Dm 0644 extra/completions/%{name}.bash \
     %{buildroot}/%{_datadir}/bash-completion/completions/%{name}
 install -Dm 0644 extra/completions/%{name}.fish \
     %{buildroot}/%{_datadir}/fish/vendor_completions.d/%{name}.fish
 install -Dm 0644 extra/completions/_%{name} \
     %{buildroot}/%{_datadir}/zsh/site-functions/_%{name}
+
+# build and install manpages
+mkdir -p %{buildroot}%{_mandir}/man{1,5}
+scdoc < extra/man/%{name}.1.scd > %{buildroot}%{_mandir}/man1/%{name}.1
+scdoc < extra/man/%{name}-msg.1.scd > %{buildroot}%{_mandir}/man1/%{name}-msg.1
+scdoc < extra/man/%{name}.5.scd > %{buildroot}%{_mandir}/man5/%{name}.5
+scdoc < extra/man/%{name}-bindings.5.scd > %{buildroot}%{_mandir}/man5/%{name}-bindings.5
 
 # install desktop file
 %suse_update_desktop_file Alacritty
@@ -114,9 +118,12 @@ install -Dm 0644 extra/completions/_%{name} \
 
 %files
 %license LICENSE-APACHE
-%doc alacritty.yml CHANGELOG.md CONTRIBUTING.md README.md
+%doc CHANGELOG.md CONTRIBUTING.md README.md
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}
+%{_mandir}/man1/%{name}-msg.1%{?ext_man}
+%{_mandir}/man5/%{name}.5%{?ext_man}
+%{_mandir}/man5/%{name}-bindings.5%{?ext_man}
 %{_datadir}/applications/Alacritty.desktop
 %{_datadir}/pixmaps/Alacritty.svg
 %{_datadir}/appdata/org.alacritty.Alacritty.appdata.xml

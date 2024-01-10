@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jan  4 21:22:29 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Use systemd-sysusers to create service user and group.
+- Add service user to "render" group to allow BOINC applications
+  to use GPU devices for accelerated computation. DRM render nodes
+  have been restricted in sr#1128161.
+- Remove unused SysV init script.
+- Update README.SUSE and the logrotate configuration file to use
+  systemctl instead of the no longer relevant init script.
+
+-------------------------------------------------------------------
 Sat Aug 12 09:08:43 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 7.24.1

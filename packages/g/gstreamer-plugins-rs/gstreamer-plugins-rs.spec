@@ -1,7 +1,7 @@
 #
 # spec file for package gstreamer-plugins-rs
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@
 %endif
 
 Name:           gstreamer-plugins-rs
-Version:        0.11.2
+Version:        0.11.3
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
@@ -46,7 +46,7 @@ Source3:        cargo_config
 Source4:        gstreamer-plugins-rs.appdata.xml
 Source5:        vendor-for-dav1d-1.3.0.tar.zst
 
-BuildRequires:  cargo-c
+BuildRequires:  cargo-c >= 0.9.21
 BuildRequires:  cargo-packaging >= 1.2.0+3
 BuildRequires:  clang
 # Disable csound for now, bring issue upstream
@@ -116,7 +116,7 @@ sed -ie "s/\.enable_if.*//" meson.build
 sed -ie "s/find_program('cargo-cbuild', version:'>=0.9.21'/find_program('cargo-cbuild', version:'>=0.9.15'/" meson.build
 %endif
 
-mkdir .cargo
+mkdir -p .cargo
 cp %{SOURCE3} .cargo/config
 
 %build

@@ -4,8 +4,9 @@ Date: 2023-10-30 12:10:03.273303565 +0100
 glslang 13 needs C++17.
 
 ---
- configure |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ configure               |    2 +-
+ libavfilter/glslang.cpp |    1 +
+ 2 files changed, 2 insertions(+), 1 deletion(-)
 
 Index: ffmpeg-4.4.4/configure
 ===================================================================
@@ -20,3 +21,15 @@ Index: ffmpeg-4.4.4/configure
  
  # some compilers silently accept -std=c11, so we also need to check that the
  # version macro is defined properly
+Index: ffmpeg-4.4.4/libavfilter/glslang.cpp
+===================================================================
+--- ffmpeg-4.4.4.orig/libavfilter/glslang.cpp
++++ ffmpeg-4.4.4/libavfilter/glslang.cpp
+@@ -16,6 +16,7 @@
+  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+  */
+ 
++#include <cassert>
+ #include <pthread.h>
+ 
+ extern "C" {

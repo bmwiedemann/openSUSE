@@ -161,4 +161,12 @@
     <comment>- Fix linking with latest binutils</comment>
     <requestid>1072114</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>22e96abc0efe8ed35f72b01ef12b08aa</srcmd5>
+    <version>2.6</version>
+    <time>1703024188</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1133982</requestid>
+  </revision>
 </revisionlist>

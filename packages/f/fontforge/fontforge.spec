@@ -26,7 +26,6 @@ Source0:        https://github.com/fontforge/fontforge/archive/%{version}.tar.gz
 # workaround for bug 930076, imho upstream should fix this
 # https://github.com/fontforge/fontforge/issues/2270
 Patch0:         fontforge-version.patch
-Patch2:         fix-sphinx-doc.patch
 Patch5:         add-bitmap-transform-support.patch
 BuildRequires:  cairo-devel
 BuildRequires:  cmake
@@ -94,9 +93,6 @@ to develop applications that use FontForge libraries.
 %prep
 %setup -q
 %patch0 -p1
-%if %{?suse_version} < 1550
-%patch2 -p1
-%endif
 %patch5 -p1
 
 %build

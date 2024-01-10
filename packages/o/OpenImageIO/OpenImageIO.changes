@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Dec 30 16:47:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.5.6.0:
+  * autocc bugfix and color config inventory cleanup
+  * Fix issue when computing perceptual diff
+  * Better cmake verbose behavior
+  * Fix typo in slack-release-notifier version
+  * More relicensing code under Apache 2.0
+
+-------------------------------------------------------------------
 Thu Nov 16 14:52:50 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
 
 - revert the workaround again now that we have the proper cmake for
@@ -7,14 +17,14 @@ Thu Nov 16 14:52:50 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
 -------------------------------------------------------------------
 Tue Nov  7 14:05:58 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
 
-- Workaround for https://github.com/AcademySoftwareFoundation/OpenImageIO/issues/4049 
+- Workaround for https://github.com/AcademySoftwareFoundation/OpenImageIO/issues/4049
   the generated cmake config file has a broken dependency on zlib.
   until the generator is fixed we fix the generated file with perl.
 
 -------------------------------------------------------------------
 Tue Nov  7 13:46:51 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
 
-- Update to 2.5.5.0 
+- Update to 2.5.5.0
   https://github.com/AcademySoftwareFoundation/OpenImageIO/releases/tag/v2.5.5.0
   https://github.com/AcademySoftwareFoundation/OpenImageIO/releases/tag/v2.5.4.0
   https://github.com/AcademySoftwareFoundation/OpenImageIO/releases/tag/v2.4.17.0
@@ -164,8 +174,8 @@ Fri Jun  2 15:09:20 UTC 2023 - Antoine Belvire <antoine.belvire@opensuse.org>
 Mon Feb 13 19:06:04 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
 
 - update to 2.4.8.1
-  * Fix(targa): guard against corrupted tga files Fixes 
-    TALOS-2023-1707 / CVE-2023-24473, 
+  * Fix(targa): guard against corrupted tga files Fixes
+    TALOS-2023-1707 / CVE-2023-24473,
     TALOS-2023-1708 / CVE-2023-22845. #3768
   * Fix: race condition in TIFF reader, fixes
     TALOS-2023-1709 / CVE-2023-24472. #3772
@@ -426,7 +436,7 @@ Sun May 29 20:06:42 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * Python: Add ImageSpec and ParamValueList method get_bytes_attribute(),
     which is like get_string_attribute(), but returns the string as a Python
     bytes object. In Python 3, strings are UTF-8, so this can be useful if you
-    know that a string attribute might contain non-UTF8 data. #3396 
+    know that a string attribute might contain non-UTF8 data. #3396
 
 -------------------------------------------------------------------
 Fri Apr  8 06:26:36 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
@@ -704,7 +714,7 @@ Sun Mar 21 13:13:56 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
     missing from
   + the docs. #2790 Fix some duplicated text. #2785
 
-- Add more optional dependencies: 
+- Add more optional dependencies:
   + ffmpeg
   + Ptex
   + libheif (conditionally on TW)

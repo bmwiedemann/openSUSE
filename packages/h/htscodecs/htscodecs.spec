@@ -1,7 +1,7 @@
 #
 # spec file for package htscodecs
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define   sonum 2
 Name:           htscodecs
-Version:        1.5.0
+Version:        1.6.0
 Release:        0
 Summary:        C library for custom compression for CRAM and other formats
 License:        MIT

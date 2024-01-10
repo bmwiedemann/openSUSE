@@ -502,4 +502,12 @@ A cpupower_fix_library_so_name.patch
 - Use ldconfig_scriptlets macro for post(un) handling.</comment>
     <requestid>1127699</requestid>
   </revision>
+  <revision rev="58" vrev="6">
+    <srcmd5>fa555d4e3ef47b87f77cf72558d492fc</srcmd5>
+    <version>MACRO</version>
+    <time>1704487312</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1137074</requestid>
+  </revision>
 </revisionlist>

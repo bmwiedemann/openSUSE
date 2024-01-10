@@ -1,7 +1,7 @@
 #
 # spec file for package ibus-libpinyin
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2023 Hillwood Yang <hillwood@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -47,9 +47,14 @@ BuildRequires:  pkgconfig(lua)
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libsoup-3.0)
 %endif
-%if 0%{?suse_version} <= 1500
+%if 0%{?sle_version} >= 150600
+BuildRequires:  python311-base
+Requires:       python311-base
+%else
+%if 0%{?sle_version} < 150600 && 0%{?sle_version} >= 150000
 BuildRequires:  python310-base
 Requires:       python310-base
+%endif
 %endif
 Provides:       locale(ibus:zh_CN;zh_SG)
 %{ibus_requires}
@@ -71,8 +76,12 @@ NOCONFIGURE=1 ./autogen.sh
 %if %{with_cloud_input}
            --enable-cloud-input-mode \
 %endif
-%if 0%{?suse_version} <= 1500
-           PYTHON=python3.10 \
+%if 0%{?sle_version}  >= 150600
+           PYTHON=python3.11
+%else
+%if 0%{?sle_version} < 150600 && 0%{?sle_version} >= 150000
+           PYTHON=python3.10
+%endif
 %endif
 
 %make_build

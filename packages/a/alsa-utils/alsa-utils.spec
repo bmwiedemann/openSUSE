@@ -1,7 +1,7 @@
 #
 # spec file for package alsa-utils
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define do_autoreconf 0
+%define do_autoreconf 1
 %define _udevdir %(pkg-config --variable=udevdir udev)
 %ifarch %ix86 x86_64 %arm aarch64 ppc64le riscv64
 %define enable_topology	1
@@ -46,6 +46,26 @@ Patch4:         0004-bat-use-ATTRIBUTE_UNUSED-instead-remove-argument-nam.patch
 Patch5:         0005-seq-use-ATTRIBUTE_UNUSED-instead-remove-argument-nam.patch
 Patch6:         0006-alsaucm-use-ATTRIBUTE_UNUSED-instead-remove-argument.patch
 Patch7:         0007-topology-use-ATTRIBUTE_UNUSED-instead-remove-argumen.patch
+Patch8:         0008-topology-include-locale.h.patch
+Patch9:         0009-nhlt-dmic-info.c-include-sys-types.h.patch
+Patch10:        0010-topology-pre-processor-Add-support-for-enum-controls.patch
+Patch11:        0011-configure.ac-fix-UMP-support-detection.patch
+Patch12:        0012-bat-really-skip-analysis-of-the-first-period-and-upd.patch
+Patch13:        0013-topology-add-include-for-ENABLE_NLS-on-musl.patch
+Patch14:        0014-nhlt-use-stdint.h-types.patch
+Patch15:        0015-Revert-nhlt-dmic-info.c-include-sys-types.h.patch
+Patch16:        0016-aplay-use-stdint.h-types-instead-u_int-u_short-u_cha.patch
+Patch17:        0017-alsa-restore.rules-use-devnode-instead-number-atribu.patch
+Patch18:        0018-nhlt-Revert-SSP_ANALOG-device_type-field.patch
+Patch19:        0019-alsactl-fix-potential-buffer-overwrite.patch
+Patch20:        0020-aplay-fix-buffer-overflow-and-tainted-format-string.patch
+Patch21:        0021-misc-fix-incorrect-usages-of-strerror.patch
+Patch22:        0022-aplay-Add-option-for-specifying-subformat.patch
+Patch23:        0023-aplay-allow-to-compile-with-older-alsa-lib-subformat.patch
+Patch24:        0024-aplay-log-pcm-status-before-reporting-a-fatal-error.patch
+Patch25:        0025-aplay-enable-timestamps-by-default.patch
+Patch26:        0026-aplay-status-dumps-are-called-only-in-verbose-mode.patch
+Patch27:        0027-aplaymidi-Set-event-completely-for-tempo-event.patch
 Patch100:       alsa-info-no-update-for-distro-script.patch
 Patch101:       alsa-utils-configure-version-revert.patch
 BuildRequires:  alsa-devel
@@ -97,6 +117,26 @@ and test audio before and after PM state changes.
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
+%patch8 -p1
+%patch9 -p1
+%patch10 -p1
+%patch11 -p1
+%patch12 -p1
+%patch13 -p1
+%patch14 -p1
+%patch15 -p1
+%patch16 -p1
+%patch17 -p1
+%patch18 -p1
+%patch19 -p1
+%patch20 -p1
+%patch21 -p1
+%patch22 -p1
+%patch23 -p1
+%patch24 -p1
+%patch25 -p1
+%patch26 -p1
+%patch27 -p1
 %patch100 -p1
 %if 0%{?do_autoreconf}
 %patch101 -p1

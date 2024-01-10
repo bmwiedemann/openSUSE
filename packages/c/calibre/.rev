@@ -2866,4 +2866,28 @@ Think &quot;osc service runall download_files&quot; are buggy!
     <comment></comment>
     <requestid>1128551</requestid>
   </revision>
+  <revision rev="309" vrev="1">
+    <srcmd5>1cca301d6b98e39a84a4990033b1b49b</srcmd5>
+    <version>7.2.0</version>
+    <time>1702673371</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1133264</requestid>
+  </revision>
+  <revision rev="310" vrev="2">
+    <srcmd5>d90f114f9a982ca501fd0da03755fc06</srcmd5>
+    <version>7.2.0</version>
+    <time>1703198361</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1134459</requestid>
+  </revision>
+  <revision rev="311" vrev="1">
+    <srcmd5>a2f5f9d6aa2db11a406941e040bb330f</srcmd5>
+    <version>7.3.0</version>
+    <time>1704487497</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1137034</requestid>
+  </revision>
 </revisionlist>

@@ -2038,4 +2038,12 @@ New stable rel</comment>
     <comment> (forwarded request 1132163 from iznogood)</comment>
     <requestid>1132441</requestid>
   </revision>
+  <revision rev="240" vrev="2">
+    <srcmd5>40a767d53a325f54fb3a5c5ba2746023</srcmd5>
+    <version>45.2</version>
+    <time>1704380158</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1136763</requestid>
+  </revision>
 </revisionlist>

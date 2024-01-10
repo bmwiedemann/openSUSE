@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Dec 31 20:34:33 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 0.6.3
+  * Various bug fixes and enhancements, no changelog available.
+- Drop obsolete/upstream patches:
+  * qt5_use_modules.diff
+  * QCSXCAD-no-build-date.patch
+  * QCSXCAD-vtk.patch
+  * 0001-vtk-use-QVTKOpenGLWidget-for-vtk-8.patch
+  * 0001-vtk-fix-changes-for-vtk-8.x.patch
+  * 0001-Remove-leftover-QVTKWidget-include-fix-for-VTK-9.patch
+  * 0001-Fixup-includes-for-VTK-9.1-compatibility.patch
+  * 0001-Add-method-to-get-vtkRenderWindow-from-QVTKStructure.patch
+
+-------------------------------------------------------------------
 Fri Nov 25 13:34:59 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Add patch to fix compilation with VTK 9.2:

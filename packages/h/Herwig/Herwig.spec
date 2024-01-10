@@ -1,7 +1,7 @@
 #
 # spec file for package Herwig
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,9 @@
 #
 
 
-%define _lto_cflags %{nil}
 %define so_name Herwig-libs
 Name:           Herwig
-Version:        7.2.2
+Version:        7.3.0
 Release:        0
 Summary:        Multi-purpose event generator for high-energy physics
 License:        GPL-2.0-only
@@ -31,18 +30,14 @@ Source1:        %{name}-rpmlintrc
 Patch0:         Herwig-disable-repo-install.patch
 # PATCH-FIX-UPSTREAM Herwig-type-mismatch-fix.patch badshah400@gmail.com -- Fix a type mismatch error in fortran flagged by GCC 10
 Patch1:         Herwig-type-mismatch-fix.patch
-BuildRequires:  HepMC2-devel
+BuildRequires:  HepMC-devel
 BuildRequires:  LHAPDF-devel
 BuildRequires:  Rivet-devel
-BuildRequires:  ThePEG-devel >= 2.2.0
-%if 0%{?suse_version} > 1320
+BuildRequires:  ThePEG-devel >= 2.3.0
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_headers-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_test-devel
-%else
-BuildRequires:  boost-devel
-%endif
 BuildRequires:  fastjet-devel
 BuildRequires:  fastjet-plugin-siscone-devel
 BuildRequires:  fdupes
@@ -52,8 +47,7 @@ BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
 BuildRequires:  pkgconfig(gsl)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-ExclusiveArch:  x86_64
+ExcludeArch:    %{ix86} %{arm}
 
 %description
 Herwig is a multi-purpose particle physics event generator.
@@ -70,7 +64,6 @@ Herwig is based on ThePEG.
 Summary:        Multi purpose event generator for high energy physics
 Group:          System/Libraries
 Obsoletes:      libHerWig1 < %{version}-%{release}
-Provides:       libHerWig1 = %{version}-%{release}
 
 %description -n %{so_name}
 Herwig is a multi-purpose particle physics event generator.
@@ -108,11 +101,15 @@ with %{name}.
 
 %prep
 %autosetup -p1
+# autoconf macros assume x86_64 is the only 64 bit arch
+sed -i -e 's/"${host_cpu}" == "x86_64"/%{__isa_bits} == 64/' m4/{fastjet,herwig}.m4
 
 # FIX ENV BASED HASHBANG
 sed -i "1{s|/usr/bin/env bash|/bin/bash|}" src/herwig-config.in
 
 %build
+# default-integer-8 only set for x86_64 by upstream
+export FCFLAGS="%{?build_fflags} -fdefault-integer-8"
 autoreconf -fvi
 %configure --disable-static
 %make_build
@@ -142,7 +139,6 @@ done
 %postun -n %{so_name} -p /sbin/ldconfig
 
 %files -n %{so_name}
-%defattr(-,root,root)
 %doc AUTHORS GUIDELINES ChangeLog README
 %license COPYING
 %config %{_sysconfdir}/ld.so.conf.d/%{name}.conf
@@ -150,7 +146,6 @@ done
 %{_libdir}/%{name}/*.so.*
 
 %files devel
-%defattr(-,root,root)
 %{_bindir}/Herwig
 %{_bindir}/herwig-combinedistributions
 %{_bindir}/herwig-combineruns

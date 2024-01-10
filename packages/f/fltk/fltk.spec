@@ -1,7 +1,7 @@
 #
 # spec file for package fltk
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define libname libfltk1_3
 Name:           fltk
-Version:        1.3.8
+Version:        1.3.9
 Release:        0
 Summary:        C++ GUI Toolkit for the X Window System, OpenGL, and WIN32
 License:        LGPL-2.1-or-later

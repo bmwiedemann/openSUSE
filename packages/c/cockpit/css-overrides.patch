@@ -209,7 +209,7 @@ Index: cockpit/pkg/shell/index.html
 +    <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet" />
      <script src="../base1/cockpit.js"></script>
      <script src="../manifests.js"></script>
-     <script src="../*/po.js"></script>
+     <!-- HACK: C bridge loads translations via glob and Python via manifest.js -->
 Index: cockpit/pkg/shell/shell.html
 ===================================================================
 --- cockpit.orig/pkg/shell/shell.html

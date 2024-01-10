@@ -84,4 +84,16 @@
     <comment></comment>
     <requestid>1040088</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>06fc1829c621342d0e901a1d9ca7dc2a</srcmd5>
+    <version>2.3.0</version>
+    <time>1704487426</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.3.0
+  * Unicode 15 update. Added unicode_derived_&lt;name&gt;() lookup for
+    derived core properties. Added unicode_general_category_lookup()
+    for general category lookups. Fix GB11 rule.
+- update courier-unicode.keyring with new signing key</comment>
+    <requestid>1136991</requestid>
+  </revision>
 </revisionlist>

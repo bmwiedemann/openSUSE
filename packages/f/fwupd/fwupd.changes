@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Jan  4 16:14:04 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.9.11:
+  + This release adds the following features:
+    - Allow exporting 'offline' reports for manual upload
+  + This release fixes the following bugs:
+    - Add some recovery partition names to ignore for ESP selection
+    - Check for CET and SMAP on non-Intel x86 processors too
+    - Correctly mark the CPU as supported in the HSI tests
+    - Do not fail on probing downstream Synaptics MST ports
+    - Do not offer to change BIOS settings that are already set
+    - Do not prefer msftdata when choosing the default ESP
+    - Do not show spurious device request flags
+    - Fix a missing build dependency to fwupdplugin-self-test
+    - Fix a segfault when using zlib-ng instead of zlib
+    - Fix updating Jabra 410, 510, 710 and 810 devices
+    - Match more community-supported branches
+    - Remove the Intel SPIBAR proxy support as the mtd module works
+    - Show a better error when the ESP is missing
+    - Show an error if the post-update version does not match exactly
+    - Speed up Synaptics MST device enumeration
+  + This release adds support for the following hardware:
+    - Algoltek USB devices
+    - Luxshare Quad USB4 Dock
+
+-------------------------------------------------------------------
+Wed Dec 20 17:12:21 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Own %{_modulesloaddir}: used to be present via udev-mini -> kmod
+  -> suse-module-tools dependency before.
+
+-------------------------------------------------------------------
 Mon Dec  4 12:33:37 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 1.9.10:

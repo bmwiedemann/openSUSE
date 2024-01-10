@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 14 12:53:31 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 1e10a41f.patch: Fix compatibility with libxml2 2.12.x.
+
+-------------------------------------------------------------------
 Sat May  6 19:25:04 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add upstream patch fix: 767388bc.patch: build: Fix Requires: line

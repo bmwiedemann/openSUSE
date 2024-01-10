@@ -1,7 +1,7 @@
 #
 # spec file for package fastjet
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fastjet
-Version:        3.4.0
+Version:        3.4.2
 Release:        0
 Summary:        Package for jet finding in pp and e+e- collisions
 License:        GPL-2.0-or-later
@@ -150,7 +150,7 @@ This package provides python3 bindings for fastjet.
 # REMOVE libtool ARCHIVES
 find %{buildroot} -type f -name "*.la" -delete -print
 
-# Remove rpaths from fastjet-contrib script
+# Remove rpaths from fastjet-config script
 sed -i "s|-Wl,-rpath,[^ ]\+||g" %{buildroot}%{_bindir}/fastjet-config
 
 %fdupes %{buildroot}%{python3_sitelib}/

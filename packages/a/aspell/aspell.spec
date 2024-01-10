@@ -1,7 +1,7 @@
 #
 # spec file for package aspell
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           aspell
-Version:        0.60.8
+Version:        0.60.8.1
 Release:        0
 Summary:        A Spell Checker
 License:        GFDL-1.1-or-later AND LGPL-2.1-only AND HPND AND SUSE-BSD-Mark-Modifications
@@ -31,8 +31,6 @@ Source100:      baselibs.conf
 Patch0:         aspell-strict-aliasing.patch
 # PATCH-FIX-OPENSUSE aspell-quotes.patch lmichnovic@suse.cz -- Fix command execution in script "run-with-aspell"
 Patch1:         aspell-quotes.patch
-# CVE-2019-25051 [bsc#1188576], heap-buffer-overflow in acommon:ObjStack:dup_top
-Patch2:         aspell-CVE-2019-25051.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libtool

@@ -1,7 +1,7 @@
 #
 # spec file for package 7zip
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 Name:           7zip
 Version:        23.01
 Release:        0
-Summary:        File Archivier
+Summary:        Command-line file archiver with high compression ratio
 # CPP/7zip/Compress/LzfseDecoder.cpp is under the BSD-3-Clause
 # C/Sha1.c and C/Sha256.c are in the public domain
 License:        BSD-3-Clause AND LGPL-2.1-or-later AND SUSE-Public-Domain
@@ -29,6 +29,7 @@ URL:            https://www.7-zip.org/
 Source:         https://www.7-zip.org/a/7z%{stripped_version}-src.tar.xz
 Source1:        p7zip
 Source2:        p7zip.1
+Source3:        7zz.1
 Patch0:         fix-compatib-with-p7zip.patch
 BuildRequires:  dos2unix
 BuildRequires:  gcc
@@ -97,15 +98,24 @@ install -Dm 755 CPP/7zip/Bundles/Alone2/b/g/7zz %{buildroot}%{_bindir}/7zz
 %endif
 %endif
 %endif
-# Create links the executables provided by p7zip
+
+# Create links for the executables provided by p7zip
 ln -s %{_bindir}/7zz %{buildroot}%{_bindir}/7z
 ln -s %{_bindir}/7z %{buildroot}%{_bindir}/7za
 ln -s %{_bindir}/7z %{buildroot}%{_bindir}/7zr
+
 # Install p7zip wrapper and its manpage
 install -m755 %{SOURCE1} %{buildroot}%{_bindir}/p7zip
 install -m644 -Dt %{buildroot}%{_mandir}/man1 %{SOURCE2}
 # Remove a mention of the p7zip-rar package that we don't have
 sed -i 's/RAR (if the non-free p7zip-rar package is installed)//g' %{buildroot}%{_mandir}/man1/p7zip.1
+
+# Install manpage for 7zz, and link 7z / 7za / 7zr accordingly
+# This mimics the link structure used for the actual executables
+install -m644 -Dt %{buildroot}%{_mandir}/man1 %{SOURCE3}
+ln -s %{_mandir}/man1/7zz.1 %{buildroot}%{_mandir}/man1/7z.1
+ln -s %{_mandir}/man1/7z.1 %{buildroot}%{_mandir}/man1/7za.1
+ln -s %{_mandir}/man1/7z.1 %{buildroot}%{_mandir}/man1/7zr.1
 
 %files
 %license DOC/copying.txt DOC/License.txt
@@ -116,5 +126,9 @@ sed -i 's/RAR (if the non-free p7zip-rar package is installed)//g' %{buildroot}%
 %{_bindir}/7zz
 %{_bindir}/p7zip
 %{_mandir}/man1/p7zip.1%{?ext_man}
+%{_mandir}/man1/7z.1%{?ext_man}
+%{_mandir}/man1/7za.1%{?ext_man}
+%{_mandir}/man1/7zr.1%{?ext_man}
+%{_mandir}/man1/7zz.1%{?ext_man}
 
 %changelog

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan  4 18:19:53 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 295.patch: Fix build with libxml2 2.11.0+.
+
+-------------------------------------------------------------------
 Mon Sep 25 14:17:51 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - use pkgconfig(icu-uc) to use the current libicu. (jsc#PED-6193)

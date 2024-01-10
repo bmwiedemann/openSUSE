@@ -20,15 +20,13 @@
 # Need -ffat-lto-objects for the static lib
 %define _lto_cflags -flto=auto -ffat-lto-objects
 Name:           apfel
-Version:        3.1.0
+Version:        3.1.1
 Release:        0
 Summary:        A Probability Distribution Function Evolution Library
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://apfel.hepforge.org/
 Source:         https://github.com/scarrazza/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM apfel-fix-project-version.patch badshah400@gmail.com -- Use the correct version in defining project in CMakeLists.txt
-Patch0:         apfel-fix-project-version.patch
 # PATCH-FIX-UPSTREAM apfel-dont-set-default-reltype.patch badshah400@gmail.com -- Don't assume 'RELEASE' as the release type, this should be set by user
 Patch1:         apfel-dont-set-default-reltype.patch
 BuildRequires:  %{python_module LHAPDF}

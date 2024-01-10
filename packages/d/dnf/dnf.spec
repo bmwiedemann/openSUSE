@@ -115,6 +115,7 @@ Group:          System/Packages
 Obsoletes:      dnf-conf < 4.4.2
 Provides:       dnf-conf = %{version}-%{release}
 Recommends:     logrotate
+Requires(post): /bin/ln
 
 %description data
 This package provides the common data and configuration files for DNF.

@@ -17,13 +17,14 @@
 
 
 Name:           aws-cli
-Version:        1.29.61
+Version:        1.31.11
 Release:        0
 Summary:        Amazon Web Services Command Line Interface
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/aws/aws-cli
 Source0:        https://github.com/aws/%{name}/archive/refs/tags/%{version}.tar.gz
+Patch0:         ac_update-docutils.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       groff
@@ -35,15 +36,15 @@ BuildRequires:  python3-setuptools
 Requires:       python3
 Requires:       python3-PyYAML <= 6.1
 Requires:       python3-PyYAML >= 3.10
-Requires:       python3-botocore >= 1.31.61
+Requires:       python3-botocore >= 1.33.11
 Requires:       python3-colorama <= 0.5.0
 Requires:       python3-colorama >= 0.2.5
-Requires:       python3-docutils < 0.20
+Requires:       python3-docutils < 0.21
 Requires:       python3-docutils >= 0.10
 Requires:       python3-rsa < 5.0.0
 Requires:       python3-rsa >= 3.1.2
-Requires:       python3-s3transfer < 0.8.0
-Requires:       python3-s3transfer >= 0.7.0
+Requires:       python3-s3transfer < 0.9.0
+Requires:       python3-s3transfer >= 0.8.0
 Requires:       python3-six
 %else
 BuildRequires:  bash-completion
@@ -52,14 +53,15 @@ BuildRequires:  python-setuptools
 Requires:       python
 Requires:       python-PyYAML <= 6.1
 Requires:       python-PyYAML >= 3.10
-Requires:       python-botocore >= 1.31.61
+Requires:       python-botocore >= 1.33.11
 Requires:       python-colorama <= 0.5.0
 Requires:       python-colorama >= 0.2.5
+Requires:       python-docutils < 0.21
 Requires:       python-docutils >= 0.10
 Requires:       python-rsa <= 4.5.0
 Requires:       python-rsa >= 3.1.2
-Requires:       python-s3transfer < 0.8.0
-Requires:       python-s3transfer >= 0.7.0
+Requires:       python-s3transfer < 0.9.0
+Requires:       python-s3transfer >= 0.8.0
 Requires:       python-six
 %endif
 
@@ -70,6 +72,7 @@ from the command line and automated through scripts.
 
 %prep
 %setup -q
+%patch0 -p1
 sed -i 's/from botocore\.vendored //' awscli/customizations/awslambda.py
 sed -i 's/botocore\.vendored\.//' awscli/customizations/configure/__init__.py
 

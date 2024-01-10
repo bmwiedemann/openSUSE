@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 15 08:45:01 UTC 2023 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 3.1.7:
+  * Fixed infinite loop on certain invalid fontfeatures values.
+
+-------------------------------------------------------------------
 Fri Jul 14 15:44:24 UTC 2023 - Arnav Singh <opensuse@arnavion.dev>
 
 - Update to 3.1.6:

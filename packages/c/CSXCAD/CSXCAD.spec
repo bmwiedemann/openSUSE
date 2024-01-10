@@ -1,7 +1,7 @@
 #
 # spec file for package CSXCAD
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           CSXCAD
 %define octpkg  csxcad
-Version:        0.6.2
+Version:        0.6.3
 Release:        0
 %define so_ver  0
 %define libname lib%{name}%{so_ver}
@@ -27,18 +27,8 @@ License:        LGPL-3.0-or-later
 Group:          Productivity/Scientific/Physics
 URL:            https://openems.de
 Source0:        https://github.com/thliebig/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM CSXCAD-vtk.patch
-Patch1:         CSXCAD-vtk.patch
-# PATCH-FIX-OPENSUSE CSXCAD-no-build-date.patch -- Remove build time from binaries
-Patch2:         CSXCAD-no-build-date.patch
 # PATCH-FIX-OPENSUSE CSXCAD-octave-AppCSXCAD-load.patch -- Fix AppCSXCAD.sh load
 Patch3:         CSXCAD-octave-AppCSXCAD-load.patch
-# PATCH-FIX-OPENSUSE CSXCAD-readme-octave-package.patch -- Add correct instruction about Octave and MATLAB packages
-Patch4:         CSXCAD-readme-octave-package.patch
-# PATCH-FIX-UPSTREAM CSXCAD-HDF5.patch
-Patch5:         CSXCAD-hdf5.patch
-# PATCH-FIX-UPSTREAM -- https://github.com/thliebig/CSXCAD/pull/17
-Patch6:         0001-Fix-build-with-VTK-9.0-fix-memory-leak.patch
 BuildRequires:  cgal-devel
 BuildRequires:  cmake
 BuildRequires:  double-conversion-devel
@@ -107,12 +97,7 @@ This package provides MATLAB interface for CSXCAD.
 
 %prep
 %setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
+%autopatch -p1
 
 echo "Name: %{octpkg}" >> DESCRIPTION
 echo "Version: %{version}" >> DESCRIPTION
@@ -139,8 +124,8 @@ popd
 %build
 %cmake \
     -DFPARSER_ROOT_DIR=%{_prefix} \
-    -DCMAKE_SHARED_LINKER_FLAGS=""
-make %{?_smp_mflags}
+    %{nil}
+%cmake_build
 
 cd ..
 pushd octave_build
@@ -155,7 +140,6 @@ pushd octave_build
 popd
 
 %post -n %{libname} -p /sbin/ldconfig
-
 %postun -n %{libname} -p /sbin/ldconfig
 
 %post -n octave-%{name}

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Dec 11 08:39:16 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update old-time to version 1.1.0.4.
+  ## 1.1.0.4  *Dec 2023*
+
+    * Add `build-tools: hsc2hs` to `old-time.cabal` for compilation with GHC 8.
+      Fixes [issue #12](https://github.com/haskell/old-time/issues/12)
+
+-------------------------------------------------------------------
 Thu Mar 30 17:07:43 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.

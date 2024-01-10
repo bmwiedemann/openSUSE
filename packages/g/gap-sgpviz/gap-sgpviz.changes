@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Sun Feb 12 11:51:37 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.999.5
+  * Schutzenberger graphs are now produced in two steps, as the
+    remaining drawings
+  * Changes to fix a strange behavior when the semigroups package
+    is loaded (and a semigroup is entered before)
+
+-------------------------------------------------------------------
+Mon Dec 25 16:12:20 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 0.999.1
+  * Removed the SuperFail
+  * Drawings are now produced in two steps: first the dot code
+    (that is accessible to the user) and then the display
+  * fix the code brocken by the change of IdentityTransformation
+    in the GAP system
+
+-------------------------------------------------------------------
+Fri May 10 13:47:02 UTC 2013 - jengelh@inai.de
+
+- Split sgpviz (version 0.998) off the gap RPM package

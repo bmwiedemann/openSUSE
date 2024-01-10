@@ -1885,4 +1885,12 @@ General : Update internal Libraw to snapshot 202110
   * 0001-Use-FindLibExiv2.cmake-from-ECM.patch</comment>
     <requestid>1125891</requestid>
   </revision>
+  <revision rev="218" vrev="4">
+    <srcmd5>335462aa9acc8b6d70c31a2d0be8a131</srcmd5>
+    <version>8.1.0</version>
+    <time>1702845083</time>
+    <user>anag+factory</user>
+    <comment>Require extra-cmake-modules at build time</comment>
+    <requestid>1133536</requestid>
+  </revision>
 </revisionlist>

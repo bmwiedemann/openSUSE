@@ -1,7 +1,7 @@
 #
 # spec file for package freexl
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define sover   1
 %define libname lib%{name}%{sover}
 Name:           freexl
-Version:        1.0.6
+Version:        2.0.0
 Release:        0
 Summary:        Library to extract valid data from within an Excel
 License:        GPL-2.0-or-later OR MPL-1.1 OR LGPL-2.1-or-later
@@ -29,6 +29,8 @@ Source:         https://www.gaia-gis.it/gaia-sins/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(expat)
+BuildRequires:  pkgconfig(minizip)
 
 %description
 FreeXL is an open source library to extract valid data from within an Excel

@@ -1,7 +1,7 @@
 #
-# spec file for package aaa_base
+# spec file for package disk-encryption-tool
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 # icecream 0
 
+
 %if 0%{?_build_in_place}
 %define git_version %(git log '-n1' '--date=format:%Y%m%d' '--no-show-signature' "--pretty=format:+git%cd.%h")
 BuildRequires:  git-core
@@ -27,7 +28,7 @@ BuildRequires:  git-core
 %endif
 
 Name:           disk-encryption-tool
-Version:        1+git20231114.702dff6%{git_version}
+Version:        1+git20231221.d2e7fe6%{git_version}
 Release:        0
 Summary:        Tool to reencrypt kiwi raw images
 License:        MIT
@@ -35,6 +36,10 @@ URL:            https://github.com/lnussel/disk-encryption-tool
 Source:         disk-encryption-tool-%{version}.tar
 Requires:       cryptsetup
 Requires:       keyutils
+Requires:       pcr-oracle
+# something needs to require it. Can be us.
+Requires:       tpm2.0-tools
+ExclusiveArch:  aarch64 ppc64le riscv64 x86_64
 
 %description
 Convert a plain text kiwi image into one with LUKS full disk
@@ -59,6 +64,7 @@ ln -s ../lib/dracut/modules.d/95disk-encryption-tool/generate-recovery-key %buil
 install -D -m 644 jeos-firstboot-diskencrypt-override.conf \
 	%{buildroot}/usr/lib/systemd/system/jeos-firstboot.service.d/jeos-firstboot-diskencrypt-override.conf
 install -D -m 644 jeos-firstboot-diskencrypt %buildroot/usr/share/jeos-firstboot/modules/diskencrypt
+install -D -m 644 jeos-firstboot-enroll %buildroot/usr/share/jeos-firstboot/modules/enroll
 
 %files
 %license LICENSE
@@ -70,8 +76,8 @@ install -D -m 644 jeos-firstboot-diskencrypt %buildroot/usr/share/jeos-firstboot
 %dir /usr/share/jeos-firstboot
 %dir /usr/share/jeos-firstboot/modules
 /usr/share/jeos-firstboot/modules/diskencrypt
+/usr/share/jeos-firstboot/modules/enroll
 %dir /usr/lib/systemd/system/jeos-firstboot.service.d
 /usr/lib/systemd/system/jeos-firstboot.service.d/jeos-firstboot-diskencrypt-override.conf
 
 %changelog
-

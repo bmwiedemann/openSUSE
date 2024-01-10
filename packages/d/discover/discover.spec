@@ -17,9 +17,6 @@
 
 
 %bcond_without released
-# Version in Leap 15.2 is too old
-%global have_fwupd (0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300)
-
 Name:           discover
 Version:        5.27.10
 Release:        0
@@ -39,7 +36,7 @@ BuildRequires:  extra-cmake-modules >= 5.98.0
 BuildRequires:  flatpak-devel
 BuildRequires:  kf5-filesystem
 BuildRequires:  update-desktop-files
-BuildRequires:  cmake(AppStreamQt) >= 0.11.1
+BuildRequires:  (cmake(AppStreamQt5) >= 1.0.0 or cmake(AppStreamQt) < 1.0.0)
 BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5Attica)
 BuildRequires:  cmake(KF5Config)
@@ -74,18 +71,14 @@ BuildRequires:  cmake(Qt5WebView)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  cmake(packagekitqt5) >= 1.0.1
-%if %{have_fwupd}
 BuildRequires:  pkgconfig(fwupd) >= 1.0.6
-%endif
 Requires:       kdeclarative-components
 Requires:       kirigami2
 Requires:       kuserfeedback-imports
 Requires:       libqt5-qtquickcontrols2
 Recommends:     %{name}-backend-packagekit
 Recommends:     %{name}-lang
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150100
 Recommends:     %{name}-backend-flatpak
-%endif
 # Conflicts with plasma5-pk-updates
 # Recommends:     %%{name}-notifier
 Recommends:     %{name}-backend-fwupd
@@ -101,7 +94,7 @@ Group:          System/GUI/KDE
 Requires:       %{name} = %{version}
 # Technically libdiscover and not the backend implements AppStream support, but
 # it's useless without system package management
-Requires:       AppStream
+%requires_eq    AppStream
 Requires:       PackageKit
 Requires:       appstream-provider
 
@@ -144,15 +137,15 @@ user to install them using Discover.
 %autosetup -p1
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %suse_update_desktop_file -r org.kde.discover Qt KDE System PackageManager
+%kf5_makeinstall -C build
+%suse_update_desktop_file -r org.kde.discover Qt KDE System PackageManager
 
-  # Even without the snap backend, this is installed...
-  rm %{buildroot}%{_kf5_applicationsdir}/org.kde.discover.snap.desktop
+# Even without the snap backend, this is installed...
+rm %{buildroot}%{_kf5_applicationsdir}/org.kde.discover.snap.desktop
 
 %find_lang libdiscover %{name}.lang
 %find_lang plasma-discover %{name}.lang
@@ -185,7 +178,6 @@ user to install them using Discover.
 %{_kf5_sharedir}/libdiscover/categories/packagekit-backend-categories.xml
 %{_kf5_appstreamdir}/org.kde.discover.packagekit.appdata.xml
 
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150100
 %files backend-flatpak
 %license LICENSES/*
 %{_kf5_plugindir}/discover/flatpak-backend.so
@@ -193,13 +185,10 @@ user to install them using Discover.
 %{_kf5_appstreamdir}/org.kde.discover.flatpak.appdata.xml
 %{_kf5_applicationsdir}/org.kde.discover-flatpak.desktop
 %{_kf5_iconsdir}/hicolor/*/apps/flatpak-discover.svg
-%endif
 
-%if %{have_fwupd}
 %files backend-fwupd
 %license LICENSES/*
 %{_kf5_plugindir}/discover/fwupd-backend.so
-%endif
 
 %files notifier -f notifier.lang
 %license LICENSES/*

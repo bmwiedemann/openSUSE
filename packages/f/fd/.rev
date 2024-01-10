@@ -189,4 +189,20 @@ Changes
     <comment></comment>
     <requestid>1119376</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>2eca74e5b3b8fb7e04d3982533e9d9ab</srcmd5>
+    <version>9.0.0</version>
+    <time>1703024217</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1134055</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>ed058f41da4a2f841eb0f93a82d15f66</srcmd5>
+    <version>9.0.0</version>
+    <time>1704281120</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1135743</requestid>
+  </revision>
 </revisionlist>

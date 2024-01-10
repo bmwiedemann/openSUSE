@@ -18,7 +18,7 @@
 
 %define libname libbzip3-0
 Name:           bzip3
-Version:        1.3.2
+Version:        1.4.0
 Release:        0
 Summary:        Compressor with Burrows–Wheeler transform and PPM context modeling
 License:        BSD-2-Clause AND LGPL-3.0-or-later
@@ -36,7 +36,7 @@ Burrows-Wheeler transform code making use of suffix arrays, a RLE
 with Lempel Ziv+Prediction pass based on LZ77-style string matching
 and PPM-style context modeling.
 
-bzip3 1.3.0 can outperform zstd 1.5.5 on specific data sets, e.g.
+bzip3 1.4.0 can outperform zstd 1.5.5 on specific data sets, e.g.
 15%% better ratio for same compress time on source code, but has
 time trouble with e.g. object files.
 

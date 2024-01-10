@@ -287,4 +287,12 @@
     <comment>Update CDI to version 1.58.0</comment>
     <requestid>1128107</requestid>
   </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>46a308c9373c8598f5baf6b99c1cbdfb</srcmd5>
+    <version>1.58.0</version>
+    <time>1704290037</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1136514</requestid>
+  </revision>
 </revisionlist>

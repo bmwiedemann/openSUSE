@@ -41,6 +41,7 @@ BuildRequires:  QtAV-devel >= 1.12
 BuildRequires:  akonadi-contact-devel
 BuildRequires:  akonadi-server-devel
 BuildRequires:  bison
+BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  hicolor-icon-theme

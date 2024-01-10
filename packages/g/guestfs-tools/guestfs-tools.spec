@@ -1,7 +1,7 @@
 #
 # spec file for package guestfs-tools
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global patches_touch_autotools 1
 
 # The source directory.
-%global source_directory 1.51-development
+%global source_directory 1.52-stable
 
 #
 %define guestfs_docdir %{_defaultdocdir}/%{name}
@@ -30,7 +30,7 @@
 
 Summary:        Tools to access and modify virtual machine disk images
 Name:           guestfs-tools
-Version:        1.51.6
+Version:        1.52.0
 Release:        0
 License:        GPL-2.0-or-later
 

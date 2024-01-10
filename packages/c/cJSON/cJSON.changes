@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec 26 09:29:11 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.7.17 (bsc#1218098, CVE-2023-50472,
+    bsc#1218099, CVE-2023-50471):
+  * Fix null reference in cJSON_SetValuestring (CVE-2023-50472).
+  * Fix null reference in cJSON_InsertItemInArray (CVE-2023-50471).
+
+-------------------------------------------------------------------
 Sun Jul 16 19:13:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.7.16:

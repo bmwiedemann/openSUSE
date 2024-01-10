@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jan  5 15:30:24 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.50.3:
+  + rss: Ensure feed icon size to not be too large.
+  + Bug Fixes:
+    - Calendar: Improve print of the Month view
+    - rss: Better parse itunes feeds
+    - Drag and drop images in HTML composer from Chrome
+    - EMFolderTree: Do not expand to-be-selected folder
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Dec  1 10:33:48 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.50.2:

@@ -496,4 +496,20 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1109008</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>ceabc6761f1e40e0dce4acad20b9dcf5</srcmd5>
+    <version>10.2.0</version>
+    <time>1704280978</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 10.2</comment>
+    <requestid>1136031</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>470b8013a463843897050972d70bcc50</srcmd5>
+    <version>10.2.1</version>
+    <time>1704487228</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 10.2.1</comment>
+    <requestid>1136875</requestid>
+  </revision>
 </revisionlist>

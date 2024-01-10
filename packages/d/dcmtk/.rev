@@ -229,4 +229,12 @@
     <comment>Fix for boo#1206070</comment>
     <requestid>1086560</requestid>
   </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>530cc6c99344893184a9582313df9e45</srcmd5>
+    <version>3.6.7</version>
+    <time>1702673389</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1133354</requestid>
+  </revision>
 </revisionlist>

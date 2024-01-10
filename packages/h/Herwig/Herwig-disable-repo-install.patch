@@ -9,7 +9,7 @@ Index: Herwig-7.2.2/src/Makefile.am
 -	@echo Creating repository
 +	@echo Skip creating repository
  
--	@if [ "$(PYTHON_PLATFORM)" = "darwin" ]; then\
+-	@if [ "$(PYTHON_PLATFORM)" = "darwin" ] && [ "$(EVTGENLIBS)" != "" ]; then\
 -				install_name_tool -add_rpath $(DESTDIR)$(libdir) $(DESTDIR)$(pkglibdir)/HwEvtGenInterface.so;\
 -	fi
 -

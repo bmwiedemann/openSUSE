@@ -1,0 +1,11 @@
+## Path:        Network/WWW/darkhttpd
+## Description: start parameters for darkhttpd.
+## Type:        string
+## Default:     "/srv/www/htdocs/ --port 80 --uid darkhttpd --gid darkhttpd --syslog"
+## Config:      darkhttpd
+#
+# start parameters for darkhttpd.
+#
+# see darkhttpd README for more
+#
+DARKHTTPD_PARAMS="/srv/www/htdocs/ --port 80 --uid darkhttpd --gid darkhttpd --syslog"

@@ -19,7 +19,7 @@
 %global pkg_name alsa-mixer
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        0.3.0
+Version:        0.3.0.1
 Release:        0
 Summary:        Bindings to the ALSA simple mixer API
 License:        BSD-3-Clause

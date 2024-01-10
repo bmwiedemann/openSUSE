@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Dec 31 20:50:24 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 0.2.3
+  * Various bug fixes and enhancements, no changelog available.
+- Drop obsolete/upstream patches:
+  * qt5_use_modules.diff
+  * AppCSXCAD-vtk.patch
+
+-------------------------------------------------------------------
 Thu Oct 15 13:02:01 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix build with VTK 9.x, add AppCSXCAD-vtk.patch

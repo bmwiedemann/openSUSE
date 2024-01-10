@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sun Jan 07 18:12:07 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.13.2:
+  * build(deps): bump github.com/go-git/go-git/v5 from 5.10.0 to
+    5.11.0
+
+-------------------------------------------------------------------
+Sun Jan 07 18:10:34 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.13.1:
+  * Strip leading slash before sbom ownership check
+
+-------------------------------------------------------------------
+Sun Jan 07 18:09:12 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.13.0:
+  * Update NEWS.md for v0.13.0
+  * Use idb to drive sbom file inclusion
+  * Add golden tests
+  * Change testdata to be a bit smaller
+  * Fix duplicate IDB entries
+  * build(deps): bump golang.org/x/crypto from 0.14.0 to 0.17.0
+  * Update lock.go
+  * Make sure list of 'repositories' in the 'resolved.json.file' is
+    complete.
+  * Again we were not doing post-actions.
+  * Fixing Lint errors.
+  * Rename --resolved-file to --lockfile (all over the place).
+  * Integrate apko with InstallPackages api in go-apk. Support
+    locked build with --resolved-file.
+  * Improve the architecture handling.
+  * Apko interpeting resolved (lock) file: Prototype 1.
+  * Ensure jsonschema is kept up to date.
+
+-------------------------------------------------------------------
 Thu Nov 30 09:08:12 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.12.0:

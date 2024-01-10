@@ -1,7 +1,7 @@
 #
 # spec file for package conftest
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           conftest
-Version:        0.47.0
+Version:        0.48.0
 Release:        0
 Summary:        Tool to write tests against structured configuration data
 License:        Apache-2.0

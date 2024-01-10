@@ -1,7 +1,7 @@
 #
 # spec file for package calibre
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           calibre
-Version:        7.1.0
+Version:        7.3.0
 Release:        0
 Summary:        EBook Management Application
 License:        GPL-3.0-only
@@ -50,6 +50,7 @@ BuildRequires:  gcc12-c++
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 %endif
+BuildRequires:  cmake >= 3.27.6
 BuildRequires:  fdupes
 BuildRequires:  help2man
 BuildRequires:  hicolor-icon-theme
@@ -166,7 +167,7 @@ BuildRequires:  python311-psutil >= 5.8.0
 BuildRequires:  python311-pychm >= 0.8.6
 BuildRequires:  python311-pycryptodome >= 3.11.0
 BuildRequires:  python311-pyparsing >= 3.0.6
-BuildRequires:  python311-pyppmd >= 0.17.3
+BuildRequires:  python311-pyppmd >= 1.1.0
 BuildRequires:  python311-pyqt-builder >= 1.14.0
 BuildRequires:  python311-pyzstd >= 0.15.6
 BuildRequires:  python311-qt6-devel >= 6.4.0
@@ -187,7 +188,7 @@ BuildRequires:  pkgconfig(libwebp) >= 1.3.2
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.10.3
 BuildRequires:  pkgconfig(libxslt) >= 1.1.38
 #BuildRequires:  python-unrardll >= 0.1.5
-BuildRequires:  python311-py7zr >= 0.16.3
+BuildRequires:  python311-py7zr >= 0.20.6
 %if 0%{?suse_version} > 1500
 BuildRequires:  python3-speechd >= 0.11.1
 %else
@@ -238,7 +239,7 @@ Requires:       python311-psutil >= 5.8.0
 Requires:       python311-pychm >= 0.8.6
 Requires:       python311-pycryptodome >= 3.11.0
 Requires:       python311-pyparsing >= 3.0.6
-Requires:       python311-pyppmd >= 0.17.3
+Requires:       python311-pyppmd >= 1.1.0
 Requires:       python311-pyzstd >= 0.15.6
 Requires:       python311-qt6 >= 6.4.0
 Requires:       python311-qtwebengine-qt6 >= 6.4.0
@@ -249,7 +250,7 @@ Requires:       python311-soupsieve >= 2.5
 Requires:       python311-texttable >= 1.6.4
 Requires:       python311-xxhash >= 3.3.0
 #Requires:       python311-unrardll >= 0.1.5
-Requires:       python311-py7zr >= 0.16.3
+Requires:       python311-py7zr >= 0.20.6
 %if 0%{?suse_version} > 1500
 Requires:       python3-speechd >= 0.11.1
 %else

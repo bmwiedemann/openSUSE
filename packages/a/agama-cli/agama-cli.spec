@@ -34,6 +34,7 @@ BuildRequires:  pkgconfig(openssl)
 # used in tests for dbus service
 BuildRequires:  python-langtable-data
 BuildRequires:  dbus-1-common
+BuildRequires:  timezone
 # required by agama-dbus-server integration tests
 BuildRequires:  dbus-1-daemon
 Requires:       jsonnet
@@ -43,6 +44,8 @@ Requires:       bzip2
 Requires:       tar
 # required for translating the keyboards descriptions
 Requires:       xkeyboard-config-lang
+# required for getting the list of timezones
+Requires:       timezone
 
 %description
 Command line program to interact with the agama service.

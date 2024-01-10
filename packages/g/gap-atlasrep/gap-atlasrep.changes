@@ -1,0 +1,45 @@
+-------------------------------------------------------------------
+Tue Nov 21 21:46:05 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.1.7
+  * Requesting certain matrix groups in characteristic zero had
+    caused an error in version 2.1.6.
+  * The name of a maximal subgroup of the group M_12.2 had to be
+    changed from "D8.(S4x2)" to "2^3.(S4×2)" because the old name
+    suggested a wrong group structure.
+
+-------------------------------------------------------------------
+Fri Nov 18 17:58:07 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.1.6
+  * A method for ConjugacyClasses (Reference: ConjugacyClasses
+    attribute) has been added that uses a straight line program
+    for computing class representatives of a group that has been
+    created with AtlasGroup (3.5.8), provided such a program is
+    available.
+
+-------------------------------------------------------------------
+Sun Oct  2 15:16:05 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to release 2.1.5
+
+-------------------------------------------------------------------
+Wed Jul  6 17:58:14 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.1.0
+
+-------------------------------------------------------------------
+Sat Sep 17 19:32:56 UTC 2017 - jengelh@inai.de
+
+- Switch from ftp to https.
+
+-------------------------------------------------------------------
+Sun Jun 19 09:44:13 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 1.5.1
+* No changelog was provided
+
+-------------------------------------------------------------------
+Fri May 10 13:47:02 UTC 2013 - jengelh@inai.de
+
+- Split atlasrep (version 3.0) off the gap RPM package

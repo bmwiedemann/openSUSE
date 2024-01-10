@@ -359,4 +359,20 @@
     <comment></comment>
     <requestid>1130055</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>75e10d59244b306b30d74ad03434d610</srcmd5>
+    <version>0.73.5</version>
+    <time>1703198404</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1134542</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>0b12732b2570d11e780bc054ad35c611</srcmd5>
+    <version>0.74.0</version>
+    <time>1704660019</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1137365</requestid>
+  </revision>
 </revisionlist>

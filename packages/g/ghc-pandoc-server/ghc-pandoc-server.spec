@@ -19,7 +19,7 @@
 %global pkg_name pandoc-server
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        0.1.0.3
+Version:        0.1.0.4
 Release:        0
 Summary:        Pandoc document conversion as an HTTP servant-server
 License:        GPL-2.0-or-later
@@ -30,8 +30,8 @@ BuildRequires:  ghc-aeson-devel
 BuildRequires:  ghc-aeson-prof
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
-BuildRequires:  ghc-base64-devel
-BuildRequires:  ghc-base64-prof
+BuildRequires:  ghc-base64-bytestring-devel
+BuildRequires:  ghc-base64-bytestring-prof
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-bytestring-prof
 BuildRequires:  ghc-containers-devel

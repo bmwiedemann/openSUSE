@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        5.0.0
+Version:        5.0.1
 Release:        0
 Summary:        HTTP/2 library
 License:        BSD-3-Clause

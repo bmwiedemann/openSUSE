@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Thu Jan  4 21:19:39 UTC 2024 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Add Fix-driver-switching-whil-using-JACK.patch and
+      Fix-JACK-support.patch which fixes crashes
+
+-------------------------------------------------------------------
+Wed Jan  3 05:47:00 UTC 2024 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Remove fix-obsolete-appdata.patch now upstream
+- Set noarch for libhydrogen-core-devel package
+- Update to version 1.2.2
+Added
+
+  * Hydrogen is now released as AppImage for Linux as well.
+  * Playlist dialog can now be resized and remembers geometry,
+    position, as well as visibility.
+  * Save and restore Director position, geometry, and visibility.
+  * New and properly licensed AppStream metainfo files
+    org.hydrogenmusic.Hydrogen.metainfo.xml replace old
+    org.hydrogenmusic.Hydrogen.appdata.xml.
+  * Hydrogen shows an error dialog and exits on the first invocation
+    with no hydrogen.conf file present on user and system level
+    (application was not properly installed).
+  * A new cmake option WANT_DYNAMIC_JACK_CHECK was
+    introduced. When set Hydrogen does check on startup whether
+    jackd, jackdbus, or pw-jack is installed and disables JACK
+    support in case none of them was found. This is intended for
+    bundled builds, like AppImage and Flatpak, and can be overridden
+    by setting the audio driver manually to "Jack" in the
+    hydrogen.conf or by passing the "-d jack" CLI option.
+
+Changed
+
+  * Spanish translation updated.
+  * Minor tweaks in French and German translation.
+  * On Linux the order of audio drivers tried when selecting Auto
+    changed from "JACK > ALSA > OSS > PulseAudio" to
+    "JACK > PulseAudio > ALSA > OSS".
+
+Fixed
+
+  * Style combo box in Preferences > Appearance > Interface is
+    working again.
+  * Fix segfault on hitting "Panic" button while transport was
+    rolling.
+  * Instrument/strip-specific actions, like MIDI action
+    STRIP_MUTE_TOGGLE, did void the instrument selection of the
+    Instrument Editor if the specified instrument was not the
+    currently selected one.
+  * Do not start playback at cursor when cursor in Song Editor is
+    beyond the current song length.
+  * Fixed compatibility with PortMidi version 217 (Hydrogen v1.2.1
+    was incompatible) (#1795). All versions of Hydrogen >=1.3 will,
+    however, require on a more recent PortMidi version (at least
+    v2.0.1).
+  * Fixed allowed range of MIDI output notes to be [0,127] again
+    (#1828) (introduced in v1.2.0).
+  * Hydrogen does now successfully startup even if no data folder is
+    present on user and system level.
+  * Allow an arbitrary number of notes in a pattern (#1827).
+  * Fix playback track volume fader (#1449)
+
+-------------------------------------------------------------------
 Sun Jun 11 04:50:09 UTC 2023 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 * Update to version 1.2.1

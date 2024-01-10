@@ -408,4 +408,28 @@
 </comment>
     <requestid>1125244</requestid>
   </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>da019128d5eeedfa0afbc7d64b0e5527</srcmd5>
+    <version>2.12.1</version>
+    <time>1703198324</time>
+    <user>anag+factory</user>
+    <comment>- add CVE-2023-39070.patch (CVE-2023-39070, bsc#1215233)</comment>
+    <requestid>1134347</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>2a2abcab683b505ad1be90cb4e2a281e</srcmd5>
+    <version>2.13.0</version>
+    <time>1703527552</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.13.0
+  * newCheck passedByValueCallback for functions which take a
+    parameter by value but are used as callbacks
+  * newCheck returnImplicitInt for C functions without return type
+  * newCheck iterateByValue for iterating by value in a range-based
+    for loop when a const reference could be used
+- Drop patches werror-return-type.patch, eb076d87.patch, and
+  CVE-2023-39070.patch which are part of upstream or fixed in a
+  similar way.</comment>
+    <requestid>1134967</requestid>
+  </revision>
 </revisionlist>

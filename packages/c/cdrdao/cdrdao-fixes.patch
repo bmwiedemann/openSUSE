@@ -1,7 +1,7 @@
-Index: cdrdao-1.2.4/paranoia/p_block.c
+Index: cdrdao-1.2.5/paranoia/p_block.c
 ===================================================================
---- cdrdao-1.2.4.orig/paranoia/p_block.c
-+++ cdrdao-1.2.4/paranoia/p_block.c
+--- cdrdao-1.2.5.orig/paranoia/p_block.c
++++ cdrdao-1.2.5/paranoia/p_block.c
 @@ -111,6 +111,7 @@ void free_c_block(c_block *c){
    }    
  

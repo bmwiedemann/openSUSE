@@ -1199,4 +1199,17 @@
     <comment>Update to 3.50.2 (forwarded request 1130198 from dimstar)</comment>
     <requestid>1130313</requestid>
   </revision>
+  <revision rev="139" vrev="1">
+    <srcmd5>8873056602a14079bcecd9333b376b55</srcmd5>
+    <version>3.50.3</version>
+    <time>1704558551</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.50.3:
+  + Bug Fixes:
+    - Mail: Calendar attachments can be broken by the server.
+    - Workaround Outlook 2019 ORGANIZER and ATTENDEE addition into
+      plain events.
+  + Updated translations. (forwarded request 1137094 from dimstar)</comment>
+    <requestid>1137097</requestid>
+  </revision>
 </revisionlist>

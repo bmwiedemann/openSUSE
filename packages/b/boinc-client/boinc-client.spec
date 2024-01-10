@@ -1,7 +1,7 @@
 #
 # spec file for package boinc-client
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2016 by Aaron Puchert <aaronpuchert@alice-dsl.net>
 # Copyright (c) 2011 by Sascha Manns <saigkill@opensuse.org>
 #
@@ -45,11 +45,11 @@ URL:            https://boinc.berkeley.edu/
 
 #Git-Clone:     https://github.com/BOINC/boinc
 Source0:        https://github.com/BOINC/boinc/archive/client_release/%{minor_version}/%{version}.tar.gz
+Source2:        boinc-sysusers
 Source3:        README.SUSE
 Source4:        sysconfig.%{name}
 Source5:        boinc-logrotate
 Source6:        boinc-manager
-Source10:       %{name}.init
 Source20:       %{name}.service
 Source100:      %{name}-rpmlintrc
 Patch2:         boinc-docbook2x.patch
@@ -246,6 +246,9 @@ sed -i \
 # Remove {buildroot}/etc/sysconfig/boinc-client, it is added by %%fillup_and_insserv
 rm -f %{buildroot}%{_sysconfdir}/sysconfig/%{name}
 
+# Install sysusers config
+install -Dm0644 %{SOURCE2} %{buildroot}%{_sysusersdir}/%{name}.conf
+
 # Install init and create symlink for rcboinc
 install -dm0755 %{buildroot}%{_sbindir}
 install -D -m0644 %{SOURCE20} %{buildroot}%{_unitdir}/%{name}.service
@@ -283,11 +286,6 @@ find %{buildroot}/%{_datadir}/locale/ -name "BOINC-Manager.mo" -delete
 %fdupes -s %{buildroot}
 
 %pre
-getent group boinc >/dev/null || %{_sbindir}/groupadd -r boinc
-# add user
-getent passwd boinc >/dev/null || \
-%{_sbindir}/useradd -c "BOINC Client" -d "%{_localstatedir}/lib/boinc" \
-  -g boinc -r -s /sbin/nologin boinc
 # fix replacing old sysconfig file (r21)
 if [ -f %{_sysconfdir}/sysconfig/%{name} ]; then
   if ! grep -q "BOINC_BOINC_USR" %{_sysconfdir}/sysconfig/boinc-client; then
@@ -302,7 +300,6 @@ fi
 %post
 %{fillup_only}
 %service_add_post %{name}.service
-%{_sbindir}/usermod -c "BOINC Client" -s /sbin/nologin boinc 2>/dev/null || :
 
 %postun
 %service_del_postun %{name}.service
@@ -335,6 +332,7 @@ fi
 %{_unitdir}/%{name}.service
 %{_sbindir}/rc%{name}
 %{_fillupdir}/sysconfig.%{name}
+%{_sysusersdir}/%{name}.conf
 %attr(-,boinc,boinc) %{boinc_dir}/
 
 %files -n %{name}-lang -f BOINC-Client.lang

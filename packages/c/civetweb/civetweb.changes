@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 18 20:53:12 UTC 2023 - Axel Braun <axel.braun@gmx.de>
+
+- explicit compiler options for websockets, zlib, ssl and ssl v3 added
+
+-------------------------------------------------------------------
 Wed May 17 12:02:09 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 1.16:

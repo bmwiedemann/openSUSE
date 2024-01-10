@@ -150,4 +150,16 @@ Resubmit without Source URL</comment>
 </comment>
     <requestid>1130758</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>725e4f27a5185af9ebf57bb324acd3fb</srcmd5>
+    <version>13.11.9</version>
+    <time>1704487566</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 13.11.9:
+  * dh_installudev: install into /usr (Closes: #1058791)
+  * dh_movetousr: also update links from canonical into aliased
+  * buildsystems: add qmake6 variant of the qmake buildsystem (Closes: #1057359)
+</comment>
+    <requestid>1137144</requestid>
+  </revision>
 </revisionlist>

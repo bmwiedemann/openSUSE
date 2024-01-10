@@ -1336,4 +1336,41 @@
   - qemu_mode:</comment>
     <requestid>1103819</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>bc4202f33b2a4da16c9f7851af04e14f</srcmd5>
+    <version>4.09c</version>
+    <time>1702845257</time>
+    <user>anag+factory</user>
+    <comment>- updated to 4.09c
+  - afl-fuzz:
+    - fixed the new mutation implementation for two bugs
+    - added `AFL_FINAL_SYNC` which forces a final fuzzer sync (also for `-F`)
+      before terminating.
+    - added AFL_IGNORE_SEED_PROBLEMS to skip over seeds that time out instead
+      of exiting with an error message
+    - allow -S/-M naming up to 50 characters (from 24)
+    - CMPLOG:
+      - added scale support (-l S)
+      - skip unhelpful insertions (u8)
+    - added --version and --help command line parameters
+    - fixed endless loop when reading malformed dictionaries
+    - new custom mutator function: post_run - thanks to yangzao!
+  - afl-whatsup:
+    - detect instanced that are starting up and show them as such as not dead
+    - now also shows coverage reached
+    - option -m shows only very relevant stats
+    - option -n will not use color in the output
+  - instrumentation:
+    - fix for a few string compare transform functions for LAF
+    - we are instrumenting __cxx internal functions again. this might break
+      a few targets, please report if so.
+  - frida_mode:
+    - fixes support for large map offsets
+  - support for AFL_FUZZER_LOOPCOUNT for afl.rs and LLVMFuzzerTestOneInput
+  - afl-cmin/afl-cmin.bash: prevent unneeded file errors
+  - added new tool afl-addseeds that adds new seeds to a running campaign
+  - added benchmark/benchmark.py if you want to see how good your fuzzing
+    speed is in comparison to other setups. (forwarded request 1133736 from msmeissn)</comment>
+    <requestid>1133737</requestid>
+  </revision>
 </revisionlist>

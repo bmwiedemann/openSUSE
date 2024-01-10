@@ -2920,4 +2920,21 @@ do special case rings. (forwarded request 934053 from matz2)</comment>
   (bsc#1217445, BZ #31113) (forwarded request 1131293 from Andreas_Schwab)</comment>
     <requestid>1131294</requestid>
   </revision>
+  <revision rev="284" vrev="8">
+    <srcmd5>a9df7d936c6e3cc7201bb2b3dcc9221d</srcmd5>
+    <version>2.38</version>
+    <time>1704753833</time>
+    <user>anag+factory</user>
+    <comment>- sem-open-o-creat.patch: sem_open: Clear O_CREAT when semaphore file is
+  expected to exist (BZ #30789)
+- ldconfig-process-elf-file.patch: elf: Fix wrong break removal from
+  8ee878592c
+- tls-modid-reuse.patch: elf: Fix TLS modid reuse generation assignment
+  (BZ #29039)
+- getaddrinfo-eai-memory.patch: getaddrinfo: translate ENOMEM to
+  EAI_MEMORY (bsc#1217589, BZ #31163)
+- libio-wdo-write.patch: libio: Check remaining buffer size in
+  _IO_wdo_write (BZ #31183) (forwarded request 1136423 from Andreas_Schwab)</comment>
+    <requestid>1136424</requestid>
+  </revision>
 </revisionlist>

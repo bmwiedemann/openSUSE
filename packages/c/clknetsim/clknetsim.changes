@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec 18 14:49:24 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0+git.20231005:
+  * fuzz: provide refclock offsets
+  * add client option for link speed
+  * add PTP one-step E2E transparent clock
+
+-------------------------------------------------------------------
 Tue Sep 12 08:04:17 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0+git.20230905:

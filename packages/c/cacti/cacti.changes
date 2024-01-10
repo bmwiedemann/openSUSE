@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Sun Dec 24 13:03:26 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- cacti 1.2.26:
+  * CVE-2023-50250: XSS vulnerability when importing a template file (boo#1218380)
+  * CVE-2023-49084: RCE vulnerability when managing links (boo#1218360)
+  * CVE-2023-49085: SQL Injection vulnerability when managing poller devices (boo#1218378)
+  * CVE-2023-49086: XSS vulnerability when adding new devices (boo#1218366)
+  * CVE-2023-49088: XSS vulnerability when viewing data sources in debug mode (boo#1218379)
+  * CVE-2023-51448: SQL Injection vulnerability when managing SNMP Notification Receivers (boo#1218381)
+  * When viewing data sources, an undefined variable error may be seen
+  * Improvements for Poller Last Run Date
+  * Attempting to edit a Data Query that does not exist throws warnings and not an GUI error
+  * Improve PHP 8.1 support when adding devices
+  * Viewing Data Query Cache can cause errors to be logged
+  * Preserve option is not properly honoured when removing devices at command line
+  * Infinite recursion is possible during a database failure
+  * Monitoring Host CPU's does not always work on Windows endpoints
+  * Multi select drop down list box not rendered correctly in Chrome and Edge
+  * Selective Plugin Debugging may not always work as intended
+  * During upgrades, Plugins may be falsely reported as incompatible
+  * Plugin management at command line does not work with multiple plugins
+  * Improve PHP 8.1 support for incrementing only numbers
+  * Allow the renaming of guest and template accounts
+  * DS Stats issues warnings when the RRDfile has not been initialized
+  * When upgrading, missing data source profile can cause errors to be logged
+  * When deleting a single Data Source, purge historical debug data
+  * Improvements to form element warnings
+  * Some interface aliases do not appear correctly
+  * Aggregate graph does not show other percentiles
+  * Settings table updates for large values reverted by database repair
+  * When obtaining graph records, error messages may be recorded
+  * Unable to change a device's community at command line
+  * Increase timeout for RRDChecker
+  * When viewing a graph, option to edit template may lead to incorrect URL
+  * When upgrading, failures may occur due to missing color table keys
+  * On installation, allow a more appropriate template to be used as the default
+  * When data input parameters are allowed to be null, allow null
+  * CSV Exports may not always output data correctly
+  * When debugging a graph, long CDEF's can cause undesirable scrolling
+  * Secondary LDAP server not evaluated when the first one has failed
+  * When adding a device, using the bulk walk option can make version information appear
+  * When parsing a Data Query resource, an error can be reported if no direction is specified
+  * Database reconnection can cause errors to be reported incorrectly
+  * fix returned value if $sau is empty
+  * Add Aruba switch, Aruba controller and HPE iLO templates
+  * Add OSCX 6x00 templates
+
+-------------------------------------------------------------------
 Wed Sep  6 06:06:32 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - cacti 1.2.25:

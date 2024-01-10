@@ -1,7 +1,7 @@
 #
 # spec file for package bitcoin
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2011-2014  P Rusnak <prusnak@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -30,7 +30,7 @@
 %bcond_without tests
 %endif
 Name:           bitcoin
-Version:        25.0
+Version:        26.0
 Release:        0
 Summary:        P2P Digital Currency
 License:        MIT
@@ -83,7 +83,7 @@ several GB of space, slowly growing.
 Summary:        An end-user Qt5 GUI for the %{name_pretty} crypto-currency
 Group:          Development/Libraries/Other
 Requires(post): update-desktop-files
-Requires(postun): update-desktop-files
+Requires(postun):update-desktop-files
 
 %description qt5
 %{name_pretty} is a peer-to-peer electronic cash system

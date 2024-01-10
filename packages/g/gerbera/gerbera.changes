@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Jan  8 07:14:18 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.0.0:
+  NEW:
+    * Staged importing that allows updating the virtual layout instead of deleting
+      and recreating it each time (import-mode="grb")
+    * Config options as command line arguments (--set-option OPT=VAL with --print-options)
+    * Allow configuration of follow-symlinks per autoscan directory
+    * Configuration of containers in virtual layout: title can be changed, some nodes can be disabled
+    * New mode of loading Javascript plugins with cleanup of global variables
+    * Generation of example configuration via command line option --create-example-config
+    * Case insensitive sorting for databases
+    * New config options for URL handling and host redirection
+    * Use .nomedia to hide directory, incl. config option
+    * Support for UPnP commands GetFeatureList and GetSortExtensionCapabilities
+  FIXES:
+    * Autoscan: Keep track of renamed directories
+    * Runtime issues in request handling
+    * Configurable handling of HOME directory
+    * Transcoding: parsing issue of requests
+    * Stability for sqlite database access
+    * Browsing on Samsung devices
+- Drop upstreamed gerbera-1.12.1-buildfix-support-fmtlib-10.patch.
+
+-------------------------------------------------------------------
+Sun Dec 31 19:15:11 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fix build on Tumbleweed with fmtlib 10 (boo#1218445)
+  add gerbera-1.12.1-buildfix-support-fmtlib-10.patch
+
+-------------------------------------------------------------------
+Fri Oct  6 07:21:59 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Use better macro for selecting a newer GCC on Leap.
+
+-------------------------------------------------------------------
 Thu Jun 15 11:44:52 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix usage of %sysusers_create_package: the macro takes two

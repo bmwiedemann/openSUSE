@@ -758,4 +758,14 @@
   * --results now also saves a file called 'seq' containing the (forwarded request 1129168 from dirkmueller)</comment>
     <requestid>1129202</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>8b4d02c1187e30ede6204021b64937cc</srcmd5>
+    <version>20231222</version>
+    <time>1703800911</time>
+    <user>anag+factory</user>
+    <comment>- update to 20231222:
+  * --combine-exec combines GNU Parallel with any executable.
+  * Bug fixes and man page updates. (forwarded request 1135292 from dirkmueller)</comment>
+    <requestid>1135294</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package dcmtk
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@ Name:           dcmtk
 Version:        3.6.7
 Release:        0
 Summary:        DICOM Toolkit
-License:        BSD-3-Clause AND Apache-2.0
+License:        Apache-2.0 AND BSD-3-Clause
 Group:          Productivity/Scientific/Other
 URL:            https://dicom.offis.de/dcmtk.php.en
 Source0:        ftp://dicom.offis.de/pub/dicom/offis/software/dcmtk/release/%{name}-%{version}.tar.gz
@@ -29,6 +29,9 @@ Source0:        ftp://dicom.offis.de/pub/dicom/offis/software/dcmtk/release/%{na
 Patch0:         dcmtk-fix-DCMTKTargets.cmake.patch
 # PATCH-FIX-UPSTREAM -- CVE-2022-43272
 Patch1:         dcmtk-CVE-2022-43272.patch
+# https://git.dcmtk.org/?p=dcmtk.git;a=commit;h=331c4d9011a19623aee3d82f2c4d35e903528e03
+# PATCH-FIX-UPSTREAM dcmtk-fix-pkgconfig.patch -- Removed leading spaces in dcmtk.pc.in.
+Patch2:         dcmtk-fix-pkgconfig.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes

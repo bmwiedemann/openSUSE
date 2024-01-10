@@ -398,4 +398,41 @@ Feel free to revert the update to submit it to Factory or to leave the request o
 - disable building against local copies of libjpeg etc (forwarded request 945410 from dirkmueller)</comment>
     <requestid>945510</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>857627516aa7dba8cb1705227e2b8d1a</srcmd5>
+    <version>1.3.9</version>
+    <time>1704380201</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.3.9:
+  * Support macOS up to macOS 14 &quot;Sonoma&quot;.
+  * Update bundled libraries to current versions (see below).
+  * Introduce bundled image library &quot;prefixing&quot; to avoid
+    conflicts with system libraries.
+  * Bundled library versions (see also README.bundled-libs.txt):
+  *     Library       Version            Release date
+  *     jpeg          jpeg-9e            2022-01-16
+  *     png           libpng-1.6.40      2023-06-21
+  *     zlib          zlib-1.3           2023-08-18
+  * Backport X11 INCR protocol fixes from 1.4.0 (issue #451)
+  * X11: Suppress compiler warnings when using gcc or clang
+  * Fix crash if a program exits before it opens a window
+  * Fix compilation error with current Visual Studio 2022
+  * Backport warning fixes from 1.4.0 in src/fl_draw.cxx
+  * Fix compiler warning as pointed out in PR #693
+  * Fix another compiler warning (#693)
+  * Remove unused variable, fix &quot;type issue&quot; (#445, part 2)
+  * Fix stack buffer overflow found by address sanitizer
+  * Fix &quot;gtk+ rendering&quot; (GitHub Issue #443)
+  * Fix doxygen warnings
+  * Bump version numbers, prepare release 1.3.9
+  * Fix several compiler warnings
+  * Update bundled image libraries and zlib to current
+    versions
+  * Update README, README.CMake.txt, and some support files
+  * Fix compiler warnings: backported from 1.4 (git 'master')
+  * CMake/MSVC: remove confusing recommendation to rerun
+  * Documentation: remove dark color on title page
+  * Raise CMake minimum required version to 3.15 and more (forwarded request 1135764 from dirkmueller)</comment>
+    <requestid>1136152</requestid>
+  </revision>
 </revisionlist>

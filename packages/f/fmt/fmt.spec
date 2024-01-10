@@ -1,7 +1,7 @@
 #
 # spec file for package fmt
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover   10
 Name:           fmt
-Version:        10.1.1
+Version:        10.2.1
 Release:        0
 Summary:        A formatting library for C++
 License:        MIT
@@ -64,15 +64,15 @@ export CXXFLAGS="$CFLAGS"
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:%buildroot/%_libdir"
 %ctest
 
-%post -n libfmt%sover -p /sbin/ldconfig
+%post   -n libfmt%sover -p /sbin/ldconfig
 %postun -n libfmt%sover -p /sbin/ldconfig
 
 %files -n libfmt%sover
-%license LICENSE.rst
+%license LICENSE
 %_libdir/libfmt.so.%{sover}*
 
 %files devel
-%doc ChangeLog.rst README.rst
+%doc ChangeLog.md README.md
 %_includedir/%name
 %_libdir/cmake/%name
 %_libdir/libfmt.so

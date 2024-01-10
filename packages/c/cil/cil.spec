@@ -1,6 +1,7 @@
+#
 # spec file for package cil
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -11,11 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           cil
-Version:        3.5
+Version:        3.6
 Release:        0
 Summary:        SELinux Common Intermediate Language compiler
 License:        BSD-2-Clause
@@ -25,11 +27,11 @@ Source0:        https://github.com/SELinuxProject/selinux/releases/download/%{ve
 Source1:        https://github.com/SELinuxProject/selinux/releases/download/%{version}/se%{name}c-%{version}.tar.gz.asc
 Source2:        cil.keyring
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  libsepol-devel
 BuildRequires:  flex
+BuildRequires:  libsepol-devel
 BuildRequires:  xmlto
-Obsoletes:      %name-doc  
-Provides:       %name-doc  
+Obsoletes:      %name-doc
+Provides:       %name-doc
 
 %description
 The SELinux Common Intermediate Language (CIL) is designed to be a language that sits between one or more high level
@@ -41,12 +43,12 @@ This is a compiler for CIL.
 %setup -q -n secilc-%{version}/
 
 %build
-make 
+make
 
 %install
 %make_install
 
-%files 
+%files
 %defattr(-,root,root,-)
 %{_bindir}/secilc
 %doc %{_mandir}/man8/*

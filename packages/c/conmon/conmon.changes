@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Dec 19 08:01:08 UTC 2023 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 2.1.10
+
+  Bug fixes:
+  * Fix incorrect free in conn_sock (removes fix-incorrect-free-in-conn_sock.patch)
+  * logging: Respect log-size-max immediately after open
+
+-------------------------------------------------------------------
+Mon Dec 18 09:02:52 UTC 2023 - Dan Čermák <dcermak@suse.com>
+
+- Add fix-incorrect-free-in-conn_sock.patch
+  This fixes a regression in 2.1.9
+  (https://github.com/containers/conmon/issues/475 and
+  https://github.com/containers/conmon/issues/477)
+
+-------------------------------------------------------------------
+Fri Dec 15 09:54:35 UTC 2023 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 2.1.9
+
+  ### Bug fixes
+  * fix some issues flagged by SAST scan
+  * src: fix write after end of buffer
+  * src: open all files with O_CLOEXEC
+  * oom-score: restore oom score before running exit command
+  ### Features
+  * Forward more messages on the sd-notify socket
+  * logging: -l passthrough accepts TTYs
+
+-------------------------------------------------------------------
 Thu Sep 28 16:02:58 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - go 1.19 EOL, swith to go >= 1.20

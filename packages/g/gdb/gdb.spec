@@ -369,6 +369,19 @@ Patch2108:      gdb-tui-fix-resizing-of-terminal-to-1-or-2-lines.patch
 # https://sourceware.org/pipermail/gdb-patches/2023-November/203943.html
 Patch2109:      gdb-fix-segfault-in-for_each_block-part-1.patch
 
+# https://sourceware.org/pipermail/gdb-patches/2023-December/205054.html
+Patch2120:      gdb-symtab-refactor-condition-in-scan_attributes.patch
+Patch2121:      gdb-symtab-factor-out-m_die_range_map-usage.patch
+Patch2122:      gdb-symtab-handle-nullptr-parent-in-parent_map-set_p.patch
+Patch2123:      gdb-symtab-factor-out-m_deferred_entries-usage.patch
+Patch2124:      gdb-symtab-resolve-deferred-entries-inter-shard-case.patch
+Patch2125:      gdb-symtab-keep-track-of-processed-dies-in-shard.patch
+Patch2126:      gdb-symtab-resolve-deferred-entries-intra-shard-case.patch
+Patch2127:      gdb-symtab-don-t-defer-backward-refs-inter-cu-intra-.patch
+Patch2128:      gdb-symtab-recurse-into-c-dw_tag_subprogram-dies-for.patch
+Patch2129:      gdb-symtab-keep-track-of-all-parents-for-cooked-inde.patch
+Patch2130:      gdb-symtab-fix-dw_tag_inlined_subroutine-entries-in-.patch
+
 # Debug patches.
 
 #
@@ -813,6 +826,18 @@ find -name "*.info*"|xargs rm -f
 %patch2107 -p1
 %patch2108 -p1
 %patch2109 -p1
+
+%patch2120 -p1
+%patch2121 -p1
+%patch2122 -p1
+%patch2123 -p1
+%patch2124 -p1
+%patch2125 -p1
+%patch2126 -p1
+%patch2127 -p1
+%patch2128 -p1
+%patch2129 -p1
+%patch2130 -p1
 
 #unpack libipt
 %if 0%{have_libipt}

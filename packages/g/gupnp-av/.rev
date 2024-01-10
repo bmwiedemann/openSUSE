@@ -364,4 +364,12 @@
     <comment></comment>
     <requestid>1085780</requestid>
   </revision>
+  <revision rev="46" vrev="4">
+    <srcmd5>5ca4a4497acf3e76b96c0a2d414f16b3</srcmd5>
+    <version>0.14.1</version>
+    <time>1702673221</time>
+    <user>anag+factory</user>
+    <comment>- Add 1e10a41f.patch: Fix compatibility with libxml2 2.12.x. (forwarded request 1133095 from dimstar)</comment>
+    <requestid>1133104</requestid>
+  </revision>
 </revisionlist>

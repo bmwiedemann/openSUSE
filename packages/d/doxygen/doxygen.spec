@@ -22,7 +22,7 @@
 %endif
 
 Name:           doxygen
-Version:        1.9.6
+Version:        1.10.0
 Release:        0
 Summary:        Automated C, C++, and Java Documentation Generator
 # qtools are used for building and they are GPL-3.0 licensed
@@ -34,14 +34,8 @@ Source0:        https://www.doxygen.nl/files/doxygen-%{version}.src.tar.gz
 Patch1:         %{name}-no-lowercase-man-names.patch
 # The unified libclang-cpp library doesn't exist on older Leap / SLE
 Patch10:        doxygen-no-libclang-cpp.patch
-# Fix PDF boudingbox parsing when dot uses cairo >= 1.17.6 -- https://github.com/doxygen/doxygen/issues/9319
-Patch20:        https://github.com/doxygen/doxygen/commit/966d69c603b5.patch#/Fix-boundingbox-parsing_part1.patch
-Patch21:        https://github.com/doxygen/doxygen/commit/7b2a6027775b.patch#/Fix-boundingbox-parsing_part2.patch
-Patch22:        https://github.com/doxygen/doxygen/commit/f3514d578633.patch#/Fix-boundingbox-parsing_part3.patch
-Patch23:        https://github.com/doxygen/doxygen/commit/8129939c312e.patch#/Fix-boundingbox-parsing_part4.patch
-Patch24:        reproducible.patch
 BuildRequires:  bison
-BuildRequires:  cmake >= 2.8.12
+BuildRequires:  cmake >= 3.14
 BuildRequires:  flex
 %if 0%{?suse_version} <= 1500
 BuildRequires:  gcc9-c++
@@ -58,12 +52,12 @@ BuildRequires:  llvm-clang-devel
 %endif
 
 %description
-Doxygen is a documentation system for C, C++, Java, and IDL. It can
-generate an online class browser (in HTML) and an offline reference
-manual (in LaTeX) from a set of documented source files. The
-documentation is extracted directly from the sources. Doxygen is
-developed on a Linux platform, but it runs on most other UNIX flavors
-as well.
+Doxygen is the de facto standard tool for generating documentation
+from annotated C++ sources, but it also supports other popular
+programming languages such as C, Objective-C, C-sharp, PHP, Java,
+Python, IDL (Corba, Microsoft, and UNO/OpenOffice flavors), Fortran,
+and to some extent D. Doxygen also supports the hardware description
+language VHDL.
 
 %prep
 %setup -q
@@ -74,11 +68,6 @@ as well.
 %patch10 -p1
 %endif
 %endif
-%patch20 -p1
-%patch21 -p1
-%patch22 -p1
-%patch23 -p1
-%patch24 -p1
 
 %build
 %cmake \

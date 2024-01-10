@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jan  6 15:01:01 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- add 83.patch, bfd-link-statically.patch: fix build when
+  statically linking libbfd
+
+-------------------------------------------------------------------
 Mon Apr 18 13:44:52 UTC 2022 - Christian Boltz <suse-beta@cboltz.de>
 
 - Update to version 1.5.4

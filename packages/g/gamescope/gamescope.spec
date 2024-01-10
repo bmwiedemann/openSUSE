@@ -18,7 +18,7 @@
 
 %bcond_without  intree_libs
 Name:           gamescope
-Version:        3.13.16
+Version:        3.13.19
 Release:        0
 Summary:        Micro-compositor optimized for running video games on Wayland
 License:        BSD-2-Clause
@@ -31,11 +31,13 @@ BuildRequires:  glslang-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  stb-devel
+BuildRequires:  pkgconfig(xcursor)
+BuildRequires:  pkgconfig(xmu)
 # for xxd
 BuildRequires:  vim
 %if %{without intree_libs}
 BuildRequires:  (pkgconfig(libliftoff) >= 0.4.0 with pkgconfig(libliftoff) < 0.5.0)
-BuildRequires:  (pkgconfig(wlroots) >= 0.16.0   with pkgconfig(wlroots) < 0.17.0)
+BuildRequires:  (pkgconfig(wlroots) >= 0.17.0   with pkgconfig(wlroots) < 0.18.0)
 BuildRequires:  pkgconfig(libdisplay-info)
 BuildRequires:  pkgconfig(libliftoff)
 BuildRequires:  pkgconfig(openvr)
@@ -59,7 +61,6 @@ BuildRequires:  pkgconfig(xtst)
 BuildRequires:  pkgconfig(xwayland)
 BuildRequires:  pkgconfig(xxf86vm)
 %if %{with intree_libs}
-BuildRequires:  pkgconfig(xmu)
 # from wlroots.spec
 BuildRequires:  glslang-devel
 BuildRequires:  xorg-x11-server-wayland

@@ -1038,4 +1038,12 @@
   * fa-dev-guide: add General git section</comment>
     <requestid>1126567</requestid>
   </revision>
+  <revision rev="70" vrev="2">
+    <srcmd5>c3e1ba5b3e08ceb85fbb60d34c6a5c11</srcmd5>
+    <version>4.13.1+git.1698672892.6f7e4327</version>
+    <time>1704829901</time>
+    <user>anag+factory</user>
+    <comment>- Remove python3-oauth2. This is not needed to build.</comment>
+    <requestid>1137763</requestid>
+  </revision>
 </revisionlist>

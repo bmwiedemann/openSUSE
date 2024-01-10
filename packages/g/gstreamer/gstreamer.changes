@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Jan  4 07:50:55 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.22.8:
+  + Highlighted bugfixes in 1.22.8
+    - Security fixes for the AV1 video codec parser
+    - avdec video decoder: fix another possible deadlock with
+      FFmpeg 6.1
+    - qtdemux: reverse playback and seeking fixes for files with
+      raw audio streams
+    - v4l2: fix "newly allocated buffer ... is not free" warning
+      log flood
+    - GstPlay + GstPlayer library fixes
+    - dtls: Fix build failure on Windows when compiling against
+      OpenSSL 3.2.0
+    - d3d11screencapturesrc: Fix wrong color with HDR enabled
+    - Cerbero build tool: More python 3.12 string escape warning
+      fixes; make sure to bundle build tools as well
+    - various bug fixes, build fixes, memory leak fixes, and other
+      stability and reliability improvements
+  + gstreamer
+    - buffer: Unref memories before metas
+    - pad: Recheck pads when linking after temporary unlock
+    - baseparse: Fixes to buffers extracted from adapter
+- Rebase reduce-required-meson.patch
+
+-------------------------------------------------------------------
 Wed Nov 15 09:24:45 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 1.22.7:

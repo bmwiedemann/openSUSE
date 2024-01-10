@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec 21 09:11:45 UTC 2023 - antonio.feijoo@suse.com
+
+- Update to version 059+suse.533.g5a7cf9fa:
+  * feat(dracut.sh): protect `push_host_devs` function
+  * fix(dracut.sh): do not add device if `find_block_device` returns an error
+
+-------------------------------------------------------------------
 Mon Nov 27 14:34:08 UTC 2023 - antonio.feijoo@suse.com
 
 - Update to version 059+suse.530.gba7b6a35:

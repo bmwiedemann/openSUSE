@@ -1,4 +1,218 @@
 -------------------------------------------------------------------
+Wed Jan  3 16:26:08 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 17.4.2:
+  * [Client] Graphics: Zoom out without lags
+  * [Client] Add streamer mode to avoid leaks
+  * [Client] Indicate AFK status in friends list and info tab
+  * [Client] Overhaul demo browser UI
+  * [Client] Ghost improvements (256 simultaneous ghosts!)
+  * [Tools] Add demo_extract_chat tool
+  * [Client] Don't disable practice mode on death
+  * [Client] Prediction for laser doors
+  * [Client] cl_show_direction 3 to show local keypresses only
+  * [Client] Improve IME window position on multi-line text
+  * [Client] Delay server race demo ending by 1 second
+  * [Client] Add mode selection to color picker popups
+  * [Client] Implement cl_sub_tick_aiming (not enabled on
+    official servers)
+  * [Client] Increase freeview radius to kill tile border
+  * [Client] Detect server no longer running when started
+    from client
+  * [Client] Resize screen when changing resolution in console
+  * [Client] Improve winter theme
+  * [Client] Update server browser when adding friend ingame
+  * [Client] Fix 1-tick delay of values in HUD
+  * [Client] Fix doubleclick handling with old renderer
+  * [Client] Correctly update auth keys when using auth_remove
+  * [Client] Ensure strings in demo header are zero-terminated
+    and valid UTF-8
+  * [Client] Fix large FPS drop rendering server details of
+    favorite server
+  * [Client+Server] Old file handling on Windows again
+  * [Client] Show player's latency if menu is open
+  * [Client] Improve performance of menus checker background,
+    improve server browser performance
+  * [Client] Don't use mouse position for angle if paused
+  * [Client] Support easter, halloween, xmas theme maps
+    (no maps yet)
+  * [Client] Remove parallax zoom from map files
+  * [Client] Save unknown commands from settings_ddnet.cfg
+  * [Editor] Stop/pause sound previews when leaving editor
+  * [Editor] Add export image/sound buttons
+  * [Editor] Add project-onto operation for envelopes
+  * [Editor] Add numpad shortcuts for zooming in envelope editor
+  * [Editor] Support writing maps with more items/data
+  * [Server] Add votes command
+  * [Server] Swap without a name when team only has 2 players
+  * [Server] Move X amounts of tiles with left, right, up, down
+  * [Server] Add /lasttp to teleport to last position you
+    did /tp to
+  * [Server] Fix dead reckoning
+  * [Server] tele unfreeze and reset speed
+  * [Server] Quoted names in chat for team joins
+  * [Server] Save/load ninja
+  * [Server] Add sv_regional_rankings 0
+  * [Server] Add freeze/unfreeze testing commands
+- Changes in version 17.4.1:
+  * [Client] Graphics: Zoom out without lags
+  * [Client] Add streamer mode to avoid leaks
+  * [Client] Indicate AFK status in friends list and info tab
+  * [Client] Overhaul demo browser UI
+  * [Client] Ghost improvements (256 simultaneous ghosts!)
+  * [Tools] Add demo_extract_chat tool
+  * [Client] Don't disable practice mode on death
+  * [Client] Prediction for laser doors
+  * [Client] cl_show_direction 3 to show local keypresses only
+  * [Client] Improve IME window position on multi-line text
+  * [Client] Delay server race demo ending by 1 second
+  * [Client] Add mode selection to color picker popups
+  * [Client] Implement cl_sub_tick_aiming (not enabled on
+    official servers)
+  * [Client] Detect server no longer running when started from
+    client
+  * [Client] Resize screen when changing resolution in console
+  * [Client] Improve winter theme
+  * [Client] Update server browser when adding friend ingame
+  * [Client] Fix 1-tick delay of values in HUD
+  * [Client] Fix doubleclick handling with old renderer
+  * [Client] Correctly update auth keys when using auth_remove
+  * [Client] Ensure strings in demo header are zero-terminated
+    and valid UTF-8
+  * [Client] Fix large FPS drop rendering server details of
+    favorite server
+  * [Client+Server] Old file handling on Windows again
+  * [Client] Show player's latency if menu is open
+  * [Client] Improve performance of menus checker background,
+    improve server browser performance
+  * [Client] Don't use mouse position for angle if paused
+  * [Client] Support easter, halloween, xmas theme maps
+    (no maps yet)
+  * [Client] Remove parallax zoom from map files
+  * [Client] Save unknown commands from settings_ddnet.cfg
+  * [Editor] Stop/pause sound previews when leaving editor
+  * [Editor] Add export image/sound buttons
+  * [Editor] Add project-onto operation for envelopes
+  * [Editor] Add numpad shortcuts for zooming in envelope editor
+  * [Editor] Support writing maps with more items/data
+  * [Server] Add votes command
+  * [Server] Swap without a name when team only has 2 players
+  * [Server] Move X amounts of tiles with left, right, up, down
+  * [Server] Add /lasttp to teleport to last position
+    you did /tp to
+  * [Server] Fix dead reckoning
+  * [Server] tele unfreeze and reset speed
+  * [Server] Quoted names in chat for team joins
+  * [Server] Save/load ninja
+  * [Server] Add sv_regional_rankings 0
+  * [Server] Add freeze/unfreeze testing commands
+- Changes in version 17.4:
+  * [Client] Graphics: Zoom out without lags
+  * [Client] Add streamer mode to avoid leaks
+  * [Client] Indicate AFK status in friends list and info tab
+  * [Client] Overhaul demo browser UI
+  * [Client] Ghost improvements (256 simultaneous ghosts!)
+  * [Tools] Add demo_extract_chat tool
+  * [Client] Don't disable practice mode on death
+  * [Client] Prediction for laser doors
+  * [Client] cl_show_direction 3 to show local keypresses only
+  * [Client] Improve IME window position on multi-line text
+  * [Client] Delay server race demo ending by 1 second
+  * [Client] Add mode selection to color picker popups
+  * [Client] Implement cl_sub_tick_aiming (not enabled on
+    official servers)
+  * [Client] Increase freeview radius to kill tile border
+  * [Client] Detect server no longer running when started from
+    client
+  * [Client] Resize screen when changing resolution in console
+  * [Client] Improve winter theme
+  * [Client] Update server browser when adding friend ingame
+  * [Client] Fix 1-tick delay of values in HUD
+  * [Client] Fix doubleclick handling with old renderer
+  * [Client] Correctly update auth keys when using auth_remove
+  * [Client] Ensure strings in demo header are zero-terminated
+    and valid UTF-8
+  * [Client] Fix large FPS drop rendering server details of
+    favorite server
+  * [Client+Server] Old file handling on Windows again
+  * [Client] Show player's latency if menu is open
+  * [Client] Improve performance of menus checker background,
+    improve server browser performance
+  * [Client] Don't use mouse position for angle if paused
+  * [Client] Support easter, halloween, xmas theme maps
+    (no maps yet)
+  * [Client] Remove parallax zoom from map files
+  * [Client] Save unknown commands from settings_ddnet.cfg
+  * [Editor] Stop/pause sound previews when leaving editor
+  * [Editor] Add export image/sound buttons
+  * [Editor] Add project-onto operation for envelopes
+  * [Editor] Add numpad shortcuts for zooming in envelope editor
+  * [Editor] Support writing maps with more items/data
+  * [Server] Add votes command
+  * [Server] Swap without a name when team only has 2 players
+  * [Server] Move X amounts of tiles with left, right, up, down
+  * [Server] Add /lasttp to teleport to last position you
+    did /tp to
+  * [Server] Fix dead reckoning
+  * [Server] tele unfreeze and reset speed
+  * [Server] Quoted names in chat for team joins
+  * [Server] Save/load ninja
+  * [Server] Add sv_regional_rankings 0
+  * [Server] Add freeze/unfreeze testing commands
+- Changes in version 17.3:
+  * [Client] Automatic multi-view for players in team
+  * [Client] Indicator on pause/unpause in demo player
+  * [Client] Demo search bar
+  * [Client] Directly render cut to video
+  * [Client] Golden angle to generate unique team colors
+  * [Client] Overhauled demo player skipping UI
+  * [Client] Overhauled server browser filter/details/friends
+  * [Client] Color vote if you votes yes/no
+  * [Editor] Generate pixelart from images
+  * [Client] Improved default skin
+  * [Client] Updated countryflags (GP, MN, MQ, MW, PY, RE)
+  * [Client] Improve dbg_tuning and other debug HUD
+  * [Client] Button to reload entities background
+  * [Client] Improve Windows pipe (FIFO) support
+  * [Client] Fix rendering long lines in console
+  * [Client] Disable prediction when game is paused
+  * [Client] Fix long console commands help
+  * [Client] Don't send empty chat messages
+  * [Client] Fix crash with too many votes
+  * [Client] Fix crash using goto_tele
+  * [Client] macOS server launcher fix
+  * [Client] No box selection when panning
+  * [Client] Detect server being stopped on Linux again
+  * [Client] Release mouse for X11 when LLDB breakpoint is hit
+  * [Client] Fix camera zooming when exiting multiview
+  * [Client] Fix lineinput selection cursor desync
+  * [Client] Fix chat history with cl_showchat 1
+  * [Client] Fix countryflag scrolling
+  * [Client] Fix chat clipping with OpenGL backend
+  * [Client] Improve skin cleaning
+  * [Editor] ctrl+f to load map prompt
+  * [Editor] Move automap rule files to subfolder
+  * [Editor] Progress spinner when saving
+  * [Editor] Scaling for envelopes
+  * [Editor] Keep brush when loading another map
+  * [Editor] Fix right-clicking envelope points
+  * [Editor] Warn about unsaved changes when dragging map file
+    into game
+  * [Editor] Fix envelope saving
+  * [Server] Testing commands: unninja, solo, deep
+  * [Server] Fix 0.7 clients being able to join after slot change
+  * [Server] NO_SKIN_CHANGE_FOR_FROZEN game info flag
+  * [Server] Fix everyone's swap getting reset
+  * [Server] Fix /load from backup database
+  * [Server] Fix scoreboard time reset when using /timecp
+  * [Server] Fix SQLite connection failure assertion
+  * [Server] Don't reigster to ipv6 when sv_ipv4only is enabled
+  * [Server] Record antibot events in teehistorian
+  * [Server] Record join events in teehistorian
+  * [Server] Shut down DB connection pool on errors
+- Use gcc11 for openSUSE Leap
+
+-------------------------------------------------------------------
 Sat Sep 23 08:25:01 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 17.2.1:

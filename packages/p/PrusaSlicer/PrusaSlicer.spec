@@ -17,19 +17,19 @@
 
 
 Name:           PrusaSlicer
-Version:        2.6.1
+Version:        2.7.1
 Release:        0
 Summary:        G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)
 License:        AGPL-3.0-only
 Group:          Hardware/Printing
 URL:            https://www.prusa3d.com/prusaslicer/
 Source0:        https://github.com/prusa3d/PrusaSlicer/archive/version_%{version}.tar.gz#/%{name}-version_%{version}.tar.gz
+# PATCH-FIX-UPSTREAM PrusaSlicer-2.7.1-slic3r-wxWidgets-3.2.4.patch gh#prusa3d/PrusaSlicer#11769
+Patch1:         PrusaSlicer-2.7.1-slic3r-wxWidgets-3.2.4.patch
 # PATCH-FIX-OPENSUSE up-occt-version.patch mike.chikov@gmail.com -- install wrapper so into libdir, not bindir
-Patch0:         up-occt-version.patch
+Patch10:        up-occt-version.patch
 # PATCH-FIX-OPENSUSE PrusaSlicer-2.6.0-octoprint-name-fix.patch -- cast lambda expression to same type
-Patch1:         PrusaSlicer-2.6.0-octoprint-name-fix.patch
-# PATCH-FIX-UPSTREAM PrusaSlicer-2.6.0-wxWidgets-CheckResizerFlags-assert-fix.patch -- https://github.com/prusa3d/PrusaSlicer/pull/10811
-Patch2:         PrusaSlicer-2.6.0-wxWidgets-CheckResizerFlags-assert-fix.patch
+Patch11:        PrusaSlicer-2.6.0-octoprint-name-fix.patch
 BuildRequires:  blosc-devel
 BuildRequires:  cereal-devel
 BuildRequires:  cgal-devel >= 5.6
@@ -68,6 +68,8 @@ BuildRequires:  update-desktop-files
 BuildRequires:  wxWidgets-devel >= 3.2
 # need the fltk fork, see deps/NanoSVG/NanoSVG.cmake
 BuildRequires:  nanosvg-devel >= 2022.12.22
+BuildRequires:  (cmake(Catch2) >= 2.9 with cmake(Catch2) < 3)
+BuildRequires:  cmake(LibBGCode)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glew)

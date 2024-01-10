@@ -43,7 +43,7 @@ Index: src/crontab.c
  	while (EOF != (ch = get_char(f))) {
  		if (colorize) {
  			if (!in_comment && new_line && ch == '#') {
-@@ -533,7 +549,7 @@ static void edit_cmd(void) {
+@@ -646,7 +662,7 @@ static void edit_cmd(void) {
  	char n[MAX_FNAME], q[MAX_TEMPSTR];
  	const char *editor;
  	FILE *f;
@@ -52,7 +52,7 @@ Index: src/crontab.c
  	struct stat statbuf;
  	struct utimbuf utimebuf;
  	WAIT_T waiter;
-@@ -585,10 +601,20 @@ static void edit_cmd(void) {
+@@ -698,10 +714,20 @@ static void edit_cmd(void) {
  	}
  
  	Set_LineNum(1);
@@ -76,7 +76,7 @@ Index: src/crontab.c
  	/* copy the rest of the crontab (if any) to the temp file.
  	 */
  	if (EOF != ch)
-@@ -812,6 +838,7 @@ static int replace_cmd(void) {
+@@ -925,6 +951,7 @@ static int replace_cmd(void) {
  	int ch, fd;
  	int error = 0;
  	uid_t file_owner;
@@ -84,7 +84,7 @@ Index: src/crontab.c
  	char *safename;
  
  	safename = host_specific_filename("#tmp", "XXXXXXXXXX");
-@@ -839,10 +866,10 @@ static int replace_cmd(void) {
+@@ -952,10 +979,10 @@ static int replace_cmd(void) {
  	 *
  	 * VERY IMPORTANT: make sure NHEADER_LINES agrees with this code.
  	 */

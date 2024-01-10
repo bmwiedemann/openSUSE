@@ -1,0 +1,50 @@
+From 6e9be2a3f356d79da3b71c9244d4c809baf38e52 Mon Sep 17 00:00:00 2001
+From: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
+Date: Fri, 27 Oct 2023 15:05:06 -0500
+Subject: [PATCH] aplay: log pcm status before reporting a fatal error
+
+When the --fatal-errors happen, nothing is provided to the user even
+when the '-v' verbose option is specified. This patch adds the fatal
+error exit after dumping the logs. No functionality change, just
+better information on what just happened.
+
+Closes: https://github.com/alsa-project/alsa-utils/pull/242
+Signed-off-by: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ aplay/aplay.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/aplay/aplay.c b/aplay/aplay.c
+index fc4bac697226..ed58a1ec8c7f 100644
+--- a/aplay/aplay.c
++++ b/aplay/aplay.c
+@@ -1677,12 +1677,6 @@ static void xrun(void)
+ 		prg_exit(EXIT_FAILURE);
+ 	}
+ 	if (snd_pcm_status_get_state(status) == SND_PCM_STATE_XRUN) {
+-		if (fatal_errors) {
+-			error(_("fatal %s: %s"),
+-					stream == SND_PCM_STREAM_PLAYBACK ? _("underrun") : _("overrun"),
+-					snd_strerror(res));
+-			prg_exit(EXIT_FAILURE);
+-		}
+ 		if (monotonic) {
+ #ifdef HAVE_CLOCK_GETTIME
+ 			struct timespec now, diff, tstamp;
+@@ -1708,6 +1702,12 @@ static void xrun(void)
+ 			fprintf(stderr, _("Status:\n"));
+ 			snd_pcm_status_dump(status, log);
+ 		}
++		if (fatal_errors) {
++			error(_("fatal %s: %s"),
++					stream == SND_PCM_STREAM_PLAYBACK ? _("underrun") : _("overrun"),
++					snd_strerror(res));
++			prg_exit(EXIT_FAILURE);
++		}
+ 		if ((res = snd_pcm_prepare(handle))<0) {
+ 			error(_("xrun: prepare error: %s"), snd_strerror(res));
+ 			prg_exit(EXIT_FAILURE);
+-- 
+2.35.3
+

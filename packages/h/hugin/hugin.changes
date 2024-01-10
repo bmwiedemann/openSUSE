@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jan  2 08:32:37 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2023.0.0:
+  * PTBatcherGUI can now also queue user defined assistant and
+    user defined output sequences.
+  * PTBatcherGUI: Added option to generate panorama sequences from
+    an existing pto template.
+  * Assistant: Added option to select different output options
+    like projection, FOV or canvas size depending on different
+    variables (e.g. image count, field of view, lens type).
+  * Allow building with epoxy instead of GLEW for OpenGL pointer
+    management.
+  * Several improvements to crop tool (outside crop, aspect ratio,
+    ...).
+  * Several bug fixes (e.g. in verdandi/internal blender).
+  * Updated translations.
+- Drop fix_build_with_exiv2_08.pach: upstreamed.
+
+-------------------------------------------------------------------
 Wed Jul  5 15:41:15 UTC 2023 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Add fix_build_with_exiv2_0-28.pach, fixing build with exiv2-0.28

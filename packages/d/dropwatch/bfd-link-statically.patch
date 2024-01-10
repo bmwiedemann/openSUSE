@@ -1,0 +1,11 @@
+Index: dropwatch-1.5.4/src/Makefile.am
+===================================================================
+--- dropwatch-1.5.4.orig/src/Makefile.am
++++ dropwatch-1.5.4/src/Makefile.am
+@@ -14,5 +14,5 @@ dwdump_SOURCES = dwdump.c
+ 
+ if USE_BFD
+ dropwatch_SOURCES += lookup_bfd.c
+-dropwatch_LDADD += -lbfd
++dropwatch_LDADD += -lbfd -lsframe -liberty -lzstd -lz -ldl
+ endif

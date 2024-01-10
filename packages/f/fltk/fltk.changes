@@ -1,9 +1,58 @@
 -------------------------------------------------------------------
+Sat Dec 30 16:17:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.3.9:
+  * Support macOS up to macOS 14 "Sonoma".
+  * Update bundled libraries to current versions (see below).
+  * Introduce bundled image library "prefixing" to avoid
+    conflicts with system libraries.
+  * Bundled library versions (see also README.bundled-libs.txt):
+  *     Library       Version            Release date
+  *     jpeg          jpeg-9e            2022-01-16
+  *     png           libpng-1.6.40      2023-06-21
+  *     zlib          zlib-1.3           2023-08-18
+  * Backport X11 INCR protocol fixes from 1.4.0 (issue #451)
+  * X11: Suppress compiler warnings when using gcc or clang
+  * Fix crash if a program exits before it opens a window
+  * Fix compilation error with current Visual Studio 2022
+  * Backport warning fixes from 1.4.0 in src/fl_draw.cxx
+  * Fix compiler warning as pointed out in PR #693
+  * Fix another compiler warning (#693)
+  * Remove unused variable, fix "type issue" (#445, part 2)
+  * Fix stack buffer overflow found by address sanitizer
+  * Fix "gtk+ rendering" (GitHub Issue #443)
+  * Fix doxygen warnings
+  * Bump version numbers, prepare release 1.3.9
+  * Fix several compiler warnings
+  * Update bundled image libraries and zlib to current
+    versions
+  * Update README, README.CMake.txt, and some support files
+  * Fix compiler warnings: backported from 1.4 (git 'master')
+  * CMake/MSVC: remove confusing recommendation to rerun
+  * Documentation: remove dark color on title page
+  * Raise CMake minimum required version to 3.15 and more
+  * macOS platform: Issue #325 "Disabling IM disables Greek
+    and Cyrillic layouts"
+  * Fix fullscreen window level corner cases on macOS
+  * Fix issue #373 apparent with macOS platform and SDK ≤
+  * Issue #452: Fl::get_font_name failure on OS-X.
+  * Issue #454: crash in Fl::get_font_name().
+  * Issue #469: Fl_Sys_Menu_Bar menu item shortcuts using Esc
+    Tab don't work on Mac
+  * Fix "Focus is lost leaving full screen on macOS 13"
+  * Add support of macOS Ventura 13.0 and macOS Sonoma 14.0
+  * macOS: remove configure option --enable-x11 and CMake
+    OPTION_APPLE_X11; this functionality remains in FLTK 1.4.
+  * configure.ac: make sure local-png and local-zlib always
+    run together
+  * Remove the -mwindows argument from CFLAGS and CXXFLAGS
+
+-------------------------------------------------------------------
 Mon Jan 10 21:19:49 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- drop explicit pie flags setting and use --with-optim to 
+- drop explicit pie flags setting and use --with-optim to
   pass in optimizer flags (bsc#1194419), binary is pie now
-  automatically 
+  automatically
 - disable building against local copies of libjpeg etc
 
 -------------------------------------------------------------------
@@ -108,13 +157,13 @@ Sat Oct 25 16:57:19 UTC 2014 - crrodriguez@opensuse.org
 -------------------------------------------------------------------
 Tue Mar  5 17:27:54 UTC 2013 - jw@suse.com
 
-- added a fltk-devel-static subpackage to transport libfltk*.a 
+- added a fltk-devel-static subpackage to transport libfltk*.a
   as needed by Documentation:Tools/flpsed.
 
 -------------------------------------------------------------------
 Fri Jan 25 13:33:43 UTC 2013 - pgajdos@suse.com
 
-- by previous change, files of fltk maint package was moved to 
+- by previous change, files of fltk maint package was moved to
   fltk-devel, keeping fltk empty; thus:
   * libfltk1 obsoletes fltk
   * fltk-devel provides fltk
@@ -324,8 +373,8 @@ Mon Apr 16 18:05:22 CEST 2007 - pgajdos@suse.cz
 Thu Oct  5 17:17:17 CEST 2006 - lmichnovic@suse.cz
 
 - fixed casting on 64bit arch (intptr_t.patch)
-- compiling with no-strict-aliasing 
-- fixed wrongly called ranlib with fixed libdir in variable 
+- compiling with no-strict-aliasing
+- fixed wrongly called ranlib with fixed libdir in variable
   (libdir.patch)
 
 -------------------------------------------------------------------
@@ -338,17 +387,17 @@ Fri Aug  4 13:38:02 CEST 2006 - postadal@suse.cz
 
 - updated to version 1.1.7
   * added some new example programs
-  * adds many new improvements to the FLUID software (multi-level undo, 
-    syntax highlighting in all code fields, widget alignment and sizing 
-    guides, dialog templates, widget subclasses, and printing and testing 
+  * adds many new improvements to the FLUID software (multi-level undo,
+    syntax highlighting in all code fields, widget alignment and sizing
+    guides, dialog templates, widget subclasses, and printing and testing
     of user interfaces)
   * fixed many bugs
-- removed obsoleted patches: gcc3.1-fix.dif, cast-fix.diff 
+- removed obsoleted patches: gcc3.1-fix.dif, cast-fix.diff
 
 -------------------------------------------------------------------
 Mon Feb 13 14:30:42 CET 2006 - pnemec@suse.cz
 
-- Fixed class cast errors in testsuite.  
+- Fixed class cast errors in testsuite.
 
 -------------------------------------------------------------------
 Mon Feb  6 10:34:46 CET 2006 - aj@suse.de
@@ -376,7 +425,7 @@ Wed Jan 12 18:34:26 CET 2005 - postadal@suse.cz
 Thu Jan 15 13:13:26 CET 2004 - meissner@suse.de
 
 - Upgraded to 1.1.4.
-- Added a hack so it compiles with gcc 3.4pre, remove when GCC 
+- Added a hack so it compiles with gcc 3.4pre, remove when GCC
   bug 13696 is fixed.
 
 -------------------------------------------------------------------
@@ -405,7 +454,7 @@ Thu Jan 09 14:52:36 CET 2003 - postadal@suse.cz
 -------------------------------------------------------------------
 Wed Jan  8 16:38:46 CET 2003 - ro@suse.de
 
-- fix configure.in 
+- fix configure.in
 
 -------------------------------------------------------------------
 Wed Nov 20 17:57:39 CET 2002 - meissner@suse.de
@@ -415,12 +464,12 @@ Wed Nov 20 17:57:39 CET 2002 - meissner@suse.de
 -------------------------------------------------------------------
 Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
 
-- removed bogus self-provides 
+- removed bogus self-provides
 
 -------------------------------------------------------------------
 Wed Sep 04 20:37:47 CEST 2002 - postadal@suse.cz
 
-- added %run_ldconfig macro [#18897] 
+- added %run_ldconfig macro [#18897]
 
 -------------------------------------------------------------------
 Tue Aug 13 11:26:30 CEST 2002 - uli@suse.de
@@ -431,7 +480,7 @@ Tue Aug 13 11:26:30 CEST 2002 - uli@suse.de
 Mon Aug 12 18:03:59 CEST 2002 - postadal@suse.cz
 
 - update to version 1.1.0rc5
-  * a lot of fixes 
+  * a lot of fixes
 
 -------------------------------------------------------------------
 Sun May  5 18:11:54 CEST 2002 - schwab@suse.de
@@ -507,7 +556,7 @@ Mon Aug 27 18:10:41 CEST 2001 - kukuk@suse.de
 -------------------------------------------------------------------
 Fri May 25 11:28:02 CEST 2001 - pblaha@suse.cz
 
-- update on 1.0.11 
+- update on 1.0.11
 
 -------------------------------------------------------------------
 Thu Mar 15 18:23:12 CET 2001 - ro@suse.de
@@ -518,12 +567,12 @@ Thu Mar 15 18:23:12 CET 2001 - ro@suse.de
 -------------------------------------------------------------------
 Thu Mar  8 17:56:29 CET 2001 - pblaha@suse.cz
 
-- update on 1.0.10 
+- update on 1.0.10
 
 -------------------------------------------------------------------
 Wed Mar  7 18:20:19 CET 2001 - ro@suse.de
 
-- added glu and glut packages 
+- added glu and glut packages
 
 -------------------------------------------------------------------
 Wed Mar  7 16:58:41 CET 2001 - ro@suse.de

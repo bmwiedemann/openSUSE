@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Dec 24 13:00:25 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- cacti-spine 1.2.26:
+  * Fix: Errors when uptime OID is not present
+  * Fix: MySQL reconnect option is depreciated
+  * Fix: Spine does not check a host with no poller items
+  * Fix: Poller may report the wrong number of devices polled
+  * Feature: Allow users to override the threads setting at the command line
+  * Feature: Allow spine to run in ping-only mode
+
+-------------------------------------------------------------------
 Wed Sep  6 05:57:17 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - cacti-spine 1.2.25:

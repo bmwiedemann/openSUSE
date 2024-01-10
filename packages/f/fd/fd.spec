@@ -17,7 +17,7 @@
 
 
 Name:           fd
-Version:        8.7.1
+Version:        9.0.0
 Release:        0
 Summary:        An alternative to the "find" utility
 License:        Apache-2.0 AND MIT
@@ -27,6 +27,8 @@ Source:         %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
 BuildRequires:  cargo-packaging
+# package `clap_lex v0.6.0` requires rustc 1.70.0 or newer
+BuildRequires:  rust >= 1.70.0
 Provides:       bundled(crate(aho-corasick)) = 0.7.18
 Provides:       bundled(crate(ansi_term)) = 0.12.1
 Provides:       bundled(crate(anyhow)) = 1.0.52
@@ -140,7 +142,7 @@ The official fish completion script for fd, generated during the build.
 
 %prep
 %autosetup -a1
-mkdir .cargo
+mkdir -p .cargo
 cp %{SOURCE2} .cargo/config
 
 %build

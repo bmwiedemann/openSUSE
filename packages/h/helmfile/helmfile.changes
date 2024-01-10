@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Tue Dec 26 09:32:39 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 0.160.0:
+  What's Changed
+  * build(deps): bump golang.org/x/term from 0.14.0 to 0.15.0 by
+    @dependabot in #1170
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.48.3 to
+    1.48.4 by @dependabot in #1171
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.48.4 to
+    1.48.6 by @dependabot in #1173
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.48.6 to
+    1.48.7 by @dependabot in #1176
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.48.7 to
+    1.48.9 by @dependabot in #1179
+  * Fix failing docs build by @josephgardner in #1186
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.48.9 to
+    1.48.10 by @dependabot in #1181
+  * [dockerfile] latest sops by @jouve in #1185
+  * [dockerfile] update plugins by @jouve in #1182
+  * [dockerfile] age 1.1.1 by @jouve in #1183
+  * [dockerfile] latest kubectl 1.25 by @jouve in #1184
+  * [dockerfile] update latest kustomize by @jouve in #1188
+  * feat: include func support by @yxxhero in #1187
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.48.10 to
+    1.48.11 by @dependabot in #1190
+  * Create DeleteWait and DeleteTimeout parameters for Destroy by
+    @virginiabrioso in #1177
+  * Allow secrets to be excluded from release template inheritance
+    by @voron in #1189
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.48.11 to
+    1.48.12 by @dependabot in #1191
+  * fix(docs): specify python version by @josephgardner in #1193
+  * fix(docs): typo in templating_funcs.md by @yxxhero in #1194
+  * build(deps): bump github.com/helmfile/vals from 0.29.0 to
+    0.30.0 by @dependabot in #1192
+  * fix(docs): pin python to 3.11 by @josephgardner in #1197
+  * chore(docs): update link by @josephgardner in #1198
+  * build(deps): bump actions/setup-go from 4 to 5 by @dependabot
+    in #1196
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.48.12 to
+    1.48.13 by @dependabot in #1195
+  * chore(docs): Add missing template funcs by @josephgardner in
+    #1201
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.48.13 to
+    1.48.14 by @dependabot in #1200
+  * fix: --state-values-set unable to set booleans by
+    @tunahansezen in #1199
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.48.14 to
+    1.48.15 by @dependabot in #1202
+  * chore: add bluelabs to list of helmfile users by @efcasado
+    in #1206
+  * consistently use Masterminds/semver by @jouve in #1209
+  * simplify multierr usage with standard errors by @jouve in
+    #1208
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.48.15 to
+    1.48.16 by @dependabot in #1211
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.48.16 to
+    1.49.0 by @dependabot in #1214
+  * replace custom diff in tests using testify by @jouve in #1215
+  * fix: ConditionEnabled panic issue by @yxxhero in #1221
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.49.0 to
+    1.49.1 by @dependabot in #1223
+  * bump helm version to 3.13.3 by @yxxhero in #1225
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.49.1 to
+    1.49.2 by @dependabot in #1227
+  * build(deps): bump k8s.io/apimachinery from 0.28.4 to 0.29.0
+    by @dependabot in #1226
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.49.2 to
+    1.49.3 by @dependabot in #1231
+  * build(deps): bump github.com/helmfile/vals from 0.30.0 to
+    0.31.0 by @dependabot in #1230
+  * build(deps): bump actions/upload-artifact and
+    actions/download-artifact from 3 to 4 by @yxxhero in #1234
+  * build(deps): bump golang.org/x/crypto from 0.15.0 to 0.17.0
+    by @dependabot in #1238
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.49.3 to
+    1.49.4 by @dependabot in #1236
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.49.4 to
+    1.49.5 by @dependabot in #1240
+  * build(deps): bump github.com/containerd/containerd from
+    1.7.6 to 1.7.11 by @dependabot in #1241
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.49.5 to
+    1.49.6 by @dependabot in #1242
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.49.6 to
+    1.49.7 by @dependabot in #1246
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.49.7 to
+    1.49.8 by @dependabot in #1247
+
+-------------------------------------------------------------------
 Wed Nov 29 15:56:35 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 0.159.0:

@@ -524,4 +524,12 @@ Docker 17.07.0_ce update. This SR is in conjunction with:
     <comment></comment>
     <requestid>1130673</requestid>
   </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>8a6bf1855076c7b4c3d54680328f0163</srcmd5>
+    <version>1.7.10</version>
+    <time>1704829734</time>
+    <user>anag+factory</user>
+    <comment>Add patch for bsc#1217952</comment>
+    <requestid>1137575</requestid>
+  </revision>
 </revisionlist>

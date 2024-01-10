@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Dec 21 15:22:27 UTC 2023 - Adam Majer <adam.majer@suse.de> - 307
+
+- new version 307:
+  https://cockpit-project.org/blog/cockpit-307.html
+  https://cockpit-project.org/blog/cockpit-306.html
+  https://cockpit-project.org/blog/cockpit-305.html
+  https://cockpit-project.org/blog/cockpit-304.html
+  https://cockpit-project.org/blog/cockpit-303.html
+  https://cockpit-project.org/blog/cockpit-302.html
+  https://cockpit-project.org/blog/cockpit-301.html
+
+- css-overrides.patch, storage-btrfs.patch: refreshed
+
+-------------------------------------------------------------------
 Wed Sep 20 16:17:59 UTC 2023 - Miika Alikirri <miika.alikirri@suse.com>
 
 - Port SLE selinux bug fix from SLE Micro 5.5

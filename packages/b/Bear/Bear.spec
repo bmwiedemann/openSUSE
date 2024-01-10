@@ -16,9 +16,9 @@
 #
 
 
-%bcond_without tests
+%bcond_with     tests
 Name:           Bear
-Version:        3.1.2
+Version:        3.1.3
 Release:        0
 Summary:        Tool to generate compilation database for clang tooling
 License:        GPL-3.0-or-later
@@ -26,6 +26,7 @@ URL:            https://github.com/rizsotto/Bear
 Source:         %{URL}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  cmake
+BuildRequires:  pkgconfig
 BuildRequires:  cmake(nlohmann_json) >= 3.7.3
 BuildRequires:  pkgconfig(absl_synchronization)
 BuildRequires:  pkgconfig(fmt) >= 6.1
@@ -34,19 +35,19 @@ BuildRequires:  pkgconfig(grpc++) >= 1.26
 BuildRequires:  pkgconfig(protobuf) >= 3.11
 BuildRequires:  pkgconfig(spdlog)
 %if %{with tests}
+BuildRequires:  fakeroot
+# the fakeroot test requires xargs
+BuildRequires:  findutils
+# additional binaries for specific tests
+BuildRequires:  gcc-fortran
 BuildRequires:  python3-lit
 BuildRequires:  python3-setuptools
+# one of the tests requires /usr/bin/more
+BuildRequires:  util-linux
+BuildRequires:  valgrind
 BuildRequires:  pkgconfig(gmock) >= 1.10
 BuildRequires:  pkgconfig(gtest) >= 1.10
 BuildRequires:  pkgconfig(gtest_main) >= 1.10
-# one of the tests requires /usr/bin/more
-BuildRequires:  util-linux
-# additional binaries for specific tests
-BuildRequires:  gcc-fortran
-BuildRequires:  fakeroot
-BuildRequires:  valgrind
-# the fakeroot test requires xargs
-BuildRequires:  findutils
 %endif
 
 %description
@@ -61,7 +62,7 @@ file. Bear is a tool to generate such file during the build process.
 
 %build
 for f in $(ls test/bin/); do
-    sed -i "s|^#\!/usr/bin/env\s\+python\s\?$|#!%{__python3}|" test/bin/$f
+    sed -i "s|^#\!%{_bindir}/env\s\+python\s\?$|#!python3|" test/bin/$f
 done
 
 %cmake \
@@ -72,7 +73,7 @@ done
   -DENABLE_UNIT_TESTS=ON \
   -DENABLE_FUNC_TESTS=ON
 %endif
-%make_build
+%cmake_build
 
 %install
 %cmake_install

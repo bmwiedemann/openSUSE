@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -333,6 +333,16 @@ Patch1013:      tunables-string-parsing.patch
 Patch1014:      gb18030-2022.patch
 # PATCH-FIX-UPSTREAM aarch64: correct CFI in rawmemchr (BZ #31113)
 Patch1015:      aarch64-rawmemchr-unwind.patch
+# PATCH-FIX-UPSTREAM sysdeps: sem_open: Clear O_CREAT when semaphore file is expected to exist (BZ #30789)
+Patch1016:      sem-open-o-creat.patch
+# PATCH-FIX-UPSTREAM elf: Fix wrong break removal from 8ee878592c
+Patch1017:      ldconfig-process-elf-file.patch
+# PATCH-FIX-UPSTREAM elf: Fix TLS modid reuse generation assignment (BZ #29039)
+Patch1018:      tls-modid-reuse.patch
+# PATCH-FIX-UPSTREAM getaddrinfo: translate ENOMEM to EAI_MEMORY (BZ #31163)
+Patch1019:      getaddrinfo-eai-memory.patch
+# PATCH-FIX-UPSTREAM libio: Check remaining buffer size in _IO_wdo_write (BZ #31183)
+Patch1020:      libio-wdo-write.patch
 
 ###
 # Patches awaiting upstream approval
@@ -571,6 +581,11 @@ library in a cross compilation setting.
 %patch1013 -p1
 %patch1014 -p1
 %patch1015 -p1
+%patch1016 -p1
+%patch1017 -p1
+%patch1018 -p1
+%patch1019 -p1
+%patch1020 -p1
 %endif
 
 %patch2000 -p1

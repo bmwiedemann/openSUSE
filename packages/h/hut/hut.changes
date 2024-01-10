@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Dec 19 09:26:52 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 0.4.0
+  * Pagination is now supported for all commands.
+  * todo trackers can now be exported.
+  * Comments are now displayed when showing a todo ticket.
+  * Sharing builds secrets is now supported.
+  * A new command to display lists subscriptions has been added.
+  * The graphql command can perform file uploads.
+
+-------------------------------------------------------------------
 Thu Apr 13 19:51:06 UTC 2023 - Jan-Luca Kiok <opensuse-packages@jlk.one>
 
 - Update to version 0.3.0

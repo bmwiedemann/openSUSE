@@ -131,4 +131,18 @@
     or password.</comment>
     <requestid>1125796</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a49054324c31ff359b7ef33f50ea398f</srcmd5>
+    <version>0.8.0</version>
+    <time>1704829888</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.8.0:
+  Added:
+  * Add no parameter --scram-mech-pinning.
+  Changed:
+  * Refuse to upload a file if upload slot doesn't provide https.
+  * Use XEP-0474 instead of SCRAM mechanism pinning to prevent
+    downgrade attacks</comment>
+    <requestid>1137737</requestid>
+  </revision>
 </revisionlist>

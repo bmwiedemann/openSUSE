@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 18 08:48:39 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 1.4.0:
+  * support for linking with C++
+  * improvements on CMake build
+
+-------------------------------------------------------------------
 Tue Aug 22 07:15:29 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 1.3.2:

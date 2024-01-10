@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec 19 12:33:41 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add ceph-cmake-3.28.patch: Fix build with cmake 3.28 and no git
+  command found (https://github.com/ceph/ceph/pull/54963,
+  boo#1218111).
+
+-------------------------------------------------------------------
 Mon Sep 11 09:06:12 UTC 2023 - Tim Serong <tserong@suse.com>
 
 - Update to 16.2.14-66-g7aa6ce9419f:

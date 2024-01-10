@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Tue Jan  2 12:15:06 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.5.1:
+  * Significantly improved performance of the CLI parsing.
+  * Added support for Bazel modules (gh#catchorg/Catch2#2781).
+  * Added CMake option to disable the build reproducibility
+    settings (gh#catchorg/Catch2#2785).
+  * Added log library linking to the Meson build
+    (gh#catchorg/Catch2#2784).
+
+-------------------------------------------------------------------
+Fri Dec 15 14:38:43 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.5.0:
+  * Introduced CATCH_CONFIG_PREFIX_MESSAGES to prefix only logging
+    macros (gh#catchorg/Catch2#2544).
+  * Section hints in static analysis mode are now const.
+  * from_range generator supports C arrays and ranges that require
+    ADL (gh#catchorg/Catch2#2737).
+  * Stringification support for std::optional now also includes
+    std::nullopt (gh#catchorg/Catch2#2740).
+  * The Console reporter flushes output after writing benchmark runtime estimate.
+  * Added workaround to enable compilation with ICC 19.1
+    (gh#catchorg/Catch2#2551, gh#catchorg/Catch2#2766).
+  * Compiling Catch2 for XBox should work out of the box
+    (gh#catchorg/Catch2#2772).
+  * Compiling Catch2 with exceptions disabled no longer triggers
+    Wunused-function (gh#catchorg/Catch2#2726).
+  * random Generators for integral types are now reproducible
+    across different platforms.
+  * random Generators for float and double are now reproducible
+    across different platforms.
+  * Fix: UDL declaration inside Catch2 are now strictly conforming
+    to the standard.
+  * Fixed CAPTURE tests failing to compile in C++23 mode
+    (gh#catchorg/Catch2#2744).
+  * Fixed missing include in catch_message.hpp
+    (gh#catchorg/Catch2#2758).
+  * Fixed CHECK_ELSE suppressing failure from uncaught
+    exceptions(gh#catchorg/Catch2#2723).
+
+-------------------------------------------------------------------
 Thu Jul 27 12:12:56 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.4.0:

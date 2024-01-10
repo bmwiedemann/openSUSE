@@ -5157,4 +5157,41 @@ I cannot test locally unfortunately.
   https://www.thunderbird.net/en-US/thunderbird/115.5.2/releasenotes/</comment>
     <requestid>1132769</requestid>
   </revision>
+  <revision rev="327" vrev="1">
+    <srcmd5>370d338d3d372987b0cae1ddd5bc1624</srcmd5>
+    <version>115.6.0</version>
+    <time>1703102550</time>
+    <user>anag+factory</user>
+    <comment>- Mozilla Thunderbird 115.6.0
+  https://www.thunderbird.net/en-US/thunderbird/115.6.0/releasenotes/
+  * Message selection misbehaved after selecting a sub-message in an
+    expanded thread, collapsing the thread, then pressing up/down to
+    move selection
+  * Thunderbird now attempts to reconnect on a new connection after
+    SMTP 4xx errors
+  * HTML FileLink attachments used the wrong encoding
+  MFSA 2023-55 (bsc#1217230)
+  * CVE-2023-50762 (bmo#1862625)
+    Truncated signed text was shown with a valid OpenPGP
+    signature
+  * CVE-2023-50761 (bmo#1865647)
+    S/MIME signature accepted despite mismatching message date
+  * CVE-2023-6856 (bmo#1843782)
+    Heap-buffer-overflow affecting WebGL DrawElementsInstanced
+    method with Mesa VM driver
+  * CVE-2023-6857 (bmo#1796023)
+    Symlinks may resolve to smaller than expected buffers
+  * CVE-2023-6858 (bmo#1826791)
+    Heap buffer overflow in nsTextFragment
+  * CVE-2023-6859 (bmo#1840144)
+    Use-after-free in PR_GetIdentitiesLayer
+  * CVE-2023-6860 (bmo#1854669)
+    Potential sandbox escape due to VideoBridge lack of texture
+    validation
+  * CVE-2023-6861 (bmo#1864118)
+    Heap buffer overflow affected nsWindow::PickerOpen(void) in
+    headless mode
+  * CVE-2023-6862 (bmo#1868042)</comment>
+    <requestid>1134147</requestid>
+  </revision>
 </revisionlist>

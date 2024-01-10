@@ -1,7 +1,7 @@
 #
 # spec file for package arpwatch
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           arpwatch
-Version:        3.4
+Version:        3.5
 Release:        0
 Summary:        Tool to keep track of Ethernet<->IP address pairings
 License:        BSD-3-Clause
@@ -70,7 +70,7 @@ needed if you want to build the arpwatch-ethercodes package.
 %make_build \
 	ARPDIR=%{_localstatedir}/lib/arpwatch \
 	ETHERCODES=%{_datadir}/arpwatch/ethercodes.dat \
-	%nil
+	%{nil}
 
 %install
 mkdir -p \
@@ -93,8 +93,8 @@ install -Dm 0644 %{SOURCE11} \
 # own the database files
 cat > %{buildroot}%{_tmpfilesdir}/arpwatch.conf <<EOF
 # See tmpfiles.d(5) for details
-d /var/lib/arpwatch - - - -
-f /var/lib/arpwatch/arp.dat - - - -
+d %{_localstatedir}/lib/arpwatch - - - -
+f %{_localstatedir}/lib/arpwatch/arp.dat - - - -
 EOF
 mkdir %{buildroot}%{_bindir}
 install -m 0755 arp2ethers %{buildroot}%{_bindir}

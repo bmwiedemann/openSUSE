@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 27 21:00:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.10:
+  * odbc: Return better error for invalid character set
+
+-------------------------------------------------------------------
 Sat Nov 25 19:36:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.7:

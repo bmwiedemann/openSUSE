@@ -1,7 +1,7 @@
 #
 # spec file for package fuse-exfat
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2013 Sidlovsky, Yaroslav <zawertun@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -51,23 +51,6 @@ make %{?_smp_mflags}
 
 %install
 %make_install
-
-%post
-if ! grep -q -e '^exfat$' %{_sysconfdir}/filesystems ; then
-    sed -i 's/*/exfat\n*/g' %{_sysconfdir}/filesystems
-    echo "Added 'exfat' to the file %{_sysconfdir}/filesystems"
-fi
-
-if ! grep -q exfat_fuse %{_sysconfdir}/filesystems ; then
-    sed -i 's/*/exfat_fuse\n*/g' %{_sysconfdir}/filesystems
-    echo "Added 'exfat_fuse' to the file %{_sysconfdir}/filesystems"
-fi
-
-%postun
-if [ "$1" = "0" ]; then
-    sed -i -e '/exfat_fuse/d' -e '/^exfat$/d' %{_sysconfdir}/filesystems
-    echo "Deleted 'exfat' and 'exfat_fuse' from the file %{_sysconfdir}/filesystems"
-fi
 
 %files
 %license COPYING

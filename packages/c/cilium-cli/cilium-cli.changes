@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Dec 18 14:24:58 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.15.19:
+  * Prepare for v0.15.19 release
+  * chore(deps): update docker.io/library/busybox:stable-glibc
+  * docker digest to ee22a58
+  * connectivity: Flag for expected XFRM errors
+  * connectivity, utils: Refactor computeExpectedDropReasons
+  * github: eks: bump timeout to 30m
+  * check: add third client scheduled on a different node
+  * Move perf tests to separate connectivity subcommand
+  * Update stable release to v0.15.18
+
+-------------------------------------------------------------------
 Wed Dec 13 13:50:03 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.15.18:

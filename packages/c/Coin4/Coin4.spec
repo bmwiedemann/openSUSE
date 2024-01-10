@@ -1,7 +1,7 @@
 #
 # spec file for package Coin
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,26 +17,23 @@
 
 
 %define soname 80
-%bcond_without docs
+%bcond_with docs
 
 Name:           Coin4
-Version:        4.0.0
+Version:        4.0.2
 Release:        0
 Summary:        Scene-graph based retain-mode 3D graphics library
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/coin3d/coin/wiki
-Source0:        https://github.com/coin3d/coin/releases/download/Coin-%{version}/coin-%{version}-src.tar.gz
-# X-OPENSUSE-PATCH: Coin60.patch -- hack around library policy names
-Patch1:         Coin4-versioned.patch
+Source0:        https://github.com/coin3d/coin/releases/download/v%{version}/coin-%{version}-src.tar.gz
 # PATCH-FIX-OPENSUSE -- direct GLX usage causes problems on Wayland (taken from Fedora)
 Patch2:         coin-no_glx.patch
-# PATCH-FIX-UPSTREAM
-Patch3:         0001-Add-missing-libdl-link-library-for-dlopen.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 %if %{with docs}
 BuildRequires:  doxygen
+BuildRequires:  graphviz
 %endif
 BuildRequires:  fdupes
 BuildRequires:  fontconfig-devel
@@ -107,10 +104,12 @@ sound, GLSL shaders, and additional file formats like VRML97.
 sed -i '/^#include <Inventor\/C\/basic.h>$/i #include <Inventor/C/errors/debugerror.h>' include/Inventor/SbBasic.h
 
 %build
+# DATADIR must be relative to _prefix, and the "4" is added automatically
 # default __builddir clashes with existing "build" dir
 %global __builddir my_build
 %cmake \
     -DCMAKE_INSTALL_DOCDIR=%{_docdir}/Coin \
+    -DCMAKE_INSTALL_DATADIR=share/Coin \
     -DHAVE_MULTIPLE_VERSION:BOOL=ON \
     -DCOIN_BUILD_SHARED_LIBS:BOOL=ON \
     -DCOIN_BUILD_TESTS:BOOL=ON \
@@ -135,7 +134,7 @@ sed -i '/^#include <Inventor\/C\/basic.h>$/i #include <Inventor/C/errors/debuger
 rm %{buildroot}%{_bindir}/coin-config
 
 # Remove build configuration
-rm -Rf %{buildroot}%{_datadir}/info/Coin*
+rm -Rf %{buildroot}%{_datadir}/Coin/conf
 
 %fdupes %{buildroot}/%{_prefix}
 
@@ -150,10 +149,9 @@ export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
 %license COPYING
 %{_datadir}/%{name}
 %{_libdir}/libCoin.so.%{soname}*
-%{_libdir}/libCoin.so.*
 
 %files devel
-%doc AUTHORS ChangeLog FAQ NEWS README RELNOTES THANKS
+%doc AUTHORS ChangeLog FAQ NEWS README.md RELNOTES THANKS
 %license COPYING FAQ.legal
 %dir %{_includedir}/%{name}
 %{_includedir}/%{name}/Inventor/

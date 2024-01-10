@@ -74,4 +74,12 @@ If openfortivpn is not installed, vpn can not be started. (forwarded request 743
   - NMA subpackage: Main package and NMA (forwarded request 1130473 from gmbr3)</comment>
     <requestid>1130771</requestid>
   </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>f3f8efe35d5d8af75b307b6495478990</srcmd5>
+    <version>1.4.0</version>
+    <time>1703281366</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1134651</requestid>
+  </revision>
 </revisionlist>

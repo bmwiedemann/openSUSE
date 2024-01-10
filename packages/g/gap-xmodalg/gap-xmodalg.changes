@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Sun Feb 12 20:57:45 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.23
+  * Changed AlgebraHomomorphismByFunction to agree with FR version
+    and prior to the function being moved to the main GAP library.
+
+-------------------------------------------------------------------
+Sat Nov 19 22:06:19 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.22
+  * Added method for ImagesSource at end of alg2map.gi 
+  * Fixed problem with Cat1AlgebraOfXModAlgebra introduced
+    ImagesSource2DimensionalMapping
+  * Revised PreXModAlgebraOfPreCat1Algebra, IsPreXModAlgebra
+
+-------------------------------------------------------------------
+Sat Mar 12 20:17:02 UTC 2016 - jengelh@inai.de
+
+- Initial package (version 1.12) for build.opensuse.org

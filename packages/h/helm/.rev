@@ -623,4 +623,15 @@ See changelog in:
   * Update get-helm-3 to get version through get.helm.sh</comment>
     <requestid>1124808</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>4ab4f409705e2d9dcb9a854e99a63ed8</srcmd5>
+    <version>3.13.3</version>
+    <time>1702673399</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.13.3:
+  * Updating Helm libraries for k8s 1.28.4
+  * Remove excessive logging
+  * chore(create): indent to spaces</comment>
+    <requestid>1133405</requestid>
+  </revision>
 </revisionlist>

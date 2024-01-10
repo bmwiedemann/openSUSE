@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jan  4 13:55:11 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 10.2.1
+  * Restore symbol write_console(std::FILE* f, string_view text)
+
+-------------------------------------------------------------------
+Mon Jan  1 22:09:07 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 10.2
+  * Added support for the %j specifier (the number of days) for
+    std::chrono::duration.
+  * Added support for the chrono suffix for days and changed the
+    suffix for minutes from "m" to the correct "min".
+
+-------------------------------------------------------------------
 Tue Aug 29 08:18:11 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 10.1.1

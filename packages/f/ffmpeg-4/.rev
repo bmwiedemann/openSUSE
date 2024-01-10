@@ -580,4 +580,14 @@
     <comment>- Copy codec list from ffmpeg-6</comment>
     <requestid>1131456</requestid>
   </revision>
+  <revision rev="62" vrev="5">
+    <srcmd5>5600c7b9d2ef2dbb586b7398622c2baf</srcmd5>
+    <version>4.4.4</version>
+    <time>1703800508</time>
+    <user>anag+factory</user>
+    <comment>- Update ffmpeg-glslang-cxx17.patch to build with glslang 14
+- Disable vmaf integration as ffmpeg-4 cannot handle vmaf&gt;=3
+- Delete vmaf-trim-usr-local.patch</comment>
+    <requestid>1135304</requestid>
+  </revision>
 </revisionlist>

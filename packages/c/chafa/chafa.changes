@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Mon Jan  8 20:19:46 UTC 2024 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to 1.14.0:
+  * Removed ImageMagick loader support. Packagers can now remove
+    this dependency
+  * Polite mode is now off by default. The new default eliminates
+    cursor flicker and makes the output more robust against unusual
+    terminal settings. The old behavior can be restored with
+    --polite on.
+  * Added image loaders for the AVIF and QOI formats.
+  * sRGB gamma is now handled correctly in scaling operations.
+  * New option: --passthrough=<auto|none|screen|tmux>. This allows
+    passing graphics protocols like Sixels, iTerm and Kitty through
+    a terminal multiplexer. It will be enabled automatically for
+    Kitty, and can be enabled manually for other protocols with
+    more limited support
+  * New option: --view-size=<WxH>. Specifies width and height of
+    the viewport, overriding the detected terminal size
+  * New option: --fit-width. Fits images to the width of the
+    viewport, allowing them to be taller than the viewport's height
+  * New option: --relative=<bool>. Enables relative cursor
+    positioning. Useful if you've pre-positioned the cursor at a
+    particular offset where you want frames to appear, but tends to
+    make the output illegible in pagers, e.g. less -R
+  * New option: --exact-size=<auto|on|off>. Preserves the input
+    pixel size when possible. Useful to avoid artifacts caused
+    by resampling
+  * New symbol selector: imported. This selects glyphs loaded with
+    --glyph-file
+  * Fontgen: Added a BDF font writer
+  * Fontgen: Cleanup and modernization
+  * The help text and manual page were overhauled for readability,
+    and the API documentation now includes symbol indexes by version
+    and deprecation status.
+  * Added a zsh completion script
+  * Fix "unknown file format" when using AVIF on stdin
+  * Fix broken linking with libwebp-1.3.1
+  * Fix make check with --without-tools
+  * Fix --duration not working well with still images
+  * Fix sixel rendering of animations
+  * Fix operator precedence in geometry calculation
+
+-------------------------------------------------------------------
 Mon May 22 06:24:38 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.12.5:

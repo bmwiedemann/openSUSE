@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan  5 07:22:15 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 2.3.0
+  * Unicode 15 update. Added unicode_derived_<name>() lookup for
+    derived core properties. Added unicode_general_category_lookup()
+    for general category lookups. Fix GB11 rule.
+- update courier-unicode.keyring with new signing key
+
+-------------------------------------------------------------------
 Sun Dec  4 19:56:47 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 2.2.6

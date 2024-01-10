@@ -1,7 +1,7 @@
 #
 # spec file for package cdrdao
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           cdrdao
-Version:        1.2.4
+Version:        1.2.5
 Release:        0
 Summary:        Tool to write CD-Rs in Disk-At-Once Mode
 License:        GPL-2.0-or-later
@@ -27,18 +27,18 @@ Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.
 # PATCH-FIX-OPENSUSE cdrdao-build.patch
 Patch0:         cdrdao-build.patch
 # PATCH-FIX-OPENSUSE cdrdao-fixes.patch bnc#424635 nadvornik@suse.cz -- Fix cdrdao segfault
-Patch2:         cdrdao-fixes.patch
+Patch1:         cdrdao-fixes.patch
 # PATCH-FIX-OPENSUSE cdrdao-1.2.3-stat.patch asterios.dramis@gmail.com -- Missing includes causes failure build (patch taken from Fedora)
-Patch3:         cdrdao-1.2.3-stat.patch
+Patch2:         cdrdao-1.2.3-stat.patch
 # PATCH-FIX-OPENSUSE cdrdao-drop-gconf-dep.patch -- Drop dependency on gconf2
-Patch5:         cdrdao-drop-gconf-dep.patch
+Patch3:         cdrdao-drop-gconf-dep.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libao-devel
 BuildRequires:  libsigc++2-devel
 BuildRequires:  libvorbis-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(mad)
-Obsoletes:      gcdmaster <= 1.2.3
+Obsoletes:      gcdmaster <= 1.2.4
 
 %description
 CDRDAO creates CD-Rs in disk-at-once (DAO) mode driven by a description

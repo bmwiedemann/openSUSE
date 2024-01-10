@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan  4 02:08:39 UTC 2024 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add gnome-control-center-fix-region-preview-crash.patch:
+  nl_langinfo's returned pointer could be invalid after switching
+  locale, so we have to save the result before switch locale to
+  prevent the crash (bsc#1218528,
+  glgo#GNOME/gnome-control-center!2122).
+
+-------------------------------------------------------------------
 Thu Dec  7 20:53:58 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 45.2:

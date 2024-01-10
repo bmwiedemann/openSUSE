@@ -17,7 +17,7 @@
 
 
 Name:           hut
-Version:        0.3.0
+Version:        0.4.0
 Release:        0
 Summary:        A CLI tool for sr.ht
 License:        AGPL-3.0-or-later

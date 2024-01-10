@@ -19,7 +19,7 @@
 %define libname libgirara-gtk3
 %define so_ver  3
 Name:           girara
-Version:        0.4.0
+Version:        0.4.1
 Release:        0
 Summary:        Graphical user interface library
 License:        Zlib
@@ -30,6 +30,7 @@ BuildRequires:  gettext
 BuildRequires:  libxml2-tools
 BuildRequires:  meson >= 0.56
 BuildRequires:  pkgconfig
+BuildRequires:  xvfb-run
 BuildRequires:  pkgconfig(check)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.50
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20

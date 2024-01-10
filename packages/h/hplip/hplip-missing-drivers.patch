@@ -1,8 +1,19 @@
-Index: hplip-3.22.4/cups_drv.inc
-===================================================================
---- hplip-3.22.4.orig/cups_drv.inc
-+++ hplip-3.22.4/cups_drv.inc
-@@ -411,6 +411,7 @@ cups_ppd_printers = \
+From eab655e0f8ab7c7520e0c60970d74e51b25c2061 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Fri, 15 Sep 2023 18:31:38 +0200
+Subject: [PATCH 18/18] hplip: missing drivers
+
+---
+ cups_drv.inc           |   2 +
+ data/models/models.dat | 477 ++++++++++++++++++++++++++++++++++++++++-
+ prnt/drv/hpcups.drv.in |  16 ++
+ 3 files changed, 486 insertions(+), 9 deletions(-)
+
+diff --git a/cups_drv.inc b/cups_drv.inc
+index 8a33bfe..dc38978 100644
+--- a/cups_drv.inc
++++ b/cups_drv.inc
+@@ -414,6 +414,7 @@ cups_ppd_printers = \
     ppd/hpcups/hp-laserjet_cm1418fnw-pcl3.ppd.gz \
     ppd/hpcups/hp-laserjet_cp1025.ppd.gz \
     ppd/hpcups/hp-laserjet_cp1025nw.ppd.gz \
@@ -10,7 +21,7 @@ Index: hplip-3.22.4/cups_drv.inc
     ppd/hpcups/hp-laserjet_m1005.ppd.gz \
     ppd/hpcups/hp-laserjet_m101-m106.ppd.gz \
     ppd/hpcups/hp-laserjet_m109-m112.ppd.gz \
-@@ -527,6 +528,7 @@ cups_ppd_printers = \
+@@ -531,6 +532,7 @@ cups_ppd_printers = \
     ppd/hpcups/hp-laserjet_professional_p1607dn.ppd.gz \
     ppd/hpcups/hp-laserjet_professional_p1608dn.ppd.gz \
     ppd/hpcups/hp-laserjet_professional_p1609dn.ppd.gz \
@@ -18,10 +29,10 @@ Index: hplip-3.22.4/cups_drv.inc
     ppd/hpcups/hp-laserjet_professional_p_1102w.ppd.gz \
     ppd/hpcups/hp-laserjet_tank_1020.ppd.gz \
     ppd/hpcups/hp-laserjet_tank_150x.ppd.gz \
-Index: hplip-3.22.4/data/models/models.dat
-===================================================================
---- hplip-3.22.4.orig/data/models/models.dat
-+++ hplip-3.22.4/data/models/models.dat
+diff --git a/data/models/models.dat b/data/models/models.dat
+index a567fdd..ed89569 100644
+--- a/data/models/models.dat
++++ b/data/models/models.dat
 @@ -2104,7 +2104,7 @@ usb-pid=411
  usb-vid=3f0
  wifi-config=0
@@ -46,7 +57,7 @@ Index: hplip-3.22.4/data/models/models.dat
  ppd-name=hp-laserjet_100_color_mfp_m175-ps.ppd
  monitor-type=0
  panel-check-type=0
-@@ -2165,6 +2157,378 @@ usb-pid=62a
+@@ -2218,6 +2210,378 @@ usb-pid=62a
  usb-vid=3f0
  wifi-config=3
  
@@ -425,7 +436,7 @@ Index: hplip-3.22.4/data/models/models.dat
  [officejet_100_mobile_l411]
  align-type=-1
  clean-type=1
-@@ -17867,6 +18231,58 @@ usb-pid=2c17
+@@ -17920,6 +18284,58 @@ usb-pid=2c17
  usb-vid=3f0
  wifi-config=0
  
@@ -484,7 +495,7 @@ Index: hplip-3.22.4/data/models/models.dat
  [hp_laserjet_cp1025nw]
  align-type=0
  clean-type=0
-@@ -18468,6 +18884,49 @@ usb-pid=3011
+@@ -18521,6 +18937,49 @@ usb-pid=3011
  usb-vid=3f0
  wifi-config=0
  
@@ -534,14 +545,15 @@ Index: hplip-3.22.4/data/models/models.dat
  [hp_laserjet_professional_p1102]
  align-type=0
  clean-type=0
-Index: hplip-3.22.4/prnt/drv/hpcups.drv.in
-===================================================================
---- hplip-3.22.4.orig/prnt/drv/hpcups.drv.in
-+++ hplip-3.22.4/prnt/drv/hpcups.drv.in
-@@ -22689,6 +22689,14 @@ Group "RLT/HP Real Life Technologies"
+diff --git a/prnt/drv/hpcups.drv.in b/prnt/drv/hpcups.drv.in
+index 2829168..3c1377a 100644
+--- a/prnt/drv/hpcups.drv.in
++++ b/prnt/drv/hpcups.drv.in
+@@ -23107,6 +23107,14 @@ Group "RLT/HP Real Life Technologies"
+       Attribute "Product" "" "(HP LaserJet Professional p1102 Printer)"
        Attribute "Product" "" "(HP LaserJet Professional p1102s Printer)"
      }
-     {
++    {
 +      ModelName "HP LaserJet Professional p1102w"
 +      Attribute "NickName" "" "HP LaserJet Professional p1102w, hpcups $Version, requires proprietary plugin"
 +      Attribute "ShortNickName" "" "HP LaserJet Professional p1102w hpijs"
@@ -549,11 +561,10 @@ Index: hplip-3.22.4/prnt/drv/hpcups.drv.in
 +      PCFileName "hp-laserjet_professional_p1102w.ppd"
 +      Attribute "Product" "" "(HP LaserJet Professional p1102w Printer)"
 +    }
-+    {
+     {
        ModelName "HP LaserJet Professional p1106"
        Attribute "NickName" "" "HP LaserJet Professional p1106, hpcups $Version"
-       Attribute "ShortNickName" "" "HP LJ Pro p1106 hpijs"
-@@ -23122,6 +23130,14 @@ Group "RLT/HP Real Life Technologies"
+@@ -23541,6 +23549,14 @@ Group "RLT/HP Real Life Technologies"
        PCFileName "hp-laserjet_cp1025nw.ppd"
        Attribute "Product" "" "(HP LaserJet Pro cp1025nw Color Printer Series)"
      }
@@ -568,3 +579,6 @@ Index: hplip-3.22.4/prnt/drv/hpcups.drv.in
    }
  } // End LJZjsColor (for proprietary plugin)
  
+-- 
+2.43.0
+

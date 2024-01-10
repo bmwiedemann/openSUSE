@@ -799,4 +799,13 @@ for -ldl. (forwarded request 586626 from jengelh)</comment>
     <comment></comment>
     <requestid>1115906</requestid>
   </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>5e0c87bc7a7f18acc6356d57d75da60c</srcmd5>
+    <version>15.1.2</version>
+    <time>1704487343</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 15.1.2:
+  + Updated translations. (forwarded request 1136891 from dimstar)</comment>
+    <requestid>1136893</requestid>
+  </revision>
 </revisionlist>

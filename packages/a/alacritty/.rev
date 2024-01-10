@@ -328,4 +328,14 @@ Update to version 1.12.3</comment>
     <comment></comment>
     <requestid>1117018</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>017ec303dd9eeced5a99645bfa49c368</srcmd5>
+    <version>0.13.0</version>
+    <time>1704281242</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1135894 from jlkDE
+
+Update to version 0.13.0</comment>
+    <requestid>1135895</requestid>
+  </revision>
 </revisionlist>

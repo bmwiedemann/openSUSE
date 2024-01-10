@@ -1,7 +1,33 @@
 -------------------------------------------------------------------
+Mon Jan  8 09:12:41 UTC 2024 - Takashi Iwai <tiwai@suse.com>
+
+- Backport upstream fixes:
+  buffer overflow fixes in aplay, segfault in aplaymidi, etc:
+  0008-topology-include-locale.h.patch 
+  0009-nhlt-dmic-info.c-include-sys-types.h.patch 
+  0010-topology-pre-processor-Add-support-for-enum-controls.patch 
+  0011-configure.ac-fix-UMP-support-detection.patch 
+  0012-bat-really-skip-analysis-of-the-first-period-and-upd.patch 
+  0013-topology-add-include-for-ENABLE_NLS-on-musl.patch 
+  0014-nhlt-use-stdint.h-types.patch 
+  0015-Revert-nhlt-dmic-info.c-include-sys-types.h.patch 
+  0016-aplay-use-stdint.h-types-instead-u_int-u_short-u_cha.patch 
+  0017-alsa-restore.rules-use-devnode-instead-number-atribu.patch 
+  0018-nhlt-Revert-SSP_ANALOG-device_type-field.patch 
+  0019-alsactl-fix-potential-buffer-overwrite.patch 
+  0020-aplay-fix-buffer-overflow-and-tainted-format-string.patch 
+  0021-misc-fix-incorrect-usages-of-strerror.patch 
+  0022-aplay-Add-option-for-specifying-subformat.patch 
+  0023-aplay-allow-to-compile-with-older-alsa-lib-subformat.patch 
+  0024-aplay-log-pcm-status-before-reporting-a-fatal-error.patch 
+  0025-aplay-enable-timestamps-by-default.patch 
+  0026-aplay-status-dumps-are-called-only-in-verbose-mode.patch 
+  0027-aplaymidi-Set-event-completely-for-tempo-event.patch 
+
+-------------------------------------------------------------------
 Mon Sep  4 12:38:04 UTC 2023 - Takashi Iwai <tiwai@suse.com>
 
-- Update to alsa-utils 1.2.10:
+- Update to alsa-utils 1.2.10 (jsc#PED-6566):
   * MIDI 2.0 / UMP support for sequencer programs
   * nhlt: add nhlt-dmic-info utility
   * Build fixes and cleanups
@@ -30,7 +56,7 @@ Mon May  8 08:50:35 UTC 2023 - Takashi Iwai <tiwai@suse.com>
 -------------------------------------------------------------------
 Tue Oct 25 07:30:22 UTC 2022 - Takashi Iwai <tiwai@suse.com>
 
-- Update to alsa-utils 1.2.8:
+- Update to alsa-utils 1.2.8 (jsc#PED-850):
   automake update, minor alsactl, amixer and aplay fixes.
   https://www.alsa-project.org/wiki/Changes_v1.2.7.2_v1.2.8  
 - Add keyring

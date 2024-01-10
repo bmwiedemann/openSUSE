@@ -1,7 +1,7 @@
 #
 # spec file for package VirtualGL
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           VirtualGL
-Version:        3.0.2
+Version:        3.1
 Release:        0
 Summary:        A toolkit for displaying OpenGL applications to thin clients
 License:        LGPL-2.1-only AND SUSE-wxWidgets-3.1
@@ -122,6 +122,7 @@ make %{?_smp_mflags}
 # Fix placement of 64b glxspheres
 %ifarch x86_64 s390x ppc64 ppc64le aarch64 riscv64
 mv %{buildroot}%{_bindir}/glxspheres* %{buildroot}%{_bindir}/glxspheres
+mv %{buildroot}%{_bindir}/eglxspheres* %{buildroot}%{_bindir}/eglxspheres
 %endif
 # Fix fakelib placement
 rm -rf %{buildroot}%{_prefix}/fakelib
@@ -132,6 +133,7 @@ chmod 644 doc/LGPL.txt doc/LICENSE.txt doc/index.html doc/*.png doc/*.gif doc/*.
 rm -rf %{buildroot}%{_datadir}/doc
 mv -f %{buildroot}%{_bindir}/glxinfo %{buildroot}%{_bindir}/vglxinfo
 mv -f %{buildroot}%{_bindir}/eglinfo %{buildroot}%{_bindir}/veglinfo
+mv -f %{buildroot}%{_bindir}/eglxinfo %{buildroot}%{_bindir}/veglxinfo
 # bsc#1097210 rely on env settings
 rm -rf %{buildroot}/%{_bindir}/.vglrun.*
 
@@ -146,7 +148,9 @@ rm -rf %{buildroot}/%{_bindir}/.vglrun.*
 %{_bindir}/cpustat
 %{_bindir}/veglinfo
 %{_bindir}/vglxinfo
+%{_bindir}/veglxinfo
 %{_bindir}/glxspheres
+%{_bindir}/eglxspheres
 %{_bindir}/vglclient
 %{_bindir}/vglconfig
 %{_bindir}/vglconnect

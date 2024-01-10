@@ -1,7 +1,7 @@
 #
 # spec file for package ddnet
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ddnet
-Version:        17.2.1
+Version:        17.4.2
 Release:        0
 Summary:        DDraceNetwork, a cooperative racing mod of Teeworlds
 License:        Apache-2.0 AND CC-BY-SA-3.0 AND Zlib AND MIT AND SUSE-Public-Domain
@@ -32,7 +32,6 @@ BuildRequires:  cargo
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
 BuildRequires:  glslang-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libminiupnpc-devel
@@ -57,6 +56,12 @@ BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(wavpack)
 BuildRequires:  pkgconfig(zlib)
 Requires:       %{name}-data = %{version}-%{release}
+%if 0%{?sle_version} >= 150400 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
+BuildRequires:  gcc11
+BuildRequires:  gcc11-c++
+%else
+BuildRequires:  gcc-c++
+%endif
 
 %description
 DDraceNetwork (DDNet) is an actively maintained version of DDRace,
@@ -97,6 +102,10 @@ directory = './vendor'
 EOF
 
 %build
+%if 0%{?sle_version} >= 150400 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
+export CC="gcc-11"
+export CXX="g++-11"
+%endif
 export CARGO_HOME=`pwd`/cargo-home/
 mkdir -p build && cd build
 # NOTE that %%cmake macro breaks linking.
@@ -109,6 +118,10 @@ cmake .. \
     -DUPNP=ON \
     -DSTEAM=OFF \
     -DVIDEORECORDER=OFF
+
+# Fix for "error: failed to run custom build command for `link-cplusplus v1.0.6` - error occurred: Failed to find tool. Is `c++` installed?"
+%make_build \
+     OPTFLAGS="%{optflags} -std=gnu++17"
 
 %install
 export CARGO_HOME=`pwd`/cargo-home/

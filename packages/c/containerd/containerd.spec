@@ -1,7 +1,7 @@
 #
 # spec file for package containerd
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,6 +41,8 @@ Source1:        %{name}-rpmlintrc
 Source2:        %{name}.service
 # UPSTREAM: Revert <https://github.com/containerd/containerd/pull/7933> to fix build on SLE-12.
 Patch1:         0001-BUILD-SLE12-revert-btrfs-depend-on-kernel-UAPI-inste.patch
+# https://github.com/containerd/containerd/pull/9571
+Patch2:         0002-shim-Create-pid-file-with-0644-permissions.patch
 BuildRequires:  fdupes
 BuildRequires:  glibc-devel-static
 BuildRequires:  go >= 1.19
@@ -99,6 +101,7 @@ reference the following Go import paths: github.com/containerd/containerd
 %if 0%{?sle_version} == 120000
 %patch1 -p1
 %endif
+%patch2 -p1
 
 %build
 %goprep %{import_path}

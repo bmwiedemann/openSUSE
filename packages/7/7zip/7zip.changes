@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan  2 20:37:25 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Add missing man pages for 7z / 7za / 7zr / 7zz.
+  This solves bsc#1204856.
+
+-------------------------------------------------------------------
 Tue Jul 18 02:01:41 UTC 2023 - Linnaea Lavia <linnaea@lavia.moe>
 
 - Enable ARM64 ASM introduced in 23.01

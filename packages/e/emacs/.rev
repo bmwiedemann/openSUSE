@@ -1879,4 +1879,12 @@ Now one could consider building emacs with gsettings support (both debian and fe
     <comment></comment>
     <requestid>1126636</requestid>
   </revision>
+  <revision rev="181" vrev="8">
+    <srcmd5>9a16e4c5e8ce729de63ac048babf8fea</srcmd5>
+    <version>29.1</version>
+    <time>1704487271</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1137005</requestid>
+  </revision>
 </revisionlist>

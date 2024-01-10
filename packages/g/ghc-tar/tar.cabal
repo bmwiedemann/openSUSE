@@ -1,7 +1,7 @@
 cabal-version:   1.12
 name:            tar
 version:         0.5.1.1
-x-revision: 9
+x-revision: 10
 
 license:         BSD3
 license-file:    LICENSE
@@ -43,7 +43,7 @@ flag old-bytestring
 library
 
   build-depends: base       >= 4 && < 4.20,
-                 filepath             < 1.5,
+                 filepath             < 1.6,
                  array                < 0.6,
                  containers >= 0.2 && < 0.8,
                  deepseq    >= 1.1 && < 1.6

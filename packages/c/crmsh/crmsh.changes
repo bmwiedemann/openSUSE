@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Tue Jan 09 04:34:42 UTC 2024 - XLiang@suse.com
+
+- Update to version 4.6.0+20240109.288ef6c4:
+  * Dev: codecov: ignore crm report module
+  * Dev: unittest: Adjust unit test for prevous changes
+  * Dev: behave: Adjust functional test for previous changes
+  * Fix: report: Unable to gather log files that are in the syslog format (bsc#1218491)
+  * Fix: pin the tag of container image used in test
+
+-------------------------------------------------------------------
+Thu Dec 28 06:39:58 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.6.0+20231228.83bf1514:
+  * Dev: ui_corosync: Add a completer for corosync.set to enumerate all current paths
+
+-------------------------------------------------------------------
+Mon Dec 25 07:42:42 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.6.0+20231225.3e2ff633:
+  * Dev: bootstrap: Assign hosts with _context.node_list_in_cluster in join_ssh_merge (bsc#1218331)
+
+-------------------------------------------------------------------
+Fri Dec 22 08:51:45 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.6.0+20231222.b7650ca3:
+  * Dev: ChangeLog: update ChangeLog for release 4.6.0-rc2
+
+-------------------------------------------------------------------
+Fri Dec 15 07:25:30 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.6.0+20231215.4b06740f:
+  * Fix: github-actions: fix file owner for git
+  * Dev: github-actions: update container image used in CD
+
+-------------------------------------------------------------------
+Thu Dec 14 08:21:04 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.6.0rc1+20231214.b2728f3b:
+  * Dev: behave: Adjust functional test for previous change
+  * Dev: ui_cluster: Move --use-ssh-agent to optional arguments
+  * Fix: autoconf: --with-version does not override the variable used in `version.in`
+  * Dev: unify version string used in setup.py and autotools
+
+-------------------------------------------------------------------
 Tue Dec 12 03:10:42 UTC 2023 - XLiang@suse.com
 
 - Update to version 4.6.0+20231212.54751d3f:

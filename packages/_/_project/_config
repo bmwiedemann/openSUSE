@@ -357,6 +357,7 @@ FileProvides: /usr/bin/more busybox-util-linux util-linux
 FileProvides: /usr/bin/mount busybox-util-linux util-linux
 FileProvides: /usr/bin/msgfmt gettext-runtime
 FileProvides: /usr/bin/mv busybox-coreutils coreutils coreutils-single
+FileProvides: /bin/mv busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/newaliases exim postfix postfix-bdb sendmail
 FileProvides: /usr/bin/newgrp shadow
 FileProvides: /usr/bin/nice busybox-coreutils coreutils coreutils-single
@@ -407,6 +408,7 @@ FileProvides: /usr/bin/readlink busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/renice busybox-util-linux util-linux
 FileProvides: /usr/bin/rep librep
 FileProvides: /usr/bin/rm busybox-coreutils coreutils coreutils-single
+FileProvides: /bin/rm busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/rmdir busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/rsync rsync
 FileProvides: /usr/bin/ruby ruby3.2
@@ -544,7 +546,7 @@ Prefer: -dbus-1-x11
 Prefer: -docker
 
 # have choice for (netavark or cni) needed by podman: cni netavark
-Prefer: -cni
+Prefer: -cni-plugins -cni
 
 # have choice for suse-kernel-rpm-scriptlets: sdbootutil-rpm-scriptlets suse-module-tools-scriptlets
 Prefer: -sdbootutil-rpm-scriptlets
@@ -822,7 +824,7 @@ Prefer: -urw-base35-fonts
 # Python3 exists in multiple versions - we currently favor 3.11 (our default):
 Prefer: -python39
 Prefer: -python39-hotdoc
-Prefer: -python39-txt2tags -python310-txt2tags
+Prefer: -python39-txt2tags -python310-txt2tags -python312-txt2tags
 
 # unresolvable: have choice for libcontainers-policy >= 20230214 needed by libcontainers-common: libcontainers-default-policy libcontainers-openSUSE-policy
 Prefer: -libcontainers-default-policy
@@ -832,25 +834,27 @@ Prefer: -python39-jsonschema417 -python310-jsonschema417 -python311-jsonschema41
 Prefer: -python39-jsonschema417-format-nongpl
 Prefer: -python310-jsonschema417-format-nongpl
 Prefer: -python311-jsonschema417-format-nongpl
+Prefer: -python312-jsonschema417-format-nongpl
 
 # have choice for python-mistune after rename to python-mistune2
 Prefer: -python39-mistune
 Prefer: -python310-mistune
 Prefer: -python311-mistune
+Prefer: -python312-mistune
 
 
 Prefer: -protobuf21-devel
 
-Prefer: -python39-urllib3_1 -python310-urllib3_1 -python311-urllib3_1
+Prefer: -python39-urllib3_1 -python310-urllib3_1 -python311-urllib3_1 -python312-urllib3_1
 # have choice for python3-magic: python38-magic python38-python-magic
-Prefer: -python39-magic -python310-magic
+Prefer: -python39-magic -python310-magic -python312-magic
 
 # have choice for gcr-ssh-agent needed by libgcr-3-1: gcr-ssh-agent gcr3-ssh-agent
 Prefer: -gcr3-ssh-agent -gcr3-viewer
 
 # have choice for python3-Cython: python310-Cython python310-Cython3
-Prefer: -python310-Cython3 python39-Cython3 -python311-Cython3
-Prefer: -python310-Cython0 python39-Cython0 -python311-Cython0
+Prefer: -python310-Cython3 python39-Cython3 -python311-Cython3 -python312-Cython3
+Prefer: -python310-Cython0 python39-Cython0 -python311-Cython0 -python312-Cython0
 
 # have choice for ntp-daemon: chrony ntp ntpsec
 Prefer: chrony
@@ -993,6 +997,9 @@ Prefer: -libplacebo5-devel
 
 # wine comes in various flavors by now, we pick the unflavored ones
 Prefer: wine-32bit wine-devel-32bit wine-devel
+
+# have choice for pkgconfig(wlroots) >= 0.15.0: wlroots-0_16-devel wlroots-devel
+Prefer: -wlroots-0_16-devel
 
 # have choice for pkgconfig(nunit): nunit-devel nunit3-devel; as usual, unversioned one wins
 Prefer: -nunit3-devel
@@ -2965,6 +2972,7 @@ BuildFlags: onlybuild:rust
 BuildFlags: onlybuild:rust-bindgen
 BuildFlags: onlybuild:rust1.73
 BuildFlags: onlybuild:rust1.74
+BuildFlags: onlybuild:rust1.75
 BuildFlags: onlybuild:samba
 BuildFlags: onlybuild:sane-backends
 BuildFlags: onlybuild:sbc
@@ -3126,6 +3134,7 @@ BuildFlags: onlybuild:virglrenderer
 BuildFlags: onlybuild:vkd3d
 BuildFlags: onlybuild:vmaf
 BuildFlags: onlybuild:vo-amrwbenc
+BuildFlags: onlybuild:vsftpd
 BuildFlags: onlybuild:vte
 BuildFlags: onlybuild:vulkan-headers
 BuildFlags: onlybuild:vulkan-loader

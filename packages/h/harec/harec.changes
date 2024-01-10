@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Dec 23 08:12:46 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Set version environment variable in specfile
+
+-------------------------------------------------------------------
+Sat Dec 16 01:01:49 UTC 2023 - socvirnyl.estela@gmail.com
+
+- Update to version 1702179030.9d51b36:
+  * scope: split up scope_lookup_ancestor
+  * Implement for labels
+  * Implement switch/match labels
+  * check: fix enum alias importing
+  * tests/34-declarations: add invalid symbol tests
+  * parse: disallow empty symbol
+  * type_store: fix tagged union segfault
+  * all: use literal/flexible in place of constant
+  * main: check for fmemopen error
+  * mod: remove unnecessary allocation
+  * tests: fix broken rejection tests
+  * type_store: make builtin_type_error have zero size/alignment
+
+-------------------------------------------------------------------
+Fri Dec  8 14:26:25 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Add README-suse-maint.md
+
+-------------------------------------------------------------------
 Fri Dec 08 13:19:03 UTC 2023 - socvirnyl.estela@gmail.com
 
 - Update to version 1701558776.08af325:

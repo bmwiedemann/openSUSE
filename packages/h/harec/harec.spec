@@ -18,11 +18,12 @@
 
 Name:           harec
 Release:        0
-Version:        1701558776.08af325
+Version:        1702179030.9d51b36
 Summary:        Bootstrap compiler for hare
 Group:          Development/Tools/Building
 URL:            https://git.sr.ht/~sircmpwn/harec
 Source0:        %{name}-%{version}.tar.zst
+Source1:        README-suse-maint.md
 BuildRequires:  make
 BuildRequires:  qbe
 BuildRequires:  zstd
@@ -38,19 +39,18 @@ POSIX-compatible systems.
 mkdir -p build/
 
 %build
-
 export CFLAGS="%optflags"
 
 # Harec does not use autoconf
 pushd build/
 ../configure
-make %{?_smp_mflags}
+make %{?_smp_mflags} VERSION="%{version}"
 popd
 
 %install
 export CFLAGS="%optflags"
 pushd build/
-make %{?_smp_mflags} DESTDIR="%{buildroot}" BINDIR="%{_bindir}" install
+make %{?_smp_mflags} VERSION="%{version}" DESTDIR="%{buildroot}" BINDIR="%{_bindir}" install
 popd
 
 %check

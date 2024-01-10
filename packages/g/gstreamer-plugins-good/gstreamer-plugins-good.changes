@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Jan  4 07:54:19 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.22.8:
+  + dcaparse: keep upstream buffer meta
+  + rtpklvdepay: Recover after invalid fragmented KLV unit
+  + matroska-demux: fix accumulated base offset in segment seeks
+  + qtdemux: fix bug report URL
+  + qtdemux: Don't overflow sample index
+  + qtdemux: Fix reverse playback for pcm audio stream
+  + qtdemux: Ignore raw audio streams when adjusting seek
+  + qtdemux: Under-seeking to a key unit in certain (encoded by
+    Adobe products) ProRes movies (macOS x86_64 & arm64,
+    Windows x86_64, ...)
+  + rtpac3depay: should output audio/x-ac3 not audio/ac3
+  + rtp: Fix incorrect RTP channel order lookup by name
+  + v4l2bufferpool: add lock as atomic operation for seek
+- Rebase reduce-required-meson.patch
+
+-------------------------------------------------------------------
 Wed Nov 15 09:33:32 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 1.22.7:

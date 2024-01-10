@@ -1,7 +1,7 @@
 #
 # spec file for package hydrogen
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,15 +24,16 @@
 # will work properly as expected.
 %bcond_with librubberband
 Name:           hydrogen
-Version:        1.2.1
-%define soversion 1_2_1
+Version:        1.2.2
+%define soversion 1_2_2
 Release:        0
 Summary:        A Real-Time Drum Machine and Sequencer
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Midi
 URL:            http://www.hydrogen-music.org/
 Source0:        https://github.com/hydrogen-music/hydrogen/archive/%{version}/%{name}-%{version}.tar.gz
-Patch1:         fix-obsolete-appdata.patch
+Patch0:         Fix-driver-switching-whil-using-JACK.patch
+Patch1:         Fix-JACK-support.patch
 Patch2:         release-version.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -112,6 +113,7 @@ keyboard/sequencer software.
 This library is the core of hydrogen's operation.
 
 %package -n libhydrogen-core-devel
+BuildArch:      noarch
 Summary:        Development files and headers for libhydrogen-core
 Group:          Development/Libraries/C and C++
 Requires:       libhydrogen-core-%{soversion} = %{version}
@@ -166,7 +168,7 @@ LD_LIBRARY_PATH=%{buildroot}%{_libdir} \
 %{_datadir}/%{name}
 %{_datadir}/applications/org.hydrogenmusic.Hydrogen.desktop
 %{_datadir}/icons/hicolor/scalable/apps/*.svg
-%{_datadir}/metainfo/org.hydrogenmusic.Hydrogen.appdata.xml
+%{_datadir}/metainfo/org.hydrogenmusic.Hydrogen.metainfo.xml
 %{_mandir}/man1/h2cli.1%{?ext_man}
 %{_mandir}/man1/hydrogen.1%{?ext_man}
 

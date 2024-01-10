@@ -1,7 +1,7 @@
 #
 # spec file for package hplip
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %define pyexe %{_bindir}/python3
 %global use_qt5 1
 Name:           hplip
-Version:        3.23.8
+Version:        3.23.12
 Release:        0
 Summary:        HP's Printing, Scanning, and Faxing Software
 License:        BSD-3-Clause AND GPL-2.0-or-later AND MIT
@@ -86,10 +86,6 @@ Patch403:       Revert-changes-from-3.18.5-that-break-hp-setup-for-f.patch
 # PATCH-FIX-UPSTREAM: https://bugs.launchpad.net/hplip/+bug/1879445
 Patch404:       hplip-3.20.6-python-includes.patch
 Patch500:       hplip-missing-drivers.patch
-# PATCH-FIX-UPSTREAM boo#1209866 lp#2013185
-Patch501:       fix-printer-attributes-parsing.patch
-# PATCH-FIX-SUSE bsc#1214399
-Patch502:       hppsfilter-booklet-printing-change-insecure-fixed-tm.patch
 BuildRequires:  %{pymod devel}
 BuildRequires:  %{pymod qt5-devel}
 BuildRequires:  %{pymod xml}
@@ -335,8 +331,6 @@ This sub-package is only required by developers.
 %patch403 -p1
 %patch404 -p1
 %patch500 -p1
-%patch501 -p1
-%patch502 -p1
 # replace "env" shebang and "/usr/bin/python" with real executable
 find . -name '*.py' -o -name pstotiff | \
     xargs -n 1 sed -i '1s,^#!\(%{_bindir}/env python\|%{_bindir}/python\),#!%{pyexe},'

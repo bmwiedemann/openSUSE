@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Dec 19 09:03:08 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 2.6:
+  * env NO_COLOR support
+  * fix problems with linux/bfd ```init_disassemble_info```
+  * Support ```--exit_on_time```
+  * ```strlcat``` supported in libhfuzz/memorycmp
+  * Some patches for MacOSX, sadly no support for ARM yet
+  * Improvement on Android and FreeBSD targets
+  * added missing ```add missing disassemble_free_target()```
+
+- Dropped following patches as already included in upstream :
+  * 0001-Always-pass-4-arguments-to-init_disassemble_info-no-.patch
+  * 0002-linux-bfd-use-DIAGNOSTIC_ERROR_SWITCH-define-to-figu.patch
+  * 0003-linux-bfd-cover-include-diagnostics.h-with-__has_inc.patch
+
+-------------------------------------------------------------------
 Wed Mar 15 13:54:11 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Fix linking with latest binutils 

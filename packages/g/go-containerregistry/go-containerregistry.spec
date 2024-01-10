@@ -17,9 +17,8 @@
 # nodebuginfo
 
 
-%global goipath github.com/google/go-containerregistry
 Name:           go-containerregistry
-Version:        0.16.1
+Version:        0.17.0
 Release:        0
 Summary:        Container Library and tools for working with container registries
 License:        Apache-2.0
@@ -28,7 +27,7 @@ URL:            https://github.com/google/go-containerregistry
 Source:         https://github.com/google/go-containerregistry/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) = 1.20
+BuildRequires:  golang(API) = 1.21
 Conflicts:      distribution-registry
 
 %description
@@ -71,17 +70,18 @@ subcommand and some basic garbage collection support.
 %autopatch -p1
 
 %build
-%{goprep} %{goipath}
-
-export CGO_ENABLED=0
-
-%{gobuild} -mod vendor ./...
+for i in crane gcrane registry; do
+    go build -mod=vendor -buildmode=pie -trimpath ./cmd/$i
+done
 
 %install
-%{goinstall}
+find -name crane
+for bin in crane gcrane registry; do
+    install $bin -D %{buildroot}/%{_bindir}/$bin
+done
 # "only one tool per thing" SLE15 policy conflicts
 %if 0%{?suse_version} && %{?suse_version} < 1550
-rm -v %{buildroot}/%{_bindir}/{registry,help}
+rm -v %{buildroot}/%{_bindir}/registry
 %endif
 
 %if %{?suse_version} > 1500
@@ -89,7 +89,6 @@ rm -v %{buildroot}/%{_bindir}/{registry,help}
 %license LICENSE
 %doc README.md
 %{_bindir}/registry
-%exclude %{_bindir}/help
 %endif
 
 %files -n crane

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Dec 13 12:00:00 UTC 2023 - cunix@mail.de
+
+- Update to 4.2.1
+  * Set language encoding flag when using "ZIPPacker"
+  * Prevent infinite recursion when printing errors
+  * Allow dragging editable children in editor
+  * Fix errors on file rename or move in the Filesystem Dock
+  * X11: Send IME update notification deferred
+  * Only allow MeshInstance3D-based nodes in
+    particles emission shape node selector
+  * Comment the shader template light function by default
+
+  and more:
+  https://godotengine.github.io/godot-interactive-changelog/#4.2.1
+
+-------------------------------------------------------------------
 Thu Nov 30 12:00:00 UTC 2023 - cunix@mail.de
 
 - Update to 4.2

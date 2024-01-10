@@ -17,17 +17,13 @@
 
 
 Name:           honggfuzz
-Version:        2.5
+Version:        2.6
 Release:        0
 Summary:        Security-oriented fuzzer with various analysis options
 License:        Apache-2.0
 Group:          Development/Tools/Other
 URL:            https://honggfuzz.com
 Source:         https://github.com/google/honggfuzz/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM -- binutils compatibility changes
-Patch0:         0001-Always-pass-4-arguments-to-init_disassemble_info-no-.patch
-Patch1:         0002-linux-bfd-use-DIAGNOSTIC_ERROR_SWITCH-define-to-figu.patch
-Patch2:         0003-linux-bfd-cover-include-diagnostics.h-with-__has_inc.patch
 BuildRequires:  binutils-devel
 BuildRequires:  libunwind-devel
 BuildRequires:  libzstd-devel

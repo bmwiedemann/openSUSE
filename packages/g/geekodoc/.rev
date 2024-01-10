@@ -125,4 +125,20 @@ Fixes issue #41 to reduce number of files in packages
     <comment></comment>
     <requestid>1093300</requestid>
   </revision>
+  <revision rev="13" vrev="13">
+    <srcmd5>984340418202de8e5b1c7943ab6a78a9</srcmd5>
+    <version>unknown</version>
+    <time>1704753995</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1137583</requestid>
+  </revision>
+  <revision rev="14" vrev="14">
+    <srcmd5>dc9db4d3bfeb1d591d20735b656bd71f</srcmd5>
+    <version>unknown</version>
+    <time>1704829879</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1137724</requestid>
+  </revision>
 </revisionlist>

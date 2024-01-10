@@ -24,7 +24,7 @@ are:
    2. Enter |zypper install boinc-client boinc-manager|
       (be patient while the BOINC package downloads and installs).
    3. Optional: after the installation is finished, enter
-      |/sbin/chkconfig boinc-client on|
+      |/usr/bin/systemctl enable boinc-client.service|
       to have Linux auto-start the boinc-client daemon at boot time.
       (See Stop or start BOINC daemon after boot
        page for helpful
@@ -33,7 +33,7 @@ are:
 
     What the installer does
 
-   1. Creates the daemon script at /etc/init.d/boinc-client.
+   1. Creates a systemd configuration file for boinc-client.service.
    2. Places the BOINC binaries (boinc-client, boinccmd, boinc-gui
       and boincmgr) in /usr/bin/.
    3. Creates /var/lib/boinc/ for BOINC data files and the slots and
@@ -50,7 +50,7 @@ are:
       step 3 in section Basic installation), logout and reboot Linux now
       and login under your normal user account.
    2. If you elected to not have Linux start the daemon at boot time,
-      start the daemon manually with |/sbin/service boinc-client start|
+      start the daemon manually with |/usr/bin/systemctl start boinc-client.service |
    3. Open a terminal and enter |ps aux | grep boinc| to print a partial
       list of running processes. You should see |boinc-client --dir ...|
       in that list, if not then something went wrong in the steps above. 
@@ -117,7 +117,7 @@ network connection comes up after the client has already started. This
 is a known BOINC bug, which is filed as #707.
 
 In the meantime, you can fix this by restarting boinc-client. On the
-command line as root, do "/sbin/service boinc-client restart".
+command line as root, do "/usr/bin/systemctl restart boinc-client.service".
 Alternatively, from the GNOME menu, you can choose System ->
 Administration -> Services and then stop and start the boinc-client
 service.

@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Sun Oct  2 16:23:07 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to release 1.1.10
+  * Improved documentation conversion and formatting
+
+-------------------------------------------------------------------
+Mon Apr 25 22:46:55 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.1.9
+  * Compatibility fixes for GAP 4.11.
+
+-------------------------------------------------------------------
+Fri Sep  7 11:49:01 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.1.8
+  * Corrected premature warning about RefinedPcGroup.
+
+-------------------------------------------------------------------
+Fri May 10 13:47:02 UTC 2013 - jengelh@inai.de
+
+- Split crystcat (version 1.1.6) off the gap RPM package

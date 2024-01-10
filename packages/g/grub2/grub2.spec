@@ -1,7 +1,7 @@
 #
 # spec file for package grub2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -714,8 +714,8 @@ CRYPTO_MODULES="luks luks2 gcry_rijndael gcry_sha1 gcry_sha256 gcry_sha512 crypt
 CD_MODULES="${CD_MODULES} chain efifwsetup efinet read tpm tpm2 memdisk tar squash4 xzio"
 PXE_MODULES="${PXE_MODULES} efinet"
 %else
-CD_MODULES="${CD_MODULES} net"
-PXE_MODULES="${PXE_MODULES} net"
+CD_MODULES="${CD_MODULES} net ofnet"
+PXE_MODULES="${PXE_MODULES} net ofnet"
 %endif
 
 %ifarch x86_64
@@ -831,7 +831,13 @@ echo "bdev=$bdev"
 echo "bpart=$bpart"
 echo "bpath=$bpath"
 
-if [ -z "$ENV_FS_UUID" ]; then
+if regexp '^(tftp|http)$' "$bdev"; then
+  if [ -z "$bpath" ]; then
+    echo "network booting via $bdev but firmware didn't provide loaded path from sever root"
+    bpath="/boot/grub2/powerpc-ieee1275"
+    echo "using bpath=$bpath as fallback path"
+  fi
+elif [ -z "$ENV_FS_UUID" ]; then
   echo "Reading vars from ($bdev)"
   prep_load_env "($bdev)"
 fi

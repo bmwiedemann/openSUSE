@@ -1,7 +1,7 @@
 #
 # spec file for package fence-agents
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,15 +33,6 @@ Patch1:         0001-Use-Python-3-for-all-scripts-bsc-1065966.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{python_version}
-BuildRequires:  python3-google-api-python-client
-BuildRequires:  python3-keystoneclient
-BuildRequires:  python3-novaclient
-%if 0%{suse_version} >= 1550
-BuildRequires:  python3-oauth2
-%else
-BuildRequires:  python3-google-auth-oauthlib
-BuildRequires:  python3-oauth2client
-%endif
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -55,6 +46,9 @@ BuildRequires:  mozilla-nss-devel
 BuildRequires:  perl
 BuildRequires:  perl-Net-Telnet
 BuildRequires:  pkg-config
+BuildRequires:  python3-google-api-python-client
+BuildRequires:  python3-keystoneclient
+BuildRequires:  python3-novaclient
 BuildRequires:  python3-openwsman
 BuildRequires:  python3-pexpect
 BuildRequires:  python3-pycurl

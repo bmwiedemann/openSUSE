@@ -26,6 +26,7 @@ URL:            https://invent.kde.org/unmaintained/babe
 Source:         https://download.kde.org/stable/%{name}/1.2.1/src/%{name}-1.2.1-1.tar.xz
 # PATCH-FIX-UPSTREAM
 Patch0:         0001-Always-use-local-CMake-modules-first.patch
+BuildRequires:  extra-cmake-modules
 BuildRequires:  libqt5-qtbase-common-devel
 BuildRequires:  libtag-devel
 BuildRequires:  pkgconfig

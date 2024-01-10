@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan  1 01:17:53 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 0.1.2d
+  * Fix compilation with CXX standard set in parent project tree
+- Update to version 0.1.2c
+  * Fixed issues with CMake exported targets/configs as part
+    of OpenVINO build
+  * Fixed GCC13 support
+- Update to version 0.1.2b
+  * A minor version bump to fix warnings on Linux.
+
+-------------------------------------------------------------------
 Sat Sep 17 02:50:46 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 0.1.2a

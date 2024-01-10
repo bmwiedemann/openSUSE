@@ -164,4 +164,15 @@
   * Compat: bump supported GTK to v3.24.37</comment>
     <requestid>1079067</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7725edec0d5e27f9a32cf5ee802845f8</srcmd5>
+    <version>0.8.2</version>
+    <time>1704487421</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.2:
+  * Compat: bump supported GTK to v3.24.39
+  * Compat: NOTE: GTK v3.24.40 may break previous version and work
+    with this one, but we won't know for sure until it's released</comment>
+    <requestid>1136990</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jan  3 09:35:17 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 2.3.0:
+  * gcc-12/c++17/c++20 compatibility added
+  * hepmc3 compatibility added
+  * rivet interface improved
+  * infrastructure for dark interaction added
+- Remove no longer required ThePEG_gcc6_failed.patch
+- Run test suite.
+- Add 32-bit ARM to ExcludeArch.
+- Follow shared lib packaging policy by renaming ThePEG-libs to
+  libThePEG* and using a versioned ld.so.conf file.
+
+-------------------------------------------------------------------
 Mon May  2 00:00:23 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.2.3:

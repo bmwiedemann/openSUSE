@@ -4,6 +4,7 @@
 # Date 1342998807 25200
 # Node ID 56cad6484b04f83c8d42428c755a046678506436
 # Parent  c92001a2c18f628698c58aa4e05a7335d10d0e9e
+# http://hg.libsdl.org/SDL_mixer/rev/56cad6484b04
 Paul P Komkoff Jr fixed malloc/free mismatch in the MikMod driver
 
 diff -r c92001a2c18f -r 56cad6484b04 CHANGES

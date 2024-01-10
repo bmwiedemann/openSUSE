@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jan 02 14:20:25 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.61.1:
+  * Pull request 311: 6574 timeout log level
+
+-------------------------------------------------------------------
+Mon Dec 18 22:15:52 UTC 2023 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 0.61.0:
+  * Pull request 309: 6480 imp load balance
+  * Pull request: all: upd golibs
+
+-------------------------------------------------------------------
 Mon Dec 11 14:10:02 UTC 2023 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to version 0.60.1:

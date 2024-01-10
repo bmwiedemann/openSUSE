@@ -1,7 +1,7 @@
 #
 # spec file for package fwupd
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,7 +40,7 @@
 %define docs 0
 
 Name:           fwupd
-Version:        1.9.10
+Version:        1.9.11
 Release:        0
 Summary:        Device firmware updater daemon
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -352,6 +352,7 @@ rm -fr %{buildroot}%{_datadir}/fish
 %endif
 %{_datadir}/polkit-1/actions/org.freedesktop.fwupd.policy
 %if %{with msr_support}
+%dir %{_modulesloaddir}
 %{_modulesloaddir}/fwupd-msr.conf
 %endif
 %config %{_sysconfdir}/%{name}/

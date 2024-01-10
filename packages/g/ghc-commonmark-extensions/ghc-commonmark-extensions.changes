@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Dec 12 17:29:01 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update commonmark-extensions to version 0.2.5.1.
+  ## 0.2.5.1
+
+    * Add `test/alerts.md` to extra-source-files in cabal file.
+
+-------------------------------------------------------------------
+Mon Dec 11 19:49:59 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update commonmark-extensions to version 0.2.5.
+  ## 0.2.5
+
+    * Add support for alerts extension, supporting GitHub-style alerts (#132).
+      <https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts>
+      New module Commonmark.Extensions.Alerts [API change].
+
+    * Do not accept footnote labels with line breaks (Michael Howell).
+
+    * Parse `[^ ]` and `[^]` as links (Michael Howell). This is consistent with
+      most other CommonMark parsers, even when they have support for footnotes turned on.
+
+-------------------------------------------------------------------
 Fri Oct 27 17:34:06 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update commonmark-extensions to version 0.2.4.

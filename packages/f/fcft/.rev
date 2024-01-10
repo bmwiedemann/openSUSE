@@ -207,4 +207,13 @@
   * Updated bundled nanosvg.</comment>
     <requestid>1098717</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>12df7063bf5dc266656f7ac1a3d33bec</srcmd5>
+    <version>3.1.7</version>
+    <time>1702673384</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.1.7:
+  * Fixed infinite loop on certain invalid fontfeatures values.</comment>
+    <requestid>1133265</requestid>
+  </revision>
 </revisionlist>

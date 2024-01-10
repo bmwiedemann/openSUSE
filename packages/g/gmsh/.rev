@@ -127,4 +127,19 @@
     <comment></comment>
     <requestid>1132076</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>907bef3be462f2edc1829a9b298b0edd</srcmd5>
+    <version>4.12.0</version>
+    <time>1704281323</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1136012</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>d660d1c8f933496b884c3d8463105d7c</srcmd5>
+    <version>4.12.0</version>
+    <time>1704361473</time>
+    <user>dimstar_suse</user>
+    <comment>Emergency fix: do not install python3-gmsh on all python3 based systems</comment>
+  </revision>
 </revisionlist>

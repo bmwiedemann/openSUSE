@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec 14 19:12:14 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.0.0
+  * Added support for FLINT 3
+- Drop flint3.diff (obsolete)
+
+-------------------------------------------------------------------
 Sun Oct 22 04:06:43 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Add flint3.diff to have the build succeed with flint-3.

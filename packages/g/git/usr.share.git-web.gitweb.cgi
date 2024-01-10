@@ -22,7 +22,7 @@ profile gitweb.cgi /usr/share/gitweb/gitweb.cgi {
   /srv/git/ r,
   /srv/git/** r,
   /usr/bin/perl ix,
-  /usr/lib/git/git rix,
+  /usr/libexec/git/git rix,
   /usr/bin/git-receive-pack rix,
   /usr/share/gitweb/* r,
   /usr/share/gitweb/static/* r,

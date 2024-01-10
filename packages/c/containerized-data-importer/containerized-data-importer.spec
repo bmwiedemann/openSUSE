@@ -1,7 +1,7 @@
 #
 # spec file for package containerized-data-importer
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,19 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%if 0%{?sle_version} && !0%{?is_opensuse}
+# SLE
+%define _exclusive_arch x86_64
+%else
+%if 0%{?suse_version} == 1600
+# ALP
+%define _exclusive_arch x86_64
+%else
+# TW
+%define _exclusive_arch x86_64 aarch64
+%endif
+%endif
 
 Name:           containerized-data-importer
 Version:        1.58.0
@@ -33,7 +46,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  rsync
 BuildRequires:  sed
 BuildRequires:  golang(API) >= 1.20
-ExclusiveArch:  x86_64 aarch64
+ExclusiveArch:  %{_exclusive_arch}
 
 %description
 Containerized-Data-Importer (CDI) is a persistent storage management add-on for Kubernetes
@@ -137,11 +150,6 @@ tar --strip-components=1 -xf %{S:0}
 #
 distro='%{?sle_version}:%{?is_opensuse}%{!?is_opensuse:0}'
 case "${distro}" in
-150400:0)
-    tagprefix=suse/sles/15.4
-    labelprefix=com.suse.kubevirt
-    registry=registry.suse.com
-    ;;
 150500:0)
     tagprefix=suse/sles/15.5
     labelprefix=com.suse.kubevirt
@@ -158,14 +166,14 @@ case "${distro}" in
     registry=registry.opensuse.org
     ;;
 *)
-    %if 0%{?suse_version} == 1600
-        tagprefix=alp/kubevirt
-        labelprefix=com.suse.kubevirt
-        registry=registry.suse.com
-    %else
-        echo "Unsupported distro: ${distro}" >&2
-        exit 1
-    %endif
+%if 0%{?suse_version} == 1600
+    tagprefix=alp/kubevirt
+    labelprefix=com.suse.kubevirt
+    registry=registry.suse.com
+%else
+    echo "Unsupported distro: ${distro}" >&2
+    exit 1
+%endif
     ;;
 esac
 

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Dec 27 21:21:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.17.0:
+  * Validate index architectures match children
+  * Set Content-Length for blob uploads
+  * Don't wrap DefaultKeychain with refreshes
+  * Build releases with Go 1.21
+  * fix: mimic oci-layout in diskblobhandler
+  * tag: add command explanation to the long help
+  * feat: implement gc command
+  * feat: allow port and disk path to be overriden
+
+-------------------------------------------------------------------
 Sat Nov 25 19:39:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.16.1:

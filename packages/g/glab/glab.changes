@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Dec 14 11:16:06 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.36.0:
+  * feat: use ciutils.getJobId in trigger cmd (#7424)
+  * fix: prefer CTRL+D for cancel job (#1286)
+  * docs: add information about docker image
+  * feat(ci-delete): add flags for filtering and pagination
+  * feat(ci): add ci trigger (#682)
+  * feat(ci): align job id resolution ( #7422)
+  * feat(ci): add flag with-job-details to output job data as table
+    (#1226)
+  * docs: clarify archived flag on repo clone
+  * docs: Create minimal template for docs MRs
+  * fix: git-credential command by using oauth2 user
+  * docs: Statement of support for GitLab 16.0
+  * chore: update Vale and Markdownlint versions and configuration
+  * feat(delete): Add perpage and page flags to ssh-key delete
+    command
+  * feat(repo): add option to limit list in one group
+  * feat: add --web to glab ci view command
+  * chore: Do not set CGO_ENABLED when running tests
+  * fix(mr create): support non-english languages
+
+-------------------------------------------------------------------
 Fri Nov 10 09:33:35 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - adapt BuildRequires to allow building on

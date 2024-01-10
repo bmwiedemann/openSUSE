@@ -23,4 +23,21 @@ for the pam approval.</comment>
 </comment>
     <requestid>1125720</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c8796b3fe989c6d13e0ef0e261d6b050</srcmd5>
+    <version>0.1.1+git.10.4aa76b7</version>
+    <time>1703281373</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.1.1+git.10.4aa76b7:
+  * daemon: Fix inverted logic on cache dir check
+  * nss: Use upstream nss package
+  * idprovider: Provider auth needs to point to just the host
+  * config: Consistently use the config file provided to the daemon
+  * cargo: Use relative paths and remove most symlinks
+  * clippy: Add kanidm's clippy config
+  * config: Only check for tenant_id, authority, graph if necessary
+  * Correct the cargo version
+</comment>
+    <requestid>1134659</requestid>
+  </revision>
 </revisionlist>

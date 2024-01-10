@@ -1,0 +1,35 @@
+-------------------------------------------------------------------
+Sat Nov 19 01:25:42 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.6.13
+  * A bug fixed in IsomorphismTransformationSemigroup
+
+-------------------------------------------------------------------
+Fri Sep  8 20:15:50 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 0.6.11
+  * a minor release for compatibility with gap-semigroups 3.0.0,
+    and to fix an incorrect method for
+    `IsomorphismTransformationSemigroup`.
+
+-------------------------------------------------------------------
+Sat Mar 12 20:00:29 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 0.6.10
+* replaced NilpotencyRank by NilpotencyDegree
+* introduced functionality to obtain nilpotent semigroups of
+  coclass 0, 1, and 2 as f.p. semigroups
+
+-------------------------------------------------------------------
+Fri Feb  7 16:33:32 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 0.6.7
+* a minor release fixing some bugs in the references in the
+  documentation, and moving some declarations of properties and
+  associated true methods to the GAP library to avoid clashes
+  with the forthcoming Semigroups package.
+
+-------------------------------------------------------------------
+Fri May 10 13:47:02 UTC 2013 - jengelh@inai.de
+
+- Split smallsemi (version 0.6.6) off the gap RPM package

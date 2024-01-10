@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec 22 14:22:28 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update commutative-semigroups to version 0.1.0.2.
+  ## 0.1.0.2 -- 2023-12-22
+
+  - Support GHC 9.8.1
+
+-------------------------------------------------------------------
 Mon Apr 17 11:51:32 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update commutative-semigroups to version 0.1.0.1.

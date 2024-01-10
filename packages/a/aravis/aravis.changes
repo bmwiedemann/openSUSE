@@ -1,7 +1,28 @@
 -------------------------------------------------------------------
+Tue Dec 26 12:28:40 UTC 2023 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Update to 0.8.30:
+  * gv: add EVK Helios and Automation Technology C6 devices to the
+    legacy mode list
+  * gv: don't ignore POINTTOPOINT interfaces, allows for direct
+    connection to devices through VPNs
+- Changes for 0.8.29:
+  * usb3vision: fix callbacks triggering in async mode
+  * usb3vision: fix underrun counting
+- Changes for 0.8.28:
+  * usb3vision: make async libusb default
+  * usb3vision: improve CPU use when no buffer is available for the
+    stream thread
+  * usb3vision: don't wait forever for USB transfer completion
+  * usb3vision: enable stream after the receiving stream thread is
+    started
+  * viewer: avoid buffer exhaustion if GStreamer pipeline is late
+  * build: fix clang 32 bits compilation
+
+-------------------------------------------------------------------
 Mon Jul 24 18:39:12 UTC 2023 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
-- Update to 0.8.26:
+- Update to 0.8.27:
   * camera: add vendor specific quirks to frame rate
   * camera: multiple tap helpers
   * gv: start packet timeout after the first non leader packet

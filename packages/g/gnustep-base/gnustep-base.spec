@@ -1,7 +1,7 @@
 #
 # spec file for package gnustep-base
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,8 @@ URL:            http://www.gnustep.org/
 Source:         ftp://ftp.gnustep.org/pub/gnustep/core/%{name}-%{version}.tar.gz
 Source1:        ftp://ftp.gnustep.org/pub/gnustep/core/%{name}-%{version}.tar.gz.sig
 Source2:        %{name}-rpmlintrc
+# PATCH-FIX-UPSTREAM 295.patch -- Fix build with libxml2 2.11.0+
+Patch0:         https://patch-diff.githubusercontent.com/raw/gnustep/libs-base/pull/295.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-objc
 BuildRequires:  gmp-devel

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 18 13:12:00 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch to drop build host name (boo#1084909)
+
+-------------------------------------------------------------------
 Thu Apr 20 10:29:07 UTC 2023 - pgajdos@suse.com
 
 - version update to 1.7.4

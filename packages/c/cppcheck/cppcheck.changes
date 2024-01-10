@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Dec 24 06:43:54 UTC 2023 - Christoph G <foss@grueninger.de>
+
+- update to 2.13.0
+  * newCheck passedByValueCallback for functions which take a
+    parameter by value but are used as callbacks
+  * newCheck returnImplicitInt for C functions without return type
+  * newCheck iterateByValue for iterating by value in a range-based
+    for loop when a const reference could be used
+- Drop patches werror-return-type.patch, eb076d87.patch, and
+  CVE-2023-39070.patch which are part of upstream or fixed in a
+  similar way.
+
+-------------------------------------------------------------------
+Wed Dec 20 23:14:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add CVE-2023-39070.patch (CVE-2023-39070, bsc#1215233)
+
+-------------------------------------------------------------------
 Thu Nov  9 10:21:24 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Replace disable-some-tests-about-char-signedness.patch with

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jan  3 12:15:46 UTC 2024 - Johannes Meixner <jsmeix@suse.com>
+
+- CVE-2023-46751.patch is
+  https://git.ghostscript.com/?p=ghostpdl.git;a=commitdiff;h=dcdbc595c13
+  adapted for Ghostscript-9.56.1 that fixes
+  https://bugs.ghostscript.com/show_bug.cgi?id=707264
+  which includes a fix for CVE-2023-46751
+  "dangling pointer in gdev_prn_open_printer_seekable()"
+  (bsc#1217871)
+
+-------------------------------------------------------------------
+Mon Dec 18 12:50:20 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Recommend cups-filters only when cups is present.
+
+-------------------------------------------------------------------
 Wed Sep 20 06:23:44 UTC 2023 - Johannes Meixner <jsmeix@suse.com>
 
 - CVE-2023-43115.patch is

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 18 13:06:38 UTC 2023 - Neal Gompa <ngompa@opensuse.org>
+
+- Add Requires(post) dependency for dnf-data
+
+-------------------------------------------------------------------
 Sat Nov  4 19:04:41 UTC 2023 - Neal Gompa <ngompa@opensuse.org>
 
 - Update to 4.18.0

@@ -1,7 +1,7 @@
 #
 # spec file for package coin-or-Clp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 %define soversion 1
 
 Name:           coin-or-Clp
-Version:        1.17.7
+Version:        1.17.9
 Release:        0
 Summary:        COIN-OR Linear Programming Solver
 License:        EPL-2.0

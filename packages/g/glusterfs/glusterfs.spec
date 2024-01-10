@@ -17,7 +17,7 @@
 
 
 Name:           glusterfs
-Version:        11.0
+Version:        11.1
 Release:        0
 Summary:        Aggregating distributed file system
 License:        GPL-2.0-only OR LGPL-3.0-or-later
@@ -26,8 +26,8 @@ URL:            https://www.gluster.org/
 
 #Git-Clone:	https://github.com/gluster/glusterfs
 #Git-Clone:	https://github.com/fvzwieten/lsgvt
+#Changelog:     https://docs.gluster.org/en/latest/release-notes/
 Source:         https://download.gluster.org/pub/gluster/glusterfs/11/%version/glusterfs-%version.tar.gz
-Patch1:         0001-socket-only-issue-IPPROTO_IPV6-setsockopt-calls-on-A.patch
 Patch2:         0001-glusterfs-fix-heap-buffer-overflow-on-startup.patch
 BuildRequires:  acl-devel
 BuildRequires:  autoconf

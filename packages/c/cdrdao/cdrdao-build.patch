@@ -1,7 +1,7 @@
-Index: cdrdao-1.2.4/trackdb/FormatConverter.h
+Index: cdrdao-1.2.5/trackdb/FormatConverter.h
 ===================================================================
---- cdrdao-1.2.4.orig/trackdb/FormatConverter.h
-+++ cdrdao-1.2.4/trackdb/FormatConverter.h
+--- cdrdao-1.2.5.orig/trackdb/FormatConverter.h
++++ cdrdao-1.2.5/trackdb/FormatConverter.h
 @@ -29,7 +29,7 @@
  
  // Quick abstract class declarations. Format converters should derive

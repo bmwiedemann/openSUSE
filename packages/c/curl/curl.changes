@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Fri Jan  5 17:54:08 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
+
+- Added curl-adjust-pollset-fix.patch to fix broken MPD http streaming:
+  https://github.com/curl/curl/issues/12632
+
+-------------------------------------------------------------------
+Wed Dec  6 09:51:20 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 8.5.0:
+  * Security fixes:
+    - [bsc#1217573, CVE-2023-46218] cookie mixed case PSL bypass
+    - [bsc#1217574, CVE-2023-46219] HSTS long file name clears contents
+  * Changes:
+    - gnutls: support CURLSSLOPT_NATIVE_CA
+    - HTTP3: ngtcp2 builds are no longer experimental
+  * Bugfixes:
+    - asyn-thread: use pipe instead of socketpair for IPC when available
+    - cmake: fix OpenSSL quic detection in quiche builds
+    - conncache: use the closure handle when disconnecting surplus connections
+    - content_encoding: make Curl_all_content_encodings allocless
+    - cookie: lowercase the domain names before PSL checks
+    - Curl_http_body: cleanup properly when Curl_getformdata errors
+    - CURLMOPT_MAX_CONCURRENT_STREAMS: make sure the set value is within range
+    - doh: provide better return code for responses w/o addresses
+    - doh: use PIPEWAIT when HTTP/2 is attempted
+    - duphandle: also free 'outcurl->cookies' in error path
+    - duphandle: make dupset() not return with pointers to old alloced data
+    - duphandle: use strdup to clone *COPYPOSTFIELDS if size is not set
+    - easy: in duphandle, init the cookies for the new handle
+    - easy_lock: add a pthread_mutex_t fallback
+    - fopen: create new file using old file's mode
+    - fopen: create short(er) temporary file name
+    - getenv: PlayStation doesn't have getenv()
+    - hostip: show the list of IPs when resolving is done
+    - hsts: skip single-dot hostname
+    - HTTP/2, HTTP/3: handle detach of onoing transfers
+    - http: allow longer HTTP/2 request method names
+    - hyper: temporarily remove HTTP/2 support
+    - IPFS: fix IPFS_PATH and file parsing
+    - multi: during ratelimit multi_getsock should return no sockets
+    - multi: use pipe instead of socketpair to *wakeup()
+    - ngtcp2: fix races in stream handling
+    - ntlm_wb: use pipe instead of socketpair when possible
+    - openssl: avoid BN_num_bits() NULL pointer derefs
+    - openssl: fix building with v3 `no-deprecated` + add CI test
+    - openssl: fix infof() to avoid compiler warning for %s with null
+    - openssl: identify the "quictls" backend correctly
+    - openssl: include SIG and KEM algorithms in verbose
+    - openssl: two multi pointer checks should probably rather be asserts
+    - openssl: when a session-ID is reused, skip OCSP stapling
+    - quic: make eyeballers connect retries stop at weird replies
+    - quic: manage connection idle timeouts
+    - setopt: check CURLOPT_TFTP_BLKSIZE range on set
+    - socks: better buffer size checks for socks4a user and hostname
+    - socks: make SOCKS5 use the CURLOPT_IPRESOLVE choice
+    - tool: fix --capath when proxy support is disabled
+    - tool_getparam: limit --rate to be smaller than number of ms
+    - transfer: abort pause send when connection is marked for closing
+    - transfer: avoid calling the read callback again after EOF
+    - transfer: only reset the FTP wildcard engine in CLEAR state
+    - url: don't touch the multi handle when closing internal handles
+    - urlapi: avoid null deref if setting blank host to url encode
+    - urlapi: skip appending NULL pointer query
+    - urlapi: when URL encoding the fragment, pass in the right length
+    - vtls: cleanup SSL config management
+    - vtls: consistently use typedef names for OpenSSL structs
+    - vtls: late clone of connection ssl config
+    - vtls: use ALPN "http/1.1" for HTTP/1.x, including HTTP/1.0
+  * Rebase curl-secure-getenv.patch
+  * Add curl-tests-errorcodes.patch
+
+-------------------------------------------------------------------
 Wed Oct 11 06:33:28 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 8.4.0:

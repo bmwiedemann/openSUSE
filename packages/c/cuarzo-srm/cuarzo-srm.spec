@@ -17,18 +17,15 @@
 
 
 Name:           cuarzo-srm
-Version:        0.3.2.1
-%define sillyver 0.3.2-1
-%define lname	libSRM-suse0
+Version:        0.4.0.1
+%define sillyver 0.4.0-1
+%define lname	libSRM0
 Release:        0
 Summary:        Rendering manager for the Louvre library
 License:        GPL-3.0-only
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/CuarzoSoftware/SRM/
 Source:         https://github.com/CuarzoSoftware/SRM/archive/refs/tags/v%sillyver.tar.gz
-Patch1:         0001-build-heed-results-from-pkg-config.patch
-Patch2:         0001-build-import-gl-dependency.patch
-Patch3:         0001-versioning.patch
 BuildRequires:  c_compiler
 BuildRequires:  meson
 BuildRequires:  pkgconfig(egl)
@@ -86,12 +83,13 @@ popd
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%_libdir/libSRM.so.suse0
+%_libdir/libSRM.so.*
 
 %files devel
 %license LICENSE
 %_bindir/srm-*
 %_includedir/SRM/
 %_libdir/libSRM.so
+%_libdir/pkgconfig/*.pc
 
 %changelog

@@ -95,4 +95,20 @@
     <comment>Update guestfs-tools to version 1.51.6</comment>
     <requestid>1132566</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>17f47176d624530beb9b4a8aa9b08049</srcmd5>
+    <version>1.52.0</version>
+    <time>1704487401</time>
+    <user>dimstar_suse</user>
+    <comment>Update guestfs-tools to version 1.52.0</comment>
+    <requestid>1136943</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>b4cdcb716120f84c28a3cd6c8dc352ab</srcmd5>
+    <version>1.52.0</version>
+    <time>1704754003</time>
+    <user>anag+factory</user>
+    <comment>Add Jira request number to changelog. No code change.</comment>
+    <requestid>1137602</requestid>
+  </revision>
 </revisionlist>

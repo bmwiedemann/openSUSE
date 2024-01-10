@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Wed Dec 27 12:56:45 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Re-add "-Wl,--no-undefined" linker flags for executables and
+  regular shared libraries. Shared library targets which are used
+  as plugins/modules should use `add_library(... MODULE ...), which
+  uses the "CMAKE_MODULE_LINKER_FLAGS".  
+
+-------------------------------------------------------------------
+Thu Dec 14 21:06:23 UTC 2023 - Christoph G <foss@grueninger.de>
+
+- update to 3.28.1
+  * cmGeneratorTarget: disable C++ module scanning for verify targets
+  * cmQtAutoGenInitializer: disable C++ module scanning for autogen sources
+  * cmLocalGenerator: disable C++ module scanning for copied PCH sources
+  * cmLocalGenerator: disable C++ module scanning for unity sources
+  * cmGlobalXCodeGenerator: disable C++ module scanning for force-lang files
+  * FindFreetype: always find the config module quietly
+  * FindFreetype: also consider RelWithDebInfo-built libraries
+  * FindTIFF: always find the config module quietly
+  * FindTIFF: consider `IMPLIB`-using platforms
+  * FindCUDAToolkit: Fix stub library representation on reconfigure
+  * FindMatlab: Fix regression on Windows Registry lookup failure
+  * FindFreetype: Fix success message when config module is found
+  * FindTIFF: Restore support for projects that do not enable CMP0057
+  * FindMatlab: Fix processing of multiple versions from Windows Registry
+
+-------------------------------------------------------------------
+Wed Dec  6 21:10:49 UTC 2023 - Christoph G <foss@grueninger.de>
+
+- update to 3.28.0
+  * C++ 20 named modules are now supported by Ninja Generators, in
+    combination with LLVM/Clang 16.0 and newer, and GCC 14 (after
+    the 2023-09-20 daily bump) and newer.
+  * "HIP" language code may now be compiled for NVIDIA GPUs using
+    the NVIDIA CUDA Compiler (NVCC).
+  * The "exec_program()" command, which has been deprecated since
+    CMake 3.0, has been removed by policy "CMP0153". Use the
+    "execute_process()" command instead.
+  * Generated files, in targets using File Sets, are now considered
+    private by default.  Generated public headers must be specified
+    using file sets.
+  * The "find_library()", "find_path()", and "find_file()" commands no
+    longer search in installation prefixes derived from the "PATH"
+    environment variable.
+
+-------------------------------------------------------------------
 Wed Nov 29 21:07:37 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.27.9:

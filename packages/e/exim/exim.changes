@@ -1,3 +1,10 @@
+-------------------------------------------------------------------
+Sat Dec 30 15:35:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.97.1 (bsc#1218387, CVE-2023-51766):
+  * Fixes for the smtp protocol smuggling (CVE-2023-51766)
+
+-------------------------------------------------------------------
 Tue Nov  7 09:03:46 UTC 2023 - Peter Wullinger <wullinger@rz.uni-kiel.de>
 
 - update to exim 4.97
@@ -32,7 +39,7 @@ Wed Jan 25 12:56:05 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 Tue Oct 18 10:00:39 UTC 2022 - Peter Wullinger <wullinger@rz.uni-kiel.de>
 
 - add patch-cve-2022-3559 (fixes CVE-2022-3559, bsc#1204427, Bug 2915)
-  
+
 -------------------------------------------------------------------
 Thu Sep 29 13:36:20 UTC 2022 - Peter Wullinger <wullinger@rz.uni-kiel.de>
 
@@ -108,7 +115,7 @@ Mon Jun 27 08:33:59 UTC 2022 - Peter Wullinger <wullinger@rz.uni-kiel.de>
     may not be tainted.
   * Fix CHUNKING on a continued-transport.  Previously the usabilility of
     the facility was not passed across execs, and only the first message
-    passed over a connection could use BDAT; any further ones using DATA. 
+    passed over a connection could use BDAT; any further ones using DATA.
   * Support the PIPECONNECT facility in the smtp transport when the helo_data
     uses $sending_ip_address and an interface is specified.
   * OpenSSL: fix transport-required OCSP stapling verification under session
@@ -124,7 +131,7 @@ Mon Jun 27 08:33:59 UTC 2022 - Peter Wullinger <wullinger@rz.uni-kiel.de>
   * Fix ${srs_encode ...} to handle an empty sender address, now returning
     an empty address.
   * Bug 2855: Handle a v4mapped sender address given us by a frontending
-    proxy. 
+    proxy.
 
 Wed Jan 19 11:41:15 UTC 2022 - Peter Wullinger <wullinger@rz.uni-kiel.de>
 
@@ -161,7 +168,7 @@ Tue Sep 14 07:31:37 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 -------------------------------------------------------------------
 Thu Jul  8 06:08:34 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Update eximstats-html-update.py to run under Python 3. 
+- Update eximstats-html-update.py to run under Python 3.
 
 -------------------------------------------------------------------
 Mon May 17 15:03:24 CEST 2021 - wullinger@rz.uni-kiel.de
@@ -261,7 +268,7 @@ Tue May 19 13:47:05 CEST 2020 - wullinger@rz.uni-kiel.de
 
 - switch pretrans to use lua
   (fixes bsc#1171877)
-  
+
 -------------------------------------------------------------------
 Tue May 12 08:19:17 UTC 2020 - wullinger@rz.uni-kiel.de
 
@@ -403,8 +410,8 @@ Sat Sep  7 18:22:08 UTC 2019 - poeml@cmdline.net
 Thu Jul 25 13:43:52 UTC 2019 - alex <atoptsoglou@suse.com>
 
 - update to exim 4.92.1
- * CVE-2019-13917: Fixed an issue with ${sort} expansion which could 
-   allow remote attackers to execute other programs with root privileges 
+ * CVE-2019-13917: Fixed an issue with ${sort} expansion which could
+   allow remote attackers to execute other programs with root privileges
    (boo#1142207)
 
 -------------------------------------------------------------------
@@ -417,7 +424,7 @@ Wed Jun  5 07:14:44 CEST 2019 - wullinger@rz.uni-kiel.de
  * DANE is now SUPPORT_DANE
 
 -------------------------------------------------------------------
-Sat Mar 23 05:03:11 UTC 2019 - seanlew@opensuse.org 
+Sat Mar 23 05:03:11 UTC 2019 - seanlew@opensuse.org
 
 - update to exim 4.92
  * ${l_header:<name>} expansion
@@ -528,7 +535,7 @@ Mon Apr 16 13:57:17 UTC 2018 - wullinger@rz.uni-kiel.de
 -------------------------------------------------------------------
 Thu Mar 15 20:22:09 UTC 2018 - crrodriguez@opensuse.org
 
-- Replace xorg-x11-devel by individual pkgconfig() buildrequires. 
+- Replace xorg-x11-devel by individual pkgconfig() buildrequires.
 
 -------------------------------------------------------------------
 Tue Feb 13 13:39:34 UTC 2018 - kbabioch@suse.com
@@ -613,7 +620,7 @@ Mon Nov 27 06:45:14 UTC 2017 - meissner@suse.com
 -------------------------------------------------------------------
 Thu Nov 23 13:43:04 UTC 2017 - rbrown@suse.com
 
-- Replace references to /var/adm/fillup-templates with new 
+- Replace references to /var/adm/fillup-templates with new
   %_fillupdir macro (boo#1069468)
 
 -------------------------------------------------------------------
@@ -646,16 +653,16 @@ Mon Apr 24 07:45:00 UTC 2017 - wullinger@rz.uni-kiel.de
 
 - exim-4.86.2+fixes-867e8fe25dbfb1e31493488ad695bde55b890397.patch:
   import exim-4_86_2+fixes branch
-    + fix CVE-2016-1531 
+    + fix CVE-2016-1531
       when installed setuid root, allows local users to gain privileges via the perl_startup
-      argument. 
+      argument.
     + fix Bug 1805: store the initial working directory, expand $initial_cwd
     + fix Bug 1671: segfault after delivery (https://bugs.exim.org/show_bug.cgi?id=1671)
     + Don't issue env warning if env is empty
 
 - fix-CVE-2016-9963-31c02defdc5118834e801d4fe8f11c1d9b5ebadf.patch:
   DKIM information leakage
-  
+
 
 -------------------------------------------------------------------
 Mon Apr  4 15:55:31 UTC 2016 - e.istomin@edss.ee

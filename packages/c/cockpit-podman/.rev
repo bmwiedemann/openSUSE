@@ -150,4 +150,15 @@
 - deps.patch: upstreamed, dropped</comment>
     <requestid>1109729</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>67eb58113208677534d691e7ac50e387</srcmd5>
+    <version>82</version>
+    <time>1704380180</time>
+    <user>dimstar_suse</user>
+    <comment>- New version 82:
+  * Validate fields in &quot;Create container&quot; dialog
+  * Label Toolbox and Distrobox containers
+  * Performance and stability improvements</comment>
+    <requestid>1135662</requestid>
+  </revision>
 </revisionlist>

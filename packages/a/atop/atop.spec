@@ -2,7 +2,7 @@
 #
 # spec file for package atop
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 
 Name:           atop
-Version:        2.9.0
+Version:        2.10.0
 Release:        0
 Summary:        Monitor for System Resources and Process Activity
 License:        GPL-2.0-only
@@ -34,7 +34,7 @@ Patch2:         harden_atop.service.patch
 Patch3:         harden_atopacct.service.patch
 Patch4:         harden_atopgpu.service.patch
 BuildRequires:  gcc
-BuildRequires:  glibc-devel
+BuildRequires:  glib2-devel
 BuildRequires:  make
 BuildRequires:  ncurses-devel
 BuildRequires:  systemd-rpm-macros
@@ -123,10 +123,12 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcatop-rotate
 %{_bindir}/atopconvert
 %{_bindir}/atop-%{version}
 %{_bindir}/atopsar-%{version}
+%{_bindir}/atophide
 %{_mandir}/man1/atop.1%{?ext_man}
 %{_mandir}/man1/atopcat.1%{?ext_man}
 %{_mandir}/man1/atopsar.1%{?ext_man}
 %{_mandir}/man1/atopconvert.1%{?ext_man}
+%{_mandir}/man1/atophide.1%{?ext_man}
 %{_mandir}/man5/atoprc.5%{?ext_man}
 %{_datadir}/applications/%{name}.desktop
 

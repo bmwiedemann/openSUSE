@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan  3 10:05:50 UTC 2024 - Michael Chang <mchang@suse.com>
+
+- grub2.spec: Add ofnet to signed grub.elf to support powerpc net boot
+  installation when secure boot is enabled (bsc#1217761)
+- Improved check for disk device when looking for PReP partition
+  * 0004-Introduce-prep_load_env-command.patch
+
+-------------------------------------------------------------------
 Thu Nov 30 09:41:10 UTC 2023 - Michael Chang <mchang@suse.com>
 
 - Fix reproducible build for grub.xen (bsc#1217619)

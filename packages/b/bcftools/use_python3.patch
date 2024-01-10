@@ -41,7 +41,7 @@ diff -Nur bcftools-1.15.1/doc/bcftools.txt new/doc/bcftools.txt
 +    cd outdir && python3 plot.py && pdflatex summary.tex
  --
  
- PERFORMANCE
+ 
 diff -Nur bcftools-1.15.1/misc/guess-ploidy.py new/misc/guess-ploidy.py
 --- bcftools-1.15.1/misc/guess-ploidy.py	2021-06-23 12:49:05.000000000 +0200
 +++ new/misc/guess-ploidy.py	2022-04-21 17:53:16.863999747 +0200

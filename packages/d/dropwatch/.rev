@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>977478</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>05d1c157ae94ebb9f1be304c00448c99</srcmd5>
+    <version>1.5.4</version>
+    <time>1704558629</time>
+    <user>dimstar_suse</user>
+    <comment>- add 83.patch, bfd-link-statically.patch: fix build when
+  statically linking libbfd</comment>
+    <requestid>1137258</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           bcel
-Version:        6.7.0
+Version:        6.8.0
 Release:        0
 Summary:        Byte Code Engineering Library
 License:        Apache-2.0

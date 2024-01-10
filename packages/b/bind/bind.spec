@@ -1,7 +1,7 @@
 #
 # spec file for package bind
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,7 +56,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           bind
-Version:        9.18.20
+Version:        9.18.21
 Release:        0
 Summary:        Domain Name System (DNS) Server (named)
 License:        MPL-2.0

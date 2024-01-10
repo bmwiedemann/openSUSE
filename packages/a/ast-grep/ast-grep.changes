@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sat Jan  6 09:11:59 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.16.1:
+  * feat: add support for bash and php #639
+  * Breaking change: fix: more strict meta var parsing 13ad32b
+  * Breaking change: refactor: remove thrift language 26ecdf6
+  * fix(deps): update dependency @swc/core to v1.3.102 9ca9711
+
+-------------------------------------------------------------------
+Sat Dec 30 13:05:35 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.16.0:
+  * feat: add language globs to findInFiles in napi #780
+  * Breaking change: fix: rename MetaVar for better naming #805
+  * refactor: reorgnanize napi file structure 93f8577
+  * refactor: move file type related function out of lib 64e33a3
+  * feat: handle FileOption in LangOption::infer 7bc3efe
+
+-------------------------------------------------------------------
+Mon Dec 18 07:57:39 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.15.1:
+  * feat: support mutliple rules in -r and --inline-rules #786
+  * refactor: unify run_worker and run_std_in #785
+  * Breaking change: feat: --stdin now always awaits user input #791
+  * feat: support --inline-rules option for sg scan #396
+  * refactor: separate PathWorker and StdInWorker and Worker ef3d8ad
+  * test: add test cases for sg scan ed35c71
+  * fix: revert github action a2f22d8
+
+-------------------------------------------------------------------
+Sat Dec 16 11:37:22 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.15.0:
+  * Breaking change: feat: reduce metavar_env string allocation e1ab015
+  * Breaking change: fix: remove pattern as replacer f6e4293
+  * Breaking change: feat: better metavar detection e1ab18a
+
+-------------------------------------------------------------------
 Tue Dec 12 08:11:43 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.14.4:

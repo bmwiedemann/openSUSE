@@ -886,4 +886,18 @@
     <comment>update to 1.121.1 (forwarded request 1132333 from rrahl0)</comment>
     <requestid>1132375</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>e5f6809762b94c91cc5753f1995e03eb</srcmd5>
+    <version>0.121.2</version>
+    <time>1704487546</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.121.2:
+  * build(deps): bump golang.org/x/crypto from 0.16.0 to 0.17.0
+  * tpl/math: Add math.Rand template function
+  * Adjust site benchmark
+  * Simplify baseline benchmark
+  * resources/images: Create AutoOrient image filter
+  * all: Remove unused code (forwarded request 1137108 from jfkw)</comment>
+    <requestid>1137109</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jan  6 00:37:43 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
+
+- Update to 15.1.3
+ * 1,176 additional CJK unified ideographs
+ * Due to the font limit of 65,535 glyphs,
+   all PUA characters in the range E080 through F8DF have been removed,
+   and are now only available in the BabelStone Han PUA font
+ * 56 glyph corrections and improvements
+
+-------------------------------------------------------------------
 Fri Nov 10 17:57:34 UTC 2023 - Gordon Leung <pirateclip@protonmail.com>
 
 - Update to 15.1.2

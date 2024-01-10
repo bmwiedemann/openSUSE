@@ -16,10 +16,10 @@
 #
 
 
-%define sover  3_10_8
+%define sover  3_10_9
 %bcond_without docs
 Name:           gnuradio
-Version:        3.10.8.0
+Version:        3.10.9.1
 Release:        0
 Summary:        GNU software radio
 License:        GPL-3.0-or-later

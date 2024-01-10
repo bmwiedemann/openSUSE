@@ -1,7 +1,7 @@
 #
 # spec file for package Catch2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define __builder ninja
 Name:           Catch2
-Version:        3.4.0
+Version:        3.5.1
 Release:        0
 Summary:        A modern, C++-native, header-only, test framework for unit-tests, TDD and BDD
 License:        BSL-1.0

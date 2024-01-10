@@ -34,6 +34,7 @@ Patch5:         apr-visibility.patch
 Patch9:         apr-proc-mutex-map-anon.patch
 # prevent random failures of the testsuite (sendfile test)
 Patch10:        apr-test-sendfile-timeout.patch
+Patch11:        reproducible.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  libuuid-devel

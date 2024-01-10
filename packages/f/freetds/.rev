@@ -378,4 +378,13 @@ License labeling issues should be fixed.  The (hopefully) LGPL libraries and GPL
 - First stab at RPM for 0.51 ver</comment>
     <requestid>1128790</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>93f472e1e6e4c460e5e454d5377f328a</srcmd5>
+    <version>1.4.10</version>
+    <time>1703800459</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.4.10:
+  * odbc: Return better error for invalid character set</comment>
+    <requestid>1135377</requestid>
+  </revision>
 </revisionlist>

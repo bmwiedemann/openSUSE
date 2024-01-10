@@ -16,9 +16,9 @@
 #
 
 
-%define libsepol_ver 3.5
+%define libsepol_ver 3.6
 Name:           checkpolicy
-Version:        3.5
+Version:        3.6
 Release:        0
 Summary:        SELinux policy compiler
 License:        GPL-2.0-or-later
@@ -88,6 +88,5 @@ install test/dispol %{buildroot}/%{_bindir}/sedispol
 %{_bindir}/sedismod
 %{_bindir}/sedispol
 %{_mandir}/man8/check*.*%{ext_man}
-%{_mandir}/ru/man8/check*.*%{ext_man}
 
 %changelog

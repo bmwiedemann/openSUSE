@@ -19,9 +19,9 @@
 #
 %global flavor @BUILD_FLAVOR@%{nil}
 
-%define ver 1.83.0
-%define _ver 1_83_0
-%define package_version 1_83_0
+%define ver 1.84.0
+%define _ver 1_84_0
+%define package_version 1_84_0
 %define file_version %_ver
 %define lib_appendix %_ver
 %define docs_version 1.56.0
@@ -213,9 +213,9 @@ ExcludeArch:    s390x %{ix86} ppc64 ppc64le
 %endif
 
 Name:           %{base_name}
-Version:        1.83.0
+Version:        1.84.0
 Release:        0
-%define library_version 1_83_0
+%define library_version 1_84_0
 Summary:        Boost C++ Libraries
 License:        BSL-1.0
 Group:          Development/Libraries/C and C++
@@ -231,8 +231,6 @@ Source101:      symbol_diff.sh
 Source102:      README.boost-devel
 Patch1:         boost-thread.patch
 Patch2:         boost-no_type_punning.patch
-# https://github.com/boostorg/phoenix/pull/112
-Patch3:         boost-phoenix-revert-std-tuple-support.patch
 Patch4:         boost-pool_check_overflow.patch
 Patch5:         boost-strict_aliasing.patch
 Patch6:         boost-use_std_xml_catalog.patch
@@ -245,8 +243,6 @@ Patch18:        dynamic_linking.patch
 Patch20:        python_library_name.patch
 Patch21:        boost-remove-cmakedir.patch
 Patch22:        boost-process.patch
-# https://github.com/boostorg/mpi/issues/149
-Patch50:        boost-mpi-noreturn.patch
 %{?suse_build_hwcaps_libs}
 BuildRequires:  fdupes
 BuildRequires:  gmp-devel
@@ -1246,7 +1242,6 @@ tasks.
 find -type f ! \( -name \*.sh -o -name \*.py -o -name \*.pl \) -exec chmod -x {} +
 %patch1 -p1
 %patch2
-%patch3 -p1
 %patch4
 %patch5
 %patch6 -p1
@@ -1259,7 +1254,6 @@ find -type f ! \( -name \*.sh -o -name \*.py -o -name \*.pl \) -exec chmod -x {}
 %patch20 -p1
 %patch21 -p1
 %patch22 -p2
-%patch50 -p1
 
 %build
 find . -type f -exec chmod u+w {} +

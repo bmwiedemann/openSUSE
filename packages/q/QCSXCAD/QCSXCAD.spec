@@ -1,7 +1,7 @@
 #
 # spec file for package QCSXCAD
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           QCSXCAD
-Version:        0.6.2
+Version:        0.6.3
 Release:        0
 %define so_ver  0
 %define libname lib%{name}%{so_ver}
@@ -26,22 +26,6 @@ License:        LGPL-3.0-or-later
 Group:          Productivity/Graphics/CAD
 URL:            https://openems.de
 Source0:        https://github.com/thliebig/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE qt5_use_modules.diff -- qt5_use_modules has been deprecated and removed
-Patch0:         qt5_use_modules.diff
-# PATCH-FIX-OPENSUSE QCSXCAD-no-build-date.patch -- Remove build date from binaries
-Patch1:         QCSXCAD-no-build-date.patch
-# PATCH-FIX-OPENSUSE QCSXCAD-vtk.patch -- Avoid pulling in unneeded VTK modules
-Patch2:         QCSXCAD-vtk.patch
-# PATCH-FIX-UPSTREAM
-Patch3:         0001-vtk-use-QVTKOpenGLWidget-for-vtk-8.patch
-# PATCH-FIX-UPSTREAM
-Patch4:         0001-vtk-fix-changes-for-vtk-8.x.patch
-# PATCH-FIX-UPSTREAM
-Patch5:         0001-Remove-leftover-QVTKWidget-include-fix-for-VTK-9.patch
-# PATCH-FIX-UPSTREAM
-Patch6:         0001-Fixup-includes-for-VTK-9.1-compatibility.patch
-# PATCH-FIX-UPSTREAM
-Patch7:         0001-Add-method-to-get-vtkRenderWindow-from-QVTKStructure.patch
 BuildRequires:  CSXCAD-devel
 BuildRequires:  cmake
 BuildRequires:  double-conversion-devel

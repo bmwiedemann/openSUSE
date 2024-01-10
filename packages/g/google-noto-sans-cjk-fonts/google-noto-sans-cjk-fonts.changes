@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan  8 09:16:50 UTC 2024 - Frederic Crozat <fcrozat@suse.com>
+
+- Redownload zip fonts file from upstream, they were changed
+  during github migration somehow.
+
+-------------------------------------------------------------------
 Fri Jan 20 13:17:27 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com>
 
 - Fix bsc#1203741: Add _constraint file to make it build (taken from Factory)

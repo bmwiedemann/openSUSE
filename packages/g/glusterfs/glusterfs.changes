@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Dec 15 08:56:08 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.1
+  * Fix upgrade issue by reverting posix change related to
+    storage.reserve value
+  * Fix possible data loss during rebalance if there is any
+    linkfile on the system
+- Delete 0001-socket-only-issue-IPPROTO_IPV6-setsockopt-calls-on-A.patch
+  (merged),
+
+-------------------------------------------------------------------
 Wed Jul  5 09:28:08 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Add 0001-glusterfs-fix-heap-buffer-overflow-on-startup.patch

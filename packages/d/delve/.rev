@@ -121,4 +121,12 @@
   * Add basic %check to execute binary --help (forwarded request 1121297 from jfkw)</comment>
     <requestid>1121298</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>95bedc07917183a8d19340e35cd4004d</srcmd5>
+    <version>1.22.0</version>
+    <time>1704281103</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.22.0: (forwarded request 1135717 from jfkw)</comment>
+    <requestid>1135718</requestid>
+  </revision>
 </revisionlist>

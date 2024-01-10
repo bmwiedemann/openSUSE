@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan  5 15:42:58 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.50.3:
+  + Bug Fixes:
+    - Mail: Calendar attachments can be broken by the server.
+    - Workaround Outlook 2019 ORGANIZER and ATTENDEE addition into
+      plain events.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Dec  1 10:35:54 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.50.2:

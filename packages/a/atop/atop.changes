@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Jan  5 07:39:27 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.10.0:
+  * Additional memory statistics on system level: amount of available
+    memory, amount of memory used for Transparant Huge Pages, amount
+    of memory used by two categories of static huge pages (usually
+    2MiB and 1GiB), and the number of pages transferred to/from zswap.
+  * Additional counters for the number of idle threads on system
+    level and process level.
+  * Refined view of memory bar graph, including free static huge pages.
+  * Generic way to determine the container id or pod name for
+    containerized processes.
+  * Support for a BPF-based alternative[1] for the netatop kernel
+    module to gather network statistics per process/thread.
+  * Use the -z flag followed by a regex to prepend matching environment
+    variables to the full command line that is shown per process (with key 'c').
+  * Various bugfixes (like memory leak when switching to bar graph mode)
+    and minor improvements.
+  * Bugfix: failing malloc while starting atopsar (unprivileged) for a live measurement.
+  * The program atophide can be used to make an extraction from an input
+    raw log to an output raw log, optionally specifying a begin time and/or an
+    end time. The output raw log can be anonymized, i.e. the hostname
+    will be replaced, command names of non-standard commands will be
+    replaced, all command arguments will be wiped, logical volume names
+    will be replaced and NFS mounted volume names will be replaced.
+  * The format of the raw file is incompatible with previous versions.
+    Raw files from previous versions can be converted to the new layout
+    with the atopconvert command.
+
+-------------------------------------------------------------------
 Sat May 13 11:19:51 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.9.0:

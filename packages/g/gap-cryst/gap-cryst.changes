@@ -1,0 +1,67 @@
+-------------------------------------------------------------------
+Sat Dec 23 13:25:16 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.1.27
+  * Fixed incomplete conjugation of Wyckoff positions
+
+-------------------------------------------------------------------
+Sun Jun 25 09:25:50 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.1.26
+  * Bugfix in SolveInhomEquationsModZ and in comparison of affine
+    cryst groups.
+  * Catch the case of a trivial point group in
+    ConjugatorSpaceGroups.
+
+-------------------------------------------------------------------
+Fri Nov 18 18:05:15 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.1.25
+  * Improved documentation conversion and formatting
+
+-------------------------------------------------------------------
+Mon Apr 25 21:53:46 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.1.24
+  * Make silent assumption on pcgs in MaximalSubgroupRepsSG
+    explicit.
+  * Fixed bug in WyckoffPositions. Some Wyckoff positions were
+    listed more than once, due to improper normalization of the
+    representative affine subspace.
+  * Adjustments due to name change from Carat to CaratInterface.
+  * Turn RowEchelonForm into an attribute, to make it read-only.
+
+-------------------------------------------------------------------
+Wed Nov 14 20:32:56 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 4.1.18
+  * Fixed trivial changes in output of a manual example and several
+    test examples.
+
+-------------------------------------------------------------------
+Fri Sep  7 11:27:12 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 4.1.17
+  * Corrected incompatible standardizations of affine subspaces.
+  * Bug in ImagesRepresentative for isomorphism to PcpGroup fixed.
+  * Bug in kernel of PointHomomorphism for left-acting group fixed.
+  * Bugs in Centralizer and CanonicalRightCosetElement fixed.
+  * Bug in ConjugatorSpaceGroups fixed.
+
+-------------------------------------------------------------------
+Sat Feb  3 16:00:06 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 4.1.13
+  * Fixed a bug in ImagesRepresentative for
+    IsFromAffineCrystGroupToPcpGroup
+
+-------------------------------------------------------------------
+Tue Feb  4 17:57:10 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 4.1.12
+* Fixed a bug in RepresentativeAction for AffineCrystGroups
+
+-------------------------------------------------------------------
+Fri May 10 13:47:02 UTC 2013 - jengelh@inai.de
+
+- Split cryst (version 4.1.11) off the gap RPM package

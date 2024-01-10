@@ -309,4 +309,12 @@
   * Updated AWS GO SDK to v1.44.261 and disabled IMDSv1 fallback logic (forwarded request 1105056 from glaubitz)</comment>
     <requestid>1105074</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>5906bba023bb81eeb3e4f9a761109e89</srcmd5>
+    <version>3.2.1798.0</version>
+    <time>1703527490</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1134155</requestid>
+  </revision>
 </revisionlist>

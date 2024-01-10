@@ -272,4 +272,18 @@
   * add %%header2 and %%footer2 for even pages</comment>
     <requestid>1043786</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>f47d7969a9ecf6d3973216942d091ba0</srcmd5>
+    <version>8.14.15</version>
+    <time>1704753929</time>
+    <user>anag+factory</user>
+    <comment>- Update to 8.14.15:
+  * fix: bad vertical position of !trill(!-like decorations
+  * fix: don't combine notes in tuplets that start by a rest when
+    %%voice combine 0
+  * fix: dashed bars broken in PostScript output since commit e3282f8
+  * fix: bad PS page definition when %%gutter negative
+  * fix: bad measure numbers when many voices after %%setbarnb</comment>
+    <requestid>1137489</requestid>
+  </revision>
 </revisionlist>

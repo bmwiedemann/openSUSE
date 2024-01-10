@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jan  1 06:54:30 UTC 2024 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to version 0.45.0:
+  * Added transform action to conditionally perform a set of
+    actions
+  * Added placeholder expressions like {fzf:query}
+  * Added support for negative height
+  * Added accept-or-print-query action that acts like accept but
+    prints the current query when there's no match for the query
+  * Added show-header and hide-header actions
+  * Bug fixes
+
+-------------------------------------------------------------------
 Sat Nov 18 06:30:35 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
 
 - Update to version 0.44.1:

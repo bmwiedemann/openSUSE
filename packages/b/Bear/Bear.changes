@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Dec 18 13:26:24 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Disable tests as they timeout in OBS
+
+-------------------------------------------------------------------
+Sat Dec  2 06:57:04 UTC 2023 - Christoph G <foss@grueninger.de>
+
+- Update to version 3.1.3
+  * citnames: include filter works with trailing separator
+  * dependency: fmt to work with all recent versions
+  * cmake: Avoid warning about DOWNLOAD_EXTRACT_TIMESTAMP ( #531, @Spongman )
+  * language: Add missing include for std::find ( #530, @thesamesam )
+
+-------------------------------------------------------------------
 Tue Jun 13 12:30:48 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to version 3.1.2:

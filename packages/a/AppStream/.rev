@@ -466,4 +466,12 @@ Features:
     <comment></comment>
     <requestid>1132453</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>6c8bf2b6344f304b3fab76aaf3a14408</srcmd5>
+    <version>1.0.0</version>
+    <time>1703527479</time>
+    <user>anag+factory</user>
+    <comment>Update to 1.0.0 (forwarded request 1133407 from krop)</comment>
+    <requestid>1133971</requestid>
+  </revision>
 </revisionlist>

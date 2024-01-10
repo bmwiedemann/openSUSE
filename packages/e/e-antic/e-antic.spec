@@ -17,9 +17,9 @@
 
 
 %define skip_python2 1
-%define lname	libeantic1
+%define lname	libeantic3
 Name:           e-antic
-Version:        1.3.0
+Version:        2.0.0
 Release:        0
 Summary:        Real Embedded Algebraic Number Theory in C
 License:        LGPL-2.1-or-later AND LGPL-3.0-or-later
@@ -27,7 +27,6 @@ Group:          Productivity/Scientific/Math
 URL:            https://github.com/flatsurf/e-antic
 
 Source:         https://github.com/flatsurf/e-antic/releases/download/%version/e-antic-%version.tar.gz
-Patch1:         flint3.diff
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  automake
 BuildRequires:  cereal-devel
@@ -101,7 +100,7 @@ find "%buildroot" -name install_files.txt -delete
 
 %files -n %lname
 %license COPY*
-%_libdir/libeantic*.so.1*
+%_libdir/libeantic*.so.[0-9]*
 
 %files -n %name-devel
 %_includedir/e-antic/

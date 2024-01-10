@@ -1,0 +1,43 @@
+-------------------------------------------------------------------
+Sat Feb 25 18:53:27 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.3.4
+  * No user-visible changes
+
+-------------------------------------------------------------------
+Tue Jan  3 22:52:24 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.3.3
+  * Build changes only
+
+-------------------------------------------------------------------
+Tue Dec 20 23:38:08 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.3.2
+  * Adjust package for GAP 4.10
+
+-------------------------------------------------------------------
+Wed Nov 14 21:56:27 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 4.1.1
+  * The method for Recipe required a fix because RecNames is not
+    guaranteed to return a list of component names in a
+    particular order.
+  * Use C99 init for StructInitInfo.
+
+-------------------------------------------------------------------
+Fri Dec 12 11:24:36 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 3.4.5
+* Remark on repackaging package archives
+
+-------------------------------------------------------------------
+Wed Feb  5 14:02:11 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 3.4.4
+* No changelog was provided
+
+-------------------------------------------------------------------
+Fri May 10 13:47:02 UTC 2013 - jengelh@inai.de
+
+- Split example (version 3.4.3) off the gap RPM package

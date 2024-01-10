@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan  4 02:03:56 UTC 2024 - William Brown <william.brown@suse.com>
+
+- bsc#1218227 - update vendored dependencies for ssh terrapin attack
+
+-------------------------------------------------------------------
 Fri Oct 27 03:17:26 UTC 2023 - william.brown@suse.com
 
 - Update to version 0.18.3~git0.3544515:

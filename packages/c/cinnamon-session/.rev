@@ -240,4 +240,14 @@
   * Remove gconf code, disable docs, remove doc dependencies.</comment>
     <requestid>1130389</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>693a61f0f09f03a32312f160796a123a</srcmd5>
+    <version>6.0.1</version>
+    <time>1703198323</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.0.1:
+  * autostart-app: don't try to add child watch to dbus activated
+  * util: Unset some environment variables on systemd</comment>
+    <requestid>1134353</requestid>
+  </revision>
 </revisionlist>

@@ -54,24 +54,10 @@ BuildRequires:  pkgconfig(xkbcommon-x11)
 Requires:       Mesa-demo-egl = %{version}
 Requires:       Mesa-demo-es = %{version}
 Requires:       Mesa-demo-x = %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
-Mesa is a 3-D graphics library with an API which is very similar to
-that of OpenGL.* To the extent that Mesa utilizes the OpenGL command
-syntax or state machine, it is being used with authorization from
-Silicon Graphics, Inc.(SGI). However, the author does not possess an
-OpenGL license from SGI, and makes no claim that Mesa is in any way a
-compatible replacement for OpenGL or associated with SGI. Those who
-want a licensed implementation of OpenGL should contact a licensed
-vendor.
-
-Please do not refer to the library as MesaGL (for legal reasons). It's
-just Mesa or The Mesa 3-D graphics library.
-
+Mesa is a 3-D graphics library with an API similar to OpenGL.
 This package contains the demos shipped with Mesa.
-
-* OpenGL is a trademark of Silicon Graphics Incorporated.
 
 %package x
 Summary:        GLX-based demos
@@ -104,7 +90,7 @@ Provides:       Mesa-demo:%{_libdir}/mesa-demos/egl/opengl/xeglthreads
 This package contains some common EGL-based demos.
 
 %prep
-%setup -q -n mesa-demos-%{version} -b0
+%autosetup -n mesa-demos-%{version} -b0
 
 %build
 %{meson} \
@@ -131,7 +117,6 @@ cp -a %{buildroot}%{_bindir}/{glxgears,glxinfo,pbinfo} \
 %endif
 
 %files
-%defattr(-,root,root)
 %{_bindir}/*
 %dir %{_datadir}/mesa-demos
 %{_datadir}/mesa-demos/*
@@ -153,7 +138,6 @@ cp -a %{buildroot}%{_bindir}/{glxgears,glxinfo,pbinfo} \
 %exclude %{_bindir}/bitmap
 
 %files x
-%defattr(-,root,root)
 %{_bindir}/glxgears
 %{_bindir}/glxinfo
 %{_bindir}/pbinfo
@@ -164,7 +148,6 @@ cp -a %{buildroot}%{_bindir}/{glxgears,glxinfo,pbinfo} \
 %endif
 
 %files es
-%defattr(-,root,root)
 %{_bindir}/es2_info
 %{_bindir}/es2gears_x11
 %{_bindir}/es2tri
@@ -176,7 +159,6 @@ cp -a %{buildroot}%{_bindir}/{glxgears,glxinfo,pbinfo} \
 %endif
 
 %files egl
-%defattr(-,root,root)
 %{_bindir}/eglgears_x11
 %{_bindir}/eglinfo
 %{_bindir}/egltri_x11

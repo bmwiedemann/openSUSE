@@ -1,0 +1,38 @@
+From 0b3adf073a74d0963a2562b13728dde08f63a461 Mon Sep 17 00:00:00 2001
+From: Alexander Hans <ahans@users.noreply.github.com>
+Date: Wed, 27 Sep 2023 07:28:08 +0000
+Subject: [PATCH] Fix build without libtool
+
+When libtool is not installed, automake calls the linker with the
+library flags (`-llib`) _before_ the object files. In order to
+successfully resolve symbols, the library flags need to come _after_ any
+object file needing them. libtool does that correctly by itself, but
+when automake cannot rely on libtool, we need to tell it about libraries
+via `mybin_LDADD` instead of the global `AM_LDFLAGS`.
+---
+ src/Makefile.am | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 1fd6c33..81cc2fd 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -3,7 +3,10 @@
+ bin_PROGRAMS = dropwatch dwdump
+ 
+ AM_CFLAGS = -g -Wall -Werror $(LIBNL3_CFLAGS) $(LIBNLG3_CFLAGS) $(READLINE_CFLAGS)
+-AM_LDFLAGS = $(LIBNL3_LIBS) $(LIBNLG3_LIBS) $(READLINE_LIBS) -lpcap
++AM_LDFLAGS =
++ALL_LIBS = $(LIBNL3_LIBS) $(LIBNLG3_LIBS) $(READLINE_LIBS) $(LIBPCAP_LIBS)
++dropwatch_LDADD = $(ALL_LIBS)
++dwdump_LDADD = $(ALL_LIBS)
+ AM_CPPFLAGS = -D_GNU_SOURCE
+ 
+ dropwatch_SOURCES = main.c lookup.c lookup_kas.c
+@@ -11,5 +14,5 @@ dwdump_SOURCES = dwdump.c
+ 
+ if USE_BFD
+ dropwatch_SOURCES += lookup_bfd.c
+-AM_LDFLAGS += -lbfd
++dropwatch_LDADD += -lbfd
+ endif

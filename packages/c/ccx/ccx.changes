@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan  1 01:36:48 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to 2.21:
+  Too many changes to list, a full list of changes is available in
+  the included LOGFILE.
+- Drop upstream patches:
+  * 0001-Use-interface-for-cubtri-callback-function.patch
+
+-------------------------------------------------------------------
 Thu Sep  1 10:12:59 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - update to 2.20:

@@ -1,4 +1,117 @@
 -------------------------------------------------------------------
+Thu Jan  4 10:44:41 UTC 2024 - Florian <packaging@sp1rit.anonaddy.me>
+
+- Update to version 0.34.0:
+  + Hey, haven't seen you in a year! New year, new hyprland update.
+    The longest commit gap to date ends with this plentiful one :D
+  + New tools:
+    - hyprpm: a hyprland plugin manager. See the wiki or
+      hyprpm --help for usage.
+  + New features:
+    - config: add debug:disable_scale_checks
+    - config: add qt env to default config
+    - dispatchers: add tiled/floating to cyclenext
+    - groupbar: add egl context to refreshGroupBarGradients() (#4238)
+    - groupbar: add enabling groupbar and setting priority (#4299)
+    - hyprctl: add decorations (#4275)
+    - hyprpm: add duplicate header error and log more verbose in
+      install fails
+    - input: Add scroll_points option for device (#4101)
+    - input: add relative_input for tablets
+    - master: add dispatchers rollnext and rollprev (#4209)
+    - opengl: add toggleable nvidia_anti_flicker
+    - renderer: add decoration:blur:popups_ignorealpha
+    - renderer: add occlusion for special workspaces
+    - renderer: add option to blur popups
+    - systemd: add HYPRLAND_NO_SD_NOTIFY
+    - windowrules: add focus param
+    - windowrules: add initialTitle and initialClass (#4259)
+    - windowrules: add onworkspace
+  + Fixes:
+    - border: fix failed assert on small windows
+    - border: fix missed translate by offset
+    - deco: fix missing border on togglefloating (#4305)
+    - functionHooks: fix incorrect protlen calcs
+    - hyprpm: fix with system headers
+    - internal: fix interactions with fakefullscreen (#4113)
+    - internal: minor include fixes and missed format
+    - renderer: double lookup fix, input: double conversion fix (#4124)
+    - renderer: fix auto scale detection with fractional
+    - renderer: fix null cursor surface sets being ignored
+    - signal: fix invalid pointer access (#4207)
+    - toplevelexport: fix missed pmonitor set for opengl
+    - toplevelexport: fix missing GL_READ_FRAMEBUFFER set in shm copy
+    - windowrules: minor fixes to onworkspace
+    - xdg-shell: fix sending of suspended state
+  + Other:
+    - compositor: don't block focus if there is no keyboard
+    - compositor: spawn environment setup with keybind manager (#3722)
+    - config: Avoid regenerating config if --config is used (#4103)
+    - config: Use canonical instead of read_symlink (#4136)
+    - config: don't emit reloaded event before eventManager is created
+    - config: improve layoutopt handling for workspacerules
+    - configmanager: set a limit to config variable substitutions
+    - crashreporter: don't explicitly set 777 on crash report directory
+    - deco-positioner: include sticky in sent geometry
+    - dwindle: Use window->middle() when cursor is on reserved area (#4253)
+    - filesystem: Set the sticky bit on /tmp/hypr (#4199)
+    - focus: prefer sendMotionEventsToFocused for ensuring cursor image
+    - groupbar: Middle click on groupbar to close tab (#4297)
+    - groupbar: remove extra border size from groupbars (#4262)
+    - hyprctl: allow instances without HIS
+    - hyprctl: check only ISDEBUG in version (#3702)
+    - hyprpm: Make sure we're in git repo before getting new hash (#4303)
+    - hyprpm: cast std::clamp args to be of the same type (#4116)
+    - hyprpm: clone plugins recursively
+    - hyprpm: guard empty command
+    - hyprpm: trim paths in PATH
+    - idle: notify idle on tablet inputs (#4201)
+    - input: Activate resize_on_border only when key is pressed (#4170)
+    - input: Ignore some input events when focus is on a layer surface (#4306)
+    - input: Prevent crash with invalid keyboard layout (#4157)
+    - input: allow setting cursor even if it's hidden
+    - input: don't steal mouseDown from LS (#4260)
+    - input: unset resize cursor on empty focus
+    - internal: Remake borders as window decorations (#4104)
+    - internal: Unify input handling on decorations (#4280)
+    - internal: convert uname fields to strings before logging
+    - internal: import qt env to dbus
+    - internal: nuke CWindow::m_bMappedX11
+    - internal: removed Herobrine
+    - keybinds: Keep focus on special when switching workspaces (#4084)
+    - keybinds: check for null last monitor in changeworkspace (#4077)
+    - layout: Focus a floating window after closing the last tiled (#4137)
+    - pluginapi: Trampoline hooks %rip patching improvements (#4256)
+    - pluginapi: better wording for plugin function hook errors
+    - pluginapi: log assembler return
+    - pluginapi: manually detect endbr64 opcodes in function hooks
+    - renderer: Allocate background texture only if required (#4111)
+    - renderer: apply scale to wlr after checks
+    - renderer: cursor hiding logic improvements (#4184)
+    - renderer: deny invalid scales and suggest a replacement
+    - renderer: don't render decorations on renderdata.decorate false
+    - renderer: don't set surfaces on cursor timeout
+    - renderer: don't use clipBox for pinned window occlusion during animations
+    - renderer: ignore windowRequestedCursorHide
+    - renderer: improve cursor hiding infra
+    - renderer: improve fullscreen workspace client rendering
+    - renderer: reject non-clean scales, find nearest clean
+    - renderer: staticize local functions
+    - renderer: use 120 as the denominator in scale checks
+    - renderer: use nearest_neighbor for misaligned fractional-scale surfaces
+    - renderer: use xray for background blur on small() surfaces
+    - shadow: Avoid rounded shadows when rounding is 0 (#4230)
+    - shadow: correctly scale boxes
+    - socket2: emit configreloaded event
+    - special: move floating windows along with the workspace
+    - toplevel-export: commence render pass before reading
+    - xdg: use better min/max size checks for floating resizes
+    - xdgshell: bump to 6, send suspended states
+    - xwayland: don't change workspace on configure for invisible windows
+    - xwayland: set reported and pending size/pos on geometry sets
+    - xwaylandmgr: allow resizes without a monitor
+
+-------------------------------------------------------------------
 Wed Dec  6 16:56:14 UTC 2023 - Florian <packaging@sp1rit.anonaddy.me>
 
 - Update to version 0.33.1:

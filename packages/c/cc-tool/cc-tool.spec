@@ -1,7 +1,7 @@
 #
 # spec file for package cc-tool
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,14 @@
 
 
 Name:           cc-tool
-Version:        0.26
+Version:        0.27
 Release:        0
 Summary:        Programmer for Texas Instruments 8051-based System-On-Chip devices
 License:        GPL-2.0-only
 Group:          Hardware/Other
 URL:            http://sourceforge.net/projects/cctool/
-Source0:        https://downloads.sourceforge.net/project/cctool/cc-tool-%{version}-src.tgz
+Source0:        https://github.com/dashesy/cc-tool/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        boost.m4
-Patch1:         fix-flashing.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -42,8 +41,7 @@ cc-tool provides support for Texas Instruments CC Debugger for Linux in order
 to program 8051-based System-On-Chip devices: CC254x CC253x CC243x CC251x CC111x.
 
 %prep
-%setup -q -n %{name}
-%patch1
+%setup -q
 
 %build
 cp %{SOURCE1} m4/

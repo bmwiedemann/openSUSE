@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Dec  5 11:17:13 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.113.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.113.0
+- Changes since 5.112.0:
+  * Remove two obsolete benchmark tests
+  * [ExtractorProcess] Handle signal mangling by DrKonqi
+  * [ExtractorProcess] Test the various processing states
+  * [ExtractorProcess] Make the extractor process path a constructor argument
+  * [BasicIndexingBenchmark] Allow to keep temporary DB
+  * [QueryTest] Add test case for terms folded to empty strings
+  * [DocumentUrlDb] Reduce allocations during path reconstruction
+  * Shortcut non-matching phrase queries
+  * [EngineQuery] Remove AND/OR operations
+  * [QueryTest] Move AND/OR queries to searchstring tests
+  * [QueryParser] Remove it, as it is no longer used
+  * [SearchStore] Always use TermGenerator instead of QueryParser
+  * [Extractor] Do not emit startedIndexingFile for skipped documents
+  * Remove dead registerBalooWatcher DBus method
+  * [FileWatchTest] Check attr changed signal when XAttr is not available
+  * [FileWatchTest] Clean up and enhance result checks
+  * [FileWatchTest] Replace common boilerplate with RAII
+  * [KInotify] Fix _k_addWatches helper when hitting descriptor limit
+  * [KInotify] Simplify dirIter logic, use unique_ptr
+  * [KInotify] Always add all watches in the event loop
+  * [KInotifyTest] Extend renaming tests
+  * [KInotifyTest] Move common boilerplate to init
+  * [KInotify] Silence EventMoveSelf warning when not relevant
+  * [KInotify] Removed unused and obsolete `available()` method
+
+-------------------------------------------------------------------
 Mon Nov  6 09:13:38 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.112.0

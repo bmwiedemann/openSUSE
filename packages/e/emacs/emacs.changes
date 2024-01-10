@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec 29 22:42:28 UTC 2023 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- fix typo in %{ext_info} macro usage
+
+-------------------------------------------------------------------
 Wed Nov 15 10:34:24 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - only use valgrind on 64 bit architectures

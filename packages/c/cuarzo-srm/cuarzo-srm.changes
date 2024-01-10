@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Dec 20 13:16:55 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.4.0.1
+  * Introduced srmPlaneGetFormats() to retrieve the supported
+    formats/modifiers of an SRMPlane.
+  * Implemented srmDeviceGetGLExtensions() for checking the
+    support of common OpenGL extensions.
+  * Added srmCoreGetVersion() to retrieve the current SRM version.
+- Delete 0001-build-heed-results-from-pkg-config.patch,
+  0001-build-import-gl-dependency.patch, 0001-versioning.patch.
+
+-------------------------------------------------------------------
 Sat Nov 18 10:34:16 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Initial version 0.3.2.1
+- Add 0001-build-heed-results-from-pkg-config.patch,
+  0001-build-import-gl-dependency.patch, 0001-versioning.patch.

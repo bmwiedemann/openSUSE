@@ -3097,4 +3097,44 @@ and fixes bnc#880052</comment>
     <comment></comment>
     <requestid>1132598</requestid>
   </revision>
+  <revision rev="316" vrev="1">
+    <srcmd5>e2b7dd331da295b7f707ecb0c58ed598</srcmd5>
+    <version>4.6.0+20231215.4b06740f</version>
+    <time>1702673364</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1133257</requestid>
+  </revision>
+  <revision rev="317" vrev="1">
+    <srcmd5>51084231e68cd3f4286c744118d55665</srcmd5>
+    <version>4.6.0+20231222.b7650ca3</version>
+    <time>1703281317</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1134599</requestid>
+  </revision>
+  <revision rev="318" vrev="1">
+    <srcmd5>3cd05d8aa7d3b5d2c6b9140567459bce</srcmd5>
+    <version>4.6.0+20231225.3e2ff633</version>
+    <time>1703527581</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1135078</requestid>
+  </revision>
+  <revision rev="319" vrev="1">
+    <srcmd5>d3808a939398ed504d7779280309d6c7</srcmd5>
+    <version>4.6.0+20231228.83bf1514</version>
+    <time>1703800991</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1135428</requestid>
+  </revision>
+  <revision rev="320" vrev="1">
+    <srcmd5>53d0f2b4ce74c4f3e92955b734c3c671</srcmd5>
+    <version>4.6.0+20240109.288ef6c4</version>
+    <time>1704829826</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1137661</requestid>
+  </revision>
 </revisionlist>

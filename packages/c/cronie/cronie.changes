@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Nov 11 15:17:43 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 1.7.0:
+  * anacron: Add support for NO_MAIL_OUTPUT environment variable
+  * anacron: Support enabling anacron jobs on battery power
+  * crond: Support -n crontab entry option to disable mailing the output
+  * crontab: Make a backup of the crontab file on edition and deletion
+- Add patch cronie-pam_config-nonlogin.diff
+- Refreshed patches:
+  * cronie-crond_pid.diff
+  * cronie-pam_config.diff
+  * cronie-nheader_lines.diff
+  * fix-manpage-replace-anacrontab-with-crontab.patch
+
+-------------------------------------------------------------------
+Fri Mar 31 13:54:41 UTC 2023 - Michal Koutný <mkoutny@suse.com>
+
+- PAM: Use common-session-nonlogin for >15 codestreams
+  More info in https://github.com/SUSE/pam-config/pull/16
+
+-------------------------------------------------------------------
 Tue Dec 20 16:10:11 UTC 2022 - Stefan Schubert <schubi@suse.com>
 
 - Use %_pam_vendordir

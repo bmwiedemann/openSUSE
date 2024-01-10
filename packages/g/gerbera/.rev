@@ -182,4 +182,41 @@
     <comment></comment>
     <requestid>1093286</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>0f89ee35fd2b3adec0bebf3e96d4c4a2</srcmd5>
+    <version>1.12.1</version>
+    <time>1704281270</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1135991</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>718099afb35c3105923e1780f296ecaa</srcmd5>
+    <version>2.0.0</version>
+    <time>1704753951</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.0.0:
+  NEW:
+    * Staged importing that allows updating the virtual layout instead of deleting
+      and recreating it each time (import-mode=&quot;grb&quot;)
+    * Config options as command line arguments (--set-option OPT=VAL with --print-options)
+    * Allow configuration of follow-symlinks per autoscan directory
+    * Configuration of containers in virtual layout: title can be changed, some nodes can be disabled
+    * New mode of loading Javascript plugins with cleanup of global variables
+    * Generation of example configuration via command line option --create-example-config
+    * Case insensitive sorting for databases
+    * New config options for URL handling and host redirection
+    * Use .nomedia to hide directory, incl. config option
+    * Support for UPnP commands GetFeatureList and GetSortExtensionCapabilities
+  FIXES:
+    * Autoscan: Keep track of renamed directories
+    * Runtime issues in request handling
+    * Configurable handling of HOME directory
+    * Transcoding: parsing issue of requests
+    * Stability for sqlite database access
+    * Browsing on Samsung devices
+- Drop upstreamed gerbera-1.12.1-buildfix-support-fmtlib-10.patch.
+</comment>
+    <requestid>1137492</requestid>
+  </revision>
 </revisionlist>

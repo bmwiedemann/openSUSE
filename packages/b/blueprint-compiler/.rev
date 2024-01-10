@@ -37,4 +37,20 @@
   + Add a prominent warning that Blueprint is still experimental (forwarded request 1066406 from akumar)</comment>
     <requestid>1066817</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d22d8eb928d51583f867e9a7a950fa4f</srcmd5>
+    <version>0.10.0</version>
+    <time>1702845064</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1132983</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>6399af674ba459a4b2797e9170b496d3</srcmd5>
+    <version>0.10.0</version>
+    <time>1702936592</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1133824</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jan  4 07:53:18 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.22.8:
+  + appsrc: Fix flow return when buffer is dropped
+  + audioringbuffer: Don't try to map MONO channel
+  + encoding-target: Properly free when missing type field in
+    parse_encoding_profile
+  + pbutils: Don't include default vp9 parameters in resulting
+    codec mime string
+  + videorate: Don't forget last_ts on caps changes
+- Rebase reduce-required-meson.patch
+
+-------------------------------------------------------------------
 Tue Nov 28 11:28:12 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup instead of %setup/%patch.

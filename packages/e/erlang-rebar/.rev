@@ -71,4 +71,19 @@
     <comment></comment>
     <requestid>914214</requestid>
   </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>24d2e219b0d81f89eb039bb58e219902</srcmd5>
+    <version>2.6.4+git20180201.b6d3094</version>
+    <time>1704753975</time>
+    <user>anag+factory</user>
+    <comment>- HACK: do not build the -testsuite flavor in distro projects (i.e
+  in repositories called 'standard'). Allows to get fixes included
+  in the distro while the test suite actually still fails
+  (boo#1205140).
+
+This does obviously not fix the test suite - but at least it allows us to
+get fixes from the devel prj into Factory; maybe someday, somebody cares
+for the test suite again (forwarded request 1136835 from dimstar)</comment>
+    <requestid>1137529</requestid>
+  </revision>
 </revisionlist>

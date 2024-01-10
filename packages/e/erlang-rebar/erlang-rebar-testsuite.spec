@@ -1,7 +1,7 @@
 #
 # spec file for package erlang-rebar-testsuite
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,7 @@ Patch5:         erlc_dep_graph-timeout.patch
 # PATCH-FIX-OPENSUSE -- bmwiedemann
 Patch6:         reproducible.patch
 Patch7:         rebar-0014-erl_interface-was-removed-in-Erlang-23.patch
+Patch8:         0001-Fix-rebar-xref-for-recent-Erlang.patch
 BuildRequires:  erlang >= R13B01
 %if 0%{?suse_version} > 1320
 BuildRequires:  strip-nondeterminism
@@ -48,6 +49,9 @@ BuildRequires:  erlang-reltool
 BuildRequires:  erlang-retest >= 1.1.0
 BuildRequires:  git
 BuildRequires:  mercurial
+%if "%{_repository}" == "standard"
+ExclusiveArch:  do-not-build
+%endif
 %endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -85,6 +89,7 @@ test Erlang applications, port drivers and releases.
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
+%patch8 -p1
 
 %build
 export REBAR_DEPS_PREFER_LIBS=1
@@ -103,7 +108,7 @@ fi
 %if %{normal_build}
 install -Dm755 rebar %{buildroot}%{_bindir}/rebar
 # Install RPM macros:
-install -Dm644 %{SOURCE1} %{buildroot}%{_sysconfdir}/rpm/macros.erlang-rebar
+install -Dm644 %{SOURCE1} %{buildroot}%{_rpmmacrodir}/macros.erlang-rebar
 for dir in include ebin priv src ; do
   install -d %{buildroot}%{erlang_libdir}/rebar-%{mod_ver}/${dir}
   cp -r ${dir}/* %{buildroot}%{erlang_libdir}/rebar-%{mod_ver}/${dir}/
@@ -136,9 +141,10 @@ rm test/rebar_dia_tests.erl
 %if %{normal_build}
 %files
 %defattr(-,root,root)
-%doc README.md THANKS LICENSE rebar.config.sample
+%doc README.md THANKS rebar.config.sample
+%license LICENSE
 %{_bindir}/rebar
-%config %{_sysconfdir}/rpm/macros.erlang-rebar
+%{_rpmmacrodir}/macros.erlang-rebar
 %dir %{erlang_libdir}/rebar-%{mod_ver}
 %{erlang_libdir}/rebar-%{mod_ver}/ebin
 %{erlang_libdir}/rebar-%{mod_ver}/include

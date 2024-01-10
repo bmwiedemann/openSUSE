@@ -1,7 +1,7 @@
 #
 # spec file for package bcachefs-tools
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           bcachefs-tools
-Version:        1.3.5
+Version:        1.4.0
 Release:        0
 Summary:        Configuration utilities for bcachefs
 License:        GPL-2.0-or-later
 Group:          System/Filesystems
 URL:            https://bcachefs.org/
-
 Source:         %name-%version.tar.xz
+Patch0:         use_libexec_not_lib.patch
 BuildRequires:  libaio-devel
 BuildRequires:  pkg-config
 BuildRequires:  xz
@@ -35,6 +35,7 @@ BuildRequires:  pkgconfig(libsodium)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(liburcu)
 BuildRequires:  pkgconfig(libzstd)
+BuildRequires:  pkgconfig(udev)
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(zlib)
 
@@ -65,8 +66,24 @@ This package contains utilities for creating and mounting bcachefs.
 # this ain't no debian
 rm -Rf "%buildroot/etc/initramfs-tools" "%buildroot/%_datadir/initramfs-tools"
 
+%pre
+%service_add_pre bcachefsck_all.service bcachefsck_all_fail.service
+
+%post
+%service_add_post bcachefsck_all.service bcachefsck_all_fail.service
+
+%preun
+%service_del_preun bcachefsck_all.service bcachefsck_all_fail.service
+
+%postun
+%service_del_postun bcachefsck_all.service bcachefsck_all_fail.service
+
 %files
 %_sbindir/*bcache*
+%_unitdir/bcachefsck*
+%_unitdir/system-bcachefsck*
+%_libexecdir/bcachefsck*
+%_udevrulesdir/64-bcachefs.rules
 %_mandir/man8/*.8*
 %license COPYING
 

@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Fri Jan  5 10:49:19 UTC 2024 - pgajdos@suse.com
+
+- drop update-alternatives for config; use exactly one of configuration
+  package provided
+
+-------------------------------------------------------------------
+Wed Jan  3 09:22:56 UTC 2024 - pgajdos@suse.com
+
+- version update to 7.1.1.25
+  https://github.com/ImageMagick/Website/blob/main/ChangeLog.md
+
+-------------------------------------------------------------------
+Sat Dec 30 16:28:50 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.1.1.24:
+  * Added extra check for rare case when ImageMagick is build without
+    any delegates.
+  * Corrected order to fix invalid matches.
+  * only fill the alpha channel for alpha floodfill
+  * Make sure we use the lt_ methods like we do elsewhere.
+  * support dng:max-raw-memory define (ImageMagick/ImageMagick#6922)
+  * properly export YUV JP2 images (ImageMagick/ImageMagick#6943)
+  * use : specifier
+  * correct display program name
+  * check for corrupt DJVU images
+  * support UTF-8 comments (ImageMagick/ImageMagick#6949)
+  * do not prefix iTxt key with 'png:'
+  * enhance sampling factor parser (ImageMagick/ImageMagick#6943)
+  * Switch to ubuntu 20.04 in the app-image build.
+  * Corrected packages that need to be install due to ubuntu upgrade.
+  * improve accuracy of image statistics
+  * fx calculations of skewness and kurtosis
+  * Only write comments as itxt when the string contains non ansi
+    chars.
+  * check if the string contains non-Latin1 characters
+  * Corrected patch to check for non-Latin1 characters.
+  * invalid JSON with -ping (ImageMagick/ImageMagick#6966)
+  * throw exception if # of meta channels exceed max
+    https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-hx5j-pxvh-rj7r
+  * multiplication result converted to larger type
+  * invalid HTTPS certificates are no longer ignored
+    https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-3r24-6m6q-vxmr
+  * multiplication result converted to larger type
+  * eliminate compiler warning
+  * don't include the index channel in the overall image statistics
+  * multiplication result converted to larger type
+
+-------------------------------------------------------------------
+Thu Dec 21 10:13:14 UTC 2023 - pgajdos@suse.com
+
+- version update to 7.1.1.23
+  https://github.com/ImageMagick/Website/blob/main/ChangeLog.md
+- modified patches
+  % ImageMagick-library-installable-in-parallel.patch (refreshed)
+- deleted patches
+  - ImageMagick-infinite-resource-time-limit.patch (upstreamed)
+
+-------------------------------------------------------------------
 Mon Nov 13 10:09:38 UTC 2023 - pgajdos@suse.com
 
 - version update to 7.1.1.21
@@ -108,7 +166,7 @@ Thu May 18 12:03:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
 Wed May  3 13:54:55 UTC 2023 - Deepthi Yadabettu Venkatachala <deepthi.venkatachala@suse.com>
 
 - version update to 7.1.1.8
-- https://github.com/ImageMagick/Website/blob/main/ChangeLog.md#711-8---2023-04-22 
+- https://github.com/ImageMagick/Website/blob/main/ChangeLog.md#711-8---2023-04-22
 
 -------------------------------------------------------------------
 Thu Apr 13 11:17:45 UTC 2023 - pgajdos@suse.com
@@ -186,7 +244,7 @@ Wed Jan  4 10:03:42 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 Sun Dec 18 16:01:22 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.1.0.55:
-  * https://github.com/ImageMagick/Website/blob/main/ChangeLog.md#710-55---2022-12-17 
+  * https://github.com/ImageMagick/Website/blob/main/ChangeLog.md#710-55---2022-12-17
 
 -------------------------------------------------------------------
 Mon Dec  5 10:22:56 UTC 2022 - pgajdos@suse.com
@@ -238,7 +296,7 @@ Mon Sep 12 12:41:51 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.1.0.48
   upstream changelog:
-  https://raw.githubusercontent.com/ImageMagick/Website/main/ChangeLog.md 
+  https://raw.githubusercontent.com/ImageMagick/Website/main/ChangeLog.md
 
 -------------------------------------------------------------------
 Tue Aug 30 10:24:06 UTC 2022 - pgajdos@suse.com
@@ -484,7 +542,7 @@ Mon Feb 14 22:49:45 UTC 2022 - Dirk Müller <dmueller@suse.com>
 - update to 7.1.0.24:
   * optimize reading of XPM properties.
   * the GIF Netscape block must appear immediately after the global color table.
- 
+
 -------------------------------------------------------------------
 Mon Feb  7 10:11:16 UTC 2022 - pgajdos@suse.com
 
@@ -738,7 +796,7 @@ Tue Apr 13 11:39:43 UTC 2021 - pgajdos@suse.com
 Tue Apr  6 01:21:33 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - udpate to 7.0.11.6:
-  * fix portable Windows build. 
+  * fix portable Windows build.
 
 -------------------------------------------------------------------
 Wed Mar 31 08:44:15 UTC 2021 - pgajdos@suse.com
@@ -974,7 +1032,7 @@ Mon Aug 31 16:56:25 UTC 2020 - pgajdos@suse.com
 -------------------------------------------------------------------
 Mon Aug 31 13:30:24 UTC 2020 - pgajdos@suse.com
 
-- fix bsc#1106272 
+- fix bsc#1106272
 - added patches
   fix https://github.com/ImageMagick/ImageMagick/commit/029fb3425ecf82e8b30c060e38a135d1d3e76bb3
   + ImageMagick-set-correct-colorspace.patch
@@ -1542,7 +1600,7 @@ Tue Apr 23 14:24:51 UTC 2019 - pgajdos@suse.com
 -------------------------------------------------------------------
 Tue Apr 23 13:33:30 UTC 2019 - mvetter@suse.com
 
--bsc#1133110 - Remove jasper dependency from ImageMagick 
+-bsc#1133110 - Remove jasper dependency from ImageMagick
 
 -------------------------------------------------------------------
 Tue Apr 16 11:48:44 UTC 2019 - pgajdos@suse.com
@@ -1757,7 +1815,7 @@ Mon Sep  3 08:20:41 UTC 2018 - pgajdos@suse.com
 -------------------------------------------------------------------
 Wed Aug 22 09:10:19 UTC 2018 - pgajdos@suse.com
 
-- disable PS, PS2, PS3, XPS and PDF coders in default policy.xml 
+- disable PS, PS2, PS3, XPS and PDF coders in default policy.xml
   [bsc#1105592]
 
 -------------------------------------------------------------------
@@ -1808,7 +1866,7 @@ Mon Jul  2 17:39:31 UTC 2018 - kstreitova@suse.com
 
 - use "BuildRequires: p7zip-full" for TW as 7za binary needed by
   ImageMagick was moved to this package (see bsc#899627 for more
-  details about this change)  
+  details about this change)
 
 -------------------------------------------------------------------
 Tue Jun 26 09:49:48 UTC 2018 - pgajdos@suse.com
@@ -1870,7 +1928,7 @@ Wed May  2 12:25:24 UTC 2018 - pgajdos@suse.com
 Wed May  2 11:00:44 UTC 2018 - pgajdos@suse.com
 
 - update to 7.0.7-29:
-  * Fixed numerous use of uninitialized values, integer overflow, 
+  * Fixed numerous use of uninitialized values, integer overflow,
     memory exceeded, and timeouts (credit to OSS Fuzz).
 - turn off drawing primitive 'circle' test:
   + ImageMagick-filter.t-primitive-circle.patch
@@ -1924,7 +1982,7 @@ Mon Mar 26 08:47:41 UTC 2018 - pgajdos@suse.com
 Mon Mar 19 05:37:42 UTC 2018 - pgajdos@suse.com
 
 - update to 7.0.7-27:
-  * Fixed numerous use of uninitialized values, integer overflow, 
+  * Fixed numerous use of uninitialized values, integer overflow,
     memory exceeded, and timeouts.
 - remove ImageMagick-remove-test.tap-attributes.patch as the perl
   testsuite fails in bunch of tests anyway. Waiting for results of
@@ -1933,7 +1991,7 @@ Mon Mar 19 05:37:42 UTC 2018 - pgajdos@suse.com
 -------------------------------------------------------------------
 Fri Mar 16 13:30:15 UTC 2018 - pgajdos@suse.com
 
-- added ImageMagick-remove-test.tap-attributes.patch, removes 
+- added ImageMagick-remove-test.tap-attributes.patch, removes
   failing test on i586
   https://github.com/ImageMagick/ImageMagick/issues/1019
 
@@ -1948,7 +2006,7 @@ Wed Mar 14 15:08:42 UTC 2018 - pgajdos@suse.com
 Mon Mar  5 11:35:52 UTC 2018 - pgajdos@suse.com
 
 - update to 7.0.7-25
-  * Fixed numerous use of uninitialized values, integer overflow, 
+  * Fixed numerous use of uninitialized values, integer overflow,
     memory exceeded, and timeouts (credit to OSS Fuzz).
 
 -------------------------------------------------------------------
@@ -1985,16 +2043,16 @@ Wed Feb 21 13:24:09 UTC 2018 - pgajdos@suse.com
 -------------------------------------------------------------------
 Mon Feb 19 21:58:06 UTC 2018 - crrodriguez@opensuse.org
 
-- Add explicit buildrequires on: pkgconfig(libwebpmux), 
-  pkgconfig(cairo), pkgconfig(fontconfig), pkgconfig(libpng), 
+- Add explicit buildrequires on: pkgconfig(libwebpmux),
+  pkgconfig(cairo), pkgconfig(fontconfig), pkgconfig(libpng),
   pkgconfig(x11), pkgconfig(xext), pkgconfig(zlib). all
-  of them direct build dependencies but not included in 
+  of them direct build dependencies but not included in
   the spec file
 
 -------------------------------------------------------------------
 Wed Jan 31 18:50:15 CET 2018 - ro@suse.de
 
-- update context for ImageMagick-s390-disable-tests.patch 
+- update context for ImageMagick-s390-disable-tests.patch
 
 -------------------------------------------------------------------
 Wed Jan 24 10:43:41 UTC 2018 - pgajdos@suse.com
@@ -2055,7 +2113,7 @@ Wed Nov 22 09:51:46 UTC 2017 - pgajdos@suse.com
 Wed Nov  1 13:16:23 UTC 2017 - pgajdos@suse.com
 
 - update to 7.0.7-10
-  * Fixed a problem with resource bookkeeping in 
+  * Fixed a problem with resource bookkeeping in
     AcquireMatrixInfo().
 - update to 7.0.7-9
   * Encode JSON control characters.
@@ -2084,7 +2142,7 @@ Thu Oct  5 07:08:47 UTC 2017 - pgajdos@suse.com
   * Reset the magick_list_initialized boolean when needed.
   * Fixed numerous memory leaks.
   * Support URW-base35 fonts.
-  * Removed "ping_preserve_iCCP=MagickTrue;" statement that was 
+  * Removed "ping_preserve_iCCP=MagickTrue;" statement that was
     inadvertently added to coders/png.c.
 
 -------------------------------------------------------------------
@@ -2122,12 +2180,12 @@ Mon Sep 11 07:33:49 UTC 2017 - pgajdos@suse.com
 
 -  updated to 7.0.7-1
   * Fixed numerous memory leaks.
-  * Added -define tiff:write-layers=true to add support for writing 
+  * Added -define tiff:write-layers=true to add support for writing
     layered tiff files.
   * Don't overwrite symbolic links when the shred policy is enabled.
   * Support -metric ssim, structual similarity index.
   * Fixed thread safety issue inside the pango and librsvg decoder.
-  * Fixed bug with writing tIME chunk when timezone has a negative 
+  * Fixed bug with writing tIME chunk when timezone has a negative
     offset.
   * Support CubicSpline resize filter.  Define the lobes with the
     -define filter:lobes={2,3,4}.
@@ -2341,7 +2399,7 @@ Tue Nov 22 09:32:21 UTC 2016 - pgajdos@suse.com
   * Unit test pass again after small SUN image patch.
   * Fixed incorrect RLE decoding when reading a DCM image that contains
     multiple segments.
-  * Fixed incorrect RLE decoding when reading an SGI image (reference 
+  * Fixed incorrect RLE decoding when reading an SGI image (reference
     https://www.imagemagick.org/discourse-server/viewtopic.php?f=3&t=30514)
 
 -------------------------------------------------------------------
@@ -2453,7 +2511,7 @@ Wed May 11 11:56:25 UTC 2016 - chris@computersalat.de
 
 - rework ImageMagick-6.8.8-1-disable-insecure-coders.patch
   * add new policy (TEXT, SHOW, WIN and PLT)
-- rebase patches (p0) 
+- rebase patches (p0)
   * ImageMagick-6.6.8.9-doc.patch
   * ImageMagick-6.6.8.9-examples.patch
   * ImageMagick-6.7.6.1-no-dist-lzip.patch
@@ -2482,7 +2540,7 @@ Thu May  5 09:02:32 UTC 2016 - pgajdos@suse.com
 Thu Apr 14 14:30:54 UTC 2016 - pgajdos@suse.com
 
 - Update to 6.9.3-8:
-  * Respect gravity when rendering text (e.g. convert -gravity center 
+  * Respect gravity when rendering text (e.g. convert -gravity center
     my.txt).
   * Return empty string for %d property and no directory.
   * Return filename for the %i property.
@@ -2499,25 +2557,25 @@ Tue Jan  5 11:40:38 UTC 2016 - pgajdos@suse.com
   * Fixed memory leak when reading incorrect PSD files.
   * Enhance PDF to properly handle unicode titles.
   * Fix memory leak in icon coder.
-  
+
 -------------------------------------------------------------------
 Thu Dec 17 11:59:18 UTC 2015 - pgajdos@suse.com
 
 - Update to 6.9.2-8:
   * Gray artifacts in large gif when using -layers optimize.
   * The DICOM reader now handles the rescale intercept and slope.
-  * Added 'bmp3:alpha' option for including the alpha channel when 
+  * Added 'bmp3:alpha' option for including the alpha channel when
     writing an image in the BMP3 format.
   * PixelColor off by one on i386.
   * Added local contrast enhancement.
   * Fixed bug in SetPixelCacheExtent that made images all black.
   * Added 6dot variant for unicode and iso braille formats.
-  * Fixed alpha blending issue with semi-transparent pixels in the 
-    merged image of PSD files. This can be disabled by setting the 
+  * Fixed alpha blending issue with semi-transparent pixels in the
+    merged image of PSD files. This can be disabled by setting the
     option 'psd:alpha-unblend' to 'off'.
   * Fixed issue in jpeg:extent that prevented it from working.
   * Fixed memory leak when reading Photoshop layers in a TIFF file.
-  * Support gradient:bounding-box, gradient:vector, gradient:center, 
+  * Support gradient:bounding-box, gradient:vector, gradient:center,
     and gradient:radius to shape the gradient rendering.
   * Recognize label:@- as stdin.
   * Make commas optional for coordinates.
@@ -2530,11 +2588,11 @@ Mon Oct 12 07:47:14 UTC 2015 - pgajdos@suse.com
   * Fixed out of bounds error in -splice.
   * Created Manhattan Interpolate method for -sparse-color.
   * Don't round up for JPEG image resolution.
-  * Read the whole image @ image.jp2[0] or an individual 
+  * Read the whole image @ image.jp2[0] or an individual
     tile @ image.jp2[1], image.jp2[2].
   * The -caption option no longer fails for filenames with @ prefix.
   * Honor $XDG_CONFIG_HOME and $XDG_CACHE_HOME.
-  * Added extra checks to avoid out of bounds error when parsing the 8bim 
+  * Added extra checks to avoid out of bounds error when parsing the 8bim
     profile
   * Fixed size of memory allocation in RLE coder to avoid segfault.
   * The -colorspace gray option no long leaves a ghostly shadow.
@@ -2576,7 +2634,7 @@ Thu Jul 23 08:59:31 UTC 2015 - jweberhofer@weberhofer.at
 
 - Removed duplicates
 
-- Only libMagickCore and ImageMagick-doc contains the LICENSE file. Other 
+- Only libMagickCore and ImageMagick-doc contains the LICENSE file. Other
   libraries do not longer contain it, as they always require libMagickCore
   to be instaleld.
 
@@ -2711,17 +2769,17 @@ Thu Feb 26 15:32:15 UTC 2015 - pgajdos@suse.com
 Fri Jan 16 15:12:41 UTC 2015 - pgajdos@suse.com
 
 - update to 6.9.0-3
-  * Don't read beyond the end of a tEXt keyword when checking for 
+  * Don't read beyond the end of a tEXt keyword when checking for
     Raw profile.
   * Fixed enabling alpha in 32-bit BMP files.
   * Added support for writing 16-bit TGA files.
   * Improved performance of dds.
   * Fix ImageMagick crashes while read EXIF from TIFF.
   * Don't handle a "previous" image in the PNG or JNG decoder.
-  * Don't override gamma with 1.0 when reading a grayscale PNG 
+  * Don't override gamma with 1.0 when reading a grayscale PNG
     image.
   * Update progress monitor for every PNG row instead of every pass.
-  * Reject input PNG with dimensions larger than specified with 
+  * Reject input PNG with dimensions larger than specified with
     -limit width and -limit height.
   * etc., see ChangeLog
 
@@ -2794,8 +2852,8 @@ Fri Jul 18 08:48:55 UTC 2014 - pgajdos@suse.com
 
 - updated to 6.8.9-5
   * Use -define profile:skip=icc, for example, to skip color profiles on read.
-  * Do not let libpng16 check ICC/sRGB profiles in non-debug runs; we do it 
-    ourselves anyway. Avoids emitting "known incorrect profile" warnings. 
+  * Do not let libpng16 check ICC/sRGB profiles in non-debug runs; we do it
+    ourselves anyway. Avoids emitting "known incorrect profile" warnings.
     For strict profile checking and warning, use "-debug coder".
   * Disabled OpenCL acceleration when image has a 'mask' or 'clip-mask'.
 
@@ -2882,7 +2940,7 @@ Thu Apr 24 09:54:12 UTC 2014 - dmueller@suse.com
 -------------------------------------------------------------------
 Mon Mar  3 13:34:39 UTC 2014 - pgajdos@suse.com
 
-- directories in libMagickCore depends on %{clibver} and 
+- directories in libMagickCore depends on %{clibver} and
   %{quantum_depth} [bnc#866442]
 
 -------------------------------------------------------------------
@@ -2940,7 +2998,7 @@ Wed Dec 18 11:55:23 UTC 2013 - pgajdos@suse.com
 Mon Dec  9 08:55:53 UTC 2013 - pgajdos@suse.com
 
 - updated to 6.8.7-9:
-  * fixed bug in coders/png.c that caused -define png:color-type=0 
+  * fixed bug in coders/png.c that caused -define png:color-type=0
     to fail
   * fixed bug in automatic selection of OpenCL device
   * simplified interface to initialize the OpenCL environment
@@ -2996,7 +3054,7 @@ Tue Aug  6 09:59:32 UTC 2013 - pgajdos@suse.com
 
 - updated to 6.8.6-7
   * Fix memory leak in CloneImageArtifacts and CloneImageProfiles.
-  * JPEG ICC color profile requires null after ICC tag 
+  * JPEG ICC color profile requires null after ICC tag
   * etc.
 - employ gpg-offline
 
@@ -3054,7 +3112,7 @@ Fri Mar 29 09:37:28 UTC 2013 - pgajdos@suse.com
 - update to 6.8.4-0:
   * dropped ImageMagick-6.8.2.4-revert-r9087-montage-signatures.patch,
     issue is almost fixed -> new test-signatures.patch,
-    see followups in 
+    see followups in
     http://www.imagemagick.org/discourse-server/viewtopic.php?f=2&t=22479
   * created rpath.patch
   * created dont-build-in-install.patch
@@ -3085,7 +3143,7 @@ Wed Feb  6 15:40:56 UTC 2013 - vjt@openssl.it
 -------------------------------------------------------------------
 Wed Feb  6 14:25:33 UTC 2013 - vjt@openssl.it
 
-- fix missed variable expansion 
+- fix missed variable expansion
 
 -------------------------------------------------------------------
 Wed Feb  6 13:38:09 UTC 2013 - vjt@openssl.it
@@ -3214,7 +3272,7 @@ Tue Jan 17 19:42:15 UTC 2012 - crrodriguez@opensuse.org
 - Add explicit libbz2-devel BuildRequires
 - Support LZMA
 - Use libcms2 now.
-- Cleanup huge dependency bloat in -devel package, this 
+- Cleanup huge dependency bloat in -devel package, this
   will likely cause build fails on dependant packages
   the solution is to fix your BuildRequires.
 
@@ -3332,7 +3390,7 @@ Tue May 17 12:00:36 CEST 2011 - pgajdos@suse.cz
 -------------------------------------------------------------------
 Sun May  8 21:17:51 UTC 2011 - giecrilj@stegny.2a.pl
 
-- created ImageMagick-devel-32bit for cross-compiling 
+- created ImageMagick-devel-32bit for cross-compiling
 
 -------------------------------------------------------------------
 Thu Apr 21 10:00:25 UTC 2011 - giecrilj@stegny.2a.pl
@@ -3555,7 +3613,7 @@ Mon Apr 26 13:30:55 CEST 2010 - pgajdos@suse.cz
 -------------------------------------------------------------------
 Wed Apr  7 14:51:13 CEST 2010 - ro@suse.de
 
-- update baselibs.conf 
+- update baselibs.conf
 
 -------------------------------------------------------------------
 Tue Apr  6 15:17:00 CEST 2010 - pgajdos@suse.cz
@@ -3586,7 +3644,7 @@ Tue Apr  6 15:17:00 CEST 2010 - pgajdos@suse.cz
   * The animate program no longer loops twice when -loop 1 is specified.
   * The caption format would sometimes hang when the text was not UTF-8.
   * Don't gamma correct log to linear color conversion unless the -gamma is
-    specified (reference 
+    specified (reference
     http://www.imagemagick.org/discourse-server/viewtopic.php?f=1&t=15799).
   * Detect CMYKProcessColor AI tag.
   * Delete image from command line cache for -write option.
@@ -3724,7 +3782,7 @@ Tue Aug  4 18:57:12 CEST 2009 - pgajdos@suse.cz
 -------------------------------------------------------------------
 Thu Jul 30 16:57:13 CEST 2009 - ro@suse.de
 
-- update baselibs.conf to complete previous change 
+- update baselibs.conf to complete previous change
 
 -------------------------------------------------------------------
 Fri Jun  5 15:55:27 CEST 2009 - nadvornik@suse.cz
@@ -3747,7 +3805,7 @@ Fri Dec  5 11:21:47 CET 2008 - nadvornik@suse.cz
 -------------------------------------------------------------------
 Mon Dec  1 12:43:56 CET 2008 - ro@suse.de
 
-- add libMagicWand1 to baselibs.conf (for libxine1) 
+- add libMagicWand1 to baselibs.conf (for libxine1)
 
 -------------------------------------------------------------------
 Tue Oct  7 15:09:28 CEST 2008 - thoenig@suse.de
@@ -3786,7 +3844,7 @@ Wed Mar 26 13:57:14 CET 2008 - nadvornik@suse.cz
   * read EXIF data in TIFF images
   * add -encipher / -decipher options to the command-line utilities
   * many bugfixes and improvements
-  
+
 -------------------------------------------------------------------
 Mon Dec  3 17:39:00 CET 2007 - nadvornik@suse.cz
 
@@ -3806,7 +3864,7 @@ Mon Oct  8 14:20:12 CEST 2007 - pth@suse.de
 -------------------------------------------------------------------
 Tue Sep 25 11:54:58 CEST 2007 - nadvornik@suse.cz
 
-- updated to 6.3.5-10: fixes CVE-2007-4985, CVE-2007-4986, 
+- updated to 6.3.5-10: fixes CVE-2007-4985, CVE-2007-4986,
   CVE-2007-4987, CVE-2007-4988 [#327021]
 
 -------------------------------------------------------------------
@@ -3823,7 +3881,7 @@ Sat Jul 28 21:18:41 CEST 2007 - coolo@suse.de
 Wed Jul 25 17:31:33 CEST 2007 - nadvornik@suse.cz
 
 - updated to 6.3.5-3, see ChangeLog for details
-- reduced the requrements of the main package, 
+- reduced the requrements of the main package,
   created ImageMagick-extra with full set of requirements
 - adjusted to Shared Library Policy:
   * created libMagick10 and libWand10
@@ -3883,12 +3941,12 @@ Wed Mar 15 11:02:41 CET 2006 - nadvornik@suse.cz
 -------------------------------------------------------------------
 Fri Feb  3 17:13:20 CET 2006 - nadvornik@suse.cz
 
-- better fix for format string vulnerability 
+- better fix for format string vulnerability
   CVE-2006-0082 [#141390]
 - fixed shell metacharacters in file names passed into delegates
   CVE-2005-4601 [#141999]
 - added version numbers to devel subpackage requirements
-    
+
 -------------------------------------------------------------------
 Wed Jan 25 21:32:48 CET 2006 - mls@suse.de
 
@@ -3912,7 +3970,7 @@ Wed Sep 21 18:08:42 CEST 2005 - nadvornik@suse.cz
 -------------------------------------------------------------------
 Sun Sep 18 00:47:48 CEST 2005 - postadal@suse.cz
 
-- parallelize build 
+- parallelize build
 
 -------------------------------------------------------------------
 Wed Sep  7 15:47:40 CEST 2005 - nadvornik@suse.cz
@@ -3949,12 +4007,12 @@ Wed Mar 02 14:43:29 CET 2005 - nadvornik@suse.cz
 -------------------------------------------------------------------
 Sat Jan 22 11:17:44 CET 2005 - ro@suse.de
 
-- fix libltdl removal on lib64 
+- fix libltdl removal on lib64
 
 -------------------------------------------------------------------
 Tue Jan 18 14:38:36 CET 2005 - nadvornik@suse.cz
 
-- updated to 6.1.8 
+- updated to 6.1.8
   * fixed .psd file read overflow (CAN-2005-0005) [#49839]
 
 -------------------------------------------------------------------
@@ -4062,7 +4120,7 @@ Thu Nov 21 19:14:43 CET 2002 - nadvornik@suse.cz
 -------------------------------------------------------------------
 Wed Nov 20 01:48:48 CET 2002 - ro@suse.de
 
-- fix build with latest automake 
+- fix build with latest automake
 
 -------------------------------------------------------------------
 Fri Nov 01 11:48:35 CET 2002 - nadvornik@suse.cz
@@ -4073,7 +4131,7 @@ Fri Nov 01 11:48:35 CET 2002 - nadvornik@suse.cz
 -------------------------------------------------------------------
 Tue Sep 03 10:59:13 CEST 2002 - nadvornik@suse.cz
 
-- do not try to detect supported ghostscript devices [#18424] 
+- do not try to detect supported ghostscript devices [#18424]
 
 -------------------------------------------------------------------
 Thu Aug 29 19:12:23 CEST 2002 - nadvornik@suse.cz
@@ -4152,8 +4210,8 @@ Thu Oct 18 09:33:39 CEST 2001 - nadvornik@suse.cz
 Fri Aug 24 15:56:13 CEST 2001 - nadvornik@suse.cz
 
 - update to 5.3.8:
-    - Added a new method SetImageClipMask().                                
-    - Added @ to the image geometry specification. Use it to specify        
+    - Added a new method SetImageClipMask().
+    - Added @ to the image geometry specification. Use it to specify
       the square-root of the maximum area in pixels of an image
     - many bugfixes
 
@@ -4207,12 +4265,12 @@ Thu Apr  5 08:47:01 CEST 2001 - nadvornik@suse.cz
 -------------------------------------------------------------------
 Tue Mar 27 14:29:57 CEST 2001 - ro@suse.de
 
-- libtoolize main dir as well 
+- libtoolize main dir as well
 
 -------------------------------------------------------------------
 Tue Mar 27 00:49:07 CEST 2001 - ro@suse.de
 
-- libtoolize 
+- libtoolize
 
 -------------------------------------------------------------------
 Fri Mar  9 10:26:04 CET 2001 - nadvornik@suse.cz
@@ -4249,7 +4307,7 @@ Thu Nov 16 16:23:27 CET 2000 - nadvornik@suse.cz
 -------------------------------------------------------------------
 Tue Nov 14 10:10:35 CET 2000 - nadvornik@suse.cz
 
-- fixed writing transparent xpm files 
+- fixed writing transparent xpm files
 
 -------------------------------------------------------------------
 Wed Nov  8 11:05:39 CET 2000 - nadvornik@suse.cz
@@ -4284,12 +4342,12 @@ Thu Sep 14 14:35:20 CEST 2000 - nadvornik@suse.cz
 - update to 5.2.3
 - new subpackage magickd for includes and static libs
 - changed prefix to /usr
-- removed --without-largefiles 
+- removed --without-largefiles
 
 -------------------------------------------------------------------
 Wed Aug 23 00:05:39 CEST 2000 - ro@suse.de
 
-- fixed perl path 
+- fixed perl path
 
 -------------------------------------------------------------------
 Thu Jun  8 08:29:04 CEST 2000 - nadvornik@suse.cz
@@ -4348,12 +4406,12 @@ Thu Apr  6 15:39:12 CEST 2000 - nadvornik@suse.cz
 -------------------------------------------------------------------
 Wed Jan 19 15:35:24 CET 2000 - ro@suse.de
 
-- fixed specfile 
+- fixed specfile
 
 -------------------------------------------------------------------
 Mon Jan  3 01:50:26 CET 2000 - ro@suse.de
 
-- update to 5.1.0 
+- update to 5.1.0
 
 -------------------------------------------------------------------
 Mon Sep 27 16:31:01 CEST 1999 - bs@suse.de
@@ -4368,12 +4426,12 @@ Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
 -------------------------------------------------------------------
 Thu Sep  2 01:34:11 CEST 1999 - ro@suse.de
 
-- update to 4.2.9 
+- update to 4.2.9
 
 -------------------------------------------------------------------
 Mon Jun 28 19:25:23 MEST 1999 - ro@suse.de
 
-- update to 4.2.7 
+- update to 4.2.7
 
 -------------------------------------------------------------------
 Wed May 19 13:25:48 MEST 1999 - ro@suse.de
@@ -4383,7 +4441,7 @@ Wed May 19 13:25:48 MEST 1999 - ro@suse.de
 -------------------------------------------------------------------
 Wed May 19 10:05:36 MEST 1999 - ro@suse.de
 
-- fixed specfile 
+- fixed specfile
 
 -------------------------------------------------------------------
 Wed May 19 01:06:01 MEST 1999 - ro@suse.de

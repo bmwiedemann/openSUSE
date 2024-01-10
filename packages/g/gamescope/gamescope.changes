@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Dec 22 19:05:28 UTC 2023 - antonio.teixeira@suse.com
+
+- Update to version 3.13.19:
+  * drm: fix other headless NPE
+  * layer: Fix warning on printf
+  * waitable: Fix some FD close settings
+  * waitable: Factor out common ITimerWaitable
+  * drm: fix NPE while in headless mode
+  * layer: Print more info about VkHdrMetadata
+  * layer: Log more about minImageCount
+  * drm: Port mode and lut tracking to drm_blob
+  * drm: Introduce a drm_blob abstraction
+  * drm: Initialize the owned field of blob wrappers properly
+
+-------------------------------------------------------------------
 Mon Dec 04 20:05:27 UTC 2023 - antonio.teixeira@suse.com
 
 - Update to version 3.13.16:

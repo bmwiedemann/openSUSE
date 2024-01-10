@@ -673,4 +673,12 @@
     <comment>- Update to release 2.8.131</comment>
     <requestid>1115353</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>57a444c655f7f6081c08075ab662e4ec</srcmd5>
+    <version>2.8.132</version>
+    <time>1704380207</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.8.132</comment>
+    <requestid>1136181</requestid>
+  </revision>
 </revisionlist>

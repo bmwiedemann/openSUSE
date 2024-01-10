@@ -17,14 +17,12 @@
 
 
 Name:           cppcheck
-Version:        2.12.1
+Version:        2.13.0
 Release:        0
 Summary:        A tool for static C/C++ code analysis
 License:        GPL-3.0-or-later
 URL:            https://github.com/danmar/cppcheck
 Source:         https://github.com/danmar/cppcheck/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         eb076d87.patch
-Patch1:         werror-return-type.patch
 BuildRequires:  cmake
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes

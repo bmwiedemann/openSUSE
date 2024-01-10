@@ -9,11 +9,11 @@ Fixes bnc#833240
  man/cron.8 | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/man/cron.8 b/man/cron.8
-index 633dbc0..9716f8f 100644
---- a/man/cron.8
-+++ b/man/cron.8
-@@ -53,7 +53,7 @@ for crontab files which are named after accounts in
+Index: cronie-cronie-1.7.0/man/cron.8
+===================================================================
+--- cronie-cronie-1.7.0.orig/man/cron.8
++++ cronie-cronie-1.7.0/man/cron.8
+@@ -56,7 +56,7 @@ for crontab files which are named after
  The found crontabs are loaded into the memory.
  .I Cron
  also searches for
@@ -22,6 +22,3 @@ index 633dbc0..9716f8f 100644
  and any files in the
  .I /etc/cron.d
  directory, which have a different format (see
--- 
-1.8.4.5
-

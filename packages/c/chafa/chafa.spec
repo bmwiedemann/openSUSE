@@ -1,7 +1,7 @@
 #
 # spec file for package chafa
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 Name:           chafa
-Version:        1.12.5
+Version:        1.14.0
 Release:        0
 Summary:        Image-to-text converter for terminal
 License:        LGPL-3.0-or-later
 Group:          Amusements/Toys/Graphics
 URL:            https://hpjansson.org/chafa/
 Source0:        https://github.com/hpjansson/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
-BuildRequires:  ImageMagick-devel
 BuildRequires:  freetype2-devel
 BuildRequires:  gcc
 BuildRequires:  glib2-devel >= 2.26

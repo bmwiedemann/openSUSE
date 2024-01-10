@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 27 10:36:51 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add BuildRequires extra-cmake-modules and cmake(KF5Archive) to
+  fix a build failure.
+
+-------------------------------------------------------------------
 Tue Mar 14 12:12:42 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Replace 0001-Prevent-running-hotspot-as-root.patch with

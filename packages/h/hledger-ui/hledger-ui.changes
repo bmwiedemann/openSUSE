@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec  7 21:25:14 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update hledger-ui to version 1.32.1.
+  Upstream's change log file format is strange (too much unmodified
+  text at at the top). The automatic updater cannot extract the
+  relevant additions. You can find the file at:
+  http://hackage.haskell.org/package/hledger-ui-1.32.1/src/CHANGES.md
+
+-------------------------------------------------------------------
 Sat Dec  2 05:12:24 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update hledger-ui to version 1.32.

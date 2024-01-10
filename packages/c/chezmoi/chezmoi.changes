@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Jan  8 12:35:27 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.43.0:
+  - Features
+    * feat: Extend rbw and rbwFields template funcs to take extra args
+    * feat: Extend remove_ attribute to directories
+  - Fixes
+    * fix: Only invoke diff pager if there is diff output
+    * fix: Handle implicit directories in externals
+    * fix: add missing command annotations
+    * fix: Make execute-template --init not read .chezmoitemplates
+    * fix: key.txt is not written to home, but home/.config
+  - Documentation updates
+    * docs: Add upcoming changes to release history
+    * docs: Add link to article
+    * docs: Add links to articles
+    * docs: Fix guide on clearing state of run_onchange_ scripts
+
+-------------------------------------------------------------------
+Mon Dec 18 18:03:57 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.42.3:
+  - Features
+    * feat: Remove nested subshell check
+    * feat: Make mackupApplicationsDir func agnostic to mackup's installation method
+
+-------------------------------------------------------------------
 Tue Dec  5 16:43:34 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.42.2:

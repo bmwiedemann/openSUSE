@@ -22,35 +22,38 @@
 %bcond_without system_debugedit
 %endif
 Name:           flatpak-builder
-Version:        1.2.3
+Version:        1.4.0
 Release:        0
 Summary:        Tool to build flatpaks from source
 License:        LGPL-2.1-or-later
 Group:          Development/Tools/Building
 URL:            http://flatpak.org/
 Source0:        https://github.com/flatpak/flatpak-builder/releases/download/%{version}/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM 0001-builder-Fix-silent-truncation-of-gt-32-bit-inodes.patch boo#1214708 alarrosa@suse.com
-Patch0:         0001-builder-Fix-silent-truncation-of-gt-32-bit-inodes.patch
+Patch0:         fusermount3.diff
+BuildRequires:  AppStream
+BuildRequires:  AppStream-compose
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gettext
 BuildRequires:  gtk-doc
 BuildRequires:  libcap-devel
+BuildRequires:  meson
 BuildRequires:  pkgconfig >= 0.24
 BuildRequires:  xmlto
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(flatpak) >= %{flatpak_version}
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.44
+BuildRequires:  pkgconfig(glib-2.0) >= 2.66
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libdw) >= 0.172
 BuildRequires:  pkgconfig(libelf) >= 0.8.12
-BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.4
 BuildRequires:  pkgconfig(ostree-1) >= 2017.14
 BuildRequires:  pkgconfig(yaml-0.1)
+Requires:       %{_bindir}/appstream-compose
+Requires:       %{_bindir}/appstreamcli
 Requires:       %{_bindir}/bzip2
 Recommends:     %{_bindir}/bzr
 Requires:       %{_bindir}/eu-strip
@@ -60,6 +63,7 @@ Requires:       %{_bindir}/strip
 Requires:       %{_bindir}/tar
 Requires:       %{_bindir}/unzip
 Requires:       flatpak >= %{flatpak_version}
+# it is enough to have debugedit insatlled for meson to detect it and use the system version
 %if %{with system_debugedit}
 BuildRequires:  debugedit
 Requires:       debugedit
@@ -73,16 +77,15 @@ See https://docs.flatpak.org/ for more information.
 %autosetup -p1
 
 %build
-%configure \
-	--enable-docbook-docs \
-%if %{with system_debugedit}
-	--with-system-debugedit \
-%endif
-	%{nil}
-%make_build
+# these are the same flags that are normally set minus -Werror=return-type which causes libglnx to not compile
+export CFLAGS='-O2 -Wall -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=3 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -flto=auto -g'
+%meson \
+	-D fuse=3 \
+	-D docs=enabled
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 %files
 %license COPYING

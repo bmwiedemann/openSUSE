@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec 26 13:36:38 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update ffmpeg-glslang-cxx17.patch to build with glslang 14
+- Disable vmaf integration as ffmpeg-4 cannot handle vmaf>=3
+- Delete vmaf-trim-usr-local.patch
+
+-------------------------------------------------------------------
 Wed Dec  6 08:50:00 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Copy codec list from ffmpeg-6

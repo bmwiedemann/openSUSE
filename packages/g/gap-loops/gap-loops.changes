@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Sat Nov 19 00:36:55 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.4.3
+  * No changelog was provided
+
+-------------------------------------------------------------------
+Wed Nov 14 23:47:00 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 3.4.0
+  * No changelog was provided
+
+-------------------------------------------------------------------
+Mon Nov 21 15:59:53 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 3.3.0
+  * No changelog found
+
+-------------------------------------------------------------------
+Sun Oct 16 19:16:18 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 3.2.0
+  * The format of the discriminator has been changed from version
+    3.2.0 up to accommodate isomorphism searches for quasigroups.
+
+-------------------------------------------------------------------
+Tue Dec  8 10:17:58 UTC 2015 - jengelh@inai.de
+
+- Initial package (version 3.1.0) for build.opensuse.org

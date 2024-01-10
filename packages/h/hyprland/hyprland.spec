@@ -1,7 +1,7 @@
 #
 # spec file for package hyprland
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2022/23 Florian "sp1rit" <packaging@sp1rit.anonaddy.me>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %bcond_without devel
 
 Name:           hyprland
-Version:        0.33.1
+Version:        0.34.0
 Release:        0
 Summary:        Dynamic tiling Wayland compositor
 License:        BSD-3-Clause
@@ -48,6 +48,7 @@ BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(pangocairo)
 BuildRequires:  pkgconfig(pixman-1) >= 0.42.0
+BuildRequires:  pkgconfig(tomlplusplus)
 BuildRequires:  pkgconfig(vulkan) >= 1.2.182
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.26
@@ -109,6 +110,7 @@ rm %{buildroot}/%{_libdir}/libwlroots.a %{buildroot}/%{_libdir}/pkgconfig/wlroot
 %doc README.md
 %{_bindir}/Hyprland
 %{_bindir}/hyprctl
+%{_bindir}/hyprpm
 %{_datadir}/%{name}/
 %dir %{_datadir}/wayland-sessions/
 %{_datadir}/wayland-sessions/%{name}.desktop

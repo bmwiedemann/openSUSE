@@ -1,7 +1,7 @@
 #
 # spec file for package cgns
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define libname libcgns4_3
+%define libname libcgns4_4
 Name:           cgns
-Version:        4.3.0
+Version:        4.4.0
 Release:        0
 Summary:        CFD General Notation System
 License:        Zlib
@@ -43,6 +43,8 @@ Summary:        CFD General Notation System library
 Group:          System/Libraries
 Provides:       lib%{name} = %{version}
 Obsoletes:      lib%{name} < %{version}
+# Fix file conflict with incorrectly named shlib committed previously
+Conflicts:      libcgns4_3
 
 %description -n %{libname}
 The CFD General Notation System (CGNS) provides a general, portable,

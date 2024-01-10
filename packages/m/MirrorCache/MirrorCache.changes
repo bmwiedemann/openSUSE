@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Dec 07 09:00:51 UTC 2023 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.070:
+  * ui: Show health on mirror card (#439)
+  * fix capabilities sometimes not shown in /report/mirrors (#438)
+
+-------------------------------------------------------------------
+Thu Nov 30 09:45:16 UTC 2023 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.069:
+  * t: Adjust location of environ/mc/db links (#437)
+  * t: Make 09-stability-02 more robust (#437)
+  * t: Bump MariaDB experimental version (#437)
+  * t: Switch environ to package from github repo (#437)
+  * Add generation time to /report/mirrors (#436)
+  * Remove postgres replication support (#435)
+  * fix: mirrors with capability declaraion might disappear in /rest/server (#434)
+
+-------------------------------------------------------------------
 Thu Nov 16 16:56:06 UTC 2023 - Andrii Nikitin <andrii.nikitin@suse.com> - 1.068
 
 - Update to version 1.068:

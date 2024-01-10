@@ -595,4 +595,12 @@ Please use same ADI as https://build.opensuse.org/request/show/918731
   * Fix &quot;not attempting encryption&quot; warning (https://github.com/matrix-org/matrix-react-sdk/pull/11899). Contributed by @richvdh.</comment>
     <requestid>1131322</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>4a566cd4b7a3103a280aa65db222cc5a</srcmd5>
+    <version>1.11.52</version>
+    <time>1703102504</time>
+    <user>anag+factory</user>
+    <comment>1.11.52</comment>
+    <requestid>1134095</requestid>
+  </revision>
 </revisionlist>

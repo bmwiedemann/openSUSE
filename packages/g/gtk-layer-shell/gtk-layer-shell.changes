@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan  5 07:49:29 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.8.2:
+  * Compat: bump supported GTK to v3.24.39
+  * Compat: NOTE: GTK v3.24.40 may break previous version and work
+    with this one, but we won't know for sure until it's released
+
+-------------------------------------------------------------------
 Thu Apr 13 07:17:03 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.8.1:

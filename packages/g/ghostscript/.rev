@@ -527,4 +527,20 @@
     <comment>Security fix CVE-2023-43115 bsc#1215466 for ghostscript and ghostscript-mini (forwarded request 1112466 from jsmeix)</comment>
     <requestid>1112467</requestid>
   </revision>
+  <revision rev="62" vrev="7">
+    <srcmd5>12f4c9d9559c370abfc2c8e1557dea2e</srcmd5>
+    <version>9.56.1</version>
+    <time>1703024138</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1133909</requestid>
+  </revision>
+  <revision rev="63" vrev="8">
+    <srcmd5>8ca6122f834bddf68105e48a395d1e6e</srcmd5>
+    <version>9.56.1</version>
+    <time>1704380137</time>
+    <user>dimstar_suse</user>
+    <comment>Security fix CVE-2023-46751 bsc#1217871 for ghostscript and ghostscript-mini (forwarded request 1136515 from jsmeix)</comment>
+    <requestid>1136517</requestid>
+  </revision>
 </revisionlist>

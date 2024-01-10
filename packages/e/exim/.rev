@@ -874,4 +874,24 @@ argument by removing the curly brackets (shell syntax).</comment>
 </comment>
     <requestid>1123800</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>910839093d67715320420788a539cf45</srcmd5>
+    <version>4.97.1</version>
+    <time>1704281147</time>
+    <user>dimstar_suse</user>
+    <comment>
+- update to 4.97.1 (bsc#1218387, CVE-2023-51766):
+  * Fixes for the smtp protocol smuggling (CVE-2023-51766)
+
+    passed over a connection could use BDAT; any further ones using DATA.
+    proxy.
+- Update eximstats-html-update.py to run under Python 3.
+ * CVE-2019-13917: Fixed an issue with ${sort} expansion which could
+   allow remote attackers to execute other programs with root privileges
+- Replace xorg-x11-devel by individual pkgconfig() buildrequires.
+- Replace references to /var/adm/fillup-templates with new
+    + fix CVE-2016-1531
+      argument.</comment>
+    <requestid>1135763</requestid>
+  </revision>
 </revisionlist>

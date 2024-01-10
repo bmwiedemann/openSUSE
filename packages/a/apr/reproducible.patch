@@ -1,0 +1,17 @@
+Author: Bernhard M. Wiedemann <bwiedemann suse de>
+Date: 2023-12-18
+Subject: drop build machine host name
+
+Index: apr-1.7.4/configure
+===================================================================
+--- apr-1.7.4.orig/configure
++++ apr-1.7.4/configure
+@@ -35087,7 +35087,7 @@ printf "%s\n" "$as_me: executing $ac_fil
+     cat <<_LT_EOF >> "$cfgfile"
+ #! $SHELL
+ # Generated automatically by $as_me ($PACKAGE) $VERSION
+-# Libtool was configured on host `(hostname || uname -n) 2>/dev/null | sed 1q`:
++# Libtool was configured on build.opensuse.org
+ # NOTE: Changes made to this file will be lost: look at ltmain.sh.
+ 
+ # Provide generalized library-building support services.

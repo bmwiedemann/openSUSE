@@ -1,7 +1,7 @@
 #
 # spec file for package Rivet
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define ver 3.1.8
+%define ver 3.1.9
 %define so_name lib%{name}-%(echo %{ver} | tr '.' '_')
 Name:           Rivet
 Version:        %{ver}
@@ -26,10 +26,11 @@ License:        GPL-2.0-only and Apache-2.0 and MPL-2.0 and LPPL-1.3a and BSL-1.
 URL:            https://rivet.hepforge.org/
 Source:         https://www.hepforge.org/archive/rivet/%{name}-%{version}.tar.gz
 Patch0:         sover.diff
+# PATCH-FIX-UPSTREAM
+Patch1:         https://gitlab.com/hepcedar/rivet/-/commit/da703f9af71300a16116466ecfc8f9b4800b8988.patch#/fix_HepMC_327_compat.patch
 BuildRequires:  HepMC-devel >= 3.2
 BuildRequires:  YODA-devel >= 1.8.0
 BuildRequires:  bash-completion
-BuildRequires:  doxygen
 BuildRequires:  fastjet-contrib-devel
 BuildRequires:  fastjet-devel
 BuildRequires:  fastjet-plugin-siscone-devel
@@ -38,15 +39,12 @@ BuildRequires:  gcc-c++
 BuildRequires:  libboost_headers-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  python3-Cython
 BuildRequires:  python3-devel
-BuildRequires:  rsync
-BuildRequires:  texlive-latex-bin
 BuildRequires:  yaml-cpp-devel
 BuildRequires:  pkgconfig(gsl)
 BuildRequires:  pkgconfig(zlib)
 # i586 error due to conversion from `long long` to `size_t`
-ExcludeArch:    %ix86
+ExcludeArch:    %ix86 %{arm}
 
 %description
 The Rivet project (Robust Independent Validation of Experiment and

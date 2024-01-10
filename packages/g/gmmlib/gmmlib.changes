@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec 18 08:59:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 22.3.18:
+  * Fix to align HAlign to 128bytes for Linear Packed YUV format
+  * Add PVC device ID
+  * Guard FormatTable to be within bound
+
+-------------------------------------------------------------------
 Mon Dec  4 12:05:41 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - This includes latest version of one of the components needed for

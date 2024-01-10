@@ -3748,4 +3748,50 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1127688</requestid>
   </revision>
+  <revision rev="286" vrev="1">
+    <srcmd5>6003f29c6cd57d9dd3059fb4b538996d</srcmd5>
+    <version>7.1.1.25</version>
+    <time>1704380225</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 7.1.1.25
+  https://github.com/ImageMagick/Website/blob/main/ChangeLog.md
+
+- update to 7.1.1.24:
+  * Added extra check for rare case when ImageMagick is build without
+    any delegates.
+  * Corrected order to fix invalid matches.
+  * only fill the alpha channel for alpha floodfill
+  * Make sure we use the lt_ methods like we do elsewhere.
+  * support dng:max-raw-memory define (ImageMagick/ImageMagick#6922)
+  * properly export YUV JP2 images (ImageMagick/ImageMagick#6943)
+  * use : specifier
+  * correct display program name
+  * check for corrupt DJVU images
+  * support UTF-8 comments (ImageMagick/ImageMagick#6949)
+  * do not prefix iTxt key with 'png:'
+  * enhance sampling factor parser (ImageMagick/ImageMagick#6943)
+  * Switch to ubuntu 20.04 in the app-image build.
+  * Corrected packages that need to be install due to ubuntu upgrade.
+  * improve accuracy of image statistics
+  * fx calculations of skewness and kurtosis
+  * Only write comments as itxt when the string contains non ansi
+    chars.
+  * check if the string contains non-Latin1 characters
+  * Corrected patch to check for non-Latin1 characters.
+  * invalid JSON with -ping (ImageMagick/ImageMagick#6966)
+  * throw exception if # of meta channels exceed max
+    https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-hx5j-pxvh-rj7r
+  * multiplication result converted to larger type
+  * invalid HTTPS certificates are no longer ignored</comment>
+    <requestid>1136432</requestid>
+  </revision>
+  <revision rev="287" vrev="2">
+    <srcmd5>de60d8fc9485372ec8e10fe2d635118c</srcmd5>
+    <version>7.1.1.25</version>
+    <time>1704487283</time>
+    <user>dimstar_suse</user>
+    <comment>- drop update-alternatives for config; use exactly one of configuration
+  package provided</comment>
+    <requestid>1137065</requestid>
+  </revision>
 </revisionlist>

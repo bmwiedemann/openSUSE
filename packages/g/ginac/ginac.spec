@@ -38,7 +38,7 @@
 
 %define library_version 11
 Name:           %{srcname}%{?pkg_suffix}
-Version:        1.8.6
+Version:        1.8.7
 Release:        0
 Summary:        C++ library for symbolic calculations
 License:        GPL-2.0-only
@@ -48,8 +48,6 @@ Source0:        https://www.ginac.de/%{srcname}-%{version}.tar.bz2
 Patch0:         ginac-fix-makeindex.patch
 # PATCH-FIX-UPSTREAM ginac-cmake-install-doc.patch badshah400@gmail.com -- Install man and other documentation files when cmake is used for building
 Patch1:         ginac-cmake-install-doc.patch
-# PATCH-FIX-UPSTREAM ginac-doc-latex-symbol-error.patch badshah400@gmail.com -- Change a math symbol to get pdflatex to build reference.pdf correctly
-Patch2:         ginac-doc-latex-symbol-error.patch
 BuildRequires:  bison
 BuildRequires:  cln-devel
 BuildRequires:  cmake

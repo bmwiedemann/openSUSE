@@ -176,4 +176,12 @@
     <comment></comment>
     <requestid>974100</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>1d1dd2f3ba431e1c1a88ed51669e97a2</srcmd5>
+    <version>2.24</version>
+    <time>1704281419</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.24</comment>
+    <requestid>1136188</requestid>
+  </revision>
 </revisionlist>

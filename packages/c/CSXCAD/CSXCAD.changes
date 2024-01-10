@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Dec 31 19:29:12 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 0.6.3
+  * Various bug fixes and enhancements, no changelog available.
+- Drop obsolete/upstream patches:
+  * CSXCAD-vtk.patch
+  * CSXCAD-readme-octave-package.patch
+  * 0001-Fix-build-with-VTK-9.0-fix-memory-leak.patch
+  * CSXCAD-hdf5.patch
+  * CSXCAD-no-build-date.patch
+
+-------------------------------------------------------------------
 Sun Jun  7 21:55:05 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix build with VTK 9.0, which reflects constness more strictly:

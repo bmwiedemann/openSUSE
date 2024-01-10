@@ -1,0 +1,237 @@
+.\"
+.TH 7z "1" "May 2023" "22.01"
+.SH NAME
+7z \- 7-Zip file archiver with a high compression ratio
+.SH SYNOPSIS
+.SY 7z
+\fI\,command\/\fR
+[\fI\,switches\/\fR\&.\|.\|.\&]
+\fI\,archive_name\/\fR
+[\fI\,file_names\/\fR]
+[@\fI\,listfile\/\fR]
+.YS
+.SY 7zz
+\fI\,command\/\fR
+[\fI\,switches\/\fR\&.\|.\|.\&]
+\fI\,archive_name\/\fR
+[\fI\,file_names\/\fR]
+[@\fI\,listfile\/\fR]
+.YS
+.SY 7za
+\fI\,command\/\fR
+[\fI\,switches\/\fR\&.\|.\|.\&]
+\fI\,archive_name\/\fR
+[\fI\,file_names\/\fR]
+[@\fI\,listfile\/\fR]
+.YS
+.SY 7zr
+\fI\,command\/\fR
+[\fI\,switches\/\fR\&.\|.\|.\&]
+\fI\,archive_name\/\fR
+[\fI\,file_names\/\fR]
+[@\fI\,listfile\/\fR]
+.YS
+.SH DESCRIPTION
+7-Zip file archiver with a high compression ratio
+.br
+There are some variants for 7z executable.
+.TP
+7z
+Full featured with plugin support
+.TP
+7zz
+Full featured single binary executable with no plugins support
+.TP
+7za
+Supports major formats only, no plugins, but smaller excutable size
+.TP
+7zr
+Only supports LZMA codec and related formats (7z, lzma, xz),
+no plugins, but smallest executable size
+.SH OPTIONS
+.SS Commands
+.TP
+a
+Add files to archive
+.TP
+b
+Benchmark
+.TP
+d
+Delete files from archive
+.TP
+e
+Extract files from archive (without using directory names)
+.TP
+h
+Calculate hash values for files
+.TP
+i
+Show information about supported formats
+.TP
+l
+List contents of archive
+.TP
+rn
+Rename files in archive
+.TP
+t
+Test integrity of archive
+.TP
+u
+Update files to archive
+.TP
+x
+eXtract files with full paths
+.SS Switches
+.TP
+\-\-
+Stop switches and @\fI\,listfile\/\fR parsing
+.TP
+\-ai[r[\-|0]]{@\fI\,listfile\/\fR|!\fI\,wildcard\/\fR}
+Include archives
+.TP
+\-ax[r[\-|0]]{@\fI\,listfile\/\fR|!\fI\,wildcard\/\fR}
+eXclude archives
+.TP
+\-ao{a|s|t|u}
+set Overwrite mode
+.TP
+\-an
+disable archive_name field
+.TP
+\-bb[0\-3]
+set output log level
+.TP
+\-bd
+disable progress indicator
+.TP
+\-bs{o|e|p}{0|1|2}
+set output stream for output/error/progress line
+.TP
+\-bt
+show execution time statistics
+.TP
+\-i[r[\-|0]]{@\fI\,listfile\/\fR|!\fI\,wildcard\/\fR}
+Include filenames
+.TP
+\-m{\fI\,Parameters\/\fR}
+set compression Method
+.RS
+.TQ
+\-mmt[\fI\,N\/\fR]
+set number of CPU threads
+.TQ
+\-mx[\fI\,N\/\fR]
+set compression level: \-mx1 (fastest) ... \-mx9 (ultra)
+.RE
+.TP
+\-o{\fI\,Directory\/\fR}
+set Output directory
+.TP
+\-p{\fI\,Password\/\fR}
+set Password
+.TP
+\-r[\-|0]
+Recurse subdirectories for name search
+.TP
+\-sa{a|e|s}
+set Archive name mode
+.TP
+\-scc{UTF\-8|WIN|DOS}
+set charset for for console input/output
+.TP
+\-scs{UTF\-8|UTF\-16LE|UTF\-16BE|WIN|DOS|{\fI\,id\/\fR}}
+set charset for list files
+.TP
+\-scrc[CRC32|CRC64|SHA1|SHA256|*]
+set hash function for \fBx\fR, \fBe\fR, \fBh\fR commands
+.TP
+\-sdel
+delete files after compression
+.TP
+\-seml[.]
+send archive by email
+.TP
+\-sfx[{\fI\,name\/\fR}]
+Create SFX archive
+.TP
+\-si[{\fI\,name\/\fR}]
+read data from stdin
+.TP
+\-slp
+set Large Pages mode
+.TP
+\-slt
+show technical information for \fBl\fR (List) command
+.TP
+\-snh
+store hard links as links
+.TP
+\-snl
+store symbolic links as links
+.TP
+\-sni
+store NT security information
+.TP
+\-sns[\-]
+store NTFS alternate streams
+.TP
+\-so
+write data to stdout
+.TP
+\-spd
+disable wildcard matching for file names
+.TP
+\-spe
+eliminate duplication of root folder for extract command
+.TP
+\-spf
+use fully qualified file paths
+.TP
+\-ssc[\-]
+set sensitive case mode
+.TP
+\-sse
+stop archive creating, if it can't open some input file
+.TP
+\-ssp
+do not change Last Access Time of source files while archiving
+.TP
+\-ssw
+compress shared files
+.TP
+\-stl
+set archive timestamp from the most recently modified file
+.TP
+\-stm{\fI\,HexMask\/\fR}
+set CPU thread affinity mask (hexadecimal number)
+.TP
+\-stx{\fI\,Type\/\fR}
+exclude archive type
+.TP
+\-t{\fI\,Type\/\fR}
+Set type of archive
+.TP
+\-u[\-][p\fI\,#\/\fR][q\fI\,#\/\fR][r\fI\,#\/\fR][x\fI\,#\/\fR][y\fI\,#\/\fR][z\fI\,#\/\fR][!\fI\,newArchiveName\/\fR]
+Update options
+.TP
+\-v{\fI\,Size\/\fR}[b|k|m|g]
+Create volumes
+.TP
+\-w[{\fI\,path\/\fR}]
+assign Work directory. Empty path means a temporary directory
+.TP
+\-x[r[\-|0]]{@\fI\,listfile\/\fR|!\fI\,wildcard\/\fR}
+eXclude filenames
+.TP
+\-y
+assume Yes on all queries
+.SH SEE ALSO
+7-Zip
+.UR https://\:www.7-zip.org/
+.UE
+.SH COPYRIGHT
+Copyright \(co 1999\-2023 Igor Pavlov.
+.br
+Distributed under the LGPL-2.1+ license.

@@ -411,4 +411,19 @@ CVE-2023-39516 boo#1215059
 </comment>
     <requestid>1109347</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>7160a2ab478fdf875f1850fbc4410157</srcmd5>
+    <version>1.2.26</version>
+    <time>1703527565</time>
+    <user>anag+factory</user>
+    <comment>cacti 1.2.26
+CVE-2023-50250 boo#1218380
+CVE-2023-49084 boo#1218360
+CVE-2023-49085 boo#1218378
+CVE-2023-49086 boo#1218366
+CVE-2023-49088 boo#1218379
+CVE-2023-51448 boo#1218381
+</comment>
+    <requestid>1134986</requestid>
+  </revision>
 </revisionlist>

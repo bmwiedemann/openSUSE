@@ -1,7 +1,7 @@
 #
 # spec file for package complexity
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,32 +17,37 @@
 
 
 Name:           complexity
-Version:        1.10
+Version:        1.13
 Release:        0
 Summary:        C source code complexity computation utility
 License:        GPL-3.0-or-later
 Group:          Development/Tools/Other
 URL:            https://www.gnu.org/software/complexity/
 Source0:        https://ftp.gnu.org/gnu/complexity/%{name}-%{version}.tar.xz
-Source1:        https://ftp.gnu.org/gnu/complexity/%{name}-%{version}.tar.xz.sig
-Source2:        %{name}.keyring
 Patch0:         complexity-1.10-avoid-random-return-in-nonvoid-function.patch
 BuildRequires:  autogen
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(autoopts)
-Requires(post): %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
 
 %description
-Complexity is a tool for analyzing the complexity of "C" program functions.
-It is very similar to the McCabe scoring, but addresses some issues not considered
+Complexity is a tool for analyzing the complexity of "C" program functions.  It
+is very similar to the McCabe scoring, but addresses some issues not considered
 in that scoring scheme.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
+# they used newer autoopts in the generated tarball -- build fails with:
+# error option template version mismatches autoopts/options.h header
+pushd src
+rm -f opts.[ch]
+autogen opts.def
+popd
+
+# broken buildsystem?
+mkdir doc/.deps
+
 export MAN_PAGE_DATE=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%s)} -I)
 %configure
 %make_build
@@ -52,12 +57,6 @@ export MAN_PAGE_DATE=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%s)} -I)
 
 %check
 %make_build check
-
-%post
-%install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info%{?ext_info}
-
-%preun
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info%{?ext_info}
 
 %files
 %license COPYING

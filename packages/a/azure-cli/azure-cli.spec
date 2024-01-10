@@ -1,7 +1,7 @@
 #
 # spec file for package azure-cli
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@ Name:           azure-cli
 Name:           azure-cli%{?name_ext}
 %endif
 %define         short_name azure-cli
-Version:        2.54.0
+Version:        2.55.0
 Release:        0
 Summary:        Microsoft Azure CLI 2.0
 License:        MIT
@@ -83,7 +83,7 @@ Requires:       python3-azure-mgmt-cognitiveservices >= 13.5.0
 Requires:       python3-azure-mgmt-compute >= 30.3.0
 Requires:       python3-azure-mgmt-containerinstance >= 10.1.0
 Requires:       python3-azure-mgmt-containerregistry >= 10.1.0
-Requires:       python3-azure-mgmt-containerservice >= 27.0.0
+Requires:       python3-azure-mgmt-containerservice >= 28.0.0
 Requires:       python3-azure-mgmt-cosmosdb >= 9.3.0
 Requires:       python3-azure-mgmt-databoxedge >= 1.0.0
 Requires:       python3-azure-mgmt-datalake-store >= 0.5.0
@@ -111,7 +111,7 @@ Requires:       python3-azure-mgmt-msi >= 7.0.0
 Requires:       python3-azure-mgmt-netapp >= 10.1.0
 Requires:       python3-azure-mgmt-policyinsights >= 1.1.0b4
 Requires:       python3-azure-mgmt-privatedns >= 1.0.0
-Requires:       python3-azure-mgmt-rdbms >= 10.2.0b11
+Requires:       python3-azure-mgmt-rdbms >= 10.2.0b12
 Requires:       python3-azure-mgmt-recoveryservices >= 2.5.0
 Requires:       python3-azure-mgmt-recoveryservicesbackup >= 7.0.0
 Requires:       python3-azure-mgmt-redhatopenshift >= 1.4.0
@@ -125,7 +125,7 @@ Requires:       python3-azure-mgmt-servicefabric >= 1.0.0
 Requires:       python3-azure-mgmt-servicefabricmanagedclusters >= 1.0.0
 Requires:       python3-azure-mgmt-servicelinker >= 1.2.0~b1
 Requires:       python3-azure-mgmt-signalr >= 2.0.0~b1
-Requires:       python3-azure-mgmt-sql >= 4.0.0b12
+Requires:       python3-azure-mgmt-sql >= 4.0.0b13
 Requires:       python3-azure-mgmt-sqlvirtualmachine >= 1.0.0b5
 Requires:       python3-azure-mgmt-storage >= 21.1.0
 Requires:       python3-azure-mgmt-synapse >= 2.1.0b5

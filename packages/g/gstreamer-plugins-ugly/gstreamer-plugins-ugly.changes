@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan  4 07:57:57 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.22.8:
+  + No changes, stable bump only.
+- Rebase reduce-required-meson.patch.
+
+-------------------------------------------------------------------
 Mon Nov 20 21:30:21 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Move libgstasf plugin from BUILD_ORIG to main package, stop

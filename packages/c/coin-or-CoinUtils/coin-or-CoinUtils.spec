@@ -19,7 +19,7 @@
 %define soversion 3
 
 Name:           coin-or-CoinUtils
-Version:        2.11.9
+Version:        2.11.10
 Release:        0
 Summary:        COIN-OR Utilities
 Group:          Productivity/Scientific/Math
@@ -27,6 +27,7 @@ License:        EPL-2.0
 URL:            https://www.coin-or.org/
 Source:         https://github.com/coin-or/CoinUtils/archive/refs/tags/releases/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  gcc-c++
+BuildRequires:  pkgconfig(zlib)
 
 %description
 CoinUtils is an open-source collection of classes and helper functions
@@ -43,6 +44,7 @@ that are generally useful to multiple COIN-OR projects.
 %package devel
 Summary:        Development headers for coin-or-CoinUtils
 Requires:       libCoinUtils%{soversion} = %{version}
+Requires:       pkgconfig(zlib)
 
 %description devel
 CoinUtils is an open-source collection of classes and helper functions

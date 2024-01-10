@@ -693,4 +693,20 @@ Otherwise compilation fails with hard to understand error that opj_codec_set is 
     <comment></comment>
     <requestid>1130090</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>1d82a3de7d1f8837c0407e4c6b55cf3f</srcmd5>
+    <version>3.8.1</version>
+    <time>1702673439</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1133462</requestid>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>02ca033c9dfa9e0ee886c76c90137249</srcmd5>
+    <version>3.8.2</version>
+    <time>1703198385</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1134509</requestid>
+  </revision>
 </revisionlist>

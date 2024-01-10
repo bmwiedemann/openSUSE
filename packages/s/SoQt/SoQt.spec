@@ -1,7 +1,7 @@
 #
 # spec file for package SoQt
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,15 @@
 
 
 %define         sover 20
-%define         realver 1.6.0
+%define         realver 1.6.2
 Name:           SoQt
-Version:        1.6.0
+Version:        1.6.2
 Release:        0
 Summary:        A library which provides the glue between Coin and Qt
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://coin3d.github.io/SoQt/html/
-Source:         https://github.com/coin3d/soqt/releases/download/SoQt-%{version}/soqt-%{version}-src.tar.gz
+Source:         https://github.com/coin3d/soqt/releases/download/v%{version}/soqt-%{version}-src.tar.gz
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  doxygen
@@ -124,7 +124,6 @@ sed -i -e '/Requires:/ s/Qt\([^ ,]*\)/Qt5\1/g' SoQt.pc.cmake.in
 %{_datadir}/SoQt
 %dir %{_includedir}/Coin4/Inventor/Qt
 %{_includedir}/Coin4/Inventor/Qt/*
-%{_infodir}/SoQt1
 %{_libdir}/cmake/%{name}-%{realver}/
 %{_libdir}/libSoQt.so
 %{_libdir}/pkgconfig/SoQt.pc

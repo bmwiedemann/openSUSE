@@ -17,7 +17,7 @@
 
 
 Name:           cheat
-Version:        4.4.0
+Version:        4.4.2
 Release:        0
 Summary:        Allows you to create and view interactive cheatsheets on the command-line
 License:        MIT

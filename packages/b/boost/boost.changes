@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Dec 14 08:43:05 CET 2023 - aschnell@suse.com
+
+- update to 1.84.0
+  * new libraries:
+    + Cobalt (single-threaded asynchronicity framework)
+    + Redis (implements protocol RESP3)
+  * for details on all changes see,
+    https://www.boost.org/users/history/version_1_84_0.html
+- drop boost-phoenix-revert-std-tuple-support.patch (upstream)
+- drop boost-mpi-noreturn.patch (upstream)
+
+-------------------------------------------------------------------
 Thu Oct 26 14:08:59 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Fix build for gnu-mpich-hpc broken by previous update

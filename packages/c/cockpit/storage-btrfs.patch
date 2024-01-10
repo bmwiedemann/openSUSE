@@ -1,7 +1,7 @@
 diff --git a/pkg/storaged/format-dialog.jsx b/pkg/storaged/format-dialog.jsx
 index 05b1096..22db61b 100644
---- a/pkg/storaged/format-dialog.jsx
-+++ b/pkg/storaged/format-dialog.jsx
+--- a/pkg/storaged/block/format-dialog.jsx
++++ b/pkg/storaged/block/format-dialog.jsx
 @@ -162,7 +162,8 @@ export function format_dialog(client, path, start, size, enable_dos_extended) {
      }
  

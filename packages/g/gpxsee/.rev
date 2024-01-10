@@ -930,4 +930,20 @@
     <comment></comment>
     <requestid>1132576</requestid>
   </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>fe40a628e27d81808e933d490b10c6b7</srcmd5>
+    <version>13.13</version>
+    <time>1703024201</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1134018</requestid>
+  </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>0f4b790dd2b42157ab3f54ee5e53f0d5</srcmd5>
+    <version>13.14</version>
+    <time>1704281361</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1136074</requestid>
+  </revision>
 </revisionlist>

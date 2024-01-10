@@ -332,4 +332,30 @@
     <comment>- switch source urls to https</comment>
     <requestid>987432</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>c28d474d28f963ee5d70bee31924f648</srcmd5>
+    <version>0.60.8.1</version>
+    <time>1704380203</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.60.8.1:
+  * Fix memory leak in suggestion code introduced in 0.60.8.
+  * Various documentation fixes.
+  * Fix various warnings when compiling with -Wall.
+  * Fix two buffer overflows found by Google’s OSS-Fuzz.
+  * Other minor updates.
+- drop aspell-CVE-2019-25051.patch (upstream)
+
+- defining ncurses_wide library for configure to enable wide
+- changed dict- and data-dir back to /usr/{%lib} because dictionary
+- add ncurses-devel BuildRequires.
+   * Updated to Gettext 0.16.1, Libtool 1.5.22, Automake 1.10,
+   * Complain if more than one file is specified when checking
+     files using the `aspell check' command, rather than ignoring
+- removed virtual package dependency
+- fix file list
+- fix libdir usage
+    * see more details in /usr/share/doc/packages/aspell/README
+- libtoolize to build (forwarded request 1135742 from dirkmueller)</comment>
+    <requestid>1136153</requestid>
+  </revision>
 </revisionlist>

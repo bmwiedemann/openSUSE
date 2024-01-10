@@ -65,4 +65,20 @@
   * Update descriptor &quot;data&quot; field (when valid) during</comment>
     <requestid>1128791</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b3847ea8a4602a41ee94d77679b67ebd</srcmd5>
+    <version>0.17.0</version>
+    <time>1703800972</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.17.0:
+  * Validate index architectures match children
+  * Set Content-Length for blob uploads
+  * Don't wrap DefaultKeychain with refreshes
+  * Build releases with Go 1.21
+  * fix: mimic oci-layout in diskblobhandler
+  * tag: add command explanation to the long help
+  * feat: implement gc command
+  * feat: allow port and disk path to be overriden</comment>
+    <requestid>1135385</requestid>
+  </revision>
 </revisionlist>

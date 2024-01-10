@@ -1,1 +1,2 @@
 addFilter("E: devel-file-in-non-devel-package")
+addFilter("E: shlib-policy-name-error")

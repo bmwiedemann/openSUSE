@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan  6 12:43:19 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Python 3.12 has dropped distutils
+  * Build require python-setuptools instead
+  * Drop old gpgme-D545-python310.patch
+  * Replace with gpgme-D545-obsolete-distutils.patch
+
+-------------------------------------------------------------------
 Tue Dec  5 19:03:33 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Make libgpgmepp-devel provide its CMake target file

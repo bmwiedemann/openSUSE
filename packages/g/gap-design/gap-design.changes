@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Sun Jun 25 09:33:31 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.8
+  * Added the undocumented function ``OARunMultiplicityBound``
+  * Improved the performance of ``BlockIntersectionPolynomialCheck``
+
+-------------------------------------------------------------------
+Fri Oct 14 16:52:30 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to new upstream release 1.7
+  * Documented utility function DESIGN_IntervalForLeastRealZero
+  * Lists of changes moved from README to new file CHANGES.md,
+    README now README.md, gpl.txt now LICENSE.
+  * Added test directory tst, file tst/testall.g, and a test file
+    tst/testall.tst.
+  * Documentation updated to reflect move to github and version
+    change.
+
+-------------------------------------------------------------------
+Fri May 10 13:47:02 UTC 2013 - jengelh@inai.de
+
+- Split design (version 1.6) off the gap RPM package

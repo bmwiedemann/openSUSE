@@ -6498,4 +6498,41 @@
     <comment></comment>
     <requestid>1132165</requestid>
   </revision>
+  <revision rev="415" vrev="1">
+    <srcmd5>f2e42145105c7336738f85375ca5c6c4</srcmd5>
+    <version>121.0</version>
+    <time>1703281264</time>
+    <user>anag+factory</user>
+    <comment>- Mozilla Firefox 121.0
+  https://www.mozilla.org/en-US/firefox/121.0/releasenotes
+  MFSA 2023-56 (bsc#1217974)
+  * CVE-2023-6856 (bmo#1843782)
+    Heap-buffer-overflow affecting WebGL DrawElementsInstanced
+    method with Mesa VM driver
+  * CVE-2023-6135 (bmo#1853908)
+    NSS susceptible to &quot;Minerva&quot; attack
+  * CVE-2023-6865 (bmo#1864123)
+    Potential exposure of uninitialized data in EncryptingOutputStream
+  * CVE-2023-6857 (bmo#1796023)
+    Symlinks may resolve to smaller than expected buffers
+  * CVE-2023-6858 (bmo#1826791)
+    Heap buffer overflow in nsTextFragment
+  * CVE-2023-6859 (bmo#1840144)
+    Use-after-free in PR_GetIdentitiesLayer
+  * CVE-2023-6866 (bmo#1849037)
+    TypedArrays lack sufficient exception handling
+  * CVE-2023-6860 (bmo#1854669)
+    Potential sandbox escape due to VideoBridge lack of texture
+    validation
+  * CVE-2023-6867 (bmo#1863863)
+    Clickjacking permission prompts using the popup transition
+  * CVE-2023-6861 (bmo#1864118)
+    Heap buffer overflow affected nsWindow::PickerOpen(void) in
+    headless mode
+  * CVE-2023-6868 (bmo#1865488)
+    WebPush requests on Firefox for Android did not require VAPID key
+  * CVE-2023-6869 (bmo#1799036)
+    Content can paint outside of sandboxed iframe</comment>
+    <requestid>1134603</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Fri Jan  5 09:58:40 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 7.3.0
+  * New Features
+    - Tag browser: Allow displaying buttons next to items that have
+      notes or links for easy access. To enable these use 
+      Preferences->Look & feel->Tag browser
+    - Font subsetting: Preserve all OpenType layout features.
+      This makes the subset font files larger but ensures there is
+      no visual degradation when using the subsetted font files in
+      different contexts.
+  * Bug Fixes
+    - macOS: Fix main calibre window not remembering its size on restart
+    - Edit book: Fix the "Show changes" window moving down by a few
+      pixels every time it is opened
+    - Amazon metadata download: Fixes for various changes to amazon
+      website markup
+    - E-book viewer: When looking up words via Google in Europe
+      pre-approve the GDPR consent cookie
+    - Windows: Content server: Fix regression in previous release
+      that broke testing for local connections
+    - Windows: Fix a regression that caused selections in the Book
+      details panel to be invisible
+
+-------------------------------------------------------------------
+Wed Dec 20 12:41:38 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
+
+- The headless QPA plugin states minimum cmake 3.21 version requirement in the
+  cmakefile and won't build on Leap. Upstream recommends version 3.27.6 to build.
+  Add this requirement to the spec file.
+
+-------------------------------------------------------------------
+Fri Dec 15 06:10:32 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 7.2.0
+  * New Features
+    - Content server: Also listen for all incoming IPv6 connections
+      by default, not just IPv4
+    - Book details: Allow deleting notes from the right click menu
+      easily
+  * Bug Fixes
+    - Windows: Edit book: Fix a crash when using the check book
+      tool with a book that contains malformed markup, in calibre 7
+    - Windows: Improve flickering at startup due to a Qt regression
+      in calibre 7
+    - Windows: Fix moving the main window causing popup/floating
+      windows to be resized in calibre 7 due to yet another Qt regression
+    - Fix detection of existing books on the Tolino Vision 6
+    - Linux: Fix external applications not being launched under
+      Wayland in calibre 7 because of a bug in Qt
+    - Linux: Fix network requests failing under Fedora in calibre 7
+
+-------------------------------------------------------------------
 Fri Nov 24 07:31:48 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 7.1.0

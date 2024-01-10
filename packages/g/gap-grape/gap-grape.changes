@@ -1,0 +1,35 @@
+-------------------------------------------------------------------
+Sun Dec 11 19:21:58 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to new upstream release 4.9.0
+  See included CHANGES.md for a detailed list of changes.
+
+-------------------------------------------------------------------
+Sat Nov 19 21:19:11 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.8.5
+  * Resolve wrong answer to be returned for an input complete
+    graph (on more than one vertex) for the functions
+    MaximumClique, MaximumCompleteSubgraph, and CliqueNumber.
+  * Implemented new components maximumClique and
+    minimumVertexColouring for (simple) GRAPE graphs. These
+    components may be set or used by various GRAPE functions.
+  * Simple GRAPE graphs are now output to nauty/bliss as
+    nauty/blass undirected graphs and are so treated by them.
+
+-------------------------------------------------------------------
+Wed Nov 14 22:45:04 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 4.8.1
+  * No changelog was provided
+
+-------------------------------------------------------------------
+Thu Sep 14 19:36:58 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 4.7
+  * The user may run their own copy of dreadnaut and bliss.
+
+-------------------------------------------------------------------
+Fri May 10 13:47:02 UTC 2013 - jengelh@inai.de
+
+- Split grape (version 4.6.1) off the gap RPM package

@@ -16,9 +16,9 @@
 #
 
 
-%define lname libglslang13
+%define lname libglslang14
 Name:           glslang
-Version:        13.1.1
+Version:        14.0.0
 Release:        0
 Summary:        OpenGL and OpenGL ES shader front end and validator
 License:        BSD-3-Clause
@@ -126,10 +126,15 @@ pushd "$b"
 popd
 comm -13 "$od/devel.files" "$od/devel_full.files" >"$od/devel2.files"
 
-# 3rd party programs use -lOGLCompiler (because pristine glslang shipped .a files),
-# so satisfy them under our shared build.
+# 3rd party programs use -lOSDependent (because pristine glslang shipped .a
+# files), so satisfy them under our shared build.
 mkdir -p "$b/%_libdir"
-for i in libOGLCompiler libOSDependent libGenericCodeGen libMachineIndependent; do
+for i in libOSDependent libGenericCodeGen libMachineIndependent; do
+	ln -s libglslang.so "$b/%_libdir/$i.so"
+	rm -f "$b/%_libdir/$i.a"
+done
+# Gone with glslang 14, redirect to main file
+for i in libHLSL libOGLCompiler; do
 	ln -s libglslang.so "$b/%_libdir/$i.so"
 	rm -f "$b/%_libdir/$i.a"
 done
@@ -140,7 +145,7 @@ done
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%_libdir/*.so.13*
+%_libdir/*.so.14*
 
 %files devel -f devel.files
 %_bindir/gls*

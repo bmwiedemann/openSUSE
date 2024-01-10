@@ -1,7 +1,7 @@
-Index: cdrdao-1.2.4/dao/ScsiIf-linux.cc
+Index: cdrdao-1.2.5/dao/ScsiIf-linux.cc
 ===================================================================
---- cdrdao-1.2.4.orig/dao/ScsiIf-linux.cc
-+++ cdrdao-1.2.4/dao/ScsiIf-linux.cc
+--- cdrdao-1.2.5.orig/dao/ScsiIf-linux.cc
++++ cdrdao-1.2.5/dao/ScsiIf-linux.cc
 @@ -22,6 +22,9 @@
  #include <sys/types.h>
  #include <sys/stat.h>

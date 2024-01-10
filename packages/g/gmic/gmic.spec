@@ -40,7 +40,7 @@
 %define gmic_datadir %{_datadir}/gmic
 
 Name:           gmic
-Version:        3.3.1
+Version:        3.3.2
 Release:        0
 Summary:        GREYC's Magick for Image Computing (denoise and others)
 # gmic-qt is GPL-3.0-or-later, zart is CECILL-2.0, libgmic and cli program are
@@ -65,6 +65,7 @@ BuildRequires:  krita
 #
 BuildRequires:  cmake >= 3.14.0
 BuildRequires:  dos2unix
+BuildRequires:  extra-cmake-modules
 BuildRequires:  fftw3-threads-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig

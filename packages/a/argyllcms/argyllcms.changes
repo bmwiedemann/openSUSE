@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Dec  4 20:48:48 UTC 2023 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- update to 3.1.0:
+  * Fixed bug in CMYK profile B2A table creation that sometimes resulted in
+    bumpy black generation. (Only occurred when compiled using recent gcc with
+    code optimization.)
+  * Changed ICC profile serialization of pure ASCII text tags emit a warning
+    rather than error if they are fed non-ASCII utf8 input.
+  * Made ICC code a little more robust against bad profiles. (Thanks to David Hoyt).
+  * Fixed latent bug in X11 plot code that caused window not to be created or
+    updated when dowait == 0. This shows up on Linux as failure of spotread -S
+    to show spectral plot.
+  * Fixed problem with colorhug not noticing errors from the instrument.
+  * Updated scanin/it8Wolf.cht to improve accuracy of grey wedge patch recognition.
+  * Merged some Debian patches, including spelling fixes.
+
+-------------------------------------------------------------------
 Thu Nov  9 08:40:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.0.2:

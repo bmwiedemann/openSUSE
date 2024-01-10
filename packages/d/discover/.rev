@@ -1124,4 +1124,14 @@
     <comment>Plasma 5.27.10 (forwarded request 1131390 from Vogtinator)</comment>
     <requestid>1131400</requestid>
   </revision>
+  <revision rev="139" vrev="2">
+    <srcmd5>e63b13b42a24950966d62bf17c851a6d</srcmd5>
+    <version>5.27.10</version>
+    <time>1703198263</time>
+    <user>anag+factory</user>
+    <comment>- Update appstream build requirement for compatibility with 1.0.0
+  (boo#1217047)
+- Remove obsolete version checks (forwarded request 1133364 from krop)</comment>
+    <requestid>1133972</requestid>
+  </revision>
 </revisionlist>

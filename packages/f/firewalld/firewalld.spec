@@ -1,7 +1,7 @@
 #
 # spec file for package firewalld
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %global modprobe_d_files firewalld-sysctls.conf
 
 Name:           firewalld
-Version:        2.0.2
+Version:        2.1.0
 Release:        0
 Summary:        A firewall daemon with D-Bus interface providing a dynamic firewall
 License:        GPL-2.0-or-later
@@ -35,8 +35,8 @@ Group:          Productivity/Networking/Security
 URL:            https://www.firewalld.org
 Source0:        https://github.com/firewalld/firewalld/releases/download/v%{version}/firewalld-%{version}.tar.bz2
 Source1:        docker-zone.xml
-Patch0:         0002-Disable-FlushAllOnReload-option.patch
-Patch1:         firewalld-runstatedir.patch
+Patch0:         0001-Disable-FlushAllOnReload-option.patch
+Patch1:         0002-firewalld-runstatedir.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  desktop-file-utils
@@ -285,12 +285,15 @@ fi
 %dir %{_prefix}/lib/firewalld/zones
 %dir %{_prefix}/lib/firewalld/helpers
 %dir %{_prefix}/lib/firewalld/policies
+%dir %{_prefix}/lib/firewalld/xmlschema
 %{_prefix}/lib/firewalld/icmptypes/*.xml
 %{_prefix}/lib/firewalld/ipsets/README.md
 %{_prefix}/lib/firewalld/services/*.xml
 %{_prefix}/lib/firewalld/zones/*.xml
 %{_prefix}/lib/firewalld/helpers/*.xml
 %{_prefix}/lib/firewalld/policies/*.xml
+%{_prefix}/lib/firewalld/xmlschema/check.sh
+%{_prefix}/lib/firewalld/xmlschema/*.xsd
 %{_datadir}/polkit-1
 %dir %{_datadir}/dbus-1
 %dir %{_datadir}/dbus-1/system.d

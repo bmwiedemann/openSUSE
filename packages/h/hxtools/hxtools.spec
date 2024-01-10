@@ -17,7 +17,7 @@
 
 
 Name:           hxtools
-Version:        20231101
+Version:        20231224
 Release:        0
 Summary:        Collection of day-to-day tools (binaries)
 License:        GPL-2.0-or-later AND WTFPL
@@ -30,7 +30,7 @@ Source3:        %name.keyring
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libcap-devel >= 2
-BuildRequires:  pkgconfig >= 0.21
+BuildRequires:  pkg-config >= 0.21
 BuildRequires:  zstd
 BuildRequires:  pkgconfig(libHX) >= 3.17
 BuildRequires:  pkgconfig(libpci) >= 3
@@ -182,6 +182,7 @@ ln -s "%_datadir/%name/hxtools_profile.bash" "$b/%_sysconfdir/profile.d/z_hxtool
 %else
 rm -Rf "$b/%_sysconfdir/profile.d" "$b/%_sysconfdir"/hx*
 %endif
+rm -f "$b/%_bindir/xmlformat"
 
 %fdupes %buildroot/%_prefix
 
@@ -210,6 +211,7 @@ rm -Rf "$b/%_sysconfdir/profile.d" "$b/%_sysconfdir"/hx*
 %_bindir/cwdiff
 %_bindir/fxterm
 %_bindir/git-*
+%_bindir/gh-trim-*
 %_bindir/gpsh
 %_bindir/man2html
 %_bindir/mkvappend

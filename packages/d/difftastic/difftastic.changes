@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan  8 18:28:20 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- 0.54.0:
+  * Support reporting file permission changes
+  * Support for Salesforce Apex, improve Clojure and Haskell
+  * bug fixes
+
+-------------------------------------------------------------------
 Sun Nov 26 19:11:26 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - 0.53.1:

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Dec 11 19:49:15 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update commonmark to version 0.2.4.1.
+  ## 0.2.4.1
+
+    * Commonmark.Html: Add `aria-hidden`, `d`, and `viewBox` to allowed attributes list.
+
+    * Correctly merge list blanks with non-list blanks (#133, Michael Howell).
+
+    * Do not look for backslashed hard breaks in link titles (#130, Michael Howell).
+
+    * Work around ghc bug with `-K` RTS options, to set the stack space properly
+      for tests (#129). See https://gitlab.haskell.org/ghc/ghc/-/issues/10445.
+
+    * Revert block state completely if lazy line (#126). This fixes an issue with
+      lazily-wrapped footnotes.
+
+    * Avoid adding trailing newline to list block if it's already there
+      (Michael Howell). This fixes tight/loose classification in a few
+      cases.
+
+    * Fix incorrectly parsing links with nested `[]` (Michael Howell).
+
+-------------------------------------------------------------------
 Fri Oct 27 17:00:53 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update commonmark to version 0.2.4.

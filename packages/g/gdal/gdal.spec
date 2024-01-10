@@ -16,7 +16,7 @@
 #
 
 
-%define soversion 33
+%define soversion 34
 %define sourcename gdal
 # Uppercase GDAL is the canonical name for this package in Python
 %define pypi_package_name GDAL
@@ -31,7 +31,7 @@
 %bcond_with deflate_support
 %bcond_with tests_support
 Name:           gdal
-Version:        3.7.3
+Version:        3.8.2
 Release:        0
 Summary:        GDAL/OGR - a translator library for raster and vector geospatial data formats
 License:        BSD-3-Clause AND MIT AND SUSE-Public-Domain
@@ -354,6 +354,7 @@ popd
 %doc NEWS.md PROVENANCE.TXT
 %{_bindir}/gdal_contour
 %{_bindir}/gdal_create
+%{_bindir}/gdal_footprint
 %{_bindir}/gdal_grid
 %{_bindir}/gdal_rasterize
 %{_bindir}/gdal_translate
@@ -382,6 +383,7 @@ popd
 %{_datadir}/gdal
 %{_mandir}/man1/gdal_contour.1%{?ext_man}
 %{_mandir}/man1/gdal_create.1%{?ext_man}
+%{_mandir}/man1/gdal_footprint.1%{?ext_man}
 %{_mandir}/man1/gdal_rasterize.1%{?ext_man}
 %{_mandir}/man1/gdal_translate.1%{?ext_man}
 %{_mandir}/man1/gdal_viewshed.1%{?ext_man}

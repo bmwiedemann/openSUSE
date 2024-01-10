@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jan  8 07:30:21 UTC 2024 - Mohd Saquib <mohd.saquib@suse.com>
+
+- update to 2.1.0:
+  * eat(service): add DNS over QUIC (DoQ) Service (5130430)
+  * feat(icmp): add ICMPv6 Multicast Listener Discovery (MLD) types (dd88bbf)
+  * feat(fw): add ReloadPolicy option in firewalld.conf (0019371)
+  * feat(service): add submission service (tcp 587) (d6a9561)
+  * feat(service): Add alvr (3a92358)
+  * feat(service): add vrrp (d62fc8d)
+  [* Renamed patch 0002-Disable-FlushAllOnReload-option.patch to
+     0001-Disable-FlushAllOnReload-option.patch
+  [* Renamed patch firewalld-runstatedir.patch to 0002-firewalld-runstatedir.patch]
+
+-------------------------------------------------------------------
 Wed Nov 29 07:10:44 UTC 2023 - Mohd Saquib <mohd.saquib@suse.com>
 
 - update to 2.0.2:

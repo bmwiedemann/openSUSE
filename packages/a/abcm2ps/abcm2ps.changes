@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan  8 08:15:18 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 8.14.15:
+  * fix: bad vertical position of !trill(!-like decorations
+  * fix: don't combine notes in tuplets that start by a rest when
+    %%voice combine 0
+  * fix: dashed bars broken in PostScript output since commit e3282f8
+  * fix: bad PS page definition when %%gutter negative
+  * fix: bad measure numbers when many voices after %%setbarnb
+
+-------------------------------------------------------------------
 Mon Dec 19 14:56:22 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 8.14.14:

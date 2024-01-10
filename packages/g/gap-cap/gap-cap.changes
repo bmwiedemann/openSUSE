@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Sat Feb 11 11:21:27 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2023.02.06
+  * No changelog was provided
+
+-------------------------------------------------------------------
+Sat Nov 19 04:41:44 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2022.10.06
+  * Derive ZeroMorphism as the empty sum of morphisms
+  * Make FreydCategoriesForCAP independent of LinearAlgebraForCAP
+
+-------------------------------------------------------------------
+Wed Nov 14 20:22:48 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 2018.08.31
+  * No changelog was provided
+
+-------------------------------------------------------------------
+Fri Dec 22 20:18:50 UTC 2017 - jengelh@inai.de
+
+- Initial package (version 2017.09.25) for build.opensuse.org

@@ -1,7 +1,7 @@
 #
 # spec file for package growpart
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,38 +16,35 @@
 #
 
 
-%define base_version 0.30
 Name:           growpart
-Version:        %{base_version}
+Version:        0.33
 Release:        0
 Summary:        Grow a partition
 License:        GPL-3.0-only
 Group:          System/Management
-Url:            http://launchpad.net/cloud-utils
-Source0:        cloud-utils-%{base_version}.tar.gz
-Patch:          licenseGPLv3.patch
-Requires:       util-linux
+URL:            https://github.com/canonical/cloud-utils
+Source0:        https://github.com/canonical/cloud-utils/archive/refs/tags/%{version}.tar.gz#/cloud-utils-%{version}.tar.gz
 Requires:       gptfdisk
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Requires:       util-linux
 BuildArch:      noarch
 
 %description
-Grow a partition. This is predominantly useful in the cloud when an instance
-is started with a larger root partition than the image size. The root
-partition can be expanded to take up the additional size.
+Grow a partition. This is predominantly useful in the cloud when an instance is
+started with a larger root partition than the image size. The root partition
+can be expanded to take up the additional size.
 
 %prep
-%autosetup -p1 -n cloud-utils-%{base_version}
+%autosetup -p1 -n cloud-utils-%{version}
 
 %build
 
 %install
 install -Dm0755 -t %{buildroot}%{_sbindir} bin/growpart
 install -Dm0644 -t %{buildroot}%{_mandir}/man1 man/growpart.1
+install -Dm0644 -t %{buildroot}/%{_defaultlicensedir}/growpart LICENSE
 
 %files
-%defattr(-,root,root,-)
-%license LICENSE-GPLv3
+%license LICENSE
 %{_sbindir}/growpart
 %{_mandir}/man1/*
 

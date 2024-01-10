@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Thu Dec 21 15:28:58 UTC 2023 - lnussel@suse.com
+
+- Update to version 1+git20231221.d2e7fe6:
+  * Fix setting separate crypt password
+
+-------------------------------------------------------------------
+Wed Dec 20 17:20:08 UTC 2023 - lnussel@suse.com
+
+- Update to version 1+git20231220.6a5fb7f:
+  * refactor luks detection
+  * Tweak combustion deps
+  * Fix combustion support (boo#1218131)
+
+-------------------------------------------------------------------
+Thu Dec 14 10:05:42 UTC 2023 - lnussel@suse.com
+
+- Update to version 1+git20231214.1708e01:
+  * Add ExclusiveArch for 64-bit EFI architectures
+  * Don't set rw systems ro
+
+-------------------------------------------------------------------
+Wed Dec 13 16:47:45 UTC 2023 - lnussel@suse.com
+
+- Update to version 1+git20231213.cfe4cb3:
+  * Drop the second wipe
+  * Comment where to find the PCRs later
+  * Drop pcr-oracle RSA PEM parameter
+  * Include PCR#9 in the predictions
+  * Drop TPM2 from cryptab
+
+-------------------------------------------------------------------
+Mon Dec 11 07:46:39 UTC 2023 - lnussel@suse.com
+
+- Update to version 1+git20231130.dac7e54:
+  * Silence shellcheck
+  * Drop TPM2 from crypttab
+
+-------------------------------------------------------------------
+Wed Nov 29 13:55:58 UTC 2023 - lnussel@suse.com
+
+- Update to version 1+git20231129.5fb1e1a:
+  * Require tpm2.0-tools
+  * FIDO2 and TPM2 dialog improvements
+  * Fix yesno dialog call o_O
+  * Fix partition resizing on first boot
+  * Add jeos-firstboot-enroll
+  * Requires pcr-enroll
+  * Store generated key as 'cryptenroll' keyring
+  * Update README
+  * Require keyutils
+  * Rename to disk-encryption-tool
+
+-------------------------------------------------------------------
 Tue Nov 14 16:08:10 UTC 2023 - Ludwig Nussel <lnussel@suse.com>
 
 - initial package

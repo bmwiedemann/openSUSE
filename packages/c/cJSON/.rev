@@ -42,4 +42,15 @@
   * Fix a null pointer crash in cJSON_ReplaceItemViaPointer</comment>
     <requestid>1098986</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f11228d7351c649a907c6e81d7353db3</srcmd5>
+    <version>1.7.17</version>
+    <time>1703800497</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.7.17 (bsc#1218098, CVE-2023-50472,
+    bsc#1218099, CVE-2023-50471):
+  * Fix null reference in cJSON_SetValuestring (CVE-2023-50472).
+  * Fix null reference in cJSON_InsertItemInArray (CVE-2023-50471).</comment>
+    <requestid>1135432</requestid>
+  </revision>
 </revisionlist>

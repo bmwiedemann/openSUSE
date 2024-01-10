@@ -1,7 +1,7 @@
 #
 # spec file for package bcftools
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           bcftools
-Version:        1.16
+Version:        1.19
 Release:        0
 Summary:        Tools for manipulating variant calls in the Variant Call Format (VCF)
 License:        MIT

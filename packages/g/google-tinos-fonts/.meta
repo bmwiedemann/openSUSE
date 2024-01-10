@@ -1,0 +1,5 @@
+<package name="google-tinos-fonts" project="openSUSE:Factory">
+  <title></title>
+  <description>Tinos was designed by Steve Matteson as an innovative, refreshing serif design that is metrically compatible with Times New Roman™. Tinos offers improved on-screen readability characteristics and the pan-European WGL character set and solves the needs of developers looking for width-compatible fonts to address document portability across platforms.</description>
+  <devel project="M17N:fonts" package="google-tinos-fonts"/>
+</package>

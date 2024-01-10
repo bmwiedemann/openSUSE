@@ -1,0 +1,148 @@
+-------------------------------------------------------------------
+Sun Jun 25 09:43:59 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.73
+  * Basic double groupoids
+  * Added RegularActionHomomorphismGroupoid and used in gpdhom.tst
+
+-------------------------------------------------------------------
+Sat Feb 11 11:16:53 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.72
+  * moved attempt at double groupoids to XMod
+  * added RegularActionHomomorphismGroupoid and used in gpdhom.tst
+
+-------------------------------------------------------------------
+Sat Nov 19 00:07:56 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.71
+  * Renamed GpdIsDigraph etc as IsGroupoidDigraph
+  * Replaced IsDiscrete by IsDiscreteMagmaWithObjects
+  * Changed nicemap.tst to cope with alternative NiceMonomorphisms
+
+-------------------------------------------------------------------
+Wed Nov 14 22:52:31 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.63
+  * Corrections to methods for RightCoset and LeftCoset
+  * Removed HomsetCosetsGroupoidCoset + old IsHomsetCosetsType
+  * Operation RayElementsOfGroupoid is now Attribute RaysOfGroupoid
+    and Attribute RaysOfGroupoid is now Operation RayArrowsOfGroupoid.
+  * Changed HomsetCosets from IsPositionalObjectRep;
+    corrected SubgroupoidByPieces when rays are involved
+  * Add IsomorphismNewObjects method for hom discrete
+    methods for \in for AutomorphismGroupOfGroupoid
+  * Added property IsAutomorphismGroupOfGroupoidAsGroupoid
+  * Added method for \in for automorphisms of groupoids
+  * Added attribute PieceIsomorphisms for homogeneous dwos
+  * Added attribute ParentMappingGroupoids for restricted mappings
+  * Added GroupoidAutomorphismByObjectPerm method for groupoid with
+    rays.
+  * Removed attribute InverseOfIsomorphismFpSemigroup
+  * Added AutomorphismGroupoidOfGroupoid for homogeneous groupoids
+  * Replaced SmallGroup(8,4) with QuaternionGroup(8)
+  * Added 'GGRWS' to 'FreeProductWithAmalgamation', 'HnnExtension'
+  * Added ReducedImageElm for IsMappingToFreeProductWithAmalgamation
+    IsFpaGroup now IsFreeProductWithAmalgamation; sim. IsHnnGroup.
+
+-------------------------------------------------------------------
+Sun Dec 24 12:37:49 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 1.54
+  * added MappingGeneratorsImages method for hom discrete mappings
+  * added other method for GroupoidInnerAutomorphism(R,S,r);
+  * added method for RestrictedMappingGroupoids for homdisc
+  * added DirectProductOp for groupoids; Projection & Embedding
+  * added MappingWithObjectsByFunction and associated prop/attr and
+    then added new manual section on the inner automorphism group
+  * added operation GroupoidInnerAutomorphism
+
+-------------------------------------------------------------------
+Fri Sep  8 17:18:11 UTC 2017 - jengelh@inai.de
+
+- The package was renamed from gpd to groupoids upstream
+- Update to new upstream release 1.51
+  * added various methods for String, ViewString, PrintString
+
+-------------------------------------------------------------------
+Sat Apr 29 21:31:04 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 1.46
+  * Removed method for IsCommutative from gpd.gi which was causing
+    slowdown in the main GAP tests.
+
+-------------------------------------------------------------------
+Mon Nov 21 15:07:05 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 1.45
+  * improved RestrictedMappingGroupoids
+  * Added IsomorphismStandardGroupoid to gpdhom.g{d,i};
+    GroupoidAutomorphismByRayImages->GroupoidAutomorphismByRayShifts;
+    SinglePieceGroupoidByGenerators->SinglePiceSubgroupoidByGenerators;
+    improved RestrictedMappingGroupoids
+  * ImagesOfRays renamed ImageElementsOfRays
+  * Replaced Image(hom,x) with ImageElm(hom,x) throughout
+  * Moved AutomorphismGroup methods to AutomorphismGroupOfGroupoid
+  * Added EmbeddingsInNiceObject
+  * Converted cases of \in to new InAutomorphismGroupOfGroupoid
+
+-------------------------------------------------------------------
+Sun Jun 19 11:18:00 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 1.43
+* dealt with new diffs in test files
+
+-------------------------------------------------------------------
+Fri Mar 11 22:28:22 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 1.42
+* new method for ObjectGroupHomomorphism
+* converted RootObject from an operation to an attribute
+* renamed IsDigraph etc as GpdIsDigraph
+* RestrictionMappingGroupoids -> RestrictedMappingGroupoids
+* added method for WeightedAdjacencyMatrix for FpWeightedDigraphs
+* added PrintObj & Viewobj for groupoid right cosets
+* removed RestrictionMappingGroups: now GeneralRestrictedMapping
+* replacing test IsScalar for objects with IsObject/IsSet
+  added examples in section 4.1.1 where the objects are
+  free group generators or strings
+* Added method for ImagesRepresentative( gpdhom, arrow )
+
+-------------------------------------------------------------------
+Tue Aug  4 09:10:56 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 1.34
+* added method for GeneratorsOfMagma for a magma with objects
+* attempted fix of problem with NormalFormGGRWS
+* PackageInfo.g: Kan is now an accepted package
+* converted the bibliography to BibXMLext format and added an URL
+  to Emma's thesis (moore.ps.gz)
+* changed 'InversesIfNonzero' to 'Inverse' in category names
+
+-------------------------------------------------------------------
+Sun Feb 22 10:35:23 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 1.31
+* rays were inadvertently arrows, so swapped the names:
+  RaysOfGroupoid with RayElementsOfGroupoid
+* added second Kd8method for IsHomogeneousDomainWithObjects
+* renamed MultiplicativeElementWithObjects as Arrow,
+  IsElementOfMagmaWithObjects as IsArrowIn,
+  GroupoidElement no longer needed: use Arrow,
+  IdentityElement as IdentityArrow,
+  ConjugateGroupoidElement as ConjugateArrow.
+* changed Arrow to ArrowNC in GeneratorsOfMagmaWithObjects
+
+-------------------------------------------------------------------
+Wed Feb  5 16:32:24 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 1.22
+* Adjusted flip function in mwohom.g and mwohom.tst.
+* Added method for ImageElm for mwohoms and more than one piece.
+* Added IsElementOfMagmaWithObjects (in place of \in).
+* Renamed Arrowelt -> ElementOfArrow, etc.
+
+-------------------------------------------------------------------
+Fri May 10 13:47:02 UTC 2013 - jengelh@inai.de
+
+- Split gpd (version 1.19) off the gap RPM package

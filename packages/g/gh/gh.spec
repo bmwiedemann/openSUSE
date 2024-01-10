@@ -24,7 +24,7 @@ Release:        0
 Summary:        The official CLI for GitHub
 License:        MIT
 URL:            https://cli.github.com/
-Source0:        https://github.com/cli/cli/archive/v%{version}.tar.gz#/%{sname}-%{version}.tar.gz
+Source0:        %{sname}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 BuildRequires:  fish
 BuildRequires:  git-core

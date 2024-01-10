@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jan  2 11:30:46 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- sem-open-o-creat.patch: sem_open: Clear O_CREAT when semaphore file is
+  expected to exist (BZ #30789)
+- ldconfig-process-elf-file.patch: elf: Fix wrong break removal from
+  8ee878592c
+- tls-modid-reuse.patch: elf: Fix TLS modid reuse generation assignment
+  (BZ #29039)
+- getaddrinfo-eai-memory.patch: getaddrinfo: translate ENOMEM to
+  EAI_MEMORY (bsc#1217589, BZ #31163)
+- libio-wdo-write.patch: libio: Check remaining buffer size in
+  _IO_wdo_write (BZ #31183)
+
+-------------------------------------------------------------------
 Tue Dec  5 11:52:03 UTC 2023 - Andreas Schwab <schwab@suse.de>
 
 - aarch64-rawmemchr-unwind.patch: aarch64: correct CFI in rawmemchr

@@ -1,0 +1,53 @@
+-------------------------------------------------------------------
+Tue Oct  4 00:02:11 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.3.2
+  * Fix some method ranks for compatibility with GAP 4.11
+
+-------------------------------------------------------------------
+Wed Nov 14 20:19:03 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.3.1
+  * Operation FindGroupRelations now accepts IsGroup as one of
+    the possible arguments.
+  * The issue with the increase of the rank of IsFinite filter
+    caused by IsAmenable TrueMethod was fixed.
+  * InstallMethodWithRandomSource was incorporated for
+    Random methods.
+
+-------------------------------------------------------------------
+Sun Jun 19 09:46:30 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 1.3
+* Converters to and from `FR' package by Laurent Bartholdi were
+  implemented (see AutomGrp2FR and FR2AutomGrp)
+* Minimization of automata was greatly optimized based on (also
+  very much appreciated) the implementation of this function by
+  Andrey Russev
+* Print methods were updated for several basic types
+* IsSphericallyTransitive has been updated
+* TransformationOnFirstLevel now always returns transformations
+  (it was returning permutations when possible before)
+
+-------------------------------------------------------------------
+Fri Apr 18 10:07:41 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 1.2.4
+* Replaced $ character in identifiers with underscores
+* Added IsAcyclic for Mealy automata
+* Added IsReversible, IsMDTrivial, MDReduction
+* Added MihailovaSystem
+* MarkovOperator is implemented for semigroups and now can accept
+  the (possibly symbolic) weights
+* Added a possibility to define automata over 1-letter alphabet
+  (needed for MD-reduction)
+* AllSections was extended to IsAutom argument
+* Section was extended to work with (semi)groups, not only with
+  their elements
+* The order of generators in AG_UseRewritingSystem was updated
+  according to a new GAP release
+
+-------------------------------------------------------------------
+Fri May 10 13:47:02 UTC 2013 - jengelh@inai.de
+
+- Split automgrp (version 1.1.4.1) off the gap RPM package

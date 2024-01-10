@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec 20 12:57:29 UTC 2023 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.63.1:
+  * fix timeout not used by proxy client in fetch2 (#875)
+  * Bump google.golang.org/grpc from 1.60.0 to 1.60.1 (#877)
+  * Bump actions/setup-go from 4.1.0 to 5.0.0 (#869)
+  * Bump github.com/google/uuid from 1.4.0 to 1.5.0 (#872)
+  * Bump google.golang.org/grpc from 1.59.0 to 1.60.0 (#871)
+
+-------------------------------------------------------------------
 Sat Dec 09 19:51:07 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.63.0:

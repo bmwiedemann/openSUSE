@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec 24 13:24:46 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
+
+- Add fix-docx-format.patch
+  * Deal with docx document format (boo#1218382 and CVE-2023-50254)
+- Set pandoc-cli as Requires, fix docx document support
+
+-------------------------------------------------------------------
 Thu Aug 25 14:08:05 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.10.23

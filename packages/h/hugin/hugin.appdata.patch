@@ -1,8 +1,8 @@
-Index: platforms/linux/appdata/PTBatcherGUI.appdata.xml
+Index: hugin-2023.0.0/platforms/linux/appdata/PTBatcherGUI.appdata.xml
 ===================================================================
---- a/platforms/linux/appdata/PTBatcherGUI.appdata.xml
-+++ b/platforms/linux/appdata/PTBatcherGUI.appdata.xml
-@@ -13,7 +13,7 @@
+--- hugin-2023.0.0.orig/platforms/linux/appdata/PTBatcherGUI.appdata.xml
++++ hugin-2023.0.0/platforms/linux/appdata/PTBatcherGUI.appdata.xml
+@@ -17,7 +17,7 @@
   <metadata_license>GFDL</metadata_license>
   <project_license>GPL-2.0-or-later</project_license>
   <content_rating type="oars-1.1" />
@@ -11,11 +11,11 @@ Index: platforms/linux/appdata/PTBatcherGUI.appdata.xml
   <summary>A GUI queue manager for stitching multiple hugin projects</summary>
   <description>
    <p>
-Index: platforms/linux/appdata/calibrate_lens_gui.appdata.xml
+Index: hugin-2023.0.0/platforms/linux/appdata/calibrate_lens_gui.appdata.xml
 ===================================================================
---- a/platforms/linux/appdata/calibrate_lens_gui.appdata.xml
-+++ b/platforms/linux/appdata/calibrate_lens_gui.appdata.xml
-@@ -13,7 +13,7 @@
+--- hugin-2023.0.0.orig/platforms/linux/appdata/calibrate_lens_gui.appdata.xml
++++ hugin-2023.0.0/platforms/linux/appdata/calibrate_lens_gui.appdata.xml
+@@ -17,7 +17,7 @@
   <metadata_license>GFDL</metadata_license>
   <project_license>GPL-2.0-or-later</project_license>
   <content_rating type="oars-1.1" />
@@ -24,11 +24,11 @@ Index: platforms/linux/appdata/calibrate_lens_gui.appdata.xml
   <summary>Automatic lens calibration</summary>
   <description>
    <p>
-Index: platforms/linux/appdata/hugin.appdata.xml
+Index: hugin-2023.0.0/platforms/linux/appdata/hugin.appdata.xml
 ===================================================================
---- a/platforms/linux/appdata/hugin.appdata.xml
-+++ b/platforms/linux/appdata/hugin.appdata.xml
-@@ -13,7 +13,7 @@
+--- hugin-2023.0.0.orig/platforms/linux/appdata/hugin.appdata.xml
++++ hugin-2023.0.0/platforms/linux/appdata/hugin.appdata.xml
+@@ -17,7 +17,7 @@
   <metadata_license>GFDL</metadata_license>
   <project_license>GPL-2.0-or-later</project_license>
   <content_rating type="oars-1.1" />

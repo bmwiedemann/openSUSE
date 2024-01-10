@@ -1,7 +1,7 @@
 #
 # spec file for package gerbera
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,12 @@
 #
 
 
+%if 0%{?suse_version} && 0%{?suse_version} < 1590
+%global force_gcc_version 12
+%endif
+
 Name:           gerbera
-Version:        1.12.1
+Version:        2.0.0
 Release:        0
 Summary:        UPnP Media Server
 License:        GPL-2.0-only
@@ -57,11 +61,7 @@ BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(zlib)
 Requires:       logrotate
 %{?systemd_requires}
-%if 0%{?suse_version} <= 1550
-BuildRequires:  gcc10-c++
-%else
-BuildRequires:  gcc-c++
-%endif
+BuildRequires:  gcc%{?force_gcc_version}-c++ >= 12
 
 %description
 Gerbera is a UPnP media server which allows streaming digital
@@ -84,9 +84,8 @@ sed -i -e 's/@GROUP@/gerbera/' %{SOURCE2}
   -DWITH_AVCODEC=1 \
   -DWITH_EXIF=0 \
   -DWITH_EXIV2=1 \
-%if 0%{?suse_version} <= 1550
-  -DCMAKE_CXX_COMPILER=g++-10 \
-  -DCMAKE_C_COMPILER=gcc-10 \
+%if 0%{?force_gcc_version}
+    -DCMAKE_CXX_COMPILER=%{_bindir}/g++-%{?force_gcc_version} \
 %endif
   -DWITH_FFMPEGTHUMBNAILER=1 \
   -DWITH_INOTIFY=1 \

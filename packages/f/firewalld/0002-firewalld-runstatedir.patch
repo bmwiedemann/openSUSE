@@ -1,0 +1,25 @@
+From 0b9644ab645d69877f3bef50ede50cb30972e2e1 Mon Sep 17 00:00:00 2001
+From: Mohd Saquib <mohd.saquib@suse.com>
+Date: Mon, 8 Jan 2024 12:57:34 +0530
+Subject: [PATCH] Change firewalld pid from /var/run to /run
+
+---
+ src/firewall/config/__init__.py.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/firewall/config/__init__.py.in b/src/firewall/config/__init__.py.in
+index 12b694e..3914c90 100644
+--- a/src/firewall/config/__init__.py.in
++++ b/src/firewall/config/__init__.py.in
+@@ -87,7 +87,7 @@ FIREWALLD_LOGFILE = "/var/log/firewalld"
+ 
+ FIREWALLD_LOGTARGET = "@DEFAULT_LOG_TARGET@"
+ 
+-FIREWALLD_PIDFILE = "/var/run/firewalld.pid"
++FIREWALLD_PIDFILE = "/run/firewalld.pid"
+ 
+ FIREWALLD_TEMPDIR = "/run/firewalld"
+ 
+-- 
+2.35.3
+

@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-reader
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2022 Hillwood Yang <hillwood@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -16,6 +16,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define    sover            1
 # Workaround boo#1189991
 %define    _lto_cflags      %{nil}
@@ -26,7 +27,7 @@ Name:           deepin-reader
 Version:        5.10.23
 Release:        0
 Summary:        The deepin Document Viewer
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://github.com/linuxdeepin/deepin-reader
 Source0:        https://github.com/linuxdeepin/deepin-reader/archive/%{version}/%{name}-%{version}.tar.gz
@@ -36,11 +37,14 @@ Patch0:         fix-library-link.patch
 Patch1:         fix-libdir.patch
 # PATCH-FIX-UPSTEAM support-riscv.patch hillwood@opensuse.org
 Patch2:         support-riscv.patch
+# PATCH-FIX-UPSTEAM fix-docx-format.patch hillwood@opensuse.org - deal with docx document format
+# https://github.com/linuxdeepin/deepin-reader/commit/c192fd20a2fe4003e0581c3164489a89e06420c6
+Patch3:         fix-docx-format.patch
 BuildRequires:  fdupes
-BuildRequires:  libqt5-linguist
-BuildRequires:  libqt5-qtbase-private-headers-devel
 BuildRequires:  gtest
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  libqt5-linguist
+BuildRequires:  libqt5-qtbase-private-headers-devel
 BuildRequires:  update-desktop-files
 %ifarch ppc ppc64 ppc64le s390 s390x
 BuildRequires:  deepin-desktop-base
@@ -48,21 +52,22 @@ BuildRequires:  deepin-desktop-base
 BuildRequires:  deepin-manual
 %endif
 BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Sql)
 BuildRequires:  pkgconfig(Qt5PrintSupport)
+BuildRequires:  pkgconfig(Qt5Sql)
+BuildRequires:  pkgconfig(Qt5WebEngineWidgets)
+BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(chardet)
 BuildRequires:  pkgconfig(ddjvuapi)
 BuildRequires:  pkgconfig(dtkwidget)
-BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5WebEngineWidgets)
 BuildRequires:  pkgconfig(gsettings-qt)
 BuildRequires:  pkgconfig(icu-i18n)
 BuildRequires:  pkgconfig(lcms2)
-BuildRequires:  pkgconfig(libopenjp2)
 BuildRequires:  pkgconfig(libjpeg)
+BuildRequires:  pkgconfig(libopenjp2)
 BuildRequires:  pkgconfig(libpng)
-BuildRequires:  pkgconfig(chardet)
+Requires:       pandoc-cli
 # Requires:       libdeepin-pdfium%{sover}
 # Qt5WebEngineWidgets is invalid on these arches
 ExcludeArch:    ppc ppc64 ppc64le s390 s390x
@@ -137,4 +142,3 @@ find %{buildroot}%{_datadir}/deepin-manual -name '*.txt' -type f -print -exec ch
 %{_datadir}/%{name}/translations/%{name}.qm
 
 %changelog
-

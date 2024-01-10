@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan  5 18:40:33 UTC 2024 - Jan Baier <jbaier@suse.com>
+
+- update to 13.11.9:
+  * dh_installudev: install into /usr (Closes: #1058791)
+  * dh_movetousr: also update links from canonical into aliased
+  * buildsystems: add qmake6 variant of the qmake buildsystem (Closes: #1057359)
+
+-------------------------------------------------------------------
 Mon Dec  4 12:37:48 UTC 2023 - Jan Baier <jbaier@suse.com>
 
 - update to 13.11.8:

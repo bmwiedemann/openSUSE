@@ -18,7 +18,7 @@
 %define soversion 1
 
 Name:           coin-or-Osi
-Version:        0.108.7
+Version:        0.108.9
 Release:        0
 Summary:        COIN-OR Open Solver Interface
 License:        EPL-2.0

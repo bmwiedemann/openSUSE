@@ -1,7 +1,7 @@
 #
 # spec file for package ast-grep
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,12 +15,13 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           ast-grep
-Version:        0.14.4+0
+Version:        0.16.1+0
 Release:        0
 Summary:        A CLI tool for code structural search, lint and rewriting
 License:        MIT
-Url:            https://ast-grep.github.io/
+URL:            https://ast-grep.github.io/
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 Source2:        cargo_config
@@ -40,7 +41,7 @@ install -D -m 644 %{SOURCE2} .cargo/config
 %install
 install -D -d -m 0755 %{buildroot}%{_bindir}
 install -m 0755 %{_builddir}/%{name}-%{version}/target/release/%{name} %{buildroot}%{_bindir}/%{name}
- 
+
 %files
 %{_bindir}/%{name}
 

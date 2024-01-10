@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jan  4 11:22:09 UTC 2024 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to release 9.18.21
+  Removed Features:
+  * Support for using AES as the DNS COOKIE algorithm
+    (cookie-algorithm aes;) has been deprecated and will be removed
+    in a future release. Please use the current default,
+    SipHash-2-4, instead.
+  * The resolver-nonbackoff-tries and resolver-retry-interval
+    statements have been deprecated. Using them now causes a
+    warning to be logged.
+
+-------------------------------------------------------------------
 Wed Nov 15 16:16:29 UTC 2023 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update to release 9.18.20

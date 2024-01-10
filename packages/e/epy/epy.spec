@@ -75,6 +75,7 @@ python3 -mpip install --root %{buildroot} --no-warn-script-location \
     build/epy_reader-*-py3-none-any.whl
 
 %check
+export PYTHONDONTWRITEBYTECODE=1
 export PYTHONPATH=%{buildroot}/%{python3_sitelib}
 pytest -v tests
 

@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.3.2.1
+Version:        0.5
 Release:        0
 Summary:        Parsing and evaluating typst syntax
 License:        BSD-3-Clause
@@ -84,7 +84,7 @@ BuildRequires:  ghc-tasty-prof
 
 %description
 A library for parsing and evaluating typst syntax. Typst (<https://typst.app>)
-is a document layout and formatting language. This library targets typst 0.7
+is a document layout and formatting language. This library targets typst 0.10
 and currently offers only partial support.
 
 %package devel

@@ -1,8 +1,8 @@
 #
 # spec file for package gnuhealth-client
 #
-# Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2015-2022 Dr. Axel Braun
+# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2015-2023 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,19 @@
 
 
 %define majorver 4.2
+
+%if 0%{?suse_version} >= 1550
+%define pythons python3
+%define mypython python3
+%define mysitelib %python3_sitelib
+%else
+%{?sle15_python_module_pythons}
+%define mypython %pythons
+%define mysitelib %{expand:%%%{mypython}_sitelib}
+%endif
+
 Name:           gnuhealth-client
-Version:        %{majorver}.0
+Version:        %{majorver}.1
 Release:        0
 Summary:        The client of the GNU Health Hospital system
 License:        GPL-3.0-only
@@ -27,7 +38,7 @@ Group:          Productivity/Office/Management
 URL:            http://health.gnu.org/
 Source:         https://ftp.gnu.org/pub/gnu/health/%{name}-%{version}.tar.gz
 ## Source:         %{name}-%{version}.tar.gz
-## urce1:        %{name}-plugins-%{version}.tar.gz
+## Source1:        %{name}-plugins-%{version}.tar.gz
 Source1:        ftp://ftp.gnu.org/gnu/health/plugins/gnuhealth_plugin_camera-latest.tar.gz
 Source2:        ftp://ftp.gnu.org/gnu/health/plugins/gnuhealth_plugin_crypto-latest.tar.gz
 Source3:        ftp://ftp.gnu.org/gnu/health/plugins/gnuhealth_plugin_frl-latest.tar.gz
@@ -35,33 +46,35 @@ Source3:        ftp://ftp.gnu.org/gnu/health/plugins/gnuhealth_plugin_frl-latest
 Source5:        https://ftp.gnu.org/gnu/health/%{name}-%{version}.tar.gz.sig
 Source6:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=health&download=1#/%{name}.keyring
 
+BuildRequires:  %{mypython}-Babel
+BuildRequires:  %{mypython}-Sphinx
+BuildRequires:  %{mypython}-devel
+BuildRequires:  %{mypython}-gobject
+BuildRequires:  %{mypython}-pip
+BuildRequires:  %{mypython}-python-dateutil
+BuildRequires:  %{mypython}-setuptools
+BuildRequires:  %{mypython}-simplejson
+BuildRequires:  %{mypython}-wheel
 BuildRequires:  fdupes
-BuildRequires:  python3-Babel
-BuildRequires:  python3-Sphinx
-BuildRequires:  python3-devel
-BuildRequires:  python3-gobject
-BuildRequires:  python3-python-dateutil
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-simplejson
 BuildRequires:  update-desktop-files
 
+Requires:       %{mypython}-GooCalendar >= 0.5
+Requires:       %{mypython}-cairo
+Requires:       %{mypython}-chardet
+Requires:       %{mypython}-dateutil
+Requires:       %{mypython}-gnupg
+Requires:       %{mypython}-gobject
+Requires:       %{mypython}-gobject-Gdk
+Requires:       %{mypython}-gobject-cairo
+Requires:       %{mypython}-numpy
+Requires:       %{mypython}-opencv
+Requires:       %{mypython}-pytz
+Requires:       %{mypython}-setuptools
+Requires:       %{mypython}-simplejson
+Requires:       %{mypython}-xml
 Requires:       gnu-free-fonts
 Requires:       gobject-introspection
 Requires:       opencv
-Requires:       python3-GooCalendar >= 0.5
-Requires:       python3-cairo
-Requires:       python3-chardet
-Requires:       python3-dateutil
-Requires:       python3-gnupg
-Requires:       python3-gobject
-Requires:       python3-gobject-Gdk
-Requires:       python3-gobject-cairo
-Requires:       python3-numpy
-Requires:       python3-opencv
-Requires:       python3-pytz
-Requires:       python3-setuptools
-Requires:       python3-simplejson
-Requires:       python3-xml
 
 BuildArch:      noarch
 
@@ -88,10 +101,10 @@ mv gnuhealth_camera* camera
 rm -rf */__pycache__
 
 %build
-%python3_build
+%pyproject_wheel
 
 %install
-%python3_install
+%pyproject_install
 
 # menu-entry
 desktop-file-install --dir %{buildroot}%{_datadir}/applications %{name}.desktop
@@ -99,7 +112,7 @@ desktop-file-install --dir %{buildroot}%{_datadir}/applications %{name}.desktop
 
 mkdir -p %{buildroot}%{_datadir}/pixmaps
 
-cp %{buildroot}$(ls -d /usr/lib/python3.* )/site-packages/gnuhealth/data/pixmaps/gnuhealth/gnuhealth-icon.png %{buildroot}%{_datadir}/pixmaps/gnuhealth.png
+cp %{buildroot}%{mysitelib}/gnuhealth/data/pixmaps/gnuhealth/gnuhealth-icon.png %{buildroot}%{_datadir}/pixmaps/gnuhealth.png
 
 %python_expand %fdupes %{buildroot}%{python3_sitelib}
 
@@ -109,6 +122,7 @@ cp %{buildroot}$(ls -d /usr/lib/python3.* )/site-packages/gnuhealth/data/pixmaps
 %doc Changelog
 %license COPYRIGHT COPYING
 %{_datadir}/pixmaps/*
-%{python3_sitelib}/*
+%{mysitelib}/gnuhealth
+%{mysitelib}/gnuhealth_client-%{version}.dist-info
 
 %changelog

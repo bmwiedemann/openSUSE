@@ -419,4 +419,12 @@ spec file license should be in SPDX (compatible) format. GPL-2.0+ seems to be th
     <comment>- Update to release 20231101</comment>
     <requestid>1121594</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>6c2132d884a55546371dbb9ab896b9c8</srcmd5>
+    <version>20231224</version>
+    <time>1703800913</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 20231224</comment>
+    <requestid>1135307</requestid>
+  </revision>
 </revisionlist>

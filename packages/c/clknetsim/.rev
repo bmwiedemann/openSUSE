@@ -18,4 +18,15 @@
   * don't read /usr/include/sys/time.h directly</comment>
     <requestid>1110463</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e92aa8b3c5c310c63df5571c5c312390</srcmd5>
+    <version>0+git.20231005</version>
+    <time>1702936622</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0+git.20231005:
+  * fuzz: provide refclock offsets
+  * add client option for link speed
+  * add PTP one-step E2E transparent clock</comment>
+    <requestid>1133879</requestid>
+  </revision>
 </revisionlist>

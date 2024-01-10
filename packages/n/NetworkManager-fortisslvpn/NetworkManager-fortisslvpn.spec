@@ -1,7 +1,7 @@
 #
 # spec file for package NetworkManager-fortisslvpn
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,8 +27,11 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Networking/System
 URL:            https://gitlab.gnome.org/GNOME/NetworkManager-fortisslvpn
 Source0:        https://download.gnome.org/sources/%{name}/%{base_ver}/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch0:         https://gitlab.gnome.org/GNOME/NetworkManager-fortisslvpn/-/commit/084ef529.patch
 
 BuildRequires:  intltool >= 0.35
+BuildRequires:  libtool
 BuildRequires:  libxml2-tools
 BuildRequires:  ppp-devel
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.32
@@ -71,6 +74,7 @@ NetworkManager.
 %autosetup -p1
 
 %build
+autoreconf -fiv
 %configure \
 	--disable-static \
 	--with-pppd-plugin-dir=%{pppd_plugin_dir} \

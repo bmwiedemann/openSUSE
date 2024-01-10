@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan  6 11:39:48 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+- Fix build error in Leap.
+- Fix warning python-sitelib-glob-in-files.
+
+-------------------------------------------------------------------
 Wed Oct 11 10:53:56 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 23.5.26

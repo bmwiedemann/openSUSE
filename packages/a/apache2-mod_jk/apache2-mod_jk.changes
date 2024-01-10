@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 21 13:51:41 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Add apache2-fix-symbol-export-typo.patch to fix a typo to restrict
+  the symbols to export by the module. Fixes bsc#1206261.
+
+-------------------------------------------------------------------
 Tue Oct 17 07:41:10 UTC 2023 - David Anes <david.anes@suse.com>
 
 - Update to version 1.2.49:
@@ -6,12 +12,13 @@ Tue Oct 17 07:41:10 UTC 2023 - David Anes <david.anes@suse.com>
     * Retrieve default request id from mod_unique_id. It can also be
       taken from an arbitrary environment variable by configuring
       "JkRequestIdIndicator".
-    * Don't delegate the generatation of the response body to httpd
+    * Don't delegate the generation of the response body to httpd
       when the status code represents an error if the request used
       the HEAD method.
     * Only export the main module symbol. Visibility of module 
       internal symbols led to crashes when conflicting with library
-      symbols. Based on a patch provided by Josef Čejka.
+      symbols. Based on a patch provided by Josef Čejka. (wrong fix
+      was applied for bsc#1206261)
     * Remove support for implicit mapping of requests to workers. 
       All mappings must now be explicit.
   IIS
@@ -24,7 +31,7 @@ Tue Oct 17 07:41:10 UTC 2023 - David Anes <david.anes@suse.com>
     * Add a request id to mod_jk log lines.
     * Enable configure to find the correct sizes for pid_t and 
       pthread_t when building on MacOS.
-    * Fix Clang 15/16 compatability. Pull request #6 provided by 
+    * Fix Clang 15/16 compatibility. Pull request #6 provided by 
       Sam James.
     * Improve XSS hardening in status worker.
     * Add additional bounds and error checking when reading AJP 

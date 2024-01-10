@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -83,6 +83,14 @@ Patch104:       CVE-2023-38559.patch
 # see https://bugs.ghostscript.com/show_bug.cgi?id=707051
 # and https://bugzilla.suse.com/show_bug.cgi?id=1215466
 Patch105:       CVE-2023-43115.patch
+# Patch106 CVE-2023-46751.patch is
+# https://git.ghostscript.com/?p=ghostpdl.git;a=commitdiff;h=dcdbc595c13
+# adapted for Ghostscript-9.56.1 that fixes
+# https://bugs.ghostscript.com/show_bug.cgi?id=707264
+# which includes a fix for CVE-2023-46751
+# "dangling pointer in gdev_prn_open_printer_seekable()"
+# see https://bugzilla.suse.com/show_bug.cgi?id=1217871
+Patch106:       CVE-2023-46751.patch
 # Build Requirements:
 BuildRequires:  freetype2-devel
 BuildRequires:  libjpeg-devel
@@ -187,7 +195,7 @@ Obsoletes:      ghostscript-library < %{version}
 # this package ghostscript should replace any version of ghostscript-mini.
 Obsoletes:      ghostscript-mini
 %if 0%{?suse_version} > 1210
-Recommends:     cups-filters-ghostscript
+Recommends:     (cups-filters-ghostscript if cups)
 %endif
 %endif
 
@@ -318,6 +326,14 @@ This package contains the development files for Ghostscript.
 # see https://bugs.ghostscript.com/show_bug.cgi?id=707051
 # and https://bugzilla.suse.com/show_bug.cgi?id=1215466
 %patch105
+# Patch106 CVE-2023-46751.patch is
+# https://git.ghostscript.com/?p=ghostpdl.git;a=commitdiff;h=dcdbc595c13
+# adapted for Ghostscript-9.56.1 that fixes
+# https://bugs.ghostscript.com/show_bug.cgi?id=707264
+# which includes a fix for CVE-2023-46751
+# "dangling pointer in gdev_prn_open_printer_seekable()"
+# see https://bugzilla.suse.com/show_bug.cgi?id=1217871
+%patch106
 # Remove patch backup files to avoid packaging
 # cf. https://build.opensuse.org/request/show/581052
 rm -f Resource/Init/*.ps.orig

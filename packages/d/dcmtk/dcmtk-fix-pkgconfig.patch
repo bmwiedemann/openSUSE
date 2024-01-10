@@ -1,0 +1,55 @@
+From 04b0d6ceef291c22503932348835469bee0ea0a8 Mon Sep 17 00:00:00 2001
+From: Michael Onken <onken@open-connections.de>
+Date: Wed, 25 Jan 2023 10:42:51 +0100
+Subject: [PATCH] Fix builds with absolute CMAKE_INSTALL_LIBDIR.
+
+Thanks to GitHub user StillerHarpo (Florian Engel) for the report and
+suggested patch.
+---
+ CMake/dcmtk.pc.in | 2 +-
+ CMakeLists.txt    | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+Index: dcmtk-3.6.7/CMake/dcmtk.pc.in
+===================================================================
+--- dcmtk-3.6.7.orig/CMake/dcmtk.pc.in
++++ dcmtk-3.6.7/CMake/dcmtk.pc.in
+@@ -1,14 +1,14 @@
+- prefix="@CMAKE_INSTALL_PREFIX@"
+- exec_prefix="${prefix}"
+- libdir="${prefix}/@CMAKE_INSTALL_LIBDIR@"
+- includedir="${prefix}/include/"
++prefix="@CMAKE_INSTALL_PREFIX@"
++exec_prefix="${prefix}"
++libdir="@CMAKE_INSTALL_FULL_LIBDIR@"
++includedir="${prefix}/include/"
+ 
+- Name: DCMTK
+- Description: DICOM Toolkit (DCMTK)
+- URL: https://dcmtk.org
+- Version: @DCMTK_MAJOR_VERSION@.@DCMTK_MINOR_VERSION@.@DCMTK_BUILD_VERSION@
+- Requires: @PKGCONF_REQ_PUB@
+- Requires.private: @PKGCONF_REQ_PRIV@
+- Cflags: -I"${includedir}"
+- Libs: -L"${libdir}" @PKGCONF_LIBS@
+- Libs.private: -L"${libdir}" @PKGCONF_LIBS_PRIV@
++Name: DCMTK
++Description: DICOM Toolkit (DCMTK)
++URL: https://dcmtk.org
++Version: @DCMTK_MAJOR_VERSION@.@DCMTK_MINOR_VERSION@.@DCMTK_BUILD_VERSION@
++Requires: @PKGCONF_REQ_PUB@
++Requires.private: @PKGCONF_REQ_PRIV@
++Cflags: -I"${includedir}"
++Libs: -L"${libdir}" @PKGCONF_LIBS@
++Libs.private: -L"${libdir}" @PKGCONF_LIBS_PRIV@
+Index: dcmtk-3.6.7/CMakeLists.txt
+===================================================================
+--- dcmtk-3.6.7.orig/CMakeLists.txt
++++ dcmtk-3.6.7/CMakeLists.txt
+@@ -208,5 +208,5 @@ configure_file(
+ )
+ 
+ install(FILES "${DCMTK_BINARY_DIR}/dcmtk.pc"
+-    DESTINATION ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/pkgconfig
++    DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig
+ )

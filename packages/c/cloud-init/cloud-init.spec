@@ -67,11 +67,7 @@ BuildRequires:  python3-requests
 BuildRequires:  python3-responses
 BuildRequires:  python3-serial
 BuildRequires:  system-user-nobody
-%if 0%{?is_opensuse}
-BuildRequires:  openSUSE-release
-%else
-BuildRequires:  sles-release
-%endif
+BuildRequires:  distribution-release
 BuildRequires:  util-linux
 Requires:       bash
 Requires:       dhcp-client

@@ -140,4 +140,16 @@ Depends on
     <comment></comment>
     <requestid>984908</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>1b02908b02fb066b505bccd5894c6ac9</srcmd5>
+    <version>2.3.0</version>
+    <time>1704290029</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3.0:
+- Remove no longer required ThePEG_gcc6_failed.patch
+- Run test suite.
+- Add 32-bit ARM to ExcludeArch.
+- Follow shared lib packaging policy by renaming ThePEG-libs to libThePEG* and using a versioned ld.so.conf file.</comment>
+    <requestid>1136499</requestid>
+  </revision>
 </revisionlist>

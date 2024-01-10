@@ -2525,4 +2525,19 @@ New stable rel</comment>
     <comment>Update to 3.50.2 (forwarded request 1130197 from dimstar)</comment>
     <requestid>1130312</requestid>
   </revision>
+  <revision rev="274" vrev="1">
+    <srcmd5>5ba402517d0ecc906be553427f77a36e</srcmd5>
+    <version>3.50.3</version>
+    <time>1704558550</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.50.3:
+  + rss: Ensure feed icon size to not be too large.
+  + Bug Fixes:
+    - Calendar: Improve print of the Month view
+    - rss: Better parse itunes feeds
+    - Drag and drop images in HTML composer from Chrome
+    - EMFolderTree: Do not expand to-be-selected folder
+  + Updated translations. (forwarded request 1137093 from dimstar)</comment>
+    <requestid>1137096</requestid>
+  </revision>
 </revisionlist>

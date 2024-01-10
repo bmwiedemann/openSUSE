@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Dec 22 09:12:34 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 8.2.0. See https://ardour.org/whatsnew.html for the
+  full list of changes
+  New features:
+  * Change default sample rate to 48kHz.
+  * Keep track of the visibility of GUIs for LV2 plugins using the
+    externalUI extension.
+  * When importing tempo maps from Standard MIDI Files, insert the
+    tempo map at the correct position (not always at zero).
+  * When editing MIDI notes, show note length with verbose cursor.
+  * Add Mute button to recorder view.
+  * Allow clearing LV2 plugin scan info.
+  * Always allow playback even if there is no session start/end
+    defined yet.
+  * Improve straight line drawing for note velocity.
+  * Handle situations where user's value for XDG_CONFIG_HOME is
+    not an absolute path.
+  * Optimize tempo map operations for trivial (and overwhelmingly
+    common) case of 1 tempo and 1 meter.
+
+-------------------------------------------------------------------
 Sun Oct 22 09:45:59 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 8.1.0. Hotfix release

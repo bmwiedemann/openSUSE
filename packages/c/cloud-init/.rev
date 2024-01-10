@@ -1136,4 +1136,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1132673</requestid>
   </revision>
+  <revision rev="94" vrev="5">
+    <srcmd5>e64ca0b7929167b6abe9eb0e050ec357</srcmd5>
+    <version>23.3</version>
+    <time>1703024131</time>
+    <user>anag+factory</user>
+    <comment>- Switch build dependency to the generic distribution-release package</comment>
+    <requestid>1133887</requestid>
+  </revision>
 </revisionlist>

@@ -612,4 +612,21 @@ Please do not fwd without building it, and checking new rpmlint warnings we may 
     - Skip any recovery partitions when detecting ESP</comment>
     <requestid>1130794</requestid>
   </revision>
+  <revision rev="70" vrev="2">
+    <srcmd5>00cebd062c8659bf8efb7ed54c1a800a</srcmd5>
+    <version>1.9.10</version>
+    <time>1703198257</time>
+    <user>anag+factory</user>
+    <comment>- Own %{_modulesloaddir}: used to be present via udev-mini -&gt; kmod
+  -&gt; suse-module-tools dependency before. (forwarded request 1134301 from dimstar)</comment>
+    <requestid>1134302</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>4944d43d7e7399d0da8c5e586ae56556</srcmd5>
+    <version>1.9.11</version>
+    <time>1704487244</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1136900</requestid>
+  </revision>
 </revisionlist>

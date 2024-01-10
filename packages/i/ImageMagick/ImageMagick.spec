@@ -1,7 +1,7 @@
 #
 # spec file for package ImageMagick
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define asan_build     0
 %define maj            7
 %define mfr_version    %{maj}.1.1
-%define mfr_revision   21
+%define mfr_revision   25
 %define quantum_depth  16
 %define source_version %{mfr_version}-%{mfr_revision}
 %define clibver        10
@@ -55,8 +55,6 @@ Patch4:         ImageMagick-filter.t-disable-Contrast.patch
 #%%endif
 #%%ifarch s390x
 Patch5:         ImageMagick-s390x-disable-tests.patch
-# https://github.com/ImageMagick/ImageMagick/commit/8f3c56fabc619c1672865257e5aafe33cbfaaf3e https://github.com/ImageMagick/ImageMagick/commit/3a7b915d9a810ce742987b37c935f6ae8b36df10
-Patch6:         ImageMagick-infinite-resource-time-limit.patch
 #%%endif
 BuildRequires:  chrpath
 BuildRequires:  dejavu-fonts
@@ -163,39 +161,34 @@ BuildArch:      noarch
 %package %{config_spec}-upstream-open
 Summary:        Open ImageMagick Security Policy
 Group:          Development/Libraries/C and C++
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
 Provides:       imagick-%{config_spec}
+Conflicts:      otherproviders(imagick-%{config_spec})
 Obsoletes:      %{config_spec}-upstream < %{version}
 Provides:       %{config_spec}-upstream = %{version}
 
 %package %{config_spec}-upstream-limited
 Summary:        Limited ImageMagick Security Policy
 Group:          Development/Libraries/C and C++
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
 Provides:       imagick-%{config_spec}
+Conflicts:      otherproviders(imagick-%{config_spec})
 
 %package %{config_spec}-upstream-secure
 Summary:        Secure ImageMagick Security Policy
 Group:          Development/Libraries/C and C++
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
 Provides:       imagick-%{config_spec}
+Conflicts:      otherproviders(imagick-%{config_spec})
 
 %package %{config_spec}-upstream-websafe
 Summary:        Web-safe ImageMagick Security Policy
 Group:          Development/Libraries/C and C++
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
 Provides:       imagick-%{config_spec}
+Conflicts:      otherproviders(imagick-%{config_spec})
 
 %package %{config_spec}-SUSE
 Summary:        SUSE Provided Configuration
 Group:          Development/Libraries/C and C++
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
 Provides:       imagick-%{config_spec}
+Conflicts:      otherproviders(imagick-%{config_spec})
 
 %description
 ImageMagick is a robust collection of tools and libraries to read,
@@ -357,7 +350,6 @@ policy plus disable few other coders for reading and/or writing.
 %ifarch s390x
 %patch5 -p1
 %endif
-%patch6 -p1
 
 %build
 # bsc#1088463
@@ -489,90 +481,6 @@ sed -i 's:%{buildroot}::' %{buildroot}/%{_libdir}/ImageMagick-%{mfr_version}/con
 %postun -n libMagickWand%{libspec}%{cwandver} -p /sbin/ldconfig
 %post -n libMagick++%{libspec}%{cxxlibver} -p /sbin/ldconfig
 %postun -n libMagick++%{libspec}%{cxxlibver} -p /sbin/ldconfig
-
-%post %{config_spec}-upstream-open
-%{_sbindir}/update-alternatives --quiet --install %{_sysconfdir}/%{config_dir}  %{config_dir}   %{_sysconfdir}/%{config_dir}-upstream-open  1
-
-%postun %{config_spec}-upstream-open
-if [ ! -d %{_sysconfdir}/%{config_dir}-upstream ] ; then
-    %{_sbindir}/update-alternatives --quiet --remove %{config_dir}  %{_sysconfdir}/%{config_dir}-upstream
-fi
-
-%post %{config_spec}-upstream-limited
-%{_sbindir}/update-alternatives --quiet --install %{_sysconfdir}/%{config_dir}  %{config_dir}   %{_sysconfdir}/%{config_dir}-upstream-limited  5
-
-%postun %{config_spec}-upstream-limited
-if [ ! -d %{_sysconfdir}/%{config_dir}-upstream ] ; then
-    %{_sbindir}/update-alternatives --quiet --remove %{config_dir}  %{_sysconfdir}/%{config_dir}-upstream-limited
-fi
-
-%post %{config_spec}-upstream-secure
-%{_sbindir}/update-alternatives --quiet --install %{_sysconfdir}/%{config_dir}  %{config_dir}   %{_sysconfdir}/%{config_dir}-upstream-secure  10
-
-%postun %{config_spec}-upstream-secure
-if [ ! -d %{_sysconfdir}/%{config_dir}-upstream ] ; then
-    %{_sbindir}/update-alternatives --quiet --remove %{config_dir}  %{_sysconfdir}/%{config_dir}-upstream-secure
-fi
-
-%pretrans %{config_spec}-upstream-open -p <lua>
--- this %pretrans to be removed soon [bug#1122033#c37]
-path = "%{_sysconfdir}/%{config_dir}"
-st = posix.stat(path)
-if st and st.type == "directory" then
-  os.remove(path .. ".rpmmoved")
-  os.rename(path, path .. ".rpmmoved")
-end
-
-%pretrans %{config_spec}-upstream-limited -p <lua>
--- this %pretrans to be removed soon [bug#1122033#c37]
-path = "%{_sysconfdir}/%{config_dir}"
-st = posix.stat(path)
-if st and st.type == "directory" then
-  os.remove(path .. ".rpmmoved")
-  os.rename(path, path .. ".rpmmoved")
-end
-%pretrans %{config_spec}-upstream-secure -p <lua>
--- this %pretrans to be removed soon [bug#1122033#c37]
-path = "%{_sysconfdir}/%{config_dir}"
-st = posix.stat(path)
-if st and st.type == "directory" then
-  os.remove(path .. ".rpmmoved")
-  os.rename(path, path .. ".rpmmoved")
-end
-
-%pretrans %{config_spec}-SUSE -p <lua>
--- this %pretrans to be removed soon [bug#1122033#c37]
-path = "%{_sysconfdir}/%{config_dir}"
-st = posix.stat(path)
-if st and st.type == "directory" then
-  os.remove(path .. ".rpmmoved")
-  os.rename(path, path .. ".rpmmoved")
-end
-
-%pretrans %{config_spec}-upstream-websafe -p <lua>
--- this %pretrans to be removed soon [bug#1122033#c37]
-path = "%{_sysconfdir}/%{config_dir}"
-st = posix.stat(path)
-if st and st.type == "directory" then
-  os.remove(path .. ".rpmmoved")
-  os.rename(path, path .. ".rpmmoved")
-end
-
-%post %{config_spec}-SUSE
-%{_sbindir}/update-alternatives --quiet --install %{_sysconfdir}/%{config_dir}  %{config_dir}   %{_sysconfdir}/%{config_dir}-SUSE      15
-
-%postun %{config_spec}-SUSE
-if [ ! -d %{_sysconfdir}/%{config_dir}-SUSE ] ; then
-    %{_sbindir}/update-alternatives --quiet --remove %{config_dir}  %{_sysconfdir}/%{config_dir}-SUSE
-fi
-
-%post %{config_spec}-upstream-websafe
-%{_sbindir}/update-alternatives --quiet --install %{_sysconfdir}/%{config_dir}  %{config_dir}   %{_sysconfdir}/%{config_dir}-upstream-websafe  20
-
-%postun %{config_spec}-upstream-websafe
-if [ ! -d %{_sysconfdir}/%{config_dir}-upstream ] ; then
-    %{_sbindir}/update-alternatives --quiet --remove %{config_dir}  %{_sysconfdir}/%{config_dir}-upstream-websafe
-fi
 
 %files
 %license LICENSE

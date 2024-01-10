@@ -2,6 +2,7 @@
 Mon Nov 20 12:34:46 UTC 2023 - Thomas Renninger <trenn@suse.de>
 
 - Fix library file version: libcpupower.so.0.0.1 -> libcpupower.so.1.0.1
+  (bsc#1217044)
 A cpupower_fix_library_so_name.patch
 
 -------------------------------------------------------------------

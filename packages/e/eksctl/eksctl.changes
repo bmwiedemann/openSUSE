@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Sun Jan 07 17:58:41 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.167.0:
+  * Add release notes for 0.167.0
+  * add documentation for access entries
+  * remove user creation from integration test
+  * fix static errors
+  * address PR comments
+  * add test case for disabled cluster admin permissions
+  * Fix dry-run test
+  * Fix lint errors
+  * only pass necessary fields to access entry action structs
+  * change package aliasing
+  * parse principalARN as cobra value instead of string
+  * Fix error message
+  * patch validations
+  * fix unit + integration tests
+  * delete access entries stacks on cluster deletion + refactor
+    integration test
+  * update access entries integration test to account for multiple
+    use cases
+  * refactor get and delete command to check API availability using
+    cluster status
+  * Remove node policy check
+  * Add new utils command to enable access entries API
+  * Add support for access entries get and delete commands
+  * Fix printers tests
+  * Add tests for bootstrapClusterCreatorAdminPermissions
+  * Validate access to the Kubernetes API server
+  * Refactor unit tests, add more test cases
+  * Add unit tests, generate schema
+  * Add integration tests for self-managed nodegroups using access
+    entries
+  * Authorise self-managed nodegroups using access entries
+  * Add support for creating access entries
+  * Support disabling cluster-admin access for cluster creator
+  * Add support for ca-west-1
+  * Bump AWS dependencies, fix test
+  * Update build image
+  * Bump dependencies
+  * skip role creation if already existing (#7407)
+  * fix info message around used EC2 key pair (#7405)
+  * temporarly remove irsav1 cluster deletion (#7383)
+  * Prepare for next development iteration
+
+-------------------------------------------------------------------
+Fri Dec 15 15:32:58 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.166.0:
+  * Add release notes for 0.166
+  * Fix typo
+  * Skip pod identity migration tests
+  * Generate deep copies of IAMStatement
+  * Correct documentation example link
+  * Add utils command to migrate to pod identity associations
+  * (#7343)
+  * Update reference for bottlerocket settings (#7375)
+  * Disable module caching in actions/setup-go
+  * Bump actions/first-interaction from 1.2.0 to 1.3.0
+  * Bump docker/metadata-action from 5.0.0 to 5.3.0
+  * Fix STS interface
+  * Update build image tag and actions
+  * Fix `build-integration-test` for pod_identity_associations
+  * Prepare for next development iteration
+
+-------------------------------------------------------------------
 Wed Nov 29 05:46:59 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.165.0:

@@ -643,4 +643,27 @@
   + Update translations</comment>
     <requestid>1123356</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>c3348fba6348c35838fc588dd8565968</srcmd5>
+    <version>4.18.0</version>
+    <time>1702844945</time>
+    <user>anag+factory</user>
+    <comment>- Add scriptlet dependencies for dnf-data subpackage</comment>
+    <requestid>1133670</requestid>
+  </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>b2ec6efceb7eb2f2fc5df0815d4bd9cd</srcmd5>
+    <version>4.18.0</version>
+    <time>1702884649</time>
+    <user>dimstar_suse</user>
+    <comment>Revert last change; pretrans cannot ever call out of lua</comment>
+  </revision>
+  <revision rev="38" vrev="4">
+    <srcmd5>328335fe4582ce28644bfda8ed9b26b2</srcmd5>
+    <version>4.18.0</version>
+    <time>1703024121</time>
+    <user>anag+factory</user>
+    <comment>- Add Requires(post) dependency for dnf-data</comment>
+    <requestid>1133852</requestid>
+  </revision>
 </revisionlist>

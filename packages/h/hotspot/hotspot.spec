@@ -26,12 +26,14 @@ URL:            https://github.com/KDAB/hotspot
 Source:         https://github.com/KDAB/hotspot/releases/download/v%{version}/hotspot-v%{version}.tar.gz
 # PATCH-FIX-UPSTREAM Make privilege escalation optional (CVE-2023-28144)
 Patch0:         0001-Opt-in-via-CMake-to-allow-privilege-escalation.patch
+BuildRequires:  extra-cmake-modules
 BuildRequires:  glibc-devel-static
 BuildRequires:  kddockwidgets-devel
 BuildRequires:  libdw-devel
 BuildRequires:  libelf-devel
 BuildRequires:  libzstd-devel
 BuildRequires:  qcustomplot-devel
+BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5ConfigWidgets)
 BuildRequires:  cmake(KF5CoreAddons)

@@ -22,15 +22,18 @@
 %bcond_without boost_signals2
 # The AddonManager requires Python >= 3.8
 %bcond_without fc_addonmanager
+# zipios not yet in TW
+%bcond_with    zipios
 %else
 %bcond_with    boost_signals2
 %bcond_with    fc_addonmanager
+%bcond_with    zipios
 %endif
 %bcond_with    smesh_external
 %bcond_without smesh
 
 Name:           FreeCAD
-Version:        0.21.1
+Version:        0.21.2
 Release:        0
 Summary:        General Purpose 3D CAD Modeler
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
@@ -45,6 +48,8 @@ Patch1:         0001-Avoid-catching-SIGSEGV-defer-to-system-services.patch
 Patch2:         0001-Implement-math.comb-fallback-for-Python-3.6.patch
 # PATCH-FIX-UPSTREAM
 Patch9:         0001-Fix-variable-name-for-OpenGL-library.patch
+# PATCH-FIX-UPSTREAM
+Patch10:        https://github.com/FreeCAD/FreeCAD/commit/d0fb2b8b29fe0428d9dd8aa790b0d6e45c8a9516.patch#/fix_vtk_9_3_compat.patch
 
 # Test suite fails on 32bit and I don't want to debug that anymore
 ExcludeArch:    %ix86 %arm ppc s390 s390x
@@ -94,6 +99,9 @@ BuildRequires:  python3-pyside2-devel
 BuildRequires:  python3-vtk
 BuildRequires:  python3-xml
 BuildRequires:  cmake(GTest)
+%if %{with zipios}
+BuildRequires:  cmake(ZipIos)
+%endif
 BuildRequires:  cmake(coin)
 BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5OpenGL)
@@ -142,6 +150,7 @@ This package contains the files needed for development with FreeCAD.
 %prep
 %setup -q
 %autopatch -p1
+
 # Use system gtest - https://github.com/FreeCAD/FreeCAD/issues/10126
 sed -i -e 's/add_subdirectory(lib)/find_package(GTest)/' \
        -e 's/ gtest_main/ GTest::gtest_main/' \
@@ -215,6 +224,7 @@ rm tests/lib -fr
   -DBUILD_OPENSCAD:BOOL=ON \
   -DBUILD_FLAT_MESH:BOOL=ON \
   -DFREECAD_USE_EXTERNAL_SMESH=%{?with_smesh_external:ON}%{!?with_smesh_external:OFF} \
+  -DFREECAD_USE_EXTERNAL_ZIPIOS=%{?with_zipios:ON}%{!?with_zipios:OFF} \
   -DBUILD_SMESH:BOOL=ON \
   -DBUILD_MESH_PART:BOOL=ON \
   -DBUILD_FEM:BOOL=%{?with_smesh:ON}%{!?with_smesh:OFF} \

@@ -25,7 +25,7 @@ Summary:        Package manager for the Erlang VM
 License:        Apache-2.0
 Group:          Development/Libraries/Other
 URL:            https://github.com/hexpm/hex
-Source:         %{app_name}-v%{version}.tar.bz2
+Source:         %{app_name}-%{version}.tar.xz
 BuildRequires:  elixir
 Requires:       elixir
 BuildArch:      noarch
@@ -38,7 +38,7 @@ This project currently provides tasks that integrate with Mix, Elixir's build to
 See http://hex.pm for installation instructions and other documentation.
 
 %prep
-%setup -q -n %{app_name}-v%{version}
+%setup -q -n %{app_name}-%{version}
 
 %build
 export LANG=en_US.UTF-8

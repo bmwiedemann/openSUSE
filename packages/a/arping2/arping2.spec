@@ -1,7 +1,7 @@
 #
 # spec file for package arping2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           arping2
-Version:        2.23
+Version:        2.24
 Release:        0
 Summary:        Layer-2 Ethernet pinger
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Diagnostic
 URL:            https://www.habets.pp.se/synscan/programs.php?prog=arping
-#Git-Clone:	git://github.com/ThomasHabets/arping
+#Git-Clone:	https://github.com/ThomasHabets/arping
 Source:         https://www.habets.pp.se/synscan/files/arping-%version.tar.gz
 Source2:        https://www.habets.pp.se/synscan/files/arping-%version.tar.gz.asc
 Source3:        %name.keyring
@@ -48,6 +48,8 @@ b="%buildroot"
 # Avoid collision with iputils's inferior arping.
 mv "$b/%_sbindir/arping" "$b/%_sbindir/%name"
 mv "$b/%_mandir/man8/arping.8" "$b/%_mandir/man8/arping2.8"
+# Unused
+rm -Rv "$b/%_includedir"
 
 %files
 %_sbindir/arping2

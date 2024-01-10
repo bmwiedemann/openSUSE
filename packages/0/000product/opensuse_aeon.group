@@ -11,6 +11,8 @@
     <package name="Mesa-libGL1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="Mesa-libglapi0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="Mesa-libva" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
+    <package name="MicroOS-release" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:suse-module-tools-scriptlets -->
+    <package name="MicroOS-release-appliance" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:suse-module-tools-scriptlets -->
     <package name="ModemManager" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="ModemManager-bash-completion" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="ModemManager-lang" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
@@ -79,7 +81,7 @@
     <package name="bluez-cups" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="bluez-firmware" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="bolt" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
-    <package name="boost-license1_83_0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
+    <package name="boost-license1_84_0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="branding-openSUSE" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="brltty" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="brltty-driver-at-spi2" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
@@ -484,8 +486,6 @@
     <package name="iso_ent" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="issue-generator" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="jack-dbus" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
-    <package name="java-11-openjdk" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:suse-module-tools-scriptlets -->
-    <package name="java-11-openjdk-headless" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:suse-module-tools-scriptlets -->
     <package name="java-21-openjdk" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="java-21-openjdk-headless" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="javapackages-filesystem" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
@@ -501,6 +501,7 @@
     <package name="kernel-firmware-amdgpu" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="kernel-firmware-ath10k" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="kernel-firmware-ath11k" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
+    <package name="kernel-firmware-ath12k" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="kernel-firmware-atheros" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="kernel-firmware-bluetooth" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="kernel-firmware-bnx2" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
@@ -648,7 +649,7 @@
     <package name="libaom3" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libapparmor1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libappstream-glib8" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
-    <package name="libappstream4" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
+    <package name="libappstream5" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libarchive13" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libargon2-1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libasm1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
@@ -694,9 +695,9 @@
     <package name="libblogger2" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libbluetooth3" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libbluray2" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
-    <package name="libboost_iostreams1_83_0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
-    <package name="libboost_locale1_83_0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
-    <package name="libboost_thread1_83_0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
+    <package name="libboost_iostreams1_84_0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
+    <package name="libboost_locale1_84_0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
+    <package name="libboost_thread1_84_0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libbox2d2" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libbpf1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libbrlapi0_8" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
@@ -1301,9 +1302,13 @@
     <package name="libtracker-sparql-3_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libts0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libtss2-esys0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
+    <package name="libtss2-fapi1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libtss2-mu0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libtss2-rc0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libtss2-sys1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
+    <package name="libtss2-tcti-device0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
+    <package name="libtss2-tcti-tabrmd0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
+    <package name="libtss2-tctildr0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libtukit4" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libtwolame0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libubsan1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
@@ -1497,8 +1502,6 @@
     <package name="ntfsprogs" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="open-lldp" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="openSUSE-build-key" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
-    <package name="openSUSE-release" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:suse-module-tools-scriptlets -->
-    <package name="openSUSE-release-ftp" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:suse-module-tools-scriptlets -->
     <package name="openal-soft-data" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="opencc-data" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="openconnect" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
@@ -1530,6 +1533,7 @@
     <package name="parted-lang" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="patterns-aeon-base" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="pciutils" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
+    <package name="pcr-oracle" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="pcsc-lite" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="pentaho-libxml" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="pentaho-reporting-flow-engine" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
@@ -1760,6 +1764,7 @@
     <package name="system-user-root" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="system-user-srvGeoClue" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="system-user-tftp" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
+    <package name="system-user-tss" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="systemd" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="systemd-boot" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="systemd-coredump" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
@@ -1794,6 +1799,10 @@
     <package name="totem-pl-parser" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="totem-pl-parser-lang" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="totem-video-thumbnailer" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
+    <package name="tpm2-0-tss" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
+    <package name="tpm2.0-abrmd" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
+    <package name="tpm2.0-abrmd-selinux" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
+    <package name="tpm2.0-tools" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="tracker" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="tracker-data-files" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="tracker-lang" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->

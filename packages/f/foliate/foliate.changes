@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jan  6 20:03:28 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 3.1.0:
+  * Added support for OPDS catalogs, now with support for OPDS 2.0.
+  * Added option to override publisher font.
+  * Added option to reduce animation.
+  * Added support for JPEG XL in CBZ.
+  * Fixed parsing of non-year-only first-century and BCE dates. 
+
+-------------------------------------------------------------------
 Mon Nov 20 10:56:16 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 3.0.1:

@@ -1,7 +1,7 @@
 #
 # spec file for package fastjet-contrib
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define shlib libfastjetcontribfragile
 Name:           fastjet-contrib
-Version:        1.052
+Version:        1.053
 Release:        0
 Summary:        A library of 3rd-party add-ons to FastJet
 License:        GPL-2.0-only
@@ -59,7 +59,8 @@ This package provides the static libraries for fastjet-contrib to link against.
 %build
 # %%configure does not work as a few of the args passed to it isn't recognised by the configure script
 ./configure --fastjet-config=%{_bindir}/fastjet-config --prefix=%{buildroot}%{_prefix}
-
+# Examples are used by make check
+%make_build examples
 %make_build fragile-shared
 
 %install
@@ -72,15 +73,17 @@ mkdir -p %{buildroot}%{_libdir}
 mv %{buildroot}%{_prefix}/lib/* %{buildroot}%{_libdir}/
 %endif
 
+%check
+%make_build check
+
 %files -n %{shlib}
 %{_libdir}/*.so
 
 %files devel-static
-%doc AUTHORS ChangeLog README NEWS
-%license COPYING
 %{_libdir}/*.a
 
 %files devel
+%doc AUTHORS ChangeLog README NEWS
 %license COPYING
 %{_includedir}/fastjet/contrib/
 

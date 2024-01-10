@@ -3,7 +3,7 @@
     <param name="url">https://github.com/ast-grep/ast-grep.git</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
     <param name="scm">git</param>
-    <param name="revision">0.14.4</param>
+    <param name="revision">0.16.1</param>
     <param name="match-tag">*</param>
     <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
     <param name="versionrewrite-replacement">\1</param>
@@ -18,5 +18,8 @@
      <param name="src">ast-grep</param>
      <param name="compression">zst</param>
      <param name="update">true</param>
+  </service>
+  <service name="cargo_audit" mode="disabled">
+     <param name="srcdir">ast-grep</param>
   </service>
 </services>

@@ -1,4 +1,94 @@
 -------------------------------------------------------------------
+Sun Dec 31 17:19:03 UTC 2023 - Jan-Luca Kiok <opensuse-packages@jlk.one>
+
+- Enable automatic updates of vendored dependencies
+- Remove cargo_config since it's now build by cargo_vendor
+- Generate manpages via scdoc
+- Update to version 0.13.0:
+  * Added
+    + Warnings for unused configuration file options
+    + Config option persist in hints config section
+    + Support for keybindings with dead keys
+    + Back/Forward mouse buttons support in bindings
+    + Copy global IPC options (-w -1) for new windows
+    + Support startup notify protocol to raise initial window on
+      Wayland/X11
+    + Debug option prefer_egl to prioritize EGL over other display
+      APIs
+    + Inline vi-mode search using f/F/t/T
+    + window.blur config option to request blur for transparent
+      windows
+    + --option argument for alacritty msg create-window
+    + Support for DECRQM/DECRPM escape sequences
+    + Support for kitty's keyboard protocol
+  * Changed
+    + Mode-specific bindings can now be bound in any mode for
+      easier macros
+    + --help output is more compact now and uses more neutral
+      palette
+    + Configuration file now uses TOML instead of YAML
+    + Deprecated config option draw_bold_text_with_bright_colors,
+      use colors.draw_bold_text_with_bright_colors
+    + Deprecated config option key_bindings, use keyboard.bindings
+    + Deprecated config option mouse_bindings, use mouse.bindings
+    + The default colorscheme is now based on base16 classic dark
+    + IME popup now tries to not obscure the current cursor line
+    + The double click threshold was raised to 400ms
+    + OSC 52 paste ability is now disabled by default; use
+      terminal.osc52 to adjust it
+    + Apply colors.transparent_background_colors for selections,
+      hints, and search matches
+    + Underline full hint during keyboard selection
+    + Synchronized updates now use CSI 2026 instead of legacy DCS
+      variant
+    + In mouse mode with Shift pressed, mouse bindings without
+      Shift are only triggered if no exact binding (i.e. one with
+      Shift) is found.
+    + Use built-in font for powerline symbols from U+E0B0 to U+E0B3
+    + Default bell.animation is now Linear
+    + IncreaseFontSize/DecreaseFontSize step is now 1px
+    + font.size precision was raised to 6 floating point digits
+    + Default font size to 11.25 matching 15px
+    + Xft.dpi is now reloaded when xsettingd change its value on
+      X11
+  * Fixed
+    + Unconditional query of xdg-portal settings on Wayland
+    + Maximized startup mode not filling the screen properly on
+      GNOME Wayland
+    + Default Vi key bindings for Last/First actions not working on
+      X11/Wayland
+    + Cut off wide characters in preedit string
+    + Scrolling on touchscreens
+    + Double clicking on CSD titlebar not always maximizing a
+      window on Wayland
+    + Excessive memory usage when using regexes with a large number
+      of possible states window.decorations_theme_variant not live
+      reloading
+    + Copy/Paste being truncated to 64KiB on Wayland
+    + X11 clipboard lagging behind sometimes
+    + High wakeup count on Wayland due to clipboard polling
+    + Blocking paste freezing alacritty on Wayland
+    + Crash on exit when using NVIDIA binary drivers on Wayland
+    + window.startup_mode applied to window again when creating new
+      tab
+    + Crash when leaving search after resize
+    + Cursor being hidden after reaching cursor blinking timeout
+    + Message bar content getting stuck after closing with multiple
+      messages on Wayland
+    + Vi cursor position not redrawn on PageUp/PageDown without
+      scrollback
+    + Cursor not updating when blinking and viewport is scrolled
+    + Failure to start with recent version of mesa's i915 driver
+    + Error when using chars inside the mouse bindings
+  * Removed
+    + Config option background_opacity, use
+      window.background_opacity
+    + Config option colors.search.bar, use colors.footer_bar
+      instead
+    + Config option mouse.url, use the hints config section
+    + Config options mouse.double_click and mouse.triple_click
+
+-------------------------------------------------------------------
 Wed Oct 11 12:22:28 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Replace freetype-devel BuildRequires with freetype2: this is

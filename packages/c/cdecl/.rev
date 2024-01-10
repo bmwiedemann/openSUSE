@@ -546,4 +546,12 @@
     <comment>- Update to release 15</comment>
     <requestid>1114883</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>0254070e210acc5be4b8dd44f85b85bb</srcmd5>
+    <version>16.0</version>
+    <time>1704558569</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 16</comment>
+    <requestid>1137173</requestid>
+  </revision>
 </revisionlist>

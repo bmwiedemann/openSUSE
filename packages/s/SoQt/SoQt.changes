@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Jan  6 12:20:55 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to 1.6.2:
+  * bugfixes:
+    + Fixed numerous typos found with codespell
+- update to 1.6.1:
+  * new:
+    + Home of Coin3d organization has been changed to
+      https://github.com/coin3d
+    + Added support for Qt6
+  * bugfixes:
+    + Fixed numerous documentation issues
+    + Added SOQT_BUILD_TESTS option to control building of test
+      code (default: ON)
+    + Fix hidpi black screen issue
+    + Fix broken SoQt.pc.cmake.in. Added -lSoQt
+    + Fix wrong glwidget geometry size for Qt4
+    + Add handling for background color RGBA
+
+-------------------------------------------------------------------
 Tue Feb 22 00:47:01 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Adapt for Coin4, remove

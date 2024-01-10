@@ -41,10 +41,10 @@ Rebased for gmic 3.2.2
  create mode 100644 gmic-qt/src/Host/KritaPlugin/host.cpp
 
 diff --git a/gmic-qt/CMakeLists.txt b/gmic-qt/CMakeLists.txt
-index 8e4bd38..9aa0568 100644
+index dc72daa..f3f0f9e 100644
 --- a/gmic-qt/CMakeLists.txt
 +++ b/gmic-qt/CMakeLists.txt
-@@ -22,7 +22,7 @@ endif()
+@@ -30,7 +30,7 @@ endif()
 
  message("Build type is " ${CMAKE_BUILD_TYPE})
 
@@ -53,7 +53,7 @@ index 8e4bd38..9aa0568 100644
  if (${GMIC_QT_HOST} STREQUAL "none")
    message("Building standalone version.")
  else()
-@@ -658,6 +658,70 @@ if (${GMIC_QT_HOST} STREQUAL "gimp" OR ${GMIC_QT_HOST} STREQUAL "gimp3")
+@@ -699,6 +699,70 @@ if (${GMIC_QT_HOST} STREQUAL "gimp" OR ${GMIC_QT_HOST} STREQUAL "gimp3")
        )
      install(TARGETS gmic_gimp_qt RUNTIME DESTINATION "${GIMP_PKGLIBDIR}/plug-ins/gmic_gimp_qt")
 
@@ -124,15 +124,15 @@ index 8e4bd38..9aa0568 100644
  elseif (${GMIC_QT_HOST} STREQUAL "none")
 
    set (gmic_qt_SRCS ${gmic_qt_SRCS}
-@@ -710,7 +774,7 @@ elseif (${GMIC_QT_HOST} STREQUAL "8bf")
-     )
+@@ -781,7 +845,7 @@ elseif (${GMIC_QT_HOST} STREQUAL "8bf")
 
  else()
--    message(FATAL_ERROR "GMIC_QT_HOST is not defined as gimp, gimp3, none, paintdotnet or 8bf")
-+    message(FATAL_ERROR "GMIC_QT_HOST is not defined as gimp, gimp3, krita-plugin, none, paintdotnet or 8bf")
+
+-  message(FATAL_ERROR "GMIC_QT_HOST is not defined as gimp, gimp3, none, paintdotnet or 8bf")
++  message(FATAL_ERROR "GMIC_QT_HOST is not defined as gimp, gimp3, krita-plugin, none, paintdotnet or 8bf")
+
  endif()
 
- feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
 diff --git a/gmic-qt/gmic_krita_qt.desktop b/gmic-qt/gmic_krita_qt.desktop
 new file mode 100644
 index 0000000..579d427
@@ -246,7 +246,7 @@ index 6c1e6b9..29328c4 100644
    Settings::save(settings);
    QDialog::done(r);
 diff --git a/gmic-qt/src/FilterParameters/BoolParameter.cpp b/gmic-qt/src/FilterParameters/BoolParameter.cpp
-index 41a5f04..619a480 100644
+index 8a09de7..90c5eed 100644
 --- a/gmic-qt/src/FilterParameters/BoolParameter.cpp
 +++ b/gmic-qt/src/FilterParameters/BoolParameter.cpp
 @@ -63,12 +63,14 @@ bool BoolParameter::addTo(QWidget * widget, int row)
@@ -450,7 +450,7 @@ index 3af90b3..17b98c3 100644
  #if !QT_VERSION_GTE(6, 0, 0)
    if (QSettings().value(HIGHDPI_KEY, false).toBool()) {
 diff --git a/gmic-qt/src/HeadlessProcessor.cpp b/gmic-qt/src/HeadlessProcessor.cpp
-index de6dc90..aa216e7 100644
+index f10efc3..a595ec1 100644
 --- a/gmic-qt/src/HeadlessProcessor.cpp
 +++ b/gmic-qt/src/HeadlessProcessor.cpp
 @@ -27,6 +27,7 @@
@@ -1062,7 +1062,7 @@ index 7e74667..0c92a47 100644
      }
    }
 diff --git a/gmic-qt/src/MainWindow.cpp b/gmic-qt/src/MainWindow.cpp
-index 285b674..2af1aee 100644
+index ba017ac..b7702b9 100644
 --- a/gmic-qt/src/MainWindow.cpp
 +++ b/gmic-qt/src/MainWindow.cpp
 @@ -187,8 +187,12 @@ MainWindow::MainWindow(QWidget * parent) : QMainWindow(parent), ui(new Ui::MainW
@@ -1094,17 +1094,17 @@ index 285b674..2af1aee 100644
 
  void MainWindow::setPluginParameters(const RunParameters & parameters)
  {
-@@ -359,7 +365,9 @@ void MainWindow::onUpdateDownloadsFinished(int status)
+@@ -360,7 +366,9 @@ void MainWindow::onUpdateDownloadsFinished(int status)
+     showMessage(tr("No download was needed."), 3000);
    }
 
-   buildFiltersTree();
 +#ifndef _GMIC_QT_DISABLE_UPDATES_
    ui->tbUpdateFilters->setEnabled(true);
 +#endif
    if (_filtersPresenter->currentFilter().hash.isEmpty()) {
      setNoFilter();
    } else {
-@@ -381,7 +389,7 @@ void MainWindow::buildFiltersTree()
+@@ -382,7 +390,7 @@ void MainWindow::buildFiltersTree()
      _filtersPresenter->importGmicGTKFaves();
      _filtersPresenter->saveFaves();
      _gtkFavesShouldBeImported = false;
@@ -1113,7 +1113,7 @@ index 285b674..2af1aee 100644
    }
    _filtersPresenter->toggleSelectionMode(withVisibility);
  }
-@@ -489,7 +497,7 @@ void MainWindow::onStartupFiltersUpdateFinished(int status)
+@@ -490,7 +498,7 @@ void MainWindow::onStartupFiltersUpdateFinished(int status)
    } else if (status == (int)Updater::UpdateStatus::NotNecessary) {
    }
 
@@ -1122,7 +1122,7 @@ index 285b674..2af1aee 100644
      _gtkFavesShouldBeImported = false;
    } else {
      _gtkFavesShouldBeImported = askUserForGTKFavesImport();
-@@ -507,7 +515,7 @@ void MainWindow::onStartupFiltersUpdateFinished(int status)
+@@ -508,7 +516,7 @@ void MainWindow::onStartupFiltersUpdateFinished(int status)
    }
 
    // Retrieve and select previously selected filter
@@ -1131,7 +1131,7 @@ index 285b674..2af1aee 100644
    if (_newSession || !_lastExecutionOK) {
      hash.clear();
    }
-@@ -572,7 +580,9 @@ void MainWindow::onEscapeKeyPressed()
+@@ -573,7 +581,9 @@ void MainWindow::onEscapeKeyPressed()
      } else {
        _processor.cancel();
        ui->previewWidget->displayOriginalImage();
@@ -1141,7 +1141,7 @@ index 285b674..2af1aee 100644
      }
    }
  }
-@@ -689,7 +699,9 @@ void MainWindow::onPreviewUpdateRequested(bool synchronous)
+@@ -690,7 +700,9 @@ void MainWindow::onPreviewUpdateRequested(bool synchronous)
      ui->previewWidget->displayOriginalImage();
      return;
    }
@@ -1151,7 +1151,7 @@ index 285b674..2af1aee 100644
 
    const FiltersPresenter::Filter currentFilter = _filtersPresenter->currentFilter();
    GmicProcessor::FilterContext context;
-@@ -752,14 +764,26 @@ void MainWindow::onPreviewImageAvailable()
+@@ -753,14 +765,26 @@ void MainWindow::onPreviewImageAvailable()
    }
    ui->previewWidget->setPreviewImage(_processor.previewImage());
    ui->previewWidget->enableRightClick();
@@ -1178,7 +1178,7 @@ index 285b674..2af1aee 100644
  }
 
  void MainWindow::onParametersChanged()
-@@ -840,12 +864,16 @@ void MainWindow::onVeryFirstShowEvent()
+@@ -841,12 +865,16 @@ void MainWindow::onVeryFirstShowEvent()
    Updater::setOutputMessageMode(Settings::outputMessageMode());
    int ageLimit;
    {
@@ -1197,7 +1197,7 @@ index 285b674..2af1aee 100644
  }
 
  void MainWindow::setZoomConstraint()
-@@ -980,7 +1008,7 @@ void MainWindow::saveCurrentParameters()
+@@ -981,7 +1009,7 @@ void MainWindow::saveCurrentParameters()
 
  void MainWindow::saveSettings()
  {
@@ -1206,7 +1206,7 @@ index 285b674..2af1aee 100644
 
    _filtersPresenter->saveSettings(settings);
 
-@@ -1022,7 +1050,7 @@ void MainWindow::saveSettings()
+@@ -1023,7 +1051,7 @@ void MainWindow::saveSettings()
 
  void MainWindow::loadSettings()
  {
@@ -1215,7 +1215,7 @@ index 285b674..2af1aee 100644
    _filtersPresenter->loadSettings(settings);
    _lastExecutionOK = settings.value("LastExecution/ExitedNormally", true).toBool();
    _newSession = host_app_pid() != settings.value("LastExecution/HostApplicationID", 0).toUInt();
-@@ -1037,9 +1065,11 @@ void MainWindow::loadSettings()
+@@ -1038,9 +1066,11 @@ void MainWindow::loadSettings()
    if (settings.value("Config/PreviewPosition", "Left").toString() == "Left") {
      setPreviewPosition(PreviewPosition::Left);
    }
@@ -1227,7 +1227,7 @@ index 285b674..2af1aee 100644
    if (!Settings::visibleLogos()) {
      ui->logosLabel->hide();
    }
-@@ -1083,7 +1113,7 @@ void MainWindow::loadSettings()
+@@ -1084,7 +1114,7 @@ void MainWindow::loadSettings()
      ui->splitter->setSizes(sizes);
    }
 
@@ -1236,7 +1236,7 @@ index 285b674..2af1aee 100644
  }
 
  void MainWindow::setPreviewPosition(MainWindow::PreviewPosition position)
-@@ -1145,7 +1175,7 @@ void MainWindow::setPreviewPosition(MainWindow::PreviewPosition position)
+@@ -1146,7 +1176,7 @@ void MainWindow::setPreviewPosition(MainWindow::PreviewPosition position)
  void MainWindow::adjustVerticalSplitter()
  {
    QList<int> sizes;
@@ -1424,4 +1424,5 @@ index 10b7ec8..f03ef4c 100644
            <string>Theme</string>
           </property>
 --
-2.40.0
+2.43.0
+

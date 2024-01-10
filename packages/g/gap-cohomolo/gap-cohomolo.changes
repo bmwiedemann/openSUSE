@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Sun Jan 29 13:16:33 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- update to release 1.6.11
+  * Build system updates only
+
+-------------------------------------------------------------------
+Mon Apr 25 19:46:47 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.6.10
+  * Build fixes only
+
+-------------------------------------------------------------------
+Wed Nov 14 20:23:51 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.6.7
+  * Metadata (maintainer info) update only
+
+-------------------------------------------------------------------
+Fri Sep  7 11:09:05 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.6.6
+  * Fixed a bug were using GAP in a narrow terminal could lead to
+    a communication problem between the GAP package and the
+    standalone C code.
+
+-------------------------------------------------------------------
+Sat Sep  9 13:43:58 UTC 2017 - jengelh@inai.de
+
+- Initial package (version 1.6.4) for build.opensuse.org

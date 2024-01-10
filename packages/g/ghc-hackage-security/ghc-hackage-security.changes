@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Dec 20 13:48:30 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update hackage-security to version 0.6.2.4.
+  0.6.2.4
+  -------
+
+  * Allow `tar-0.6`
+  * Drop support for GHC < 7.8 in favor of `PatternSynonyms`
+  * Drop flags `base48`, `mtl21`, `old-directory` and support for GHC 7.8, `mtl < 2.2` and `directory < 1.2`
+  * Tested with GHC 7.10 - 9.8
+
+-------------------------------------------------------------------
 Fri Oct 13 17:45:41 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update hackage-security to version 0.6.2.3 revision 8.

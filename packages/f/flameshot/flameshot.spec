@@ -42,6 +42,7 @@ BuildRequires:  pkgconfig(Qt5Widgets) >= 5
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
 BuildRequires:  cmake(KF5GuiAddons) >= 5.89.0
 %endif
+Requires: libQt5Svg5
 Suggests:       %{name}-bash-completion
 Suggests:       %{name}-fish-completion
 Suggests:       %{name}-zsh-completion

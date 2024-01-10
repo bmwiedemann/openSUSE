@@ -1146,4 +1146,12 @@
     <comment>- Add reproducible.patch to make doxytags output reproducible (boo#1201579)</comment>
     <requestid>1111060</requestid>
   </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>6d5295dbdd10e7abe397363188b4ec4e</srcmd5>
+    <version>1.10.0</version>
+    <time>1703800451</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1135238</requestid>
+  </revision>
 </revisionlist>

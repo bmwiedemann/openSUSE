@@ -34,6 +34,9 @@ Source0:        https://github.com/linuxdeepin/deepin-compressor/archive/%{versi
 # PATCH-FIX-UPSTREAM 002-install-compressor-ChardetDetector.patch hillwood@opensuse.org
 # Install libcompressor-ChardetDetector.so
 Patch1:         002-install-compressor-ChardetDetector.patch
+# PATCH-FIX-UPSTREAM fix-Zip-Path-Traversal.patch - fix Zip Path Traversal
+# backport form https://github.com/linuxdeepin/deepin-compressor/commit/82f668c78c133873f5094cfab6e4eabc0b70e4b6
+Patch2:         fix-Zip-Path-Traversal.patch
 BuildRequires:  fdupes
 BuildRequires:  gtest
 BuildRequires:  hicolor-icon-theme

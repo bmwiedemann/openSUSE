@@ -119,4 +119,20 @@
     <comment></comment>
     <requestid>1129712</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>fcfcb88a640ffda52720da8b8ff6c0d1</srcmd5>
+    <version>0.166.0</version>
+    <time>1702673449</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1133472</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>6b2f239208e6baae3a8af0fcd3e7626e</srcmd5>
+    <version>0.167.0</version>
+    <time>1704660137</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1137401</requestid>
+  </revision>
 </revisionlist>

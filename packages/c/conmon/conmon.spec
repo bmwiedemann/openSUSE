@@ -17,7 +17,7 @@
 
 
 Name:           conmon
-Version:        2.1.8
+Version:        2.1.10
 Release:        0
 Summary:        An OCI container runtime monitor
 License:        Apache-2.0

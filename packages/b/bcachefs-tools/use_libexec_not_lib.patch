@@ -1,0 +1,89 @@
+From 89abdd87271e237141a9d4f44d531f7c53353b83 Mon Sep 17 00:00:00 2001
+From: Neal Gompa <neal@gompa.dev>
+Date: Sun, 24 Dec 2023 08:34:16 -0500
+Subject: [PATCH] Makefile, fsck: Use libexec instead of lib
+
+These are executables that need to be installed in a non-path location.
+Most distributions now install these into /usr/libexec, and the
+path variable for this is LIBEXECDIR, so use that instead.
+---
+ Makefile                            | 12 ++++++------
+ fsck/bcachefsck_all_fail.service.in |  2 +-
+ fsck/bcachefsck_fail@.service.in    |  2 +-
+ 3 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 0e5cf6e0..a38f0742 100644
+--- a/Makefile
++++ b/Makefile
+@@ -105,14 +105,14 @@ else
+ 	ROOT_SBINDIR?=$(PREFIX)/sbin
+ 	INITRAMFS_DIR=/etc/initramfs-tools
+ endif
+-LIBDIR=$(PREFIX)/lib
++LIBEXECDIR=$(PREFIX)/libexec
+ 
+ PKGCONFIG_SERVICEDIR:=$(shell $(PKG_CONFIG) --variable=systemdsystemunitdir systemd)
+ ifeq (,$(PKGCONFIG_SERVICEDIR))
+   $(warning skipping systemd integration)
+ else
+ BCACHEFSCK_ARGS=-f -n
+-systemd_libfiles=\
++systemd_libexecfiles=\
+ 	fsck/bcachefsck_fail \
+ 	fsck/bcachefsck_all
+ 
+@@ -133,14 +133,14 @@ built_scripts+=\
+ 
+ %.service: %.service.in
+ 	@echo "    [SED]    $@"
+-	$(Q)sed -e "s|@libdir@|$(LIBDIR)|g" \
++	$(Q)sed -e "s|@libexecdir@|$(LIBEXECDIR)|g" \
+ 	        -e "s|@bcachefsck_args@|$(BCACHEFSCK_ARGS)|g" < $< > $@
+ 
+ fsck/bcachefsck_all: fsck/bcachefsck_all.in
+ 	@echo "    [SED]    $@"
+ 	$(Q)sed -e "s|@bcachefsck_args@|$(BCACHEFSCK_ARGS)|g" < $< > $@
+ 
+-optional_build+=$(systemd_libfiles) $(systemd_services)
++optional_build+=$(systemd_libexecfiles) $(systemd_services)
+ optional_install+=install_systemd
+ endif	# PKGCONFIG_SERVICEDIR
+ 
+@@ -226,8 +226,8 @@ install: bcachefs $(optional_install)
+ 	echo "copy_exec $(ROOT_SBINDIR)/bcachefs /sbin/bcachefs" >> $(DESTDIR)$(INITRAMFS_HOOK)
+ 
+ .PHONY: install_systemd
+-install_systemd: $(systemd_services) $(systemd_libfiles)
+-	$(INSTALL) -m0755 -D $(systemd_libfiles) -t $(DESTDIR)$(LIBDIR)
++install_systemd: $(systemd_services) $(systemd_libexecfiles)
++	$(INSTALL) -m0755 -D $(systemd_libexecfiles) -t $(DESTDIR)$(LIBEXECDIR)
+ 	$(INSTALL) -m0644 -D $(systemd_services) -t $(DESTDIR)$(PKGCONFIG_SERVICEDIR)
+ 
+ .PHONY: clean
+diff --git a/fsck/bcachefsck_all_fail.service.in b/fsck/bcachefsck_all_fail.service.in
+index b79f8196..fe584514 100644
+--- a/fsck/bcachefsck_all_fail.service.in
++++ b/fsck/bcachefsck_all_fail.service.in
+@@ -10,7 +10,7 @@ Documentation=man:bcachefsck_all(8)
+ [Service]
+ Type=oneshot
+ Environment=EMAIL_ADDR=root
+-ExecStart=@libdir@/bcachefsck_fail "${EMAIL_ADDR}" bcachefsck_all
++ExecStart=@libexecdir@/bcachefsck_fail "${EMAIL_ADDR}" bcachefsck_all
+ User=mail
+ Group=mail
+ SupplementaryGroups=systemd-journal
+diff --git a/fsck/bcachefsck_fail@.service.in b/fsck/bcachefsck_fail@.service.in
+index 369a809a..8d5ed4c6 100644
+--- a/fsck/bcachefsck_fail@.service.in
++++ b/fsck/bcachefsck_fail@.service.in
+@@ -10,7 +10,7 @@ Documentation=man:bcachefs(8)
+ [Service]
+ Type=oneshot
+ Environment=EMAIL_ADDR=root
+-ExecStart=@libdir@/bcachefsck_fail "${EMAIL_ADDR}" bcachefs %f
++ExecStart=@libexecdir@/bcachefsck_fail "${EMAIL_ADDR}" bcachefs %f
+ User=mail
+ Group=mail
+ SupplementaryGroups=systemd-journal

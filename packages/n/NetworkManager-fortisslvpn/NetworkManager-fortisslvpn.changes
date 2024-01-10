@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 22 15:44:09 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 084ef529.patch: Add support for compiling against pppd-2.5.0.
+- Add libtool BuildRequires and call autoreconf, as above patch
+  touches the build system.
+
+-------------------------------------------------------------------
 Thu Nov  2 14:34:19 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
 
 - Rename gnome subpackage to NetworkManager-applet-fortisslvpn

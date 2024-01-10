@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Dec 11 14:59:37 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.31.11
+  + For detailed changes see
+    https://github.com/aws/aws-cli/blob/1.31.11/CHANGELOG.rst
+- Add patch to update docutils dependency (bsc#1217336)
+  + ac_update-docutils.patch
+- Update Requires in spec file from setup.py
+
+-------------------------------------------------------------------
+Fri Nov 24 12:06:27 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.30.6
+  + For detailed changes see
+    https://github.com/aws/aws-cli/blob/1.30.6/CHANGELOG.rst
+- Update Requires in spec file from setup.py
+
+-------------------------------------------------------------------
 Fri Oct  6 10:30:19 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.29.61

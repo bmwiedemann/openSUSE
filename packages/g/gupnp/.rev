@@ -677,4 +677,12 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1123792</requestid>
   </revision>
+  <revision rev="82" vrev="2">
+    <srcmd5>88bdf78d4c5a8c0a5e87b0805ced2bab</srcmd5>
+    <version>1.6.6</version>
+    <time>1702673219</time>
+    <user>anag+factory</user>
+    <comment>- Add 00514fb6.patch: Fix compatibility with libxml2 2.12.x. (forwarded request 1133093 from dimstar)</comment>
+    <requestid>1133103</requestid>
+  </revision>
 </revisionlist>
