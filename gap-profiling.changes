@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Thu Jun 29 02:00:02 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.5.4
+  * No user-visible changes
+
+-------------------------------------------------------------------
+Wed Jun 28 12:09:44 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.5.3
+  * Show bad line and file when profiles are corrupted
+
+-------------------------------------------------------------------
+Sun Jun 25 09:48:56 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.5.2
+  * Support profiling format change when VISITED_STAT was removed
+    in core GAP
+  * Remove test in package for coloured printing of functions
+    (which was in GAP core, and is now removed)
+
+-------------------------------------------------------------------
+Sun Feb 12 10:31:05 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Initial package (version 2.5.1) for build.opensuse.org
