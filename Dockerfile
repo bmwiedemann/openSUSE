@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: MIT
 
-#     Copyright (c) 2023 SUSE LLC
+#     Copyright (c) 2024 SUSE LLC
 
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,6 +38,6 @@ LABEL org.opensuse.release-stage="released"
 
 # endlabelprefix
 
-RUN set -euo pipefail; zypper -n in --no-recommends osc expect obs-service-source_validator openSUSE-release openSUSE-release-appliance-docker; zypper -n clean; rm -rf /var/log/*
+RUN set -euo pipefail; zypper -n in --no-recommends osc expect obs-service-source_validator typescript git openSUSE-release openSUSE-release-appliance-docker; zypper -n clean; rm -rf /var/log/*
 COPY osc_checkout /usr/bin/osc_checkout
 RUN set -euo pipefail; chmod +x /usr/bin/osc_checkout
