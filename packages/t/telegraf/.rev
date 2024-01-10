@@ -265,4 +265,12 @@ devel:languages:go/telegraf r7 (forwarded request 758639 from jfkw)</comment>
   * chore(deps): Bump github.com/tidwall/gjson from 1.14.4 to 1.17.0 (#14431) (forwarded request 1132934 from jfkw)</comment>
     <requestid>1132935</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>69b71122d0247ae4327cfaeb6244ecbc</srcmd5>
+    <version>1.29.2</version>
+    <time>1704919867</time>
+    <user>anag+factory</user>
+    <comment>- refresh harden_telegraf.service.patch to apply cleanly again (forwarded request 1137786 from darix)</comment>
+    <requestid>1137861</requestid>
+  </revision>
 </revisionlist>

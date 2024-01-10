@@ -114,4 +114,13 @@
     describing your use case.</comment>
     <requestid>1127546</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ebb2dbf48ad3c0c365c67ea3d52ba644</srcmd5>
+    <version>0.28.0</version>
+    <time>1704919926</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.28.0:
+  * Requires `httpx`==0.26.\*</comment>
+    <requestid>1137816</requestid>
+  </revision>
 </revisionlist>

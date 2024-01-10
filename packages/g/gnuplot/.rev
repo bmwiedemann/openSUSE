@@ -1222,4 +1222,41 @@ removed boo#1203092 (forwarded request 1006499 from AndreasStieger)</comment>
   * CHANGE use 64-bit integers for iteration (allows iteration over dates)</comment>
     <requestid>1119564</requestid>
   </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>748f32ac2a0e51417dc14b71968d18b0</srcmd5>
+    <version>6.0.0</version>
+    <time>1704919853</time>
+    <user>anag+factory</user>
+    <comment>- Add missing doc/webp_figures.gnu fronm upstream git repo
+
+- Update to gnuplot 6.0.0
+  * Japanese documentation updated
+    (missing file title-ja.tex, build dependencies for mingw)
+  * Support building against Qt6
+    (./configure falls back to Qt5 if the Qt6 libraries are not found)
+  * New configure option --enable-stable-sort
+    1) Use mergesort rather than qsort if the system provides it.
+    2) If neither mergesort nor glibc stable qsort is available,
+       modify internal gnuplot structures to contain a secondary sort key
+  * Render color gradient in colorbox as a pixel array (cairo, qt terminals)
+  * &quot;reset session&quot; restores initial state of all linetype properties
+  * postscript terminal now handles pixmaps (Bug #2644)
+  * New plot style &quot;with contourfill&quot; handles 2D and 3D contour plots with
+    discrete z-ranges indicated by solid fill colors.
+  * FIX do not clobber a datablock if its name is encountered unexpectedly
+  * FIX cairo terminals:  ignore zero-size polygons
+  * FIX svg terminal now correctly tracks pattern-fill color
+  * FIX integer overflow/wraparound when polygon is clipped to plot border
+  * FIX do not mangle variable point properties in polar mode Bug #2650
+  * partial support for replotting and mousing multiplots (finally!)
+  * fixes build error for postscript terminal when libgd and cairo are not present
+  * strip trailing CR from function blocks read from a dos file   Bug #2653
+  * use 64-bit integers for iteration
+  * &quot;unset pointintervalbox&quot; disables the box rather than setting it to default size
+  * keyentry '...' can be used to place a secondary title in the key
+  * fix use of stacked histograms with variable number of data columns
+  - Replotting and mousing multiplots
+    o now working much more comprehensively</comment>
+    <requestid>1137694</requestid>
+  </revision>
 </revisionlist>

@@ -15,6 +15,7 @@ profile gitweb.cgi /usr/share/gitweb/gitweb.cgi {
   /usr/bin/zip rix,
   /dev/tty rw,
   /etc/gitweb.conf r,
+  /etc/gitweb-common.conf r,
   /etc/mime.types r,
   /proc/loadavg r,
   /proc/meminfo r,

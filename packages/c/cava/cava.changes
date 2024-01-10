@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan  9 19:03:08 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.10.0:
+  * OSS input backend and general improved FreeBSD support
+  * pipewire default if supported
+  * noncurses is now default
+
+-------------------------------------------------------------------
 Fri Aug 25 09:06:50 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - bsc#1214255: Additionally to libpulse-devel also buildrequire

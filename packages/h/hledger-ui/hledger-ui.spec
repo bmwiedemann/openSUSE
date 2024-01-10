@@ -1,7 +1,7 @@
 #
 # spec file for package hledger-ui
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name hledger-ui
 %global pkgver %{pkg_name}-%{version}
 Name:           %{pkg_name}
-Version:        1.32.1
+Version:        1.32.2
 Release:        0
 Summary:        Terminal interface for the hledger accounting system
 License:        GPL-3.0-or-later
@@ -82,6 +82,8 @@ BuildRequires:  ghc-unix-devel
 BuildRequires:  ghc-unix-prof
 BuildRequires:  ghc-vector-devel
 BuildRequires:  ghc-vector-prof
+BuildRequires:  ghc-vty-crossplatform-devel
+BuildRequires:  ghc-vty-crossplatform-prof
 BuildRequires:  ghc-vty-devel
 BuildRequires:  ghc-vty-prof
 ExcludeArch:    %{ix86}

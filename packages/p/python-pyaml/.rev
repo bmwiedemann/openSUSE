@@ -62,4 +62,13 @@
     <comment></comment>
     <requestid>939572</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d362f649172a27e1674ec0ca4e61194d</srcmd5>
+    <version>23.12.0</version>
+    <time>1704919921</time>
+    <user>anag+factory</user>
+    <comment>- update to 23.12.0:
+  * no upstream changelog</comment>
+    <requestid>1137820</requestid>
+  </revision>
 </revisionlist>

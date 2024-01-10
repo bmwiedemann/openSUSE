@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan  8 14:56:04 UTC 2024 - Ludwig Nussel <lnussel@suse.com>
+
+- Add dm-crypt for encrypted hard disk support
+- Add dmi-sysfs for systemd to receive credentials via smbios
+
+-------------------------------------------------------------------
 Wed Dec 13 07:48:14 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Add macvlan

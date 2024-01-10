@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec 13 08:48:02 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Update to 0.79.19
+- Removed 0001-Disable-DSA-in-the-RPM-spec.patch
+- Added 0001-Update-tests-to-be-compatible-with-OpenSSL-3.2.patch
+
+-------------------------------------------------------------------
 Wed Oct 11 07:03:37 UTC 2023 - Simon Lees <sflees@suse.de>
 
 - dbus-daemon is now split out into a separate package.
@@ -13,7 +20,7 @@ Fri Jun 17 19:47:46 UTC 2022 - Matthew Davis <novell@virtual.drop.net>
 Fri Jun 17 19:31:56 UTC 2022 - Matthew Davis <novell@virtual.drop.net>
 
 - Updated to version 0.79.15
-- Added minimum libjansson version requirement. 
+- Added minimum libjansson version requirement.
 
 -------------------------------------------------------------------
 Mon Jul 26 10:05:33 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
@@ -49,7 +56,7 @@ Mon Aug 31 10:30:11 UTC 2020 - Dirk Mueller <dmueller@suse.com>
   - Include &message=CA-IDENT with GetCACaps and GetCACert requests
   - Address issues uncovered by clang and Coverity
   - Handle an uninitialized token when adding CA certs to an NSS db
-  - tests: Parametrize 025-casave with NSS db types 
+  - tests: Parametrize 025-casave with NSS db types
 
 -------------------------------------------------------------------
 Sun Apr 12 18:01:28 UTC 2020 - Stasiek Michalski <stasiek@michalski.cc>

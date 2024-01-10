@@ -1,7 +1,7 @@
 #
 # spec file for package certmonger
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2020 Stasiek Michalski <stasiek@michalski.cc>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,20 +18,20 @@
 
 
 Name:           certmonger
-Version:        0.79.15
+Version:        0.79.19
 Release:        0
 Summary:        Certificate status monitor and PKI enrollment client
 License:        GPL-3.0-or-later
 
-URL:            http://pagure.io/certmonger/
-Source0:        http://releases.pagure.org/certmonger/certmonger-%{version}.tar.gz
-Patch0001:      0001-Disable-DSA-in-the-RPM-spec.patch
+URL:            https://pagure.io/certmonger/
+Source0:        https://pagure.io/certmonger/archive/%{version}/certmonger-%{version}.tar.gz
+Patch0001:      0001-Update-tests-to-be-compatible-with-OpenSSL-3.2.patch
 
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  dbus-1
-BuildRequires:  dbus-1-devel
 BuildRequires:  dbus-1-daemon
+BuildRequires:  dbus-1-devel
 BuildRequires:  diffutils
 BuildRequires:  dos2unix
 BuildRequires:  expect

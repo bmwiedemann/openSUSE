@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Tue Jan 09 20:16:17 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.10.0:
+  * docs: update changelog for v2.10.0 (#9247)
+  * chore: bump puma in /integration/examples/ruby/backend (#9244)
+  * fix: helm-deploy-chart-path-template (#9243)
+  * fix: apply-setter and transformer should ignore
+    non-k8s-resource for kustomize paramterization (#9240)
+  * chore: bump github/codeql-action from 3.22.12 to 3.23.0 (#9241)
+  * chore: bump golang.org/x/crypto from 0.12.0 to 0.17.0 (#9227)
+  * feat: Skaffold post renderer (#9203)
+  * fix: Scope Issue with the 'entry' variable when looking up
+    remote images and tests additions (#9211)
+  * chore: bump github/codeql-action from 2.22.9 to 3.22.12 (#9231)
+  * chore: bump github.com/go-git/go-git/v5 from 5.8.1 to 5.11.0
+    (#9234)
+  * chore: bump golang.org/x/crypto from 0.14.0 to 0.17.0 in
+    /hack/tools (#9228)
+  * chore: clean up example project deps (#9216)
+  * chore: bump actions/upload-artifact from 3.1.3 to 4.0.0 (#9226)
+  * chore: inject imageInfo when expanding templates for ko builder
+    (#9207)
+  * chore: change bazel example (#9218)
+  * fix: remove global helm flags from flags sent to `skaffold
+    filter` (#9212)
+  * chore: bump github/codeql-action from 2.22.8 to 2.22.9 (#9214)
+  * fix: add riscv64 to the install-golint.sh script (#9210)
+  * chore: generate schema v4beta9 (#9204)
+  * chore: bump github/codeql-action from 2.22.7 to 2.22.8 (#9193)
+  * fix: puling images when working with a remote repository
+    (#9177) (#9181)
+  * chore: bump github/codeql-action from 2.22.6 to 2.22.7 (#9180)
+  * docs: Add missing template field (#9186)
+  * fix: custom crd not printing streams logs (#9136)
+  * fix: non-crossplatform should not use cli (#9178)
+  * fix: panic in Logger.Stop (#9159)
+  * chore: bump github/codeql-action from 2.22.5 to 2.22.6 (#9173)
+  * fix: sync slow (#9167)
+
+-------------------------------------------------------------------
 Wed Nov 08 05:55:01 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.9.0:

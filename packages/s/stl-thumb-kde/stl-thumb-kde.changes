@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Wed Jan 10 14:25:57 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix URL to source tarball.
+
+-------------------------------------------------------------------
+Thu Jul 21 11:28:13 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Copy version 0.4.0 from home:mrbadguy:KDE5/stl-thumb-kde 
+- cmake.patch: remove debian specifics

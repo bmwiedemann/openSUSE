@@ -1,7 +1,7 @@
 #
 # spec file for package python-pmw
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,15 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-pmw
-Version:        2.0.1
+Version:        2.1.1
 Release:        0
 Summary:        High-level compound widgets in Python using the Tkinter module
 License:        MIT
 Group:          Development/Languages/Python
-URL:            http://pmw.sourceforge.net/
+URL:            https://pmw.sourceforge.net/
 Source:         https://files.pythonhosted.org/packages/source/P/Pmw/Pmw-%{version}.tar.gz
-#PATCH-FIX-UPSTREAM py36.patch https://sourceforge.net/p/pmw/patches/7/
-Patch0:         py36.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -46,10 +44,9 @@ notebooks, comboboxes, selection widgets, paned widgets, scrolled widgets and
 dialog windows.
 
 %prep
-%setup -q -n Pmw-%{version}
-%patch0
+%autosetup -p1 -n Pmw-%{version}
 sed -i '1d' Pmw/Pmw_1_3_3/{demos/All,bin/bundlepmw,tests/All,tests/ManualTests}.py # Fix non-executable scripts
-sed -i '1d' Pmw/Pmw_2_0_1/{demos/All,bin/bundlepmw,tests/All,tests/ManualTests}.py # Fix non-executable scripts
+sed -i '1d' Pmw/Pmw_2_1_1/{demos/All,bin/bundlepmw,tests/All,tests/ManualTests}.py # Fix non-executable scripts
 
 %build
 %python_build

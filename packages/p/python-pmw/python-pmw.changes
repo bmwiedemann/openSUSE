@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan  9 21:26:14 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.1:
+  * merge some bugfixes and mods for Python 3 support
+- drop py36.patch (upstream)
+
+-------------------------------------------------------------------
 Fri Dec  7 11:47:08 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Make sure to run %fdupes correctly
@@ -51,5 +58,5 @@ Tue May 10 19:00:49 UTC 2011 - dhall@wustl.edu
 -------------------------------------------------------------------
 Tue May 10 18:41:49 UTC 2011 - dhall@wustl.edu
 
--Pmw import 
+-Pmw import
 

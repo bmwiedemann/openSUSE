@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Jan  9 23:47:09 UTC 2024 - Mia Herkt <mia@0x0.st>
+
+- Update to v0.0.30
+Added:
+  * Support for Dark Mode in Block Data grid.
+    NOTE: wxGrid does not fully support dynamic theme switching in
+    wxWidgets v3.2.x, so the application has to be restarted to use
+    new theme.
+Fixed:
+  * DTD panel: fixed alignment of "X11 mode line".
+  * Option "Assemble EDID" now updates also the CHD::DTD_offset
+    field in Block Data grid.
+    NOTE: The value is computed by EDID_cl::CEA_Set_DTD_Offset().
+  * wxEDID_Frame::AssembleEDID_main(): the EDID.BASE.BED could be
+    refreshed twice if the CEA extension is not present.
+  * Auto-select the BED block also after "Reparse EDID buffer" is
+    executed: wxEDID_Frame::Reparse()->AutoSelectBED()
+  * mrl_cl::fields: misleading field description: GTF J, GTF C:
+    "xxx value, multiplied by 2: 0...255 ->  0...127.5"
+    changed to: "xxx value, multiplied by 2: 0...127.5 -> 0...255"
+  * MRL::resvd field should have the EF_HEX flag.
+  * BED: fields ProdYr and ProdWk should not have the EF_BND flag
+    set.
+  * BED: ProdWk: added information that week==0 means that the
+    field is not used.
+Changed:
+  * EF_NI "NI" flag is no longer displayed in BlockData::"Flags"
+    column.
+  * rcode v3.0: structure changed:
+    RCD_UNIT_MAX=65535, RCD_LINE_MAX=16383
+
+-------------------------------------------------------------------
 Tue May 23 04:40:40 UTC 2023 - Mia Herkt <mia@0x0.st>
 
 - Update to v0.0.29

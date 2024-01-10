@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 09 09:20:03 UTC 2024 - wolfgang.frisch@suse.com
+
+- Update to version 2.5.0+git20240109.b4e5f72:
+  * dbus-services: certmonger: .conf renamed (bsc#1218616)
+
+-------------------------------------------------------------------
 Wed Dec 20 15:15:38 UTC 2023 - filippo.bonazzi@suse.com
 
 - Update to version 2.5.0+git20231220.9e24b84:

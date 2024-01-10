@@ -1,6 +1,6 @@
 --- gnuplot.texi
-+++ gnuplot.texi	2020-07-17 09:17:43.019856719 +0000
-@@ -11599,8 +11599,7 @@ but
++++ gnuplot.texi	2024-01-09 09:29:57.128897341 +0000
+@@ -13570,8 +13570,7 @@ but
  @end example
  
  See also
@@ -10,12 +10,14 @@
  
  @node arrow, autoscale, angles, set-show
  @subsection arrow
-@@ -23249,13 +23248,10 @@ Syntax:
+@@ -26079,15 +26078,12 @@ Syntax:
                          @{[no]enhanced@}
  @end example
  
 -@end itemizeif
  @example
+                         @{fillchar @{solid|"<char>"@}@}
+                         @{[no]attributes@}
                          @{mono|ansi|ansi256|ansirgb@}
  @end example
  
@@ -24,15 +26,16 @@
  where <xchars> and <ychars> set the size of the text block. The default is
  79 by 24. The last newline is printed only if `feed` is enabled.
  
-@@ -23293,7 +23289,6 @@ See also e.g. the description at
+@@ -26129,8 +26125,6 @@ See also e.g. the description at
  @uref{https://en.wikipedia.org/wiki/ANSI_escape_code#Colors,https://en.wikipedia.org/wiki/ANSI_escape_code#Colors
  }
  
 -@end itemizeif
- Example:
+-
+ The `attributes` option enables bold and italic text on terminals or
+ emulators that support the escape sequences
  @example
-       set term dumb mono size 60,15 aspect 1
-@@ -23667,8 +23662,6 @@ Preferred combinations are `medium norma
+@@ -26475,8 +26469,6 @@ Preferred combinations are `medium norma
  
  With each of these drivers, a binary copy is required on a PC to print.
  Do not use `print`---use instead `copy file /b lpt1:`.
@@ -41,7 +44,7 @@
  
  @node excl, fig, epson_180dpi, complete_list_of_terminals
  @subsection excl
-@@ -24370,8 +24363,6 @@ the environmental variable GNUPLOT_LUA_D
+@@ -27170,8 +27162,6 @@ the environmental variable GNUPLOT_LUA_D
  All arguments will be provided to the selected script for further
  evaluation. E.g. 'set term lua tikz help' will cause the script itself
  to print additional help on options and choices for the script.
@@ -50,7 +53,7 @@
  
  @node mf, mp, lua, complete_list_of_terminals
  @subsection mf
-@@ -25124,7 +25115,6 @@ terminals.  It has no options."
+@@ -27932,7 +27922,6 @@ terminals.  It has no options."
  @c ?term km-tek40xx
  @cindex km-tek40xx
  
@@ -58,7 +61,7 @@
  @c ?commands set terminal selanar
  @c ?set terminal selanar
  @c ?set term selanar
-@@ -25132,7 +25122,6 @@ terminals.  It has no options."
+@@ -27940,7 +27929,6 @@ terminals.  It has no options."
  @c ?term selanar
  @cindex selanar
  
@@ -66,15 +69,15 @@
  @c ?commands set terminal sixeltek
  @c ?set terminal sixeltek
  @c ?set term sixeltek
-@@ -25156,7 +25145,6 @@ limits plots to 16 simultaneous colors,
+@@ -27972,7 +27960,6 @@ For use with xterm, xterm must be compil
  
- Note that gnuplot also supports another sixel output terminal, sixelgd,
+ Note that gnuplot also supports another sixel output terminal, `sixelgd`,
  that offers more options and features."
 -@end itemizeif
  @c ?commands set terminal bitgraph
  @c ?set terminal bitgraph
  @c ?set term bitgraph
-@@ -25164,7 +25152,6 @@ that offers more options and features."
+@@ -27980,7 +27967,6 @@ that offers more options and features."
  @c ?term bitgraph
  @cindex bitgraph
  
@@ -82,7 +85,7 @@
  This family of terminal drivers supports a variety of VT-like terminals.
  `tek40xx` supports Tektronix 4010 and others as well as most TEK emulators.
  `vttek` supports VT-like tek40xx terminal emulators.
-@@ -25718,7 +25705,6 @@ anti-aliasing, oversampling and full tra
+@@ -28517,7 +28503,6 @@ anti-aliasing, oversampling and full tra
  deprecated.
  The `GDI backend` which uses the classic GDI API is deprecated and has been
  disabled in this version.
@@ -90,7 +93,7 @@
  
  `GDI+ backend` draws to the screen using the GDI+ Windows API. It supports
  full antialiasing, oversampling, transparency and custom dash patterns.
-@@ -25748,7 +25734,6 @@ of an additional redraw after releasing
+@@ -28547,7 +28532,6 @@ of an additional redraw after releasing
  
  `Line Styles...` allows customization of the line colors and styles.
  
@@ -98,7 +101,7 @@
  `Update wgnuplot.ini` saves the current window locations, window sizes, text
  window font, text window font size, graph window font, graph window font
  size, background color to the initialization file `wgnuplot.ini`.
-@@ -25914,8 +25899,6 @@ This file is located in the user's appli
+@@ -28713,8 +28697,6 @@ This file is located in the user's appli
        Line5=0 0 128 0 4
  @end example
  
@@ -107,7 +110,7 @@
  @c ^ <h3>Text window options</h3> 
  
  These settings apply to the wgnuplot text-window only."
-@@ -25952,7 +25935,6 @@ solid line in color mode, or a dashed li
+@@ -28751,7 +28733,6 @@ solid line in color mode, or a dashed li
  line width is 1 pixel.  If `Linestyle` is negative, it specifies the width of
  a SOLID line in pixels.  Line1 and any linestyle used with the `points` style
  must be SOLID with unit width.
@@ -115,7 +118,7 @@
  
  See `graph-menu`."
  
-@@ -26338,13 +26320,10 @@ later by `set term x11 [no]raise [no]per
+@@ -29137,13 +29118,10 @@ later by `set term x11 [no]raise [no]per
   `-ctrlq   ` closes window on ctrl-q rather than q
  @end example
  

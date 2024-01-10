@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jan 10 09:16:46 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2023.12.14:
+  * updates extension headers for the latest XML file (#244)
+  * updates extension headers for the latest XML file (#240)
+  * Update extension headers for latest cl.xml changes (#242)
+  * add compatibility notes (#238)
+  * fix VME skip block type enum to match spec (#241)
+  * fix the OpenCL version for the CL_DEPTH enum (#231)
+  * require C99 for header tests (#208)
+  * sort new extensions programmatically (#236)
+  * Update extension headers (#235)
+  * Header update for external_memory_import (#234)
+  * Define function types for prototype declaration (#230)
+
+-------------------------------------------------------------------
 Wed May  3 10:59:12 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2023.04.17:

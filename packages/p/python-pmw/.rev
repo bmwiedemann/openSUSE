@@ -96,4 +96,16 @@
     <comment>- Make sure to run %fdupes correctly</comment>
     <requestid>656011</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>a54926a85335e190e073024a5437c212</srcmd5>
+    <version>2.1.1</version>
+    <time>1704919914</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.1.1:
+  * merge some bugfixes and mods for Python 3 support
+- drop py36.patch (upstream)
+
+-Pmw import</comment>
+    <requestid>1137810</requestid>
+  </revision>
 </revisionlist>

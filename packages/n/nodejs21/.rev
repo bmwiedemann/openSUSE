@@ -60,4 +60,18 @@ https://github.com/nodejs/node/blob/main/doc/changelogs/CHANGELOG_V21.md#21.4.0
     <comment>- c-ares-fixes.patch: fixes unit tests for new c-ares</comment>
     <requestid>1136239</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1372b814217726430c655c69649c90d3</srcmd5>
+    <version>21.5.0</version>
+    <time>1704919843</time>
+    <user>anag+factory</user>
+    <comment>- Update to 21.5.0:
+  * module: merge config with package_json_reader
+  * src: move package resolver to c++
+  * doc:
+    + deprecate hash constructor
+    + deprecate dirent.path
+- linker_lto_jobs.patch: refreshed</comment>
+    <requestid>1137596</requestid>
+  </revision>
 </revisionlist>

@@ -249,4 +249,15 @@
   pipewire-devel to enable build with pipewire support</comment>
     <requestid>1105880</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>7171fa94ba9855d7ef9266eecf44ddaa</srcmd5>
+    <version>0.10.0</version>
+    <time>1704919912</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.10.0:
+  * OSS input backend and general improved FreeBSD support
+  * pipewire default if supported
+  * noncurses is now default</comment>
+    <requestid>1137795</requestid>
+  </revision>
 </revisionlist>

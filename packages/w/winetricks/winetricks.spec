@@ -1,7 +1,7 @@
 #
 # spec file for package winetricks
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 Name:           winetricks
-Version:        20230212
+Version:        20240105
 Release:        0
 Summary:        A way to work around problems in WINE
 License:        LGPL-2.1-or-later
 Group:          System/Emulators/PC
 URL:            https://github.com/Winetricks/winetricks
 Source0:        https://github.com/Winetricks/%{name}/archive/%{version}.tar.gz##/%{name}-%{version}.tar.gz
-Patch0:         icodecs.patch
 BuildRequires:  update-desktop-files
 Requires:       cabextract
 Requires:       unzip

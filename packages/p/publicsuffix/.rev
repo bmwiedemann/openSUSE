@@ -1375,4 +1375,14 @@ Now with build cycle removed.</comment>
   * util: gTLD data autopull updates for 2023-11-18T15:11:52 UTC (#1898)</comment>
     <requestid>1133874</requestid>
   </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>a1cacb78430c5d18329592c70fcf1f6f</srcmd5>
+    <version>20240107</version>
+    <time>1704919851</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20240107:
+  * Remove homeoffice.gov.uk (#1909)
+  * util: gTLD data autopull updates for 2024-01-06T15:12:04 UTC (#1918)</comment>
+    <requestid>1137681</requestid>
+  </revision>
 </revisionlist>

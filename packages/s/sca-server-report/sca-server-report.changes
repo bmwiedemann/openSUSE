@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan  9 18:29:47 UTC 2024 - jason.record@suse.com
+
+- Changes to version 1.6.1
+  + Removed dev from version string in scatool
+  + Removed todo lists from scatool
+  + Ready for install (bsc#1218572)
+
+-------------------------------------------------------------------
 Wed Nov 29 22:15:35 UTC 2023 - jason.record@suse.com
 
 - Changes in version 1.6.0

@@ -3,19 +3,19 @@ is run serially over these binaries instead of in parallel.
 OBS workers run out of memory as each executable seems to require
 upward of 5G RAM
 
-Index: node-v19.7.0/node.gyp
+Index: node-v21.5.0/node.gyp
 ===================================================================
---- node-v19.7.0.orig/node.gyp
-+++ node-v19.7.0/node.gyp
-@@ -951,6 +951,7 @@
-         'deps/uvwasi/uvwasi.gyp:uvwasi',
+--- node-v21.5.0.orig/node.gyp
++++ node-v21.5.0/node.gyp
+@@ -1053,6 +1053,7 @@
+         'deps/simdjson/simdjson.gyp:simdjson',
          'deps/simdutf/simdutf.gyp:simdutf',
          'deps/ada/ada.gyp:ada',
 +        'fuzz_env'
        ],
  
        'includes': [
-@@ -1047,6 +1048,7 @@
+@@ -1129,6 +1130,7 @@
          'deps/histogram/histogram.gyp:histogram',
          'deps/uvwasi/uvwasi.gyp:uvwasi',
          'deps/ada/ada.gyp:ada',

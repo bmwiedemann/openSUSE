@@ -120,4 +120,28 @@
     <comment></comment>
     <requestid>1108781</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>2b6a874419e8e5df76effa49a74e8615</srcmd5>
+    <version>1.2.6</version>
+    <time>1704919935</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.2.6:
+  * correcting bug when writing files with character columns with
+    all missing, character length set to 1
+  * Correcting bug for datetime64[us
+  * Added modification_time and creation_time to metadata
+  * added datetime64[us in addition to ns for improvement when
+    writing.
+
+  * changes introduced for compatibility with cython 3.0.0.
+  * added num_rows to multiprocessing to allow processing of xport,
+  * Using os.fsencode when reading file paths to support file system
+    file labels, reading newer por files date-like columns, and few
+  * fixed sharing permissions when reading files on windows,
+- Updates for 1.0.2
+  * Updated default widths for DATE and DATETIME formats
+    (from Readstat src). That make the files readable both in SPSS
+- Updates for 1.0.1</comment>
+    <requestid>1137826</requestid>
+  </revision>
 </revisionlist>

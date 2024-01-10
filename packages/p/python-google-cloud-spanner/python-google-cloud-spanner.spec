@@ -1,5 +1,5 @@
 #
-# spec file for package python-google-cloud-spanner
+# spec file
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -16,8 +16,17 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+
 %{?sle15_python_module_pythons}
-Name:           python-google-cloud-spanner
+Name:           python-google-cloud-spanner%{psuffix}
 Version:        3.40.1
 Release:        0
 Summary:        Google Cloud Spanner API client library
@@ -29,13 +38,17 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
+%if %{with test}
 BuildRequires:  %{python_module google-api-core >= 1.34.0}
 BuildRequires:  %{python_module google-cloud-core >= 1.4.1}
+BuildRequires:  %{python_module google-cloud-spanner = %{version}}
 BuildRequires:  %{python_module grpc-google-iam-v1 >= 0.12.4}
 BuildRequires:  %{python_module proto-plus >= 1.22.0}
 BuildRequires:  %{python_module protobuf >= 3.19.5}
+BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module sqlparse >= 0.4.4}
+%endif
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-google-api-core >= 1.34.0
@@ -57,26 +70,46 @@ Google Cloud Spanner API client library
 %prep
 %autosetup -p1 -n google-cloud-spanner-%{version}
 
+# don't use python-mock
+for i in $(find tests -name "*.py")
+do
+  sed -i 's/^import mock/from unittest import mock/g' $i
+done
+
 %build
 %pyproject_wheel
 
 %install
+%if %{without test}
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
 %check
-echo 0
-# TODO: enable tests. I need to find a way to fix the python path
-# because it loads the /usr/lib/$python/site-packages/google for
-# dependencies and there it can't find the new package.
-#%%pytest
+%if %{with test}
+mkdir -p $HOME/.config/gcloud
+cat > $HOME/.config/gcloud/application_default_credentials.json <<EOF
+{
+  "client_id": "111111111111-1qq1q1qq1qqq111qq1qqqq11q1qqqqqq.apps.googleusercontent.com",
+  "client_secret": "d-XXXXXXXXXXXXXXXXXXXXXX",
+  "refresh_token": "1//1111111111111111111111111111-XXXXXXXXX-AAAAAAAAAAA_BBBBBBBBBBBBBBBBBBBBBB-CCCCCCCCCCCCCCCCCCCCCCCCCC",
+  "type": "authorized_user"
+}
+EOF
+export GOOGLE_CLOUD_PROJECT="PROJECT"
+%pytest -x tests/unit
+%endif
 
+%if %{without test}
 %files %{python_files}
 %doc README.rst
 %license LICENSE
 %pycache_only %{python_sitelib}/google/cloud/__pycache__
 %{python_sitelib}/google_cloud_spanner-%{version}-*-nspkg.pth
+%dir %{python_sitelib}/google
+%dir %{python_sitelib}/google/cloud
 %{python_sitelib}/google/cloud/spanner*
 %{python_sitelib}/google_cloud_spanner-%{version}.dist-info
+%endif
 
 %changelog

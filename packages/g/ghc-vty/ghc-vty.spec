@@ -19,16 +19,14 @@
 %global pkg_name vty
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        5.39
+Version:        6.1
 Release:        0
 Summary:        A simple terminal UI library
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-BuildRequires:  chrpath
+Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
-BuildRequires:  ghc-ansi-terminal-devel
-BuildRequires:  ghc-ansi-terminal-prof
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-binary-devel
@@ -37,8 +35,6 @@ BuildRequires:  ghc-blaze-builder-devel
 BuildRequires:  ghc-blaze-builder-prof
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-bytestring-prof
-BuildRequires:  ghc-containers-devel
-BuildRequires:  ghc-containers-prof
 BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-deepseq-prof
 BuildRequires:  ghc-directory-devel
@@ -58,14 +54,8 @@ BuildRequires:  ghc-parsec-prof
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-stm-devel
 BuildRequires:  ghc-stm-prof
-BuildRequires:  ghc-terminfo-devel
-BuildRequires:  ghc-terminfo-prof
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-text-prof
-BuildRequires:  ghc-transformers-devel
-BuildRequires:  ghc-transformers-prof
-BuildRequires:  ghc-unix-devel
-BuildRequires:  ghc-unix-prof
 BuildRequires:  ghc-utf8-string-devel
 BuildRequires:  ghc-utf8-string-prof
 BuildRequires:  ghc-vector-devel
@@ -117,13 +107,13 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
+cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
 
 %install
 %ghc_lib_install
-%ghc_fix_rpath %{pkg_name}-%{version}
 
 %post devel
 %ghc_pkg_recache
@@ -133,11 +123,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %files -f %{name}.files
 %license LICENSE
-%{_bindir}/vty-build-width-table
-%{_bindir}/vty-crash-fix
-%{_bindir}/vty-crash-test
-%{_bindir}/vty-demo
-%{_bindir}/vty-mode-demo
 
 %files devel -f %{name}-devel.files
 %doc AUTHORS CHANGELOG.md README.md

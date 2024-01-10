@@ -1,8 +1,8 @@
-Index: tuxpaint-0.9.28-sdl2/Makefile
+Index: tuxpaint-0.9.31/Makefile
 ===================================================================
---- tuxpaint-0.9.28-sdl2.orig/Makefile
-+++ tuxpaint-0.9.28-sdl2/Makefile
-@@ -75,6 +75,7 @@ endif
+--- tuxpaint-0.9.31.orig/Makefile
++++ tuxpaint-0.9.31/Makefile
+@@ -82,6 +82,7 @@ endif
  #   <HOSTROOT>/lib            Library files.
  #   <HOSTROOT>/lib/pkgconfig  *.pc files.
  #
@@ -10,9 +10,9 @@ Index: tuxpaint-0.9.28-sdl2/Makefile
  ifdef HOST
    ifdef HOSTROOT
      ifeq ($(wildcard $(HOSTROOT)/.),)
-@@ -747,9 +748,9 @@ uninstall:	uninstall-i18n
- 	@if [ "x$(shell which xdg-desktop-menu)" != "x" ]; then \
+@@ -799,9 +800,9 @@ uninstall:	uninstall-i18n
  	  xdg-desktop-menu uninstall tux4kids-tuxpaint.desktop ; \
+ 	  xdg-desktop-menu uninstall tux4kids-tuxpaint-fullscreen.desktop ; \
  	fi
 -	-if [ "x$(shell which update-desktop-database)" != "x" ]; then \
 -	  update-desktop-database; \
@@ -23,18 +23,18 @@ Index: tuxpaint-0.9.28-sdl2/Makefile
  
  # Install default config file:
  .PHONY: install-default-config
-@@ -931,7 +932,7 @@ install-nokia770:
+@@ -999,7 +1000,7 @@ install-pkgxdg: src/tuxpaint.desktop src
  .PHONY: install-xdg
- install-xdg:
- 	@echo
+ install-xdg: src/tuxpaint.desktop src/tuxpaint-fullscreen.desktop src/org.tuxpaint.Tuxpaint.appdata.xml
+ 	@echo ""
 -	@echo "...Installing launcher icon into desktop environment..."
-+	@echo "...NOT installing launcher icon into desktop environment..."
- 	@if [ "x$(shell which xdg-icon-resource install)" != "x" ]; then \
++	@echo "...Not installing launcher icon into desktop environment..."
+ 	@if [ "x$(shell which xdg-icon-resource)" != "x" ]; then \
  	  xdg-icon-resource install --size 192 data/images/icon192x192.png tux4kids-tuxpaint ; \
  	  xdg-icon-resource install --size 128 data/images/icon128x128.png tux4kids-tuxpaint ; \
-@@ -947,9 +948,9 @@ install-xdg:
- 	  xdg-desktop-menu install tux4kids-tuxpaint.desktop ; \
- 	  rm ./tux4kids-tuxpaint.desktop ; \
+@@ -1026,9 +1027,9 @@ install-xdg: src/tuxpaint.desktop src/tu
+ 	  xdg-desktop-menu install tux4kids-tuxpaint-fullscreen.desktop ; \
+ 	  rm ./tux4kids-tuxpaint-fullscreen.desktop ; \
  	fi
 -	@if [ "x$(shell which update-desktop-database)" != "x" ]; then \
 -	  update-desktop-database ; \
@@ -42,6 +42,6 @@ Index: tuxpaint-0.9.28-sdl2/Makefile
 +#	@if [ "x$(shell which update-desktop-database)" != "x" ]; then \
 +#	  update-desktop-database ; \
 +#	fi
+ 	install --mode=0644 -Dt $(METAINFO_PREFIX) src/org.tuxpaint.Tuxpaint.appdata.xml
+ #do package path related stuff, ie use destdir
  
- # Install the PNG icon (for KDE desktop, etc.)
- # and the 24-color 32x32 XPM (for other Window managers):

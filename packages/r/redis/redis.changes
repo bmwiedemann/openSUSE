@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jan  9 13:02:41 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- redis 7.2.4: (boo#1218646)
+  - Security fixes
+    - (CVE-2023-41056) In some cases, Redis may incorrectly handle
+      resizing of memory buffers which can result in incorrect
+      accounting of buffer sizes and lead to heap overflow and
+      potential remote code execution.
+  - Bug fixes
+    - Fix crashes of cluster commands clusters with mixed versions
+      of 7.0 and 7.2 (#12805, #12832)
+    - Fix slot ownership not being properly handled when deleting a
+      slot from a node (#12564)
+    - Fix atomicity issues with the RedisModuleEvent_Key module API
+      event (#12733)
+
+-------------------------------------------------------------------
 Fri Nov  3 23:44:05 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
 
 - redis 7.2.3:

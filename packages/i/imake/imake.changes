@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jan  9 01:37:27 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.0.10
+  This release fixes a "Modern C" warning that may become an error in
+  future gcc releases.
+  For those building for 32-bit platforms, it also enables use of the
+  "large file" APIs - though no file processed by imake should ever be
+  anywhere near 2GB in size, it may be stored on a filesystem which uses
+  large inode numbers not supported by the original 32-bit APIs.
+  Since this release was generated using the new GNU autoconf 2.72, this
+  also adds a --enable-year2038 configure flag which may allow imake to
+  work with files whose timestamps are later than January 19, 2038, but
+  this has not been tested, and we sincerely hope that no one will actually
+  still be using imake 14 years from now.
+
+-------------------------------------------------------------------
 Thu Oct 20 08:39:39 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.0.9

@@ -1,7 +1,7 @@
 #
 # spec file for package python-Pyro5
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Pyro5
-Version:        5.14
+Version:        5.15
 Release:        0
 Summary:        Distributed object middleware for Python (RPC)
 License:        MIT
 URL:            https://github.com/irmen/Pyro5
 Source:         https://files.pythonhosted.org/packages/source/P/Pyro5/Pyro5-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#irmen/Pyro5#76
-Patch0:         add-network-marker.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

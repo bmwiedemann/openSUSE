@@ -341,4 +341,12 @@
     <comment>- dxvk need libxkbregistry0 for building -32bit variants, provide them.</comment>
     <requestid>1133774</requestid>
   </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>b978fb3e2648300d5dd4658c3149ba8c</srcmd5>
+    <version>1.6.0</version>
+    <time>1704919862</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1137738</requestid>
+  </revision>
 </revisionlist>

@@ -558,6 +558,9 @@ Prefer: -ungoogled-chromium-chromedriver
 Prefer: -tomcat10 -tomcat10-lib tomcat tomcat-lib
 Prefer: -tomcat10-servlet-6_0-api tomcat-servlet-4_0-api
 
+# have choice for pkgconfig(xkbregistry) needed by libgnome-desktop-3-devel: libxkbregistry-devel libxkbregistry-devel-32bit
+Prefer: -libxkbregistry-devel-32bit
+
 Preinstall: aaa_base filesystem attr bash bash-sh coreutils diffutils
 Preinstall: fillup glibc grep pam permissions rpm rpm-config-SUSE sed tar
 Preinstall: libbz2-1 libgcc_s1 libncurses6 libreadline8 libz1 libselinux1

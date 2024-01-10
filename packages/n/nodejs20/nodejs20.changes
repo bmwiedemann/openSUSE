@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan  8 15:36:04 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- c-ares-fixes.patch: add additional backports for unit test fixes
+
+-------------------------------------------------------------------
 Tue Jan  2 16:14:58 UTC 2024 - Adam Majer <adam.majer@suse.de>
 
 - c-ares-fixes.patch: fixes unit tests for new c-ares

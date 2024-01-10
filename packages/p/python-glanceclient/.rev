@@ -652,4 +652,20 @@ update to version 2.3.0
   - Replace osc with glance commands</comment>
     <requestid>1069831</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>1d3b0fec6b492f5b2e1ce7f4039477ab</srcmd5>
+    <version>4.4.0</version>
+    <time>1704920003</time>
+    <user>anag+factory</user>
+    <comment>- update to version 4.4.0
+  - Release notes for 4.4.0
+  - md-property-create: add a mandatory &quot;--type&quot; option
+  - Tox4: remove skipsdist
+  - Update master for stable/2023.1
+  - do_image_import: fix argument retrieval
+  - Docs generation: mock the six module for autodoc
+  - Bump the CHUNKSIZE to use CPU more efficiently
+  - do_image_import: always pass remote_* to gc.images.image_import</comment>
+    <requestid>1137969</requestid>
+  </revision>
 </revisionlist>

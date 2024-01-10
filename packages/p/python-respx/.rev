@@ -43,4 +43,23 @@
   * Use a real IPv6 address to avoid an address parsing exception</comment>
     <requestid>1093417</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b7781bee9e3f68b8d34a00c016c983ca</srcmd5>
+    <version>0.20.2</version>
+    <time>1704919938</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.20.2:
+  * Better assertion output for `assert_all_called`
+  * Support for quoted path pattern matching
+  * Enable content\_\_contains pattern, thanks @rjprins
+  * Added initial `CONTRIBUTING.md`, thanks @morenoh149
+  * Docs about retrieving mocked calls, thanks
+  * Docs about `Router.assert_all_called()`, thanks @BeyondEvil
+    for input
+- drop use-real-ipv6-address.patch (upstream)
+
+- Update to version 0.20.0
+  pytest-asyncio.</comment>
+    <requestid>1137830</requestid>
+  </revision>
 </revisionlist>

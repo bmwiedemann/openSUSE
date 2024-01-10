@@ -1,7 +1,7 @@
 #
 # spec file for package protobuf
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,8 +26,8 @@
 %bcond_without python3
 %{?sle15_python_module_pythons}
 Name:           protobuf
-Version:        23.4
-%global         sover 23_4_0
+Version:        25.1
+%global         sover 25_1_0
 Release:        0
 Summary:        Protocol Buffers - Google's data interchange format
 License:        BSD-3-Clause
@@ -236,6 +236,15 @@ popd
 %doc CONTRIBUTORS.txt README.md
 %{_bindir}/protoc*
 %{_includedir}/google
+%dir %{_includedir}/java
+%dir %{_includedir}/java/core
+%dir %{_includedir}/java/core/src
+%dir %{_includedir}/java/core/src/main
+%dir %{_includedir}/java/core/src/main/java
+%dir %{_includedir}/java/core/src/main/java/com
+%dir %{_includedir}/java/core/src/main/java/com/google
+%dir %{_includedir}/java/core/src/main/java/com/google/protobuf
+%{_includedir}/java/core/src/main/java/com/google/protobuf/java_features.proto
 %{_includedir}/*.h
 %{_libdir}/cmake/protobuf
 %{_libdir}/cmake/utf8_range

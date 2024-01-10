@@ -20,13 +20,12 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.10
+Version:        2.2
 Release:        0
 Summary:        A declarative terminal user interface library
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
@@ -65,10 +64,12 @@ BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-text-prof
 BuildRequires:  ghc-text-zipper-devel
 BuildRequires:  ghc-text-zipper-prof
-BuildRequires:  ghc-unix-devel
-BuildRequires:  ghc-unix-prof
+BuildRequires:  ghc-unix-compat-devel
+BuildRequires:  ghc-unix-compat-prof
 BuildRequires:  ghc-vector-devel
 BuildRequires:  ghc-vector-prof
+BuildRequires:  ghc-vty-crossplatform-devel
+BuildRequires:  ghc-vty-crossplatform-prof
 BuildRequires:  ghc-vty-devel
 BuildRequires:  ghc-vty-prof
 BuildRequires:  ghc-word-wrap-devel
@@ -125,7 +126,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build

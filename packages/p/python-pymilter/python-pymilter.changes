@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jan  7 23:24:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.5:
+  * fix deprecation warnings
+
+-------------------------------------------------------------------
 Sat Feb 13 00:04:30 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
 
 - Fix dependency on py3dns so that flavor builds generate correctly

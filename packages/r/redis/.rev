@@ -806,4 +806,12 @@ the python-redis for this is on the way as well 1119606</comment>
   - Fix a possible crash after cluster node removal (#12702)</comment>
     <requestid>1123282</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>a7a290807b4521ee06e254bb40ed5d76</srcmd5>
+    <version>7.2.4</version>
+    <time>1704919857</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1137732</requestid>
+  </revision>
 </revisionlist>

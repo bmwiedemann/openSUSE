@@ -675,4 +675,12 @@ Show aggregation and make compatible with Fedora declaration (forwarded request 
     &quot;rescan-scsi-bus.sh -r&quot; (gh#doug-gilbert/sg3_utils#46)</comment>
     <requestid>1137516</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>eac5d57f3237922eeea7c826b9d56f6e</srcmd5>
+    <version>1.48+7.63e63cb</version>
+    <time>1704919835</time>
+    <user>anag+factory</user>
+    <comment>- Fix spurious warning for non-SCSI devices (boo#1218666)</comment>
+    <requestid>1137906</requestid>
+  </revision>
 </revisionlist>

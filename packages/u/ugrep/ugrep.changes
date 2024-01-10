@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 10 17:52:11 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 4.5.2:
+  * fix 7zip search failing on 32 bit systems when option -M is used
+    (or -t when setting -M)
+
+-------------------------------------------------------------------
 Sat Jan  6 17:59:29 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 4.5.1:

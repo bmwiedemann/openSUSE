@@ -1,7 +1,7 @@
 #
 # spec file for package imake
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           imake
-Version:        1.0.9
+Version:        1.0.10
 Release:        0
 Summary:        C preprocessor interface to the make utility
 License:        MIT

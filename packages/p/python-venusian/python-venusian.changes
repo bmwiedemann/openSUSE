@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 10 06:10:22 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.1.0:
+  * Remove support for Python 3.5 and 3.6
+  * Add support for Python 3.9, 3.10, 3.11 and 3.12.
+- Drop patch fix-pylons-sphinx-theme.diff
+
+-------------------------------------------------------------------
 Fri Jun  9 05:45:04 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add missing %{?sle15_python_module_pythons}

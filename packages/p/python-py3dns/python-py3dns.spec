@@ -1,7 +1,7 @@
 #
 # spec file for package python-py3dns
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,17 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-py3dns
-Version:        3.2.1
+Version:        4.0.0
 Release:        0
 Summary:        Python module for DNS (Domain Name Service)
 License:        CNRI-Python
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/py3dns
 Source:         https://files.pythonhosted.org/packages/source/p/py3dns/py3dns-%{version}.tar.gz
-Patch0:         python3-py3dns-handle-absent-resolv.patch
-Patch1:         python3-py3dns-py3_friendly_warning.patch
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -40,14 +38,13 @@ This package contains a module (dnslib) that implements a DNS
 symbolic constants used by DNS (dnstype, dnsclass, dnsopcode).
 
 %prep
-%setup -q -n py3dns-%{version}
-%autopatch -p1
+%autosetup -p1 -n py3dns-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -57,6 +54,7 @@ symbolic constants used by DNS (dnstype, dnsclass, dnsopcode).
 %files %{python_files}
 %license LICENSE
 %doc README* CHANGES
-%{python_sitelib}/*
+%{python_sitelib}/DNS
+%{python_sitelib}/py3dns-%{version}.dist-info
 
 %changelog

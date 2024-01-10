@@ -1,14 +1,26 @@
 ---
- gnuplot-5.4.0/docs/Makefile.am |   12 ++++++++----
- gnuplot-5.4.0/src/gadgets.h    |    2 +-
- gnuplot-5.4.0/src/gplt_x11.c   |    9 ++++++---
- gnuplot-5.4.0/src/plot.c       |   22 +++++++++++++++++++++-
- gnuplot-5.4.0/src/term.h       |    6 +++---
- 5 files changed, 39 insertions(+), 12 deletions(-)
+ gnuplot-6.0.0/configure.ac     |    2 +-
+ gnuplot-6.0.0/docs/Makefile.am |   12 ++++++++----
+ gnuplot-6.0.0/src/gadgets.h    |    2 +-
+ gnuplot-6.0.0/src/gplt_x11.c   |    9 ++++++---
+ gnuplot-6.0.0/src/plot.c       |   16 ++++++++++++++++
+ gnuplot-6.0.0/src/term.h       |    6 +++---
+ 6 files changed, 35 insertions(+), 12 deletions(-)
 
---- gnuplot-5.4.0/docs/Makefile.am
-+++ gnuplot-5.4.0/docs/Makefile.am	2020-07-17 07:25:36.834034450 +0000
-@@ -42,7 +42,7 @@
+--- gnuplot-6.0.0/configure.ac
++++ gnuplot-6.0.0/configure.ac	2024-01-09 08:20:41.748328467 +0000
+@@ -383,7 +383,7 @@ if test "$with_readline" != no; then
+     dnl check for terminal library
+     dnl this is a very cool solution from octave's configure.in
+     gp_tcap=""
+-    for termlib in ncurses curses termcap terminfo termlib; do
++    for termlib in tinfo ncurses curses termcap terminfo termlib; do
+       AC_CHECK_LIB(${termlib}, tputs, [gp_tcap="$gp_tcap -l$termlib"])
+       case "$gp_tcap" in
+         *-l${termlib}*)
+--- gnuplot-6.0.0/docs/Makefile.am
++++ gnuplot-6.0.0/docs/Makefile.am	2024-01-08 10:32:22.372964142 +0000
+@@ -29,7 +29,7 @@
  #
  
  # default is what is needed for interactive gnuplot
@@ -16,17 +28,17 @@
 +gih_DATA = gnuplot.gih gnuplot-fr.gih
  gihdir = @GIHDIR@
  
- noinst_PROGRAMS = checkdoc doc2ipf doc2tex doc2gih doc2rnh doc2hlp	\
-@@ -101,7 +101,7 @@ gnuplot-groff.ps gnuplot.tmp VERSION gnu
- gnuplot.idv gnuplot.xref gnuplot.lg gnuplot.pdf wxhelp_figures		\
- wxhelp/*.html wxhelp/wgnuplot.hhc wxhelp/wgnuplot.hhk			\
+ noinst_PROGRAMS = checkdoc doc2ipf doc2tex doc2gih doc2hlp \
+@@ -111,7 +111,7 @@ wxhelp_figures wxhelp/*.html wxhelp/wgnu
  wxhelp/wgnuplot.htc wxhelp/doc2html$(EXEEXT) windows/wgnuplot.htk	\
+ svg_figures html/*.html html/*.svg html/*.hhc html/*.hhk                \
+ webp_figures html/*.webp html/figure_mask.png                           \
 -windows/*.png gnuplot.htb gnuplot.texi gnuplot-eldoc.el $(ELCS)
 +windows/*.png gnuplot.htb gnuplot.texi gnuplot-eldoc.el $(ELCS) gnuplot-fr.gih
  
  DISTFILES = $(DIST_COMMON) $(SOURCES) $(DOCHEADERS) $(EXTRA_DIST)
  
-@@ -262,17 +262,21 @@ gnuplot.hlp: doc2hlp$(EXEEXT) $(srcdir)/
+@@ -271,17 +271,21 @@ gnuplot.hlp: doc2hlp$(EXEEXT) $(srcdir)/
  doc2hlp_SOURCES = doc2hlp.c termdoc.c
  
  ### gnuplot interactive help format
@@ -50,9 +62,9 @@
  
  alldoc2gih_SOURCES = doc2gih.c termdoc.c
  alldoc2gih_CPPFLAGS = -DALL_TERM_DOC $(AM_CPPFLAGS)
---- gnuplot-5.4.0/src/gadgets.h
-+++ gnuplot-5.4.0/src/gadgets.h	2020-07-17 07:27:48.183763305 +0000
-@@ -522,7 +522,7 @@ extern TBOOLEAN	clip_lines2;
+--- gnuplot-6.0.0/src/gadgets.h
++++ gnuplot-6.0.0/src/gadgets.h	2024-01-08 09:16:58.124450437 +0000
+@@ -524,7 +524,7 @@ extern TBOOLEAN	clip_lines2;
  extern TBOOLEAN	clip_points;
  extern TBOOLEAN	clip_radial;
  
@@ -61,9 +73,9 @@
  extern int samples_1;
  extern int samples_2;
  
---- gnuplot-5.4.0/src/gplt_x11.c
-+++ gnuplot-5.4.0/src/gplt_x11.c	2020-07-17 07:25:36.834034450 +0000
-@@ -2513,9 +2513,12 @@ exec_cmd(plot_struct *plot, char *comman
+--- gnuplot-6.0.0/src/gplt_x11.c
++++ gnuplot-6.0.0/src/gplt_x11.c	2024-01-08 09:16:58.124450437 +0000
+@@ -2518,9 +2518,12 @@ exec_cmd(plot_struct *plot, char *comman
  	}
      }
      /*   X11_justify_text(mode) - set text justification mode  */
@@ -79,49 +91,9 @@
      else if (*buffer == 'A')
  	sscanf(buffer + 1, "%lf", &plot->angle);
  
---- gnuplot-5.4.0/src/plot.c
-+++ gnuplot-5.4.0/src/plot.c	2020-07-17 07:28:52.762646614 +0000
-@@ -206,6 +206,7 @@ static int asked_privi = 0;
- void
- drop_privilege()
- {
-+#ifndef SVGA_IS_SECURE
-     if (!asked_privi) {
- 	euid = geteuid();
- 	egid = getegid();
-@@ -219,11 +220,13 @@ drop_privilege()
-     if (seteuid(ruid) == -1)
- 	(void) fprintf(stderr, "seteuid(%d): %s\n",
- 		       (int) ruid, strerror(errno));
-+#endif
- }
- 
- void
- take_privilege()
- {
-+#ifndef SVGA_IS_SECURE
-     if (!asked_privi) {
- 	euid = geteuid();
- 	egid = getegid();
-@@ -237,6 +240,7 @@ take_privilege()
-     if (seteuid(euid) == -1)
- 	(void) fprintf(stderr, "seteuid(%d): %s\n",
- 		       (int) euid, strerror(errno));
-+#endif
- }
- 
- #endif /* LINUXVGA */
-@@ -272,8 +276,8 @@ main(int argc_orig, char **argv)
-     argc = argc_orig;
- 
- #ifdef LINUXVGA
--    LINUX_setup();		/* setup VGA before dropping privilege DBT 4/5/99 */
-     drop_privilege();
-+    LINUX_setup();		/* setup VGA before dropping privilege DBT 4/5/99 */
- #endif
- /* make sure that we really have revoked root access, this might happen if
-    gnuplot is compiled without vga support but is installed suid by mistake */
-@@ -346,6 +350,22 @@ main(int argc_orig, char **argv)
+--- gnuplot-6.0.0/src/plot.c
++++ gnuplot-6.0.0/src/plot.c	2024-01-08 09:16:58.124450437 +0000
+@@ -296,6 +296,22 @@ main(int argc_orig, char **argv)
      rl_getc_function = getc_wrapper;
  #endif
  
@@ -144,9 +116,9 @@
  #if defined(HAVE_LIBREADLINE) || defined(HAVE_LIBEDITLINE)
      /* T.Walter 1999-06-24: 'rl_readline_name' must be this fix name.
       * It is used to parse a 'gnuplot' specific section in '~/.inputrc'
---- gnuplot-5.4.0/src/term.h
-+++ gnuplot-5.4.0/src/term.h	2020-07-17 07:25:36.838034380 +0000
-@@ -242,9 +242,9 @@
+--- gnuplot-6.0.0/src/term.h
++++ gnuplot-6.0.0/src/term.h	2024-01-08 09:16:58.124450437 +0000
+@@ -233,9 +233,9 @@
  #include "emf.trm"
  
  /* Roland DXY800A plotter */
@@ -158,7 +130,7 @@
  
  /* fig graphics */
  #include "fig.trm"
-@@ -277,7 +277,7 @@
+@@ -268,7 +268,7 @@
  /* #include "imagen.trm" */
  
  /* Kyocera Prescribe printer */

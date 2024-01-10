@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Tue Jan  9 22:09:21 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2023.09.16:
+  * Cffi update
+  * Use build rather than pep517 for building
+  * Removes `mysqldb` recipe as does not support Python 3
+  * Removes `Babel` recipe as it's not needed anymore.
+  * Remove `dateutil` recipe, as it's not needed anymore
+  * Optimize CI runs, by avoiding unnecessary rebuilds
+  * Remove `pytz` recipe, as it's not needed anymore
+  * Changed the url to use https as http fails
+  * vlc: fix build
+  * Correct sys_platform
+  * Docs: Fix code string - quickstart.rst
+  * Bump `kivy` version to `2.2.1`
+  * Use a pinned version of `Cython` for now, as most of the
+    recipes are incompatible with `Cython==3.x.x`
+  * Automatically generate required pre-requisites
+  * Use platform.uname instead of os.uname
+  * Fix simple typos in comments
+  * `build_platform` should be all-lowercase
+  * Docs: Fix typos and updated command to build apk - README
+  * Patching cleanup
+  * Python versions: Update documentation & CI testing
+  * Correct check for --sdk option
+  * Factor out dependency checking. Use modern version handling
+  * :rotating_light: linter fixes
+  * Remove deprecated FlatDir in Gradle template
+  * Standardise ensure_dir and rmdir
+  * Standardise on move
+  * Use Python's touch() rather than shelling out.
+- update to 2023.05.21:
+  * Add support for Python 3.10 and make it the default while
+    building hostpython3 and python3
+  * Add PyAV recipe
+  * Add debug loggings for identifying a matching dist
+  * Home app functionality
+  * Use io.IOBase for LogFile
+  * android_api to integer
+  * fix #2768 smallIconName null can t be compared to String
+  * fix tools/liblink: syntax error
+  * Update `pyjnius` version to `1.5.0`
+  * Update Kivy recipe for 2.2.0
+
+-------------------------------------------------------------------
 Tue May 16 12:08:13 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to v2023.02.10:
@@ -26,7 +71,7 @@ Tue May 16 12:08:13 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
   * android/activity: Add Application.ActivityLifecycleCallbacks
     helpers #2669 (dbnicholson)
   * Bump minimal and recommended Android NDK version to 25b #2668 (misl6)
-  * Include HOME in build environment #2582 (dbnicholson) 
+  * Include HOME in build environment #2582 (dbnicholson)
 - Add patch switch-to-build-from-pep517.patch:
   * Do not use pep517 methods, switch to build.
 
@@ -44,7 +89,7 @@ Mon Dec 12 17:33:31 UTC 2022 - pgajdos@suse.com
 -------------------------------------------------------------------
 Thu Oct  6 22:26:44 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version v2022.09.04 
+- Update to version v2022.09.04
   Fixed bugs:
   Matplotlib failed to import properly on an APK from Buildozer and Kivy #2643
   Closed issues:

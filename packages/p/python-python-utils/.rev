@@ -47,4 +47,31 @@
     <comment></comment>
     <requestid>1042597</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e06cd3a92c7489b9c14c0ddcf1871900</srcmd5>
+    <version>3.8.1</version>
+    <time>1704919916</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.8.1:
+  * fixed silly typo
+- update to 3.8.0:
+  * Added slicabledeque
+- update to 3.7.0:
+  * Fixed several typing issues and added more thorough tests
+- update to 3.6.1:
+  * Increased `typing-extensions` version requirement to fix #38
+- update to 3.6.0:
+  * Added extra containers such as UniqueList and SlicableDeque.
+    Added full pyright strict and mypy type checks
+- update to 3.5.2:
+  * Added import shortcuts for container classes
+- update to 3.5.1:
+  * Improved type hinting thanks to @jorenham
+- update to 3.5.0:
+  * Added unique list container
+
+  https://github.com/wolph/python-utils/commits/develop
+  * added map/remap/scale/rescale function</comment>
+    <requestid>1137812</requestid>
+  </revision>
 </revisionlist>

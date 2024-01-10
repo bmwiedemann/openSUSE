@@ -1,7 +1,7 @@
 #
 # spec file for package transmission
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,7 @@
 %endif
 
 Name:           transmission
-Version:        4.0.4
+Version:        4.0.5
 Release:        0
 Summary:        A BitTorrent client with multiple UIs
 License:        (GPL-2.0-only OR GPL-3.0-only) AND MIT
@@ -67,7 +67,7 @@ BuildRequires:  cmake(Qt5Svg) >= %{qt5_version}
 BuildRequires:  cmake(Qt5Widgets) >= %{qt5_version}
 BuildRequires:  pkgconfig(giomm-2.68) >= %{glibmm_version}
 BuildRequires:  pkgconfig(glibmm-2.68) >= %{glibmm_version}
-BuildRequires:  pkgconfig(gtkmm-4.0) >= 3.24.0
+BuildRequires:  pkgconfig(gtkmm-4.0) >= 4.10.0
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(zlib) >= 1.2.3

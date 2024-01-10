@@ -1,7 +1,7 @@
 #
 # spec file for package tuxpaint-config
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,23 @@
 
 
 Name:           tuxpaint-config
-Version:        0.0.18
+Version:        0.0.22
 Release:        0
 Summary:        Configuration tool for Tux Paint
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Bitmap Editors
-URL:            http://www.tuxpaint.org/
-Source:         %{name}-%{version}.tar.gz
+URL:            https://www.tuxpaint.org/
+Source:         https://download.sourceforge.net/tuxpaint/tuxpaint-config/%{version}/%{name}-%{version}.tar.gz
 Patch1:         tuxpaint-config-docpath.patch
 Patch2:         tuxpaint-config-desktop.patch
 Patch3:         tuxpaint-config-manpage.patch
 BuildRequires:  fltk-devel
 BuildRequires:  gcc-c++
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  libpaper-devel
 BuildRequires:  libunibreak-devel
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(pangoft2)
 %if 0%{?suse_version}
 BuildRequires:  fdupes
 BuildRequires:  update-desktop-files
@@ -49,13 +52,10 @@ Tux Paint to suit the needs of their users.
 %endif
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%autosetup -p1
 
 %build
-%make_build  CFLAGS="%{optflags}" PREFIX="%{_prefix}" X11_ICON_PREFIX=%{_includedir}/X11/pixmaps/
+%make_build CFLAGS="%{optflags}" PREFIX="%{_prefix}" X11_ICON_PREFIX=%{_includedir}/X11/pixmaps/
 
 %install
 mkdir -p %{buildroot}/%{_bindir}
@@ -81,14 +81,15 @@ find %{buildroot}%{_mandir} -type f -exec chmod 644 {} \;
 %find_lang %{name}
 
 %files
-%attr(755,root,root) %{_bindir}/tuxpaint-config
 %doc %{_defaultdocdir}/%{name}
 %dir %{_includedir}/X11/pixmaps
+%{_bindir}/tuxpaint-config
+%{_datadir}/applications/*.desktop
+%{_datadir}/icons/hicolor/*/apps/%{name}.png
+%{_datadir}/pixmaps/*.png
+%{_datadir}/tuxpaint-config/
 %{_includedir}/X11/pixmaps/tuxpaint-config.xpm
 %{_mandir}/man1/*
-%{_datadir}/tuxpaint-config/
-%{_datadir}/pixmaps/*.png
-%{_datadir}/applications/*.desktop
 
 %files lang -f %{name}.lang
 

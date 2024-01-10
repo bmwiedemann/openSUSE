@@ -70,4 +70,17 @@
   * Check failure info now shows up in summaries.</comment>
     <requestid>1137114</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0ef20027d929e8ae365425961cebf233</srcmd5>
+    <version>2.2.4</version>
+    <time>1704919925</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.2.4:
+  * fix 153
+  * Summaries from 2.2.3 are cool, but don't work for pytest &lt;
+    7.3; Remove them for earlier pytest
+  * Add tox test run for pytest 7.0.0
+  * Change dependencies to require 7.0.0 pytest</comment>
+    <requestid>1137813</requestid>
+  </revision>
 </revisionlist>

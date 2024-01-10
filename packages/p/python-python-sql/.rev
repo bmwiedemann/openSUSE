@@ -68,4 +68,24 @@
     <comment></comment>
     <requestid>974776</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>557860a5839b50f5bf63d530d679c66a</srcmd5>
+    <version>1.4.3</version>
+    <time>1704919933</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.4.3:
+  * Render common table expression in combining query
+  * Add support for Python 3.12
+  * Restore usage of alias in returning expression
+  * Do not use alias in returning expression
+
+  * Support Select queries in conditionals and functions
+- Version 1.2.0
+- Version 0.9
+- corrected name/metaname
+  correct License
+- Version 0.8
+- update to version 0.3</comment>
+    <requestid>1137825</requestid>
+  </revision>
 </revisionlist>

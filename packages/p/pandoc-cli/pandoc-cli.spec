@@ -1,7 +1,7 @@
 #
 # spec file for package pandoc-cli
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           pandoc-cli
-Version:        0.1.1.1
+Version:        3.1.11.1
 Release:        0
 Summary:        Conversion between documentation formats
 License:        GPL-2.0-or-later
@@ -45,8 +45,8 @@ BuildRequires:  ghc-wai-extra-devel
 BuildRequires:  ghc-wai-extra-prof
 BuildRequires:  ghc-warp-devel
 BuildRequires:  ghc-warp-prof
-Requires:       ghc-pandoc >= 3.0
-Provides:       pandoc = 3.0.1
+Requires:       ghc-pandoc = %{version}
+Provides:       pandoc = %{version}
 Obsoletes:      pandoc < 3
 ExcludeArch:    %{ix86}
 

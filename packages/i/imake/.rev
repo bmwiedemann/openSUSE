@@ -102,4 +102,23 @@
   * autogen.sh: use exec instead of waiting for configure to finish</comment>
     <requestid>1030122</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>18c89b66d36d4b025a31b5493a21e72a</srcmd5>
+    <version>1.0.10</version>
+    <time>1704919845</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0.10
+  This release fixes a &quot;Modern C&quot; warning that may become an error in
+  future gcc releases.
+  For those building for 32-bit platforms, it also enables use of the
+  &quot;large file&quot; APIs - though no file processed by imake should ever be
+  anywhere near 2GB in size, it may be stored on a filesystem which uses
+  large inode numbers not supported by the original 32-bit APIs.
+  Since this release was generated using the new GNU autoconf 2.72, this
+  also adds a --enable-year2038 configure flag which may allow imake to
+  work with files whose timestamps are later than January 19, 2038, but
+  this has not been tested, and we sincerely hope that no one will actually
+  still be using imake 14 years from now.</comment>
+    <requestid>1137656</requestid>
+  </revision>
 </revisionlist>

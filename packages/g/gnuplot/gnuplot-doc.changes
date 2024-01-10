@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Tue Jan  9 09:24:03 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Add missing doc/webp_figures.gnu fronm upstream git repo
+
+-------------------------------------------------------------------
+Tue Jan  9 08:36:10 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Update to gnuplot 6.0.0
+  * Japanese documentation updated
+    (missing file title-ja.tex, build dependencies for mingw)
+  * Support building against Qt6
+    (./configure falls back to Qt5 if the Qt6 libraries are not found)
+  * New configure option --enable-stable-sort
+    1) Use mergesort rather than qsort if the system provides it.
+    2) If neither mergesort nor glibc stable qsort is available,
+       modify internal gnuplot structures to contain a secondary sort key
+  * Render color gradient in colorbox as a pixel array (cairo, qt terminals)
+  * "reset session" restores initial state of all linetype properties
+  * postscript terminal now handles pixmaps (Bug #2644)
+  * New plot style "with contourfill" handles 2D and 3D contour plots with
+    discrete z-ranges indicated by solid fill colors.
+
+  * FIX do not clobber a datablock if its name is encountered unexpectedly
+  * FIX cairo terminals:  ignore zero-size polygons
+  * FIX svg terminal now correctly tracks pattern-fill color
+  * FIX integer overflow/wraparound when polygon is clipped to plot border
+  * FIX do not mangle variable point properties in polar mode Bug #2650
+
+  * partial support for replotting and mousing multiplots (finally!)
+  * fixes build error for postscript terminal when libgd and cairo are not present
+  * strip trailing CR from function blocks read from a dos file   Bug #2653
+  * use 64-bit integers for iteration
+  * "unset pointintervalbox" disables the box rather than setting it to default size
+  * keyentry '...' can be used to place a secondary title in the key
+  * fix use of stacked histograms with variable number of data columns
+  - Replotting and mousing multiplots
+    o now working much more comprehensively
+    o revert "set mouse multiplot" as a separate command; it's now always in effect
+  - "plot with polygons" now guarantees that the border of each polygon is a closed curve
+  - pdf output from the cairo terminals now conforms to %PDF-1.5
+- Refreshed patches
+  * gnuplot-4.4.0-x11ovf.dif
+  * gnuplot-4.6.0-demo.diff
+  * gnuplot-4.6.0-fonts.diff
+  * gnuplot-4.6.0.dif
+  * gnuplot-PIE.patch
+  * gnuplot-QtCore-PIC.dif
+  * gnuplot-wx3.diff
+- Removed patch gnuplot-gd.patch
+- Enable almost all terminals
+- Enable Complex Airy and Bessel functions
+- Enable Support for polar gridded surfaces
+
+-------------------------------------------------------------------
 Mon Oct 23 07:36:34 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Update to gnuplot 5.4.10

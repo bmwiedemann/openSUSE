@@ -37,6 +37,7 @@ BuildRequires:  pkgconfig(libgsf-1) >= 1.14
 BuildRequires:  pkgconfig(libofx) >= 0.9
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.5.0
 BuildRequires:  pkgconfig(zlib)
+ExcludeArch:    %{ix86}
 
 %description
 Grisbi is a personal accounting application, aiming at providing the most

@@ -68,4 +68,14 @@
 </comment>
     <requestid>1115635</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>f9ca7c51d671e1c52b0919d3473d429f</srcmd5>
+    <version>2.2.0</version>
+    <time>1704919955</time>
+    <user>anag+factory</user>
+    <comment>- Add patch support-python312.patch:
+  * In Python 3.12, slice() is now hashable, use a class that isn't hashable.
+- Switch to pyproject macros.</comment>
+    <requestid>1137862</requestid>
+  </revision>
 </revisionlist>

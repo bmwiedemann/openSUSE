@@ -1,7 +1,7 @@
 #
 # spec file for package python-datadiff
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,9 +26,13 @@ URL:            https://sourceforge.net/projects/datadiff/
 #Source:         https://files.pythonhosted.org/packages/source/d/datadiff/datadiff-%%{version}.tar.gz
 #Git-Clone:     https://git.code.sf.net/p/datadiff/code
 Source:         datadiff-%{version}.tar.xz
-# https://sourceforge.net/p/datadiff/code/merge-requests/3/
+# PATCH-FIX-UPSTREAM https://sourceforge.net/p/datadiff/code/merge-requests/3/
 Patch0:         python-datadiff-no-six.patch
+# PATCH-FIX-UPSTREAM https://sourceforge.net/p/datadiff/code/merge-requests/4/
+Patch1:         support-python312.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -50,10 +54,10 @@ a nice data diff is shown, letting you easily pinpoint the root difference.
 %autosetup -p1 -n datadiff-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -62,6 +66,6 @@ a nice data diff is shown, letting you easily pinpoint the root difference.
 %files %{python_files}
 %license LICENSE
 %{python_sitelib}/datadiff
-%{python_sitelib}/datadiff-%{version}*-info
+%{python_sitelib}/datadiff-%{version}.dist-info
 
 %changelog

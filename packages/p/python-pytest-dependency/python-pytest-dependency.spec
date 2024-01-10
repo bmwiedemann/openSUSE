@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-dependency
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-dependency
-Version:        0.5.1
+Version:        0.6.0
 Release:        0
 Summary:        Manage dependencies of tests
 License:        Apache-2.0
 URL:            https://github.com/RKrahl/pytest-dependency
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-dependency/pytest-dependency-%{version}.tar.gz
-Patch0:         https://github.com/RKrahl/pytest-dependency/commit/0930889a.patch#/pytest6.2.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
@@ -42,7 +41,6 @@ skipped if any of the dependencies did fail or has been skipped.
 
 %prep
 %setup -q -n pytest-dependency-%{version}
-%patch0 -p1
 
 %build
 %python_build

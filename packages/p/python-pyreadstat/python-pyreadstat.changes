@@ -1,15 +1,26 @@
 -------------------------------------------------------------------
+Tue Jan  9 22:05:47 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.6:
+  * correcting bug when writing files with character columns with
+    all missing, character length set to 1
+  * Correcting bug for datetime64[us
+  * Added modification_time and creation_time to metadata
+  * added datetime64[us in addition to ns for improvement when
+    writing.
+
+-------------------------------------------------------------------
 Thu Aug 31 11:39:15 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - update to 1.2.3
-  * changes introduced for compatibility with cython 3.0.0. 
+  * changes introduced for compatibility with cython 3.0.0.
     Cython 0.29 no longer supported. Python 2.7 no longer supported.
 
 -------------------------------------------------------------------
 Tue Jun 27 12:06:04 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - update to 1.2.2
-  * added num_rows to multiprocessing to allow processing of xport, 
+  * added num_rows to multiprocessing to allow processing of xport,
     por and sav files not having the number of rows in the metadata.
 
 -------------------------------------------------------------------
@@ -51,7 +62,7 @@ Wed Feb 16 10:27:34 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * Improved error when reading dates and finding a string
   * repaired not reading correctly metadata with multiprocessing
   # correction when reading file paths in python <3.7
-  * Using os.fsencode when reading file paths to support file system 
+  * Using os.fsencode when reading file paths to support file system
     encoding and Path-like objects
   * Updated Readstat source to version 1.1.6
   * Accepting dict as the column_label parameter for writing functions
@@ -78,11 +89,11 @@ Mon Dec 28 07:47:19 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 1.0.6.
   * Updated Readstat to version 1.1.5, this fixes: reading sas7bdat
-    file labels, reading newer por files date-like columns, and few 
+    file labels, reading newer por files date-like columns, and few
     others.
   * Corrected writing columns with numpy.float32 format.
 - Updates for 1.0.5
-  * fixed sharing permissions when reading files on windows, 
+  * fixed sharing permissions when reading files on windows,
     fixes #87
 - Updates for 1.0.4
   * read_file_in_chunks can read chunks with multiprocessing.
@@ -90,16 +101,16 @@ Mon Dec 28 07:47:19 UTC 2020 - andy great <andythe_great@pm.me>
   * Improved performance specially for big files.
   * added a method to read files in parallel
   * added license information to setup.py
-- Updates for 1.0.2 
-  * Updated default widths for DATE and DATETIME formats 
-    (from Readstat src). That make the files readable both in SPSS 
+- Updates for 1.0.2
+  * Updated default widths for DATE and DATETIME formats
+    (from Readstat src). That make the files readable both in SPSS
     and PSPP, solves issue #69.
   * added support for binary compressed sas7bdat files
   * fixes writing XPT files v8 that can be read in SAS. Reading XPT v8 improved.
   * fixes writing files with NaT values.
   * fixes #72: variable display width with long strings.
   * fixes #70: variable_measures not set when writing sav files
-- Updates for 1.0.1 
+- Updates for 1.0.1
   * fixes issue #67
 
 

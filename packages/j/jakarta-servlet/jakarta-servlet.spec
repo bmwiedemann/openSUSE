@@ -1,7 +1,7 @@
 #
 # spec file for package jakarta-servlet
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,8 +22,8 @@ Version:        5.0.0
 Release:        0
 Summary:        Server-side API for handling HTTP requests and responses
 License:        Apache-2.0 AND (EPL-2.0 OR GPL-2.0-only WITH Classpath-exception-2.0)
-URL:            https://github.com/eclipse-ee4j/servlet-api
-Source0:        https://github.com/eclipse-ee4j/servlet-api/archive/%{version}-RELEASE/servlet-api-%{version}.tar.gz
+URL:            https://github.com/jakartaee/servlet
+Source0:        https://github.com/jakartaee/servlet/archive/refs/tags/%{version}-RELEASE.tar.gz
 Source1:        %{name}-api-build.xml
 BuildRequires:  ant
 BuildRequires:  fdupes
@@ -43,7 +43,7 @@ Group:          Documentation/HTML
 API documentation for %{name}.
 
 %prep
-%setup -q -n servlet-api-%{version}-RELEASE
+%setup -q -n servlet-%{version}-RELEASE
 cp LICENSE.md api/src/main/resources/META-INF/
 cp NOTICE.md api/src/main/resources/META-INF/
 

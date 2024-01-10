@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jan 10 16:52:29 UTC 2024 - cloud-devel@suse.de
+
+- update to version 4.4.0
+  - Release notes for 4.4.0
+  - md-property-create: add a mandatory "--type" option
+  - Tox4: remove skipsdist
+  - Update master for stable/2023.1
+  - do_image_import: fix argument retrieval
+  - Docs generation: mock the six module for autodoc
+  - Bump the CHUNKSIZE to use CPU more efficiently
+  - do_image_import: always pass remote_* to gc.images.image_import
+
+-------------------------------------------------------------------
 Tue Mar  7 06:57:00 UTC 2023 - cloud-devel@suse.de
 
 - update to version 4.3.0

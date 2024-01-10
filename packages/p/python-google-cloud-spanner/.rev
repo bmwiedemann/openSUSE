@@ -7,4 +7,14 @@
     <comment>Initial submission</comment>
     <requestid>1137714</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>36a12e05150044592f9d1195d2ee0539</srcmd5>
+    <version>3.40.1</version>
+    <time>1704919987</time>
+    <user>anag+factory</user>
+    <comment>- Run tests using multibuild
+- Add google and google/cloud folders to package ownership
+</comment>
+    <requestid>1137925</requestid>
+  </revision>
 </revisionlist>

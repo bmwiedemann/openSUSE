@@ -384,6 +384,7 @@ Provides:       bundled(llhttp) = 8.1.1
 Provides:       bundled(ngtcp2) = 0.8.1
 Provides:       bundled(base64) = 0.5.0
 Provides:       bundled(simdutf) = 3.2.18
+
 # bundled url-ada parser, not ada
 Provides:       bundled(ada) = 2.7.2
 

@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-utils
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-python-utils
-Version:        3.4.5
+Version:        3.8.1
 Release:        0
 Summary:        Utilities not included with the standard Python install
 License:        BSD-3-Clause
@@ -25,6 +25,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/WoLpH/python-utils
 Source:         https://files.pythonhosted.org/packages/source/p/python-utils/python-utils-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module typing-extensions}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
@@ -32,6 +33,7 @@ BuildRequires:  %{python_module loguru}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 Requires:       python-loguru
+Requires:       python-typing-extensions
 BuildArch:      noarch
 
 %python_subpackages

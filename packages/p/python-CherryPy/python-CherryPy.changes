@@ -103,6 +103,11 @@ Mon Oct  7 13:26:26 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 18.3.0:
   * Support handling multiple exceptions when processing hooks
+  * Includes patch 6bb23991325f596023b8c87c76098870a7185df8 which
+    makes tests pass even with the more recent versions of Python
+    which have fixed http.client.HTTPConnection.putrequest().
+    Fallout from jsc#PM-1350
+    Aka gh#cherrypy/cherrypy#1781 (bsc#1158120)
 
 -------------------------------------------------------------------
 Tue Sep 24 08:49:15 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>

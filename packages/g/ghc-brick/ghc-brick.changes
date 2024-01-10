@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Mon Dec 18 00:44:39 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update brick to version 2.2.
+  2.2
+  ---
+
+  Enhancements:
+  * `Brick.Forms` got a new `FormFieldVisibilityMode` type and a
+    `setFieldVisibilityMode` function to allow greater control over
+    how form field collections are brought into view when forms are
+    rendered in viewports. Form fields will default to using the
+    `ShowFocusedFieldOnly` mode which preserves functionality prior to
+    this release. To get the new behavior, set a field's visibility mode
+    to `ShowAugmentedField`.
+
+  2.1.1
+  -----
+
+  Bug fixes:
+  * `defaultMain` now properly shuts down Vty before it returns, fixing
+    a bug where the terminal would be in an unclean state on return from
+    `defaultMain`.
+
+  2.1
+  ---
+
+  API changes:
+
+  * Added `Brick.Main.customMainWithDefaultVty` as an alternative way to
+    initialize Brick.
+
+  2.0
+  ---
+
+  This release updates Brick to support Vty 6, which includes support for
+  Windows.
+
+  Package changes:
+  * Increased lower bound on `vty` to 6.0.
+  * Added dependency on `vty-crossplatform`.
+  * Migrated from `unix` dependency to `unix-compat`.
+
+  Other changes:
+  * Update core library and demo programs to use `vty-crossplatform` to
+    initialize the terminal.
+
+-------------------------------------------------------------------
 Mon Oct 24 02:30:51 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update brick to version 1.10 revision 1.

@@ -78,4 +78,15 @@
     <comment>- Handle new sources in spec file too (forwarded request 1135437 from lnussel)</comment>
     <requestid>1135438</requestid>
   </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>054258f3d435c9659365c1284ea4f30a</srcmd5>
+    <version>84.87.1</version>
+    <time>1704919856</time>
+    <user>anag+factory</user>
+    <comment>- Drop systemd-sysvinit, the main systemd package itself contains
+  /sbin/reboot etc. now
+
+- Use kernel-default-base instead of kvmsmall</comment>
+    <requestid>1137720</requestid>
+  </revision>
 </revisionlist>

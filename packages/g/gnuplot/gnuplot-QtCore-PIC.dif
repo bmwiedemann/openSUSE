@@ -6,7 +6,7 @@ Since QtCore is build with -reduce-relocations a -fPIC is required
 
 --- src/Makefile.am
 +++ src/Makefile.am	2017-09-27 10:07:07.767840550 +0000
-@@ -168,6 +168,9 @@ clean-local: clean-qt-extra clean-demo
+@@ -172,6 +172,9 @@ clean-local: clean-qt-extra clean-demo
  
  gnuplot_SOURCES += qtterminal/qt_term.cpp
  

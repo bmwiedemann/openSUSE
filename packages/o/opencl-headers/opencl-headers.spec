@@ -1,7 +1,7 @@
 #
 # spec file for package opencl-headers
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,10 @@
 
 
 Name:           opencl-headers
-Version:        2023.04.17
+Version:        2023.12.14
 Release:        0
 Summary:        OpenCL (Open Computing Language) headers
 License:        MIT
-Group:          Development/Libraries/C and C++
 URL:            https://www.khronos.org/registry/cl/
 Source:         %{name}-%{version}.tar.gz
 BuildRequires:  cmake

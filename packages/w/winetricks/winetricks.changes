@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 10 12:39:46 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- updated to 20240105
+  - match wine 8 version
+  - lots of fixes
+- icodecs.patch: is upstream
+
+-------------------------------------------------------------------
 Thu Oct 19 09:37:29 UTC 2023 - Илья Индиго <ilya@ilya.cf>
 
 - Added file icodecs.patch for fixed icodecs install

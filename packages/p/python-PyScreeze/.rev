@@ -81,4 +81,16 @@
     <comment></comment>
     <requestid>1000173</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e30e1583e89ce9a469ade9bb6f00385e</srcmd5>
+    <version>0.1.30</version>
+    <time>1704919932</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.1.30:
+  * Fixed screenshots so they work on Wayland
+
+- update to 0.1.28
+- Initial release of python-PyScreeze 0.1.14</comment>
+    <requestid>1137824</requestid>
+  </revision>
 </revisionlist>

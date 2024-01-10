@@ -673,4 +673,13 @@
     <comment></comment>
     <requestid>1130803</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>61e5958f79a74a4606c85b1a511091b6</srcmd5>
+    <version>0.378</version>
+    <time>1704919839</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.378:
+  * Update pci, usb and vendor ids</comment>
+    <requestid>1137915</requestid>
+  </revision>
 </revisionlist>

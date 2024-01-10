@@ -297,4 +297,12 @@
 - Switch to autosetup and pyproject macros.</comment>
     <requestid>1128005</requestid>
   </revision>
+  <revision rev="35" vrev="5">
+    <srcmd5>f3a9bb1d39bead80325ddbfb629c18f6</srcmd5>
+    <version>18.8.0</version>
+    <time>1704919884</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1137933</requestid>
+  </revision>
 </revisionlist>

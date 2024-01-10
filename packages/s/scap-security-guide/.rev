@@ -373,4 +373,13 @@ Setting up scap-security-guide (0.1.56-30.1) ... (forwarded request 896944 from 
   to write into journald.conf. (bsc#1217832)</comment>
     <requestid>1134450</requestid>
   </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>43d59034dfd61f637713873d8606904e</srcmd5>
+    <version>0.1.71</version>
+    <time>1704920000</time>
+    <user>anag+factory</user>
+    <comment>- removed left over file
+  0001-Revert-fix-aide-remediations-add-crontabs.patch upstreamed in 0.1.69</comment>
+    <requestid>1137951</requestid>
+  </revision>
 </revisionlist>

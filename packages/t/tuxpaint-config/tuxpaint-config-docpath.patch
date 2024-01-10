@@ -1,8 +1,8 @@
-Index: tuxpaint-config-0.0.18/Makefile
+Index: tuxpaint-config-0.0.22/Makefile
 ===================================================================
---- tuxpaint-config-0.0.18.orig/Makefile
-+++ tuxpaint-config-0.0.18/Makefile
-@@ -37,7 +37,7 @@ DATA_PREFIX=$(PREFIX)/share/tuxpaint-con
+--- tuxpaint-config-0.0.22.orig/Makefile
++++ tuxpaint-config-0.0.22/Makefile
+@@ -46,7 +46,7 @@ TUXPAINT_DATA_PREFIX=$(PREFIX)/share/tux
  
  # Docs and man page:
  
@@ -11,11 +11,3 @@ Index: tuxpaint-config-0.0.18/Makefile
  MAN_PREFIX=$(PREFIX)/share/man/
  
  
-@@ -179,7 +179,6 @@ install-win32:
- # to do this as superuser ("root"))
- 
- install:	install-bin install-data install-man install-doc \
--		install-gnome install-kde install-kde-icons \
- 		install-icon install-gettext
- 	@echo
- 	@echo "All done! Now (preferably NOT as 'root' superuser),"

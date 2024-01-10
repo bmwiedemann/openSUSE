@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Jan  9 21:42:18 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.13.1:
+  * models/package: move `requires()` and `version` to
+    `DistPackage`
+  * Update README to show 2.13.0 CLI syntax
+- update to 2.13.0:
+  * Add missing `user_only` field in `Options`
+  * Exit with error when `-p` given patterns that fail to match
+- update to 2.12.0:
+  * Detect dependency cycles beyond a depth = 2
+- update to 2.11.0:
+  * Have --packages and --all work together
+- update to 2.10.2:
+  * Internal refactors.
+- update to 2.10.1:
+  * Fix graphviz CLI failing
+- update to 2.10.0:
+  * Split project to parts
+  * Drop 3.7 support
+  * Fix entrypoints
+  * Improve CLI
+  * Add type check to CI and fix errors
+  * Simplify loops
+- update to 2.9.6:
+  * Avoid changing `t` in `randomized_dag_copy()` by shallow
+    copying
+- update to 2.9.5:
+  * Exclude dependabot and pre-commit ci from release notes
+  * Add type information
+- update to 2.9.4:
+  * Allow to force encoding
+  * Implement -d/--depth argument
+
+-------------------------------------------------------------------
 Thu May  4 16:34:16 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 2.7.1:
@@ -65,7 +100,7 @@ Fri Jan 21 01:22:44 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
   * Avoid crash when rendering cyclic dependencies
   * Fix graphviz (dot file) output
   * Handle a (rare) case while guessing version of a package
-  * Improve integration tests 
+  * Improve integration tests
 - Remove the hacked together virtualenv that was 2.7 based, since it is no
   longer needed.
 - Add virtualenv to BuildRequires.

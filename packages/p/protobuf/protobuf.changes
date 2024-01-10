@@ -1,4 +1,162 @@
 -------------------------------------------------------------------
+Tue Jan  2 13:52:00 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 25.1:
+  * Raise warnings for deprecated python syntax usages
+  * Add support for extensions in CRuby, JRuby, and FFI Ruby
+  * Add support for options in CRuby, JRuby and FFI (#14594)
+- update to 25.0:
+  * Implement proto2/proto3 with editions
+  * Defines Protobuf compiler version strings as macros and
+    separates out suffix string definition.
+  * Add utf8_validation feature back to the global feature set.
+  * Setting up version updater to prepare for poison pills and
+    embedding version info into C++, Python and Java gencode.
+  * Merge the protobuf and upb Bazel repos
+  * Editions: Introduce functionality to protoc for generating
+    edition feature set defaults.
+  * Editions: Migrate edition strings to enum in C++ code.
+  * Create a reflection helper for ExtensionIdentifier.
+  * Editions: Provide an API for C++ generators to specify their
+    features.
+  * Editions: Refactor feature resolution to use an intermediate
+    message.
+  * Publish extension declarations with declaration
+    verifications.
+  * Editions: Stop propagating partially resolved feature sets to
+    plugins.
+  * Editions: Migrate string_field_validation to a C++ feature
+  * Editions: Include defaults for any features in the generated
+    pool.
+  * Protoc: parser rejects explicit use of map_entry option
+  * Protoc: validate that reserved range start is before end
+  * Protoc: support identifiers as reserved names in addition to
+    string literals (only in editions)
+  * Drop support for Bazel 5.
+  * Allow code generators to specify whether or not they support
+    editions.
+  # C++
+  * Set `PROTOBUF_EXPORT` on
+    `InternalOutOfLineDeleteMessageLite()`
+  * Update stale checked-in files
+  * Apply PROTOBUF_NOINLINE to declarations of some functions
+    that want it.
+  * Implement proto2/proto3 with editions
+  * Make JSON UTF-8 boundary check inclusive of the largest
+    possible UTF-8 character.
+  * Reduce `Map::size_type` to 32-bits. Protobuf containers can't
+    have more than that
+  * Defines Protobuf compiler version strings as macros and
+    separates out suffix string definition.
+  * Add `ABSL_ATTRIBUTE_LIFETIME_BOUND` attribute on generated
+    oneof accessors.
+  * Fix bug in reflection based Swap of map fields.
+  * Add utf8_validation feature back to the global feature set.
+  * Setting up version updater to prepare for poison pills and
+    embedding version info into C++, Python and Java gencode.
+  * Add prefetching to arena allocations.
+  * Add `ABSL_ATTRIBUTE_LIFETIME_BOUND` attribute on generated
+    repeated and map field accessors.
+  * Editions: Migrate edition strings to enum in C++ code.
+  * Create a reflection helper for ExtensionIdentifier.
+  * Editions: Provide an API for C++ generators to specify their
+    features.
+  * Add `ABSL_ATTRIBUTE_LIFETIME_BOUND` attribute on generated
+    string field accessors.
+  * Editions: Refactor feature resolution to use an intermediate
+    message.
+  * Fixes for 32-bit MSVC.
+  * Publish extension declarations with declaration
+    verifications.
+  * Export the constants in protobuf's any.h to support DLL
+    builds.
+  * Implement AbslStringify for the Descriptor family of types.
+  * Add `ABSL_ATTRIBUTE_LIFETIME_BOUND` attribute on generated
+    message field accessors.
+  * Editions: Stop propagating partially resolved feature sets to
+    plugins.
+  * Editions: Migrate string_field_validation to a C++ feature
+  * Editions: Include defaults for any features in the generated
+    pool.
+  * Introduce C++ feature for UTF8 validation.
+  * Protoc: validate that reserved range start is before end
+  * Remove option to disable the table-driven parser in protoc.
+  * Lock down ctype=CORD in proto file.
+  * Support split repeated fields.
+  * In OSS mode omit some extern template specializations.
+  * Allow code generators to specify whether or not they support
+    editions.
+  # Java
+  * Implement proto2/proto3 with editions
+  * Remove synthetic oneofs from Java gencode field accessor
+    tables.
+  * Timestamps.parse: Add error handling for invalid
+    hours/minutes in the timezone offset.
+  * Defines Protobuf compiler version strings as macros and
+    separates out suffix string definition.
+  * Add `ABSL_ATTRIBUTE_LIFETIME_BOUND` attribute on generated
+    oneof accessors.
+  * Add missing debugging version info to Protobuf Java gencode
+    when multiple files are generated.
+  * Fix a bad cast in putBuilderIfAbsent when already present due
+    to using the result of put() directly (which is null if it
+    currently has no value)
+  * Setting up version updater to prepare for poison pills and
+    embedding version info into C++, Python and Java gencode.
+  * Fix a NPE in putBuilderIfAbsent due to using the result of
+    put() directly (which is null if it currently has no value)
+  * Update Kotlin compiler to escape package names
+  * Add MapFieldBuilder and change codegen to generate it and the
+    put{field}BuilderIfAbsent method.
+  * Introduce recursion limit in Java text format parsing
+  * Consider the protobuf.Any invalid if typeUrl.split("/")
+    returns an empty array.
+  * Mark `FieldDescriptor.hasOptionalKeyword()` as deprecated.
+  * Fixed Python memory leak in map lookup.
+  * Loosen upb for json name conflict check in proto2 between
+    json name and field
+  * Defines Protobuf compiler version strings as macros and
+    separates out suffix string definition.
+  * Add `ABSL_ATTRIBUTE_LIFETIME_BOUND` attribute on generated
+    oneof accessors.
+  * Ensure Timestamp.ToDatetime(tz) has correct offset
+  * Do not check required field for upb python MergeFrom
+  * Setting up version updater to prepare for poison pills and
+    embedding version info into C++, Python and Java gencode.
+  * Merge the protobuf and upb Bazel repos
+  * Comparing a proto message with an object of unknown returns
+    NotImplemented
+  * Emit __slots__ in pyi output as a tuple rather than a list
+    for --pyi_out.
+  * Fix a bug that strips options from descriptor.proto in
+    Python.
+  * Raise warings for message.UnknownFields() usages and navigate
+    to the new add
+  * Add protobuf python keyword support in path for stub
+    generator.
+  * Add tuple support to set Struct
+  * ### Python C-Extension (Default)
+  * Comparing a proto message with an object of unknown returns
+    NotImplemented
+  * Check that ffi-compiler loads before using it to define
+    tasks.
+  # UPB (Python/PHP/Ruby C-Extension)
+  * Include .inc files directly instead of through a filegroup
+  * Loosen upb for json name conflict check in proto2 between
+    json name and field
+  * Add utf8_validation feature back to the global feature set.
+  * Do not check required field for upb python MergeFrom
+  * Merge the protobuf and upb Bazel repos
+  * Added malloc_trim() calls to Python allocator so RSS will
+    decrease when memory is freed
+  * Upb: fix a Python memory leak in ByteSize()
+  * Support ASAN detection on clang
+  * Upb: bugfix for importing a proto3 enum from within a proto2
+    file
+  * Expose methods needed by Ruby FFI using UPB_API
+  * Fix `PyUpb_Message_MergeInternal` segfault
+
+-------------------------------------------------------------------
 Thu Dec 21 13:53:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - build against modern python on sle15

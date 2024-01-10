@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan  9 21:55:03 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.3:
+  * Fix false deprecation warning.
+
+-------------------------------------------------------------------
 Wed Dec 27 15:55:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.7.2:

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan  9 21:33:53 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.4:
+  * fix 153
+  * Summaries from 2.2.3 are cool, but don't work for pytest <
+    7.3; Remove them for earlier pytest
+  * Add tox test run for pytest 7.0.0
+  * Change dependencies to require 7.0.0 pytest
+
+-------------------------------------------------------------------
 Fri Jan  5 17:11:17 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.2.3:

@@ -126,4 +126,12 @@
     <comment> (forwarded request 1003027 from iznogood)</comment>
     <requestid>1003234</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>b8c60678cf38b1d9ebb38f0e69da2080</srcmd5>
+    <version>0.1.11+15</version>
+    <time>1704919980</time>
+    <user>anag+factory</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 1137890 from dimstar)</comment>
+    <requestid>1137901</requestid>
+  </revision>
 </revisionlist>

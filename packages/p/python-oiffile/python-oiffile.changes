@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan  9 21:40:58 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2023.8.30:
+  * Fix linting issues.
+  * Add py.typed marker.
+  * Drop support for Python 3.8 and numpy < 1.22 (NEP29).
+
+-------------------------------------------------------------------
 Thu Jan 26 23:00:56 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2022.9.29

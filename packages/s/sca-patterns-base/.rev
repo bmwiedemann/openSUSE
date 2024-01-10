@@ -87,4 +87,12 @@
     <comment>Master moved to ALP (forwarded request 1129864 from jrecord)</comment>
     <requestid>1129865</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>37cafffe12943e333e69260940dbaf2f</srcmd5>
+    <version>1.6.0</version>
+    <time>1704919897</time>
+    <user>anag+factory</user>
+    <comment>Minor spec file formatting (forwarded request 1137788 from jrecord)</comment>
+    <requestid>1137789</requestid>
+  </revision>
 </revisionlist>

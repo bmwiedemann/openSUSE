@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,18 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-# Requires python >= 3.5
-%define         skip_python2 1
 %define base_name python-sql
 Name:           python-%{base_name}
-Version:        1.4.0
+Version:        1.4.3
 Release:        0
 Summary:        Library to write SQL queries
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://pypi.io/project/python-sql
 Source:         https://pypi.io/packages/source/p/%{base_name}/%{base_name}-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %python_subpackages
@@ -40,10 +39,10 @@ python-sql is a library to write SQL queries in a pythonic way.
 %setup -q -n %{base_name}-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 %check
 mv sql sql_hide
@@ -51,7 +50,9 @@ mv sql sql_hide
 mv sql_hide sql
 
 %files %{python_files}
-%doc README
-%{python_sitelib}/*
+%license COPYRIGHT
+%doc README.rst
+%{python_sitelib}/sql
+%{python_sitelib}/python_sql-%{version}.dist-info
 
 %changelog

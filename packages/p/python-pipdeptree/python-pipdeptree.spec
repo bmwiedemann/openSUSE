@@ -1,7 +1,7 @@
 #
 # spec file for package python-pipdeptree
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-pipdeptree
-Version:        2.7.1
+Version:        2.13.1
 Release:        0
 Summary:        Command line utility to show dependency tree of packages
 License:        MIT
@@ -58,7 +58,7 @@ export SETUPTOOLS_SCM_PRETEND_VERSION="%{version}"
 %python_clone -a %{buildroot}%{_bindir}/pipdeptree
 
 %check
-%pytest -k 'not test_custom_interpreter'
+%pytest -k 'not test_custom_interpreter and not test_console'
 
 %post
 %{python_install_alternative pipdeptree}

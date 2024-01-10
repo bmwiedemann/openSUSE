@@ -307,7 +307,6 @@
         <package name="less" />
         <package name="tar"/>
         <package name="parted"/>
-        <package name="systemd-sysvinit"/>
         <package name="timezone"/>
         <package name="iproute2"/> 
         <package name="openssh"/>
@@ -367,7 +366,7 @@
 
     <packages type="image" profiles="kvm-and-xen-sdboot">
         <!-- kernel-default-base lacks dm-crypt -->
-        <package name="kernel-kvmsmall"/>
+        <package name="kernel-default-base"/>
 
         <package name="sdbootutil-snapper"/>
         <package name="sdbootutil-rpm-scriptlets"/>

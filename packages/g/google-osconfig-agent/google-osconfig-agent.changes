@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Thu Jan  4 12:24:10 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20231219.00
+  * Bump golang.org/x/crypto from 0.14.0 to 0.17.0 (#524)
+- from version 20231207.01
+  * Some change to create an agent release (#523)
+- from version 20231207.00
+  * Some change to create an agent release (#522)
+- from version 20231205.00
+  * Some change to create an agent release (#521)
+- from version 20231130.02
+  * Merge pull request #519 from Gulio/just-release
+  * Merge branch 'master' into just-release
+  * Some change to create an agent release
+  * Some change to create an agent release
+- from version 20231130.00
+  * Some change to create an agent release (#518)
+- from version 20231129.00
+  * Fix parse yum updates to consider the packages under
+    installing-dependencies keyword (#502)
+  * Update feature names in the README file (#517)
+- from version 20231128.00
+  * Updating owners (#508)
+- from version 20231127.00
+  * Move OS policy CIS examples under the console folder (#514)
+- from version 20231123.01
+  * Adds three more OS Policy examples to CIS folder (#509)
+  * Added ekrementeskii and MahmoudNada0 to OWNERS (#505)
+- from version 20231123.00
+  * docs(osconfig):add OS policy examples for CIS scanning (#503)
+- from version 20231121.02
+  * Added SCODE to Windows error description (#504)
+- from version 20231121.01
+  * Update OWNERS (#501)
+  * Update go version to 1.21 (#507)
+- from version 20231121.00
+  * Call fqdn (#481)
+- from version 20231116.00
+  * Removing obsolete MS Windows 2019 images (#500)
+- from version 20231107.00
+  * Update owners. (#498)
+- from version 20231103.02
+  * Increasing test timeouts (#499)
+  * Update OWNERS (#497)
+- from version 20231103.01
+  * Bump google.golang.org/grpc from 1.53.0 to 1.56.3 in /e2e_tests (#493)
+  * Bump google.golang.org/grpc from 1.53.0 to 1.56.3 (#494)
+- from version 20231103.00
+  * Removing deprecated Win for containers OSs (#496)
+- from version 20231027.00
+  * Shortening the reported image names (#495)
+- from version 20231025.00
+  * Merge pull request #492 from GoogleCloudPlatform/michaljankowiak-patch-1
+  * Merge branch 'master' into michaljankowiak-patch-1
+  * Fixing name changes
+  * Fixing rename issue
+  * Fixed formatting
+  * Fixed formatting
+  * Fixing formatting
+  * Removing support for RHEL 6, adding RHEL 9
+  * Removing support for RHEL 6, adding for RHEL 9
+  * Removing support for RHEL 6 and adding for RHEL 9
+  * Removing step needed for RHEL 6
+  * Fixing build issues
+  * Removing nonexistent images and adding new ones
+- from version 20231024.00
+  * Removing obsolete OS images and adding new ones (#491)
+- from version 20231020.00
+  * Change debug messages when parsing zypper patch output (#490)
+- from version 20231013.00
+  * Bump golang.org/x/net from 0.7.0 to 0.17.0 (#489)
+- from version 20231010.00
+  * Revert "Added [main] section with gpgcheck to
+    the agent-managed repo file (#484)" (#488)
+- from version 20231003.00
+  * Bump google.golang.org/grpc from 1.42.0 to 1.53.0 in /e2e_tests (#478)
+- from version 20230920.00
+  * Update OWNERS (#485)
+- from version 20230912.00
+  * Added [main] section with gpgcheck to the agent-managed repo file (#484)
+  * Migrate empty interface to any (#483)
+
+-------------------------------------------------------------------
 Fri Oct 20 06:50:11 UTC 2023 - Robert Schweikert <rjschwei@suse.com>
 
 - Bump the golang compiler version to 1.21 (bsc#1216546)

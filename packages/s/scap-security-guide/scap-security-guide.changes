@@ -6,6 +6,8 @@ Tue Dec 19 11:04:09 UTC 2023 - Marcus Meissner <meissner@suse.com>
   - Add support for Debian 12
   - Update PCI-DSS profile for RHEL
   - lots of bugfixes and improvements for SLE
+- removed left over file
+  0001-Revert-fix-aide-remediations-add-crontabs.patch upstreamed in 0.1.69
 
 -------------------------------------------------------------------
 Wed Dec  6 12:21:53 UTC 2023 - Marcus Meissner <meissner@suse.com>

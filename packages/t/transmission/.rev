@@ -1030,4 +1030,26 @@
     - Fixed potential build issue when compiling on macOS with gcc. (forwarded request 1128668 from iznogood)</comment>
     <requestid>1129053</requestid>
   </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>01a9fd6c000df7e2cdca30dc89807fa8</srcmd5>
+    <version>4.0.5</version>
+    <time>1704919975</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 4.0.5:
+  + Fixed 4.0.0 bug where the IP address field in UDP announces were
+    not encoded in network byte order.
+  + Fixed a bug that incorrectly escaped JSON strings in some locales.
+  + Fixed 4.0.4 decreased download speeds for people who set a low
+    upload bandwidth limit.
+  + Fixed bug that prevented editing trackers on magnet links.
+  + Fixed HTTP tracker announces and scrapes sometimes failing after
+    adding a torrent file by HTTPS URL.
+  + In RPC responses, change the default sort order of torrents
+    to match Transmission 3.00.
+  + Fixed tr_sys_path_copy() behavior on some Synology Devices.
+  + Fix: only append .added suffix to watchdir files.
+  + Fixed crash when opening torrent file from &quot;Recently used&quot;
+    section in GTK 4. (forwarded request 1137883 from polslinux)</comment>
+    <requestid>1137910</requestid>
+  </revision>
 </revisionlist>

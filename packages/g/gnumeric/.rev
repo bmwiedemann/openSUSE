@@ -1069,4 +1069,12 @@
     <comment></comment>
     <requestid>1123790</requestid>
   </revision>
+  <revision rev="132" vrev="2">
+    <srcmd5>83b6b15f50cd953e143774118a2c3241</srcmd5>
+    <version>1.12.56</version>
+    <time>1704919977</time>
+    <user>anag+factory</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 1137887 from dimstar)</comment>
+    <requestid>1137911</requestid>
+  </revision>
 </revisionlist>

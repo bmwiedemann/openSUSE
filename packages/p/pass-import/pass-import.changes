@@ -8,6 +8,7 @@ Tue Jan  9 14:21:56 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
     process.
   - Automated release process.
   - Fix KDBX import bug #190
+- Remove pandoc dependency, using pre-generated manpages.
 
 -------------------------------------------------------------------
 Tue Sep 20 19:21:20 UTC 2022 - Matej Cepl <mcepl@suse.com>

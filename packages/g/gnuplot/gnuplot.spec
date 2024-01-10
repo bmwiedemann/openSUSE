@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,6 @@
 %global psuffix -%{flavor}
 %endif
 
-%bcond_without  h3d_gridbox
 Name:           gnuplot%{?psuffix}
 BuildRequires:  ImageMagick
 BuildRequires:  automake
@@ -39,6 +38,7 @@ BuildRequires:  glib2-devel
 BuildRequires:  libqt5-linguist-devel
 BuildRequires:  lua-devel
 BuildRequires:  netpbm
+BuildRequires:  openspecfun-devel
 BuildRequires:  pango-devel
 BuildRequires:  plotutils-devel
 BuildRequires:  readline-devel
@@ -64,7 +64,9 @@ BuildRequires:  makeinfo
 BuildRequires:  texlive-epstopdf
 BuildRequires:  texlive-latex
 BuildRequires:  texlive-latexconfig
+BuildRequires:  texlive-makeindex
 BuildRequires:  texlive-pdftex
+BuildRequires:  texlive-tex
 BuildRequires:  texlive-tex4ht
 BuildRequires:  texlive-texinfo
 BuildRequires:  texlive-ucs
@@ -72,15 +74,18 @@ BuildRequires:  tex(booktabs.sty)
 BuildRequires:  tex(fancyhdr.sty)
 BuildRequires:  tex(gttn1000.tfm)
 BuildRequires:  tex(hyperref.sty)
+BuildRequires:  tex(imakeidx.sty)
 BuildRequires:  tex(lgrcmr.fd)
+BuildRequires:  tex(nicefrac.sty)
 BuildRequires:  tex(pdftex.def)
 BuildRequires:  tex(subfigure.sty)
 BuildRequires:  tex(textgreek.sty)
+BuildRequires:  tex(upquote.sty)
 %endif
 URL:            https://www.gnuplot.info/
-Version:        5.4.10
+Version:        6.0.0
 Release:        0
-%global         underscore 5_4
+%global         underscore 6
 %if "%{flavor}" == ""
 Summary:        Function Plotting Utility and more
 License:        GPL-2.0-or-later AND SUSE-Gnuplot
@@ -91,9 +96,10 @@ License:        GPL-2.0-or-later AND SUSE-Gnuplot
 Group:          Documentation/Other
 %endif
 Source0:        https://downloads.sourceforge.net/project/gnuplot/gnuplot/%{version}/gnuplot-%{version}.tar.gz
-Source1:        https://downloads.sourceforge.net/project/gnuplot/gnuplot/%{version}/Gnuplot_%{underscore}.pdf
+Source1:        https://downloads.sourceforge.net/project/gnuplot/gnuplot/%{version}/Gnuplot%{underscore}.pdf
 Source2:        gnuplot-fr.doc.bz2
 Source3:        README.whynot
+Source4:        webp_figures.gnu
 # https://mirrors.ctan.org/macros/latex209/contrib/picins/picins.sty
 # That's a build requirement, not provided by Tex Live
 Source5:        picins.sty
@@ -105,11 +111,10 @@ Patch2:         gnuplot-4.6.0-fonts.diff
 Patch4:         gnuplot-4.6.0-demo.diff
 Patch5:         gnuplot-wx3.diff
 Patch6:         gnuplot-QtCore-PIC.dif
-Patch7:         gnuplot-gd.patch
-Patch8:         gnuplot-PIE.patch
+Patch7:         gnuplot-PIE.patch
 %define _x11lib     %{_libdir}
 %define _x11data    %{_datadir}/X11
-%define _libx11     %{_exec_prefix}/lib/X11
+%define _x11inc     %{_includedir}/X11
 %define _appdef     %{_x11data}/app-defaults
 %define _gnplttex   tex/latex/gnuplot
 %if "%{flavor}" == "doc"
@@ -134,14 +139,13 @@ and can easily be extended to include new devices.
 bunzip2 -dc %{_sourcedir}/gnuplot-fr.doc.bz2 > docs/gnuplot-fr.doc
 test $? -eq 0 || exit 1
 cp %{_sourcedir}/picins.sty docs
-%patch2 -p0 -b .font
-%patch4 -p0 -b .demo
-%patch0 -p1 -b .0
-%patch1 -p0 -b .x11ovf
-%patch5 -p1 -b .w3x
-%patch6 -p0 -b .pic
-%patch7 -p1 -b .gd
-%patch8 -p1 -b .pie
+%patch -P2 -p0 -b .font
+%patch -P4 -p0 -b .demo
+%patch -P0 -p1 -b .0
+%patch -P1 -p0 -b .x11ovf
+%patch -P5 -p1 -b .w3x
+%patch -P6 -p0 -b .pic
+%patch -P7 -p1 -b .pie
 
 %build
 autoreconf -fi
@@ -160,8 +164,16 @@ autoreconf -fi
 %endif
 %endif
 
+%if "%{flavor}" == ""
+    mkdir bin
+    ln -sf /bin/true bin/dvips
+    ln -sf /bin/true bin/emacs
+    ln -sf /bin/true bin/kpsewhich
+    ln -sf /bin/true bin/texhash
+    PATH=${PATH}:${PWD}/bin
+%endif
+
     %configure	\
-	--enable-stats		\
 	--with-x		\
 	--x-includes=%{_x11inc}	\
 	--x-libraries=%{_x11lib}\
@@ -179,17 +191,19 @@ autoreconf -fi
 	--with-gpic		\
 	--with-mif		\
 	--enable-x11-mbfonts	\
-%if ! %{with h3d_gridbox}
-	--enable-h3d-quadtree	\
-	--disable-h3d-gridbox	\
-%else
-	--disable-h3d-quadtree	\
-	--enable-h3d-gridbox	\
-%endif
-	--enable-backwards-compatibility\
-	--with-gd=%{_usr}		\
-	--without-row-help	\
+	--enable-stats		\
+	--enable-stable-sort    \
+	--enable-polar-grid     \
+	--enable-watchpoints    \
+	--enable-function-blocks \
+	--enable-backward-compatibility \
+	--with-gd=yes		\
 	--with-caca		\
+	--with-tgif		\
+	--with-metafont		\
+	--with-metapost		\
+	--with-regis		\
+        --with-amos=%{_libdir}  \
 	--with-qt=qt5
 
 %if "%{flavor}" == ""
@@ -199,9 +213,10 @@ autoreconf -fi
 %if "%{flavor}" == "doc"
   mv src/Makefile{,_INACESSIBLE}
   pushd docs/
-	mkdir -p htmldocs
-	cp toc_entr.sty htmldocs/
-	make GNUPLOT_EXE=%{_bindir}/gnuplot srcdir=. clean html pdf
+	cp -p %{S:4} webp_figures.gnu
+	make GNUPLOT_EXE=%{_bindir}/gnuplot srcdir=. clean
+	make GNUPLOT_EXE=%{_bindir}/gnuplot srcdir=. allterm.h allterm-ja.h
+	make GNUPLOT_EXE=%{_bindir}/gnuplot srcdir=. html pdf
 	make srcdir=. gnuplot.texi
 	patch -p0 < %{S:6}
 	make srcdir=. info
@@ -223,7 +238,7 @@ autoreconf -fi
 %if "%{flavor}" == ""
     make DESTDIR=%{buildroot} appdefaultdir=%{_appdef} install
     mkdir -p %{buildroot}/%{_mandir}/ja/man1
-    install -m 0644 man/gnuplot-ja_JP.UTF-8 %{buildroot}/%{_mandir}/ja/man1/gnuplot.1
+    install -m 0644 man/ja/man1/gnuplot.1 %{buildroot}/%{_mandir}/ja/man1/gnuplot.1
 %endif
 
 %if "%{flavor}" == "doc"
@@ -241,7 +256,7 @@ autoreconf -fi
     rm  -vf tutorial/eg7.pdf
     rm -rvf demo/html
     install -m 0444 docs/*.info*      %{buildroot}/%{_infodir}/
-    install -m 0444 docs/htmldocs/*   %{buildroot}/%{_docdir}/gnuplot/doc/html
+    install -m 0444 docs/html/*       %{buildroot}/%{_docdir}/gnuplot/doc/html
     install -m 0444 docs/psdoc/*.pdf  %{buildroot}/%{_docdir}/gnuplot/doc/
     install -m 0444 docs/psdoc/*.ps   %{buildroot}/%{_docdir}/gnuplot/doc/
     install -m 0444 docs/psdoc/*.gpi  %{buildroot}/%{_docdir}/gnuplot/doc/

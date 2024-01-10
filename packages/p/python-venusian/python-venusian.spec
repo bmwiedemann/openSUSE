@@ -1,7 +1,7 @@
 #
 # spec file for package python-venusian
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2013-2019 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,13 +19,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-venusian
-Version:        3.0.0
+Version:        3.1.0
 Release:        0
 Summary:        A library for deferring decorator actions
 License:        SUSE-Repoze AND ZPL-2.1
 URL:            https://github.com/Pylons/venusian
 Source:         https://files.pythonhosted.org/packages/source/v/venusian/venusian-%{version}.tar.gz
-Patch0:         fix-pylons-sphinx-theme.diff
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -33,6 +32,7 @@ BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module sphinxcontrib-copybutton}
 # /SECTION
 # SECTION documentation requirements
 BuildRequires:  python3-Sphinx
@@ -78,7 +78,7 @@ PYTHONPATH=src python3 -msphinx docs build/sphinx/html \
 %license LICENSE.txt
 %doc CHANGES.rst README.rst
 %{python_sitelib}/venusian
-%{python_sitelib}/venusian-%{version}*-info
+%{python_sitelib}/venusian-%{version}.dist-info
 
 %files %{python_files doc}
 %license LICENSE.txt

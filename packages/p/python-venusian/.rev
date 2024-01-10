@@ -168,4 +168,15 @@ New dependency of python-Pyramid</comment>
     <comment>- Add missing %{?sle15_python_module_pythons}</comment>
     <requestid>1092202</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c74a8a8fc7e4943a03ee482d51ae1a24</srcmd5>
+    <version>3.1.0</version>
+    <time>1704919971</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.1.0:
+  * Remove support for Python 3.5 and 3.6
+  * Add support for Python 3.9, 3.10, 3.11 and 3.12.
+- Drop patch fix-pylons-sphinx-theme.diff</comment>
+    <requestid>1137870</requestid>
+  </revision>
 </revisionlist>

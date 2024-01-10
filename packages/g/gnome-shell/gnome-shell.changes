@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jan 10 08:56:02 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 45.3:
+  + Allow any enter key to be used to screenshot.
+  + Fix spinner in light style variant.
+  + Improve formatting of extension errors.
+  + Fixed crash.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+- Drop gnome-shell_nb_fix_trans.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Sat Dec  2 20:02:57 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 45.2:

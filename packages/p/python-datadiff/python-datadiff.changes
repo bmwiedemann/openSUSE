@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 10 05:02:55 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-python312.patch:
+  * In Python 3.12, slice() is now hashable, use a class that isn't hashable.
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Tue Oct 03 08:04:27 UTC 2023 - pgajdos@suse.com
 
 - Update to version 2.2.0:

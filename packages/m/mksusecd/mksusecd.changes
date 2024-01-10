@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Wed Jan 10 17:49:04 UTC 2024 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/mksusecd#69
+- allow also xz and zstd compression in repodata (bsc#1218706)
+- 2.13
+
+--------------------------------------------------------------------
 Mon Jul 24 17:45:16 UTC 2023 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/mksusecd#67

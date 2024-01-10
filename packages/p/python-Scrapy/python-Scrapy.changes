@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Jan 10 07:50:52 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add patch twisted-23.8.0-compat.patch gh#scrapy/scrapy#6064
+- Update to 2.11.0:
+  - Spiders can now modify settings in their from_crawler methods,
+    e.g. based on spider arguments.
+  - Periodic logging of stats.
+  - Bug fixes.
+- 2.10.0:
+  - Added Python 3.12 support, dropped Python 3.7 support.
+  - The new add-ons framework simplifies configuring 3rd-party
+    components that support it.
+  - Exceptions to retry can now be configured.
+  - Many fixes and improvements for feed exports.
+- 2.9.0:
+  - Per-domain download settings.
+  - Compatibility with new cryptography and new parsel.
+  - JMESPath selectors from the new parsel.
+  - Bug fixes.
+- 2.8.0:
+  - This is a maintenance release, with minor features, bug fixes, and
+    cleanups.
+
+-------------------------------------------------------------------
 Mon Nov  7 20:35:15 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to v2.7.1 

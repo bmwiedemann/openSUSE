@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Jan  3 11:23:39 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.0.22:
+  * Options for new Tux Paint 0.9.31 features:
+    + "Disable 'Make Template'" added to "Simplification".
+    + "Disable 'Erase' (file deletion)" added to "Simplification".
+    + "UI Font" added to "Locale".
+  * Bug fixes:
+    + Activate "Apply" & "Reset" buttons immediately upon editing
+      type-in and spinner fields; don't require focus to change
+      first.
+    + Make sure to remove up generated gettext '.mo' files during
+      "make uninstall" process.
+    + Options that may contain spaces (directory paths, like
+      "savedir", or shell comamnds like "printcommand") now have
+      their values wrapped in double quotes (").
+    + Ensure UI Font list includes fonts bundled with Tux Paint
+      but may not be visible to Tux Paint Config.
+  * Other changes:
+    + Option to enable debugging.
+    + Improvements to debugging output options.
+  * Build changes: Dropping old GNOME and KDE specific
+    icon/launcher installers, having Makefile replicate more
+    closely what `tuxpaint` does.
+  * Updated translations.
+- Rebase patches for update:
+  * tuxpaint-config-docpath.patch
+  * tuxpaint-config-desktop.patch
+- New BuildRequires: pkgconfig(pangoft2), hicolor-icon-theme.
+- Use full url for Source tarball.
+
+-------------------------------------------------------------------
 Thu Jan  6 21:11:17 UTC 2022 - Lars Vogdt <lars@linux-schulserver.de>
 
 - update to 0.0.18

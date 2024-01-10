@@ -258,4 +258,12 @@ https://github.com/nodejs/node/blob/main/doc/changelogs/CHANGELOG_V20.md#20.10.0
     <comment>- c-ares-fixes.patch: fixes unit tests for new c-ares</comment>
     <requestid>1136241</requestid>
   </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>0d6f68a487a7deaf3efdcc47784a6b69</srcmd5>
+    <version>20.10.0</version>
+    <time>1704919841</time>
+    <user>anag+factory</user>
+    <comment>- c-ares-fixes.patch: add additional backports for unit test fixes</comment>
+    <requestid>1137592</requestid>
+  </revision>
 </revisionlist>

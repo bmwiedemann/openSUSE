@@ -1,7 +1,7 @@
 #
 # spec file for package python-rtslib-fb
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,14 @@
 #
 
 
+%define dbdir %{_sysconfdir}/target
+%define oldpython python
+%define cpkg %{oldpython}-rtslib-fb-common
 %if 0%{?suse_version} > 1500
 %bcond_without libalternatives
 %else
 %bcond_with libalternatives
 %endif
-
-%define dbdir %{_sysconfdir}/target
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-rtslib-fb
 Version:        2.1.76
@@ -33,35 +33,28 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/open-iscsi/rtslib-fb.git
 Source:         python-rtslib-fb-v%{version}.tar.xz
-Patch1:         rbd-support.patch
 Patch2:         rtslib-Fix-handling-of-sysfs-RW-attrs-that-are-actually-RO.patch
 Patch3:         rtslib-target-service-for-suse.patch
-Patch4:         rbd-support-disable_emulate_legacy_capacity.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyudev}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
-Requires:       python-pyudev
-%define oldpython python
-%define cpkg %{oldpython}-rtslib-fb-common
 Requires:       %{cpkg}
+Requires:       python-pyudev
+Requires:       python-six
+Provides:       python-rtslib = %{version}-%{release}
+Obsoletes:      python-rtslib < %{version}
+BuildArch:      noarch
 %if %{with libalternatives}
-Requires:       alts
 BuildRequires:  alts
+Requires:       alts
 %else
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 %endif
-Provides:       python-rtslib = %{version}-%{release}
-Obsoletes:      python-rtslib < %{version}
-%if 0%{?sle_version} >= 150000
-# explicit Provides advertising RBD support
-Provides:       python-rtslib-rbd = %{version}
-Obsoletes:      python-rtslib-rbd < %{version}
-%endif
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -80,19 +73,14 @@ python2-rtslib-fb and python3-rtslib-fb.
 
 %prep
 %setup -q -n python-rtslib-fb-v%{version}
-%if 0%{?sle_version} >= 150000
-# RBD support is dependent on LIO changes present in the SLE/Leap kernel
-%patch1 -p1
-%patch4 -p1
-%endif
 %patch2 -p1
 %patch3 -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}/%{_bindir}/targetctl
 %fdupes %{buildroot}
 install -d -m755 %{buildroot}%{_mandir}/man5
@@ -138,7 +126,9 @@ ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rctarget
 
 %files %{python_files}
 %python_alternative %{_bindir}/targetctl
-%{python_sitelib}/*
+%{python_sitelib}/rtslib
+%{python_sitelib}/rtslib_fb
+%{python_sitelib}/rtslib_fb-%{version}*-info
 
 %files -n %{cpkg}
 %license COPYING
@@ -148,7 +138,7 @@ ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rctarget
 %dir %{dbdir}/alua
 %{_unitdir}/target.service
 %{_sbindir}/rctarget
-%doc %{_mandir}/man5/saveconfig.json.5.gz
-%doc %{_mandir}/man8/targetctl.8.gz
+%{_mandir}/man5/saveconfig.json.5%{?ext_man}
+%{_mandir}/man8/targetctl.8%{?ext_man}
 
 %changelog

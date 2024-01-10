@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jan  4 11:32:21 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20231214.00
+  * Fix snapshot test failure (#336)
+- from version 20231212.00
+  * Implement json-based command messaging system for guest-agent (#326)
+- from version 20231118.00
+  * sshca: Remove certificate caching (#334)
+- from version 20231115.00
+  * revert: 3ddd9d4a496f7a9c591ded58c3f541fd9cc7e317 (#333)
+  * Update script runner to use common cfg package (#331)
+
+-------------------------------------------------------------------
 Tue Nov 14 12:13:32 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20231110.00

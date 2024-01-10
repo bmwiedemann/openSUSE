@@ -35,4 +35,13 @@
 - Drop py{2.3}-only parts as py2 is skipped</comment>
     <requestid>871559</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1974807b0617b2372cbd949c0b509815</srcmd5>
+    <version>1.0.5</version>
+    <time>1704919929</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.5:
+  * fix deprecation warnings</comment>
+    <requestid>1137822</requestid>
+  </revision>
 </revisionlist>

@@ -1,5 +1,5 @@
 diff --git a/scripts/telegraf.service b/scripts/telegraf.service
-index 1726913b0..e9ca1ff3f 100644
+index 94cd26a5..c741bd59 100644
 --- a/scripts/telegraf.service
 +++ b/scripts/telegraf.service
 @@ -5,6 +5,19 @@ After=network-online.target
@@ -20,5 +20,5 @@ index 1726913b0..e9ca1ff3f 100644
 +RestrictRealtime=true
 +# end of automatic additions
  Type=notify
+ NotifyAccess=all
  EnvironmentFile=-/etc/default/telegraf
- User=telegraf

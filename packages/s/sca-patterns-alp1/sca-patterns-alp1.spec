@@ -1,7 +1,7 @@
- 
+#
 # spec file for package sca-patterns-alp1
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,6 +12,10 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
+
 %define sca_common sca
 %define patdirbase /usr/lib/%{sca_common}
 %define patdir %{patdirbase}/patterns
@@ -20,17 +24,17 @@
 %define patmode 755
 %define category ALP
 
-Name:         sca-patterns-alp1
-Version:      2.0.0
-Release:      0
-Summary:      Supportconfig Analysis Patterns for ALP1
-License:      GPL-2.0
-URL:          https://github.com/g23guy/sca-patterns-alp1
-Group:        System/Monitoring
-Source:       %{name}-%{version}.tar.gz
-Requires:     sca-patterns-template-gen2
-Buildarch:    noarch
-BuildRequires: fdupes
+Name:           sca-patterns-alp1
+Version:        2.0.1
+Release:        0
+Summary:        Supportconfig Analysis Patterns for ALP1
+License:        GPL-2.0-only
+URL:            https://github.com/g23guy/sca-patterns-alp1
+Group:          System/Monitoring
+Source:         %{name}-%{version}.tar.gz
+Requires:       sca-patterns-template-gen2
+BuildArch:      noarch
+BuildRequires:  fdupes
 
 %description
 Supportconfig Analysis (SCA) appliance patterns to identify known
@@ -63,4 +67,3 @@ install -m %{patmode} patterns/%{category}/alp1sp0/* %{buildroot}/%{patdir}/%{ca
 %attr(%{patmode},%{patuser},%{patgrp}) %{patdir}/%{category}/alp1sp0/*
 
 %changelog
-

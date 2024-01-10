@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan  9 22:04:57 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.3:
+  * Render common table expression in combining query
+  * Add support for Python 3.12
+  * Restore usage of alias in returning expression
+  * Do not use alias in returning expression
+
+-------------------------------------------------------------------
 Tue May  3 15:06:06 UTC 2022 - Axel Braun <axel.braun@gmx.de>
 
 - version 1.4.0
@@ -16,7 +25,7 @@ Tue Sep 14 10:18:53 UTC 2021 - Axel Braun <axel.braun@gmx.de>
   * Add exclude to Window
   * Add method for each type of join
   * Remove support for Python older than 3.5
-  * Support Select queries in conditionals and functions 
+  * Support Select queries in conditionals and functions
 
 -------------------------------------------------------------------
 Fri Sep 10 07:14:18 UTC 2021 - pgajdos@suse.com
@@ -32,7 +41,7 @@ Fri Sep 10 07:14:18 UTC 2021 - pgajdos@suse.com
 -------------------------------------------------------------------
 Tue Oct  6 08:20:02 UTC 2020 - Axel Braun <axel.braun@gmx.de>
 
-- Version 1.2.0 
+- Version 1.2.0
   * Add explicit Windows to Select
   * Fix missing Windows definitions in nested expressions
 
@@ -57,7 +66,7 @@ Mon Oct  1 08:59:59 UTC 2018 - Axel Braun <axel.braun@gmx.de>
 -------------------------------------------------------------------
 Mon Apr 24 11:49:18 UTC 2017 - axel.braun@gmx.de
 
-- Version 0.9 
+- Version 0.9
   * Add distinct_on on Select
   * Allow to use Select as Column of Select query
   * Support Select without from clause
@@ -71,18 +80,18 @@ Mon Apr 17 08:32:08 UTC 2017 - axel.braun@gmx.de
 -------------------------------------------------------------------
 Thu Jun 30 14:09:28 UTC 2016 - axel.braun@gmx.de
 
-- corrected name/metaname 
+- corrected name/metaname
 
 -------------------------------------------------------------------
 Thu Jun 30 13:11:32 UTC 2016 - axel.braun@gmx.de
 
 - correct naming to python-python-sql
-  correct License 
+  correct License
 
 -------------------------------------------------------------------
 Sat Sep 19 16:17:47 UTC 2015 - axel.braun@gmx.de
 
-- Version 0.8 
+- Version 0.8
   * Add DISTINCT qualifier to aggregate expressions
   * Allow to order on select queries
   * Add NULL ordering
@@ -126,7 +135,7 @@ Fri Sep 12 08:04:20 UTC 2014 - axel.braun@gmx.de
 -------------------------------------------------------------------
 Mon Mar 24 13:12:58 UTC 2014 - axel.braun@gmx.de
 
-- update to version 0.3 
+- update to version 0.3
 
 -------------------------------------------------------------------
 Mon Oct 28 15:08:46 UTC 2013 - axel.braun@gmx.de

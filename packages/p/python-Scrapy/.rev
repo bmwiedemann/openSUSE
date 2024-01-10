@@ -167,4 +167,32 @@
     <comment></comment>
     <requestid>1034478</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>794c462aabf8774a76b4e6ce82ee336a</srcmd5>
+    <version>2.11.0</version>
+    <time>1704919972</time>
+    <user>anag+factory</user>
+    <comment>- Add patch twisted-23.8.0-compat.patch gh#scrapy/scrapy#6064
+- Update to 2.11.0:
+  - Spiders can now modify settings in their from_crawler methods,
+    e.g. based on spider arguments.
+  - Periodic logging of stats.
+  - Bug fixes.
+- 2.10.0:
+  - Added Python 3.12 support, dropped Python 3.7 support.
+  - The new add-ons framework simplifies configuring 3rd-party
+    components that support it.
+  - Exceptions to retry can now be configured.
+  - Many fixes and improvements for feed exports.
+- 2.9.0:
+  - Per-domain download settings.
+  - Compatibility with new cryptography and new parsel.
+  - JMESPath selectors from the new parsel.
+  - Bug fixes.
+- 2.8.0:
+  - This is a maintenance release, with minor features, bug fixes, and
+    cleanups.
+</comment>
+    <requestid>1137882</requestid>
+  </revision>
 </revisionlist>

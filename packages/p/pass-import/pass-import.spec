@@ -22,10 +22,9 @@ Release:        0
 Summary:        A pass extension for importing data from most of the existing password manager
 License:        GPL-3.0-only
 URL:            https://github.com/roddhjav/pass-import
-Source:         https://github.com/roddhjav/%{name}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/roddhjav/pass-import/releases/download/v3.4/pass-import-3.4.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fdupes
-BuildRequires:  pandoc
 BuildRequires:  password-store
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-PyYAML
@@ -55,9 +54,6 @@ sed -i 's|#!\s*%{_bindir}/env|#!%{_bindir}/bash|' import.bash
 sed -i '1{\@^#!%{_bindir}/env python@d}' pass_import/__main__.py
 
 %build
-for md in share/man/man1/*.md ; do
-  pandoc -s -t man $md -o ${md%*.md}.1
-done
 %python3_pyproject_wheel
 
 %install
@@ -66,7 +62,6 @@ done
 install -D -t %{buildroot}%{_usr}/lib/password-store/extensions \
     %{buildroot}%{python3_sitelib}%{_usr}/lib/password-store/extensions/import.bash
 rm -rf %{buildroot}%{python3_sitelib}%{_usr}
-
 install -D -m 0644 -t %{buildroot}%{_datadir}/zsh/site-functions/ \
     share/zsh/site-functions/*
 install -D -m 0644 -t %{buildroot}%{_datadir}/bash-completion/completions/ \

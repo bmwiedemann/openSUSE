@@ -1,7 +1,7 @@
 #
 # spec file for package python-pymilter
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2018 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,13 +23,14 @@
 %global skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pymilter
-Version:        1.0.4
+Version:        1.0.5
 Release:        0
 Summary:        Python interface to the sendmail milter API
 License:        GPL-2.0-or-later
-URL:            http://www.bmsi.com/python/milter.html
+URL:            https://www.bmsi.com/python/milter.html
 Source0:        https://github.com/sdgathman/pymilter/archive/pymilter-%{version}.tar.gz
 Source1:        tmpfiles-python-pymilter.conf
+BuildRequires:  %{python_module bsddb3}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{pythons}
@@ -40,6 +41,7 @@ BuildRequires:  systemd-rpm-macros
 # Common subpackage named as such to avoid creating flavor packages
 Requires:       pymilter-common = %{version}-%{release}
 Requires:       python
+Requires:       python-bsddb3
 Requires:       python-py3dns
 %python_subpackages
 
@@ -70,13 +72,13 @@ mkdir -p %{buildroot}%{_libexecdir}/milter
 mkdir -p %{buildroot}%{_tmpfilesdir}
 install -m 0644 %{SOURCE1} %{buildroot}%{_tmpfilesdir}/%{name}.conf
 
-%fdupes %{buildroot}%{python_sitearch}/*
+%fdupes %{buildroot}%{python_sitearch}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} $python -m unittest discover -v
+%pyunittest_arch -v -k "not testPolicy"
 
 %files %{python_files}
-%doc README ChangeLog NEWS TODO CREDITS sample.py milter-template.py
+%doc README.md ChangeLog NEWS TODO CREDITS sample.py template.py
 %license COPYING
 %{python_sitearch}/*
 

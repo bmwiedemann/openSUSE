@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct 12 21:39:24 UTC 2023 - bjorn.lie@gmail.com
+
+- Update to version 0.1.11+15:
+  + Update for gnome-desktop-43 API change
+  + Replace deprecated (GLib>=2.61.2) GTimeVal by GDateTime
+  + Replace Bugzilla link with link to GitLab
+  + Updated translations.
+- Drop temp-ftbfs.patch: Fixed upstream.
+- Switch to git checkout via source service.
+- Add autoconf-archive and libtool BuildRequires and pass
+  autogen.sh call, bootstrap as we are using a git checkout.
+
+-------------------------------------------------------------------
 Mon Sep 12 17:04:00 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add temp-ftbfs.patch: Temporary workaround for recent

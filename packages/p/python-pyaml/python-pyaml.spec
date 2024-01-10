@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyaml
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyaml
-Version:        21.10.1
+Version:        23.12.0
 Release:        0
 Summary:        Python module to produce formatted YAML-serialized data
 License:        WTFPL
@@ -33,6 +33,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML
 Recommends:     python-Unidecode
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -47,14 +49,22 @@ PyYAML-based python module to produce formatted YAML-serialized data.
 
 %install
 %python_install
+%python_clone -a %{buildroot}/%{_bindir}/pyaml
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
 
+%post
+%python_install_alternative pyaml
+
+%postun
+%python_uninstall_alternative pyaml
+
 %files %{python_files}
 %license COPYING
 %doc README.rst
+%python_alternative %{_bindir}/pyaml
 %{python_sitelib}/pyaml
 %{python_sitelib}/pyaml-%{version}*-info
 

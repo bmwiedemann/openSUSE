@@ -246,6 +246,8 @@ Patch1960:      u_sync-pci-ids-with-Mesa.patch
 Patch1217765:   U_bsc1217765-Xi-allocate-enough-XkbActions-for-our-buttons.patch
 Patch1217766:   U_bsc1217766-randr-avoid-integer-truncation-in-length-check-of-Pr.patch
 
+Patch1218176:   u_miCloseScreen_check_for_null_pScreen_dev_private.patch
+
 %description
 This package contains the X.Org Server.
 
@@ -406,6 +408,8 @@ sh %{SOURCE92} --verify . %{SOURCE91}
 
 %patch1217765 -p1
 %patch1217766 -p1
+
+%patch1218176 -p1
 
 %build
 # We have some -z now related errors during X default startup (boo#1197994):

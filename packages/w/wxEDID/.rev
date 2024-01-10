@@ -335,4 +335,39 @@ Added:
   * MND: display monitor name as dynamic block name.</comment>
     <requestid>1088486</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>70f5e3f095e5e2c5ef1bced75a8e14ea</srcmd5>
+    <version>0.0.30</version>
+    <time>1704919947</time>
+    <user>anag+factory</user>
+    <comment>- Update to v0.0.30
+Added:
+  * Support for Dark Mode in Block Data grid.
+    NOTE: wxGrid does not fully support dynamic theme switching in
+    wxWidgets v3.2.x, so the application has to be restarted to use
+    new theme.
+Fixed:
+  * DTD panel: fixed alignment of &quot;X11 mode line&quot;.
+  * Option &quot;Assemble EDID&quot; now updates also the CHD::DTD_offset
+    field in Block Data grid.
+    NOTE: The value is computed by EDID_cl::CEA_Set_DTD_Offset().
+  * wxEDID_Frame::AssembleEDID_main(): the EDID.BASE.BED could be
+    refreshed twice if the CEA extension is not present.
+  * Auto-select the BED block also after &quot;Reparse EDID buffer&quot; is
+    executed: wxEDID_Frame::Reparse()-&gt;AutoSelectBED()
+  * mrl_cl::fields: misleading field description: GTF J, GTF C:
+    &quot;xxx value, multiplied by 2: 0...255 -&gt;  0...127.5&quot;
+    changed to: &quot;xxx value, multiplied by 2: 0...127.5 -&gt; 0...255&quot;
+  * MRL::resvd field should have the EF_HEX flag.
+  * BED: fields ProdYr and ProdWk should not have the EF_BND flag
+    set.
+  * BED: ProdWk: added information that week==0 means that the
+    field is not used.
+Changed:
+  * EF_NI &quot;NI&quot; flag is no longer displayed in BlockData::&quot;Flags&quot;
+    column.
+  * rcode v3.0: structure changed:
+    RCD_UNIT_MAX=65535, RCD_LINE_MAX=16383</comment>
+    <requestid>1137848</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan  4 11:55:25 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20231214.00
+  * set multiqueue: A3 check set timeout the MDS call in 1s (#62)
+- from version 20231103.00
+  * Update owners (#61)
+  * Update owners (#58)
+
+-------------------------------------------------------------------
 Thu Oct 19 12:33:34 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20230929.00

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 10 18:45:30 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add ix86 ExcludeArch: goffice is no longer built for that target.
+
+-------------------------------------------------------------------
 Fri Nov  3 08:39:38 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.12.56:

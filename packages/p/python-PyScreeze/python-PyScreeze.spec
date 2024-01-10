@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyScreeze
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-PyScreeze
-Version:        0.1.28
+Version:        0.1.30
 Release:        0
 Summary:        A screenshot Python module
 License:        BSD-3-Clause
@@ -45,7 +45,6 @@ PyScreeze is a screenshot module for Python 2 and 3.
 
 %prep
 %setup -q -n PyScreeze-%{version}
-dos2unix README.rst
 
 %build
 %python_build
@@ -61,7 +60,7 @@ dos2unix README.rst
 #popd
 
 %files %{python_files}
-%doc README.rst
+%doc README.md
 %license LICENSE.txt
 %{python_sitelib}/*
 

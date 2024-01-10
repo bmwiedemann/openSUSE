@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Tue Jan 09 20:14:31 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.24.0:
+  * fix: panic in okteto build caused by nil oc.Store (#4113)
+    (#4114)
+  * fix: panic in okteto up caused by already closed readyChan
+    (#4111) (#4112)
+  * fix: wrap error while creating secrets (#4107) (#4109)
+  * Add feature flag `OKTETO_COMPOSE_VOLUME_AFFINITY_ENABLED` env
+    var to disable node affinity for volumes (#4101)
+  * feat: use build context for isClean (#4089)
+  * Lax Codecov threshold on project delta (#4105)
+  * Fix preview URL to not use hash pathname (#4102)
+  * Fix Golang version in contributing guide
+  * fix: do not fail if error retrieving envs from image (#4099)
+  * Update k8s client to `v0.28.4` (#4087)
+  * Revert "refactor: set deploy image tag as buildopt in deploy
+    pkg (#4093)" (#4097)
+  * Fix panic when parsing empty service sections (dev & build)
+    (#4090)
+  * update kubectl helm and kustomize versions (#4095)
+  * improve err response for expired tokens (#4091)
+  * feat: use git commit instead of git tree hash (#4083)
+  * build(deps): Bump golang.org/x/crypto from 0.14.0 to 0.17.0
+    (#4094)
+  * build(deps): Bump github.com/docker/docker from
+    23.0.0-rc.1+incompatible to 24.0.7+incompatible (#4092)
+  * refactor: set deploy image tag as buildopt in deploy pkg
+    (#4093)
+  * chore: update syncthing version to 1.27.1 (#4088)
+  * update builkit client to v0.11.6 (#4086)
+  * refactor: remove okteto context global var use in okteto build
+    command (#4070)
+  * Fix: detect top level git rep dir to set `OKTETO_GIT_BRANCH`
+    and `OKTETO_GIT_COMMIT` properly when service is nested (#4080)
+  * build(deps): Bump actions/stale from 8 to 9 (#4084)
+  * Fix panic in `okteto init --deploy` (#4078)
+  * remove okteto cloud as context option (#4073)
+  * Fix codespell in comments (#4079)
+  * makefile: add lint-fix (#4077)
+  * fix external resource markdown able to generate in dinamycally
+    using deploy section (#4076)
+  * Fix connection issues to dev containers using vscode remote ssh
+    (#4074)
+  * refactor: logger for build command (#4014)
+  * Fix panic on okteto up with plain output (#4069)
+  * fix: ssh remote deploy tests (#4071)
+  * Add `make lint-fix-fieldalignment`  (#4058)
+  * CLI Quality - Lint - gomnd (#4061)
+  * CLI Quality - Lint-  musttag (#4064)
+  * feat: add feature flag to enable context build (#4051)
+  * CLI Quality - Lint - bodyclose (#4057)
+  * chore: enable durationcheck and fix (#4062)
+  * Fix builds for ARM (#4065)
+
+-------------------------------------------------------------------
 Sun Jan 07 18:08:07 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.23.2:

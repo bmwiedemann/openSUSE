@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan  6 14:15:13 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update vector-stream to version 0.1.0.1.
+  # Changes in version 0.1.0.1
+
+   * Compatibility with future GHC 9.10 release
+     [#462](https://github.com/haskell/vector/pull/462)
+
+-------------------------------------------------------------------
 Thu Aug 10 22:01:17 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update vector-stream to version 0.1.0.0 revision 3.

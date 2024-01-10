@@ -281,4 +281,16 @@
   * Fix inability to create ACLs for some FC cards</comment>
     <requestid>1115776</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>b5f30495d22ce5f9fb4b55651b3cf1af</srcmd5>
+    <version>2.1.76</version>
+    <time>1704919822</time>
+    <user>anag+factory</user>
+    <comment>- Clean up the SPEC file
+- Drop downstream-only LIO target_core_rbd support (bsc#1218634)
+  * rbd-support-disable_emulate_legacy_capacity.patch
+  * rbd-support.patch
+</comment>
+    <requestid>1137851</requestid>
+  </revision>
 </revisionlist>

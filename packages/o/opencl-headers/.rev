@@ -277,4 +277,23 @@
   * OpenCL-SDK base changes (#189)</comment>
     <requestid>1084261</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>58228b59fe7137f57e939e0a058b8323</srcmd5>
+    <version>2023.12.14</version>
+    <time>1704919984</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2023.12.14:
+  * updates extension headers for the latest XML file (#244)
+  * updates extension headers for the latest XML file (#240)
+  * Update extension headers for latest cl.xml changes (#242)
+  * add compatibility notes (#238)
+  * fix VME skip block type enum to match spec (#241)
+  * fix the OpenCL version for the CL_DEPTH enum (#231)
+  * require C99 for header tests (#208)
+  * sort new extensions programmatically (#236)
+  * Update extension headers (#235)
+  * Header update for external_memory_import (#234)
+  * Define function types for prototype declaration (#230)</comment>
+    <requestid>1137907</requestid>
+  </revision>
 </revisionlist>

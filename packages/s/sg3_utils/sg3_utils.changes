@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan  9 21:19:11 UTC 2024 - Martin Wilck <mwilck@suse.com>
+
+- Fix spurious warning for non-SCSI devices (boo#1218666)
+
+-------------------------------------------------------------------
 Mon Jan  8 08:43:30 UTC 2024 - Martin Wilck <mwilck@suse.com>
 
 - Upstream bug fixes for sg3_utils 1.48 (bsc#1218591)

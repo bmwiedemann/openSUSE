@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jan  9 22:07:50 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.0:
+  * #39, #41, #59: Review documentation
+  * Drop support for Python 2.
+  * #40: add logging.
+  * #50, #51: test suite incompatibility with pytest 6.2.0.
+  * #58: declare the type of automark_dependency ini-option
+    correctly as bool.
+  * #75: review build tool chain.
+- drop pytest6.2.patch (upstream)
+
+-------------------------------------------------------------------
 Wed Oct 25 12:45:24 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

@@ -1,7 +1,7 @@
 #
 # spec file for package python-oiffile
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-oiffile
-Version:        2022.9.29
+Version:        2023.8.30
 Release:        0
 Summary:        Read Olympus(r) image files (OIF and OIB)
 License:        BSD-3-Clause
@@ -25,15 +25,15 @@ Group:          Development/Languages/Python
 URL:            https://www.lfd.uci.edu/~gohlke/
 # SourceRepository: https://github.com/cgohlke/oiffile
 Source:         https://github.com/cgohlke/oiffile/archive/v%{version}.tar.gz#/oiffile-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
-BuildRequires:  %{python_module numpy >= 1.19.2}
+BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module numpy >= 1.22}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tifffile >= 2021.11.2}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy >= 1.19.2
+Requires:       python-numpy >= 1.22
 Requires:       python-tifffile >= 2021.11.2
 BuildArch:      noarch
 %python_subpackages

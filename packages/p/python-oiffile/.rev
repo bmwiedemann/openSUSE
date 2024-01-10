@@ -31,4 +31,15 @@
     <comment></comment>
     <requestid>1061494</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2a664744aab63fefea8d41122e34d74d</srcmd5>
+    <version>2023.8.30</version>
+    <time>1704919923</time>
+    <user>anag+factory</user>
+    <comment>- update to 2023.8.30:
+  * Fix linting issues.
+  * Add py.typed marker.
+  * Drop support for Python 3.8 and numpy &lt; 1.22 (NEP29).</comment>
+    <requestid>1137818</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan  9 11:53:36 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- add libxkbregistry-devel to baselibs for use by wine-32bit. (bsc#1218640)
+
+-------------------------------------------------------------------
 Sun Dec 17 20:06:52 UTC 2023 - Tobias Klausmann <tobias.klausmann@freenet.de>
 
 - dxvk need libxkbregistry0 for building -32bit variants, provide them.

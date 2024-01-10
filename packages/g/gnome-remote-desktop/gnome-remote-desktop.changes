@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Oct 22 17:39:54 UTC 2023 - bjorn.lie@gmail.com
+
+- Update to version 45.1:
+  + session:
+    - Assert region size to be greater than 0
+    - Add debug message to also output new EI regions
+    - Scale absolute pointer position with respect to the EI region
+    - Clear all EI related instances before dbus session stop call
+    - Only notify keysym when EI keyboard is available
+    - Add struct for absolute pointer motion events
+  + vnc-pipewire-stream: Don't remove buffer while dequeueing it
+  + rdp-pipewire-stream: Don't remove buffer while dequeueing it
+  + Adapt usage of abs pointer motion events to
+    GrdEventPointerMotionAbs
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Sep 28 12:22:12 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 45.0:

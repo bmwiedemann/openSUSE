@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan  9 21:02:19 UTC 2024 - Christian Boltz <suse-beta@cboltz.de>
+
+- gitweb AppArmor profile: allow reading etc/gitweb-common.conf
+  (boo#1218664)
+
+-------------------------------------------------------------------
 Mon Jan  8 18:43:24 UTC 2024 - Christian Boltz <suse-beta@cboltz.de>
 
 - git moved to /usr/libexec/git/git, update AppArmor profile

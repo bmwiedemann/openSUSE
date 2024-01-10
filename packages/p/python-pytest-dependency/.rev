@@ -23,4 +23,20 @@
     <comment></comment>
     <requestid>1120284</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c5bd48c3e19e07a1f3d26d7daeb0b5c6</srcmd5>
+    <version>0.6.0</version>
+    <time>1704919942</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.6.0:
+  * #39, #41, #59: Review documentation
+  * Drop support for Python 2.
+  * #40: add logging.
+  * #50, #51: test suite incompatibility with pytest 6.2.0.
+  * #58: declare the type of automark_dependency ini-option
+    correctly as bool.
+  * #75: review build tool chain.
+- drop pytest6.2.patch (upstream)</comment>
+    <requestid>1137828</requestid>
+  </revision>
 </revisionlist>

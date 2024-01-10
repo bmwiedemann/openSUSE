@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jan 10 00:44:49 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 1.33.0:
+  * Add more + and * keywords to default-peg-grammar
+  * Use libc strlen in janet_buffer_push_cstring
+  * net/ev: Cleaned up unused NetStateConnect, fixed janet_async_end() ev refcount
+  * fix (doc next)
+  * Fix arity typo in peg
+  * Cosmetically tweak string/format docstring
+  * Add a new (sub) PEG special
+
+-------------------------------------------------------------------
 Fri Nov  3 13:51:00 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Update to version 1.32.1:

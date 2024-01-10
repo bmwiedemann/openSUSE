@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan 10 13:13:59 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1704884885.e3cee62:
+  * Report test module failures via exit codes
+  * os-autoinst-setup-multi-machine: Fix tap group discrepancy
+  * Override existing video when external video encoder is used
+  * Add UEFI boot support for vmware tests (poo#152917)
+  * Make default click times configurable via variables
+
+-------------------------------------------------------------------
 Tue Jan 09 11:42:01 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1704800512.e4a4cf7:

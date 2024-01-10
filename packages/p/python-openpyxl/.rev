@@ -209,4 +209,33 @@ https://build.opensuse.org/request/show/308798</comment>
     <comment></comment>
     <requestid>1004586</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>f996790659aec53c52ba5f3c9c31cdd4</srcmd5>
+    <version>3.1.2</version>
+    <time>1704919941</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.1.2:
+  * #1963 Cannot read worksheets in read-only mode with locally
+    scoped definitions
+  * #1974 Empty custom properties cause invalid files
+  * #1881 DocumentProperties times set by module import only
+  * #1947 Worksheet-specific definitions are missing
+  * #1156 Table filters are always overriden
+  * #1360 Can't read some ScatterCharts if n
+  * #1724 Problem with multilevel indices in dataframes
+  * #1772 Problem with category indices in dataframes
+  * #1786 NamedStyles share attributes - mutables gotcha
+  * #1851 Allow print area to be set to None
+  * #1852 Worksheet for print title and print areas can't be found
+  * #1853 Custom document properties that are strings can be empty
+  * #1858 ConditionalFormatting lost when pivot table updated
+  * #1864 Better handling of defined names
+  * #1904 dataframe_to_rows() misalignment on multiindex
+  * #1912 Excel doesn't like xmlns:space on nodes with only
+    whitespace, which it treats as empty.
+  * #1942 Exception when print areas use table references.
+
+  * Adding tables in write-only mode raises an exception.</comment>
+    <requestid>1137832</requestid>
+  </revision>
 </revisionlist>

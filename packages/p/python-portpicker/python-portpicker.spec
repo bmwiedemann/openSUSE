@@ -1,7 +1,7 @@
 #
 # spec file for package python-portpicker
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-portpicker
-Version:        1.5.2
+Version:        1.6.0
 Release:        0
 Summary:        A library to choose unique available network ports
 License:        Apache-2.0
@@ -27,12 +27,11 @@ URL:            https://github.com/google/python_portpicker
 Source0:        https://files.pythonhosted.org/packages/source/p/portpicker/portpicker-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  net-tools-deprecated
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
-# SECTION test requirements
-# /SECTION
 %python_subpackages
 
 %description

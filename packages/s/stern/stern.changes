@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan 09 20:14:36 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.28.0:
+  * Update dependencies and tools (#290)
+  * adding a highlight option (#289)
+  * Add tail all to README.md (#288)
+  * Update README.md - make text reference for pod-query match
+    formatting of cli example (#286)
+
+-------------------------------------------------------------------
 Thu Nov 16 14:30:57 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.27.0:

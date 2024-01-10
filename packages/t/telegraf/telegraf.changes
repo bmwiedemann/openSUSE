@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Tue Jan  9 13:31:07 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- refresh harden_telegraf.service.patch to apply cleanly again 
+
+-------------------------------------------------------------------
+Tue Jan 09 12:55:18 UTC 2024 - mrueckert@suse.de
+
+- Update to version 1.29.2:
+  * Telegraf v1.29.2
+  * Update changelog for v1.29.2
+  * Update build_version.txt for v1.29.2
+  * docs(readme): Update minimum system requirements (#14536)
+  * docs(inputs.directory_monitor): Correct regex for files_to_monitor config option (#14532)
+  * docs: Fix typos (#14376)
+  * fix(inputs.upsd): Add additional fields to upsd from NUT (#14447)
+  * fix(processors.starlark): Use tracking ID to identify tracking metrics (#14523)
+  * fix(inputs.phpfpm): Add pid field to differentiate metrics (#14462)
+  * fix(common.kafka): Correctly set gssapi username/password (#14522)
+  * chore(deps): bump collectd.org from v0.5.0 to v0.6.0 (#14525)
+  * fix(outputs.prometheus_client): Always default to TCP (#14471)
+  * fix(systemd): Allow notify access from all (#14517)
+  * chore(linters): Enable `appendCombine` checker for gocritic (#14451)
+  * test: Switch DNS server to avoid misbehaving test (#14520)
+  * fix(inputs.phpfpm): Use logger without causing panic (#14489)
+  * chore(deps): Bump google.golang.org/protobuf from 1.31.1-0.20231027082548-f4a6c1f6e5c1 to 1.32.0 (#14505)
+  * chore(deps): Bump github.com/prometheus/prometheus from 0.48.0 to 0.48.1 (#14503)
+  * chore(deps): Bump github.com/Azure/azure-kusto-go from 0.13.1 to 0.15.0 (#14506)
+  * chore(deps): Bump github.com/pion/dtls/v2 from 2.2.7 to 2.2.8 (#14504)
+  * chore(deps): Bump github.com/sijms/go-ora/v2 from 2.7.18 to 2.8.4 (#14515)
+  * docs(inputs.opcua_listener): Fix nodes example (#14508)
+  * chore: Bump GitHub workflow options to latest versions (#14513)
+  * chore(deps): Bump github.com/dvsekhvalnov/jose2go from v1.5.0 to v1.5.1-0.20231206184617-48ba0b76bc88 (#14496)
+  * fix(inputs.procstat): Correctly set tags on procstat_lookup (#14493)
+  *  fix(inputs.vsphere): Resolve occasional serverFault (#14463)
+  * chore(linters): Enable more checkers for gocritic (#14449)
+  * chore: Remove all CircleCI caching (#14494)
+  * chore(deps): Bump github.com/containerd/containerd from 1.7.7 to 1.7.11 (#14483)
+  * test: Revert caching changes, drop linting on windows/macos (#14465)
+  * chore(deps): Bump go.mongodb.org/mongo-driver from 1.12.1 to 1.13.1 (#14475)
+  * chore(deps): Bump github.com/djherbis/times from 1.5.0 to 1.6.0 (#14476)
+  * chore(deps): Bump github.com/jhump/protoreflect from 1.15.3 to 1.15.4 (#14477)
+  * chore(deps): Bump github.com/google/uuid from 1.4.0 to 1.5.0 (#14478)
+  * chore(deps): Bump golang.org/x/net from 0.17.0 to 0.19.0 (#14479)
+  * chore(deps): Bump golang.org/x/crypto from 0.16.0 to 0.17.0 (#14480)
+  * fix(outputs.influxdb*): Support setting Host header (#14481)
+  * chore: Update pull request template (#14470)
+  * fix(outputs.bigquery): Ignore fields containing NaN or infinity (#14458)
+  * chore(linters): Enable rangeValCopy and hugeParams checkers for gocritic (#14454)
+  * chore(linters): Enable `preferDecodeRune` and `preferFprint` checkers for gocritic (#14453)
+  * chore(linters): Enable equalFold, preferStringWriter, and stringXbytes checkers for gocritic. (#14452)
+  * test(inputs.dpdk): Cleanup directories after unit tests (#14457)
+  * fix(processors.filter): Rename processors.Filter -> processors.filter (#14460)
+
+-------------------------------------------------------------------
 Wed Dec 13 17:40:08 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 1.29.1:

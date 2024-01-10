@@ -66,4 +66,13 @@
   * Add support for rich formatting in epilog text [#146]</comment>
     <requestid>1135339</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5fde2830af8327a974dc4ba9c7faf5a9</srcmd5>
+    <version>1.7.3</version>
+    <time>1704919931</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.7.3:
+  * Fix false deprecation warning.</comment>
+    <requestid>1137823</requestid>
+  </revision>
 </revisionlist>

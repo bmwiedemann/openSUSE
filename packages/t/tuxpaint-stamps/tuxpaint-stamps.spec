@@ -1,7 +1,7 @@
 #
 # spec file for package tuxpaint-stamps
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,15 @@
 #
 
 
+%define tar_dir 2023-07-20
 Name:           tuxpaint-stamps
-Version:        2021.11.25
+Version:        2023.07.20
 Release:        0
 Summary:        Rubber stamps collection for Tux Paint
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Bitmap Editors
-URL:            http://www.tuxpaint.org/
-Source0:        %{name}-%{version}.tar.gz
+URL:            https://www.tuxpaint.org/
+Source0:        https://download.sourceforge.net/tuxpaint/tuxpaint-stamps/%{tar_dir}/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 Requires:       tuxpaint-stamps-category
 Recommends:     tuxpaint

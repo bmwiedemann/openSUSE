@@ -1,10 +1,10 @@
-Index: tuxpaint-config-0.0.18/src/tuxpaint-config.desktop
+Index: tuxpaint-config-0.0.22/src/tuxpaint-config.desktop
 ===================================================================
---- tuxpaint-config-0.0.18.orig/src/tuxpaint-config.desktop
-+++ tuxpaint-config-0.0.18/src/tuxpaint-config.desktop
-@@ -99,8 +99,9 @@ Comment[uk]=Налаштування Tux
- Comment[vec]=Confegura Tux Paint
+--- tuxpaint-config-0.0.22.orig/src/tuxpaint-config.desktop
++++ tuxpaint-config-0.0.22/src/tuxpaint-config.desktop
+@@ -101,8 +101,9 @@ Comment[vec]=Confegura Tux Paint
  Comment[vi]=Cấu hình TuxPaint
+ Comment[zh_CN]=配置 Tux Paint
  Comment[zh_TW]=設定 Tux Paint
 +GenericName=Tux Paint Configuration
  Icon=tuxpaint-config

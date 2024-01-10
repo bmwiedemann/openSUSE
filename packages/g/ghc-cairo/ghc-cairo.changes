@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jan  6 17:17:04 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update cairo to version 0.13.10.0 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Fri May 12 14:29:48 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update cairo to version 0.13.10.0.

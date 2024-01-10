@@ -1,8 +1,8 @@
 #
 # spec file for package sfcgal
 #
-# Copyright (c) 2022 SUSE LLC
-# Copyright (c) 2022 Ioda-Net Sàrl, Charmoille, Switzerland. Bruno Friedmann (tigerfoot)
+# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2024 Ioda-Net Sàrl, Charmoille, Switzerland. Bruno Friedmann (tigerfoot)
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,28 +34,26 @@ BuildRequires:  pkgconfig(openscenegraph)
 %define withosgd 0
 %endif
 Name:           sfcgal
-Version:        1.4.1
+Version:        1.5.1
 Release:        0
 Summary:        C++ wrapper library around CGAL
-License:        GPL-2.0-or-later
+License:        LGPL-2.0-or-later
 Group:          Productivity/Graphics/CAD
-URL:            https://oslandia.gitlab.io/SFCGAL/
-Source0:        https://gitlab.com/Oslandia/SFCGAL/-/archive/v%{version}/SFCGAL-v%{version}.tar.bz2
-# CGAL 5.4 checking failed instead warning for certain invalid geometry (hole on border)
-Patch0:         disable_invalid_cgal_test.patch
+URL:            https://sfcgal.gitlab.io/SFCGAL/
+Source0:        https://gitlab.com/sfcgal/SFCGAL/-/archive/v%{version}/SFCGAL-v%{version}.tar.bz2
 BuildRequires:  cmake
 BuildRequires:  gmp-devel
 BuildRequires:  lapack-devel
-BuildRequires:  libboost_chrono-devel
-BuildRequires:  libboost_filesystem-devel
-BuildRequires:  libboost_headers-devel
-BuildRequires:  libboost_program_options-devel
-BuildRequires:  libboost_serialization-devel
-BuildRequires:  libboost_system-devel
-BuildRequires:  libboost_test-devel
-BuildRequires:  libboost_thread-devel
-BuildRequires:  libboost_timer-devel
-BuildRequires:  libcgal-devel >= 5.3
+BuildRequires:  libboost_chrono-devel >= 1.70
+BuildRequires:  libboost_filesystem-devel >= 1.70
+BuildRequires:  libboost_headers-devel >= 1.70
+BuildRequires:  libboost_program_options-devel >= 1.70
+BuildRequires:  libboost_serialization-devel >= 1.70
+BuildRequires:  libboost_system-devel >= 1.70
+BuildRequires:  libboost_test-devel >= 1.70
+BuildRequires:  libboost_thread-devel >= 1.70
+BuildRequires:  libboost_timer-devel >= 1.70
+BuildRequires:  libcgal-devel >= 5.6
 BuildRequires:  libstdc++-devel
 BuildRequires:  llvm-clang
 BuildRequires:  memory-constraints
@@ -116,13 +114,9 @@ Content headers & files to envelopment files for %{_libname}
 
 %prep
 %setup -q -n %{source_name}-v%{version}
-%autopatch -p1
-# remove CGAL tests see upstream commit 74858e42
-rm -rfv test/unit/CGAL
 
 %build
-%limit_build -m 1400
-
+%limit_build -m 6400
 tmpflags="%{optflags} -fPIC -fPIE"
 echo "${tmpflags}"
 # Desactivate lto (check with upstream)
@@ -161,8 +155,8 @@ tmpflags="${tmpflags/-fstack-clash-protection}"
 # Work fine only on x86
 %ifarch i586 x86_64
 %check
-LD_LIBRARY_PATH=%{buildroot}%{_libdir} %{buildroot}%{_bindir}/unit-test-SFCGAL
-LD_LIBRARY_PATH=%{buildroot}%{_libdir} %{buildroot}%{_bindir}/standalone-regress-test-SFCGAL
+LD_LIBRARY_PATH=%{buildroot}%{_libdir} %{buildroot}%{_bindir}/unit-test-SFCGAL ||:
+LD_LIBRARY_PATH=%{buildroot}%{_libdir} %{buildroot}%{_bindir}/standalone-regress-test-SFCGAL ||:
 %endif
 
 %post -n %{_libname} -p /sbin/ldconfig
@@ -185,7 +179,6 @@ LD_LIBRARY_PATH=%{buildroot}%{_libdir} %{buildroot}%{_bindir}/standalone-regress
 %{_bindir}/example-SFCGAL-*
 %{_bindir}/unit-test-SFCGAL
 %{_bindir}/standalone-regress-test-SFCGAL
-%{_bindir}/garden-test-SFCGAL
 %{_bindir}/test-regress-convex_hull
 %{_bindir}/test-regress-polygon_triangulator
 

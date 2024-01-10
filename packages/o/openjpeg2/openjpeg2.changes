@@ -11,6 +11,9 @@ Fri Jun  3 09:59:48 UTC 2022 - Timothy Brown <stimut@gmail.com>
   * Decoder: add support for high throughput (HTJ2K) decoding
   * Decoder: add support for partial bitstream decoding
   * Bug fixes (including security fixes)
+  * Fix CVE-2018-16376 (bsc#1106881)
+  * Fix CVE-2021-29338 (bsc#1184774)
+  * Fix CVE-2022-1122 (bsc#1197738)
 
 -------------------------------------------------------------------
 Mon Jan 18 23:00:45 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -21,6 +24,14 @@ Mon Jan 18 23:00:45 UTC 2021 - Dirk Müller <dmueller@suse.com>
   * Encoder: single-threaded performance improvements in forward DWT for 5-3 and 9-7 (and other improvements) #1253
   * Encoder: support IMF profiles #1235
   * Many bug fixes (including security fixes)
+  * Fix CVE-2020-27814 (bsc#1179594)
+  * Fix CVE-2020-27824 (bsc#1179821)
+  * Fix CVE-2020-27841 (bsc#1180042)
+  * Fix CVE-2020-27842 (bsc#1180043)
+  * Fix CVE-2020-27843 (bsc#1180044)
+  * Fix CVE-2020-27845 (bsc#1180046)
+  * Fix CVE-2020-15389 (bsc#1173578)
+  * Fix CVE-2020-27823 (bsc#1180457)
 
 - drop 024b8407392cb0b8.patch, 05f9b91e60debda0.patch,
   21399f6b7d318fcd.patch, 3aef207f90e937d4.patch,
@@ -51,6 +62,9 @@ Tue Apr 02 10:41:57 UTC 2019 - mvetter@suse.com
   * Fix CVE-2018-14423 (bsc#1102016)
   * Fix CVE-2018-7648 (bsc#1083901)
   * Fix CVE-2018-5727 (bsc#1076314)
+  * Fix CVE-2018-20846 (bsc#1140205)
+  * Fix CVE-2018-21010 (bsc#1149789)
+  * Fix CVE-2018-20845 (bsc#1140130)
   * For full list see ChangeLog file
 - Remove install-fix.patch: upstreamed
 

@@ -74,4 +74,41 @@
   * Do not use pep517 methods, switch to build.</comment>
     <requestid>1087411</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c61d83dbd76273d1adcd8180b862c939</srcmd5>
+    <version>2023.9.16</version>
+    <time>1704919937</time>
+    <user>anag+factory</user>
+    <comment>- update to 2023.09.16:
+  * Cffi update
+  * Use build rather than pep517 for building
+  * Removes `mysqldb` recipe as does not support Python 3
+  * Removes `Babel` recipe as it's not needed anymore.
+  * Remove `dateutil` recipe, as it's not needed anymore
+  * Optimize CI runs, by avoiding unnecessary rebuilds
+  * Remove `pytz` recipe, as it's not needed anymore
+  * Changed the url to use https as http fails
+  * vlc: fix build
+  * Correct sys_platform
+  * Docs: Fix code string - quickstart.rst
+  * Bump `kivy` version to `2.2.1`
+  * Use a pinned version of `Cython` for now, as most of the
+    recipes are incompatible with `Cython==3.x.x`
+  * Automatically generate required pre-requisites
+  * Use platform.uname instead of os.uname
+  * Fix simple typos in comments
+  * `build_platform` should be all-lowercase
+  * Docs: Fix typos and updated command to build apk - README
+  * Patching cleanup
+  * Python versions: Update documentation &amp; CI testing
+  * Correct check for --sdk option
+  * Factor out dependency checking. Use modern version handling
+  * :rotating_light: linter fixes
+  * Remove deprecated FlatDir in Gradle template
+  * Standardise ensure_dir and rmdir
+  * Standardise on move
+  * Use Python's touch() rather than shelling out.
+- update to 2023.05.21:</comment>
+    <requestid>1137829</requestid>
+  </revision>
 </revisionlist>

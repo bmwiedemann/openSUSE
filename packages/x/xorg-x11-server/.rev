@@ -3980,4 +3980,15 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
  -------------------------------------------------------------------</comment>
     <requestid>1137260</requestid>
   </revision>
+  <revision rev="423" vrev="4">
+    <srcmd5>21088ebe8139e4ee5cd1222ff88e7885</srcmd5>
+    <version>21.1.9</version>
+    <time>1704919865</time>
+    <user>anag+factory</user>
+    <comment>- u_miCloseScreen_check_for_null_pScreen_dev_private.patch
+  * miCloseScreen check for null pScreen dev private (bsc#1218176); 
+    another regression introduced by 
+    U_bsc1216261-0002-fb-properly-wrap-unwrap-CloseScreen.patch</comment>
+    <requestid>1137765</requestid>
+  </revision>
 </revisionlist>

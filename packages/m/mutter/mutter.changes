@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jan 10 08:53:06 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 45.3:
+  + Fix handling of relative mode for tablets.
+  + Fix forcing EGLStream with NVIDIA proprietary driver.
+  + Sync geometry only when window is mapped.
+  + Improve repick due to transform changes.
+  + wayland/client: Add make_desktop() method.
+  + Fix occasional artifacts at top of X11 fullscreen windows.
+  + background: Fix background color around image.
+  + Fixed crashes.
+  + Plugged leaks.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Dec 21 08:23:54 UTC 2023 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Add mutter-fix-text-input-delete-surrounding.patch: text-input-v3

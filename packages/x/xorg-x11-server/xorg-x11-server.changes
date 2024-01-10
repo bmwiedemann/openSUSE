@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan  6 20:01:20 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- u_miCloseScreen_check_for_null_pScreen_dev_private.patch
+  * miCloseScreen check for null pScreen dev private (bsc#1218176); 
+    another regression introduced by 
+    U_bsc1216261-0002-fb-properly-wrap-unwrap-CloseScreen.patch
+
+-------------------------------------------------------------------
 Sat Jan  6 15:12:29 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - n_xserver-optimus-autoconfig-hack.patch

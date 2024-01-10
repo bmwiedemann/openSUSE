@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Jan 10 11:46:51 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.39.2
+  - Fix timestamp in transaction created by OTel (#2627)
+  - Fix relative path in DB query source (#2624)
+  - Run more CI checks on 2.0 branch (#2625)
+  - Fix tracing TypeError for static and class methods (#2559)
+  - Fix missing ctx in Arq integration (#2600)
+  - Change data_category from check_in to monitor (#2598)
+- Changes from 1.39.1
+  - Fix psycopg2 detection in the Django integration (#2593)
+  - Filter out empty string releases (#2591)
+  - Fixed local var not present when there is an error in a user's
+    error_sampler function (#2511)
+  - Fixed typing in aiohttp (#2590)
+- Changes from 1.39.0
+  - Add support for cluster clients from Redis SDK (#2394)
+  - Improve location reporting for timer metrics (#2552)
+  - Fix Celery TypeError with no-argument apply_async (#2575)
+  - Fix Lambda integration with EventBridge source (#2546)
+  - Add max tries to Spotlight (#2571)
+  - Handle os.path.devnull access issues (#2579)
+  - Change code.filepath frame picking logic (#2568)
+  - Trigger AWS Lambda tests on label (#2538)
+  - Run permissions step on pull_request_target but not push (#2548)
+  - Hash AWS Lambda test functions based on current revision (#2557)
+  - Update Django version in tests (#2562)
+  - Make metrics tests non-flaky (#2572)
+
+-------------------------------------------------------------------
 Fri Dec  8 16:03:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.38.0:

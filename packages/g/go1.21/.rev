@@ -158,4 +158,24 @@
   * go#64413 crypto/rand: Legacy RtlGenRandom use on Windows (forwarded request 1131273 from jfkw)</comment>
     <requestid>1131275</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7a50d9b86338974bc806c259c4f579d8</srcmd5>
+    <version>1.21.6</version>
+    <time>1704919820</time>
+    <user>anag+factory</user>
+    <comment>- go1.21.6 (released 2024-01-09) includes fixes to the compiler,
+  the runtime, and the crypto/tls, maps, and runtime/pprof
+  packages.
+  Refs boo#1212475 go1.21 release tracking
+  * go#63911 x/build,os/signal: TestDetectNohup and TestNohup fail on replacement darwin LUCI builders
+  * go#64410 runtime: ReadMemStats fatal error: mappedReady and other memstats are not equal
+  * go#64472 cmd/compile: linux/s390x: inlining bug in s390x
+  * go#64475 maps: maps.Clone reference semantics when cloning a map with large value types
+  * go#64561 runtime: excessive memory use between 1.21.0 -&gt; 1.21.1
+  * go#64567 cmd/compile: max/min builtin broken when used with string(byte) conversions
+  * go#64609 runtime/pprof: incorrect function names for generics functions
+  * go#64719 crypto: upgrade to BoringCrypto fips-20220613 and enable TLS 1.3
+  * go#64757 runtime: race condition raised with parallel tests, panic(nil) and -race (forwarded request 1137838 from jfkw)</comment>
+    <requestid>1137841</requestid>
+  </revision>
 </revisionlist>

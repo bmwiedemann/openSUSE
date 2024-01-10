@@ -1,7 +1,7 @@
 #
 # spec file for package go1.21
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -126,7 +126,7 @@
 %endif
 
 Name:           go1.21
-Version:        1.21.5
+Version:        1.21.6
 Release:        0
 Summary:        A compiled, garbage-collected, concurrent programming language
 License:        BSD-3-Clause

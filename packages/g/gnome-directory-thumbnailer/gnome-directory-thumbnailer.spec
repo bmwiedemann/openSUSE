@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-directory-thumbnailer
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2013 Dominique Leuenberger, Amsterdam, The Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,17 +18,17 @@
 
 
 Name:           gnome-directory-thumbnailer
-Version:        0.1.11
+Version:        0.1.11+15
 Release:        0
 Summary:        Directory Thumbnailer
 License:        LGPL-2.1-or-later
 Group:          Productivity/Office/Other
 URL:            https://wiki.gnome.org/GnomeDirectoryThumbnailer
-Source0:        https://download.gnome.org/sources/gnome-directory-thumbnailer/0.1/%{name}-%{version}.tar.xz
-# PATCH-FIX-OPENSUSE temp-ftbfs.patch -- Temporary workaround for recent gnome-desktop api changes
-Patch0:         temp-ftbfs.patch
+Source0:        %{name}-%{version}.tar.zst
 
+BuildRequires:  autoconf-archive
 BuildRequires:  intltool >= 0.40.0
+BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.36.5
 BuildRequires:  pkgconfig(gio-2.0) >= 2.22.0
@@ -46,6 +46,7 @@ GNOME thumbnailer to generate thumbnails for directories.
 %autosetup -p1
 
 %build
+NOCONFIGURE=1 ./autogen.sh
 %configure
 %make_build
 

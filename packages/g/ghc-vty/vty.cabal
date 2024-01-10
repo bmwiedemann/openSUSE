@@ -1,0 +1,90 @@
+name:                vty
+version:             6.1
+x-revision: 1
+license:             BSD3
+license-file:        LICENSE
+author:              AUTHORS
+maintainer:          Jonathan Daugherty (cygnus@foobox.com)
+homepage:            https://github.com/jtdaugherty/vty
+category:            User Interfaces
+synopsis:            A simple terminal UI library
+description:
+  vty is terminal GUI library in the niche of ncurses. It is intended to
+  be easy to use and to provide good support for common terminal types.
+  .
+  See the @vty-examples@ package as well as the program
+  @examples/interactive_terminal_test.hs@ included in the @vty@
+  repository for examples on how to use the library.
+  .
+  Import the @Graphics.Vty@ convenience module to get access to the core
+  parts of the library.
+  .
+  &#169; 2006-2007 Stefan O'Rear; BSD3 license.
+  .
+  &#169; Corey O'Connor; BSD3 license.
+  .
+  &#169; Jonathan Daugherty; BSD3 license.
+cabal-version:       1.18
+build-type:          Simple
+extra-doc-files:     README.md,
+                     AUTHORS,
+                     CHANGELOG.md,
+                     LICENSE
+tested-with:         GHC==8.0.2, GHC==8.2.2, GHC==8.4.3, GHC==8.6.5, GHC==8.8.4, GHC==8.10.7, GHC==9.0.2, GHC==9.2.8, GHC==9.4.5, GHC==9.6.2
+
+source-repository head
+  type: git
+  location: https://github.com/jtdaugherty/vty.git
+
+library
+  default-language:    Haskell2010
+  include-dirs:        cbits
+  hs-source-dirs:      src
+  ghc-options:         -O2 -funbox-strict-fields -Wall -fspec-constr -fspec-constr-count=10
+  ghc-prof-options:    -O2 -funbox-strict-fields -caf-all -Wall -fspec-constr -fspec-constr-count=10
+  build-depends:       base >= 4.8 && < 5,
+                       blaze-builder >= 0.3.3.2 && < 0.5,
+                       bytestring,
+                       deepseq >= 1.1 && < 1.6,
+                       microlens < 0.4.14,
+                       microlens-mtl,
+                       microlens-th,
+                       mtl >= 1.1.1.0 && < 2.4,
+                       stm,
+                       text >= 0.11.3,
+                       utf8-string >= 0.3 && < 1.1,
+                       vector >= 0.7,
+                       binary,
+                       parsec,
+                       filepath,
+                       directory
+
+  if !impl(ghc >= 8.0)
+    build-depends:     semigroups >= 0.16,
+                       fail
+
+  exposed-modules:     Graphics.Text.Width
+                       Graphics.Vty
+                       Graphics.Vty.Attributes
+                       Graphics.Vty.Attributes.Color
+                       Graphics.Vty.Attributes.Color240
+                       Graphics.Vty.Config
+                       Graphics.Vty.Debug
+                       Graphics.Vty.DisplayAttributes
+                       Graphics.Vty.Error
+                       Graphics.Vty.Image
+                       Graphics.Vty.Image.Internal
+                       Graphics.Vty.Inline
+                       Graphics.Vty.Input
+                       Graphics.Vty.Input.Events
+                       Graphics.Vty.Output
+                       Graphics.Vty.Output.Mock
+                       Graphics.Vty.Picture
+                       Graphics.Vty.PictureToSpans
+                       Graphics.Vty.Span
+                       Graphics.Vty.UnicodeWidthTable.IO
+                       Graphics.Vty.UnicodeWidthTable.Install
+                       Graphics.Vty.UnicodeWidthTable.Main
+                       Graphics.Vty.UnicodeWidthTable.Query
+                       Graphics.Vty.UnicodeWidthTable.Types
+  c-sources:           cbits/mk_wcwidth.c

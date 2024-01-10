@@ -1,7 +1,7 @@
 #
 # spec file for package python-sentry-sdk
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 # nothing provides python2-venusian >= 1.0 needed by python2-pyramid
 %{?sle15_python_module_pythons}
 Name:           python-sentry-sdk
-Version:        1.38.0
+Version:        1.39.2
 Release:        0
 Summary:        Python SDK for Sentry.io
 License:        BSD-2-Clause
@@ -28,9 +28,11 @@ URL:            https://github.com/getsentry/sentry-python
 Source0:        https://github.com/getsentry/sentry-python/archive/%{version}/sentry-python-%{version}.tar.gz
 BuildRequires:  %{python_module Django >= 1.8}
 BuildRequires:  %{python_module Flask >= 0.11}
+BuildRequires:  %{python_module MarkupSafe}
 BuildRequires:  %{python_module SQLAlchemy >= 1.2}
 BuildRequires:  %{python_module aiohttp >= 3.5}
 BuildRequires:  %{python_module asttokens}
+BuildRequires:  %{python_module asyncpg >= 0.23}
 BuildRequires:  %{python_module blinker >= 1.1}
 BuildRequires:  %{python_module bottle >= 0.12.13}
 BuildRequires:  %{python_module celery >= 3}
@@ -60,7 +62,8 @@ BuildRequires:  %{python_module pyramid}
 BuildRequires:  %{python_module pyrsistent >= 0.16.0}
 BuildRequires:  %{python_module pytest-cov >= 2.8.1}
 BuildRequires:  %{python_module pytest-forked >= 1.4.0}
-BuildRequires:  %{python_module pytest-localserver >= 0.5.0}
+BuildRequires:  %{python_module pytest-localserver >= 0.5.1}
+#BuildRequires:  %%{python_module pytest-watch >= 4.2.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module tox >= 3.7.0}
 # /SECTION
@@ -69,6 +72,7 @@ BuildRequires:  %{python_module tox >= 3.7.0}
 #BuildRequires:  %%{python_module responses}
 # /SECTION
 # SECTION extra requirements - which rise up buildtime error or missing in openSUSE
+#BuildRequires:  %%{python_module arq >= 0.23}
 #BuildRequires:  %%{python_module pyspark >= 2.4.4}
 #BuildRequires:  %%{python_module apache-beam >= 2.12}
 #BuildRequires:  %%{python_module huey >= 2}
@@ -79,12 +83,18 @@ BuildRequires:  %{python_module tox >= 3.7.0}
 #BuildRequires:  %%{python_module quart >= 0.16.1}
 #BuildRequires:  %%{python_module sanic >= 0.8}
 #BuildRequires:  %%{python_module opentelemetry-distro >= 0.35b0}
+#BuildRequires:  %%{python_module beam >= 2.12}
+#BuildRequires:  %%{python_module chalice >= 1.16.0}
+#BuildRequires:  %%{python_module clickhouse-driver >= 0.2.0}
+#BuildRequires:  %%{python_module fastapi >= 0.79.0}
 # /SECTION
 Requires:       python-Django >= 1.8
 Requires:       python-Flask >= 0.11
+Requires:       python-MarkupSafe
 Requires:       python-SQLAlchemy >= 1.2
 Requires:       python-aiohttp >= 3.5
 Requires:       python-asttokens
+Requires:       python-asyncpg >= 0.23
 Requires:       python-blinker >= 1.1
 Requires:       python-bottle >= 0.12.13
 Requires:       python-celery >= 3
@@ -104,6 +114,7 @@ Requires:       python-urllib3 >= 1.26.11
 #Requires:       python-sanic >= 0.8
 #Requires:       python-apache-beam >= 2.12
 #Requires:       python-huey >= 2
+#Requires:       python-arq >= 0.23
 #Requires:       python-pyspark >= 2.4.4
 #Requires:       python-pure_eval
 #Requires:       python-chalice >= 1.16.0
@@ -112,6 +123,10 @@ Requires:       python-urllib3 >= 1.26.11
 #Requires:       python-quart >= 0.16.1
 #Requires:       python-sanic >= 0.8
 #Requires:       python-opentelemetry-distro >= 0.35b0
+#Requires:       python- beam >= 2.12}
+#Requires:       python-chalice >= 1.16.0}
+#Requires:       python-clickhouse-driver >= 0.2.0}
+#Requires:       python-fastapi >= 0.79.0}
 # /SECTION
 BuildArch:      noarch
 %python_subpackages
@@ -133,10 +148,10 @@ https://sentry.io/for/python/
 %check
 export PYTHONDONTWRITEBYTECODE=1
 export PYTEST_ADDOPTS="-W ignore::DeprecationWarning"
-# do not test integration:
+# do not test integration (many package are missing at SUSE):
 rm -r tests/integrations
 # test_auto_enabling_integrations_catches_import_error asert False where False = ..., not sure
-%pytest -rs -k 'not (test_transport_works or test_auto_enabling_integrations_catches_import_error or test_filename or test_transport_infinite_loop or test_simple_rate_limits or test_data_category_limits or test_complex_limits_without_data_category or test_leaks)'
+%pytest -rs -k 'not (test_transport_works or test_auto_enabling_integrations_catches_import_error or test_filename or test_transport_infinite_loop or test_simple_rate_limits or test_data_category_limits or test_complex_limits_without_data_category or test_leaks or test_utils)'
 
 %files %{python_files}
 %doc README.md CHANGELOG.md CONTRIBUTING.md CONTRIBUTING-aws-lambda.md

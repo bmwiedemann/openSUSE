@@ -16,31 +16,21 @@
 #
 
 
-%if 0%{?suse_version} >= 1550
-%bcond_without sdl2
-%else
-%bcond_with sdl2
-%endif
-
-%define sdlver %{?with_sdl2:2}%{!?with_sdl2:%{nil}}
-%define srcver %{?with_sdl2:2}%{!?with_sdl2:1}
+%define sdlver 2
 Name:           tuxpaint
-Version:        0.9.28
+Version:        0.9.31
 Release:        0
 Summary:        Drawing Program for Young Children
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Bitmap Editors
 URL:            http://www.tuxpaint.org/
-Source0:        https://download.sourceforge.net/project/tuxpaint/tuxpaint/%{version}/%{name}-%{version}-sdl1.tar.gz
-Source1:        https://download.sourceforge.net/project/tuxpaint/tuxpaint/%{version}/%{name}-%{version}-sdl2.tar.gz
+Source0:        https://download.sourceforge.net/project/tuxpaint/tuxpaint/%{version}/%{name}-%{version}.tar.gz
 Source2:        tuxpaint-rpmlintrc
 Patch0:         tuxpaint-import-eval.patch
 # PATCH-FIX-OPENSUSE tuxpaint-makefile.patch -- Disable update-desktop-database, because it do not work
 Patch1:         tuxpaint-makefile.patch
-%if 0%{?suse_version} >= 1550
 # PATCH-FIX-UPSTREAM tuxpaint-pango-cflags.patch -- Include cflags from pango's pkgconfig file, needed only for sdl2 flavour
 Patch2:         tuxpaint-pango-cflags.patch
-%endif
 BuildRequires:  ImageMagick
 BuildRequires:  pkgconfig(sdl%{?sdlver})
 BuildRequires:  pkgconfig(SDL%{?sdlver}_Pango)
@@ -49,11 +39,7 @@ BuildRequires:  pkgconfig(SDL%{?sdlver}_mixer)
 BuildRequires:  pkgconfig(SDL%{?sdlver}_ttf)
 BuildRequires:  pkgconfig(fribidi)
 BuildRequires:  gperf
-%if 0%{?suse_version} <= 01530
-BuildRequires:  libimagequant-devel
-%else
 BuildRequires:  pkgconfig(imagequant)
-%endif
 BuildRequires:  libpaper-devel
 BuildRequires:  libpng-devel
 BuildRequires:  xdg-utils
@@ -123,15 +109,8 @@ Requires:       librsvg2-devel
 Header files and development documentation for tuxpaint.
 
 %prep
-%if %{with sdl2}
-%autosetup -p1 -T -b1 -n %{name}-%{version}-sdl%{?srcver}
-%else
-%autosetup -p1 -n %{name}-%{version}-sdl%{?srcver}
-%endif
+%autosetup -p1 -n %{name}-%{version}
 find . -name CVS -exec rm -rf {} +
-find docs/ -type f -exec chmod -v 644 {} +
-
-sed -Ei "s/\r$//" docs/outdated/*/*.txt
 
 %build
 %make_build \
@@ -180,13 +159,11 @@ rm -rf %{buildroot}/%{_docdir}/%{name}
 # remove unneeded scripts
 rm %{buildroot}/%{_datadir}/%{name}/fonts/locale/zh_tw_docs/*.{sh,py,pe}
 
-%if 0%{?suse_version} >= 01500
 # move bash-completion to new home
 mkdir -p %{buildroot}/%{_datadir}/bash-completion/completions/
 mv 	%{buildroot}%{_sysconfdir}/bash_completion.d/tuxpaint-completion.bash \
 	%{buildroot}%{_datadir}/bash-completion/completions/
 rmdir %{buildroot}%{_sysconfdir}/bash_completion.d
-%endif
 
 # find lang
 %find_lang %{name}
@@ -200,22 +177,16 @@ rmdir %{buildroot}%{_sysconfdir}/bash_completion.d
 %exclude %{_mandir}/man1/tp-magic-config*
 %dir %{_sysconfdir}/%{name}
 %config(noreplace) %{_sysconfdir}/%{name}/%{name}.conf
-%if 0%{?suse_version} >= 01500
 %{_datadir}/bash-completion/completions/tuxpaint-completion.bash
-%else
-%config(noreplace) %{_sysconfdir}/bash_completion.d/tuxpaint-completion.bash
-%endif
 %{_bindir}/%{name}
 %{_bindir}/tuxpaint-import
 %{_libdir}/%{name}
 %{_datadir}/%{name}/
 %{_datadir}/pixmaps/*%{name}.*
 %{_datadir}/applications/*.desktop
+%{_datadir}/metainfo/*.appdata.xml
 
 %files devel
-%if 0%{?suse_version}
-%doc %{_defaultdocdir}/%{name}-devel
-%endif
 %{_mandir}/man1/tp-magic-config*
 %dir %{_includedir}/%{name}
 %{_bindir}/tp-magic-config

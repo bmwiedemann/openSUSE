@@ -1,7 +1,7 @@
 #
 # spec file for package python-Pyphen
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,16 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Pyphen
-Version:        0.10.0
+Version:        0.14.0
 Release:        0
 Summary:        Pure Python module to hyphenate text
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND MPL-1.1
 URL:            https://github.com/Kozea/Pyphen
 Source:         https://github.com/Kozea/Pyphen/archive/%{version}.tar.gz
+BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -42,18 +44,19 @@ This module is a fork of python-hyphenator, written by Wilbert Berendsen.
 %setup -q -n Pyphen-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_bin_suffix} -v test.py
+%pytest
 
 %files %{python_files}
 %doc README.rst
-%license COPYING COPYING.GPL COPYING.LGPL COPYING.MPL
-%{python_sitelib}/*
+%license COPYING.GPL COPYING.LGPL COPYING.MPL
+%{python_sitelib}/pyphen
+%{python_sitelib}/pyphen-%{version}.dist-info
 
 %changelog

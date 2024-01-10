@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue Jan  9 20:00:03 UTC 2024 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Set minimal version for libboost to 1.70 which is required by cgal 5.6
+
+-------------------------------------------------------------------
+Tue Jan  9 16:44:05 UTC 2024 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to version 1.5.1
+  * Rewrite and fix visibility algorithm (Loïc Bartoletti)
+  * Apply clang-tidy fixes (Loïc Bartoletti)
+  * Add vcpkg CI and temporarily disable alpha-shapes for MSVC (Loïc Bartoletti)
+- Update to version 1.5.0
+  * Add visibility algorithms (Loïc Bartoletti)
+  * Straight Skeleton: Add a version with extrusion
+  * WKT: Fix triangle code (Loïc Bartoletti)
+  * Allow to disable GMPXX (Loïc Bartoletti, Fixes #249 and #252)
+  * Add polygon partition (Raphaël Delhome, Loïc Bartoletti)
+  * Minor typo correction (Regina Obe, #280)
+  * Remove CGAL unit test (Fix #257, Loïc Bartoletti)
+  * [C API] Add sfcgal_point_create_from_xyzm and
+    sfcgal_point_create_from_xym functions (Loïc Bartoletti #274)
+  * Update CI and add FreeBSD, macOs CI (Loïc Bartoletti)
+  * Minors fixes (Loïc Bartoletti #269 and #270)
+  * Remove useless garden tests (Loïc Bartoletti)
+  * Fix SPDX-License-Identifier (Loïc Bartoletti reported
+    by Bas Couwenberg #250)
+  * NOTE: This is the first release on GitLab/SFCGAL space.
+  * SFCGAL has now a dedicated space outside Oslandia one:
+    https://gitlab.com/SFCGAL/.
+- Packaging
+  + Update copyright year
+  + Remove previous disable_invalid_cgal_test.patch no more needed
+  + Update upstream website and source
+  + Update package licence sfcgal is lgpl 2+ not gpl
+
+
+-------------------------------------------------------------------
 Mon Dec  5 22:40:45 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Reduce _constraints to actual lower bound, limit number of

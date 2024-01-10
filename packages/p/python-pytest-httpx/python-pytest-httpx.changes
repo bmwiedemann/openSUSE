@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan  9 21:38:43 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.28.0:
+  * Requires `httpx`==0.26.\*
+
+-------------------------------------------------------------------
 Sun Nov 19 10:48:03 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.27.0:

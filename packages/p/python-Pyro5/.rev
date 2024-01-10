@@ -15,4 +15,20 @@
     <comment></comment>
     <requestid>1092378</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e33e797e5be6bb4ec815ada55c3f9ef0</srcmd5>
+    <version>5.15</version>
+    <time>1704919919</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.15:
+  * removed Python 3.7 from the support list (it is EOL). Now
+    supported on Python 3.8 or newer.
+  * fixed cgi.parse deprecation problem in http gateway
+  * removed jquery dependency in http gateway
+  * some small tweaks to setup, tests, examples, and docs.
+  * updated the self-signed example certificates and serial
+    numbers in the ssl example.
+- drop add-network-marker.patch (upstream)</comment>
+    <requestid>1137817</requestid>
+  </revision>
 </revisionlist>

@@ -1,30 +1,31 @@
-Index: tuxpaint-0.9.28-sdl2/Makefile
+Index: tuxpaint-0.9.31/Makefile
 ===================================================================
---- tuxpaint-0.9.28-sdl2.orig/Makefile
-+++ tuxpaint-0.9.28-sdl2/Makefile
-@@ -112,6 +112,8 @@ endif
- # change to sdl-console to build a console version on Windows
- SDL_PCNAME:=sdl2
+--- tuxpaint-0.9.31.orig/Makefile
++++ tuxpaint-0.9.31/Makefile
+@@ -1217,7 +1217,7 @@ tuxpaint:	obj/tuxpaint.o obj/i18n.o obj/
+ 		$(ARCH_LIBS)
+ 	@echo
+ 	@echo "...Linking Tux Paint..."
+-	$(CC) $(CFLAGS) $(LDFLAGS) $(DEBUG_FLAGS) $(SDL_CFLAGS) $(FRIBIDI_CFLAGS) $(DEFS) $(ARCH_DEFS) \
++	$(CC) $(CFLAGS) $(LDFLAGS) $(DEBUG_FLAGS) $(SDL_CFLAGS) $(PANGO_CFLAGS) $(FRIBIDI_CFLAGS) $(DEFS) $(ARCH_DEFS) \
+ 		-o tuxpaint $^ \
+ 		$(SDL_LIBS) $(SVG_LIB) $(ARCH_LINKS) -lm
+ 	@$(RAD_CMD)
+@@ -1253,7 +1253,7 @@ obj/tuxpaint.o:	src/tuxpaint.c \
+ 		$(ARCH_HEADERS)
+ 	@echo
+ 	@echo "...Compiling Tux Paint from source..."
+-	$(CC) $(CFLAGS) $(DEBUG_FLAGS) $(SDL_CFLAGS) $(FRIBIDI_CFLAGS) $(SVG_CFLAGS) $(MOUSE_CFLAGS) $(DEFS) $(ARCH_DEFS) \
++	$(CC) $(CFLAGS) $(DEBUG_FLAGS) $(SDL_CFLAGS) $(PANGO_CFLAGS) $(FRIBIDI_CFLAGS) $(SVG_CFLAGS) $(MOUSE_CFLAGS) $(DEFS) $(ARCH_DEFS) \
+ 		-c src/tuxpaint.c -o obj/tuxpaint.o
  
-+PANGO_PCNAME:=pango
-+
- WINDRES:=windres
- PKG_CONFIG:=pkg-config
- ifdef PKG_CONFIG_LIBDIR
-@@ -298,6 +300,7 @@ SDL_LIBS+=$(SDL_MIXER_LIB) $(SDL2_PANGO_
- 
- SDL_CFLAGS:=$(shell $(PKG_CONFIG) $(SDL_PCNAME) --cflags)
- 
-+PANGO_CFLAGS:=$(shell $(PKG_CONFIG) $(PANGO_PCNAME) --cflags)
- 
- # New one: -lrsvg-2 -lcairo
- # Old one: -lcairo -lsvg -lsvg-cairo
-@@ -1214,14 +1217,14 @@ obj/fonts.o:	src/fonts.c src/fonts.h src
+ # Broke gperf|sed up into two steps so that it will fail properly if gperf is not installed; there's probably a more elegant solution -bjk 2009.11.20
+@@ -1300,14 +1300,14 @@ obj/fonts.o:	src/fonts.c src/fonts.h src
  		src/get_fname.h src/debug.h
  	@echo
  	@echo "...Compiling font support..."
--	@$(CC) $(CFLAGS) $(DEBUG_FLAGS) $(SDL_CFLAGS) $(DEFS) $(ARCH_DEFS) \
-+	@$(CC) $(CFLAGS) $(DEBUG_FLAGS) $(SDL_CFLAGS) $(PANGO_CFLAGS) $(DEFS) $(ARCH_DEFS) \
+-	$(CC) $(CFLAGS) $(DEBUG_FLAGS) $(SDL_CFLAGS) $(DEFS) $(ARCH_DEFS) \
++	$(CC) $(CFLAGS) $(DEBUG_FLAGS) $(SDL_CFLAGS) $(PANGO_CFLAGS) $(DEFS) $(ARCH_DEFS) \
  		-c src/fonts.c -o obj/fonts.o
  
  obj/dirwalk.o:	src/dirwalk.c src/dirwalk.h src/progressbar.h src/fonts.h \

@@ -70,4 +70,20 @@
 </comment>
     <requestid>1123245</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>63e8eef5a7fee76d59d07186d7ab0cd4</srcmd5>
+    <version>1.33.0</version>
+    <time>1704919951</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.33.0:
+  * Add more + and * keywords to default-peg-grammar
+  * Use libc strlen in janet_buffer_push_cstring
+  * net/ev: Cleaned up unused NetStateConnect, fixed janet_async_end() ev refcount
+  * fix (doc next)
+  * Fix arity typo in peg
+  * Cosmetically tweak string/format docstring
+  * Add a new (sub) PEG special
+</comment>
+    <requestid>1137852</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %define extrasummary base modules
 %define extradescription This package contains only the base modules, required in all installs.
 
-%define misc_modules button edd i6300esb efivarfs qemu_fw_cfg hid-generic iscsi_ibft ptp_kvm
+%define misc_modules button edd i6300esb efivarfs qemu_fw_cfg hid-generic iscsi_ibft ptp_kvm dmi-sysfs
 
 %define virtio_modules virtio virtio_.* virtio-.*
 
@@ -41,7 +41,7 @@ hv_vmbus hyperv-keyboard hv_netvsc hv_storvsc scsi_transport_fc hyperv_fb
 %define scsi_modules scsi_transport_iscsi sd_mod sg sr_mod st scsi_mod
 
 %define block_drivers loop dm-mod libata libahci ahci ata_piix mptsas mptspi \
-        BusLogic sym53c8xx am53c974 rbd brd
+        BusLogic sym53c8xx am53c974 rbd brd dm-crypt
 
 %define usb_modules usb-common usbcore ehci-hcd ehci-pci ohci-hcd ohci-pci uhci-hcd \
 xhci-hcd xhci-pci typec typec_ucsi ucsi_acpi typec ums-alauda ums-cypress ums-datafab \

@@ -60,6 +60,7 @@ Provides:       gnumeric2 = %{version}
 Obsoletes:      gnumeric2 < %{version}
 %{perl_requires}
 %{?libperl_requires}
+ExcludeArch:    %{ix86}
 
 %description
 Gnumeric is a spreadsheet application with advanced features and

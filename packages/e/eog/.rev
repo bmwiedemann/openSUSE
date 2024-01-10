@@ -1320,4 +1320,12 @@ New stable release</comment>
     <comment></comment>
     <requestid>1119670</requestid>
   </revision>
+  <revision rev="167" vrev="1">
+    <srcmd5>3c9fd510e9d9aa1341f84525c22ba206</srcmd5>
+    <version>45.2</version>
+    <time>1704919826</time>
+    <user>anag+factory</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 1137889 from dimstar)</comment>
+    <requestid>1137900</requestid>
+  </revision>
 </revisionlist>

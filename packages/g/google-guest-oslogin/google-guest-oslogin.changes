@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jan  4 11:56:22 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20231116.00
+  * build: Fix DESTDIR concatenation (#124)
+- from version 20231113.00
+  * build: Fix clang build (#122)
+- from version 20231103.00
+  * Update owners (#121)
+
+-------------------------------------------------------------------
 Thu Nov  2 09:47:31 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20231101.00 (bsc#1216548, bsc#1216750)

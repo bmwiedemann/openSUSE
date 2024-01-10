@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan  9 15:18:54 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Remove unneeded BuildRequires PyMySQL and psycopg2. I checked
+  that the number of tests that are run are the same.
+- Fix shebangs and other rpmlint errors/warnings
+
+-------------------------------------------------------------------
 Tue Nov  7 14:21:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.17.0:

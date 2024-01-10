@@ -446,4 +446,41 @@
   * feat: config I/O (forwarded request 1131482 from jfkw)</comment>
     <requestid>1131484</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>30c87331bb357b59c6cc0489dd40826e</srcmd5>
+    <version>3.0.0</version>
+    <time>1704919953</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.0.0:
+  * refactor: use xdg lib for config and styles
+  * refactor: make `sync` root-relative
+  * feat: sync with multiple config files
+  * refactor: update table header in `ls-dirs`
+  * test: add more config cases
+  * chore: mod tidy
+  * refactor: `path` -&gt; `filepath`
+  * fix: ensure default values are set
+  * feat: default `StylesPath`
+  * fix: add `--no-global`
+  * fix: update error message
+  * feat: add global config location to `--h`
+  * feat: fallback to global when no config is found
+  * fix: handle relative StylePaths
+  * fix: ensure all matching sections are applied
+  * refactor: update StylesPath
+  * refactor: load default config last
+  * feat: add default config
+  * feat: `sync` supports new `config` dir
+  * fix: `NOSUGGEST` may be more than 1 char
+  * fix: ensure meta characters are escaped
+  * test: add case for vocab
+  * refactor: new `config/ignore` directory
+  * refactor: fix golangci-lint
+  * refactor: load files from `config/dictionaries`
+  * chore(deps): bump golang.org/x/crypto from 0.14.0 to 0.17.0 (#741)
+  * refactor: new `StylesPath` layout
+  * feat: new `StylesPath/config` directory
+  * docs: add GitHub sponsors (forwarded request 1137859 from jfkw)</comment>
+    <requestid>1137860</requestid>
+  </revision>
 </revisionlist>

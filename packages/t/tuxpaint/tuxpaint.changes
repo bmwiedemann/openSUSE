@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Tue Jan  2 06:13:52 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.9.31:
+  * New Magic Tools:
+    - Loops - Draw loop-the-loops.
+    - Ribbon - Paints a flowing, fixed-length ribbon.
+    - Smooth - Freehand paintbrush with a smoothing effect (Bezier
+      curve)
+    - Squiggles - Draw squiggly shapes.
+  * Improvements to Magic tools: Calligraphy offers size
+    (thickness) options.
+  * Improvements to Eraser tool: Fuzzy round erasers.
+  * Improvements to Fill tool: When using the Linear Gradient fill
+    tool, the angle of the gradient is now is shown (in the
+    instructions at the bottom).
+  * Other Improvements:
+    - Saved pictures can, from the Open dialog, be copied into the
+      user's templates directory, and used as backgrounds for
+      other drawings by selecting it from the New dialog.
+    - "Erase" controls may be disabled via a new simplification
+      configuration setting, "noerase".
+    - Ability to specify a font for Tux Paint's UI (button labels,
+      dialog boxes, Tux tip text at the bottom), "uifont".
+    - Different default fonts once again used on a per-locale
+      basis.
+    - Made it easier to tell when color picker (HSV palette) is
+      the currently-selected color.
+  * Bug Fixes:
+    - In some window size / button size combinations, Eraser
+      scroll buttons were missing, and button clicks inaccurate.
+    - Improved Eraser XOR outline when using Ctrl-Z & Ctrl-R for
+      Undo/Redo, and Eraser and Stamp XOR outlines when using
+      click+X for quick eraser access.
+    - When specifying "datadir", Tux Paint's "New" dialog was able
+      to present templates found in that directory, but would
+      attempt to load from whatever the user's "savedir" was,
+      instead.
+    - Exported drawings (to e.g. ~/Pictures) would contain
+      extraneous data beyond the end of the data (copied from the
+      original PNG).
+    - Shell expansion (via wordexp()) of configuration options
+      containing spaces (e.g., `printcommand=ps2pdf - - >
+      $HOME/print.pdf`) would fail & cause a crash.  It now shows
+      an error and recommends adding quotes. (e.g.,
+      `printcommand="ps2pdf - - > $HOME/print.pdf"`).
+    - Mended bad rendering of color picker (HSV palette) button
+      when selecting a Label text with a color not found in
+      built-in colors, and mend unwanted outline around the chosen
+      color in the color selector (pipette), color picker (HSV
+      palette) and color mixer buttons.
+  * Documentation and translation updates.
+- Drop -sdl1 tarball and conditionals supporting SDL1: upstream no
+  longer supports SDL1 and has hard dependency on the appropriate
+  SDL2 libraries.
+- Rebase patches for update:
+  * tuxpaint-pango-cflags.patch.
+  * tuxpaint-makefile.patch.
+- Drop conditionals supporting EOL openSUSE versions (note: these
+  builds are disabled in the devel project in any case).
+
+-------------------------------------------------------------------
 Wed May 17 07:04:48 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - List both sdl1 and sdl2 tarballs as sources to please Factory

@@ -1,7 +1,7 @@
 #
 # spec file for package python-Scrapy
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,62 +16,63 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
 Name:           python-Scrapy
-Version:        2.7.1
+Version:        2.11.0
 Release:        0
 Summary:        A high-level Python Screen Scraping framework
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://scrapy.org
 Source:         https://files.pythonhosted.org/packages/source/S/Scrapy/Scrapy-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM twisted-23.8.0-compat.patch gh#scrapy/scrapy#6064
+Patch1:         twisted-23.8.0-compat.patch
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module Protego >= 0.1.15}
 BuildRequires:  %{python_module PyDispatcher >= 2.0.5}
-BuildRequires:  %{python_module Twisted >= 17.9.0}
-BuildRequires:  %{python_module botocore}
-BuildRequires:  %{python_module cryptography >= 2.0}
+BuildRequires:  %{python_module Twisted >= 18.9.0}
+BuildRequires:  %{python_module attrs}
+BuildRequires:  %{python_module botocore >= 1.4.87}
+BuildRequires:  %{python_module cryptography >= 36.0.0}
 BuildRequires:  %{python_module cssselect >= 0.9.1}
 BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module itemadapter >= 0.1.0}
 BuildRequires:  %{python_module itemloaders >= 1.0.1}
-BuildRequires:  %{python_module jmespath}
-BuildRequires:  %{python_module lxml >= 3.5.0}
+BuildRequires:  %{python_module lxml >= 4.4.1}
 BuildRequires:  %{python_module parsel >= 1.5.0}
-BuildRequires:  %{python_module pyOpenSSL >= 16.2.0}
+BuildRequires:  %{python_module pexpect >= 4.8.1}
+BuildRequires:  %{python_module pyOpenSSL >= 21.0.0}
 BuildRequires:  %{python_module pyftpdlib}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module queuelib >= 1.4.2}
-BuildRequires:  %{python_module service_identity >= 16.0.0}
+BuildRequires:  %{python_module service_identity >= 18.1.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sybil}
-BuildRequires:  %{python_module testfixtures >= 6.0.0}
+BuildRequires:  %{python_module testfixtures}
 BuildRequires:  %{python_module tldextract}
 BuildRequires:  %{python_module uvloop}
 BuildRequires:  %{python_module w3lib >= 1.17.0}
-BuildRequires:  %{python_module zope.interface >= 4.1.3}
+BuildRequires:  %{python_module zope.interface >= 5.1.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Sphinx
 BuildRequires:  (python3-dataclasses if python3-base < 3.7)
 Requires:       python-Protego >= 0.1.15
 Requires:       python-PyDispatcher >= 2.0.5
-Requires:       python-Twisted >= 17.9.0
-Requires:       python-cryptography >= 2.0
+Requires:       python-Twisted >= 18.9.0
+Requires:       python-cryptography >= 36.0.0
 Requires:       python-cssselect >= 0.9.1
 Requires:       python-itemadapter >= 0.1.0
 Requires:       python-itemloaders >= 1.0.1
-Requires:       python-lxml >= 3.5.0
+Requires:       python-lxml >= 4.4.1
 Requires:       python-parsel >= 1.5.0
-Requires:       python-pyOpenSSL >= 16.2.0
+Requires:       python-pyOpenSSL >= 21.0.0
 Requires:       python-queuelib >= 1.4.2
-Requires:       python-service_identity >= 16.0.0
+Requires:       python-service_identity >= 18.1.0
 Requires:       python-setuptools
 Requires:       python-tldextract
 Requires:       python-w3lib >= 1.17.2
-Requires:       python-zope.interface >= 4.1.3
+Requires:       python-zope.interface >= 5.1.0
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
@@ -90,8 +91,7 @@ Group:          Documentation/HTML
 Provides documentation for %{name}.
 
 %prep
-%setup -n Scrapy-%{version}
-%autopatch -p1
+%autosetup -p1 -n Scrapy-%{version}
 
 sed -i -e 's:= python:= python3:g' docs/Makefile
 
@@ -111,7 +111,9 @@ popd
 skiplist="test_pformat"
 # no online connection to toscrapy.com
 skiplist="$skiplist or CheckCommandTest"
-%{pytest \
+# Flaky test gh#scrapy/scrapy#5703
+skiplist="$skiplist or test_start_requests_laziness"
+%{pytest -x \
     -k "not (${skiplist})" \
     -W ignore::DeprecationWarning \
     tests}

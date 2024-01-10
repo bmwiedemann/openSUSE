@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-for-android
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define version_with_zeros 2023.02.10
 Name:           python-python-for-android
-Version:        2023.2.10
+Version:        2023.9.16
 Release:        0
 Summary:        Android APK packager for Python scripts and apps
 License:        MIT
