@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed Jan 10 08:13:00 UTC 2024 - Michael Chang <mchang@suse.com>
+
+- Version bump to 2.12 (PED-5589)
+  * Added:
+    - grub-2.12.tar.xz
+    - fix_no_extra_deps_in_release_tarball.patch
+  * Removed:
+    - grub-2.12~rc1.tar.xz
+  * Patch dropped as it merged into new version:
+    - 0001-disk-cryptodisk-Fix-missing-change-when-updating-to-.patch
+    - 0001-fs-btrfs-Zero-file-data-not-backed-by-extents.patch
+    - 0001-fs-ntfs-Fix-an-OOB-write-when-parsing-the-ATTRIBUTE_.patch
+    - 0002-fs-ntfs-Fix-an-OOB-read-when-reading-data-from-the-r.patch
+    - 0003-fs-ntfs-Fix-an-OOB-read-when-parsing-directory-entri.patch
+    - 0004-fs-ntfs-Fix-an-OOB-read-when-parsing-bitmaps-for-ind.patch
+    - 0005-fs-ntfs-Fix-an-OOB-read-when-parsing-a-volume-label.patch
+    - 0006-fs-ntfs-Make-code-more-readable.patch
+    - 0001-kern-ieee1275-init-Restrict-high-memory-in-presence-.patch
+    - 0001-fs-xfs-Incorrect-short-form-directory-data-boundary-.patch
+    - 0002-fs-xfs-Fix-XFS-directory-extent-parsing.patch
+    - 0003-fs-xfs-add-large-extent-counters-incompat-feature-su.patch
+    - 0001-mkstandalone-ensure-stable-timestamps-for-generated-.patch
+    - 0002-mkstandalone-ensure-deterministic-tar-file-creation-.patch
+  * Patch adjusted for the updated base version:
+    - use-grub2-as-a-package-name.patch
+    - grub2-s390x-04-grub2-install.patch
+    - grub2-btrfs-04-grub2-install.patch
+    - grub2-ppc64le-disable-video.patch
+    - 0002-AUDIT-0-http-boot-tracker-bug.patch
+    - 0001-Unify-the-check-to-enable-btrfs-relative-path.patch
+    - 0003-Handle-multi-arch-64-on-32-boot-in-linuxefi-loader.patch
+    - 0004-Add-suport-for-signing-grub-with-an-appended-signatu.patch
+    - 0016-grub-install-support-embedding-x509-certificates.patch
+    - 0021-appended-signatures-documentation.patch
+    - 0022-ieee1275-enter-lockdown-based-on-ibm-secure-boot.patch
+    - safe_tpm_pcr_snapshot.patch
+
+-------------------------------------------------------------------
 Wed Jan  3 10:05:50 UTC 2024 - Michael Chang <mchang@suse.com>
 
 - grub2.spec: Add ofnet to signed grub.elf to support powerpc net boot

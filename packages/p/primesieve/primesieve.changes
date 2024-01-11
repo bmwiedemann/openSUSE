@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan 11 17:30:00 UTC 2024 - Kim Walisch <kim.walisch@gmail.com>
+
+- Update to primesieve-11.2
+- Fix CMake libatomic detection
+- Improved nth prime algorithm
+- Fix off by 1 error in OpenMP example in C_API.md
+- Fix off by 1 error in OpenMP example in CPP_API.md
+
+-------------------------------------------------------------------
 Sat May 13 08:05:00 UTC 2023 - Kim Walisch <kim.walisch@gmail.com>
 
 - Update to primesieve-11.1

@@ -1,7 +1,7 @@
 #
 # spec file for package ncurses
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -1109,6 +1109,7 @@ includedir5=%{_incdir}/ncurses5' "$pc"
 	%{terminfo a/arpanet}
 	%{terminfo d/dumb}
 	%{terminfo d/dialup}
+	%{terminfo f/foot}
 	%{terminfo g/gnome}
 	%{terminfo g/gnome-rh72}
 	%{terminfo g/gnome-rh80}
@@ -1307,7 +1308,6 @@ popd
 %doc %{_mandir}/man1/ncurses*6-config.1%{ext_man}
 %doc %{_mandir}/man1/captoinfo.1%{ext_man}
 %doc %{_mandir}/man1/infotocap.1%{ext_man}
-%doc %{_mandir}/man1/description.1%{ext_man}
 %doc %{_mandir}/man1/tic.1%{ext_man}
 %doc %{_mandir}/man3/*%{ext_man}
 %doc %{_mandir}/man7/*%{ext_man}

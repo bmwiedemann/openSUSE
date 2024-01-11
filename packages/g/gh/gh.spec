@@ -1,7 +1,7 @@
 #
 # spec file for package gh
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 %define goflags "-buildmode=pie -trimpath -mod=vendor -modcacherw"
 %define sname cli
 Name:           gh
-Version:        2.40.1
+Version:        2.41.0
 Release:        0
 Summary:        The official CLI for GitHub
 License:        MIT
 URL:            https://cli.github.com/
 Source0:        %{sname}-%{version}.tar.zst
-Source1:        vendor.tar.zst
+Source1:        vendor.tar.gz
 BuildRequires:  fish
 BuildRequires:  git-core
 BuildRequires:  zstd

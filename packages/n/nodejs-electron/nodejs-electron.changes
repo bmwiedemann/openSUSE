@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 10 20:23:22 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 27.2.2
+  * Fixed a crash resultant from trying to listen to power-related events
+    before the ready event was emitted on Linux
+  * Fix multiple vulnerabilities in Chromium (bsc#1218533):
+    CVE-2024-0222 CVE-2024-0223 CVE-2024-0224  
+
+-------------------------------------------------------------------
 Thu Jan  4 18:01:51 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 27.2.1

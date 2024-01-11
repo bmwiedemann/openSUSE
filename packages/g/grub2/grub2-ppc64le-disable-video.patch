@@ -32,10 +32,10 @@
  GRUB_MOD_FINI(ieee1275_fb)
 --- a/include/grub/ieee1275/ieee1275.h
 +++ b/include/grub/ieee1275/ieee1275.h
-@@ -141,6 +141,8 @@
-    */
-   GRUB_IEEE1275_FLAG_CAN_TRY_CAS_FOR_MORE_MEMORY,
- #endif
+@@ -145,6 +145,8 @@
+   GRUB_IEEE1275_FLAG_POWER_VM,
+ 
+   GRUB_IEEE1275_FLAG_POWER_KVM,
 +
 +  GRUB_IEEE1275_FLAG_DISABLE_VIDEO_SUPPORT
  };

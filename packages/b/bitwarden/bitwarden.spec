@@ -18,7 +18,7 @@
 #
 
 Name:       bitwarden
-Version:    2023.12.1
+Version:    2024.1.0
 Release:    0
 Summary:    A secure and free password manager for all of your devices
 Group:      Productivity/Security
@@ -45,7 +45,6 @@ Source2:   bitwarden.sh
 Source3:   bitwarden.desktop
 
 Source4:   vendor.tar.zst
-Source5:   cargo_config
 
 Source99:  prepare-node-vendor.sh
 
@@ -140,8 +139,6 @@ mkdir %{_builddir}/cargo
 
 #Rust config
 cd apps/desktop/desktop_native
-mkdir -pv .cargo
-cp -pv %SOURCE5 .cargo/config
 tar --zstd -xf %SOURCE4
 
 # Make `node` and `npm` binaries refer to Electron

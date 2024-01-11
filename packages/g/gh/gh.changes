@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jan 10 13:03:07 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.41.0:
+  * Update deployment.yml
+  * Update pkg/cmd/browse/browse.go
+  * build(deps): bump golang.org/x/crypto from 0.14.0 to 0.17.0 (#8473)
+  * Ensure Windows sign script fails based on signtool
+  * Update deployment workflow for final HSM solution
+  * Fix signtool invocation
+  * Fix sign script fail conditions
+  * Fix HSM goreleaser calling sign script
+  * Fix HSM Windows signing
+  * Fix issue sourcing signtool for Windows signing
+  * build(deps): bump github/codeql-action from 2 to 3
+  * Verify the downloaded zip for `gh run view --log`
+  * Add missing PowerShell file from previous commit
+  * Unify Windows sign process on signtool
+  * Add more help message to browse command
+
+-------------------------------------------------------------------
 Mon Dec 18 13:59:47 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Restore _service to generate changelog

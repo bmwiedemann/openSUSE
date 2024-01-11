@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan  9 11:36:21 UTC 2024 - David Disseldorp <ddiss@suse.com>
+
+- Drop downstream-only LIO target_core_rbd support (bsc#1218634)
+  * Split-out-blockdev-readonly-state-detection-helper.patch
+  * rbd-support.patch
+
+-------------------------------------------------------------------
 Wed Oct 25 21:11:37 UTC 2023 - lduncan@suse.com
 
 - Update to version 2.1.57:

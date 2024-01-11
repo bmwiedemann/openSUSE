@@ -81,11 +81,10 @@
    if (!bootloader_id && config.grub_distributor)
      {
        char *ptr;
-@@ -1426,6 +1431,16 @@
-       fprintf (load_cfg_f, "set debug='%s'\n",
- 	      debug_image);
+@@ -1451,6 +1456,15 @@
+               debug_image);
      }
-+
+ 
 +  if (config.is_suse_btrfs_snapshot_enabled
 +      && grub_strncmp(grub_fs->name, "btrfs", sizeof ("btrfs") - 1) == 0)
 +    {
@@ -95,9 +94,9 @@
 +      fprintf (load_cfg_f, "set btrfs_relative_path='y'\n");
 +    }
 +
-   char *prefix_drive = NULL;
-   char *install_drive = NULL;
- 
+   if (!have_abstractions)
+     {
+       if ((disk_module && grub_strcmp (disk_module, "biosdisk") != 0)
 --- a/grub-core/osdep/linux/getroot.c
 +++ b/grub-core/osdep/linux/getroot.c
 @@ -373,6 +373,7 @@

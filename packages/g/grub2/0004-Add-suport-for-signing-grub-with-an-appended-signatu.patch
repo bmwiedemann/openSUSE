@@ -127,21 +127,20 @@ Platform Reference (PAPR).
      default:
        return 0;
      }
-@@ -666,10 +674,11 @@
- 		  " --output '%s' "
- 		  " --dtb '%s' "
- 		  "--sbat '%s' "
--		  "--format '%s' --compression '%s' %s %s %s\n",
-+		  "--format '%s' --compression '%s' "
-+		  "--appended-signature-size %zu %s %s %s\n",
- 		  dir, prefix,
- 		  outname, dtb ? : "", sbat ? : "", mkimage_target,
--		  compnames[compression], note ? "--note" : "",
-+		  compnames[compression], appsig_size, note ? "--note" : "",
- 		  disable_shim_lock ? "--disable-shim-lock" : "", s);
-   free (s);
+@@ -679,9 +687,11 @@
+   *p = '\0';
  
-@@ -680,7 +689,7 @@
+   grub_util_info ("grub-mkimage --directory '%s' --prefix '%s' --output '%s'"
+-		  " --format '%s' --compression '%s'%s%s%s\n",
++		  " --format '%s' --compression '%s'"
++		  " --appended-signature-size %zu%s%s%s\n",
+ 		  dir, prefix, outname,
+ 		  mkimage_target, compnames[compression],
++		  appsig_size,
+ 		  note ? " --note" : "",
+ 		  disable_shim_lock ? " --disable-shim-lock" : "", s);
+   free (s);
+@@ -693,7 +703,7 @@
    grub_install_generate_image (dir, prefix, fp, outname,
  			       modules.entries, memdisk_path,
  			       pubkeys, npubkeys, config_path, tgt,

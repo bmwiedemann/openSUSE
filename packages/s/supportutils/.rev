@@ -314,4 +314,12 @@
     <comment>pr#174 pr#176 pr#177 pr#178 pr#180 pr#181 bsc#1193173 bsc#1211547 bsc#1183663 (forwarded request 1133913 from jrecord)</comment>
     <requestid>1133914</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>5140c5bbcf44013841082ecde75d2461</srcmd5>
+    <version>3.2.5</version>
+    <time>1705003547</time>
+    <user>anag+factory</user>
+    <comment>bsc#1218324 bsc#1218282 bsc#1218201 (forwarded request 1138138 from jrecord)</comment>
+    <requestid>1138139</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan 11 13:26:56 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 3.0.1:
+  * test: add more package cases
+  * fix: respect alternative ways to set a base
+  * test: add more source tests
+  * docs: add famewall
+
+-------------------------------------------------------------------
 Wed Jan 10 04:49:00 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 3.0.0:

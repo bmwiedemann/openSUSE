@@ -113,6 +113,8 @@ donttest="(test_tls_client_auth and False-localhost-builtin)"
 # looks like there's a bug with pytest.mark.forked
 # https://github.com/cherrypy/cheroot/issues/511
 donttest+=" or test_high_number_of_file_descriptor"
+# Openssl 3.2 test failures gh#cherrypy/cheroot#645
+donttest+=" or test_https_over_http_error"
 %pytest --pyargs cheroot $pytest_opts -k "not ($donttest)"
 popd
 

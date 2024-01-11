@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 11 08:57:10 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add %{?sle15_python_module_pythons} to build for python 3.11 in Leap
+
+-------------------------------------------------------------------
 Tue Jan  9 22:15:23 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.14.0:

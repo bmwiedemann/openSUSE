@@ -79,4 +79,12 @@
 - Update to version 0.3.0</comment>
     <requestid>1137102</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>314b3d5512c63ed1b7f43e0895af9e49</srcmd5>
+    <version>0.8.0</version>
+    <time>1705003536</time>
+    <user>anag+factory</user>
+    <comment>- Add %{?sle15_python_module_pythons} macro</comment>
+    <requestid>1138098</requestid>
+  </revision>
 </revisionlist>

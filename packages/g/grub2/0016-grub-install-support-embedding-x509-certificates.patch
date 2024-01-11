@@ -89,18 +89,18 @@ Signed-off-by: Daniel Axtens <dja@axtens.net>
  
      case GRUB_INSTALL_OPTIONS_VERBOSITY:
        verbosity++;
-@@ -632,6 +640,9 @@
+@@ -636,6 +644,9 @@
    for (pk = pubkeys; pk < pubkeys + npubkeys; pk++)
-     slen += 20 + grub_strlen (*pk);
+     slen += sizeof (" --pubkey ''") + grub_strlen (*pk);
  
 +  for (pk = x509keys; pk < x509keys + nx509keys; pk++)
 +    slen += 10 + grub_strlen (*pk);
 +
    for (md = modules.entries; *md; md++)
-     {
-       slen += 10 + grub_strlen (*md);
-@@ -660,6 +671,14 @@
-       *p++ = ' ';
+     slen += sizeof (" ''") + grub_strlen (*md);
+ 
+@@ -676,6 +687,14 @@
+       *p++ = '\'';
      }
  
 +  for (pk = x509keys; pk < x509keys + nx509keys; pk++)
@@ -113,8 +113,8 @@ Signed-off-by: Daniel Axtens <dja@axtens.net>
 +
    for (md = modules.entries; *md; md++)
      {
-       *p++ = '\'';
-@@ -688,7 +707,8 @@
+       *p++ = ' ';
+@@ -702,7 +721,8 @@
  
    grub_install_generate_image (dir, prefix, fp, outname,
  			       modules.entries, memdisk_path,

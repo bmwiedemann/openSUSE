@@ -1,7 +1,7 @@
 #
 # spec file for package mdadm
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -101,6 +101,48 @@ Patch58:        0058-mdopen-always-try-create_named_array.patch
 Patch59:        0059-Improvements-for-IMSM_NO_PLATFORM-testing.patch
 Patch60:        0060-Grow-fix-possible-memory-leak.patch
 Patch61:        0061-Grow-fix-can-t-change-bitmap-type-from-none-to-clustered.patch
+Patch62:        0062-Manage-Block-unsafe-member-failing.patch
+Patch63:        0063-Mdmonitor-Split-alert-into-separate-functions.patch
+Patch64:        0064-Monitor-block-if-monitor-modes-are-combined.patch
+Patch65:        0065-Update-mdadm-Monitor-manual.patch
+Patch66:        0066-mdadm-create-ident_init.patch
+Patch67:        0067-mdadm-Add-option-validation-for-update-subarray.patch
+Patch68:        0068-Fix-update-subarray-on-active-volume.patch
+Patch69:        0069-Add-code-specific-update-options-to-enum.patch
+Patch70:        0070-super-ddf-Remove-update_super_ddf.patch
+Patch71:        0071-super0-refactor-the-code-for-enum.patch
+Patch72:        0072-super1-refactor-the-code-for-enum.patch
+Patch73:        0073-super-intel-refactor-the-code-for-enum.patch
+Patch74:        0074-Change-update-to-enum-in-update_super-and-update_sub.patch
+Patch75:        0075-Manage-Incremental-code-refactor-string-to-enum.patch
+Patch76:        0076-Change-char-to-enum-in-context-update-refactor-code.patch
+Patch77:        0077-mdadm-udev-Don-t-handle-change-event-on-raw-devices.patch
+Patch78:        0078-Manage-do-not-check-array-state-when-drive-is-remove.patch
+Patch79:        0079-incremental-manage-do-not-verify-if-remove-is-safe.patch
+Patch80:        0080-super-intel-make-freesize-not-required-for-chunk-siz.patch
+Patch81:        0081-manage-move-comment-with-function-description.patch
+Patch82:        0082-Fix-NULL-dereference-in-super_by_fd.patch
+Patch83:        0083-Mdmonitor-Make-alert_info-global.patch
+Patch84:        0084-Mdmonitor-Pass-events-to-alert-using-enums-instead-o.patch
+Patch85:        0085-Mdmonitor-Add-helper-functions.patch
+Patch86:        0086-Add-helpers-to-determine-whether-directories-or-file.patch
+Patch87:        0087-Mdmonitor-Refactor-write_autorebuild_pid.patch
+Patch88:        0088-Mdmonitor-Refactor-check_one_sharer-for-better-error.patch
+Patch89:        0089-util.c-reorder-code-lines-in-parse_layout_faulty.patch
+Patch90:        0090-util.c-fix-memleak-in-parse_layout_faulty.patch
+Patch91:        0091-Detail.c-fix-memleak-in-Detail.patch
+Patch92:        0092-isuper-intel.c-fix-double-free-in-load_imsm_mpb.patch
+Patch93:        0093-super-intel.c-fix-memleak-in-find_disk_attached_hba.patch
+Patch94:        0094-super-ddf.c-fix-memleak-in-get_vd_num_of_subarray.patch
+Patch95:        0095-Create-goto-abort_locked-instead-of-return-1-in-erro.patch
+Patch96:        0096-Create-remove-safe_mode_delay-local-variable.patch
+Patch97:        0097-Create-Factor-out-add_disks-helpers.patch
+Patch98:        0098-mdadm-Introduce-pr_info.patch
+Patch99:        0099-mdadm-Add-write-zeros-option-for-Create.patch
+Patch100:       0100-manpage-Add-write-zeroes-option-to-manpage.patch
+Patch101:       0101-Define-alignof-using-_Alignof-when-using-C11-or-newe.patch
+Patch102:       0102-Use-existence-of-etc-initrd-release-to-detect-initrd.patch
+Patch103:       0103-Create-Fix-checking-for-container-in-update_metadata.patch
 Patch1001:      1001-display-timeout-status.patch
 Patch1002:      1002-OnCalendar-format-fix-of-mdcheck_start-timer.patch
 Patch1003:      1003-mdadm-treat-the-Dell-softraid-array-as-local-array.patch
@@ -174,6 +216,48 @@ mdadm is a program that can be used to control Linux md devices.
 %patch59 -p1
 %patch60 -p1
 %patch61 -p1
+%patch62 -p1
+%patch63 -p1
+%patch64 -p1
+%patch65 -p1
+%patch66 -p1
+%patch67 -p1
+%patch68 -p1
+%patch69 -p1
+%patch70 -p1
+%patch71 -p1
+%patch72 -p1
+%patch73 -p1
+%patch74 -p1
+%patch75 -p1
+%patch76 -p1
+%patch77 -p1
+%patch78 -p1
+%patch79 -p1
+%patch80 -p1
+%patch81 -p1
+%patch82 -p1
+%patch83 -p1
+%patch84 -p1
+%patch85 -p1
+%patch86 -p1
+%patch87 -p1
+%patch88 -p1
+%patch89 -p1
+%patch90 -p1
+%patch91 -p1
+%patch92 -p1
+%patch93 -p1
+%patch94 -p1
+%patch95 -p1
+%patch96 -p1
+%patch97 -p1
+%patch98 -p1
+%patch99 -p1
+%patch100 -p1
+%patch101 -p1
+%patch102 -p1
+%patch103 -p1
 %patch1001 -p1
 %patch1002 -p1
 %patch1003 -p1

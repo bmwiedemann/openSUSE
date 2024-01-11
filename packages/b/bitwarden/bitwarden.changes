@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan 10 18:58:11 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 2024.1.0
+  * Added password complexity checks to password protected export
+  * Disallow XXE in import
+  * Bug-fixes for imports
+  * Bug-fix for minimum/maximum values in generator
+  * Bug-fix for screen-readers not announcing stored passkeys
+
+-------------------------------------------------------------------
 Thu Dec 21 19:46:36 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 2023.12.1

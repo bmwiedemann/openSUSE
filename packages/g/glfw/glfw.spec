@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,6 +21,7 @@
 %bcond_without wayland
 %else
 %bcond_with wayland
+%bcond_without geany
 %endif
 %define sover  3
 Name:           glfw%{flavor}
@@ -44,7 +45,9 @@ BuildRequires:  extra-cmake-modules
 BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(xkbcommon)
 %else
+%if %{with geany}
 BuildRequires:  geany
+%endif
 BuildRequires:  pkgconfig(xcursor)
 BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xinerama)
@@ -96,7 +99,7 @@ find . -type f | xargs sed -i 's/\r//'
 mkdir -p geany_config
 
 %build
-%if %{without wayland}
+%if %{with geany}
 # generate geany tags
 geany -c geany_config -g glfw.c.tags $(find src \( ! -name CMakeFiles \) -type f \( -iname "*.c" -o -iname "*.h" \) \( ! -iname "win32*" \) \( ! -iname "cocoa*" \) | sort
 ) include/GLFW/glfw3.h
@@ -115,7 +118,8 @@ geany -c geany_config -g glfw.c.tags $(find src \( ! -name CMakeFiles \) -type f
 %if %{with wayland}
 # Only in main package
 rm -rfv %{buildroot}%{_includedir} %{buildroot}%{_libdir}/{cmake,libglfw.so,pkgconfig}
-%else
+%endif
+%if %{with geany}
 # install geany tags
 install -d %{buildroot}/%{_datadir}/geany/tags/
 install -m0644 glfw.c.tags %{buildroot}/%{_datadir}/geany/tags/
@@ -136,7 +140,9 @@ install -m0644 glfw.c.tags %{buildroot}/%{_datadir}/geany/tags/
 %{_libdir}/cmake/glfw3
 %{_libdir}/libglfw.so
 %{_libdir}/pkgconfig/glfw3.pc
+%if %{with geany}
 %{_datadir}/geany/*
+%endif
 %endif
 
 %changelog

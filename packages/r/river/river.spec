@@ -1,7 +1,7 @@
 #
 # spec file for package river
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -136,7 +136,7 @@ Bash command-line completion support for %{name}.
 
 %package        contrib
 Summary:        Helper files for making river easy to use
-Supplements:    (%{name} and river)
+Supplements:    (%{name} and river-contrib)
 Requires:       river
 BuildArch:      noarch
 

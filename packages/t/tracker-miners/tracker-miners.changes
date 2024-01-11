@@ -24,11 +24,22 @@ Fri Sep 29 06:01:15 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
   + Avoid the special thread in tracker-extract-3, and extend the
     seccomp jail to the full process.
   + Updated translations.
+  + Drop upstream merged: tracker-miners-CVE-2023-5557.patch
 - Add a tracker_basever define, and set it to 3.6. We have a hard
   Requires on what tracker version is needed and it is currently
   set at the same or newer version, change this to tracker_basever
   (tracker-miners have never been at a higher patch version
   before).
+
+-------------------------------------------------------------------
+Fri Sep 18 06:12:53 UTC 2023 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add tracker-miners-CVE-2023-5557.patch: A bug in libcue could
+  lead to possible sandbox escape in tracker-extract, this fixes it
+  by adding seccomp rules and applying it to the whole process
+  (bsc#1216199, glgo#GNOME/tracker-miners!480, CVE-2023-5557).
+- Refresh tracker-miners-drop-syscalls-in-seccomp.patch: The patch
+  context is changed by tracker-miners-CVE-2023-5557.patch.
 
 -------------------------------------------------------------------
 Sat Sep 16 15:38:05 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>

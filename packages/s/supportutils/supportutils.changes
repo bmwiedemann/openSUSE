@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan 11 14:01:52 UTC 2024 - jason.record@suse.com
+
+- Changes to version 3.2.5
+  + Fixed smart disk error (bsc#1218282)
+  + Fixed ipvsadm logic error (bsc#1218324)
+  + Correctly detects Xen Dom0 (bsc#1218201)
+
+-------------------------------------------------------------------
 Mon Dec 18 21:21:56 UTC 2023 - jason.record@suse.com
 
 - Changes in version 3.2.4

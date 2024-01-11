@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Wed Jan 10 16:54:52 UTC 2024 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#329
+- write /etc/locale.conf and /etc/vconsole.conf (bsc#1218621)
+- a new year
+- 9.2
+
+--------------------------------------------------------------------
 Mon Aug 14 17:11:28 UTC 2023 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/linuxrc#325

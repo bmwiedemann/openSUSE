@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-ansible
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%define skip_python39 1
 
 %{?sle15_python_module_pythons}
 %if 0%{?suse_version} < 1550
@@ -38,12 +40,13 @@
 %endif
 
 Name:           python-pytest-ansible
-Version:        4.1.1
+Version:        24.1.1
 Release:        0
 Summary:        Plugin for pytest to simplify calling ansible modules from tests or fixtures
 License:        MIT
 URL:            https://github.com/ansible-community/pytest-ansible
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-ansible/pytest-ansible-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 63.0.0}
 BuildRequires:  %{python_module setuptools_scm >= 7.0.5}
@@ -55,6 +58,9 @@ BuildRequires:  %{python_module pytest >= 6}
 BuildRequires:  molecule >= 6.0.0
 # /SECTION
 BuildRequires:  fdupes
+Requires:       ansible-core
+Requires:       python-ansible-compat
+Requires:       python-base >= 3.10
 Requires:       python-pytest >= 6
 Suggests:       python-attrs == 22.2.0
 Suggests:       python-iniconfig == 2.0.0

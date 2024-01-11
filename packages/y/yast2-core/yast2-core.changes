@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 10 16:22:03 UTC 2024 - Martin Vidner <mvidner@suse.com>
+
+- Don't close file descriptors in .target.bash calls (bsc#1218064)
+  avoiding "[ASYNC BUG] rb_thread_wakeup_timer_thread: write(3) EBADF"
+  with Ruby 3.3
+- 5.0.2
+
+-------------------------------------------------------------------
 Tue Nov 28 13:24:23 UTC 2023 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Do not test YCP on non-UTF-8 strings (bsc#1217523)

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan  2 10:35:45 UTC 2024 - jun wang <jgwang@suse.com>
+
+- Update to version 0.8.4
+  * In capng_change_id, clear PR_SET_KEEPCAPS if returning an error
+  * pscap: add -p option for reporting a specified process
+  * Annotate function prototypes to warn if results are unused
+  * Drop python2 support 
+
+-------------------------------------------------------------------
 Thu May  4 15:04:58 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
 
 - Add _multibuild to define additional spec files as additional

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 11 06:58:57 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.0.2
+  * Fixed an exception being thrown when run under PyPy
+    (github.com/wlav/cppyy/issues/209)
+
+-------------------------------------------------------------------
 Tue Jan  9 23:46:26 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.0.1

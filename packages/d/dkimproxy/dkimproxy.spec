@@ -1,7 +1,7 @@
 #
 # spec file for package dkimproxy
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,6 @@
 Summary:        DKIMproxy is an SMTP-proxy that implements the DKIM and DomainKeys standards
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Email/Utilities
-
 Name:           dkimproxy
 Version:        1.4.1
 Release:        0
@@ -38,7 +37,9 @@ Source6:        %{name}-tmpfiles
 %define services %{name}-in.service %{name}-out.service
 
 Patch0:         dkimproxy-1.4.1-avoid-perl-provides.diff
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+#PATCH-FIX-UPSTREAM Port the perl-IO-Socket-INET6 code to use perl-IO-Socket-IP
+# upstream: https://sourceforge.net/p/dkimproxy/bugs/39
+Patch1:         dkimproxy-port-perl-IO-Socket-INET6-to-IP.patch
 BuildArch:      noarch
 BuildRequires:  git-core
 BuildRequires:  perl-Mail-DKIM
@@ -49,7 +50,6 @@ PreReq:         pwdutils
 Requires:       git-core
 Requires:       perl-Mail-DKIM
 Requires:       perl-Net-Server
-Requires:       perl(IO::Socket::INET6)
 
 %description
 DKIMproxy is an SMTP-proxy that signs and/or verifies emails, using the
@@ -62,6 +62,7 @@ Before-Queue or After-Queue content filters.
 %prep
 %setup -q -n %{name}-%{version}
 %patch0 -p1
+%patch1 -p1
 # ---------------------------------------------------------------------------
 
 %build

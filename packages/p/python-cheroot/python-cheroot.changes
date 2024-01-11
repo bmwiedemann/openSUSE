@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 10 17:40:08 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Disable failing tests with openssl 3.2
+
+-------------------------------------------------------------------
 Wed Jan  3 07:56:40 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch to increase tests timeouts in s390x where tests take

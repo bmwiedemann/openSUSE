@@ -1,9 +1,9 @@
 <services>
-	<service name="obs_scm" mode="disabled">
+	<service name="obs_scm" mode="manual">
 		<param name="scm">git</param>
 		<param name="url">https://github.com/bitwarden/clients.git</param>
-		<param name="revision">desktop-v2023.12.1</param>
-		<param name="version">2023.12.1</param>
+		<param name="revision">desktop-v2024.1.0</param>
+		<param name="version">2024.1.0</param>
 		<param name="filename">bitwarden</param>
 		<param name="exclude">bitwarden_license/*</param>
    <!-- The code in bitwarden_license MUST NOT be included in published tarballs as it is non-redistributable! -->
@@ -11,11 +11,11 @@
 		<param name="exclude">apps/web/*</param>
 	</service>
 	<service name="tar" mode="buildtime" />
-	<service name="cargo_vendor" mode="disabled">
+	<service name="cargo_vendor" mode="manual">
 		<param name="srcdir">clients/apps/desktop/desktop_native</param>
 		<param name="update">false</param>
 	</service>
-	<service name="cargo_audit" mode="disabled">
+	<service name="cargo_audit" mode="manual">
 		<param name="srcdir">clients/apps/desktop/desktop_native</param>
 	</service>
 </services>

@@ -1,4 +1,101 @@
 -------------------------------------------------------------------
+Mon Jan  8 05:32:25 UTC 2024 - Coly Li <colyli@suse.de>
+
+- Update mdadm to latest upstream state upto commit
+  582945c2d3bb. (jsc#PED-7542)
+  1) The testing changes are not included here.
+  2) Code clean up, and more helper routines added for Manage.c,
+     Monitor.c, mdadm.c, ReadMe.c, super-intel.c, super0.c, super1.c,
+     Create.c, Incremental.c and so on.
+  3) Man page update for mdadm.8.in.
+  4) Several memory leak and double free fixes.
+  5) Check /etc/initrd-release for whether systemd running on an initrd.
+  - Manage: Block unsafe member failing
+    0062-Manage-Block-unsafe-member-failing.patch
+  - Mdmonitor: Split alert() into separate functions
+    0063-Mdmonitor-Split-alert-into-separate-functions.patch
+  - Monitor: block if monitor modes are combined.
+    0064-Monitor-block-if-monitor-modes-are-combined.patch
+  - Update mdadm Monitor manual.
+    0065-Update-mdadm-Monitor-manual.patch
+  - mdadm: create ident_init()
+    0066-mdadm-create-ident_init.patch
+  - mdadm: Add option validation for --update-subarray
+    0067-mdadm-Add-option-validation-for-update-subarray.patch
+  - Fix --update-subarray on active volume
+    0068-Fix-update-subarray-on-active-volume.patch
+  - Add code specific update options to enum.
+    0069-Add-code-specific-update-options-to-enum.patch
+  - super-ddf: Remove update_super_ddf.
+    0070-super-ddf-Remove-update_super_ddf.patch
+  - super0: refactor the code for enum
+    0071-super0-refactor-the-code-for-enum.patch
+  - super1: refactor the code for enum
+    0072-super1-refactor-the-code-for-enum.patch
+  - super-intel: refactor the code for enum
+    0073-super-intel-refactor-the-code-for-enum.patch
+  - Change update to enum in update_super and update_subarray
+    0074-Change-update-to-enum-in-update_super-and-update_sub.patch
+  - Manage&Incremental: code refactor, string to enum
+    0075-Manage-Incremental-code-refactor-string-to-enum.patch
+  - Change char* to enum in context->update & refactor code
+    0076-Change-char-to-enum-in-context-update-refactor-code.patch
+  - mdadm/udev: Don't handle change event on raw devices
+    0077-mdadm-udev-Don-t-handle-change-event-on-raw-devices.patch
+  - Manage: do not check array state when drive is removed
+    0078-Manage-do-not-check-array-state-when-drive-is-remove.patch
+  - incremental, manage: do not verify if remove is safe
+    0079-incremental-manage-do-not-verify-if-remove-is-safe.patch
+  - super-intel: make freesize not required for chunk size
+    0080-super-intel-make-freesize-not-required-for-chunk-siz.patch
+  - manage: move comment with function description
+    0081-manage-move-comment-with-function-description.patch
+  - Fix NULL dereference in super_by_fd
+    0082-Fix-NULL-dereference-in-super_by_fd.patch
+  - Mdmonitor: Make alert_info global
+    0083-Mdmonitor-Make-alert_info-global.patch
+  - Mdmonitor: Pass events to alert() using enums instead of
+    0084-Mdmonitor-Pass-events-to-alert-using-enums-instead-o.patch
+  - Mdmonitor: Add helper functions
+    0085-Mdmonitor-Add-helper-functions.patch
+  - Add helpers to determine whether directories or files are
+    0086-Add-helpers-to-determine-whether-directories-or-file.patch
+  - Mdmonitor: Refactor write_autorebuild_pid()
+    0087-Mdmonitor-Refactor-write_autorebuild_pid.patch
+  - Mdmonitor: Refactor check_one_sharer() for better error
+    0088-Mdmonitor-Refactor-check_one_sharer-for-better-error.patch
+  - util.c: reorder code lines in parse_layout_faulty()
+    0089-util.c-reorder-code-lines-in-parse_layout_faulty.patch
+  - util.c: fix memleak in parse_layout_faulty()
+    0090-util.c-fix-memleak-in-parse_layout_faulty.patch
+  - Detail.c: fix memleak in Detail()
+    0091-Detail.c-fix-memleak-in-Detail.patch
+  - isuper-intel.c: fix double free in load_imsm_mpb()
+    0092-isuper-intel.c-fix-double-free-in-load_imsm_mpb.patch
+  - super-intel.c: fix memleak in find_disk_attached_hba()
+    0093-super-intel.c-fix-memleak-in-find_disk_attached_hba.patch
+  - super-ddf.c: fix memleak in get_vd_num_of_subarray()
+    0094-super-ddf.c-fix-memleak-in-get_vd_num_of_subarray.patch
+  - Create: goto abort_locked instead of return 1 in error path
+    0095-Create-goto-abort_locked-instead-of-return-1-in-erro.patch
+  - Create: remove safe_mode_delay local variable
+    0096-Create-remove-safe_mode_delay-local-variable.patch
+  - Create: Factor out add_disks() helpers
+    0097-Create-Factor-out-add_disks-helpers.patch
+  - mdadm: Introduce pr_info()
+    0098-mdadm-Introduce-pr_info.patch
+  - mdadm: Add --write-zeros option for Create
+    0099-mdadm-Add-write-zeros-option-for-Create.patch
+  - manpage: Add --write-zeroes option to manpage
+    0100-manpage-Add-write-zeroes-option-to-manpage.patch
+  - Define alignof using _Alignof when using C11 or newer
+    0101-Define-alignof-using-_Alignof-when-using-C11-or-newe.patch
+  - Use existence of /etc/initrd-release to detect initrd.
+    0102-Use-existence-of-etc-initrd-release-to-detect-initrd.patch
+  - Create: Fix checking for container in update_metadata
+    0103-Create-Fix-checking-for-container-in-update_metadata.patch
+
+-------------------------------------------------------------------
 Fri Nov 17 15:34:31 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend smtp-daemon: this was a remainder from the

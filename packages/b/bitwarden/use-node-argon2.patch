@@ -75,7 +75,7 @@ Use node-argon2 instead of browser-argon2 as the second needs webassembly/emscri
  import * as forge from "node-forge";
  
  import { Utils } from "../../platform/misc/utils";
-@@ -9,13 +9,11 @@
+@@ -10,13 +10,11 @@ import { SymmetricCryptoKey } from "../m
  export class WebCryptoFunctionService implements CryptoFunctionService {
    private crypto: Crypto;
    private subtle: SubtleCrypto;
@@ -89,9 +89,9 @@ Use node-argon2 instead of browser-argon2 as the second needs webassembly/emscri
    }
  
    async pbkdf2(
-@@ -52,24 +50,19 @@
+@@ -54,24 +52,19 @@ export class WebCryptoFunctionService im
      memory: number,
-     parallelism: number
+     parallelism: number,
    ): Promise<Uint8Array> {
 -    if (!this.wasmSupported) {
 -      throw "Webassembly support is required for the Argon2 KDF feature.";
@@ -124,7 +124,7 @@ Use node-argon2 instead of browser-argon2 as the second needs webassembly/emscri
    }
  
    async hkdf(
-@@ -383,20 +377,28 @@
+@@ -435,20 +428,28 @@ export class WebCryptoFunctionService im
      return mode === "cbc" ? "AES-CBC" : "AES-ECB";
    }
  
@@ -133,7 +133,7 @@ Use node-argon2 instead of browser-argon2 as the second needs webassembly/emscri
 -    try {
 -      if (typeof WebAssembly === "object" && typeof WebAssembly.instantiate === "function") {
 -        const module = new WebAssembly.Module(
--          Uint8Array.of(0x0, 0x61, 0x73, 0x6d, 0x01, 0x00, 0x00, 0x00)
+-          Uint8Array.of(0x0, 0x61, 0x73, 0x6d, 0x01, 0x00, 0x00, 0x00),
 -        );
 -        if (module instanceof WebAssembly.Module) {
 -          return new WebAssembly.Instance(module) instanceof WebAssembly.Instance;
@@ -148,7 +148,8 @@ Use node-argon2 instead of browser-argon2 as the second needs webassembly/emscri
 +      nodeValue = value;
 +    } else {
 +      nodeValue = this.toNodeBuffer(value);
-+    }
+     }
+-    return false;
 +    return nodeValue;
 +  }
 +
@@ -162,8 +163,7 @@ Use node-argon2 instead of browser-argon2 as the second needs webassembly/emscri
 +      buf = Utils.fromUtf8ToArray(value);
 +    } else {
 +      buf = value;
-     }
--    return false;
++    }
 +    return buf;
    }
  }

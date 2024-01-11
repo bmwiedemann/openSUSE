@@ -166,13 +166,13 @@ BuildRequires:  fde-tpm-helper-rpm-macros
 %endif
 %endif
 
-Version:        2.12~rc1
+Version:        2.12
 Release:        0
 Summary:        Bootloader with support for Linux, Multiboot and more
 License:        GPL-3.0-or-later
 Group:          System/Boot
 URL:            http://www.gnu.org/software/grub/
-Source0:        https://alpha.gnu.org/gnu/grub/grub-%{version}.tar.xz
+Source0:        https://ftp.gnu.org/gnu/grub/grub-%{version}.tar.xz
 Source1:        90_persistent
 Source2:        grub.default
 Source4:        grub2.rpmlintrc
@@ -372,33 +372,21 @@ Patch179:       0002-prep_loadenv-Fix-regex-for-Open-Firmware-device-spec.patch
 Patch180:       0001-xen_boot-add-missing-grub_arch_efi_linux_load_image_.patch
 Patch181:       0001-font-Try-memdisk-fonts-with-the-same-name.patch
 Patch182:       0001-Make-grub.cfg-compatible-to-old-binaries.patch
-Patch183:       0001-disk-cryptodisk-Fix-missing-change-when-updating-to-.patch
-Patch184:       grub2-change-bash-completion-dir.patch
-Patch185:       0001-protectors-Implement-NV-index.patch
-Patch186:       0002-cryptodisk-Fallback-to-passphrase.patch
-Patch187:       0003-cryptodisk-wipe-out-the-cached-keys-from-protectors.patch
-Patch188:       0004-diskfilter-look-up-cryptodisk-devices-first.patch
-Patch189:       grub2-mkconfig-riscv64.patch
-Patch190:       arm64-Use-proper-memory-type-for-kernel-allocation.patch
-Patch191:       0001-fs-btrfs-Zero-file-data-not-backed-by-extents.patch
-Patch192:       0001-fs-ntfs-Fix-an-OOB-write-when-parsing-the-ATTRIBUTE_.patch
-Patch193:       0002-fs-ntfs-Fix-an-OOB-read-when-reading-data-from-the-r.patch
-Patch194:       0003-fs-ntfs-Fix-an-OOB-read-when-parsing-directory-entri.patch
-Patch195:       0004-fs-ntfs-Fix-an-OOB-read-when-parsing-bitmaps-for-ind.patch
-Patch196:       0005-fs-ntfs-Fix-an-OOB-read-when-parsing-a-volume-label.patch
-Patch197:       0006-fs-ntfs-Make-code-more-readable.patch
-Patch198:       0001-luks2-Use-grub-tpm2-token-for-TPM2-protected-volume-.patch
-Patch199:       Fix-the-size-calculation-for-the-synthesized-initrd.patch
-Patch200:       0001-kern-ieee1275-init-Restrict-high-memory-in-presence-.patch
-Patch201:       0001-fs-xfs-Incorrect-short-form-directory-data-boundary-.patch
-Patch202:       0002-fs-xfs-Fix-XFS-directory-extent-parsing.patch
-Patch203:       0003-fs-xfs-add-large-extent-counters-incompat-feature-su.patch
-Patch204:       0001-Improve-TPM-key-protection-on-boot-interruptions.patch
-Patch205:       0002-Restrict-file-access-on-cryptodisk-print.patch
-Patch206:       0003-Restrict-ls-and-auto-file-completion-on-cryptodisk-p.patch
-Patch207:       0004-Key-revocation-on-out-of-bound-file-access.patch
-Patch208:       0001-mkstandalone-ensure-stable-timestamps-for-generated-.patch
-Patch209:       0002-mkstandalone-ensure-deterministic-tar-file-creation-.patch
+Patch183:       grub2-change-bash-completion-dir.patch
+Patch184:       0001-protectors-Implement-NV-index.patch
+Patch185:       0002-cryptodisk-Fallback-to-passphrase.patch
+Patch186:       0003-cryptodisk-wipe-out-the-cached-keys-from-protectors.patch
+Patch187:       0004-diskfilter-look-up-cryptodisk-devices-first.patch
+Patch188:       grub2-mkconfig-riscv64.patch
+Patch189:       arm64-Use-proper-memory-type-for-kernel-allocation.patch
+Patch190:       0001-luks2-Use-grub-tpm2-token-for-TPM2-protected-volume-.patch
+Patch191:       Fix-the-size-calculation-for-the-synthesized-initrd.patch
+Patch192:       0001-Improve-TPM-key-protection-on-boot-interruptions.patch
+Patch193:       0002-Restrict-file-access-on-cryptodisk-print.patch
+Patch194:       0003-Restrict-ls-and-auto-file-completion-on-cryptodisk-p.patch
+Patch195:       0004-Key-revocation-on-out-of-bound-file-access.patch
+# Workaround for 2.12 tarball
+Patch196:       fix_no_extra_deps_in_release_tarball.patch
 
 Requires:       gettext-runtime
 %if 0%{?suse_version} >= 1140

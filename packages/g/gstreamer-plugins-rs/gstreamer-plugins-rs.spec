@@ -119,6 +119,9 @@ sed -ie "s/find_program('cargo-cbuild', version:'>=0.9.21'/find_program('cargo-c
 mkdir -p .cargo
 cp %{SOURCE3} .cargo/config
 
+sed -i -e 's/version = "8"/version = "9"/' vendor/livekit-api/Cargo.toml
+sed -i -e "s/ab6a42a4752e822c794421fa4b939e7e9690e85541c5e0ae28a34f17fe8fd170/2c69748813bcb4e4f3d06343e05fb9f43a8ae623fbdbb340847fd536f1974aa9/" vendor/livekit-api/.cargo-checksum.json
+
 %build
 # Disable csound for now, bring issue upstream
 #export CSOUND_LIB_DIR=%%{_libdir}

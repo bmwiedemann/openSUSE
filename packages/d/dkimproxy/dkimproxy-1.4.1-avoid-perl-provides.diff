@@ -15,7 +15,7 @@ Index: dkimproxy-1.4.1/lib/MSDW/SMTP/Client.pm
 -		use base "IO::Socket::INET";
 -		|;
 -}
-+require IO::Socket::INET6;
++require IO::Socket::IP;
  
  package MSDW::SMTP::Client;
  use IO::Socket;

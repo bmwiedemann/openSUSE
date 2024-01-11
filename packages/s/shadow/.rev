@@ -954,4 +954,14 @@
 - Drop upstreamed shadow-4.14.0-selinux-labels.patch</comment>
     <requestid>1121084</requestid>
   </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>17e9008e60cfe8239c8a383aa851ca29</srcmd5>
+    <version>4.14.2</version>
+    <time>1705003471</time>
+    <user>anag+factory</user>
+    <comment>- bsc#1199026 bsc#1203823:
+  Remove pam_keyinit from PAM configuration.
+  This was introduced for bsc#1144060.</comment>
+    <requestid>1137739</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jan 11 07:37:02 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.32.4
+  build:
+  * Reorganize shared headers, API headers into src/include.
+  * Use relative include paths, avoiding internal directories in
+    CPPFLAGS except for config.h.
+  * Group C99 feature checks and make several standard headers
+    mandatory.
+  * Get rid of SIZE_P, OFF_P and friends.
+  * Only enforce dummy module together with libout123, to be able
+    to build individual modules using --disable-components logic.
+  out123:
+  * added --libversion
+  libmpg123:
+  * Avoid indirect branches into the assembly routines by using C
+    wrappers also for dct36, relieving us of the need to care for
+    bti / endbr i nstructions for control flow integrity.
+
+-------------------------------------------------------------------
 Mon Oct  2 17:18:45 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.32.3

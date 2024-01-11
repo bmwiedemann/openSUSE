@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan  9 12:51:12 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- bsc#1199026 bsc#1203823:
+  Remove pam_keyinit from PAM configuration.
+  This was introduced for bsc#1144060.
+
+-------------------------------------------------------------------
 Mon Oct 30 07:20:29 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.14.2:

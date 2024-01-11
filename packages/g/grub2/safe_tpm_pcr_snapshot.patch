@@ -76,7 +76,7 @@
  GRUB_MOD_INIT (tpm)
 --- a/util/grub-install.c
 +++ b/util/grub-install.c
-@@ -1501,8 +1501,9 @@
+@@ -1560,8 +1560,9 @@
  
    grub_util_unlink (load_cfg);
  
@@ -87,7 +87,7 @@
        load_cfg_f = grub_util_fopen (load_cfg, "wb");
        have_load_cfg = 1;
        fprintf (load_cfg_f, "tpm_record_pcrs 0-9\n");
-@@ -1510,7 +1511,8 @@
+@@ -1569,7 +1570,8 @@
  
    if (debug_image && debug_image[0])
      {
@@ -96,4 +96,4 @@
 +	load_cfg_f = grub_util_fopen (load_cfg, "wb");
        have_load_cfg = 1;
        fprintf (load_cfg_f, "set debug='%s'\n",
- 	      debug_image);
+               debug_image);

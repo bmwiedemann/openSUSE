@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan  2 21:58:50 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Remove the dependency on perl(IO::Socket::INET6) as it has been
+  deprecated by upstream, is no longer suitable for use and its not
+  being maintained. A compatible replacement for this package is
+  perl(IO::Socket::IP) which is shipped by the perl-base package.
+  * Rebase dkimproxy-1.4.1-avoid-perl-provides.diff
+  * Add dkimproxy-port-perl-IO-Socket-INET6-to-IP.patch
+  * Reported upstream: https://sourceforge.net/p/dkimproxy/bugs/39
+
+-------------------------------------------------------------------
 Wed Nov  8 22:57:15 UTC 2023 - Robert Munteanu <rombert@apache.org>
 
 - Follow-up fix for boo#1216919

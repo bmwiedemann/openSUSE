@@ -1,7 +1,7 @@
 #
 # spec file for package python-weasyprint
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@
 %global tinycss2_min_version   1.1.0
 %global zopfli_min_version     0.1.4
 
+%{?sle15_python_module_pythons}
 Name:           python-weasyprint
 Version:        60.2
 Release:        0

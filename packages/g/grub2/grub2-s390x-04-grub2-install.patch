@@ -163,7 +163,7 @@ V20:
    name = grub-mkconfig_lib;
    common = util/grub-mkconfig_lib.in;
    installdir = noinst;
-@@ -1375,6 +1420,7 @@
+@@ -1381,6 +1426,7 @@
    ldadd = libgrubkern.a;
    ldadd = grub-core/lib/gnulib/libgnu.a;
    ldadd = '$(LIBINTL) $(LIBDEVMAPPER) $(LIBZFS) $(LIBNVPAIR) $(LIBGEOM)';
@@ -186,7 +186,7 @@ V20:
  
  case "$target_os" in
    windows* | mingw32*) target_os=cygwin ;;
-@@ -2093,6 +2093,9 @@
+@@ -2158,6 +2158,9 @@
  AM_CONDITIONAL([COND_sparc64_emu], [test x$target_cpu = xsparc64 -a x$platform = xemu])
  AM_CONDITIONAL([COND_x86_64_efi], [test x$target_cpu = xx86_64 -a x$platform = xefi])
  AM_CONDITIONAL([COND_x86_64_xen], [test x$target_cpu = xx86_64 -a x$platform = xxen])
@@ -198,7 +198,7 @@ V20:
  AM_CONDITIONAL([COND_HOST_LINUX], [test x$host_kernel = xlinux])
 --- a/grub-core/Makefile.core.def
 +++ b/grub-core/Makefile.core.def
-@@ -1183,6 +1183,7 @@
+@@ -1186,6 +1186,7 @@
  module = {
    name = videotest;
    common = commands/videotest.c;
@@ -206,7 +206,7 @@ V20:
  };
  
  module = {
-@@ -1637,6 +1638,7 @@
+@@ -1640,6 +1641,7 @@
    common = gfxmenu/gui_progress_bar.c;
    common = gfxmenu/gui_util.c;
    common = gfxmenu/gui_string_util.c;
@@ -214,7 +214,7 @@ V20:
  };
  
  module = {
-@@ -2075,11 +2077,13 @@
+@@ -2078,11 +2080,13 @@
    name = gfxterm;
    common = term/gfxterm.c;
    enable = videomodules;
@@ -228,7 +228,7 @@ V20:
  };
  
  module = {
-@@ -2202,6 +2206,7 @@
+@@ -2205,6 +2209,7 @@
    enable = x86_64_efi;
    enable = emu;
    enable = xen;
@@ -236,7 +236,7 @@ V20:
  };
  
  module = {
-@@ -2248,6 +2253,7 @@
+@@ -2251,6 +2256,7 @@
  module = {
    name = gfxterm_menu;
    common = tests/gfxterm_menu.c;
@@ -244,7 +244,7 @@ V20:
  };
  
  module = {
-@@ -2409,6 +2415,7 @@
+@@ -2412,6 +2418,7 @@
    enable = x86_64_efi;
    enable = emu;
    enable = xen;
@@ -316,7 +316,7 @@ V20:
  int
 --- a/util/grub-install-common.c
 +++ b/util/grub-install-common.c
-@@ -911,6 +911,7 @@
+@@ -924,6 +924,7 @@
      [GRUB_INSTALL_PLATFORM_LOONGARCH64_EFI] =  { "loongarch64", "efi"       },
      [GRUB_INSTALL_PLATFORM_RISCV32_EFI] =      { "riscv32",     "efi"       },
      [GRUB_INSTALL_PLATFORM_RISCV64_EFI] =      { "riscv64",     "efi"       },
@@ -415,10 +415,10 @@ V20:
 +	}
 +    }
 +
-   grub_install_copy_files (grub_install_source_directory,
- 			   grubdir, platform);
+   size_t ndev = 0;
  
-@@ -1541,6 +1570,7 @@
+   /* Write device to a variable so we don't have to traverse /dev every time.  */
+@@ -1543,6 +1572,7 @@
  		  case GRUB_INSTALL_PLATFORM_I386_XEN:
  		  case GRUB_INSTALL_PLATFORM_X86_64_XEN:
  		  case GRUB_INSTALL_PLATFORM_I386_XEN_PVH:
@@ -426,7 +426,7 @@ V20:
  		    grub_util_warn ("%s", _("no hints available for your platform. Expect reduced performance"));
  		    break;
  		    /* pacify warning.  */
-@@ -1659,6 +1689,10 @@
+@@ -1661,6 +1691,10 @@
        strcpy (mkimage_target, "sparc64-ieee1275-raw");
        core_name = "core.img";
        break;
@@ -437,7 +437,7 @@ V20:
        /* pacify warning.  */
      case GRUB_INSTALL_PLATFORM_MAX:
        break;
-@@ -1674,6 +1708,7 @@
+@@ -1676,6 +1710,7 @@
  				       core_name);
    char *prefix = xasprintf ("%s%s", prefix_drive ? : "",
  			    relative_grubdir);
@@ -445,7 +445,7 @@ V20:
    grub_install_make_image_wrap (/* source dir  */ grub_install_source_directory,
  				/*prefix */ prefix,
  				/* output */ imgfile,
-@@ -1712,6 +1747,10 @@
+@@ -1714,6 +1749,10 @@
  				       /* image target */ mkimage_target, 0);
        }
        break;
@@ -456,7 +456,7 @@ V20:
      case GRUB_INSTALL_PLATFORM_ARM_EFI:
      case GRUB_INSTALL_PLATFORM_ARM64_EFI:
      case GRUB_INSTALL_PLATFORM_LOONGARCH64_EFI:
-@@ -2011,6 +2050,10 @@
+@@ -2013,6 +2052,10 @@
  	}
        break;
  

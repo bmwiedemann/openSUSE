@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan  4 15:22:02 UTC 2024 - Dominik Heidler <dheidler@suse.de>
+
+- Version 1.11.53
+
+  ## 🐛 Bug Fixes
+  * Fix a fresh login creating a new key backup (https://github.com/matrix-org/matrix-react-sdk/pull/12106).
+
+-------------------------------------------------------------------
 Tue Dec 19 18:32:21 UTC 2023 - Dominik Heidler <dheidler@suse.de>
 
 - Version 1.11.52

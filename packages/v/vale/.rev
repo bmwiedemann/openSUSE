@@ -483,4 +483,16 @@
   * docs: add GitHub sponsors (forwarded request 1137859 from jfkw)</comment>
     <requestid>1137860</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>695aa99378bdc857424a7ba30b2406ca</srcmd5>
+    <version>3.0.1</version>
+    <time>1705003544</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.0.1:
+  * test: add more package cases
+  * fix: respect alternative ways to set a base
+  * test: add more source tests
+  * docs: add famewall (forwarded request 1138134 from jfkw)</comment>
+    <requestid>1138135</requestid>
+  </revision>
 </revisionlist>

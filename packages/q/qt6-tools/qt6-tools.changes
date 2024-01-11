@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 10 18:47:55 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Fix build in SLE15 SP6 by using clang17-devel 
+
+-------------------------------------------------------------------
 Mon Nov 27 14:00:20 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.6.1:

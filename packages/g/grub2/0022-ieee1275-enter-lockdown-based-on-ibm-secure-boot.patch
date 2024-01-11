@@ -16,7 +16,7 @@ Signed-off-by: Daniel Axtens <dja@axtens.net>
 
 --- a/docs/grub.texi
 +++ b/docs/grub.texi
-@@ -6740,8 +6740,8 @@
+@@ -6795,8 +6795,8 @@
  @section Lockdown when booting on a secure setup
  
  The GRUB can be locked down when booted on a secure boot environment, for example
@@ -39,15 +39,15 @@ Signed-off-by: Daniel Axtens <dja@axtens.net>
    sparc64_ieee1275 = kern/sparc64/dl.c;
 --- a/grub-core/kern/ieee1275/init.c
 +++ b/grub-core/kern/ieee1275/init.c
-@@ -44,6 +44,7 @@
- #ifdef __sparc__
- #include <grub/machine/kernel.h>
+@@ -49,6 +49,7 @@
+ #if defined(__powerpc__) || defined(__i386__)
+ #include <grub/ieee1275/alloc.h>
  #endif
 +#include <grub/lockdown.h>
  
  /* The maximum heap size we're going to claim at boot. Not used by sparc. */
  #ifdef __i386__
-@@ -708,6 +709,30 @@
+@@ -893,6 +894,30 @@
      }
  }
  
@@ -78,7 +78,7 @@ Signed-off-by: Daniel Axtens <dja@axtens.net>
  grub_addr_t grub_modbase;
  
  void
-@@ -733,6 +758,8 @@
+@@ -918,6 +943,8 @@
  #else
    grub_install_get_time_ms (grub_rtc_get_time_ms);
  #endif

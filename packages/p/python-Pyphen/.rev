@@ -65,4 +65,12 @@
   * Improve dictionaries update script</comment>
     <requestid>1137833</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>7564abe208f0b6e5d17cbec48eae6575</srcmd5>
+    <version>0.14.0</version>
+    <time>1705003527</time>
+    <user>anag+factory</user>
+    <comment>- Add %{?sle15_python_module_pythons} to build for python 3.11 in Leap</comment>
+    <requestid>1138080</requestid>
+  </revision>
 </revisionlist>

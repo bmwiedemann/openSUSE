@@ -83,4 +83,12 @@
   * Re-add ssh and bash to Dockerfile (#1034)</comment>
     <requestid>1134102</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e4a43204c7fab6de95dbe71dcc7211c0</srcmd5>
+    <version>1.6.0</version>
+    <time>1705003504</time>
+    <user>anag+factory</user>
+    <comment>update to stable 1.6.0 release</comment>
+    <requestid>1138054</requestid>
+  </revision>
 </revisionlist>

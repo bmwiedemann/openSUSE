@@ -1,7 +1,7 @@
 #
 # spec file for package targetcli-fb
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,16 +49,7 @@ Provides:       targetcli-fb = %{version}-%{release}
 Obsoletes:      targetcli < %{version}-%{release}
 Obsoletes:      targetcli-fb < %{version}-%{release}
 BuildArch:      noarch
-%if 0%{?sle_version} >= 150000
-# explicit Provides advertising RBD support
-Provides:       targetcli-rbd = %{version}
-Obsoletes:      targetcli-rbd < %{version}
-%endif
 %{?systemd_ordering}
-
-# SUSE-specific patches
-Patch1:         Split-out-blockdev-readonly-state-detection-helper.patch
-Patch2:         rbd-support.patch
 
 %python_subpackages
 
@@ -83,11 +74,6 @@ all python-version-dependant packages, such as python3-*-targetcli-fb.
 
 %prep
 %setup -q
-%patch1 -p1
-%if 0%{?sle_version} >= 150000
-# RBD support is dependent on LIO changes present in the SLE/Leap kernel
-%patch2 -p1
-%endif
 
 %build
 %python_build

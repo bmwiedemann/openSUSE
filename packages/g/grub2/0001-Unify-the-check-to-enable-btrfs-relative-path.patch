@@ -88,8 +88,8 @@ Signed-off-by: Michael Chang <mchang@suse.com>
    switch (platform)
      {
      case GRUB_INSTALL_PLATFORM_I386_EFI:
-@@ -1454,8 +1493,7 @@
- 	      debug_image);
+@@ -1478,8 +1517,7 @@
+               debug_image);
      }
  
 -  if (config.is_suse_btrfs_snapshot_enabled
@@ -98,7 +98,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
      {
        if (!load_cfg_f)
          load_cfg_f = grub_util_fopen (load_cfg, "wb");
-@@ -1669,21 +1707,13 @@
+@@ -1670,21 +1708,13 @@
  
  #ifdef __linux__
  
@@ -124,7 +124,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  
        if (subvol && mount_path)
  	{
-@@ -1708,11 +1738,6 @@
+@@ -1709,11 +1739,6 @@
  	    }
  	}
  

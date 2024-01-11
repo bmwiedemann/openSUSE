@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jan  9 10:03:23 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 20240108:
+  * Migrate to Qt6
+  * Add nearest and bicubic filtering
+  * Add slideshow
+  * Don't skip images before they load
+  * Add bayer mask selection
+  * Additional work on batch processing
+  * Increase number max preload images to 32
+
+-------------------------------------------------------------------
 Fri Nov 17 10:06:10 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 20231116:

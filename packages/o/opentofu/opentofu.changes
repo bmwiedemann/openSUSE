@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jan 10 19:15:04 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version v1.6.0:
+  Time for the big release! OpenTofu 1.6.0 is now stable!
+  Read more about this on
+  [our blog](https://opentofu.org/blog/opentofu-is-going-ga)!
+  This release is a drop-in replacement, and you can follow our
+  simple migration guide to start using it with your existing
+  infrastructure configurations.
+  If you'd like to read about all the changes introduced, check out
+  the detailed changelog.
+  https://github.com/opentofu/opentofu/blob/v1.6/CHANGELOG.md
+
+-------------------------------------------------------------------
 Tue Dec 19 20:23:11 UTC 2023 - dmueller@suse.com
 
 - Update to version 1.6.0~rc1:

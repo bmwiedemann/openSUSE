@@ -39,17 +39,15 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  	{
 --- a/grub-core/net/http.c
 +++ b/grub-core/net/http.c
-@@ -31,7 +31,8 @@
+@@ -30,6 +30,7 @@
+ GRUB_MOD_LICENSE ("GPLv3+");
  
- enum
-   {
--    HTTP_PORT = 80
-+    HTTP_PORT = 80,
-+    HTTP_MAX_CHUNK_SIZE = GRUB_INT_MAX
-   };
+ #define HTTP_PORT	((grub_uint16_t) 80)
++#define HTTP_MAX_CHUNK_SIZE GRUB_INT_MAX
  
- 
-@@ -86,6 +87,8 @@
+ typedef struct http_data
+ {
+@@ -82,6 +83,8 @@
    if (data->in_chunk_len == 2)
      {
        data->chunk_rem = grub_strtoul (ptr, 0, 16);

@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Jan  9 10:06:22 UTC 2024 - Ludwig Nussel <lnussel@suse.com>
+
+- Add foot to terminfo-base. It's the most compliant wayland
+  terminal emulator according to
+  https://github.com/dankamongmen/notcurses/blob/master/TERMINALS.md
+
+-------------------------------------------------------------------
+Mon Jan  8 12:16:40 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20240106
+  + use ansi+arrows, ansi+apparrows, ansi+csr, ansi+erase, ansi+idc,
+    ansi+idc1, ansi+idl, ansi+idl1, ansi+inittabs to trim -TD
+  + minor manpage formatting changes for consistency.
+  + modify doc-html test package's install-directory, per lintian.
+  + add attr_get.3x to man_db.renames.in (patch by Sven Joachim).
+- Add ncurses patch 20231230
+  + improve formatting/style of manpages (patches by Branden Robinson).
+  + add ms-vt100-16color, winconsole -TD
+  + add rio, rio-direct -TD
+  + add mostlike -TD
+  + add wezterm, contour -TD
+- Add ncurses patch 20231223
+  + improve formatting/style of manpages (patches by Branden Robinson).
+- Add ncurses patch 20231217
+  + improve formatting/style of manpages (patches by Branden Robinson).
+  + correct an assignment in infocmp "-u" for detecting if a boolean
+    is unset in a base entry and set in a use'd chunk, i.e., if it was
+    cancelled.
+  + modify infocmp "-u" option to not report cancels for strings which
+    were already cancelled in a use'd chunk.
+  + join two lines in infotocap.3x to eliminate a spurious "description"
+    link in installed manpages (report by Sven Joachim).
+  + fix typo in NEWS (report by Sven Joachim).
+- Port patches
+  * ncurses-5.9-ibm327x.dif
+  * ncurses-6.4.dif
+
+-------------------------------------------------------------------
 Mon Dec 11 09:32:55 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20231209

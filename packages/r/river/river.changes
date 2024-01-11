@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan  4 15:44:48 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Fix supplements in contrib package in the specfile.
+
+-------------------------------------------------------------------
 Sat Dec 16 12:05:17 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Set minimum wlroots version to 0.16.0. Add build conflicts if it is 0.17.0

@@ -183,4 +183,12 @@
 - Update to 55.0</comment>
     <requestid>1135635</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>4ca3fc9657a94b4308663ca9326cb7d6</srcmd5>
+    <version>60.2</version>
+    <time>1705003537</time>
+    <user>anag+factory</user>
+    <comment>- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1138102</requestid>
+  </revision>
 </revisionlist>

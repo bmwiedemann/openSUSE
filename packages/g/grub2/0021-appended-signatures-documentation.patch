@@ -18,7 +18,7 @@ v2: fix a grammar issue, thanks Stefan Berger.
 
 --- a/docs/grub.texi
 +++ b/docs/grub.texi
-@@ -3278,6 +3278,7 @@
+@@ -3270,6 +3270,7 @@
  
  @menu
  * biosnum::
@@ -26,7 +26,7 @@ v2: fix a grammar issue, thanks Stefan Berger.
  * check_signatures::
  * chosen::
  * cmdpath::
-@@ -3342,11 +3343,18 @@
+@@ -3334,11 +3335,18 @@
  chain-loaded system, @pxref{drivemap}.
  
  
@@ -47,7 +47,7 @@ v2: fix a grammar issue, thanks Stefan Berger.
  
  @node chosen
  @subsection chosen
-@@ -4322,6 +4330,7 @@
+@@ -4357,6 +4365,7 @@
  * date::                        Display or set current date and time
  * devicetree::                  Load a device tree blob
  * distrust::                    Remove a pubkey from trusted keys
@@ -55,15 +55,15 @@ v2: fix a grammar issue, thanks Stefan Berger.
  * drivemap::                    Map a drive to another
  * echo::                        Display a line of text
  * efitextmode::                 Set/Get text output mode resolution
-@@ -4337,6 +4346,7 @@
- * help::                        Show help messages
+@@ -4373,6 +4382,7 @@
+ * hexdump::                     Show raw contents of a file or memory
  * insmod::                      Insert a module
  * keystatus::                   Check key modifier status
 +* list_certificates::           List trusted certificates
  * list_env::                    List variables in environment block
  * list_trusted::                List trusted public keys
  * load_env::                    Load variables from environment block
-@@ -4375,8 +4385,10 @@
+@@ -4411,8 +4421,10 @@
  * test::                        Check file types and compare values
  * true::                        Do nothing, successfully
  * trust::                       Add public key to list of trusted keys
@@ -74,7 +74,7 @@ v2: fix a grammar issue, thanks Stefan Berger.
  * verify_detached::             Verify detached digital signature
  * videoinfo::                   List available video modes
  * wrmsr::                       Write values to model-specific registers
-@@ -4710,9 +4722,28 @@
+@@ -4752,9 +4764,28 @@
  @code{check_signatures} is set to @code{enforce}
  (@pxref{check_signatures}), and by some invocations of
  @command{verify_detached} (@pxref{verify_detached}).  @xref{Using
@@ -104,7 +104,7 @@ v2: fix a grammar issue, thanks Stefan Berger.
  @node drivemap
  @subsection drivemap
  
-@@ -4975,6 +5006,21 @@
+@@ -5031,6 +5062,21 @@
  @end deffn
  
  
@@ -126,7 +126,7 @@ v2: fix a grammar issue, thanks Stefan Berger.
  @node list_env
  @subsection list_env
  
-@@ -4994,7 +5040,7 @@
+@@ -5050,7 +5096,7 @@
  @code{gpg --fingerprint}).  The least significant four bytes (last
  eight hexadecimal digits) can be used as an argument to
  @command{distrust} (@pxref{distrust}).
@@ -135,7 +135,7 @@ v2: fix a grammar issue, thanks Stefan Berger.
  these keys.
  @end deffn
  
-@@ -5029,8 +5075,12 @@
+@@ -5085,8 +5131,12 @@
  administrator to configure a system to boot only signed
  configurations, but to allow the user to select from among multiple
  configurations, and to enable ``one-shot'' boot attempts and
@@ -149,7 +149,7 @@ v2: fix a grammar issue, thanks Stefan Berger.
  @end deffn
  
  
-@@ -5401,7 +5451,7 @@
+@@ -5457,7 +5507,7 @@
  file from within GRUB using this command, such that its signature will
  no longer be valid on subsequent boots.  Care should be taken in such
  advanced configurations to avoid rendering the system
@@ -158,7 +158,7 @@ v2: fix a grammar issue, thanks Stefan Berger.
  @end deffn
  
  
-@@ -5817,11 +5867,31 @@
+@@ -5873,11 +5923,31 @@
  must itself be properly signed.  The @option{--skip-sig} option can be
  used to disable signature-checking when reading @var{pubkey_file}
  itself. It is expected that @option{--skip-sig} is useful for testing
@@ -191,7 +191,7 @@ v2: fix a grammar issue, thanks Stefan Berger.
  @node unset
  @subsection unset
  
-@@ -5840,6 +5910,18 @@
+@@ -5896,6 +5966,18 @@
  @end deffn
  @end ignore
  
@@ -210,7 +210,7 @@ v2: fix a grammar issue, thanks Stefan Berger.
  
  @node verify_detached
  @subsection verify_detached
-@@ -5858,7 +5940,7 @@
+@@ -5914,7 +5996,7 @@
  
  Exit code @code{$?} is set to 0 if the signature validates
  successfully.  If validation fails, it is set to a non-zero value.
@@ -219,7 +219,7 @@ v2: fix a grammar issue, thanks Stefan Berger.
  @end deffn
  
  @node videoinfo
-@@ -6339,13 +6421,14 @@
+@@ -6394,13 +6476,14 @@
  @chapter Security
  
  @menu
@@ -241,7 +241,7 @@ v2: fix a grammar issue, thanks Stefan Berger.
  @end menu
  
  @node Authentication and authorisation
-@@ -6419,8 +6502,8 @@
+@@ -6474,8 +6557,8 @@
  adding @kbd{set superusers=} and @kbd{password} or @kbd{password_pbkdf2}
  commands.
  
@@ -252,7 +252,7 @@ v2: fix a grammar issue, thanks Stefan Berger.
  
  GRUB's @file{core.img} can optionally provide enforcement that all files
  subsequently read from disk are covered by a valid digital signature.
-@@ -6503,6 +6586,82 @@
+@@ -6558,6 +6641,82 @@
  (attacker-controlled) device.  GRUB is at best only one link in a
  secure boot chain.
  

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 10 15:15:37 UTC 2024 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Make the geany tags build optional again to fix SLE.
+
+-------------------------------------------------------------------
 Fri Dec 15 10:55:19 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.3.9

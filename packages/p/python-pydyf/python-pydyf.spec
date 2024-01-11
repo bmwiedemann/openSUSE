@@ -17,6 +17,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-pydyf
 Version:        0.8.0
 Release:        0

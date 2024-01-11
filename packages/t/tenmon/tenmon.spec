@@ -1,7 +1,7 @@
 #
 # spec file for package tenmon
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,26 @@
 #
 
 
+%if 0%{?suse_version} && 0%{?suse_version} < 1590
+%global force_gcc_version 12
+%endif
+
 Name:           tenmon
-Version:        20231116
+Version:        20240108
 Release:        0
 Summary:        FITS and XISF image viewer, converter and indexer
 License:        GPL-3.0-or-later
 URL:            https://gitea.nouspiro.space/nou/tenmon/
 Source:         https://gitea.nouspiro.space/nou/tenmon/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         use_system_libxisf.patch
-BuildRequires:  gcc-c++
+BuildRequires:  gcc%{?force_gcc_version}-c++ >= 12
 BuildRequires:  libXISF-devel
-BuildRequires:  libqt5-qtbase-devel
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5OpenGL)
-BuildRequires:  pkgconfig(Qt5Sql)
-BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  qt6-base-devel >= 6.2.0
+BuildRequires:  pkgconfig(Qt6OpenGL)
+BuildRequires:  pkgconfig(Qt6Qml)
+BuildRequires:  pkgconfig(Qt6Sql)
+BuildRequires:  pkgconfig(Qt6Widgets)
 BuildRequires:  pkgconfig(cfitsio)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gsl)
@@ -61,7 +66,11 @@ Features included, but not limited to:
 export CFLAGS=$(echo "$CFLAGS -Wno-switch -Wno-catch-value")
 export  CXXFLAGS=$(echo "$CXXFLAGS -Wno-switch -Wno-catch-value")
 %cmake \
- -DRELEASE_BUILD=ON
+ -DRELEASE_BUILD=ON \
+%if 0%{?force_gcc_version}
+    -DCMAKE_CXX_COMPILER=%{_bindir}/g++-%{?force_gcc_version} \
+%endif
+
 %cmake_build
 
 %install

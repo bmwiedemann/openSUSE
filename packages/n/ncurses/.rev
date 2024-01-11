@@ -4373,4 +4373,14 @@
   + reduce compiler-warnings in configure checks</comment>
     <requestid>1132459</requestid>
   </revision>
+  <revision rev="255" vrev="28">
+    <srcmd5>259fc755a45b6d789ffd7467359fa6da</srcmd5>
+    <version>unknown</version>
+    <time>1705003469</time>
+    <user>anag+factory</user>
+    <comment>- Add foot to terminfo-base. It's the most compliant wayland
+  terminal emulator according to
+  https://github.com/dankamongmen/notcurses/blob/master/TERMINALS.md (forwarded request 1137701 from lnussel)</comment>
+    <requestid>1137727</requestid>
+  </revision>
 </revisionlist>

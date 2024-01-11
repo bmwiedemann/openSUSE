@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Jan 10 19:23:07 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.20.2:
+  https://istio.io/latest/news/releases/1.20.x/announcing-1.20.2/
+  * Changes
+    - Added configurable scaling behavior for Gateway
+      HorizontalPodAutoscaler in the helm chart. (usage)
+    - Fixed a bug where overlapping wildcard hosts in a
+      VirtualService produces incorrect routing configurations when
+      wildcard services were selected (e.g. in ServiceEntry).
+      (Issue #45415)
+    - Fixed an issue where Istio was performing additional XDS
+      pushes for StatefulSets and headless Service endpoints while
+      scaling. (Issue #48207)
+    - Fixed an issue where the Istio injection webhook may be
+      modified in dry-run mode. (Issue #48241)
+    - Fixed an issue if DestinationRule’s exportTo includes
+      workload’s current namespace (not ‘.’), other namespaces are
+      ignored from exportTo. (Issue #48349)
+    - Fixed an issue where the QUIC listeners were not correctly
+      created when dual-stack is enabled. (Issue #48336)
+    - Fixed an issue where istioctl proxy-config ecds didn’t
+      display all EcdsConfigDump.
+    - Fixed an issue where new endpoints may not be sent to
+      proxies. (Issue #48373)
+    - Fixed an issue where installing with Stackdriver and using
+      custom configurations would prevent Stackdriver from being
+      enabled.
+    - Fixed an issue where long-lived connections, TCP bytes and
+      gRPC, could result in a proxy memory leak.
+
+-------------------------------------------------------------------
 Tue Dec 12 21:41:43 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.20.1:
