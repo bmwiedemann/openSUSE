@@ -6465,9 +6465,17 @@ unsorted:
   - ghc-void-doc 
   - ghc-void-prof 
   - ghc-vty 
+  - ghc-vty-crossplatform 
+  - ghc-vty-crossplatform-devel 
+  - ghc-vty-crossplatform-doc 
+  - ghc-vty-crossplatform-prof 
   - ghc-vty-devel 
   - ghc-vty-doc 
   - ghc-vty-prof 
+  - ghc-vty-unix 
+  - ghc-vty-unix-devel 
+  - ghc-vty-unix-doc 
+  - ghc-vty-unix-prof 
   - ghc-wai 
   - ghc-wai-app-static 
   - ghc-wai-app-static-devel 
@@ -9117,6 +9125,7 @@ unsorted:
   - kdbusaddons-devel 
   - kddockwidgets-devel 
   - kddockwidgets-qt6-devel 
+  - kde-fcstd-thumbnailer 
   - kde-l10n-devel 
   - kde-oxygen-fonts 
   - kde-theme-dracula 
@@ -12929,7 +12938,7 @@ unsorted:
   - libjack0-32bit 
   - libjacknet0-32bit 
   - libjackserver0-32bit 
-  - libjanet1_32 
+  - libjanet1_33 
   - libjansson-devel 
   - libjasper-devel 
   - libjasper7-32bit 
@@ -14233,15 +14242,15 @@ unsorted:
   - libprofiler0 
   - libproj25 
   - libprotobuf-c-devel 
-  - libprotobuf-lite23_4_0-32bit 
+  - libprotobuf-lite25_1_0-32bit 
   - libprotobuf-lite3_21_12 
   - libprotobuf-lite3_21_12-32bit 
   - libprotobuf-nanopb0 
-  - libprotobuf23_4_0-32bit 
+  - libprotobuf25_1_0-32bit 
   - libprotobuf3_21_12 
   - libprotobuf3_21_12-32bit 
-  - libprotoc23_4_0 
-  - libprotoc23_4_0-32bit 
+  - libprotoc25_1_0 
+  - libprotoc25_1_0-32bit 
   - libprotoc3_21_12 
   - libprotoc3_21_12-32bit 
   - libproxy-devel 
@@ -15983,6 +15992,7 @@ unsorted:
   - libxkbfile-devel-32bit 
   - libxkbfile1-32bit 
   - libxkbregistry-devel 
+  - libxkbregistry-devel-32bit 
   - libxkbregistry0-32bit 
   - libxkbui-devel 
   - libxkbui1 
@@ -24963,7 +24973,9 @@ unsorted:
   - python310-openpyxl 
   - python310-openqa_client 
   - python310-opentelemetry-api 
+  - python310-opentelemetry-sdk 
   - python310-opentelemetry-semantic-conventions 
+  - python310-opentelemetry-test-utils 
   - python310-opentracing 
   - python310-openwrt-luci-rpc 
   - python310-opt-einsum 
@@ -28400,7 +28412,9 @@ unsorted:
   - python311-openpyxl 
   - python311-openqa_client 
   - python311-opentelemetry-api 
+  - python311-opentelemetry-sdk 
   - python311-opentelemetry-semantic-conventions 
+  - python311-opentelemetry-test-utils 
   - python311-opentracing 
   - python311-openwrt-luci-rpc 
   - python311-opt-einsum 
@@ -31895,7 +31909,9 @@ unsorted:
   - python39-openpyxl 
   - python39-openqa_client 
   - python39-opentelemetry-api 
+  - python39-opentelemetry-sdk 
   - python39-opentelemetry-semantic-conventions 
+  - python39-opentelemetry-test-utils 
   - python39-opentracing 
   - python39-openwrt-luci-rpc 
   - python39-opt-einsum 
@@ -35237,6 +35253,7 @@ unsorted:
   - stk-devel 
   - stl-thumb 
   - stl-thumb-devel 
+  - stl-thumb-kde 
   - stlink 
   - stlink-devel 
   - stlink-gui 
