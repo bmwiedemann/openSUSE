@@ -4,26 +4,26 @@
   <attribute namespace="OBS" name="ApprovedRequestSource"/>
   <attribute namespace="OSRT" name="IgnoredIssues">
     <value>last_seen:
-  boo#1207390: '20240109'
-  boo#1207940: '20240109'
-  boo#1209053: '20240109'
-  boo#1209728: '20240109'
-  boo#1216660: '20240109'
+  boo#1207390: '20240110'
+  boo#1207940: '20240110'
+  boo#1209053: '20240110'
+  boo#1209728: '20240110'
+  boo#1216660: '20240110'
   boo#1217029: '20240109'
   boo#1217683: '20240109'
   boo#1218131: '20240109'
-  boo#1218492: '20240109'
+  boo#1218492: '20240110'
   boo#1218565: '20240107'
   poo#120459: '20240110'
-  poo#132191: '20240109'
+  poo#132191: '20240110'
   poo#134078: '20240109'
-  poo#137423: '20240108'
-  poo#138743: '20240108'
-  poo#152320: '20240109'
-  poo#152551: '20240109'
+  poo#137423: '20240110'
+  poo#138743: '20240110'
+  poo#152320: '20240110'
+  poo#152551: '20240110'
   poo#152793: '20240109'
-  poo#152829: '20240109'
-  poo#153105: '20240109'
+  poo#152829: '20240110'
+  poo#153105: '20240110'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="Config">
@@ -477,7 +477,7 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: ''
+    <value>failed: '20240110'
 published: '20240109'
 publishing: '20240109'
 testing: '20240110'
