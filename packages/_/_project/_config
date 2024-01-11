@@ -2389,6 +2389,7 @@ BuildFlags: onlybuild:openldap2
 BuildFlags: onlybuild:openmpi4:standard
 BuildFlags: onlybuild:openpgm
 BuildFlags: onlybuild:opensp
+BuildFlags: onlybuild:openspecfun
 BuildFlags: onlybuild:openssh
 BuildFlags: onlybuild:openssl
 BuildFlags: onlybuild:openssl-1_0_0
