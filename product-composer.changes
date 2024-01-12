@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan 11 08:17:38 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.3.1
+  * Supporting new 0.1 schema with extended functionality
+  * signature handling fix
+  * refactoring and code cleanup and documentation updates
+
+-------------------------------------------------------------------
 Tue Dec  5 14:46:55 UTC 2023 - Adrian Schröter <adrian@suse.de>
 
 - update to version 0.2
