@@ -17,9 +17,12 @@
 #
 
 
+# Requires python-furo
+%bcond_with docs
+
 %{?sle15_python_module_pythons}
 Name:           python-greenlet
-Version:        3.0.2
+Version:        3.0.3
 Release:        0
 Summary:        Lightweight in-process concurrent programming
 License:        MIT
@@ -27,7 +30,7 @@ Group:          Development/Libraries/Python
 URL:            https://github.com/python-greenlet/greenlet
 Source0:        https://files.pythonhosted.org/packages/source/g/greenlet/greenlet-%{version}.tar.gz
 Source9:        python-greenlet-rpmlintrc
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module objgraph}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module psutil}
@@ -36,7 +39,10 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if %{with docs}
 BuildRequires:  python3-Sphinx
+BuildRequires:  python3-furo
+%endif
 %python_subpackages
 
 %description
@@ -56,13 +62,16 @@ This package contains header files required for C modules development.
 
 %prep
 %autosetup -p1 -n greenlet-%{version}
+sed -i '1{/env python/d}' src/greenlet/tests/test_version.py
 
 %build
 export CFLAGS="%{optflags} -fno-tree-dominator-opts -fno-strict-aliasing"
 %pyproject_wheel
 
+%if %{with docs}
 export PYTHONPATH=$PWD/src
 cd docs && make html && rm _build/html/.buildinfo
+%endif
 
 %install
 %pyproject_install
@@ -76,9 +85,12 @@ export GREENLET_MANYLINUX=1
 
 %files %{python_files}
 %doc AUTHORS CHANGES.rst README.rst
+%if %{with docs}
 %doc docs/_build/html/
+%endif
 %license LICENSE*
-%{python_sitearch}/greenlet*
+%{python_sitearch}/greenlet
+%{python_sitearch}/greenlet-%{version}.dist-info
 
 %files %{python_files devel}
 %doc AUTHORS

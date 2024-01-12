@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 11 13:28:34 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add patch openssl-3.2.patch gh#tornadoweb/tornado#3355
+
+-------------------------------------------------------------------
 Wed Jan  3 10:27:22 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.4:

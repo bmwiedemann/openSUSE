@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jan 11 08:37:53 UTC 2024 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 2.228:
+  * Allow container domains to watch fifo_files
+  * container_engine_t: improve for podman in kubernetes case
+  * Allow spc_t to transition to install_t domain
+  * Default to allowing containers to use dri devices
+  * Allow access to BPF Filesystems
+  * Fix kubernetes transition rule
+  * Label kubensenter as well as kubenswrapper
+  * Allow container domains to execute container_runtime_tmpfs_t files
+  * Allow container domains to ptrace themselves
+  * Allow container domains to use container_runtime_tmpfs_t as an entrypoint
+  * Add boolean to allow containers to use dri devices
+  * Give containers access to pod resources endpoint
+  * Label kubenswrapper kubelet_exec_t
+
+-------------------------------------------------------------------
 Wed Sep 20 14:21:29 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
 
 - Update to version 2.222:

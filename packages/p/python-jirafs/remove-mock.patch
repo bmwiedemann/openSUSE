@@ -1,11 +1,12 @@
-From 2aa5e4620920f51a9ad4e3ade05b45e88aaf7155 Mon Sep 17 00:00:00 2001
+From 9acae1e687078a1012d62641087c9d78a7be8925 Mon Sep 17 00:00:00 2001
 From: Steve Kowalik <steven@wedontsleep.org>
-Date: Fri, 2 Jun 2023 15:47:09 +1000
+Date: Fri, 12 Jan 2024 13:15:14 +1100
 Subject: [PATCH] Switch to unittest.mock
 
 Python 3.3+ has included mock in the standard library, under the
 unittest module. Switch to using that, rather than the external mock
-library.
+library. As a drive-by, stop using a deprecated assertion call in
+one callsite.
 
 Fixes #69
 ---
@@ -14,9 +15,9 @@ Fixes #69
  tests/commands/test_push.py  | 2 +-
  tests/test_command_result.py | 2 +-
  tests/test_plugins.py        | 4 ++--
- tests/test_ticketfolder.py   | 4 ++--
+ tests/test_ticketfolder.py   | 6 +++---
  tests/test_utils.py          | 2 +-
- 7 files changed, 10 insertions(+), 10 deletions(-)
+ 7 files changed, 11 insertions(+), 11 deletions(-)
 
 diff --git a/.travis.yml b/.travis.yml
 index 76a9d96..1bcbae1 100644
@@ -82,7 +83,7 @@ index e1af5bf..f165874 100644
  from jirafs.plugin import MacroPlugin
  from jirafs.utils import run_command_method_with_kwargs
 diff --git a/tests/test_ticketfolder.py b/tests/test_ticketfolder.py
-index f93d2b7..eba31d6 100644
+index f93d2b7..96ad341 100644
 --- a/tests/test_ticketfolder.py
 +++ b/tests/test_ticketfolder.py
 @@ -4,9 +4,9 @@
@@ -97,6 +98,15 @@ index f93d2b7..eba31d6 100644
  
  from jirafs import exceptions
  from jirafs.jirafieldmanager import JiraFieldManager
+@@ -63,7 +63,7 @@ def test_get_fields(self):
+ 
+         expected_result = json.loads(self.get_asset_contents("basic.status.json"))
+ 
+-        self.assertEquals(actual_result, expected_result)
++        self.assertEqual(actual_result, expected_result)
+ 
+     def test_fetch(self):
+         self.ticketfolder._issue = self.rehydrate_issue("test_fetch/fetched.json")
 diff --git a/tests/test_utils.py b/tests/test_utils.py
 index c26246f..7c9e41e 100644
 --- a/tests/test_utils.py

@@ -1,7 +1,7 @@
 #
 # spec file for package libgedit-amtk
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define api_ver 5
 
 Name:           libgedit-amtk
@@ -27,8 +28,8 @@ Source:         %name-%version.tar.xz
 BuildRequires:  gtk-doc >= 1.25
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 
 %description
@@ -65,6 +66,7 @@ Summary:        Development files for Tepl, a text editor framework
 Group:          Development/Libraries/GNOME
 Requires:       libgedit-amtk-%{api_ver}-0 = %{version}
 Requires:       typelib-1_0-Amtk-%{api_ver} = %{version}
+Conflicts:      amtk-devel
 
 %description devel
 “Actions, Menus and Toolbars Kit” or just AMTK is a basic
@@ -111,4 +113,3 @@ with AMTK.
 %files -n %{name}-%{api_ver}-lang -f %{name}-%{api_ver}.lang
 
 %changelog
-

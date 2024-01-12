@@ -1,4 +1,95 @@
 -------------------------------------------------------------------
+Fri Jan 12 08:21:20 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.4.3:
+  * This is a bugfix release that fixes test
+    failures with Sphinx 7.2 and later, and adds support for
+    Python 3.12
+  * Rename requires_numpy_testing decorator to
+    requires_numpy_typing, and have it check for numpy.typing,
+    not numpy.testing.
+  * Fix missing numpy_examples directory in traits-stubs package
+    data.
+  * Validation of items within a container (e.g., foos =
+    List(MyTraitType)) now always matches the validation used for
+    the item trait at top level (e.g., foo = MyTraitType).
+    Previously, the validation methods used could differ, thanks
+    to a bug in the container implementations. For most trait
+    types this will make no difference, but for the Tuple trait
+    type this change has the consequence that lists will no
+    longer be accepted as valid for Tuple traits inside list
+    items. See issue #1619 and PR #1625 for more information.
+  * Related to the above: a top-level Tuple() trait declaration
+    currently accepts Python list objects, while a Tuple
+    declaration with explicit item types (for example
+    Tuple(Int(), Int())) does not. The support for list objects
+    in plain Tuple() is deprecated, and will be removed in a
+    future version of Traits. See PR #1627 for more information.
+  * The following people contributed code changes for this
+    release: * Caio Agiani * Steve Allen * Mark Dickinson * Sai
+    Rahul Poruri * Corran Webster Features ~~~~~~~~ * ETSConfig
+    attributes now support deletion. This makes it easier to make
+  * Complex trait type validation is now more lenient: any type
+    that implements __complex__ will be accepted.
+  * BaseFloat validation is now more lenient, and matches Float
+    validation: BaseFloat now also accepts objects whose type has
+    an __index__ method.
+  * An enumerate alias has been removed from traits.trait_base.
+    In the unlikely event of code that imports enumerate from
+    traits.trait_base, use the built-in enumerate instead.
+  * Fast validation tuples int_fast_validate, float_fast_validate
+    and complex_fast_validate have been removed from the
+    traits.trait_types module.
+  * TraitListObject, TraitDict object and TraitSetObject now use
+    the validate method of the appropriate CTrait instances to
+    validate items, keys and values. Previously the handler's
+    validate method was used; this gave buggy behaviour in cases
+    where the handler's validate method differed from the actual
+    validation in use.
+  * Fix specification of default_value that incorrectly
+    disregarded default_value_type.
+  * Fix incorrect results from  clone_traits applied to List,
+    Dict and Set traits.
+  * The find_resource and store_resource tests are now skipped if
+    the pkg_resources module is not present in the environment.
+  * An ETSConfig test has been renamed so that it's properly
+    picked up by the test runner.
+  * Fix some ETSConfig tests that assume unittest as the test
+    runner.
+  * Rename various test-related classes to avoid pytest trying to
+    harvest test methods from them.
+  * Overriding a default for a List or other collection trait in
+    a subclass now works as expected. Previously, the behaviour
+    was unusably buggy.
+  * Tuple traits currently accept Python list objects in some
+    (but not all) circumstances. That feature is deprecated, and
+    will be removed in a future version of Traits.
+  * Add stubs for Array, ArrayOrNone, and CArray.
+  * Fix various stubs for traits.trait_types; add stubs for
+    traits.ctraits.
+  * Fix that TraitError stubs weren't exposed at traits.api
+    level.
+  * Make Int and Float type stubs more accurate.
+  * Fix incorrect type stubs for the Dict trait type.
+  * Make ETSConfig class documentation visible in the API docs.
+  * Add copy buttons to code samples in documentation.
+  * Document Date, Datetime and Time trait types.
+  * Fix some missing mentions of Set in notification docs.
+  * Document the 'some_trait.-' pattern for on_trait_change.
+  * Document that Either should not be used in new code.
+  * Document that TraitPrefixMap and TraitPrefixList are
+    deprecated.
+  * Document that the Trait factory function should not be used
+    in new code.
+  * Miscellaneous minor fixes.
+  * Don't collect traits-stubs tests under pytest. As a result of
+    this and other fixes, the test suite now passes under pytest.
+  * Update etstool.py for Python 3.8 support. Python 3.8 is now
+    the default Python version for builds.
+  * Use PySide6 for Python >= 3.8 instead of PySide2 in CI
+    testing.
+
+-------------------------------------------------------------------
 Wed Oct 27 03:27:30 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 6.3.1:
@@ -52,18 +143,18 @@ Sun Feb 21 18:29:21 UTC 2021 - andy great <andythe_great@pm.me>
 - Skip python 3.6.
 - Change source URL to Github.
 - Update to version 6.2.0.
-  * The Traits examples are now distributed as part of the Traits 
+  * The Traits examples are now distributed as part of the Traits
     egg, and are contributed to the etsdemo application.
-  * Performance of the observe framework has been significantly 
+  * Performance of the observe framework has been significantly
     improved.
   * It's no longer necessary to specify a trait comparison mode of
     ComparisonMode.identity when using observe to observe items
     in a List, Dict or Set.
-  * When importing from Traits, you should always import from one 
-    of the api modules (for example, traits.api, 
-    traits.adaptation.api, etc.) This recommendation has now been 
-    made explicit in the documentation. If you find something you 
-    need that's not available from one of the api modules, please 
+  * When importing from Traits, you should always import from one
+    of the api modules (for example, traits.api,
+    traits.adaptation.api, etc.) This recommendation has now been
+    made explicit in the documentation. If you find something you
+    need that's not available from one of the api modules, please
     let the Traits developers know.
 
 -------------------------------------------------------------------
@@ -223,7 +314,7 @@ Wed Aug 23 18:40:23 UTC 2017 - toddrme2178@gmail.com
 Mon Oct 13 15:10:40 UTC 2014 - toddrme2178@gmail.com
 
 - Updated to version 4.5.0
-  + Traits is now compatible with Python 3! 
+  + Traits is now compatible with Python 3!
     The library now supports Python 3.2 and 3.3 .
   + The release also includes increased code coverage and automatic
     coverage report through coveralls.io .

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 12 02:16:58 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Refresh remove-mock.patch from upstream to also support Python 3.12. 
+
+-------------------------------------------------------------------
 Fri Jun  2 06:06:23 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.3.1:

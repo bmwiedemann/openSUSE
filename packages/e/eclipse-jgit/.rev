@@ -119,4 +119,12 @@
     <comment>fix build with newer apache-sshd</comment>
     <requestid>1121387</requestid>
   </revision>
+  <revision rev="16" vrev="11">
+    <srcmd5>7dd6936ec4fe5c5e9ceb8005dfad1b1b</srcmd5>
+    <version>5.11.0</version>
+    <time>1705099602</time>
+    <user>anag+factory</user>
+    <comment>prepare build against apache-sshd 2.12+ that will have security fixes</comment>
+    <requestid>1138347</requestid>
+  </revision>
 </revisionlist>

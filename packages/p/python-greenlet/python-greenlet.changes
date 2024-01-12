@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan 10 22:14:16 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.0.3
+  * Python 3.12: Restore the full ability to walk the stack of a
+    suspended greenlet; previously only the innermost frame was
+    exposed. See issue 388. Fix by Joshua Oreman in PR 393.
+- Disable building the docs: Now requires the furo theme, which is
+  not available.
+
+-------------------------------------------------------------------
 Wed Jan  3 10:40:03 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - require setuptools

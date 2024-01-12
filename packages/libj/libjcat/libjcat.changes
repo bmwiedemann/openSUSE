@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 10 09:17:52 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not install test files: pass -Dtest=false to meson instead of
+  Dtest=true (aids with reproducible build, boo#1218715).
+- Add check section and run meson test.
+
+-------------------------------------------------------------------
 Thu Jan  4 16:39:57 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.2.0:

@@ -1,7 +1,7 @@
 #
 # spec file for package osdlyrics
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,7 +44,6 @@ BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(sqlite3)
 Requires:       gtk2
 Requires:       python3-chardet
-Requires:       python3-future
 Requires:       python3-pycurl
 Requires:       sqlite3
 Recommends:     %{name}-lang

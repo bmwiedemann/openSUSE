@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 12 07:28:55 UTC 2024 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add fix_efi_measure.patch to fix the measurement of EFI binaries
+
+-------------------------------------------------------------------
 Fri Dec  8 07:17:35 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update to 0.5.4

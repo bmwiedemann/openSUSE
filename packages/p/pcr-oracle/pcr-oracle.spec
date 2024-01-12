@@ -1,7 +1,7 @@
 #
 # spec file for package pcr-oracle
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        GPL-2.0-only
 Group:          System/Boot
 URL:            https://github.com/okirch/pcr-oracle
 Source:         %{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM fix_efi_measure.patch gh#okirch/pcr-oracle!47
+Patch0:         fix_efi_measure.patch
 BuildRequires:  libopenssl-devel >= 0.9.8
 BuildRequires:  tpm2-0-tss-devel >= 2.4.0
 Requires:       libtss2-tcti-device0

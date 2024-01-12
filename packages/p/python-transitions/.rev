@@ -88,4 +88,41 @@
     <comment></comment>
     <requestid>946130</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0ed5a5ca8edc7251a6558677e2477eb3</srcmd5>
+    <version>0.9.0</version>
+    <time>1705099551</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.9.0:
+  * removed legacy implementation of `HierarchicalMachine` from
+    the package
+  * Bug #551: Fix active state styling in `GraphMachine` (thanks
+    @betaboon)
+  * Bug #554: Fix issues related to scopes and queueing in
+    `HierachicalMachine` (thanks @jankrejci)
+  * Bug #568: Reflexive transitions (dest: '=') had not been
+    resolved correctly when source was a wildcard (thanks @jnu)
+  * Bug #568: HSM did not detect reflexive transitions if src was
+    a parent state (thanks @lostcontrol)
+  * Bug #569: Fix implicit fallback to `graphviz` when
+    `pygraphviz` was not installed (thanks @FridjofAmundsen)
+  * Bug #580: Fix `on_timeout` callback resolution when timeout
+    had been initialized with `timeout=0` (thanks @Rysbai)
+  * Bug #582: Last label in `GraphSupport` was not correctly
+    aligned when `show_attributes=True` (thanks @spagh-eddie)
+  * Feature: Add pyi stub files for better type hinting. Since
+    many functions and constructors allow rather arbitrary
+    arguments time will tell whether typing should be strict (and
+    cause more mypy issues) or more relaxed (and thus less
+    precise).
+  * Feature: Reviewed and improved method documentation
+  * Feature #549: Add `may` transition check to transitions
+    (thanks @artofhuman)
+  * Feature #552: Refactored error handling to be able to handle
+    `MachineError` in `on_exception` callbacks (thanks @kpihus)
+  * Feature: Add `mypy` to test workflow
+  * PR #461: Add `Retry` state to supported state stereotypes
+    (thanks @rgov)</comment>
+    <requestid>1138239</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Fri Jan  10 12:01:49 UTC 2024 - Noel Power <nopower@suse.com>
+
+- Remove -x from bash shebang update-apparmor-samba-profile;
+  (bsc#1218431).
+
+-------------------------------------------------------------------
+Tue Jan  9 09:42:53 UTC 2024 - Noel Power <nopower@suse.com>
+
+- Update to 4.19.4
+  * net changesecretpw cannot set the machine account password if
+    secrets.tdb is empty; (bso#13577).
+  * For generating doc, take, if defined, env XML_CATALOG_FILES;
+    (bso#15540).
+  * Trivial C typo in nsswitch/winbind_nss_netbsd.c; (bso#15541).
+  * vfs_linux_xfs is incorrectly named; (bso#15542).
+  * systemd stumbled over copyright-message at smbd startup;
+    (bso#15377).
+  * Following intermediate abolute share-local symlinks is
+    broken; (bso#15505).
+  * ctdb RELEASE_IP causes a crash in release_ip if a connection
+    to a non-public address disconnects first; (bso#15523).
+  * shadow_copy2 broken when current fileset's directories are
+    removed; (bso#15544).
+  * smbd does not detect ctdb public ipv6 addresses for
+    multichannel exclusion; (bso#15534).
+  * 'force user = localunixuser' doesn't work if 'allow trusted
+    domains = no' is set; (bso#15469).
+  * smbget debug logging doesn't work; (bso#15525).
+  * smget: username in the smburl and interactive password entry
+    doesn't work; (bso#15532).
+  * smbget auth function doesn't set values for password prompt
+    correctly; (bso#15538).
+  * Unable to copy and write files from clients to Ceph cluster
+    via SMB Linux gateway with Ceph VFS module; (bso#15440).
+  * Multichannel refresh network information; (bso#15547).
+
+-------------------------------------------------------------------
+Mon Nov 27 12:43:02 UTC 2023 - Noel Power <nopower@suse.com>
+
+- Update to 4.19.3
+  * sid_strings test broken by unix epoch > 1700000000;
+    (bso#15520).
+  * smbd crashes if asked to return full information on close of
+    a stream handle with delete on close disposition set;
+    (bso#15487).
+  * smbd: fix close order of base_fsp and stream_fsp in
+    smb_fname_fsp_destructor(); (bso#15521).
+  * Improve logging for failover scenarios; (bso#15499).
+  * Files without "read attributes" NFS4 ACL permission are not
+    listed in directories; (bso#15093).
+  * CVE-2018-14628 [SECURITY] Deleted Object tombstones visible
+    in AD LDAP to normal users; (bso#13595).
+  * Kerberos TGS-REQ with User2User does not work for normal
+    accounts; (bso#15492).
+  * vfs_gpfs stat calls fail due to file system permissions;
+    (bso#15507).
+  * Samba doesn't build with Python 3.12; (bso#15513).
+
+-------------------------------------------------------------------
 Mon Oct 23 18:59:15 UTC 2023 - David Mulder <dmulder@suse.com>
 
 - packaging: samba-tool domain provision requires python3-Markdown;

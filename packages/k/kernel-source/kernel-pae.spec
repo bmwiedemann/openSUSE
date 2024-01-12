@@ -18,8 +18,8 @@
 
 
 %define srcversion 6.6
-%define patchversion 6.6.10
-%define git_commit e04388ed79f6d15fba9ab58fb2ba0ac47fc955f9
+%define patchversion 6.6.11
+%define git_commit 05ae4ada30ff79567ddbd9fdb8f1a513b0e1c8df
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -113,9 +113,9 @@ Name:           kernel-pae
 Summary:        Kernel with PAE Support
 License:        GPL-2.0-only
 Group:          System/Kernel
-Version:        6.6.10
+Version:        6.6.11
 %if 0%{?is_kotd}
-Release:        <RELEASE>.ge04388e
+Release:        <RELEASE>.g05ae4ad
 %else
 Release:        0
 %endif

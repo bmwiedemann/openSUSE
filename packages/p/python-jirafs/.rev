@@ -115,4 +115,12 @@
 - Add patch remove-mock.patch.</comment>
     <requestid>1090427</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>f0fe32ce99e05b4529a70e2685269a5e</srcmd5>
+    <version>2.3.1</version>
+    <time>1705099530</time>
+    <user>anag+factory</user>
+    <comment>- Refresh remove-mock.patch from upstream to also support Python 3.12.</comment>
+    <requestid>1138195</requestid>
+  </revision>
 </revisionlist>

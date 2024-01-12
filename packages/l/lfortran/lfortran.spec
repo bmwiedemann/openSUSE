@@ -42,6 +42,9 @@ BuildRequires: cmake
 BuildRequires: fmt-devel
 BuildRequires: gcc-c++ >= 8
 BuildRequires: nlohmann_json-devel
+BuildRequires: kokkos-devel
+# kokkos is not link, but only use for backend=cpp
+Requires: kokkos-devel
 BuildRequires: libffi-devel
 BuildRequires: libunwind-devel
 BuildRequires: libuuid-devel
@@ -102,6 +105,7 @@ This package contains static runtime library for %{name}.
        -DWITH_RUNTIME_LIBRARY=ON \
        -DWITH_FMT=ON \
        -DWITH_JSON=ON \
+       -DWITH_KOKKOS=ON \
        -DWITH_STACKTRACE=OFF \
        -DWITH_UNWIND=ON \
        -DWITH_WHEREAMI=OFF \

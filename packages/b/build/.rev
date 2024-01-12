@@ -1710,4 +1710,16 @@ Changes:
 - obsproduct build type got renamed to productcompose</comment>
     <requestid>1130219</requestid>
   </revision>
+  <revision rev="159" vrev="1">
+    <srcmd5>95e21d7e9b89840b095d29c92340ed42</srcmd5>
+    <version>20240111</version>
+    <time>1705099460</time>
+    <user>anag+factory</user>
+    <comment>- productcompose:
+  - support schema 0.1
+  - support milestones
+- Leap 15.6 config
+- SLE 15 SP6 config</comment>
+    <requestid>1138097</requestid>
+  </revision>
 </revisionlist>

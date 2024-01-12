@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 12 21:01:37 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1705059022.6814720:
+  * Add SLE15SP6 Backports OBS CI integration
+  * Update docs for asset cache
+  * ObsRsync: Consistently expand status URL
+
+-------------------------------------------------------------------
 Wed Jan 10 11:39:43 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1704886775.b5e992e:

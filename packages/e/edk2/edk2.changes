@@ -1,7 +1,35 @@
 -------------------------------------------------------------------
+Thu Jan 11 16:14:31 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update edk2 to 202311
+  * changelog: https://github.com/tianocore/edk2/releases/tag/edk2-stable202311
+- Update edk2-platforms to version 0.0~20231122T151253~10e2eb03
+- Update edk2-non-osi to version 0.0~20231130T122146~1f4d784
+- Update openssl to 3.0.9
+- Update openssl.keyring
+- Add public_mipi_sys_t
+- Add mbedtls
+- Add googletest
+
+-------------------------------------------------------------------
 Tue Sep  5 10:09:13 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
 
 - Drop python2 dependency, python2 is obsolete.
+
+-------------------------------------------------------------------
+Tue May  9 12:08:32 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add edk2-cmocka
+
+-------------------------------------------------------------------
+Fri May  5 08:33:53 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update edk2 to 202302:
+  * changelog: https://github.com/tianocore/edk2/releases/tag/edk2-stable202302
+- Update edk2-platforms to version 20230502T103753~35a84b183
+- Update edk2-non-osi to version 0.0~20230321T164703~4187607
+- Update openssl to 1.1.1t
+- Update openssl.keyring
 
 -------------------------------------------------------------------
 Mon Apr  3 09:45:11 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>

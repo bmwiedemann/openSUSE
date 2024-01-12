@@ -1,7 +1,7 @@
 #
 # spec file for package libfcache
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libfcache
 %define lname	libfcache1
-Version:        20230115
+Version:        20240112
 Release:        0
 Summary:        Library to provide generic file data cache functions
 License:        LGPL-3.0-or-later
@@ -29,25 +29,25 @@ Source2:        https://github.com/libyal/libfcache/releases/download/%version/l
 Source9:        %name.keyring
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libcdata) >= 20210625
-BuildRequires:  pkgconfig(libcerror) >= 20220101
-BuildRequires:  pkgconfig(libcthreads) >= 20220102
+BuildRequires:  pkgconfig(libcdata) >= 20240103
+BuildRequires:  pkgconfig(libcerror) >= 20240101
+BuildRequires:  pkgconfig(libcthreads) >= 20240102
 # Various notes: https://en.opensuse.org/libyal
 
 %description
 Library to provide generic file data cache functions for the libyal family of libraries.
 
-%package -n %{lname}
+%package -n %lname
 Summary:        Library to provide generic file data cache functions
 Group:          System/Libraries
 
-%description -n %{lname}
+%description -n %lname
 Library to provide generic file data cache functions for the libyal family of libraries.
 
 %package devel
 Summary:        Development files for libfcache
 Group:          Development/Libraries/C and C++
-Requires:       %{lname} = %{version}
+Requires:       %lname = %version
 
 %description devel
 Library to provide generic file data cache functions for the libyal family of libraries.
@@ -66,21 +66,21 @@ grep '  local' config.log && exit 1
 
 %install
 %make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+find %buildroot -type f -name "*.la" -delete -print
 
-%post   -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
+%post   -n %lname -p /sbin/ldconfig
+%postun -n %lname -p /sbin/ldconfig
 
-%files -n %{lname}
+%files -n %lname
 %license COPYING*
-%{_libdir}/libfcache.so.*
+%_libdir/libfcache.so.*
 
 %files devel
 %license COPYING*
-%{_includedir}/libfcache.h
-%{_includedir}/libfcache/
-%{_libdir}/libfcache.so
-%{_libdir}/pkgconfig/libfcache.pc
-%{_mandir}/man3/libfcache.3*
+%_includedir/libfcache.h
+%_includedir/libfcache/
+%_libdir/libfcache.so
+%_libdir/pkgconfig/libfcache.pc
+%_mandir/man3/libfcache.3*
 
 %changelog

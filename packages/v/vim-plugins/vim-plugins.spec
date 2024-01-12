@@ -1,7 +1,7 @@
 #
 # spec file for package vim-plugins
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,7 +42,7 @@
 %define multiplesearch_version	1.3
 %define neomutt_version		20220612
 %define NERDcommenter_version	2.7.0
-%define NERDtree_version	6.10.16
+%define NERDtree_version	7.1.0
 %define project_version		1.4.1
 %define quilt_version		0.9.7
 %define rails_version		5.2
@@ -51,7 +51,7 @@
 %define showmarks_version	2.3
 %define snipmate_version	0.83
 %define supertab_version	2.1
-%define table_mode_version	4.7.6.1
+%define table_mode_version	4.8.1
 %define taglist_version		4.6
 %define tlib_version		1.28
 %define tregisters_version	0.2

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan 12 21:15:20 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1705076298.32001ad:
+  * Add test package spec for sub-packages
+  * Add SLE16 Backports OBS CI integration
+  * Revert "[RFC] Test OBS CI against SLE_15_SP5_Backports"
+  * Revert "Test OBS CI against SLE_15_all_Backports"
+  * Test OBS CI against SLE_15_all_Backports
+
+-------------------------------------------------------------------
 Wed Jan 10 13:13:59 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1704884885.e3cee62:

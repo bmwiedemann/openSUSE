@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 12 10:16:51 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.4.13
+  * Do not invoke ListPerm on transformations
+
+-------------------------------------------------------------------
 Tue Dec 20 21:55:00 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.4.12

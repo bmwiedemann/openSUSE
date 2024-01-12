@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Jan 12 08:18:36 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.0:
+  * Some of the major work has been on making performance
+    improvements to the more data intensive parts of the package.
+    There should be some improvements across the board, however
+    some exciting new performance features include:
+  * A new HTTP transfer mechanism that uses a pool of background
+    worker threads to transmit logs and reports to the Rollbar
+    system. You can enable it with the following...
+  * Removed Python 2
+  * Fixed handling `sensitive_post_parameters` decorator in
+    Django
+  * Fixed Werkzeug DeprecationWarning of `BaseRequest`
+  * Fixed missing locals shortening on items with "trace_chain"
+    instead of "trace"
+  * Fixed FastAPI version comparison
+  * Fixed #436 `WSGIRequest` has no attribute
+    `sensitive_post_parameters`.
+  * Added new `thread_pool` handler
+  * Added Rollbar branding to the readme
+  * Added batched transform to increase sanitization and
+    serialization performance
+- drop python-rollbar-no-unittest2.patch (upstream)
+
+-------------------------------------------------------------------
 Mon Feb 20 12:16:51 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 0.16.3:
@@ -26,7 +52,7 @@ Mon Jan 24 01:54:43 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
   * Collect user IP from X-Forwarded-For, fall back to X-Real-Ip. See #370
   * Improve examples. See #368
   * Fix Python 3.3 builds. See #374
-  * Fix Flask 0.x builds. See #376 
+  * Fix Flask 0.x builds. See #376
 - Add httpx to BuildRequires
 - Refresh python-rollbar-no-unittest2.patch
 
@@ -78,7 +104,7 @@ Mon Mar 25 14:08:31 UTC 2019 - pgajdos@suse.com
 
 - version update to 0.14.7
   * Create the configuration options, `capture_username`
-    and `capture_email`. 
+    and `capture_email`.
   * Create the configuration option `capture_ip`.
   * Fix `request.files_keys` for Flask
   * If you call `init` multiple times we will update the settings

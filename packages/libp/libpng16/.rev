@@ -748,4 +748,12 @@
   * Cleaned up the code, the build scripts, and the documentation. (forwarded request 1094720 from pluskalm)</comment>
     <requestid>1094850</requestid>
   </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>00b22e2a2c59d9de1f52c58e3f445c59</srcmd5>
+    <version>1.6.40</version>
+    <time>1705099457</time>
+    <user>anag+factory</user>
+    <comment>- fixes [bsc#1121624] CVE-2019-6129 and [bsc#1124211] CVE-2019-7317</comment>
+    <requestid>1138083</requestid>
+  </revision>
 </revisionlist>

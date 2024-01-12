@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan  5 10:48:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire rpm_macro(_kf5_kxmlguidir): Fix build after recent
+  KDE Frameworks changes.
+
+-------------------------------------------------------------------
 Thu Sep  7 15:51:56 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 1.2.10:

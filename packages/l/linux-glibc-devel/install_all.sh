@@ -27,7 +27,7 @@ fi
 git clone --single-branch -b "$2" "$1" "$kernel_dir"
 date=$(git -C "$kernel_dir" cat-file -p "$2" | awk '/^tagger/ { print $(NF-1) }')
 date -d "@$date" || exit 1
-remove="arc csky h8300 hexagon microblaze nds32 nios2 openrisc sh xtensa um"
+remove="arc csky hexagon microblaze nios2 openrisc sh xtensa um"
 archs=$(cd "$kernel_dir/arch" &&
 	  for arch in *; do
 	    test -d $arch || continue

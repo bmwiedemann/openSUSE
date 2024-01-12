@@ -1,7 +1,7 @@
 #
 # spec file for package xpp3
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,20 +23,20 @@ Summary:        XML Pull Parser
 License:        Apache-1.1
 Group:          Development/Libraries/Java
 URL:            http://www.extreme.indiana.edu/xgws/xsoap/xpp/mxp1/index.html
-Source0:        http://www.extreme.indiana.edu/dist/java-repository/xpp3/distributions/xpp3-%{version}_src.tgz
-Source1:        http://central.maven.org/maven2/xpp3/xpp3/%{version}/xpp3-%{version}.pom
-Source2:        http://central.maven.org/maven2/xpp3/xpp3_min/%{version}/xpp3_min-%{version}.pom
-Source3:        http://central.maven.org/maven2/xpp3/xpp3_xpath/%{version}/xpp3_xpath-%{version}.pom
+# The http://www.extreme.indiana.edu/dist/java-repository/xpp3/distributions/ does not exist any
+# more. So we used our cached tarball
+Source0:        xpp3-%{version}_src.tgz
+Source1:        https://repo1.maven.org/maven2/xpp3/xpp3/%{version}/xpp3-%{version}.pom
+Source2:        https://repo1.maven.org/maven2/xpp3/xpp3_min/%{version}/xpp3_min-%{version}.pom
+Source3:        https://repo1.maven.org/maven2/xpp3/xpp3_xpath/%{version}/xpp3_xpath-%{version}.pom
 Source4:        %{name}-%{version}-OSGI-MANIFEST.MF
 Patch0:         xpp3-sourcetarget.patch
 BuildRequires:  ant >= 1.6
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
-BuildRequires:  javapackages-tools
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  junit
 BuildRequires:  perl
 BuildRequires:  xml-commons-apis
-Requires:       java >= 1.4.2
 BuildArch:      noarch
 
 %description
@@ -97,9 +97,9 @@ rm -rf doc/{build.txt,api}
 
 # Install pom file
 install -d -m 755 %{buildroot}%{_mavenpomdir}
-install -p -m 644 %{SOURCE1} %{buildroot}%{_mavenpomdir}/%{name}.pom
-install -p -m 644 %{SOURCE2} %{buildroot}%{_mavenpomdir}/%{name}-minimal.pom
-install -p -m 644 %{SOURCE3} %{buildroot}%{_mavenpomdir}/%{name}-xpath.pom
+%{mvn_install_pom} %{SOURCE1} %{buildroot}%{_mavenpomdir}/%{name}.pom
+%{mvn_install_pom} %{SOURCE2} %{buildroot}%{_mavenpomdir}/%{name}-minimal.pom
+%{mvn_install_pom} %{SOURCE3} %{buildroot}%{_mavenpomdir}/%{name}-xpath.pom
 %add_maven_depmap %{name}.pom %{name}.jar
 %add_maven_depmap %{name}-minimal.pom %{name}-minimal.jar -f minimal
 %add_maven_depmap %{name}-xpath.pom %{name}-xpath.jar -f xpath

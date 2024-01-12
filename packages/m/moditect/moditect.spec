@@ -17,7 +17,7 @@
 
 
 Name:           moditect
-Version:        1.0.0.Final
+Version:        1.1.0
 Release:        0
 Summary:        Tooling for the Java Module System
 License:        Apache-2.0
@@ -28,7 +28,6 @@ BuildRequires:  maven-local
 BuildRequires:  mvn(com.github.javaparser:javaparser-core)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-shade-plugin)
-Obsoletes:      %{name} = 1.0.0.RC3
 BuildArch:      noarch
 
 %description

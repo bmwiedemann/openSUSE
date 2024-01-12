@@ -1,7 +1,7 @@
 #
 # spec file for package sca-patterns-sle11
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,11 +21,11 @@
 %define patdir %{patdirbase}/patterns
 %define patuser root
 %define patgrp root
-%define mode 544
+%define patmode 755
 %define category SLE
 
 Name:           sca-patterns-sle11
-Version:        1.5.3
+Version:        1.5.4
 Release:        0
 Summary:        Supportconfig Analysis Patterns for SLE11
 License:        GPL-2.0-only
@@ -56,12 +56,12 @@ install -d %{buildroot}/%{patdir}/%{category}/sle11sp1
 install -d %{buildroot}/%{patdir}/%{category}/sle11sp2
 install -d %{buildroot}/%{patdir}/%{category}/sle11sp3
 install -d %{buildroot}/%{patdir}/%{category}/sle11sp4
-install -m %{mode} patterns/%{category}/sle11all/* %{buildroot}/%{patdir}/%{category}/sle11all
-install -m %{mode} patterns/%{category}/sle11sp0/* %{buildroot}/%{patdir}/%{category}/sle11sp0
-install -m %{mode} patterns/%{category}/sle11sp1/* %{buildroot}/%{patdir}/%{category}/sle11sp1
-install -m %{mode} patterns/%{category}/sle11sp2/* %{buildroot}/%{patdir}/%{category}/sle11sp2
-install -m %{mode} patterns/%{category}/sle11sp3/* %{buildroot}/%{patdir}/%{category}/sle11sp3
-install -m %{mode} patterns/%{category}/sle11sp4/* %{buildroot}/%{patdir}/%{category}/sle11sp4
+install -m %{patmode} patterns/%{category}/sle11all/* %{buildroot}/%{patdir}/%{category}/sle11all
+install -m %{patmode} patterns/%{category}/sle11sp0/* %{buildroot}/%{patdir}/%{category}/sle11sp0
+install -m %{patmode} patterns/%{category}/sle11sp1/* %{buildroot}/%{patdir}/%{category}/sle11sp1
+install -m %{patmode} patterns/%{category}/sle11sp2/* %{buildroot}/%{patdir}/%{category}/sle11sp2
+install -m %{patmode} patterns/%{category}/sle11sp3/* %{buildroot}/%{patdir}/%{category}/sle11sp3
+install -m %{patmode} patterns/%{category}/sle11sp4/* %{buildroot}/%{patdir}/%{category}/sle11sp4
 %fdupes %{buildroot}
 
 %files
@@ -75,11 +75,11 @@ install -m %{mode} patterns/%{category}/sle11sp4/* %{buildroot}/%{patdir}/%{cate
 %dir %{patdir}/%{category}/sle11sp2
 %dir %{patdir}/%{category}/sle11sp3
 %dir %{patdir}/%{category}/sle11sp4
-%attr(%{mode},%{patuser},%{patgrp}) %{patdir}/%{category}/sle11all/*
-%attr(%{mode},%{patuser},%{patgrp}) %{patdir}/%{category}/sle11sp0/*
-%attr(%{mode},%{patuser},%{patgrp}) %{patdir}/%{category}/sle11sp1/*
-%attr(%{mode},%{patuser},%{patgrp}) %{patdir}/%{category}/sle11sp2/*
-%attr(%{mode},%{patuser},%{patgrp}) %{patdir}/%{category}/sle11sp3/*
-%attr(%{mode},%{patuser},%{patgrp}) %{patdir}/%{category}/sle11sp4/*
+%attr(%{patmode},%{patuser},%{patgrp}) %{patdir}/%{category}/sle11all/*
+%attr(%{patmode},%{patuser},%{patgrp}) %{patdir}/%{category}/sle11sp0/*
+%attr(%{patmode},%{patuser},%{patgrp}) %{patdir}/%{category}/sle11sp1/*
+%attr(%{patmode},%{patuser},%{patgrp}) %{patdir}/%{category}/sle11sp2/*
+%attr(%{patmode},%{patuser},%{patgrp}) %{patdir}/%{category}/sle11sp3/*
+%attr(%{patmode},%{patuser},%{patgrp}) %{patdir}/%{category}/sle11sp4/*
 
 %changelog

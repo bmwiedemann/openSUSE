@@ -127,4 +127,25 @@ Needed by python-seaborn, see request 436927</comment>
   - Drop use_old_setuptools_scm.patch</comment>
     <requestid>1095241</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>6d44497277d5d457958cb8b734100573</srcmd5>
+    <version>0.14.1</version>
+    <time>1705099554</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.14.1:
+  * This is a bug fix and future-proofing release that contains
+    all bug fixes that have been applied since 0.14.0 was
+    released.
+
+  * This is a bug-fix release from the 0.12.x branch. Users are
+- skip python 36 (scipy)
+  https://www.statsmodels.org/devel/release/version0.12.html
+  * Generalized Estimating Equation models
+  * Linear Mixed Effects Models
+  * Wrapper code for using X-12-ARIMA/X13-ARIMA-SEATS
+  * Substantial optimization in the ARIMA estimation code
+  * Some seasonal time-series features for plotting and decomposition
+- first package</comment>
+    <requestid>1138231</requestid>
+  </revision>
 </revisionlist>

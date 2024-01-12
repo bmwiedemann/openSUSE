@@ -1,7 +1,7 @@
 #
 # spec file for package python-gevent
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,14 @@
 #
 
 
-%define modname gevent
 # on TW, gevent is able to use system libev, Leaps et.al. need the bundled version
 %if 0%{?suse_version} <= 1500
 %define use_bundled_libev 1
 %else
 %define use_bundled_libev 0
 %endif
+# get colored test output on local osc build
+%bcond_with colortest
 %{?sle15_python_module_pythons}
 Name:           python-gevent
 Version:        23.9.1
@@ -31,13 +32,14 @@ Summary:        Python network library that uses greenlet and libevent
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://www.gevent.org/
-Source0:        https://github.com/gevent/%{modname}/archive/%{version}.tar.gz#/%{modname}-%{version}.tar.gz
+Source0:        https://github.com/gevent/gevent/archive/%{version}.tar.gz#/gevent-%{version}.tar.gz
 Source100:      %{name}-rpmlintrc
-# gcc7 for 15.1 produces no-return-in-nonvoid-function, but the same compiler for 15.2 not
-# usually, as long as no return value is used, this shouldn't be treated as an error
-# let's selectively disable the warning around the offending code
-Patch0:         fix-no-return-in-nonvoid-function.patch
-BuildRequires:  %{python_module Cython}
+# PATCH-FIX-UPSTREAM gevent-fix-unittest-returncode-py312.patch gh#gevent/gevent#2012
+Patch0:         https://github.com/gevent/gevent/commit/86ea07e273ed7938446688cef5492d48034b7ddb.patch#/gevent-fix-unittest-returncode-py312-c1.patch
+Patch1:         https://github.com/gevent/gevent/commit/f69bc6b872b81a3dbc704c83147822fd7009995d.patch#/gevent-fix-unittest-returncode-py312-c2.patch
+# PATCH-FEATURE-OPENSUSE gevent-opensuse-nocolor-tests.patch code@bnavigator.de -- Avoid colorization of test output in obs runners
+Patch2:         gevent-opensuse-nocolor-tests.patch
+BuildRequires:  %{python_module Cython >= 3.0.2}
 BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module dnspython}
@@ -46,6 +48,7 @@ BuildRequires:  %{python_module objgraph}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module testsuite}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module zope.event}
 BuildRequires:  %{python_module zope.interface}
@@ -54,13 +57,11 @@ BuildRequires:  fdupes
 BuildRequires:  netcfg
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-testsuite
 BuildRequires:  pkgconfig(libcares)
 BuildRequires:  pkgconfig(libuv)
 Requires:       python-cffi
 Requires:       python-dnspython
 Requires:       python-greenlet >= 3.0.0
-Requires:       python-importlib-metadata
 Requires:       python-requests
 Requires:       python-zope.event
 Requires:       python-zope.interface
@@ -103,10 +104,7 @@ Documentation and examples for %{name}.
 %endif
 
 %prep
-%setup -q -n gevent-%{version}
-%if 0%{?sle_version} <= 150100 && 0%{?is_opensuse}
-%patch0 -p1
-%endif
+%autosetup -p1 -n gevent-%{version}
 sed -i -e '1s!bin/env python!bin/python!' examples/*.py
 sed -i -e '1{/bin.*python/d}' src/gevent/tests/*.py
 
@@ -128,30 +126,22 @@ chmod +x %{buildroot}%{$python_sitearch}/gevent/testing/testrunner.py
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%{python_expand #
-# create ignore list of tests, e.g. because they reach out to the net
+# https://www.gevent.org/development/running_tests.html
+#
+# create ignore list of tests, e.g. because they reach out to the net despite -u-network
 cat << EOF > skip_tests.txt
 test__core_stat.py
-%if 0%{?sle_version} <= 150200 && 0%{?is_opensuse}
-test__destroy_default_loop.py
-test__example_echoserver.py
-test_socket.py
-%endif
-test__examples.py
 # this one fails occasionally with: Address already in use: ('127.0.0.1', 16000)
 test__example_portforwarder.py
+# no dns resolver in obs
 test__getaddrinfo_import.py
 test__resolver_dnspython.py
-test__socket_dns.py
-test__issue1686.py
 # Flaky tests in s390x architecture
 %ifarch s390x
 test__util.py
 %endif
 EOF
-if [ %{$python_version_nodots} -lt 37 ]; then
- echo "test__threading_2.py" >> skip_tests.txt
-fi
+
 export GEVENT_RESOLVER=thread
 # Setting the TRAVIS environment variable makes some different configuration
 # for tests that use the network so they don't fail on travis (or obs)
@@ -163,10 +153,14 @@ export LANG=en_US.UTF-8
 # Relax the crypto policies for the test-suite
 export OPENSSL_SYSTEM_CIPHERS_OVERRIDE=xyz_nonexistent_file
 export OPENSSL_CONF=''
-# don't bother with python2 tests
-if [ "${python_flavor}" != "python2" ]; then
-    PYTHONPATH=%{buildroot}%{$python_sitearch} $python -m gevent.tests --ignore skip_tests.txt
-fi
+%{!?_with_colortest:export TEST_NOCOLOR=1}
+%{python_expand #
+export PYTHONPATH=%{buildroot}%{$python_sitearch}
+$python -m gevent.tests \
+  --ignore skip_tests.txt \
+  -u-network \
+  --verbose \
+  %{?jobs:--processes %jobs}
 }
 
 %files %{python_files}

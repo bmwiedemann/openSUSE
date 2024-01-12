@@ -67,4 +67,13 @@
     <comment></comment>
     <requestid>1137422</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>9fad0e30969e0b982195f69c1a3e923a</srcmd5>
+    <version>1.26.18</version>
+    <time>1705099474</time>
+    <user>anag+factory</user>
+    <comment>- Add upstream patch openssl-3.2.patch, to fix tests with opennssl
+  3.2.0, gh#urllib3/urllib3#3271</comment>
+    <requestid>1138121</requestid>
+  </revision>
 </revisionlist>

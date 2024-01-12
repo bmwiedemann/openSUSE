@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Mon Nov 27 16:41:54 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v3.44.1.0
+  * Features
+    ~ sqlite
+      + upgrade to sqlite 3.44.1 (1eef6a5)
+  * Perf
+    ~ sqlite
+      + disable pagecache overflow stat (31b7659)
+  * Build
+    ~ deps
+      + bump Org.codehaus.mojo:versions-maven-plugin (baf1295)
+      + Bump org.jreleaser:jreleaser-maven-plugin (849d6eb)
+    ~ deps-dev
+      + bump org.junit-pioneer:junit-pioneer (f3333e7)
+      + bump org.mockito:mockito-core from 5.6.0 to 5.7.0 (8cd1fa1)
+
+-------------------------------------------------------------------
+Mon Nov 13 01:44:27 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v3.44.0.0
+  * Features
+    ~ sqlite
+      + support serialize/deserialize sqlite APis (6823954)
+      + upgrade to sqlite 3.44.0 (fd222f3)
+  * Build
+    ~ deps
+      + bump surefire.version from 3.2.1 to 3.2.2 (4232352)
+      + bump org.apache.maven.plugins:maven-javadoc-plugin
+        (64b8ced)
+    ~ deps-dev
+      + bump com.tngtech.archunit:archunit-junit5 (3094fb0)
+      + bump org.junit.jupiter:junit-jupiter (9500426)
+      + downgrade logback to 1.2.12 (2d76795)
+
+-------------------------------------------------------------------
+Wed Nov  1 05:52:08 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v3.43.2.2
+  * Fixes
+    ~ avoid double precision in getBigDecimal (8880c33), closes
+      #1002
+  * Build
+    ~ deps
+      + bump org.graalvm.sdk:nativeimage from 23.1.0 to 23.1.1
+        (4dba62c)
+      + bump surefire.version from 3.1.2 to 3.2.1 (958b4f6)
+      + bump org.graalvm.buildtools:native-maven-plugin (98093e1)
+    ~ jreleaser
+      + add owner into config (a106632)
+    ~ unscoped
+      + add build step necessary for jreleaser when not pushing to
+        maven central (36116ca)
+
+-------------------------------------------------------------------
 Thu Oct 19 09:37:32 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v3.43.2.1

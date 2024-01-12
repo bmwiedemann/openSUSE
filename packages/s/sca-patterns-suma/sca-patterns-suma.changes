@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 12 18:15:21 UTC 2024 - jason.record@suse.com
+
+- Changes to version 1.5.1
+  + Changed pattern mode in spec file (bsc#1218773)
+
+-------------------------------------------------------------------
 Fri Nov  5 01:40:29 UTC 2021 - Jason Record <jason.record@suse.com>
 
 - Changes to updated version 1.5.0

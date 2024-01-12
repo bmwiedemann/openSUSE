@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jan 11 19:48:35 UTC 2024 - Jonas Kvinge <jonaski@opensuse.org>
+
+- Update to version 1.0.23
+
+  + Bugfixes:
+   + Fixed possible duplication of song entries after organizing (#1341).
+   + Fixed possible crash when connecting devices (#1313).
+   + Fixed playlist sorting of original year (#1349).
+
+  + Enhancements:
+   + Treat all stream errors as non-fatal (#1347).
+   + Require KDSingleApplication 1.1.0.
+   + Fix logging of restored unavailable songs. 
+
+-------------------------------------------------------------------
 Tue Dec 19 17:12:01 UTC 2023 - Jonas Kvinge <jonaski@opensuse.org>
 
 - Add BuildRequires for KDSingleApplication-qt6 with Tumbleweed.

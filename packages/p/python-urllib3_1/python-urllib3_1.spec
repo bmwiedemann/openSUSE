@@ -36,6 +36,8 @@ Source:         https://files.pythonhosted.org/packages/source/u/urllib3/urllib3
 # PATCH-FIX-UPSTREAM remove_mock.patch gh#urllib3/urllib3#2108 mcepl@suse.com
 # remove dependency on the external module mock
 Patch0:         remove_mock.patch
+# PATCH-FIX-UPSTREAM openssl-3.2.patch gh#urllib3/urllib3#3271
+Patch1:         openssl-3.2.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}

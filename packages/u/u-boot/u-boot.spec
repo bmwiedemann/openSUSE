@@ -1,7 +1,7 @@
 #
 # spec file for package u-boot
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2010 Texas Instruments Inc by Nishanth Menon
 # Copyright (c) 2007-2010 by Silvan Calarco <silvan.calarco@mambasoft.it>
 #
@@ -76,6 +76,12 @@
 %endif
 %if "%target" == "pinebook-pro-rk3399" || "%target" == "puma-rk3399" || "%target" == "rock960-rk3399" || "%target" == "rockpro64-rk3399" || "%target" == "rock-pi-n10-rk3399pro"
 %define is_rk3399 1
+%define is_armv8 1
+%define rockchip_idb 1
+%define binext .itb
+%endif
+%if "%target" == "quartz64-a-rk3566" || "%target" == "quartz64-b-rk3566" || "%target" == "soquartz-blade-rk3566" || "%target" == "soquartz-cm4-rk3566"
+%define is_rk3566 1
 %define is_armv8 1
 %define rockchip_idb 1
 %define binext .itb
@@ -180,7 +186,7 @@
 %define is_ppc 1
 %endif
 # archive_version differs from version for RC version only
-%define archive_version 2023.10
+%define archive_version 2024.01
 %if "%{target}" == ""
 ExclusiveArch:  do_not_build
 %else
@@ -210,7 +216,7 @@ ExclusiveArch:  do_not_build
 %endif
 %endif
 %endif
-Version:        2023.10
+Version:        2024.01
 Release:        0
 Summary:        The U-Boot firmware for the %target platform
 License:        GPL-2.0-only
@@ -219,6 +225,8 @@ URL:            http://www.denx.de/wiki/U-Boot
 Source:         http://ftp.denx.de/pub/u-boot/u-boot-%{archive_version}.tar.bz2
 Source1:        http://ftp.denx.de/pub/u-boot/u-boot-%{archive_version}.tar.bz2.sig
 Source2:        arndale-bl1.img
+Source3:        https://github.com/JeffyCN/rockchip_mirrors/blob/6186debcac95553f6b311cee10669e12c9c9963d/bin/rk35/rk3568_bl31_v1.28.elf?raw=true#/rk3568_bl31_v1.28.elf
+Source4:        https://github.com/JeffyCN/rockchip_mirrors/blob/ddf03c1d80b33dac72a33c4f732fc5849b47ff99/bin/rk35/rk3568_ddr_1056MHz_v1.13.bin?raw=true#/rk3568_ddr_1056MHz_v1.13.bin
 Source99:       u-boot.keyring
 Source300:      u-boot-rpmlintrc
 Source900:      update_git.sh
@@ -239,11 +247,13 @@ Patch0013:      0013-Disable-timer-check-in-file-loading.patch
 Patch0014:      0014-Enable-EFI-and-ISO-partitions-suppo.patch
 Patch0015:      0015-cmd-boot-add-brom-cmd-to-reboot-to-.patch
 Patch0016:      0016-cmd-boot-add-brom-cmd-to-reboot-to-.patch
-Patch0017:      0017-bootstd-Scan-all-bootdevs-in-a-boot.patch
-Patch0018:      0018-Revert-bootstd-Scan-all-bootdevs-in.patch
-Patch0019:      0019-bootstd-Expand-boot-ordering-test-t.patch
-Patch0020:      0020-bootstd-Correct-logic-for-single-uc.patch
-Patch0021:      0021-bootstd-Scan-all-bootdevs-in-a-boot.patch
+Patch0017:      0017-rpi5-add-initial-memory-map-for-bcm.patch
+Patch0018:      0018-rpi5-Use-devicetree-as-alternative-.patch
+Patch0019:      0019-rpi5-Use-devicetree-to-retrieve-boa.patch
+Patch0020:      0020-bcm2835-brcm-bcm2708-fb-device-is-u.patch
+Patch0021:      0021-mmc-bcmstb-Add-support-for-bcm2712-.patch
+Patch0022:      0022-configs-rpi_arm64-enable-SDHCI-BCMS.patch
+Patch0023:      0023-pci-pcie-brcmstb-Add-bcm2712-PCIe-c.patch
 # Patches: end
 BuildRequires:  bc
 BuildRequires:  bison
@@ -299,6 +309,9 @@ BuildRequires:  python3-pyelftools
 %if 0%{?is_rk3399}
 BuildRequires:  arm-trusted-firmware-rk3399
 # make_fit_atf.py
+BuildRequires:  python3-pyelftools
+%endif
+%if 0%{?is_rk3566}
 BuildRequires:  python3-pyelftools
 %endif
 %if (0%{?is_a64} || 0%{?is_h5})
@@ -393,8 +406,6 @@ This package contains documentation for U-Boot firmware.
 %prep
 %setup -q -n u-boot-%{archive_version}
 %autopatch -p1
-# 2023.07 has been released with a -rc6 leftover
-sed -i 's/-rc6//g' Makefile
 
 %build
 %if %tools_only
@@ -425,6 +436,12 @@ cp %{_datadir}/arm-trusted-firmware-rk3328/bl31.elf ./atf-bl31
 %endif
 %if 0%{?is_rk3399}
 cp %{_datadir}/arm-trusted-firmware-rk3399/bl31.elf ./atf-bl31
+%endif
+%if 0%{?is_rk3566}
+# Upstream Arm trusted-firmware does not support rk3566 yet
+# So, use pre-built blobs
+cp %{S:3} ./atf-bl31
+cp %{S:4} ./rockchip-tpl
 %endif
 
 %if %{is_zynq}
@@ -570,6 +587,9 @@ echo -e "# Boot in AArch64 mode\narm_64bit=1" > %{buildroot}%{uboot_dir}/ubootco
 %endif
 %if "%{name}" == "u-boot-sifiveunleashed" || "%{name}" == "u-boot-sifiveunmatched" || "%{name}" == "u-boot-starfivevisionfive2"
 install -D -m 0644 spl/u-boot-spl.bin %{buildroot}%{uboot_dir}/u-boot-spl.bin
+%endif
+%if "%{name}" == "u-boot-starfivevisionfive2"
+install -D -m 0644 spl/u-boot-spl.bin.normal.out %{buildroot}%{uboot_dir}/u-boot-spl.bin.normal.out
 %endif
 
 %if 0%{?is_rpi}

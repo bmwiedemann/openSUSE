@@ -1,0 +1,29 @@
+From aa6647c263408bdf0518d74da2d4c37d3bb42de0 Mon Sep 17 00:00:00 2001
+From: Vasiliy Ulyanov <vulyanov@suse.de>
+Date: Wed, 13 Dec 2023 08:10:37 +0100
+Subject: [PATCH] tests: Adapt VM phase expectation
+
+When CDI uses volume populators with malformed DataVolume, the VM
+initially transitions to Scheduling phase.
+
+Signed-off-by: Vasiliy Ulyanov <vulyanov@suse.de>
+---
+ tests/storage/datavolume.go | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/storage/datavolume.go b/tests/storage/datavolume.go
+index 46677257d..9d86d0eac 100644
+--- a/tests/storage/datavolume.go
++++ b/tests/storage/datavolume.go
+@@ -536,7 +536,7 @@ var _ = SIGDescribe("DataVolume Integration", func() {
+ 				vm, err = virtClient.VirtualMachine(vm.Namespace).Create(context.Background(), vm)
+ 				Expect(err).ToNot(HaveOccurred())
+ 
+-				Eventually(ThisVMIWith(vm.Namespace, vm.Name), 100).Should(BeInPhase(v1.Pending))
++				Eventually(ThisVMIWith(vm.Namespace, vm.Name), 100).Should(Or(BeInPhase(v1.Pending), BeInPhase(v1.Scheduling)))
+ 
+ 				By("Creating a service which makes the registry reachable")
+ 				_, err = virtClient.CoreV1().Services(vm.Namespace).Create(context.Background(), &k8sv1.Service{
+-- 
+2.43.0
+

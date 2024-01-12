@@ -1,7 +1,7 @@
 #
 # spec file for package apache-arrow
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -331,7 +331,11 @@ if [ -n "${GTEST_failing}" ]; then
   %ctest --label-regex unittest || true
   export GTEST_FILTER=*:-${GTEST_failing}
 fi
-%ctest --label-regex unittest
+%ifarch s390x
+# bsc#1218592
+exclude_regex='--exclude-regex (arrow-dataset-file-parquet-test|parquet-internals-test|parquet-reader-test|parquet-arrow-test|parquet-arrow-internals-test|parquet-encryption-test|arquet-encryption-key-management-test)'
+%endif
+%ctest --label-regex unittest $exclude_regex
 popd
 %endif
 

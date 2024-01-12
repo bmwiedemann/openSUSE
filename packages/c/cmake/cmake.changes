@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jan 11 10:21:03 UTC 2024 - Michal Suchanek <msuchanek@suse.com>
+
+- Use new enough Sphinx on SLE (jsc#PED-7572 boo#1218125).
+
+-------------------------------------------------------------------
+Thu Jan 11 01:28:45 UTC 2024 - Simon Lees <sflees@suse.de>
+
+- A quick note for the bots that boo#1217009 is already fixed
+  in tumbleweed
+
+-------------------------------------------------------------------
 Wed Dec 27 12:56:45 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Re-add "-Wl,--no-undefined" linker flags for executables and
@@ -333,7 +344,7 @@ Tue Aug  2 09:04:01 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 Sat Jul  2 07:32:54 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Fix the %%cmake macro which tried to run sed on 'CMakeLists.txt'
-  without making sure it's not a folder.
+  without making sure it's not a folder (boo#1217009).
 
 -------------------------------------------------------------------
 Sun Jun  5 00:03:22 UTC 2022 - Dirk Müller <dmueller@suse.com>

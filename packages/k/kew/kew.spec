@@ -1,7 +1,7 @@
 #
 # spec file for package kew
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           kew
-Version:        1.11
+Version:        2.0.2
 Release:        0
 Summary:        A command-line music player
 License:        GPL-2.0-only

@@ -1,7 +1,7 @@
 #
 # spec file for package semantik
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,6 +39,7 @@ BuildRequires:  libqt5-qtwebengine-devel
 BuildRequires:  python3-Pygments
 BuildRequires:  python3-devel
 BuildRequires:  update-desktop-files
+BuildRequires:  rpm_macro(_kf5_kxmlguidir)
 
 %description
 Semantik (previously Kdissert) is a mindmapping-like tool to help students

@@ -85,10 +85,15 @@ Requires:       cmake-implementation = %{version}
 # fatal error: libuv version too new: running with libuv 1.X+1 when compiled with libuv 1.X will lead to libuv failures
 %requires_eq  libuv1
 %endif
+%if 0%{?suse_version} && 0%{?suse_version} <= 1500
+%define pyver 311
+%else
+%define pyver 3
+%endif
 %if %{with full} || %{with mini}
 Requires:       make
 # bnc#953842 - A python file is shipped so require python base so it can be run.
-Requires:       python3-base
+Requires:       python%{pyver}-base
 Conflicts:      cmake-implementation
 Provides:       cmake-implementation = %{version}
 %endif
@@ -101,7 +106,7 @@ BuildRequires:  pkgconfig(libarchive) >= 3.3.3
 BuildRequires:  pkgconfig(libcurl)
 %endif
 %if %{with gui}
-BuildRequires:  python3-Sphinx
+BuildRequires:  python%{pyver}-Sphinx
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Widgets)
 %endif

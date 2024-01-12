@@ -82,4 +82,12 @@ The conflict with mariadb is still a problem. Debian solved this by making maria
     <comment></comment>
     <requestid>1132756</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>77fc221643b97940971d343433409cff</srcmd5>
+    <version>8.10.0</version>
+    <time>1705099516</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1138176</requestid>
+  </revision>
 </revisionlist>

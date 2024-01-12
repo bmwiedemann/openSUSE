@@ -16,7 +16,7 @@
 #
 
 
-%define git_commit e04388ed79f6d15fba9ab58fb2ba0ac47fc955f9
+%define git_commit 05ae4ada30ff79567ddbd9fdb8f1a513b0e1c8df
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -25,10 +25,10 @@ Name:           kernel-syms
 Summary:        Kernel Symbol Versions (modversions)
 License:        GPL-2.0-only
 Group:          Development/Sources
-Version:        6.6.10
+Version:        6.6.11
 %if %using_buildservice
 %if 0%{?is_kotd}
-Release:        <RELEASE>.ge04388e
+Release:        <RELEASE>.g05ae4ad
 %else
 Release:        0
 %endif
@@ -42,7 +42,7 @@ BuildRequires:  coreutils
 %ifarch aarch64
 Requires:       kernel-64kb-devel = %version-%source_rel
 %endif
-%ifarch aarch64 armv6hl armv7hl %ix86 ppc64le riscv64 s390x x86_64
+%ifarch aarch64 armv6hl armv7hl %ix86 ppc64le powerpc64le riscv64 s390x x86_64
 Requires:       kernel-default-devel = %version-%source_rel
 %endif
 %ifarch armv7hl
@@ -58,7 +58,7 @@ Provides:       multiversion(kernel)
 Source:         README.KSYMS
 Requires:       kernel-devel%variant = %version-%source_rel
 %if ! 0%{?is_kotd} || ! %{?is_kotd_qa}%{!?is_kotd_qa:0}
-ExclusiveArch:  %ix86 aarch64 armv6hl armv7hl ppc64le riscv64 s390x x86_64
+ExclusiveArch:  %ix86 aarch64 armv6hl armv7hl ppc64le powerpc64le riscv64 s390x x86_64
 %else
 ExclusiveArch:  do_not_build
 %endif

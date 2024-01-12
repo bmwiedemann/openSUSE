@@ -240,4 +240,12 @@
   the binary names we link to.  [bsc#1217450]</comment>
     <requestid>1130160</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>67c07b5db0e6a1226bd3bc71faa7802a</srcmd5>
+    <version>13.2.1+git8205</version>
+    <time>1705099443</time>
+    <user>anag+factory</user>
+    <comment>- Update to gcc-13 branch head, 36ddb5230f56a30317630a928, git8205</comment>
+    <requestid>1137881</requestid>
+  </revision>
 </revisionlist>

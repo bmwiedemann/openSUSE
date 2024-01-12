@@ -300,4 +300,15 @@
     <comment></comment>
     <requestid>1117456</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>b7ce33beec59640ffd76246a945759f6</srcmd5>
+    <version>2.21+git9</version>
+    <time>1705099490</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.21+git9:
+  * Add man-online command
+  * Drop support for sle15 builds
+  * Add OBS CI workflow</comment>
+    <requestid>1137938</requestid>
+  </revision>
 </revisionlist>

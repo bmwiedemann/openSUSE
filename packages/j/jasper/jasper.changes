@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 11 15:45:02 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.1.2:
+  * Fix invalid memory write bug (#367) (CVE-2023-51257).
+  * Fix missing range check in the JPC encoder (#368).
+
+-------------------------------------------------------------------
 Wed Nov 29 09:29:34 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.1.1:

@@ -103,4 +103,31 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>976089</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2cc06f51d7fd9225e2e990bf76d1516b</srcmd5>
+    <version>2.0.1</version>
+    <time>1705099543</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.0.1:
+  * New semver-compatible version number
+  * New sslh-ev: this is functionaly equivalent to sslh-select
+    (mono-process, only forks for specified protocols), but based
+    on libev, which should make it scalable to large numbers
+    of connections.
+  * New log system: instead of –verbose with arbitrary levels,
+    there are now several message classes. Each message class
+    can be set to go to stderr, syslog, or both. Classes are
+    documented in example.cfg.
+  * UDP connections are now managed in a hash to avoid linear
+    searches. The downside is that the number of UDP connections
+    is a hard limit, configurable with the ‘udp_max_connections’,
+    which defaults to 1024. Timeouts are managed with lists.
+  * inetd merges stderr output to what is sent to the client,
+    which is a security issue as it might give information to an
+    attacker. When inetd is activated, stderr is forcibly closed.
+  * New protocol-level option resolve_on_forward, requests that
+    target names are resolved at each connection instead of at
+    startup. Useful for dynamic DNS situations.</comment>
+    <requestid>1138229</requestid>
+  </revision>
 </revisionlist>

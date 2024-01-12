@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Fri Jan 12 11:48:38 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.1.12:
+ * Preview features
+   * Formatter: Hug multiline-strings in preview style
+   * [flake8-bandit] Add ssl-with-no-version (S504)
+   * [flake8-bandit] Implement ssl-insecure-version (S502)
+   * [flake8-bandit] Implement ssl-with-bad-defaults (S503)
+   * [flake8-bandit] Implement suspicious import rules (S4XX)
+   * [flake8-simplify] Implement zip-dict-keys-and-values (SIM911)
+   * [pyflakes] Add a fix for redefined-while-unused (F811)
+   * [pylint] Implement unnecessary-dunder-call (C2801)
+   * [ruff] Add parenthesize-chained-operators (RUF021) to enforce parentheses in a or b and c
+ * Rule changes
+   * [flake8-boolean-trap] Allow Boolean positional arguments in setters
+   * [flake8-builtins] Restrict builtin-attribute-shadowing (A003) to actual shadowed references
+   * [flake8-pyi] Add fix for generator-return-from-iter-method (PYI058)
+   * [pyflakes] Don't flag redefined-while-unused (F811) in if branches
+   * [pyupgrade] Add some additional Python 3.12 typing members to deprecated-import
+   * [ruff] Add fix for parenthesize-chained-operators (RUF021)
+   * [ruff] Include subscripts and attributes in static key rule (RUF011)
+   * [ruff] Support variable keys in static dictionary key rule (RUF011)
+ * Formatter
+   * Generate deterministic IDs when formatting notebooks
+   * Allow # fmt: skip with interspersed same-line comments
+   * Parenthesize breaking named expressions in match guards
+ * Bug fixes
+   * Add cell indexes to all diagnostics
+   * Avoid infinite loop in constant vs. None comparisons
+   * Handle raises with implicit alternate branches
+   * Ignore trailing quotes for unclosed l-brace errors
+   * Respect multi-segment submodule imports when resolving qualified names
+   * Use DisplayParseError for stdin parser errors
+   * Use comment_ranges for isort directive extraction
+   * Use transformed source code for diagnostic locations
+   * [flake8-pyi] Exclude warnings.deprecated and typing_extensions.deprecated arguments
+   * [flake8-pyi] Fix false negative for unused-private-protocol (PYI046) with unused generic protocols
+   * [pydocstyle] Disambiguate argument descriptors from section headers
+   * [pylint] Homogenize PLR0914 message to match other PLR09XX rules
+   * [ruff] Allow Hashable = None in type annotations (RUF013)
+ * Documentation
+   * Fix admonition hyperlink colouring
+   * Add missing preview link
+
+-------------------------------------------------------------------
 Mon Jan  8 09:39:09 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.1.11

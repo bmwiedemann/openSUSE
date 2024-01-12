@@ -34,7 +34,6 @@
   <flavor>lamobor1</flavor>
   <flavor>libretech-ac</flavor>
   <flavor>libretech-cc</flavor>
-  <flavor>ls1012afrdmqspi</flavor>
   <flavor>melea1000</flavor>
   <flavor>merriia80optimus</flavor>
   <flavor>microchipmpfsicicle</flavor>
@@ -76,6 +75,8 @@
   <flavor>qemu-ppce500</flavor>
   <flavor>qemu-riscv64</flavor>
   <flavor>qemu-riscv64smode</flavor>
+  <flavor>quartz64-a-rk3566</flavor>
+  <flavor>quartz64-b-rk3566</flavor>
   <flavor>rock-pi-4-rk3399</flavor>
   <flavor>rock-pi-n10-rk3399pro</flavor>
   <flavor>rock64-rk3328</flavor>
@@ -90,6 +91,8 @@
   <flavor>sifiveunmatched</flavor>
   <flavor>snow</flavor>
   <flavor>socfpgade0nanosoc</flavor>
+  <flavor>soquartz-blade-rk3566</flavor>
+  <flavor>soquartz-cm4-rk3566</flavor>
   <flavor>spring</flavor>
   <flavor>starfivevisionfive2</flavor>
   <flavor>tinker-rk3288</flavor>

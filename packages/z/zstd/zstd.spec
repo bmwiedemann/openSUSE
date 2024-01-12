@@ -16,6 +16,11 @@
 #
 
 
+%if 0%{?suse_version} <= 1500
+%define with_gzip 0
+%else
+%define with_gzip 1
+%endif
 %define libname libzstd1
 Name:           zstd
 Version:        1.5.5
@@ -83,6 +88,7 @@ targeting faster compression than zlib at comparable ratios.
 
 Needed for compiling programs that link with the library.
 
+%if %with_gzip
 %package gzip
 Summary:        zstd and zlib based gzip drop-in
 Group:          Productivity/Archiving/Compression
@@ -99,6 +105,7 @@ targeting faster compression than zlib at comparable ratios.
 
 This subpackage provides a compatible alternative to gzip(1) using
 an optimized deflate/zlib handling.
+%endif
 
 %prep
 %autosetup -p1
@@ -123,9 +130,11 @@ export CXXFLAGS="%{optflags} -std=c++11"
 %make_install V=1 VERBOSE=1 prefix=%{_prefix} libdir=%{_libdir}
 install -D -m755 contrib/pzstd/pzstd %{buildroot}%{_bindir}/pzstd
 install -D -m644 programs/zstd.1 %{buildroot}%{_mandir}/man1/pzstd.1
+%if %with_gzip
 ln -s zstd %{buildroot}/%{_bindir}/gzip
 ln -s zstd %{buildroot}/%{_bindir}/gunzip
 ln -s zstdcat %{buildroot}/%{_bindir}/zcat
+%endif
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
@@ -155,9 +164,11 @@ ln -s zstdcat %{buildroot}/%{_bindir}/zcat
 %files -n lib%{name}-devel-static
 %{_libdir}/libzstd.a
 
+%if %with_gzip
 %files gzip
 %{_bindir}/gzip
 %{_bindir}/gunzip
 %{_bindir}/zcat
+%endif
 
 %changelog

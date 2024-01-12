@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan  8 07:59:12 UTC 2024 - Fabio Pesari <fpesari@tuxfamily.org>
+
+- Added solfege-python-fixtryorder.patch to fix startup error when
+  _tryorder is None
+
+-------------------------------------------------------------------
 Wed Mar 30 08:43:53 UTC 2022 - Dave Plater <davejplater@gmail.com>
 
 - Excluded 32 bit build, lillypond fonts only build for 64 bit

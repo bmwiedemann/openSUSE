@@ -1,7 +1,7 @@
 #
 # spec file for package xmlunit
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2000-2008, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,15 +23,14 @@ Release:        0
 Summary:        Provides classes to do asserts on XML
 License:        BSD-3-Clause
 Group:          Development/Libraries/Java
-URL:            http://xmlunit.sourceforge.net/
+URL:            https://xmlunit.sourceforge.net/
 Source0:        https://download.sourceforge.net/%{name}/%{name}-%{version}-src.zip
 Source1:        https://repo1.maven.org/maven2/%{name}/%{name}/%{version}/%{name}-%{version}.pom
 BuildRequires:  ant
 BuildRequires:  ant-junit
 BuildRequires:  fdupes
 # Needed for maven conversions
-BuildRequires:  javapackages-local
-BuildRequires:  javapackages-tools
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  junit
 BuildRequires:  unzip
 BuildRequires:  xalan-j2
@@ -82,8 +81,7 @@ ant -Djavac.source=1.8 -Djavac.target=1.8 -Dbuild.compiler=modern -Dhaltonfailur
 
 %install
 mkdir -p %{buildroot}%{_javadir}
-install -m 0644 build/lib/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}-%{version}.jar
-(cd %{buildroot}%{_javadir}/ && ln -s %{name}-%{version}.jar %{name}.jar)
+install -m 0644 build/lib/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
 
 # Javadoc
 mkdir -p %{buildroot}%{_javadocdir}/%{name}
@@ -92,20 +90,13 @@ cp -pr build/doc/* %{buildroot}%{_javadocdir}/%{name}
 
 # poms
 install -d -m 755 %{buildroot}%{_mavenpomdir}
-install -m 644 %{SOURCE1} \
-    %{buildroot}%{_mavenpomdir}/%{name}-%{version}.pom
-%add_maven_depmap %{name}-%{version}.pom %{name}-%{version}.jar
+%{mvn_install_pom} %{SOURCE1} \
+    %{buildroot}%{_mavenpomdir}/%{name}.pom
+%add_maven_depmap %{name}.pom %{name}.jar
 
-%files
+%files -f .mfiles
 %license LICENSE.txt
 %doc README.txt
-%{_javadir}/*.jar
-%{_mavenpomdir}/*
-%if %{defined _maven_repository}
-%{_mavendepmapfragdir}/%{name}
-%else
-%{_datadir}/maven-metadata/%{name}.xml*
-%endif
 
 %files javadoc
 %doc userguide

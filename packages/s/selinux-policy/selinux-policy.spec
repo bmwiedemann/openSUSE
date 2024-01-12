@@ -1,7 +1,7 @@
 #
 # spec file for package selinux-policy
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@ Summary:        SELinux policy configuration
 License:        GPL-2.0-or-later
 Group:          System/Management
 Name:           selinux-policy
-Version:        20231124
+Version:        20240104
 Release:        0
 Source0:        %{name}-%{version}.tar.xz
 Source1:        container.fc

@@ -87,14 +87,15 @@ Files for development with %{name}.
 %meson \
 	-Dgtkdoc=true \
 	-Dintrospection=true \
-	-Dtests=true \
+	-Dtests=false \
 	%{nil}
 %meson_build
 
 %install
 %meson_install
-# remove unreproducible signature file to make package build reproducible
-rm -f %{buildroot}%{_libexecdir}/installed-tests/libjcat/colorhug/firmware.bin.p7c
+
+%check
+%meson_test
 
 %post -n %{name}%{sover} -p /sbin/ldconfig
 %postun -n %{name}%{sover} -p /sbin/ldconfig
@@ -110,8 +111,6 @@ rm -f %{buildroot}%{_libexecdir}/installed-tests/libjcat/colorhug/firmware.bin.p
 %doc NEWS README.md
 %{_bindir}/jcat-tool
 %{_mandir}/man1/jcat-tool.1.gz
-%{_libexecdir}/installed-tests/
-%{_datadir}/installed-tests/
 
 %files devel
 %doc %{_datadir}/gtk-doc/html/%{name}

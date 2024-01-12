@@ -17,8 +17,8 @@
 
 
 %{!?make_build:%global make_build make %{?_smp_mflags}}
-%global version 3.43.2.1
-%global amalgamation_version 3430200
+%global version 3.44.1.0
+%global amalgamation_version 3440100
 %global debug_package %{nil}
 Name:           sqlite-jdbc
 Version:        %{version}
@@ -28,7 +28,7 @@ License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://github.com/xerial/%{name}
 Source0:        %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        https://www.sqlite.org/2023/sqlite-amalgamation-%{amalgamation_version}.zip
+Source1:        https://sqlite.org/2023/sqlite-amalgamation-%{amalgamation_version}.zip
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8

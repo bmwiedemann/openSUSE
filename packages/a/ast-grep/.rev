@@ -58,4 +58,15 @@
   * fix(deps): update dependency @swc/core to v1.3.102 9ca9711</comment>
     <requestid>1137219</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3c1b24e6d2d8eba21d49801219797521</srcmd5>
+    <version>0.17.0+0</version>
+    <time>1705099545</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.17.0:
+  * Breaking change: feat: change get_fixer to return Fixer 07c5363
+  * feat: add modify_range for tweaking fix range selection eeb2f98
+  * feat: rename modify_range -&gt; get_replace_range 54837df</comment>
+    <requestid>1138228</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan 11 16:11:56 UTC 2024 - kukuk@suse.com
+
+- Update to version 1.10+git20240111.cb84209:
+  * Add missing rule for health-checker.service.8
+  * Don't generate html documentation
+  * Fixing some typo's and improving the UX of the health-checker output
+  * Fix a typo in README.md
+
+-------------------------------------------------------------------
 Fri Sep 15 12:19:21 UTC 2023 - Ignaz Forster <iforster@suse.com>
 
 - Update to version 1.10

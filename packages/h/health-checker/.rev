@@ -191,4 +191,16 @@
 </comment>
     <requestid>1111554</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>a239e045142525a34c25cab321386c0a</srcmd5>
+    <version>1.10+git20240111.cb84209</version>
+    <time>1705099496</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.10+git20240111.cb84209:
+  * Add missing rule for health-checker.service.8
+  * Don't generate html documentation
+  * Fixing some typo's and improving the UX of the health-checker output
+  * Fix a typo in README.md</comment>
+    <requestid>1138157</requestid>
+  </revision>
 </revisionlist>

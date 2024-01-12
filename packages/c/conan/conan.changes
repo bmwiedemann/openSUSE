@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Jan 11 18:38:29 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.0.17:
+  * Fix: Automatically create folder if conan cache save
+    --file=subfolder/file.tgz subfolder doesn't exist
+    (gh#conan-io/conan#15409).
+  * Bugfix: Fix libcxx detection when using CC/CXX env vars
+    (gh#conan-io/conan#15418).
+  * Bugfix: Solve winsdk_version bug in CMakeToolchain generator
+    for cmake_minimum_required(3.27) (gh#conan-io/conan#15373).
+  * Bugfix: Fix visible trait propagation with build=True trait
+    (gh#conan-io/conan#15357).
+  * Bugfix: Fix package_id calculation when including conf values
+    thru tools.info.package_id:confs (gh#conan-io/conan#15356).
+  * Bugfix: Order conf items when dumping them to allow
+    reproducible package_id independent of the order the confs
+    were declared (gh#conan-io/conan#15356).
+
+-------------------------------------------------------------------
 Thu Dec 28 17:01:29 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.0.16:

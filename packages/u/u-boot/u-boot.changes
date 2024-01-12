@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Jan 12 12:37:19 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- Install u-boot-spl.bin.normal.out for StarFive Visionfive2
+
+-------------------------------------------------------------------
+Thu Jan 11 13:19:04 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Remove ls1012afrdmqspi flavor since it has been removed upstream
+  with commit b60274e6900ed1b08ad41f6d7fdebb2726ded108
+
+-------------------------------------------------------------------
+Wed Jan 10 15:11:01 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 2024.01:
+  * Full changelog available at:
+    https://source.denx.de/u-boot/u-boot/-/compare/v2023.10...v2024.01
+- Add new platforms:
+  * quartz64-a-rk3566
+  * quartz64-b-rk3566
+  * soquartz-blade-rk3566
+  * soquartz-cm4-rk3566
+- Patch queue updated from https://github.com/openSUSE/u-boot.git tumbleweed-2024.01
+* Patches dropped:
+  0017-bootstd-Scan-all-bootdevs-in-a-boot.patch
+  0018-Revert-bootstd-Scan-all-bootdevs-in.patch
+  0019-bootstd-Expand-boot-ordering-test-t.patch
+  0020-bootstd-Correct-logic-for-single-uc.patch
+  0021-bootstd-Scan-all-bootdevs-in-a-boot.patch
+* Patches added:
+  0017-rpi5-add-initial-memory-map-for-bcm.patch
+  0018-rpi5-Use-devicetree-as-alternative-.patch
+  0019-rpi5-Use-devicetree-to-retrieve-boa.patch
+  0020-bcm2835-brcm-bcm2708-fb-device-is-u.patch
+  0021-mmc-bcmstb-Add-support-for-bcm2712-.patch
+  0022-configs-rpi_arm64-enable-SDHCI-BCMS.patch
+  0023-pci-pcie-brcmstb-Add-bcm2712-PCIe-c.patch
+
+-------------------------------------------------------------------
 Tue Oct 24 13:41:26 UTC 2023 - Matthias Brugger <mbrugger@suse.com>
 
 Fix boo#1216036. Tested on RPi4. Boot from USB and uSD fine.

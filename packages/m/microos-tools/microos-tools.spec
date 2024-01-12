@@ -1,7 +1,7 @@
 #
 # spec file for package microos-tools
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,16 +19,13 @@
 %{!?_distconfdir: %global _distconfdir %{_prefix}%{_sysconfdir}}
 
 Name:           microos-tools
-Version:        2.21+git5
+Version:        2.21+git9
 Release:        0
 Summary:        Files and Scripts for openSUSE MicroOS
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
 URL:            https://github.com/openSUSE/microos-tools
 Source:         microos-tools-%{version}.tar.xz
-Source1:        tmp.mount
-Source2:        microos-tmp.conf
-Source99:       microos-tools-rpmlintrc
 BuildRequires:  automake
 BuildRequires:  distribution-release
 BuildRequires:  pkgconfig
@@ -36,6 +33,8 @@ BuildRequires:  pkgconfig(dracut)
 BuildRequires:  pkgconfig(rpm)
 BuildRequires:  pkgconfig(systemd)
 Requires:       read-only-root-fs
+# for man-online
+Requires:       mandoc-bin
 
 %description
 Files, scripts and directories for openSUSE MicroOS.
@@ -56,10 +55,6 @@ This package contains tools to make developing of MicroOS easier.
 
 %install
 %make_install
-%if 0%{?suse_version} <= 1500
-install -m 0644 %{SOURCE1} %{buildroot}/%{_unitdir}/
-install -m 0644 %{SOURCE2} %{buildroot}/%{_tmpfilesdir}
-%endif
 
 %pre
 %service_add_pre setup-systemd-proxy-env.service setup-systemd-proxy-env.path printenv.service
@@ -100,9 +95,6 @@ install -m 0644 %{SOURCE2} %{buildroot}/%{_tmpfilesdir}
 %dir %{_unitdir}/salt-minion.service.d
 %{_unitdir}/salt-minion.service.d/TMPDIR.conf
 %{_tmpfilesdir}/salt-minion-tmpdir.conf
-%if %{?suse_version} <= 1500
-%dir %{_distconfdir}
-%endif
 %dir %{_distconfdir}/tukit.conf.d
 %{_distconfdir}/tukit.conf.d/salt-tukit.conf
 %{_sbindir}/setup-systemd-proxy-env
@@ -110,10 +102,8 @@ install -m 0644 %{SOURCE2} %{buildroot}/%{_tmpfilesdir}
 %dir %{_prefix}/lib/dracut/modules.d
 %{_prefix}/lib/dracut/modules.d/98selinux-microos
 %{_systemdgeneratordir}/selinux-autorelabel-generator
-%if 0%{?suse_version} <= 1500
-%{_unitdir}/tmp.mount
-%{_tmpfilesdir}/microos-tmp.conf
-%endif
+%{_bindir}/man-online
+%{_distconfdir}/profile.d/man-online.sh
 
 %files -n microos-devel-tools
 %{_unitdir}/microos-ro.service

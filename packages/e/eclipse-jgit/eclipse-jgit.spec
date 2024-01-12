@@ -1,7 +1,7 @@
 #
 # spec file for package eclipse-jgit
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,7 +34,7 @@ Source0:        https://git.eclipse.org/c/jgit/jgit.git/snapshot/jgit-%{gittag}.
 Patch1:         0002-Don-t-embed-versions-of-third-party-libs-use-feature.patch
 Patch2:         jgit-shade.patch
 Patch3:         jgit-5.11.0-java8.patch
-Patch4:         jgit-apache-sshd-2.7.0.patch
+Patch4:         jgit-apache-sshd.patch
 Patch5:         jgit-jsch.patch
 Patch6:         jgit-CVE-2023-4759.patch
 # For main build

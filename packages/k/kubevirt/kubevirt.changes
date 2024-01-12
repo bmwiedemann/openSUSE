@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 12 06:27:45 UTC 2024 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Fix test with initially invalid DataVolume (bsc#1218174)
+  0001-tests-Adapt-VM-phase-expectation.patch
+
+-------------------------------------------------------------------
 Thu Jan  4 06:47:58 UTC 2024 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Update to version 1.1.1

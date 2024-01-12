@@ -1,7 +1,7 @@
 #
 # spec file for package strawberry
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           strawberry
-Version:        1.0.22
+Version:        1.0.23
 Release:        0
 Summary:        A music player and music collection organizer
 License:        GPL-3.0-or-later
@@ -28,9 +28,9 @@ Source:         https://files.strawberrymusicplayer.org/%{name}-%{version}.tar.x
 BuildRequires:  appstream-glib
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
-%if 0%{?sle_version} == 150400 || 0%{?sle_version} == 150500
-BuildRequires:  gcc11
-BuildRequires:  gcc11-c++
+%if 0%{?sle_version} == 150500 || 0%{?sle_version} == 150600
+BuildRequires:  gcc13
+BuildRequires:  gcc13-c++
 %else
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
@@ -110,9 +110,9 @@ Features:
 %setup -q
 
 %build
-%if 0%{?sle_version} == 150400 || 0%{?sle_version} == 150500
-export CC="gcc-11"
-export CXX="g++-11"
+%if 0%{?sle_version} == 150500 || 0%{?sle_version} == 150600
+export CC="gcc-13"
+export CXX="g++-13"
 %endif
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 export CXXFLAGS="$CFLAGS"

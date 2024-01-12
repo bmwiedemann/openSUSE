@@ -176,4 +176,12 @@
 - added python3 package</comment>
     <requestid>1136473</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>8a1f3d9dde0e9ccc6ad777a2b7bac4e9</srcmd5>
+    <version>6.4</version>
+    <time>1705099476</time>
+    <user>anag+factory</user>
+    <comment>- Add patch openssl-3.2.patch gh#tornadoweb/tornado#3355</comment>
+    <requestid>1138133</requestid>
+  </revision>
 </revisionlist>

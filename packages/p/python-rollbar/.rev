@@ -101,4 +101,36 @@
 </comment>
     <requestid>1067989</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9b9c9798188ae584db3dfb53b56faaf4</srcmd5>
+    <version>1.0.0</version>
+    <time>1705099547</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.0:
+  * Some of the major work has been on making performance
+    improvements to the more data intensive parts of the package.
+    There should be some improvements across the board, however
+    some exciting new performance features include:
+  * A new HTTP transfer mechanism that uses a pool of background
+    worker threads to transmit logs and reports to the Rollbar
+    system. You can enable it with the following...
+  * Removed Python 2
+  * Fixed handling `sensitive_post_parameters` decorator in
+    Django
+  * Fixed Werkzeug DeprecationWarning of `BaseRequest`
+  * Fixed missing locals shortening on items with &quot;trace_chain&quot;
+    instead of &quot;trace&quot;
+  * Fixed FastAPI version comparison
+  * Fixed #436 `WSGIRequest` has no attribute
+    `sensitive_post_parameters`.
+  * Added new `thread_pool` handler
+  * Added Rollbar branding to the readme
+  * Added batched transform to increase sanitization and
+    serialization performance
+- drop python-rollbar-no-unittest2.patch (upstream)
+
+  * Fix Flask 0.x builds. See #376
+    and `capture_email`.</comment>
+    <requestid>1138235</requestid>
+  </revision>
 </revisionlist>

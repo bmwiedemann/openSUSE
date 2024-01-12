@@ -39,4 +39,12 @@
     <comment>Resolved invalid links and patterns bsc#1204798 (forwarded request 1031615 from jrecord)</comment>
     <requestid>1031616</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>613857a17f5f618a26993c244c85bb55</srcmd5>
+    <version>1.5.3</version>
+    <time>1705099626</time>
+    <user>anag+factory</user>
+    <comment>Changed pattern mode in spec file bsc#1218773 (forwarded request 1138380 from jrecord)</comment>
+    <requestid>1138381</requestid>
+  </revision>
 </revisionlist>

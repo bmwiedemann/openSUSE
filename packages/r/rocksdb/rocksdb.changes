@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jan 11 19:45:23 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 8.10.0:
+  * Provide support for async_io to trim readahead_size by doing
+    block cache lookup
+  * Added initial wide-column support in WriteBatchWithIndex. This
+    includes the PutEntity API and support for wide columns in the
+    existing read APIs (GetFromBatch, GetFromBatchAndDB,
+    MultiGetFromBatchAndDB, and BaseDeltaIterator).
+  * Custom implementations of TablePropertiesCollectorFactory may
+    now return a nullptr collector to decline processing a file,
+    reducing callback overheads in such cases.
+  * Make ReadOptions.auto_readahead_size default true
+  * Bug fixes and performance improvements
+
+-------------------------------------------------------------------
 Tue Dec 12 20:57:08 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 8.9.1:

@@ -1,7 +1,7 @@
 #
 # spec file for package health-checker
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,15 @@
 %define _dracutmoduledir %(pkg-config --variable=dracutmodulesdir dracut)
 
 Name:           health-checker
-Version:        1.10
+Version:        1.10+git20240111.cb84209
 Release:        0
 Summary:        Service for verifying that important services are running
 License:        GPL-2.0-only
 Group:          System/Base
 URL:            https://github.com/kubic-project/health-checker
 Source:         health-checker-%{version}.tar.xz
+BuildRequires:  automake
+BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
 BuildRequires:  suse-module-tools
 BuildRequires:  pkgconfig(dracut)
@@ -86,6 +88,7 @@ It will report success or failures depending on previous states.
 %setup -q -n health-checker-%{version}
 
 %build
+./autogen.sh
 %configure
 make %{?_smp_mflags}
 

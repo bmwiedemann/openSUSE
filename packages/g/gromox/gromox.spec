@@ -1,7 +1,7 @@
 #
 # spec file for package gromox
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define _libexecdir %_prefix/libexec
 
 Name:           gromox
-Version:        2.20
+Version:        2.21
 Release:        0
 Summary:        Groupware server backend with RPC, IMAP,POP3, PHP-MAPI support
 License:        AGPL-3.0-or-later AND GPL-2.0-only AND GPL-3.0-or-later
@@ -35,7 +35,7 @@ BuildRequires:  libmysqlclient-devel >= 5.6
 BuildRequires:  openldap2-devel
 %else
 BuildRequires:  mariadb-devel >= 5.6
-BuildRequiers:  openldap-devel
+BuildRequires:  openldap-devel
 %endif
 BuildRequires:  make
 BuildRequires:  pam-devel
@@ -97,7 +97,6 @@ Requires(pre):  user(grommunio)
 Requires(pre):  user(gromox)
 Requires(pre):  group(gromox)
 Provides:       php-mapi-gromox = %version-%release
-Provides:       bundled(tzcode) = 2022c
 Conflicts:      grommunio-admin-api < 1.10.7
 %{?systemd_ordering}
 %if !0%{?_pamdir:1}
@@ -168,9 +167,9 @@ perl -i -lpe 's{Type=simple}{Type=simple\nRestart=on-failure}' "$b/%_unitdir"/*.
 
 %global services gromox-delivery.service gromox-delivery-queue.service gromox-event.service gromox-http.service gromox-imap.service gromox-midb.service gromox-pop3.service gromox-snapshot.service gromox-snapshot.timer gromox-timer.service gromox-zcore.service
 
+%if 0%{?service_add_pre:1}
 %pre
 # User addition done a priori by system-user-gromox(!)
-%if 0%{?service_add_pre:1}
 %service_add_pre %services
 %endif
 

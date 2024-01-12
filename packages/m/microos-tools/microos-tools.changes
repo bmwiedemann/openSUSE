@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 10 12:47:49 UTC 2024 - kukuk@suse.com
+
+- Update to version 2.21+git9:
+  * Add man-online command
+  * Drop support for sle15 builds
+  * Add OBS CI workflow
+
+-------------------------------------------------------------------
 Thu Oct 12 12:11:04 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 2.21+git5:

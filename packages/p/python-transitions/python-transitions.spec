@@ -1,7 +1,7 @@
 #
 # spec file for package python-transitions
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2019-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,18 +17,14 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
 Name:           python-transitions
-Version:        0.8.10
+Version:        0.9.0
 Release:        0
 Summary:        A lightweight, object-oriented Python state machine implementation
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/pytransitions/transitions
 Source:         https://files.pythonhosted.org/packages/source/t/transitions/transitions-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM transitions-fixpy310.patch -- gh#pytransitions/transitions#559
-Patch0:         transitions-fixpy310.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -43,9 +39,6 @@ BuildRequires:  %{python_module pycodestyle}
 BuildRequires:  %{python_module pygraphviz}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module six}
-%if %{with python2}
-BuildRequires:  python2-mock
-%endif
 # png support for graphviz
 BuildRequires:  graphviz-gnome
 BuildRequires:  noto-sans-fonts

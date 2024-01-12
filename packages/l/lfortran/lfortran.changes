@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan  9 02:56:57 UTC 2024 - Christoph Junghans <junghans@votca.org>
+
+- Add kokkos dep
+
+-------------------------------------------------------------------
 Thu Jan  4 23:37:24 UTC 2024 - Christoph Junghans <junghans@votca.org>
 
 - Added upstream patch, 3043.patch, to fix linking on openSUSE:Factory

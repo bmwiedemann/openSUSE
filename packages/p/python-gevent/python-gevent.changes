@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jan 10 22:40:39 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Clean obsolete old python and old distribution directives
+  * Only 15.5+ with the sle15 python module and Tumbleweed have the
+    required Python 3.8+
+  * Drop fix-no-return-in-nonvoid-function.patch
+- Update test suite execution
+  * Use -u-network flag to disable network tests
+  * Add gevent-opensuse-nocolor-tests.patch -- Avoid colorization
+    of test output in obs runners
+  * Add  gevent-fix-unittest-returncode-py312-c1.patch and
+    gevent-fix-unittest-returncode-py312-c2.patch
+    gh#gevent/gevent#2012
+
+-------------------------------------------------------------------
 Mon Nov 27 15:53:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 23.9.1:

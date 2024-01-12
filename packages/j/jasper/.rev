@@ -311,4 +311,14 @@
     jas_get_total_mem_size function (for the Windows platform) #363</comment>
     <requestid>1129748</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>e16491b5f312a59050d6813161fde39e</srcmd5>
+    <version>4.1.2</version>
+    <time>1705099493</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.1.2:
+  * Fix invalid memory write bug (#367) (CVE-2023-51257).
+  * Fix missing range check in the JPC encoder (#368).</comment>
+    <requestid>1138151</requestid>
+  </revision>
 </revisionlist>

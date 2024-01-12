@@ -28,6 +28,8 @@ Source:         https://files.pythonhosted.org/packages/source/t/tornado/tornado
 Source99:       python-tornado6-rpmlintrc
 # PATCH-FIX-OPENSUSE ignore-resourcewarning-doctests.patch -- ignore resource warnings on OBS
 Patch0:         ignore-resourcewarning-doctests.patch
+# PATCH-FIX-OPENSUSE openssl-3.2.patch gh#tornadoweb/tornado#3355
+Patch1:         openssl-3.2.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}

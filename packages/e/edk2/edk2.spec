@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,14 @@
 
 
 %define platform @BUILD_FLAVOR@%{nil}
-%define edk2_platforms_version 0.0~20230118T162833~201514e6
-%define edk2_non_osi_version 0.0~20230118T154213~bc0b6bf
+%define edk2_platforms_version 0.0~20231122T151253~10e2eb03
+%define edk2_non_osi_version 0.0~20231130T122146~1f4d784
 %define brotli_version 0.0~20220110T130810~f4153a0
-%global openssl_version 1.1.1s
+%define cmocka_version 0.0~20191205T115639~1cc9cde
+%define public_mipi_sys_t_version 0.0~20230315T074831~370b594
+%define mbedtls_version 0.0~20221214T190639~8c892249
+%define googletest_version 0.0~20220616T131832~86add13
+%global openssl_version 3.0.9
 
 # Build with edk2-non-osi
 %bcond_without edk2_non_osi
@@ -34,14 +38,14 @@
 %endif
 
 # This differs on RC
-%define archive_version 202211
+%define archive_version 202311
 
 %if "%{platform}" != "%{nil}"
 Name:           edk2-%{platform}
 %else
 Name:           edk2
 %endif
-Version:        0.0~20230118T162833~201514e6
+Version:        202311
 Release:        0
 Summary:        Firmware required to run the %{platform}
 License:        SUSE-Firmware
@@ -51,6 +55,10 @@ Source0:        https://github.com/tianocore/edk2/archive/edk2-stable%{archive_v
 Source1:        edk2-platforms-%{edk2_platforms_version}.tar.xz
 Source2:        edk2-non-osi-%{edk2_non_osi_version}.tar.xz
 Source3:        brotli-%{brotli_version}.tar.xz
+Source4:        edk2-cmocka-%{cmocka_version}.tar.xz
+Source5:        public-mipi-sys-t-%{public_mipi_sys_t_version}.tar.xz
+Source6:        mbedtls-%{mbedtls_version}.tar.xz
+Source7:        googletest-%{googletest_version}.tar.xz
 Source10:       https://www.openssl.org/source/openssl-%{openssl_version}.tar.gz
 Source11:       https://www.openssl.org/source/openssl-%{openssl_version}.tar.gz.asc
 Source12:       openssl.keyring
@@ -79,7 +87,7 @@ ExclusiveArch:  aarch64
 Firmware required to run the %{platform}
 
 %prep
-%setup -q -n edk2-edk2-stable%{archive_version} -a 1 -a 2 -a 3
+%setup -q -n edk2-edk2-stable%{archive_version} -a 1 -a 2 -a 3 -a 4 -a 5 -a 6 -a 7
 pushd edk2-platforms-%{edk2_platforms_version}
 %patch999 -p1
 popd
@@ -87,6 +95,14 @@ popd
 # Fix path of the brotli submodules
 cp -R brotli-%{brotli_version}/* BaseTools/Source/C/BrotliCompress/brotli/
 cp -R brotli-%{brotli_version}/* MdeModulePkg/Library/BrotliCustomDecompressLib/brotli/
+# Fix path for cmocka
+cp -R edk2-cmocka-%{cmocka_version}/* UnitTestFrameworkPkg/Library/CmockaLib/cmocka/
+# Fix path for public-mipi-sys-t
+cp -R public-mipi-sys-t-%{public_mipi_sys_t_version}/* MdePkg/Library/MipiSysTLib/mipisyst/
+# Fix path for mbedtls
+cp -R mbedtls-%{mbedtls_version}/* CryptoPkg/Library/MbedTlsLib/mbedtls/
+# Fix path for googletest
+cp -R googletest-%{googletest_version}/* UnitTestFrameworkPkg/Library/GoogleTestLib/googletest/
 
 ln -sf edk2-platforms-%{edk2_platforms_version} edk2-platforms
 ln -sf edk2-non-osi-%{edk2_non_osi_version} edk2-non-osi

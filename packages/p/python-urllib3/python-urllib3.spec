@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,8 @@ Summary:        HTTP library with thread-safe connection pooling, file post, and
 License:        MIT
 URL:            https://urllib3.readthedocs.org/
 Source:         https://files.pythonhosted.org/packages/source/u/urllib3/urllib3-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE openssl-3.2.patch gh#urllib3/urllib3#3271
+Patch1:         openssl-3.2.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}

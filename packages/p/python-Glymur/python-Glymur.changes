@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Fri Jan 12 04:57:57 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.12.9post1:
+  * Fix setup.cfg for v0.12.9 release
+  * Fix handling of null-bytes with XML data
+  * Add API references to docs
+  * Qualify on python 3.12
+  * Fix printing issue on 3.12beta, Fedora rawhide
+  * Fix failing test on fedora
+  * Change private attribute to prevent downstream test failure with tiatoolbox
+  * Fix conversion of uint16 TIFFs to single jp2 tile.
+  * Fix command line arguments --psnr and --cratio.
+  * Minor documentation updates.
+  * Add --num-threads option to tiff2jp2.
+  * Refactor GeoJP2 code to get support for GML-JP2.
+  * Fix broken uint16 test.
+  * Fix stripped tiff oddity with partial last strip.
+  * Refactor RGBA interface.
+  * Fix plane ordering on RGBA TIFFs on big-endian
+  * Fix TIFF reads on partian final strips
+  * Fix regression on default value of numres.
+  * Add support for type hints.
+  * Remove support for Python 3.8.
+  * Fix error condition when MCT specified as false for grayscale image.
+  * Make properties conform to numpydoc.
+  * Fix YCbCr/JPEG TIFF conversion test failure on Fedora.
+  * Stop using libtiff to create test files on the fly.
+  * Do not error out for JP2 files with multiple codestreams.
+  * Relax validation for invalid JP2 files with multiple jp2h boxes.
+  * Drop support for python 3.7.
+  * Add support for ICC profiles, colormaps when converting from TIFF.
+  * Add shortcut for retrieving lowest resolution thumbnail.
+  * Remove setuptools from runtime requirement.
+  * Improve pretty-printing of Exif UUIDs, TLM segments.
+  * Change default value of --create-xmp-uuid to True.
+  * Error out early when writing 1x1 tile-by-tile
+  * Do not install test, test.data packages
+  * Fix reads where COD segment not at index[2]
+  * Fix ResolutionBox with tiff2jp2 
+- Drop patch glymur-pr553-no-setuptools.patch, included upstream.
+
+-------------------------------------------------------------------
 Thu Sep 22 19:12:41 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to v0.11.7

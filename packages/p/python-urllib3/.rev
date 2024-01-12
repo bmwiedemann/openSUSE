@@ -808,4 +808,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1130850</requestid>
   </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>b9d5a008ed888b222514700d32fdf10e</srcmd5>
+    <version>2.1.0</version>
+    <time>1705099473</time>
+    <user>anag+factory</user>
+    <comment>- Add upstream patch openssl-3.2.patch, to fix tests with opennssl
+  3.2.0, gh#urllib3/urllib3#3271</comment>
+    <requestid>1138118</requestid>
+  </revision>
 </revisionlist>

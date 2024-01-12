@@ -1,7 +1,7 @@
 #
 # spec file for package sslh
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2012 by Lars Vogdt
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,18 +18,19 @@
 
 
 Name:           sslh
-Version:        1.22c
+Version:        2.0.1
 Release:        0
 Summary:        SSL/SSH multiplexer
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/SSH
 URL:            https://www.rutschle.net/tech/sslh.shtml
-Source:         https://www.rutschle.net/tech/%{name}/%{name}-v%{version}.tar.gz
+Source:         https://github.com/yrutschle/sslh/archive/refs/tags/v%{version}.tar.gz
 Source1:        %{name}.init
 Source2:        %{name}.sysconfig
 Source3:        %{name}.conf.d
 BuildRequires:  libcap-devel
 BuildRequires:  libconfig-devel
+BuildRequires:  libev-devel
 BuildRequires:  pcre2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libsystemd)
@@ -44,7 +45,7 @@ it possible to connect to an SSH server on port 443 (e.g. from inside a
 corporate firewall) while still serving HTTPS on that port.
 
 %prep
-%autosetup -n %{name}-v%{version} -p1
+%autosetup -n %{name}-%{version} -p1
 
 %build
 export CFLAGS="%{optflags}"

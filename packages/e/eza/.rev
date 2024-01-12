@@ -309,4 +309,22 @@
   * [breaking] Support different custom time style for non-recent/recent files</comment>
     <requestid>1132929</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d01119506d4f79874aa16ccb8df04fd8</srcmd5>
+    <version>0.17.1+0</version>
+    <time>1705099540</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.17.1:
+  Bug Fixes:
+  * Offset widths in grid mode with utf8 filenames
+  * Format the code
+  * Unformat the code where needed
+  * Format the code correctly this time
+  * Redo everything from scratch
+  * Stack overflow when '-laaR' are used
+  * Stack overflow when '-laaR' is used
+  Features:
+  * Add Fortran icons</comment>
+    <requestid>1138225</requestid>
+  </revision>
 </revisionlist>

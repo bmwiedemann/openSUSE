@@ -1361,4 +1361,21 @@ Fixes a critical bug in version 0.6.2, crashes when using internet services.
 </comment>
     <requestid>1134092</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>e2946374771c5a16c01164a1069c2729</srcmd5>
+    <version>1.0.23</version>
+    <time>1705099520</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0.23
+  + Bugfixes:
+   + Fixed possible duplication of song entries after organizing (#1341).
+   + Fixed possible crash when connecting devices (#1313).
+   + Fixed playlist sorting of original year (#1349).
+  + Enhancements:
+   + Treat all stream errors as non-fatal (#1347).
+   + Require KDSingleApplication 1.1.0.
+   + Fix logging of restored unavailable songs. 
+</comment>
+    <requestid>1138177</requestid>
+  </revision>
 </revisionlist>

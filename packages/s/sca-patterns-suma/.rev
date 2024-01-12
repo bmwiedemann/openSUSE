@@ -15,4 +15,12 @@
     <comment>Converted from python2 to python3 bsc#1191005 (forwarded request 929482 from jrecord)</comment>
     <requestid>929483</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f036f92a3f01354f77753885351c60a2</srcmd5>
+    <version>1.5.1</version>
+    <time>1705099627</time>
+    <user>anag+factory</user>
+    <comment>Changed pattern mode in spec file bsc#1218773 (forwarded request 1138388 from jrecord)</comment>
+    <requestid>1138389</requestid>
+  </revision>
 </revisionlist>

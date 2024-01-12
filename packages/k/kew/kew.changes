@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Jan 12 10:06:19 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 2.0.2
+  * moved mutex initialization code
+  * small graphical tweaks
+  * show songs before enqueueing everthing
+
+-------------------------------------------------------------------
+Thu Jan 11 23:48:15 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 2.0.1
+  * New view: Library. Shows the contents of the music library.
+    From there you can add songs to the playlist.
+  * Delete items from the playlist by pressing Del.
+  * You can flip through pages of the library or playlist by
+    pressing Page Up and Page Down.
+  * Starting kew with no arguments now takes you to the library.
+  * After the playlist finishes playing, the library is shown,
+    instead of the app exiting.
+  * To run kew with all songs shuffled like you could before, just
+    type "kew all" in the terminal.
+  * Running kew with the argument --quitonstop, enables the old
+    behavior of exiting when finished.
+  * Removed the playlist duration counter. It caused problems when
+    coupled with the new features of being able to remove and add
+    songs while audio is playing.
+  * New ascii logo! This one takes up much less space.
+  * kew now shows which song is playing on top of the library and
+    playlist views.
+  * Volume is now set at 50% at the start.
+  * Also many bug fixes.
+
+-------------------------------------------------------------------
 Sun Dec 10 16:48:16 UTC 2023 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 1.11

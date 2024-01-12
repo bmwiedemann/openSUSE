@@ -23,4 +23,15 @@
     <comment>- Switch from python setup.py test construct to pyunittest macro.</comment>
     <requestid>924035</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>d5c1f1d324d8dac3290801cc628d1295</srcmd5>
+    <version>1.5</version>
+    <time>1705099532</time>
+    <user>anag+factory</user>
+    <comment>- Switch to autosetup and pyproject macros.
+- Stop using greedy globs in %files.
+- Add patches bump-versioneer.patch and fix-assertions.patch:
+  * Support Python 3.12 changes.</comment>
+    <requestid>1138196</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-rollbar
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,13 @@
 #
 
 
-%bcond_without python2
 Name:           python-rollbar
-Version:        0.16.3
+Version:        1.0.0
 Release:        0
 Summary:        Report exceptions, errors, and log messages to Rollbar
 License:        MIT
 URL:            https://github.com/rollbar/pyrollbar
 Source:         https://github.com/rollbar/pyrollbar/archive/v%{version}.tar.gz
-# https://github.com/rollbar/pyrollbar/pull/340
-Patch0:         python-rollbar-no-unittest2.patch
 BuildRequires:  %{python_module WebOb}
 BuildRequires:  %{python_module blinker}
 BuildRequires:  %{python_module httpx}
@@ -41,11 +38,6 @@ Requires:       python-six >= 1.14.0
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
-%if %{with python2}
-BuildRequires:  python2-enum34
-BuildRequires:  python2-mock
-BuildRequires:  python2-unittest2
-%endif
 %python_subpackages
 
 %description

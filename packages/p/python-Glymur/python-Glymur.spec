@@ -1,7 +1,7 @@
 #
 # spec file for package python-Glymur
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,15 @@
 #
 
 
+%define dotted_version 0.12.9.post1
 Name:           python-Glymur
-Version:        0.11.3
+Version:        0.12.9post1
 Release:        0
 Summary:        Tools for accessing JPEG2000 files
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/quintusdias/glymur
 Source:         https://github.com/quintusdias/glymur/archive/v%{version}.tar.gz#/Glymur-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM glymur-pr553-no-setuptools.patch gh#quintusdias/glymur#553 + gh#quintusdias/glymur#554
-Patch1:         glymur-pr553-no-setuptools.patch
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -81,6 +79,6 @@ donttest+="test_config_dir_on_windows"
 %python_alternative %{_bindir}/jp2dump
 %python_alternative %{_bindir}/tiff2jp2
 %{python_sitelib}/glymur
-%{python_sitelib}/Glymur-%{version}*-info
+%{python_sitelib}/Glymur-%{dotted_version}.dist-info
 
 %changelog

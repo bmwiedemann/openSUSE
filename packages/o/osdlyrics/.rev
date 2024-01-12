@@ -110,4 +110,12 @@
   * Remove dependency on future (forwarded request 1135875 from hillwood)</comment>
     <requestid>1135876</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>dacbf7beec46ee9d7425f84b822b7bb3</srcmd5>
+    <version>0.5.15</version>
+    <time>1705099601</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1138330</requestid>
+  </revision>
 </revisionlist>

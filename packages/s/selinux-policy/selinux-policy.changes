@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 09 09:14:44 UTC 2024 - cathy.hu@suse.com
+
+- Update to version 20240104:
+  * Allow keepalived_t read+write kernel_t pipes (bsc#1216060)
+  * allow rebootmgr to read the system state (bsc#1205931)
+
+-------------------------------------------------------------------
 Tue Nov 28 14:40:23 UTC 2023 - Hu <cathy.hu@suse.com>
 
 - Trigger rebuild of the policy when pcre2 gets updated to avoid

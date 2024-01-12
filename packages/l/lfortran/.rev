@@ -7,4 +7,13 @@
     <comment>Initial import</comment>
     <requestid>1136961</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3c76412a1068bd086720d11fabb003d8</srcmd5>
+    <version>0.30.0</version>
+    <time>1705099527</time>
+    <user>anag+factory</user>
+    <comment>- Add kokkos dep
+</comment>
+    <requestid>1138194</requestid>
+  </revision>
 </revisionlist>

@@ -1,2 +1,2 @@
 addFilter("zero-length .*tests/nullcert\.pem")
-addFilter("pem-certificate .*tests/.*\.pem")
+

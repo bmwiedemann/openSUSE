@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 11 08:29:37 UTC 2024 - Yifan Jiang <yfjiang@suse.com>
+
+- Update spec file to conclicts the legacy amtk-devel, which
+  shipped the same file Amtk-%{api_ver}.gir as libgedit-amtk does.
+
+-------------------------------------------------------------------
 Sun Aug 13 14:29:00 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Initial packaging for openSUSE.

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 12 05:45:57 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Actually drop the Requires on python3-future. 
+
+-------------------------------------------------------------------
 Sun Dec 31 12:42:52 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 0.5.15

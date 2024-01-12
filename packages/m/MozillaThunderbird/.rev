@@ -5194,4 +5194,12 @@ I cannot test locally unfortunately.
   * CVE-2023-6862 (bmo#1868042)</comment>
     <requestid>1134147</requestid>
   </revision>
+  <revision rev="328" vrev="1">
+    <srcmd5>9f936a07d61b8de6e5429814bc6ddc7b</srcmd5>
+    <version>115.6.1</version>
+    <time>1705099611</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1138352</requestid>
+  </revision>
 </revisionlist>

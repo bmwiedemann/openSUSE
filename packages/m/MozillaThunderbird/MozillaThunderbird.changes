@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Jan 10 09:18:01 UTC 2024 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Mozilla Thunderbird 115.6.1
+  https://www.thunderbird.net/en-US/thunderbird/115.6.1/releasenotes/
+  * new: OAuth2 now supported for comcast.net (bmo#1844810)
+  * fixed: High CPU usage sometimes occurred with IMAP CONDSTORE
+    (conditional STORE) enabled (bmo#1839256)
+  * fixed: Replying to a collapsed thread via keyboard shortcut
+    (Ctrl+R/Cmd+R) opened a reply for every message in the thread
+    (bmo#1866819)
+  * fixed: Enabling Grouped By view after reversing sort order of
+    column header caused messages to be grouped incorrectly
+    (bmo#1868794)
+  * fixed: Opening thread pane context menu via keyboard did not
+    always scroll view to selection (bmo#1867532)
+  * fixed: New mail indicator for POP3 accounts did not indicate
+    new messages ready to be downloaded (bmo#1870619)
+  * fixed: Messages could not be moved to folders using Message >
+    Move To if text or a link in the message had been clicked on
+    first (bmo#1868474)
+  * fixed: MIME part boundaries were not properly terminated
+    (bmo#1805558)
+
+-------------------------------------------------------------------
 Sun Dec 17 12:33:37 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 115.6.0

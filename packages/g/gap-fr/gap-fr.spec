@@ -1,7 +1,7 @@
 #
 # spec file for package gap-fr
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-fr
-Version:        2.4.12
+Version:        2.4.13
 Release:        0
 Summary:        GAP: Computations with functionally recursive groups
 License:        GPL-2.0-or-later

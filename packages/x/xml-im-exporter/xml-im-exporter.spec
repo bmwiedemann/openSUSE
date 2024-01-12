@@ -1,7 +1,7 @@
 #
 # spec file for package xml-im-exporter
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        XML Im-/Exporter
 License:        LGPL-2.0-or-later
 Group:          Development/Libraries/Java
-URL:            http://xml-im-exporter.sourceforge.net/
+URL:            https://xml-im-exporter.sourceforge.net/
 Source0:        xml-im-exporter1.1.tar.bz2
 Source1:        https://repo1.maven.org/maven2/de/zeigermann/xml/%{name}/%{version}/%{name}-%{version}.pom
 Patch0:         xml-im-exporter-build_xml.patch
@@ -30,7 +30,7 @@ Patch1:         encoding.patch
 BuildRequires:  ant >= 1.6
 BuildRequires:  ant-junit
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  junit
 BuildArch:      noarch
 
@@ -79,16 +79,13 @@ cp -pr doc/javadoc/* %{buildroot}%{_javadocdir}/%{name}
 
 # maven
 install -d -m 755 %{buildroot}%{_mavenpomdir}/
-install -pm 644 %{SOURCE1} %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
+%{mvn_install_pom} %{SOURCE1} %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
 %add_maven_depmap JPP-%{name}.pom %{name}.jar
 rm -f TEST-*.txt # has test durations that differ across builds
 
-%files
+%files -f .mfiles
 %defattr(0644,root,root,0755)
 %doc doc/index.html *.txt
-%{_javadir}/%{name}.jar
-%{_mavenpomdir}/*
-%{_datadir}/maven-metadata/%{name}.xml*
 
 %files javadoc
 %defattr(0644,root,root,0755)

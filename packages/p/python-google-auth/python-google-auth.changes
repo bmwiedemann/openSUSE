@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 11 14:38:48 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.26.2
+  * Read universe_domain for external account authorized user (#1450)
+
+-------------------------------------------------------------------
 Thu Jan  4 09:50:33 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.26.1
