@@ -295,6 +295,7 @@ unsorted:
   - SDL_mixer-devel 
   - SDL_sound-devel 
   - SHERPA-MC-devel 
+  - SQLiteCpp-devel 
   - SVT-AV1 
   - SVT-AV1-devel 
   - SampleICC 
@@ -3268,6 +3269,7 @@ unsorted:
   - drawing 
   - drawing-lang 
   - drbd-formula 
+  - drbd-kmp-default 
   - drc 
   - drc-doc 
   - driverctl 
@@ -9203,6 +9205,7 @@ unsorted:
   - kernel-docs-html 
   - kernel-firmware 
   - kernel-firmware-nvidia-gsp-G06 
+  - kernel-firmware-nvidia-gspx-G06 
   - kernel-install-tools 
   - kernel-kvmsmall 
   - kernel-kvmsmall-devel 
@@ -15076,6 +15079,7 @@ unsorted:
   - libsqlcipher-3_42_0-0 
   - libsqlcipher-3_42_0-0-x86-64-v3 
   - libsqlite3-0-32bit 
+  - libsqlitecpp0 
   - libsqlparser1 
   - libsquashfuse0 
   - libsquirrel1001 
@@ -16861,7 +16865,6 @@ unsorted:
   - manaplus-lang 
   - manchu-fonts 
   - mandoc 
-  - mandoc-bin 
   - mandown 
   - mangoapp 
   - mangohud 
@@ -18783,6 +18786,7 @@ unsorted:
   - nut-drivers-net 
   - nvdock 
   - nvidia-open-driver-G06-signed-default-devel 
+  - nvidia-open-driver-G06-signed-kmp-default 
   - nvidia-texture-tools 
   - nvimpager 
   - nvimpager-zsh-completion 
@@ -25070,7 +25074,6 @@ unsorted:
   - python310-pdfrw 
   - python310-pdm 
   - python310-pdm-backend 
-  - python310-pdm-pep517 
   - python310-pecan 
   - python310-peewee 
   - python310-pefile 
@@ -28506,7 +28509,6 @@ unsorted:
   - python311-pdfrw 
   - python311-pdm 
   - python311-pdm-backend 
-  - python311-pdm-pep517 
   - python311-pecan 
   - python311-peewee 
   - python311-pefile 
@@ -32006,7 +32008,6 @@ unsorted:
   - python39-pdfrw 
   - python39-pdm 
   - python39-pdm-backend 
-  - python39-pdm-pep517 
   - python39-pecan 
   - python39-peewee 
   - python39-pefile 
@@ -45582,7 +45583,9 @@ unsorted:
   - virtualbox-devel 
   - virtualbox-guest-desktop-icons 
   - virtualbox-guest-source 
+  - virtualbox-guest-tools 
   - virtualbox-host-source 
+  - virtualbox-kmp-default 
   - virtualbox-qt 
   - virtualbox-vnc 
   - virtualbox-websrv 

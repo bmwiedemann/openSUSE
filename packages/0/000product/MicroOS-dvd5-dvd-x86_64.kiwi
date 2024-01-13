@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20240111" schemaversion="4.1">
+<image name="OBS__MicroOS___20240112" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20240111</productvar>
+      <productvar name="VERSION">20240112</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20240111,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20240112,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20240111/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20240112/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -2055,6 +2055,7 @@
       <repopackage name="man-pages-pt_BR"/>
       <repopackage name="man-pages-ru"/>
       <repopackage name="man-pages-zh_CN"/>
+      <repopackage name="mandoc-bin"/>
       <repopackage name="mbimcli-bash-completion"/>
       <repopackage name="mcelog"/>
       <repopackage name="mdadm"/>
@@ -2474,7 +2475,6 @@
       <repopackage name="python311-hyperframe"/>
       <repopackage name="python311-hyperlink"/>
       <repopackage name="python311-idna"/>
-      <repopackage name="python311-importlib-metadata"/>
       <repopackage name="python311-incremental"/>
       <repopackage name="python311-iniconfig"/>
       <repopackage name="python311-ipaddr"/>
@@ -2545,7 +2545,6 @@
       <repopackage name="python311-Twisted-tls"/>
       <repopackage name="python311-typing_extensions"/>
       <repopackage name="python311-urllib3"/>
-      <repopackage name="python311-zipp"/>
       <repopackage name="python311-zope.event"/>
       <repopackage name="python311-zope.interface"/>
       <repopackage name="qalculate-data"/>
