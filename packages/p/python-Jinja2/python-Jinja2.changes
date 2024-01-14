@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 12 09:35:16 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.3 (bsc#1218722, CVE-2024-22195):
+  * Fix compiler error when checking if required blocks in parent
+    templates are xmlattr filter does not allow keys with spaces.
+  * Make error messages stemming from invalid nesting of {% trans
+    %} blocks more helpful. :pr:`1916`
+
+-------------------------------------------------------------------
 Fri Apr 21 12:20:44 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
@@ -167,7 +176,7 @@ Mon May  4 09:35:51 UTC 2020 - Johannes Grassler <johannes.grassler@suse.com>
     intermediate strings during rendering. This prevents early
     evaluation which could change the value of an expression.
     :issue:1186
-  
+
 -------------------------------------------------------------------
 Wed Apr  8 11:59:35 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
@@ -181,7 +190,7 @@ Fri Feb 21 18:56:05 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 -------------------------------------------------------------------
 Tue Feb 18 17:26:13 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
- 
+
 - update to 2.11.1
  * Fix a bug that prevented looking up a key after an attribute
    ({{ data.items[1:] }}) in an async template
@@ -427,7 +436,7 @@ Fri Aug 15 12:29:35 UTC 2014 - mcihar@suse.cz
 Tue Jul 15 10:41:00 UTC 2014 - toddrme2178@gmail.com
 
 - Update to 2.7.3 (bnc#858239, CVE-2014-0012)
-  - Security issue: Corrected the security fix for the cache folder.  
+  - Security issue: Corrected the security fix for the cache folder.
     This fix was provided by RedHat.
 
 -------------------------------------------------------------------
@@ -438,7 +447,7 @@ Thu May  8 21:21:45 UTC 2014 - hpj@urpla.net
 -------------------------------------------------------------------
 Sat Apr 26 19:38:39 UTC 2014 - dmueller@suse.com
 
-- avoid rebuildcycle with vim 
+- avoid rebuildcycle with vim
 
 -------------------------------------------------------------------
 Mon Jan 13 13:18:53 UTC 2014 - dmueller@suse.com
@@ -522,7 +531,7 @@ Mon Apr 23 12:00:49 UTC 2012 - toddrme2178@gmail.com
 
 - Add python 3 package
 - Simplify vim plugin packaging
-- Add suggests for vim and emacs in their respective 
+- Add suggests for vim and emacs in their respective
   packages
 - Removed test for obsolete openSUSE version
 

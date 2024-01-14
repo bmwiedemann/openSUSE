@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 22 18:26:49 UTC 2023 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to version 2.6.4:
+  - Use AX_ADD_FORTIFY_SOURCE to avoid redefining _FORTIFY_SOURCE
+  - Do not look up include files in the current working directory
+
+-------------------------------------------------------------------
 Fri Sep 22 18:56:15 UTC 2023 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to version 2.6.3:

@@ -323,6 +323,7 @@ BuildRequires:  cryptsetup
 BuildRequires:  cups-libs
 BuildRequires:  curl
 BuildRequires:  dash
+BuildRequires:  dbus-1-daemon
 BuildRequires:  dbus-1-x11
 BuildRequires:  dd_rescue
 BuildRequires:  debuginfod-client
@@ -336,7 +337,7 @@ BuildRequires:  ed
 BuildRequires:  efont-unicode-bitmap-fonts
 BuildRequires:  elfutils
 BuildRequires:  ethtool
-BuildRequires:  noto-naskharabic-fonts
+BuildRequires:  google-noto-naskharabic-fonts
 %if %with_exfat
 BuildRequires:  exfatprogs
 %endif
@@ -670,7 +671,7 @@ AutoReqProv:    off
 Summary:        Installation Image Files for %theme
 License:        GPL-2.0-or-later
 Group:          Metapackages
-Version:        17.105
+Version:        17.109
 Release:        0
 Provides:       installation-images = %version-%release
 Conflicts:      otherproviders(installation-images)

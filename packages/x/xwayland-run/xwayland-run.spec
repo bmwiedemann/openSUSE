@@ -1,7 +1,7 @@
 #
 # spec file for package xwayland-run
 #
-# Copyright (c) 2023 Neal Gompa
+# Copyright (c) 2024 Neal Gompa
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@ License:        GPL-2.0-or-later
 URL:            https://gitlab.freedesktop.org/ofourdan/xwayland-run
 Source0:        %{url}/-/archive/%{version}/%{name}-%{version}.tar.gz
 
-# From: https://gitlab.freedesktop.org/ofourdan/xwayland-run/-/merge_requests/4
+# Backport from upstream
 Patch0001:      0001-wlheadless-Add-support-for-kwin.patch
 
 BuildArch:      noarch
@@ -33,7 +33,7 @@ BuildArch:      noarch
 BuildRequires:  meson >= 0.60.0
 BuildRequires:  git-core
 BuildRequires:  python3-devel
-Requires:       (weston or kwin or mutter or cage or gnome-kiosk)
+Requires:       (weston or cage or kwin6 or kwin5 or mutter or gnome-kiosk)
 Requires:       xorg-x11-server-wayland
 
 # Provide names of the other utilities included

@@ -379,4 +379,12 @@
 - css-overrides.patch, storage-btrfs.patch: refreshed</comment>
     <requestid>1135660</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>0cdfd21fc2e954120e68c99cd388ca11</srcmd5>
+    <version>307</version>
+    <time>1705255300</time>
+    <user>anag+factory</user>
+    <comment>- enable python-bridge for suse distros</comment>
+    <requestid>1138363</requestid>
+  </revision>
 </revisionlist>

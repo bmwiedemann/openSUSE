@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-haystack
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,11 +24,15 @@ Summary:        Pluggable search for Django
 License:        BSD-3-Clause
 URL:            https://github.com/django-haystack/django-haystack
 Source:         https://files.pythonhosted.org/packages/source/d/django-haystack/django-haystack-%{version}.tar.gz
+# pkg_resources is broken since the flufl.lock update in Factory
+# https://github.com/django-haystack/django-haystack/pull/1935
+Patch:          gh-pr-1935_importlib.patch
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django >= 2.2
+Requires:       python-packaging
 Suggests:       python-elasticsearch
 Suggests:       python-pysolr >= 3.7.0
 Suggests:       python-Whoosh >= 2.5.4
@@ -51,7 +55,7 @@ BuildRequires:  python3-GDAL
 Pluggable search for Django.
 
 %prep
-%setup -q -n django-haystack-%{version}
+%autosetup -n django-haystack-%{version} -p1
 sed -i 's:==:>=:' setup.py
 
 # This causes errors with pytest

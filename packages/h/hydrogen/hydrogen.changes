@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Sat Jan 13 05:56:48 UTC 2024 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 1.2.3
+- Remove Fix-driver-switching-whil-using-JACK.patch and
+  Fix-JACK-support.patch now upstream
+- Refresh release-version.patch
+
+Added
+
+  * Forward compatibility for .h2song and drumkit changes introduced
+    in version 1.3.0
+
+Fixed
+
+  * Restore mute button state of master mixer strip on song load.
+  * Recorded MIDI notes were inserted ahead of the beat (#1851).
+  * Drumkit Property Dialog:
+    * Images were written regardless whether one hits the ok or cancel button.
+    * When using Save As to create a new drumkit, the added image was put in the
+      old drumkit folder instead and not properly copied into the new one.
+    * Allow to Save As drumkits derived from kits not found on the current system.
+  * Audio Engine: In Song Mode with Loop Mode deactivated Hydrogen missed notes
+    very close to the end of the song.
+  * Fix crash on playing back notes with custom length (#1852).
+  * macOS: fix naming of CoreMIDI header (#1865).
+  * Fix various rendering issues with custom length notes.
+  * Fix potential crash/failing startup on Windows in case PortAudio or PortMidi
+    device is already occupied (#1893)
+  * Fix crash on shutdown, song export, or driver changes in the Preferences while
+    using JACK on Linux (#1902, #1867, #1907)
+  * Pattern Editor:
+    * Only delete stop notes clicked by the user. (#1859)
+    * Proper undo of moving notes out of DrumPatternEditor. (#1859)
+    * Custom note lengths are now only drawn till the next stop
+      note. (#1859)
+    * Highlight selected stop notes too. (#1859)
+    * Update selected notes visually on left and right keyboard movement. (#1859)
+    * Fixed stop note color which was no different than the default note color
+      (#1854).
+    * Fixed grid line rendering on rational pattern size nominator.
+    * Fixed grid line colors on very fine resolution.
+  * Fix broken file browser dialogs on Linux when using translations (#1908).
+  * Fix drumkit export on Windows (#1927).
+  * Timing drift (and artifacts) in playback track rendering on some hosts is
+    fixed (#1920).
+
+-------------------------------------------------------------------
 Thu Jan  4 21:19:39 UTC 2024 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Add Fix-driver-switching-whil-using-JACK.patch and

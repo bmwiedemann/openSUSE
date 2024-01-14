@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov  2 11:40:16 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- JPMS: Add the Automatic-Module-Name attribute to the manifest.
+
+-------------------------------------------------------------------
 Thu Aug 24 10:08:25 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Make a separate flavour for a minimal dom4j-bootstrap package

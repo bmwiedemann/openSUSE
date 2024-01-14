@@ -1,15 +1,21 @@
-From ac94b6621c2dfa70329fbc89c77ad7a5042f1d5a Mon Sep 17 00:00:00 2001
+From c5846bed1d01497c75f8347e4d5dd1077cf171e9 Mon Sep 17 00:00:00 2001
 From: Neal Gompa <neal@gompa.dev>
-Date: Sun, 10 Dec 2023 18:03:30 -0500
+Date: Tue, 2 Jan 2024 21:36:40 -0500
 Subject: [PATCH] wlheadless: Add support for kwin
 
+Even though kwin_wayland supports passing a command, it seems the actual
+arguments following the command get ignored, so this is not suitable for
+wlheadless.
+
+Instead, we spawn kwin_wayland and the clients separately like we do for
+weston.
 ---
- README.md                  |  5 ++-
+ README.md                  |  5 +--
  man/wlheadless-run.man     |  2 +-
  meson_options.txt          |  2 +-
- src/wlheadless/kwin.py     | 76 ++++++++++++++++++++++++++++++++++++++
+ src/wlheadless/kwin.py     | 70 ++++++++++++++++++++++++++++++++++++++
  src/wlheadless/meson.build |  1 +
- 5 files changed, 82 insertions(+), 4 deletions(-)
+ 5 files changed, 76 insertions(+), 4 deletions(-)
  create mode 100644 src/wlheadless/kwin.py
 
 diff --git a/README.md b/README.md
@@ -67,12 +73,12 @@ index 97367ba..535da87 100644
         value: 'weston')
 diff --git a/src/wlheadless/kwin.py b/src/wlheadless/kwin.py
 new file mode 100644
-index 0000000..e529229
+index 0000000..1721d1c
 --- /dev/null
 +++ b/src/wlheadless/kwin.py
-@@ -0,0 +1,76 @@
+@@ -0,0 +1,70 @@
 +#
-+# Copyright © 2023 Neal Gompa.
++# Copyright © 2024 Neal Gompa.
 +#
 +# This program is free software; you can redistribute it and/or
 +# modify it under the terms of the GNU General Public License as
@@ -109,6 +115,7 @@ index 0000000..e529229
 +    def __init__(self):
 +        self.compositor_args = []
 +        self.compositor = [
++            'dbus-run-session',
 +            'kwin_wayland',
 +            '--virtual',
 +        ]
@@ -117,36 +124,29 @@ index 0000000..e529229
 +
 +
 +    def spawn_client(self, command_args):
-+        """Helper function to spawn kwin and the client at once."""
-+        wayland_display = 'wayland-' + format(getpid())
-+        environ['WAYLAND_DISPLAY'] = wayland_display
-+        compositor = self.compositor
-+        compositor.extend(self.compositor_args)
-+        compositor.extend(['--wayland-display', format(wayland_display)])
-+        compositor.extend(['--'])
-+        compositor.extend(command_args)
-+        return self.wlheadless_common.run_command(compositor)
++        """Helper function to spawn the Wayland client."""
++        return self.wlheadless_common.run_command(command_args)
 +
 +
 +    def spawn_xwayland(self, xserver_args = []):
-+        """Helper function to spawn kwin and Xwayland at once."""
-+        compositor = self.compositor
-+        compositor.extend(self.compositor_args)
-+        compositor.extend(['--'])
++        """Helper function to spawn Xwayland."""
 +        xserver_args.extend(['-fullscreen'])
-+        return self.xwayland.spawn_xwayland(xserver_args, compositor)
++        return self.xwayland.spawn_xwayland(xserver_args)
 +
 +
 +    def wait_compositor(self):
 +        """Waits for the compositor to start."""
-+        return 0
++        return self.wlheadless_common.wait_compositor()
 +
 +
 +    def run_compositor(self, compositor_args = []):
-+        """Starts the Wayland compositor."""
-+        # Just save the given args for when we shall actually spawn the compositor.
-+        self.compositor_args = compositor_args
-+        return 0
++        """Helper function to spawn kwin."""
++        wayland_display = 'wayland-' + format(getpid())
++        environ['WAYLAND_DISPLAY'] = wayland_display
++        compositor = self.compositor
++        compositor.extend(self.compositor_args)
++        compositor.extend(['--socket', format(wayland_display)])
++        return self.wlheadless_common.run_compositor(compositor)
 diff --git a/src/wlheadless/meson.build b/src/wlheadless/meson.build
 index cdf650c..e6fbfce 100644
 --- a/src/wlheadless/meson.build

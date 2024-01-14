@@ -1,7 +1,7 @@
 #
 # spec file for package jsch
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           jsch
-Version:        0.2.9
+Version:        0.2.15
 Release:        0
 Summary:        Pure Java implementation of SSH2
 License:        BSD-3-Clause
@@ -28,7 +28,7 @@ Source1:        %{name}-build.xml
 Patch0:         jsch-junixsocket.patch
 Patch1:         jsch-log4j.patch
 BuildRequires:  ant
-BuildRequires:  bouncycastle
+BuildRequires:  bouncycastle >= 1.77
 BuildRequires:  fdupes
 # We need this for module-info.class
 BuildRequires:  java-devel >= 9

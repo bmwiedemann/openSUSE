@@ -69,4 +69,13 @@
   * feat: rename modify_range -&gt; get_replace_range 54837df</comment>
     <requestid>1138228</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b00c05b17978511b389ed083c7bec6c5</srcmd5>
+    <version>0.17.1+0</version>
+    <time>1705255367</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.17.1:
+  * feat: respect user's language extension option #848</comment>
+    <requestid>1138447</requestid>
+  </revision>
 </revisionlist>

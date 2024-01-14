@@ -6959,4 +6959,29 @@ handle manual pages that consist only of a .so directive such as
   6f53f71d2d vconsole-setup: simplify error handling</comment>
     <requestid>1134212</requestid>
   </revision>
+  <revision rev="411" vrev="1">
+    <srcmd5>5526dae81b5d9ccfa3ec1b2c98ef3b1e</srcmd5>
+    <version>254.8</version>
+    <time>1705255273</time>
+    <user>anag+factory</user>
+    <comment>- Add 5001-Revert-udev-update-devlink-with-the-newer-device-nod.patch
+      5002-Revert-udev-revert-workarounds-for-issues-caused-by-.patch
+  It seems that systemd upstream has a dubious way to fix broken code these
+  days... let's revert these hacks until a final decision is taken to solve
+  https://github.com/systemd/systemd/issues/28141. See also
+  https://github.com/systemd/systemd/pull/30075.
+
+- Import commit 67a5ac1043417d900bf417a884372ae14a96ef69 (merge of v254.8)
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/071ac409a0564863657d8f8a5a35e6a4f914695f...67a5ac1043417d900bf417a884372ae14a96ef69
+
+- udev(-mini)?: ensure %_modulesloaddir exists and is owned
+  properly. Allows other packages to install modules without worry
+  of the parent directory. We do not ensure /etc/modules-load.d
+  exists in the -mini flavor, as that directory is not meant to be
+  used by packages.
+
+  071ac409a0 rules: set up tty permissions and group for /dev/hvc* nodes (bsc#1218137)</comment>
+    <requestid>1138298</requestid>
+  </revision>
 </revisionlist>

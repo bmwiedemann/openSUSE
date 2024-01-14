@@ -101,7 +101,11 @@
          compress="true"
          index="false"
          basedir="${build.outputDir}"
-         excludes="**/package.html"/>
+         excludes="**/package.html">
+      <manifest>
+        <attribute name="Automatic-Module-Name" value="${project.groupId}"/>
+      </manifest>
+    </jar>
   </target>
 
   <!-- ====================================================================== -->

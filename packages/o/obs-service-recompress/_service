@@ -4,6 +4,7 @@
     <param name="scm">git</param>
     <param name="version">0.5.2</param>
     <param name="revision">0.5.2</param>
+    <param name="extract">dist/obs-service-recompress.spec</param>
   </service>
 
   <service mode="manual" name="recompress">

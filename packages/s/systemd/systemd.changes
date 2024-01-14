@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Jan 12 10:12:15 UTC 2024 - Franck Bui <fbui@suse.com>
+
+- Add 5001-Revert-udev-update-devlink-with-the-newer-device-nod.patch
+      5002-Revert-udev-revert-workarounds-for-issues-caused-by-.patch
+
+  It seems that systemd upstream has a dubious way to fix broken code these
+  days... let's revert these hacks until a final decision is taken to solve
+  https://github.com/systemd/systemd/issues/28141. See also
+  https://github.com/systemd/systemd/pull/30075.
+
+-------------------------------------------------------------------
+Fri Jan 12 09:34:14 UTC 2024 - Franck Bui <fbui@suse.com>
+
+- Import commit 67a5ac1043417d900bf417a884372ae14a96ef69 (merge of v254.8)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/071ac409a0564863657d8f8a5a35e6a4f914695f...67a5ac1043417d900bf417a884372ae14a96ef69
+
+-------------------------------------------------------------------
+Thu Dec 21 10:11:53 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- udev(-mini)?: ensure %_modulesloaddir exists and is owned
+  properly. Allows other packages to install modules without worry
+  of the parent directory. We do not ensure /etc/modules-load.d
+  exists in the -mini flavor, as that directory is not meant to be
+  used by packages.
+
+-------------------------------------------------------------------
 Wed Dec 20 12:49:09 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - udev: only require kmod in the full flavor. udev-mini is only
@@ -10,7 +38,7 @@ Wed Dec 20 12:40:55 UTC 2023 - Franck Bui <fbui@suse.com>
 
 - Import commit 071ac409a0564863657d8f8a5a35e6a4f914695f
 
-  071ac409a0 rules: set up tty permissions and group for /dev/hvc* nodes
+  071ac409a0 rules: set up tty permissions and group for /dev/hvc* nodes (bsc#1218137)
   f693b3ed8a vconsole-setup: remember the correct error value when open_terminal() fails
   963d838bad vconsole-setup: handle the case where the vc is in KD_GRAPHICS mode more gracefully (bsc#1215282)
   6f53f71d2d vconsole-setup: simplify error handling

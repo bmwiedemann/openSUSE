@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan  5 08:53:17 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- zstd is now available on SLE 15 SP0
+  Adding dependency there as well to fix bsc#1216361
+
+-------------------------------------------------------------------
 Tue Mar  1 14:41:26 UTC 2022 - Adrian Schröter <adrian@suse.de>
 
 - update to version 0.5.2:

@@ -1,9 +1,9 @@
 #
-# spec file for package chromium
+# spec file
 #
-# Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2023 Callum Farmer <gmbr3@opensuse.org>
-# Copyright (c) 2023 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2024 Callum Farmer <gmbr3@opensuse.org>
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -54,7 +54,7 @@
 # LLVM version
 %define llvm_version 15
 # GCC version
-%define gcc_version 12
+%define gcc_version 13
 %if 0%{?suse_version} < 1699
 %bcond_with system_re2
 %bcond_with system_webp
@@ -87,7 +87,7 @@
 %define n_suffix %{nil}
 %endif
 Name:           chromium%{n_suffix}
-Version:        119.0.6045.199
+Version:        120.0.6099.216
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -111,7 +111,6 @@ Patch2:         chromium-master-prefs-path.patch
 # PATCH-FIX-OPENSUSE fix_building_widevinecdm_with_chromium.patch - Enable WideVine plugin
 Patch3:         fix_building_widevinecdm_with_chromium.patch
 Patch4:         chromium-buildname.patch
-Patch5:         chromium-system-libusb.patch
 Patch6:         gcc-enable-lto.patch
 # Do not use unrar code, it is non-free
 Patch7:         chromium-norar.patch
@@ -132,7 +131,6 @@ Patch210:       chromium-110-system-libffi.patch
 Patch211:       gcc13-fix.patch
 Patch214:       chromium-113-webview-namespace.patch
 Patch215:       chromium-113-webauth-include-variant.patch
-Patch217:       chromium-117-workaround_clang_bug-structured_binding.patch
 Patch218:       chromium-114-lld-argument.patch
 Patch221:       chromium-115-lp155-typename.patch
 Patch224:       chromium-115-compiler-SkColor4f.patch
@@ -144,12 +142,15 @@ Patch240:       chromium-117-string-convert.patch
 Patch241:       chromium-117-lp155-typename.patch
 Patch242:       chromium-118-includes.patch
 Patch244:       chromium-117-system-zstd.patch
-Patch245:       chromium-119-no_matching_constructor.patch
 Patch246:       chromium-119-dont-redefine-ATSPI-version-macros.patch
-Patch247:       chromium-119-nullptr_t-without-namespace-std.patch
 Patch248:       chromium-119-assert.patch
-BuildRequires:  (python3 >= 3.7 or python3-dataclasses)
-BuildRequires:  (python3-importlib-metadata if python3-base < 3.8)
+Patch249:       chromium-120-nullptr_t-without-namespace-std.patch
+Patch250:       chromium-120-emplace.patch
+Patch251:       chromium-120-lp155-typename.patch
+Patch252:       chromium-120-no_matching_constructor.patch
+Patch253:       chromium-120-missing-header-files.patch
+Patch254:       chromium-120-emplace-struct.patch
+Patch255:       chromium-120-workaround_clang_bug-structured_binding.patch
 BuildRequires:  SDL-devel
 BuildRequires:  bison
 BuildRequires:  cups-devel
@@ -159,9 +160,11 @@ BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  git
 BuildRequires:  gn >= 0.1807
-BuildRequires:  golang(API)
 BuildRequires:  gperf
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  (python3 >= 3.7 or python3-dataclasses)
+BuildRequires:  (python3-importlib-metadata if python3-base < 3.8)
+BuildRequires:  golang(API)
 # Java used during build
 BuildRequires:  java-openjdk-headless
 BuildRequires:  libdc1394
@@ -285,6 +288,9 @@ Obsoletes:      chromium-ffmpegsumo < %{version}
 ExclusiveArch:  x86_64 aarch64 riscv64
 %if 0%{?sle_version} == 150400
 Patch300:       chromium-114-revert-av1enc-lp154.patch
+%endif
+%if 0%{?sle_version} <= 150600
+Patch301:       chromium-120-lp155-revert-clang-build-failure.patch
 %endif
 %if 0%{?suse_version} <= 1500
 BuildRequires:  pkgconfig(glproto)

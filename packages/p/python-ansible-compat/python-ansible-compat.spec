@@ -24,7 +24,7 @@
 %endif
 
 Name:           python-ansible-compat
-Version:        4.1.10
+Version:        4.1.11
 Release:        0
 Summary:        Compatibility shim for Ansible 2.9 and newer
 License:        MIT
@@ -86,6 +86,8 @@ IGNORED_CHECKS="${IGNORED_CHECKS} or test_scan_sys_path[isolatedF-scanF-raises_n
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_scan_sys_path[isolatedF-scanT-raises_not_foundF]"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_scan_sys_path[isolatedT-scanF-raises_not_foundT]"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_scan_sys_path[isolatedT-scanT-raises_not_foundT]"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_scan_sys_path[scanF-raises_not_foundT]"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_scan_sys_path[scanT-raises_not_foundF]"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_upgrade_collection"
 # Disable checks on test names: https://github.com/pytest-dev/pytest-plus#user-content-avoiding-problematic-test-identifiers https://github.com/ansible/ansible-compat/issues/340
 export PYTEST_CHECK_TEST_ID_REGEX=0

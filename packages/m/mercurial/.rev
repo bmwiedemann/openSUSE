@@ -1696,4 +1696,18 @@ As usual, a lot of patches don't make it to this list since they're more interna
     <comment></comment>
     <requestid>1134674</requestid>
   </revision>
+  <revision rev="192" vrev="1">
+    <srcmd5>12eadd1a02e481904b9f9599d9c8f650</srcmd5>
+    <version>6.6.2</version>
+    <time>1705255298</time>
+    <user>anag+factory</user>
+    <comment>- Update to Mercurial 6.6.2
+  * histedit: remove superfluous echo() and endwin() calls (issue6859)
+  * persistent-nodemap: avoid writing nodemap for empty revlog
+  * persistent-nodemap: respect the mmap setting when refreshing data
+  * bundle: do not detect --base argument that match nothing as lack of argument
+  * narrow: prevent removal of ACL-defined excludes
+  * pycompat: fix bytestr(bytes) in Python 3.11 (forwarded request 1138357 from develop7)</comment>
+    <requestid>1138358</requestid>
+  </revision>
 </revisionlist>

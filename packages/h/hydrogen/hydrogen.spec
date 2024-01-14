@@ -24,16 +24,14 @@
 # will work properly as expected.
 %bcond_with librubberband
 Name:           hydrogen
-Version:        1.2.2
-%define soversion 1_2_2
+Version:        1.2.3
+%define soversion 1_2_3
 Release:        0
 Summary:        A Real-Time Drum Machine and Sequencer
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Midi
 URL:            http://www.hydrogen-music.org/
 Source0:        https://github.com/hydrogen-music/hydrogen/archive/%{version}/%{name}-%{version}.tar.gz
-Patch0:         Fix-driver-switching-whil-using-JACK.patch
-Patch1:         Fix-JACK-support.patch
 Patch2:         release-version.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes

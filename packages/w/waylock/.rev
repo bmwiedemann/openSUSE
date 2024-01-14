@@ -28,4 +28,23 @@
 </comment>
     <requestid>1119756</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a51913a0d8ae321517187e6c0e259ec1</srcmd5>
+    <version>0.6.4</version>
+    <time>1705255404</time>
+    <user>anag+factory</user>
+    <comment>- Add zig-xkbcommon.tar.gz
+- Add zig-wayland.tar.gz
+- Remove the following files:
+  * waylock-0.6.2.tar.gz
+  * waylock-0.6.2.tar.gz.sig
+  * 0001-update-zig-version.patch
+  * zig-wayland.tar.gz
+  * zig-xkbcommon.tar.gz
+- Update to version 0.6.4:
+  * Output: don't destroy surface before role object
+  * docs: migrate to codeberg
+</comment>
+    <requestid>1138481</requestid>
+  </revision>
 </revisionlist>

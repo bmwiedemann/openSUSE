@@ -34,10 +34,6 @@
 %define rhel %{centos}
 %endif
 
-%if 0%{?suse_version}
-%define enable_old_bridge 1
-%endif
-
 %define _hardened_build 1
 
 %define __lib lib

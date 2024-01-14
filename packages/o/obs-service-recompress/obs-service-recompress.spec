@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,7 +34,7 @@ Requires:       bzip2
 Requires:       xz
 BuildArch:      noarch
 # Enable zstd on all supported distributions
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150000 || 0%{?fedora_version} > 25
+%if 0%{?suse_version} >= 1500 || 0%{?fedora_version} > 25
 BuildRequires:  zstd
 Requires:       zstd
 %endif

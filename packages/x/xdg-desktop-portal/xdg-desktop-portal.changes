@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 12 12:48:49 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
+
+- Also own the packaging directory used by portals themselves
+
+-------------------------------------------------------------------
 Fri Dec  1 12:15:24 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
 
 - Own the directory which packages will use for portals.conf

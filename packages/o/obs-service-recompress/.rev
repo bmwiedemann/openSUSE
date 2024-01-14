@@ -167,4 +167,12 @@
 - disable zstd on RHEL, the package is not available on OBS</comment>
     <requestid>958287</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>2b5865a43f5cec4db2174b0da5b7e525</srcmd5>
+    <version>0.5.2</version>
+    <time>1705255268</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1138247</requestid>
+  </revision>
 </revisionlist>

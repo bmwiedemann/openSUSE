@@ -1,7 +1,7 @@
 #
 # spec file for package google-noto-fonts
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,76 +16,56 @@
 #
 
 
-%define hyear     2022
-%define hmonth    06
-%define hday      07
+%define hyear     2024
+%define hmonth    01
+%define hday      01
 
 %define src_name  NotoFonts
 
-# DO NOT EDIT THIS SPECFILE DIRECTLY, edit google-noto-fonts.spec.in and run generate-fonts-and-specfile.sh script
+# DO NOT EDIT THIS SPECFILE DIRECTLY, edit google-noto-fonts.spec.in and run generate-specfile.sh script
 
 Name:           google-noto-fonts
 Version:        %{hyear}%{hmonth}%{hday}
 Release:        0
-Summary:        Noto Font Families
+Summary:        All Noto Fonts except CJK and Emoji
 License:        OFL-1.1
 Group:          System/X11/Fonts
-URL:            https://github.com/googlefonts/noto-fonts
-# Generate Source0 via generate-fonts-and-specfile.sh
-Source0:        ttf.tar.gz
-Source1:        generate-fonts-and-specfile.sh
-Source2:        LICENSE
-Source3:        README.FAQ
-Patch0:         fix-arimo.patch
+URL:            https://notofonts.github.io/
+# https://github.com/notofonts/notofonts.github.io/archive/refs/tags/noto-monthly-release-24.1.1.tar.gz
+Source0:        notofonts.github.io-noto-monthly-release-24.1.1.tar.gz
+Source1:        generate-specfile.sh
+Source2:        README.FAQ
+Source3:        README.maintain
 BuildRequires:  fontpackages-devel
 BuildRequires:  fonttools
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
+Obsoletes:      noto-fonts < %{version}
+Provides:       noto-fonts = %{version}
+@LIST_OF_SUBPACKAGES@
 
 %description
 Noto's design goal is to achieve visual harmonization (e.g., compatible heights and stroke
-thicknesses) across languages.
-
-%package -n noto-fonts
-Summary:        All Noto Fonts except CJK and Emoji
-Group:          System/X11/Fonts
-@LIST_OF_SUBPACKAGES@
-
-%description -n noto-fonts
-Noto's design goal is to achieve visual harmonization (e.g., compatible
-heights and stroke thicknesses) across languages. This package contains
-most noto fonts except for CJK and Emoji.
-
+thicknesses) across languages. This package contains most noto fonts except for CJK and Emoji.
 
 @SUBPACKAGE_HEADERS@
 %prep
 tar -xzf %{SOURCE0} -C .
 
-# Arimo BoldItalic has an extra "Italic" style
-# https://bugzilla.suse.com/show_bug.cgi?id=1202279 and https://github.com/notofonts/Arimo/issues/14
-# Fix weight too https://github.com/notofonts/Arimo/issues/13
-ttx ttf/Arimo/Arimo-BoldItalic.ttf
-%patch0
-ttx -f ttf/Arimo/Arimo-BoldItalic.ttx
-rm ttf/Arimo/Arimo-BoldItalic.ttx
-
-cp %{SOURCE2} .
+cp notofonts.github.io-noto-monthly-release-24.1.1/fonts/LICENSE .
 
 %build
 
 %install
-# Tifinagh fonts have duplicates in NotoSansTifinagh folder
-# https://github.com/googlefonts/noto-fonts/issues/2177 and https://github.com/googlefonts/noto-fonts/issues/2326
-rm ttf/NotoSansTifinagh/NotoSansTifinagh[!\-]*
 
-# NotoSansDisplay is already provided by NotoSans
-# Also they have inconsistent family names: https://github.com/googlefonts/noto-fonts/issues/2315
-rm -r ttf/NotoSansDisplay/
+rm -r notofonts.github.io-noto-monthly-release-24.1.1/fonts/Noto*Test
+rm -r notofonts.github.io-noto-monthly-release-24.1.1/fonts/NotoLoopedThai
+rm -r notofonts.github.io-noto-monthly-release-24.1.1/fonts/NotoSansPhagsPa/hinted/ttf/NotoSansPhags-Pa-Regular.ttf
 
-install -Dm 644 -t %{buildroot}%{_ttfontsdir} ttf/*/*.ttf
+install -Dm 644 -t %{buildroot}%{_ttfontsdir} notofonts.github.io-noto-monthly-release-24.1.1/fonts/*/hinted/ttf/*
 
 @SUBPACKAGE_SCRIPTLETS@
-%files -n noto-fonts
+%files
 %defattr(0644,root,root,755)
 
 @SUBPACKAGE_FILELISTS@

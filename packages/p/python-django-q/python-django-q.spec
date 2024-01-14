@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-q
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ Summary:        Multiprocessing Distributed Task Queue for Django
 License:        MIT
 URL:            https://django-q.readthedocs.org
 Source:         https://files.pythonhosted.org/packages/source/d/django-q/django-q-%{version}.tar.gz
+# pkg_resources is broken since the flufl.lock update in Factory
+Patch:          gh-pr-737_importlib.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -43,12 +45,13 @@ BuildRequires:  %{python_module blessed}
 BuildRequires:  %{python_module croniter}
 BuildRequires:  %{python_module django-picklefield}
 BuildRequires:  %{python_module django-redis}
-BuildRequires:  %{python_module hiredis}
 BuildRequires:  %{python_module pymongo}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module redis}
 BuildRequires:  dos2unix
+BuildRequires:  psmisc
+BuildRequires:  redis
 # /SECTION
 %python_subpackages
 
@@ -56,14 +59,21 @@ BuildRequires:  dos2unix
 This package provides a multiprocessing distributed task queue for Django.
 
 %prep
-%autosetup -n django-q-%{version} -p1
+%setup -n django-q-%{version}
+# wrong line endings prevent patching
+dos2unix django_q/conf.py
+%autopatch -p1
 
 # Fix permissions
 find -name "*.po" | xargs chmod a-x
+find -name "*.py" | xargs chmod a-x
 chmod a-x README.rst CHANGELOG.md LICENSE
 
 # Fix encoding
 dos2unix README.rst
+
+# Use real redis server
+sed -i '/HiredisParser/d' django_q/tests/settings.py
 
 %build
 %python_build
@@ -73,8 +83,20 @@ dos2unix README.rst
 %python_expand rm -r %{buildroot}%{$python_sitelib}/django_q/tests/
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-#%%check
-# Tests require a docker container to run
+%check
+mv django_q/tests .
+sed -i 's/django_q.tests/tests/g' tests/*.py
+sed -i 's/brokers.redis_broker/django_q.brokers.redis_broker/' tests/test_brokers.py
+
+export DJANGO_SETTINGS_MODULE=tests.settings
+
+export PYTHONPATH=${PWD}
+
+%{_sbindir}/redis-server &
+# Mongo & Disque servers not installed
+# test_max_rss assertions fail
+%pytest -k 'not (mongo or disque or test_max_rss)'
+killall redis-server
 
 %files %{python_files}
 %doc CHANGELOG.md README.rst

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 12 15:40:39 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
+
+- Changes to fix (boo#1218288)
+  * Removed Provides: and Recommends: from liblxqt1 subpackage
+  * Added Requires: liblxqt >= version to liblxqt1 subpackage
+
+-------------------------------------------------------------------
 Sun Nov  5 14:25:52 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.4.0:

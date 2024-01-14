@@ -1,0 +1,68 @@
+From da4651508e5d79e889fa2a7db5c0e40418703498 Mon Sep 17 00:00:00 2001
+From: Georg Pfuetzenreuter <mail@georg-pfuetzenreuter.net>
+Date: Fri, 12 Jan 2024 23:12:29 +0100
+Subject: [PATCH] Migrate away from pkg_resources
+
+Using pkg_resources as an API is deprecated.
+Migrate functionality to their importlib and packaging equivalents.
+
+Signed-off-by: Georg Pfuetzenreuter <mail@georg-pfuetzenreuter.net>
+---
+ haystack/__init__.py                          | 13 +++++++------
+ test_haystack/solr_tests/test_solr_backend.py |  4 ++--
+ 2 files changed, 9 insertions(+), 8 deletions(-)
+
+diff --git a/haystack/__init__.py b/haystack/__init__.py
+index 94b8f4674..25448de96 100644
+--- a/haystack/__init__.py
++++ b/haystack/__init__.py
+@@ -1,7 +1,9 @@
++from importlib.metadata import PackageNotFoundError, version
++
+ import django
+ from django.conf import settings
+ from django.core.exceptions import ImproperlyConfigured
+-from pkg_resources import DistributionNotFound, get_distribution, parse_version
++from packaging.version import Version
+ 
+ from haystack.constants import DEFAULT_ALIAS
+ from haystack.utils import loading
+@@ -9,12 +11,11 @@
+ __author__ = "Daniel Lindsley"
+ 
+ try:
+-    pkg_distribution = get_distribution("django-haystack")
+-    __version__ = pkg_distribution.version
+-    version_info = pkg_distribution.parsed_version
+-except DistributionNotFound:
++    __version__ = version("django-haystack")
++    version_info = Version(__version__)
++except PackageNotFoundError:
+     __version__ = "0.0.dev0"
+-    version_info = parse_version(__version__)
++    version_info = Version(__version__)
+ 
+ 
+ if django.VERSION < (3, 2):
+diff --git a/test_haystack/solr_tests/test_solr_backend.py b/test_haystack/solr_tests/test_solr_backend.py
+index d20347e7e..d8c95d329 100644
+--- a/test_haystack/solr_tests/test_solr_backend.py
++++ b/test_haystack/solr_tests/test_solr_backend.py
+@@ -10,7 +10,7 @@
+ from django.conf import settings
+ from django.test import TestCase
+ from django.test.utils import override_settings
+-from pkg_resources import parse_version
++from packaging.version import Version
+ 
+ from haystack import connections, indexes, reset_search_queries
+ from haystack.exceptions import SkipDocument
+@@ -1650,7 +1650,7 @@ def test_boost(self):
+ 
+ 
+ @unittest.skipIf(
+-    parse_version(pysolr.__version__) < parse_version("3.1.1"),
++    Version(pysolr.__version__) < Version("3.1.1"),
+     "content extraction requires pysolr > 3.1.1",
+ )
+ class LiveSolrContentExtractionTestCase(TestCase):

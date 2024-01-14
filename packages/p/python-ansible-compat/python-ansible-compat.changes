@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan 10 19:27:59 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 4.1.11:
+  * Bugfixes
+    - Allow more control over verbosity when calling ansible-galaxy (#278) @ziegenberg
+    - Fix collection installation with custom project_dir (#343) @ssbarnea
+    - Fix collection installation bug when having custom config (#344) @ssbarnea
+    - Add support for python 3.12 (#336) @ssbarnea
+    - Remove isolated option while adding sys.path (#335) @shatakshiiii
+
+-------------------------------------------------------------------
 Fri Nov 24 13:03:50 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
 
 - disable pytest's test name check

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 12 17:54:44 UTC 2024 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to version 0.39.2:
+  * Fix: typo in help page
+  * Fix: untie serialization interval from session read interval
+  * Fix: zellij-server: fix compiler warnings
+
+-------------------------------------------------------------------
 Sat Nov 18 22:23:25 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Update sources in specfile

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 12 22:25:30 UTC 2024 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+
+- Add gh-pr-1935_importlib.patch to repair DistributionNotFound
+  error caused by deprecated pkg_resources APIs
+
+-------------------------------------------------------------------
 Sun Jun 25 08:05:46 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
 
 - Use sle15_python_module_pythons

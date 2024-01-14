@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2006-2023 Wolfgang Rosenauer <wr@rosenauer.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -29,8 +29,8 @@
 # major 69
 # mainver %%major.99
 %define major          121
-%define mainver        %major.0
-%define orig_version   121.0
+%define mainver        %major.0.1
+%define orig_version   121.0.1
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1

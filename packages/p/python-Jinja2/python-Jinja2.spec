@@ -1,7 +1,7 @@
 #
 # spec file for package python-Jinja2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-Jinja2
-Version:        3.1.2
+Version:        3.1.3
 Release:        0
 Summary:        A template engine written in pure Python
 License:        BSD-3-Clause

@@ -1,7 +1,7 @@
 #
 # spec file for package liblxqt
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -55,8 +55,7 @@ functionality needed by nearly all of its components.
 Summary:        LXQt core library
 Group:          System/Libraries
 Recommends:     %{name}-lang
-Provides:       liblxqt
-Recommends:     %{name} >= %{version}
+Requires:       %{name} >= %{version}
 
 %description -n liblxqt1
 liblxqt represents the core library of LXQt providing essential

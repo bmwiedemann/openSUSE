@@ -4,7 +4,9 @@
 %config(noreplace) %{_sysconfdir}/udev/udev.conf
 %if %{without bootstrap}
 %dir %{_libdir}/cryptsetup
+%endif
 %dir %{_modulesloaddir}
+%if %{without bootstrap}
 %dir %{_prefix}/lib/kernel
 %dir %{_prefix}/lib/kernel/install.d
 %endif

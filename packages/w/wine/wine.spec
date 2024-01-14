@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,8 +29,8 @@
 %endif
 
 # needs to be on top due to usage of %version macro below
-%define realver 9.0-rc3
-Version:        9.0~rc3
+%define realver 9.0-rc5
+Version:        9.0~rc5
 Release:        0
 
 %if "%{flavor}" != ""
@@ -174,7 +174,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %{ix86} x86_64 ppc armv7l armv7hl aarch64
 %if %{staging}
 # upstream patch target version
-%define staging_version 9.0-rc3
+%define staging_version 9.0-rc5
 Source100:      wine-staging-%{staging_version}.tar.xz
 BuildRequires:  gtk3-devel
 BuildRequires:  libOSMesa-devel
@@ -443,7 +443,7 @@ chmod 755 %winedir/my-find-requires.sh
 %files
 %defattr(-,root,root)
 %license LICENSE LICENSE.OLD
-%doc ANNOUNCE AUTHORS README*
+%doc ANNOUNCE.md AUTHORS README*
 %{_bindir}/function_grep.pl
 %{_bindir}/msidb
 %{_bindir}/msiexec

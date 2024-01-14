@@ -1,0 +1,48 @@
+diff --git a/map_util.h b/map_util.h.new
+index 35ce4d7..d0c8247 100644
+--- a/base/containers/map_util.h
++++ b/base/containers/map_util.h
+@@ -41,8 +41,8 @@ constexpr internal::MappedType<Map>* FindOrNull(Map& map, const Key& key) {
+ // to a null value.
+ template <typename Map,
+           typename Key,
+-          typename MappedElementType =
+-              std::pointer_traits<internal::MappedType<Map>>::element_type>
++          typename MappedElementType =
++              typename std::pointer_traits<internal::MappedType<Map>>::element_type>
+ constexpr const MappedElementType* FindPtrOrNull(const Map& map,
+                                                  const Key& key) {
+   auto it = map.find(key);
+@@ -57,8 +57,8 @@ constexpr const MappedElementType* FindPtrOrNull(const Map& map,
+ // to a null value.
+ template <typename Map,
+           typename Key,
+-          typename MappedElementType =
+-              std::pointer_traits<internal::MappedType<Map>>::element_type>
++          typename MappedElementType =
++              typename std::pointer_traits<internal::MappedType<Map>>::element_type>
+ constexpr MappedElementType* FindPtrOrNull(Map& map, const Key& key) {
+   auto it = map.find(key);
+   return it != map.end() ? std::to_address(it->second) : nullptr;
+diff --git a/async_iterable.h b/async_iterable.h.new
+index b4f3b0d..4fff750 100644
+--- a/third_party/blink/renderer/bindings/core/v8/async_iterable.h
++++ b/third_party/blink/renderer/bindings/core/v8/async_iterable.h
+@@ -220,7 +220,7 @@ class PairAsyncIterable {
+  private:
+   virtual IterationSource* CreateIterationSource(
+       ScriptState* script_state,
+-      IterationSource::Kind kind,
++      typename IterationSource::Kind kind,
+       ExceptionState& exception_state) = 0;
+ };
+ 
+@@ -262,7 +262,7 @@ class ValueAsyncIterable {
+  private:
+   virtual IterationSource* CreateIterationSource(
+       ScriptState* script_state,
+-      IterationSource::Kind kind,
++      typename IterationSource::Kind kind,
+       ExceptionState& exception_state) = 0;
+ };
+ 

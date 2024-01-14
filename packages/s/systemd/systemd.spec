@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 
-%define archive_version +suse.21.g071ac409a0
+%define archive_version +suse.22.g67a5ac1043
 
 %define _testsuitedir %{_systemd_util_dir}/tests
 %define xinitconfdir %{?_distconfdir}%{!?_distconfdir:%{_sysconfdir}}/X11/xinit
@@ -79,7 +79,7 @@ fi \
 
 Name:           systemd%{?mini}
 URL:            http://www.freedesktop.org/wiki/Software/systemd
-Version:        254.5
+Version:        254.8
 Release:        0
 Summary:        A System and Session Manager
 License:        LGPL-2.1-or-later
@@ -219,6 +219,8 @@ Patch5:         0008-sysv-generator-translate-Required-Start-into-a-Wants.patch
 # very few cases, some stuff might be broken in upstream and need to be fixed or
 # worked around quickly. In these cases, the patches are added temporarily and
 # will be removed as soon as a proper fix will be merged by upstream.
+Patch5001:      5001-Revert-udev-update-devlink-with-the-newer-device-nod.patch
+Patch5002:      5002-Revert-udev-revert-workarounds-for-issues-caused-by-.patch
 
 %description
 Systemd is a system and service manager, compatible with SysV and LSB
@@ -761,6 +763,7 @@ export CFLAGS="%{optflags} -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2"
         -Dhtml=%{when_not bootstrap} \
         -Dima=%{when_not bootstrap} \
         -Dkernel-install=%{when_not bootstrap} \
+        -Dkmod=%{when_not bootstrap} \
         -Dlibcryptsetup-plugins=%{when_not bootstrap} \
         -Dman=%{when_not bootstrap} \
         -Dnss-myhostname=%{when_not bootstrap} \
@@ -860,6 +863,10 @@ ln -s ../usr/bin/systemctl %{buildroot}/sbin/runlevel
 mkdir -p %{buildroot}%{_modprobedir}
 mv %{buildroot}/usr/lib/modprobe.d/* %{buildroot}%{_modprobedir}/
 %endif
+
+# Make sure /usr/lib/modules-load.d exists in udev(-mini)?, so other
+# packages can install modules without worry
+mkdir -p %{buildroot}%{_modulesloaddir}
 
 # Make sure we don't ship static enablement symlinks in /etc during
 # installation, presets should be honoured instead.

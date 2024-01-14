@@ -193,4 +193,12 @@
     <comment>0.2.9</comment>
     <requestid>1090641</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>dae59009e2d141eb1e0503bdf7981c48</srcmd5>
+    <version>0.2.15</version>
+    <time>1705255276</time>
+    <user>anag+factory</user>
+    <comment>bsc#1218134, CVE-2023-48795</comment>
+    <requestid>1138302</requestid>
+  </revision>
 </revisionlist>

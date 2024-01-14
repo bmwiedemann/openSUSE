@@ -4843,4 +4843,12 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
 * Various fixes from internal audits, fuzzing and other initiatives </comment>
     <requestid>1129722</requestid>
   </revision>
+  <revision rev="409" vrev="1">
+    <srcmd5>7d8b44b3b0c6f946933e823f57d17daa</srcmd5>
+    <version>120.0.6099.216</version>
+    <time>1705255308</time>
+    <user>anag+factory</user>
+    <comment>Chromium 120.0.6099.216 (boo#1217839, boo#1218048, boo#1218302, boo#1218533, boo#1218719, boo#1218303)</comment>
+    <requestid>1138475</requestid>
+  </revision>
 </revisionlist>

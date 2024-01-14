@@ -1,4 +1,33 @@
 --------------------------------------------------------------------
+Fri Jan 12 16:07:13 UTC 2024 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#684
+- noto-naskharabic-fonts is now google-noto-naskharabic-fonts
+- 17.109
+
+--------------------------------------------------------------------
+Fri Jan 12 16:02:16 UTC 2024 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#678
+- Add dbus-1-daemon
+- 17.108
+
+--------------------------------------------------------------------
+Fri Jan 12 14:15:21 UTC 2024 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#683
+- s390-tools now available for non-s390x archs (jsc#PED-7136,
+  jsc#PED-7138)
+- 17.107
+
+--------------------------------------------------------------------
+Fri Jan 12 09:35:14 UTC 2024 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#679
+- etc: update module.config to match 6.7
+- 17.106
+
+--------------------------------------------------------------------
 Thu Dec 14 11:16:24 UTC 2023 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#677

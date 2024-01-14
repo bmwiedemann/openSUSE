@@ -213,4 +213,12 @@ SPDX (forwarded request 110717 from babelworx)</comment>
     <comment>add bootstrap flavour</comment>
     <requestid>1105589</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>63e6a1e74e514d2d0cb3ccf9e004b171</srcmd5>
+    <version>2.1.4</version>
+    <time>1705255274</time>
+    <user>anag+factory</user>
+    <comment>Automatic-Module-Name</comment>
+    <requestid>1138301</requestid>
+  </revision>
 </revisionlist>

@@ -163,4 +163,12 @@ fix build
   https://github.com/ansible/ansible-compat/issues/340</comment>
     <requestid>1128568</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>fd47056dc01a1006fc8c99b9bd5cbd31</srcmd5>
+    <version>4.1.11</version>
+    <time>1705255374</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1138453</requestid>
+  </revision>
 </revisionlist>

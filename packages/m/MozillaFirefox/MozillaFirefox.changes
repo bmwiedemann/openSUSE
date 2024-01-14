@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jan  9 20:36:26 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 121.0.1
+  * Fixed unexpected line wrapping in some CJK contexts caused by
+    changes in ideographic space handling. bmo#1870973)
+  * Fixed a hang when loading sites containing column-based
+    layouts under some circumstances. bmo#1867784)
+  * Fixed missing rounded corners for videos playing over another
+    video. bmo#1869994)
+  * Fixed Firefox not closing properly and other applications being
+    unable to use a USB security key after being previously used
+    during a Firefox session. bmo#1863135)
+
+-------------------------------------------------------------------
 Wed Dec 20 12:59:57 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 121.0

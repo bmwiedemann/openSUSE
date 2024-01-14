@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Wed Dec 20 13:10:27 UTC 2023 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.7.1:
+  * fix: Fix up pre-commit
+  * ci: Bump language-formatters-pre-commit-hooks to 2.11
+  * ci: Upgrade pre-commit action to v3
+  * dep: Go Bump helm.sh/helm/v3 from 3.12.3 to 3.13.1
+  * feat: Fix auth error, errors out properly closes #450 and
+    increased log level for silent resource failures
+  * dep: Go Bump helm.sh/helm/v3 from 3.11.1 to 3.12.3
+  * dep: Go Bump k8s.io/client-go from 0.27.1 to 0.28.1
+  * dep: Go Bump github.com/open-policy-agent/opa from 0.51.0 to
+    0.56.0
+  * test: Add tests for new deprecations
+  * feat: Include new elements in cluster collector
+  * feat: Include new deprecations in rego files
+  * chore: Add brew installation method
+  * dep: Go Bump github.com/rs/zerolog from 1.29.0 to 1.30.0
+  * fix: Missing buildx added to ci
+  * dep: Docker Bump golang from 1.20-alpine3.17 to 1.21-alpine3.17
+  * fix: Move autoscaling/v2beta1 removal to Kubernetes 1.25
+  * chore: Add blurb to readme about creating a signed commit
+  * dep: Go Bump github.com/open-policy-agent/opa from 0.48.0 to
+    0.51.0
+  * dep: Go Bump k8s.io/client-go from 0.26.1 to 0.27.1
+  * feat: Golang 1.20
+  * ci: Build Linux arm64 docker image
+  * dep: Go Bump helm.sh/helm/v3 from 3.10.3 to 3.11.1
+  * chore: Codespell wrongly flags go.sum
+  * dep: Go Bump k8s.io/client-go from 0.26.0 to 0.26.1
+  * dep: Go Bump k8s.io/klog/v2 from 2.80.1 to 2.90.0
+  * dep: Go Bump github.com/rs/zerolog from 1.28.0 to 1.29.0
+  * dep: Go Bump golang.org/x/net from 0.5.0 to 0.7.0
+  * dep: Go Bump helm.sh/helm/v3 from 3.10.2 to 3.10.3
+  * dep: Go Bump github.com/open-policy-agent/opa from 0.47.2 to
+    0.48.0
+  * ref: Fix SonarCloud issues
+  * feat: Add CSV output
+  * ci: Tune stale issues/PRs workflow config to wait a bit longer
+    (60+30)
+
+-------------------------------------------------------------------
 Fri Dec 16 12:40:30 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.7.0:

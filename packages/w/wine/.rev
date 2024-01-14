@@ -5021,4 +5021,18 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
 - update staging to 9.0-rc3 release</comment>
     <requestid>1134721</requestid>
   </revision>
+  <revision rev="429" vrev="1">
+    <srcmd5>3aa0cf083c8e8c3d2bd48e64bb2eec0f</srcmd5>
+    <version>9.0~rc5</version>
+    <time>1705255376</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 9.0-rc5 release
+  - Bug fixes only, we are in code freeze.
+- update staging to 9.0-rc5 release
+
+- Updated to 9.0-rc4 release
+  - Bug fixes only, we are in code freeze.
+- update staging to 9.0-rc4 release</comment>
+    <requestid>1138460</requestid>
+  </revision>
 </revisionlist>

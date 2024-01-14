@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Wed Dec 20 12:47:08 UTC 2023 - Gus Kenion <gkenion@suse.com>
+
+- Upgrade to version 0.2.15, which includes fix for SSH protocol
+  vulnerability (bsc#1218134, CVE-2023-48795)
+  * Changes in 0.2.15:
+    + Address CVE-2023-48795 by adding support for new strict key
+      exchange extension
+    + Add support for ext-info-in-auth@openssh.com extension
+    + Introduce two new config options to control usage of the new
+      strict key exchange extension:
+      ~ enable_strict_kex (set to yes by default)
+      ~ require_strict_kex (set to no by default)
+      ~ If either option (or both) is enabled, then JSch will
+        attempt to use the new strict key exchange extension.
+      ~ If the require_strict_kex option is enabled and JSch detects
+        the server does not support it, then JSch will terminate the
+        connection and throw an exception.
+      ~ If the require_strict_kex option is not enabled and JSch
+        detects the server does not support it, then JSch will
+        fallback and proceed with the connection without using the
+        new extension.
+    + This gives users the ability to enable a strong security
+      posture if needed and avoid proceeding with connections to
+      potentially insecure servers.
+  * Changes in 0.2.14:
+    + #450 use Socket.connect() with a timeout that has been
+      supported since Java 1.4 instead of using old method of
+      creating a separate thread and joining to that thread with
+      timeout
+  * Changes in 0.2.13:
+    + #411 Add flush operation from Fix added is/jsch#39,
+      with new config option to allow disabling in case it causes
+      regressions.
+    + #403 add a warning when Channel.getInputStream() or
+      Channel.getExtInputStream() is called after Channel.connect().
+  * Changes in 0.2.12:
+    + Further refine previous fixes for windows line endings in PEM
+      keys
+    + #392 replace call to BigInteger.intValueExact to remain
+      compatible with android api 30
+    + Introduce JSchSessionDisconnectException to allow the
+      reasonCode to be retrieved without String parsing
+    + Introduce specific JSchException for HostKey related failures
+  * Changes in 0.2.11:
+    + update dependencies changes
+    + #369 fix multi-line PEM key parsing to work with windows line
+      endings due to regression from previous fix for #362.
+  * Changes in 0.2.10:
+    + Fix new Java 21 compiler warning: possible 'this' escape
+      before subclass is fully initialized
+    + Tweak OSGi bundle manifest to allow Log4j 3
+    + #362 fix PEM key parsing to work with windows line endings
+    + #361 guard against UIKeyboardInteractive implementations that
+      include NULL elements in the String[] returned from
+      promptKeyboardInteractive()
+    + Add a default implmentation of the deprecated decrypt() method
+      to the Identity interface that throws an
+      UnsupportedOperationException
+
+-------------------------------------------------------------------
 Sat Jun  3 11:03:46 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Migrate from com.jcraft:jsch to com.github.mwiede:jsch fork

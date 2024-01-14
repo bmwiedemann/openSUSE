@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jan 11 10:40:34 UTC 2024 - dimstar@opensuse.org
+
+- Update to version 0.13.1:
+  * Fix manpage string escapes
+  * Fix serde tests without default features
+  * Bump winit to 0.29.9
+  * Ignore null values in `alacritty migrate`
+  * Add vi search paste bindings
+  * Fix replacing optional fields
+  * Fix number-based mouse bindings
+  * Bump winit to 0.29.8
+
+-------------------------------------------------------------------
 Sun Dec 31 17:19:03 UTC 2023 - Jan-Luca Kiok <opensuse-packages@jlk.one>
 
 - Enable automatic updates of vendored dependencies
