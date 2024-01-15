@@ -1332,6 +1332,7 @@ Prefer: -zziplib-devel-32bit
 # Ruby stuff - quite a few packages exist in multiple versions in the distro; in each case, the Preference is on the 'unversioned' package
 Prefer: ruby3.2-rubygem-fast_gettext
 Prefer: -ruby3.2-rubygem-public_suffix-3.1
+Prefer: -ruby3.3-rubygem-public_suffix-3.1
 
 # We have opencv and opencv3 - as usual, the unversioned one should win
 Prefer: opencv-devel
