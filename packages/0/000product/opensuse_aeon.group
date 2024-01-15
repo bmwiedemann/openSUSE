@@ -339,6 +339,7 @@
     <package name="google-carlito-fonts" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="google-droid-fonts" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="google-noto-coloremoji-fonts" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
+    <package name="google-noto-sans-fonts" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="google-noto-sans-jp-bold-fonts" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="google-noto-sans-jp-fonts" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="google-noto-sans-jp-regular-fonts" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
@@ -1497,7 +1498,6 @@
     <package name="nkf" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="notification-daemon" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="notification-daemon-lang" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
-    <package name="noto-sans-fonts" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="nss-mdns" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="ntfs-3g" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="ntfsprogs" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->

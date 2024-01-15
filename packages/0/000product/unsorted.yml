@@ -3471,7 +3471,6 @@ unsorted:
   - elisa-lang 
   - elixir 
   - elixir-doc 
-  - elixir-ex_doc 
   - elixir-hex 
   - elk 
   - elk-data 
@@ -7221,6 +7220,58 @@ unsorted:
   - google-lekton-fonts 
   - google-merriweather-fonts 
   - google-nobile-fonts 
+  - google-noto-fangsongkssrotated-fonts 
+  - google-noto-fangsongkssvertical-fonts 
+  - google-noto-fonts 
+  - google-noto-kufiarabic-fonts 
+  - google-noto-music-fonts 
+  - google-noto-naskharabic-fonts 
+  - google-noto-nastaliqurdu-fonts 
+  - google-noto-rashihebrew-fonts 
+  - google-noto-sans-adlam-fonts 
+  - google-noto-sans-adlamunjoined-fonts 
+  - google-noto-sans-anatolianhieroglyphs-fonts 
+  - google-noto-sans-arabic-fonts 
+  - google-noto-sans-armenian-fonts 
+  - google-noto-sans-avestan-fonts 
+  - google-noto-sans-balinese-fonts 
+  - google-noto-sans-bamum-fonts 
+  - google-noto-sans-bassavah-fonts 
+  - google-noto-sans-batak-fonts 
+  - google-noto-sans-bengali-fonts 
+  - google-noto-sans-bhaiksuki-fonts 
+  - google-noto-sans-brahmi-fonts 
+  - google-noto-sans-buginese-fonts 
+  - google-noto-sans-buhid-fonts 
+  - google-noto-sans-canadianaboriginal-fonts 
+  - google-noto-sans-carian-fonts 
+  - google-noto-sans-caucasianalbanian-fonts 
+  - google-noto-sans-chakma-fonts 
+  - google-noto-sans-cham-fonts 
+  - google-noto-sans-cherokee-fonts 
+  - google-noto-sans-chorasmian-fonts 
+  - google-noto-sans-coptic-fonts 
+  - google-noto-sans-cuneiform-fonts 
+  - google-noto-sans-cypriot-fonts 
+  - google-noto-sans-cyprominoan-fonts 
+  - google-noto-sans-deseret-fonts 
+  - google-noto-sans-devanagari-fonts 
+  - google-noto-sans-duployan-fonts 
+  - google-noto-sans-egyptianhieroglyphs-fonts 
+  - google-noto-sans-elbasan-fonts 
+  - google-noto-sans-elymaic-fonts 
+  - google-noto-sans-ethiopic-fonts 
+  - google-noto-sans-georgian-fonts 
+  - google-noto-sans-glagolitic-fonts 
+  - google-noto-sans-gothic-fonts 
+  - google-noto-sans-grantha-fonts 
+  - google-noto-sans-gujarati-fonts 
+  - google-noto-sans-gunjalagondi-fonts 
+  - google-noto-sans-gurmukhi-fonts 
+  - google-noto-sans-hanifirohingya-fonts 
+  - google-noto-sans-hanunoo-fonts 
+  - google-noto-sans-hatran-fonts 
+  - google-noto-sans-hebrew-fonts 
   - google-noto-sans-hk-black-fonts 
   - google-noto-sans-hk-bold-fonts 
   - google-noto-sans-hk-demilight-fonts 
@@ -7231,6 +7282,11 @@ unsorted:
   - google-noto-sans-hk-mono-fonts 
   - google-noto-sans-hk-regular-fonts 
   - google-noto-sans-hk-thin-fonts 
+  - google-noto-sans-imperialaramaic-fonts 
+  - google-noto-sans-indicsiyaqnumbers-fonts 
+  - google-noto-sans-inscriptionalpahlavi-fonts 
+  - google-noto-sans-inscriptionalparthian-fonts 
+  - google-noto-sans-javanese-fonts 
   - google-noto-sans-jp-black-fonts 
   - google-noto-sans-jp-demilight-fonts 
   - google-noto-sans-jp-fonts-full 
@@ -7238,6 +7294,14 @@ unsorted:
   - google-noto-sans-jp-medium-fonts 
   - google-noto-sans-jp-mono-fonts 
   - google-noto-sans-jp-thin-fonts 
+  - google-noto-sans-kaithi-fonts 
+  - google-noto-sans-kannada-fonts 
+  - google-noto-sans-kawi-fonts 
+  - google-noto-sans-kayahli-fonts 
+  - google-noto-sans-kharoshthi-fonts 
+  - google-noto-sans-khmer-fonts 
+  - google-noto-sans-khojki-fonts 
+  - google-noto-sans-khudawadi-fonts 
   - google-noto-sans-kr-black-fonts 
   - google-noto-sans-kr-demilight-fonts 
   - google-noto-sans-kr-fonts-full 
@@ -7245,6 +7309,64 @@ unsorted:
   - google-noto-sans-kr-medium-fonts 
   - google-noto-sans-kr-mono-fonts 
   - google-noto-sans-kr-thin-fonts 
+  - google-noto-sans-lao-fonts 
+  - google-noto-sans-laolooped-fonts 
+  - google-noto-sans-lepcha-fonts 
+  - google-noto-sans-limbu-fonts 
+  - google-noto-sans-lineara-fonts 
+  - google-noto-sans-linearb-fonts 
+  - google-noto-sans-lisu-fonts 
+  - google-noto-sans-lycian-fonts 
+  - google-noto-sans-lydian-fonts 
+  - google-noto-sans-mahajani-fonts 
+  - google-noto-sans-malayalam-fonts 
+  - google-noto-sans-mandaic-fonts 
+  - google-noto-sans-manichaean-fonts 
+  - google-noto-sans-marchen-fonts 
+  - google-noto-sans-masaramgondi-fonts 
+  - google-noto-sans-mayannumerals-fonts 
+  - google-noto-sans-medefaidrin-fonts 
+  - google-noto-sans-meeteimayek-fonts 
+  - google-noto-sans-mendekikakui-fonts 
+  - google-noto-sans-meroitic-fonts 
+  - google-noto-sans-miao-fonts 
+  - google-noto-sans-modi-fonts 
+  - google-noto-sans-mongolian-fonts 
+  - google-noto-sans-mono-fonts 
+  - google-noto-sans-mro-fonts 
+  - google-noto-sans-multani-fonts 
+  - google-noto-sans-myanmar-fonts 
+  - google-noto-sans-nabataean-fonts 
+  - google-noto-sans-nagmundari-fonts 
+  - google-noto-sans-nandinagari-fonts 
+  - google-noto-sans-newa-fonts 
+  - google-noto-sans-newtailue-fonts 
+  - google-noto-sans-nko-fonts 
+  - google-noto-sans-nkounjoined-fonts 
+  - google-noto-sans-nushu-fonts 
+  - google-noto-sans-ogham-fonts 
+  - google-noto-sans-olchiki-fonts 
+  - google-noto-sans-oldhungarian-fonts 
+  - google-noto-sans-olditalic-fonts 
+  - google-noto-sans-oldnortharabian-fonts 
+  - google-noto-sans-oldpermic-fonts 
+  - google-noto-sans-oldpersian-fonts 
+  - google-noto-sans-oldsogdian-fonts 
+  - google-noto-sans-oldsoutharabian-fonts 
+  - google-noto-sans-oldturkic-fonts 
+  - google-noto-sans-oriya-fonts 
+  - google-noto-sans-osage-fonts 
+  - google-noto-sans-osmanya-fonts 
+  - google-noto-sans-pahawhhmong-fonts 
+  - google-noto-sans-palmyrene-fonts 
+  - google-noto-sans-paucinhau-fonts 
+  - google-noto-sans-phagspa-fonts 
+  - google-noto-sans-phoenician-fonts 
+  - google-noto-sans-psalterpahlavi-fonts 
+  - google-noto-sans-rejang-fonts 
+  - google-noto-sans-runic-fonts 
+  - google-noto-sans-samaritan-fonts 
+  - google-noto-sans-saurashtra-fonts 
   - google-noto-sans-sc-black-fonts 
   - google-noto-sans-sc-demilight-fonts 
   - google-noto-sans-sc-fonts-full 
@@ -7252,6 +7374,30 @@ unsorted:
   - google-noto-sans-sc-medium-fonts 
   - google-noto-sans-sc-mono-fonts 
   - google-noto-sans-sc-thin-fonts 
+  - google-noto-sans-sharada-fonts 
+  - google-noto-sans-shavian-fonts 
+  - google-noto-sans-siddham-fonts 
+  - google-noto-sans-signwriting-fonts 
+  - google-noto-sans-sinhala-fonts 
+  - google-noto-sans-sogdian-fonts 
+  - google-noto-sans-sorasompeng-fonts 
+  - google-noto-sans-soyombo-fonts 
+  - google-noto-sans-sundanese-fonts 
+  - google-noto-sans-sylotinagri-fonts 
+  - google-noto-sans-symbols-fonts 
+  - google-noto-sans-symbols2-fonts 
+  - google-noto-sans-syriac-fonts 
+  - google-noto-sans-syriaceastern-fonts 
+  - google-noto-sans-syriacwestern-fonts 
+  - google-noto-sans-tagalog-fonts 
+  - google-noto-sans-tagbanwa-fonts 
+  - google-noto-sans-taile-fonts 
+  - google-noto-sans-taitham-fonts 
+  - google-noto-sans-taiviet-fonts 
+  - google-noto-sans-takri-fonts 
+  - google-noto-sans-tamil-fonts 
+  - google-noto-sans-tamilsupplement-fonts 
+  - google-noto-sans-tangsa-fonts 
   - google-noto-sans-tc-black-fonts 
   - google-noto-sans-tc-demilight-fonts 
   - google-noto-sans-tc-fonts-full 
@@ -7259,6 +7405,34 @@ unsorted:
   - google-noto-sans-tc-medium-fonts 
   - google-noto-sans-tc-mono-fonts 
   - google-noto-sans-tc-thin-fonts 
+  - google-noto-sans-telugu-fonts 
+  - google-noto-sans-thaana-fonts 
+  - google-noto-sans-thai-fonts 
+  - google-noto-sans-thailooped-fonts 
+  - google-noto-sans-tifinagh-fonts 
+  - google-noto-sans-tirhuta-fonts 
+  - google-noto-sans-ugaritic-fonts 
+  - google-noto-sans-vai-fonts 
+  - google-noto-sans-vithkuqi-fonts 
+  - google-noto-sans-wancho-fonts 
+  - google-noto-sans-warangciti-fonts 
+  - google-noto-sans-yi-fonts 
+  - google-noto-sans-zanabazarsquare-fonts 
+  - google-noto-serif-ahom-fonts 
+  - google-noto-serif-armenian-fonts 
+  - google-noto-serif-balinese-fonts 
+  - google-noto-serif-bengali-fonts 
+  - google-noto-serif-devanagari-fonts 
+  - google-noto-serif-display-fonts 
+  - google-noto-serif-divesakuru-fonts 
+  - google-noto-serif-dogra-fonts 
+  - google-noto-serif-ethiopic-fonts 
+  - google-noto-serif-fonts 
+  - google-noto-serif-georgian-fonts 
+  - google-noto-serif-grantha-fonts 
+  - google-noto-serif-gujarati-fonts 
+  - google-noto-serif-gurmukhi-fonts 
+  - google-noto-serif-hebrew-fonts 
   - google-noto-serif-hk-black-fonts 
   - google-noto-serif-hk-bold-fonts 
   - google-noto-serif-hk-extralight-fonts 
@@ -7274,6 +7448,10 @@ unsorted:
   - google-noto-serif-jp-light-fonts 
   - google-noto-serif-jp-medium-fonts 
   - google-noto-serif-jp-semibold-fonts 
+  - google-noto-serif-kannada-fonts 
+  - google-noto-serif-khitansmallscript-fonts 
+  - google-noto-serif-khmer-fonts 
+  - google-noto-serif-khojki-fonts 
   - google-noto-serif-kr-black-fonts 
   - google-noto-serif-kr-bold-fonts 
   - google-noto-serif-kr-extralight-fonts 
@@ -7283,18 +7461,36 @@ unsorted:
   - google-noto-serif-kr-medium-fonts 
   - google-noto-serif-kr-regular-fonts 
   - google-noto-serif-kr-semibold-fonts 
+  - google-noto-serif-lao-fonts 
+  - google-noto-serif-makasar-fonts 
+  - google-noto-serif-malayalam-fonts 
+  - google-noto-serif-myanmar-fonts 
+  - google-noto-serif-nphmong-fonts 
+  - google-noto-serif-olduyghur-fonts 
+  - google-noto-serif-oriya-fonts 
+  - google-noto-serif-ottomansiyaq-fonts 
   - google-noto-serif-sc-black-fonts 
   - google-noto-serif-sc-extralight-fonts 
   - google-noto-serif-sc-fonts-full 
   - google-noto-serif-sc-light-fonts 
   - google-noto-serif-sc-medium-fonts 
   - google-noto-serif-sc-semibold-fonts 
+  - google-noto-serif-sinhala-fonts 
+  - google-noto-serif-tamil-fonts 
+  - google-noto-serif-tangut-fonts 
   - google-noto-serif-tc-black-fonts 
   - google-noto-serif-tc-extralight-fonts 
   - google-noto-serif-tc-fonts-full 
   - google-noto-serif-tc-light-fonts 
   - google-noto-serif-tc-medium-fonts 
   - google-noto-serif-tc-semibold-fonts 
+  - google-noto-serif-telugu-fonts 
+  - google-noto-serif-thai-fonts 
+  - google-noto-serif-tibetan-fonts 
+  - google-noto-serif-toto-fonts 
+  - google-noto-serif-vithkuqi-fonts 
+  - google-noto-serif-yezidi-fonts 
+  - google-noto-traditionalnushu-fonts 
   - google-or-tools 
   - google-or-tools-devel 
   - google-or-tools-minizinc 
@@ -12777,7 +12973,7 @@ unsorted:
   - libhwloc15 
   - libhwy1-32bit 
   - libhx509-5 
-  - libhydrogen-core-1_2_2 
+  - libhydrogen-core-1_2_3 
   - libhydrogen-core-devel 
   - libhyphen0-32bit 
   - libi2c0 
@@ -18496,229 +18692,6 @@ unsorted:
   - notmuch-devel 
   - notmuch-doc 
   - notmuch-emacs 
-  - noto-arimo-fonts 
-  - noto-cousine-fonts 
-  - noto-fonts 
-  - noto-kufiarabic-fonts 
-  - noto-loopedlao-fonts 
-  - noto-loopedlao-ui-fonts 
-  - noto-loopedthai-fonts 
-  - noto-loopedthai-ui-fonts 
-  - noto-music-fonts 
-  - noto-naskharabic-fonts 
-  - noto-naskharabic-ui-fonts 
-  - noto-nastaliqurdu-fonts 
-  - noto-rashihebrew-fonts 
-  - noto-sans-adlam-fonts 
-  - noto-sans-adlamunjoined-fonts 
-  - noto-sans-anatolianhieroglyphs-fonts 
-  - noto-sans-arabic-fonts 
-  - noto-sans-arabic-ui-fonts 
-  - noto-sans-armenian-fonts 
-  - noto-sans-avestan-fonts 
-  - noto-sans-balinese-fonts 
-  - noto-sans-bamum-fonts 
-  - noto-sans-bassavah-fonts 
-  - noto-sans-batak-fonts 
-  - noto-sans-bengali-fonts 
-  - noto-sans-bengali-ui-fonts 
-  - noto-sans-bhaiksuki-fonts 
-  - noto-sans-brahmi-fonts 
-  - noto-sans-buginese-fonts 
-  - noto-sans-buhid-fonts 
-  - noto-sans-canadianaboriginal-fonts 
-  - noto-sans-carian-fonts 
-  - noto-sans-caucasianalbanian-fonts 
-  - noto-sans-chakma-fonts 
-  - noto-sans-cham-fonts 
-  - noto-sans-cherokee-fonts 
-  - noto-sans-chorasmian-fonts 
-  - noto-sans-coptic-fonts 
-  - noto-sans-cuneiform-fonts 
-  - noto-sans-cypriot-fonts 
-  - noto-sans-cyprominoan-fonts 
-  - noto-sans-deseret-fonts 
-  - noto-sans-devanagari-fonts 
-  - noto-sans-devanagari-ui-fonts 
-  - noto-sans-duployan-fonts 
-  - noto-sans-egyptianhieroglyphs-fonts 
-  - noto-sans-elbasan-fonts 
-  - noto-sans-elymaic-fonts 
-  - noto-sans-ethiopic-fonts 
-  - noto-sans-georgian-fonts 
-  - noto-sans-glagolitic-fonts 
-  - noto-sans-gothic-fonts 
-  - noto-sans-grantha-fonts 
-  - noto-sans-gujarati-fonts 
-  - noto-sans-gujarati-ui-fonts 
-  - noto-sans-gunjalagondi-fonts 
-  - noto-sans-gurmukhi-fonts 
-  - noto-sans-gurmukhi-ui-fonts 
-  - noto-sans-hanifirohingya-fonts 
-  - noto-sans-hanunoo-fonts 
-  - noto-sans-hatran-fonts 
-  - noto-sans-hebrew-fonts 
-  - noto-sans-hebrewdroid-fonts 
-  - noto-sans-hebrewnew-fonts 
-  - noto-sans-imperialaramaic-fonts 
-  - noto-sans-indicsiyaqnumbers-fonts 
-  - noto-sans-inscriptionalpahlavi-fonts 
-  - noto-sans-inscriptionalparthian-fonts 
-  - noto-sans-javanese-fonts 
-  - noto-sans-kaithi-fonts 
-  - noto-sans-kannada-fonts 
-  - noto-sans-kannada-ui-fonts 
-  - noto-sans-kayahli-fonts 
-  - noto-sans-kharoshthi-fonts 
-  - noto-sans-khmer-fonts 
-  - noto-sans-khmer-ui-fonts 
-  - noto-sans-khojki-fonts 
-  - noto-sans-khudawadi-fonts 
-  - noto-sans-lao-fonts 
-  - noto-sans-lao-ui-fonts 
-  - noto-sans-lepcha-fonts 
-  - noto-sans-limbu-fonts 
-  - noto-sans-lineara-fonts 
-  - noto-sans-linearb-fonts 
-  - noto-sans-lisu-fonts 
-  - noto-sans-lycian-fonts 
-  - noto-sans-lydian-fonts 
-  - noto-sans-mahajani-fonts 
-  - noto-sans-malayalam-fonts 
-  - noto-sans-malayalam-ui-fonts 
-  - noto-sans-mandaic-fonts 
-  - noto-sans-manichaean-fonts 
-  - noto-sans-marchen-fonts 
-  - noto-sans-masaramgondi-fonts 
-  - noto-sans-mayannumerals-fonts 
-  - noto-sans-medefaidrin-fonts 
-  - noto-sans-meeteimayek-fonts 
-  - noto-sans-mendekikakui-fonts 
-  - noto-sans-meroitic-fonts 
-  - noto-sans-miao-fonts 
-  - noto-sans-modi-fonts 
-  - noto-sans-mongolian-fonts 
-  - noto-sans-mono-fonts 
-  - noto-sans-mro-fonts 
-  - noto-sans-multani-fonts 
-  - noto-sans-myanmar-fonts 
-  - noto-sans-myanmar-ui-fonts 
-  - noto-sans-nabataean-fonts 
-  - noto-sans-nandinagari-fonts 
-  - noto-sans-newa-fonts 
-  - noto-sans-newtailue-fonts 
-  - noto-sans-nko-fonts 
-  - noto-sans-nushu-fonts 
-  - noto-sans-ogham-fonts 
-  - noto-sans-olchiki-fonts 
-  - noto-sans-oldhungarian-fonts 
-  - noto-sans-olditalic-fonts 
-  - noto-sans-oldnortharabian-fonts 
-  - noto-sans-oldpermic-fonts 
-  - noto-sans-oldpersian-fonts 
-  - noto-sans-oldsogdian-fonts 
-  - noto-sans-oldsoutharabian-fonts 
-  - noto-sans-oldturkic-fonts 
-  - noto-sans-oriya-fonts 
-  - noto-sans-oriya-ui-fonts 
-  - noto-sans-osage-fonts 
-  - noto-sans-osmanya-fonts 
-  - noto-sans-pahawhhmong-fonts 
-  - noto-sans-palmyrene-fonts 
-  - noto-sans-paucinhau-fonts 
-  - noto-sans-phagspa-fonts 
-  - noto-sans-phoenician-fonts 
-  - noto-sans-psalterpahlavi-fonts 
-  - noto-sans-rejang-fonts 
-  - noto-sans-runic-fonts 
-  - noto-sans-samaritan-fonts 
-  - noto-sans-saurashtra-fonts 
-  - noto-sans-sharada-fonts 
-  - noto-sans-shavian-fonts 
-  - noto-sans-siddham-fonts 
-  - noto-sans-signwriting-fonts 
-  - noto-sans-sinhala-fonts 
-  - noto-sans-sinhala-ui-fonts 
-  - noto-sans-sogdian-fonts 
-  - noto-sans-sorasompeng-fonts 
-  - noto-sans-soyombo-fonts 
-  - noto-sans-sundanese-fonts 
-  - noto-sans-sylotinagri-fonts 
-  - noto-sans-symbols-fonts 
-  - noto-sans-symbols2-fonts 
-  - noto-sans-syriac-fonts 
-  - noto-sans-tagalog-fonts 
-  - noto-sans-tagbanwa-fonts 
-  - noto-sans-taile-fonts 
-  - noto-sans-taitham-fonts 
-  - noto-sans-taiviet-fonts 
-  - noto-sans-takri-fonts 
-  - noto-sans-tamil-fonts 
-  - noto-sans-tamil-ui-fonts 
-  - noto-sans-tamilsupplement-fonts 
-  - noto-sans-tangsa-fonts 
-  - noto-sans-telugu-fonts 
-  - noto-sans-telugu-ui-fonts 
-  - noto-sans-thaana-fonts 
-  - noto-sans-thai-fonts 
-  - noto-sans-thai-ui-fonts 
-  - noto-sans-tifinagh-fonts 
-  - noto-sans-tifinaghadrar-fonts 
-  - noto-sans-tifinaghagrawimazighen-fonts 
-  - noto-sans-tifinaghahaggar-fonts 
-  - noto-sans-tifinaghair-fonts 
-  - noto-sans-tifinaghapt-fonts 
-  - noto-sans-tifinaghazawagh-fonts 
-  - noto-sans-tifinaghghat-fonts 
-  - noto-sans-tifinaghhawad-fonts 
-  - noto-sans-tifinaghrhissaixa-fonts 
-  - noto-sans-tifinaghsil-fonts 
-  - noto-sans-tifinaghtawellemmet-fonts 
-  - noto-sans-tirhuta-fonts 
-  - noto-sans-ugaritic-fonts 
-  - noto-sans-vai-fonts 
-  - noto-sans-vithkuqi-fonts 
-  - noto-sans-wancho-fonts 
-  - noto-sans-warangciti-fonts 
-  - noto-sans-yi-fonts 
-  - noto-sans-zanabazarsquare-fonts 
-  - noto-serif-ahom-fonts 
-  - noto-serif-armenian-fonts 
-  - noto-serif-balinese-fonts 
-  - noto-serif-bengali-fonts 
-  - noto-serif-devanagari-fonts 
-  - noto-serif-display-fonts 
-  - noto-serif-divesakuru-fonts 
-  - noto-serif-dogra-fonts 
-  - noto-serif-ethiopic-fonts 
-  - noto-serif-fonts 
-  - noto-serif-georgian-fonts 
-  - noto-serif-grantha-fonts 
-  - noto-serif-gujarati-fonts 
-  - noto-serif-gurmukhi-fonts 
-  - noto-serif-hebrew-fonts 
-  - noto-serif-kannada-fonts 
-  - noto-serif-khmer-fonts 
-  - noto-serif-khojki-fonts 
-  - noto-serif-lao-fonts 
-  - noto-serif-makasar-fonts 
-  - noto-serif-malayalam-fonts 
-  - noto-serif-myanmar-fonts 
-  - noto-serif-nyiakengpuachuehmong-fonts 
-  - noto-serif-olduyghur-fonts 
-  - noto-serif-oriya-fonts 
-  - noto-serif-sinhala-fonts 
-  - noto-serif-tamil-fonts 
-  - noto-serif-tamilslanted-fonts 
-  - noto-serif-tangut-fonts 
-  - noto-serif-telugu-fonts 
-  - noto-serif-thai-fonts 
-  - noto-serif-tibetan-fonts 
-  - noto-serif-toto-fonts 
-  - noto-serif-vithkuqi-fonts 
-  - noto-serif-yezidi-fonts 
-  - noto-tinos-fonts 
-  - noto-traditionalnushu-fonts 
   - nova 
   - nova-bash-completion 
   - nova-fish-completion 
