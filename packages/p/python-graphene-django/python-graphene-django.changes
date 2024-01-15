@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Sun Jan 14 17:04:25 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.0:
+  * Add support for validation rules
+  * Provide setting to enable/disable converting choices to enums
+    globally
+- update to 3.1.6:
+  * Only release on pypi after tests pass
+  * fix: empty list is not an empty value for list filters even
+    when a custom filtering method is provided
+  * adding optional_field in Serializermutation to enfore some
+    fields to be optional
+  * Typo fixes
+  * Support displaying deprecated input fields in GraphiQL docs
+  * Fix graphiql explorer styles by sending missing param to
+    render_graphiql
+  * Add Python 3.12 to CI
+  * Remove Django 4.1 (EOL) and add Django 5.0 to CI
+- update to 3.1.5:
+  * fix: fk resolver permissions leak
+  * Support base class relations and reverse for proxy models
+  * exclude 'fans' from ReporterForm tests
+  * Update mutation.py to serialize Enum objects into input
+    values
+  * Remove Python 3.7 (EOL since EOL since 2023-06-27) from CI
+  * Prevent duplicate CI runs, also work with PRs from forks
+  * Use ruff in pre-commit
+  * fix: foreign key nullable and custom resolver
+  * Miscellaneous CI fixes
+- update to 3.1.3:
+  * Update the path to GraphQL Server Specification for Relay
+  * Add JSONField back to graphene_django.compat module for
+    backwards compatibility
+- update to 3.1.2:
+  * Fix linting issues
+  * Set pypi GH action version to release/v1
+  * Correct schema write test
+  * Fix graphiql explorer styles by including official CSS, and
+    update local example app for testing
+  * Add check for `serializers.HiddenField` on
+    `fields_for_serializer` function
+  * CI: add Django 4.2
+  * remove JSONField compat
+  * CI: remove Django 4.0
+  * Update compat.py MissingType results after PGJSONField
+    removal
+- update to 3.0.1:
+  * Fix custom foreignkey resolvers
+  * Fix broken UT due to pytest import error
+  * Clarify cookbook example READMEs
+  * Fix schema print with `-.graphql`
+  * Update GraphiQL to 2.4.1
+  * Update django-filter URL's in filtering docs
+- drop python-graphene-django-no-mock.patch (upstream)
+
+-------------------------------------------------------------------
 Thu Jan 26 01:05:11 UTC 2023 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v3.0.0

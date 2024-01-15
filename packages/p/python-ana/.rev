@@ -61,4 +61,12 @@
 - Add patch remove-future-requirement.patch, remove requirement of future</comment>
     <requestid>1109157</requestid>
   </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>a9ab34451ecba11cb67851e397472543</srcmd5>
+    <version>0.06</version>
+    <time>1705353594</time>
+    <user>anag+factory</user>
+    <comment>- Fix test.py to work with Python 3.12.</comment>
+    <requestid>1138740</requestid>
+  </revision>
 </revisionlist>

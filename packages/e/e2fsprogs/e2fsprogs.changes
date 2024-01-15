@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 12 14:43:48 UTC 2024 - Luis Henriques <lhenriques@suse.com>
+
+- e2fsck-Suppress-orphan-file-is-clean-message-in-preen.patch: e2fsck:
+  Suppress "orphan file is clean" message in preen mode (bsc#1218747)
+
+-------------------------------------------------------------------
 Wed Oct  4 16:34:10 UTC 2023 - Jan Kara <jack@suse.cz>
 
 - Update specfile to make sure regenerate_initrd_post macro is defined

@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sun Jan 14 17:09:21 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0:
+  * Drop support for Python 2.7, 3.4, 3.5, 3.6.
+  * Add support for Python 3.10, 3.11.
+  * [breaking] If a bytes object is serialized by a String schema
+    node with the encoding parameter specified, it will be passed
+    through directly to str first, causing it to come out with a
+    b'' prefix. In order to serialize it properly, it should be
+    decoded to a string first. Previously, when the encoding
+    parameter was specified it would be decoded and re-encoded,
+    effectively passing it through untouched, despite not being a
+    string type.
+  * Add a new colander.DataURL validator.
+  * Add IDN support to colander.url.
+  * colander.All now supports colander.Invalid.msg being None or
+    a list, otherwise colander.Invalid.asdict crashes with
+    TypeError: sequence item 1: expected str instance, NoneType
+    found.
+  * Fixed an issue with colander.Mapping and colander.Sequence
+    where a default value of drop caused missing values to be
+    dropped during deserialization. (Only missing values should
+    affect deserialization, and only default values should affect
+    serialization.) Added many new test cases for MappingSchema
+    and SequenceSchema.
+  * Remove the dependency on setuptools for resolving
+    pkg_resources-style importable paths in
+    colander.GlobalObject.
+  * Refresh localization files with Babel 2.11.
+  * Add support for Python 3.9.
+  * Fix handling of insert_before on deferred nodes so that it
+    inserts the new node before the specified node instead of
+    always appending to the end of node.children after binding.
+  * Fix the broken wheels in 1.8.1 and 1.8.0 to include the
+    locale data. sigh
+  * Fix the broken wheels in 1.8.0 to include the locale data.
+  * Drop support for Python 3.4.
+  * Add support for Python 3.7 and 3.8.
+  * Fix deserializer on Date and DateTime fields to correctly
+    catch ValueError and TypeError exception, which can arise
+    when using custom formats on the field. Instead of allowing
+    these exceptions to propagate, replace then with an Invalid
+    exception instead.
+- drop fix-tests.patch (obsolete)
+
+-------------------------------------------------------------------
 Mon Apr 20 13:05:17 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Obsolete the lang subpackage to avoid conflicts
@@ -28,10 +74,10 @@ Thu Feb  7 12:18:38 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
     vulnerable to a catastrophic backtracking that would have led to
     an infinite loop.
     See https://github.com/Pylons/colander/pull/323
-    and https://github.com/Pylons/colander/issues/290. 
+    and https://github.com/Pylons/colander/issues/290.
     With thanks to Przemek (https://github.com/p-m-k).
-  + This does change the behaviour of the URL validator and it no 
-    longer supports file:// URI scheme 
+  + This does change the behaviour of the URL validator and it no
+    longer supports file:// URI scheme
     (https://tools.ietf.org/html/rfc8089). Users that wish to validate
     file:// URI’s should change their validator to use
     colander.file_uri instead.
@@ -100,7 +146,7 @@ Thu May 24 17:30:12 UTC 2018 - toddrme2178@gmail.com
 Tue Sep 19 14:55:27 UTC 2017 - bruno@ioda-net.ch
 
 - Update to upstream 1.4
-- Backport python3 to singlespec + lang package 
+- Backport python3 to singlespec + lang package
 
 -------------------------------------------------------------------
 Thu Feb  9 22:32:43 UTC 2017 - hpj@urpla.net

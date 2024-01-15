@@ -1,4 +1,114 @@
 -------------------------------------------------------------------
+Fri Dec  1 16:20:51 UTC 2023 - cloud-devel@suse.de
+
+- update to version 2.0.0
+  - [baremetal] Add firmware_interface support
+  - block storage: Add missing docstrings
+  - tests: Move cloud-layer service tests to their own file
+  - tests: Update functional tests for resource providers
+  - Bump the chunk_size to use CPU more efficiently
+  - cloud: Remove floating network cache
+  - [baremetal] Ensure baremetal shard parameter gets passed
+  - cloud: Remove remnants of port caching
+  - placement: Add support for traits
+  - cloud: Remove '_object_store_client'
+  - config loader: Prefer cli/env over clouds.yaml args for some args
+  - volume: Add Extension to volume v2 API
+  - Implemented methods for share metadata
+  - docs: Add missing docs for block storage resources
+  - block storage: Add support for services
+  - mypy: Address issues with top-level files
+  - Add support for default security group rules in SDK
+  - volume: Add missing attributes to Extension
+  - identity: Add support for domain config
+  - cloud: Remove unnecessary types import
+  - Rename share group snapshot 'members' method
+  - Bump API version in Manila functional tests
+  - placement: Add support for resource provider aggregates
+  - Add image metadef object operations
+  - tests: Rename file, remove unused file
+  - docs: Add exception documentation
+  - Fix bulk_delete support determination
+  - cloud: Remove '_orchestration_client'
+  - Fix Swift endpoint conversion to determine info/caps url
+  - openstack.format: Remove 'serialize' classmethod
+  - cloud: Ignore invalid filters
+  - cloud: Convert 'get_volume_limits' to use proxy layer
+  - fix memory leak of Connections
+  - tests: Remove references to shade
+  - Add "hardware_offload_type" attribute to "port"
+  - wokflow: add update_workflow proxy method
+  - docs: Document various warnings
+  - docs: Add missing docs for identity resources
+  - docs: Add missing docs for compute resources
+  - docs: Use asterix for Network resources doc
+  - Fix heat stack _action function to handle exception
+  - cloud: Remove old cloud-layer caching functionality
+  - tests: Enable UserWarning by default
+  - [baremetal] Add support for querying for shards
+  - support notification vmoves for masakari
+  - docs: Add documentation for openstack.test.fakes
+  - baremetal: Add missing docstrings
+  - Run mypy as pre-commit
+  - Fix manila access rules functional tests
+  - Add fake resources generator
+  - Treat server as a dict in add_server_interfaces
+  - fix flavor.swap attribute type
+  - Stop randomly sorting error lines
+  - cloud: Remove dead code
+  - tox: Bump min_version to 4.3.0
+  - image: Add support for metadef property operations
+  - block storage: Add query string params for many APIs
+  - Define version for share_access_rules
+  - Encode type of 'links' for Extension objects
+  - Unused param in stack unit test
+  - [baremetal] Add support for parent_nodes
+  - Implement stack export in openstacksdk
+  - cloud: Remove '_{service}_client' properties
+  - [baremetal] Add unhold provision state verb support
+  - docs: Improve docs for Connection with CONF object
+  - Add 2 tls container params for Octavia Pools
+  - docs: Rewrite caching docs
+  - cloud: Remove '_is_client_version'
+  - Add missing `return` in `upload_volume_to_image`
+  - cloud: Remove '_get_raw_client'
+  - Support passing a subnetpool for create_subnet
+  - tests: Skip intermittently failing placement traits test
+  - tox: Add environment documentation
+  - Allow resources to be skipped on project cleanup
+  - image: Fixed URL for stores_info
+  - Add volume attachment support
+  - VPN: add missing fields to VpnIpsecPolicy
+  - Add fake proxy generator
+  - cloud: Don't use dangerous argument defaults
+  - Define version for export_locations
+  - compute: Add missing docstrings
+  - Fix: volume request body for scheduler hints
+  - fakes: Add type hints
+  - Return HTTP response for delete_access_rule.
+  - Add SFC to SDK
+  - fix block storage resource registry
+  - cloud: Remove dead method
+  - cloud: Remove remnants of floating IP caching
+  - Support manage/unmanage shares with manila
+  - cloud: Remove remnants of server caching
+  - cloud: Filter FIPs by valid filters
+  - cloud: Remove unnecessary '_make_unicode' helper
+  - placement: Add support for resource provider inventories
+  - Add Octavia support for HSTS
+  - resource: Remove unused 'Resource.service' attribute
+  - Cleanup logic to either dry-run, bulk_delete or do single object deletes
+  - tests: Migrate tests from os-hosts to os-services
+  - Remove _min_microversion for consistency
+  - volume: Add Capability to volume v2 API
+  - cloud: Reduce duplication
+  - Add share group snapshots to shared file systems.
+  - Update master for stable/2023.2
+  - Adds share group resource to shared file system
+  - Replace appdirs usage with platformdirs
+  - exceptions: Remove unused exception
+
+-------------------------------------------------------------------
 Tue Jul 18 16:44:09 UTC 2023 - cloud-devel@suse.de
 
 - update to version 1.3.1

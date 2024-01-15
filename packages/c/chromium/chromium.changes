@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan 14 10:07:12 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
+
+- Replace chromium-120-lp155-revert-clang-build-failure.patch
+  with chromium-120-make_unique-struct.patch - which avoids
+  reverting changes and instead provides a stub constructor to fix
+  build on Leap
+
+-------------------------------------------------------------------
 Sat Jan 13 08:29:26 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 120.0.6099.216 (boo#1217839, boo#1218048, boo#1218302,

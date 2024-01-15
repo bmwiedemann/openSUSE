@@ -1,7 +1,7 @@
 #
 # spec file for package at-spi2-core
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -52,6 +52,8 @@ BuildRequires:  pkgconfig(xtst)
 Requires:       (dbus-1 or dbus-broker)
 Provides:       at-spi2-atk-gtk2 = %{version}
 Obsoletes:      at-spi2-atk-gtk2 < %{version}
+Provides:       at-spi2-atk-common = %{version}
+Obsoletes:      at-spi2-atk-common < %{version}
 # xprop is needed when using XWayland
 Requires:       (xprop if xwayland)
 
@@ -91,6 +93,10 @@ Requires:       libatk-bridge-2_0-0 = %{version}
 Requires:       libatspi0 = %{version}
 Requires:       typelib-1_0-Atk-1_0 = %{version}
 Requires:       typelib-1_0-Atspi-2_0 = %{version}
+Provides:       at-spi2-atk-devel = %{version}
+Obsoletes:      at-spi2-atk-devel < %{version}
+Provides:       atk-devel = %{version}
+Obsoletes:      atk-devel < %{version}
 
 %description devel
 This package contains all necessary include files and libraries needed

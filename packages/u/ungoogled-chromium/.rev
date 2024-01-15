@@ -332,4 +332,12 @@
   * Various fixes from internal audits, fuzzing and other initiatives</comment>
     <requestid>1129955</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>00f7c029dd7bc150932b09ac418361b5</srcmd5>
+    <version>120.0.6099.216</version>
+    <time>1705353370</time>
+    <user>anag+factory</user>
+    <comment>ungoogled-chromium 120.0.6099.216 (boo#1217839, boo#1218048, boo#1218302, boo#1218533, boo#1218719, boo#1218303)</comment>
+    <requestid>1138578</requestid>
+  </revision>
 </revisionlist>

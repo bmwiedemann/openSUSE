@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@
 %define soversion 2
 %endif
 Name:           zlib-ng%{?compat_suffix}
-Version:        2.1.5
+Version:        2.1.6
 Release:        0
 Summary:        Zlib replacement with SIMD optimizations
 License:        Zlib
@@ -119,12 +119,14 @@ export LD_LIBRARY_PATH=%{buildroot}/%{_libdir}
 %{_includedir}/zlib_name_mangling.h
 %{_libdir}/libz.so
 %{_libdir}/pkgconfig/zlib.pc
+%{_libdir}/cmake/ZLIB
 %else
 %{_includedir}/zconf-ng.h
 %{_includedir}/zlib-ng.h
 %{_includedir}/zlib_name_mangling-ng.h
 %{_libdir}/libz-ng.so
 %{_libdir}/pkgconfig/zlib-ng.pc
+%{_libdir}/cmake/zlib-ng
 %endif
 
 %changelog

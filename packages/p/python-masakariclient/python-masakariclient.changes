@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Jan 14 17:57:49 UTC 2024 - cloud-devel@suse.de
+
+- update to version 8.3.0
+  - Update master for stable/xena
+  - Add Python3 yoga unit tests
+  - Fix tox4 issues
+  - Update python testing classifier
+  - Update master for stable/2023.1
+  - Update master for stable/zed
+  - Update master for stable/yoga
+  - Drop Python 3.6 and 3.7 support
+  - Add Python3 zed unit tests
+  - support for Masakari VMove
+  - Add Python3 antelope unit tests
+
+-------------------------------------------------------------------
 Mon Dec  6 09:31:56 UTC 2021 - cloud-devel@suse.de
 
 - update to version 7.1.0

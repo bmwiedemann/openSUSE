@@ -51,4 +51,18 @@
 </comment>
     <requestid>1068996</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8618871c9f2643f0470c8eb5a6feb4af</srcmd5>
+    <version>5.2.1</version>
+    <time>1705353463</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.2.1:
+  * Fix StatePickler for Python 3.11.
+  * Add encoding as an attribute for LogFileHandler
+    initialization
+- drop python-311.patch (upstream)
+
+- Use pytest to run the testsuite, not nose.</comment>
+    <requestid>1138697</requestid>
+  </revision>
 </revisionlist>

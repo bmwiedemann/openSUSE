@@ -24,4 +24,12 @@ Obsoletes openSUSE-software package</comment>
     <comment></comment>
     <requestid>1090397</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>625637777cbb8d428693c023fecd2511</srcmd5>
+    <version>0.3.0</version>
+    <time>1705353589</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1138738</requestid>
+  </revision>
 </revisionlist>

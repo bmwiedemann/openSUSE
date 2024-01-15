@@ -23,7 +23,7 @@
 %define qt5_version 5.15.2
 %bcond_without released
 Name:           kio
-Version:        5.113.0
+Version:        5.114.0
 Release:        0
 Summary:        Network transparent access to files and data
 License:        LGPL-2.1-or-later

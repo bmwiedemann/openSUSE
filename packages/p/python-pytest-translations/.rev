@@ -48,4 +48,17 @@
 - drop pr_48.patch (upstream)</comment>
     <requestid>1085842</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4c4a54a4af8e046c03fb8d00a2643e3e</srcmd5>
+    <version>5.0.0</version>
+    <time>1705353696</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.0.0:
+  * **BREAKING** drop support for pytest &lt;7 and EOL python
+    versions
+  * migrate to poetry
+  * fix first deprecation warnings
+  * add pre-commit with black,isort,flake8</comment>
+    <requestid>1138971</requestid>
+  </revision>
 </revisionlist>

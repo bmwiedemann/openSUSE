@@ -122,4 +122,12 @@ Part of summer 2013 libyal refresh (forwarded request 185006 from gregfreemyer)<
     <comment>delete system-libs.patch</comment>
     <requestid>1038458</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>3c84fb11639540871ac19761519f2c88</srcmd5>
+    <version>20240115</version>
+    <time>1705353635</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 20240115</comment>
+    <requestid>1138791</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jan 14 18:05:01 UTC 2024 - cloud-devel@suse.de
+
+- update to version 3.1.0
+  - Imported Translations from Zanata
+  - Switch to 2023.1 Python3 unit tests and generic template name
+  - Update master for stable/yoga
+  - Update master for stable/2023.1
+  - Update master for stable/zed
+  - Add Python3 zed unit tests
+  - Fix tox.ini with tox4
+  - Drop lower-constraints.txt and its testing
+  - The Python 3.6 and Python 3.7 Support has been dropped since zed
+
+-------------------------------------------------------------------
 Tue May 24 21:37:24 UTC 2022 - cloud-devel@suse.de
 
 - update to version 2.4.0

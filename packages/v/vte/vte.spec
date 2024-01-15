@@ -1,7 +1,7 @@
 #
 # spec file for package vte
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -91,6 +91,8 @@ emulation settings.
 Summary:        Introspection bindings for the VTE terminal emulator library
 License:        LGPL-2.0-only
 Group:          System/Libraries
+Provides:       typelib-1_0-Vte-%{_apiver} = %{version}
+Obsoletes:      typelib-1_0-Vte-%{_apiver} < %{version}
 
 %description -n typelib-1_0-Vte-%{?_binver}
 VTE is a terminal emulator library that provides a terminal widget for

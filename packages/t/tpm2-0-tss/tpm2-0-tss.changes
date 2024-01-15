@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jan 13 17:45:03 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
+
+- Fix tmpfiles %ghost file names
+
+-------------------------------------------------------------------
+Sat Dec 16 16:41:48 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
+
+- Move tmpfiles config to different package:
+  * tmpfiles_create was being called with bad input (version ?)
+  * it avoids breaking SLPP for libtss2-fapi1 (hence the prior
+    warning in spec)
+- tss sysusers requires should be pre not post
+
+-------------------------------------------------------------------
 Mon Nov 27 10:41:32 UTC 2023 - Ludwig Nussel <lnussel@suse.com>
 
 - libtss2-fapi1 requires system-user-tss for tmpfile creation

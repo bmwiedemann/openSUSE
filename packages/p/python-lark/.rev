@@ -85,4 +85,15 @@
 - Rename to python-lark</comment>
     <requestid>1134338</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1beb447a04e6d0150f679b279c85cd44</srcmd5>
+    <version>1.1.9</version>
+    <time>1705353056</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.1.9:
+  * Use MAXWIDTH instead of MAXREPEAT when available
+  * Fix nested list markdown syntax in how_to_use.md
+  * Run tests against Python 3.12</comment>
+    <requestid>1138493</requestid>
+  </revision>
 </revisionlist>

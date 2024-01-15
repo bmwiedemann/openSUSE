@@ -283,4 +283,15 @@
     <comment>- add osc-lib dependency</comment>
     <requestid>983581</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>c369c1c3239fb6237e3d18ce04c1a146</srcmd5>
+    <version>5.1.0</version>
+    <time>1705353479</time>
+    <user>anag+factory</user>
+    <comment>- update to version 5.1.0
+  - Update master for stable/yoga
+  - Update master for stable/zed
+  - Fix tox4 error and use python &gt;=3.8</comment>
+    <requestid>1138705</requestid>
+  </revision>
 </revisionlist>

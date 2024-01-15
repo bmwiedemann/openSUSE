@@ -17,7 +17,7 @@
 
 
 Name:           kew
-Version:        2.0.2
+Version:        2.0.3
 Release:        0
 Summary:        A command-line music player
 License:        GPL-2.0-only

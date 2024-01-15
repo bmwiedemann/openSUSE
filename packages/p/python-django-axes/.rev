@@ -80,4 +80,13 @@
   * Avoid running data migration on incorrect databases.</comment>
     <requestid>1135244</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>00b36c8b2ec1c7daa8e1a111a261a3ef</srcmd5>
+    <version>6.3.0</version>
+    <time>1705353461</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.3.0:
+  * Add async support to middleware. [Taikono-Himazin]</comment>
+    <requestid>1138693</requestid>
+  </revision>
 </revisionlist>

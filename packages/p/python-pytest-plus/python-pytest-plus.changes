@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 15 14:06:35 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.1:
+  * Allow colon to be used in test id (#25)
+
+-------------------------------------------------------------------
 Tue Nov  7 19:56:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.6.0:

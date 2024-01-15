@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jan 11 22:55:58 UTC 2024 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to version 1.14
+  * improved very significantly GC performances by using prefetch and multiple
+    mark threads
+  * reimplement CArray using native opcodes (requires Haxe 4.4+)
+  * dynobj fields are now correctly ordered in the order they were set
+  * added Prefetch and Asm opcodes (requires Haxe 4.4+)
+  * added Intel VTune support (JIT only)
+  * upgraded to PCRE2 for regular expressions
+  * ... and many additional changes and fixes
+- Drop 0001-fix-return-non-void-functions.patch
+
+-------------------------------------------------------------------
 Tue Feb  7 20:43:32 UTC 2023 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Update to version 1.13

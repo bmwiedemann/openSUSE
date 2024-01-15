@@ -1,7 +1,7 @@
 #
 # spec file for package python-orjson
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,18 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-orjson
-Version:        3.8.10
+Version:        3.9.10
 Release:        0
 Summary:        Fast, correct Python JSON library supporting dataclasses, datetimes, and numpy
 License:        Apache-2.0 OR MIT
 URL:            https://github.com/ijl/orjson
-Source:         https://files.pythonhosted.org/packages/source/o/orjson/orjson-%{version}.tar.gz
+# Update: Run `osc service runall download_files && sh ./devendor-sdist.sh && osc service runall cargo_vendor`
+Source0:        orjson-%{version}-devendored.tar.xz
 Source1:        vendor.tar.xz
-Source2:        cargo_config
-BuildRequires:  %{python_module maturin >= 0.12.19}
+Source2:        https://files.pythonhosted.org/packages/source/o/orjson/orjson-%{version}.tar.gz
+Source3:        devendor-sdist.sh
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module maturin >= 1}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -51,8 +54,6 @@ It benchmarks as the fastest Python library for JSON.
 
 %prep
 %autosetup -a1 -n orjson-%{version}
-mkdir .cargo
-cp %{SOURCE2} .cargo/config
 
 %build
 %pyproject_wheel
@@ -62,13 +63,22 @@ cp %{SOURCE2} .cargo/config
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
+donttest="bydefaultnothingfails"
+%ifarch %ix86 %arm32
 # test_numpy_array_d1_uintp and test_numpy_array_d1_intp fail on 32bit
+donttest="$donttest or test_numpy_array_d1_intp or test_numpy_array_d1_uintp"
+%endif
+%ifarch ppc64le
 # test_memory_loads_keys occasionally fails on crashes on ppc64le
-%pytest_arch -k "not (test_numpy_array_d1_intp or test_numpy_array_d1_uintp or test_memory_loads_keys)"
+donttest="$donttest or test_memory_loads_keys"
+%endif
+
+%pytest_arch -k "not ($donttest)"
 
 %files %{python_files}
 %doc README.md CHANGELOG.md
 %license LICENSE-APACHE LICENSE-MIT
-%{python_sitearch}/orjson*
+%{python_sitearch}/orjson
+%{python_sitearch}/orjson-%{version}.dist-info
 
 %changelog

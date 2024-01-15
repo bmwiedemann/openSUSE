@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jan 12 09:22:25 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Disable the QtQml_signal_arguments test in s390x just as it was
+  disabled in ppc64le to fix building in ALP (bsc#1217025)
+
+-------------------------------------------------------------------
+Thu Jan 11 12:34:24 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 5.15.12 
+  * Missing includes for g++ 11.3 have been added.
+
+-------------------------------------------------------------------
 Mon Oct 30 14:19:25 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.15.11

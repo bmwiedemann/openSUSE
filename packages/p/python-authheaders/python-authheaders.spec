@@ -18,13 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-authheaders
-Version:        0.15.3
+Version:        0.16.0
 Release:        0
 Summary:        A library wrapping email authentication header verification and generation
 License:        MIT
 URL:            https://github.com/ValiMail/authentication-headers
 Source:         https://files.pythonhosted.org/packages/source/a/authheaders/authheaders-%{version}.tar.gz
-Patch0:         https://github.com/ValiMail/authentication-headers/pull/28.patch#/authheaders-importlib-resources.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -64,7 +63,9 @@ rm %{buildroot}%{_bindir}/dmarc-policy-find
 
 %check
 export LANG=en_US.UTF-8
-%pytest
+# Test requires /etc/resolv.conf via dnspython
+donttest="(TestAuthenticateMessage and test_authenticate_dmarc_psdsub)"
+%pytest -k "not (${donttest})"
 
 %files %{python_files}
 %doc CHANGES README.md

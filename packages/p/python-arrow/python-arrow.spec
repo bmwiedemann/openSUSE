@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,17 +31,16 @@ Summary:        Better dates and times for Python
 License:        Apache-2.0
 URL:            https://github.com/arrow-py/arrow
 Source:         https://files.pythonhosted.org/packages/source/a/arrow/arrow-%{version}.tar.gz
-BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module flit-core >= 3.2}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-python-dateutil >= 2.7.0
-Requires:       python-types-python-dateutil >= 2.8.10
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module arrow == %{version}}
 BuildRequires:  %{python_module dateparser}
-BuildRequires:  %{python_module dateutil >= 2.7.0}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz >= 2021.1}
@@ -63,6 +62,8 @@ Arrow is heavily inspired by moment.js and requests.
 %prep
 %setup -q -n arrow-%{version}
 rm -rf arrow.egg-info
+# typing stubs not required for runtime gh#arrow-py/arrow#1169
+sed -i '/dependencies = /,/]/ {/types-python-dateutil/d}' pyproject.toml
 
 %build
 %pyproject_wheel

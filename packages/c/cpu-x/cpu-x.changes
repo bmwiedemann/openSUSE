@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jan 15 09:42:42 UTC 2024 - pallaswept <pallaswept@proton.me>
+
+- Update to release 5.0.3
+- Changed
+  * Do not print OpenGL version for unknown user mode driver
+  * Reword labels about 'theme' in Settings (#314)
+  * Set tooltip for all labels with full text in GTK GUI (#316)
+  * Update databases (AMD Storm Peak)
+- Fixed
+  * Fix active graphic card in GTK GUI (#313)
+  * Fix missing AMD GPU power average for some cards (#315)
+- Update patch for new version
+- Add desktop file
+
+-------------------------------------------------------------------
 Thu Nov 23 17:19:11 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 5.0.2

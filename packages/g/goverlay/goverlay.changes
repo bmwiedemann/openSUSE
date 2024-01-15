@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jan  8 15:07:20 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 1.0:
+  * A much speedier, shiny new codebase
+  * Now compatible with Wayland
+  * Every *.TTF font in /usr/share/fonts is ready to use
+  * A fresh look for the user interface
+  * Loads of new features inspired by MangoHUD 0.7
+  * Bid farewell to replaysorcery 
+- Change Mesa-demo, vkbasalt and vulkan-tools to weak dependencies.
+- Remove replay-sorcery dependency.
+
+-------------------------------------------------------------------
 Sun Oct  1 08:08:13 UTC 2023 - munix9@googlemail.com
 
 - Fix build on Factory/TW: requires lazarus-lcl-qt5.

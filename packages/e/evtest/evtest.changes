@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jan 15 08:03:24 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.35
+  * Add BTN_STYLUS3 to key names
+  * reformat README as Markdown
+  * internal build / compilation improvements
+
+- removed patches as already included in upstream:
+  * 0001-Add-missing-limits.h-include.patch
+  * 0002-Fix-build-on-32bit-arches-with-64bit-time_t.patch
+
+
+-------------------------------------------------------------------
 Fri Oct  9 13:57:05 UTC 2020 - Michal Suchanek <msuchanek@suse.com>
 
 - Fix project and download URL.

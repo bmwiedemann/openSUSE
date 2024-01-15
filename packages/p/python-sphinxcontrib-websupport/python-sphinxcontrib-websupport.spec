@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-sphinxcontrib-websupport%{psuffix}
-Version:        1.2.6
+Version:        1.2.7
 Release:        0
 Summary:        Sphinx API for Web Apps
 License:        BSD-2-Clause
@@ -48,12 +48,6 @@ BuildRequires:  %{python_module Whoosh}
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module sphinxcontrib-websupport >= %{version}}
-%endif
-%if 0%{?suse_version} >= 1000 || 0%{?fedora_version} >= 24
-Recommends:     python-Sphinx >= 5.0
-Suggests:       python-SQLAlchemy
-Suggests:       python-Whoosh
-Suggests:       python-xapian
 %endif
 %python_subpackages
 

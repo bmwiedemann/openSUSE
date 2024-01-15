@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan 13 20:45:42 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.23.0:
+  * Follow up the libsass upstream: 3.6.6 --- See the release
+    notes of LibSass 3.6.6.
+
+-------------------------------------------------------------------
 Sun Jun 18 16:25:47 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
 
 - Use sle15_python_module_pythons
@@ -27,7 +34,7 @@ Tue Aug  3 13:10:23 UTC 2021 - Markéta Machová <mmachova@suse.com>
 -------------------------------------------------------------------
 Wed Jul 22 13:42:32 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
-- Update to v0.20.0, linking against libsass 3.6.4 
+- Update to v0.20.0, linking against libsass 3.6.4
 
 -------------------------------------------------------------------
 Mon May 25 06:50:36 UTC 2020 - Petr Gajdos <pgajdos@suse.com>

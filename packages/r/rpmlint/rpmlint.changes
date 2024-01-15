@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jan 15 13:23:13 UTC 2024 - filippo.bonazzi@suse.com
+
+- Update to version 2.5.0+git20240115.66db794:
+  * Fix digester for cronie whitelisting (bsc#1218756)
+
+-------------------------------------------------------------------
+Mon Jan 15 10:47:26 UTC 2024 - filippo.bonazzi@suse.com
+
+- Update to version 2.5.0+git20240115.e28fef0:
+  * cron-whitelist: adjust cronie-anacron again (bsc#1218756)
+
+-------------------------------------------------------------------
+Fri Jan 12 10:26:36 UTC 2024 - filippo.bonazzi@suse.com
+
+- Update to version 2.5.0+git20240112.c87408b:
+  * systemd-tmpfiles whitelist: adjust package name for libtss-fapi
+  * pam-modules: separate standard PAM module that have been already reviewed
+
+-------------------------------------------------------------------
 Tue Jan 09 09:20:03 UTC 2024 - wolfgang.frisch@suse.com
 
 - Update to version 2.5.0+git20240109.b4e5f72:

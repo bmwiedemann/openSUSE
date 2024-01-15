@@ -1120,4 +1120,14 @@
   (boo#1216650).</comment>
     <requestid>1127649</requestid>
   </revision>
+  <revision rev="92" vrev="95">
+    <srcmd5>72999b81332d4bb1b86a32ef7d2800aa</srcmd5>
+    <version>unknown</version>
+    <time>1705353313</time>
+    <user>anag+factory</user>
+    <comment>- Fix wrong sys link target name for context.lua (Jianhua Lu) 
+- Use gzip -n9 for bit-reproducible man-pages (Bernhard Wiedemann)
+- Re-run spec file generator to include the changes above</comment>
+    <requestid>1138771</requestid>
+  </revision>
 </revisionlist>

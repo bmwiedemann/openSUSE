@@ -1,7 +1,7 @@
 #
 # spec file for package python-click-spinner
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-click-spinner
 # tests and LICENSE included in sdist 0.1.9 not yet released
 Version:        0.1.10
@@ -24,14 +23,15 @@ Release:        0
 License:        MIT
 Summary:        Spinner for Click
 URL:            https://github.com/click-contrib/click-spinner
-Group:          Development/Languages/Python
 Source:         https://github.com/click-contrib/click-spinner/archive/v%{version}.tar.gz#/click-spinner-%{version}.tar.gz
-# https://github.com/click-contrib/click-spinner
 Patch0:         python-click-spinner-remove-six.patch
+# PATCH-FIX-UPSTREAM Based on gh#click-contrib/click-spinner#39
+Patch1:         update-versioneer.patch
 BuildRequires:  %{python_module click}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-click
@@ -47,11 +47,11 @@ Spinner for Click.
 
 %build
 export LANG=en_US.UTF-8
-%python_build
+%pyproject_wheel
 
 %install
 export LANG=en_US.UTF-8
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -61,6 +61,7 @@ export LANG=en_US.UTF-8
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitelib}/*
+%{python_sitelib}/click_spinner
+%{python_sitelib}/click_spinner-%{version}.dist-info
 
 %changelog

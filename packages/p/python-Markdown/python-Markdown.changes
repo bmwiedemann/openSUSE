@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jan 11 21:37:02 UTC 2024 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 3.5.2:
+  * Fix type annotations for convertFile - it accepts only
+    bytes-based buffers. Also remove legacy checks from Python 2
+    (#1400)
+  * Remove legacy import needed only in Python 2 (#1403)
+  * Fix typo that left the attribute
+    AdmonitionProcessor.content_indent unset (#1404)
+  * Fix edge-case crash in InlineProcessor with AtomicString
+    (#1406).
+  * Fix edge-case crash in codehilite with an empty code tag
+    (#1405).
+  * Improve and expand type annotations in the code base (#1401).
+  * Fix handling of bogus comments (#1425).
+
+-------------------------------------------------------------------
 Wed Nov  1 20:56:04 UTC 2023 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 3.5.1:

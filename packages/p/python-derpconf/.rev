@@ -16,4 +16,13 @@
     <comment></comment>
     <requestid>1086210</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4e2883a2e245a0a53b9301af86ed1177</srcmd5>
+    <version>0.8.4</version>
+    <time>1705353467</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.8.4:
+  * Replaced travis com github actions and Python 3.12 support</comment>
+    <requestid>1138699</requestid>
+  </revision>
 </revisionlist>

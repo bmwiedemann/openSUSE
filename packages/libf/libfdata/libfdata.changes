@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jan 14 08:22:59 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20240114
+  * No user-relevant changes
+- Delete libfdata-20211023-1TB-fix.patch: this patch is bogus.
+  The return value is used exclusively for status, but
+  offsets/sizes are in the 3rd paramter instead.
+
+-------------------------------------------------------------------
 Sun Mar 19 11:03:03 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20230319

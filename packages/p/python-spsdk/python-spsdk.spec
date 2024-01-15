@@ -1,7 +1,7 @@
 #
 # spec file for package python-spsdk
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-spsdk
-Version:        1.11.0
+Version:        2.0.1
 Release:        0
 Summary:        Unified, reliable and easy to use SW library working across NXP MCU portfolio
 License:        BSD-3-Clause
 URL:            https://github.com/nxp-mcuxpresso/spsdk
 Source:         https://files.pythonhosted.org/packages/source/s/spsdk/spsdk-%{version}.tar.gz
-#
-# https://github.com/archlinux/svntogit-community/blob/19938f5cab9adf93da26c09ebeb8111ed1bdc59b/trunk/python-spsdk-1.6.0-remove_pypemicro.patch
-#
-Patch0:         python-spsdk-remove_pypemicro.patch
 BuildRequires:  %{python_module flit}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -73,9 +69,6 @@ Secure Provisioning SDK (SPSDK) is unified, reliable and easy to use SW library 
 
 %prep
 %setup -q -n spsdk-%{version}
-dos2unix spsdk/debuggers/__init__.py spsdk/debuggers/utils.py
-%patch0 -p1
-unix2dos spsdk/debuggers/__init__.py spsdk/debuggers/utils.py
 
 %build
 %pyproject_wheel
@@ -84,15 +77,13 @@ find . -type f -name README.md -exec dos2unix {} +
 %install
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/blhost
-%python_clone -a %{buildroot}%{_bindir}/elftosb
 %python_clone -a %{buildroot}%{_bindir}/ifr
-%python_clone -a %{buildroot}%{_bindir}/nxpcertgen
 %python_clone -a %{buildroot}%{_bindir}/nxpcrypto
 %python_clone -a %{buildroot}%{_bindir}/nxpdebugmbox
 %python_clone -a %{buildroot}%{_bindir}/nxpdevhsm
 %python_clone -a %{buildroot}%{_bindir}/nxpdevscan
+%python_clone -a %{buildroot}%{_bindir}/nxpele
 %python_clone -a %{buildroot}%{_bindir}/nxpimage
-%python_clone -a %{buildroot}%{_bindir}/nxpkeygen
 %python_clone -a %{buildroot}%{_bindir}/pfr
 %python_clone -a %{buildroot}%{_bindir}/sdphost
 %python_clone -a %{buildroot}%{_bindir}/sdpshost
@@ -110,10 +101,10 @@ find . -type f -name README.md -exec dos2unix {} +
 %python_expand rm -vf %{buildroot}%{$python_sitelib}/spsdk/data/cpu_data/*.c %{buildroot}%{$python_sitelib}/spsdk/data/cpu_data/*.bin
 
 %post
-%python_install_alternative blhost elftosb ifr nxpcertgen nxpcrypto nxpdebugmbox nxpdevhsm nxpdevscan nxpimage nxpkeygen pfr sdphost sdpshost shadowregs spsdk tpconfig tphost dk6prog
+%python_install_alternative blhost ifr nxpcrypto nxpdebugmbox nxpdevhsm nxpdevscan nxpele nxpimage pfr sdphost sdpshost shadowregs spsdk tpconfig tphost dk6prog
 
 %postun
-%python_uninstall_alternative blhost elftosb ifr nxpcertgen nxpcrypto nxpdebugmbox nxpdevhsm nxpdevscan nxpimage nxpkeygen pfr sdphost sdpshost shadowregs spsdk tpconfig tphost dk6prog
+%python_uninstall_alternative blhost ifr nxpcrypto nxpdebugmbox nxpdevhsm nxpdevscan nxpele nxpimage pfr sdphost sdpshost shadowregs spsdk tpconfig tphost dk6prog
 
 %files %{python_files}
 %doc README.md
@@ -121,15 +112,13 @@ find . -type f -name README.md -exec dos2unix {} +
 %{python_sitelib}/spsdk/
 %{python_sitelib}/spsdk-%{version}.dist-info/
 %python_alternative %{_bindir}/blhost
-%python_alternative %{_bindir}/elftosb
 %python_alternative %{_bindir}/ifr
-%python_alternative %{_bindir}/nxpcertgen
 %python_alternative %{_bindir}/nxpcrypto
 %python_alternative %{_bindir}/nxpdebugmbox
 %python_alternative %{_bindir}/nxpdevhsm
 %python_alternative %{_bindir}/nxpdevscan
+%python_alternative %{_bindir}/nxpele
 %python_alternative %{_bindir}/nxpimage
-%python_alternative %{_bindir}/nxpkeygen
 %python_alternative %{_bindir}/pfr
 %python_alternative %{_bindir}/sdphost
 %python_alternative %{_bindir}/sdpshost

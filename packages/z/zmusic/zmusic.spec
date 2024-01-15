@@ -1,7 +1,7 @@
 #
 # spec file for package zmusic
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           zmusic
-Version:        1.1.11
+Version:        1.1.12
 Release:        0
 Summary:        ZDoom component library for music handling
 License:        GPL-3.0-only
@@ -29,7 +29,6 @@ Source:         https://github.com/ZDoom/ZMusic/archive/%version.tar.gz
 Patch1:         system-fluidsynth.patch
 Patch2:         system-gme.patch
 Patch3:         dumb-dumb.patch
-Patch4:         0001-Add-missing-standard-library-includes-fix-build-with.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config

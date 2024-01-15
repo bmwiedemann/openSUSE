@@ -10,10 +10,10 @@ References: gh#HaxeFoundation/hashlink#521
  CMakeLists.txt | 51 ++++++++++++++++++++++++++++++--------------------
  1 file changed, 31 insertions(+), 20 deletions(-)
 
-Index: hashlink-1.13/CMakeLists.txt
+Index: hashlink-1.14/CMakeLists.txt
 ===================================================================
---- hashlink-1.13.orig/CMakeLists.txt
-+++ hashlink-1.13/CMakeLists.txt
+--- hashlink-1.14.orig/CMakeLists.txt
++++ hashlink-1.14/CMakeLists.txt
 @@ -34,6 +34,11 @@ else()
      set(CMAKE_C_STANDARD_REQUIRED ON)
  endif()
@@ -26,8 +26,8 @@ Index: hashlink-1.13/CMakeLists.txt
  # put output in "bin"
  
  set(OUTPUT_DIR ${CMAKE_CURRENT_BINARY_DIR}/bin)
-@@ -137,24 +142,28 @@ set_target_properties(libhl
-     COMPILE_DEFINITIONS "_USRDLL;LIBHL_EXPORTS"
+@@ -165,24 +170,28 @@ set_target_properties(libhl
+     COMPILE_DEFINITIONS "_USRDLL;LIBHL_EXPORTS;HAVE_CONFIG_H;PCRE2_CODE_UNIT_WIDTH=16"
  )
  
 -add_executable(hl
@@ -68,21 +68,48 @@ Index: hashlink-1.13/CMakeLists.txt
  else()
      target_link_libraries(libhl m dl pthread)
  endif()
-@@ -272,12 +281,8 @@ if(BUILD_TESTING)
-     #####################
-     # Tests
+@@ -194,12 +203,7 @@ if(BUILD_TESTING)
+         haxe
+     )
  
 -    set(JIT_TEST_ENABLED TRUE)
 -    if(CMAKE_SYSTEM_PROCESSOR MATCHES "arm|aarch64")
 -        set(JIT_TEST_ENABLED FALSE)
 -    endif()
- 
+-
 -    if(JIT_TEST_ENABLED)
 +    if(INTERPRETER_ENABLED)
+         #####################
+         # hello.hl
+ 
+@@ -235,7 +239,7 @@ if(BUILD_TESTING)
+         add_custom_target(uvsample.hl ALL
+             DEPENDS ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/test/uvsample.hl
+         )
+-    ENDIF(JIT_TEST_ENABLED)
++    ENDIF(INTERPRETER_ENABLED)
+ 
+     #####################
+     # hello.c
+@@ -307,7 +311,7 @@ if(BUILD_TESTING)
+     #####################
+     # Tests
+ 
+-    IF(JIT_TEST_ENABLED)
++    IF(INTERPRETER_ENABLED)
          add_test(NAME hello.hl
              COMMAND hl ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/test/hello.hl
          )
-@@ -330,10 +335,15 @@ set(HDLL_DESTINATION
+@@ -317,7 +321,7 @@ if(BUILD_TESTING)
+         add_test(NAME uvsample.hl
+             COMMAND hl ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/test/uvsample.hl 6001
+         )
+-    ENDIF(JIT_TEST_ENABLED)
++    ENDIF(INTERPRETER_ENABLED)
+     add_test(NAME hello
+         COMMAND hello
+     )
+@@ -360,10 +364,15 @@ set(HDLL_DESTINATION
      ${CMAKE_INSTALL_LIBDIR}
  )
  

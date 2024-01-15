@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sun Jan 14 10:07:12 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
+
+- Replace chromium-120-lp155-revert-clang-build-failure.patch
+  with chromium-120-make_unique-struct.patch - which avoids
+  reverting changes and instead provides a stub constructor to fix
+  build on Leap
+
+-------------------------------------------------------------------
+Sat Jan 13 08:29:26 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- ungoogled-chromium 120.0.6099.216 (boo#1217839, boo#1218048, boo#1218302,
+  boo#1218533, boo#1218719)
+  * CVE-2024-0333: Insufficient data validation in Extensions
+  * CVE-2024-0222: Use after free in ANGLE
+  * CVE-2024-0223: Heap buffer overflow in ANGLE
+  * CVE-2024-0224: Use after free in WebAudio
+  * CVE-2024-0225: Use after free in WebGPU
+  * CVE-2023-7024: Heap buffer overflow in WebRTC
+  * CVE-2023-6702: Type Confusion in V8
+  * CVE-2023-6703: Use after free in Blink
+  * CVE-2023-6704: Use after free in libavif (boo#1218303)
+  * CVE-2023-6705: Use after free in WebRTC
+  * CVE-2023-6706: Use after free in FedCM
+  * CVE-2023-6707: Use after free in CSS
+  * CVE-2023-6508: Use after free in Media Stream
+  * CVE-2023-6509: Use after free in Side Panel Search
+  * CVE-2023-6510: Use after free in Media Capture
+  * CVE-2023-6511: Inappropriate implementation in Autofill
+  * CVE-2023-6512: Inappropriate implementation in Web Browser UI
+- drop patches:
+  * chromium-system-libusb.patch
+  * chromium-119-nullptr_t-without-namespace-std.patch
+  * chromium-119-no_matching_constructor.patch
+  * chromium-117-workaround_clang_bug-structured_binding.patch
+- add patches: 
+  * chromium-120-nullptr_t-without-namespace-std.patch
+  * chromium-120-emplace.patch
+  * chromium-120-lp155-typename.patch
+  * chromium-120-no_matching_constructor.patch
+  * chromium-120-missing-header-files.patch
+  * chromium-120-emplace-struct.patch
+  * chromium-120-workaround_clang_bug-structured_binding.patch
+- add patches for Leap that revert braking changes:
+  * chromium-120-lp155-revert-clang-build-failure.patch
+
+-------------------------------------------------------------------
 Wed Nov 29 06:26:02 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 119.0.6045.199 (boo#1217616)

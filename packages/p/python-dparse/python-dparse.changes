@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 15 05:33:37 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to autosetup and pyproject macros.
+- Stop using greedy globs in %files.
+- Add patch fix-configparser-parsing.patch:
+  * Use non-deprecated/removed functions from ConfigParser.
+
+-------------------------------------------------------------------
 Sat Jul  1 20:47:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.6.3:

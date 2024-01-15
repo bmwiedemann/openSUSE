@@ -1,7 +1,7 @@
 #
 # spec file for package python-plumbum
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,22 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-plumbum
-Version:        1.7.2
+Version:        1.8.2
 Release:        0
 Summary:        Shell combinators library
 License:        MIT
 URL:            https://github.com/tomerfiliba/plumbum
 Source:         https://github.com/tomerfiliba/plumbum/archive/v%{version}.tar.gz#/plumbum-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module hatch_vcs}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module paramiko}
 BuildRequires:  %{python_module psutil}
+BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
@@ -55,11 +57,11 @@ sed -i '/addopts/d' setup.cfg
 
 %build
 export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
-%python_build
+%pyproject_wheel
 
 %install
 export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

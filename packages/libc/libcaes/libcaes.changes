@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jan 14 23:19:48 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20240114
+  * Replace PyExc_IOError by PyExc_ValueError when throwing
+    exceptions ins Python
+
+-------------------------------------------------------------------
 Wed Nov 22 18:58:35 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20231120

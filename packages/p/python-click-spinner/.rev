@@ -31,4 +31,16 @@
     <comment></comment>
     <requestid>1004982</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>b1ba06b359395a573cc4a818a9987a2b</srcmd5>
+    <version>0.1.10</version>
+    <time>1705353597</time>
+    <user>anag+factory</user>
+    <comment>- Switch to pyproject macros.
+- Stop using greedy globs in %files.
+- Add patch update-versioneer.patch:
+  * Update to a new versioneer that supports Python 3.12.
+- Actually drop BuildRequires on six.</comment>
+    <requestid>1138741</requestid>
+  </revision>
 </revisionlist>

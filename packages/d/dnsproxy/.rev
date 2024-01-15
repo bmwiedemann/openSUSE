@@ -199,4 +199,14 @@
   * Pull request 311: 6574 timeout log level (forwarded request 1136210 from jfkw)</comment>
     <requestid>1136211</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>bee369cb28a8c85f232ef525ba48763e</srcmd5>
+    <version>0.62.0</version>
+    <time>1705353685</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.62.0:
+  * Pull request 314: 6321 boot ttl vol.2
+  * Pull request 312: 6321 boot ttl vol.1 (forwarded request 1138879 from VaiTon)</comment>
+    <requestid>1138973</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Jan 13 20:53:04 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.2:
+  * Fix author metadata on PyPI package and add static check
+  * Add testing for Python 3.12 beta 1
+  * Use Ruff for linting
+  * Paths: Add type hinting for Path
+  * Accept path-like objects
+  * Move the build backend to hatchling and hatch-vcs. Users
+    should be unaffected. Third-party packaging may need to adapt
+    to the new build system.
+  * Drop Python 2.7 and 3.5 support, add 3.11 support
+  * Lots of extended checks and fixes for problems exposed.
+  * Color: support NO_COLOR/FORCE_COLOR
+  * Commands: New iter_lines buffer_size parameter
+  * Commands: cache remote commands
+  * SSH: Support reverse tunnels and dynamically allocated ports
+  * CLI: add Set(..., all_markers={"*", "all"}) and fix support
+    for other separators
+  * CLI: support future annotations
+  * Color: fix the ABC
+  * Exceptions: fix for exception pickling
+  * Fix for StdinDataRedirection and modifiers
+
+-------------------------------------------------------------------
 Wed Jan 19 22:56:55 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.7.2

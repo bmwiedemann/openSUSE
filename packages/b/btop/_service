@@ -1,5 +1,5 @@
 <services>
-  <service name="obs_scm" mode="disabled">
+  <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/aristocratos/btop</param>
     <param name="scm">git</param>
     <param name="versionformat">@PARENT_TAG@+git%cd.%h</param>
@@ -7,9 +7,9 @@
     <param name="revision">main</param>
     <param name="changesgenerate">enable</param>
   </service>
-  <service name="set_version" mode="disabled"/>
-  <service name="tar" mode="disabled"/>
-  <service name="recompress" mode="disabled">
+  <service name="set_version" mode="manual"/>
+  <service name="tar" mode="manual"/>
+  <service name="recompress" mode="manual">
     <param name="compression">gz</param>
     <param name="file">*.tar</param>
   </service>

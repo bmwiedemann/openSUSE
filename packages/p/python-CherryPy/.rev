@@ -305,4 +305,19 @@
     <comment></comment>
     <requestid>1137933</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>f9c4252ead59a47cac7b0129d81e8941</srcmd5>
+    <version>18.9.0</version>
+    <time>1705353089</time>
+    <user>anag+factory</user>
+    <comment>- update to 18.9.0:
+  * Various changes.
+- drop use-read_file-not-readfp.patch (upstream)
+
+- Fix URL in spec file: cherrypy.org -&gt; cherrypy.dev
+  * Simplify the passthrough of parameters to CPWebCase.getPage to cheroot.
+  highly time sensitive.
+- minor spec improvement</comment>
+    <requestid>1138690</requestid>
+  </revision>
 </revisionlist>

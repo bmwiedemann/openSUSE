@@ -1,7 +1,7 @@
 #
 # spec file for package speech-dispatcher
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,13 @@
 
 
 %if 0%{?suse_version} >= 1500
-%define espeak    espeak-ng
-%define espeakdev espeak-ng-devel
+%define espeak     espeak-ng
+%define espeakdev  espeak-ng-devel
+%define espeak_lib libespeak-ng1
 %else
-%define espeak    espeak
-%define espeakdev espeak-devel
+%define espeak     espeak
+%define espeakdev  espeak-devel
+%define espeak_lib espeak
 %endif
 %if 0%{?suse_version} > 1500
 %define _python python3
@@ -106,7 +108,7 @@ Summary:        ESpeak module for Speech Dispatcher
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Daemons
 Requires:       %{name} = %{version}
-Supplements:    packageand(%{name}:%{espeak})
+Supplements:    packageand(%{name}:%{espeak_lib})
 
 %description module-espeak
 The goal of Speech Dispatcher project is to provide a high-level device

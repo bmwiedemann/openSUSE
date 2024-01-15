@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan 14 17:58:53 UTC 2024 - cloud-devel@suse.de
+
+- update to version 5.1.0
+  - Update master for stable/yoga
+  - Update master for stable/zed
+  - Fix tox4 error and use python >=3.8
+
+-------------------------------------------------------------------
 Sat Jun 18 14:04:50 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add osc-lib dependency 

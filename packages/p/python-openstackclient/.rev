@@ -577,4 +577,41 @@ update to version 3.1.0
     <comment>- added 0001-Skip-original_name-from-flavor-info.patch</comment>
     <requestid>983692</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>c5c59784ad4cf39503543415b312df11</srcmd5>
+    <version>6.4.0</version>
+    <time>1705353483</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.4.0:
+  * tests: Handle missing extensions in network tests
+  * tests: Check for DHCP agents first in DHCP test
+  * Adds command \`\`image metadef object delete\`\`
+  * tests: Handle missing extensions in network tests
+  * tests: Fix API extension check
+  * tests: Centralise check for networking service
+  * Adds command \`\`image metadef object list\`\`
+  * Adds command \`\`image metadef object show\`\`
+  * Add pagination helpers
+  * Adds command \`\`image metadef object create\`\`
+  * Update the docker image to python3.11
+  * Update from storyboard to launchpad pt. 2
+  * volume: Support same\_host, different\_host hint as list
+  * Migrate resource filter commands to SDK
+  * Removed start, end time format. Before fix, openstack usage
+    list command resulted 'str' object has no attribute
+    'isoformat' error
+  * trivial: Make better use of argparse
+  * volume: Add alias for volume type AZs
+  * volume: Add aliases for common volume type props
+  * volume: Allow filtering volume types by properties
+  * Switch back to Launchpad
+  * Add support for default security group rule CRUDs
+  * Add &quot;image metadef property set&quot; command
+  * Add &quot;image metadef property delete&quot; command
+  * Add &quot;image metadef property create&quot; command
+  * Add &quot;image metadef property show&quot; command
+  * Add &quot;image metadef property list&quot; command
+  * Migrate volume backend commands to SDK</comment>
+    <requestid>1138709</requestid>
+  </revision>
 </revisionlist>

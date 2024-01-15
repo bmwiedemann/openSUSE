@@ -1,7 +1,7 @@
 #
 # spec file for package libdrm
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 
 Name:           libdrm
 # Please remember to adjust the version in the n_libdrm-drop-valgrind* patches
-Version:        2.4.119
+Version:        2.4.120
 Release:        0
 Summary:        Userspace Interface for Kernel DRM Services
 License:        MIT

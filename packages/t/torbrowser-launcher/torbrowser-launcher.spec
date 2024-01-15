@@ -1,7 +1,7 @@
 #
 # spec file for package torbrowser-launcher
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           torbrowser-launcher
-Version:        0.3.6
+Version:        0.3.7
 Release:        0
 Summary:        Tool for launching and easy-updates of Tor Browser
 License:        MIT
 Group:          Productivity/Networking/Web/Utilities
-URL:            https://github.com/micahflee/torbrowser-launcher
-Source0:        https://github.com/micahflee/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://gitlab.torproject.org/tpo/applications/torbrowser-launcher/
+Source0:        https://github.com/torproject/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  apparmor-abstractions
 BuildRequires:  gpg2
 BuildRequires:  hicolor-icon-theme
@@ -93,23 +93,12 @@ python3 setup.py install --skip-build --root %{buildroot}
 
 %find_lang %{name} %{?no_lang_C}
 
-%if 0%{?suse_version} < 1500
-%post
-%desktop_database_post
-
-%postun
-%desktop_database_postun
-%endif
-
 %files
 %license LICENSE
 %doc CHANGELOG.md README.md
 %{_bindir}/%{name}
 %{_datadir}/applications/*.desktop
-%if 0%{?suse_version} <= 1315
-%dir %{_datadir}/metainfo
-%endif
-%{_datadir}/metainfo/torbrowser.appdata.xml
+%{_datadir}/metainfo/*.metainfo.xml
 %{_datadir}/icons/hicolor/*/apps/torbrowser*.png
 %{_datadir}/%{name}/
 %{python3_sitelib}/torbrowser_launcher-%{version}-py%{py3_ver}.egg-info

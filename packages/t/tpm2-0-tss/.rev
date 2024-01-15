@@ -468,4 +468,12 @@ This is required for Kanidm as it requires openssl-3 and tpm2-0-tss. (forwarded 
     <comment></comment>
     <requestid>1129154</requestid>
   </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>85ca481cd309380c4669f75756841c61</srcmd5>
+    <version>4.0.1</version>
+    <time>1705353333</time>
+    <user>anag+factory</user>
+    <comment>- Fix tmpfiles %ghost file names (forwarded request 1138485 from gmbr3)</comment>
+    <requestid>1138772</requestid>
+  </revision>
 </revisionlist>

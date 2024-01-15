@@ -129,4 +129,14 @@
 - drop python-sphinxcontrib-websupport-no-six.patch (upstream)</comment>
     <requestid>1109522</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>3e1db6bdc8aaab43618ff874e72ff2bb</srcmd5>
+    <version>1.2.7</version>
+    <time>1705353073</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.2.7:
+  * Fix tests for sqlalchemy 2.
+  * Publish a ``whoosh`` extra.</comment>
+    <requestid>1138562</requestid>
+  </revision>
 </revisionlist>

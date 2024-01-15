@@ -1,7 +1,7 @@
 #
 # spec file for package dust
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 Name:           dust
-Version:        0.8.6
+Version:        0.9.0
 Release:        0
 Summary:        A more intuitive version of du
 License:        Apache-2.0
 URL:            https://github.com/bootandy/dust
 Source0:        %{name}-%{version}.tar
 Source1:        vendor.tar.zst
-Source2:        cargo_config
 BuildRequires:  cargo-packaging
 
 %description
@@ -61,8 +60,6 @@ ZSH completion script for %{name}.
 
 %prep
 %setup -qa1
-mkdir .cargo
-cp %{SOURCE2} .cargo/config
 
 %build
 %{cargo_build}
@@ -74,7 +71,7 @@ install -Dm0644 completions/dust.bash %{buildroot}/%{_datadir}/bash-completion/c
 install -Dm0644 completions/dust.fish %{buildroot}/%{_datadir}/fish/completions/%{name}.fish
 
 %check
-%{cargo_test}
+%{cargo_test} -- --skip test_apparent_size
 
 %files
 %{_bindir}/%{name}

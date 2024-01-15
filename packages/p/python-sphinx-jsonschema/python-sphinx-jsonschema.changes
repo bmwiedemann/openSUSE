@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jan 14 10:36:35 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.19.1:
+  * load a schema from a Python dict or object (or actually any
+    Python entity with a ``__str__`` method.).
+  * with JSON Pointer the ``:pass_unmodified:`` option is included.
+  * fixed a bug escaping backspaces.
+  * ``:hide_key:`` directive option.
+    This option allows you to hide certain keys, specified by a JSON
+    Path specification, to be excluded from rendering.
+  * added the ``:encoding:`` directive option.
+
+-------------------------------------------------------------------
 Mon Apr 19 09:24:26 UTC 2021 - Matthias Fehring <buschmann23@opensuse.org>
 
 - Update to 1.16.8:

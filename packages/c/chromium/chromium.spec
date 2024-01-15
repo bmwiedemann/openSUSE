@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package chromium
 #
 # Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2024 Callum Farmer <gmbr3@opensuse.org>
@@ -151,6 +151,9 @@ Patch252:       chromium-120-no_matching_constructor.patch
 Patch253:       chromium-120-missing-header-files.patch
 Patch254:       chromium-120-emplace-struct.patch
 Patch255:       chromium-120-workaround_clang_bug-structured_binding.patch
+Patch256:       chromium-120-make_unique-struct.patch
+BuildRequires:  (python3 >= 3.7 or python3-dataclasses)
+BuildRequires:  (python3-importlib-metadata if python3-base < 3.8)
 BuildRequires:  SDL-devel
 BuildRequires:  bison
 BuildRequires:  cups-devel
@@ -160,11 +163,9 @@ BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  git
 BuildRequires:  gn >= 0.1807
+BuildRequires:  golang(API)
 BuildRequires:  gperf
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  (python3 >= 3.7 or python3-dataclasses)
-BuildRequires:  (python3-importlib-metadata if python3-base < 3.8)
-BuildRequires:  golang(API)
 # Java used during build
 BuildRequires:  java-openjdk-headless
 BuildRequires:  libdc1394
@@ -288,9 +289,6 @@ Obsoletes:      chromium-ffmpegsumo < %{version}
 ExclusiveArch:  x86_64 aarch64 riscv64
 %if 0%{?sle_version} == 150400
 Patch300:       chromium-114-revert-av1enc-lp154.patch
-%endif
-%if 0%{?sle_version} <= 150600
-Patch301:       chromium-120-lp155-revert-clang-build-failure.patch
 %endif
 %if 0%{?suse_version} <= 1500
 BuildRequires:  pkgconfig(glproto)

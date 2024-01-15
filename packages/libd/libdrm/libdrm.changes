@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Jan 13 10:33:20 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to 2.4.120
+  * radeon: fix missing stencil_tile_mode initialisation in the
+    linear/fallback case
+  * amdgpu: fix use-after-free
+  * Sync headers with drm-next
+- adjusted 
+  * n_libdrm-drop-valgrind-dep-generic.patch
+  * n_libdrm-drop-valgrind-dep-intel.patch
+
+-------------------------------------------------------------------
+Sat Jan  6 21:10:13 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- adjusted n_libdrm-drop-valgrind-dep-generic.patch,
+  n_libdrm-drop-valgrind-dep-intel.patch to fix build
+
+-------------------------------------------------------------------
 Thu Dec 28 11:20:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4.119:

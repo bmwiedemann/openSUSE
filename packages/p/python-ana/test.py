@@ -109,7 +109,7 @@ class TestAna(unittest.TestCase):
         gc.collect()
         ana.dl = ana.DirDataLayer(pickle_dir="/tmp/test_ana")
         two = A.ana_load(uuid)
-        self.assertEquals(uuid, two.ana_uuid)
+        self.assertEqual(uuid, two.ana_uuid)
 
         # reset the datalayer to make sure we handle it properly
         ana.set_dl(ana.DictDataLayer())

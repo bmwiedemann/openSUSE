@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jan 15 13:03:50 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Use %sle15_python_module_pythons
+
+-------------------------------------------------------------------
+Sun Jan  7 19:17:40 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.17:
+  * add missing enum entries
+
+-------------------------------------------------------------------
+Fri Jan  5 17:49:03 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.16:
+  * version only update
+
+-------------------------------------------------------------------
 Thu Dec 14 21:08:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.1.15:

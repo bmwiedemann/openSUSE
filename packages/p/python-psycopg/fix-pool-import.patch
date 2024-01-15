@@ -1,0 +1,13 @@
+Index: psycopg-3.1.17/tests/pool/test_sched_async.py
+===================================================================
+--- psycopg-3.1.17.orig/tests/pool/test_sched_async.py
++++ psycopg-3.1.17/tests/pool/test_sched_async.py
+@@ -8,7 +8,7 @@ import pytest
+ from psycopg._compat import create_task
+ 
+ try:
+-    from psycopg_pool.sched import AsyncScheduler
++    from psycopg_pool.sched_async import AsyncScheduler
+ except ImportError:
+     # Tests should have been skipped if the package is not available
+     pass

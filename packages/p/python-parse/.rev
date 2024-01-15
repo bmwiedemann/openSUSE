@@ -72,4 +72,23 @@
     <comment></comment>
     <requestid>914698</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0da51c04e4939b04fbb2635834e26534</srcmd5>
+    <version>1.20.0</version>
+    <time>1705353353</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.20.0:
+  * Optimize _expand_named_fields
+  * Add functionality to parse datetimes according C standard
+    format codes.
+- update to 1.19.1:
+  * Add support for sign specifiers in number formats.
+  * Fix handling of unused alignment
+  * modern packaging
+  * universal wheel
+
+  * Add test for stateful int_convert
+  * Handle comparison of FixedTzOffset with other types of object</comment>
+    <requestid>1138499</requestid>
+  </revision>
 </revisionlist>

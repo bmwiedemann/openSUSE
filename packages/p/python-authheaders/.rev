@@ -78,4 +78,32 @@
     <comment></comment>
     <requestid>1137568</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d78352269bc60b8c579f1ec5c536f8b8</srcmd5>
+    <version>0.16.0</version>
+    <time>1705353455</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.16.0
+  * Switch from pkg_resources resource_filename to
+    importlib_resources
+  * Add initial doctests for dmarc_lookup.py
+  * Correctly strip trailing backslash in parsed DMARC record
+    components
+  * Handle DMARC records containing empty quoted values (#26)
+  * Add dmarc_lookup.DMARCException and raise it for missing
+    tag/values (#27)
+  * Catch DMARCException error and return DMARC permerror
+    result (#27)
+  * Set DMARC result to permerror if From domain cannot be
+    extracted (#25)
+  * Use dns.resolver.resolve instead of dns.resolver.query
+    due to deprecation
+  * Update PSL from upstream
+  * Add new option for authenticate_message, dmarcbis to
+    enable DMARC policy
+  * discovery and alignment per draft-ietf-dmarc-dmarcbis
+    (default is False)
+- Removed authheaders-importlib-resources.patch</comment>
+    <requestid>1138689</requestid>
+  </revision>
 </revisionlist>

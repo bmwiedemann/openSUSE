@@ -210,4 +210,21 @@
 - Add missing Requires on keyring.</comment>
     <requestid>1131706</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>5f30d1713c2fdb4745b54cc04e3d1a2a</srcmd5>
+    <version>3.6.0</version>
+    <time>1705353344</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.6.0:
+  * Replace imghdr with Pillow's PIL
+  * Use user_id when adding watcher
+  * Fix docs building
+  * gha: use pip caching from setup-python
+  * #1435 - recommend installing jira[cli] to get jirashell deps
+  * support pagination in createmeta methods
+  * Issue Field and Issue Type object based methods
+  * fix: small fix for dev docker
+  * Added warning log if issue link type not present</comment>
+    <requestid>1138492</requestid>
+  </revision>
 </revisionlist>

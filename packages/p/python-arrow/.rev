@@ -321,4 +321,12 @@
  * [INTERNAL Migrate from setup.py/Twine to pyproject.toml/Flit for packaging and distribution. (forwarded request 1126469 from mimi_vx)</comment>
     <requestid>1126470</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>3f9e556e041482bb667866c4dbf7142e</srcmd5>
+    <version>1.3.0</version>
+    <time>1705353081</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1138588</requestid>
+  </revision>
 </revisionlist>

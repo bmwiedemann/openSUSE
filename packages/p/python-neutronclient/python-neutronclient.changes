@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sun Jan 14 18:00:26 UTC 2024 - cloud-devel@suse.de
+
+- update to version 11.1.0
+  - OSC: Remove VPNAAS V2 calls to neutronclient
+  - OSC: Remove SFC V2 calls to neutronclient
+  - Tox4: add allowlist_externals where necessary
+  - Update master for stable/2023.2
+  - Update master for stable/yoga
+  - Add support to floating ip port forwarding
+  - OSC: Remove BGP calls to neutronclient
+  - Switch to 2023.1 Python3 unit tests and generic template name
+  - Skip B105 pep8 error: hardcoded passwords
+  - Remove 'bgp speaker show dragents'
+  - Remove the CLI code from the Neutron client.
+  - Drop lower-constraints.txt and its testing
+  - OSC: Remove BGPVPN calls to neutronclient
+  - Update master for stable/zed
+  - Update master for stable/2023.1
+  - Fix help sentence in network log create --enable
+  - BGPVPN: make resource_association method calls logic simpler
+  - OSC: Remove FWAAS V2 calls to neutronclient
+  - Update python testing as per zed cycle teting runtime
+  - Imported Translations from Zanata
+  - Remove CLI warning message
+  - Drop unused simplejson
+  - Add warning and reno for SDK
+  - Move network trunk commands from python-neutronclient
+
+-------------------------------------------------------------------
 Tue May 24 20:55:51 UTC 2022 - cloud-devel@suse.de
 
 - update to version 7.8.0

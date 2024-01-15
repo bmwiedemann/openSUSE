@@ -100,4 +100,41 @@
     <comment>- Add %{?sle15_python_module_pythons}</comment>
     <requestid>1092260</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e2963c06d29c6227e6d1ee6c676ebabc</srcmd5>
+    <version>6.7.1</version>
+    <time>1705353453</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.7.1:
+  * Support for subtracting delta objects when
+    iterable_compare_func is used.
+  * Better handling of force adding a delta to an object.
+  * Fix for `Can't compare dicts with both single and double
+    quotes in keys`
+  * Updated docs for Inconsistent Behavior with math_epsilon and
+    ignore_order = True
+  * Delta can be subtracted from other objects now.
+  * verify_symmetry is deprecated. Use bidirectional instead.
+  * always_include_values flag in Delta can be enabled to include
+    values in the delta for every change.
+  * Fix for Delta.__add__ breaks with esoteric dict keys.
+  * You can load a delta from the list of flat dictionaries.
+- update to 6.6.0:
+  * [x] Numpy 2.0 support
+  * [x] Adding Delta.to_flat_dicts
+- update to 6.4.1:
+  * Bugfix: Numpy should be optional
+- update to 6.4.0:
+  * Add Ignore List Order Option to DeepHash by
+  * pyyaml to 6.0.1 to fix cython build problems by Robert Bo
+    Davis
+  * Precompiled regex simple diff by cohml
+  * New flag: `zip_ordered_iterables` for forcing iterable items
+    to be compared one by one.
+- update to 6.3.1:
+  * Bugfix deephash for paths by maggelus
+  * Bugfix deephash compiled regex maggelus
+  * Fix tests dependent on toml by martin-kokos</comment>
+    <requestid>1138688</requestid>
+  </revision>
 </revisionlist>

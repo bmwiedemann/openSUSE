@@ -68,4 +68,15 @@
 </comment>
     <requestid>1107997</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c407635f586cf1eac7ea64b6bbb15133</srcmd5>
+    <version>2.0.5</version>
+    <time>1705353067</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.0.5:
+  * Remove Sphinx as a required dependency, as circular
+    dependencies may cause failure with package managers that
+    expect a directed acyclic graph (DAG) of dependencies.</comment>
+    <requestid>1138559</requestid>
+  </revision>
 </revisionlist>

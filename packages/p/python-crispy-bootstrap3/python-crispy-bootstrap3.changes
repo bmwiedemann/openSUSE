@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jan 14 17:47:59 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2024.1:
+  * Updated supported versions:
+    + Django 3.2, 4.2 and 5.0.
+    + Python 3.8+.
+  * Fixed form-control class issue with checkboxes.
+
+-------------------------------------------------------------------
 Tue Jul 18 08:43:07 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Initial packaging (v2022.1), needed by django-crispy-forms v2

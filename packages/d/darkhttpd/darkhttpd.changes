@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 15 11:25:11 UTC 2024 - Dominik Heidler <dheidler@suse.de>
+
+- Listen on IPv6 by default as well as IPv4
+
+-------------------------------------------------------------------
 Tue Dec 26 22:14:03 UTC 2023 - Dominik Heidler <dheidler@suse.de>
 
 - Version 1.14:

@@ -1140,4 +1140,23 @@
     <comment>- require setuptools</comment>
     <requestid>1136305</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>fd158dd8bb79f6484856eda51fc6c4eb</srcmd5>
+    <version>3.0.8</version>
+    <time>1705353085</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.0.8:
+  * Using const together with defined fused types could fail to
+    compile. (Github issue :issue:`5230`)
+  * A &quot;use after free&quot; bug was fixed in parallel sections.
+    (Github issue :issue:`5922`)
+  * Several types were not available as cython.* types in pure
+    Python code.
+  * The generated code is now correct C89 again, removing some
+    C++ style // comments and C99-style declaration-after-code
+    code ordering.  This is still relevant for some ols C
+    compilers, specifically ones that match old Python 2.7
+    installations.</comment>
+    <requestid>1138672</requestid>
+  </revision>
 </revisionlist>

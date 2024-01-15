@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 12 06:05:06 UTC 2024 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Update version to 0.3.0
+  + Port to blp file from ui.
+  + Support zst file.
+  + Use NavigationSplitView to replace Leaflet.
+  + Port to async_channel.
+
+-------------------------------------------------------------------
 Mon May 29 03:04:00 UTC 2023 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Update version to 0.2.0

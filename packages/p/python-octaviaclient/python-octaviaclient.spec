@@ -1,7 +1,7 @@
 #
 # spec file for package python-octaviaclient
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           python-octaviaclient
-Version:        2.5.0
+Version:        3.6.0
 Release:        0
 Summary:        Octavia Plugin for the OpenStack Command-line Client
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/python-octaviaclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-octaviaclient/python-octaviaclient-2.5.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-octaviaclient/python-octaviaclient-3.6.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-openstackclient >= 3.12.0
 BuildRequires:  python3-oslotest
@@ -69,13 +69,13 @@ the OpenStack Load Balancing service.
 This package contains auto-generated documentation.
 
 %prep
-%autosetup -p1 -n python-octaviaclient-2.5.0
+%autosetup -p1 -n python-octaviaclient-3.6.0
 %py_req_cleanup
 
 %build
 %{py3_build}
 
-PBR_VERSION=2.5.0 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=3.6.0 %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
@@ -85,7 +85,7 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 %check
 # we don't want hacking
 rm -f octaviaclient/tests/unit/test_hacking.py
-python3 -m stestr.cli run
+%{openstack_stestr_run}
 
 %files -n python3-octaviaclient
 %doc README.rst

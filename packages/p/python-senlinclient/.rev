@@ -237,4 +237,21 @@
   - Update TOX_CONSTRAINTS_FILE</comment>
     <requestid>979086</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>cab2c3ffca138829d7ac2fd7dd43c8cb</srcmd5>
+    <version>3.1.0</version>
+    <time>1705353485</time>
+    <user>anag+factory</user>
+    <comment>- update to version 3.1.0
+  - Imported Translations from Zanata
+  - Switch to 2023.1 Python3 unit tests and generic template name
+  - Update master for stable/yoga
+  - Update master for stable/2023.1
+  - Update master for stable/zed
+  - Add Python3 zed unit tests
+  - Fix tox.ini with tox4
+  - Drop lower-constraints.txt and its testing
+  - The Python 3.6 and Python 3.7 Support has been dropped since zed</comment>
+    <requestid>1138710</requestid>
+  </revision>
 </revisionlist>

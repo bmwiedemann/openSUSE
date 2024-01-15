@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Jan 15 10:10:38 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.5.2:
+  * feat: add some simpler cuda_kernels
+    (gh#scikit-hep/awkward#2880).
+  * feat: add recursive flag to Content.to_packed
+    (gh#scikit-hep/awkward#2933).
+  * feat: configure Julia version and required packages
+    (gh#scikit-hep/awkward#2896).
+  * fix: include header-only files in sdist
+    (gh#scikit-hep/awkward#2909).
+  * fix: touching of unions (gh#scikit-hep/awkward#2906).
+  * fix: lazily project union contents
+    (gh#scikit-hep/awkward#2913).
+  * fix: support typetracer in to_packed for IndexedOptionArray
+    (gh#scikit-hep/awkward#2912).
+  * fix: cartesian nested record (gh#scikit-hep/awkward#2929).
+  * fix: cast bool_ to int8 for positional reducers
+    (gh#scikit-hep/awkward#2935).
+  * fix: ak.std and ak.var for axis != -1.
+    (gh#scikit-hep/awkward#2918).
+- Bump required version of awkward-cpp to 28.
+
+-------------------------------------------------------------------
 Fri Dec 15 16:14:10 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.5.1:

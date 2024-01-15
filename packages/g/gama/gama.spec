@@ -2,6 +2,7 @@
 # spec file for package gama
 #
 # Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +18,7 @@
 
 
 Name:           gama
-Version:        2.27
+Version:        2.28
 Release:        0
 Summary:        Adjustment of geodetic networks
 License:        GPL-3.0-or-later
@@ -52,7 +53,7 @@ global coordinate systems is supported only partly as a gama-g3
 program.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure
@@ -60,6 +61,9 @@ program.
 
 %install
 %make_install
+
+%check
+%make_build tests
 
 %files
 %license COPYING

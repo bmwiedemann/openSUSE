@@ -153,4 +153,41 @@
     <comment></comment>
     <requestid>1035279</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b398d55da48433718bcf37993a9dda14</srcmd5>
+    <version>24.1.0</version>
+    <time>1705353445</time>
+    <user>anag+factory</user>
+    <comment>- update to 24.1.0:
+  * The lazy logger proxy returned by `structlog.get_logger()`
+    now returns its initial values when asked for context.
+  * When asked for context before binding for the first time, it
+    returned an empty dictionary in 23.3.0.
+  * The displayed level name when using
+    `structlog.stdlib.BoundLogger.exception()` is `&quot;error&quot;`
+    instead of `&quot;exception&quot;`.
+  * Don't ignore the `width` argument of
+    `RichTracebackFormatter`.
+  * Implementing the output on top of the new columns API has
+    changed the default very slightly, but shouldn't be
+    noticeable.
+  * Async log methods (those starting with an `a`) now also
+    support the collection of callsite information using
+    `structlog.processors.CallsiteParameterAdder`.
+  * `structlog.stdlib.recreate_defaults()` now also adds
+    `structlog.stdlib.add_logger_name` to the processors.
+  * The return value from `get_logger()` (a
+    `BoundLoggerLazyProxy`) now passes `isinstance`-checks
+    against `structlog.typing.BindableLogger` on Python 3.12.
+  * `structlog.threadlocal.tmp_bind()` now also works with
+    `BoundLoggerLazyProxy` (in other words: before anything is
+    bound to a bound logger).
+  * stdlib: `ProcessorFormatter` can now be told to not render
+    the log record message using `getMessage` and just
+    `str(record.msg)` instead.
+  * stdlib: `structlog.stdlib.BoundLogger.exception()`'s handling
+    of`LogRecord.exc_info` is now set consistent with `logging`.
+  * Official support for Python 3.12.</comment>
+    <requestid>1138584</requestid>
+  </revision>
 </revisionlist>

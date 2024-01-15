@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan 15 05:21:29 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.2.1:
+  * feat: supply a pre-calculated base form to avoid file opening
+    [gh#scikit-hep/uproot#1077].
+  * test: xrootd server fixture [gh#scikit-hep/uproot#1076].
+  * test: fsspec cache [gh#scikit-hep/uproot#1075].
+- pytest: Use -k to skip over network based tests as "-m network"
+  was no longer working.
+- New BuildRequires: python-RangeHTTPServer.
+
+-------------------------------------------------------------------
 Fri Oct 13 00:34:49 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.0.13:

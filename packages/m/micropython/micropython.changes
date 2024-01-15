@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 15 14:54:02 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- Build with %optflags
+
+-------------------------------------------------------------------
 Mon Jan  8 02:06:11 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.22.0:

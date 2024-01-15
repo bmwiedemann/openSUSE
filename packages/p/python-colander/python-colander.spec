@@ -1,7 +1,7 @@
 #
 # spec file for package python-colander
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2013-2019 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,15 +19,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-colander
-Version:        1.7.0
+Version:        2.0
 Release:        0
 Summary:        A schema-based serialization and deserialization library
 License:        BSD-4-Clause AND ZPL-2.1 AND MIT
 URL:            https://github.com/Pylons/colander
 Source:         https://files.pythonhosted.org/packages/source/c/colander/colander-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix-tests.patch gh#Pylons/colander#210 mcepl@suse.com
-# Fix tests to work with pytest (and nose2) as well
-Patch0:         fix-tests.patch
+BuildRequires:  %{python_module Babel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module translationstring}
 BuildRequires:  fdupes
@@ -59,8 +57,7 @@ An extensible package which can be used to:
   of strings, mappings, and lists.
 
 %prep
-%setup -q -n colander-%{version}
-%autopatch -p1
+%autosetup -p1 -n colander-%{version}
 
 %build
 %python_build

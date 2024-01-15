@@ -630,4 +630,18 @@
   * Add support for async Authorizers #1374 #1373 (@Zsailer)</comment>
     <requestid>1134929</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>e5fbad8ede4eebd0e1d4c93e4ceceefc</srcmd5>
+    <version>2.12.4</version>
+    <time>1705353580</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.12.4
+  * Fix log arguments for gateway client error #1385 (@minrk)
+- Release 2.12.3
+  * Import User unconditionally #1384 (@yuvipanda)
+- Release 2.12.2
+  * Fix a typo in error message #1381 (@krassowski)
+  * Force legacy ws subprotocol when using gateway #1311 (@epignot)</comment>
+    <requestid>1138728</requestid>
+  </revision>
 </revisionlist>

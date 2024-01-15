@@ -353,4 +353,14 @@ Now as requested only for Leap (forwarded request 1096175 from ecsos)</comment>
   * Fix pausing without index. (forwarded request 1103935 from mgorse)</comment>
     <requestid>1103936</requestid>
   </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>ddef57fc36463a5afb13449146081e20</srcmd5>
+    <version>0.11.5</version>
+    <time>1705353099</time>
+    <user>anag+factory</user>
+    <comment>- Have speech-dispatcher-module espeak supplement libespeak-ng1,
+  rather than espeak-ng. The latter provides a binary which is not
+  used or needed and that might not be installed. (forwarded request 1138694 from mgorse)</comment>
+    <requestid>1138695</requestid>
+  </revision>
 </revisionlist>

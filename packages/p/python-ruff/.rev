@@ -422,4 +422,17 @@
    * Respect multi-segment submodule imports when resolving qualified names</comment>
     <requestid>1138312</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>7ab5be737ff864f265fbb16fbd833c37</srcmd5>
+    <version>0.1.13</version>
+    <time>1705353658</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.1.13
+ * Bug fixes
+   * Include base pyproject when initializing cache settings 
+   * [flake8-simplify] Account for possibly-empty f-string values in truthiness logic 
+   * [pylint] Add the missing period in unnecessary-dunder-call 
+   * [pylint] Fix __aenter__ message in unnecessary-dunder-call</comment>
+    <requestid>1138846</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan 13 22:52:05 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Run the test suite with itself like it is meant to be
+  * fixes Python 3.12 test failures
+- Setuptools is a runtime requirement (for egg testing support)
+
+-------------------------------------------------------------------
 Tue Jan  2 21:42:52 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.2.1:

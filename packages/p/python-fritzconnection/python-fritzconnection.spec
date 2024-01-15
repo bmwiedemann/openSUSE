@@ -1,7 +1,7 @@
 #
 # spec file for package python-fritzconnection
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 %global pythons python3
 Name:           python-fritzconnection
-Version:        1.10.3
+Version:        1.13.2
 Release:        0
 Summary:        A Python module to talk to a AVM fritzbox
 License:        MIT
@@ -68,7 +66,7 @@ rm fritzconnection/tests/test_functional.py
 
 %files %{python_files}
 %license LICENSE.txt
-%doc README.rst
+%doc README.md
 %{_bindir}/fritzcall
 %{_bindir}/fritzconnection
 %{_bindir}/fritzhomeauto

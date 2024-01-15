@@ -138,4 +138,35 @@
   - Add support for PROMETHEUS listeners.</comment>
     <requestid>979067</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>10abc2a8997f1dba83b60433afe565b2</srcmd5>
+    <version>3.6.0</version>
+    <time>1705353483</time>
+    <user>anag+factory</user>
+    <comment>- update to version 3.6.0
+  - Bump tox minversion to 3.18.0
+  - Fix inconsistency in validation error message for HSTS
+  - Update master for stable/zed
+  - Fix validation of HSTS attributes
+  - Fixing jobs with tox4
+  - Add support for HTTP Strict Transport Security
+  - Add munch explicitly to requirements
+  - Add extra validation for HSTS related arguments
+  - Fix new pylint warnings
+  - Allow creating/showing LBs with Additional VIPs
+  - Remove DELETED from the provisioning status list
+  - Drop lower-constraints.txt and its testing
+  - Update python testing as per zed cycle testing runtime
+  - Remove munch dependency
+  - Update master for stable/2023.1
+  - Set default value for HSTS options to None
+  - Update master for stable/yoga
+  - Add missing flavor set --description option
+  - Switch to 2023.1 Python3 unit tests and generic template name
+  - Clarify the client code is not python bindings
+  - Fix inconsistent parameter name in azp
+  - Fix pool protocols
+  - Add *.orig to .gitignore</comment>
+    <requestid>1138708</requestid>
+  </revision>
 </revisionlist>

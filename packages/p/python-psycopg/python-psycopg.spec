@@ -1,7 +1,7 @@
 #
 # spec file for package python-psycopg
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,17 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-psycopg
 # This needs to upgraded in lockstep with python-psycopg-c
-Version:        3.1.13
+Version:        3.1.17
 Release:        0
 Summary:        PostgreSQL database adapter for Python
 License:        LGPL-3.0-only
 URL:            https://psycopg.org/psycopg3/
 Source:         https://github.com/psycopg/psycopg/archive/refs/tags/%{version}.tar.gz#/psycopg-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM One small part of gh#psycopg/psycopg#c3d303d8b3b642ad45b053096e3f8e4111012600.patch
+Patch0:         fix-pool-import.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 49.2.0}
 BuildRequires:  %{python_module wheel >= 0.37}

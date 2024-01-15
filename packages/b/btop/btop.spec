@@ -1,7 +1,7 @@
 #
 # spec file for package btop
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,25 @@
 
 
 Name:           btop
-Version:        1.2.13+git20230615.7e50b03
+Version:        1.3.0+git20240107.36842a3
 Release:        0
 Summary:        Usage and stats for processor, memory, disks, network and processes
 License:        Apache-2.0
 Group:          System/Monitoring
 URL:            https://github.com/aristocratos/btop
 Source:         %{name}-%{version}.tar.gz
+Patch0:         Makefile.diff
 BuildRequires:  coreutils
 %if 0%{?suse_version} < 1550
-%define cxxopt CXX=g++-10
-BuildRequires:  gcc10-c++
+BuildRequires:  gcc13-c++
+%define cxxflags CXXFLAGS="%{optflags} -fPIE"
+%define cxxopt CXX="g++-13"
+%define lddopt LDCXXFLAGS="-ldl -lpthread -pie"
 %else
-%define cxxopt %{nil}
 BuildRequires:  gcc-c++ >= 11
+%define cxxflags %{nil}
+%define cxxopt %{nil}
+%define lddopt %{nil}
 %endif
 BuildRequires:  sed
 
@@ -39,14 +44,16 @@ Resource monitor that shows usage and stats for processor, memory, disks, networ
 
 %prep
 %setup -q
+%patch0
 
 %build
-%make_build %{cxxopt}
+%make_build %{cxxflags} %{cxxopt} %{lddopt}
 
 %install
-%make_install PREFIX=/usr
+%make_install %{cxxopt} %{lddopt} PREFIX=%{_prefix}
 
 %files
+%doc CHANGELOG.md README.md
 %{_bindir}/btop
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/themes
@@ -55,12 +62,10 @@ Resource monitor that shows usage and stats for processor, memory, disks, networ
 %dir %{_datadir}/icons/hicolor/48x48/apps
 %dir %{_datadir}/icons/hicolor/scalable
 %dir %{_datadir}/icons/hicolor/scalable/apps
-%{_datadir}/%{name}/README.md
 %{_datadir}/%{name}/themes/*.theme
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/48x48/apps/%{name}.png
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 %license LICENSE
-%doc CHANGELOG.md
 
 %changelog

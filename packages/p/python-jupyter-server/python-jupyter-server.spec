@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@
 %endif
 
 Name:           python-jupyter-server%{psuffix}
-Version:        2.12.1
+Version:        2.12.4
 Release:        0
 Summary:        The backend to Jupyter web applications
 License:        BSD-3-Clause
@@ -70,9 +70,7 @@ Requires:       ((python-jupyter-core >= 4.12 with python-jupyter-core < 5.0) or
 Provides:       python-jupyter_server = %{version}-%{release}
 Obsoletes:      python-jupyter_server < %{version}-%{release}
 %if %{with test}
-BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module jupyter-server-test = %{version}}
-BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest-xdist}
 %endif
 %if %{with libalternatives}
@@ -98,6 +96,7 @@ languages, sharing, and interactive widgets.
 %package test
 Summary:        The backend to Jupyter web applications - test requirements
 Group:          Development/Languages/Python
+Requires:       python-flaky
 Requires:       python-ipykernel
 Requires:       python-jupyter-server = %{version}
 Requires:       python-pytest >= 7

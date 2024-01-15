@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jan 13 11:21:44 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.114.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.114.0
+- Changes since 5.113.0:
+  * kpropertiesdialog: don't trip over malformed Exec (kde#465290)
+  * WidgetsAskUserActionHandler: fix backport (kde#448532)
+  * WidgetsAskUserActionHandler: Use QPointer to check the validity of parent widgets (kde#448532)
+
+-------------------------------------------------------------------
 Tue Dec  5 11:17:46 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.113.0

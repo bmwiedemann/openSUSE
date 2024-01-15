@@ -1,7 +1,7 @@
 #
 # spec file for package libuv
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,8 @@ Source1:        https://dist.libuv.org/dist/v%{version}/libuv-v%{version}.tar.gz
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
 Patch1:         fix_tests.patch
+# PATCH-FIX-UPSTREAM: gh#libuv/libuv#4285
+Patch2:         ppc64-disable-liburing.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -60,8 +62,7 @@ primarily developed for use by Node.js, but it is also used by
 Mozilla's Rust language, Luvit, Julia, pyuv, and others.
 
 %prep
-%setup -q -n %{name}-v%{version}
-%autopatch -p1
+%autosetup -p1 -n %{name}-v%{version}
 
 %build
 ./autogen.sh

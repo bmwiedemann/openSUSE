@@ -1,7 +1,7 @@
 #
 # spec file for package qdirstat
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,11 @@
 
 
 Name:           qdirstat
-Version:        1.8.1
+Version:        1.9
 Release:        0
 Summary:        Directory Statistics
 License:        GPL-2.0-only
-Url:            https://github.com/shundhammer/qdirstat
+URL:            https://github.com/shundhammer/qdirstat
 Source0:        %{name}-%{version}.tar.bz2
 BuildRequires:  libQt5Core-devel
 BuildRequires:  libQt5Widgets-devel
@@ -30,13 +30,21 @@ BuildRequires:  zlib-devel
 
 %description
 
-QDirStat is a graphical application to show where your disk space
-has gone and to help you to clean it up.
+QDirStat is a graphical application to show where your disk space has
+gone and to help you to clean it up.
 
-This is a Qt-only port of the old Qt3/KDE3-based KDirStat, now
-based on the latest Qt 5. It does not need any KDE libs or
-infrastructure. It runs on every X11-based desktop on Linux, BSD
-and other Unix-like systems.
+It shows the total size of directories and of their files both in a
+traditional tree view and in a colored [treemap
+graphics](doc/Treemap.md) where a large file is shown as a large
+rectangle, and small files are shown as small rectangles. Click on it,
+and you will see where in the tree the file is, and you can instantly
+move it to the trash if you like. The color corresponds to the file
+type: Images, videos or whatever.
+
+This is a Qt-only port of the old Qt3/KDE3-based KDirStat, now based
+on the latest Qt 5. It does not need any KDE libs or
+infrastructure. It runs on every X11-based desktop on Linux, BSD and
+other Unix-like systems, and in a Docker container.
 
 QDirStat has a number of new features compared to KDirStat.
 To name a few:

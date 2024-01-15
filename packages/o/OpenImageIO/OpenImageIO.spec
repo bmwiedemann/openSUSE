@@ -1,7 +1,7 @@
 #
 # spec file for package OpenImageIO
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -119,6 +119,10 @@ products.
 %package devel
 Summary:        Development Files for OpenImageIO
 Group:          Development/Libraries/C and C++
+# Make the cmake finder happy
+Requires:       OpenImageIO = %{version}
+Requires:       pkgconfig(Imath)
+# /Make the cmake finder happy
 Requires:       fmt-devel
 Requires:       libOpenImageIO%{so_ver} = %{version}
 Requires:       libOpenImageIO_Util%{so_ver} = %{version}

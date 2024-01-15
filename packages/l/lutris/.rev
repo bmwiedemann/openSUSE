@@ -463,4 +463,12 @@
   * Add missing dependency on python3-gi-cairo for Debian packages</comment>
     <requestid>1119150</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>a74311fb73df6fe7d2bd3f2a9a72852a</srcmd5>
+    <version>0.5.15</version>
+    <time>1705353364</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1138545</requestid>
+  </revision>
 </revisionlist>

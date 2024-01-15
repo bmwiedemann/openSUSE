@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan 14 10:55:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.25.0:
+  * Support the WebSocket Denial Response ASGI extension (#1916)
+  * Allow explicit hidden file paths on `--reload-include`
+  * Properly annotate `uvicorn.run()`
+
+-------------------------------------------------------------------
 Sun Nov 26 10:43:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.24.0.post1:

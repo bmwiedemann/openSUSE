@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan 15 09:57:24 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.25
+  * Change how left-handed settings are handled for tablets: If
+    libwacom does not contain a definition for a tablet yet,
+    libinput defaults to enabling a left-handed setting.
+  * Quirks for laptops from Dell, Google, Graviton, HP, HUAWEI,
+    Lenovo and Razer, gadgets like the RollerMouse Pro3 and virtual
+    machines like GNOME Boxes, VirtualBox or Virtual Machine
+    Manager are included.
+
+-------------------------------------------------------------------
 Fri Aug 25 16:22:44 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to release 1.24.0

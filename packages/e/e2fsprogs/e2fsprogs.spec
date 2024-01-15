@@ -52,6 +52,7 @@ Patch6:         harden_e2scrub@.service.patch
 Patch7:         harden_e2scrub_all.service.patch
 Patch8:         harden_e2scrub_fail@.service.patch
 Patch9:         harden_e2scrub_reap.service.patch
+Patch10:        e2fsck-Suppress-orphan-file-is-clean-message-in-preen.patch
 BuildRequires:  libblkid-devel
 BuildRequires:  libuuid-devel
 BuildRequires:  pkg-config
@@ -223,6 +224,7 @@ cp %{SOURCE2} .
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
+%patch10 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects

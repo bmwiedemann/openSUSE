@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan 14 15:25:51 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- drop tests-with-sphinx-72.patch in order to
+- add tests-with-sphinx-72-python312.patch: build with python 312+
+
+-------------------------------------------------------------------
 Mon Sep  4 12:04:08 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - remove tests-with-sphinx-71.patch.
@@ -18,4 +24,4 @@ Mon May  8 11:07:48 UTC 2023 - Torsten Gruner <simmphonie@opensuse.org>
 -------------------------------------------------------------------
 Fri May  5 06:14:05 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Initial release of 4.1 
+- Initial release of 4.1

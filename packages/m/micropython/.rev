@@ -93,4 +93,12 @@
     (CVE-2023-7158, bsc#1218446)</comment>
     <requestid>1137463</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>aed9cb8ac31b577cd2632112bf50eba2</srcmd5>
+    <version>1.22.0</version>
+    <time>1705353690</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1138977</requestid>
+  </revision>
 </revisionlist>

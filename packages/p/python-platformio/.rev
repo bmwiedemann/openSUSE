@@ -178,4 +178,41 @@
 </comment>
     <requestid>1035453</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>708a6c0a43c94acee1c2a7bc0dd77cd1</srcmd5>
+    <version>6.1.13</version>
+    <time>1705353353</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.1.13:
+  * Expanded support for SCons variables declared in the legacy
+    format ``${SCONS_VARNAME}`` (issue #4828)
+- update to 6.1.12:
+  * Added support for Python 3.12
+  * Introduced the capability to launch the debug server in a
+    separate process (issue #4722)
+  * Introduced a warning during the verification of MCU maximum
+    RAM usage, signaling when the allocated RAM surpasses 100%
+    (issue #4791)
+  * Drastically enhanced the speed of project building when
+    operating in verbose mode (issue #4783)
+  * Upgraded the build engine to the latest version of SCons
+    (4.6.0) to improve build performance, reliability, and
+    compatibility with other tools and systems (release notes)
+  * Enhanced the handling of built-in variables in
+    &quot;platformio.ini&quot; configuration file during Interpolation of
+    Values (issue #4695)
+  * Enhanced PIP dependency declarations for improved reliability
+    and extended support to include Python 3.6 (issue #4819)
+  * Implemented automatic installation of missing dependencies
+    when utilizing a SOCKS proxy (issue #4822)
+  * Implemented a fail-safe mechanism to terminate a debugging
+    session if an unknown CLI option is passed (issue #4699)
+  * Rectified an issue where ``${platformio.name}`` erroneously
+    represented ``None`` as the default project name (issue
+    #4717)
+  * Resolved an issue where the
+    ``COMPILATIONDB_INCLUDE_TOOLCHAIN`` setting was not correctly
+    applying to private libraries (issue #4762)</comment>
+    <requestid>1138501</requestid>
+  </revision>
 </revisionlist>

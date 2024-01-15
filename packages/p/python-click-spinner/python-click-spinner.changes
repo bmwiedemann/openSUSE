@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 15 03:38:08 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- Stop using greedy globs in %files.
+- Add patch update-versioneer.patch:
+  * Update to a new versioneer that supports Python 3.12.
+- Actually drop BuildRequires on six.
+
+-------------------------------------------------------------------
 Tue Sep 20 12:23:36 UTC 2022 - pgajdos@suse.com
 
 - added patches

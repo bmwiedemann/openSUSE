@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 15 13:24:12 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- The devel package has to require the main package as the cmake
+  finder checks for iconvert. Found while trying to build OpenUSD.
+- The devel package has to require pkgconfig(Imath) as the cmake
+  finder checks for it. Found while trying to build OpenUSD.
+
+-------------------------------------------------------------------
 Sat Dec 30 16:47:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.5.6.0:

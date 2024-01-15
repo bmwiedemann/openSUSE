@@ -113,4 +113,16 @@
     <comment></comment>
     <requestid>1093678</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e3e9b30a536aa9e6344db5d7032acdcb</srcmd5>
+    <version>0.23.0</version>
+    <time>1705353355</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.23.0:
+  * Follow up the libsass upstream: 3.6.6 --- See the release
+    notes of LibSass 3.6.6.
+
+- Update to v0.20.0, linking against libsass 3.6.4</comment>
+    <requestid>1138502</requestid>
+  </revision>
 </revisionlist>

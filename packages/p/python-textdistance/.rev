@@ -73,4 +73,13 @@
 - required by spyder 4.2.1</comment>
     <requestid>1132831</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>28205f0ce998eaa1416e07ca6d823212</srcmd5>
+    <version>4.6.1</version>
+    <time>1705353447</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.6.1:
+  * Remove abydos references from libraries.json</comment>
+    <requestid>1138586</requestid>
+  </revision>
 </revisionlist>

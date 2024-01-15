@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 15 05:02:17 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1705133214.b65c28f:
+  * Add test package spec for sub-packages
+  * Add SLE16 Backports OBS CI integration
+  * Revert "[RFC] Test OBS CI against SLE_15_SP5_Backports"
+  * Revert "Test OBS CI against SLE_15_all_Backports"
+  * script_run: base serial buffer size on command length
+
+-------------------------------------------------------------------
 Fri Jan 12 21:15:20 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1705076298.32001ad:

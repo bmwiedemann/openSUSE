@@ -1,7 +1,7 @@
 #
 # spec file for package python-crispy-bootstrap3
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,17 @@
 
 
 Name:           python-crispy-bootstrap3
-Version:        2022.1
+Version:        2024.1
 Release:        0
 Summary:        Bootstrap3 template pack for django-crispy-forms
 License:        MIT
 URL:            https://github.com/django-crispy-forms/crispy-bootstrap3
 Source:         https://files.pythonhosted.org/packages/source/c/crispy-bootstrap3/crispy-bootstrap3-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module setuptools >= 61.0}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module Django >= 3.2}
 BuildRequires:  %{python_module django-crispy-forms >= 1.14.0}

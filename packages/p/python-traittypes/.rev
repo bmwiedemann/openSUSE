@@ -89,4 +89,13 @@
     <comment>- Skip testing xarray on Python 3.8</comment>
     <requestid>1072838</requestid>
   </revision>
+  <revision rev="11" vrev="10">
+    <srcmd5>8c614595f7c712b102f77ca40b704735</srcmd5>
+    <version>0.2.1</version>
+    <time>1705353582</time>
+    <user>anag+factory</user>
+    <comment>- Remove obsolete python38 skip
+</comment>
+    <requestid>1138729</requestid>
+  </revision>
 </revisionlist>

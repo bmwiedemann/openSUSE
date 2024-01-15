@@ -616,4 +616,12 @@ Not installed by default yet as it's currently in beta.</comment>
     <comment>KDE Frameworks 5.113.0 (forwarded request 1131014 from krop)</comment>
     <requestid>1133346</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>ed0bb29dab70660ed15b53a2624a3aaf</srcmd5>
+    <version>5.114.0</version>
+    <time>1705353282</time>
+    <user>anag+factory</user>
+    <comment>KDE Frameworks 5.114.0</comment>
+    <requestid>1138958</requestid>
+  </revision>
 </revisionlist>

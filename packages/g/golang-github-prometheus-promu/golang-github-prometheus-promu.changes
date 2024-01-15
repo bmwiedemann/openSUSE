@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 14 11:51:49 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- extldflags-no-static.patch: Don't pass -extldflags -static by default
+
+-------------------------------------------------------------------
 Tue Aug  8 11:53:00 UTC 2023 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Always set user and host build metadata to constant string to

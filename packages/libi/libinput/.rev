@@ -1011,4 +1011,12 @@ Peter Hutterer (3):
     <comment>New upstream release (forwarded request 1105936 from iznogood)</comment>
     <requestid>1105957</requestid>
   </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>a9dcbe29331842b44e240dfd86056478</srcmd5>
+    <version>1.25.0</version>
+    <time>1705353320</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 1.25</comment>
+    <requestid>1138796</requestid>
+  </revision>
 </revisionlist>

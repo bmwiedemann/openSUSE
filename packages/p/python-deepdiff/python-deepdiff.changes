@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sun Jan 14 17:11:42 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.7.1:
+  * Support for subtracting delta objects when
+    iterable_compare_func is used.
+  * Better handling of force adding a delta to an object.
+  * Fix for `Can't compare dicts with both single and double
+    quotes in keys`
+  * Updated docs for Inconsistent Behavior with math_epsilon and
+    ignore_order = True
+  * Delta can be subtracted from other objects now.
+  * verify_symmetry is deprecated. Use bidirectional instead.
+  * always_include_values flag in Delta can be enabled to include
+    values in the delta for every change.
+  * Fix for Delta.__add__ breaks with esoteric dict keys.
+  * You can load a delta from the list of flat dictionaries.
+- update to 6.6.0:
+  * [x] Numpy 2.0 support
+  * [x] Adding Delta.to_flat_dicts
+
+- update to 6.4.1:
+  * Bugfix: Numpy should be optional
+- update to 6.4.0:
+  * Add Ignore List Order Option to DeepHash by
+  * pyyaml to 6.0.1 to fix cython build problems by Robert Bo
+    Davis
+  * Precompiled regex simple diff by cohml
+  * New flag: `zip_ordered_iterables` for forcing iterable items
+    to be compared one by one.
+- update to 6.3.1:
+  * Bugfix deephash for paths by maggelus
+  * Bugfix deephash compiled regex maggelus
+  * Fix tests dependent on toml by martin-kokos
+  * Bugfix for `include_paths` for nested dictionaries by kor4ik
+  * Use tomli and tomli-w for dealing with tomli files by martin-
+    kokos
+  * Bugfix for `datetime.date` by Alex Sauer-Budge
+
+-------------------------------------------------------------------
 Sat Jun 10 15:24:40 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
@@ -148,7 +187,7 @@ Fri Mar  6 10:07:40 UTC 2020 - pgajdos@suse.com
   - v4-0-1: Fixing installation Tarball missing requirements.txt . DeepDiff v4+ should not show up as pip installable for Py2. Making Murmur3 installation optional.
   - v4-0-0: Ending Python 2 support, Adding more functionalities and documentation for DeepHash. Switching to Pytest for testing. Switching to Murmur3 128bit for hashing. Fixing classes which inherit from classes with slots didn't have all of their slots compared. Renaming ContentHash to DeepHash. Adding exclude by path and regex path to DeepHash. Adding ignore_type_in_groups. Adding match_string to DeepSearch. Adding Timedelta object diffing.
   - v3-5-0: Exclude regex path
-  
+
 -------------------------------------------------------------------
 Fri Oct  4 08:10:05 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 

@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Jan 14 19:16:32 UTC 2024 - lduncan@suse.com
+
+- Update to version v1.1+106.74c0600a8692 (from upstream/branch-1.1):
+  * lldpad: dcbx: prevent null dereference in dcbx_free_data
+  * lldpad: ieee8023: reorder disabling pMAC and disabling MM TX
+  * uapi: Provide a copy of const.h
+  * dcbx: Fix use-after-free
+  * dcbx: Fix NULL pointer dereference
+  * ChangeLog: mention Additional Ethernet Capabilities TLV
+  * lldptool: add man page for Additional Ethernet Capabilities TLV
+  * lldptool: add CLI interface for Additional Ethernet Capabilities TLV
+  * lldpad: ieee8023: allow changing the addFragSize advertisement
+  * lldpad: ieee8023: add Additional Ethernet Capabilities TLV logic
+  * lldpad: ieee8023: make ieee8023_data() return a pointer to ieee8023_user_data
+  * lldpad: ethtool netlink accessors for MAC merge layer
+  * lldpad: ieee8023: add basic rchange procedure
+  * uapi: copy ethtool definitions for MAC Merge layer from Linux
+  * uapi: update linux/netlink.h copy
+  * uapi: import ethtool kernel headers from net-next
+  * dcbx: Fix leak when receiving legacy TLVs with mismatched mode
+  * lldp: Reject frames with duplicate TLVs
+  * dcbx: Free manifest in rchange callback
+  * dcbx: Avoid memory leak if ifup is called twice
+  * ctrl_iface: Fix a memory leak in ctrl_iface_deinit
+  * lldp: Avoid sending uninitialized data
+  * lldptool: fix null pointer deference
+
+-------------------------------------------------------------------
 Fri Oct 27 19:15:39 UTC 2023 - lduncan@suse.com
 
 - Update to version latest Intel upstream (v1.1+77.75e83b6fb98e, jsc#PED-6852):

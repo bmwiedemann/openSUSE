@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jan  6 13:09:08 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.2.13:
+  * Bugfix zero-width support for Hangul Jamo (Korean) #111
+
+-------------------------------------------------------------------
 Mon Nov 27 09:09:51 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.2.12:

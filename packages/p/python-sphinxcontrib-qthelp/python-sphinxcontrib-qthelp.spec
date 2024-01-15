@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-sphinxcontrib-qthelp%{psuffix}
-Version:        1.0.6
+Version:        1.0.7
 Release:        0
 Summary:        Sphinx extension which outputs QtHelp
 License:        BSD-2-Clause
@@ -39,7 +39,6 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Sphinx >= 5.0
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module Sphinx >= 5.0}

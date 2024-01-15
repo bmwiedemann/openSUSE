@@ -1,7 +1,7 @@
 #
 # spec file for package python-derpconf
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           python-derpconf
-Version:        0.8.3
+Version:        0.8.4
 Release:        0
 Summary:        Configuration file loader
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/globocom/derpconf
-Source:         https://github.com/globocom/derpconf/archive/v%{version}.tar.gz#/derpconf-%{version}.tar.gz
+Source:         https://github.com/globocom/derpconf/archive/refs/tags/%{version}.tar.gz
 # https://github.com/globocom/derpconf/issues/26
 Patch0:         python-derpconf-no-six.patch
 BuildRequires:  %{python_module pyVows}

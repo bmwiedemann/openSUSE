@@ -321,4 +321,12 @@
   * Fix missing range check in the JPC encoder (#368).</comment>
     <requestid>1138151</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>ea2f9a64591a43048b6faefd68af2cce</srcmd5>
+    <version>4.1.2</version>
+    <time>1705353326</time>
+    <user>anag+factory</user>
+    <comment>  * Fix invalid memory write bug (#367) bsc#1218802 (CVE-2023-51257).</comment>
+    <requestid>1138803</requestid>
+  </revision>
 </revisionlist>

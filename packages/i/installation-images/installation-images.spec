@@ -342,7 +342,6 @@ BuildRequires:  google-noto-naskharabic-fonts
 BuildRequires:  exfatprogs
 %endif
 BuildRequires:  fbiterm
-BuildRequires:  finger
 BuildRequires:  fonts-config
 BuildRequires:  gamin-server
 BuildRequires:  gdb
@@ -671,7 +670,7 @@ AutoReqProv:    off
 Summary:        Installation Image Files for %theme
 License:        GPL-2.0-or-later
 Group:          Metapackages
-Version:        17.109
+Version:        17.110
 Release:        0
 Provides:       installation-images = %version-%release
 Conflicts:      otherproviders(installation-images)

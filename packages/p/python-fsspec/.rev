@@ -394,4 +394,12 @@ Required by the latest version of python-gcsfs</comment>
   * &quot;ends&quot; list in _cat_ranges was incorrect (#1402)</comment>
     <requestid>1133605</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>6b80b4fc3062807703525d5cd2dfb751</srcmd5>
+    <version>2023.12.2</version>
+    <time>1705353662</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1138849</requestid>
+  </revision>
 </revisionlist>

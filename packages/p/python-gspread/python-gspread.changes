@@ -1,7 +1,66 @@
 -------------------------------------------------------------------
+Sat Jan 13 21:04:22 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.12.4:
+  * Fixed default value of merge_type parameter in merge_cells
+    function docstring.
+  * 1363 get all records retrieves a large number of empty rows
+    after the end of the data
+  * Many fixes for get_records
+  * change worksheet.update migration guide
+  * feature/readme migration v6
+  * add deprecation warnings for lastUpdateTime...
+  * remove use_index and references to it in get_records
+  * make deprecation warning dependent on if kwarg is used for
+    client_factory
+  * fix 1352 expected headers broken
+  * fix combine_merged_cells when using from a range that doesn't
+    start at A1
+  * feature -- adding worksheet.get_records to get specific row
+    ranges
+  * Fix list_spreadsheet_files return value
+  * Fix warning message for worksheet.update method
+  * change lambda function to dict (fix pyupgrade issue)
+  * allows users to silence deprecation warnings
+  * Add maintain_size to keep asked for size in get, get_values
+  * Fix list_spreadsheet_files return value by @mephinet in
+  * Fix merge_combined_cells in get_values (AND 5.11.2 RELEASE)
+  * remove Drive API access on Spreadsheet init (FIX - VERSION
+    5.11.1)
+  * add docs/build to .gitignore
+  * add release process to CONTRIBUTING.md
+  * add test_fill_gaps and docstring for fill_gaps
+  * Remove API calls from creationTime/lastUpdateTime
+  * Fix Worksheet ID Type Inconsistencies
+  * Add column_count prop as well as col_count
+  * Add required kwargs with no default value
+  * Add deprecation warnings for colors
+  * Add better Exceptions on opening spreadsheets
+  * Fix rows_auto_resize in worksheet.py by removing redundant
+    self
+  * Add deprecation warning for future release 6.0.x
+  * FEATURE: show/hide gridlines (#1197)
+  * CLEANUP: cleanup tox.ini, and ignore ./env
+  * Refactor/update-contributing-guide
+  * Spelling fix (with legacy option)
+  * 457-fetch-without-hidden-worksheets
+  * Add_deprecated_warning_sort_method
+  * Update (and test for) internal properties on change
+  * Feature: Add "Remove tab colour" method
+  * Refresh-test-cassettes
+  * update self._properties after batch_update
+  * 700-fill-merged-cells
+  * Fix/update-internal-properties
+  * Add breaking change warning in Worksheet.update()
+  * remove deprecated methods from tests
+  * Bugfix/fix get last update time
+  * Add batch notes insert/update/clear
+  * #1104: added a delete by worksheet id method
+
+-------------------------------------------------------------------
 Wed Dec  7 18:50:32 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 5.7.2 
+- Update to version 5.7.2
   * Fix: hidden property might not be set from the API by @lavigne958 in #1151
 
 -------------------------------------------------------------------
@@ -37,7 +96,7 @@ Fri Oct 28 17:30:18 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
   * Return created permission on Spreadsheet.share() by @lavigne958 in #1111
   * (fixed #1113) Supply correct Google API v3 permission for domains by @NickCrews in #1115
   * Bugfix/numericese all by @lavigne958 in #1119
- 
+
 -------------------------------------------------------------------
 Wed Sep 28 21:55:25 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
@@ -170,7 +229,7 @@ Wed Sep 28 21:55:25 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
   Add Worksheet.get_note() (#855 by @water-ghosts )
   Add steps for creating new keys (#856 by @hanzala-sohrab)
   Add folder_id argument to Client.copy() (#851 by @punnerud)
-  Fix typos in docstrings (#848 by @dgilman) 
+  Fix typos in docstrings (#848 by @dgilman)
 
 -------------------------------------------------------------------
 Fri Mar 19 05:26:12 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
@@ -241,7 +300,7 @@ Wed Apr  8 13:27:48 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 -------------------------------------------------------------------
 Tue Mar 31 11:34:39 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
-- remove nose dep since we are not running tests 
+- remove nose dep since we are not running tests
 
 -------------------------------------------------------------------
 Fri Mar 15 12:41:24 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
@@ -304,12 +363,12 @@ Thu May 24 17:34:22 UTC 2018 - toddrme2178@gmail.com
 -------------------------------------------------------------------
 Fri Sep  1 12:23:03 UTC 2017 - alarrosa@suse.com
 
-- Fixed Source url 
+- Fixed Source url
 
 -------------------------------------------------------------------
 Fri Aug 18 11:39:17 UTC 2017 - alarrosa@suse.com
 
-- Update to python-gspread 0.6.2 
+- Update to python-gspread 0.6.2
   * See https://github.com/burnash/gspread/blob/master/HISTORY.rst
 - Use singlespec macros
 

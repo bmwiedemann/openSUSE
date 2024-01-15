@@ -285,4 +285,40 @@
     <comment></comment>
     <requestid>1132690</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>9e89cd59b67ae3c0414790ec6b1ebfc1</srcmd5>
+    <version>1.9.4</version>
+    <time>1705353077</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.9.4:
+  * Started raising :py:exc:`TypeError` when a string value is
+    passed into :py:meth:`~yarl.URL.build` as the port argument
+    -- by :user:`commonism`. Previously the empty string as port
+    would create malformed URLs when rendered as string
+    representations.
+  * Started raising :py:exc:`TypeError` when a string value is
+    passed into :py:meth:`~yarl.URL.build` as the port argument
+  * Previously the empty string as port would create malformed
+    URLs when rendered as string representations. (:issue:`883`)
+  * The leading -- has been dropped from the PEP 517 in-tree
+    build backend config setting names. --pure-python is now just
+    pure-python -- by :user:`webknjaz`. The usage now looks as
+    follows:  $ python -m build \     --config-setting=pure-
+    python=true \     --config-setting=with-cython-tracing=true
+    (:issue:`963`)
+  * The leading -- has been dropped from the PEP 517 in-tree
+    build backend config setting names. --pure-python is now just
+    pure-python -- by :user:`webknjaz`.
+  * It is now possible to request line tracing in Cython builds
+    using the with-cython-tracing PEP 517 config setting --
+    :user:`webknjaz`. This can be used in CI and development
+    environment to measure coverage on Cython modules, but is not
+    normally useful to the end-users or downstream packagers.
+    Here's a usage example:  $ python -Im pip install . --config-
+    settings=with-cython-tracing=true  For editable installs,
+    this setting is on by default. Otherwise, it's off unless
+    requested explicitly. (:issue:`962`)
+- drop reproducible.patch (upstream)</comment>
+    <requestid>1138583</requestid>
+  </revision>
 </revisionlist>

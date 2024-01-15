@@ -525,4 +525,41 @@
   - Update master for stable/2023.1</comment>
     <requestid>1099314</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>c4800da2fc4e6984fce94e1545a67214</srcmd5>
+    <version>2.0.0</version>
+    <time>1705353486</time>
+    <user>anag+factory</user>
+    <comment>- update to version 2.0.0
+  - [baremetal] Add firmware_interface support
+  - block storage: Add missing docstrings
+  - tests: Move cloud-layer service tests to their own file
+  - tests: Update functional tests for resource providers
+  - Bump the chunk_size to use CPU more efficiently
+  - cloud: Remove floating network cache
+  - [baremetal] Ensure baremetal shard parameter gets passed
+  - cloud: Remove remnants of port caching
+  - placement: Add support for traits
+  - cloud: Remove '_object_store_client'
+  - config loader: Prefer cli/env over clouds.yaml args for some args
+  - volume: Add Extension to volume v2 API
+  - Implemented methods for share metadata
+  - docs: Add missing docs for block storage resources
+  - block storage: Add support for services
+  - mypy: Address issues with top-level files
+  - Add support for default security group rules in SDK
+  - volume: Add missing attributes to Extension
+  - identity: Add support for domain config
+  - cloud: Remove unnecessary types import
+  - Rename share group snapshot 'members' method
+  - Bump API version in Manila functional tests
+  - placement: Add support for resource provider aggregates
+  - Add image metadef object operations
+  - tests: Rename file, remove unused file
+  - docs: Add exception documentation
+  - Fix bulk_delete support determination
+  - cloud: Remove '_orchestration_client'
+  - Fix Swift endpoint conversion to determine info/caps url</comment>
+    <requestid>1138715</requestid>
+  </revision>
 </revisionlist>

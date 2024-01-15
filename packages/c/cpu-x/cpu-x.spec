@@ -1,7 +1,7 @@
 #
 # spec file for package cpu-x
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define src_name CPU-X-%version
 Name:           cpu-x
-Version:        5.0.2
+Version:        5.0.3
 Release:        0
 Summary:        Hardware overview utility
 License:        GPL-3.0-or-later
@@ -97,12 +97,13 @@ export CC=gcc-12 CXX=g++-12
 
 %install
 %cmake_install
-rm -Rf "%buildroot/%_datadir/polkit-1" "%buildroot/%_datadir/applications"
+rm -Rf "%buildroot/%_datadir/polkit-1"
 %find_lang %name
 
 %files
 %_bindir/cpu-x
 %_libexecdir/cpu-x*
+%_datadir/applications/*.desktop
 %_datadir/cpu-x/
 %_datadir/icons/*
 %_datadir/glib-2.0/

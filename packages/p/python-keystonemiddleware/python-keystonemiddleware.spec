@@ -17,13 +17,13 @@
 
 
 Name:           python-keystonemiddleware
-Version:        10.4.0
+Version:        10.4.1
 Release:        0
 Summary:        Middleware for OpenStack Identity
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/keystonemiddleware
-Source0:        https://files.pythonhosted.org/packages/source/k/keystonemiddleware/keystonemiddleware-10.4.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/k/keystonemiddleware/keystonemiddleware-10.4.1.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-WebOb >= 1.7.1
 BuildRequires:  python3-WebTest
@@ -91,7 +91,7 @@ BuildRequires:  python3-sphinxcontrib-svg2pdfconverter
 Documentation for Middleware for OpenStack Identity.
 
 %prep
-%autosetup -p1 -n keystonemiddleware-10.4.0
+%autosetup -p1 -n keystonemiddleware-10.4.1
 %py_req_cleanup
 
 %build

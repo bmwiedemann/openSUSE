@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan 13 20:49:12 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.6.0:
+  * Environments now have a default name, '.venv'.
+  * Remove Python 3.7 compatibility from tests.
+  * Require Python 3.8 or later.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:27:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

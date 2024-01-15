@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jan 14 14:13:55 UTC 2024 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Update to V1.9:
+  - Greatly improved the visual appearance of the treemap
+  - Dominant items are now highlighted in bold font in the tree view
+  - New "Find" function in the scanned directory tree
+  - Added support for bookmarks
+  - New documentation to explain the treemap
+  - Some small improvements
+  - Bug fixes
+
+-------------------------------------------------------------------
 Thu Jun 30 08:50:08 UTC 2022 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Update to V1.8.1:

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jan 13 20:26:21 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.113.0:
+  * **androidmanagement:** Update the api
+  * **batch:** Update the api
+  * **bigtableadmin:** Update the api
+  * **compute:** Update the api
+  * **connectors:** Update the api
+  * **contactcenterinsights:** Update the api
+  * **content:** Update the api
+  * **customsearch:** Update the api
+  * **displayvideo:** Update the api
+  * **firestore:** Update the api
+  * **script:** Update the api
+
+-------------------------------------------------------------------
 Fri Jan  5 09:06:34 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.112.0:

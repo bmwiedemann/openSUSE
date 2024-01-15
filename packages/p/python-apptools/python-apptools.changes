@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jan 14 17:35:12 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.2.1:
+  * Fix StatePickler for Python 3.11.
+  * Add encoding as an attribute for LogFileHandler
+    initialization
+- drop python-311.patch (upstream)
+
+-------------------------------------------------------------------
 Thu Mar  2 18:50:06 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add python-311.patch, to support python3.11 gh#enthought/apptools#328
@@ -64,7 +73,7 @@ Mon May  2 18:59:26 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 -------------------------------------------------------------------
 Mon Feb  7 07:20:43 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Use pytest to run the testsuite, not nose. 
+- Use pytest to run the testsuite, not nose.
 
 -------------------------------------------------------------------
 Tue Nov 19 21:17:41 UTC 2019 - Todd R <toddrme2178@gmail.com>

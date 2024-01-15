@@ -23,7 +23,7 @@
 %define qt5_version 5.15.2
 %bcond_without released
 Name:           breeze5-icons
-Version:        5.113.0
+Version:        5.114.0
 Release:        0
 Summary:        Breeze icon theme
 License:        LGPL-3.0-only

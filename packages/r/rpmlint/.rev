@@ -4688,4 +4688,19 @@ oddjob-gpupdate isn't blocked)</comment>
     <comment></comment>
     <requestid>1137689</requestid>
   </revision>
+  <revision rev="466" vrev="1">
+    <srcmd5>d23a2ca764769f8695ec66b7bee9e66c</srcmd5>
+    <version>2.5.0+git20240115.66db794</version>
+    <time>1705353335</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.5.0+git20240115.66db794:
+  * Fix digester for cronie whitelisting (bsc#1218756)
+- Update to version 2.5.0+git20240115.e28fef0:
+  * cron-whitelist: adjust cronie-anacron again (bsc#1218756)
+- Update to version 2.5.0+git20240112.c87408b:
+  * systemd-tmpfiles whitelist: adjust package name for libtss-fapi
+  * pam-modules: separate standard PAM module that have been already reviewed
+</comment>
+    <requestid>1138844</requestid>
+  </revision>
 </revisionlist>

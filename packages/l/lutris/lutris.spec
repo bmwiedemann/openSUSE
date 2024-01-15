@@ -1,7 +1,7 @@
 #
 # spec file for package lutris
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %define _pyb 3.11
 %endif
 Name:           lutris
-Version:        0.5.14
+Version:        0.5.15
 Release:        0
 Summary:        Manager for game installation and execution
 License:        GPL-3.0-or-later

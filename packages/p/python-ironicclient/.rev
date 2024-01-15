@@ -473,4 +473,26 @@
   - Use only Yoga tests</comment>
     <requestid>1069832</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>cb6812bd9c73a55bc49609e8d33d3c4d</srcmd5>
+    <version>5.4.0</version>
+    <time>1705353473</time>
+    <user>anag+factory</user>
+    <comment>- update to version 5.4.0
+  - Update master for stable/2023.1
+  - Firmware Interface support
+  - Add baremetal node unhold
+  - Fix minor spelling errors and incorrect help text
+  - Update dependencies for pep8: to hacking v6
+  - Add support for parent node
+  - Add support for node inventory
+  - Followup: Remove print statements from test
+  - Accept configdrive as a JSON file
+  - tox: Remove basepython
+  - Allow several nodes for most node actions
+  - These should be indented 4 spaces to match the other things in this block
+  - Add python3.10 support in testing runtime
+  - Node sharding support</comment>
+    <requestid>1138701</requestid>
+  </revision>
 </revisionlist>

@@ -118,4 +118,17 @@
     <comment></comment>
     <requestid>1092247</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>388e438502d2a76e23f572fc49d32b1c</srcmd5>
+    <version>4.3.3</version>
+    <time>1705353061</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.3.3:
+  * Add .readthedocs.yml
+  * Build wheels for Python 3.12
+
+  * Correct how pkgconfig is handled in setup.py to account for multiple build flags
+  * Improve how CHAR_BIT is handled</comment>
+    <requestid>1138500</requestid>
+  </revision>
 </revisionlist>

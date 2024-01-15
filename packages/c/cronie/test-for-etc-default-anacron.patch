@@ -1,0 +1,26 @@
+From 7700b1465d32ddb1d3988e9af852af6f0f5cd66e Mon Sep 17 00:00:00 2001
+From: Christian Hesse <mail@eworm.de>
+Date: Mon, 16 Oct 2023 10:14:33 +0200
+Subject: [PATCH] re-introduce the test for existence of file
+
+If the file does not exist it exits early with error... Let's source
+only if files acutually does exist. We still have a sane default.
+---
+ contrib/0anacron | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/contrib/0anacron b/contrib/0anacron
+index 090219a..5379e41 100644
+--- a/contrib/0anacron
++++ b/contrib/0anacron
+@@ -8,7 +8,9 @@ if [ `date +%Y%m%d` = "$day" ]; then
+ fi
+ 
+ # Check whether run on battery should be allowed
+-. /etc/default/anacron
++if test -r /etc/default/anacron; then
++    . /etc/default/anacron
++fi
+ 
+ if [ "$ANACRON_RUN_ON_BATTERY_POWER" != "yes" ]; then
+ 

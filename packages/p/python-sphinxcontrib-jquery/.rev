@@ -16,4 +16,15 @@
   gh#sphinx-contrib/jquery#27</comment>
     <requestid>1108857</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>688821c00eba90bd879e30607e6a4fac</srcmd5>
+    <version>4.1</version>
+    <time>1705353082</time>
+    <user>anag+factory</user>
+    <comment>- drop tests-with-sphinx-72.patch in order to
+- add tests-with-sphinx-72-python312.patch: build with python 312+
+
+- Initial release of 4.1</comment>
+    <requestid>1138593</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-bidict
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,8 +34,6 @@ BuildRequires:  %{python_module hypothesis >= 3.6.1}
 BuildRequires:  %{python_module pytest >= 3.0.7}
 BuildRequires:  %{python_module pytest-benchmark >= 3.1.0a1}
 BuildRequires:  %{python_module pytest-xdist}
-BuildRequires:  %{python_module sortedcollections >= 0.4.2}
-BuildRequires:  %{python_module sortedcontainers >= 1.5.5}
 # /SECTION
 BuildArch:      noarch
 

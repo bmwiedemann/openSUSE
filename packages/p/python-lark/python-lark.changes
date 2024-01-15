@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan 13 20:25:08 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.9:
+  * Use MAXWIDTH instead of MAXREPEAT when available
+  * Fix nested list markdown syntax in how_to_use.md
+  * Run tests against Python 3.12
+
+-------------------------------------------------------------------
 Wed Dec 20 21:59:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.8:

@@ -1,7 +1,7 @@
 #
 # spec file for package python-neutronclient
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           python-neutronclient
-Version:        7.8.0
+Version:        11.1.0
 Release:        0
 Summary:        Python API and CLI for OpenStack Neutron
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/python-neutronclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-neutronclient/python-neutronclient-7.8.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-neutronclient/python-neutronclient-11.1.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-cliff >= 3.4.0
 BuildRequires:  python3-fixtures
@@ -65,8 +65,7 @@ Requires:       python3-oslo.serialization >= 2.18.0
 Requires:       python3-oslo.utils >= 3.33.0
 Requires:       python3-pbr >= 2.0.0
 Requires:       python3-requests >= 2.14.2
-Requires:       python3-simplejson >= 3.5.1
-Requires:       python3-six
+Requires:       python3-simplejson
 %if 0%{?suse_version}
 Obsoletes:      python2-neutronclient < 7.1.0
 %endif
@@ -96,21 +95,20 @@ Neutron's API.
 %{py3_build}
 
 # Build HTML docs and man page
-PBR_VERSION=7.8.0 %sphinx_build -b html doc/source doc/build/html
-PBR_VERSION=7.8.0 %sphinx_build -b man doc/source doc/build/man
+PBR_VERSION=11.1.0 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=11.1.0 %sphinx_build -b man doc/source doc/build/man
 rm -r doc/build/html/.{doctrees,buildinfo}
 
 %install
 %{py3_install}
 
 %check
-python3 -m stestr.cli run
+%{openstack_stestr_run}
 
 %files -n python3-neutronclient
 %license LICENSE
 %{python3_sitelib}/neutronclient
 %{python3_sitelib}/*.egg-info
-%{_bindir}/neutron
 
 %files -n python-neutronclient-doc
 %doc doc/build/html README.rst

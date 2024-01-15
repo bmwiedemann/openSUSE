@@ -966,4 +966,12 @@
     <comment>KDE Frameworks 5.113.0 (forwarded request 1131014 from krop)</comment>
     <requestid>1133277</requestid>
   </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>c3fd6c383281d82ba4bb2cbd4b82e4e2</srcmd5>
+    <version>5.114.0</version>
+    <time>1705353434</time>
+    <user>anag+factory</user>
+    <comment>KDE Frameworks 5.114.0</comment>
+    <requestid>1138890</requestid>
+  </revision>
 </revisionlist>

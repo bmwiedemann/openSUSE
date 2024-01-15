@@ -1,7 +1,7 @@
 #
 # spec file for package python-patchy
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,16 +19,18 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global skip_python2 1
 Name:           python-patchy
-Version:        2.6.0
+Version:        2.8.0
 Release:        0
 License:        BSD-3-Clause
 Summary:        Patch the inner source of python functions at runtime
 URL:            https://github.com/adamchainz/patchy
 Group:          Development/Languages/Python
 Source:         https://github.com/adamchainz/patchy/archive/refs/tags/%{version}.tar.gz#/patchy-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pkgutil-resolve-name}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pkgutil-resolve-name
@@ -43,10 +45,10 @@ Patch the inner source of python functions at runtime.
 %setup -q -n patchy-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -55,6 +57,7 @@ Patch the inner source of python functions at runtime.
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/patchy
+%{python_sitelib}/patchy-%{version}.dist-info
 
 %changelog

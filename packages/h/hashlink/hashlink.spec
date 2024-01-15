@@ -1,7 +1,7 @@
 #
 # spec file for package hashlink
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           hashlink
-Version:        1.13
+Version:        1.14
 Release:        0
 Summary:        A virtual machine for Haxe
 License:        MIT
@@ -33,11 +33,9 @@ Patch03:        0001-cmake-Don-t-build-the-interpreter-on-ARM.patch
 Patch04:        0001-cmake-Don-t-run-the-version-test-if-the-interpreter-.patch
 # PATCH-FIX-OPENSUSE
 Patch05:        0001-fix-rpath.patch
-# PATCH-FIX-UPSTREAM
-Patch06:        0001-fix-return-non-void-functions.patch
 BuildRequires:  cmake
 BuildRequires:  haxe >= 4.0
-BuildRequires:  mbedtls-devel
+BuildRequires:  mbedtls-devel < 3
 BuildRequires:  cmake(sdl2)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libturbojpeg)

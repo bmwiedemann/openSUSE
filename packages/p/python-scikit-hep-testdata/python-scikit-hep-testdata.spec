@@ -1,7 +1,7 @@
 #
 # spec file for package python-scikit-hep-testdata
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define srcname scikit-hep-testdata
 %define modname %( echo %{srcname} | tr '-' '_' )
 Name:           python-scikit-hep-testdata
-Version:        0.4.35
+Version:        0.4.36
 Release:        0
 Summary:        Example HEP files for testing and demonstrating
 License:        BSD-3-Clause

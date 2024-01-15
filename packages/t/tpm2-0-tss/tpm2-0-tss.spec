@@ -154,13 +154,22 @@ protocol exposed by the Microsoft software TPM2 simulator.
 %package -n     libtss2-fapi1
 Summary:        FAPI interface library
 Group:          System/Libraries
-Requires:       user(tss)
-Requires(post): user(tss)
+Requires:       libtss2-fapi-common
 
 %description -n libtss2-fapi1
 This is the tpm2 Feature API (FAPI) library. This API is designed to be very
 high-level API, intended to make programming with the TPM as simple as
 possible.
+
+%package -n     libtss2-fapi-common
+Summary:        Common files for FAPI interface library
+Group:          System/Libraries
+Provides:       libtss2-fapi1:%{_tmpfilesdir}/tpm2-tss-fapi.conf
+Requires:       user(tss)
+Requires(pre):  user(tss)
+
+%description -n libtss2-fapi-common
+Provides files needed by the tpm2 Feature API (FAPI) library
 
 %package -n libtss2-policy0
 Summary:        TPM2 FAPI policy library
@@ -235,6 +244,9 @@ rm %{buildroot}%{_sysusersdir}/tpm2-tss.conf
 %post
 %{_bindir}/udevadm trigger -s tpm -s tpmrm || :
 
+%post -n libtss2-fapi-common
+%tmpfiles_create %{_tmpfilesdir}/tpm2-tss-fapi.conf
+
 %post -n libtss2-esys0 -p /sbin/ldconfig
 %postun -n libtss2-esys0 -p /sbin/ldconfig
 %post -n libtss2-sys1 -p /sbin/ldconfig
@@ -249,11 +261,7 @@ rm %{buildroot}%{_sysusersdir}/tpm2-tss.conf
 %postun -n libtss2-mu0 -p /sbin/ldconfig
 %post -n libtss2-rc0 -p /sbin/ldconfig
 %postun -n libtss2-rc0 -p /sbin/ldconfig
-
-%post -n libtss2-fapi1
-/sbin/ldconfig
-%tmpfiles_create %{_tmpfilesdir}/tpm2-tss-fapi-%{version}.conf
-
+%post -n libtss2-fapi1 -p /sbin/ldconfig
 %postun -n libtss2-fapi1 -p /sbin/ldconfig
 %post -n libtss2-policy0 -p /sbin/ldconfig
 %postun -n libtss2-policy0 -p /sbin/ldconfig
@@ -306,19 +314,14 @@ rm %{buildroot}%{_sysusersdir}/tpm2-tss.conf
 
 %files -n libtss2-fapi1
 %{_libdir}/libtss2-fapi.so.*
+
+%files -n libtss2-fapi-common
 %{_tmpfilesdir}/tpm2-tss-fapi.conf
-# this would fix "tmpfile-not-in-filelist" warnings but when adding these
-# entries then it complains about "directories not owned by a package:" for
-# /run/tpm2-0-tss & friends. When adding them as %%ghost, too, then Leap15.1
-# complains about "found conflict of libtss2-fapi1-3.0.1-lp152.103.1.x86_64
-# with libtss2-fapi1-3.0.1-lp152.103.1.x86_64". Thus leave it be for the
-# moment, some insane circle of errors is involved here.
-#
-# it seems the problem is that during `make install` the package runs
-# systemd-tmpfiles --create, and the directories are created outside the
-# package's install tree. It seems this is not expected by RPM.
-# %%ghost %%{_sharedstatedir}/%%{name}/system/keystore
-# %%ghost %%{_rundir}/%%{name}/eventlog
+%ghost %{_sharedstatedir}/tpm2-tss
+%ghost %{_sharedstatedir}/tpm2-tss/system
+%ghost %{_sharedstatedir}/tpm2-tss/system/keystore
+%ghost %{_rundir}/tpm2-tss
+%ghost %{_rundir}/tpm2-tss/eventlog
 
 %files -n libtss2-policy0
 %{_libdir}/libtss2-policy.so.*

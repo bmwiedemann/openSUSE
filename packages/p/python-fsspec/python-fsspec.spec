@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%bcond_without have_pyarrow
 
 %{?sle15_python_module_pythons}
 Name:           python-fsspec%{psuffix}
@@ -68,7 +69,9 @@ BuildRequires:  %{python_module notebook}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module panel}
 BuildRequires:  %{python_module paramiko}
+%if %{with have_pyarrow}
 BuildRequires:  %{python_module pyarrow}
+%endif
 BuildRequires:  %{python_module pyftpdlib}
 BuildRequires:  %{python_module pygit2}
 BuildRequires:  %{python_module pytest-mock}

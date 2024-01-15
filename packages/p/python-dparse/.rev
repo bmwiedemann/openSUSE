@@ -60,4 +60,15 @@
   * Drop Python 3.5 from our CI.</comment>
     <requestid>1096324</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>b1f4c7de31683f4dc1beffcdfe0b30ef</srcmd5>
+    <version>0.6.3</version>
+    <time>1705353602</time>
+    <user>anag+factory</user>
+    <comment>- Switch to autosetup and pyproject macros.
+- Stop using greedy globs in %files.
+- Add patch fix-configparser-parsing.patch:
+  * Use non-deprecated/removed functions from ConfigParser.</comment>
+    <requestid>1138750</requestid>
+  </revision>
 </revisionlist>

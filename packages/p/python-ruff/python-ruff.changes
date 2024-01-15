@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 15 13:27:02 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.1.13
+ * Bug fixes
+   * Include base pyproject when initializing cache settings 
+   * [flake8-simplify] Account for possibly-empty f-string values in truthiness logic 
+   * [pylint] Add the missing period in unnecessary-dunder-call 
+   * [pylint] Fix __aenter__ message in unnecessary-dunder-call 
+
+-------------------------------------------------------------------
 Fri Jan 12 11:48:38 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.1.12:

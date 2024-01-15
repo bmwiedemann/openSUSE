@@ -39,6 +39,7 @@ BuildRequires:  %{python_module zope.exceptions}
 BuildRequires:  %{python_module zope.interface}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-setuptools
 Requires:       python-zope.exceptions
 Requires:       python-zope.interface
 Requires(post): update-alternatives
@@ -71,7 +72,9 @@ find -size 0 -delete
 
 %if %{with test}
 %check
-%pyunittest src/zope/testrunner/tests/*.py
+%{python_expand #
+$python -m zope.testrunner --test-path=src -vv
+}
 %endif
 
 %if !%{with test}

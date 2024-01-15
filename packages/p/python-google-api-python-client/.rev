@@ -919,4 +919,23 @@ eplacement for google-api-python-client, follow our naming convention</comment>
   * **healthcare:** Update the api</comment>
     <requestid>1137006</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>83dafb0702f08460799b15c758bbad09</srcmd5>
+    <version>2.113.0</version>
+    <time>1705353345</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.113.0:
+  * **androidmanagement:** Update the api
+  * **batch:** Update the api
+  * **bigtableadmin:** Update the api
+  * **compute:** Update the api
+  * **connectors:** Update the api
+  * **contactcenterinsights:** Update the api
+  * **content:** Update the api
+  * **customsearch:** Update the api
+  * **displayvideo:** Update the api
+  * **firestore:** Update the api
+  * **script:** Update the api</comment>
+    <requestid>1138494</requestid>
+  </revision>
 </revisionlist>

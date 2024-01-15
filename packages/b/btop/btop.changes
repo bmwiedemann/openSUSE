@@ -1,4 +1,179 @@
 -------------------------------------------------------------------
+Sun Jan  7 23:00:47 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update for version 1.3.0+git20240107.36842a3:
+  * Updating Copyright date
+  * Adding 'Makefile.diff' so {CHANGELOG,README}.md live in the same DOCDIR
+  * Fixing up hardcoded /usr vs. %{_prefix}
+  * Adjustments so btop builds for Leap 15.5/15.6
+
+-------------------------------------------------------------------
+Sun Jan 07 17:01:38 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.3.0+git20240107.36842a3:
+  * v1.3.0 GPU Support Linux and platform support OpenBSD
+  * Fixed gpu boxes visibility state not saved and removed unnecessary comments
+  * Fixed config variable show_gpu_info working correctly
+
+-------------------------------------------------------------------
+Wed Jan 03 16:57:19 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.2.13+git20240103.114a98d:
+  * Add flag to set the refresh rate from command line
+  * Don't pass int by reference
+  * Improved error handling when determining the config directory
+  * Update snapcraft.yaml to fix compile
+  * Remove detailed compiler check
+  * Add build status for OpenBSD
+  * Add compile instructions for OpenBSD
+  * Fix name of job in build
+  * Add Continuous Build OpenBSD
+  * Change robin_hood maps to std::unordered_map
+  * Squashed commit of the following:
+  * Proc::draw() -> Use std::erase_if() instead of for loops
+  * Fixed leftover code in GPU init logging false errors
+  * Try alternative names for GPU libraries during GPU init
+  * Document DEBUG flag for Makefile
+  * Fix errors
+  * Added more checks and debug logging
+  * Return const refs
+  * Remove robin_hood.h
+  * Fix call to compact and missing utility include
+  * Revert "Replace robin_hood map and set with STD alternative and add safeVal() function for map/vector access with fallback"
+  * Replace robin_hood map and set with STD alternative and add safeVal() function for map/vector access with fallback
+  * Replace robin_hood map and set with STD alternative and add safeVal() function for map/vector access with fallback
+  * Fixed test-snap-can-build.yml
+  * Update test-snap-can-build.yml
+  * Update test-snap-can-build.yml
+  * conditional compile on Big Sur and up
+  * Version bump to 1.3.0 in preparation for upcoming release
+  * Updated changes
+  * Added swap to ignore for statvfs() since it will always fail
+  * Added try->catch for get_zfs_stat_file() to avoid fs error
+  * Enable macos clang
+  * Update snapcraft.yaml - opengl
+  * Update bug_report.md
+  * Create test-snap-can-build.yml
+  * simplify removal of "Apple"
+  * in case apple decides to add another suffix to the cpu name
+  * cut less of cpu name if frequency is not shown
+  * fix array out of bounds on regular m chip
+  * fix cpu version not included
+  * strip "Apple" from name of Apple silicon chips
+  * Fix printed model name for older Intel CPU
+  * Add CMake compile instructions for macOS
+  * Add cmake workflow for all platforms
+  * Patch RPATH on FreeBSD, support OSX and format
+  * Provide FreeBSD static release binaries
+  * Clean up compile instructions
+  * Properly invoke CMake to build ROCm
+  * Suppress all output from ROCm build
+  * Remove ROCm object files with `make clean/distclean`
+  * Add GPU options for cmake based builds
+  * Add check for <ranges> header
+  * Move calls to find_package to where they're required
+  * Bump required CMake version
+  * Update compile instructions for Gpu support
+  * Update changelog
+  * Readme update and Makfile fixes.
+  * Squashed commit of the following:
+  * Added definition GPU_SUPPORT to toggle GPU related code
+  * Elementarish theme: color update according to Elementary palette
+  * Elementarish theme: color update according to Elementary palette
+  * Add alternative key codes for Insert, Home, End
+  * Add alternative Delete key code
+  * Try get terminal size of "/dev/tty" if stdout fails
+  * Use native POSIX polling syscalls to read input
+  * initial openbsd bringup
+  * Fix: Cpu gpu stats always shown when show_gpu_info is On and sizing issues
+  * Quickfixes for MacOS and FreeBSD compilation.
+  * Merge fix
+  * Changed: cpu_graph_lower Auto defaults to cpu_graph_upper when show_gpu_info is Off
+  * Added show_gpu_info setting and Auto options for cpu graphs
+  * Fixed: Key 5-0 gpu box toggle
+  * Squashed commit of the following:
+  * Fix GPU text overflow in CPU panel, again
+  * Improve 0-10 key input
+  * Fix available boxes in menu & config description
+  * Fix crashes when trying to open nth GPU box with only n-1 GPUs in the system
+  * Fix GPU horizontal text overflow in CPU panel
+  * Fix RSMI_STATIC=true and add GPU section to README.md
+  * Add GPU options
+  * Remove lib/rocm_smi_lib and add instructions for obtaining it to README
+  * Join NVML PCIe threads only if PCIe TX/RX is supported by GPU
+  * Parallelize NVML PCIe TX/RX data collection
+  * Fix type: ulong -> size_t and compare std::cmp_less
+  * Fix ROCm SMI makefile flags
+  * Fix error when ROCm SMI static compilation fails
+  * Load ROCm SMI dynamically by default, optionally statically compile and link
+  * Minor changes in wording...
+  * Fix Makefile dependency order and layout
+  * Statically link ROCm SMI
+  * Dynamically load NVML
+  * Add more GPU graph types to the CPU panel
+  * Fix crash when all GPU panels are open but the CPU panel is closed
+  * Handle GPUs which cannot report certain stats in GPU panel
+  * Handle GPUs which cannot report certain stats in btop_collect.cpp and CPU panel
+  * Add missing fmt prefixes
+  * Add DebugTimer class and change some Logger::error calls to Logger::debug
+  * Fixed key > gpu_names check
+  * Merged changes from main
+  * Makefile auto detection and initial logic for excluding gpu code when libs are missing
+  * Fixed debug timer for gpu
+  * Bind GPU panel to 5,6,7,8,9,0 and fully implement multi-GPU support
+  * Add GPU info to CPU panel
+  * Add ROCm SMI backend for AMD GPU support
+  * Add multi-GPU support for NVML data collection
+  * Fix crash when no nvidia GPU is detected
+  * Update makefile text, fix typo and adhere to contibuting guidelines
+  * Make GPU window's size dynamic and integrate it with the rest of btop
+  * Improve GPU side panel
+  * Add GPU side panel
+  * Add rudimentary, fullscreen single-GPU NVML utilization graph
+
+-------------------------------------------------------------------
+Mon Nov 06 19:12:46 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 1.2.13+git20231021.9edbf27:
+  * Set FreeBSD workflow timeout
+  * Fix scrollbar not clearing sometimes.
+  * Add keybind for toggling memory display mode in PROC box
+  * Add hpp files to .editorconfig
+  * Minor string initialization improvement
+  * fixed bug where updated disks stats overrided disk io data
+  * fixed bug where updated disks stats overrided disk io data
+  * made disks stat logic async
+  * Fix signal list on non-linux/weird linux platforms
+  * Make process thread count better readable when wider than 5 digits
+  * Add option to accumulate a child's resources in parent in tree-view
+  * Add CMake support
+  * Add horizon theme
+  * Fix short conversion of 1000-1023*iB
+  * FreeBSD Github action 13.1 -> 13.2 and static libgcc and libstdc++
+  * Fix for FreeBSD github action not failing "correctly"...
+  * fix some warnings
+  * fix core check
+  * Fix getting zfs pool name with '.' char in freebsd
+  * [macos] don't check /sys on macos
+  * also add g++13
+  * support gcc13
+  * [macos] fix temp sensor on system with many cores
+  * Update Makefile for partial static compilation on freebsd
+  * Fix freebsd nullptr changes and makefile for gcc12 and newer
+  * Better text editing
+  * Convert parameters and config keys to std::string_view
+  * Use nullptr instead of NULL.
+  * Fix path to Linux CI file in itself
+  * Fix whitespace indent -> tab indent
+  * Revert fmt submodule to static fmt folder in include
+  * Fix path to Linux CI file in itself
+  * Retrieve load average from libc and use emplace_back where appropriate
+  * Fix the makefile version in the printed banner
+  * add g++12 (without a dash) detection, fix Makefile not accounting for a possibly missing gcc
+  * FreeBSD swap info
+  * Make process niceness signed ("nice" can take negative values)
+
+-------------------------------------------------------------------
 Fri Jun 23 17:22:29 UTC 2023 - scott.bradnick@suse.com
 
 - Update to version 1.2.13+git20230615.7e50b03:

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 15 08:20:38 UTC 2024 - pdostal@suse.com
+
+- Update to version 2.42.0:
+  * Prevent downloading releases with assets that match windows reserved filenames (#8517)
+  * Support template, jq flags with standard format flag (#7832)
+  * Mark-up `gh-config` settings with backticks
+
+-------------------------------------------------------------------
 Wed Jan 10 13:03:07 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.41.0:

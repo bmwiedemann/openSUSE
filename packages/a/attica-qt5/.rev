@@ -989,4 +989,12 @@ This sr depends on 222654 &amp; 222655</comment>
     <comment>KDE Frameworks 5.113.0 (forwarded request 1131014 from krop)</comment>
     <requestid>1133269</requestid>
   </revision>
+  <revision rev="123" vrev="1">
+    <srcmd5>d9b35780178f9bd722d0b6642a2582aa</srcmd5>
+    <version>5.114.0</version>
+    <time>1705353102</time>
+    <user>anag+factory</user>
+    <comment>KDE Frameworks 5.114.0</comment>
+    <requestid>1138882</requestid>
+  </revision>
 </revisionlist>

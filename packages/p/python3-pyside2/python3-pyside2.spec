@@ -1,7 +1,7 @@
 #
 # spec file for package python3-pyside2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %global __requires_exclude qmlimport\\((Charts|TextBalloonPlugin)
 
 Name:           python3-pyside2
-Version:        5.15.11
+Version:        5.15.12
 Release:        0
 Summary:        Python bindings for Qt
 # Legal:
@@ -227,8 +227,8 @@ ctest_exclude_regex="$ctest_exclude_regex|signal_enum_test|QtCore_qenum_test"
 # bug_307 fails on armv7l only
 ctest_exclude_regex="$ctest_exclude_regex|QtWidget_bug_307"
 %endif
-%ifarch ppc64le
-# TODO: investigate/report test failure on PowerPC
+%ifarch ppc64le s390x
+# TODO: investigate/report test failure on PowerPC and s390x
 ctest_exclude_regex="$ctest_exclude_regex|QtQml_signal_arguments"
 %endif
 

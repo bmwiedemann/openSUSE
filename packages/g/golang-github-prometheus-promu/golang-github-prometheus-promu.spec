@@ -1,7 +1,7 @@
 #
 # spec file for package golang-github-prometheus-promu
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,8 @@ Source1:        vendor.tar.gz
 # PATCH-FIX-UPSTREAM Fix setting reproducible user and host during the build
 # https://github.com/prometheus/promu/pull/267
 Patch1:         0001-do_not_discover_user_host_for_reproducible_builds.patch
+# PATCH-FIX-OPENSUSE Do not pass -static to external linker by default
+Patch2:         extldflags-no-static.patch
 BuildRequires:  golang-packaging
 ExcludeArch:    s390
 %{go_provides}

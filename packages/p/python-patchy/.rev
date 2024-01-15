@@ -30,4 +30,17 @@
     <comment></comment>
     <requestid>1008062</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b88b941655a6004bf5b3602ebe2e7b30</srcmd5>
+    <version>2.8.0</version>
+    <time>1705353349</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.8.0:
+  * Drop Python 3.7 support.
+  * Support Python 3.12.
+  * Use the --force flag to patch, so it doesn’t hang waiting
+    input for invalid reverse patches. This seems to happen with
+    the new version on macOS.</comment>
+    <requestid>1138496</requestid>
+  </revision>
 </revisionlist>

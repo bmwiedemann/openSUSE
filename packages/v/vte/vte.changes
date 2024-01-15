@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan 14 09:04:08 UTC 2024 - Yifan Jiang <yfjiang@suse.com>
+
+- Provide and Obsolete old typelib-1_0-Vte-2.91 package whose
+  %{_binver} used the same exact value as %{_apiver}.
+
+-------------------------------------------------------------------
 Tue Dec 19 10:36:38 UTC 2023 - dimstar@opensuse.org
 
 - Update to version 0.74.2:

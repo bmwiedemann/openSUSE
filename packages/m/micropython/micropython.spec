@@ -42,7 +42,7 @@ sed -i -e "s:/usr/lib/micropython:%{_prefix}/lib/micropython:g" "ports/unix/main
 %define make_flags V=1 MICROPY_PY_BTREE=0 MICROPY_PY_USSL=0
 
 %build
-export CFLAGS="$CFLAGS -Wno-dangling-pointer"
+export CFLAGS="%optflags -Wno-dangling-pointer"
 %make_build -C mpy-cross
 %make_build -C ports/unix STRIP=true
 

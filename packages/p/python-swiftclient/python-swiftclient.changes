@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun Jan 14 18:05:51 UTC 2024 - cloud-devel@suse.de
+
+- update to version 4.4.0
+  - Metadata updates
+  - Use SLO by default for segmented uploads if the cluster supports it
+  - Retry on SSLError
+  - shell: Allow timeouts to have units
+  - Back-fill a bunch of ChangeLog releases
+  - Switch from pkg_resources to importlib
+  - ChangeLog for 4.4.0
+  - Clean up CI jobs
+  - trivial: Refactor os_options processing
+  - Include transaction ID on content-check failures
+  - Declare py311 support
+  - Update master for stable/2023.1
+  - Update master for stable/zed
+  - shell: Allow uploads from stdin to specify --use-dlo
+  - Drop *_proxy from passenv
+  - service: Check content-length before etag
+  - tests: Fix timeout assertion for py36, py37
+  - Switch to 2023.1 Python3 unit tests and generic template name
+  - docs: Fix code-generated docs
+  - Changelog for 4.3.0 (and 4.2.0)
+  - Mark Python 3.10 testing as voting
+  - Ensure v*password auth_type correctly implies auth version
+  - Remove pypy from bindep.txt
+  - Add experimental jobs for py36/37
+  - Retry with fresh socket on 499
+  - Allow tempurl to be used to sign /info requests
+
+-------------------------------------------------------------------
 Thu Dec  1 09:16:11 UTC 2022 - cloud-devel@suse.de
 
 - update to version 4.1.0

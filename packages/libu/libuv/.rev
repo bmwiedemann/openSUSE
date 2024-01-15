@@ -330,4 +330,41 @@
  * unix: remove pread/preadv conditionals (Ben Noordhuis)</comment>
     <requestid>1126710</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>f16a24871588b30b6e566da2f4963fc4</srcmd5>
+    <version>1.47.0</version>
+    <time>1705353303</time>
+    <user>anag+factory</user>
+    <comment>- add ppc64-disable-liburing.patch (bsc#1218365)
+
+  * adjust stalebot deadline
+- Update to version 1.24.0:
+  0001-linux-remove-epoll-syscall-wrappers.patch and
+  * unix: make uv_guess_handle work properly for AIX (Gireesh
+  * build: remove unused 'component' GYP option (Saúl Ibarra
+  * win: use the MSVC provided snprintf where possible (Jason
+  * unix: only undo fs req registration in async mode (Ben
+  * test: fix fs_event_watch_file_currentdir flakiness (Santiago
+  * unix: skip prohibited syscalls on tvOS and watchOS (Nathan
+  * docs: clarify documentation of uv_tcp_init_ex (Andrius
+  * win: properly return UV_EBADF when _close() fails (Nicholas
+  * test,freebsd: skip udp_dual_stack if not supported (Santiago
+  * test: fix -Wtautological-pointer-compare warnings (Saúl Ibarra
+  * linux,fs: fix p{read,write}v with a 64bit offset (Saúl Ibarra
+  * win: fix path for removed and renamed fs events (Joran Dirk
+  * win: do not read more from stream than available (Jeremy
+  * test: fix self-deadlocks in thread_rwlock_trylock (Ben
+  * unix: don't block for io if any io handle is primed (Saúl
+  * linux: work around epoll bug in kernels &lt; 2.6.37 (Ben
+  * unix: prevent infinite loop in uv__run_pending (Saúl Ibarra
+  * unix: make sure UDP send callbacks are asynchronous (Saúl
+  * aix: add ahafs autoconf detection and README notes (Andrew
+  * core: add ability to customize memory allocator (Saúl Ibarra
+  * doc: clarify that the thread pool primites are not thread safe
+  * unix: fix glibc-2.20+ macro incompatibility (Massimiliano
+  * doc: add Sphinx plugin for generating links to man pages
+  * doc: link system and library calls to man pages (Saúl
+  * doc: document uv_getnameinfo_t.{host|service} (Saúl Ibarra</comment>
+    <requestid>1138765</requestid>
+  </revision>
 </revisionlist>

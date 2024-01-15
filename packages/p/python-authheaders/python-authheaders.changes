@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Jan 13 17:31:08 UTC 2024 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 0.16.0
+  * Switch from pkg_resources resource_filename to
+    importlib_resources
+  * Add initial doctests for dmarc_lookup.py
+  * Correctly strip trailing backslash in parsed DMARC record
+    components
+  * Handle DMARC records containing empty quoted values (#26)
+  * Add dmarc_lookup.DMARCException and raise it for missing
+    tag/values (#27)
+  * Catch DMARCException error and return DMARC permerror
+    result (#27)
+  * Set DMARC result to permerror if From domain cannot be
+    extracted (#25)
+  * Use dns.resolver.resolve instead of dns.resolver.query
+    due to deprecation
+  * Update PSL from upstream
+  * Add new option for authenticate_message, dmarcbis to
+    enable DMARC policy
+  * discovery and alignment per draft-ietf-dmarc-dmarcbis
+    (default is False)
+- Removed authheaders-importlib-resources.patch
+
+-------------------------------------------------------------------
 Mon Jan  8 08:47:41 UTC 2024 - Andreas Schneider <asn@cryptomilk.org>
 
 - Fix importing resources
@@ -34,7 +59,7 @@ Sat Jan 15 16:55:40 UTC 2022 - Dirk Müller <dmueller@suse.com>
   - Include ARC result comment is A-R header field when ARC fails.  Fixes
     Github #12
   - Handle the case where no valid From is found.  Fixes Github #15
- 
+
 -------------------------------------------------------------------
 Sun Apr 12 08:49:13 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 

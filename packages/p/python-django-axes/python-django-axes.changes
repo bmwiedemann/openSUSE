@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan 14 17:32:47 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.3.0:
+  * Add async support to middleware. [Taikono-Himazin]
+
+-------------------------------------------------------------------
 Wed Dec 27 09:32:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.2.0:

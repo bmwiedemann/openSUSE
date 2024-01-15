@@ -20,7 +20,7 @@
 %define plugin docklike
 %bcond_with git
 Name:           xfce4-%{plugin}-plugin
-Version:        0.4.1
+Version:        0.4.2
 Release:        0
 Summary:        Docklike Taskbar
 License:        GPL-2.0-or-later

@@ -1,7 +1,7 @@
 #
 # spec file for package texlive
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define texlive_version  2023
 %define texlive_previous 2022
 %define texlive_release  20230311
-%define texlive_noarch   209
+%define texlive_noarch   212
 %define texlive_source   texlive-20230311-source
 %define biber_version    2.19
 
@@ -4564,7 +4564,7 @@ popd
 	%perl_gen_filelist
 	pushd blib
 	    install -m 0644 bindoc/biber.1 %{buildroot}%{_mandir}/man1/biber-ms.1
-	    gzip -n %{buildroot}%{_mandir}/man1/biber-ms.1
+	    gzip -n9 %{buildroot}%{_mandir}/man1/biber-ms.1
 	popd
 	sed -ri "/^use warnings;/a\use lib %{perl_vendorlib}/biber-ms;" %{buildroot}%{_bindir}/biber-ms
 	sed -ri '\@/usr/(share|bin)/.*@d' texlive.files
@@ -4586,7 +4586,7 @@ popd
 	%perl_gen_filelist
 	pushd blib
 	    install -m 0644 bindoc/biber.1 %{buildroot}%{_mandir}/man1/
-	    gzip -n %{buildroot}%{_mandir}/man1/biber.1
+	    gzip -n9 %{buildroot}%{_mandir}/man1/biber.1
 	popd
 	sed -ri '\@/usr/(share|bin)/.*@d' texlive.files
     popd
@@ -4660,6 +4660,7 @@ popd
 	find -type l -printf '%f\a%l\n' | \
 	    while IFS=$'\a' read dst src; do
 		case "$src" in
+                /*)             ;;
 %if 0%{texlive_version} >= 2013
 		*/texmf/*)	ln -vsf ../share/texmf/${src#../texmf/}	    $dst ;;
 %else
@@ -4740,7 +4741,7 @@ popd
 %endif
     # install manual page of public
     install -m 0644 %{S:51} %{buildroot}%{_mandir}/man8/public.8
-    gzip %{buildroot}%{_mandir}/man8/public.8
+    gzip -n9 %{buildroot}%{_mandir}/man8/public.8
 
     # is part of texlive-kpathsea
     rm -vf %{buildroot}%{_texmfconfdir}/web2c/fmtutil.cnf

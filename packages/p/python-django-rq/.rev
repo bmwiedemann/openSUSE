@@ -72,4 +72,16 @@ already being maintained over a long period by https://build.opensuse.org/users/
   - Support for RQ &gt;= 1.4.0</comment>
     <requestid>1131506</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ff8dc9704b10c6c89a01e6776fabe758</srcmd5>
+    <version>2.10.1</version>
+    <time>1705353460</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.10.1:
+  * Fixed packaging issues with 2.10.0.
+  * Added `rqworker-pool` management command.
+  * Compatibility with Django 5.0.
+  * The scheduler now defaults to db 0.</comment>
+    <requestid>1138692</requestid>
+  </revision>
 </revisionlist>

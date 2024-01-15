@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan 13 20:41:52 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.3.3:
+  * Add .readthedocs.yml
+  * Build wheels for Python 3.12
+
+-------------------------------------------------------------------
 Sat Jun 10 17:47:48 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
@@ -40,8 +47,8 @@ Thu Jan 28 22:59:45 UTC 2021 - Dirk Müller <dmueller@suse.com>
 - update to 3.1.3:
   * Travis fixes
   * Wheels for 3.9
-  * Correct how pkgconfig is handled in setup.py to account for multiple build flags 
-  * Improve how CHAR_BIT is handled 
+  * Correct how pkgconfig is handled in setup.py to account for multiple build flags
+  * Improve how CHAR_BIT is handled
   * adds block size record support to the stream bindings
   * fixups to the tests to reduce execution time
 

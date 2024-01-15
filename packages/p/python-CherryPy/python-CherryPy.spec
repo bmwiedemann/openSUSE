@@ -1,7 +1,7 @@
 #
 # spec file for package python-CherryPy
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,14 +24,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-CherryPy
-Version:        18.8.0
+Version:        18.9.0
 Release:        0
 Summary:        Object-Oriented HTTP framework
 License:        BSD-3-Clause
 URL:            https://www.cherrypy.dev
 Source:         https://files.pythonhosted.org/packages/source/C/CherryPy/CherryPy-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/cherrypy/cherrypy/pull/1959
-Patch0:         use-read_file-not-readfp.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module wheel}

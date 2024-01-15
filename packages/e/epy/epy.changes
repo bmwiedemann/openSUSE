@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 10 17:23:31 UTC 2024 - Michal Suchanek <msuchanek@suse.com>
+
+- Make buildable on Leap.
+
+-------------------------------------------------------------------
 Wed Dec 20 11:43:07 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Do not write non-deterministic .pyc files in tests

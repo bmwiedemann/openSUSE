@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-translations
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,17 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-pytest-translations
-Version:        4.0.1
+Version:        5.0.0
 Release:        0
 Summary:        Plugin for testing gettext, .po and .mo files
 License:        Apache-2.0
 URL:            https://github.com/Thermondo/pytest-translations
-Source:         https://files.pythonhosted.org/packages/source/p/pytest-translations/pytest-translations-%{version}.tar.gz
-BuildRequires:  %{python_module pbr}
-BuildRequires:  %{python_module setuptools}
+Source:         https://files.pythonhosted.org/packages/source/p/pytest-translations/pytest_translations-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  myspell-de_DE
 BuildRequires:  python-rpm-macros
@@ -49,25 +49,21 @@ Test check for:
 -  Fuzzy translations
 
 %prep
-%setup -q -n pytest-translations-%{version}
+%setup -q -n pytest_translations-%{version}
 
 %build
 export LANG=en_US.UTF-8
-%python_build
+%pyproject_wheel
 
 %install
 export LANG=en_US.UTF-8
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%check
-export LANG=en_US.UTF-8
-%pytest
-
 %files %{python_files}
-%doc AUTHORS ChangeLog README.rst
+%doc README.rst
 %license LICENSE
-%{python_sitelib}/pytest_translations-%{version}-py%{python_version}.egg-info/
+%{python_sitelib}/pytest_translations-%{version}.dist-info
 %{python_sitelib}/pytest_translations
 
 %changelog

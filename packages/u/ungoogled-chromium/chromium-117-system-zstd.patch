@@ -3,18 +3,22 @@ From: Matt Jolly <Matt.Jolly@footclan.ninja>
 Date: Sun, 17 Sep 2023 16:51:42 +1000
 Subject: [PATCH] Add system-zstd
 
---- a/build/linux/unbundle/replace_gn_files.py
-+++ b/build/linux/unbundle/replace_gn_files.py
-@@ -74,6 +74,7 @@ REPLACEMENTS = {
-   #
+Index: chromium-120.0.6099.18/build/linux/unbundle/replace_gn_files.py
+===================================================================
+--- chromium-120.0.6099.18.orig/build/linux/unbundle/replace_gn_files.py
++++ chromium-120.0.6099.18/build/linux/unbundle/replace_gn_files.py
+@@ -79,6 +79,7 @@ REPLACEMENTS = {
+   'vulkan_memory_allocator' : 'third_party/vulkan_memory_allocator/BUILD.gn',
    'woff2': 'third_party/woff2/BUILD.gn',
    'zlib': 'third_party/zlib/BUILD.gn',
 +  'zstd': 'third_party/zstd/BUILD.gn',
  }
  
  
+Index: chromium-120.0.6099.18/build/linux/unbundle/zstd.gn
+===================================================================
 --- /dev/null
-+++ b/build/linux/unbundle/zstd.gn
++++ chromium-120.0.6099.18/build/linux/unbundle/zstd.gn
 @@ -0,0 +1,25 @@
 +import("//build/config/linux/pkg_config.gni")
 +import("//build/shim_headers.gni")
@@ -41,6 +45,3 @@ Subject: [PATCH] Add system-zstd
 +  deps = [ ":zstd_shim" ]
 +  public_configs = [ ":system_zstd" ]
 +}
--- 
-2.42.0
-

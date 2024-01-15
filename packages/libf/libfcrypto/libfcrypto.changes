@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan 15 09:35:23 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20240115
+  * Document DES3-CBC
+
+-------------------------------------------------------------------
+Sun Jan 14 18:26:37 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20240114
+  * Added Blowfish-{CBC,EBC} and DES3-CBC support
+
+-------------------------------------------------------------------
 Wed Dec  6 09:24:47 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20231120

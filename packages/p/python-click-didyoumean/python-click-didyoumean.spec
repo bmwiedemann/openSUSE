@@ -1,7 +1,7 @@
 #
 # spec file for package python-click-didyoumean
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,16 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-click-didyoumean
-Version:        0.0.3
+Version:        0.3.0
 Release:        0
 Summary:        Plugin to enable git-like did-you-mean feature in python-click
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/timofurrer/click-didyoumean
 Source:         https://github.com/click-contrib/click-didyoumean/archive/v%{version}.tar.gz#/click-didyoumean-%{version}.tar.gz
-# https://github.com/click-contrib/click-didyoumean/pull/4
-Patch0:         update-tests.patch
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-click
@@ -43,20 +43,17 @@ This package enables a git-like did-you-mean feature in click.
 
 %prep
 %setup -q -n click-didyoumean-%{version}
-%patch0 -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export LANG=en_US.UTF-8
-# Upstream changed quotes, none of the tests are applicable with new version and last commit was in 2019 May
-# Just skip the tests for now until upstream catches up
-#%%pytest
+%pytest
 
 %files %{python_files}
 %doc README.rst

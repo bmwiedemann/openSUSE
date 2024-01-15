@@ -713,4 +713,13 @@
   * Update python testing as per zed cycle teting runtime</comment>
     <requestid>1100899</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>2abd3074f84dc43dcbe5bae370696316</srcmd5>
+    <version>5.2.0</version>
+    <time>1705353475</time>
+    <user>anag+factory</user>
+    <comment>- update to version 5.2.0
+  - Fix the gate</comment>
+    <requestid>1138702</requestid>
+  </revision>
 </revisionlist>

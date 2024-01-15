@@ -558,4 +558,13 @@
   * Add conflict\_handler parameter as attribut in Command class</comment>
     <requestid>1137085</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>391b3e65089e0e1f814342a00001a16d</srcmd5>
+    <version>4.5.0</version>
+    <time>1705353450</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.5.0:
+  * Use importlib.metadata on Python 3.10+</comment>
+    <requestid>1138686</requestid>
+  </revision>
 </revisionlist>

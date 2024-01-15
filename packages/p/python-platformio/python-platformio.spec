@@ -1,7 +1,7 @@
 #
 # spec file for package python-platformio
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-platformio
-Version:        6.1.5
+Version:        6.1.13
 Release:        0
 Summary:        New Generation Ecosystem for Embedded Development
 License:        Apache-2.0
@@ -66,10 +66,7 @@ who write applications for embedded products.
 
 %install
 %pyproject_install
-# mv because of gh#platformio/platformio-core#4458
-%{python_expand mv %{buildroot}%{$python_sitelib}/scripts %{buildroot}%{$python_sitelib}/platformio
-%fdupes %{buildroot}%{$python_sitelib}
-}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %python_clone -a %{buildroot}%{_bindir}/pio
 %python_clone -a %{buildroot}%{_bindir}/piodebuggdb

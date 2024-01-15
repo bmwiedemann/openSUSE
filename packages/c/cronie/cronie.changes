@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 11 17:52:56 UTC 2024 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Fix anacron not working when /etc/default/anacron does not exist,
+  fixes bsc#1218377
+  * test-for-etc-default-anacron.patch
+
+-------------------------------------------------------------------
 Sat Nov 11 15:17:43 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 1.7.0:

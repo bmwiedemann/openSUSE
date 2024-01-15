@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Sun Jan 14 15:12:14 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 24.1.0:
+  * The lazy logger proxy returned by `structlog.get_logger()`
+    now returns its initial values when asked for context.
+  * When asked for context before binding for the first time, it
+    returned an empty dictionary in 23.3.0.
+  * The displayed level name when using
+    `structlog.stdlib.BoundLogger.exception()` is `"error"`
+    instead of `"exception"`.
+  * Don't ignore the `width` argument of
+    `RichTracebackFormatter`.
+  * Implementing the output on top of the new columns API has
+    changed the default very slightly, but shouldn't be
+    noticeable.
+  * Async log methods (those starting with an `a`) now also
+    support the collection of callsite information using
+    `structlog.processors.CallsiteParameterAdder`.
+  * `structlog.stdlib.recreate_defaults()` now also adds
+    `structlog.stdlib.add_logger_name` to the processors.
+  * The return value from `get_logger()` (a
+    `BoundLoggerLazyProxy`) now passes `isinstance`-checks
+    against `structlog.typing.BindableLogger` on Python 3.12.
+  * `structlog.threadlocal.tmp_bind()` now also works with
+    `BoundLoggerLazyProxy` (in other words: before anything is
+    bound to a bound logger).
+  * stdlib: `ProcessorFormatter` can now be told to not render
+    the log record message using `getMessage` and just
+    `str(record.msg)` instead.
+  * stdlib: `structlog.stdlib.BoundLogger.exception()`'s handling
+    of`LogRecord.exc_info` is now set consistent with `logging`.
+  * Official support for Python 3.12.
+  * `structlog.processors.MaybeTimeStamper` that only adds a
+    timestamp if there isn't one already.
+  * `structlog.dev.ConsoleRenderer` now supports renamed
+    timestamp keys using the *timestamp_key* parameter.
+  * `structlog.dev.RichTracebackFormatter` that allows to
+    configure the traceback formatting.
+  * `FilteringBoundLogger.exception()` and
+    `FilteringBoundLogger.aexception()` now support positional
+    argument formatting like the rest of the methods.
+  * `structlog.processors.format_exc_info()` and
+    `structlog.dev.ConsoleRenderer` do not crash anymore when
+    told to format a non-existent exception.
+  * `structlog.stdlib.BoundLogger` now has, analogously to our
+    native logger, a full set of async log methods prefixed with
+    an `a`: `await log.ainfo("event!")`
+  * The default configuration now respects the presence of
+    `FORCE_COLOR` (regardless of its value, unless an empty
+    string).
+  * This disables all heuristics whether it makes sense to use
+    colors.
+  * The default configuration now respects the presence of
+    `NO_COLOR` (regardless of its value, unless an empty string).
+  * This disables all heuristics whether it makes sense to use
+    colors and overrides `FORCE_COLOR`.
+  * Accessing package metadata as attributes on the *structlog*
+    module is deprecated (for example, `structlog.__version__`).
+  * Please use `importlib.metadata` instead (for Python 3.7: the
+    *importlib-metadata* PyPI package).
+  * The `structlog.types` module is now deprecated in favor of
+    the `structlog.typing` module.
+  * It seems like the Python typing community is settling on this
+    name.
+  * The timestamps in the default configuration now use the
+    correct separator (`:`) for seconds.
+
+-------------------------------------------------------------------
 Fri Nov 11 13:14:31 UTC 2022 - pgajdos@suse.com
 
 - silent rpmlint
@@ -161,7 +229,7 @@ Wed Oct 13 08:36:18 UTC 2021 - Michael Vetter <mvetter@suse.com>
     pretty-printing tracebacks. rich takes precedence over
     better-exceptions if both are present.
     This only works if format_exc_info is absent in the processor chain.
-    #330 #349 
+    #330 #349
   * All use of colorama on non-Windows systems has been excised. Thus,
     colors are now enabled by default in structlog.dev.ConsoleRenderer
     on non-Windows systems. You can keep using colorama to customize
@@ -315,4 +383,4 @@ Thu Nov 22 13:28:52 UTC 2018 - Karol Babioch <kbabioch@suse.de>
 -------------------------------------------------------------------
 Tue Jul 31 12:37:20 UTC 2018 - kbabioch@suse.com
 
-- Initial packaging of version 18.1.0 
+- Initial packaging of version 18.1.0

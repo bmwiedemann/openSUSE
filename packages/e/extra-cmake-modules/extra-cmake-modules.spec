@@ -24,7 +24,7 @@
 %bcond_without doc
 %bcond_without released
 Name:           extra-cmake-modules%{?pkg_suffix}
-Version:        5.113.0
+Version:        5.114.0
 Release:        0
 Summary:        CMake modules
 License:        BSD-3-Clause

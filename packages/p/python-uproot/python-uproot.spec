@@ -1,7 +1,7 @@
 #
 # spec file for package python-uproot
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %global modname uproot
 Name:           python-uproot
-Version:        5.0.13
+Version:        5.2.1
 Release:        0
 Summary:        ROOT I/O in pure Python and Numpy
 License:        BSD-3-Clause
@@ -46,6 +46,7 @@ Suggests:       python-zstandard
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module RangeHTTPServer}
 BuildRequires:  %{python_module awkward}
 BuildRequires:  %{python_module lz4}
 BuildRequires:  %{python_module numpy >= 1.13.1}
@@ -54,7 +55,7 @@ BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module scikit-hep-testdata >= 0.4.31}
+BuildRequires:  %{python_module scikit-hep-testdata >= 0.4.35}
 BuildRequires:  %{python_module xxhash}
 BuildRequires:  %{python_module boost-histogram >= 0.13 if (%python-base without python2-base)}
 # /SECTION
@@ -80,14 +81,15 @@ arrays.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# test_0965-inverted-axes-variances-hist-888 missing hist package and causes import errors
-rm tests/test_0965-inverted-axes-variances-hist-888.py
+# Network based tests
+skip_network_tests=("-k" "not (test_0001_source_class or test_0006_notify_when_downloaded or test_0007_single_chunk_interface or test_0692_fsspec_reading)")
 if [ $(getconf LONG_BIT) -eq 32 ]; then
 # pandas tests assume 64bit types
-skiptests32=("-k" "not (test_jagged_pandas or test_pandas_vector_TLorentzVector or test_iterate_pandas_2 or test_function_iterate_pandas_2 or test_0430)")
+skiptests32="(test_jagged_pandas or test_pandas_vector_TLorentzVector or test_iterate_pandas_2 or test_function_iterate_pandas_2 or test_0430)"
 fi
+export HOME=$PWD
 export PYTEST_DEBUG_TEMPROOT=$(mktemp -d -p ./)
-%pytest -rfEs -m "not network" "${skiptests32[@]}"
+%pytest "${skip_network_tests[@]} ${skiptests32}"
 
 %files %{python_files}
 %doc README.md

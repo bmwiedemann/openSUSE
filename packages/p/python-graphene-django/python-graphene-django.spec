@@ -1,7 +1,7 @@
 #
 # spec file for package python-graphene-django
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,15 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-graphene-django
-Version:        3.0.0
+Version:        3.2.0
 Release:        0
 Summary:        Graphene Django integration
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/graphql-python/graphene-django
 Source:         https://github.com/graphql-python/graphene-django/archive/v%{version}.tar.gz#/graphene-django-%{version}.tar.gz
-# https://github.com/graphql-python/graphene-django/issues/1321
-Patch0:         python-graphene-django-no-mock.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -51,8 +49,8 @@ BuildRequires:  %{python_module graphql-core >= 3.1.0}
 BuildRequires:  %{python_module graphql-relay}
 BuildRequires:  %{python_module promise >= 2.1}
 BuildRequires:  %{python_module psycopg2}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest-django >= 3.3.2}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module text-unidecode}
 # /SECTION
@@ -63,7 +61,6 @@ Graphene Django integration.
 
 %prep
 %setup -q -n graphene-django-%{version}
-%patch0 -p1
 sed -i 's/from mock import MagicMock/from unittest.mock import MagicMock/' graphene_django/filter/tests/conftest.py
 
 sed -i 's/py\.test/pytest/g' graphene_django/tests/*.py graphene_django/tests/issues/*.py graphene_django/*/tests/*.py
@@ -91,7 +88,7 @@ skips="$skips or test_reports_validation_errors or test_errors_when_missing_oper
 %pytest -k "not ($skips)"
 
 %files %{python_files}
-%doc README.rst README.md
+%doc README.md
 %license LICENSE
 %{python_sitelib}/graphene[_-]django*/
 

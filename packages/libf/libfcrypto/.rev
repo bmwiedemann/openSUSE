@@ -57,4 +57,14 @@
     <comment>- Update to release 20231120</comment>
     <requestid>1131300</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>67fc7c2cf0fb55ec2364ae132c1ffbb2</srcmd5>
+    <version>20240115</version>
+    <time>1705353578</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 20240115
+  * Document DES3-CBC
+  * Added Blowfish-{CBC,EBC} and DES3-CBC support</comment>
+    <requestid>1138790</requestid>
+  </revision>
 </revisionlist>

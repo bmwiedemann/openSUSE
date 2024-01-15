@@ -1,7 +1,7 @@
 #
 # spec file for package python-awkward
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define awkward_cpp_version 27
+%define awkward_cpp_version 28
 %{?sle15_python_module_pythons}
 Name:           python-awkward
-Version:        2.5.1
+Version:        2.5.2
 Release:        0
 Summary:        Manipulate arrays of complex data structures as easily as Numpy
 License:        BSD-3-Clause

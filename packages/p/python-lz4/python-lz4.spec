@@ -1,7 +1,7 @@
 #
 # spec file for package python-lz4
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-lz4
-Version:        4.3.2
+Version:        4.3.3
 Release:        0
 Summary:        LZ4 Bindings for Python
 License:        BSD-3-Clause

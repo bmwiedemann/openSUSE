@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-axes
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-django-axes
-Version:        6.2.0
+Version:        6.3.0
 Release:        0
 License:        MIT
 Summary:        Keep track of failed login attempts in Django-powered sites

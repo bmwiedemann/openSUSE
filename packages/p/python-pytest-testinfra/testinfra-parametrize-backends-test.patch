@@ -1,6 +1,8 @@
---- a/test/test_backends.py	2023-05-21 17:38:00.000000000 +0200
-+++ b/test/test_backends.py	2023-05-22 06:22:56.491195059 +0200
-@@ -476,13 +476,13 @@
+Index: pytest-testinfra-10.0.0/test/test_backends.py
+===================================================================
+--- pytest-testinfra-10.0.0.orig/test/test_backends.py
++++ pytest-testinfra-10.0.0/test/test_backends.py
+@@ -476,13 +476,13 @@ def test_ansible_unknown_option():
      with pytest.raises(KeyError, match="^'unknown'$"):
          runner.options_to_cli({"unknown": True})
  
@@ -18,4 +20,4 @@
 +    assert obj.get_connection_type() == connection_type
  
  
- @pytest.mark.testinfra_hosts("docker://rockylinux8", "ssh://rockylinux8")
+ @pytest.mark.testinfra_hosts("docker://rockylinux9", "ssh://rockylinux9")

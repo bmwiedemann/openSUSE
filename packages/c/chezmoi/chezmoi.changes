@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jan 15 16:40:09 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.45.0:
+  - Features
+    * feat: Scan for secrets with gitleaks when adding files
+    * feat: Add add.encrypt configuration variable
+  - Fixes
+    * fix: Improve robustness of keepassxc-cli integration in open mode
+    * fix: Handle keepassxc-cli localization
+    * fix: Restore user args to keepassxc-cli in cache password mode
+    * fix: Always use forward slashes to separate Windows paths
+
+-------------------------------------------------------------------
 Thu Jan 11 07:07:28 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.44.0:

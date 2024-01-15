@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jan 14 20:34:00 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.12.4
+  * Fix log arguments for gateway client error #1385 (@minrk)
+- Release 2.12.3
+  * Import User unconditionally #1384 (@yuvipanda)
+- Release 2.12.2
+  * Fix a typo in error message #1381 (@krassowski)
+  * Force legacy ws subprotocol when using gateway #1311 (@epignot)
+
+-------------------------------------------------------------------
 Sat Dec 23 19:39:32 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.12.1

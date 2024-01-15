@@ -16,7 +16,6 @@
 #
 
 
-%define skip_python2 1
 Name:           python-traittypes
 Version:        0.2.1
 Release:        0
@@ -42,7 +41,7 @@ BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module traitlets >= 4.2.2}
-BuildRequires:  %{python_module xarray if %python-base >= 3.9}
+BuildRequires:  %{python_module xarray}
 # /SECTION
 %python_subpackages
 
@@ -61,9 +60,7 @@ sed -i '1{/^#!/d}' traittypes/tests/test_validators.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# no xarray for Python 3.8
-python38_ignore="--ignore traittypes/tests/test_traittypes.py"
-%pytest traittypes ${$python_ignore}
+%pytest traittypes
 
 %files %{python_files}
 %doc README.md

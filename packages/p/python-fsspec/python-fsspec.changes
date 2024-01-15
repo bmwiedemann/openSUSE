@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 12 13:11:26 UTC 2024 - pgajdos@suse.com
+
+- have a possibility to not use pyarrow for testing [bsc#1218592]
+
+-------------------------------------------------------------------
 Sat Dec 16 12:44:59 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2023.12.2:

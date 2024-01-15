@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-alabaster
-Version:        0.7.15
+Version:        0.7.16
 Release:        0
 Summary:        Modified Kr Sphinx doc theme
 License:        BSD-3-Clause

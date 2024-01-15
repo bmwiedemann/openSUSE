@@ -1,7 +1,7 @@
 #
-# spec file for package xfce4-notes-plugin
+# spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define plugin notes
 %bcond_with git
 Name:           xfce4-%{plugin}-plugin
-Version:        1.10.0
+Version:        1.11.0
 Release:        0
 Summary:        Note-taking Plugin for the Xfce Panel
 License:        GPL-2.0-or-later
@@ -31,15 +31,16 @@ BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(gio-2.0) >= 2.30.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.30.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
 BuildRequires:  pkgconfig(libxfce4panel-2.0) >= 4.14.0
 BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.14.0
 BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.14.0
-BuildRequires:  pkgconfig(libxfconf-0)
-BuildRequires:  pkgconfig(xfce4-vala)
+BuildRequires:  pkgconfig(libxfconf-0) >= 4.14.0
 %if %{with git}
 BuildRequires:  xfce4-dev-tools
+BuildRequires:  pkgconfig(xfce4-vala)
 %endif
 # uses exo-open
 Requires:       exo-tools
@@ -100,8 +101,9 @@ rm %{buildroot}%{_libdir}/xfce4/panel/plugins/libnotes.la
 %{_bindir}/xfce4-notes
 %{_bindir}/xfce4-notes-settings
 %{_bindir}/xfce4-popup-notes
-%{_datadir}/xfce4-notes-plugin
-%{_datadir}/icons/hicolor/*/apps/xfce4-notes-plugin.*
+%{_datadir}/xfce4/notes
+%{_datadir}/icons/hicolor/*/apps/*xfce.notes.*
+%{_datadir}/icons/hicolor/*/apps/*xfce.panel.notes.*
 %{_datadir}/xfce4/panel/plugins/xfce4-notes-plugin.desktop
 %{_datadir}/applications/xfce4-notes.desktop
 %{_libdir}/xfce4/panel/plugins/libnotes.so

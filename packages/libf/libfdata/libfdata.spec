@@ -1,7 +1,7 @@
 #
 # spec file for package libfdata
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libfdata
 %define lname	libfdata1
-Version:        20230319
+Version:        20240114
 Release:        0
 Summary:        Library to provide generic file data functions
 License:        LGPL-3.0-or-later
@@ -27,31 +27,29 @@ URL:            https://github.com/libyal/libfdata
 Source:         https://github.com/libyal/libfdata/releases/download/%version/libfdata-alpha-%version.tar.gz
 Source2:        https://github.com/libyal/libfdata/releases/download/%version/libfdata-alpha-%version.tar.gz.asc
 Source3:        %name.keyring
-# The source code assumes 64bit integers for one of the function returns.  Fix that.
-Patch2:         libfdata-20211023-1TB-fix.patch
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libcdata) >= 20230108
-BuildRequires:  pkgconfig(libcerror) >= 20220101
-BuildRequires:  pkgconfig(libcnotify) >= 20220108
-BuildRequires:  pkgconfig(libcthreads) >= 20220102
-BuildRequires:  pkgconfig(libfcache) >= 20230115
+BuildRequires:  pkgconfig(libcdata) >= 20240103
+BuildRequires:  pkgconfig(libcerror) >= 20240101
+BuildRequires:  pkgconfig(libcnotify) >= 20240108
+BuildRequires:  pkgconfig(libcthreads) >= 20240102
+BuildRequires:  pkgconfig(libfcache) >= 20240112
 # Various notes: https://en.opensuse.org/libyal
 
 %description
 Library to provide generic file data functions for the libyal family of libraries.
 
-%package -n %{lname}
+%package -n %lname
 Summary:        Library to provide generic file data functions
 Group:          System/Libraries
 
-%description -n %{lname}
+%description -n %lname
 Library to provide generic file data functions for the libyal family of libraries.
 
 %package devel
 Summary:        Development files for libfdata
 Group:          Development/Libraries/C and C++
-Requires:       %{lname} = %{version}
+Requires:       %lname = %version
 
 %description devel
 Library to provide generic file data functions for the libyal family of libraries.
@@ -70,20 +68,20 @@ grep '  local' config.log && exit 1
 
 %install
 %make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+find %buildroot -type f -name "*.la" -delete -print
 
-%post   -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
+%post   -n %lname -p /sbin/ldconfig
+%postun -n %lname -p /sbin/ldconfig
 
-%files -n %{lname}
+%files -n %lname
 %license COPYING*
-%{_libdir}/libfdata.so.*
+%_libdir/libfdata.so.*
 
 %files devel
-%{_includedir}/libfdata.h
-%{_includedir}/libfdata/
-%{_libdir}/libfdata.so
-%{_libdir}/pkgconfig/libfdata.pc
-%{_mandir}/man3/libfdata.3*
+%_includedir/libfdata.h
+%_includedir/libfdata/
+%_libdir/libfdata.so
+%_libdir/pkgconfig/libfdata.pc
+%_mandir/man3/libfdata.3*
 
 %changelog

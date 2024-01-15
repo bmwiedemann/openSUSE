@@ -170,4 +170,19 @@ Mon 22. Jul 15:20:45 CEST 2019 - shundhammer@suse.de
     <comment></comment>
     <requestid>986023</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a681b435c6dd3ae7c3f2cfd314343bc6</srcmd5>
+    <version>1.9</version>
+    <time>1705353442</time>
+    <user>anag+factory</user>
+    <comment>- Update to V1.9:
+  - Greatly improved the visual appearance of the treemap
+  - Dominant items are now highlighted in bold font in the tree view
+  - New &quot;Find&quot; function in the scanned directory tree
+  - Added support for bookmarks
+  - New documentation to explain the treemap
+  - Some small improvements
+  - Bug fixes</comment>
+    <requestid>1138585</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package epy
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,8 @@
 #
 
 
+%global pythons python311
+%{?sle15_python_module_pythons}
 Name:           epy
 Version:        2022.12.11+git.1675870044.c7a87f3
 Release:        0
@@ -24,16 +26,16 @@ License:        GPL-3.0-only
 URL:            https://github.com/wustho/epy
 # Source:         https://files.pythonhosted.org/packages/source/e/epy-reader/epy-reader-%%{version}.tar.gz#/epy-%%{version}.tar.gz
 Source:         epy-%{version}.tar.xz
+BuildRequires:  %{python_module curses}
+BuildRequires:  %{python_module mobi}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
-BuildRequires:  python3-curses
-BuildRequires:  python3-mobi
-BuildRequires:  python3-pip
-BuildRequires:  python3-poetry-core
-BuildRequires:  python3-pytest
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-wheel
-Requires:       python3-curses
-Requires:       python3-mobi
+Requires:       python311-curses
+Requires:       python311-mobi
 Suggests:       dictd
 Suggests:       mimic
 Suggests:       sdcv
@@ -66,23 +68,23 @@ find . -name \*.py -print0 | while IFS= read -r -d $'\0' script; do
 done
 
 %build
-python3 -mpip wheel --no-deps --disable-pip-version-check --use-pep517 \
+python3.11 -mpip wheel --no-deps --disable-pip-version-check --use-pep517 \
     --no-build-isolation --progress-bar off --verbose . -w build/
 
 %install
-python3 -mpip install --root %{buildroot} --no-warn-script-location \
+python3.11 -mpip install --root %{buildroot} --no-warn-script-location \
     --disable-pip-version-check --no-compile --no-deps --progress-bar off \
     build/epy_reader-*-py3-none-any.whl
 
 %check
 export PYTHONDONTWRITEBYTECODE=1
-export PYTHONPATH=%{buildroot}/%{python3_sitelib}
-pytest -v tests
+export PYTHONPATH=%{buildroot}/%{python311_sitelib}
+python3.11 -m pytest -v tests
 
 %files
 %doc README.md
 %license LICENSE
 %{_bindir}/epy
-%{python3_sitelib}/*
+%{python311_sitelib}/*
 
 %changelog

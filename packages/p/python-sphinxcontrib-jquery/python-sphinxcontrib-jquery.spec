@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,8 +33,8 @@ Summary:        Extension to include jQuery on newer Sphinx releases
 License:        0BSD
 URL:            https://github.com/sphinx-contrib/jquery/
 Source:         https://files.pythonhosted.org/packages/source/s/sphinxcontrib-jquery/sphinxcontrib-jquery-4.1.tar.gz
-# PATCH-FIX-UPSTREAM tests-with-sphinx-72.patch gh#sphinx-contrib/jquery#27
-Patch1:         tests-with-sphinx-72.patch
+# PATCH-FIX-UPSTREAM tests-with-sphinx-72.patch gh#sphinx-contrib/jquery#27 and gh#sphinx-contrib/jquery#28
+Patch1:         tests-with-sphinx-72-python312.patch
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
 BuildRequires:  python-rpm-macros

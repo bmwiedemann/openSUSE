@@ -148,4 +148,41 @@
     <comment></comment>
     <requestid>1041206</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>da88d127c1ba9e20b96e8256a3aaf19a</srcmd5>
+    <version>5.12.4</version>
+    <time>1705353357</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.12.4:
+  * Fixed default value of merge_type parameter in merge_cells
+    function docstring.
+  * 1363 get all records retrieves a large number of empty rows
+    after the end of the data
+  * Many fixes for get_records
+  * change worksheet.update migration guide
+  * feature/readme migration v6
+  * add deprecation warnings for lastUpdateTime...
+  * remove use_index and references to it in get_records
+  * make deprecation warning dependent on if kwarg is used for
+    client_factory
+  * fix 1352 expected headers broken
+  * fix combine_merged_cells when using from a range that doesn't
+    start at A1
+  * feature -- adding worksheet.get_records to get specific row
+    ranges
+  * Fix list_spreadsheet_files return value
+  * Fix warning message for worksheet.update method
+  * change lambda function to dict (fix pyupgrade issue)
+  * allows users to silence deprecation warnings
+  * Add maintain_size to keep asked for size in get, get_values
+  * Fix list_spreadsheet_files return value by @mephinet in
+  * Fix merge_combined_cells in get_values (AND 5.11.2 RELEASE)
+  * remove Drive API access on Spreadsheet init (FIX - VERSION
+    5.11.1)
+  * add docs/build to .gitignore
+  * add release process to CONTRIBUTING.md
+  * add test_fill_gaps and docstring for fill_gaps
+  * Remove API calls from creationTime/lastUpdateTime</comment>
+    <requestid>1138508</requestid>
+  </revision>
 </revisionlist>

@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-psycopg-pool
 Version:        3.2.1
 Release:        0

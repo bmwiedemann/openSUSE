@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 15 13:49:41 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Use %sle15_python_module_pythons
+
+-------------------------------------------------------------------
 Wed Apr 20 07:47:51 UTC 2022 - pgajdos@suse.com
 
 - do not require python-mock for build

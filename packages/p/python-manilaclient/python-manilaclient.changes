@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sun Jan 14 17:56:42 UTC 2024 - cloud-devel@suse.de
+
+- update to version 4.7.0
+  - Fix default share type resolution in OSC
+  - Drop duplicate tox config
+  - Metadata for Share Snapshots
+  - [CI] switch to using osc for bootstrap
+  - Add '--count' option for snapshot list API.
+  - Fix "test_share_access_show" osc functional test
+  - Fix formatting of OSC server migration check-only
+  - Metadata for Share Network Subnets
+  - Implement share backup
+  - Fix tox4 errors
+  - Allow restricting access rules
+  - Update micversion to 2.77,support share transfer between project.
+  - Fix share network create command with the AZ option
+  - Support --os-key option
+  - Add quiesce_wait_time for replica promote
+  - Support for resource locks
+  - Fix functional tests failing with python 3.10
+  - Bump tox version
+  - Use suitable api version for OSC.
+  - Update master for stable/2023.2
+  - Add defaultadsite to security service
+  - Deprecate "manila" CLI client
+  - Update master for stable/2023.1
+  - Enable the option to return the response body
+  - Fix decoder path and add transfer commands
+
+-------------------------------------------------------------------
 Thu Dec  1 10:27:54 UTC 2022 - cloud-devel@suse.de
 
 - update to version 4.2.0

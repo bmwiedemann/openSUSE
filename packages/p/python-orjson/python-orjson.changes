@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Sun Jan 14 14:46:13 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.8.10
+  * Fix debug assert failure on 3.12 --profile=dev build.
+- Release 3.9.9
+  * orjson module metadata explicitly marks subinterpreters as not
+    supported.
+- Release 3.9.8
+  * Improve performance.
+  * Drop support for Python 3.7.
+- Release 3.9.7
+  * Fix crash in orjson.loads() due to non-reentrant handling of
+    persistent buffer. This was introduced in 3.9.3.
+  * Handle some FFI removals in CPython 3.13.
+- Release 3.9.6
+  * Fix numpy reference leak on unsupported array dtype.
+  * Fix numpy.datetime64 reference handling.
+  * Minor performance improvements.
+- Release 3.9.5
+  * Remove futex from module import and initialization path.
+- Release 3.9.4
+  * Fix hash builder using default values.
+  * Fix non-release builds of orjson copying large deserialization
+    buffer from stack to heap. This was introduced in 3.9.3.
+- Release 3.9.3
+  * Fix compatibility with CPython 3.12.
+  * Support i686/x86 32-bit Python installs on Windows.
+- Release 3.9.2
+  * Fix the __cause__ exception on orjson.JSONEncodeError possibly
+    being denormalized, i.e., of type str instead of Exception.
+- Release 3.9.1
+  * Fix memory leak on chained tracebacks of exceptions raised in
+    default. This was introduced in 3.8.12.
+- Release 3.9.0
+  * orjson.Fragment includes already-serialized JSON in a document.
+- Release 3.8.13
+  * Source distribution contains all source code required for an
+    offline build.
+  * Build uses maturin v1.
+- Release 3.8.12
+    * Exceptions raised in default are now chained as the __cause__
+      attribute on orjson.JSONEncodeError.
+- Release 3.8.11
+  * orjson.loads() on an empty document has a specific error
+    message.
+- Avoid cargo_audit error because of shipped old vulnerable
+  zerocopy: Devendor the shipped cargo and update the cargo_vendor
+  service
+
+-------------------------------------------------------------------
 Sat Jun 10 17:38:51 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

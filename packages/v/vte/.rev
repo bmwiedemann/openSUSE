@@ -1220,4 +1220,12 @@ New upstream release</comment>
   * build: Post release version bump (forwarded request 1134007 from dimstar)</comment>
     <requestid>1134010</requestid>
   </revision>
+  <revision rev="154" vrev="2">
+    <srcmd5>abd62d3dc61fc3e18d245ac5b3ce7ab3</srcmd5>
+    <version>0.74.2</version>
+    <time>1705353308</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1138768</requestid>
+  </revision>
 </revisionlist>

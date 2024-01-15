@@ -71,4 +71,17 @@
     <comment>- Add 0001-Add-missing-standard-library-includes-fix-build-with.patch to make gcc 13 happy.</comment>
     <requestid>1073381</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f6382193dba3a17b53bd635a32264bd8</srcmd5>
+    <version>1.1.12</version>
+    <time>1705353648</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.1.12:
+  * fix crash when FluidSynth soundfont cannot be loaded
+  * fix velocities and volume on MUS input
+  * updated embedded libraries to new versions
+- drop 0001-Add-missing-standard-library-includes-fix-build-with.patch
+  (upstream) (forwarded request 1138814 from dirkmueller)</comment>
+    <requestid>1138826</requestid>
+  </revision>
 </revisionlist>

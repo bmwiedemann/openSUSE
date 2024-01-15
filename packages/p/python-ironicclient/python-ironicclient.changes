@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Jan 14 17:54:49 UTC 2024 - cloud-devel@suse.de
+
+- update to version 5.4.0
+  - Update master for stable/2023.1
+  - Firmware Interface support
+  - Add baremetal node unhold
+  - Fix minor spelling errors and incorrect help text
+  - Update dependencies for pep8: to hacking v6
+  - Add support for parent node
+  - Add support for node inventory
+  - Followup: Remove print statements from test
+  - Accept configdrive as a JSON file
+  - tox: Remove basepython
+  - Allow several nodes for most node actions
+  - These should be indented 4 spaces to match the other things in this block
+  - Add python3.10 support in testing runtime
+  - Node sharding support
+
+-------------------------------------------------------------------
 Tue Mar  7 06:59:00 UTC 2023 - cloud-devel@suse.de
 
 - update to version 5.1.0

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 10 17:24:04 UTC 2024 - Michal Suchanek <msuchanek@suse.com>
+
+- Build for python 3.11 on Leap
+
+-------------------------------------------------------------------
 Thu Sep 29 16:33:34 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update version 0.3.3
@@ -29,4 +34,4 @@ Thu Sep 29 16:33:34 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 -------------------------------------------------------------------
 Wed Jul 28 22:09:43 UTC 2021 - Emily Roberts <nopeinomicon@posteo.net>
 
-- Initial package version 
+- Initial package version

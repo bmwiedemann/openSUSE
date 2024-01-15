@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jan 14 17:31:56 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.10.1:
+  * Fixed packaging issues with 2.10.0.
+  * Added `rqworker-pool` management command.
+  * Compatibility with Django 5.0.
+  * The scheduler now defaults to db 0.
+
+-------------------------------------------------------------------
 Wed Dec  6 22:49:46 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.9.0:

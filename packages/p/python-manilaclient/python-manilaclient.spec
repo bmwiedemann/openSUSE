@@ -1,7 +1,7 @@
 #
 # spec file for package python-manilaclient
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           python-manilaclient
-Version:        4.2.0
+Version:        4.7.0
 Release:        0
 Summary:        Client Library for OpenStack Share API
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/python-manilaclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-manilaclient/python-manilaclient-4.2.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-manilaclient/python-manilaclient-4.7.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-ddt
 BuildRequires:  python3-fixtures
@@ -76,13 +76,13 @@ Share API.
 This package contains auto-generated documentation.
 
 %prep
-%autosetup -p1 -n python-manilaclient-4.2.0
+%autosetup -p1 -n python-manilaclient-4.7.0
 %py_req_cleanup
 
 %build
 %{py3_build}
 
-PBR_VERSION=4.2.0 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=4.7.0 %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
@@ -96,7 +96,7 @@ install -p -D -m 644 tools/manila.bash_completion %{buildroot}%{_sysconfdir}/bas
 rm -f manilaclient/tests/unit/test_shell.py
 rm -f manilaclient/tests/unit/test_functional_utils.py
 rm -rf manilaclient/tests/functional
-python3 -m stestr.cli run
+%{openstack_stestr_run}
 
 %files -n python3-manilaclient
 %doc README.rst

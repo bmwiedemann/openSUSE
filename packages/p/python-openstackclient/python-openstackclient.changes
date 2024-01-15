@@ -1,4 +1,480 @@
 -------------------------------------------------------------------
+Sun Jan 14 18:03:17 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.4.0:
+  * tests: Handle missing extensions in network tests
+  * tests: Check for DHCP agents first in DHCP test
+  * Adds command \`\`image metadef object delete\`\`
+  * tests: Handle missing extensions in network tests
+  * tests: Fix API extension check
+  * tests: Centralise check for networking service
+  * Adds command \`\`image metadef object list\`\`
+  * Adds command \`\`image metadef object show\`\`
+  * Add pagination helpers
+  * Adds command \`\`image metadef object create\`\`
+  * Update the docker image to python3.11
+  * Update from storyboard to launchpad pt. 2
+  * volume: Support same\_host, different\_host hint as list
+  * Migrate resource filter commands to SDK
+  * Removed start, end time format. Before fix, openstack usage
+    list command resulted 'str' object has no attribute
+    'isoformat' error
+  * trivial: Make better use of argparse
+  * volume: Add alias for volume type AZs
+  * volume: Add aliases for common volume type props
+  * volume: Allow filtering volume types by properties
+  * Switch back to Launchpad
+  * Add support for default security group rule CRUDs
+  * Add "image metadef property set" command
+  * Add "image metadef property delete" command
+  * Add "image metadef property create" command
+  * Add "image metadef property show" command
+  * Add "image metadef property list" command
+  * Migrate volume backend commands to SDK
+  * image: Add support for cache commands
+  * tests: Add compute v2 FakeClientMixin
+  * tests: Use consistent shortcut to fake compute client
+  * tests: Add volume v1, v2, v3 FakeClientMixin
+  * tests: Use consistent shortcut to fake volume client
+  * tests: Use central SDK client fake
+  * Update branch regexes for tips jobs
+  * Add is\_incremental to ListVolumeBackup
+  * Update master for stable/2023.2
+  * tests: Explicitly specify port fields for output
+  * Remove use of oslo.utils
+  * volume: Deprecate '--detailed' options
+  * Propocol release versions properly
+  * Fix ReleaseNotes build
+  * tests: Add image v1, v2 FakeClientMixin
+  * tests: Use consistent shortcut to fake image client
+  * tests: Remove FakeImagev1Client, FakeImagev2Client
+  * tests: Add network v2 FakeClientMixin
+  * tests: Use consistent shortcut to fake network client
+  * tests: Remove FakeNetworkV2Client
+  * Remove project purge image commands
+  * Migrate 'extension list' to SDK
+  * Migrate 'availability zone list' to SDK
+  * Fix "server create"command with --boot-from-volume
+  * volume: Migrate 'volume group snapshot' commands to SDK
+  * tox: Bump min\_version to 4.3.0
+  * Add --skip-resource option to project cleanup
+  * Add the flavor-id option to router create
+  * Migrate backup commands to SDK
+  * Check the default role list before adding a new one
+  * Adding image stores info command
+  * Adding \`\`image delete --store\`\` and \`\`image import
+    info\`\` commands
+  * Add a warning for resizing servers booted from volumes
+  * Update the underlying python containers to "3.10-bookworm"
+  * docs: Add examples of common auth methods
+  * doc: Split image command documentation
+  * Add image metadef resource type command 'list'
+  * Migrate 'volume summary' command to SDK
+  * tests: Use a new project for quota tests
+  * Allow multiple \`--remove-tag\` in \`project set\`
+  * Fix "access rule" commands to only use ID
+  * tox: Disable E501
+  * Neutron port hints
+  * trivial: Remove duplicate definitions
+  * Dropping the use of 'addFixedIp' server action
+  * docs: Migrate volume commands to autoprogram-cliff
+  * volume: Add 'volume qos set --no-property' option
+  * volume: Make better use of argparse
+  * volume: Add 'volume type set --private/--public'
+  * compute: Fix bug with start/stop server
+  * Allow server rebuild --wait for SHUTOFF servers
+  * tests: Use SDK objects where expected
+  * tests: Remove unnecessary nesting of compute resources
+  * tests: Reorder compute fakes
+  * Migrate 'volume revert' command to SDK
+  * pre-commit: Enable black
+  * Ignore black changes
+  * Blacken everything else
+  * Blacken openstackclient.api
+  * Blacken openstack.common
+  * Blacken openstackclient.image
+  * Blacken openstackclient.object
+  * Blacken openstackclient.identity
+  * Blacken openstackclient.network
+  * Blacken openstackclient.volume
+  * Blacken openstackclient.compute
+  * Use pre-commit for 'pep8' tox target, bump versions
+  * Address pre-commit issues
+  * compute: Generate SSH keypairs ourselves
+  * Migrate 'server event \*' commands to SDK
+  * Fix pep issue in the network service provider
+  * Adding \`\`image import\`\` command
+  * Silence warnings from openstacksdk
+  * compute: Migrate 'reboot server' to SDK
+  * Add an updated tips job running on py310
+  * Show Network QoS rules one per line
+  * "hypervisor list --matching" showed the wrong result
+  * Docs: Update glance command mapping
+  * Fix --security-group for port list
+  * Update master for stable/2023.1
+  * Add missing documentation for state options for "image set"
+  * zuul: Merge osc-functional-devstack-base into only child
+  * Wait for volume being available to set bootable or readonly
+  * doc: Update nova command mapping
+  * Deprecate positional args for 'volume group create'
+  * Add options to create volume group from source
+  * Add block storage manageable list commands
+  * Add block storage cleanup command
+  * Add block storage log level {list, set} commands
+  * Add volume revert command
+  * Add auto-approve option to project cleanup
+  * volume: Remove duplication from 'consistency group create'
+    opts
+  * Move network trunk commands from python-neutronclient
+  * Add volume summary command
+  * tests: Use fake SDK Migration object
+  * Excluding test code from coverage reports
+  * Drop default from ask\_user\_yesno question
+  * Fix tox v4 compatibility
+  * Add plugin doc page for cyborg
+  * Update 'host list' and 'host show' command to use sdk
+  * Remove unused helpers for legacy novaclient
+  * Switch server shelve, unshelve to SDK
+  * compute: Switch server restore to SDK
+  * Remove unnecessary 'self.methods'
+  * Switch server start, server stop to SDK
+  * Switch server lock, unlock to sdk
+  * compute: 'server volume update' -> 'server volume set'
+  * Switch server volume update to sdk
+  * Switch list server volume to sdk
+  * Switch server dump create to using sdk
+  * Finish switching server migration to sdk
+  * Fix server list error with --long and -c options
+  * Create a functional test case for hypervisor list and show
+  * Fix functional-tips job
+  * Migrate hypervisor stats commands to SDK
+  * Fix really long help strings
+  * Fix parameter handling in server add fixed ip cmd
+  * Use the SDK for server show
+  * Add qos rule type filtering
+  * Add image metadef namespace command
+  * Updating the glanceclient reference doc
+  * docs: Fix typos
+  * compute: Allow users to manually specify bootable volumes
+  * tests: Add test for multiple blocks devices
+  * image: Fail if we can't find an image
+  * image: Rename import
+  * image: Add support for additional image import methods
+  * Revert "Don't look up project by id if given id"
+  * Use the SDK in server migration list
+  * docs: Document how we manage API versions
+  * docs: Describe common actions found in OSC
+  * Use the compute SDK in server list
+  * tests: Convert network tests to use 'parse\_output'
+  * tests: Convert compute tests to use 'parse\_output'
+  * tests: Convert identity tests to use 'parse\_output'
+  * tests: Convert volume tests to use 'parse\_output'
+  * tests: Convert image tests to use 'parse\_output'
+  * Adding volume backend commands to volume v3
+  * docs: Typo fix
+  * docs: Small cleanup of human interface guide
+  * Add test for creating volume from source
+  * Change --size helptext to include backup
+  * Add option to create volume from backup
+  * Docstring fix for CreateVolumeAttachment class
+  * Moved hypervisor to the SDK
+  * image: Add 'image import' command
+  * image: Add 'image stage' command
+  * image: Simplify handling of data provided via stdin
+  * image: Ignore '--progress' if providing image data from stdin
+  * Add baremetal agent type list filtering
+  * tests: Convert more functional tests to use 'parse\_output'
+  * tests: Move json decoding to base test class
+  * compute: Add missing microversion check for networks
+  * compute: Fix '--network none/auto' handling
+  * zuul: Remove nova-network tests
+  * Add note about microversion 2.87 in server rescue help
+  * compute: Add '--no-network', '--auto-network' flags
+  * Improve \`server dump create\` helptext
+  * Added "openstack image metadefs namespace list" command
+  * Use the compute SDK in usage commands
+  * quota: Deprecate "force" behavior for network quotas
+  * quota: Fix issues with delete quota command
+  * tests: Remove unnecessary nesting of volume resources
+  * tests: Remove duplicate FakeImagev1Client
+  * tests: Move fake clients to top of file
+  * quota: Trivial style fixups
+  * quota: Deprecate 'quota show --class', 'quota set --class'
+    arguments
+  * quota: Allow showing project-specific quotas
+  * quota: Add 'quota show --usage' option
+  * quota: Simplify logic used to list, show quotas
+  * Fix server evacuate command
+  * Speed up standard flavor list command
+  * quota: Add support for detailed volume quotas
+  * quota: Add 'quota delete' command
+  * doc: Update cinder command mapping
+  * Improve help text for network create --external
+  * Switch to 2023.1 Python3 unit tests and generic template name
+  * Update master for stable/zed
+  * Fix wrong assertion methods
+  * image: Add 'image task list' command
+  * image: Add 'image task show' commands
+  * Run swift in -tips job
+  * Replace assertItemsEqual with assertCountEqual
+  * Adding missing command mapping in docs
+  * volume: Volume names are optional
+  * compute: Add support for microversion 2.93
+  * compute: Require image when rebuilding a volume-backed server
+  * Add address-scope to NDP proxy tests
+  * network: Add tenant project filter for RBAC list
+  * Add router ndp proxy commands
+  * Fix missing closing brackets in metavar
+  * Remove invalid note from requirements files
+  * Bump python-novaclient version
+  * Microversion 2.91: Support specifying destination host to
+    unshelve
+  * remove unicode prefix from code
+  * Fix documents for replaced configuration name
+  * Migrate server\_groups to the new API
+  * config: Also mask non-prefix config
+  * Update the Nova CLI Mapping Guide
+  * Add authorization\_ttl for identity providers
+  * Add port ranges on floating ip portforwardings cli
+  * docs: Add missing command mappings
+  * Drop support for Python 3.6, 3.7
+  * pre-commit: Allow unsafe YAML
+  * Add support for CRUD operations for QoS minimum packet rate
+    rule
+  * image: Split image creation depending on service
+  * image: Make better use of argparse
+  * Fix: create image from volume command
+  * image: Trivial style changes
+  * Skip test\_quota\_network\_set\_with\_force func test
+  * Don't show tenant\_id in network objects
+  * Allow users to list all images
+  * Migrate osc-tox-py3N-tips to Python 3.8
+  * Add 'Host Status' to 'server list --long' with >= v2.16
+  * volume: Correct output of 'volume attachment create'
+  * Allow to filter multiple tags for image list
+  * Stop testing lower-constraints
+  * volume: Add 'block storage resource filter list' command
+  * volume: Add 'block storage cluster \*' commands
+  * Refactor network fakes to sdk properties PART 4
+  * Stop using private \_is\_uuid\_like method
+  * Add more filter option of columns for server list -c COLUMN
+  * compute: Only retrieve necessary images
+  * Add trustor and trustee filtering to trusts list
+  * Allow "--force" flag in quota network commands
+  * Refactor network fakes to sdk properties PART 3
+  * compute: Add 'Security Groups' for 'server list'
+  * Refactor network fakes to sdk properties PART 2
+  * Refactor network fakes to sdk properties PART 1
+  * Refactor "volume backup restore" command
+  * compute: Move server migrations commands to their own file
+  * compute: Allow retrieval of migration by UUID
+  * volume: fix backup list of deleted volume
+  * Add Python3 zed unit tests
+  * Update master for stable/yoga
+  * Fix metavars and typos in local\_ip
+  * Add support for setting extra DHCP options on existing ports
+  * volume list: don't fail when there's no compute service
+  * Fix 'server event list|show' for deleted servers
+  * docs: Document additional 'server migration' commands
+  * Add support for 'remote-managed' vnic type
+  * Don't fail on extlinks warnings for reno build
+  * Support Neutron Local IP CRUD
+  * Get rid of tenant\_id in the network commands
+  * Switch compute service list, delete and set to sdk
+  * Skip original\_name from flavor info
+  * Fix volume set functional test
+  * Add location to fake network objects
+  * Hide location columns for network objects
+  * compute: Pass through args to ssh
+  * compute: Fix weird option definition for 'server ssh'
+  * compute: Return information about fixed IP
+  * Switch add fixed IP to SDK
+  * tests: Improve logging for executed commands
+  * Allow setting gateway when creating a router
+  * Fix RemoveServerVolume
+  * Add network update quota "limit\_check" parameter
+  * Add --security-group to port list
+  * compute: Show flavor in 'server list' with API >= 2.47
+  * compute: Reorder building of columns for 'server list'
+  * Switch server suspend and server resume to SDK
+  * Switch server pause and server unpause to SDK
+  * Switch openstack server remove port/network to using sdk
+  * Allow unset port's host\_id
+  * Switch command server remove volume to sdk
+  * Add functional test for server add/remove volume
+  * Temporarily drop aodhclient from doc build
+  * Switch command server add volume to sdk
+  * Add missing command mapping in nova
+  * image: Sanity check the 'SetImage' command
+  * tests: Update fake image client in tests
+  * image: Remove FakeImage test helper
+  * image: Remove dead test helper methods
+  * Switch server image create to SDK
+  * Switch openstack server add port/network to using sdk
+  * compute: Return details of attached volumes
+  * compute: Use correct command class for 'show migration'
+  * compute: Don't warn if disk overcommit params unset
+  * Switch server backup to sdk
+  * Fix typos
+  * Remove remnants of 'six'
+  * Remove 'get\_osc\_show\_columns\_for\_sdk\_resource'
+    duplicates
+  * tox: Ignore virtualenvs for pep8 environment
+  * compute: Fix filtering servers by tags
+  * Update the Nova CLI docoder document
+  * Update the Nova CLI decoder document
+  * Remove non-working code after method return
+  * Add --trusted-image-cert option for server create
+  * Fix that the path of functional test
+  * Add Python3 yoga unit tests
+  * Update master for stable/xena
+  * Replace assertItemsEqual with assertCountEqual
+  * compute: Add support for microversion 2.89
+  * compute: Add support for microversion 2.90
+
+-------------------------------------------------------------------
+Sun Jan 14 18:03:05 UTC 2024 - cloud-devel@suse.de
+
+- removed 0001-Skip-original_name-from-flavor-info.patch
+- update to version 6.4.0
+  - Add plugin doc page for cyborg
+  - Allow server rebuild --wait for SHUTOFF servers
+  - Allow multiple `--remove-tag` in `project set`
+  - trivial: Make better use of argparse
+  - Adding ``image import`` command
+  - Silence warnings from openstacksdk
+  - compute: 'server volume update' -> 'server volume set'
+  - Migrate 'server event *' commands to SDK
+  - Wait for volume being available to set bootable or readonly
+  - Add image metadef resource type command 'list'
+  - Adding ``image delete --store`` and ``image import info`` commands
+  - Switch back to Launchpad
+  - Adds command ``image metadef object create``
+  - Adds command ``image metadef object list``
+  - Fix pep issue in the network service provider
+  - tests: Use consistent shortcut to fake compute client
+  - tests: Use a new project for quota tests
+  - Excluding test code from coverage reports
+  - docs: Migrate volume commands to autoprogram-cliff
+  - tests: Handle missing extensions in network tests
+  - volume: Remove duplication from 'consistency group create' opts
+  - Add missing documentation for state options for "image set"
+  - tests: Use consistent shortcut to fake image client
+  - Remove unnecessary 'self.methods'
+  - docs: Add examples of common auth methods
+  - tests: Remove unnecessary nesting of compute resources
+  - Adding image stores info command
+  - Use pre-commit for 'pep8' tox target, bump versions
+  - Add a warning for resizing servers booted from volumes
+  - Removed start, end time format. Before fix, openstack usage list command resulted 'str' object has no attribute 'isoformat' error.
+  - compute: Migrate 'reboot server' to SDK
+  - Drop default from ask_user_yesno question
+  - volume: Support same_host, different_host hint as list
+  - Add an updated tips job running on py310
+  - tests: Centralise check for networking service
+  - tests: Add network v2 FakeClientMixin
+  - Remove use of oslo.utils
+  - Blacken openstackclient.image
+  - Fix tox v4 compatibility
+  - Add support for default security group rule CRUDs
+  - tests: Use fake SDK Migration object
+  - Migrate backup commands to SDK
+  - volume: Make better use of argparse
+  - Neutron port hints
+  - Update from storyboard to launchpad pt. 2
+  - doc: Split image command documentation
+  - Migrate 'volume summary' command to SDK
+  - Switch list server volume to sdk
+  - Switch server lock, unlock to sdk
+  - tests: Remove FakeNetworkV2Client
+  - Add "image metadef property delete" command
+  - tests: Reorder compute fakes
+  - Add "image metadef property list" command.
+  - volume: Add 'volume qos set --no-property' option
+  - Fix --security-group for port list
+  - Migrate volume backend commands to SDK
+  - Remove unused helpers for legacy novaclient
+  - Migrate resource filter commands to SDK
+  - image: Add support for cache commands
+  - Blacken openstackclient.compute
+  - Add --skip-resource option to project cleanup
+  - tests: Use consistent shortcut to fake volume client
+  - doc: Update nova command mapping
+  - Migrate 'extension list' to SDK
+  - Add "image metadef property create" command
+  - Add pagination helpers
+  - Fix "access rule" commands to only use ID
+  - Switch server start, server stop to SDK
+  - Add block storage manageable list commands
+  - tests: Fix API extension check
+  - Switch server volume update to sdk
+  - Update 'host list' and 'host show' command to use sdk
+  - Fix ReleaseNotes build
+  - Show Network QoS rules one per line
+  - Blacken openstackclient.identity
+  - volume: Deprecate '--detailed' options
+  - tox: Disable E501
+  - Blacken openstack.common
+  - Deprecate positional args for 'volume group create'
+  - Adds command ``image metadef object show``
+  - tests: Remove FakeImagev1Client, FakeImagev2Client
+  - tox: Bump min_version to 4.3.0
+  - tests: Use consistent shortcut to fake network client
+  - Add "image metadef property show" command
+  - pre-commit: Enable black
+  - Propocol release versions properly
+  - compute: Fix bug with start/stop server
+  - trivial: Remove duplicate definitions
+  - Add the flavor-id option to router create
+  - Add auto-approve option to project cleanup
+  - Add "image metadef property set" command
+  - Dropping the use of 'addFixedIp' server action
+  - Add is_incremental to ListVolumeBackup
+  - Move network trunk commands from python-neutronclient
+  - Migrate 'volume revert' command to SDK
+  - Update the docker image to python3.11
+  - Add volume summary command
+  - Blacken openstackclient.volume
+  - volume: Add aliases for common volume type props
+  - Add volume revert command
+  - Docs: Update glance command mapping
+  - volume: Migrate 'volume group snapshot' commands to SDK
+  - Ignore black changes
+  - Blacken openstackclient.network
+  - volume: Add 'volume type set --private/--public'
+  - Update the underlying python containers to "3.10-bookworm"
+  - compute: Generate SSH keypairs ourselves
+  - Address pre-commit issues
+  - tests: Use central SDK client fake
+  - tests: Add image v1, v2 FakeClientMixin
+  - Migrate 'availability zone list' to SDK
+  - tests: Add compute v2 FakeClientMixin
+  - Blacken everything else
+  - tests: Use SDK objects where expected
+  - Update branch regexes for tips jobs
+  - Adds command ``image metadef object delete``
+  - Add block storage log level {list, set} commands
+  - tests: Add volume v1, v2, v3 FakeClientMixin
+  - Switch server shelve, unshelve to SDK
+  - Blacken openstackclient.object
+  - zuul: Merge osc-functional-devstack-base into only child
+  - Update master for stable/2023.2
+  - Fix "server create"command with --boot-from-volume
+  - tests: Explicitly specify port fields for output
+  - compute: Switch server restore to SDK
+  - Check the default role list before adding a new one
+  - Switch server dump create to using sdk
+  - Update master for stable/2023.1
+  - "hypervisor list --matching" showed the wrong result
+  - Add block storage cleanup command
+  - tests: Check for DHCP agents first in DHCP test
+  - Blacken openstackclient.api
+  - Add options to create volume group from source
+  - Remove project purge image commands
+  - volume: Add alias for volume type AZs
+  - volume: Allow filtering volume types by properties
+
+-------------------------------------------------------------------
 Sun Jun 19 11:35:22 UTC 2022 - cloud-devel@suse.de
 
 - added 0001-Skip-original_name-from-flavor-info.patch
@@ -329,7 +805,7 @@ Tue Mar 24 09:48:59 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 -------------------------------------------------------------------
 Mon Mar 23 14:46:35 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
-- remove nonsensical update-alternatives, which leaves an empty file behind 
+- remove nonsensical update-alternatives, which leaves an empty file behind
 
 -------------------------------------------------------------------
 Thu Mar 12 08:31:58 UTC 2020 - Dirk Mueller <dmueller@suse.com>
@@ -2447,7 +2923,7 @@ Thu Jun 26 10:08:47 UTC 2014 - dmueller@suse.com
 -------------------------------------------------------------------
 Tue Jun 24 08:20:55 UTC 2014 - dmueller@suse.com
 
-- add python_requires service 
+- add python_requires service
 
 -------------------------------------------------------------------
 Wed Jun 18 00:20:53 UTC 2014 -  cloud-devel@suse.de
@@ -2760,7 +3236,7 @@ Tue Nov 26 01:29:12 UTC 2013 - opensuse-cloud@opensuse.org
 -------------------------------------------------------------------
 Mon Nov 25 14:22:25 UTC 2013 - dmueller@suse.com
 
-- switch to python-setuptools 
+- switch to python-setuptools
 
 -------------------------------------------------------------------
 Sat Nov 23 00:38:02 UTC 2013 - opensuse-cloud@opensuse.org
@@ -2806,12 +3282,12 @@ Sun Oct 27 10:28:36 UTC 2013 - opensuse-cloud@opensuse.org
 -------------------------------------------------------------------
 Sun Oct 27 10:28:10 UTC 2013 - dmueller@suse.com
 
-- remove 0001-Adjust-to-non-deprecated-names-in-Keyring-1.6.patch 
+- remove 0001-Adjust-to-non-deprecated-names-in-Keyring-1.6.patch
 
 -------------------------------------------------------------------
 Thu Oct 24 12:26:20 UTC 2013 - dmueller@suse.com
 
-- add 0001-Adjust-to-non-deprecated-names-in-Keyring-1.6.patch 
+- add 0001-Adjust-to-non-deprecated-names-in-Keyring-1.6.patch
 - fix requires
 
 -------------------------------------------------------------------
@@ -2922,15 +3398,15 @@ Thu Aug  1 12:32:52 UTC 2013 - speilicke@suse.com
 -------------------------------------------------------------------
 Fri Jul 12 08:24:58 UTC 2013 - naehring@b1-systems.de
 
-- added python-keyring to requires 
+- added python-keyring to requires
 
 -------------------------------------------------------------------
 Tue Jul  2 07:51:48 UTC 2013 - dmueller@suse.com
 
-- fix requires 
+- fix requires
 
 -------------------------------------------------------------------
 Wed Jun 26 11:29:24 UTC 2013 - dmueller@suse.com
 
-- Initial package 
+- Initial package
 

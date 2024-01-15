@@ -7,4 +7,12 @@
     <comment>New Package</comment>
     <requestid>1136030</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8ab8c7ef1e3ef66fd236b4f09b086361</srcmd5>
+    <version>1.14</version>
+    <time>1705353654</time>
+    <user>anag+factory</user>
+    <comment>- Listen on IPv6 by default as well as IPv4</comment>
+    <requestid>1138823</requestid>
+  </revision>
 </revisionlist>

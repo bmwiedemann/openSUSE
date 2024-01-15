@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jan 14 17:31:18 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Have speech-dispatcher-module espeak supplement libespeak-ng1,
+  rather than espeak-ng. The latter provides a binary which is not
+  used or needed and that might not be installed.
+
+-------------------------------------------------------------------
 Mon Aug 14 20:12:09 UTC 2023 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 0.11.5:

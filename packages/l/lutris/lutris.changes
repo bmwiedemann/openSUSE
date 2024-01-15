@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Jan 13 22:53:29 UTC 2024 - Richard Rahl <rrahl0@proton.me>
+
+- Update to 0.5.15:
+  * Fix some crashes happening when using Wayland and a high
+    DPI gaming mouse
+  * Fix crash when opening the system preferences tab for a game
+  * Reduced the locales list to a predefined one
+  * Fix Lutris not expanding "~" in paths
+  * Download runtime components from the main window
+  * Add the ability to open a location in your file browser
+    from file picker widgets
+  * Add the ability to select, remove, or stop multiple games
+    in the Lutris window
+  * Redesigned 'Uninstall Game' dialog
+  * Fix the export / import feature
+  * Show an animation when a game is launched
+  * Add the ability to disable Wine auto-updates
+  * Add playtime editing in the game preferences
+  * Move game files, runners to the trash instead of deleting
+  * Add "Updates" tab in Preferences control
+  * Add "Storage" tab in Preferences
+  * Expand "System" tab in Preferences with more system information
+  * Add "Run Task Manager" command for Wine games
+  * Add two new, smaller banner sizes for itch.io games.
+  * Ignore Wine virtual desktop setting when using Wine-GE/Proton
+  * Ignore MangoHUD setting when launching Steam
+  * Sync Steam playtimes with the Lutris library
+
+-------------------------------------------------------------------
 Fri Oct 20 06:09:52 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.5.14:

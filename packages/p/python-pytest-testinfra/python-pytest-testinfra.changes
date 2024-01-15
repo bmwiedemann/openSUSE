@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Jan 15 14:11:05 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 10.0.0:
+  * [FIX] Fix output of error message
+  * [FIX] Ansible: Fix for missing group names in get_variables()
+  * [FIX] testinfra/modules/blockdevice: Don't fail on stderr
+  * [DOC] Extend and show the documentation of CommandResult
+  * [FIX] Extend list of valid suffixes for systemd units
+  * [DOC] Add missing Environment doc section
+  * [MISC] Define types for plugin.py
+  * [MISC] Bump actions/checkout from 3 to 4
+  * [FIX] Missing RHEL distribution in package module
+  * [NEW] feat(package): brew support
+  * [NEW] Add Service.exists
+  * [MISC] Make CommandResult a dataclass
+- update to 9.0.0:
+  * [BREAKING] pytest-testinfra now require python >= 3.9
+  * [BREAKING] Drop deprecated module PipPackage
+  * [NEW] Add support for the SSH ControlPath connection sharing
+    option
+  * [FIX] Retry SSH on ConnectionResetError
+  * [FIX] List openSUSE Leap and Tumbleweed explicitly as rpm
+    based distributions
+  * [FIX] Make group name mandatory in group module
+
+-------------------------------------------------------------------
 Mon May 22 04:16:57 UTC 2023 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
 
 - Update to 8.1.0:
@@ -87,7 +113,7 @@ Mon Apr 26 18:16:40 UTC 2021 - Ben Greiner <code@bnavigator.de>
     the transition, but you should rename to pytest-testinfra in
     your requirements files.
 - Add testinfra-parametrize-backends-test.patch in order to be able
-  to skip salt backend and still test the rest. 
+  to skip salt backend and still test the rest.
   (All docker tests are skipped automatically, because no there is
   no docker host running.)
 - Ignore upstream test-requirements.txt version pins:
@@ -102,7 +128,7 @@ Fri Jul  3 06:02:57 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
   * Allow kubeconfig context to be supplied in kubernetes backend
   * Drop file.__ne__ implementation and require python >= 3.5
   * Use remote_user and remote_port in ansible.cfg
-  * Add arch (architecture) attribute to system_info module 
+  * Add arch (architecture) attribute to system_info module
 
 -------------------------------------------------------------------
 Wed Mar 11 11:31:39 UTC 2020 - pgajdos@suse.com
@@ -144,11 +170,11 @@ Wed Aug 28 12:26:12 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 - update to version 3.1.0
   * ssh connections uses persistent connections by default.
   * ansible ssh connections now use ssh backend instead of paramiko.
-  * Add a new ansible connection options “force_ansible”, when set 
-    to True, testinfra will always call ansible for all commands 
+  * Add a new ansible connection options “force_ansible”, when set
+    to True, testinfra will always call ansible for all commands
     he need to run.
-  * Handle all ansible connections types by setting force_ansible=True 
-    for connections which doesn’t have a testinfra equivalent connection 
+  * Handle all ansible connections types by setting force_ansible=True
+    for connections which doesn’t have a testinfra equivalent connection
     (for example “network_cli”).
 
 -------------------------------------------------------------------

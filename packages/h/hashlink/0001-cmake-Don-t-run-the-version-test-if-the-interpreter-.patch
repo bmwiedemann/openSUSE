@@ -11,13 +11,13 @@ References: gh#HaxeFoundation/hashlink#521
  CMakeLists.txt | 14 +++++++-------
  1 file changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index e073af1..77c7c46 100644
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -292,6 +292,13 @@ if(BUILD_TESTING)
+Index: hashlink-1.14/CMakeLists.txt
+===================================================================
+--- hashlink-1.14.orig/CMakeLists.txt
++++ hashlink-1.14/CMakeLists.txt
+@@ -321,6 +321,13 @@ if(BUILD_TESTING)
          add_test(NAME uvsample.hl
-             COMMAND hl ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/test/uvsample.hl
+             COMMAND hl ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/test/uvsample.hl 6001
          )
 +        add_test(NAME version
 +            COMMAND hl --version
@@ -26,12 +26,12 @@ index e073af1..77c7c46 100644
 +            PROPERTIES
 +            PASS_REGULAR_EXPRESSION "${HL_VERSION}"
 +        )
-     endif()
+     ENDIF(INTERPRETER_ENABLED)
      add_test(NAME hello
          COMMAND hello
-@@ -302,13 +309,6 @@ if(BUILD_TESTING)
+@@ -331,13 +338,6 @@ if(BUILD_TESTING)
      add_test(NAME uvsample
-         COMMAND uvsample
+         COMMAND uvsample 6002
      )
 -    add_test(NAME version
 -        COMMAND hl --version
@@ -43,6 +43,3 @@ index e073af1..77c7c46 100644
  
  endif()
  
--- 
-2.36.1
-

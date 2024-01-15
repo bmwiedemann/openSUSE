@@ -1035,4 +1035,12 @@
     <comment>Update appstream BR (forwarded request 1134420 from krop)</comment>
     <requestid>1134598</requestid>
   </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>cdc80a458f23eb1974b5e4c722601dd2</srcmd5>
+    <version>5.114.0</version>
+    <time>1705353109</time>
+    <user>anag+factory</user>
+    <comment>KDE Frameworks 5.114.0</comment>
+    <requestid>1138887</requestid>
+  </revision>
 </revisionlist>

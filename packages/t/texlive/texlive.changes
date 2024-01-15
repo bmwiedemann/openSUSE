@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 15 07:34:20 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Fix wrong sys link target name for context.lua (Jianhua Lu) 
+- Use gzip -n9 for bit-reproducible man-pages (Bernhard Wiedemann)
+- Re-run spec file generator to include the changes above
+
+-------------------------------------------------------------------
 Fri Nov 17 14:23:06 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Silent some rpmlint errors 

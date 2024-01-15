@@ -1,7 +1,7 @@
 #
 # spec file for package libfcrypto
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 
 Name:           libfcrypto
 %define lname	libfcrypto1
-Version:        20231120
+Version:        20240115
 Release:        0
 Summary:        Library for encryption formats
 License:        LGPL-3.0-or-later
@@ -35,7 +35,7 @@ BuildRequires:  gettext-tools >= 0.21
 BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(libcerror) >= 20220101
+BuildRequires:  pkgconfig(libcerror) >= 20240101
 %python_subpackages
 # Various notes: https://en.opensuse.org/libyal
 

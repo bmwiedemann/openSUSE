@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jan 13 20:23:59 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.6.0:
+  * Replace imghdr with Pillow's PIL
+  * Use user_id when adding watcher
+  * Fix docs building
+  * gha: use pip caching from setup-python
+  * #1435 - recommend installing jira[cli] to get jirashell deps
+  * support pagination in createmeta methods
+  * Issue Field and Issue Type object based methods
+  * fix: small fix for dev docker
+  * Added warning log if issue link type not present
+
+-------------------------------------------------------------------
 Thu Dec  7 21:54:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.5.2:

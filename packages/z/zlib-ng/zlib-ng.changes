@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Jan 15 10:03:17 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.6:
+  * This release also improves on the functable implementation,
+    and also moves its initialization to happen in deflateInit()
+    and inflateInit(). We also have some optimizations for RVV
+    and ARM.
+  * Fix inflateCopy corruption caused by change in 2.1.4 #1628
+  * This is a regression caused by a change introduced in 2.1.4
+  * Initialize functable without TLS, using atomics #1609
+  * Initialize functable early, during DeflateInit and
+    InflateInit #1613
+  * Add FAR macro to zlib-compat headers to improve compatibility
+  * Improve performance of crc32_acle on 32-bit ARM #1397
+  * Add support for __attribute__((__target__(...))) to overcome
+    limitations of -march=native #1620
+  * Remove tab character in ACLE uqsub16 assembly #1627
+  * Optimize adler32_fold_copy using RVV #1597
+  * Simplify AVX2 and AVX512 adler32_fold_copy by removing
+    templates #1599
+  * Don't attempt ARMv6 detection on AARCH64 #1617
+  * Prevent tests writing into source directory #1604
+  * CMake: Fix clang-cl warnings #1591
+  * CMake: Export cmake target #1601 #1611
+  * CMake: Remove duplicate enable tests option #1610
+  * CMake: Fix reading version information from zlib.h.in #1614
+  * CMake: Check whether compiler supports -march=native or
+    -mcpu=native #1618
+  * CMake: Always run compiler feature tests without LTO #1622
+  * CMake: Make sure uqsub16 check doesn't get optimized away
+    with LTO #1619
+  * CMake: Update to GoogleTest 1.12.1 #1623
+  * Don't disable GoogleTest because of old CMake version #1623
+    #1638
+- update filelists
+
+-------------------------------------------------------------------
 Sun Dec  3 20:27:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1.5:

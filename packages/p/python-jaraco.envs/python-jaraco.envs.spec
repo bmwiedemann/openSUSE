@@ -1,7 +1,7 @@
 #
 # spec file for package python-jaraco.envs
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jaraco.envs
-Version:        2.4.0
+Version:        2.6.0
 Release:        0
 Summary:        Classes for Python Virtual Environments
 License:        MIT
@@ -59,11 +59,11 @@ sed -i '/tox/d' setup.cfg
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+%pytest -k "not envs.VirtualEnv"
 
 %files %{python_files}
 %license LICENSE
-%doc docs/*.rst README.rst CHANGES.rst
+%doc docs/*.rst README.rst NEWS.rst
 %{python_sitelib}/jaraco.envs-%{version}*info
 %dir %{python_sitelib}/jaraco
 %{python_sitelib}/jaraco/envs.py*

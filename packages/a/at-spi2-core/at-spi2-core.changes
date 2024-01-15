@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan 14 08:48:57 UTC 2024 - Yifan Jiang <yfjiang@suse.com>
+
+- Provide and obsolete more packages from old atk and at-spi2-atk:
+  atk-devel, at-spi2-atk-devel and at-spi2-atk-common.
+
+-------------------------------------------------------------------
 Mon Sep 18 01:14:03 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
 
 - Adjust %fdupes parameter value to %{buildroot}%{_datadir}, one of

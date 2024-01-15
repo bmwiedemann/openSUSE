@@ -505,4 +505,41 @@
     <comment></comment>
     <requestid>1114562</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d848d75d735bba29f0e88b06fce5aaf8</srcmd5>
+    <version>2.3.0</version>
+    <time>1705353350</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.3.0:
+  * [:repo:`8298`]: core-providers (audio): removes deprecated
+    status property
+  * [:repo:`8299`]: core-providers (audio): removes deprecated
+    filename property
+  * [:repo:`8300`]: core-providers (window): Removes deprecated
+    toggle_fullscreen method
+  * [:repo:`8309`]: Add graphics with antialiasing:
+    SmoothRectangle, SmoothEllipse, SmoothRoundedRectangle,
+    SmoothQuad and SmoothTriangle
+  * [:repo:`8313`]: Linux dependencies: Build libpng16 for
+    freetype so can render colored emoji
+  * [:repo:`8315`]: Remove the extra position added to undo list
+    while using Shift key
+  * [:repo:`8317`]: macOS dependencies: Build libpng16 for
+    freetype, so can render colored emoji
+  * [:repo:`8495`]: Honour multiline=True/False while pasting,
+    Fix Scroll after backspace and undo.
+  * [:repo:`8497`]: Added spanish layout json for the vkeyboard
+  * [:repo:`8503`]: Pillow text provider: use get_bbox when
+    get_size is not available. Allows latest versions of pillow
+    to work along with older ones.
+  * [:repo:`8459`]: Deprecate kivy.utils.interpolate and improve
+    related docs
+  * [:repo:`8206`]: Improved KV-lang parser error info when
+    indentation is invalid
+  * [:repo:`8301`]: Rework custom garden importer to avoid usage
+    of imp module (removed in Python 3.12)
+  * [:repo:`8357`]: Apply style fixes as suggested by new flake8
+    version</comment>
+    <requestid>1138498</requestid>
+  </revision>
 </revisionlist>

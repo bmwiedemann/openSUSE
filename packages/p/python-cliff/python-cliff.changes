@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan 14 17:06:47 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.5.0:
+  * Use importlib.metadata on Python 3.10+
+
+-------------------------------------------------------------------
 Thu Jan  4 23:04:20 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.4.0:

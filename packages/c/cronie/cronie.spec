@@ -1,7 +1,7 @@
 #
 # spec file for package cronie
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -48,6 +48,8 @@ Patch5:         cronie-crond_pid.diff
 Patch13:        fix-manpage-replace-anacrontab-with-crontab.patch
 # PATCH-FEATURE-OPENSUSE user common-session-nonlogin
 Patch14:        cronie-pam_config-nonlogin.diff
+# PATCH-FIX-UPSTREAM danilo.spinella@suse.com bsc#1218377
+Patch15:        test-for-etc-default-anacron.patch
 BuildRequires:  audit-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -109,6 +111,7 @@ cp %{SOURCE7} ./cron_to_cronie.README
 %if 0%{?suse_version} > 1500
 %patch14 -p1
 %endif
+%patch15 -p1
 
 %build
 # fill macro CRON_VERSION it is used in top three lines of crontab file,should be reworked

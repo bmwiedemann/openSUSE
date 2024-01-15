@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan 14 10:49:08 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.10:
+  * Remove Sphinx as a required dependency, as circular
+    dependencies may cause failure with package managers that
+    expect a directed acyclic graph (DAG) of dependencies.
+
+-------------------------------------------------------------------
 Tue Aug 29 19:11:22 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Clean up the SPEC file

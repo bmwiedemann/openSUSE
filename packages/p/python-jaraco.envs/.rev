@@ -39,4 +39,15 @@
     <comment></comment>
     <requestid>1081874</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>805d769f3fa9ae16de6ddc50c0a2b517</srcmd5>
+    <version>2.6.0</version>
+    <time>1705353063</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.6.0:
+  * Environments now have a default name, '.venv'.
+  * Remove Python 3.7 compatibility from tests.
+  * Require Python 3.8 or later.</comment>
+    <requestid>1138503</requestid>
+  </revision>
 </revisionlist>

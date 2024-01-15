@@ -59,4 +59,41 @@
 - Eliminate complicated py2k constructs</comment>
     <requestid>795833</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>cbbdbc0a273a35f7affaba96689d0847</srcmd5>
+    <version>2.0</version>
+    <time>1705353452</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.0:
+  * Drop support for Python 2.7, 3.4, 3.5, 3.6.
+  * Add support for Python 3.10, 3.11.
+  * [breaking] If a bytes object is serialized by a String schema
+    node with the encoding parameter specified, it will be passed
+    through directly to str first, causing it to come out with a
+    b'' prefix. In order to serialize it properly, it should be
+    decoded to a string first. Previously, when the encoding
+    parameter was specified it would be decoded and re-encoded,
+    effectively passing it through untouched, despite not being a
+    string type.
+  * Add a new colander.DataURL validator.
+  * Add IDN support to colander.url.
+  * colander.All now supports colander.Invalid.msg being None or
+    a list, otherwise colander.Invalid.asdict crashes with
+    TypeError: sequence item 1: expected str instance, NoneType
+    found.
+  * Fixed an issue with colander.Mapping and colander.Sequence
+    where a default value of drop caused missing values to be
+    dropped during deserialization. (Only missing values should
+    affect deserialization, and only default values should affect
+    serialization.) Added many new test cases for MappingSchema
+    and SequenceSchema.
+  * Remove the dependency on setuptools for resolving
+    pkg_resources-style importable paths in
+    colander.GlobalObject.
+  * Refresh localization files with Babel 2.11.
+  * Add support for Python 3.9.
+  * Fix handling of insert_before on deferred nodes so that it
+    inserts the new node before the specified node instead of</comment>
+    <requestid>1138687</requestid>
+  </revision>
 </revisionlist>
