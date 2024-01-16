@@ -15,7 +15,7 @@
   boo#1218492: '20240115'
   boo#1218565: '20240107'
   poo#120459: '20240110'
-  poo#132191: '20240112'
+  poo#132191: '20240115'
   poo#133691: '20240111'
   poo#134078: '20240115'
   poo#137423: '20240115'
@@ -481,8 +481,8 @@ set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
     <value>failed: ''
-published: '20240114'
-publishing: '20240114'
+published: '20240115'
+publishing: '20240115'
 testing: '20240115'
 </value>
   </attribute>
