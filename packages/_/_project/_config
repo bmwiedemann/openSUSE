@@ -1008,6 +1008,9 @@ Prefer: -wlroots-0_16-devel
 # have choice for pkgconfig(nunit): nunit-devel nunit3-devel; as usual, unversioned one wins
 Prefer: -nunit3-devel
 
+# have choice for libsymspg.so.2()(64bit) needed by libAvogadro1: libsymspg2 python3-spglib
+Prefer: -python3-spglib
+
 # have choice for pkgconfig(fmt): fmt-9-devel fmt-devel
 Prefer: -fmt-9-devel
 

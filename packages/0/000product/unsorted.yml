@@ -8215,6 +8215,7 @@ unsorted:
   - hunspell-devel 
   - hunspell-devel-32bit 
   - hunspell-tools 
+  - hurl 
   - hut 
   - hut-bash-completion 
   - hut-fish-completion 
@@ -22494,7 +22495,6 @@ unsorted:
   - python-tooz-doc 
   - python-tqdm-bash-completion 
   - python-translationstring-doc 
-  - python-typeshed 
   - python-xml 
   - python-zope.deprecation-doc 
   - python-zope.event-doc 
@@ -35086,7 +35086,6 @@ unsorted:
   - spectcl 
   - spectre-meltdown-checker 
   - speech-dispatcher-configure 
-  - speech-dispatcher-module-espeak 
   - speedcrunch 
   - speedtest-cli 
   - speex 
