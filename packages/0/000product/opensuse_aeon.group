@@ -1303,6 +1303,7 @@
     <package name="libtracker-sparql-3_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libts0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libtss2-esys0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
+    <package name="libtss2-fapi-common" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libtss2-fapi1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libtss2-mu0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libtss2-rc0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->

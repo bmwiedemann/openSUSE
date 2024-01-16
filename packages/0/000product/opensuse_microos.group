@@ -1878,6 +1878,7 @@
     <package name="libtracker-sparql-3_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libts0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libtss2-esys0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
+    <package name="libtss2-fapi-common" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
     <package name="libtss2-fapi1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
     <package name="libtss2-mu0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libtss2-rc0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
