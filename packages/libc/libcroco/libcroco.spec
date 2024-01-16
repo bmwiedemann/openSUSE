@@ -1,7 +1,7 @@
 #
 # spec file for package libcroco
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -87,7 +87,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files devel
 %doc AUTHORS ChangeLog HACKING README TODO
-%doc %{_datadir}/gtk-doc/html/libcroco/
+%doc %{_datadir}/gtk-doc/
 %{_bindir}/*-config
 %{_includedir}/*
 %{_libdir}/*.so

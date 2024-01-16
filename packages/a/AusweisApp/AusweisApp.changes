@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan 13 11:49:15 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 2.0.2
+    - Avoid showing hints to the PIN reset service.
+- Pass original source tree name to %setup macro
+- Use original source tree name in %install section
+
+-------------------------------------------------------------------
 Wed Nov 15 07:45:17 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release

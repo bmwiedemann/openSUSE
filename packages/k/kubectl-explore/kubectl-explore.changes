@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 15 20:24:18 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.7.2:
+  * use latest version for every steps
+  * bump deps
+- BuildRequire go1.21
+
+-------------------------------------------------------------------
 Wed Mar  1 14:40:26 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - new package kubectl-explore: A better kubectl explain with the fuzzy finder

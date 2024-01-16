@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 16 09:10:20 UTC 2024 - luna.dragon@suse.com
+
+- Update to version 0.1.2~git0.647b3e3:
+  * Update dependencies to fix building against latest versions of Cockpit
+  * Forcefully reload the whole page when getting/limitin admin access
+  * Update @babel/traverse to avoid security issues
+
+-------------------------------------------------------------------
 Wed Oct 04 10:16:48 UTC 2023 - miika.alikirri@suse.com
 
 - Update to version 0.1.0~git0.8c6c01a:

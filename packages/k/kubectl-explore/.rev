@@ -7,4 +7,12 @@
     <comment>new package kubectl-explore: A better kubectl explain with the fuzzy finder</comment>
     <requestid>1071221</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>65d96f8d47c3106e27afe3a6f19eaba7</srcmd5>
+    <version>0.7.2</version>
+    <time>1705437461</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1139032</requestid>
+  </revision>
 </revisionlist>

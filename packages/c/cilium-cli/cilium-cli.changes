@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Mon Jan 15 16:54:11 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.15.20:
+  * Prepare for v0.15.20 release
+  * chore(deps): update actions/download-artifact action to v4.1.1
+  * ci: remove unnecessary steps unlabeling nodes in kind workflow
+  * ci: unique artifact name for junit reports in kind workflow
+  * chore(deps): update docker.io/library/busybox:stable-glibc
+    docker digest to 51d373b
+  * chore(deps): update quay.io/cilium/json-mock docker tag to
+    v1.3.8
+  * chore(deps): update go to v1.21.6
+  * defaults: Ignore XfrmInStateInvalid errors if rare
+  * chore(deps): update golang docker tag to v1.21.6
+  * chore(deps): update actions/download-artifact action to v4.1.0
+  * chore(deps): update google-github-actions/auth action to v2.0.1
+  * connectivity: configure pause as entrypoint
+  * fix(deps): update all go dependencies main
+  * chore(deps): update all github action dependencies to v4
+  * chore(deps): update docker.io/library/golang:1.21.5-alpine3.18
+    docker digest to d8b9994
+  * chore(deps): update google-github-actions/setup-gcloud action
+    to v2.0.1
+  * chore(deps): update golang:1.21.5-alpine3.18 docker digest to
+    c157305
+  * chore(deps): update quay.io/cilium/alpine-curl docker tag to
+    v1.9.0
+  * chore(deps): update azure/login action to v1.6.0
+  * gha: enable node without cilium tests for clustermesh
+  * gha: switch to kubeadm.k8s.io/v1beta3 API
+  * gha: don't wait for kind clusters to become ready
+  * connectivity: explicitly wait for daemonsets to become ready
+  * connectivity: make from external to pod tests ipv6 friendly
+  * connectivity: make ingress target echo-other-node deployment
+  * connectivity: skip more nodeport tests with clustermesh + KPR
+    disabled
+  * connectivity: detect PodCIDR for both local and remote nodes
+  * connectivity: fix wait for external deployment with clustermesh
+  * fix(deps): update all go dependencies main
+  * fixed spelling mistake in help output
+  * clustermesh: make status command compatible with external
+    kvstore
+  * clustermesh: make status command ignore the local cluster entry
+  * clustermesh: print last status when status --wait fails
+  * connectivity: don't configure pod port information when unused
+  * WaitForCiliumEndpoint function removed as unneeded.
+  * DisableEndpointCRD feature implemented to Cilium endpoint
+    checks if it's disabled.
+  * check: rename ExcludedCIDRs to ExcludedCIDRsConf
+  * tests: egressgw: export WatiForEgressGatewayBpfPolicyEntries
+  * check: don't pass policy YAML to WithCiliumEgressPolicy()
+  * check: allow to configure pod selector in
+    WithCiliumEgressPolicy()
+  * check: add ExcludedCIDRsKind enum
+  * defaults: add 'Host datapath not ready' to expected drop
+    reasons
+  * chore(deps): update module github.com/containerd/containerd to
+    v1.7.11 [security]
+  * internal: export MustUnmarshalYAML/MustUnmarshalYAMLMulti
+    methods
+  * internal: export EscapeJSONPatchString method
+  * chore(deps): update module golang.org/x/crypto to v0.17.0
+    [security]
+  * chore(deps): update dependency cilium/cilium to v1.14.5
+  * fix(deps): update all go dependencies main
+  * fix(deps): update module helm.sh/helm/v3 to v3.13.3
+
+-------------------------------------------------------------------
 Mon Dec 18 14:24:58 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.15.19:

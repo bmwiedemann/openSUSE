@@ -38,6 +38,6 @@ LABEL org.opensuse.release-stage="released"
 
 # endlabelprefix
 
-RUN set -euo pipefail; zypper -n in --no-recommends osc expect obs-service-source_validator typescript git openSUSE-release openSUSE-release-appliance-docker; zypper -n clean; rm -rf /var/log/*
+RUN set -euo pipefail; zypper -n in --no-recommends osc expect obs-service-format_spec_file obs-service-source_validator typescript git openSUSE-release openSUSE-release-appliance-docker; zypper -n clean; rm -rf /var/log/*
 COPY osc_checkout /usr/bin/osc_checkout
 RUN set -euo pipefail; chmod +x /usr/bin/osc_checkout

@@ -1,7 +1,7 @@
 #
 # spec file for package telepathy-farstream
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Telepathy library to handle Call channels
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
-Url:            http://telepathy.freedesktop.org/
+URL:            http://telepathy.freedesktop.org/
 Source0:        http://telepathy.freedesktop.org/releases/telepathy-farstream/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 BuildRequires:  pkgconfig
@@ -96,7 +96,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_includedir}/telepathy-1.0/telepathy-farstream/
 %{_libdir}/pkgconfig/telepathy-farstream.pc
 %{_libdir}/libtelepathy-farstream.so
-%doc %{_datadir}/gtk-doc/html/telepathy-farstream/
+%doc %{_datadir}/gtk-doc/
 %{_datadir}/gir-1.0/TelepathyFarstream-0.6.gir
 
 %changelog

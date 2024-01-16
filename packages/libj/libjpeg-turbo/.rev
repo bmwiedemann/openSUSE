@@ -1110,4 +1110,12 @@ Adds an explicit provides line, so that &quot;zypper in jpegtran&quot; will work
   * Fixed an oversight in 1.4 beta1[8] that caused various (forwarded request 1136025 from dirkmueller)</comment>
     <requestid>1136149</requestid>
   </revision>
+  <revision rev="71" vrev="78">
+    <srcmd5>d140f13d921ac62c955c0a6c192d6755</srcmd5>
+    <version>unknown</version>
+    <time>1705437408</time>
+    <user>anag+factory</user>
+    <comment>- Do not require SIMD support when it does not exist (forwarded request 1138991 from Andreas_Schwab)</comment>
+    <requestid>1139079</requestid>
+  </revision>
 </revisionlist>

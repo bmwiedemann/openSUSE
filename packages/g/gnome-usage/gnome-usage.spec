@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-usage
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2017 Bjørn Lie, Bryne, Norway.
 #
 # All modifications and additions to the file contributed by third parties
@@ -24,7 +24,7 @@ Summary:        System resources viewer for GNOME
 License:        GPL-3.0-only
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/Usage
-Source:         https://download.gnome.org/sources/gnome-usage/45/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.zst
 
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig

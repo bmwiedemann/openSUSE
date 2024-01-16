@@ -77,4 +77,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1071156</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>7e2994ba9ddaa64aa1151bd119f9e2c4</srcmd5>
+    <version>1.0.11</version>
+    <time>1705437590</time>
+    <user>anag+factory</user>
+    <comment>- Remove usage of dune.configurator because ocamlfind names which
+  contain a dot are not considered valid anymore with dune 3.13</comment>
+    <requestid>1139273</requestid>
+  </revision>
 </revisionlist>

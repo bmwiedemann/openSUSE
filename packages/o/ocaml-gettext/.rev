@@ -77,4 +77,13 @@
     <comment>sync obsolete changes from SLE15</comment>
     <requestid>1132760</requestid>
   </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>722cac44a6cc3e8fe2784ae00ac14b5d</srcmd5>
+    <version>0.4.2</version>
+    <time>1705437592</time>
+    <user>anag+factory</user>
+    <comment>- Remove usage of dune.configurator because ocamlfind names which
+  contain a dot are not considered valid anymore with dune 3.13</comment>
+    <requestid>1139275</requestid>
+  </revision>
 </revisionlist>

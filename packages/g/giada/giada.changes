@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Sat Dec 23 09:24:37 UTC 2023 - edogawa@aon.at
+
+- Update to version 0.26.1:
+  * Update Changelog
+  * Bump version to 0.26.1
+  * Fix crash when fetching audio device and JACK is in use
+  * Fix glitches in geScroll positioning inside geSplitScroll
+  * Fix Sample Editor not picking up Channel properties when loading a project
+  * Const-correctness when preparing Preview Channel
+  * Fix assertion when selected RtMidi API is not present in available APIs (#670)
+  * Add geChoice::hasItem() method
+  * [Linux] Follow the XDG Base Directory Specification (#338)
+  * Minor fixup to some help labels
+  * Disable 'rec-on-signal mode' button if function not available (#629)
+  * Disable 'free loop-length mode' button if function not available (#629)
+  * Disable 'record audio' button if can't record audio with better explanation (#629)
+  * Disable UI refresh while loading a project to prevent crashes
+  * Show 'missing assets' window only once the UI has been loaded
+  * [Windows] Fix plug-in GUI weird auto-resize when dragged around (#621)
+  * Adjust plug-in window size before showing it (reduce weird window flickering)
+  * Load wave in Channel only when type is SAMPLE or PREVIEW
+  * DRY m::Channel's constructor
+  * Add some assertions in m::Channel class
+  * Show correct progress in plug-in scan when multiple formats are in use
+  * PluginManager: tidy up code
+  * PluginManager: modernize scan loop
+  * Add ability to stop plug-in scan (#423)
+  * Pass progress callback to PluginManager::scanDirs() by value
+  * PluginManager: add ability to cancel plug-in scan
+  * Add support to cancellable gdProgress in gdMainWindow::ScopedProgress
+  * Cancellable geProgress widget
+  * Flex-based gdProgress window
+  * Add geProgress constructor without parameters
+  * Add some explicit imports
+  * Ability to sort plug-ins in both ascending and descending order (#542)
+  * Smarter plug-in sort mechanism
+  * Don't close browser twice on project load to prevent crash
+  * KernelAudio: prevent assertion on inputDevice.channelsStart >= 0 when applying audio changes and input device is disabled
+  * On project close, close all subwindows first before resetting the engine
+  * Ui::closeAllSubwindows() now closes ALL existing subwindows
+  * Beautify gdWindow::deleteChild() method
+  * Refactor method name in gdWindow
+  * DRY gdWindow delChild() method
+  * Refactor gdWindow cleanup into separate method
+  * Truncate column's help text if column is too narrow
+  * Print help text on columns background
+  * Refactor columns background drawing
+  * Add geScroll::getViewportBounds()
+  * Update geompp dep
+  * Leave some empty margin at the bottom of each column as drag and drop area
+  * geFlexResizable: add ability to set an empty margin at the end of the stack
+  * Pass by ref in some geFlexResizable methods
+  * DRY some geFlexResizable internals
+  * Make geFlexResizable::computeHeight() more generic
+  * geFlexResizable-based geColumn
+  * Add better support for MOVE mode in geResizerBar
+  * Adjust parent size when widgets inside geFlexResizable are resized in MOVE mode
+  * Refactor resizer bar code into separate method in geFlexResizable
+  * Make widgets vector protected in geFlexResizable
+  * Add geFlexResizable::clearWidgets() method
+  * Add geChannel::getId() method
+  * Ability to add widgets of arbitrary size to geFlexResizable
+  * Add alternate constructor with explicit coordinates to geFlexResizable
+  * Update FLTK to latest master
+- add giada-fmt.patch (missing includee)
+
+-------------------------------------------------------------------
 Mon Oct 16 20:46:54 UTC 2023 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Drop the Commercial from license tag

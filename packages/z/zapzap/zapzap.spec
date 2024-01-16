@@ -1,7 +1,7 @@
 #
 # spec file for package zapzap
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           zapzap
-Version:        5.1.1
+Version:        5.1.3
 Release:        0
 Summary:        Whatsapp Desktop for Linux
 License:        GPL-3.0-only+
@@ -27,10 +27,10 @@ BuildRequires:  %{python_module PyQt6}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  desktop-file-utils
-BuildRequires:  hicolor-icon-theme
 BuildRequires:  fdupes
-Requires:       python3-PyQt6-sip
+BuildRequires:  hicolor-icon-theme
 Requires:       python3-PyQt6-WebEngine
+Requires:       python3-PyQt6-sip
 Requires:       python3-dbus-python
 BuildArch:      noarch
 

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 15 18:58:22 UTC 2024 - PragmaticLinux <info@pragmaticlinux.com>
+
+- Update to 3.0
+  * For a complete list of changes see:
+    https://wiki.freepascal.org/Lazarus_3.0_release_notes
+- Removed 0002-fix-GTK3-build-error.patch because this is fixed in Lazarus 3.0.
+- Spec-file improvements to fix several RPM lint errors and warnings. 
+
+-------------------------------------------------------------------
 Tue Aug 29 12:39:22 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Split package into multiple packages:

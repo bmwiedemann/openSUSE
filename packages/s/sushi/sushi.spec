@@ -1,7 +1,7 @@
 #
 # spec file for package sushi
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@ Summary:        Quick Previewer for Nautilus
 License:        SUSE-GPL-2.0-with-plugin-exception
 Group:          Productivity/File utilities
 URL:            https://www.gnome.org
-Source0:        https://download.gnome.org/sources/sushi/45/%{name}-%{version}.tar.xz
+Source0:        45/%{name}-%{version}.tar.zst
 Source99:       sushi-rpmlintrc
 
 BuildRequires:  meson

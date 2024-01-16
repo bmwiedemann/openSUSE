@@ -104,6 +104,17 @@ Group:          System/X11/Utilities
 %description tools
 xkbcommon tools for introspection and debugging.
 
+%package tools-bash-completion
+Summary:        Bash completion for %name-tools
+Requires:       %name-tools = %version
+Requires:       bash-completion
+Supplements:    (%name-tools and bash-completion)
+BuildArch:      noarch
+
+%description tools-bash-completion
+
+Bash completion for %name-tools.
+
 %package x11-devel
 Summary:        Development files for the libxkbcommon-x11 library
 Group:          Development/Libraries/C and C++
@@ -152,7 +163,7 @@ ef=-Denable-x11=false
 
 %install
 %meson_install
-rm -rf %buildroot/%_datadir/bash-completion
+chmod -x %buildroot/%_datadir/bash-completion/completions/xkbcli*
 
 %post   -n libxkbcommon0 -p /sbin/ldconfig
 %postun -n libxkbcommon0 -p /sbin/ldconfig
@@ -178,6 +189,10 @@ rm -rf %buildroot/%_datadir/bash-completion
 %_bindir/xkbcli
 %_libexecdir/xkbcommon/
 %_mandir/man1/xkbcli*
+
+%files tools-bash-completion
+%license LICENSE
+%_datadir/bash-completion/completions/xkbcli*
 
 %if %{with x11}
 %files -n libxkbcommon-x11-0

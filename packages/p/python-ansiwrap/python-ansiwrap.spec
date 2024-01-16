@@ -1,7 +1,7 @@
 #
 # spec file for package python-ansiwrap
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,11 +21,10 @@ Version:        0.8.4
 Release:        0
 Summary:        Textwrap, but savvy to ANSI colors and styles
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/jonathaneunice/ansiwrap
 Source:         https://files.pythonhosted.org/packages/source/a/ansiwrap/ansiwrap-%{version}.zip
-# PATCH-FIX-UPSTREAM ansiwrap-pr18-py311.patch gh#jonathaneunice/ansiwrap#18
-Patch0:         ansiwrap-pr18-py311.patch
+# PATCH-FIX-UPSTREAM gh#jonathaneunice/ansiwrap#20
+Patch0:         support-python312.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}

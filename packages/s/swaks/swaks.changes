@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Mon Jan 15 08:54:47 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 20240103.0:
+  * Full changelog in: http://jetmore.org/john/code/swaks/versions.html
+  * New Features:
+    * Added --cc and --bcc options
+    * Numerous TLS debugging and verification improvements
+      * Debug output contains whether a client cert was requested and whether
+        one was sent
+      * Add new options --tls-verify-ca and --tls-verify-host to differentiate
+        between types of certificate verification (--tls-verify does both)
+      * Add --tls-target option to allow setting of hostname to be used in
+        hostname verification.  This is useful in some inet debugging situations
+        and required to do hostname verification with --socket or --pipe
+      * Add --tls-chain (#60, initial implementation by Wolfgang Karall-Ahlborn)
+      * Add --tls-get-peer-chain option (analogous to --tls-get-peer-cert, #73)
+      * Certificate debug now includes all client and peer certs, it a chain
+        was used (#73)
+      * Certificate debug now includes notAfter, commonName, and subjectAltName
+  * Notable Changes:
+    * --output-file, --output-file-stderr, and --output-file-stdout now truncate
+      the specified file if it already exists
+    * Documentation improvements
+    * Extensive test harness improvements
+    * Add new stop-point XCLIENT-HELO to address lack of specificity when
+      mixing XCLIENT usage with the HELO stop-point
+    * Add new stop-point PROXY
+    * Use IO::Socket::IP by default.  Will still use IO::Socket::INET/INET6
+      to cover transition, but this is deprecated and will be removed in the
+      future (#43)
+    * TLS session debug information is now printed even if we decide not to
+      continue the session (eg for failed verification)
+    * Previously-deprecated functionality to allow some options to be either
+      a filename or a literal string has been removed.  Using the '@' sigil is
+      now the only was to specify file contents
+    * Previously-deprecated -g option removed
+  * Notable Bugs Fixed:
+    * TLS certificate verification did not always work.  It should now
+- Remove deprecated dependency on IO::Socket::INET6
+- Use https for URL and sources.
+
+-------------------------------------------------------------------
 Sun Nov 19 18:37:36 UTC 2023 - Alex Bihlmaier <thalunil@kallisti.at>
 
 - user request: manpage added

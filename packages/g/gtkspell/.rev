@@ -262,4 +262,14 @@
   (jsc#SLE-21105). (forwarded request 920424 from sbrabec)</comment>
     <requestid>920585</requestid>
   </revision>
+  <revision rev="38" vrev="24">
+    <srcmd5>04c340ad26652d4861c0ae16858a0af7</srcmd5>
+    <version>2.0.16</version>
+    <time>1705437569</time>
+    <user>anag+factory</user>
+    <comment>- Own /usr/share/gtk-doc: glib no longer uses gtk-doc and as a
+  consequence cannot be held responsible to deliver that basic
+  directory structure. (forwarded request 1139233 from dimstar)</comment>
+    <requestid>1139258</requestid>
+  </revision>
 </revisionlist>

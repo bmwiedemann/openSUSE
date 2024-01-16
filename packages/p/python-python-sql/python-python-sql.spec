@@ -16,6 +16,16 @@
 #
 
 
+%if 0%{?suse_version} >= 1550
+%define pythons python3
+%define mypython python3
+%define mysitelib %python3_sitelib
+%else
+%{?sle15_python_module_pythons}
+%define mypython %pythons
+%define mysitelib %{expand:%%%{mypython}_sitelib}
+%endif
+
 %define base_name python-sql
 Name:           python-%{base_name}
 Version:        1.4.3
@@ -52,7 +62,7 @@ mv sql_hide sql
 %files %{python_files}
 %license COPYRIGHT
 %doc README.rst
-%{python_sitelib}/sql
-%{python_sitelib}/python_sql-%{version}.dist-info
+%{mysitelib}/sql
+%{mysitelib}/python_sql-%{version}.dist-info
 
 %changelog

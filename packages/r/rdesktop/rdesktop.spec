@@ -1,7 +1,7 @@
 #
 # spec file for package rdesktop
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,9 +27,17 @@ Source:         https://github.com/rdesktop/rdesktop/releases/download/v%{versio
 ## FIX-openSUSE: remove "Don't depend on pkg-config"
 Patch0:         rdesktop-fix_pkgconfig_check.patch
 # PATCH-FIX-OPENSUSE rdesktop-convert-map.python3.patch -- seife+obs@b1-systems.com
-Patch3:         rdesktop-convert-map.python3.patch
+Patch1:         rdesktop-convert-map.python3.patch
 # PATCH-FIX-UPSTREAM rdesktop-fix_segfault_in_rdssl_rkey_get_exp_mod.patch
-Patch4:         rdesktop-fix_segfault_in_rdssl_rkey_get_exp_mod.patch
+Patch2:         rdesktop-fix_segfault_in_rdssl_rkey_get_exp_mod.patch
+# PATCH-FIX-OPENSUSE fix_C99_issue_in_configure.patch
+Patch3:         fix_C99_issue_in_configure.patch
+# PATCH-FIX-OPENSUSE fix_dashes_in_manpage.patch
+Patch4:         fix_dashes_in_manpage.patch
+# PATCH-FIX-OPENSUSE fix_segfault_in_utils_cert_handle_exception.patch
+Patch5:         fix_segfault_in_utils_cert_handle_exception.patch
+# PATCH-FIX-OPENSUSE fix_wrong_string_null_terminated.patch
+Patch6:         fix_wrong_string_null_terminated.patch
 BuildRequires:  alsa-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -41,11 +49,10 @@ BuildRequires:  libsamplerate-devel
 BuildRequires:  libtasn1-devel
 BuildRequires:  libtool
 BuildRequires:  pcsc-lite-devel
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(ao)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xrandr)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 rdesktop is a client for connecting to Windows Remote Desktop
@@ -55,10 +62,7 @@ work with Windows server versions ranging from NT 4 terminal server
 to Windows Server 2012 R2.
 
 %prep
-%setup -q
-%patch0
-%patch3 -p1
-%patch4 -p1
+%autosetup -p1
 
 ## rpmlint
 # incorrect-fsf-address /usr/share/rdesktop/keymaps/convert-map
@@ -70,7 +74,7 @@ CFLAGS="%{optflags} -fno-strict-aliasing" \
 %configure \
   --enable-smartcard \
   --with-ipv6
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install STRIP=true installman
@@ -79,11 +83,10 @@ cp -r keymaps %{buildroot}%{_datadir}/rdesktop
 chmod -R a+r %{buildroot}%{_datadir}/rdesktop/keymaps
 
 %files
-%defattr(-,root,root,755)
 %doc doc README.md
 %license COPYING
 %{_bindir}/rdesktop
 %{_datadir}/rdesktop
-%{_mandir}/man1/rdesktop.1.gz
+%{_mandir}/man1/rdesktop.1%{?ext_man}
 
 %changelog

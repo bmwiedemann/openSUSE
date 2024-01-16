@@ -1,7 +1,7 @@
 #
 # spec file for package calls
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        A phone dialer and call handler
 License:        GPL-3.0-only AND MIT
 URL:            https://gitlab.gnome.org/GNOME/calls
-Source0:        https://download.gnome.org/sources/calls/45/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 BuildRequires:  appstream-glib
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler

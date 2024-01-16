@@ -32,7 +32,7 @@ ExclusiveArch:  aarch64 ppc64 ppc64le riscv64 s390x x86_64
 
 %define     pkg ocaml-bisect_ppx
 Name:           %pkg%nsuffix
-Version:        2.8.2
+Version:        2.8.3
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Code coverage for OCaml and Reason
@@ -40,9 +40,8 @@ License:        GPL-2.0-only
 Group:          Development/Languages/OCaml
 URL:            https://opam.ocaml.org/packages/bisect_ppx
 Source0:        %pkg-%version.tar.xz
-Patch0:         %pkg.patch
 BuildRequires:  ocaml
-BuildRequires:  ocaml-dune >= 2.7
+BuildRequires:  ocaml-dune >= 3.0
 BuildRequires:  ocaml-rpm-macros >= 20230101
 %if 1
 BuildRequires:  ocamlfind(cmdliner)

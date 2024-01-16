@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Jan 15 20:42:25 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 14.0.2
+  ## New Features and Improvements
+  * GH-38342 - [Python] Update to_pandas to use non-deprecated
+    DataFrame constructor (#38374)
+  * GH-38364 - [Python] Initialize S3 on first use (#38375)
+  ## Bug Fixes
+  * GH-38345 - [Release] Use local test data for verification if
+    possible (#38362)
+  * GH-38577 - Reading parquet file behavior change from 13.0.0 to
+    14.0.0
+  * GH-38626 - [Python] Fix segfault when PyArrow is imported at
+    shutdown (#38637)
+  * GH-38676 - [Python] Fix potential deadlock when CSV reading
+    errors out (#38713)
+  * GH-38984 - [Python][Packaging] Verification of wheels on
+    AlmaLinux 8 are failing due to missing pip (#38985)
+  * GH-39074 - [Release][Packaging] Use UTF-8 explicitly for KEYS
+    (#39082)
+
+-------------------------------------------------------------------
 Tue Nov 14 23:29:03 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Fix cve in changelog 

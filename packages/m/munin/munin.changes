@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan 15 11:41:47 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Use IO::Socket::IP instead of IO::Socket::INET[6]
+  * Remove the dependency on perl(IO::Socket::INET6) as it has been
+    deprecated by upstream, is no longer suitable for use and its not
+    being maintained. A compatible replacement for this package is
+    perl(IO::Socket::IP) which is shipped by the perl-base package.
+  * Upstream commit back-ported:
+    https://github.com/munin-monitoring/munin/commit/012b33a7
+  * Add upstream munin-remove-deprecated-INET6.patch
+
+-------------------------------------------------------------------
 Tue May  2 07:52:08 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Drop manual requires for python (boo#1210588)

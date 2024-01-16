@@ -1,7 +1,7 @@
 #
 # spec file for package libzeitgeist
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2011 Federico Mena Quintero
 #
 # All modifications and additions to the file contributed by third parties
@@ -75,7 +75,7 @@ rm %{buildroot}%{_datadir}/doc/libzeitgeist/{AUTHORS,COPYING,INSTALL,MAINTAINERS
 %{_includedir}/zeitgeist-1.0/
 %{_libdir}/pkgconfig/zeitgeist-1.0.pc
 %{_libdir}/lib*.so
-%doc %{_datadir}/gtk-doc/html/zeitgeist-1.0/
+%doc %{_datadir}/gtk-doc/
 # Own these directories to not depend on vala
 %dir %{_datadir}/vala
 %{_datadir}/vala/vapi/

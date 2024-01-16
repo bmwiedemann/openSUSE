@@ -349,4 +349,12 @@
     <comment></comment>
     <requestid>1137738</requestid>
   </revision>
+  <revision rev="44" vrev="4">
+    <srcmd5>b513689fc3bc9f9e0fb82b1f55caa096</srcmd5>
+    <version>1.6.0</version>
+    <time>1705437414</time>
+    <user>anag+factory</user>
+    <comment>- Add libxkbcommon-tools-bash-completions.</comment>
+    <requestid>1138449</requestid>
+  </revision>
 </revisionlist>

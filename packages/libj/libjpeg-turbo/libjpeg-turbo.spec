@@ -145,7 +145,8 @@ MYCFLAGS="$MYCFLAGS -O0 -g"
 %endif
 %ifarch armv6l armv6hl
     -DWITH_SIMD=FALSE \
-%else
+%endif
+%ifarch x86_64 %{ix86} aarch64 ppc64le
     -DREQUIRE_SIMD=TRUE \
 %endif
     -DCMAKE_SHARED_LINKER_FLAGS="$MYLDFLAGS" \

@@ -1,7 +1,7 @@
 #
 # spec file for package librest0_7
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -126,6 +126,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/pkgconfig/rest-extras-%{abi}.pc
 %{_datadir}/gir-1.0/*.gir
 %{_includedir}/rest-%{abi}/
-%doc %{_datadir}/gtk-doc/html/rest-%{abi}/
+%doc %{_datadir}/gtk-doc/
 
 %changelog

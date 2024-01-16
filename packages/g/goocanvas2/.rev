@@ -16,4 +16,12 @@
   (jsc#SLE-21105). (forwarded request 920420 from sbrabec)</comment>
     <requestid>920583</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>1a0ca3c0e4b6b1c54bf8971e0db47cab</srcmd5>
+    <version>2.0.4</version>
+    <time>1705437574</time>
+    <user>anag+factory</user>
+    <comment>Own gtk-doc dir structure (forwarded request 1139236 from dimstar)</comment>
+    <requestid>1139261</requestid>
+  </revision>
 </revisionlist>

@@ -15,4 +15,14 @@
     <comment></comment>
     <requestid>1072864</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>3c825b7db2b9ea23bb8d2040afd08319</srcmd5>
+    <version>0.8.4</version>
+    <time>1705437502</time>
+    <user>anag+factory</user>
+    <comment>- Add patch support-python312.patch:
+  * Use importlib not imp, also includes changes from the previous patch.
+- Drop patch ansiwrap-pr18-py311.patch, included in above.</comment>
+    <requestid>1139057</requestid>
+  </revision>
 </revisionlist>

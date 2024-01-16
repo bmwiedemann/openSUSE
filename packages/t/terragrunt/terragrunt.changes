@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Jan 15 19:10:30 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.54.17:
+  * Fixed identification of terragrunt cache dir (#2874)
+  * Updated CICD to use release version of OpenTofu 1.6.0 (#2887)
+
+-------------------------------------------------------------------
+Mon Jan 15 17:13:32 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.54.16:
+  * Fix reading `catalog` configuration (#2884)
+
+-------------------------------------------------------------------
+Mon Jan 15 17:08:31 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.54.15:
+  * Manifest file removal in Windows (#2875)
+
+-------------------------------------------------------------------
+Mon Jan 15 17:00:09 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.54.14:
+  * Add handling for missing policy bucket (#2881)
+
+-------------------------------------------------------------------
+Mon Jan 15 16:57:03 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.54.13:
+  * AWS SDK version upgrade (#2883)
+
+-------------------------------------------------------------------
 Thu Jan 04 18:17:18 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.54.12:

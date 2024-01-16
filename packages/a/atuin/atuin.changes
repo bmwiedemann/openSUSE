@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Tue Jan 16 04:54:52 UTC 2024 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to 17.2.1:
+  Fixes:
+  * Fix typo with default config
+  * Don't require all fields under [stats]
+  * Disallow deletion if the '--limit' flag is present
+  * Fix loss of the last output line with enter_accept
+  * Ignore struct_field_names
+  * Improve the support for enter_accept with ble.sh
+  * Fix small issues of enter_accept for the plain Bash
+  * Time now_local not working
+  * Fix quirks on search cancel
+  * Zsh_autosuggest_strategy for no-unset environment
+  * Fix error by the use of ${PS1@P} in bash < 4.4
+  * Zsh use a special format to escape some characters
+  * Initial list of history in workspace mode
+  * Add Appkit to the package build
+  * Bind in the most popular modes
+  * Only trigger up-arrow on first line
+  * Clean up the fish script options
+  * Use fish builtins for enter_accept
+  * Make atuin account delete void session + key
+  * New clippy lints
+  * Accept multiline commands
+  * Reenable enter_accept for bash
+  * Respect ZSH's $ZDOTDIR environment variable
+  Documentation:
+  * Add actuated linkback
+  * Add link to forum
+  * Align setup links in docs and readme
+  * Add Void Linux install instruction
+  * Add fish install script
+  * Correct link
+  * Fix light/dark mode logo
+  * Use picture element for logo
+  * Add docs for zsh-autosuggestion integration
+  * Remove stray character from README
+  * Update logo
+  * Update sync.md
+  * Update Arch Linux package URL in advanced-install.md
+  * New stats config
+  Features:
+  * Add semver checking to client requests
+  * Add TLS to atuin-server
+  * Integrate with zsh-autosuggestions
+  * Support high-resolution duration if available
+  * Provide auto-complete source for ble.sh
+  * Add a nixpkgs overlay
+  * Add metrics server and http metrics
+  * Add some metrics related to Atuin as an app
+  * Allow configuring stats prefix
+  * Allow spaces in stats prefixes
+
+-------------------------------------------------------------------
 Tue Oct 31 00:27:34 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Update patch 0000-disable_update_check.patch

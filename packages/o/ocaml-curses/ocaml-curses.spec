@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-curses
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,8 +28,8 @@ Source0:        %name-%version.tar.xz
 BuildRequires:  ncurses-devel
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune >= 2.7
-BuildRequires:  ocaml-rpm-macros >= 20230101
-BuildRequires:  ocamlfind(dune.configurator)
+BuildRequires:  ocaml-rpm-macros >= 20231101
+BuildRequires:  ocamlfind(dune-configurator)
 BuildRequires:  ocamlfind(unix)
 BuildRequires:  pkg-config
 

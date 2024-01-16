@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 16 16:19:44 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Own /usr/share/gtk-doc: glib no longer uses gtk-doc and as a
+  consequence cannot be held responsible to deliver that basic
+  directory structure.
+
+-------------------------------------------------------------------
 Mon Sep 20 19:54:27 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove obsolete translation-update-upstream support

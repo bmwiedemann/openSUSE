@@ -56,4 +56,13 @@
     <comment>- JaneStreet libraries are 64bit, this pkg depends on them</comment>
     <requestid>1090290</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3522c586a045393bea8e875a8f7cf766</srcmd5>
+    <version>2.8.3</version>
+    <time>1705437587</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.8.3
+  remove ocaml-bisect_ppx.patch</comment>
+    <requestid>1139271</requestid>
+  </revision>
 </revisionlist>

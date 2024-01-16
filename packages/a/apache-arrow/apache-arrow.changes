@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Jan 15 20:38:45 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 14.0.2
+  ## New Features and Improvements
+  * GH-38449 - [Release][Go][macOS] Use local test data if possible
+    (#38450)
+  * GH-38591 - [Parquet][C++] Remove redundant open calls in
+    ParquetFileFormat::GetReaderAsync (#38621)
+  ## Bug Fixes
+  * GH-38345 - [Release] Use local test data for verification if
+    possible (#38362)
+  * GH-38438 - [C++] Dataset: Trying to fix the async bug in
+    Parquet dataset (#38466)
+  * GH-38577 - Reading parquet file behavior change from 13.0.0 to
+    14.0.0
+  * GH-38618 - [C++] S3FileSystem: fix regression in deleting
+    explicitly created sub-directories (#38845)
+  * GH-38861 - [C++] Add missing “-framework Security” to
+    Libs.private in arrow.pc (#38869)
+  * GH-39072 - [Release][CI] Python3.11-devel is required for the
+    verification job on AlmaLinux 8 (#39073)
+  * GH-39074 - [Release][Packaging] Use UTF-8 explicitly for KEYS
+    (#39082)
+
+-------------------------------------------------------------------
 Thu Jan 11 20:27:13 UTC 2024 - pgajdos@suse.com
 
 - disable some tests for s390x [bsc#1218592]

@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Mon Jan 15 17:09:09 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.24.0:
+  * Breaking change
+    - service hash computation logic has been updated to fully
+      ignore replicas/scale. Due to this change, after upgrade all
+      services will be recreated.
+  * Enhancements
+    - Implement docker compose attach by @g0t4 in #11181
+    - Introduce ps --orphans to include/exclude services not
+      declared by project by @ndeloof in #11220
+    - Introduce compose logs --index to select a replica container
+      by @ndeloof in #11231
+    - --with-dependencies let docker compose build build
+      dependencies transitively by @ndeloof in #11290
+    - Introduce stats command by @ndeloof in #11299
+    - Add source policies for build by @cpuguy83 in #11325
+  * Fixes
+    - Include disabled services for shell completion by @ndeloof in
+      #11251
+    - Restore Project is ps json output by @ndeloof in #11223
+    - Log we don't expose service ports when --verbose by @ndeloof
+      in #11227
+    - Fix configs are mounted under / by @ndeloof in #11232
+    - Fix combination of --pull always --no-build by @ndeloof in
+      #11244
+    - Fix(publish): add OCI 1.0 fallback support for AWS ECR by
+      @milas in #11239
+    - Fix race condition in log printer by @horus in #11286
+    - Send out a cancel event on SIGINT/SIGTERM signal for compose
+      up by @vyneer in #11230
+    - Up: teardown when command context is cancelled by @laurazard
+      in #11292
+    - Build do not require environment to be resolved by @ndeloof
+      in #11274
+  * Internal
+    - Let contributor know we might close unanswered issues by
+      @ndeloof in #11219
+    - Feat(cli): report more useful User-Agent on engine API
+      requests by @milas in #11333
+    - Adopt compose-go/v2 by @ndeloof in #11207
+    - Add support for start_interval by @ndeloof in #10939
+    - Update README.md to use standard compose.yaml file name by
+      @johnthagen in #11233
+    - Watch: remove requirements for tar binary and for sync target
+      to be rw by @ndeloof in #11330
+    - Deps: update docker/cli to fix go version selection issue by
+      @laurazard in #11283
+    - Remove ServiceProxy which was introduced for archived
+      compose-cli by @ndeloof in #11298
+    - github.com/golang/mock is deprecated by @ndeloof in #11272
+    - Add support for endpoint-specific MAC address by @akerouanton
+      in #11208
+    - Collect services to build using WithServices by @ndeloof in
+      #11255
+  * Bumps
+    - Bump compose-go to version v2.0.0-beta.3 by @glours in #11307
+    - Bump ddev to 1.22.4 by @ndeloof in #11225
+    - Bump golang to version 1.21.5 by @glours in #11249
+    - Bump docker cli v1.25 beta1 by @ndeloof in #11247
+    - Bump golang to version v1.21.6 by @glours in #11331
+    - Bump golangci-lint to v1.55.2 ci(deps) by @milas in #11332
+    - Bump compose-go v2-beta.2 by @ndeloof in #11295
+    - Build(deps): bump golang.org/x/sys from 0.15.0 to 0.16.0 by
+      @dependabot in #11324
+    - Build(deps): bump golang.org/x/sys from 0.14.0 to 0.15.0 by
+      @dependabot in #11228
+    - Build(deps): bump golang.org/x/sync from 0.5.0 to 0.6.0 by
+      @dependabot in #11317
+    - Build(deps): bump go.uber.org/mock from 0.3.0 to 0.4.0 by
+      @dependabot in #11291
+    - go.mod: docker/docker and docker/cli v25.0.0-beta.3 by
+      @thaJeztah in #11294
+    - go.mod: update docker/docker and docker/cli to v25.0.0-rc.1
+      by @thaJeztah in #11320
+    - gha: update DOCKER_CLI_VERSION to v24.0.7 by @thaJeztah in
+      #11321
+
+-------------------------------------------------------------------
 Thu Nov 23 09:29:32 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.23.3:
@@ -1114,4 +1193,4 @@ Wed Jun 29 18:26:32 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 - first version of package docker-compose (v2)
   - v2 was rewritten in golang, while v1 was in Python
   - as they behaviour changes between v1 (python-docker-compose) and v2,
-    this package does not obsolete the v1 package 
+    this package does not obsolete the v1 package

@@ -415,4 +415,14 @@ No indication of GPL-2.0 licensed files in the package (forwarded request 175739
     <comment></comment>
     <requestid>1043391</requestid>
   </revision>
+  <revision rev="42" vrev="6">
+    <srcmd5>5c1e0b716cb3f803c125d4e0d4dbcafb</srcmd5>
+    <version>0.6.13</version>
+    <time>1705437561</time>
+    <user>anag+factory</user>
+    <comment>- Own /usr/share/gtk-doc: glib no longer uses gtk-doc and as a
+  consequence cannot be held responsible to deliver that basic
+  directory structure. (forwarded request 1139220 from dimstar)</comment>
+    <requestid>1139251</requestid>
+  </revision>
 </revisionlist>

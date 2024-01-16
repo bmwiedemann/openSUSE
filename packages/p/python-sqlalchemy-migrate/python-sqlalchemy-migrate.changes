@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan  9 19:44:28 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- add setuptools-fixes.patch / switch to new python stack on SLE15
+
+-------------------------------------------------------------------
 Wed Feb 22 10:31:58 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Remove leftover Sphinx files for reproducible builds
@@ -12,7 +17,7 @@ Thu Feb 16 23:42:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
 Wed Jul 21 10:55:23 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add support-sphinx-4.patch:
-  * Support Sphinx 4, stop using Sphinx 2. 
+  * Support Sphinx 4, stop using Sphinx 2.
 
 -------------------------------------------------------------------
 Fri Jul  2 11:45:03 UTC 2021 - Matej Cepl <mcepl@suse.com>
@@ -66,7 +71,7 @@ Thu Mar  9 21:51:10 UTC 2017 - dmueller@suse.com
  * Prepare for using standard python tests
  * Set autoincrement to False when modifying to non-Integer datatype
  * Raise VersionNotFoundError instead of KeyError
- *  Fix DeprecationWarning on setuptools >= 11.3 
+ *  Fix DeprecationWarning on setuptools >= 11.3
  * Update .gitreview for new namespace
 
 -------------------------------------------------------------------
@@ -143,7 +148,7 @@ Mon May 12 22:35:41 UTC 2014 - dmueller@suse.com
 -------------------------------------------------------------------
 Thu Apr 10 16:22:14 UTC 2014 - dmueller@suse.com
 
-- Readd COPYING file 
+- Readd COPYING file
 
 -------------------------------------------------------------------
 Tue Dec  3 09:21:33 UTC 2013 - speilicke@suse.com
@@ -242,7 +247,7 @@ Tue Nov 29 13:50:33 UTC 2011 - saschpe@suse.de
 -------------------------------------------------------------------
 Tue Nov 29 12:06:05 UTC 2011 - idoenmez@suse.de
 
-- Cleanup spec file 
+- Cleanup spec file
 - Use upstream tarball
 
 -------------------------------------------------------------------

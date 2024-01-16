@@ -1,7 +1,7 @@
 #
 # spec file for package goocanvas
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -117,7 +117,7 @@ rm %{buildroot}%{_libdir}/*.*a
 %if %{with_introspection}
 %{_datadir}/gir-1.0/GooCanvas-3.0.gir
 %endif
-%doc %{_datadir}/gtk-doc/html/goocanvas3/
+%doc %{_datadir}/gtk-doc/
 
 %files lang -f goocanvas3.lang
 

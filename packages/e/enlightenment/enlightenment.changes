@@ -1,5 +1,13 @@
 -------------------------------------------------------------------
-Tue Jan 31 07:34:28 UTC 2023 - Simon Lees <simonf.lees@suse.com>
+Fri Jan 12 09:17:11 UTC 2024 - Simon Lees <sflees@suse.de>
+
+- Recommend packages to get Qt/KDE apps to match the theme out of 
+  the box
+  * libqt5-qtstyleplugins-platformtheme-gtk2
+  * qt6gtk2
+
+-------------------------------------------------------------------
+Tue Jan 31 07:34:28 UTC 2023 - Simon Lees <sflees@suse.de>
 
 - Add constraints file occasionally out of disk space
 

@@ -53,4 +53,13 @@
 - Enable more decoders and encoders explicitly</comment>
     <requestid>1131224</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1db102b2ef4805bfc633369d4d147327</srcmd5>
+    <version>6.1.1</version>
+    <time>1705437402</time>
+    <user>anag+factory</user>
+    <comment>Revert to building libjxl support only for Factory.
+I am sorry for the messy submission before. (forwarded request 1139042 from iDesmI)</comment>
+    <requestid>1139043</requestid>
+  </revision>
 </revisionlist>

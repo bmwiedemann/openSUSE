@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-libvirt
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,9 +28,9 @@ Source0:        %name-%version.tar.xz
 Patch0:         ocaml-libvirt.patch
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20230101
+BuildRequires:  ocaml-rpm-macros >= 20231101
 BuildRequires:  perl
-BuildRequires:  ocamlfind(dune.configurator)
+BuildRequires:  ocamlfind(dune-configurator)
 BuildRequires:  ocamlfind(unix)
 BuildRequires:  pkgconfig(libvirt)
 

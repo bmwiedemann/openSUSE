@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 12 13:18:52 UTC 2024 - Michele Bussolotto <michele.bussolotto@suse.com>
+
+- Fix server.xml permission (bsc#1217768, bsc#1217402)
+- remove serverxmltool and use xsltproc
+
+-------------------------------------------------------------------
 Thu Nov 23 12:32:49 UTC 2023 - Ricardo Mestre <ricardo.mestre@suse.com>
 
 - replace prep setup and patches macro with autosetup

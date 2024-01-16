@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 15 20:24:50 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.5.4:
+  * Fixed #6645: Local storage with invalid value can break site
+  * Fixed #6635: Tags icons before default ignored if default is set
+
+-------------------------------------------------------------------
 Sun Jan  7 18:23:14 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 9.5.3:

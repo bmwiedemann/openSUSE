@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>1085855</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>63ce3bf05b5ceb3e41d7eb3db9334b80</srcmd5>
+    <version>1.3.0</version>
+    <time>1705437480</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.3.0:
+  * Ignore lines that start with `-i`. Fixes #6</comment>
+    <requestid>1139047</requestid>
+  </revision>
 </revisionlist>

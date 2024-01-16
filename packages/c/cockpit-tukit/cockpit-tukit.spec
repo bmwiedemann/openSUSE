@@ -1,7 +1,7 @@
 #
 # spec file for package cockpit-tukit
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           cockpit-tukit
-Version:        0.1.0~git0.8c6c01a
+Version:        0.1.2~git0.647b3e3
 Release:        0%{?dist}
 Summary:        Cockpit module for Transactional Update
 License:        LGPL-2.1-or-later

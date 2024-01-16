@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan 15 16:52:51 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.3.3:
+  * Add finalizer subcommand (#172)
+  * chore(deps): bump github.com/prometheus/client_golang (#185)
+  * feat: add replicaset cleaner (#180)
+  * chore(deps): bump k8s.io/apiextensions-apiserver from 0.28.4 to
+    0.29.0 (#182)
+  * chore(deps): bump k8s.io/client-go from 0.28.4 to 0.29.0 (#183)
+  * Fix spaces and lots labels. (#177)
+
+-------------------------------------------------------------------
 Sun Dec 10 19:15:44 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.3.2:

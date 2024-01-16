@@ -86,4 +86,12 @@ apache-arrow is being used more and more by python numeric packages like pandas 
     <comment></comment>
     <requestid>1138300</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5eb9b7025fc927062f93a2575e18e8d5</srcmd5>
+    <version>14.0.2</version>
+    <time>1705437518</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1139093</requestid>
+  </revision>
 </revisionlist>

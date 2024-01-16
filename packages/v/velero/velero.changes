@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jan 15 20:25:52 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.12.3:
+  * Modify changelog for v1.12.3
+  * Add v1.12.3 changelog
+  * isue 6928: remove snapshot deletion timeout for PVB
+  * Fix intermediate pv delete for data mover
+  * Node agent restart enhancement
+  * Don't fail backup/restore on velero server restart in
+    PhaseWaitingForPluginOperation
+  * Issue 7244: delete incomplete snapshot automatically for kopia
+    uploader
+    uploader
+  * Fix issue #7163.
+  * issue 7189: generic restore - don't assume the first volume as
+    the restore volume
+
+-------------------------------------------------------------------
 Mon Nov 27 05:39:11 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.12.2:
@@ -294,7 +312,7 @@ Tue Nov  8 14:13:25 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
   * Skip registering "crd-remap-version" plugin when feature flag "EnableAPIGroupVersions" is set
   * Refactored the controllers using Kubebuilder v3
   * Optionally restore status on selected resources
-    The restoreStatus option has been added to the CLI and Restore spec to enable 
+    The restoreStatus option has been added to the CLI and Restore spec to enable
     you to control the group of resources whose status will be restored.
   * ExistingResourcePolicy in the restore API
   * Upgrade integrated Restic version and add skip TLS validation in Restic command
@@ -665,7 +683,7 @@ Wed Feb 16 07:55:52 UTC 2022 - jenting.hsiao@suse.com
 -------------------------------------------------------------------
 Thu Jan 27 22:48:11 UTC 2022 - Robert Munteanu <rombert@apache.org>
 
-- Added completion packages 
+- Added completion packages
 
 -------------------------------------------------------------------
 Fri Dec 10 02:04:03 UTC 2021 - jenting.hsiao@suse.com
@@ -1141,7 +1159,7 @@ Tue Mar 24 05:55:22 UTC 2020 - jenting hsiao <jenting.hsiao@suse.com>
 -------------------------------------------------------------------
 Wed Mar 11 02:46:41 UTC 2020 - Clark Hsu <clark.hsu@suse.com>
 
-- Bump version 1.3.1 
+- Bump version 1.3.1
 
 -------------------------------------------------------------------
 Mon Mar  2 23:33:08 UTC 2020 - jenting hsiao <jenting.hsiao@suse.com>

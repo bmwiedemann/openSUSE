@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-gettext
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,11 +39,11 @@ URL:            https://opam.ocaml.org/packages/gettext
 Source0:        %pkg-%version.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20230101
+BuildRequires:  ocaml-rpm-macros >= 20231101
 %if 1
 BuildRequires:  ocamlfind(compiler-libs.common)
 BuildRequires:  ocamlfind(cppo)
-BuildRequires:  ocamlfind(dune.configurator)
+BuildRequires:  ocamlfind(dune-configurator)
 BuildRequires:  ocamlfind(fileutils)
 %endif
 

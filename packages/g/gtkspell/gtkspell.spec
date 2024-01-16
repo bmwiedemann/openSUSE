@@ -1,7 +1,7 @@
 #
 # spec file for package gtkspell
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -102,6 +102,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/pkgconfig/*.pc
 
 %files doc
-%{_datadir}/gtk-doc/html/*
+%{_datadir}/gtk-doc/
 
 %changelog

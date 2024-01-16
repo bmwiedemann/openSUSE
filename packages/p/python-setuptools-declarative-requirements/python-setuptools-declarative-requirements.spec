@@ -1,7 +1,7 @@
 #
 # spec file for package python-setuptools-declarative-requirements
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-setuptools-declarative-requirements
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        File support for setuptools declarative setup.cfg
 License:        Apache-2.0
@@ -30,6 +30,7 @@ BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pypiserver}
+BuildRequires:  %{python_module pytest-shell-utilities}
 BuildRequires:  %{python_module toml}
 BuildRequires:  %{python_module virtualenv}
 BuildRequires:  %{python_module wheel}

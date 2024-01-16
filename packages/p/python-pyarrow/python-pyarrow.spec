@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyarrow
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %bcond_with xsimd
 %define plainpython python
 Name:           python-pyarrow
-Version:        14.0.1
+Version:        14.0.2
 Release:        0
 Summary:        Python library for Apache Arrow
 License:        Apache-2.0 AND BSD-3-Clause AND BSD-2-Clause AND MIT

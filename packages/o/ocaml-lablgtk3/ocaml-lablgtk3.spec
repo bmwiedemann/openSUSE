@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-lablgtk3
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,13 +27,13 @@ Group:          Development/Languages/OCaml
 URL:            https://opam.ocaml.org/packages/lablgtk3
 Source:         %name-%version.tar.xz
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20230101
+BuildRequires:  ocaml-rpm-macros >= 20231101
 BuildRequires:  pkg-config
 BuildRequires:  ocaml(ocaml_base_version) >= 4.09
 BuildRequires:  ocamlfind(cairo2)
 BuildRequires:  ocamlfind(camlp-streams)
 BuildRequires:  ocamlfind(camlp5)
-BuildRequires:  ocamlfind(dune.configurator)
+BuildRequires:  ocamlfind(dune-configurator)
 BuildRequires:  ocamlfind(findlib)
 BuildRequires:  ocamlfind(threads)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.18

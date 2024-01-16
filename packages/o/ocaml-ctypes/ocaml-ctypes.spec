@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-ctypes
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,10 +42,10 @@ URL:            https://opam.ocaml.org/packages/ctypes
 Source0:        %pkg-%version.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune >= 2.9
-BuildRequires:  ocaml-rpm-macros >= 20230101
+BuildRequires:  ocaml-rpm-macros >= 20231101
 BuildRequires:  ocamlfind(bigarray-compat)
 BuildRequires:  ocamlfind(bisect_ppx)
-BuildRequires:  ocamlfind(dune.configurator)
+BuildRequires:  ocamlfind(dune-configurator)
 BuildRequires:  ocamlfind(findlib)
 BuildRequires:  ocamlfind(integers)
 BuildRequires:  pkgconfig(libffi)

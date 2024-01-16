@@ -1,7 +1,7 @@
 #
 # spec file for package ffmpeg-6
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define flavor @BUILD_FLAVOR@%{nil}
+%define flavor @BUILD_FLAVOR@%nil
 #
 # preamble is present twice, watch out
 #
-%if "%{flavor}" != "ffmpeg-6-mini"
+%if "%flavor" != "ffmpeg-6-mini"
 
 # Create proper conflicts to make sure we require all from one version
 # p:   Conflict string, eg if you need them all for requires instead
@@ -40,7 +40,6 @@
 %preamble_string libpostproc-devel %comparator %conflicts_version \
 %preamble_string libswresample-devel %comparator %conflicts_version \
 %preamble_string libswscale-devel %comparator %conflicts_version \
-%preamble_string ffmpeg-private-devel %comparator %conflicts_version \
 %nil
 
 %if 0%{?BUILD_ORIG}
@@ -56,6 +55,7 @@
 %bcond_with    amf_sdk
 %bcond_with    cuda_sdk
 %endif
+
 %bcond_with    amrwb
 %bcond_with    fdk_aac_dlopen
 %bcond_with    opencore
@@ -86,7 +86,7 @@
 %define _major_expected 7
 
 Name:           ffmpeg-6
-Version:        6.0.1
+Version:        6.1.1
 Release:        0
 Summary:        Set of libraries for working with various multimedia formats
 License:        GPL-3.0-or-later
@@ -110,33 +110,18 @@ Patch2:         ffmpeg-new-coder-errors.diff
 Patch3:         ffmpeg-codec-choice.diff
 Patch4:         ffmpeg-4.2-dlopen-fdk_aac.patch
 Patch5:         work-around-abi-break.patch
-Patch6:         0001-avfilter-vf_libplacebo-remove-deprecated-field.diff
 Patch10:        ffmpeg-chromium.patch
 Patch91:        ffmpeg-dlopen-openh264.patch
 
-%if %{with amf_sdk}
-BuildRequires:  AMF-devel
-%endif
 BuildRequires:  ladspa-devel
 BuildRequires:  libgsm-devel
-BuildRequires:  libmp3lame-devel
-%if %{with mysofa}
-BuildRequires:  libmysofa-devel
-%endif
+BuildRequires:  libmp3lame-devel >= 3.98.3
 BuildRequires:  nasm
-BuildRequires:  pkg-config
-%ifarch x86_64 %x86_64
-%if 0%{?suse_version} >= 1550
-BuildRequires:  pkgconfig(SvtAv1Enc) >= 0.9.0
-%endif
-%endif
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(aom) >= 1.0.0
-%if %{with codec2}
-BuildRequires:  pkgconfig(codec2)
-%endif
 BuildRequires:  pkgconfig(dav1d) >= 0.5.0
-BuildRequires:  pkgconfig(ffnvcodec) >= 8.1.24.14
+BuildRequires:  pkgconfig(ffnvcodec) >= 8.1.24.15
 BuildRequires:  pkgconfig(fontconfig) >= 2.4.2
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(fribidi) >= 0.19.0
@@ -151,11 +136,11 @@ BuildRequires:  pkgconfig(libdc1394-2)
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libgme)
 BuildRequires:  pkgconfig(libopenjp2) >= 2.1.0
-BuildRequires:  pkgconfig(libopenmpt)
+BuildRequires:  pkgconfig(libopenmpt) >= 0.2.6557
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libraw1394)
-BuildRequires:  pkgconfig(libssh)
+BuildRequires:  pkgconfig(libssh) >= 0.6.0
 BuildRequires:  pkgconfig(libva) >= 0.35.0
 BuildRequires:  pkgconfig(libva-drm)
 BuildRequires:  pkgconfig(libva-x11)
@@ -167,39 +152,13 @@ BuildRequires:  pkgconfig(libzmq) >= 4.2.1
 BuildRequires:  pkgconfig(lilv-0)
 BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(opus)
-%if 0%{?suse_version} >= 1550
-BuildRequires:  pkgconfig(libjxl) >= 0.7.0
-BuildRequires:  pkgconfig(libjxl_threads) >= 0.7.0
-BuildRequires:  pkgconfig(librist)
-%endif
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
-BuildRequires:  pkgconfig(rav1e) >= 0.5.0
-%endif
-%if %{with rubberband}
-BuildRequires:  pkgconfig(rubberband) >= 1.8.1
-%endif
-BuildRequires:  pkgconfig(sdl2)
-%if %{with smbclient}
-BuildRequires:  pkgconfig(smbclient)
-%endif
+BuildRequires:  pkgconfig(sdl2) >= 2.0.1
 BuildRequires:  pkgconfig(soxr)
 BuildRequires:  pkgconfig(speex)
 BuildRequires:  pkgconfig(srt) >= 1.3.0
 BuildRequires:  pkgconfig(theora) >= 1.1
 BuildRequires:  pkgconfig(twolame) >= 0.3.10
 BuildRequires:  pkgconfig(vdpau)
-%if %{with vidstab}
-BuildRequires:  pkgconfig(vidstab) >= 0.98
-%endif
-%if %{with vulkan}
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150200
-BuildRequires:  pkgconfig(libplacebo) >= 6.292.0
-%else
-BuildRequires:  (pkgconfig(libplacebo) >= 4.192.0 with pkgconfig (libplacebo) < 6.292.0)
-%endif
-BuildRequires:  pkgconfig(shaderc)
-BuildRequires:  pkgconfig(vulkan) >= 1.2.189
-%endif
 BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(vpx) >= 1.4.0
 BuildRequires:  pkgconfig(x11)
@@ -208,14 +167,36 @@ BuildRequires:  pkgconfig(xcb-shape)
 BuildRequires:  pkgconfig(xcb-shm)
 BuildRequires:  pkgconfig(xcb-xfixes)
 BuildRequires:  pkgconfig(xext)
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150200
-%ifarch x86_64 %x86_64
-BuildRequires:  pkgconfig(libmfx)
-%endif
-%endif
-BuildRequires:  pkgconfig(zimg)
+BuildRequires:  pkgconfig(zimg) >= 2.7.0
 BuildRequires:  pkgconfig(zlib)
 BuildRequires:  pkgconfig(zvbi-0.2) >= 0.2.28
+
+%if %{with amf_sdk}
+BuildRequires:  AMF-devel
+%endif
+%if %{with mysofa}
+BuildRequires:  libmysofa-devel
+%endif
+%if %{with codec2}
+BuildRequires:  pkgconfig(codec2)
+%endif
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150700
+BuildRequires:  pkgconfig(libjxl) >= 0.7.0
+BuildRequires:  pkgconfig(libjxl_threads) >= 0.7.0
+BuildRequires:  pkgconfig(librist) >= 0.2.7
+%endif
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
+BuildRequires:  pkgconfig(rav1e) >= 0.5.0
+%endif
+%if %{with rubberband}
+BuildRequires:  pkgconfig(rubberband) >= 1.8.1
+%endif
+%if %{with smbclient}
+BuildRequires:  pkgconfig(smbclient)
+%endif
+%if %{with vidstab}
+BuildRequires:  pkgconfig(vidstab) >= 0.98
+%endif
 %if %{with fdk_aac_dlopen}
 BuildRequires:  pkgconfig(fdk-aac)
 %endif
@@ -234,6 +215,33 @@ BuildRequires:  pkgconfig(x264)
 %if %{with x265}
 BuildRequires:  pkgconfig(x265)
 %endif
+
+%ifarch x86_64 %x86_64 aarch64
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150500
+BuildRequires:  pkgconfig(SvtAv1Enc) >= 0.9.0
+%endif
+%endif
+
+%if %{with vulkan}
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150600
+BuildRequires:  pkgconfig(libplacebo) >= 6.292.0
+%else
+BuildRequires:  (pkgconfig(libplacebo) >= 4.192.0 with pkgconfig (libplacebo) < 6.292.0)
+%endif
+BuildRequires:  pkgconfig(shaderc) >= 2019.1
+BuildRequires:  pkgconfig(vulkan) >= 1.3.255
+%endif
+
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} >= 150200 && 0%{?sle_version} < 150600
+%ifarch x86_64 %x86_64
+BuildRequires:  pkgconfig(libmfx)
+%endif
+%else
+%ifarch x86_64 %x86_64
+BuildRequires:  pkgconfig(vpl) >= 2.6
+%endif
+%endif
+
 Provides:       ffmpeg-tools = %version
 Conflicts:      ffmpeg-tools
 Provides:       ffmpeg = %version
@@ -500,8 +508,8 @@ pixel format conversion operations.
 %package libswscale-devel
 Summary:        Development files for FFmpeg's image scaling and colorspace library
 Group:          Development/Libraries/C and C++
-Provides:       libswscale-devel = %version-%release
 Conflicts:      libswscale-devel
+Provides:       libswscale-devel = %version-%release
 Requires:       %name-libavutil-devel = %version-%release
 Requires:       libswscale7 = %version-%release
 %devel_conflicts -c < -v %_major_version
@@ -513,40 +521,8 @@ pixel format conversion operations.
 
 This subpackage contains the headers for FFmpeg libswscale.
 
-%package private-devel
-Summary:        Some FFmpeg private headers
-Group:          Development/Libraries/C and C++
-Requires:       %name-libavcodec-devel = %version-%release
-Requires:       %name-libavformat-devel = %version-%release
-Requires:       %name-libavutil-devel = %version-%release
-Provides:       ffmpeg-private-devel = %version
-Obsoletes:      ffmpeg-private-devel < %version
-%devel_conflicts -c < -v %_major_version
-%devel_conflicts -c >= -v %_major_expected
-
-%description private-devel
-FFmpeg is a multimedia framework, able to decode, encode,
-transcode, mux, demux, stream, filter and play several formats
-that humans and machines have created.
-
-This package contains some private headers for libavformat, libavcodec and
-libavutil which are needed by libav-tools to build. No other package apart
-from libav should depend on these private headers which are expected to
-break compatibility without any notice.
-
 %prep
-%setup -a6 -n %_name-%version -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch10 -p1
-%patch91 -p1
-# Remove when packaging ffmpeg 6.1
-if pkg-config --atleast-version 6 libplacebo; then
-%patch6 -p1
-fi
+%autosetup -p1 -a6 -n %_name-%version
 
 %build
 %ifarch %ix86 %arm
@@ -556,7 +532,7 @@ fi
 %global _lto_cflags %_lto_cflags -ffat-lto-objects
 %endif
 CFLAGS="%optflags" \
-%if %suse_version > 1500
+%if 0%{?suse_version} > 1500
 %ifarch %ix86
 %else
 LDFLAGS="%_lto_cflags" \
@@ -609,7 +585,7 @@ LDFLAGS="%_lto_cflags" \
 	--enable-libfribidi \
 	--enable-libgsm \
 	--enable-libjack \
-%if 0%{?suse_version} >= 1550
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150700
 	--enable-libjxl \
 	--enable-librist \
 %endif
@@ -628,8 +604,8 @@ LDFLAGS="%_lto_cflags" \
 %if %{with rubberband}
 	--enable-librubberband \
 %endif
-%ifarch x86_64 %x86_64
-%if 0%{?suse_version} >= 1550
+%ifarch x86_64 %x86_64 aarch64
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150500
 	--enable-libsvtav1 \
 %endif
 %endif
@@ -657,9 +633,13 @@ LDFLAGS="%_lto_cflags" \
 %endif
 %endif
 	--enable-lv2 \
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150200
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} >= 150200 && 0%{?sle_version} < 150600
 %ifarch x86_64 %x86_64
 	--enable-libmfx \
+%endif
+%else
+%ifarch x86_64 %x86_64
+	--enable-libvpl \
 %endif
 %endif
 	--enable-vaapi \
@@ -714,16 +694,6 @@ b="%buildroot"
 rm -Rf "$b/%_datadir/ffmpeg/examples"
 for i in %extratools; do
 	cp -a "tools/$i" "$b/%_bindir/"
-done
-
-# Install private headers required by libav-tools
-for i in libavformat/options_table.h libavformat/os_support.h \
-  libavformat/internal.h libavcodec/options_table.h libavutil/libm.h \
-  libavutil/internal.h libavutil/colorspace.h libavutil/timer.h \
-  libavutil/x86/emms.h libavutil/aarch64/timer.h libavutil/arm/timer.h \
-  libavutil/bfin/timer.h libavutil/ppc/timer.h libavutil/x86/timer.h; do
-	mkdir -p "$b/%_includedir/ffmpeg/private/"`dirname $i`
-	cp -a $i "$b/%_includedir/ffmpeg/private/$i"
 done
 
 %post   -n libavcodec60 -p /sbin/ldconfig
@@ -836,15 +806,10 @@ done
 %_libdir/pkgconfig/libswscale.pc
 %_mandir/man3/libswscale.3*
 
-%files private-devel
-%_includedir/ffmpeg/private/
-
-%else	# "flavor" == "ffmpeg-6-mini"
-
+%else
 %define _name ffmpeg
-
 Name:           ffmpeg-6-mini
-Version:        6.0.1
+Version:        6.1.1
 Release:        0
 Summary:        Set of libraries for working with various multimedia formats
 License:        GPL-3.0-or-later
@@ -855,7 +820,6 @@ Source2:        https://www.ffmpeg.org/releases/%_name-%version.tar.xz.asc
 Source3:        ffmpeg-6-rpmlintrc
 Source98:       http://ffmpeg.org/ffmpeg-devel.asc#/ffmpeg-6.keyring
 Patch1:         ffmpeg-arm6l.diff
-Patch2:         ffmpeg-new-coder-errors.diff
 Patch3:         ffmpeg-codec-choice.diff
 Patch4:         ffmpeg-4.2-dlopen-fdk_aac.patch
 Patch5:         work-around-abi-break.patch
@@ -960,6 +924,6 @@ rm -Rf "$b/%_datadir/ffmpeg/examples"
 %_libdir/pkgconfig/*.pc
 %_includedir/ffmpeg/
 
-%endif	# "flavor" == "ffmpeg-6-mini"
+%endif
 
 %changelog

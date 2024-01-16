@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 16 07:07:00 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.5.16:
+  * Fix bug that prevented installers to complete
+  * Better handling of Steam configurations for the Steam account picker
+  * Load game library in a background thread
+
+-------------------------------------------------------------------
 Sat Jan 13 22:53:29 UTC 2024 - Richard Rahl <rrahl0@proton.me>
 
 - Update to 0.5.15:

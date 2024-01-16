@@ -236,4 +236,20 @@
   * Fix compilation Python 3.9 deprecation warnings.</comment>
     <requestid>859228</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>21004c1d253acd939ea3632e06d7f2fe</srcmd5>
+    <version>6.2.9</version>
+    <time>1705437464</time>
+    <user>anag+factory</user>
+    <comment>- switch to pep517 build
+
+    Reported by Zhihao Yuan.
+  * Drop support for Berkeley DB 4.2 and Python 2.3. Our reference
+    is Red Had Enterprise Linux 5, until march 2014. After that,
+    * According to
+  * Solaris 10 Update 10 exposes a very old race condition in the
+    replication master election tests. Some details in
+* Support for Berkeley DB 5.1.</comment>
+    <requestid>1139030</requestid>
+  </revision>
 </revisionlist>

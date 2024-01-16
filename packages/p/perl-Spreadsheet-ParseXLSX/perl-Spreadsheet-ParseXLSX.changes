@@ -12,6 +12,8 @@ Wed Jan  3 03:10:46 UTC 2024 - Tina Müller <timueller+perl@suse.de>
         - Merge pull request #5 from danderman/master: use date format detection based on Spreadsheet::XLSX
         - Merge pull request #6 from gquipster/master: Add rudimentary support for hyperlinks in cells
   0.28  2024-01-02
+    fix for boo#1218651 (CVE-2024-22368)
+    out-of-memory condition during parsing of a crafted XLSX document
         - New maintainer
         - Fix possible memory bomb as reported in https://github.com/haile01/perl_spreadsheet_excel_rce_poc/blob/main/parse_xlsx_bomb.md
         - Updated Dist::Zilla configuration fixing deprecation warnings

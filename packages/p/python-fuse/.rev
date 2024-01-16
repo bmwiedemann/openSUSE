@@ -112,4 +112,15 @@ This library is &quot;required&quot; by libewf in the security repo for its apps
         Fix generation of MANIFEST.in in make_release.sh</comment>
     <requestid>1130802</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>197b7e5780234e53dc91bc3a6ab5959e</srcmd5>
+    <version>1.0.7</version>
+    <time>1705437504</time>
+    <user>anag+factory</user>
+    <comment>- Add patch no-more-distutils.patch:
+  * Stop using distutils unilaterally.
+- Switch to autosetup and pyproject macros.
+- Be more clear about files in %files.</comment>
+    <requestid>1139060</requestid>
+  </revision>
 </revisionlist>

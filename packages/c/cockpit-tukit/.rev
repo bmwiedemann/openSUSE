@@ -81,4 +81,12 @@
   * Updated the version to 0.1.0 so it's closer to semver</comment>
     <requestid>1116602</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>fe4c079e2b761d2246fa4f3640de9364</srcmd5>
+    <version>0.1.2~git0.647b3e3</version>
+    <time>1705437525</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1139106</requestid>
+  </revision>
 </revisionlist>

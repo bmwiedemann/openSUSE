@@ -1,7 +1,7 @@
 #
 # spec file for package swaks
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           swaks
-Version:        20201014.0
+Version:        20240103.0
 Release:        0
 Summary:        Swiss Army Knife for SMTP
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Email/Clients
-URL:            http://jetmore.org/john/code/swaks/
-Source:         http://jetmore.org/john/code/swaks/files/swaks-%{version}.tar.gz
-Requires:       perl-IO-Socket-INET6
+URL:            https://jetmore.org/john/code/swaks/
+Source:         https://jetmore.org/john/code/swaks/files/swaks-%{version}.tar.gz
+Requires:       perl-IO-Socket-IP
 Requires:       perl-Net-DNS
 Requires:       perl-Net-SSLeay
 BuildArch:      noarch

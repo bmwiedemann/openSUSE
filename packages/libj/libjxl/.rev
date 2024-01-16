@@ -99,4 +99,13 @@ Leap 15.5
     <comment>- Build plugins:</comment>
     <requestid>1113235</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>68d0f6f1b86d3358992e5474f34194ab</srcmd5>
+    <version>0.9.0</version>
+    <time>1705437400</time>
+    <user>anag+factory</user>
+    <comment>- Remove cjxl/djxl manpages from gtk flavor installation, these
+  are part of the tools subpackage from the main flavor. (forwarded request 1136384 from StefanBruens)</comment>
+    <requestid>1136397</requestid>
+  </revision>
 </revisionlist>

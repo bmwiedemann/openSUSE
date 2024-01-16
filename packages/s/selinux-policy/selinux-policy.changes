@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 16 08:54:51 UTC 2024 - cathy.hu@suse.com
+
+- Update to version 20240116:
+  * Fix gitolite homedir paths (bsc#1218826)
+
+-------------------------------------------------------------------
 Tue Jan 09 09:14:44 UTC 2024 - cathy.hu@suse.com
 
 - Update to version 20240104:

@@ -328,4 +328,12 @@
     <comment></comment>
     <requestid>1112718</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>c2b41df8074dd3db02a296d0c0920b91</srcmd5>
+    <version>45.0.1</version>
+    <time>1705437582</time>
+    <user>anag+factory</user>
+    <comment>- Convert to source service for easier updating. (forwarded request 1139276 from dimstar)</comment>
+    <requestid>1139291</requestid>
+  </revision>
 </revisionlist>

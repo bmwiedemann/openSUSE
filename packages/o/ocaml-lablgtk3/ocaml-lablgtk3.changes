@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 16 16:16:16 UTC 2024 - ohering@suse.de
+
+- Remove usage of dune.configurator because ocamlfind names which
+  contain a dot are not considered valid anymore with dune 3.13
+
+-------------------------------------------------------------------
 Thu Jan  5 05:05:05 UTC 2023 - ohering@suse.de
 
 - Add conditionals for gtksourceview-3.0 and gtkspell3-3.0

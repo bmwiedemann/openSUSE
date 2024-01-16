@@ -471,4 +471,15 @@
     <comment></comment>
     <requestid>1138545</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>919558211fd174157085292ecb2f4795</srcmd5>
+    <version>0.5.16</version>
+    <time>1705437506</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.5.16:
+  * Fix bug that prevented installers to complete
+  * Better handling of Steam configurations for the Steam account picker
+  * Load game library in a background thread</comment>
+    <requestid>1139075</requestid>
+  </revision>
 </revisionlist>

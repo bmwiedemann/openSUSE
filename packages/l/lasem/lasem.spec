@@ -1,7 +1,7 @@
 #
 # spec file for package lasem
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -95,6 +95,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_includedir}/%{name}-%{api}/
 %{_libdir}/lib%{name}-%{api}.so
 %{_libdir}/pkgconfig/%{name}-%{api}.pc
-%{_datadir}/gtk-doc/html/%{name}-%{api}/
+%{_datadir}/gtk-doc/
 
 %changelog

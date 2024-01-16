@@ -1,7 +1,7 @@
 #
 # spec file for package AusweisApp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           AusweisApp
-Version:        2.0.1
+Version:        2.0.2
 Release:        0
 Summary:        Official authentication app for German ID cards and residence permits
 License:        EUPL-1.2
@@ -62,7 +62,7 @@ and residence permits. To use this app, a supported RFID card
 reader or compatible NFC smart phone is required.
 
 %prep
-%setup -q -n %{name}2-%{version}
+%setup -q -n %{name}-%{version}
 
 %build
 %if 0%{?suse_version} <= 1500
@@ -79,7 +79,7 @@ ninja
 %cmake_install
 
 %suse_update_desktop_file com.governikus.ausweisapp2 X-SuSE-DesktopUtility
-install -DTm644 %{_builddir}/%{name}2-%{version}/resources/images/npa.png %{buildroot}/%{_datadir}/icons/hicolor/96x96/apps/AusweisApp.png
+install -DTm644 %{_builddir}/%{name}-%{version}/resources/images/npa.png %{buildroot}/%{_datadir}/icons/hicolor/96x96/apps/AusweisApp.png
 
 %fdupes -s %{buildroot}/%{_prefix}
 

@@ -50,4 +50,13 @@
     <comment>- Add conditionals for gtksourceview-3.0 and gtkspell3-3.0</comment>
     <requestid>1056278</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>882855ff625873e099ce3f1e3494a1d4</srcmd5>
+    <version>3.1.3</version>
+    <time>1705437594</time>
+    <user>anag+factory</user>
+    <comment>- Remove usage of dune.configurator because ocamlfind names which
+  contain a dot are not considered valid anymore with dune 3.13</comment>
+    <requestid>1139277</requestid>
+  </revision>
 </revisionlist>

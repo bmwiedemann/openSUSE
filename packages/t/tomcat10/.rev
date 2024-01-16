@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>1129167</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c213ab3533e2a30d784d9eeb94f87df8</srcmd5>
+    <version>10.1.14</version>
+    <time>1705437532</time>
+    <user>anag+factory</user>
+    <comment>- Fix server.xml permission (bsc#1217768, bsc#1217402)
+- remove serverxmltool and use xsltproc</comment>
+    <requestid>1139112</requestid>
+  </revision>
 </revisionlist>

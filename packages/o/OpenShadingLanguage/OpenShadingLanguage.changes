@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan 16 11:01:20 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 1.12.14.0:
+  - Correctly document that our Cuda minimum is 9.0. #1737
+  - Fixes to build and test against OpenImageIO 2.5 #1742
+  - Fix default fmt logic changing in latest openimageio release
+    #1725
+
+-------------------------------------------------------------------
 Mon Sep  4 08:11:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.12.13.0:

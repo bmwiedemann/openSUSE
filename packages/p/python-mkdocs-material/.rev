@@ -297,4 +297,12 @@ update to 9.1.12</comment>
     <comment></comment>
     <requestid>1137419</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>39362136c68a22491273f1897f1a794e</srcmd5>
+    <version>9.5.4</version>
+    <time>1705437553</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1139192</requestid>
+  </revision>
 </revisionlist>

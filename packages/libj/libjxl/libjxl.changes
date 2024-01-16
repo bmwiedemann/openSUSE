@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Jan  3 05:11:31 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Remove cjxl/djxl manpages from gtk flavor installation, these
+  are part of the tools subpackage from the main flavor.
+
+-------------------------------------------------------------------
+Fri Dec 22 15:54:38 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.9
+  * Encoder API:
+  * Add JxlEncoderSetExtraChannelDistance to adjust the quality
+    of extra channels (like alpha) separately.
+  * New API functions for streaming encoding.
+  * New options for more fine-grained control over metadata
+    preservation when using JxlEncoderAddJPEGFrame.
+  * New function JxlEncoderSetUpsamplingMode to change the
+    upsampling method, e.g. to use nearest-neighbor upsampling
+    for pixel art.
+  * New function JxlEncoderDistanceFromQuality for convenience to
+    calculate a distance given a quality.
+  * Decoder API: Implemented JxlDecoderSetOutputColorProfile and
+    JxlDecoderSetCms to enable decoding to desired colorspace.
+  * Deprecated functions removed from encoder and decoder APIs.
+  * Command-line tools:
+  * cjxl can now be used to explicitly add/update/strip
+    Exif/XMP/JUMBF metadata using the decoder-hints syntax, e.g.
+    cjxl input.ppm -x exif=input.exif output.jxl
+  * djxl can now be used to extract Exif/XMP/JUMBF metadata.
+
+-------------------------------------------------------------------
 Thu Sep 21 13:34:05 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Switch from LCMS to SKCMS: libjxl core can use either, but

@@ -1,7 +1,7 @@
 #
 # spec file for package munin
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -51,6 +51,8 @@ Source15:       munin-cron.service
 # 0x910846ADEE4C5D67C19B3E6F0A24C05998BA4133
 Source17:       munin.keyring
 Patch1:         perl526.patch
+# PATCH-FIX-UPSTREAM Use IO::Socket::IP instead of IO::Socket::INET[6]
+Patch2:         munin-remove-deprecated-INET6.patch
 BuildRequires:  firewall-macros
 BuildRequires:  html2text
 BuildRequires:  htmldoc
@@ -68,7 +70,7 @@ Requires:       perl-Date-Manip
 Requires:       perl-FastCGI
 Requires:       perl-File-Copy-Recursive
 Requires:       perl-HTML-Template
-Requires:       perl-IO-Socket-INET6
+Requires:       perl-IO-Socket-IP
 Requires:       perl-Log-Log4perl
 Requires:       perl-Net-SNMP
 Requires:       perl-Net-SSLeay
@@ -153,6 +155,7 @@ cp %{SOURCE1} .
 unzip %{SOURCE12}
 unzip %{SOURCE13}
 %patch1 -p1
+%patch2 -p1
 
 %build
 %__make HOSTNAME=yourhostname

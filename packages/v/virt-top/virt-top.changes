@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 16 16:16:16 UTC 2024 - ohering@suse.de
+
+- Remove usage of dune.configurator because ocamlfind names which
+  contain a dot are not considered valid anymore with dune 3.13
+
+-------------------------------------------------------------------
 Fri Mar  3 03:03:03 UTC 2023 - ohering@suse.de
 
 - Require OCaml 4.8 or later for building

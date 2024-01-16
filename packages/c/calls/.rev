@@ -70,4 +70,12 @@ Pushing GNOME 45.rc packages</comment>
     <comment></comment>
     <requestid>1114703</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>1556a202da29b3e71d99ab9fe0f597e3</srcmd5>
+    <version>45.0</version>
+    <time>1705437580</time>
+    <user>anag+factory</user>
+    <comment>- Convert to source service for easier updating. (forwarded request 1139270 from dimstar)</comment>
+    <requestid>1139286</requestid>
+  </revision>
 </revisionlist>

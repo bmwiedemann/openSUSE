@@ -23,7 +23,7 @@
 + (depends
 +  (dune
 +   (>= 1.11))
-+  dune.configurator
++  dune-configurator
 +  (ocaml
 +   (>= 4.02.0))))
 --- /dev/null
@@ -58,7 +58,7 @@
 @@ -0,0 +1,3 @@
 +(executable
 + (name discover)
-+ (libraries dune.configurator))
++ (libraries dune-configurator))
 --- /dev/null
 +++ b/libvirt/dune
 @@ -0,0 +1,32 @@

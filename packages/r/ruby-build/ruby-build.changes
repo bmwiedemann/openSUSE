@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan 16 16:13:24 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20240116.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20240116
+  * Added 3.4-dev definition by @hsbt in #2329
+  * Skip passing `--with-readline-dir` for Ruby 3.3+ by @mislav in #2333
+  * Add TruffleRuby and TruffleRuby GraalVM 23.1.2 by @eregon in #2336
+
+-------------------------------------------------------------------
 Tue Dec 26 00:43:59 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20231225.

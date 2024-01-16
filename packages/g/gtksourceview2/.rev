@@ -120,4 +120,14 @@
     <comment></comment>
     <requestid>1129606</requestid>
   </revision>
+  <revision rev="17" vrev="22">
+    <srcmd5>b4f0cc9b5202874ebe9feb25474b7da7</srcmd5>
+    <version>2.10.5</version>
+    <time>1705437568</time>
+    <user>anag+factory</user>
+    <comment>- Own /usr/share/gtk-doc: glib no longer uses gtk-doc and as a
+  consequence cannot be held responsible to deliver that basic
+  directory structure. (forwarded request 1139232 from dimstar)</comment>
+    <requestid>1139257</requestid>
+  </revision>
 </revisionlist>

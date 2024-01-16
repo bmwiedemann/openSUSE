@@ -1,7 +1,7 @@
 #
 # spec file for package lazarus
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover   1
 Name:           lazarus
-Version:        2.2.6
+Version:        3.0
 Release:        0
 # Please note that the LGPL is modified and this is not multi-licensed, but each component has a separate license chosen.
 Summary:        FreePascal RAD IDE and Component Library
@@ -33,8 +33,6 @@ Source90:       %{name}-rpmlintrc
 Patch0:         %{name}-Makefile_patch.diff
 # PATCH-FIX-OPENSUSE lazarus.desktop.patch -- Fix desktop file
 Patch1:         lazarus.desktop.patch
-# Fix build errors for GTK3 widgetset
-Patch2:         0002-fix-GTK3-build-error.patch
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  fpc >= 3.0.0
@@ -192,6 +190,30 @@ developing applications that use qt5pas.
 %prep
 %autosetup -p1 -n %{name}
 
+# remove unneeded files
+rm -rf tools/install/cross_unix/debian_crosswin32/
+rm -f tools/install/cross_unix/*deb.*
+rm -rf tools/install/debian_*
+rm -rf tools/install/freebsd_*
+rm -rf tools/install/macosx/
+rm -rf tools/install/slacktgz/
+rm -rf tools/install/win/
+rm -f tools/install/*slacktgz.*
+
+# fix shebang
+find . \( -name "*.sh" -o -name "*.pl" \) -exec sed -i '1s|#!%{_bindir}/env |#!%{_bindir}/|' {} +
+
+# set executable bit to fix rpmlint error "non-executable-script"
+chmod +x components/datetimectrls/docs/clean-files.sh
+chmod +x components/datetimectrls/docs/make-archive.sh
+chmod +x components/datetimectrls/docs/make-docs.sh
+chmod +x components/lazcontrols/docs/make-docs.sh
+chmod +x components/rtticontrols/fpdoc/clean-files.sh
+chmod +x components/rtticontrols/fpdoc/make-docs.sh
+
+# remove git ignore files to prevent them from being installed to fix rpmlint error "version-control-internal-file"
+find . \( -name ".gitignore" \) -delete
+
 %build
 # Remove the files for building other packages
 rm -rf debian
@@ -207,20 +229,34 @@ fpcmake -Tall
 popd
 
 # Compile some basic targets required by everything else
-make registration lazutils codetools %{fpmakeopt}
+make registration %{fpmakeopt}
 
-# Compile LCL base (Lazarus Component Library) for the "nogui" widgetset
-make lcl basecomponents %{fpmakeopt} OPT='%{fpcopt}' LCL_PLATFORM=nogui
+# Compile tools (lazbuild, etc.). Requires the nogui widgetset.
+make lazbuild %{fpmakeopt} OPT='%{fpcopt}' LCL_PLATFORM=nogui
+make tools %{fpmakeopt} OPT='%{fpcopt}' LCL_PLATFORM=nogui
 
-# Compile tools (lazbuild, etc.)
-make tools %{fpmakeopt} OPT='%{fpcopt}'
+# Compile LCL base (Lazarus Component Library) for the "nogui" widgetset. Note that
+# starting with Lazarus 3.0, the "basecomponents" build target changed to the point that
+# it can no longer be build for the "nogui" widgetset. Manually build the targets of
+# the original "basecomponents", prior to Lazarus 3.0. This outputs the files needed for
+# subpackage lcl-nogui. Eventually subpackage lcl-nogui should be removed, because it
+# is not officially supported nor tested according to:
+#   https://gitlab.com/freepascal.org/lazarus/lazarus/-/issues/40683
+make -C lcl/interfaces/nogui/ %{fpmakeopt} OPT='%{fpcopt}' LCL_PLATFORM=nogui
+make -C components/buildintf %{fpmakeopt} OPT='%{fpcopt}' LCL_PLATFORM=nogui
+make -C components/debuggerintf %{fpmakeopt} OPT='%{fpcopt}' LCL_PLATFORM=nogui
+make -C components/lazcontrols %{fpmakeopt} OPT='%{fpcopt}' LCL_PLATFORM=nogui
+make -C components/ideintf %{fpmakeopt} OPT='%{fpcopt}' LCL_PLATFORM=nogui
+make -C components/synedit %{fpmakeopt} OPT='%{fpcopt}' LCL_PLATFORM=nogui
+make -C components/lazdebuggergdbmi %{fpmakeopt} OPT='%{fpcopt}' LCL_PLATFORM=nogui
+make -C components/lazcontrols/design %{fpmakeopt} OPT='%{fpcopt}' LCL_PLATFORM=nogui
 
 # Compile the LCL base + extra components for GUI widgetsets
 for WIDGETSET in gtk2 gtk3 qt5; do
 	make lcl basecomponents bigidecomponents %{fpmakeopt} OPT='%{fpcopt}' LCL_PLATFORM="${WIDGETSET}"
 done
 
-# Compile the IDE itself
+# Compile the IDE itself. Default to using the gkt2 widget set.
 make bigide %{fpmakeopt} OPT='%{fpcopt}' LCL_PLATFORM=gtk2
 
 # build libQt5Pas
@@ -257,9 +293,11 @@ for FILEPATH in %{buildroot}%{_libdir}/%{name}/lcl/interfaces/qt5/cbindings/libQ
     ln -sf "%{_libdir}/${FILENAME}" "${FILEPATH}"
 done
 
-rm -rf %{buildroot}%{_libdir}/%{name}/lcl/interfaces/qt5/cbindings/tmp/
+# Remove hidden files to fix rpmlint warning "hidden-file-or-dir"
+rm -f %{buildroot}%{_libdir}/%{name}/lcl/interfaces/qt5/cbindings/.qmake.stash
 
-%fdupes %{buildroot}%{_libdir}/%{name}
+# Remove duplicate files
+%fdupes -s %{buildroot}
 
 %post -n libQt5Pas%{sover} -p /sbin/ldconfig
 %postun -n libQt5Pas%{sover} -p /sbin/ldconfig
@@ -348,7 +386,7 @@ rm -rf %{buildroot}%{_libdir}/%{name}/lcl/interfaces/qt5/cbindings/tmp/
 %dir %{_libdir}/%{name}
 %{_libdir}/%{name}/components/
 %{_libdir}/%{name}/lcl/
-%lcl_base_files -n nogui %exclude
+%lcl_base_files  -n nogui %exclude
 %lcl_base_files  -n gtk2 %exclude
 %lcl_extra_files -n gtk2 %exclude
 %lcl_base_files  -n gtk3 %exclude

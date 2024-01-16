@@ -1,0 +1,23 @@
+From 105c8cb69facf26238cd48f14ca9dbc0ff6be6bd Mon Sep 17 00:00:00 2001
+From: Orion Poplawski <orion@nwra.com>
+Date: Tue, 26 Oct 2021 20:02:12 -0600
+Subject: [PATCH] Fix segfault in utils_cert_handle_exception if
+ util_dialog_choice returns NULL
+
+---
+ utils.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/utils.c b/utils.c
+index 4595382d..bcbf9864 100644
+--- a/utils.c
++++ b/utils.c
+@@ -1041,7 +1041,7 @@ utils_cert_handle_exception(gnutls_session_t session, unsigned int status,
+ 
+ 	/* show dialog */
+ 	response = util_dialog_choice(message, "no", "yes", NULL);
+-	if (strcmp(response, "no") == 0 || response == NULL)
++	if (response == NULL || strcmp(response, "no") == 0)
+ 	{
+ 		return 1;
+ 	}

@@ -57,4 +57,13 @@
     <comment>- Use https URL for github.com</comment>
     <requestid>967065</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>5e2f5725d191c473857534902072a420</srcmd5>
+    <version>7.5.0</version>
+    <time>1705437598</time>
+    <user>anag+factory</user>
+    <comment>- Remove usage of dune.configurator because ocamlfind names which
+  contain a dot are not considered valid anymore with dune 3.13</comment>
+    <requestid>1139280</requestid>
+  </revision>
 </revisionlist>

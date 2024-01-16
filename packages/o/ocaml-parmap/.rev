@@ -114,4 +114,13 @@ ocaml 4.03 (fate#320836)</comment>
   Add support for OCaml 5.0</comment>
     <requestid>1056076</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>61d11ef0f880b010334ebff2dd9770cc</srcmd5>
+    <version>1.2.5</version>
+    <time>1705437597</time>
+    <user>anag+factory</user>
+    <comment>- Remove usage of dune.configurator because ocamlfind names which
+  contain a dot are not considered valid anymore with dune 3.13</comment>
+    <requestid>1139279</requestid>
+  </revision>
 </revisionlist>

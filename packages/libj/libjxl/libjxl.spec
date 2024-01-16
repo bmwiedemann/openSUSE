@@ -16,7 +16,7 @@
 #
 
 
-%define lname   libjxl0_8
+%define lname   libjxl0_9
 %if "@BUILD_FLAVOR@" == "gtk"
 Name:           libjxl-gtk
 %bcond_without gtk
@@ -24,7 +24,7 @@ Name:           libjxl-gtk
 Name:           libjxl
 %bcond_with gtk
 %endif
-Version:        0.8.2
+Version:        0.9.0
 Release:        0
 Summary:        JPEG XL reference implementation
 License:        BSD-3-Clause
@@ -33,6 +33,7 @@ URL:            https://jpegxl.info/
 Source:         https://github.com/libjxl/libjxl/archive/refs/tags/v%version.tar.gz
 Source1:        baselibs.conf
 Source2:        skcms.tar
+BuildRequires:  asciidoc
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  pkg-config
@@ -41,12 +42,16 @@ BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.36
 BuildRequires:  pkgconfig(gimp-2.0) >= 2.10
 BuildRequires:  pkgconfig(gimpui-2.0) >= 2.10
 %endif
+BuildRequires:  giflib-devel >= 5.1
+BuildRequires:  pkgconfig(OpenEXR)
+BuildRequires:  pkgconfig(libavif)
 BuildRequires:  pkgconfig(libbrotlicommon)
 BuildRequires:  pkgconfig(libbrotlidec)
 BuildRequires:  pkgconfig(libbrotlienc)
-BuildRequires:  pkgconfig(libhwy) >= 1.0
+BuildRequires:  pkgconfig(libhwy) >= 1.0.7
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(libwebp)
 %{?suse_build_hwcaps_libs}
 %if %{with gtk}
 Provides:       bundled(skcms) = 0
@@ -116,7 +121,8 @@ mv skcms third_party/
 %if %{with gtk}
 	-DJPEGXL_ENABLE_PLUGINS=ON -DJPEGXL_ENABLE_SKCMS=ON \
 %endif
-	-DJPEGXL_ENABLE_SJPEG=OFF
+	-DJPEGXL_ENABLE_SJPEG=OFF -DJPEGXL_ENABLE_DOXYGEN=OFF \
+	-DJPEGXL_ENABLE_JPEGLI=OFF
 %cmake_build
 
 %install
@@ -124,7 +130,7 @@ mv skcms third_party/
 b="%buildroot"
 rm -fv "$b/%_libdir"/*.a
 %if %{with gtk}
-rm -Rf "$b/%_libdir"/libjxl* "$b/%_bindir" "$b/%_includedir" "$b/%_libdir/pkgconfig"
+rm -Rf "$b/%_libdir"/libjxl* "$b/%_bindir" "$b/%_includedir" "$b/%_libdir/pkgconfig" "$b/%_mandir"
 %endif
 
 %ldconfig_scriptlets -n %lname
@@ -142,13 +148,12 @@ rm -Rf "$b/%_libdir"/libjxl* "$b/%_bindir" "$b/%_includedir" "$b/%_libdir/pkgcon
 %_libdir/libjxl*.so.*
 
 %files tools
-%_bindir/cjpeg_hdr
 %_bindir/*xl*
+%_mandir/man*/*xl*
 
 %files devel
 %_includedir/jxl/
-%_libdir/libjxl.so
-%_libdir/libjxl_threads.so
+%_libdir/libjxl*.so
 %_libdir/pkgconfig/*.pc
 
 %else

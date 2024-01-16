@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-zarith
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,9 +28,9 @@ Source0:        %name-%version.tar.xz
 Patch0:         %name.patch
 BuildRequires:  gmp-devel
 BuildRequires:  ocaml-dune >= 2.8
-BuildRequires:  ocaml-rpm-macros >= 20230101
+BuildRequires:  ocaml-rpm-macros >= 20231101
 BuildRequires:  ocaml(ocaml_base_version) >= 4.04
-BuildRequires:  ocamlfind(dune.configurator)
+BuildRequires:  ocamlfind(dune-configurator)
 BuildRequires:  ocamlfind(ocamldoc)
 BuildRequires:  ocamlfind(str)
 

@@ -17,7 +17,7 @@
 
 
 Name:           Aeon-release
-Version:        20240115
+Version:        20240116
 Release:        0
 Summary:        openSUSE Aeon 
 License:        GPL-2.0-or-later
@@ -172,9 +172,9 @@ ExclusiveArch:  %ix86 x86_64 ppc64le s390x aarch64 %arm
 %include %{SOURCE100}
 Provides:       %name-%version
 Provides:       product() = Aeon
-Provides:       product(Aeon) = 20240115-0
+Provides:       product(Aeon) = 20240116-0
 Provides:       product-label() = openSUSE%20Aeon
-Provides:       product-cpeid() = cpe%3A%2Fo%3Aopensuse%3Aaeon%3A20240115
+Provides:       product-cpeid() = cpe%3A%2Fo%3Aopensuse%3Aaeon%3A20240116
 Provides:       product-url(releasenotes) = http%3A%2F%2Fdoc.opensuse.org%2Frelease%2Dnotes%2Fx86_64%2FopenSUSE%2FTumbleweed%2Frelease%2Dnotes%2DopenSUSE.rpm
 Provides:       product-endoflife()
 Requires:       product_flavor(Aeon)
@@ -190,7 +190,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(appliance)
-Provides:       product_flavor(Aeon) = 20240115-0
+Provides:       product_flavor(Aeon) = 20240116-0
 Summary:        openSUSE Aeon%{?betaversion: %{betaversion}}
 
 %description appliance
@@ -255,11 +255,11 @@ cat >%{buildroot}%{_sysconfdir}/products.d/Aeon.prod << EOF
 <product schemeversion="0">
   <vendor>openSUSE</vendor>
   <name>Aeon</name>
-  <version>20240115</version>
+  <version>20240116</version>
   <release>0</release>
   <endoflife></endoflife>
   <arch>%{_target_cpu}</arch>
-  <cpeid>cpe:/o:opensuse:aeon:20240115</cpeid>
+  <cpeid>cpe:/o:opensuse:aeon:20240116</cpeid>
   <productline>Aeon</productline>
   <register>
     <pool>

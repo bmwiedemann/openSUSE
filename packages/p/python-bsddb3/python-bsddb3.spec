@@ -1,7 +1,7 @@
 #
 # spec file for package python-bsddb3
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,9 @@ URL:            http://pypi.python.org/pypi/bsddb3
 #Freecode-URL:	 https://www.jcea.es/programacion/pybsddb.htm
 Source:         https://files.pythonhosted.org/packages/source/b/bsddb3/bsddb3-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  db-devel
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-testsuite
@@ -57,10 +60,10 @@ sed -i "1d" Lib/bsddb/dbshelve.py # Fix non-executable bits
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand rm -rf %{buildroot}%{$python_sitearch}/bsddb3/tests
 
 %check
@@ -69,7 +72,8 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %files %{python_files}
 %doc ChangeLog README.txt TODO.txt docs/*
 %license licenses.txt LICENSE.txt
-%{python_sitearch}/*
+%{python_sitearch}/bsddb3
+%{python_sitearch}/bsddb3-%{version}.dist-info
 
 %files %{python_files devel}
 %license licenses.txt LICENSE.txt

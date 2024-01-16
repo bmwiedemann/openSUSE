@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 16 16:30:34 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Own /usr/share/gtk-doc: glib no longer uses gtk-doc and as a
+  consequence cannot be held responsible to deliver that basic
+  directory structure.
+
+-------------------------------------------------------------------
 Mon Mar  5 15:19:31 UTC 2018 - jengelh@inai.de
 
 - Update summaries, fix SRPM group.

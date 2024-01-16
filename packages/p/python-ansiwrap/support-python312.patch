@@ -1,0 +1,54 @@
+From ab7b86c9c8a90206f969a006d9297a60ca931496 Mon Sep 17 00:00:00 2001
+From: "Benjamin A. Beasley" <code@musicinmybrain.net>
+Date: Mon, 20 Jun 2022 09:27:40 -0400
+Subject: [PATCH 1/2] Fix tests on Python 3.11 (fix #18)
+
+random.sample() population must be a sequence
+---
+ test/test_ansiwrap.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/test/test_ansiwrap.py b/test/test_ansiwrap.py
+index 13e7149..bf7456e 100644
+--- a/test/test_ansiwrap.py
++++ b/test/test_ansiwrap.py
+@@ -20,8 +20,8 @@
+ 
+ # as an alternative to testing all lengths at all times, which is slow,
+ # choose a few other lengths at random
+-other_lengths = (random.sample(set(range(20, 120)).difference(LINE_LENGTHS), 2) +
+-                 random.sample(set(range(120, 400)).difference(LINE_LENGTHS), 1))
++other_lengths = (random.sample(list(set(range(20, 120)).difference(LINE_LENGTHS)), 2) +
++                 random.sample(list(set(range(120, 400)).difference(LINE_LENGTHS)), 1))
+ LINE_LENGTHS.extend(other_lengths)
+ 
+ 
+
+From f6393a1e96b2d904f1a0d860930eacb5440c49fb Mon Sep 17 00:00:00 2001
+From: "Benjamin A. Beasley" <code@musicinmybrain.net>
+Date: Thu, 29 Jun 2023 16:29:52 -0400
+Subject: [PATCH 2/2] Work around imp module removal in Python 3.12
+
+---
+ ansiwrap/core.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/ansiwrap/core.py b/ansiwrap/core.py
+index 88ff453..99d0f44 100644
+--- a/ansiwrap/core.py
++++ b/ansiwrap/core.py
+@@ -3,12 +3,12 @@
+ from ansiwrap.ansistate import ANSIState
+ import re
+ import sys
+-import imp
++import importlib
+ 
+ # import a copy of textwrap3 which we will viciously monkey-patch
+ # to use our version of len, not the built-in
+ import os
+-a_textwrap = imp.load_module('a_textwrap', *imp.find_module('textwrap3'))
++a_textwrap = importlib.import_module('textwrap3')
+ 
+ 
+ __all__ = 'wrap fill shorten strip_color ansilen ansi_terminate_lines'.split()

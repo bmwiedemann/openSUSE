@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jan 16 09:28:24 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.2.0
+  * Support for the latest version of upstream libraries:
+    Qt5.15/6.6, KDE5/6, OpenSSL 1.x/3.x
+  * Wayland support
+  * Fix for some nasty crash bugs
+  * an improved font rendering engine able to represent complex
+    characters like emojis with ligatures
+  * a reworked tray icon that now follows your OS style
+  * better support for solanum ircd (Libera net)
+- Drop patches, no longer needed:
+  * 0001-Add-support-for-Python-3.patch
+  * 0001-This-is-not-necessary-anymore.patch
+  * 0001-Replace-FindPythonLibs-with-FindPython3-in-CMake.patch
+  * 0001-Stop-unsetting-_DEBUG-when-including-Python.h.patch
+  * 0001-Fix-build-with-Qt-5.15.patch
+
+-------------------------------------------------------------------
 Sat Aug  6 18:45:52 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - set CMAKE_SKIP_RPATH when building kvirc. Without it, CMake adds

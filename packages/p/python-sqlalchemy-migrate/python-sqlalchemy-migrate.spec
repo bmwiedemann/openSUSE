@@ -1,7 +1,7 @@
 #
 # spec file for package python-sqlalchemy-migrate
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-sqlalchemy-migrate
 Version:        0.13.0
 Release:        0
@@ -26,6 +26,7 @@ Group:          Development/Libraries/Python
 URL:            https://pypi.python.org/pypi/sqlalchemy-migrate
 Source:         https://files.pythonhosted.org/packages/source/s/sqlalchemy-migrate/sqlalchemy-migrate-%{version}.tar.gz
 Patch0:         support-sphinx-4.patch
+Patch1:         setuptools-fixes.patch
 # Test requirements:
 #BuildRequires:  python-ScriptTest >= 1.0
 BuildRequires:  %{python_module Tempita >= 0.4}

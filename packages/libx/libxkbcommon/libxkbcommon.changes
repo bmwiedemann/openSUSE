@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 12 09:32:56 UTC 2024 - Pierre Le Marre <opensuse@wismill.eu>
+
+- Add libxkbcommon-tools-bash-completions.
+
+-------------------------------------------------------------------
 Tue Jan  9 11:53:36 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - add libxkbregistry-devel to baselibs for use by wine-32bit. (bsc#1218640)

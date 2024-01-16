@@ -151,6 +151,9 @@ Recommends:     pulseaudio-module-lirc
 Recommends:     pulseaudio-module-x11
 Recommends:     pulseaudio-module-zeroconf
 Recommends:     pulseaudio-utils
+# Recommends that make Qt/KDE Apps style better out of the box
+Recommends:     libqt5-qtstyleplugins-platformtheme-gtk2
+Recommends:     qt6gtk2
 # Recommend sni-qt to make Qt4/kde4 apps work with systray
 Recommends:     sni-qt
 # to have working automounting we need udisks

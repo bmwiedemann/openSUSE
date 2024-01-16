@@ -24,6 +24,9 @@ if /sbin/modprobe --ignore-install nvidia NVreg_DeviceFileUID=0 NVreg_DeviceFile
       classid=${class%%00};
       if [ "$classid" == "0x0300" -o "$classid" == "0x0302" ]; then 
         devid=$((devid+1));
+        if [ ! -L /run/udev/static_node-tags/uaccess/nvidia${devid} ]; then 
+          ln -snf /dev/nvidia${devid} /run/udev/static_node-tags/uaccess/nvidia${devid};
+        fi;
         if [ ! -c /dev/nvidia${devid} ]; then 
           mknod -m 660 /dev/nvidia${devid} c 195 ${devid}; 
           chown :video /dev/nvidia${devid};

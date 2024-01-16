@@ -1,7 +1,7 @@
 #
 # spec file for package gtksourceview2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -100,7 +100,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_includedir}/gtksourceview-2.0/
 %{_libdir}/libgtksourceview-2.0.so
 %{_libdir}/pkgconfig/gtksourceview-2.0.pc
-%{_datadir}/gtk-doc/html/gtksourceview-2.0/
+%{_datadir}/gtk-doc/
 
 %files lang -f %{_name}-2.0.lang
 

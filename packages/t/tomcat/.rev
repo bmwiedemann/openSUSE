@@ -925,4 +925,13 @@ can be accepted after ecj-4.2.1 version upgrade
     <comment></comment>
     <requestid>1129044</requestid>
   </revision>
+  <revision rev="100" vrev="4">
+    <srcmd5>1f61fd820d11389692adc8032ea99bc0</srcmd5>
+    <version>9.0.82</version>
+    <time>1705437510</time>
+    <user>anag+factory</user>
+    <comment>- Fix server.xml permission (bsc#1217768, bsc#1217402)
+- remove serverxmltool and use xsltproc</comment>
+    <requestid>1139114</requestid>
+  </revision>
 </revisionlist>

@@ -26,7 +26,7 @@
 %define _pyb 3.11
 %endif
 Name:           lutris
-Version:        0.5.15
+Version:        0.5.16
 Release:        0
 Summary:        Manager for game installation and execution
 License:        GPL-3.0-or-later

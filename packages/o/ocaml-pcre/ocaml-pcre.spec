@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-pcre
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2011 Andrew Psaltis <ampsaltis at gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,10 +27,10 @@ Group:          Development/Languages/OCaml
 URL:            https://opam.ocaml.org/packages/pcre
 Source0:        %name-%version.tar.xz
 BuildRequires:  ocaml-dune >= 2.7
-BuildRequires:  ocaml-rpm-macros >= 20220222
+BuildRequires:  ocaml-rpm-macros >= 20231101
 BuildRequires:  pkg-config
 BuildRequires:  ocaml(ocaml_base_version) >= 4.12
-BuildRequires:  ocamlfind(dune.configurator)
+BuildRequires:  ocamlfind(dune-configurator)
 BuildRequires:  pkgconfig(libpcre)
 
 %description

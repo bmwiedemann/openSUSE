@@ -1,7 +1,7 @@
 #
 # spec file for package kor
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           kor
-Version:        0.3.2
+Version:        0.3.3
 Release:        0
 Summary:        Tool to discover unused Kubernetes Resources
 License:        MIT

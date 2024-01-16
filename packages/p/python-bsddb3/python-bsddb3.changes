@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 15 20:37:12 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- switch to pep517 build
+
+-------------------------------------------------------------------
 Tue Dec 29 13:40:37 UTC 2020 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.2.9:
@@ -18,7 +23,7 @@ Tue Dec 29 13:40:37 UTC 2020 - Dirk Müller <dmueller@suse.com>
     Notified by Arthur Gautier.
   * Fix compilation Python 3.8 deprecation warnings.
   * Fix compilation Python 3.9 deprecation warnings.
- 
+
 -------------------------------------------------------------------
 Mon Jul 23 09:27:27 UTC 2018 - tchvatal@suse.com
 
@@ -31,7 +36,7 @@ Thu May 10 17:08:25 UTC 2018 - toddrme2178@gmail.com
 
 - Update to 6.2.5
   * We should be able to install inside a PYPY virtualenv.
-    Reported by Zhihao Yuan. 
+    Reported by Zhihao Yuan.
 - Use license tag
 
 -------------------------------------------------------------------
@@ -136,10 +141,10 @@ Fri Jan 11 07:20:30 UTC 2013 - mlin@suse.com
 
 - Update to version 5.3.0
   * Support Berkeley DB 5.3.x.
-  * Drop support for Berkeley DB 4.2 and Python 2.3. Our reference 
-    is Red Had Enterprise Linux 5, until march 2014. After that, 
+  * Drop support for Berkeley DB 4.2 and Python 2.3. Our reference
+    is Red Had Enterprise Linux 5, until march 2014. After that,
     RHEL6 has Python 2.6 and BDB 4.7.
-    * According to 
+    * According to
       http://superuser.com/questions/189931/python-and-berkeley-db-versions-in-redhat-enterprise-linux-3-4-5-and-upcoming-6:
       * RHEL3: Python 2.2.3, BDB 4.1.25
       * RHEL4: Python 2.3.4, BDB 4.2.52
@@ -152,8 +157,8 @@ Fri Jan 11 07:20:30 UTC 2013 - mlin@suse.com
   * Fixed a testsuite compatibility problem with BDB 5.2.
   * If we are running Solaris or derivatives, and 64bit python,
     try to find the library under "/usr/local/Berkeley.*.*/64/".
-  * Solaris 10 Update 10 exposes a very old race condition in the 
-    replication master election tests. Some details in 
+  * Solaris 10 Update 10 exposes a very old race condition in the
+    replication master election tests. Some details in
     https://forums.oracle.com/forums/thread.jspa?messageID=9902860 .
     Workaround proposed in a private email from Paula Bingham (Oracle),
     in 20110929.
@@ -202,7 +207,7 @@ Thu Nov 18 15:03:47 UTC 2010 - hvogel@novell.com
 	* "DB_STAT_LOCK_OBJECTS", "DB_STAT_LOCK_PARAMS".
 	* "DB_REP_CONF_INMEM", "DB_TIMEOUT ", "DB_CURSOR_BULK".
 	* "DB->get_transactional()", "DB_REPMGR_ACKS_ALL_AVAILABLE"
-* Support for Berkeley DB 5.1. 
+* Support for Berkeley DB 5.1.
 * Drop support for Berkeley DB 4.1
 * Include processed HTML documentation in the EGG.
 * Some link fixes for external documentation.

@@ -10,4 +10,12 @@ Otherwise, this SR should be completely compatible with mlocate and can replace 
 It is not possible to have a coexistence of plocate and mlocate, as some files have name conflicts.</comment>
     <requestid>1113489</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3680325f82e32d5c402a5f4c46466c9f</srcmd5>
+    <version>1.1.22</version>
+    <time>1705437485</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1139052</requestid>
+  </revision>
 </revisionlist>

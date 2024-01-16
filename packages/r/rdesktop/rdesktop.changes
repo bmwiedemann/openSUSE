@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jan 11 14:24:42 UTC 2024 - Manfred Schwarb <manfred99@gmx.ch>
+
+- add patch fix_C99_issue_in_configure.patch to fix detection of statvfs64
+- add patch fix_dashes_in_manpage.patch to prevent dashes from being utf8 mangled
+- add patch fix_segfault_in_utils_cert_handle_exception.patch
+- add patch fix_wrong_string_null_terminated.patch to null-terminate
+    the correct variable
+- adjust patch rdesktop-fix_pkgconfig_check.patch so it can be applied with "-p1"
+- minor spec cleanup
+
+-------------------------------------------------------------------
 Wed Jan 27 10:30:05 UTC 2021 - seife+obs@b1-systems.com
 
 - remove dependency on python2

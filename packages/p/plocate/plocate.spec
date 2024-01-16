@@ -1,7 +1,7 @@
 #
 # spec file for package plocate
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,8 @@
 #
 
 
-#Compat macro for new _fillupdir macro introduced in Nov 2017
-%if ! %{defined _fillupdir}
-  %define _fillupdir %{_localstatedir}/adm/fillup-templates
-%endif
-
 Name:           plocate
-Version:        1.1.19
+Version:        1.1.22
 Release:        0
 Summary:        A much faster locate(1)
 License:        GPL-2.0-only
@@ -31,8 +26,7 @@ URL:            https://plocate.sesse.net
 Source:         https://plocate.sesse.net/download/%{name}-%{version}.tar.gz
 Source1:        updatedb.conf
 Source2:        %{name}-updatedb.service
-Source3:        %{name}-updatedb.timer
-Source4:        sysconfig.locate
+Source3:        sysconfig.locate
 # apparmor profile
 Source5:        usr.bin.plocate
 Source6:        usr.sbin.updatedb
@@ -74,8 +68,7 @@ chmod 00755 %{buildroot}%{_bindir}/%{name}
 # install auxiliary files:
 install -Dm644 %{SOURCE1} %{buildroot}%{_sysconfdir}/updatedb.conf
 install -Dm644 %{SOURCE2} %{buildroot}%{_unitdir}/%{name}-updatedb.service
-install -Dm644 %{SOURCE3} %{buildroot}%{_unitdir}/%{name}-updatedb.timer
-install -Dm644 %{SOURCE4} %{buildroot}%{_fillupdir}/sysconfig.locate
+install -Dm644 %{SOURCE3} %{buildroot}%{_fillupdir}/sysconfig.locate
 # compat symlinks:
 ln -sr %{buildroot}%{_bindir}/%{name} %{buildroot}%{_bindir}/locate
 ln -sr %{buildroot}%{_mandir}/man1/%{name}.1%{?ext_man} %{buildroot}%{_mandir}/man1/locate.1%{?ext_man}

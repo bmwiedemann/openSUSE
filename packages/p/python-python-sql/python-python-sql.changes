@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 13 14:06:41 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- added %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Tue Jan  9 22:04:57 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.3:

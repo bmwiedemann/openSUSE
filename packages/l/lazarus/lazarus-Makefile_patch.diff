@@ -20,7 +20,7 @@ Index: lazarus/Makefile.fpc
  INSTALL_MAN_DIR=$(INSTALL_PREFIX)/share/man
  ifneq ($(findstring $(OS_TARGET),win32 win64),)
  LAZARUS_INSTALL_DIR=C:\lazarus
-@@ -287,8 +287,8 @@ installbase:
+@@ -249,8 +249,8 @@ installbase:
  ifneq ($(findstring $(OS_TARGET),win32 win64),)
  
  else

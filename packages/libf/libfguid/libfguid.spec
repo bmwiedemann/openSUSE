@@ -1,7 +1,7 @@
 #
 # spec file for package libfguid
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libfguid
 %define lname	libfguid1
-Version:        20220113
+Version:        20240116
 Release:        0
 Summary:        A library for GUID/UUID data types
 License:        LGPL-3.0-or-later

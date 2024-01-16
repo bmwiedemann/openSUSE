@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 12 15:24:04 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- New upstream release of Star Traders: version 7.19
+   * New Polish, Romanian and Ukrainian translations,
+     renamed AppStream metainfo and desktop files.
+   * Require at least Gettext 0.21 and Automake 1.16 for building.
+
+-------------------------------------------------------------------
 Sat Aug  6 09:45:00 AEST 2021 - John Zaitseff <J.Zaitseff@zap.org.au>
 
 - New upstream release of Star Traders: version 7.18.

@@ -91,4 +91,14 @@
     <comment>- Update summaries, fix SRPM group. (forwarded request 583004 from jengelh)</comment>
     <requestid>583031</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>c97f91c751a1ecbf39efe000e76c8e91</srcmd5>
+    <version>0.6.2</version>
+    <time>1705437576</time>
+    <user>anag+factory</user>
+    <comment>- Own /usr/share/gtk-doc: glib no longer uses gtk-doc and as a
+  consequence cannot be held responsible to deliver that basic
+  directory structure. (forwarded request 1139239 from dimstar)</comment>
+    <requestid>1139262</requestid>
+  </revision>
 </revisionlist>

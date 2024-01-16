@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 16 11:28:21 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add fix-tests.patch to make the current version (0.7.0) compatible
+  with latest version of panel, pandas and fsspec.
+
+-------------------------------------------------------------------
 Thu Jun  8 12:41:01 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.7.0

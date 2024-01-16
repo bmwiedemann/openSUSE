@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jan 15 17:13:55 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.31.5:
+  * Resolved Issues
+    - #2466 Panic: index out of range [0] with length 0
+    - #2465 v0.31.4 - panic; no client connection detected - with
+      feelings!!
+
+-------------------------------------------------------------------
+Mon Jan 15 16:54:10 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.31.4:
+  * Resolved Issues
+    - #2463 v0.31.3 (Linux_amd64) gives runtime error on startup
+
+-------------------------------------------------------------------
 Wed Jan 10 19:15:44 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.31.3:

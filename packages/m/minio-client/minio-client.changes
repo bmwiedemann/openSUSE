@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jan 15 20:40:43 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 20240113T084448Z:
+  * mirror: --preserve should not activate --overwrite (#4821)
+  * Fixing PR template format (#4820)
+  * Arranging command help menu alphabetically  (#4817)
+
+-------------------------------------------------------------------
+Mon Jan 15 20:35:26 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 20240111T054932Z:
+  * Added option `--exclude-folders` (#4566)
+  * Workflow to add issues to tracking project (#4815)
+  * allow aliases with single character strings (#4812)
+
+-------------------------------------------------------------------
 Sun Jan 07 15:59:45 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 20240105T050432Z:

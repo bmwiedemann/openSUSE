@@ -19,12 +19,13 @@
 
 
 Name:           giada
-Version:        0.26.0
+Version:        0.26.1
 Release:        0
 Summary:        Sampler Audio Tool
 License:        (AGPL-3.0-only OR GPL-2.0-or-later) AND GPL-3.0-or-later AND LGPL-2.1-or-later WITH GCC-exception-2.0 AND OFL-1.1 AND Zlib
 URL:            https://giadamusic.com
 Source0:        %{name}-%{version}.tar.xz
+Patch0:         giada-fmt.patch
 Patch3:         003-cmake-exclude-juce-from-all.patch
 %if 0%{?suse_version} <= 1550
 BuildRequires:  gcc10-c++

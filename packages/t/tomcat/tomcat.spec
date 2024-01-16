@@ -1,7 +1,7 @@
 #
 # spec file for package tomcat
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2000-2009, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -36,7 +36,6 @@
 %define tempdir %{cachedir}/temp
 %define workdir %{cachedir}/work
 %define tomcatappdir %{_datadir}/%{name}/tomcat-webapps
-%define serverxmltool %{_libexecdir}/%{name}/serverxml-tool.sh
 %define javac_target 1.8
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
@@ -62,8 +61,8 @@ Source21:       tomcat-functions
 Source30:       tomcat-preamble
 Source31:       tomcat-server
 Source32:       tomcat-named.service
-Source33:       tomcat-serverxml-tool.tar.gz
-Source34:       tomcat-serverxml-tool.sh.in
+Source100:      valve.xslt
+Source101:      allowLinking.xslt
 Source1000:     tomcat-rpmlintrc
 Source1001:     https://archive.apache.org/dist/tomcat/tomcat-%{major_version}/v%{version}/src/%{packdname}.tar.gz.asc
 Source1002:     https://downloads.apache.org/tomcat/tomcat-9/KEYS#/%{name}.keyring
@@ -102,6 +101,7 @@ BuildRequires:  jakarta-taglibs-standard >= 1.1
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildRequires:  junit
+BuildRequires:  libxslt-tools
 BuildRequires:  pkgconfig
 BuildRequires:  sed
 BuildRequires:  systemd-rpm-macros
@@ -241,7 +241,7 @@ Requires:       jakarta-taglibs-standard >= 1.1
 The ROOT and examples web applications for Apache Tomcat
 
 %prep
-%autosetup -p1 -n %{packdname} -b 33
+%autosetup -p1 -n %{packdname}
 
 # remove pre-built binaries and windows files
 find . -type f \( -name "*.bat" -o -name "*.class" -o -name Thumbs.db -o -name "*.gz" -o \
@@ -306,11 +306,6 @@ jar cf ../../../../../../../../output/build/webapps/docs/appdev/sample/sample.wa
 popd
 popd
 
-pushd %{_builddir}/tomcat-serverxml-tool/src
-javac -source %{javac_target} -target %{javac_target} com/suse/tcserverxml/ApplyStylesheet.java
-jar cfe %{_builddir}/tomcat-serverxml-tool/serverxmltool.jar com.suse.tcserverxml.ApplyStylesheet com/suse/tcserverxml/ApplyStylesheet.class com/suse/tcserverxml/add-context.xslt com/suse/tcserverxml/remove-context.xslt com/suse/tcserverxml/add-valve-rotatable-false.xslt
-popd
-
 %install
 # build initial path structure
 install -d -m 0755 %{buildroot}%{_bindir}
@@ -337,6 +332,9 @@ install -d -m 0775 %{buildroot}%{workdir}
 install -d -m 0755 %{buildroot}%{_unitdir}
 install -d -m 0755 %{buildroot}%{_libexecdir}/%{name}
 install -d -m 0755 %{buildroot}%{_fillupdir}
+
+cp -a %{SOURCE100} %{buildroot}%{confdir}
+cp -a %{SOURCE101} %{buildroot}%{confdir}
 
 # move things into place
 # First copy supporting libs to tomcat lib
@@ -444,15 +442,6 @@ pushd %{buildroot}%{tomcatappdir}/sample
 %jar xf %{buildroot}%{tomcatappdir}/docs/appdev/sample/sample.war
 popd
 
-# Allow linking for example webapp
-mkdir -p %{buildroot}%{tomcatappdir}/examples/META-INF
-pushd %{buildroot}%{tomcatappdir}/examples/META-INF
-echo '<?xml version="1.0" encoding="UTF-8"?>'>context.xml
-echo '<Context>'>>context.xml
-echo '  <Resources allowLinking="true" />'>>context.xml
-echo '</Context>'>>context.xml
-popd
-
 pushd %{buildroot}%{tomcatappdir}/examples/WEB-INF/lib
 ln -s -f $(build-classpath jakarta-taglibs-core) jstl.jar
 ln -s -f $(build-classpath jakarta-taglibs-standard) standard.jar
@@ -557,14 +546,6 @@ ln -s -f %{_sysconfdir}/alternatives/jsp %{buildroot}%{_javadir}/%{name}-jsp.jar
 # It will be changed anyways to the correct symlink by update-alternatives.
 ln -s -f %{_sysconfdir}/alternatives/servlet.jar %{buildroot}%{_javadir}/servlet.jar
 
-# Install tool used to edit server.xml
-pushd %{_builddir}/tomcat-serverxml-tool
-cat %{SOURCE34} | sed 's#@LIBEXECDIR@#%{_libexecdir}#g' >tomcat-serverxml-tool.sh
-install -m 0755 tomcat-serverxml-tool.sh \
-    %{buildroot}%{_libexecdir}/%{name}/serverxml-tool.sh
-cp serverxmltool.jar %{buildroot}%{_libexecdir}/%{name}/
-popd
-
 %pre
 # add the tomcat user and group
 getent group tomcat >/dev/null || %{_sbindir}/groupadd -r tomcat
@@ -648,37 +629,46 @@ rm -f \
     %{libdir}/\[ecj\].jar >/dev/null 2>&1
 
 %post webapps
-%{serverxmltool} add-context.xslt docBase=%{tomcatappdir}/ROOT path=/
-%{serverxmltool} add-context.xslt docBase=%{tomcatappdir}/sample path=/sample
-%{serverxmltool} add-context.xslt docBase=%{tomcatappdir}/examples path=/examples
+xsltproc --output %{tomcatappdir}/ROOT/META-INF/context.xml %{confdir}/allowLinking.xslt %{tomcatappdir}/examples/META-INF/context.xml
+if [ ! -e %{_datadir}/%{name}/webapps/ROOT ]; then
+    ln -sf  %{tomcatappdir}/ROOT %{_datadir}/%{name}/webapps/ROOT
+fi
+xsltproc --output %{tomcatappdir}/examples/META-INF/context.xml %{confdir}/allowLinking.xslt %{tomcatappdir}/examples/META-INF/context.xml
+if [ ! -e %{_datadir}/%{name}/webapps/examples ]; then
+    ln -sf %{tomcatappdir}/examples %{_datadir}/%{name}/webapps/examples
+fi
+#use the same context.xml for sample war
+mkdir -p %{tomcatappdir}/webapps/sample/META-INF
+xsltproc --output %{tomcatappdir}/sample/META-INF/context.xml %{confdir}/allowLinking.xslt %{tomcatappdir}/examples/META-INF/context.xml
+if [ ! -e %{_datadir}/%{name}/webapps/sample ]; then
+    ln -sf %{tomcatappdir}/sample  %{_datadir}/%{name}/webapps/sample
+fi
 
 %postun webapps
 if [ $1 -eq 0 ]; then # uninstall only
-  %{serverxmltool} remove-context.xslt docBase=%{tomcatappdir}/ROOT path=/
-  %{serverxmltool} remove-context.xslt docBase=%{tomcatappdir}/sample path=/sample
-  %{serverxmltool} remove-context.xslt docBase=%{tomcatappdir}/examples path=/examples
+    rm %{tomcatappdir}/ROOT/META-INF/context.xml
+    rm %{tomcatappdir}/sample/META-INF/context.xml
 fi
 
 %post admin-webapps
-%{serverxmltool} add-context.xslt docBase=%{tomcatappdir}/host-manager path=/host-manager contextXml=%{tomcatappdir}/host-manager/META-INF/context.xml
-%{serverxmltool} add-context.xslt docBase=%{tomcatappdir}/manager path=/manager contextXml=%{tomcatappdir}/manager/META-INF/context.xml
+xsltproc --output %{tomcatappdir}/manager/META-INF/context.xml %{confdir}/allowLinking.xslt %{tomcatappdir}/manager/META-INF/context.xml
+if [ ! -e %{_datadir}/%{name}/webapps/manager ]; then
+    ln -sf %{tomcatappdir}/manager %{_datadir}/%{name}/webapps/manager
+fi
 
-%postun admin-webapps
-if [ $1 -eq 0 ]; then # uninstall only
-  %{serverxmltool} remove-context.xslt docBase=%{tomcatappdir}/host-manager path=/host-manager
-  %{serverxmltool} remove-context.xslt docBase=%{tomcatappdir}/manager path=/manager
+xsltproc --output %{tomcatappdir}/host-manager/META-INF/context.xml %{confdir}/allowLinking.xslt %{tomcatappdir}/host-manager/META-INF/context.xml
+if [ ! -e %{_datadir}/%{name}/webapps/host-manager ]; then
+    ln -sf %{tomcatappdir}/host-manager %{_datadir}/%{name}/webapps/host-manager
 fi
 
 %post docs-webapp
-%{serverxmltool} add-context.xslt docBase=%{tomcatappdir}/docs path=/docs
-
-%postun docs-webapp
-if [ $1 -eq 0 ]; then # uninstall only
-  %{serverxmltool} remove-context.xslt docBase=%{tomcatappdir}/docs path=/docs
+xsltproc --output %{tomcatappdir}/docs/META-INF/context.xml %{confdir}/allowLinking.xslt %{tomcatappdir}/docs/META-INF/context.xml
+if [ ! -e %{_datadir}/%{name}/webapps/docs ]; then
+    ln -sf %{tomcatappdir}/docs %{_datadir}/%{name}/webapps/docs
 fi
 
 %posttrans
-%{serverxmltool} add-valve-rotatable-false.xslt
+xsltproc  --output %{confdir}/server.xml %{confdir}/valve.xslt %{confdir}/server.xml
 
 %files
 %doc {LICENSE,NOTICE,RELEASE*}
@@ -693,8 +683,6 @@ fi
 %attr(0755,root,root) %{_libexecdir}/%{name}/functions
 %attr(0755,root,root) %{_libexecdir}/%{name}/preamble
 %attr(0755,root,root) %{_libexecdir}/%{name}/server
-%attr(0755,root,root) %{_libexecdir}/%{name}/serverxml-tool.sh
-%attr(0644,root,root) %{_libexecdir}/%{name}/serverxmltool.jar
 #bnc#565901
 %{bindir}/catalina.sh
 %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/logrotate.d/%{name}
@@ -728,11 +716,13 @@ fi
 %attr(0644,root,tomcat) %{bindir}/catalina-tasks.xml
 %{homedir}/lib
 %{homedir}/temp
-%{homedir}/webapps
 %{homedir}/work
+%{homedir}/webapps
 %{homedir}/logs
 %{homedir}/conf
 %attr(0644,root,tomcat) %{_fillupdir}/sysconfig.%{name}
+%attr(0644,root,tomcat) %{confdir}/allowLinking.xslt
+%attr(0644,root,tomcat) %{confdir}/valve.xslt
 
 %files admin-webapps
 %defattr(0644,root,tomcat,0755)
@@ -788,6 +778,7 @@ fi
 #bnc#520532
 %config(noreplace) %{tomcatappdir}/ROOT
 %{tomcatappdir}/examples
+%config(noreplace) %{tomcatappdir}/examples/META-INF/context.xml
 %{tomcatappdir}/sample
 
 %files jsvc
