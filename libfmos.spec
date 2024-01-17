@@ -18,7 +18,7 @@
 
 Name:           libfmos
 %define lname	libfmos1
-Version:        20231121
+Version:        20231122
 Release:        0
 Summary:        Library for MacOS data types
 License:        LGPL-3.0-or-later
