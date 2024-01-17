@@ -1,0 +1,57 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2023-10-22 06:05:56.005185292 +0200
+
+Copy functions from FLINT 2.9 [13042307357192c09630d276f0e7bf2abb9ffd39]
+which have been removed in FLINT 3.0.
+---
+ lib/flint.c |   23 +++++++++++++++++++++--
+ 1 file changed, 21 insertions(+), 2 deletions(-)
+
+Index: cm-0.4.2/lib/flint.c
+===================================================================
+--- cm-0.4.2.orig/lib/flint.c
++++ cm-0.4.2/lib/flint.c
+@@ -30,6 +30,25 @@ Foundation, Inc., 59 Temple Place - Suit
+ /*                                                                           */
+ /*****************************************************************************/
+ 
++static void fmpz_mod_poly_get_coeff_mpz1(mpz_t x,
++    const fmpz_mod_poly_t poly, slong n, const fmpz_mod_ctx_t ctx)
++{
++	fmpz_t t;
++	fmpz_init(t);
++	fmpz_mod_poly_get_coeff_fmpz(t, poly, n, ctx);
++	fmpz_get_mpz(x, t);
++	fmpz_clear(t);
++}
++
++static void fmpz_mod_poly_set_coeff_mpz1(fmpz_mod_poly_t poly,
++    slong n, const mpz_t x, const fmpz_mod_ctx_t ctx)
++{
++	fmpz_t t;
++	fmpz_init_set_readonly(t, x);
++	fmpz_mod_poly_set_coeff_fmpz(poly, n, t, ctx);
++	fmpz_clear_readonly(t);
++}
++
+ void mpzx_set_fmpz_mod_poly (mpzx_ptr f, fmpz_mod_poly_t ff,
+    const fmpz_mod_ctx_t ctx)
+ {
+@@ -38,7 +57,7 @@ void mpzx_set_fmpz_mod_poly (mpzx_ptr f,
+    deg = fmpz_mod_poly_degree (ff, ctx);
+    mpzx_set_deg (f, deg);
+    for (i = 0; i <= deg; i++)
+-      fmpz_mod_poly_get_coeff_mpz (f->coeff [i], ff, i, ctx);
++      fmpz_mod_poly_get_coeff_mpz1(f->coeff [i], ff, i, ctx);
+ }
+ 
+ /*****************************************************************************/
+@@ -51,7 +70,7 @@ void fmpz_mod_poly_set_mpzx (fmpz_mod_po
+    deg = f->deg;
+    fmpz_mod_poly_realloc (ff, deg + 1, ctx);
+    for (i = 0; i <= deg; i++)
+-      fmpz_mod_poly_set_coeff_mpz (ff, i, f->coeff [i], ctx);
++      fmpz_mod_poly_set_coeff_mpz1(ff, i, f->coeff [i], ctx);
+ }
+ 
+ #endif

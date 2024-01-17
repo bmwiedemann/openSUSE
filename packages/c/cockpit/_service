@@ -1,0 +1,32 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://github.com/dgdavid/cockpit-suse-theme.git</param>
+    <param name="versionformat"></param>
+    <param name="scm">git</param>
+    <param name="revision">main</param>
+  </service>
+  <service mode="buildtime" name="tar">
+    <param name="obsinfo">cockpit-suse-theme.obsinfo</param>
+    <!-- On SLE15.4 extra '-' gets added to the filename so we need to
+         define the name explicitly -->
+    <param name="filename">cockpit-suse-theme</param>
+  </service>
+  <service name="obs_scm" mode="manual">
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="url">https://github.com/cockpit-project/cockpit.git/</param>
+    <param name="scm">git</param>
+    <param name="revision">307</param>
+    <param name="submodules">enable</param>
+  </service>
+  <service name="node_modules" mode="manual">
+    <param name="cpio">node_modules.obscpio</param>
+    <param name="output">node_modules.spec.inc</param>
+    <param name="source-offset">1000</param>
+  </service>
+  <service mode="buildtime" name="tar">
+    <param name="obsinfo">cockpit.obsinfo</param>
+  </service>
+  <service mode="buildtime" name="set_version">
+    <param name="basename">cockpit</param>
+  </service>
+</services>

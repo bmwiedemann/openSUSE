@@ -1,0 +1,66 @@
+-------------------------------------------------------------------
+Fri May 28 08:31:34 UTC 2021 - pgajdos@suse.com
+
+- version update to 3.1
+  - Added correct detection of setup.py encoding
+  - Code cleanup [CAM Gerlach]
+  - Drop support for Python 2 [Florian Bruhin]
+  - Add back official support for Python 3.6, I didn't realize it was still officially supported
+  - Update to the current list of Trove classifiers.
+  - Officially support Python 3.8 and 3.9
+  - Drop official support for Python 3.5 and 3.6 (still works though).
+- %check: use %pytestunit rpm macro
+
+-------------------------------------------------------------------
+Wed May 20 07:26:41 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
+Fri Mar 20 14:10:29 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 2.6
+  * Ran flake8 and black on the code, better formatting for 
+    classifiers.py generation.
+  * Support for PEP 517, setup.cfg-only packages. [Max Tyulin]
+  * Adds support for Markdown long_descriptions, if you set
+    long_description_content_type to 'text/markdown'
+  * Installs Pygments to avoid an error message of you have
+    syntax highlighted code in the long_description.
+
+-------------------------------------------------------------------
+Mon Jun  3 10:17:49 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.5:
+  - Fixed #35: Correctly restore ``sys.argv``.  [maurits]
+  - Added back the BusFactor test, the XMLRPC API supports it.
+  - #26: Adding a test to check for a development status classifier.
+  - #21: Accept the new project_urls distribution data.
+  - Now verifies that classifiers are valid, and that the license field
+    and license classifiers match.
+  - The rating now again reflects if the long_description isn't valid ReST.
+  - #38: Recommendations for the License field has changed.
+
+-------------------------------------------------------------------
+Tue Feb 12 10:23:23 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim rhetoric storytelling from descriptions.
+
+-------------------------------------------------------------------
+Tue Feb 12 00:33:47 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v2.4
+  - Get rid of the tests that rely on HTML scraping, it's too brittle.
+  - Added -n command line option to set the minimum rating needed for pyroma
+    to return success, useful in scripts.
+- from 2.3.1
+  - Fixed installation fails with a non-UTF8 locale under Python 3.
+- Remove unnecessary build dependency on python-devel
+- Update URL from BitBucket to GitHub
+- Use %license
+- Fix %doc to use README.rst instead of empty README.txt
+
+-------------------------------------------------------------------
+Thu Nov 16 17:45:39 UTC 2017 - toddrme2178@gmail.com
+
+- Initial version for v2.3

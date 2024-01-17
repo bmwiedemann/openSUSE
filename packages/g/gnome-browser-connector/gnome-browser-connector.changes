@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Sun Sep 11 18:17:58 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Use new upstream source url.
+
+-------------------------------------------------------------------
+Fri Sep  9 09:13:53 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 42.1:
+  + Added detected python path in scripts shebang.
+  + Restored compatibility with Python 3.8.
+  + Fix errors in `get_variant` helper that leads to connector
+    crash.
+  + Fixed build system error when python dependencies are missing.
+- Update Source tag to reflect new home.
+- Drop hashbang fixes to python scripts: no longer required.
+
+-------------------------------------------------------------------
+Sun Aug 21 23:50:48 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Initial package (renamed from chrome-gnome-shell).

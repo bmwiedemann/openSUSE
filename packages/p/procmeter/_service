@@ -1,0 +1,15 @@
+<services>
+  <service mode="disabled" name="tar_scm">
+    <param name="url">https://gedanken.org.uk/svn/procmeter3/trunk</param>
+    <param name="scm">svn</param>
+    <param name="versionformat">3.6+svn%r</param>
+    <param name="filename">procmeter3</param>
+  </service>
+  <service mode="disabled" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="disabled" name="set_version" />
+</services>
+
+

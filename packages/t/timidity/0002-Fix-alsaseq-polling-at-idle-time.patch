@@ -1,0 +1,61 @@
+From dcfe540627e65381697785201af5cd6fc90ac3c9 Mon Sep 17 00:00:00 2001
+From: Takashi Iwai <tiwai@suse.de>
+Date: Wed, 30 May 2012 12:56:55 +0200
+Subject: [PATCH 2/9] Fix alsaseq polling at idle time
+
+The select() must be called even at idle time.  Otherwise it goes to
+busy loop.
+
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+---
+ interface/alsaseq_c.c |   27 +++++++++++++--------------
+ 1 file changed, 13 insertions(+), 14 deletions(-)
+
+diff --git a/interface/alsaseq_c.c b/interface/alsaseq_c.c
+index 876a62c..1785ab1 100644
+--- a/interface/alsaseq_c.c
++++ b/interface/alsaseq_c.c
+@@ -484,6 +484,8 @@ static void stop_playing(void)
+ 
+ static void doit(struct seq_context *ctxp)
+ {
++	fd_set rfds;
++	struct timeval timeout;
+ 	for (;;) {
+ 		while (snd_seq_event_input_pending(ctxp->handle, 1)) {
+ 			if (do_sequencer(ctxp))
+@@ -511,20 +513,17 @@ static void doit(struct seq_context *ctxp)
+ 			play_event(&ev);
+ 			aq_fill_nonblocking();
+ 		}
+-		if (! ctxp->active || ! IS_STREAM_TRACE) {
+-			fd_set rfds;
+-			FD_ZERO(&rfds);
+-			FD_SET(ctxp->fd, &rfds);
+-			if (! IS_STREAM_TRACE) {
+-				struct timeval timeout;
+-				timeout.tv_sec = 0;
+-				timeout.tv_usec = 10000; /* 10ms */
+-				if (select(ctxp->fd + 1, &rfds, NULL, NULL, &timeout) < 0)
+-					goto __done;
+-			} else {
+-				if (select(ctxp->fd + 1, &rfds, NULL, NULL, NULL) < 0)
+-					goto __done;
+-			}				
++
++		FD_ZERO(&rfds);
++		FD_SET(ctxp->fd, &rfds);
++		if (ctxp->active) {
++			timeout.tv_sec = 0;
++			timeout.tv_usec = 10000; /* 10ms */
++			if (select(ctxp->fd + 1, &rfds, NULL, NULL, &timeout) < 0)
++				goto __done;
++		} else {
++			if (select(ctxp->fd + 1, &rfds, NULL, NULL, NULL) < 0)
++				goto __done;
+ 		}
+ 	}
+ 
+-- 
+1.7.9.2
+

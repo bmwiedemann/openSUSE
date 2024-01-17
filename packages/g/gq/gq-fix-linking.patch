@@ -1,0 +1,25 @@
+From 415bc60cb09bd8cdba9feb5ce5f7f114236b0ba4 Mon Sep 17 00:00:00 2001
+From: Jakob Haufe <sur5r@sur5r.net>
+Date: Mon, 4 Apr 2011 03:52:59 +0200
+Subject: [PATCH] Fix linking for gold or ld --no-add-needed
+
+---
+ configure.in |    3 +++
+ 1 files changed, 3 insertions(+), 0 deletions(-)
+
+diff --git a/configure.in b/configure.in
+index 62ed39a..69f77dd 100644
+--- a/configure.in
++++ b/configure.in
+@@ -283,6 +283,9 @@ if test "$gq_have_tls" = 1; then
+ 	AC_CHECK_LIB(ssl, SSL_new,
+ 		     [LIBS="-lssl $LIBS"]
+ 	)
++    AC_CHECK_LIB(crypto, BIO_new,
++             [LIBS="-lcrypto $LIBS"]
++    )
+ fi
+ 
+ AC_CHECK_FUNCS(ldap_str2objectclass ldap_memfree ldap_rename ldap_str2dn \
+-- 
+1.7.4.1

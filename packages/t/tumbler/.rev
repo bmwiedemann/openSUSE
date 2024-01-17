@@ -1,0 +1,473 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cfd7715e0ffcdb5c7de9b009ff29f5c3</srcmd5>
+    <version>0.1.4</version>
+    <time>1291808194</time>
+    <user>darix</user>
+    <comment>Accepted submit request 54995 from user prusnak
+</comment>
+    <requestid>54995</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>320d4783e50ad54828684cf55d53e455</srcmd5>
+    <version>0.1.4</version>
+    <time>1291808200</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 54995
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>817a7bd2abf1431baea830120fd28b91</srcmd5>
+    <version>0.1.4</version>
+    <time>1294667913</time>
+    <user>darix</user>
+    <comment>Accepted submit request 57390 from user gberh
+</comment>
+    <requestid>57390</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>962ed8b864063ce725c08840e7ee2410</srcmd5>
+    <version>0.1.4</version>
+    <time>1294667933</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 57390
+</comment>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>7635d1b8c8f3d65a9d3ff7e3896e32cb</srcmd5>
+    <version>0.1.6</version>
+    <time>1295310340</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58597 from user gberh
+</comment>
+    <requestid>58597</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>ac6664fc1c8dcb08340773decd50b024</srcmd5>
+    <version>0.1.6</version>
+    <time>1295310356</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58597
+</comment>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>ac6664fc1c8dcb08340773decd50b024</srcmd5>
+    <version>0.1.6</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6c3d8c70ce84476268861b229c36915e</srcmd5>
+    <version>0.1.21</version>
+    <time>1298039026</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 62053 from user gberh
+</comment>
+    <requestid>62053</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2909344229979c77f39e23a8674d39f5</srcmd5>
+    <version>0.1.22</version>
+    <time>1316618637</time>
+    <user>saschpe</user>
+    <comment>- update to version 0.1.22
+  - add coding style documentation
+  - add a GStreamer-based thumbnailer for video thumbnails
+  - avoid GdkPixbuf functions deprecated in poppler &gt;= 0.17
+  - translation updates
+- dropped obsolete tumbler-poppler-0.18.patch,
+  tumbler-poppler-0.18-bis.patch
+
+- Add tumbler-poppler-0.18.patch: fix build with poppler 0.17/0.18.
+  Patch taken from git.
+- Add tumbler-poppler-0.18-bis.patch: second part of the fix, not
+  in git yet.</comment>
+    <requestid>84030</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>b9a76f8112cb0d2d1cc0ceaca2f0b126</srcmd5>
+    <version>0.1.22</version>
+    <time>1317213686</time>
+    <user>saschpe</user>
+    <comment>- added tumbler-0.1.22-fix-video-thumbnails.patch in order to fix
+  the generation of video images by starting the pipeline
+- build the gstreamer plugin now that it actually works</comment>
+    <requestid>85158</requestid>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>b9a76f8112cb0d2d1cc0ceaca2f0b126</srcmd5>
+    <version>0.1.22</version>
+    <time>1319182532</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>fd6a7ee7df516c74d0b3357b3349226d</srcmd5>
+    <version>0.1.23</version>
+    <time>1326118949</time>
+    <user>coolo</user>
+    <comment>- update to version 0.1.23
+  - fix generation of video images by starting the pipeline
+  - add an ODF thumbnailer plugin
+  - add support for OpenRaster images in the ODF thumbnailer
+  - add a raw image thumbnailer plugin
+  - exit the xdg thumbnailer nicely with corrupt png files
+  - avoid huge thumbnails from libjpeg
+  - optimize the pixbuf thumbnailer
+  - bugfixes
+  - translation updates
+- dropped obsolete tumbler-0.1.22-fix-video-thumbnails.patch</comment>
+    <requestid>99303</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>ef6fe97ef6930f8977e1d9b4cbf5971e</srcmd5>
+    <version>0.1.23</version>
+    <time>1329383453</time>
+    <user>coolo</user>
+    <comment>- patch license to follow spdx.org standard</comment>
+    <requestid>104753</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>a334a9fbd6104735aa84786a82b99119</srcmd5>
+    <version>0.1.24</version>
+    <time>1334217274</time>
+    <user>coolo</user>
+    <comment>- update to version 0.1.24
+  - link all plugins that use rint() against libm
+  - call dbus_g_thread_init() to fix threading issues
+  - add application/vnd.rn-realmedia to the ffmpeg plugin
+  - explicitly link against gmodule
+  - avoid accessing list elements after they have been freed
+  - make sure to include PLATFORM flags everywhere
+  - translation updates
+
+- split of -lang and shared library subpackages in order to comply
+  with the shread library packaging policy
+- enable ODF and RAW plugins and add the option to build the ffmpeg
+  plugin
+- correct dependencies</comment>
+    <requestid>112516</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>73dfb426b4c9459f3b045511c5ccff47</srcmd5>
+    <version>0.1.25</version>
+    <time>1336452540</time>
+    <user>coolo</user>
+    <comment>- update to version 0.1.25
+  - remove some unused m4 macros
+  - add or fix missing licenses
+  - translation updates</comment>
+    <requestid>116152</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>73dfb426b4c9459f3b045511c5ccff47</srcmd5>
+    <version>0.1.25</version>
+    <time>1340184287</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>be5695c7bec2965c04f5858fe06c25d5</srcmd5>
+    <version>0.1.26</version>
+    <time>1355920440</time>
+    <user>coolo</user>
+    <comment>- update to version 0.1.26
+  - remove INSTALL
+  - directly render the capture in the correct size
+  - new gstreamer thumbnailer based on totem-thumbnailer
+  - disable http and cdda schemes as well
+  - add support for MPEG2 transport streams
+  - rotate jpeg thumbnails
+  - plug small leak
+  - don't use collate to check strings
+  - release lifecycle manager during early exit
+  - don't abort with warnings in debug mode
+  - clear 2.32 mutex memory leak
+  - drop unneeded vfs schemes
+  - work with an array to store the strings
+  - don't use GString for a simple concat
+  - make registry dump a bit smaller
+  - don't use deprecated glib 2.32 API
+  - rotate pixbuf loader images
+  - translation updates</comment>
+    <requestid>145716</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>dad052e4888cc1810e7473cb1e8da35c</srcmd5>
+    <version>0.1.27</version>
+    <time>1358083916</time>
+    <user>coolo</user>
+    <comment>- update to version 0.1.27
+  - autotools updates
+  - remove unmaintained translations
+  - fix build when using -Wl,-z,defs
+  - add cover-thumbnailer for movies
+  - add config file system to control thumbnailing plugins
+  - release thumbnail in gst thumbnailer</comment>
+    <requestid>148188</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>28f20f4efd1555e5448aeeec57f6e2cc</srcmd5>
+    <version>0.1.27</version>
+    <time>1358416273</time>
+    <user>coolo</user>
+    <comment>- build the OMDB cover thumbnailer (although disabled by default
+  for privacy reasons)</comment>
+    <requestid>148601</requestid>
+  </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>28f20f4efd1555e5448aeeec57f6e2cc</srcmd5>
+    <version>0.1.27</version>
+    <time>1359110507</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>180789bed289a901a8a211161e9e4d64</srcmd5>
+    <version>0.1.27</version>
+    <time>1360950746</time>
+    <user>coolo</user>
+    <comment>- build also with libpng16
+  * libpng16.patch</comment>
+    <requestid>155522</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>0ccb1dd398e1d7c2ee603a163d89c7c4</srcmd5>
+    <version>0.1.29</version>
+    <time>1367828121</time>
+    <user>coolo</user>
+    <comment>- update to version 0.1.29
+  - fix memory corruption on 64bit
+  - translation updates
+
+- update to version 0.1.28
+  - set nice value of tumblerd to 19
+  - fix rendering from pdfs with thumbnail
+  - add more supported types for gst thumbnailer
+  - some additional debug checks for bug #9766 and minor
+    optimizations
+  - fix deprecating warning with glib 2.36
+  - include string.h
+  - translation updates
+- remove obsolete tumbler-libpng16.patch</comment>
+    <requestid>174591</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>0ccb1dd398e1d7c2ee603a163d89c7c4</srcmd5>
+    <version>0.1.29</version>
+    <time>1379664849</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>e147a790810a034e4f3845e0235d51ac</srcmd5>
+    <version>0.1.30</version>
+    <time>1401207813</time>
+    <user>coolo</user>
+    <comment>- update to version 0.1.30
+  - only enable keepalive in curl &gt;= 7.25
+  - support move/copy operations on directories in the cache
+  - send the cache operation replies after they are completed
+  - translation updates</comment>
+    <requestid>235408</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>e147a790810a034e4f3845e0235d51ac</srcmd5>
+    <version>0.1.30</version>
+    <time>1409303534</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>0c0552fa06c284867a8843f89cb7bc11</srcmd5>
+    <version>0.1.31</version>
+    <time>1425892013</time>
+    <user>dimstar_suse</user>
+    <comment>Xfce 4.12</comment>
+    <requestid>289376</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>92c834525f6283e092e657926924ccd5</srcmd5>
+    <version>0.2.0</version>
+    <time>1511346096</time>
+    <user>dimstar_suse</user>
+    <comment>update to version 0.2.0 (forwarded request 542781 from seife)</comment>
+    <requestid>542783</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>b53fc3af33e743941c6e9d82c73d15e7</srcmd5>
+    <version>0.2.1</version>
+    <time>1529066753</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>615823</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>4d7822f4dd3f1f92a63d67406ae0d7fb</srcmd5>
+    <version>0.2.3</version>
+    <time>1540451307</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>643652</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>ea7dfd4f526d3acf8a684b354db936db</srcmd5>
+    <version>0.2.4</version>
+    <time>1558690222</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704768</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>9383dcf7419897e15877b70a569a23bf</srcmd5>
+    <version>0.2.4</version>
+    <time>1559459219</time>
+    <user>dimstar_suse</user>
+    <comment>Emergency checkin to oS:F - no diff in devel prj, so no risk of breaking</comment>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>a61b28a28fe04aabe7f50a8698799083</srcmd5>
+    <version>0.2.5</version>
+    <time>1562843729</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713491</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>063d89cd95d4a32bed6fcc81ddb62f07</srcmd5>
+    <version>0.2.7</version>
+    <time>1566243444</time>
+    <user>dimstar_suse</user>
+    <comment>Xfce 4.14 upgrade</comment>
+    <requestid>724062</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>babfcc8cceaf68a61daf6e7147dfee39</srcmd5>
+    <version>0.2.8</version>
+    <time>1577137512</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>758827</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>da3b8df8c3ff6013412850c7fec49bba</srcmd5>
+    <version>0.2.8</version>
+    <time>1584446897</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>785443</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>5b036ceeee4757709d46d63d37206d44</srcmd5>
+    <version>0.2.9</version>
+    <time>1597220894</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>825391</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>4353922cb0cc7b2a905b3c0fc9b3a3d2</srcmd5>
+    <version>0.2.9</version>
+    <time>1604414024</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>845552</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>cb43596877e3b851a82e3e93c43ee1c5</srcmd5>
+    <version>4.16.0</version>
+    <time>1610443702</time>
+    <user>dimstar_suse</user>
+    <comment>Upgrade to Xfce 4.16</comment>
+    <requestid>860864</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>2a855ebc1764526783041c1da7289351</srcmd5>
+    <version>4.16.0</version>
+    <time>1634943071</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>926847</requestid>
+  </revision>
+  <revision rev="40" vrev="3">
+    <srcmd5>d94374af0576d764b4956ef29a7a6824</srcmd5>
+    <version>4.16.0</version>
+    <time>1650696966</time>
+    <user>dimstar_suse</user>
+    <comment>- RelMgr override: do not package raw thumbnailer, as tumbler does
+  not yet support openraw 0.3.</comment>
+  </revision>
+  <revision rev="41" vrev="4">
+    <srcmd5>e36b36ab5af4e02430c2af984779e9b0</srcmd5>
+    <version>4.16.0</version>
+    <time>1652717271</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>977338</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>810b8e00334bfe177ea3be76061411d2</srcmd5>
+    <version>4.16.1</version>
+    <time>1660662434</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.16.1
+  * gst-thumbnailer: Add mime type check (gxo#xfce/tumbler#65)
+  * desktop-thumbnailer: Guard against null path
+  * Fix typo in gthread version (gxo#xfce/tumbler!14)
+</comment>
+    <requestid>995248</requestid>
+  </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>1969ea6cae3a7a893aeead18a8d26525</srcmd5>
+    <version>4.16.1</version>
+    <time>1664112897</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1005630</requestid>
+  </revision>
+  <revision rev="44" vrev="3">
+    <srcmd5>70a067522f4f7c01f9a65f29c9f5090b</srcmd5>
+    <version>4.16.1</version>
+    <time>1666693520</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1031099</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>0015e313cb16ace7799cba0ad47e2903</srcmd5>
+    <version>4.18.0</version>
+    <time>1671977692</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1045182</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>e6d7fdb02d3686761b6ab6c177deeb47</srcmd5>
+    <version>4.18.1</version>
+    <time>1681825964</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.18.1
+  * Fix memory leak in jpeg-thumbnailer
+  * Fix memory leak in cover-thumbnailer
+  * Fix previous commit
+  * cover-thumbnailer: Fix deprecation warning
+  * build: Let xdt-depends.m4 macros set GLib macros
+  * Translation Updates
+- Remove _service file (forwarded request 1079938 from manfred-h)</comment>
+    <requestid>1079982</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>8b4b494c142154cab180e54a2ee48b7f</srcmd5>
+    <version>4.18.2</version>
+    <time>1702936552</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 4.18.2
+  * Disambiguate thumbnailer signals
+  * scheduler: Fix ready/error signal forwarding
+  * desktop-thumbnailer: Use empty path to build cmdline if it is null
+  * Update spec link in README
+  * xdg-cache: Fix temporary file management when saving thumbnail
+  * Add icon at 64px, clean up SVG metadata (forwarded request 1130085 from manfred-h)</comment>
+    <requestid>1133769</requestid>
+  </revision>
+</revisionlist>

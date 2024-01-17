@@ -1,0 +1,98 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>95d71ba020981b88616d70fc10d002da</srcmd5>
+    <version>1.2.g9</version>
+    <time>1427736786</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>293464</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>93ed18ad6cb3266b5e518b11f9485e14</srcmd5>
+    <version>1.6</version>
+    <time>1577451662</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>759595</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>21677b57d773eb4bb5e1ccb48ebf7a4b</srcmd5>
+    <version>1.11</version>
+    <time>1619552076</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.11 [boo#1180251]</comment>
+    <requestid>888545</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c29ce09a33258e19a7c1d6849a459696</srcmd5>
+    <version>1.12</version>
+    <time>1660753022</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to release 1.12</comment>
+    <requestid>997504</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>da810da211528dfe7e285afc4a054ed7</srcmd5>
+    <version>2.0.2</version>
+    <time>1673801882</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.0.2</comment>
+    <requestid>1058284</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>4903e0d3302f8ff6ec5bbd58ad914a13</srcmd5>
+    <version>2.0.2</version>
+    <time>1674585785</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1060510</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>fee0d939fd9b91087b5dcf97092c402d</srcmd5>
+    <version>2.0.3</version>
+    <time>1678634705</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1071002</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>895813d752264b9c9afd4eb20192179f</srcmd5>
+    <version>2.0.4</version>
+    <time>1683213049</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.0.4</comment>
+    <requestid>1084493</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>cf8076a578132017b4746dc4039b8ceb</srcmd5>
+    <version>2.0.5</version>
+    <time>1687900603</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.0.5</comment>
+    <requestid>1095506</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>773b227481c03b01f45939d13d338a16</srcmd5>
+    <version>2.0.6</version>
+    <time>1689614624</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 2.0.6</comment>
+    <requestid>1098853</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>3bc87c0772e9c5071e313a37284522af</srcmd5>
+    <version>2.0.7</version>
+    <time>1691947068</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.0.7</comment>
+    <requestid>1103615</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ff6c970276327557bb9ef3b6aa51983e</srcmd5>
+    <version>2.0.8</version>
+    <time>1693235649</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 2.0.8</comment>
+    <requestid>1105964</requestid>
+  </revision>
+</revisionlist>

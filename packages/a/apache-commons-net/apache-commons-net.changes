@@ -1,0 +1,193 @@
+-------------------------------------------------------------------
+Mon Dec  5 10:00:10 UTC 2022 - Fridrich Štrba <fridrich.strba@bluewin.ch>
+
+- Upgrade to 3.9.0 (Security fixes)
+  * Changes in 3.9.0
+    + Use yyyy instead of YYYY in SimpleDateFormat #97.
+      Fixes NET-708.
+    + Prevent serialization of the 4 classes that implement
+      Serializable. It is not useful and is unlikely to work
+      properly.
+    + Use Math.min and Math.max method instead of manual
+      calculations. #104.
+    + Add FTP option to toggle use of return host like CURL.
+      Fixes NET-711, bsc#1206018, CVE-2021-37533.
+    + FTPSClient execPROT removes proxy settings #90. Fixes NET-642.
+    + JUnit5 assertThrows SimpleSMTPHeaderTestCase #121.
+    + JUnit5 assertThrows TestTimeInfo #120.
+    + Simplify conditions avoiding extra operations #88.
+    + Remove reflection from SSLSocketUtils.
+    + Process files with spaces in name for OS400 #95.
+      Fixes NET-707.
+    + [FTP] Add FTPClient.mdtmInstant(String).
+    + [FTP] Add MLSxEntryParser.parseGmtInstant(String).
+    + [FTP] Add FTPClient.getControlKeepAliveReplyTimeoutDuration().
+    + [FTP] Add FTPClient.setControlKeepAliveReplyTimeout(Duration).
+    + [FTP] Add FTPClient.getControlKeepAliveTimeoutDuration().
+    + [FTP] Add FTPClient.setControlKeepAliveTimeout(Duration).
+    + [FTP] Add FTPClient.getDataTimeout().
+    + [FTP] Add FTPClient.setDataTimeout(Duration).
+    + [FTP] Add FTPFile.getTimestampInstant().
+  * Changes in 3.8.0
+    + Add and use NetConstants.
+    + Add and use SocketClient.applySocketAttributes().
+    + [FTP] Add FTPClient.hasFeature(FTPCmd).
+    + [FTP] Add FTPClient.mdtmCalendar(String).
+    + [IMAP] Fix concurrent counting of chunks in IMAPExportMbox.
+    + Fix possible if rare NPEs in tests.
+    + Update SocketClient default connect timeout from ∞ to 60
+      seconds #51. Fixes NET-685.
+    + Apply SocketClient timeout after connection but before SSL
+      negotiation. Fixes NET-695.
+    + Minor Improvements #71, #72.
+  * Changes in 3.7.2
+    + Host name is not set on the SSLSocket causing
+      isEndpointCheckingEnabled to fail. Fixes NET-689.
+    + Fix possible socket and input stream leak on socket exception
+      in org.apache.commons.net.ftp.FTPClient._retrieveFile(String,
+      String, OutputStream).
+    + Performance issue when using the FTPClient to retrieve
+      files #65. Fixes NET-690.
+    + Improve Javadoc for IMAPSClient #68. Fixes NET-691.
+  * Changes in 3.7.1
+    + [FTPS] javax.net.ssl.SSLException: Unsupported or unrecognized
+      SSL message, #59. Fixes NET-687.
+  * Changes in 3.7
+    + IMAPClient.APPEND does not always calculate the correct
+      length. Fixes NET-673.
+    + ALLO FTP Command for files >2GB. Fixes NET-646.
+    + IMAPClient could simplify using empty arguments. Fixes
+      NET-615.
+    + IMAP fails to quote/encode mailbox names. Fixes NET-614.
+    + NPE when closing telnet stream. Fixes NET-643.
+    + Add Automatic-Module-Name MANIFEST entry for Java 9
+      compatibility. Fixes NET-648.
+    + SubnetUtils.SubnetInfo.isInRange("0.0.0.0") returns true for
+      CIDR/31, 32. Fixes NET-641.
+    + Telnet subnegotiations hard-limited to 512 bytes - allow
+      override. Fixes NET-638.
+    + MVSFTPEntryParser.preParse - MVS, z/OS - allow for merged
+      Ext/Used fields. Fixes NET-639.
+    + examples should be in org.apache.commons.net subpackage. Fixes
+      NET-636.
+    + Add SIZE command support. Fixes NET-634.
+    + Add POP3ExportMbox example code
+    + Add XOAUTH2 to IMAP and SMTP. Fixes NET-633.
+    + FTPHTTPClient - support for encoding other than UTF-8. Fixes
+      NET-632.
+    + Bug in MVSFTPEntryParser.parseUnixList (FindBugs). Fixes
+      NET-631.
+    + Error when using org.apache.commons.net.ftp.FTPClient
+      setControlKeepAliveTimeout. Fixes NET-584.
+    + SubnetUtils#SubnetUtils - improved comment. Fixes NET-626.
+    + SubnetUtils - improve construction. Fixes NET-625.
+    + SubnetInfo#getCidrSignature - improve functions. Fixes
+      NET-624.
+    + SubnetInfo#toCidrNotation: A wrong format subnet mask is
+      allowed. Fixes NET-624.
+    + SubnetUtils - fixed spelling errors. Fixes NET-623.
+    + SubnetUtils#SubnetInfo - remove unnecessary accessors. Fixes
+      NET-621.
+    + SubnetUtils - improve binary netmask algorithm. Fixes NET-619.
+    + System Information Leak in ftp parser. Fixes NET-613.
+    + VMS ftp LIST parsing results in empty file list. Fixes
+      NET-678.
+    + FTPListParseEngine should support listing via MLSD. Fixes
+      NET-674.
+    + NullPointerException when FTPClient remote verification fails.
+      Fixes NET-663.
+    + 227 Entering Passive Mode. Fixes NET-649.
+    + Next and Previous IP Address in SubnetUtils.SubnetInfo. Fixes
+      NET-660.
+    + MVSFTPEntryParser doesn't support Record Formats of U. Fixes
+      NET-682.
+
+
+-------------------------------------------------------------------
+Fri Mar 18 18:50:33 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with source/target levels 8
+
+-------------------------------------------------------------------
+Thu Jan  9 08:32:51 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Remove reference to the parent pom, since we don't build with
+  maven
+
+-------------------------------------------------------------------
+Sat Mar  2 13:30:06 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Rename to apache-commons-net
+- Upgrade to version 3.6
+- Generate and customize the ant build file
+
+-------------------------------------------------------------------
+Fri Sep  8 11:16:44 UTC 2017 - fstrba@suse.com
+
+- Specify java source and target 1.6 in order to allow building
+  with jdk9
+
+-------------------------------------------------------------------
+Fri Jun  9 10:35:43 UTC 2017 - tchvatal@suse.com
+
+- Require java 1.6 or newer to build
+
+-------------------------------------------------------------------
+Fri May 19 13:56:33 UTC 2017 - tchvatal@suse.com
+
+- Fix build with new javapackages-tools
+
+-------------------------------------------------------------------
+Wed Mar 18 09:46:10 UTC 2015 - tchvatal@suse.com
+
+- Fix build with new javapackages-tools
+
+-------------------------------------------------------------------
+Tue Jul  8 09:19:38 UTC 2014 - tchvatal@suse.com
+
+- Fix sle build properly.
+
+-------------------------------------------------------------------
+Wed Apr 30 16:53:41 UTC 2014 - darin@darins.net
+
+- Update project_xml patch for strict fuzz
+- Suppress bytecode check on SLES 
+- remove java-javadoc build requirement
+
+-------------------------------------------------------------------
+Mon Sep  9 11:05:48 UTC 2013 - tchvatal@suse.com
+
+- Move from jpackage-utils to javapackage-tools
+
+-------------------------------------------------------------------
+Fri Sep  6 09:09:00 UTC 2013 - mvyskocil@suse.com
+
+- use add_maven_depmap 
+
+-------------------------------------------------------------------
+Thu Nov 29 13:21:56 UTC 2012 - mvyskocil@suse.com
+
+- buildrequire saxon8 (bnc#780666)
+- remove self-obsolete commons-net
+
+-------------------------------------------------------------------
+Wed Nov 28 14:52:01 UTC 2012 - mvyskocil@suse.com
+
+- require saxon9 for build
+- don't build with java5 target
+
+-------------------------------------------------------------------
+Tue Jun 26 13:40:59 UTC 2012 - mvyskocil@suse.cz
+
+- remove openjdk6 dependency 
+
+-------------------------------------------------------------------
+Mon Mar 12 13:58:33 UTC 2012 - mvyskocil@suse.cz
+
+- fix bnc#749895 - ant FTP action fails on the date with leap year 
+
+-------------------------------------------------------------------
+Tue Apr 28 11:00:24 CEST 2009 - mvyskocil@suse.cz
+
+- Initial SUSE packaging (version 1.4.1 from jpp5) 
+

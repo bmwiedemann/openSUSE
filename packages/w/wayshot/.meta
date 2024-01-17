@@ -1,0 +1,6 @@
+<package name="wayshot" project="openSUSE:Factory">
+  <title>wayshot</title>
+  <description>A native screenshot tool for wlroots based compositors such as sway and river written in Rust</description>
+  <devel project="X11:Wayland" package="wayshot"/>
+  <url>https://github.com/waycrate/wayshot</url>
+</package>

@@ -1,0 +1,46 @@
+# config options for cAdvisor
+#
+#
+
+# Docker endpoint to connect to
+# Default: unix:///var/run/docker.sock
+CADVISOR_DOCKER_ENDPOINT="unix:///var/run/docker.sock"
+
+# Port to listen on
+# Default: 8080
+# kubernetes expects it on port 4194
+CADVISOR_PORT="4194"
+
+# Samples
+# Number of samples to keep
+# Default: 1024
+CADVISOR_SAMPLES="1024"
+
+# Storage driver
+# Default: none/blank
+#
+# Available Options:
+#  - [none]
+#  - bigquery
+#  - influxdb
+CADVISOR_STORAGE_DRIVER=""
+
+# Storage driver host
+# Default: localhost:8086"
+CADVISOR_STORAGE_DRIVER_HOST="localhost:8086"
+
+# Storage driver password
+# Default: root
+CADVISOR_STORAGE_DRIVER_PASSWORD="root"
+
+# Storage driver secure connection
+# Default: false
+CADVISOR_STORAGE_DRIVER_SECURE="false"
+
+# Storage driver user
+# Default: root
+CADVISOR_STORAGE_DRIVER_USER="root"
+
+# Log to stderr (and thus to journal)
+# Default: false
+CADVISOR_LOG_TO_STDERR="true"

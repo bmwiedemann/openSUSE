@@ -1,0 +1,107 @@
+-------------------------------------------------------------------
+Mon Oct 30 18:51:32 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.65
+  * Removed audio output dithering. It seemed to be wrongly
+    implemented anyway.
+  * Removed CTRL+G and CTRL+V keybinding (boost/filter all
+    samples)
+  * The BOOST (Edit Op. #3) function was not 100% accurate to
+    Amiga ProTracker.
+
+-------------------------------------------------------------------
+Thu Sep  7 15:46:45 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.64
+  * Bugfix: A buffer overrun would occur if MOD2WAVFREQUENCY was
+    set higher than FREQUENCY in protracker.ini while using
+    MOD2WAV.
+  * Right mouse button can now be held down while scrolling in
+    Pos Ed. for faster scrolling speeds (forgot to implement this).
+- Update to version 1.63
+  * When loading raw samples, use the filename as the sample name.
+
+-------------------------------------------------------------------
+Tue Aug 29 15:01:15 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.62:
+  * Bugfix: It was possible to scroll out of bounds in Disk Op. by
+    using shift+key
+  * Bugfix: Don't set "song unsaved" flag if text editing didn't
+    make a change.
+  * Bugfix: Editing the Disk Op. path text would set the
+    "song unsaved" flag.
+  * Bugfix: Using the "CLEAR" button while Edit. Op. or the about
+    screen was open could lead to a screen redrawing issue.
+  * Disk Op. file entry jumping (left shift + key) now works a bit
+    differently. If the last pressed jump key didn't change, cycle
+    through pages if there are more matches to be found. This
+    allows for quicker module finding.
+  * Re-implemented the Pos Ed. pattern naming feature. Be aware
+    that this data is not saved to the module, and is only used to
+    temporarily keep track of the patterns while making the module.
+  * Code refactoring, a small portion of the code should be easier
+    to understand now.
+
+-------------------------------------------------------------------
+Sat Jul 29 08:53:12 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.61:
+  * De-minimize window (if minimized) and set focus after drag n'
+    drop of file
+
+-------------------------------------------------------------------
+Mon Jun 19 19:17:53 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.60:
+  * Added an AUTO mode for VIDEOSCALE in protracker.ini. This is
+    now the default. It will use the most optimal window size
+    based on the screen resolution. If you want this feature but
+    don't want to replace protracker.ini, set VIDEOSCALE to AUTO
+    (make sure you have v1.60 or later). Manual settings (2X, 3X,
+    ...) still work like expected.
+  * Removed VIDEOSCALE limit of 2X for ARM systems. This was
+    originally meant for Raspberry Pi, but it would affect all
+    ARM systems (except Apple).
+
+-------------------------------------------------------------------
+Sun Jun 11 08:18:15 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.59:
+  * The "normalize" function in the sample editor's volume
+    toolbox didn't work like it should if you had only selected
+    one single sample point (for example after cutting sample
+    data)
+  * The (fake) spectrum analyzer is now more accurate to real PT
+    in quirky cases
+  * Some very small code changes not really worthy of a
+    description
+  * Updated effects.txt with the little known and undocumented
+    effect "E8x"
+- update to 1.58:
+  * Added support for loading FLAC samples
+  * The IFF sample saver was writing somewhat broken files for
+    non-looped samples
+  * The "UPSAMP" button in Edit Op. was showing the wrong status
+    text
+  * Small code refactor for how the song is timed/ticked. Longer
+    song-to-WAV renders may have a filesize change of a few
+    bytes, but this is actually more correct.
+  * Increased number of precision bits for song BPM, playback
+    time counter and audio->video syncing. This is a minor change
+    and does very little in practice as the previous precision
+    was already quite good.
+  * Audio/video sync timestamps are reset every half an hour to
+    prevent possible sync drifting after several hours of playing
+    a song without a single song stop (resets timestamp) in-
+    between
+  * The HPC timers are reset every half an hour instead of every
+    hour. The video (if no vsync) and the scopes use these
+    timers. This hopefully fixes potential timing drifting issues
+    that were still lingering.
+  * Code refactoring for module/sample loaders
+
+-------------------------------------------------------------------
+Tue Feb 14 23:17:28 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 1.57

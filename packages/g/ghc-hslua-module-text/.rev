@@ -1,0 +1,122 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dc990ec6ca7c8b072116cab5d6ee93ab</srcmd5>
+    <version>0.1.2.1</version>
+    <time>1527674929</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-hslua-module-text to the latest version.</comment>
+    <requestid>607813</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0a5190ca102a6fa3f710d972b267b25a</srcmd5>
+    <version>0.1.2.1</version>
+    <time>1532445575</time>
+    <user>dimstar_suse</user>
+    <comment>- Add hslua-module-text at version 0.1.2.1.</comment>
+    <requestid>623787</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d64e612a7812f26161d3d32bf380d2ee</srcmd5>
+    <version>0.2.0</version>
+    <time>1540448196</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>642864</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1dd9360888efe0d9ace8a59392dcac65</srcmd5>
+    <version>0.2.1</version>
+    <time>1557653737</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>701768</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>fd709b159d8c7663356848671ccb6093</srcmd5>
+    <version>0.2.1</version>
+    <time>1577451245</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>759415</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>46d709c4547a28d886d0969492cc4a0a</srcmd5>
+    <version>0.2.1</version>
+    <time>1592579602</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>815106</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d10db516835f3043d9588895b51100cb</srcmd5>
+    <version>0.3.0</version>
+    <time>1598643209</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>829305</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c68f8762af19444be73721cac53c5d2b</srcmd5>
+    <version>0.3.0.1</version>
+    <time>1603458842</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>842748</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>6a247e0e63b7b6ed0490dc85d3066aa0</srcmd5>
+    <version>0.3.0.1</version>
+    <time>1608633642</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in openSUS</comment>
+    <requestid>857397</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c079322c3c7fb779f3ab70d899fe5632</srcmd5>
+    <version>1.0.0</version>
+    <time>1636662994</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>930334</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>145f7ab4d3f28d03191a7108367a0fb2</srcmd5>
+    <version>1.0.1</version>
+    <time>1644617347</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>953478</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>eb02b21e2b3623dd0b5a689144dc3b50</srcmd5>
+    <version>1.0.2</version>
+    <time>1659382128</time>
+    <user>RBrownFactory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>985818</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>1dc29b8fdc512f224407650d2ac6b837</srcmd5>
+    <version>1.0.3.1</version>
+    <time>1674043797</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>1059075</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>bf1163cf5f7bbb5719ae07b65e43faaf</srcmd5>
+    <version>1.0.3.1</version>
+    <time>1680636034</time>
+    <user>dimstar_suse</user>
+    <comment>update for ghc-9.4.4</comment>
+    <requestid>1075907</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>81703450104a663a57d93b56623b21f3</srcmd5>
+    <version>1.1.0.1</version>
+    <time>1681470784</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>1079189</requestid>
+  </revision>
+</revisionlist>

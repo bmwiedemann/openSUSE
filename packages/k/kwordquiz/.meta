@@ -1,0 +1,5 @@
+<package name="kwordquiz" project="openSUSE:Factory">
+  <title>Vocabulary Trainer</title>
+  <description>A powerful flashcard and vocabulary learning program</description>
+  <devel project="KDE:Applications" package="kwordquiz"/>
+</package>

@@ -1,0 +1,65 @@
+-------------------------------------------------------------------
+Sat Jul 10 10:12:49 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.8
+  Changes
+  * Add automatic IP multicast group to MAC multicast address
+    translation
+  * Improved usability for composing IGMPv3 reports:
+    + Default to 224.0.0.2 for IGMPv3 report type
+    + Add -n NUM to control number of group records
+  Fixes
+  * Fix IGMP v2 join example in README
+  * Fix logic for printing DNS protocol: TCP/UDP
+  * Fix #12: allow 0.0.0.0 as RIP address
+  * Fix #13: multiple definitions of variables
+
+-------------------------------------------------------------------
+Wed Jun 10 10:47:13 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.7
+  Changes
+  * Convert all man pages to mdoc format
+  Fixes
+  * Fix #6: Skip sleep/delay when sending only one frame,
+    i.e. default
+  * Fix #9: Call correct exit function in nemesis-dhcp
+  * Fix missing S: to getopt() in nemesis-dhcp
+  * Fix network byte ordering problem with CIADDR, YIADDR, SIADDR,
+    and GIADDR in nemesis-dhcp
+  * Fix command line parsing of client MAC address, Ethernet
+    source MAC address, and Ethernet destination MAC address in
+    nemesis-dhcp
+  * Fix missing newline in nemesis-dhcp usage text
+  * Fix invalid call to close(), found by Valgrind
+
+-------------------------------------------------------------------
+Sun Jun  7 19:35:49 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Set CFLAGS+=-fcommon
+
+-------------------------------------------------------------------
+Mon Jun 17 16:35:52 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.6
+  * Support for DHCP protocol crafting, defaults to DHCP Discover
+    with option 53, 12, 60, 61, and 55
+  * Support for repeated send in many protocol injectors. Can be
+    used to, e.g., flood networks with ARP requests or test DHCP.
+  * Incompatible command line option changes to IGMP protocol module
+  * Fix invalid IP header length in ICMP packets
+
+-------------------------------------------------------------------
+Thu Aug  2 17:24:10 UTC 2018 - mardnh@gmx.de
+
+- Correct license
+
+-------------------------------------------------------------------
+Sun Jul 29 10:49:11 UTC 2018 - jengelh@inai.de
+
+- Ensure neutrality of description. Remove future goals.
+
+-------------------------------------------------------------------
+Mon Jun 18 13:51:00 UTC 2018 - mardnh@gmx.de
+
+- Initial package, version 1.5

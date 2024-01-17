@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Thu Dec 15 16:59:33 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to version 0.10 (no changelog supplied)
+
+-------------------------------------------------------------------
+Sat Oct 17 09:24:34 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.9 (no changelog supplied)
+
+-------------------------------------------------------------------
+Mon Oct 14 13:50:21 UTC 2019 - Matej Cepl <mcepl@suse.com>
+
+- Replace %fdupes -s with plain %fdupes; hardlinks are better.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:49:44 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Sun Feb 25 16:51:07 UTC 2018 - aloisio@gmx.com
+
+- Update to version 0.8 (no changelog supplied)
+
+-------------------------------------------------------------------
+Mon May 22 15:56:36 UTC 2017 - aloisio@gmx.com
+
+- Initial package (v. 0.7)
+

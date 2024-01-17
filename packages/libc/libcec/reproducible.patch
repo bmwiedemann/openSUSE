@@ -1,0 +1,37 @@
+https://github.com/Pulse-Eight/libcec/pull/553
+
+commit 8e97b159b28ce4b21d183ff68983b5b727fa2c1b
+Author: Bernhard M. Wiedemann <bwiedemann@suse.de>
+Date:   Sat Jan 16 22:50:02 2021 +0100
+
+    Allow to skip recording build user+host
+    
+    if the SOURCE_DATE_EPOCH variable is set,
+    this indicates that a reproducible build is wanted.
+    
+    This PR was done while working on reproducible builds for openSUSE.
+
+diff --git a/src/libcec/cmake/SetBuildInfo.cmake b/src/libcec/cmake/SetBuildInfo.cmake
+index 3402f9f..29e4e70 100644
+--- a/src/libcec/cmake/SetBuildInfo.cmake
++++ b/src/libcec/cmake/SetBuildInfo.cmake
+@@ -31,6 +31,9 @@ else()
+   find_program(HAVE_WHOAMI_BIN whoami /bin /usr/bin /usr/local/bin)
+   if(HAVE_WHOAMI_BIN)
+     exec_program(whoami OUTPUT_VARIABLE BUILD_USER)
++    if (DEFINED ENV{SOURCE_DATE_EPOCH})
++      set(BUILD_USER "(reproducible)")
++    endif()
+     set(LIB_INFO "${LIB_INFO} by ${BUILD_USER}")
+   else()
+     set(LIB_INFO "${LIB_INFO} by (unknown user)")
+@@ -44,6 +47,9 @@ else()
+     if (RETURN_HOST)
+       exec_program(hostname OUTPUT_VARIABLE BUILD_HOST)
+     endif()
++    if (DEFINED ENV{SOURCE_DATE_EPOCH})
++      set(BUILD_HOST "(reproducible)")
++    endif()
+     set(LIB_INFO "${LIB_INFO}@${BUILD_HOST}")
+   endif()
+ 

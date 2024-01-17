@@ -1,0 +1,6 @@
+<package name="eog" project="openSUSE:Factory">
+  <title>Image Viewer for GNOME</title>
+  <description>Eye of GNOME is an image viewer program. It is meant to be a fast and
+functional image viewer.</description>
+  <devel project="GNOME:Factory" package="eog"/>
+</package>

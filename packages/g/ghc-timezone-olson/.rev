@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d656e3bbc560a6fc71b01c853fa6fa2f</srcmd5>
+    <version>0.1.9</version>
+    <time>1560338289</time>
+    <user>dimstar_suse</user>
+    <comment>new dependency of xmobar</comment>
+    <requestid>709190</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>71d2027e8f32245e3581f3c22843676e</srcmd5>
+    <version>0.1.9</version>
+    <time>1577451512</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>759539</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>53951f7017297746fde81c58e92bb2b7</srcmd5>
+    <version>0.2.0</version>
+    <time>1592579999</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>815196</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>208a14c5ae17ff241e9bfa148a3f1981</srcmd5>
+    <version>0.2.0</version>
+    <time>1598643587</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>829455</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>abbba80f456cb2288b413cefacb17353</srcmd5>
+    <version>0.2.0</version>
+    <time>1608634070</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in openSUS</comment>
+    <requestid>857616</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>63299bd135b16012beec3f56ccc06c1c</srcmd5>
+    <version>0.2.1</version>
+    <time>1644617390</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>953547</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>eb3d6896506ff29318ee7199c5d148c5</srcmd5>
+    <version>0.2.1</version>
+    <time>1680636244</time>
+    <user>dimstar_suse</user>
+    <comment>update for ghc-9.4.4</comment>
+    <requestid>1076084</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,22 @@
+commit fc0e3304732a9aaff1487833342d5fc8ea26ce04
+Author: Ludwig Nussel <ludwig.nussel@suse.de>
+Date:   Fri Aug 6 15:11:23 2021 +0200
+
+    selinux: allow login to read motd file
+
+Index: cockpit/selinux/cockpit.te
+===================================================================
+--- cockpit.orig/selinux/cockpit.te
++++ cockpit/selinux/cockpit.te
+@@ -202,3 +202,11 @@ optional_policy(`
+ optional_policy(`
+     gnome_exec_keyringd(cockpit_session_t)
+ ')
++
++# login may read motd file through pam
++optional_policy(`
++    gen_require(`
++        type local_login_t;
++    ')
++    cockpit_read_pid_files(local_login_t)
++')

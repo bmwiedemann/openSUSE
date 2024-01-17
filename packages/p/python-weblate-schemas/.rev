@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f7993e89bdc95b6820a89a61eed1be78</srcmd5>
+    <version>0.3</version>
+    <time>1587162617</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>794790</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>84565917579f3c2b100dd8890eb86fbd</srcmd5>
+    <version>0.4</version>
+    <time>1598642451</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>828010</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2f7c18c6ab117d493f3c2864cbb94760</srcmd5>
+    <version>0.6</version>
+    <time>1615905911</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>879179</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3fed8868e0ee38a874edf983e728b069</srcmd5>
+    <version>0.7</version>
+    <time>1625338236</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>903642</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>54b7de799e9da4bc8fbf6babd3229b1c</srcmd5>
+    <version>2022.1</version>
+    <time>1667579888</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2022.1
+  * Added validate_schema API.
+  * Added caching to schema loading.
+  * Added timestamp validation.
+  * Switched to CalVer versioning.
+  * Added schema for component backups.
+  * Added schema for project backups.
+- Add upstream test-data.patch
+</comment>
+    <requestid>1033539</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4d1a532b19104e91a8010ae5ffc1da37</srcmd5>
+    <version>2023.3</version>
+    <time>1688399033</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1096484</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,259 @@
+-------------------------------------------------------------------
+Thu Jan  4 13:15:00 UTC 2024 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 4.0.0
+  * Improved display on scaled screen
+  * Added Countdown option on Wayland
+  * Added support for recording multiple cameras simultaneously
+  * Switch to Qt6
+  * Bug fixes
+- Update add_appstream_metadata.patch
+
+-------------------------------------------------------------------
+Wed Oct  4 15:46:58 UTC 2023 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 3.8.0
+  * Revised GUI on Wayland
+  * Rewritten folder dialog and revised file dialog
+  * Player rewritten based on gstreamer
+  * Added dark theme for GUI
+  * Hiding the area handles now starts the timer
+  * Added language switcher in GUI
+  * Added support for saving as GIF
+  * Translation updates
+
+-------------------------------------------------------------------
+Sun Jul  2 17:07:57 UTC 2023 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 3.7.0
+  * Magnifier: Can now magnify 2x to 4x
+  * ShowClick and Halo will be disabled when capturing a window
+  * Rewrite of the camera module for Qt6
+  * Area recording mode now compatible with Mate
+  * Translation updates
+
+-------------------------------------------------------------------
+Thu Mar 30 11:58:58 UTC 2023 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 3.6.0
+  * Qt6 compatibility
+  * Snapshot: Area wait before record
+  * Log: Add Button open folder
+  * Pulseaudio: Add audioresample
+  * WASAPI: Record more as one devices
+  * Magnifier: Rectangle as default
+  * Translation updates
+
+-------------------------------------------------------------------
+Tue Jan  3 20:01:53 UTC 2023 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 3.5.0
+  * Snapshot: new icon and option to hide GUI
+  * Magnifier: indicate what screen it is on, add circle
+    and ellipse shapes
+  * fix Area keyboard controls
+  * Various other bugfixes and improvements
+  * Translation updates
+
+-------------------------------------------------------------------
+Thu Sep 29 15:31:52 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 3.4.0
+  * Add a dialog when no codecs are found
+  * Remove email report option
+  * Refactor magnifier for multi-screen setups
+  * Improved logging
+  * Various other bugfixes
+  * Translation updates
+
+-------------------------------------------------------------------
+Fri Jun 24 13:08:27 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 3.3.0
+  * Add dialog if user has no write access to target directory
+  * New camera features: zoom, stepless resizing and moving as
+    frameless window
+  * Various bug fixes
+  * Translation updates
+
+-------------------------------------------------------------------
+Tue Mar 29 19:44:24 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 3.2.0
+  * Adjust log file name, add timestamps
+  * Only show filename without path in the player window title
+  * Improve audio recording when recording from multiple devices on
+    PulseAudio
+  * Show message in audio tab if no PulseAudio server is found
+  * Translation Updates
+
+-------------------------------------------------------------------
+Fri Dec 31 20:48:05 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 3.1.0
+  * The Help button has been removed from the title bar of the Player,
+    VideoPath and Cisco-License dialog
+  * Change system-filedialog to Qt-filedialog
+  * Fusion is now the style for all operating systems
+  * vokoscreenNG create his own images from all tabs
+  * Camera, Magnifier, Showclick and Halo added to the Systray menu
+  * Global keyboard shortcuts can be changed
+  * Added tooltip for global magnifier shortcut
+  * The camera window is now also displayed over a full screen window
+  * Countdown: Better look without compositer
+  * Countdown: Hide from taskbar
+  * Countdown: Added cancel button
+  * Better integration "mouse over activates window"
+  * Combobox resolution was not deactivated if no camera was found
+  * Better hint if no audio recording device was found
+  * Option to show mouse clicks
+
+-------------------------------------------------------------------
+Wed May 26 09:21:40 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 3.0.9
+  * Add quality slider for VP8 codec
+  * Fix setting of audio and video codecs
+  * Fix window restoration after minimizing
+  * No longer ellipsize drop down menu entries
+  * Improve camera picture quality when resizing the window
+  * Recording countdown is now shown on the same screen as the
+    recorded area
+  * Remove AAC codec support
+  * Remove x264 codec support
+  * Remove VAAPI support
+
+-------------------------------------------------------------------
+Thu Feb 25 11:49:53 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Require the pulseaudio-daemon capability instead of the
+  pulseaudio package, so alternative implementations can be used
+  (boo#1182730).
+
+-------------------------------------------------------------------
+Sun Jan 31 17:50:13 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 3.0.8
+  * Remove unneeded x264 presets
+  * Remove predefined recording areas
+  * Add h264parse to vaapih264enc
+  * Add resolution combobox for camera recording in the dialog window
+  * Limit fps to the vertical refresh rate of the screen in Hz
+  * Add CPU count to info output
+  * Translation updates
+- Adapt add_appstream_metadata.patch
+
+-------------------------------------------------------------------
+Thu Oct  1 13:12:21 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 3.0.7
+  * Fix magnifier, it is now possible to use on all screens
+  * Fix audio device monitoring, now done by pulseaudio
+  * Set webcam resolution dynamically from supported resolutions
+  * Extend logged videopath information and keep unlimited number
+    of logs
+
+-------------------------------------------------------------------
+Tue Sep  1 09:20:36 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 3.0.6
+  * Added buffer for audio encoder
+  * Added high-4:4:4 profile for x264 encoder
+  * Added quality slider for vaapih264
+  * Added slice mode, num-slices and max-slice-sice buffers
+    for openh264
+  * Fixed quality slider values on openh264
+
+-------------------------------------------------------------------
+Fri Jul 31 11:08:46 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 3.0.4
+  * fix automatic detection of screen resolution changes
+  * switch from adder to audiomixer
+  * switch from faac voaacenc
+  * remove opus from mov format
+- Removed adapt-to-qt-5.15.patch
+- Added add_appstream_metadata.patch (boo#1172620)
+
+-------------------------------------------------------------------
+Mon Jun  8 11:33:18 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- added adapt-to-qt-5.15.patch
+  * upstream fix for Qt 5.15 build failure
+
+-------------------------------------------------------------------
+Thu Apr 30 12:03:33 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 3.0.4
+  * added faac audio codec
+  * added command line options
+  * fix incorrect screen resolution
+  * fix folder button being unable to handle spaces in paths
+  * fix broken recording when target filename contains spaces
+  * fix area selector not supporting multiple monitors
+  * fix frame-reset-button not being visible
+  * fix visible frame in fps settings
+
+-------------------------------------------------------------------
+Tue Mar 31 08:58:45 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 3.0.3
+  * Systray: Better icons for Pause and Continue
+  * Frames: Without reset button
+  * Camera: If the camera is busy, this will be displayed,
+    or is not in combobox
+  * Language: added Spanish(Mexico), Slovak (Slovakia)
+  * Area: Adapted to Ubuntu GNOME
+  * Audio: Hint if no audio devices found
+  * Systray: If new version show ballon
+  * Camera: Windows and Linux have now the same code base
+
+-------------------------------------------------------------------
+Tue Feb 11 08:34:48 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 3.0.2
+  * x264: Codec requires resolution with even values
+  * Audio: fix recording with only one channel
+  * Webcam: fix image flipped horizontally
+
+-------------------------------------------------------------------
+Sat Feb  1 12:08:12 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 3.0.1
+  * Player: Notification if codec or service is missing
+  * x264enc: add profile=baseline
+  * Select the language for the online help via a combobox
+
+-------------------------------------------------------------------
+Tue Dec 31 13:35:50 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 3.0.0
+  * first stable release
+  * complete rewrite of vokoscreen, now using gstreamer instead of
+    ffmpeg
+
+-------------------------------------------------------------------
+Sun Oct 13 12:08:47 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.9.9-beta
+
+-------------------------------------------------------------------
+Mon May 20 10:08:12 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.9.8-beta
+
+-------------------------------------------------------------------
+Fri May 10 07:21:59 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.9.7-beta
+- Made Requirements more specific
+
+-------------------------------------------------------------------
+Sat Apr 13 17:44:08 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.9.6-beta
+
+-------------------------------------------------------------------
+Tue Feb 19 16:22:41 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Initial build for Version 2.9.5-beta

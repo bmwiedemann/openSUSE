@@ -1,0 +1,16 @@
+Index: COLLADAFramework/include/COLLADAFWInstanceBindingBase.h
+===================================================================
+--- COLLADAFramework/include/COLLADAFWInstanceBindingBase.h.orig
++++ COLLADAFramework/include/COLLADAFWInstanceBindingBase.h
+@@ -20,6 +20,11 @@
+ #include <vector>
+ 
+ 
++#include "COLLADABUURI.h"
++
++#include <vector>
++
++
+ namespace COLLADAFW
+ {
+ 

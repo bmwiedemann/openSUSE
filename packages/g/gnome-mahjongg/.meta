@@ -1,0 +1,5 @@
+<package name="gnome-mahjongg" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="GNOME:Factory" package="gnome-mahjongg"/>
+</package>

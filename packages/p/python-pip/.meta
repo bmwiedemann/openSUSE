@@ -1,0 +1,7 @@
+<package name="python-pip" project="openSUSE:Factory">
+  <title>Pip installs packages.  Python packages.  An easy_install replacement</title>
+  <description>pip is a replacement for easy_install. It uses mostly the same techniques for
+finding packages, so packages that were made easy_installable should be
+pip-installable as well.</description>
+  <devel project="devel:languages:python" package="python-pip"/>
+</package>

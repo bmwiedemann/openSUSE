@@ -1,0 +1,10 @@
+<package name="qt6-webchannel" project="openSUSE:Factory">
+  <title>Qt 6 WebChannel library</title>
+  <description>Qt WebChannel enables peer-to-peer communication between a server
+(QML/C++ application) and a client (HTML/JavaScript or QML
+application).
+
+</description>
+  <devel project="KDE:Qt6" package="qt6-webchannel"/>
+  <url>https://www.qt.io</url>
+</package>

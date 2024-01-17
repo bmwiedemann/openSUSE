@@ -1,0 +1,15 @@
+diff --git a/library_config/cJSONConfig.cmake.in b/library_config/cJSONConfig.cmake.in
+index 909f7a9..0c99643 100644
+--- a/library_config/cJSONConfig.cmake.in
++++ b/library_config/cJSONConfig.cmake.in
+@@ -2,8 +2,8 @@
+ set(CJSON_UTILS_FOUND @ENABLE_CJSON_UTILS@)
+ 
+ # The include directories used by cJSON
+-set(CJSON_INCLUDE_DIRS "@CMAKE_INSTALL_FULL_INCLUDEDIR@")
+-set(CJSON_INCLUDE_DIR "@CMAKE_INSTALL_FULL_INCLUDEDIR@")
++set(CJSON_INCLUDE_DIRS "@CMAKE_INSTALL_FULL_INCLUDEDIR@/cjson")
++set(CJSON_INCLUDE_DIR "@CMAKE_INSTALL_FULL_INCLUDEDIR@/cjson")
+ 
+ get_filename_component(_dir "${CMAKE_CURRENT_LIST_FILE}" PATH)
+ 

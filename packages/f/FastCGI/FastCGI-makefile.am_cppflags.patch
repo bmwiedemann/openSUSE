@@ -1,0 +1,33 @@
+--- cgi-fcgi/Makefile.am
++++ cgi-fcgi/Makefile.am
+@@ -2,7 +2,7 @@
+ bin_PROGRAMS     = cgi-fcgi
+ 
+ INCLUDEDIR  = ../include
+-CPPFLAGS    = @CPPFLAGS@ -I$(top_srcdir)/include
++AM_CPPFLAGS    = @CPPFLAGS@ -I$(top_srcdir)/include
+ 
+ INCLUDE_FILES   = $(INCLUDEDIR)/fastcgi.h  \
+ 		  $(INCLUDEDIR)/fcgiapp.h  \
+--- examples/Makefile.am
++++ examples/Makefile.am
+@@ -11,7 +11,7 @@
+ EXTRA_PROGRAMS = threaded echo-cpp
+ 
+ INCLUDEDIR  = ../include
+-CPPFLAGS    = @CPPFLAGS@ -I$(top_srcdir)/include
++AM_CPPFLAGS    = @CPPFLAGS@ -I$(top_srcdir)/include
+ 
+ INCLUDE_FILES   = $(INCLUDEDIR)/fastcgi.h    \
+                   $(INCLUDEDIR)/fcgiapp.h    \
+--- libfcgi/Makefile.am
++++ libfcgi/Makefile.am
+@@ -1,7 +1,7 @@
+ # $Id: Makefile.am,v 1.9 2001/12/22 03:16:20 robs Exp $
+ 
+ INCLUDEDIR  = ../include
+-CPPFLAGS    = @CPPFLAGS@ -I$(top_srcdir)/include
++AM_CPPFLAGS    = @CPPFLAGS@ -I$(top_srcdir)/include
+ 
+ INCLUDE_FILES = $(INCLUDEDIR)/fastcgi.h     \
+                 $(INCLUDEDIR)/fcgiapp.h     \

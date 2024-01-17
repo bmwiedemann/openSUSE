@@ -1,0 +1,72 @@
+Index: imgvtopgm-2.0.orig/configure
+===================================================================
+--- imgvtopgm-2.0.orig.orig/configure
++++ imgvtopgm-2.0.orig/configure
+@@ -2358,14 +2358,14 @@ CPPFLAGS="$CPPFLAGS $X_CFLAGS"
+ LDFLAGS="$LDFLAGS $X_LIBS"
+ 
+ PBM_LIBS=""
+-echo $ac_n "checking for pbm_init in -lpbm""... $ac_c" 1>&6
+-echo "configure:2363: checking for pbm_init in -lpbm" >&5
++echo $ac_n "checking for pbm_init in -lnetpbm""... $ac_c" 1>&6
++echo "configure:2363: checking for pbm_init in -lnetpbm" >&5
+ ac_lib_var=`echo pbm'_'pbm_init | sed 'y%./+-%__p_%'`
+ if eval "test \"`echo '$''{'ac_cv_lib_$ac_lib_var'+set}'`\" = set"; then
+   echo $ac_n "(cached) $ac_c" 1>&6
+ else
+   ac_save_LIBS="$LIBS"
+-LIBS="-lpbm  $LIBS"
++LIBS="-lnetpbm  $LIBS"
+ cat > conftest.$ac_ext <<EOF
+ #line 2371 "configure"
+ #include "confdefs.h"
+@@ -2393,13 +2393,13 @@ LIBS="$ac_save_LIBS"
+ fi
+ if eval "test \"`echo '$ac_cv_lib_'$ac_lib_var`\" = yes"; then
+   echo "$ac_t""yes" 1>&6
+-  PBM_LIBS="$PNM_LIBS -lpbm"
++  PBM_LIBS="$PNM_LIBS -lnetpbm"
+ else
+   echo "$ac_t""no" 1>&6
+ fi
+ 
+ if test "$PBM_LIBS" = ""; then
+-{ echo "configure: error: The PBM library '-lpbm' could not be found.
++{ echo "configure: error: The PBM library '-lnetpbm' could not be found.
+ 		Please use the configure options '--with-pnm-includes=DIR'
+ 		and '--with-pnm-libraries=DIR' to specify the netpbm location.
+ 		See the 'config.log' file for further diagnostics." 1>&2; exit 1; }
+@@ -2407,14 +2407,14 @@ fi
+ 
+ 
+ PGM_LIBS=""
+-echo $ac_n "checking for pgm_init in -lpgm""... $ac_c" 1>&6
+-echo "configure:2412: checking for pgm_init in -lpgm" >&5
++echo $ac_n "checking for pgm_init in -lnetpbm""... $ac_c" 1>&6
++echo "configure:2412: checking for pgm_init in -lnetpbm" >&5
+ ac_lib_var=`echo pgm'_'pgm_init | sed 'y%./+-%__p_%'`
+ if eval "test \"`echo '$''{'ac_cv_lib_$ac_lib_var'+set}'`\" = set"; then
+   echo $ac_n "(cached) $ac_c" 1>&6
+ else
+   ac_save_LIBS="$LIBS"
+-LIBS="-lpgm $PNM_LIBS ${PBM_LIBS} $LIBS"
++LIBS="-lnetpbm $PNM_LIBS ${PBM_LIBS} $LIBS"
+ cat > conftest.$ac_ext <<EOF
+ #line 2420 "configure"
+ #include "confdefs.h"
+@@ -2442,13 +2442,13 @@ LIBS="$ac_save_LIBS"
+ fi
+ if eval "test \"`echo '$ac_cv_lib_'$ac_lib_var`\" = yes"; then
+   echo "$ac_t""yes" 1>&6
+-  PGM_LIBS="$PNM_LIBS -lpgm"
++  PGM_LIBS="$PNM_LIBS -lnetpbm"
+ else
+   echo "$ac_t""no" 1>&6
+ fi
+ 
+ if test "$PGM_LIBS" = ""; then
+-{ echo "configure: error: The PGM library '-lpgm' could not be found.
++{ echo "configure: error: The PGM library '-lnetpbm' could not be found.
+ 		Please use the configure options '--with-pnm-includes=DIR'
+ 		and '--with-pnm-libraries=DIR' to specify the netpbm location.
+ 		See the 'config.log' file for further diagnostics." 1>&2; exit 1; }

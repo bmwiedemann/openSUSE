@@ -1,0 +1,130 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>6af27d69d5da5539b401b5a12edd6105</srcmd5>
+    <version>3.4</version>
+    <time>1207795207</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="5">
+    <srcmd5>291d50fe5c71c3e629303ff807f55b56</srcmd5>
+    <version>3.4</version>
+    <time>1209134915</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="13">
+    <srcmd5>04b63d14cd4d2e6acf47c29feb96ecbf</srcmd5>
+    <version>3.4</version>
+    <time>1211407862</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="51">
+    <srcmd5>04b63d14cd4d2e6acf47c29feb96ecbf</srcmd5>
+    <version>3.4</version>
+    <time>1211407862</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="52">
+    <srcmd5>34f1dbcce8d31bab4ad3810f96ef2651</srcmd5>
+    <version>3.4</version>
+    <time>1245364289</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="54">
+    <srcmd5>34f1dbcce8d31bab4ad3810f96ef2651</srcmd5>
+    <version>3.4</version>
+    <time>1245364289</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="55">
+    <srcmd5>f516d226d50d31cb2eae0a7e62413f8e</srcmd5>
+    <version>3.4</version>
+    <time>1268924056</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="57">
+    <srcmd5>f516d226d50d31cb2eae0a7e62413f8e</srcmd5>
+    <version>3.4</version>
+    <time>1278667353</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="58">
+    <srcmd5>f516d226d50d31cb2eae0a7e62413f8e</srcmd5>
+    <version>3.4</version>
+    <time>1278678584</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="61">
+    <srcmd5>f516d226d50d31cb2eae0a7e62413f8e</srcmd5>
+    <version>3.4</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="63">
+    <srcmd5>f516d226d50d31cb2eae0a7e62413f8e</srcmd5>
+    <version>3.4</version>
+    <time>1319181997</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="64">
+    <srcmd5>4b77389dead8e74c978a16f66f8ff063</srcmd5>
+    <version>3.4</version>
+    <time>1323191995</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="13" vrev="66">
+    <srcmd5>4b77389dead8e74c978a16f66f8ff063</srcmd5>
+    <version>3.4</version>
+    <time>1340183472</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="14" vrev="68">
+    <srcmd5>4b77389dead8e74c978a16f66f8ff063</srcmd5>
+    <version>3.4</version>
+    <time>1359109095</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>7b442d1e72be3751dad52c6694132c7d</srcmd5>
+    <version>4.0.0</version>
+    <time>1376391530</time>
+    <user>scarabeus_factory</user>
+    <comment>- Snapshot of 4.0.0 for compatibility with Tcl/Tk 8.6.</comment>
+    <requestid>186434</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>7b442d1e72be3751dad52c6694132c7d</srcmd5>
+    <version>4.0.0</version>
+    <time>1379662690</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>7b442d1e72be3751dad52c6694132c7d</srcmd5>
+    <version>4.0.0</version>
+    <time>1409301255</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>381aee691f9488cc537feb48ff682b5b</srcmd5>
+    <version>4.1.0</version>
+    <time>1507280663</time>
+    <user>dimstar_suse</user>
+    <comment>- Use a current 4.1.0 snapshot to fix a segfault with Tcl/Tk 8.6.7.</comment>
+    <requestid>531724</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>63455f81b1a4c6d0c81dc38b7e3d85c9</srcmd5>
+    <version>4.1.0</version>
+    <time>1548705029</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>669138</requestid>
+  </revision>
+</revisionlist>

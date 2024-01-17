@@ -1,0 +1,503 @@
+-------------------------------------------------------------------
+Tue Nov 28 03:55:52 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch avoid-deprecated-ast.patch:
+  * Avoid deprecated ast classes.
+- Add patch also-filter-new-fork-warning.patch:
+  * Filter DeprecationWarning due to calling fork() with multiprocessing.
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
+Sat Nov 25 20:14:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.3.2:
+  * FIX treat n_jobs=None as if left to its default value
+  * FIX Init logger parent class in Parallel
+  * MNT remove unnecessary .bck file
+  * MTN adjust test regex for Python 3.12 improved error message
+  * DOC add public documentation for parallel_backend
+  * FIX flake8 new E721: type comparison
+  * Ensure native byte order for memmap.
+  * Drop runtime dependency on `distutils`
+  * Add environment variable to change default parallel backend
+  * Fix memmapping_reducer when 'os' has no attribute 'statvfs'
+  * Move the metadata into `pyproject.toml`
+  * TST Close client in test_pickle_in_socket
+  * Do not swallow PicklingError
+  * FIX Avoid collisions when caching nested functions
+  * FIX heisenfailure in doc/memory.rst
+  * MAINT Explicit support for Python 3.11
+  * MNT Use faulthandler rather than custom autokill logic
+  * BENCH add benchmark script for n_jobs=1
+  * TST Fix test_nested_parallel_warnings_parent_backend for
+    Python nogil
+  * TST Fix test_memmapping for Python nogil
+  * MAINT Clean deprecations
+  * ENH make temp resource cleanup safer
+  * MAINT Simplify warning in `_persist_input`
+  * MNT Use full flake8 rather than flake8_diff.sh
+  * Update Dask backend
+  * FIX upload to codecov
+  * MTN vendor loky 3.4.0
+  * MTN skip thread_bomb mitigation test on PyPy for now
+  * High verbosity mode that prints arguments, hash and store
+    location.
+  * DBG try to debug the thread_bomb_mitigation test
+  * FEA return generator, #588 stripped of unrelated changes for
+    minimal diff review
+  * BENCH scaling of a GridSearch with n_jobs
+  * CLN make generator exit thread safe
+  * FEA parallel_config context manager to allow more fine-
+    grained control
+  * MAINT: Be nitpicky about docs
+  * CLN tidy logger
+  * Give Memory.reduce_size() `items_limit` and `age_limit`
+    options
+  * CLN deprecate bytes_limit from Memory
+  * FIX doc building failing download
+  * Document parallel_config
+  * ENH add cache_validation_callback in Memory
+  * DOC example data DL from GH
+  * merge all configs in pyproject.toml
+  * fix double repeated word typos
+  * DOC reference parallel_config instead of parallel_backend
+  * `return_generator={True,False}` ->
+    `return_as={'list','generator'}`
+
+-------------------------------------------------------------------
+Sat Jun 10 17:42:25 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Tue Oct 11 13:20:33 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.2.0 (CVE-2022-21797, bsc#1204232)
+  * Fix a security issue where eval(pre_dispatch) could potentially
+    run arbitrary code. Now only basic numerics are supported.
+    #1327
+  * Make sure that joblib works even when multiprocessing is not
+    available, for instance with Pyodide #1256
+  * Avoid unnecessary warnings when workers and main process delete
+    the temporary memmap folder contents concurrently. #1263
+  * Vendor loky 3.1.0 with several fixes to more robustly forcibly
+    terminate worker processes in case of a crash. #1269
+  * Fix memory alignment bug for pickles containing numpy arrays.
+    This is especially important when loading the pickle with
+    mmap_mode != None as the resulting numpy.memmap object would
+    not be able to correct the misalignment without performing a
+    memory copy. This bug would cause invalid computation and
+    segmentation faults with native code that would directly access
+    the underlying data buffer of a numpy array, for instance
+    C/C++/Cython code compiled with older GCC versions or some old
+    OpenBLAS written in platform specific assembly. #1254
+  * Vendor cloudpickle 2.2.0 which adds support for PyPy 3.8+.
+  * Vendor loky 3.3.0 which fixes a bug with leaking processes in
+    case of nested loky parallel calls and more reliability spawn
+    the correct number of reusable workers.
+- Drop support-setuptools-62.patch
+
+-------------------------------------------------------------------
+Wed Jul 20 11:00:18 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-setuptools-62.patch:
+  * Support setuptools >= 62 by handling more than one warning in a test
+    case.
+
+-------------------------------------------------------------------
+Sat Oct 16 21:31:20 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.0:
+  * Fix byte order inconsistency issue during deserialization using joblib.load
+    in cross-endian environment: the numpy arrays are now always loaded to use
+    the system byte order, independently of the byte order of the system that
+    serialized the pickle.
+  * Fix joblib.Memory bug with the ignore parameter when the cached function is a
+    decorated function.
+  * Fix joblib.Memory to properly handle caching for functions defined
+    interactively in a IPython session or in Jupyter notebook cell.
+  * Update vendored loky (from version 2.9 to 3.0) and cloudpickle (from
+    version 1.6 to 2.0)
+
+-------------------------------------------------------------------
+Mon Feb 15 23:26:21 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.0.1
+  * dask: avoid redundant scattering of large arguments to make a
+    more efficient use of the network resources and avoid crashing
+    dask with "OSError: [Errno 55] No buffer space available" or
+    "ConnectionResetError: [Errno 104] connection reset by
+    peer".
+- Changees in 1.0.0
+  * Make joblib.hash and joblib.Memory caching system compatible
+    with numpy >= 1.20.0. Also make it explicit in the
+    documentation that users should now expect to have their joblib.
+    Memory cache invalidated when either joblib or a third party
+    library involved in the cached values definition is upgraded.
+    In particular, users updating joblib to a release that includes
+    this fix will see their previous cache invalidated if they
+    contained reference to numpy objects.
+  * Remove deprecated check_pickle argument in delayed.
+- Changes in 0.17.0
+  * Fix a spurious invalidation of Memory.cache'd functions called
+    with Parallel under Jupyter or IPython.
+  * Bump vendored loky to 2.9.0 and cloudpickle to 1.6.0. In
+    particular this fixes a problem to add compat for Python 3.9.
+- Don't require optional NumPy for python36 tests in TW, because
+  NumPy 1.20 dropped support for Python 3.6 (NEP 29)
+- Drop joblib-disable-unrelialble-tests.patch, they are already
+  used in pytest deselection parameter.
+  * Do the same for disable_test_on_big_endian.patch.
+
+-------------------------------------------------------------------
+Sun Dec  6 21:37:54 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- BuildRequire threadpoolctl for all python3 flavors
+  gh#openSUSE/python-rpm-macros#66
+
+-------------------------------------------------------------------
+Fri Oct 30 08:23:38 UTC 2020 - pgajdos@suse.com
+
+- disable test_hash_numpy_noncontiguous,
+  test_hashes_are_different_between_c_and_fortran_contiguous_arrays,
+  test_hashes_stay_the_same_with_numpy_objects,
+  test_non_contiguous_array_pickling [bsc#1177209]
+
+-------------------------------------------------------------------
+Tue Oct 27 12:01:23 UTC 2020 - pgajdos@suse.com
+
+- disable test_nested_loop_error_in_grandchild_resource_tracker_silent
+  [bsc#1177209]
+
+-------------------------------------------------------------------
+Mon Oct  5 14:18:31 UTC 2020 - pgajdos@suse.com
+
+- disable yet another tests [bsc#1177209]
+
+-------------------------------------------------------------------
+Tue Sep  8 08:26:41 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable tests failing often in OBS:
+  * joblib-disable-unrelialble-tests.patch
+
+-------------------------------------------------------------------
+Fri Aug 21 08:40:04 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- New disable_test_on_big_endian.patch as per upstream issue
+  https://github.com/joblib/joblib/issues/279
+
+-------------------------------------------------------------------
+Sat Jul 18 09:12:26 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.16.0
+  - Fix a problem in the constructors of of Parallel backends classes that
+    inherit from the `AutoBatchingMixin` that prevented the dask backend to
+    properly batch short tasks.
+    https://github.com/joblib/joblib/pull/1062
+  - Fix a problem in the way the joblib dask backend batches calls that would
+    badly interact with the dask callable pickling cache and lead to wrong
+    results or errors.
+    https://github.com/joblib/joblib/pull/1055
+  - Prevent a dask.distributed bug from surfacing in joblib's dask backend
+    during nested Parallel calls (due to joblib's auto-scattering feature)
+    https://github.com/joblib/joblib/pull/1061
+  - Workaround for a race condition after Parallel calls with the dask backend
+    that would cause low level warnings from asyncio coroutines:
+    https://github.com/joblib/joblib/pull/1078
+
+-------------------------------------------------------------------
+Tue Jun  2 16:24:43 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.15.1:
+  - Make joblib work on Python 3 installation that do not ship with the lzma
+    package in their standard library.
+  - Drop support for Python 2 and Python 3.5. All objects in
+    ``joblib.my_exceptions`` and ``joblib.format_stack`` are now deprecated and
+    will be removed in joblib 0.16. Note that no deprecation warning will be
+    raised for these objects Python < 3.7.
+    https://github.com/joblib/joblib/pull/1018
+  - Fix many bugs related to the temporary files and folder generated when
+    automatically memory mapping large numpy arrays for efficient inter-process
+    communication. In particular, this would cause `PermissionError` exceptions
+    to be raised under Windows and large leaked files in `/dev/shm` under Linux
+    in case of crash.
+    https://github.com/joblib/joblib/pull/966
+  - Make the dask backend collect results as soon as they complete
+    leading to a performance improvement:
+    https://github.com/joblib/joblib/pull/1025
+  - Fix the number of jobs reported by ``effective_n_jobs`` when ``n_jobs=None``
+    called in a parallel backend context.
+    https://github.com/joblib/joblib/pull/985
+  - Upgraded vendored cloupickle to 1.4.1 and loky to 2.8.0. This allows for
+    Parallel calls of dynamically defined functions with type annotations
+    in particular.
+
+
+-------------------------------------------------------------------
+Thu Mar  5 13:33:14 UTC 2020 - pgajdos@suse.com
+
+- version update to 0.14.1
+  - Configure the loky workers' environment to mitigate oversubsription with
+    nested multi-threaded code in the following case:
+    - allow for a suitable number of threads for numba (``NUMBA_NUM_THREADS``);
+    - enable Interprocess Communication for scheduler coordination when the
+      nested code uses Threading Building Blocks (TBB) (``ENABLE_IPC=1``)
+    https://github.com/joblib/joblib/pull/951
+  - Fix a regression where the loky backend was not reusing previously
+    spawned workers.
+    https://github.com/joblib/joblib/pull/968
+  - Revert https://github.com/joblib/joblib/pull/847 to avoid using
+    `pkg_resources` that introduced a performance regression under Windows:
+    https://github.com/joblib/joblib/issues/965
+  - Improved the load balancing between workers to avoid stranglers caused by an
+    excessively large batch size when the task duration is varying significantly
+    (because of the combined use of ``joblib.Parallel`` and ``joblib.Memory``
+    with a partially warmed cache for instance).
+    https://github.com/joblib/joblib/pull/899
+  - Add official support for Python 3.8: fixed protocol number in `Hasher`
+    and updated tests.
+  - Fix a deadlock when using the dask backend (when scattering large numpy
+    arrays).
+    https://github.com/joblib/joblib/pull/914
+  - Warn users that they should never use `joblib.load` with files from
+    untrusted sources. Fix security related API change introduced in numpy
+    1.6.3 that would prevent using joblib with recent numpy versions.
+    https://github.com/joblib/joblib/pull/879
+  - Upgrade to cloudpickle 1.1.1 that add supports for the upcoming
+    Python 3.8 release among other things.
+    https://github.com/joblib/joblib/pull/878
+  - Fix semaphore availability checker to avoid spawning resource trackers
+    on module import.
+    https://github.com/joblib/joblib/pull/893
+  - Fix the oversubscription protection to only protect against nested
+    `Parallel` calls. This allows `joblib` to be run in background threads.
+    https://github.com/joblib/joblib/pull/934
+  - Fix `ValueError` (negative dimensions) when pickling large numpy arrays on
+    Windows.
+    https://github.com/joblib/joblib/pull/920
+  - Upgrade to loky 2.6.0 that add supports for the setting environment variables
+    in child before loading any module.
+    https://github.com/joblib/joblib/pull/940
+  - Fix the oversubscription protection for native libraries using threadpools
+    (OpenBLAS, MKL, Blis and OpenMP runtimes).
+    The maximal number of threads is can now be set in children using the
+    ``inner_max_num_threads`` in ``parallel_backend``. It defaults to
+    ``cpu_count() // n_jobs``.
+    https://github.com/joblib/joblib/pull/940
+- deleted patches
+  - numpy16.patch (upstreamed)
+
+-------------------------------------------------------------------
+Tue May 28 10:34:57 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch to %pytest
+- Add patch to work well with new numpy:
+  * numpy16.patch
+
+-------------------------------------------------------------------
+Tue Mar 26 14:45:24 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.13.2:
+  * Upgrade to cloudpickle 0.8.0
+  * Add a non-regression test related to joblib issues #836 and #833, reporting that cloudpickle versions between 0.5.4 and 0.7 introduced a bug where global variables changes in a parent process between two calls to joblib.Parallel would not be propagated into the workers
+
+-------------------------------------------------------------------
+Thu Mar  7 15:57:20 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove no longer necessary pytest argument
+  -k 'not test_no_blas_crash_or_freeze_with_subprocesses'
+
+-------------------------------------------------------------------
+Tue Jan 29 16:41:57 CET 2019 - mcepl@suse.com
+
+- Update to Release 0.13.1:
+  * Memory now accepts pathlib.Path objects as ``location``
+    parameter. Also, a warning is raised if the returned backend
+    is None while ``location`` is not None.
+  * Make ``Parallel`` raise an informative ``RuntimeError`` when
+    the active parallel backend has zero worker.
+  * Make the ``DaskDistributedBackend`` wait for workers before
+    trying to schedule work. This is useful in particular when
+    the workers are provisionned dynamically but provisionning is
+    not immediate (for instance using Kubernetes, Yarn or an HPC
+    job queue).
+
+-------------------------------------------------------------------
+Mon Jan  7 19:39:00 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- update to Release 0.13.0
+  * Include loky 2.4.2 with default serialization with ``cloudpickle``.
+    This can be tweaked with the environment variable ``LOKY_PICKLER``.
+  * Fix nested backend in SequentialBackend to avoid changing the default
+    backend to Sequential. (#792)
+  * Fix nested_backend behavior to avoid setting the default number of
+    workers to -1 when the backend is not dask. (#784)
+- Update to Release 0.12.5
+  * Include loky 2.3.1 with better error reporting when a worker is
+    abruptly terminated. Also fixes spurious debug output.
+  * Include cloudpickle 0.5.6. Fix a bug with the handling of global
+    variables by locally defined functions.
+- Update to Release 0.12.4
+  * Include loky 2.3.0 with many bugfixes, notably w.r.t. when setting
+    non-default multiprocessing contexts. Also include improvement on
+    memory management of long running worker processes and fixed issues
+    when using the loky backend under PyPy.
+  * Raises a more explicit exception when a corrupted MemorizedResult is loaded.
+  * Loading a corrupted cached file with mmap mode enabled would
+    recompute the results and return them without memmory mapping.
+- Update to Release 0.12.3
+  * Fix joblib import setting the global start_method for multiprocessing.
+  * Fix MemorizedResult not picklable (#747).
+  * Fix Memory, MemorizedFunc and MemorizedResult round-trip pickling +
+    unpickling (#746).
+  * Fixed a regression in Memory when positional arguments are called as
+    kwargs several times with different values (#751).
+  * Integration of loky 2.2.2 that fixes issues with the selection of the
+    default start method and improve the reporting when calling functions
+    with arguments that raise an exception when unpickling.
+  * Prevent MemorizedFunc.call_and_shelve from loading cached results to
+    RAM when not necessary. Results in big performance improvements
+- Update to Release 0.12.2
+  * Integrate loky 2.2.0 to fix regression with unpicklable arguments and
+    functions reported by users (#723, #643).
+  * Loky 2.2.0 also provides a protection against memory leaks long running
+    applications when psutil is installed (reported as #721).
+  * Joblib now includes the code for the dask backend which has been updated
+    to properly handle nested parallelism and data scattering at the same
+    time (#722).
+  * Restored some private API attribute and arguments
+    (`MemorizedResult.argument_hash` and `BatchedCalls.__init__`'s
+    `pickle_cache`) for backward compat. (#716, #732).
+  * Fix a deprecation warning message (for `Memory`'s `cachedir`) (#720).
+
+-------------------------------------------------------------------
+Thu Jan  3 07:07:28 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Disable blas test as it is very flaky outside of x86_64
+
+-------------------------------------------------------------------
+Fri Jul 27 06:35:25 UTC 2018 - jengelh@inai.de
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Fri Jul 20 11:48:47 UTC 2018 - tchvatal@suse.com
+
+- Enable tests
+
+-------------------------------------------------------------------
+Wed Jul 18 03:03:33 UTC 2018 - arun@gmx.de
+
+- specfile:
+  * remove devel requirement
+
+- update to version 0.12.1:
+  * Make sure that any exception triggered when serializing jobs in
+    the queue will be wrapped as a PicklingError as in past versions
+    of joblib.
+  * Fix kwonlydefaults key error in filter_args (#715)
+
+- changes from version 0.12:
+  * Implement the 'loky' backend with @ogrisel. This backend relies on
+    a robust implementation of concurrent.futures.ProcessPoolExecutor
+    with spawned processes that can be reused accross the Parallel
+    calls. This fixes the bad interation with third paty libraries
+    relying on thread pools, described in
+    https://pythonhosted.org/joblib/parallel.html#bad-interaction-of-multiprocessing-and-third-party-libraries
+  * Limit the number of threads used in worker processes by
+    C-libraries that relies on threadpools. This functionality works
+    for MKL, OpenBLAS, OpenMP and Accelerated.
+  * Prevent numpy arrays with the same shape and data from hashing to
+    the same memmap, to prevent jobs with preallocated arrays from
+    writing over each other.
+  * Reduce overhead of automatic memmap by removing the need to hash
+    the array.
+  * Make Memory.cache robust to PermissionError (errno 13) under
+    Windows when run in combination with Parallel.
+  * The automatic array memory mapping feature of Parallel does no
+    longer use /dev/shm if it is too small (less than 2 GB). In
+    particular in docker containers /dev/shm is only 64 MB by default
+    which would cause frequent failures when running joblib in Docker
+    containers.
+  * Make it possible to hint for thread-based parallelism with
+    prefer='threads' or enforce shared-memory semantics with
+    require='sharedmem'.
+  * Rely on the built-in exception nesting system of Python 3 to
+    preserve traceback information when an exception is raised on a
+    remote worker process. This avoid verbose and redundant exception
+    reports under Python 3.
+  * Preserve exception type information when doing nested Parallel
+    calls instead of mapping the exception to the generic
+    JoblibException type.
+  * Introduce the concept of 'store' and refactor the Memory internal
+    storage implementation to make it accept extra store backends for
+    caching results. backend and backend_options are the new options
+    added to Memory to specify and configure a store backend.
+  * Add the register_store_backend function to extend the store
+    backend used by default with Memory. This default store backend is
+    named 'local' and corresponds to the local filesystem.
+  * The store backend API is experimental and thus is subject to
+    change in the future without deprecation.
+  * The cachedir parameter of Memory is now marked as deprecated, use
+    location instead.
+  * Add support for LZ4 compression if lz4 package is installed.
+  * Add register_compressor function for extending available
+    compressors.
+  * Allow passing a string to compress parameter in dump funtion. This
+    string should correspond to the compressor used (e.g. zlib, gzip,
+    lz4, etc). The default compression level is used in this case.
+  * Allow parallel_backend to be used globally instead of only as a
+    context manager. Support lazy registration of external parallel
+    backends
+
+-------------------------------------------------------------------
+Thu Jan 11 22:12:57 UTC 2018 - jengelh@inai.de
+
+- Ensure neutrality of description.
+
+-------------------------------------------------------------------
+Mon May 22 16:35:59 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version.
+- Run tests.
+- Fix source URL.
+- Update to version 0.11.
+  * For a full changelog please see:
+    https://github.com/joblib/joblib/blob/0.11/CHANGES.rst
+
+-------------------------------------------------------------------
+Sun May 24 13:14:03 UTC 2015 - toddrme2178@gmail.com
+
+- Disable non-functional documentation
+
+-------------------------------------------------------------------
+Sun Dec  8 19:47:59 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 0.7.1
+  + MISC: capture meaningless argument (n_jobs=0) in Parallel
+  + ENH Handles tuples, sets and Python 3's dict_keys type the same as
+    lists. in pre_dispatch
+  + ENH: fix function caching for IPython
+
+-------------------------------------------------------------------
+Thu Oct 24 11:07:22 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Sat Feb  9 15:54:15 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 0.7.0d
+  * No changelog available
+- Clean the specfile and remove .buildinfo file
+
+-------------------------------------------------------------------
+Wed Oct 10 20:59:57 UTC 2012 - scorot@free.fr
+
+- Add Group field in doc package for SLE 11
+
+-------------------------------------------------------------------
+Wed Sep  5 17:10:35 UTC 2012 - toddrme2178@gmail.com
+
+- Initial version
+

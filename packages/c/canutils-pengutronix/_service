@@ -1,0 +1,14 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">git://git.pengutronix.de/git/tools/canutils</param>
+		<param name="revision">2041b569af567bebafb9464340ec1547a9ad2780</param>
+		<param name="parent-tag">canutils-4.0.6</param>
+		<param name="versionformat">4.0.6.g@TAG_OFFSET@</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>

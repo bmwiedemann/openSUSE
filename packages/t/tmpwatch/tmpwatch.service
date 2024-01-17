@@ -1,0 +1,16 @@
+[Unit]
+Description=Automatic clean-up execution of tmpwatch
+
+[Service]
+# added automatically, for details please see
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+ProtectSystem=full
+ProtectHome=true
+ProtectHostname=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictRealtime=true
+# end of automatic additions 
+Type=oneshot
+ExecStart=/bin/bash -ce "/usr/sbin/tmpwatch-autoclean"

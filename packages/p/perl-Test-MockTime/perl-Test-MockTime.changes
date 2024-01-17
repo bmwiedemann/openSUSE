@@ -1,0 +1,65 @@
+-------------------------------------------------------------------
+Mon Apr  2 06:03:32 UTC 2018 - coolo@suse.com
+
+- updated to 0.17
+   see /usr/share/doc/packages/perl-Test-MockTime/Changes
+
+    0.17 - 01 Apr 2018
+  
+        * Fixed future timestamp on t/test.t.  Irony not intended, but a nice bug for April Fools Day.  Happy Easter to Torsten Raudssus for RT #124985.
+
+-------------------------------------------------------------------
+Fri Feb 23 07:07:53 UTC 2018 - coolo@suse.com
+
+- updated to 0.16
+   see /usr/share/doc/packages/perl-Test-MockTime/Changes
+
+    0.16 - 22 Feb 2018
+  
+        * Fixed calls to CORE::localtime in test suite to cope with years > 2020 as per RT #124508.  Thanks to Bernhard M. W. for patch.
+
+-------------------------------------------------------------------
+Fri Sep  4 09:51:03 UTC 2015 - coolo@suse.com
+
+- updated to 0.15
+   see /usr/share/doc/packages/perl-Test-MockTime/Changes
+
+    0.15 - 03 Sep 2015
+  
+        * Corrected README.  Merged POD into pm file
+  
+    0.14 - 03 Sep 2015
+  
+        * fixing POD code examples as per RT #104088.
+
+-------------------------------------------------------------------
+Tue Apr 14 15:28:49 UTC 2015 - coolo@suse.com
+
+- updated to 0.13
+   see /usr/share/doc/packages/perl-Test-MockTime/Changes
+
+    0.13 - 07 Aug 2014
+  
+        * explicit license in META as per RT #97806
+        * included other updates to Makefile.PL details (author, etc)
+
+-------------------------------------------------------------------
+Tue Mar 18 10:13:18 UTC 2014 - coolo@suse.com
+
+- regenerate spec file for factory submission
+
+-------------------------------------------------------------------
+Wed Dec  1 06:55:43 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:31:13 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Sun Aug 22 23:18:39 UTC 2010 - pascal.bleser@opensuse.org
+
+- initial package (0.12)
+

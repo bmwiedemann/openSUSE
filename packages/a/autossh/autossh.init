@@ -1,0 +1,133 @@
+#!/bin/sh
+#
+# SUSE system startup script for autossh
+#
+# Author: Plamen Kolev <multyrealm@gmail.com>
+#
+# /etc/init.d/autossh
+#   and its symbolic link
+# /usr/sbin/rcautossh
+#
+### BEGIN INIT INFO
+# Provides:          autossh
+# Required-Start:    $local_fs $remote_fs $syslog $network $named sshd
+# Should-Start:
+# Required-Stop:     $local_fs $remote_fs $syslog $network $named sshd
+# Should-Stop:
+# Default-Start:     3 5
+# Default-Stop:      0 1 2 6
+# Short-Description: Autossh service
+# Description:       Starts autossh as a service daemon
+### END INIT INFO
+
+AUTOSSH_BIN=/usr/bin/autossh
+test -x $AUTOSSH_BIN || { echo "$AUTOSSH_BIN not installed";
+        if [ "$1" = "stop" ]; then exit 0;
+        else exit 5; fi; }
+
+AUTOSSH_CONFIG=/etc/sysconfig/autossh
+test -r $AUTOSSH_CONFIG || { echo "$AUTOSSH_CONFIG not existing";
+        if [ "$1" = "stop" ]; then exit 0;
+        else exit 6; fi; }
+
+. $AUTOSSH_CONFIG
+
+. /etc/rc.status
+
+function start_instance() {
+    id=$1
+    pidfile=$2
+    options=$3
+    if [ -n "$options" ]; then
+        echo -n "$id: Starting autossh "
+        export AUTOSSH_PIDFILE="$pidfile"
+        /sbin/startproc -p "$pidfile" $AUTOSSH_BIN -f $options
+        rc_status -v
+    fi
+}
+
+function stop_instance() {
+    id=$1
+    pidfile=$2
+    options=$3
+    if [ -n "$options" ]; then
+        echo -n "$id: Shutting down autossh "
+        /sbin/killproc -p "$pidfile" $AUTOSSH_BIN
+        rc_status -v
+    fi
+}
+
+function status_instance() {
+    id=$1
+    pidfile=$2
+    options=$3
+    if [ -n "$options" ]; then
+        echo -n "$id: Checking for service autossh "
+        /sbin/checkproc -p "$pidfile" $AUTOSSH_BIN
+        rc_status -v
+    fi
+}
+
+rc_reset
+
+case "$1" in
+    start)
+        export AUTOSSH_FIRST_POLL
+        export AUTOSSH_LOGLEVEL
+        export AUTOSSH_POLL
+        export AUTOSSH_PORT
+
+        start_instance "0" "/var/run/autossh.pid" "$AUTOSSH_OPTIONS"
+
+        for i in `seq 1 $(($AUTOSSH_SPAWNS-1))`; do
+            eval start_instance \"$i\" \"/var/run/autossh$i.pid\" \"\$AUTOSSH_OPTIONS_$i\"
+        done
+
+        ;;
+    stop)
+        stop_instance "0" "/var/run/autossh.pid" "$AUTOSSH_OPTIONS"
+
+        for i in `seq 1 $(($AUTOSSH_SPAWNS-1))`; do
+            eval stop_instance \"$i\" \"/var/run/autossh$i.pid\" \"\$AUTOSSH_OPTIONS_$i\"
+        done
+
+        ;;
+    try-restart|condrestart)
+        if test "$1" = "condrestart"; then
+            echo "${attn} Use try-restart ${done}(LSB)${attn} rather than condrestart ${warn}(RH)${norm}"
+        fi
+        $0 status
+        if test $? = 0; then
+            $0 restart
+        else
+            rc_reset
+        fi
+
+        rc_status
+        ;;
+    restart)
+        $0 stop
+        $0 start
+
+        rc_status
+        ;;
+    force-reload)
+        echo -n "Reload service autossh "
+        $0 try-restart
+
+        rc_status
+        ;;
+    status)
+        status_instance "0" "/var/run/autossh.pid" "$AUTOSSH_OPTIONS"
+
+        for i in `seq 1 $(($AUTOSSH_SPAWNS-1))`; do
+            eval status_instance \"$i\" \"/var/run/autossh$i.pid\" \"\$AUTOSSH_OPTIONS_$i\"
+        done
+
+        ;;
+    *)
+        echo "Usage: $0 {start|stop|status|try-restart|restart|force-reload}"
+        exit 1
+        ;;
+esac
+rc_exit

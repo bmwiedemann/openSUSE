@@ -1,0 +1,39 @@
+This patch simply restores the older reorder_block() inner loop
+-------------------------------------------------------------------
+https://bugzilla.novell.com/show_bug.cgi?id=155889
+Brent Casavant <bcasavan@sgi.com>:
+
+I submitted the following patch to libdv-dev@lists.sourceforge.net, and it is
+currently pending acceptance.
+
+Subject: [libdv-dev] [PATCH] Fix reorder_block() zigzag on non-x86
+
+The reorder_block() zigzag behaves incorrectly in the !ARCH_X86 &&
+!ARCH_X86_64 case.  The current code fails to take into account the
+effects of _dv_prepare_reorder_tables(), which changes the indexes
+contained in the reorder_88[] and reorder_248[] arrays.
+
+---
+
+Restore older, known good, reorder_block() inner loop.
+
+ encode.c |    7 +++----
+ 1 files changed, 3 insertions(+), 4 deletions(-)
+
+diff -ru libdv-0.104-orig/libdv/encode.c libdv-0.104-fixed/libdv/encode.c
+--- libdv-0.104-orig/libdv/encode.c	2004-11-16 21:36:30.000000000 -0600
++++ libdv-0.104-fixed/libdv/encode.c	2006-03-07 14:07:22.000000000 -0600
+@@ -512,10 +512,9 @@
+ 	_dv_reorder_block_mmx_x86_64(bl->coeffs, reorder);
+ 	emms();
+ #else	
+-	for (i = 0; i < 64; i++) {
+-	  //		*(unsigned short*) ((char*) zigzag + reorder[i])=bl->coeffs[i];
+-	  zigzag[reorder[i] - 1] = bl->coeffs[i];
+-	}
++	for (i = 0; i < 64; i++)
++	  *(unsigned short*) ((char*) zigzag + reorder[i])=bl->coeffs[i];
++
+ 	memcpy(bl->coeffs, zigzag, 64 * sizeof(dv_coeff_t));
+ #endif
+ }

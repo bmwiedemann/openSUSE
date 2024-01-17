@@ -1,0 +1,8 @@
+<package name="python-Mathics" project="openSUSE:Factory">
+  <title>A general-purpose computer algebra system</title>
+  <description>Mathics is a general-purpose computer algebra system (CAS). It is meant to be a free, lightweight alternative to Mathematica.
+
+</description>
+  <devel project="science" package="python-Mathics"/>
+  <url>https://mathics.github.io/</url>
+</package>

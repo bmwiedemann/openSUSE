@@ -1,0 +1,129 @@
+#!/bin/bash
+
+# Usage: block-npiv [add npiv | remove dev]
+
+dir=$(dirname "$0")
+. "$dir/block-npiv-common.sh"
+. "$dir/block-common.sh"
+
+#set -x
+#command=$1
+
+case "$command" in
+  add)
+    # Params is one big arg, with fields separated by hyphens:
+    # single path: 
+    #    VPWWPN-TGTWWPN-LUN#
+    # multipath: 
+    #    {VPWWPN1.VPWWPN2....VPWWPNx}-{TGTWWPN1.TGTWWPN2....TGTWWPNx}-LUN#
+    #    arg 1 - VPORT's WWPN
+    #    arg 2 - Target's WWPN
+    #    arg 3 - LUN # on Target
+    # no wwn contains a leading 0x - it is a 16 character hex value
+    # You may want to optionally pick a specific adapter ?
+    par=`xenstore-read $XENBUS_PATH/params` || true
+    NPIVARGS=(${par//-/ })
+    wc=${#NPIVARGS[@]}
+    if [ $wc -eq 5 ]; then
+      # support old syntax
+      # FABRIC-VPWWPN-VPWWNN-TGTWWPN-LUN
+      VPORTWWPNS=${NPIVARGS[1]}
+      VPORTWWNNS=${NPIVARGS[2]}
+      TGTWWPNS=${NPIVARGS[3]}
+      LUN=${NPIVARGS[4]}
+    elif [ $wc -eq 3 ]; then
+      # new syntax
+      VPORTWWPNS=${NPIVARGS[0]}
+      TGTWWPNS=${NPIVARGS[1]}
+      LUN=${NPIVARGS[2]}
+    else
+      # wrong syntax
+      exit 1
+    fi
+
+    # Ensure we compare everything using lower-case hex characters
+    TGTWWPNS=`echo $TGTWWPNS | tr A-Z a-z |sed 's/[{.}]/ /g'`
+    VPORTWWPNS=`echo $VPORTWWPNS | tr A-Z a-z |sed 's/[{.}]/ /g'`
+    # Only one VPWWNN is supported
+    VPORTWWNN=`echo $VPORTWWNNS | tr A-Z a-z | sed -e 's/\..*//g' -e 's/{//'`
+
+    claim_lock "npiv"
+    paths=0
+    for VPORTWWPN in $VPORTWWPNS; do
+      find_vhost $VPORTWWPN
+      if test -z "$vhost" ; then
+        create_vport $VPORTWWPN $VPORTWWNN
+        if [ $? -ne 0 ] ; then exit 2; fi
+        sleep 8
+        find_vhost $VPORTWWPN
+        if test -z "$vhost" ; then exit 3; fi
+      fi
+      for TGTWWPN in $TGTWWPNS; do
+        find_sdev $vhost $TGTWWPN $LUN
+        if test -z "$dev"; then
+          echo "- - -" > /sys/class/scsi_host/$vhost/scan
+          sleep 2
+          find_sdev $vhost $TGTWWPN $LUN
+        fi
+        if test -z "$dev"; then
+          exit 4
+	fi
+        paths=$(($paths+1))
+      done
+    done
+    release_lock "npiv"
+
+    if test $paths -gt 1; then
+      xenstore-write $XENBUS_PATH/multipath 1
+      /etc/init.d/multipathd start
+      if test $? -ne 0 ; then exit 4; fi
+      dm=`multipath -l /dev/$dev | grep dm | cut -f2 -d' '`
+    else
+      xenstore-write $XENBUS_PATH/multipath 0
+      dm=$dev
+    fi
+    
+    if test ! -z "$dm"; then
+      xenstore-write $XENBUS_PATH/node /dev/$dm
+      write_dev /dev/$dm
+      exit 0
+    fi
+
+    exit 4
+    ;;
+
+  remove)
+    node=`xenstore-read $XENBUS_PATH/node` || true
+    multipath=`xenstore-read $XENBUS_PATH/multipath` || true
+    # this is really screwy. the first delete of a lun will
+    # terminate the entire vport (all luns)
+    if test $multipath = 1; then
+      par=`xenstore-read $XENBUS_PATH/params` || true
+      NPIVARGS=(${par//-/ })
+      wc=${#NPIVARGS[@]}
+      if [ $wc -eq 5 ]; then
+        # old syntax
+        # FABRIC-VPWWPN-VPWWNN-TGTWWPN-LUN
+        VPORTWWPNS=${NPIVARGS[1]}
+      elif [ $wc -eq 3 ]; then
+        # new syntax
+        VPORTWWPNS=${NPIVARGS[0]}
+      fi
+      VPORTWWPNS=`echo $VPORTWWPNS | tr A-Z a-z |sed 's/[{.}]/ /g'`
+      for VPORTWWPN in $VPORTWWPNS; do
+        find_vhost $VPORTWWPN
+        if test -z "$vhost" ; then exit 5; fi
+        flush_nodes_on_vhost $vhost
+        delete_vhost $vhost
+      done
+    else
+      dev=$node; dev=${dev#/dev/}
+      find_vhost_from_dev $dev
+      if test -z "$vhost" ; then exit 5; fi
+      flush_nodes_on_vhost $vhost
+      delete_vhost $vhost
+    fi
+
+    exit 0
+    ;;
+esac

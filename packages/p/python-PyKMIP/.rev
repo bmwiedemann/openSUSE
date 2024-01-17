@@ -1,0 +1,181 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>99e1467a1cf00c17b4db451da9d1b572</srcmd5>
+    <version>0.8.0</version>
+    <time>1546946949</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.8.0:
+  * Add Sphinx-based client and server library documentation
+  * Add server support for third-party authentication systems
+  * Add client support for the Check operation
+  * Add client support for the Rekey operation
+  * Add client support for attestation credentials
+  * Add a functional test suite for server authentication and access control
+  * Add payloads for the Archive, Cancel, and GetUsageAllocation operations
+  * Add payloads for the ObtainLease, Poll, and Recover operations
+  * Update the server to support group-based operation policies
+  * Update the server to support live loading of operation policy files
+  * Update the server to support custom backend database file paths
+  * Update the server to raise PermissionDenied on access control violations
+  * Update the client to support custom configuration file paths
+  * Update the ProxyKmipClient to support custom names for the Register operation
+  * Update the ProxyKmipClient to set cryptographic usage masks for Derived keys
+  * Update the README to reference the new documentation
+  * Update the Travis CI configuration to include building the documentation
+  * Update the Travis CI configuration to run integration and functional tests
+  * Remove support for Python 3.3
+  * Fix a denial-of-service bug by setting the server socket timeout
+  * Fix a ProxyKmipClient bug with generic cryptographic parameter handling
+  * Fix a ProxyKmipClient bug with cryptographic usage mask processing
+- update to 0.7.0:
+  * Add support for Python 3.6
+  * Add support for the InitialDate attribute
+  * Add server support for the GetAttributeList operation
+  * Add server support for the Locate operation
+  * Add client and server support for the MAC operation
+  * Add client and server support for the Revoke operation
+  * Add client and server support for the Encrypt operation
+  * Add client and server support for the Decrypt operation
+  * Add client and server support for the DeriveKey operation
+  * Add client and server support for the Sign operation
+  * Add client and server support for the SignatureVerify operation
+  * Add client and server support for retrieving wrapped keys
+  * Add client and server support for storing wrapped keys
+  * Add KMIP 1.4 enumerations
+  * Add server config option enabling certificate extension checks
+  * Add server config option defining set of usable TLS ciphers
+  * Add server config option setting the server log level
+  * Update the server to enforce checking object state and usage masks
+  * Update server Locate support to allow object name filtering
+  * Remove support for Python 2.6
+  * Fix bug with multithreading support with the SQLite backend
+  * Fix bug with how open() is mocked in the server test suite
+  * Fix bug with mismapped polymorphic identity for certificate objects
+  * Fix bug with socket interrupt handling under Python 3.5
+  * Fix bug with detached instance errors in the server test suite
+- Use pytest for testing. That's what upstream does
+- Use fdupes
+- update to 0.6.0:
+  * Add support for Python 3.5
+  * Add support for the State and OperationPolicyName attributes
+  * Add server support for the Activate and GetAttributes operations
+  * Add server support for certificate-based client authentication
+  * Add server support for object access control via operation policies
+  * Add server support for loading of user-defined operation policies
+  * Add client support for the GetAttributes operation
+  * Update clients to support operation policy names with objects
+  * Update ProxyKmipClient to support names when creating new objects
+  * Remove coveralls integration
+  * Fix bug with early server termination on missing request credential
+  * Fix bug with closing the client while unconnected to a server
+  * Fix bug with default values overriding server config file settings
+  * Fix bug with early server termination on bad client certificates
+  * Fix bug with deprecated usage of the bandit config file
+  * Fix bug with ProxyKmipClient registering unset object attributes
+- convert to singlespec
+- Initial Packaging (version 0.5.0)
+</comment>
+    <requestid>663298</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f20a2fb3d613c1f41f000da7ae55d465</srcmd5>
+    <version>0.9.1</version>
+    <time>1564137704</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718536</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c334c5256ec7ff315542f9ada3e99990</srcmd5>
+    <version>0.10.0</version>
+    <time>1584530827</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.10.0
+  * Add server debug logging for message encodings
+  * Add server Locate filtering for all currently supported attributes
+  * Add server Locate filtering using offset and maximum item constraints
+  * Add server cryptography engine support for AES GCM mode
+  * Add server support for the SplitKey object
+  * Add client/server support for the ApplicationSpecificInformation attribute
+  * Add client/server support for the ObjectGroup and Sensitive attributes
+  * Add client/server support for the DeleteAttribute operation
+  * Add client/server support for the SetAttribute operation
+  * Add client/server support for the ModifyAttribute operation
+  * Add a variety of unit and integration tests to cover all new functionality
+  * Add new ProxyKmipClient demo scripts to show how to use the new operations
+  * Add pending deprecation warnings for Python 2.7 and 3.4 due to their EOL
+  * Update server Locate filtering to return results sorted by creation date
+  * Update encoding support for SplitKey objects
+  * Update the Travis CI configuration to better support default Python versions
+  * Update library and testing dependencies to maintain Python 3.4 support
+  * Update the library documentation to reflect new features and security details
+  * Fix a bug with how key pair names are handled by the client for KMIP 2.0</comment>
+    <requestid>785582</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>66efbd315b10f60b4646566e27826993</srcmd5>
+    <version>0.10.0</version>
+    <time>1587467336</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build without python2</comment>
+    <requestid>795772</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>1ea26f8f7d5b15cee3f8469c1b22731c</srcmd5>
+    <version>0.10.0</version>
+    <time>1622928703</time>
+    <user>dimstar_suse</user>
+    <comment>- Add SQL-issues.patch skipping tests failing due to
+  incompatibilities with the current version of SQLAlchemy
+  (gh#OpenKMIP/PyKMIP#649).
+</comment>
+    <requestid>897678</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>911b35fbc95f481c3bb08f7f023c4859</srcmd5>
+    <version>0.10.0</version>
+    <time>1632603084</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove SQL-issues.patch with the patch
+  fix-tests-SQLAlchemy-140.patch which actually resolves the
+  problems (gh#OpenKMIP/PyKMIP#656).
+</comment>
+    <requestid>921378</requestid>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>20144cb9c0ca2bab331dd84e6a50bcb4</srcmd5>
+    <version>0.10.0</version>
+    <time>1651669876</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>974889</requestid>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>8684c5a15be2c175234016e8b0b8861d</srcmd5>
+    <version>0.10.0</version>
+    <time>1674741953</time>
+    <user>dimstar_suse</user>
+    <comment>- Add crypto-39.patch to make it work with python-cryptography &gt;= 39.0.0
+  gh#OpenKMIP/PyKMIP#689
+</comment>
+    <requestid>1061203</requestid>
+  </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>abbea8d4eb42d60d2a5bc2476c04d2d2</srcmd5>
+    <version>0.10.0</version>
+    <time>1677794657</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1068666</requestid>
+  </revision>
+  <revision rev="10" vrev="8">
+    <srcmd5>ae66eff704f857be629b13f452e70855</srcmd5>
+    <version>0.10.0</version>
+    <time>1694200558</time>
+    <user>anag+factory</user>
+    <comment>- Add upstream patch fix_test_mac_with_cryptographic_failure.patch
+  gh#OpenKMIP/PyKMIP#702, this fixes the issue with the
+  test_mac_with_cryptographic_failure.</comment>
+    <requestid>1109678</requestid>
+  </revision>
+</revisionlist>

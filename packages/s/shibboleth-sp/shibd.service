@@ -1,0 +1,33 @@
+[Unit]
+Description=Shibboleth Service Provider Daemon
+After=network.target
+Before=apache2.service
+
+[Service]
+# added automatically, for details please see
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+ProtectSystem=full
+ProtectHome=true
+PrivateDevices=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictRealtime=true
+# end of automatic additions 
+Type=notify
+NotifyAccess=main
+User=shibd
+ExecStart=/usr/sbin/shibd -f -F
+StandardInput=null
+StandardOutput=null
+StandardError=journal
+TimeoutStopSec=5s
+TimeoutStartSec=150s
+Restart=on-failure
+RestartSec=30s
+
+[Install]
+WantedBy=multi-user.target

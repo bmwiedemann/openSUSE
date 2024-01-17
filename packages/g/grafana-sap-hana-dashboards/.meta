@@ -1,0 +1,6 @@
+<package name="grafana-sap-hana-dashboards" project="openSUSE:Factory">
+  <title>Grafana SAP HANA Dashboards</title>
+  <description>Grafana dashboards displaying metrics about SAP HANA databases</description>
+  <devel project="network:ha-clustering:sap-deployments:devel" package="grafana-sap-hana-dashboards"/>
+  <url>https://github.com/SUSE/hanadb_exporter/tree/master/dashboards</url>
+</package>

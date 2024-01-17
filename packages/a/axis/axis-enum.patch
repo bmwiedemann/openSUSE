@@ -1,0 +1,28 @@
+--- axis-1_4/tools/org/apache/axis/tools/ant/foreach/ParamSet.java	2017-10-04 23:06:07.711042250 +0200
++++ axis-1_4/tools/org/apache/axis/tools/ant/foreach/ParamSet.java	2017-10-05 07:51:54.345811416 +0200
+@@ -83,9 +83,9 @@
+         and then <item>s. The ordering of the buildfile is
+         not guaranteed. */
+         Vector values = new Vector();
+-        Enumeration enum = filesets.elements();
+-        while (enum.hasMoreElements()) {
+-            FileSet fileSet = (FileSet) enum.nextElement();
++        Enumeration emun = filesets.elements();
++        while (emun.hasMoreElements()) {
++            FileSet fileSet = (FileSet) emun.nextElement();
+             File base = fileSet.getDir(project);
+             DirectoryScanner scanner = fileSet.getDirectoryScanner(project);
+             if (TYPE_DIR != type) {
+@@ -103,9 +103,9 @@
+                 }
+             }
+         }
+-        enum = items.elements();
+-        while (enum.hasMoreElements()) {
+-            ParamItem item = (ParamItem) enum.nextElement();
++        emun = items.elements();
++        while (emun.hasMoreElements()) {
++            ParamItem item = (ParamItem) emun.nextElement();
+             values.addElement(item.getValue());
+         }
+         return values.elements();

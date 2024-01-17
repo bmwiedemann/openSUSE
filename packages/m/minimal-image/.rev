@@ -1,0 +1,59 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7b8418233472346237304be8ec303fa7</srcmd5>
+    <version>15.Tumbleweed.0</version>
+    <time>1658761187</time>
+    <user>favogt_factory</user>
+    <comment>Next try</comment>
+    <requestid>990266</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>257f919bc83fefb054625408cfa96fe7</srcmd5>
+    <version>2023</version>
+    <time>1688660950</time>
+    <user>favogt_factory</user>
+    <comment>- label capitalization and related cleanups
+
+- Add release stage and lifecycle url
+
+- switch versioning to rolling Tumbleweed schema
+- Correct org.opensuse.reference label
+
+- Add org.opencontainers.image.source label set to %SOURCEURL%
+
+- Bump copyright year</comment>
+    <requestid>1097014</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>e6087286b8a5205f1c58ad79104c0cc4</srcmd5>
+    <version>2023</version>
+    <time>1689786708</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1099513</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>6b182c54ce80fc30660e81d346d6dd16</srcmd5>
+    <version>2023</version>
+    <time>1692795413</time>
+    <user>anag+factory</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1105168</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>5c258a913c4eaa51507b2542409fa248</srcmd5>
+    <version>2023</version>
+    <time>1696269874</time>
+    <user>anag+factory</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1114181</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ac20ef2f6a34d31a1acef8c855d29137</srcmd5>
+    <version>2024</version>
+    <time>1704281499</time>
+    <user>dimstar_suse</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1136344</requestid>
+  </revision>
+</revisionlist>

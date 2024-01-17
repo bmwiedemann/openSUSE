@@ -1,0 +1,8 @@
+<package name="libfprint" project="openSUSE:Factory">
+  <title>Library for fingerprint reader support</title>
+  <description>The fprint project aims to plug a gap in the Linux desktop: support for
+consumer fingerprint reader devices. The fprint project aims to plug a
+gap in the Linux desktop: support for consumer fingerprint reader
+devices.</description>
+  <devel project="hardware" package="libfprint"/>
+</package>

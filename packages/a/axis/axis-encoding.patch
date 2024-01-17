@@ -1,0 +1,10 @@
+--- axis-1_4/build.xml	2017-10-04 23:06:07.711042250 +0200
++++ axis-1_4/build.xml	2017-10-04 23:06:59.603042446 +0200
+@@ -99,6 +99,7 @@
+       deprecation="${deprecation}" 
+       source="${source}"
+       target="${target}"
++      encoding="ISO-8859-1"
+       classpathref="classpath">
+       <exclude name="**/old/**/*" />
+       <exclude name="**/bak/**"/>

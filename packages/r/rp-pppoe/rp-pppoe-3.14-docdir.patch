@@ -1,0 +1,12 @@
+diff -Pdpru rp-pppoe-3.14.orig/src/Makefile.in rp-pppoe-3.14/src/Makefile.in
+--- rp-pppoe-3.14.orig/src/Makefile.in	2020-05-27 03:29:37.000000000 +0300
++++ rp-pppoe-3.14/src/Makefile.in	2020-05-27 21:06:28.850733710 +0300
+@@ -23,7 +23,7 @@ DEFINES=
+ prefix=@prefix@
+ exec_prefix=@exec_prefix@
+ mandir=@mandir@
+-docdir=@prefix@/share/doc/rp-pppoe-$(RP_VERSION)
++docdir=@prefix@/share/doc/packages/rp-pppoe
+ install=@INSTALL@
+ install_dir=@INSTALL@ -d
+ sbindir=@sbindir@

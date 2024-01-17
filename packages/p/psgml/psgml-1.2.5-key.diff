@@ -1,0 +1,13 @@
+--- psgml-1.2.5/psgml.el.~1~	2002-04-19 20:37:46.000000000 +0200
++++ psgml-1.2.5/psgml.el	2002-12-09 12:16:06.000000000 +0100
+@@ -804,7 +804,7 @@
+ (define-key sgml-mode-map "\C-c<"    'sgml-insert-tag)
+ (define-key sgml-mode-map "\C-c="    'sgml-change-element-name)
+ (define-key sgml-mode-map "\C-c\C-a" 'sgml-edit-attributes)
+-(define-key sgml-mode-map "\C-c\C-c" 'sgml-show-context)
++;; (define-key sgml-mode-map "\C-c\C-x" 'sgml-show-context)
+ (define-key sgml-mode-map "\C-c\C-d" 'sgml-next-data-field)
+ (define-key sgml-mode-map "\C-c\C-e" 'sgml-insert-element)
+ (define-key sgml-mode-map "\C-c\C-f\C-e" 'sgml-fold-element)
+
+Diff finished at Mon Dec  9 12:16:10

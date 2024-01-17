@@ -1,0 +1,22 @@
+Index: plymouth-0.9.3+git20180807.7663b0c/docs/Makefile.am
+===================================================================
+--- plymouth-0.9.3+git20180807.7663b0c.orig/docs/Makefile.am	2018-08-07 17:41:15.000000000 +0200
++++ plymouth-0.9.3+git20180807.7663b0c/docs/Makefile.am	2018-08-17 19:58:25.330646165 +0200
+@@ -16,12 +16,14 @@ plymouth.1: plymouth1.xml
+ %.1: %.xml
+ 	$(AM_V_GEN) $(XSLTPROC) $(XSLTPROC_FLAGS) http://docbook.sourceforge.net/release/xsl/current/manpages/docbook.xsl $<
+ 	
+-man_MANS = \
++man1_MANS = \
+ 	plymouth.1 \
+-	plymouth.8 \
+-	plymouthd.8 \
+ 	plymouth-set-default-theme.1
+ 
++man8_MANS = \
++	plymouth.8 \
++	plymouthd.8
++
+ EXTRA_DIST = \
+ 	plymouth.xml \
+ 	plymouth1.xml \

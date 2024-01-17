@@ -1,0 +1,66 @@
+Index: src/lib/report-lib.c
+===================================================================
+--- src/lib/report-lib.c.orig	2009-02-09 10:58:53.000000000 +0100
++++ src/lib/report-lib.c	2010-09-08 13:34:13.721996934 +0200
+@@ -55,5 +55,7 @@ void gpm_report(int line, char *file, in
+    fprintf(stderr,"\n");
+ #endif
+ 
++   va_end(ap);
++
+    if(stat == GPM_STAT_OOPS) exit(1);  /* may a lib function call exit ???? */
+ }
+Index: src/report.c
+===================================================================
+--- src/report.c.orig	2009-02-09 10:58:53.000000000 +0100
++++ src/report.c	2010-09-08 13:34:45.694394879 +0200
+@@ -76,6 +76,9 @@ void gpm_report(int line, char *file, in
+ #ifdef HAVE_VSYSLOG
+    va_list ap2;
+ #endif
++   int exit_request = 0; /* 0 -> return is requested
++                            1 -> exit(1) is requested
++                            2 -> _exit(1) is requested */
+ 
+    va_start(ap,text);
+    va_copy(ap3, ap);
+@@ -129,7 +132,7 @@ void gpm_report(int line, char *file, in
+                vfprintf(stderr,text,ap);
+                fprintf(stderr,"\n");
+ 
+-               exit(1); /* we should have a oops()-function,but this works,too*/
++               exit_request = 1; /* we should have an oops()-function,but this works,too*/
+                break;
+          }
+          break; /* startup sequence */   
+@@ -188,7 +191,7 @@ void gpm_report(int line, char *file, in
+                vfprintf(stderr,text,ap);
+                fprintf(stderr,"\n");
+ 
+-               _exit(1); /* we are the fork()-child */
++               exit_request = 2; /* we are the fork()-child */
+                break;
+          }
+          break; /* running gpm */
+@@ -216,7 +219,7 @@ void gpm_report(int line, char *file, in
+          vfprintf(console,text,ap);
+          fprintf(console,"\n");
+          
+-         if(stat == GPM_STAT_OOPS) exit(1);
++         if(stat == GPM_STAT_OOPS) exit_request = 1;
+ 
+          break;
+    } /* switch for current modus */
+@@ -226,6 +229,12 @@ void gpm_report(int line, char *file, in
+ #ifdef HAVE_VSYSLOG
+    va_end(ap2);
+ #endif
++   if (exit_request == 2)
++      _exit(1);
++   if (exit_request == 1)
++      exit(1);
++
++   return;
+ } /* gpm_report */   
+ 
+ 

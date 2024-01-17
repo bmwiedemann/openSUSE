@@ -1,0 +1,11 @@
+--- config/config.in
++++ config/config.in
+@@ -57,7 +57,7 @@
+ ## OPTIMISE=4 will turn off DEBUG
+ 
+ OPTIMISE=3
+-WARN=1
++# WARN=1
+ # VERBOSE=1
+ #DEBUG=1
+ # PROFILE=gprof

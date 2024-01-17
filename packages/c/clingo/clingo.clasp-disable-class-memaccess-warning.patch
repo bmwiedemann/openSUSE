@@ -1,0 +1,12 @@
+diff --git a/clasp/src/CMakeLists.txt b/clasp/src/CMakeLists.txt
+index 41def63..1440105 100644
+--- a/clasp/src/CMakeLists.txt
++++ b/clasp/src/CMakeLists.txt
+@@ -141,6 +141,7 @@ set_target_properties(libclasp PROPERTIES VERSION ${PROJECT_VERSION})
+ set_target_properties(libclasp PROPERTIES
+ 	OUTPUT_NAME clasp
+ 	FOLDER lib)
++target_compile_options(libclasp PUBLIC $<$<CXX_COMPILER_ID:GNU>:-Wno-class-memaccess>)
+ 
+ # installation
+ if (CLASP_INSTALL_LIB)

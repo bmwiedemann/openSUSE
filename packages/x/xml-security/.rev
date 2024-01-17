@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8603f25f0daaddf55eaef0e08c791af6</srcmd5>
+    <version>2.1.3</version>
+    <time>1594818217</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>820823</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b5d4ca3b5d9e71f75d3672dc04591790</srcmd5>
+    <version>2.1.7</version>
+    <time>1639855806</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1193879, CVE-2021-40690</comment>
+    <requestid>941287</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>c931e9be75b71dff2ba0cf80827a3776</srcmd5>
+    <version>2.1.7</version>
+    <time>1647618172</time>
+    <user>dimstar_suse</user>
+    <comment>standalone jaxb-api</comment>
+    <requestid>962721</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>61502c2027e471da289bce708328d114</srcmd5>
+    <version>2.1.7</version>
+    <time>1648665376</time>
+    <user>dimstar_suse</user>
+    <comment>Standalone JavaEE inconditionally</comment>
+    <requestid>965956</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>d0faf8779db6f74809342a627cb636ba</srcmd5>
+    <version>2.1.7</version>
+    <time>1694460160</time>
+    <user>anag+factory</user>
+    <comment>reproducible</comment>
+    <requestid>1110280</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>848a3b2497078962d511612b0eda99db</srcmd5>
+    <version>2.1.7</version>
+    <time>1695209385</time>
+    <user>dimstar_suse</user>
+    <comment>Do not require maven-javadoc-plugin that we don't use</comment>
+    <requestid>1112259</requestid>
+  </revision>
+</revisionlist>

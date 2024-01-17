@@ -1,0 +1,5 @@
+<package name="ghc-cookie" project="openSUSE:Factory">
+  <title>HTTP cookie parsing and rendering</title>
+  <description></description>
+  <devel project="devel:languages:haskell" package="ghc-cookie"/>
+</package>

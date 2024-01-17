@@ -1,0 +1,9 @@
+<package name="perl-String-ShellQuote" project="openSUSE:Factory">
+  <title>Quote strings for passing through the shell</title>
+  <description>This module contains some functions which are useful for quoting strings
+which are going to pass through the shell or a shell-like object.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-String-ShellQuote"/>
+  <url>http://search.cpan.org/dist/String-ShellQuote/</url>
+</package>

@@ -1,0 +1,80 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e5db23cf5fcd5a6ea6a1ac04f747eff2</srcmd5>
+    <version>0.6</version>
+    <time>1394516790</time>
+    <user>coolo</user>
+    <comment>- dependency of Google Cloud tools</comment>
+    <requestid>223983</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>e5db23cf5fcd5a6ea6a1ac04f747eff2</srcmd5>
+    <version>0.6</version>
+    <time>1409303011</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>701c9aeb3e95ddb36e9757781d8e3da6</srcmd5>
+    <version>3.0.0</version>
+    <time>1478289688</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>438582</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>920e4646f0e5aaee90a772a4f8b89119</srcmd5>
+    <version>3.0.0</version>
+    <time>1496327471</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>493374</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>9069d8b7d95c4ad37ed8ef5573ad6a1d</srcmd5>
+    <version>3.0.0</version>
+    <time>1545648339</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659737</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c7cdbee2d64dc964795c8c6a181faf2d</srcmd5>
+    <version>3.0.1</version>
+    <time>1581456228</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>772470</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3a2db12d6a4a1c7039a884e641c3b753</srcmd5>
+    <version>4.1.1</version>
+    <time>1636240751</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.1.1:
+  - Add type annotations to uritemplate and distribute them for others to use
+  - Update to a modern documentation theme as well
+  - Drop support for Python 2.7, 3.4, and 3.5
+  - Better support number-like types as values for variables in a template</comment>
+    <requestid>929913</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>8f0e95803aedafc369722f61b45138a6</srcmd5>
+    <version>4.1.1</version>
+    <time>1676149033</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove completely unnecessary dependency on python-simplejson.
+</comment>
+    <requestid>1064338</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>7830b32ad97a228322311312ebbdcdab</srcmd5>
+    <version>4.1.1</version>
+    <time>1687796145</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1095186 from gladiac
+
+- Use sle15_python_module_pythons</comment>
+    <requestid>1095244</requestid>
+  </revision>
+</revisionlist>

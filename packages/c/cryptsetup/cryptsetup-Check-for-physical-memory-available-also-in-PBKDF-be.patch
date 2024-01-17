@@ -1,0 +1,72 @@
+From 7893c33d71cde09e240234c484c6c468f22c2fe7 Mon Sep 17 00:00:00 2001
+From: Milan Broz <gmazyland@gmail.com>
+Date: Mon, 3 Apr 2023 13:31:16 +0200
+Subject: [PATCH] Check for physical memory available also in PBKDF benchmark.
+
+---
+ lib/internal.h        | 1 +
+ lib/utils_benchmark.c | 9 +++++++++
+ lib/utils_pbkdf.c     | 4 ++--
+ 3 files changed, 12 insertions(+), 2 deletions(-)
+
+Index: cryptsetup-2.6.1/lib/internal.h
+===================================================================
+--- cryptsetup-2.6.1.orig/lib/internal.h
++++ cryptsetup-2.6.1/lib/internal.h
+@@ -89,6 +89,7 @@ int crypt_benchmark_pbkdf_internal(struc
+ 				   struct crypt_pbkdf_type *pbkdf,
+ 				   size_t volume_key_size);
+ const char *crypt_get_cipher_spec(struct crypt_device *cd);
++uint32_t pbkdf_adjusted_phys_memory_kb(void);
+ 
+ /* Device backend */
+ struct device;
+Index: cryptsetup-2.6.1/lib/utils_benchmark.c
+===================================================================
+--- cryptsetup-2.6.1.orig/lib/utils_benchmark.c
++++ cryptsetup-2.6.1/lib/utils_benchmark.c
+@@ -101,6 +101,7 @@ int crypt_benchmark_pbkdf(struct crypt_d
+ {
+ 	int r, priority;
+ 	const char *kdf_opt;
++	uint32_t memory_kb;
+ 
+ 	if (!pbkdf || (!password && password_size))
+ 		return -EINVAL;
+@@ -113,6 +114,14 @@ int crypt_benchmark_pbkdf(struct crypt_d
+ 
+ 	log_dbg(cd, "Running %s(%s) benchmark.", pbkdf->type, kdf_opt);
+ 
++	memory_kb = pbkdf_adjusted_phys_memory_kb();
++	if (memory_kb < pbkdf->max_memory_kb) {
++		log_dbg(cd, "Not enough physical memory detected, "
++			"PBKDF max memory decreased from %dkB to %dkB.",
++			pbkdf->max_memory_kb, memory_kb);
++		pbkdf->max_memory_kb = memory_kb;
++	}
++
+ 	crypt_process_priority(cd, &priority, true);
+ 	r = crypt_pbkdf_perf(pbkdf->type, pbkdf->hash, password, password_size,
+ 			     salt, salt_size, volume_key_size, pbkdf->time_ms,
+Index: cryptsetup-2.6.1/lib/utils_pbkdf.c
+===================================================================
+--- cryptsetup-2.6.1.orig/lib/utils_pbkdf.c
++++ cryptsetup-2.6.1/lib/utils_pbkdf.c
+@@ -61,7 +61,7 @@ const struct crypt_pbkdf_type *crypt_get
+ 	return NULL;
+ }
+ 
+-static uint32_t adjusted_phys_memory(void)
++uint32_t pbkdf_adjusted_phys_memory_kb(void)
+ {
+ 	uint64_t memory_kb = crypt_getphysmemory_kb();
+ 
+@@ -249,7 +249,7 @@ int init_pbkdf_type(struct crypt_device
+ 	}
+ 
+ 	if (cd_pbkdf->max_memory_kb) {
+-		memory_kb = adjusted_phys_memory();
++		memory_kb = pbkdf_adjusted_phys_memory_kb();
+ 		if (cd_pbkdf->max_memory_kb > memory_kb) {
+ 			log_dbg(cd, "Not enough physical memory detected, "
+ 				"PBKDF max memory decreased from %dkB to %dkB.",

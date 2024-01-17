@@ -1,0 +1,79 @@
+#!/bin/bash
+
+# Usage: block-npiv-vport [create npivargs | delete vportwwpn | status]
+
+dir=$(dirname "$0")
+. "$dir/block-npiv-common.sh"
+
+#set -x
+command=$1
+params=$2
+
+case "$command" in
+  create)
+    # Params is one big arg, with fields separated by hyphens:
+    #   FABRIC-VPWWPN-VPWWNN-TGTWWPN-LUN#
+    #    arg 2 - Fabric Name
+    #    arg 3 - VPORT's WWPN
+    #    arg 4 - VPORT's WWNN
+    #    arg 5 - Target's WWPN
+    #    arg 6 - LUN # on Target
+    # no wwn contains a leading 0x - it is a 16 character hex value
+    # You may want to optionally pick a specific adapter ?
+    NPIVARGS=$params;
+    LUN=${NPIVARGS##*-*-*-*-}; NPIVARGS=${NPIVARGS%-*}
+    if test $LUN = $NPIVARGS ; then exit 1; fi
+    TGTWWPN=${NPIVARGS##*-*-*-}; NPIVARGS=${NPIVARGS%-*}
+    if test $TGTWWPN = $NPIVARGS ; then exit 1; fi
+    VPORTWWNN=${NPIVARGS##*-*-}; NPIVARGS=${NPIVARGS%-*}
+    if test $VPORTWWNN = $NPIVARGS ; then exit 1; fi
+    VPORTWWPN=${NPIVARGS##*-}; NPIVARGS=${NPIVARGS%-*}
+    if test $VPORTWWPN = $NPIVARGS ; then exit 1; fi
+    FABRICNM=$NPIVARGS
+
+    # Ensure we compare everything using lower-case hex characters
+    TGTWWPN=`echo $TGTWWPN | tr A-Z a-z`
+    VPORTWWPN=`echo $VPORTWWPN | tr A-Z a-z`
+    VPORTWWNN=`echo $VPORTWWNN | tr A-Z a-z`
+    FABRICNM=`echo $FABRICNM | tr A-Z a-z`
+
+    find_vhost $VPORTWWPN $FABRICNM
+    if test -z "$vhost" ; then
+      create_vport $FABRICNM $VPORTWWPN $VPORTWWNN
+      if [ $? -ne 0 ] ; then exit 2; fi
+      sleep 8
+      find_vhost $VPORTWWPN $FABRICNM
+      if test -z "$vhost" ; then exit 3; fi
+    fi
+
+    exit 0
+    ;;
+
+  delete)
+    # Params is VPORT's WWPN
+    # no wwn contains a leading 0x - it is a 16 character hex value
+    VPORTWWPN=$params
+
+    # Ensure we compare everything using lower-case hex characters
+    VPORTWWPN=`echo $VPORTWWPN | tr A-Z a-z`
+
+    find_vhost $VPORTWWPN $FABRICNM
+    if test -z "$vhost" ; then exit 4; fi
+    delete_vhost $vhost
+
+    exit 0
+    ;;
+
+  status)
+    vport_status
+
+    exit 0
+    ;;
+
+  *)
+    echo "Usage: block-npiv-vport [create npivargs | delete vportwwpn | status]"
+
+    exit 1
+    ;;
+esac
+

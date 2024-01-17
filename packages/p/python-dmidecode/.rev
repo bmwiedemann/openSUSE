@@ -1,0 +1,141 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7c5c4e6a12a0fed719b2899af3cb98dd</srcmd5>
+    <version>3.12.2+git.1625035095.f0a089a</version>
+    <time>1645723251</time>
+    <user>dimstar_suse</user>
+    <comment>We want to have it in Factory as it is in SLE.</comment>
+    <requestid>957214</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c59e8067d5a42f89ad62c6b5bf155d37</srcmd5>
+    <version>3.12.2+git.1625035095.f0a089a</version>
+    <time>1645820703</time>
+    <user>dimstar_suse</user>
+    <comment>- Cleanup multi-version builds.</comment>
+    <requestid>957595</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>6a812f618f7a0864615d2ead581bb4d6</srcmd5>
+    <version>3.12.2+git.1625035095.f0a089a</version>
+    <time>1646671559</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing Obsoletes
+
+- Harmonize Factory with the SLE version (update-alternatives
+  instead of the subpackages).
+
+- Add proper Provides/Obsoletes
+
+- Introduce update-alternatives for
+  /usr/share/python-dmidecode/pymap.xml.
+
+  * Fixed memory Type Detail map size (bsc#1194351).
+  Python one.
+- Rename huge-memory.diff to huge-memory.patch (i.e., remove
+  huge-memory.diff and add huge-memory.patch).
+- Fix URL of Source0 (their own website is down, use GitHub
+  release).
+- Add 31-version_info-v-version.patch to make tests 3.10
+  compatible.</comment>
+    <requestid>959991</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>58ff28e3b4269cb2fa6bcb6050d9b690</srcmd5>
+    <version>3.12.2+git.1625035095.f0a089a</version>
+    <time>1653152767</time>
+    <user>dimstar_suse</user>
+    <comment>- Synchronize SPEC file to be more like the SLE one.
+</comment>
+    <requestid>978319</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>535d4f92d830587dbd4e8be7c1572b86</srcmd5>
+    <version>3.12.2+git.1625035095.f0a089a</version>
+    <time>1666089895</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Makefile_libdir.patch to make package building even with
+  faulty distutils.sysconfig (bsc#1204395).
+</comment>
+    <requestid>1029603</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>821b18d332ed2226ea465981554dd890</srcmd5>
+    <version>3.12.2+git.1666757106.e6ab5bc</version>
+    <time>1666871651</time>
+    <user>dimstar_suse</user>
+    <comment>- Modify detect-lib-with-py3.patch to be more robust.
+- Update to version 3.12.2+git.1666757106.e6ab5bc:
+  * fix address_from_efi ret=0 message
+  * fix function dmi_slot_segment_bus_func null point error in system slot
+  * fix warning: this 'if' clause does not guard
+  * fix warning: variable 'str_n' set but not used
+  * fix warning: passing argument 2 of 'dmi_tpm_vendor_id' makes pointer from integer without a cast
+  * fix warning: unused variable 'attr'
+  * fix warning: unused variable 'addrstr'
+  * fix warning: suggest parentheses around assignment used as truth value
+  * fix warning: suggest parentheses around assignment used as truth value
+  * src/dmidecode.c: In function 'dmi_tpm_characteristics': src/dmidecode.c:4788:24: warning: 'return' with a value, in function returning void [-Wreturn-type] 4788 | return data_n; | ^~~~~~
+  * fix warning: passing argument 3 of 'dmi_slot_peers' from incompatible pointer type
+  * fix warning: unused variable 'ver'
+  * fix warning: variable 'eptype' set but not used
+  * fix warning: suggest parentheses around '&amp;&amp;' within '||'
+  * fix warning: comparison of integer expressions of different signedness
+  * fix warning: ignoring return value of 'legacy_decode'
+  * fix warning argument 1 null where non-null expected
+  * Update python-dmidecode to smbios 3.3.0
+  * Fix for printing an empty dictionary
+  * Fix the failure of opening &quot;/dev/mem&quot;: Permission denied
+  * Fix bugs: 1. Fix smbios3_decode decoding sysfs table dump error. 2. Fix check smbios version error warning message.
+  * Fix reading info permission deny bugs.
+- Remove duplicated Makefile_libdir.patch.
+</comment>
+    <requestid>1031403</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>b53319cc11a71d6940a18f6d7e62fe77</srcmd5>
+    <version>3.12.2+git.1666757106.e6ab5bc</version>
+    <time>1667995108</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1034825</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>911b39dd184549543a78313837d0ab76</srcmd5>
+    <version>3.12.3</version>
+    <time>1668970022</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to the upstream release 3.12.3:
+  - consolidation of previous git commits
+  - support SMBIOS3.3.0
+- Remove upstreamed huge-memory.patch
+</comment>
+    <requestid>1036837</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>9b10f44e32cd35599225ff2ca338cc81</srcmd5>
+    <version>3.12.3</version>
+    <time>1678814259</time>
+    <user>dimstar_suse</user>
+    <comment>- In the end just a cosmetical changes and cleaning up the SPEC
+  file.
+</comment>
+    <requestid>1071473</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>bff29b5bdb7928ea3783e8ce3f816e23</srcmd5>
+    <version>3.12.3</version>
+    <time>1681213916</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1078386</requestid>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>6b95c93843ec907fef6a25016baf6a21</srcmd5>
+    <version>3.12.3</version>
+    <time>1682193820</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082166</requestid>
+  </revision>
+</revisionlist>

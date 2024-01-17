@@ -1,0 +1,16 @@
+<package name="perl-Date-Manip" project="openSUSE:Factory">
+  <title>Date manipulation routines</title>
+  <description>Date::Manip is a series of modules designed to make any common date/time
+manipulation easy to do. Operations such as comparing two times,
+calculating a time a given amount of time from another, or parsing
+international times are all easily done. From the very beginning, the main
+focus of Date::Manip has been to be able to do ANY desired date/time
+operation easily, not necessarily quickly. Also, it is definitely oriented
+towards the type of operations we (as people) tend to think of rather than
+those operations used routinely by computers. There are other modules that
+can do a subset of the operations available in Date::Manip much quicker
+than those presented here, so be sure to read the section SHOULD I USE
+DATE::MANIP in the Date::Manip::Misc document before deciding which of the
+Date and Time modules from CPAN is for you.</description>
+  <devel project="devel:languages:perl" package="perl-Date-Manip"/>
+</package>

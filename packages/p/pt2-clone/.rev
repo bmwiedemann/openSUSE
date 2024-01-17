@@ -1,0 +1,89 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c50778803e577d932229720b4d5c7dcc</srcmd5>
+    <version>1.57</version>
+    <time>1677075682</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain pt2-clone in Factory</comment>
+    <requestid>1067021</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5e587f4dec7a68a9c42fa86b4493eb18</srcmd5>
+    <version>1.59</version>
+    <time>1686506152</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.59:
+  * The &quot;normalize&quot; function in the sample editor's volume
+    toolbox didn't work like it should if you had only selected
+    one single sample point (for example after cutting sample
+    data)
+  * The (fake) spectrum analyzer is now more accurate to real PT
+    in quirky cases
+  * Some very small code changes not really worthy of a
+    description
+  * Updated effects.txt with the little known and undocumented
+    effect &quot;E8x&quot;
+- update to 1.58:
+  * Added support for loading FLAC samples
+  * The IFF sample saver was writing somewhat broken files for
+    non-looped samples
+  * The &quot;UPSAMP&quot; button in Edit Op. was showing the wrong status
+    text
+  * Small code refactor for how the song is timed/ticked. Longer
+    song-to-WAV renders may have a filesize change of a few
+    bytes, but this is actually more correct.
+  * Increased number of precision bits for song BPM, playback
+    time counter and audio-&gt;video syncing. This is a minor change
+    and does very little in practice as the previous precision
+    was already quite good.
+  * Audio/video sync timestamps are reset every half an hour to
+    prevent possible sync drifting after several hours of playing
+    a song without a single song stop (resets timestamp) in-
+    between
+  * The HPC timers are reset every half an hour instead of every
+    hour. The video (if no vsync) and the scopes use these</comment>
+    <requestid>1092079</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d6af6de21e22006930d66fff40dde362</srcmd5>
+    <version>1.60</version>
+    <time>1687272519</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093820</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>802731bfac3f756342724c40acdeebd2</srcmd5>
+    <version>1.61</version>
+    <time>1690654242</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.61:
+  * De-minimize window (if minimized) and set focus after drag n'
+    drop of file</comment>
+    <requestid>1101310</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>cbb8c1d57546d72048b06b3b8527fe3e</srcmd5>
+    <version>1.62</version>
+    <time>1693383675</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1107987</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f5e4d7a331d299bd26ec3225d6e21580</srcmd5>
+    <version>1.64</version>
+    <time>1694200532</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1109593</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5274ecd00f9a164b10154dc9781abc6a</srcmd5>
+    <version>1.65</version>
+    <time>1698780370</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1121392</requestid>
+  </revision>
+</revisionlist>

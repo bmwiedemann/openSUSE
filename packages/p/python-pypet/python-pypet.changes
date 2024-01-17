@@ -1,0 +1,70 @@
+-------------------------------------------------------------------
+Tue Jun 20 02:03:34 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.6.1:
+  * Support for NumPy >= 1.20
+- Drop patch support-numpy-1.20.patch, included upstream.
+- Add patch do-not-decode-int.patch, do not call .decode() on ints
+  when storing them.
+
+-------------------------------------------------------------------
+Tue Feb 14 07:05:38 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-numpy-1.20.patch:
+  * Support NumPy >= 1.20. 
+
+-------------------------------------------------------------------
+Sat Sep 11 22:44:47 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.6.0:
+  - Fixed broken support for scipy sparse matrices
+  - Sparse matrices are now serialized using scipy save_npz
+    function and hex conversion
+  - BACKWARDS INCOMPATIBLE CHANGE: Can no longer load sparse
+    matrices stored with older versions!
+  - Fixed import from collections.abc for Python 3.10
+
+-------------------------------------------------------------------
+Sun Feb 14 19:59:43 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- turn off python 3.6 build (no scipy) 
+
+-------------------------------------------------------------------
+Tue Jun 23 20:05:26 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.5.1
+  * Updated package description to automatically convert md to rst for pypi
+  * Updated pngpath for Sphinx
+- Update to 0.5.0
+  * Fix to work with pandas 1.0
+  * Fix to work with brian2 2.3
+  * Fix to work with Python 3.7 and 3.8
+  * Removal `expectedrows` and `filters` option for HDF5Storage.put as this is no longer supported by pandas
+
+-------------------------------------------------------------------
+Fri Aug  3 03:47:08 UTC 2018 - toddrme2178@gmail.com
+
+- Update to 0.4.3
+  * DEPR: Removed pandas Panel and Panel4D (see also https://github.com/pandas-dev/pandas/pull/13776)
+  * Removed support for Python 3.3 and 3.4
+
+-------------------------------------------------------------------
+Fri May 18 17:38:07 UTC 2018 - jengelh@inai.de
+
+- Don't assume any specific user in the description.
+
+-------------------------------------------------------------------
+Thu May 10 00:01:16 UTC 2018 - toddrme2178@gmail.com
+
+- Update to pypet 0.4.2
+  * BUG FIX: Brian2Parameters can now be merged [Issue #50]
+- Update to pypet 0.4.1
+  * BUG FIX: Fixed slow `f_get_from_all_runs` with run groups
+  * More intuitive behaviro for `f_to_dict` to only start at initiating group node.
+  * BUG FIX: brian 2 removed get unit fast, this has been replaced with a pypet implementation
+- Use license tag
+
+-------------------------------------------------------------------
+Sun Aug 27 18:43:59 UTC 2017 - toddrme2178@gmail.com
+
+- Initial version

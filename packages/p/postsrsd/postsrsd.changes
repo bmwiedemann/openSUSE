@@ -1,0 +1,94 @@
+-------------------------------------------------------------------
+Fri Aug 25 21:55:15 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.0.8
+  * Fixed socket creation for Milter
+  * Fixed Milter issue with IPv6 clients
+
+-------------------------------------------------------------------
+Sat Aug 12 15:27:29 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.0.7
+  * The parser callback for the original-envelope option used the
+    wrong return type, which could prevent the database mode from
+    activating.
+
+-------------------------------------------------------------------
+Sat Jul 15 20:33:43 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.0.6
+  * New configuration option debug to increase log verbosity
+  * Reduced default log verbosity: PostSRSd no longer prints
+    messages for mail addresses which need no rewrite
+
+-------------------------------------------------------------------
+Tue Jun 27 04:49:49 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.0.5
+  * Do not try to set Keep-Alive on Redis unix sockets
+
+-------------------------------------------------------------------
+Wed May  3 23:02:52 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.0.4
+  * Added new CLI option -h to print a summary of CLI options
+  * Improved error logging
+
+-------------------------------------------------------------------
+Sun Mar  5 12:31:27 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.0.3
+  * Close socketmap connection in main process to prevent resource
+    exhaustion
+  * Explicitly set 0666 permissions on socketmap unix socket
+
+-------------------------------------------------------------------
+Mon Jan 16 18:07:47 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Switch the default execution user from "nobody" to the new
+  "postsrsd". /var/lib/postsrsd will be owned by postsrsd. If
+  /etc/postsrsd.conf contains a "unprivileged-user" override,
+  it needs to be adjusted.
+
+-------------------------------------------------------------------
+Sat Jan  7 15:14:25 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.0.2
+  * Everything thrown over the fence, this is a complete rewrite
+    of PostSRSd.
+  * Configuration file, no more fiddling with environment variables.
+  * Support for socketmap table (Postfix 2.10 or newer required).
+  * Unix socket support
+  * Rewrite mode with database backend, supports unlimited email
+    address length.
+  * Experimental Milter support.
+
+-------------------------------------------------------------------
+Wed Aug 17 08:37:45 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.12
+  * Explicitly clear O_NONBLOCK to avoid inherited non-blocking
+    sockets on some operating systems
+  * Do not close all file descriptors up to _SC_MAX_OPEN, that
+    limit can be absurdly high and hang PostSRSd for minutes
+
+-------------------------------------------------------------------
+Mon Apr 26 15:45:28 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.11 [boo#1180251]
+  * Drop group privileges as well as user privileges
+  * Fixed: The subprocess that talks to Postfix could be caused
+    to hang with a very long email address. [CVE-2020-35573]
+
+-------------------------------------------------------------------
+Fri Dec 20 00:50:22 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.6
+  * Fix endianness issue with SHA-1 implementation
+  * Add dual stack support
+  * Make SRS separator configurable
+
+-------------------------------------------------------------------
+Tue Nov 18 09:47:29 UTC 2014 - jengelh@inai.de
+
+- Initial package for build.opensuse.org (version 1.2+git2)

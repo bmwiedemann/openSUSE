@@ -1,0 +1,150 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c80216e4725cace03013fb2853b2e2fb</srcmd5>
+    <version>0.39</version>
+    <time>1325767775</time>
+    <user>coolo</user>
+    <comment>new perl package</comment>
+    <requestid>97984</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ee4b5cbe6aaa94f260ebf39fecf2b9e6</srcmd5>
+    <version>0.40</version>
+    <time>1329400816</time>
+    <user>coolo</user>
+    <comment>- updated to 0.40
+  - Fixed problem that caused Test::Spec usage errors (e.g. 'describe &quot;foo&quot;;'
+    without a subroutine argument) to be reported from inside the library,
+    instead of the caller's perspective where the actual error is.</comment>
+    <requestid>105350</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8095577d00521a34134071f9c83c3d55</srcmd5>
+    <version>0.42</version>
+    <time>1331538839</time>
+    <user>coolo</user>
+    <comment>- updated to 0.42
+  - Added context() and xcontext() aliases for describe/xdescribe
+    (reported by intrigeri)
+  - Added license info to Makefile.PL (RT#75400)
+  - Fixed test suite problems on Windows</comment>
+    <requestid>108641</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>8095577d00521a34134071f9c83c3d55</srcmd5>
+    <version>0.42</version>
+    <time>1340183935</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>8095577d00521a34134071f9c83c3d55</srcmd5>
+    <version>0.42</version>
+    <time>1359109821</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6935a8d9c3ac44ba3146854936b041bf</srcmd5>
+    <version>0.46</version>
+    <time>1370519784</time>
+    <user>coolo</user>
+    <comment>- updated to 0.46
+   - with() enables argument matching on mocked methods
+   - raises() makes mocked methods raise exceptions
+     Contributed by Kjell-Magne Øierud (issue #12)
+ 
+   - Add support for TAP version 13.
+     Contributed by Michael G. Schwern (issue #11)
+ 
+   - Allow shared_examples_for to be defined in any context.
+ 
+   - Fixed runtests() to honor its contract to run only the examples specified
+     in its @patterns parameter or SPEC environment variable. (forwarded request 177495 from coolo)</comment>
+    <requestid>177521</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>6935a8d9c3ac44ba3146854936b041bf</srcmd5>
+    <version>0.46</version>
+    <time>1379663881</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>76c2528dbe6aeb565c45b73a67138e7b</srcmd5>
+    <version>0.47</version>
+    <time>1385473328</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>208474</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>76c2528dbe6aeb565c45b73a67138e7b</srcmd5>
+    <version>0.47</version>
+    <time>1409302525</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a60dc80f7290290182b622ed010bf35d</srcmd5>
+    <version>0.49</version>
+    <time>1429107907</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296616</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6e07cae9c03637ed3e8aaf3a208c374e</srcmd5>
+    <version>0.50</version>
+    <time>1429658312</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>298220</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>75aa790cc303d47436b8b352426d7566</srcmd5>
+    <version>0.51</version>
+    <time>1438548378</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>319967</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d1c636c69270507e363c04529495a098</srcmd5>
+    <version>0.52</version>
+    <time>1504521399</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520424</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>09269cb19a0e99e972241f288ce766d2</srcmd5>
+    <version>0.53</version>
+    <time>1505239059</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>523583</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>395b85def1186b8ddb37b576421c29c2</srcmd5>
+    <version>0.54</version>
+    <time>1532774469</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.54
+   see /usr/share/doc/packages/perl-Test-Spec/Changes
+  0.54 Tue Nov 21 12:46:00 MSK 2017
+    - `around` method added to allow localized variables and other local setup.
+      Call `yield` method to run examples by `around` CODE.
+      Contributed by @akzhan
+  
+    - Replace some `use base` with `use parent` and other minor updates.
+      Contributed by @akzhan
+  
+    - Now tested under Perl 5.22-5.26 too
+      Contributed by @akzhan
+  
+    - predictable_destroy spec fixed under Perl 5.8
+      Contributed by @akzhan</comment>
+    <requestid>624419</requestid>
+  </revision>
+</revisionlist>

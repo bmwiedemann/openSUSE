@@ -1,0 +1,237 @@
+-------------------------------------------------------------------
+Wed Apr 13 16:59:00 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 2.6.2:
+  * Fix sequence of IDs doesn't work with attribute "depends"
+  * Fix the bulk removal of depends: and tags: is ignored
+  * Fix tag exclusion should be detected as invalid write context
+  * Fix the value of soww named date is incorrect
+  * Fix corruption of the depends attribute upon syncing with
+    taskd 1.1.0
+  * Fix assigning dependencies via ID ranges
+  * Fix recurring report does not include parent tasks
+
+-------------------------------------------------------------------
+Sun Nov 28 20:00:55 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.6.1:
+  - The logic behind new-uuid verbosity option changed. New-uuid now overrides
+    new-id if set and will cause Taskwarrior to display UUIDs instead of IDs
+    for new tasks (machine friendly).
+  - If ~/.taskrc is not found, Taskwarrior will look for its configuration in
+    $XDG_CONFIG_HOME/task/taskrc (defaulting to ~/.config/task/taskrc). This
+    allows users to setup their Taskwarrior to follow XDG standard without
+    using config overrides.
+  - Newer Unicode characters, such as emojis are correctly handled and displayed.
+    Taskwarrior now supports all Unicode characters up to Unicode 12.
+  - Datetime values until year 9999 are now supported.
+    Duration values of up to 1 000 000 years are now supported.
+  - 64-bit numeric values (up to 9,223,372,036,854,775,807) are now supported.
+  - Later/someday named datetime values now resolve to 9999-12-30 (instead of
+    2038-01-18).
+  - Calendar now supports displaying due dates until year 9999.
+  - Calendar now displays waiting tasks with due dates on the calendar.
+  - Calendar supports highlighting days with scheduled tasks.
+  - Multi-day holidays are now supported.
+  - Holiday data files for fr-CA, hu-HU, pt-BR, sk-SK and sv-FI locales are now
+    generated and shipped with Taskwarrior.
+  - The task edit command can now handle multi-line annotations and UDAs in a
+    user friendly way, withouth having to handle with JSON escaping of special
+    chars.
+  - A large portion of currently known parser-related issues was fixed.
+  - The taskrc file now supports relative paths, which are evaluated with
+    respect to (a) current directory, (b) taskrc directory and (c) now also the
+    installation directory of configuration files.
+  - The currently selected context is now applied for "task add" and "task log"
+    commands. Section on contexts in the manpage was updated to describe this
+    functionality.
+  - Users can specify per-context specific overrides of configuration variables.
+  - The `task import` command can now accept annotations with missing entry
+    values. Current time will be assumed.
+  - The new 'by' filter attribute modifier compares using '<=' rather than '<'
+    as 'before' uses.  This allows the last second of the day to match with
+    'due.by:eod', which it would not otherwise.  It also works with
+    whole units like days, e.g. 'add test due:2021-07-17' would not match
+    'due.before:tomorrow' (on the 16th), but would match 'due.by:tomorrow'.
+  - Waiting is now an entirely "virtual" concept, based on a task's
+    'wait' property and the current time. Task is considered "waiting" if its
+    wait attribute is in the future. TaskWarrior no longer explicitly
+    "unwaits" a task (the wait attribute is not removed once its value is in
+    the past), so the "unwait' verbosity token is no longer available.
+    This allows for filtering for tasks that were waiting in the past
+    intervals, but are not waiting anymore.
+  - The configuration file now supports environment variables.
+  - Taskwarrior can now handle displaying tasks in windows with limited width,
+    even if columns contain long strings (like URLs).
+  - The nag message is emitted at most once per task command, even with bulk
+    operations. Additionally, the urgency of the task considered is taken
+    before the completion, not after.
+  - The export command now takes an optional argument that references an
+    existing report. As such, "task export <report>" command will export
+    the same tasks that "task <report>" prints, and in the same order.
+  - The burndown command now supports non-cumulative display, where tasks only
+    get plotted within the interval segment when they got completed.
+
+-------------------------------------------------------------------
+Mon Jan 25 01:43:13 UTC 2021 - Michael Bryant <shadow53@shadow53.com> - 2.5.3
+
+- Update to 2.5.3 upstream release 2.5.3, skipping 2.5.2
+  Refer to /usr/share/doc/packages/task/Changelog for full list of changes
+  * Deprecated the 'DUETODAY' virtual tag, which is a synonym for the 'TODAY'
+    virtual tag.
+  * Removed deprecated 'alias._query' setting.
+  * Fixed ambiguity in the esp-ESP localization
+  * Deprecated the 'new-uuid' verbosity option, since its functionality can be
+    removed by merging with 'new-id'.
+  * Correct a false-positive warning when a due date is removed and a wait is
+    added.
+  * Added 'QUARTER' virtual tag.
+  * Fixed unquoted glob in bash completion script
+  * Deprecated use of alternate Boolean configuration settings. Use values "0" for
+    off, and "1" for on. Avoid used of "on", "off", "true", "t", "false", "f",
+    "yes", "y", "no", "n".
+  * Improved certificate validation diagnostics
+  * Updated the 'timesheet' command with a more compact report
+  * Added 'history.weekly', 'history.daily', 'ghistory.weekly', 'ghistory.daily'
+    report variations, with code refactoring.
+  * New DOM references: annotations.count, tw.syncneeded, tw.program, tw.args,
+  * tw.width, tw.height, tw.version.
+  * The message telling you to sync now indicates how many local changes will be
+    synced.
+  * Workaround for alias grep=rg in fish
+
+-------------------------------------------------------------------
+Sat Mar  5 08:34:45 UTC 2016 - sleep_walker@opensuse.org
+
+- update to 2.5.1 (bugfix and performance release)
+- refresh task-skip-INSTALL.patch, remove also LICENSE from the list,
+  which is just duplicate of COPYING
+
+-------------------------------------------------------------------
+Sun Dec 13 21:47:41 UTC 2015 - mimi.vx@gmail.com
+
+- update to 2.5.0 release
+- drop taskwarrior-gcc47.patch
+
+-------------------------------------------------------------------
+Fri May 29 06:48:58 UTC 2015 - mvyskocil@opensuse.org
+
+- Update to 2.4.4 bugfix release
+- Drop taskwarrior-no-return.patch
+
+-------------------------------------------------------------------
+Mon Feb 16 20:48:47 UTC 2015 - mvyskocil@opensuse.org
+
+- Use standard %cmake and %cmake_install macros 
+
+-------------------------------------------------------------------
+Tue Jan 13 07:26:02 UTC 2015 - mvyskocil@opensuse.org
+
+- add taskwarrior-no-return.patch to shut up gcc's complaining about
+  no return in non-void function
+- replace __DATE__ and __TIME__ by values from source tarball
+
+-------------------------------------------------------------------
+Mon Jan 12 14:59:16 UTC 2015 - mvyskocil@opensuse.org
+
+- Update to 2.4.0
+ - New dateformat space handling
+ - New date support: 'february', extensive support for ISO-8601
+ - New column formats: description.truncated_count, uda.NAME.indicator, recur.short, tag sorting
+ - New color rules: color.uda.NAME.VALUE, color.label.sort, color.until
+ - New virtual tags: READY, YESTERDAY, TOMORROW, PENDING, DELETED, COMPLETED, TAGGED
+ - New verbosity tokens: new-uuid
+ - New command: calc, _zshattributes
+ - New theme: dark-gray-blue­256.theme
+ - New report feature: listing breaks
+ - New Python testing framework for higher-level testing
+ - and many more, see http://taskwarrior.org/news/news.20150101.html
+- Refresh task-skip-INSTALL.patch
+- don't remove dir with bash scripts, it contains more tools
+
+-------------------------------------------------------------------
+Sat Aug 30 14:11:48 UTC 2014 - infroma@gmail.com
+
+- install fish completion scripts to the proper directory 
+
+-------------------------------------------------------------------
+Fri Feb 28 17:47:41 UTC 2014 - infroma@gmail.com
+
+- added gnutls dependency for making sync with taskd available
+
+-------------------------------------------------------------------
+Sun Feb  9 12:39:33 UTC 2014 - sleep_walker@suse.cz
+
+- bump 2.3.0
+  - New Taskserver sync capabilities.
+  - New shell (tasksh) with Readline support replaces old 'task shell' command.
+  - The 'dateformat' settings now default to the ISO-8601 standard of 'Y-M-D'.
+  - Italian translation.
+  - French translation has begun.
+  - UDA fields now allow default values.
+  - Now requires libuuid.
+  - New virtual tags: WEEK, MONTH, YEAR, PARENT.
+  - New 'remaining' format for date columns.
+  - New '_get' DOM accessor helper command.
+  - New task-sync(5) man page.
+
+-------------------------------------------------------------------
+Tue Apr 16 12:45:44 UTC 2013 - mvyskocil@suse.com
+
+- update to taskwarrior 2.2.0:
+  * 'blocking' report and new color rule
+  * 'statistics' shows total number of blocked/blocking tasks
+  * new date shortcuts 'socm', 'eocm' - start/end of current month
+  * 'collumns' command can use search strings from collumn name
+  * virtual tags (BLOCKED, UNBLOCKED, BLOCKING, DUE, DUETODAY, TODAY, OVERDUE,
+   ACTIVE, SCHEDULED, CHILD, UNTIL, WAITING and ANNOTATED).
+  * and many more, see Changelog
+- install documentation in proper SUSE place
+- remove executable bit from add-ons scripts to not require perl/python/ruby
+
+-------------------------------------------------------------------
+Tue Apr 16 08:56:27 UTC 2013 - mvyskocil@suse.com
+
+- install zsh completion scripts to the proper directory 
+
+-------------------------------------------------------------------
+Thu Sep 27 12:40:50 UTC 2012 - mvyskocil@suse.com
+
+- update to taskwarrior 2.1.2
+  * User defined attributes
+  * new 'until' date, after which they're deleted
+  * allow duplication of completed tasks
+  * new 'udas' subcommand
+  * new 'indended' format for the 'project' attribute, defaults in 'projects'
+    and 'summary' reports
+  * several performance optimizations, and a lot of bugfixes
+    se ChangeLog for details
+
+-------------------------------------------------------------------
+Mon Apr  2 10:59:31 UTC 2012 - mvyskocil@suse.cz
+
+- update to taskwarrior 2.0.0
+- changes from beta4
+  * 'age' component for urgency
+  * improved text wrapping in utf-8
+  * 'diagnostics' commands checks duplicated UUIDs
+- remove external task-2.0.0.ref.pdf and install the one
+  bundled in source code
+- ignore already upstreamed taskwarrior-lua52.patch
+
+-------------------------------------------------------------------
+Wed Mar 21 22:53:01 UTC 2012 - dimstar@opensuse.org
+
+- Add taskwarrior-gcc47.patch: Fix build with gcc 4.7.
+
+-------------------------------------------------------------------
+Wed Feb 15 15:48:08 UTC 2012 - mvyskocil@suse.cz
+
+- fix build with lua 5.2
+  * taskwarrior-lua52.patch
+
+-------------------------------------------------------------------
+Tue Nov 22 16:08:24 UTC 2011 - mvyskocil@suse.cz
+
+- initial packaging of taskwarrion 2.0.0 beta4 for openSUSE 
+

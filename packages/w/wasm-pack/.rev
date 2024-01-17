@@ -1,0 +1,74 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5d968710f78a19b2de69e4c498d0b96a</srcmd5>
+    <version>0.10.2~0</version>
+    <time>1650548558</time>
+    <user>dimstar_suse</user>
+    <comment>Submit new package wasm-pack to factory</comment>
+    <requestid>971279</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8f49ec1cb534aff782257fa7e2f059b7</srcmd5>
+    <version>0.10.2~0</version>
+    <time>1654011481</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>980095</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4aaf6c6c66a676f81dcf216c60fea059</srcmd5>
+    <version>0.10.3~0</version>
+    <time>1661758980</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>999734</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>de0141500f05a59ea1e158dd4f5088fe</srcmd5>
+    <version>0.10.3~0</version>
+    <time>1673973315</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1058792</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e6fa1e5f4965e76a2549d05c05d9b86f</srcmd5>
+    <version>0.11.0~0</version>
+    <time>1679416842</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1072986</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>27c38700b5581f0ca395ce8d1d9f1abf</srcmd5>
+    <version>0.11.0~0</version>
+    <time>1681470811</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1079319</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>18de0cc394cf5a986574ddff4371501b</srcmd5>
+    <version>0.11.1~0</version>
+    <time>1684952569</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1088753</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3f970e6e7e80b53a2a5a2e5faf8b7710</srcmd5>
+    <version>0.12.0~0</version>
+    <time>1687272468</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093694</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1caf385f6753cf872d2fa124061dce2e</srcmd5>
+    <version>0.12.1~0</version>
+    <time>1687980797</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1095702</requestid>
+  </revision>
+</revisionlist>

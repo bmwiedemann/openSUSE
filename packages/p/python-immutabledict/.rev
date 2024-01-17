@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cc8213402246ac490c225076fc0c2e35</srcmd5>
+    <version>2.2.5</version>
+    <time>1688661002</time>
+    <user>favogt_factory</user>
+    <comment>addition for matrix-synapse</comment>
+    <requestid>1097109</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7af3d8a36f75b08a781ef92d001de20f</srcmd5>
+    <version>2.2.5</version>
+    <time>1689000058</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1097956</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a576844031083c20c846879f0ffab858</srcmd5>
+    <version>3.0.0</version>
+    <time>1691674489</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.0:
+  * copy() (breaking change): remove the option to pass keyword
+    arguments (which were present as key/value pairs in the copy).
+    Now the method doesn't take any arguments (it behaves the same
+    as a normal dict).
+  * Python versions: drop Python 3.7 support
+  * Typing: fixes
+    - Make the key covariant. Thanks to @spacether for the PR #244
+    - Fix key/value typing missing for ImmutableOrderedDict</comment>
+    <requestid>1103297</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9d6321ef35dc4a1da1e5dc2852660854</srcmd5>
+    <version>4.0.0</version>
+    <time>1702071128</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.0.0:
+  * Replace `__init__` by `__new__`.
+  * Add explicit items()/keys()/values() methods to speedup these
+    methods.
+  * Add set/delete/update functions.
+  * Add documentation at immutabledict.corenting.fr
+
+    - Fix key/value typing missing for ImmutableOrderedDict</comment>
+    <requestid>1131733</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a40d0517e16bdc053ed48ef3b7bd8e15</srcmd5>
+    <version>4.1.0</version>
+    <time>1702845181</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.1.0:
+  * Do not store cached hash value when pickling</comment>
+    <requestid>1133665</requestid>
+  </revision>
+</revisionlist>

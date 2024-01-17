@@ -1,0 +1,15 @@
+<package name="stunnel" project="openSUSE:Factory">
+  <title>Universal SSL Tunnel</title>
+  <description>The stunnel program is designed to work as an SSL encryption wrapper
+between a remote client and the local (inetd-startable) or remote
+server. The concept is that by having non-SSL aware daemons running on
+your system, you can easily set them to communicate with clients over a
+secure SSL channel. Stunnel can be used to add SSL functionality to
+commonly used inetd daemons, such as POP-2, POP-3, and IMAP servers,
+without any changes to the program code.
+
+
+
+</description>
+  <devel project="security:Stunnel" package="stunnel"/>
+</package>

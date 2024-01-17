@@ -1,0 +1,11 @@
+<package name="perl-SGML-Parser-OpenSP" project="openSUSE:Factory">
+  <title>Perl interface to the OpenSP SGML and XML parser</title>
+  <description>SGML::Parser::OpenSP provides a native Perl interface, written in C++
+and XS, to the OpenSP SGML and XML parser.
+
+ Authors:	Bjoern Hoehrmann, &lt;bjoern@hoehrmann.de&gt;
+
+</description>
+  <devel project="devel:languages:perl" package="perl-SGML-Parser-OpenSP"/>
+  <url>http://search.cpan.org/dist/SGML-Parser-OpenSP</url>
+</package>

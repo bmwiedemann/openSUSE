@@ -1,0 +1,11 @@
+<package name="direvent" project="openSUSE:Factory">
+  <title>Monitor a file system directory for changes</title>
+  <description>GNU Direvent monitors events in the file system directories. For each event
+that occurs in a set of pre-configured directories, the program calls an
+external program associated with it, supplying it with the information about
+the event and the location within the file system where it occured.
+
+</description>
+  <devel project="utilities" package="direvent"/>
+  <url>https://www.gnu.org/software/direvent/</url>
+</package>

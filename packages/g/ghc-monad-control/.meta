@@ -1,0 +1,5 @@
+<package name="ghc-monad-control" project="openSUSE:Factory">
+  <title>Lift control operations, like exception catching, through monad transformers</title>
+  <description></description>
+  <devel project="devel:languages:haskell" package="ghc-monad-control"/>
+</package>

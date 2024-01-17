@@ -1,0 +1,13 @@
+<package name="python-Flask-Compress" project="openSUSE:Factory">
+  <title>Compress responses in your Flask app with gzip</title>
+  <description>Flask-Compress allows you to easily compress your Flask application's
+responses with gzip.
+
+The preferred solution is to have a server (like Nginx) automatically
+compress the static files for you. If you don't have that option
+Flask-Compress will solve the problem for you.
+
+</description>
+  <devel project="devel:languages:python:flask" package="python-Flask-Compress"/>
+  <url>https://github.com/wichitacode/flask-compress</url>
+</package>

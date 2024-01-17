@@ -1,0 +1,133 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>229bf4db4da55e8f225bd3499ebd9b42</srcmd5>
+    <version>1.7.11</version>
+    <time>1568983870</time>
+    <user>maxlin_factory</user>
+    <comment>Take three of alembic, an important library, that the current blender will depend upon. Therefore, it is part of official blender builds as well.</comment>
+    <requestid>725699</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>16d0453bd58ac50bb686ba7a0a4ac6cf</srcmd5>
+    <version>1.7.12</version>
+    <time>1575463809</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>750506</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>eedf124b501b4fc23ddd40938adf527a</srcmd5>
+    <version>1.7.13</version>
+    <time>1597746337</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>827519</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>264445853ef521812a7a9c98b91c9299</srcmd5>
+    <version>1.7.14</version>
+    <time>1598726141</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>829725</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>eaf8786768a1d884606d20b57e613634</srcmd5>
+    <version>1.7.15</version>
+    <time>1599862403</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.7.15:
+  * Fuzzer issues 25166, 25175, 25185, 25204, and 25236 all test for illegal
+  meta data index values which we more carefully test.
+  * Fuzzer issue 25192 turned up a leak from a malformed file causing OrData to
+  throw.</comment>
+    <requestid>833804</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>adf68e229d8d5077687af0382bb39c58</srcmd5>
+    <version>1.7.16</version>
+    <time>1609253623</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>859217</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8f64e339adf303d7d36b4b1c876056de</srcmd5>
+    <version>1.8.0</version>
+    <time>1619729173</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>889186</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>65b9eafde78871f0ec5a6da959ca459b</srcmd5>
+    <version>1.8.1</version>
+    <time>1621626590</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>894672</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b0cb919ba03c1983feac7d5a0743a00f</srcmd5>
+    <version>1.8.3</version>
+    <time>1641480654</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>943918</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>90ffa9ace97797053ea4a0393d6e5185</srcmd5>
+    <version>1.8.3</version>
+    <time>1656321933</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>985156</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>7ba165ab5d57264fae9d6525c5cb95c8</srcmd5>
+    <version>1.8.4</version>
+    <time>1670162315</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1039874</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>dfbb5c456618381802280a87d2888dfc</srcmd5>
+    <version>1.8.4</version>
+    <time>1687630436</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1095054</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d6f94eab4c19c62234cb7ea48cfe3f10</srcmd5>
+    <version>1.8.6</version>
+    <time>1704281383</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.8.6:
+  * Introduce CPacke to top level CMake. (PR 425)
+  * Fix typo in a comment. (PR 417)
+  * Fix bug with OCurves, ONuPatch, OPoints, OPolyMesh, and OSubD
+    were not properly incrementing their number of set samples
+    when using setFromPrevious. (PR 433)
+  * Fix default values for float PODTraits. (PR 422)
+  * Introduce -hold argument which will use the previous set
+    sample instead of setting an empty sample for missing samples.
+- update to 1.8.5:
+  * Add test for fuzzer issue 53406.
+  * Address Issue 402 by not using deprecated kWrapExisting calls
+    when possible.
+  * Add missing vertex for cube test in the python bindings per
+    Issue 407.
+  * Fix several warnings mentioned in Issue 309, 398 and 412.
+  * Don't explicitly set MACOSX_RPATH as it is set by default in
+    CMake 3+. (PR404)
+  * Use install rpath for Imath 3. (PR405)
+  * Use STRING instead of PATH for ALEMBIC_LIB_INSTALL_DIR.
+  * Add CIFuzz as a GitHub action. (PR403)
+
+    of bools in OXform.
+- Avoid forcing SSE/SSE2 on %ix86, it is not guaranteed to exist.</comment>
+    <requestid>1136085</requestid>
+  </revision>
+</revisionlist>

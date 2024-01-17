@@ -1,0 +1,6 @@
+<package name="perl-Email-MessageID" project="openSUSE:Factory">
+  <title>Generate world unique message-ids.</title>
+  <description>Message-ids are optional, but highly recommended, headers that identify a
+message uniquely. This software generates a unique message-id.</description>
+  <devel project="devel:languages:perl" package="perl-Email-MessageID"/>
+</package>

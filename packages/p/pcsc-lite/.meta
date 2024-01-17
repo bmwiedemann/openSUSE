@@ -1,0 +1,19 @@
+<package name="pcsc-lite" project="openSUSE:Factory">
+  <title>PCSC Smart Cards Library</title>
+  <description>The purpose of PCSC Lite is to provide a Windows(R) SCard interface in
+a very small form factor for communication with smart cards and
+readers. PCSC Lite can be compiled directly for a desired reader driver
+or can be used to dynamically allocate/deallocate reader drivers at
+runtime (the default behavior).
+
+PCSC Lite uses the same winscard API as used in Windows(R).
+
+Security aware people should read the SECURITY file for possible
+vulnerabilities of pcsclite and how to fix them. For information on how
+to install drivers please read the DRIVERS file.
+
+Memory cards will be supported through the MCT specification, which is
+an APDU like manner sent normally through the SCardTransmit() function.
+This functionality is exercised in the driver.</description>
+  <devel project="security:chipcard" package="pcsc-lite"/>
+</package>

@@ -1,0 +1,57 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0d40123cb01e3e312cf1cb75b561aea7</srcmd5>
+    <version>0.1</version>
+    <time>1576014159</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>755458</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>57aea42494dbaa89594341df68444fb8</srcmd5>
+    <version>0.9.0</version>
+    <time>1661257803</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>998784</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e4e19b74b758f2a28bcfcc1487f23b19</srcmd5>
+    <version>0.10.2</version>
+    <time>1675873248</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.10.2:
+  - Fix logging pollution due to DynamoDB logging handler
+  - Improve error message when FileSystemCache methods are called
+    with non-str keys.
+  - Added DynamoDb as a cache backend
+- Add skip-failing-tests.patch to skip failing tests requiring
+  network access (gh#pallets-eco/cachelib#228).
+</comment>
+    <requestid>1063823</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>58a6dfc056d782a73314b26061778a1f</srcmd5>
+    <version>0.10.2</version>
+    <time>1684846492</time>
+    <user>dimstar_suse</user>
+    <comment>- Restrict urllib3 to &lt; 2, due to boto.</comment>
+    <requestid>1088547</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>b76960c39691397acaee8dbc479b8faa</srcmd5>
+    <version>0.10.2</version>
+    <time>1686576376</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092372</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>804d8ac7867cde39330eef5f2192e3f0</srcmd5>
+    <version>0.10.2</version>
+    <time>1704281411</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1136187</requestid>
+  </revision>
+</revisionlist>

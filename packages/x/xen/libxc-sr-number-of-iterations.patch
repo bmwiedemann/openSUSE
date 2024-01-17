@@ -1,0 +1,24 @@
+From: Olaf Hering <olaf@aepfle.de>
+Date: Mon, 4 Jan 2021 20:58:42 +0200
+Subject: libxc sr number of iterations
+
+Reduce default value of --max_iters from 5 to 1.
+The workload within domU will continue to produce dirty pages.
+It is unreasonable to expect any slowdown during migration.
+Now there is one initial copy of all memory, one instead of five
+iterations for dirty memory, and a final copy iteration prior move.
+---
+ tools/libs/light/libxl_internal.h |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/tools/libs/light/libxl_internal.h
++++ b/tools/libs/light/libxl_internal.h
+@@ -124,7 +124,7 @@
+ #define DOMID_XS_PATH "domid"
+ #define PVSHIM_BASENAME "xen-shim"
+ #define PVSHIM_CMDLINE "pv-shim console=xen,pv"
+-#define LIBXL_XGS_POLICY_MAX_ITERATIONS 5
++#define LIBXL_XGS_POLICY_MAX_ITERATIONS 1
+ #define LIBXL_XGS_POLICY_TARGET_DIRTY_COUNT 50
+ 
+ /* Size macros. */

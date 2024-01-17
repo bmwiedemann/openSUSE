@@ -1,0 +1,9 @@
+<package name="rubygem-webrick" project="openSUSE:Factory">
+  <title>HTTP server toolkit</title>
+  <description>WEBrick is an HTTP server toolkit that can be configured as an HTTPS server, a
+proxy server, and a virtual-host server.
+
+</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-webrick"/>
+  <url>https://github.com/ruby/webrick</url>
+</package>

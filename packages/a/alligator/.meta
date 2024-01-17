@@ -1,0 +1,8 @@
+<package name="alligator" project="openSUSE:Factory">
+  <title>Convergent RSS/Atom feed reader</title>
+  <description>Alligator is a convergent RSS/Atom feed reader.
+
+</description>
+  <devel project="KDE:Applications" package="alligator"/>
+  <url>https://apps.kde.org/alligator</url>
+</package>

@@ -1,0 +1,167 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dd6102762c6624eca727010ca38c9649</srcmd5>
+    <version>3.1</version>
+    <time>1500669868</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>500534</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>de7454ce0252f1b6d6b480e54ecfe857</srcmd5>
+    <version>3.2</version>
+    <time>1523875617</time>
+    <user>dimstar_suse</user>
+    <comment>- Update dependencies
+
+- Update to version 3.2
+  * New models, IC-7850/IC-7851 in IC-785x.  Mike, W9MDB
+  * Fix ft991_get_mode, Mike, W9MDB
+  * New model, FT-891.  Mike, W9MDB
+  * New Barrett 2050 backend, Mike, W9MDB
+  * New Flrig backend, Mike, W9MDB
+  * New model, IC-M710, Mike, W9MDB
+  * Build instructions and test script for Python3
+  * Rename autogen.sh to bootsrap and don't call configure
+  * micro-ham support. Christoph, DL1YCF
+  * New rotator, SPID MD-01/02 in ROT2 mode, Norvald Ryeng, LA6YKA
+  * New model, Flex 6400/6600, Mike, W9MDB
+  * New model, IC-7610, Mike, W9MDB
+  * Add support for CM108B PTT, Max Lock
+  * New model, Rohde &amp; Schwarz XK2100, Mike, W9MDB
+  * Many other bug fixes and enhancements
+- Rebase patch hamlib-3.0-perl_install.patch</comment>
+    <requestid>593484</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a891c02e452862accea48cb5f3917aa9</srcmd5>
+    <version>3.3</version>
+    <time>1535963660</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>632448</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>a1ccad41c88d85d50d296ac2b9589d0c</srcmd5>
+    <version>3.3</version>
+    <time>1588023240</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>797594</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>bbbf8e4b19aa851b710e84f51855c3d7</srcmd5>
+    <version>3.3</version>
+    <time>1588324437</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>799201</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>372bf860188ac728632eedaf603688ab</srcmd5>
+    <version>4.0</version>
+    <time>1610051098</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>861021</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5914e86ab59da5d80eb9bdb320b8c7bf</srcmd5>
+    <version>4.1</version>
+    <time>1616008593</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>879572</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0b2f9dfdf2752c9de8c9acdc6da0de57</srcmd5>
+    <version>4.2</version>
+    <time>1621439389</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>894348</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>accc1ae0560e618c7c95b9ecd45f0549</srcmd5>
+    <version>4.3.1</version>
+    <time>1632173589</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>920195</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>37b3c9c49bef60f9567b1bb53ed8ef2e</srcmd5>
+    <version>4.4</version>
+    <time>1639075528</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>937315</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>015c0fa99397965fd749ce3cea3e6d87</srcmd5>
+    <version>4.4</version>
+    <time>1644273484</time>
+    <user>dimstar_suse</user>
+    <comment>- Be less strict with required interpreters for tcl and perl
+  subpackages (bsc#1195260)
+- Drop python2 subpackage as its not relevant to any supported
+  openSUSE release</comment>
+    <requestid>952037</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0f6a66d6ac6640cb133ce4748d7cac6b</srcmd5>
+    <version>4.5</version>
+    <time>1667656016</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1033607</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>5453928b570231d448d4864ece3f472b</srcmd5>
+    <version>4.5.1</version>
+    <time>1670703529</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1042007</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5cfeea91d8cf5c92dfe297c753ad1f05</srcmd5>
+    <version>4.5.2</version>
+    <time>1672138503</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1045466</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>fbea2487c560cd49ae561fe052bb4ae8</srcmd5>
+    <version>4.5.3</version>
+    <time>1672668113</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1046007</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>3c3323dda3164072344adf402912f80d</srcmd5>
+    <version>4.5.4</version>
+    <time>1673650958</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1058086</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>25ca3d4a319c70499a0ecc6cb49ebe40</srcmd5>
+    <version>4.5.5</version>
+    <time>1681213915</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1078383</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>acc821716048e7e70a806fdb6ec01ec1</srcmd5>
+    <version>4.5.5</version>
+    <time>1684846480</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1088524</requestid>
+  </revision>
+</revisionlist>

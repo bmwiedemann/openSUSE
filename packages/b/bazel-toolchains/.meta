@@ -1,0 +1,6 @@
+<package name="bazel-toolchains" project="openSUSE:Factory">
+  <title>bazel-toolchains</title>
+  <description>Set of Bazel toolchain configurations</description>
+  <devel project="devel:tools:building" package="bazel-toolchains"/>
+  <url>https://github.com/bazelbuild/bazel-toolchains</url>
+</package>

@@ -1,0 +1,23 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://github.com/lite-xl/lite-xl</param>
+    <param name="scm">git</param>
+    <!-- 
+      For some reason, "master" isn't most up to date
+    -->
+    <param name="revision">b68efcd</param>
+    <param name="versionformat">@PARENT_TAG@+git%cd.%h</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <!--
+    <param name="parent-tag">v2.0.5</param>
+    <param name="parent-tag">v2.1.0</param>
+    -->
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="set_version" mode="manual"/>
+  <service name="tar" mode="manual"/>
+  <service name="recompress" mode="manual">
+    <param name="compression">gz</param>
+    <param name="file">*.tar</param>
+  </service>
+</services>

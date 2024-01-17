@@ -1,0 +1,11 @@
+--- ocaml-3.11.0/emacs/camldebug.el
++++ ocaml-3.11.0/emacs/camldebug.el
+@@ -499,7 +499,7 @@
+     (make-comint (concat "camldebug-" file)
+                  (substitute-in-file-name camldebug-command-name)
+                  nil
+-                 "-emacs" "-cd" default-directory file)
++                 "-emacs" "-cd" default-directory (concat "./" file))
+     (set-process-filter (get-buffer-process (current-buffer))
+                         'camldebug-filter)
+     (set-process-sentinel (get-buffer-process (current-buffer))

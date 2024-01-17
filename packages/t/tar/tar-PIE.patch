@@ -1,0 +1,12 @@
+Index: tar-1.34/tests/Makefile.am
+===================================================================
+--- tar-1.34.orig/tests/Makefile.am
++++ tar-1.34/tests/Makefile.am
+@@ -317,6 +317,7 @@ installcheck-local: $(check_PROGRAMS)
+ check_PROGRAMS = genfile checkseekhole ckmtime
+ 
+ genfile_SOURCES = genfile.c argcv.c argcv.h
++genfile_LDFLAGS = -pie
+ checkseekhole_SOURCES = checkseekhole.c
+ 
+ localedir = $(datadir)/locale

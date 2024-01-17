@@ -1,0 +1,221 @@
+-------------------------------------------------------------------
+Sat Nov  4 07:46:54 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.de>
+
+- Update to version 0.22.0
+  * Official support for CPython 3.12
+  * ZstdDecompressor.decompressobj() now accepts a read_across_frames
+    boolean named argument to control whether to transparently read across
+    multiple zstd frames. It still defaults to False to preserve existing
+    behavior
+
+-------------------------------------------------------------------
+Wed Apr 19 15:19:47 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Update to version 0.21.0
+  * Support zstd 1.5.5
+
+-------------------------------------------------------------------
+Tue Feb 21 11:33:11 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Update to version 0.20.0
+  * This will likely be the last release officially supporting Python 3.6.
+    Python 3.6 is end of life as of 2021-12-23.
+  * Bundled zstd library upgraded from 1.5.2 to 1.5.4.
+  * Use of the deprecated ZSTD_copyDCtx() was removed from the C and
+    Rust backends.
+
+-------------------------------------------------------------------
+Fri Feb 17 12:46:17 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Enable --system-zstd so that we depend of a system shared library
+  of zstd.
+- Add feature-detection.patch as feature detection test does not support
+  --system-zstd (gh#indygreg/python-zstandard#191).
+
+-------------------------------------------------------------------
+Mon Dec  5 18:21:01 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+-  Fixed spec file to include exceptiongroup 
+
+-------------------------------------------------------------------
+Sun Nov 20 04:47:59 UTC 2022 - Mia Herkt <mia@0x0.st>
+
+- Update to 0.19.0
+Bug fixes
+  * The C backend implementation of
+    ZstdDecompressionObj.decompress() could have raised an
+    assertion in cases where the function was called multiple times
+    on an instance. In non-debug builds, calls to this method could
+    have leaked memory.
+Changes
+  * PyPy 3.6 support dropped; Pypy 3.8 and 3.9 support added.
+  * Anaconda 3.6 support dropped.
+  * Official support for Python 3.11. This did not require
+    meaningful code changes and previous release(s) likely worked
+    with 3.11 without any changes. CFFI's build system now respects
+    distutils's compiler.preprocessor if it is set.
+    gh#indygreg/python-zstandard#179
+  * The internal logic of ZstdDecompressionObj.decompress() was
+    refactored. This may have fixed unconfirmed issues where
+    unused_data was set prematurely. The new logic will also avoid
+    an extra call to ZSTD_decompressStream() in some scenarios,
+    possibly improving performance.
+  * ZstdDecompressor.decompress() how has a read_across_frames
+    keyword argument. It defaults to False. True is not yet
+    implemented and will raise an exception if used. The new
+    argument will default to True in a future release and is
+    provided now so callers can start passing
+    read_across_frames=False to preserve the existing functionality
+    during a future upgrade.
+  * ZstdDecompressor.decompress() now has an allow_extra_data
+    keyword argument to control whether an exception is raised if
+    input contains extra data. It defaults to True, preserving
+    existing behavior of ignoring extra data. It will likely
+    default to False in a future release. Callers desiring the
+    current behavior are encouraged to explicitly pass
+    allow_extra_data=True so behavior won't change during a future
+    upgrade.
+- No changelog for 0.18.0 available
+
+-------------------------------------------------------------------
+Tue Feb  1 22:44:25 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Correctly test the installed solib
+- Skip python2 on SLE/Leap: no longer supported
+
+-------------------------------------------------------------------
+Sun Jan 30 21:20:18 UTC 2022 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- update to 0.17.0
+ * Python 3.9 wheels are now provided.
+ * Support for Python 3.5 has been dropped. 
+ * Python 3.6 is now the minimum required Python version.
+ * Bundled zstandard library upgraded from 1.4.5 to 1.5.1.
+ * The bundled zstandard library is now using the single C source 
+   file distribution. The 2 main header files are still present, 
+   as these are needed by CFFI to generate the CFFI bindings.
+ * PyBuffer instances are no longer checked to be C contiguous and 
+   have a single dimension. The former was redundant with what 
+   PyArg_ParseTuple() already did and the latter is not necessary 
+   in practice because very few extension modules create buffers 
+   with more than 1 dimension. (#124)
+ * Added Python typing stub file for the zstandard module. (#120)
+ * The make_cffi.py script should now respect the CC environment 
+   variable for locating the compiler. (#103)
+ * CI now properly uses the cffi backend when running all tests.
+ * train_dictionary() has been rewritten to use the fastcover APIs 
+   and to consistently call ZDICT_optimizeTrainFromBuffer_fastCover() 
+   instead of different C APIs depending on what arguments were passed. 
+   The function also now accepts arguments f, split_point, and accel, 
+   which are parameters unique to fastcover.
+ * CI now tests and builds wheels for Python 3.9.
+ * zstd.c file renamed to c-ext/backend_c.c.
+ * All built/installed Python modules are now in the zstandard package. 
+   Previously, there were modules in other packages. (#115)
+ * C source code is now automatically formatted with clang-format.
+ * ZstdCompressor.stream_writer(), ZstdCompressor.stream_reader(), 
+   ZstdDecompressor.stream_writer(), and ZstdDecompressor.stream_reader() 
+   now accept a closed argument to control whether the underlying stream 
+   should be closed when the ZstdCompressionWriter, ZstdCompressReader, 
+   ZstdDecompressionWriter, or ZstdDecompressionReader is closed. (#76)
+ * There is now a zstandard.open() function for returning a file object 
+   with zstd (de)compression. (#64)
+ * The zstandard module now exposes a backend_features attribute 
+   containing a set of strings denoting optional features present in that 
+   backend. This can be used to sniff feature support by performing a 
+   string lookup instead of sniffing for API presence or behavior.
+ * Python docstrings have been moved from the C backend to the CFFI backend. 
+   Sphinx docs have been updated to generate API documentation via the CFFI 
+   backend. Documentation for Python APIs is now fully defined via Python 
+   docstrings instead of spread across Sphinx ReST files and source code.
+ * ZstdCompressionParameters now exposes a strategy property.
+ * There are now compress() and decompress() convenience functions on the 
+   zstandard module. These are simply wrappers around the corresponding APIs 
+   on ZstdCompressor and ZstdDecompressor.
+ * The deprecated CompressionParameters type alias to ZstdCompressionParamaters 
+   has been removed. Use ZstdCompressionParameters.
+ * setup.py now recognizes a ZSTD_EXTRA_COMPILER_ARGS environment variable to 
+   specify additional compiler arguments to use when compiling the C backend.
+ * PyPy build and test coverage has been added to CI.
+ * Added CI jobs for building against external zstd library.
+ * Wheels supporting macOS ARM/M1 devices are now being produced.
+ * References to Python 2 have been removed from the in-repo Debian packaging code.
+ * Significant work has been made on a Rust backend. It is currently feature 
+   complete but not yet optimized. We are not yet shipping the backend as part 
+   of the distributed wheels until it is more mature.
+ * ZstdCompressor.multi_compress_to_buffer() and ZstdDecompressor.multi_decompress_to_buffer() 
+   are no longer available when linking against a system zstd library. 
+   These experimental features are only available when building against the 
+   bundled single file zstd C source file distribution. (#106)
+ * The .pyi type annotations file has replaced various default argument 
+   values with ....
+ * manylinux2014_aarch64 wheels are now being produced for CPython 3.6+. (#145).
+ * Wheels are now being produced for CPython 3.10.
+ * Arguments to ZstdCompressor() and ZstdDecompressor() are now all optional in 
+   the C backend and an explicit None value is accepted. Before, the C backend 
+   wouldn’t accept an explicit None value (but the CFFI backend would). 
+   The new behavior should be consistent between the backends. (#153)
+ * The C backend now exposes the symbols ZstdCompressionReader, ZstdCompressionWriter, 
+   ZstdDecompressionReader, and ZstdDecompressionWriter. This should match the behavior 
+   of the CFFI backend. (#165)
+ * ZstdCompressionWriter and ZstdDecompressionWriter now 
+   implement __iter__ and __next__, which always raise io.UnsupportedOperation.
+ * Documentation on thread safety has been updated to note that derived objects like 
+   ZstdCompressionWriter have the same thread unsafety as the contexts they were 
+   derived from. (#166)
+ * The HASHLOG3_MAX constant has been removed since it is no longer defined in zstd 1.5.1.
+  
+-------------------------------------------------------------------
+Tue Jul 21 08:39:31 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 0.14.0
+  * This will likely be the final version supporting Python 2.7. Future
+    releases will likely only work on Python 3.5+. See #109 for more
+    context.
+  * There is a significant possibility that future versions will use
+    Rust - instead of C - for compiled code. See #110 for more context.
+  * Some internal fields of C structs are now explicitly initialized.
+    (Possible fix for #105.)
+  * The ``make_cffi.py`` script used to build the CFFI bindings now
+    calls ``distutils.sysconfig.customize_compiler()`` so compiler
+    customizations (such as honoring the ``CC`` environment variable)
+    are performed. Patch by @Arfrever. (#103)
+  * The ``make_cffi.py`` script now sets ``LC_ALL=C`` when invoking
+    the preprocessor in an attempt to normalize output to ASCII. (#95)
+
+-------------------------------------------------------------------
+Mon Mar  9 10:11:02 UTC 2020 - pgajdos@suse.com
+
+- version update to 0.13.0
+  * ``pytest-xdist`` ``pytest`` extension is now installed so tests can be
+    run in parallel.
+  * CI now builds ``manylinux2010`` and ``manylinux2014`` binary wheels
+    instead of a mix of ``manylinux2010`` and ``manylinux1``.
+  * Official support for Python 3.8 has been added.
+  * Bundled zstandard library upgraded from 1.4.3 to 1.4.4.
+  * Python code has been reformatted with black.
+
+-------------------------------------------------------------------
+Fri Sep 20 12:09:10 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.12.0:
+  * Fix ZstdDecompressor.__init__ on 64-bit big-endian systems (#91).
+  * Fix memory leak in ZstdDecompressionReader.seek() (#82).
+  * CI transitioned to Azure Pipelines (from AppVeyor and Travis CI).
+  * Switched to pytest for running tests (from nose).
+
+-------------------------------------------------------------------
+Fri May 24 13:39:30 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.11.1:
+  * Fix memory leak in ``ZstdDecompressionReader.seek()`` (#82).
+
+-------------------------------------------------------------------
+Tue May  7 15:40:00 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Conflict with python-zstd, which shares the same module name.
+
+-------------------------------------------------------------------
+Tue Apr 30 14:48:35 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Initial version

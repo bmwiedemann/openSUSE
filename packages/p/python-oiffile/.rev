@@ -1,0 +1,45 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2277d8ddd555eb56d2029ffb24dc3c7a</srcmd5>
+    <version>2020.1.18</version>
+    <time>1597403480</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>825376</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4c420b77c6eb68b2d8f958229825f333</srcmd5>
+    <version>2020.9.18</version>
+    <time>1606649481</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>851384</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>e720bee333f1b39f84745fb0597ed385</srcmd5>
+    <version>2020.9.18</version>
+    <time>1613774720</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>873710</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>40cf3ad070fc78e1019af419e45d125f</srcmd5>
+    <version>2022.9.29</version>
+    <time>1674927782</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1061494</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2a664744aab63fefea8d41122e34d74d</srcmd5>
+    <version>2023.8.30</version>
+    <time>1704919923</time>
+    <user>anag+factory</user>
+    <comment>- update to 2023.8.30:
+  * Fix linting issues.
+  * Add py.typed marker.
+  * Drop support for Python 3.8 and numpy &lt; 1.22 (NEP29).</comment>
+    <requestid>1137818</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,18 @@
+Index: timidity-patches/timidity.cfg
+===================================================================
+--- timidity-patches/timidity.cfg.orig	2002-02-18 12:52:08.000000000 +0100
++++ timidity-patches/timidity.cfg	2011-01-19 19:37:43.870179965 +0100
+@@ -39,4 +39,13 @@ source piano+guitar.cfg
+ source drums.cfg
+ 
+ ##############################################################################
++# These lines read the configuration files for the FLUID GM and GS soundfonts.
++# If you want to use only the gm soundfont uncomment the first line only, if
++# you also want to use the sound canvas extensions then uncomment the second
++# line.
++
++#source fluidr3_gm.cfg
++#source fluidr3_gs.cfg
++
++##############################################################################
+ # End of configuration file

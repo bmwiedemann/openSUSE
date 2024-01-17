@@ -1,0 +1,81 @@
+#!/bin/bash
+#############################################################
+# Name:        Supportconfig Plugin for Xen
+# Description: Gathers important troubleshooting information
+#              about Xen and its tools
+#############################################################
+
+# TODO:
+# - Anything needed for UEFI?
+#
+
+RCFILE="/usr/lib/supportconfig/resources/supportconfig.rc"
+OF="output-xen.txt"
+
+GRUB2_CONF_FILES="/etc/default/grub"
+XEN_CONF_FILES="/etc/xen/xl.conf /etc/sysconfig/xencommons /etc/sysconfig/xendomains"
+XEN_SERVICES="xencommons xendomains xen-watchdog"
+PERSISTENT_VM_CONF_FILES=""
+ACTIVE_VM_CONF_FILES=""
+XEN_LOG_FILES=""
+
+if [ -s $RCFILE ]; then
+    if ! source $RCFILE; then
+        log_write $OF "ERROR: Initializing resource file: $RCFILE"
+        exit 1
+    fi
+fi
+
+# if no xen package we are done
+rpm_verify $OF xen || exit 111
+
+# if not a xen host (dom0) we are done
+log_write $OF "#==[ Checking if booted Xen ]=================================#"
+if [ ! -d /proc/xen ] || [ ! -e /proc/xen/capabilities ] || [ `cat /proc/xen/capabilities` != "control_d" ]; then
+    log_write $OF "No"
+    log_write $OF "Skipped"
+    exit 0
+else
+    log_write $OF "Yes"
+fi
+
+# basic system information:
+log_cmd $OF "uname -r"
+for service in $XEN_SERVICES; do
+    log_cmd $OF "systemctl status $service"
+    log_cmd $OF "systemctl is-enabled $service"
+done
+log_cmd $OF "lscpu"
+log_cmd $OF "xl info --numa"
+log_cmd $OF "xl list"
+log_cmd $OF "xl pci-assignable-list"
+log_cmd $OF "xenstore-ls"
+log_cmd $OF "ps -ef | grep xen"
+# dump grub2-related conf files
+conf_files $OF "$GRUB2_CONF_FILES"
+# dump Xen-related conf files
+conf_files $OF "$XEN_CONF_FILES"
+
+# detailed system info:
+log_cmd $OF "xl list --long"
+log_cmd $OF "xl dmesg"
+# network-related info often useful for debugging
+if [ systemctl is-enabled NetworkManager.service 2>&1 > /dev/null ]; then
+    log_write $OF "NOTE: NetworkManager should not be enabled on a Xen host"
+fi
+log_cmd $OF "route -n"
+log_cmd $OF "arp -v"
+log_cmd $OF "ip link show type bridge"
+log_cmd $OF "bridge link show"
+# list contents of common config and image directories
+log_cmd $OF "ls -alR /etc/xen/vm/"
+log_cmd $OF "ls -alR /etc/xen/auto/"
+log_cmd $OF "ls -alR /var/lib/xen/images/"
+# dump VM-related conf files
+test -d /etc/xen/vm && PERSISTENT_VM_CONF_FILES=$(find -L /etc/xen/vm/ -type f | sort)
+conf_files $OF "$PERSISTENT_VM_CONF_FILES"
+test -d /var/lib/xen && ACTIVE_VM_CONF_FILES=$(find -L /var/lib/xen/userdata* -type f | sort)
+conf_files $OF "$ACTIVE_VM_CONF_FILES"
+# dump log files
+test -d /var/log/xen && XEN_LOG_FILES="$(find -L /var/log/xen/ -type f | grep 'log$' | sort)"
+log_files $OF 0 "$XEN_LOG_FILES"

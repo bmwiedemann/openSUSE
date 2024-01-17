@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Sat Aug  4 11:27:07 UTC 2018 - antoine.belvire@opensuse.org
+
+- Remove unused patch: forks-handler_remove-0.33.diff.
+- Clean spec file.
+
+-------------------------------------------------------------------
+Tue Apr 14 17:49:58 UTC 2015 - coolo@suse.com
+
+- updated to 0.36
+   see /usr/share/doc/packages/perl-forks/Changes
+
+-------------------------------------------------------------------
+Wed Aug 17 16:24:05 UTC 2011 - chris@computersalat.de
+
+- cpanspec
+
+-------------------------------------------------------------------
+Wed Feb  2 13:56:49 UTC 2011 - cdengler@novell.com
+
+- add missing rpm dependency 
+- upgrade to version 0.34 to fix performance problems
+
+-------------------------------------------------------------------
+Tue Oct 19 08:38:39 UTC 2010 - coolo@novell.com
+
+- add perl as explicit buildrequire
+
+* Wed Aug 19 2009 tuukka.pasanen@ilmi.fi
+- packaged perl-forks version 0.33 using the buildservice spec file wizard

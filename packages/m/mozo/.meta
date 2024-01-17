@@ -1,0 +1,5 @@
+<package name="mozo" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="X11:MATE:Factory" package="mozo"/>
+</package>

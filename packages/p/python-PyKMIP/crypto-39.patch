@@ -1,0 +1,79 @@
+From 3a50c8484e355e03bea1399f1e72b1c1ef716680 Mon Sep 17 00:00:00 2001
+From: Daniel Garcia Moreno <daniel.garcia@suse.com>
+Date: Thu, 26 Jan 2023 13:07:54 +0100
+Subject: [PATCH] Add cryptography >= 39.0.0 support
+
+The cryptography release 39.0.0 added a new parameter to the serializer
+that's required.
+
+https://cryptography.io/en/latest/changelog/#v39-0-0
+
+This patch fixes the tests test_encrypt_decrypt_asymmetric
+---
+ kmip/services/server/crypto/engine.py | 20 ++++++++++++++++----
+ 1 file changed, 16 insertions(+), 4 deletions(-)
+
+diff --git a/kmip/services/server/crypto/engine.py b/kmip/services/server/crypto/engine.py
+index 838e1b92..e9e8593e 100644
+--- a/kmip/services/server/crypto/engine.py
++++ b/kmip/services/server/crypto/engine.py
+@@ -16,6 +16,7 @@
+ import logging
+ import os
+ 
++import cryptography
+ from cryptography import exceptions as errors
+ from cryptography.hazmat.backends import default_backend
+ from cryptography.hazmat.primitives import serialization, hashes, hmac, cmac
+@@ -930,17 +931,22 @@ def _decrypt_asymmetric(
+                 )
+ 
+             backend = default_backend()
++            params = {}
++            if cryptography.__version__ >= "39.0.0":
++                params["unsafe_skip_rsa_key_validation"] = False
+ 
+             try:
+                 private_key = backend.load_der_private_key(
+                     decryption_key,
+-                    None
++                    None,
++                    **params,
+                 )
+             except Exception:
+                 try:
+                     private_key = backend.load_pem_private_key(
+                         decryption_key,
+-                        None
++                        None,
++                        **params,
+                     )
+                 except Exception:
+                     raise exceptions.CryptographicFailure(
+@@ -1279,18 +1285,24 @@ def _create_RSA_private_key(self,
+                 RSA private key created from key bytes.
+         """
+ 
++        params = {}
++        if cryptography.__version__ >= "39.0.0":
++            params["unsafe_skip_rsa_key_validation"] = False
++
+         try:
+             private_key = serialization.load_pem_private_key(
+                 bytes,
+                 password=None,
+-                backend=default_backend()
++                backend=default_backend(),
++                **params,
+             )
+             return private_key
+         except Exception:
+             private_key = serialization.load_der_private_key(
+                 bytes,
+                 password=None,
+-                backend=default_backend()
++                backend=default_backend(),
++                **params,
+             )
+             return private_key
+ 

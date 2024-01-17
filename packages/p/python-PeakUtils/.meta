@@ -1,0 +1,11 @@
+<package name="python-PeakUtils" project="openSUSE:Factory">
+  <title>Peak detection utilities for 1D data</title>
+  <description>This package provides utilities related to the detection of peaks on 1D data.
+Includes functions to estimate baselines, finding the indexes of peaks in the
+data and performing Gaussian fitting or centroid computation to further
+increase the resolution of the peak detection.
+
+</description>
+  <devel project="devel:languages:python:numeric" package="python-PeakUtils"/>
+  <url>https://bitbucket.org/lucashnegri/peakutils</url>
+</package>

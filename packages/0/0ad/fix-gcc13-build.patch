@@ -1,0 +1,13 @@
+diff --git a/source/tools/atlas/GameInterface/Messages.h b/source/tools/atlas/GameInterface/Messages.h
+index 2fa4780..515ae94 100644
+--- a/source/tools/atlas/GameInterface/Messages.h
++++ b/source/tools/atlas/GameInterface/Messages.h
+@@ -212,7 +212,7 @@ QUERY(GetCurrentMapSize,
+ QUERY(RasterizeMinimap,
+ 		,
+ 		((int, dimension))
+-		((std::vector<uint8_t>, imageBytes))
++		((std::vector<unsigned char>, imageBytes))
+ 		);
+ 
+ QUERY(GetRMSData,

@@ -1,0 +1,9 @@
+[Unit]
+Description=Weekly execution of sarg-reports
+
+[Timer]
+OnCalendar=weekly
+Persistent=true
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,162 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>58c9331c92ac0d3c24ab7b278e1a54c3</srcmd5>
+    <version>11.0.6.0</version>
+    <time>1580842317</time>
+    <user>dimstar_suse</user>
+    <comment>fix installcheck</comment>
+    <requestid>769399</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a5b3cf1456d3646f62bfcaa954cf0072</srcmd5>
+    <version>11.0.7.0</version>
+    <time>1587839153</time>
+    <user>dimstar_suse</user>
+    <comment>OpenJ9 0.20.0 + Oracle April 2020 CPU</comment>
+    <requestid>796282</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>cbb87d45a1be0741826136ade30c36b2</srcmd5>
+    <version>11.0.7.0</version>
+    <time>1591653674</time>
+    <user>dimstar_suse</user>
+    <comment>fix build with gcc 10</comment>
+    <requestid>812432</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9e6bc1291453f4f30bce10628eff853e</srcmd5>
+    <version>11.0.9.0</version>
+    <time>1604510743</time>
+    <user>dimstar_suse</user>
+    <comment>Oracle July and Octobre 2020 CPU</comment>
+    <requestid>845445</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f780d770b408dc3a6e3a49a27bcaf7b3</srcmd5>
+    <version>11.0.10.0</version>
+    <time>1616168531</time>
+    <user>RBrownSUSE</user>
+    <comment>Oracle January 2021 CPU</comment>
+    <requestid>866734</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8a89a7b0886ea8ae08a1cb756ba9169a</srcmd5>
+    <version>11.0.11.0</version>
+    <time>1621034648</time>
+    <user>dimstar_suse</user>
+    <comment>OpenJ9 0.26 including the April 2021 CPU changes</comment>
+    <requestid>893062</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>1e0efff130bd7d040f866093fbb1dd2e</srcmd5>
+    <version>11.0.11.0</version>
+    <time>1623363543</time>
+    <user>dimstar_suse</user>
+    <comment>Fix factory build</comment>
+    <requestid>899087</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>6b636468d63eb1b9b724f6ead934b640</srcmd5>
+    <version>11.0.11.0</version>
+    <time>1624136602</time>
+    <user>dimstar_suse</user>
+    <comment>Allow DWARF5 symbols</comment>
+    <requestid>900753</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>bf3bc5f47d426fafcdee16ade12b12e8</srcmd5>
+    <version>11.0.13.0</version>
+    <time>1635877140</time>
+    <user>dimstar_suse</user>
+    <comment>July and October 2021 CPU</comment>
+    <requestid>928750</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>fd47a970217ade0b2c78a844cb0c3f03</srcmd5>
+    <version>11.0.14.1</version>
+    <time>1646150599</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build + January 2022 CPU</comment>
+    <requestid>957996</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>70172fb0dfe164698b4a080bcfde6406</srcmd5>
+    <version>11.0.15.0</version>
+    <time>1657712698</time>
+    <user>dimstar_suse</user>
+    <comment>April 2022 CPU</comment>
+    <requestid>988556</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3727ff5b333b53b9d43d3631ef1e4a73</srcmd5>
+    <version>11.0.16.0</version>
+    <time>1660662457</time>
+    <user>dimstar_suse</user>
+    <comment>July 2022 CPU</comment>
+    <requestid>995922</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ed94d599d53d054d21d28ed7f80f4f1a</srcmd5>
+    <version>11.0.17.0</version>
+    <time>1667306513</time>
+    <user>dimstar_suse</user>
+    <comment>Security fixes</comment>
+    <requestid>1032470</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>9ac7689e19886e73efded4e6d68b1893</srcmd5>
+    <version>11.0.17.0</version>
+    <time>1677351305</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1067655</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>5539f41bca4d35b381a0ea75c8e850a1</srcmd5>
+    <version>11.0.17.0</version>
+    <time>1677683661</time>
+    <user>dimstar_suse</user>
+    <comment>Mess-up with bug number</comment>
+    <requestid>1068375</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f09e20982a7bb886dc1f838b478e5f73</srcmd5>
+    <version>11.0.18.0</version>
+    <time>1678125371</time>
+    <user>dimstar_suse</user>
+    <comment>January 2023 CPU</comment>
+    <requestid>1069555</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>378a94bd55397fd684a0cf361f9019ea</srcmd5>
+    <version>11.0.18.0</version>
+    <time>1680018697</time>
+    <user>dimstar_suse</user>
+    <comment>fix build in Factory</comment>
+    <requestid>1074972</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>af6f16a26f33a7fbebe584bc99252e4b</srcmd5>
+    <version>11.0.20.0</version>
+    <time>1692110423</time>
+    <user>dimstar_suse</user>
+    <comment>Security updates</comment>
+    <requestid>1104011</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>f7746ee3d5c0c66345c5c0c3e395a9eb</srcmd5>
+    <version>11.0.20.1</version>
+    <time>1693235672</time>
+    <user>anag+factory</user>
+    <comment>out-of-range zip64 regression fix</comment>
+    <requestid>1106060</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>1adcc7878ef5f93bf46b36847d100ecc</srcmd5>
+    <version>11.0.21.0</version>
+    <time>1700772059</time>
+    <user>anag+factory</user>
+    <comment>Security fixes</comment>
+    <requestid>1128324</requestid>
+  </revision>
+</revisionlist>

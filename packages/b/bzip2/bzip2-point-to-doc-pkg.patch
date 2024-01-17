@@ -1,0 +1,14 @@
+Index: bzip2-1.0.7/README
+===================================================================
+--- bzip2-1.0.7.orig/README	2019-06-27 20:15:39.000000000 +0200
++++ bzip2-1.0.7/README	2019-06-27 23:10:21.387272546 +0200
+@@ -17,7 +17,8 @@ in the file LICENSE.
+ 
+ Complete documentation is available in Postscript form (manual.ps),
+ PDF (manual.pdf) or html (manual.html).  A plain-text version of the
+-manual page is available as bzip2.txt.
++manual page is available as bzip2.txt. bzip2 documentation is
++available in separate bzip2-doc package.
+ 
+ 
+ HOW TO BUILD -- UNIX

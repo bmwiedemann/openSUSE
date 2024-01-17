@@ -1,0 +1,5 @@
+<package name="lv2-swh-plugins" project="openSUSE:Factory">
+  <title>SWH's lv2 plugins</title>
+  <description>Lv2 plugins written by SWH.</description>
+  <devel project="multimedia:libs" package="lv2-swh-plugins"/>
+</package>

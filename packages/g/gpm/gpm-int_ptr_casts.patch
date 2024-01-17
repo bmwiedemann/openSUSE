@@ -1,0 +1,13 @@
+Index: src/twiddler.c
+===================================================================
+--- src/twiddler.c.orig	2009-02-09 10:58:53.000000000 +0100
++++ src/twiddler.c	2010-09-08 18:13:31.706407202 +0200
+@@ -429,7 +429,7 @@ char *twiddler_rest_to_value(char *s)
+       return strdup(buf);
+    }
+    if (*ptr == '\\')
+-      return (char *)twiddler_escape_sequence(ptr+1, &len /* unused */);
++      return (char *)(long)twiddler_escape_sequence(ptr+1, &len /* unused */);
+ 
+    if (strlen(ptr)==1) return ((char *)((unsigned long)*ptr & 0xFF));
+ 

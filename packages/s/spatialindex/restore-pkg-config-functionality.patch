@@ -1,0 +1,64 @@
+From ca715a3a68478208a06cf219ea43b1f1ea15080b Mon Sep 17 00:00:00 2001
+From: Mike Taves <mwtoews@gmail.com>
+Date: Tue, 16 Jun 2020 01:04:40 +1200
+Subject: [PATCH] pkg-config: restore functionality (via CMake), change Cflags
+ (#201)
+
+ (adapted for the 1.9.3 release)
+---
+ CMakeLists.txt            | 14 ++++++++++++++
+ src/libspatialindex.pc.in | 14 +++++++-------
+ 2 files changed, 21 insertions(+), 7 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c34ee8d..067543c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -188,6 +188,20 @@ if(SIDX_BUILD_TESTS)
+   add_subdirectory(test)
+ endif()
+ 
++#------------------------------------------------------------------------------
++# pkg-config support
++#------------------------------------------------------------------------------
++if(NOT WIN32)
++  configure_file(
++    ${CMAKE_CURRENT_SOURCE_DIR}/src/libspatialindex.pc.in
++    ${CMAKE_CURRENT_BINARY_DIR}/libspatialindex.pc
++    @ONLY)
++
++  install(FILES
++    ${CMAKE_CURRENT_BINARY_DIR}/libspatialindex.pc
++    DESTINATION ${SIDX_LIB_DIR}/pkgconfig)
++endif()
++
+ #------------------------------------------------------------------------------
+ # CPACK controls
+ #------------------------------------------------------------------------------
+diff --git a/src/libspatialindex.pc.in b/src/libspatialindex.pc.in
+index c205248..90b1805 100644
+--- a/src/libspatialindex.pc.in
++++ b/src/libspatialindex.pc.in
+@@ -1,12 +1,12 @@
+-prefix=@prefix@
+-exec_prefix=@exec_prefix@
+-libdir=@libdir@
+-includedir=@includedir@
++prefix=@CMAKE_INSTALL_PREFIX@
++exec_prefix=${prefix}
++libdir=${prefix}/@SIDX_LIB_DIR@
++includedir=${prefix}/@SIDX_INCLUDE_DIR@
+ 
+ Name: libspatialindex 
+ Description: Generic C/C++ library for spatial indexing
+ Requires: 
+-Version: @PACKAGE_VERSION@
+-Libs: -L@libdir@ -lspatialindex
+-Cflags: -I${includedir}/spatialindex
++Version: @SIDX_VERSION_STRING@
++Libs: -L${libdir} -lspatialindex
++Cflags: -I${includedir}
+ 
+-- 
+2.30.1
+

@@ -1,0 +1,32 @@
+.TH inarpd "8" "December 2020" "inarpd" "Linux"
+.SH NAME
+inarpd \- Inverse ARP daemon for Linux
+.SH SYNOPSIS
+.B inarpd
+[\fI\,-r\/\fR] [\fI\,+r\/\fR] [\fI\,-r\/\fR] [\fI\,+r\/\fR] [\fI\,-v\/\fR] \fI\,interface \/\fR...
+.SH DESCRIPTION
+An Inverse ARP (InARP) daemon for Linux.
+
+.SH OPTIONS
+.TP
+\fB\-r\fR
+do not add host IP route for neighbours (default)
+.TP
++r
+add host IP route for neighbours
+.TP
+\fB\-v\fR
+print info messages
+.TP
+\fB\-v\fR \fB\-v\fR
+print network packets
+.HP
+\fB\-v\fR \fB\-v\fR \fB\-v\fR print debug messages
+
+.SH AUTHORS
+Krzysztof Halasa <khc@pm.waw.pl>
+
+.SH COPYRIGHT
+Copyright \(co 2003 Krzysztof Halasa <khc@pm.waw.pl>.
+License: GPL-2.0-only
+

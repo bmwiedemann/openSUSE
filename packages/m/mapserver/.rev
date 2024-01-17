@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>188ecf1da302a59f8f2509c7d5d7f9da</srcmd5>
+    <version>7.6.4</version>
+    <time>1649093228</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>966846</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>78f081571af2acd71de4e93e4b3f4006</srcmd5>
+    <version>7.6.4</version>
+    <time>1659034686</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>991276</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f2db117626be842eb006f60230c89351</srcmd5>
+    <version>8.0.0</version>
+    <time>1665420439</time>
+    <user>favogt_factory</user>
+    <comment>- Update to release 8</comment>
+    <requestid>1009075</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>0e8c72ce943615799a7abbe55d3b34a3</srcmd5>
+    <version>8.0.0</version>
+    <time>1667734935</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable PHP8 module build in Tumbleweed again since newer SWIG
+  is available. New subpackage php-mapscriptng emitted as a result.
+  [boo#1204736]</comment>
+    <requestid>1033752</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b8c3a55a9a315ba201533856a3619562</srcmd5>
+    <version>8.0.1</version>
+    <time>1694701526</time>
+    <user>anag+factory</user>
+    <comment>- update to 8.0.1 Many changes, see
+  https://www.mapserver.org/development/changelog/changelog-8-0.html
+</comment>
+    <requestid>1110932</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>e626411c83e98f63c804678c365e061b</srcmd5>
+    <version>8.0.1</version>
+    <time>1694808147</time>
+    <user>anag+factory</user>
+    <comment>curate changelog</comment>
+    <requestid>1111509</requestid>
+  </revision>
+</revisionlist>

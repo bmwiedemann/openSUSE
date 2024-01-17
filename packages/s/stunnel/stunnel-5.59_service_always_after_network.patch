@@ -1,0 +1,12 @@
+Index: stunnel-5.69/tools/stunnel.service.in
+===================================================================
+--- stunnel-5.69.orig/tools/stunnel.service.in
++++ stunnel-5.69/tools/stunnel.service.in
+@@ -1,6 +1,7 @@
+ [Unit]
+ Description=TLS tunnel for network daemons
+ After=syslog.target network-online.target
++Wants=syslog.target network-online.target
+ 
+ [Service]
+ LimitNOFILE=20480

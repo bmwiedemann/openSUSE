@@ -1,0 +1,41 @@
+From 6721d3a8b29b13fe88aeeaefe09d457e99d1c6fa Mon Sep 17 00:00:00 2001
+From: Milan Broz <gmazyland@gmail.com>
+Date: Mon, 17 Apr 2023 13:41:17 +0200
+Subject: [PATCH] Use only half of detected free memory on systems without
+ swap.
+
+As tests shows, limiting used Argon2 memory to free memory on
+systems without swap is still not enough.
+Use just half of it, this should bring needed margin while
+still use Argon2.
+
+Note, for very-low memory constrained systems user should
+avoid memory-hard PBKDF (IOW manually select PBKDF2), we
+do not do this automatically.
+---
+ lib/utils_pbkdf.c | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+
+Index: cryptsetup-2.6.1/lib/utils_pbkdf.c
+===================================================================
+--- cryptsetup-2.6.1.orig/lib/utils_pbkdf.c
++++ cryptsetup-2.6.1/lib/utils_pbkdf.c
+@@ -76,10 +76,17 @@ uint32_t pbkdf_adjusted_phys_memory_kb(v
+ 	memory_kb /= 2;
+ 
+ 	/*
+-	 * Never use more that available free space on system without swap.
++	 * Never use more that half of available free memory on system without swap.
+ 	 */
+ 	if (!crypt_swapavailable()) {
+ 		free_kb = crypt_getphysmemoryfree_kb();
++
++		/*
++		 * Using exactly free memory causes OOM too, use only half of the value.
++		 * Ignore small values (< 64MB), user should use PBKDF2 in such environment.
++		 */
++		free_kb /= 2;
++
+ 		if (free_kb > (64 * 1024) && free_kb < memory_kb)
+ 			return free_kb;
+ 	}

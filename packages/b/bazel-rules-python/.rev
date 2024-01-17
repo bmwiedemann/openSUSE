@@ -1,0 +1,17 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>39587c70a41988f03cc3c96b635bfb52</srcmd5>
+    <version>0.0.1</version>
+    <time>1583835097</time>
+    <user>dimstar_suse</user>
+    <comment>This is a new dependency needed to fix envoy-proxy and cilium-proxy
+build after protobuf upgrade:
+
+https://build.opensuse.org/staging_workflows/openSUSE:Factory/staging_projects/openSUSE:Factory:Staging:E
+
+Project where envoy-proxy and cilium-proxy are fixed:
+
+https://build.opensuse.org/project/show/home:mrostecki:branches:devel:kubic</comment>
+    <requestid>783242</requestid>
+  </revision>
+</revisionlist>

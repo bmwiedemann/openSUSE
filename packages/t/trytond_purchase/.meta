@@ -1,0 +1,5 @@
+<package name="trytond_purchase" project="openSUSE:Factory">
+  <title>The purchase module of the Tryton application platform.</title>
+  <description></description>
+  <devel project="Application:ERP:GNUHealth:Factory" package="trytond_purchase"/>
+</package>

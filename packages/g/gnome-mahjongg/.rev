@@ -1,0 +1,244 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b8de98b794e46a423124ed4aa47912d9</srcmd5>
+    <version>3.7.90</version>
+    <time>1363691735</time>
+    <user>coolo</user>
+    <comment>New package - enter legal queue prior the big GNOME 3.8 push</comment>
+    <requestid>159229</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>49b53459482a07d115ab4e6079fc2542</srcmd5>
+    <version>3.8.0</version>
+    <time>1364408652</time>
+    <user>coolo</user>
+    <comment>Update to 3.8.0 (forwarded request 161326 from Zaitor)</comment>
+    <requestid>161359</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5e761e7c4f3018edd11a550d08c8d2ef</srcmd5>
+    <version>3.9.90</version>
+    <time>1377872823</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.9.90</comment>
+    <requestid>196236</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>5e761e7c4f3018edd11a550d08c8d2ef</srcmd5>
+    <version>3.9.90</version>
+    <time>1379662493</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e97cb503adad4ff26b4c3f4aa79f2b2f</srcmd5>
+    <version>3.9.92</version>
+    <time>1379919566</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.9.92</comment>
+    <requestid>199992</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8680730bea65bea5451b8ccf448de1d3</srcmd5>
+    <version>3.10.0</version>
+    <time>1380295520</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.10.0</comment>
+    <requestid>200928</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>fc3b97e05ed74a5f5de636a0644458c9</srcmd5>
+    <version>3.10.1</version>
+    <time>1382011736</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to 3.10.1 - GNOME Stable branch. Only translations. (forwarded request 203328 from RBrownCCB)</comment>
+    <requestid>203369</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>cf09bbf0fda564d3f6d42db933c1afaa</srcmd5>
+    <version>3.10.2</version>
+    <time>1385289084</time>
+    <user>coolo</user>
+    <comment>Push GNOME:Factory</comment>
+    <requestid>207668</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>22f8876bc0f901d3051f19c7d74e2be8</srcmd5>
+    <version>3.12.1</version>
+    <time>1399317319</time>
+    <user>coolo</user>
+    <comment>Push GNOME:Factory - GNOME 3.12.1</comment>
+    <requestid>231723</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d18ba6f891b6fecef19294e3fe17cfde</srcmd5>
+    <version>3.12.2</version>
+    <time>1400588695</time>
+    <user>coolo</user>
+    <comment>Stable update (forwarded request 234427 from Zaitor)</comment>
+    <requestid>234516</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>d18ba6f891b6fecef19294e3fe17cfde</srcmd5>
+    <version>3.12.2</version>
+    <time>1409301028</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>5dc21fe649ba4eb5405d0fe2bac34f0c</srcmd5>
+    <version>3.14.0</version>
+    <time>1412098718</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.14.0 (forwarded request 251896 from Zaitor)</comment>
+    <requestid>252103</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>4f88821f4d73d963e4d7c3644baf3c62</srcmd5>
+    <version>3.14.1</version>
+    <time>1413383222</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>256215</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ab3072fb6d2eceb58817b2674f211614</srcmd5>
+    <version>3.16.0</version>
+    <time>1427736445</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 292849 from dimstar)</comment>
+    <requestid>293033</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>a654583ee3cd7d0a63c2d1ecd680548a</srcmd5>
+    <version>3.16.1</version>
+    <time>1431979779</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>306803</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>eaa0507926162ab1535309a10f5d2922</srcmd5>
+    <version>3.18.0</version>
+    <time>1444141714</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.18.0 (forwarded request 332795 from dimstar)</comment>
+    <requestid>332887</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>5df700ecc4ee90c4474b964ce2bd0935</srcmd5>
+    <version>3.20.0</version>
+    <time>1459255171</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.20.0 (forwarded request 376977 from dimstar)</comment>
+    <requestid>377274</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>862609943e54e2fb8258aaf7b15359ed</srcmd5>
+    <version>3.22.0</version>
+    <time>1474623630</time>
+    <user>dimstar_suse</user>
+    <comment>New stable (forwarded request 429369 from Zaitor)</comment>
+    <requestid>429379</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>f8576235dfd610f024e0d8d3621c3fee</srcmd5>
+    <version>3.22.0</version>
+    <time>1520588302</time>
+    <user>dimstar_suse</user>
+    <comment>spec-cleaner (forwarded request 581088 from dimstar)</comment>
+    <requestid>582733</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>ef58d6e7090153849fa3d08bf4a010f6</srcmd5>
+    <version>3.32.0</version>
+    <time>1554458375</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689467</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>421cf27aa1c0ead9796c2be319581d5f</srcmd5>
+    <version>3.34.0</version>
+    <time>1571401936</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from {project}</comment>
+    <requestid>736546</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>336717f564659b8405fb8c38058cbc69</srcmd5>
+    <version>3.34.0</version>
+    <time>1580152457</time>
+    <user>dimstar_suse</user>
+    <comment>Eliminate the -lang recommends (forwarded request 767138 from dimstar)</comment>
+    <requestid>767404</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>adf30bd257922eadc44b99d836c37012</srcmd5>
+    <version>3.36.1</version>
+    <time>1587659480</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 795051 from iznogood)</comment>
+    <requestid>795204</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>03e2cead35d8de68804a5959b3e025f8</srcmd5>
+    <version>3.36.2</version>
+    <time>1588023813</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release, not buildtested! (forwarded request 797733 from iznogood)</comment>
+    <requestid>798346</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>220e1ffa9f403a7a69147fa4101b0711</srcmd5>
+    <version>3.38.3</version>
+    <time>1605800702</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 3.38</comment>
+    <requestid>847214</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>8cc5b564a4205b726c3274d5fb369c65</srcmd5>
+    <version>3.38.3</version>
+    <time>1644007752</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>951431</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>d79397277a7d1ef13636b18208a441e0</srcmd5>
+    <version>3.38.3</version>
+    <time>1682522784</time>
+    <user>dimstar_suse</user>
+    <comment>- Redownload 26.patch from upstream, changed since it is now
+  checked-in upstream, and we added pre check-in. However this
+  leads to a need for rebase, do so, and no longer link to the
+  patch upstream in spec.
+
+- Re-generate fix-new-cairo-select-tile.patch against the 3.38.3
+  sources
+
+- Add fix-new-cairo-select-tile.patch: Fix selecting a tile since
+  cairo 1.17.8. Cairo 1.17.8 includes a fix for out of range
+  coordinates which exposed a problem with the values used to
+  translate the context in GameView.find_tile() (boo#1209827).
+  https://gitlab.gnome.org/GNOME/gnome-mahjongg/-/merge_requests/35</comment>
+    <requestid>1082973</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>80141eb7f7d53648e5099102a9381603</srcmd5>
+    <version>3.40.0</version>
+    <time>1685632853</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1090251</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>441d2e6e771e1847fa9c69210bc9506a</srcmd5>
+    <version>3.40.0+35</version>
+    <time>1695758537</time>
+    <user>anag+factory</user>
+    <comment> (forwarded request 1113524 from iznogood)</comment>
+    <requestid>1113611</requestid>
+  </revision>
+</revisionlist>

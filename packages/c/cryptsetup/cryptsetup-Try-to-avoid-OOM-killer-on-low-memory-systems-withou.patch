@@ -1,0 +1,160 @@
+From 899bad8c06957a94a198d1eaa293ed8db205f1de Mon Sep 17 00:00:00 2001
+From: Milan Broz <gmazyland@gmail.com>
+Date: Mon, 20 Feb 2023 16:45:36 +0100
+Subject: [PATCH] Try to avoid OOM killer on low-memory systems without swap.
+
+Benchmark for memory-hard KDF is tricky, seems that relying
+on maximum half of physical memory is not enough.
+
+Let's allow only free physical available space if there is no swap.
+This should not cause changes on normal systems, at least.
+---
+ lib/internal.h     |  2 ++
+ lib/utils.c        | 47 ++++++++++++++++++++++++++++++++++++++++++++++
+ lib/utils_pbkdf.c  | 11 ++++++++++-
+ tests/api-test-2.c | 12 ++++++++----
+ 4 files changed, 67 insertions(+), 5 deletions(-)
+
+Index: cryptsetup-2.6.1/lib/internal.h
+===================================================================
+--- cryptsetup-2.6.1.orig/lib/internal.h
++++ cryptsetup-2.6.1/lib/internal.h
+@@ -169,6 +169,8 @@ int crypt_uuid_cmp(const char *dm_uuid,
+ size_t crypt_getpagesize(void);
+ unsigned crypt_cpusonline(void);
+ uint64_t crypt_getphysmemory_kb(void);
++uint64_t crypt_getphysmemoryfree_kb(void);
++bool crypt_swapavailable(void);
+ 
+ int init_crypto(struct crypt_device *ctx);
+ 
+Index: cryptsetup-2.6.1/lib/utils.c
+===================================================================
+--- cryptsetup-2.6.1.orig/lib/utils.c
++++ cryptsetup-2.6.1/lib/utils.c
+@@ -59,6 +59,53 @@ uint64_t crypt_getphysmemory_kb(void)
+ 	return phys_memory_kb;
+ }
+ 
++uint64_t crypt_getphysmemoryfree_kb(void)
++{
++	long pagesize, phys_pages;
++	uint64_t phys_memoryfree_kb;
++
++	pagesize = sysconf(_SC_PAGESIZE);
++	phys_pages = sysconf(_SC_AVPHYS_PAGES);
++
++	if (pagesize < 0 || phys_pages < 0)
++		return 0;
++
++	phys_memoryfree_kb = pagesize / 1024;
++	phys_memoryfree_kb *= phys_pages;
++
++	return phys_memoryfree_kb;
++}
++
++bool crypt_swapavailable(void)
++{
++	int fd;
++	ssize_t size;
++	char buf[4096], *p;
++	uint64_t total;
++
++	if ((fd = open("/proc/meminfo", O_RDONLY)) < 0)
++		return true;
++
++	size = read(fd, buf, sizeof(buf));
++	close(fd);
++	if (size < 1)
++		return true;
++
++	if (size < (ssize_t)sizeof(buf))
++		buf[size] = 0;
++	else
++		buf[sizeof(buf) - 1] = 0;
++
++	p = strstr(buf, "SwapTotal:");
++	if (!p)
++		return true;
++
++	if (sscanf(p, "SwapTotal: %" PRIu64 " kB", &total) != 1)
++		return true;
++
++	return total > 0;
++}
++
+ void crypt_process_priority(struct crypt_device *cd, int *priority, bool raise)
+ {
+ 	int _priority, new_priority;
+Index: cryptsetup-2.6.1/lib/utils_pbkdf.c
+===================================================================
+--- cryptsetup-2.6.1.orig/lib/utils_pbkdf.c
++++ cryptsetup-2.6.1/lib/utils_pbkdf.c
+@@ -63,7 +63,7 @@ const struct crypt_pbkdf_type *crypt_get
+ 
+ uint32_t pbkdf_adjusted_phys_memory_kb(void)
+ {
+-	uint64_t memory_kb = crypt_getphysmemory_kb();
++	uint64_t free_kb, memory_kb = crypt_getphysmemory_kb();
+ 
+ 	/* Ignore bogus value */
+ 	if (memory_kb < (128 * 1024) || memory_kb > UINT32_MAX)
+@@ -75,6 +75,15 @@ uint32_t pbkdf_adjusted_phys_memory_kb(v
+ 	 */
+ 	memory_kb /= 2;
+ 
++	/*
++	 * Never use more that available free space on system without swap.
++	 */
++	if (!crypt_swapavailable()) {
++		free_kb = crypt_getphysmemoryfree_kb();
++		if (free_kb > (64 * 1024) && free_kb < memory_kb)
++			return free_kb;
++	}
++
+ 	return memory_kb;
+ }
+ 
+Index: cryptsetup-2.6.1/tests/api-test-2.c
+===================================================================
+--- cryptsetup-2.6.1.orig/tests/api-test-2.c
++++ cryptsetup-2.6.1/tests/api-test-2.c
+@@ -2802,7 +2802,8 @@ static void Pbkdf(void)
+ 	OK_(strcmp(pbkdf->type, default_luks2_pbkdf));
+ 	OK_(strcmp(pbkdf->hash, default_luks1_hash));
+ 	EQ_(pbkdf->time_ms, default_luks2_iter_time);
+-	EQ_(pbkdf->max_memory_kb, adjusted_pbkdf_memory());
++	GE_(pbkdf->max_memory_kb, 64 * 1024);
++	GE_(adjusted_pbkdf_memory(), pbkdf->max_memory_kb);
+ 	EQ_(pbkdf->parallel_threads, _min(cpus_online(), default_luks2_parallel_threads));
+ 	// set and verify argon2 type
+ 	OK_(crypt_set_pbkdf_type(cd, &argon2));
+@@ -2827,7 +2828,8 @@ static void Pbkdf(void)
+ 	OK_(strcmp(pbkdf->type, default_luks2_pbkdf));
+ 	OK_(strcmp(pbkdf->hash, default_luks1_hash));
+ 	EQ_(pbkdf->time_ms, default_luks2_iter_time);
+-	EQ_(pbkdf->max_memory_kb, adjusted_pbkdf_memory());
++	GE_(pbkdf->max_memory_kb, 64 * 1024);
++	GE_(adjusted_pbkdf_memory(), pbkdf->max_memory_kb);
+ 	EQ_(pbkdf->parallel_threads, _min(cpus_online(), default_luks2_parallel_threads));
+ 	// try to pass illegal values
+ 	argon2.parallel_threads = 0;
+@@ -2858,14 +2860,16 @@ static void Pbkdf(void)
+ 	OK_(strcmp(pbkdf->type, default_luks2_pbkdf));
+ 	OK_(strcmp(pbkdf->hash, default_luks1_hash));
+ 	EQ_(pbkdf->time_ms, default_luks2_iter_time);
+-	EQ_(pbkdf->max_memory_kb, adjusted_pbkdf_memory());
++	GE_(pbkdf->max_memory_kb, 64 * 1024);
++	GE_(adjusted_pbkdf_memory(), pbkdf->max_memory_kb);
+ 	EQ_(pbkdf->parallel_threads, _min(cpus_online(), default_luks2_parallel_threads));
+ 	crypt_set_iteration_time(cd, 1);
+ 	OK_(crypt_load(cd, CRYPT_LUKS, NULL));
+ 	OK_(strcmp(pbkdf->type, default_luks2_pbkdf));
+ 	OK_(strcmp(pbkdf->hash, default_luks1_hash));
+ 	EQ_(pbkdf->time_ms, 1);
+-	EQ_(pbkdf->max_memory_kb, adjusted_pbkdf_memory());
++	GE_(pbkdf->max_memory_kb, 64 * 1024);
++	GE_(adjusted_pbkdf_memory(), pbkdf->max_memory_kb);
+ 	EQ_(pbkdf->parallel_threads, _min(cpus_online(), default_luks2_parallel_threads));
+ 	CRYPT_FREE(cd);
+ 

@@ -1,0 +1,287 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>da6cd6993e2b7cbbdf16234597286442</srcmd5>
+    <version>0.95</version>
+    <time>1188700897</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="70">
+    <srcmd5>da6cd6993e2b7cbbdf16234597286442</srcmd5>
+    <version>0.95</version>
+    <time>1188700897</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="71">
+    <srcmd5>caedeeca1294783f321664a4f9d6f5bd</srcmd5>
+    <version>0.95</version>
+    <time>1245338240</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6914d8109d2f836ba8eca4097ac1160d</srcmd5>
+    <version>1.07</version>
+    <time>1248822754</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>6914d8109d2f836ba8eca4097ac1160d</srcmd5>
+    <version>1.07</version>
+    <time>1248822754</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>d5d4f1ab0b83edb023da4e31d3750af3</srcmd5>
+    <version>1.07</version>
+    <time>1263293886</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-YAML-Syck based on submit request 28947 from user coolo
+</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>744f52128144ded10b090ed17b497d61</srcmd5>
+    <version>1.07</version>
+    <time>1268068823</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-YAML-Syck based on submit request 34261 from user coolo
+</comment>
+    <requestid>34261</requestid>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>86214d91cc4a8fbe8a173dca11f42332</srcmd5>
+    <version>1.07</version>
+    <time>1268925674</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>86214d91cc4a8fbe8a173dca11f42332</srcmd5>
+    <version>1.07</version>
+    <time>1278667380</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="9">
+    <srcmd5>86214d91cc4a8fbe8a173dca11f42332</srcmd5>
+    <version>1.07</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>078c989e53bce5113fee8e7fdba68280</srcmd5>
+    <version>1.10</version>
+    <time>1279566181</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-YAML-Syck based on submit request 43332 from user computersalat
+</comment>
+    <requestid>43332</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>68819b7bec40be122b05597d41ac8c70</srcmd5>
+    <version>1.12</version>
+    <time>1282665200</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-YAML-Syck based on submit request 45728 from user computersalat
+</comment>
+    <requestid>45728</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>1fc534f500597e4bfa735858a21d1ec5</srcmd5>
+    <version>unknown</version>
+    <time>1283787258</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-YAML-Syck based on submit request 47129 from user computersalat
+</comment>
+    <requestid>47129</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>14e7c2a8b9abc6113ce150465ede5366</srcmd5>
+    <version>1.14</version>
+    <time>1291993700</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55371 from user coolo
+</comment>
+    <requestid>55371</requestid>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>671a420e5884982b3111f0cbb8d09126</srcmd5>
+    <version>1.14</version>
+    <time>1291993708</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55371
+</comment>
+  </revision>
+  <revision rev="16" vrev="7">
+    <srcmd5>671a420e5884982b3111f0cbb8d09126</srcmd5>
+    <version>1.14</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>5433155029d63162c285d1378c56e302</srcmd5>
+    <version>1.17</version>
+    <time>1301579310</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65661 from user coolo
+</comment>
+    <requestid>65661</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>1e5a1fa051454288076ac32d449cd3e1</srcmd5>
+    <version>1.17</version>
+    <time>1301579320</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65661
+</comment>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>1e5a1fa051454288076ac32d449cd3e1</srcmd5>
+    <version>1.17</version>
+    <time>1319182325</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>3dc819625d2a10e6bc33fa4e66ffcf2a</srcmd5>
+    <version>1.19</version>
+    <time>1320937329</time>
+    <user>coolo</user>
+    <comment>- update to 1.19: no user-visible changes
+
+- update to 1.18:
+  * perl RT#102606 - only lvalue subroutines are supposed to return the
+    argument to &quot;return&quot; without copying it; stop relying on a pre-5.15 bug
+  * break YAML::Syck dependency on Scalar::Util</comment>
+    <requestid>90925</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>7414ccf0fef3627f7dd2e28d91a0f897</srcmd5>
+    <version>1.19</version>
+    <time>1323193811</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>7414ccf0fef3627f7dd2e28d91a0f897</srcmd5>
+    <version>1.19</version>
+    <time>1340183958</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="23" vrev="6">
+    <srcmd5>7414ccf0fef3627f7dd2e28d91a0f897</srcmd5>
+    <version>1.19</version>
+    <time>1359109860</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="7">
+    <srcmd5>c66497a6416c360d6916d7258b2ca4b9</srcmd5>
+    <version>1.19</version>
+    <time>1366183443</time>
+    <user>coolo</user>
+    <comment>- Add Source URL, see https://en.opensuse.org/SourceUrls (forwarded request 164064 from namtrac)</comment>
+    <requestid>164078</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>b3ae1d4adc4eb4599afe816407a4ec57</srcmd5>
+    <version>1.27</version>
+    <time>1371814400</time>
+    <user>coolo</user>
+    <comment>- updated to 1.27
+  * Resolve RT#84466 not fixed in 1.26 It failed about 10% of the time.
+  * Resolve RT#84882 and RT#84466 hash randomisation in yaml-alias.t on perl 5.18.0
+  * Apply patch from RT 78363 - MinGW64 compatibility
+  * Implement $JSON::Syck::MaxDepth
+  * Prevent failure when the same object is seen twice during Dump.
+  * Prevent YAML from being influnced by the previous
+    change
+  * Make sure that LoadBlessed=0 blocks all blessing.
+  * Start listing primary repo as toddr on github ( http://github.com/toddr/YAML-Syck )
+  * README refreshed via perldoc -t
+  * Fix error message typo: s/existant/existent/g
+  * Fix for non-printable character detection
+  * Quote if non-printable characters are present
+  * Change LoadBlessed=0 to not bless under ANY circumstances</comment>
+    <requestid>178990</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>0ee9ce633d42dca95cb607be98021069</srcmd5>
+    <version>1.27</version>
+    <time>1372325804</time>
+    <user>coolo</user>
+    <comment>- add 0001-Recognize-all-wide-unicode-characters.patch patch. Fixes
+  test on PowerPC (forwarded request 181073 from k0da)</comment>
+    <requestid>181077</requestid>
+  </revision>
+  <revision rev="27" vrev="4">
+    <srcmd5>0ee9ce633d42dca95cb607be98021069</srcmd5>
+    <version>1.27</version>
+    <time>1379663930</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="6">
+    <srcmd5>0ee9ce633d42dca95cb607be98021069</srcmd5>
+    <version>1.27</version>
+    <time>1409302582</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>5c8733776854673acc95ac6829a97871</srcmd5>
+    <version>1.29</version>
+    <time>1429989320</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>296878</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>e882c3f21bdec2f0260dd4d2cf438a8e</srcmd5>
+    <version>1.30</version>
+    <time>1493363473</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>489833</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>0c435d181f295be76a86bfa82993c373</srcmd5>
+    <version>1.30</version>
+    <time>1539013643</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build
+</comment>
+    <requestid>640451</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>237ca76f8116d6014f4f02e9ac1f5f8e</srcmd5>
+    <version>1.31</version>
+    <time>1542012075</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>647386</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>320a0f10c3b6c3198f40d680bdd02e8a</srcmd5>
+    <version>1.31</version>
+    <time>1542282046</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>648968</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>9f2d7e7b7d0c903e5289f775b1f68648</srcmd5>
+    <version>1.32</version>
+    <time>1580300430</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>768196</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>d4c860f037ad7f610053ca17f5f60f7e</srcmd5>
+    <version>1.34</version>
+    <time>1603821693</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844247</requestid>
+  </revision>
+</revisionlist>

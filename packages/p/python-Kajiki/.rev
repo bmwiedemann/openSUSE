@@ -1,0 +1,130 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1fb6cfaa489f7762de26600be525eeab</srcmd5>
+    <version>0.3.5</version>
+    <time>1358666199</time>
+    <user>coolo</user>
+    <comment>Future OpenStack dependency</comment>
+    <requestid>148813</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>1fb6cfaa489f7762de26600be525eeab</srcmd5>
+    <version>0.3.5</version>
+    <time>1359109977</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>1fb6cfaa489f7762de26600be525eeab</srcmd5>
+    <version>0.3.5</version>
+    <time>1379664104</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>aca2ccace161da46805bba7e4b9c5b89</srcmd5>
+    <version>0.3.5</version>
+    <time>1382692800</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204583</requestid>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>aca2ccace161da46805bba7e4b9c5b89</srcmd5>
+    <version>0.3.5</version>
+    <time>1409302790</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>73424c41530c76d996fc562f87cdcf9e</srcmd5>
+    <version>0.7.0</version>
+    <time>1503061256</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509185</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>535147522ed2eaf01a8e23c783ab1a23</srcmd5>
+    <version>0.7.0</version>
+    <time>1503926089</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing python-nine Requires</comment>
+    <requestid>518554</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>51a3cddc8ce58990df4c51e73f8e0131</srcmd5>
+    <version>0.7.0</version>
+    <time>1548334950</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>659273</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4815dcbac3cb7acd1bdbea63589a60b4</srcmd5>
+    <version>0.7.2</version>
+    <time>1552380721</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.2:
+  * Allow to replace gettext function by providing it in the template context or through base_globals in Loader
+  * Improve parsing of ${} expressions and fix syntax errors reporting in braced expressions.
+  * Improve parsing of documents with comments before the root element</comment>
+    <requestid>681852</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>97ca7710fd6a52125d381e258d03917b</srcmd5>
+    <version>0.8.0</version>
+    <time>1561195483</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>711309</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c473efb3cb3956ed5082afafe398a80f</srcmd5>
+    <version>0.8.2</version>
+    <time>1578950602</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>764113</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>10bc527aa57a77b5cbb9588944a2d777</srcmd5>
+    <version>0.8.2</version>
+    <time>1597668028</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>827221</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>300da90ffd930838b4551f7a8ff4b3f9</srcmd5>
+    <version>0.8.3</version>
+    <time>1630617620</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>915772</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5917491f38a51ed133f980a4e89108be</srcmd5>
+    <version>0.9.2</version>
+    <time>1678283631</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.2:
+  * Python 3.11 compatibility.
+  * Documentation updates and clarifications.
+  * Unit test updates.
+  * Fixed compatibility for Python 3.11.
+  * The unit tests were moved out of the ``kajiki`` package:
+    tests are now under the ``tests/`` directory.
+  * Migrated from Travis CI to GitHub Actions.
+  * Support dropped for Python 2.7.
+  * Fixed up lnotab bugs in Python 3.6+ (``ERROR LOOKING UP
+    LINE`` messages).
+  * DTD will not be inserted before an ```` declaration
+    anymore.
+  * Dependency on ``nine`` dropped.
+  * Dropped integration for TurboGears 1.
+  * Improved end-to-end testing.</comment>
+    <requestid>1070115</requestid>
+  </revision>
+</revisionlist>

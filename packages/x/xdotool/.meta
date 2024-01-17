@@ -1,0 +1,6 @@
+<package name="xdotool" project="openSUSE:Factory">
+  <title>Fake keyboard/mouse input</title>
+  <description>This tool lets you programatically (or manually) simulate keyboard input and mouse activity, move and resize windows, etc. It does this using X11's XTEST extension and other Xlib functions.</description>
+  <devel project="X11:Utilities" package="xdotool"/>
+  <url>http://www.semicomplete.com/projects/xdotool/</url>
+</package>

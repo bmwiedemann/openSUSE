@@ -1,0 +1,8 @@
+diff -Nura plymouth-0.9.5~git20220412.e960111/themes/spinfinity/Makefile.am plymouth-0.9.5~git20220412.e960111_new/themes/spinfinity/Makefile.am
+--- plymouth-0.9.5~git20220412.e960111/themes/spinfinity/Makefile.am	2022-04-15 16:39:24.000000000 +0800
++++ plymouth-0.9.5~git20220412.e960111_new/themes/spinfinity/Makefile.am	2022-04-18 15:47:44.346708483 +0800
+@@ -54,4 +54,3 @@
+ EXTRA_DIST = spinfinity.plymouth.in
+ 
+ install-data-hook:
+-	ln -sf $(logofile) $(DESTDIR)$(themedir)/header-image.png

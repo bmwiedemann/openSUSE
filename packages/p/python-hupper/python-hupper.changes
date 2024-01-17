@@ -1,0 +1,69 @@
+-------------------------------------------------------------------
+Sun Jun 11 08:39:17 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Thu Sep 29 02:24:09 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- 1.10.3 (2021-05-13)
+  Support Python 3.8 and 3.9.
+  Fix an issue with bare .pyc files in the source folder causing unhandled exceptions. See https://github.com/Pylons/hupper/pull/69
+  Fix issues with using the Watchman file monitor on versions newer than Watchman 4.9.0. This fix modifies hupper to use Watchman’s
+  watch-project capabilities which also support reading the .watchmanconfig file to control certain properties of the monitoring.
+  See https://github.com/Pylons/hupper/pull/70 
+
+-------------------------------------------------------------------
+Thu Apr  9 12:13:55 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 1.10.2
+  * Support --shutdown-interval on the hupper CLI.
+  * Support --reload-interval on the hupper CLI.
+  * Do not choke when stdin is not a TTY while waiting for changes after a crash.
+  * Fix deprecation warnings caused by using the imp module on newer versions of Python.
+  * Avoid acquiring locks in the reloader process's signal handlers.
+  * Handle a SIGTERM signal by forwarding it to the child process and 
+    gracefully waiting for it to exit. This should enable using hupper 
+    from within docker containers and other systems that want to control 
+    the reloader process.
+
+-------------------------------------------------------------------
+Sat Jan 11 14:51:39 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use pyproject_install macro (boo#1094323)
+
+-------------------------------------------------------------------
+Mon Aug  5 11:54:38 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.8.1
+  * Do not show the ``KeyboardInterrupt`` stacktrace when killing ``hupper``
+    while waiting for a reload.
+  * If the worker process crashes, ``hupper`` can be forced to reload the worker
+    by pressing the ``ENTER`` key in the terminal instead of waiting to change a
+    file.
+    See https://github.com/Pylons/hupper/pull/53
+  * On Python 3.5+ support recursive glob syntax in ``reloader.watch_files``.
+    See https://github.com/Pylons/hupper/pull/52
+
+-------------------------------------------------------------------
+Sun May 19 23:39:33 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Switch to wheel, which doesn't have the problematic
+  CC-noncomercial licensed documentation.
+
+-------------------------------------------------------------------
+Tue May  7 12:14:04 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.6.1
+  * lot of changes, see CHANGES.rst
+- remove -doc
+
+-------------------------------------------------------------------
+Tue Dec  4 13:07:06 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Fri Jul 14 17:41:31 UTC 2017 - aloisio@gmx.com
+
+- Initial package (1.0)

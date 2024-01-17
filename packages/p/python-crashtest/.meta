@@ -1,0 +1,5 @@
+<package name="python-crashtest" project="openSUSE:Factory">
+  <title></title>
+  <description>Manage Python errors with ease</description>
+  <devel project="devel:languages:python" package="python-crashtest"/>
+</package>

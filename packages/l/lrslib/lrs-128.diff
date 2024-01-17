@@ -1,0 +1,43 @@
+From: Jan Engelhardt <jengelh@inai.de>
+
+A number of platforms do not even have __int128 (e.g. i586). Disable it hard.
+
+[   15s] lrslong.h:191:9: error: '__int128' is not supported on this target
+[   15s]   191 | typedef __int128 lrs_mp[1];     /* type lrs_mp holds one 128-bit integer */
+[   15s]       |         ^~~~~~~~
+
+---
+ makefile |   12 +++++++-----
+ 1 file changed, 7 insertions(+), 5 deletions(-)
+
+Index: lrslib-071b/makefile
+===================================================================
+--- lrslib-071b.orig/makefile
++++ lrslib-071b/makefile
+@@ -213,11 +213,13 @@ SOMINOR ?=.0.0
+ SHLIB ?=$(SONAME)$(SOMINOR)
+ SHLINK ?=liblrs.so
+ 
++ifeq (${HAVE_INT128},1)
+ SHLIBOBJ2=lrslib2-shr.o lrslong2-shr.o
+-
+-# for 32 bit machines
+-
+-# SHLIBOBJ2=
++XCORE := lrs.o
++else
++SHLIBOBJ2=
++XCORE := lrs64.o
++endif
+ 
+ SHLIBOBJ=lrslong1-shr.o lrslib1-shr.o  \
+ 	lrslibgmp-shr.o lrsgmp-shr.o lrsdriver-shr.o \
+@@ -240,7 +242,7 @@ ${SHLINK}: ${SONAME}
+ 
+ all-shared: ${SHLIBBIN}
+ 
+-lrs-shared: ${SHLINK} lrs-shared.o
++lrs-shared: ${SHLINK} ${XCORE}
+ 	$(CC) $^ -o $@ -L . -llrs
+ 
+ 

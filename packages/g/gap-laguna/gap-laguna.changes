@@ -1,0 +1,61 @@
+-------------------------------------------------------------------
+Sun Jun 25 09:47:44 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.9.6
+  * Janitorial changes only
+
+-------------------------------------------------------------------
+Sat Nov 19 00:23:45 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.9.5
+  * Fix a bug in `Inverse` for non-normalized units.
+  * Turn `IsGroupOfUnitsOfMagmaRing`, `IsUnitGroupOfGroupRing`
+    and `IsNormalizedUnitGroupOfGroupRing` properties into
+    categories.
+  * Turn `IsSymmetric`, `IsUnitary` into properties.
+  * Implement computation of MIP-related invariants of p-groups
+    and their modular group algebras.
+
+-------------------------------------------------------------------
+Wed Nov 14 23:35:39 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 3.9.0
+   * Fix the ordering of weighted basis elements: Now, after
+     sorting elements of the weighted basis by their weights,
+     elements of the same weight will be sorted (w.r.t. `<`).
+     This will ensure that their order does not rely on the
+     treatment of elements of the same weight by the sorting
+     algorithm.
+
+-------------------------------------------------------------------
+Sun Dec 24 17:10:22 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 3.8.0
+  * Fixed a bug in PcPresentationOfNormalizedUnit that may cause
+    NaturalBijectionToPcNormalizedUnitGroup returning wrong
+    results for p>2
+
+-------------------------------------------------------------------
+Sat Sep  9 19:59:19 UTC 2017 - jengelh@inai.de
+
+- Update to new upstrem release 3.7.0
+  * Fixed a bug in Augmentation returning an integer zero for
+    zero element of a group ring, being calculated as the sum
+    over an empty list. Now it will properly return the zero
+    element of the underlying ring
+  * Fixed a bug in PcPresentationOfNormalizedUnit that may cause
+    NaturalBijectionToPcNormalizedUnitGroup returning wrong
+    results for p>2.
+
+-------------------------------------------------------------------
+Thu Feb  6 22:25:00 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 3.6.4
+* Fixed a bug that might lead to a break loop in AugmentationIdeal
+* Updated the test example for GAP 4.7 release replacing
+  WreathProduct by StandardWreathProduct
+
+-------------------------------------------------------------------
+Fri May 10 13:47:02 UTC 2013 - jengelh@inai.de
+
+- Split laguna (version 3.6.3) off the gap RPM package

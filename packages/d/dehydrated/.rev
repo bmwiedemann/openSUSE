@@ -1,0 +1,299 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>54bdf4fcdb9329080bdeb4cff3ca51f1</srcmd5>
+    <version>0.3.1</version>
+    <time>1485511222</time>
+    <user>dimstar_suse</user>
+    <comment>Lightweight LE client (formally known as letsencrypt.sh). I'll maintain in in TW.</comment>
+    <requestid>441496</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>800ff99458a26cb7d70f8c2dd6fa96b2</srcmd5>
+    <version>0.3.1</version>
+    <time>1486968545</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>455792</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>955eec40bf0f9b482146164d6463488b</srcmd5>
+    <version>0.4.0</version>
+    <time>1488479919</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>460891</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>97c15b2ef0ba8c1e4ea462e8e79affa0</srcmd5>
+    <version>0.4.0</version>
+    <time>1507391465</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unused hooks directory
+- Introduced a directory for custom post-run hooks executed as root,
+  see README.SUSE for details. (not to be confused with the native hooks
+  run as dehyrated user)
+
+- Clarify necessity of enabling dehydrated.timer in README.SUSE
+- Submit to SLE15 as per fate#323377
+- Add optional post run hook directory, executed by cron/systemd
+  after dehydrated --cron has run
+- Remove hook directory intended for packaging other native hooks.
+  Will be approach differently
+
+- No longer require nginx or lighttpd for SLE
+- Never go as far as to require acmeresponder, it might not be available
+- Drop -update from dehydrated-update.{timer,socket} for consistency
+- Add distro specific README.SUSE / README.Fedora
+- Ran spec-cleaner
+
+- Add man page
+- Ensure dehydrated is always run as designated user
+  * adds 0001-Add-optional-user-and-group-configuration.patch
+- Introduce config.d directory for user configuration
+- Avoid warning about empty config.d directory
+  * adds 0002-use-nullglob-disable-warning-on-empty-CONFIG_D-direc.patch
+- Fix sed warning about unescaped curly braces in regex
+
+- Swap statements in post: installing services requires tmp.d 
+
+- (Weak) dependency on dehydrated-acmeresponder.</comment>
+    <requestid>532177</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>86d531a4d7a7f801664fd47c3a3a1265</srcmd5>
+    <version>0.4.0</version>
+    <time>1509305061</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>537056</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8b9e53fe61a0ec326f9e17313c4faa0c</srcmd5>
+    <version>0.5.0</version>
+    <time>1516092197</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 565803 from dmolkentin)</comment>
+    <requestid>565804</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>93aa1a2dccfc6d48bdba659032ea7833</srcmd5>
+    <version>0.6.0</version>
+    <time>1520933031</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated dehydrated to 0.6.0 (osc#1084854)
+  Changed
+  * Challenge validation loop has been modified to loop over authorization identifiers instead of altnames (ACMEv2 + wildcard support)
+  * Removed LICENSE parameter from config (terms of service is now acquired directly from the CA directory)
+  Added
+  * Support for ACME v02 (including wildcard certificates!)
+  * New hook: generate_csr (see example hook script for more information)
+  * Calling random hook on startup to make it clear to hook script authors that unknown hooks should just be ignored... (forwarded request 585800 from dmolkentin)</comment>
+    <requestid>585801</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a05c909c62251a3ef1fadca6d62e1707</srcmd5>
+    <version>0.6.1</version>
+    <time>1521193437</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't add intermediate certificates twice when using ACMEv2 (bsc#1085305) 
+  * Adds 0002-don-t-walk-certificate-chain-for-ACMEv2-certificate-.patch (forwarded request 587474 from dmolkentin)</comment>
+    <requestid>587475</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ef72f1ef3d82760ea3f28034f501af0f</srcmd5>
+    <version>0.6.2</version>
+    <time>1524838195</time>
+    <user>dimstar_suse</user>
+    <comment>* removes 0001-fixed-CA-url-in-example-config.patch
+  * removes 0002-don-t-walk-certificate-chain-for-ACMEv2-certificate-.patch (forwarded request 601881 from dmolkentin)</comment>
+    <requestid>601882</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>c11c9feaef9751ffa641b42c0b6c1d1e</srcmd5>
+    <version>0.6.2</version>
+    <time>1548335610</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove RandomizedDelaySec attribute for distros with older systemd
+  (boo#1110697) (forwarded request 667787 from dmolkentin)</comment>
+    <requestid>667788</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>90b0a1df1cedfbda96be764d89072b84</srcmd5>
+    <version>0.6.5</version>
+    <time>1561557910</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to dehydrated 0.6.5
+  * Fixed broken APIv1 compatibility from last update (forwarded request 712111 from dmolkentin)</comment>
+    <requestid>712112</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>98b991a000cea6444d9be831b1590d9b</srcmd5>
+    <version>0.6.5</version>
+    <time>1566243589</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>724273</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>943a65919f0c899a37fdc4e82084a293</srcmd5>
+    <version>0.6.5</version>
+    <time>1580842441</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>769716</requestid>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>5d630b9aa5f6525fc48e3a2497467c45</srcmd5>
+    <version>0.6.5</version>
+    <time>1587467628</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix lighttpd config file (boo#1169834)
+- Provide nginx subpackage for SLE 15+ (jsc#11756)</comment>
+    <requestid>796008</requestid>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>c73e41c90aa79ecbc498d2e71c009630</srcmd5>
+    <version>0.6.5</version>
+    <time>1587659202</time>
+    <user>dimstar_suse</user>
+    <comment>- Provide nginx subpackage for SLE 15+ (jsc#SLE-11727)</comment>
+    <requestid>796512</requestid>
+  </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>8e38f8add62fd6304c1b6871ce86a465</srcmd5>
+    <version>0.6.5</version>
+    <time>1588856061</time>
+    <user>dimstar_suse</user>
+    <comment>- Removed lighttpd 1.x integration package. If you still would like
+  to use lighttpd with dehydrated, follow the instructions in the
+  README.maintainers file.</comment>
+    <requestid>800773</requestid>
+  </revision>
+  <revision rev="17" vrev="7">
+    <srcmd5>be68f37dd154a4a3436cdad559d1fa59</srcmd5>
+    <version>0.6.5</version>
+    <time>1593458310</time>
+    <user>dimstar_suse</user>
+    <comment>- Update maintainer file and package description, remove features
+  that are better described in the (upstream maintained) man page.
+
+- Remove potentially harmful scriptlet (bsc#1154167). Documented
+  transition case in the maintainer README. Unlikely enough. The
+  versions that have not transitioned yet would be broken for more
+  than two years now.</comment>
+    <requestid>817721</requestid>
+  </revision>
+  <revision rev="18" vrev="8">
+    <srcmd5>72cea77662199ffc559c3d3555aa7275</srcmd5>
+    <version>0.6.5</version>
+    <time>1600703278</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>835832</requestid>
+  </revision>
+  <revision rev="19" vrev="9">
+    <srcmd5>ca18c03ebac749397359b048292512b3</srcmd5>
+    <version>0.6.5</version>
+    <time>1605800790</time>
+    <user>dimstar_suse</user>
+    <comment>- dehydrated-apache2: Check for mod_compat (bsc#1178927)</comment>
+    <requestid>849382</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>da101ba88057df898a31f1fd1f9a0531</srcmd5>
+    <version>0.7.0</version>
+    <time>1607620796</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to dehydrated 0.7.0 (JSC#SLE-15909)
+  Added
+    Support for external account bindings
+    Special support for ZeroSSL
+    Support presets for some CAs instead of requiring URLs
+    Allow requesting preferred chain (--preferred-chain)
+    Added method to show CAs current terms of service (--display-terms)
+    Allow setting path to domains.txt using cli arguments (--domains-txt)
+    Added new cli command --cleanupdelete which deletes old files instead of archiving them
+  Fixed
+    No more silent failures on broken hook-scripts
+    Better error-handling with KEEP_GOING enabled
+    Check actual order status instead of assuming it's valid
+    Don't include keyAuthorization in challenge validation (RFC compliance)
+  Changed
+    Using EC secp384r1 as default certificate type
+    Use JSON.sh to parse JSON
+    Use account URL instead of account ID (RFC compliance)
+    Dehydrated now has a new home: https://github.com/dehydrated-io/dehydrated
+    Added OCSP_FETCH and OCSP_DAYS to per-certificate configurable options
+    Cleanup now also removes dangling symlinks</comment>
+    <requestid>854627</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>21513aa24d3696dfabc213fb57556609</srcmd5>
+    <version>0.7.0</version>
+    <time>1614948415</time>
+    <user>RBrownSUSE</user>
+    <comment>- Clarified new default settings. KEY_ALGO=secp384r1. Please consult
+  README.maintainer for details and how to return to RSA-based certificate
+  issuance. (jsc#ECO-3435, jsc#SLE-15909)
+- Added a note about ACMEv1 deprecation
+- Added a note on new ACME providers and the new non-URL provider syntax
+  See README.maintainer for details.</comment>
+    <requestid>876590</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>1584fb26f3119b42b99d729a5d67d55e</srcmd5>
+    <version>0.7.0</version>
+    <time>1617132227</time>
+    <user>RBrownSUSE</user>
+    <comment>- Enable instantiated services (boo#1184165)
+
+- Prepare instantiated service/timer support but not enable it:
+  This seems to fail due to missing systemd support right now.
+  So the only option at the moment is to copy the timer and unit
+  file for a 2nd instance. Mark all files as part of dehydrated.target
+
+- Rework support for /etc/dehydrated/postrun-hooks.d/:
+  dehydrated.service nolonger starts them directly, the support was
+  moved to a separate unit file. Please run:
+  systemctl enable dehydrated-postrun-hooks.service
+  to restore this functionality
+- Run dehydrated as dehydrated user again
+
+- Do not use the full path for config.d in the config files, which
+  will simplify implementing multi instance support.
+
+- Added more-examples.patch:
+  Explain how we can have per certificate key algorithms
+
+- Add directory where cleanup can archive unused certificates</comment>
+    <requestid>882190</requestid>
+  </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>a228a7c19d50d20dd5ec433f19e68d34</srcmd5>
+    <version>0.7.0</version>
+    <time>1657378987</time>
+    <user>dimstar_suse</user>
+    <comment>- Target should not PartOf on itself.
+
+- Copy the changes entry into README.postrun-hooks to make it
+  easier for users to find the information how to restore the
+  postrun-hooks after the split.</comment>
+    <requestid>987893</requestid>
+  </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>f94d365cd7b4db77790f426ddd2ce351</srcmd5>
+    <version>0.7.0</version>
+    <time>1662639797</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1001792</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>126f4bb8525cc0a05f8a7be8fbbc48d5</srcmd5>
+    <version>0.7.1</version>
+    <time>1667306568</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032541</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,149 @@
+-------------------------------------------------------------------
+Thu Apr 13 16:24:15 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update hslua-module-text to version 1.1.0.1.
+  ## hslua-module-text-1.1.0.1
+
+  Released 2023-03-26.
+
+  -   Improved doc strings.
+
+  ## hslua-module-text-1.1.0
+
+  Released 2023-03-13.
+
+  -   Update to hslua-2.3; this includes the addition of type
+      initializers to the module and type specifiers to the fields.
+
+-------------------------------------------------------------------
+Thu Mar 30 17:07:04 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Fri Jan  6 21:45:57 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update hslua-module-text to version 1.0.3.1.
+  ## hslua-module-text-1.0.3.1
+
+  Released 2023-01-06.
+
+  -   Generalized a test to avoid failures with stack nightly.
+
+  -   Added GHC 9.4 to test matrix.
+
+-------------------------------------------------------------------
+Tue Jan  3 09:01:28 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update hslua-module-text to version 1.0.3.
+  ## hslua-module-text-1.0.3
+
+  Released 2023-01-03.
+
+  -   Added new functions `fromencoding` and `toencoding`. These can
+      be used to convert from or to a different (non UTF-8)
+      encoding. This is particularly helpful when opening files on
+      system that don't use UTF-8 for their file system, most
+      notably Windows.
+
+-------------------------------------------------------------------
+Sat Feb 19 14:38:23 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update hslua-module-text to version 1.0.2.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/hslua-module-text-1.0.2/src/CHANGELOG.md
+
+-------------------------------------------------------------------
+Sun Jan 30 08:00:08 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update hslua-module-text to version 1.0.1 revision 1.
+  Upstream has renamed and modified the change log file(s) in this
+  release. Unfortunately, the automatic updater cannot reliable
+  determine relevant entries for this release.
+
+-------------------------------------------------------------------
+Mon Nov  1 08:44:59 UTC 2021 - psimons@suse.com
+
+- Update hslua-module-text to version 1.0.0.
+  ## 1.0.0
+
+  Release pending.
+
+  - Use hslua 2.0.
+
+-------------------------------------------------------------------
+Tue Oct 19 07:23:46 UTC 2021 - psimons@suse.com
+
+- Update hslua-module-text to version 0.3.0.1 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Sat Oct 17 02:01:39 UTC 2020 - psimons@suse.com
+
+- Update hslua-module-text to version 0.3.0.1.
+  ## 0.3.0.1 -- 2020-10-16
+
+  - Relaxed upper bound for hslua, allow `hslua-1.3.*`.
+
+-------------------------------------------------------------------
+Tue Aug 18 10:45:05 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Sun Aug 16 02:01:35 UTC 2020 - psimons@suse.com
+
+- Update hslua-module-text to version 0.3.0.
+  ## 0.3.0 -- 2020-08-15
+
+  - Use self-documenting module. This allows to include
+    documentation with the module definition, and to auto-generate
+    documentation from that. Requires hslua-1.2.0 or newer.
+
+  - Run CI tests with all GHC 8 versions, test stack builds.
+
+-------------------------------------------------------------------
+Tue Jun 16 11:14:12 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Re-generate file with latest version of spec-cleaner.
+
+-------------------------------------------------------------------
+Fri Nov  8 16:13:54 UTC 2019 - Peter Simons <psimons@suse.com>
+
+- Drop obsolete group attributes.
+
+-------------------------------------------------------------------
+Sun May  5 02:01:31 UTC 2019 - psimons@suse.com
+
+- Update hslua-module-text to version 0.2.1.
+  ## 0.2.1 -- 2019-05-04
+
+  - Require at least HsLua v1.0.3: that version has better support
+    for modules.
+
+  - Rename `pushModuleText` to `pushModule`. The old name is keeped
+    as an alias for now.
+
+-------------------------------------------------------------------
+Wed Oct 10 02:02:34 UTC 2018 - psimons@suse.com
+
+- Update hslua-module-text to version 0.2.0.
+  ## 0.2.0 -- 2018-09-24
+
+  - Use hslua 1.0.
+
+  ## 0.1.2.2  -- 2018-03-09
+
+  - Relax upper bound for base.
+
+-------------------------------------------------------------------
+Mon May 14 17:02:11 UTC 2018 - psimons@suse.com
+
+- Add hslua-module-text at version 0.1.2.1.

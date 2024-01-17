@@ -1,0 +1,8 @@
+<package name="rubygem-delayed_job" project="openSUSE:Factory">
+  <title>Database-backed asynchronous priority queue system -- Extracted from Shopify</title>
+  <description>Delayed_job (or DJ) encapsulates the common pattern of asynchronously executing longer tasks in the background. It is a direct extraction from Shopify where the job table is responsible for a multitude of core tasks.
+
+</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-delayed_job"/>
+  <url>http://github.com/collectiveidea/delayed_job</url>
+</package>

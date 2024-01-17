@@ -1,0 +1,5 @@
+<package name="python-photutils" project="openSUSE:Factory">
+  <title>Photutils</title>
+  <description>Photutils is an affiliated package of Astropy to provide tools for detecting and performing photometry of astronomical sources.</description>
+  <devel project="devel:languages:python:numeric" package="python-photutils"/>
+</package>

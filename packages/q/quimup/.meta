@@ -1,0 +1,15 @@
+<package name="quimup" project="openSUSE:Factory">
+  <title>A client for the music player daemon (MPD)</title>
+  <description>QUIMUP is a client for the music player daemon (MPD) written in C++ and QT5.
+
+The program can be used with most Linux desktops (KDE, GNOME, XFCE) and is covered
+by the General Public License: it is free and 'open source'.
+The clean interface makes controlling MPD's many features easy and intuitive.
+The focus is on mouse handling: playlist management is done entirely by drag-&amp;-drop;
+playback functions are directly accessible from the system tray.
+Quimup turns MPD into a perfect desktop music player.
+
+</description>
+  <devel project="multimedia:apps" package="quimup"/>
+  <url>https://quimup.sourceforge.io</url>
+</package>

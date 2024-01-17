@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7e73c8429d1064c613e202030900254a</srcmd5>
+    <version>2.0.2</version>
+    <time>1586368475</time>
+    <user>dimstar_suse</user>
+    <comment>Initial effort to package the module.</comment>
+    <requestid>790894</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>727f46add15a18cc41f1ffac86fd8a35</srcmd5>
+    <version>2.0.2</version>
+    <time>1594817980</time>
+    <user>dimstar_suse</user>
+    <comment>- Add lua54 as new build target</comment>
+    <requestid>819817</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>5cbe7e217141881ed633404288513961</srcmd5>
+    <version>2.0.2</version>
+    <time>1613427335</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>871269</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>30769ef46341462655e5226752aae19b</srcmd5>
+    <version>2.0.2</version>
+    <time>1679069054</time>
+    <user>dimstar_suse</user>
+    <comment>- Change upstream homepage to the current one at Lunar Modules.
+</comment>
+    <requestid>1072458</requestid>
+  </revision>
+</revisionlist>

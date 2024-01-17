@@ -1,0 +1,244 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7faf214908261c79ebfa535c556a7d6b</srcmd5>
+    <version>2.1.0~beta3+git.1624618403.e9577376</version>
+    <time>1626466380</time>
+    <user>dimstar_suse</user>
+    <comment>LuaJIT seems to be more maintained than MoonJIT at the moment.</comment>
+    <requestid>906669</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f7835e01ce9b7b2536f856c660bd1f0d</srcmd5>
+    <version>2.1.0~beta3+git.1624618403.e9577376</version>
+    <time>1633963717</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>924043</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>7cd6f61d7e6a9b86ad8bd8ff6a5b920a</srcmd5>
+    <version>2.1.0~beta3+git.1624618403.e9577376</version>
+    <time>1635628401</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace luajit-ppc64-remove-asserts.patch with
+  luajit-ppc64-replace-asserts.patch to use the proper assert
+  functions instead of removing them.
+- Add luajit-ppc64-remove-asserts.patch: remove calls to
+  lua_assert. Fixes the build with our revision (bsc#1191615).
+- Add luajit-s390x.patch: add s390x support, based on Fedora's
+  patch and ported to our revision.
+- Remove ExcludeArch, since package currently builds on s390x.
+</comment>
+    <requestid>927861</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8b1aa8fec09427ca91bcfc75f1feb721</srcmd5>
+    <version>2.1.0~beta3+git.1647772157.43ebb949</version>
+    <time>1648479493</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.0~beta3+git.1647772157.43ebb949:
+  * Fix soft-float IR_POW splitting.
+  * Fix BC_UCLO insertion for returns.
+  * Fix compiler warning.
+  * Revert to trival pow() optimizations to prevent inaccuracies.
+  * Fix string buffer COW handling, part 2.
+  * Fix install docs for Android.
+  * *BSD: Fix getentropy() declaration.
+  * Fix string buffer COW handling.
+  * Fix command-line argv handling.
+  * Don't export internal symbol.
+  * Fix pow() optimization inconsistencies.
+  * Always exit after machine code page protection change fails.
+  * Fix FOLD rule for BUFHDR append with intervening buffer use.
+  * Fix compiled error handling for buffer methods.
+  * Prevent unroll across BC_ITERN.
+  * Prevent replay of buffer operation for PHI operands.
+  * Save trace recorder state around VM event call.
+  * Bump copyright date.
+  * FFI: Ensure library is loaded before de-serializing FFI types.
+  * Fix HREFK forwarding vs. table.clear().
+  * Fix FOLD rule for BUFHDR append.
+  * OSX: Disable unreliable assertion for external frame unwinding.
+  * Limit exponent range in number parsing.
+  * Fix tonumber(&quot;-0&quot;) in dual-number mode.
+  * Limit work done in SINK pass.
+  * Fix ABC FOLD rule with constants.
+  * Prevent CSE of a REF_BASE operand across IR_RETF.
+  * Windows: Fix binary output of jit.bcsave to stdout.
+  * Fix FOLD rule for x-0.
+  * Update Android build docs.
+  * Update Android build docs.
+  * ARM64: Fix pcall() error case.
+  * OSX/ARM64: Fix external unwinding.
+  * Fix string buffer method recording.
+  * Fix interaction of profiler and ITERN recording.
+  * Fix compilation of multi-result call to next().
+  * ARM64: Fix IR_HREF code generation.
+  * MIPS64: Fix soft-float IR_TOSTR.
+  * MIPS: Fix register allocation in assembly of HREF.
+  * Fix compiler warning.
+  * Windows/x64: Document MSVC flags for C++ exception interoperability.
+  * FFI: Ensure returned string is alive in ffi.typeinfo().
+  * OSX/ARM64: Disable unwind info.
+  * Fix stack allocation after on-trace stack check.
+  * Fix ITERN blacklisting.
+  * Ensure ITERN forward progress on interpreter bailout.
+  * ARM64: Reorder interpreter stack frame and fix unwinding.
+  * Don't bail out to interpreter to JLOOP originating from ITERN.
+  * FFI: Don't load PC from non-function object in FFI continuation.
+  * FFI: Don't load PC from non-function object in FFI continuation.
+  * FFI: Fix missing cts-&gt;L initialization in argv2ctype().
+  * OSX/ARM64: Disable external unwinding for now.
+  * Compile table traversals: next(), pairs(), BC_ISNEXT/BC_ITERN.
+  * Use IR_HIOP for generalized two-register returns.
+  * Refactor table traversal.
+  * ARM: Fix symbol display in trace disassembly.
+  * Refactor IR_TMPREF generation.
+  * Refactor IR_VLOAD to take an offset.
+  * MIPS: Fix trace linking.
+  * String buffers, part 4b: Improve de-serialization checks.
+  * String buffers, part 4a: Add metatable serialization dictionary.
+  * Consider slots used by upvalues in use-def analysis.
+  * Prevent loop in snap_usedef().
+  * Fix io.close() error message.
+  * Fix io.close().
+  * Fix minilua vararg stack handling.
+  * PS4: Fix compile.
+  * Avoid out-of-range number of results when compiling select(k, ...).
+  * String buffers, part 3d: Compile string buffer methods and functions.
+  * Minor improvements of optimizations.
+  * Fix error message in lj_lib_checkintrange().
+  * String buffers, part 2f: Prevent self-put of buffer.
+  * String buffers, part 3c: Add IRBUFHDR_WRITE mode.
+  * Fix IRXLOAD_* mode bits description.
+  * String buffers, part 3b: Change IR_BUFHDR op2 mode bits to mode.
+  * String buffers, part 3a: Add IR_TMPREF for passing TValues to helpers.
+  * Add IRCONV_NONE for pass-through INT to I64/U64 type change.
+  * Fix jit.dump() output for IR_CONV.
+- Patches broken in the need of rebase (temporarily switched off):
+  - 0004-Add-ppc64-support-based-on-koriakin-GitHub-patchset.patch
+  - luajit-ppc64-replace-asserts.patch
+</comment>
+    <requestid>964404</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>674487bb583d78274d40b878025b39ef</srcmd5>
+    <version>2.1.0~beta3+git.1647772157.43ebb949</version>
+    <time>1665420262</time>
+    <user>favogt_factory</user>
+    <comment></comment>
+    <requestid>1008310</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>3f07afb2ddcf6ddac36416d93d67b4d4</srcmd5>
+    <version>2.1.0~beta3+git.1647772157.43ebb949</version>
+    <time>1667579493</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032964</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>147684b997131b6e896da3bbd39b08b4</srcmd5>
+    <version>2.1.0~beta3+git.1669107176.46aa45d</version>
+    <time>1669288937</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.0~beta3+git.1669107176.46aa45d:
+  * NX: Always compile with -fPIC.
+  * Clarify contact page.
+  * Ensure correct stack top for OOM error message.
+  * ARM64: Fix IR_SLOAD assembly.
+  * Fix trace join to BC_JLOOP originating from BC_ITERN.
+  * Fix compiler warnings.
+  * Fix last edit.
+  * Remove dead Wiki links.
+  * Fix QNX build.
+  * Add -F option to override filename in jit.bcsave (luajit -b).
+  * Patch luajit.pc with INSTALL_INC, if customized.
+  * LJ_GC64: Fix lua_concat().
+  * Prevent use of RTLD_DEFAULT when NO_RTLD_DEFAULT is defined.
+  * Improve GC estimation for userdata with attached managed memory.
+  * Add missing GC steps to string buffer methods.
+  * x86/x64: Limit VLOAD fusion to simple cases.
+  * OSX/iOS/ARM64: Fix generation of Mach-O object files.
+  * Prevent trace start at BC_ITERL after compiled BC_ITERN.
+  * ARM64: Allow building with unwinding disabled.
+  * FFI: Fix sizeof expression in C parser for reference types.
+  * FFI: Fix ffi.alignof() for reference types.
+  * FFI: Allow ffi.metatype() for typedefs with attributes.
+  * OSX/iOS/ARM64: Fix bytecode embedding in Mach-O object file.
+  * LJ_GC64: Fix IR_VARG offset for fixed number of results.
+  * x86/x64: Fix math.ceil(-0.9) result sign.
+  * Grammar and spell check.
+  * Make embedded bytecode readable and forward-compatible.
+  * DynASM: Fix warnings.
+  * Fix warnings in minilua.c.</comment>
+    <requestid>1037521</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>b049c09d2da6647675bf739086dfb347</srcmd5>
+    <version>2.1.0~beta3+git.1669107176.46aa45d</version>
+    <time>1674810914</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1060899 from michals
+
+- Opencode %make_build to prevent build failure when not defined.</comment>
+    <requestid>1061036</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>5103c3c5dfe7fb9f32e5bc70b052bc9c</srcmd5>
+    <version>2.1.0~beta3+git.1669107176.46aa45d</version>
+    <time>1692687300</time>
+    <user>anag+factory</user>
+    <comment>- Update luajit-s390x.patch from gh#LuaJIT/LuaJIT#631 to the
+  current form.
+</comment>
+    <requestid>1105084</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5275153368734bc0c06df19def015735</srcmd5>
+    <version>5.1.2.1.0+git.1693350652.41fb94d</version>
+    <time>1694344168</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 5.1.2.1.0+git.1693350652.41fb94d:
+  * Add randomized register allocation for fuzz testing.
+  * ARM64: Improve register allocation for integer IR_MUL/IR_MULOV.
+  * ARM64: Fix register allocation for IR_*LOAD.
+  * Update external MSDN URL in code.
+  * FFI/ARM64/OSX: Handle non-standard OSX C calling conventions.
+  * FFI: Unify stack setup for C calls in interpreter.
+  * ARM64: Prevent STP fusion for conditional code emitted by TBAR.
+  * ARM64: Fix LDP/STP fusing for unaligned accesses.
+  * Handle table unsinking in the presence of IRFL_TAB_NOMM.
+  * Use fallback name for install files without valid .git or .relver.
+  * Handle non-.git checkout with .relver in .bat-file builds.
+  * Fix external C call stack check when using LUAJIT_MODE_WRAPCFUNC.
+  * Fix predict_next() in parser (again).
+- Update luajit-lua-versioned.patch to work with the git checkout
+  created tarball. The point of the patch is to extend the
+  version number so that it is always bigger than 2.2.0 version
+  of moonjit, which is Obsoleted by this package.
+
+- Update to version 2.1.0~beta3+git.1692716794.03c3112:
+  * Fix typo.
+  * Handle the case when .git is not a directory.
+  * Add .gitattributes to dynamically resolve .relver.
+  * Add .gitattributes to dynamically resolve .relver.
+  * Fix for last commit: also remove symlink on uninstall.
+  * Switch to rolling releases: mark v2.1 as production.
+  * Fix Windows build scripts for rolling releases.
+  * Switch MSVC and console build scripts to rolling releases.
+  * Switch build system to rolling releases.
+  * Update documentation for switch to rolling releases.</comment>
+    <requestid>1109627</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>9029ac716108c384671287f8f78cf32c</srcmd5>
+    <version>5.1.2.1.0+git.1693350652.41fb94d</version>
+    <time>1696963926</time>
+    <user>anag+factory</user>
+    <comment>- Adjust luajit-lua-versioned.patch to have correct LUA_LJDIR
+  (bsc#1215592).
+</comment>
+    <requestid>1116533</requestid>
+  </revision>
+</revisionlist>

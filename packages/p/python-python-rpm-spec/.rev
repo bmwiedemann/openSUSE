@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b58a91f233560c0c97b8c1a86152e498</srcmd5>
+    <version>0.7</version>
+    <time>1527583555</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>612385</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>75f04dc11524ee14434070cd8c7f8801</srcmd5>
+    <version>0.7</version>
+    <time>1528196015</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>614137</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>22c0bbbe9f2eb03417e3914737544183</srcmd5>
+    <version>0.8</version>
+    <time>1552380742</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to using pythonhosted.org for sdist
+- Update to v0.8
+  * Enable parsing versions in `BuildRequires:` and `Requires:`
+  * Add support for conditional macros, e.g. `%{?test_macro:expression}`
+  * Use flit for packaging</comment>
+    <requestid>682031</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a70a0058e935bc140651cd9cc8465b79</srcmd5>
+    <version>0.9</version>
+    <time>1596703324</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>824577</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7d9f469c89c9a401d6aa925e2f3b7a63</srcmd5>
+    <version>0.10</version>
+    <time>1605783695</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>849347</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f7b82e06eaa8d47edc8030a73e627249</srcmd5>
+    <version>0.14.1</version>
+    <time>1694701560</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1111023</requestid>
+  </revision>
+</revisionlist>

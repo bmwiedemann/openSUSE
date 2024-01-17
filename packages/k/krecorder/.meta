@@ -1,0 +1,8 @@
+<package name="krecorder" project="openSUSE:Factory">
+  <title>Audio recording application</title>
+  <description>Recorder is a simple, cross-platform audio recording application.
+
+</description>
+  <devel project="KDE:Applications" package="krecorder"/>
+  <url>https://apps.kde.org/krecorder/</url>
+</package>

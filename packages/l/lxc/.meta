@@ -1,0 +1,12 @@
+<package name="lxc" project="openSUSE:Factory">
+  <title>Linux containers implementation</title>
+  <description>It provides commands to create and manage containers. It contains a
+full featured container with the isolation/virtualization of the pids,
+the ipc, the utsname, the mount points, /proc, /sys, the network and it
+takes into account the control groups. It is very light, flexible, and
+provides a set of tools around the container like the monitoring with
+asynchronous events notification, or the freeze of the container. This
+package is useful to create Virtual Private Server, or to run isolated
+applications like bash or sshd.</description>
+  <devel project="Virtualization:containers" package="lxc"/>
+</package>

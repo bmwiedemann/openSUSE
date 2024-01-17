@@ -1,0 +1,6 @@
+<package name="perl-MouseX-Types" project="openSUSE:Factory">
+  <title>Organize your Mouse types in libraries</title>
+  <description>Perl module for Mouse to organize your types into libraries.</description>
+  <devel project="devel:languages:perl" package="perl-MouseX-Types"/>
+  <url>http://search.cpan.org/dist/MouseX-Types</url>
+</package>

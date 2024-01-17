@@ -1,0 +1,129 @@
+-------------------------------------------------------------------
+Fri Jan 12 15:25:10 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * jgit-apache-sshd-2.7.0.patch -> jgit-apache-sshd.patch
+    + rename patch and make it accept apache-ssd < 3.0.0
+
+-------------------------------------------------------------------
+Wed Oct 11 08:47:23 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * jgit-apache-sshd-2.7.0.patch
+    + extend even more apache-sshd version span
+
+-------------------------------------------------------------------
+Tue Oct 10 15:09:41 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * jgit-CVE-2023-4759.patch
+    + backport of upstream fix for bsc#1215298 (CVE-2023-4759),
+      arbitrary file overwrite
+
+-------------------------------------------------------------------
+Fri Oct  6 11:04:41 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Removed patch:
+  * 0001-Ensure-the-correct-classpath-is-set-for-the-jgit-com.patch
+    + no need to patch the jgit.sh launcher that we do not use
+
+-------------------------------------------------------------------
+Fri Oct  6 11:00:40 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Craft the jgit script from the real Main class of the jar file
+  instead of using some superfluous jar launcher.
+  Fixes bsc#1209646
+
+-------------------------------------------------------------------
+Wed May 31 19:51:51 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * jgit-jsch.patch
+    + extend the version range for the required jsch package
+    + allows building with 0.2.x (which is backward compatible
+      with 0.1.x)
+
+-------------------------------------------------------------------
+Fri May  5 08:24:40 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Add _multibuild to define 2nd spec file as additional flavor.
+  Eliminates the need for source package links in OBS.
+
+-------------------------------------------------------------------
+Mon Mar 27 08:18:14 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Require xz-java because the jgit script that we install is
+  expecting it to be present when composing the classpath
+  (bsc#1209646)
+
+-------------------------------------------------------------------
+Wed Nov 16 11:24:53 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * jgit-apache-sshd-2.7.0.patch
+    + Allow building against apache-sshd 2.8.x and 2.9.x
+
+-------------------------------------------------------------------
+Tue Mar 29 14:06:34 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Force building with Java 11, since tycho is not knowing about any
+  Java >= 15
+
+-------------------------------------------------------------------
+Fri Jul 30 12:24:56 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 5.11.0
+  * No changelog was made available.
+  * fixes build against apache-sshd 2.7.0
+- Modified patches:
+  * 0001-Ensure-the-correct-classpath-is-set-for-the-jgit-com.patch
+  * 0002-Don-t-embed-versions-of-third-party-libs-use-feature.patch
+  * jgit-shade.patch
+  * jgit-5.8.0-java8.patch -> jgit-5.11.0-java8.patch
+    + Rediff to changed context
+- Added patch:
+  * jgit-apache-sshd-2.7.0.patch
+    + Adapt to apache-sshd api changes between 2.6.0 and 2.7.0
+- Removed patch:
+  * 0003-Remove-requirement-on-assertj-core.patch
+    + Not needed anymore
+
+-------------------------------------------------------------------
+Thu Nov 19 13:00:00 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Fix provides
+
+-------------------------------------------------------------------
+Thu Jul 16 21:23:15 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * jgit-5.8.0-java8.patch
+    + restore java 8 compatibility when building with java 9+
+
+-------------------------------------------------------------------
+Fri Jul  3 09:55:53 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 5.8.0
+  * No changelog was made available.
+- Removed patches:
+  * fix_jgit_sh.patch
+  * jgit-feature-deps.patch
+- Added patches:
+  * 0001-Ensure-the-correct-classpath-is-set-for-the-jgit-com.patch
+  * 0002-Don-t-embed-versions-of-third-party-libs-use-feature.patch
+  * 0003-Remove-requirement-on-assertj-core.patch
+  * jgit-shade.patch
+
+-------------------------------------------------------------------
+Wed Apr  8 19:57:21 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Split the build into two spec files instead of multibuild
+  * First one produces the maven artifacts, the jgit command-line
+    tool and ant feature
+  * Second one produces eclipse features
+
+-------------------------------------------------------------------
+Mon Nov 11 12:09:35 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of eclipse-jgit 5.1.3 as a _multibuild package
+  in order to allow bootstrapping

@@ -1,0 +1,67 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>76ae866b46f5d96b7a17c39eb0376cce</srcmd5>
+    <version>2.4.0</version>
+    <time>1571653674</time>
+    <user>dimstar_suse</user>
+    <comment>This package provides the Tinkerforce brick daemon (https://www.tinkerforge.com/en/doc/). It acts as a bridge between the Tinkerforge hardware and the API bindings for the different programming languages.</comment>
+    <requestid>738120</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>31729a9c654154b7ecaff55dc3b0bd52</srcmd5>
+    <version>2.4.1</version>
+    <time>1578437565</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream version 2.4.1...</comment>
+    <requestid>761279</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b648f90838280626e1b5ff324b4d62b7</srcmd5>
+    <version>2.4.3</version>
+    <time>1608031870</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>855585</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>d742cddbfb2b4bba837222c71e726f4c</srcmd5>
+    <version>2.4.3</version>
+    <time>1636498511</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>930528</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>2f00b9a7f751aa6a011c56fecee6559f</srcmd5>
+    <version>2.4.3</version>
+    <time>1645723252</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>957149</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>bc966dbf0b74b567af488c772ea8c236</srcmd5>
+    <version>2.4.4</version>
+    <time>1674810991</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1061346</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>e00823cd2f86590080bd68059b9ce5a7</srcmd5>
+    <version>2.4.4</version>
+    <time>1692687373</time>
+    <user>anag+factory</user>
+    <comment>Fix build error with conflicting strcasestr definition, update to fix dropping RPM_OPT_FLAGS defaults.
+</comment>
+    <requestid>1105040</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8250efc89aacc9f702c90dfca576f9b1</srcmd5>
+    <version>2.4.5</version>
+    <time>1701533602</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1130394</requestid>
+  </revision>
+</revisionlist>

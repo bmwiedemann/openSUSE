@@ -1,0 +1,36 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>22bb0b57f5aad048e466c3ce0a7f2a9d</srcmd5>
+    <version>0.2.6</version>
+    <time>1567423495</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>726867</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ec71d2075aa387a2e1109ab868fe2952</srcmd5>
+    <version>0.2.6</version>
+    <time>1639340821</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>938241</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>3401e1039f164f7090973f8edee23832</srcmd5>
+    <version>0.2.6</version>
+    <time>1682095692</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081940</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>ba69107a94bdcb7008920a14c3b0e09c</srcmd5>
+    <version>0.2.6</version>
+    <time>1700772155</time>
+    <user>anag+factory</user>
+    <comment>- Add 31-fix-erroneous-IPA-you-yong.patch (gh#tsroten/dragonmapper#31)
+- Skip failing tests (gh#tsroten/dragonmapper#35)
+</comment>
+    <requestid>1128360</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,10 @@
+<package name="tar" project="openSUSE:Factory">
+  <title>GNU implementation of tar ((t)ape (ar)chiver)</title>
+  <description>This package normally also includes the program &quot;rmt&quot;, which provides
+remote tape drive control. Since there are compatible versions of 'rmt'
+in either the 'star' package or the 'dump' package, we didn't put 'rmt'
+into this package. If you are planning to use the remote tape features
+provided by tar you have to also install the 'dump' or the 'star'
+package.</description>
+  <devel project="Base:System" package="tar"/>
+</package>

@@ -1,0 +1,154 @@
+-------------------------------------------------------------------
+Wed Mar 24 03:09:14 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.17
+   see /usr/share/doc/packages/perl-Mojolicious-Plugin-Status/Changes
+
+  1.17  2021-03-23
+    - Fixed Mojolicious 9.11 compatibility.
+
+-------------------------------------------------------------------
+Fri Mar 19 03:07:18 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.16
+   see /usr/share/doc/packages/perl-Mojolicious-Plugin-Status/Changes
+
+  1.16  2021-03-18
+    - Updated ui with more consistent Mojolicious design.
+
+-------------------------------------------------------------------
+Sun Feb 21 03:12:42 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.15
+   see /usr/share/doc/packages/perl-Mojolicious-Plugin-Status/Changes
+
+  1.15  2021-02-20
+    - Improved Mojolicious::Plugin::Status to log if server is not supported.
+    - Improved template design.
+
+-------------------------------------------------------------------
+Tue Feb  9 03:07:29 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.14
+   see /usr/share/doc/packages/perl-Mojolicious-Plugin-Status/Changes
+
+  1.14  2021-02-09
+    - Switched back to Sereal for serialization in Mojo::MemoryMap to reduce memory usage.
+
+-------------------------------------------------------------------
+Mon Jan  4 03:10:50 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.13
+   see /usr/share/doc/packages/perl-Mojolicious-Plugin-Status/Changes
+
+  1.13  2020-12-10
+    - Updated examples to use signatures.
+
+-------------------------------------------------------------------
+Sat Jun 13 03:12:30 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.12
+   see /usr/share/doc/packages/perl-Mojolicious-Plugin-Status/Changes
+
+  1.12  2020-06-01
+    - Updated project metadata.
+
+-------------------------------------------------------------------
+Mon Jun  1 03:16:34 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+updated to 1.11
+   see /usr/share/doc/packages/perl-Mojolicious-Plugin-Status/Changes
+
+  1.11  2020-05-30
+    - Improved .perltidyrc with more modern settings.
+  
+
+-------------------------------------------------------------------
+Wed May 27 03:14:23 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+updated to 1.10
+   see /usr/share/doc/packages/perl-Mojolicious-Plugin-Status/Changes
+
+  1.10  2020-05-26
+    - Improved Mojo::MemoryMap to not require a Perl with 64-bit integer support.
+  
+  1.09  2020-05-25
+    - Switched from Sereal to Cpanel::JSON::XS for serialization in
+      Mojo::MemoryMap.
+  
+
+-------------------------------------------------------------------
+Mon Feb 17 03:09:48 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 1.08
+   see /usr/share/doc/packages/perl-Mojolicious-Plugin-Status/Changes
+
+  1.08  2020-02-16
+    - Fixed support for *BSD operating systems.
+  
+  1.07  2020-02-14
+    - Updated the File::Temp requirement to version 0.2308 to avoid flock bugs
+      that could make web apps hang forever.
+
+-------------------------------------------------------------------
+Fri Feb 14 03:09:36 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 1.06
+   see /usr/share/doc/packages/perl-Mojolicious-Plugin-Status/Changes
+
+  1.06  2020-02-14
+    - Fixed displaying RSS on Linux correctly.
+  
+  1.05  2020-02-13
+    - Added support for tracking different response types.
+    - Improved template design.
+    - Fixed display bugs for large request paths and query strings.
+
+-------------------------------------------------------------------
+Thu Feb 13 03:10:53 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 1.04
+   see /usr/share/doc/packages/perl-Mojolicious-Plugin-Status/Changes
+
+  1.04  2020-02-13
+    - Improved template design.
+  
+  1.03  2020-02-12
+    - Added support for retaining a list of the slowest requests since server
+      start.
+    - Added reusable Mojo::MemoryMap module.
+    - Improved template design.
+
+-------------------------------------------------------------------
+Tue Feb 11 03:09:46 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 1.02
+   see /usr/share/doc/packages/perl-Mojolicious-Plugin-Status/Changes
+
+  1.02  2020-02-10
+    - Switched to File::Map as storage backend, so this plugin should be much
+      more reliable and safer to use now. (kraih, haarg, leont)
+
+-------------------------------------------------------------------
+Tue Oct  8 08:04:00 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 1.01
+   see /usr/share/doc/packages/perl-Mojolicious-Plugin-Status/Changes
+
+  1.01  2019-10-07
+    - The IPC mechanism used by this module is unreliable, so production use is
+      strongly discouraged.
+
+-------------------------------------------------------------------
+Tue Sep 18 10:55:31 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.0
+   see /usr/share/doc/packages/perl-Mojolicious-Plugin-Status/Changes
+
+  1.0  2018-09-17
+    - Fixed a problem where subprocesses would show up in the worker list.
+
+-------------------------------------------------------------------
+Mon Sep  3 08:04:18 UTC 2018 - Marius Kittler <marius.kittler@suse.com>
+
+- Add package initially (version 0.03)

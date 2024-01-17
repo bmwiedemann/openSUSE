@@ -1,0 +1,5 @@
+<package name="autossh" project="openSUSE:Factory">
+  <title>autossh</title>
+  <description>I needed autossh, and I could not find it. So I rebuilded it.</description>
+  <devel project="security" package="autossh"/>
+</package>

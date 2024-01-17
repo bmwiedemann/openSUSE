@@ -1,0 +1,67 @@
+---
+ Makefile            |   10 ++++------
+ src/setup_common.py |    9 ++++++---
+ 2 files changed, 10 insertions(+), 9 deletions(-)
+
+--- a/Makefile
++++ b/Makefile
+@@ -44,12 +44,11 @@ PACKAGE := python-dmidecode
+ PY_VER  := $(shell $(PY_BIN) -c 'import sys; print("%d.%d"%sys.version_info[0:2])')
+ PY_MV   := $(shell echo $(PY_VER) | cut -b 1)
+ PY      := python$(PY_VER)
+-SO_PATH := build/lib.linux-$(shell uname -m)-$(PY_VER)
+ ifeq ($(PY_MV),2)
+-	SO  := $(SO_PATH)/dmidecodemod.so
++	SOLIB  := dmidecodemod.so
+ else
+ 	SOABI := $(shell $(PY_BIN) -c 'import sysconfig; print(sysconfig.get_config_var("SOABI"))')
+-	SO  := $(SO_PATH)/dmidecodemod.$(SOABI).so
++	SOLIB  := dmidecodemod.$(SOABI).so
+ endif
+ SHELL	:= /bin/bash
+ 
+@@ -59,10 +58,9 @@ SHELL	:= /bin/bash
+ all : build dmidump
+ 
+ build: $(PY)-dmidecodemod.so
+-$(PY)-dmidecodemod.so: $(SO)
+-	cp $< $@
+-$(SO):
++$(PY)-dmidecodemod.so:
+ 	$(PY) src/setup.py build
++	cp $$(find build -name $(SOLIB)) $@
+ 
+ dmidump : src/util.o src/efi.o src/dmilog.o
+ 	$(CC) -o $@ src/dmidump.c $^ -g -Wall -D_DMIDUMP_MAIN_
+--- a/src/setup_common.py
++++ b/src/setup_common.py
+@@ -30,7 +30,7 @@ import subprocess, sys
+ if sys.version_info[0] < 3:
+     import commands as subprocess
+ from os import path as os_path
+-from distutils.sysconfig import get_python_lib
++from sysconfig import get_config_var, get_path
+ 
+ # libxml2 - C flags
+ def libxml2_include(incdir):
+@@ -50,7 +50,7 @@ def libxml2_include(incdir):
+ 
+ # libxml2 - library flags
+ def libxml2_lib(libdir, libs):
+-    libdir.append(get_python_lib(1))
++    libdir.append(get_path('platlib'))
+     if os_path.exists("/etc/debian_version"): #. XXX: Debian Workaround...
+         libdir.append("/usr/lib/pymodules/python%d.%d"%sys.version_info[0:2])
+ 
+@@ -69,7 +69,10 @@ def libxml2_lib(libdir, libs):
+             libs.append(l.replace("-l", "", 1))
+ 
+     # this library is not reported and we need it anyway
+-    libs.append('xml2mod')
++    if get_config_var("SOABI"):
++        libs.append('xml2mod.%s' % get_config_var("SOABI"))
++    else:
++        libs.append('xml2mod')
+ 
+ 
+ 

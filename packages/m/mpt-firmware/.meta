@@ -1,0 +1,14 @@
+<package name="mpt-firmware" project="openSUSE:Factory">
+  <title>Configuration files for autoloading mptctl at boot time</title>
+  <description>This package contains modprobe configuration files to autoload the
+mptctl ioctl driver at boot time. The mptctl driver is an ioctl
+character driver for the LSI Logic Fusion-MPT Host adapter series.
+These adapters include
+
+- Ultra320 53C1030, 53C1020
+
+- Fiber Channel FC909, FC919, FC929, FC919X and FC929X
+
+- SAS SAS1064, and SAS1068</description>
+  <devel project="Base:System" package="mpt-firmware"/>
+</package>

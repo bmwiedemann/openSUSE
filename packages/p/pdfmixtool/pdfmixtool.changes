@@ -1,0 +1,109 @@
+-------------------------------------------------------------------
+Sat Oct  7 07:24:02 UTC 2023 - munix9@googlemail.com
+
+- Add patch fix-missing-definitions.patch: Add missing definitions
+  MAGICKCORE_HDRI_ENABLE/MAGICKCORE_QUANTUM_DEPTH for Factory/TW.
+
+-------------------------------------------------------------------
+Wed Mar  1 13:42:10 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- stop_using_obsolete_standards.patch: stop clamping to obsolete
+  standards like C++11 while build depenedencies now require C++17
+  or later. Use compiler defaults instead.
+
+-------------------------------------------------------------------
+Tue Oct 11 19:19:22 UTC 2022 - Asterios Dramis <asterios.dramis@gmail.com>
+
+- Update to version 1.1.1:
+  * Fix incompatibility with qpdf 11
+  * Allow GraphicsMagick as an alternative to ImageMagick
+
+-------------------------------------------------------------------
+Tue Jun 28 19:09:16 UTC 2022 - Asterios Dramis <asterios.dramis@gmail.com>
+
+- Update to version 1.1:
+  * Add "Extract images" operation
+  * Improve GUI appearance and HiDPI support
+  * Add options to generate two booklets in one sheet
+- Added new build requirements: cmake(Qt5Svg), cmake(Qt5Xml) and
+  pkgconfig(Magick++).
+
+-------------------------------------------------------------------
+Thu Jun 24 21:00:15 UTC 2021 - Asterios Dramis <asterios.dramis@gmail.com>
+
+- Removed fix for rpmlint warning "files-duplicate" and fdupes
+  build requirement (not needed anymore).
+
+-------------------------------------------------------------------
+Thu Jun 24 19:54:54 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.0.2
+  - Improve compatibility with stable distros and multiarch distros
+- Drop qpdf9.patch because now in upstream.
+
+-------------------------------------------------------------------
+Wed Jun 16 19:27:49 UTC 2021 - Asterios Dramis <asterios.dramis@gmail.com>
+
+- Apply qpdf9.patch only for Leap <= 15.2. Leap 15.3 has qpdf10.
+
+-------------------------------------------------------------------
+Tue Jun 15 18:39:11 UTC 2021 - Asterios Dramis <asterios.dramis@gmail.com>
+
+- Update to version 1.0.1:
+  * Interface has been overhauled to make it more intuitive
+  * Links, annotations, outlines are now preserved as much as
+    possible in all operations
+  * Add Qt 6 support
+  * Add right-to-left support in pages composition
+  * Add ability to edit PDF document information
+- Fix rpmlint warning "files-duplicate". Added fdupes build
+  requirement for this.
+- Rebased qpdf9.patch to apply cleanly.
+
+-------------------------------------------------------------------
+Thu May 27 16:37:27 UTC 2021 - Asterios Dramis <asterios.dramis@gmail.com>
+
+- Use %cmake_build.
+
+-------------------------------------------------------------------
+Fri Jul 17 18:37:33 UTC 2020 - Asterios Dramis <asterios.dramis@gmail.com>
+
+- Fix desktop file rpm post build check error in Leap.
+
+-------------------------------------------------------------------
+Fri Jul 17 18:02:07 UTC 2020 - Asterios Dramis <asterios.dramis@gmail.com>
+
+- Added a patch "qpdf9.patch" to fix compilation with qpdf-9 in
+  Leap.
+
+-------------------------------------------------------------------
+Sun May 24 23:24:32 UTC 2020 - Asterios Dramis <asterios.dramis@gmail.com>
+
+- Update to version 0.6:
+  * Add ability to save and restore the list of input PDF files
+  * Add Swedish translation
+  * Remove dependency on PoDoFo
+  * Various fixes and UI improvements
+- Removed libpodofo-devel build requirement (not needed anymore).
+- Use cmake(Qt5...) for all Qt5 build requirements.
+
+-------------------------------------------------------------------
+Thu Apr 30 22:09:22 UTC 2020 - Asterios Dramis <asterios.dramis@gmail.com>
+
+- Update to version 0.5:
+  * New "Single file" mode with the following operations:
+    - Booklet
+    - Edit page layout
+    - Add empty pages
+    - Delete pages
+    - Extract pages
+  * Add alternate mix merge feature
+  * Better multipage profiles management
+  * Add Croatian translation
+  * Add Czech translation
+  * Add Polish translation
+
+-------------------------------------------------------------------
+Sat Feb  8 22:52:04 UTC 2020 - Asterios Dramis <asterios.dramis@gmail.com>
+
+- Initial rpm release (version 0.4).

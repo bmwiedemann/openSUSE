@@ -1,0 +1,11 @@
+diff -urEbw neix-0.1.0/src/application/Application.cpp neix-0.1.0.new/src/application/Application.cpp
+--- neix-0.1.0/src/application/Application.cpp	2020-08-20 20:59:30.000000000 +0200
++++ neix-0.1.0.new/src/application/Application.cpp	2020-08-21 09:09:22.667455842 +0200
+@@ -12,6 +12,7 @@
+ #include <cstdlib>
+ #include <string>
+ #include <cstring>
++#include <ncurses.h>
+ 
+ #include "config.h"
+ #include "helper/helper.h"

@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0a99befa013dfb9b8704a254760af1ff</srcmd5>
+    <version>1.6.1</version>
+    <time>1527934078</time>
+    <user>dimstar_suse</user>
+    <comment>python package to query google scholar and get references in various formats</comment>
+    <requestid>612091</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a93fc838ccb1a496792e93d0a310d1a6</srcmd5>
+    <version>1.6.1</version>
+    <time>1590650296</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>809359</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a727a25881f524e004fafdbb63d63071</srcmd5>
+    <version>2.0.0</version>
+    <time>1643931953</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>951390</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2e071d98cef0a92ab7d900b534c5188a</srcmd5>
+    <version>2.1.0</version>
+    <time>1666011454</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1009274</requestid>
+  </revision>
+</revisionlist>

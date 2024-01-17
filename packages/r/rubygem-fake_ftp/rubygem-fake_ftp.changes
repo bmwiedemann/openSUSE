@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Thu Aug  3 19:12:24 UTC 2017 - coolo@suse.com
+
+- updated to version 0.3.0
+  no changelog found
+
+-------------------------------------------------------------------
+Tue Jun 20 13:33:15 UTC 2017 - opensuse_buildservice@ojkastl.de
+
+- added gem2rpm.yml; modified summary and description according to the github repo's README.md; regenerated spec file
+
+-------------------------------------------------------------------
+Fri May 19 10:34:00 UTC 2017 - opensuse_buildservice@ojkastl.de
+
+- created spec via gem2rpm

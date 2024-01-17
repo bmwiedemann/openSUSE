@@ -1,0 +1,8 @@
+<package name="cJSON" project="openSUSE:Factory">
+  <title>JSON parser library written in ANSI C</title>
+  <description>A simple JSON parser library written in ANSI C.
+
+</description>
+  <devel project="devel:libraries:c_c++" package="cJSON"/>
+  <url>https://github.com/DaveGamble/cJSON</url>
+</package>

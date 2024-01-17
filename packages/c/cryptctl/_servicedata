@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">git://github.com/SUSE/cryptctl.git</param>
+              <param name="changesrevision">123f0e2355a453b61b03ade4892e61fdaedbecfc</param></service></servicedata>

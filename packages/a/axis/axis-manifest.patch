@@ -1,0 +1,44 @@
+--- build.xml	2011-11-30 16:55:39.668021907 -0500
++++ build.xml	2011-12-01 11:06:16.379181123 -0500
+@@ -190,38 +190,17 @@ Copyright:
+     </replace> 
+ 
+     <tstamp/>
+-    <jar jarfile="${build.lib}/${name}.jar" basedir="${build.dest}" >
++    <jar jarfile="${build.lib}/${name}.jar" basedir="${build.dest}" manifest="axis-MANIFEST.MF" >
+       <include name="org/**" />
+       <include name="log4j.properties" unless="exclude.log4j.configuration"/>
+       <include name="simplelog.properties"/>
+-      <manifest>
+-        <section name="org/apache/axis">
+-          <attribute name="Implementation-Title" value="Apache Axis"/>
+-          <attribute name="Implementation-Version" value="${axis.version} ${TSTAMP} ${TODAY}"/> 
+-          <attribute name="Implementation-Vendor" value="Apache Web Services"/>
+-        </section>
+-      </manifest>
+     </jar>
+-    <jar jarfile="${build.lib}/${jaxrpc}.jar" basedir="${build.dest}" >
++    <jar jarfile="${build.lib}/${jaxrpc}.jar" basedir="${build.dest}" manifest="xmlrpc-MANIFEST.MF">
+       <include name="javax/**"/>
+       <exclude name="javax/xml/soap/**"/>
+-      <manifest>
+-        <section name="javax/xml/rpc">
+-          <attribute name="Specification-Title" value="JAX-RPC"/>
+-          <attribute name="Specification-Version" value="1.1"/>
+-          <attribute name="Specification-Vendor" value="JCP"/>
+-        </section>
+-      </manifest>
+     </jar>
+-    <jar jarfile="${build.lib}/${saaj}.jar" basedir="${build.dest}" >
++    <jar jarfile="${build.lib}/${saaj}.jar" basedir="${build.dest}" manifest="saaj-MANIFEST.MF" >
+       <include name="javax/xml/soap/**"/>
+-      <manifest>
+-        <section name="javax/xml/soap">
+-          <attribute name="Specification-Title" value="SAAJ"/>
+-          <attribute name="Specification-Version" value="1.2"/>
+-          <attribute name="Specification-Vendor" value="JCP"/>
+-        </section>
+-      </manifest>
+     </jar>
+     <copy file="${wsdl4j.jar}" toDir="${build.lib}"/>
+     <copy file="${commons-logging.jar}" toDir="${build.lib}"/>

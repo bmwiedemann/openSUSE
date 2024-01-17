@@ -1,0 +1,81 @@
+-------------------------------------------------------------------
+Tue Jul 16 09:36:52 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.31
+   see /usr/share/doc/packages/perl-Lingua-EN-Tagger/Changes
+
+  0.31            Aaron Coburn            7/12/19
+          Fix memoize function
+
+-------------------------------------------------------------------
+Tue Aug 28 05:30:46 UTC 2018 - coolo@suse.com
+
+- updated to 0.30
+   see /usr/share/doc/packages/perl-Lingua-EN-Tagger/Changes
+
+  0.30            Aaron Coburn            8/27/18
+          Re-release without PaxHeader garbage in tar distribution.
+
+-------------------------------------------------------------------
+Sat May 19 05:27:23 UTC 2018 - coolo@suse.com
+
+- updated to 0.29
+   see /usr/share/doc/packages/perl-Lingua-EN-Tagger/Changes
+
+  0.29            Aaron Coburn            5/18/18
+          Add an add_tags_incrementally method for a more
+          stream-based parsing mechanism. Updated email address.
+
+-------------------------------------------------------------------
+Sat Dec 24 06:36:23 UTC 2016 - coolo@suse.com
+
+- updated to 0.28
+   see /usr/share/doc/packages/perl-Lingua-EN-Tagger/Changes
+
+  0.28            Aaron Coburn            12/23/16
+          Changed the generation of the part-of-speech
+          lexicon to use nstore instead of store. Based on a
+          contribution from Chris Butler <chrisb@debian.org>
+          and Reiner Herrmann <reiner@reiner-h.de>.
+
+-------------------------------------------------------------------
+Wed Dec 21 06:41:03 UTC 2016 - coolo@suse.com
+
+- updated to 0.27
+   see /usr/share/doc/packages/perl-Lingua-EN-Tagger/Changes
+
+  0.27            Aaron Coburn            12/20/16
+          Fixed unescaped left braces in Makefile.PL
+
+-------------------------------------------------------------------
+Tue Apr 14 18:23:12 UTC 2015 - coolo@suse.com
+
+- updated to 0.25
+   see /usr/share/doc/packages/perl-Lingua-EN-Tagger/Changes
+
+  0.25            Aaron Coburn            4/3/15
+          Fixed floating point number regex.
+
+-------------------------------------------------------------------
+Wed Feb 12 10:48:36 UTC 2014 - lnussel@suse.de
+
+- this package is actually arch dependent:
+  https://rt.cpan.org/Public/Bug/Display.html?id=60318
+- new version 0.24
+  - Fixed errors in threads tests.
+  - Escaped some more curly braces in regex patterns (see below). Made
+    memoize module support threads.
+  - Escaped curly braces in regex patterns. In perl 5.17 this becomes
+    necessary.
+  - Added requirement for 5.8 for proper unicode support. Modified
+    get_sentences routine for $ chars as with preceeding issue.
+  - Added better error handling for loading YAML files. Fixed error in
+    get_sentences routine related to (, [ and { characters being fused
+    to the preceding word.
+
+-------------------------------------------------------------------
+Mon Jan 17 16:24:50 UTC 2011 - coolo@novell.com
+
+- initial package 0.16
+  * created by cpanspec 1.78.03
+

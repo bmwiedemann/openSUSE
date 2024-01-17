@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/prometheus/promu.git</param>
+              <param name="changesrevision">e1bab893555f728998f2bd404c4b7e66931bc760</param></service></servicedata>

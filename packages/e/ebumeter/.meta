@@ -1,0 +1,14 @@
+<package name="ebumeter" project="openSUSE:Factory">
+  <title>Loudness measurement according to EBU-R128</title>
+  <description>Ebumeter provides real-time level metering according to the EBU R-128
+recommendation. The current release implements all features required
+by the EBU document except the oversampled peak level monitoring.
+ebumeter can only be used with JACK.
+
+A separate command-line utility (ebur128) to measure audio files is
+provided as well.
+
+</description>
+  <devel project="multimedia:apps" package="ebumeter"/>
+  <url>https://kokkinizita.linuxaudio.org/linuxaudio/ebumeter-doc/quickguide.html</url>
+</package>

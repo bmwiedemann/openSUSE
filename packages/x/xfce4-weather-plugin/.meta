@@ -1,0 +1,5 @@
+<package name="xfce4-weather-plugin" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="X11:xfce" package="xfce4-weather-plugin"/>
+</package>

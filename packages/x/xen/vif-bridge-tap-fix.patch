@@ -1,0 +1,30 @@
+# HG changeset patch
+# User Jim Fehlig <jfehlig@suse.com>
+# Date 1319581952 21600
+# Node ID 74da2a3a1db1476d627f42e4a99e9e720cc6774d
+# Parent  6c583d35d76dda2236c81d9437ff9d57ab02c006
+Prevent vif-bridge from adding user-created tap interfaces to a bridge
+
+Exit vif-bridge script if there is no device info in xenstore, preventing
+it from adding user-created taps to bridges.
+
+    Signed-off-by: Jim Fehlig <jfehlig@suse.com>
+
+Index: xen-4.5.0-testing/tools/hotplug/Linux/vif-bridge
+===================================================================
+--- xen-4.5.0-testing.orig/tools/hotplug/Linux/vif-bridge
++++ xen-4.5.0-testing/tools/hotplug/Linux/vif-bridge
+@@ -28,6 +28,13 @@
+ dir=$(dirname "$0")
+ . "$dir/vif-common.sh"
+ 
++mac=$(xenstore_read_default "$XENBUS_PATH/mac" "")
++if [ -z "$mac" ]
++then
++    log debug "No device details in $XENBUS_PATH, exiting."
++    exit 0
++fi
++
+ bridge=${bridge:-}
+ bridge=$(xenstore_read_default "$XENBUS_PATH/bridge" "$bridge")
+ 

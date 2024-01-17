@@ -1,0 +1,30 @@
+--- xen-4.18.0-testing/tools/xs-clients/Makefile.orig	2023-10-02 12:51:09.364766336 -0600
++++ xen-4.18.0-testing/tools/xs-clients/Makefile	2023-10-02 12:53:09.360769196 -0600
+@@ -29,7 +29,7 @@ all: $(TARGETS)
+ clients: xenstore $(CLIENTS) xenstore-control
+ 
+ $(CLIENTS): xenstore
+-	ln -f xenstore $@
++	ln -sf xenstore $@
+ 
+ xenstore: xenstore_client.o
+ 	$(CC) $(LDFLAGS) $^ $(LDLIBS) -o $@ $(APPEND_LDFLAGS)
+@@ -54,7 +54,7 @@ install: all
+ 	$(INSTALL_PROG) xenstore-control $(DESTDIR)$(bindir)
+ 	$(INSTALL_PROG) xenstore $(DESTDIR)$(bindir)
+ 	set -e ; for c in $(CLIENTS) ; do \
+-		ln -f $(DESTDIR)$(bindir)/xenstore $(DESTDIR)$(bindir)/$${c} ; \
++		ln -sf xenstore $(DESTDIR)$(bindir)/$${c} ; \
+ 	done
+ 
+ .PHONY: uninstall
+--- xen-4.18.0-testing/tools/xenstored/Makefile.orig	2023-10-02 12:51:03.364766193 -0600
++++ xen-4.18.0-testing/tools/xenstored/Makefile	2023-10-02 12:54:09.472770628 -0600
+@@ -37,6 +37,7 @@ TAGS:
+ install: all
+ 	$(INSTALL_DIR) $(DESTDIR)$(sbindir)
+ 	$(INSTALL_PROG) xenstored $(DESTDIR)$(sbindir)
++	$(INSTALL_DIR) $(DESTDIR)$(bindir)
+ 
+ .PHONY: uninstall
+ uninstall:

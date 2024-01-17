@@ -1,0 +1,41 @@
+-------------------------------------------------------------------
+Wed Jan  3 09:52:13 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- require setuptools
+
+-------------------------------------------------------------------
+Sat Dec 16 21:28:27 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.13.0:
+  * Add support for Python 3.12 (#64)
+  * Introduce compatibility with native namespace packages (#59)
+
+-------------------------------------------------------------------
+Tue Dec  5 13:58:23 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.12.7
+  * Add classifier for python 3.11 (#31)
+- from version 0.12.6
+  * **deps:** Allow protobuf >= 3.19.5 (1044946)
+- from version 0.12.5
+  * Require python 3.7+ (#8)
+
+-------------------------------------------------------------------
+Fri Sep  9 13:43:08 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.12.4:
+  * chore: release 0.12.4
+  * chore: add license headers
+  * fix: regenerate pb2 using latest protos
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
+Thu Sep 12 10:07:49 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.12.3:
+  * no upstream changelog
+
+-------------------------------------------------------------------
+Mon Feb 18 07:00:55 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v0.11.4

@@ -1,0 +1,268 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0a81fc8c7ac7ee02cc05489d96062012</srcmd5>
+    <version>3.8.2</version>
+    <time>1474623055</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>424296</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>998a0974718001549e10dc899d4a4ca1</srcmd5>
+    <version>4.2.1</version>
+    <time>1499291767</time>
+    <user>dimstar_suse</user>
+    <comment>Release 3.2 of GNU Health</comment>
+    <requestid>505316</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>77fd51a9a9b630b5da9cc690adc8dcae</srcmd5>
+    <version>4.2.2</version>
+    <time>1505680750</time>
+    <user>dimstar_suse</user>
+    <comment>bnc1054032 bugfix release for GNU Health</comment>
+    <requestid>526514</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ece8b10e9fad798f5e488f45b76c36a0</srcmd5>
+    <version>4.2.3</version>
+    <time>1510837412</time>
+    <user>dimstar_suse</user>
+    <comment>bnc1065671</comment>
+    <requestid>542143</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4810a23cc96123eb5133de15ad9907ca</srcmd5>
+    <version>4.2.4</version>
+    <time>1520778279</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>584730</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5eac2899e626218c9d0c4998630cb287</srcmd5>
+    <version>4.2.5</version>
+    <time>1526372049</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 4.2.5 - Bugfix Release
+- Version 4.2.4 - Bugfix Release
+- Version 4.2.3 - Bugfix Release
+- Version 4.2.2 - Bugfix Release
+- Version 4.2.1
+ 
+- Tryton Release 4.2 
+ 
+- Tryton Release 4.0 
+ 
+- Tryton Release 3.8 
+ 
+- Tryton Release 3.6 
+- new branch 3.0
+* 
+- initial build
+</comment>
+    <requestid>606653</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>90deefc374cc513014f73e5455a3284a</srcmd5>
+    <version>4.2.6</version>
+    <time>1532033735</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>623660</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>918a17c74bbc408f4614f4797037a854</srcmd5>
+    <version>4.2.6</version>
+    <time>1536575545</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>634690</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e1bfd659fd4d385df4f5753ea052d65a</srcmd5>
+    <version>4.6.4</version>
+    <time>1548064172</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 4.6.4 - Bugfix Release
+- Version 4.2.6 - Bugfix Release (boo#1107771)
+- Version 4.2.5 - Bugfix Release
+- Version 4.2.4 - Bugfix Release
+- Version 4.2.3 - Bugfix Release
+- Version 4.2.2 - Bugfix Release
+- Version 4.2.1
+ 
+- Tryton Release 4.2 
+ 
+- Tryton Release 4.0 
+ 
+- Tryton Release 3.8 
+ 
+- Tryton Release 3.6 
+- new branch 3.0
+* 
+- initial build
+</comment>
+    <requestid>664372</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>cc4fa85821fef75032a3c673b1d9a4aa</srcmd5>
+    <version>4.6.5</version>
+    <time>1559375293</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>705911</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e3ef89a5cc57d1f446b25a5e2fa68cfe</srcmd5>
+    <version>5.0.2</version>
+    <time>1575463900</time>
+    <user>dimstar_suse</user>
+    <comment>version bump (forwarded request 750820 from DocB)</comment>
+    <requestid>752401</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8e4a3b3449d69a2a4f1831ec1d2a3363</srcmd5>
+    <version>5.0.3</version>
+    <time>1586112893</time>
+    <user>dimstar_suse</user>
+    <comment>bufix release</comment>
+    <requestid>791424</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3b5cb3e5f33200147f38d97be6d5c9cd</srcmd5>
+    <version>5.0.4</version>
+    <time>1589751792</time>
+    <user>dimstar_suse</user>
+    <comment>new version</comment>
+    <requestid>806127</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>a1d0b2b956224b4f0d5eb3cfeef97520</srcmd5>
+    <version>5.0.5</version>
+    <time>1594293605</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>819683</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>666cb40ea93202a264132d2434b3ee76</srcmd5>
+    <version>5.0.5</version>
+    <time>1612182481</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>868175</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>f250cd0d54a611b78512a05b9bdd3e27</srcmd5>
+    <version>5.0.5</version>
+    <time>1614684795</time>
+    <user>RBrownSUSE</user>
+    <comment> (forwarded request 875667 from AndreasStieger)</comment>
+    <requestid>875732</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>bc6afd68c7d49d2fac0943a45f7266a4</srcmd5>
+    <version>5.0.6</version>
+    <time>1615489877</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>878230</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>d499a77dca67c4f5809a7d1ff2220389</srcmd5>
+    <version>5.0.7</version>
+    <time>1624136673</time>
+    <user>dimstar_suse</user>
+    <comment>bugfix release</comment>
+    <requestid>900898</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>f9b8ddeab0675c315dbb782f2a12fa43</srcmd5>
+    <version>5.0.9</version>
+    <time>1638831624</time>
+    <user>dimstar_suse</user>
+    <comment>Bugfix Release</comment>
+    <requestid>936095</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>6b2d1983d930e2d36bacbccb35d9694c</srcmd5>
+    <version>6.0.6</version>
+    <time>1646671684</time>
+    <user>dimstar_suse</user>
+    <comment>version bump (forwarded request 959960 from DocB)</comment>
+    <requestid>959979</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>dba9e1bc22aa8739e6bc7be2fa928875</srcmd5>
+    <version>6.0.7</version>
+    <time>1655048486</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>982123</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>815ced70eca60dc59443124ae32ea160</srcmd5>
+    <version>6.0.8</version>
+    <time>1659721923</time>
+    <user>dimstar_suse</user>
+    <comment>bugfix version</comment>
+    <requestid>993358</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>bf0b2c0b8a0441c3c0f1ab2e38c2a76a</srcmd5>
+    <version>6.0.9</version>
+    <time>1666689624</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1031038</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>8db4053512a177052924672f73623ba8</srcmd5>
+    <version>6.0.10</version>
+    <time>1678646878</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1071010</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>07121b675a2e7fd730f6661cb1e66038</srcmd5>
+    <version>6.0.11</version>
+    <time>1684846524</time>
+    <user>dimstar_suse</user>
+    <comment>bugfix</comment>
+    <requestid>1088641</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>e1a5fb61210b398abd13deff77eeb098</srcmd5>
+    <version>6.0.12</version>
+    <time>1696964315</time>
+    <user>anag+factory</user>
+    <comment>bugfix release</comment>
+    <requestid>1116285</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>dfef70dbd906ddf78d792a47a0700250</srcmd5>
+    <version>6.0.12</version>
+    <time>1697748612</time>
+    <user>anag+factory</user>
+    <comment>Remove %python3_install prefix and root options, that's included in the macro by default. (forwarded request 1118928 from dgarcia)</comment>
+    <requestid>1118962</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>bd98c4fa4a4d0f15a6404a0adebdd262</srcmd5>
+    <version>6.0.13</version>
+    <time>1699910483</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1125408</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>11ce48530f4cc09f14c178ea8d0b08bc</srcmd5>
+    <version>6.0.14</version>
+    <time>1700511553</time>
+    <user>anag+factory</user>
+    <comment>bugfix release</comment>
+    <requestid>1127521</requestid>
+  </revision>
+</revisionlist>

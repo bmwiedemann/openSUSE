@@ -1,0 +1,5 @@
+<package name="python3-ec2metadata" project="openSUSE:Factory">
+  <title>Collect EC2 instance meta data</title>
+  <description>Python implementation to collect EC2 instance metadata</description>
+  <devel project="Cloud:Tools" package="python3-ec2metadata"/>
+</package>

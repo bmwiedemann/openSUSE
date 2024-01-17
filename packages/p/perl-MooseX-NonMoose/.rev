@@ -1,0 +1,56 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>854187c7c3baecc4c3ed3006ef89d7d4</srcmd5>
+    <version>0.22</version>
+    <time>1325658464</time>
+    <user>coolo</user>
+    <comment>new perl package</comment>
+    <requestid>98165</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>854187c7c3baecc4c3ed3006ef89d7d4</srcmd5>
+    <version>0.22</version>
+    <time>1340183882</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>854187c7c3baecc4c3ed3006ef89d7d4</srcmd5>
+    <version>0.22</version>
+    <time>1359109749</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>854187c7c3baecc4c3ed3006ef89d7d4</srcmd5>
+    <version>0.22</version>
+    <time>1379663765</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>18eeae5263dea2c8eca723d1104550ed</srcmd5>
+    <version>0.24</version>
+    <time>1381394251</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>202267</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a466f6ae0982ef46ebe73045a07c5f7a</srcmd5>
+    <version>0.26</version>
+    <time>1394386963</time>
+    <user>coolo</user>
+    <comment>- updated to 0.26
+      - fix dependency specification for Try::Tiny (Gareth Harper, #9)
+      - fix for Module::Runtime 0.014</comment>
+    <requestid>224950</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>a466f6ae0982ef46ebe73045a07c5f7a</srcmd5>
+    <version>0.26</version>
+    <time>1409302403</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

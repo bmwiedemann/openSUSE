@@ -1,0 +1,12 @@
+<package name="blobwars" project="openSUSE:Factory">
+  <title>Mission and Objective based 2D Platform Game</title>
+  <description>Blob Wars : Metal Blob Solid. This is Episode I of the Blob Wars Saga.
+This is a platform game, not unlike those found on the Amiga and SNES.
+The object of the game is to take on the role of solider Blob, Bob,
+and play through the various levels and attempt to rescue as many MIA
+(Missing In Action) Blobs as possible. This is not quite as straight
+forward as it sounds, since the MIAs will often be not directly
+reachable and will require some extra thought. Bob also has to
+contend with environmental hazards, alien invaders and assimilated Blobs.</description>
+  <devel project="games" package="blobwars"/>
+</package>

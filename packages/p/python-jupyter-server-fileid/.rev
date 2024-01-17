@@ -1,0 +1,49 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>78410743d01fe4659151361f5e6665e6</srcmd5>
+    <version>0.6.0</version>
+    <time>1679667629</time>
+    <user>dimstar_suse</user>
+    <comment>required by jupyterlab-rtc / jupyter-collaboration</comment>
+    <requestid>1073768</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b8f08aa83dd07b1ea7734c486c35847b</srcmd5>
+    <version>0.9.0</version>
+    <time>1682368261</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.0
+  * add Jupyter Releaser workflows #65 (@dlqqq)
+  * Fix behavior for OOB move followed by IB move #63 (@dlqqq)
+- Release 0.8.0
+  * Add db_journal_mode trait to FileIdManager classes #61
+    (@kevin-bates)
+- Release 0.7.0
+  * remove mtime fallback #47 (@dlqqq)
+  * Make ArbitraryFileIdManager filesystem-agnostic and fix Windows
+    CI #46 (@kevin-bates)
+  * Relax jupyter_events dependency requirement #57 (@akchinSTC)
+  * Update check-jsonschema usage to latest style #50 (@sirosen)
+</comment>
+    <requestid>1082311</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>f62a5f095b3cb8fc8e3072cbef875f2b</srcmd5>
+    <version>0.9.0</version>
+    <time>1692379706</time>
+    <user>anag+factory</user>
+    <comment>- Suggest primary python package -- boo#1214354</comment>
+    <requestid>1104445</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a0bc20733c62e060917699ace9ef8450</srcmd5>
+    <version>0.9.1</version>
+    <time>1703527533</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.9.1
+  * Add a simple REST API for fetching a file's ID #72 (@Zsailer)
+  * Allow db_path to be set to &quot;:memory:&quot; #70 (@cmd-ntrf)
+  * provides a summary description for pip #68 (@stonebig)</comment>
+    <requestid>1134928</requestid>
+  </revision>
+</revisionlist>

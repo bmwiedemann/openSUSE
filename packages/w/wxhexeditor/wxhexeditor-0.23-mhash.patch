@@ -1,0 +1,72 @@
+Index: Makefile
+===================================================================
+--- Makefile.orig	2017-12-31 04:15:18.000000000 +0200
++++ Makefile	2018-02-04 09:15:27.816634958 +0200
+@@ -1,9 +1,9 @@
+ WXCONFIG ?= wx-config
+ HOST=
+-WXCXXFLAGS= `$(WXCONFIG) --cxxflags` -Iudis86 -Imhash/include -MMD -fopenmp -Wall -O2
++WXCXXFLAGS= `$(WXCONFIG) --cxxflags` -Iudis86 -MMD -fopenmp -Wall -O2
+ WXLDFLAGS = `$(WXCONFIG) --libs` `$(WXCONFIG) --libs aui` `$(WXCONFIG) --libs core`
+ WXCXXFLAGS += -fopenmp
+-LDFLAGS += -lgomp
++LDFLAGS += -lgomp -lmhash
+ #add this ldflags for WinConsole  "-Wl,--subsystem,console -mconsole" for win-debug
+ #LDFLAGS += -Wl,--subsystem,console -mconsole
+ RC = `$(WXCONFIG) --rescomp`
+@@ -22,7 +22,7 @@ SOURCES= src/HexEditorGui.cpp \
+ 			src/HexEditorCtrl/wxHexCtrl/Tag.cpp\
+ 			src/HexEditorCtrl/HexEditorCtrlGui.cpp\
+ 			src/HexEditorFrame.cpp
+-LIBS = udis86/libudis86/.libs/libudis86.a mhash/lib/.libs/libmhash.a
++LIBS = udis86/libudis86/.libs/libudis86.a
+ OBJECTS=$(SOURCES:.cpp=.o)
+ DEPENDS=$(OBJECTS:.o=.d)
+ LANGUAGEDIRS=`ls -l ./locale | grep ^d | sed s/.*\ //g;`
+@@ -73,9 +73,9 @@ udis86/libudis86/.libs/libudis86.a:
+ 	cd udis86;./configure --host=$(HOST) CC="$(CC)" CXX="$(CXX)" CFLAGS="$(CFLAGS) ${OPTFLAGS}" CXXFLAGS="$(CXXFLAGS) ${OPTFLAGS}" CPPFLAGS="$(CPPFLAGS)"
+ 	cd udis86/libudis86; $(MAKE) $(MFLAGS)
+ 
+-mhash/lib/.libs/libmhash.a:
+-	cd mhash; ./configure --host=$(HOST) CC="$(CC)" CXX="$(CXX)" CFLAGS="$(CFLAGS) ${OPTFLAGS}" CXXFLAGS="$(CXXFLAGS) ${OPTFLAGS}" CPPFLAGS="$(CPPFLAGS)"
+-	cd mhash; $(MAKE) $(MFLAGS)
++##mhash/lib/.libs/libmhash.a:
++##	cd mhash; ./configure --host=$(HOST) CC="$(CC)" CXX="$(CXX)" CFLAGS="$(CFLAGS) ${OPTFLAGS}" CXXFLAGS="$(CXXFLAGS) ${OPTFLAGS}" CPPFLAGS="$(CPPFLAGS)"
++##	cd mhash; $(MAKE) $(MFLAGS)
+ 
+ src/windrv.o:
+ 	$(CXX) $(LIBS) ${CXXFLAGS} ${OPTFLAGS} $(WXCXXFLAGS) $(WXLDFLAGS) ${LDFLAGS} -c src/windrv.cpp -o src/windrv.o
+@@ -193,7 +193,6 @@ clean:
+ 	rm -f locale/*/wxHexEditor.mo
+ distclean: clean
+ 	cd udis86;$(MAKE) distclean
+-	cd mhash;$(MAKE) distclean
+ 
+ # include the auto-generated dependency files
+ -include $(DEPENDS)
+Index: src/HexEditor.h
+===================================================================
+--- src/HexEditor.h.orig	2017-12-31 04:15:18.000000000 +0200
++++ src/HexEditor.h	2018-02-04 10:11:40.713908834 +0200
+@@ -25,7 +25,7 @@
+ #ifndef _wxHexEditor_h_
+ #define _wxHexEditor_h_
+ 
+-#include "../mhash/include/mhash.h"
++#include <mhash.h>
+ 
+ #include <wx/ffile.h>
+ #include <wx/clipbrd.h>
+Index: src/HexDialogs.cpp
+===================================================================
+--- src/HexDialogs.cpp.orig	2017-12-31 04:15:18.000000000 +0200
++++ src/HexDialogs.cpp	2018-02-04 10:14:10.838020390 +0200
+@@ -24,7 +24,7 @@
+ #define NANINT 0xFFFFFFFFFFFFFFFFLL
+ #include "HexDialogs.h"
+ #include <wx/progdlg.h>
+-#include "../mhash/include/mhash.h"
++#include <mhash.h>
+ 
+ #ifdef __SSE2__
+ 	#include <emmintrin.h>

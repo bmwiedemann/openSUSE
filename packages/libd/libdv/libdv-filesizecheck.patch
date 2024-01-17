@@ -1,0 +1,22 @@
+The patch checks if the file is smaller than the smallest
+video frame size, and if it's smaller, there can't be a
+valid video file in it, hence, the file is truncated
+and there is nothing to play in it.
+
+See https://bugzilla.novell.com/show_bug.cgi?id=157631
+for further information.
+
+--- libdv/playdv/playdv.c	2006/03/21 11:12:19	1.1
++++ libdv/playdv/playdv.c	2006/03/21 11:33:05
+@@ -344,6 +344,11 @@
+   if (!dv_player->no_mmap) {
+ 	  if(fstat(fd, &dv_player->statbuf)) goto fstatfail;
+ 	  eof = dv_player->statbuf.st_size;
++	  if (eof < sizeof(dv_header_t) + 120000) { /* 1st frame incomplete */
++		fprintf(stderr, "playdv: File size of %d bytes "
++			"smaller than frame size, nothing to play!\n", eof);
++		exit(-1);
++	  }
+   }
+ 
+   dv_player->decoder->quality = dv_player->decoder->video->quality;

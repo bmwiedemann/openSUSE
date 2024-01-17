@@ -1,0 +1,9 @@
+<package name="tomsfastmath" project="openSUSE:Factory">
+  <title></title>
+  <description>TomsFastMath is meant to be a very fast yet still fairly portable and easy to
+port large integer arithmetic library written in ISO C. The goal specifically
+is to be able to perform very fast modular exponentiations and other related
+functions required for ECC, DH and RSA cryptosystems.</description>
+  <devel project="devel:libraries:c_c++" package="tomsfastmath"/>
+  <url>https://www.libtom.net</url>
+</package>

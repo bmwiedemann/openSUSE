@@ -1,0 +1,5 @@
+<package name="python-dictdiffer" project="openSUSE:Factory">
+  <title></title>
+  <description>Dictdiffer is a library that helps you to diff and patch dictionaries</description>
+  <devel project="devel:languages:python" package="python-dictdiffer"/>
+</package>

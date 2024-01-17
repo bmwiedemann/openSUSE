@@ -1,0 +1,13 @@
+Index: openldap-2.6.3/build/mkversion
+===================================================================
+--- openldap-2.6.3.orig/build/mkversion
++++ openldap-2.6.3/build/mkversion
+@@ -77,7 +77,7 @@ static const char copyright[] =
+ "COPYING RESTRICTIONS APPLY\n";
+ 
+ $static $const char $SYMBOL[] =
+-"@(#) \$$PACKAGE: $APPLICATION $VERSION (" __DATE__ " " __TIME__ ") \$\n"
++"@(#) \$$PACKAGE: $APPLICATION $VERSION \$\n"
+ "\t$WHOWHERE\n";
+ 
+ __EOF__

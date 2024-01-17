@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c3899d0609f7e35fb685de00e589009b</srcmd5>
+    <version>21.2.0</version>
+    <time>1652114634</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by python-argon2-cffi</comment>
+    <requestid>975665</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d61e8540718adf3a633eeb8677211b11</srcmd5>
+    <version>21.2.0</version>
+    <time>1666440766</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove not needed dep python-six
+- Use a more specific python_sitelib in %files
+</comment>
+    <requestid>1030109</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>5ca8656a7dd07b6311eb745be29cb68c</srcmd5>
+    <version>21.2.0</version>
+    <time>1686576290</time>
+    <user>dimstar_suse</user>
+    <comment>- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1092268</requestid>
+  </revision>
+</revisionlist>

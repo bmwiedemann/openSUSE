@@ -1,0 +1,56 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>37355ac67226e561d412179d753516ec</srcmd5>
+    <version>1.7.14</version>
+    <time>1607349647</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain cJSON in Factory</comment>
+    <requestid>853324</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>72b646dabf7dda5ab9667e8bd1f1eed8</srcmd5>
+    <version>1.7.14</version>
+    <time>1609160582</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>859015</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>aa1a673a2122fd4d45c92136dd280e17</srcmd5>
+    <version>1.7.15</version>
+    <time>1630093443</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>914589</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>062b25b121089fb5916944f6c4942a75</srcmd5>
+    <version>1.7.16</version>
+    <time>1689710097</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.7.16:
+  * Add an option for ENABLE_CJSON_VERSION_SO in CMakeLists.txt
+  * Add cmake_policy to CMakeLists.txt
+  * Add cJSON_SetBoolValue
+  * Add meson documentation
+  * Fix memory leak in merge_patch
+  * Fix conflicting target names 'uninstall'
+  * Bump cmake version to 3.0 and use new version syntax
+  * Print int without decimal places
+  * Fix 'cjson_utils-static' target not exist
+  * Add allocate check for replace_item_in_object
+  * Fix a null pointer crash in cJSON_ReplaceItemViaPointer</comment>
+    <requestid>1098986</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f11228d7351c649a907c6e81d7353db3</srcmd5>
+    <version>1.7.17</version>
+    <time>1703800497</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.7.17 (bsc#1218098, CVE-2023-50472,
+    bsc#1218099, CVE-2023-50471):
+  * Fix null reference in cJSON_SetValuestring (CVE-2023-50472).
+  * Fix null reference in cJSON_InsertItemInArray (CVE-2023-50471).</comment>
+    <requestid>1135432</requestid>
+  </revision>
+</revisionlist>

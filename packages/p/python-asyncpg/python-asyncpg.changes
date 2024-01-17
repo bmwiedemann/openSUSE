@@ -1,0 +1,180 @@
+-------------------------------------------------------------------
+Sat Nov 25 14:10:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.29.0:
+  * Python 3.12 and PostgreSQL 16 support (#1084)
+  * Add support for tuple-format custom codecs on composite types
+  * Support `target_session_attrs` in URL format, add tests
+  * Infinity numeric support (#1067)
+  * Add support for the `WHERE` clause in `copy_to` methods
+  * Add query logging callbacks and context manager (#1043)
+  * When prepared statements are disabled, avoid relying on them
+    harder (#1065)
+  * Handle environments with HOME set to a not-a-directory
+  * Fix handling of non-ASCII passwords (#1062)
+  * Disable JIT while doing type introspection (#1082)
+  * Remove connection parameter caching in `Pool` (#1053)
+  * Switch to Python 3.12-style `wait_for` (#1086)
+  * Update automatic PostGIS type conversion for Shapely 2.0
+  * Use the `timeout` context manager in the connection path
+  * Small fix for documentation on using SSL in Connection (#995)
+  * Use cleanup_ctx in pool usage doc (#878)
+  * Close cursor portals once the iterator is exhausted (#1088)
+  * Cut BaseProtocol circular reference on close. (#1049)
+  * Allow passing hosts as tuples to `connect()` (in addition to
+  * Drop support for Python 3.7 (#1064)
+
+-------------------------------------------------------------------
+Tue Jul 11 13:32:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.28.0:
+  * Minor fixes and improvements.
+  * Do not try to cleanup statements (#981)
+  * Add Pool.is_closing() method (#973)
+  * Fix test_tls_version for LibreSSL (#974)
+  * Handle environments without home dir (#1011)
+  * fix: salt and iterations parsing for scram (#1026)
+  * Add support for target_session_attrs (#987)
+  * Add support for READ UNCOMMITTED (#1039)
+  * Update benchmarks, add psycopg3 (#1042)
+
+-------------------------------------------------------------------
+Tue Jul  4 13:09:00 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Mon Nov  7 20:50:09 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 0.27.0
+  Support Python 3.11 and PostgreSQL 15. This release also drops support
+  for Python 3.6.
+  * Changes
+  Add arm64 mac and linux wheels
+  Add Python 3.11 to the test matrix
+  Exclude .venv from flake8 (#958)
+  Upgrade to flake8 5.0.4 (from 3.9.2) (#961)
+  Show an example of a custom Record class (#960)
+  Use the exact type name in Record.repr (#959)
+  Drop Python 3.6 support (#940)
+  Test on Python 3.11 and PostgreSQL 15, fix workflow deprecations (#968)
+
+-------------------------------------------------------------------
+Fri Oct 14 07:33:54 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Disable failing test test_executemany_uvloop_ssl_issue_700, because
+  the ssl_user role doesn't have permission to create tables by default with
+  the current postgresql configuration.
+
+-------------------------------------------------------------------
+Thu Aug  4 08:57:47 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Update to 0.26.0:
+  * Changes
+    -------
+    * Add support to use awaitable object in password function.   (#889)
+      (by @kwarunek in fb3b6bf7 for #889)
+    * Support direct TLS connections (i.e. no STARTTLS) (#923)
+      (by @jackwotherspoon in f2a937d2 for #923)
+  * Fixes
+    -----
+    * Fix invalid `pyproject.toml` (#900)
+      (by @Rongronggg9 in eddb649c for #900)
+    * Add record_class parameter Pool.fetch and Pool.fetchrow (#896)
+      (by @baltitenger in 2519cf38 for #896)
+    * Domain basetypes are introspected (#886) (#887)
+      (by @QuantumTM in cca4a2d3 for #886)
+    * Properly handle exceptions raised while handling server auth messages (#862)
+      (by @elprans in bd192623 for #862)
+
+-------------------------------------------------------------------
+Sun Jan 23 16:35:31 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update
+
+-------------------------------------------------------------------
+Sun Jan 23 16:30:52 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.25.0:
+  * Improve SSL option compatibility in URIs
+  * Add Pool methods to determine its min, max, current and idle size
+  * Make it possible to specify a statement name in Connection.prepare()
+  * Implement support for multirange types
+  * Make sure timeout callbacks always get cleaned up
+  * Update __all__ statements to a simpler form that is better supported by typecheckers
+  * Fix test_timetz_encoding on Python 3.10
+  * Fix a bunch of ResourceWarnings in the test suite
+  * Fix SSLContext deprecation warnings
+  * Fix the description of the database argument to connect()
+  * Fix parsing of IPv6 addresses in the connection URI
+  * Improve diagnostics of invalid executemany() input
+
+-------------------------------------------------------------------
+Sun Oct 17 14:19:32 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.24.0
+  * Drop support for Python 3.5 (#777)
+  * Add support for Python 3.10 (#795)
+  * Add support for asynchronous iterables to
+    copy_records_to_table() (#713)
+  * Add support for coroutine functions as listener callbacks
+    (#802)
+  * Add support for sslcert, sslkey and sslrootcert parameters to
+    DSN (#768)
+  * Add copy_ wrappers to Pool (#661)
+  * Add issubset and issuperset methods to the Range type (#563)
+  * Break connection internal circular reference (#774)
+  * Make Server Version Extraction More Flexible (#778)
+- Release 0.23.0
+  * Avoid TypeError in Transaction.__repr__ (#703)
+  * Feed memoryview to writelines() (#715)
+  * Add sslmode=allow support and fix =prefer retry (#720)
+  * Loosen message test in test_invalid_input (#751)
+  * Support readonly and deferrable for non-serializable
+    transactions (#747)
+  * Fix asyncpg with Py_DEBUG mode (#719)
+  * Fix docs/Makefile and docs/_static/theme_overrides.css missing
+    from PyPI package (#708)
+- Reactivate python36: uvloop for testing is optional
+
+-------------------------------------------------------------------
+Fri Sep 17 07:01:53 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not build for python 3.6: the required dependency uvloop does
+  no longer support Python 3.6 since version 0.16.
+
+-------------------------------------------------------------------
+Mon May  3 20:51:42 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.22.0:
+  * Add support for connection termination listeners
+  * Add support for password functions (useful for RDS IAM auth)
+  * Fix possible uninitalized pointer access on unexpected array
+  * message data (CVE-2020-17446,
+  * Vastly speedup executemany by batching protocol messages
+  * Add Python 3.9 support
+  * Allow using custom Record class
+  * Prefer SSL connections by default
+  * Add codecs for a bunch of new builtin types
+  * Expose Pool as asyncpg.Pool
+  * Avoid unnecessary overhead during connection reset
+  * Bugfixes
+- drop merged-static-fix.patch (upstream)
+
+-------------------------------------------------------------------
+Sun Nov 22 14:12:03 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Tidy spec
+- Add merged-static-fix.patch to support Python 3.8
+- Activate test suite
+
+-------------------------------------------------------------------
+Fri Jan 24 08:54:51 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to version 0.20.1
+
+-------------------------------------------------------------------
+Wed Dec 26 14:01:50 UTC 2018 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Initial packaging asyncpg version 0.18.2
+

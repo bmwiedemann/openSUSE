@@ -1,0 +1,15 @@
+--- psgml-1.3.1/xxml/xxml.el.~1~	2005-03-07 11:21:00.640993844 +0100
++++ psgml-1.3.1/xxml/xxml.el	2005-03-07 11:24:18.389474834 +0100
+@@ -345,8 +345,8 @@
+   ;; Let us highlight our own way.
+   (xxml-setq-local font-lock-defaults '(xxml-font-lock-keywords t))
+   (setq sgml-set-face nil)
+-  ;; Allow TAB to work everywhere.  I'm not fully sure this is a good idea.
+-  (xxml-setq-local sgml-indent-data t)
++  ;; ;; Allow TAB to work everywhere.  I'm not fully sure this is a good idea.
++  ;; (xxml-setq-local sgml-indent-data t)
+   ;; Preset formatting options for no specific DTD.
+   (xxml-setq-local xxml-all-contents-are-literal t
+ 		   xxml-all-tags-are-indentable-inside nil
+
+Diff finished.  Mon Mar  7 11:24:24 2005

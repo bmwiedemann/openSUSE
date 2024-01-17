@@ -1,0 +1,175 @@
+-------------------------------------------------------------------
+Thu Nov 30 14:36:22 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 2.1.1:
+  * Add man page for tpmproxy.
+- Update to 2.1.0:
+  * Parse new IMA event log template data fields.
+  * Add option to verify IMA template data
+  * Correct minor regression test script typos.
+- Update to 2.0.0
+  * Expand TPMU_SENSITIVE_COMPOSITE to handle HW TPMs that return 5
+    RSA primes.  This is an ABI (not API) break.
+  * Add support for TPM2_ECC_Encrypt and TPM2_ECC_Decrypt
+  * Add more EFI event log handlers and event tracing.
+  * SW TPM test CA now uses SHA-256, not the deprecated SHA-1.
+  * Port tpmproxy for TPM 2.0 to Linux and Windows.
+  * Add many new EK root certificates.
+  * Remove OpenSSL functions deprecated in 3.x.
+  * Fix TSS bug when using encrypt and decrypt in a PWAP session.
+  * Add build flag to suppress SHA-1.
+- Remove patches fixed upstream:
+  * ibmtss-regtests-Update-openssl-key-generation-for-3.0.0.patch
+  * ibmtss-utils-Update-certifyx509-for-Openssl-3.0.0.patch
+  * ibmtss-utils-Remove-unused-variables-from-certifyx509.patch
+  * ibmtss-tss-Port-HMAC-operations-to-openssl-3.0.patch
+  * ibmtss-utils-Port-to-openssl-3.0.0-replaces-RSA-with-EVP_PK.patch
+  * ibmtss-openssl3-deprecation.patch
+
+-------------------------------------------------------------------
+Wed Nov  9 13:33:51 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- Build with OpenSSL 3.0 deprecated functions until fixed upstream
+in the next version update [bsc#1205042]
+  * ibmtss-openssl3-deprecation.patch
+- Add upstream patches to fix build with OpenSSL 3.0
+  * ibmtss-regtests-Update-openssl-key-generation-for-3.0.0.patch
+  * ibmtss-utils-Update-certifyx509-for-Openssl-3.0.0.patch
+  * ibmtss-utils-Remove-unused-variables-from-certifyx509.patch
+  * ibmtss-tss-Port-HMAC-operations-to-openssl-3.0.patch
+  * ibmtss-utils-Port-to-openssl-3.0.0-replaces-RSA-with-EVP_PK.patch
+
+-------------------------------------------------------------------
+Thu Nov 25 11:48:53 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
+
+- Fix certificate list, run all tests.
+
+-------------------------------------------------------------------
+Tue Jan 26 09:19:47 UTC 2021 - Petr Vorel <pvorel@suse.cz>
+
+- Update to upstream version 1.6.0 (jsc#SLE-18268).
+- Drop patches from this release
+  - ibmtss-certifyx509-Fix-uninitialized-variable.patch
+  - ibmtss-fix-dsa-regression.patch
+
+-------------------------------------------------------------------
+Thu Oct  1 19:24:56 UTC 2020 - Pedro Monreal Gonzalez <pmonreal@suse.com>
+
+- Regression fix:
+  * utils: fix ABI break caused by additional argument to -rsa
+  * https://sourceforge.net/p/ibmtpm20tss/mailman/message/37119441/
+- Add ibmtss-fix-dsa-regression.patch
+
+-------------------------------------------------------------------
+Mon Aug 17 14:38:12 UTC 2020 - Michal Suchanek <msuchanek@suse.de>
+
+- Update to upstream version 1.5.0 (jsc#SLE-13828).
+- Fix build warning due to -O0
+  + ibmtss-configure.ac-Do-not-disable-optimization-for-debug-b.patch
+- Fix uninitialized variable warning
+  + ibmtss-certifyx509-Fix-uninitialized-variable.patch
+
+-------------------------------------------------------------------
+Fri Mar 27 13:19:08 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Don't mess with Epoch: in the long run it can't but cause
+  problems. Upstreams that don't understand the meaning of version
+  numbers can't be helped with Epoch. Let's rely on the distro
+  features for dist-upgrade (that has no problem with a 'version
+  downgrade'.
+
+-------------------------------------------------------------------
+Mon Mar 23 20:10:11 UTC 2020 - Michal Suchanek <msuchanek@suse.com>
+
+- Fix dependencies for epoch, remove useless define.
+
+-------------------------------------------------------------------
+Fri Jan 31 11:53:40 UTC 2020 - Michal Suchanek <msuchanek@suse.com>
+
+- Update to upstream version 1.3.0
+- copy tpm device permission handling udev rule from tpm2-0-tss
+- depend on user(tss) (boo#1162360).
+
+-------------------------------------------------------------------
+Sat Aug 24 04:36:04 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Disable static libs (standard openSUSE behavior)
+
+-------------------------------------------------------------------
+Wed Aug 14 08:21:58 UTC 2019 - Michal Suchanek <msuchanek@suse.de>
+
+- Remove installed .cvsignore file
+- Don't create already created directory
+
+-------------------------------------------------------------------
+Fri Aug  9 15:52:02 UTC 2019 - Michal Suchanek <msuchanek@suse.com>
+
+- Don't install duplicate headers
+
+-------------------------------------------------------------------
+Mon Jul  8 09:59:35 UTC 2019 - Michal Suchanek <msuchanek@suse.com>
+
+- Remove .la files
+
+-------------------------------------------------------------------
+Thu Jul  4 16:51:35 UTC 2019 - Michal Suchanek <msuchanek@suse.de>
+
+- Update to v1047 (FATE#327307, jsc#SLE-6593, jsc#SLE-9179).
+  - now supports autotools
+  - supports library versioning
+  - installs tools with program prefx
+ - remove binary tool wrapper
+ - remove makefile.patch
+
+-------------------------------------------------------------------
+Tue May 22 10:18:35 UTC 2018 - msuchanek@suse.com
+
+- Add post/postun ldconfig call
+
+-------------------------------------------------------------------
+Fri May 18 21:55:16 UTC 2018 - jengelh@inai.de
+
+- Fix RPM groups
+
+-------------------------------------------------------------------
+Thu May 17 13:12:22 UTC 2018 - msuchanek@suse.com
+
+- Split off library, spec-clean (bsc#1093612)
+
+-------------------------------------------------------------------
+Thu Jan 18 08:34:51 UTC 2018 - msuchanek@suse.com
+
+- Enable test on BE
+
+-------------------------------------------------------------------
+Wed Nov  8 15:35:53 UTC 2017 - msuchanek@suse.com
+
+- Update to upstream version 1045 - works with OpenSSL 1.1 (bsc#1066914)
+
+-------------------------------------------------------------------
+Thu Mar  2 12:28:23 UTC 2017 - msuchanek@suse.com
+
+- fix description of -devel package
+
+-------------------------------------------------------------------
+Wed Mar  1 17:06:55 UTC 2017 - meissner@suse.com
+
+- update to v755 (FATE#321601)
+  - This is the version prefered by IBM.
+
+-------------------------------------------------------------------
+Wed Feb  8 09:33:13 UTC 2017 - jengelh@inai.de
+
+- Wrap description and spell out TSS.
+- Move package description up before any build recipes,
+  this is the more usual layout.
+- Drop unusable "return" command; %build already executes with
+  sh -e.
+
+-------------------------------------------------------------------
+Fri Jan 27 11:44:04 UTC 2017 - msuchanek@suse.com
+
+- Import v713 (FATE#321601)
+- Move to libdir and add wrapper script.
+- repack source without makefile-beam which has incompatible
+  license and is not used in build anyway

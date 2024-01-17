@@ -1,0 +1,7 @@
+<package name="plymouth" project="openSUSE:Factory">
+  <title>plymouth</title>
+  <description>
+  Graphical boot animator and logger
+  </description>
+  <devel project="Base:System" package="plymouth"/>
+</package>

@@ -1,0 +1,122 @@
+--- festival/doc/Makefile
++++ festival/doc/Makefile
+@@ -56,7 +56,8 @@
+ 	     banner.inc $(DOCXXIMAGES)
+ 
+ MANPAGES = festival.head festival.tail \
+-           festival_client.head festival_client.tail
++           festival_client.head festival_client.tail \
++	   text2wave.head text2wave.options text2wave.tail
+ 
+ #SGMLFILES = festival.sgml \
+ #	introductory.sgml basics.sgml core.sgml advanced.sgml programming.sgml
+@@ -64,7 +65,7 @@
+ FILES=Makefile $(MANPAGES) festival.texi $(SGMLFILES) refcard.tex  $(DOCXXFILES)
+ LOCAL_CLEAN = *.aux *.cp *.fn *.ky *.log *.pg *.toc *.tp *.vr
+ 
+-ALL = festival.1 festival_client.1
++ALL = festival.1 festival_client.1 text2wave.1
+ 
+ include $(TOP)/config/common_make_rules
+ include $(EST)/config/rules/doc.mak
+--- festival/doc/text2wave.head
++++ festival/doc/text2wave.head
+@@ -0,0 +1,19 @@
++.TH  TEXT2WAVE 1 "6th Apr 1998"
++.SH NAME
++text2wave \- convert text to .wav files
++.SH SYNOPSIS
++.B text2wave
++.I [options]
++<
++.I text
++>
++.I sound.wav
++
++
++.SH DESCRIPTION
++
++This script is part of the festival text-to-speech system.
++It is a wrapper for festival's Scheme code for easy usage in TTS
++scripts.
++
++.SH OPTIONS
+--- festival/doc/text2wave.options
++++ festival/doc/text2wave.options
+@@ -0,0 +1,47 @@
++.\"
++.\".SH OPTIONS
++.\"  -mode <string>  Explicit tts mode.
++.\"  -o ofile        File to save waveform (default is stdout).
++.\"  -otype <string> Output waveform type: ulaw, snd, aiff, riff, nist etc.
++.\"                  (default is riff)
++.\"  -F <int>        Output frequency.
++.\"  -scale <float>  Volume factor
++.\"  -eval <string>  File or lisp s-expression to be evaluated before
++.\"                  synthesis.
++
++.TP
++.B \-mode
++.I string
++.br
++Explicit tts mode.
++.TP
++.B \-o
++.I ofile
++.br
++File to save waveform to.
++.br
++The default is
++.B stdout.
++.TP
++.B \-otype
++.I string
++.br
++Output waveform type: ulaw, snd, aiff, riff, nist etc.
++.br
++The default is
++.B riff.
++.TP
++.B \-f
++.I integer
++.br
++Output frequency.
++.TP
++.B \-scale
++.I float
++.br
++Volume factor.
++.TP
++.B \-eval
++.I "string"
++.br
++File or lisp s-expression to be evaluated before synthesis.
+--- festival/doc/text2wave.tail
++++ festival/doc/text2wave.tail
+@@ -0,0 +1,26 @@
++
++.SH BUGS
++More than you can imagine.  
++
++A manual with much detail (though not complete) is available
++in distributed as part of the system and is also accessible at
++.br
++http://www.cstr.ed.ac.uk/projects/festival/manual/
++
++Although we cannot guarantee the time required to fix bugs, we
++would appreciated it if they were reported to 
++.br
++festival-bug@cstr.ed.ac.uk
++
++.SH AUTHOR
++Alan W Black, Richard Caley and Paul Taylor
++.br
++(C) Centre for Speech Technology Research, 1996-1998
++.br
++University of Edinburgh
++.br
++80 South Bridge
++.br
++Edinburgh EH1 1HN
++.br
++http://www.cstr.ed.ac.uk/projects/festival.html

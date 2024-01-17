@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dde531e663b1fff089e337c74010fe33</srcmd5>
+    <version>0.5.5</version>
+    <time>1492011120</time>
+    <user>maxlin_factory</user>
+    <comment>single-spec (python 2 and python 3 combined) version of python3-babelfish.</comment>
+    <requestid>481995</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6757b89fea14608eb35b44e40b0bafb4</srcmd5>
+    <version>0.5.5</version>
+    <time>1544631942</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>653931</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c798f94516e9881ac030816f8519ade3</srcmd5>
+    <version>0.5.5</version>
+    <time>1571210022</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace %fdupes -s with plain %fdupes; hardlinks are better.</comment>
+    <requestid>738291</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>5147769227a43f65460427c9841721ab</srcmd5>
+    <version>0.5.5</version>
+    <time>1584350278</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build without python2</comment>
+    <requestid>784863</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>62d927e7ca5e5454ec57be3c57f013bc</srcmd5>
+    <version>0.5.5</version>
+    <time>1635956752</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>928871</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2c027323abb79d04b88ab6663ace9623</srcmd5>
+    <version>0.6.0</version>
+    <time>1636498491</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>930246</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,7 @@
+<package name="exif" project="openSUSE:Factory">
+  <title>Small Command Line Utility to Show and Change EXIF Information in JPEG Files</title>
+  <description>Exif is a small command line utility to show and change EXIF
+information hidden in JPEG files. It demonstrate the power of libexif
+library.</description>
+  <devel project="graphics" package="exif"/>
+</package>

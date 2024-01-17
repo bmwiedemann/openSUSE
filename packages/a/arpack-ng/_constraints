@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<constraints>
+  <!-- Only on 64bit archs where pyarpack is built -->
+  <overwrite>
+    <conditions>
+      <arch>aarch64</arch>
+      <arch>ppc64</arch>
+      <arch>ppc64le</arch>
+      <arch>riscv64</arch>
+      <arch>x86_64</arch>
+      <package>arpack-ng:serial</package>
+    </conditions>
+    <hardware>
+      <disk>
+        <size unit="G">3</size>
+      </disk>
+      <memory>
+        <size unit="G">9</size>
+      </memory>
+    </hardware>
+  </overwrite>
+  <overwrite>
+    <conditions>
+      <arch>s390x</arch>
+      <package>arpack-ng:serial</package>
+    </conditions>
+    <hardware>
+      <disk>
+        <size unit="G">3</size>
+      </disk>
+      <memory>
+        <size unit="G">11</size>
+      </memory>
+    </hardware>
+  </overwrite>
+</constraints>

@@ -1,0 +1,131 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>453ca95472cbe3cfdf13971cd62e0d78</srcmd5>
+    <version>1.5.6</version>
+    <time>1535705276</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>632315</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>258a975aebbb161d86253a1aa6caccff</srcmd5>
+    <version>1.6.2</version>
+    <time>1567581315</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.2:
+  * Update time label only if time has changed.
+  * Various fixes or improvements for the build system
+  * Fixed pkg-config cflags
+  * Fixed failing unit test
+  * Fixed extern C declarations for C++
+  * Added Meson configuration message
+  * New or updated languages: es, hu, lt
+
+- Update to 1.6.1:
+* New: Automatic speech recognition (ASR) is now disabled by default
+  and it’s only shown, if parlatype is launched with the new parameter --with-asr
+* New: Parlatype can be built without ASR (build option asr=false)
+* New: libreoffice helpers’ AppStream ID renamed (hyphen instead of underscore)
+* Fix: Initialize i18n for library, fixes not shown translations in
+  Flatpak or non-standard prefixes
+* Fix: All memory leaks discovered with Valgrind in test suite
+* Fix: All issues discovered with Clang Static Analyzer
+* Add and update translations</comment>
+    <requestid>727961</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3a83e8885b036d567257ac8d522f067f</srcmd5>
+    <version>2.0</version>
+    <time>1584745151</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0:
+  * New: Waveform is loaded on-the-fly, there is no blocking progress
+    dialog. This brings an API bump in libparlatype.
+  * New: Waveform can be changed continuously instead of in bumps.
+  * New: Application ID has been changed to org.parlatype.Parlatype and the
+    homepage moved to https://www.parlatype.org.
+  * New: LibreOffice helpers (macros) have been split from the main
+    repository and turned into a LibreOffice extension.
+    The extension is released at
+    https://github.com/gkarsay/parlatype-libreoffice-extension/releases/tag/v2.0
+  * New: New D-Bus method GetURI to get currently playing file's URI.
+  * New: Internal modularization (PtController objects control Parlatype).
+  * New: Event handling is more compatible with GTK 4.
+  * New: Parlatype builds on Windows, there is no feature parity though.
+- Add parlatype-2.0-asr.patch: Fix regression in the ASR assistant dialog.</comment>
+    <requestid>786824</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8ad60cd78b3f46500ba89658b4cd1d66</srcmd5>
+    <version>2.1</version>
+    <time>1592840776</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1:
+  * New: Mute/unmute volume by clicking on the volume icon with the pointer’s
+    secondary button (usually right mouse button).
+  * New: With Pulseaudio Parlatype doesn’t change the system volume anymore,
+    just its own application specific volume.
+  * New: With Pulseaudio Parlatype picks up the last used volume level.
+  * New: Volume icon/button is insensitive as long as there is no media loaded.
+  * New: Don’t reopen already opened files.
+  * New: Set a default window height and in Preferences default to “Remember
+    window’s size”.
+  * Fix: ASR assistant dialog could not be used at all, a regression introduced
+    in version 2.0. However, ASR is not recommended in its current state
+    and plans are to rewrite it.
+  * Fix: D-Bus interface for decreasing speed was doing the opposite.
+  * Fix: Many fixes to Windows (win32) port, achieving feature parity with the
+    Linux/UNIX version:
+    - Fix: Parlatype icon not loaded
+    - Fix: Help pages not displayed
+    - Fix: Don’t show mediakeys help page (Linux only)
+    - Fix: Volume changes delayed for a few seconds
+    - New: Ensure there is only one instance running.
+    - New: Added hotkeys support (hardcoded for dedicated keyboard buttons
+    Play/Pause, Stop, Previous Track, Next Track)
+    - New: Added win32 specific interprocess communication, thus enabling
+    the LibreOffice extension
+  * Update translations
+- Remove parlatype-2.0-asr.patch: contained in release</comment>
+    <requestid>816278</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>046706543753e22a40b82889d5b4a4d6</srcmd5>
+    <version>3.0</version>
+    <time>1636038574</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>929150</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>df35db283622dd88ea2c2c9cd3709eac</srcmd5>
+    <version>3.1</version>
+    <time>1641855232</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1:
+  * New: Added MPRIS interface, fix #86
+  * New: Switched to Weblate for translations
+  * Fix: Setting initial position failed in some cases
+  * Fix: Build and tests failed on WIN32
+  * Fix: Help pages for Preferences Dialog were not updated
+  * Fix: Adapt to builds without ASR
+- Remove parlatype-asr.patch: upstreamed</comment>
+    <requestid>945370</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8794e332b6175714ef540fcf627b03d9</srcmd5>
+    <version>4.0</version>
+    <time>1701121383</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.0:
+  * New: Switch to GTK 4 (new dependency: gtk4.0 &gt;= 4.0)
+  * New: Removed dependency gladeui-2.0 and meson option glade
+  * New: Removed support for GNOME MediaKeys (use MPRIS instead)
+  * New: Some screenshots for help pages are generated automatically for
+    available locales
+  * Fix: #98, MPRIS related crash at startup
+  * Fix: #105, Audio stops playing after some time
+    Related to this: disabled dragging the playback cursor</comment>
+    <requestid>1128969</requestid>
+  </revision>
+</revisionlist>

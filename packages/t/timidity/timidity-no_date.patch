@@ -1,0 +1,13 @@
+Index: timidity/speex_a.c
+===================================================================
+--- timidity/speex_a.c.orig	2011-01-19 17:00:42.000000000 +0100
++++ timidity/speex_a.c	2011-01-19 17:25:43.310509349 +0100
+@@ -246,7 +246,7 @@ void comment_init(char **comments, int*
+ int write_ogg_header(Speex_ctx *ctx, int fd, char *comments)
+ {
+   int ret, result;
+-  char *vendor_string = "Encoded with Timidity++-" VERSION "(compiled " __DATE__ ")";
++  char *vendor_string = "Encoded with Timidity++-" VERSION;
+   int comments_length = strlen(comments);
+ 
+   comment_init(&comments, &comments_length, vendor_string);

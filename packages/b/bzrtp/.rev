@@ -1,0 +1,369 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e60e4465fd8c63603c1d07ae10192458</srcmd5>
+    <version>1.0.1</version>
+    <time>1428192157</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>293093</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6040858c9a3ef4a9286e6a3237ec5469</srcmd5>
+    <version>1.0.2</version>
+    <time>1437657710</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>317679</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3b1844d21117bbd2bb84d780ccf05415</srcmd5>
+    <version>1.0.3</version>
+    <time>1448400649</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>345347</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>628d0966177802a776b1b97227ee9296</srcmd5>
+    <version>1.0.4</version>
+    <time>1475241783</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>427449</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1aae8abf3f8399c28d1301c3d1ee9bfd</srcmd5>
+    <version>1.0.5</version>
+    <time>1498638883</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>500755</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8d9db6058721b937e2e03485296d3f56</srcmd5>
+    <version>1.0.6</version>
+    <time>1503999508</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>511961</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>44758e18fcc49e66e2fd58962d5a67da</srcmd5>
+    <version>1.0.6</version>
+    <time>1537263685</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>635301</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>60498865ccc3f1efd3e69fcd80ee672e</srcmd5>
+    <version>1.0.6</version>
+    <time>1574549588</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>750046</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9590800424325517646071bf48b1882c</srcmd5>
+    <version>4.3.1</version>
+    <time>1583526220</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>781175</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b7187ab6279841cc211f64ea363b3213</srcmd5>
+    <version>4.4.0</version>
+    <time>1596364117</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.4.0.</comment>
+    <requestid>823437</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f5593b24f43199d551d50b8e6ed1d16b</srcmd5>
+    <version>4.4.6</version>
+    <time>1604702586</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>846046</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8237684d50186d9979a550242060c851</srcmd5>
+    <version>4.4.7</version>
+    <time>1605450132</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>848305</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d0273c4d6456ab0ccc5a02cf2fbf8896</srcmd5>
+    <version>4.4.13</version>
+    <time>1607196965</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.4.13 (no changelog) 
+</comment>
+    <requestid>852643</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>9073939be32a19784f37969e0c6502c1</srcmd5>
+    <version>4.4.21</version>
+    <time>1609705588</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.4.21 (no changelog) 
+</comment>
+    <requestid>859589</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>01f5f04e1ed2a7711108a84db10dd37a</srcmd5>
+    <version>4.4.24</version>
+    <time>1611770229</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>865996</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>23736e399eef445dd973c636f7d92499</srcmd5>
+    <version>4.4.29</version>
+    <time>1615362515</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>875959</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>b8472b73f971a072589ff31b51536530</srcmd5>
+    <version>4.4.33</version>
+    <time>1616168387</time>
+    <user>RBrownSUSE</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>879482</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>a0f4c3558bc69e6306bb97efa2b9c5eb</srcmd5>
+    <version>4.5.0</version>
+    <time>1617279395</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 4.5.0 (no changelog) 
+</comment>
+    <requestid>882346</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>bb802087339bd9f7fd7eb60ccf0e4bba</srcmd5>
+    <version>4.5.3</version>
+    <time>1619192982</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>886881</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>7e04495ccc9a90a0c43d3194d899e2d1</srcmd5>
+    <version>4.5.10</version>
+    <time>1619973324</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.5.10 (no changelog) 
+</comment>
+    <requestid>889048</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>9579855b8f550c42844ca3b0621275b8</srcmd5>
+    <version>4.5.15</version>
+    <time>1621355187</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.5.15 (no changelog)
+</comment>
+    <requestid>893046</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>ef8ce9b121b4e133777cbaa015133595</srcmd5>
+    <version>4.5.20</version>
+    <time>1624626041</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.5.20, no changelog
+</comment>
+    <requestid>901324</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>937bbdaf784ae730b0c49bb69ef7955e</srcmd5>
+    <version>5.0.0</version>
+    <time>1626644696</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.0.0, no changelog
+</comment>
+    <requestid>906258</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>826998d516b42425c22015088b0190bd</srcmd5>
+    <version>5.0.35</version>
+    <time>1634587406</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.0.35:
+  * no changelog
+</comment>
+    <requestid>925345</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>74274e7d5c23b40974abe3c4b78a1f68</srcmd5>
+    <version>5.0.36</version>
+    <time>1635539582</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>927659</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>6d6c68312d84127a21325b22fd9b674b</srcmd5>
+    <version>5.0.49</version>
+    <time>1637108011</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>931478</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>d605808d36e70afacb216fa9d39312da</srcmd5>
+    <version>5.0.53</version>
+    <time>1638131412</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>934340</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>a49a31699b5bb0a58d2afaed06980b70</srcmd5>
+    <version>5.0.66</version>
+    <time>1642548915</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.0.66:
+  * no changelog 
+</comment>
+    <requestid>947166</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>b5bbfc842d4b9c711eb27c0115dd91f5</srcmd5>
+    <version>5.0.67</version>
+    <time>1643838064</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.0.67:
+  * no changes
+- fix license tag
+</comment>
+    <requestid>950587</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>00cfb6ed9d3edc790cab278e9c4f67b1</srcmd5>
+    <version>5.1.3</version>
+    <time>1646158024</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.1.3 (no changelog)
+</comment>
+    <requestid>958307</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>28429dcf950bcf744c07f12929eac90a</srcmd5>
+    <version>5.1.12</version>
+    <time>1648159102</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.1.12:
+  * no changelog
+</comment>
+    <requestid>964621</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>e31bc2c53d0a90cf7492f44ded079bf5</srcmd5>
+    <version>5.1.32</version>
+    <time>1655396403</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>982688</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>13141dd2de4c01eeddcdb64b46dd9153</srcmd5>
+    <version>5.1.45</version>
+    <time>1657281797</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.1.45:
+  * no changelog
+</comment>
+    <requestid>987831</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>b2157340a725c9464d0ed3d6315ba7ec</srcmd5>
+    <version>5.1.64</version>
+    <time>1666011494</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.1.64 (no changelog).
+</comment>
+    <requestid>1012002</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>ca16d75aea4a0dc192f8da7dbaaff06b</srcmd5>
+    <version>5.2.6</version>
+    <time>1672851205</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.2.6:
+  * Support for GoClear/ClearACK messages
+  * KEM version and support for Hybrid PostQuantum key agreement algorithms
+</comment>
+    <requestid>1055793</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>d67099f34c7d1920863d648ec3690360</srcmd5>
+    <version>5.2.9</version>
+    <time>1674043754</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.2.9:
+  * no changes
+</comment>
+    <requestid>1059004</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>7190855cde6d26aa9937c55fa2d6155d</srcmd5>
+    <version>5.2.16</version>
+    <time>1676648748</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1066383</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>ee4bf1db0699ae3139d3e5d55b268f0d</srcmd5>
+    <version>5.2.30</version>
+    <time>1678283624</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.2.30 (no changelog)
+- Add set_current_version.patch
+</comment>
+    <requestid>1070099</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>84f9f105c97123ec82b42b0bfe57a34e</srcmd5>
+    <version>5.2.49</version>
+    <time>1680884235</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.2.49 (no changelog)
+</comment>
+    <requestid>1077855</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>1236c77894845b13f1d7db90b7da811f</srcmd5>
+    <version>5.2.73</version>
+    <time>1687980806</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.2.73 (no changelog)
+</comment>
+    <requestid>1095731</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>af375481dc345f66e0e50b309a1d7576</srcmd5>
+    <version>5.2.98</version>
+    <time>1693235813</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.2.98 (no changelog)
+</comment>
+    <requestid>1106249</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>8587c4c4ea66262b706993dab6afc1da</srcmd5>
+    <version>5.2.98</version>
+    <time>1702488957</time>
+    <user>anag+factory</user>
+    <comment>- Enable post quantum cryptography on Tumbleweed.
+</comment>
+    <requestid>1132807</requestid>
+  </revision>
+</revisionlist>

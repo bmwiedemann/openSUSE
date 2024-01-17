@@ -1,0 +1,228 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7019fe9fc5006e765bb27e22a29ed693</srcmd5>
+    <version>1.7.5</version>
+    <time>1671635250</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain fastfetch in openSUSE:Factory
+</comment>
+    <requestid>1044086</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e6c4855f037e3ee2c06b2e030b901913</srcmd5>
+    <version>1.9.0</version>
+    <time>1674585769</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1060455</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f1f415124cd9ae793048bf4863dec791</srcmd5>
+    <version>1.9.1</version>
+    <time>1675621234</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.9.1:
+  * Fix builds on s390x (@jonathanspw, #402)
+  * Fix zero refresh rate on some monitors (macOS)
+  * Fix default formatting of Wifi module
+</comment>
+    <requestid>1063234</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2556f8e428e06d0eddefcc66cf80461c</srcmd5>
+    <version>1.10.3</version>
+    <time>1678555435</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1070799</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5b2bd78bcaa3ed59353f6d656f6dc42f</srcmd5>
+    <version>1.11.0</version>
+    <time>1684415974</time>
+    <user>dimstar_suse</user>
+    <comment>- Move configuration files based on openSUSE distribution.
+- Update to version 1.11.0:
+  * Support linuxbrew
+  * Support foot terminal
+  * Support cursor size detection on Windows
+  * Support cursor detection on macOS
+  * Support display name, display type and decimal refresh rate detection
+  * Support --display-compact-type to display multiple resolutions in one line
+  * Support flatpak-user
+  * Support --gpu-force-vulkan to force using vulkan to detect GPUs, which support video memory usage detection with --allow-slow-operations
+  * Fix date time format
+  * Fix compiling with musl
+  * Don't exit if libpci is failed to init
+  * Names of most well-known gamepads are correctly printed instead of Wireless Controller on Windows
+  * Small update for nobara logo
+</comment>
+    <requestid>1087684</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f9051cf8b1a7e0a79937ba9d3df4943b</srcmd5>
+    <version>1.11.3</version>
+    <time>1687272446</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.11.3:
+  Features:
+    * Support display name, type, rotation detection on Wayland (Linux, Display)
+    * Print more useful display name instead of intel_backlight (Linux, Brightness)
+    * Icons module supports Windows (Windows, Icons)
+    * Add Wallpaper module which shows the current wallpaper image path
+    * Add mac address detection --localip-show-mac (LocalIP, #451)
+  Bugfixes:
+    * Fix Gnome version detection on Fedora (DE)
+    * Fix Windows drives detection in WSL (Disk)
+    * Fix a segfault bug, regression of 1.11.1
+  Changes:
+    * In order to make Icons module consistant between different platforms, 
+      --icons-format no longer supports individual GTK / QT icon params.
+    * --theme-format no longer supports individual GTK / plasma theme params.
+    * --local-ip-* and --public-ip-* have been changed to --localip-* and --publicip-*
+    * --localip-compact-type is no longer supported. Fastfetch now display IPs as 
+      --localip-compat-type multiline by default, with --local-compact true can be set as an alias of --localip-compact-type oneline
+    * --localip-v6first is no longer supported.
+</comment>
+    <requestid>1093588</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d936b33a8f09c00883f874e4ec7c4943</srcmd5>
+    <version>1.12.2</version>
+    <time>1690215962</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1099898</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>796182f4b2e8467bd37e0302c6381835</srcmd5>
+    <version>2.0.5</version>
+    <time>1695209353</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1112163</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b29c766502683a81d63e77aeebe1a4b6</srcmd5>
+    <version>2.1.2</version>
+    <time>1698700251</time>
+    <user>anag+factory</user>
+    <comment>- Declare new build deps gcc and gcc-c++
+- Update to version 2.1.2. Changes listed after 2.0.5:
+    # 2.1.2
+    Bugfixes:
+    * Fix icon detection on Windows. It shows enabled system icons in desktop (`This PC`, `Recycle Bin`, etc) (Icon, Windows)
+    * Fix compatibility with ddcutil 2.0 (Brightness, Linux)
+    * Fix a compile warning (CPUUsage, FreeBSD)
+    # 2.1.1
+    Features:
+    * Support opkg (Packages, Linux)
+    * Support GNOME Console terminal version and font detection (Terminal, Linux)
+    * Add `--cpu-freq-ndigits` to set number of digits for CPU frequency (CPU)
+    * New module to detect physical disk I/O usage (DiskIO)
+    * Add `--cpuusage-separate` to display CPU usage per CPU logical core
+    * Add `--brightness-ddcci-sleep` to set the sleep times (in ms) when sending DDC/CI requests (Brightness, #580)
+    Bugfixes:
+    * Fix possible crashes on Windows 7 (Disk, Windows)
+    * Fix possible crashes caused by uninitialized strings (Users, Windows)
+    * Improve support of `--help *-format` and several bugs are found and fixed
+    * Don't incorrectly print `No active sound devices found` when using a non-controllable sound device (Sound, macOS)
+    * Fix implementation processes counting (Processes, Linux)
+    * Work around a issue that SSID cannot be detected on macOS Sonoma (Wifi, macOS)
+    Logo:
+    * Add Chimera Linux
+    * Add EndeavourSmall
+    * Add Xenia
+    # 2.1.0
+    This release introduces a new output format: JSON result
+    Changes:
+    * Users module detects and prints user login time by default. Specifying `--users-compact` to disable it
+    * Fastfetch now requires yyjson 0.8.0 or later, which is embeded in fastfetch source tree. If you build fastfetch with `-DENABLE_SYSTEM_YYJSON` cmake option, you must upgrade your yyjson package
+    * Reduced information supported by `--terminal-format`, `--shell-format`
+    * Some config presets (`devinfo` and `verbose`) are obseleted and removed. They are barely maintained and can be replaced with `--format json` now.
+    * Custom strings in `--module-key` and `--module-format` are no longer trimmed.
+    * `/boot` is hidden by default (FreeBSD, Disk)
+    Features:
+    * Add `--format json`, which prints system information as JSON format
+    * Add fast path for xfce4 version detection (DE, FreeBSD)
+    * Support contour terminal version and font detection (Terminal / TerminalFont)
+    * Support `kitty-direct` / `iterm` without specifying logo width / height. Note: in this case, the entre screen will be cleared.
+    * Support new flag `--logo-separate`. If true, print modules at bottom of the logo
+    * Support Apple Silicon CPU frequency detection (CPU, macOS)
+    * Support user login time detection (Users)
+    * Support winget package manager detection, guarded behind `--allow-slow-operations` (Packages, Windows)
+    * Print monitor type (built-in or external) (Display)
+    * Support full GPU detection in WSL (Linux, GPU)
+    * Add `--module-key &quot; &quot;` as a special case for hiding keys
+    * Support `--title-format`. See `fastfetch --help title-format` for detail
+    * Support `--colors-key` (Colors)
+    * Add `-c` as a shortcut of `--load-config`. Note it was used as the shortcut of `--color` before 2.0.5
+    * Support Windows Service Pack version detection (Kernel, Windows)
+    * Support Debian point releases detection (OS, Linux)
+    * Add new module `NetIO` which prints network throughput (usage) of specified interface. Note this module costs about 1 second to finish.
+    * Use `lscpu` to detect CPU name for ARM CPUs (CPU, Linux)
+    Bugfixes:
+    * Fix fastfetch hanging in specific environment (#561)
+    * Fix short read when reading from stdin (Logo)
+    * Fix `poll() timeout or failed` error when image is very large (Logo)
+    * Fix Termux Monet terminal version detection (Terminal)
+    * Fix zpool volumes detection (Disk, Linux)
+    * Fix external volumes detection (Disk, Linux)
+    * Fix snap package number detection on systems other than Ubuntu (Packages, Linux)
+    * Fix dpkg / apt package number detection (Packages, Linux)
+    * Fix bluetooth mac address detection (Bluetooth, Windows)
+    Logo:
+    * Add Afterglow
+    * Add Elbrus
+    * Update EvolutionOS
+    * Update AOSC OS
+    * Update Ubuntu_old
+    * Update Windows 11_small
+    * Add Amazon Linux
+    * Add LainOS
+    * Fix colors of Slackware
+</comment>
+    <requestid>1121091</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9ceb38c55cecdd1dd483ade989d343bb</srcmd5>
+    <version>2.2.3</version>
+    <time>1700675683</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1128009</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>738f486ae961de5818593c6817b41acd</srcmd5>
+    <version>2.4.0</version>
+    <time>1703527503</time>
+    <user>anag+factory</user>
+    <comment>- update to version 2.4.0:
+  **BREAKING** 
+  We are deprecating flags based config files (will be removed in v3.0.0). 
+  We suggest you migrate to json based config files. 
+  One may use `-c /path/to/config.conf --gen-config` to migrate existing flag 
+  based config files.
+  Changes:
+    * All flag based presets are removed
+  Features:
+    * Improve performance of detecting rpm and pkg package count (Packages, Linux / FreeBSD)
+    * Support Apple M3X temperature detection (CPU / GPU, macOS)
+    * `--ds-force-drm` support a new option `sysfs-only`
+    * Improve xfce4 version detection
+    * Detect WM and DE by enumerating running processes (WM / DE, FreeBSD)
+    * Add a new module `Physical Disk`, which detects product name, full size, serial number and so on.
+  Bugfixes:
+    * Fix crashes sometimes when `--logo-padding-top` is not set (Logo)
+    * Fix memory usage counting algorithm (Memory, macOS)
+    * Fix the behavior of `--no-buffer` in Windows
+    * Fix possible segfault in some devices (Display, Linux)
+    * Fix segfaults on first use of new images with Sixel flag (Image) 
+- update specfile:
+  * add bash completion subpackage.
+  * add fish completion subpackage.
+  * add manpage for fastfetch for package.
+</comment>
+    <requestid>1134713</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,10 @@
+<package name="aws-nitro-enclaves-cli" project="openSUSE:Factory">
+  <title>Tools for managing enclaves</title>
+  <description>A collection of tools and commands used for managing the lifecycle of
+enclaves. The Nitro CLI needs to be installed on the parent instance,
+and it can be used to start, manage, and terminate enclaves.
+
+</description>
+  <devel project="Cloud:Tools" package="aws-nitro-enclaves-cli"/>
+  <url>https://github.com/aws/aws-nitro-enclaves-cli</url>
+</package>

@@ -1,0 +1,44 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>85e5e0c02d368291a8f0cb107d7ecadf</srcmd5>
+    <version>2.0.0</version>
+    <time>1507755527</time>
+    <user>dimstar_suse</user>
+    <comment>breaking up the Azure SDK</comment>
+    <requestid>531829</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>69ce5b1e6aa84dbb91bef08535ee236f</srcmd5>
+    <version>2.0.0</version>
+    <time>1537971235</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Python Azure SDK to 4.0.0</comment>
+    <requestid>637955</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>009d07a25ce2563b37ab9381ff3fe488</srcmd5>
+    <version>3.0.1</version>
+    <time>1557834037</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Python Azure SDK to latest version (forwarded request 696804 from glaubitz)</comment>
+    <requestid>696895</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>928b6c6d8077a59c44f4cfc7f49c5d17</srcmd5>
+    <version>3.0.1</version>
+    <time>1607548670</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>853917</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>26487200ac40c0cf9f46ef6a66e7b983</srcmd5>
+    <version>3.0.1</version>
+    <time>1611348673</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix issues with Python multi-flavor builds
+  + Create directories using %pythond_expand in %install section
+  + Use canonical %{python_sitelib} path in %files section (forwarded request 864352 from glaubitz)</comment>
+    <requestid>864407</requestid>
+  </revision>
+</revisionlist>

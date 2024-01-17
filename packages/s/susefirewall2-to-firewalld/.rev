@@ -1,0 +1,48 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>213886b2d15822e29083df11f810b413</srcmd5>
+    <version>0.0.1</version>
+    <time>1461855205</time>
+    <user>dimstar_suse</user>
+    <comment>susefirewall2-to-firewalld is a simple bash script aiming to provide a basic migration path from SuSEfirewall2 to FirewallD</comment>
+    <requestid>384261</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>fb43cb0ac5006e58a0a94e7fc881f9c1</srcmd5>
+    <version>0.0.2</version>
+    <time>1521579611</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>588608</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>841e50f7f6d4a43dd3076000e948dc8d</srcmd5>
+    <version>0.0.3</version>
+    <time>1527934313</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>613233</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5d06e856f9c187e4e0b7a4cb460dad52</srcmd5>
+    <version>0.0.4</version>
+    <time>1542124682</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump to 0.0.4
+  * Add input and forward zone to the known ones (bsc#1115001)
+  * Stop guessing firewall service from port/proto
+
+  * Handle source whitelisting (gh#openSUSE/susefirewall2-to-firewalld#2, bsc#1105157)</comment>
+    <requestid>648407</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>548b19d11f94e7345588d6a5a5984d2c</srcmd5>
+    <version>0.0.4</version>
+    <time>1588186320</time>
+    <user>dimstar_suse</user>
+    <comment>- add 0001-Fix-ERROR-INVALID_PORT-when-sport-iptables-rules-are.patch: fix
+  &quot;INVALID_PORT&quot; error message with certain SuSEfirewall2 configurations
+  (bsc#1170461). (forwarded request 798829 from mgerstner)</comment>
+    <requestid>798831</requestid>
+  </revision>
+</revisionlist>

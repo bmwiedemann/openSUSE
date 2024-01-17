@@ -1,0 +1,317 @@
+-------------------------------------------------------------------
+Thu Nov  2 11:15:21 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 2.1.2
+  * Fixed Probe lookup in multiplexed products.
+  * Fixed excessively slow module merging in some circumstances.
+  * Fixed building QuickJS on x86 systems.
+  * Fixed handling JS floating-point values for x86.
+  * Fixed scope pollution and potential crash when assigning to
+    provider properties.
+  * Fixed potential access to freed JSValues.
+
+-------------------------------------------------------------------
+Fri Jul 28 07:31:48 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 2.1.0
+  * Improved speed and correctness of project resolving.
+  * Fixed possible segmentation fault when quitting a session.
+  * Fixed regression in BinaryFile
+  * Added possibility to import and export Qbs settings in
+    the JSON format
+  * Dependencies are no longer merged by default in the
+    qbspkgconfig module provider
+  * Protobuf modules now export the desired c++ version
+    (c++17 on macOS, c++14 otherwise).
+
+-------------------------------------------------------------------
+Tue Jun 20 08:02:00 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 2.0.2. Check the installed changelog file for the
+  list of changes.
+- Drop 0001-Use-qmake-qt5-for-openSUSE.patch. The correct way to
+  select the Qt version version is to use:
+  qbs setup-qt <path to qmake executable>
+- Simplify the license tag
+
+-------------------------------------------------------------------
+Sat Dec  3 23:02:06 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.24.0:
+  * Users can now control if and when warnings for deprecated properties are
+    emitted.
+  * Added FileInfo.executableSuffix().
+
+-------------------------------------------------------------------
+Sun Nov 20 17:33:33 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 1.23.2
+  * Fix installation with cmake
+  * Fixed setting up Qt 6.3 with qbspkgconfig.
+  * Added QtScript module to the source tarballs
+  * Fixed handling empty variables in qbspkgconfig
+  * Added new module Sanitizers.address for simple cross-platform ASan configuration
+  * Fixed building against static Qt 6
+  * A new qbsModuleProviders property was added to Project and Product items which allows
+    to specify which providers will be run (QBS-1604).
+  * Added a new library for reading *.pc files which allows to avoid launching multiple pkg-config
+    processes and also gives QBS more information about dependencies between *.pc files (QBS-1615).
+  * A new qbspkgconfig provider was added which will replace the fallback provider (QBS-1614).
+    This new provider uses the built-in library and is capable of setting Qt libraries as well.
+  * capnproto and protobuf modules can now use runtime provided by the qbspkgconfig provider.
+  * Qbs no longer migrates the "profiles/" dir from earlier Qbs versions (QTCREATORBUG-26475).
+    Old directories might be cleaned up manually.
+  * FileInfo now always uses high-precision timer on all OSes.
+  * Fixed a problem with overriding stringList properties in ModuleProviders from command-line.
+  * Added support for c++23.
+  * Documentation: added a new page with the list of ModuleProviders.
+  * Documentation: Qt provider now has its own page.
+
+-------------------------------------------------------------------
+Thu Sep  9 18:11:12 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.20.0
+  * CMake and Qbs builds now fully support building with Qt6.
+  * Qbs now prints the old properties set when refusing to build
+    a project with changed properties.
+  * Added convenience command to qbs-config to add a profile in
+    one go instead of setting properties separately.
+  * Added profiling timer for module providers.
+- Check the changes-1.20.0.md file for other changes.
+
+-------------------------------------------------------------------
+Wed Jul 21 06:45:10 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Remove the dmgbuild binary until it's ported to python 3.
+- Only install the license files once.
+- Drop fix-env-script-interpreter.patch. No longer needed.
+
+-------------------------------------------------------------------
+Sat Jul  3 19:50:18 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 1.19.1
+  * Qt6 support
+  * Project files update API depending on the Qt.gui module was removed.
+  * Fix possible command line length issue with qmlimportscanner
+  * Fix accessing binaries from libexec for Qt 6.1 and above
+
+-------------------------------------------------------------------
+Thu May 13 11:13:15 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.19.0. No changelog.
+
+-------------------------------------------------------------------
+Thu Apr 29 07:20:53 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch to fix the qmake detection (boo#1185429):
+  * 0001-Use-qmake-qt5-for-openSUSE.patch
+- Stop setting libexec paths for Tumbleweed. The default values
+  can be used.
+
+-------------------------------------------------------------------
+Wed Jan 27 07:59:12 UTC 2021 - Wang Jun <jgwang@suse.com>
+
+- Update to version 1.18.0
+  * Features:
+    - General:
+      * It is no longer strictly required to provide a profile.
+      * Sub-second timestamp resolutions are now supported on Unix
+        systems.
+      * Added a convenient replacement for
+        product.moduleProperty("module", "property"), namely
+        product.module.property.
+      * The loadFile and loadExtension functions are deprecated in
+        favor of the new require function, which accepts arguments of either
+        form accepted by the deprecated functions.
+      * Added new tool qbs-create-project to set up a new qbs
+        project from an existing source tree.
+      * FileTagger items can now have conditions.
+      * Probe items can now appear directly under a Project item.
+    - Cpp module:
+      * Added support for QNX and the QCC toolchain
+      * Added the cpp.useRPathLink property to control whether
+        to use the -rpath-link linker option.
+      * Provided the means to easily combine source files for the C
+        language family in order to support "amalgamation builds".
+      * Introduced cpp.treatSystemHeadersAsDependencies.
+    - Qt modules:
+      * Introduced property Qt.core.combineMocOutput.
+      * Introduced Qt.core.enableKeywords for simple disabling of
+        the "signals", "slots" and "emit" symbols.
+  * Important bug fixes:
+    - Improved scalability of parallel builds on Linux by starting
+      Process commands via a dedicated launcher process.
+  * Behavior changes:
+    - The base directory for source files changed from the product
+      source directory to the parent directory of the file where the
+      files are listed.
+- Avoid the "env-script-interpreter" warning when building
+  * Add fix-env-script-interpreter.patch
+
+-------------------------------------------------------------------
+Tue Sep 15 06:19:27 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.17.0. Check the changes-1.17.0.md file for the
+  complete changelog.
+- Important bug fixes:
+  * Building Qt for Android applications as static libraries
+    has been fixed
+  * Fixed extraction of build information from CONFIG
+    and QT_CONFIG variables in Qt installations
+  * Compiler defines are now correctly passed to moc
+    when processing header files
+
+-------------------------------------------------------------------
+Sun May  3 06:55:15 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.16.0. Check the changes-1.16.0.md file for the
+  complete changelog.
+  * List properties in modules are now merged according to
+    inter-module dependencies.
+  * The clang-cl toolchain module got more features and flexibility.
+  * Improved support for recent Qt versions
+  * A new ConanfileProbe allows better and more flexible
+    integration of Qbs and the Conan package manager.
+
+-------------------------------------------------------------------
+Thu Dec 26 08:30:23 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.15.0. Check the changes-1.15.0.md file for the complete changelog.
+  * Added a timeout property to Command, JavaScriptCommand and AutotestRunner.
+  * Linker map files can be generated with all toolchains.
+  * Added a session command which offers a JSON-based API for interaction with
+    other tools via stdin/ stdout.
+- Update the license tag.
+
+-------------------------------------------------------------------
+Sat Dec  7 08:56:25 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.14.1
+  * Qt support: Fix static builds with Qt >= 5.13.1.
+
+-------------------------------------------------------------------
+Thu Oct 10 09:20:06 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.14.0. Check the changes-1.14.0.md file for the complete changelog.
+  * Language: The `PathProbe` item was extended to support looking for
+    multiple files and filtering candidate files.
+  * Qt Support: Added the `Qt.android_support.extraLibs` property.
+  * Other: The `pkgconfig` module now has a `sysroot` property.
+  * Other: Added gRPC support to the `protobuf.cpp` module.
+- Drop conditions for unsupported openSUSE versions.
+
+-------------------------------------------------------------------
+Fri Jul 12 11:32:50 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.13.1
+  * Qt support: Plugins are no longer linked into static libraries when building against
+    a static Qt (QBS-1441).
+  * Qt support: Fixed excessively long linker command lines (QBS-1441).
+  * Qt support: Host libraries are now looked up at the right location (QBS-1445).
+  * Qt support: Fixed failure to find Qt modules in Qt Creator when re-parsing a project that
+    hasn't been built yet.
+
+-------------------------------------------------------------------
+Thu May  2 14:33:36 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Change the license tag. qbs contains files licensed under
+  GPL-3.0-only with some Qt exceptions.
+
+-------------------------------------------------------------------
+Sat Apr 20 12:04:41 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.13.0
+  * Added a lot more documentation.
+  * Introduced module providers.
+  * The `Depends` item now falls back to `pkg-config` to locate dependencies
+    whose names do not correspond to a qbs module.
+  * Added the concept of job pools for limiting concurrent execution of commands
+    by type.
+  * Added support for rules without output artifacts.
+  * Added `atEnd` function to the `Process` service.
+  * Added `canonicalPath` function to the `FileInfo` service.
+  * Removed the need to add "import qbs" at the head of project files.
+  * The `Application`, `DynamicLibrary` and `StaticLibrary` items now have
+    properties for more convenient installation of target binaries.
+  * Added recursive dependency scanning of GNU ld linkerscripts.
+  * Added new `cpp` property `linkerVariant` to force use of `gold`, `bfd` or
+    `lld`.
+  * It is no longer required to call `setup-qt` before building Qt projects.
+  * Introduced the property `Qt.core.enableBigResources` for the creation of
+    "big" Qt resources.
+  * Static builds now pull in the default set of plugins as specified by Qt, and
+    the user can specify the set of plugins by type.
+  * Files can be explicitly tagged as mocable now.
+  * Added `protobuf` support for C++ and Objective-C.
+  * Introduced the `texttemplate` module, a facility similar to qmake's
+    `SUBSTITUTES` feature.
+  * The `AndroidApk` item was deprecated, a normal `Application` item can be
+    used instead.
+  * Building Qt apps is properly supported now, by making use of the
+    `androiddeployqt` tool.
+  * Introduced the `autotest` module.
+
+-------------------------------------------------------------------
+Mon Oct 22 13:55:23 UTC 2018 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.12.1:
+* Lifted the restriction that the -march option cannot appear in cpp.*Flags
+* All required header files get installed now
+* Fixed rpaths not ending up on the command line under certain circumstances
+* Fixed possible crash when scanning qrc files
+* Fixed spurious re-building of .pc and .qbs module files.
+* Fixed possible crash on storing a build graph after re-resolving.
+* Fixed possible assertion on input artifacts with alwaysUpdated == false.
+
+-------------------------------------------------------------------
+Fri Jul 20 11:17:38 UTC 2018 - kai.koehne@qt.io
+
+Update to upstream version qbs 1.12.0
+
+Overview
+  * Support for generating interface files for qbs and pkgconfig
+  * Support for generating Makefiles (for debugging purposes)
+  * System level settings got introduced
+
+Language Additions
+  * New Exporter.qbs module to create a Qbs module from a product
+  * New Exporter.pkgconfig module to generate .pc files
+  * New varlist property type
+  * New FileInfo.suffix and FileInfo.completeSuffix
+  * explicitlyDependsOn property does no longer match artifacts
+    from dependencies. Use the new
+    explicitlyDependsOnFromDependencies property for that.
+  * exclusiveAuxiliaryInputs got renamed to excludedInputs.
+  * cLanguageVersion and cxxLanguageVersion are now arrays.
+  * AutotestRunner has new property auxiliaryInputs.
+
+Command Line
+  * qbs-config --system to write system wide settings
+ 
+-------------------------------------------------------------------
+Wed Apr  4 08:47:13 UTC 2018 - kai.koehne@qt.io
+
+Update to upstream version qbs 1.11.0
+
+Language Additions
+  * New qbs.targetPlatform, qbs.toolchainType properties
+  * Modules can now declare their target artifacts with
+    the new filesAreTargets property of the Group item
+  * New BinaryFile service for reading and writing text files
+  * New cpp.rpathOrigin, cpp.driverLinkerFlags properties
+  * Support for "C++17" as cpp.cxxLanguageVersion
+
+Command Line
+  * New way to specify configuration names with config key:
+    $ qbs config:debug config:release
+  * 'qbs run' now considers an executable's library dependencies
+  * The qbs-qmltypes tool got replaced by a once generated
+    qmltypes file.
+
+Removed 0001-Remove-top-level-include-path.patch, which is now
+included upstream.
+
+-------------------------------------------------------------------
+Thu Mar  8 11:40:59 UTC 2018 - kai.koehne@qt.io
+
+Initial import of qbs 1.10.1

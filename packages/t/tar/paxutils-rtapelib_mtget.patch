@@ -1,0 +1,13 @@
+Index: cpio-2.11/lib/rtapelib.c
+===================================================================
+--- cpio-2.11.orig/lib/rtapelib.c	2013-07-23 13:18:27.119431054 +0200
++++ cpio-2.11/lib/rtapelib.c	2013-07-23 13:19:35.728188104 +0200
+@@ -710,7 +710,7 @@ rmt_ioctl__ (int handle, int operation,
+ 	    || (status = get_status (handle), status == -1))
+ 	  return -1;
+ 
+-	if (status > sizeof (struct mtop))
++	if (status > sizeof (struct mtget))
+ 	  {
+ 	    errno = EOVERFLOW;
+ 	    return -1;

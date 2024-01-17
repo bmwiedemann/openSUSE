@@ -1,0 +1,8 @@
+<package name="python-concurrentloghandler" project="openSUSE:Factory">
+  <title>Concurrent logging handler</title>
+  <description>This module provides an additional log handler for Python's standard logging
+package (PEP 282). This handler will write log events to log file which is
+rotated when the log file reaches a certain size. Multiple processes can safely
+write to the same log file concurrently.</description>
+  <devel project="devel:languages:python" package="python-concurrentloghandler"/>
+</package>

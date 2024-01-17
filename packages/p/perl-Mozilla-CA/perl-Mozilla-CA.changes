@@ -1,0 +1,190 @@
+-------------------------------------------------------------------
+Thu Dec 14 03:10:36 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 20231213
+   see /usr/share/doc/packages/perl-Mozilla-CA/Changes
+
+  20231213
+    - Update from Mozilla repository to 2023-12-13
+    - Added certificates:
+      - CommScope Public Trust ECC Root-01
+        sha256: 11437cda7bb45e41365f45b39a38986b0de00def348e0c7bb0873633800bc38b
+      - CommScope Public Trust ECC Root-02
+        sha256: 2ffb7f813bbbb3c89ab4e8162d0f16d71509a830cc9d73c262e5140875d1ad4a
+      - CommScope Public Trust RSA Root-01
+        sha256: 02bdf96e2a45dd9bf18fc7e1dbdf21a0379ba3c9c2610344cfd8d606fec1ed81
+      - CommScope Public Trust RSA Root-02
+        sha256: ffe943d793424b4f7c440c1c3d648d5363f34b82dc87aa7a9f118fc5dee101f1
+      - TrustAsia Global Root CA G3
+        sha256: e0d3226aeb1163c2e48ff9be3b50b4c6431be7bb1eacc5c36b5d5ec509039a08
+      - TrustAsia Global Root CA G4
+        sha256: be4b56cb5056c0136a526df444508daa36a0b54f42e4ac38f72af470e479654c
+    - Removed certificates:
+      - Security Communication Root CA
+        sha256: e75e72ed9f560eec6eb4800073a43fc3ad19195a392282017895974a99026b6c
+
+-------------------------------------------------------------------
+Tue Aug 22 03:07:53 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 20230821
+   see /usr/share/doc/packages/perl-Mozilla-CA/Changes
+
+  20230821
+    - Update from Mozilla repository to 2023-08-21
+    - Added certificates:
+      - Atos TrustedRoot Root CA ECC TLS 2021
+        sha256: b2fae53e14ccd7ab9212064701ae279c1d8988facb775fa8a008914e663988a8
+      - Atos TrustedRoot Root CA RSA TLS 2021
+        sha256: 81a9088ea59fb364c548a6f85559099b6f0405efbf18e5324ec9f457ba00112f
+      - SSL.com TLS ECC Root CA 2022
+        sha256: c32ffd9f46f936d16c3673990959434b9ad60aafbb9e7cf33654f144cc1ba143
+      - SSL.com TLS RSA Root CA 2022
+        sha256: 8faf7d2e2cb4709bb8e0b33666bf75a5dd45b5de480f8ea8d4bfe6bebc17f2ed
+      - Sectigo Public Server Authentication Root E46
+        sha256: c90f26f0fb1b4018b22227519b5ca2b53e2ca5b3be5cf18efe1bef47380c5383
+      - Sectigo Public Server Authentication Root R46
+        sha256: 7bb647a62aeeac88bf257aa522d01ffea395e0ab45c73f93f65654ec38f25a06
+    - Removed certificates:
+      - E-Tugra Global Root CA ECC v3
+        sha256: 873f4685fa7f563625252e6d36bcd7f16fc24951f264e47e1b954f4908cdca13
+      - E-Tugra Global Root CA RSA v3
+        sha256: ef66b0b10a3cdb9f2e3648c76bd2af18ead2bfe6f117655e28c4060da1a3f4c2
+
+-------------------------------------------------------------------
+Tue Aug  8 03:08:15 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 20230807
+   see /usr/share/doc/packages/perl-Mozilla-CA/Changes
+
+  20230807
+    - Prevent extra headers in tarball and make it reproducible
+
+  20230801
+    - Update from Mozilla repository to 2023-08-01
+    - Added certificates:
+      - BJCA Global Root CA1
+        sha256: f3896f88fe7c0a882766a7fa6ad2749fb57a7f3e98fb769c1fa7b09c2c44d5ae
+      - BJCA Global Root CA2
+        sha256: 574df6931e278039667b720afdc1600fc27eb66dd3092979fb73856487212882
+    - Removed certificates:
+      - E-Tugra Certification Authority
+        sha256: b0bfd52bb0d7d9bd92bf5d4dc13da255c02c542f378365ea893911f55e55f23c
+      - Hongkong Post Root CA 1
+        sha256: f9e67d336c51002ac054c632022d66dda2e7e3fff10ad061ed31d8bbb410cfb2
+      - Network Solutions Certificate Authority
+        sha256: 15f0ba00a3ac7af3ac884c072b1011a077bd77c097f40164b2f8598abd83860c
+      - Staat der Nederlanden EV Root CA
+        sha256: 4d2491414cfe956746ec4cefa6cf6f72e28a1329432f9d8a907ac4cb5dadc15a
+      - TrustCor ECA-1
+        sha256: 5a885db19c01d912c5759388938cafbbdf031ab2d48e91ee15589b42971d039c
+      - TrustCor RootCert CA-1
+        sha256: d40e9c86cd8fe468c1776959f49ea774fa548684b6c406f3909261f4dce2575c
+      - TrustCor RootCert CA-2
+        sha256: 0753e940378c1bd5e3836e395daea5cb839e5046f1bd0eae1951cf10fec7c965
+
+-------------------------------------------------------------------
+Wed Nov 23 17:30:33 UTC 2022 - Tina Müller <tina.mueller@suse.com>
+
+- Remove modifying of mk-ca-bundle.pl and update-cacert-file (not present
+  in distribution anymore)
+
+-------------------------------------------------------------------
+Tue Nov 15 03:07:48 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 20221114
+   see /usr/share/doc/packages/perl-Mozilla-CA/Changes
+
+  Revision history for Mozilla-CA
+
+  20221114
+    - Update from Mozilla repository to 2022-11-07
+    - stop installing mk-ca-bundle.pl script
+    - moved repository and issues to https://github.com/libwww-perl/Mozilla-CA
+    - switched tests from Test to Test::More
+    - fix license specification in metadata
+
+-------------------------------------------------------------------
+Sat Oct  2 03:09:26 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 20211001
+   see /usr/share/doc/packages/perl-Mozilla-CA/Changes
+
+  20211001
+    - Update mk-ca-bundle.pl and Mozilla data to 2021-10-01 (Aaron Rowe)
+    - Improve metadata for license information (Shoichi Kaji)
+
+  20200520
+    - Update from Mozilla repository to 2020-05-20
+    - Update bundled mk-ca-bundle.pl from upstream.
+
+-------------------------------------------------------------------
+Thu May 21 03:09:05 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+updated to 20200520
+   see /usr/share/doc/packages/perl-Mozilla-CA/Changes
+
+  20200520
+    - Update from Mozilla repository to 2020-05-20
+    - Update bundled mk-ca-bundle.pl from upstream.
+
+-------------------------------------------------------------------
+Fri Mar  2 06:42:17 UTC 2018 - coolo@suse.com
+
+- updated to 20180117
+   see /usr/share/doc/packages/perl-Mozilla-CA/Changes
+
+  20180301
+    - Update from Mozilla repository to 2018-01-17
+    - Update bundled mk-ca-bundle.pl from upstream.
+  
+  20160104
+    - Update from Mozilla repository
+
+-------------------------------------------------------------------
+Wed Jan  6 10:15:04 UTC 2016 - coolo@suse.com
+
+- updated to 20160104
+   see /usr/share/doc/packages/perl-Mozilla-CA/Changes
+
+-------------------------------------------------------------------
+Thu Aug 27 08:50:08 UTC 2015 - coolo@suse.com
+
+- updated to 20150826
+   see /usr/share/doc/packages/perl-Mozilla-CA/Changes
+
+  20150826
+    - Update from Mozilla repository
+    - Update license to match license of data source (MPL 2)
+  
+  20141217
+    - Update from Mozilla repository
+
+-------------------------------------------------------------------
+Sun Apr 19 06:36:27 UTC 2015 - coolo@suse.com
+
+- updated to 20141217
+   see /usr/share/doc/packages/perl-Mozilla-CA/Changes
+
+-------------------------------------------------------------------
+Wed Apr  9 22:01:14 UTC 2014 - lars@linux-schulserver.de
+
+- update to 20130114:
+  + New certificate: "T-TeleSec GlobalRoot Class 3"
+  + Fix test (RT#79129, reported by Sinan Unur)
+  + Add mk-ca-bundle.pl from git repository to distribution.
+  + Add new/additional certificates from the following CAs: Verisign,
+    UTN-USER, UTN USERFirst, Sonera, NetLock Qualified, SwissSign
+    Platinum, S-TRUST, ComSign, Actalis, Trustis, StartCom, Buypass.
+  + Download the certdata from mozilla over SSL (John Joseph Bachir)
+  + CA updates:
+    Removes:
+    - Hellenic Academic and Research Institutions RootCA 2011
+- move mk-ca-bundle.pl to bindir
+- fix path names in update-cacert-file
+
+-------------------------------------------------------------------
+Tue Feb 21 11:29:53 UTC 2012 - coolo@suse.com
+
+- initial package 20120118
+    * created by cpanspec 1.78.06
+

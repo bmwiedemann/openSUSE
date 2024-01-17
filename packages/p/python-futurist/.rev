@@ -1,0 +1,181 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e79f4a7afb9a5a506a828aab25876693</srcmd5>
+    <version>0.3.0</version>
+    <time>1440658520</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>323175</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d5f261de5b3d7c73b83f645b7ce14952</srcmd5>
+    <version>0.5.0</version>
+    <time>1441955063</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>330313</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d2d5b2938757ad49c39e35e632a3fb56</srcmd5>
+    <version>0.9.0</version>
+    <time>1452535937</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>353052</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>06f1c3b078cf24b116c41830556f794e</srcmd5>
+    <version>0.13.0</version>
+    <time>1457353720</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>367191</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>af71f3f33df9c9a489a7d14b6aec3cc9</srcmd5>
+    <version>1.6.0</version>
+    <time>1516804271</time>
+    <user>dimstar_suse</user>
+    <comment>- Convert to singlespec
+
+- update to version 1.6.0
+  - Improving cover and docs testenv
+  - Fix jitter strategies
+  - Begin adding our own thread pool executor
+  - Remove 'smart' idleness check
+  - Avoid tox_install.sh for constraints support
+  - Improve get optimal count of max_worker for pool
+  - Update reno for stable/ocata
+  - Fix time related check in rejection test
+  - Eliminate unneccessary patching in GreenFuture
+  - Add what the watcher watches to the watcher as a property
+  - Remove discover from test-requirements
+  - Typo fix: arbitary =&gt; arbitrary
+  - Add Constraints support
+  - Add reno for release notes management
+  - Show team and repo badges on README
+  - Don't include openstack/common in flake8 exclude list
+  - Introducing NeverAgain functionality for periodics
+  - Add re-raising SystemExit exception
+  - Add Python 3.5 classifier and venv
+  - turn on warning-is-error in doc build
+  - Switch from oslosphinx to openstackdocstheme
+  - Update .gitignore
+  - Do not check spacing if periodic disabled
+  - Fix 'on_failure' param not be used
+  - replace _callables by _works
+  - The python 3.4 support is removed
+  - rearrange existing documentation to fit the new standard layout</comment>
+    <requestid>568544</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>90f152e4c4ccbfedb9f75732201df067</srcmd5>
+    <version>1.6.0</version>
+    <time>1521498873</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to stable/queens spec template</comment>
+    <requestid>583297</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e6103573b4ca9cfabe5ffab03a8d2fea</srcmd5>
+    <version>1.7.0</version>
+    <time>1536327429</time>
+    <user>dimstar_suse</user>
+    <comment>Initial Rocky clients submission. please combine all in one staging project otherwise this will never build</comment>
+    <requestid>633067</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>be71ace76cea1204514c21adfd88ff23</srcmd5>
+    <version>1.8.1</version>
+    <time>1556916024</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.8.1
+  - fix tox python3 overrides
+  - Add blueprints notes link to README
+  - Use template for lower-constraints
+  - Trivial: Update pypi url to new url
+  - Change openstack-dev to openstack-discuss
+  - import zuul job settings from project-config
+  - Update reno for stable/rocky
+  - Only install monotonic on python2
+  - Don't quote {posargs} in tox.ini
+  - Follow the new PTI for document build
+  - Remove the duplicated word
+  - add lib-forward-testing-python3 test job
+  - add python 3.6 unit test job
+  - Switch to stestr</comment>
+    <requestid>692824</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>3865ad88c4382a95afdc266ada9f29a2</srcmd5>
+    <version>1.9.0</version>
+    <time>1582018795</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.9.0
+  - Update master for stable/stein
+  - OpenDev Migration Patch
+  - Use opendev repository
+  - Dropping the py35 testing
+  - Add Python 3 Train unit tests</comment>
+    <requestid>774901</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>555e9d4aa229123627bb8b9c3e0b0f9b</srcmd5>
+    <version>1.9.0</version>
+    <time>1585342628</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to python 3.x only builds</comment>
+    <requestid>788118</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>eef33a2aaf3fb317589b576cc48524f1</srcmd5>
+    <version>2.1.1</version>
+    <time>1591380602</time>
+    <user>dimstar_suse</user>
+    <comment>Ussuri Update</comment>
+    <requestid>803561</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>82d0f002640c7c827ac4f6ba8c6467fb</srcmd5>
+    <version>2.3.0</version>
+    <time>1603725297</time>
+    <user>dimstar_suse</user>
+    <comment>switch to victoria</comment>
+    <requestid>841178</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>14baea1a51ef68e602d762a07119c0f1</srcmd5>
+    <version>2.4.0</version>
+    <time>1638831588</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.4.0
+  - remove unicode from code
+  - Use TOX_CONSTRAINTS_FILE
+  - setup.cfg: Replace dashes with underscores
+  - trivial: Bump hacking to 4.x
+  - Move flake8 as a pre-commit local target.
+  - pre-commit: Lower flake8 version
+  - Use py3 as the default runtime for tox
+  - Update master for stable/victoria
+  - Uncap PrettyTable
+  - Remove lower-constraints remnants
+  - Add Python3 wallaby unit tests
+  - Adding pre-commit
+  - Dropping lower constraints testing
+  - ignore reno generated artifacts</comment>
+    <requestid>935945</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5c0fb8785b5eef8541399e996d417690</srcmd5>
+    <version>2.4.1</version>
+    <time>1652561831</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.4.1
+  - Update CI to use unversioned jobs template
+  - trivial: Remove unnecessary 'coding' lines
+  - Remove six
+  - Remove pbr from requirements.txt
+  - tox: Trivial cleanups</comment>
+    <requestid>977251</requestid>
+  </revision>
+</revisionlist>

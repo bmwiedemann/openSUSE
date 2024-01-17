@@ -1,0 +1,347 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0a3e6a4ab40ae7bfa00252265445704f</srcmd5>
+    <version>3.7.17_r1</version>
+    <time>1382095712</time>
+    <user>scarabeus_factory</user>
+    <comment>Needed for 13.1 to fix calibre.</comment>
+    <requestid>203599</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>0a3e6a4ab40ae7bfa00252265445704f</srcmd5>
+    <version>3.7.17_r1</version>
+    <time>1409302815</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>70127e013393763ce103042eb09eb903</srcmd5>
+    <version>3.9.2_r1</version>
+    <time>1504617309</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>519979</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>af4f78948f76c49e19f5dd18870d8d2c</srcmd5>
+    <version>3.28.0_r1</version>
+    <time>1562843698</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.28.0-r1:
+  * No changelog
+- Add patch to build with python 3.8:
+  * python38.patch</comment>
+    <requestid>713411</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>5211964bb5041732e06e9f0b7dcb217b</srcmd5>
+    <version>3.28.0_r1</version>
+    <time>1568191193</time>
+    <user>dimstar_suse</user>
+    <comment>- Add more py3.8 patches:
+  * 0001-py3.8-avoid-invalid-escapes.patch
+  * 0002-Skip-one-test-on-python3.8.patch
+- Remove patch obsoleted by above python38.patch</comment>
+    <requestid>729896</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>95c5f6b9f0fbef4934920e3d2eb9bc6e</srcmd5>
+    <version>3.30.1_r1</version>
+    <time>1580928118</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.30.1-r1
+- drop 0002-Skip-one-test-on-python3.8.patch
+       0001-py3.8-avoid-invalid-escapes.patch
+ * Updated hashing of SQL statements
+ * Updated Connection.config() with all current SQLITE_DBCONFIG constants</comment>
+    <requestid>770089</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>82afdeb46c50e96e36f0b7e8af9d79d0</srcmd5>
+    <version>3.31.1_r1</version>
+    <time>1583311186</time>
+    <user>dimstar_suse</user>
+    <comment>- Update the sqlite dependency
+- Update to 3.31.1:
+  * Fix deprecated universal newline use in shell (#283)
+  * Shell now uses pragma function_list to get list of functions for tab completion</comment>
+    <requestid>781138</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5dc36aab2754cf6affe596c994747da0</srcmd5>
+    <version>3.33.0_r1</version>
+    <time>1600879228</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the source url to really match reality
+
+- Update to 3.33.0-r1:
+  * Small performance improvement in string handling
+  * apsw module exposes Cursor, Blob, and Backup types (issue #273)
+  * pkg-config is used to detect International Components for
+    Unicode (ICU) sdk when the SQLite ICU extension is enabled. It
+    falls back to icu-config as before. (issue #268).
+- Update to 3.32.2-r2:
+  * Added some constants
+  * Minor documentation updates
+- Fix source URL</comment>
+    <requestid>836079</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>aecd914b0cabcfcc5e9355cc728b66f5</srcmd5>
+    <version>3.34.0_r1</version>
+    <time>1609253627</time>
+    <user>dimstar_suse</user>
+    <comment>- udpate to 3.34.0-r1:
+  * Windows MSI installer files are now provided
+  * Added Connection.txn_state()
+  * Added constants: SQLITE_IOERR_CORRUPTFS</comment>
+    <requestid>859232</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0b90c2165d7ea603075d84c705b7db24</srcmd5>
+    <version>3.35.4_r1</version>
+    <time>1627750280</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.35.4-r1:
+  - Updates for SQLite download url (the year is part of the urls).
+  - Added enable flag for built-in SQL math functions, and enable
+    it by default with –enable-all-extensions.
+  - Use the newer buffer API for Python 3
+    (old API removed in Python 3.10).
+- Fix loadable extensions are missing, 
+  so insert --enable-all-extensions and --enable=load_extension.
+  See: https://rogerbinns.github.io/apsw/build.html#building
+</comment>
+    <requestid>909441</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>533dbcdc53ef9fb474b1985cde347f02</srcmd5>
+    <version>3.37.0</version>
+    <time>1642455272</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.37.0-r1:
+  * Allow breaking of reference cycles between objects that contain a
+    Connection or Cursor 
+  * Fixed custom VFS extension loading failure could leave the error message
+    unterminated
+  * Updated size of mutex array used by the fork checker
+  * Connections are opened with SQLITE_OPEN_EXRESCODE so open errors will also
+    include extended result codes
+  * Connection.changes() and Connection.totalchanges() use the new SQLite APIs
+    that return 64 bit values
+  * Added Connection.autovacuum_pages()
+  * Implemented Connection.serialize() and Connection.deserialize().
+  * Allow any subclass of VFS to implement WAL, not just direct subclasses</comment>
+    <requestid>947056</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4b4e1203cbae7f1828373d6e7e728238</srcmd5>
+    <version>3.40.0.0</version>
+    <time>1670333025</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.40.0.0:
+  * Fixed regression in statement cache update (version 3.38.1-r1) where
+    trailing whitespace in queries would be incorrectly treated as
+    incomplete execution (APSW issue 376)
+  * Added Various interesting and useful bits of functionality (APSW issue
+    369)
+  * Added more Pythonic attributes as an alternative to getters and setters,
+    including Connection.in_transaction, Connection.exectrace,
+    Connection.rowtrace, Cursor.exectrace, Cursor.rowtrace,
+    Cursor.connection (APSW issue 371)
+  * Completed: To the extent permitted by CPython APIs every item has the
+    same docstring as this documentation. Every API can use named
+    parameters. The type stubs cover everything including constants. The
+    type stubs also include documentation for everything, which for example
+    Visual Studio Code displays as you type or hover. There is a single
+    source of documentation in the source code, which is then automatically
+    extracted to make this documentation, docstrings, and docstrings in the
+    type stubs.
+  * Example/Tour updated and appearance improved (APSW issue 367).
+  * Added Connection.cache_stats() to provide more information about the
+    statement cache.
+  * Cursor.execute() now uses sqlite_prepare_v3 which allows supplying
+    flags.
+  * Cursor.execute() has a new can_cache parameter to control whether the
+    query can use the statement cache. One example use is with authorizers
+    because they only run during prepare, which doesn’t happen with already
+    cached statements.
+  * (The Cursor.execute() additional parameters are keyword only and also
+    present in Cursor.executemany(), and the corresponding
+    Connection.execute() and Connection.executemany() methods.)</comment>
+    <requestid>1040441</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c157152f1215775e4c68a879f72dd8fd</srcmd5>
+    <version>3.40.1.0</version>
+    <time>1676036161</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.40.1.0:
+  * Implemented `window functions
+  * Function flags can be specified to
+    Connection.createscalarfunction and
+    Connection.createaggregatefunction
+  * Added apsw.mapping_function_flags
+  * Added Connection.trace_v2` with apsw.mapping_trace_codes
+    and apsw.mapping_statement_status
+  * Ensure all SQLite APIs are wrapped.
+  * When an unraisable exception happens, sqlite3_log is
+    now called so you will have context within SQLite's actions.
+  * sys.unraisablehook now called first, and if it doesn't exist then
+    sys.excepthook as before.
+  * When the wrong type is given for a function argument, the
+    error message now includes the parameter name and function
+    signature.
+  * Let SQLite do size checking instead of APSW for strings and
+    blobs.
+  * Added :meth:`apsw.ext.log_sqlite` which installs a handler
+    that forwards SQLite messages to the logging module
+  * Added set_default_vfs and unregister_vfs taking vfs
+    names.</comment>
+    <requestid>1064204</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4bc1b8bc48a89cbe60aa1d70b15b74c6</srcmd5>
+    <version>3.41.2.0</version>
+    <time>1681654054</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.41.2.0:
+  * Fixed :issue:`412` in :meth:`apsw.ext.make_virtual_module`.
+  * Added :meth:`apsw.connections` to get all connections.
+  * :func:`sys.unraisablehook` is called correctly (:issue:`410`)
+  * Be stricter where :class:`bool` values are expected (eg
+  * :meth:`VTTable.BestIndex`), only accepting :class:`int` and
+    :class:`bool`.  Previously you could for example supply
+    strings and lists, which were almost certainly unintended
+    errors.</comment>
+    <requestid>1079739</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>f57f5101dee60c8aacf3709cc256f7f5</srcmd5>
+    <version>3.42.0.0</version>
+    <time>1685294611</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.42.0.0:
+  * Shell: Errors when SQLite are preparing a statement now show
+    the relevant extract of the query, and where the error was
+    detected.
+  * Shell: Output modes table (ASCII line drawing, lots of
+    sanitization), box (Unicode line drawing) and
+    qbox (box with quoted values) available.
+  * Shell: if started interactively then box is the default mode
+    (list remains the default in non-interactive)
+  * Added :meth:`Connection.pragma` to execute pragmas
+    and get results.
+  * Added :attr:`Cursor.get` returning query results with the
+    least amount of structure.
+  * Fixed execution tracers should return comment text for
+    comment only queries, and add :attr:`Cursor.has_vdbe`.
+  * Ensure that all applicable options are implemented for
+    :func:`apsw.config`, :meth:`Connection.config` and similar.
+  * Added :func:`apsw.sleep`
+  * Strings for :meth:`apsw.VFS.xNextSystemCall` are interned
+  * Detect unbound recursion not handled by CPython, and handle
+    better.</comment>
+    <requestid>1089348</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>2dd1a4f79c1d175188e8a9acb69ea5ec</srcmd5>
+    <version>3.42.0.0</version>
+    <time>1687379961</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1094234</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>772685755967ecd20b5456305ea477ee</srcmd5>
+    <version>3.42.0.1</version>
+    <time>1690469508</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.42.0.1:
+  - Work with SQLite compiled with
+    SQLITE_OMIT_DEPRECATED. Connection.setprofile() was changed
+    from using the deprecated sqlite3_profile to sqlite3_trace_v2
+    giving the same results. When including the amalgamation,
+    SQLITE_OMIT_DEPRECATED is defined. (APSW issue 443)
+  - Shell updates adding various commands to match the SQLite
+    shell, as well as code and documentation improvements. (APSW
+    issue 397)
+  - Added Connection.read() and apsw.ext.dbinfo() to provide
+    information from the database and journal/wal files. The
+    shell command .dbinfo displays it.
+  - Added apsw.vfs_details(). The shell command .vfslist displays
+    it.
+  - Implemented VFS method xCurrentTimeInt64. The default SQLite
+    VFS no longer provide xCurrentTime (floating point version)
+    if SQLITE_OMIT_DEPRECATED is defined, so this is needed for
+    inheritance to work. (APSW issue 451)
+  - Backwards incompatible change: VFS If you override
+    xCurrentTime, then you will need to override
+    xCurrentTimeInt64 in the same way, or exclude
+    xCurrentTimeInt64 in VFS, or use iVersion of 1.
+  - speedtest now shows summary statistics, and improved help
+    text. (APSW issue 444)
+- Clean up the SPEC file, use %pyproject_* macros instead.
+- Make the test suite pass again (gh#rogerbinns/apsw#462).
+</comment>
+    <requestid>1100912</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>27a3e1038f37299b95ba18bfcdd8edde</srcmd5>
+    <version>3.43.1.0</version>
+    <time>1698001293</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1116041</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>48b58bc02a9ff20a1838fe3252d2eef6</srcmd5>
+    <version>3.44.0.0</version>
+    <time>1700078907</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.44.0.0:
+  * Added virtual table :meth:`VTTable.Integrity` support.
+  * On 64 bit platforms with the amalgamation,
+    `SQLITE_MAX_MMAP_SIZE SQLite's default limit is 2GB.
+  * :meth:`Connection.create_aggregate_function` can take a class
+    with step and final methods. (:issue:`421`)
+  * Corrected non :pep:`8` :ref:`compliant names &lt;renaming&gt;`.
+    The old names remain as aliases to the new ones, and your
+    code will not break.
+  * :doc:`Exception &lt;exceptions&gt;` handling has been updated, with
+    multiple exceptions in the same SQLite control flow being
+    chained together.
+
+  - Reduced overhead of the Column method when using
+    Connection or Cursor
+- Fix loadable extensions are missing,
+  * Added constants: SQLITE_IOERR_CORRUPTFS</comment>
+    <requestid>1126235</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>0678033c619453d0372071d96881e27c</srcmd5>
+    <version>3.44.2.0</version>
+    <time>1701632955</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.44.2.0:
+  * Added `logger` parameter to :func:`apsw.ext.log_sqlite` to
+    use a specific :class:`logging.Logger` (:issue:`493`)
+  * Added :func:`apsw.ext.result_string` to turn an result code
+    into a string, taking into account if it is extended or not.
+  * Provide detail when C implemented objects are printed. For
+    example :class:`connections &lt;Connection&gt;` include the filename.
+  * Added :meth:`URIFilename.parameters` (:issue:`496`)
+  * :class:`URIFilename` are only valid for the duration of the
+    :meth:`VFS.xOpen` call.  If you save and use the object later
+    you will get an exception.  (:issue:`501`)</comment>
+    <requestid>1130519</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>0d70b643ef371a002616f0aec9d43542</srcmd5>
+    <version>3.44.2.0</version>
+    <time>1704919986</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1137921</requestid>
+  </revision>
+</revisionlist>

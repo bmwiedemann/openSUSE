@@ -1,0 +1,5 @@
+<package name="susefirewall2-to-firewalld" project="openSUSE:Factory">
+  <title>Basic SuSEfirewall2 to FirewallD migration script</title>
+  <description>This is a simple bash script aiming to provide a basic migration path from SuSEfirewall2 to FirewallD</description>
+  <devel project="network:utilities" package="susefirewall2-to-firewalld"/>
+</package>

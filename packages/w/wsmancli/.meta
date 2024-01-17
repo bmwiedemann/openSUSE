@@ -1,0 +1,5 @@
+<package name="wsmancli" project="openSUSE:Factory">
+  <title>Opensource Implementation of WS-Management - Command line utility</title>
+  <description>Part of Openwsman, an Opensource Implementation of WS-Management</description>
+  <devel project="systemsmanagement:wbem" package="wsmancli"/>
+</package>

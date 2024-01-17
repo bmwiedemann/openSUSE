@@ -1,0 +1,15 @@
+<services>
+        <service name="tar_scm" mode="localonly">
+                <param name="scm">git</param>
+                <param name="url">https://github.com/openSUSE/udev-extra-rules.git</param>
+                <param name="subdir"></param>
+                <param name="filename">udev-extra-rules</param>
+                <param name="version">0.2</param>
+                <param name="revision">master</param>
+        </service>
+        <service name="recompress" mode="localonly">
+                 <param name="file">*udev-extra-rules*.tar</param>
+                 <param name="compression">xz</param>
+        </service>
+</services>
+

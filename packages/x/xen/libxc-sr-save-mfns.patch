@@ -1,0 +1,132 @@
+From: Olaf Hering <olaf@aepfle.de>
+Date: Fri, 23 Oct 2020 11:20:36 +0200
+Subject: libxc sr save mfns
+
+tools: save: preallocate mfns array
+
+Remove repeated allocation from migration loop. There will never be
+more than MAX_BATCH_SIZE pages to process in a batch, see add_to_batch.
+Allocate the space once.
+
+Signed-off-by: Olaf Hering <olaf@aepfle.de>
+---
+ tools/libs/guest/xg_sr_common.h |  1 +
+ tools/libs/guest/xg_sr_save.c   | 25 +++++++++++++------------
+ 2 files changed, 14 insertions(+), 12 deletions(-)
+
+--- a/tools/libs/guest/xg_sr_common.h
++++ b/tools/libs/guest/xg_sr_common.h
+@@ -244,6 +244,7 @@ struct xc_sr_context
+             struct precopy_stats stats;
+ 
+             xen_pfn_t *batch_pfns;
++            xen_pfn_t *mfns;
+             unsigned int nr_batch_pfns;
+             unsigned long *deferred_pages;
+             unsigned long nr_deferred_pages;
+--- a/tools/libs/guest/xg_sr_save.c
++++ b/tools/libs/guest/xg_sr_save.c
+@@ -88,7 +88,7 @@ static int write_checkpoint_record(struc
+ static int write_batch(struct xc_sr_context *ctx)
+ {
+     xc_interface *xch = ctx->xch;
+-    xen_pfn_t *mfns = NULL, *types = NULL;
++    xen_pfn_t *types = NULL;
+     void *guest_mapping = NULL;
+     void **guest_data = NULL;
+     void **local_pages = NULL;
+@@ -105,8 +105,6 @@ static int write_batch(struct xc_sr_cont
+ 
+     assert(nr_pfns != 0);
+ 
+-    /* Mfns of the batch pfns. */
+-    mfns = malloc(nr_pfns * sizeof(*mfns));
+     /* Types of the batch pfns. */
+     types = malloc(nr_pfns * sizeof(*types));
+     /* Errors from attempting to map the gfns. */
+@@ -118,7 +116,7 @@ static int write_batch(struct xc_sr_cont
+     /* iovec[] for writev(). */
+     iov = malloc((nr_pfns + 4) * sizeof(*iov));
+ 
+-    if ( !mfns || !types || !errors || !guest_data || !local_pages || !iov )
++    if ( !types || !errors || !guest_data || !local_pages || !iov )
+     {
+         ERROR("Unable to allocate arrays for a batch of %u pages",
+               nr_pfns);
+@@ -127,11 +125,11 @@ static int write_batch(struct xc_sr_cont
+ 
+     for ( i = 0; i < nr_pfns; ++i )
+     {
+-        types[i] = mfns[i] = ctx->save.ops.pfn_to_gfn(ctx,
++        types[i] = ctx->save.mfns[i] = ctx->save.ops.pfn_to_gfn(ctx,
+                                                       ctx->save.batch_pfns[i]);
+ 
+         /* Likely a ballooned page. */
+-        if ( mfns[i] == INVALID_MFN )
++        if ( ctx->save.mfns[i] == INVALID_MFN )
+         {
+             set_bit(ctx->save.batch_pfns[i], ctx->save.deferred_pages);
+             ++ctx->save.nr_deferred_pages;
+@@ -150,20 +148,21 @@ static int write_batch(struct xc_sr_cont
+     {
+         if ( !is_known_page_type(types[i]) )
+         {
+-            ERROR("Unknown type %#"PRIpfn" for pfn %#"PRIpfn, types[i], mfns[i]);
++            ERROR("Unknown type %#"PRIpfn" for pfn %#"PRIpfn,
++                  types[i], ctx->save.mfns[i]);
+             goto err;
+         }
+ 
+         if ( !page_type_has_stream_data(types[i]) )
+             continue;
+ 
+-        mfns[nr_pages++] = mfns[i];
++        ctx->save.mfns[nr_pages++] = ctx->save.mfns[i];
+     }
+ 
+     if ( nr_pages > 0 )
+     {
+         guest_mapping = xenforeignmemory_map(
+-            xch->fmem, ctx->domid, PROT_READ, nr_pages, mfns, errors);
++            xch->fmem, ctx->domid, PROT_READ, nr_pages, ctx->save.mfns, errors);
+         if ( !guest_mapping )
+         {
+             PERROR("Failed to map guest pages");
+@@ -179,7 +178,7 @@ static int write_batch(struct xc_sr_cont
+             if ( errors[p] )
+             {
+                 ERROR("Mapping of pfn %#"PRIpfn" (mfn %#"PRIpfn") failed %d",
+-                      ctx->save.batch_pfns[i], mfns[p], errors[p]);
++                      ctx->save.batch_pfns[i], ctx->save.mfns[p], errors[p]);
+                 goto err;
+             }
+ 
+@@ -277,7 +276,6 @@ static int write_batch(struct xc_sr_cont
+     free(guest_data);
+     free(errors);
+     free(types);
+-    free(mfns);
+ 
+     return rc;
+ }
+@@ -850,9 +848,11 @@ static int setup(struct xc_sr_context *c
+         xch, dirty_bitmap, NRPAGES(bitmap_size(ctx->save.p2m_size)));
+     ctx->save.batch_pfns = malloc(MAX_BATCH_SIZE *
+                                   sizeof(*ctx->save.batch_pfns));
++    ctx->save.mfns = malloc(MAX_BATCH_SIZE * sizeof(*ctx->save.mfns));
+     ctx->save.deferred_pages = bitmap_alloc(ctx->save.p2m_size);
+ 
+-    if ( !ctx->save.batch_pfns || !dirty_bitmap || !ctx->save.deferred_pages )
++    if ( !ctx->save.batch_pfns || !ctx->save.mfns ||
++         !dirty_bitmap || !ctx->save.deferred_pages )
+     {
+         ERROR("Unable to allocate memory for dirty bitmaps, batch pfns and"
+               " deferred pages");
+@@ -883,6 +883,7 @@ static void cleanup(struct xc_sr_context
+     xc_hypercall_buffer_free_pages(xch, dirty_bitmap,
+                                    NRPAGES(bitmap_size(ctx->save.p2m_size)));
+     free(ctx->save.deferred_pages);
++    free(ctx->save.mfns);
+     free(ctx->save.batch_pfns);
+ }
+ 

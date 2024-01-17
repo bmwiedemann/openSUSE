@@ -1,0 +1,22 @@
+Index: sffview-0.5/Makefile
+===================================================================
+--- sffview-0.5.orig/Makefile
++++ sffview-0.5/Makefile
+@@ -18,14 +18,14 @@ CC = g++
+ PROGRAM = sffview
+ OBJECTS = $(PROGRAM).o common.o codes.o decoder.o sfffile.o sffapp.o sffdoc.o
+ 
+-WXCONFIG_CPP = `wx-config --cflags`
++WXCONFIG_CPP = `wx-config --unicode=yes --cflags`
+ 
+-WXCONFIG_LD = `wx-config --libs`
++WXCONFIG_LD = `wx-config --unicode=yes --libs`
+ 
+ .SUFFIXES:	.o .cpp
+ 
+ .cpp.o :
+-	$(CC) -g -Os -c $(WXCONFIG_CPP) -o $@ $<
++	$(CC) -g  $(RPM_OPT_FLAGS) -fno-strict-aliasing -c $(WXCONFIG_CPP) -o $@ $<
+ 
+ all:    $(PROGRAM)
+ 

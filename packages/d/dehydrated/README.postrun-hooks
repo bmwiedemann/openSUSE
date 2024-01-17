@@ -1,0 +1,7 @@
+Rework support for /etc/dehydrated/postrun-hooks.d/:
+dehydrated.service nolonger starts them directly, the support was
+moved to a separate unit file. Please run:
+
+systemctl enable dehydrated-postrun-hooks.service
+
+to restore this functionality

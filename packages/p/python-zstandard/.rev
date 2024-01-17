@@ -1,0 +1,109 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c0043d992eadc94ec58165f4eb075a07</srcmd5>
+    <version>0.11.0</version>
+    <time>1557264036</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by python-fastparquet</comment>
+    <requestid>701351</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2d83579451b2547d2ec160834a9c4b02</srcmd5>
+    <version>0.11.1</version>
+    <time>1558939097</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.11.1:
+  * Fix memory leak in ``ZstdDecompressionReader.seek()`` (#82).</comment>
+    <requestid>705256</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7f3daa9afec081773046b0abc1ad5705</srcmd5>
+    <version>0.12.0</version>
+    <time>1569523117</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12.0:
+  * Fix ZstdDecompressor.__init__ on 64-bit big-endian systems (#91).
+  * Fix memory leak in ZstdDecompressionReader.seek() (#82).
+  * CI transitioned to Azure Pipelines (from AppVeyor and Travis CI).
+  * Switched to pytest for running tests (from nose).</comment>
+    <requestid>732155</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f9c4dc81c9731ef1777ed9f5bc381b58</srcmd5>
+    <version>0.13.0</version>
+    <time>1583948597</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>782875</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c5d20deb29d158ad8eee14a27247523a</srcmd5>
+    <version>0.14.0</version>
+    <time>1596277714</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>822029</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>470571a5aa38e3542b5206d2fdac2049</srcmd5>
+    <version>0.17.0</version>
+    <time>1644007586</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>950575</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4cca727b3b0250d0bd7c061608c18a98</srcmd5>
+    <version>0.19.0</version>
+    <time>1669040926</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1036966</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>21c257fbc239fe25cab402c1dbc6cc41</srcmd5>
+    <version>0.19.0</version>
+    <time>1670430854</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1040446</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>ef34ce6514bf50cad4409af9c4d316e2</srcmd5>
+    <version>0.19.0</version>
+    <time>1676827111</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1066418</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a850cc46de898047afcfd57a173f1d61</srcmd5>
+    <version>0.20.0</version>
+    <time>1677351255</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1067413</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>03cd723cd862622b8e6423dd54892a31</srcmd5>
+    <version>0.21.0</version>
+    <time>1682434384</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 0.21.0
+  * Support zstd 1.5.5</comment>
+    <requestid>1080378</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>203c35463deff567723bb166308444c4</srcmd5>
+    <version>0.22.0</version>
+    <time>1699183152</time>
+    <user>anag+factory</user>
+    <comment>Update to version 0.22.0
+  * Official support for CPython 3.12
+  * ZstdDecompressor.decompressobj() now accepts a read_across_frames
+    boolean named argument to control whether to transparently read across
+    multiple zstd frames. It still defaults to False to preserve existing
+    behavior</comment>
+    <requestid>1123361</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,350 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9cb13543e4619cf5161a1ae2ec1d8d77</srcmd5>
+    <version>5.36</version>
+    <time>1477904125</time>
+    <user>dimstar_suse</user>
+    <comment>Submitting updated stunnel to openSUSE Factory</comment>
+    <requestid>437238</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a11f2c5c73b6cceb4f41b6cdf41f803c</srcmd5>
+    <version>5.38</version>
+    <time>1481272765</time>
+    <user>dimstar_suse</user>
+    <comment>update to 5.38 (forwarded request 444868 from stroeder)</comment>
+    <requestid>444872</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a09203e51409dd8497607f9cb1e1039b</srcmd5>
+    <version>5.39</version>
+    <time>1483555206</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>448532</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0a665a6554a697d4c6a0b67493485583</srcmd5>
+    <version>5.40</version>
+    <time>1485769815</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453225</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>abafa8c9c11f3e2897fdca5f456b9b52</srcmd5>
+    <version>5.40</version>
+    <time>1486968677</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>456147</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b4425d7db2509788167bf30520039000</srcmd5>
+    <version>5.41</version>
+    <time>1491469350</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>484794</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>ba7a1c0fdbad5e0c9631e68a6941d445</srcmd5>
+    <version>5.41</version>
+    <time>1491896772</time>
+    <user>maxlin_factory</user>
+    <comment>- Require package config for libsystemd to help the configure script
+  to detect and enable systemd socket activation (boo#1032557) 
+- Refresh patch stunnel-listenqueue-option.patch</comment>
+    <requestid>486002</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>786055985db7738fcc7d40a0f3f9cfbe</srcmd5>
+    <version>5.42</version>
+    <time>1503393005</time>
+    <user>dimstar_suse</user>
+    <comment>- add more verbose change log:
+  Version 5.42, 2017.07.16, urgency: HIGH
+- New features
+	* &quot;redirect&quot; also supports &quot;exec&quot; and not only &quot;connect&quot;.
+	* PKCS#11 engine DLL updated to version 0.4.7.
+- Bugfixes
+	* Fixed premature cron thread initialization causing hangs.
+	* Fixed &quot;verifyPeer = yes&quot; on OpenSSL &lt;= 1.0.1.
+	* Fixed pthreads support on OpenSolaris.
+- update to version 5.42
+</comment>
+    <requestid>517929</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>b970b411241d8e86e32486281c9d0d77</srcmd5>
+    <version>5.42</version>
+    <time>1512386174</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>547614</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>be0f5bdccfa0b8f5565b0f244051a7d4</srcmd5>
+    <version>5.44</version>
+    <time>1517606496</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>571634</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>4c663877a19b68d2a1e323f6550fa073</srcmd5>
+    <version>5.44</version>
+    <time>1517932203</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>573241</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>14b65f602d2922847c0b6b8cd38ba602</srcmd5>
+    <version>5.44</version>
+    <time>1518025332</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>573623</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0e4b121298f2327008c6378258942779</srcmd5>
+    <version>5.49</version>
+    <time>1542012299</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>648234</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>d2ab6d11b011bd3ee181e16f6d665a77</srcmd5>
+    <version>5.49</version>
+    <time>1551215962</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>678202</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>26eb4e3f494822e9e9170a37fc98877a</srcmd5>
+    <version>5.55</version>
+    <time>1568720340</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>731260</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>fd0c4f93a9e7d4ef97cdd56e4bb6361f</srcmd5>
+    <version>5.55</version>
+    <time>1580842488</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>769756</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>092d50537d402ceb5953a3208637d52f</srcmd5>
+    <version>5.55</version>
+    <time>1583949333</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixup stunnel.conf handling:
+  * Remove old static openSUSE provided stunnel.conf.
+  * Use upstream stunnel.conf and tailor it for openSUSE using sed.
+  * Don't show README.openSUSE when installing.
+- enable /etc/stunnel/conf.d
+- re-enable openssl.cnf
+</comment>
+    <requestid>783872</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>cd7bd0ac850b88407ff0f9c87bb606a7</srcmd5>
+    <version>5.56</version>
+    <time>1598726208</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>829785</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>38bc8125af9b056ab0444f674503b7b1</srcmd5>
+    <version>5.57</version>
+    <time>1602503975</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841161</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>6ce4b56b0795010439294c9d36c4856b</srcmd5>
+    <version>5.57</version>
+    <time>1602508480</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841268</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>da199790b6f201fd45cedee60fb66582</srcmd5>
+    <version>5.57</version>
+    <time>1607801522</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>854972</requestid>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>1ace5b26383ca1d108a52231bfb8f877</srcmd5>
+    <version>5.57</version>
+    <time>1611770263</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>866942</requestid>
+  </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>80ceaa99be2e62849b37bead992966ee</srcmd5>
+    <version>5.57</version>
+    <time>1613677191</time>
+    <user>dimstar_suse</user>
+    <comment>Add boo Number:
+Do not replace the active config file: boo#1182376</comment>
+    <requestid>873188</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>3cea5fa4033c38fc233933aabdf1c9f3</srcmd5>
+    <version>5.58</version>
+    <time>1613942073</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.58:
+  *  Security bugfixes
+     -  The &quot;redirect&quot; option was fixed to properly handle unauthenticated requests (thx to Martin Stein). boo#1182529</comment>
+    <requestid>874110</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>de8958a079ed48b512618e755c41225f</srcmd5>
+    <version>5.59</version>
+    <time>1618387833</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable testsuite for everything except Tumbleweed since it does not work on Leap/SLE
+- update to 5.59:
+  * new feature: Client-side &quot;protocol = ldap&quot; support
+  * Fix configuration reload when compression is used
+  * Fix paths in generated manuals
+  * Fix test suite fixed not to require external connectivity
+- run testsuite during package build
+</comment>
+    <requestid>884991</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>07fb0b5170f7a6d497340657f68807e5</srcmd5>
+    <version>5.59</version>
+    <time>1619031634</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>887332</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>49a9cc813abba082cf127ef022aef107</srcmd5>
+    <version>5.60</version>
+    <time>1629360064</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>912850</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>f296e4700ba1dc997e441a37ed92d351</srcmd5>
+    <version>5.60</version>
+    <time>1639685977</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>940847</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>b19a931aa3af62ce639d5761e37a97a5</srcmd5>
+    <version>5.62</version>
+    <time>1645723248</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>957112</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>01ea951aa73a27c5598dc58464b64acf</srcmd5>
+    <version>5.63</version>
+    <time>1648063150</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>964297</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>ce52a7bd71abcbb30de47e0c9ee7c0cd</srcmd5>
+    <version>5.64</version>
+    <time>1652114653</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>975724</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>966361eebe94871f0d7c45abb45e3b20</srcmd5>
+    <version>5.65</version>
+    <time>1658162083</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>989995</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>8fb681a2554d2cda629b2ad0ff2a07bd</srcmd5>
+    <version>5.66</version>
+    <time>1663275604</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1003856</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>d6628227af8b23636442086308c88492</srcmd5>
+    <version>5.67</version>
+    <time>1667389626</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032746</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>5802b014947d6e8c85d7e77b53d8a1c9</srcmd5>
+    <version>5.68</version>
+    <time>1677498953</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1067906</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>f7751bc92a7a3e6f2255fd93d1279a7d</srcmd5>
+    <version>5.69</version>
+    <time>1680636375</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1077113</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>366da77dac7062134888e5b10b0521cd</srcmd5>
+    <version>5.69</version>
+    <time>1683037142</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1083929</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>ad6b1ea469ed84625b55a8ceba6b4cb1</srcmd5>
+    <version>5.70</version>
+    <time>1690215956</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1099866</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>97ad6fdfdf81e4d7d9065663481f745b</srcmd5>
+    <version>5.70</version>
+    <time>1694200534</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1109601</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>b39bb9e9b4622b8141a923557fb7d761</srcmd5>
+    <version>5.71</version>
+    <time>1695665046</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1113412</requestid>
+  </revision>
+</revisionlist>

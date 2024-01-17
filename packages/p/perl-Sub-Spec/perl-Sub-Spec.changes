@@ -1,0 +1,78 @@
+-------------------------------------------------------------------
+Mon Feb 20 08:37:49 UTC 2012 - coolo@suse.com
+
+- updated to 1.0.7
+    * Update NOTICE.
+    * Mark deprecated.
+
+-------------------------------------------------------------------
+Mon Dec 19 13:10:38 UTC 2011 - coolo@suse.de
+
+- update to 1.0.5
+  No spec changes. Build fix (remove stale dependency).
+
+-------------------------------------------------------------------
+Fri Sep 30 07:06:07 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 1.0.4:
+  * rewrite/reorganize document, put everything in Sub::Spec, remove all the
+    other modules, add Sub::Spec::FAQ
+  * add Sub::Spec::Schema
+  * add spec clauses 'type' and 'scope'
+  * now support methods aside from subroutines
+  * remove 'statuses'
+  * 'description' clause now in Org format
+  * add utility function: str_log_level()
+
+-------------------------------------------------------------------
+Thu Apr 28 15:12:04 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 0.13:
+  * Undo feature: to perform redo (effectively, undo of undo), one no longer
+    passes -undo_action=>'redo', but instead just -undo_action=>'undo' with
+    -undo_data provided from previous undo action
+
+- changes from 0.12:
+  * Spec: undo feature: Specify -undo_hint
+
+-------------------------------------------------------------------
+Thu Apr  7 17:31:53 UTC 2011 - coolo@novell.com
+
+- updated to 0.11
+     [INCOMPATIBLE CHANGES]
+  
+      - 'args_positional' clause now becomes 'args_as', the spec makes it
+         possible for subs to accept args object instead of array/hash.
+  
+      - changes for undo. Caller now sets special arg -undo_action and no
+         longer provides -state. Subs provide their own undo info and return
+         it to the caller. Add redo.
+  
+      Add missing requirement to Log::Any.
+  
+      Declare requirement Test::More 0.96 [RT#66616].
+
+
+-------------------------------------------------------------------
+Tue Mar 08 11:50:11 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 0.08:
+  * specify 'args_positional', 'result', 'result_naked', 'statuses' clauses
+  * specify 'features' clause
+  * some small fixes and docs addition
+
+-------------------------------------------------------------------
+Fri Mar  4 20:59:26 UTC 2011 - chris@computersalat.de
+
+- recreated by cpanspec 1.78.03
+- fix deps
+  o add Test::More >= 0.96
+- add Build patch
+  o there is really no need for Module::Build >= 0.3601,
+    0.280801 from perl 5.10 is OK, too. 
+
+-------------------------------------------------------------------
+Thu Mar 03 20:40:20 CET 2011 - pascal.bleser@opensuse.org
+
+- initial version (0.06)
+

@@ -1,0 +1,20 @@
+--- jdk10/src/java.base/share/conf/security/java.security	2017-01-23 23:56:02.000000000 +0100
++++ jdk10/src/java.base/share/conf/security/java.security	2017-01-27 08:41:10.551819770 +0100
+@@ -304,6 +304,8 @@
+ #
+ package.access=sun.misc.,\
+                sun.reflect.,\
++               org.GNOME.Accessibility.,\
++               org.GNOME.Bonobo.,\
+ 
+ #
+ # List of comma-separated packages that start with or equal this string
+@@ -316,6 +318,8 @@
+ #
+ package.definition=sun.misc.,\
+                    sun.reflect.,\
++                   org.GNOME.Accessibility.,\
++                   org.GNOME.Bonobo.,\
+ 
+ #
+ # Determines whether this properties file can be appended to

@@ -1,0 +1,79 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7502a602891ce5162875149f79ce24b8</srcmd5>
+    <version>12.1.2</version>
+    <time>1648570511</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain tokei in Factory.</comment>
+    <requestid>965522</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e2a289b210e9715896a8183b8d4daca3</srcmd5>
+    <version>12.1.2</version>
+    <time>1649274700</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>967159</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>506aa947fe09fc217efddc07457f0a03</srcmd5>
+    <version>12.1.2</version>
+    <time>1655732290</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>983820</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bacff125e0c8bc2b663cdd93ee3cdc13</srcmd5>
+    <version>12.1.2+git106</version>
+    <time>1664467942</time>
+    <user>RBrownFactory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1006619</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>e37555c2924b808ffec82fe4c287839a</srcmd5>
+    <version>12.1.2+git106</version>
+    <time>1668877788</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1036810</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>330af33182de837720cd6704715d5441</srcmd5>
+    <version>13.0.0.alpha.0+git14</version>
+    <time>1687796224</time>
+    <user>dimstar_suse</user>
+    <comment>- Manually vendor dependencies.
+  * Add vendor.tar.zst
+- Update service file.
+- Update to version 13.0.0.alpha.0+git14:
+  * add --languages ouput formatter
+  * Add Nuget Config, Bazel and EdgeQL Support, Fix Output Formatter
+  * show nushell in the readme
+  * Add support for Redscript
+  * Add support for jq
+  * Add support for Astro
+  * Use XDG conventions on macOS too
+  * Add JSON5 support for languages.json
+  * Delete Smalltalk.cs.st
+  * Add support for smalltalk
+  * Disable *-android
+  * Add HiCAD to languages.json
+  * Add Nushell to languages.json
+  * Disable aarch64-linux-android
+  * Add language support for SQF
+  * Fix link to speed comparison in README.md
+  * Add Hy support
+</comment>
+    <requestid>1095443</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>de0b6e7a7455dbb641f943eb57c7cf7e</srcmd5>
+    <version>13.0.0.alpha.0+git14</version>
+    <time>1692611128</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1104914</requestid>
+  </revision>
+</revisionlist>

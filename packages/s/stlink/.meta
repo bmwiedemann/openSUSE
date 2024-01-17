@@ -1,0 +1,5 @@
+<package name="stlink" project="openSUSE:Factory">
+  <title></title>
+  <description>STLINK v1/v2 JTAG/SWD debugging/flashing tool for STM32 microcontrollers</description>
+  <devel project="electronics" package="stlink"/>
+</package>

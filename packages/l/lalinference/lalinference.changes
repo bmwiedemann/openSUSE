@@ -1,0 +1,189 @@
+-------------------------------------------------------------------
+Tue May 23 10:29:22 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 4.1.3:
+  * No release notes.
+
+-------------------------------------------------------------------
+Sun Feb 12 07:26:33 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add python-py BuildRequires to fix tests that fail due to "No
+  module named 'py._path'" errors.
+
+-------------------------------------------------------------------
+Tue Aug 23 23:48:59 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Fix multibuild package names.
+
+-------------------------------------------------------------------
+Fri Aug 19 20:29:48 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 4.0.0:
+  * No release notes.
+- Drop lalinference-import-MutableMapping.patch: incorporated
+  upstream.
+- Drop BuildRequires on lalpulsar-devel and python-lalpulsar
+  (indeed now lalpulsar depends on lalinference-devel).
+- Update source URL.
+- Update so version to match upstream.
+- Re-organise list of BuildRequires to differentiate packages
+  needed for building proper vs those needed for tests only.
+- Tests can take a long time, split testing as part of %check
+  into its own _multibuild flavour.
+- Make %{name}-data a noarch package.
+- New BuildRequires for tests: python-h5py.
+
+-------------------------------------------------------------------
+Tue Apr 26 10:44:09 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Resolve rpmlint report "liblalinference21.x86_64: E:
+  shlib-policy-name-error SONAME: liblalinference.so.22, expected
+  package suffix: 22"
+
+-------------------------------------------------------------------
+Sun Jan 16 19:19:18 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add lalinference-import-MutableMapping.patch --
+  lalinference.wrapper: Update import of MutableMapping; patch
+  taken from upstream commit.
+
+-------------------------------------------------------------------
+Sun Jan  2 23:57:51 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.0.1:
+  * No release notes.
+
+-------------------------------------------------------------------
+Wed Nov 17 12:34:30 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not build for %ix86: lal is not available on this platform.
+
+-------------------------------------------------------------------
+Fri Feb 26 23:59:48 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.0.7 (no release notes).
+
+-------------------------------------------------------------------
+Mon Feb 15 14:18:29 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Update requirements and fix provider for data package
+
+-------------------------------------------------------------------
+Fri Feb 12 16:24:29 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 2.0.6
+  * no changelog
+
+-------------------------------------------------------------------
+Sat Feb  6 21:25:26 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Disable python2 bindings.
+
+-------------------------------------------------------------------
+Fri Jan 22 00:27:09 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Fix test for multi-version python.
+- Disable building for python3.6 as astropy isn't supported for
+  python < 3.7.
+
+-------------------------------------------------------------------
+Mon Jan 18 14:56:01 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Disable octave bindings, since octave >= 6 isn't supported.
+- Implement %check section and run tests.
+
+-------------------------------------------------------------------
+Fri Oct 23 05:54:56 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.0.4:
+  * Open HDF5 file in write mode when writing samples.
+  * lalinference_pipe: Do not ENFORCE the use of a queue if it is
+    specified in the .sub file.
+
+-------------------------------------------------------------------
+Tue Aug 11 13:41:25 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.0.3:
+  * No release notes.
+- Update required version of lalsimulation to 2.2.0.
+
+-------------------------------------------------------------------
+Tue Jul  7 02:10:56 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.0.1:
+  * No release notes.
+- Bump so number in shlib package name.
+- Re-enable octave bindings: fixed upstream.
+- Drop libtool from BuildRequires and do not run autoreconf
+  before configure: these have not been needed since
+  lalinference-build-octave44-with-swig3.patch was dropped.
+
+-------------------------------------------------------------------
+Wed Jul  1 23:29:04 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Disable octave support as compilation error with current swig.
+
+-------------------------------------------------------------------
+Fri May 29 18:05:48 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add lalinference-printf-data-type-consistency.patch: Cast data
+  passed to printf from size_t to long to make it consistent with
+  the format "%li"; this fixes build failures on i586 (patch
+  applicable on any arch).
+
+-------------------------------------------------------------------
+Wed Apr 22 18:13:19 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.11.7:
+  * O3b point release
+- Drop lalinference-build-octave44-with-swig3.patch: incorporated
+  upstream.
+- BuildRequires: python-xml only for openSUSE <= 15.2 since
+  python2 is disabled for newer openSUSE.
+- Package binaries for python3 only.
+
+-------------------------------------------------------------------
+Mon Feb  3 00:58:40 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.11.4:
+  * O3b release.
+- Rebase lalinference-build-octave44-with-swig3.patch for update.
+
+-------------------------------------------------------------------
+Tue Oct  1 12:28:03 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Build packages for both python2 and python3.
+- Move binaries to the python2 subpackage.
+- Split out a separate -data pkg used by all the lalinference
+  binaries.
+
+-------------------------------------------------------------------
+Mon Jul 22 14:43:08 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.11.2:
+  * O3 release.
+- Update shared lib package names in keeping with upstream so
+  versioning.
+- Rebase lalinference-build-octave44-with-swig3.patch to conform
+  to upstream's reworking for swig and octave version tests.
+
+-------------------------------------------------------------------
+Fri Feb  8 13:32:28 UTC 2019 - badshah400@gmail.com
+
+- Switch builds to python2; add python-xml to BuildRequires.
+
+-------------------------------------------------------------------
+Thu Feb  7 14:54:34 UTC 2019 - badshah400@gmail.com
+
+- Update Requires for octave-%{name}.
+
+-------------------------------------------------------------------
+Sun Jan 27 19:11:46 UTC 2019 - badshah400@gmail.com
+
+- Add lalinference-build-octave44-with-swig3.patch: allow building
+  octave bindings with swig 3.0.x rather than requiring swig 4.x.
+
+-------------------------------------------------------------------
+Sun Jan 27 18:00:12 UTC 2019 - badshah400@gmail.com
+
+- Initial package

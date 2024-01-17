@@ -1,0 +1,172 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>04f4c809127f4c08aa3d90e625e0ba4a</srcmd5>
+    <version>2.4.2</version>
+    <time>1458121227</time>
+    <user>dimstar_suse</user>
+    <comment>Renamed python-dateutil to match python package naming policies.</comment>
+    <requestid>366048</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e9d391dfa2ad1efff4ca1bad676af6c4</srcmd5>
+    <version>2.6.0</version>
+    <time>1478780050</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>439323</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>0558c60f217cb0a6aa272a0b8c33cb14</srcmd5>
+    <version>2.6.0</version>
+    <time>1492617970</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>483978</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>afeece0e489228fed21aee04a95e3790</srcmd5>
+    <version>2.6.0</version>
+    <time>1494345534</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>493133</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8f2ebe7e9d53a293fbcc286ccb4a8104</srcmd5>
+    <version>2.6.1</version>
+    <time>1500274845</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509321</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>86329c099ef0d37cf60c5b902eb89143</srcmd5>
+    <version>2.7.3</version>
+    <time>1535701669</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>631025</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>f53fe190bef1c892b24c63dae824b0f2</srcmd5>
+    <version>2.7.3</version>
+    <time>1545866874</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659610</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>450ddb7ca9e999548e7f3b70f6cc27b6</srcmd5>
+    <version>2.8.0</version>
+    <time>1551215738</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to _multibuild to not create buildcycle
+
+- Update to 2.8.0 (2019-02-04)
+  + Data updates
+    * Updated tzdata version to to 2018i.
+  + Features
+    * Added support for EXDATE parameters when parsing rrule
+      strings. Reported by @mlorant (gh issue #410), fixed by
+      @nicoe (gh pr #859).
+    * Added support for sub-minute time zone offsets in Python
+      3.6+. Fixed by @cssherry (gh issue #582, pr #763)
+    * Switched the tzoffset, tzstr and gettz caches over to using
+      weak references, so that the cache expires when no other
+      references to the original tzinfo objects exist. This cache-
+      expiry behavior is not guaranteed in the public interface and
+      may change in the future. To improve performance in the case
+      where transient references to the same time zones are
+      repeatedly created but no strong reference is continuously
+      held, a smaller “strong value” cache was also added. Weak
+      value cache implemented by @cs-cordero (gh pr #672, #801),
+      strong cache added by Gökçen Nurlu (gh issue #691, gh pr
+      #761)
+  + Bugfixes
+    * Added time zone inference when initializing an rrule with a
+      specified UNTIL but without an explicitly specified DTSTART;
+      the time zone of the generated DTSTART will now be taken from
+      the UNTIL rule. Reported by @href (gh issue #652). Fixed by
+      @absreim (gh pr #693).
+    * Fixed an issue where parser.parse would raise Decimal-
+      specific errors instead of a standard ValueError if certain</comment>
+    <requestid>678904</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>861d697cec75d949ab0a9e358c0d69c4</srcmd5>
+    <version>2.8.0</version>
+    <time>1572883920</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace %fdupes -s with plain %fdupes; hardlinks are better.</comment>
+    <requestid>744004</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>520dce98f2b2b2c90c1b8f897c5d8359</srcmd5>
+    <version>2.8.1</version>
+    <time>1579464044</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.8.1:
+  * Updated tzdata version to 2019c.
+  * Fixed a race condition in the tzoffset and tzstr &quot;strong&quot;
+    caches on Python 2.7. Reported by @kainjow (gh issue #901).
+  * Parsing errors will now raise ParserError, a subclass of
+    ValueError, which has a nicer string representation. Patch by
+    @gfyoung (gh pr #881).
+  * parser.parse will now raise TypeError when tzinfos is passed a
+    type that cannot be interpreted as a time zone. Prior to this
+    change, it would raise an UnboundLocalError instead. Patch by
+    @jbrockmendel (gh pr #891).
+  * Changed error message raised when when passing a bytes object as
+    the time zone name to gettz in Python 3. Reported and fixed by
+    @labrys () (gh issue #927, gh pr #935).
+  * Changed compatibility logic to support a potential Python 4.0
+    release. Patch by Hugo van Kemenade (gh pr #950).
+  * Updated many modules to use tz.UTC in favor of tz.tzutc()
+    internally, to avoid an unnecessary function call. (gh pr #910).
+  * Fixed issue where dateutil.tz was using a backported version of
+    contextlib.nullcontext even in Python 3.7 due to a malformed
+    import statement. (gh pr #963).</comment>
+    <requestid>765162</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c171083e5e7bb12823e0920f79aa5ac5</srcmd5>
+    <version>2.8.2</version>
+    <time>1627492765</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.8.2:
+  - Updated tzdata version to 2021a. (gh pr #1128)
+  - Fixed a bug in the parser where non-``ValueError`` exceptions would be raised
+  during exception handling; this would happen, for example, if an
+  ``IllegalMonthError`` was raised in ``dateutil`` code. Fixed by Mark Bailey.
+  (gh issue #981, pr #987).
+  - Fixed the custom ``repr`` for ``dateutil.parser.ParserError``, which was not
+  defined due to an indentation error. (gh issue #991, gh pr #993)
+  - Fixed a bug that caused ``b'`` prefixes to appear in parse_isodate exception
+  messages. Reported and fixed by Paul Brown (@pawl) (gh pr #1122)
+  - Make ``isoparse`` raise when trying to parse times with inconsistent use of
+  `:` separator. Reported and fixed by @mariocj89 (gh pr #1125).
+  - Fixed ``tz.gettz()`` not returning local time when passed an empty string.
+  Reported by @labrys (gh issues #925, #926). Fixed by @ffe4 (gh pr #1024)
+  * Documentation changes
+  * Simplified handling of bytes and bytearray in ``_parser._timelex``.</comment>
+    <requestid>908463</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>3be1c7874685b76b4aa95860a3879073</srcmd5>
+    <version>2.8.2</version>
+    <time>1682193465</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081587</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>043fb35ae6bfc20346031d3cef369da9</srcmd5>
+    <version>2.8.2</version>
+    <time>1695412002</time>
+    <user>anag+factory</user>
+    <comment>- Add patch no-utcfromtimestamp.patch, stop using a deprecated function.
+- Switch to pyproject and autosetup macros.
+- Stop using greedy globs in %files.</comment>
+    <requestid>1111822</requestid>
+  </revision>
+</revisionlist>

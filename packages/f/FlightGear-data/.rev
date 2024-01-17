@@ -1,0 +1,251 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b0559d8e4143ad55010fae3801102648</srcmd5>
+    <version>2016.2.1</version>
+    <time>1485511055</time>
+    <user>dimstar_suse</user>
+    <comment>Resubmit after sources were changed.
+Required for FlightGear</comment>
+    <requestid>421182</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>905de38fb359a62e47caa3917f68799e</srcmd5>
+    <version>2016.4.4</version>
+    <time>1485682799</time>
+    <user>dimstar_suse</user>
+    <comment>Update and splitted docs</comment>
+    <requestid>452939</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e4ee1f7efbe3a03870f1c8aadace05f8</srcmd5>
+    <version>2017.1.2</version>
+    <time>1490707360</time>
+    <user>maxlin_factory</user>
+    <comment>Update</comment>
+    <requestid>482375</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>e7560261215ad219bbbfad65645281cf</srcmd5>
+    <version>2017.1.2</version>
+    <time>1498202273</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>505349</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6ea3946d89ed914d86e6dc59e7abb443</srcmd5>
+    <version>2017.3.1</version>
+    <time>1507197540</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530937</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>89471a2efdcf1a3b917edf2160221129</srcmd5>
+    <version>2018.2.2</version>
+    <time>1534321999</time>
+    <user>dimstar_suse</user>
+    <comment>- Minor spec file cleanup.
+- Update to 2018.2.2
+  * Cessna 550 Citation II - detailed modelling of avionics,
+    improved MP model display, improved flaps modeling
+  * Cessna Citation X - avionics improvements,
+    improved MP model display
+  * North American P-51 Mustang
+  * Piper J3 Cub - improvements to water behaviour
+  * Saab 37 Viggen - Autopilot, HUD and TI improvements
+  * Cessna 172P - FDM, 3D Model, Sound improvements
+  * FG1000 glass panel display, based on the Garmin G1000
+- Update to 2018.2.1
+  * Active Volcanos, including Kilauea, Stromboli, Etna,
+  * New Hawaii regional texture definitions
+  * Several scenic waterfalls in the Hawaii area
+  * New and unique vegetation textures for several
+    parts of the world
+  * New 3D Objects: Buildings and structures in France,
+    Portugal, Spain, UK, USA, Australia and Ukraine
+  * Improved airports: Valle del Conlara Airport (SAOS) in
+    Argentina, RAF Mount Pleasant (EGYP) in Falkland Islands UK,
+    Bordeaux–Mérignac Airport (LFBD) in France and
+    King Abdulaziz International Airport (OEJN) in Saudi Arabia.
+  * A new glider: Rolladen-Schneider LS4
+  * Space Shuttle improvements
+  * Cessna 182S
+  * Amelia - an animated and hard-working co-pilot for the
+    Alouette III capable of taking off and landing
+  * Citation II
+  * F-14 - various changes including improved carrier operations
+  * Robinson R44 helicopter
+  * Major DHC-6 Twin Otter update: JSBSim variant added
+    (status: experimental), more realistic fuel system in JSBSim,
+    significantly more detailed simulation of the electrical
+    system including various DC and AC buses, circuit breakers
+    and bus tie relay.
+- Spec file cleanup/fixes:
+  * Skip generation of documentation, everything is pregenerated
+  * Drop no longer required tex dependencies
+- Remove unnecessary files:
+  * Unbundle fonts (liberation-fonts)
+  * Obsoletes textures (Textures/Unused/)
+  * Texture sources in GIMP format (*.xcf.gz)
+</comment>
+    <requestid>628786</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>fb1fc551a6118e4e972c88892e653de5</srcmd5>
+    <version>2018.3.1</version>
+    <time>1546946673</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>659952</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>889f2512c70ac2ffc42df5ae54255638</srcmd5>
+    <version>2018.3.1</version>
+    <time>1547130070</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>663713</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9f9f5eb0c46d699e57451351c458bd1f</srcmd5>
+    <version>2018.3.2</version>
+    <time>1550573894</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>676808</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1a2f307267bd8c8b8b1ae02668d3ff76</srcmd5>
+    <version>2018.3.4</version>
+    <time>1566464183</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725118</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b7c35b111b24b68ecdaa685212ac3a3c</srcmd5>
+    <version>2020.1.1</version>
+    <time>1591879778</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2020.1.1, for details see
+  https://www.flightgear.org/news/flightgear-2020-1-released/
+- Update to 2018.3.5, no changelog provided
+- Remove some more sources from data package
+- Recompress PNG files with optipng
+</comment>
+    <requestid>805268</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>1b5c6b9ad2c91191f281e415c4a1787b</srcmd5>
+    <version>2020.1.2</version>
+    <time>1592152255</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>814211</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e2c8fb1c665797789b09eb633937d62c</srcmd5>
+    <version>2020.1.3</version>
+    <time>1593547006</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817776</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>dac54cb86b28e7d2eadde4ae547f3dcd</srcmd5>
+    <version>2020.3.1</version>
+    <time>1604054870</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844706</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>155005436011cfafa6358b7e090f14c1</srcmd5>
+    <version>2020.3.2</version>
+    <time>1605217581</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>847981</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>d1d9810f676189cd6fd8d970784e56ec</srcmd5>
+    <version>2020.3.4</version>
+    <time>1607801436</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>854913</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>62c2c958b5051c040b81b8a3473a16da</srcmd5>
+    <version>2020.3.5</version>
+    <time>1610558429</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>862567</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>6751b83c0e0e82cf8f6913a7012c7b6c</srcmd5>
+    <version>2020.3.6</version>
+    <time>1614684593</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>867769</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>d3e69e7d55f7a8d690bcb19aa5fd63d5</srcmd5>
+    <version>2020.3.8</version>
+    <time>1617910007</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>883338</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>f2c1c44a06a616c62a1264b7aab6719f</srcmd5>
+    <version>2020.3.9</version>
+    <time>1624136607</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>900752</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>a9ab18b99a262e07558439a64139fafe</srcmd5>
+    <version>2020.3.11</version>
+    <time>1630093419</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>914451</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>2bd473cbb3911ca605ee0b04d74feaa4</srcmd5>
+    <version>2020.3.12</version>
+    <time>1644099798</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>951747</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>32a1548162aaca7aed5ddf6eaea3d6a6</srcmd5>
+    <version>2020.3.13</version>
+    <time>1649876724</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>969806</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>fe01ed26fcfe2fe9276041fdd99eb458</srcmd5>
+    <version>2020.3.17</version>
+    <time>1669289070</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1037757</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>f3aaf8fdf94176c43a1f9203a0f8e08d</srcmd5>
+    <version>2020.3.18</version>
+    <time>1680209505</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1075537</requestid>
+  </revision>
+</revisionlist>

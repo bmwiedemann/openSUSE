@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Mon Mar  7 08:45:07 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Change Conflicts: pythomn3-cl to python3dist(cl): we need to
+  conflict with all python-variants of cl, as they all provide
+  /usr/bin/cl.
+
+-------------------------------------------------------------------
+Sun Sep 20 21:54:36 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Initial package (version 1.22) for build.opensuse.org

@@ -1,0 +1,8 @@
+<package name="openldap2" project="openSUSE:Factory">
+  <title>The OpenLDAP commandline client tools</title>
+  <description>The Lightweight Directory Access Protocol (LDAP) is used to access
+online directory services. It runs directly over TCP and can be used to
+access a stand-alone LDAP directory service or to access a directory
+service that has an X.500 back-end.</description>
+  <devel project="network:ldap" package="openldap2"/>
+</package>

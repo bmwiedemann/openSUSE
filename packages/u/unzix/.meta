@@ -1,0 +1,9 @@
+<package name="unzix" project="openSUSE:Factory">
+  <title>Command-Line Program to Extract WinZix Archives</title>
+  <description>Unzix is a small command-line program for extracting files from the new WinZix
+archive format.
+
+</description>
+  <devel project="Archiving" package="unzix"/>
+  <url>http://banu.com/unzix/</url>
+</package>

@@ -1,0 +1,8 @@
+<package name="libedit" project="openSUSE:Factory">
+  <title>Command Line Editing and History Library</title>
+  <description>libedit is a command line editing and history library. It is designed
+to be used by interactive programs that allow the user to type commands
+at a terminal prompt.
+</description>
+  <devel project="devel:libraries:c_c++" package="libedit"/>
+</package>

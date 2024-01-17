@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fa5c3be1ef83939eccf18e7a7002214c</srcmd5>
+    <version>0.4.5</version>
+    <time>1671635196</time>
+    <user>dimstar_suse</user>
+    <comment>REquired by the current version of vdirsyncer.</comment>
+    <requestid>1043982</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b9a1b9ae381bcd1ccaf5bb0e4f9ff3e8</srcmd5>
+    <version>0.5.2</version>
+    <time>1702673408</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.5.2:
+  * Properly expose pipe methods in `aiostream.pipe` (PR #88,
+    issue #87)
+- update to 0.5.1:
+  * Expose `pipable_operator` at package level (46ddb24)
+  * Modernize examples (a704e9a)
+- update to 0.5.0:
+  * Drop python 3.7 support
+  * Add type annotations (issue #36, PR #84)
+  * Add task_limit argument to action operator (issue #85, PR
+    #86)</comment>
+    <requestid>1133408</requestid>
+  </revision>
+</revisionlist>

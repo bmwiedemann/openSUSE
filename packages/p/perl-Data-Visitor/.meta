@@ -1,0 +1,17 @@
+<package name="perl-Data-Visitor" project="openSUSE:Factory">
+  <title>Visitor style traversal of Perl data structures</title>
+  <description>This module is a simple visitor implementation for Perl values.
+
+It has a main dispatcher method, 'visit', which takes a single perl value
+and then calls the methods appropriate for that value.
+
+It can recursively map (cloning as necessary) or just traverse most
+structures, with support for per object behavior, circular structures,
+visiting tied structures, and all ref types (hashes, arrays, scalars, code,
+globs).
+
+the Data::Visitor manpage is meant to be subclassed, but also ships with a
+callback driven subclass, the Data::Visitor::Callback manpage.</description>
+  <devel project="devel:languages:perl" package="perl-Data-Visitor"/>
+  <url>http://search.cpan.org/dist/Data-Visitor/</url>
+</package>

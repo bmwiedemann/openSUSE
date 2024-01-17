@@ -1,0 +1,69 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="exclude">.github</param>
+    <param name="exclude">CODE_OF_CONDUCT.md</param>
+    <param name="exclude">CONTRIBUTING.md</param>
+    <param name="exclude">Makefile</param>
+    <param name="exclude">NOTICE</param>
+    <param name="exclude">SOURCES</param>
+    <param name="exclude">SPECS</param>
+    <param name="exclude">about.hbs</param>
+    <param name="exclude">about.toml</param>
+    <param name="exclude">appspec.yml</param>
+    <param name="exclude">bootstrap/env.sh</param>
+    <param name="exclude">blobs/aarch64/bzImage.config</param>
+    <param name="exclude">blobs/aarch64/cmdline</param>
+    <param name="exclude">blobs/aarch64/init</param>
+    <param name="exclude">blobs/x86_64/bzImage.config</param>
+    <param name="exclude">blobs/x86_64/cmdline</param>
+    <param name="exclude">blobs/x86_64/init</param>
+    <param name="exclude">buildspec.yml</param>
+    <param name="exclude">ci_entrypoint.sh</param>
+    <param name="exclude">docs/centos_stream_8_how_to_install_nitro_cli_from_github_sources.md</param>
+    <param name="exclude">docs/ci_pipeline.md</param>
+    <param name="exclude">docs/fedora_34_how_to_install_nitro_cli_from_github_sources.md</param>
+    <param name="exclude">docs/rhel_8.4_how_to_install_nitro_cli_from_github_sources.md</param>
+    <param name="exclude">docs/ubuntu_20.04_how_to_install_nitro_cli_from_github_sources.md</param>
+    <param name="exclude">drivers/virt</param>
+    <param name="exclude">examples</param>
+    <param name="exclude">install.sh</param>
+    <param name="exclude">run-nitro-cli-integration-tests</param>
+    <param name="exclude">run_tests.sh</param>
+    <param name="exclude">samples</param>
+    <param name="exclude">sources</param>
+    <param name="exclude">tests</param>
+    <param name="exclude">third_party/linuxkit/README.md</param>
+    <param name="exclude">tools</param>
+    <param name="exclude">vendor</param>
+    <param name="filename">aws-nitro-enclaves-cli</param>
+    <param name="match-tag">*</param>
+    <param name="revision">4ccc639acfd35a24a4c8ea7c4179e0d1068eef76</param>
+    <param name="scm">git</param>
+    <param name="submodules">disable</param>
+    <param name="url">https://github.com/aws/aws-nitro-enclaves-cli.git</param>
+    <param name="versionformat">@PARENT_TAG@~git@TAG_OFFSET@.%h</param>
+    <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
+    <param name="versionrewrite-replacement">\1</param>
+  </service>
+  <service name="tar_scm" mode="disabled">
+    <param name="exclude">Makefile</param>
+    <param name="filename">aws-nitro-enclaves-sdk-bootstrap</param>
+    <param name="subdir">init</param>
+    <param name="revision">746ec5d2713e539b94e651601b5c24ec1247c955</param>
+    <param name="scm">git</param>
+    <param name="submodules">disable</param>
+    <param name="url">https://github.com/aws/aws-nitro-enclaves-sdk-bootstrap.git</param>
+    <param name="versionformat">%H</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="disabled">
+    <param name="basename">aws-nitro-enclaves-cli</param>
+  </service>
+  <service name="cargo_vendor" mode="disabled">
+     <param name="srcdir">aws-nitro-enclaves-cli</param>
+     <param name="compression">xz</param>
+  </service>
+</services>

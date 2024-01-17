@@ -1,0 +1,8 @@
+<package name="ctris" project="openSUSE:Factory">
+  <title>Console based tetris clone</title>
+  <description>ctris is a colorized, small and flexible Tetris(TM)-clone for the console. Go play!
+
+</description>
+  <devel project="games" package="ctris"/>
+  <url>http://www.hackl.dhs.org/ctris/</url>
+</package>

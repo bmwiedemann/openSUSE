@@ -1,0 +1,88 @@
+-------------------------------------------------------------------
+Sat Sep 30 13:17:42 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update kan-extensions to version 5.2.5 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Thu Mar 30 17:07:21 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Sun Mar 12 19:30:24 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update kan-extensions to version 5.2.5 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Sun Jun 26 21:16:24 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update kan-extensions to version 5.2.5.
+  5.2.5 [2022.06.26]
+  ------------------
+  * Only require a `Functor` constraint in the `Eq` and `Ord` instances for
+    `Coyoneda` when building against `transformers-0.4.*`.
+
+-------------------------------------------------------------------
+Sat May  7 23:33:49 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update kan-extensions to version 5.2.4.
+  5.2.4 [2022.05.07]
+  ------------------
+  * Allow building with `transformers-0.6.*` and `mtl-2.3.*`.
+
+-------------------------------------------------------------------
+Wed Jul 28 07:43:21 UTC 2021 - psimons@suse.com
+
+- Update kan-extensions to version 5.2.3.
+  5.2.3 [2021.07.27]
+  ------------------
+  * Add `shift` and `reset` to `Control.Monad.Codensity`.
+
+-------------------------------------------------------------------
+Tue Jul 27 07:51:52 UTC 2021 - psimons@suse.com
+
+- Update kan-extensions to version 5.2.2 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Sat Feb 20 00:07:52 UTC 2021 - psimons@suse.com
+
+- Update kan-extensions to version 5.2.2.
+  5.2.2 [2021.02.17]
+  ------------------
+  * Add `hoistCoyoneda` to `Data.Functor.Contravariant.Coyoneda`.
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Tue Oct  6 08:56:17 UTC 2020 - psimons@suse.com
+
+- Update kan-extensions to version 5.2.1.
+  5.2.1 [2020.10.01]
+  ------------------
+  * Allow building with GHC 9.0.
+
+-------------------------------------------------------------------
+Tue Aug 18 10:45:17 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Tue Jun 16 11:14:19 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Re-generate file with latest version of spec-cleaner.
+
+-------------------------------------------------------------------
+Fri Nov  8 16:14:07 UTC 2019 - Peter Simons <psimons@suse.com>
+
+- Drop obsolete group attributes.
+
+-------------------------------------------------------------------
+Thu Aug  2 16:30:04 UTC 2018 - psimons@suse.com
+
+- Add kan-extensions at version 5.2.

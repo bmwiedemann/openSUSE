@@ -1,0 +1,178 @@
+-------------------------------------------------------------------
+Tue Nov  7 01:04:01 UTC 2023 - Mia Herkt <mia@0x0.st>
+
+- Update to 2.6.2 (no user-facing changes)
+
+-------------------------------------------------------------------
+Sun Jun 11 08:18:48 UTC 2023 - Mia Herkt <mia@0x0.st>
+
+- Fix build: Add libcurl dependency
+
+-------------------------------------------------------------------
+Fri Mar 17 22:09:28 UTC 2023 - Mia Herkt <mia@0x0.st>
+
+- Update to 2.6.0
+  * _pix_to_image now works with binary images
+    gh#sirfz/tesserocr#274
+  * SetImage with alpha channels support
+    gh#sirfz/tesserocr#280
+  * Leptonica 1.83.0 support
+    gh#sirfz/tesserocr#306
+  * Pointsize should be returned even if fontname doesn't exist
+    gh#sirfz/tesserocr#308
+  * Added Python 3.10, 3.11 setup classifiers
+- Drop 1441bec703cf68161acce5e85907ddd71c47fdc3.patch
+
+-------------------------------------------------------------------
+Mon Feb 27 10:22:49 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Disable current broken tests, test_LSTM_choices, test_detect_os and
+  or test_init, gh#sirfz/tesserocr#295
+
+-------------------------------------------------------------------
+Sat Jan 14 21:46:21 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Apply 1441bec703cf68161acce5e85907ddd71c47fdc3.patch from upstream
+  project in order to build with Leptonica 1.83.0
+- Make tests work again
+
+-------------------------------------------------------------------
+Fri Nov 11 13:26:52 UTC 2022 - pgajdos@suse.com
+
+- silent rpmlint
+
+-------------------------------------------------------------------
+Fri Nov 11 11:29:53 UTC 2022 - pgajdos@suse.com
+
+- python-six is not required
+
+-------------------------------------------------------------------
+Wed Jun 23 17:43:23 UTC 2021 - Mia Herkt <mia@0x0.st>
+
+- Update to 2.5.2
+  * Support new Tesseract 5 API (gh#sirfz/tesserocr#242)
+  * GetBestLSTMSymbolChoices crash fix (gh#sirfz/tesserocr#241)
+  * Fallback to BMP instead of PNG
+  * Create pix from a BMP image bytes (gh#sirfz/tesserocr#156)
+
+-------------------------------------------------------------------
+Thu Mar 26 10:39:41 UTC 2020 - pgajdos@suse.com
+
+- version update to 2.5.1
+  * Fix order of linker arguments (#211)
+  * Fix memory leaks in GetComponentImages (#213)
+
+-------------------------------------------------------------------
+Mon Jan 13 17:25:21 UTC 2020 - pgajdos@suse.com
+
+- disable test_LSTM_choices temporarily
+  https://github.com/sirfz/tesserocr/issues/214
+
+-------------------------------------------------------------------
+Tue Nov 26 00:49:44 UTC 2019 - Martin Herkt <9+suse@cirno.systems>
+
+- Update to version 2.5.0
+  * Support for RowAttributes method in LTRResultIterator
+  * SetImage: use PNG instead of JPEG fallback
+  * Replace STRING::string() by c_str()
+  * Don't use assignment operator for TessBaseAPI
+
+-------------------------------------------------------------------
+Fri Aug 23 18:14:51 UTC 2019 - Martin Herkt <9+suse@cirno.systems>
+
+- Update to version 2.4.1
+  * fix pixa_to_list python3 segfault
+  * fix BlockPolygon python3 segfault
+
+-------------------------------------------------------------------
+Thu Dec  6 12:42:12 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim bias and filler wording.
+
+-------------------------------------------------------------------
+Wed Dec  5 23:35:00 UTC 2018 - Martin Herkt <9+suse@cirno.systems>
+
+- Update to version 2.4.0
+  Tesseract v4 new API methods supported:
+
+  * GetBestLSTMSymbolChoices
+  * BlanWksBeforeWord
+
+-------------------------------------------------------------------
+Mon Aug 13 18:20:26 UTC 2018 - 9+suse@cirno.systems
+
+- Update to version 2.3.1
+  * Python 3.7 support release
+
+-------------------------------------------------------------------
+Thu Aug  2 09:40:45 UTC 2018 - tchvatal@suse.com
+
+- Ensure we require some of the tesseract data so we can do at
+  least some basic ocr operations
+
+-------------------------------------------------------------------
+Thu Aug  2 08:59:20 UTC 2018 - tchvatal@suse.com
+
+- Drop unused bcond
+
+-------------------------------------------------------------------
+Tue Jun 26 16:07:43 UTC 2018 - 9+suse@cirno.systems
+
+- Run tests
+- Use %license macro
+- Update to version 2.3.0
+  * Support for Tesseract 4
+    + New OCR engines LSTM_ONLY and TESSERACT_LSTM_COMBINED
+    + New default tessdata path handling
+  * Fixed compilation against Tesseract v3.05.02 which required
+    c++11
+  * Fallback to 'eng' as default language when default language
+    returned by the API is empty
+
+-------------------------------------------------------------------
+Fri Aug 11 12:01:33 UTC 2017 - 9@cirno.systems
+
+- Add doc files
+
+-------------------------------------------------------------------
+Sun Aug  6 10:37:03 UTC 2017 - 9@cirno.systems
+
+- Switch to PyPI source URL
+- Add Pillow (PIL) to Recommends
+
+-------------------------------------------------------------------
+Wed Jul 26 19:42:30 UTC 2017 - 9@cirno.systems
+
+- v2.2.2
+  * Support timeout in Recognize API methods
+  * Fixed typo in _Enum initialization error message formatting
+  * Display tessdata path in init exception message
+  * Fixed version check in Python 3 when reading the version number
+    from the tesseract executable
+
+-------------------------------------------------------------------
+Thu Jun  1 18:06:25 UTC 2017 - 9@cirno.systems
+
+v2.2.1
+* Fixed setup bug that affects gcc versions with no -std=c++11 option support
+  (which should be required by tesseract 4.0+ and not older versions). 
+
+-------------------------------------------------------------------
+Sun May 28 15:39:24 UTC 2017 - 9@cirno.systems
+
+v2.2.0
+
+* Improved setup script
+* Tesseract 4.0 support:
+  - Two new OEM enums: OEM.LSTM_ONLY and OEM.TESSERACT_LSTM_COMBINED (tesseract 4.0+)
+  - Two new API methods: GetTSVText and DetectOrientationScript (tesseract 4.0+)
+  - PyTessBaseApi.__init__ now accepts a new attribute oem (OCR engine mode: OEM.DEFAULT by default).
+  - file_to_text and image_to_text functions now also accept the oem attribute as above.
+* Fixed segfault on API Init* failure
+* Fixed segfault when pixa_to_list returns NULL
+* Documentation fixes and other minor improvments 
+
+-------------------------------------------------------------------
+Sat Apr  1 03:18:38 UTC 2017 - 9@cirno.systems
+
+- Initial commit

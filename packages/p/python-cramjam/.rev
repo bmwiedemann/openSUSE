@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>35a9acbac1258d4acbb75c7e801a5c4c</srcmd5>
+    <version>2.3.1</version>
+    <time>1621439369</time>
+    <user>dimstar_suse</user>
+    <comment>new requirement for spyder 5.0.3</comment>
+    <requestid>894254</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7f70594fa839855a3b7928c80b931361</srcmd5>
+    <version>2.3.2</version>
+    <time>1626788370</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>907191</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>c776183aa671e1a9658545e14b00980c</srcmd5>
+    <version>2.3.2</version>
+    <time>1632849397</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>921916</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a212acc2cb59ca50c4afc3e39874217b</srcmd5>
+    <version>2.6.1</version>
+    <time>1667067451</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032178</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>cef78919ae84fe4bea17a4346a1250dc</srcmd5>
+    <version>2.6.2</version>
+    <time>1673888354</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1058591</requestid>
+  </revision>
+</revisionlist>

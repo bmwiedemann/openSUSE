@@ -1,0 +1,407 @@
+-------------------------------------------------------------------
+Wed Oct  4 04:17:53 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.3.0
+  * Reduce memory usage in numerous places
+  * ABI break in Dav1dSequenceHeader, Dav1dFrameHeader,
+    Dav1dContentLightLevel structures
+  * new API function to check the API version:
+    dav1d_version_api()
+  * Rewrite of the SGR functions for ARM64 to be faster
+  * NEON implemetation of save_tmvs for ARM32 and ARM64
+  * x86 palette DSP for pal_idx_finish function
+- Bump soversion to 7
+
+-------------------------------------------------------------------
+Thu Jun  1 14:49:36 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.2.1
+  * Fix a threading race on task_thread.init_done
+  * NEON z2 8bpc and high bit-depth optimizations
+  * SSSE3 z2 high bit-depth optimziations
+  * Fix a desynced luma/chroma planes issue with Film Grain
+  * Reduce memory consumption
+  * Improve dav1d_parse_sequence_header() speed
+  * OBU: Improve header parsing and fix potential overflows
+  * OBU: Improve ITU-T T.35 parsing speed
+  * Misc buildsystems, CI and headers fixes
+
+-------------------------------------------------------------------
+Wed May 31 21:02:21 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Add to description some performance mentions that set it apart
+  from other packages e.g. gav1.
+
+-------------------------------------------------------------------
+Fri May  5 10:32:00 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Use ldconfig_scriptlets macro, minor spec clean-up.
+
+-------------------------------------------------------------------
+Wed May  3 06:27:24 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.2.0
+  * Improvements on attachments of props and T.35 entries on
+    output pictures
+  * NEON z1/z3 high bit-depth optimizations and improvements for
+    8bpc
+  * SSSE3 z2/z3 8bpc and SSSE3 z1/z3 high bit-depth optimziations
+  * refmvs.save_tmvs optimizations in SSSE3/AVX2/AVX-512
+  * AVX-512 optimizations for high bit-depth itx (16x64, 32x64,
+    64x16, 64x32, 64x64)
+  * AVX2 optimizations for 12bpc for 16x32, 32x16, 32x32 itx
+
+-------------------------------------------------------------------
+Tue Mar  7 19:40:24 UTC 2023 - Michael Gorse <mgorse@suse.com>
+
+- Revert last change. This is now handled in xxhash.
+
+-------------------------------------------------------------------
+Wed Mar  1 16:22:14 UTC 2023 - Michael Gorse <mgorse@suse.com>
+
+- Require gcc9 on SLE. Otherwise defaults to gcc7 and fails to
+  build on ppc64le (boo#1208794).
+
+-------------------------------------------------------------------
+Tue Feb 14 21:26:23 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.1.0
+  * New function dav1d_get_frame_delay to query the decoder 
+    frame delay
+  * Numerous fixes for strict conformity to the specs and samples
+  * NEON and AVX-512 misc fixes and improvements
+  * Partial AVX2 12bpc transform implementations
+  * AVX-512 high bit-depth cdef_filter, loopfilter, itx
+  * NEON z1/z3 optimization for 8bpc
+  * SSSE3 z1 optimization for 8bpc
+
+-------------------------------------------------------------------
+Thu Oct 13 06:52:06 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop _lto_cflags define, current version supports lto build.
+- Drop unneeded rpm BuildRequires.
+- Add pkgconfig(libxxhash) BuildRequires and stop passing
+  xhash_muxer=disabled to meson, build hash_muxer support.
+- Add check section and meson_test macro, run tests during build.
+
+-------------------------------------------------------------------
+Fri Mar 18 16:02:49 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.0.0
+  * Automatic thread management.
+  * Add support for AVX-512 acceleration.
+  * x86 code speedup (from SSE2 to AVX2).
+  * New grain API to ease acceleration on the GPU.
+  * New API call to get information of which frame failed to
+    decode, in error cases.
+  * Numerous small bug fixes.
+- Bump soversion to 6
+
+-------------------------------------------------------------------
+Fri Sep  3 17:07:36 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.9.2
+  * x86: SSE4 optimizations of inverse transforms for 10bit for
+    all sizes
+  * x86: mc.resize optimizations with AVX2/SSSE3 for 10/12b
+  * x86: SSSE3 optimizations for cdef_filter in 10/12b and
+    mc_w_mask_422/444 in 8b
+  * ARM NEON optimizations for FilmGrain Gen_grain functions
+  * Optimizations for splat_mv in SSE2/AVX2 and NEON
+  * x86: SGR improvements for SSSE3 CPUs
+  * x86: AVX2 optimizations for cfl_ac
+
+-------------------------------------------------------------------
+Thu Jul 29 09:28:47 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.9.1
+  * 10/12b SSSE3 optimizations for mc (avg, w_avg, mask, w_mask,
+    emu_edge), prep/put_bilin, prep/put_8tap, ipred (dc/h/v,
+    paeth, smooth, pal, filter), wiener, sgr (10b), warp8x8,
+    deblock, film_grain, cfl_ac/pred for 32bit and 64bit x86
+    processors
+  * Film grain NEON for fguv 10/12b, fgy/fguv 8b and fgy/fguv
+    10/12 arm32
+  * Fixes for filmgrain on ARM
+  * itx 10bit optimizations for 4x4/x8/x16, 8x4/x8/x16 for SSE4
+  * Misc improvements on SSE2, SSE4
+
+-------------------------------------------------------------------
+Sun May 16 17:12:52 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.9.0
+  * x86 (64bit) AVX2 implementation of most 10b/12b functions,
+    which should provide a large boost for high-bitdepth
+    decoding on modern x86 computers and servers.
+  * ARM64 neon implementation of FilmGrain (4:2:0/4:2:2/4:4:4 8bit)
+  * New API to signal events happening during the decoding process
+
+-------------------------------------------------------------------
+Wed Mar 24 18:36:28 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Disable LTO (fix boo#1183956)
+
+-------------------------------------------------------------------
+Mon Feb 22 08:06:22 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.8.2
+  * ARM32 optimizations for ipred and itx in 10/12bits,
+    completing the 10b/12b work on ARM64 and ARM32
+  * Give the post-filters their own threads
+  * ARM64: rewrite the wiener functions
+  * Speed up coefficient decoding, 0.5%-3% global decoding gain
+  * x86 optimizations for CDEF_filter and wiener in 10/12bit
+  * x86: rewrite the SGR AVX2 asm
+  * x86: improve msac speed on SSE2+ machines
+  * ARM32: improve speed of ipred and warp
+  * ARM64: improve speed of ipred, cdef_dir, cdef_filter,
+    warp_motion and itx16
+  * ARM32/64: improve speed of looprestoration
+  * Add seeking, pausing to the player
+  * Update the player for rendering of 10b/12b
+  * Misc speed improvements and fixes on all platforms
+  * Add a xxh3 muxer in the dav1d application
+
+-------------------------------------------------------------------
+Sat Jan  2 18:33:17 UTC 2021 - aloisio@gmx.com
+
+- Update to version 0.8.1
+  * Keep references to buffers valid after dav1d_close().
+    Fixes a regression caused by the picture buffer pool added
+    in 0.8.0.
+  * ARM32 optimizations for 10bit bitdepth for SGR
+  * ARM32 optimizations for 16bit bitdepth for
+    blend/w_masl/emu_edge
+  * ARM64 optimizations for 10bit bitdepth for SGR
+  * x86 optimizations for wiener in SSE2/SSSE3/AVX2
+
+-------------------------------------------------------------------
+Tue Nov 24 10:03:21 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+ - Update to version 0.8.0
+  * Improve the performance by using a picture buffer pool;
+  * ARM32 optimizations for 8bit bitdepth for ipred paeth,
+    smooth, cfl
+  * ARM32 optimizations for 10/12/16bit bitdepth for
+    mc_avg/mask/w_avg,
+    put/prep 8tap/bilin, wiener and CDEF filters
+  * ARM64 optimizations for cfl_ac 444 for all bitdepths
+  * x86 optimizations for MC 8-tap, mc_scaled in AVX2
+  * x86 optimizations for CDEF in SSE and
+    {put/prep}_{8tap/bilin} in SSSE3
+- Bump soversion to 5
+- Drop dav1d-nasm-2.15.patch (merged upstream)
+
+-------------------------------------------------------------------
+Tue Sep  1 11:11:55 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add dav1d-nasm-2.15.patch: Fix compilation with nasm 2.15.
+
+-------------------------------------------------------------------
+Mon Jun 22 08:13:31 UTC 2020 - aloisio@gmx.com
+
+- Update to version 0.7.1
+  * ARM32 NEON optimizations for itxfm, which can give up to 28%
+    speedup, and MSAC
+  * SSE2 optimizations for prep_bilin and prep_8tap
+  * AVX2 optimizations for MC scaled
+  * Fix a clamping issue in motion vector projection
+  * Fix an issue on some specific Haswell CPU on ipred_z AVX2
+    functions
+  * Improvements on the dav1dplay utility player to support
+    resizing
+
+-------------------------------------------------------------------
+Wed May 20 16:50:41 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to verison 0.7.0
+  * Faster refmv implementation gaining up to 12% speed while
+    -25% of RAM (Single Thread)
+  * 10b/12b ARM64 optimizations are mostly complete:
+    + ipred (paeth, smooth, dc, pal, filter, cfl)
+    + itxfm (only 10b)
+  * AVX2/SSSE3 for non-4:2:0 film grain and for mc.resize
+  * AVX2 for cfl4:4:4
+  * AVX-512 CDEF filter
+  * ARM64 8b improvements for cfl_ac and itxfm
+  * ARM64 implementation for emu_edge in 8b/10b/12b
+  * ARM32 implementation for emu_edge in 8b
+  * Improvements on the dav1dplay utility player to support 10
+    bit, non-4:2:0 pixel formats and film grain on the GPU
+
+-------------------------------------------------------------------
+Fri Mar  6 07:20:04 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.6.0
+  * New ARM64 optimizations for the 10/12bit depth:
+    + mc_avg, mc_w_avg, mc_mask
+    + mc_put/mc_prep 8tap/bilin
+    + mc_warp_8x8
+    + mc_w_mask
+    + mc_blend
+    + wiener
+    + SGR
+    + loopfilter
+    + cdef
+  * New AVX-512 optimizations for prep_bilin, prep_8tap,
+    cdef_filter, mc_avg/w_avg/mask
+  * New SSSE3 optimizations for film grain
+  * New AVX2 optimizations for msac_adapt16
+  * Fix rare mismatches against the reference decoder, notably
+    because of clipping
+  * Improvements on ARM64 on msac, cdef and looprestoration
+    optimizations
+  * Improvements on AVX2 optimizations for cdef_filter
+  * Improvements in the C version for itxfm, cdef_filter
+
+- Bump sover to 4
+
+-------------------------------------------------------------------
+Wed Dec  4 19:03:37 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.5.2
+  * ARM32 optimizations for loopfilter, ipred_dc|h|v
+  * Add section-5 raw OBU demuxer
+  * Improve the speed by reducing the L2 cache collisions
+  * Fix minor issues
+
+-------------------------------------------------------------------
+Sat Oct 26 05:39:14 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.5.1
+  * SSE2 optimizations for CDEF, wiener and warp_affine
+  * NEON optimizations for SGR on ARM32
+  * Fix mismatch issue in x86 asm in inverse identity transforms
+  * Fix build issue in ARM64 assembly if debug info was enabled
+  * Add a workaround for Xcode 11 -fstack-check bug
+
+- Dropped arm64_ipred_symbols_aligned.patch (merged upstream)
+
+-------------------------------------------------------------------
+Fri Oct 11 09:43:36 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.5.0
+  Medium release fixing regressions and minor issues, and
+  improving speed significantly:
+  * Export ITU T.35 metadata
+  * Speed improvements on blend_ on ARM
+  * Speed improvements on decode_coef and MSAC
+  * NEON optimizations for blend*, w_mask_, ipred functions for
+    ARM64
+  * NEON optimizations for CDEF and warp on ARM32
+  * SSE2 optimizations for MSAC hi_tok decoding
+  * SSSE3 optimizations for deblocking loopfilters and
+    warp_affine
+  * AVX-2 optimizations for film grain and ipred_z2
+  * SSE4 optimizations for warp_affine
+  * VSX optimizations for wiener
+  * Fix inverse transform overflows in x86 and NEON asm
+  * Fix integer overflows with large frames
+  * Improve film grain generation to match reference code
+  * Improve compatibility with older binutils for ARM
+  * More advanced Player example in tools
+
+- Bump soversion to 3
+
+- Added arm64_ipred_symbols_aligned.patch to fix aarch64
+  build
+
+-------------------------------------------------------------------
+Mon Aug  5 14:55:40 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.4.0
+  * Fix playback with unknown OBUs
+  * Add an option to limit the maximum frame size
+  * SSE2 and ARM64 optimizations for MSAC
+  * Improve speed on 32bits systems
+  * Optimization in obmc blend
+  * Reduce RAM usage significantly
+  * The initial PPC SIMD code, cdef_filter
+  * NEON optimizations for blend functions on ARM
+  * NEON optimizations for w_mask functions on ARM
+  * NEON optimizations for inverse transforms on ARM64
+  * Improve handling of malloc failures
+  * Simple Player example in tools
+
+- Dropped dav1d.armv6.patch (merged upstream)
+
+- Bumped SOVERSION to 2
+
+-------------------------------------------------------------------
+Mon May 13 19:48:51 UTC 2019 - olaf@aepfle.de
+
+- Added dav1d.armv6.patch (disables armv7 asm for armv6 builds)
+
+-------------------------------------------------------------------
+Sat May 11 16:06:40 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.3.1
+  * Fix a buffer overflow in frame-threading mode on SSSE3 CPUs
+  * Reduce binary size, notably on Windows
+  * SSSE3 optimizations for ipred_filter
+  * ARM optimizations for MSAC
+
+-------------------------------------------------------------------
+Mon Apr 29 18:07:47 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.3.0
+  * Fixes an annoying crash on SSSE3 that happened in the itx
+    functions
+
+-------------------------------------------------------------------
+Fri Apr 19 07:48:06 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.2.2
+  * Large improvement on MSAC decoding with SSE, bringing 4-6%
+    speed increase
+    The impact is important on SSSE3, SSE4 and AVX-2 cpus
+  * SSSE3 optimizations for all blocks size in itx
+  * SSSE3 optimizations for ipred_paeth and ipref_cfl (420, 422
+    and 444)
+  * Speed improvements on CDEF for SSE4 CPUs
+  * NEON optimizations for SGR and loop filter
+  * Minor crashes, improvements and build changes
+
+-------------------------------------------------------------------
+Tue Apr  2 06:43:21 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add baselibs.conf: ffmpeg, which is the main consumer of Dav1d,
+  produces -32bit packages that would be uninstallable otherwise.
+
+-------------------------------------------------------------------
+Tue Mar 12 22:23:22 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.2.1
+  * SSSE3 optimization for cdef_dir
+  * AVX-2 improvements of the existing CDEF optimizations
+  * NEON improvements of the existing CDEF and wiener
+    optimizations
+  * Clarification about the numbering/versionning scheme
+
+-------------------------------------------------------------------
+Mon Mar  4 17:31:53 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.2.0
+  * ARM64 and ARM optimizations using NEON instructions
+  * SSSE3 optimizations for both 32 and 64bits
+  * More AVX-2 assembly, reaching almost completion
+  * Fix installation of includes
+  * Rewrite inverse transforms to avoid overflows
+  * Snap packaging for Linux
+  * Updated API (ABI and API break)
+  * Fixes for un-decodable samples
+
+-------------------------------------------------------------------
+Thu Dec 13 13:21:36 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Redo description and mention SIMD acceleration.
+
+-------------------------------------------------------------------
+Thu Dec 13 11:53:50 UTC 2018 - Luigi Baldoni <aloisio@gmx.com>
+
+- Moved license file to library package
+
+-------------------------------------------------------------------
+Tue Dec 11 18:25:04 UTC 2018 - Luigi Baldoni <aloisio@gmx.com>
+
+- Initial stable package (v0.1.0)

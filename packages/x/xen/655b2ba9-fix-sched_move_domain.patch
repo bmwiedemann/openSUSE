@@ -1,0 +1,70 @@
+# Commit 4709ec82917668c2df958ef91b4f21c049c76bee
+# Date 2023-11-20 10:49:29 +0100
+# Author Juergen Gross <jgross@suse.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+xen/sched: fix sched_move_domain()
+
+When moving a domain out of a cpupool running with the credit2
+scheduler and having multiple run-queues, the following ASSERT() can
+be observed:
+
+(XEN) Xen call trace:
+(XEN)    [<ffff82d04023a700>] R credit2.c#csched2_unit_remove+0xe3/0xe7
+(XEN)    [<ffff82d040246adb>] S sched_move_domain+0x2f3/0x5b1
+(XEN)    [<ffff82d040234cf7>] S cpupool.c#cpupool_move_domain_locked+0x1d/0x3b
+(XEN)    [<ffff82d040236025>] S cpupool_move_domain+0x24/0x35
+(XEN)    [<ffff82d040206513>] S domain_kill+0xa5/0x116
+(XEN)    [<ffff82d040232b12>] S do_domctl+0xe5f/0x1951
+(XEN)    [<ffff82d0402276ba>] S timer.c#timer_lock+0x69/0x143
+(XEN)    [<ffff82d0402dc71b>] S pv_hypercall+0x44e/0x4a9
+(XEN)    [<ffff82d0402012b7>] S lstar_enter+0x137/0x140
+(XEN)
+(XEN)
+(XEN) ****************************************
+(XEN) Panic on CPU 1:
+(XEN) Assertion 'svc->rqd == c2rqd(sched_unit_master(unit))' failed at common/sched/credit2.c:1159
+(XEN) ****************************************
+
+This is happening as sched_move_domain() is setting a different cpu
+for a scheduling unit without telling the scheduler. When this unit is
+removed from the scheduler, the ASSERT() will trigger.
+
+In non-debug builds the result is usually a clobbered pointer, leading
+to another crash a short time later.
+
+Fix that by swapping the two involved actions (setting another cpu and
+removing the unit from the scheduler).
+
+Link: https://github.com/Dasharo/dasharo-issues/issues/488
+Fixes: 70fadc41635b ("xen/cpupool: support moving domain between cpupools with different granularity")
+Signed-off-by: Juergen Gross <jgross@suse.com>
+Reviewed-by: George Dunlap <george.dunlap@cloud.com>
+
+--- a/xen/common/sched/core.c
++++ b/xen/common/sched/core.c
+@@ -732,18 +732,20 @@ int sched_move_domain(struct domain *d,
+     old_domdata = d->sched_priv;
+ 
+     /*
+-     * Temporarily move all units to same processor to make locking
+-     * easier when moving the new units to the new processors.
++     * Remove all units from the old scheduler, and temporarily move them to
++     * the same processor to make locking easier when moving the new units to
++     * new processors.
+      */
+     new_p = cpumask_first(d->cpupool->cpu_valid);
+     for_each_sched_unit ( d, unit )
+     {
+-        spinlock_t *lock = unit_schedule_lock_irq(unit);
++        spinlock_t *lock;
+ 
++        sched_remove_unit(old_ops, unit);
++
++        lock = unit_schedule_lock_irq(unit);
+         sched_set_res(unit, get_sched_res(new_p));
+         spin_unlock_irq(lock);
+-
+-        sched_remove_unit(old_ops, unit);
+     }
+ 
+     old_units = d->sched_unit_list;

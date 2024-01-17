@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5f750481d35ad77b74ae9388d4f7a7a4</srcmd5>
+    <version>5.3.0.3</version>
+    <time>1619447948</time>
+    <user>dimstar_suse</user>
+    <comment>Bring Deepin Desktop Environment to openSUSE</comment>
+    <requestid>886020</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0abea29067a02330d7ce3fc4b47d0c10</srcmd5>
+    <version>5.4.14</version>
+    <time>1643666209</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 5.4.14
+  * Fix bugs
+  * Update translations</comment>
+    <requestid>950169</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>ea1731905a997efb521dde7872a90a9e</srcmd5>
+    <version>5.4.14</version>
+    <time>1644531125</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>952942</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9c4e4f033e2c2588d4ff0e6ee7bf2e50</srcmd5>
+    <version>5.5.7</version>
+    <time>1650657249</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop fix-sudo-issue.patch, merged by upstream (forwarded request 971839 from hillwood)</comment>
+    <requestid>971840</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f41e6254426b78084c76b834e82e6173</srcmd5>
+    <version>5.5.21</version>
+    <time>1662063021</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 5.5.21
+  * Fix bugs 
+- Drop polkit-qt5.patch, merged
+
+- Update version to 5.5.19
+  * Fix bugs
+  * Update translations</comment>
+    <requestid>1000253</requestid>
+  </revision>
+</revisionlist>

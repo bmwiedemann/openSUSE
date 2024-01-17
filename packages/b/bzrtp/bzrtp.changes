@@ -1,0 +1,273 @@
+-------------------------------------------------------------------
+Wed Dec 13 07:51:15 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Enable post quantum cryptography on Tumbleweed.
+
+-------------------------------------------------------------------
+Mon Aug 28 07:48:43 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.2.98 (no changelog)
+
+-------------------------------------------------------------------
+Wed Jun 28 06:37:12 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.2.73 (no changelog)
+
+-------------------------------------------------------------------
+Fri Apr  7 09:07:15 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.2.49 (no changelog)
+
+-------------------------------------------------------------------
+Wed Mar  8 07:09:02 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.2.30 (no changelog)
+- Add set_current_version.patch
+
+-------------------------------------------------------------------
+Fri Feb 17 12:51:19 UTC 2023 - Avinesh Kumar <avinesh.kumar@suse.com>
+
+- Update to version 5.2.16:
+  * Improve debug trace  
+
+-------------------------------------------------------------------
+Wed Jan 11 03:04:36 UTC 2023 - Giacomo Comes <gcomes.obs@gmail.com> - 5.2.9
+
+- Update to version 5.2.9:
+  * no changes
+
+-------------------------------------------------------------------
+Wed Jan  4 11:18:18 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.2.6:
+  * Support for GoClear/ClearACK messages
+  * KEM version and support for Hybrid PostQuantum key agreement algorithms
+
+-------------------------------------------------------------------
+Mon Oct 17 07:13:11 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.1.64 (no changelog).
+
+-------------------------------------------------------------------
+Fri Jul  8 08:00:21 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.1.45:
+  * no changelog
+
+-------------------------------------------------------------------
+Wed Jun  8 03:05:35 UTC 2022 - Giacomo Comes <gcomes.obs@gmail.com> - 5.1.32
+
+- Update to version 5.1.32:
+  * Cmake support for build from flexisip
+- revert license tag change
+
+-------------------------------------------------------------------
+Thu Mar 24 10:31:39 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.1.12:
+  * no changelog
+
+-------------------------------------------------------------------
+Tue Mar  1 15:30:21 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 5.1.3 (no changelog)
+
+-------------------------------------------------------------------
+Tue Feb  1 20:46:18 UTC 2022 - Giacomo Comes <gcomes.obs@gmail.com> - 5.0.67
+
+- Update to version 5.0.67:
+  * no changes
+- fix license tag
+
+-------------------------------------------------------------------
+Tue Jan 18 08:42:15 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 5.0.66:
+  * no changelog 
+
+-------------------------------------------------------------------
+Sun Nov 21 01:41:47 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com> - 5.0.53
+
+- Update to version 5.0.53:
+  * no changes
+
+-------------------------------------------------------------------
+Mon Nov  8 07:13:33 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com> - 5.0.49
+
+- Update to 5.0.49:
+  * no changes
+
+-------------------------------------------------------------------
+Tue Nov  2 23:14:02 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com> - 5.0.46
+
+- Update to 5.0.46:
+  * no changes
+
+-------------------------------------------------------------------
+Tue Oct 19 23:34:46 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com> - 5.0.36
+
+- Update to 5.0.36:
+  * Fix compilation issue with CLang 11
+
+-------------------------------------------------------------------
+Fri Oct 15 05:42:07 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.0.35:
+  * no changelog
+
+-------------------------------------------------------------------
+Wed Jul 14 08:33:49 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.0.0, no changelog
+
+-------------------------------------------------------------------
+Tue Jun 22 11:59:27 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 4.5.20, no changelog
+
+-------------------------------------------------------------------
+Fri May 14 08:14:43 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 4.5.15 (no changelog)
+
+-------------------------------------------------------------------
+Wed Apr 28 14:23:39 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 4.5.10 (no changelog) 
+
+-------------------------------------------------------------------
+Thu Apr 15 20:17:29 UTC 2021 - Luiz Angelo Daros de Luca <luizluca@tre-sc.jus.br>
+
+- Update to 4.5.3:
+  * No changelog available.
+
+-------------------------------------------------------------------
+Wed Mar 31 12:06:21 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 4.5.0 (no changelog) 
+
+-------------------------------------------------------------------
+Tue Mar  9 16:59:42 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 4.4.33 (no changelog) 
+
+-------------------------------------------------------------------
+Mon Feb 22 10:10:31 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 4.4.29 (no changelog) 
+
+-------------------------------------------------------------------
+Fri Jan 22 12:27:57 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim redundancies from description.
+
+-------------------------------------------------------------------
+Fri Jan 22 06:48:46 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 4.4.24 (no changelog) 
+
+-------------------------------------------------------------------
+Thu Dec 31 10:28:44 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 4.4.21 (no changelog) 
+
+-------------------------------------------------------------------
+Wed Dec  2 14:14:44 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 4.4.13 (no changelog) 
+
+-------------------------------------------------------------------
+Thu Nov 12 14:09:58 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 4.4.7 (no changelog) 
+
+-------------------------------------------------------------------
+Wed Nov  4 16:06:35 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 4.4.6 (no changelog) 
+
+-------------------------------------------------------------------
+Wed Jul 29 14:46:36 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update the licence: it is now GPLv3+.
+
+-------------------------------------------------------------------
+Fri Jun 26 08:54:26 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 4.4.0 (no changelog) 
+
+-------------------------------------------------------------------
+Tue Mar  3 09:55:57 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 4.3.1 (no changelog)
+
+-------------------------------------------------------------------
+Wed Nov 20 23:15:31 UTC 2019 - Simon Lees <sflees@suse.de>
+
+- %make_jobs is depricated replaced by %cmake_build
+- Use %autosetup to simplify maintenance
+
+-------------------------------------------------------------------
+Thu Oct 17 15:09:37 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Remove obsolete Groups tag (fate#326485)
+
+-------------------------------------------------------------------
+Wed Sep 12 10:17:24 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Fix RPM group.
+
+-------------------------------------------------------------------
+Wed Sep  5 08:38:36 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
+
+- Modernise spec file
+- Move doc between subpackages
+
+-------------------------------------------------------------------
+Fri Jul 21 12:20:04 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.0.6:
+  * Bug fixes.
+
+-------------------------------------------------------------------
+Wed May 17 15:00:49 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.0.5:
+  * Bug fixes.
+
+-------------------------------------------------------------------
+Tue Sep 13 12:54:30 UTC 2016 - sor.alexei@meowr.ru
+
+- Switch to building with CMake.
+- Add bzrtp-fix-pkgconfig.patch: Install libbzrtp.pc on CMake.
+
+-------------------------------------------------------------------
+Mon Sep 12 12:32:34 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.0.4:
+  * Build system fixes.
+  * Security fix.
+- Remove mbedtls2.patch.
+
+-------------------------------------------------------------------
+Fri Aug 12 10:12:26 UTC 2016 - mpluskal@suse.com
+
+- Add mbedtls2.patch to fix building with mbedtls2
+
+-------------------------------------------------------------------
+Thu Nov 19 21:23:19 UTC 2015 - mpluskal@suse.com
+
+- Update to 1.0.3
+  * build system fixes
+- Make build more verbose
+
+-------------------------------------------------------------------
+Mon Jul 20 18:46:11 UTC 2015 - mpluskal@suse.com
+
+- Update to 1.0.2
+  * bug fixes
+
+-------------------------------------------------------------------
+Mon Mar 23 10:16:05 UTC 2015 - sor.alexei@meowr.ru
+
+- Initial package.

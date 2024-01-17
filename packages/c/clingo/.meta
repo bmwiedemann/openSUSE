@@ -1,0 +1,5 @@
+<package name="clingo" project="openSUSE:Factory">
+  <title>clingo</title>
+  <description>Clingo is part of the Potassco project for Answer Set Programming (ASP). ASP offers a simple and powerful modeling language to describe combinatorial problems as logic programs. The clingo system then takes such a logic program and computes answer sets representing solutions to the given problem.</description>
+  <devel project="devel:languages:misc" package="clingo"/>
+</package>

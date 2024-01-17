@@ -1,0 +1,6 @@
+<package name="bazel-rules-python" project="openSUSE:Factory">
+  <title>bazel-rules-python</title>
+  <description>Python rules for Bazel</description>
+  <devel project="devel:tools:building" package="bazel-rules-python"/>
+  <url>https://github.com/bazelbuild/rules_python</url>
+</package>

@@ -1,0 +1,5 @@
+<package name="vokoscreenNG" project="openSUSE:Factory">
+  <title>vokoscreenNG</title>
+  <description>VokoscreenNG is a user friendly Open Source screencaster for Linux and Windows.</description>
+  <devel project="multimedia:apps" package="vokoscreenNG"/>
+</package>

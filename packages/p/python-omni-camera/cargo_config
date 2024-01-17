@@ -1,0 +1,10 @@
+[source.crates-io]
+replace-with = "vendored-sources"
+
+[source."git+https://github.com/l1npengtul/nokhwa.git?branch=0.10"]
+git = "https://github.com/l1npengtul/nokhwa.git"
+branch = "0.10"
+replace-with = "vendored-sources"
+
+[source.vendored-sources]
+directory = "vendor"

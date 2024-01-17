@@ -1,0 +1,15 @@
+--- a/emacs/Makefile
++++ b/emacs/Makefile
+@@ -80,10 +80,10 @@
+ simple-install:
+ 	@echo "Installing in $(EMACSDIR)..."
+ 	if test -d $(EMACSDIR); then : ; else mkdir -p $(EMACSDIR); fi
+-	$(INSTALL_DATA) $(FILES) $(EMACSDIR)
+ 	if [ -z "$(NOCOMPILE)" ]; then \
+-	  cd $(EMACSDIR); $(EMACS) --batch --eval '$(COMPILECMD)'; \
++	  $(EMACS) --batch --eval '$(COMPILECMD)'; \
+ 	fi
++	$(INSTALL_DATA) $(FILES) *caml*.elc $(EMACSDIR)
+ 
+ ocamltags:	ocamltags.in
+ 	sed -e 's:@EMACS@:$(EMACS):' ocamltags.in >ocamltags

@@ -1,0 +1,62 @@
+Index: src/daemon/cmdline.c
+===================================================================
+--- src/daemon/cmdline.c.orig	2010-09-08 18:38:23.672261112 +0200
++++ src/daemon/cmdline.c	2010-09-08 19:43:17.467206480 +0200
+@@ -46,38 +46,35 @@ void cmdline(int argc, char **argv)
+                    if (optarg)
+                      opt_age_limit = atoi(optarg);       break;
+          case 'b': (which_mouse->opt_baud) = atoi(optarg);              break;
+-         case 'B': (which_mouse->opt_sequence) = optarg;                break;
++         case 'B': (which_mouse->opt_sequence) = optarg; break;
+          case 'd': (which_mouse->opt_delta) = atoi(optarg);             break;
+          case 'D': option.run_status = GPM_RUN_DEBUG;    break;
+          case 'g': (which_mouse->opt_glidepoint_tap)=atoi(optarg);      break;
+          case 'h': exit(usage(NULL));
+-         case 'i': (which_mouse->opt_time)=atoi(optarg);                break;
++         case 'i': (which_mouse->opt_time)=atoi(optarg); break;
+          case 'k': check_kill();                         break;
+          case 'l': opt_lut = optarg;                     break;
+-         case 'm': add_mouse(GPM_ADD_DEVICE,optarg);     
+-                   (which_mouse->opt_dev) = optarg;                     break; /* GO AWAY!*/
++         case 'm': (which_mouse->opt_dev) = optarg;      break; /* GO AWAY!*/
+          case 'M': opt_double++; option.repeater++;
+             if (option.repeater_type == 0)
+                option.repeater_type = "msc";
+             which_mouse=mouse_table+2;                   break;
+-         case 'o': add_mouse(GPM_ADD_OPTIONS,optarg);
+-                   gpm_report(GPM_PR_DEBUG,"options: %s",optarg);
+-                   (which_mouse->opt_options) = optarg;                 break; /* GO AWAY */
++         case 'o': gpm_report(GPM_PR_DEBUG,"options: %s",optarg);
++                   (which_mouse->opt_options) = optarg;  break; /* GO AWAY */
+          case 'p': opt_ptrdrag = 0;                      break;
+          case 'r':
+             /* being called responsiveness, I must take the inverse */
+             (which_mouse->opt_scale)=atoi(optarg);
+             if(!(which_mouse->opt_scale) || (which_mouse->opt_scale) > 100) (which_mouse->opt_scale)=100; /* the maximum */
+-            else (which_mouse->opt_scale)=100/(which_mouse->opt_scale);                break;
++            else (which_mouse->opt_scale)=100/(which_mouse->opt_scale); break;
+          case 'R':
+             option.repeater++;
+             if (optarg) option.repeater_type = optarg;
+             else        option.repeater_type = "msc";    break;
+-         case 's': (which_mouse->opt_sample) = atoi(optarg);            break;
++         case 's': (which_mouse->opt_sample) = atoi(optarg); break;
+          case 'S': if (optarg) opt_special = optarg;
+                    else opt_special="";                  break;
+-         case 't': add_mouse(GPM_ADD_TYPE,optarg);
+-                   (which_mouse->opt_type) = optarg;                    break; /* GO AWAY */
++         case 't': (which_mouse->opt_type) = optarg;     break; /* GO AWAY */
+          case 'u': option.autodetect = 1;                break;
+          case 'T': opt_test++;                           break;
+          case 'v': printf(GPM_MESS_VERSION "\n");        exit(0);
+Index: src/daemon/startup.c
+===================================================================
+--- src/daemon/startup.c.orig	2010-09-08 18:38:23.672261112 +0200
++++ src/daemon/startup.c	2010-09-08 19:42:23.770512127 +0200
+@@ -139,6 +139,5 @@ void startup(int argc, char **argv)
+ 
+    /****************** OLD CODE from gpn.c  END ***********************/
+ 
+-   init_mice(option.micelist);                  /* reads option.micelist */
+    atexit(gpm_exited);                          /* call gpm_exited at the end */
+ }

@@ -1,0 +1,290 @@
+-------------------------------------------------------------------
+Sun Dec  3 14:29:46 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.2.10
+  * Add xfce4cpp to EXTRA_DIST
+- Use a newer gcc/g++ version on Leap or SLE.
+
+- Update to version 1.2.9
+  * Don't update tooltip string when tooltip is not visible
+  * Improve CPU hotplugging on Linux
+  * Use "xfce_spawn_command_line()"
+  * Code refactor
+  * Update source code for the new xfce4cpp library
+  * Rework of xfce4cpp library
+  * Reduce the minimum width from 10 to 1
+  * Add missing include
+  * Translation Updates
+
+-------------------------------------------------------------------
+Sun Jul 23 07:20:33 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.2.8
+  * Update authors
+  * Add option to enable / disable SMT statistics (disabled by default)
+  * Migrate to Xfconf
+  * Move settings functions into namespace
+  * Require Xfconf library
+  * Add 24px icon, cleanup SVG metadata
+  * Update copyright year
+  * Display detailed CPU load on Linux
+  * Improve tooltip
+  * build: Add GLib requirement
+  * Translation Updates
+
+-------------------------------------------------------------------
+Sat Dec 24 08:15:26 UTC 2022 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.2.7
+  * Bump build requirements for Xfce 4.18.0
+  * Remove code obsoleted by libxfce4util-4.17.2
+  * Fix GLib warnings occurring with newer xfce4-dev-tools
+  * Fix intltool lock file bug in make distcheck
+  * Translation Updates
+- Remove _service file
+
+-------------------------------------------------------------------
+Wed Feb  2 18:57:09 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.2.6
+  * Fix translations not showing in the GUI
+  * Don't save some defaults to configuration files
+  * Fix visibility of the associated-command configuration
+  * Update configure.ac.in syntax
+  * Translation Updates
+
+-------------------------------------------------------------------
+Mon Oct 11 08:43:40 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.2.5
+  * Avoid FreeBSD "string.h" include file issue
+  * Fix compilation with libxfce4util earlier than 4.17.0
+  * Update README
+  * Code cleanup: Convert circular buffer mask from a field to a
+    member function
+  * Lower the number of false positives in sub-optimal
+    SMT scheduling
+  * Account for irregular core IDs in CPU topology
+    (gxo#panel-plugins/xfce4-cpugraph-plugin#25)
+  * Increase type-safety of the return types of callback functions
+  * Fix CPU topology initialization memory leak
+  * Convert CpuGraph* to Ptr<CPUGraph>
+  * Code cleanup: Add "using xfce4::Ptr" shortcuts
+  * Add xfce4::RGBA
+  * Code cleanup: Replace C pointers with xfce4::Ptr0 and
+    std::vector
+  * Code cleanup: Move set() function declarations inside struct
+    CPUGraph
+  * Replace author nicknames with real names
+  * Update and sort the list of authors
+  * Code cleanup: Remove typedef keyword from type declarations
+  * Code cleanup: Add CPUGRAPH to header file if-defs
+  * Code cleanup: Remove extern "C" from header files
+  * Code cleanup: Remove #include libintl.h
+  * Use C++ λ-functions for widget signal handlers
+  * Code cleanup: Replace gboolean with bool where possible
+  * Use xfce4::sprintf() instead of g_snprintf()
+  * Add xfce4::sprintf()
+  * Update extensions in translation files from .c to .cc
+  * Rename properties.c to properties.cc
+  * Replace mode.c with mode.cc
+  * Return a std::string pointer from Rc:read_entry()
+  * Rename main plugin implementation file from C to C++
+  * Code cleanup: Move variable declarations and replace GList
+    with std::vector
+  * Rename OS-specific file from C to C++
+  * Slightly improved CPU count detection in case some CPUs
+    are offline
+  * Convert settings read/write code from C to C++
+  * Rename shadowed variable name to avoid a compiler warning
+  * Suppress compiler warning
+  * Bump requirements to version 4.14
+  * Enable close button translations
+  * Fix compiler warnings on FreeBSD and SUN
+  * Bump properties dialog to Xfce 4.14 API
+  * Export SVG icons to PNG
+  * New icons
+  * Lower peak memory consumption in case of a long CPU load
+    history
+  * Fix OpenBSD codepath (gxo#panel-plugins/xfce4-cpugraph-plugin#28)
+  * Initially hide run-in-terminal checkbox if the command is empty
+    (gxo#panel-plugins/xfce4-cpugraph-plugin#23)
+  * Translation Updates
+
+-------------------------------------------------------------------
+Wed Feb 24 18:20:06 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.2.3
+  * Add support for per-core history graphs
+  * Enable user-defined spacing between per-core history graphs
+  * Use an exponential function when painting the grid
+    in non-linear mode
+  * Improve performance of current CPU usage bars
+  * Improve LED rendering performance
+  * Improve grid rendering performance
+  * Enumerate CPU cores from 0 (instead of 1) to match Linux
+    command-line tools
+  * Ensure that the bars and the history cannot be disabled at
+    the same time
+  * Slightly better handling of colors
+  * Translation Updates
+
+-------------------------------------------------------------------
+Sun Feb 14 22:05:58 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.2.2
+  *  Record CPU load data even if the chart is currently disabled
+  *  Validate size against minimum and maximum allowed values
+  *  Change semantics of the non-linear time-scale mode
+  *  Fix corner cases when rendering the grid and LED modes
+  *  Show SMT stats tooltip only when needed
+  *  Translation Updates
+
+-------------------------------------------------------------------
+Sun Jan 31 17:11:53 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.2.1
+  * Repaint CPU load history after the user changes the update interval
+  * Properly initialize current usage bars
+  * Scale CPU load history chart according to the current update interval
+  * Store history in a circular buffer
+  * Add timestamps to CPU load history
+  * Update copyright year
+  * Update configuration files
+  * Translation Updates
+
+-------------------------------------------------------------------
+Mon Dec 28 15:06:06 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.2.0
+  * Highlighting of suboptimal thread placement on SMT CPUs
+  * Separate the associated command from the rest of config options
+  * Better resilience to inconsistent OS CPU utilization data
+  * Display 'Show bars' in the same tab as 'Bars color'
+  * Clamp CPU usage values to zero if they are below a threshold
+  * Cleanup NEWS file
+  * Use larger unscaled icon in about dialog
+  * Add small explanation about default commands
+  * Dynamic default command lookup
+  * Fix RGBA string memory leak
+  * Fix an invalid memory reference
+  * Link sensitivity of labels to sensitivity of color buttons
+  * Allow setting colors with alpha
+  * Revalidate the event box after showing widgets
+  * Use floating-point instead of fixed-point CPU load values
+  * Paint CPU usage if it is 1 pixel tall
+  * Lower CPU usage when rendering bars
+  * Update URLs
+  * Improve performance of CPU data parsing
+  * Read CPU data correctly if some CPUs are offline
+    (gxo#panel-plugins/xfce4-cpugraph-plugin!7)
+  * Paint CPU bars in left-to-right order
+  * Separate the bars from the history frame
+  * Fix old-style function warnings
+  * Fix clang and gcc warnings
+  * Also offer a 3 second update interval
+    (gxo#panel-plugins/xfce4-cpugraph-plugin#9)
+  * Update URLs from goodies.x.o to docs.x.o (bxo#16157)
+  * Allow compilation with panel 4.15
+  * Fix typo breaking build on NetBSD (bxo#15794)
+  * Disable frame and make background transparent by default
+  * Translation Updates
+
+-------------------------------------------------------------------
+Fri Aug 16 12:33:24 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Fixed sources in spec file
+
+-------------------------------------------------------------------
+Tue Jul 16 13:51:56 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Package renamed to follow upstream name xfce4-foo-plugin
+- Use lang subpackage for manual edits instead of %lang_package macro 
+- Cleaned up spec file
+
+-------------------------------------------------------------------
+Wed Jul  3 09:41:46 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.1.0
+  * Stable release of cpugraph-plugin, featuring only updated
+    translations. For more details on the GTK 3 Port and other
+    improvements, please refer to the release notes of 1.0.90
+    and 1.0.91.
+
+-------------------------------------------------------------------
+Sun Jun 23 11:31:03 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- update to version 1.0.91
+  * Add option to disable the graph (bxo#15163)
+  * Use css to change bar colors (bxo#15186)
+  * Fix bars in horizontal mode
+  * Updated translations
+
+-------------------------------------------------------------------
+Wed May 29 11:51:44 UTC 2019 - Vinzenz Vietzke <vinz@vinzv.de>
+
+- update to version 1.0.90
+  - GTK 3 Port
+  - Updated translations
+- Cleaned spec file (URLs with https, Git bcond)
+
+-------------------------------------------------------------------
+Sun Mar 17 10:06:42 UTC 2013 - gber@opensuse.org
+
+- update to version 1.0.5
+  - only set bar color if a color was actually specified
+  - only set bar color if bars are enabled
+- dropped obsolete
+  xfce4-panel-plugin-cpugrap-only-set-color-if-enabled.patch
+
+-------------------------------------------------------------------
+Mon Jul  2 15:21:09 UTC 2012 - gber@opensuse.org
+
+- update to version 1.0.4
+  - fix build failure with xfce4-panel 4.8
+- added xfce4-panel-plugin-cpugrap-only-set-color-if-enabled.patch
+  in order to only set bar color if bars are enabled (bxo#907,
+  backported from upstream git)
+
+-------------------------------------------------------------------
+Sun Jul  1 07:21:14 UTC 2012 - gber@opensuse.org
+
+- update to version 1.0.3
+  - better compliance with panel plugin HIG
+  - add an option allowing to set the bar color
+  - fix transparency issues
+
+-------------------------------------------------------------------
+Sun Apr 29 21:47:16 UTC 2012 - gber@opensuse.org
+
+- update to version 1.0.2
+  - ported to libxfce4ui
+  - fixed buffer overflow
+  - fixes plugin losing associated command value
+  - build the plugin as a module
+  - adapt to panel 4.9 api
+- removed obsolete
+  xfce4-panel-plugin-cpugraph-1.0.1-fix-buffer-overflow.patch
+
+-------------------------------------------------------------------
+Fri Apr 20 09:55:00 UTC 2012 - gber@opensuse.org
+
+- added documentation files
+
+-------------------------------------------------------------------
+Tue Apr 17 19:35:16 UTC 2012 - gber@opensuse.org
+
+- corrected source URL
+
+-------------------------------------------------------------------
+Tue Apr  3 15:15:48 UTC 2012 - gber@opensuse.org
+
+- specfile cleanup
+- correct dependencies
+- split off -lang subpackage
+
+-------------------------------------------------------------------
+Wed Mar  9 11:00:00 UTC 2011 - gber@opensuse.org
+
+- new package (split off from xfce4-panel-plugins)
+

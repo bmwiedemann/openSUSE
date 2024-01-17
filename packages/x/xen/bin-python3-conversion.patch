@@ -1,0 +1,50 @@
+Index: xen-4.18.0-testing/tools/misc/xencov_split
+===================================================================
+--- xen-4.18.0-testing.orig/tools/misc/xencov_split
++++ xen-4.18.0-testing/tools/misc/xencov_split
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ 
+ from __future__ import print_function
+ from builtins import str
+Index: xen-4.18.0-testing/tools/python/scripts/convert-legacy-stream
+===================================================================
+--- xen-4.18.0-testing.orig/tools/python/scripts/convert-legacy-stream
++++ xen-4.18.0-testing/tools/python/scripts/convert-legacy-stream
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ 
+ """
+Index: xen-4.18.0-testing/tools/python/scripts/verify-stream-v2
+===================================================================
+--- xen-4.18.0-testing.orig/tools/python/scripts/verify-stream-v2
++++ xen-4.18.0-testing/tools/python/scripts/verify-stream-v2
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ 
+ """ Verify a v2 format migration stream """
+Index: xen-4.18.0-testing/tools/xenmon/xenmon.py
+===================================================================
+--- xen-4.18.0-testing.orig/tools/xenmon/xenmon.py
++++ xen-4.18.0-testing/tools/xenmon/xenmon.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ 
+ #####################################################################
+ # xenmon is a front-end for xenbaked.
+Index: xen-4.18.0-testing/tools/xentrace/xentrace_format
+===================================================================
+--- xen-4.18.0-testing.orig/tools/xentrace/xentrace_format
++++ xen-4.18.0-testing/tools/xentrace/xentrace_format
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ 
+ # by Mark Williamson, (C) 2004 Intel Research Cambridge
+ 

@@ -1,0 +1,89 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fb87a66872e9206382aab627ca45a04e</srcmd5>
+    <version>0.0.25b</version>
+    <time>1642198383</time>
+    <user>dimstar_suse</user>
+    <comment>Has been patched to build with Factory's mozjs78 and the Python 2 dependency was removed.</comment>
+    <requestid>946235</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>44a4f7b7a61e6fb572aba6efbe038e50</srcmd5>
+    <version>0.0.25b</version>
+    <time>1645723279</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>957395</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>06da28d0b1b27746f1b758d53c869721</srcmd5>
+    <version>0.0.25b</version>
+    <time>1647199531</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>961440</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>adfbdcb1f04f145a43c023a531918a57</srcmd5>
+    <version>0.0.25b</version>
+    <time>1647458416</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>961957</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>646c75dc1d2301ca7f6098bdd2889895</srcmd5>
+    <version>0.0.25b</version>
+    <time>1648570529</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>965574</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>15f2b44cb3e47e5f7a73b4a0d5ea8410</srcmd5>
+    <version>0.0.25b</version>
+    <time>1656675893</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>986050</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>9dca495b9a752dd4142e81e949bfe49a</srcmd5>
+    <version>0.0.25b</version>
+    <time>1660313182</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix rpmlint by adding premake-no-automatic-rpath.patch: don't let
+  premake automatically add RPATHs, these are unnecessary.
+- Add distribution default link flags, especially -Wl,-z,now.
+</comment>
+    <requestid>994558</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ad7df2a95684015ed2a2f696bb8fa52c</srcmd5>
+    <version>0.0.26</version>
+    <time>1664380309</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 0.0.26
+- Remove obsolete glibc-2.35.patch.
+</comment>
+    <requestid>1006542</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>4bb80faca7b343dae51d0afa5cf011de</srcmd5>
+    <version>0.0.26</version>
+    <time>1679854782</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix-gcc13-build.patch to fix build with GCC 13.
+</comment>
+    <requestid>1074356</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>0868f4c3de4cf5f83b62f5d77f56ac1e</srcmd5>
+    <version>0.0.26</version>
+    <time>1701902908</time>
+    <user>anag+factory</user>
+    <comment>- Add fix-fmt10-build.patch to fix build with libfmt 10.
+</comment>
+    <requestid>1131230</requestid>
+  </revision>
+</revisionlist>

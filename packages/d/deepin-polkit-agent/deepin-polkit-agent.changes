@@ -1,0 +1,111 @@
+-------------------------------------------------------------------
+Fri Aug 26 03:21:03 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.5.21
+  * Fix bugs 
+- Drop polkit-qt5.patch, merged
+
+-------------------------------------------------------------------
+Thu Jun 30 08:53:22 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.5.19
+  * Fix bugs
+  * Update translations
+
+-------------------------------------------------------------------
+Wed Apr  6 07:14:43 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.5.7
+  * Migrate qmake to cmake
+  * Update translations
+  * Fix bugs
+- Add polkit-qt5.patch, use upstream's api instead deepin's patch
+- Drop fix-sudo-issue.patch, merged by upstream
+
+-------------------------------------------------------------------
+Thu Feb 10 12:26:34 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.5.3
+  * Disable copy and cut options of DPasswordEdit
+  * Fix bugs 
+
+-------------------------------------------------------------------
+Wed Feb  9 12:08:49 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Add fix-sudo-issue.patch, fix a sudo issue. 
+
+-------------------------------------------------------------------
+Tue Dec 28 03:03:12 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.4.14
+  * Fix bugs
+  * Update translations
+
+-------------------------------------------------------------------
+Wed Feb 24 07:47:48 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version 5.3.0.3
+  * Add PAM modules
+  * chore: auto pull translation files from transifex
+  * fix: build depend libdtkcore-bin to libdtkcore5-bin
+  * fix: port to new API of DPasswordEdit
+  * fix: adjust style
+  * support fingerprint device changes
+  * fixed:(authDialog):fingerprint device changed modify placeholder
+  * fixed:Always show user name
+  * feat:Resolving the disappearance of the authorization window
+  * Clean up invalid translation files
+
+-------------------------------------------------------------------
+Tue Jul 16 05:55:57 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 0.3.0
+  * Update translations
+  * Fix auth failed without prompt
+  * Fix auth faild cannot set focus
+  * chore: disable deepin_auth for no deepin platform
+  * Use an environment variable to find plugins
+
+-------------------------------------------------------------------
+Tue Apr 16 01:41:44 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 0.2.6
+  * provide dbus service
+  * Fix still auth after dialog window closed
+  * Fix failed on build
+  * Fix translate not load
+
+-------------------------------------------------------------------
+Thu Mar 22 13:10:50 UTC 2018 - hillwood@opensuse.org
+
+- Update version to 0.2.0
+  * Fix trigger plugin action only wen auth succeeded
+  * Using linux-pam to provide translation
+  * Adapt lintian
+  * Fix single instance may not work
+  * Create pid file to cache folder
+  * Support agent plugins 
+  * Support single instance
+  * Show validation information
+  * Support option widgets
+- Split devel package.
+
+-------------------------------------------------------------------
+Fri Dec  1 13:26:09 UTC 2017 - hillwood@opensuse.org
+
+- Update to 0.1.1
+  * Feature update. 
+- Split language package.
+
+-------------------------------------------------------------------
+Sun Nov 12 13:46:23 UTC 2017 - hillwood@opensuse.org
+
+- Cleanup spec
+  * Add Group tag
+  * Fix filelist setting. 
+  * Fix permission for desktop profile.
+
+-------------------------------------------------------------------
+Tue Oct  3 15:29:45 UTC 2017 - sensor.wen@gmail.com
+
+- Initial package.

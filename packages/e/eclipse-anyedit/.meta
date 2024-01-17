@@ -1,0 +1,5 @@
+<package name="eclipse-anyedit" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="eclipse-anyedit"/>
+</package>

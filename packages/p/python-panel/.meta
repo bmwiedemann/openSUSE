@@ -1,0 +1,10 @@
+<package name="python-panel" project="openSUSE:Factory">
+  <title>A high level app and dashboarding solution for Python</title>
+  <description>Panel is a Python library that lets you create custom interactive web apps and
+dashboards by connecting user-defined widgets to plots, images, tables, or
+text.
+
+</description>
+  <devel project="devel:languages:python:numeric" package="python-panel"/>
+  <url>https://panel.holoviz.org</url>
+</package>

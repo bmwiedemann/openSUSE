@@ -1,0 +1,134 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fdf05f2b368b0930ee8928f01cff2794</srcmd5>
+    <version>1.1.2</version>
+    <time>1646848059</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain wayshot in Factory.</comment>
+    <requestid>960306</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>714cf22b5b0dc7745bf9a03a3d1c9caf</srcmd5>
+    <version>1.1.5~0</version>
+    <time>1648063083</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>964123</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>df283607db6528065c9dca65b3447b24</srcmd5>
+    <version>1.1.5~1</version>
+    <time>1652872411</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>977846</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c3c7070a849ba1a2704484eaeb7620f6</srcmd5>
+    <version>1.1.7</version>
+    <time>1653907426</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>979686</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>10b8ce9b045c231633a6f1567f47951c</srcmd5>
+    <version>1.1.9</version>
+    <time>1659612216</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>992661</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d2a162b5410c45ca627ac85fcb5ef064</srcmd5>
+    <version>1.2.2</version>
+    <time>1664380318</time>
+    <user>RBrownFactory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1006618</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>3e362ab78d9563c9ab5516865c85530f</srcmd5>
+    <version>1.2.2</version>
+    <time>1687379908</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1093395</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7393f982a24c2b7d304bdf91e1c95136</srcmd5>
+    <version>1.3.0</version>
+    <time>1688476924</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.3.0:
+  * [refactor] use libwayshot for shm
+  * [docs] Update documentation
+  * [feat] Qoi image format supported
+  * [feat] Multi-output transform handling
+  * [docs] Remove known bugs section
+  * [fix] debug and stdout flags should conflict
+  * [deps] Update dependencies
+  * [Feat] Multi-output composited screenshots
+  * [feat] Record output geometry transforms
+  * [update] Reduce number of roundtrips in get_all_outputs
+  * [feat] Add nix flake
+  * [chore] Update xdg-desktop-portal-wlr submodule
+  * [fix] Incorrect docs dir
+  * [feature] Split backend into libwayshot
+  * [feature] Custom XDPW implementation using wayshot
+  * [update] Upgrade to wayland-rs 0.30.0
+  * [docs] Update readme to accomodate https://github.com/waycrate/wayshot/pull/35
+  * [feature] Parse slurp's default geometry output format
+  * [deps] Remove unused dependency
+  * [feature] added 10-bit back buffer support
+  * [contrib/pkgbuild/bin] Remove man pages
+  * [contrib/pkgbuild/bin] bump version
+</comment>
+    <requestid>1096568</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>cb342698bf70dc792ff5c173635a1588</srcmd5>
+    <version>1.3.0</version>
+    <time>1692611098</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1104903</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>e601c4ec30ac394968a54ed240539ac5</srcmd5>
+    <version>1.3.0</version>
+    <time>1693235767</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1106208</requestid>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>94bbd0fd2a806100051a51821abb9b23</srcmd5>
+    <version>1.3.0</version>
+    <time>1694019397</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1108968</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f4e4e63a84811c57f80e08dcc4893e8c</srcmd5>
+    <version>1.3.1</version>
+    <time>1703024150</time>
+    <user>anag+factory</user>
+    <comment>- Remove sed line
+- Remove cargo_config
+- Update to version 1.3.1:
+  * New features
+    - CLI fuzzy selector (--chooseoutput) for screenshots
+  * Improvements
+    - Switch log crate with tracing and parallelize image alterations
+    - Moved multi-monitor logic from wayshot to libwayshot
+    - Remove uneeded resizes and rotations of image buffers
+    - Deprecate xdpw fork in favor of the luminous portal
+    - Update wayland crates
+- Note that libwayshot contains breaking changes and improvements
+  as well but will not be mentioned here since this is wayshot, the cli.
+</comment>
+    <requestid>1133921</requestid>
+  </revision>
+</revisionlist>

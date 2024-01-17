@@ -1,0 +1,14 @@
+<package name="perl-Guard" project="openSUSE:Factory">
+  <title>Guards for Perl</title>
+  <description>This module implements so-called &quot;guards&quot;. A guard is something (usually
+an object) that &quot;guards&quot; a resource, ensuring that it is cleaned up when
+expected.
+
+Specifically, this module supports two different types of guards: guard
+objects, which execute a given code block when destroyed, and scoped
+guards, which are tied to the scope exit.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-Guard"/>
+  <url>http://search.cpan.org/dist/Guard</url>
+</package>

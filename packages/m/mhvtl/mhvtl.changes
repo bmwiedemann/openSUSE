@@ -1,0 +1,422 @@
+-------------------------------------------------------------------
+Wed Jul 26 16:01:08 UTC 2023 - lduncan@suse.com
+
+- Besides lots of bug fixes, the main visible change is the
+  addition of the mhvtl_kernel_mod_build script, which uses
+  a tarball of the modules sources in /lib/firmware/mhvtl_kernel.tgz
+  to build the kernel module. This adds a new script, new
+  firmware file, and a new man page.
+- Details about the update to version 1.71_release+903.d3ec98550dc3:
+  * Fix issue with DEFINE_SEMAPHORE in kernel module
+  * only call fflush() while in debug mode.
+  * Add used, but undeclared variable fg into vtltape::processMessageQ() function
+  * vtltape: Clean up after media mount failure
+  * Make send_msg_and_log() a macro - so the logging reads more logical
+  * test_lbp.sh : Fix misleading comments in script
+  * Move 'test_lbp.sh' into scripts directory
+  * Improve usability of test_lbp.sh
+  * gitignore: mhvtl_kernel.tgz is built at build time. Add to ignore
+  * mhvtl.spec: Bump version to 1.7-1
+  * Vagrant: Update the vagrant OS versions
+  * Pre-package mhvtk.ko source into the binary distribution.
+  * Expecting an unsigned 32bit int but cast as a signed 32bit int
+  * Remove duplication of application encryption structure
+  * Log information of AKAD/UKAD being sent from application
+  * Error logging macro - include line number in error log
+  * Make raspberryPi malloc() issue work-around a compile time depend on
+    ARM CPU type
+  * work around raspberryPi (32bit) malloc crash
+  * Initialise 'barcode' to NULL
+  * Cleanup 32bit vs 64bit compile warnings regarding variable sizes
+  * Rename struct 'encryption' to 'app_encryption_state'
+  * Remove dead getCommand() prototype
+  * mhvtl.ko: Bump mhvtl.ko version
+  * mhvtl.ko: Migrate printk() to pr_* calls
+  * Improve error message if kernel-devel is not installed
+  * SSC default emulation: Completing LTO-8 media support
+  * Set selinux ACL on systemd startup scripts
+  * Kernel build: remove blank line at end of script
+  * Fix kernel issue with queuecommand_lck
+  * mhvtl.ko: Change initator id from 15 to -1
+  * Change minimum clock size to 1 byte to prevent data loss when
+    writing files to tape devices that are on the block size boundaries
+  * vagrant mount doesn't like hard symlinks - use soft symlink instead
+  * Ultrium: Add support for Extended Inquiry Data VPD page
+  * Add support for INQUIRY_DATA_HAS_CHANGED
+  * SPC Inquiry: Dump SCSI Inquiry VPD pages
+  * Improve hex_dump() to print any ascii chars.
+  * add_lu() Clean up code to use fprintf() instead of write()
+  * Close the gap where lu is not ready to accept commands
+- This update also removes the need for patch (removed), since
+  it's fixed upstream:
+  * mhvtl-fix-queuecomand-args.patch
+
+-------------------------------------------------------------------
+Tue Jan  3 17:59:10 UTC 2023 - Lee Duncan <lduncan@suse.com>
+
+- Handle the fact that version 15.5 of our kernel back-ported
+  changes to the SCSI queue command, changing args fromn 2 to
+  1, by adding a patch that helps the code detect the actual
+  number of args (bsc#1206172), adding:
+  * mhvtl-fix-queuecomand-args.patch
+
+-------------------------------------------------------------------
+Wed Jun 08 22:12:53 UTC 2022 - lduncan@suse.com
+
+- Update to version 1.70_release+865.af13081a1ae5:
+  * Fix possible double define of HAVE_UNLOCKED_IOCTL
+    (fixing a build issue on some architectures)
+  * kernel: Handle removal of genhd.h from linux includes.
+  * Clean up the kernel Makefile.
+  This removed the patch (no longer needed):
+  mhvtl-fix-removal-of-genhd-h.patch
+  Also, updated SPEC file to avoid building s390x
+
+-------------------------------------------------------------------
+Fri Jun 03 16:46:44 UTC 2022 - lduncan@suse.com
+
+- Update to version 1.70_release+862.561d4d5b473f, to fix a build
+  issue (include of genhd.h fails, since the include file is
+  gone now):
+  * Standardise using -m <barcode>
+  * kernel/config.sh: use $KDIR for the kernel build directory
+  * Add include guard to generated config.h
+  * kernel: Re-work compat symbols detection
+  * vtlcart: Replace calls to creat() with calls to open()
+  * mhvtl.spec: Bump version to 1.7
+  * systemd device config: touch up error logging
+  * systemd device config: Dummy-spit if we can't find the config file
+  * CodeQL
+  * SEND_DIAGNOSTICS: Check for valid MAM structure size and CRC sanity checks
+  * Makefile: Fix path to mhvtl-utils.spec
+  * etc/Makefile: run bash scripts using bash, not sh
+  * device-conf-generator: Drop path qualifier from comment
+  * Makefile: add new file to 'tar' target missed in previous commit
+  * Makefile infrastructure: fix passing variables
+  * Makefile: Correctly pass top-level variables
+  * Build process was failing if not following a clean
+  * LTO media: Set Encryption capable bit for LTO6, 7 & 8 media
+  * Fix issue with too many bytes returned on short block read
+  * Add script to check CRC32C & RS-CRC
+  * Handle systemd directory paths correctly.
+  * Handle our queue command correctly
+  * Add new preload_tape to git ignore
+  * Remove duplicate def of systemd generator dir.
+  * Handle sysfs_emit correctly
+  * Make preload_tape a link to dump_tape
+  * Silence compiler complaints about string too long
+  This removed these patches (no longer needed):
+  * mhvtl-fix-systemd-generator-dir.patch
+  * mhvtl-handle-systemd-location-correctly-for-generator.patch
+  * mhvtl-kernel-module-fix-queuecommand-arg-change.patch
+  * mhvtl-kernel-module-fix-sysfs_emit-decl.patch
+  And added (not yet upstream):
+  * mhvtl-fix-removal-of-genhd-h.patch
+
+-------------------------------------------------------------------
+Tue Jan 18 18:58:52 UTC 2022 - lduncan@suse.com
+
+- Update to version 1.64_release+835.6beb0aa01437, to fix factory
+  build issues:
+  * Fix compiler warning regarding c99 standard
+  * DIV: Compare CRC32C in big-endian format
+  * Handle missing drive slots in config file.
+  * mhvtl.spec: Add preload_tape to the RPM spec file
+  * Proactively log different CRC seeding options if LBP writes fail
+  * vtllibrary: Handle library_contents.xx file with missing storage slot sequences
+  * mhvtl.ko: Fix return type of sysfs_emit()
+  * DIV: Improve reporting of LBP support
+  * DIV: Update RS-CRC seed to that in the 'test_crc'
+  * ssc: Log drive feature list
+  * DIV: Reduce log noise from LBP function if not enabled
+  * Update default library generation to LTO6 & LTO8 drives
+  * mhvtl.ko: Update to use sysfs_emit() rather than scnprintf
+  * DIV: Write block of data on LBP mis-compare.
+  * DIV: Set INQUIRY 'protect' bit if LBP is supported.
+  * Vagrant: Add ability to set headless/gui VM as argument
+  * DIV: Adding VPD page D5h
+  * DIV: Add LBP checking on write path
+  * Refactor check for no compression
+  * DIV: Add support for LBP in read path
+  * DIV: Add Mode Page Control Data Protection (0a/f0)
+  * DIV: Compile time sanity check on CRC routines
+  * DIV: Add Reed-Solomon CRC
+  * Vagrant: Yet another typo
+  * Vagrant: Fix typo in network settings
+  * Vagrant: Update to include an IP on the internal network
+  * Config scripts: Don't rely on execute bit being set
+  * Vagrant: Cleanup install.sh to make a little more robust
+  * Vagrant install file: whte space cleanup and add st driver for Ubuntu
+  * kernel Makefile: Add tape_util.o to list of files to cleanup
+  * tape_util: Fix compiler warning regarding strncpy length.
+  * Makefile: Add a rule for 'tape_util.o'
+  * mhvtl.ko: Bump kernel version to 0.18.31 / 2021-11-19
+  * mhvtl.ko: flush_kernel_dcache_page function retired
+  * make clean: Forgot about tape_util.o
+  * mhvtl.ko: Add ability to specify kernel version in build
+  * Add vagrant instructions and fix centos installation in vagrant
+  * Begin to add support for VERIFY_6 op code
+  * vtlcart: Clean up formatting of 'dump_tape'
+  * Rename FIXED to FIXED_BLOCK - description of 'fixed' was ambiguous
+  * preload_tape: Handle media EOM in a more user-friendly way
+  * preload_tape: Fix sense_buffer global vs local clash
+  * mhvtl.spec: Silence vtl media files
+  * Remove temporary files in 'make clean'
+  * default tape emulation: Add missing media types
+  * Remove stale email address from man pages.
+  * preload_tape: Add a man page entry
+  * preload_tape: Close out the data with a filemark.
+  * Add new utility 'preload_tape'
+  * Move writeBlock() to mhvtl_io.c
+  * Code consolidation: readBlock() to mhvtl_io.c
+  * Add LTO6 and 7 to man pages as valid cartridge types
+  * Add: Tape media Code reference. Fix SDLT code
+  * Comment code : media_type vs medium_density_code
+  * White-spcae cleanup
+  * device-conf-generator: respect MHVTL_CONFIG_PATH
+  * Typo: replace spaces with tabs in comment
+  * Add: Comment to hp_ultrium.c re: LTO8 and LTO6 compatibility
+  * Remove LTO6 read ability from LTO8 tapes
+  * Change LTO7 Number of Tracks to correct value
+  * Remove erroneous trailing white-space from INSTALL
+  * Improve a debug log entry to make it more readable
+  * Improve tape load/unload handling
+  * Doc: Fix VTLlibrary man page error. Fix: man page typo T10Kb -> T10KB
+  * Add: Update instructions on sg3-utils name
+  * Fix: Incorrect sg3_util package name in install instructions
+  * Fix spelling of 'debugging'
+  * mhvtl.ko: Bump kernel module version to 0.18.30 / 20211007
+  * mhvtl.spec: Updated so it will build on CentOS 8
+  * Update Changelog for difference since 1.6-3 release
+  * systemd: Update Makefile to include systemd install path
+  * OOM: /proc/<pid>/oom_adj is deprecated. Using oom_score_adj.
+  * mhvtl.ko: Update function names with 'mhvtl_' prefix
+  * Update kernel /sys/ location to suit new pseudo name space
+  Added four patches not yet upstream (but submmtted soon):
+  * mhvtl-kernel-module-fix-queuecommand-arg-change.patch
+  * mhvtl-kernel-module-fix-sysfs_emit-decl.patch
+  * mhvtl-handle-systemd-location-correctly-for-generator.patch
+  * mhvtl-fix-systemd-generator-dir.patch
+
+-------------------------------------------------------------------
+Thu Oct  7 16:20:07 UTC 2021 - Lee Duncan <lduncan@suse.com>
+
+- Remoed the "BuildRequires: lzo-devel" line from the SPEC file,
+  since this dependence was removed with upstream commit
+  c327afb77cff ("Remove dependency on external lzo packages").
+
+-------------------------------------------------------------------
+Mon Oct  4 21:07:48 UTC 2021 - Lee Duncan <lduncan@suse.com>
+
+- Fix failing OBS build, since it doesn't like empty DB files
+  being installed as part of the package. The DB-creation
+  script was copied from the Makefile (under "make install") to
+  a SPEC-file "%post" script.
+
+-------------------------------------------------------------------
+Fri Sep 17 18:05:56 UTC 2021 - Lee Duncan <lduncan@suse.com>
+
+- Updated to upstream version 1.63_release+759.35ddb48e5262,
+  so that it will compile on latest (5.14 kernel). Changes:
+  * mhvtl.ko: Remove reference to DRIVER_SENSE (fixes our build)
+  * mhvtl.ko: reinstate HAVE_UNLOCKED_IOCTL
+  * mhvtl.ko: Compile on RH using 4.18 kernels
+  * Handle scsi_host_template removal of unchecked_isa_dma.
+  Removing previously-needed patch:
+  * Handle-scsi_host_template-removal-of-unchecked_isa_d.patch
+
+-------------------------------------------------------------------
+Fri Jul 09 00:22:26 UTC 2021 - lduncan@suse.com
+
+- Update to version 1.63_release+754.ff8861da60c9:
+  * Use bounce buffer if tape block size is larger than request buffer
+  * dump_tape: Fix segfault due to local variable conflict
+  * Fix typos in mktape man page
+  * Fix routine to extract barcode from string
+  * Correcting minor typos.
+  * Undo previous edits to LTO-7 media density
+  * Security Protocol OUT: Fix null pointer check
+  * Update LTO-8 media denisty codes
+  * small adjustment in the emulation of the ts3100 library
+  * Update for 1.6_3_release
+  * mktape: Set default version string based from MHVTL_VERSION
+  * mhvtl.ko: Bump kernel version
+  * mhvtl.ko: Initialise outstanding op struct before adding to list
+  * mhvtl.ko: Bump kernel module version string
+  * mhvtl.ko: Limit number of outstanding queued commands
+  * Add kernel file_inode() commit ID as comment
+  * mhvtl.ko: Bump kernel module version string
+  * mhvtl.ko: Use _safe version of list_for_each_entry
+  * mhvtl.ko: Simplify file_inode()
+  * mhvtl.ko: Correct compiler warning about printf var sizes
+  * mhvtl.ko: Log errors if they occur
+  * mhvtl.ko: bump kernel module version
+  * mhvtl.ko: kernel module oops on PPC
+  * mhvtl.ko: bump kernel module version
+  * Increase default kmem_cache bounce buffer size to 64k
+  * mhvtl.ko: Define SG_SEGMENT_SZ only if not defined
+  * Fix spelling of retrieving
+  * Exclude __builtin_cpu_supports() on non x86_64 CPU types
+  * fix wording
+  * rename log.h to avoid generic name conflict
+  * rename scsi.h to avoid generic name conflict
+  * rename list.h to avoid generic name conflict
+  * Rename tapeLoaded to load_status
+  * Use ccan version of crc32c
+  * Fix startup script
+
+- Also, remove patch (no longer needed, fixed upstream):
+  * mhvtl-fix-ppc-Makefile.patch
+  And add a patch: to handle an issue submitted upstream
+  but not yet integrated:
+  * Handle-scsi_host_template-removal-of-unchecked_isa_d.patch
+
+-------------------------------------------------------------------
+Thu Oct 29 18:09:33 UTC 2020 - Lee Duncan <lduncan@suse.com>
+
+- Added "-DHAVE_UNLOCKED_IOCTL" to kernel module build in SPEC file
+
+-------------------------------------------------------------------
+Mon Jun 22 17:02:05 UTC 2020 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+-Do not Require insserv or fillup which are no longer needed 
+
+-------------------------------------------------------------------
+Fri Nov 15 17:16:03 UTC 2019 - Lee Duncan <lduncan@suse.com>
+
+- Fix some builds of ppc and arm that were failing to compile
+  the dump_tape command. This adds the patch:
+  * mhvtl-fix-ppc-Makefile.patch
+
+-------------------------------------------------------------------
+Sat Nov  9 04:13:39 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Use the correct macro for systemd generator directory
+
+-------------------------------------------------------------------
+Mon Nov  4 23:43:56 UTC 2019 - Lee Duncan <lduncan@suse.com>
+
+- Change install of systemd generatos to /usr/lib/systemd/...
+  instead of /usr/libexec/systemd/..., which does not yet exist,
+  to fix build issue
+
+-------------------------------------------------------------------
+Sun Oct 06 14:42:22 UTC 2019 - lduncan@suse.com
+
+- Update to version 1.62_release:
+  * Update the 1.6.2 tarball name
+  * Update spec file for 1.6-2 release
+  * mhvtl.ko: Bump module version to reflect white-listed buffer work
+  * mhvtl.ko: Use white-listed buffer to copy data to/from kernel space
+  * Bump kernel module version
+  * mhvtl.ko: scsi_host_template changed block .ioctl
+  * mhvtl.ko: Remove useless printk("\n")
+  * Reformat KERNEL_VERSION() to make checkpatch.pl happier
+  * Bump kernel module version
+  * Fix kernel build SUBDIR going away post 5.3
+  * mhvtl.ko: Fix compile on 5.0+ kernels
+  * mhvtl.ko: Bump version number due to serial_number change
+  * mhvtl.ko: Remove dependency on scsi mid layer serial_number
+  * Remove dead code
+  * Only build symlink paths for tape devices
+  * Silence another gcc error regarding snprintf
+  * Silence another gcc error regarding snprintf
+  * Make sure target buffer is large enough
+  * Use systemd-path to query mhvtl-device-conf-generator path
+  * Change Vagrantbox for Centos to one that is  publicly available.
+  * Remove lzo from the install script and added -g to lsscsi
+  * Add Vagrant file with install script for testing
+  * Revert "Correct yet another /usr -> / path - this time for systemd etc stuff"
+  * Correct yet another /usr -> / path - this time for systemd etc stuff
+  * Correct systemd-generator default path
+  * Fix path to modprobe
+  * Ubuntu/Debian need the systemd-generators install in /lib not /usr/lib
+  * Sample script to build /dev/tape/by-path/ entries
+  * Add test for root user on install
+  * Update Change log and spec file for 1.6-1_release
+  * Add CRC check on read path
+  * Update dump_tape to understand CRC32
+  * Add CRC32 to each block write
+  * Add libcrc32c routines
+  * Add additional field to reflect if tape in drive
+  * Move true/false values into single bit field
+  * Allow to override build date with SOURCE_DATE_EPOCH
+  * dump_tape: Fix off-by-one reading argv[]
+  * Improve SCSI cdb logging format from kernel module
+  * Fix typo for mktape in make_vtl_media
+  * Simplify building of mktape
+  * Clean up white space formatting in source
+  * A very basic script to show how to setup LIO iSCSI via pscsi driver
+  * Fix a media unload race condition
+  * Force shared library and systemd refresh on install
+  * bump kernel module version string.
+  * Remove use of "use_clustering" in our kernel driver.
+  * Correct mhvtl-load-modules.service dependencies.
+
+  This results in replacing mhvtl-1.60_release.tar.xz with
+  mhvtl-1.62_release.tar.xz, and removing two patches, no
+  longer needed. Removed:
+  * mhvtl-systemd-load-modules-cleanup.patch
+  * mhvtl-remove-use-of-use_clustering.patch
+
+  Also, updated SPEC-file %build and %install make commands to pass
+  in systemd generator directory.
+
+-------------------------------------------------------------------
+Sat Mar 30 12:08:09 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Reduce dependency on systemd. Make use of %make_install.
+
+-------------------------------------------------------------------
+Thu Mar 28 17:35:06 UTC 2019 - Lee Duncan <lduncan@suse.com>
+
+- Update to upstream version 1.60_release from 1.55_release
+  * Switch to systemd from init scripts (see bsc#1116023)
+  * Create virtual media on post install
+  * Update version to 1.6 with introduction of systemd support
+  * Don't overwrite config files by default
+  * Replace SuSE rpm macros with systemctl command for RPM install/uninstall
+  * Update systemd-generators dir based on variable
+  * Include ChangeLog in tar ball as time/date string in man pages depend on it
+  * Corrected time/date stamp in spec change log
+  * Set correct shared lib path
+  * Remove empty double quotes in service tmeplates
+  This replaces mhvtl-1.53_release.tar.xz with mhvtl-1.60_release.tar.gz,
+  This change updates the SPEC file, and itremoves both patches,
+  no longer needed:
+  * mhvtl-set-lib64-correctly.patch
+  * mhvtl-suse-patches.diff.gz
+  For kernels 5.0 and newer, this patch was added to patch the KMP:
+  * mhvtl-remove-use-of-use_clustering.patch
+  And to cleanup systemd dependencies, added:
+  * mhvtl-systemd-load-modules-cleanup.patch
+  Both of these patches will be submitted upstream, as well.
+
+-------------------------------------------------------------------
+Fri Jul 27 07:23:04 UTC 2018 - jengelh@inai.de
+
+- Remove redundant %clean section. Replace unnecessary %__ macro
+  indirections. Fix erroneous description (was copy-pasted from
+  open-iscsi?)
+
+-------------------------------------------------------------------
+Mon Jul 16 18:41:00 UTC 2018 - lduncan@suse.com
+
+- Update SPEC file to correctly handle lib64 vs lib for ppc
+
+-------------------------------------------------------------------
+Sat Jun 16 01:21:58 UTC 2018 - lduncan@suse.com
+
+- Add "BuildRequires: modutils" to SPEC file, as required by
+  suse-policy-kmp-missing-supplements
+
+- Fix /usr/lib vs /usr/lib64 installation for the two shared
+  objects, adding patch:
+  * mnvtl--set-lib64-correctly.patch
+
+-------------------------------------------------------------------
+Tue May 22 21:59:11 UTC 2018 - lduncan@suse.com
+
+- Initial creation of package, from version 1.5-3_release
+
+-------------------------------------------------------------------

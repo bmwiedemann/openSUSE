@@ -1,0 +1,89 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e1e46416b3f991c0df5def54bc47cb0f</srcmd5>
+    <version>2.0.5+git20220502.d3c38d6</version>
+    <time>1651784783</time>
+    <user>dimstar_suse</user>
+    <comment>New package, see https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/LXKIX5G2IU5K3FJLMXVJS3HGDKAL4ID6/</comment>
+    <requestid>974967</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>13f1cbe8df5476dc69000599d130bc57</srcmd5>
+    <version>2.1.0+git20221004.e34a3ca</version>
+    <time>1666099317</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1010495</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cc4b2087738d4e978072dc00abe73a60</srcmd5>
+    <version>2.1.0+git20221103.03cc5ff</version>
+    <time>1667579896</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1033563</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>27e7c54d9c9899a8e7dae4fb1aba5946</srcmd5>
+    <version>2.1.0+git20221103.03cc5ff</version>
+    <time>1670259742</time>
+    <user>dimstar_suse</user>
+    <comment>- Adding 'Group' specification
+
+- Explicit to define BuildRequires pkgconfig(lua) &gt;= 5.4</comment>
+    <requestid>1040350</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>492ef303f0f3080b3e0d67911f5d8a38</srcmd5>
+    <version>2.1.1+git20221230.4e272c3</version>
+    <time>1673108383</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1056724</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0099ad4f6ed7bb2e6f26980d4d055d82</srcmd5>
+    <version>2.1.1+git20230805.3979730</version>
+    <time>1692379720</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.1.1+git20230805.3979730:
+  * ci(release): use lite-xl org (#1571)
+  * Make `DocView` aware of scrollbars sizes (#1177)
+  * Updated README.md as per PR comittee meeting #8.
+  * Updating the *Installing prebuild* section in README.md (#1548)
+  * Use proper timeouts for coroutines that don't need to wait (#1467)
+  * Normalize stroke before adding keybind (#1334)
+  * feat(src/renderer): unify fontgroup baseline (#1560)
+  * Fixed things for when a thread requests a redraw. (#1570)
+  * Documentation for core.command (#1564)
+  * docs(system): fix missing parameter for system.path_compare (#1566)
+  * Documentation for core.common (#1510)
+  * Updated extension for mac. (#1563)
+
+- Update to version 2.1.1+git20230710.76f23a2:
+  * feat(src/renderer): stream fonts with SDL_RWops on all platforms (#1555)
+  * Return state when tokenizing plaintext syntaxes
+  * style(src/renderer): use FreeType header names (#1554)
+  * Allow setting custom glyphset size (#1542)
+  * Skip checking `files` if no filename was provided to `syntax.get`
+  * Fix #1538 log scrolls automatically (the real PR) (#1546)
+  * comment typo in object.lua (#1541)
+  * Windows Installer Path Modification (#1536)
+  * Attach command buffer to Renderer Window (#1472)
+  * Increase number of loadable glyphsets (#1524)
+  * Add top tab margins (#1479)
+  * Show cursor at the start of the next line when selecting full lines (#761)
+  * Make `Doc:sanitize_position` return a more appropriate `col` (#1469)
+  * Revert &quot;core syntax: strip the path from filename on syntax.get (#1168)&quot; (#1322)
+  * Change AppID (#1187)</comment>
+    <requestid>1104471</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9789846773839f3c89dfbc251a02d8f6</srcmd5>
+    <version>2.1.2+git20231229.b68efcd</version>
+    <time>1704561110</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1137152</requestid>
+  </revision>
+</revisionlist>

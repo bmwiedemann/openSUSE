@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Fri Aug 30 14:13:36 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Initial standalone package version. Ocaml-mode was previously
+  part of the ocaml repository, but was split off for
+  Ocaml 4.08.0, https://github.com/ocaml/ocaml/pull/2182
+- Patches from ocaml package:
+  * ocaml-3.00-camldebug_el.patch
+  * ocaml-3.04-ocamltags--no-site-start.patch
+  * ocaml-3.09-emacs_localcompile.patch (rebased)

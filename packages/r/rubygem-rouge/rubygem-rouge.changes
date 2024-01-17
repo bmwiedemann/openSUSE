@@ -1,0 +1,181 @@
+-------------------------------------------------------------------
+Tue Nov 14 15:32:42 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
+
+- 4.2.0:
+
+This release introduce 2 new levers: Code Owners and Svelte.  In addition, we have also made some improvements across BPF, Dart, Elixir, Groovy, Python and Xoji lexer. Thank you for all the wonderful contributors ❤️ Happy lexing!
+
+**Full Changelog**: https://github.com/rouge-ruby/rouge/compare/v4.1.3...v4.2.0
+
+4.1.3:
+
+
+This release brings some improvements on IRB, XQuery, TypeSCript, HCL and Terraform Lexer. Thank you for all our wonderful contributors.
+
+**Full Changelog**: https://github.com/rouge-ruby/rouge/compare/v4.1.2...v4.1.3
+
+4.1.2:
+
+This small release includes some bug fixes across Wollok and Python lexer. 
+
+**Full Changelog**: https://github.com/rouge-ruby/rouge/compare/v4.1.1...v4.1.2
+
+4.1.1:
+
+This release introduces a number of bug fixes and enhancements across Dart, Dot, JavaScript, Liquid, Mosel, OpenEdge, PHP, Python, Ruby, Rush and Shell lexer. Thank you to everyone who has contributed to this release. Happy Lexing!
+
+4.1.0:
+
+Welcome to the first release of 2023! This release introduces a new lexer, Cisco IOS, and many fixes and enhancements across C#, CPP, JavaScript, PHP, Python and YAML lexer. We also address an issue with handling long paths in Windows and support a new dark variant of the GitHub theme.
+
+Thank you to everyone who has contributed to this release. It is wonderful to see some first-time contributors. May all your wishes come true in 2023!
+
+**Full Changelog**: https://github.com/rouge-ruby/rouge/compare/v4.0.1...v4.1.0
+
+4.0.1:
+
+This release introduces a number of updates and fixes across Coq, Gherkin, HTTP, Java, JavaScript, LLVM, Powershell, Praat, SystemD, Vala and YAML lexer.
+
+Thanks to all the contributors who help make Rouge better. On behalf of the Rouge maintainers, we wish you a season full of joy and magic and a bright New Year. 
+
+**Full Changelog**: https://github.com/rouge-ruby/rouge/compare/v4.0.0...v4.0.1
+
+
+
+-------------------------------------------------------------------
+Mon Oct 10 13:18:55 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 4.0.0
+  no changelog found
+
+-------------------------------------------------------------------
+Thu Aug  4 13:26:09 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 3.30.0
+  no changelog found
+
+-------------------------------------------------------------------
+Thu Jun 16 23:41:27 UTC 2022 - malcolmlewis@opensuse.org
+
+updated to version 3.29.0
+  no changelog found
+
+-------------------------------------------------------------------
+Thu Apr 28 05:46:16 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 3.28.0
+  no changelog found
+
+-------------------------------------------------------------------
+Tue Jan 25 07:29:15 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 3.27.0
+  no changelog found
+
+-------------------------------------------------------------------
+Wed Jan 20 13:15:11 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+updated to version 3.26.0
+  no changelog found
+
+-------------------------------------------------------------------
+Fri Sep 25 14:49:39 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+updated to version 3.23.0
+  no changelog found
+
+-------------------------------------------------------------------
+Thu May  7 21:25:27 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 3.18.0
+  no changelog found
+
+-------------------------------------------------------------------
+Mon Feb 10 15:38:33 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 3.15.0
+  no changelog found
+
+-------------------------------------------------------------------
+Fri Jul 19 09:33:37 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 3.6.0
+  no changelog found
+
+-------------------------------------------------------------------
+Thu Nov 22 05:34:13 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 3.3.0
+  no changelog found
+
+-------------------------------------------------------------------
+Wed Sep  5 10:38:26 UTC 2018 - coolo@suse.com
+
+- updated to version 3.2.1
+  no changelog found
+
+-------------------------------------------------------------------
+Thu Feb  8 07:53:02 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 3.1.1
+  no changelog found
+
+-------------------------------------------------------------------
+Tue Jan  9 07:44:15 UTC 2018 - coolo@suse.com
+
+- updated to version 3.1.0
+  no changelog found
+
+-------------------------------------------------------------------
+Wed Oct 11 06:16:11 UTC 2017 - coolo@suse.com
+
+- updated to version 3.0.0
+  no changelog found
+
+-------------------------------------------------------------------
+Mon Sep 11 12:51:52 UTC 2017 - coolo@suse.com
+
+- updated to version 2.2.1
+  no changelog found
+
+-------------------------------------------------------------------
+Thu Aug  3 19:38:06 UTC 2017 - coolo@suse.com
+
+- updated to version 2.1.1
+  no changelog found
+
+-------------------------------------------------------------------
+Tue Jun 13 20:54:22 UTC 2017 - coolo@suse.com
+
+- updated to version 2.1.0
+  no changelog found
+
+-------------------------------------------------------------------
+Fri Nov 18 05:36:55 UTC 2016 - coolo@suse.com
+
+- updated to version 2.0.7
+  no changelog found
+
+-------------------------------------------------------------------
+Thu Sep  8 04:49:07 UTC 2016 - coolo@suse.com
+
+- updated to version 2.0.6
+  no changelog found
+
+-------------------------------------------------------------------
+Wed Jul 20 04:32:23 UTC 2016 - coolo@suse.com
+
+- updated to version 2.0.5
+  no changelog found
+
+-------------------------------------------------------------------
+Fri Jul 15 04:38:20 UTC 2016 - coolo@suse.com
+
+- updated to version 2.0.3
+  no changelog found
+
+-------------------------------------------------------------------
+Sat Jul  9 05:50:43 UTC 2016 - coolo@suse.com
+
+- initial package
+

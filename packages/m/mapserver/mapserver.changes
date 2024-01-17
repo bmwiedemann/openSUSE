@@ -1,0 +1,659 @@
+-------------------------------------------------------------------
+Wed Sep 13 16:21:02 UTC 2023 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- update to 8.0.1
+  * PROJ_DATA set through config option: take into account
+    possibility of multiple paths separated by ; on Windows or : on
+    Unix
+  * Resolve a bunch of memory leaks, integer overflows, nullptr
+    dereferences, double-frees.
+  * Allow NULL shapes to be returned in WFS GetFeature requests
+  * Ensure POINT blocks do not contain too many points
+  * https://www.mapserver.org/development/changelog/changelog-8-0.html
+
+-------------------------------------------------------------------
+Sat Nov  5 22:40:24 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Enable PHP8 module build in Tumbleweed again since newer SWIG
+  is available. New subpackage php-mapscriptng emitted as a result.
+  [boo#1204736]
+
+-------------------------------------------------------------------
+Sat Oct  8 20:50:04 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 8
+  * MapServer now requires a config file. To get back mapserver7
+    behavior, copy /usr/share/doc/packages/mapserver/mapserver.conf
+    to mapserver.conf once.
+  * The shp2img utility has been renamed to map2img
+  * FlatGeobuf is now supported natively
+  * Initial OGC API support
+  * PHP native MapScript has been removed, in place of PHPNG
+    (SWIG) MapScript, and PHP unit tests have been re-enabled
+  * New labeling centerline GEOMTRANSFORM method for polygons
+  * Numerical validation of mapfile entries
+  * Removed various deprecated mapfile parameters
+  * New coshp utility to sort shapefile contents as well as sort
+    the associated qix spatial index.
+- Drop mapserver-7.6.1-fix_python_install_path.patch
+  (no longer applicable)
+
+-------------------------------------------------------------------
+Tue Jul 26 14:54:06 UTC 2022 - Boris Manojlovic <boris@steki.net>
+
+- re-enable postgresql support... 
+
+-------------------------------------------------------------------
+Wed Mar  9 12:06:56 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Make the package build on current Tumbleweed again:
+  * Disable PHP bindings (fails to build)
+  * Disable PostgreSQL (fails to configure)
+- Have mapserver-devel require the accompanying library
+
+-------------------------------------------------------------------
+Thu Nov 11 16:38:03 UTC 2021 - Boris Manojlovic <boris@steki.net>
+
+- update to release 7.6.4
+  * PostGIS: fix ST_Intersects() with collections with PostGIS < 2.5. 
+    Fixes https://github.com/MapServer/MapServer/pull/6355#issuecomment-877290417 (Even Rouault) : 3e42e35
+  * Check if sizeunits is not set to pixels (Patrik Sylve) : 3688004
+  * Change legend symbol scale factor when SIZEUNITS is set to METERS (Patrik Sylve) : 39a4ead
+  * spatialindex for sqlite sources in filter (Wouter Visscher) : 955d14e
+  * Make sure requested class with mode=legendicon is not negative. ( #6357 ) (Steve Lime) : 0901b57
+  * Updates to CONTRIBUTING.md (Jeff McKenna) : ee6297a
+  * PostGIS: fix ST_Intersects() with bounding box that is a point (follow-up of fixes #6181 , fixes #6230 ) 
+    (fixes https://github.com/MapServer/MapServer/pull/6347#issuecomment-870002856) (Even Rouault) : 44d5d9c
+  * WMS: make attribute color binding work with FILTER vendor parameter (fixes #6200 ) (Even Rouault) : 1a98ac7
+  * msQueryByFeatures(): avoid potential segfault when reslut set is empty (Even Rouault) : 98ad83a
+  * PostGIS: use ST_Intersects instead of && for bounding box (fixes #6181 , fixes #6230 ) (Even Rouault) : e2ef155
+  * check_single_font(): use quotation mark when msGetGlyphIndex() fails to retrieve the glyph (Even Rouault) : 53ee29e
+  * msGetGlyphByIndex() / msGetGlyphOutline(): tweak debug/error messages (Even Rouault) : 0bbf943
+  * When a font is missing a glyph we try to fallback to using a question mark (Krister Wicksell) : cf4756e
+  * WFS: fix paging with GPKG/Spatialite datasources and non-point geometries (fixes #6325 ) (Even Rouault) : ce8dc4d
+  * Fix querymap failure for polygon layers with labels only (no styles) ( #6262 ) (Tamas Szekeres) : 782ee8b
+  * mapxbase: validate nHeadLen (Max Kellermann) : ee5d5de
+  * mapshape, mapxbase: fix several memory leaks in error code paths (Max Kellermann) : 5e4c504
+  * mapshape: validate numshapes (Max Kellermann) : b5c0e29
+  * mapshape: remove useless null terminator (Max Kellermann) : 9755395
+
+-------------------------------------------------------------------
+Mon May 31 18:33:59 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 7.6.3
+  * Security: Address flaw in CGI mapfile loading that makes it
+    possible to bypass security controls ( CVE-2021-32062 )
+  * Fix most of remaining Coverity scan warnings with high priority
+  * Use CPLSetConfigOption/CPLGetConfigOption for some
+    CGI/FastCGI-related env vars.
+  * Require url-based symbol values to be pre-defined.
+  * Improved initial check on generating reference maps,
+    avoid crash with label styles
+  * Fix resource leak and pointObj initialization errors.
+- Enable python
+- Refresh mapserver-7.6.1-fix_python_install_path.patch
+
+-------------------------------------------------------------------
+Mon Feb  1 13:20:37 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.6.2
+  * Contour layer: take into account nodata value from GDAL raster
+  * WCS 1.1 and 2.0: fix support of netCDF output
+
+-------------------------------------------------------------------
+Wed Jan 20 01:15:24 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop BuildRequires on binary library packages; this is wrong.
+- Drop excessive runtime package requirements.
+
+-------------------------------------------------------------------
+Wed Dec 23 20:07:24 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Modernize and ready specfile for Factory
+
+-------------------------------------------------------------------
+Tue Sep  8 19:49:30 UTC 2020 - Boris Manojlovic <boris@steki.net>
+
+- add USE_PROJ to compile flags to enable reprojections (TILE support) 
+
+-------------------------------------------------------------------
+Sat Sep  5 09:14:07 UTC 2020 - Boris Manojlovic <boris@steki.net>
+
+- updated to latest version 7.6.1 
+- fix building on opensuse leap 15.X
+- added mapserver-7.6.1-fix_python_install_path.patch to fix
+  python install location defaulting to arch independent location
+- a lot of changes between versions please look at:
+  https://mapserver.org/development/changelog/changelog-7-6.html#changelog-7-6
+  and at this location:
+  https://github.com/mapserver/mapserver/blob/branch-7-6/HISTORY.TXT
+- security fixes from older versions: CVE-2020-10872 and CVE-2020-10873
+
+-------------------------------------------------------------------
+Fri May 17 09:05:04 UTC 2019 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- update to version 7.4.0
+  * MS RFC 117: PHP 7 MapScript Support Through SWIG
+  * native support for PHP 7 through mapscript (461f827)
+  * Fix potential cross-site scripting (XSS) security issue with
+    [layers] tag
+  * enhanced support for Python 3 mapscript through SWIG
+  * Allow compiling with PROJ 6, but full PROJ 6 support will be
+    included in the future MapServer 8 release (#5766)
+- Drop 5461.patch and cmake-3.12.patch included upstream
+
+-------------------------------------------------------------------
+Thu Sep 13 09:28:34 UTC 2018 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- update to final release
+- Fix build with newer cmake: cmake-3.12.patch
+
+-------------------------------------------------------------------
+Thu Jun  7 11:51:11 UTC 2018 - opensuse@dstoecker.de
+
+- update to 7.2.0-beta1 to support Leap 15.0
+  * Add 5461.patch to support PHP7
+  * support python3
+
+-------------------------------------------------------------------
+Fri Dec 15 08:37:40 UTC 2017 - opensuse@dstoecker.de
+
+- update to 7.0.7
+
+-------------------------------------------------------------------
+Wed Apr  5 15:59:16 UTC 2017 - opensuse@dstoecker.de
+
+- udate to Mapserver 7.0.4, drop all patches
+
+-------------------------------------------------------------------
+Tue Mar  8 07:02:53 UTC 2016 - ralf.habacker@freenet.de
+
+- Add xxxx-fix-python-mapscript-soversion-install-issue.patch to fix
+  broken installing of mapscript python module 
+- Exclude ruby from build for sles11 because of missing ruby dependencies
+- Use ruby-common as build dependency instead of outdated ruby-macros
+
+-------------------------------------------------------------------
+Fri Feb  5 14:22:24 UTC 2016 - guillaume@opensuse.org
+
+- Fix build when 'php_mapscript.so' is only file installed and no 
+  *.so.1 and *.so%{version} (Fix openSUSE 13.1 build)
+
+-------------------------------------------------------------------
+Fri Feb  5 14:10:02 UTC 2016 - guillaume@opensuse.org
+
+- Add giflib_5.1.0.patch to fix compilation with giflib 5.1.0+ 
+- Add swig_3.patch to fix compilation with swig 3
+
+-------------------------------------------------------------------
+Sat Aug 30 18:34:09 UTC 2014 - bruno@ioda-net.ch
+
+- packaging spec-cleaner
+- fixed compilation error with php 5.6.0  
+  upstream patch 4912-php56-php-input.patch
+  supported also php 5.5x
+- fixed blending tif error
+  upstream patch 4875-incorrect-blending-tif.patch
+
+-------------------------------------------------------------------
+Sun Mar 30 18:52:41 UTC 2014 - bruno@ioda-net.ch
+
+- use correct ruby rpm macros  
+
+-------------------------------------------------------------------
+Thu Jan  2 20:30:07 UTC 2014 - bruno@ioda-net.ch
+
+- updated to upstream 6.4.1  
+  http://mapserver.org/development/changelog/changelog-6-4.html#changelog-6-4-1 
+  full list of changes in 6.4.1
+
+- spec cleaning
+- modified patches:
+  * 4788.patch (upstream issue 4788) SOVERSION in CMakefile
+  * 4788-php-mapscript patch for php versionning
+  * 4788-python-mapscript patch for python versionning
+- deleted patches: (merged upstream)
+  * 4791.patch fix lib path install
+  * 4803.patch fix for force_st2d
+
+-------------------------------------------------------------------
+Mon Nov 18 14:05:34 UTC 2013 - bruno@ioda-net.ch
+
+- Added Requires proj (missing espg for tools otherwise)
+- Added upstream #4803 patch forcest2d  
+
+-------------------------------------------------------------------
+Thu Nov 14 15:27:13 UTC 2013 - bruno@ioda-net.ch
+
+- packaging : fix php mapscript name in mapscript.ini (symlink)
+- Added upstream #4788 patch versionning php-mapscript
+  Fix by removing buggy pre-post script
+- /srv/www/cgi-bin/ binaries as symlink to /usr/bin 
+
+-------------------------------------------------------------------
+Sun Nov  3 15:28:44 UTC 2013 - tzotsos@opensuse.org
+
+- Some minor spec cleanup
+
+-------------------------------------------------------------------
+Sat Oct 26 16:28:36 UTC 2013 - bruno@ioda-net.ch
+
+- packaging fix tab 
+- packaging fix php-mapscript 
+	rename php_mapscript.so to php_mapscript-%{version}.so 
+	(upstream bug in 6.4.0)
+	remove post check which remove php_mapscript.so 
+
+-------------------------------------------------------------------
+Sun Oct 13 14:33:33 UTC 2013 - bruno@ioda-net.ch
+
+- Use patch commit 4791 for fixing cmake_install_lib
+- split libmapserver to its own package
+  could be used by mapscript module alone 
+- add rpmlintrc with explanation for warning removal
+- Review licence part, description
+- Remove apache2-mod_php5 dependency which block usage on fcgid 
+  fastcgi mode 
+- Rename all mapscript package to fix naming policy and clarify 
+  what they are 
+- Added ruby mapscript package
+- Make all DWITH extension visible in the spec to be sure about
+  which one are activated or not
+
+-------------------------------------------------------------------
+Sun Apr 21 22:31:20 UTC 2013 - tzotsos@opensuse.org
+
+- Updated to v6.4.0 (see
+  http://mapserver.org/development/changelog/changelog-6-4.html#changelog-6-4-0
+  for a detailed description of the changes).
+- Switched to CMake
+
+-------------------------------------------------------------------
+Sun Apr 21 22:31:20 UTC 2013 - tzotsos@opensuse.org
+
+- Updated to v6.2.1
+
+    * Move #4577 fixes out of libmapserver (2013-04-18 10:55:23 +0200 - Thomas Bonfort)
+    * Exposed labelObj.text and labelObj.expression in PHP/MapScript (closes #4310) (2013-04-16 13:41:18 +0000 - Alan Boudreault)
+    * Fixed problems found in the mapfile.xsd while trying to convert current mapfiles into xmlmapfiles (2013-01-30 09:45:41 -0700 - Alex Wells)
+    * Ensure that msCopyLabel copies expression and text directives (2013-02-20 09:02:56 +0000 - Homme Zwaagstra)
+    * Updated submodule for #4633 (2013-04-12 18:56:44 +0200 - Thomas Bonfort)
+    * Update submodule for backported fix of #4633 (2013-04-12 18:32:53 +0200 - Thomas Bonfort)
+    * OGR WFS output: do not force null integer values to 0 (#4633) (2013-04-12 00:57:27 +0200 - Even Rouault)
+    * Fix for WMS requests with width and height of 1 (#4629) (2013-04-11 19:30:25 +0200 - Thomas Bonfort)
+    * Parse key value pairs sent in POST body (#4627) (2013-04-04 12:49:37 +0200 - Martin Kofahl)
+    * Add a script to run full test suite (build + test run) (2013-04-11 10:22:00 +0200 - Thomas Bonfort)
+    * update autotest submodule for #4625 and #4624 (2013-04-09 13:17:05 +0200 - Thomas Bonfort)
+    * Use ows_schemas_location for sld_capabilities ref (#4624) (2013-04-08 20:38:40 -0400 - Tom Kralidis)
+    * Update msautotests for #4622 (2013-04-08 11:56:34 +0200 - Thomas Bonfort)
+    * Don’t entity-encode URLs used on attributes: libxml2 does this for us. Refs #4622 (2013-04-05 09:38:25 +0200 - ejn)
+    * Fix cgi label commands after multi-label changes (#4621) (2013-04-03 13:54:43 +0200 - Thomas Bonfort)
+    * Ignore additional encodings in received content-type headers (#4585) (2013-03-29 10:22:05 -0400 - Thomas Bonfort)
+    * Fix PHP building when GD is disabled. Closes #4550 (2013-03-28 16:53:07 -0400 - Thomas Bonfort)
+    * CAIRO renderer fails to render some truetype symbols (#4616) (2013-03-27 11:34:22 +0100 - szekerest)
+    * Fix mapfile writer to write SVG symbols (#4607) (2013-03-21 22:05:02 +0100 - szekerest)
+    * Fix issues with wms_layer_group printing (#4533) (2013-03-04 21:49:36 +0100 - szekerest)
+    * Write CLASS validation to mapfile (#4596) (2013-03-04 17:06:05 +0100 - Thomas Bonfort)
+    * Mark disabled layers as processed to prevent from being displayed in nested groups (#4533) (2013-03-03 19:25:25 +0100 - szekerest)
+    * Don’t write GRATICULE connectiontype (#4165) (2013-02-28 10:20:24 +0100 - Thomas Bonfort)
+    * Add validation block to copy functions (#4596) (2013-02-27 17:39:39 +0100 - Thomas Bonfort)
+    * Fix for the segfault with WMS TIME patterns (#3795) (2013-02-22 23:08:36 +0100 - szekerest)
+    * Fix for the problem with filter when using WMS TIME parameters (#3795) (2013-02-22 21:51:13 +0100 - szekerest)
+    * Fix for the unsupported geometry type problem (#4591) (2013-02-21 19:38:30 +0100 - szekerest)
+    * #4528 : support for running mapscript tests without having to install core mapserver (2013-02-14 15:03:09 +0100 - Umberto Nicoletti)
+    * Fix rectObj/shapeObj draw function rendering when setting text property in mapscript (closes #4577) (2013-02-07 14:38:08 +0000 - Alan Boudreault)
+    * Fix rectObj->draw fails to render text in php/mapscript (#4577) (2013-02-06 20:57:59 +0000 - Alan Boudreault)
+    * Fix point->draw() fails when no LABEL defined (closes #4572) (2013-02-06 19:35:21 +0000 - Alan Boudreault)
+    * Modify msStyleSetGeomTransform to allow removing the transformation (#4580) (2013-02-03 22:13:08 +0100 - szekerest)
+    * Fix drawmode of rectObj->draw method in PHP/MapScript (2013-01-30 18:50:17 +0000 - Alan Boudreault)
+    * Modified mapfile.c for ticket #4568. (2013-01-22 12:29:02 -0600 - Steve Lime)
+    * Reapplied scaledenom fix (2013-01-10 15:52:18 +0000 - Alan Boudreault)
+    * Fix handling object ownership in msLoadMapFromString (#4551) (2013-01-05 18:43:39 +0100 - szekerest)
+    * Fix offset calculation for line legend icons (#2636) (2013-01-04 22:31:18 +0100 - szekerest)
+    * Fix symbolset initialization (#4556) (2013-01-02 22:37:35 +0100 - szekerest)
+    * Fix getCapabilities on maps with no layers (2012-12-18 20:39:40 +0000 - Jerome Villeneuve Larouche)
+    * msWMSGetCapabilities will not only check the MAP but every LAYERS. Fix for 4540 (2012-12-17 20:35:48 +0000 - Jerome Villeneuve Larouche)
+    * Don’t try to project pixel coordinates (#4537) (2012-12-13 12:14:38 +0100 - Martin Kofahl)
+    * Improve __sync_sub_and_fetch detection #4231 (2012-12-12 17:39:58 +0100 - Umberto Nicoletti)
+    * Backported pull request #4532: fix for oracle paging bug #4417 (2012-12-12 17:03:21 +0100 - Umberto Nicoletti)
+    * Suffix php mapscript lib with version number (#4525) (2012-12-11 11:35:02 +0100 - Thomas Bonfort)
+    * Fix proj version check (#4526) (2012-12-11 10:57:03 +0100 - Thomas Bonfort)
+    * Fix order of wms <Style> element in capabilities (#4529) (2012-12-11 10:46:25 +0100 - Thomas Bonfort)
+    * Remove redundant call to msDebugInitFromEnv (#4522) (2012-11-12 11:16:46 +0000 - Homme Zwaagstra)
+    * Fix thread safety issue in msLoadMapFromString (#4523) (2012-11-13 15:45:09 +0000 - Homme Zwaagstra)
+    * Fix problems with STYLEITEM (#4534) (2012-12-09 21:19:14 +0100 - szekerest)
+    * Backport patch #4231 which was left behind due to a mis-git-undertanding (2012-11-28 20:43:25 +0100 - Umberto Nicoletti)
+    * Get rid of the warning on missing $excode (2012-11-17 13:55:06 +0100 - szekerest)
+    * Add C# typemaps for style pattern (2012-11-17 12:48:13 +0100 - szekerest)
+
+-------------------------------------------------------------------
+Fri Apr 19 10:30:52 UTC 2013 - tzotsos@opensuse.org
+
+- Enabled openjpeg2 support since it is required from gdal-1.10
+
+-------------------------------------------------------------------
+Wed Nov 14 15:29:11 UTC 2012 - tzotsos@opensuse.org
+
+- Update to v6.2.0
+  Major new features:
+    MapServer Suite
+    INSPIRE View Services
+    Mask Layers
+    Precise Symbol Placement
+    Complex Multi Label/Symbol Symbology
+    Vector Fields
+    Label Leader Offsetting
+    SVG Symbology
+    Multiple Font Support
+
+-------------------------------------------------------------------
+Fri Oct 12 16:58:00 UTC 2012 - tzotsos@opensuse.org
+
+- Update to v6.2rc1
+- Enabled perl and java packages
+
+-------------------------------------------------------------------
+Thu Sep 27 21:20:46 UTC 2012 - tzotsos@opensuse.org
+
+- Update to v6.2beta4
+
+-------------------------------------------------------------------
+Thu Sep  6 18:41:56 UTC 2012 - tzotsos@opensuse.org
+
+- Update to v6.2beta3
+
+-------------------------------------------------------------------
+Sat Jul  7 18:05:14 UTC 2012 - tzotsos@opensuse.org
+
+- Update to v6.2beta1
+
+-------------------------------------------------------------------
+Tue Jun 26 12:17:45 UTC 2012 - tzotsos@opensuse.org
+
+- Enabled Python
+
+-------------------------------------------------------------------
+Fri Jun 22 14:20:04 UTC 2012 - tzotsos@opensuse.org
+
+- testing 6.1.dev version
+TODO: Add support for Python, Perl, Java
+
+-------------------------------------------------------------------
+Tue May 22 19:56:53 UTC 2012 - tzotsos@opensuse.org
+
+- Fix creation of a vector symbolObj in mapscript (#4318)
+- Added coverage metadata in WCS (#4306)
+- Adjusted WCS 2.0 GetCapbilities response (#4003)
+- Ignore unknown requets parameteres in WCS 2.0 (#4307).
+- Fixed mapscript is unusable in a web application due to memory leaks
+(#4262)
+- Fixed getFeature request with custom output format fails on filter
+encoding (#4190)
+- Fixed resolution when UoM changes in WCS 2.0 (#4283)
+- Added missing DEFRESOLUTION parameter to msCopyMap() function (#4272)
+- Fixed Python MapScript layerObj/classObj Error (#3940)
+- Fixed WCS 2.0 axis order, offset vector, and origin (#4006, #4191)
+- Fixed PHP MapScript opacity property of StyleObj no longer works (#3920)
+- Added MS_CJC_* constants in PHP/MapScript (#4183)
+- Fixed Memory leak with fribidi strings (#4188)
+- Added missing properties in styleObj setter of PHP/MapScript (#3901)
+
+-------------------------------------------------------------------
+Sun Apr 22 07:49:04 UTC 2012 - tzotsos@opensuse.org
+
+- fixed SLE_11 SP1 build
+
+-------------------------------------------------------------------
+Tue Apr 17 21:42:26 UTC 2012 - tzotsos@opensuse.org
+
+- updated to new upstream version of mapserver 6.0.2 (see
+  http://trac.osgeo.org/mapserver/browser/tags/rel-6-0-2/mapserver/HISTORY.TXT
+  for a detailed description of the changes.)
+
+-------------------------------------------------------------------
+Mon Jan 30 17:48:35 UTC 2012 - dassau@gbd-consult.de
+
+- added XTRALIBS=-ldl as configure option 
+
+-------------------------------------------------------------------
+Wed Nov 23 15:09:01 UTC 2011 - opensuse@dstoecker.de
+
+- fix build
+
+Fri Sep 30 00:00:00 UTC 2011 - stephan.holl@intevation.de
+-------------------------------------------------------------------
+
+- updated to new upstream version of mapserver 6.0.1 (see
+  http://trac.osgeo.org/mapserver/browser/tags/rel-6-0-1/mapserver/HISTORY.TXT
+  for a detailed description of the changes.
+
+Fri May 27 00:00:00 UTC 2011 - stephan.holl@intevation.de
+-------------------------------------------------------------------
+
+- included the patch from #3877 to make it build
+
+Mon May 16 00:00:00 UTC 2011 - stephan.holl@intevation.de
+-------------------------------------------------------------------
+
+- updated to new upstream version of mapserver 6.0.0 (see
+  http://trac.osgeo.org/mapserver/browser/tags/rel-6-0-0/mapserver/HISTORY.TXT
+  for a detailed description of the changes.
+
+Fri May 06 00:00:00 UTC 2011 - stephan.holl@intevation.de
+-------------------------------------------------------------------
+
+- updated with new upstream release 6.0.0-rc2
+
+Sat Apr 30 00:00:00 UTC 2011 - tzotsos@opensuse.org
+-------------------------------------------------------------------
+
+- updated with new upstream release 6.0.0-rc1.
+
+Sun Apr 24 00:00:00 UTC 2011 - tzotsos@opensuse.org
+-------------------------------------------------------------------
+
+- updated with new upstream release 6.0.0-beta7.
+
+Thu Apr 14 00:00:00 UTC 2011 - stephan.holl@intevation.de
+-------------------------------------------------------------------
+
+- updated with new upstream release 6.0.0-beta6.
+
+Thu Apr 07 00:00:00 UTC 2011 - stephan.holl@intevation.de
+-------------------------------------------------------------------
+
+- updated with new upstream release 6.0.0-beta5; in the meanwhile
+  python-support was repaired by someone else (dstoecker, adrianSuSE).
+  Kudos to them.
+
+Fri Mar 11 00:00:00 UTC 2011 - stephan.holl@intevation.de
+-------------------------------------------------------------------
+
+- updated with new upstream release 6.0.0-beta1
+
+Sun Feb 27 00:00:00 UTC 2011 - tzotsos@opensuse.org
+-------------------------------------------------------------------
+
+- fixed python package
+
+Mon Jan 24 00:00:00 UTC 2011 - stephan.holl@intevation.de
+-------------------------------------------------------------------
+
+- added bug3525_verbose_output.patch to make EXCEPTIONS-output more
+  verbose
+
+Tue Jan 18 00:00:00 UTC 2011 - stephan.holl@intevation.de
+-------------------------------------------------------------------
+
+- udated to new upstream version of mapserver 5.6.6(see
+  http://trac.osgeo.org/mapserver/browser/tags/rel-5-6-6/mapserver/HISTORY.TXT
+  for a detailed description of the changes.
+- removed patch for bug #3525 since this is already included in upstreams
+  version 5.6.5
+
+Tue Jan 11 00:00:00 UTC 2011 - stephan.holl@intevation.de
+-------------------------------------------------------------------
+
+- added upstream-patch for mapserver bug #3525 to work reliably with WMS
+  1.3.0 and FCGI-mode
+
+Mon Dec 06 00:00:00 UTC 2010 - stephan.holl@intevation.de
+-------------------------------------------------------------------
+
+- added --with-experimental-png-compile-flag
+
+Wed Oct 13 00:00:00 UTC 2010 - stephan.holl@intevation.de
+-------------------------------------------------------------------
+
+- added a patch to hide layers from GetCapabilitites-Output. Use
+  Metadataentry 'OWS_HIDDEN_LAYER' 'true' inside your layer
+- added Fastcgi-Support
+
+Tue Aug 10 00:00:00 UTC 2010 - stephan.holl@intevation.de
+-------------------------------------------------------------------
+
+- updated to new upstream version of mapserver 5.6.5(see
+  http://trac.osgeo.org/mapserver/browser/tags/rel-5-6-5/mapserver/HISTORY.TXT
+  for a detailed description of the changes.
+
+Fri Mar 08 00:00:00 UTC 2010 - stephan.holl@intevation.de
+-------------------------------------------------------------------
+
+- updated to new upstream version of mapserver 5.6.3(see
+  http://trac.osgeo.org/mapserver/browser/tags/rel-5-6-3/mapserver/HISTORY.TXT
+  for a detailed description of the changes.
+
+Mon Jan 11 00:00:00 UTC 2010 - stephan.holl@intevation.de
+-------------------------------------------------------------------
+
+- updated to new upstream version of mapserver 5.6.1(see
+  http://trac.osgeo.org/mapserver/browser/tags/rel-5-6-1/mapserver/HISTORY.TXT
+  for a detailed description of the changes.
+
+Wed Dec 16 00:00:00 UTC 2009 - stephan.holl@intevation.de
+-------------------------------------------------------------------
+
+- updated to new upstream version of mapserver 5.6.0
+ (see http://trac.osgeo.org/mapserver/browser/tags/rel-5-6-0/mapserver/HISTORY.TXT
+ for a detailed description of the changes.
+
+Wed May 06 00:00:00 UTC 2009 - stephan.holl@intevation.de
+-------------------------------------------------------------------
+
+- updated to new upstream version of mapserver 5.4.0
+  (see http://trac.osgeo.org/mapserver/browser/tags/rel-5-4-0/mapserver/HISTORY.TXT
+  for a detailed description of the changes.
+- This release fixes several security vulnerabilities:
+  http://trac.osgeo.org/mapserver/ticket/2939
+  http://trac.osgeo.org/mapserver/ticket/2941
+  http://trac.osgeo.org/mapserver/ticket/2942
+  http://trac.osgeo.org/mapserver/ticket/2943
+  http://trac.osgeo.org/mapserver/ticket/2944
+- tweaked the specfile for the new relase a little
+- make java using version 1.5 also for OpenSuSE 11.0
+
+Wed Dec 04 00:00:00 UTC 2008 - stephan.holl@intevation.de
+-------------------------------------------------------------------
+
+- updated to new upstream release of mapserver 5.2.1
+  (see http://trac.osgeo.org/mapserver/browser/tags/rel-5-2-1/mapserver/HISTORY.TXT
+  for a detailed description of the changes
+
+Wed Oct 22 00:00:00 UTC 2008 - stephan.holl@intevation.de
+-------------------------------------------------------------------
+
+- removed --with-tiff-option based on a hint from Andreas Hirner.
+  See http://n2.nabble.com/Re:-unable-to-read-TIF-with-mapserver-5.3dev-td738238.html
+  for more information
+
+Tue Aug 28 00:00:00 UTC 2008 - stephan.holl@intevation.de
+-------------------------------------------------------------------
+
+- changed path of mapscript-module
+- added dependency of apache2_mod-php5 to php-mapserver
+
+Tue Aug 26 00:00:00 UTC 2008 - stephan.holl@intevation.de
+-------------------------------------------------------------------
+
+- updated to build on SLE_10 x32-plattforms
+- updated path to php_mapscript.so
+- updated path to mapserv
+- added legend, scalebar
+* Sun Mar 16 2008 Otto Dassau 5.0.2
+- adapted to compile on openSUSE build service
+- java and python is not build included
+
+Tue Feb 19 00:00:00 UTC 2008 - rel-eng@fedoraproject.org
+-------------------------------------------------------------------
+
+- Autorebuild for GCC 4.3
+
+Sat Feb 9 00:00:00 UTC 2008 - devrim@commandprompt.com
+-------------------------------------------------------------------
+
+- Update to 5.0.2
+
+Sat Jan 5 00:00:00 UTC 2008 - devrim@commandprompt.com
+-------------------------------------------------------------------
+
+- Update BR for java-devel, per Patrice Dumas
+
+Fri Jan 4 00:00:00 UTC 2008 - devrim@commandprompt.com
+-------------------------------------------------------------------
+
+- Update to 5.0.0
+- Removed patch0, since it is already in upstream.
+- Updated BRs
+
+Thu Dec 06 00:00:00 UTC 2007 - rel-eng@fedoraproject.org
+-------------------------------------------------------------------
+
+- Rebuild for deps
+
+Thu Aug 30 00:00:00 UTC 2007 - oliver@linux-kernel.at
+-------------------------------------------------------------------
+
+- Add fix to include libmapserver (in some places), instead of
+  libmap, that doesn't exist (anymore)
+
+Thu Aug 30 00:00:00 UTC 2007 - oliver@linux-kernel.at
+-------------------------------------------------------------------
+
+- Update to fix bz#256561, CVE-2007-4542
+
+Fri May 11 00:00:00 UTC 2007 - cbalint@redhat.com
+-------------------------------------------------------------------
+
+- update require list properly.
+
+Thu May 10 00:00:00 UTC 2007 - cbalint@redhat.com
+-------------------------------------------------------------------
+
+- use macros if possible in spec
+
+Thu May 10 00:00:00 UTC 2007 - cbalint@redhat.com
+-------------------------------------------------------------------
+
+- further fixups for inclusion
+
+Thu May 10 00:00:00 UTC 2007 - cbalint@redhat.com
+-------------------------------------------------------------------
+
+- new upsream tarball (bugfix)
+- further fixups for inclusion
+
+Tue Apr 24 00:00:00 UTC 2007 - cbalint@redhat.com
+-------------------------------------------------------------------
+
+- further fixups for inclusion
+- enable java
+
+Fri Mar 16 00:00:00 UTC 2007 - cbalint@redhat.com
+-------------------------------------------------------------------
+
+- add docs
+
+Fri Mar 16 00:00:00 UTC 2007 - cbalint@redhat.com
+-------------------------------------------------------------------
+
+- first package

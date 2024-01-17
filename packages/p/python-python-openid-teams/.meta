@@ -1,0 +1,5 @@
+<package name="python-python-openid-teams" project="openSUSE:Factory">
+  <title>python-python-openid-teams</title>
+  <description>Teams extension implementation for python-openid</description>
+  <devel project="devel:languages:python" package="python-python-openid-teams"/>
+</package>

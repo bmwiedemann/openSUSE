@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1c14d0d4295d4a54067edf0fdefe99a5</srcmd5>
+    <version>1.10.0</version>
+    <time>1613774953</time>
+    <user>dimstar_suse</user>
+    <comment>Rename php7-maxminddb to php-maxminddb/</comment>
+    <requestid>873880</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e63f7d754456318521dcfbe14a68a89c</srcmd5>
+    <version>1.10.1</version>
+    <time>1618610499</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>885759</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6f819f844b0ba48f0941c815896b31e2</srcmd5>
+    <version>1.11.0</version>
+    <time>1636577195</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>930600</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>c7cb001eb739844475384976b24859c5</srcmd5>
+    <version>1.11.0</version>
+    <time>1670863217</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1042380</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f67eb2c2938d54f0b7a58c296569d872</srcmd5>
+    <version>1.11.1</version>
+    <time>1701902929</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1131311</requestid>
+  </revision>
+</revisionlist>

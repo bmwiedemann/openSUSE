@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4292f9be0dbddfb491d7fc3ba8d0804a</srcmd5>
+    <version>0.29.36</version>
+    <time>1692379648</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1103746</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1dfd95bbad644ec7942b2448845a8e86</srcmd5>
+    <version>0.29.36</version>
+    <time>1704491959</time>
+    <user>dimstar_suse</user>
+    <comment>- require setuptools
+
+    resolved if the for-loop's  ``else:`` branch executes
+    track these dependencies.
+    would trigger C compiler warnings with tracing support enabled.
+- Drop cython_use_imgmath.patch
+- Update to 0.29.22
+ * Remove an incorrect cast when using true-division in C++ operations.
+ * C compile errors with CPython 3.8 were resolved.
+  needed by Ceph - stopgap measure until issue can be addressed
+    of the main source file.
+- Remove Cython-fix-version-detection.patch
+  detecting Cython's presence.  It is already merged upstream and
+  Note that despite what upstream says,
+  this, which is why the patch is going here instead of
+  * For loop docs fix and pointer iteration.
+  * Py2.4 fix: PySet_Pop() appeared in Py2.5</comment>
+    <requestid>1136306</requestid>
+  </revision>
+</revisionlist>

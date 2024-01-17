@@ -1,0 +1,16 @@
+Index: setroubleshoot-3.3.31/src/Makefile.am
+===================================================================
+--- setroubleshoot-3.3.31.orig/src/Makefile.am
++++ setroubleshoot-3.3.31/src/Makefile.am
+@@ -110,8 +110,8 @@ python-build:
+ 	$(PYTHON) setup.py build
+ 
+ install-exec-hook:
+-	$(PYTHON) -m pip install `test -n "$(DESTDIR)" && echo --root $(DESTDIR)` \
+-	`test -n "$(PREFIX)" && echo --prefix $(PREFIX)` .
++	$(PYTHON) setup.py install `test -n "$(DESTDIR)" && echo --root $(DESTDIR)` \
++	`test -n "$(PREFIX)" && echo --prefix $(PREFIX)`
+ 
+ uninstall-hook:
+-	$(PYTHON) -m pip uninstall `test -n "$(DESTDIR)" && echo --root $(DESTDIR)` -y setroubleshoot
++	$(PYTHON) setup.py uninstall `test -n "$(DESTDIR)" && echo --root $(DESTDIR)`

@@ -1,0 +1,77 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1edcb0d2aa44a1249268714eb8a8bb7c</srcmd5>
+    <version>2.9.1</version>
+    <time>1586641623</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>793059</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b9ff0b099f6121882c50f11de27c5e68</srcmd5>
+    <version>4.0.0</version>
+    <time>1597221078</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>825739</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d0dc235cd04415a07458549b9758b7f3</srcmd5>
+    <version>4.1.1</version>
+    <time>1642273517</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.1.1:
+  * Support flake8 4.x
+  * Switch from travis-ci to github actions
+  * Drop python 2.7 support and 3.5 as well</comment>
+    <requestid>946647</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3360d34dccf7f25448f8d52854689a26</srcmd5>
+    <version>4.2.0</version>
+    <time>1665591951</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010145</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d8a4749f30ec9b63ca3c584b015b0f0c</srcmd5>
+    <version>6.0.0</version>
+    <time>1672754707</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.0.0:
+  * Drop isort 4.x support.
+  * Add support for flake8 6.0.0.
+  * Add `--isort-no-skip-gitignore` option to allow temporarily overriding
+    the set
+  value of isort's `skip_gitignore` option with `False`. This can cause
+  flake8-isort to run significantly faster at the cost of making flake8-isort's
+  behavior differ slightly from the behavior of `isort --check`. [gschaffner]
+  * Fix broken `add_options` method [casperdcl]
+  * Improve the config option is added and read back. [gforcada]
+  * Bump plugin version. [gforcada]
+  * Update dependencies. [gforcada]
+  * Revamp GitHub actions. [gforcada]
+  * Drop python 3.6, and add python 3.10. [gforcada]
+  * Use linters and formatters to keep code sane and beautiful. [gforcada]</comment>
+    <requestid>1046243</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>60a0f4639684fe38180a25a38fbd2197</srcmd5>
+    <version>6.1.1</version>
+    <time>1701902879</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.1.1:
+  * Switch from `setup.cfg` to `setup.py`.
+  * Switch from `setuptools` to `hatchling`.
+  * Drop python 3.7 support.
+  * Add preliminary support to Python 3.12.
+
+- update to 4.2.0
+  * Work around FailedToLoadPlugin exception by requiring isort 4.x.
+    Likewise, pin the major version of all dependencies, to reduce
+    risk of any future incompatibilities. [pkolbus]
+    try to find it. [jnns]</comment>
+    <requestid>1131191</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,6 @@
+<package name="bzrtp" project="openSUSE:Factory">
+  <title>ZRTP keys exchange protocol implementation</title>
+  <description>bzrtp is a FOSS implementation of ZRTP keys exchange protocol.
+The library written in C 89, is fully portable, and can be executed on many platforms including x86 and ARM processors.</description>
+  <devel project="network:telephony" package="bzrtp"/>
+</package>

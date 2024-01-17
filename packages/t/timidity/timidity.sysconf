@@ -1,0 +1,25 @@
+## Path:           Sound/MIDI
+## Description:    TiMidity++ ALSA midi emulation settings
+## Type:           string
+## Default:        "-iAq -B2,8 -Os1l -s 44100"
+#
+
+## Type:           string
+## Default:        "-iAq"
+## ServiceRestart: timidity
+#
+# Parameters for alsaseq
+#
+TIM_ALSASEQPARAMS="-iAq"
+
+## Type:           string
+## Default:        "-B2,8 -Os1l -s 44100"
+## ServiceRestart: timidity
+#
+# Default parameters to start as aseq backend
+# Explanation and more parameters: use 'man timidity'
+# Also recommended to install the packages: fluid-soundfont-gm
+# and fluid-soundfont-gs and remove the corresponding
+# comment # in /usr/share/timidity/timidity.cfg
+#
+TIM_STARTUP="-B2,8 -Os1l -s 44100"

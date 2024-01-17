@@ -1,0 +1,27 @@
+From 658f4e8069bb7da41297a085cb6e5c0256be455a Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Mon, 27 Aug 2018 05:47:07 +0200
+Subject: [PATCH] Sort input file list
+
+so that openSUSE's python-dukpy-kovidgoyal package builds in a
+reproducible way, in spite of indeterministic filesystem readdir order
+and http://bugs.python.org/issue30461
+
+See https://reproducible-builds.org/ for why this is good.
+---
+ setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index e815708..71b705a 100755
+--- a/setup.py
++++ b/setup.py
+@@ -8,7 +8,7 @@
+ if not hasattr(sys, 'getwindowsversion'):
+     cflags.append('-fvisibility=hidden')
+ 
+-sources = glob.glob('src/*.c') + glob.glob('src/duktape/*.c')
++sources = sorted(glob.glob('src/*.c') + glob.glob('src/duktape/*.c'))
+ version = '0.3'
+ 
+ if __name__ == '__main__':

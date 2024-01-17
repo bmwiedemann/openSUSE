@@ -1,0 +1,10 @@
+[Unit]
+Description=PPPoE Server.
+After=syslog.target
+
+[Service]
+Group=dialout
+ExecStart=/usr/sbin/pppoe-server
+
+[Install]
+WantedBy=multi-user.target

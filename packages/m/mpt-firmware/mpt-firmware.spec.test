@@ -1,0 +1,86 @@
+#
+# spec file for package mpt-firmware (Version 1.0)
+#
+# Copyright (c) 2006 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# This file and all modifications and additions to the pristine
+# package are under the same license as the package itself.
+#
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
+#
+
+# norootforbuild
+
+Name:            mpt-firmware
+Summary:         Configuration files for autoloading mptctl at boot time.
+Version:         1.0
+Release:         1
+Vendor:          LSI Logic
+License:         GPL
+Group:           Hardware/Other
+BuildRequires:   sysconfig
+Requires:        sysconfig
+BuildArch:       noarch
+BuildRoot:       %{_tmppath}/%{name}-%{version}-build
+Source0:         hwcfg-mptspi
+Source1:         hwcfg-mptsas
+Source2:         hwcfg-mptfc
+# Module: mptspi.ko
+Supplements: modalias(pci:v00001000d00000030sv*sd*bc*sc*i*)
+Supplements: modalias(pci:v00001000d00000032sv*sd*bc*sc*i*)
+# Module: mptfc.ko
+Supplements: modalias(pci:v00001000d00000621sv*sd*bc*sc*i*)
+Supplements: modalias(pci:v00001000d00000624sv*sd*bc*sc*i*)
+Supplements: modalias(pci:v00001000d00000622sv*sd*bc*sc*i*)
+Supplements: modalias(pci:v00001000d00000628sv*sd*bc*sc*i*)
+Supplements: modalias(pci:v00001000d00000626sv*sd*bc*sc*i*)
+Supplements: modalias(pci:v00001000d00000642sv*sd*bc*sc*i*)
+Supplements: modalias(pci:v00001000d00000640sv*sd*bc*sc*i*)
+Supplements: modalias(pci:v00001000d00000646sv*sd*bc*sc*i*)
+# Module: mptsas.ko
+Supplements: modalias(pci:v00001000d00000050sv*sd*bc*sc*i*)
+Supplements: modalias(pci:v00001000d0000005Esv*sd*bc*sc*i*)
+Supplements: modalias(pci:v00001000d00000054sv*sd*bc*sc*i*)
+Supplements: modalias(pci:v00001000d00000056sv*sd*bc*sc*i*)
+Supplements: modalias(pci:v00001000d0000005Asv*sd*bc*sc*i*)
+Supplements: modalias(pci:v00001000d00000058sv*sd*bc*sc*i*)
+# end of supplements list
+
+%prep
+# There is nothing to prepare
+
+%build
+# There is nothing to build
+
+%install
+spi_pid="0030 0032"
+sas_pid="0050 0054 0056 0058 0062"
+fc_pid="0622 0624 0626 0628 0640 0646"
+mkdir -p $RPM_BUILD_ROOT/etc/sysconfig/hardware
+for pid in $spi_pid; do
+    cp %{S:0} $RPM_BUILD_ROOT/etc/sysconfig/hardware/hwcfg-vpid-1000-$pid
+done
+for pid in $sas_pid; do
+    cp %{S:1} $RPM_BUILD_ROOT/etc/sysconfig/hardware/hwcfg-vpid-1000-$pid
+done
+for pid in $fc_pid; do
+    cp %{S:2} $RPM_BUILD_ROOT/etc/sysconfig/hardware/hwcfg-vpid-1000-$pid
+done
+
+%description
+This package contains hwcfg-files that autoload
+the mptctl ioctl driver at boot time.
+The mptctl driver is ioctl character driver
+for the LSI Logic Fusion-MPT Architecture parts.
+These include the Ultra320 53C1030, 53C1020 and the Fiber
+Channel FC909, FC919, FC929, FC919X and FC929X adapters.
+SAS1064, and SAS1068 adapters.
+
+%files
+%defattr(0644,root,root)
+/etc/sysconfig/hardware/*
+
+%changelog
+* Tue Oct 17 2006 Hannes Reinecke <hare@suse.de>
+ -Create files dynamically
+* Tue Sep 12 2006 Eric Moore <Eric.Moore@lsil.com>
+ -Initial creation of this rpm.

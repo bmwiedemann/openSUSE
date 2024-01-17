@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Tue Jul 11 14:44:29 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- fix wrong URL for src.zip file that contains the sources for the
+  bin files, that are being compiled during package build
+
+-------------------------------------------------------------------
+Thu Jun 29 08:45:33 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- Build from source
+
+-------------------------------------------------------------------
+Fri May 12 12:56:09 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package python-libusbsio, required by pynitrokey

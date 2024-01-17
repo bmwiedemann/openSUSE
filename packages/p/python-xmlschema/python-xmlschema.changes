@@ -1,0 +1,303 @@
+-------------------------------------------------------------------
+Mon May 22 21:24:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.0:
+  * Improve sequence/all restriction checks for XSD 1.1
+  * Add *schema* argument to `Wsdl11Document`
+
+-------------------------------------------------------------------
+Fri Apr 21 12:39:03 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Sun Apr 16 08:16:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.3:
+  * Add support for Python 3.12
+  * Detach content iteration methods from ModelVisitor
+
+-------------------------------------------------------------------
+Mon Mar 27 08:24:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.2:
+  * Fix mixed content extension with empty content (issue #337)
+  * Fix lru_cache() usage on global maps caching
+  * Fix mixed content extension without explicit mixed attribute
+    (issue #334)
+
+-------------------------------------------------------------------
+Fri Feb 10 12:46:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.0:
+  * Refine string serialization of XML resources and data
+    elements
+  * Switch to use elementpath v4
+  * Fix sequence_type property for XSD types
+  * Remove *XsdElement.get_attribute()*: unused and doesn't work
+    as expected
+
+-------------------------------------------------------------------
+Mon Oct  3 16:12:06 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.1:
+  * Fix *schema_path* usage in `XMLSchemaBase.iter_errors()`
+  * Add *allow_empty* option to `XMLSchemaBase` validation API
+
+-------------------------------------------------------------------
+Thu Sep 29 08:47:56 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Update to 2.1.0:
+  * Add to_etree() to document API
+  * Improve generic encoding with wildcards
+  * Clean document API and schema decoding
+- Update to 2.0.4:
+  * Add use_location_hints argument to document API for giving the option
+    of ignoring XSI schema locations hints
+  * Fix import from locations hints with namespace mismatch (issue #324)
+- Update to 2.0.3:
+  * Add keep_empty and element_hook options to main iter_decode() method
+  * Fix default namespace mapping in BadgerFishConverter
+  * Fix type restriction check if restricted particle has maxOccurs==0 (issue #323)
+- Update to 2.0.2:
+  * Fix XSD 1.1 assertions effective scope
+  * Add support for Python 3.11
+- Update to 2.0.1:
+  * Remove warnings during the build of the package using package_data specs in setup.py
+  * Fix decoding with process_namespaces=False and xsi:type in XML instance
+  * Refactor DataElement.get(), restore DataElement.set() (issue #314)
+  * Add map_attribute_names argument to DataElementConverter
+- Update to 2.0.0:
+  * Refactor XPath interface for the full XPath node implementation of elementpath v3.0
+  * Fix BadgerFishConverter with mixed content (issue #315)
+  * Improve get() and set() of DataElement (issue #314)
+- Update to 1.11.3:
+  * Fix invalid element not detected with empty particle (issue #306)
+  * Fix Sphinx warnings (issue #305)
+- Update to 1.11.2:
+  * Fix 'replace_existing' argument usage in XsdElement.get_binding method (issue #300)
+  * Add Russian full translation (from PR #303 and #304)
+- Update to 1.11.1:
+  * Protect converter calls in iter_decode()/iter_encode()
+  * Extend XSD type matching for code generators
+- Update to 1.11.0:
+  * Add localization for XSD parsing and validation related error messages
+  * Add full Italian translation
+  * Add Russian partial translation (from PR #293)
+- Update to 1.10.0:
+  * Add 'nonlocal' option to defuse argument of XMLResource (also for schema classes)
+  * Add 'none' option to allow argument of XMLResource
+  * Fix too strict parsing on XSD annotations (issue 287)
+  * Drop support for Python 3.6
+
+-------------------------------------------------------------------
+Mon Jan  3 12:40:27 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9.2:
+  * Fix for global simple type naming
+  * Improve error reporting for encoded data
+  * Fix attribute duplicates in attribute group
+  * Add process_skipped optional argument to decoding/encoding
+  * Add iter_decode() to document level API
+  * Enhance XMLResource class adding usage of pathlib.Path objects
+    for source and base_url arguments
+  * Fix for issue #273
+
+-------------------------------------------------------------------
+Mon Nov 29 20:24:54 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.2:
+  * Fix type annotation of XMLSchema source argument  
+  * Near compliance with strict type annotations
+  * Removed ModelGroup class, merged with XsdGroup
+  * Some optimizations and fixes from static analysis
+
+-------------------------------------------------------------------
+Sat Oct 16 19:22:26 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.0:
+  * Refactor XMLSchemaMeta deprecating BUILDER attribute
+  * Extend type annotations to package API
+  * Add static typing tests with checked mypy runs
+  * Activate mypy checks for package
+  * Fix for issues #257 and #259
+  * Make XSD annotation parsing lazy
+  * Add lazy annotations to schema instances
+  * Add get_annotation() method to multiple-facets classes (issue #255)
+- drop remove_shebang.patch (upstream)
+
+-------------------------------------------------------------------
+Thu Jun 17 21:22:48 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.4:
+  * Add testing config for Python 3.10 (Tox and CI)
+  * Fix internal _PurePath class with Python 3.10 (issue #251)
+  * Remove redundant xmlns="" declaration when encoding with lxml (issue #252)
+  * Refactor normalize_url() using pathlib.PurePath
+  * Support UNC paths (issue #246)
+  * Fix API docs (issue #248)
+  * Fix for issue #245 (key/keyref with dynamic types)
+  * Change default decoding of mixed content with only text to a string
+    instead of a dictionary (issue #242)
+
+-------------------------------------------------------------------
+Tue May 18 21:44:06 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.1:
+  * Add multi-source initialization and add_schema() to schema class
+  * Add bytes strings to accepted XML sources (issue #238)
+  * XML data bindings and code generators are now considered stable
+  * Add arguments 'max_depth' and 'extra_validator' to validation methods
+  * Enhance decoding with 'value_hook' argument
+  * Remove unnecessary bindings with schema proxy from ElementPathMixin
+    to avoid conflicts when schema is used by an XPath 3 parser
+  * Fix schema logger (issue #228)
+
+-------------------------------------------------------------------
+Thu Apr 22 19:36:20 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.2:
+  * Improve empty content checking
+  * Fix simple content restriction of xs:complexType
+  * Fix facets retrieving for xs:complexType with simple content
+
+-------------------------------------------------------------------
+Mon Mar  1 04:01:36 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.5.1:
+  * Optimize NamespaceView read-only mapping
+  * Add experimental XML data bindings with a DataBindingConverter
+  * Add experimental PythonGenerator for static codegen with Jinja2
+  * Add DataElement class for creating objects with schema bindings
+  * Add DataElementConverter for decode to structured objects
+  * Add an experimental abstract base class for building jinja2 based
+    code generators (jinja2 as an optional dependency)
+  * Add decoding of binary datatypes (xs:hexBinary and xs:base64Binary)
+  * Fix encoding from string values for some builtin datatypes
+    (decimal, binary, duration and datetime)
+  * Include the pull request #220 (fix xml.etree import)
+  * Additional tests for schema components
+  * Fix for issues #213, #214, #215 and #218
+  * Code cleaning and optimizations on schema components
+  * Reducing and grouping helper functions
+- Update remove_shebang.patch to also drop the shebang from a second file.
+
+-------------------------------------------------------------------
+Tue Nov 10 13:49:08 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.3.1.
+  - mainly accepting patches etree_import_in_tests.patch,
+    factory_tests.patch, location_testing_script.patch, which are thus
+    removed.
+
+-------------------------------------------------------------------
+Tue Nov 10 07:13:53 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add the upstream etree_import_in_tests.patch to fix
+  gh#sissaschool/xmlschema#210.
+
+-------------------------------------------------------------------
+Mon Nov  9 15:32:59 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.3.0:
+  - Drop support for Python 3.5
+  - Add XmlDocument and Wsdl11Document classes
+  - Refactoring of XMLResource to support ElementTree-like XPath
+    API on both full and lazy modes
+- Remove skip_network_tests.patch
+- Add patches 
+  - factory_tests.patch rename tests_factory to tests so it is
+    not recognized by pytest
+  - remove_shebang.patch just cleaning superfluous shebang
+  - location_testing_script.patch use actual Python executable
+
+-------------------------------------------------------------------
+Sun Oct 11 16:18:52 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add skip_network_tests.patch to skip test
+  test_export_remote__issue_187 which fails without the network
+  connection (gh#sissaschool/xmlschema#206).
+
+-------------------------------------------------------------------
+Sat Oct 10 10:28:03 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.2.5:
+  - All W3C tests now run successful. Only W3C tests for
+    unavailable features (XML 1.1) or unimplemented features
+    (dynamic schema load) are still failing. This release requires
+    elementpath v2.0.x.
+  - The internal XML regular expressions parser has been moved to
+    XPath package elementpath (v2.0.2+). From this release
+    the regex patterns are parsed through elementpath's API
+    translate_pattern().'
+
+-------------------------------------------------------------------
+Tue Jul 21 11:50:05 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to version 1.2.2
+  * Fix XPath context for schema nodes
+  * Fix XPath parser and context for identities
+  * Fix content type classification (issue #195)
+  * Make sandbox mode more explicit (PR #191)
+  * Allow alphanumeric prefixes for the base converter
+  * Fix XPath issues with default namespace
+  * Fix W3C tests on XSD identities
+
+-------------------------------------------------------------------
+Thu Jun 11 03:46:21 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to version 1.2.0:
+  * Add ColumnarConverter class
+  * Add command-line interface utility for document API
+  * Fix a stable public API for XSD types, elements and attributes
+  * Add security modes for accessing URLs
+  * Clean component parsing
+  * Fix namespace loading for chameleon schemas
+  * Fix UPA checks with nested choice/all models
+- Install new binaries
+
+-------------------------------------------------------------------
+Tue Mar 24 15:10:44 UTC 2020 - pgajdos@suse.com
+
+- version update to 1.1.2
+  * Extension of validation tests with *XMLSchema11* validator
+  * Fixed several bugs
+
+-------------------------------------------------------------------
+Tue Mar 10 09:08:03 UTC 2020 - pgajdos@suse.com
+
+- version update to 1.1.1
+  * Change of *skip* validation mode with errors filtering in decode() or encode()
+  * Extension of location hints by argument to imported/included schemas
+  * Fixed lazy validation with identity constraints
+  * Fixed many W3C instance tests (remain ~100 over 15344 tests)
+
+-------------------------------------------------------------------
+Thu Feb  6 11:47:34 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 1.1.0
+  * Removed Python 2 compatibility code
+  * Removed tests code from binary package
+  * Improved identity constraints validation
+  * Added JSON lazy decoding as experimental feature
+  * few bugfixes
+
+-------------------------------------------------------------------
+Thu Dec  5 10:56:46 UTC 2019 - Andreas Hasenkopf <ahasenkopf@suse.com>
+
+- Handle UnicodeDecodeErrors during build process
+
+-------------------------------------------------------------------
+Wed Oct 30 12:31:19 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.0.15:
+  * Improved XPath 2.0 bindings
+  * Added logging for schema initialization and building (handled with argument loglevel)
+  * Update encoding of collapsed contents with a new model based reordering method
+  * Removed XLink namespace from meta-schema (loaded from a fallback location like XHTML)
+  * Fixed half of failed W3C instance tests (remain 255 over 15344 tests)
+
+-------------------------------------------------------------------
+Mon Sep  9 14:18:37 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Initial commit, needed by pytest 5.1.2

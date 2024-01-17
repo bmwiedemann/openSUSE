@@ -1,0 +1,194 @@
+-------------------------------------------------------------------
+Fri Apr 21 12:24:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:40:56 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
+Tue Mar 14 10:32:01 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- In the end just a cosmetical changes and cleaning up the SPEC
+  file.
+
+-------------------------------------------------------------------
+Sat Nov 19 20:37:12 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to the upstream release 3.12.3:
+  - consolidation of previous git commits
+  - support SMBIOS3.3.0
+- Remove upstreamed huge-memory.patch
+
+-------------------------------------------------------------------
+Wed Oct 26 15:51:25 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Modify detect-lib-with-py3.patch to be more robust.
+
+-------------------------------------------------------------------
+Wed Oct 26 09:14:38 UTC 2022 - mcepl@cepl.eu
+
+- Update to version 3.12.2+git.1666757106.e6ab5bc:
+  * fix address_from_efi ret=0 message
+  * fix function dmi_slot_segment_bus_func null point error in system slot
+  * fix warning: this 'if' clause does not guard
+  * fix warning: variable 'str_n' set but not used
+  * fix warning: passing argument 2 of 'dmi_tpm_vendor_id' makes pointer from integer without a cast
+  * fix warning: unused variable 'attr'
+  * fix warning: unused variable 'addrstr'
+  * fix warning: suggest parentheses around assignment used as truth value
+  * fix warning: suggest parentheses around assignment used as truth value
+  * src/dmidecode.c: In function 'dmi_tpm_characteristics': src/dmidecode.c:4788:24: warning: 'return' with a value, in function returning void [-Wreturn-type] 4788 | return data_n; | ^~~~~~
+  * fix warning: passing argument 3 of 'dmi_slot_peers' from incompatible pointer type
+  * fix warning: unused variable 'ver'
+  * fix warning: variable 'eptype' set but not used
+  * fix warning: suggest parentheses around '&&' within '||'
+  * fix warning: comparison of integer expressions of different signedness
+  * fix warning: ignoring return value of 'legacy_decode'
+  * fix warning argument 1 null where non-null expected
+  * Update python-dmidecode to smbios 3.3.0
+  * Fix for printing an empty dictionary
+  * Fix the failure of opening "/dev/mem": Permission denied
+  * Fix bugs: 1. Fix smbios3_decode decoding sysfs table dump error. 2. Fix check smbios version error warning message.
+  * Fix reading info permission deny bugs.
+- Remove duplicated Makefile_libdir.patch.
+
+-------------------------------------------------------------------
+Mon Oct 17 18:05:41 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add Makefile_libdir.patch to make package building even with
+  faulty distutils.sysconfig (bsc#1204395).
+
+-------------------------------------------------------------------
+Fri May 20 15:07:23 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Synchronize SPEC file to be more like the SLE one.
+
+-------------------------------------------------------------------
+Mon Mar  7 13:44:33 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add missing Obsoletes
+
+-------------------------------------------------------------------
+Fri Mar  4 09:24:04 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Harmonize Factory with the SLE version (update-alternatives
+  instead of the subpackages).
+
+-------------------------------------------------------------------
+Mon Feb 28 10:41:11 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add proper Provides/Obsoletes
+
+-------------------------------------------------------------------
+Thu Feb 24 22:57:21 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Cleanup multi-version builds.
+
+-------------------------------------------------------------------
+Thu Feb 24 21:15:44 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Introduce update-alternatives for
+  /usr/share/python-dmidecode/pymap.xml.
+
+-------------------------------------------------------------------
+Thu Feb 24 06:32:14 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Fix package names.
+
+-------------------------------------------------------------------
+Sat Dec 04 00:01:25 UTC 2021 - mcepl@cepl.eu
+
+- Update to version 3.12.2+git.1625035095.f0a089a:
+  * fix "src/dmidecodemodule.c:828:9 warning[-Wanalyzer-possible-null-argument]: use of possibly-NULL opt where non-null expected"
+  * fix Error: FORWARD_NULL (CWE-476): [#def23]
+  * fix "src/dmierror.c:55:9: warning[-Wanalyzer-possible-null-argument]: use of possibly-NULL buf where non-null expected"
+  * fix Error: MISSING_COMMA: detected by covscan
+  * fix Error: CONSTANT_EXPRESSION_RESULT detected by covscan
+  * fix RESOURCE_LEAK error detected by covscan in src/util.c
+  * fix RESOURCE_LEAK errors detected by covscan in src/xmlpythonizer.c
+  * Update README
+  * fix RESOURCE_LEAK errors detected by covscan in src/dmidecodemodule.c
+  * Fixed memory Type Detail map size (bsc#1194351).
+
+-------------------------------------------------------------------
+Thu Dec  2 23:52:35 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Brutal simplification of the SPEC file to the standard single-spec
+  Python one.
+- Removal of support for Python 2 (bsc#1193262)
+- Rename huge-memory.diff to huge-memory.patch (i.e., remove
+  huge-memory.diff and add huge-memory.patch).
+- Fix URL of Source0 (their own website is down, use GitHub
+  release).
+- Add 31-version_info-v-version.patch to make tests 3.10
+  compatible.
+
+-------------------------------------------------------------------
+Thu Oct 19 07:53:52 UTC 2017 - mc@suse.com
+
+- build python2-dmidecode and use python-dmidecode for shared files
+
+-------------------------------------------------------------------
+Tue Oct 17 13:05:04 UTC 2017 - mc@suse.com
+
+- set rpath to libxml2mod library
+
+-------------------------------------------------------------------
+Sun Sep 24 14:05:44 UTC 2017 - mc@suse.com
+
+- version 3.12.2
+- Add Python 3 subpackage
+- Removed deprecated statements
+
+-------------------------------------------------------------------
+Wed May  3 15:12:27 CEST 2017 - mantel@suse.de
+
+- use correct data type DWORD for extended memory size (bsc#1036061)
+
+-------------------------------------------------------------------
+Wed Sep  3 01:41:37 CEST 2014 - ro@suse.de
+
+- sanitize release line in specfile
+
+-------------------------------------------------------------------
+Fri Jan 17 17:12:10 CET 2014 - mc@suse.de
+
+- version 3.12.1
+  obsoleted patches (available in new upstream version):
+  * python-dmidecode_copyright-update.patch
+  * bug-713982_python-dmidecode-nullversion.patch
+  * python-dmidecode-dmixml-error-63fa74b229dd2.patch
+  * bug-823328-fix-set_vendor-segfault.dif
+- Add SIGILL catcher in mem_chunk()
+- Implemented dmixml_AddDMIstring()
+- Harden dmi_string() calls with better NULL checks
+- Do not add explictly 'dmispec' attributes inside switch()
+  in dmi_decode()
+- rebase against upstream dmidecode v2.12 and an update
+  against the SMBIOS reference specification v2.8.0.
+
+-------------------------------------------------------------------
+Tue Jun 11 18:38:23 CEST 2013 - mc@suse.de
+
+- fix segfault in dmi_set_vendor (bnc#823328)
+
+-------------------------------------------------------------------
+Wed Sep 28 13:16:17 CEST 2011 - mc@suse.de
+
+- fix dmi_decode assertion during client registration
+  (bnc#720885)
+
+-------------------------------------------------------------------
+Mon Sep 12 11:05:55 CEST 2011 - mc@suse.de
+
+- fix Segfault when decoding DMI data in dmi_processor_id()
+  (bnc#713982)
+
+-------------------------------------------------------------------
+Thu Dec  9 14:15:15 CET 2010 - mc@suse.de
+
+- initial release
+

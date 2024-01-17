@@ -1,0 +1,45 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a0cd50acc6fa2512447cd3747d3bc4bd</srcmd5>
+    <version>1.1.0~git8.a46465e</version>
+    <time>1638310551</time>
+    <user>dimstar_suse</user>
+    <comment>- Initial version 1.1.0~git8.a46465e (bsc#1179544, jsc#SLE-22954)</comment>
+    <requestid>933722</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>57766e0be690588fc82e891f8994c303</srcmd5>
+    <version>1.1.0~git16.860cfe4</version>
+    <time>1640278421</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>942147</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2a83b445fa5f6cdfbd17a1a8c6a03e70</srcmd5>
+    <version>1.1.0~git32.8f6ed74</version>
+    <time>1643062207</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.0~git32.8f6ed74 to get all the precious cargo
+- init.c is maintained in aws-nitro-enclaves-sdk-bootstrap.git</comment>
+    <requestid>948398</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1ceae0a54f859b6a0be8ae086a9d0c56</srcmd5>
+    <version>1.2.0~git2.841ef94</version>
+    <time>1647532933</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.0~git2.841ef94 to get all the precious cargo
+  (bsc#1196972, CVE-2022-24713)</comment>
+    <requestid>962474</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>97d0f2fbb498b6f67e56b0fa2958fe0d</srcmd5>
+    <version>1.2.2~git0.4ccc639</version>
+    <time>1678204250</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.2~git0.4ccc639 to get all the precious cargo
+  (bsc#1208555, CVE-2022-31394)</comment>
+    <requestid>1069903</requestid>
+  </revision>
+</revisionlist>

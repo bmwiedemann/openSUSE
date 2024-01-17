@@ -1,0 +1,6 @@
+<package name="libdatrie" project="openSUSE:Factory">
+  <title>Double-Array Trie Library</title>
+  <description>This is an implementation of double-array structure for representing
+trie, as proposed by Junichi Aoe.</description>
+  <devel project="devel:libraries:c_c++" package="libdatrie"/>
+</package>

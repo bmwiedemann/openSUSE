@@ -1,0 +1,7 @@
+<package name="arpack-ng" project="openSUSE:Factory">
+  <title>Fortran77 subroutines for solving large scale eigenvalue problems</title>
+  <description>ARPACK is a collection of Fortran77 subroutines designed to solve large scale eigenvalue problems.
+
+Arpack-ng is the successor of the legacy Arpack. It is fully compatible with Arpack.</description>
+  <devel project="science" package="arpack-ng"/>
+</package>

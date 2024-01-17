@@ -1,0 +1,185 @@
+diff -Naru speech_tools_orig/intonation/tilt/tilt_synthesis.cc speech_tools/intonation/tilt/tilt_synthesis.cc
+--- speech_tools_orig/intonation/tilt/tilt_synthesis.cc	2017-09-05 00:54:03.000000000 +0900
++++ speech_tools/intonation/tilt/tilt_synthesis.cc	2020-06-19 14:56:04.264646395 +0900
+@@ -126,7 +126,7 @@
+ 	n = (int)(ceil((ev.tail()->F("time") + 
+ 			ev.tail()->F("rfc.fall_dur",0)) / f_shift)) + 1;
+     else
+-	n = (int)(ceil(ev.tail()->F("time")/ f_shift)) + 1;
++	n = (int)(ceil(((ev.tail() != NULL) ? ev.tail()->F("time") : 0)/ f_shift)) + 1;
+ 
+     fz.resize(n, 1);
+     fz.set_equal_space(true);
+diff -Naru speech_tools_orig/intonation/tilt/tilt_utils.cc speech_tools/intonation/tilt/tilt_utils.cc
+--- speech_tools_orig/intonation/tilt/tilt_utils.cc	2017-09-05 00:54:03.000000000 +0900
++++ speech_tools/intonation/tilt/tilt_utils.cc	2020-06-19 14:55:23.216409043 +0900
+@@ -409,7 +409,7 @@
+ 
+ int event_item(EST_Item &e)
+ {	
+-    return e.I("int_event", 0);
++    return ((e != NULL) ? e.I("int_event", 0) : 0);
+ }
+ int sil_item(EST_Item &e)
+ {
+diff -Naru speech_tools_orig/ling_class/EST_Relation.cc speech_tools/ling_class/EST_Relation.cc
+--- speech_tools_orig/ling_class/EST_Relation.cc	2017-09-05 00:54:03.000000000 +0900
++++ speech_tools/ling_class/EST_Relation.cc	2020-06-19 15:06:09.700138798 +0900
+@@ -164,6 +164,8 @@
+ 
+ void EST_Relation::remove_item(EST_Item *node)
+ {
++    if (node == NULL) return;
++
+     if (p_head == node)
+ 	p_head = inext(node);
+     if (p_tail == node)
+diff -Naru speech_tools_orig/ling_class/EST_relation_aux.cc speech_tools/ling_class/EST_relation_aux.cc
+--- speech_tools_orig/ling_class/EST_relation_aux.cc	2017-09-05 00:54:03.000000000 +0900
++++ speech_tools/ling_class/EST_relation_aux.cc	2020-06-19 16:20:43.036864073 +0900
+@@ -403,16 +403,18 @@
+     float kstart;
+     
+     slist.clear();
+-    
+-    if ((keylab.tail())->F("end") < (lab.tail())->F("end"))
+-    {
++   
++    if ((keylab.tail() != NULL) && (lab.tail() != NULL)) { 
++      if ((keylab.tail())->F("end") < (lab.tail())->F("end"))
++      {
+ 	cerr << "Key file must extend beyond end of label file\n";
+ 	return -1;
++      }
+     }
+ 
+     // find a the first keylab that will make a non-empty file
+     for (k = keylab.head(); k ; k = inext(k))
+-	if (k->F("end") > lab.head()->F("end"))
++	if (k->F("end") > ((lab.head() != NULL) ? lab.head()->F("end") : 0))
+ 	    break;
+ 
+     filename = (EST_String)k->f("file");
+@@ -475,15 +477,17 @@
+     float kstart;
+     
+     mlf.clear();
+-    
+-    if ((keylab.tail())->F("end") < (lab.tail())->F("end"))
+-    {
++   
++    if ((keylab.tail() != NULL) && (lab.tail() != NULL)) { 
++      if ((keylab.tail())->F("end") < (lab.tail())->F("end"))
++      {
+ 	cerr << "Key file must extend beyond end of label file\n";
+ 	return -1;
++      }
+     }
+     
+     k = keylab.head();
+-    a.f.set("name", (k->name() + ext));
++    a.f.set("name", ((k != NULL) ? (k->name() + ext) : ext));
+     kstart = 0.0;
+     
+     for (s = lab.head(); s; s = inext(s))
+@@ -544,19 +548,23 @@
+ 	}
+     }
+ 
++    if (target.head() != NULL) {
+      if (!target.head()->f_present(time_name + "end"))
+      {
+ 	 target.head()->set(time_name + "end", first_end / 2.0);
+ 	 if (do_start)
+ 	     target.head()->set(time_name + "start", 0.0);
+      }
++    }
+ 
++    if (target.tail() != NULL) {
+      if (!target.tail()->f_present(time_name + "end"))
+      {
+ 	 target.tail()->set(time_name + "end", last_end + 0.01);
+ 	 if (do_start)
+ 	     target.tail()->set(time_name + "start", last_end);
+      }
++    }
+ 
+      for (s = target.head(); s; s = inext(s))
+     {
+@@ -624,7 +632,7 @@
+     // fix option later.    
+     if (al.present("-extend"))
+ 	al.override_fval("-length", 
+-			 al.fval("-extend",0) * lab.tail()->F("end"));
++			 al.fval("-extend",0) * ((lab.tail() != NULL) ? lab.tail()->F("end") : 0));
+     
+     // quantize (ie round up or down) label times
+     if (al.present("-q"))
+diff -Naru speech_tools_orig/ling_class/EST_relation_track.cc speech_tools/ling_class/EST_relation_track.cc
+--- speech_tools_orig/ling_class/EST_relation_track.cc	2017-09-05 00:54:03.000000000 +0900
++++ speech_tools/ling_class/EST_relation_track.cc	2020-06-19 14:52:03.227252627 +0900
+@@ -139,7 +139,7 @@
+     int i;
+     int n, endn;
+ 
+-    n = (int)ceil(lab.tail()->F("end")/shift);
++    n = (int)ceil( ((lab.tail() != NULL) ? lab.tail()->F("end") : 0)/shift);
+     endn = (req_l > 0.0) ? (int)(req_l /shift) : n;
+ 
+     //    cout << req_l << endl;
+diff -Naru speech_tools_orig/main/align_main.cc speech_tools/main/align_main.cc
+--- speech_tools_orig/main/align_main.cc	2017-09-05 00:54:03.000000000 +0900
++++ speech_tools/main/align_main.cc	2020-06-19 16:22:59.381551844 +0900
+@@ -188,6 +188,7 @@
+ 	load_sentence(u,"hypo",hts);
+ 	r = u.relation("ref")->rlast();
+ 	h = u.relation("hypo")->rlast();
++	if ((r != NULL) && (h != NULL)) {
+ 	if ((!r->name().matches(id)) ||
+ 	    (r->name() != h->name()))
+ 	{
+@@ -214,6 +215,7 @@
+ 	    s_sub += sub;
+ 	    s_correct += correct;
+ 	}
++	}
+         sents++;
+     }
+ 
+@@ -311,6 +313,9 @@
+ 
+ static int name_distance(EST_Item *r,EST_Item *h)
+ {
++    if ((r == NULL) && (h == NULL)) return 0;
++    if ((r == NULL) || (h == NULL)) return 1;
++ 
+     EST_String rname = r->name();
+     EST_String hname = h->name();
+     if ((rname == hname) ||
+diff -Naru speech_tools_orig/speech_class/EST_wave_cuts.cc speech_tools/speech_class/EST_wave_cuts.cc
+--- speech_tools_orig/speech_class/EST_wave_cuts.cc	2017-09-05 00:54:03.000000000 +0900
++++ speech_tools/speech_class/EST_wave_cuts.cc	2020-06-19 14:54:13.180004065 +0900
+@@ -140,17 +140,19 @@
+     int i, j, l, n;
+     
+     mtfr.clear();
+-    
+-    if ((key.tail())->F("end") < (fv.t(fv.num_frames() - 1)))
+-    {
++   
++    if (key.tail() != NULL) {
++      if ((key.tail())->F("end") < (fv.t(fv.num_frames() - 1)))
++      {
+ 	cerr << "Key file must extend beyond end of EST_Track\n";
+ 	cerr << "key end: " << key.tail()->F("end") << " EST_Track end: " 
+ 	    << fv.t(fv.num_frames() - 1) << endl;
+ 	return -1;
++      }
+     }
+     
+     k = key.head();
+-    a.set_name(k->name());
++    a.set_name((k != NULL) ? k->name() : 0);
+     kstart = 0.0;
+     
+     length = end(*k) - kstart;

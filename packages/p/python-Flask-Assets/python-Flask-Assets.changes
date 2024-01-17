@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Thu Dec  7 23:25:33 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 2.1.0:
+  - Fix simple typo: preferrable -> preferable
+  - tests: fix compatibility with Flask >= 1.0
+  - Update to work with flask 2.2+
+  - Update CI setup and support Python 3.7 - 3.12
+  - Add test for Flask 1.x and 2.x
+- Remove upstreamed 0001-tests-fix-compatibility-with-Flask-1.0.patch
+
+-------------------------------------------------------------------
+Sun Mar 21 17:44:15 UTC 2021 - Mia Herkt <mia@0x0.st>
+
+- Revive package, update to 2.0
+  * Compatibility with webassets 2.0
+- Build documentation
+- Enable the test suite
+- Add 0001-tests-fix-compatibility-with-Flask-1.0.patch
+  Fixes the test suite with Flask >= 1.0. At the time of writing,
+  upstream was only running the CI tests on very old releases.
+  gh#miracle2k/flask-assets#147
+
+-------------------------------------------------------------------
+Mon Dec  4 17:55:08 UTC 2017 - 9@cirno.systems
+
+- init, 0.12

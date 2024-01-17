@@ -1,0 +1,36 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bbdc56301346e11e581bd1e09100cec8</srcmd5>
+    <version>0.1.1</version>
+    <time>1587839358</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>796768</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>43117825554caaa7ba8ee2128f23d373</srcmd5>
+    <version>0.2.0</version>
+    <time>1640108436</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>941702</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>a3d7b4da8a5d6b51cd353f668563262c</srcmd5>
+    <version>0.2.0</version>
+    <time>1661497694</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>999332</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>3bad5c335853ec6e1a671b6c6cdc7d2f</srcmd5>
+    <version>0.2.0</version>
+    <time>1673209547</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip failing tests
+  (gh#napalm-automation-community/napalm-arubaos-switch#20)
+</comment>
+    <requestid>1056869</requestid>
+  </revision>
+</revisionlist>

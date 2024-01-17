@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>61f394310edc3a8f2abd6152b2e3a331</srcmd5>
+    <version>1.0.0</version>
+    <time>1663764157</time>
+    <user>dimstar_suse</user>
+    <comment>New package</comment>
+    <requestid>1005055</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e970e7bc74b730578b21989d6938889b</srcmd5>
+    <version>1.0.1</version>
+    <time>1664467959</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1006644</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>23a4a7cead2e9fc5d1b1797b1a43896f</srcmd5>
+    <version>1.0.2</version>
+    <time>1667825537</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 1033039 from iznogood)</comment>
+    <requestid>1034155</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2b7075fb8e1e5817b915f77dfd94f130</srcmd5>
+    <version>1.2.0</version>
+    <time>1679667566</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 1072730 from iznogood)</comment>
+    <requestid>1073179</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8c915830dd33273b9d053cbb10dfd6d9</srcmd5>
+    <version>1.4.0</version>
+    <time>1695208950</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1111891</requestid>
+  </revision>
+</revisionlist>

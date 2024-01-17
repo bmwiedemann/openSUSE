@@ -1,0 +1,6 @@
+<package name="python-pyzmq" project="openSUSE:Factory">
+  <title></title>
+  <description>PyZMQ is a lightweight and super-fast messaging library built on top of
+the ZeroMQ library (http://www.zeromq.org).</description>
+  <devel project="devel:languages:python" package="python-pyzmq"/>
+</package>

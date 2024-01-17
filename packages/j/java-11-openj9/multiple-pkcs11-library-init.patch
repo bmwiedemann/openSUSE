@@ -1,0 +1,65 @@
+--- jdk10/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/Config.java	2016-12-20 23:13:34.000000000 +0100
++++ jdk10/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/Config.java	2016-12-22 11:45:10.418651583 +0100
+@@ -51,6 +51,7 @@
+     static final int ERR_HALT       = 1;
+     static final int ERR_IGNORE_ALL = 2;
+     static final int ERR_IGNORE_LIB = 3;
++    static final int ERR_IGNORE_MULTI_INIT = 4;
+ 
+     // same as allowSingleThreadedModules but controlled via a system property
+     // and applied to all providers. if set to false, no SunPKCS11 instances
+@@ -992,6 +993,8 @@
+             handleStartupErrors = ERR_IGNORE_LIB;
+         } else if (val.equals("halt")) {
+             handleStartupErrors = ERR_HALT;
++        } else if (val.equals("ignoreMultipleInitialisation")) {
++            handleStartupErrors = ERR_IGNORE_MULTI_INIT;
+         } else {
+             throw excToken("Invalid value for handleStartupErrors:");
+         }
+--- jdk10/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/SunPKCS11.java	2016-12-20 23:13:34.000000000 +0100
++++ jdk10/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/SunPKCS11.java	2016-12-22 11:45:10.418651583 +0100
+@@ -174,26 +174,37 @@
+                 String nssLibraryDirectory = config.getNssLibraryDirectory();
+                 String nssSecmodDirectory = config.getNssSecmodDirectory();
+                 boolean nssOptimizeSpace = config.getNssOptimizeSpace();
++                int errorHandling = config.getHandleStartupErrors();
+ 
+                 if (secmod.isInitialized()) {
+                     if (nssSecmodDirectory != null) {
+                         String s = secmod.getConfigDir();
+                         if ((s != null) &&
+                                 (s.equals(nssSecmodDirectory) == false)) {
+-                            throw new ProviderException("Secmod directory "
+-                                + nssSecmodDirectory
+-                                + " invalid, NSS already initialized with "
+-                                + s);
++                            String msg = "Secmod directory " + nssSecmodDirectory
++                                + " invalid, NSS already initialized with " + s;
++                            if (errorHandling == Config.ERR_IGNORE_MULTI_INIT ||
++                                errorHandling == Config.ERR_IGNORE_ALL) {
++                                throw new UnsupportedOperationException(msg);
++                            } else {
++                                throw new ProviderException(msg);
++                            }
+                         }
+                     }
+                     if (nssLibraryDirectory != null) {
+                         String s = secmod.getLibDir();
+                         if ((s != null) &&
+                                 (s.equals(nssLibraryDirectory) == false)) {
+-                            throw new ProviderException("NSS library directory "
++                            String msg = "NSS library directory "
+                                 + nssLibraryDirectory
+                                 + " invalid, NSS already initialized with "
+-                                + s);
++                                + s;
++                            if (errorHandling == Config.ERR_IGNORE_MULTI_INIT ||
++                                errorHandling == Config.ERR_IGNORE_ALL) {
++                                throw new UnsupportedOperationException(msg);
++                            } else {
++                                throw new ProviderException(msg);
++                            }
+                         }
+                     }
+                 } else {

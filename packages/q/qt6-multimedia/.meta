@@ -1,0 +1,10 @@
+<package name="qt6-multimedia" project="openSUSE:Factory">
+  <title>Qt 6 Multimedia libraries</title>
+  <description>Qt Multimedia is a module that provides a set of QML types and C++
+classes to handle multimedia content. It also provides APIs to access
+the camera and radio functionality.
+
+</description>
+  <devel project="KDE:Qt6" package="qt6-multimedia"/>
+  <url>https://www.qt.io</url>
+</package>

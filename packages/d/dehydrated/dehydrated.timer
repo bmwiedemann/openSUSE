@@ -1,0 +1,11 @@
+[Unit]
+Description=Timer for Certificate Update Runner for Dehydrated
+PartOf=dehydrated.target
+
+[Timer]
+OnCalendar=daily
+# Two hour window
+RandomizedDelaySec=7200
+
+[Install]
+WantedBy=timers.target

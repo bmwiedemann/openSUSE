@@ -1,0 +1,7 @@
+<package name="perl-Class-Adapter" project="openSUSE:Factory">
+  <title>Perl implementation of the &quot;Adapter&quot; Design Pattern</title>
+  <description>The Class::Adapter class is intended as an abstract base class for creating
+any sort of class or object that follows the Adapter pattern.</description>
+  <devel project="devel:languages:perl" package="perl-Class-Adapter"/>
+  <url>http://search.cpan.org/dist/Class-Adapter/</url>
+</package>

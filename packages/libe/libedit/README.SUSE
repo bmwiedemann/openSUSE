@@ -1,0 +1,19 @@
+ Examples
+----------
+
+An Editline port of the fileman.c example from the GNU Readline documentation is
+distributed with this package.
+
+Note libcurses, as well as libedit, should be linked to Editline enabled
+programs, e.g.
+gcc -o fileman fileman.c -ledit -lcurses
+
+A pkg-config libedit.pc file is provided, so you can write 
+PKG_CHECK_MODULES(LIBEDIT, libedit)
+
+in configure.ac of your client program to detect the existence of libedit.so and
+to set CFLAGS and LIBS for using libedit. 
+
+Using the pkg-config helper tool, the above fileman example looks like,
+gcc -o fileman fileman.c `pkg-config --libs --cflags libedit`
+

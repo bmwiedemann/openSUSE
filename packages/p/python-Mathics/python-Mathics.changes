@@ -1,0 +1,241 @@
+-------------------------------------------------------------------
+Fri Dec  1 07:07:18 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.0.4:
+  * Correct type annotation in mathics.session.MathicsSession
+    (gh#Mathics3/mathics-core#934).
+
+-------------------------------------------------------------------
+Fri Sep  1 18:15:06 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Disable cython-ised builds: not compatible with Cython 3+.
+- Add python-Mathics-relax-numpy-versions.patch to drop the upper
+  limit on numpy versions.
+
+-------------------------------------------------------------------
+Wed Jul 26 15:24:55 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.0.2:
+  * Change testing to facilitate openSUSE Tumbleweed distribution
+    which uses Sympy 1.12 (gh#Mathics3/mathics-core#881).
+- Drop python-Mathics-relax-module-versions.patch: No longer
+  required as upstream has removed numpy and scipy upper limits
+  from requirements.
+- Re-enable test_calculus.
+
+-------------------------------------------------------------------
+Tue Apr 11 07:11:25 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Drop some unnecessary Requires: python-recordclass,
+  python-scipy.
+- Add necessary Requires: python-requests, python-Cython,
+  python-Pillow.
+- Add python-Mathics-relax-module-versions.patch: relax sympy and
+  numpy upper limits on requirements as the otherwise unsupported
+  sympy 1.12 and numpy 1.24.2 are in Tumbleweed.
+
+-------------------------------------------------------------------
+Tue Mar 14 10:37:24 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.0.1:
+  * Some Pattern-matching code gone over to add type annotations
+    and to start documenting its behavior and characteristics.
+  * Combinatorica version upgraded from 0.9 (circa 1992) to 0.91
+    (circa 1995) which closer matches the published book.
+  * Random Builtin function documentation gone over to conform to
+    current documentation style.
+  * Pillow 9.2 dependency added for Python 3.7+.
+- Drop python-Mathics-relax-sympy-version.patch: No longer needed
+  as upstream setup.py now allows sympy >= 1.11.
+- Disable building for python3.11, unsupported
+  [gh#Mathics3/mathics-core#743].
+- python-Mathics-Scanner >= 1.3.0 now required. 
+
+-------------------------------------------------------------------
+Sun Oct 23 04:51:56 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add python-Mathics-relax-sympy-version.patch: Relax sympy
+  requirement to allow sympy >= 1.11.
+
+-------------------------------------------------------------------
+Mon Sep 19 12:47:11 UTC 2022 - pgajdos@suse.com
+
+- does not require python-six
+  https://trello.com/c/MO53MocR/143-remove-python3-six
+
+-------------------------------------------------------------------
+Wed Aug 10 19:32:00 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.0.2:
+  * Rerelease to get requirements-cython.txt into tarball.
+- Changes from version 5.0.1:
+  * format and do_format methods were removed from the interface
+    of BaseElement, becoming non-member functions.
+  * The class BoxElement was introduced as a base for boxing
+    elements.
+  * New Builtin 'Inverse Gudermannian'.
+  * Documentation Hyperbolic functions were split off form
+    trigonometry and exponential functions. More url links were
+    added.
+  * Bugs *r Creating a complex number from Infinity no longer
+    crashes and returns 'I * Infinity'
+- Drop requirements-cython.txt as additional source: now included
+  in source tarball.
+
+-------------------------------------------------------------------
+Sun Jul 31 20:48:13 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.0.0:
+  * Many changes, see
+    https://github.com/Mathics3/mathics-core/releases/tag/5.0.0
+- Add requirements-cython.txt as Source since it is missing from
+  the tagged source tarball.
+- Drop upstream incorporated patches:
+  * python-Mathics-relax-sympy-versions.patch
+  * 41dee8c9dd7b979a4d77d38a1e8fe8dc75b7638c.patch
+- Export USE_CYTHON env variable to allow cythonised builds.
+- New BuildRequires (for tests) and Requires: python-recordclass.
+- Fix up some new spurious file permissions and EOF encodings.
+
+-------------------------------------------------------------------
+Sun Jul 17 00:51:00 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add python-Mathics-relax-sympy-versions.patch -- Relax required
+  sympy versions, to enable tests to run on openSUSE >= 1550 where
+  python-sympy is at version 1.10.x already.
+
+-------------------------------------------------------------------
+Tue Mar 22 19:41:00 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Refresh sources: 41dee8c9dd7b979a4d77d38a1e8fe8dc75b7638c.patch
+  from upstream changed in its indexing a little bit.
+
+-------------------------------------------------------------------
+Wed Mar 16 22:31:06 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add Provides: python-Mathics3 to aid packaging using py2pack
+  other python module packages dependent on this.
+
+-------------------------------------------------------------------
+Sat Jan 29 19:13:15 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 4.0.0:
+  * Enhancements
+    - Introduce a Graphics3D protocol.
+    - mathics.setting have been gone over to simplify.
+    - A rudimentary and crude SVG Density Plot was added.
+  * Bug fixes:
+    - A small SVGTransform bug was fixed.
+    - Elliptic arcs are now supported in Asymptote.
+    - A bug in image decoding introduced in 3.1.0 or so was fixed.
+    - A bug SVG LineBoxes was fixed.
+    - SVG and Asymptote drawing now includes inline comments
+      indicating which Box Structures are being implemented in
+      code.
+  * Documentation updates.
+- New BuildRequires: python-Cython (to use cython-ised builds),
+  python-Mathics-Scanner (also Requires), python-scipy (for some
+  tests).
+- Add more Requires according to setup.py.
+- Add 41dee8c9dd7b979a4d77d38a1e8fe8dc75b7638c.patch: git commit
+  from upstream that made version incorrect before tagged release;
+  apply with -R to revert.
+- Drop binaries no longer installed by upstream.
+- Enable multibuild: Split out tests into its own flavour, since
+  some tests require the binary installed with update-alternative
+  magic.
+
+-------------------------------------------------------------------
+Tue Apr 20 04:19:34 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Don't build for Python 3.6, due to no NumPy.
+
+-------------------------------------------------------------------
+Mon Dec 28 01:52:38 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.1.1:
+  * Mathics Packages added:
+    - DiscreteMath`CombinatoricaV0.9 (preferred)
+    - DiscreteMath`CombinatoricaV0.6.
+  * New builtins:
+    - StirlingS1, StirlingS2 (not all WL variations handled)
+    - MapAt (not all WL variations handled)
+    - PythonForm, SympyForm: these is not in WL. It simply will
+      show a crude translation to sympy or python.
+    - Throw and Catch
+    - With
+    - FileNameTake
+  * Enhancements and Bug fixes:
+    - Workaround for Compile so it accepts functions
+      (gh#mathics/Mathics#1026)
+    - Add Trace option to Get. Get["fn", Trace->True] will show
+      lines as they are read.
+    - Convert to/from Boolean types properly in from_python,
+      to_python. Previously they were 0, and 1.
+    - Extend DeleteCases to accept a levelspec parameter.
+    - Set Evaluation#exc_result to capture Aborted, Timeout,
+      Overflow1`, etc.
+    - ImageData changed to get bits {0,1}, not booleans as
+      previously.
+    - Add tokenizer symbols for <-> and -> and the unicode
+      versions of those.
+    - Small corrections to Needs, e.g check if already loaded,
+      correct a typo, etc.
+    - System`$InputFileName is now set inside Needs and Get
+    - Install shell scripts dmathicserver, dmathicsscript, and
+      dmathics to simplify running docker
+    - Adjust $InputFileName inside Get and Needs.
+- Adapt file list to the renaming of mathicsscript to
+  dmathicsscript and the addition of dmathicserver.
+
+-------------------------------------------------------------------
+Sat Nov 14 22:17:20 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.1.0:
+  * Add Symbolic Comparisons [gh#mathics/Mathics#1000].
+  * Support for externally PyPI-packagable builtin modules -
+    PyMathics.
+  * SetDirectory fixes [gh#mathics/Mathics#994].
+  * Catch `PatternError Exceptions.
+  * Fix formatting of .. and ... (RepeatAll)
+  * tokenization of \. without a following space (ReplaceAll)
+    [gh#mathics/Mathics#992].
+  * Support for assignments to named `Pattern`
+  * Improving support for `Names [gh#mathics/Mathics#1003].
+  * Adding a MathicsSession class to simplify running Mathics from
+    Python [gh#mathics/Mathics#1001].
+  * Improving support for `Protect` and `Unprotect` list
+    of symbols and regular expressions [gh#mathics/Mathics#1003].
+- Updated source URL.
+- Disable python2 as it is not supported any more by upstream.
+- Run tests:
+  * Omit home_page tests as they require a running django server
+    set up first.
+  * Add additional BuildRequires needed for tests: python-Pint,
+    python-chardet, python-palettable, python-pytest,
+    python-requests.
+- Sympy >= 1.6 is now required.
+
+-------------------------------------------------------------------
+Mon May 25 06:50:45 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
+Sun Mar 15 07:58:36 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build without python2
+
+-------------------------------------------------------------------
+Tue Dec 19 10:56:27 UTC 2017 - badshah400@gmail.com
+
+- Correct License: Includes software licensed as BSD-3-Clause,
+  MIT, and Apache-2.0, and data licensed under CC-by-SA-3.0 and/or
+  GFDL.
+- Use python_expand to run fdupes for both python 2 and 3.
+
+-------------------------------------------------------------------
+Mon Dec 18 07:34:29 UTC 2017 - badshah400@gmail.com
+
+- Initial package.
+

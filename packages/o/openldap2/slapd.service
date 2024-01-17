@@ -1,0 +1,28 @@
+[Unit]
+Description=OpenLDAP Server Daemon
+After=syslog.target network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/lib/openldap/start
+
+# Hardening to prevent security escalation.
+## Future hardening for FS protection.
+# ProtectSystem=full
+# ReadWritePaths=/etc/openldap/slapd.d /var/lib/ldap
+
+RestrictSUIDSGID=true
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+MemoryDenyWriteExecute=true
+
+[Install]
+WantedBy=multi-user.target
+

@@ -1,0 +1,12 @@
+## Type:	string
+## Default:	"/var/lib/stunnel/dev/log"
+## ServiceRestart: syslog
+#
+# The filename mentioned here will be added as "-a ..." to SYSLOGD_PARAMS when
+# syslogd is started.
+#
+# This additional socket is needed in case that syslogd is restarted. Otherwise
+# a chrooted stunnel won't be able to continue logging.
+#
+SYSLOGD_ADDITIONAL_SOCKET_STUNNEL="/var/lib/stunnel/dev/log"
+

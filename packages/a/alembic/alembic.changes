@@ -1,0 +1,189 @@
+-------------------------------------------------------------------
+Tue Jan  2 09:22:11 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.6:
+  * Introduce CPacke to top level CMake. (PR 425)
+  * Fix typo in a comment. (PR 417)
+  * Fix bug with OCurves, ONuPatch, OPoints, OPolyMesh, and OSubD
+    were not properly incrementing their number of set samples
+    when using setFromPrevious. (PR 433)
+  * Fix default values for float PODTraits. (PR 422)
+  * Introduce -hold argument which will use the previous set
+    sample instead of setting an empty sample for missing samples.
+- update to 1.8.5:
+  * Add test for fuzzer issue 53406.
+  * Address Issue 402 by not using deprecated kWrapExisting calls
+    when possible.
+  * Add missing vertex for cube test in the python bindings per
+    Issue 407.
+  * Fix several warnings mentioned in Issue 309, 398 and 412.
+  * Don't explicitly set MACOSX_RPATH as it is set by default in
+    CMake 3+. (PR404)
+  * Use install rpath for Imath 3. (PR405)
+  * Use STRING instead of PATH for ALEMBIC_LIB_INSTALL_DIR.
+  * Add CIFuzz as a GitHub action. (PR403)
+
+-------------------------------------------------------------------
+Fri Jun 23 03:54:35 UTC 2023 - Андрей Алыпов <and.november@opensuse.org>
+
+- Added Alembic's cmake files to devel package
+
+-------------------------------------------------------------------
+Sat Dec  3 19:11:10 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.4:
+  * Add ALEMBIC_DEBUG_WARNINGS_AS_ERRORS to control the build in debug mode.
+  * It is set to ON by default to preserve the current behavior.
+  * Use add_compile_options instead of the older add_definitions. (PR371)
+  * Fix the include dirs for AbcCoreHDF5 tests. (PR382)
+  * Fix issue hinted at in Issue 223: use PROJECT_SOURCE_DIR instead of
+  * CMAKE_SOURCE_DIR when embedding Alembic within another CMake project. (PR393)
+  * On Windows _BitScanForward64 is only available when _WIN64 is defined.
+  * When it is not, fall back on using _BitScanForward. (PR 373)
+  * Fuzzer issue 49213 turned up some new malformed MetaData memory problems.
+  * Indexed MetaData on the write side only allows 254 (plus the default empty one)
+  * small (up to 256 bytes), we now throw if we encounter malformed MetaData.
+  * We were also allowing empty property and object names through on the read side
+  * even though the writer forbids this.
+  * Finally integrate a couple of tests flagged by Taotao Gu's local fuzzer.
+  * (PR391 and PR397)
+  * Fuzzer issue 52939 showed that with certain malformed MetaData the pair
+  * separator should NOT occur before the assign separator. (PR396)
+  * N2f and N2d properties were not being correctly bound.(PR390)
+
+-------------------------------------------------------------------
+Sun Jun 26 11:35:22 UTC 2022 - Berthold Gunreben <azouhr@opensuse.org>
+
+- Ogawa only supports little endian. Disable s390x builds.
+
+-------------------------------------------------------------------
+Tue Jan  4 21:13:10 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.3:
+  * Make sure we export the IlmBase requirement in CMake when using OpenEXR 2 to
+    fulfill the Imath requirement.
+  * Address report from GCC Undefined Behavior Sanitizer by initializing a couple
+    of bools in OXform.
+  * Fix compile issue when using C++17 with Microsoft Visual Studio and use a
+    hopefully much faster find first bit set when using that compiler. (Issue 358)
+  * One of the fuzzer tests were was failing with 32 bit builds because of a
+    different exception message.
+  * Fix a bug with 32 bit memory mapped Windows builds.
+  * Look for boost python a little differently, falling back on existing behavior.
+
+-------------------------------------------------------------------
+Wed May 19 12:53:46 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 1.8.1:
+  * Ogawa: Sanity check that we have a valid group to avoid
+    infinite recursion during traversal.
+- Enable testsuite
+- Add fuzztest.patch
+
+-------------------------------------------------------------------
+Wed Apr 28 14:46:23 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 1.8.0:
+ API:
+  * Dropped support for the ancient TR1, expect compilers to support
+    at least support C++std11 and currently default to C++std14.
+  * Removed ALEMBIC_LIB_USES_TR1 and ALEMBIC_LIB_USES_BOOST and
+    instead expect the std versions like shared_ptr.
+ Ogawa:
+  * Better support emscripten and ARM toolchains by using memcpy
+    to avoid dereferencing non-aligned pointers.
+ AbcStitcher:
+  * Propagate MetaData from the first of our ordered input archives
+    over to the stitched output.
+ Other:
+  * Overhaul to support Imath 3
+  * Fix for using Alembic as a 3rd party with Imath 3.
+
+-------------------------------------------------------------------
+Tue Dec 29 12:41:37 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
+
+- update to 1.7.16:
+  GitHub:
+  * Add a Github Action to create a python 2.7 wheel. (PR 310)
+  AbcCoreHDF5:
+  * Specify char signedness when setting the HDF5 data type as some architectures,
+    like ARM, default to unsigned. (PR 316)
+  AbcCoreOgawa:
+  * Fuzzer issue 25695: Fix leak that can occur when reading meta data, but the file
+    is maliciously cut short.  (PR 315)
+  * Fuzzer issue 26125:  Add a check and throw an excpetion for an obviously
+    recursive group. (PR 321)
+
+-------------------------------------------------------------------
+Fri Sep 11 14:15:44 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.7.15:
+  * Fuzzer issues 25166, 25175, 25185, 25204, and 25236 all test for illegal
+  meta data index values which we more carefully test.
+  * Fuzzer issue 25192 turned up a leak from a malformed file causing OrData to
+  throw.
+
+-------------------------------------------------------------------
+Wed Aug 26 07:23:36 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.7.14:
+  * Fix another Fuzzer issue with Ogawa::IData allocating too much memory
+  because of a malicious file.  Add tests for Fuzzer issues:
+  24846, 24853, 24598, 25051, and 25081. (PR296)
+  * Remove Murmur3 from the LICENSE.txt since it was moved into the public domain
+  a while ago, and is reflected as such in the code. (Issue 292)
+  * Fix uninitialized member variable in OTypedGeomParam. (PR290)
+  * Remove some unused local functions. (Issue 293)
+
+-------------------------------------------------------------------
+Tue Aug 18 07:14:36 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.7.13:
+  * Ogawa:  Google generously setup AutoFuzz and it found several issues when
+  reading maliciously created files.  These issues reported issues are fixed:
+  253-258, 269-272, 282, 283 (PR266)
+  * AbcImport: Add support for connecting MFnData::kFloatArray.
+  * Fix issue where WFObjConvert headers were being put in the wrong place when
+   installed. (Issue 264)
+  * Partly address Issue 265 by making some adjustments to the Doxyfile and remove
+  a very old reference to MD5Hash in the very old Houdini SOP.
+
+-------------------------------------------------------------------
+Thu Nov 21 17:53:37 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to version 1.7.12
+  API:
+  + Use critical section instead of mutex on Windows. (PR220)
+    * ErrorHandler now uses const char * for message instead of
+      std::string for efficiency gain. (PR221)
+  + Fix incompatibilities with C++17. (PR237)
+    * Add optional DCC FPS hint when calling CreateArchiveWithInfo
+      and GetArchiveInfo. (PR241)
+  Maya:
+  + AbcExport: Support writing animated facesets. (PR217)
+  + AbcExport: Support per curve width. (PR239)
+    * AbcExport: When writing sparse data like just the UVs, create
+      an OObject instead of an OXform. (PR241)
+  Utils:
+    * WFOBJConvert: Fix bug where OBJ files with more than one
+      shape would fail to properly convert UVs and Normals. (PR232)
+  CMake:
+    * Make it easier to select the python version to build against.
+      (PR215)
+
+- Clean up spec, remove any superflous parameterization
+
+-------------------------------------------------------------------
+Fri Aug 23 23:08:48 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Avoid forcing SSE/SSE2 on %ix86, it is not guaranteed to exist.
+
+-------------------------------------------------------------------
+Fri Aug 23 19:54:50 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Move documentation to -dev subpackage.
+
+-------------------------------------------------------------------
+Fri Jul 12 11:15:03 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
+
+- version 1.7.11: initial build

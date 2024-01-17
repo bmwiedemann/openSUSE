@@ -1,0 +1,18 @@
+<package name="python-IMAPClient" project="openSUSE:Factory">
+  <title></title>
+  <description>IMAPClient is an easy-to-use, Pythonic and complete IMAP client library.
+
+Features:
+    * Arguments and return values are natural Python types.
+    * IMAP server responses are fully parsed and readily usable.
+    * IMAP unique message IDs (UIDs) are handled transparently.
+    * Internationalised mailbox names are transparently handled.
+    * Time zones are correctly handled.
+    * Convenience methods are provided for commonly used functionality.
+    * Exceptions are raised when errors occur.
+
+IMAPClient includes comprehensive units tests and automated
+functional tests that can be run against a live IMAP server.
+</description>
+  <devel project="devel:languages:python" package="python-IMAPClient"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="python-uritools" project="openSUSE:Factory">
+  <title>python-uritools</title>
+  <description>URI parsing, classification and composition</description>
+  <devel project="devel:languages:python" package="python-uritools"/>
+</package>

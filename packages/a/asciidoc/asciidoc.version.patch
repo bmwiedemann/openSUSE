@@ -1,0 +1,53 @@
+Avoid version number in generated files.
+Output will be identical between versions.
+In case the output changes, build-compare will catch it.
+
+diff -Nur asciidoc-10.1.4/asciidoc/resources/html4.conf new/asciidoc/resources/html4.conf
+--- asciidoc-10.1.4/asciidoc/resources/html4.conf	2022-03-01 16:49:15.000000000 +0100
++++ new/asciidoc/resources/html4.conf	2022-04-30 14:16:45.255134969 +0200
+@@ -460,7 +460,7 @@
+ <html>
+ <head>
+ <meta http-equiv="Content-Type" content="text/html; charset={encoding}">
+-<meta name="generator" content="AsciiDoc {asciidoc-version}">
++<meta name="generator" content="AsciiDoc">
+ <meta name="description" content="{description}">
+ <meta name="keywords" content="{keywords}">
+ <title>{title}</title>
+diff -Nur asciidoc-10.1.4/asciidoc/resources/html5.conf new/asciidoc/resources/html5.conf
+--- asciidoc-10.1.4/asciidoc/resources/html5.conf	2022-03-01 16:49:15.000000000 +0100
++++ new/asciidoc/resources/html5.conf	2022-04-30 14:16:45.255134969 +0200
+@@ -539,7 +539,7 @@
+ <html lang="{lang=en}">
+ <head>
+ <meta http-equiv="Content-Type" content="text/html; charset={encoding}">
+-<meta name="generator" content="AsciiDoc {asciidoc-version}">
++<meta name="generator" content="AsciiDoc">
+ <meta name="description" content="{description}">
+ <meta name="keywords" content="{keywords}">
+ <title>{title}</title>
+diff -Nur asciidoc-10.1.4/asciidoc/resources/slidy.conf new/asciidoc/resources/slidy.conf
+--- asciidoc-10.1.4/asciidoc/resources/slidy.conf	2022-03-01 16:49:15.000000000 +0100
++++ new/asciidoc/resources/slidy.conf	2022-04-30 14:16:45.259134969 +0200
+@@ -68,7 +68,7 @@
+ <meta http-equiv="Content-Type" content="{quirks=application/xhtml+xml}{quirks?text/html}; charset={encoding}" />
+ ifndef::copyright[<meta name="copyright" content="Copyright &#169; {author}" />]
+ <meta name="copyright" content="Copyright &#169; {copyright}" />
+-<meta name="generator" content="AsciiDoc {asciidoc-version}" />
++<meta name="generator" content="AsciiDoc" />
+ <meta name="duration" content="{duration}" />
+ ifdef::linkcss[]
+ <link rel="stylesheet" href="{stylesdir=.}/{theme=asciidoc}.css" type="text/css" />
+diff -Nur asciidoc-10.1.4/asciidoc/resources/xhtml11.conf new/asciidoc/resources/xhtml11.conf
+--- asciidoc-10.1.4/asciidoc/resources/xhtml11.conf	2022-03-01 16:49:15.000000000 +0100
++++ new/asciidoc/resources/xhtml11.conf	2022-04-30 14:16:45.259134969 +0200
+@@ -531,7 +531,7 @@
+ <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="{lang=en}">
+ <head>
+ <meta http-equiv="Content-Type" content="{quirks=application/xhtml+xml}{quirks?text/html}; charset={encoding}" />
+-<meta name="generator" content="AsciiDoc {asciidoc-version}" />
++<meta name="generator" content="AsciiDoc" />
+ <meta name="description" content="{description}" />
+ <meta name="keywords" content="{keywords}" />
+ <title>{title}</title>
+Binärdateien asciidoc-10.1.4/.setup.py.swp und new/.setup.py.swp sind verschieden.

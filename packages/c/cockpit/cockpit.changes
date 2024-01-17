@@ -1,0 +1,456 @@
+-------------------------------------------------------------------
+Fri Jan 12 16:40:17 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- enable python-bridge for suse distros
+
+-------------------------------------------------------------------
+Thu Dec 21 15:22:27 UTC 2023 - Adam Majer <adam.majer@suse.de> - 307
+
+- new version 307:
+  https://cockpit-project.org/blog/cockpit-307.html
+  https://cockpit-project.org/blog/cockpit-306.html
+  https://cockpit-project.org/blog/cockpit-305.html
+  https://cockpit-project.org/blog/cockpit-304.html
+  https://cockpit-project.org/blog/cockpit-303.html
+  https://cockpit-project.org/blog/cockpit-302.html
+  https://cockpit-project.org/blog/cockpit-301.html
+
+- css-overrides.patch, storage-btrfs.patch: refreshed
+
+-------------------------------------------------------------------
+Wed Sep 20 16:17:59 UTC 2023 - Miika Alikirri <miika.alikirri@suse.com>
+
+- Port SLE selinux bug fix from SLE Micro 5.5
+  * Copied selinux_libdir.patch from SLEM package
+
+-------------------------------------------------------------------
+Fri Sep  8 12:53:26 UTC 2023 - Adam Majer <adam.majer@suse.de> - 300.1
+
+- new version 300.1
+  https://cockpit-project.org/blog/cockpit-300.html
+  https://cockpit-project.org/blog/cockpit-299.html
+
+-------------------------------------------------------------------
+Fri Sep  8 12:29:33 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- Re-add pwscore dependency for SLE
+
+-------------------------------------------------------------------
+Thu Aug 31 10:00:06 UTC 2023 - Miika Alikirri <miika.alikirri@suse.com>
+
+- Fix building for SLE15.5 and SLE15.4
+
+-------------------------------------------------------------------
+Fri Aug 18 13:15:17 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- new version 298:
+  https://cockpit-project.org/blog/cockpit-298.html
+
+-------------------------------------------------------------------
+Tue Aug 15 13:53:14 UTC 2023 - Zdenek Kubala <zkubala@suse.cz>
+
+- set setroubleshoot-server dependency and do not apply 
+  0002-selinux-temporary-remove-setroubleshoot-section-patch for 
+  cockpit-selinux when build for SLE Micro 5.5
+
+-------------------------------------------------------------------
+Thu Aug  3 11:35:47 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- new version 297:
+  - https://cockpit-project.org/blog/cockpit-297.html
+- hide-docs.patch: refreshed
+
+-------------------------------------------------------------------
+Mon Jul 17 12:19:27 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- new version 296:
+  - https://cockpit-project.org/blog/cockpit-296.html
+  - https://cockpit-project.org/blog/cockpit-295.html
+  - https://cockpit-project.org/blog/cockpit-294.html
+- 0004-leap-gnu18-removal.patch: added support for Leap thanks to Lubos
+
+-------------------------------------------------------------------
+Tue Jun 13 12:39:20 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- Add fake openSUSE branding target when building on non-openSUSE
+  builds so branding does not need to be removed
+- Remove tests package so we don't have to ship a test PAM module
+
+-------------------------------------------------------------------
+Fri Jun  2 13:26:45 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- new version 293:
+  - https://cockpit-project.org/blog/cockpit-293.html
+- refreshed: css-overrides.patch
+
+-------------------------------------------------------------------
+Tue May 30 15:05:45 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- new version 292:
+  - https://cockpit-project.org/blog/cockpit-292.html
+- refreshed patches: css-overrides.patch, hide-pcp.patch,
+  0001-selinux-allow-login-to-read-motd-file.patch
+
+-------------------------------------------------------------------
+Tue Feb  7 15:47:35 UTC 2023 - Stefan Schubert <schubi@suse.com>
+
+- Migration of PAM settings to /usr/lib/pam.d.
+
+-------------------------------------------------------------------
+Wed Jan 25 11:13:36 UTC 2023 - Luna D Dragon <luna.dragon@suse.com>
+
+- restore dependency on /usr/bin/pwscore (bsc#1202277)
+- remove remove-pwscore.patch
+
+-------------------------------------------------------------------
+Mon Nov 28 13:34:07 UTC 2022 - Zdenek Kubala <zkubala@suse.cz>
+
+- enable build of cockpit-selinux module
+- changes to keep it sync with sle micro
+  (0002-selinux-temporary-remove-setroubleshoot-section.patch)
+
+-------------------------------------------------------------------
+Tue Sep 20 08:20:16 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- new version 276.1
+  - login: Use valid selectors when testing for :is() / :where() support.
+  - stability and performance improvements
+  - previous changes https://cockpit-project.org/blog/cockpit-275.html
+- css-overrides.patch, hide-docs.patch, remove-pwscore.patch: refreshed
+- kdump-close.patch, kdump-refactor.patch, kdump-suse.patch: upstreamed
+  and removed
+
+-------------------------------------------------------------------
+Tue Sep 13 09:46:17 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- Fix cockpit-storage dependencies
+- Merge SUSE branding into cockpit package
+
+-------------------------------------------------------------------
+Mon Sep  5 08:09:56 UTC 2022 - Jacek Tomasiak <jtomasiak@suse.com>
+
+- Update kdump-suse.patch to match upstream.
+
+-------------------------------------------------------------------
+Wed Aug 24 12:25:42 UTC 2022 - Jacek Tomasiak <jtomasiak@suse.com>
+
+- Add kdump-close.patch required by patches below.
+- Add kdump-refactor.patch and kdump-suse.patch to support SUSE
+  kdump config management in cockpit.
+
+-------------------------------------------------------------------
+Wed Aug 24 07:37:46 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- Use a list of available brandings to include in cockpit-ws
+  package instead of resolving by symlinks.
+
+-------------------------------------------------------------------
+Thu Jul 28 08:41:13 UTC 2022 - Jacek Tomasiak <jtomasiak@suse.com>
+
+- Update suse-microos-branding.patch for new /etc/os-release ID.
+- Add storage-btrfs.patch to enable BTRFS use in cockpit-storage.
+
+-------------------------------------------------------------------
+Thu Jun 23 09:27:17 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- Add conflict between cockpit-networkmanager and cockpit-wicked
+  as they use the same URL paths.
+
+-------------------------------------------------------------------
+Mon Jun 20 08:15:34 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- Re-arrange patches and apply them manually again.
+  Some were accidentally added and should be sle only
+
+-------------------------------------------------------------------
+Fri Jun 17 10:09:09 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- css-overrides.patch: css overrides for better theming support
+
+-------------------------------------------------------------------
+Fri Jun 10 08:22:31 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- new version 271
+  https://cockpit-project.org/blog/cockpit-271.html
+- cockpit-redhatfont.diff: not needed, dropped
+- 0001-selinux-allow-login-to-read-motd-file.patch, hide-docs.patch,
+  hide-pcp.patch remove-pwscore.patch: refreshed
+
+-------------------------------------------------------------------
+Fri Mar 18 14:28:24 UTC 2022 - Jacek Tomasiak <jtomasiak@suse.com>
+
+- re-add suse-microos-branding.patch from GitHub
+- add hide-docs.patch (bsc#1197003)  
+
+-------------------------------------------------------------------
+Tue Mar 15 13:42:38 UTC 2022 - Jacek Tomasiak <jtomasiak@suse.com>
+
+- make package compatible with OBS version (bsc#1197224):
+  * move branding images to distribution-logos-SLE package
+  * re-add dependency on distribution-logos
+  * remove branding patch and assets (suse-microos-branding.patch,
+    suse-microos-branding.tar.gz); moved to GitHub fork
+  * remove local __python3 macro
+  * apply SLE specific patches only on SLE
+
+-------------------------------------------------------------------
+Mon Feb 28 10:41:31 UTC 2022 - Jacek Tomasiak <jtomasiak@suse.com>
+
+- add hide-pcp.patch to hide references to PCP (Performance
+  Co-Pilot) and metric collection (bsc#1195943). The cockpit-pcp
+  package is not included in SLE Micro 5.2 base and these parts
+  require it.
+
+-------------------------------------------------------------------
+Mon Jan 31 15:30:24 UTC 2022 - Jacek Tomasiak <jtomasiak@suse.com>
+
+- change self-signed cert group from cockpit-wsintance to
+  cockpit-ws on upgrade
+
+-------------------------------------------------------------------
+Mon Jan 31 08:26:46 UTC 2022 - Jacek Tomasiak <jtomasiak@suse.com>
+
+- update to new LTS version from openSUSE:Factory
+- port remove-pwscore.patch
+  * remove dependency on pwscore (bsc#1182924)
+  * remove password strenth indicator
+- port branding changes as suse-microos "theme"
+  * remove suse_cockpit_assets.tar.gz
+  * add suse-microos-branding.tar.gz
+  * remove branding_tests.patch
+  * add suse-microos-branding.patch
+- remove files not needed to build this version anymore
+  * webpack-warnings-are-not-errors.patch
+  * github_package.patch
+  * nodejs_output_helper.bash
+- remove cockpit.permissions workaround (bsc#1169614)
+
+-------------------------------------------------------------------
+Fri Jan 28 14:54:44 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- new version 251.3
+  * https://cockpit-project.org/blog/cockpit-251.html
+  with additional fixes
+  * Fix "Administrative Access" prompt for "Duo" MFA
+
+-------------------------------------------------------------------
+Thu Aug 19 14:54:46 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- add --legacy-peer-deps to fix build
+
+-------------------------------------------------------------------
+Tue Aug  3 14:46:16 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- new version 250
+  https://cockpit-project.org/blog/cockpit-250.html
+- fix pam_motd selinux denial (0001-selinux-allow-login-to-read-motd-file.patch)
+
+-------------------------------------------------------------------
+Thu May 27 11:01:03 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- new version 245
+  https://cockpit-project.org/blog/cockpit-245.html
+
+-------------------------------------------------------------------
+Tue May 18 08:06:31 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- new version 244.1
+  https://cockpit-project.org/blog/cockpit-244.html
+- enable SELinux
+
+-------------------------------------------------------------------
+Mon May  3 14:11:01 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- install all of pkg/lib in -devel package. Cockpit-machines needs more
+
+-------------------------------------------------------------------
+Fri Apr 30 15:51:43 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- new version 243
+  https://cockpit-project.org/blog/cockpit-243.html
+  https://cockpit-project.org/blog/cockpit-242.html
+  https://cockpit-project.org/blog/cockpit-241.html
+  https://cockpit-project.org/blog/cockpit-240.html
+  https://cockpit-project.org/blog/cockpit-239.html
+
+-------------------------------------------------------------------
+Wed Feb 24 17:03:41 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- new version 238.1
+  https://cockpit-project.org/blog/cockpit-238.html
+  https://cockpit-project.org/blog/cockpit-237.html
+- No longer recompress tarball at buildtime
+
+-------------------------------------------------------------------
+Thu Feb  4 16:18:13 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- Rebuild from git leveraging local-npm-registry (needs
+  cockpit-redhatfont.diff)
+
+-------------------------------------------------------------------
+Fri Jan 22 15:38:53 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- new version 236
+  https://cockpit-project.org/blog/cockpit-236.html
+
+-------------------------------------------------------------------
+Fri Jan 22 08:53:25 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- new version 235
+  https://cockpit-project.org/blog/cockpit-235.html
+  https://cockpit-project.org/blog/cockpit-234.html
+  https://cockpit-project.org/blog/cockpit-233.html
+
+-------------------------------------------------------------------
+Fri Nov 27 12:39:21 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- new version 232
+  https://cockpit-project.org/blog/cockpit-232.html
+  https://cockpit-project.org/blog/cockpit-231.html
+
+-------------------------------------------------------------------
+Thu Oct 15 08:16:01 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- new version 230
+  https://cockpit-project.org/blog/cockpit-230.html
+
+-------------------------------------------------------------------
+Tue Oct  6 06:24:58 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- new version 229
+  https://cockpit-project.org/blog/cockpit-229.html
+
+-------------------------------------------------------------------
+Thu Oct  1 11:32:48 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- new version 228
+  https://cockpit-project.org/blog/cockpit-228.html
+  https://cockpit-project.org/blog/cockpit-227.html
+  https://cockpit-project.org/blog/cockpit-226.html
+- enable cockpit-machines to manage libvirt
+
+-------------------------------------------------------------------
+Thu Sep 10 12:49:00 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- adjust spec file to match upstream
+
+-------------------------------------------------------------------
+Fri Sep  4 12:09:16 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- cockpit-ws: don't require systemd (allows to build a very small
+  cockpit-ws container)
+
+-------------------------------------------------------------------
+Mon Aug 31 15:46:35 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- Add README.packaging for packagers
+
+-------------------------------------------------------------------
+Fri Aug 14 12:09:24 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- new version 225:
+  https://cockpit-project.org/blog/cockpit-223.html
+  https://cockpit-project.org/blog/cockpit-224.html
+  https://cockpit-project.org/blog/cockpit-225.html
+
+-------------------------------------------------------------------
+Wed Aug 12 09:33:17 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Require group wheel
+- Add permission macros [bsc#1169614]
+- Create tmpfiles in %post install
+
+-------------------------------------------------------------------
+Fri Jun 26 12:09:09 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- new version 222:
+  https://cockpit-project.org/blog/cockpit-222.html
+  changelog from 221:
+  https://cockpit-project.org/blog/cockpit-221.html
+- enable docker module
+
+-------------------------------------------------------------------
+Tue Jun  9 12:11:54 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- new version 220:
+  https://cockpit-project.org/blog/cockpit-220.html
+
+-------------------------------------------------------------------
+Tue Jun  9 08:46:59 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- disable selinux, sosreport and machines subpackages due to missing
+  dependencies
+
+-------------------------------------------------------------------
+Wed Apr 29 13:26:03 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- remove badness overrides to allow Factory submission
+
+-------------------------------------------------------------------
+Wed Apr 29 07:50:41 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- remove branding with stale symlinks. Can't rely on /etc/os-release as OBS may
+  use the dummy-release package.
+
+-------------------------------------------------------------------
+Tue Apr 28 09:18:22 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- use pkgconfig(systemd) and pkgconfig(krb5)
+- fix build with glib update (0001-bridge-Pass-connectable-to-TLS-client-connection.patch)
+
+-------------------------------------------------------------------
+Fri Mar 27 10:50:51 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- new version 215
+
+-------------------------------------------------------------------
+Thu Aug 22 09:50:14 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
+
+- new version 200
+
+-------------------------------------------------------------------
+Fri Jun 21 13:44:05 UTC 2019 - Boris Manojlovic <boris@steki.net>
+
+- updated to latest release 195  
+
+-------------------------------------------------------------------
+Thu Mar  7 13:23:36 UTC 2019 - Alex <aevseev@gmail.com>
+
+- New upstream version - 189
+
+-------------------------------------------------------------------
+Mon Feb  4 18:24:55 UTC 2019 - aevseev@gmail.com
+
+- New upstream version - 186
+
+-------------------------------------------------------------------
+Wed Oct 24 13:37:31 UTC 2018 - aevseev@gmail.com
+
+- New upstream version - 180
+
+-------------------------------------------------------------------
+Fri Sep  7 10:24:09 UTC 2018 - aevseev@gmail.com
+
+- New upstream version - 177
+
+-------------------------------------------------------------------
+Mon Aug 27 08:28:01 UTC 2018 - aevseev@gmail.com
+
+- First build. Version - 176.
+
+-------------------------------------------------------------------
+Tue Oct 13 11:41:44 UTC 2015 - kkaempf@suse.com
+
+- Update to 0.79
+  * Vagrant file for Cockpit development
+  * Use libvirt for testing
+  * Display only last lines of Kubernetes container logs
+
+  See https://github.com/cockpit-project/cockpit/releases
+
+- Add branding-symlinks.patch, SUSE doesn't carry Fedora pixmaps
+
+-------------------------------------------------------------------
+Sat Feb  7 13:22:23 UTC 2015 - kkaempf@suse.com
+
+- Initial release 0.38

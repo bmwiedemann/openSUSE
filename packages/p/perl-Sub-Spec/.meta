@@ -1,0 +1,11 @@
+<package name="perl-Sub-Spec" project="openSUSE:Factory">
+  <title>Subroutine metadata &amp; wrapping framework</title>
+  <description>Subroutines are an excellent unit of reuse, in some ways they are even
+superior to objects (simpler, map better to HTTP/network programming due to
+being stateless, etc). Sub::Spec aims to make your subs much more useful,
+reusable, powerful.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-Sub-Spec"/>
+  <url>http://search.cpan.org/dist/Sub-Spec/</url>
+</package>

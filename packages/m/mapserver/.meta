@@ -1,0 +1,6 @@
+<package name="mapserver" project="openSUSE:Factory">
+  <title>Internet mapping program</title>
+  <description>UMN Mapserver is an interactive mapping program that converts GIS data to map images in real time. With appropriate interface pages, Mapserver can provide aninteractive internet map based on custom GIS data.</description>
+  <devel project="Application:Geo" package="mapserver"/>
+  <url>http://www.mapserver.org</url>
+</package>

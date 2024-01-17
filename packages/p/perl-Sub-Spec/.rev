@@ -1,0 +1,48 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b31e302f4e7ff987186571a6b5a9943b</srcmd5>
+    <version>1.0.5</version>
+    <time>1324466313</time>
+    <user>coolo</user>
+    <comment>new perl module</comment>
+    <requestid>97059</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5f94e4b7476b9dfec767f5d5f0d0b8fc</srcmd5>
+    <version>1.0.7</version>
+    <time>1329750986</time>
+    <user>coolo</user>
+    <comment>- updated to 1.0.7
+    * Update NOTICE.
+    * Mark deprecated.</comment>
+    <requestid>105945</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>5f94e4b7476b9dfec767f5d5f0d0b8fc</srcmd5>
+    <version>1.0.7</version>
+    <time>1340183921</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>5f94e4b7476b9dfec767f5d5f0d0b8fc</srcmd5>
+    <version>1.0.7</version>
+    <time>1359109801</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>5f94e4b7476b9dfec767f5d5f0d0b8fc</srcmd5>
+    <version>1.0.7</version>
+    <time>1379663849</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>5f94e4b7476b9dfec767f5d5f0d0b8fc</srcmd5>
+    <version>1.0.7</version>
+    <time>1409302491</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

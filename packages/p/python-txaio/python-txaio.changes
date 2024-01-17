@@ -1,0 +1,97 @@
+-------------------------------------------------------------------
+Mon Feb 20 04:48:22 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 23.1.1:
+  * fix: support for Python up to v3.11
+
+-------------------------------------------------------------------
+Sat Jun  4 15:12:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 22.2.1:
+  * fix: cancel handling in python 3.8/3.9. (#175)
+  * fix: gracefully fail if coroutine called with wrong args (#176)
+  * fix: eliminate redundant dep. on mock (#170)
+  * fix: doc note that twisted supports native coroutines (#172)
+- remove-mock.patch: upstream
+
+-------------------------------------------------------------------
+Tue Mar  2 00:23:51 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 21.2.1:
+  - fix: update minimum dependencies (here, and in other crossbar packages) in an
+    attempt to tame the new pip dep resolver madness.
+
+-------------------------------------------------------------------
+Mon Jan 18 00:21:11 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- update to 20.12.1
+  * new: CI/CD migrated to GitHub Actions
+  * new: support Python 3.9 (CI / testing added)
+  * new: minimum Python version is now 3.6 
+- add remove-mock.patch gh#crossbario/txaio#169
+
+-------------------------------------------------------------------
+Mon Apr  6 09:20:12 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 20.4.1
+  * always use the asyncio loop of the thread which conducts the API call
+
+-------------------------------------------------------------------
+Fri Mar 27 15:24:16 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Remove pytest4.patch as it is included upstream
+- Switch off python2 builds.
+
+-------------------------------------------------------------------
+Wed Mar 25 14:49:27 UTC 2020 - pgajdos@suse.com
+
+- version update to 20.3.1
+  - MISC: Remove python2 support
+  - NEW: support import-time framework selection
+
+-------------------------------------------------------------------
+Wed Feb  5 13:11:01 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 20.1.1
+- drop pytest4.patch
+ * new: moved time_ns and perf_counter_ns helper functions here
+ * drop support for python 3.4 and older
+
+-------------------------------------------------------------------
+Fri Sep 13 11:40:25 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to build with newer pytest releases:
+  * pytest4.patch
+
+-------------------------------------------------------------------
+Thu Sep  5 13:40:10 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Set pytest maximum version.
+
+-------------------------------------------------------------------
+Tue Mar 19 12:35:11 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Fix invocation of test suite, previously silently not running
+- Add missing runtime dependencies
+- Update to v18.8.1
+  * add API to support cancellation; this means passing a 1-argument
+    callable to ``create_future`` and ``txaio.cancel`` to actually
+    cancel a future
+  * support Python 3.7 (CI / testing added)
+- from v18.7.1
+  * move to calver
+  * deprecate Python 3.3 support and CI testing
+- from v2.10.0
+  * the asyncio version of ``make_logger`` now deduces a proper
+    namespace instead of using the root
+
+-------------------------------------------------------------------
+Tue Dec  4 12:55:27 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Fri Mar  2 22:01:11 UTC 2018 - avvissu@yandex.by
+
+- Initial package
+

@@ -1,0 +1,53 @@
+diff -Nura plymouth-0.9.5~git20220801.eb1b893/src/libply/ply-utils.c plymouth-0.9.5~git20220801.eb1b893_new/src/libply/ply-utils.c
+--- plymouth-0.9.5~git20220801.eb1b893/src/libply/ply-utils.c	2022-08-02 21:28:28.000000000 +0800
++++ plymouth-0.9.5~git20220801.eb1b893_new/src/libply/ply-utils.c	2022-08-04 17:51:09.943348306 +0800
+@@ -862,7 +862,7 @@
+ }
+ 
+ /* The minimum resolution at which we turn on a device-scale of 2 */
+-#define HIDPI_LIMIT 192
++#define HIDPI_TWICE_LIMIT 160
+ #define HIDPI_MIN_HEIGHT 1200
+ 
+ int
+@@ -874,8 +874,20 @@
+         int device_scale;
+         double dpi_x, dpi_y;
+         const char *force_device_scale;
+-
+         device_scale = 1;
++        #define WIDTH_INCHS (width_mm / 25.4)
++        #define HEIGHT_INCHS (height_mm / 25.4)
++
++        if (width > 0 && height > 0 && width_mm > 0 && height_mm > 0) {
++                ply_trace("screen width is %d mm", width_mm);
++                ply_trace("screen height is %d mm", height_mm);
++                ply_trace("screen width pixels is %d.", width);
++                ply_trace("screen height pixels is %d.", height);
++                dpi_x = (double)width / WIDTH_INCHS;
++                ply_trace("screen width DPI is %lf", dpi_x);
++                dpi_y = (double)height / HEIGHT_INCHS;
++                ply_trace("screen height DPI is %lf", dpi_y);
++        }
+ 
+         if ((force_device_scale = getenv ("PLYMOUTH_FORCE_SCALE")))
+                 return strtoul (force_device_scale, NULL, 0);
+@@ -894,14 +906,10 @@
+             (width_mm == 16 && height_mm == 10))
+                 return 1;
+ 
+-        if (width_mm > 0 && height_mm > 0) {
+-                dpi_x = (double) width / (width_mm / 25.4);
+-                dpi_y = (double) height / (height_mm / 25.4);
+-                /* We don't completely trust these values so both
+-                 * must be high, and never pick higher ratio than
+-                 * 2 automatically */
+-                if (dpi_x > HIDPI_LIMIT && dpi_y > HIDPI_LIMIT)
+-                        device_scale = 2;
++        if (dpi_x > HIDPI_TWICE_LIMIT && dpi_y > HIDPI_TWICE_LIMIT)
++        {
++                device_scale = 2;
++                ply_trace("When DPI > 160, screen will scale output twice as community want.");
+         }
+ 
+         return device_scale;

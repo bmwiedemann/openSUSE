@@ -1,0 +1,15 @@
+Index: tar-1.25/src/names.c
+===================================================================
+--- tar-1.25.orig/src/names.c
++++ tar-1.25/src/names.c
+@@ -970,10 +970,6 @@ collect_and_sort_names (void)
+ 
+       if (name->found_count || name->directory)
+ 	continue;
+-      if (name->matching_flags & EXCLUDE_WILDCARDS)
+-	/* NOTE: EXCLUDE_ANCHORED is not relevant here */
+-	/* FIXME: just skip regexps for now */
+-	continue;
+       chdir_do (name->change_dir);
+ 
+       if (name->name[0] == 0)

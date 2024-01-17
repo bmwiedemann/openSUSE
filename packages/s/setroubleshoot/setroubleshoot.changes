@@ -1,0 +1,199 @@
+-------------------------------------------------------------------
+Fri Nov 10 15:39:45 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
+
+- Update to version 3.3.32:
+  * Rename session bus name to org.fedoraproject.sealert
+  * seapplet: wrap SEApplet() to try except
+  * util.py: Add doctext test for build_module_type_cache()
+  * Update translations
+- Add explicit dependency on python3-six for server subpackage.
+- Remove buildrequires on gtk2-devel
+
+-------------------------------------------------------------------
+Wed Jun  7 13:16:23 UTC 2023 - Zdenek Kubala <zkubala@suse.cz>
+
+- Add patch remove-pip-from-makefile.patch to temp fix build error
+  caused by invoking `-m pip install` within build process by 
+  return to `setup.py install` - we do not allow network 
+  connection in secure build mode in OBS
+
+-------------------------------------------------------------------
+Tue Jan 24 10:43:16 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
+
+- Update to version 3.3.31:
+  * Add a screen reader label to the icon
+  * seapplet: avoid ValueError when parsing sealert.conf
+  * doc: Document performance related changes
+  * Decrease setroubleshootd priority and limit RAM utilization to 1GB
+- Add python3-setuptools and python3-pip to BuildRequires.
+
+-------------------------------------------------------------------
+Wed Dec  8 12:38:49 UTC 2022 - Zdenek Kubala <zkubala@suse.cz>
+
+- Small adjustments in a spec file for dirs and files
+- Add documentation to be build in setroubleshoot-doc
+
+-------------------------------------------------------------------
+Wed Nov 30 15:07:07 UTC 2022 - Zdenek Kubala <zkubala@suse.cz>
+
+- Fix dbus conf file location to /usr/share/dbus-1
+
+-------------------------------------------------------------------
+Thu Oct 20 11:15:39 UTC 2022 - Zdenek Kubala <zkubala@suse.cz>
+
+- Update to version 3.3.30 (bnc#1204344)
+
+  Summary of changes from 3.3.26 to 3.3.30:
+  * sedispatch: check read_size
+  * SafeConfigParser is deprecated and will be dropped
+  * Fix typos in --help, man pages and developer's guide
+  * Improve DSP module reporting
+  * Look for modules in /usr/share/selinux/packages
+  * Always use rpm source package for reporting
+  * Improve after_first email filter behavior
+  * Set right ownership on /var/lib/setroubleshoot
+  * Install systemd-sysusers config
+  * Remove Requires(pre) useradd & groupadd
+  * Introduce email.use_sendmail option
+  * Update translations
+  * Miscellaneous python and build system changes
+  * Fix couple of typos
+  * Drop Python2 support
+  * Use inspect.signature() instead of instead.getargspec()
+
+  Spec file modification to reflect openSUSE dependencies and paths.
+  Removed old patches
+  * setroubleshoot-Stop-SetroubleshootFixit-after-10-seconds-of-inactiv.patch
+  * setroubleshoot-Do-not-use-Python-slip-package.patch
+  * setroubleshoot-Gracefully-handle-unavailable-libreport.patch
+
+  
+-------------------------------------------------------------------
+Sun May  8 16:40:53 UTC 2022 - Benjamin Greiner <code@bnavigator.de>
+
+- Switch runtime requirement of server package from ancient
+  PyGObject 2 to the current version. Build requirement was already
+  current.
+
+-------------------------------------------------------------------
+Thu Nov 11 09:50:33 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Drop build requirement for gtk2-devel
+
+-------------------------------------------------------------------
+Fri Aug 20 19:31:22 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Ensure /run is used, not /var/run
+- Add CONFIG parameter to %sysusers_generate_pre
+- Don't fdupes unnecessarily
+
+-------------------------------------------------------------------
+Tue Aug 10 07:53:34 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Delete setroubleshoot-rpmlintrc. For the devel project it's not 
+  necessary and for official products we don't allow to reduce the
+  badness of the warnings listed in there
+
+-------------------------------------------------------------------
+Tue Jun  8 16:56:52 UTC 2021 - Predrag Ivanović <predivan@mts.rs>
+
+- Package changes:
+  * Number the patches, RPM shipped with SLE/Leap doesn't support 
+    auto-numbering.
+
+-------------------------------------------------------------------
+Wed May 19 11:48:36 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- new version 3.3.26
+  * Fix plugin exception reporting
+  * Update translations
+- add patches
+  setroubleshoot-Stop-SetroubleshootFixit-after-10-seconds-of-inactiv.patch
+  setroubleshoot-Do-not-use-Python-slip-package.patch
+  setroubleshoot-Gracefully-handle-unavailable-libreport.patch
+- server needs to require python3-systemd
+- fix audisp plugin dir
+
+-------------------------------------------------------------------
+Tue May 18 14:45:47 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- Fix python dependencies
+- Add sysuser and fix ownerships for server
+- move dbus files to correct directory and package
+- don't use dbus-send in %post, this would try to autolaunch the service
+
+-------------------------------------------------------------------
+Mon Apr 19 14:34:17 UTC 2021 - Predrag Ivanović <predivan@mts.rs>
+
+- Fix Require for setroubleshoot-server
+    setools-libs-python is python3-setools in SUSE/openSUSE
+
+-------------------------------------------------------------------
+Mon Mar 15 17:32:08 UTC 2021 - Predrag Ivanović <predivan@mts.rs>
+
+- Update to 3.3.25
+
+ Summary of the changes from 3.3.19 to 3.3.25
+ * Use Python dasbus instead of pydbus
+ * Log full reports with correct syslog identifier
+ * Cancel pending alarm during AVC analyses
+ * sepolicy.info() returns a generator, not a list
+ * Log plugin exception traceback when log level is DEBUG
+ * Drop old unused files
+ * Add Local SELinux policy package version to analyses reports
+ * Report bug on a package which owns the related SELinux domain
+ * Use pydbus, a modern Python dbus API, for SetroubleshootPrivileged
+ * Root user doesn't need to use SetroubleshootPrivileged API
+ * Drop updater.py - it's not used and doesn't work
+ * sealert: Drop unused import slib.dbus.service
+ * browser: Do not try to report a bug on None package
+ * Revert "sepolicy.info() returns a generator, not a list"
+ * Revert "Fix AVC.__typeMatch to handle aliases properly"
+ * Make date/time format locale specific
+ * Do not refer to hardcoded selinux-policy rpm in signature
+ * Add dpkg support
+ * setroubleshoot.util: Catch exceptions from sepolicy import
+ * Improve and unify error messages
+ * browser: Check return value of Gdk.Screen().get_default()
+ * Add man page for seapplet
+ * Fix translation of hex values in AVCs
+ * Catch exceptions caused by lookup_signature
+ * Improve myplatform detection in get_os_environment()
+
+- Package changes:
+ * Drop legacy seapplet.
+
+-------------------------------------------------------------------
+Thu Nov 22 16:04:58 UTC 2018 - jsegitz@suse.com
+
+- Create and own documentation directory
+
+-------------------------------------------------------------------
+Sun Oct 14 03:11:11 UTC 2018 - Marguerite Su <i@marguerite.su>
+
+- updated to 3.3.18
+
+-------------------------------------------------------------------
+Wed May 16 07:34:07 UTC 2018 - mcepl@suse.com
+
+- Rebase to 3.3.17
+
+-------------------------------------------------------------------
+Wed Mar 31 21:04:36 UTC 2010 - prusnak@suse.cz
+
+- fix prefix in setuptools (setup_py-prefix.patch)
+
+-------------------------------------------------------------------
+Thu Feb 25 15:42:54 UTC 2010 - prusnak@suse.cz
+
+- updated to 2.2.64
+
+-------------------------------------------------------------------
+Wed Jun 10 17:10:56 CEST 2009 - prusnak@suse.cz
+
+- initial version 2.1.12
+  * based on Fedora package
+- created patches:
+  * desktop.patch - fix category and remove absolute paths
+  * dbus.patch - fix dbus configuration
+

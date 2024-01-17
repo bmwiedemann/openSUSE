@@ -1,0 +1,148 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>c70452e9fa30fb1dfee6b50edf02cdc3</srcmd5>
+    <version>1.0</version>
+    <time>1168903551</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="233">
+    <srcmd5>c70452e9fa30fb1dfee6b50edf02cdc3</srcmd5>
+    <version>1.0</version>
+    <time>1168903551</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="234">
+    <srcmd5>cf20ebe2e8f59339a38c73b18021bacb</srcmd5>
+    <version>1.0</version>
+    <time>1224729620</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="235">
+    <srcmd5>a41eb9d99a2d6a7088da21d1899800bc</srcmd5>
+    <version>1.0</version>
+    <time>1227192842</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="236">
+    <srcmd5>40aa6ca8ac095de310a74d63509c189e</srcmd5>
+    <version>1.0</version>
+    <time>1228318169</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="237">
+    <srcmd5>c0038619a9b37d8f6570a9c69de48cb7</srcmd5>
+    <version>1.0</version>
+    <time>1228382002</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="239">
+    <srcmd5>c0038619a9b37d8f6570a9c69de48cb7</srcmd5>
+    <version>1.0</version>
+    <time>1228382002</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="240">
+    <srcmd5>982662d71b25aa33a933bd0d1edb3ce0</srcmd5>
+    <version>1.0</version>
+    <time>1268924999</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="242">
+    <srcmd5>982662d71b25aa33a933bd0d1edb3ce0</srcmd5>
+    <version>1.0</version>
+    <time>1278667369</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="243">
+    <srcmd5>982662d71b25aa33a933bd0d1edb3ce0</srcmd5>
+    <version>1.0</version>
+    <time>1278678598</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="246">
+    <srcmd5>982662d71b25aa33a933bd0d1edb3ce0</srcmd5>
+    <version>1.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="248">
+    <srcmd5>982662d71b25aa33a933bd0d1edb3ce0</srcmd5>
+    <version>1.0</version>
+    <time>1319182187</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="249">
+    <srcmd5>c25664e635d93fceb88f8600575cad11</srcmd5>
+    <version>1.0</version>
+    <time>1323192615</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="14" vrev="250">
+    <srcmd5>8c399d590dd357a39245b9b1e2e6c32b</srcmd5>
+    <version>1.0</version>
+    <time>1339477768</time>
+    <user>coolo</user>
+    <comment>- Drop {ignore_error} from the udev rule, its not supported anymore.</comment>
+    <requestid>124401</requestid>
+  </revision>
+  <revision rev="15" vrev="252">
+    <srcmd5>8c399d590dd357a39245b9b1e2e6c32b</srcmd5>
+    <version>1.0</version>
+    <time>1340183712</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="254">
+    <srcmd5>8c399d590dd357a39245b9b1e2e6c32b</srcmd5>
+    <version>1.0</version>
+    <time>1359109466</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="255">
+    <srcmd5>58d6d196ca797dabffa5dcfdaa300f60</srcmd5>
+    <version>1.0</version>
+    <time>1360230231</time>
+    <user>coolo</user>
+    <comment>- Require modutils and not module-init-tools otherwise I cannot
+  switch to kmod.. (forwarded request 150842 from elvigia)</comment>
+    <requestid>151442</requestid>
+  </revision>
+  <revision rev="18" vrev="256">
+    <srcmd5>379a7edd2a0fbfe217c9d562a475b927</srcmd5>
+    <version>1.0</version>
+    <time>1366232903</time>
+    <user>coolo</user>
+    <comment>- Also, update modaliases. 
+
+- Fix udev rules location and update them to use builtin 
+  module loading features. (forwarded request 170957 from elvigia)</comment>
+    <requestid>171245</requestid>
+  </revision>
+  <revision rev="19" vrev="258">
+    <srcmd5>379a7edd2a0fbfe217c9d562a475b927</srcmd5>
+    <version>1.0</version>
+    <time>1379663317</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="260">
+    <srcmd5>379a7edd2a0fbfe217c9d562a475b927</srcmd5>
+    <version>1.0</version>
+    <time>1409301934</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="261">
+    <srcmd5>106cad21560c5da1deb7865edb4ac3a0</srcmd5>
+    <version>1.0</version>
+    <time>1429769092</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>298599</requestid>
+  </revision>
+</revisionlist>

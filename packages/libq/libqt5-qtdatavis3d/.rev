@@ -1,0 +1,264 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1c339dd4c80316d2d1acde62fd111727</srcmd5>
+    <version>5.7.1</version>
+    <time>1485042348</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.7.1</comment>
+    <requestid>448116</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>da2ce9c727218faa3aa679fcfc5591d5</srcmd5>
+    <version>5.9.0</version>
+    <time>1497687722</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.9.0 final</comment>
+    <requestid>499986</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1a691d8998d7ea48c169151a699efcdd</srcmd5>
+    <version>5.9.1</version>
+    <time>1499598252</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.9.1
+  * For more details please see:
+    http://blog.qt.io/blog/2017/06/30/qt-5-9-1-released/</comment>
+    <requestid>507996</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1bdfed54e6c3b56b4c89152e9c92acc4</srcmd5>
+    <version>5.9.2</version>
+    <time>1508876512</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.9.2</comment>
+    <requestid>533795</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2d3763a9e7eb58e3e5d57216804579fc</srcmd5>
+    <version>5.9.3</version>
+    <time>1513343079</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.9.3</comment>
+    <requestid>545939</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ed7be1200f70193fa688329d123cadda</srcmd5>
+    <version>5.10.0</version>
+    <time>1514027564</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.10.0</comment>
+    <requestid>557383</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9e6495bb1c60e6fa30693e7c0781e5c8</srcmd5>
+    <version>5.11.0</version>
+    <time>1528022252</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.11.0 (forwarded request 611377 from Vogtinator)</comment>
+    <requestid>611668</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>76772801760ccdae1a3bebb2bbd8d0c0</srcmd5>
+    <version>5.11.1</version>
+    <time>1530304375</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.11.1</comment>
+    <requestid>618667</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d24278027812edc8e217cec5ac9942bb</srcmd5>
+    <version>5.11.2</version>
+    <time>1538502339</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.11.2</comment>
+    <requestid>637831</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3f974a197ae038d9c38e65ef8dc1ce76</srcmd5>
+    <version>5.12.0</version>
+    <time>1545306850</time>
+    <user>dimstar_suse</user>
+    <comment>- Use %license
+- Remove empty libqt5-qtdatavis3d package
+
+- Update to 5.12.0:
+  * New feature release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtdatavis3d.git/plain/dist/changes-5.12.0/?h=v5.12.0
+
+- Update to 5.12.0-rc2:
+  * New bugfix release
+  * Only important bugfixes
+- Changelog for Qt 5.12.0:
+  * http://code.qt.io/cgit/qt/qtdatavis3d.git/plain/dist/changes-5.12.0/?h=5.12.0
+
+- Update to 5.12.0-rc:
+  * New bugfix release
+  * No changelog available
+
+- Update to 5.12.0-beta4:
+  * New bugfix release
+  * No changelog available
+
+- Update to 5.12.0-beta3:
+  * New bugfix release
+  * No changelog available
+
+- Update to 5.12.0-beta2:
+  * New bugfix release
+  * No changelog available</comment>
+    <requestid>659994</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>719739564477f66f8bf8a7352d17b38e</srcmd5>
+    <version>5.12.2</version>
+    <time>1553263539</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.12.2</comment>
+    <requestid>685628</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b953baddc86580391d00141e264279f9</srcmd5>
+    <version>5.12.3</version>
+    <time>1556311939</time>
+    <user>maxlin_factory</user>
+    <comment>Qt 5.12.3</comment>
+    <requestid>697059</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>99eb94a9f3bda84e7689484783da021f</srcmd5>
+    <version>5.13.0</version>
+    <time>1561732066</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.13.0</comment>
+    <requestid>711179</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>0b5f1e5fd7b7891e2e63e9144880b91b</srcmd5>
+    <version>5.13.1</version>
+    <time>1568097213</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.13.1</comment>
+    <requestid>729202</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>bcd4154a6c479be28485765a815e81a9</srcmd5>
+    <version>5.14.0</version>
+    <time>1579463704</time>
+    <user>dimstar_suse</user>
+    <comment>5.14.0</comment>
+    <requestid>757482</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c20360d7af28d37402454f1319754605</srcmd5>
+    <version>5.14.1</version>
+    <time>1580511294</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.14.1</comment>
+    <requestid>768107</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>e8f24e2926350b654efaed0cca63d4a8</srcmd5>
+    <version>5.15.0</version>
+    <time>1590779641</time>
+    <user>maxlin_factory</user>
+    <comment>Qt 5.15.0</comment>
+    <requestid>809290</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>2aa2c416c3813f3a3a76773d3ec6b36e</srcmd5>
+    <version>5.15.1</version>
+    <time>1600179726</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.1</comment>
+    <requestid>833638</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>eee50638f17fde6a98c02a533f1e2c8d</srcmd5>
+    <version>5.15.2</version>
+    <time>1606428783</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.2</comment>
+    <requestid>850014</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>7336d4dfd4cec7beb7f7578e4627dbb3</srcmd5>
+    <version>5.15.2</version>
+    <time>1611348779</time>
+    <user>dimstar_suse</user>
+    <comment>Add compatibility with qml-autoreqprov</comment>
+    <requestid>866042</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>063d166ff8d06959274872b9a2d5de09</srcmd5>
+    <version>5.15.2+kde2</version>
+    <time>1624735517</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.2 + KDE patch collection</comment>
+    <requestid>902324</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>aeded646a4b734b31da74b56b55dfe43</srcmd5>
+    <version>5.15.5+kde0</version>
+    <time>1656511263</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.5 with patch collection + qtscript 5.15.10 (forwarded request 985459 from favogt)</comment>
+    <requestid>985473</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>e6efcdf1b818f9b9cf6a7cac13f0b627</srcmd5>
+    <version>5.15.6+kde0</version>
+    <time>1664467911</time>
+    <user>RBrownFactory</user>
+    <comment>Qt 5.15.6, untested. (forwarded request 1006197 from Vogtinator)</comment>
+    <requestid>1006213</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>308fb9069cd7df5c461df720c5395e9c</srcmd5>
+    <version>5.15.7+kde0</version>
+    <time>1667579639</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.7, untested (forwarded request 1033058 from favogt)</comment>
+    <requestid>1033097</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>f806f7b6524f6c96d1b938076010b0fd</srcmd5>
+    <version>5.15.8+kde0</version>
+    <time>1673444070</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.8, untested as usual. qtdoc not included yet. (forwarded request 1057153 from Vogtinator)</comment>
+    <requestid>1057223</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>f66268c81bdca9e3919ceab3ea741c49</srcmd5>
+    <version>5.15.9+kde0</version>
+    <time>1682282859</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.9. Not built yet but submitting anyway. (forwarded request 1081228 from favogt)</comment>
+    <requestid>1082067</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>9afd7d825658d2435cc86368d8218b4c</srcmd5>
+    <version>5.15.10+kde0</version>
+    <time>1686927135</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.10, fixed libqt5-qtscript (forwarded request 1092905 from favogt)</comment>
+    <requestid>1092929</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>01c1c09b73923c5685c2fed34d79d277</srcmd5>
+    <version>5.15.11+kde0</version>
+    <time>1696760289</time>
+    <user>anag+factory</user>
+    <comment>Qt 5.15.11. Not fully built yet, qtlocation needed a fix. (forwarded request 1116057 from favogt)</comment>
+    <requestid>1116107</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>72288bfb64c1f916d27b7388ede3c188</srcmd5>
+    <version>5.15.12+kde0</version>
+    <time>1704380258</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.12 (+ some .16), untested (forwarded request 1135706 from favogt)</comment>
+    <requestid>1136102</requestid>
+  </revision>
+</revisionlist>

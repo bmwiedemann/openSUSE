@@ -1,0 +1,5 @@
+<package name="sax3" project="openSUSE:Factory">
+  <title>A Graphical Configuration Tool for X</title>
+  <description>A graphical utility for configuring X server settings. It can run without X with a graphical interface.</description>
+  <devel project="X11:Utilities" package="sax3"/>
+</package>

@@ -1,0 +1,7 @@
+<package name="prometheus-blackbox_exporter" project="openSUSE:Factory">
+  <title>Prometheus blackbox prober exporter</title>
+  <description>The blackbox exporter allows blackbox probing of endpoints over
+	  HTTP, HTTPS, DNS, TCP and ICMP.</description>
+  <devel project="server:monitoring" package="prometheus-blackbox_exporter"/>
+  <url>https://github.com/prometheus/blackbox_exporter</url>
+</package>

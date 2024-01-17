@@ -1,0 +1,5 @@
+<package name="marble" project="openSUSE:Factory">
+  <title>A generic map viewer</title>
+  <description>Marble is a viewer of map data</description>
+  <devel project="KDE:Applications" package="marble"/>
+</package>

@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ebfa3e391191dcc32a15f27288878105</srcmd5>
+    <version>1.2.2</version>
+    <time>1559376872</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixed python dependencies and added gobject-introspection for code
+  inspection and automatic dependency generation on typelib()
+- Cleaned up parts of spec file with aid of spec-cleaner
+- Revert renaming of *.policy.in in previous commit 
+- dropped dont-use-polkit.patch
+- several adjustments to the spec file and clean ups
+- Trim bias from description.
+- updated package to 1.2.2 and build target Tumbleweed
+- Initial commit.
+</comment>
+    <requestid>706735</requestid>
+  </revision>
+</revisionlist>

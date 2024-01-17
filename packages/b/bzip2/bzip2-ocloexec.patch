@@ -1,0 +1,21 @@
+Index: bzip2-1.0.7/bzlib.c
+===================================================================
+--- bzip2-1.0.7.orig/bzlib.c	2019-06-27 20:15:39.000000000 +0200
++++ bzip2-1.0.7/bzlib.c	2019-06-27 23:10:21.399272583 +0200
+@@ -1414,7 +1414,15 @@ BZFILE * bzopen_or_bzdopen
+       }
+       mode++;
+    }
+-   strcat(mode2, writing ? "w" : "r" );
++     
++   /* open fds with O_CLOEXEC _only_ when we are the initiator
++    * aka. bzopen() but not bzdopen() */
++   if(open_mode == 0) {
++        strcat (mode2, writing ? "we" : "re" );
++   } else {
++        strcat(mode2, writing ? "w" : "r" );
++   }
++
+    strcat(mode2,"b");   /* binary mode */
+ 
+    if (open_mode==0) {

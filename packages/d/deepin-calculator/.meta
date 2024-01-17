@@ -1,0 +1,5 @@
+<package name="deepin-calculator" project="openSUSE:Factory">
+  <title>Deepin Calculator</title>
+  <description>Deepin calculator is an easy to use calculator for ordinary users.</description>
+  <devel project="X11:Deepin" package="deepin-calculator"/>
+</package>

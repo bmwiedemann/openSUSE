@@ -1,0 +1,5 @@
+<package name="template-resolver" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="template-resolver"/>
+</package>

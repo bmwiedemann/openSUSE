@@ -1,0 +1,13 @@
+Index: fcgi-2.4.0/perl/FCGI.PL
+===================================================================
+--- fcgi-2.4.0.orig/perl/FCGI.PL
++++ fcgi-2.4.0/perl/FCGI.PL
+@@ -1,7 +1,7 @@
+ use Config;
+ use ExtUtils::MakeMaker;
+ 
+-do 'FCGI.cfg' or die "no FCGI.cfg";
++do './FCGI.cfg' or die "no FCGI.cfg";
+ 
+ open OUT, ">FCGI.pm";
+ 

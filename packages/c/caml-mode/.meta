@@ -1,0 +1,8 @@
+<package name="caml-mode" project="openSUSE:Factory">
+  <title>Emacs mode for OCaml</title>
+  <description>This package provides Emacs mode for OCaml.
+
+</description>
+  <devel project="devel:languages:ocaml" package="caml-mode"/>
+  <url>http://www.ocaml.org</url>
+</package>

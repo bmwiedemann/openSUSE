@@ -1,0 +1,62 @@
+-------------------------------------------------------------------
+Fri Sep 22 00:52:28 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 2.0.0
+  * Changes:
+    + Despite the major version bump, this should be a drop in
+      replacement for almost every project, The two major possible
+      incompatibilities are:
+      ° The minimum supported Java version is now 1.5, up from 1.4
+        in 1.2.0 and 1.3 in 1.1.6.
+      ° dom4j, XOM, and JDOM are now optional dependencies so if a
+        project was depending on them to be loaded transitively it
+        will need to add explicit dependencies to build.
+    + On the plus side, this makes classpaths much smaller and less
+      complex, and will shut up a lot of noise from static analysis
+      tools.
+    + In addition the Jaxen core code is also a little smaller and
+      has fixed a few minor bugs in XPath evaluation, mostly weird
+      cases found by fuzzing that are unlikely to arise in practice.
+
+-------------------------------------------------------------------
+Thu Aug 24 10:01:18 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Move to a jaxen multibuild package where the *-bootstrap version
+  is one of the flavours
+- Update to 1.2.0
+  * org.w3c.dom UserDataHandler interface is no longer bundled
+    since it's available in Java 1.5 and later
+  * org.jaxen.pattern package has been deprecated and is scheduled
+    for removal in 2.0
+
+-------------------------------------------------------------------
+Sat Mar 19 21:42:10 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with source/target levels 8
+- Clean-up the build system
+- Removed patch:
+  * jaxen-bootstrap-project_xml.patch
+    + not needed in the rewamped build system
+
+-------------------------------------------------------------------
+Fri Sep  8 08:20:32 UTC 2017 - fstrba@suse.com
+
+- Build with java target and source level 1.6 in order to allow
+  building with jdk9
+
+-------------------------------------------------------------------
+Mon Sep  9 11:05:56 UTC 2013 - tchvatal@suse.com
+
+- Move from jpackage-utils to javapackage-tools
+
+-------------------------------------------------------------------
+Wed May 20 14:12:03 CEST 2009 - mvyskocil@suse.cz
+
+- Used dom4j-1.6.1-debian.tar.bz2 for build
+  It does not contains a license problematic parts
+
+-------------------------------------------------------------------
+Tue May 12 11:02:21 CEST 2009 - mvyskocil@suse.cz
+
+- Initial packaging of jaxen-bootstrap in SUSE (from jpp 5.0)
+

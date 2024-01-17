@@ -1,0 +1,18 @@
+<services>
+    <service name="tar_scm" mode="disabled">
+        <param name="url">git://github.com/SUSE/hanadb_exporter.git</param>
+        <param name="scm">git</param>
+        <param name="revision">f49b53683f198bf2d634b6ab6fbadacc3aecc7fc</param>
+        <param name="include">dashboards</param>
+        <param name="include">LICENSE</param>
+        <param name="versionformat">1.0.2+git.%ct.%h</param>
+        <param name="filename">grafana-sap-hana-dashboards</param>
+    </service>
+    <service name="set_version" mode="disabled">
+        <param name="file">grafana-sap-hana-dashboards.spec</param>
+    </service>
+    <service name="recompress" mode="disabled">
+        <param name="file">*.tar</param>
+        <param name="compression">gz</param>
+    </service>
+</services>

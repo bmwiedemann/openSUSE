@@ -1,0 +1,86 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9818f814adaeb0645feb50dac7745062</srcmd5>
+    <version>0.4.0</version>
+    <time>1635366059</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>927589</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>134078e30f8e5c67eb5d6fa9f46c1d34</srcmd5>
+    <version>0.4.0</version>
+    <time>1636498487</time>
+    <user>dimstar_suse</user>
+    <comment>- skip python2 build, it doesn't work anymore</comment>
+    <requestid>930234</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>34f25cbdfc30e16cb60b24c9983676ce</srcmd5>
+    <version>0.5.0</version>
+    <time>1645640097</time>
+    <user>dimstar_suse</user>
+    <comment>- skip end-to-end test, they hang in OBS 
+
+- update to 0.5.0:
+  * Testing on Python 3.10.
+  * More (optional) strategies for selecting the pager command to use.
+  * Fully-automated integration testing.
+  * Support for type checking by consumers using PEP561.</comment>
+    <requestid>957114</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e6a50edca3944f2455f6135412574385</srcmd5>
+    <version>0.5.1</version>
+    <time>1659890021</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>993139</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>15d679e05c6c7b9bce46d34385c232f4</srcmd5>
+    <version>0.5.1</version>
+    <time>1669129783</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not distribute tests with the package
+- Build using %pyproject macros
+- Remove python_module macro definition
+- More specific python_sitelib in %files
+- Remove duplicate files with %fdupes
+</comment>
+    <requestid>1037088</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>2456fe8855549eca0a99a5c746b9d17a</srcmd5>
+    <version>0.5.1</version>
+    <time>1673453664</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-python-311.patch:
+  * Support Python 3.11 changes.</comment>
+    <requestid>1057699</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>314f953c7170423f778bf93f49defe4c</srcmd5>
+    <version>0.5.2</version>
+    <time>1699910287</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.5.2:
+  * Always return an integer error code from exit_code()
+  * Fix line buffering detection for TTYs on Illumos/Solaris
+  * Numerous improvements to the integration tests:
+    - Work correctly with less v633
+    - Fix flaky tests
+    - Improve behaviour and debugging when tests fail
+    - Allow test runners to capture stdout of all child processes
+  * Update test dependencies to account for recent releases of
+    fixtures
+  * Test using a more recent version of mypy
+  * Run tests on Python 3.11 and 3.12
+  main
+
+- skip end-to-end test, they hang in OBS
+  * Support for type checking by consumers using PEP561.
+- Initial package (0.4.0)</comment>
+    <requestid>1124975</requestid>
+  </revision>
+</revisionlist>

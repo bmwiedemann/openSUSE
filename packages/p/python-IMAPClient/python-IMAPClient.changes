@@ -1,0 +1,140 @@
+-------------------------------------------------------------------
+Sat Jan  6 20:21:57 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.1:
+  * Fix missing test files
+- update to 3.0.0:
+  * Remove support for Python 2
+  * Default contexts should use SERVER_AUTH not CLIENT_AUTH
+  * New function `uid_expunge`, which requires the capability
+    UIDPLUS.
+  * fix: broken `get()` & `getboolean()`
+  * Remove configparser deprecation warnings
+  * chore: convert from `optparse` to `argparse`
+  * Fix typos in docs' index file
+  * Update documentation links
+  * Remove usage of deprecated imp module
+  * Update actions to current versions
+  * Fix license in setup.py
+  * Add use of the `isort` linter
+  * Initial framework for adding type-hints and added type-hints
+    to `version.py`
+  * Bump flake8 from 4.0.1 to 6.1.0
+  * Bump black from 22.3.0 to 23.7.0
+- drop python-IMAPClient-no-python2.patch (upstream)
+
+-------------------------------------------------------------------
+Mon Nov  7 10:45:39 UTC 2022 - pgajdos@suse.com
+
+- do not require six for build
+- added patches
+  fix https://github.com/mjs/imapclient/commit/6e6ec34b0e71975134d9492add22361ce4beb2a0
+  + python-IMAPClient-no-python2.patch
+
+-------------------------------------------------------------------
+Tue Aug  2 15:54:01 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Update to 2.3.1
+  Changed
+  -------
+  - Use GitHub Actions instead of TravisCI
+  - Improvements to code examples
+  - Run tests with unittest instead of setup.py
+  Added
+  -----
+  - New socket() method which provides access to the underlying network socket. This is useful for allowing the socket to be polled.
+  - Allow flags and internaldate to be specified for MULTIAPPEND
+  Fixed
+  -----
+  - Default SSL contexts are now created with correct purpose
+  - Fixed undiscoverable tests due to name shadowing
+  - Fixed missing code block directives in documentation
+  - Fixed typo in tox envlist
+  - Fixed formatting in release notes
+
+-------------------------------------------------------------------
+Mon Mar 21 11:09:15 UTC 2022 - pgajdos@suse.com
+
+- python-mock is actually not required for build
+
+-------------------------------------------------------------------
+Thu Aug 26 11:12:06 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.2.0:
+  Changed
+  -------
+  - Performance improvements (thanks Carson Ip!)
+    - 2x faster _maybe_int_to_bytes for Python 2 (#375)
+    - Fix _proc_folder_list quadratic runtime (#374)
+    - Faster utf7 encode (#373). ~40% faster for input with a mix of unicode and
+      ASCII chars.
+    - Cache regex in _process_select_response
+  - poll() when available to surpass 1024 file descriptor limit with select()
+    (#377) (thanks Jonny Hatch)
+  - Use next instead of six.next as imapclient doesn't claim Python 2.5 support.
+    (#396) (thanks Jasper Spaans)
+  - Moved "Logged in/out" traces from INFO to DEBUG level (thanks Fabio Manganiello)
+  - Run tests on Python 3.8 and 3.9
+  - Support the Deleted special folder used by Outlook (thanks Samir M)
+  - Clean up timeout handling
+  - Run the Black code formatter over the entire project
+  Added
+  -----
+  - MULTIAPPEND and LITERAL+ support (#399) (thanks Devin Bayer)
+  - Use ptpython for interactive shell if available (#272)
+  - Allow any custom SASL mechanism to be provided. This allows mechanisms such
+    as EXTERNAL, GSSAPI or SCRAM-SHA-256 to be used in the same way as with
+    imaplib. (thanks Mantas Mikulėnas)
+  - Add SASL OAUTHBEARER support
+  - add optional timeout parameter to IMAP4_TLS.open (thanks zrose584)
+  Fixed
+  -----
+  - fixed special folder searching
+  - Catch the right exception in folder_status (#371)
+  - test_imapclient: Fix LoggerAdapter version check
+    (#383) (thanks Michał Górny)
+  - Fix config file parsing for None attributes
+    (#393) (thanks François Deppierraz)
+  - Fix useless ref cycle in lexer
+  - Protocol parsing: Prevent converting numbers with leading zeroes to int.
+    (#390) (#405) (thanks Jasper Spaans)
+  - Prevent UnicodeDecodeError in IMAPlibLoggerAdapter (#367)
+  - Fix invalid string escape sequences (#397)
+  - Ensure timeout is used on Python 2.7.  _create_socket isn't used with the
+    Python 2 version of imaplib so the open method has been overrided to make it
+    consistent across Python version (#380).
+  - Fix IMAP4_TLS for imaplib in Python 3.9+
+    (thanks Christopher Arndt, marmarek and link2xt)
+
+-------------------------------------------------------------------
+Mon Jun  8 09:22:48 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim bias and filler wording from descriptions.
+
+-------------------------------------------------------------------
+Sun Jun  7 07:10:44 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Tidy spec
+- Activate test suite
+
+-------------------------------------------------------------------
+Wed Mar  6 23:16:14 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
+
+- update to 2.1.0:
+  too many changes to list here, check github
+- python single spec
+
+-------------------------------------------------------------------
+Mon Dec 12 12:40:21 UTC 2016 - hpj@urpla.net
+
+- add runtime requirements
+
+-------------------------------------------------------------------
+Mon Dec 12 12:25:27 UTC 2016 - hpj@urpla.net
+
+- remove backports.ssl tarball
+
+-------------------------------------------------------------------
+Fri Nov 18 15:25:17 UTC 2016 - boris@steki.net
+
+- initial packaging

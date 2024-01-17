@@ -1,0 +1,50 @@
+-------------------------------------------------------------------
+Sun Oct  9 17:57:08 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * require python >= 3.7
+
+- update to version 2.1.0:
+  * dropped python 3.6 support
+  * migrated from argparse to optparse
+  * added set-cookie in response
+
+-------------------------------------------------------------------
+Thu Feb  3 20:18:19 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+  * skip python2
+
+- update to version 2.0.0:
+  * removed Python2 support
+  * migrated to pytest
+  * allow tests to fail that are effected by google's rate limiter
+  * added github action for tests and dependency updates
+  * fixed various linter errors
+
+-------------------------------------------------------------------
+Tue May 26 06:34:31 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
+Thu May 24 17:34:04 UTC 2018 - toddrme2178@gmail.com
+
+- Spec file cleanup
+- Fix rpmlint issues
+
+-------------------------------------------------------------------
+Sat Feb 17 18:26:17 UTC 2018 - arun@gmx.de
+
+- specfile:
+  * add README.md CHANGELOG.md and use LICENSE from tar-ball
+
+- update to version 1.6.1:
+  * Include Changelog and LICENSE files in source distribution
+  * Wrapped main script in proper main test
+
+-------------------------------------------------------------------
+Tue Feb  6 22:38:43 UTC 2018 - arun@gmx.de
+
+- initial package

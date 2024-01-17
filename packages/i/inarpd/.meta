@@ -1,0 +1,8 @@
+<package name="inarpd" project="openSUSE:Factory">
+  <title>Inverse ARP daemon for Linux</title>
+  <description>Inverse ARP (InARP) daemon for Linux.
+
+</description>
+  <devel project="network" package="inarpd"/>
+  <url>https://www.kernel.org/doc/Documentation/networking/generic-hdlc.txt</url>
+</package>

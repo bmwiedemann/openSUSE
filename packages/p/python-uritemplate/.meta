@@ -1,0 +1,5 @@
+<package name="python-uritemplate" project="openSUSE:Factory">
+  <title>Template Expansion</title>
+  <description>This is a Python implementation of RFC6570, URI Template, and can expand templates up to and including Level 4 in that specification.</description>
+  <devel project="devel:languages:python" package="python-uritemplate"/>
+</package>

@@ -1,0 +1,12 @@
+<package name="perl-MooseX-NonMoose" project="openSUSE:Factory">
+  <title>Easy subclassing of non-Moose classes</title>
+  <description>&quot;MooseX::NonMoose&quot; allows for easily subclassing non-Moose classes with
+Moose, taking care of the annoying details connected with doing this, such
+as setting up proper inheritance from Moose::Object and installing (and
+inlining, at &quot;make_immutable&quot; time) a constructor that makes sure things
+like &quot;BUILD&quot; methods are called.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-MooseX-NonMoose"/>
+  <url>http://search.cpan.org/dist/MooseX-NonMoose</url>
+</package>

@@ -1,0 +1,41 @@
+diff -pur sarg-2.4.0.orig/htaccess sarg-2.4.0/htaccess
+--- sarg-2.4.0.orig/htaccess	2013-02-09 09:16:18.000000000 -0500
++++ sarg-2.4.0/htaccess	2020-01-30 09:47:37.645468640 -0500
+@@ -1,4 +1,4 @@
+-AuthUserFile /usr/local/sarg/passwd
++AuthUserFile /usr/share/sarg/passwd
+ AuthName "SARG, Squid Analysis Report Generator"
+ AuthType Basic
+ <Limit GET POST>
+diff -pur sarg-2.4.0.orig/sarg-php/config.php.inc sarg-2.4.0/sarg-php/config.php.inc
+--- sarg-2.4.0.orig/sarg-php/config.php.inc	2017-01-30 07:56:22.000000000 -0500
++++ sarg-2.4.0/sarg-php/config.php.inc	2020-01-30 09:49:06.036813496 -0500
+@@ -1,11 +1,11 @@
+ <?php
+ 
+ // Change to squidGuard and sarg config file paths
+-$SargConf = "/usr/local/sarg/sarg.conf";
+-$squidGuardConf = "/usr/local/squidGuard/squidGuard.conf";
++$SargConf = "/etc/sarg.conf";
++$squidGuardConf = "/etc/squidGuard.conf";
+ 
+ // File where URL to block will be appended
+-$DefaultSquidBlock = "/usr/local/squid/etc/block.txt";
++$DefaultSquidBlock = "/etc/squid/block.txt";
+ 
+ // Choose the locale you want to use to display messages (it must exist on your system)
+ $language = "fr_BE.utf-8";
+diff -pur sarg-2.4.0.orig/user_limit_block sarg-2.4.0/user_limit_block
+--- sarg-2.4.0.orig/user_limit_block	2013-02-09 09:16:18.000000000 -0500
++++ sarg-2.4.0/user_limit_block	2020-01-30 09:49:43.584534910 -0500
+@@ -24,8 +24,8 @@
+ #
+ #
+ 
+-conf="/usr/local/sarg/sarg.conf"
+-squid_password_file="/usr/local/squid/etc/passwd"
++conf="/etc/sarg.conf"
++squid_password_file="/etc/squid/passwd"
+ tmp="/tmp/sarg_limit.$$"
+ 
+ limit_file=`grep "per_user_limit" $conf|grep -v "#"|awk '{print $2}'`

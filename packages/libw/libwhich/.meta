@@ -1,0 +1,8 @@
+<package name="libwhich" project="openSUSE:Factory">
+  <title>Which for Dynamic Libraries</title>
+  <description>A command line utility to locate shared libraries by name.
+
+</description>
+  <devel project="devel:tools" package="libwhich"/>
+  <url>https://github.com/vtjnash/libwhich</url>
+</package>

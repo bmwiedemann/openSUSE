@@ -1,0 +1,11 @@
+<package name="sipp" project="openSUSE:Factory">
+  <title>Performance testing tool for the SIP protocol</title>
+  <description>Sipp is a performance testing tool for the SIP protocol. Its main features are
+basic SIPStone scenarios, TCP/UDP transport, customizable (xml based) scenarios,
+dynamic adjustement of call-rate and a comprehensive set of real-time
+statistics.
+
+</description>
+  <devel project="network:telephony" package="sipp"/>
+  <url>http://sipp.sourceforge.net/</url>
+</package>

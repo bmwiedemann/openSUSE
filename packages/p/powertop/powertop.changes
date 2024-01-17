@@ -1,0 +1,557 @@
+-------------------------------------------------------------------
+Thu Sep 29 14:13:21 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.15:
+  * Use autoconf archive #82
+  * Patch for compatibility with Ryzen processors #91
+  * src: fix compatibility with ncurses 6.3 #92
+  * Fix buffer overrun #83
+  * Fixed valgrind errors about uninitialized values in conditionals #87
+  * Patch for compability with Ryzen processors (v2) #94
+  * Add missing line breaks after error messages #96
+  * Ensure that auto-tune is executed on resume as well #95
+- Drop contained patches:
+  * powertop-ryzen1.patch
+  * powertop-ryzen2.patch
+
+-------------------------------------------------------------------
+Wed Apr 20 08:14:19 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- boo#1198000: Add Ryzen compatability fixes:
+  * Add powertop-ryzen1.patch 
+  * Add powertop-ryzen2.patch 
+
+-------------------------------------------------------------------
+Thu Nov 11 09:41:32 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * powertop.service
+
+-------------------------------------------------------------------
+Sun Jun  6 13:14:31 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.14:
+  * add service file
+  * remove stale printf line
+  * Enable Rocket Lake platform support
+  * Enable Alder Lake support
+- remove powertop-add-rocket-lake-support.patch (upstream)
+
+-------------------------------------------------------------------
+Wed Nov 11 08:25:09 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- jsc#SLE-13395: Add Rocket Lake support
+  * Add powertop-add-rocket-lake-support.patch
+
+-------------------------------------------------------------------
+Thu Oct 29 08:36:16 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Add workaround for `error: too many loops` which happens with
+  sle15sp3: run autoreconf twice
+
+-------------------------------------------------------------------
+Fri Jun 12 08:58:22 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.13:
+  * Update README.md
+  * configure.ac: use ax_cxx_compile_stdcxx instead
+  * po: regenerate gettext files
+  * Enable support for DNV
+  * intel_cpus: Fix ICX definition
+  * configure.ac: add missing checks from autoscan
+  * gettext: update to 0.20.2
+  * remove INSTALL relic
+  * Doxyfile.in: refresh for version 1.8.18
+  * Doxyfile.in: modernize configuration
+  * intel_cpus: Fix SKY-X definition
+  * Dropped unused variable "entry" detected by Coverity
+  * intel_cpus.cpp: Only call closedir() if opened
+- Add BuildRequires for autoconf, autoconf-archive, automake, libtool
+  because each release they forget to create a release tarball
+  until I ping them
+
+-------------------------------------------------------------------
+Tue Apr 21 06:13:05 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.12:
+  * README: suggest to install autoconf-archive
+  * intel_cpus: Enable Jasper Lake support in PowerTop
+  * src/cpu: intel_cpus: Re-arrange the order of cpu model numbers
+  * intel_cpus: Enable Sky Lake server support in PowerTop
+  * src/display.cpp: Fix: Add the missing part of the patch changes
+  * configure.ac: Add a new release candidate v2.12-rc1 to PowerTop
+  * powertop.pot: Update powertop.pot
+  * configure.ac: Add a new release v2.12 to PowerTop
+  * Revert "configure.ac: version strings from git describe"
+  * configure.ac: required version to 2.69
+  * configure.ac: ax_add_fortify_source
+  * po: update translation files and template
+  * intel_cpus: Enable Comet Lake (Mobile) and Comet Lake (Desktop) support
+  * tuningsysfs: use med_power_with_dipm for SATA link power management
+
+-------------------------------------------------------------------
+Fri Jan 31 23:50:57 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- No longer recommend -lang: supplements are in use.
+
+-------------------------------------------------------------------
+Mon Oct  7 06:11:21 UTC 2019 - mvetter@suse.com
+
+- Update to version 2.11 (jira#SLE-10105):
+  * This release has an important feature to support runtime pm
+    enabling for AHCI. A few bug fixes focusing to support PowerTop
+	to run in newer platforms. We have also enabled support for
+	Intel’s Ice Lake server and Ice Lake client with new Sunny Cove
+	microarchitecture, Tiger Lake mobile and Tiger Lake desktop,
+	and atom based Tremont (Elkhart Lake). 
+  * Add bash command-line completion.
+  * wakeup.h: include limits.h
+  * src/devices/ahci.cpp: fix: Remove the humanname from ahci_data array
+  * src/tuning/tuning.cpp: fix: Update the size of tuned_data array
+  * runtime_tunables: Add runtime pm enabling support for ahci
+  * src/cpu/cpu.cpp: Bug fix: Increase the char buffer size
+    in enumerate_cpus()
+  * src/parameters: fix: set the global parameter
+    "global_power_override" to 1 to get power estimate
+  * Fix vertical scrolling in powertop-2.10
+  * Add compatibility for non GNU strerror_r.
+  * Enable support for ICL/ICX platform
+  * Enable support for TGL platform.
+  * Enable support for EHL platform.
+  * po: regenerate with new POT and strings
+  * powertop.pot: Fix Project-Id-Version
+  * src/main: Add missing pthread header
+  * intel_cpus.cpp: Change open parameter to const char *
+  * Make the wakeup toggle text clearer
+- See https://01.org/powertop/downloads/powertop-v2.11-0
+
+-------------------------------------------------------------------
+Tue Jan  8 12:00:55 UTC 2019 - mvetter@suse.com
+
+- Update to version 2.10:
+  * new WakeUp tab which displays the devices wake up settings
+  * Enable support for Intel GLK
+  * Enable support for Intel CNL-U/Y
+  * For details see https://01.org/powertop/downloads/powertop-v2.10
+- Remove powertop_libc++_fix.patch: in new release
+- Remove powertop_cstate_fix.patch: in new release
+
+-------------------------------------------------------------------
+Mon Mar 19 14:23:40 UTC 2018 - mvetter@suse.com
+
+- Remove powertop-no-date.patch: upstreamed
+
+-------------------------------------------------------------------
+Fri Dec  1 16:16:40 UTC 2017 - trenn@suse.de
+
+- Upgrade to version 2.9
+Already mainline:
+D powertop-2.8-potential-segfaults.patch
+D powertop-no-date.patch
+
+From mainline (after 2.9):
+A powertop_cstate_fix.patch
+A powertop_libc++_fix.patch
+
+-------------------------------------------------------------------
+Mon Jun 12 13:42:07 UTC 2017 - adam.majer@suse.de
+
+- Sync .changes file from SLE -> OBS devel project (bnc#1041572)
+
+-------------------------------------------------------------------
+Thu Aug 25 12:55:37 UTC 2016 - zaitor@opensuse.org
+
+- Add powertop-2.8-potential-segfaults.patch: Fix potential
+  segfaults.
+- Drop Environment="TERM=xterm" from the systemd service file, it
+  is not needed.
+- Following the above: Remove xterm/xterm-bin Requires.
+
+-------------------------------------------------------------------
+Thu May 26 09:05:26 UTC 2016 - mlin@suse.com
+
+- Don't requires xterm-bin but xterm if Leap, boo#981780
+
+-------------------------------------------------------------------
+Mon Feb 29 10:10:45 UTC 2016 - mvetter@suse.com
+
+- Change license from GPL-2.0+ to GPL-2.0.
+
+-------------------------------------------------------------------
+Wed Feb 24 14:28:47 UTC 2016 - mvetter@suse.com
+
+- Fate#320264: Adding to SLE.
+
+-------------------------------------------------------------------
+Wed Feb 24 14:01:33 UTC 2016 - mvetter@suse.com
+
+- Require xterm-bin on openSUSE and xterm on other systems.
+  xterm was splitted on openSUSE to have fewer dependencies.
+- Fixing powertop-no-date.patch: Missed a whitespace between
+  program name and version.
+
+-------------------------------------------------------------------
+Mon Feb  8 14:44:26 UTC 2016 - mvetter@suse.com
+
+- Remove patch powertop-1.98-always-create-params.patch:
+  * No mention why this is needed. I don't see any reason for
+    having it.
+
+-------------------------------------------------------------------
+Thu Feb  4 10:09:28 UTC 2016 - mpluskal@suse.com
+
+- Make building more verbose
+- Use optflags when building
+
+-------------------------------------------------------------------
+Tue Nov 10 01:46:48 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 2.8
+  * Enable PowerTOP support for: BSW, BDW-H
+  * bug-fix: added devices/devreq.h to Makefile
+  * Adding support to SKY platforms.
+  * Update internal repo with external mainline
+  * Android Support
+  * Add C7- C10 support for Intel SKY
+  * Enabling Intel SKL support
+- Remove powertop-fix-crash-with-autotune.patch; fixed on upstream
+  release
+- Update powertop-no-date.patch
+
+-------------------------------------------------------------------
+Mon Apr 27 10:38:27 UTC 2015 - zaitor@opensuse.org
+
+- Exchange xterm for xterm-bin Requires, as the xterm.desktop file
+  is not needed.
+
+-------------------------------------------------------------------
+Sun Apr 12 08:50:44 UTC 2015 - mpluskal@suse.com
+
+- Add systemd dependencies
+- Add pre/post macros for service
+- Add rcservice symlink
+- Remove double depenency on pkg-config
+- Cleanup spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Sat Apr 11 04:56:30 UTC 2015 - hillwood@linuxfans.org
+
+- Add a systemd script. 
+
+-------------------------------------------------------------------
+Sun Feb  8 22:02:17 UTC 2015 - p.drouand@gmail.com
+
+- Add powertop-fix-crash-with-autotune.patch; Powertop crashes with
+  'powertop --auto-tune' (fix bnc#915690)
+- Split out translation files
+
+-------------------------------------------------------------------
+Tue Dec 16 20:05:20 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 2.7
+  + RAPL: powercap sysfs used for power measurements.
+  + Arm support for devfreq stats. 
+  + Added support to new Intel platforms. 
+  + Several bug fixes
+
+-------------------------------------------------------------------
+Sun Nov 09 22:25:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashism in post script
+
+-------------------------------------------------------------------
+Fri Jun  6 06:18:32 UTC 2014 - thardeck@suse.com
+
+- Update to version 2.6.1
+* Bug-fix:Seg-fault with powertop --html & --csv
+* Update translation files and configuration
+* Changed Look and feel of HTML report
+* Allow compilation with C++11
+* Several bug fixes
+
+-------------------------------------------------------------------
+Fri Mar 21 14:09:39 UTC 2014 - trenn@suse.de
+
+- Update to version 2.5
+- Includes fix for cpufreq drivers not exporting scaling_frequencies
+  (bnc#869048)
+
+-------------------------------------------------------------------
+Tue Sep  3 10:49:37 UTC 2013 - remur@gmx.net
+
+- Update to version 2.4
+* support for the Intel Haswell ULT CPU counters
+* support for reporting of SATA DEVSLP in the alpm accounting patch
+* RAPL support 
+
+-------------------------------------------------------------------
+Wed May 15 17:41:07 UTC 2013 - remur@gmx.net
+
+- Update to version 2.3
+* Maintenance release
+
+- dropped: powertop-2.2-version-fix.patch
+- dropped: powertop-2.2-fix-crash-on-readonly-fs.patch
+-------------------------------------------------------------------
+Thu Jan  1 16:00:00 UTC 2013 - remur@gmx.net
+
+- Update to version 2.2:
+* Bugfixes
+* Translation updates
+* Interactive mode scrolling
+* Tunables: suggest writing min_power to all SATA ports 
+- powertop-2.2-version-fix.patch: Fixes displayed version string in ncurses interface
+- powertop-2.2-fix-crash-on-readonly-fs.patch: Fixes crash when writing report to RO filesystem
+  
+-------------------------------------------------------------------
+Thu Aug 30 16:02:03 UTC 2012 - chenxiaolong@cxl.epac.to
+
+- Remove leftover x86_64 objects during build
+
+-------------------------------------------------------------------
+Tue Aug 21 05:15:01 UTC 2012 - chenxiaolong@cxl.epac.to
+
+- Update to version 2.1:
+* Added Transifex project integration
+* Added localization of the UI with 9 languages in progress and active
+* Support for cores without P-states
+* Support for Intel GPU statistics
+* PowerTOP manual page added
+* Added an option to specify workload to run during measurement
+* Add an option to suppress output to the terminal
+* Added more ARM support assets
+* Synced Traceevent library from the kernel tree for better event parsing 
+* Bug fixes and clean ups 
+
+-------------------------------------------------------------------
+Sat May 12 15:22:00 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 2.0:
+* Interactive mode: redesigned, tab-based user interface with full
+  on-demand window refresh support.
+* Reporting mode: PowerTOP v2.0 now allows you to specify not only
+  the duration of each test measurement cycle, but the number of
+  iterations to measure. PowerTOP can now produce HTML and CSV.
+* Increased WLAN support: PowerTOP now supports multiple
+  WLAN interfaces
+* Enhanced i915 driver support
+* More robust battery data acquisition
+* Real time measurement support for USB hot-plug.
+
+-------------------------------------------------------------------
+Thu Feb  2 09:11:29 UTC 2012 - aj@suse.de
+
+- Update to version 1.98:
+  * Major rewrite using perf interface with many new options
+  
+-------------------------------------------------------------------
+Tue Aug 24 17:14:01 UTC 2010 - trenn@novell.com
+
+- Fix minor build warning:
+  powertop.x86_64: W: name-repeated-in-summary C PowerTOP
+- Update to version 1.13:
+  Features:
+  * PowerTOP now supports Runtime Device Power Management, both in terms
+    of enabling it via a suggestion as well as collecting statistics for it
+  * PowerTOP now has support for reporting which application keeps the
+    disk from powersaving mode (worth +/- 0.5W)
+  * PowerTOP now has support for reporting AHCI Link power management
+    statistics (worth 0.5W - 1W)
+  * PowerTOP now supports the Audio power saving statistics so you can see
+    if some app keeps your audio out of powersave (0.5W - 1W)
+  * PowerTOP reports the use of "Turbo Mode" on Intel processors that
+    support this (Core i7 and such)
+
+  Fixes:
+  * We should have fixed all suggestions that previously didn't go away
+    even though you hit the key to apply them
+  * We don't turn on USB power management for USB input devices, they tend
+    to break if you do
+  * Be smarter about we report ethernet activity in the light of
+    multiqueue networking
+  * many translation updates
+  * Recognize per cpu hpet in timer reporting
+  * Various wifi power saving api changes/tweaks taken care of
+
+-------------------------------------------------------------------
+Sun May  9 16:59:41 UTC 2010 - seife@opensuse.org
+
+- update to SVN rev 332:
+  * fix wifi code for current kernels
+  * show turbo mode explicitly
+  * filter out percpu hpet timer wakeup events
+  * ignore usb input devices, do not set/read suspend delay
+  * add --pids command-line option
+  * add HD audio power save suggestion
+  * removed obsolete laptop_mode suggestion
+  * updated manpage
+
+-------------------------------------------------------------------
+Tue Feb  9 01:18:56 CET 2010 - ro@suse.de
+
+- fix segfault: increase max lines from 5000 to 8000 for
+  /proc/config.gz and abort if reaching limit 
+
+-------------------------------------------------------------------
+Wed Mar  4 00:44:47 CET 2009 - ro@suse.de
+
+- Update to PowerTOP 1.11
+- Changes:
+  * Fix compilation with PIC
+  * polling hint now refers to /dev/cdrom instead of /dev/scd0
+  * fix calculations for systems that vary in power draw proc info
+  * Display mwait usage
+  * fix EOF at input
+  * add --version|-v option
+  * spelling error in tips.
+
+-------------------------------------------------------------------
+Mon Jun 16 10:55:10 CEST 2008 - thoenig@suse.de
+
+- Update to PowerTOP 1.10
+- Changes:
+  * USB suspend statistics
+  * support for iwl4965 power saving
+  * Powertop now reports which C-states are supported by CPU/BIOS
+  * Updated translations: ja, pt_BR, hu, id, zh (thanks!) 
+
+-------------------------------------------------------------------
+Wed Nov  7 11:14:44 CET 2007 - thoenig@suse.de
+
+- Update to PowerTOP 1.9
+- Changes:
+  * add support for mac80211 based wireless power saving
+  * improve bluetooth inactivity detection
+  * report USB activity (needs 2.6.24-rc kernel)
+  * support the newly reported interrupt events in 2.6.24-rc
+
+-------------------------------------------------------------------
+Wed Oct 10 13:08:05 CEST 2007 - thoenig@suse.de
+
+- Update to PowerTOP 1.8
+- Changes:
+  * add suggestion to increase VM writeback timeout
+  * add suggestion to enable INOTIFY in the kernel
+  * fix socket fd leak, found by Nikerabbit on #powertop
+  * Add support for deferrable timers (Scott Lamb)
+  * Add active hint to enable USB autosuspend on Fedora 7
+  * Show blue color if the cpu is 25% or more busy to indicate
+    that idle wakeups no longer is the nr 1 power causer
+    (Santiago Gala)
+  * merge the -d option from Bill Nottingham (Fedora) to allow
+    automated collection of data
+
+-------------------------------------------------------------------
+Mon Jun 18 11:04:56 CEST 2007 - thoenig@suse.de
+
+- Update to PowerTOP 1.7
+- Changes:
+  * add suggestion to disable TV out
+  * add suggestion to disable Wake-On-Lan for unused ethernet
+  * show P-states (frequencies)
+ 
+
+-------------------------------------------------------------------
+Sun Jun 10 12:44:13 CEST 2007 - thoenig@suse.de
+
+- Update to PowerTOP 1.6
+- Changes:
+  * Add suggestion to rf_kill unused wireless interfaces
+  * Propose killing "sealert"; this is a new thing in F7 that wakes
+    up 10 times per second for no reason
+  * avoid showing the laptop mode hint when on AC - Val Henson
+  * suggest enabling noatime to save disk IO's
+  * suggest enabling SATA AHCI Link powermanagement
+  * suggest enabling the SMP Power Aware Scheduler
+
+-------------------------------------------------------------------
+Mon May 28 13:02:15 CEST 2007 - thoenig@suse.de
+
+- Update to PowerTOP 1.5 
+- Changes:
+  * fix resize-corrupts-screen-content bug
+  * add interrupts to the wakeups/second data in the emulated
+    (non-mobile) case
+  * calculate a long term power usage from battery charge deltas;
+    this should help people whos battery doesn't report discharge
+    rates, and also will provide a less noisy datapoint
+  * Add option to use `kill` on some known power hogs if they are
+    actually waking up a lot:
+    - beagle (even latest wakes up 10 times/second when not
+      indexing)
+    - hal (suggest to stop cdrom polling)
+    - gnome-power-manager 
+    These only show if these actually wake up the cpu 'a lot';
+    so if these get fixed then the suggestion will not display.
+
+-------------------------------------------------------------------
+Sat May 26 11:17:29 CEST 2007 - schwab@suse.de
+
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Sat May 26 09:23:09 CEST 2007 - thoenig@suse.de
+
+- Update to PowerTOP 1.4
+- Strip binary
+- Add man page and localisation for powertop
+- Changes: 
+  * use gettext to allow translation
+    (with lots of thanks to the various translators, especially
+    to Benjamin Pineau who showed me how to use gettext tools)
+  * fix bluethooth-checks-cause-autload-of-bluetooth bug
+  * use ncurses (Sebastian Kuzminsky)
+  * rotate through the suggestions randomly, so that all of them
+    will show over time
+  * Fix the CONFIG_SND_AC97_POWER_SAVE check to only report on ac97
+    hw
+  * report "hidden but suprious" timer ticks (due to missing hpet
+    or lack of NO_HZ)
+  * check for HPET being present; if not suggest user to toggle in
+    BIOS or apply the patch
+  * Some suggestions have become "active", you can press a key to
+    tune it right away.
+  * Add active suggestion to enable AC97 powersave mode at runtime
+  * Add active suggestion to enable wireless powersave mode at
+    runtime
+  * Add active suggestion to enable ondemand
+
+-------------------------------------------------------------------
+Tue May 22 13:41:56 CEST 2007 - thoenig@suse.de
+
+- Update to PowerTOP 1.3
+- Remove patch powertop-fix-compiler-warnings-thoenig-02.patch:
+  merged upstream
+- Changes:
+  * Add suggestion for CONFIG_SND_AC97_POWER_SAVE
+  * Fix inefficient code for readdir (Vince Pinter)
+  * Highlight the worst offenders in bold (Vince Pinter)
+  * Fix crash when running on 2.4 kernels (Harald Fernengel)
+  * Check fgets() return values (Timom Hoenig @ SuSE)
+  * add suggestion to enable laptop mode (when disabled)
+  * add suggestion to disable bluetooth when unused
+
+-------------------------------------------------------------------
+Tue May 15 10:24:55 CEST 2007 - thoenig@suse.de
+
+- Update to PowerTOP 1.2 (skipped 1.1)
+- Fix battery code to work with both, mA and mW
+- Clean up spec file
+- Update patch powertop-fix-compiler-warnings-thoenig-02.patch
+- Drop patch powertop-respect-rpm-opt-flags-thoenig-01.patch
+
+-------------------------------------------------------------------
+Sun May 13 17:09:11 CEST 2007 - thoenig@suse.de
+
+- Add patch powertop-fix-compiler-warnings-thoenig-01.patch: Make
+  compiler warnings about unsued parameters and return values not
+  being repected go away.
+- Fix whitespaces for %description
+
+-------------------------------------------------------------------
+Sun May 13 14:59:40 CEST 2007 - thoenig@suse.de
+
+- Initial package submission (PowerTOP 1.0)
+- Add patch powertop-respect-rpm-opt-flags-thoenig-01.patch: Fix
+  Makefile to respect RPM_OPT_FLAGS
+

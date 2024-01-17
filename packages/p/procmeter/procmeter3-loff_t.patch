@@ -1,0 +1,18 @@
+Description: Fix compilation with newer glibc
+Fixes compilation with newer glibc.
+If _XOPEN_SOURCE is defined _DEFAULT_SOURCE needs to be defined explicit
+to have the definition of loff_t.
+Author: Aurelien Jarno <aurel32@debian.org>
+Bug-Debian: https://bugs.debian.org/916054
+Last-Update: 2018-12-21
+
+--- procmeter3-3.6.orig/modules/longrun.c
++++ procmeter3-3.6/modules/longrun.c
+@@ -15,6 +15,7 @@
+   ***************************************/
+ 
+ #define _XOPEN_SOURCE 500
++#define _DEFAULT_SOURCE
+ 
+ #include <stdio.h>
+ #include <stdlib.h>

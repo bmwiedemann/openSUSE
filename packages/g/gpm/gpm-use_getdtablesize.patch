@@ -1,0 +1,13 @@
+Index: src/daemon/processspecial.c
+===================================================================
+--- src/daemon/processspecial.c.orig	2009-02-09 10:58:53.000000000 +0100
++++ src/daemon/processspecial.c	2010-09-08 17:41:17.533664061 +0200
+@@ -157,7 +157,7 @@ int processSpecial(Gpm_Event *event)
+       open(option.consolename,O_WRONLY); /* stdout */
+       dup(1);                     /* stderr */
+       int open_max = sysconf(_SC_OPEN_MAX);
+-      if (open_max == -1) open_max = 1024;
++      if (open_max == -1) open_max = getdtablesize();
+       for (i=3;i<open_max; i++) close(i);
+       execl("/bin/sh","sh","-c",command,(char *)NULL);
+       exit(1); /* shouldn't happen */

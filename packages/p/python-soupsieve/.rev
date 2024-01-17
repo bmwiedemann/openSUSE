@@ -1,0 +1,215 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>88dbbabffc4a22f282318276863072c1</srcmd5>
+    <version>1.8</version>
+    <time>1551468745</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>680468</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>172fa077cb43ff19a37bc307725995e4</srcmd5>
+    <version>1.8</version>
+    <time>1552380269</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix test macro expansion</comment>
+    <requestid>682424</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>46fc1dab1f4da4d9c602643df33bdfa6</srcmd5>
+    <version>1.9</version>
+    <time>1554833821</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>691735</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4bc680efdbb57de2b004ff314d3bb245</srcmd5>
+    <version>1.9.1</version>
+    <time>1558515274</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704177</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>31c8d5d754c348b18849baee0e262fb8</srcmd5>
+    <version>1.9.2</version>
+    <time>1564484694</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9.2:
+  * FIX: Shortcut last descendant calculation if possible for performance.
+  * FIX: Fix issue where Doctype strings can be mistaken for a normal text node in some cases.
+  * FIX: A top level tag is not a :root tag if it has sibling text nodes or tag nodes. This is an issue that mostly manifests when using html.parser as the parser will allow multiple root nodes.</comment>
+    <requestid>717581</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>42af7ac0a3f7c8786df64d340d7a972a</srcmd5>
+    <version>1.9.3</version>
+    <time>1569233044</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9.2:
+  * FIX: [attr!=value] pattern was mistakenly using :not([attr|=value]) logic instead of :not([attr=value]).
+  * FIX: Remove undocumented _QUIRKS mode flag</comment>
+    <requestid>729764</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1610d119924b08afe4af1299c8abced5</srcmd5>
+    <version>1.9.5</version>
+    <time>1577887063</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.9.5:
+  * **FIX**: `:placeholder-shown` should not match if the element has content
+  that overrides the pl aceholder.
+  * **FIX**: `:checked` rule was too strict with `option` elements. The
+  specification for `:checked ` does not require an `option` element to be under
+  a `select` element.
+  * **FIX**: Fix level 4 `:lang()` wildcard match handling with singletons.
+  Implicit wildcard match ing should not match any singleton. Explicit wildcard
+  matching (`*` in the language range: `*-US`) is allowed to match singletons.</comment>
+    <requestid>758624</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>f4312aa819dd511130e1177af2ff8043</srcmd5>
+    <version>1.9.5</version>
+    <time>1585265222</time>
+    <user>dimstar_suse</user>
+    <comment>The 2.0 breaks beautifulsoup itself...
+
+- Fix build without python2</comment>
+    <requestid>786320</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5f90381daf8fe77a8ed40047948446b0</srcmd5>
+    <version>2.0</version>
+    <time>1587325746</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>792824</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f587aa003c016c3fdabb658be14fae67</srcmd5>
+    <version>2.0.1</version>
+    <time>1592758257</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.1:
+  - **FIX**: Remove unused code.</comment>
+    <requestid>814548</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9e9a0ab422438b1b31f896a5e8f754f3</srcmd5>
+    <version>2.1</version>
+    <time>1612182421</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.1.0:
+  - **NEW**: Officially support Python 3.9.
+  - **NEW**: Drop official support for Python 3.5.
+  - **NEW**: In order to avoid conflicts with future CSS specification changes,
+    non-standard pseudo classes will now start with the `:-soup-` prefix. As a
+    consequence, `:contains()` will now be known as `:-soup-contains()`, though
+    for a time the deprecated form of `:contains()` will still be allowed with
+    a warning that users should migrate over to
+    `:-soup-contains()`.
+   - **NEW**: Added new non-standard pseudo class `:-soup-contains-own()` which
+     operates similar to `:-soup-contains()` except that it only looks at text
+     nodes directly associated with the currently scoped element and not its
+     descendants.
+   - **FIX**: Import `bs4` globally instead of in local functions as it appears
+     there are no adverse affects due to circular imports as `bs4` does not
+     immediately reference `soupsieve` functions and `soupsieve` does not
+     immediately reference `bs4` functions. This should give a performance
+     boost to functions that had previously included `bs4` locally.</comment>
+    <requestid>867598</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d63d3ed0733003586231c3abafad69ef</srcmd5>
+    <version>2.2</version>
+    <time>1615552263</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.2.0:
+  - **NEW**: `:link` and `:any-link` no longer include `#!html &lt;link&gt;` due to a
+    change in the level 4 selector specification. This actually yields more
+    sane results.
+  - **FIX**: BeautifulSoup, when using `find`, is quite forgiving of odd types
+    that a user may place in an element's attribute value. Soup Sieve will also
+    now be more forgiving and attempt to match these unexpected values in a sane
+    manner by normalizing them before compare. (#212)</comment>
+    <requestid>877642</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8de8c75e2c927dfec13e8862081e1e60</srcmd5>
+    <version>2.2.1</version>
+    <time>1620840680</time>
+    <user>dimstar_suse</user>
+    <comment>- udpate to 2.2.1:
+  - **FIX**: Fix an issue with namespaces when one of the keys is `self`.</comment>
+    <requestid>891894</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>3c932bedc2122e55621564e772ce136b</srcmd5>
+    <version>2.3</version>
+    <time>1636498446</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.3:
+  * Officially support Python 3.10.
+  * Add static typing.
+  * `:has()`, `:is()`, and `:where()` now use use a forgiving selector list.
+  * Add support to output a pretty print format of a compiled `SelectorList` for debug purposes.
+  * Some small corner cases discovered with static typing.</comment>
+    <requestid>929908</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>12b093ed8991bf71df0fb5b068651944</srcmd5>
+    <version>2.3.1</version>
+    <time>1636986384</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.3.1:
+  * Ensure attribute selectors match tags that have new lines characters in
+    attributes</comment>
+    <requestid>931293</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>8c5e73fba65f6500cbd36b102f085122</srcmd5>
+    <version>2.3.2.post1</version>
+    <time>1664797475</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.3.2.post1:
+  Fix Documentation for installation from source is outdated.
+  Fix some typos in error messages.</comment>
+    <requestid>1007461</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>ebb3b2557be942ad0416de3c77da3edf</srcmd5>
+    <version>2.3.2.post1</version>
+    <time>1682193518</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081758</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ae28e674c0008afa1e6f97420fd21317</srcmd5>
+    <version>2.4.1</version>
+    <time>1683630364</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.4.1:
+  * Attribute syntax for case insensitive flag
+    optionally allows a space, it does not require one.
+  * Update to support changes related to `:lang()` in
+    the official CSS spec. `:lang(&quot;&quot;)` should match unspecified
+  * languages, e.g. `lang=&quot;&quot;`, but not `lang=und`.
+  * Only `:is()` and `:where()` should allow forgiving
+    selector lists according to latest CSS (as far as Soup
+  * Sieve supports &quot;forgiving&quot; which is limited to empty
+    selectors).
+  * Formally drop Python 3.6.
+  * Formally declare support for Python 3.11.</comment>
+    <requestid>1084864</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>b8bc218a14642f598dfdeea3bcd3ebbf</srcmd5>
+    <version>2.5</version>
+    <time>1697061240</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1116658</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="python-tinyrpc" project="openSUSE:Factory">
+  <title>tinyrpc: A small and modular way of handling web-related RPC</title>
+  <description></description>
+  <devel project="devel:languages:python" package="python-tinyrpc"/>
+</package>

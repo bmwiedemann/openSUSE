@@ -1,0 +1,211 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a2199cdfc6ee5c0d6a587d001def5a5f</srcmd5>
+    <version>0.5.0</version>
+    <time>1498840982</time>
+    <user>dimstar_suse</user>
+    <comment>Re-added to TW, dependency to GNU Health</comment>
+    <requestid>507277</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b5e4ca2ea4ae70b24a7824e097d21e6b</srcmd5>
+    <version>0.5.0</version>
+    <time>1499754458</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509187</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>dcb4c6d9716c8fa0f68f4e3f39aa6f0b</srcmd5>
+    <version>0.5.0</version>
+    <time>1544726460</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>653962</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>48f4cf1101cba52bda8367acc4a20ccd</srcmd5>
+    <version>0.6.0</version>
+    <time>1554458211</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>687588</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8effb021dcef2657cac7bc1091c8bdce</srcmd5>
+    <version>0.6.1</version>
+    <time>1556622221</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>697741</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>313d0ca397310e9f26450ae4d99785e0</srcmd5>
+    <version>0.6.2</version>
+    <time>1579871522</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>766864</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>190614cb953f13590e96a0251a948788</srcmd5>
+    <version>0.7.1</version>
+    <time>1592245907</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.1:
+  * Some tweaks to support newer versions of Zimbra and other caldav server implementations with slightly twisted support for the RFC.
+  * API change: add_event, add_todo and add_journal methods are now deprecated and aliases of save_. New attributes no_create and no_overwrite if one wants to be sure the save_-methods does the right thing.
+  * Calendars can now be created without a display name
+  * Quite some minor bugfixes
+  * Some code refactoring, removing some duplicated code
+  * library will gracefully create an UID if fed with caldav data missing the UID field
+  * the code for calendar searches has been reorganized making it possible for &quot;power users&quot; to do custom calendar searches.
+- Drop nose from BuildRequires/Requires, we don't run the testsuite, and it
+  isn't listed in the requirements.</comment>
+    <requestid>814646</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4ddc01b64152e5e1767c357332c473df</srcmd5>
+    <version>0.8.0</version>
+    <time>1626299943</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>906346</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>19477bdce794a27cc0974dad87afbfe1</srcmd5>
+    <version>0.8.2</version>
+    <time>1642273514</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.8.2:
+  * urllib.quote on uuids before including it in a new URL on object creation
+  * Principal.calendar (and CalendarSet.calendar) now accepts an URL as &quot;cal_id&quot;
+  * Minor workaround for problem with cloud.global/e.email: urllib.quote the
+    calendar_home_set_url if it's a path and it contains the character '@'
+  * Minor fixes to improve support for SOGo
+  * Bugfix for non-ascii in the password
+  * timezones ... the API of tzlocal was changed for a short while,
+    pytz is deprecated, but icalendar only supports timestamps localized with pytz.  What a mess!
+  * Added supported-report-set to the tags (but so far no code for using it)
+  * Multiget didn't work
+  * Silly spelling mistake in one of the error classes
+  * Attempts to resolve broken ical issues with X-APPLE-STRUCTURED-EVENT
+    and X-APPLE-STRUCTURED-LOCATION (#37, ...)
+  * Compatibility issue with e.email</comment>
+    <requestid>946640</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>558eafc90a32e17dc4a82e18662a86f0</srcmd5>
+    <version>0.9.1</version>
+    <time>1664302440</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1006299</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>605cf00b6d2f95e7c6733b76219b04b0</srcmd5>
+    <version>0.9.2</version>
+    <time>1665754955</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010575</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7c96058b04befbffa4f7afc1fe8b92d3</srcmd5>
+    <version>0.10.0</version>
+    <time>1667499311</time>
+    <user>dimstar_suse</user>
+    <comment>- Add drop-python2-support.patch to remove python-six dependency
+  gh#python-caldav/caldav#228
+- Remove python_module macro definition
+- Update to 0.10.0
+  ## Quick summary
+  * Work on a universal search method
+    * Refactoring, consolidated lots of slightly duplicated code into one
+      method to rule them all
+    * Support for things needed by the calendar-cli utility, like search by
+      categories
+  * Support for completion of recurring tasks
+  * More utilities for tasks
+    * Uncomplete-method ... for undoing the complete (recurrences not supported
+      though)
+    * get/set duration/dtstart/dtend (arguably this belongs to vobject and/or
+      icalendar)
+  * Other improvements:
+    * picklable URLs
+    * display_name convenience method
+    * possible to set child/parent relationships
+  * Potential bugfix: sequence number may need to be increased when saving
+    something to the calendar (not backported, this may have side effects)
+  ## Search method
+  Calendar now has a method search.  Here is some information from the
+  docstring:
+  Parameters supported:
+  * xml - use this search query, and ignore other filter parameters
+  * comp_class - set to event, todo or journal to restrict search to this
+    resource type.  Some server implementations require this to be set.
+  * todo - sets comp_class to Todo, and restricts search to pending tasks,
+    unless the next parameter is set ...
+  * include_completed - include completed tasks
+  * event - sets comp_class to event
+  * text attribute search parameters: category, uid, summary, omment,
+    description, location, status
+  * expand - do server side expanding of recurring events/tasks
+  * start, stop: do a time range search
+  * filters - other kind of filters (in lxml tree format)
+  * sort_keys - list of attributes to use when sorting
+  not supported yet:
+  * negated text match
+  * attribute not set
+  ## Completed tasks
+  While the RFCs do support recurring tasks, they are not very clear on the
+  details.  In v0.10 there are three different ways to complete a task.  The
+  first one is to ignore the RRULE property and mark the task as completed.
+  This is the backwards-compatibility mode - though, according to my
+  understanding of a &quot;recurring task&quot; this is the wrong way to do it.
+  The two other modes considers the task to be &quot;interval based&quot; is no BY-rules
+  are specified in the RRULE - meaning that if a task is supposed to be done
+  weekly, then a week should pass from it was completed and until one needs to
+  start with it again - no matter the DTSTART of the original instance - but
+  the standards may also be interpreted so that if the original task was to be
+  started at a Tuesday 10:00, then all recurrences should be started at a
+  Tuesday 10:00.
+  Both the modes stores a copy of the completed task, for the record.  The
+  &quot;safe&quot; mode stores the copy as a completely independent task, and modifies
+  the DTSTART/DUE of the original task - so the completed task is not linked up
+  to the recurring task.  (One may eventually try to make a link by
+  establishing a &quot;parent task&quot;).
+  The &quot;thisandfuture&quot;-mode will establish the completed task as a separate
+  recurrence in a recurrence set.  The non-completed task is also duplicated
+  with a new DTSTART set and range set to THISANDFUTURE. As I understand the
+  RFC, this is the way to handle interval-based tasks, future recurrences will
+  then base their starting time on the DTSTART of the THISANDFUTURE task.  For
+  fixed tasks the THISANDFUTURE recurrence is moot, so I'm considering to
+  create a third mode as well.
+</comment>
+    <requestid>1033143</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>4988714b2c6da1a0743b04d469386dc9</srcmd5>
+    <version>1.3.9</version>
+    <time>1702673415</time>
+    <user>anag+factory</user>
+    <comment>- deleted patches
+  - drop-python2-support.patch (upstreamed)
+- update to 1.3.9
+  [1.3.9] - 2023-12-12
+  * Some bugfixes.
+  [1.3.6] - 2023-07-20
+  * One of the tests has been partially disabled, ref #300 , #320 and #321
+  [1.3.3] - 2023-07-19
+  * Support for very big events, credits to github user @aaujon in #301
+  * Custom HTTP headers was added in v1.2, but documentation and unit test is added in v1.3
+  * More test code in #308
+  * Add props parameter to search function, credits to github user @ge-lem in #315
+  * Set an id field in calendar objects when populated through CalendarSet.calendars()
+  * get_relatives-method, #294
+  * get_dtend-method
+</comment>
+    <requestid>1133409</requestid>
+  </revision>
+</revisionlist>

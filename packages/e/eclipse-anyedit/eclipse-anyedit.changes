@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Tue Mar 29 13:59:26 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Force building with Java 11, since tycho is not knowing about any
+  Java >= 15
+
+-------------------------------------------------------------------
+Thu Jul  2 06:19:54 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of eclipse-anyedit 2.7.1

@@ -1,0 +1,85 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>58edfb326c3f433e42582fda36f7e5d1</srcmd5>
+    <version>1.2.10</version>
+    <time>1553436092</time>
+    <user>dimstar_suse</user>
+    <comment>New package</comment>
+    <requestid>687896</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ec502f2f210f3156606a2cc4a228743f</srcmd5>
+    <version>1.2.10</version>
+    <time>1572443050</time>
+    <user>dimstar_suse</user>
+    <comment>- Add openfortivpn to Requires
+If openfortivpn is not installed, vpn can not be started. (forwarded request 743353 from cges30901)</comment>
+    <requestid>743763</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>bfcbdaf3172778094fb5d4380baa8fd4</srcmd5>
+    <version>1.2.10</version>
+    <time>1585484753</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>789219</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>9c8e7c3963d510116202539f6880cbc3</srcmd5>
+    <version>1.2.10</version>
+    <time>1588538786</time>
+    <user>dimstar_suse</user>
+    <comment>- Set the path for the VPN service name file correctly to
+  %_vpnservicedir (provided by macros.NetworkManager). (forwarded request 799453 from dimstar)</comment>
+    <requestid>799490</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>0677b6225ee2cee4227d90d847a98f6d</srcmd5>
+    <version>1.2.10</version>
+    <time>1597955620</time>
+    <user>dimstar_suse</user>
+    <comment>- Require the same version ppp at runtime as we had during build
+  time. We got away with the missing Requires as NM itself requires
+  ppp, so 'a version' was always installed at least. But we need to
+  guarantee the version at runtime matches the one we built against
+  (boo#1175106). (forwarded request 826295 from dimstar)</comment>
+    <requestid>828180</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4dda107acede27d6066e0ec23c680c13</srcmd5>
+    <version>1.4.0</version>
+    <time>1647282945</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>961666</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>294117a3cb9e4aa30bf3d8d79b38c8b8</srcmd5>
+    <version>1.4.0</version>
+    <time>1675873200</time>
+    <user>dimstar_suse</user>
+    <comment>- Move dbus-1 system.d file to /usr (bsc#1207585) (forwarded request 1061239 from gmbr3)</comment>
+    <requestid>1063403</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>6b8cc5bebfa07862c0572911988b026f</srcmd5>
+    <version>1.4.0</version>
+    <time>1701727339</time>
+    <user>anag+factory</user>
+    <comment>- Rename gnome subpackage to NetworkManager-applet-fortisslvpn
+  to more accurately reflect its usage
+- Add missing requires: NetworkManager
+- Add missing supplements:
+  - NM and openfortivpn
+  - NMA subpackage: Main package and NMA (forwarded request 1130473 from gmbr3)</comment>
+    <requestid>1130771</requestid>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>f3f8efe35d5d8af75b307b6495478990</srcmd5>
+    <version>1.4.0</version>
+    <time>1703281366</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1134651</requestid>
+  </revision>
+</revisionlist>

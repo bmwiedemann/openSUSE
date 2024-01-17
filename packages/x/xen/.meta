@@ -1,0 +1,45 @@
+<package name="xen" project="openSUSE:Factory">
+  <title>Xen Virtualization: Hypervisor (aka VMM aka Microkernel)</title>
+  <description>Xen is a virtual machine monitor for x86 that supports execution of
+multiple guest operating systems with unprecedented levels of
+performance and resource isolation.
+
+This package contains the Xen Hypervisor. (tm)
+
+Modern computers are sufficiently powerful to use virtualization to
+present the illusion of many smaller virtual machines (VMs), each
+running a separate operating system instance. Successful partitioning
+of a machine to support the concurrent execution of multiple operating
+systems poses several challenges. Firstly, virtual machines must be
+isolated from one another: It is not acceptable for the execution of
+one to adversely affect the performance of another. This is
+particularly true when virtual machines are owned by mutually
+untrusting users. Secondly, it is necessary to support a variety of
+different operating systems to accommodate the heterogeneity of popular
+applications. Thirdly, the performance overhead introduced by
+virtualization should be small.
+
+Xen uses a technique called paravirtualization: The guest OS is
+modified, mainly to enhance performance.
+
+The Xen hypervisor (microkernel) does not provide device drivers for
+your hardware (except for CPU and memory). This job is left to the
+kernel that's running in domain 0. Thus the domain 0 kernel is
+privileged; it has full hardware access. It's started immediately after
+Xen starts up. Other domains have no access to the hardware; instead
+they use virtual interfaces that are provided by Xen (with the help of
+the domain 0 kernel).
+
+Xen does support booting other Operating Systems; ports of NetBSD
+(Christian Limpach), FreeBSD (Kip Macy), and Plan 9 (Ron Minnich)
+exist. A port of Windows XP was developed for an earlier version of
+Xen, but is not available for release due to license restrictions.
+
+In addition to this package you need to install the kernel-xen and
+xen-tools to use Xen. Xen 3 also supports running unmodified guests
+using full virtualization, if appropriate hardware is present. Install
+xen-tools-ioemu if you want to use this.
+
+[Hypervisor is a trademark of IBM]</description>
+  <devel project="Virtualization" package="xen"/>
+</package>

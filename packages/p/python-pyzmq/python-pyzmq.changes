@@ -1,0 +1,788 @@
+-------------------------------------------------------------------
+Fri Jan  5 17:31:56 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 25.1.2:
+  * Fix builds with some recent compilers and bundled libzmq
+  * Fix builds with upcoming Cython 3.1
+
+-------------------------------------------------------------------
+Thu Aug 10 21:58:06 UTC 2023 - Arun Persaud <arun@gmx.de>
+
+- update to version 25.1.1:
+  * Changes:
+    + Allow Cython 0.29.35 to build Python 3.12 wheels (no longer
+      require Cython 3)
+  * Bugs fixed:
+    + Fix builds on Solaris by including generated platform.hpp
+    + Cleanup futures in Socket.poll() that are cancelled and never
+      return
+    + Fix builds with -j when numpy is present in the build env
+
+-------------------------------------------------------------------
+Wed Jul 12 22:51:57 UTC 2023 - Arun Persaud <arun@gmx.de>
+
+- update to version 25.1.0:
+  * Enhancements:
+    + Include address in error message when bind/connect fail.
+  * Packaging changes:
+    + Fix inclusion of some test files in source distributions.
+    + Add Cython as a build-time dependency in build-system.requires
+      metadata, following current recommendations of the Cython
+      maintainers. We still ship generated Cython sources in source
+      distributions, so it is not a strict dependency for packagers
+      using --no-build-isolation, but pip will install Cython as part
+      of building pyzmq from source. This makes it more likely that
+      past pyzmq releases will install on future Python releases,
+      which often require an update to Cython but not pyzmq
+      itself. For Python 3.12, Cython >=3.0.0b3 is required.
+
+-------------------------------------------------------------------
+Fri May 12 11:09:45 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to version 25.0.2
+  * Bundled subset of tornado's IOLoop (deprecated since pyzmq 17) is removed,
+    so ZMQStream cannot be used without an actual install of tornado.
+  * Remove support for tornado 4.
+  * Added `socket_class` argument to zmq.Context.socket
+  * Support shadowing sockets with socket objects.
+  * In zmq.auth and zmq.eventloop.zmqstream callbacks may now be async.
+  * License files have been renamed to more standard LICENSE.BSD, LICENSE.LESSER 
+    to appease some license auto-detect tools.
+
+-------------------------------------------------------------------
+Wed Feb  1 13:12:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- skip numy tests for the testsuite on SLE15
+
+-------------------------------------------------------------------
+Wed Nov  9 11:44:45 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix build with OpenSSL 3.0 [bsc#1205042]
+  * Temporarily disable test_on_recv_basic
+
+-------------------------------------------------------------------
+Sun Sep 25 20:35:28 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 24.0.1:
+  * Fix several possible resource warnings and deprecation warnings
+    when cleaning up contexts and sockets, especially in pyzmq's own
+    tests and when implicit teardown of objects is happening during
+    process teardown.
+
+-------------------------------------------------------------------
+Sat Sep 17 15:41:41 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 24.0.0:
+  * Breaking changes:
+    + Due to a libzmq bug causing unavoidable crashes for some users,
+      Windows wheels no longer bundle libzmq with AF_UNIX support. In
+      order to enable AF_UNIX on Windows, pyzmq must be built from
+      source, linking an appropriate build of libzmq
+      (e.g. libzmq-v142). AF_UNIX support will be re-enabled in pyzmq
+      wheels when libzmq published fixed releases.
+    + Using a {class}zmq.Context as a context manager or deleting a
+      context without closing it now calls {meth}zmq.Context.destroy
+      at exit instead of {meth}zmq.Context.term. This will have little
+      effect on most users, but changes what happens when user bugs
+      result in a context being implicitly destroyed while sockets are
+      left open. In almost all cases, this will turn what used to be a
+      hang into a warning. However, there may be some cases where
+      sockets are actively used in threads, which could result in a
+      crash. To use sockets across threads, it is critical to properly
+      and explicitly close your contexts and sockets, which will
+      always avoid this issue.
+
+-------------------------------------------------------------------
+Wed Aug 17 03:13:44 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 23.2.1:
+  * Improvements:
+    + First release with wheels for Python 3.11 (thanks
+      cibuildwheel!).
+    + linux aarch64 wheels now bundle the same libzmq (4.3.4) as all
+      other builds, thanks to switching to native arm builds on
+      CircleCI.
+  * Fixes:
+    + Some type annotation fixes in devices.
+
+-------------------------------------------------------------------
+Tue Jun 28 19:16:08 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 23.2.0
+  * Use zmq.Event enums in parse_monitor_message for nicer reprs
+  * Fix building bundled libzmq with ZMQ_DRAFT_API=1
+  * Fix subclassing zmq.Context with additional arguments in the
+    constructor. Subclasses may now have full control over the
+    signature, rather than purely adding keyword-only arguments
+  * Typos and other small fixes
+- Release 23.1.0
+  * Fix global name of zmq.EVENT_HANDSHAKE_* constants
+  * Fix constants missing when using import zmq.green as zmq
+  * {func}zmq.utils.monitor.recv_monitor_msg now supports async
+    Sockets.
+- Release 23.0.0
+  * all zmq constants are now available as Python enums (e.g.
+    zmq.SocketType.PULL, zmq.SocketOption.IDENTITY), generated
+    statically from zmq.h instead of at compile-time. This means
+    that checks for the presence of a constant (hasattr(zmq,
+    'RADIO')) is not a valid check for the presence of a feature.
+    This practice has never been robust, but it may have worked
+    sometimes. Use direct checks via e.g. {func}zmq.has or
+    {func}zmq.zmq_version_info.
+  * A bit more type coverage of Context.term and Context.socket
+  * Remove all use of deprecated stdlib distutils
+  * Update to Cython 0.29.30 (required for Python 3.11
+    compatibility)
+  * Compatibility with Python 3.11.0b1
+  * Switch to myst for docs
+  * Deprecate zmq.utils.strtypes, now unused
+  * Updates to autoformatting, linting
+- Drop less-flaky.patch: pytest-rerunfailures without the flaky
+  package can handle it.
+- Fix rpmlint errors
+  * no-dependency-on python-base 3.X: depend on python(abi) = 3.X
+  * unused-rpmlintrc-filter: Was unflavored, not required with the
+    above -- drop rpmlintc
+  * spurious-executable-perm: fix by chmod -x
+  * obsolete-suse-version-check 1000. This package is not branched
+    into any project for the maintenance of other distributions
+
+-------------------------------------------------------------------
+Wed Jan  5 23:03:59 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Skip test_log due to flaky socket handling inside obs environments.
+- Add less-flaky.patch to increase flakiness of test_retry_poll
+  and test_timeout.
+
+-------------------------------------------------------------------
+Wed Oct 13 13:26:41 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 22.3.0:
+  - Fix strlcpy compilation issues on alpine, freebsd. Adds new
+    build-time dependency on packaging.
+  - In event-loop integration: warn instead of raise when
+    triggering callback on a socket whose context has been
+    closed.
+  - Bundled libzmq in wheels backport a patch to avoid crashes
+    due to inappropriate closing of libsodium's random generator
+    when using CurveZMQ.
+  - New ResourceWarnings when contexts and sockets are closed by
+    garbage collection, which can be a source of hangs and leaks
+    (matches open files)
+
+-------------------------------------------------------------------
+Wed Aug 11 10:15:01 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 22.2.1
+  * Nicer reprs of contexts and sockets
+  * Memory allocated by recv(copy=False) is no longer read-only
+  * asyncio: Always reference current loop instead of attaching to 
+    the current loop at instantiation time. This fixes e.g. contexts 
+    and/or sockets instantiated prior to a call to asyncio.run.
+
+-------------------------------------------------------------------
+Mon Jul  5 16:30:37 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 22.1.0
+  * New features:
+    - asyncio: experimental support for Proactor eventloop if
+      tornado 6.1 is available by running a selector in a
+      background thread.
+  * Fixes:
+    - Windows: fix type of socket.FD option in win-amd64
+    - asyncio: Cancel timers when using HWM with async Sockets
+  * Other changes:
+    - Windows: update bundled libzmq dll URLs for Windows. Windows
+      wheels no longer include concrt140.dll.
+    - adopt pre-commit for formatting, linting
+
+-------------------------------------------------------------------
+Mon Jul  5 16:16:46 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Increase memory constraint from 8000M to 9000M since build
+  sometimes fails with "Out of memory" errors.
+
+-------------------------------------------------------------------
+Fri Mar 12 09:13:28 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Clean up of SPEC file, while investigating test suite errors.
+
+-------------------------------------------------------------------
+Sun Feb 14 17:15:28 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 22.0.3
+  * Fix fork-safety bug in garbage collection thread (regression
+    in 20.0) when using subprocesses.
+- Changes in 22.0.1
+  * Fix type of Frame.bytes for non-copying recvs with CFFI
+    backend (regression in 21.0)
+- Changes in 22.0.0
+  * This is a major release due to changes in wheels and building
+    on Windows. Code changes from 21.0 are minimal.
+  * Some typing fixes
+  * Bump bundled libzmq to 4.3.4
+- Relevant Changes in 21.0
+  * pyzmq 21 is a major version bump because of dropped support
+    for old Pythons and some changes in packaging. CPython users
+    should not face major compatibility issues if installation
+    works at all :) PyPy users may see issues with the new
+    implementation of send/recv. If you do, please report them!
+  The big changes are:
+  * drop support for Python 3.5. Python >= 3.6 is required
+  * mypy type stubs, which should improve static analysis of
+    pyzmq, especially for dynamically defined attributes such as
+    zmq constants. These are new! Let us know if you find any
+    issues.
+  * support for zero-copy and sending bufferables with cffi
+    backend. This is experimental! Please report issues.
+  Packaging updates:
+  * Require Python >= 3.6, required for good type annotation
+    support
+  * rework cffi backend in setup.py
+  New features:
+  * zero-copy support in CFFI backend (send(copy=False) now does
+    something).
+  * Support sending any buffer-interface-providing objects in CFFI
+    backend.
+  Bugs fixed:
+  * Errors during teardown of asyncio Sockets
+- Don't test numpy on python36 flavor, because python36-numpy is
+  no longer available in Tumbleweed (NEP 29)
+- Make sure we use the Cython backend, not CFFI, wich is for PyPy.
+  * fixes gh#zeromq/pyzmq#1431 and gh#zeromq/pyzmq#1432
+- Remove skip_test_tracker.patch
+- Got an oom error on the build service: Require at least 8GB of
+  RAM through _constraints file
+
+-------------------------------------------------------------------
+Wed Nov 25 16:26:52 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- update to version 20.0.0:
+  * fix build with ZeroMQ 4.3.3
+  * drops support for Python < 3.5
+  * Respect $PKG_CONFIG env for finding libzmq when building from source
+  * :meth:`.Socket.bind` and :meth:`.Socket.connect`
+    can now be used as context managers.
+  * Hold GIL while calling ``zmq_curve_`` functions,
+    which may fix apparent threadsafety issues.
+
+- skip_test_tracker.patch: refreshed
+
+-------------------------------------------------------------------
+Wed Oct 14 13:59:04 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Skip failing tests (gh#zeromq/pyzmq#1431 or gh#zeromq/pyzmq#1432)
+
+-------------------------------------------------------------------
+Wed Oct 14 10:21:34 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Use pytest_arch macro instead of the construct we had there.
+
+-------------------------------------------------------------------
+Thu Sep 24 15:46:33 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- raise test timeout limit to 5m and define an console encoding
+
+-------------------------------------------------------------------
+Mon Sep  7 11:31:06 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add timeout to tests (boo#1176232)
+
+-------------------------------------------------------------------
+Sat Aug 15 06:33:10 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Re-activate test suite on x86_64, replacing nose with pytest
+
+-------------------------------------------------------------------
+Tue Aug  4 16:05:21 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to version 19.0.2:
+  - Regenerate Cython sources with 0.29.21 in sdists for compatibility with Python 3.9
+  - Handle underlying socket being closed in ZMQStream with warning instead of error
+  - Improvements to socket cleanup during process teardown
+  - Fix debug-builds on Windows
+  - Avoid importing ctypes during startup on Windows
+  - Documentation improvements
+  - Raise ``AttributeError`` instead of ``ZMQError(EINVAL)`` on attempts to read write-only attributes,
+    for compatibility with mocking
+
+-------------------------------------------------------------------
+Sat May  9 16:07:53 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 19.0.1:
+  * Fix TypeError during garbage collection
+  * Fix compilation with some C++ compilers
+  * Fixes in tests and examples
+
+-------------------------------------------------------------------
+Fri Mar  6 21:55:13 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 19.0.0:
+  * Cython backend: Build Cython extensions with language level "3str"
+    (requires Cython 0.29)
+  * Cython backend: You can now cimport zmq
+  * Asyncio: Fix memory leak in Poller
+  * Log: Much improved logging in :mod:`zmq.log` (see :doc:`logging`)
+  * Log: add python -m zmq.log entrypoint
+  * Sources generated with Cython 0.29.15
+
+-------------------------------------------------------------------
+Sat Nov 16 16:48:32 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- update to version 18.1.1:
+  * Fix race condition when shutting down ZAP thread while events are
+    still processing (only affects tests)
+  * Publish wheels for Python 3.8 on all platforms
+  * Stop publishing wheels for Python 3.4 on Windows
+  * Sources generated with Cython 0.29.14
+
+-------------------------------------------------------------------
+Sun Aug 25 17:54:53 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- update to version 18.1.0:
+  * Compatibility with Python 3.8 release candidate by regenerating
+    Cython courses with Cython 0.29.13
+  * bump bundled libzmq to 4.3.2
+  * handle cancelled futures in asyncio
+  * make :meth:`zmq.Context.instance` fork-safe
+  * fix errors in :meth:`zmq.Context.destroy` when opening and closing
+    many sockets
+
+-------------------------------------------------------------------
+Sat Jul  6 21:31:05 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- update to version 18.0.2:
+  * Compatibility with Python 3.8 prerelease by regenerating Cython
+    sources with Cython 0.29.10.
+  * Fix language_level=2 in Cython sources, for compatibility with
+    Cython 0.30
+  * Show missing path for ENOENT errors on ipc connections.
+
+-------------------------------------------------------------------
+Sat Mar  9 15:47:03 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- update to version 18.0.1:
+  * Fixes installation from source on non-unicode locales with Python
+    3. There are no code changes in this release.
+
+-------------------------------------------------------------------
+Sat Mar  2 04:52:24 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 18.0.0:
+  * Update bundled libzmq to 4.3.1 (fixes CVE-2019-6250)
+  * Added :func:`~zmq.proxy_steerable` and
+    :class:`zmq.devices.ProxySteerable`
+  * Added bind_{in|out|mon}_to_random_port variants for proxy device
+    methods
+  * Performance improvements for sends with asyncio
+  * Fix sending memoryviews/bytearrays with cffi backend
+
+- changes from version 17.1.3:
+  * Fix compatibility with tornado 6 (removal of stack_context)
+
+-------------------------------------------------------------------
+Sat Aug 18 17:02:18 UTC 2018 - arun@gmx.de
+
+- update to version 17.1.2:
+  * Fix possible hang when working with asyncio
+  * Remove some outdated workarounds for old Cython versions
+  * Fix some compilation with custom compilers
+  * Remove unneeded link of libstdc++ on PyPy
+
+-------------------------------------------------------------------
+Fri Jul 13 15:55:29 UTC 2018 - arun@gmx.de
+
+- update to version 17.1.0:
+  * Bump bundled libzmq to 4.2.5
+  * Improve tornado 5.0 compatibility (use
+    :meth:`~tornado.ioloop.IOLoop.current` instead of
+    :meth:`~tornado.ioloop.IOLoop.instance` to get default loops in
+    :class:`.ZMQStream` and :class:`.IOLoopAuthenticator`)
+  * Add support for :func:`.curve_public`
+  * Remove delayed import of json in send/recv_json
+  * Add :meth:`.Authenticator.configure_curve_callback`
+  * Various build fixes
+  * sdist sources generated with Cython 0.28.3
+  * Stop building wheels for Python 3.4, start building wheels for
+    Python 3.7
+
+-------------------------------------------------------------------
+Wed Mar  7 14:34:04 UTC 2018 - aplanas@suse.com
+
+- Allows Recommends and Suggest in Fedora
+
+-------------------------------------------------------------------
+Tue Feb 27 18:03:10 UTC 2018 - aplanas@suse.com
+
+- Recommends only for SUSE
+
+-------------------------------------------------------------------
+Sat Feb 10 17:31:28 UTC 2018 - arun@gmx.de
+
+- update to version 17.0.0:
+  * Add :meth:`zmq.Socket.send_serialized` and
+    :meth:`zmq.Socket.recv_serialized` for sending/receiving messages
+    with custom serialization.
+  * Add :attr:`zmq.Socket.copy_threshold` and
+    :const:`zmq.COPY_THRESHOLD`. Messages smaller than this are always
+    copied, regardless of copy=False, to avoid overhead of zero-copy
+    bookkeeping on small messages.
+  * Added visible deprecation warnings to bundled tornado
+    IOLoop. Tornado eventloop integration shouldn't be used without a
+    proper tornado install since pyzmq 14.
+  * Allow pyzmq asyncio/tornado integration to run without installing
+    :func:`zmq_poll` implementation. The following methods and classes
+    are deprecated and no longer required:
+      :func:`zmq.eventloop.ioloop.install`
+      :class:`zmq.eventloop.ioloop.IOLoop`
+      :func:`zmq.asyncio.install`
+      :class:`zmq.asyncio.ZMQEventLoop`
+  * Set RPATH correctly when building on macOS.
+  * Compatibility fixes with tornado 5.0.dev (may not be quite enough
+    for 5.0 final, which is not yet released as of pyzmq 17).
+  * Draft support for CLIENT-SERVER routing_id and group.
+
+-------------------------------------------------------------------
+Sun Jan 28 18:51:21 UTC 2018 - arun@gmx.de
+
+- specfile:
+  * update copyright year
+
+- update to version 16.0.4:
+  * Regenerate Cython sources in sdists with Cython 0.27.3, fixing
+    builds on CPython 3.7.
+  * Add warning when using bundled tornado, which was deprecated too
+    quietly in 14.x.
+
+-------------------------------------------------------------------
+Thu Nov  2 02:00:47 UTC 2017 - arun@gmx.de
+
+- update to version 16.0.3:
+  * Regenerate Cython sources in sdists with Cython 0.27.2, fixing
+    builds on CPython 3.7.
+
+-------------------------------------------------------------------
+Sun Aug  6 04:48:29 UTC 2017 - toddrme2178@gmail.com
+
+- Remove docs. They aren't being built so they are not useful,
+  and they break the build.
+
+-------------------------------------------------------------------
+Fri Apr 14 22:51:00 UTC 2017 - toddrme2178@gmail.com
+
+- Update to 16.0.2
+- Rebase skip_test_tracker.patch.
+- Implement single-spec version.
+
+-------------------------------------------------------------------
+Tue Jan 26 11:42:18 UTC 2016 - toddrme2178@gmail.com
+
+- update to version 15.2.0:
+  * FIX: handle multiple events in a single register call in
+    :mod:`zmq.asyncio`
+  * FIX: unicode/bytes bug in password prompt in :mod:`zmq.ssh` on
+    Python 3
+  * FIX: workaround gevent monkeypatches in garbage collection thread
+  * update bundled minitornado from tornado-4.3.
+  * improved inspection by setting binding=True in cython compile
+    options
+  * add asyncio Authenticator implementation in
+    :mod:`zmq.auth.asyncio`
+  * workaround overflow bug in libzmq preventing receiving messages
+    larger than MAX_INT
+- update to version 15.1.0:
+  * FIX: Remove inadvertant tornado dependency when using
+    :mod:`zmq.asyncio`
+  * FIX: 15.0 Python 3.5 wheels didn't work on Windows
+  * Add GSSAPI support to Authenticators
+  * Support new constants defined in upcoming libzmq-4.2.dev
+- update to version 15.0.0:
+  * add :mod:`asyncio` support via :mod:`zmq.asyncio`
+  * add :mod:`tornado` future support via :mod:`zmq.eventloop.future`
+  * trigger bundled libzmq if system libzmq is found to be < 3. System
+    libzmq 2 can be forced by explicitly requesting --zmq=/prefix/.
+
+-------------------------------------------------------------------
+Tue Sep  8 15:40:58 UTC 2015 - aplanas@suse.com
+
+- Add patch skip_test_tracker.patch to skip test_tracker test.
+  This test block the VM in OBS for a long period of time, causing
+  the kill of the VM and the fail in the RPM creation.
+
+-------------------------------------------------------------------
+Wed Jul 29 08:06:43 UTC 2015 - toddrme2178@gmail.com
+
+- Add additional optional dependencies that support additional
+  features and/or additional backends.
+
+-------------------------------------------------------------------
+Wed Jul 15 09:20:24 UTC 2015 - toddrme2178@gmail.com
+
+- Include authors and BSD license in source
+
+-------------------------------------------------------------------
+Mon Jul 13 18:31:35 UTC 2015 - aboe76@gmail.com
+
+- Update to 14.7.0
+  + Changes:
+  	* Update bundled libzmq to 4.1.2.
+    * Following the lead of Python 3.5, interrupted system calls will be retried.
+  + Bugfixes:
+    * Fixes for CFFI backend on Python 3 + support for PyPy 3.
+    * Verify types of all frames in :meth:`~zmq.Socket.send_multipart` 
+      before sending, to avoid partial messages.
+    * Fix build on Windows when both debug and release versions of libzmq are found.
+- Update to 14.6.0
+  + Changes:
+    * improvements in :meth:`zmq.Socket.bind_to_random_port`:
+      - Use system to allocate ports by default
+    * pyzmq no longer bundles external libzmq when making a bdist. 
+      You can use delocate to do this.
+  + Bugfixes:
+    * add missing :attr:`ndim` on memoryviews of Frames
+    * allow :func:`copy.copy` and :func:`copy.deepcopy` on Sockets, Contexts
+
+-------------------------------------------------------------------
+Mon Mar 16 23:06:48 UTC 2015 - p.drouand@gmail.com
+
+- Update download Url
+
+-------------------------------------------------------------------
+Mon Mar 16 21:17:00 UTC 2015 - hpj@urpla.net
+
+- Update to 14.5.0
+  + Changes:
+    * use pickle.DEFAULT_PROTOCOL by default in send_pickle
+    * with the release of pip-6, OS X wheels are only marked as 10.6-intel, 
+      indicating that they should be installable on any newer or single-arch Python.
+    * raise SSHException on failed check of host key
+  + Bugfixes:
+    * fix method name in utils.wi32.allow_interrupt
+    * fork-related fixes in garbage collection thread
+    * add missing import in zmq.__init__, causing failure to import in some circumstances
+- Update to 14.4.1
+  + Bugfixes
+    * SyntaxError on Python 2.6 in zmq.ssh
+    * Handle possible bug in garbage collection after fork
+- Update to 14.4.0
+  + New features
+    * Experimental support for libzmq-4.1.0 rc (new constants, plus zmq.has()).
+    * Update bundled libzmq to 4.0.5
+    * Update bundled libsodium to 1.0.0
+    * Fixes for SSH dialogs when using zmq.ssh to create tunnels
+    * More build/link/load fixes on OS X and Solaris
+    * Get Frame metadata via dict access (libzmq 4)
+    * Contexts and Sockets are context managers (term/close on __exit__)
+    * Add zmq.utils.win32.allow_interrupt context manager for catching SIGINT on Windows
+  + Bugfixes:
+    * Bundled libzmq should not trigger recompilation after install on PyPy
+
+-------------------------------------------------------------------
+Wed Oct  1 15:06:28 UTC 2014 - toddrme2178@gmail.com
+
+- Update to 14.3.1
+  + Minor bugfixes to pyzmq 14.3:
+    * Fixes to building bundled libzmq on OS X < 10.9
+    * Fixes to import-failure warnings on Python 3.4
+    * Fixes to tests
+    * Pull upstream fixes to zmq.ssh for ssh multiplexing
+- Update to 14.3.0
+  + PyZMQ no longer calls :meth:`.Socket.close` or 
+    :meth:`.Context.term` during process cleanup.
+    Changes to garbage collection in Python 3.4 make this 
+    impossible to do sensibly.
+  + :meth:`ZMQStream.close` closes its socket immediately,
+    rather than scheduling a timeout.
+  + Raise the original ImportError when importing zmq fails.
+    Should be more informative than `no module cffi...`.
+- Update to 14.2.0
+  + New Stuff
+    * Raise new ZMQVersionError when a requested method is not 
+      supported by the linked libzmq.
+      For backward compatibility, this subclasses 
+      NotImplementedError.
+  + Bugs Fixed
+    * Memory leak introduced in pyzmq-14.0 in zero copy.
+    * OverflowError on 32 bit systems in zero copy.
+- Update to 14.1.0
+  + Security
+    The headline features for 14.1 are adding better support for 
+    libzmq's security features.
+    * When libzmq is bundled as a Python extension 
+      (e.g. wheels, eggs), libsodium is also bundled 
+      (excluding Windows), ensuring that libzmq security is 
+      available to users who install from wheels
+    * New :mod:`zmq.auth`, implementing zeromq's ZAP authentication,
+      modeled on czmq zauth.
+      For more information, see the 
+      `examples <https://github.com/zeromq/pyzmq/tree/master/examples/>`_.
+  + Other New Stuff
+    * Add PYZMQ_BACKEND for enabling use of backends outside the
+      pyzmq codebase.
+    * Add :attr:`~.Context.underlying` property and 
+      :meth:`~.Context.shadow` method to Context and Socket, for 
+      handing off sockets and contexts. between pyzmq and other
+      bindings (mainly pyczmq_).
+    * Add TOS, ROUTER_HANDOVER, and IPC_FILTER constants from 
+      libzmq-4.1-dev.
+    * Add Context option support in the CFFI backend.
+    * Various small unicode and build fixes, as always.
+    * :meth:`~.Socket.send_json` and :meth:`~.Socket.recv_json`
+      pass any extra kwargs to ``json.dumps/loads``.
+  + Deprecations
+    * ``Socket.socket_type`` is deprecated, in favor of 
+      ``Socket.type``, which has been available since 2.1.
+- Update to 14.0.1
+  + Bugfix release
+    * Update bundled libzmq to current (4.0.3).
+    * Fix bug in :meth:`.Context.destroy` with no open sockets.
+    * Threadsafety fixes in the garbage collector.
+    * Python 3 fixes in :mod:`zmq.ssh`.
+
+-------------------------------------------------------------------
+Thu Jul 31 17:00:20 UTC 2014 - dimstar@opensuse.org
+
+- Rename rpmlintrc to %{name}-rpmlintrc.
+  Follow the packaging guidelines.
+
+-------------------------------------------------------------------
+Wed Feb 12 12:08:20 UTC 2014 - dmueller@suse.com
+
+- disable testsuite for qemu-linux-user builds
+
+-------------------------------------------------------------------
+Sun Nov 24 19:34:17 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 14.0.0
+  + Update bundled libzmq to current (4.0.1).
+  + Backends are now implemented in ``zmq.backend`` instead of ``zmq.core``.
+    This has no effect on public APIs.
+  + Various build improvements for Cython and CFFI backends (PyPy
+    compiles at build time).
+  + Various GIL-related performance improvements - the GIL is no longer
+    touched from a zmq IO thread.
+  + Adding a constant should now be a bit easier - only zmq/sugar/constant
+   _names should need updating,
+    all other constant-related files should be automatically updated by
+    ``setup.py constants``.
+  + add support for latest libzmq-4.0.1
+    (includes ZMQ_CURVE security and socket event monitoring).
+- Changes from version 13.1.0
+  + The main new feature is improved tornado 3 compatibility.
+    PyZMQ ships a 'minitornado' submodule, which contains a small
+    subset of tornado 3.0.1,
+    in order to get the IOLoop base class.  zmq.eventloop.ioloop.IOLoop
+    is now a simple subclass, and if the system tornado is ≥ 3.0, then
+    the zmq IOLoop is a proper registered subclass of the tornado one itself,
+    and minitornado is entirely unused.
+- Changes from version 13.0.2
+  + EAGAIN was unconditionally turned into KeyboardInterrupt
+  + fix use of totally deprecated ctypes_configure to generate constants in CFFI backend
+  + fix memory leak in CFFI backend for PyPy
+  + typo prevented IPC_PATH_MAX_LEN from ever being defined
+  + various build fixes - linking with librt, Cython compatibility, etc.
+
+-------------------------------------------------------------------
+Fri Apr 12 11:07:24 UTC 2013 - toddrme2178@gmail.com
+
+- Changes suggests to recommends since there is no way to install suggets currently
+
+-------------------------------------------------------------------
+Fri Apr  5 13:00:39 UTC 2013 - cfarrell@suse.com
+
+- license update: LGPL-3.0+ and BSD-3-Clause
+  the core is LGPL-3.0+ but most of what is outside the code is
+  BSD-3-Clause
+
+-------------------------------------------------------------------
+Wed Mar 27 12:06:12 UTC 2013 - speilicke@suse.com
+
+- Update to version 13.0.0:
+  + PyPy support
+  + The Threadsafe ZMQStream experiment in 2.2.0.1 was deemed inappropriate and not useful,
+    and has been removed.
+  + The zmq.web experiment has been removed, to be developed as a standalone project 
+  + Fixes bnc#811890
+- Add rpmlintrc
+- Drop useless macros
+- Run testsuite
+
+-------------------------------------------------------------------
+Fri May 18 09:07:39 UTC 2012 - toddrme2178@gmail.com
+
+- Fix rpmlint warnings
+
+-------------------------------------------------------------------
+Fri Apr 27 09:10:08 UTC 2012 - highwaystar.ru@gmail.com
+
+- fixed building of python3 package on openSUSE 11.4 and older 
+
+-------------------------------------------------------------------
+Tue Mar 27 09:32:34 UTC 2012 - saschpe@suse.de
+
+- Update to version 2.1.11:
+  * remove support for LABEL prefixes. A major feature of libzmq-3.0, the LABEL
+    prefix, has been removed from libzmq, prior to the first stable libzmq 3.x release.
+    * The prefix argument to ~.Socket.send_multipart remains, but it continue to behave in
+      exactly the same way as it always has on 2.1.x, simply prepending message parts.
+    * ~.Socket.recv_multipart will always return a list, because prefixes are once
+      again indistinguishable from regular message parts.
+  * add .Socket.poll method, for simple polling of events on a single socket.
+  * no longer require monkeypatching tornado IOLoop.  The :class:.ioloop.ZMQPoller class
+    is a poller implementation that matches tornado's expectations, and pyzmq sockets can
+    be used with any tornado application just by specifying the use of this poller. The
+    pyzmq IOLoop implementation now only trivially differs from tornado's.
+- Don't package documentation sources
+
+-------------------------------------------------------------------
+Tue Jan 31 16:20:35 UTC 2012 - saschpe@suse.de
+
+- Update to version 2.1.11:
+  * remove support for LABEL prefixes.
+  * add :meth:`.Socket.poll` method, for simple polling of events on a single socket.
+  * no longer require monkeypatching tornado IOLoop.
+- Moved Python-3 package into seperate spec file
+
+-------------------------------------------------------------------
+Mon Dec  5 13:14:57 UTC 2011 - toddrme2178@gmail.com
+
+- Cleaned up spec file formatting
+- Added python3 subpackage
+
+-------------------------------------------------------------------
+Mon Sep 26 12:38:30 UTC 2011 - cfarrell@suse.com
+
+- license update: LGPL-3.0+
+  LGPL is not a recognized license
+
+-------------------------------------------------------------------
+Fri Aug 19 12:15:10 UTC 2011 - saschpe@suse.de
+
+- Update to version 2.1.7:
+  * Added proper GIL management for non-copying send
+  * Implemented support for zmq_errno().
+  * Added Socket.create_socket()
+  * Fixed setup.py to work with libzmq.dll on Window
+  * The flags argument to Socket.send/Socket.recv must be a C int
+    to prevent Python-C API calls in the nogil section.
+  * Added a protocol argument to pyobj_send that defaults to -1 (the
+    highest pickle protocol).
+  * Added a try/finally in Socket.recv.
+
+-------------------------------------------------------------------
+Sun Dec 12 15:40:57 UTC 2010 - saschpe@gmx.de
+
+- Re-generated with py2pack
+  * now builds for all RPM-based distros
+
+-------------------------------------------------------------------
+Wed Dec  1 15:32:35 UTC 2010 - saschpe@suse.de
+
+- Initial version (2.0.10).
+

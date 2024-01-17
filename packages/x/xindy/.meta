@@ -1,0 +1,15 @@
+<package name="xindy" project="openSUSE:Factory">
+  <title>Index generator for structured documents like LaTeX or SGML</title>
+  <description>xindy is an index processor that can be used to generate book-like
+indexes for arbitrary document-preparation systems. This includes
+systems such as TeX and LaTeX, the roff-family, SGML/XML-based
+systems (e.g. HTML) that process some kind of text and generate
+indexing information. The kernel system is not fixed to any specific
+system, but can be configured to work together with such systems.
+
+In comparison to other index processors xindy has several powerful
+features that make it an ideal framework for describing and
+generating complex indices, addressing especially international
+indexing.</description>
+  <devel project="Publishing" package="xindy"/>
+</package>

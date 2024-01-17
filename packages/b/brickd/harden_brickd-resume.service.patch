@@ -1,0 +1,22 @@
+Index: brickd-2.4.3/src/build_data/linux/installer/lib/systemd/system/brickd-resume.service
+===================================================================
+--- brickd-2.4.3.orig/src/build_data/linux/installer/lib/systemd/system/brickd-resume.service
++++ brickd-2.4.3/src/build_data/linux/installer/lib/systemd/system/brickd-resume.service
+@@ -4,6 +4,17 @@ After=suspend.target
+ Requisite=brickd.service
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++ProtectHostname=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ User=root
+ Type=oneshot
+ ExecStart=/usr/bin/pkill -F /var/run/brickd.pid -L -USR1

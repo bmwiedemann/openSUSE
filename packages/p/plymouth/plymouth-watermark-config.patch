@@ -1,0 +1,65 @@
+diff -Nura plymouth-22.02.122+94.4bd41a3/scripts/plymouth-populate-initrd.in plymouth-22.02.122+94.4bd41a3_new/scripts/plymouth-populate-initrd.in
+--- plymouth-22.02.122+94.4bd41a3/scripts/plymouth-populate-initrd.in	2022-10-27 12:28:09.250335251 +0800
++++ plymouth-22.02.122+94.4bd41a3_new/scripts/plymouth-populate-initrd.in	2022-10-27 14:41:01.624380841 +0800
+@@ -491,6 +491,7 @@
+ 
+ PLYMOUTH_MODULE_NAME=$(grep "ModuleName *= *" ${PLYMOUTH_SYSROOT}${PLYMOUTH_THEME_DIR}/${PLYMOUTH_THEME_NAME}.plymouth | sed 's/ModuleName *= *//')
+ PLYMOUTH_IMAGE_DIR=$(grep "ImageDir *= *" ${PLYMOUTH_SYSROOT}${PLYMOUTH_THEME_DIR}/${PLYMOUTH_THEME_NAME}.plymouth | sed 's/ImageDir *= *//')
++PLYMOUTH_WATERMARK_PATH=$(grep "WatermarkPath *= *" ${PLYMOUTH_SYSROOT}${PLYMOUTH_THEME_DIR}/${PLYMOUTH_THEME_NAME}.plymouth | sed 's/WatermarkPath *= *//')
+ 
+ PLYMOUTH_Font_PATH=$(fc-list |grep $(fc-match "$(echo $(grep "^Font *= *" ${PLYMOUTH_SYSROOT}${PLYMOUTH_DATADIR}/plymouth/themes/`plymouth-set-default-theme`/`plymouth-set-default-theme`.plymouth | sed -e 's/^Font *= *//'| awk 'NF{NF--};1'))" |awk -F : {'print $1'}) |awk -F : {'print $1'} | sort -u | head -n 1)
+ PLYMOUTH_TitleFont_PATH=$(fc-list |grep $(fc-match "$(echo $(grep "^TitleFont *= *" ${PLYMOUTH_SYSROOT}${PLYMOUTH_DATADIR}/plymouth/themes/`plymouth-set-default-theme`/`plymouth-set-default-theme`.plymouth | sed -e 's/^TitleFont *= *//'| awk 'NF{NF--};1'))" |awk -F : {'print $1'}) |awk -F : {'print $1'} | sort -u | head -n 1)
+@@ -516,6 +517,12 @@
+      inst_recur "${PLYMOUTH_IMAGE_DIR}"
+ fi
+ 
++# WatermarkPath is either an image file or a symlink to it
++[ -f "${PLYMOUTH_WATERMARK_PATH}" ] && inst "${PLYMOUTH_WATERMARK_PATH}" $INITRDDIR
++if [ -L "${PLYMOUTH_WATERMARK_PATH}" ]; then
++    inst_symlink "${PLYMOUTH_WATERMARK_PATH}" 
++fi
++
+ if [ -f "${PLYMOUTH_PLUGIN_PATH}/label-freetype.so" ]; then
+      inst ${PLYMOUTH_PLUGIN_PATH}/label-freetype.so $INITRDDIR
+      font=$(fc-match -f %{file})
+diff -Nura plymouth-22.02.122+94.4bd41a3/src/plugins/splash/two-step/plugin.c plymouth-22.02.122+94.4bd41a3_new/src/plugins/splash/two-step/plugin.c
+--- plymouth-22.02.122+94.4bd41a3/src/plugins/splash/two-step/plugin.c	2022-08-13 20:58:13.000000000 +0800
++++ plymouth-22.02.122+94.4bd41a3_new/src/plugins/splash/two-step/plugin.c	2022-10-27 14:37:52.319120852 +0800
+@@ -1095,9 +1095,23 @@
+         plugin->background_tile_image = ply_image_new (image_path);
+         free (image_path);
+ 
+-        asprintf (&image_path, "%s/watermark.png", image_dir);
+-        plugin->watermark_image = ply_image_new (image_path);
+-        free (image_path);
++        char *release_watermark_path, *theme_watermark_path;
++        release_watermark_path = ply_key_file_get_value (key_file, "two-step", "WatermarkPath");
++        asprintf (&theme_watermark_path, "%s/watermark.png", image_dir);
++        if (release_watermark_path != NULL && access(release_watermark_path, R_OK) == 0 )
++        {
++                 ply_trace ("openSUSE's Watermark path: '%s'", release_watermark_path);
++                 plugin->watermark_image = ply_image_new (release_watermark_path);
++                 free (release_watermark_path);
++        }
++        else if( access(theme_watermark_path, R_OK) == 0)
++        {
++                 ply_trace ("Theme's Watermark path: '%s'", theme_watermark_path);
++                 plugin->watermark_image = ply_image_new (theme_watermark_path);
++                 free (theme_watermark_path);
++        }
++        else
++                 plugin->watermark_image = NULL;
+ 
+         if (!ply_kernel_command_line_has_argument ("secure_boot.warn_if_disabled=false") &&
+             !ply_is_secure_boot_enabled ()) {
+diff -Nura plymouth-22.02.122+94.4bd41a3/themes/bgrt/bgrt.plymouth.desktop plymouth-22.02.122+94.4bd41a3_new/themes/bgrt/bgrt.plymouth.desktop
+--- plymouth-22.02.122+94.4bd41a3/themes/bgrt/bgrt.plymouth.desktop	2022-04-15 16:39:24.000000000 +0800
++++ plymouth-22.02.122+94.4bd41a3_new/themes/bgrt/bgrt.plymouth.desktop	2022-10-27 14:38:58.846563650 +0800
+@@ -7,6 +7,7 @@
+ Font=Cantarell 12
+ TitleFont=Cantarell Light 30
+ ImageDir=@PLYMOUTH_THEME_PATH@/spinner
++WatermarkPath=/usr/share/pixmaps/distribution-logos/light-inline.png
+ DialogHorizontalAlignment=.5
+ DialogVerticalAlignment=.382
+ TitleHorizontalAlignment=.5

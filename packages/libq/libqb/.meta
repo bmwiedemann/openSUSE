@@ -1,0 +1,6 @@
+<package name="libqb" project="openSUSE:Factory">
+  <title>An IPC library for high performance servers</title>
+  <description>libqb provides high performance client server reusable features.
+Initially these are IPC and poll.</description>
+  <devel project="network:ha-clustering:Factory" package="libqb"/>
+</package>

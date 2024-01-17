@@ -1,0 +1,5 @@
+<package name="samba-server" project="openSUSE:Factory">
+  <title>Samba container</title>
+  <description></description>
+  <devel project="network:samba:CONTAINERS" package="samba-server"/>
+</package>

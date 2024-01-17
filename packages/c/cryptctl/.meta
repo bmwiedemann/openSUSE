@@ -1,0 +1,5 @@
+<package name="cryptctl" project="openSUSE:Factory">
+  <title>cryptctl</title>
+  <description>A utility for encrypting/decrypting disks.</description>
+  <devel project="security" package="cryptctl"/>
+</package>

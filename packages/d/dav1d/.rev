@@ -1,0 +1,264 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3ac2db16149fd944da9c96742abc561a</srcmd5>
+    <version>0.1.0</version>
+    <time>1546695728</time>
+    <user>dimstar_suse</user>
+    <comment>- Redo description and mention SIMD acceleration.
+- Moved license file to library package
+- Initial stable package (v0.1.0)
+</comment>
+    <requestid>657884</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>14dbe604c41418094c5a90d9ebd6f119</srcmd5>
+    <version>0.2.0</version>
+    <time>1551785129</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>681533</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f59da1e30acffacdf6d01b1c6a7e3cc9</srcmd5>
+    <version>0.2.1</version>
+    <time>1552464984</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>684500</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>00ae75cac113939937fdd87583eb35db</srcmd5>
+    <version>0.2.1</version>
+    <time>1554276283</time>
+    <user>dimstar_suse</user>
+    <comment>- Add baselibs.conf: ffmpeg, which is the main consumer of Dav1d,
+  produces -32bit packages that would be uninstallable otherwise. (forwarded request 690561 from dimstar)</comment>
+    <requestid>690564</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ad4dcac711d7c62811932fddb57629bf</srcmd5>
+    <version>0.2.2</version>
+    <time>1555830178</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>695924</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5b7ee9750d2781a412af41254ccee00f</srcmd5>
+    <version>0.3.0</version>
+    <time>1557083950</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>699483</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>309bc1867713c9aa9e01df72a254eb08</srcmd5>
+    <version>0.3.1</version>
+    <time>1557751684</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>702369</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>22ea1b82ce865b58925ce9b8bd67ea7a</srcmd5>
+    <version>0.3.1</version>
+    <time>1558036723</time>
+    <user>dimstar_suse</user>
+    <comment>- Added dav1d.armv6.patch (disables armv7 asm for armv6 builds)
+</comment>
+    <requestid>702711</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>702d3a6eab76cf0f2362d0138612c0d2</srcmd5>
+    <version>0.4.0</version>
+    <time>1565864744</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721088</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3d88b8fda888d66af849955f341e1fe6</srcmd5>
+    <version>0.5.0</version>
+    <time>1571057561</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>737448</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f7451475ce0bd46de19592ac689f8701</srcmd5>
+    <version>0.5.1</version>
+    <time>1572180016</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>743031</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>395276f422e9eae722b5f9aba112a556</srcmd5>
+    <version>0.5.2</version>
+    <time>1576062508</time>
+    <user>dimstar_suse</user>
+    <comment>update to 0.5.2</comment>
+    <requestid>754113</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>48392f3c24c35618af64a52edb4832ff</srcmd5>
+    <version>0.6.0</version>
+    <time>1583947902</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>782014</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>81489b556fe41f60983f0b647be9bec2</srcmd5>
+    <version>0.7.0</version>
+    <time>1590779602</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>807817</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>af057aefb44c0a6c7d87ccff21809950</srcmd5>
+    <version>0.7.1</version>
+    <time>1592939048</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>816275</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>a9fb20a7abd68f432ef30124188602f0</srcmd5>
+    <version>0.7.1</version>
+    <time>1599209631</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>831062</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ec5847adda47480804e86675780b5206</srcmd5>
+    <version>0.8.0</version>
+    <time>1606328846</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>850400</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>be1f7911c66474bc93df7a38b94fcb36</srcmd5>
+    <version>0.8.1</version>
+    <time>1609783625</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>859859</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>c969db60d703b4e204e5af676d1af39c</srcmd5>
+    <version>0.8.2</version>
+    <time>1614273945</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>874256</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>1b37403163cf132029968a247c1bca3a</srcmd5>
+    <version>0.8.2</version>
+    <time>1617722946</time>
+    <user>RBrownSUSE</user>
+    <comment>- Disable LTO (fix boo#1183956)
+</comment>
+    <requestid>881203</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>3e004e53f51ce47757ffd2b91c16587d</srcmd5>
+    <version>0.9.0</version>
+    <time>1621531399</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>893491</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>bcbcf8846b848776660f9c4730effb11</srcmd5>
+    <version>0.9.1</version>
+    <time>1627898696</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>909123</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>ff91fde68f2230f033992901ea4a0f7f</srcmd5>
+    <version>0.9.2</version>
+    <time>1631042023</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>916768</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>16e0225069aa091d61ef776a6ab3d158</srcmd5>
+    <version>1.0.0</version>
+    <time>1653417040</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>962893</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>f6184277bbb04b945da1db6c10fb55c0</srcmd5>
+    <version>1.0.0</version>
+    <time>1665754807</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010470</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>0aea2838cf29d0250d65b98809457f96</srcmd5>
+    <version>1.1.0</version>
+    <time>1676562897</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1065813</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>9452a793bbdbc9af06def347867d746d</srcmd5>
+    <version>1.1.0</version>
+    <time>1677794512</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1068505</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>e1840fb4720ab8e7258bff4390ea8542</srcmd5>
+    <version>1.1.0</version>
+    <time>1678380312</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1070019</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>5a57e86cdbc28e25a763ba605302cb4c</srcmd5>
+    <version>1.2.0</version>
+    <time>1683212965</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1084177</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>93661c2ed9583bc760680dd42ef62b78</srcmd5>
+    <version>1.2.0</version>
+    <time>1683403734</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1085173</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>218271c8fe566474c325a5f40ce50a15</srcmd5>
+    <version>1.2.1</version>
+    <time>1685830332</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1090364</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>bd734b1315e8a74857575c5b18a59321</srcmd5>
+    <version>1.3.0</version>
+    <time>1696528964</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1115086</requestid>
+  </revision>
+</revisionlist>

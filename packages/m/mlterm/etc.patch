@@ -1,0 +1,250 @@
+---
+ etc/aafont  |   67 +++++++++++++++++++++++++++++-------------------------------
+ etc/font    |   53 ++++++++++++++++++++++++++++++++++++++++++++++-
+ etc/key     |    6 +++++
+ etc/main    |   26 ++++++++++++++++++++++-
+ etc/termcap |    2 +
+ etc/vaafont |   66 +++++++++++++++++++++++++++++------------------------------
+ etc/xim     |   13 ++++++++---
+ 7 files changed, 161 insertions(+), 72 deletions(-)
+
+Index: mlterm-3.9.2/etc/aafont
+===================================================================
+--- mlterm-3.9.2.orig/etc/aafont
++++ mlterm-3.9.2/etc/aafont
+@@ -1,42 +1,39 @@
+ #DEFAULT=Kochi Gothic
+ 
+-#ISO8859_1=Courier 10 Pitch
+-#ISO8859_2=Thryomanes
+-#ISO8859_3=Thryomanes
+-#ISO8859_4=Thryomanes
+-#ISO8859_5=Thryomanes
+-#ISO8859_7=Thryomanes
+-#ISO8859_9=Thryomanes
+-#ISO8859_10=Thryomanes
+-#ISO8859_13=Thryomanes
+-#ISO8859_14=Thryomanes
+-#ISO8859_15=Thryomanes
+-#KOI8_R=Nimbus Mono L
+-#KOI8_U=Nimbus Mono L
+-#JISX0208_1978=Kochi Gothic
+-#JISX0208_1983=Kochi Gothic
+-#JISX0208_1990=Kochi Gothic
+-#KSX1001_1997=dotum
+-#BIG5=AR PL Mingti2L Big5
+-#GB2312_80=AR PL SungtiL GB
+-#GBK=AR PL SungtiL GB
+-
+-#ISO10646_UCS4_1=Courier 10 Pitch
+-#ISO10646_UCS4_1=Thryomanes
+-
+-# Japanese speakers may want to enable the following setting.
+-#ISO10646_UCS4_1_FULLWIDTH=Kochi Gothic
+-# Unicode Hankaku kana.
+-#U+FF61-FF9F=Kochi Gothic
++ISO8859_1=FreeMono-iso10646-1;
++ISO8859_2=FreeMono-iso10646-1;
++ISO8859_3=FreeMono-iso10646-1;
++ISO8859_4=FreeMono-iso10646-1;
++ISO8859_7=FreeMono-iso10646-1;
++ISO8859_9=FreeMono-iso10646-1;
++ISO8859_10=FreeMono-iso10646-1;
++ISO8859_13=FreeMono-iso10646-1;
++ISO8859_14=FreeMono-iso10646-1;
++ISO8859_15=FreeMono-iso10646-1;
++
++JISX0201_ROMAN=IPAGothic-iso10646-1;
++JISX0201_KATA=IPAGothic-iso10646-1;
++JISX0208_1983=IPAGothic-iso10646-1;
++JISX0208_1983_BOLD=IPAGothic-iso10646-1;
++
++GB2312_80=AR PL SungtiL GB-iso10646-1;
++GBK=AR PL SungtiL GB-iso10646-1;
++BIG5=AR PL Mingti2L Big5-iso10646-1;
++HKSCS=AR PL Mingti2L Big5-iso10646-1;
++KSC5601_1987=Baekmuk unigulir-iso10646-1;
++KSX1001_1997=Baekmuk unigulir-iso10646-1;
++
++ISO10646_UCS2_1 = FreeMono-iso10646-1;
++ISO10646_UCS2_1_BIWIDTH = IPAGothic-iso10646-1;
++#ISO10646_UCS2_1_BIWIDTH = Bitstream Cyberbit-iso10646-1;
++#ISO10646_UCS2_1 = Arial Unicode MS-iso10646-1;
++#ISO10646_UCS2_1_BIWIDTH = Arial Unicode MS-iso10646-1;
++ISO10646_UCS4_1 = FreeMono-iso10646-1;
++ISO10646_UCS4_1_BIWIDTH = IPAGothic-iso10646-1;
++#ISO10646_UCS4_1_BIWIDTH = Bitstream Cyberbit-iso10646-1;
++#ISO10646_UCS4_1 = Arial Unicode MS-iso10646-1;
++#ISO10646_UCS4_1_BIWIDTH = Arial Unicode MS-iso10646-1;
+ 
+-# Korean speakers may want to enable the following setting.
+-#ISO10646_UCS4_1_FULLWIDTH=dotum
+-
+-# Traditional Chinese speakers may want to enable the following setting.
+-#ISO10646_UCS4_1_FULLWIDTH=AR PL Mingti2L Big5
+-
+-# Simplified Chinese speakers may want to enable the following setting.
+-#ISO10646_UCS4_1_FULLWIDTH=AR PL SungtiL GB
+ 
+ ISCII_ASSAMESE	= AS-TTDurga 26
+ ISCII_BENGALI	= BN-TTDurga 26
+Index: mlterm-3.9.2/etc/font
+===================================================================
+--- mlterm-3.9.2.orig/etc/font
++++ mlterm-3.9.2/etc/font
+@@ -1,7 +1,7 @@
+ #DEFAULT = -kochi-mincho-medium-r-*--%d-*-
+ #DEFAULT_ITALIC = -mona-gothic-medium-i-*--%d-*-
+ #DEC_SPECIAL = 10,a10;12,6x12;14,7x14;16,8x16;
+-#ISO8859_1 = -kochi-mincho-medium-r-*--%d-*-iso8859-1;10,a10;12,6x12;
++#ISO8859_1 = -misc-ipagothic-medium-*-%d-*-iso8859-1;10,a10;12,6x12;
+ #ISO8859_1_BOLD = 10,a10B;14,7x14bold;
+ #JISX0201_KATA = 10,r10;12,r12;14,r14;16,r16;
+ #JISX0201_KATA_BOLD = 10,r10;
+Index: mlterm-3.9.2/etc/key
+===================================================================
+--- mlterm-3.9.2.orig/etc/key
++++ mlterm-3.9.2/etc/key
+@@ -47,3 +47,9 @@
+ # Shift+Button3="exesel:explorer.exe microsoft-edge:\"%s\""
+ # Button4="\x1bOA\x1bOA"
+ # Button5="\x1bOB\x1bOB"
++
++Shift+space=IM_HOTKEY
++Shift+KP_Add="proto:fontsize=larger"
++Shift+KP_Subtract="proto:fontsize=smaller"
++KP_Begin="\e[E"
++
+Index: mlterm-3.9.2/etc/main
+===================================================================
+--- mlterm-3.9.2.orig/etc/main
++++ mlterm-3.9.2/etc/main
+@@ -2,6 +2,32 @@
+ # Copy to ~/.mlterm/main
+ #
+ 
++use_login_shell=false
++termtype=mlterm
++max_ptys=32
++logsize=1024
++fontsize=16
++font_size_range=2-48
++compose_dec_special_font=true
++tabsize=8
++use_xim=true
++open_xim_in_startup=true
++input_method=xim
++use_combining=true
++use_scrollbar=true
++scrollbar_view_name=sample2
++scrollbar_mode=right
++word_separators=" ,.:;/@"
++#word_separators=" ,;@:$"
++#fade_ratio=98
++fg_color=black
++bg_color=white
++sb_fg_color=lightgray
++sb_bg_color=gray
++geometry=80x25
++mod_meta_mode=esc
++conf_menu_path_2=/usr/bin/mlterm-zoom
++
+ # -- Window --
+ 
+ # display =
+Index: mlterm-3.9.2/etc/xim
+===================================================================
+--- mlterm-3.9.2.orig/etc/xim
++++ mlterm-3.9.2/etc/xim
+@@ -1,6 +1,13 @@
+-Ami=ko_KR.eucKR
+ kinput2=ja_JP.eucJP
+-xcin=zh_TW.Big5
+-xcin-zh_CN.GB2312=zh_CN.GB2312
+ skkinput=ja_JP.eucJP
++SCIM=zh_CN.UTF-8
++nicolatter=ja_JP.eucJP
++jmode=ja_JP.eucJP
++htt=ja_JP.eucJP
++Ami=ko_KR.eucKR
++xcin-zh_TW=zh_TW.Big5
++xcin-zh_CN=zh_CN.GB2312
++local=en_GB.UTF-8 # for compose or dead-keys
++uim=ja_JP.UTF-8
++
+ 
+Index: mlterm-3.9.2/etc/vaafont
+===================================================================
+--- mlterm-3.9.2.orig/etc/vaafont
++++ mlterm-3.9.2/etc/vaafont
+@@ -1,37 +1,36 @@
+ #DEFAULT=Kochi Gothic
+ 
+-#ISO8859_1=Courier 10 Pitch
+-#ISO8859_2=Thryomanes
+-#ISO8859_3=Thryomanes
+-#ISO8859_4=Thryomanes
+-#ISO8859_5=Thryomanes
+-#ISO8859_7=Thryomanes
+-#ISO8859_9=Thryomanes
+-#ISO8859_10=Thryomanes
+-#ISO8859_13=Thryomanes
+-#ISO8859_14=Thryomanes
+-#ISO8859_15=Thryomanes
+-#KOI8_R=Nimbus Mono L
+-#KOI8_U=Nimbus Mono L
+-#JISX0208_1978=Kochi Gothic
+-#JISX0208_1983=Kochi Gothic
+-#JISX0208_1990=Kochi Gothic
+-#KSX1001_1997=dotum
+-#BIG5=AR PL Mingti2L Big5
+-#GB2312_80=AR PL SungtiL GB
+-#GBK=AR PL SungtiL GB
+-
+-#ISO10646_UCS4_1=Courier 10 Pitch
+-#ISO10646_UCS4_1=Thryomanes
+-
+-# Japanese speakers may want to enable the following setting.
+-#ISO10646_UCS4_1_FULLWIDTH=Kochi Gothic
++US_ASCII=Luxi Sans--iso10646-1;
++ISO8859_1=Luxi Sans-iso10646-1;
++ISO8859_2=Luxi Sans-iso10646-1;
++ISO8859_3=Luxi Sans-iso10646-1;
++ISO8859_4=Luxi Sans-iso10646-1;
++ISO8859_9=Luxi Sans-iso10646-1;
++ISO8859_10=Luxi Sans-iso10646-1;
++ISO8859_13=Luxi Sans-iso10646-1;
++ISO8859_15=Luxi Sans-iso10646-1;
++
++JISX0201_ROMAN=IPAGothic-iso10646-1;
++JISX0201_KATA=IPAGothic-iso10646-1;
++JISX0208_1983=IPAGothic-iso10646-1;
++JISX0208_1983_BOLD=IPAGothic-iso10646-1;
++
++GB2312_80=AR PL SungtiL GB-iso10646-1;
++GBK=AR PL SungtiL GB-iso10646-1;
++BIG5=AR PL Mingti2L Big5-iso10646-1;
++HKSCS=AR PL Mingti2L Big5-iso10646-1;
++
++KSC5601_1987=Baekmuk unigulir-iso10646-1;
++KSX1001_1997=Baekmuk unigulir-iso10646-1;
++
++ISO10646_UCS2_1 = Luxi Sans-iso10646-1;
++ISO10646_UCS2_1_BIWIDTH = IPAGothic-iso10646-1;
++#ISO10646_UCS2_1_BIWIDTH = Bitstream Cyberbit-iso10646-1;
++#ISO10646_UCS2_1 = Arial Unicode MS-iso10646-1;
++#ISO10646_UCS2_1_BIWIDTH = Arial Unicode MS-iso10646-1;
++ISO10646_UCS4_1 = Luxi Sans-iso10646-1;
++ISO10646_UCS4_1_BIWIDTH = IPAGothic-iso10646-1;
++#ISO10646_UCS4_1_BIWIDTH = Bitstream Cyberbit-iso10646-1;
++#ISO10646_UCS4_1 = Arial Unicode MS-iso10646-1;
++#ISO10646_UCS4_1_BIWIDTH = Arial Unicode MS-iso10646-1;
+ 
+-# Korean speakers may want to enable the following setting.
+-#ISO10646_UCS4_1_FULLWIDTH=dotum
+-
+-# Traditional Chinese speakers may want to enable the following setting.
+-#ISO10646_UCS4_1_FULLWIDTH=AR PL Mingti2L Big5
+-
+-# Simplified Chinese speakers may want to enable the following setting.
+-#ISO10646_UCS4_1_FULLWIDTH=AR PL SungtiL GB

@@ -1,0 +1,196 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>88d21c215821eaf7105424d3659d2750</srcmd5>
+    <version>1.11.0</version>
+    <time>1526463567</time>
+    <user>dimstar_suse</user>
+    <comment>Update to upstream version qbs 1.11.0
+Language Additions
+  * New qbs.targetPlatform, qbs.toolchainType properties
+  * Modules can now declare their target artifacts with
+    the new filesAreTargets property of the Group item
+  * New BinaryFile service for reading and writing text files
+  * New cpp.rpathOrigin, cpp.driverLinkerFlags properties
+  * Support for &quot;C++17&quot; as cpp.cxxLanguageVersion
+Command Line
+  * New way to specify configuration names with config key:
+    $ qbs config:debug config:release
+  * 'qbs run' now considers an executable's library dependencies
+  * The qbs-qmltypes tool got replaced by a once generated
+    qmltypes file.
+Removed 0001-Remove-top-level-include-path.patch, which is now
+included upstream.
+Initial import of qbs 1.10.1
+</comment>
+    <requestid>606642</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>341c8b5f533106df2b94fd1c083c9e72</srcmd5>
+    <version>1.12.1</version>
+    <time>1540320059</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>643805</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>98930b1601f8f0809fed948209d20252</srcmd5>
+    <version>1.13.0</version>
+    <time>1556916423</time>
+    <user>dimstar_suse</user>
+    <comment>- Change the license tag (and make rpmlint happy)
+- Update to 1.13.0</comment>
+    <requestid>700210</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b95de55cac8f6e2cbe7cb3f2701dc420</srcmd5>
+    <version>1.13.1</version>
+    <time>1563259234</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.13.1</comment>
+    <requestid>714858</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>cc989c91e7228dbcf3e0763834d7652a</srcmd5>
+    <version>1.14.0</version>
+    <time>1570912678</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>737533</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d388b2be569b6d630934b800a324511a</srcmd5>
+    <version>1.14.1</version>
+    <time>1575727810</time>
+    <user>dimstar_suse</user>
+    <comment>
+- Update to 1.14.1
+  * Qt support: Fix static builds with Qt &gt;= 5.13.1.
+
+-------------------------------------------------------------------</comment>
+    <requestid>754869</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c9f534afac7e539ce2e2eb3a5f60670c</srcmd5>
+    <version>1.15.0</version>
+    <time>1577450964</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.15.0</comment>
+    <requestid>759297</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>cab76eb322ce866ba5677e4a2fb37671</srcmd5>
+    <version>1.16.0</version>
+    <time>1588538858</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>799844</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6f9de9ed15ad046dd8e8f266a792f459</srcmd5>
+    <version>1.17.0</version>
+    <time>1600277684</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>834777</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4c9f9652cdb2f20fa4fc59552aaac85a</srcmd5>
+    <version>1.18.0</version>
+    <time>1612182540</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>868293</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>f64f45881587a2337bd9bb1e37ad2b33</srcmd5>
+    <version>1.18.0</version>
+    <time>1619729185</time>
+    <user>dimstar_suse</user>
+    <comment>
+- Add patch to fix the qmake detection (boo#1185429):
+  * 0001-Use-qmake-qt5-for-openSUSE.patch
+- Stop setting libexec paths for Tumbleweed. The default values
+  can be used.
+
+-------------------------------------------------------------------</comment>
+    <requestid>889209</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>bd02f9d0cfab4a1f4e0a559db1601865</srcmd5>
+    <version>1.19.0</version>
+    <time>1621034676</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>893167</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>01db5a33cf85235711f1a44fd0c5cfc0</srcmd5>
+    <version>1.19.1</version>
+    <time>1625675422</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>904338</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>bbceb9dfe3afacb7aa14d35020f2a13f</srcmd5>
+    <version>1.19.1</version>
+    <time>1626887191</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove the dmgbuild binary until it's ported to python 3.
+- Only install the license files once.
+- Drop fix-env-script-interpreter.patch. No longer needed.</comment>
+    <requestid>907419</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>515bfc0671bc63911ec0b2a28a430fab</srcmd5>
+    <version>1.20.0</version>
+    <time>1631391871</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>918461</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>5d2539ce7fa04a93697f23d5a598c828</srcmd5>
+    <version>1.23.2</version>
+    <time>1669193301</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.23.2</comment>
+    <requestid>1037457</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>97ce4b71cceb893be08015f1e089cc4c</srcmd5>
+    <version>1.24.0</version>
+    <time>1670333047</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.24.0:
+  * Users can now control if and when warnings for deprecated properties are
+    emitted.
+  * Added FileInfo.executableSuffix().
+</comment>
+    <requestid>1040520</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>d84e9d450451dbecdbb1f42bddaa01b2</srcmd5>
+    <version>2.0.2</version>
+    <time>1687272582</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2.0.2</comment>
+    <requestid>1093968</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>7aac506f885f60522dc78f313e1e44bd</srcmd5>
+    <version>2.1.0</version>
+    <time>1690892158</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>1101542</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>1e2960e33ae53dff3b38fe49408e2df5</srcmd5>
+    <version>2.1.2</version>
+    <time>1699046464</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1123224</requestid>
+  </revision>
+</revisionlist>

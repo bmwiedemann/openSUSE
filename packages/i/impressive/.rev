@@ -1,0 +1,57 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>81d793f21a0290399afec2ce96faa340</srcmd5>
+    <version>0.12.0</version>
+    <time>1560971583</time>
+    <user>dimstar_suse</user>
+    <comment>initial submission</comment>
+    <requestid>710669</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c91d1b12f24c94413ad5860b4085a778</srcmd5>
+    <version>0.12.1</version>
+    <time>1570010329</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>734218</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1ad5513a37fc0d43ad1117c8a50c97cf</srcmd5>
+    <version>0.13.0~beta1</version>
+    <time>1589315699</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>802973</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3b7116c66b1dbb1e267997f48cdd3b15</srcmd5>
+    <version>0.13.0~beta2</version>
+    <time>1594119528</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 0.13.0-beta2
+  * added 'prev' and 'next' PageProps to change order of pages
+  * fixed many remaining Python 3 compatibility issues
+  * added &quot;pseudo-binary&quot; version (actually compressed bytecode) in the source
+    release archive (requires Python 3)
+  * circumvent blurry fonts on Windows due to high-DPI scaling
+  * fixed crash in overview page handling when presentations have very many pages
+  * fixed box-zoom mode display error in half-page mode</comment>
+    <requestid>819064</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>995f58fd5f7c988f8b9a29307c727cc2</srcmd5>
+    <version>0.13.1</version>
+    <time>1647806134</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.13.1</comment>
+    <requestid>963216</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e94cebb5637a72949d28be62462057f1</srcmd5>
+    <version>0.13.2</version>
+    <time>1701023887</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1128879</requestid>
+  </revision>
+</revisionlist>

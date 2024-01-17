@@ -1,0 +1,5 @@
+<package name="python-napalm-digineo-procurve" project="openSUSE:Factory">
+  <title>python-napalm-digineo-procurve</title>
+  <description></description>
+  <devel project="devel:languages:python" package="python-napalm-digineo-procurve"/>
+</package>

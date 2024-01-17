@@ -1,0 +1,5 @@
+<package name="mariadb-java-client" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="mariadb-java-client"/>
+</package>

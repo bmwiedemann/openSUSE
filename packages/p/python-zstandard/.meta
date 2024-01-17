@@ -1,0 +1,5 @@
+<package name="python-zstandard" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Archiving" package="python-zstandard"/>
+</package>
