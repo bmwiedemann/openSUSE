@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan 11 17:55:00 UTC 2024 - Kim Walisch <kim.walisch@gmail.com>
+
+- Update to primecount-7.10 (API & ABI are backwards compatible).
+- Improve CMake libatomic detection.
+- Fix potential integer overflows in Li_inverse(x) and Ri_inverse(x).
+- Added new internal nth_prime_approx(n).
+
+-------------------------------------------------------------------
 Tue Jul 04 07:25:00 UTC 2023 - Kim Walisch <kim.walisch@gmail.com>
 
 - Update to primecount-7.9 (API & ABI are backwards compatible).
