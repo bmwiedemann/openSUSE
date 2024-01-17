@@ -1,0 +1,10 @@
+<package name="xmlformat" project="openSUSE:Factory">
+  <title>XML document formatter</title>
+  <description>xmlformat is a configurable formatter (or &quot;pretty-printer&quot;) for XML
+documents. It provides control over indentation, line-breaking, and
+text wrapping. These properties can be defined on a per-element basis.
+
+xmlformat provides improved diagnostic information when a document is
+not well-formed. (Prints line and token number, and stack trace).</description>
+  <devel project="Publishing" package="xmlformat"/>
+</package>

@@ -1,0 +1,153 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0d7ded4d4e022b4a63de4f68ea40f9c1</srcmd5>
+    <version>6.4.0~git</version>
+    <time>1648570497</time>
+    <user>dimstar_suse</user>
+    <comment>Add qt6-quick3d back.</comment>
+    <requestid>965417</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0ebe33fb890bf7340f5e7b0fa7a4c0c3</srcmd5>
+    <version>6.4.0~git</version>
+    <time>1650466549</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.3.0 (forwarded request 970780 from cgiboudeaux)</comment>
+    <requestid>970801</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>07e53ea1fad893a51c4ddeeb336ec9ab</srcmd5>
+    <version>6.4.0~git</version>
+    <time>1650473892</time>
+    <user>dimstar_suse</user>
+    <comment>osc copypac from project:openSUSE:Factory package:qt6-quick3d revision:1</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c0979ccdec9d1957ccacbdd35e37b0a3</srcmd5>
+    <version>6.3.0</version>
+    <time>1650548529</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the package version.</comment>
+    <requestid>971210</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>79f694b02d4643196d46830178818e16</srcmd5>
+    <version>6.3.0</version>
+    <time>1655732255</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.3.1 (forwarded request 983727 from cgiboudeaux)</comment>
+    <requestid>983745</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>bb59cd2f89ae2a9e1077c9a624b9533e</srcmd5>
+    <version>6.3.2</version>
+    <time>1663275570</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.3.2 (forwarded request 1003797 from cgiboudeaux)</comment>
+    <requestid>1003815</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>a75c462d5399ee3b39d46d479c53b700</srcmd5>
+    <version>6.4.0~git</version>
+    <time>1664638993</time>
+    <user>RBrownFactory</user>
+    <comment>Qt 6.4.0</comment>
+    <requestid>1007321</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c54a4f28a2db9c9f97768d57aca9e965</srcmd5>
+    <version>6.4.1~git</version>
+    <time>1669040946</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.4.1 (forwarded request 1036897 from cgiboudeaux)</comment>
+    <requestid>1036915</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a05af7eca0368295d254c19a62b8aa35</srcmd5>
+    <version>6.4.1</version>
+    <time>1669488726</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the package version</comment>
+    <requestid>1038342</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>dacf015b1558cc57b9a3c94b251ac609</srcmd5>
+    <version>6.4.2</version>
+    <time>1673444045</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.4.2 (forwarded request 1057253 from krop)</comment>
+    <requestid>1057271</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9bf6f5dc9acc10d44486bd9a7a494a0d</srcmd5>
+    <version>6.4.3</version>
+    <time>1679068998</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 6.4.3 (forwarded request 1072393 from krop)</comment>
+    <requestid>1072410</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>fdc22a38898322b450a7857488b8d65a</srcmd5>
+    <version>6.5.0</version>
+    <time>1680723120</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 6.5.0 (forwarded request 1077258 from Vogtinator)</comment>
+    <requestid>1077336</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>1a0d2977b9072d6d922f184aa97c6466</srcmd5>
+    <version>6.5.1</version>
+    <time>1685294522</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.5.1 (forwarded request 1088916 from krop)</comment>
+    <requestid>1089097</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>ab70840f3a7292cb6c246c4c5d41cea4</srcmd5>
+    <version>6.5.1</version>
+    <time>1688849237</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1097552</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>df8d739c7ffc77422d56645590e15102</srcmd5>
+    <version>6.5.2</version>
+    <time>1690370565</time>
+    <user>anag+factory</user>
+    <comment>Qt 6.5.2 (forwarded request 1099849 from krop)</comment>
+    <requestid>1100002</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>3500516079197baa968d2e706a385251</srcmd5>
+    <version>6.5.3</version>
+    <time>1696269940</time>
+    <user>anag+factory</user>
+    <comment>Qt 6.5.3 (forwarded request 1114130 from krop)</comment>
+    <requestid>1114504</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>a1843877fcf3ffe69132a598b3d05548</srcmd5>
+    <version>6.6.0</version>
+    <time>1697231662</time>
+    <user>anag+factory</user>
+    <comment>Qt 6.6.0. Not built yet (forwarded request 1116657 from krop)</comment>
+    <requestid>1116945</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>9ac73a221da7dc0d40686c9590a1d9b3</srcmd5>
+    <version>6.6.0</version>
+    <time>1700772113</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1128289</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>0c792d3b6840c1e89caf5b046ec07818</srcmd5>
+    <version>6.6.1</version>
+    <time>1701727205</time>
+    <user>anag+factory</user>
+    <comment>Qt 6.6.1 (forwarded request 1129814 from krop)</comment>
+    <requestid>1130420</requestid>
+  </revision>
+</revisionlist>

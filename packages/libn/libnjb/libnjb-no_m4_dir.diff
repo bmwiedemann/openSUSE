@@ -1,0 +1,14 @@
+From: Benjamin Denisart <p.drouand@gmail.com>
+Date: Fri Apr 26 15:17:31 CEST 2013
+Subject: [PATCH] Remove AC_CONFIG_MACRO_DIR from configure.ac to fix
+         build with automake-1.13.1
+--- configure.ac.orig	2011-06-25 14:04:54.000000000 +0200
++++ configure.ac	2013-05-02 14:10:51.965722306 +0200
+@@ -1,7 +1,6 @@
+ # Process this file with autoconf to produce a configure script.
+ AC_PREREQ(2.52)
+ AC_INIT([libnjb], [2.2.7], [libnjb-users@lists.sourceforge.net])
+-AC_CONFIG_MACRO_DIR([m4])
+ AM_INIT_AUTOMAKE([foreign])
+ AC_CONFIG_SRCDIR([src/base.c])
+ AC_CONFIG_HEADER([config.h])

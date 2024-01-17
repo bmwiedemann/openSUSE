@@ -1,0 +1,5 @@
+<package name="libnjb" project="openSUSE:Factory">
+  <title>Nomad Jukebox API</title>
+  <description>Nomad Jukebox API</description>
+  <devel project="KDE:KDE3" package="libnjb"/>
+</package>

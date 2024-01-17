@@ -1,0 +1,89 @@
+-------------------------------------------------------------------
+Wed Jul  4 12:39:06 CEST 2012 - pgajdos@suse.cz
+
+- amend spec file to reflect new font packaging scheme
+  (see openFATE#313536);
+
+-------------------------------------------------------------------
+Thu May 17 09:09:56 UTC 2012 - pgajdos@suse.com
+
+- call spec-cleaner
+
+-------------------------------------------------------------------
+Thu May  3 15:08:40 UTC 2012 - pgajdos@suse.com
+
+- renamed efont-serif-ttf -> efont-serif-fonts
+
+-------------------------------------------------------------------
+Thu Apr 26 14:42:18 UTC 2012 - pgajdos@suse.com
+
+- license GPL-2.0 instead GPL-2.0+; I haven't found reference to
+  "GPL-2.0 or later"
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/obsolete tags/sections from specfile
+  (cf. packaging guidelines)
+
+-------------------------------------------------------------------
+Thu Apr  8 17:54:18 CEST 2010 - tiwai@suse.de
+
+- removed unnecessary buildrequires for too old distros
+
+-------------------------------------------------------------------
+Wed Aug 09 13:08:19 CEST 2006 - mfabian@suse.de
+
+- move fonts to /usr/share/fonts/truetype
+  (openSUSE 10.2 will use X11R7).
+
+-------------------------------------------------------------------
+Wed Jan 25 21:46:13 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Dec 03 17:25:36 CET 2004 - mfabian@suse.de
+
+- use new macro "%run_suseconfig_fonts".
+
+-------------------------------------------------------------------
+Thu Mar 18 18:38:21 CET 2004 - mfabian@suse.de
+
+- use %suseconfig_fonts_prereq
+
+-------------------------------------------------------------------
+Sat Feb 14 04:01:12 CET 2004 - mfabian@suse.de
+
+- run SuSEconfig.fonts and SuSEconfig.pango in %post and %postun
+
+-------------------------------------------------------------------
+Wed Nov 26 19:40:25 CET 2003 - mfabian@suse.de
+
+- don't build as root
+- remove unsupported ascii-0 encoding from fonts.scale
+- remove useless %post and %postun.
+
+-------------------------------------------------------------------
+Fri Jun 13 13:14:01 CEST 2003 - mfabian@suse.de
+
+- add %dir /usr/X11R6/lib/X11/fonts/truetype/ to file list
+
+-------------------------------------------------------------------
+Sun Jan 27 23:02:41 CET 2002 - schwab@suse.de
+
+- Remove empty lines from fonts.scale.
+
+-------------------------------------------------------------------
+Tue Apr 17 14:01:11 CEST 2001 - mfabian@suse.de
+
+- update to version 20010312
+- remove %post and %postun, it is enough when SuSEconfig
+  updates the font directory, better don't duplicate the code
+  here.
+
+-------------------------------------------------------------------
+Fri Mar  2 11:19:29 CET 2001 - mfabian@suse.de
+
+- new package: efont-serif-ttf version 20010226
+

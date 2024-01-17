@@ -1,0 +1,11 @@
+Index: b/Makefile
+===================================================================
+--- a/Makefile
++++ b/Makefile
+@@ -20,5 +20,5 @@ clean:
+ 
+ 
+ install: $(PRG)
+-	install -s -m 755 $(PRG) $(DESTDIR)/usr/bin
++	install -m 755 $(PRG) $(DESTDIR)/usr/bin
+ 

@@ -1,0 +1,15 @@
+<package name="python-cstruct" project="openSUSE:Factory">
+  <title>C-style structs for Python</title>
+  <description>Convert C struct definitions into Python classes with methods for
+serializing/deserializing. The usage is very simple: create a class
+subclassing cstruct.CStruct and add a C struct definition as a
+string in the struct field. The C struct definition is parsed at
+runtime and the struct format string is generated. The class offers
+the method &quot;unpack&quot; for deserializing a string of bytes into a
+Python object and the method &quot;pack&quot; for serializing the values into
+a string.
+
+</description>
+  <devel project="devel:languages:python" package="python-cstruct"/>
+  <url>http://github.com/andreax79/python-cstruct</url>
+</package>

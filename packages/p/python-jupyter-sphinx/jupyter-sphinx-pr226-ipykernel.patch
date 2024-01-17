@@ -1,0 +1,39 @@
+From ff54324169ccf92acf8ef511967a717628cad5a5 Mon Sep 17 00:00:00 2001
+From: Jim Garrison <garrison@ibm.com>
+Date: Tue, 1 Aug 2023 14:17:51 -0400
+Subject: [PATCH] Add direct dependency on ipykernel
+
+ipywidgets 8.1.0 has been released, which includes the change at
+https://github.com/jupyter-widgets/ipywidgets/pull/3811.
+With this change, ipykernel is no longer a dependnecy of ipywidgets,
+so jupyer-sphinx must now depend on ipykernel directly rather
+than assume it will be installed as a transitive dependency of
+ipywidgets.  Without this change, jupyter-sphinx tests will fail CI.
+This has additionally led to CI failures in some packages that
+depend on jupyter-sphinx but not ipykernel.
+---
+ requirements.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+Index: jupyter-sphinx-0.4.0/requirements.txt
+===================================================================
+--- jupyter-sphinx-0.4.0.orig/requirements.txt
++++ jupyter-sphinx-0.4.0/requirements.txt
+@@ -1,4 +1,5 @@
+ sphinx>=2.4.4
++ipykernel>=4.5.1
+ ipywidgets>=7.0.0
+ IPython
+ nbconvert>=5.4
+Index: jupyter-sphinx-0.4.0/setup.py
+===================================================================
+--- jupyter-sphinx-0.4.0.orig/setup.py
++++ jupyter-sphinx-0.4.0/setup.py
+@@ -30,6 +30,7 @@ setup(
+     packages=["jupyter_sphinx"],
+     install_requires=[
+         "Sphinx>=2",
++        "ipykernel>=4.5.1",
+         "ipywidgets>=7.0.0",
+         "IPython",
+         "nbconvert>=5.5",

@@ -1,0 +1,33 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d5c24cbfe74f50ea124b74fb248eb12b</srcmd5>
+    <version>0.0.7</version>
+    <time>1656587909</time>
+    <user>dimstar_suse</user>
+    <comment>New package fq v0.0.7 is a CLI tool and REPL for binary data inspired by jq.
+
+New functionality via a SUSE Hack Week project is in progress for a subsequent release:
+https://hackweek.opensuse.org/21/projects/add-mbr-binary-format-support-to-the-fq-command-line-tool</comment>
+    <requestid>985962</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1f3faf40f54b9517bb786deb7f404798</srcmd5>
+    <version>0.0.10</version>
+    <time>1666361982</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0.10: (forwarded request 1030253 from jfkw)</comment>
+    <requestid>1030254</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e4b8578c7dcf29807b83c773dbb8377e</srcmd5>
+    <version>0.9.0</version>
+    <time>1701121393</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.9.0:
+- Packaging improvements:
+  * _service change disabled to manual per osc deprecation warning:
+    WARNING: Command 'disabledrun/dr' is obsolete, please convert
+    your _service to use 'manual' and then 'manualrun/mr' instead. (forwarded request 1128988 from jfkw)</comment>
+    <requestid>1128990</requestid>
+  </revision>
+</revisionlist>

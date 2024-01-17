@@ -1,0 +1,5 @@
+<package name="qt6-quick3d" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="KDE:Qt6" package="qt6-quick3d"/>
+</package>

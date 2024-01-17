@@ -1,0 +1,5 @@
+<package name="cargo-auditable" project="openSUSE:Factory">
+  <title>cargo-auditable</title>
+  <description>cargo-auditable</description>
+  <devel project="devel:languages:rust" package="cargo-auditable"/>
+</package>

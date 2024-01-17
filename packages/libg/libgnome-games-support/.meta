@@ -1,0 +1,5 @@
+<package name="libgnome-games-support" project="openSUSE:Factory">
+  <title>libgnome-games-support</title>
+  <description></description>
+  <devel project="GNOME:Factory" package="libgnome-games-support"/>
+</package>

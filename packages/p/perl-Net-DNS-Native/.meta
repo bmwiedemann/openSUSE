@@ -1,0 +1,6 @@
+<package name="perl-Net-DNS-Native" project="openSUSE:Factory">
+  <title>Non-blocking system DNS resolver</title>
+  <description>This class provides several methods for host name resolution. It is designed to be used with event loops. All resolving are done by getaddrinfo(3) implemented in your system library. Since getaddrinfo() is blocking function and we don't want to block, calls to this function will be done in separate thread. This class uses system native threads and not perl threads. So overhead shouldn't be too big.</description>
+  <devel project="devel:languages:perl" package="perl-Net-DNS-Native"/>
+  <url>https://metacpan.org/pod/Net::DNS::Native</url>
+</package>

@@ -1,0 +1,9 @@
+<package name="nng" project="openSUSE:Factory">
+  <title>Nanomsg NG - brokerless messaging</title>
+  <description>nng (nanomsg next-generation) is a C socket library providing
+several common communication patterns.
+
+</description>
+  <devel project="devel:libraries:c_c++" package="nng"/>
+  <url>https://nanomsg.github.io/nng/</url>
+</package>

@@ -1,0 +1,10 @@
+<package name="efont-serif-fonts" project="openSUSE:Factory">
+  <title>Free and Open Scalable Electronic Font</title>
+  <description>The efont-serif is a really free and open scalable electronic font.
+
+The Omega Serif and URW Nimbus are also distributable. But their letter
+forms are quite similar to Adobe Times. The efont-serif does not copy
+the outlines or the letter forms of any copyrighted typefaces.
+</description>
+  <devel project="M17N:fonts" package="efont-serif-fonts"/>
+</package>

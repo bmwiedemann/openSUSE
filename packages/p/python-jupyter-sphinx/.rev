@@ -1,0 +1,74 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3b00bb416cf01a79fe9c84e315e983b9</srcmd5>
+    <version>0.2.2</version>
+    <time>1575039383</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.2.2
+- Rename to python-jupyter-sphinx to match upstream rename.</comment>
+    <requestid>747944</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0b3e4f18b3b38f242d5664d4820012e3</srcmd5>
+    <version>0.2.3</version>
+    <time>1578069482</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>760532</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>67bc28c0b4f43b3f84dabc670929d87d</srcmd5>
+    <version>0.2.4</version>
+    <time>1591743024</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.2.4:
+  * Documentation updates
+  * Test fixes</comment>
+    <requestid>812840</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>96286b2ad5d9566e94b670c7e98d26a9</srcmd5>
+    <version>0.2.4</version>
+    <time>1608221063</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>856357</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>613da33849aeab17a49e2262de25698e</srcmd5>
+    <version>0.3.2</version>
+    <time>1625225283</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>903640</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ec7722fdf01607e715e0f8f7fbf7ecc2</srcmd5>
+    <version>0.4.0</version>
+    <time>1657712735</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>988898</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>f9f9dd8723681ddd7bab45a9ad8e0edb</srcmd5>
+    <version>0.4.0</version>
+    <time>1692795519</time>
+    <user>anag+factory</user>
+    <comment>- Add ipykernel to requirements
+  * jupyter-sphinx-pr226-ipykernel.patch
+  * gh#jupyter/jupyter-sphinx#226
+- PEP517</comment>
+    <requestid>1105444</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>61f533f188ba06350eadf89cef02c5fc</srcmd5>
+    <version>0.4.0</version>
+    <time>1694701565</time>
+    <user>anag+factory</user>
+    <comment>- Add jupyter-sphinx-pr233-pathlib.patch
+  gh#jupyter/jupyter-sphinx#233
+</comment>
+    <requestid>1111064</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="kernelshark" project="openSUSE:Factory">
+  <title>KernelShark is a front end visualisation for trace-cmd data.</title>
+  <description>trace-cmd reporting can be extremely verbose making it difficult to analyse. kernelshark visualises the data so that it can be filtered or trimmed.</description>
+  <devel project="devel:tools" package="kernelshark"/>
+</package>
