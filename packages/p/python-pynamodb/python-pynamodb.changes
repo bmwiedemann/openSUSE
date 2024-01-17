@@ -1,0 +1,50 @@
+-------------------------------------------------------------------
+Mon Dec 12 18:15:28 UTC 2022 - pgajdos@suse.com
+
+- version update to 5.3.4
+  * lot of changes, see
+    https://github.com/pynamodb/PynamoDB/blob/master/docs/release_notes.rst
+- python-six is not required (https://trello.com/c/MO53MocR/143-remove-python3-six)
+
+-------------------------------------------------------------------
+Thu Nov 26 11:07:08 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
+
+- Only build Python3 flavors for distributions 15 and greater
+
+-------------------------------------------------------------------
+Tue Sep  8 09:39:01 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 4.3.3
+  * Add type stubs for indexing into a ``ListAttribute`` for
+    forming conditional expressions (#774)
+  * Fix a warning about ``collections.abc`` deprecation (#782)
+
+-------------------------------------------------------------------
+Fri Jul  3 15:17:46 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 4.3.2
+  * Fix discrepancy between runtime and type-checker's perspective of Index and derived types
+  * Add ListAttribute.remove_indexes action for removing specific indexes from a ListAttribute
+  * Type stub fixes
+  * Prevent integration tests from being packaged
+  * Various documentation fixes
+
+-------------------------------------------------------------------
+Thu Feb 27 08:31:25 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.3.1:
+  * Added support for moto through implementing the botocore "before-send" hook.
+  * Performance improvements to UTCDateTimeAttribute deserialization. (#610)
+  * Suppress Python 3 exception chaining when "re-raising" botocore errors as PynamoDB model exceptions (#705)
+  * Use urllib3 instead of requests module from botocore
+  * Future python versions compatibility
+- Drop no longer needed no_vendored_requests.patch
+
+-------------------------------------------------------------------
+Thu Nov 29 16:41:51 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Initial version
+- Add no_vendored_requests.patch
+  use system requests since we remove the vendored version
+  from: https://github.com/pynamodb/PynamoDB/pull/566
+

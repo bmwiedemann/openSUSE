@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Fri Apr 22 00:24:59 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 2021.08.11
+  * No upstream changelog provided
+
+-------------------------------------------------------------------
+Fri Jun  4 20:38:39 CDT 2021 - relliott@umn.edu
+
+- Update spec to install to correct location
+
+-------------------------------------------------------------------
+Mon Feb  8 14:39:40 CST 2021 - relliott@umn.edu
+
+- Update to 2021.01.28
+  * Release of latest snapshot of openkim.org models.  Includes
+    various minor item updates and a significant addition of
+    MEAM models.
+
+-------------------------------------------------------------------
+Tue Jun  9 15:29:13 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add _constraints to avoid OOM errors seen in Tumbleweed
+
+-------------------------------------------------------------------
+Mon Jul 29 22:15:18 CDT 2019 - relliott@umn.edu
+
+- Update to 2019-07-25
+
+-------------------------------------------------------------------
+Sun Apr  7 17:12:41 CDT 2019 - relliott@umn.edu
+
+- initial commit

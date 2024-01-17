@@ -1,0 +1,1071 @@
+-------------------------------------------------------------------
+Mon Nov 06 18:36:00 UTC 2023 - martin.liska@hey.com
+
+- Update to version 2.9.0+git.20231106.cc76e98:
+  * Bump to 2.9.0.
+  * Support LLVM 18: changes in ElaboratedTypeKeyword
+  * add .vscode to .gitignore
+  * add --shell argument
+  * LLVM 18: port to latest master
+  * add LLVM 17 CI target
+  * disable -Werror=non-template-friend in llvm/ADT/PagedVector.h:215:59
+
+-------------------------------------------------------------------
+Thu Sep 14 15:00:47 UTC 2023 - martin.liska@hey.com
+
+- Update to version 2.8.0+git.20230914.9f237d6:
+  * CMake: port to find_package(Python3)
+  * CMake: add minimal version 3.14
+  * Moderninze to Python 3.8 and remove Leap CI.
+  * Test LLVM 18 again.
+  * LLVM nightly: move back to version 17
+  * fix pip installation
+  * Revert previous change and use Ubuntu 23.04.
+  * CI: remove 2 missing LLVM deps for version 18
+  * Fix CI.
+  * Bump LLVM nightly build to LLVM 18.
+  * LLVM 16: add missing header file for toString
+  * Remove LLVM 12 from testing matrix as it is removed in TW.
+  * Add build to ignored list of folders.
+  * LLVM 17: add workaround for a Werror
+  * Stop building against LLVM 11 due to a known LLVM issue:
+  * Fix build with LLVM 17.
+  * LLVM 17: port enum value to c++23.
+  * Fix typo in the previous revision for LLVM 17.
+  * Fix current LLVM tip branch.
+  * Revert a leftover hunk.
+
+-------------------------------------------------------------------
+Fri Apr 28 07:01:39 UTC 2023 - mliska@suse.cz
+
+- Update to version 2.8.0+git.20230428.7aaa251:
+  * Bump to 2.8.0.
+
+-------------------------------------------------------------------
+Mon Apr 17 09:06:07 UTC 2023 - mliska@suse.cz
+
+- Update to version 2.7.0+git.20230417.6b558fe:
+  * Handle cyclic namespace include that leads to inf. recursion.
+  * Shorten pass names that use max_transforms property.
+  * Fix clang warning:
+  * build: factory out common flags and use -pedantic
+  * Simplify dump output for BinaryState.
+  * Revert "drop unneeded -Wno-error=mismatched-new-delete"
+  * drop unneeded -Wno-error=mismatched-new-delete
+
+-------------------------------------------------------------------
+Fri Mar 31 14:05:13 UTC 2023 - mliska@suse.cz
+
+- Update to version 2.7.0+git.20230331.62a7391:
+  * Fix one -Wdangling-reference and disable -Werror for it.
+
+-------------------------------------------------------------------
+Thu Mar 30 09:46:42 UTC 2023 - mliska@suse.cz
+
+- Update to version 2.7.0+git.20230330.8b25bd7:
+  * Add max-transforms for passes.
+  * Add CI tester for LLVM 16.
+
+-------------------------------------------------------------------
+Wed Mar 22 11:44:28 UTC 2023 - mliska@suse.cz
+
+- Update to version 2.7.0+git.20230322.994dbe2:
+  * add timeout of 10s when we query for instances in clangbinarysearch pass
+  * Fix build error with the current LLVM tip.
+  * fix clang Werror
+  * CI: add LLVM builder
+  * CI: fix
+  * CI: move cocurrency to top-level scope
+  * CI: add concurrency also for llvm-nightly
+  * CI: fix concurrency
+  * CI: cancel previous builds
+  * Use latest LLVM release.
+  * Fix clang error: error: variable 'which' set but not used.
+  * Use -Wno-error=maybe-uninitialized conditionally.
+
+-------------------------------------------------------------------
+Thu Mar 02 08:35:10 UTC 2023 - mliska@suse.cz
+
+- Update to version 2.7.0+git.20230302.ff4e51e:
+  * add -Wno-error=dangling-reference for GCC 13+
+  * LLVM 17: port DesignatedInitExpr::Designator
+  * Fix one more llvm::Optional leftover:
+  * port llvm::Optional to std::optional
+  * LLVM nightly: use llvm-17
+  * bump CMake minimal version
+
+-------------------------------------------------------------------
+Fri Dec 23 10:37:35 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.7.0+git.20221223.d9e4a50:
+  * Bump to 2.7.0.
+  * Fix build error with LLVM 16.
+  * enable debuginfo in CMAKE_CXX_FLAGS_RELWITHDEBINFO build type
+  * Remove extra symlink in LLVM nightly build.
+
+-------------------------------------------------------------------
+Tue Dec 20 09:49:33 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Start using mold linker.
+
+-------------------------------------------------------------------
+Sat Dec 17 08:53:45 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.6.0+git.20221217.f1b5a08:
+  * Fixed infinite loop problem with move-definition-to-declaration transformation
+  * move-definition-to-declaration transformation learned to move struct, class, union and variable definitions
+  * Renamed transformation move-function-body to move-definition-to-declaration
+
+-------------------------------------------------------------------
+Fri Dec 16 14:46:32 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.6.0+git.20221216.1423ed5:
+  * Split remove-base-class transformation into remove-base-class and merge-base-class and supporting templated base classes
+  * Update reason comment.
+  * Improve LLVM version detection.
+  * Add support for skipIf get_llvm_version.
+
+-------------------------------------------------------------------
+Thu Dec 15 17:37:53 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.6.0+git.20221215.2f76b4f:
+  * Added getDescribedTemplateParams for backwards compatibility
+  * The move-function-body transformation learned to move class methods, templated functions and methods within templated classes
+  * testing: quit if we cannot create bug report
+  * Fixed crash in reduce-class-template-param
+
+-------------------------------------------------------------------
+Wed Dec 14 08:12:38 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.6.0+git.20221214.96f841e:
+  * Pass instantiate-template-param learned to remove template arguments and parameters
+
+-------------------------------------------------------------------
+Tue Dec 13 15:44:44 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.6.0+git.20221213.c01d287:
+  * Transformation instantiate-template-param did not support replacement of all types (e.g. pointer, reference, arrays were not working)
+  * Bugfix: instantiate-template-param transformation used always the type of the first template parameter
+  * LLVM 16: stop using deprecated llvm::None.
+  * Remove LGTM badges as it will be closed.
+
+-------------------------------------------------------------------
+Fri Dec 09 08:32:00 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.6.0+git.20221209.b337b9a:
+  * Use ubuntu:rolling container
+  * Use ubuntu-latest.
+  * Improve error message for bad value of `--start-with-pass`.
+  * Use -Wno-error=mismatched-new-delete conditionally.
+
+-------------------------------------------------------------------
+Wed Nov 30 12:14:58 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.6.0+git.20221130.702f9d5:
+  * Fix where we skip when --skip-after-n-transforms is used.
+
+-------------------------------------------------------------------
+Mon Nov 21 11:53:34 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.6.0+git.20221121.e753f5b:
+  * tweak logic in clangbinarysearch.py
+
+-------------------------------------------------------------------
+Mon Nov 21 11:01:27 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.6.0+git.20221121.ff14486:
+  * Add c++2b for auto-detection in clangbinarysearch.py.
+  * Use detected --std in ClangBinarySearchPass
+  * Add extra llvm16 package.
+  * Port to LLVM ToT.
+  * Fix CI.
+  * CI: fix Leap
+  * CI: reorg installed packages
+  * CI: rename workflow
+  * CI: install findutils
+  * run pyupgrade
+  * run pyupgrade only with --py36-plus.
+  * Revert "run pyupgrade on the code"
+  * Revert "Expect Python 3.8+."
+  * Add pyupgrade to CI.
+  * run pyupgrade on the code
+  * Expect Python 3.8+.
+  * Fix name of badge
+  * Update badges.
+
+-------------------------------------------------------------------
+Tue Oct 18 07:50:53 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.6.0+git.20221018.7c1f0b4:
+  * Fix LLVM 16 build.
+  * Move cron job to 03:00
+  * Fix CI.
+  * Split workflows.
+  * Add cron job.
+  * LLVM 16: disable one test
+  * clang 16: disable one -Werror
+  * Fix LLVM 16 issue:
+  * Fix CI
+  * Add LLVM Nightly builder.
+  * Use env for Leap.
+  * Move to -std=c++17 as it will be required by LLVM 16.
+
+-------------------------------------------------------------------
+Sat Oct 15 07:48:40 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Use gcc-11 for Leap.
+
+-------------------------------------------------------------------
+Thu Oct 13 08:51:09 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Do not use ninja, prefer make (due to jobserver interaction with GCC).
+
+-------------------------------------------------------------------
+Mon Oct 03 11:16:33 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.6.0+git.20221003.09a5d1e:
+  * Bump to 2.6.0.
+  * Fixed small bugs in class-template-to-class, simplify-dependent-typedef and template-arg-to-int passes
+  * member-to-global pass failed for members not ending with a ";"
+  * CMake: Fixed compilation, enabled parallel builds and deactivated unnecessary warnings for MSVC
+  * GCDABinaryPass: handle when there are no functions
+
+-------------------------------------------------------------------
+Wed Sep 14 07:04:09 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.5.0+git.20220914.93cb973:
+  * Added rename-operator pass that converts operator functions (e.g. operator +) to regular functions
+
+-------------------------------------------------------------------
+Mon Sep 12 07:46:52 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.5.0+git.20220912.e2268dd:
+  * Added member-to-global pass that moves declarations within a record (class or struct) in front of the record
+
+-------------------------------------------------------------------
+Mon Sep 12 07:17:11 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.5.0+git.20220912.c56e8a0:
+  * Replaced everywhere TypedefDecl by TypedefNameDecl to supporting typedef-like using declarations
+  * Hopefully compatible with old libclang
+  * return-void transformation discarded function specifiers, attributes and scope qualifiers
+  * class-template-to-class transformation was not working with out-of-line method definitions
+  * Add c++2b C++ standard.
+
+-------------------------------------------------------------------
+Sun Sep 11 18:48:13 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.5.0+git.20220911.4c7ce7f:
+  * instantiate-template-param was not working for parameters inside anonymous templates
+
+-------------------------------------------------------------------
+Fri Sep 09 13:03:27 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.5.0+git.20220909.31fe1f8:
+  * class-template-to-class transformation was not working with out-of-line method definitions
+
+-------------------------------------------------------------------
+Fri Sep 09 10:20:56 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.5.0+git.20220909.3c7e8c6:
+  * Add c++2b C++ standard.
+
+-------------------------------------------------------------------
+Wed Aug 31 11:34:14 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.5.0+git.20220831.cf6747b:
+  * Change gcdabinary to GCC 12 and newer.
+
+-------------------------------------------------------------------
+Tue Aug 30 09:09:14 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.5.0+git.20220830.f61c4b6:
+  * Bump to 2.5.0.
+  * Reduce MAX_PASS_INCREASEMENT_THRESHOLD to 3.
+
+-------------------------------------------------------------------
+Fri Aug 26 19:17:59 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.4.0+git.20220826.b11db4d:
+  * Run flake8 directly due to broken pytest-flake8.
+  * Add new line.
+  * List tested LLVM versions in Installation page.
+- Remove extra removal of pytest-flake8 in spec file.
+
+-------------------------------------------------------------------
+Wed Aug 24 16:21:04 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Don't check the source code for lint with flake8
+  * pytest-flake8 does not work with flake8 >= 5
+    gh#tholo/pytest-flake8#87
+  * Source code linting should not be relevant for a functional rpm
+    package
+
+-------------------------------------------------------------------
+Tue Aug 09 18:01:17 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.4.0+git.20220809.f32223a:
+  * refactors so that the project is LLVM 15-compatible
+  * Remove extra space in a message.
+
+-------------------------------------------------------------------
+Fri Jul 01 12:15:15 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.4.0+git.20220701.2941a38:
+  * Add new option --skip-after-n-transforms.
+  * llvm{9,10} are removed in Tumbleweed now
+
+-------------------------------------------------------------------
+Thu Jun 30 11:41:10 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.4.0+git.20220630.80a749e:
+  * Skip pass if enormous test-case growth is seen
+  * README: add a tip about -Wfatal-errors
+  * Use LLVM 14 as a default library version.
+  * return UINT_MAX for invalid CstArray size
+  * remove spelling locations in case of macros
+  * handle macros for reduce-class-template-param
+  * handle more macro cases for remove-namespace
+  * handle more macro cases for ReplaceExpr
+  * skip recursive calls for simple-inliner
+  * skip defaulted function for param-to-local
+
+-------------------------------------------------------------------
+Tue Jan 04 13:49:40 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.4.0+git.20220104.21c4e26:
+  * Remove C-Reduce test-case.
+  * skip non VarDecl for getInitExprFromBase
+  * Fix topformflat sanity check in lines pass.
+  * Use repology.
+
+-------------------------------------------------------------------
+Tue Jan  4 09:05:26 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Add chardet as a Requirement.
+
+-------------------------------------------------------------------
+Tue Dec 21 16:43:18 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.4.0+git.20211209.2669efd:
+  * Fix file handling in lines pass.
+  * Allow and document building on windows
+  * Remove tests.
+  * handle user-defined literals for remove-namespace pass
+  * skip CallExpr if CurrentStmt is null
+  * Fix README
+  * Fix formatting.
+  * Improve wording related to compiler warnings.
+
+-------------------------------------------------------------------
+Fri Nov 26 09:58:16 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.4.0+git.20211126.bd7809f:
+  * Disable maybe-uninitialized from Werror.
+  * Fix workflow.
+  * Use extra-flags.
+  * Remove definition of PACKAGE macro (#68).
+  * Discourage -Werror in README.md
+
+-------------------------------------------------------------------
+Fri Nov 19 12:35:00 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.4.0+git.20211119.7ad9ac5:
+  * Enable -Werror also for release configurations.
+  * Enable privilage mode again.
+  * Mention colordiff in INSTALL.
+  * Fix detection of colordiff.
+  * Stop using codecov.
+  * Run in privilage mode.
+  * Add build target: LLVM 13.
+  * Port to the new codecod uploader.
+  * Fix thinko in warning option: -Wall to -Wdefault.
+  * Report all warnings from pytest.
+  * Fix resource leaks in tests.
+
+-------------------------------------------------------------------
+Mon Nov  1 15:09:11 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Add colordiff to Requires.
+
+-------------------------------------------------------------------
+Thu Oct 14 11:27:22 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.3.0+git.20211014.5c63665:
+  * Bump to 2.4.0.
+  * Small tweak for LLVM 13.
+
+-------------------------------------------------------------------
+Mon Oct 11 05:52:02 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.3.0+git.20211011.42e2caa:
+  * Finalize LGTM fix.
+
+-------------------------------------------------------------------
+Mon Oct 11 05:13:11 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.3.0+git.20211009.8ce7a88:
+  * Fix LGTM error.
+  * Update openSUSE devel libraries.
+  * Finish porting to LLVM 13.
+  * Port to LLVM 13.
+
+-------------------------------------------------------------------
+Fri Sep 17 13:04:50 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.3.0+git.20210917.064adbb:
+  * Print filename when reducing multiple files.
+  * Fix typo in README.md.
+
+-------------------------------------------------------------------
+Thu Aug 19 15:08:49 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.3.0+git.20210819.0f98784:
+  * Properly handle keyboard interrupt when a pass is running (#62).
+  * Use pass name in the created temporary directories (#62).
+  * Install python3-chardet.
+  * Add support for --to-utf8 (#59).
+  * Add LLVM 12 build target.
+  * Support current LLVM tip.
+  * Fix CPU count detection on Darwin.
+
+-------------------------------------------------------------------
+Mon Jun 28 09:13:38 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.3.0+git.20210628.38b42d9:
+  * Remove creduce tests.
+  * Fixed a crash caused by macro
+  * Fixed an issue for processing init-lists
+  * Fixed a crash for removing function decl groups
+  * Handle move in int. test.
+
+-------------------------------------------------------------------
+Sat May 08 06:33:02 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.3.0+git.20210419.e9a7b94:
+  * Simplify bool option definition.
+
+-------------------------------------------------------------------
+Sat May  8 06:24:58 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Use non-version dependencies to LLVM and clang.
+
+-------------------------------------------------------------------
+Thu Apr 22 12:40:25 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Use LLVM12.
+
+-------------------------------------------------------------------
+Mon Apr 19 12:26:15 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.3.0+git.20210419.7c7526b:
+  * Add --skip-interestingness-test-check (-s) argument.
+
+-------------------------------------------------------------------
+Mon Apr 12 10:10:05 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.3.0+git.20210412.66ee8c1:
+  * Class-to-struct pass: fix forward declarations.
+
+-------------------------------------------------------------------
+Wed Mar 31 09:47:19 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.3.0+git.20210331.352e93f:
+  * Repeat clang_delta_std detection for each test-case.
+
+-------------------------------------------------------------------
+Thu Mar 25 12:26:03 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.3.0+git.20210325.1a5f305:
+  * Add new clang pass: class-to-struct (#50).
+
+-------------------------------------------------------------------
+Sat Mar 20 19:50:11 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.3.0+git.20210320.0ff4a84:
+  * Use colordiff if available.
+
+-------------------------------------------------------------------
+Wed Mar 17 14:43:58 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.3.0+git.20210317.2713400:
+  * Mention that it can be install on Ubuntu.
+  * Run Lines pass 8x in delta.json pass.
+  * Add link to GitHub Actions.
+  * Fix typo.
+  * Fix SimpleInliner pass for alias functions.
+
+-------------------------------------------------------------------
+Tue Mar 09 10:09:06 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.3.0+git.20210309.0a14640:
+  * Add note about GCDA pass to README page.
+  * Add experimental GCDA reduction pass.
+
+-------------------------------------------------------------------
+Tue Mar 09 08:22:24 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.2.0+git.20210309.3f80c31:
+  * Bump to v2.3.0.
+  * Port to LLVM 12 (tested with 12.0.0 rc2).
+
+-------------------------------------------------------------------
+Mon Mar 08 15:30:07 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.2.0+git.20210308.de9373b:
+  * Remove temporary files in working directory.
+
+-------------------------------------------------------------------
+Thu Mar 04 12:54:33 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.1.0+git.20210304.4c7f4cd:
+  * Bump to v2.2.0.
+  * Do not detect c++ std when --clang-delta-std is used.
+  * Add check for test case paths.
+  * Add --clang-delta-preserve-routine cvise option.
+  * Ensuring test inputs are copied into the build folder #43
+  * Adding a 'preserve-routine' flag to clang_delta #43
+  * Do not fail fast.
+
+-------------------------------------------------------------------
+Mon Jan 11 10:55:16 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.0.0+git.20210111.972f4ba:
+  * Bump to v2.1.0.
+  * Make LLVM 12 code conditional.
+  * clang_delta: llvm-12: getContentCache() now returns a reference
+  * clang_delta: llvm-12: prefer getBufferOrNone to getBuffer
+  * Fix non-COVERAGE builds.
+  * Add missing python3 package for sqlite3.
+  * Add sqlite-devel for tumbleweed.
+  * Install git.
+  * Simplify Leap build.
+  * Fix one missing package for Leap.
+  * Do not depend on sqlite.
+  * Fix Leap configuration.
+  * Fix config.
+  * Fix configuration.
+  * Workflow: add Leap container.
+  * Use codecov directly.
+  * Install curl.
+  * Fix workflow.
+  * Update codecov yml config.
+  * Use codecov workflow directly.
+  * Fix workflow.
+  * Fix COVERAGE condition in GitHub workflow.
+  * Remove Travis leftovers.
+  * Add nproc.
+  * Rename a step.
+  * Fix badge URL.
+  * Stop using Travis CI. Bye.
+  * Github actions: add coverage.
+  * Add github workflow.
+  * Rename Docker container for Leap.
+  * Fix TestCvise test in Travis.
+  * Report clang_delta crashes when querying for instances.
+  * Preserve mode of test-cases.
+  * Add new option --start-with-pass.
+  * Handle using declarations declared with macros
+  * Move back removed testers.
+
+-------------------------------------------------------------------
+Thu Jan 07 09:22:33 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.0.0+git.20210107.0a962a7:
+  * Fix TestCvise test in Travis.
+  * Report clang_delta crashes when querying for instances.
+
+-------------------------------------------------------------------
+Wed Jan 06 08:09:16 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.0.0+git.20210106.01ea6c9:
+  * Preserve mode of test-cases.
+  * Add new option --start-with-pass.
+  * Handle using declarations declared with macros
+  * Move back removed testers.
+
+-------------------------------------------------------------------
+Fri Nov 20 06:09:41 UTC 2020 - mliska@suse.cz
+
+- Update to version 2.0.0+git.20201120.2b2ba30:
+  * Fix flake8 issue.
+
+-------------------------------------------------------------------
+Fri Nov 20 06:01:27 UTC 2020 - mliska@suse.cz
+
+- Update to version 2.0.0+git.20201120.2b68f19:
+  * Count only non-empty lines.
+  * Revert to use `env python3` shebang.
+
+-------------------------------------------------------------------
+Sun Nov 15 11:26:05 UTC 2020 - mliska@suse.cz
+
+- Update to version 2.0.0+git.20201115.492d2d7:
+  * Add Leap 15 and fix shebang.
+
+-------------------------------------------------------------------
+Sun Nov 15 09:51:03 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.9.0+git.20201115.cfdc482:
+  * Bump to v2.0.0.
+  * Remove E122 exception.
+  * Add exceptions for remaining flake8 errors.
+  * Fix E128 errors.
+  * Fix E302 flake8 errors.
+  * Start using ' for quoting.
+
+-------------------------------------------------------------------
+Sun Nov 15 07:14:55 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.9.0+git.20201115.0600c14:
+  * Fix importlib mechanism again.
+  * Fix Fedora docker files.
+
+-------------------------------------------------------------------
+Sun Nov 15 06:56:30 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.9.0+git.20201115.838ba74:
+  * Finish flake8 clean up.
+  * Clean up relative imports and * imports.
+  * Fix first part of flake8 issues.
+
+-------------------------------------------------------------------
+Fri Nov 13 08:11:48 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.9.0+git.20201113.53eb76b:
+  * Report also number of lines.
+  * Use proper shebang.
+
+-------------------------------------------------------------------
+Tue Nov 10 09:01:19 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.9.0+git.20201110.a000f9e:
+  * Improve printing of multiple reduced test-cases.
+  * Remove -n auto from pytest config.
+  * Start reduction for multiple files by the biggest.
+  * Fix reduction for multiple files when --commands is used.
+
+-------------------------------------------------------------------
+Tue Nov 10 07:17:30 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.8.0+git.20201110.8cdd0e5:
+  * Bump to v1.9.0.
+  * Use -n auto for pytest.
+  * Clean up Cmake warnings.
+  * Disable builds with older LLVM releases.
+  * Add setup.cfg file for pytest.
+  * Update build configurations.
+
+-------------------------------------------------------------------
+Fri Nov 06 12:45:17 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.8.0+git.20201106.e7821e8:
+  * Remove superfluous print.
+  * Fix killing of timed out processes.
+  * Save test when it reaches a timeout.
+  * Move timeout to WARN.
+  * Fix timeout default.
+  * Support timestamps for a duration >24 hours.
+
+-------------------------------------------------------------------
+Fri Nov  6 12:44:39 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Use llvm11.
+
+-------------------------------------------------------------------
+Thu Oct 29 14:45:05 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.8.0+git.20201029.d32ab1b:
+  * Fix verbose output for sanity check.
+  * Improve wording for transformation opportunities.
+  * Improve debugging for InsaneTestCaseError.
+
+-------------------------------------------------------------------
+Wed Oct 21 15:19:16 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.8.0+git.20201021.07d465a:
+  * Bump to v1.8.0.
+
+-------------------------------------------------------------------
+Wed Oct 21 15:02:43 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.8.0+git.20201021.39657be:
+  * Disable renaming passes by default.
+  * Fix LinesPass for Fortran "Standard Fixed Format".
+  * Use proper openSUSE package in Docker image.
+  * Bump to v1.7.0.
+  * Fix psutil core count detection code.
+  * Add OBS image at the beginning.
+  * Add icon.
+  * Add OBS master following project.
+  * Update last update Creduce commit.
+  * Fix a small type.
+
+-------------------------------------------------------------------
+Tue Sep 29 15:39:22 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.7.0+git.20200929.17345b8:
+  * Bump to v1.7.0.
+
+-------------------------------------------------------------------
+Tue Sep 29 15:33:15 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.6.0+git.20200929.a12db89:
+  * Fix psutil core count detection code.
+  * Add OBS image at the beginning.
+  * Add icon.
+  * Add OBS master following project.
+  * Update last update Creduce commit.
+  * build_and_test.sh: resolve bash via /usr/bin/env
+  * passes/ifs.py: fix infinite loop in IfPass
+  * Fix a small type.
+
+-------------------------------------------------------------------
+Thu Jul 30 09:25:01 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Stop using zstd compression.
+
+-------------------------------------------------------------------
+Thu Jul 30 09:23:40 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.6.0+git.20200728.98d731e:
+  * Catch proper exception in readkey.py.
+  * Add missing dependency.
+  * Add first integration test.
+
+-------------------------------------------------------------------
+Thu Jul 30 09:19:19 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Support building on Leap 15.
+
+-------------------------------------------------------------------
+Sun Jul 26 19:28:48 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.5.0+git.20200726.1b1be7c:
+  * Bump to v1.6.0.
+
+-------------------------------------------------------------------
+Fri Jul 24 09:46:50 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.5.0+git.20200724.686d1e9:
+  * clex: correctly exit when file does not exist.
+  * Clean up ignores a bit.
+  * Add ignores.
+  * One more fix to ignores.
+  * Add more ignores.
+  * Fix mapping and add ignores.
+  * Replace coverage badge.
+  * Rename codecov.yml file.
+  * Add .codecov.yml file with prefix fix.
+  * Switch to codecov.
+  * LGMT: exclude cpp/fixme-comment type.
+  * Fix 2 LGTM CPP warnings.
+  * LGTM: Do not build with debug info enabled.
+  * Remove object files for LGTM.
+  * Add coverage badge.
+  * Update build script.
+  * Add missing python3 package.
+  * Add exclude pattern.
+  * cvise/utils/testing.py: print full backtrace for test failure
+  * cvise/passes/clangbinarysearch.py: add missing imports
+  * Fix usage of BUILD_TYPE.
+  * Pass BUILD_TYPE to build_and_test.sh.
+  * Add missing sqlite3.
+  * Add special coverage build.
+  * Add argument to build_and_test.sh.
+  * Install python3-pip package.
+  * Run coverage just for one build.
+  * Add objdir to .gitignore.
+  * Install coveralls within Docker containers.
+  * Add coveralls.
+  * Fix 2 LGTM CPP warnings.
+  * Add cpp grade for LGTM.
+  * Add build command.
+  * Remove make from LGTM.
+  * Fix build
+  * LGTM: Move to single line.
+  * Rework configure commands for LGTM.
+  * LGTM: fix macro definition.
+  * LGTM: add search location for LGTM.
+  * Remove 2 packages for LGTM.
+  * Add Pebble via pip3 for LGTM.
+  * Add more LLVM packages for LGTM.
+  * Fix LGTM build.
+  * Fix remaining LGTM issues.
+  * Use DEBUG mode for cmake.
+  * Clean Python code.
+  * Fix up InvalidInterestingnessTestError constructor.
+  * Fix usage of UnknownArgumentError.
+  * Update Ubuntu packages in lgtm.yml.
+  * Fix package list in LGTM.
+  * Add code quality badge.
+  * Add LGTM to README.md file.
+  * Add new dependencies to lgtm.yml file.
+  * Add LGTM yml file.
+  * Update documentation a bit.
+  * Add Debian and Fedora packages.
+
+-------------------------------------------------------------------
+Tue Jul 07 12:15:06 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.5.0+git.20200707.c1ebd48:
+  * Bump to 1.5.0.
+
+-------------------------------------------------------------------
+Tue Jul 07 08:09:13 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.4.0+git.20200707.1195f4f:
+  * Fix crash when reducing multiple files.
+
+-------------------------------------------------------------------
+Tue Jul  7 07:34:15 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Add python3-psutil to Requires.
+
+-------------------------------------------------------------------
+Mon Jul 06 21:31:39 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.4.0+git.20200706.369bc31:
+  * Port test-case.
+  * retrieve InvalidIdx only for definitions
+
+-------------------------------------------------------------------
+Fri Jul 03 12:49:56 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.4.0+git.20200703.e2dcfaa:
+  * Update merged revision.
+  * Port tests to python.
+  * update Copyright year
+  * skip cases where the TemplateArg has the same name as the parameter
+  * fixed a crash in rewriteNamedDecls
+  * RemoveUnusedEnumMember: sync up from master.
+
+-------------------------------------------------------------------
+Wed Jul 01 10:38:35 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.4.0+git.20200701.2dbaf41:
+  * Fix up RemoveUnusedEnumMember constructor.
+
+-------------------------------------------------------------------
+Wed Jul 01 09:42:32 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.4.0+git.20200701.485b700:
+  * Add new tests for remove-unused-enum-member.
+  * Make remove-unused-enum-member clangbinarypass.
+  * Make RemoveUnusedEnumMember to accept --to-counter.
+
+-------------------------------------------------------------------
+Tue Jun 30 11:39:40 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.4.0+git.20200630.58375a7:
+  * Fix crash in unifdef pass with float indices.
+
+-------------------------------------------------------------------
+Wed Jun 17 07:39:51 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.4.0+git.20200617.20d10d4:
+  * Add --no-renaming option.
+  * Fix interestingness test error message.
+  * Record LLVM version in Bug report.
+  * Fix use of uninitialized members.
+
+-------------------------------------------------------------------
+Tue Jun  9 07:29:21 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- No need to use pytest4; just pytest is good enough
+
+-------------------------------------------------------------------
+Mon Jun 01 12:24:14 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.3.0+git.20200601.4173fa7:
+  * Bump to 1.4.0.
+  * Remove superfluous debugging message.
+
+-------------------------------------------------------------------
+Sat May 30 14:11:58 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Use LLVM 10.
+
+-------------------------------------------------------------------
+Sat May 30 13:50:35 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.3.0+git.20200530.444f5f0:
+  * Add C++ std auto-detection of clangbinarysearch passes.
+
+-------------------------------------------------------------------
+Fri May 29 08:19:52 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.3.0+git.20200528.9dbe6d9:
+  * Fix bash shebin.
+
+-------------------------------------------------------------------
+Wed May 27 19:42:16 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.3.0+git.20200527.46d9394:
+  * Add new argument --commands that can replace script.
+  * Improve wording of error message.
+  * Support Debug/Release subfolder for Windows builds.
+  * Report missing external program.
+  * Document what is expected from interestingness script.
+  * Port test to PyTest.
+  * get real location for angle locs
+  * Add Speed Comparison.
+  * Mention Gentoo linux package installation.
+
+-------------------------------------------------------------------
+Mon May 11 06:55:36 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.3.0+git.20200511.50c821f:
+  * Bump to 1.3.0.
+  * Decrease pebble.SLEEP_UNIT for faster responsiveness.
+  * Do not parse test_script stdout and stderr outputs.
+
+-------------------------------------------------------------------
+Sat May 09 17:17:38 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.2.0+git.20200509.57058d4:
+  * Add assert about shell argument.
+  * Prevent no change in RenameParam pass.
+  * Move Peep::a to slow passes.
+  * Fix weird version in Docker example.
+  * Test fedora 32 and rawhide.
+  * Use shell=True only for test script.
+  * Run test-scrupt in subprocess with shell=True (#20).
+
+-------------------------------------------------------------------
+Thu May 07 12:55:11 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.2.0+git.20200507.7cf63b5:
+  * Fix cvise --version - unknown git version.
+
+-------------------------------------------------------------------
+Thu May 07 12:46:39 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.2.0+git.20200507.9fa4330:
+  * Fix argument parsing of cvise-delta.
+  * Remove unused files in .gitattributes.
+
+-------------------------------------------------------------------
+Thu May 07 12:00:44 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.1.0+git.20200507.c12db9c:
+  * Bump to 1.2.0.
+
+-------------------------------------------------------------------
+Thu May 07 11:53:06 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.1.0+git.20200507.b467807:
+  * Update cvise-delta documentation entry.
+  * Add cvise-delta.
+  * Add delta.json group file.
+  * Fix different argument name error.
+  * Fix crash when we reach enf of reduction.
+  * Add clang_delta piggybacking test.
+  * Skip git hash for cvise --version of a release build.
+  * Do not re-count instances  for clangbinarysearch passes.
+  * Start using psutil and improve CPU count detection.
+  * Remove 2 lit leftovers.
+  * Change timing-related options.
+  * Update CREDUCE_MERGE.
+  * Port to python tests.
+  * correctly remove unused deleted/defaulted functions
+  * Update copyright years.
+  * Port to Python tests.
+  * handle namespace declared by macros
+  * Port to Python tests.
+  * added several tests for remove-namespace pass
+  * Add CREDUCE_MERGE with last picked git revision.
+  * Update INSTALL documentation.
+  * Document usage of podman.
+  * Add License.txt for delta.
+  * cmake: Do not fail on missing pebble
+  * Support DESTDIR env variable in run-time.
+
+-------------------------------------------------------------------
+Thu Apr 30 12:53:41 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.1.0+git.20200430.e8d954e:
+  * Bump to version 1.1.0.
+  * Remove unused YYTEXT_POINTER.
+  * README: remove a section about temporary directories.
+  * Use console for markdown parts.
+  * Add usage example (#18).
+  * Docker: Do not depend on delta.
+  * Allow skipping of passes that miss a prerequisite (#17).
+  * Refactor checking of external programs.
+  * Fix and enable 2 rename-fun tests.
+  * Remove 2 lit files.
+  * Use -W* only for GNU and Clang compilers.
+
+-------------------------------------------------------------------
+Wed Apr 29 14:15:24 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.0.0+git.20200429.99a7004:
+  * Refactor script_path and programs in cvise.py.
+  * Finish usage of GNUInstallDirs (#16).
+  * Rapidly improve Pass statistics:
+  * Update wording in COPYING.
+  * Run tests with ${PYTHON_EXECUTABLE} -m pytest.
+  * Respect -DCLANG_FORMAT cmake variable (#15).
+  * Use GNUInstallDirs for configurable install locations
+  * Add ctest for the project (#14).
+  * Remove one more documentation reference of delta.
+
+-------------------------------------------------------------------
+Sun Apr 26 19:38:54 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.0.0+git.20200426.be575d6:
+  * Update build matrix.
+  * Test both LLVM 9 and LLVM 10.
+  * Enable non-type-temp-arg.cpp test (csmith-project/creduce#212).
+  * handle DREs coming from template instantiations
+  * don't call EvaluateAsInt on dependent expressions
+  * Update documentation for latest FreeBSD.
+  * Change logic deciding which clang libs to link with clang_delta
+  * Switch to lib names exported from ClangConfig.cmake
+  * Support multiple passes for --remove-pass option.
+  * Add 2 tests for clang_delta's try-catch pass.
+
+-------------------------------------------------------------------
+Thu Apr 23 15:50:30 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Use more modern macros
+- Use ninja as builder
+
+-------------------------------------------------------------------
+Thu Apr 23 14:48:03 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.0.0+git.20200423.15ffa09:
+  * Skip a failing test-case (csmith-project/creduce#212).
+
+-------------------------------------------------------------------
+Thu Apr 23 10:03:02 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Come up with initial version 1.0.0:
+
+  This is an initial project release as announced here:
+  http://www.flux.utah.edu/listarchives/creduce-dev/msg00475.html
+
+  Features and limitations:
+
+  1) C-Vise is a super-parallel implementation where all passes run their transform and test script
+  phase in parallel; that resolves csmith-project/creduce#160; I've seen significant speed up on a 16-core Zen CPU
+  2) the project contains native BinaryState object which can help with fast traversal of a state space
+  3) Python is hopefully more popular language than Perl
+
+  Minor improvements:
+
+  --log-level option - one can print different level of messages
+  --remove-pass - one can skip a pass in pass manager (csmith-project/creduce#200, csmith-project/creduce#202)
+  --list-passes - listing of existing passes (csmith-project/creduce#150)
+  project contains unit tests for some passes
+  LLVM 9 and 10 support (csmith-project/creduce#193, csmith-project/creduce#204)
+  --clang-delta-std option - workaround for csmith-project/creduce#210
+  unifdef and delta subprojects are removed from the repository
+  --timing-since-start - print timestamps since the start of a reduction
+  Known limitations:
+
+  configure & make build support is dropped
+  FreeBSD and Windows port is not tested
+  dependency on python-Pebble package
+  a small issue observed in Pebble (noxdafox/pebble#58)

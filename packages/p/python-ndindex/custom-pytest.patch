@@ -1,0 +1,24 @@
+Index: ndindex-1.6/conftest.py
+===================================================================
+--- /dev/null
++++ ndindex-1.6/conftest.py
+@@ -0,0 +1,7 @@
++import hypothesis
++
++hypothesis.settings.register_profile(
++     'obs',
++     deadline=5000,
++     suppress_health_check=[hypothesis.HealthCheck.too_slow]
++)
+Index: ndindex-1.6/setup.cfg
+===================================================================
+--- ndindex-1.6.orig/setup.cfg
++++ ndindex-1.6/setup.cfg
+@@ -10,3 +10,7 @@ parentdir_prefix =
+ tag_build = 
+ tag_date = 0
+ 
++[tool:pytest]
++filterwarnings = error
++markers = 
++  no_cover : we don't use coverage but there are some markers for it

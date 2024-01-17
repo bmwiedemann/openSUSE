@@ -1,0 +1,965 @@
+From 8357e4cbfdf74e12426417b65df775760ee4a03b Mon Sep 17 00:00:00 2001
+From: David Benjamin <davidben@chromium.org>
+Date: Thu, 31 Aug 2023 20:20:34 +0000
+Subject: [PATCH] Replace re2::StringPiece with std::string_view
+
+They're the same type nowadays. I've replaced all uses except
+//third_party/maldoca as that seems to be a standalone library.
+
+Bug: 1447090
+Change-Id: Ib6974182145f3538021b868a2f06d80b07d9ed72
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/4826026
+Reviewed-by: Nico Weber <thakis@chromium.org>
+Reviewed-by: Kelvin Jiang <kelvinjiang@chromium.org>
+Owners-Override: Nico Weber <thakis@chromium.org>
+Reviewed-by: Dominic Battre <battre@chromium.org>
+Code-Coverage: findit-for-me@appspot.gserviceaccount.com <findit-for-me@appspot.gserviceaccount.com>
+Commit-Queue: David Benjamin <davidben@chromium.org>
+Cr-Commit-Position: refs/heads/main@{#1190948}
+---
+ .../ash/arc/policy/arc_policy_handler.cc      |  5 +-
+ .../policy/managed_configuration_variables.cc | 14 +--
+ chrome/browser/ash/hats/hats_dialog.cc        |  4 +-
+ .../alternative_browser_driver_posix.cc       |  4 +-
+ .../metrics/perf/perf_events_collector.cc     |  2 +-
+ .../metrics/perf/perf_events_collector.h      |  4 +-
+ .../metrics/perf/process_type_collector.cc    | 14 +--
+ .../metrics/perf/process_type_collector.h     |  6 +-
+ .../ash/network_health_data_collector.cc      | 18 ++--
+ .../ash/ui_hierarchy_data_collector.cc        |  8 +-
+ chrome/updater/test/request_matcher.cc        |  6 +-
+ .../content/renderer/form_autofill_util.cc    |  3 +-
+ .../autofill_structured_address_utils.cc      |  3 +-
+ .../core/local_desk_data_manager.cc           |  3 -
+ .../dom_distiller/core/page_features.cc       |  3 +-
+ .../feedback/redaction_tool/redaction_tool.cc | 89 ++++++++++---------
+ .../core/dependency_graph_unittest.cc         | 12 +--
+ .../omnibox/browser/document_provider.cc      |  5 +-
+ .../regex_rules_matcher.cc                    |  8 +-
+ .../api/web_request/form_data_parser.cc       | 18 ++--
+ gpu/command_buffer/service/program_manager.cc |  3 +-
+ .../viewer/caspian/caspian_web.cc             |  3 +-
+ 22 files changed, 120 insertions(+), 115 deletions(-)
+
+diff --git a/chrome/browser/ash/arc/policy/arc_policy_handler.cc b/chrome/browser/ash/arc/policy/arc_policy_handler.cc
+index d66287f893815a8..db5ac7337b7325c 100644
+--- a/chrome/browser/ash/arc/policy/arc_policy_handler.cc
++++ b/chrome/browser/ash/arc/policy/arc_policy_handler.cc
+@@ -3,7 +3,9 @@
+ // found in the LICENSE file.
+ 
+ #include "chrome/browser/ash/arc/policy/arc_policy_handler.h"
++
+ #include <string>
++#include <string_view>
+ 
+ #include "base/check.h"
+ #include "base/json/json_reader.h"
+@@ -19,7 +21,6 @@
+ #include "components/strings/grit/components_strings.h"
+ #include "third_party/abseil-cpp/absl/types/optional.h"
+ #include "third_party/re2/src/re2/re2.h"
+-#include "third_party/re2/src/re2/stringpiece.h"
+ 
+ namespace arc {
+ 
+@@ -39,7 +40,7 @@ absl::optional<base::StringPiece> FindUnknownVariable(
+   const re2::RE2 regex(unknown_variable_capture);
+   DCHECK(regex.ok()) << "Error compiling regex: " << regex.error();
+ 
+-  re2::StringPiece capture;
++  std::string_view capture;
+   const bool found_unknown_variable =
+       re2::RE2::PartialMatch(input, regex, &capture) &&
+       capture.data() != nullptr;
+diff --git a/chrome/browser/ash/arc/policy/managed_configuration_variables.cc b/chrome/browser/ash/arc/policy/managed_configuration_variables.cc
+index c9b924f1e202798..51496f149028475 100644
+--- a/chrome/browser/ash/arc/policy/managed_configuration_variables.cc
++++ b/chrome/browser/ash/arc/policy/managed_configuration_variables.cc
+@@ -5,6 +5,7 @@
+ #include "chrome/browser/ash/arc/policy/managed_configuration_variables.h"
+ 
+ #include <string>
++#include <string_view>
+ #include <vector>
+ 
+ #include "base/check.h"
+@@ -27,7 +28,6 @@
+ #include "components/signin/public/identity_manager/identity_manager.h"
+ #include "components/user_manager/user.h"
+ #include "third_party/re2/src/re2/re2.h"
+-#include "third_party/re2/src/re2/stringpiece.h"
+ 
+ namespace arc {
+ 
+@@ -172,11 +172,11 @@ std::vector<base::StringPiece> SplitByColon(base::StringPiece input) {
+ // replaced with the output of |replacement_getter.Run(capture)|.
+ std::string SearchAndReplace(
+     const re2::RE2& regex,
+-    base::RepeatingCallback<std::string(const re2::StringPiece&)>
++    base::RepeatingCallback<std::string(const std::string_view&)>
+         replacement_getter,
+-    re2::StringPiece search_input) {
++    std::string_view search_input) {
+   std::vector<std::string> output;
+-  re2::StringPiece capture;
++  std::string_view capture;
+ 
+   // Loop as long as |regex| matches |search_input|.
+   while (re2::RE2::PartialMatch(search_input, regex, &capture)) {
+@@ -192,7 +192,7 @@ std::string SearchAndReplace(
+     DCHECK(search_input.length() >= prefix_size + capture.length());
+     size_t remaining_size =
+         search_input.length() - (prefix_size + capture.length());
+-    search_input = re2::StringPiece(capture.end(), remaining_size);
++    search_input = std::string_view(capture.end(), remaining_size);
+   }
+   // Output the remaining |search_input|.
+   output.emplace_back(search_input);
+@@ -230,10 +230,10 @@ void ReplaceVariables(const VariableResolver& resolver,
+ 
+   // Callback to compute values of variable chains matched with |regex|.
+   auto chain_resolver = base::BindRepeating(
+-      [](const VariableResolver& resolver, const re2::StringPiece& variable) {
++      [](const VariableResolver& resolver, const std::string_view& variable) {
+         // Remove the "${" prefix and the "}" suffix from |variable|.
+         DCHECK(variable.starts_with("${") && variable.ends_with("}"));
+-        const re2::StringPiece chain = variable.substr(2, variable.size() - 3);
++        const std::string_view chain = variable.substr(2, variable.size() - 3);
+         const std::vector<base::StringPiece> variables = SplitByColon(chain);
+ 
+         const std::string chain_value =
+diff --git a/chrome/browser/ash/hats/hats_dialog.cc b/chrome/browser/ash/hats/hats_dialog.cc
+index 6a90316a3061fca..fd941fb6e87b87d 100644
+--- a/chrome/browser/ash/hats/hats_dialog.cc
++++ b/chrome/browser/ash/hats/hats_dialog.cc
+@@ -4,6 +4,8 @@
+ 
+ #include "chrome/browser/ash/hats/hats_dialog.h"
+ 
++#include <string_view>
++
+ #include "ash/constants/ash_features.h"
+ #include "base/containers/flat_map.h"
+ #include "base/functional/bind.h"
+@@ -77,7 +79,7 @@ bool HatsDialog::ParseAnswer(const std::string& input,
+                              int* question,
+                              std::vector<int>* scores) {
+   std::string question_num_string;
+-  re2::StringPiece all_scores_string;
++  std::string_view all_scores_string;
+   if (!RE2::FullMatch(input, kClientQuestionAnsweredRegex, &question_num_string,
+                       &all_scores_string))
+     return false;
+diff --git a/chrome/browser/browser_switcher/alternative_browser_driver_posix.cc b/chrome/browser/browser_switcher/alternative_browser_driver_posix.cc
+index 272b933bab96255..bab699bb794ede5 100644
+--- a/chrome/browser/browser_switcher/alternative_browser_driver_posix.cc
++++ b/chrome/browser/browser_switcher/alternative_browser_driver_posix.cc
+@@ -6,6 +6,8 @@
+ 
+ #include <stdlib.h>
+ 
++#include <string_view>
++
+ #include "base/files/file_path.h"
+ #include "base/logging.h"
+ #include "base/process/launch.h"
+@@ -89,7 +91,7 @@ void ExpandEnvironmentVariables(std::string* arg) {
+   static re2::LazyRE2 re = {
+       "\\$\\{([a-zA-Z_][a-zA-Z_0-9]*)\\}|\\$([a-zA-Z_][a-zA-Z_0-9]*)"};
+   std::string out;
+-  re2::StringPiece submatch[3] = {};
++  std::string_view submatch[3] = {};
+   size_t start = 0;
+   bool matched = false;
+   while (re->Match(*arg, start, arg->size(), re2::RE2::Anchor::UNANCHORED,
+diff --git a/chrome/browser/metrics/perf/perf_events_collector.cc b/chrome/browser/metrics/perf/perf_events_collector.cc
+index 1d87ac4ffec692d..e76a36003e1bc38 100644
+--- a/chrome/browser/metrics/perf/perf_events_collector.cc
++++ b/chrome/browser/metrics/perf/perf_events_collector.cc
+@@ -814,7 +814,7 @@ void PerfCollector::SaveCPUFrequencies(
+ 
+ // static.
+ bool PerfCollector::LacrosChannelAndVersion(
+-    re2::StringPiece lacros_path,
++    std::string_view lacros_path,
+     metrics::SystemProfileProto_Channel& lacros_channel,
+     std::string& lacros_version) {
+   std::string channel;
+diff --git a/chrome/browser/metrics/perf/perf_events_collector.h b/chrome/browser/metrics/perf/perf_events_collector.h
+index 8c2ebf997b8f15d..d9f3ee5b2b9ec48 100644
+--- a/chrome/browser/metrics/perf/perf_events_collector.h
++++ b/chrome/browser/metrics/perf/perf_events_collector.h
+@@ -8,6 +8,7 @@
+ #include <map>
+ #include <memory>
+ #include <string>
++#include <string_view>
+ #include <vector>
+ 
+ #include "base/feature_list.h"
+@@ -17,7 +18,6 @@
+ #include "chrome/browser/metrics/perf/random_selector.h"
+ #include "third_party/metrics_proto/sampled_profile.pb.h"
+ #include "third_party/metrics_proto/system_profile.pb.h"
+-#include "third_party/re2/src/re2/stringpiece.h"
+ 
+ namespace ash {
+ class DebugDaemonClientProvider;
+@@ -114,7 +114,7 @@ class PerfCollector : public internal::MetricCollector {
+ 
+   // Extracts the |lacros_channel| and |lacros_version| from |lacros_path|.
+   static bool LacrosChannelAndVersion(
+-      re2::StringPiece lacros_path,
++      std::string_view lacros_path,
+       metrics::SystemProfileProto_Channel& lacros_channel,
+       std::string& lacros_version);
+ 
+diff --git a/chrome/browser/metrics/perf/process_type_collector.cc b/chrome/browser/metrics/perf/process_type_collector.cc
+index 96fa7ffe6c52568..9765db5fd17493d 100644
+--- a/chrome/browser/metrics/perf/process_type_collector.cc
++++ b/chrome/browser/metrics/perf/process_type_collector.cc
+@@ -19,7 +19,7 @@ namespace {
+ // reporting collection of types.
+ const char kUmaHistogramName[] = "ChromeOS.CWP.CollectProcessTypes";
+ 
+-void SkipLine(re2::StringPiece* contents) {
++void SkipLine(std::string_view* contents) {
+   static const LazyRE2 kSkipLine = {R"(.+\n?)"};
+   RE2::Consume(contents, *kSkipLine);
+ }
+@@ -60,7 +60,7 @@ std::map<uint32_t, Thread> ProcessTypeCollector::ChromeThreadTypes() {
+ }
+ 
+ std::map<uint32_t, Process> ProcessTypeCollector::ParseProcessTypes(
+-    re2::StringPiece contents,
++    std::string_view contents,
+     std::vector<uint32_t>& lacros_pids,
+     std::string& lacros_path) {
+   static const LazyRE2 kLineMatcher = {
+@@ -81,7 +81,7 @@ std::map<uint32_t, Process> ProcessTypeCollector::ParseProcessTypes(
+   bool is_truncated = false;
+   while (!contents.empty()) {
+     uint32_t pid = 0;
+-    re2::StringPiece cmd_line;
++    std::string_view cmd_line;
+     if (!RE2::Consume(&contents, *kLineMatcher, &pid, &cmd_line)) {
+       SkipLine(&contents);
+       is_truncated = true;
+@@ -93,13 +93,13 @@ std::map<uint32_t, Process> ProcessTypeCollector::ParseProcessTypes(
+       continue;
+     }
+ 
+-    re2::StringPiece cmd;
++    std::string_view cmd;
+     if (!RE2::Consume(&cmd_line, *kChromeExePathMatcher, &cmd)) {
+       continue;
+     }
+ 
+     // Use a second match to record any Lacros PID.
+-    re2::StringPiece lacros_cmd;
++    std::string_view lacros_cmd;
+     if (RE2::Consume(&cmd, *kLacrosExePathMatcher, &lacros_cmd)) {
+       lacros_pids.emplace_back(pid);
+       if (lacros_path.empty()) {
+@@ -142,7 +142,7 @@ std::map<uint32_t, Process> ProcessTypeCollector::ParseProcessTypes(
+ }
+ 
+ std::map<uint32_t, Thread> ProcessTypeCollector::ParseThreadTypes(
+-    re2::StringPiece contents) {
++    std::string_view contents) {
+   static const LazyRE2 kLineMatcher = {
+       R"(\s*(\d+))"    // PID
+       R"(\s+(\d+))"    // TID
+@@ -156,7 +156,7 @@ std::map<uint32_t, Thread> ProcessTypeCollector::ParseThreadTypes(
+   bool is_truncated = false;
+   while (!contents.empty()) {
+     uint32_t pid = 0, tid = 0;
+-    re2::StringPiece comm_cmd;
++    std::string_view comm_cmd;
+     if (!RE2::Consume(&contents, *kLineMatcher, &pid, &tid, &comm_cmd)) {
+       SkipLine(&contents);
+       is_truncated = true;
+diff --git a/chrome/browser/metrics/perf/process_type_collector.h b/chrome/browser/metrics/perf/process_type_collector.h
+index 5ee391312cffbcc..ea375826e979acd 100644
+--- a/chrome/browser/metrics/perf/process_type_collector.h
++++ b/chrome/browser/metrics/perf/process_type_collector.h
+@@ -6,10 +6,10 @@
+ #define CHROME_BROWSER_METRICS_PERF_PROCESS_TYPE_COLLECTOR_H_
+ 
+ #include <map>
++#include <string_view>
+ #include <vector>
+ 
+ #include "third_party/metrics_proto/execution_context.pb.h"
+-#include "third_party/re2/src/re2/stringpiece.h"
+ 
+ namespace metrics {
+ // Enables collection of process and thread types for Chrome PIDs and TIDs.
+@@ -37,13 +37,13 @@ class ProcessTypeCollector {
+   // PIDs to their process types. It also populates a list of Lacros PID's and
+   // the Lacros binary path, if any.
+   static std::map<uint32_t, Process> ParseProcessTypes(
+-      re2::StringPiece contents,
++      std::string_view contents,
+       std::vector<uint32_t>& lacros_pids,
+       std::string& lacros_path);
+ 
+   // Parses the output of `ps -ewLo pid,lwp,comm` command and returns a map of
+   // Chrome TIDs to their thread types.
+-  static std::map<uint32_t, Thread> ParseThreadTypes(re2::StringPiece contents);
++  static std::map<uint32_t, Thread> ParseThreadTypes(std::string_view contents);
+ 
+   // Enumeration representing success and various failure modes for collecting
+   // types data. These values are persisted to logs. Entries should not be
+diff --git a/chrome/browser/support_tool/ash/network_health_data_collector.cc b/chrome/browser/support_tool/ash/network_health_data_collector.cc
+index 71593d287a60e18..e9014d55890bc9c 100644
+--- a/chrome/browser/support_tool/ash/network_health_data_collector.cc
++++ b/chrome/browser/support_tool/ash/network_health_data_collector.cc
+@@ -6,6 +6,7 @@
+ 
+ #include <memory>
+ #include <string>
++#include <string_view>
+ 
+ #include "base/containers/contains.h"
+ #include "base/functional/bind.h"
+@@ -19,7 +20,6 @@
+ #include "components/feedback/redaction_tool/pii_types.h"
+ #include "third_party/abseil-cpp/absl/types/optional.h"
+ #include "third_party/re2/src/re2/re2.h"
+-#include "third_party/re2/src/re2/stringpiece.h"
+ 
+ namespace {
+ 
+@@ -37,11 +37,11 @@ void FindNetworkNamesAndAddToPIIMap(const std::string& network_health_data,
+   // are stored in "Name: <name>\n" format in `network_health_data`. The GUID is
+   // put on the line after network name and is in format "GUID: <guid>\n".
+   re2::RE2 regex_pattern(kRegexPattern);
+-  re2::StringPiece input(network_health_data);
++  std::string_view input(network_health_data);
+ 
+-  re2::StringPiece skipped_part;
+-  re2::StringPiece matched_network_name;
+-  re2::StringPiece matched_guid;
++  std::string_view skipped_part;
++  std::string_view matched_network_name;
++  std::string_view matched_guid;
+ 
+   while (re2::RE2::Consume(&input, regex_pattern, &skipped_part,
+                            &matched_network_name, &matched_guid)) {
+@@ -60,11 +60,11 @@ std::string RedactNetworkNames(const std::string& network_health_data) {
+   // are stored in "Name: <name>\n" format in `network_health_data`. The GUID is
+   // put on the line after network name and is in format "GUID: <guid>\n".
+   re2::RE2 regex_pattern(kRegexPattern);
+-  re2::StringPiece input(network_health_data);
++  std::string_view input(network_health_data);
+ 
+-  re2::StringPiece skipped_part;
+-  re2::StringPiece matched_network_name;
+-  re2::StringPiece matched_guid;
++  std::string_view skipped_part;
++  std::string_view matched_network_name;
++  std::string_view matched_guid;
+   std::string redacted;
+ 
+   while (re2::RE2::Consume(&input, regex_pattern, &skipped_part,
+diff --git a/chrome/browser/support_tool/ash/ui_hierarchy_data_collector.cc b/chrome/browser/support_tool/ash/ui_hierarchy_data_collector.cc
+index a4f8d472e6ac7ae..23b0a035e09ced0 100644
+--- a/chrome/browser/support_tool/ash/ui_hierarchy_data_collector.cc
++++ b/chrome/browser/support_tool/ash/ui_hierarchy_data_collector.cc
+@@ -5,6 +5,7 @@
+ #include "chrome/browser/support_tool/ash/ui_hierarchy_data_collector.h"
+ 
+ #include <string>
++#include <string_view>
+ #include <utility>
+ #include <vector>
+ 
+@@ -23,7 +24,6 @@
+ #include "components/feedback/redaction_tool/redaction_tool.h"
+ #include "third_party/abseil-cpp/absl/types/optional.h"
+ #include "third_party/re2/src/re2/re2.h"
+-#include "third_party/re2/src/re2/stringpiece.h"
+ 
+ UiHierarchyDataCollector::UiHierarchyDataCollector() = default;
+ UiHierarchyDataCollector::~UiHierarchyDataCollector() = default;
+@@ -73,13 +73,13 @@ std::string UiHierarchyDataCollector::RemoveWindowTitles(
+   // `ui_hierarchy_data` stores every component in a new line. Window titles are
+   // stored in "title=<window title>\n" format in `ui_hierarchy_data`.
+   re2::RE2 regex_pattern("(?s)(.*?)title=(?-s)(.+)\\n");
+-  re2::StringPiece input(ui_hierarchy_data);
++  std::string_view input(ui_hierarchy_data);
+ 
+   // `regex_pattern` has two matching groups: first one is for the skipped input
+   // that doesn't contain any window titles and second one is for the matched
+   // window title.
+-  re2::StringPiece skipped_part;
+-  re2::StringPiece matched_window_title;
++  std::string_view skipped_part;
++  std::string_view matched_window_title;
+   std::string redacted;
+ 
+   while (re2::RE2::Consume(&input, regex_pattern, &skipped_part,
+diff --git a/chrome/updater/test/request_matcher.cc b/chrome/updater/test/request_matcher.cc
+index aed797bf07acd98..b643af6d1081dad 100644
+--- a/chrome/updater/test/request_matcher.cc
++++ b/chrome/updater/test/request_matcher.cc
+@@ -5,6 +5,7 @@
+ #include "chrome/updater/test/request_matcher.h"
+ 
+ #include <string>
++#include <string_view>
+ #include <utility>
+ #include <vector>
+ 
+@@ -20,7 +21,6 @@
+ #include "testing/gtest/include/gtest/gtest.h"
+ #include "third_party/abseil-cpp/absl/types/optional.h"
+ #include "third_party/re2/src/re2/re2.h"
+-#include "third_party/re2/src/re2/stringpiece.h"
+ 
+ namespace updater::test::request {
+ 
+@@ -74,7 +74,7 @@ Matcher GetContentMatcher(
+     const std::vector<std::string>& expected_content_regex_sequence) {
+   return base::BindLambdaForTesting(
+       [expected_content_regex_sequence](const HttpRequest& request) {
+-        re2::StringPiece input(request.decoded_content);
++        std::string_view input(request.decoded_content);
+         for (const std::string& regex : expected_content_regex_sequence) {
+           re2::RE2::Options opt;
+           opt.set_case_sensitive(false);
+@@ -184,7 +184,7 @@ Matcher GetMultipartContentMatcher(
+ 
+     re2::RE2::Options opt;
+     opt.set_case_sensitive(false);
+-    re2::StringPiece input(request.decoded_content);
++    std::string_view input(request.decoded_content);
+     for (std::vector<FormExpectations>::const_iterator form_expection =
+              form_expections.begin();
+          form_expection < form_expections.end(); ++form_expection) {
+diff --git a/components/autofill/content/renderer/form_autofill_util.cc b/components/autofill/content/renderer/form_autofill_util.cc
+index a33864a6a9ea033..0261807ae892bfd 100644
+--- a/components/autofill/content/renderer/form_autofill_util.cc
++++ b/components/autofill/content/renderer/form_autofill_util.cc
+@@ -9,6 +9,7 @@
+ #include <memory>
+ #include <set>
+ #include <string>
++#include <string_view>
+ #include <utility>
+ #include <vector>
+ 
+@@ -2826,7 +2827,7 @@ void TraverseDomForFourDigitCombinations(
+       return;
+     }
+     std::string node_text = node.NodeValue().Utf8();
+-    re2::StringPiece input(node_text);
++    std::string_view input(node_text);
+     std::string match;
+     while (matches.size() < kMaxFourDigitCombinationMatches &&
+            re2::RE2::FindAndConsume(&input, kFourDigitRegex, &match)) {
+diff --git a/components/autofill/core/browser/data_model/autofill_structured_address_utils.cc b/components/autofill/core/browser/data_model/autofill_structured_address_utils.cc
+index 89057e9a9244889..10b5cc058697eec 100644
+--- a/components/autofill/core/browser/data_model/autofill_structured_address_utils.cc
++++ b/components/autofill/core/browser/data_model/autofill_structured_address_utils.cc
+@@ -7,6 +7,7 @@
+ #include <algorithm>
+ #include <map>
+ #include <string>
++#include <string_view>
+ #include <utility>
+ 
+ #include "base/check.h"
+@@ -199,7 +200,7 @@ std::vector<std::string> GetAllPartialMatches(const std::string& value,
+   const RE2* regex = Re2RegExCache::Instance()->GetRegEx(pattern);
+   if (!regex || !regex->ok())
+     return {};
+-  re2::StringPiece input(value);
++  std::string_view input(value);
+   std::string match;
+   std::vector<std::string> matches;
+   while (re2::RE2::FindAndConsume(&input, *regex, &match)) {
+diff --git a/components/desks_storage/core/local_desk_data_manager.cc b/components/desks_storage/core/local_desk_data_manager.cc
+index 4840fdef017a0d9..0456408cd4b4162 100644
+--- a/components/desks_storage/core/local_desk_data_manager.cc
++++ b/components/desks_storage/core/local_desk_data_manager.cc
+@@ -29,9 +29,6 @@
+ #include "components/services/app_service/public/cpp/app_registry_cache.h"
+ #include "components/services/app_service/public/cpp/app_registry_cache_wrapper.h"
+ #include "components/sync/protocol/workspace_desk_specifics.pb.h"
+-#include "third_party/abseil-cpp/absl/types/optional.h"
+-#include "third_party/re2/src/re2/stringpiece.h"
+-#include "url/gurl.h"
+ 
+ namespace desks_storage {
+ 
+diff --git a/components/dom_distiller/core/page_features.cc b/components/dom_distiller/core/page_features.cc
+index 6f6f21b52dfdf9e..66671bcb1387b48 100644
+--- a/components/dom_distiller/core/page_features.cc
++++ b/components/dom_distiller/core/page_features.cc
+@@ -8,6 +8,7 @@
+ 
+ #include <memory>
+ #include <string>
++#include <string_view>
+ 
+ #include "base/json/json_reader.h"
+ #include "third_party/re2/src/re2/re2.h"
+@@ -35,7 +36,7 @@ std::string GetLastSegment(const std::string& path) {
+ 
+ int CountMatches(const std::string& s, const std::string& p) {
+   // return len(re.findall(p, s))
+-  re2::StringPiece sp(s);
++  std::string_view sp(s);
+   re2::RE2 regexp(p);
+   int count = 0;
+   while (re2::RE2::FindAndConsume(&sp, regexp))
+diff --git a/components/feedback/redaction_tool/redaction_tool.cc b/components/feedback/redaction_tool/redaction_tool.cc
+index 58a90f072b59413..805e477c3be8d15 100644
+--- a/components/feedback/redaction_tool/redaction_tool.cc
++++ b/components/feedback/redaction_tool/redaction_tool.cc
+@@ -6,6 +6,7 @@
+ 
+ #include <algorithm>
+ #include <set>
++#include <string_view>
+ #include <utility>
+ #include <vector>
+ 
+@@ -282,24 +283,24 @@ std::string MaybeScrubIPAddress(const std::string& addr) {
+ // This function can be used to determine if this was the case by evaluating
+ // the skipped piece. It returns true, if the matched address was erroneous
+ // and should be skipped instead.
+-bool ShouldSkipIPAddress(const re2::StringPiece& skipped) {
++bool ShouldSkipIPAddress(std::string_view skipped) {
+   // MomdemManager can dump out firmware revision fields that can also
+   // confuse the IPv4 matcher e.g. "Revision: 81600.0000.00.29.19.16_DO"
+   // so ignore the replacement if the skipped piece looks like
+   // "Revision: .*<ipv4>". Note however that if this field contains
+   // values delimited by multiple spaces, any matches after the first
+   // will lose the context and be redacted.
+-  static const re2::StringPiece rev("Revision: ");
+-  static const re2::StringPiece space(" ");
++  static const std::string_view rev("Revision: ");
++  static const std::string_view space(" ");
+   const auto pos = skipped.rfind(rev);
+-  if (pos != re2::StringPiece::npos &&
+-      skipped.find(space, pos + rev.length()) == re2::StringPiece::npos) {
++  if (pos != std::string_view::npos &&
++      skipped.find(space, pos + rev.length()) == std::string_view::npos) {
+     return true;
+   }
+ 
+   // USB paths can be confused with IPv4 Addresses because they can look
+   // similar: n-n.n.n.n . Ignore replacement if previous char is `-`
+-  static const re2::StringPiece dash("-");
++  static const std::string_view dash("-");
+   return skipped.ends_with(dash);
+ }
+ 
+@@ -488,12 +489,12 @@ CustomPatternWithAlias kCustomPatternsWithoutContext[] = {
+ // only contains "c".
+ // Example: input = "aaabbbc", pattern = "(z+)" leads to input = "aaabbbc",
+ // the args values are not modified and skipped_input is not modified.
+-bool FindAndConsumeAndGetSkippedN(re2::StringPiece* input,
++bool FindAndConsumeAndGetSkippedN(std::string_view* input,
+                                   const re2::RE2& pattern,
+-                                  re2::StringPiece* skipped_input,
+-                                  re2::StringPiece* args[],
++                                  std::string_view* skipped_input,
++                                  std::string_view* args[],
+                                   int argc) {
+-  re2::StringPiece old_input = *input;
++  std::string_view old_input = *input;
+ 
+   CHECK_GE(argc, 1);
+   re2::RE2::Arg a0(argc > 0 ? args[0] : nullptr);
+@@ -512,18 +513,18 @@ bool FindAndConsumeAndGetSkippedN(re2::StringPiece* input,
+   return result;
+ }
+ 
+-// All |match_groups| need to be of type re2::StringPiece*.
++// All |match_groups| need to be of type std::string_view*.
+ template <typename... Arg>
+-bool FindAndConsumeAndGetSkipped(re2::StringPiece* input,
++bool FindAndConsumeAndGetSkipped(std::string_view* input,
+                                  const re2::RE2& pattern,
+-                                 re2::StringPiece* skipped_input,
++                                 std::string_view* skipped_input,
+                                  Arg*... match_groups) {
+-  re2::StringPiece* args[] = {match_groups...};
++  std::string_view* args[] = {match_groups...};
+   return FindAndConsumeAndGetSkippedN(input, pattern, skipped_input, args,
+                                       std::size(args));
+ }
+ 
+-bool HasRepeatedChar(re2::StringPiece text, char c) {
++bool HasRepeatedChar(std::string_view text, char c) {
+   return std::adjacent_find(text.begin(), text.end(), [c](char c1, char c2) {
+            return (c1 == c) && (c2 == c);
+          }) != text.end();
+@@ -682,8 +683,8 @@ std::string RedactionTool::RedactMACAddresses(
+   result.reserve(input.size());
+ 
+   // Keep consuming, building up a result string as we go.
+-  re2::StringPiece text(input);
+-  re2::StringPiece skipped, oui, nic;
++  std::string_view text(input);
++  std::string_view skipped, oui, nic;
+   static const char kMacSeparatorChars[] = "-_";
+   while (FindAndConsumeAndGetSkipped(&text, *mac_re, &skipped, &oui, &nic)) {
+     // Look up the MAC address in the hash. Force the separator to be a colon
+@@ -731,8 +732,8 @@ std::string RedactionTool::RedactHashes(
+   result.reserve(input.size());
+ 
+   // Keep consuming, building up a result string as we go.
+-  re2::StringPiece text(input);
+-  re2::StringPiece skipped, pre_whitespace, hash_prefix, hash_suffix;
++  std::string_view text(input);
++  std::string_view skipped, pre_whitespace, hash_prefix, hash_suffix;
+   while (FindAndConsumeAndGetSkipped(&text, *hash_re, &skipped, &pre_whitespace,
+                                      &hash_prefix, &hash_suffix)) {
+     result.append(skipped);
+@@ -797,12 +798,12 @@ std::string RedactionTool::RedactAndroidAppStoragePaths(
+                 R"(/data/(data|app|user_de/\d+)/[^/\n]+)(/[^\n\s]+))");
+ 
+   // Keep consuming, building up a result string as we go.
+-  re2::StringPiece text(input);
+-  re2::StringPiece skipped;
+-  re2::StringPiece path_prefix;   // path before app_specific;
+-  re2::StringPiece pre_data;      // (path=|exe=|/home/root/<hash>/android-data)
+-  re2::StringPiece post_data;     // (data|app|user_de/\d+)
+-  re2::StringPiece app_specific;  // (/[^\n\s]+)
++  std::string_view text(input);
++  std::string_view skipped;
++  std::string_view path_prefix;   // path before app_specific;
++  std::string_view pre_data;      // (path=|exe=|/home/root/<hash>/android-data)
++  std::string_view post_data;     // (data|app|user_de/\d+)
++  std::string_view app_specific;  // (/[^\n\s]+)
+   while (FindAndConsumeAndGetSkipped(&text, *path_re, &skipped, &path_prefix,
+                                      &pre_data, &post_data, &app_specific)) {
+     // We can record these parts as-is.
+@@ -862,10 +863,10 @@ std::string RedactionTool::RedactCreditCardNumbers(
+                                 // after the potential match should either be a
+                                 // newline or 2-3 non digits.
+ 
+-  re2::StringPiece text(input);
+-  re2::StringPiece skipped;
+-  re2::StringPiece sequence;
+-  re2::StringPiece post_sequence;
++  std::string_view text(input);
++  std::string_view skipped;
++  std::string_view sequence;
++  std::string_view post_sequence;
+ 
+   while (FindAndConsumeAndGetSkipped(&text, *cc_re, &skipped, &sequence,
+                                      &post_sequence)) {
+@@ -876,7 +877,7 @@ std::string RedactionTool::RedactCreditCardNumbers(
+     // Timestamps in ms have a surprisingly high number of false positives.
+     // Also log entries but those usually only match if there are several spaces
+     // tying unrelated numbers together.
+-    if (post_sequence.find("ms") != re2::StringPiece::npos) {
++    if (post_sequence.find("ms") != std::string_view::npos) {
+       metrics_recorder_->RecordCreditCardRedactionHistogram(
+           CreditCardDetection::kTimestamp);
+       result.append(sequence);
+@@ -947,11 +948,11 @@ std::string RedactionTool::RedactIbans(
+       "S[AEIKMN]|T[NR]|UA|VG|XK)(?:\\d{2})[ -]?(?:[ \\-A-Z0-9]){11,30})"
+       "([^a-zA-Z0-9_\\-\\+=/])");
+ 
+-  re2::StringPiece text(input);
+-  re2::StringPiece skipped;
+-  re2::StringPiece pre_separating_char;
+-  re2::StringPiece iban;
+-  re2::StringPiece post_separating_char;
++  std::string_view text(input);
++  std::string_view skipped;
++  std::string_view pre_separating_char;
++  std::string_view iban;
++  std::string_view post_separating_char;
+   while (FindAndConsumeAndGetSkipped(&text, *iban_re, &skipped,
+                                      &pre_separating_char, &iban,
+                                      &post_separating_char)) {
+@@ -1086,9 +1087,9 @@ std::string RedactionTool::RedactCustomPatternWithContext(
+   result.reserve(input.size());
+ 
+   // Keep consuming, building up a result string as we go.
+-  re2::StringPiece text(input);
+-  re2::StringPiece skipped;
+-  re2::StringPiece pre_matched_id, matched_id, post_matched_id;
++  std::string_view text(input);
++  std::string_view skipped;
++  std::string_view pre_matched_id, matched_id, post_matched_id;
+   while (FindAndConsumeAndGetSkipped(&text, *re, &skipped, &pre_matched_id,
+                                      &matched_id, &post_matched_id)) {
+     std::string matched_id_as_string(matched_id);
+@@ -1119,10 +1120,10 @@ std::string RedactionTool::RedactCustomPatternWithContext(
+ 
+ // This takes a |url| argument and returns true if the URL is exempt from
+ // redaction, returns false otherwise.
+-bool IsUrlExempt(re2::StringPiece url,
++bool IsUrlExempt(std::string_view url,
+                  const char* const* first_party_extension_ids) {
+   // We do not exempt anything with a query parameter.
+-  if (url.find("?") != re2::StringPiece::npos) {
++  if (url.find("?") != std::string_view::npos) {
+     return false;
+   }
+ 
+@@ -1163,7 +1164,7 @@ bool IsUrlExempt(re2::StringPiece url,
+ 
+   int i = 0;
+   const char* test_id = first_party_extension_ids[i];
+-  const re2::StringPiece url_sub =
++  const std::string_view url_sub =
+       url.substr(sizeof("chrome-extension://") - 1);
+   while (test_id) {
+     if (url_sub.starts_with(test_id)) {
+@@ -1188,9 +1189,9 @@ std::string RedactionTool::RedactCustomPatternWithoutContext(
+   result.reserve(input.size());
+ 
+   // Keep consuming, building up a result string as we go.
+-  re2::StringPiece text(input);
+-  re2::StringPiece skipped;
+-  re2::StringPiece matched_id;
++  std::string_view text(input);
++  std::string_view skipped;
++  std::string_view matched_id;
+   while (FindAndConsumeAndGetSkipped(&text, *re, &skipped, &matched_id)) {
+     result.append(skipped);
+ 
+diff --git a/components/keyed_service/core/dependency_graph_unittest.cc b/components/keyed_service/core/dependency_graph_unittest.cc
+index 1b1e8ca7b6dbaa3..c97acb6b4c5e9a9 100644
+--- a/components/keyed_service/core/dependency_graph_unittest.cc
++++ b/components/keyed_service/core/dependency_graph_unittest.cc
+@@ -4,10 +4,10 @@
+ 
+ #include "components/keyed_service/core/dependency_graph.h"
+ 
++#include <string_view>
++
+ #include "base/functional/bind.h"
+ #include "base/memory/raw_ptr.h"
+-#include "base/numerics/safe_conversions.h"
+-#include "base/strings/string_piece.h"
+ #include "components/keyed_service/core/dependency_node.h"
+ #include "testing/gtest/include/gtest/gtest.h"
+ #include "third_party/re2/src/re2/re2.h"
+@@ -171,7 +171,7 @@ std::string NodeNameProvider(const std::string& name, DependencyNode* node) {
+ // as valid identifiers, but those are not used in the production code calling
+ // the tested DumpAsGraphviz.
+ // [1] http://www.graphviz.org/content/dot-language
+-bool IsValidDotId(base::StringPiece name) {
++bool IsValidDotId(std::string_view name) {
+   static const char pattern[] =
+       "[a-zA-Z\\200-\\377_][0-9a-zA-Z\\200-\\377_]*"
+       "|-?(?:\\.[0-9]+|[0-9]+(\\.[0-9]*)?)"
+@@ -181,8 +181,8 @@ bool IsValidDotId(base::StringPiece name) {
+ 
+ // Returns the source name of the first edge of the graphstr described in DOT
+ // format in |graphstr|.
+-base::StringPiece LocateNodeNameInGraph(base::StringPiece graphstr) {
+-  re2::StringPiece name;
++std::string_view LocateNodeNameInGraph(std::string_view graphstr) {
++  std::string_view name;
+   EXPECT_TRUE(RE2::FullMatch(
+       graphstr, "(?sm).*^[ \\t]*([^ \\t]*(?:[ \\t]+[^ \\t]+)*)[ \\t]*->.*",
+       &name))
+@@ -208,7 +208,7 @@ TEST_F(DependencyGraphTest, DumpAsGraphviz_Escaping) {
+     SCOPED_TRACE(testing::Message("name=") << name);
+     std::string graph_str = graph.DumpAsGraphviz(
+         "Test", base::BindRepeating(&NodeNameProvider, name));
+-    base::StringPiece dumped_name(LocateNodeNameInGraph(graph_str));
++    std::string_view dumped_name(LocateNodeNameInGraph(graph_str));
+     EXPECT_TRUE(IsValidDotId(dumped_name)) << "dumped_name=" << dumped_name;
+   }
+ }
+diff --git a/components/omnibox/browser/document_provider.cc b/components/omnibox/browser/document_provider.cc
+index 26ab7b12aaa5231..afa46514faf7b48 100644
+--- a/components/omnibox/browser/document_provider.cc
++++ b/components/omnibox/browser/document_provider.cc
+@@ -8,6 +8,7 @@
+ 
+ #include <map>
+ #include <numeric>
++#include <string_view>
+ #include <tuple>
+ #include <utility>
+ #include <vector>
+@@ -381,7 +382,7 @@ std::string ExtractDocIdFromUrl(const std::string& url) {
+       "(?:(#[0-9a-zA-Z$\\-\\_\\.\\+\\!\\*\'\\,;:@&=/\\?]+)?)"  // Fragment
+       ")");
+ 
+-  std::vector<re2::StringPiece> matched_doc_ids(
++  std::vector<std::string_view> matched_doc_ids(
+       docs_url_pattern_.NumberOfCapturingGroups() + 1);
+   // ANCHOR_START deviates from google3 which uses UNANCHORED. Using
+   // ANCHOR_START prevents incorrectly matching with non-drive URLs but which
+@@ -393,7 +394,7 @@ std::string ExtractDocIdFromUrl(const std::string& url) {
+     return std::string();
+   }
+   for (const auto& doc_id_group : docs_url_pattern_.NamedCapturingGroups()) {
+-    re2::StringPiece identified_doc_id = matched_doc_ids[doc_id_group.second];
++    std::string_view identified_doc_id = matched_doc_ids[doc_id_group.second];
+     if (!identified_doc_id.empty()) {
+       return std::string(identified_doc_id);
+     }
+diff --git a/extensions/browser/api/declarative_net_request/regex_rules_matcher.cc b/extensions/browser/api/declarative_net_request/regex_rules_matcher.cc
+index d2f849f6647eb2b..379b7be9fcd36a5 100644
+--- a/extensions/browser/api/declarative_net_request/regex_rules_matcher.cc
++++ b/extensions/browser/api/declarative_net_request/regex_rules_matcher.cc
+@@ -34,10 +34,6 @@ bool IsExtraHeadersMatcherInternal(
+                         &flat::RegexRule::action_type);
+ }
+ 
+-re2::StringPiece ToRE2StringPiece(const ::flatbuffers::String& str) {
+-  return re2::StringPiece(str.c_str(), str.size());
+-}
+-
+ // Helper to check if the |rule| metadata matches the given request |params|.
+ bool DoesRuleMetadataMatchRequest(const flat_rule::UrlRule& rule,
+                                   const RequestParams& params) {
+@@ -204,7 +200,7 @@ void RegexRulesMatcher::InitializeMatcher() {
+     // regexes and modify FilteredRE2 to take a regex object directly.
+     int re2_id;
+     re2::RE2::ErrorCode error_code = filtered_re2_.Add(
+-        ToRE2StringPiece(*rule->url_pattern()),
++        rule->url_pattern()->string_view(),
+         CreateRE2Options(is_case_sensitive, require_capturing), &re2_id);
+ 
+     // Ideally there shouldn't be any error, since we had already validated the
+@@ -323,7 +319,7 @@ RegexRulesMatcher::CreateRegexSubstitutionRedirectAction(
+   std::string redirect_str = params.url->spec();
+   bool success =
+       RE2::Replace(&redirect_str, *info.regex,
+-                   ToRE2StringPiece(*info.regex_rule->regex_substitution()));
++                   info.regex_rule->regex_substitution()->string_view());
+   if (!success) {
+     // This should generally not happen since we had already checked for a
+     // match and during indexing, had verified that the substitution pattern
+diff --git a/extensions/browser/api/web_request/form_data_parser.cc b/extensions/browser/api/web_request/form_data_parser.cc
+index 8f89cde081d5cb3..a835390855006d0 100644
+--- a/extensions/browser/api/web_request/form_data_parser.cc
++++ b/extensions/browser/api/web_request/form_data_parser.cc
+@@ -6,6 +6,7 @@
+ 
+ #include <stddef.h>
+ 
++#include <string_view>
+ #include <vector>
+ 
+ #include "base/check.h"
+@@ -69,7 +70,7 @@ Patterns::Patterns()
+ 
+ base::LazyInstance<Patterns>::Leaky g_patterns = LAZY_INSTANCE_INITIALIZER;
+ 
+-bool ConsumePrefix(re2::StringPiece* str, re2::StringPiece prefix) {
++bool ConsumePrefix(std::string_view* str, std::string_view prefix) {
+   if (!str->starts_with(prefix)) {
+     return false;
+   }
+@@ -107,7 +108,7 @@ class FormDataParserUrlEncoded : public FormDataParser {
+   // name-value pairs (one for name, one for value).
+   static const size_t args_size_ = 2u;
+ 
+-  re2::StringPiece source_;
++  std::string_view source_;
+   bool source_set_;
+   bool source_malformed_;
+ 
+@@ -217,8 +218,7 @@ class FormDataParserMultipart : public FormDataParser {
+   };
+ 
+   // Tests whether |input| has a prefix matching |pattern|.
+-  static bool StartsWithPattern(const re2::StringPiece& input,
+-                                const RE2& pattern);
++  static bool StartsWithPattern(std::string_view input, const RE2& pattern);
+ 
+   // If |source_| starts with a header, seeks |source_| beyond the header. If
+   // the header is Content-Disposition, extracts |name| from "name=" and
+@@ -276,7 +276,7 @@ class FormDataParserMultipart : public FormDataParser {
+ 
+   // The parsed message can be split into multiple sources which we read
+   // sequentially.
+-  re2::StringPiece source_;
++  std::string_view source_;
+ 
+   // Caching the pointer to g_patterns.Get().
+   raw_ptr<const Patterns> patterns_;
+@@ -409,7 +409,7 @@ bool FormDataParserUrlEncoded::SetSource(base::StringPiece source) {
+ }
+ 
+ // static
+-bool FormDataParserMultipart::StartsWithPattern(const re2::StringPiece& input,
++bool FormDataParserMultipart::StartsWithPattern(std::string_view input,
+                                                 const RE2& pattern) {
+   return pattern.Match(input, 0, input.size(), RE2::ANCHOR_START, nullptr, 0);
+ }
+@@ -427,7 +427,7 @@ bool FormDataParserMultipart::AllDataReadOK() {
+ }
+ 
+ bool FormDataParserMultipart::FinishReadingPart(base::StringPiece* data) {
+-  re2::StringPiece orig = source_;
++  std::string_view orig = source_;
+   while (!source_.starts_with(dash_boundary_separator_)) {
+     if (!RE2::Consume(&source_, crlf_free_pattern()) ||
+         !ConsumePrefix(&source_, kCRLF)) {
+@@ -567,12 +567,12 @@ bool FormDataParserMultipart::TryReadHeader(base::StringPiece* name,
+   // (*) After this point we must return true, because we consumed one header.
+ 
+   // Subtract 2 for the trailing "\r\n".
+-  re2::StringPiece header(header_start, source_.data() - header_start - 2);
++  std::string_view header(header_start, source_.data() - header_start - 2);
+ 
+   if (!StartsWithPattern(header, content_disposition_pattern()))
+     return true;  // Skip headers that don't describe the content-disposition.
+ 
+-  re2::StringPiece groups[2];
++  std::string_view groups[2];
+ 
+   if (!name_pattern().Match(header,
+                             kContentDispositionLength, header.size(),
+diff --git a/gpu/command_buffer/service/program_manager.cc b/gpu/command_buffer/service/program_manager.cc
+index 7767c8a5e7ec50b..4fac69fde80476a 100644
+--- a/gpu/command_buffer/service/program_manager.cc
++++ b/gpu/command_buffer/service/program_manager.cc
+@@ -11,6 +11,7 @@
+ #include <limits>
+ #include <memory>
+ #include <set>
++#include <string_view>
+ #include <utility>
+ #include <vector>
+ 
+@@ -597,7 +598,7 @@ void Program::UpdateBaseInstanceUniformLocation() {
+ 
+ std::string Program::ProcessLogInfo(const std::string& log) {
+   std::string output;
+-  re2::StringPiece input(log);
++  std::string_view input(log);
+   std::string prior_log;
+   std::string hashed_name;
+   while (RE2::Consume(&input,
+diff --git a/tools/binary_size/libsupersize/viewer/caspian/caspian_web.cc b/tools/binary_size/libsupersize/viewer/caspian/caspian_web.cc
+index aa1b867730a5143..dc6b833d471ce88 100644
+--- a/tools/binary_size/libsupersize/viewer/caspian/caspian_web.cc
++++ b/tools/binary_size/libsupersize/viewer/caspian/caspian_web.cc
+@@ -12,6 +12,7 @@
+ #include <memory>
+ #include <sstream>
+ #include <string>
++#include <string_view>
+ 
+ #include "third_party/jsoncpp/source/include/json/json.h"
+ #include "third_party/re2/src/re2/re2.h"
+@@ -32,7 +33,7 @@ class FilterBuffer {
+ 
+   size_t remaining() { return kFilterBufferSize - (cursor_ - data_); }
+   void Reset() { cursor_ = data_; }
+-  re2::StringPiece Get() { return re2::StringPiece(data_, cursor_ - data_); }
++  std::string_view Get() { return std::string_view(data_, cursor_ - data_); }
+ 
+   void Append(char c) {
+     if (remaining() > 0) {

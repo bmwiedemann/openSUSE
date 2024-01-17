@@ -1,0 +1,676 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4be8b6dc2359f87539d46b2f16e168e6</srcmd5>
+    <version>0.17.4</version>
+    <time>1554384134</time>
+    <user>dimstar_suse</user>
+    <comment>- Add subpackage vim-fzf with the original vim plugin for fzf (there
+  is also more extensive third party plugin on
+  https://github.com/junegunn/fzf.vim)
+- update to 0.17.4
+  * Added --layout option with a new layout called reverse-list.
+    --layout=reverse is a synonym for --reverse
+    --layout=default is a synonym for --no-reverse
+  * Preview window will be updated even when there is no match for
+    the query if any of the placeholder expressions (e.g. {q}, {+})
+    evaluates to a non-empty string.
+  * More keys for binding: shift-{up,down}, alt-{up,down,left,
+    right}
+  * fzf can now start when /dev/tty is not available by making
+    an educated guess.
+  * bash/zsh completion improvements
+  * install and uninstall scripts support generating files under
+    XDG_CONFIG_HOME on --xdg flag.
+- remove sed patch for non-excecutable fix (merged upstream)
+- initial package
+</comment>
+    <requestid>689314</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>fbf61f04e3a4fd785c151731ceb97b2e</srcmd5>
+    <version>0.18.0</version>
+    <time>1555691978</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.18.0:
+  - 0.18.0
+    - Added placeholder expression for zero-based item index: {n}
+      and {+n} fzf --preview 'echo {n}: {}'
+    - Added color option for the gutter: --color gutter:-1
+    - Added --no-unicode option for drawing borders in
+      non-Unicode, ASCII characters
+    - FZF_PREVIEW_LINES and FZF_PREVIEW_COLUMNS are exported to
+      preview process fzf still overrides LINES and COLUMNS as
+      before, but they may be reset by the default shell.
+    - Bug fixes and improvements See
+      https://github.com/junegunn/fzf/milestone/14?closed=1
+  - Update to 0.17.5:
+    - Bug fixes and improvements See
+      https://github.com/junegunn/fzf/milestone/13?closed=1
+    - Search query longer than the screen width is allowed (up to
+      300 chars)
+- Patch build-mode-pie.patch removed as it is unneeded
+  (we don't use Makefile anymore).
+</comment>
+    <requestid>695858</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>512804a27f6d2be892004e2244b346f3</srcmd5>
+    <version>0.18.0</version>
+    <time>1556022941</time>
+    <user>maxlin_factory</user>
+    <comment>- Remove pointless double extraction of tarball again.</comment>
+    <requestid>696454</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>11f64012bb58c0836a7135804a2c0545</srcmd5>
+    <version>0.19.0</version>
+    <time>1574242074</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>749703</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f9fef6bf820d59a124aa6ac8b135d998</srcmd5>
+    <version>0.20.0</version>
+    <time>1578320552</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>761021</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2026fcf3c62ed89df0d5b31d37934280</srcmd5>
+    <version>0.21.0</version>
+    <time>1584176206</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>784736</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ed909dbbb291327d7bccf17d880ca860</srcmd5>
+    <version>0.21.1</version>
+    <time>1586248290</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>791822</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>6e86e8b7a1eaf6dd5f4638a66f5946ee</srcmd5>
+    <version>0.21.1</version>
+    <time>1596457145</time>
+    <user>dimstar_suse</user>
+    <comment>- Add subpackage for fish completion. (forwarded request 824075 from fcrozat)</comment>
+    <requestid>824080</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ca9e975da6401e8909303e03a49a9335</srcmd5>
+    <version>0.22.0</version>
+    <time>1596565361</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>824174</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6663bbd93c199b7ce24b5726bac00677</srcmd5>
+    <version>0.23.1</version>
+    <time>1603725645</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.24.1:
+  - Real-time rendering of preview window
+    # fzf can render preview window before the command completes
+    fzf --preview 'sleep 1; for i in $(seq 100); do echo $i; sleep 0.01; done'
+    # Preview window can process ANSI escape sequence (CSI 2 J) for clearing the display
+    fzf --preview 'for i in $(seq 100000); do
+      (( i % 200 == 0 )) &amp;&amp; printf &quot;\033[2J&quot;
+      echo &quot;$i&quot;
+      sleep 0.01
+    done'
+  - To indicate if --multi mode is enabled, fzf will print the number of
+    selected items even when no item is selected
+    seq 100 | fzf
+      # 100/100
+    seq 100 | fzf --multi
+      # 100/100 (0)
+    seq 100 | fzf --multi 5
+      # 100/100 (0/5)
+  - Added --preview-window options for disabling flags
+        nocycle
+        nohidden
+        nowrap
+        default
+  - Support preview scroll offset relative to window height
+    git grep --line-number '' |
+      fzf --delimiter : \
+          --preview 'bat --style=numbers --color=always --highlight-line {2} {1}' \
+          --preview-window +{2}-/2
+  - Added --preview-window option for sharp edges (--preview-window
+    sharp)</comment>
+    <requestid>843822</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>87880461737a60aa902734d1bbabb55e</srcmd5>
+    <version>0.24.3</version>
+    <time>1607113771</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.24.3:
+  - Added --padding option:
+    fzf --margin 5% --padding 5% --border --preview 'cat {}' \
+    --color bg:#222222,preview-bg:#333333
+  - Bug fixes and improvements
+</comment>
+    <requestid>853095</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>464217dfb163ecffc0f4b0b7526050e0</srcmd5>
+    <version>0.24.4</version>
+    <time>1607965778</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 24.4.4:
+  - Added --preview-window option follow
+    # Preview window will automatically scroll to the bottom
+    fzf --preview-window follow --preview 'for i in $(seq 100000); do
+      echo &quot;$i&quot;
+      sleep 0.01
+      (( i % 300 == 0 )) &amp;&amp; printf &quot;\033[2J&quot;
+    done'
+  - Added change-prompt action
+    fzf --prompt 'foo&gt; ' --bind $'a:change-prompt:\x1b[31mbar&gt; '
+  - Bug fixes and improvements
+- Enable tests
+</comment>
+    <requestid>855603</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>58aee58b402a1a56ea6098235d5e7f67</srcmd5>
+    <version>0.25.0</version>
+    <time>1609705603</time>
+    <user>dimstar_suse</user>
+    <comment>- Text attributes set in --color are not reset when fzf sees another
+  --color option for the same element. This allows you to put custom
+  text attributes in your $FZF_DEFAULT_OPTS and still have those
+  attributes even when you override the colors.
+  # Default colors and attributes
+  fzf
+  # Apply custom text attributes
+  export FZF_DEFAULT_OPTS='--color fg+:italic,hl:-1:underline,hl+:-1:reverse:underline'
+  fzf
+  # Different colors but you still have the attributes
+  fzf --color hl:176,hl+:177
+  # Write &quot;regular&quot; if you want to clear the attributes
+  fzf --color hl:176:regular,hl+:177:regular
+- Renamed --phony to --disabled
+- You can dynamically enable and disable the search functionality using
+  the new enable-search, disable-search, and toggle-search actions
+- You can assign a different color to the query string for when search
+  is disabled
+  fzf --color query:#ffffff,disabled:#999999 --bind space:toggle-search
+- Added last action to move the cursor to the last match
+      The opposite action top is renamed to first, but top is still
+      recognized as a synonym for backward compatibility
+- Added preview-top and preview-bottom actions
+- Extended support for alt key chords: alt with any case-sensitive
+  single character
+  fzf --bind alt-,:first,alt-.:last
+- Generate tags for vim documentation
+</comment>
+    <requestid>859924</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>46d0396cba5ca8030814a8b56815f96a</srcmd5>
+    <version>0.25.1</version>
+    <time>1612378605</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.25.1:
+  - Added `close` action
+    - Close preview window if open, abort fzf otherwise
+  - Bug fixes and improvements
+</comment>
+    <requestid>868989</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>4ec6d2840466861b3ab7ddff9748e82f</srcmd5>
+    <version>0.26.0</version>
+    <time>1615802108</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.26.0:
+  - Added support for fixed header in preview window
+    # Display top 3 lines as the fixed header
+    fzf --preview 'bat --style=header,grid --color=always {}' --preview-window '~3'
+    More advanced preview offset expression to better support the fixed header
+    # Preview with bat, matching line in the middle of the window below
+    # the fixed header of the top 3 lines
+    #
+    #   ~3    Top 3 lines as the fixed header
+    #   +{2}  Base scroll offset extracted from the second field
+    #   +3    Extra offset to compensate for the 3-line header
+    #   /2    Put in the middle of the preview area
+    #
+    git grep --line-number '' |
+      fzf --delimiter : \
+          --preview 'bat --style=full --color=always --highlight-line {2} {1}' \
+          --preview-window '~3:+{2}+3/2'
+  - Added select and deselect action for unconditionally selecting or
+    deselecting a single item in --multi mode. Complements toggle action.
+  - Sigificant performance improvement in ANSI code processing
+  - Bug fixes and improvements
+</comment>
+    <requestid>878879</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f37cb033c63c19b460dd81264d28e8c3</srcmd5>
+    <version>0.27.0</version>
+    <time>1618061252</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>883885</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>6533dcbffd0c0bf5977f97c23b87e1d8</srcmd5>
+    <version>0.27.1</version>
+    <time>1621721165</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.27.1:
+  - Added unbind action. In the following Ripgrep launcher
+    example, you can use unbind(reload) to switch to fzf-only
+    filtering mode.
+    See https://github.com/junegunn/fzf/blob/master/ADVANCED.md#switching-to-fzf-only-search-mode
+  - Vim plugin will stop immediately even when the source command hasn't finished
+    &quot; fzf will read the stream file while allowing other processes to append to it
+    call fzf#run(fzf#wrap({'source': 'cat /dev/null &gt; /tmp/stream; tail -f /tmp/stream'}))
+  - It is now possible to open popup window relative to the currrent window
+    let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'relative': v:true, 'yoffset': 1.0 } }
+</comment>
+    <requestid>894915</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>cc192fd3ca1483fa088e494f6fa215ed</srcmd5>
+    <version>0.27.2</version>
+    <time>1622664687</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.27.2:
+  - 16 base ANSI colors can be specified by their names
+    fzf --color fg:3,fg+:11
+    fzf --color fg:yellow,fg+:bright-yellow
+  - Fix bug where --read0 not properly displaying long lines
+</comment>
+    <requestid>896611</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>cdda5b80ded8a6677404a1c47c560b13</srcmd5>
+    <version>0.27.3</version>
+    <time>1634331876</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.27.3:
+  - Preview window is `hidden` by default when there are `preview` bindings but
+    `--preview` command is not given
+  - Fixed bug where `{n}` is not properly reset on `reload`
+  - Fixed bug where spinner is not displayed on `reload`
+  - Enhancements in tcell renderer for Windows (#2616)
+  - Vim plugin
+      - `sinklist` is added as a synonym to `sink*` so that it's
+        easier to add a function to a spec dictionary
+        ```vim
+        let spec = { 'source': 'ls', 'options': ['--multi', '--preview', 'cat {}'] }
+        function spec.sinklist(matches)
+          echom string(a:matches)
+        endfunction
+  
+        call fzf#run(fzf#wrap(spec))
+        ```
+  - Vim 7 compatibility
+- Set FZF_VERSION and FZF_REVISION environment variables as well.
+</comment>
+    <requestid>925521</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>dd2bf1f311bf20c1aac5cdef8dde269a</srcmd5>
+    <version>0.28.0</version>
+    <time>1637108052</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>931747</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>f3a37664ecf644f114fffd651c63ed61</srcmd5>
+    <version>0.29.0</version>
+    <time>1640459801</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>942381</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>2d25354f01e1b4672cee1fe2305366dd</srcmd5>
+    <version>0.30.0</version>
+    <time>1655972617</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>984480</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>865313803194bd37884919dc9069a89d</srcmd5>
+    <version>0.31.0</version>
+    <time>1658510495</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>990676</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>b6d179aeb67301c06ace65f84559b6d7</srcmd5>
+    <version>0.32.0</version>
+    <time>1659816513</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>993542</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>c8379ca513fd34cd58828fb2498ae7c0</srcmd5>
+    <version>0.33.0</version>
+    <time>1662926255</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1002506</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>01a5ba556c10c377eb934f872da2547a</srcmd5>
+    <version>0.34.0</version>
+    <time>1664468014</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 0.34.0:
+  - Added support for adaptive --height. If the --height value is prefixed
+    with ~, fzf will automatically determine the height in the range according
+    to the input size.
+    seq 1 | fzf --height ~70% --border --padding 1 --margin 1
+    seq 10 | fzf --height ~70% --border --padding 1 --margin 1
+    seq 100 | fzf --height ~70% --border --padding 1 --margin 1
+      - There are a few limitations
+        - Not compatible with percent top/bottom margin/padding
+            # This is not allowed (top/bottom margin in percent value)
+            fzf --height ~50% --border --margin 5%,10%
+            # This is allowed (top/bottom margin in fixed value)
+            fzf --height ~50% --border --margin 2,10%
+         - fzf will not start until it can determine the right height for the input
+            # fzf will open immediately
+            (sleep 2; seq 10) | fzf --height 50%
+            # fzf will open after 2 seconds
+            (sleep 2; seq 10) | fzf --height ~50%
+            (sleep 2; seq 1000) | fzf --height ~50%
+  - Fixed tcell renderer used to render full-screen fzf on Windows
+    --no-clear is deprecated. Use reload action instead.
+</comment>
+    <requestid>1006792</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>b85723b4e67a53262bba7e1eab317678</srcmd5>
+    <version>0.35.0</version>
+    <time>1668359345</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1035454</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>19b844fd9b2b0a183f8faf1c9b446302</srcmd5>
+    <version>0.35.1</version>
+    <time>1671455283</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1043663</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>0cb79c17e7e3da12d8b8afdf57554c01</srcmd5>
+    <version>0.37.0</version>
+    <time>1675792151</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.37.0:
+  - Added a way to customize the separator of inline info
+    fzf --info 'inline: ╱ ' --prompt '╱ ' --color prompt:bright-yellow
+  - New event
+        focus - Triggered when the focus changes due to a vertical cursor
+        movement or a search result update
+        fzf --bind 'focus:transform-preview-label:echo [ {} ]' --preview 'cat {}'
+        # Any action bound to the event runs synchronously and thus can make the interface sluggish
+        # e.g. lolcat isn't one of the fastest programs, and every cursor movement in
+        #      fzf will be noticeably affected by its execution time
+        fzf --bind 'focus:transform-preview-label:echo [ {} ] | lolcat -f' --preview 'cat {}'
+        # Beware not to introduce an infinite loop
+        seq 10 | fzf --bind 'focus:up' --cycle
+    - New actions
+        change-border-label
+        change-preview-label
+        transform-border-label
+        transform-preview-label
+    - Bug fixes and improvements
+- Update to 0.36.0:
+  - Added --listen=HTTP_PORT option to start HTTP server. It allows external
+    processes to send actions to perform via POST method.
+    # Start HTTP server on port 6266
+    fzf --listen 6266
+    # Send actions to the server
+    curl localhost:6266 -d 'reload(seq 100)+change-prompt(hundred&gt; )'
+  - Added draggable scrollbar to the main search window and the preview window
+    # Hide scrollbar
+    fzf --no-scrollbar
+    # Customize scrollbar
+    fzf --scrollbar ┆ --color scrollbar:blue
+  - New event
+        Added load event that is triggered when the input stream is complete
+        and the initial processing of the list is complete.
+        # Change the prompt to &quot;loaded&quot; when the input stream is complete
+        (seq 10; sleep 1; seq 11 20) | fzf --prompt 'Loading&gt; ' --bind 'load:change-prompt:Loaded&gt; '
+        # You can use it instead of 'start' event without `--sync` if asynchronous
+        # trigger is not an issue.
+        (seq 10; sleep 1; seq 11 20) | fzf --bind 'load:last'
+  - New actions
+        Added pos(...) action to move the cursor to the numeric position
+            first and last are equivalent to pos(1) and pos(-1) respectively
+        # Put the cursor on the 10th item
+        seq 100 | fzf --sync --bind 'start:pos(10)'
+        # Put the cursor on the 10th to last item
+        seq 100 | fzf --sync --bind 'start:pos(-10)'
+        Added reload-sync(...) action which replaces the current list only after
+        the reload process is complete. This is useful when the command takes
+        a while to produce the initial output and you don't want fzf to run against
+        an empty list while the command is running.
+        # You can still filter and select entries from the initial list for 3 seconds
+        seq 100 | fzf --bind 'load:reload-sync(sleep 3; seq 1000)+unbind(load)'
+        Added next-selected and prev-selected actions to move between selected
+        items
+        # `next-selected` will move the pointer to the next selected item below the current line
+        # `prev-selected` will move the pointer to the previous selected item above the current line
+        seq 10 | fzf --multi --bind ctrl-n:next-selected,ctrl-p:prev-selected
+        # Both actions respect --layout option
+        seq 10 | fzf --multi --bind ctrl-n:next-selected,ctrl-p:prev-selected --layout reverse
+        Added change-query(...) action that simply changes the query string to the
+        given static string. This can be useful when used with --listen.
+        curl localhost:6266 -d &quot;change-query:$(date)&quot;
+        Added transform-prompt(...) action for transforming the prompt string
+        using an external command
+        # Press space to change the prompt string using an external command
+        # (only the first line of the output is taken)
+        fzf --bind 'space:reload(ls),load:transform-prompt(printf &quot;%s&gt; &quot; &quot;$(date)&quot;)'
+        Added transform-query(...) action for transforming the query string using
+        an external command
+        # Press space to convert the query to uppercase letters
+        fzf --bind 'space:transform-query(tr &quot;[:lower:]&quot; &quot;[:upper:]&quot; &lt;&lt;&lt; {q})'
+        # Bind it to 'change' event for automatic conversion
+        fzf --bind 'change:transform-query(tr &quot;[:lower:]&quot; &quot;[:upper:]&quot; &lt;&lt;&lt; {q})'
+        # Can only type numbers
+        fzf --bind 'change:transform-query(sed &quot;s/[^0-9]//g&quot; &lt;&lt;&lt; {q})'
+        put action can optionally take an argument string
+        # a will put 'alpha' on the prompt, ctrl-b will put 'bravo'
+        fzf --bind 'a:put+put(lpha),ctrl-b:put(bravo)'
+    - Added color name preview-label for --preview-label
+      (defaults to label for --border-label)
+    - Better support for (Windows) terminals where
+      each box-drawing character takes 2 columns. Set
+      RUNEWIDTH_EASTASIAN environment variable to 1.
+        On Vim, the variable will be automatically set if &amp;ambiwidth is double
+    - Behavior changes
+        fzf will always execute the preview command if the command template
+        contains {q} even when it's empty. If you prefer the old behavior,
+        you'll have to check if {q} is empty in your command.
+        # This will show // even when the query is empty
+        : | fzf --preview 'echo /{q}/'
+        # But if you don't want it,
+        : | fzf --preview '[ -n {q} ] || exit; echo /{q}/'
+        double-click will behave the same as enter unless otherwise specified,
+        so you don't have to repeat the same action twice in --bind in most cases.
+        # No need to bind 'double-click' to the same action
+        fzf --bind 'enter:execute:less {}' # --bind 'double-click:execute:less {}'
+        If the color for separator is not specified, it will default to the
+        color for border. Same holds true for scrollbar. This is to reduce
+        the number of configuration items required to achieve a consistent color
+        scheme.
+        If follow flag is specified in --preview-window option, fzf will
+        automatically scroll to the bottom of the streaming preview output. But
+        when the user manually scrolls the window, the following stops. With
+        this version, fzf will resume following if the user scrolls the window
+        to the bottom.
+        Default border style on Windows is changed to sharp because some
+        Windows terminals are not capable of displaying rounded border
+        characters correctly.
+    - Minor bug fixes and improvements
+</comment>
+    <requestid>1063495</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>c32d64d449970b90f9f0f76900fa6086</srcmd5>
+    <version>0.38.0</version>
+    <time>1676736621</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1066417</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>064285389378640a349bff7a42048960</srcmd5>
+    <version>0.38.0</version>
+    <time>1681387856</time>
+    <user>dimstar_suse</user>
+    <comment>- All those completion scripts not requiring their respective
+  shells is a bit ridiculous.
+</comment>
+    <requestid>1078867</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>d6486d3732bbb597793f93753bf0f071</srcmd5>
+    <version>0.39.0</version>
+    <time>1681919067</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 0.39.0 major upstream release. (forwarded request 1080214 from luc14n0)</comment>
+    <requestid>1080294</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>dc5ab2f2c01f679b22deef265d4897d9</srcmd5>
+    <version>0.40.0</version>
+    <time>1682959878</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.40.0:
+  - Added `zero` event that is triggered when there's no match
+    ```sh
+    # Reload the candidate list when there's no match
+    echo $RANDOM | fzf --bind 'zero:reload(echo $RANDOM)+clear-query' --height 3
+    ```
+  - New actions
+      - Added `track` action which makes fzf track the current item when the
+        search result is updated. If the user manually moves the cursor, or the
+        item is not in the updated search result, tracking is automatically
+        disabled. Tracking is useful when you want to see the surrounding items
+        by deleting the query string.
+        ```sh
+        # Narrow down the list with a query, point to a command,
+        # and hit CTRL-T to see its surrounding commands.
+        export FZF_CTRL_R_OPTS=&quot;
+          --preview 'echo {}' --preview-window up:3:hidden:wrap
+          --bind 'ctrl-/:toggle-preview'
+          --bind 'ctrl-t:track+clear-query'
+          --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'
+          --color header:italic
+          --header 'Press CTRL-Y to copy command into clipboard'&quot;
+        ```
+      - Added `change-header(...)`
+      - Added `transform-header(...)`
+      - Added `toggle-track` action
+  - Fixed `--track` behavior when used with `--tac`
+      - However, using `--track` with `--tac` is not recommended. The resulting
+        behavior can be very confusing.
+  - Bug fixes and improvements</comment>
+    <requestid>1083792</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>24559ca3ebbcf8fb1cadcf4ab10fdb4c</srcmd5>
+    <version>0.41.0</version>
+    <time>1685141470</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.41.0:
+  * Added color name preview-border and preview-scrollbar
+  * Added new border style block which uses block elements
+  * --scrollbar can take two characters, one for the main window,
+   the other for the preview window
+  * Bug fixes and improvements
+- require golang &gt;= 1.19 instead of &quot;=&quot;
+</comment>
+    <requestid>1089242</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>66bfce3c5637cca7164e3e548e322f81</srcmd5>
+    <version>0.41.1</version>
+    <time>1686506076</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.41.1:
+  * Fixed a bug where preview window is not updated when
+    --disabled is set and a reload is triggered by change:reload
+    binding
+  * Added fix-go-test.patch to make test cases work on 0.41.1
+</comment>
+    <requestid>1091832</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>4fde2680104d36eec7d72b03a0900217</srcmd5>
+    <version>0.42.0</version>
+    <time>1686927196</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093151</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>f54f54c9cb62f543bd341bd37df8d6bf</srcmd5>
+    <version>0.43.0</version>
+    <time>1697488393</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.43.0 (examples are in full release notes on
+  https://github.com/junegunn/fzf/releases/tag/0.43.0):
+  - (Experimental) Added support for Kitty image protocol in the
+    preview window
+  - (Experimental) --listen server can report program state in
+    JSON format (GET /)
+  - --listen server can be secured by setting $FZF_API_KEY
+varienvironment able.
+  - Added toggle-header action
+  - Added mouse events for --bind
+  - Added offset-up and offset-down actions
+  - Shell extensions</comment>
+    <requestid>1117899</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>abd35620ca921c79877c18a8d14059ce</srcmd5>
+    <version>0.44.0</version>
+    <time>1699910475</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1125249</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>078adef55be9efb53564b7be0c31e328</srcmd5>
+    <version>0.44.1</version>
+    <time>1700421346</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1127403</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>1b64994275cad3d742c26e4c033f975f</srcmd5>
+    <version>0.45.0</version>
+    <time>1704281253</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1135957</requestid>
+  </revision>
+</revisionlist>

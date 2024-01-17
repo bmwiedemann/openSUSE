@@ -1,0 +1,41 @@
+Index: electron-17.1.0/build/config/BUILDCONFIG.gn
+===================================================================
+--- electron-17.1.0.orig/build/config/BUILDCONFIG.gn	2022-03-07 17:38:24.389172130 +0100
++++ electron-17.1.0/build/config/BUILDCONFIG.gn	2022-03-09 08:25:02.246701706 +0100
+@@ -138,6 +138,8 @@ declare_args() {
+   # set "is_official_build" to true for any build intended to ship to end-users.
+   is_official_build = false
+ 
++  gcc_lto = false
++
+   # Set to true when compiling with the Clang compiler.
+   is_clang = current_os != "linux" ||
+              (current_cpu != "s390x" && current_cpu != "s390" &&
+@@ -352,6 +354,12 @@ default_compiler_configs = [
+   "//build/config/sanitizers:default_sanitizer_flags",
+ ]
+ 
++if (gcc_lto) {
++  default_compiler_configs += [
++    "//build/config/compiler:gcc_lto",
++  ]
++}
++
+ if (is_win) {
+   default_compiler_configs += [
+     "//build/config/win:default_cfg_compiler",
+Index: electron-17.1.0/build/config/compiler/BUILD.gn
+===================================================================
+--- electron-17.1.0.orig/build/config/compiler/BUILD.gn	2022-03-09 08:24:53.098851231 +0100
++++ electron-17.1.0/build/config/compiler/BUILD.gn	2022-03-09 08:25:02.250701641 +0100
+@@ -1880,6 +1880,10 @@ if (is_win) {
+   }
+ }
+ 
++config("gcc_lto") {
++  cflags = [ "-flto=auto" ]
++}
++
+ config("default_stack_frames") { }
+ config("xdefault_stack_frames") {
+   if (!is_win) {

@@ -1,0 +1,11 @@
+--- src/electron/shell/common/keyboard_util.cc.old	2023-10-13 11:02:01.473687300 +0200
++++ src/electron/shell/common/keyboard_util.cc	2023-10-17 19:48:01.405809100 +0200
+@@ -18,7 +18,7 @@ namespace {
+ using CodeAndShiftedChar =
+     std::pair<ui::KeyboardCode, absl::optional<char16_t>>;
+ 
+-constexpr CodeAndShiftedChar KeyboardCodeFromKeyIdentifier(
++CodeAndShiftedChar KeyboardCodeFromKeyIdentifier(
+     base::StringPiece str) {
+ #if BUILDFLAG(IS_MAC)
+   constexpr auto CommandOrControl = ui::VKEY_COMMAND;
