@@ -1,8 +1,8 @@
 #
 # spec file for package python-hl7apy
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2017-2020 Dr. Axel Braun <DocB@opensuse.org>
+# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2017-2024 Dr. Axel Braun <DocB@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,22 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-hl7apy
-Version:        1.3.3
+Version:        1.3.4
 Release:        0
 Summary:        A Python library to parse, create and handle HL7 v2x messages
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://crs4.github.io/hl7apy/
 Source:         https://files.pythonhosted.org/packages/source/h/hl7apy/hl7apy-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pip}
+#BuildRequires:  %%{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -52,11 +53,15 @@ The main features include:
 %setup -q -n hl7apy-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/hl7apy_profile_parser
+
+# TODO: enable tests (needs profiles from repository which are not in sdist)
+#%%check
+#%%pytest
 
 %post
 %python_install_alternative hl7apy_profile_parser
@@ -68,6 +73,7 @@ The main features include:
 %doc AUTHORS
 %license LICENSE
 %python_alternative %{_bindir}/hl7apy_profile_parser
-%{python_sitelib}/*
+%{python_sitelib}/hl7apy
+%{python_sitelib}/hl7apy-%{version}.dist-info
 
 %changelog

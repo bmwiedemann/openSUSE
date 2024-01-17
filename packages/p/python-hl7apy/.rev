@@ -48,4 +48,16 @@ Required for GNU Health</comment>
     <comment></comment>
     <requestid>808823</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>541093445980ee27d9602c00fc526a5b</srcmd5>
+    <version>1.3.4</version>
+    <time>1705526154</time>
+    <user>anag+factory</user>
+    <comment>- Update to python packaging best practices
+- Add note about tests
+- update to version 1.3.4
+  switch to wheel and %{?sle15_python_module_pythons}
+</comment>
+    <requestid>1139322</requestid>
+  </revision>
 </revisionlist>
