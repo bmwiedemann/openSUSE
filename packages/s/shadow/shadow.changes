@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 16 06:57:35 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.14.3:
+  * libshadow:
+    + Avoid null pointer dereference (#904)
+
+-------------------------------------------------------------------
 Tue Jan  9 12:51:12 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - bsc#1199026 bsc#1203823:
