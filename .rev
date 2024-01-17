@@ -488,4 +488,28 @@
   by X87 on i686 target (https://github.com/fmtlib/fmt/issues/3337). (forwarded request 1070626 from marxin)</comment>
     <requestid>1071110</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>f8e3c19b7f3a92ca172a00d3e1e01093</srcmd5>
+    <version>10.1.1</version>
+    <time>1701632895</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1109008</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>ceabc6761f1e40e0dce4acad20b9dcf5</srcmd5>
+    <version>10.2.0</version>
+    <time>1704280978</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 10.2</comment>
+    <requestid>1136031</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>470b8013a463843897050972d70bcc50</srcmd5>
+    <version>10.2.1</version>
+    <time>1704487228</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 10.2.1</comment>
+    <requestid>1136875</requestid>
+  </revision>
 </revisionlist>
