@@ -1,0 +1,435 @@
+-------------------------------------------------------------------
+Wed Oct  4 14:14:08 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Disable the collada importer/exporter due to a long standing
+  security issue (boo#1207377, CVE-2022-45748, gh#assimp/assimp#4286)
+- Add patch:
+  * 0001-Don-t-build-the-collada-importer-exporter-tests.patch
+
+-------------------------------------------------------------------
+Fri Sep 29 13:23:52 UTC 2023 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 5.3.1
+  * Fixes CVE-2022-38528 (boo#1203187)
+  * Mainly bug fixes
+  * Fix: Use ASCII treeview in assimp-cmd.
+  * Fix: Fix head overflow in MD5-parser.
+  * Fix: C++ std::tuple constexpr initial list on old compiler
+  * Make FBX parser resilient to missing data streams
+  * Fix incorrect documentation of defaults
+  * Fixed issue with clang complaining about sprintf and vsprintf being depreciated
+  * Fix build error: ‘temp’ may be used uninitialized in this function
+  * Fix: Use correct epsilon
+  * Fix: Add missing handling for double export in json
+  * Full change log https://github.com/assimp/assimp/releases/tag/v5.3.0
+
+-------------------------------------------------------------------
+Wed Apr  5 11:29:32 UTC 2023 - Predrag Ivanović <predivan@mts.rs>
+
+- Enable build of CLI tools.
+
+-------------------------------------------------------------------
+Mon Sep 12 13:37:16 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.2.5:
+  * Add unittest to reproduce undefined behavior
+  * Cleanups
+  * Link static linkage for std_image.
+  * fix msvc warnings-as-errors
+  * Remove dll-export tags from static library builds.
+  * Fix Import a specific FBX model will freeze the app
+  * Create SECURITY.md
+  * Pragma warnings cause build fail with MinGW
+  * Fixed FBXConverter build error when using double precision
+  * Fix possible nullptr exception
+  * [Experimental] New skeleton container for bones
+  * Add support for GCC v12
+  * Remove unused variable.
+  * Infinite loop on bad import files
+  * Utilize AI_CONFIG_IMPORT_REMOVE_EMPTY_BONES flag for Collada meshes.
+  * Fix Windows 32-bit builds
+  * Fix GNUC check on Windows
+  * Update the name of the package
+  * Kimkulling/fix invalid opengex token match
+  * Disable build for tools per default
+  * Use mingw.include
+  * Fix a memory leak
+  * Fix nested animation name being lost in Collada
+  * Fix possible bad_alloc exception for an invalid file
+  * Bump JesseTG/rm from 1.0.2 to 1.0.3
+  * Bump actions/cache from 2 to 3
+  * Kimkulling/fix texture loading 3MF, reladed issue-4568
+  * Bump actions/upload-artifact from 2 to 3
+  * Bump actions/checkout from 2 to 3
+  * Remove assertion test
+  * Fix memory leak in D3MFOpcPackage
+  * Fix typo in installation instructions for ubuntu.
+  * Build fix for compiling against minizip.
+  * Fix stl for over 4 GB
+  * Fix uninitialized variable.
+  * Fixes Crash in Assimp::ObjFileMtlImporter::getFloatValue
+  * Fixes Heap-buffer-overflow in Assimp::ObjFileParser::getFace
+  * Fixes Heap-buffer-overflow in std::__1::basic_string<char, std::__1::…
+  * Fixes Heap-use-after-free in Assimp::DXFImporter::ExpandBlockReferences
+  * Fixes Heap-buffer-overflow in SuperFastHash
+  * ColladaParser - Store sid in mSID field
+  * Fix mingw include in assimp_cmd.rc
+  * Fix warnings that are causing build fails with specific build flags
+  * Update version tag
+  * Improvements and optimizations for the obj-parsers.
+  * Experiment: try to enable parallel build
+  * Fixed typo
+  * Use [[fallthrough]]; to mark whished fallthroughs
+  * Kimkulling/do not add dot when the extension is empty
+  * Fixes Heap-buffer-overflow READ in Assimp::ASE::Parser::ParseLV1SoftSkinBlock
+  * Use unqualified uint32_t everywhere in FBXBinaryTokenizer
+  * Fix problems setting DirectX_LIBRARY
+  * Added support for more bone weights in GLTF2
+  * (Mostly) Blender fixes
+  * [WIP] Use ai_Real to write correct accuracy
+  * SMD fixes
+  * Remove exception on glTF 2.0 loading
+  * Fix out-of-bounds reads in X3D importer
+  * Apply the modernize-use-emplace clang-tidy rule
+  * The Wrong object is created here!
+  * [WIP] Code cleanup and some new unittests for edge-cases.
+  * clang-tidy: explicitly default all empty ctors and dtors
+  * fix vertices being joined duplicating weights
+  * add missing light data to assbin import/export
+  * Fix aiBone.mOffsetMatrix documentation
+  * Minor obj export bugfix
+  * Kimkulling/cleanup after reviewing
+- drop 0001-Fix-build-with-zlib.patch (upstream)
+
+-------------------------------------------------------------------
+Wed May 18 06:22:15 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.2.4
+  * Use static runtime only when the option is selected
+  * Fix compile error: When enabling macro ASSIMP_DOUBLE_PRECISION
+  * Detect Roughness factor exported by Blender
+  * Updated Android build script
+  * Prevent nullptr access to normals-array in bitangent computation
+  * Avoid setting PBR properties when they are not found on mtl file
+  * Fix ogre xml serializer
+  * Fix draco building error when import assimp with cmake add_subdirectory
+  * FbxConverter: update bone mOffsetMatrix
+  * Some Windows/MSYS2-specific fixes
+  * Document fuzz folder
+  * Fix out-of-range access in ASE-Parser
+  * Disable assertion tests floating point against inf for Intel oneAPI
+  * Delete README
+  * Rename TextureTypeToString() to aiTextureTypeToString()
+  * Fixed library names for MinGW/MSYS2
+  * Update pugixml dependency to v1.12.1
+  * Add an option to treat warnings as errors
+  * Minor updates to ASSIMP Viewer
+  * Add badge to show open issue in percentage
+  * Clang-Tidy performance fixes (make values const-ref where needed)
+  * MMD (pmx) fixes
+  * Resource script updates
+  * Accelerate the Merge vertex post processing step
+
+-------------------------------------------------------------------
+Wed May 11 15:37:28 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Don't use -Werror to prevent build issues with GCC 12
+
+-------------------------------------------------------------------
+Sun Mar 20 07:34:20 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.2.3:
+  * Show warning when assimp_viewer cannot be build on
+    target platform
+  * Fix ordering of member initialization
+  * Fix possible negative array access
+  * Expose the original OBJ "illum" value
+  * Optimize the problem of excessive memory allocation in
+    FBX import
+  * Update version of Hunter to v0.24.0 that supports VS 2022
+  * update LWO importer(available lwo3)
+  * Reinstate a deprecated gltfpbr macro: AI_MATKEY_GLTF_PBRSPECULARGLOSSINESS
+  * Fix parsing OBJ with free-form curve/surface body statements
+  * Fix missing members and do some small refactorings.
+  * Fix 'i >= 0' always true
+  * Update AI_TEXTURE_TYPE_MAX
+  * Fix getting anisotropy in obj
+  * glTF2: Metallic roughness split
+  * Add properties information on assimp info command line
+  * Added missing ObjMaterial.h to CMakeLists
+  * Update version in doxy-config
+  * add ifndef guard for resolve to fails to compil
+  * Add USE_STATIC_CRT option
+  * Fix nullptr dereferencing
+  * Fix stack-overflow in MDLLoader
+  * GLTF2 attribute name/parse bug
+
+-------------------------------------------------------------------
+Mon Feb 21 09:56:15 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.2.2
+  * Fix missing include for size_t
+  * introduce compression
+  * Refactoring: add usage of ai_epsilon to FBX-Importer.
+  * CMake: Fix Assimp target install rule fully specifying component
+  * Fix stat for 32-bit Linux
+  * Update the calculation and orthogonalization for bitangent
+  * Update CMakeLists.txt
+  * Added support for "map_Bump -bm"
+
+-------------------------------------------------------------------
+Mon Feb  7 09:51:05 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.2.1
+  * ASE: Fix warning unreachable code
+  * HMP: Fix override during copying position data
+  * use fully qualified namespace in byteswap macros
+  * fix compilation with clangcl on windows
+  * Delete .travis.sh by @kimkulling
+  * Update ccpp.yml by @kimkulling
+  * LWO: validate enum value before parsing it
+- Drop 0001-use-fully-qualified-namespace-in-byteswap-macros.patch
+  Merged upstream
+
+-------------------------------------------------------------------
+Wed Feb  2 10:24:27 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch to fix build in big endian archs:
+  * 0001-use-fully-qualified-namespace-in-byteswap-macros.patch
+
+-------------------------------------------------------------------
+Tue Jan 25 13:02:13 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.2.0
+  * Update copyrights
+  * Fix imported target include directory
+  * Assimp Patch Android LTS NDK 23 Fix
+  * Allow dlclose of so library by avoiding unique symbols.
+  * Move Base64 encode/decode functionality to the common folder
+  * Locale independent meter scale
+  * add Inter-Quake Model (IQM) Importer
+  * Collada: Read all instance_material child nodes
+  * Krishty new file detection
+  * ASE: Fix material parsing
+  * IFC Reading: Fix opening reading.
+  * CMAKE: Respect top-level CMAKE_*_OUTPUT_DIRECTORY variables
+
+-------------------------------------------------------------------
+Mon Jan 10 09:28:29 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.1.6:
+  * Add link to used enum for a better understandability
+  * Fix fuzzer crashes
+  * Fix nullptr-dereferencing
+  * Fix bone fitted check in gltf2 exporter
+- Add patch:
+  * 0001-Fix-build-with-zlib.patch (gh#assimp/assimp#4334)
+
+-------------------------------------------------------------------
+Tue Jan  4 11:59:17 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.1.5:
+  * Make sure no overflow can happen
+  * LWS-Import: Avoid access to empty string token
+  * MDL: Do not try to copy empty embedded texture
+  * Add console progresshandler
+  * CMake: Replace CMAKE_COMPILER_IS_MINGW by MINGW
+  * fix fbx import metalness
+  * RFC: BlenderScene: use explicit namespace instead of using
+    namespace
+  * Support PBR properties/maps in Obj importer
+
+-------------------------------------------------------------------
+Mon Dec 27 10:43:59 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.1.4:
+  * Fix division
+  * Fix nullptr dereferencing from std::shared_ptr
+  * Revert "FBXConverter : Fix timescales of FBX animations"
+  * Use correct XmlParser-methods and add some missing casts
+  * Bug: Export crashes when any of the meshes contains texture
+    coordinate names #4243
+  * Bugfix/import crashes
+  * Fix a typo in the Visual-Studio Dll-Versions
+  * Enable C++11 and C99
+  * Fixed cmake error: No known features for C compiler when using
+    the assimp library from another project
+  * fix test/models/3DS/IMAGE1.bmp: is jpg
+  * Fix compile error when ASSIMP_BUILD_NO_X3D_IMPORTER is define.
+
+-------------------------------------------------------------------
+Sun Dec  5 08:52:33 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.1.3
+  * Update blender importer to work with Blender 2.8+ files
+  * Added checks for out of bounds data access/writing
+  * Interpolate euler rotations for quaternion animations
+  * Fix file-extension check for X3D-files
+  * Update CMakeLists.txt
+
+-------------------------------------------------------------------
+Thu Dec  2 12:05:31 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.1.2. Changes since 5.1.0:
+  * Fixed an incorrect indeiciesType in the glTF2 sparse accessor.
+  * Prevent out-of-range memory writes by sparse accessors
+  * Delete test/models/3DS/UVTransformTest directory
+  * Do not build ziplib when 3MF exporter is disabled.
+  * Collada: Read value, not attribute
+  * Redefine deprecated glTF-specific PBR material macros
+- Fix assimp-devel dependencies. minizip is required.
+
+-------------------------------------------------------------------
+Sat Nov 13 16:29:32 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.1.0
+  * Check https://github.com/assimp/assimp/releases/tag/v5.1.0
+    for the full list of changes
+- Drop do-not-install-irrXML.patch. No longer needed.
+- Drop obsolete patches:
+  * 0001-Fix-build-with-GCC-11.patch
+  * 0001-use-GNUInstallDirs-where-possible.patch
+
+-------------------------------------------------------------------
+Mon Feb  8 10:45:37 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch to fix build with GCC11:
+  * 0001-Fix-build-with-GCC-11.patch (boo#1181859)
+
+-------------------------------------------------------------------
+Mon Sep 21 17:23:21 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add a _constraints file for ppc64/ppc64le builds.
+
+-------------------------------------------------------------------
+Thu Sep 17 21:04:34 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Remove unneeded build dependencies.
+  assimp doesn't need Qt5, boost, devIL and glu.
+
+-------------------------------------------------------------------
+Thu Jul  9 20:42:17 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Restore the _service file.
+
+Assimp still ships files which are not allowed in openSUSE.
+
+-------------------------------------------------------------------
+Wed Jun 10 09:38:02 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream patch to fix the broken CMake config files:
+  * 0001-use-GNUInstallDirs-where-possible.patch
+  (adapted for the 5.0.1 release)
+
+-------------------------------------------------------------------
+Wed May 20 13:15:44 UTC 2020 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 5.0.1
+  * Added texture types: BASE_COLOR, NORMAL_CAMERA, EMISSION_COLOR,
+    METALNESS, DIFFUSE_ROUGHNESS
+  * Fixed various issues and memory leaks
+  * 3DS: Explicitly pass "UNNAMED" as 3DS root node name and fix
+     more thread-safety issue in 3DS loader.
+  * 3MF: Introduce first prototype for basematerial support
+  * AssJSon: Add json export.
+  * Various other file support improvements
+- Dropped viewer subpackage, as it now requires DirectX
+- Removed not needed disable-gitrevision-test.patch
+- Rebased do-not-install-irrXML.patch
+- Removed not needed install-viewer.patch
+- Removed _service
+
+-------------------------------------------------------------------
+Wed Jan 23 20:08:14 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- sanitize_source.sh was removed in the 4.1.0 update; restore its
+  logic with a new _service file and recreate the tarball.
+
+-------------------------------------------------------------------
+Thu Jan 17 15:03:13 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Fix incorrect summary for libassimp*.
+
+-------------------------------------------------------------------
+Sat Aug 11 16:16:03 UTC 2018 - rpm@fthiessen.de
+
+- Update to 4.1.0
+  * Added support for Export 3MF (experimental)
+  * Added supprt for Import / Export glTF 2
+  * Prevent failing stringstream to crash the export process
+  *  Fix invalid access to mesh array when the array is
+     empty in Blender, also fixed short overflow.
+  * Fixed memory leak in AMFImporter
+  * Fixed IOStream leak in UnrealLoader:
+  * Fixed out-of-bounds read in MaterialSystem unit test
+  * Added support for SIB models from Silo 2.5
+- Changes from 4.0.1
+  * StreamReader: fix out-of-range exception
+- Changes From 4.0.0
+  * New QT-Widget based assimp-viewer
+  * Open3DGC codec supported by glFT-importer
+  * glTF: Read and write transparency values
+  * Support for X3D, AMF and Lugdunum3D
+  * MDLLoader: fix resource leak.
+  * Fix memory leak in Collada importer
+  * Fixed many FBX bugs
+- Added %check section, run unit tests
+- Added disable-gitrevision-test.patch to fix testsuite as we do
+  not build from git, git rev will test will fail.
+- Added do-not-install-irrXML.patch to prevent cmake from
+  installing the irrXML (static) library.
+- install-viewer.patch: Install viewer component
+
+-------------------------------------------------------------------
+Thu Apr 20 11:05:53 UTC 2017 - jengelh@inai.de
+
+- Rename %soname to %sover to better reflects its use.
+- Repackage original tarball with the test/models-nonbsd/
+  directory removed.
+
+-------------------------------------------------------------------
+Mon Sep  5 10:38:19 UTC 2016 - rpm@fthiessen.de
+
+- Update to new upstream release 3.3.1
+* Fix BlenderTesselator: offsetof operator
+* C++11 support
+* OpenGEX: add support for cameras and lights
+* Enable export by pyAssimp
+* Add functionality to perform a singlepost-processing step
+* Fix of many resource leaks in unittests and main lib
+
+-------------------------------------------------------------------
+Thu Jun 16 22:16:07 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 3.2
+* Support for FBX 2013 and newer, binary and ASCII
+* Support for OGRE binary mesh and skeleton format
+* Updated BLEND support for newer Blender versions
+* Support for arbitrary meta data, used to hold FBX and DAE metadata
+* OBJ Export now produces smaller files
+* Meshes can now have names, this is supported by the major importers
+* Improved IFC geometry generation
+* M3 support has been removed
+* Experimental OpenGEX support
+
+-------------------------------------------------------------------
+Tue Sep  3 09:38:16 UTC 2013 - joop.boonen@opensuse.org
+
+- Fixed the build problem with docdir
+  moved samples/ to doc 
+
+-------------------------------------------------------------------
+Fri Feb  1 21:12:07 UTC 2013 - joop.boonen@opensuse.org
+
+- Improved the spec file, changed the names and cleaned the spec file 
+
+-------------------------------------------------------------------
+Mon Jul 30 00:00:00 CEST 2012 - sergey.shambir.auto@gmail.c
+
+- some improvements form *.spec at home:hcostelha repository
+
+-------------------------------------------------------------------
+Sun Jul 29 00:00:00 CEST 2012 - sergey.shambir.auto@gmail.c
+
+- initial package of version 3.0
+

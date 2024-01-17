@@ -1,0 +1,12 @@
+<package name="jafama" project="openSUSE:Factory">
+  <title>A (Strict) FastMath class with 1e-15ish accuracy</title>
+  <description>Jafama (Java Fast Math) is a Java library aiming at providing faster versions
+of java.lang.Math treatments, at the eventual cost of 1e-15ish accuracy errors
+but still handling special cases properly (NaN, +-Infinity, ties, etc.).
+It also provides additional features, such as angles normalization methods,
+inverse hyperbolic trigonometry, etc.
+
+</description>
+  <devel project="Java:packages" package="jafama"/>
+  <url>https://github.com/jeffhain/jafama</url>
+</package>

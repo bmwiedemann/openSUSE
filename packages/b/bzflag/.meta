@@ -1,0 +1,10 @@
+<package name="bzflag" project="openSUSE:Factory">
+  <title>3D Networked Multiplayer Tank Battle Game</title>
+  <description>BZFlag is a 3D multiplayer tank battle game that allows users to play
+against each other in a networked environment. Because it makes heavy
+use of 3D graphics (OpenGL), a fast CPU or a supported 3D video card is
+heavily recommended.
+
+Find server maps in /usr/share/bzflag/maps.</description>
+  <devel project="games" package="bzflag"/>
+</package>

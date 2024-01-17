@@ -1,0 +1,5 @@
+<package name="pdf2svg" project="openSUSE:Factory">
+  <title>PDF to SVG Converter</title>
+  <description>A small tool to convert PDF files into SVG using poppler and cairo.</description>
+  <devel project="graphics" package="pdf2svg"/>
+</package>

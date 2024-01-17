@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<constraints>
+  <overwrite>
+    <conditions>
+      <arch>ppc64</arch>
+    </conditions>
+    <hardware>
+      <memory>
+        <size unit="G">6</size>
+      </memory>
+    </hardware>
+  </overwrite>
+  <overwrite>
+    <conditions>
+      <arch>ppc64</arch>
+    </conditions>
+    <hardware>
+      <memory>
+        <size unit="G">4</size>
+      </memory>
+    </hardware>
+  </overwrite>
+</constraints>

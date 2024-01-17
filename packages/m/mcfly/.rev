@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d1dbc73a1bb40a4d8626067146fcb018</srcmd5>
+    <version>0.7.1~0</version>
+    <time>1673453667</time>
+    <user>dimstar_suse</user>
+    <comment>mcfly</comment>
+    <requestid>1057766</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>bc19559afb173e0dff215b692e83293b</srcmd5>
+    <version>0.8.0~0</version>
+    <time>1678204229</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.0:
+  * Add forward-compatibility check for database schema
+  * Add MCFLY_DISABLE_RUN_COMMAND option to disable command running
+  * Add customizable prompt with MCFLY_PROMPT
+  * Replace termion with crossterm
+  * Allow ENV variables to be set to FALSE</comment>
+    <requestid>1069845</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>90eec8b8d36d0e24207866cd66163764</srcmd5>
+    <version>0.8.1~0</version>
+    <time>1686506077</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.1:
+  * Fix use of MCFLY_DISABLE_MENU
+  * Support Fish private mode support
+  * Always set MCFLY_HISTORY in zsh to support subshells
+  * Allow linking mcfly with system-provided sqlite with
+    sqlite-bundled feature flag
+  * And allow sourcing in zsh more than once
+  * Reduce size by removing unnecessary/unused regex features
+  * Add per-directory history
+</comment>
+    <requestid>1091833</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>32073966cd8c2c00b64d115f7d752722</srcmd5>
+    <version>0.8.2+0</version>
+    <time>1701727268</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.8.2:
+  * Add support for exporting command history matching a regex
+    or date range</comment>
+    <requestid>1130622</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>85b3e970417287d001ea8669ed8e3e17</srcmd5>
+    <version>0.8.4+0</version>
+    <time>1703527583</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.8.4:
+  * Remove spurious print when moving files.
+  * PowerShell improvements
+
+- Update to 0.8.3:
+  * Add support for exporting command history matching a regex or
+    date range
+  * Add Windows and Powershell support
+  * Add deprecation warning on brew tap.</comment>
+    <requestid>1135079</requestid>
+  </revision>
+</revisionlist>

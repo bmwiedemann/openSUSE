@@ -1,0 +1,211 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>814256002bd73b688e3be701925ad3b7</srcmd5>
+    <version>3.3.1</version>
+    <time>1496926668</time>
+    <user>dimstar_suse</user>
+    <comment>Fix legal issue</comment>
+    <requestid>492883</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9f5fdbc79205775c2442c288a02f44b1</srcmd5>
+    <version>5.0.1</version>
+    <time>1596203693</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>820816</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>b8363d03c5fed3cd294bccf83017cc54</srcmd5>
+    <version>5.0.1</version>
+    <time>1600702649</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>835543</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>887eab2d49c321c00e7a89c3ef488652</srcmd5>
+    <version>5.0.1</version>
+    <time>1600802112</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>836048</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>a783fcb15dda59bec920ae707b46e86b</srcmd5>
+    <version>5.0.1</version>
+    <time>1612901813</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>870332</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>dc0980d795325846d75b6405f89dd2a2</srcmd5>
+    <version>5.1.0</version>
+    <time>1637108004</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>931440</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ccdd6e50b82d9a4cc3f34d9e9a4ce604</srcmd5>
+    <version>5.1.2</version>
+    <time>1638480621</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.1.2 (forwarded request 935163 from cgiboudeaux)</comment>
+    <requestid>935164</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>eadfc06404016da6f80caa489c3bc906</srcmd5>
+    <version>5.1.3</version>
+    <time>1638740782</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.1.3
+  * Update blender importer to work with Blender 2.8+ files
+  * Added checks for out of bounds data access/writing
+  * Interpolate euler rotations for quaternion animations
+  * Fix file-extension check for X3D-files
+  * Update CMakeLists.txt</comment>
+    <requestid>935785</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7046d1956c334bd27ad74760d8cfeeca</srcmd5>
+    <version>5.1.4</version>
+    <time>1640617650</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>942783</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>dac8e13735ef958b09b3c01d7e806e18</srcmd5>
+    <version>5.1.5</version>
+    <time>1641321491</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.1.5 (forwarded request 943753 from cgiboudeaux)</comment>
+    <requestid>943755</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8035b529a2ff13abac1b8a3bcbba597a</srcmd5>
+    <version>5.1.6</version>
+    <time>1642029748</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.1.6 (forwarded request 945798 from cgiboudeaux)</comment>
+    <requestid>945799</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>cd1c7324bccef5d381bbc5b863077c92</srcmd5>
+    <version>5.2.0</version>
+    <time>1643128575</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.2.0 (forwarded request 949018 from cgiboudeaux)</comment>
+    <requestid>949019</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>ea8400e34ae6c0a7e5fa27988a967bfe</srcmd5>
+    <version>5.2.0</version>
+    <time>1643838110</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix build in big endian archs:
+  * 0001-use-fully-qualified-namespace-in-byteswap-macros.patch</comment>
+    <requestid>950710</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>cf08c756f4f6cb652220696ee5f7c762</srcmd5>
+    <version>5.2.1</version>
+    <time>1644273493</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.2.1 (forwarded request 952069 from cgiboudeaux)</comment>
+    <requestid>952070</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>b215f3917fae84673a336fcb04708493</srcmd5>
+    <version>5.2.2</version>
+    <time>1645462006</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.2.2</comment>
+    <requestid>956357</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>86706542f54b1b529aec53ddc8d4c433</srcmd5>
+    <version>5.2.3</version>
+    <time>1647806131</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.2.3 (forwarded request 963186 from cgiboudeaux)</comment>
+    <requestid>963187</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>4cd2d8b65ecf30af89f4936fa5608182</srcmd5>
+    <version>5.2.3</version>
+    <time>1652389218</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't use -Werror to prevent build issues with GCC 12</comment>
+    <requestid>976440</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>dc57ffe96dd6e1c6914908841107ffbd</srcmd5>
+    <version>5.2.4</version>
+    <time>1652872420</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.2.4
+  * Use static runtime only when the option is selected
+  * Fix compile error: When enabling macro ASSIMP_DOUBLE_PRECISION
+  * Detect Roughness factor exported by Blender
+  * Updated Android build script
+  * Prevent nullptr access to normals-array in bitangent computation
+  * Avoid setting PBR properties when they are not found on mtl file
+  * Fix ogre xml serializer
+  * Fix draco building error when import assimp with cmake add_subdirectory
+  * FbxConverter: update bone mOffsetMatrix
+  * Some Windows/MSYS2-specific fixes
+  * Document fuzz folder
+  * Fix out-of-range access in ASE-Parser
+  * Disable assertion tests floating point against inf for Intel oneAPI
+  * Delete README
+  * Rename TextureTypeToString() to aiTextureTypeToString()
+  * Fixed library names for MinGW/MSYS2
+  * Update pugixml dependency to v1.12.1
+  * Add an option to treat warnings as errors
+  * Minor updates to ASSIMP Viewer
+  * Add badge to show open issue in percentage
+  * Clang-Tidy performance fixes (make values const-ref where needed)
+  * MMD (pmx) fixes
+  * Resource script updates
+  * Accelerate the Merge vertex post processing step</comment>
+    <requestid>977885</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>21d8928f9169b16d440cec7bc5dd1956</srcmd5>
+    <version>5.2.5</version>
+    <time>1663074601</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.2.5</comment>
+    <requestid>1003264</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>53ee7bb2b85fdd2862dde43cebae5fb2</srcmd5>
+    <version>5.2.5</version>
+    <time>1680722922</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1077535</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>206720d90994fdc1e9676744e2657277</srcmd5>
+    <version>5.3.1</version>
+    <time>1696356929</time>
+    <user>anag+factory</user>
+    <comment>Update to 5.3.1</comment>
+    <requestid>1114403</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>1f246e338f594a9ee081beecdf1e5d44</srcmd5>
+    <version>5.3.1</version>
+    <time>1696529040</time>
+    <user>anag+factory</user>
+    <comment>- Disable the collada importer/exporter due to a long standing
+  security issue (boo#1207377, CVE-2022-45748, gh#assimp/assimp#4286)
+- Add patch:
+  * 0001-Don-t-build-the-collada-importer-exporter-tests.patch</comment>
+    <requestid>1115678</requestid>
+  </revision>
+</revisionlist>

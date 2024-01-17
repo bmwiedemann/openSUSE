@@ -1,0 +1,77 @@
+-------------------------------------------------------------------
+Sun Nov 27 23:28:35 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.0.3
+  * No changelog was provided
+- Add 0001-fplll-fix-namespace-issue.patch
+
+-------------------------------------------------------------------
+Wed Nov 14 22:05:01 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 0.9.1
+  * No changelog was provided
+- Remove fplll.diff, it looks like fplll5 is supported upstream now.
+
+-------------------------------------------------------------------
+Mon Dec 25 22:15:09 UTC 2017 - jengelh@inai.de
+
+- Add fplll.diff.
+
+-------------------------------------------------------------------
+Fri Sep  8 16:59:14 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 0.7.6
+  * No changelog was provided
+- Remove build-fixes.diff
+
+-------------------------------------------------------------------
+Sat Apr 29 21:22:33 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 0.7.5
+  * libfplll 5.x support
+- Add build-fixes.diff
+
+-------------------------------------------------------------------
+Sun Oct 16 18:46:55 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 0.7.4
+* No changelog was provided again
+- Drop incl.diff
+
+-------------------------------------------------------------------
+Sun Jun 19 10:53:54 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 0.7.3
+* No changelog was provided
+
+-------------------------------------------------------------------
+Fri Dec 12 11:34:18 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 0.6.2
+* Source cleanups
+
+-------------------------------------------------------------------
+Wed Jun 18 16:59:55 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 0.5.18
+* No changelog was provided
+- Added incl.diff to resolve build failure
+
+-------------------------------------------------------------------
+Fri Apr 18 10:20:23 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 0.5.17
+* No changelog was provided
+
+-------------------------------------------------------------------
+Wed Feb  5 14:05:36 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 0.5.12
+* No changelog was provided
+- Remove float-flags-order.diff, float-noversion.diff
+  (merged upstream)
+
+-------------------------------------------------------------------
+Fri May 10 13:47:02 UTC 2013 - jengelh@inai.de
+
+- Initial package (version 0.5.9) for build.opensuse.org

@@ -1,0 +1,36 @@
+README.SuSE (2001-03-12 08:35:37 CET)
+=====================================
+
+Data from various locations is used; e.g.:
+
+    ftp://ftp.ora.com/pub/davenport/current/docbk30.tar.Z
+        Copyright 1992, 1993, 1994, 1995, 1996 HaL Computer Systems,
+        Inc., O'Reilly & Associates, Inc., ArborText, Inc., and Fujitsu
+        Software Corporation.
+
+    http://www.ora.com/davenport/dbdoc/dbhset.tar.gz (HTML)
+
+
+CATALOG Files (2001-03-12 08:35:37 CET)
+---------------------------------------
+
+The default CATALOG file for DocBook 3 is
+/usr/share/sgml/CATALOG.docbook_3; it's valid for DocBook DTD 3.0 and
+3.1 (version 3.1 is backwards compatible).  For the moment the old file
+CATALOG.docbk30 is provided for compatiblity with SuSE Linux <= 7.1;
+these names will be dropped for SuSE Linux > 9.x, the next major
+release.
+
+
+website (2001-03-26 08:31:17 CEST)
+----------------------------------
+
+'website' now is the separate package 'docbook-xml-website'.
+
+
+db3x and sdb (2001-03-26 08:32:21 CEST)
+---------------------------------------
+
+'db3x', Normal Walsh's inofficial Docbk XML version, will go away with
+SuSE Linux 8.x; please, switch to DocBook XML 4.x some time soon.  The
+smae applies for 'sdb'.

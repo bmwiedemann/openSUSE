@@ -1,0 +1,11 @@
+--- bzflag-1.10.8.20041007/src/bzadmin/CursesUI.h
++++ bzflag-1.10.8.20041007/src/bzadmin/CursesUI.h
+@@ -29,6 +29,8 @@
+ #include "global.h"
+ #include "UIMap.h"
+ 
++#undef bool
++
+ #define CMDLENGTH (MessageLen - 3)
+ 
+ 

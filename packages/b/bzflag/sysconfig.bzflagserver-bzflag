@@ -1,0 +1,46 @@
+## Path:                Applications/Games/BZFlagserver
+## Description:         Configuration of the BZFlag server
+## Type:                string
+## Default:             "teleport.bzmap"
+## ServiceRestart:      bzflagserver
+#
+# The map to use on the server. Have a look at the available maps in
+# /usr/share/games/bzflag/maps for available maps.
+#
+BZFLAGSERVER_WORLD="teleport.bzmap"
+
+## Type:        string
+## Default:     "+f good -st 15 +s 5"
+#
+# These are the various options to pass to the server, including flags
+# behaviour etc. See bzfs(6) for explanation of the options.
+#
+BZFLAGSERVER_OPTS="+f good -st 15 +s 5"
+
+## Type:        string
+## Default:     ""
+#
+# Define a server welcome message
+#
+BZFLAGSERVER_SRVMSG=""
+
+## Type:        yesno
+## Default:     off
+#
+# Define whether the server should be public for other players on the internet
+#
+BZFLAGSERVER_PUBLIC="no"
+
+## Type:        integer
+## Default:     5155
+#
+# What port should the server listen to? The BZFlag game standard is 5155.
+#
+BZFLAGSERVER_PORT="5155"
+
+## Type:        yesno
+## Default:     off
+#
+# Define whether the server should punish people who are too good players
+#
+BZFLAGSERVER_NEWBIES="no"

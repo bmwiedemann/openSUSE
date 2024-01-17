@@ -1,0 +1,78 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e639c2ae4e8eb5c6b5a7ab356c5b3739</srcmd5>
+    <version>1.5.2</version>
+    <time>1662063089</time>
+    <user>dimstar_suse</user>
+    <comment>new dep of django-codemod. c.f. https://build.opensuse.org/package/show/home:jayvdb:branches:devel:languages:python:django/python-django-codemod</comment>
+    <requestid>1000584</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>322685841af68878e54f4f6e20eb6176</srcmd5>
+    <version>1.6.0</version>
+    <time>1671128688</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1042866</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7e11ea654c4e3cfa1f3c645a7bbb5148</srcmd5>
+    <version>1.6.1</version>
+    <time>1683295082</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.6.1:
+  * Don't show metavars for feature switch options [#100]</comment>
+    <requestid>1084861</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5f02f9461487d99f0f665ecd7df19490</srcmd5>
+    <version>1.7.1</version>
+    <time>1702488964</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.7.2:
+  * Add support for rich formatting in epilog text [#146]
+  * Fix bug with `rich-click` CLI not working with Python 3.12.
+    #141
+  * Fix compatibility issue with `dbt-core` CLI. [#140]
+  * Extends Click's `HelpFormatter` class
+  * Creates a `HelpConfiguration` class that doubles the current
+    module-level settings
+  * Added a decorator that allows the `HelpConfiguration` to be
+    passed into Click via the supported `context_settings`
+    argument provided by the `Command` and `Group` classes.
+  * The Rich Console object can also be configured per command
+    and is distinct from the Console instance used internally by
+    the formatter. The `RichHelpFormatter` creates a console
+    based on the `RichHelpConfiguration` as the tight coupling
+    between the Formatter and Click's internals make it difficult
+    to allow the Console to be configured externally (i.e. one
+    example is that Click expects help formatting to be
+    buffered).
+  * Created a `RichContext` class to allow creation of the custom
+    formatter.
+  * The Rich Command, Group, and Context now expose the `Console`
+    and `RichHelpConfiguration` properties.
+  * Added contributor VSCode settings
+
+- Update to version 1.6.0</comment>
+    <requestid>1132837</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>51074bfe47c90dadd1a8bb186a29181b</srcmd5>
+    <version>1.7.2</version>
+    <time>1703800950</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.7.2:
+  * Add support for rich formatting in epilog text [#146]</comment>
+    <requestid>1135339</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5fde2830af8327a974dc4ba9c7faf5a9</srcmd5>
+    <version>1.7.3</version>
+    <time>1704919931</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.7.3:
+  * Fix false deprecation warning.</comment>
+    <requestid>1137823</requestid>
+  </revision>
+</revisionlist>

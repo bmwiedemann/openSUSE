@@ -1,0 +1,6 @@
+<package name="libnice" project="openSUSE:Factory">
+  <title>Interactive Connectivity Establishment implementation</title>
+  <description>libnice is an implementation of the IETF's draft Interactive
+Connectivity Establishment standard (ICE).</description>
+  <devel project="GNOME:Factory" package="libnice"/>
+</package>
