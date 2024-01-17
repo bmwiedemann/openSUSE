@@ -1,8 +1,0 @@
-<package name="rubygem-xml-simple" project="openSUSE:Factory">
-  <title>A simple API for XML processing</title>
-  <description>A simple API for XML processing.
-
-</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-xml-simple"/>
-  <url>http://xml-simple.rubyforge.org</url>
-</package>

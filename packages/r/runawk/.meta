@@ -1,9 +1,0 @@
-<package name="runawk" project="openSUSE:Factory">
-  <title>Wrapper for AWK with support of modules</title>
-  <description>RUNAWK is a small wrapper for AWK interpreter that helps to write
-the standalone programs in AWK. It provides MODULES for AWK
-similar to PERL's &quot;use&quot; command and other powerful features.
-Dozens of ready to use modules are also provided.
-</description>
-  <devel project="devel:tools" package="runawk"/>
-</package>

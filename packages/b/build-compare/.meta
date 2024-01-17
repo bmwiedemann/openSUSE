@@ -1,6 +1,0 @@
-<package name="build-compare" project="openSUSE:Factory">
-  <title>Build Result Compare Script</title>
-  <description>This package contains scripts to find out if the build result differs
-to a former build.</description>
-  <devel project="openSUSE:Tools" package="build-compare"/>
-</package>

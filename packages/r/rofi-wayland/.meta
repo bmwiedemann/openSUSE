@@ -1,6 +1,0 @@
-<package name="rofi-wayland" project="openSUSE:Factory">
-  <title>rofi-wayland</title>
-  <description>A window switcher, run dialog and dmenu replacement - fork with wayland support </description>
-  <devel project="X11:Utilities" package="rofi-wayland"/>
-  <url>https://github.com/lbonn/rofi</url>
-</package>

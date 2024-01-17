@@ -1,6 +1,0 @@
-<package name="brlemu" project="openSUSE:Factory">
-  <title>Emulates a braille display</title>
-  <description>Brlemu emulates a braille display. It is intended for testing braille
-support without needing to acquire expensive hardware devices.</description>
-  <devel project="Base:System" package="brlemu"/>
-</package>

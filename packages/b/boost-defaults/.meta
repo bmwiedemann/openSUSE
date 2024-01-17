@@ -1,5 +1,0 @@
-<package name="boost-defaults" project="openSUSE:Factory">
-  <title>Boost Defaults</title>
-  <description>Default versions of boost devel packages</description>
-  <devel project="devel:libraries:c_c++" package="boost-defaults"/>
-</package>

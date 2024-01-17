@@ -1,6 +1,0 @@
-<package name="backward-cpp" project="openSUSE:Factory">
-  <title>backward-cpp</title>
-  <description>Stack trace printer for C++</description>
-  <devel project="devel:libraries:c_c++" package="backward-cpp"/>
-  <url>https://github.com/bombela/backward-cpp</url>
-</package>

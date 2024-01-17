@@ -1,3 +1,0 @@
-option('shared_libs', type : 'boolean', value : true, description : 'Build shared library.')
-option('static_libs', type : 'boolean', value : false, description : 'Build static library.')
-option('build_tools', type : 'boolean', value : true, description : 'Build tools.')

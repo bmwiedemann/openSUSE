@@ -1,8 +1,0 @@
-<package name="beansbinding" project="openSUSE:Factory">
-  <title>Beans Binding (JSR 295) reference implementation</title>
-  <description>In essence, Beans Binding (JSR 295) is about keeping two properties
-(typically of two objects) in sync. An additional emphasis is placed on
-the ability to bind to Swing components, and easy integration with IDEs
-such as NetBeans. This project provides the reference implementation.</description>
-  <devel project="Java:packages" package="beansbinding"/>
-</package>

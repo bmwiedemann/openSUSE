@@ -1,5 +1,0 @@
-<package name="blog" project="openSUSE:Factory">
-  <title>Boot logging</title>
-  <description>The  blogd  daemon  determines  the real underlying character device of /dev/console.  Blogd spawns a pty/tty pair to reconnect the current /dev/console with the slave of the pty/tty pair. During writing information from this slave to the real character device a ring buffer is used to hold the information for writing it to an existing logging file.</description>
-  <devel project="Base:System" package="blog"/>
-</package>

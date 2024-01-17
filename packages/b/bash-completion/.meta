@@ -1,6 +1,0 @@
-<package name="bash-completion" project="openSUSE:Factory">
-  <title>Programmable Completion for Bash</title>
-  <description>bash-completion is a collection of shell functions that take advantage
-of the programmable completion feature of Bash 2.04 and later.</description>
-  <devel project="shells" package="bash-completion"/>
-</package>

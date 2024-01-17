@@ -1,7 +1,0 @@
-<package name="bb" project="openSUSE:Factory">
-  <title>Audio-Visual Demonstration for Text Terminal</title>
-  <description>BB is a high quality audio-visual demonstration for your text terminal.
- It is a portable demo, so you can run it on plenty of operating
-systems and DOS.</description>
-  <devel project="multimedia:apps" package="bb"/>
-</package>

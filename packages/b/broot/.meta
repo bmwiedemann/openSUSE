@@ -1,6 +1,0 @@
-<package name="broot" project="openSUSE:Factory">
-  <title>broot</title>
-  <description>A better way to navigate directories.
-Tree-like commandline directory navigator written in Rust.</description>
-  <devel project="utilities" package="broot"/>
-</package>

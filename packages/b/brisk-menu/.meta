@@ -1,5 +1,0 @@
-<package name="brisk-menu" project="openSUSE:Factory">
-  <title>Modern, efficient menu for MATE</title>
-  <description>Modern, efficient menu for the MATE Desktop Environment.</description>
-  <devel project="X11:MATE:Factory" package="brisk-menu"/>
-</package>

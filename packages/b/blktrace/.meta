@@ -1,8 +1,0 @@
-<package name="blktrace" project="openSUSE:Factory">
-  <title>Block IO tracer</title>
-  <description>blktrace is a block layer IO tracing mechanism which provides detailed
-information about request queue operations up to user space. This is
-valuable for diagnosing and fixing performance or application problems
-relating to block layer io.</description>
-  <devel project="filesystems" package="blktrace"/>
-</package>

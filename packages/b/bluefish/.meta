@@ -1,8 +1,0 @@
-<package name="bluefish" project="openSUSE:Factory">
-  <title>A feature-Rich HTML Editor</title>
-  <description>Bluefish is a HTML editor designed for the experienced Web designer. It
-is based on Gtk+.
-  </description>
-  <devel project="Education" package="bluefish"/>
-  <url>http://bluefish.openoffice.nl/</url>
-</package>

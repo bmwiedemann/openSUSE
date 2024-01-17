@@ -1,5 +1,0 @@
-<package name="bazel-rules-foreign-cc" project="openSUSE:Factory">
-  <title>bazel-rules-foreign-cc</title>
-  <description>Build rules for interfacing with non-Bazel build systems</description>
-  <devel project="devel:tools:building" package="bazel-rules-foreign-cc"/>
-</package>

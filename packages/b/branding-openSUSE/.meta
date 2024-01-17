@@ -1,6 +1,0 @@
-<package name="branding-openSUSE" project="openSUSE:Factory">
-  <title>SuSE Brand File</title>
-  <description>This package contains the file /etc/SuSE-brand, and its name is used as
-a trigger for installation of correct vendor brand packages.</description>
-  <devel project="Base:System" package="branding-openSUSE"/>
-</package>

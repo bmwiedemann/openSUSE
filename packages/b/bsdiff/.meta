@@ -1,5 +1,0 @@
-<package name="bsdiff" project="openSUSE:Factory">
-  <title>Tools for patches to binary files</title>
-  <description>bsdiff and bspatch are tools for building and applying patches to binary files.</description>
-  <devel project="devel:tools" package="bsdiff"/>
-</package>

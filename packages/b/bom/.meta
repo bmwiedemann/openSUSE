@@ -1,9 +1,0 @@
-<package name="bom" project="openSUSE:Factory">
-  <title>bom - Deals with Unicode byte order marks</title>
-  <description>bom is a simple UNIX command line utility for dealing with Unicode byte order marks (BOM's).
-
-Unicode byte order marks are &quot;magic number&quot; byte sequences that sometimes appear at the beginning of a file to indicate the file's character encoding. They're sometimes helpful but usually they're just annoying.
-</description>
-  <devel project="utilities" package="bom"/>
-  <url>https://github.com/archiecobbs/bom</url>
-</package>

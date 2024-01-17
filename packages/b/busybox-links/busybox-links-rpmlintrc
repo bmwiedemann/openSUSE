@@ -1,3 +1,0 @@
-addFilter('permissions-symlink')
-addFilter('no-url-tag')
-addFilter('dangling-symlink .* /usr/bin/busybox')

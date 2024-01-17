@@ -1,9 +1,0 @@
-<package name="biosdevname" project="openSUSE:Factory">
-  <title>Udev helper for naming devices per BIOS names</title>
-  <description>biosdevname in its simplest form takes an kernel name name as an
-argument, and returns the BIOS-given name it &quot;should&quot; be.  This is
-necessary on systems where the BIOS name for a given device (e.g. the
-label on the chassis is &quot;Gb1&quot;) doesn't map directly and obviously to
-the kernel name (e.g. eth0).</description>
-  <devel project="Base:System" package="biosdevname"/>
-</package>

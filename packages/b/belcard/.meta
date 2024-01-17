@@ -1,5 +1,0 @@
-<package name="belcard" project="openSUSE:Factory">
-  <title>C++ library to manipulate vCard standard format</title>
-  <description>Belcard is a C++ library to manipulate the vCard standard format.</description>
-  <devel project="network:telephony" package="belcard"/>
-</package>

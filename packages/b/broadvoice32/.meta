@@ -1,5 +1,0 @@
-<package name="broadvoice32" project="openSUSE:Factory">
-  <title>BroadVoice 32 Speech Codec</title>
-  <description>BroadVoice is a family of speech coding algorithms created by Broadcom and standardized by CableLabs, SCTE, and ANSI for Voice over IP applications in cable telephony. BroadVoice is also part of the ITU-T Recommendations J.161 and J.361.</description>
-  <devel project="network:telephony" package="broadvoice32"/>
-</package>

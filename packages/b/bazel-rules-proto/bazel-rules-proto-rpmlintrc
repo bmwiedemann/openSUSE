@@ -1,4 +1,0 @@
-# This is a source package, errors below have no impact on using them
-addFilter("bazel-rules-proto-source.* suse-filelist-forbidden-fhs23")
-addFilter("bazel-rules-proto-source.* zero-length")
-addFilter("bazel-rules-proto-source.* hidden-file-or-dir")
