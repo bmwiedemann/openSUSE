@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 16 22:10:35 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- restore reproducible.patch to not add a random tmp path
+  (boo#1062303)
+
+-------------------------------------------------------------------
 Sun Jan 14 15:08:48 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.9.4:

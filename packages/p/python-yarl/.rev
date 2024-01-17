@@ -321,4 +321,13 @@
 - drop reproducible.patch (upstream)</comment>
     <requestid>1138583</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>57c965dde68c02a627d304ddf142d69a</srcmd5>
+    <version>1.9.4</version>
+    <time>1705526094</time>
+    <user>anag+factory</user>
+    <comment>- restore reproducible.patch to not add a random tmp path
+  (boo#1062303)</comment>
+    <requestid>1139325</requestid>
+  </revision>
 </revisionlist>

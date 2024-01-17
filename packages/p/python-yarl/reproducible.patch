@@ -1,0 +1,22 @@
+Date: 2023-12-12
+Author: Bernhard M. Wiedemann <bwiedemann suse de>
+
+Make package build reproducible
+
+For this we avoid the use of a random tmp path
+that gets embedded into
+/usr/lib64/python3.10/site-packages/yarl/_quoting_c.cpython-310-x86_64-linux-gnu.so
+
+Index: yarl-1.9.4/packaging/pep517_backend/_backend.py
+===================================================================
+--- yarl-1.9.4.orig/packaging/pep517_backend/_backend.py
++++ yarl-1.9.4/packaging/pep517_backend/_backend.py
+@@ -207,7 +207,7 @@ def _in_temporary_directory(src_dir: Pat
+ @contextmanager
+ def maybe_prebuild_c_extensions(
+         line_trace_cython_when_unset: bool = False,
+-        build_inplace: bool = False,
++        build_inplace: bool = True,
+         config_settings: dict[str, str] | None = None,
+ ) -> t.Generator[None, t.Any, t.Any]:
+     """Pre-build C-extensions in a temporary directory, when needed.
