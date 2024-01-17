@@ -1,0 +1,10 @@
+<package name="jpegoptim" project="openSUSE:Factory">
+  <title>Utility for optimizing JPEG files</title>
+  <description>jpegoptim is a utility for optimizing JPEG files. It provides lossless
+optimization (based on optimizing the Huffman tables) and &quot;lossy&quot; optimization
+based on setting a maximum quality factor.
+
+</description>
+  <devel project="graphics" package="jpegoptim"/>
+  <url>http://www.kokkonen.net/tjko/projects.html</url>
+</package>

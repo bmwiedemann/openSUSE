@@ -1,0 +1,50 @@
+-------------------------------------------------------------------
+Mon Nov 27 14:00:11 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.6.1:
+  * https://www.qt.io/blog/qt-6.6.1-released
+
+-------------------------------------------------------------------
+Tue Oct 10 09:39:52 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.6.0
+  * https://www.qt.io/blog/qt-6.6-released
+
+-------------------------------------------------------------------
+Thu Sep 28 07:34:11 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.5.3
+  * https://www.qt.io/blog/qt-6.5.3-released
+
+-------------------------------------------------------------------
+Thu Jul 20 08:56:05 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.5.2
+  * https://www.qt.io/blog/qt-6.5.2-released-1
+
+-------------------------------------------------------------------
+Fri Jun 30 15:13:10 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update subpackages requirements
+
+-------------------------------------------------------------------
+Wed May 24 07:45:37 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.5.1
+  * https://www.qt.io/blog/qt-6.5.1-released
+
+-------------------------------------------------------------------
+Wed Apr  5 20:13:03 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Remove more CMake files related to plugins.
+
+-------------------------------------------------------------------
+Mon Apr  3 10:30:19 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.5.0
+  * https://www.qt.io/blog/qt-6.5-lts-released
+
+-------------------------------------------------------------------
+Wed Feb  3 12:52:18 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Init qt6-location.

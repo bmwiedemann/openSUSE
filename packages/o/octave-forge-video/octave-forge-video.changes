@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Wed Jan  3 09:44:54 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 2.1.1:
+  + Add support for FFMPEG 5.x.
+  + Drop support for old ffmpeg versions.
+    Lavu56.22.100, SwS5.3.100, Lavc58.35.100, Lavf58.20.100
+    is the lowest tested combination.
+- Update Source0 and URL tags to point to new upstream home.
+
+-------------------------------------------------------------------
+Tue Apr 25 07:58:04 UTC 2023 - Markus Ebner <info@ebner-markus.de>
+
+- Package octave-forge-video 2.0.2

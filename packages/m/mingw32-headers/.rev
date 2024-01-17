@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a0676d3a224d758e86b29c9dce5d6b71</srcmd5>
+    <version>7.0.0</version>
+    <time>1578502442</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>753944</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8d169a9ff1bc286c947bf5e079f7ebb8</srcmd5>
+    <version>8.0.0</version>
+    <time>1607612375</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>854586</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5fdb9364a5943de8c82d901974e7470e</srcmd5>
+    <version>9.0.0</version>
+    <time>1625950483</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 9.0.0</comment>
+    <requestid>905555</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e57c30b36622da17a59451912329591f</srcmd5>
+    <version>10.0.0</version>
+    <time>1656422565</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 10</comment>
+    <requestid>985449</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b9c6b6bc1d3c5514794526b86c71f645</srcmd5>
+    <version>11.0.1</version>
+    <time>1699910305</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1125190</requestid>
+  </revision>
+</revisionlist>

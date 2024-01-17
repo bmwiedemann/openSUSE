@@ -1,0 +1,5 @@
+<package name="deadbeef-plugin-mpris2" project="openSUSE:Factory">
+  <title>MPRISv2 plugin for the DeaDBeeF music player</title>
+  <description>This plugin aims to implement the MPRISv2 D-Bus interface for DeaDBeeF for instance to integrate DeaDBeeF into Sound Menu.</description>
+  <devel project="multimedia:apps" package="deadbeef-plugin-mpris2"/>
+</package>

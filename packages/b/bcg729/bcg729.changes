@@ -1,0 +1,44 @@
+-------------------------------------------------------------------
+Tue Feb  1 16:24:29 UTC 2022 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- fixed license tag
+
+-------------------------------------------------------------------
+Sat May  8 20:25:50 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.1:
+  * compatibility with old compilers
+  * Fixed infinite loop in VAD module and overflow in encoder
+  * build scripts fixes
+
+-------------------------------------------------------------------
+Mon Nov 18 23:15:31 UTC 2019 - Simon Lees <sflees@suse.de>
+
+- %make_jobs is depricated replaced by %cmake_build
+
+-------------------------------------------------------------------
+Thu Oct 17 14:29:37 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Remove obsolete Groups tag (fate#326485)
+
+-------------------------------------------------------------------
+Fri Jan 18 14:33:46 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Use correct macros for cmake build
+
+-------------------------------------------------------------------
+Fri Jul 21 12:20:04 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.0.4:
+  * Build system fixes.
+- Remove bcg729-1.0.3-fix-includedir.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Mon Jul  3 22:27:50 UTC 2017 - jengelh@inai.de
+
+- RPM group/description correction.
+
+-------------------------------------------------------------------
+Sun Jul  2 14:21:11 UTC 2017 - sor.alexei@meowr.ru
+
+- Initial package.

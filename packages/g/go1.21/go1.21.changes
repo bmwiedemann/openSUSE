@@ -1,0 +1,775 @@
+-------------------------------------------------------------------
+Tue Jan  9 18:40:15 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.21.6 (released 2024-01-09) includes fixes to the compiler,
+  the runtime, and the crypto/tls, maps, and runtime/pprof
+  packages.
+  Refs boo#1212475 go1.21 release tracking
+  * go#63911 x/build,os/signal: TestDetectNohup and TestNohup fail on replacement darwin LUCI builders
+  * go#64410 runtime: ReadMemStats fatal error: mappedReady and other memstats are not equal
+  * go#64472 cmd/compile: linux/s390x: inlining bug in s390x
+  * go#64475 maps: maps.Clone reference semantics when cloning a map with large value types
+  * go#64561 runtime: excessive memory use between 1.21.0 -> 1.21.1
+  * go#64567 cmd/compile: max/min builtin broken when used with string(byte) conversions
+  * go#64609 runtime/pprof: incorrect function names for generics functions
+  * go#64719 crypto: upgrade to BoringCrypto fips-20220613 and enable TLS 1.3
+  * go#64757 runtime: race condition raised with parallel tests, panic(nil) and -race
+
+-------------------------------------------------------------------
+Tue Dec  5 19:03:51 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.21.5 (released 2023-12-05) includes security fixes to the go
+  command, and the net/http and path/filepath packages, as well as
+  bug fixes to the compiler, the go command, the runtime, and the
+  crypto/rand, net, os, and syscall packages.
+  Refs boo#1212475 go1.21 release tracking
+  CVE-2023-45285 CVE-2023-45284 CVE-2023-39326
+  * go#63973 go#63845 boo#1217834 security: fix CVE-2023-45285 cmd/go: git VCS qualifier in module path uses git:// scheme
+  * go#64041 go#63713 boo#1216943 security: fix CVE-2023-45284 path/filepath: Clean removes ending slash for volume on Windows in Go 1.21.4
+  * go#64435 go#64433 boo#1217833 security: fix CVE-2023-39326 net/http: limit chunked data overhead
+  * go#62055 cmd/go: go mod download needs to support toolchain upgrades
+  * go#63743 cmd/compile: invalid pointer found on stack when compiled with -race
+  * go#63764 os: NTFS deduped file changed from regular to irregular
+  * go#63801 net: TCPConn.ReadFrom hangs when io.Reader is TCPConn or UnixConn, Linux kernel < 5.1
+  * go#63984 cmd/compile: internal compiler error: panic during prove while compiling: unexpected induction with too many parents
+  * go#63994 syscall: TestOpenFileLimit unintentionally runs on non-Unix platforms
+  * go#64073 runtime: self-deadlock on mheap_.lock
+  * go#64413 crypto/rand: Legacy RtlGenRandom use on Windows
+
+-------------------------------------------------------------------
+Tue Nov  7 19:29:09 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.21.4 (released 2023-11-07) includes security fixes to the
+  path/filepath package, as well as bug fixes to the linker, the
+  runtime, the compiler, and the go/types, net/http, and
+  runtime/cgo packages.
+  Refs boo#1212475 go1.21 release tracking
+  CVE-2023-45283 CVE-2023-45284
+  * go#63715 go#63713 boo#1216943 boo#1216944 security: fix CVE-2023-45283 CVE-2023-45284 path/filepath: insecure parsing of Windows paths
+  * go#62207 spec: update unification rules
+  * go#62545 cmd/compile: internal compiler error: expected struct value to have type struct
+  * go#63317 cmd/link: split text sections for arm 32-bit
+  * go#63335 runtime: MADV_COLLAPSE causes production performance issues on Linux
+  * go#63339 go/types, x/tools/go/ssa: panic: type param without replacement encountered
+  * go#63509 cmd/compile: -buildmode=c-archive produces code not suitable for use in a shared object on arm64
+  * go#63560 net/http: http2 page fails on firefox/safari if pushing resources
+
+-------------------------------------------------------------------
+Tue Oct 10 18:27:08 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.21.3 (released 2023-10-10) includes a security fix to the
+  net/http package.
+  Refs boo#1212475 go1.21 release tracking
+  CVE-2023-39325 CVE-2023-44487
+  * go#63427 go#63417 boo#1216109 security: fix CVE-2023-39325 CVE-2023-44487 net/http: rapid stream resets can cause excessive work
+
+-------------------------------------------------------------------
+Thu Oct  5 20:28:19 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.21.2 (released 2023-10-05) includes one security fixes to the
+  cmd/go package, as well as bug fixes to the compiler, the go
+  command, the linker, the runtime, and the runtime/metrics
+  package.
+  Refs boo#1212475 go1.21 release tracking
+  CVE-2023-39323
+  * go#63214 go#63211 boo#1215985 security: fix CVE-2023-39323 cmd/go: line directives allows arbitrary execution during build
+  * go#62464 runtime: "traceback did not unwind completely"
+  * go#62478 runtime/metrics: /gc/scan* metrics return zero
+  * go#62505 plugin: variable not initialized properly
+  * go#62506 cmd/compile: internal compiler error: InvertFlags should never make it to codegen v100 = InvertFlags v123
+  * go#62509 runtime: scheduler change causes Delve's function call injection to fail intermittently
+  * go#62537 runtime: "fatal: morestack on g0" with PGO enabled on arm64
+  * go#62598 cmd/link: issues with Apple's new linker in Xcode 15 beta
+  * go#62668 cmd/compile: slow to compile 17,000 line switch statement?
+  * go#62711 cmd/go: TestScript/gotoolchain_path fails if golang.org/dl/go1.21.1 is installed in the user's $PATH
+
+-------------------------------------------------------------------
+Wed Sep  6 15:08:50 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.21.1 (released 2023-09-06) includes four security fixes to
+  the cmd/go, crypto/tls, and html/template packages, as well as
+  bug fixes to the compiler, the go command, the linker, the
+  runtime, and the context, crypto/tls, encoding/gob, encoding/xml,
+  go/types, net/http, os, and path/filepath packages.
+  Refs boo#1212475 go1.21 release tracking
+  CVE-2023-39318 CVE-2023-39319 CVE-2023-39320 CVE-2023-39321 CVE-2023-39322
+  * go#62290 go#62266 boo#1215087 security: fix CVE-2023-39321 CVE-2023-39322 crypto/tls: panic when processing partial post-handshake message in QUICConn.HandleData
+  * go#62394 go#62198 boo#1215086 security: fix CVE-2023-39320 cmd/go: go.mod toolchain directive allows arbitrary execution
+  * go#62396 go#62196 boo#1215084 security: fix CVE-2023-39318 html/template: improper handling of HTML-like comments within script contexts
+  * go#62398 go#62197 boo#1215085 security: fix CVE-2023-39319 html/template: improper handling of special tags within script contexts
+  * go#61743 go/types: interface.Complete panics for interfaces with duplicate methods
+  * go#61781 cmd/compile: internal compiler error: 'f': value .autotmp_1 (nil) incorrectly live at entry
+  * go#61818 cmd/go: panic: runtime error: index out of range [-1] in collectDepsErrors
+  * go#61821 runtime/internal/wasitest: TestTCPEcho is racy
+  * go#61868 path/filepath: Clean on some invalid Windows paths can lose .. components
+  * go#61904 net/http: go 1.20.6 host validation breaks setting Host to a unix socket address
+  * go#61905 cmd/go: go get/mod tidy panics with internal error: net token acquired but not released
+  * go#61909 cmd/compile: internal compiler error: missed typecheck
+  * go#61910 os: ReadDir fails on file systems without File ID support on Windows
+  * go#61927 cmd/distpack: release archives don't include directory members
+  * go#61930 spec, go/types, types2: restore Go 1.20 unification when compiling for Go 1.20
+  * go#61932 go/types, types2: index out of range panic in Checker.arguments
+  * go#61958 cmd/compile: write barrier code is sometimes preemptible when compiled with -N
+  * go#61959 go/types, types2: panic: infinite recursion in unification with go1.21.0
+  * go#61964 os: ReadDir(\\.\pipe\) fails with go1.21 on Windows
+  * go#61967 crypto/tls: add GODEBUG to control max RSA key size
+  * go#61987 runtime: simple programs crash on linux/386 with go1.21 when build with -gcflags='all=-N -l'
+  * go#62019 runtime: execution halts with goroutines stuck in runtime.gopark (protocol error E08 during memory read for packet)
+  * go#62046 runtime/trace: segfault in runtime.fpTracebackPCs during deferred call after recovering from panic
+  * go#62051 encoding/xml: incompatible changes in the Go 1.21.0
+  * go#62057 cmd/compile: internal compiler error: 'F': func F, startMem[b1] has different values
+  * go#62071 cmd/api: make non-importable
+  * go#62140 cmd/link: slice bounds out of range
+  * go#62143 hash/crc32: panic on arm64 with go1.21.0 when indexing slice
+  * go#62144 cmd/go: locating GOROOT fails when the go command is run from the cross-compiled bin subdirectory
+  * go#62154 encoding/gob: panic decoding into local type, received remote type
+  * go#62189 context: misuse of sync.Cond in ExampleAfterFunc_cond
+  * go#62204 maps: segfault in Clone
+  * go#62205 cmd/compile: backward incompatible change in Go 1.21 type inference with channels
+  * go#62222 cmd/go: 'go test -o' may fail with ETXTBSY when running the compiled test
+  * go#62328 net/http: http client regression building with js/wasm and running on Chrome: net::ERR_H2_OR_QUIC_REQUIRED
+  * go#62329 runtime: MADV_HUGEPAGE causes stalls when allocating memory
+
+-------------------------------------------------------------------
+Tue Sep  5 19:12:05 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Add missing directory pprof html asset directory to package.
+  Refs boo#1215090
+  * src/cmd/vendor/github.com/google/pprof/internal/driver/html/
+    dir containing html assets is present in upstream Go
+    distribution but missing from SUSE go1.x packages
+  * Go programs importing runtime/pprof may fail with error:
+    /usr/lib64/go/1.21/src/cmd/vendor/github.com/google/pprof/internal/driver/webhtml.go
+    pattern html: no matching files found
+  * Reformat adjacent commment in spec file
+
+-------------------------------------------------------------------
+Tue Aug  8 15:52:08 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.21 (released 2023-08-08) is a major release of Go.
+  go1.21.x minor releases will be provided through August 2024.
+  https://github.com/golang/go/wiki/Go-Release-Cycle
+  go1.21 arrives six months after go1.20. Most of its changes are
+  in the implementation of the toolchain, runtime, and libraries.
+  As always, the release maintains the Go 1 promise of
+  compatibility. We expect almost all Go programs to continue to
+  compile and run as before.
+  Refs boo#1212475 go1.21 release tracking
+  * Go 1.21 introduces a small change to the numbering of
+    releases. In the past, we used Go 1.N to refer to both the
+    overall Go language version and release family as well as the
+    first release in that family. Starting in Go 1.21, the first
+    release is now Go 1.N.0. Today we are releasing both the Go
+    1.21 language and its initial implementation, the Go 1.21.0
+    release. These notes refer to "Go 1.21"; tools like go version
+    will report "go1.21.0" (until you upgrade to Go 1.21.1). See
+    "Go versions" in the "Go Toolchains" documentation for details
+    about the new version numbering.
+  * Language change: Go 1.21 adds three new built-ins to the
+    language.
+  * Language change: The new functions min and max compute the
+    smallest (or largest, for max) value of a fixed number of given
+    arguments. See the language spec for details.
+  * Language change: The new function clear deletes all elements
+    from a map or zeroes all elements of a slice. See the language
+    spec for details.
+  * Package initialization order is now specified more
+    precisely. This may change the behavior of some programs that
+    rely on a specific initialization ordering that was not
+    expressed by explicit imports. The behavior of such programs
+    was not well defined by the spec in past releases. The new rule
+    provides an unambiguous definition.
+  * Multiple improvements that increase the power and precision of
+    type inference have been made.
+  * A (possibly partially instantiated generic) function may now be
+    called with arguments that are themselves (possibly partially
+    instantiated) generic functions.
+  * Type inference now also considers methods when a value is
+    assigned to an interface: type arguments for type parameters
+    used in method signatures may be inferred from the
+    corresponding parameter types of matching methods.
+  * Similarly, since a type argument must implement all the methods
+    of its corresponding constraint, the methods of the type
+    argument and constraint are matched which may lead to the
+    inference of additional type arguments.
+  * If multiple untyped constant arguments of different kinds (such
+    as an untyped int and an untyped floating-point constant) are
+    passed to parameters with the same (not otherwise specified)
+    type parameter type, instead of an error, now type inference
+    determines the type using the same approach as an operator with
+    untyped constant operands. This change brings the types
+    inferred from untyped constant arguments in line with the types
+    of constant expressions.
+  * Type inference is now precise when matching corresponding types
+    in assignments
+  * The description of type inference in the language spec has been
+    clarified.
+  * Go 1.21 includes a preview of a language change we are
+    considering for a future version of Go: making for loop
+    variables per-iteration instead of per-loop, to avoid
+    accidental sharing bugs. For details about how to try that
+    language change, see the LoopvarExperiment wiki page.
+  * Go 1.21 now defines that if a goroutine is panicking and
+    recover was called directly by a deferred function, the return
+    value of recover is guaranteed not to be nil. To ensure this,
+    calling panic with a nil interface value (or an untyped nil)
+    causes a run-time panic of type *runtime.PanicNilError.
+    To support programs written for older versions of Go, nil
+    panics can be re-enabled by setting GODEBUG=panicnil=1. This
+    setting is enabled automatically when compiling a program whose
+    main package is in a module with that declares go 1.20 or
+    earlier.
+  * Go 1.21 adds improved support for backwards compatibility and
+    forwards compatibility in the Go toolchain.
+  * To improve backwards compatibility, Go 1.21 formalizes Go's use
+    of the GODEBUG environment variable to control the default
+    behavior for changes that are non-breaking according to the
+    compatibility policy but nonetheless may cause existing
+    programs to break. (For example, programs that depend on buggy
+    behavior may break when a bug is fixed, but bug fixes are not
+    considered breaking changes.) When Go must make this kind of
+    behavior change, it now chooses between the old and new
+    behavior based on the go line in the workspace's go.work file
+    or else the main module's go.mod file. Upgrading to a new Go
+    toolchain but leaving the go line set to its original (older)
+    Go version preserves the behavior of the older toolchain. With
+    this compatibility support, the latest Go toolchain should
+    always be the best, most secure, implementation of an older
+    version of Go. See "Go, Backwards Compatibility, and GODEBUG"
+    for details.
+  * To improve forwards compatibility, Go 1.21 now reads the go
+    line in a go.work or go.mod file as a strict minimum
+    requirement: go 1.21.0 means that the workspace or module
+    cannot be used with Go 1.20 or with Go 1.21rc1. This allows
+    projects that depend on fixes made in later versions of Go to
+    ensure that they are not used with earlier versions. It also
+    gives better error reporting for projects that make use of new
+    Go features: when the problem is that a newer Go version is
+    needed, that problem is reported clearly, instead of attempting
+    to build the code and instead printing errors about unresolved
+    imports or syntax errors.
+  * To make these new stricter version requirements easier to
+    manage, the go command can now invoke not just the toolchain
+    bundled in its own release but also other Go toolchain versions
+    found in the PATH or downloaded on demand. If a go.mod or
+    go.work go line declares a minimum requirement on a newer
+    version of Go, the go command will find and run that version
+    automatically. The new toolchain directive sets a suggested
+    minimum toolchain to use, which may be newer than the strict go
+    minimum. See "Go Toolchains" for details.
+  * go command: The -pgo build flag now defaults to -pgo=auto, and
+    the restriction of specifying a single main package on the
+    command line is now removed. If a file named default.pgo is
+    present in the main package's directory, the go command will
+    use it to enable profile-guided optimization for building the
+    corresponding program.
+  * go command: The -C dir flag must now be the first flag on the
+    command-line when used.
+  * go command: The new go test option -fullpath prints full path
+    names in test log messages, rather than just base names.
+  * go command: The go test -c flag now supports writing test
+    binaries for multiple packages, each to pkg.test where pkg is
+    the package name. It is an error if more than one test package
+    being compiled has a given package name.]
+  * go command: The go test -o flag now accepts a directory
+    argument, in which case test binaries are written to that
+    directory instead of the current directory.
+  * cgo: In files that import "C", the Go toolchain now correctly
+    reports errors for attempts to declare Go methods on C types.
+  * runtime: When printing very deep stacks, the runtime now prints
+    the first 50 (innermost) frames followed by the bottom 50
+    (outermost) frames, rather than just printing the first 100
+    frames. This makes it easier to see how deeply recursive stacks
+    started, and is especially valuable for debugging stack
+    overflows.
+  * runtime: On Linux platforms that support transparent huge
+    pages, the Go runtime now manages which parts of the heap may
+    be backed by huge pages more explicitly. This leads to better
+    utilization of memory: small heaps should see less memory used
+    (up to 50% in pathological cases) while large heaps should see
+    fewer broken huge pages for dense parts of the heap, improving
+    CPU usage and latency by up to 1%.
+  * runtime: As a result of runtime-internal garbage collection
+    tuning, applications may see up to a 40% reduction in
+    application tail latency and a small decrease in memory
+    use. Some applications may also observe a small loss in
+    throughput. The memory use decrease should be proportional to
+    the loss in throughput, such that the previous release's
+    throughput/memory tradeoff may be recovered (with little change
+    to latency) by increasing GOGC and/or GOMEMLIMIT slightly.
+  * runtime: Calls from C to Go on threads created in C require
+    some setup to prepare for Go execution. On Unix platforms, this
+    setup is now preserved across multiple calls from the same
+    thread. This significantly reduces the overhead of subsequent C
+    to Go calls from ~1-3 microseconds per call to ~100-200
+    nanoseconds per call.
+  * compiler: Profile-guide optimization (PGO), added as a preview
+    in Go 1.20, is now ready for general use. PGO enables
+    additional optimizations on code identified as hot by profiles
+    of production workloads. As mentioned in the Go command
+    section, PGO is enabled by default for binaries that contain a
+    default.pgo profile in the main package directory. Performance
+    improvements vary depending on application behavior, with most
+    programs from a representative set of Go programs seeing
+    between 2 and 7% improvement from enabling PGO. See the PGO
+    user guide for detailed documentation.
+  * compiler: PGO builds can now devirtualize some interface method
+    calls, adding a concrete call to the most common callee. This
+    enables further optimization, such as inlining the callee.
+  * compiler: Go 1.21 improves build speed by up to 6%, largely
+    thanks to building the compiler itself with PGO.
+  * assembler: On amd64, frameless nosplit assembly functions are
+    no longer automatically marked as NOFRAME. Instead, the NOFRAME
+    attribute must be explicitly specified if desired, which is
+    already the behavior on other architectures supporting frame
+    pointers. With this, the runtime now maintains the frame
+    pointers for stack transitions.
+  * assembler: The verifier that checks for incorrect uses of R15
+    when dynamic linking on amd64 has been improved.
+  * linker: On windows/amd64, the linker (with help from the
+    compiler) now emits SEH unwinding data by default, which
+    improves the integration of Go applications with Windows
+    debuggers and other tools.
+  * linker: In Go 1.21 the linker (with help from the compiler) is
+    now capable of deleting dead (unreferenced) global map
+    variables, if the number of entries in the variable initializer
+    is sufficiently large, and if the initializer expressions are
+    side-effect free.
+  * core library: The new log/slog package provides structured
+    logging with levels. Structured logging emits key-value pairs
+    to enable fast, accurate processing of large amounts of log
+    data. The package supports integration with popular log
+    analysis tools and services.
+  * core library: The new testing/slogtest package can help to
+    validate slog.Handler implementations.
+  * core library: The new slices package provides many common
+    operations on slices, using generic functions that work with
+    slices of any element type.
+  * core library: The new maps package provides several common
+    operations on maps, using generic functions that work with maps
+    of any key or element type.
+  * core library: The new cmp package defines the type constraint
+    Ordered and two new generic functions Less and Compare that are
+    useful with ordered types.
+  * Minor changes to the library: As always, there are various
+    minor changes and updates to the library, made with the Go 1
+    promise of compatibility in mind. There are also various
+    performance improvements, not enumerated here.
+  * archive/tar: The implementation of the io/fs.FileInfo interface
+    returned by Header.FileInfo now implements a String method that
+    calls io/fs.FormatFileInfo.
+  * archive/zip: The implementation of the io/fs.FileInfo interface
+    returned by FileHeader.FileInfo now implements a String method
+    that calls io/fs.FormatFileInfo.
+  * archive/zip: The implementation of the io/fs.DirEntry interface
+    returned by the io/fs.ReadDirFile.ReadDir method of the
+    io/fs.File returned by Reader.Open now implements a String
+    method that calls io/fs.FormatDirEntry.
+  * bytes: The Buffer type has two new methods: Available and
+    AvailableBuffer. These may be used along with the Write method
+    to append directly to the Buffer.
+  * context: The new WithoutCancel function returns a copy of a
+    context that is not canceled when the original context is
+    canceled.
+  * context: The new WithDeadlineCause and WithTimeoutCause
+    functions provide a way to set a context cancellation cause
+    when a deadline or timer expires. The cause may be retrieved
+    with the Cause function.
+  * context: The new AfterFunc function registers a function to run
+    after a context has been cancelled.
+  * context: An optimization means that the results of calling
+    Background and TODO and converting them to a shared type can be
+    considered equal. In previous releases they were always
+    different. Comparing Context values for equality has never been
+    well-defined, so this is not considered to be an incompatible
+    change.
+  * crypto/ecdsa: PublicKey.Equal and PrivateKey.Equal now execute
+    in constant time.
+  * crypto/elliptic: All of the Curve methods have been deprecated,
+    along with GenerateKey, Marshal, and Unmarshal. For ECDH
+    operations, the new crypto/ecdh package should be used
+    instead. For lower-level operations, use third-party modules
+    such as filippo.io/nistec.
+  * crypto/rand: The crypto/rand package now uses the getrandom
+    system call on NetBSD 10.0 and later.
+  * crypto/rsa: The performance of private RSA operations
+    (decryption and signing) is now better than Go 1.19 for
+    GOARCH=amd64 and GOARCH=arm64. It had regressed in Go 1.20.
+  * crypto/rsa: Due to the addition of private fields to
+    PrecomputedValues, PrivateKey.Precompute must be called for
+    optimal performance even if deserializing (for example from
+    JSON) a previously-precomputed private key.
+  * crypto/rsa: PublicKey.Equal and PrivateKey.Equal now execute in
+    constant time.
+  * crypto/rsa: The GenerateMultiPrimeKey function and the
+    PrecomputedValues.CRTValues field have been
+    deprecated. PrecomputedValues.CRTValues will still be populated
+    when PrivateKey.Precompute is called, but the values will not
+    be used during decryption operations.
+  * crypto/sha256: SHA-224 and SHA-256 operations now use native
+    instructions when available when GOARCH=amd64, providing a
+    performance improvement on the order of 3-4x.
+  * crypto/tls: Servers now skip verifying client certificates
+    (including not running Config.VerifyPeerCertificate) for
+    resumed connections, besides checking the expiration time. This
+    makes session tickets larger when client certificates are in
+    use. Clients were already skipping verification on resumption,
+    but now check the expiration time even if
+    Config.InsecureSkipVerify is set.
+  * crypto/tls: Applications can now control the content of session
+    tickets.
+  * crypto/tls: The new SessionState type describes a resumable
+    session.
+  * crypto/tls: The SessionState.Bytes method and ParseSessionState
+    function serialize and deserialize a SessionState.
+  * crypto/tls: The Config.WrapSession and Config.UnwrapSession
+    hooks convert a SessionState to and from a ticket on the server
+    side.
+  * crypto/tls: The Config.EncryptTicket and Config.DecryptTicket
+    methods provide a default implementation of WrapSession and
+    UnwrapSession.
+  * crypto/tls: The ClientSessionState.ResumptionState method and
+    NewResumptionState function may be used by a ClientSessionCache
+    implementation to store and resume sessions on the client side.
+  * crypto/tls: To reduce the potential for session tickets to be
+    used as a tracking mechanism across connections, the server now
+    issues new tickets on every resumption (if they are supported
+    and not disabled) and tickets don't bear an identifier for the
+    key that encrypted them anymore. If passing a large number of
+    keys to Conn.SetSessionTicketKeys, this might lead to a
+    noticeable performance cost.
+  * crypto/tls: Both clients and servers now implement the Extended
+    Master Secret extension (RFC 7627). The deprecation of
+    ConnectionState.TLSUnique has been reverted, and is now set for
+    resumed connections that support Extended Master Secret.
+  * crypto/tls: The new QUICConn type provides support for QUIC
+    implementations, including 0-RTT support. Note that this is not
+    itself a QUIC implementation, and 0-RTT is still not supported
+    in TLS.
+  * crypto/tls: The new VersionName function returns the name for a
+    TLS version number.
+  * crypto/tls: The TLS alert codes sent from the server for client
+    authentication failures have been improved. Previously, these
+    failures always resulted in a "bad certificate" alert. Now,
+    certain failures will result in more appropriate alert codes,
+    as defined by RFC 5246 and RFC 8446:
+  * crypto/tls: For TLS 1.3 connections, if the server is
+    configured to require client authentication using
+    RequireAnyClientCert or RequireAndVerifyClientCert, and the
+    client does not provide any certificate, the server will now
+    return the "certificate required" alert.
+  * crypto/tls: If the client provides a certificate that is not
+    signed by the set of trusted certificate authorities configured
+    on the server, the server will return the "unknown certificate
+    authority" alert.
+  * crypto/tls: If the client provides a certificate that is either
+    expired or not yet valid, the server will return the "expired
+    certificate" alert.
+  * crypto/tls: In all other scenarios related to client
+    authentication failures, the server still returns "bad
+    certificate".
+  * crypto/x509: RevocationList.RevokedCertificates has been
+    deprecated and replaced with the new RevokedCertificateEntries
+    field, which is a slice of RevocationListEntry.
+    RevocationListEntry contains all of the fields in
+    pkix.RevokedCertificate, as well as the revocation reason code.
+  * crypto/x509: Name constraints are now correctly enforced on
+    non-leaf certificates, and not on the certificates where they
+    are expressed.
+  * debug/elf: The new File.DynValue method may be used to retrieve
+    the numeric values listed with a given dynamic tag.
+  * debug/elf: The constant flags permitted in a DT_FLAGS_1 dynamic
+    tag are now defined with type DynFlag1. These tags have names
+    starting with DF_1.
+  * debug/elf: The package now defines the constant COMPRESS_ZSTD.
+  * debug/elf: The package now defines the constant
+    R_PPC64_REL24_P9NOTOC.
+  * debug/pe: Attempts to read from a section containing
+    uninitialized data using Section.Data or the reader returned by
+    Section.Open now return an error.
+  * embed: The io/fs.File returned by FS.Open now has a ReadAt
+    method that implements io.ReaderAt.
+  * embed: Calling FS.Open.Stat will return a type that now
+    implements a String method that calls io/fs.FormatFileInfo.
+  * errors: The new ErrUnsupported error provides a standardized
+    way to indicate that a requested operation may not be performed
+    because it is unsupported. For example, a call to os.Link when
+    using a file system that does not support hard links.
+  * flag: The new BoolFunc function and FlagSet.BoolFunc method
+    define a flag that does not require an argument and calls a
+    function when the flag is used. This is similar to Func but for
+    a boolean flag.
+  * flag: A flag definition (via Bool, BoolVar, Int, IntVar, etc.)
+    will panic if Set has already been called on a flag with the
+    same name. This change is intended to detect cases where
+    changes in initialization order cause flag operations to occur
+    in a different order than expected. In many cases the fix to
+    this problem is to introduce a explicit package dependence to
+    correctly order the definition before any Set operations.
+  * go/ast: The new IsGenerated predicate reports whether a file
+    syntax tree contains the special comment that conventionally
+    indicates that the file was generated by a tool.
+  * go/ast: The new File.GoVersion field records the minimum Go
+    version required by any //go:build or // +build directives.
+  * go/build: The package now parses build directives (comments
+    that start with //go:) in file headers (before the package
+    declaration). These directives are available in the new Package
+    fields Directives, TestDirectives, and XTestDirectives.
+  * go/build/constraint: The new GoVersion function returns the
+    minimum Go version implied by a build expression.
+  * go/token: The new File.Lines method returns the file's
+    line-number table in the same form as accepted by
+    File.SetLines.
+  * go/types: The new Package.GoVersion method returns the Go
+    language version used to check the package.
+  * hash/maphash: The hash/maphash package now has a pure Go
+    implementation, selectable with the purego build tag.
+  * html/template: The new error ErrJSTemplate is returned when an
+    action appears in a JavaScript template literal. Previously an
+    unexported error was returned.
+  * io/fs: The new FormatFileInfo function returns a formatted
+    version of a FileInfo. The new FormatDirEntry function returns
+    a formatted version of a DirEntry. The implementation of
+    DirEntry returned by ReadDir now implements a String method
+    that calls FormatDirEntry, and the same is true for the
+    DirEntry value passed to WalkDirFunc.
+  * math/big: The new Int.Float64 method returns the nearest
+    floating-point value to a multi-precision integer, along with
+    an indication of any rounding that occurred.
+  * net: On Linux, the net package can now use Multipath TCP when
+    the kernel supports it. It is not used by default. To use
+    Multipath TCP when available on a client, call the
+    Dialer.SetMultipathTCP method before calling the Dialer.Dial or
+    Dialer.DialContext methods. To use Multipath TCP when available
+    on a server, call the ListenConfig.SetMultipathTCP method
+    before calling the ListenConfig.Listen method. Specify the
+    network as "tcp" or "tcp4" or "tcp6" as usual. If Multipath TCP
+    is not supported by the kernel or the remote host, the
+    connection will silently fall back to TCP. To test whether a
+    particular connection is using Multipath TCP, use the
+    TCPConn.MultipathTCP method.
+  * net: In a future Go release we may enable Multipath TCP by
+    default on systems that support it.
+  * net/http: The new ResponseController.EnableFullDuplex method
+    allows server handlers to concurrently read from an HTTP/1
+    request body while writing the response. Normally, the HTTP/1
+    server automatically consumes any remaining request body before
+    starting to write the response, to avoid deadlocking clients
+    which attempt to write a complete request before reading the
+    response. The EnableFullDuplex method disables this behavior.
+  * net/http: The new ErrSchemeMismatch error is returned by Client
+    and Transport when the server responds to an HTTPS request with
+    an HTTP response.
+  * net/http: The net/http package now supports
+    errors.ErrUnsupported, in that the expression
+    errors.Is(http.ErrNotSupported, errors.ErrUnsupported) will
+    return true.
+  * os: Programs may now pass an empty time.Time value to the
+    Chtimes function to leave either the access time or the
+    modification time unchanged.
+  * os: On Windows the File.Chdir method now changes the current
+    directory to the file, rather than always returning an error.
+  * os: On Unix systems, if a non-blocking descriptor is passed to
+    NewFile, calling the File.Fd method will now return a
+    non-blocking descriptor. Previously the descriptor was
+    converted to blocking mode.
+  * os: On Windows calling Truncate on a non-existent file used to
+    create an empty file. It now returns an error indicating that
+    the file does not exist.
+  * os: On Windows calling TempDir now uses GetTempPath2W when
+    available, instead of GetTempPathW. The new behavior is a
+    security hardening measure that prevents temporary files
+    created by processes running as SYSTEM to be accessed by
+    non-SYSTEM processes.
+  * os: On Windows the os package now supports working with files
+    whose names, stored as UTF-16, can't be represented as valid
+    UTF-8.
+  * os: On Windows Lstat now resolves symbolic links for paths
+    ending with a path separator, consistent with its behavior on
+    POSIX platforms.
+  * os: The implementation of the io/fs.DirEntry interface returned
+    by the ReadDir function and the File.ReadDir method now
+    implements a String method that calls io/fs.FormatDirEntry.
+  * os: The implementation of the io/fs.FS interface returned by
+    the DirFS function now implements the io/fs.ReadFileFS and the
+    io/fs.ReadDirFS interfaces.
+  * path/filepath: The implementation of the io/fs.DirEntry
+    interface passed to the function argument of WalkDir now
+    implements a String method that calls io/fs.FormatDirEntry.
+  * reflect: In Go 1.21, ValueOf no longer forces its argument to
+    be allocated on the heap, allowing a Value's content to be
+    allocated on the stack. Most operations on a Value also allow
+    the underlying value to be stack allocated.
+  * reflect: The new Value method Value.Clear clears the contents
+    of a map or zeros the contents of a slice. This corresponds to
+    the new clear built-in added to the language.
+  * reflect: The SliceHeader and StringHeader types are now
+    deprecated. In new code prefer unsafe.Slice, unsafe.SliceData,
+    unsafe.String, or unsafe.StringData.
+  * regexp: Regexp now defines MarshalText and UnmarshalText
+    methods. These implement encoding.TextMarshaler and
+    encoding.TextUnmarshaler and will be used by packages such as
+    encoding/json.
+  * runtime: Textual stack traces produced by Go programs, such as
+    those produced when crashing, calling runtime.Stack, or
+    collecting a goroutine profile with debug=2, now include the
+    IDs of the goroutines that created each goroutine in the stack
+    trace.
+  * runtime: Crashing Go applications can now opt-in to Windows
+    Error Reporting (WER) by setting the environment variable
+    GOTRACEBACK=wer or calling debug.SetTraceback("wer") before the
+    crash. Other than enabling WER, the runtime will behave as with
+    GOTRACEBACK=crash. On non-Windows systems, GOTRACEBACK=wer is
+    ignored.
+  * runtime: GODEBUG=cgocheck=2, a thorough checker of cgo pointer
+    passing rules, is no longer available as a debug
+    option. Instead, it is available as an experiment using
+    GOEXPERIMENT=cgocheck2. In particular this means that this mode
+    has to be selected at build time instead of startup time.
+  * runtime: GODEBUG=cgocheck=1 is still available (and is still
+    the default).
+  * runtime: A new type Pinner has been added to the runtime
+    package. Pinners may be used to "pin" Go memory such that it
+    may be used more freely by non-Go code. For instance, passing
+    Go values that reference pinned Go memory to C code is now
+    allowed. Previously, passing any such nested reference was
+    disallowed by the cgo pointer passing rules. See the docs for
+    more details.
+  * runtime/metrics: A few previously-internal GC metrics, such as
+    live heap size, are now available. GOGC and GOMEMLIMIT are also
+    now available as metrics.
+  * runtime/trace: Collecting traces on amd64 and arm64 now incurs
+    a substantially smaller CPU cost: up to a 10x improvement over
+    the previous release.
+  * runtime/trace: Traces now contain explicit stop-the-world
+    events for every reason the Go runtime might stop-the-world,
+    not just garbage collection.
+  * sync: The new OnceFunc, OnceValue, and OnceValues functions
+    capture a common use of Once to lazily initialize a value on
+    first use.
+  * syscall: On Windows the Fchdir function now changes the current
+    directory to its argument, rather than always returning an
+    error.
+  * syscall: On FreeBSD SysProcAttr has a new field Jail that may
+    be used to put the newly created process in a jailed
+    environment.
+  * syscall: On Windows the syscall package now supports working
+    with files whose names, stored as UTF-16, can't be represented
+    as valid UTF-8. The UTF16ToString and UTF16FromString functions
+    now convert between UTF-16 data and WTF-8 strings. This is
+    backward compatible as WTF-8 is a superset of the UTF-8 format
+    that was used in earlier releases.
+  * syscall: Several error values match the new
+    errors.ErrUnsupported, such that errors.Is(err,
+    errors.ErrUnsupported) returns true.
+    ENOSYS
+    ENOTSUP
+    EOPNOTSUPP
+    EPLAN9 (Plan 9 only)
+    ERROR_CALL_NOT_IMPLEMENTED (Windows only)
+    ERROR_NOT_SUPPORTED (Windows only)
+    EWINDOWS (Windows only)
+  * testing: The new -test.fullpath option will print full path
+    names in test log messages, rather than just base names.
+  * testing: The new Testing function reports whether the program
+    is a test created by go test.
+  * testing/fstest: Calling Open.Stat will return a type that now
+    implements a String method that calls io/fs.FormatFileInfo.
+  * unicode: The unicode package and associated support throughout
+    the system has been upgraded to Unicode 15.0.0.
+  * Darwin port: As announced in the Go 1.20 release notes, Go 1.21
+    requires macOS 10.15 Catalina or later; support for previous
+    versions has been discontinued.
+  * Windows port: As announced in the Go 1.20 release notes, Go
+    1.21 requires at least Windows 10 or Windows Server 2016;
+    support for previous versions has been discontinued.
+  * WebAssembly port: The new go:wasmimport directive can now be
+    used in Go programs to import functions from the WebAssembly
+    host.
+  * WebAssembly port: The Go scheduler now interacts much more
+    efficiently with the JavaScript event loop, especially in
+    applications that block frequently on asynchronous events.
+  * WebAssembly System Interface port: Go 1.21 adds an experimental
+    port to the WebAssembly System Interface (WASI), Preview 1
+    (GOOS=wasip1, GOARCH=wasm).
+  * WebAssembly System Interface port: As a result of the addition
+    of the new GOOS value "wasip1", Go files named *_wasip1.go will
+    now be ignored by Go tools except when that GOOS value is being
+    used. If you have existing filenames matching that pattern, you
+    will need to rename them.
+  * ppc64/ppc64le port: On Linux, GOPPC64=power10 now generates
+    PC-relative instructions, prefixed instructions, and other new
+    Power10 instructions. On AIX, GOPPC64=power10 generates Power10
+    instructions, but does not generate PC-relative instructions.
+  * ppc64/ppc64le port: When building position-independent binaries
+    for GOPPC64=power10 GOOS=linux GOARCH=ppc64le, users can expect
+    reduced binary sizes in most cases, in some cases
+    3.5%. Position-independent binaries are built for ppc64le with
+    the following -buildmode values: c-archive, c-shared, shared,
+    pie, plugin.
+  * loong64 port: The linux/loong64 port now supports
+    -buildmode=c-archive, -buildmode=c-shared and -buildmode=pie.
+
+-------------------------------------------------------------------
+Wed Aug  2 13:54:52 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.21rc4 (released 2023-08-02) is a release candidate version of
+  go1.21 cut from the master branch at the revision tagged
+  go1.21rc4.
+  Refs boo#1212475 go1.21 release tracking
+
+-------------------------------------------------------------------
+Fri Jul 14 17:02:03 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.21rc3 (released 2023-07-14) is a release candidate version of
+  go1.21 cut from the master branch at the revision tagged
+  go1.21rc3.
+  Refs boo#1212475 go1.21 release tracking
+
+-------------------------------------------------------------------
+Fri Jun 23 22:34:10 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.21+ change default GOTOOLCHAIN=auto to local to prevent go
+  tool commands from downloading upstream go1.x toolchain binaries
+  Refs boo#1212669
+  * go1.21+ introduce new default behavior that can download
+    additional versions of go1.x toolchain binaries built by
+    upstream. See https://go.dev/doc/toolchain for details. The go
+    tool would attempt toolchain downloads as needed to satisfy a
+    minimum go version specified in go.mod of the program
+    containing main() or any of its dependencies.
+  * Builds in OBS can not access the network, download attempts
+    would fail.
+  * Builds in OBS should not use third party binary toolchains.
+  * When GOTOOLCHAIN is set to local, the go command always runs
+    the bundled Go toolchain.
+  * Users can override the default GOTOOLCHAIN setting with
+    go env -w, stored in in ~/.config/go/env.
+
+-------------------------------------------------------------------
+Fri Jun 23 20:26:19 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Add missing go.env to package. go.env sets defaults including:
+  GOPROXY GOSUMDB GOTOOLCHAIN
+  Refs boo#1212667
+  * Starting in go1.21+ a missing go.env defaults to GOPROXY=''
+    resulting in errors e.g. with online cmds e.g. go mod download:
+    "GOPROXY list is not the empty string, but contains no entries"
+    It is not clear why GOPROXY='' is not evaluated as "the empty
+    string".
+
+-------------------------------------------------------------------
+Wed Jun 21 15:40:05 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.21rc2 (released 2023-06-21) is a release candidate version of
+  go1.21 cut from the master branch at the revision tagged
+  go1.21rc2. https://go.dev/blog/go1.21rc
+  Refs boo#1212475 go1.21 release tracking
+
+-------------------------------------------------------------------
+Fri Jun 16 14:21:46 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.21rc1 (released 2023-06-16) is a release candidate version of
+  go1.21 cut from the master branch at the revision tagged
+  go1.21rc1.
+  Refs boo#1212475 go1.21 release tracking

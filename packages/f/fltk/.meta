@@ -1,0 +1,11 @@
+<package name="fltk" project="openSUSE:Factory">
+  <title>Free C++ GUI Toolkit for the X Window System, OpenGL, and WIN32</title>
+  <description>The Fast Light Tool Kit (&quot;FLTK&quot;, pronounced &quot;fulltick&quot;) is a C++
+graphical user interface toolkit for the X Window System (UNIX(r)),
+OpenGL(r), and Microsoft(r) Windows(r) NT 4.0, 95, or 98. The
+installation of this package requires you to install a 3D library. If
+you do not have hardware 3D, you can use the software OpenGL library in
+the mesasoft package (series x3d). The library can be recompiled
+without 3D support.</description>
+  <devel project="X11:common:Factory" package="fltk"/>
+</package>

@@ -1,0 +1,165 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4b49f8a7afecd9bb0c84715eafa0d6c6</srcmd5>
+    <version>2023.2.0</version>
+    <time>1676990169</time>
+    <user>dimstar_suse</user>
+    <comment>new package: https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/GJMRHKL3JLR7OA72U6KLYEJFQHRGIGJR/</comment>
+    <requestid>1066873</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3fb272293edbd8b8aba6dc4cf70a85da</srcmd5>
+    <version>2023.3.0</version>
+    <time>1679667634</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1073858</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7ddc84d0838cf949c3d81eb01322abc9</srcmd5>
+    <version>2023.3.1</version>
+    <time>1680018636</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1074843</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>089a22cd0b8d5a51ffbb78e579d89f4c</srcmd5>
+    <version>2023.3.2</version>
+    <time>1680884229</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1077866</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a9efdc5bc73b195d2c0e4213b8757c3a</srcmd5>
+    <version>2023.4.0</version>
+    <time>1682618453</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1083144</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9de7717b8fe8ebaacf3ad24e335f487e</srcmd5>
+    <version>2023.5.0</version>
+    <time>1685562927</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release 2023.5.0
+  * Updated interface for selecting self-hosted environment
+- Add SingleMainWindow to .desktop file.
+</comment>
+    <requestid>1090050</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>b42ea2f241639b34e413a62e1c7d019d</srcmd5>
+    <version>2023.5.0</version>
+    <time>1686665351</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092611</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4ba12d02fb1544a6a585863ce93a54e5</srcmd5>
+    <version>2023.5.1</version>
+    <time>1687549941</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1094715</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>cb62e51b38c0f5e27f09678c3f5f1daf</srcmd5>
+    <version>2023.7.0</version>
+    <time>1690370615</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1100208</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3541c6048de9178dd1238415f5f4f078</srcmd5>
+    <version>2023.7.1</version>
+    <time>1690469523</time>
+    <user>anag+factory</user>
+    <comment>mrueckert wrote (1100934),please add the missing newlines,,https://en.opensuse.org/openSUSE:Creating_a_changes_file_(RPM)</comment>
+    <requestid>1100959</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>00847f1be873604063d0403dee5d3aca</srcmd5>
+    <version>2023.8.2</version>
+    <time>1693383599</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1107805</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>837f82ebed26213219dfa8d24f21b01b</srcmd5>
+    <version>2023.8.3</version>
+    <time>1694460085</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1109475</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>5227cabebbdbe6493bf5f26397ad2c16</srcmd5>
+    <version>2023.9.0</version>
+    <time>1695412046</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1112886</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1af4ad1853766eed5e3e00205536ec0c</srcmd5>
+    <version>2023.9.2</version>
+    <time>1697147080</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1117506</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>7e59ffc4b2d44ea664a9d079104b0fb3</srcmd5>
+    <version>2023.10.0</version>
+    <time>1698952884</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1121687</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>1ea62e25be7c302f42d23b46785f58a8</srcmd5>
+    <version>2023.10.1</version>
+    <time>1699388890</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1123969</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>db92334fa80bbdb6453bcce782b9fed5</srcmd5>
+    <version>2023.10.1</version>
+    <time>1701206352</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1129250</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>f12dba6d314c95b99ac52340b67b5741</srcmd5>
+    <version>2023.12.0</version>
+    <time>1701972637</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1131498</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>9be67f37521b19fc3061f29da0272c8b</srcmd5>
+    <version>2023.12.1</version>
+    <time>1703198410</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1134547</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>126d5ed980a21d3c6aa1ac15d9c209f6</srcmd5>
+    <version>2024.1.0</version>
+    <time>1705003497</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1137983</requestid>
+  </revision>
+</revisionlist>

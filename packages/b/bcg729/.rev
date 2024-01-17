@@ -1,0 +1,43 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b87b9fcf82d4af5f283c28aa29b0b1bc</srcmd5>
+    <version>1.0.4</version>
+    <time>1503592150</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>511851</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b1037f32198f58a7f1b5284fe0e9981a</srcmd5>
+    <version>1.0.4</version>
+    <time>1549311707</time>
+    <user>coolo</user>
+    <comment>- Use correct macros for cmake build</comment>
+    <requestid>666995</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>1d2bc379066fb4594c093da450ace5c3</srcmd5>
+    <version>1.0.4</version>
+    <time>1574164698</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>749207</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b5f6b52a75d3f91c67657b6f1d6589db</srcmd5>
+    <version>1.1.1</version>
+    <time>1620653699</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>891601</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>122286b3720d00782cb4886c5e2dbd63</srcmd5>
+    <version>1.1.1</version>
+    <time>1643926533</time>
+    <user>dimstar_suse</user>
+    <comment>- fixed license tag
+</comment>
+    <requestid>950483</requestid>
+  </revision>
+</revisionlist>

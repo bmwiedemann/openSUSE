@@ -1,0 +1,20 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>32869d4969fb69bc3cf0ad2149a94723</srcmd5>
+    <version>2.0.2</version>
+    <time>1682618469</time>
+    <user>dimstar_suse</user>
+    <comment>New package for video processing in octave</comment>
+    <requestid>1083133</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9bff7e3e784daab1075cbbd65c7ce541</srcmd5>
+    <version>2.1.1</version>
+    <time>1704281583</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.1.
+- Update Source0 and URL tags to point to new upstream home.
+</comment>
+    <requestid>1136487</requestid>
+  </revision>
+</revisionlist>

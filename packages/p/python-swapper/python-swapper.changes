@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Wed May  5 17:19:08 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Replace deprecated setup.py call. This additionally avoids
+  the setuptools generated failure because Django's egg-info
+  requirements are not fully fulfilled by the python-Django rpm.
+
+-------------------------------------------------------------------
+Thu Jan 23 08:46:32 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.1.2.post1:
+  * Fix working with newer djangos
+
+-------------------------------------------------------------------
+Thu Aug  1 11:05:09 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.1.1:
+  * Verify Django 2 support in tests (#17 via @gasman).
+  * Test on Python 3.7 and drop Python 2.6 and 3.3.
+
+-------------------------------------------------------------------
+Thu Jun 20 08:37:35 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Initial packaging (v1.1)

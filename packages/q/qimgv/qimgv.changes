@@ -1,0 +1,573 @@
+-------------------------------------------------------------------
+Mon Aug 28 13:43:34 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 1.0.3a+git20230815.4c12677:
+  * Add files via upload
+  * Fix comparison
+  * Fix operator precedence
+
+-------------------------------------------------------------------
+Mon Jul 03 22:22:39 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 1.0.3a+git20230615.e2675f1:
+  * Update build-package.yml
+  * Exiv2::AnyError was removed
+  * toggleScalingFilter now toggles configured filter instead of bilinear
+  * Modify build-package.yaml
+  * Modify build-package.yml
+  * Modify build-package.yml
+
+-------------------------------------------------------------------
+Thu May 18 00:14:39 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 1.0.3a+git20230407.22a8f2e:
+  * debug printouts / wheel test
+  * [Settings] add trackpadDetection toggle #337
+  * [DirectoryManager] make folder sorting optional
+  * upd donate links
+  * [thumbnailview] reduce calls to loadVisibleThumbnails()
+  * [thumbnailview] fix incorrect preload areas
+
+-------------------------------------------------------------------
+Tue Jan 03 18:25:09 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 1.0.3a+git20221107.8ad0a11:
+  * [msys2] update build script
+  * Update MIME-info Database
+
+-------------------------------------------------------------------
+Wed Oct 12 17:07:07 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Cleaning up unused files
+
+-------------------------------------------------------------------
+Tue Sep 27 20:14:58 UTC 2022 - scott.bradnick@suse.com
+
+- Removing 'qimgv-PIE.patch' and 'qimgv-includepath.patch' from use
+- Adding (temporarily?) CFLAGS so build is successful
+- Adding 'cmake(Qt5LinguistTools)' BuildRequires
+- Update to version 1.0.3a+git20220914.d24f3fa:
+  * Update msys2-dll-deps.txt
+  * crash fix
+  * [msys2] update build script
+  * add ukrainian translation
+  * [contextmenu] use SetDefaultConstraint
+  * revert to gl player for now
+  * [settingsdialog] improve icons & minor stuff
+  * [settingsdialog] some design polishing
+  * new option - unlockMinZoom
+  * layout tweaks, finish other settings pages
+  * another settings mockup
+  * [imageviewerv2] add fixed zoom levels option
+  * croppanel - fix width
+  * workaround qt6 scaling issue with QImage::Format_Indexed8
+  * [viewerwidget] 'Up' arrow switches to FIT_WIDTH useful for quickly reading content while browsing with arrows
+  * [contextmenu] layout - scale to always fit contents
+  * Update settings.cpp
+  * fix overlays when using large font
+  * (wip) adjust widget size to accomodate oversized fonts
+  * use qt dpi rounding
+  * settings window update
+  * Core::loadTranslation() - fallback to applicationDirPath()/translations
+  * [settings] readable language names
+  * [settings] language selector, fix .qm loading
+  * [cmake] paths tweak
+  * [cmake] some translation stuff
+  * remove the qopengl dependency, because some platform drivers do not support opengl
+  * Fix an issue that the fast panel displays only nine home directories
+  * Fix exiv2 exception capture
+  * Fixed an issue where the preferences preset button does not display
+  * reserve exiv2 exception capture
+  * Remove QIMGV_PLUGIN_DIR variable definitions
+  * Fix apng cannot play and update translation file
+  * Fix the problem of locales path and add an uninstall item
+  * fix i18n issues during development and provide simplified chinese translation
+
+-------------------------------------------------------------------
+Tue Sep 27 20:13:58 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 1.0.3a+git20220701.cfed4cb9:
+  * [contextmenu] tweak item spacing
+  * [linux] setWallpaper - support kde / gnome
+  * [Core::setWallpaper] use string macros
+  * [thumbivew] always activate item on doubleclick
+  * fix statusbar being in the wrong layout #422
+  * [thumbview] incorrect scene width
+  * [ImageViewerV2] fix offset being (0,0) after setting an empty pixmap
+  * [thumbview] fix showEvent()
+  * [panel] pin button #66 #279 #400 [panel] allow side-positioning #395 [panel] center current image #151
+
+-------------------------------------------------------------------
+Tue Jul 26 16:09:13 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 1.0.3a+git20220621.fa75f65d:
+  * [settings] memory allocation limit #418
+
+-------------------------------------------------------------------
+Tue Jun 21 14:08:47 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 1.0.3a+git20220621.b219278c:
+  * [panel] upd pin icon
+  * pinnable panel #400 #279 #66
+  * [contextmenu] hook up menu config button #406
+  * update 'document-view' icon
+  * [contextmenu] more tweaks
+  * [contextmenu] adjust layout & icons
+
+-------------------------------------------------------------------
+Fri Jun 10 23:51:27 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 1.0.3a+git20220610.a5bcc36a:
+  * [windows] setWallpaper
+  * fix viewport being 1px off in some cases #417
+  * fix bg #417
+  * checkerboard pattern bg option #417
+
+-------------------------------------------------------------------
+Thu Jun 02 14:32:28 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 1.0.3a+git20220602.f034734d:
+  * .
+  * fix wheelEvent
+  * nicer list scrolling; turn off smoothscroll by default
+  * fix #414
+
+-------------------------------------------------------------------
+Wed May 18 23:25:22 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Removing patch files which aren't needed since items were fixed upstream:
+  * qimgv-mpv_v2_fix.patch
+  * qimgv-no_return_in_nonvoid.patch
+
+-------------------------------------------------------------------
+Wed May 11 18:15:36 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 1.0.3a+git20220510.48dd2ea3:
+  * [cmake] fix default flags
+  * check for qt5 first
+  * .
+  * Update build-package.yml
+  * change release tag
+  * fix mpv include path
+  * [windows/msys2] add build script
+  * fix #410
+  * [windows] enable scripts/"open with" functionality #406 #236 #196
+  * [ContextMenu] compact layout
+  * [res] back/forward icons
+  * [ContextMenu] scripts/"open with.." page mockup #406 #236 Fix scripts with qt6
+  * [ImageViewerV2] tweak scroll handling
+  * [ThumbnailViewProxy] fix(?) event order
+  * fix Core::loadPath()
+  * delay model loading (test) #383 #156
+  * fix #384
+  * fix #392
+  * fix window close with qt 6.3 #394
+  * [cmake] qt detection tweak (prefer qt6); remove core5compat
+
+-------------------------------------------------------------------
+Thu May  5 17:08:06 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Commenting out the following 2 patches as the issues appear fixed upstream:
+  * qimgv-mpv_v2_fix.patch
+  * qimgv-no_return_in_nonvoid.patch
+- Cleaning up 'Source0' definition.
+
+-------------------------------------------------------------------
+Thu May 05 16:22:03 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version v1.0.2+git20220504.51278bec:
+  * Create msys2-test.yml
+  * build: Add AppData installation via Cmake
+  * chore: Update qimgv.appdata.xml manifest
+  * Update README.md
+  * fix window close with qt 6.3 #394
+  * fix mpv_opengl_init_params
+  * ShortcutBuilder::processWheelEvent() - fallback to x value #367
+  * open clipboard test #360
+  * fix window size issue
+
+-------------------------------------------------------------------
+Sun Jan 30 15:46:40 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Add qimgv-mpv_v2_fix.patch (fix Factory build)
+
+-------------------------------------------------------------------
+Thu Sep 30 10:54:56 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.0.2
+  Bug fixes:
+  * fix file replace dialog not working
+  * fix trackpad scroll with libinput
+  Misc:
+  * build with Qt 5.12 now works again!
+
+-------------------------------------------------------------------
+Sun Sep 26 19:40:25 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.0.1
+  Bug fixes:
+  * fix mouse wheel not working with libinput 1.19
+  * fix thumbnails not rendering properly when fractional
+    scaling is enabled
+  * fix "Save As" working incorrectly when changing file
+    extension (KDE)
+  * add confirmation when editing from folderview
+  * fix crop selection not working when another aspect ratio is
+    selected first
+  * fix possible crash when opening the context menu
+  * fix WheelUp / WheelDown being swapped around (no user action
+    needed)
+
+-------------------------------------------------------------------
+Wed Sep 22 17:25:37 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.0.0
+  General:
+  * Qt6 support
+  * UI updates
+  * Custom theme support
+  * Printing support
+  * Export to pdf
+  * Improved image format compatibility
+  * Allow image resizing by percentage
+  * Tweak zoom step range
+  * Add absolute zoom step option
+  * Confirmation when overwriting files
+  * Allow Tab key in shortcuts
+  * Add slideshow / shuffle mode indication in window title
+  * Adjacent directory switching (shift+left / shift+right)
+  * Automatic seamless directory switching
+  * Allow more video formats besides webm/mp4
+  * Zoom Lock feature
+  * Shortcut for toggling fullscreen infobar
+  * Show in folder menu option now pre-selects current file
+  Folder view:
+  * Display folders
+  * Display image resolution
+  * Filesystem navigation via Enter / Backspace
+  * Show path bar (will be improved in future)
+  * Allow multi-selection
+  * Mass rotate / delete
+  * Improved drag'n'drop
+  * Renaming now works in folderview
+  * Improved thumbnail loading responsiveness
+  * Unload off-screen thumbnails option
+  Misc:
+  * Fix video playback with the latest mpv
+  * Fix window positioning under some window managers
+  * Allow custom cache folder location
+  * Change default thumbnailer thread count to 4
+  * Fix cursor autohide on wayland
+  * Fix context menu potentially appearing off-screen
+  * Other minor bug fixes
+  * Lots of visual fixes
+- Refresh qimgv-PIE.patch
+- Drop qimgv-pluginpath_1.patch, qimgv-pluginpath_2.patch and
+  qimgv-pluginpath_3.patch
+- Add qimgv-no_return_in_nonvoid.patch
+
+-------------------------------------------------------------------
+Sun May 31 09:12:40 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Drop qimgv-nosharedlib.patch
+- Add qimgv-pluginpath_1.patch, qimgv-pluginpath_2.patch and
+  qimgv-pluginpath_3.patch (fixes boo#1172315)
+
+-------------------------------------------------------------------
+Tue May  5 07:40:11 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.9.1
+  * Fixed incorrect window position on launch (it occasionally
+    shifted upwards by the height of titlebar)
+  * Exif orientation not being applied (regression)
+  * Expand images option not working correctly when expand limit
+    is unset
+  * Building with qt <5.14 now works again
+- Drop qimgv-Qt512.patch (merged upstream)
+
+-------------------------------------------------------------------
+Fri May  1 07:05:43 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.9
+  What's new:
+  * Directory tree & bookmarks in folder view
+  * High quality scaling via OpenCV
+  * Reduced memory usage when viewing zoomed images
+  * Zoom level indicator
+  * Image centering options
+  * Slideshow mode (~ key)
+  * Show directory now highlights current file
+  * Improved touchpad support (see settings > controls)
+  * gif playback controls. Play / pause & frame step, similar to
+    video
+  * Crop panel now has save button. Shortcut is Shift+Enter
+  * Added an option to start into folder view
+  * Support for HEIF / HEIC image format
+  Bug fixes:
+  * Window state is now saved correctly
+  * Various UI fixes
+  * Possible crash fix in thumbnailer
+- Refreshed qimgv-nosharedlib.patch
+- Dropped mpv-qthelper.patch (merged upstream)
+- Added qimgv-includepath.patch and qimgv-Qt512.patch
+
+-------------------------------------------------------------------
+Thu Mar 19 13:12:28 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Added mpv-qthelper.patch to fix build with new mpv
+
+-------------------------------------------------------------------
+Tue Feb 11 07:05:46 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.8.9
+  What's new:
+  * [FolderView] You can now edit / remove files right from
+    folder view.
+  * [FolderView] Scroll animations for keyboard navigation.
+  * [Thumbnailer] Files are now stored as png. This fixes
+    transparency in folder view.
+  * [Panel] Scrollbar indicator.
+  * [Viewer] Configurable zoom step.
+  * [Viewer] Added another way to zoom: hold RMB and scroll.
+  * [Viewer] Added expandLimit option.
+  * Added jpeg save quality option.
+  * Changed some default settings.
+  * Updated theme & icons.
+  Bug fixes:
+  * Several bug fixes related to file operations.
+  * Minor visual fixes.
+  * Keyboard input fixes. All your keys should now work,
+    including symbols accessible through shift.
+  * Removed max zoom option.
+  * [windows] Do not track subfolders.
+  * [Thumbnailer] Fix for video files with % in file path.
+  * [FolderView] Thumbnails are now always uncropped.
+  * [FolderView] Fixes for mouse scrolling.
+  * Fix some keyboard focus issues.
+  * File format detection fixes.
+  * Crash fixes.
+
+- Refreshed qimgv-nosharedlib.patch and qimgv-PIE.patch
+
+- Removed group tag
+
+-------------------------------------------------------------------
+Tue Nov 12 21:30:01 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.8.8
+  * Quick fix for the showDirectory feature
+
+-------------------------------------------------------------------
+Tue Nov 12 18:15:30 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.8.7
+  What's new:
+  * Added volume control actions: toggleMute, volumeUp,
+    volumeDown
+  * Added mute button
+  * Added showDirectory action & context menu entry. Opens
+    current dir in the default file manager.
+  * Configurable text color for fullscreen info bar
+  * Off-screen thumbnails are now unloaded to save memory
+  Bug fixes:
+  * Fixed file format detection issues
+  * Fixed overlays sometimes losing keyboard focus
+  * Fixed moving files (regression)
+  * Fixed notification not being shown on file copy / move
+  * Fixed some temporary files not being removed on windows
+  * Fixed crash on indexed png with transparency
+  * Fixed possible crash when renaming a file
+  Other:
+  * Images are now being saved through a temporary file in case
+    something goes wrong
+  * Fixed incorrect shortcuts for frameStep / frameStepBack
+    (they were switched around)
+
+-------------------------------------------------------------------
+Tue Oct 15 07:45:32 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.8.6
+  * Dramatically improved startup speed.
+  * Added some missing hidpi icons
+
+-------------------------------------------------------------------
+Tue Oct  1 07:53:33 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.8.5
+  * Crop: change behavior to match older versions
+  * VideoControls: fix overlapping with panel
+  * FolderView: scrollbar is now easier to hit while in fullscreen
+  * Fix opening videos without correct mime type
+
+-------------------------------------------------------------------
+Sun Sep 22 04:49:34 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.8.4
+  * fix rename window (regression)
+  * show error when a file operation fails
+
+-------------------------------------------------------------------
+Thu Sep 19 17:53:06 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.8.3
+  New stuff:
+  * triggerScalingFilter action
+  * Support drag'n'dropping out of qimgv
+  Bug Fixes:
+  * Save maximized window state
+  * CMake fixes (VIDEO_SUPPORT option working incorrectly)
+  * Some unicode fixes on windows
+  * Fix lag during sorting mode switch
+  * Fix icon grid behavior when a lot of files are being
+    added/modified from outside
+  * Fix clipboard file copying (via ctrl+c)
+  * Load files with incorrect file extensions (when opened
+    directly)
+
+- Refreshed qimgv-nosharedlib.patch
+
+- Added qimgv-PIE.patch
+
+-------------------------------------------------------------------
+Tue Aug 27 18:01:53 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.8.2
+  *  Fix new shortcuts not working when you update from 0.7.x
+
+-------------------------------------------------------------------
+Mon Aug 26 12:45:36 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.8.1
+  New stuff:
+  * qimgv will now track changes in the current directory. May
+    not work for remote locations like smb shares.
+  * You can now change sorting mode on-the-fly. It Just Werks.
+  * Add sorting mode combobox in folder view, as well as
+    shortcuts Shift + 1 / 2 / 3.
+  * You can now rename files by pressing F2.
+  * Added sxiv-like info bar at the bottom.
+  * Added info panel that shows exif tags. Press I to toggle.
+  * Copy current file to clipboard by pressing Ctrl+C.
+  * Copy current file path by pressing Ctrl+Shift+C.
+  * Force reload file F5.
+  * Context menu now can be accessed by pressing Menu key.
+  * You can now assign a different shortcut to context menu, it
+    is no longer hardcoded to right click.
+  * You can now assign a shortcut to toggle transparency grid
+    display.
+  * Improve folder view performance.
+  * Improve touchpad scrolling when using libinput driver.
+  * A more polished UI theme. I plan on implementing totally
+    configurable theme via config files, but that is for another
+    release.
+  * Split config file in two parts. The main one will not change
+    every time you open program.
+  Bug fixes:
+  * (important one) Fixed long startup times by moving
+    videoplayer into a separate library that is loaded ondemand.
+    I've seen some complaints about this, please give this
+    version a try.
+  * Fix some issues with mouse event handling.
+  * Fix scaling working incorrectly for webp files.
+  * Fix opening wrong directory when passed . as an argument.
+  * Previously when you used "Open dialog" qimgv would sometimes
+    hang. Now it doesn't do that.
+  * Saving PNG files will no longed produce huge file sizes.
+  Notes:
+  * This release may be a bit buggy as it included quite a bit
+    of refactoring. Stuff will get fixed promptly.
+
+- Added qimgv-nosharedlib.patch
+
+-------------------------------------------------------------------
+Wed Jan 30 09:24:01 UTC 2019 - aloisio@gmx.com
+
+- Update to version 0.7.3
+  * [FolderView] Zoom support
+  * [FolderView] Ability to toggle filenames display
+  * [FolderView] Icon grid is now centered
+  * Re-done some of the icons, added HiDPI versions
+  * Startup speed optimizations
+  * Multiple UI related tweaks & bug fixes
+  * Fixed build with Qt 5.9 (regression)
+
+-------------------------------------------------------------------
+Sat Jan 12 19:44:11 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.7.2
+  * Improved HiDPI support
+  * APNG support (via QtApng plugin - included in windows
+    installer)
+  * Optional RAW support via QtRaw plugin
+  * Separate settings for fullscreen / windowed background
+  * UI performance improvements
+  * Updated some icons
+  * Minor startup speed optimizations
+  * Crop UI improvements
+  * Smooth scroll checkbox now works again
+  * Fixed some other bugs
+  * Added --help text
+
+-------------------------------------------------------------------
+Tue Sep 18 07:06:53 UTC 2018 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.7.1
+  * Fix build with Qt 5.9
+  * Fix build with musl libc
+
+-------------------------------------------------------------------
+Wed Aug  8 20:40:52 UTC 2018 - aloisio@gmx.com
+
+- Update to version 0.7.0
+  New stuff:
+  * Folder View mode. Toggle with Enter or Backspace. This mode
+    will be further improved in future
+  * Ability to run commands / shell scripts on a current image
+    + Go to Settings/Scripts
+    + Create a command
+    + Add a shortcut just like for any regular action
+  * Context menu
+  * Video controls
+  * Background transparency & blur support (KDE)
+  * Directory sorting (name, date, file size)
+  * Trash support
+  Improvements:
+  * A new icon
+  * Redesigned settings window
+  * Several ui improvements: auto-hiding top buttons,
+    toggle-able info overlay etc
+  * Updated theme
+  * Exif rotation should now be auto-applied on image load
+  * More responsive image switching (fixed a job management bug
+    in Loader)
+  * Configurable thread count for thumbnailer
+  * Fixed some possible crashes
+  Other:
+  * Added build flags for some features (kde blur and video
+    support)
+
+- Dropped qimgv-0.6-qt511.patch (merged upstream)
+
+-------------------------------------------------------------------
+Mon Jun 11 18:29:58 UTC 2018 - aloisio@gmx.com
+
+- Update to version 0.6.3
+  * You can now mirror images by pressing H / V keys.
+  version 0.6.2
+  * WebM/MP4 playback issues #49
+  version 0.6.1
+  * Initial HiDPI support. May be buggy.
+  * Add scroll animation.
+  * Add a checkbox for .mp4 playback.
+  * Rewrite crop overlay logic.
+  * Workaround for https://bugreports.qt.io/browse/QTBUG-66387
+
+- Dropped qimgv-0.6-qt56.patch and
+  qimgv-0.6-no_return_in_nonvoid.patch (merged upstream)
+
+- Added qimgv-0.6-qt511.patch to fix build with Qt 5.11
+
+-------------------------------------------------------------------
+Fri Jan 12 09:29:51 UTC 2018 - aloisio@gmx.com
+
+- Initial package (v0.6)

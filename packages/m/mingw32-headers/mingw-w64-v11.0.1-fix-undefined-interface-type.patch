@@ -1,0 +1,14 @@
+diff -ur mingw-w64-v11.0.1.orig/mingw-w64-headers/include/msxml.h mingw-w64-v11.0.1/mingw-w64-headers/include/msxml.h
+--- mingw-w64-v11.0.1.orig/mingw-w64-headers/include/msxml.h	2023-04-29 11:15:30.000000000 +0200
++++ mingw-w64-v11.0.1/mingw-w64-headers/include/msxml.h	2023-11-11 15:16:47.191637105 +0100
+@@ -820,6 +820,10 @@
+     END_INTERFACE
+ } IXMLDOMNodeVtbl;
+ 
++#if defined(_WIN32) && !defined(interface)
++#define interface struct
++#endif
++
+ interface IXMLDOMNode {
+     CONST_VTBL IXMLDOMNodeVtbl* lpVtbl;
+ };
