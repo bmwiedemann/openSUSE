@@ -1,0 +1,10 @@
+<package name="libdazzle" project="openSUSE:Factory">
+  <title>libdazzle</title>
+  <description>libdazzle is a collection of fancy features for GLib and Gtk+ that
+aren't quite ready or generic enough for use inside those libraries.
+This is often a proving ground for new widget prototypes. Applications
+such as Builder tend to drive development of this project.
+
+</description>
+  <devel project="GNOME:Factory" package="libdazzle"/>
+</package>

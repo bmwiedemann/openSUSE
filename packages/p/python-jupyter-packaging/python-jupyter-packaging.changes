@@ -1,0 +1,145 @@
+-------------------------------------------------------------------
+Sat Apr  1 20:23:48 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Add jupyter-packaging-pr178-ignoredeprecations.patch
+  * gh#jupyter/jupyter-packaging#178
+  * Fixes deprecation warnings through new setuptools
+
+-------------------------------------------------------------------
+Thu Sep  8 14:55:19 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.12.3
+  * only remove --skip-npm from argv if it is here #161 (@videlec)
+
+-------------------------------------------------------------------
+Wed Jul 13 08:32:37 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Fix spec-cleaner gone wrong
+- Update requirements
+
+-------------------------------------------------------------------
+Wed Jul 13 00:37:49 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+  * remove skip python version 2 (got base>=3.7 anyway)
+  * switch to pyproject build
+  * require hatchling, pip, pytest-timeout
+
+- update to version 0.12.2:
+  * Maintenance and upkeep improvements
+    + Replace deprecated pipes.quote with shlex.quote #153 (@hroncok)
+    + [pre-commit.ci] pre-commit autoupdate #152 (@pre-commit-ci)
+    + [pre-commit.ci] pre-commit autoupdate #151 (@pre-commit-ci)
+
+- changes from version 0.12.1:
+  * Enhancements made
+    + Allow skipping npm with JUPYTER_PACKAGING_SKIP_NPM env #133
+      (@minrk)
+  * Maintenance and upkeep improvements
+    + [pre-commit.ci] pre-commit autoupdate #149 (@pre-commit-ci)
+    + Auto label bot PRs #148 (@blink1073)
+    + Use hatch backend #147 (@blink1073)
+    + [pre-commit.ci] pre-commit autoupdate #146 (@pre-commit-ci)
+    + Use flit build backend #144 (@blink1073)
+    + [pre-commit.ci] pre-commit autoupdate #142 (@pre-commit-ci)
+    + [pre-commit.ci] pre-commit autoupdate #141 (@pre-commit-ci)
+    + [pre-commit.ci] pre-commit autoupdate #140 (@pre-commit-ci)
+    + Update pre-commit #139 (@blink1073)
+    + Clean up CI and Tests #137 (@blink1073)
+  * Other merged PRs
+    + do not install tests as a top-level package #135 (@mgorny)
+
+- changes from version 0.12.0:
+  * Bugs fixed
+    + Update import for new setuptools path (setuptools >=61.0.0) #131
+      (@timkpaine)
+    + Use pathlib rather than os.path #125 (@fcollonval)
+  * Maintenance and upkeep improvements
+    + Add source URL to pypi project page #129 (@manics)
+    + Add pre-commit #126 (@fcollonval)
+    + Stop using distutils.log #123 (@blink1073)
+
+-------------------------------------------------------------------
+Sun Nov 21 14:19:40 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.11.1
+  * Fix running testsuite within virtualenv #111 (@jnahmias)
+
+-------------------------------------------------------------------
+Fri Nov 12 21:35:52 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.11.0
+  * Drop support for Python 3.6 and add support for Python 3.10
+
+-------------------------------------------------------------------
+Sun Oct 17 17:34:08 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.10.6
+  * The import of bdist_wheel is optional, must check for None
+    before using it #106 (@ellert)
+- Release 0.10.5
+  * Fix last one hardcoded unversioned python command #98
+    (@frenzymadness)
+  * Add note about using the build package #104 (@blink1073)
+- Release 0.10.4
+  * Handle missing yarn #99 (@blink1073)
+
+-------------------------------------------------------------------
+Fri Jun 25 18:53:47 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.10.3
+  * Some fixes for issues discovered during packaging #96
+    (@frenzymadness)
+  * Disallow deprecated function return incorrect results for
+    Python 3.10 #97 (@frenzymadness)
+  * Fix handling of module metadata in tests #92 (@blink1073)
+- Release 0.10.2
+  * Fix Handling of npm Parameter #90 (@jtpio)
+- Release 0.10.1
+  * Fix Handling of Skip If Exists #86 (@jtpio)
+- Release 0.10.0
+  * Add more options to Build #84 (@jtpio)
+- Release 0.9.2
+  * Clean up handling of version info #82 (@jtpio)
+
+-------------------------------------------------------------------
+Fri Apr 16 09:44:44 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.9.1
+  * Do not run ensure_targets in develop mode #79 (@jtpio)
+- Release 0.9.0
+  * Add ability to ensure targets #77 (@jtpio)
+  * Add version info helper function #76 (@afshin)
+- Release 0.8.3
+  * Fixes handling of backend #75 (@jtpio)
+- Release 0.8.2
+  * Fix invalid command build #72 (@xmnlab)
+- Release 0.8.1
+  * Fix Usage of install_npm #71 (@afshin)
+- Release 0.8.0
+  * Proposal: Improved integration with setuptools #69 (@afshin)
+  * Update changelog #68 (@blink1073)
+
+-------------------------------------------------------------------
+Mon Mar  1 10:12:52 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.7.12
+  * no newer release notes
+- Release 0.6
+  * Move data files to the correct place on develop install #41
+- Release 0.5
+  * Update readme to mention pep 518 #36
+  * Add handling of data_files in develop mode and add test. #35
+- Drop which-finds-python-executable.patch merged upstream
+
+-------------------------------------------------------------------
+Tue May  5 15:04:08 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Add patch which-finds-python-executable.patch to fix tests
+- Spec-cleaner fixes
+
+-------------------------------------------------------------------
+Mon Nov 18 18:49:56 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Initial version

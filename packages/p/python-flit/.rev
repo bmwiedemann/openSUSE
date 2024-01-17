@@ -1,0 +1,122 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>83683a55ffe5794e3a683b7b9b2a385c</srcmd5>
+    <version>1.3</version>
+    <time>1565694859</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>722810</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0f14fea10cf1bc64188a61595512aad1</srcmd5>
+    <version>1.3</version>
+    <time>1590650229</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>809376</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2b9f58ea17255be19ad6135fec29fcef</srcmd5>
+    <version>3.4.0</version>
+    <time>1635272014</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.4
+  * Changelog since v1.3:
+    https://flit.readthedocs.io/en/latest/history.html
+- Remove upstreamed patches:
+  - merged_pr_278.patch
+</comment>
+    <requestid>925555</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c262a46beb985d86f3a1f9ac363bff35</srcmd5>
+    <version>3.6.0</version>
+    <time>1641855185</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>945234</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>55ca0070bc8b0a182def049049e81f19</srcmd5>
+    <version>3.7.1</version>
+    <time>1648488271</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>964856</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b9d0c0a5e3f7afc80908077e44387ed9</srcmd5>
+    <version>3.8.0</version>
+    <time>1667995011</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1034498</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>ee53cc409a61b582b6c35dbac77a6afe</srcmd5>
+    <version>3.8.0</version>
+    <time>1678482504</time>
+    <user>dimstar_suse</user>
+    <comment>- spec file cleanups</comment>
+    <requestid>1070633</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>8a59ffef0407582b6dfb3b233b2c1e48</srcmd5>
+    <version>3.8.0</version>
+    <time>1682095690</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081920</requestid>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>341ba79d2767b502195905d882d28f4b</srcmd5>
+    <version>3.8.0</version>
+    <time>1683630457</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1085435</requestid>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>8556e9ab24ba8ed435aa7a85c4ff4079</srcmd5>
+    <version>3.8.0</version>
+    <time>1683916456</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1086104</requestid>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>ab905510b74a7811e4ac08d9b86b5550</srcmd5>
+    <version>3.8.0</version>
+    <time>1691762101</time>
+    <user>dimstar_suse</user>
+    <comment>- skip install tests for better interoperability with PEP 668</comment>
+    <requestid>1103286</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ebe70c03c94f0fc2caa97c6e709472a6</srcmd5>
+    <version>3.9.0</version>
+    <time>1694200522</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.9.0:
+  * New options :option:`flit build --use-vcs` and :option:`flit
+    build --no-use-vcs` to enable &amp; disable including all
+    committed files in the sdist. For now --use-vcs is the
+    default, but this is likely to change in a
+    future version, to bring flit build in line with standard
+    build frontends like python -m build
+  * Sdist file names, and the name of the top-level folder in an
+    sdist, are now normalised, in accordance with PEP 625
+  * A statically defined version number can now be parsed from
+    files called version.py, _version.py or __version__.py inside
+    a packge, as well as from __init__.py, so executing code is
+    required in fewer cases
+  * Fix setting the flag for regular files in zip metadata
+  * The timestamp embedded in the gzip wrapper for sdists now
+    defaults to a fixed date, so building an sdist twice on the
+    same machine should produce identical results, even without
+    any special steps.
+
+- skip install tests for better interoperability with PEP 668</comment>
+    <requestid>1109506</requestid>
+  </revision>
+</revisionlist>

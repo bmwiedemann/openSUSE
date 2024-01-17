@@ -1,0 +1,178 @@
+-------------------------------------------------------------------
+Mon Nov  6 03:15:03 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to 2.7.0:
+  * Updated the code, made some code cleanup, and updated translations 
+
+-------------------------------------------------------------------
+Sat Apr 15 18:04:38 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to 2.6.0:
+  * Updated translations and bumped the version
+
+-------------------------------------------------------------------
+Sat Nov  5 18:21:33 UTC 2022 - Shawn Dunn <sfalken@cloverleaf-linux.org>
+
+- Update to 2.5.0:
+  * Fixed the screenshot of window and its decoration with multi-screen setups.
+  * Removed shared libraries.
+  * Removed fix-no-undefined-builderror.patch
+
+-------------------------------------------------------------------
+Sun Aug 28 18:27:32 UTC 2022 - Shawn Dunn <sfalken@cloverleaf-linux.org>
+
+- Add patch to correct failing build.  [gh#lxqt/screengrab#310]
+  * fix-no-undefined-builderror.patch
+- Cleaned up %build section
+- Modified %files, due to new additions from upstream
+
+-------------------------------------------------------------------
+Fri Apr 29 06:31:47 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.4.0:
+  * Used an SVG icon instead of the blurry PNG icon.
+  * Fixed several problems in calling external editors or default app.
+  * Added metadata file.
+- Use -DSG_EXT_EDIT=ON
+- Add screengrab-link.patch
+
+-------------------------------------------------------------------
+Mon Nov  8 10:15:23 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.3.0:
+  * Bumped minimum required Qt version to 5.15 and made a small
+    fix to About dialog.
+
+-------------------------------------------------------------------
+Fri Apr 16 10:40:23 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.2.0:
+  * Code cleanup as well as translations update.
+
+-------------------------------------------------------------------
+Wed Nov  4 14:06:43 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.1.0:
+  * Fixed screen area and window modes with scale factors > 1.
+
+-------------------------------------------------------------------
+Mon Apr 27 18:04:35 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Requires Qt5Xdg 3.5.0 or higher
+
+-------------------------------------------------------------------
+Mon Apr 27 11:31:04 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Changed screengrab.keyring to tsujan's key
+
+-------------------------------------------------------------------
+Sat Apr 25 09:32:28 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Update to version 2.0.1
+  * Only translations are updated.
+
+-------------------------------------------------------------------
+Tue Mar 24 07:03:55 UTC 2020 - Max Lin <mlin@suse.com>
+
+- Disable RPATH for building
+
+-------------------------------------------------------------------
+Thu Jan 23 08:31:15 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.0.0:
+  * Improved translations
+  * Improved user experience (less noise with command line, better
+    screen area instructions and better off-screen screenshots).
+  * Code update and clean-up, including the removal of the
+    deprecated class QDesktopWidget.
+  * Bumped screengrab version to 2.0.0
+  * Updated translations
+  * Removed Qxt
+  * Fixed typo in function name
+  * Set min. Qt version to 5.10.0
+  * Removed upload module (#183)
+  * Removed QDesktopWidget
+  * Removed (duplicated) string casts definitions
+  * Deleted useless warning fixes #174
+  * Make CMakeLists.txt a bit more strict
+  * Updated QtXdg minimum required version
+  * Use the new QtXdg XdgMimeApps class
+  * Improved Screen Area instructions (#162)
+  * Don't use automatic string conversions
+  * Avoid char raw strings literals memory allocations
+
+-------------------------------------------------------------------
+Fri Mar  1 10:26:56 UTC 2019 - mvetter@suse.com
+
+- Update to 1.101:
+  * Only translations was changed
+
+-------------------------------------------------------------------
+Thu Jan 31 10:57:37 UTC 2019 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.100:
+  * Don’t crash with invalid config format
+
+-------------------------------------------------------------------
+Mon Jul 23 11:28:17 UTC 2018 - mvetter@suse.com
+
+- Update to 1.99:
+  * Update translations
+  * Add X11Extras and Network to link target
+- Remove screengrab-1.98-build.patch: upstreamed
+
+-------------------------------------------------------------------
+Tue May 22 11:11:46 UTC 2018 - mvetter@suse.com
+
+- Require Qt >= 5.7.1
+- Rename build.patch to screengrab-1.98-build.patch
+- Add new default config file screengrab.conf
+
+-------------------------------------------------------------------
+Tue May 22 10:58:19 UTC 2018 - adam.majer@suse.de
+
+- cleanup cmake build
+- build.patch: add missing requirements
+
+-------------------------------------------------------------------
+Tue May 22 10:29:04 UTC 2018 - mvetter@suse.com
+
+- Update to 1.98:
+  * Update translations
+  * A more specific condition for Ctrl+C
+  * Filter out Ctrl+C in Delay box
+  * No window screenshot with shaded windows
+  * Always use contents rect Fixes https://github.com/lxqt/screengrab/issues/67
+  * Never scale up beyond real size
+  * Several fixes, especially for the tray icon
+  * __DATE__ and __TIME__ macro are not very helpful for reproducible builds.
+  * Added a minimum default configuration
+  * Handle invalid window screenshots
+  * Corrected a grammar mistake
+  * Always use native (LXQt) file dialog
+  * Just changed the location of a comment
+  * Cleanup and fixes
+  * Some ui polishing
+  * Improve screengrab app behaviour
+  * Drops Qt foreach
+  * fix some uris
+  * Update references in about dialog
+
+-------------------------------------------------------------------
+Sun May 20 09:31:14 UTC 2018 - mvetter@suse.com
+
+- Cleanup with spec-cleaner
+- Adjust URL and tarball link
+- Rename screengrab-keyring.gpg to screengrab.keyring
+- Dont require gpg-offline, let OBS do checking
+- Remove icon cache update statements
+
+-------------------------------------------------------------------
+Sat Feb 10 21:18:34 UTC 2018 - and.november@opensuse.org
+
+- run spec-cleaner
+
+-------------------------------------------------------------------
+Sat Feb 10 13:22:11 UTC 2018 - and.november@opensuse.org
+
+- build with Qt5

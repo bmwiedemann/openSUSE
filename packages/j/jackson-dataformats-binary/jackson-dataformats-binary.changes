@@ -1,0 +1,241 @@
+-------------------------------------------------------------------
+Sat Sep  9 13:40:21 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
+
+-------------------------------------------------------------------
+Mon Aug 21 14:04:06 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Version update to 2.15.2
+  * 2.15.2 (30-May-2023)
+    + #379: (avro) 'logback-test.xml' in wrong place
+      (avro/src/main/resources)
+  * 2.15.0 (23-Apr-2023)
+    + #347: (cbor) Add support for CBOR stringref extension
+      ('CBORGenerator.Feature.STRINGREF')
+    + #356: (cbor) Add 'CBORGenerat.Feature.WRITE_MINIMAL_DOUBLES'
+      for writing 'double's as 'float's if safe to do so
+    + #373: (cbor) Remove optimized 'CBORParser.nextTextValue()'
+      implementation
+  * 2.14.3 (05-May-2023)
+    + #354: (all) Missing license file in Maven package for newer
+      versions
+    + #366: 'CBORGenerator.writeRawUTF8String()' seems to ignore
+      offset
+  * 2.14.1 (21-Nov-2022)
+    + #342: (smile) Possible performance improvement on jdk9+ for
+      Smile decoding
+  * 2.14.0 (05-Nov-2022)
+    + #301: (cbor, smile) Missing configuration methods for
+      format-specific parser/generator features
+    + #310: (avro) Avro schema generation: allow override namespace
+      with new '@AvroNamespace' annotation
+    + #311: (ion) 'IonObjectMapper' does not throw JacksonException
+      for some invalid Ion
+    + #312: (cbor, smile) Short NUL-only keys incorrectly detected
+      as duplicates
+    + #325: (ion) Ensure 'IonReader' instances created within
+      'IonFactory' are always resource-managed
+    + #338: Use passed "current value" in 'writeStartObject()'
+      overload
+    + #341: (ion) Update to Amazon Ion 1.9.5
+
+-------------------------------------------------------------------
+Wed Jun 15 06:32:09 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Version update to 2.13.3
+  * 2.13.3 (14-May-2022)
+    + #317: (ion) IonValueDeserializer does not handle getNullValue
+      correctly for a missing property
+  * 2.13.2 (06-Mar-2022)
+    + No changes since 2.13.1
+  * 2.13.1 (19-Dec-2021)
+    + #302: (ion) 'IllegalArgumentException' in
+      'IonParser.getEmbeddedObject()'
+
+-------------------------------------------------------------------
+Wed Oct 20 09:26:43 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Version update to 2.13.0
+  * 2.13.0 (30-Sep-2021)
+    + #239: (cbor) Should validate UTF-8 multi-byte validity for
+      short decode path too
+    + #248: (ion) Deprecate 'CloseSafeUTF8Writer', remove use
+    + #252: (smile) Make 'SmileFactory' support
+      'JsonFactory.Feature.CANONICALIZE_FIELD_NAMES'
+    + #253: (cbor) Make 'CBORFactory' support
+      'JsonFactory.Feature.CANONICALIZE_FIELD_NAMES'
+    + #264: (cbor) Handle case of BigDecimal with Integer.MIN_VALUE
+      for scale gracefully
+    + #272: (cbor) Uncaught exception in
+      CBORParser._nextChunkedByte2 (by ossfuzzer)
+    + #273: (cbor) Another uncaught exception in
+      CBORParser._nextChunkedByte2 (by ossfuzzer)
+    + #276: (smile) Add
+      'SmileGenerator.Feature.LENIENT_UTF_ENCODING' for lenient
+      handling of broken Unicode surrogate pairs on writing
+    + #283: (avro) Add 'logicalType' support for some 'java.time'
+      types; add 'AvroJavaTimeModule' for native ser/deser
+    + #284: Support base64 strings in 'getBinaryValue()' for CBOR
+      and Smile
+    + #289: (cbor) 'ArrayIndexOutOfBounds' for truncated UTF-8 name
+    + #290: (avro) Generate logicalType switch
+    + #291: (smile) 'ArrayIndexOutOfBounds' for truncated UTF-8 name
+    + #295: (ion) 'jackson-dataformat-ion' does not handle
+      null.struct deserialization correctly
+    + 'Ion-java' dep 1.4.0 -> 1.8.0
+    + Minor change to Ion module registration names
+      (fully-qualified)
+  * 2.12.4 (06-Jul-2021)
+    + #287: (cbor) Uncaught exception in
+      CBORParser._nextChunkedByte2 (by ossfuzzer)
+    + #288: (cbor) Uncaught exception in
+      CBORParser._findDecodedFromSymbols() (by ossfuzzer)
+  * 2.12.3 (12-Apr-2021)
+    + #257: (smile) Uncaught validation problem wrt Smile
+      "BigDecimal" type
+    + #258: (smile) ArrayIndexOutOfBoundsException for malformed
+      Smile header
+    + #259: (cbor) Failed to handle case of alleged String with
+      length of Integer.MAX_VALUE
+    + #260: (smile) Allocate byte[] lazily for longer Smile binary
+      data payloads
+    + #261 (cbor) CBORParser need to validate zero-length byte[] for
+      BigInteger
+    + #263: (smile) Handle invalid chunked-binary-format length
+      gracefully
+    + #265: (smile) Allocate byte[] lazily for longer Smile binary
+      data payloads (7-bit encoded)
+    + #266: (smile)  ArrayIndexOutOfBoundsException in
+      SmileParser._decodeShortUnicodeValue()
+    + #268: (smile) Handle sequence of Smile header markers without
+      recursion
+    + #269: (cbor) CBOR loses 'Map' entries with specific 'long' Map
+      key values (32-bit boundary)
+    + #270: (ion) Ion Polymorphic deserialization in 2.12 breaks wrt
+      use of Native Type Ids when upgrading from 2.8
+  * 2.12.2 (03-Mar-2021)
+    + #236: (cbor) 'ArrayIndexOutOfBoundsException' in 'CBORParser'
+      for invalid UTF-8 String
+    + #240: (cbor) Handle invalid CBOR content like '[0x84]'
+      (incomplete array)
+    + #241: (ion) Respect 'WRITE_ENUMS_USING_TO_STRING' in
+      'EnumAsIonSymbolSerializer'
+    + #242: (ion) Add support for generating IonSexps
+    + #244: (ion) Add support for deserializing IonTimestamps and
+      IonBlobs
+    + #246: (ion) Add 'IonObjectMapper.builderForBinaryWriters()' /
+      '.builderforTextualWriters()' convenience methods
+    + #247: (ion) Enabling pretty-printing fails Ion serialization
+  * 2.12.1 (08-Jan-2021)
+    + #232: (ion) Allow disabling native type ids in IonMapper
+    + #235: (smile) Small bug in byte-alignment for long field names
+      in Smile, symbol table reuse
+  * 2.12.0 (29-Nov-2020)
+    + #204: (ion) Add 'IonFactory.getIonSystem()' accessor
+    + #212: (ion) Optimize 'IonParser.getNumberType()' using
+      'IonReader.getIntegerSize()'
+    + #222: (cbor) Add 'CBORGenerator.Feature.LENIENT_UTF_ENCODING'
+      for lenient handling of Unicode surrogate pairs on writing
+    + #228: (cbor) Add support for decoding unassigned "simple
+      values" (type 7)
+    + Add Gradle Module Metadata
+      (https://blog.gradle.org/alignment-with-gradle-module-metadata)
+  * 2.11.4 (12-Dec-2020)
+    + #186: (cbor) Eager allocation of byte buffer can cause
+      'java.lang.OutOfMemoryError' exception (CVE-2020-28491)
+  * 2.11.3 (02-Oct-2020)
+    + #219: (avro) Cache record names to avoid hitting class loader
+  * 2.11.2 (02-Aug-2020)
+    + #216: (avro) Avro null deserialization
+  * 2.11.1 (25-Jun-2020)
+    + #204: (ion) Add 'IonFactory.getIonSystem()' accessor
+  * 2.11.0 (26-Apr-2020)
+    + #179: (avro) Add 'AvroGenerator.canWriteBinaryNatively()' to
+      support binary writes, fix 'java.util.UUID' representation
+    + #192: (ion) Allow 'IonObjectMapper' with class name annotation
+      introspector to deserialize generic subtypes
+    + #195: Remove dependencies upon Jackson 1.X and Avro's
+      JacksonUtils
+    + #198: 'jackson-databind' should not be full dependency for
+      (cbor, protobuf, smile) modules
+    + #201: 'CBORGenerator.Feature.WRITE_MINIMAL_INTS' does not
+      write most compact form for all integers
+    + 'AvroGenerator' overrides 'getOutputContext()' properly
+  * 2.10.5 (21-Jul-2020)
+    + #204: (ion) Add 'IonFactory.getIonSystem()' accessor
+    + #211: (avro) Fix schema evolution involving maps of non-scalar
+  * 2.10.4 (03-May-2020)
+    + #202: (protobuf) Parsing a protobuf message doesn't properly
+      skip unknown fields
+  * 2.10.2 (05-Jan-2020)
+    + #189: (ion) IonObjectMapper close()s the provided IonWriter
+      unnecessarily
+    + ion-java dependency 1.4.0 -> 1.5.1
+
+-------------------------------------------------------------------
+Wed Nov 20 21:19:33 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Remove plugins unnecessary for RPM builds
+  org.moditect:moditect-maven-plugin
+
+-------------------------------------------------------------------
+Wed Nov 20 18:53:15 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Version update to 2.10.1
+  * 2.10.1 (09-Nov-2019)
+    + #185: Internal parsing of tagged arrays can lead to stack
+      overflow
+    + #188: Unexpected 'MismatchedInputException' for 'byte[]' value
+      bound to 'String' in collection/array
+  * 2.10.0 (26-Sep-2019)
+    + #139: (cbor) Incorrect decimal fraction representation
+    + #148: (protobuf) Add
+      'ProtobufMapper.generateSchemaFor(TypeReference<?>)' overload
+    + #155: (cbor, smile) Inconsistent support for
+      FLUSH_PASSED_TO_STREAM
+    + #157: (all) Add simple module-info for JDK9+, using Moditect
+    + #163: (ion) Update 'ion-java' dependency
+    + #168: (avro) 'JsonMappingException' for union types with
+      multiple Record types
+    + #173: (avro) Improve Union type serialization performance
+    + #177: (avro) Deserialization of "empty" Records as root values
+      fails
+    + #178: (cbor) Fix issue wit input offsets when parsing CBOR
+      from 'InputStream'
+    + #180: (protobuf) Add
+      'ProtobufGenerator.canWriteBinaryNatively()' to support binary
+      writes
+    + asm version upgrade to 6.2.1 (from 5.1)
+    + (cbor, smile) Rewrote handling of "output context" for better
+      field id write support
+  * 2.9.9 (16-May-2019)
+    + #159: (cbor) Some short UTF Strings encoded using
+      non-canonical form
+    + #161: (avro) Deserialize from newer version to older one
+      throws NullPointerException
+  * 2.9.8 (15-Dec-2018)
+    + #140: (protobuf) Stack overflow when generating Protobuf
+      schema on class with cyclic type definition
+    + #153: (smile) Unable to set a compression input/output
+      decorator to a 'SmileFactory'
+  * 2.9.7 (19-Sep-2018)
+    + #142: (ion) 'IonParser.getNumberType()' returns 'null' for
+      'IonType.FLOAT'
+    + #150: Add 'CBORMapper'
+    + #151: Add 'SmileMapper'
+  * 2.9.6 (12-Jun-2018)
+    + #93: (cbor) 'CBORParser' does not accept "undefined value"
+    + #135: (protobuf) Infinite sequence of 'END_OBJECT' tokens
+      returned at end of streaming read
+    + #136: (avro) Fix MapWriteContext not correctly resolving union
+      values
+  * 2.9.5 (26-Feb-2018)
+    + #128 (protobuf) Fix skip unknown WireType.FIXED_64BIT value
+      bug
+    + #129 (cbor) Remove "final" modifier from 'CBORParser'
+
+-------------------------------------------------------------------
+Tue Nov 12 17:00:39 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of jackson-dataformats-binary 2.9.4

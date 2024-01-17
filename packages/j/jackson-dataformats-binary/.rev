@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e333c42285781c96a647d48e5b93726c</srcmd5>
+    <version>2.9.4</version>
+    <time>1573648072</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>747886</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9265fea83f6de5b9086157fdb81c7c27</srcmd5>
+    <version>2.10.1</version>
+    <time>1574636733</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>750014</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2d6592a56f1a186d3eba8beade090e13</srcmd5>
+    <version>2.13.0</version>
+    <time>1634853318</time>
+    <user>dimstar_suse</user>
+    <comment>Version upgrade</comment>
+    <requestid>926593</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4d9f348788818340a25997d5f51a15e7</srcmd5>
+    <version>2.13.3</version>
+    <time>1655396419</time>
+    <user>dimstar_suse</user>
+    <comment>2.13.3</comment>
+    <requestid>982718</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>89ecdff090560ebe141b70bd37ba6216</srcmd5>
+    <version>2.15.2</version>
+    <time>1692795430</time>
+    <user>anag+factory</user>
+    <comment>2.15.2</comment>
+    <requestid>1105103</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>93ecdb27430471ccaafb0f3ea87ff3d4</srcmd5>
+    <version>2.15.2</version>
+    <time>1694344231</time>
+    <user>anag+factory</user>
+    <comment>Reproducible builds improvement</comment>
+    <requestid>1109955</requestid>
+  </revision>
+</revisionlist>

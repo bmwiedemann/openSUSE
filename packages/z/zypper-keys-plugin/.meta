@@ -1,0 +1,5 @@
+<package name="zypper-keys-plugin" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="zypp:plugins" package="zypper-keys-plugin"/>
+</package>

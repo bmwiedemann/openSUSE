@@ -1,0 +1,5 @@
+<package name="dnf-plugins-core" project="openSUSE:Factory">
+  <title>dnf-plugins-core - Core Plugins for DNF</title>
+  <description>This package enhances DNF with builddep, config-manager, debug, debuginfo-install, download, needs-restarting, repoclosure, repograph, repomanage and reposync commands. Additionally provides generate_completion_cache passive plugin.</description>
+  <devel project="system:packagemanager:dnf" package="dnf-plugins-core"/>
+</package>

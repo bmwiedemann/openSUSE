@@ -1,0 +1,6 @@
+<package name="perl-HTTP-Server-Simple-PSGI" project="openSUSE:Factory">
+  <title>PSGI handler for HTTP::Server::Simple</title>
+  <description>HTTP::Server::Simple::PSGI is a HTTP::Server::Simple based HTTP server that can run PSGI applications. This module only depends on HTTP::Server::Simple, which itself doesn't depend on any non-core modules so it's best to be used as an embedded web server.</description>
+  <devel project="devel:languages:perl" package="perl-HTTP-Server-Simple-PSGI"/>
+  <url>https://metacpan.org/release/HTTP-Server-Simple-PSGI</url>
+</package>

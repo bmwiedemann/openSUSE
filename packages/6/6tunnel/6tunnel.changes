@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Tue Aug 16 12:23:49 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add 9e4119f03f57eec67b97dddbf09d363b638791dc.patch to be
+  able to switch to python3 
+
+-------------------------------------------------------------------
+Mon Oct 21 20:07:55 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.13
+  * Updated help message.
+  * Avoid segfault in "-f" mode.
+  * Support automake's "make check" target.
+- Run testsuite
+
+-------------------------------------------------------------------
+Thu Dec  6 21:01:57 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Generalize description.
+
+-------------------------------------------------------------------
+Sat Dec  1 14:56:43 UTC 2018 - mardnh@gmx.de
+
+- Initial package for 6tunnel, version 0.12

@@ -1,0 +1,83 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a6862d0174c3e94202c25dcae683b6ab</srcmd5>
+    <version>2.8.1</version>
+    <time>1575382860</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>752911</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e1cd030ab43029174da04091788f6906</srcmd5>
+    <version>2.8.1</version>
+    <time>1589403381</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>805114</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>09630d77dfd776b4f844ac4be3598d3f</srcmd5>
+    <version>3.0</version>
+    <time>1614108045</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>874330</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6df469292db57b76aef1d6b336830345</srcmd5>
+    <version>3.1.1</version>
+    <time>1638560138</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.1:
+  * Considerable code and CI/CD cleanup
+  * Per-field configuration of Whoosh
+  * Whoosh faceting and other improvements
+  * ElasticSearch 7 support
+  * ElasticSearch 5 .models() support
+  * Minutes granularity for update_index management command
+  * update_index fix
+- Switch from using nose to pytest-django
+- Drop {Build,}Requires on six</comment>
+    <requestid>935318</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>df97a3446dfb9c993c2c4f080857208a</srcmd5>
+    <version>3.1.1</version>
+    <time>1640617642</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>942733</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>63cccd466ef4fdd65a45135f99d08c2b</srcmd5>
+    <version>3.1.1</version>
+    <time>1641555995</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>944609</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b6ab41aad97395ebbd0ba672e3904e7f</srcmd5>
+    <version>3.2.1</version>
+    <time>1663515146</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1004402</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>14b4182cbf61e5d5549bcbe680b58157</srcmd5>
+    <version>3.2.1</version>
+    <time>1687796204</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1095404</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>41b014ef1a6cbce45e247808d372a54b</srcmd5>
+    <version>3.2.1</version>
+    <time>1705255358</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1138421</requestid>
+  </revision>
+</revisionlist>

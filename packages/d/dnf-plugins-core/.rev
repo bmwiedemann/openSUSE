@@ -1,0 +1,300 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>14b35270e2bf44e833588f082777af1b</srcmd5>
+    <version>2.1.3</version>
+    <time>1503925835</time>
+    <user>dimstar_suse</user>
+    <comment>Initial import of dnf-plugins-core into Factory</comment>
+    <requestid>517042</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3bb64c29cc9a615514beb6b0af0d2072</srcmd5>
+    <version>2.1.5</version>
+    <time>1507755721</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.5:
+  + Fix issues with the '--arch' in 'dnf download' (rh#1476834)
+  + Fix 'dnf repoclosure' when used with '--check' and '--best'
+  + Use preconfigure hook from DNF for 'local' plugin
+- Split lang data into lang subpackage
+</comment>
+    <requestid>533002</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>1cf14ac659172a309223e71ccb918911</srcmd5>
+    <version>2.1.5</version>
+    <time>1516634337</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build-time detection of Python 2
+  * Add patch: dnf-plugins-core-2.1.5-Fix-detection-of-Python-2.patch
+</comment>
+    <requestid>567910</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>ed023d66ca234a69da4d4cb009175070</srcmd5>
+    <version>2.1.5</version>
+    <time>1524576867</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable COPR plugin with openSUSE support backported (rh#1570418)
+  * Add patch: 0001-copr-Add-openSUSE-support.patch
+</comment>
+    <requestid>600153</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b47753dc18459732cffac7f5edb40fa9</srcmd5>
+    <version>4.0.3</version>
+    <time>1550668228</time>
+    <user>maxlin_factory</user>
+    <comment>- Rebase to version 4.0.3:
+  + Compatible with DNF 4.0.0+
+  + Reworked COPR plugin
+  + New changelogs and repodiff plugins/subcommands
+- Drop Python 2 subpackages
+- Drop unneeded patches:
+  * 0001-copr-Add-openSUSE-support.patch
+  * dnf-plugins-core-2.1.5-Fix-detection-of-Python-2.patch
+- Backport fixes from upstream to build and run plugins
+  * 0001-Fix-traceback-when-local-rpm-url-is-passed.patch
+  * 0002-reposync-fix-up-path-traversal-prevention.patch
+  * 0003-doc-Use-the-correct-sphinx-build-binary-for-Python-2.patch
+- Temporarily drop needs-restarting files from dnf-utils until
+  zypper splits them out into zypper-needs-restarting subpackage
+  (gh#openSUSE/zypper#254)
+- Add conflicts to yum-changelog and zypper-needs-restarting to
+  dnf-utils</comment>
+    <requestid>673182</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2bd22dd11072abe546f22112800cb857</srcmd5>
+    <version>4.0.6</version>
+    <time>1554115197</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.6
+  + [download] Do not download src without ``--source`` (rh#1666648)
+  + Use improved config parser that preserves order of data
+  + [leaves] Show multiply satisfied dependencies as leaves
+  + [download] Fix downloading an rpm from a URL (rh#1678582)
+  + [download] Fix problem with downloading src pkgs (rh#1649627)
+- Drop backported fixes that are part of this release
+  * 0001-Fix-traceback-when-local-rpm-url-is-passed.patch
+  * 0002-reposync-fix-up-path-traversal-prevention.patch
+  * 0003-doc-Use-the-correct-sphinx-build-binary-for-Python-2.patch
+- Restore needs-restarting files to the dnf-utils package
+- Add conflicts to zypper &lt; 1.14.26 to dnf-utils package to prevent file conflicts
+</comment>
+    <requestid>690195</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>7ee7c663b3e2915fe65b49bb427184e3</srcmd5>
+    <version>4.0.6</version>
+    <time>1556475100</time>
+    <user>maxlin_factory</user>
+    <comment>- Backport fix for copr disable command traceback (rh#1693551)
+  * Patch: 0001-Fix-copr-disable-command-traceback-RhBug-1693551.patch
+- Backport doc fix to state repoid as repo identifier for config-manager (rh#1686779)
+  * Patch: 0002-doc-state-repoid-as-repo-identifier-of-config-manage.patch
+</comment>
+    <requestid>698420</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4fc2efa94df43633ce2d7b576f7f5953</srcmd5>
+    <version>4.0.7</version>
+    <time>1558690393</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.7
+  + Fix: copr disable command traceback (rh#1693551)
+  + [doc] state repoid as repo identifier of config-manager (rh#1686779)
+  + Fix download of src when not the latest requested (rh#1649627)
+- Add missing dependencies on dateutil and distro Python modules
+- Drop backported fixes that are part of this release
+  * 0001-Fix-copr-disable-command-traceback-RhBug-1693551.patch
+  * 0002-doc-state-repoid-as-repo-identifier-of-config-manage.patch
+</comment>
+    <requestid>705103</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>3777561273af4df29e50eb31b8f1e2b1</srcmd5>
+    <version>4.0.12</version>
+    <time>1575382805</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.12
+  + [reposync] Enable timestamp preserving for downloaded data (rh#1688537)
+  + [reposync] Download packages from all streams (rh#1714788)
+  + Make yum-copr manpage available (rh#1673902)
+  + [needs-restarting] Add ``--reboothint`` option (rh#1192946) (rh#1639468)
+  + Set the cost of ``_dnf_local`` repo to 500, to make it preferred to normal repos
+  + [builddep] Report all rpm errors (rh#1663619, rh#1658292, rh#1724668)
+  + [config-manager] --setopt: Fix crash with &quot;--save --dump&quot;
+  + [config-manager] --setopt: Add globs support to repoid
+  + [config-manager] --setopt=key=value is applied only to the main config
+  + [config-manager] --setopt and empty list of repositories (rh#1702678)
+  + [config-manager] --setopt: Add check for existence of input repositories
+  + debuginfo-install: Update both debuginfo and debugsource for updated package (rh#1586084)
+  + copr: Support multilib repofiles (rh#1393664)
+  + copr: Fix disable if copr instance has non-default port
+  + copr: Fix repoid when using subdirectories in copr project
+  + [spec] Specify attributes for ghost file (rh# 1754463)
+  + download: add the --debugsource option (rh#1637008)
+  + Fix incorrect handling richdeps in buildep (rh#1756902)
+  + [reposync] Add --urls option (rh#1686602)
+  + [versionlock] Add --raw option (rh#1645564)
+  + [doc] move manpages for plugins to &quot;dnf-PLUGIN&quot; (rh#1706386)
+  + Add new plugin post-transaction-actions (rh#967264)
+  + [builddep] Add --skip-unavailable switch (rh#1628634)
+  + [versionlock] Don't apply excludes on @System (rh#1726712)
+  + [reposync] Ignore only modular excludes (rh#1750273)
+- Rename dnf-utils package to yum-utils and have it replace removed package in Tumbleweed</comment>
+    <requestid>752752</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>22300091a11b5d14c9ed23b6c2dc380a</srcmd5>
+    <version>4.0.12</version>
+    <time>1576505974</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing bug reference for 4.0.7 update changelog entry</comment>
+    <requestid>757118</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>97f9868196a4f1d576b1dae817f728b2</srcmd5>
+    <version>4.0.13</version>
+    <time>1579463870</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.13
+  + Fix: config_manager respect config file location during save
+  + Redesign reposync --latest for modular system (rh#1775434)
+  + [reposync] Fix --delete with multiple repos (rh#1774103)
+  + [doc] Skip creating and installing migrate documentation for Python 3+
+  + [config-manager] Allow use of --set-enabled without arguments (rh#1679213)
+  + [versionlock] Prevent conflicting/duplicate entries (rh#1782052)
+- Deconflict with zypper-needs-restarting on SLE to unblock PackageHub updates</comment>
+    <requestid>765594</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>49a4b2d85689240cdae3d72733c2846e</srcmd5>
+    <version>4.0.14</version>
+    <time>1582819065</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.14
+  + Fix conflict for dnf download --resolve (rh#1787908)
+  + config-manager calls parser error when without options (rh#1782822)
+  + Update reposync.py with --norepopath option
+  + Fix: don't open stdin if versionlock is missing (rh#1785563)</comment>
+    <requestid>779945</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>eab0f2f8b1d0bacd320037a2143a5c08</srcmd5>
+    <version>4.0.17</version>
+    <time>1594817639</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.17
+  + Support remote files in dnf builddep
+  + [download] Respect repo priority (rh#1800342)
+  + [versionlock] Take obsoletes into account (rh#1627124)
+  + Move args &quot;--set-enabled&quot;, &quot;--set-disabled&quot; from DNF (rh#1727882)
+  + Add missing arguments --set-enabled/--set-diabled into error message
+  + Warn when --enablerepo/--disablerepo args were passed (rh#1727882)
+  + [copr] add support for enabling/disabling runtime dependencies
+  + [copr] no-liability text to be always printed
+  + [repomanage] Add modular support (rh#1804720)
+  + [needs-restarting] add options using .conf file (rh#1810123)
+- Fix author identity in changes
+- test package and test it with pytest (drop dependency on nose)</comment>
+    <requestid>819224</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e404069e7b539184a7c87955804db265</srcmd5>
+    <version>4.0.18</version>
+    <time>1603880764</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.18
+  + [needs-restarting] Fix plugin fail if needs-restarting.d does not exist
+  + [needs-restarting] add kernel-rt to reboot list
+  + Fix debug-restore command
+  + [config-manager] enable/disable comma separated pkgs (rh#1830530)
+  + [debug] Use standard demands.resolving for transaction handling
+  + [debug] Do not remove install-only packages (rh#1844533)
+  + return error when dnf download failed
+  + [reposync] Add latest NEVRAs per stream to download (rh#1833074)
+  + copr: don't try to list runtime dependencies</comment>
+    <requestid>843804</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>32cabf77b6819f3fd26261506a628e84</srcmd5>
+    <version>4.0.19</version>
+    <time>1612378553</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.19
+  + copr: allow only 2 arguments with copr enable command
+  + [needs-restarting] fix -r in nspawn containers (rh#1913962, rh#1914251)
+  + Add --gpgcheck option to reposync (rh#1856818) (rh#1856818)
+  + Re-introduce yum-groups-manager functionality (rh#1826016)
+  + [repomanage] Don't use cached metadata (rh#1899852)
+  + [needs-restarting] add -s to list services (rh#1772939) (rh#1772939)</comment>
+    <requestid>868795</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>69a33535663a3839d40bdc751307fcb9</srcmd5>
+    <version>4.0.21</version>
+    <time>1619031606</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>887047</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>9a5573b1f848d5647fdd5245c290ccbe</srcmd5>
+    <version>4.0.22</version>
+    <time>1630093427</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.0.22
+  + [repomanage] Allow running only with metadata
+  + [repomanage] Enhance documentation (rh#1898293)
+  + [versionlock] Locking obsoleted package does not make the obsoleter unavailable (rh#1957280)
+  + [versionlock] Work correctly with packages with minorbump part of release (rh#1961217)</comment>
+    <requestid>914476</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b66647c16a82e84a00e2ffa0b4195cba</srcmd5>
+    <version>4.0.24</version>
+    <time>1635956795</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.0.24
+  + [copr] Avoid using deprecated function distro.linux_distribution() (rh#2011550)
+  + [copr] don't traceback on empty lines in /etc/os-release
+  + [leaves] Show strongly connected components
+  + [needs-restarting] Fix wrong boot time (rh#1960437)
+  + [playground] Disable playground command, since it doesn't work</comment>
+    <requestid>929012</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>3a0a442bb6ecb24085f9fc3fc84bb66b</srcmd5>
+    <version>4.1.0</version>
+    <time>1649014247</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.1.0
+  + Add a new subpackage with modulesync command. The command downloads
+    packages from modules and/or creates a repository with modular data. (rh#1868047)
+  + [groups-manager] Use full NEVRA (not only name) for matching packages (rh#2013633)
+  + [repoclosure] Print counts of missing dependencies
+  + [reposync] Do not stop downloading packages on the first error (rh#2009894)
+  + [versionlock] Fix: Multiple package-name-spec arguments don't lock correctly (rh#2001039) (rh#2013324)
+  + [versionlock] Update documentation for adding specifi version (rh#2013332)
+</comment>
+    <requestid>965258</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>bfbf7026b070f9a2c50a127690410bcf</srcmd5>
+    <version>4.3.1</version>
+    <time>1665929380</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1011174</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>30651425762d17bdff48e7a8c336dcab</srcmd5>
+    <version>4.3.1</version>
+    <time>1677351304</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1067647</requestid>
+  </revision>
+</revisionlist>

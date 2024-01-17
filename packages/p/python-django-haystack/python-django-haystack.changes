@@ -1,0 +1,75 @@
+-------------------------------------------------------------------
+Fri Jan 12 22:25:30 UTC 2024 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+
+- Add gh-pr-1935_importlib.patch to repair DistributionNotFound
+  error caused by deprecated pkg_resources APIs
+
+-------------------------------------------------------------------
+Sun Jun 25 08:05:46 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Use sle15_python_module_pythons
+
+-------------------------------------------------------------------
+Sun Sep 18 02:31:29 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v3.2.1
+  * Fix Django 4.0 compatibility
+  * No changelog maintained upstream
+
+-------------------------------------------------------------------
+Fri Jan  7 03:47:57 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Skip Tumbleweed Python 3.6 incompatible with Django 4
+
+-------------------------------------------------------------------
+Sun Dec 26 23:30:09 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Use django-codemod to make Django 4 compatible
+- Remove unnecessary build dependency coverage
+
+-------------------------------------------------------------------
+Fri Dec  3 04:17:14 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.1.1:
+  * Considerable code and CI/CD cleanup
+  * Per-field configuration of Whoosh
+  * Whoosh faceting and other improvements
+  * ElasticSearch 7 support
+  * ElasticSearch 5 .models() support
+  * Minutes granularity for update_index management command
+  * update_index fix
+- Switch from using nose to pytest-django
+- Drop {Build,}Requires on six
+
+-------------------------------------------------------------------
+Mon Feb 22 03:32:42 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Add Suggests for backends pysolr and elasticsearch
+- Remove missing build dependency on python36-GDAL
+- Remove merged django3-support.patch
+- Update to v3.0
+  * See https://github.com/django-haystack/django-haystack/blob/master/docs/changelog.rst
+    for partial changelog since v2.8.1
+- Fix 2.4.1->2.8.1 in old changelog entry
+
+-------------------------------------------------------------------
+Wed May 13 08:59:56 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- add upstream patch django3-support.patch
+  * using six replace django-six
+
+-------------------------------------------------------------------
+Mon Dec  2 10:47:10 UTC 2019 - pgajdos@suse.com
+
+- call spec-cleaner
+
+-------------------------------------------------------------------
+Wed Nov  6 12:38:34 UTC 2019 - pgajdos@suse.com
+
+- do not use setup.py test
+
+-------------------------------------------------------------------
+Tue Oct  1 12:01:53 UTC 2019 - pgajdos@suse.com
+
+- initial version 2.8.1, needed by python-HyperKitty [SLE-7686]
+

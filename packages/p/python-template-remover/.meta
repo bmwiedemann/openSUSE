@@ -1,0 +1,5 @@
+<package name="python-template-remover" project="openSUSE:Factory">
+  <title></title>
+  <description>Remove the template markup from html files</description>
+  <devel project="devel:languages:python" package="python-template-remover"/>
+</package>

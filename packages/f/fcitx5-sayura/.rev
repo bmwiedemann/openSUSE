@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>53cc060982a7bf5663db64ab2093ca4a</srcmd5>
+    <version>5.0.4</version>
+    <time>1644531124</time>
+    <user>dimstar_suse</user>
+    <comment>sayura input method for fcitx5</comment>
+    <requestid>952963</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3a0bbb1b2d0253f9a9a2fb0d9e663349</srcmd5>
+    <version>5.0.6</version>
+    <time>1647458610</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>962156</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5ac2bce6f6d9a119091e1c3b70ca65e5</srcmd5>
+    <version>5.1.0</version>
+    <time>1692611093</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1104895</requestid>
+  </revision>
+</revisionlist>
