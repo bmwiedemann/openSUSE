@@ -1,0 +1,64 @@
+-------------------------------------------------------------------
+Thu Oct 19 14:38:48 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Clean up the SPEC file
+
+-------------------------------------------------------------------
+Thu Oct 19 12:49:00 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.8.2
+  * Adds pydata_google_auth.load_service_account_credentials() function to get 
+    service account credentials from the specified JSON path.
+  * Adds support for Python 3.10.
+  * Default use_local_webserver to True.
+  * Adds ability to provide redirect uri.
+  * Adds decision logic to handle use cases where a user may not have the ability 
+    to log in via an Out of Band authentication flow.
+  * Add optional colab specific ADC
+- Add no-six.patch to get rid of six dependency
+  * with backwards compatibility for the upstream
+
+-------------------------------------------------------------------
+Mon Jul 13 10:16:25 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 1.1.0
+  * Try a range of ports between 8080 and 8090 when ``use_local_webserver`` is
+    ``True``. (:issue:`35`)
+  * Mark package as 1.0, generally available.
+  * Update introduction with link to instructions on creating a Google Cloud
+    project. (:issue:`18`)
+
+-------------------------------------------------------------------
+Mon Apr 20 10:44:08 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build without python2
+
+-------------------------------------------------------------------
+Mon Feb 10 15:14:01 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.3.0
+  * Add python -m pydata_google_auth CLI for working with user credentials
+
+-------------------------------------------------------------------
+Thu Jan 30 15:20:11 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.2.1
+  * Re-enable ``auth_local_webserver`` in ``default`` method. Show warning,
+    rather than fallback to console.
+- Update to 0.2.0
+  + Deprecations
+    * **Deprecate** ``auth_local_webserver`` argument in favor of
+      ``use_local_webserver`` argument
+  + New Features
+    * Adds :func:`pydata_google_auth.save_user_credentials` function to get user
+      credentials and then save them to a specified JSON path.
+  + Bug Fixes
+    * Update OAuth2 token endpoint to latest URI from Google.
+    * Don't raise error when the ``APPDATA`` environment variable isn't set on
+      Windows.
+
+
+-------------------------------------------------------------------
+Mon Jul 22 17:26:24 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Initial version

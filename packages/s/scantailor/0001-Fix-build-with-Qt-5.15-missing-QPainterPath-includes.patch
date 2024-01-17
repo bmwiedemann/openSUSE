@@ -1,0 +1,112 @@
+From c22c5a86f8ae88272c8443de8728c423837907b2 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 31 May 2020 00:52:14 +0200
+Subject: [PATCH] Fix build with Qt 5.15 (missing QPainterPath includes)
+
+Thanks-to: Petr Zima <zima@matfyz.cz>
+---
+ ImageViewBase.cpp                           | 2 ++
+ filters/output/OutputGenerator.cpp          | 3 ++-
+ filters/page_layout/ImageView.cpp           | 3 ++-
+ filters/select_content/ContentBoxFinder.cpp | 3 ++-
+ zones/ZoneContextMenuInteraction.cpp        | 1 +
+ zones/ZoneDefaultInteraction.cpp            | 1 +
+ 6 files changed, 10 insertions(+), 3 deletions(-)
+
+diff --git a/ImageViewBase.cpp b/ImageViewBase.cpp
+index 6863f13..bdfebd4 100644
+--- a/ImageViewBase.cpp
++++ b/ImageViewBase.cpp
+@@ -21,6 +21,8 @@
+ #include <QGLWidget>
+ #include <QMouseEvent>
+ #include <QPaintEngine>
++#include <QPainter>
++#include <QPainterPath>
+ #include <QPointer>
+ #include <QScrollBar>
+ #include <QSettings>
+diff --git a/filters/output/OutputGenerator.cpp b/filters/output/OutputGenerator.cpp
+index 91c43dc..ca5f1ae 100644
+--- a/filters/output/OutputGenerator.cpp
++++ b/filters/output/OutputGenerator.cpp
+@@ -25,6 +25,7 @@
+ #include <imageproc/ImageCombination.h>
+ #include <QDebug>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QtCore/QSettings>
+ #include <boost/bind.hpp>
+ #include "DebugImages.h"
+@@ -2666,4 +2667,4 @@ QImage OutputGenerator::posterizeImage(const QImage& image, const QColor& backgr
+                  posterizationOptions.isForceBlackAndWhite(), 0, qRound(background_color.lightnessF() * 255))
+       .getImage();
+ }
+-}  // namespace output
+\ No newline at end of file
++}  // namespace output
+diff --git a/filters/page_layout/ImageView.cpp b/filters/page_layout/ImageView.cpp
+index eb1f78f..d060d77 100644
+--- a/filters/page_layout/ImageView.cpp
++++ b/filters/page_layout/ImageView.cpp
+@@ -27,6 +27,7 @@
+ #include <imageproc/Transform.h>
+ #include <QMouseEvent>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <boost/bind.hpp>
+ #include <boost/lambda/lambda.hpp>
+ #include "ImagePresentation.h"
+@@ -1160,4 +1161,4 @@ void ImageView::enableMiddleRectInteraction(const bool state) {
+ bool ImageView::isShowingMiddleRectEnabled() const {
+   return (!m_nullContentRect && m_settings->isShowingMiddleRectEnabled()) || m_alignment.isNull();
+ }
+-}  // namespace page_layout
+\ No newline at end of file
++}  // namespace page_layout
+diff --git a/filters/select_content/ContentBoxFinder.cpp b/filters/select_content/ContentBoxFinder.cpp
+index 7c0d62e..d8f24e7 100644
+--- a/filters/select_content/ContentBoxFinder.cpp
++++ b/filters/select_content/ContentBoxFinder.cpp
+@@ -19,6 +19,7 @@
+ #include "ContentBoxFinder.h"
+ #include <QDebug>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <cmath>
+ #include <queue>
+ #include "DebugImages.h"
+@@ -1353,4 +1354,4 @@ const SEDM& ContentBoxFinder::Garbage::sedm() {
+ 
+   return m_sedm;
+ }
+-}  // namespace select_content
+\ No newline at end of file
++}  // namespace select_content
+diff --git a/zones/ZoneContextMenuInteraction.cpp b/zones/ZoneContextMenuInteraction.cpp
+index 0cfbb28..0bedb41 100644
+--- a/zones/ZoneContextMenuInteraction.cpp
++++ b/zones/ZoneContextMenuInteraction.cpp
+@@ -21,6 +21,7 @@
+ #include <QMenu>
+ #include <QMessageBox>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QSignalMapper>
+ #include <boost/bind.hpp>
+ #include "ImageViewBase.h"
+diff --git a/zones/ZoneDefaultInteraction.cpp b/zones/ZoneDefaultInteraction.cpp
+index f1f3eb8..5fd1aa9 100644
+--- a/zones/ZoneDefaultInteraction.cpp
++++ b/zones/ZoneDefaultInteraction.cpp
+@@ -19,6 +19,7 @@
+ #include "ZoneDefaultInteraction.h"
+ #include <QMouseEvent>
+ #include <QPainter>
++#include <QPainterPath>
+ #include "ImageViewBase.h"
+ #include "SerializableSpline.h"
+ #include "ZoneInteractionContext.h"
+-- 
+2.26.2
+

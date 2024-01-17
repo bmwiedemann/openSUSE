@@ -1,0 +1,102 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3b4214d8f57d31ccf1e07c2a4f8ae2b3</srcmd5>
+    <version>0.10.4</version>
+    <time>1644007740</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>951393</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b3294a9a15cf870b3563fa409f38dfd4</srcmd5>
+    <version>0.10.4</version>
+    <time>1647974377</time>
+    <user>dimstar_suse</user>
+    <comment>- Obsolete python3-hg-git as it is not the Factory package anymore
+
+- Fix failing tests.</comment>
+    <requestid>963764</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6a561eb36b31e0272b2cb5f841746c14</srcmd5>
+    <version>1.0.0</version>
+    <time>1651605542</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>974453</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>2be8eef24e4cd13eeeb16a97636f300f</srcmd5>
+    <version>1.0.0</version>
+    <time>1655582763</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>983475</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>081c6be27b1deb0115a25a906f816938</srcmd5>
+    <version>1.0.0</version>
+    <time>1657114914</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>986887</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>59751ac2d397e1ea2a08782358c89a55</srcmd5>
+    <version>1.0.1</version>
+    <time>1670867954</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 1.0.1 (forwarded request 1042423 from develop7)</comment>
+    <requestid>1042424</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>cee2d0b53ab6f55c3ab3b8eed162b4b6</srcmd5>
+    <version>1.0.1</version>
+    <time>1675357718</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1062540</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>6583ac40ec16428e75cb6f032fd4a5cc</srcmd5>
+    <version>1.0.1</version>
+    <time>1675956152</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1063909</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5eea68f66f3bffbe78f7e1a26c9d02a8</srcmd5>
+    <version>1.0.2</version>
+    <time>1678125397</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1069643</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>6fc679c803fb64fbe314886131c354a8</srcmd5>
+    <version>1.0.2</version>
+    <time>1693235646</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1105967</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>31ab73c690c8ff28d8170f2b5e508d5a</srcmd5>
+    <version>1.0.2</version>
+    <time>1696760423</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1116248</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>08130cb3146c45a37b94d236398b0aa3</srcmd5>
+    <version>1.0.3</version>
+    <time>1699562171</time>
+    <user>anag+factory</user>
+    <comment>- hg-git 1.0.3
+- drop fix_mercurial_6.5_compatibility.patch
+</comment>
+    <requestid>1124540</requestid>
+  </revision>
+</revisionlist>

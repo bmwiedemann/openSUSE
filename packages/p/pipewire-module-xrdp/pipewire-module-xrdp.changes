@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Mon Aug 21 23:55:32 UTC 2023 - Jason Craig <os@jacraig.com>
+
+- don't include static lib
+- properly handle .desktop file
+- add variables for commit hash
+
+-------------------------------------------------------------------
+Thu Aug 17 00:57:08 UTC 2023 - Jason Craig <os@jacraig.com>
+
+- initial package

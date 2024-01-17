@@ -1,0 +1,150 @@
+-------------------------------------------------------------------
+Thu Nov  9 12:17:24 UTC 2023 - Andrei Dziahel <develop7@develop7.info>
+
+- hg-git 1.0.3
+  
+  This is a minor release, focusing on bugs and compatibility.
+
+  * Fix tests with Mercurial 6.5
+  * Handle failures to save refs, such as when they use characters
+    forbidden by the file system; this is most easily noticed on Windows
+    and macOS. (#397)
+  * Fix pulling annotated tags with `-r`/`--rev`.
+- drop fix_mercurial_6.5_compatibility.patch
+
+-------------------------------------------------------------------
+Sat Oct  7 22:17:42 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
+
+- Add BuildRequires that makes /usr/bin/ssh available in tests.
+
+-------------------------------------------------------------------
+Fri Aug 25 22:02:17 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
+
+- Make tests actually run by adding "BuildRequires: python3-dulwich".
+- Add unreleased upstream patch fix_mercurial_6.5_compatibility.patch.
+
+-------------------------------------------------------------------
+Mon Mar  6 13:02:39 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 1.0.2.
+  * Fix --source/-s argument to transplant with Hg-Git enabled. (#392)
+  * Fix cloning repositories using the old static HTTP support with Hg-Git enabled.
+  * Handle pushing tags to Git that cannot be stored as references such as double-quotes on Windows. (#397)
+  * Avoid converting unrelated refs on pull, such as Github PR-related refs. (#386)
+  * Fix tests with GNU Grep 3.8 and later, by avoiding the egrep alias (#400)
+  * Support reading remote refs even if packed.
+  * Add support for Dulwich 0.21 and later.
+  * Mark Mercurial 6.4 as supported and tested.
+  * Address slowness when pulling large repositories, caused by writing unchanged references. (#401)
+
+-------------------------------------------------------------------
+Wed Feb  1 21:29:31 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
+
+- BuildRequire python3-toml on Leap.
+
+-------------------------------------------------------------------
+Wed Feb  1 19:56:50 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
+
+- Use pyproject.toml instead of setup.py for build and install.
+- Add python3-setuptools_scm to determine the correct version of the package.
+
+-------------------------------------------------------------------
+Mon Dec 12 15:53:46 UTC 2022 - Andrei Dziahel <develop7@develop7.info>
+
+- Update to version 1.0.1
+
+  This is a minor release, focusing on bugs and compatibility.
+
+  * Ignore any ``GIT_SSH_COMMAND`` environment variable, rather than
+    dying with an error. (#369)
+  * Fix bug with unusual progress lines from Azure Repo (#391)
+  * Fix incorrect use of localisation APIs (#387)
+  * Fix pushing with Dulwich 0.2.49 or later.
+  * Fix tests with Git 2.37.
+  * Fix bug with tags or remote refs in the local Git repository that
+    point to missing commits.
+  * Mark Mercurial 6.2 and 6.3 as supported and tested.
+
+-------------------------------------------------------------------
+Mon Jul  4 21:11:08 UTC 2022 - Manuel Jacob <me@manueljacob.de>
+
+- Remove `BuildRequires: python3-dulwich >= 0.19.0`.
+  The dependency is not available at build time on 15.3.
+  We don’t need it at build time. The user has to provide
+  the dependency from another repository at install time.
+
+-------------------------------------------------------------------
+Fri Jun 17 17:27:24 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- Blacklist failing test.
+
+-------------------------------------------------------------------
+Mon May  2 16:24:52 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 1.0.0.
+  Changelog: https://foss.heptapod.net/mercurial/hg-git/-/tags/1.0.0
+- Remove "fix-tests-expecting-different-git-output.patch".
+
+-------------------------------------------------------------------
+Fri Mar 18 15:28:51 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- Obsolete python3-hg-git as it is not the Factory package anymore
+
+-------------------------------------------------------------------
+Fri Mar 18 15:24:42 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- Fix failing tests.
+
+-------------------------------------------------------------------
+Wed Feb  2 21:05:39 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to v0.10.4.
+  * Fix compatibility with the mercurial_keyring extension. (#360)
+  * Add missing test files to the source archive. (#375)
+  * Fix tests with Git 2.34.
+
+-------------------------------------------------------------------
+Wed Nov 17 20:34:12 UTC 2021 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to v0.10.3.
+  * Add support for Mercurial 6.0.
+
+-------------------------------------------------------------------
+Mon Sep 20 20:59:41 UTC 2021 - Lukas Müller <expeehaa@outlook.com>
+
+- Rename package.
+- Make spec file more similar to the one for tortoisehg.
+- Set Group attribute to "Development/Tools/Version Control".
+
+-------------------------------------------------------------------
+Sat Jul 31 17:13:13 UTC 2021 - Lukas Müller <expeehaa@outlook.com>
+
+- Do not run tests on Leap to fix build failures.
+
+-------------------------------------------------------------------
+Sat Jul 31 16:59:44 UTC 2021 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to v0.10.2.
+  * Add support for Mercurial 5.9.
+  * Fix the git.authors configuration option, broken in Python 3.
+- Remove now unnecessary patch.
+
+-------------------------------------------------------------------
+Sun Jun 13 19:27:22 UTC 2021 - Müller <expeehaa@outlook.com>
+
+- Add python-hg-git-test-pull-after-rebase-fix.patch to fix failing test.
+
+-------------------------------------------------------------------
+Sun May 16 00:22:57 UTC 2021 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
+
+- Update to v0.10.1
+  + Add support for Mercurial 5.8.
+  + Fix some documentation issues.
+  + Don't overwrite annotated tags on push.
+  + Fix an issue where pushing a repository without any bookmarks would
+    push secret changesets.
+
+-------------------------------------------------------------------
+Sun Apr 18 00:05:26 UTC 2021 - Müller <expeehaa@outlook.com>
+
+- Create initial package using py2pack and hg-git v0.10.0.
