@@ -345,4 +345,12 @@
   a (yet unexplained) empty RUNPATH entry to the perl module.</comment>
     <requestid>993559</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>0e7402fcd360beb3c3ebbb7aeee5c905</srcmd5>
+    <version>5.2.0</version>
+    <time>1705437536</time>
+    <user>anag+factory</user>
+    <comment>Update to 5.2.0</comment>
+    <requestid>1139125</requestid>
+  </revision>
 </revisionlist>
