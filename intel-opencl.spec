@@ -1,7 +1,7 @@
 #
 # spec file for package intel-opencl
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           intel-opencl
-Version:        23.22.26516.18
+Version:        23.35.27191.9
 Release:        1%{?dist}
 Summary:        Intel Graphics Compute Runtime for OpenCL
 License:        MIT
@@ -94,6 +94,6 @@ rm -Rf %{buildroot}%{_prefix}/lib/debug
 
 %files devel
 %{_includedir}/ocloc_api.h
-%{_includedir}/zet_intel_gpu_debug.h
+%{_includedir}/level_zero/zet_intel_gpu_debug.h
 
 %changelog
