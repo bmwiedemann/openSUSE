@@ -1,0 +1,61 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a32beda0bda3fa42b2fefc7fbc83e915</srcmd5>
+    <version>5.9.13</version>
+    <time>1632173547</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>920004</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>33f5247cb59a1cb73549dbe09f5f3282</srcmd5>
+    <version>5.10.13</version>
+    <time>1650657253</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 971861 from hillwood)</comment>
+    <requestid>971862</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>319fbceaf43942583bfd610d8da6ee04</srcmd5>
+    <version>5.10.13</version>
+    <time>1652188331</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build on ARM</comment>
+    <requestid>975961</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>7ae64c3979a5038414b371ac5eeeab43</srcmd5>
+    <version>5.10.13</version>
+    <time>1655048491</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build on openjpeg 2.5.0 and later (forwarded request 982150 from hillwood)</comment>
+    <requestid>982151</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a6037685b350c00fcfaf7a47bcee0ae4</srcmd5>
+    <version>5.10.23</version>
+    <time>1662063018</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 5.10.23
+  * Adjust minimum size of window
+  * Fix bugs
+- Drop fix-return-type.patch 
+
+- Update version to 5.10.16
+  * Update ut
+  * Optimize ui
+  * Optimize pdf support
+  * Update documents
+- Add fix-return-type.patch</comment>
+    <requestid>1000250</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>fa2f207a90de6abacac15051985bdda3</srcmd5>
+    <version>5.10.23</version>
+    <time>1703611623</time>
+    <user>anag+factory</user>
+    <comment>* Deal with docx document format (boo#1218382 and CVE-2023-50254)
+- Set pandoc-cli as Requires, fix docx document support (forwarded request 1135093 from hillwood)</comment>
+    <requestid>1135094</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,20 @@
+diff -Nur deepin-reader-5.9.13/3rdparty/deepin-pdfium/src/3rdparty/pdfium/pdfium/build/build_config.h deepin-reader-5.9.13-new/3rdparty/deepin-pdfium/src/3rdparty/pdfium/pdfium/build/build_config.h
+--- deepin-reader-5.9.13/3rdparty/deepin-pdfium/src/3rdparty/pdfium/pdfium/build/build_config.h	2021-08-21 14:42:37.000000000 +0800
++++ deepin-reader-5.9.13-new/3rdparty/deepin-pdfium/src/3rdparty/pdfium/pdfium/build/build_config.h	2021-09-03 16:09:15.831655820 +0800
+@@ -203,6 +203,16 @@
+ #define ARCH_CPU_ALPHA21264 1
+ #define ARCH_CPU_64_BITS 1
+ #define ARCH_CPU_LITTLE_ENDIAN 1
++#elif defined(__riscv)
++#define ARCH_CPU_RISCV_FAMILY 1
++#if __riscv_xlen == 64
++#define ARCH_CPU_RISCV64 1
++#define ARCH_CPU_64_BITS 1
++#else
++#define ARCH_CPU_RISCV32 1
++#define ARCH_CPU_32_BITS 1
++#endif
++#define ARCH_CPU_LITTLE_ENDIAN 1
+ #else
+ #error Please add support for your architecture in build/build_config.h
+ #endif

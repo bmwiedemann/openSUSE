@@ -1,0 +1,41 @@
+-------------------------------------------------------------------
+Mon Jun  5 10:29:18 UTC 2023 - pgajdos@suse.com
+
+- version update to 1.0.0
+  * Changed
+    Supported Python versions are now 3.7 – 3.11 (inclusive)
+    Project codebase & tooling refreshed
+    Get rnginline.__version__ / rnginline --version from package metadata instead of hardcoding it.
+  * Fixed
+    Handle indirectly-included components when overriding (#5)
+    Thanks to takesson for reporting this and providing a test case to demonstrate the issue.
+    Resolved deprecation warnings from:
+        old string escape syntax
+        pkg_resources module (we now use importlib_resources)
+        docopt (we now use docopt-ng)
+- python-six is not required
+
+-------------------------------------------------------------------
+Fri Oct  8 08:17:07 UTC 2021 - pgajdos@suse.com
+
+- actually test the package, use %pytest macro
+
+-------------------------------------------------------------------
+Tue May 19 09:27:46 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
+Tue Dec 18 23:41:14 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:53:54 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Thu Sep  7 22:42:22 UTC 2017 - toddrme2178@gmail.com
+
+- initial version

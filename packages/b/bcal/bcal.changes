@@ -1,0 +1,59 @@
+-------------------------------------------------------------------
+Mon Apr 18 15:16:35 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.4
+  * Support "exit" and "quit" at prompt
+  * Fix lint report
+- Update to version 2.3
+  * Show binary conversion output in octets for readability
+  * Handle CTRL+D
+  * Quit program or 'exit' or 'quit'
+  * Fix broken terminal with calc as backend on "undefined input" 
+
+-------------------------------------------------------------------
+Wed Mar 17 03:07:01 UTC 2021 - Wang Jun <jgwang@suse.com>
+
+- Update to version 2.2
+  * Support [`calc`](http://www.isthe.com/chongo/tech/comp/calc/)
+    for multi-base expressions
+  * To use `calc`, `export BCAL_USE_CALC=1`
+  * Fix lint issues
+  * Fix issue #30
+  * Updated auto-generated packages
+  * More portable Makefile
+  * Delete bcal-2.1_gcc9.patch, it was merged into upsteam.
+
+-------------------------------------------------------------------
+Tue Jun  4 10:29:03 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Added bcal-2.1_gcc9.patch to fix Factory build
+- Limit build to 64-bit systems (as per README.md)
+- Spec cleanup
+
+-------------------------------------------------------------------
+Mon Apr 15 08:15:23 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim excess whitespace in description. Change to written style.
+
+-------------------------------------------------------------------
+Sat Apr 13 04:14:35 UTC 2019 - Dilawar Singh <dilawar.s.rajput@gmail.com>
+
+- Update to version 2.1
+
+    * Support for C bitwise operators (|, ^, &)
+    * Support floating point in unit conversion
+    * Support hex in expressions
+    * Persistent readline history
+    * Static-analysis (clang-tidy and coverity) integration
+
+- Update to version 2.0  
+
+    * bc mode for general purpose calculations
+    * Bitwise shift (<< and >>) operations
+    * Base conversion in interactive mode
+    * Prompt help
+
+-------------------------------------------------------------------
+Fri Aug 10 18:38:28 UTC 2018 - dilawar.s.rajput@gmail.com
+
+- First realease v1.9 

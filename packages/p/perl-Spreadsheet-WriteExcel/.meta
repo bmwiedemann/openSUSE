@@ -1,0 +1,16 @@
+<package name="perl-Spreadsheet-WriteExcel" project="openSUSE:Factory">
+  <title>This Module can be Used to Create Excel Binary Files</title>
+  <description>The Spreadsheet::WriteExcel module can be used to create a cross-
+platform Excel binary file. Multiple worksheets can be added to a
+workbook and formatting can be applied to cells. Text, numbers,
+formulas, hyperlinks, and images can be written to the cells.
+
+The Excel file produced by this module is compatible with Excel 5, 95,
+97, 2000, and 2002.
+
+The module will work on the majority of Windows, UNIX, and Macintosh
+platforms. Generated files are also compatible with Gnumeric and
+OpenOffice.org, the Linux/UNIX spreadsheet applications. The generated
+files are not compatible with MS Access.</description>
+  <devel project="devel:languages:perl" package="perl-Spreadsheet-WriteExcel"/>
+</package>

@@ -1,0 +1,313 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>50358eef560e5461111d8e92b7427415</srcmd5>
+    <version>1.2.3</version>
+    <time>1447146109</time>
+    <user>dimstar_suse</user>
+    <comment>Please accept this new RPM.</comment>
+    <requestid>325059</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4152c554f7b133dd02aff0d0e197c292</srcmd5>
+    <version>1.2.4</version>
+    <time>1447234299</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>343336</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>6b9119e7f4d0da139401254ae34cce8c</srcmd5>
+    <version>1.2.4</version>
+    <time>1502963485</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>516624</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>492c738db9d860d4a0f6bf729584c22f</srcmd5>
+    <version>1.3.1</version>
+    <time>1519041654</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>577034</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>27d198342ec39407ad1c16cf6a2b9839</srcmd5>
+    <version>1.3.2</version>
+    <time>1530303999</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>616887</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>f3e41904943cbc80a53a1abf7b4f7646</srcmd5>
+    <version>1.3.2</version>
+    <time>1545648116</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659588</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>8d6aaf53df49242e74076f7455ce769b</srcmd5>
+    <version>1.3.2</version>
+    <time>1560970981</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707323</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>76c8ecc4faa628dd0ec78d4ae58d1b6a</srcmd5>
+    <version>1.3.2</version>
+    <time>1568805024</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>731155</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>56b4e43a94e822dd381582455bb0f8ee</srcmd5>
+    <version>1.5.7</version>
+    <time>1597756356</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>825366</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>deaf0e1d4ffaaa47b8bad0e11e4ecd77</srcmd5>
+    <version>1.5.14</version>
+    <time>1612707652</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>869607</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>cba004905ebf0174953a1dadcdbec349</srcmd5>
+    <version>1.5.14</version>
+    <time>1613774738</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>873736</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3f55dcf0ef6300b393497f28b0967c7c</srcmd5>
+    <version>1.5.15</version>
+    <time>1615213160</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.15:
+  - shapes.Circle segment calculation will always use a minimum of 14 segments.
+  - shapes.Arc is now made from line segments, and by default has unconnected ends.
+  - Windows - Use the internal keystate to determine the mod shift rather than relying on GetKeyState
+    which relies on another event that may be called after WM_INPUT.</comment>
+    <requestid>877643</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>9b375933f0843be2d0d97e02036fb9a5</srcmd5>
+    <version>1.5.23</version>
+    <time>1649274727</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>967317</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>eea64e15356c8d5a267eb5c689938403</srcmd5>
+    <version>1.5.26</version>
+    <time>1658243949</time>
+    <user>RBrownFactory</user>
+    <comment>- update to 1.5.26:
+  * Windows - Backport WIC codec changes from 2.0
+  * Fix library loading when passing multiple library names.
+  * Windows - Prevent ImportError when attempting to load more than one DLL version.
+  * Add initial support for FFmpeg 5.0
+  * Windows - The GDI font renderer now supports Unicode font names.
+  * Windows - Fix `on_resize` event not dispatched when `set_size` is called.
+  * Documentation updates, fixed links, and corrections.
+  * Windows - Fix crash when font characters are more than one codepoint in length.</comment>
+    <requestid>989684</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>49f028046cdc14da941338026a6e97e0</srcmd5>
+    <version>1.5.27</version>
+    <time>1665754880</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010369</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>d028d039684e1e70b83c1ac6ab389f9f</srcmd5>
+    <version>1.5.27</version>
+    <time>1667579853</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1033453</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>4edfae2ac567f4415e60632eebfc4582</srcmd5>
+    <version>2.0.4</version>
+    <time>1677683676</time>
+    <user>dimstar_suse</user>
+    <comment>- delete pyglet-1.2.4-fix-image-import.patch
+- Update to 2.0.4
+  - input.win32: ControlManager now supports both DirectInput and
+    XInput devices.
+  - input: Many cleanups and reorganization.
+  - math: Add Vec2.reflect method.
+  - shapes: Add new BezierCurve shape.
+  - gl: Add support for GL sync functions.
+  - gui: Prevent two TextEntry widgets from being active at the same
+    time. #747
+  - win32: Fix broken lib debug, and multiple related bugs due to
+    depreacted functions.
+  - input: Controller mappings now indexed correctly on macOS and
+    Windows.
+- pyglet 2.0.3
+  - shapes: Batch and Group can now be changed on shapes after
+    instantiation, similar to Sprites.
+  - font: DirectWrite &amp; Freetype fonts now expose a `filename`
+    attribute. macOS not yet implemented.
+  - Windows: DirectWrite fonts parse font names in a more correct
+    manner. Setting `pyglet.options['dw_legacy_naming']` to True will
+    restore the old behavior, but this may be removed at a later date.
+  - math: Vec types can now be updated with slices (`velocity[:] = 1,
+    2`)
+  - math: Matrix operations now behave more like GLSL.
+  - macOS: fix crash when supplying OpenGL Config without explicit
+    major/minor versions #739
+  - To prevent crashing on many OpenGL drivers, Textures are no longer
+    initialized with empty data.
+  - fixed `font_comparison.py` example.
+- pyglet 2.0.2
+  - Fix Config.opengl_api being always set to None.
+  - Windows: fix Display.get_default_screen() always returning the
+    first index.
+  - Remove legacy Xlib backend code.
+  - Add initial support for Compute Shaders.
+  - Windows: a high performance event timer is requested by the
+    PlatformEventLoop.
+- pyglet 2.0.1
+  - Windows: only enable DirectWrite color font for supported OSes.
+  - gui: don't unset TextEntry widget focus on mouse motion.
+  - image: Prevent BufferManager crash when stencil buffer query fails
+    #703
+  - macOS input: fix broken get_guid link for Controllers.
+  - math: fix Mat4.look_at. #708
+  - shader: fix vertex_list passing id instead of self to
+    Batch.get_domain
+  - shapes: fix crash when setting Arc.visible = False
+  - shapes: add Arc.start_angle setter
+  - graphics: Various default Group changes to help improve Group
+    consolidation
+- pyglet 2.0.0
+  - pyglet has been upgraded to use use OpenGL 3.3+ core
+    functionality.
+  - All high level modules have been internally updated to use modern
+    OpenGL.
+  - A large number of cleanups and optimizations.
+  - New `pyglet.math` module including common Matrix and Vector
+    operations.
+  - New `pyglet.graphics.shader` module for easily managing Shader
+    objects.
+  - New OpenGL bindings, and binding tools.
+  - New Game Controller API for modern game controllers, including
+    rumble and automapping.
+  - New Framebuffer classes.
+</comment>
+    <requestid>1068376</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>d0d60383b33947070f968f654575b43c</srcmd5>
+    <version>2.0.5</version>
+    <time>1683295081</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.5:
+  * windows.key: add support for extended function keys
+  * Windows now uses &quot;Apartment Threaded&quot; mode for better
+    compatibility with other libraries.
+  * image: allow blanking newly created Textures (skipped by
+    default when creating from image).
+  * input.macos: Fix ControllerManager hot-plugging on macOS.
+  * font.windows: Fix 32bit crashes with DirectWrite font
+    backend.
+  * math: Fix incorrect calculation in Mat4.look_at method.
+  * image: Fix blitting from regions, caused by invalid unpacking
+    settings.</comment>
+    <requestid>1084858</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>8002fb6e8b980a5a485237d462412d80</srcmd5>
+    <version>2.0.9</version>
+    <time>1693383643</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.0.9:
+  * Changes and Improvements
+    + Initialize AudioDriver when media module is imported, prevent pause
+      on first sound playback.
+    + New TextureArrayBin class for managing TextureArray based atlases.
+    + text: Caret supports RGBA color, in line with other pyglet objects.
+    + gui: Add alpha value to the Caret's default color.
+    + shapes: Allow checking if a point is in a shape, using the in operator
+    + Add missing OpenGL extensions
+    + Add support for FFmpeg 6.0
+    + Sprite width &amp; height properties are now settable, allowing scaling by
+      pixels
+    + app: Passing None to pyglet.app.run will disable automatic Window
+      redraws.
+    + window: Add a Window.draw method to help when manually scheduling
+      Window redraws.
+    + shapes: Add a border thickness setter to BorderedRectangle
+  * Bugfixes
+    + Fix numerous bugs remaining with IncrementalTextLayout, with
+      translation, caret, etc. #786
+    + shader: add missing sampler type definitions.
+    + Fix broken struct format strings in png and ttf decoders.
+    + text: Clear Group cache when a Layout's Group is changed.
+    + Fix incorrect string formatting in the timer.py example.
+    + input: ensure Xinput controllers dispatch events on the main thread
+* Switch to pyproject macros.
+* Remove unneeded futures module from {Build,}Requires.</comment>
+    <requestid>1107855</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>18d1acebabcbf6f795e0350e1552f05d</srcmd5>
+    <version>2.0.9</version>
+    <time>1697146903</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1117152</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>fb6261a67499797635fe700cb44ba4e9</srcmd5>
+    <version>2.0.10</version>
+    <time>1702673314</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.0.10:
+  * sprite: moving Sprites is now about 35% faster (as tested on
+    R5 5600X)
+  * gui: Add TextEntry.focus property to allow programmatic focus
+    control
+  * gui: Allow set TextEntry.width and TextEntry.height
+  * Window: Add experimental Window.get_clipboard_text and
+    Window.set_clipboard_text methods
+  * experimental: Add new pyglet.experimental package for easier
+    wider testing of new ideas
+  * experimental: Add `geoshader_sprite.py` that is more complex,
+    but faster than the standard Sprite
+  * experimental: Add `net` module with Server/Client proof of
+    concept
+  * tests: Add new interactive spot test to visually confirm
+    shapes are working as expected
+  * shapes: Move rotate functionality to ShapeBase class, and
+    allow all shapes to rotate
+  * VertexDomain: bind all buffers to VAO in __init__, and avoid
+    binding each draw
+  * gl.Context: Add a new cached `Context.create_program` method
+    to assist in shader reuse
+  * examples.model.fpscamera: fix drifting input, and other
+    improvements
+  * contrib.qt_sprite_preview.py: Modify to allow using either
+    PySide2 or PyQt5 (#959)
+  * examples: Carry over the soundspace example (#972)
+  * media: The &quot;Silent&quot; audio driver now behaves more like a real
+    driver
+  * text: Add RGB color setter fallback for HTML labels, assuming</comment>
+    <requestid>1133208</requestid>
+  </revision>
+</revisionlist>

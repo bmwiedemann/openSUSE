@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Wed May  3 03:17:36 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch use-packaging.patch:
+  * Use packaging.Version, stops packages relying on this to fail. 
+
+-------------------------------------------------------------------
+Fri Apr 21 12:31:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:44:02 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
+Fri Aug 21 15:01:49 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to version 0.4.2
+  * Work with pre-release pytest versions, by [chandlernine](https://github.com/chandlernine), 
+    with a different implementation proposed by [Aly Sivji](https://github.com/alysivji).
+  * Marking a test with `freeze_time` should freeze time in fixtures, even if the `freezer` 
+    fixture is also used explicitly late in the fixture list. Thanks to 
+    [Christian Grossmüller](https://github.com/chgad) for pointing out the problem.
+
+-------------------------------------------------------------------
+Wed Mar 11 12:42:02 UTC 2020 - pgajdos@suse.com
+
+- initial version 0.4.1, required by python-tempor 
+

@@ -1,0 +1,31 @@
+diff -u -r xorg-docs-1.7.1.orig/man/X.man xorg-docs-1.7.1/man/X.man
+--- xorg-docs-1.7.1.orig/man/X.man	2018-09-27 21:29:30.067876000 +0200
++++ xorg-docs-1.7.1/man/X.man	2018-09-27 21:39:58.438512000 +0200
+@@ -1021,12 +1021,12 @@
+     __datadir__/X11/%L/%T/%N%S:\\
+     __datadir__/X11/%l/%T/%N%S:\\
+     __datadir__/X11/%T/%N%S:\\
+-    __libdir__/X11/%L/%T/%N%C%S:\\
+-    __libdir__/X11/%l/%T/%N%C%S:\\
+-    __libdir__/X11/%T/%N%C%S:\\
+-    __libdir__/X11/%L/%T/%N%S:\\
+-    __libdir__/X11/%l/%T/%N%S:\\
+-    __libdir__/X11/%T/%N%S
++    /usr/lib/X11/%L/%T/%N%C%S:\\
++    /usr/lib/X11/%l/%T/%N%C%S:\\
++    /usr/lib/X11/%T/%N%C%S:\\
++    /usr/lib/X11/%L/%T/%N%S:\\
++    /usr/lib/X11/%l/%T/%N%S:\\
++    /usr/lib/X11/%T/%N%S
+ .fi
+ .sp
+ A path template is transformed to a pathname by substituting:
+@@ -1088,7 +1088,7 @@
+ .TP
+ .B XCMSDB
+ This must point to a color name database file. The default value is
+-\fI __libdir__/X11/Xcms.txt\fP.
++\fI /usr/lib/X11/Xcms.txt\fP.
+ .TP
+ .B RESOURCE_NAME
+ This serves as main identifier for resources belonging to the program

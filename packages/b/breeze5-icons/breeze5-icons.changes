@@ -1,0 +1,1502 @@
+-------------------------------------------------------------------
+Sat Jan 13 11:21:13 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.114.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.114.0
+- No code change since 5.113.0
+
+-------------------------------------------------------------------
+Tue Dec  5 11:17:14 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.113.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.113.0
+- No code change since 5.112.0
+
+-------------------------------------------------------------------
+Mon Nov  6 09:13:39 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.112.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.112.0
+- No code change since 5.111.0
+
+-------------------------------------------------------------------
+Mon Oct  9 20:20:40 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.111.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.111.0
+- No code change since 5.110.0
+
+-------------------------------------------------------------------
+Wed Sep  6 12:23:48 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.110.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.110.0
+- Changes since 5.109.0:
+  * Add filled `bookmarks-bookmarked` icon (kde#473694)
+
+-------------------------------------------------------------------
+Tue Aug  8 17:42:41 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.109.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.109.0
+- No code change since 5.108.0
+
+-------------------------------------------------------------------
+Mon Jul  3 07:01:35 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.108.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.108.0
+- Changes since 5.107.0:
+  * Export cmake config so that a app can ensure that breeze-icons is installed
+  * Remove qt6 CI builds
+
+-------------------------------------------------------------------
+Mon Jun  5 07:43:47 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.107.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.107.0
+- No code change since 5.106.0
+
+-------------------------------------------------------------------
+Sat May  6 14:01:23 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.106.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.106.0
+- Changes since 5.105.0:
+  * Make monochrome MS-DOS executable icons respect the color scheme
+  * Increase moon size for redshift-status-on icon
+  * Add mimetype icons for alembic files
+  * Add new Partition Manager app icon
+  * Make media-flash icon actually look like a typical flash memory card (kde#468006)
+  * Add new icons for the pixelate and blur tools in Spectacle
+
+-------------------------------------------------------------------
+Sat Apr  1 17:00:32 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.105.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.105.0
+- Changes since 5.104.0:
+  * Add icons for showing and hiding a virtual keyboard
+  * Redshift icons: Add missing semi-transparency, add new breeze-dark icons
+  * Update Redshift icons to off on & sun (kde#462215)
+  * Delete false Gparted and Kwikdisk icons (kde#467319)
+
+-------------------------------------------------------------------
+Mon Mar  6 09:07:35 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.104.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.104.0
+- Changes since 5.103.0:
+  * Add draw-number
+
+-------------------------------------------------------------------
+Wed Feb  8 09:12:38 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.103.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.103.0
+- No code change since 5.102.0
+
+-------------------------------------------------------------------
+Thu Jan 12 08:18:30 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.102.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.102.0
+- Changes since 5.101.0:
+  * Revert "Add SimpleScreenRecorder icon" (kde#462905)
+  * Add some links for symbolic icons
+  * Don't generate BINARY_ICONS_RESOURCE by default with Qt >= 6
+
+-------------------------------------------------------------------
+Tue Dec  6 20:10:18 UTC 2022 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.101.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.101.0
+- Changes since 5.100.0:
+  * Add kdesrc-build icons
+  * scalabletest "QString("" -> "QStringLiteral(""
+  * Add SimpleScreenRecorder icon (kde#412490)
+  * application-x-executable: make symbolic icon follow color scheme
+  * Add touchscreen icons to devices and preferences (kde#461562)
+
+-------------------------------------------------------------------
+Tue Nov  8 08:34:49 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.100.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.100.0
+- Changes since 5.99.0:
+  * Add accessories-dictionary-symbolic symlink to a book-looking icon (kde#461033)
+  * Add new icons for Fortran source code
+  * Add 64px audio-headset, fix issues with 64px audio-headphones (kde#447536)
+  * Add data-success icon
+  * Add icon for OpenOffice extensions
+  * Add Qt 6 Windows CI
+
+-------------------------------------------------------------------
+Sat Oct  1 15:55:23 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.99.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.99.0
+- Changes since 5.98.0:
+  * .gitlab-ci.yml: enable static builds
+  * Add text/javascript symlink
+
+-------------------------------------------------------------------
+Tue Sep  6 07:16:37 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.98.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.98.0
+- Changes since 5.97.0:
+  * Add FreeBSD Qt6 CI support
+  * Update chatroom names in the README
+
+-------------------------------------------------------------------
+Sun Aug  7 22:27:07 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.97.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.97.0
+- Changes since 5.96.0:
+  * Add mimetypes/{16,22,32,64}/application-x-msdownload, which is used for DLLs
+  * Remove monochrome versions of help-related app icons (kde#456737)
+
+-------------------------------------------------------------------
+Sun Jul  3 11:55:43 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.96.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.96.0
+- Changes since 5.95.0:
+  * Require passing tests for the CI to pass
+  * Create edit-image icon that's a symlink to tool_imageeffects
+  * Add new okular icon
+  * Create sidebar-show-symbolic symlink (kde#455247)
+  * applets/256: Add dark version of analogclock
+
+-------------------------------------------------------------------
+Fri Jun 10 14:12:13 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.95.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.95.0
+- Changes since 5.94.0:
+  * port to standard C++ smart pointers where possible
+
+-------------------------------------------------------------------
+Tue May 10 08:17:42 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.94.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.94.0
+- Changes since 5.93.0:
+  * Add view-left-new action
+  * Add windows CI
+  * New debug step icons
+
+-------------------------------------------------------------------
+Sun Apr  3 10:46:55 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.93.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.93.0
+- Changes since 5.92.0:
+  * Add some more symlinks for zoom icons (kde#450870)
+  * Add input-tvremote
+
+-------------------------------------------------------------------
+Mon Mar  7 09:26:39 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.92.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.92.0
+- Changes since 5.91.0:
+  * Add app icon for TeXstudio (kde#391459)
+
+-------------------------------------------------------------------
+Sun Feb  6 10:16:45 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.91.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.91.0
+- Changes since 5.90.0:
+  * start-here-kde: Make icon adaptable to dark themes (kde#416302)
+  * Fix icon colors to be consistent across all sizes
+  * Check executables exist in PATH before passing them to QProcess
+  * Add Linux Qt6 CI
+  * Declare namespace for kongress icon
+  * Fix naming of brightness icons
+  * Fix dupe tests by replacing icons with symlinks
+
+-------------------------------------------------------------------
+Mon Jan  3 12:47:10 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.90.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.90.0
+- Changes since 5.89.0:
+  * Support old cmake
+  * Change the build system to enable building with Qt 6
+  * Add places-book, -library, -comic icons (kde#447062)
+  * Include "*@*" in the icon_files list for installation
+  * Make FM and system settings icons color-aware
+  * improve installation of light fallback icons
+
+-------------------------------------------------------------------
+Sat Dec  4 22:56:15 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.89.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.89.0
+- Too many changes since 5.88.0, only listing bugfixes:
+  * Install dark icons via execute_process to use copy command (kde#444095)
+  * BUG 110673 media-write icon fix (kde#110673)
+  * BUG 412029 add preferences-desktop-feedback icon (kde#412029)
+  * BUG 423937 add edit-copy-path icon for dolphin and konsole (kde#423937)
+  * BUG: 414215 add tabs colorful icon (kde#414215)
+  * BUG: 414213 add preferences-scroll icon (kde#414213)
+  * BUG: 437999 add veracrypt app icon (kde#437999)
+  * BUG: 407048 add online account icon for the KCM (kde#407048)
+  * BUG: 409022 update disk-quota icons (kde#409022)
+  * BUG: 372461 update rar mimetype icon (kde#372461)
+  * BUG: 405654 Update input-keyboard-virtual-off (kde#405654)
+  * BUG 110673 add media-write-dvd icon (kde#110673)
+  * BUG 396124 add Crow Translate app icons (kde#396124)
+  * BUG 392534 add missing kmail breeze icons (kde#392534)
+  * Okular sidebar use now colorful icons (kde#412407, kde#412405)
+  * BUG 429737 update view-media-playlist icon and other playlist icons (kde#429737)
+  * BUG 418864 add gajim app icon. status icons can't be used from breeze (kde#418864)
+  * BUG 394023 add gpodder application icon (kde#394023)
+
+-------------------------------------------------------------------
+Sun Nov  7 09:13:05 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Strip 'Source' URL for faster submissions
+
+-------------------------------------------------------------------
+Sun Nov  7 09:07:45 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.88.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.88.0
+- Too many changes since 5.87.0, only listing bugfixes:
+  * BUG: 395569 places icon use ColorScheme colors (kde#395569)
+  * BUG: 174203 add mail-download-now and mail-download-later icon (kde#174203)
+  * BUG: 436931 update anacondainstaller icon to respect fedora logo (kde#436931)
+  * Fix the dark install directory for installing colored icons (kde#444095)
+  * Install colored icons sizes into breeze-dark them as well (kde#444095)
+  * Fix color of 16px im-user-offline icon (kde#443658)
+
+-------------------------------------------------------------------
+Sun Oct  3 20:33:30 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.87.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.87.0
+- Changes since 5.86.0:
+  * Add Native Gitlab CI configuration
+  * Fix KTimeTracker icon sizes (kde#442993)
+  * Tweaks to AnyDesk icons
+  * Fix index.theme issues from !124
+  * Add 22px variants of the preferences icons
+  * Add AnyDesk icons
+  * Add more Godot MIME icons
+  * Add symlink for skanlite's new icon name
+  * Add process-working-symbolic, overhaul 22px animation
+
+-------------------------------------------------------------------
+Mon Sep  6 06:21:50 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.86.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.86.0
+- Too many changes since 5.85.0, only listing bugfixes:
+  * Add Xfce compatibility symlinks (kde#432333)
+
+-------------------------------------------------------------------
+Fri Aug  6 12:11:19 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.85.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.85.0
+- Changes since 5.84.0:
+  * React to Telegram's new ID and show the Breeze icon
+  * React to Inkscape's new ID and show the Breeze icon (kde#440498)
+  * also add zoom-fit-page symlink for 32px
+  * align look of 22 px zoom-fit-{width,height} icons with others
+  * add zoom-fit-page symlink for 22px
+  * Symlink draw-cuboid to shape-cuboid
+  * Add temperature icons
+
+-------------------------------------------------------------------
+Sun Jul  4 07:45:04 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.84.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.84.0
+- Changes since 5.83.0:
+  * Icons for stickers
+  * Update IRC network name in the README
+  * add network icons from plasma-framework/src/desktoptheme/breeze/icons/network.svg
+  * Add Icons for advanced trimming tools in kdenlive
+  * Add Qt Resource mime icon
+
+-------------------------------------------------------------------
+Sat Jun  5 11:58:24 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.83.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.83.0
+- Changes since 5.82.0:
+  * Added new KMyMoney icon again with some extra tweaks
+  * Add Goodvibes icon
+  * Bump required CMake version to 3.16
+  * add an icon for skanpage
+  * Add *.kdev4 to .gitignore
+  * Tweaked the Rust mimetypes to better match the official branding (kde#434346)
+  * Made links relative
+  * Fixed code and links issues
+  * Updated icons and added symlinks
+  * Separated icons to -left and -right
+
+-------------------------------------------------------------------
+Sat May  1 16:40:29 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.82.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.82.0
+- Changes since 5.81.0:
+  * New Sidebar Show/Hide Icons
+  * Add financial-budget icon
+  * Don't attempt to validate icons when cross-compiling
+
+-------------------------------------------------------------------
+Mon Apr  5 07:12:03 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.81.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.81.0
+- Changes since 5.80.0:
+  * Add a few symlinks for "configure" and "help-donate" (kde#435150)
+  * Add KMyMoney Pie-Chart Icon
+  * Link svn-* icons to new vcs-* icons
+  * Add vcs-* icons for Kate
+  * Also check for lxml.etree
+  * Make lock icon filled status consistent (kde#244542)
+  * Remove 22 brightness icons in 16 size folder
+  * Fix location of brightness icons
+  * Add high-brightness and low-brightness icons
+
+-------------------------------------------------------------------
+Sun Mar  7 09:26:28 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.80.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.80.0
+- Too many changes since 5.79.0, only listing bugfixes:
+  * Delete tor-browser icon (kde#432674)
+
+-------------------------------------------------------------------
+Mon Feb  8 08:45:55 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.79.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.79.0
+- Changes since 5.78.0:
+  * new telegram-panel icons
+  * Use correct style for align-horizontal-left-out icons (kde#432273)
+  * Add new kickoff icons Matches the appearance of current kickoff (kde#431883)
+  * Add rating-half, 100% opacity for rating-unrated, Text color for rating in dark theme
+  * Remove KeePassXC icons (kde#431593)
+  * Fix @3x icons (kde#431475)
+  * add neochat icon
+
+-------------------------------------------------------------------
+Wed Jan  6 14:19:27 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add subpackage with breeze-icons.rcc just for Kexi
+
+-------------------------------------------------------------------
+Wed Jan  6 10:47:14 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.78.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.78.0
+- Changes since 5.77.0:
+  * fixed a drop shadow, removed a duplicate icon
+  * New compass action icon
+  * Add image-missing icon to theme
+  * Add icon for WIM images
+
+-------------------------------------------------------------------
+Tue Jan  5 22:54:47 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Disable BINARY_ICONS_RESOURCE, it duplicates the size for no good reason
+- Switch to hardlinks for %fdupes
+
+-------------------------------------------------------------------
+Sat Dec  5 18:56:08 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.77.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.77.0
+- Changes since 5.76.0:
+  * Add text-field variants: -frameless (-> text-field), -framed
+  * Add symbolic name symlink for input-* icons.
+  * Add icon for True Type XML font
+  * Add add-subtitle
+  * Change MathML icon to use a formula and use specific mime type
+  * Add icon for QEMU disk image and SquashFS image
+  * Add edit-move action icon
+  * Add icon for core dumps
+  * Add a bunch of subtitle mime types
+  * Remove useless blur from kontrast icon
+
+-------------------------------------------------------------------
+Sat Nov  7 21:34:08 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.76.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.76.0
+- Too many changes since 5.75.0, only listing bugfixes:
+  * Add task-complete icons (kde#397996)
+  * Add task-recurring and appointment-recurring icons (kde#418920)
+
+-------------------------------------------------------------------
+Mon Oct  5 08:32:48 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.75.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.75.0
+- Changes since 5.74.0:
+  * Add new generic "behavior" icon
+  * Make icon validation depend on icon generation only if enabled
+  * Only run Test24x24Icons if icon generation is enabled
+  * Replace 24px icon bash script with python script
+  * Use flag style iconography for view-calendar-holiday
+  * Add Plasma Nano logo
+  * Add application-x-kmymoney
+  * Lengthen the horizontal lines in the KMyMoney icon
+  * Add KMyMoney icon
+
+-------------------------------------------------------------------
+Thu Sep 17 12:48:45 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Drop patch to no longer inherit from oxygen, it's not been
+  necessary for a long time now:
+  * oxygen.diff
+
+-------------------------------------------------------------------
+Sun Sep  6 12:48:21 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.74.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.74.0
+- Too many changes since 5.73.0, only listing bugfixes:
+  * Add another alias for keepass icon (kde#425928)
+  * Run application-x-bzip-compressed-tar through `scour` (kde#425089)
+  * Add aliases for MP3 icons (kde#425059)
+
+-------------------------------------------------------------------
+Sun Aug  2 07:12:59 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.73.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.73.0
+- Too many changes since 5.72.0, only listing bugfixes:
+  * Add SMART status icon (kde#423997)
+
+-------------------------------------------------------------------
+Sun Jul  5 07:54:59 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.72.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.72.0
+- Changes since 5.71.0:
+  * Fixed three 16px icons for application-x-... to be more pixel-perfet (kde#423727)
+  * Add support for >200% scale for icons which should stay monochrome
+  * Cut out center of window-close-symbolic
+  * Fix cervisia icon
+  * cervisia app and action icon update
+  * Add README section about the webfont
+  * Use grunt-webfonts instead of grunt-webfont and disable generation for symbolic linked icons.
+  * add kup icon from kup repo
+
+-------------------------------------------------------------------
+Sun Jun  7 08:06:13 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.71.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.71.0
+- Changes since 5.70.0:
+  * Improve accuracy of battery percentage icons
+  * Fix KML mimetype icon
+  * Change mouse icon to have better dark theme contrast (kde#406453)
+  * Require in-source build (kde#421637)
+  * Add 48px places icons (kde#421144)
+  * Adds a missing LibreOffice icon shortcut
+
+-------------------------------------------------------------------
+Sun May  3 09:39:40 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.70.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.70.0
+- Too many changes to list here.
+
+-------------------------------------------------------------------
+Sun Apr  5 19:45:15 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.69.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.69.0
+- Too many changes since 5.68.0, only listing bugfixes:
+  * Make find-location show a magnifier on a map, to be different to mark-location (kde#407061)
+
+-------------------------------------------------------------------
+Sun Mar  8 09:17:31 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.68.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.68.0.php
+- Too many changes since 5.67.0, only listing bugfixes:
+  * [breeze-icons] Add telegram-desktop tray icons (kde#417583)
+  * New icon for KTimeTracker (kde#410708)
+
+-------------------------------------------------------------------
+Sun Feb  2 18:06:40 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %make_jobs with %cmake_build.
+
+-------------------------------------------------------------------
+Sun Feb  2 14:32:26 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.67.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.67.0.php
+- Changes since 5.66.0:
+  * create Breeze style Kate icon based on new design by Tyson Tan
+  * Change VLC icon to be more like official VLC icons
+  * add ktrip icon from ktrip repo
+  * Clean up wayland icon shadow
+  * Add icon for application/sql
+  * Cleanup and add 22px media repeat icons
+  * Add icon for text/vnd.kde.kcrash-report
+  * Turn application/x-ms-shortcut into an actual shortcut icon
+
+-------------------------------------------------------------------
+Sun Jan  5 09:01:55 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.66.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.66.0.php
+- Changes since 5.65.0:
+  * Change XHTML icon to be a purple HTML icon
+  * Merge headphones and zigzag in the center
+  * Add application/x-audacity-project icon
+  * Add 32px preferences-system
+  * Port endl to "\n" flush at the end + use const'ref in loop
+  * Add application/vnd.apple.pkpass icon (kde#397987)
+  * icon for ktimetracker using the PNG in the app repo, to be replaced with real breeze SVG
+  * add kipi icon, needs redone as a breeze theme svg [or just kill off kipi]
+  * Update the obsolete projects.kde.org URL
+
+-------------------------------------------------------------------
+Sun Dec  8 11:18:15 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.65.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.65.0.php
+- Changes since 5.64.0:
+  * Pixel align color-picker
+  * Add new baloo icons
+  * Add new preferences search icons
+  * Use an eyedropper for color-picker icons (kde#403924)
+  * Add "all applications" category icon
+
+-------------------------------------------------------------------
+Sun Nov  3 15:46:45 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.64.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.64.0.php
+- Too many changes since 5.63.0, only listing bugfixes:
+  * Center-align the non-square 64px audio mimetype icons (kde#393550)
+  * Move colorful 32px help-about icon into actions (kde#396626)
+  * Improve draw icons (kde#399665)
+  * Use a more correct and appropriate visual metaphor for
+    "get hot new stuff" icon (kde#400500)
+  * Add edit-opacity icons (kde#408283)
+  * Icons for windy weather (kde#412718)
+
+-------------------------------------------------------------------
+Sun Oct  6 13:26:11 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.63.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.63.0.php
+- Changes since 5.62.0:
+  * Make 22px squiggle more like 16px squiggle
+  * Improve KFloppy icon
+  * Add format-text-underline-squiggle actions icons
+  * Add colorful preferences-desktop-filter icon (kde#406900)
+  * Add app icon for the Kirogi Drone control app
+  * Added scripts to create a webfont out of all breeze action icons
+  * Add enablefont and disablefont icon for kfontinst KCM
+  * Remove superfluous 32px recent documents icons
+  * Fix large system-reboot icons rotating in an inconsistent direction (kde#411671)
+
+-------------------------------------------------------------------
+Sat Sep  7 21:01:57 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.62.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.62.0.php
+- Changes since 5.61.0:
+  * Fix *-loading-symbolic icon symlinks
+  * Add new activities and virtual desktops icons
+  * Make small recent documents icons look like documents and improve clock emblems
+  * Create new "Recent folders" icon (kde#411635)
+  * Add "preferences-desktop-navigation" icon (kde#402910)
+  * Add 22px dialog-scripts, change script actions/places icons to match it
+  * Improve "user-trash" icon
+  * Use empty/filled style for monochrome empty/full trash
+  * Make notification icons use outline style
+  * Make user-trash icons look like trashcans
+  * Add breeze icons for ROOT cern files
+  * Remove applets/22/computer (kde#410854)
+  * Add view-barcode-qr icons
+  * Krita has split from Calligra and now uses Krita name instead of calligrakrita
+  * Add battery-ups icons
+  * Make "monitor" a link to "computer" icon
+  * Add FictionBook 2 icons
+  * Add icon for kuiviewer, needs updating -> bug 407527
+  * Symlink "port" to "anchor", which displays more appropriate iconography
+  * Change radio to device icon, add more sizes
+  * Make `pin` icon point to an icon that looks like a pin, not something unrelated
+  * Fix missing digit and pixel-perfect alignment of depth action icons (kde#406502)
+  * Make 16px folder-activites look more like larger sizes
+  * add icon for clazy, should be remade in svg
+  * add latte-dock icon from latte dock repo for kde.org/applications
+  * icon for kdesrc-build used by kde.org/applications to be redrawn.
+  * Rename media-show-active-track-amarok to media-track-show-active
+
+-------------------------------------------------------------------
+Wed Aug  7 17:51:02 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.61.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.61.0.php
+- Changes since 5.60.0:
+  * Add "user-others" icon (kde#407782) 
+  * Make "edit-none" a symlink to "dialog-cancel" 
+  * Delete redundant and monochrome versions of applications-internet 
+  * Add view-pages-* icons, as needed in Okular for page layout selection (kde#409082) 
+  * Fix typo in stylesheets 
+  * Change Highlight to ButtonFocus in stylesheets 
+  * Use clockwise arrows for *refresh* and update-* icons (kde#409914)
+
+-------------------------------------------------------------------
+Fri Jul 19 11:37:46 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Don't lower minimum Qt version anymore, it requires 5.11 now
+
+-------------------------------------------------------------------
+Sun Jul 14 06:41:36 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.60.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.60.0.php
+- Changes since 5.59.0:
+  * Add id="current-color-scheme" to collapse-all icons (kde#409546)
+  * Add disk-quota icons (kde#389311)
+  * Symlink install to edit-download
+  * Change joystick settings icon to game controller (kde#406679)
+  * Add edit-select-text, make 16px draw-text like 22px
+  * Update KBruch icon
+  * Add help-donate-[currency] icons
+  * Make Breeze Dark use same Kolourpaint icon as Breeze
+  * Add 22px notifications icons
+
+-------------------------------------------------------------------
+Sun Jun 09 07:35:11 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.59.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.59.0.php
+- Changes since 5.58.0:
+  * add krita icon
+  * gcompris-qt too
+  * Make falkon icon a real SVG
+  * add missing icons from the apps, to be redone (kde#407527)
+  * add icon for kfourinline from app, needs updating too
+  * add kigo icon (kde#407527)
+  * icon for symboleditor app
+  * kajongg icon
+  * add kwave icon from kwave, to be redone in breeze style
+  * Symlink arrow-*-double to go-*-skip, add 24px go-*-skip
+  * Change input-* device icon styles, add 16px icons
+  * Add dark version of new Knights icon which escaped from my previous commit
+  * Create new icon for Knights based on Anjuta's icon
+  * add icons for apps which miss them in breeze, these should be updated to be more breezy but they are needed for the new kde.org/applications for now
+  * kxstitch icon from kde:kxstitch, to be updated
+  * don't glob everything and the kitchen sink
+  * make sure to also assert ScaledDirectories
+
+-------------------------------------------------------------------
+Wed May 15 18:16:15 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.58.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.58.0.php
+- Changes since 5.57.0:
+  * Add non-symbolic 16px versions of find-location and mark-location
+  * Symlink preferences-system-windows-effect-flipswitch to preferences-system-tabbox
+  * Rename "edit-remove" icon to "edit-delete-remove" to support Oxygen and other icon themes
+  * Add "edit-remove" icon symlink and add 22px version of "paint-none" and "edit-none"
+  * Use consistent default Kickoff user icon
+  * Add an icon for Thunderbolt KCM
+  * Sharpen Z's in system-suspend* icons
+  * Improve "widget-alternatives" icon
+  * Add go-up/down/next/previous-skip
+  * Update KDE logo to be closer to original
+  * Add alternatives icon
+
+-------------------------------------------------------------------
+Sun Apr 14 20:21:41 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.57.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.57.0.php
+- Changes since 5.56.0:
+  * Add "notifications" and "notifications-disabled" icons (kde#406121)
+  * make start-here-kde also available as start-here-kde-plasma
+  * Sublime Merge Icon.
+  * Give applications-games and input-gaming more contrast with Breeze Dark
+  * Make 24px go-up actually 24px
+  * Add preferences-desktop-theme-applications and preferences-desktop-theme-windowdecorations icons
+  * Add symlinks from "preferences-desktop-theme" to "preferences-desktop-theme-applications"
+  * Remove preferences-desktop-theme in preparation to making it a symlink
+  * Add collapse/expand-all, window-shade/unshade (kde#404344)
+  * Improve consistency of window-* and add more
+  * Make go-bottom/first/last/top look more like media-skip*
+  * Change go-up/down-search symlinks target to go-up/down
+  * Improve pixel grid alignment of go-up/down/next/previous/jump
+  * Change media-skip* and media-seek* style
+  * Enforce new muted icon style in all action icons
+
+-------------------------------------------------------------------
+Sun Mar 10 20:15:34 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.56.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.56.0.php
+- Changes since 5.55.0:
+  * Add code-oss icon
+  * [breeze-icons] Add video camera icons
+  * [breeze-icons] Use new suspend, hibernate and switch user icons in Breeze icon theme
+  * Add 16 px and 22 px versions of the gamepad icon to devices/
+  * Make Breeze theme tooltip texts consistent
+  * Add battery icons
+  * Rename "visibility" and "hint" icons to "view-visible" and "view-hidden" Also add compatibility symlinks pointing to the original names
+  * [breeze-icons] Add monochrome/smaller SD card and memory stick icons (kde#404231)
+  * Add device icons for drones
+  * Change C/C++ header/source mimetype icons to circle/line style
+  * Fix missing shadows on C/C++ header mimetype icons (kde#401793)
+  * Remove monochrome font preferences icon
+  * Improve font selection icon
+  * Use new bell-style icon for all users of preferences-desktop-notification (kde#404094)
+  * [breeze-icons] Add 16px versions of gnumeric-font.svg and link gnumeric-font.svg to font.svg
+  * Add preferences-system-users symlinks that point to yast-users icon
+  * Add edit-none icon
+
+-------------------------------------------------------------------
+Fri Feb 15 09:25:42 UTC 2019 - alarrosa@suse.com
+
+- Downgrade the Qt version requirement to build with 5.9
+
+-------------------------------------------------------------------
+Wed Feb 13 09:45:37 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Workaround yast2-theme incompatibility by adding a symlink
+
+-------------------------------------------------------------------
+Sun Feb 10 22:02:58 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.55.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.55.0.php
+- Changes since 5.54.0:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Mon Jan 14 06:08:41 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.54.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.54.0.php
+- Changes since 5.53.0:
+  * Change preferences-system-network to symlink
+  * Use a Kolf icon with nice background and shadows
+  * Copy some changed icons from Breeze to Breeze Dark
+  * Better plasma-media-center icon
+  * Fix gradient positions (Breeze Dark)
+  * Fix shadow gradients
+  * Better desktop icon colors
+  * Better multimedia related icons
+  * Add YaST and new preference icons
+  * Add a proper python-bytecode icon, use consistent color in python icons (kde#381051)
+  * Delete python bytecode symlinks in preparation for them becoming their own icons
+  * Make the python mimetype icon the base, and the python bytecode icon a link to it
+  * Add device icons for RJ11 and RJ45 ports
+  * Add missing directory separator (kde#401836)
+  * Use correct icon for Python 3 scripts BUG: 402367 FIXED-IN: 5.54 (kde#402367)
+  * Change network/web color icons to consistent style
+  * Add new name for sqlite files, so the icons actually show up BUG: 402095 FIXED-IN: 5.54 (kde#402095)
+  * Add drive-* icons for YaST Partitioner
+  * Add view-private icon (kde#401646)
+  * Add flashlight action icons
+  * Improve symbolism for off and muted status icon (kde#398975)
+
+-------------------------------------------------------------------
+Sun Dec 09 19:43:42 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.53.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.53.0.php
+- Changes since 5.52.0:
+  * Add icons for application-vnd.appimage/x-iso9660-appimage
+  * Add 22px dialog-warning icon (kde#397983)
+  * Move firewall-applet icons to status category
+  * Fix angle and margin of 32px dialog-ok-apply (kde#393608)
+  * Resolve merge conflict
+  * Add mouse button icons
+  * Change primary monochrome icon colors to match new HIG colors
+  * Change archive-* action icons to represent archives (kde#399253)
+  * Add help-browser symlink to 16px and 22px directories (kde#400852)
+  * Add new generic sorting icons; rename existing sorting icons
+  * Added a set of Game Folder icons
+  * Fix a small color and shadow issue with Kdots icon
+  * Fix contrast and other small visual issues of Kdots icon
+  * Create new Sublime Text icon
+  * Add new icons for root
+  * Add root version of drive-harddisk (kde#399307)
+
+-------------------------------------------------------------------
+Sun Nov 11 19:48:02 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.52.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.52.0.php
+- Changes since 5.51.0:
+  * Change package manager icons to emblems
+  * Re-add monochrome link icon as action Some action icons were symlinks to `emblem-symbolic-link`. When the new emblem style was applied to `emblem-symbolic-link`, those actions then had the wrong style. The old style has been re-added as an action icon and the symlinks have been changed to point to `link.svg`.
+  * Improve emblem contrast, legibility and consistency (kde#399356, kde#399357, kde#399968)
+  * Support "new" mimetype for .deb files BUG: 399421 FIXED-IN: 5.52 (kde#399421)
+
+-------------------------------------------------------------------
+Tue Oct 16 08:01:44 UTC 2018 - Luca Beltrame <lbeltrame@kde.org>
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Mon Oct 15 11:51:45 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.51.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.51.0.php
+- Changes since 5.50.0:
+  * Fix "stack-use-after-scope" detected by ASAN in CI
+  * Fix monochrome icons missing stylesheets
+  * Change drive-harddisk to more adaptable style
+  * Add firewall-config and firewall-applet icons
+  * Make lock on plasmavault icon visible with breeze-dark
+  * Add plus symbol to document-new.svg (kde#398850)
+  * Use qprintable here
+  * Make it compile with KDEFrameworkCompilerSettings
+  * Provide icons for 2x scaling
+
+-------------------------------------------------------------------
+Thu Sep 13 21:58:44 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.50.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.50.0.php
+- Changes since 5.49.0:
+  * Add LabPlot project file icon
+  * ScalableTest, add "scalable" plasma-browser-integration (kde#393999)
+
+-------------------------------------------------------------------
+Sun Aug 19 09:18:41 UTC 2018 - christophe@krop.fr
+
+- Update to 5.49.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.49.0.php
+- Changes since 5.48.0:
+  * Add `drive-optical` icon (kde#396432)
+
+-------------------------------------------------------------------
+Mon Jul 16 04:37:34 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.48.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.48.0.php
+- Changes since 5.47.0:
+  * Use the broom-style icon for edit-clear-all too
+  * Use a broom-style icon for edit-clear-history
+  * Revert "BUG 391855 update clear icon with broom"
+  * BUG 391855 update clear icon with broom
+  * change 24px view-media-artist icon
+
+-------------------------------------------------------------------
+Wed Jun 13 05:22:51 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.47.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.47.0.php
+- Changes since 5.46.0:
+  * fix handle-right
+  * updated handles and overflow-menu
+  * add varlesh to the authors list, thanks for your work
+
+-------------------------------------------------------------------
+Sun May 13 21:02:59 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.46.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.46.0.php
+- Changes since 5.45.0:
+  * Add plasma-browser-integration system tray icon
+  * remove plasma-browser-integration system tray icon will waite for review
+  * Add Virt-manager icon thanks to ndavis
+  * Add video-card-inactive
+  * validate icons
+  * overflow-menu as view-more-symbolic, and horizontal
+  * Use the more appropriate "two sliders" icon for "configure"
+
+-------------------------------------------------------------------
+Sat Apr 14 13:19:02 CEST 2018 - lbeltrame@kde.org
+
+- Update to 5.45.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.45.0.php
+- Changes since 5.44.0:
+  * Remove dupe, as was done in icons/
+  * BUG:385170 add window-pin icon (kde#385170 add window-pin icon)
+  * rename 64 px icons added for elisa
+  * change 32px icons for playlist shuffle and repeat
+  * BUG 392391 Missing icons for inline Messages BUG:392391 (kde#392391)
+  * New icon for Elisa music player
+  * Add media status icons
+  * Remove frame around media action icons
+  * autotest: skip dupetest if fdupes isn't found on Windows, to fix CI
+  * add media-playlist-append and play icons
+  * add view-media-album-cover for babe
+
+-------------------------------------------------------------------
+Mon Mar 12 23:29:40 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.44.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.44.0.php
+- Changes since 5.43.0:
+  * Fix inconsistencies in index.theme, detected by scalabletest
+  * remove view-media-playlist from preferences icons
+  * add 24px media-album-cover icon
+  * add Babe QML support (22px)
+  * update handle- icons for kirigami
+  * add 64px media icons for elisa
+
+-------------------------------------------------------------------
+Mon Feb 12 23:42:06 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.43.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.43.0.php
+- Changes since 5.42.0:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Tue Jan 16 22:50:13 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.42.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.42.0.php
+- Changes since 5.41.0:
+  * Fix icon name "weather-none" -> "weather-none-available" (kde#379875)
+  * Remove obsolete reviewboardrc file
+  * remove Vivaldi icon cause the origin app icon fits perfect with breeze BUG: 383517 (kde#383517)
+  * add Some missing mimes
+  * Breeze-icons add document-send icon BUG: 388048 (kde#388048)
+  * update album artist icon
+  * add labplot-editlayout support
+  * remove duplicates and update dark theme
+  * add gnumeric breeze-icon support
+
+-------------------------------------------------------------------
+Sun Dec 17 09:43:47 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.41.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.41.0.php
+- Changes since 5.40.0:
+  * Add missing icon sizes (kde#384473)
+  * add install and uninstall for discover
+  * add install and uninstall icons for discover
+
+-------------------------------------------------------------------
+Mon Nov 13 07:01:13 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.40.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.40.0.php
+- Changes since 5.39.0:
+  * Fix build of breeze-icons on the Android CI
+  * add folder-stash for the stash Dolphin toolbar icon
+
+-------------------------------------------------------------------
+Mon Oct 23 06:41:36 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.39.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.39.0.php
+- Changes since 5.38.0:
+  * add overflow-menu icon (kde#385171)
+
+-------------------------------------------------------------------
+Tue Sep 12 07:11:16 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.38.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.38.0.php
+- Changes since 5.37.0:
+  * None
+
+-------------------------------------------------------------------
+Sat Aug 12 09:23:14 UTC 2017 - christophe@krop.fr
+
+- Update to 5.37.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.37.0.php
+- Changes since 5.36.0 :
+  * flip errow center
+  * add osd icons
+  * update .h and .h++ colors BUG: 376680 (kde#376680)
+  * remove ktorrent small monochrome icon BUG: 381370 (kde#381370)
+  * bookmarks is an action icon not a folder icon BUG: 381383 (kde#381383)
+  * update utilities-system-monitor BUG: 381420 (kde#381420)
+
+-------------------------------------------------------------------
+Wed Jul 12 07:13:58 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.36.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.36.0.php
+- Changes since 5.35.0:
+  * Do not depend on bash uncessarily, and do not validate icons by default.
+  * add babe app icon
+
+-------------------------------------------------------------------
+Sun Jun 11 09:27:42 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.35.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.35.0.php
+- Changes since 5.34.0:
+  * update awk mime as it's a script language BUG:376211 (kde#376211)
+  * CMakeLists.txt - Do not find bash on Windows
+
+-------------------------------------------------------------------
+Mon May 15 13:53:18 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.34.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.34.0.php
+- Changes since 5.33.0:
+  * Add icons for hotspot (https://github.com/KDAB/hotspot)
+  * icons/status/16/microphone-sensitivity-medium.svg - fix validation remove undefined inkscape:connector-curvature CC: andreas kainz <kainz.a@gmail.com>
+  * BUG 377380 Better version control system icons BUG#377380
+  * BUG 376780 add plasmate icon BUG:376780 (kde#376780)
+  * BUG 377012 update microphone-sensitivity icons BUG:377012 (kde#377012)
+  * Raise default for 'Panel' icons to 48
+  * Kolourpaint Icon
+
+-------------------------------------------------------------------
+Sat Apr 15 10:11:42 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.33.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.33.0.php
+- Changes since 5.32.0:
+  * Upgrade ECM and KF5 version requirements for 5.33.0 release.
+  * Added MIME-type icon for Dockerfile as text-dockerfile
+  * Upgrade KF5 version to 5.33.0.
+
+-------------------------------------------------------------------
+Sun Mar 19 14:50:13 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.32.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.32.0.php
+- Changes since 5.31.0:
+  * Upgrade ECM and KF5 version requirements for 5.32.0 release.
+  * Added missing Plasma Vault icon
+  * add a preview for the disk quota plasmoid
+  * Added icons for Plasma Vault
+  * Renamed the folder-*crypt icons in breeze-dark to follow breeze
+  * Renamed icons for encrypted and decripted folders
+  * Added arc config file
+  * Rewrite tests to not use tier3 frameworks
+  * add im-youtube icon for babe music player
+  * update blender icons
+  * Upgrade KF5 version to 5.32.0.
+  * Add torrents icon 22px
+  * add nm-tray icons BUG: 374672
+  * color-management removed undefined links hopefully BUG: 374843
+  * system-run is now an action until <= 32px and 48px an app icon BUG: 375970
+  * Make tier3 dependency for tests optional
+
+-------------------------------------------------------------------
+Thu Feb  9 09:21:30 UTC 2017 - hrvoje.senjan@gmail.com
+
+- Update to 5.31.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.31.0.php
+
+-------------------------------------------------------------------
+Sun Jan  8 23:37:17 UTC 2017 - hrvoje.senjan@gmail.com
+
+- Update to 5.30.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.30.0.php
+
+-------------------------------------------------------------------
+Sun Dec  4 01:54:43 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.29.0
+  * Make BINARY_ICONS_RESOURCE ON by default
+  * Add vnd.rar mime for shared-mime-info 1.7 (kde#372461)
+  * Add claws icon (kde#371914)
+  * Add gdrive icon instead of a generic cloud icon (kde#372111)
+  * Fix bug "list-remove-symbolic use wrong image" (kde#372119)
+  * Other additions and improvement
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.29.0.php
+
+-------------------------------------------------------------------
+Sat Nov  5 20:05:42 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.28.0
+  * Update kstars action icons (kde#364981)
+  * Breeze Dark is listed as Breeze in System Settings wrong
+    .themes file (kde#370213)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.28.0.php
+
+-------------------------------------------------------------------
+Sun Oct  2 12:48:40 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.27.0
+  * New mimetypes icons
+  * Update some kstars icons (kde#364981)
+  * Wrong style actions/24/format-border-set (kde#368980)
+  * Add wayland app icon
+  * Add xorg app icon (kde#368813)
+  * Revert distribute-randomize, view-calendar + reapply
+    the transform fix (kde#367082)
+  * Change folder-documents from one file to the multiple file
+    cause in a folder more than one file is included (kde#368224)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.27.0.php
+
+-------------------------------------------------------------------
+Tue Sep  6 20:46:01 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.26.0
+  * Add missing namespace prefix definitions
+  * Check SVG icons for wellformedness
+  * Fix all edit-clear-location-ltr icons (kde#366519)
+  * Add kwin effect icon support
+  * Rename caps-on in input-caps-on
+  * Add caps icons for text input
+  * Add some gnome specific icons from Sadi58
+  * Add app icons from gnastyle
+  * Dolphin, Konsole and Umbrello icons optimized for 16px, 22px, 32px
+  * Updated VLC icon for 22px, 32px and 48px
+  * Added app icon for Subtitle Composer
+  * Fix Kleopatra new icon
+  * Added app icon for Kleopatra
+  * Added icons for Wine and Wine-qt
+  * Dix presentation word bug thanks Sadi58 (kde#358495)
+  * Add system-log-out icon in 32px
+  * Add 32px system- icons, remove colored system- icons
+  * Add pidgin, banshee icon support
+  * Remove vlc app icon due to license issue, add new VLC icon
+    (kde#366490)
+  * Add gthumb icon support
+  * Use HighlightedText for folder icons
+  * Places folder icons are now use stylesheet (highlight color)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.26.0.php
+
+-------------------------------------------------------------------
+Sun Aug  7 21:49:38 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.25.0
+  * Qt >= 5.5 is now required
+  * Update mail- 16px icons to recognize the icons better
+  * Update mic and audio status icons to have the same layout and size
+  * New System Settings app icon
+  * Add symbolic status gnome icons
+  * Add gnome 3 symbolic icon support
+  * Added icons for Diaspora and Vector, see phabricator.kde.org/M59
+  * New icons for Dolphin and Gwenview
+  * Weather icons are status icons no app icons
+  * Add some links to xliff thanks gnastyle
+  * Add kig icon
+  * Add mimetype icons, krdc icon, other app icons from gnastyle
+  * Add certificate mimetype icon (kde#365094)
+  * Update gimp icons thanks gnastyle (kde#354370)
+  * Globe action icon is now no linked file please use it in digikam
+  * Update labplot icons according to mail 13.07. from Alexander Semke
+  * Add app icons from gnastyle
+  * Add kruler icon from Yuri Fabirovsky
+  * Fix broken svg files thanks fuchs (kde#365035)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.25.0.php
+
+-------------------------------------------------------------------
+Wed Jul  6 15:01:28 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.24.0
+  * Many new or improved icons
+  * fix kde#364931 user-idle icon was not visible
+  * Add a program to convert symbolically linked files
+    to qrc aliases
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.24.0.php
+
+-------------------------------------------------------------------
+Mon Jun  6 21:22:44 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.23.0
+  * Add a CMake option to build binary Qt resource out of icons dir
+  * Many new and updated icons
+  * update disconnect network icon for bigger diference to conntected
+    (kde#353369)
+  * Update mount and unmount icon (kde#358925)
+  * Add some avatars from plasma-desktop/kcms/useraccount/pics/sources
+  * Remove chromium icon cause the default chromium icon fit's well
+    (kde#363595)
+  * Make the konsole icons lighter (kde#355697)
+  * Add mail icons for thunderbird (kde#357334)
+  * Add public key icon (kde#361366)
+  * Remove process-working-kde cause the konqueror icons should be used
+    (kde#360304)
+  * Update krusader icons according to (kde#359863)
+  * Rename the mic icons according D1291 (kde#D1291)
+  * Add some script mimetype icons (kde#363040)
+  * Add virtual keyboard and touchpad on/off functionality for OSD
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.23.0.php
+
+-------------------------------------------------------------------
+Sat May  7 18:29:37 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.22.0 (boo#980066)
+  * Many new action and application icons.
+  * Specify offered extensions as per change in kiconthemes
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.22.0.php
+
+-------------------------------------------------------------------
+Mon Apr  4 14:18:23 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.21.0 (boo#974793)
+  * Add breeze lokalize icons
+  * Sync app icons between breeze and breeze dark
+  * Update theme icons and remove application-system icon fix
+    kicker groups
+  * Add xpi support for firefox addons (kde#359913)
+  * Update okular icon with the right one
+  * Add ktnef app icon support
+  * Add kmenueditor, kmouse and knotes icon
+  * Change audio volume muted icon to use - for mute instead of
+    only red color (kde#360953)
+  * Add djvu mimetype support (kde#360136)
+  * Add link instead of double entry
+  * Add ms-shortcut icon for gnucash (kde#360776)
+  * Change wallpaper background to generic one
+  * Update icons to use an generic wallpaper
+  * Add the icon for konqueror (kde#360304)
+  * Add process-working icon for progress animation in KDE
+    (kde#360304)
+  * Add software install icon and update update icon
+    with the right color
+  * Add add and remove emblem icons for dolphin select,
+    add mount icon
+  * Remove stylesheet from analogclock and kickerdash applet icons
+  * Sync breeze and breeze dark (kde#360294)
+  * Upgrade Qt version requirement to 5.4.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.21.0.php
+
+-------------------------------------------------------------------
+Sun Mar  6 09:53:37 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.20.0 (boo#970856)
+  * Many new icons
+  * Add virtualbox mimetype icons and some other missing mimetypes
+  * Add synaptic and octopi icon support
+  * Fix cut icon (kde#354061)
+  * Fix name of audio-headphones.svg (+=d)
+  * Rating icons with smaller margin (1px)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.20.0.php
+
+-------------------------------------------------------------------
+Sat Feb  6 17:58:06 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.19.0 (boo#967668)
+  * Many new icons
+  * Add missing mimetype icons from oxygen icon set
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.19.0.php
+
+-------------------------------------------------------------------
+Sat Jan  2 17:41:29 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.18.0
+  * Icon updates and additions
+  * 22px size status icons for 32px too as you need it in the system tray
+  * Changed Fixed to Scalable value to 32px folders in Breeze Dark
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.18.0.php
+
+-------------------------------------------------------------------
+Thu Dec 10 23:01:52 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.17.0
+  * Many icons added or improved
+  * Use stylesheets in breeze icons (kde#126166)
+  * Fix and changed system-lock-screen (kde#355902)
+  * Add 24px dialog-information for GTK apps (kde#355204)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.17.0.php
+- Drop upstreamed applets.patch
+
+-------------------------------------------------------------------
+Sun Nov 22 18:31:38 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Added applets.patch: install applet icons (kde#355676)
+
+-------------------------------------------------------------------
+Wed Nov 18 18:21:08 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Mark license as LGPL-3.0
+- Add oxygen.diff, certain applications still expect oxygen icons
+  to be present, e.g. kmail
+
+-------------------------------------------------------------------
+Sun Nov  8 17:38:00 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Breeze icons are now shipped standalone: created breeze5-icons srcpkg
+

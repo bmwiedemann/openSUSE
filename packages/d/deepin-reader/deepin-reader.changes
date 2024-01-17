@@ -1,0 +1,58 @@
+-------------------------------------------------------------------
+Sun Dec 24 13:24:46 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
+
+- Add fix-docx-format.patch
+  * Deal with docx document format (boo#1218382 and CVE-2023-50254)
+- Set pandoc-cli as Requires, fix docx document support
+
+-------------------------------------------------------------------
+Thu Aug 25 14:08:05 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.10.23
+  * Adjust minimum size of window
+  * Fix bugs
+- Drop fix-return-type.patch 
+
+-------------------------------------------------------------------
+Fri Jul  1 08:20:10 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.10.16
+  * Update ut
+  * Optimize ui
+  * Optimize pdf support
+  * Update documents
+- Add fix-return-type.patch
+
+-------------------------------------------------------------------
+Sat Jun 11 13:57:29 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Fix build on openjpeg 2.5.0 and later 
+
+-------------------------------------------------------------------
+Mon May  9 12:15:48 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Fix build on ARM 
+
+-------------------------------------------------------------------
+Tue Apr 19 13:01:12 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.10.13
+  * Fix a wayland issue
+  * Optimize slide playing
+
+-------------------------------------------------------------------
+Sat Jan 29 07:48:09 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.10.10
+  * Use QtWebEngine
+  * Update manual documents
+  * Update translations
+  * Fix bugs
+
+-------------------------------------------------------------------
+Tue Aug 31 04:13:18 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Initial package for version 5.9.13
+- Add fix-library-link.patch.
+- Add fix-libdir.patch, fix the hardcode libdir
+- Add support-riscv.patch

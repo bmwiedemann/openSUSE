@@ -1,0 +1,15 @@
+<package name="leftwm" project="openSUSE:Factory">
+  <title>Tiling window manager for adventurers</title>
+  <description>LeftWM is a tiling window manager written in Rust that aims to be stable and performant. LeftWM is designed to do one thing and to do that one thing well: be a window manager.
+
+LeftWM follows the following mantra:
+  * LeftWM is not a compositor.
+  * LeftWM is not a lock screen.
+   * LeftWM is not a bar. But, there are lots of good bars out there. With themes, picking one is as simple as setting a symlink.
+
+Because you probably want more than just a black screen, LeftWM is built around the concept of themes. With themes, you can choose between different bars, compositors, backgrounds, colors, docks, and whatever else makes you happy.
+
+LeftWM was built from the very beginning to support multiple screens and ultrawide monitors. The default keybindings support ultrawide monitors and multiple screens.</description>
+  <devel project="X11:windowmanagers" package="leftwm"/>
+  <url>https://github.com/leftwm/leftwm</url>
+</package>

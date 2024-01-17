@@ -1,0 +1,907 @@
+-------------------------------------------------------------------
+Fri Dec 08 17:05:40 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.13.3:
+  * upgrade otel, docker and jose to fix CVE alerts
+
+-------------------------------------------------------------------
+Mon Oct 30 15:32:40 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.13.2:
+  * update ctl's cert-manager dependency to latest 1.13 commit
+  * bump go dependencies to fix remaining HTTP2 CVE alerts
+  * bump otel version and related dependencies
+  * [release-1.13] Bump /x/net to address CVE-2023-44487 /
+    CVE-2023-39325
+  * [release-1.13] update go-licenses to incorporate Tim's changes
+
+-------------------------------------------------------------------
+Wed Sep 27 11:22:14 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.13.1:
+  * import latest release-1.13 commit in cmctl
+  * fix go-restful 'DO NOT USE' version
+
+-------------------------------------------------------------------
+Wed Sep 13 04:53:50 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.13.0:
+  * update cert-manager version imported by cmctl to the latest
+    'release-1.13' commit
+  * upgrade dependencies
+  * fix trivy CVE alert for cyphar/filepath-securejoin
+  * upgrade docker dependencies
+  * upgrade cert-manager to latest master digest
+  * upgrade to k8s 1.28.1
+  * upgrade all dependencies
+  * cleanup: some redundant code clean up
+  * update comment and explain why we use cmdutil.CheckErr
+  * check api, only log if -v is set
+  * use logging library in cmctl
+  * downgrade k8s.io/kube-openapi
+  * run 'make tidy'
+  * Bump k8s.io dependencies
+  * add validation to pki CertificateTemplate function and add
+    support for add DontAllowInsecureCSRUsageDefinition featuregate
+    to use old behavior in controller
+  * Update cmd/cmctl's go.mod to v1.13.0-alpha.0
+  * if wait is set to 0, we still want to check the API once
+  * Bump sigs.k8s.io/controller-runtime to v0.15.0
+  * Updates cmctl to point at latest cert-manager
+  * Bump k8s.io dependencies
+  * upgrade all our docker deps
+  * replace go.mod replace statements with require statements
+  * allow importing the ctl cmd package
+  * make update-licenses
+  * Bumps Helm to latest release
+  * Bumps c/r to latest commit
+  * use a concrete cert-manager version for cmctl
+  * replace deprecated wait.PollUntil() and wait.Poll()
+
+-------------------------------------------------------------------
+Tue Sep  5 14:52:33 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 1.12.4:
+  no changes in cmctl in this release, all changes betweeen 1.12.3
+  and 1.12.4 are in other parts of the code.
+  Nevertheless, to keep in sync, we release this version.
+
+-------------------------------------------------------------------
+Thu Jul 27 04:50:33 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 1.12.3:
+  * BUGFIX: 1-character bug was causing invalid log messages and a
+    memory leak (#6235, @jetstack-bot)
+
+-------------------------------------------------------------------
+Fri Jun 16 13:07:04 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.12.2:
+  * if wait is set to 0, we still want to check the API once
+
+-------------------------------------------------------------------
+Fri May 26 05:19:26 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.12.1:
+  * Bump cert-manager in cmctl to latest 1.12 commit
+  * Add a note that folks should not use top level helm
+    featureGates value to pass webhook flags
+  * Bump sigs.k8s.io/controller-runtime to v0.15.0
+  * Don't run API Priority and Fairness controller in webhook
+    extension apiserver
+  * Bump k8s.io dependencies
+  * Bumps kubebuilder SHAs
+
+-------------------------------------------------------------------
+Mon May 22 05:47:55 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.12.0:
+  changelog to large to add, please see here
+  https://github.com/cert-manager/cert-manager/releases/tag/v1.12.0
+- BuildRequire go1.20
+
+-------------------------------------------------------------------
+Wed May 10 04:37:19 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.11.2:
+  * Bump kube libs
+  * Bump Docker
+  * [release-1.11] Bump go and base images to latest
+  * Adds kube 1.27 kind image
+  * [release-1.11] add gcb configuration file for building
+    cert-manager when tag pushed
+  * add go workspace files to gitignore
+
+-------------------------------------------------------------------
+Thu Apr 13 07:32:54 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.11.1:
+  * Bump distroless base images and kind versions
+  * make: force the use of registry.k8s.io by ingressnginx
+  * update k8s.gcr.io to registry.k8s.io
+  * use jetstack vcert fork to properly reset on error for TPP
+  * bump go version
+  * update base images to latest
+  * bump dependencies to fix CVEs
+  * e2e: the vault addon was incorrectly using StdoutPipe
+  * bump base images to latest
+  * Code review feedback: fix imports
+  * Resets secrets lister in RFC2136 conformance tests
+  * RFC2136 solver has an init option to reset secrets lister
+  * A bunch of comments on webhook solver functionality
+  * Bump keystore-go to v4.4.1
+  * Use fake kube apiserver version when generating helm template
+    in cmctl x install
+
+-------------------------------------------------------------------
+Wed Jan 11 19:08:01 UTC 2023 - kastl@b1-systems.de
+
+- BuildRequire go1.19
+- Update to version 1.11.0:
+  * Bump go to 1.19.5
+  * Bump containerd to fix reported vuln
+  * bump base images to latest
+  * Policy check ensures that cert.sepc.secretName secret gets labelled
+  * Keymanager controller ensures that temporary private key Secrets are labelled
+  * Issuing controller ensures that cert.spec.secretName secrets are labelled
+  * Adds a new label to cert-manager API
+  * move custom acmesolver image above extraArgs
+  * Log error if CA source is in a namespace that is not in scope
+  * Fix cainjector's namespace flag
+  * Code review feedback- better comment
+  * Bump golang.org/x/crypto and golang.org/x/oauth2
+  * Fix integration tests
+  * Ensures that only one secrets cache is created for cert-manager controller
+  * bump base images to latest
+  * avoid logging confusing error messages for external issuers
+  * Allow custom helm values files to be supplied to make ko-deploy-certmanager
+  * Remove trailing escape slash
+  * various ginkgo tweaks
+  * Remove duplicate ko-deploy-cert-manager make target
+  * use template when generating tempdir in verify-crds
+  * update LICENSES (make update-licenses)
+  * vcert: upgrade to v4.23.0 to fix "Click Retry" and "WebSDK CertRequest"
+  * fix(AzureDNS): suppress original message in adal.TokenRefreshError to prevent early CR reconciliations due to unique data (timestamp, Trace ID) that lands to CR status
+  * helm: add option to override ACME HTTP-01 solver image
+  * Bump sigs.k8s.io deps
+  * Bump supported versions of k8s mentioned in the helm chart
+  * Add some experimental ko based build and deploy tools
+  * update base images to latest
+  * Bump version of contour helm chart + images
+  * Add ko tool
+  * bump golang.org/x/net version to fix trivy vulns
+  * update SECURITY policy to exclude vuln reports
+  * Enable + use k8s 1.26 for e2e tests by default
+  * Bumps [helm.sh/helm/v3](https://github.com/helm/helm) from 3.10.0 to 3.10.3. - [Release notes](https://github.com/helm/helm/releases) - [Commits](helm/helm@v3.10.0...v3.10.3)
+  * add + use CABundle field for ACME servers in issuers
+  * change wording on descriptions for Vault and TPP 'CABundle' fields
+  * Update controller-runtime to v0.14.0
+  * kubebuilder did not yet create a 1.26 release
+  * add WithLegacy function to our fake discovery client
+  * Bump k8s.io deps to v0.26.0
+  * feat: Add max-concurrent-challenges parameter to helm
+  * fix kubebuilder tools arm64 sha256sum
+  * bump dep versions to fix trivy-reported vulns
+  * Fixed a typo in helm chart values
+  * bump go to 1.19.4
+  * remove verify-licenses from ci-presubmit
+  * Addressing review comments
+  * Updating CRDs
+  * Addressing review comments
+  * Update internal/controller/certificates/policies/checks.go
+  * Refreshing secrets when the keystore fields change
+  * Gateway and GatewayClass for tests are created against beta Gateway API
+  * Corrects test Gateway resources
+  * Removes unused check
+  * Updates Gateway API test dependency
+  * Bumps Contour Helm chart version
+  * Tests download Gateway installation bundle
+  * Update reference to HTTPRoute docs
+  * feature: update gateway api to v1beta1
+  * e2e: use Vault 1.12.1 instead of the outdated 1.2.3
+  * Return error when Gateway has a cross-namespace secret ref
+  * Use distinct manifest dirs for signed / unsigned manifests
+  * Add boilerplate comment
+  * Add error case + list all supported OIDs in cannonical order
+  * Make test assertion more specific to slice, need to verify ordering of rdns
+  * e2e test confirming LDAP rdn literalsubject in generated certificate
+  * chore(AzureDNS): added more comments as requested by @wallrj
+  * Test that the Sign function *does* use the Vault namespace
+  * Recreate the original behaviour of sending a Vault token to the unauthenticated sys/health endpoint.
+  * Remove unused Token method
+  * Remove unused Sys methods
+  * Test
+  * Set the Vault namespace using the official method in the vault SDK
+  * Gofmt files
+  * Add support for required LDAP (rfc4514) RDNs in LiteralSubject
+  * feat(AzureDNS): add a test for federated SPT
+  * fix: featureGates add webhook deployment in chart yaml
+  * updating to match feedback and adjust the RunAsNonRoot options for http01 solver to be more descriptive
+  * fail in case of invalid IP address
+  * enable basicConstraints feature in e2e environments by default
+  * Addressing review comments
+  * improve gen.CSR and use it everywhere
+  * Fix typos in explanatory comment
+  * Always initialize tlsClientConfig if the default is nil
+  * Use RenegotiateOnceAsClient and explain why
+  * chore(Azure): improve naming, add comments
+  * fix x/text vuln and ignore AWS vuln
+  * bump to latest go minor version to fix vulns
+  * Adding unit tests
+  * add make target for updating base images
+  * bump base / kind images
+  * re-order Helm parameters & move some values to constants
+  * feat: add commonLabels to webhook configmap
+  * Fixing CA flag in basic constraints extension
+  * feat(Azure): add support for workload identity
+  * fix: update scorecard not running
+  * Fire event for informational purposes when the CertificateRequest has not yet been approved.
+  * remove devel folder
+  * update base and kind images
+  * don't write to devel folder when updating kind images
+  * final update to old devel kind images
+  * minor language tweaks to README and ROADMAP
+  * Remove the old Helm chart for Vault
+  * [NIT] Changing variable name to denote right type
+  * [NIT] Changing variable name to denote right type
+  * use Vault Helm Chart provied by Hashicorp
+  * Add scorecard badge to README
+  * Add Scorecard Action yml
+
+-------------------------------------------------------------------
+Wed Jan 11 05:51:08 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.10.2:
+  * Bump containerd to fix reported vuln
+  * bump base images to latest
+  * Code review feedback- better comment
+  * Fix integration tests
+  * Ensures that only one secrets cache is created for cert-manager controller
+  * avoid logging confusing error messages for external issuers
+  * use template when generating tempdir in verify-crds
+  * bump base images to latest versions
+  * bump helm version to fix CVE-2022-23525
+  * bump version of contour helm chart to 10.0.1
+  * enable testing with k8s 1.26 by adding new kind image
+  * bump base images to latest versions
+  * bump dep versions to fix trivy-reported vulns
+  * remove verify-licenses from ci-presubmit
+  * bump go to 1.19.4
+  * Use distinct manifest dirs for signed / unsigned manifests
+  * fix x/text vuln and ignore AWS vuln
+
+-------------------------------------------------------------------
+Mon Nov 21 14:38:43 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.10.1:
+  * Fix typos in explanatory comment
+  * Always initialize tlsClientConfig if the default is nil
+  * Use RenegotiateOnceAsClient and explain why
+  * bump to latest go minor version to fix vulns
+
+-------------------------------------------------------------------
+Mon Oct 17 14:57:15 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.10.0:
+  * Fix string match e2e test on vault issuer caBundle
+  * Use lowercase "specified" in vault e2e test case
+  * Addressing review comments Co-authored-by: Cody W Eilar <ecody@vmware.com>
+  * Generate Certificate Request with predictable name Co-authored-by: Cody W Eilar <ecody@vmware.com>
+  * update devel/README.md to recommend make instead
+  * Updates base images
+  * Adds a script to quickly generate latest SHAs
+  * Updates SHAs for kubebuilder-tools
+  * log more information on why the get CertificateRequest request failed
+  * Improving unit test coverage of pkg/issuer/acme/setup.go
+  * Update Chart kubeVersion to >=1.20.0-0
+  * Deploy contour from HELM chart instead of plain yaml
+  * refactor RemoveCertificate to use DeletePartialMatch
+  * fix incorrect func signature in certificate metrics controller
+  * fix formatting
+  * add issuer_{group|name|kind} labels to prom metrics
+  * Fixing the documentation typo
+  * Bump Go to 1.19
+  * upgrade dependencies
+  * Bump k8s.io dependencies
+  * add comment
+  * add kind 1.25
+  * Ensure forward-compatibility with k8s.io/apiserver's Storage interface
+  * helm: Add NetworkPolicy support
+  * improve Helm values.yaml comment
+  * chore: remove duplicate word in comments
+  * bugfix: use new tools.mk structure for rclone
+  * update container names in ytt overlays
+  * fix broken test
+  * to help troubleshooting make the helm chart container names unique
+  * Fix incorrect uses of loop variable
+  * Add annotations for ServiceMonitor in helm chart
+  * improve tools.mk docs
+  * set errexit, trap kind-logs
+  * use variables for binaries
+  * generate build targets dynamically
+  * move e2e-ci to a script
+  * Updates CertificateSigningRequest SelfSigned e2e tests to require needing the CertificateSigningRequest Feature Gate to be enabled.
+  * Add: support common labels for all resources
+  * Add topologySpreadConstraints to helm chart (fix #5149)
+  * fixup! Add option to load Vault CA bundle from Kubernetes Secret
+  * partial undo of replace-all for contour-gateway.yaml
+  * fixup! Add option to load Vault CA bundle from Kubernetes Secret
+  * Add option to load Vault CA bundle from Kubernetes Secret
+  * Document that pod template spec should be used instead of flags
+  * use GenerateName instead
+  * Update ginkgo import path to use /v2
+  * Adds e2e tests for the new SelfSigned CertificateSigningRequest Secret informer
+  * Updates selfsigned CertificateSigningRequest controller with new Secret informer, and no longer mark the request as Failed when the private key Secret is malformed. This behaviour matches the CertificateRequest self signed controller.
+  * Adds secret handler function for selfsigned CertificateSigningRequest controller, which re-syncs requests which reference the Secret via the `experimental.cert-manager.io/private-key-secret-name` annotation.
+  * Updates ACME CertificateSigningRequest for new informer registration format
+  * Update CertificateSigningRequest controller to accept a list of RegisterExtraInformerFn, which control the extra informers.
+  * Adds e2e tests for CertificateRequest self signing controller; focussing on requests being re-synced when the target Secret is up
+  * Adds extra informer for the CertificateRequest SelfSigned controller, so that CertificateRequets will be re-synced on informed Secrets which are referenced with "cert-manager.io/private-key-secret-name"
+  * add random suffix to webhooks in CA Injector e2e tests
+  * upgrade gateway api to v0.5.0
+  * Fix comment
+  * docs: Change values.yaml wording to reference correct resource
+  * Fix test flake
+  * bugfix: fix issue where CertificateRequests marked InvalidRequest were not properly marked as Failed
+  * Add test to check InvalidRequest handling for certificates
+  * Add integration test for regenerating private key for each CR upon failure
+  * integration framework: add StartInformersAndControllers
+  * rename policyEvaluator->BuildReadyConditionFromChain
+  * add pruning logic for gotestsum junit xml output
+  * only print Helm install output on error
+  * bugfix ginkgo: make tests deterministic, don't use maps to define testCases
+  * upgrade ginkgo to v2
+  * apply go fmt for go1.19
+  * simplify static manifest generation
+  * replace 'github.com/onsi/ginkgo' with 'github.com/onsi/ginkgo/v2'
+  * add trivy scan targets
+  * replace go-restful version with patched version
+  * update containerd dependency to fix CVE
+  * remove replacement for /x/net and update /x/net + /x/sys
+  * add go.mod and go.sum as sources
+  * add inteon to ONWERS
+  * Update year to 2022
+  * remove straggling BUILD.bazel file
+  * Add code comment which states that it is valid to use neither an AccessKeyID or AccessKeySecretRef
+  * In PR https://github.com/cert-manager/cert-manager/pull/5194, we introduced a validation whereby an issuer would be rejected if it did not contain AccessKeyID or SecretAccessKeyID when using the route53 DNS solver. This is incorrect, since neither should need to be defined when using AWS ambient credentials.
+  * remove issue error if role is specified
+  * Remove bazel 🎉
+  * TestManyPasswordLengths: pre-create password test cases outside of concurrent tests
+  * Update the approval e2e tests so that transient client request errors are retried, and correctly check the error returned is expected when appropriate.
+  * Add suggestion from code review
+  * When a CertificateSigningRequest using the SelfSigned issuer references a Secret which does not exist, return error, rather than marking the request as failed.
+  * add shrinking core to roadmap
+  * Adds on conflict retries to certificate state change in the SecretTemplate e2e test setups
+  * Adds on conflict retries to certificate state change in the additionaloutputformat e2e test setups
+  * add some docs on changing or adding make targets
+  * use order-only prerequisites where possible for tools
+  * update base images using ./hack/latest-base-images.sh
+  * added healthcheck to containers port spec
+  * Updates Roadmap
+  * add missing target for $(BINDIR)
+  * Retry update on conflicts during SecretTemplate tests to avoid test flakes
+  * make: cmctl and kubectl-cert_manager were using two -ldflags
+  * Kubernetes 1.20+
+  * refer to Default Security Contexts
+  * Update helm README file
+  * strengthen securityContexts
+  * update kyverno version and policy
+  * Avoid hard-coding release namespace in helm chart
+  * Use multiple --dynamic-serving-dns-names arguments
+
+-------------------------------------------------------------------
+Wed Jul 27 06:38:05 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.9.1:
+  * Add code comment which states that it is valid to use neither an AccessKeyID or AccessKeySecretRef
+  * In PR https://github.com/cert-manager/cert-manager/pull/5194, we introduced a validation whereby an issuer would be rejected if it did not contain AccessKeyID or SecretAccessKeyID when using the route53 DNS solver. This is incorrect, since neither should need to be defined when using AWS ambient credentials.
+  * remove issue error if role is specified
+
+-------------------------------------------------------------------
+Fri Jul 22 15:37:24 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.9.0:
+  * When a CertificateSigningRequest using the SelfSigned issuer references a Secret which does not exist, return error, rather than marking the request as failed.
+  * TestManyPasswordLengths: pre-create password test cases outside of concurrent tests
+  * Update the approval e2e tests so that transient client request errors are retried, and correctly check the error returned is expected when appropriate.
+  * Adds on conflict retries to certificate state change in the SecretTemplate e2e test setups
+  * Adds on conflict retries to certificate state change in the additionaloutputformat e2e test setups
+  * update base images using ./hack/latest-base-images.sh
+  * Retry update on conflicts during SecretTemplate tests to avoid test flakes
+  * add missing target for $(BINDIR)
+  * make: cmctl and kubectl-cert_manager were using two -ldflags
+  * Use variable for curl, add retries
+  * updates bazel deps
+  * Adds unit tests for route53 access key ID secret validation
+  * Cleans up the logic for testing that the route53 dns access ID Key secret is valid
+  * Updates wording for aws rout53 dns CRD field comments
+  * check gatewayapi SHA256SUM
+  * use new darwin-arm64 versions of kubebuilder tools
+  * Change all scripts #!/bin/bash -> #!/usr/bin/env bash. Also changes same for Makefile SHELL
+  * Updates LICENSES
+  * Bump informerResyncPeriod
+  * Downgrade kube-openapi
+  * Bump versions of kubebuilder assets and kubectl
+  * Bump Helm dependency
+  * bump base images to latest available
+  * Bump k8s.io dependencies
+  * move legacy targets to legacy.mk
+  * add make-based upgrade test
+  * add warning about vendor-go gotcha
+  * make update-all & ensure bazel-only targets are runnable
+  * Runs ./hack/update-bazel.sh
+  * Removes support for networking/v1beta1 Ingress
+  * Increase Venafi issuer timeout on retrieving certificate
+  * fix name of command in example comment
+  * Don't require python to be installed for everything
+  * Add private key Ingress annotations to set private key properties for Certificate
+  * make verify_deps is now a no-op
+  * remove now-replaced tests from hack/BUILD.bazel
+  * update LICENSES file to new format
+  * add make verifier / updater for LICENSES
+  * add install for go-licenses
+  * move VENDORED_GO_VERSION up with other versions
+  * remove bazel tests which are run in make
+  * add CRD generation to makefile, replacing bazel
+  * add a make variant for codegen tools
+  * add extra info on how to fix when tools are missing
+  * bump version of k8s-codegen assets
+  * Increase ACME client HTTP timeout to 90s
+  * Remove timeouts in ACME logging middleware
+  * Incease issuer and clusterissuer controller timeouts
+  * Set static (Cluster)Issuers timeout to 90 seconds
+  * CertificateRequests controllers must wait for the core secrets informer to be synced
+  * timeouts proposal
+  * Don't include new bindir when generating bazel files
+  * add todo warning about using FULL images
+  * move commented out SHASUM generation to bottom of file
+  * move FORCE target to Makefile
+  * change name of bin dir to _bin by default and make it a variable
+  * change default shell to use /usr/bin/env
+  * Add revision history limit Ingress annotation to set field on the Certificate
+  * Code review feedback
+  * Bumps base images
+  * Fixing unit tests around SecretAccessKeyID pointers
+  * Changed SecretAccessKeyID member to pointer as it is optional and tagged omitempty. Added issuer tests for access key ID secret validation. Added issuer API validations for AccessKeyID/SecretAccessKeyID.
+  * fix(cmctl): typo
+  * update boilerplate headers
+  * add VerifyCredentials to Venafi issuers setup
+  * add target for publishing a release to GCS using rclone
+  * Updating and regenerating CRDs to make SecretAccessKeyID field usage more clear
+  * Update CRD documentation to be a bit clearer
+  * Reverts additional check for ServiceMonitor.
+  * Fixing typo in error message
+  * Enforce validation on either accessKeyID or accessKeyIDSecretRef being specified, but not both. Drop unneeded unit test
+  * Add unit test for testing access key ID secrets as well as priority when both accessKeyIDSecretRef and accessKeyID are specified
+  * Adds a couple comments and TODOs
+  * Default kube version for test kind cluster to 1.24
+  * Bumps kind to 0.14, use upstream kube 1.24 image
+  * add install for rclone
+  * prefix failed goimports files to make errors clearer
+  * Corrects the cert.spec.privateKey path in logs
+  * Clarifies the warning if private key cannot be regenerated, but spec has changed
+  * Corrects the --dns01-check-retry-period flag description
+  * Add support for pulling Route53/AWS access key IDs out of secrets
+  * Feature gated support for using literal subjects in `Certificate`s
+  * Removes check for Kubernetes 1.18 and 1.19
+  * Allows kind to choose API version for kubeadm Cluster config
+  * Remove kind config for kube 1.18 and 1.19
+  * Removes unused kind config
+  * Predefine what service IP range kind should use
+  * Removes 1.18 and 1.19 kind images
+  * Removes Gateway Kubernetes version check
+  * Removes installation of pre-kubernetes 1.19 compat ingress
+  * Removes the unused traefik and haproxy addons config
+  * Adding new line to the end helpers file
+  * Ensure that flags are actually passed to etcd
+  * add unsigned manifests target
+  * add alternative bindirs to gitignore in preparation for #5130
+  * Bump Go to 1.18
+  * Code review feedback
+  * add URL for cert-manager website to chart, update logo URL
+  * Adds design template
+  * Improve logging output for webhook cert renewal
+  * Adding link to the problem that has been identified in helm around sub charts and setting of namespaces
+  * Refactored the namespace override and moved it into helper script so it can be updated in single place, then found more files that needed the value updated
+  * update base images
+  * Added a namespace override so that the namespace where the services are deployed into can be set. Helpful when using this chart as a dependency (sub chart)
+  * Set the startupapicheck nodeSelector to linux
+  * Ensure that Venafi client for CSRs gets initialized with metrics
+  * Addressed code review feedback and simplified the unit-tests
+  * Don't fail when removing a non-existant tar
+  * Refactor the update and updateStatus to a single deferred function
+  * don't verify chart in ci-presubmit
+  * maintain a single source of truth for updating kind images
+  * use a version sort for proper version comparisons
+  * use command -v over which
+  * Improve "make help" output and add a couple of utility commands
+  * ignore bin directory in various verification scripts
+  * make verify-chart-version respect CTR in makefile
+  * Bumps Contour v1.20.0 -> v1.20.1
+  * Removes duplicated Gateway CRDs
+  * Fix CR approve/deny e2e test for kube 1.24
+  * Ensure that kube version can be modified
+  * Fix kube 1.24 image
+  * Wait for cluster-info to be available
+  * Cleanup + a couple TODOs
+  * Ensures Envoy ClusterIP is parameterized consistently
+  * Bumps kind v0.11.1 -> v0.12.0
+  * Remove leftover cainjector annotations from our CRDs
+  * Delete mask
+  * Allows creation of 1.24 kind cluster
+  * various README improvements for clarity and brevity
+  * Revert "Use Apply instead of Update to modify resources in tests"
+  * Test that the cleanup is performed
+  * Update minimum version constraint to be 1.19.0-0
+  * Add minimum kubernetes version constraint to chart
+  * Use a more reliable check for deletion
+  * Code review feedback
+  * ./hack/update-all.sh
+  * Integration tests use SSA instead of Update to update test resources
+  * e2e tests use SSA to update test resources
+  * certificates.Apply returns the patched certificate
+  * Use pngcrush -brute
+  * Add small logo
+  * Square the logo
+  * Mark venafi_client_request_duration_seconds metric as alpha
+  * Code review feedback
+  * Always save e2e test logs
+  * Remove finalizer duties from the scheduling function and update and expand the tests
+  * Set the finalizer as part of the Challenge Sync function
+  * Bump golang.org/x/crypto to v0.0.0-20220411220226-7b82a4e95df4
+  * update logo dimensions + add note about logo location and name
+  * Don't use --force option to install addons with helm
+  * Fix kind cluster creation with kube 1.19 and 1.18
+  * Cleanup
+  * Log Venafi API calls
+  * Adds Venafi metrics
+  * update tar command to trim paths for release manifests
+  * add helpful comment to tar commands
+  * update tar commands to trim paths for cmctl
+  * remove pkg/util/coverage
+  * also clean bazel folders with make clean
+  * bump base images
+  * Add a unit test for challenges reScheduler
+  * Fix the error is reported to null when it happens
+  * fix old logo location in helm chart
+  * Explicitly mount service-account-token in deployment
+  * Remove OWNERS from helm chart
+  * add cert manager blog details
+  * Clean up template
+  * Remove securityContext.enabled from helm chart
+
+-------------------------------------------------------------------
+Thu Jun 23 15:45:02 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.8.2:
+  * bump base images to latest available
+  * add new _bin dir to gitignore
+  * Increase ACME client HTTP timeout to 90s
+  * Remove timeouts in ACME logging middleware
+  * Incease issuer and clusterissuer controller timeouts
+  * Set static (Cluster)Issuers timeout to 90 seconds
+
+-------------------------------------------------------------------
+Wed Jun 22 12:43:03 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.8.1:
+  * add target for publishing a release to GCS using rclone
+  * add install for rclone
+  * Reverts additional check for ServiceMonitor.
+  * Bump patch version of Go
+  * Don't fail when removing a non-existant tar
+  * Fix approve/deny e2e test for kube 1.24
+  * Ensure kube version can be modified
+  * Fix kube 1.24 image
+  * Wait for cluster info to be available
+  * Cleanup + a couple TODOs
+  * Ensures Envoy ClusterIP is parameterized consistently
+  * Bumps kind v0.11.1 -> v0.12.0
+  * Allows creation of 1.24 kind cluster
+  * bump base images
+  * fix old logo location in helm chart
+
+-------------------------------------------------------------------
+Wed Jun 22 12:40:27 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.8.0:
+  * Removes unnecesary check for finalizer diff in challenge sync
+  * Adds a challenge finalizer in challenges controller
+  * Sets Challenge managed fields to nil when applying a spec patch
+  * Adds roundtrip tests to challenge apply serializer
+  * Fix challenge serialization, and add integration tests for apply helpers
+  * Add patch permissions to challenges/status
+  * Updates ACME challenge controllers to use apply
+  * Adds controller challenges apply helpers
+  * Add APU to USERS.MD
+  * fix target when building containers for release
+  * Gracefully handle 404s when fetching old CRDs
+  * make: GOFLAGS missing when building cmctl and kubectl_cert-manager
+  * update bazel BUILD
+  * tidy imports
+  * Change label description for HTTP-01 Gateway API solver and fix tests
+  * make: avoid the message "warning: undefined variable 'CI'"
+  * Add controller_sync_error_count metric
+  * Fix golang linting
+  * Adds integration tests for owner reference post issuance checks
+  * Wires up new post issuance checks for issuing controller
+  * Adds certificates policy checks for owner references
+  * use absolute path of cmrel
+  * make: prevent "warning: undefined variable 'CI'"
+  * make: add "make e2e-setup-kind-update-images"
+  * make/cluster.sh: remove the fixed clusterIP CIDR 10.0.0.0
+  * make: remove the not-really-needed system dependency "perl"
+  * e2e: WaitForAllPodsRunningInNamespaceTimeout: %s missing value in logs
+  * make/cluster.sh: speedup etcd by using --unsafe-no-fsync
+  * make/e2e.sh: raise concurrency from 10 to 20
+  * e2e: raise slightly the timeouts so that ginkgo -nodes 20 works
+  * make: e2e-setup-kind now properly prepulls image before "kind create"
+  * make: test-ci's XML output is a bit more readable now
+  * make: preload-kind-image now caches the kind image in "bin/downloaded"
+  * make/e2e.sh: add a backoff to the log.Logf when waiting for something
+  * make: test-ci: hide fuzz_xxxx test results in the JUnit XML
+  * make: e2e-setup-certmanager: fix the acmesolver image
+  * make/cluster.sh: don't display the networking info, it isn't helpful
+  * make: e2e-setup-sampleexternalissuer: bump from v0.0.0-30 to v0.1.1
+  * make/e2e.sh: the "trace" func was showing quotes in the wrong place
+  * make: test-ci now writes JUnit XML to $ARTIFACTS/junit_make-test-ci.xml
+  * Add roundtrip test to Certificate serializing. Add field manager to certificates-shim Create API call
+  * Optionally Apply certificates, instead of update, in certificate-shim when Server-Side apply is enabled
+  * Adds apply helper function for Certificates
+  * make: re-add GOFLAGS to samplewebhook and pebble
+  * make: the AppVersion and AppGitCommit weren't set
+  * make: ignore bin/ and make/ which both contain go files
+  * make: tools version is now properly switched when switching branches
+  * make: in CI, copy binaries from "bin/downlaoded" to "bin/tools"
+  * bump base images to latest versions
+  * Fix test failures
+  * Adds some more test cases
+  * Set CSR as failed if annotation duration is not a valid time
+  * Enforce minimum value of experimental.cert-manager.io/request-duration to 600s
+  * Adds a unit test for certificatesigningrequests sync function
+  * Use client-go scheme with core types added as event recorder scheme
+  * add a build source indicator to metadata
+  * Bump Go 1.17.1 --> 1.17.8 to fix CVEs
+  * gateway-api: with v1alpha2, the labels have become optional
+  * update: Setting allowPrivilegeEscalation to false for controller, cainjector, webhook containers and for startupapicheck job
+  * Use Kubernetes CSR spec.expirationSeconds to express cert duration
+  * Add permissions to update certificates/status to allow namespace admins to renew manually a Certificate. Fixes #4954
+  * Rename issuanceAttempts -> failedIssuanceAttempts
+  * Code review comments
+  * Adds an integration test for exponential backoff
+  * Trigger controller backs off from issuance with an exponential backoff
+  * certificates-issuing controller sets status.issuanceAttempts when certificate issuance has failed
+  * Adds IssuanceAttempts field to Certificate's status
+  * Code review comments
+  * Adds a basic unit test
+  * Cleanup of the adopted code
+  * Use our own implementation of github.com/miekg/dns.TsigProvider interface
+  * It seems ther is a need to perfrom upsert instead of a simple create.
+  * clear up the release target a little, ensure all things are built
+  * some small QoL tweaks in makefiles
+  * fix phony names for some targets
+  * Reducing initial backoff period is a non-goal
+  * Adds a note about denied CertificateRequests
+  * Remove reference to event that shows when the next issuance will be attempted
+  * Changing revision number should not reset backoff period
+  * Design for exponential backoff
+  * Replaces dns v0.41 -> v0.34
+  * Bumps a bunch of deps
+  * update: Setting allowPrivilegeEscalation to false
+  * make: warn people about e2e-setup-traefik and e2e-setup-haproxyingress
+  * make: e2e-setup-haproxyingress: add haproxyingress arm64 image
+  * make: e2e-setup-traefik: fix dditionalArguments -> additionalArguments
+  * docs: suggest -j8 instead of -j to avoid fork bombs
+  * docs: mention direnv with export PATH=bin/tools
+  * make: remove comments I re-added when moving release_containers.mk to release.mk
+  * make: e2e-setup: pebble can now be built on M1 macs
+  * docs: improve featureGates Helm chart value documentation
+  * make: e2e-ci: export ARTIFACTS so that it goes to make/e2e.sh
+  * make: test-ci now tests $(WHAT), like "make test"
+  * make: vendor-go wasn't run before e2e-setup
+  * minor commenting fixes
+  * make: e2e-setup: use eafxx/bind instead of sameersbn/bind
+  * make: e2e: add CGO_ENABLED=0 to make/e2e.sh
+  * make: test-ci: xargs --max-procs doesn't exist in the busybox
+  * make: e2e-setup now skips bind and sampleexternalissuer on arm64
+  * make: e2e-setup: projectcontour actually has an arm64 image
+  * fix kyverno_arm64 image format
+  * verify-errexit: add set -e to pass CI
+  * bazel: ignore .go files in make/ and bin/
+  * e2e: try to load the Make-built crds before the Bazel-built crds
+  * make: integration-test: KUBEBUILDER_ASSETS needs to be absolute
+  * make: remove 'how to install system tools' instructions such as go or jq
+  * make: add the targets 'e2e-setup-kind', 'e2e-setup-kind', and 'e2e'
+  * make: fix manifests.mk data race due to bin/helm/cert-manager/templates/%.yaml
+  * e2e: remove annoying "Running with unsupported features: Ed25519"
+  * e2e: remove annoying "Configuring details for shared cluster addons"
+  * e2e: rename Vault's image from vault:bazel to local/vault:local
+  * Remvoes the creation of an unused HTTPRoute in tests
+  * Removes the creation of the unused test istio GatewayClass
+  * Removes the unused traefik and haproxy addons
+  * Explicitly specify group name in test gateway cert ref
+  * added optional labels for webhook, startupapicheck and cainjector service accounts
+  * Make aggregation to user-facing ClusterRoles optional
+  * add regression tests for certificate validation
+  * Switch leader election to use Lease objects
+  * readme: link to the contributing guide directly
+  * Simplify the CONTRIBUTING.md document
+  * support serviceAccount.Labels in Helm chart
+  * add more e2e tests for issuer ready state in conformance tests
+  * e2e: retry on conflict for the test "added an additional dnsName"
+  * e2e: fix flakiness: "CA Injector should update data when the certificate changes"
+  * add install for controller-gen and other "gen" tools
+  * Remove outdated, duplicated comment in Makefile
+  * add checks for required binaries in environment
+  * minor verify-goimports tweak + document future improvements
+  * add target for boilerplate verification in CI presubmits
+  * add verify-errexit target to ci presubmits
+  * add enum for rotationPolicy
+  * e2e for issuers and cluster issuers ready state
+  * update uninstall description
+  * goimports
+  * Tidy imports and copyright preamble
+  * Update RBAC for the new gateway API's apiGroup
+  * remove conflicting contour example gateway
+  * Protocol type must be TCP, Listeners must have a name
+  * update gateway-shim controller unit tests
+  * Fix unit tests for Gateways
+  * Add contour to e2e addons
+  * Add contour, weed out some more references to v1alpha1
+  * update deps and BUILD files
+  * Update the sig-network Gateway API support to v1alpha2
+  * Remove hardcoded cert from cmctl inspect secret unit tests
+  * make: bin/release-version needs to be rebuilt every time
+  * make: work around the multiple copies of each binaries with hard links
+  * make: make sure bin/scratch/build-context/* are intermediate
+  * make: explain why we have the "build-context" dir
+  * make: fix "release-version" description
+  * make: explain why the target "bin/release-version" exists
+  * make: asthetic, fix the spacing between targets
+  * make: speed up 'docker build' with separate dir contexts
+  * make: rebuild images when a different commit is checked out
+  * dont export options fields
+  * goimports
+  * add and update build files
+  * add uninstall command
+  * Change controller context rate limiter test to ensure they are the same pointer
+  * fix imports in a few files
+  * log latest known tag when prepping integration tests
+  * Add targets for unit and integration tests in make
+  * add gotestsum, a tool for prettier log output
+  * accept files starting with ./ in versionchecker
+  * Refactor CRD provisioning for integration tests
+  * add more Makefile "prelude" entries
+  * Remove duplicate `fieldManager` variable
+  * fix comments to reduce golint issues
+  * Adds correct copyright year, and fix owner string match
+  * Set field manager string to acmeorders controller
+  * Set FieldManager in Create Orders API calls
+  * Adds roundtrip test to order status serializer
+  * Adds patch permissions to order/status for cert-manager controller
+  * Updates Order controller to support apply call when feature gate it enabled
+  * Adds orders apply helper function
+  * make -f make/Makefile helm chart now includes templates/crds.yaml
+  * makefile: create images using UID=1000, like what Bazel does
+  * improve language in SECURITY file post-migration
+  * make: fix message when CMREL_KEY isn't set
+  * rework USERS doc
+  * Adds Gateway API feature gate check to certificate suite conformance test
+  * Require Gateway API feature gate for Gateway API tests. Add a helper func
+  * Adds log output for what feature gates are enabled when installing from devel
+  * Adds ServerSideApply as a feature gate for the controller
+  * Adds check in additionaloutputformat e2e test suite for ServerSideApply which is required to be enabled
+  * Fix copyright year. Remove carrot from OWNERS string match
+  * Adds roundtrip tests for issuer and cluster issuer serialize
+  * Adds `patch` permissions to cert-manager controller for issuers and clusterissuers
+  * Adds issuer and cluster issuer integration tests to ensure mapped conditions
+  * Updates issuer and cluster issuer controllers to optionally user server side apply
+  * Adds issuer apply helper
+  * Adds list map type to Conditions for both Issuers and Cluster Issuers
+  * Remove carrot from OWNERS string match
+  * Use more appropriate names in apply integration tests
+  * Adds roundtrip test for CR apply status. Adds comment on why we are manually serializing the object.
+  * Adds a unit test to ensure serializing preserves CR spec in round trip
+  * Adds explicit field manager to requestsmanager controller Create call
+  * Adds integration test for CertificateRequest apply helper
+  * Change import paths `jetstack/cert-manager` -> `cert-manager/cert-manager`
+  * Always user `Create` operation when creating new CertificateRequest object
+  * Adds `patch` permissions to cert-manager controller for certificaterequests
+  * Adds condition_list_type_test integration test for CertificateRequest object
+  * Use optional apply for requestmanager
+  * Use optional Apply and Apply status to CertificateRequests
+  * Return CR object from apply helper
+  * Adds list type map to CR Conditions field
+  * Adds apply helper function for CertificateRequests. Integration for condition map
+  * Remove carrot from OWNERS file match string
+  * Fix NewController signature in certificates integration test
+  * Adds review comments
+  * Fix list map type tag for internal Certificate API definitions
+  * Fix apply[_test].go package names
+  * Revert issuing integration test to again check for Issuing condition being removed
+  * Use ApplyStatus in all Certificates controllers. When ServerSideApply enabled, set Issuing condition to False instead of removing it
+  * Adds shared internal controller certificates apply status func
+  * Update integration tests for passing field manager. Add integration tests for certificate condition field open api tags
+  * Adds ServerSideApply feature gate to enabled to devel install
+  * Update CRD for field labels. Adds patch rbac to Certificates for cert-manager controller
+  * Adds ServerSideApply feature gate
+  * Adds updateOrApply to certificates controllers to optionally Apply certificate based on feature gate
+  * Adds listType=map and listMapKey=type to Certificate Status Conditions field
+  * add name to the exposed metrics port
+  * Increase margin of error in an otherwise unsound test
+  * support user.bazelrc
+  * Update servicemonitor.yaml
+  * Change handling of time in ctl integration tests
+  * Removes cainjector annotations from CRDs
+  * Updates comments to read better
+  * Relax the validation on the default Issuer Kind for certificate-shim
+  * Change import `jetstack/cert-manager` -> `cert-manager/cert-manager`
+  * Update SecretTemplate comments on policy checks
+  * Add `AdditionalCertificateOutputFormats=true` to FEATURE_GATES default value in /devel/run-e2e.sh
+  * Adds e2e tests for additional output formats
+  * Adds integration tests for additional output formats
+  * Add tests to secret manager for additional output formats
+  * Adds PostIssuanceChecks for Certificate's AdditionalOutputFormats
+  * Adds comment for registered_feature_gates_for function
+  * Adds empty feature set for cainjector. Parses feature gates in devel script, and passes them on to each component
+  * Change import paths `jetstack/cert-manager` -> `cert-manager/cert-manager`
+  * Adds `patch` to certificatesigningrequest permissions for controller
+  * Use UpdateOrApplyStatus in CertificateSigningRequest controllers
+  * Adds ServerSideApply feature gate
+  * Adds UpdateOrApplyStatus to CSR controllers
+  * add note about import paths to README
+  * fix violations of our coding conventions on import ordering
+  *  rename all uses of github.com/jetstack/cert-manager
+  * Update secret manager test to no longer expect a non-force apply
+  * Always Force apply in issuing controller's secret manager
+  * Update AdditionalOutputFormats comment to reflect addition of feature to webhook set.
+  * Fix AdditationOutputFormat validation, and adds unit tests. Use correct feature set
+  * Add AdditionalCertificateOutputFormats feature to webhook set. Make @joshvanl owner of feature in controller.
+  * Remove auditsinks permissions from ca-injector as it is no longer supported
+  * Update bazel deps
+  * Change `APPLY`->`Apply`, `Server Side`->`Server-Side`
+  * Ensure RateLimiter is preserved across all built Contexts
+  * Set RESTConfig burst and QPS inside context factory so all clients inherit these values
+  * use multivalue records instead of simple records to allow having multiple txt records for a domain.
+  * Pass FieldManager down to issuing controller->secrets manager
+  * Updates controller start with ControllerFactory
+  * Update secret template e2e test for new issuing controller field manager
+  * Pipes user agent down to acme clients
+  * Adds user agent pipethrough for acme accounts
+  * Adds rest config builder to include new user agent
+  * Update rest of controllers with ControllerFactory
+  * Update CertificateSigningRequest controller to use new ContextFactory
+  * Update CertificateRequest controllers to use new controller factory
+  * Update certificate controllers with new controller builder
+  * Adds ContextFactory to controller package. Changes controller builder to use ContextFactory
+  * Adds more test cases to secrets.go and fix imports for checks.go
+  * Allow whitelist-source-range ingress annotation to be overridden
+  * Removes duplicated service annotations from Helm chart
+  * add reminder about kinds
+  * Passes --dry-run=client option when applying coredns config to test kind cluster
+  * update PR template to be simpler and mention allowing edits
+  * readme: fix broken link
+  * Adds comments for force section
+  * Add tests from rebase and more policies under /internal/controller/certificates
+  * Move temporary certificate policy init into policy package
+  * Move certificates controller policies under `/internal/controller`
+  * Refactor trigger policies to be more generic and be used by multiple controllers
+  * Update certificates controller secrets manager since feature gate is removed
+  * Gix golang references to feature gate package
+  * Update certificates secret manager to Apply managed fields when the apply feature is enabled
+  * Update secret manager to include additional output formats
+  * Add section on Migration
+  * Update design with review comments
+  * Add paragraph about adding tags on API types
+  * Adds design document for using server side apply in cert-manager controllers
+  * fix: Set default nodeSelector to linux
+
+-------------------------------------------------------------------
+Sat Feb 19 09:54:37 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- make this available as a kubectl plugin by creating a link to /usr/bin/kubectl-cert_manager
+
+-------------------------------------------------------------------
+Fri Feb 11 11:54:35 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package cmctl at version 1.7.1

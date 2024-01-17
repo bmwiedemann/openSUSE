@@ -1,0 +1,182 @@
+#
+# The following config file is designed for osc build, it is based off the 
+# gcc and configure config files. 
+#
+# Author: Simon Lees sflees@suse.de
+# Source: https://github.com/simotek/grc-osc-conf
+# License: GPL-2.0+
+#
+# .........
+#
+# From gcc
+#
+regexp=\sgcc\s
+colours=bold blue
+count=more
+.........
+#
+regexp=^[^:\s]*?:\d+:
+colours=bold magenta
+.........
+regexp=^[^:\s]*?:
+colours=cyan
+count=once
+.........
+#
+regexp=\`[A-Za-z0-9_():&*]+( const)?\'
+colours=magenta
+.........
+# -O
+regexp=\-O\d
+colours=green
+.........
+# -o
+regexp=\-o\s[^\s]+
+colours=bold magenta
+.........
+# warning and error won't work, unless you redirect also
+# stderr to grcat
+#
+# warning
+regexp=warning:.*
+colours=white
+.........
+regexp=warning:
+colours=bold yellow
+count=once
+.........
+# error
+regexp=error:.*
+colours=bold white
+.........
+regexp=error:
+colours=bold white on_red
+count=once
+.........
+#
+# Configure
+#
+#note
+regexp=note:
+colours=bold cyan
+count=once
+.........
+regexp=^checking
+colours=bold blue
+.........
+regexp=\.\.\. .*$
+colours=bold blue
+.........
+regexp=\.\.\. yes$
+colours=bold cyan
+.........
+regexp=\.\.\. no$
+colours=bold red
+.........
+regexp=\.\.\.[ ]
+colours=default
+.........
+#
+# osc build
+#
+# Timestamp - take advantage of coming first
+regexp=\[
+colours= bold black
+count=once
+.........
+regexp=\]
+colours= bold black
+count=once
+.........
+# Timestamp - take advantage of coming first
+regexp=[0-9]+s
+colours= magenta
+count=once
+.........
+regexp=cumulate
+colours= bold cyan
+.........
+regexp=Provides:
+colours= bold cyan
+.........
+regexp=Requires:
+colours= bold blue
+.........
+regexp=Requires\(rpmlib\):
+colours= bold blue
+.........
+regexp=cycle:
+colours= bold blue
+.........
+regexp=breaking dependency
+colours= bold cyan
+.........
+regexp=->
+colours= bold magenta
+.........
+regexp=Processing files:
+colours= yellow
+.........
+regexp=Executing\(%[A-Za-z]+\):
+colours= yellow
+.........
+regexp=Preparing packages...
+colours= yellow
+.........
+regexp=\smake\s
+colours=yellow
+count=once
+.........
+regexp=./configure
+colours=yellow
+count=once
+.........
+regexp=Patch #[0-9]+
+colours=bold yellow
+count=once
+.........
+regexp=(make)(\[)(\d+)(\])
+colours=bold blue,green,bold blue,red
+count=once
+.........
+# RPMlint warnings
+regexp= [^\]]*W:[^\[]*
+colours= bold yellow
+.........
+# RPMlint Errors
+regexp= [^\]]*E:[^\[]*
+colours= bold red
+.........
+# Match paths
+#regexp= \b/.*/[^\b]*
+regexp= ["']*/[^\s]+
+colours= cyan
+.........
+# Match paths
+regexp= /bin/[^\s"']+
+colours= blue
+.........
+# Match paths
+regexp= /usr/bin/[^\s"']+
+colours= blue
+.........
+regexp=[^/\s\"]*\.spec
+colours= blue
+.........
+regexp=[^/\s\"]*\.rpm
+colours= green
+.........
+regexp=[^/\s\"]*\.patch
+colours= blue
+.........
+# match for [ XX/YYY]
+regexp=(\s*\d+)(/)(\s*\d+)
+colours= blue,magenta,bold black
+.........
+# match for [ XX/YYY]
+regexp=(\[)(\s*\d+)(/)(\s*\d+)(\])
+colours= bold black,bold black,magenta,bold black,blue
+.........
+# match setters
+regexp=[-=]{3,}
+colours= yellow

@@ -1,0 +1,10 @@
+<package name="jackson-databind" project="openSUSE:Factory">
+  <title>General data-binding package for Jackson (2.x)</title>
+  <description>The general-purpose data-binding functionality and tree-model for Jackson Data
+Processor. It builds on core streaming parser/generator package, and uses
+Jackson Annotations for configuration.
+
+</description>
+  <devel project="Java:packages" package="jackson-databind"/>
+  <url>https://github.com/FasterXML/jackson-databind/</url>
+</package>

@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>521fa85b6b0d69e2e216b55b1b9d2366</srcmd5>
+    <version>0.0.2</version>
+    <time>1505139510</time>
+    <user>dimstar_suse</user>
+    <comment>singlespec version of python3-rnginline</comment>
+    <requestid>522411</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e675e3bf39376c7dd99d37192e04f331</srcmd5>
+    <version>0.0.2</version>
+    <time>1545648382</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>659830</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>98f87557c9733db886161672761fc8ca</srcmd5>
+    <version>0.0.2</version>
+    <time>1589893068</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>807279</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>5ebae425eec7da95d10b03ed6373064d</srcmd5>
+    <version>0.0.2</version>
+    <time>1633959078</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>924237</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c1903d0a4cdb110201d449a7b3c44b6e</srcmd5>
+    <version>1.0.0</version>
+    <time>1686074181</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1091056</requestid>
+  </revision>
+</revisionlist>

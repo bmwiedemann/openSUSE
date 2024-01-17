@@ -1,0 +1,11 @@
+diff -Nur deepin-reader-5.10.23/3rdparty/deepin-pdfium/src/src.pro deepin-reader-5.10.23-new/3rdparty/deepin-pdfium/src/src.pro
+--- deepin-reader-5.10.23/3rdparty/deepin-pdfium/src/src.pro	2022-08-25 21:59:54.426159727 +0800
++++ deepin-reader-5.10.23-new/3rdparty/deepin-pdfium/src/src.pro	2022-08-25 22:02:11.897470888 +0800
+@@ -46,6 +46,6 @@
+     $$PWD/dpdfpage.cpp \
+     $$PWD/dpdfannot.cpp
+ 
+-target.path  = /usr/lib
++target.path  = $$LIB_INSTALL_DIR
+ 
+ INSTALLS += target

@@ -1,0 +1,31 @@
+From 7f9c2db5269615e5e2dceb08dff896208eeb6f9c Mon Sep 17 00:00:00 2001
+From: Christofer Bertonha <christoferbertonha@gmail.com>
+Date: Fri, 2 Sep 2022 16:32:50 +0200
+Subject: [PATCH] Fix distutils.version deprecation
+
+---
+ pytest_freezegun.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/pytest_freezegun.py b/pytest_freezegun.py
+index a08133f..e4d2719 100644
+--- a/pytest_freezegun.py
++++ b/pytest_freezegun.py
+@@ -2,7 +2,7 @@
+ 
+ import pytest
+ 
+-from distutils.version import LooseVersion
++from packaging.version import Version
+ from freezegun import freeze_time
+ 
+ 
+@@ -14,7 +14,7 @@ def get_closest_marker(node, name):
+     """
+     Get our marker, regardless of pytest version
+     """
+-    if LooseVersion(pytest.__version__) < LooseVersion('3.6.0'):
++    if Version(pytest.__version__) < Version('3.6.0'):
+         return node.get_marker('freeze_time')
+     else:
+         return node.get_closest_marker('freeze_time')

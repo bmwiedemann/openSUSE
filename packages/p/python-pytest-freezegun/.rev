@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d1fc3b49a6edc740ac2c0af67b5a154e</srcmd5>
+    <version>0.4.1</version>
+    <time>1583949283</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>783816</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f9ee9e178949b7c2f40f70ccfc22de7e</srcmd5>
+    <version>0.4.2</version>
+    <time>1598352051</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>828604</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>f51cdb9a1f2b2ffa104ba2a3af2eabfa</srcmd5>
+    <version>0.4.2</version>
+    <time>1682434415</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082437</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>1f02a6895f9bd3f98e4c714082bd2cf6</srcmd5>
+    <version>0.4.2</version>
+    <time>1684490100</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch use-packaging.patch:
+  * Use packaging.Version, stops packages relying on this to fail.</comment>
+    <requestid>1084152</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,3 @@
+# examples
+addFilter('env-script-interpreter.*/usr/share/doc/packages/.*/examples/')
+addFilter('spurious-executable-perm.*/usr/share/doc/packages/.*/examples/')

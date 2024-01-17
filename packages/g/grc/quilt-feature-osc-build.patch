@@ -1,0 +1,15 @@
+diff --git a/grc.conf b/grc.conf
+index 436df79..026c5b8 100644
+--- a/grc.conf
++++ b/grc.conf
+@@ -290,6 +290,10 @@ conf.go-test
+ ^([/\w\.]+\/)?sockstat\b
+ conf.sockstat
+ 
++# osc build
++(^|[/\w\.]+/)osc (build\s?|bl.?)
++conf.osc
++
+ # anything to do with irc
+ \b\w+\b.*irc.*
+ conf.irclog

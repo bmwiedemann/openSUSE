@@ -1,0 +1,114 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8c522e1120c173c111b71cf0c92e96ce</srcmd5>
+    <version>0~20201104</version>
+    <time>1608632967</time>
+    <user>dimstar_suse</user>
+    <comment>A new requirement of python-dfVFS</comment>
+    <requestid>853674</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2c4b24030cd9dc8be970ab1f6c66c745</srcmd5>
+    <version>20210510</version>
+    <time>1623363493</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>898716</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d9c143b229489b88620dcfdd27339aa9</srcmd5>
+    <version>20210602</version>
+    <time>1624813152</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>902513</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f3d56e8ff22a737561f43a91d0b77bd6</srcmd5>
+    <version>20210722</version>
+    <time>1637970674</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20210722</comment>
+    <requestid>933956</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4eacdece35e0ece1679d23bb5275848b</srcmd5>
+    <version>20220115</version>
+    <time>1642835896</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20220115</comment>
+    <requestid>947905</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>90111f277d5bc3ef6645a7d532c9321c</srcmd5>
+    <version>20220426</version>
+    <time>1650996937</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20220426</comment>
+    <requestid>972792</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c88a63108b5a99495d46edf5f57202d5</srcmd5>
+    <version>20220709</version>
+    <time>1657379015</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20220709</comment>
+    <requestid>988017</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>c6e8a444f65f9941f021a922d75572f7</srcmd5>
+    <version>20220709</version>
+    <time>1660051718</time>
+    <user>dimstar_suse</user>
+    <comment>- Add forced symvers</comment>
+    <requestid>993995</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>d54f3b22445e320aa87f7daf418c982b</srcmd5>
+    <version>20220709</version>
+    <time>1661863767</time>
+    <user>dimstar_suse</user>
+    <comment>update</comment>
+    <requestid>999952</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>53767e5d5496c4e0217d0f0afcf2f190</srcmd5>
+    <version>20220831</version>
+    <time>1662063132</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20220831</comment>
+    <requestid>1000630</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>554a50fb540253554a48e5068e19f70f</srcmd5>
+    <version>20220831</version>
+    <time>1669629981</time>
+    <user>dimstar_suse</user>
+    <comment>delete system-libs.patch</comment>
+    <requestid>1038467</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>2c107850415ce51efdfa4015df6f3d00</srcmd5>
+    <version>20220831</version>
+    <time>1672851096</time>
+    <user>dimstar_suse</user>
+    <comment>add missing libbfio-devel</comment>
+    <requestid>1046583</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>3264e9754231df0164984f8e1acf5db3</srcmd5>
+    <version>20220831</version>
+    <time>1691594734</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1103017</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>0c16acb446b3c443d1204fd0fdeaec83</srcmd5>
+    <version>20231125</version>
+    <time>1701023815</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 20231125</comment>
+    <requestid>1128712</requestid>
+  </revision>
+</revisionlist>

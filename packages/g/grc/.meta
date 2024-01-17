@@ -1,0 +1,5 @@
+<package name="grc" project="openSUSE:Factory">
+  <title>Generic colouriser for everything</title>
+  <description>Generic Colouriser is a yet another colouriser for beautifying your logfiles or commands output.</description>
+  <devel project="utilities" package="grc"/>
+</package>

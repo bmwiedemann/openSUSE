@@ -1,0 +1,5 @@
+<package name="python-ezdxf" project="openSUSE:Factory">
+  <title>python-ezdxf</title>
+  <description></description>
+  <devel project="devel:languages:python:numeric" package="python-ezdxf"/>
+</package>

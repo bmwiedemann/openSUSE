@@ -1,0 +1,48 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>40f4a96c2061523b9e6da03e258f9f4d</srcmd5>
+    <version>1.0.0b1</version>
+    <time>1631913935</time>
+    <user>dimstar_suse</user>
+    <comment>- New package part of the Azure SDK</comment>
+    <requestid>917564</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b20477621eddc27d297bd6954d0087b9</srcmd5>
+    <version>1.0.0b2</version>
+    <time>1637618667</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0b2
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 933070 from glaubitz)</comment>
+    <requestid>933094</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>37584a1150f9f1245046a66817cafb9d</srcmd5>
+    <version>1.0.0.0</version>
+    <time>1644273502</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Override upstream version with 1.0.0.0 to ensure
+  proper upgrade from previous version 1.0.0b2 (forwarded request 952052 from glaubitz)</comment>
+    <requestid>952129</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>37906518e920dd8683db352832887053</srcmd5>
+    <version>1.1.0~b1</version>
+    <time>1677590825</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.1.0b1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Override upstream version with 1.1.0~b1
+- Trim Summary to not exceed 79 characters (forwarded request 1068147 from glaubitz)</comment>
+    <requestid>1068178</requestid>
+  </revision>
+</revisionlist>
