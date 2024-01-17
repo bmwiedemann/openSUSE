@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 12 11:18:40 UTC 2024 - pgajdos@suse.com
+
+- have a possibility to not use pyarrow [bsc#1218592]
+
+-------------------------------------------------------------------
 Wed Dec 13 16:35:35 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.1.4

@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -59,6 +59,8 @@
 # xlsb not available
 %bcond_with xslb
 %bcond_with consortium_standard
+# depend/not depend on python-pyarrow and apache-arrow [bsc#1218592]
+%bcond_without have_pyarrow
 
 %{?sle15_python_module_pythons}
 Name:           python-pandas%{psuffix}
@@ -100,13 +102,11 @@ Suggests:       python-pandas-clipboard
 Suggests:       python-pandas-compression
 Suggests:       python-pandas-computation
 Suggests:       python-pandas-excel
-Suggests:       python-pandas-feather
 Suggests:       python-pandas-fss
 Suggests:       python-pandas-hdf5
 Suggests:       python-pandas-html
 Suggests:       python-pandas-mysql
 Suggests:       python-pandas-output_formatting
-Suggests:       python-pandas-parquet
 Suggests:       python-pandas-plot
 Suggests:       python-pandas-postgresql
 Suggests:       python-pandas-spss
@@ -115,6 +115,8 @@ Suggests:       python-pandas-test
 Suggests:       python-pandas-xml
 %{?_with_aws:Suggests: python-pandas-aws}
 %{?_with_gcp:Suggests: python-pandas-gcp}
+%{?_with_have_pyarrow:Suggests: python-pandas-parquet}
+%{?_with_have_pyarrow:Suggests: python-pandas-feather}
 # /SECTION
 %if %{with test}
 # required for sqlite3 tests
@@ -131,13 +133,17 @@ BuildRequires:  %{python_module pandas-clipboard = %{version}}
 BuildRequires:  %{python_module pandas-compression = %{version}}
 BuildRequires:  %{python_module pandas-computation = %{version}}
 BuildRequires:  %{python_module pandas-excel = %{version}}
+%if %{with have_pyarrow}
 BuildRequires:  %{python_module pandas-feather = %{version}}
+%endif
 BuildRequires:  %{python_module pandas-fss = %{version}}
 BuildRequires:  %{python_module pandas-hdf5 = %{version}}
 BuildRequires:  %{python_module pandas-html = %{version}}
 BuildRequires:  %{python_module pandas-mysql = %{version}}
 BuildRequires:  %{python_module pandas-output_formatting = %{version}}
+%if %{with have_pyarrow}
 BuildRequires:  %{python_module pandas-parquet = %{version}}
+%endif
 BuildRequires:  %{python_module pandas-performance = %{version}}
 BuildRequires:  %{python_module pandas-plot = %{version}}
 BuildRequires:  %{python_module pandas-postgresql = %{version}}
@@ -380,7 +386,9 @@ Requires:       python-SQLAlchemy >= 1.4.36
 Requires:       python-XlsxWriter >= 3.0.3
 Requires:       python-beautifulsoup4 >= 4.9.3
 Requires:       python-blosc
+%if %{with have_pyarrow}
 Requires:       python-fastparquet >= 0.8
+%endif
 Requires:       python-fsspec >= 2022.05
 Requires:       python-gcsfs >= 2022.05
 Requires:       python-html5lib >= 1.1
@@ -393,7 +401,9 @@ Requires:       python-odfpy >= 1.4.1
 Requires:       python-openpyxl >= 3.0.10
 Requires:       python-pandas = %{version}
 Requires:       python-psycopg2 >= 2.9.3
+%if %{with have_pyarrow}
 Requires:       python-pyarrow >= 7.0.0
+%endif
 Requires:       python-pyreadstat >= 1.1.5
 Requires:       python-pytest >= 7.3.2
 Requires:       python-pytest-asyncio >= 0.17.0
@@ -574,13 +584,17 @@ xvfb-run pytest-%{$python_bin_suffix} -v -n %{jobs} -rsfE --dist=loadfile \
 %license LICENSE
 %doc README.md
 
+%if %{with have_pyarrow}
 %files %{python_files parquet}
 %license LICENSE
 %doc README.md
+%endif
 
+%if %{with have_pyarrow}
 %files %{python_files feather}
 %license LICENSE
 %doc README.md
+%endif
 
 %files %{python_files hdf5}
 %license LICENSE
