@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 17 08:54:07 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 120.0.6099.224 (boo#1218892)
+  * CVE-2024-0517: Out of bounds write in V8
+  * CVE-2024-0518: Type Confusion in V8
+  * CVE-2024-0519: Out of bounds memory access in V8
+  * Various fixes from internal audits, fuzzing and other initiatives
+
+-------------------------------------------------------------------
 Sun Jan 14 10:07:12 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
 
 - Replace chromium-120-lp155-revert-clang-build-failure.patch

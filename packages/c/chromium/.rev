@@ -4860,4 +4860,12 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
 </comment>
     <requestid>1138720</requestid>
   </revision>
+  <revision rev="411" vrev="1">
+    <srcmd5>392eed37570ac80d7cac84fc5495521c</srcmd5>
+    <version>120.0.6099.224</version>
+    <time>1705526202</time>
+    <user>anag+factory</user>
+    <comment>chromium 120.0.6099.224 (boo#1218892)</comment>
+    <requestid>1139408</requestid>
+  </revision>
 </revisionlist>
