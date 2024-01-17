@@ -18,7 +18,7 @@
 
 %define have_lang 1
 Name:           libsecret
-Version:        0.21.1
+Version:        0.21.2
 Release:        0
 Summary:        Library for accessing the Secret Service API
 License:        LGPL-2.1-or-later
@@ -92,7 +92,7 @@ secrets. It communicates with the "Secret Service" using DBus.
 %prep
 %setup -q
 %if 0%{?sle_version}
-%patch1000 -p1
+%patch -P 1000 -p1
 %endif
 
 %build
