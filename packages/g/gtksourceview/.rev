@@ -882,4 +882,14 @@
 - Update Supplements to current standard. (forwarded request 929781 from iznogood)</comment>
     <requestid>930080</requestid>
   </revision>
+  <revision rev="118" vrev="4">
+    <srcmd5>a089a4d3dabee3c42d1ca2c2d24ce632</srcmd5>
+    <version>3.24.11</version>
+    <time>1705526120</time>
+    <user>anag+factory</user>
+    <comment>- Own /usr/share/gtk-doc: glib no longer uses gtk-doc and as a
+  consequence cannot be held responsible to deliver that basic
+  directory structure. (forwarded request 1139242 from dimstar)</comment>
+    <requestid>1139263</requestid>
+  </revision>
 </revisionlist>
