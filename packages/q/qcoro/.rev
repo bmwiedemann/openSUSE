@@ -1,0 +1,94 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>00bce6b4ebd5f769890aca2934c190c3</srcmd5>
+    <version>0.3.0</version>
+    <time>1635167841</time>
+    <user>dimstar_suse</user>
+    <comment>New package: QCoro, a library for coroutines with Qt
+(soon a dependency of new KDE software)</comment>
+    <requestid>927171</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9e378cb24c8e3b6d2f4644a0ef2ec1f0</srcmd5>
+    <version>0.3.0</version>
+    <time>1639169582</time>
+    <user>dimstar_suse</user>
+    <comment>- Install the dbus-launch executable at build time to run tests.</comment>
+    <requestid>939267</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c86afc6325f48475a6baf6c4b2ebc4f2</srcmd5>
+    <version>0.4.0</version>
+    <time>1647974399</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>963851</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>76399a88375c4c7efcae05af9527a85c</srcmd5>
+    <version>0.5.1</version>
+    <time>1651501559</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>974369</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>44759f4a1d75fce67ae5ff8e4420a1bb</srcmd5>
+    <version>0.6.0</version>
+    <time>1657809254</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable tests again. Random timeouts were seen.
+
+- Update to 0.6.0
+  * Fix build with gcc 11.3.0
+  * Fix ODR violation when LTO is enabled
+  * Export QCoro wrapper classes
+  * Enable &quot;modern Qt&quot; compiler definitions
+  * Introduce Generator and AsyncGenerator coroutine return types
+  * Fix installing export header
+  * Deprecate task.h in favor of qcorotask.h
+  * QtWebSockets support
+  * Document -DQCORO_WITH_QTWEBSOCKETS
+  * Fix the build by #include'ing
+  * QCoroTask: fixup a template type parameter name
+  * Add support for clang-cl
+  * Fix possible race in TestWsServer
+  * WebSocket bugfixes &amp; documentation
+  * Explicitly enable exception support for clang-cl
+- Add patch to avoid using -Werror on non-debug builds:
+  * qcoro_no_Werror.patch</comment>
+    <requestid>989033</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>790f951eed89601c6ea1ffd782dd849d</srcmd5>
+    <version>0.7.0</version>
+    <time>1669288997</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1037485</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>07be83491887d44f55095d5b0fa19dbf</srcmd5>
+    <version>0.8.0</version>
+    <time>1675956204</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.8.0 (forwarded request 1063959 from krop)</comment>
+    <requestid>1063962</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f4798e6c4ad09a4c9ab078624db5e94d</srcmd5>
+    <version>0.9.0</version>
+    <time>1683728180</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.9.0 (forwarded request 1085639 from krop)</comment>
+    <requestid>1085641</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4c7c71da5607f1112f130c830afdd471</srcmd5>
+    <version>0.10.0</version>
+    <time>1702327779</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1132320</requestid>
+  </revision>
+</revisionlist>

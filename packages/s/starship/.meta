@@ -1,0 +1,11 @@
+<package name="starship" project="openSUSE:Factory">
+  <title>The minimal, blazing-fast, and infinitely customizable prompt for any shell! </title>
+  <description>Fast: it's fast – really really fast! rocket
+Customizable: configure every aspect of your prompt.
+Universal: works on any shell, on any operating system.
+Intelligent: shows relevant information at a glance.
+Feature rich: support for all your favorite tools.
+Easy: quick to install – start using it in minutes.</description>
+  <devel project="shells" package="starship"/>
+  <url>https://starship.rs/</url>
+</package>

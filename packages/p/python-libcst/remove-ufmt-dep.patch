@@ -1,0 +1,17 @@
+Index: libcst-0.4.9/libcst/codegen/generate.py
+===================================================================
+--- libcst-0.4.9.orig/libcst/codegen/generate.py
++++ libcst-0.4.9/libcst/codegen/generate.py
+@@ -25,8 +25,10 @@ from libcst.codegen.transforms import (
+ 
+ 
+ def format_file(fname: str) -> None:
+-    with open(os.devnull, "w") as devnull:
+-        subprocess.check_call(["ufmt", "format", fname], stdout=devnull, stderr=devnull)
++    # Do not format to avoid ufmt dependency that's not yet in opensuse
++    pass
++    # with open(os.devnull, "w") as devnull:
++    #     subprocess.check_call(["ufmt", "format", fname], stdout=devnull, stderr=devnull)
+ 
+ 
+ def clean_generated_code(code: str) -> str:

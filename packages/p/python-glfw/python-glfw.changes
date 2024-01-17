@@ -1,0 +1,139 @@
+-------------------------------------------------------------------
+Wed Dec 20 21:41:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.6.4:
+  * Updated to GLFW 3.3.9
+
+-------------------------------------------------------------------
+Sun Dec 17 02:13:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.6.3:
+  * Fixed wrapper for glfwGetMonitorWorkarea
+  * Implemented search for GLFW library specific to frozen
+    executables
+  * Revert changes made in 2.6.0
+  * Do not search for GLFW library when running in a frozen
+    executable
+  * Use multiprocessing for library version detection on non-
+    Windows systems
+  * Fixed package version in CHANGELOG.md and glfw/__init__.py
+  * Added more wrappers for unreleased macros
+  * Added support for PYGLFW_LIBRARY_VARIANT
+  * Added warnings for deprecated functions
+
+-------------------------------------------------------------------
+Fri Oct 28 17:14:45 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- [2.5.5] - 2022-09-07
+  Added wrappers for unreleased macros
+  Fixed set_monitor_user_pointer and get_monitor_user_pointer
+
+-------------------------------------------------------------------
+Wed Sep 28 21:23:41 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- [2.5.4] - 2022-07-23
+  Updated to GLFW 3.3.8
+- [2.5.3] - 2022-04-09
+  Updated to GLFW 3.3.7
+- [2.5.2] - 2022-04-01
+  Fixed swapped HAT_DOWN and HAT_RIGHT constants
+- [2.5.1] - 2022-02-27
+  Updated to GLFW 3.3.6
+- [2.5.0] - 2021-12-18
+  Added /usr/lib/arm-linux-gnueabihf to library search paths
+- [2.4.0] - 2021-11-07
+  Added macOS wheels for arm64
+  Added wrappers for unreleased macros and functions
+  Updated to GLFW 3.3.5
+- [2.3.0] - 2021-10-01
+  Added /opt/homebrew/lib to library search paths
+- [2.2.0] - 2021-09-09
+  Added Linux wheels for aarch64
+  Updated to GLFW 3.3.4
+- [2.1.0] - 2021-02-28
+  Updated to GLFW 3.3.3
+- [2.0.0] - 2020-10-04
+  Changed default error reporting method to warn
+  Allow dict for ERROR_REPORTING
+- [1.12.0] - 2020-07-10
+  Added support for CFFI pointers for Vulkan objects
+
+-------------------------------------------------------------------
+Wed Jul  8 12:38:53 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 1.11.2
+ * Fixed missing parameter in set_window_opacity
+ * Replaced non-ASCII whitespace
+ * Fixed a TypeError in _GLFWgamepadstate
+
+-------------------------------------------------------------------
+Thu Mar  5 12:46:21 UTC 2020 - pgajdos@suse.com
+
+- version update to 1.11.0
+  ## [1.11.0] - 2020-02-21
+  - Updated to GLFW 3.3.2
+  - Include support for both X11 and Wayland libraries in the wheel
+
+  ## [1.10.1] - 2020-01-21
+  - Fixed default error callback name
+
+  ## [1.10.0] - 2020-01-19
+  - Added more options to error reporting
+
+  ## [1.9.1] - 2020-01-08
+  - Added conda search path for Windows
+
+  ## [1.9.0] - 2019-12-30
+  - Added wrappers for native functions
+
+  ## [1.8.7] - 2019-12-10
+  - Fixed glfwGetMonitorContentScale
+
+  ## [1.8.6] - 2019-12-09
+  - Added macOS wheels
+  - Added Microsoft Visual C++ runtime libraries to Windows wheels
+
+  ## [1.8.5] - 2019-11-28
+  - Added /usr/lib/aarch64-linux-gnu/ to library search paths
+  - Fix pointer types in get_window_content_scale
+
+-------------------------------------------------------------------
+Thu Sep 12 11:43:03 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.8.3:
+  * Updated the GLFW version in the wheels to 3.3
+
+-------------------------------------------------------------------
+Fri Jul 26 13:41:20 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.8.2
+  * Added the sys.prefix/lib to the search path
+  * Added the changelog back to the source distribution
+
+-------------------------------------------------------------------
+Tue May 21 10:53:22 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.8.0
+  * Update for GLFW 3.3
+  * Fixed typo set_get_window_frame_size
+
+-------------------------------------------------------------------
+Mon Mar  4 11:42:25 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.7.1:
+  * Fixed a bug in set_window_icon and added support for PIL/pillow Image objects
+  * Improved packaging
+  * Added NORMALIZE_GAMMA_RAMPS, use namedtuples for structs and moved library loading to glfw.library
+  * Added glfw.GLFW for the naming convention used by the GLFW C API
+  * Fixed exception re-raising for Python 2
+- There are no tests, so remove test conditional
+
+-------------------------------------------------------------------
+Tue Dec  4 12:48:29 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Tue Nov  7 18:23:57 UTC 2017 - toddrme2178@gmail.com
+
+- initial version

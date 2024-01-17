@@ -1,0 +1,14 @@
+diff -uprN mono-zeroconf-0.9.0.old/configure mono-zeroconf-0.9.0/configure
+--- mono-zeroconf-0.9.0.old/configure	2009-03-31 03:13:16.000000000 +0400
++++ mono-zeroconf-0.9.0/configure	2016-06-05 13:17:00.366791012 +0300
+@@ -3096,8 +3096,8 @@ fi
+ 		{ $as_echo "$as_me:$LINENO: checking for Mono 2.0 GAC for $asm.dll" >&5
+ $as_echo_n "checking for Mono 2.0 GAC for $asm.dll... " >&6; }
+ 		if test \
+-			-e "$($PKG_CONFIG --variable=libdir mono)/mono/2.0/$asm.dll" -o \
+-			-e "$($PKG_CONFIG --variable=prefix mono)/lib/mono/2.0/$asm.dll"; \
++			-e "$($PKG_CONFIG --variable=libdir mono)/mono/2.0-api/$asm.dll" -o \
++			-e "$($PKG_CONFIG --variable=prefix mono)/lib/mono/2.0-api/$asm.dll"; \
+ 			then \
+ 			{ $as_echo "$as_me:$LINENO: result: found" >&5
+ $as_echo "found" >&6; }

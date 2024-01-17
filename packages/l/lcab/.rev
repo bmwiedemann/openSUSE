@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>00e7b088fda67ef160c15316c4168314</srcmd5>
+    <version>1.0b12</version>
+    <time>1511949274</time>
+    <user>dimstar_suse</user>
+    <comment>new package, still kinda usefull</comment>
+    <requestid>546266</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5f190d53a5dd4c2f46127487f48b9098</srcmd5>
+    <version>1.0b12</version>
+    <time>1606252471</time>
+    <user>dimstar_suse</user>
+    <comment>- Small package cleanup</comment>
+    <requestid>850465</requestid>
+  </revision>
+</revisionlist>

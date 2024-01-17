@@ -1,0 +1,6 @@
+<package name="appframework" project="openSUSE:Factory">
+  <title>Swing Application Framework</title>
+  <description>The JSR-296 Swing Application Framework prototype implementation is a
+small set of Java classes that simplify building desktop applications.</description>
+  <devel project="Java:packages" package="appframework"/>
+</package>

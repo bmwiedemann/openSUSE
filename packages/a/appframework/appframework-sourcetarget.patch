@@ -1,0 +1,13 @@
+--- AppFramework-1.03/nbproject/project.properties	2007-09-20 17:29:34.000000000 +0200
++++ AppFramework-1.03/nbproject/project.properties	2017-09-15 09:37:41.694825604 +0200
+@@ -28,8 +28,8 @@
+ # Space-separated list of extra javac options
+ javac.compilerargs=
+ javac.deprecation=false
+-javac.source=1.5
+-javac.target=1.5
++javac.source=8
++javac.target=8
+ javac.test.classpath=\
+     ${javac.classpath}:\
+     ${build.classes.dir}:\

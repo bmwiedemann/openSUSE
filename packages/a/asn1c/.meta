@@ -1,0 +1,10 @@
+<package name="asn1c" project="openSUSE:Factory">
+  <title>ASN.1 Compiler</title>
+  <description>Compiles ASN.1 data structures into C source structures that can be
+simply marshalled to/unmarshalled from: BER, DER, CER, BASIC-XER,
+CXER, EXTENDED-XER, PER.
+
+</description>
+  <devel project="devel:tools:compiler" package="asn1c"/>
+  <url>http://lionet.info/asn1c/</url>
+</package>

@@ -1,0 +1,46 @@
+-------------------------------------------------------------------
+Fri Oct 14 13:16:31 UTC 2022 - mardnh@gmx.de
+
+- Update to version 0.4.1+git.20220705:
+  * Fix is_safe_path call to use absolute path rather than
+    relative path to execution directory.
+  * Fix extraction of files with size greater than one erase block.
+  * Remove unnecessary log call.
+  * Keep xattr, xref, and summary nodetypes in order to propely
+    identify unknown node types.
+  * Remove handling of xref nodes, xattr nodes, summary nodes.
+  * Use inode indexed dicts for inodes, dirent, and xref entries.
+  * Simplify filesystem structure.
+  * Fix duplicate inodes handling.
+  * Fix support for python 3.10 by pinning python-lzo to 1.14.
+  * Better handling of decompression error + simpler endianness
+    logging.
+  * Memory-mapped file support
+  * Add support for LZO compression.
+  * Revert the symlink path traversal check as it does not present
+    a direct risk to normal end users. Those checks can be
+    implemented by other tools where required.
+  * Fix path traversal security vulnerability by canonicalizing
+    path names of every inodes and discarding inodes with a path
+    pointing outside of the extraction directory.
+  * Autodetect endianness rather than scan the filesystem twice,
+    one for each possible endianness. We make the assumption that
+    a JFFS2 has always a fixed endianness and that nodes won't
+    switch between endianness in the middle of a filesystem.
+  * Add support for JFFS2 old magic signature (0x1984).
+  * pin cstruct version to 2.1 so we don't end up with breaking
+    API changes in the future. Moving to more recent versions
+    should be done manually once it's been tested that jefferson
+    still works with the newly released version of cstruct.
+  * Fix set_endianness to support cstruct version 2.1.
+  * Converted python2 encode("hex") to python3 hex()
+  * Switched to lzma in python stdlib
+  * Convert to python3.
+- Drop patches:
+  * 18.patch
+  * jefferson-use-pylzma.patch
+
+-------------------------------------------------------------------
+Thu Aug 13 20:07:59 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 0.3+git.20160616

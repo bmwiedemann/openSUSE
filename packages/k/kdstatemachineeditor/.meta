@@ -1,0 +1,5 @@
+<package name="kdstatemachineeditor" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="KDE:Extra" package="kdstatemachineeditor"/>
+</package>

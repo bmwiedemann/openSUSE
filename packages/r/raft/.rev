@@ -1,0 +1,170 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9952c453f241dc59f8f0e48d0f808b4a</srcmd5>
+    <version>0.9.5</version>
+    <time>1567680267</time>
+    <user>dimstar_suse</user>
+    <comment>raft, a consensus protocol library</comment>
+    <requestid>728270</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2536c0c27aea7c427869e0c81a080608</srcmd5>
+    <version>0.9.6</version>
+    <time>1568983955</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>731823</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d501d10c8858b61829074b99b7f376f2</srcmd5>
+    <version>0.9.9</version>
+    <time>1573165280</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>746363</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>38e6344860cc9909ea1acb572d36770e</srcmd5>
+    <version>0.9.16</version>
+    <time>1578437571</time>
+    <user>dimstar_suse</user>
+    <comment>raft 0.9.16</comment>
+    <requestid>761282</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b38c469941cf0cc7b41736d15f13857d</srcmd5>
+    <version>0.9.17</version>
+    <time>1580511522</time>
+    <user>dimstar_suse</user>
+    <comment>raft 0.9.17</comment>
+    <requestid>769107</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8ed2c3bcb14f826545abece2e26bccfa</srcmd5>
+    <version>0.9.18</version>
+    <time>1588106005</time>
+    <user>dimstar_suse</user>
+    <comment>raft 0.9.18</comment>
+    <requestid>798726</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e2a2dc4a6c4949c43d3a9a2b7499d429</srcmd5>
+    <version>0.9.19</version>
+    <time>1589403363</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>804947</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>de43d0305ca7be830283c792a79c73de</srcmd5>
+    <version>0.9.22</version>
+    <time>1591209295</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811046</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>761f1b49a59b9673f8df6c26e78affa0</srcmd5>
+    <version>0.9.23</version>
+    <time>1594706212</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>820059</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d9331fe51d579b7914ea47368bc4891d</srcmd5>
+    <version>0.9.24</version>
+    <time>1595864695</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>822888</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6ddde433a73f13535aa5a2cea04233f9</srcmd5>
+    <version>0.9.25</version>
+    <time>1600079217</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>833909</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>474fdd20a0af7d19f4ee7628f7f03ecc</srcmd5>
+    <version>0.10.1</version>
+    <time>1620240005</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>890661</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>9d1560c6eccd3382e5e4444d99c8526f</srcmd5>
+    <version>0.11.1</version>
+    <time>1624551757</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>901627</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>33ab98018f6f203b20b580ca5f43898c</srcmd5>
+    <version>0.11.2</version>
+    <time>1628584046</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>910710</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>35e879922f29bc88a2b4688ca72f461b</srcmd5>
+    <version>0.11.3</version>
+    <time>1644273488</time>
+    <user>dimstar_suse</user>
+    <comment>raft 0.11.3</comment>
+    <requestid>952048</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>12723c9584ca34801b0462f45bd73bf4</srcmd5>
+    <version>0.13.0</version>
+    <time>1650466494</time>
+    <user>dimstar_suse</user>
+    <comment>raft 0.13.0</comment>
+    <requestid>970730</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>cfc73fa3d3398e97778e0f38cda061ec</srcmd5>
+    <version>0.14.0</version>
+    <time>1657712728</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>988767</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>9f7185f48bc705de2441c7a224796e9b</srcmd5>
+    <version>0.15.0</version>
+    <time>1662462056</time>
+    <user>dimstar_suse</user>
+    <comment>raft 0.15.0 (forwarded request 1001312 from AndreasStieger)</comment>
+    <requestid>1001313</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>f0c9f0b84531ff0107354a025ee1ed9a</srcmd5>
+    <version>0.16.0</version>
+    <time>1670259655</time>
+    <user>dimstar_suse</user>
+    <comment>raft 0.16.0</comment>
+    <requestid>1040033</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>23ed97b744c8784e0daa994dfee131ff</srcmd5>
+    <version>0.17.1</version>
+    <time>1674232790</time>
+    <user>dimstar_suse</user>
+    <comment>raft 0.17.1</comment>
+    <requestid>1059964</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>1c1a50f9d0405561e8ebad01e5e402a8</srcmd5>
+    <version>0.18.0</version>
+    <time>1697657180</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1118563</requestid>
+  </revision>
+</revisionlist>

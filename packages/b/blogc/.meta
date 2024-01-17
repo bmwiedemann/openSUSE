@@ -1,0 +1,5 @@
+<package name="blogc" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="utilities" package="blogc"/>
+</package>

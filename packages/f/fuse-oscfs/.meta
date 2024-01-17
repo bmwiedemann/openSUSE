@@ -1,0 +1,5 @@
+<package name="fuse-oscfs" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="filesystems" package="fuse-oscfs"/>
+</package>

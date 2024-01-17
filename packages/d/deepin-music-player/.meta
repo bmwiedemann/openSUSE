@@ -1,0 +1,5 @@
+<package name="deepin-music-player" project="openSUSE:Factory">
+  <title>deepin-music-player</title>
+  <description>Deepin Music Player with brilliant and tweakful UI Deepin-UI based, gstreamer front-end, with features likes search music by pinyin,quanpin, colorful lyrics supports, and more powerfull functions you will found.</description>
+  <devel project="X11:Deepin" package="deepin-music-player"/>
+</package>

@@ -1,0 +1,30 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>27f9467d59d5ec32970c86a7fb93fe8d</srcmd5>
+    <version>2.2.0</version>
+    <time>1686665384</time>
+    <user>dimstar_suse</user>
+    <comment>required by jupyterlab 4</comment>
+    <requestid>1092703</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9fa916cf6b1f3462f187f5ba5993b23c</srcmd5>
+    <version>2.2.0</version>
+    <time>1692379705</time>
+    <user>anag+factory</user>
+    <comment>- Suggest primary python package -- boo#1214354</comment>
+    <requestid>1104444</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9fc1786602e63fd97a88be15c3c169da</srcmd5>
+    <version>2.2.1</version>
+    <time>1702845182</time>
+    <user>anag+factory</user>
+    <comment>- udpate to 2.2.1:
+  * use `APIHandler` over `JupyterHandler` to get CORS OPTIONS
+  * use `shutil.which` to discover `npm` executable on Windows
+  * resolve traitlets type warnings, lint, remove six #1015
+  * use `sys.executable` in stdio tests #998</comment>
+    <requestid>1133728</requestid>
+  </revision>
+</revisionlist>

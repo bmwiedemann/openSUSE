@@ -1,0 +1,6 @@
+<package name="enchant" project="openSUSE:Factory">
+  <title>Generic Spell Checking Library</title>
+  <description>A library providing an efficient extensible abstraction for dealing
+with different spell checking libraries.</description>
+  <devel project="GNOME:Factory" package="enchant"/>
+</package>

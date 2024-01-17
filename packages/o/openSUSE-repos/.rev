@@ -1,0 +1,94 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>51ca78c0a03946ab158b3932651ab91a</srcmd5>
+    <version>20221007.638a03b</version>
+    <time>1665504125</time>
+    <user>RBrownFactory</user>
+    <comment>- New Package openSUSE-repos
+
+- openSUSE repoindexes for zypp-service repo management
+- Helps to address issues like Bug#1200446
+- Requested in https://code.opensuse.org/leap/features/issue/91
+- Developed in https://github.com/openSUSE/openSUSE-repo
+- Updates via osc service</comment>
+    <requestid>1008886</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f3c5caece0122c033c400b48efcf1d47</srcmd5>
+    <version>20221012.1c71da6</version>
+    <time>1665754852</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010304</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>db3f8d992cff51e234d8f783d16fabd0</srcmd5>
+    <version>20221103.b904c44</version>
+    <time>1667499270</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032969</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f7b2910711095ae6096949da2b373f16</srcmd5>
+    <version>20221116.d3d7bc7</version>
+    <time>1668609859</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1036232</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>73c63ef0c527459e03aa8600b3152df0</srcmd5>
+    <version>20230123.088570b</version>
+    <time>1674495224</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20230123.088570b:
+  * Use http as the redirect target does not support https
+  * Add openh264 repos as enabled by default</comment>
+    <requestid>1060421</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6648cecf5bfa39ed4eaf81816956a1c8</srcmd5>
+    <version>20230209.87a5e9e</version>
+    <time>1675956218</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1064008</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a9132bc1e0a90ece65c085300748b2cf</srcmd5>
+    <version>20230725.c6c492e</version>
+    <time>1690370674</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1100752</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>93f11a69c5a982216074962ce70a613b</srcmd5>
+    <version>20230731.a018a46</version>
+    <time>1690892141</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 20230731.a018a46:
+  * Use HTTP - When you use https, you have the tls handshake overhead
+    and you get redirected to only-https mirrors.
+    Also http by default enables systems with experimental ssl setup.
+  * Update README.md with text from the news-o-o article</comment>
+    <requestid>1101535</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7bd31ef37b900dcd46b0cf1062912ade</srcmd5>
+    <version>20230804.41e41a9</version>
+    <time>1691154271</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1102322</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>75a5793d821001e8cb02ea479cf4af6d</srcmd5>
+    <version>20230810.a7534f6</version>
+    <time>1691762146</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1103358</requestid>
+  </revision>
+</revisionlist>

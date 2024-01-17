@@ -1,0 +1,56 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d488515e87a033e6a5240d472dd78715</srcmd5>
+    <version>6.0.0</version>
+    <time>1623767856</time>
+    <user>dimstar_suse</user>
+    <comment>- New package part of Azure SDK</comment>
+    <requestid>899355</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d460993997d19b8883e513e74e0206f1</srcmd5>
+    <version>6.1.0</version>
+    <time>1647889955</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 6.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 963664 from glaubitz)</comment>
+    <requestid>963665</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>493699752915d20d3809ffc31d259801</srcmd5>
+    <version>6.2.0</version>
+    <time>1656675890</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 6.2.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 986030 from glaubitz)</comment>
+    <requestid>986045</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7427d48edac523f90e35a1a446fc0d71</srcmd5>
+    <version>6.3.0</version>
+    <time>1672668164</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 6.3.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1046016 from glaubitz)</comment>
+    <requestid>1046163</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>82ebaa2a20d9d41f5e58d8ce9e1fe828</srcmd5>
+    <version>6.4.0</version>
+    <time>1679416895</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 6.4.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1073127 from glaubitz)</comment>
+    <requestid>1073135</requestid>
+  </revision>
+</revisionlist>

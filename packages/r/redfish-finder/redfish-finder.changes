@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Mon Nov 15 12:56:45 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_redfish-finder.service.patch
+
+-------------------------------------------------------------------
+Wed Mar  3 08:31:35 UTC 2021 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Fix parsing HostConfig for DHCP (bsc#1182765)
+
+- Added:
+  * fix_parsing_HostConfig_for_dhcp.patch
+
+-------------------------------------------------------------------
+Tue Nov 17 12:04:46 UTC 2020 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Do not build for s390x and ppc64le
+
+-------------------------------------------------------------------
+Tue Jan  7 11:37:34 UTC 2020 - Christian Vögl <cvoegl@suse.de>
+
+- Removed Readme.md and COPYING.
+  This files are contained in the tarball.
+
+
+-------------------------------------------------------------------
+Tue Dec 10 16:44:24 UTC 2019 - Christian Vögl <cvoegl@suse.de>
+
+- Created package from release version 0.4
+- Added python_path.patch to fix the shebang

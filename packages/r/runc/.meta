@@ -1,0 +1,9 @@
+<package name="runc" project="openSUSE:Factory">
+  <title>runc</title>
+  <description>runc is a CLI tool for spawning and running containers according to the OCI
+specification. It is designed to be as minimal as possible, and is the workhorse
+of Docker. It was originally designed to be a replacement for LXC within Docker,
+and has grown to become a separate project entirely.
+</description>
+  <devel project="Virtualization:containers" package="runc"/>
+</package>

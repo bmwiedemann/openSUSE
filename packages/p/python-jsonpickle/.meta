@@ -1,0 +1,7 @@
+<package name="python-jsonpickle" project="openSUSE:Factory">
+  <title></title>
+  <description>Python library for serializing any arbitrary object graph into JSON.
+It can take almost any Python object and turn the object into JSON.
+Additionally, it can reconstitute the object back into Python.</description>
+  <devel project="devel:languages:python" package="python-jsonpickle"/>
+</package>

@@ -1,0 +1,16 @@
+<package name="python-kmod" project="openSUSE:Factory">
+  <title>python-kmod</title>
+  <description>
+Python bindings for kmod/libkmod
+
+kmod is a set of tools to handle common tasks with Linux kernel modules like insert, remove, list, check properties, resolve dependencies and aliases.
+
+These tools are designed on top of libkmod, a library that is shipped with kmod. It can be found at:
+
+http://git.kernel.org/?p=utils/kernel/kmod/kmod.git;a=summary
+
+python-kmod is a Python wrapper module for libkmod, exposing common module operations: listing installed modules, modprobe, and rmmod. 
+  </description>
+  <devel project="devel:languages:python" package="python-kmod"/>
+  <url>https://github.com/agrover/python-kmod</url>
+</package>

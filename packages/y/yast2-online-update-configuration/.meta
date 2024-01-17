@@ -1,0 +1,5 @@
+<package name="yast2-online-update-configuration" project="openSUSE:Factory">
+  <title>Configuration of Online Update</title>
+  <description>Allows to configure automatic online update.</description>
+  <devel project="YaST:Head" package="yast2-online-update-configuration"/>
+</package>

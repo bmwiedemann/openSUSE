@@ -1,0 +1,17 @@
+Index: kombu-5.2.4/kombu/transport/pyro.py
+===================================================================
+--- kombu-5.2.4.orig/kombu/transport/pyro.py
++++ kombu-5.2.4/kombu/transport/pyro.py
+@@ -42,9 +42,9 @@ from kombu.utils.objects import cached_p
+ from . import virtual
+ 
+ try:
+-    import Pyro4 as pyro
+-    from Pyro4.errors import NamingError
+-    from Pyro4.util import SerializerBase
++    from Pyro5.compatibility import Pyro4 as pyro
++    from Pyro5.errors import NamingError
++    from Pyro5.api import SerializerBase
+ except ImportError:          # pragma: no cover
+     pyro = NamingError = SerializerBase = None
+ 

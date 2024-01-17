@@ -1,0 +1,47 @@
+--- src/org/jdesktop/application/LocalStorage.orig	2007-12-13 10:40:54.000000000 +0100
++++ src/org/jdesktop/application/LocalStorage.java	2007-12-13 10:42:01.000000000 +0100
+@@ -31,11 +31,6 @@
+ import java.security.PrivilegedAction;
+ import java.util.logging.Level;
+ import java.util.logging.Logger;
+-import javax.jnlp.BasicService;
+-import javax.jnlp.FileContents;
+-import javax.jnlp.PersistenceService;
+-import javax.jnlp.ServiceManager;
+-import javax.jnlp.UnavailableServiceException;
+ 
+ 
+ /**
+@@ -377,7 +372,7 @@
+ 		}
+ 	    }
+ 	    if (bsFound && psFound) {
+-		return new PersistenceServiceIO();
++		//return new PersistenceServiceIO();
+ 	    }
+ 	}
+ 	catch (Exception ignore) {
+@@ -385,7 +380,7 @@
+ 	}
+ 	return null;
+     }
+-
++/*
+     private class PersistenceServiceIO extends LocalIO {
+ 	private BasicService bs;
+ 	private PersistenceService ps;
+@@ -442,7 +437,7 @@
+ 		catch (FileNotFoundException e) {
+ 		    /* Verify that the max size for new PersistenceService 
+ 		     * files is >= 100K (2^17) before opening one.
+-		     */
++		     * /
+ 		    long maxSizeRequest = 131072L;
+ 		    long maxSize = ps.create(fileURL, maxSizeRequest);
+ 		    if (maxSize >= maxSizeRequest) {
+@@ -473,4 +468,5 @@
+ 	    }
+ 	}
+     }
++ */
+ }

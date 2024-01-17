@@ -1,0 +1,18 @@
+diff -Nur shairport-sync-4.1/Makefile.am shairport-sync-4.1-new/Makefile.am
+--- shairport-sync-4.1/Makefile.am	2022-10-28 23:31:18.000000000 +0800
++++ shairport-sync-4.1-new/Makefile.am	2022-11-13 22:24:22.869613507 +0800
+@@ -262,12 +262,12 @@
+ INSTALL_GROUP_TARGET = install-group-local
+ 
+ $(INSTALL_GROUP_TARGET):
+-	getent group shairport-sync &>/dev/null || groupadd -r shairport-sync >/dev/null
++#	getent group shairport-sync &>/dev/null || groupadd -r shairport-sync >/dev/null
+ 
+ INSTALL_USER_TARGET = install-user-local
+ 
+ $(INSTALL_USER_TARGET): $(INSTALL_GROUP_TARGET)
+-	getent passwd shairport-sync &> /dev/null || useradd -r -M -g shairport-sync -s /usr/sbin/nologin -G audio shairport-sync >/dev/null
++#	getent passwd shairport-sync &> /dev/null || useradd -r -M -g shairport-sync -s /usr/sbin/nologin -G audio shairport-sync >/dev/null
+ 
+ if INSTALL_SYSTEMV
+ 

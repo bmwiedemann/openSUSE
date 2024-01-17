@@ -1,0 +1,66 @@
+-------------------------------------------------------------------
+Sat May 18 05:21:07 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.29
+   see /usr/share/doc/packages/perl-Math-Clipper/Changes
+
+  1.29 Thursday May 16 23:51:00 2019
+  
+    - Fix build error under clang and pre-5.18 Perls.
+
+-------------------------------------------------------------------
+Sun May 12 05:14:49 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.28
+   see /usr/share/doc/packages/perl-Math-Clipper/Changes
+
+  1.28  Sat May 11 03:42:00 2019
+  
+    - Avoid use of ** in calculating scaling factors in
+      integerize_coordinate_sets() to avoid inconsistent
+      behavior of underlying pow() function between BSD + clang
+      and other systems.
+
+-------------------------------------------------------------------
+Sat May 19 05:30:20 UTC 2018 - coolo@suse.com
+
+- updated to 1.27
+   see /usr/share/doc/packages/perl-Math-Clipper/Changes
+
+  1.27  Sun May 13 17:46:00 2018
+  
+    - Fix integerize bug introduced in 1.26 for 32 bit Perl (ivsize < 8)
+
+-------------------------------------------------------------------
+Thu May  3 05:33:18 UTC 2018 - coolo@suse.com
+
+- updated to 1.26
+   see /usr/share/doc/packages/perl-Math-Clipper/Changes
+
+  1.26  Tue May 1 02:47:00 2018
+  
+    - Harmonize differences in float multiplication results found on
+      FreeBSD + clang systems in integerize_coordinate_sets()
+  
+  1.25  Mon April 30 11:44:00 2018
+  
+    - Fix Integerize.t to support Perls with long doubles
+    - More explicit rounding and truncating in integerize_coordinate_sets()
+
+-------------------------------------------------------------------
+Fri Apr 27 05:31:48 UTC 2018 - coolo@suse.com
+
+- updated to 1.24
+   see /usr/share/doc/packages/perl-Math-Clipper/Changes
+
+  1.24  Fri April 20 15:19:00 2018
+  
+    - Fix Integerize.t to handle '-0' from sprintf("%.0f")
+      in Perl 5.27.8.
+
+-------------------------------------------------------------------
+Sun Jun  8 10:41:10 UTC 2014 - coolo@suse.com
+
+- initial package 1.23
+    * created by cpanspec 1.78.08
+

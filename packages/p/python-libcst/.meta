@@ -1,0 +1,5 @@
+<package name="python-libcst" project="openSUSE:Factory">
+  <title></title>
+  <description>Python 3.5+ concrete syntax tree with AST-like properties</description>
+  <devel project="devel:languages:python" package="python-libcst"/>
+</package>

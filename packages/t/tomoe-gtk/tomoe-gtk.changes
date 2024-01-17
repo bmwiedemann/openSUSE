@@ -1,0 +1,109 @@
+-------------------------------------------------------------------
+Fri Feb  2 08:41:10 UTC 2018 - fstrba@suse.com
+
+- Removed patches:
+  * gucharmap.patch
+    + Commented out, thus not needed for build
+  * fix-build.patch
+    + Unnecessary and actually breaks build
+- Regenerate the build files with modern tools
+- Pass explicitely --without-python and remove python dependencies,
+  since the tomoe package does not build them either
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Fri Jun 19 18:20:28 CEST 2009 - tiwai@suse.de
+
+- allow build on 10.3 target
+
+-------------------------------------------------------------------
+Fri Aug 08 10:33:03 CEST 2008 - mfabian@suse.de
+
+- add Provides and Obsoletes to the sub-packages.
+
+-------------------------------------------------------------------
+Fri Aug 01 18:51:15 CEST 2008 - mfabian@suse.de
+
+- update to 0.6.0: ustream changes:
+  • Rename the main package name from libtomoe-gtk to tomoe-gtk
+  • Choose default dictionary according to current locale.
+    However currently no dictionary will be enabled with most
+    locales except ja or zh_CN, and on-demand language switching
+    is not implemented yet.
+    Please use tomoe application with above locales like this:
+    $ LANG=zh_CN uim-tomoe-gtk
+    $ LANG=ja scim-tomoe
+    ...
+  • Add tomoe_gtk_init() and tomoe_gtk_quit().
+    Although tomoe_window_new() calls tomoe_gtk_init() internally
+    for compatibility reason, it is recommended to call
+    tomoe_gtk_init() manually in your code.
+  • Add --with-gucharmap option.
+  • Python binding.
+  • Some minor fixes.
+- create new subpackage libtomoe-gtk0 to comply with the shared
+  library packaging policy.
+
+-------------------------------------------------------------------
+Thu Jan 31 13:23:36 CET 2008 - sbrabec@suse.cz
+
+- Devhelp documentation moved to the separate package (bnc#248813).
+
+-------------------------------------------------------------------
+Tue Aug  7 20:05:26 CEST 2007 - maw@suse.de
+
+- Split off a -lang subpackage
+- Use fdupes
+- Buildrequire gtk-doc, not gtk2-doc
+- Add %post and %postun.
+
+-------------------------------------------------------------------
+Tue Aug  7 16:03:06 CEST 2007 - mrueckert@suse.de
+
+- added gtk2-doc to the buildrequires so the doc paths get an owner.
+
+-------------------------------------------------------------------
+Mon Aug 06 18:17:28 CEST 2007 - mfabian@suse.de
+
+- update to 0.5.1:
+  • Fix a bug that the candidates view in the handwriting page
+   isn't drawn on KDE environment.
+  • Search characters by stroke count.
+- add gucharmap-devel to BuildRequires.
+
+-------------------------------------------------------------------
+Wed Feb  7 17:14:37 CET 2007 - sbrabec@suse.cz
+
+- Do not build static libraries (#238552).
+
+-------------------------------------------------------------------
+Thu Dec 14 17:44:39 CET 2006 - mfabian@suse.de
+
+- update to 0.4.0
+  • Adaptation to TOMOE-0.4.0.
+  • Removed dictionary pages. It will be provided as separated
+     tools later.
+- remove bugzilla-204093-local-variable-used-before-set.patch
+  (included upstream).
+- remove bugzilla-212523-local-variable-used-before-set.patch not
+  needed anymore.
+   
+-------------------------------------------------------------------
+Tue Oct 17 13:20:46 CEST 2006 - mfabian@suse.de
+
+- Bugzilla #212523: “local variable used before set”.
+
+-------------------------------------------------------------------
+Thu Sep 28 12:25:02 CEST 2006 - mfabian@suse.de
+
+- Bugzilla #204090: “local variable used before set”.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:32:26 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Jan 13 16:36:59 CET 2006 - mfabian@suse.de
+
+- new package: libtomoe-gtk, version 0.1.0.

@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Wed Aug 31 09:19:45 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to release 1.0.4
+  * Update README for gitlab migration
+   * Update configure.ac bug URL for gitlab migration
+   * Fix spelling/wording issues
+   * Trim trailing whitespace from lines
+   * gitlab CI: add a basic build test
+   * unifdef -UUSG
+   * unifdef -USYSV
+   * unifdef -UDGUX
+   * Convert vfork checks from Imake-style to autoconf-style
+
+-------------------------------------------------------------------
+Fri Apr 24 15:06:17 UTC 2015 - sndirsch@suse.com
+
+- Update to release 1.0.3:
+  * This version continues the tradition of only releasing once every
+    5 years, with the latest set of build configuration &
+    documentation improvements.
+
+-------------------------------------------------------------------
+Fri Apr 13 08:46:08 UTC 2012 - vuntz@opensuse.org
+
+- Split xmh from xorg-x11. Initial version: 1.0.2.
+

@@ -1,0 +1,5 @@
+<package name="cmake" project="openSUSE:Factory">
+  <title>Cross-platform, open-source make system</title>
+  <description>CMake is a cross-platform, open-source make system</description>
+  <devel project="devel:tools:building" package="cmake"/>
+</package>

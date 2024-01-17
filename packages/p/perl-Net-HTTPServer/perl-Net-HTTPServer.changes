@@ -1,0 +1,43 @@
+-------------------------------------------------------------------
+Fri Nov 18 11:10:02 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Fri Feb  4 23:26:02 UTC 2011 - chris@computersalat.de
+
+- recreated by cpanspec 1.78.03
+  o fix deps
+- noarch pkg
+
+-------------------------------------------------------------------
+Fri Dec 10 11:04:02 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:30:44 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Tue Dec 23 22:12:33 CET 2008 - coolo@suse.de
+
+- fix package name to follow the naming conventions
+
+-------------------------------------------------------------------
+Mon Sep 15 14:35:00 CEST 2008 - mmaier@suse.de
+
+- added two patches
+- http://rt.cpan.org/Public/Bug/Display.html?id=39220
+- http://rt.cpan.org/Public/Bug/Display.html?id=24361
+
+-------------------------------------------------------------------
+Tue Sep  9 11:45:50 CEST 2008 - mmaier@suse.de
+
+- initial package version 1.1.1

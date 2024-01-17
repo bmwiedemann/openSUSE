@@ -1,0 +1,9 @@
+<package name="python-django-registration" project="openSUSE:Factory">
+  <title>A simple, generic user-registration application for Django</title>
+  <description>This is just a simple, portable, generic user-registration application for Django projects. Workflow follows a simple pattern: 
+* A user signs up for a new account, which will be inactive by default. 
+* An email is sent to the address they used to register, containing an activation link. 
+* Once they click the activation link, the account becomes active and they can log in as normal.</description>
+  <devel project="devel:languages:python:django" package="python-django-registration"/>
+  <url>http://code.google.com/p/django-registration</url>
+</package>

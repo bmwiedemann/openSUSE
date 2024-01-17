@@ -1,0 +1,5 @@
+<package name="yast2-rear" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="YaST:Head" package="yast2-rear"/>
+</package>

@@ -1,0 +1,95 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>21bb6bd1d436a8951be9b1a9af625f48</srcmd5>
+    <version>0.3.9</version>
+    <time>1598352002</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>828445</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>aa411580cf6b2c2d5550112bfa044eea</srcmd5>
+    <version>0.3.10</version>
+    <time>1599209915</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>829619</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c58ea0695034935b8404dc3a6c77051a</srcmd5>
+    <version>0.3.14</version>
+    <time>1606328865</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>850136</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>347f34510fc8b33250bd0d6e76f4dc08</srcmd5>
+    <version>0.3.16</version>
+    <time>1610123519</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>860005</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>24c1254867880719ff065bb5bd5679e3</srcmd5>
+    <version>0.3.17</version>
+    <time>1617034866</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>880613</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>bc7f20178df185d5cc4527df18edcef7</srcmd5>
+    <version>0.3.19</version>
+    <time>1621626568</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>894419</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8ecb40b338e9e317d7020e01ddf7eca0</srcmd5>
+    <version>0.4.9</version>
+    <time>1671128700</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove 650-sorting-in-test_ordering.patch not needed anymore
+- Remove skip_failing_test.patch not needed anymore
+- Add remove-ufmt-dep.patch, python-ufmt is not in tumbleweed
+- Add replace-python-call.patch, wrong executable call when outside of venv
+  (gh#Instagram/LibCST#468)
+- Update to 0.4.9:
+  - Bump setuptools-rust version by @zsol in #809
+- 0.4.8
+  - Fix parse error message for number parsing by @zzl0 in #724
+  - Fix problematic doc build, due to the new builder image provided by
+    readthedocs doesn't has the graphviz-dev package pre-installed any more by
+    @MapleCCC in #751
+  - Fix docstring of FullRepoManager by @MapleCCC in #750
+  - Fix bug when TypeOf is one of options in OneOf / AllOf by @MapleCCC in #756
+  - Tighten the metadata type of ExpressionContextProvider by @MapleCCC in #760
+  - Fix the bug that the use of formatter in codemods has undetermined target
+    Python version, resulting in hard-to-reason-with behavior by @MapleCCC in
+    #771
+  - Python 3.11 rutime support
+    - test using python 3.11 beta versions by @zsol in #723
+    - Python 3.11 wheels by @vfazio in #801
+  - Raise informative exception when metadata is unresolved in a metadata-based
+    match by @MapleCCC in #757
+  - Add AccessorProvider by @matthewshaer in #807
+- 0.4.7 - 2022-07-12
+  - Fix get_qualified_names_for matching on prefixes of the given name by
+    @lpetre in #719
+  - Implement lazy loading mechanism for expensive metadata providers by
+    @Chenguang-Zhu in #720
+- 0.4.6 - 2022-07-04</comment>
+    <requestid>1042920</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>ca1e8e5d2512ba5a242302ebedae7d8d</srcmd5>
+    <version>0.4.9</version>
+    <time>1682193800</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082129</requestid>
+  </revision>
+</revisionlist>

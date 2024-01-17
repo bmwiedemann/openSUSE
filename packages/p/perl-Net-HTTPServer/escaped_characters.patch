@@ -1,0 +1,12 @@
+diff -Naur perl-Net-Http-Server-1.1.1.orig//lib/Net/HTTPServer/Request.pm perl-Net-Http-Server-1.1.1/lib/Net/HTTPServer/Request.pm
+--- perl-Net-Http-Server-1.1.1.orig//lib/Net/HTTPServer/Request.pm	2005-01-25 18:13:38.000000000 +0100
++++ perl-Net-Http-Server-1.1.1/lib/Net/HTTPServer/Request.pm	2008-09-15 13:56:28.000000000 +0200
+@@ -340,7 +340,7 @@
+     #-------------------------------------------------------------------------
+     # What did they ask for?
+     #-------------------------------------------------------------------------
+-    $self->{PATH} = $self->_chroot($uri->path());
++    $self->{PATH} = $self->_chroot(uri_unescape($uri->path()));
+ 
+     my ($headers,$body) = ($self->{REQUEST} =~ /^(.+?)\015?\012\015?\012(.*?)$/s);
+     

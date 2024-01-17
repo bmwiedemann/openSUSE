@@ -1,0 +1,341 @@
+-------------------------------------------------------------------
+Fri Apr 21 12:27:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Wed Apr 19 02:01:37 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Refresh replace-python-call.patch to make tests working.
+
+-------------------------------------------------------------------
+Thu Apr 13 22:42:28 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
+Wed Dec 14 11:41:04 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove 650-sorting-in-test_ordering.patch not needed anymore
+- Remove skip_failing_test.patch not needed anymore
+- Add remove-ufmt-dep.patch, python-ufmt is not in tumbleweed
+- Add replace-python-call.patch, wrong executable call when outside of venv
+  (gh#Instagram/LibCST#468)
+- Update to 0.4.9:
+  - Bump setuptools-rust version by @zsol in #809
+
+- 0.4.8
+  - Fix parse error message for number parsing by @zzl0 in #724
+  - Fix problematic doc build, due to the new builder image provided by
+    readthedocs doesn't has the graphviz-dev package pre-installed any more by
+    @MapleCCC in #751
+  - Fix docstring of FullRepoManager by @MapleCCC in #750
+  - Fix bug when TypeOf is one of options in OneOf / AllOf by @MapleCCC in #756
+  - Tighten the metadata type of ExpressionContextProvider by @MapleCCC in #760
+  - Fix the bug that the use of formatter in codemods has undetermined target
+    Python version, resulting in hard-to-reason-with behavior by @MapleCCC in
+    #771
+  - Python 3.11 rutime support
+    - test using python 3.11 beta versions by @zsol in #723
+    - Python 3.11 wheels by @vfazio in #801
+  - Raise informative exception when metadata is unresolved in a metadata-based
+    match by @MapleCCC in #757
+  - Add AccessorProvider by @matthewshaer in #807
+
+- 0.4.7 - 2022-07-12
+  - Fix get_qualified_names_for matching on prefixes of the given name by
+    @lpetre in #719
+  - Implement lazy loading mechanism for expensive metadata providers by
+    @Chenguang-Zhu in #720
+
+- 0.4.6 - 2022-07-04
+  - convert_type_comments now preserves comments following type comments by
+    @superbobry in #702
+  - QualifiedNameProvider optimizations
+    - Cache the scope name prefix to prevent scope traversal in a tight loop by
+      @lpetre in #708
+    - Faster qualified name formatting by @lpetre in #710
+    - Prevent unnecessary work in Scope.get_qualified_names_for_ by @lpetre in
+      #709
+  - Fix parsing of parenthesized empty tuples by @zsol in #712
+  - Support whitespace after ParamSlash by @zsol in #713
+  - [parser] bail on deeply nested expressions by @zsol in #718
+
+- 0.4.5 - 2022-06-17
+  - Only skip supported escaped characters in f-strings by @zsol in #700
+  - Escaping quote characters in raw string literals causes a tokenizer error
+    by @zsol in #668
+  - Corrected a code example in the documentation by @zzl0 in #703
+  - Handle multiline strings that start with quotes by @zzl0 in #704
+  - Fixed a performance regression in libcst.metadata.ScopeProvider by @lpetre
+    in #698
+
+- 0.4.4 - 2022-06-13
+  - Add package links to PyPI by @adamchainz in #688
+  - native: add overall benchmark by @zsol in #692
+  - Add support for PEP-646 by @zsol in #696
+  - parser: use references instead of smart pointers for Tokens by @zsol in
+    #691
+
+- 0.4.3 - 2022-05-11
+  - Restore the 0.4.1 behavior for libcst.helpers.get_absolute_module by
+    @lpetre in #684
+
+- 0.4.2 - 2022-05-04
+  - native: Avoid crashing by making IntoPy conversion fallible by @zsol in
+    #639
+  - native: make sure ParserError's line is zero-indexed by @zsol in #681
+  - Fix space validation for AsName and Await by @zsol in #641
+  - Qualified Name Provider: Fix returned qname for symbols that are prefixes
+    of each other by @wiyr in #669
+  - Rename Codemod: Correct last renamed import from by @toofar in #675
+  - Many changes to the Apply Type Comments codemod:
+    - Allow for skipping quotes when applying type comments by @stroxler in
+      #644
+    - Port pyre fixes by @stroxler in #651
+    - Preserve as-imports when merging type annotations. by @martindemello in
+      #664
+    - Qualify imported symbols when the dequalified form would cause a conflict
+      by @martindemello in #674
+    - Add an argument to always qualify imported type annotations. by
+      @martindemello in #676
+  - Create an AddTrailingCommas codemod by @stroxler in #643
+  - Define gather global names visitor by @shannonzhu in #657
+  - Support module and package names in the codemod context by @lpetre in #662
+  - Drop support for running libcst using a python 3.6 interpreter by @lpetre
+    in #663
+  - Update relative import logic to match cpython by @lpetre in #660
+  - Scope Provider: Consider access information when computing qualified names
+    for nodes by @lpetre in #682
+
+-------------------------------------------------------------------
+Fri Feb 18 21:32:48 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.4.1:
+  - Add docs about the native parts
+  - Specify minimum rust toolchain version
+  - build wheels on main branch for linux/arm64
+  - ApplyTypeAnnotationVisitor changes
+      - Add support for methods with func type comment excluding
+        self/cls
+      - Merge in TypeVars and Generic base classes in
+        ApplyTypeAnnotationVisitor
+      - Full handling for applying type comments to Assign
+      - Add support for For and With
+      - Support FunctionDef transformations
+  - change pyo3 as optional dependency in native Python Parser
+  - add slots to base classes, @add_slots takes bases into
+    account
+  - [native] Box most enums
+  - [native] Return tuples instead of lists in CST nodes
+  - Allow trailing whitespace without newline at EOF
+  - Handle ast.parse failures when converting function type
+    comments
+  - [native] Don't redundantly nest StarredElement inside another
+    Element
+  - [native] Allow unparenthesized tuples inside f-strings
+  - Don't require whitespace right after match
+  - Proxy both parentheses in some pattern matching nodes
+
+- Update to 0.4.0 - 2022-01-12
+  This release contains a new parsing infrastructure that is
+  turned off by default. You can enable it by setting the
+  LIBCST_PARSER_TYPE environment variable to native before
+  parsing an input with the usual LibCST APIs. Parsing Python
+  3.10 documents is only supported in this new mode.
+  Note: the new parser is built as a native extension, so LibCST
+  will ship with binary wheels from now on.
+  - Implement a Python PEG parser in Rust
+  - implement PEP-654: except*
+  - Implement PEP-634 - Match statement
+  - Add instructions to codegen test failures
+  - Support Parenthesized With Statements
+  - Support relative imports in AddImportsVisitor
+  - Codemod for PEP 484 Assign w / type comments -> PEP 526
+    AnnAssign
+  - Update license headers
+  - Use precise signature matching when inserting function type
+    annotations
+
+- Update to 0.3.23 - 2021-11-23
+  - Fix missing string annotation references
+
+- Update to 0.3.22 - 2021-11-22
+  - Add --indent-string option to libcst.tool print
+  - Publish pre-release packages to test.pypi.org
+  - Add ImportAssignment class extending Assignment to record
+    assignments for import statements
+  - Do not add imports if we added no type info in
+    ApplyTypeAnnotationVisitor (commit)
+  - Support relative imports in ApplyTypeAnnotationVisitor
+    qualifier handling
+  - Don't gather metadata if the wrapper already contains it
+  - Swallow parsing errors in string annotations
+  - Stop parsing string annotations when no longer in a typing
+    call
+  - Move find_qualified_names_for in the Assignment class
+
+- Update to 0.3.21 - 2021-09-21
+  - Fix pyre command for type inference provider
+  - Change codegen to treat typing.Union[Foo, NoneType] and
+    typing.Optional[Foo] as the same gh#Instagram/LibCST#508
+  - Rewrite the MatchIfTrue type to be generic on _MatchIfTrueT
+
+- Update to 0.3.20 - 2021-08-09
+  - TypeAnnotationsVisitor: don't truncate function return type
+
+-------------------------------------------------------------------
+Wed May 19 15:49:13 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.3.19
+  * Return more specific QNames for assignments #477
+  * Tie accesses from string annotation to the string node #483
+  * Fix leaking processes from TypeInferenceProvider #474
+  * Fix TypeInferenceProvider breakage with empty cache #476
+  * Fix formatting for link to QualifiedName class in docs #480
+- Release 0.3.18
+  * Add FlattenSentinel to support replacing a statement with
+    multiple statements #455
+  * Add BuiltinScope #469
+  * Add FullyQualifiedNameProvider #465
+  * Split QualifiedNameProvider out from
+    libcst.metadata.scope_provider #464
+  * Fix Exception while parsing escape character in raw f-strings
+    #462
+
+-------------------------------------------------------------------
+Sun Mar 21 15:05:59 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update ot 0.3.17
+  Updated
+  * Optimization: reduce the number of unused parallel processes 
+    #440
+  Fixed
+  * Walrus operator's left hand side now has STORE expression
+    context #443
+  * ApplyTypeAnnotationsVisitor applies parameter annotations even
+    if no return type is declared #445
+  * Work around Windows problem by using dummy pool for jobs=1 #436
+  * Remove extra unused imports added in other files #453
+
+-------------------------------------------------------------------
+Sun Jan  3 21:02:37 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to version 0.3.16
+  Added
+  * Support PEP-604 style unions in decorator annotations #429
+  * Gathering exports in augmented assignment statements #426
+  Fixed
+  * Don't allow out of order accesses in the global scope #431
+  * Handle scope ordering in For statements #430
+  * Fix for not parsing subscripts such as cast()["from"] #428
+  * Walrus operator's left hand side now has STORE expression 
+    context #433
+- Changes in 0.3.15
+  Added
+  * Support Named Unicode Characters and yield in f-strings #424
+  Fixed
+  * Assignment/access ordering in comprehensions #423
+  * Referencing of remaining objects in cast() #422 
+- refresh skip_failing_test.patch
+
+-------------------------------------------------------------------
+Sun Jan  3 16:38:46 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add skip_failing_test.patch skipping test_ordering
+  (libcst.metadata.tests.test_scope_provider.ScopeProviderTest) which
+  doesn't work with Python 3.6 on i586 (gh#Instagram/LibCST#442).
+
+-------------------------------------------------------------------
+Sat Nov 21 00:16:24 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to version 0.3.14
+  Fixed
+  * Fix is_annotation for types used in classdef base and assign
+    value [#406]
+  * Visit concatenated f-strings during scope analysis [#411]
+  * Correct handling of walrus operator in function args [#417]
+  * Allow generator expressions in f-strings [#419]
+  * Keep track of assignment/access ordering during scope analysis
+    [#413]
+  * Handle string type references in cast() during scope analysis 
+    [#418]
+- 0.3.13
+  Fixed
+  * Use correct type for AugAssign and AnnAssign target [#396]
+  * Support string annotations for type aliases [#401]
+- 0.3.12
+  Fixed
+  * fix RemoveImportsVisitor crash when ImportAlias is 
+    inserted without comma [#397]
+  * Provide STORE for {Class,Function}Def.name in 
+    ExpressionContextProvider [#394]
+- 0.3.11
+  Added
+  * Implement TypeOf matcher [#384]
+  Updated
+  * Update return type of ParentNodeProvider to be CSTNode [#377]
+  * Add source code links to each class/function [#378]
+  Fixed
+  * Removing an import alias with a trailing standalone 
+    comment should preserve the comment [#392]
+
+-------------------------------------------------------------------
+Tue Aug 25 11:33:22 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to v0.3.10
+  Added
+  * Handle string annotations in ScopeProvider #373
+  * Add is_annotation subtype for Access inreferences. #372
+  Updated
+  * Call pyre query with noninteractive logging #371
+  * Replace matchers with explicit visitation in gatherers #366
+  * Include missing test data in install #365
+  Fixed
+  * Spaces around walrus operator are not required #368
+  * SaveMachedNode now matches with trailing empty wildcards #356
+  * Correctly extract wildcard matchers #355
+- clean specfile multibuild
+- don't require own package on test flavor
+- require dataclasses for Python 3.6 distros
+- despite gh#Instagram/LibCST#365 says it's fixed, we still need to
+  regenerate the code for tests
+  => don't skip tests which actually pass after codegen
+- can use plain unittest again, same as upstream
+- define skip_python2 for Leap repositories
+
+-------------------------------------------------------------------
+Fri Aug 21 09:43:55 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch to multibuild in order to avoid buildcycles
+
+-------------------------------------------------------------------
+Sat Aug  8 04:41:45 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Removed tests depending on optional dependency pyre
+- Update to v0.3.9
+  * Support string type annotations in RemoveUnusedImports
+  * Add scope to ImportAlias
+  * Add scope to ClassDef
+  * Fixed all pyre related errors
+  * Fixed enclosing attribute for attributes in call arguments
+
+-------------------------------------------------------------------
+Thu Aug  6 09:47:23 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Enhance codegen to support varied versions of isort
+- Update to v0.3.8 
+  * Handle type subscripts when applying annotations
+  * Added FullRepoManager cache property
+  * Added optional args for tox commands
+  * Only remove trailing comma if the last alias is removed
+  * Fixed inserting imports after module docstring
+  * Fixed ParenthesizedWhitespace before params in FuncDef
+  * Fixed validation for ImportAlias and Try statements
+  * Fixed NotEqual position issue
+  * Fixed minor typo in scope_provider.py
+
+-------------------------------------------------------------------
+Sat Jul  4 03:47:40 AM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v0.3.7

@@ -1,0 +1,14 @@
+The package 'cmake' only ships a README.SUSE file and serves
+as a meta-package.
+
+cmake requires cmake-implementation, which inside OBS is provided by
+  * cmake-mini (minimal cmake variant, no especially no libcurl/libarchive)
+  * cmake-full (what used to be called cmake before)
+
+This complex setup was done in order to be able to eliminate build cycles, as
+more and more tools were moving to cmake as build system, but with curl in the
+build chain, was making it increasingly difficult to break the cycle.
+
+cmake-mini is not meant for installation on end-user systems (where it also would
+not save a lot; as an end user, you have libcurl on your system anyway due to libzypp)
+and is thus not part of the FTP Tree.

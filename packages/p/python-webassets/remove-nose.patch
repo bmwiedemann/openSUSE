@@ -1,0 +1,1738 @@
+---
+ examples/appengine/webassets/test.py |   12 -
+ src/webassets/test.py                |   12 -
+ tests/__init__.py                    |    2 
+ tests/helpers.py                     |   27 ----
+ tests/test_bundle_build.py           |    8 -
+ tests/test_bundle_urls.py            |   95 ++++++--------
+ tests/test_bundle_various.py         |   37 ++---
+ tests/test_cache.py                  |   14 +-
+ tests/test_environment.py            |   27 ++--
+ tests/test_ext/test_jinja2.py        |   22 +--
+ tests/test_filters.py                |  230 +++++++++++++++--------------------
+ tests/test_loaders.py                |   31 +---
+ tests/test_script.py                 |   29 +---
+ tests/test_updaters.py               |   16 +-
+ tests/test_version.py                |   35 ++---
+ 15 files changed, 267 insertions(+), 330 deletions(-)
+
+--- a/examples/appengine/webassets/test.py
++++ b/examples/appengine/webassets/test.py
+@@ -27,19 +27,19 @@ class TempDirHelper(object):
+ 
+     default_files = {}
+ 
+-    def setup(self):
++    def setup_method(self):
+         self._tempdir_created = tempfile.mkdtemp()
+         self.create_files(self.default_files)
+ 
+-    def teardown(self):
++    def teardown_method(self):
+         shutil.rmtree(self._tempdir_created)
+ 
+     def __enter__(self):
+-        self.setup()
++        self.setup_method()
+         return self
+ 
+     def __exit__(self, type, value, traceback):
+-        self.teardown()
++        self.teardown_method()
+ 
+     @property
+     def tempdir(self):
+@@ -136,8 +136,8 @@ class TempEnvironmentHelper(TempDirHelpe
+ 
+     default_files = {'in1': 'A', 'in2': 'B', 'in3': 'C', 'in4': 'D'}
+ 
+-    def setup(self):
+-        TempDirHelper.setup(self)
++    def setup_method(self):
++        TempDirHelper.setup_method(self)
+ 
+         self.env = self._create_environment()
+         # Unless we explicitly test it, we don't want to use the cache
+--- a/src/webassets/test.py
++++ b/src/webassets/test.py
+@@ -27,19 +27,19 @@ class TempDirHelper(object):
+ 
+     default_files = {}
+ 
+-    def setup(self):
++    def setup_method(self):
+         self._tempdir_created = tempfile.mkdtemp()
+         self.create_files(self.default_files)
+ 
+-    def teardown(self):
++    def teardown_method(self):
+         shutil.rmtree(self._tempdir_created)
+ 
+     def __enter__(self):
+-        self.setup()
++        self.setup_method()
+         return self
+ 
+     def __exit__(self, type, value, traceback):
+-        self.teardown()
++        self.teardown_method()
+ 
+     @property
+     def tempdir(self):
+@@ -136,8 +136,8 @@ class TempEnvironmentHelper(TempDirHelpe
+ 
+     default_files = {'in1': 'A', 'in2': 'B', 'in3': 'C', 'in4': 'D'}
+ 
+-    def setup(self):
+-        TempDirHelper.setup(self)
++    def setup_method(self):
++        TempDirHelper.setup_method(self)
+ 
+         self.env = self._create_environment()
+         # Unless we explicitly test it, we don't want to use the cache
+--- a/tests/__init__.py
++++ b/tests/__init__.py
+@@ -1,4 +1,4 @@
+-def setup():
++def setup_method():
+     # For some strange reason (using Python 2.6.6), if a warning has
+     # already been raised somewhere else before a test attempts to
+     # capture and verify it using warnings.catch_warnings(), the warning
+--- a/tests/helpers.py
++++ b/tests/helpers.py
+@@ -5,7 +5,7 @@ from webassets.test import TempDirHelper
+ 
+ 
+ __all__ = ('TempDirHelper', 'TempEnvironmentHelper', 'noop',
+-           'assert_raises_regexp', 'check_warnings')
++           'assert_raises_regex', 'check_warnings')
+ 
+ 
+ # Define a noop filter; occasionally in tests we need to define
+@@ -13,28 +13,9 @@ __all__ = ('TempDirHelper', 'TempEnviron
+ noop = lambda _in, out: out.write(_in.read())
+ 
+ 
+-try:
+-    # Python 3
+-    from nose.tools import assert_raises_regex
+-except ImportError:
+-    try:
+-        # Python >= 2.7
+-        from nose.tools import assert_raises_regexp as assert_raises_regex
+-    except:
+-        # Python < 2.7
+-        def assert_raises_regex(expected, regexp, callable, *a, **kw):
+-            try:
+-                callable(*a, **kw)
+-            except expected as e:
+-                if isinstance(regexp, basestring):
+-                    regexp = re.compile(regexp)
+-                if not regexp.search(str(e.message)):
+-                    raise self.failureException('"%s" does not match "%s"' %
+-                             (regexp.pattern, str(e.message)))
+-            else:
+-                if hasattr(expected,'__name__'): excName = expected.__name__
+-                else: excName = str(expected)
+-                raise AssertionError("%s not raised" % excName)
++from pytest import raises
++def assert_raises_regex(expected, regexp, callable, *a, **kw):
++    raises(expected, callable, *a, **kw).match(regexp)
+ 
+ 
+ try:
+--- a/tests/test_bundle_build.py
++++ b/tests/test_bundle_build.py
+@@ -6,8 +6,10 @@ more likely` found in `test_bundle_vario
+ 
+ 
+ import os
+-from nose.tools import assert_raises
++
++from pytest import raises as assert_raises
+ import pytest
++
+ from webassets import Bundle
+ from webassets.cache import MemoryCache
+ from webassets.exceptions import BuildError, BundleError
+@@ -471,8 +473,8 @@ class TestAutoBuild(TempEnvironmentHelpe
+     generally everything involving the updater (as used by the build() method).
+     """
+ 
+-    def setup(self):
+-        TempEnvironmentHelper.setup(self)
++    def setup_method(self):
++        TempEnvironmentHelper.setup_method(self)
+ 
+         class CustomUpdater(BaseUpdater):
+             allow = True
+--- a/tests/test_bundle_urls.py
++++ b/tests/test_bundle_urls.py
+@@ -6,8 +6,9 @@ more likely` found in `test_bundle_vario
+ 
+ from __future__ import with_statement
+ 
+-from nose import SkipTest
+-from nose.tools import assert_raises, assert_equal
++import re
++
++import pytest
+ 
+ from tests.test_bundle_build import AppendFilter
+ from webassets import Bundle
+@@ -28,8 +29,8 @@ class BaseUrlsTester(TempEnvironmentHelp
+ 
+     default_files = {'a': '', 'b': '', 'c': '', '1': '', '2': ''}
+ 
+-    def setup(self):
+-        TempEnvironmentHelper.setup(self)
++    def setup_method(self):
++        TempEnvironmentHelper.setup_method(self)
+ 
+         self.env.url_expire = False
+ 
+@@ -64,12 +65,12 @@ class TestUrlsVarious(BaseUrlsTester):
+         value."""
+         # On the bundle level
+         b = self.MockBundle('a', 'b', debug="invalid")
+-        assert_raises(BundleError, b.urls, env=self.env)
++        pytest.raises(BundleError, b.urls, env=self.env)
+ 
+         # On the environment level
+         self.env.debug = "invalid"
+         b = self.MockBundle('a', 'b')
+-        assert_raises(BundleError, b.urls, env=self.env)
++        pytest.raises(BundleError, b.urls, env=self.env)
+ 
+         # Self-check - this should work if this test works.
+         self.env.debug = True  # valid again
+@@ -96,7 +97,7 @@ class TestUrlsVarious(BaseUrlsTester):
+         """
+         self.env.debug = True
+         bundle = self.mkbundle('non-existent-file', output="out")
+-        assert_raises(BundleError, bundle.urls)
++        pytest.raises(BundleError, bundle.urls)
+ 
+     def test_filters_in_debug_mode(self):
+         """Test that if a filter is used which runs in debug mode, the bundle
+@@ -124,33 +125,25 @@ class TestUrlsVarious(BaseUrlsTester):
+         """If a bundle contains absolute paths outside of the
+         media directory, to generate a url they are copied in.
+         """
+-        try:
+-            from nose.tools import assert_regex
+-        except ImportError:
+-            raise SkipTest("Assertion method only present in 2.7+")
+         self.env.debug = True
+         with TempDirHelper() as h:
+             h.create_files(['foo.css'])
+             bundle = self.mkbundle(h.path('foo.css'))
+             urls = bundle.urls()
+             assert len(urls) == 1
+-            assert_regex(urls[0], r'.*/webassets-external/[\da-z]*_foo.css')
++            assert re.match(r'.*/webassets-external/[\da-z]*_foo.css', urls[0])
+ 
+     def test_external_refs_calculate_sri(self):
+         """If a bundle contains absolute paths outside of the
+         media directory, to generate a url they are copied in.
+         """
+-        try:
+-            from nose.tools import assert_regex
+-        except ImportError:
+-            raise SkipTest("Assertion method only present in 2.7+")
+         self.env.debug = True
+         with TempDirHelper() as h:
+             h.create_files(['foo.css'])
+             bundle = self.mkbundle(h.path('foo.css'))
+             urls = bundle.urls(calculate_sri=True)
+             assert len(urls) == 1
+-            assert_regex(urls[0]['uri'], r'.*/webassets-external/[\da-z]*_foo.css')
++            assert re.match(r'.*/webassets-external/[\da-z]*_foo.css', urls[0]['uri'])
+             assert urls[0]['sri'] == _EMPTY_FILE_SRI
+ 
+ 
+@@ -194,7 +187,7 @@ class TestUrlsWithDebugFalse(BaseUrlsTes
+         does not affect url generation).
+         """
+         bundle = self.MockBundle('1', '2', output='childout', debug='merge')
+-        assert_equal(bundle.urls(), ['/childout'])
++        assert bundle.urls() == ['/childout']
+         assert len(self.build_called) == 1
+ 
+     def test_root_bundle_switching_to_debug_true(self):
+@@ -203,7 +196,7 @@ class TestUrlsWithDebugFalse(BaseUrlsTes
+         ineffectual.
+         """
+         bundle = self.MockBundle('1', '2', output='childout', debug=True)
+-        assert_equal(bundle.urls(), ['/childout'])
++        assert bundle.urls() == ['/childout']
+         assert len(self.build_called) == 1
+ 
+     def test_root_debug_true_and_child_debug_false(self):
+@@ -217,7 +210,7 @@ class TestUrlsWithDebugFalse(BaseUrlsTes
+             '1', '2',
+             self.MockBundle('a', output='child1', debug=False),
+             output='rootout', debug=True)
+-        assert_equal(bundle.urls(), ['/rootout'])
++        assert bundle.urls() == ['/rootout']
+ 
+     def test_simple_bundle_with_sri(self):
+         bundle = self.MockBundle('a', 'b', 'c', output='out')
+@@ -259,7 +252,7 @@ class TestUrlsWithDebugFalse(BaseUrlsTes
+         does not affect url generation).
+         """
+         bundle = self.MockBundle('1', '2', output='childout', debug='merge')
+-        assert_equal(bundle.urls(calculate_sri=True), [{'uri': '/childout', 'sri': None}])
++        assert bundle.urls(calculate_sri=True) == [{'uri': '/childout', 'sri': None}]
+         assert len(self.build_called) == 1
+ 
+     def test_root_bundle_switching_to_debug_true_with_sri(self):
+@@ -268,7 +261,7 @@ class TestUrlsWithDebugFalse(BaseUrlsTes
+         ineffectual.
+         """
+         bundle = self.MockBundle('1', '2', output='childout', debug=True)
+-        assert_equal(bundle.urls(calculate_sri=True), [{'uri': '/childout', 'sri': None}])
++        assert bundle.urls(calculate_sri=True) == [{'uri': '/childout', 'sri': None}]
+         assert len(self.build_called) == 1
+ 
+     def test_root_debug_true_and_child_debug_false_with_sri(self):
+@@ -282,21 +275,21 @@ class TestUrlsWithDebugFalse(BaseUrlsTes
+             '1', '2',
+             self.MockBundle('a', output='child1', debug=False),
+             output='rootout', debug=True)
+-        assert_equal(bundle.urls(calculate_sri=True), [{'uri': '/rootout', 'sri': None}])
++        assert bundle.urls(calculate_sri=True) == [{'uri': '/rootout', 'sri': None}]
+ 
+ 
+ class TestUrlsWithDebugTrue(BaseUrlsTester):
+     """Test url generation in debug mode.
+     """
+ 
+-    def setup(self):
+-        BaseUrlsTester.setup(self)
++    def setup_method(self):
++        BaseUrlsTester.setup_method(self)
+         self.env.debug = True
+ 
+     def test_simple_bundle(self):
+         bundle = self.MockBundle('a', 'b', 'c', output='out')
+-        assert_equal(bundle.urls(), ['/a', '/b', '/c'])
+-        assert_equal(len(self.build_called), 0)
++        assert bundle.urls() == ['/a', '/b', '/c']
++        assert len(self.build_called) == 0
+ 
+     def test_nested_bundle(self):
+         bundle = self.MockBundle(
+@@ -318,8 +311,8 @@ class TestUrlsWithDebugTrue(BaseUrlsTest
+         """[Regression] Test a Bundle that contains a source URL.
+         """
+         bundle = self.MockBundle('http://test.de', output='out')
+-        assert_equal(bundle.urls(), ['http://test.de'])
+-        assert_equal(len(self.build_called), 0)
++        assert bundle.urls() == ['http://test.de']
++        assert len(self.build_called) == 0
+ 
+         # This is the important test. It proves that the url source
+         # was handled separately, and not processed like any other
+@@ -328,14 +321,14 @@ class TestUrlsWithDebugTrue(BaseUrlsTest
+         # converts a bundle content into an url operates just fine
+         # on a url source, so there is no easy other way to determine
+         # whether the url source was treated special.
+-        assert_equal(len(self.makeurl_called), 0)
++        assert len(self.makeurl_called) == 0
+ 
+     def test_root_bundle_switching_to_debug_false(self):
+         """A bundle explicitly says it wants to be processed with
+         debug=False, overriding the global "debug=True" setting.
+         """
+         bundle = self.MockBundle('1', '2', output='childout', debug=False)
+-        assert_equal(bundle.urls(), ['/childout'])
++        assert bundle.urls() == ['/childout']
+         assert len(self.build_called) == 1
+ 
+     def test_root_bundle_switching_to_merge(self):
+@@ -343,7 +336,7 @@ class TestUrlsWithDebugTrue(BaseUrlsTest
+         the global "debug=True" setting.
+         """
+         bundle = self.MockBundle('1', '2', output='childout', debug='merge')
+-        assert_equal(bundle.urls(), ['/childout'])
++        assert bundle.urls() == ['/childout']
+         assert len(self.build_called) == 1
+ 
+     def test_child_bundle_switching(self):
+@@ -354,16 +347,16 @@ class TestUrlsWithDebugTrue(BaseUrlsTest
+         bundle = self.MockBundle(
+             'a', self.MockBundle('1', '2', output='childout', debug='merge'),
+             'c', output='out')
+-        assert_equal(bundle.urls(), ['/a', '/childout', '/c'])
++        assert bundle.urls() == ['/a', '/childout', '/c']
+         assert len(self.build_called) == 1
+ 
+     def test_simple_bundle_with_sri(self):
+         bundle = self.MockBundle('a', 'b', 'c', output='out')
+-        assert_equal(bundle.urls(calculate_sri=True),
+-                     [{'sri': _EMPTY_FILE_SRI, 'uri': '/a'},
++        assert bundle.urls(calculate_sri=True) == [
++                      {'sri': _EMPTY_FILE_SRI, 'uri': '/a'},
+                       {'sri': _EMPTY_FILE_SRI, 'uri': '/b'},
+-                      {'sri': _EMPTY_FILE_SRI, 'uri': '/c'}])
+-        assert_equal(len(self.build_called), 0)
++                      {'sri': _EMPTY_FILE_SRI, 'uri': '/c'}]
++        assert len(self.build_called) == 0
+ 
+     def test_nested_bundle_with_sri(self):
+         bundle = self.MockBundle(
+@@ -389,8 +382,8 @@ class TestUrlsWithDebugTrue(BaseUrlsTest
+         """[Regression] Test a Bundle that contains a source URL.
+         """
+         bundle = self.MockBundle('http://test.de', output='out')
+-        assert_equal(bundle.urls(calculate_sri=True), [{'sri': None, 'uri': 'http://test.de'}])
+-        assert_equal(len(self.build_called), 0)
++        assert bundle.urls(calculate_sri=True) == [{'sri': None, 'uri': 'http://test.de'}]
++        assert len(self.build_called) == 0
+ 
+         # This is the important test. It proves that the url source
+         # was handled separately, and not processed like any other
+@@ -399,14 +392,14 @@ class TestUrlsWithDebugTrue(BaseUrlsTest
+         # converts a bundle content into an url operates just fine
+         # on a url source, so there is no easy other way to determine
+         # whether the url source was treated special.
+-        assert_equal(len(self.makeurl_called), 0)
++        assert len(self.makeurl_called) == 0
+ 
+     def test_root_bundle_switching_to_debug_false_with_sri(self):
+         """A bundle explicitly says it wants to be processed with
+         debug=False, overriding the global "debug=True" setting.
+         """
+         bundle = self.MockBundle('1', '2', output='childout', debug=False)
+-        assert_equal(bundle.urls(calculate_sri=True), [{'sri': None, 'uri': '/childout'}])
++        assert bundle.urls(calculate_sri=True) == [{'sri': None, 'uri': '/childout'}]
+         assert len(self.build_called) == 1
+ 
+     def test_root_bundle_switching_to_merge_with_sri(self):
+@@ -414,7 +407,7 @@ class TestUrlsWithDebugTrue(BaseUrlsTest
+         the global "debug=True" setting.
+         """
+         bundle = self.MockBundle('1', '2', output='childout', debug='merge')
+-        assert_equal(bundle.urls(calculate_sri=True), [{'sri': None, 'uri': '/childout'}])
++        assert bundle.urls(calculate_sri=True) == [{'sri': None, 'uri': '/childout'}]
+         assert len(self.build_called) == 1
+ 
+     def test_child_bundle_switching_with_sri(self):
+@@ -425,17 +418,17 @@ class TestUrlsWithDebugTrue(BaseUrlsTest
+         bundle = self.MockBundle(
+             'a', self.MockBundle('1', '2', output='childout', debug='merge'),
+             'c', output='out')
+-        assert_equal(bundle.urls(calculate_sri=True),
+-                     [{'sri': _EMPTY_FILE_SRI, 'uri': '/a'},
++        assert bundle.urls(calculate_sri=True) == [
++                      {'sri': _EMPTY_FILE_SRI, 'uri': '/a'},
+                       {'sri': None, 'uri': '/childout'},
+-                      {'sri': _EMPTY_FILE_SRI, 'uri': '/c'}])
++                      {'sri': _EMPTY_FILE_SRI, 'uri': '/c'}]
+         assert len(self.build_called) == 1
+ 
+ 
+ class TestUrlsWithDebugMerge(BaseUrlsTester):
+ 
+-    def setup(self):
+-        BaseUrlsTester.setup(self)
++    def setup_method(self):
++        BaseUrlsTester.setup_method(self)
+         self.env.debug = 'merge'
+ 
+     def test_simple_bundle(self):
+@@ -457,7 +450,7 @@ class TestUrlsWithDebugMerge(BaseUrlsTes
+         bundle = self.MockBundle(
+             'a', self.MockBundle('1', '2', output='childout', debug=False),
+             'c', output='out')
+-        assert_equal(bundle.urls(), ['/out'])
++        assert bundle.urls() == ['/out']
+         assert len(self.build_called) == 1
+ 
+     def test_root_bundle_switching_to_debug_true(self):
+@@ -467,7 +460,7 @@ class TestUrlsWithDebugMerge(BaseUrlsTes
+         bundle = self.MockBundle(
+             'a', self.MockBundle('1', '2', output='childout', debug=True),
+             'c', output='out')
+-        assert_equal(bundle.urls(), ['/out'])
++        assert bundle.urls() == ['/out']
+         assert len(self.build_called) == 1
+ 
+     def test_simple_bundle_with_sri(self):
+@@ -489,7 +482,7 @@ class TestUrlsWithDebugMerge(BaseUrlsTes
+         bundle = self.MockBundle(
+             'a', self.MockBundle('1', '2', output='childout', debug=False),
+             'c', output='out')
+-        assert_equal(bundle.urls(calculate_sri=True), [{'sri': None, 'uri': '/out'}])
++        assert bundle.urls(calculate_sri=True) == [{'sri': None, 'uri': '/out'}]
+         assert len(self.build_called) == 1
+ 
+     def test_root_bundle_switching_to_debug_true_with_sri(self):
+@@ -499,5 +492,5 @@ class TestUrlsWithDebugMerge(BaseUrlsTes
+         bundle = self.MockBundle(
+             'a', self.MockBundle('1', '2', output='childout', debug=True),
+             'c', output='out')
+-        assert_equal(bundle.urls(calculate_sri=True), [{'sri': None, 'uri': '/out'}])
++        assert bundle.urls(calculate_sri=True) == [{'sri': None, 'uri': '/out'}]
+         assert len(self.build_called) == 1
+--- a/tests/test_bundle_various.py
++++ b/tests/test_bundle_various.py
+@@ -13,12 +13,12 @@ try:
+         HTTPHandler, build_opener, install_opener, addinfourl
+ except ImportError: # Py2
+     from urllib2 import HTTPHandler, build_opener, install_opener, addinfourl
++
++import pytest
++
+ from webassets.six import StringIO
+ from webassets.six.moves import filter
+ 
+-from nose.tools import assert_raises, assert_equal
+-from nose import SkipTest
+-
+ from webassets import Bundle
+ from webassets.utils import set
+ from webassets.bundle import get_all_bundle_files
+@@ -94,7 +94,7 @@ class TestBundleConfig(TempEnvironmentHe
+         b = self.mkbundle(filters=['jsmin', 'cssutils'])
+         _assert(b.filters, 2)
+         # Strings inside a list may not be further comma separated
+-        assert_raises(ValueError, self.mkbundle, filters=['jsmin,cssutils'])
++        pytest.raises(ValueError, self.mkbundle, filters=['jsmin,cssutils'])
+ 
+         # A single or multiple classes may be given
+         b = self.mkbundle(filters=TestFilter)
+@@ -113,8 +113,8 @@ class TestBundleConfig(TempEnvironmentHe
+         _assert(b.filters, 2)
+ 
+         # If something is wrong, an error is raised right away.
+-        assert_raises(ValueError, self.mkbundle, filters='notreallyafilter')
+-        assert_raises(ValueError, self.mkbundle, filters=object())
++        pytest.raises(ValueError, self.mkbundle, filters='notreallyafilter')
++        pytest.raises(ValueError, self.mkbundle, filters=object())
+ 
+         # [bug] Specifically test that we can assign ``None``.
+         self.mkbundle().filters = None
+@@ -177,8 +177,8 @@ class TestVersionFeatures(TempEnvironmen
+ 
+     default_files = {'in': 'foo'}
+ 
+-    def setup(self):
+-        super(TestVersionFeatures, self).setup()
++    def setup_method(self):
++        super(TestVersionFeatures, self).setup_method()
+         self.env.manifest = DummyManifest()
+         self.env.versions = DummyVersion()
+ 
+@@ -272,7 +272,7 @@ class TestVersionFeatures(TempEnvironmen
+         assert bundle.version == 'foo'
+         self.env.manifest.version = None
+         self.env.versions.version = None
+-        assert_raises(BundleError, bundle.get_version, refresh=True)
++        pytest.raises(BundleError, bundle.get_version, refresh=True)
+ 
+     def test_url_expire(self):
+         """Test the url_expire option.
+@@ -371,8 +371,8 @@ class TestLoadPath(TempEnvironmentHelper
+     an optional feature.
+     """
+ 
+-    def setup(self):
+-        TempEnvironmentHelper.setup(self)
++    def setup_method(self):
++        TempEnvironmentHelper.setup_method(self)
+         self.env.updater = False
+         self.env.directory = self.path('dir')
+         self.env.debug = True
+@@ -399,7 +399,7 @@ class TestLoadPath(TempEnvironmentHelper
+         assert self.get('dir/out') == 'a'
+ 
+         # Error because the file from directory is not found
+-        assert_raises(BundleError, self.mkbundle('bar', output='out').build)
++        pytest.raises(BundleError, self.mkbundle('bar', output='out').build)
+ 
+     def test_globbing(self):
+         """When used with globbing."""
+@@ -488,7 +488,7 @@ class TestGlobbing(TempEnvironmentHelper
+         self.env.debug = True
+         urls = self.mkbundle('*.js', output='out').urls()
+         urls.sort()
+-        assert_equal(urls, ['/file1.js', '/file2.js'])
++        assert urls == ['/file1.js', '/file2.js']
+ 
+     def test_empty_pattern(self):
+         bundle = self.mkbundle('*.xyz', output='out')
+@@ -508,10 +508,7 @@ class TestGlobbing(TempEnvironmentHelper
+     def test_recursive_globbing(self):
+         """Test recursive globbing using python-glob2.
+         """
+-        try:
+-            import glob2
+-        except ImportError:
+-            raise SkipTest()
++        glob2 = pytest.importorskip("glob2")
+ 
+         self.create_files({'sub/file.js': 'sub',})
+         self.mkbundle('**/*.js', output='out').build()
+@@ -606,8 +603,8 @@ class TestUrlContents(TempEnvironmentHel
+     """Test bundles containing a URL.
+     """
+ 
+-    def setup(self):
+-        TempEnvironmentHelper.setup(self)
++    def setup_method(self):
++        TempEnvironmentHelper.setup_method(self)
+         mock_opener = build_opener(MockHTTPHandler({
+             'http://foo': u'function() {}'}))
+         install_opener(mock_opener)
+@@ -619,7 +616,7 @@ class TestUrlContents(TempEnvironmentHel
+     def test_invalid_url(self):
+         """If a bundle contains an invalid url, building will raise an error.
+         """
+-        assert_raises(BuildError,
++        pytest.raises(BuildError,
+                       self.mkbundle('http://bar', output='out').build)
+ 
+     def test_autorebuild_updaters(self):
+--- a/tests/test_cache.py
++++ b/tests/test_cache.py
+@@ -2,7 +2,7 @@ from __future__ import with_statement
+ 
+ import random
+ import pytest
+-from nose.tools import assert_equal
++
+ from webassets.filter import Filter
+ from webassets.cache import BaseCache, FilesystemCache, MemoryCache
+ from webassets.updater import TimestampUpdater
+@@ -89,8 +89,8 @@ class TestCacheIsUsed(TempEnvironmentHel
+     """Ensure the cache is used during the build process.
+     """
+ 
+-    def setup(self):
+-        TempEnvironmentHelper.setup(self)
++    def setup_method(self):
++        TempEnvironmentHelper.setup_method(self)
+ 
+         class MyCache(BaseCache):
+             def __init__(self):
+@@ -123,15 +123,15 @@ class TestCacheIsUsed(TempEnvironmentHel
+         bundle = self.mkbundle('in1', 'in2', output='out', filters=self.filter)
+         self.cache.enabled = False
+         bundle.build()
+-        assert_equal(self.cache.getops, 6)  # 2x first, 2x input, 1x output, 1x cache
+-        assert_equal(self.cache.setops, 7)  # like getops + 1x bdef
++        assert self.cache.getops == 6  # 2x first, 2x input, 1x output, 1x cache
++        assert self.cache.setops == 7  # like getops + 1x bdef
+ 
+     def test_cache_enabled(self):
+         bundle = self.mkbundle('in1', 'in2', output='out', filters=self.filter)
+         self.cache.enabled = True
+         bundle.build()
+-        assert_equal(self.cache.getops, 6)  # # 2x first, 2x input, 1x output, 1x cache
+-        assert_equal(self.cache.setops, 1)  # one hit by (bdef)
++        assert self.cache.getops == 6  # # 2x first, 2x input, 1x output, 1x cache
++        assert self.cache.setops == 1  # one hit by (bdef)
+ 
+     def test_filesystem_cache(self):
+         """Regresssion test for two bugs:
+--- a/tests/test_environment.py
++++ b/tests/test_environment.py
+@@ -1,7 +1,8 @@
+ from __future__ import with_statement
+ 
+ import os
+-from nose.tools import assert_raises
++
++import pytest
+ 
+ from webassets import six
+ from webassets import Environment
+@@ -12,7 +13,7 @@ from webassets import Bundle
+ class TestEnvApi(object):
+     """General Environment functionality."""
+ 
+-    def setup(self):
++    def setup_method(self):
+         self.m = Environment(None, None)
+ 
+     def test_register_single_bundle(self):
+@@ -92,14 +93,14 @@ class TestEnvApi(object):
+         env = Environment('tests')
+ 
+         # No `output`
+-        assert_raises(
++        pytest.raises(
+             RegisterError, env.register,
+             'base1', 'helpers.py', merge=False
+         )
+ 
+         # Nested bundle
+         b = Bundle()
+-        assert_raises(
++        pytest.raises(
+             RegisterError, env.register,
+             'base2', 'helpers.py', b, merge=False, output='a'
+         )
+@@ -107,8 +108,8 @@ class TestEnvApi(object):
+     def test_register_invalid_call(self):
+         """Test calling self.m.register with an invalid syntax.
+         """
+-        assert_raises(TypeError, self.m.register)
+-        assert_raises(TypeError, self.m.register, 'one-argument-only')
++        pytest.raises(TypeError, self.m.register)
++        pytest.raises(TypeError, self.m.register, 'one-argument-only')
+ 
+     def test_register_duplicate(self):
+         """Test name clashes.
+@@ -125,8 +126,8 @@ class TestEnvApi(object):
+         assert len(self.m) == 1
+ 
+         # Otherwise, an error is raised.
+-        assert_raises(RegisterError, self.m.register, 'foo', b2)
+-        assert_raises(RegisterError, self.m.register, 'foo', 's1', 's2', 's3')
++        pytest.raises(RegisterError, self.m.register, 'foo', b2)
++        pytest.raises(RegisterError, self.m.register, 'foo', 's1', 's2', 's3')
+ 
+     def test_register_anon_bundle(self):
+         """Self registering an anonymous bundle.
+@@ -158,8 +159,8 @@ class TestEnvApi(object):
+         # An environment can be constructed without given url or directory.
+         env = Environment()
+         # But then accessing them will fail, and with it most operations.
+-        assert_raises(EnvironmentError, getattr, env, 'url')
+-        assert_raises(EnvironmentError, getattr, env, 'directory')
++        pytest.raises(EnvironmentError, getattr, env, 'url')
++        pytest.raises(EnvironmentError, getattr, env, 'directory')
+ 
+         # Test constructing the environment with values for url and directory
+         env = Environment('foo', 'bar')
+@@ -185,7 +186,7 @@ class TestEnvConfig(object):
+     """Custom config values through get_config/set_config.
+     """
+ 
+-    def setup(self):
++    def setup_method(self):
+         self.m = Environment(None, None)
+ 
+     def test_initial_values_override_defaults(self):
+@@ -215,7 +216,7 @@ class TestSpecialProperties(object):
+     as a string, and would receive object instances when accessing the property.
+     """
+ 
+-    def setup(self):
++    def setup_method(self):
+         self.m = Environment('.', None)  # we won't create any files
+ 
+     def test_versioner(self):
+@@ -242,7 +243,7 @@ class TestSpecialProperties(object):
+ 
+         # Invalid value
+         self.m.versions = 'invalid-value'
+-        assert_raises(ValueError, getattr, self.m, 'versions')
++        pytest.raises(ValueError, getattr, self.m, 'versions')
+ 
+     def test_cache(self):
+         from webassets.cache import BaseCache, FilesystemCache
+--- a/tests/test_ext/test_jinja2.py
++++ b/tests/test_ext/test_jinja2.py
+@@ -1,20 +1,18 @@
+-from nose.plugins.skip import SkipTest
++import pytest
++
+ from webassets import Environment as AssetsEnvironment, Bundle
+ from webassets.test import TempEnvironmentHelper
+ 
+ 
+-try:
+-    import jinja2
+-except ImportError:
+-    raise SkipTest('Jinja2 not installed')
+-else:
+-    from jinja2 import Template, Environment as JinjaEnvironment
+-    from webassets.ext.jinja2 import AssetsExtension, Jinja2Loader
++jinja2 = pytest.importorskip('jinja2')
++
++from jinja2 import Template, Environment as JinjaEnvironment
++from webassets.ext.jinja2 import AssetsExtension, Jinja2Loader
+ 
+ 
+ class TestTemplateTag(object):
+ 
+-    def setup(self):
++    def setup_method(self):
+         # Setup the assets environment.
+         assets_env = AssetsEnvironment('', '')
+         self.foo_bundle = Bundle()
+@@ -46,7 +44,7 @@ class TestTemplateTag(object):
+         self.jinja_env.add_extension(AssetsExtension)
+         self.jinja_env.assets_environment = assets_env
+ 
+-    def teardown(self):
++    def teardown_method(self):
+         AssetsExtension.BundleClass = self._old_bundle_class
+         del self._old_bundle_class
+ 
+@@ -125,8 +123,8 @@ class TestLoader(TempEnvironmentHelper):
+             """
+     }
+ 
+-    def setup(self):
+-        TempEnvironmentHelper.setup(self)
++    def setup_method(self):
++        TempEnvironmentHelper.setup_method(self)
+         self.jinja_env = JinjaEnvironment()
+         self.jinja_env.add_extension(AssetsExtension)
+         self.jinja_env.assets_environment = self.env
+--- a/tests/test_filters.py
++++ b/tests/test_filters.py
+@@ -6,11 +6,17 @@ import os
+ import os.path
+ from subprocess import check_output
+ from contextlib import contextmanager
+-from nose.tools import assert_raises, assert_equal, assert_true
+-from nose import SkipTest
+-from mock import patch, Mock, DEFAULT
++
++try:
++    from unittest.mock import patch, Mock, DEFAULT
++except ImportError:
++    from mock import patch, Mock, DEFAULT
++
+ from distutils.spawn import find_executable
+ import re
++
++import pytest
++
+ from webassets.utils import StringIO
+ from webassets import Environment
+ from webassets.exceptions import FilterError
+@@ -66,7 +72,7 @@ class TestFilterBaseClass(object):
+         # Test __init__ arguments
+         assert TestFilter(attr1='foo').attr1 == 'foo'
+         assert TestFilter(secondattr='foo').attr2 == 'foo'
+-        assert_raises(TypeError, TestFilter, attr3='foo')
++        pytest.raises(TypeError, TestFilter, attr3='foo')
+         assert TestFilter(attr4='foo').attr4 == 'foo'
+ 
+         # Test config vars
+@@ -94,19 +100,19 @@ class TestFilterBaseClass(object):
+ 
+         with os_environ_sandbox():
+             # Test raising of error, and test not raising it.
+-            assert_raises(EnvironmentError, get_config, NAME)
++            pytest.raises(EnvironmentError, get_config, NAME)
+             assert get_config(NAME, require=False) is None
+ 
+             # Start with only the environment variable set.
+             os.environ[NAME] = 'bar'
+             assert get_config(NAME) == 'bar'
+             assert get_config(env=NAME, setting=False) == 'bar'
+-            assert_raises(EnvironmentError, get_config, setting=NAME, env=False)
++            pytest.raises(EnvironmentError, get_config, setting=NAME, env=False)
+ 
+             # Set the value in the environment as well.
+             m.config[NAME] = 'foo'
+             # Ensure that settings take precedence.
+-            assert_equal(get_config(NAME), 'foo')
++            assert get_config(NAME) == 'foo'
+             # Two different names can be supplied.
+             assert get_config(setting=NAME2, env=NAME) == 'bar'
+ 
+@@ -114,7 +120,7 @@ class TestFilterBaseClass(object):
+             del os.environ[NAME]
+             assert get_config(NAME) == 'foo'
+             assert get_config(setting=NAME, env=False) == 'foo'
+-            assert_raises(EnvironmentError, get_config, env=NAME)
++            pytest.raises(EnvironmentError, get_config, env=NAME)
+ 
+     def test_getconfig_os_env_types(self):
+         """Test type conversion for values read from the environment.
+@@ -171,16 +177,16 @@ class TestExternalToolClass(object):
+             self.__class__.result = \
+                 argv, data.getvalue() if data is not None else data
+ 
+-    def setup(self):
++    def setup_method(self):
+         if not hasattr(str, 'format'):
+             # A large part of this functionality is not available on Python 2.5
+-            raise SkipTest()
++            pytest.skip("test not for py 2.5")
+         self.patcher = patch('subprocess.Popen')
+         self.popen = self.patcher.start()
+         self.popen.return_value = Mock()
+         self.popen.return_value.communicate = Mock()
+ 
+-    def teardown(self):
++    def teardown_method(self):
+         self.patcher.stop()
+ 
+     def test_argv_variables(self):
+@@ -225,7 +231,7 @@ class TestExternalToolClass(object):
+         assert Filter.result == ([], None)
+ 
+     def test_method_invalid(self):
+-        assert_raises(AssertionError,
++        pytest.raises(AssertionError,
+             type, 'Filter', (ExternalTool,), {'method': 'foobar'})
+ 
+     def test_no_method(self):
+@@ -307,7 +313,7 @@ class TestExternalToolClass(object):
+         # With error
+         self.popen.return_value.returncode = 1
+         self.popen.return_value.communicate.return_value = [b'stdout', b'stderr']
+-        assert_raises(FilterError, Filter.subprocess, ['test'], StringIO())
++        pytest.raises(FilterError, Filter.subprocess, ['test'], StringIO())
+ 
+     def test_input_var(self):
+         """Test {input} variable."""
+@@ -331,7 +337,7 @@ class TestExternalToolClass(object):
+         assert not os.path.exists(intercepted['filename'])
+ 
+         # {input} requires input data
+-        assert_raises(ValueError, Filter.subprocess, ['{input}'], StringIO())
++        pytest.raises(ValueError, Filter.subprocess, ['{input}'], StringIO())
+ 
+     def test_output_var(self):
+         class Filter(ExternalTool): pass
+@@ -382,13 +388,13 @@ def test_register_filter():
+     """Test registration of custom filters.
+     """
+     # Needs to be a ``Filter`` subclass.
+-    assert_raises(ValueError, register_filter, object)
++    pytest.raises(ValueError, register_filter, object)
+ 
+     # A name is required.
+     class MyFilter(Filter):
+         name = None
+         def output(self, *a, **kw): pass
+-    assert_raises(ValueError, register_filter, MyFilter)
++    pytest.raises(ValueError, register_filter, MyFilter)
+ 
+     # We should be able to register a filter with a name.
+     MyFilter.name = 'foo'
+@@ -400,7 +406,7 @@ def test_register_filter():
+         name = 'foo'
+         def output(self, *a, **kw): pass
+     register_filter(OverrideMyFilter)
+-    assert_true(isinstance(get_filter('foo'), OverrideMyFilter))
++    assert isinstance(get_filter('foo'), OverrideMyFilter)
+ 
+ 
+ def test_get_filter():
+@@ -408,12 +414,12 @@ def test_get_filter():
+     """
+     # By name - here using one of the builtins.
+     assert isinstance(get_filter('jsmin'), Filter)
+-    assert_raises(ValueError, get_filter, 'notafilteractually')
++    pytest.raises(ValueError, get_filter, 'notafilteractually')
+ 
+     # By class.
+     class MyFilter(Filter): pass
+     assert isinstance(get_filter(MyFilter), MyFilter)
+-    assert_raises(ValueError, get_filter, object())
++    pytest.raises(ValueError, get_filter, object())
+ 
+     # Passing an instance doesn't do anything.
+     f = MyFilter()
+@@ -426,8 +432,8 @@ def test_get_filter():
+     assert get_filter('rcssmin', keep_bang_comments=True).keep_bang_comments == True
+     # However, this is not allowed when a filter instance is passed directly,
+     # or a callable object.
+-    assert_raises(AssertionError, get_filter, f, 'test')
+-    assert_raises(AssertionError, get_filter, lambda: None, 'test')
++    pytest.raises(AssertionError, get_filter, f, 'test')
++    pytest.raises(AssertionError, get_filter, lambda: None, 'test')
+ 
+ 
+ def test_callable_filter():
+@@ -474,41 +480,35 @@ class TestBuiltinFilters(TempEnvironment
+             self.mkbundle('foo.css', filters='cssmin', output='out.css').build()
+         except EnvironmentError:
+             # cssmin is not installed, that's ok.
+-            raise SkipTest()
++            pytest.skip('no cssmin')
+         assert self.get('out.css') == """h1{font-family:"Verdana";color:#FFF}"""
+ 
+     def test_cssutils(self):
+-        try:
+-            import cssutils
+-        except ImportError:
+-            raise SkipTest()
++        cssutils = pytest.importorskip('cssutils')
+         self.mkbundle('foo.css', filters='cssutils', output='out.css').build()
+         assert self.get('out.css') == """h1{font-family:"Verdana";color:#FFF}"""
+ 
+     def test_clevercss(self):
+-        try:
+-            import clevercss
+-        except ImportError:
+-            raise SkipTest()
++        clevercss = pytest.importorskip('clevercss')
+         self.create_files({'in': """a:\n    color: #fff.darken(50%)"""})
+         self.mkbundle('in', filters='clevercss', output='out.css').build()
+         assert self.get('out.css') == """a {\n  color: #7f7f7f;\n}"""
+ 
+     def test_uglifyjs_ascii(self):
+         if not find_executable('uglifyjs'):
+-            raise SkipTest()
++            pytest.skip('no uglifyjs')
+         self.mkbundle('foo2.js', filters='uglifyjs', output='out.js').build()
+         assert self.get('out.js') == 'more();'
+ 
+     def test_uglifyjs_unicode(self):
+         if not find_executable('uglifyjs'):
+-            raise SkipTest()
++            pytest.skip('no uglifyjs')
+         self.mkbundle('foo.js', filters='uglifyjs', output='out.js').build()
+         assert self.get('out.js') == 'function foo(bar){var dummy;document.write(bar);var a="Ünícôdè"}'
+ 
+     def test_uglifyjs_ascii_and_unicode(self):
+         if not find_executable('uglifyjs'):
+-            raise SkipTest()
++            pytest.skip('no uglifyjs')
+         self.mkbundle('foo.js', 'foo2.js', filters='uglifyjs', output='out.js').build()
+         assert self.get('out.js') == 'function foo(bar){var dummy;document.write(bar);var a="Ünícôdè"}more();'
+ 
+@@ -516,35 +516,32 @@ class TestBuiltinFilters(TempEnvironment
+         try:
+             self.mkbundle('foo2.js', filters='slimit', output='out.js').build()
+         except EnvironmentError:
+-            raise SkipTest("slimit is not installed")
++            pytest.skip("slimit is not installed")
+         assert self.get('out.js') == 'more();'
+ 
+     def test_slimit_unicode(self):
+         try:
+             self.mkbundle('foo.js', filters='slimit', output='out.js').build()
+         except EnvironmentError:
+-            raise SkipTest("slimit is not installed")
++            pytest.skip("slimit is not installed")
+         assert self.get('out.js') == 'function foo(bar){var dummy;document.write(bar);var a="Ünícôdè";}'
+ 
+     def test_slimit_ascii_and_unicode(self):
+         try:
+             self.mkbundle('foo.js', 'foo2.js', filters='slimit', output='out.js').build()
+         except EnvironmentError:
+-            raise SkipTest("slimit is not installed")
++            pytest.skip("slimit is not installed")
+         assert self.get('out.js') == 'function foo(bar){var dummy;document.write(bar);var a="Ünícôdè";}more();'
+ 
+     def test_less_ruby(self):
+         # TODO: Currently no way to differentiate the ruby lessc from the
+         # JS one. Maybe the solution is just to remove the old ruby filter.
+-        raise SkipTest()
++        pytest.skip()
+         self.mkbundle('foo.css', filters='less_ruby', output='out.css').build()
+         assert self.get('out.css') == 'h1 {\n  font-family: "Verdana";\n  color: #ffffff;\n}\n'
+ 
+     def test_jsmin(self):
+-        try:
+-            import jsmin
+-        except ImportError:
+-            raise SkipTest()
++        jsmin = pytest.importorskip('jsmin')
+         self.mkbundle('foo.js', filters='jsmin', output='out.js').build()
+         assert self.get('out.js') in (
+             # Builtin jsmin
+@@ -556,10 +553,7 @@ class TestBuiltinFilters(TempEnvironment
+         )
+ 
+     def test_rjsmin(self):
+-        try:
+-            import rjsmin
+-        except ImportError:
+-            raise SkipTest()
++        rjsmin = pytest.importorskip('rjsmin')
+         self.mkbundle('foo.js', filters='rjsmin', output='out.js').build()
+         assert self.get('out.js') == 'function foo(bar){var dummy;document.write(bar);var a="\xc3\x9cn\xc3\xadc\xc3\xb4d\xc3\xa8";}'
+ 
+@@ -568,38 +562,29 @@ class TestBuiltinFilters(TempEnvironment
+         assert self.get('out.js').startswith('eval(function(p,a,c,k,e,d)')
+ 
+     def test_yui_js(self):
+-        try:
+-            import yuicompressor
+-        except ImportError:
+-            raise SkipTest()
++        yuicompressor = pytest.importorskip('yuicompressor')
+         self.mkbundle('foo.js', filters='yui_js', output='out.js').build()
+         assert self.get('out.js') == 'function foo(c){var d;document.write(c);var b="Ünícôdè"};'
+ 
+     def test_yui_css(self):
+-        try:
+-            import yuicompressor
+-        except ImportError:
+-            raise SkipTest()
++        yuicompressor = pytest.importorskip('yuicompressor')
+         self.mkbundle('foo.css', filters='yui_css', output='out.css').build()
+         assert self.get('out.css') == """h1{font-family:"Verdana";color:#fff}"""
+ 
+     def test_cleancss(self):
+         if not find_executable('cleancss'):
+-            raise SkipTest()
++            pytest.skip('no cleancss')
+         self.mkbundle('foo.css', filters='cleancss', output='out.css').build()
+         assert self.get('out.css') in ('h1{font-family:Verdana;color:#FFF}', 'h1{font-family:Verdana;color:#fff}')
+ 
+     def test_cssslimmer(self):
+-        try:
+-            import slimmer
+-        except ImportError:
+-            raise SkipTest()
++        slimmer = pytest.importorskip('slimmer')
+         self.mkbundle('foo.css', filters='css_slimmer', output='out.css').build()
+         assert self.get('out.css') == 'h1{font-family:"Verdana";color:#FFF}'
+ 
+     def test_stylus(self):
+         if not find_executable('stylus'):
+-            raise SkipTest()
++            pytest.skip('no stylus')
+         self.create_files({'in': """a\n  width:100px\n  height:(@width/2)"""})
+         self.mkbundle('in', filters='stylus', output='out.css').build()
+         assert self.get('out.css') == """a {\n  width: 100px;\n  height: 50px;\n}\n\n"""
+@@ -608,7 +593,7 @@ class TestBuiltinFilters(TempEnvironment
+         try:
+             self.mkbundle('foo.css', filters='rcssmin', output='out.css').build()
+         except EnvironmentError:
+-            raise SkipTest()
++            pytest.skip('no rcssmin')
+         assert self.get('out.css') == """h1{font-family:"Verdana";color:#FFFFFF}"""
+ 
+     def test_find_pyc_files( self ):
+@@ -624,12 +609,9 @@ class TestBuiltinFilters(TempEnvironment
+ 
+ class TestCSSPrefixer(TempEnvironmentHelper):
+ 
+-    def setup(self):
+-        try:
+-            import cssprefixer
+-        except ImportError:
+-            raise SkipTest()
+-        TempEnvironmentHelper.setup(self)
++    def setup_method(self):
++        cssprefixer = pytest.importorskip('cssprefixer')
++        TempEnvironmentHelper.setup_method(self)
+ 
+     def test(self):
+         self.create_files({'in': """a { border-radius: 1em; }"""})
+@@ -644,10 +626,10 @@ class TestCSSPrefixer(TempEnvironmentHel
+ 
+ class TestCoffeeScript(TempEnvironmentHelper):
+ 
+-    def setup(self):
++    def setup_method(self):
+         if not find_executable('coffee'):
+-            raise SkipTest()
+-        TempEnvironmentHelper.setup(self)
++            pytest.skip('no coffee')
++        TempEnvironmentHelper.setup_method(self)
+ 
+     def test_default_options(self):
+         self.create_files({'in': "alert \"I knew it!\" if elvis?"})
+@@ -668,12 +650,9 @@ class TestCoffeeScript(TempEnvironmentHe
+ 
+ class TestJinja2(TempEnvironmentHelper):
+ 
+-    def setup(self):
+-        try:
+-            import jinja2
+-        except ImportError:
+-            raise SkipTest()
+-        TempEnvironmentHelper.setup(self)
++    def setup_method(self):
++        jinja2 = pytest.importorskip('jinja2')
++        TempEnvironmentHelper.setup_method(self)
+ 
+     def test_default_options(self):
+         self.create_files({'in': """Hi there, {{ name }}!"""})
+@@ -699,13 +678,9 @@ class TestClosure(TempEnvironmentHelper)
+         """
+     }
+ 
+-    def setup(self):
+-        try:
+-            import closure
+-        except ImportError:
+-            raise SkipTest()
+-
+-        TempEnvironmentHelper.setup(self)
++    def setup_method(self):
++        closure = pytest.importorskip('closure')
++        TempEnvironmentHelper.setup_method(self)
+ 
+     def test_closure(self):
+         self.mkbundle('foo.js', filters='closure_js', output='out.js').build()
+@@ -826,10 +801,10 @@ class TestLess(TempEnvironmentHelper):
+         'foo.less': "h1 { color: #FFFFFF; }",
+     }
+ 
+-    def setup(self):
++    def setup_method(self):
+         if not find_executable('lessc'):
+-            raise SkipTest()
+-        TempEnvironmentHelper.setup(self)
++            pytest.skip('no lessc')
++        TempEnvironmentHelper.setup_method(self)
+ 
+     def test(self):
+         self.mkbundle('foo.less', filters='less', output='out.css').build()
+@@ -904,7 +879,7 @@ class TestLess(TempEnvironmentHelper):
+                 'p1', 'p2', filters=less_output, output='out2.css'
+             ).build()
+ 
+-        assert_raises(FilterError, mkbundle)
++        pytest.raises(FilterError, mkbundle)
+ 
+ 
+ class TestRubySass(TempEnvironmentHelper):
+@@ -922,14 +897,14 @@ class TestRubySass(TempEnvironmentHelper
+         """,
+     }
+ 
+-    def setup(self):
++    def setup_method(self):
+         if not find_executable('sass'):
+-            raise SkipTest()
++            pytest.skip('no sass')
+ 
+         if "Ruby" not in check_output(["sass", "--version"]).decode('utf-8'):
+-            raise SkipTest()
++            pytest.skip('no Ruby')
+ 
+-        TempEnvironmentHelper.setup(self)
++        TempEnvironmentHelper.setup_method(self)
+ 
+     def test_sass(self):
+         sass = get_filter('sass_ruby', debug_info=False)
+@@ -1032,10 +1007,10 @@ class TestSass(TempEnvironmentHelper):
+         """,
+     }
+ 
+-    def setup(self):
++    def setup_method(self):
+         if not find_executable('sass'):
+-            raise SkipTest()
+-        TempEnvironmentHelper.setup(self)
++            pytest.skip('no sass')
++        TempEnvironmentHelper.setup_method(self)
+ 
+     def test_sass(self):
+         sass = get_filter('sass')
+@@ -1093,13 +1068,13 @@ class TestPyScss(TempEnvironmentHelper):
+         'bar.scss': 'h1{color:red}'
+     }
+ 
+-    def setup(self):
++    def setup_method(self):
+         try:
+             import scss
+             self.scss = scss
+         except ImportError:
+-            raise SkipTest()
+-        TempEnvironmentHelper.setup(self)
++            pytest.skip('no scss')
++        TempEnvironmentHelper.setup_method(self)
+ 
+     def test(self):
+         self.mkbundle('foo.scss', filters='pyscss', output='out.css').build()
+@@ -1113,7 +1088,7 @@ class TestPyScss(TempEnvironmentHelper):
+             from PIL import Image
+             Image.new('RGB', (10,10)).save(StringIO(), 'png')
+         except (ImportError, IOError):
+-            raise SkipTest()
++            pytest.skip('no PIL or Pillow')
+         self.create_files({'noise.scss': 'h1 {background: background-noise()}'})
+         self.mkbundle('noise.scss', filters='pyscss', output='out.css').build()
+ 
+@@ -1130,13 +1105,13 @@ class TestLibSass(TempEnvironmentHelper)
+         'b.scss': '$foo: foo !default; .test {background-color: $foo;}'
+     }
+ 
+-    def setup(self):
++    def setup_method(self):
+         try:
+             import sass
+             self.sass = sass
+         except ImportError:
+-            raise SkipTest()
+-        TempEnvironmentHelper.setup(self)
++            pytest.skip('no sass')
++        TempEnvironmentHelper.setup_method(self)
+ 
+     def test(self):
+         self.mkbundle('foo.scss', filters='libsass', output='out.css').build()
+@@ -1192,10 +1167,10 @@ class TestCompass(TempEnvironmentHelper)
+         """
+     }
+ 
+-    def setup(self):
++    def setup_method(self):
+         if not find_executable('compass'):
+-            raise SkipTest()
+-        TempEnvironmentHelper.setup(self)
++            pytest.skip('no compass')
++        TempEnvironmentHelper.setup_method(self)
+ 
+     def test_compass(self):
+         self.mkbundle('foo.sass', filters='compass', output='out.css').build()
+@@ -1256,7 +1231,7 @@ class TestCompassConfig(object):
+         }
+     }
+ 
+-    def setup(self):
++    def setup_method(self):
+         self.compass_config = CompassConfig(self.config).to_string()
+ 
+     def test_compass_config_is_unicode(self):
+@@ -1288,8 +1263,8 @@ class TestJST(TempEnvironmentHelper):
+         'templates/bar.html': "<div>Im an html jst template.  Go syntax highlighting!</div>"
+     }
+ 
+-    def setup(self):
+-        TempEnvironmentHelper.setup(self)
++    def setup_method(self):
++        TempEnvironmentHelper.setup_method(self)
+ 
+     def test_jst(self):
+         self.mkbundle('templates/*', filters='jst', output='out.js').build()
+@@ -1418,10 +1393,10 @@ class TestHandlebars(TempEnvironmentHelp
+             """
+     }
+ 
+-    def setup(self):
++    def setup_method(self):
+         if not find_executable('handlebars'):
+-            raise SkipTest()
+-        TempEnvironmentHelper.setup(self)
++            pytest.skip('no handlebars')
++        TempEnvironmentHelper.setup_method(self)
+ 
+     def test_basic(self):
+         self.mkbundle('foo.html', 'dir/bar.html',
+@@ -1455,12 +1430,9 @@ class TestJinja2JS(TempEnvironmentHelper
+         )
+     }
+ 
+-    def setup(self):
+-        try:
+-            import closure_soy
+-        except:
+-            raise SkipTest()
+-        TempEnvironmentHelper.setup(self)
++    def setup_method(self):
++        closure_soy = pytest.importorskip('closure_soy')
++        TempEnvironmentHelper.setup_method(self)
+ 
+     def test(self):
+         self.mkbundle('foo.soy', filters='closure_tmpl', output='out.js').build()
+@@ -1484,10 +1456,10 @@ class TestTypeScript(TempEnvironmentHelp
+         'foo.ts': """class X { z: number; }"""
+     }
+ 
+-    def setup(self):
++    def setup_method(self):
+         if not find_executable('tsc'):
+-            raise SkipTest()
+-        TempEnvironmentHelper.setup(self)
++            pytest.skip('no tsc')
++        TempEnvironmentHelper.setup_method(self)
+ 
+     def test(self):
+         self.mkbundle('foo.ts', filters='typescript', output='out.js').build()
+@@ -1515,10 +1487,10 @@ define("script/utils",[],function(){retu
+ define("script/app",["./utils"],function(e){e.debug("APP")});\
+ '''
+ 
+-    def setup(self):
++    def setup_method(self):
+         if not find_executable('r.js'):
+-            raise SkipTest('"r.js" executable not found')
+-        TempEnvironmentHelper.setup(self)
++            pytest.skip('"r.js" executable not found')
++        TempEnvironmentHelper.setup_method(self)
+         self.env.config['requirejs_config'] = self.path('requirejs.json')
+         self.env.config['requirejs_baseUrl'] = self.path('')
+ 
+@@ -1567,10 +1539,10 @@ class TestClosureStylesheets(TempEnviron
+         """
+     }
+ 
+-    def setup(self):
++    def setup_method(self):
+         if not 'CLOSURE_STYLESHEETS_PATH' in os.environ:
+-            raise SkipTest()
+-        TempEnvironmentHelper.setup(self)
++            pytest.skip('no CLOSURE_STYLESHEETS_PATH in env')
++        TempEnvironmentHelper.setup_method(self)
+ 
+     def test_compiler(self):
+         self.mkbundle('test.css', filters = 'closure_stylesheets_compiler', output = 'output.css').build()
+@@ -1595,8 +1567,8 @@ class TestAutoprefixer6Filter(TempEnviro
+             self.mkbundle('test.css', filters='autoprefixer6', output='output.css').build()
+         except FilterError as e:
+             # postcss is not installed, that's ok.
+-            if 'Program file not found' in e.message:
+-                raise SkipTest()
++            if 'Program file not found' in e.args[0]:
++                raise pytest.skip(e.args[0])
+             else:
+                 raise
+         out = self.get('output.css')
+@@ -1615,7 +1587,7 @@ class TestBabel(TempEnvironmentHelper):
+         except FilterError as e:
+             # babel is not installed, that's ok.
+             if 'Program file not found' in str(e):
+-                raise SkipTest()
++                pytest.skip(e.args[0])
+             else:
+                 raise
+         assert "var x = function x" in self.get('output.js')
+@@ -1626,8 +1598,8 @@ class TestBabel(TempEnvironmentHelper):
+             self.mkbundle('test.es6', filters='babel', output='output.js').build()
+         except FilterError as e:
+             # babel is not installed, that's ok.
+-            if 'Program file not found' in e.message:
+-                raise SkipTest()
++            if 'Program file not found' in e.args[0]:
++                raise pytest.skip(e.args[0])
+             else:
+                 raise
+         assert (self.get('output.js').strip() ==
+--- a/tests/test_loaders.py
++++ b/tests/test_loaders.py
+@@ -1,6 +1,8 @@
+ from __future__ import with_statement
+ import sys
+-from nose.tools import assert_raises, assert_true
++
++import pytest
++
+ import textwrap
+ from webassets.env import Environment
+ from webassets.filter import Filter, get_filter
+@@ -8,16 +10,12 @@ from webassets.utils import StringIO
+ from webassets.bundle import Bundle
+ from webassets.loaders import PythonLoader, YAMLLoader, LoaderError
+ from webassets.exceptions import EnvironmentError
+-from nose import SkipTest
+ 
+ 
+ class TestYAML(object):
+ 
+-    def setup(self):
+-        try:
+-            import yaml
+-        except ImportError:
+-            raise SkipTest()
++    def setup_method(self):
++        yaml = pytest.importorskip("yaml")
+ 
+     def loader(self, text, filename=None):
+         io = StringIO(textwrap.dedent(text))
+@@ -191,14 +189,11 @@ class TestPython(object):
+ 
+ class TestYAMLCustomFilters(TestYAML):
+ 
+-    def setup(self):
+-        super(TestYAMLCustomFilters, self).setup()
++    def setup_method(self):
++        super(TestYAMLCustomFilters, self).setup_method()
+ 
+         # If zope.dottedname is not installed, that's OK
+-        try:
+-            import zope.dottedname.resolve
+-        except ImportError:
+-            raise SkipTest()
++        pytest.importorskip("zope.dottedname.resolve")
+         # Save off the original get_import_resolver
+         self.original_resolver = YAMLLoader._get_import_resolver
+         # Make a mock
+@@ -231,7 +226,7 @@ class TestYAMLCustomFilters(TestYAML):
+         filters:
+             - webassets.filter.less.Less
+         """)
+-        assert_raises(EnvironmentError, loader.load_environment)
++        pytest.raises(EnvironmentError, loader.load_environment)
+         self.reset_importer()
+ 
+     def test_load_filter_module_throws_exc(self):
+@@ -241,7 +236,7 @@ class TestYAMLCustomFilters(TestYAML):
+         filters:
+             - webassets.filter.less
+         """)
+-        assert_raises(LoaderError, loader.load_environment)
++        pytest.raises(LoaderError, loader.load_environment)
+ 
+     def test_bad_filter_throws_exc(self):
+         """ Test that importing filters that don't exist throws an exception """
+@@ -249,7 +244,7 @@ class TestYAMLCustomFilters(TestYAML):
+         filters:
+             - webassets.fake.filter
+         """)
+-        assert_raises(LoaderError, loader.load_environment)
++        pytest.raises(LoaderError, loader.load_environment)
+ 
+     def test_load_filters(self):
+         """Check that filters can be loaded from YAML """
+@@ -257,11 +252,11 @@ class TestYAMLCustomFilters(TestYAML):
+         import webassets.filter
+         del webassets.filter._FILTERS['less']
+         # Verify that it was deleted
+-        assert_raises(ValueError, get_filter, 'less')
++        pytest.raises(ValueError, get_filter, 'less')
+         # Load it again from YAML
+         self.loader("""
+         filters:
+             - webassets.filter.less.Less
+         """).load_environment()
+         # Check that it's back
+-        assert_true(isinstance(get_filter('less'), Filter))
++        assert isinstance(get_filter('less'), Filter)
+--- a/tests/test_script.py
++++ b/tests/test_script.py
+@@ -8,14 +8,12 @@ from __future__ import with_statement
+ 
+ import logging
+ from threading import Thread, Event
+-from nose.tools import assert_raises
+-from nose import SkipTest
++
++import pytest
++
+ import time
+ 
+-try:
+-    import argparse
+-except ImportError:
+-    raise SkipTest()
++argparse = pytest.importorskip("argparse")
+ 
+ from webassets import Bundle
+ from webassets.exceptions import BuildError
+@@ -40,8 +38,8 @@ class MockBundle(Bundle):
+ 
+ class TestCLI(TempEnvironmentHelper):
+ 
+-    def setup(self):
+-        super(TestCLI, self).setup()
++    def setup_method(self):
++        super(TestCLI, self).setup_method()
+         self.assets_env = self.env
+         self.cmd_env = CommandLineEnvironment(self.assets_env, logging)
+ 
+@@ -96,7 +94,7 @@ class TestBuildCommand(TestCLI):
+ 
+         # Building to a non-existing path would fail, directories
+         # are not auto-created here.
+-        assert_raises(IOError, self.cmd_env.build,
++        pytest.raises(IOError, self.cmd_env.build,
+             output=[('a', self.path('new/custom'))])
+ 
+     def test_custom_directory(self):
+@@ -119,7 +117,7 @@ class TestBuildCommand(TestCLI):
+         b2 = MockBundle(output='b2')
+         b = MockBundle(b1, b2)
+         self.assets_env.add(b)
+-        assert_raises(CommandError, self.cmd_env.build,
++        pytest.raises(CommandError, self.cmd_env.build,
+             directory=self.path('some/path'))
+ 
+     def test_no_cache(self):
+@@ -212,8 +210,8 @@ class TestWatchCommand(TestWatchMixin, T
+ 
+     default_files = {'in': 'foo', 'out': 'bar'}
+ 
+-    def setup(self):
+-        super(TestWatchCommand, self).setup()
++    def setup_method(self):
++        super(TestWatchCommand, self).setup_method()
+ 
+         # Pay particular attention that the watch command works with auto_build
+         # disabled (since normally this implies no use of the updater, but
+@@ -313,15 +311,12 @@ class TestArgparseImpl(TestWatchMixin, T
+         the commandline, we fail with a clean error.
+         """
+         impl = GenericArgparseImplementation(env=None)
+-        assert_raises(CommandError, impl.run_with_argv, ['build'])
++        pytest.raises(CommandError, impl.run_with_argv, ['build'])
+ 
+     def test_watch_config_file(self):
+         """The watch command has an eye on the config file. This is an
+         extension to the base watch command."""
+-        try:
+-            import yaml
+-        except ImportError:
+-            raise SkipTest()
++        yaml = pytest.importorskip("yaml")
+ 
+         self.cmd_env = CommandLineEnvironment(self.env, logging)
+         self.cmd_env.commands['watch'] = \
+--- a/tests/test_updaters.py
++++ b/tests/test_updaters.py
+@@ -1,5 +1,7 @@
+ import os
+-from nose.tools import assert_raises
++
++import pytest
++
+ from webassets import Environment, Bundle
+ from webassets.exceptions import BundleError, BuildError
+ from webassets.updater import TimestampUpdater, BundleDefUpdater, SKIP_CACHE
+@@ -13,7 +15,7 @@ class TestBundleDefBaseUpdater(object):
+     changes.
+     """
+ 
+-    def setup(self):
++    def setup_method(self):
+         self.env = Environment(None, None)  # we won't create files
+         self.env.cache = MemoryCache(capacity=100)
+         self.bundle = Bundle(output="target")
+@@ -63,8 +65,8 @@ class TestTimestampUpdater(TempEnvironme
+ 
+     default_files = {'in': '', 'out': ''}
+ 
+-    def setup(self):
+-        TempEnvironmentHelper.setup(self)
++    def setup_method(self):
++        TempEnvironmentHelper.setup_method(self)
+ 
+         # Test the timestamp updater with cache disabled, so that the
+         # BundleDefUpdater() base class won't interfere.
+@@ -201,7 +203,7 @@ class TestTimestampUpdater(TempEnvironme
+         an error is raised.
+         """
+         bundle = self.mkbundle('in', output='out', depends=('file',))
+-        assert_raises(BundleError, self.updater.needs_rebuild, bundle, self.env)
++        pytest.raises(BundleError, self.updater.needs_rebuild, bundle, self.env)
+ 
+     def test_changed_file_after_nested_bundle(self):
+         """[Regression] Regression-test for a particular bug where the
+@@ -264,7 +266,7 @@ class TestTimestampUpdater(TempEnvironme
+         b = self.mkbundle('in', output='out-%(version)s')
+ 
+         # Confirm DummyVersion works as we expect it to.
+-        assert_raises(VersionIndeterminableError,
++        pytest.raises(VersionIndeterminableError,
+             self.env.versions.determine_version, b, self.env)
+ 
+         # Without a manifest, an error is raised. With no version being
+@@ -272,7 +274,7 @@ class TestTimestampUpdater(TempEnvironme
+         # We would have to blindly return YES, PROCEED WITH BUILD every
+         # time, thus not doing our job.
+         self.env.manifest = None
+-        assert_raises(BuildError, self.env.updater.needs_rebuild, b, self.env)
++        pytest.raises(BuildError, self.env.updater.needs_rebuild, b, self.env)
+ 
+         # As soon as a manifest is set, the updater will start to work,
+         # even if the manifest does not actually have a version. This is
+--- a/tests/test_version.py
++++ b/tests/test_version.py
+@@ -3,7 +3,8 @@
+ import hashlib
+ 
+ import os
+-from nose.tools import assert_raises
++
++import pytest
+ 
+ from webassets.env import Environment
+ from webassets.merge import MemoryHunk
+@@ -31,8 +32,8 @@ def test_builtin_manifest_accessors():
+ 
+ class TestTimestampVersion(TempEnvironmentHelper):
+ 
+-    def setup(self):
+-        super(TestTimestampVersion, self).setup()
++    def setup_method(self):
++        super(TestTimestampVersion, self).setup_method()
+         self.v = TimestampVersion()
+ 
+         # Create a bunch of files with known mtimes
+@@ -60,7 +61,7 @@ class TestTimestampVersion(TempEnvironme
+ 
+         # What if the output file does not exist? (this should not happen, right?)
+         self.unlink('out')
+-        assert_raises(OSError, self.v.determine_version,
++        pytest.raises(OSError, self.v.determine_version,
+             self.bundle, self.env, None)
+ 
+     def test_with_placeholder(self):
+@@ -71,7 +72,7 @@ class TestTimestampVersion(TempEnvironme
+ 
+         # If any source file is missing, the updater cannot do its job.
+         self.unlink('dep')
+-        assert_raises(VersionIndeterminableError, self.v.determine_version,
++        pytest.raises(VersionIndeterminableError, self.v.determine_version,
+             self.bundle, self.env, None)
+ 
+     def test_outputfile_timestamp(self):
+@@ -94,8 +95,8 @@ class TestTimestampVersion(TempEnvironme
+ 
+ class TestHashVersion(TempEnvironmentHelper):
+ 
+-    def setup(self):
+-        super(TestHashVersion, self).setup()
++    def setup_method(self):
++        super(TestHashVersion, self).setup_method()
+         self.v = HashVersion()
+ 
+         # Create a bunch of files with known content
+@@ -127,20 +128,20 @@ class TestHashVersion(TempEnvironmentHel
+ 
+         # What if the output file does not exist? (this should not happen, right?)
+         self.unlink('out')
+-        assert_raises(IOError, self.v.determine_version,
++        pytest.raises(IOError, self.v.determine_version,
+             self.bundle, self.env, None)
+ 
+     def test_with_placeholder(self):
+         # The HashVersion cannot function in this case.
+         self.bundle.output = 'out-%(version)s'
+-        assert_raises(VersionIndeterminableError, self.v.determine_version,
++        pytest.raises(VersionIndeterminableError, self.v.determine_version,
+             self.bundle, self.env, None)
+ 
+ 
+ class TestFileManifest(TempEnvironmentHelper):
+ 
+-    def setup(self):
+-        super(TestFileManifest, self).setup()
++    def setup_method(self):
++        super(TestFileManifest, self).setup_method()
+         self.bundle = self.mkbundle(output='foo')
+ 
+     def test_repl(self):
+@@ -176,8 +177,8 @@ class TestFileManifest(TempEnvironmentHe
+ 
+ class TestJsonManifest(TempEnvironmentHelper):
+ 
+-    def setup(self):
+-        super(TestJsonManifest, self).setup()
++    def setup_method(self):
++        super(TestJsonManifest, self).setup_method()
+         self.bundle = self.mkbundle(output='foo')
+ 
+     def test_repl(self):
+@@ -199,8 +200,8 @@ class TestJsonManifest(TempEnvironmentHe
+ 
+ class TestCacheManifest(TempEnvironmentHelper):
+ 
+-    def setup(self):
+-        super(TestCacheManifest, self).setup()
++    def setup_method(self):
++        super(TestCacheManifest, self).setup_method()
+         self.bundle = self.mkbundle(output='foo')
+ 
+     def test_repl(self):
+@@ -221,7 +222,7 @@ class TestCacheManifest(TempEnvironmentH
+ 
+         # If no cache is enabled, an error is raised
+         self.env.cache = False
+-        assert_raises(EnvironmentError,
++        pytest.raises(EnvironmentError,
+             manifest.remember, self.bundle, self.env, 'the-version')
+-        assert_raises(EnvironmentError,
++        pytest.raises(EnvironmentError,
+             manifest.query, self.bundle, self.env)

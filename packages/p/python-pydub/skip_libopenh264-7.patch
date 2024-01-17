@@ -1,0 +1,78 @@
+---
+ test/test.py |   16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
+
+--- a/test/test.py
++++ b/test/test.py
+@@ -796,6 +796,8 @@ class AudioSegmentTests(unittest.TestCas
+             AudioSegment.from_file(self.mp3_file_path).export(tmp_webm_file,
+                                                               format="webm")
+ 
++    @unittest.skipIf('NO_OPENH264' in os.environ,
++                         "libopenh264 not available")
+     @unittest.skipUnless('aac' in get_supported_decoders(),
+                          "Unsupported codecs")
+     def test_export_mp4_as_ogg(self):
+@@ -803,6 +805,8 @@ class AudioSegmentTests(unittest.TestCas
+             AudioSegment.from_file(self.mp4_file_path).export(tmp_ogg_file,
+                                                               format="ogg")
+ 
++    @unittest.skipIf('NO_OPENH264' in os.environ,
++                         "libopenh264 not available")
+     @unittest.skipUnless('aac' in get_supported_decoders(),
+                          "Unsupported codecs")
+     def test_export_mp4_as_mp3(self):
+@@ -810,6 +814,8 @@ class AudioSegmentTests(unittest.TestCas
+             AudioSegment.from_file(self.mp4_file_path).export(tmp_mp3_file,
+                                                               format="mp3")
+ 
++    @unittest.skipIf('NO_OPENH264' in os.environ,
++                         "libopenh264 not available")
+     @unittest.skipUnless('aac' in get_supported_decoders(),
+                          "Unsupported codecs")
+     def test_export_mp4_as_wav(self):
+@@ -817,6 +823,8 @@ class AudioSegmentTests(unittest.TestCas
+             AudioSegment.from_file(self.mp4_file_path).export(tmp_wav_file,
+                                                               format="mp3")
+ 
++    @unittest.skipIf('NO_OPENH264' in os.environ,
++                         "libopenh264 not available")
+     @unittest.skipUnless('aac' in get_supported_decoders(),
+                          "Unsupported codecs")
+     def test_export_mp4_as_mp3_with_tags(self):
+@@ -830,6 +838,8 @@ class AudioSegmentTests(unittest.TestCas
+                                                               format="mp3",
+                                                               tags=tags_dict)
+ 
++    @unittest.skipIf('NO_OPENH264' in os.environ,
++                         "libopenh264 not available")
+     @unittest.skipUnless('aac' in get_supported_decoders(),
+                          "Unsupported codecs")
+     def test_export_mp4_as_mp3_with_tags_raises_exception_when_tags_are_not_a_dictionary(self):
+@@ -840,6 +850,8 @@ class AudioSegmentTests(unittest.TestCas
+                 format="mp3", tags=json)
+             self.assertRaises(InvalidTag, func)
+ 
++    @unittest.skipIf('NO_OPENH264' in os.environ,
++                         "libopenh264 not available")
+     @unittest.skipUnless('aac' in get_supported_decoders(),
+                          "Unsupported codecs")
+     def test_export_mp4_as_mp3_with_tags_raises_exception_when_id3version_is_wrong(self):
+@@ -854,6 +866,8 @@ class AudioSegmentTests(unittest.TestCas
+             )
+             self.assertRaises(InvalidID3TagVersion, func)
+ 
++    @unittest.skipIf('NO_OPENH264' in os.environ,
++                         "libopenh264 not available")
+     @unittest.skipUnless('aac' in get_supported_decoders(),
+                          "Unsupported codecs")
+     def test_export_mp3_with_tags(self):
+@@ -973,6 +987,8 @@ class AudioSegmentTests(unittest.TestCas
+         # average volume should be reduced
+         self.assertTrue(compressed.rms < self.seg1.rms)
+ 
++    @unittest.skipIf('NO_OPENH264' in os.environ,
++                         "libopenh264 not available")
+     @unittest.skipUnless('aac' in get_supported_decoders(),
+                          "Unsupported codecs")
+     def test_exporting_to_ogg_uses_default_codec_when_codec_param_is_none(self):
