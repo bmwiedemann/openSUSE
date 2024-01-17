@@ -1,7 +1,7 @@
 #
 # spec file for package sigil
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sigil_doc_version 2022.05.17
 Name:           sigil
-Version:        2.0.1
+Version:        2.0.2
 Release:        0
 Summary:        WYSIWYG Ebook Editor
 License:        GPL-3.0-only
@@ -34,15 +34,20 @@ BuildRequires:  boost-devel
 BuildRequires:  cmake >= 3.0
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
+%if 0%{?suse_version} <= 1600
+BuildRequires:  gcc12
+BuildRequires:  gcc12-c++
+%else
+BuildRequires:  gcc
 BuildRequires:  gcc-c++
-BuildRequires:  libqt5-qtbase-devel >= 5.12.0
-BuildRequires:  libqt5-qtlocation-devel >= 5.12.0
+%endif
 BuildRequires:  libstdc++-devel
 BuildRequires:  libxerces-c-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  libxslt-devel
 BuildRequires:  make
 BuildRequires:  pkgconfig
+BuildRequires:  qt6-base-devel >= 6.2.0
 # not need for build, only check for exists
 # upstream use for python3-Pillow 7.1.2
 BuildRequires:  python3-Pillow >= 5.0.0
@@ -77,17 +82,17 @@ BuildRequires:  python3-tk
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
 BuildRequires:  zlib-devel
-BuildRequires:  pkgconfig(Qt5Concurrent)
-BuildRequires:  pkgconfig(Qt5Multimedia)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5PrintSupport)
-BuildRequires:  pkgconfig(Qt5Svg)
-BuildRequires:  pkgconfig(Qt5UiTools)
-BuildRequires:  pkgconfig(Qt5WebChannel)
-BuildRequires:  pkgconfig(Qt5WebEngine)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5Xml)
-BuildRequires:  pkgconfig(Qt5XmlPatterns)
+BuildRequires:  pkgconfig(Qt6Concurrent)
+BuildRequires:  pkgconfig(Qt6Core5Compat)
+BuildRequires:  pkgconfig(Qt6Linguist)
+BuildRequires:  pkgconfig(Qt6Network)
+BuildRequires:  pkgconfig(Qt6PrintSupport)
+BuildRequires:  pkgconfig(Qt6Svg)
+BuildRequires:  pkgconfig(Qt6UiTools)
+BuildRequires:  pkgconfig(Qt6WebEngineCore)
+BuildRequires:  pkgconfig(Qt6WebEngineWidgets)
+BuildRequires:  pkgconfig(Qt6Widgets)
+BuildRequires:  pkgconfig(Qt6Xml)
 BuildRequires:  pkgconfig(hunspell)
 BuildRequires:  pkgconfig(libpcre)
 BuildRequires:  pkgconfig(libusb-1.0)
@@ -139,6 +144,10 @@ find . -type f -exec sed -i -e 's|#!\/usr\/bin\/env python3|#!\/usr\/bin\/python
 find . -type f -exec sed -i -e 's|#!\/usr\/bin\/env python|#!\/usr\/bin\/python3|g' {} +
 
 %build
+%if 0%{?suse_version} <= 1600
+export CC=gcc-12
+export CXX=g++-12
+%endif
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 export CXXFLAGS="$CFLAGS"
 
