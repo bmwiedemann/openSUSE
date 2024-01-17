@@ -1,7 +1,7 @@
 #
 # spec file for package python-fuse
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,18 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-fuse
-Version:        1.0.5
+Version:        1.0.7
 Release:        0
 Summary:        Python bindings for FUSE
 License:        LGPL-2.1-only
-Group:          Development/Libraries/Python
 URL:            https://github.com/libfuse/python-fuse
 Source:         https://github.com/libfuse/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#libfuse/python-fuse#58
+Patch0:         no-more-distutils.patch
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  fuse-devel
 BuildRequires:  pkgconfig
@@ -36,14 +40,14 @@ BuildRequires:  python-rpm-macros
 Python bindings for FUSE (User space File System)
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -52,7 +56,9 @@ export CFLAGS="%{optflags}"
 %files %{python_files}
 %license COPYING
 %doc README.* FAQ AUTHORS
-%{python_sitearch}/fuse*
-%pycache_only %{python_sitearch}/__pycache__
+%{python_sitearch}/fuse.py
+%pycache_only %{python_sitearch}/__pycache__/fuse*.py*
+%{python_sitearch}/fuseparts
+%{python_sitearch}/fuse_python-%{version}.dist-info
 
 %changelog
