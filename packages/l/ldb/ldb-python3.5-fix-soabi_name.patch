@@ -1,0 +1,13 @@
+Index: ldb-1.1.26/buildtools/wafsamba/wafsamba.py
+===================================================================
+--- ldb-1.1.26.orig/buildtools/wafsamba/wafsamba.py
++++ ldb-1.1.26/buildtools/wafsamba/wafsamba.py
+@@ -115,7 +115,7 @@ def SAMBA_LIBRARY(bld, libname, source,
+                   ldflags='',
+                   external_library=False,
+                   realname=None,
+-                  keep_underscore=False,
++                  keep_underscore=True,
+                   autoproto=None,
+                   autoproto_extra_source='',
+                   group='main',

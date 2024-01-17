@@ -1,0 +1,114 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0c4237c43933d43604347e8157302370</srcmd5>
+    <version>1.3.0</version>
+    <time>1576014253</time>
+    <user>dimstar_suse</user>
+    <comment>SLE-7686</comment>
+    <requestid>755536</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>bc64d6fb144ef17957f64ea5da6fe33a</srcmd5>
+    <version>1.3.3rc1</version>
+    <time>1589403396</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>805246</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>accc15d25bde7a35125cb991d6798ffc</srcmd5>
+    <version>1.3.4</version>
+    <time>1596565418</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.3.4
+  * Fix a bug caused by bumping to Mailman API 3.1 in version 1.3.3 which
+    resulted in 404 errors for some users. (forwarded request 824273 from hellcp)</comment>
+    <requestid>824276</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0c6fd99c975400c48b0f98b854ab8873</srcmd5>
+    <version>1.3.5</version>
+    <time>1612781242</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>869039</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>227f11d968d8e29edcbe617a42ec745d</srcmd5>
+    <version>1.3.5</version>
+    <time>1620653896</time>
+    <user>dimstar_suse</user>
+    <comment>- restrict to primary python3 flavor due to mailman (forwarded request 890327 from bnavigator)</comment>
+    <requestid>890488</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>52d0f3fabab924cc1bd7f5197d63567b</srcmd5>
+    <version>1.3.7</version>
+    <time>1637372336</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.3.7
+  * Set the minimum required version of mailmanclient in setup.py.
+</comment>
+    <requestid>932306</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>829e27a14f2c19f5209b4e0f3aca0ae2</srcmd5>
+    <version>1.3.7</version>
+    <time>1640690798</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>942911</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>eed9c62f35d09a4fdf7319ad5368aeff</srcmd5>
+    <version>1.3.7</version>
+    <time>1652188324</time>
+    <user>dimstar_suse</user>
+    <comment>- Clean up the SPEC file.
+- python-mock is not required for build
+</comment>
+    <requestid>975951</requestid>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>d1032dde1e14733919d7a7dc0a2d3094</srcmd5>
+    <version>1.3.7</version>
+    <time>1659034662</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>989284</requestid>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>b3c69548829d361efe3326680f4c0482</srcmd5>
+    <version>1.3.7</version>
+    <time>1665591837</time>
+    <user>dimstar_suse</user>
+    <comment>- Add dj41.patch to make it compatible with django 4.1 based on
+  https://gitlab.com/mailman/django-mailman3/-/merge_requests/170
+</comment>
+    <requestid>1009241</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8b095b3b23c7334df9e2bc424047b436</srcmd5>
+    <version>1.3.8</version>
+    <time>1669129844</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1037264</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e5c1c32f5226be86bb8ca3017993b415</srcmd5>
+    <version>1.3.9</version>
+    <time>1688147923</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1096019</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>dae80c66fbab7e67d9bca664791d5cbb</srcmd5>
+    <version>1.3.11</version>
+    <time>1699301627</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1123516</requestid>
+  </revision>
+</revisionlist>

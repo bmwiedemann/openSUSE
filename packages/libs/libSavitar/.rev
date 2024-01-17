@@ -1,0 +1,121 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a24fe0c9cd9875c8ab18658f34428ae3</srcmd5>
+    <version>3.4.1</version>
+    <time>1533887336</time>
+    <user>dimstar_suse</user>
+    <comment>For cura.
+
+&gt; %cmake already handles LIB_SUFFIX so you don't have to.
+done
+
+&gt; Also please use full source URLs, see https://en.opensuse.org/SourceUrls
+there is no online file with xz compression, so the url is in the _service file.</comment>
+    <requestid>628089</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b4af462c808e04c07ed011363cf4d761</srcmd5>
+    <version>3.5.1</version>
+    <time>1540447956</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.5.1
+  * version change only
+
+- Rename %soname to %sover to better reflect its use.
+- Fix RPM groups for Factory.</comment>
+    <requestid>642561</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6535e4a66bbca4e0aaae7805aae0c841</srcmd5>
+    <version>3.6.0</version>
+    <time>1551113625</time>
+    <user>coolo</user>
+    <comment>- update to version 3.6.0
+  * version change only</comment>
+    <requestid>678192</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>00ebb193fbfcb941900c342bf5db6441</srcmd5>
+    <version>4.1.0</version>
+    <time>1562843601</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.1.0
+  * https://ultimaker.com/en/products/ultimaker-cura-software/release-notes
+- enable test cases</comment>
+    <requestid>712875</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7f1617e6b95fc9bb40d2088a334d96e8</srcmd5>
+    <version>4.4.1</version>
+    <time>1578069405</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.4.1
+  * mostly internal changes
+</comment>
+    <requestid>760480</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>bfd8dbf84e41650a41b997c7a296d4c2</srcmd5>
+    <version>4.6.1</version>
+    <time>1591559754</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>812284</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d6e3c9d60fa3f246150b905702159ab9</srcmd5>
+    <version>4.8.0</version>
+    <time>1605124064</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>847707</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>5e2b502e61a988fbbc78fbd364556b2f</srcmd5>
+    <version>4.8.0</version>
+    <time>1606142829</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>849976</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>92b25a3fb8d56f82c5cf9b7a5c67c74c</srcmd5>
+    <version>4.8.0</version>
+    <time>1608640544</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>853111</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a59eba9edc3661b14761e5937863bb4e</srcmd5>
+    <version>4.9.0</version>
+    <time>1619729170</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>889138</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>201407932fed9fc5a33c2326e7f9c329</srcmd5>
+    <version>4.13.0</version>
+    <time>1643666201</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>949660</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>64e478e0f031901e38941035825fd61b</srcmd5>
+    <version>4.13.1</version>
+    <time>1644435583</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>952911</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>8c7ce44e3737999c030dde41d485c494</srcmd5>
+    <version>4.13.1</version>
+    <time>1646848078</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>960385</requestid>
+  </revision>
+</revisionlist>

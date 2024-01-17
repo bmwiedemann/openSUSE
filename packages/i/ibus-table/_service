@@ -1,0 +1,11 @@
+<services>
+  <service mode="manual" name="obs_scm">
+    <param name="url">https://github.com/mike-fabian/ibus-table</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="scm">git</param>
+    <param name="revision">d016b6fa8e357c7ae531aa99afa25f617f1e0d89</param>
+    <param name="versionrewrite-pattern">Release (\d+\.\d+\.\d+)</param>
+    <param name="versionrewrite-replacement">\1</param>
+  </service>
+  <service mode="manual" name="set_version"/>
+</services>

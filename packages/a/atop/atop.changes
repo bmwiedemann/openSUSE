@@ -1,0 +1,590 @@
+-------------------------------------------------------------------
+Fri Jan  5 07:39:27 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.10.0:
+  * Additional memory statistics on system level: amount of available
+    memory, amount of memory used for Transparant Huge Pages, amount
+    of memory used by two categories of static huge pages (usually
+    2MiB and 1GiB), and the number of pages transferred to/from zswap.
+  * Additional counters for the number of idle threads on system
+    level and process level.
+  * Refined view of memory bar graph, including free static huge pages.
+  * Generic way to determine the container id or pod name for
+    containerized processes.
+  * Support for a BPF-based alternative[1] for the netatop kernel
+    module to gather network statistics per process/thread.
+  * Use the -z flag followed by a regex to prepend matching environment
+    variables to the full command line that is shown per process (with key 'c').
+  * Various bugfixes (like memory leak when switching to bar graph mode)
+    and minor improvements.
+  * Bugfix: failing malloc while starting atopsar (unprivileged) for a live measurement.
+  * The program atophide can be used to make an extraction from an input
+    raw log to an output raw log, optionally specifying a begin time and/or an
+    end time. The output raw log can be anonymized, i.e. the hostname
+    will be replaced, command names of non-standard commands will be
+    replaced, all command arguments will be wiped, logical volume names
+    will be replaced and NFS mounted volume names will be replaced.
+  * The format of the raw file is incompatible with previous versions.
+    Raw files from previous versions can be converted to the new layout
+    with the atopconvert command.
+
+-------------------------------------------------------------------
+Sat May 13 11:19:51 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.9.0:
+  * Avoid compiler warning by limiting PSI average
+  * Install cleanup function to avoid termination of parent process
+  * add man for PAG steal
+  * Oomkills event should not remain orange after boot values
+  * Clarified atop man page
+  * Closing bracket missing in synopsis
+  * Add highlight concerning bar graph mode
+  * Introduce bar graph mode Besides all detailed information that
+    is supplied by atop on system and process level, a (character-based)
+    bar graph can be shown about the utilization of the most critical system resources
+  * Freeing ethlink should depend of ifdef
+  * Added reset to indicate shadow file to be closed
+  * fix atopacctd.c: failed to start atopacct.service
+  * acctatop: reacquire acctfd to collect nprocexit for some bad cases
+  * Calibrate nprocexit to avoid atop coredumps unexpectedly
+  * json.c: fix avque counters output
+  * Resolve compiler warnings from latest versions of GCC
+  * Added versdate.h to make clean target
+  * Revert "Added versdate.h to make clean target"
+  * Added versdate.h to make clean target
+  * fix calculation for scan and steal
+  * only call str.decode if nvml returned bytes
+  * Add exit epoch to parseable output PRG (solves issue #242)
+  * Minor correction in man page for NVCSW/NIVCSW
+  * Context switches (voluntary and involuntary) on process level incorrect
+  * Various modifications releated to (non)voluntary context switches
+  * Add nvcsw and nivcsw for each process
+  * ifprop.c: Fix possible memory leak
+  * Code cleanup and prototype additions
+  * Consistency check on number of threads (solves issue #232)
+  * atop-rotate.service: use restart instead of try-restart
+  * Add link to atophttpd
+- Update patches:
+  * atop-makefile.patch
+  * harden_atop-rotate.service.patch
+
+-------------------------------------------------------------------
+Sat Jan  7 16:56:47 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.8.1:
+  * Correct NUMA conversion in logfiles from version 2.7 to 2.8
+  * Avoid buffer overflows during value formatting
+  * Solve compiler warnings about format-truncation
+
+-------------------------------------------------------------------
+Mon Jan  2 12:55:55 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.8.0:
+  * Rename AUTHOR in spec file
+  * Adapt atopconvert for conversion to version 2.8
+  * Atopacct.service verifies if psacct/acct is active (#227)
+    To avoid that the atopacctd daemon and the (ps)acct service both
+    try to activate process accounting continuously, the atopacct.service
+    refuses to start when the (ps)acct service is already active.
+  * Fix LLC output for Json
+  * Solve format-overflow/maybe-uninitialized warnings
+  * Reshuffle counters to ease raw file conversion
+  * Recalculate average queue in parseable output
+  * Corrected the order of inflight/avque
+  * Add inflight and avque counters to parseable data
+  * Fix BDELAY in priphead call to make_proc_prints for schedprocs
+  * Correct the array index used for previous samples per-container CPU values
+  * Reinstate dropped printing of avio msec values between 99.95 and 9995
+  * photosyst: add ceph rbd disk display
+  * photosys.c: correct the numa number for NUM and NUC
+  * Timeout when setting semaphore in atop (#207)
+  * Current CPU set to -1 for terminated process (#201)
+    When a process has terminated (status 'E') the current CPU will be
+    set to -1 (means: unknown) in the parsable output with label PRC.
+  * Typo corrections and correction in man page
+  * Introduce JSON output by '-J xxx'
+  * Add missing counter iInCsumErrors to ICMP counters
+  * supplement inflight I/O requests
+  * Man page: clarify elapsed time in PRG parseable output
+  * Exponent calulation for high counter might exceed column width
+    When a column width was defined of e.g. 4 positions, the value
+    99999 was shown as 100e3 instead of 99e3 (upward rounding caused
+    an extra position).
+  * PID selection can not be undone for same interval When pressing
+    'I' to select particular PIDs and pressing 'I' again within the
+    same interval to deselect by pressing the Enter-key, the deselection
+    is ignored. Solved by reinitializing the input buffer.
+  * Split the MEM line into two lines and add pagetable size Since it was
+    hardly possible to view the values in the MEM line (too many), the memory
+    utilization has been spread over two lines. The amount of memory used
+    for page tables has been added.
+  * Memory usage for TCP/UDP sockets
+  * Add Documentation key to atop-rotate.service/.timer (#206)
+  * Correct typos in man pages (#205)
+  * Add cgroup support (#127) The current cgroup is registered
+    for systems that are based on cgroup v2. Apart from the group name also
+    relevant controller information is maintained, like the cpu.max and the
+    memory.max (for the group itself and the most restrictive value in the
+    parent groups).
+  * Fix compiling error with -DHTTPSTATS
+  * supplement tcpsock and udpsock memory consumption
+  * Store PID width in header of raw log Register the number of positions
+    for PID and TID numbers on the measured system in the raw log. In this
+    way, the viewing of the raw log on another system will use the proper
+    column width for PID/TID.
+  * showhdrline: fix OOB access when COLS is too small
+  * Fix disk busy in man page
+  * Add block I/O delay to processes/threads
+  * Move run_in_guest into various.c
+  * Minor changes to text, column priority and coloring
+  * Support pgin & pgout
+  * Correction on calibration (one too many)
+  * Detect vmmemctl at two locations
+  * Use dup2 instead of close+dup
+  * Fix compiling warning
+  * Calibrate the value of nthr for each process
+  * photosyst.c: fixed path for vmmemctl
+  * Fix typo in man page
+  * Added link
+  * Only print current CPU frequency when supported by CPU architecture
+  * Lower priority of column 'numnode' in MEM line
+  * Support per-second counter for LLC
+  * Reformat status line info in initial screen
+  * Add LLC in atop man page
+  * Support LLC collection
+  * Add OpenRC init scripts (atop, atopacct)
+  * Support LLC collection
+- Refresh patches:
+  * harden_atop-rotate.service.patch
+  * harden_atopacct.service.patch
+
+-------------------------------------------------------------------
+Mon Feb 28 23:24:00 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.7.1:
+  * Correct disk stats in atopsar (#182)
+  * Explicit type definition in atop.service (#180)
+
+-------------------------------------------------------------------
+Fri Jan  7 14:16:10 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.7.0:
+  *  Describe (un)restricted view in first screen
+  *  Cosmetic change
+  *  Determine (un)restricted view by verifying suid instead of euid.
+  *  Do not ignore unknown network interface
+  *  Parseable output: optionally exchange spaces in command
+  *  No setuid by default
+  *  Correct conversion to 2.7 raw files
+  *  Corrected type
+  *  Only show per-node NUMA stats when more than 1 node
+  *  Prepare man pages for version 2.7
+  *  Prepare atopconvert for version 2.7
+  *  Detect logrotation for process accounting with psacct/acct
+  *  Speed and duplex mode not correctly filled for interface
+  *  Bug solution related to discards
+  *  Support discard counter for disks and skip unused disks
+  *  ifprop.c: fix ioctl parameter after handshaking with kernel
+  *  Show gigabits/sec instead of megabits/sec for Infiniband #131
+  *  CVE: use execvp with a specified path to avoid PATH hijacking
+  *  Correct memory busy logic in atopsar
+  *  Add parseable output for per-node NUMA counters
+  *  Additions to NUMA counters Table overflow checks
+  *  Gather and show per numa cpu related statistics
+  *  Gather and show per numa memory related statistics
+  *  Correction in handling of zswap and ksm counters
+  *  Support containers created by podman
+  *  Cleanup old messages
+  *  Do not change owner to root in Makefile (#76)
+  *  Support process accounting log /var/log/account/pacct (#138)
+  *  Polish do_perfevents when atop built with NOPERFEVENT
+  *  Do not use doconvert funtion to validate counter (#160)
+  *  New counter for number of NUMA pages migrated
+  *  Modify field order and priority of paging counters
+  *  Small text modification for migrated counter
+  *  Avoid non-initialized prestat by introducing extra pointer
+  *  Function 'calcdiff' (deviate.c) used uninitialized prestat struct
+  *  Reserver space for future counters.
+  *  Clean up ignored files
+  *  Variable number of positions for sortitem
+  *  Adapt man page of atop for state selection (add state 'I').
+  *  Allow thread state 'I' with state selection (key 'Q')
+  *  Count idle threads as non-interruptible threads
+  *  Uninitialized index might cause segmentation fault.
+  *  Support NVMe multipath disk statistics
+  *  Support page migration counter
+  *  photosyst.c: fix build on musl
+  *  Use of struct ethtool_link_settings should be conditional
+  *  Cosmetic change (source code layout)
+  *  Various bug fixes and in general add 'thread' to all messages
+  *  Properly define if interface is virtual or physical
+  *  Add license info to various include files (solves issue #144)
+  *  HTTP statistics modified from -h flag to -o flag (#152)
+  *  Possible buffer overflow with huge number of seconds Number
+     of seconds will be limited to 5 positions.
+  *  Possible buffer overflow with average disk I/O
+  *  Allow process selection based on specific process states.
+  *  Correct definition of environment variable LOGOPTS
+  *  Switch to using curses vw_printw as vwprintw is deprecated
+  *  Support multiple counters 'allocstall_' in /proc/vmstat.
+  *  Avoid integer overflow when calculating PSI percentages.
+  *  Suppress irrelevant counters (solves issue #148)
+  *  Add the number of OOM kills to the -s report
+  *  Record the number of process stalls to run memory compaction
+  *  Make clean removes atopsar now (issue 145)
+  *  Add counter for the number of OOM kills to the PAG line
+  *  Add counters for zswap and KSM.
+  *  ifprop.c: fix build with kernel < 4.6
+  *  Fix initifprop() when obtaining properties of all interfaces
+  *  Fixed rounding problems in the average-per-second mode.
+- Refresh atop-makefile.patch
+- Refresh harden_atop.service.patch
+- Call make install instead of make systemdinstall
+  Default is systemd now
+
+-------------------------------------------------------------------
+Wed Aug 11 08:40:14 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s). Added patch(es):
+  * harden_atop-rotate.service.patch
+  *harden_atop.service.patch
+  *harden_atopacct.service.patch
+  *harden_atopgpu.service.patch
+
+-------------------------------------------------------------------
+Tue Apr 13 21:33:30 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.6.0
+  * Sort threads within process.
+  * Individual threads within a process (key 'y') are shown in the
+    order of their TID. With the additional key 'Y' threads within
+    a process are sorted based on the current sort criterium.
+  * Show the WCHAN per thread.
+  * With the key 'W' is active, the wait channel is determined per
+    thread and shown with the scheduling information (key 's').
+  * Show runqueue delay per thread/process.
+  * For every process (cumulated) and every thread the time spent
+    waiting on the runqueue is shown as value 'RDELAY'.
+  * Show other modified/new metrics:
+    + PSI pressure during interval time is shown
+    + Counter 'avio' (average I/O time) for fast disks in
+      microseconds or nanoseconds
+    + Counter 'zfarc' showing the current size of the ARC (cache)
+      for ZFSonlinux
+    + Counter 'swcac' showing the current size of the swap cache
+    + Counter LOCKSZ showing the virtual locked memory size
+  * Avoid crash with very high load average values.
+  * Fix errors in reading InfiniBand states.
+  * Support of rawlog files spanning multiple days.
+  * The time specification to define the begin time (-b flag)
+    and end time (-e flag) of both atop and atopsar is
+    [YYYYMMDD]hhmm now
+  * This also applies to the branch key ('b') when using atop
+    interactively.
+  * Support reading rawlog from a pipe.
+  * Rawlog data can be read from a pipe by atop and atopsar with
+    the option '-r -'. In this way, concatenated rawlog data from
+    the command atopcat can be directly processed.
+  * New program atopcat, the program atopcat concatenates rawlog
+    files and writes this data to stdout. The output can be
+    redirected to a new rawlog file or to atop/atopsar directly
+    via a pipe (see option '-r -' of these commands).
+    In this way e.g. weekly or monthly reports or extractions
+    can be created.
+
+-------------------------------------------------------------------
+Fri Jul 31 20:26:06 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 2.5.0 
+  Modifications for atop:
+  * Avoid using perf counters in VM
+    New option 'perfevents' in the atoprc file to define if the Instructions
+	Per Cycle (IPC) should be retrieved via the 'perf' counters. Specify
+	value 'auto' (default), 'enable' or 'disable'. In case of 'auto', the
+	Instructions Per Cycle counter will not be retrieved on VMs due to the
+	overhead of reading this counter in a guest.
+  * Improve daily rotation of logfile for systemd-based systems.
+    Exchange the files /etc/cron.d/atop, /etc/logrotate.d/psaccs_atop,
+	/etc/logrotate.d/psaccu_atop, /usr/share/atop/atop.daily,
+	/var/log/atop/dummy_after and /var/log/atop/dummy_before by
+	atop-rotate.service and atop-rotate.timer.
+  * Bug fixes:
+    Correction of PSI value 'io full'.
+    Use smaps_rollup (if present) instead of smaps for better performance.
+    Use writev instead of 3 single writes to avoid logfile corruption.
+    Modified handling of error messages (remain visible after window is
+	closed).
+    Correct CID for containers created by Kubernetes.
+    Allow reading a logfile via a named pipe (non-seekable).
+  Modifications for atopconvert:
+  * Show version of input file (even if only one parameter specified).
+  General:
+  * The format of the raw file is compatible with version 2.4.
+- Run spec-cleaner
+- Remove requires for cron and logrotate now that there is systemd service
+  and timers handling logrotation
+- Remove Requires(post) for permissions since atop does not use cron files anymore
+- Refresh patch:
+  * atop-makefile.patch
+- Add atop defaults in /etc/default/atop
+
+-------------------------------------------------------------------
+Tue Aug 20 11:32:08 CEST 2019 - kukuk@suse.de
+
+- Package /etc/cron.d, as this is now part of cron which we don't
+  want to require
+
+-------------------------------------------------------------------
+Sun Feb 17 20:14:07 UTC 2019 - Matthias Eliasson <matthias.eliasson@gmail.com>
+
+- Update to 2.4.0
+  * Modifications for atop:
+    + Support for Nvidia GPU statistics:
+      A separate daemon atopgpud has been developed to maintain statistics of
+	  Nvidia GPUs in the system. When this daemon is running, atop will
+	  connect to this daemon and will get/show the GPU statistics with every
+	  interval on system level and process level (key 'e').
+      The atopgpud daemon will only be active when it is explicitly enabled 
+	  (see man pages for more info).
+    + Support for Infiniband statistics:
+      Counters showing the bandwidth utilization of Infiniband ports
+	  (system level) are added.
+    + Support for Pressure Stall Information (PSI):
+      The average pressure percentages of CPU, memory and I/O are reported
+	  for the last 10, 60 and 300 seconds. These percentage are provided from
+	  kernel 4.20 onwards.
+    + Faster startup of atop:
+      The allocation strategy for processes and threads has been improved,
+	  which will specifically be noticable on larger systems with lots of
+	  multi-threaded processes.
+    + Configurable options for atop running in the background:
+      Default options of script atop.daily can be overruled by
+	  /etc/default/atop file.
+    + CPU Instructions Per Cycle (IPC):
+      For every CPU, the average number of instructions per CPU cycle is
+	  shown as 'ipc'. Besides, a column is shown with the number of cycles
+	  executed per second as `cycl` (shown as effective Hz frequency).
+    + Various fixes:
+      Various NFS counters corrected.
+      Recognition of nvme and nbd disks.
+      Recognition of DEADLINE scheduling policy.
+      Proper handling of memory locking (improper handling caused malloc
+	  failures in previous versions).
+  * New program atopconvert:
+    + This program can be used to convert the layout of older raw files to
+	  newer raw files. Raw files from atop 2.0 onwards can be converted to
+	  the newest version (now: 2.4).
+  * Modifications for atopsar:
+    + Reports can be printed now about the utilization of GPUs and Infiniband,
+	  and about the PSI percentages.
+  * General:
+    + The format of the raw file is incompatible with earlier versions.
+	  However, old raw files can be converted now by the program atopconvert
+	  to be read or extended by newer atop versions.
+- Clean with spec-cleaner
+- Refresh atop-makefile.patch
+
+-------------------------------------------------------------------
+Mon Jun 25 09:49:45 UTC 2018 - rbrown@suse.com
+
+- Correct copyright attribution 
+
+-------------------------------------------------------------------
+Sun Jun 10 11:22:35 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to 2.3:
+  * Modifications for atop:
+    + Support for Docker containers.
+    + Improved gathering of process data.
+    + Improved memory figures for processes.
+    + Variable width for PID column.
+    + Better handling when started via sudo (not entering stopped
+    + state).
+    + Handling of disk drives starting with 'xvd...'.
+  * Modifications for atopacct:
+    + Better error handling of Netlink interface.
+    + Immediate reaction when receiving SIGTERM signal.
+    + Bypass for kernel bug 190711 (Netlink interface not
+      available).
+    + Bypass for kernel bug 190271 (process accounting does not
+      always start).
+  * Modifications for atopsar:
+    + Top-3 of resource consuming processes only shows active
+      processes now.
+  * General:
+    + The format of the raw file is upward compatible with version
+      2.2-3.
+- Clean with spec-cleaner.
+
+-------------------------------------------------------------------
+Tue Nov 22 14:11:06 UTC 2016 - coolo@suse.com
+
+- update to 2.2:
+     * Modifications for atop:
+         a. New keys for process selection:
+            '/' to select processes containing a particular search string in the command line arguments.
+            'I' to select processes running with particular PIDs.
+         b. New counters for NFS activity:
+            On system level, counters are maintained about NFS traffic. Three new labels are introduced for this purpose:
+            'NFS' for NFS server statistics (overall).
+            'NFC' for NFS client statistics (overall).
+            'NFM' for NFS client statistics per mounted NFS filesystem (so multiple lines possible).
+         c. New counters for OpenVZ containers:
+            CPU consumption and memory occupation are shown per container on system level (label 'CON').
+            Container ID and virtual PID are shown on process level (when using key 'v' or 's').
+         d. Bug fixes:
+            The maximum transfer rate larger than 1 Gbit for ethernet interfaces is now correctly shown.
+            The maximum transfer rate for wifi connections is now shown.
+            For interfaces in general, the maximum transfer rate is shown as a separate column ('sp').
+            
+            Counters about virtual disk type 'xvd[a-z]' are shown.
+            
+            Several minor bugs have been solved.
+     * Modifications for atopacct:
+         a. Avoid that process accounting is reactivated too frequently (and unnecessary).
+     * Modifications for atopsar:
+         a. Add flags for NFS traffic ('-n' for NFS mounts, '-j' for overall NFS 
+            client activity and '-J' for overall NFS server activity).
+     * General:
+         a. Support for systemd-based distributions has been added.
+         b. The format of the raw file is incompatible with earlier versions. However, 
+            the earlier version of atop is automatically activated when accessing an 
+            older raw file.
+- cleanup spec file - remove support for < 12.1
+
+-------------------------------------------------------------------
+Sat Oct 18 12:40:40 UTC 2014 - pascal.bleser@opensuse.org
+
+- update to 2.1:
+  * OpenVZ support: virtual environment identifier per process (envID)
+  * Bug solution: when the screen-width is larger than the total number of
+    columns to be printed, empty columns are added, however one column too many
+  * Removed useless empty column for memory statistics
+  * Introduce the 'G' key to suppress showing/accumulating exited processes
+    in the output
+  * Support CPU frequencies for systems with Intel P-state driver
+  * Introduction of new daemon atopacctd. This daemon switches on process
+    accounting and transfers every accounting record to an accounting shadow
+    file. The source accounting file will regularly be truncated, while the
+    shadow files are written with a limited size in a queued way. Non-used
+    shadow files are deleted regularly.
+  * Bug-solution: segmentation fault when one of the process names in the
+    system contains a newline
+  * Introduce configurable colors: in the atoprc file, colors can be defined
+    for information messages (default green), threads (default yellow), almost
+    critical resources (default cyan) and critical resources (default red).
+  * Limit the names of network interfaces to six characters max
+  * Introduction of proportional memory size (PSIZE) per process. For the
+    resident memory parts used by a process that are shared with other
+    processes, only a proportional part (shared memory part divided by the
+    number of sharers) is accounted to the process. Since the gathering of this
+    value is rather time-consuming (reading the smaps file of every process),
+    it is optional ('R' key or '-R' flag).
+  * Increased number of LVMs and disks supported
+  * Support for huge pages (total and in use).
+
+-------------------------------------------------------------------
+Thu Jul 26 07:48:55 UTC 2012 - pascal.bleser@opensuse.org
+
+- update to 1.27-3:
+  * service file for systemd
+  * solved division-by-zero when maxfreq=0 and more precise coloring of
+    concerning CPU-values when CPU overloaded
+  * if setuid-root is set for atop, root-privileges are regained when reading
+    /proc/pid/io (nowadays only readable for root) to obtain the disk stats per
+    process
+  * added EMC Power device recognition
+  * better recognition of version of process accounting file
+  * improved error handling when not enough columns or lines
+  * suppress sorting of system resources by key F or flag -F (toggle)
+  * create unique /tmp name for decompressed raw file
+  * numerous cosmetic changes and man-page updates
+  * improved screen handling
+  * limited maximum file-size for process accounting file (200 MiB)
+  * improved handling of process accounting
+  * new key 'S' to make selections of system resources like logical volumes,
+    disks and network interfaces (regular expression)
+  * use of arrow-keys and PgUp/PgDown for vertical scroll
+  * use of -> and <- keys for horizontal scroll of command line
+  * support statistics for virtio disks (vd*)
+  * fetching and displaying of individual threads
+  * add various details about the memory usage of processes, like stack size,
+    data size, shared library size and size used on swap
+  * show new value about swap space usage per process
+  * colors are shown now for separate system-level counters instead of for the
+    entire line with counters
+  * enhanced security: improved dropping of root privileges
+
+-------------------------------------------------------------------
+Mon Jan  9 18:45:42 UTC 2012 - pascal.bleser@opensuse.org
+
+- remove licenses package mumbo-jumbo altogether
+- use pristine upstream tarball instead of recompressing as bz2
+- added Recommends for logrotate and cron in the -daemon subpackage
+
+-------------------------------------------------------------------
+Mon Jan  9 17:16:58 UTC 2012 - graham@andtech.eu
+
+- change License: and %if statement in .spec
+
+-------------------------------------------------------------------
+Tue Mar 15 02:13:10 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 1.26:
+  * an additional value is shown for the current frequency and the current
+    scaling percentage of the CPU
+  * additional system-level counters are shown for the total number of threads
+    that are running, sleeping interruptible, and sleeping uninterruptible
+  * when the number of lines in a window is too small for the amount of
+    system-level lines, the number of variable resources (like disks,
+    interfaces, etc.) is limited automatically to be able to continue
+  * the signal SIGUSR2 can be sent to atop to take one more sample and
+    terminate (e.g. used to speed up suspend/hibernate)
+  * support for the disk type 'mmcblk'
+
+-------------------------------------------------------------------
+Mon May  3 12:18:43 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.25:
+  * disk I/O statistics are maintained on level of logical volume
+    (LVM) and MD device
+  * log files are properly switched in case of suspend/hibernate
+  * layout of lines with system-level statistics can be redefined
+  * previous atop versions are automatically activated for older
+    log files
+
+-------------------------------------------------------------------
+Tue Jan 26 08:59:08 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.24:
+  * the screen interface has been redesigned completely with
+    support for a variable number of columns depending on the
+    window size
+  * it is now possible to define your own output line with
+    process-level statistics
+  * a system-wide configuration file was introduced for atop and
+    atopsar
+  * handling of log files was improved and additional counters are
+    maintained
+
+-------------------------------------------------------------------
+Thu Mar  6 00:00:00 UTC 2008 - guru@unixtech.be
+
+- update to 1.23
+
+-------------------------------------------------------------------
+Wed Nov 21 00:00:00 UTC 2007 - guru@unixtech.be
+
+- update to 1.22
+
+-------------------------------------------------------------------
+Mon Aug 20 00:00:00 UTC 2007 - guru@unixtech.be
+
+- update to 1.21
+
+-------------------------------------------------------------------
+Mon Jun 11 00:00:00 UTC 2007 - guru@unixtech.be
+
+- inital openSUSE Build Service submission
+
+

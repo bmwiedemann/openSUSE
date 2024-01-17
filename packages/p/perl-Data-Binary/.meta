@@ -1,0 +1,8 @@
+<package name="perl-Data-Binary" project="openSUSE:Factory">
+  <title>Simple detection of binary versus text in strings</title>
+  <description>This simple module provides string equivalents to the -T / -B operators. Since these only work on file names and file handles, this module provides the same functions but on strings.
+
+Note that the actual implementation is currently different, basically because the -T / -B functions are in C/XS, and this module is written in pure Perl. For now, anyway.</description>
+  <devel project="devel:languages:perl" package="perl-Data-Binary"/>
+  <url>https://metacpan.org/release/Data-Binary</url>
+</package>

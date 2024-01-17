@@ -1,0 +1,5 @@
+<package name="kapidox" project="openSUSE:Factory">
+  <title>kapidox</title>
+  <description>Frameworks API Documentation Tools</description>
+  <devel project="KDE:Frameworks5" package="kapidox"/>
+</package>

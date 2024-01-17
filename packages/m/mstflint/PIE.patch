@@ -1,0 +1,24 @@
+commit da607dd93fc67a63029d08f868e1e1c2c70e9663
+Author: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+Date:   Fri Jul 9 13:01:55 2021 +0200
+
+    PIE
+    
+    Hardware error from APEI Generic Hardware Error Source: 0
+    
+    Signed-off-by: Hardware error from APEI Generic Hardware Error Source: 0
+
+Index: configure.ac
+===================================================================
+--- configure.ac.orig
++++ configure.ac
+@@ -91,6 +91,9 @@ AM_CONDITIONAL(KERNEL_BUILD,[test ${KERN
+ AC_SUBST(KERNEL_BUILD)
+ 
+ LDFLAGS="${LDFLAGS} -L/usr/local/lib -L/usr/local/lib64 -L/usr/lib64"
++if test "$host_cpu" != "s390x"; then
++	LDFLAGS="${LDFLAGS} -pie"
++fi
+ CXXFLAGS="${CXXFLAGS} -isystem /usr/local/include" 
+ if test "x$OS" = "xFreeBSD"; then
+     AC_MSG_NOTICE(FreeBSD Build)

@@ -1,0 +1,5 @@
+<package name="netdata" project="openSUSE:Factory">
+  <title>Real-time performance monitoring</title>
+  <description>netdata is a highly optimized Linux daemon providing real-time performance monitoring for Linux systems, Applications, SNMP devices, over the web!</description>
+  <devel project="network" package="netdata"/>
+</package>

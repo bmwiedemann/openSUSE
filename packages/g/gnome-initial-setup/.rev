@@ -1,0 +1,229 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f627485b3fcbe27ba4ad405a50d7ca36</srcmd5>
+    <version>3.36.1</version>
+    <time>1587839149</time>
+    <user>dimstar_suse</user>
+    <comment>This package got nuked from TW for failing to build, somehow I and fellow gnome maintainers missed that.
+Resub it :-)</comment>
+    <requestid>796006</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3e47e1f64b8080f1d9f5861da49757c8</srcmd5>
+    <version>3.36.2</version>
+    <time>1588023834</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release, not buildtested! (forwarded request 798005 from iznogood)</comment>
+    <requestid>798359</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7a5e378594e043b507401246b55a5597</srcmd5>
+    <version>3.36.3</version>
+    <time>1591286203</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 811378 from iznogood)</comment>
+    <requestid>811439</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>fd427edbcfdd9307a87ce94283552c1f</srcmd5>
+    <version>3.36.3</version>
+    <time>1593292955</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817302</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>911decb67df708ca4c41c9aef09b3a6e</srcmd5>
+    <version>3.36.4</version>
+    <time>1594387914</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 818861 from iznogood)</comment>
+    <requestid>819945</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e9f2164ce8148832e83d0451553cad05</srcmd5>
+    <version>3.38.1</version>
+    <time>1605800690</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 3.38</comment>
+    <requestid>847211</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>db98ccf7f1b1ed81c915f75ed57f2842</srcmd5>
+    <version>3.38.2</version>
+    <time>1606649244</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.38.2 (forwarded request 850194 from dimstar)</comment>
+    <requestid>851045</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>649fa9a0126e41eeaa739c9966c94b87</srcmd5>
+    <version>3.38.3</version>
+    <time>1610123870</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>861563</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c5e815e40efbb99bb164d986797a6e50</srcmd5>
+    <version>3.38.4</version>
+    <time>1613511666</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>872853</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3c0746b41e7e6a5c6d77fcd7c63a67a7</srcmd5>
+    <version>40.0</version>
+    <time>1618061212</time>
+    <user>RBrownSUSE</user>
+    <comment>GNOME 40 - here we come (forwarded request 880954 from dimstar)</comment>
+    <requestid>881126</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>89b2a1bdcd4460bc66165634dba412d7</srcmd5>
+    <version>40.1</version>
+    <time>1620334345</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 890071 from dimstar)</comment>
+    <requestid>890132</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>70a93e61a7672772400c26e33b6e3dae</srcmd5>
+    <version>40.3</version>
+    <time>1626788341</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 907074 from dimstar)</comment>
+    <requestid>907076</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d2fd898871ce24b5d69baca104eb12ec</srcmd5>
+    <version>40.4</version>
+    <time>1629795278</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 912264 from iznogood)</comment>
+    <requestid>913687</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>189d515f84fd6410acfaef3ed0fa06a3</srcmd5>
+    <version>41.0</version>
+    <time>1632939526</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 920941 from dimstar)</comment>
+    <requestid>921621</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>b7d3cc09afb8423f8ef13dbeb8791e70</srcmd5>
+    <version>41.2</version>
+    <time>1638918000</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>936221</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>8599040bfa667300cd26498f4bdb8ac8</srcmd5>
+    <version>41.4</version>
+    <time>1644617257</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 41.4:
+  + Fix build failure with recent Meson releases.
+  + Updated translations.</comment>
+    <requestid>953330</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>e675136631b1633f8bd81cc1299cb9ca</srcmd5>
+    <version>42.0</version>
+    <time>1648063041</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>963546</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>e18e1deec904904fd4857aa1f1407404</srcmd5>
+    <version>42.0.1</version>
+    <time>1648241686</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 964633 from iznogood)</comment>
+    <requestid>964804</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>5c60bef9b88f7f662d056e10f43e587c</srcmd5>
+    <version>42.1</version>
+    <time>1649713757</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 968005 from iznogood)</comment>
+    <requestid>969162</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>76080504e4e0cde2bcf1220b057b32dd</srcmd5>
+    <version>42.1.1</version>
+    <time>1651088506</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 971768 from dimstar)</comment>
+    <requestid>973146</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>d12ab5dcd91833863d59ffeb253a392a</srcmd5>
+    <version>42.2</version>
+    <time>1654004857</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 42.2 (forwarded request 979889 from dimstar)</comment>
+    <requestid>980027</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>8747760cff616af85e90e1430ba3ee0a</srcmd5>
+    <version>43.0</version>
+    <time>1663764031</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1004797</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>593b187e07e4da434dadb83888b4cb7c</srcmd5>
+    <version>43.1</version>
+    <time>1666257006</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1029972</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>9ef01de687c1cf25a518614b3e6d758a</srcmd5>
+    <version>43.2</version>
+    <time>1678380289</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1070150</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>0f39d12f4b5b1da5be845fd5a01cd4a1</srcmd5>
+    <version>44.0</version>
+    <time>1679667419</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 1072627 from iznogood)</comment>
+    <requestid>1073163</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>713e7c54f481a0c07740d6202c705488</srcmd5>
+    <version>44.0</version>
+    <time>1679854755</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1074235</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>71a374715edcf2e53c446784133f6846</srcmd5>
+    <version>45.0</version>
+    <time>1695208959</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1112197</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>b1d76e4bc567acd10751d6603333d4fd</srcmd5>
+    <version>45.0</version>
+    <time>1699388720</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1123789</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,8 @@
+<package name="mstflint" project="openSUSE:Factory">
+  <title>Burning Firmware Application</title>
+  <description>
+       This package contains a burning tool for Mellanox manufactured HCA
+       cards. It also provides access to the relevant source code.
+  </description>
+  <devel project="science:HPC" package="mstflint"/>
+</package>

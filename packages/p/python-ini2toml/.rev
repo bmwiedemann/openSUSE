@@ -1,0 +1,82 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>48f4988123137cefe31480f0af074830</srcmd5>
+    <version>0.11</version>
+    <time>1657885943</time>
+    <user>dimstar_suse</user>
+    <comment>Also to openSUSE:Factory:Staging:adi:34</comment>
+    <requestid>989178</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ba52f638e5a99a41924355bd98fce70f</srcmd5>
+    <version>0.11</version>
+    <time>1658243935</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>989557</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>bec8f1349012fd848f2235c0792c7e2b</srcmd5>
+    <version>0.11</version>
+    <time>1659721894</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>993279</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>114dd79174d139106d0dbabcb2253908</srcmd5>
+    <version>0.11.3</version>
+    <time>1669381685</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.11.3:
+  * Fix dependency problems by requiring pyproject-fmt&gt;=0.4.0
+- 0.11.2:
+  * Adapt to changes in pyproject-fmt 0.4.0
+- 0.11.1:
+  * Internal test fixes, minor CI and doc improvements
+  * Only list pyproject-fmt as an experimental dependency on Python 3.7+
+</comment>
+    <requestid>1037972</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>9b2ef98bf6a322047fe39e4d6f95859b</srcmd5>
+    <version>0.11.3</version>
+    <time>1682282624</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082131</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ae501e54ce96f2b27681ee8b16ffcc24</srcmd5>
+    <version>0.12</version>
+    <time>1684490120</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.12:
+  * Fix logging in case of early errors while loading plugins,
+  * Log warning if ``flake8`` and ``devpi`` sections are
+    translation, prompting the user to review the output
+  * Fix parsing of ``filterwarnings``</comment>
+    <requestid>1087243</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>b3cbb7fb1026e080003087c7d047ff0c</srcmd5>
+    <version>0.12</version>
+    <time>1685632732</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove ConfigUpdater dependency for tests when it's not building for
+  the -full or -all subpackage.</comment>
+    <requestid>1089694</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>72781640f87c030b736968e055d285aa</srcmd5>
+    <version>0.13</version>
+    <time>1702158541</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.13:
+  * Fix errors when ``isort`` is installed in the same
+    environment as ``ini2toml``
+  * Add support for ``file:`` directive in ``install_requires``
+    and ``extras_require``</comment>
+    <requestid>1131712</requestid>
+  </revision>
+</revisionlist>

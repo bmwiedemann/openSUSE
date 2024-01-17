@@ -1,0 +1,23 @@
+diff -urEbw atop-2.7.1/atop.service atop-2.7.1.new/atop.service
+--- atop-2.7.1/atop.service	2022-01-08 12:49:00.000000000 +0100
++++ atop-2.7.1.new/atop.service	2022-03-01 00:21:11.621320262 +0100
+@@ -3,6 +3,19 @@
+ Documentation=man:atop(1)
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++PrivateDevices=true
++ProtectHostname=true
++ProtectClock=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ Type=simple
+ Environment="LOGOPTS="
+ Environment="LOGINTERVAL=600"

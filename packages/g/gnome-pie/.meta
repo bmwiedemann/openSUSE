@@ -1,0 +1,5 @@
+<package name="gnome-pie" project="openSUSE:Factory">
+  <title>GNOME-Pie</title>
+  <description>A circular application launcher (pie menu) for Linux.</description>
+  <devel project="GNOME:Apps" package="gnome-pie"/>
+</package>

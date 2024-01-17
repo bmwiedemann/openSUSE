@@ -1,0 +1,86 @@
+-------------------------------------------------------------------
+Mon Sep 18 09:19:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.10.3:
+  * Add in missing `_dirty`
+
+-------------------------------------------------------------------
+Wed Dec  7 17:55:50 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 0.10.2
+  * Create a new glyphset from the provided reader by @typemytype in #409
+
+-------------------------------------------------------------------
+Tue Jul 19 11:27:11 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.10.1:
+  * Python 3.10 support
+  * Add glyphSet argument in _stampLayerInfoDataState
+  * when guideline.name is set to None remove the name key
+  * add eq and hash to FuzzyNumber
+
+-------------------------------------------------------------------
+Sun Jan 23 16:18:07 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.10.0:
+  * drop python 3.6 support
+
+-------------------------------------------------------------------
+Thu Dec 16 10:22:57 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.9.0
+  * Makes glyph.image object “sticky”, just like lib objects (#352)
+  * Adds a .tempLib to font, layer, and glyph that is available for
+    the life of the object and is never saved with the ufo. (#367)
+- Skip python36: FontTools now dropped it.
+
+-------------------------------------------------------------------
+Tue Mar 23 19:23:58 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- reinstate python36 build (python36-FontTools is available)
+
+-------------------------------------------------------------------
+Fri Mar 19 01:52:35 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update 0.8.1:
+  * Fixes behavior with None in removeObserver (#349)
+  * Resets glyph set on save (#297)
+  * Gives Anchors and Guidelines a glyph attribute (#325)
+  * Dispatcher enhancements (#337)
+  * Adds __eq__ in BaseDict (#344)
+
+-------------------------------------------------------------------
+Sat Feb 13 10:25:23 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- skip python 3.6 (needs FontTools which needs scipy)
+
+-------------------------------------------------------------------
+Mon Jun 15 05:47:09 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.7.2:
+  * Name the wheel file as non-universal (py3-only).
+  * [setup.py] Mark library as requiring Python 3.6+, or else pip2 will attempt to install it on Python 2.7, which is no longer supported (#293).
+  * Dropped support for Py2, now only Py3
+  * Updated documentation: #232
+  * Fixed docstring typos (thanks @Space0726!): #263
+  * added notification: Font.GuidelineWillBeAdded: #239
+  * Fixes for UFOZ (#209 testForExternalChanges and #218 glyphSet is required): #220
+  * Added close to font: #269
+  * Setting glyph.unicode will now set glyph.unicodes to a one member list: #258
+  * Add notifications for: Glyph.LeftMarginWillChange, Glyph.LeftMarginDidChange, Glyph.RightMarginWillChange, Glyph.RightMarginDidChange, Glyph.TopMarginWillChange, Glyph.TopMarginDidChange, Glyph.BottomMarginWillChange, Glyph.BottomMarginDidChange: #253
+  * Improved joinSegments: #259
+  * Added identifier to addComponent callback: #268
+  * Fix glyphs with components getting proper area value: #272
+  * Use ufoFormatTuple: #289
+  * Add ufoFormatVersionTuple property, deprecate ufoFormatVersion: #291
+
+-------------------------------------------------------------------
+Tue May 26 07:45:45 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix FontTool dep (camelcase)
+- Remove devel dependency
+
+-------------------------------------------------------------------
+Wed May 20 10:29:57 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Initial release of python-defcon

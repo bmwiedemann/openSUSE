@@ -1,0 +1,6 @@
+<package name="vamp-plugin-sdk" project="openSUSE:Factory">
+  <title>An API for audio analysis and feature extraction plugins</title>
+  <description>Vamp is an API for C and C++ plugins that process sampled audio data
+to produce descriptive output (measurements or semantic observations).</description>
+  <devel project="multimedia:libs" package="vamp-plugin-sdk"/>
+</package>
