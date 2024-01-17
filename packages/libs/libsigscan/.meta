@@ -1,7 +1,0 @@
-<package name="libsigscan" project="openSUSE:Factory">
-  <title> Library for binary signature scanning</title>
-  <description>libsigscan is a library for binary signature scanning.  A utility is provided for end user use in the -tools subproject.  Python bindings are also provided in the python-libsigscan subproject.
-
-libsigscan is a part of the libyal family of libraries.</description>
-  <devel project="security:forensics" package="libsigscan"/>
-</package>

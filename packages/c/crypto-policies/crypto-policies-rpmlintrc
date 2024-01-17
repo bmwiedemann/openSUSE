@@ -1,3 +1,0 @@
-addFilter(".*files-duplicate.*")
-addFilter(".*zero-length.*")
-addFilter(".non-conffile-in-etc.*")

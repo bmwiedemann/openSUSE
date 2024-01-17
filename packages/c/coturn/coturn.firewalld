@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<service>
-  <short>TURN</short>
-  <description>TURN and STUN server ports for VoIP</description>
-  <port protocol="tcp" port="3478"/>
-  <port protocol="udp" port="3478"/>
-  <port protocol="tcp" port="5349"/>
-  <port protocol="udp" port="5349"/>
-</service>

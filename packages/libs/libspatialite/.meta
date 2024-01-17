@@ -1,6 +1,0 @@
-<package name="libspatialite" project="openSUSE:Factory">
-  <title>SpatiaLite library</title>
-  <description>The SpatiaLite extension enables SQLite to support spatial data too [aka GEOMETRY], in a way conformant to OpenGis specifications.</description>
-  <devel project="Application:Geo" package="libspatialite"/>
-  <url>http://www.gaia-gis.it/spatialite/ </url>
-</package>

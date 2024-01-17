@@ -1,7 +1,0 @@
-<package name="e2fsprogs" project="openSUSE:Factory">
-  <title>Utilities for the Second Extended File System</title>
-  <description>Utilities needed to create and maintain ext2 and ext3 file systems
-under Linux. Included in this package are: chattr, lsattr, mke2fs,
-mklost+found, tune2fs, e2fsck, resize2fs, and badblocks.</description>
-  <devel project="filesystems" package="e2fsprogs"/>
-</package>

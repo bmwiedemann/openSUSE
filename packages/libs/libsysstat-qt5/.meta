@@ -1,6 +1,0 @@
-<package name="libsysstat-qt5" project="openSUSE:Factory">
-  <title>Library used to query system info and statistics</title>
-  <description>Library used to query system info and statistics
-</description>
-  <devel project="X11:LXQt" package="libsysstat-qt5"/>
-</package>

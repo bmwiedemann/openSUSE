@@ -1,6 +1,0 @@
-<servicedata>
-<service name="tar_scm">
-                <param name="url">http://github.com/cockpit-project/cockpit.git</param>
-              <param name="changesrevision">046b3d4b381cd60f9d44756fc51f15ed7e17d0b5</param></service><service name="tar_scm">
-                <param name="url">https://github.com/dgdavid/cockpit-suse-theme.git</param>
-              <param name="changesrevision">fe08b35e64ad45f4b56cd636fdfec8fb18d69ab7</param></service></servicedata>

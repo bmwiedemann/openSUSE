@@ -1,6 +1,0 @@
-<package name="cog" project="openSUSE:Factory">
-  <title>WPE launcher and webapp container</title>
-  <description>Cog is a small single “window” launcher for the WebKit WPE port. It is small, provides no user interface, and is suitable to be used as a Web application container. The “window” may be fullscreen depending on the WPE backend being used.</description>
-  <devel project="GNOME:Factory" package="cog"/>
-  <url>https://igalia.github.io/cog/index.html</url>
-</package>

@@ -1,6 +1,0 @@
-<package name="evolution-data-server" project="openSUSE:Factory">
-  <title>Evolution Data Server</title>
-  <description>Evolution Data Server provides a central location for your address book
-and calendar in the GNOME Desktop.</description>
-  <devel project="GNOME:Factory" package="evolution-data-server"/>
-</package>

@@ -1,9 +1,0 @@
-<package name="eolie" project="openSUSE:Factory">
-  <title></title>
-  <description>Eolie is a Web browser for the GNOME Desktop. It provides:
-* Firefox sync support
-* Secret password store
-* A modern UI</description>
-  <devel project="GNOME:Apps" package="eolie"/>
-  <url>https://wiki.gnome.org/Apps/Eolie</url>
-</package>

@@ -1,8 +1,0 @@
-<package name="epplet-base" project="openSUSE:Factory">
-  <title>Applets for the Enlightenment Window Manager</title>
-  <description>Epplets are programs designed to work with the Enlightenment Window
-Manager Versions 0.16 and above.  Generally they are quite small and
-provide a quick way for a user to perform simple tasks or view
-information.</description>
-  <devel project="X11:Enlightenment:Factory" package="epplet-base"/>
-</package>

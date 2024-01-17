@@ -1,2 +1,0 @@
-# that .a file is.. an ascii text file, not an ELF static library
-addFilter("devel-file-in-non-devel-package")

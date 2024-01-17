@@ -1,6 +1,0 @@
-<package name="libebml" project="openSUSE:Factory">
-  <title>Libary to Parse EBML Files</title>
-  <description>libebml is a C++ library to parse EBML files. See the EBML RFV at
-http://www.matroska.org/technical/specs/rfc/.</description>
-  <devel project="multimedia:libs" package="libebml"/>
-</package>

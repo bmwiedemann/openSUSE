@@ -1,8 +1,0 @@
-<package name="ext3grep" project="openSUSE:Factory">
-  <title>Tool to investigate an ext3 file system for deleted content and possibly recover it</title>
-  <description>A tool to investigate an ext3 file system for deleted content and possibly recover it.
-
-Also see http://www.xs4all.nl/~carlo17/howto/undelete_ext3.html</description>
-  <devel project="filesystems" package="ext3grep"/>
-  <url>http://code.google.com/p/ext3grep/</url>
-</package>

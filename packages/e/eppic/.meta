@@ -1,9 +1,0 @@
-<package name="eppic" project="openSUSE:Factory">
-  <title>Embeddable Pre-Processor and Interpreter for C</title>
-  <description>EPPIC is a C interpreter that permits easy access to the symbol and type
-information stored in a executable image like a coredump or live memory
-interfaces (e.g. /dev/kmem, /dev/mem). Although it has a strong association
-with live or postmortem kernel analysis, it is not constraint to it and can be
-embedded in any tools that is C friendly.</description>
-  <devel project="Kernel:kdump" package="eppic"/>
-</package>

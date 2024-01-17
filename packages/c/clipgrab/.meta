@@ -1,9 +1,0 @@
-<package name="clipgrab" project="openSUSE:Factory">
-  <title>Video downloader</title>
-  <description>A program which downloads and converts online videos from YouTube, Vimeo,
-DailyMotion, MyVideo and many other platforms.
-
-</description>
-  <devel project="network:utilities" package="clipgrab"/>
-  <url>https://clipgrab.org</url>
-</package>

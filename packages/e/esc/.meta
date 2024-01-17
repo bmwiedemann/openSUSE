@@ -1,5 +1,0 @@
-<package name="esc" project="openSUSE:Factory">
-  <title>Embeds files into go programs</title>
-  <description></description>
-  <devel project="devel:kubic" package="esc"/>
-</package>

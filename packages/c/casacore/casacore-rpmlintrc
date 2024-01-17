@@ -1,2 +1,0 @@
-# guideline does not cover multibuild/flavors
-addFilter("libcasacore\d+-openmpi\d+.\w+: E: shlib-policy-name-error.*")

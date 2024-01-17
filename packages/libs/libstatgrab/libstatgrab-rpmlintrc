@@ -1,7 +1,0 @@
-# This is not fixable look yet
-addFilter("libstatgrab.* *.*")
-#addFilter("shared-lib-calls-exit")
-#addFilter("missing-call-to-setgroups-before-setuid")
-#addFilter("doc-file-dependency")
-#addFilter("arch-dependent-file-in-usr-share")
-#addFilter("incoherent-version-dependency-on")

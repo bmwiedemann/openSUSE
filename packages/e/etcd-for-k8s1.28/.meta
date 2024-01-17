@@ -1,5 +1,0 @@
-<package name="etcd-for-k8s1.28" project="openSUSE:Factory">
-  <title>etcd-for-k8s1.28</title>
-  <description>etcd-for-k8s1.28</description>
-  <devel project="devel:kubic" package="etcd-for-k8s1.28"/>
-</package>

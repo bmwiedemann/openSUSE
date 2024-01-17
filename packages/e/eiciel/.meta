@@ -1,7 +1,0 @@
-<package name="eiciel" project="openSUSE:Factory">
-  <title>GNOME ACL viewer and editor</title>
-  <description>Eiciel allows you to visually edit file ACL entries. You can add and
-remove users and groups who will be granted permissions through the
-graphical interface</description>
-  <devel project="GNOME:Apps" package="eiciel"/>
-</package>

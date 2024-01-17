@@ -1,5 +1,0 @@
-<package name="checkmedia" project="openSUSE:Factory">
-  <title>Check Installation Media</title>
-  <description>Checks installation CDs and DVDs for errors.</description>
-  <devel project="system:install:head" package="checkmedia"/>
-</package>

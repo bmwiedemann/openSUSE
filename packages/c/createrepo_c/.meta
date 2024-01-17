@@ -1,5 +1,0 @@
-<package name="createrepo_c" project="openSUSE:Factory">
-  <title>createrepo_c - Create rpm-md repositories</title>
-  <description></description>
-  <devel project="system:packagemanager" package="createrepo_c"/>
-</package>

@@ -1,5 +1,0 @@
-<package name="cargo-packaging" project="openSUSE:Factory">
-  <title>cargo-packaging</title>
-  <description></description>
-  <devel project="devel:languages:rust" package="cargo-packaging"/>
-</package>

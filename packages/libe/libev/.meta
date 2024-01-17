@@ -1,7 +1,0 @@
-<package name="libev" project="openSUSE:Factory">
-  <title>A full-featured and high-performance event loop library</title>
-  <description>A full-featured and high-performance event loop that is loosely modelled after
-libevent, but without its limitations and bugs. It is used, among others, in
-the GNU Virtual Private Ethernet and rxvt-unicode packages.</description>
-  <devel project="server:http" package="libev"/>
-</package>

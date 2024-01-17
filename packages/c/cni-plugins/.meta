@@ -1,6 +1,0 @@
-<package name="cni-plugins" project="openSUSE:Factory">
-  <title></title>
-  <description>Official CNI network plugins.
-</description>
-  <devel project="devel:microos" package="cni-plugins"/>
-</package>

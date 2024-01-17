@@ -1,6 +1,0 @@
-<servicedata>
-  <service name="tar_scm">
-    <param name="url">git://github.com/systemd/casync.git</param>
-    <param name="changesrevision">a904fda76d55a22e094e266531cd6dead75c20b6</param>
- </service>
-</servicedata>

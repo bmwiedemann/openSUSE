@@ -1,5 +1,0 @@
-<package name="clipped" project="openSUSE:Factory">
-  <title>Clipped</title>
-  <description>Clipboard Manager</description>
-  <devel project="X11:Pantheon:Apps" package="clipped"/>
-</package>

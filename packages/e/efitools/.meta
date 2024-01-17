@@ -1,5 +1,0 @@
-<package name="efitools" project="openSUSE:Factory">
-  <title>UEFI secure boot toolkit</title>
-  <description>The toolkit for UEFI secure boot</description>
-  <devel project="Base:System" package="efitools"/>
-</package>

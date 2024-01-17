@@ -1,8 +1,0 @@
-<package name="cdk" project="openSUSE:Factory">
-  <title>The Runtime for the Curses Development Kit</title>
-  <description>CDK is a widget set developed on top of the basic curses library. It
-contains 21 ready to use widgets, some of which are: a text entry
-field, a scrolling list, a selection list, an alphalist, a pull-down
-menu, a radio list, a viewer widget, and a dialog box.</description>
-  <devel project="security" package="cdk"/>
-</package>

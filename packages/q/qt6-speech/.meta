@@ -1,8 +1,0 @@
-<package name="qt6-speech" project="openSUSE:Factory">
-  <title>Qt 6 TextToSpeech Library and Plugin</title>
-  <description>The QTextToSpeech class provides a convenient access to text-to-speech engines.
-
-</description>
-  <devel project="KDE:Qt6" package="qt6-speech"/>
-  <url>https://www.qt.io</url>
-</package>

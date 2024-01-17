@@ -1,5 +1,0 @@
-<package name="eog-plugins" project="openSUSE:Factory">
-  <title>A collection of plugins for Eye of GNOME</title>
-  <description>This package contains plugins for additional features in Eye of GNOME.</description>
-  <devel project="GNOME:Factory" package="eog-plugins"/>
-</package>

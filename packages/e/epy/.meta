@@ -1,6 +1,0 @@
-<package name="epy" project="openSUSE:Factory">
-  <title>epy</title>
-  <description>CLI ebook reader</description>
-  <devel project="Education" package="epy"/>
-  <url>https://github.com/wustho/epy</url>
-</package>

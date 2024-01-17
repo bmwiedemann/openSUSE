@@ -1,6 +1,0 @@
-<package name="entr" project="openSUSE:Factory">
-  <title>entr</title>
-  <description>A utility for running arbitrary commands when files change.</description>
-  <devel project="devel:tools:building" package="entr"/>
-  <url>https://bitbucket.org/eradman/entr</url>
-</package>

@@ -1,9 +1,0 @@
-<package name="clBLAS" project="openSUSE:Factory">
-  <title>BLAS functions written in OpenCL</title>
-  <description>clBlas is a software library containing BLAS functions written in OpenCL. The
-complete set of BLAS level 1, 2 and 3 routines is implemented. In addition to
-GPU devices, the library also supports running on CPU devices to facilitate
-debugging and multicore programming.</description>
-  <devel project="science" package="clBLAS"/>
-  <url>https://github.com/clMathLibraries/clBLAS</url>
-</package>

@@ -1,6 +1,0 @@
-<package name="esbuild" project="openSUSE:Factory">
-  <title>esbuild</title>
-  <description> A JavaScript bundler and minifier built for speed.</description>
-  <devel project="devel:languages:javascript" package="esbuild"/>
-  <url>https://esbuild.github.io/</url>
-</package>

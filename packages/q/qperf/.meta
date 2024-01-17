@@ -1,5 +1,0 @@
-<package name="qperf" project="openSUSE:Factory">
-  <title>Measure socket and RDMA performance</title>
-  <description>Measure socket and RDMA performance.</description>
-  <devel project="science:HPC" package="qperf"/>
-</package>

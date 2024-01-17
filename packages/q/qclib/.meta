@@ -1,5 +1,0 @@
-<package name="qclib" project="openSUSE:Factory">
-  <title>qclib</title>
-  <description>qclib provides a C API for extraction of system information for Linux on z Systems.</description>
-  <devel project="hardware" package="qclib"/>
-</package>

@@ -1,6 +1,0 @@
-<package name="libexif" project="openSUSE:Factory">
-  <title>An EXIF Tag Parsing Library for Digital Cameras</title>
-  <description>This library is used to parse EXIF information from JPEGs created by
-digital cameras.</description>
-  <devel project="graphics" package="libexif"/>
-</package>

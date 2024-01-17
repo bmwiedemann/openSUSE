@@ -1,4 +1,0 @@
-chrony-config.patch -p1
-chrony-service-helper.patch -p1
-chrony-logrotate.patch -p1
-chrony-service-ordering.patch -p0
