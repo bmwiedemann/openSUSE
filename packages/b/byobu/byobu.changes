@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Wed Jan 10 03:17:22 UTC 2024 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
+
+- Update to version 6.5:
+  * Move sources to GitHub (https://github.com/dustinkirkland/byobu)
+  * usr/share/byobu/profiles/bashrc:
+    - drop debian chroot from wolfi ps1
+    - drastically simplify the conditional logic
+  * usr/bin/byobu-shell.in:
+    - need a -l login shell to source profiles and colorize PS1
+  * usr/lib/byobu/packages:
+    - add missing trailing whitespace
+  * usr/bin/byobu-janitor.in:
+    - enable colorized prompt for Wolfi ash shells
+  * usr/bin/byobu-janitor.in, usr/share/byobu/status/status:
+    - within Wolfi, default to our 2nd status line
+  * usr/lib/byobu/updates_available:
+    - silence apk update
+  * usr/share/byobu/profiles/bashrc:
+    - support ash for colorized prompt
+  * add a package count status item, useful for minimal containers
+  * added support for apk / Wolfi in updates_available
+  * added a status line customized for containers
+  * add wolfi color schemed PS1 prompt
+  * usr/lib/byobu/include/shutil:
+    - fix distro getting from /etc/os-release
+  * usr/lib/byobu/disk:
+    - drop the -P from df which is breaking MacOS
+      not sure where this came from
+  * byobu.txt, usr/bin/whats-my-public-ip,
+    usr/share/byobu/pixmaps/byobu_backup.svg:
+    - copy over a couple of missing changes from bzr to git
+  * debian/control, debian/copyright, README.md, usr/bin/byobu-
+    export.in, usr/share/man/man1/byobu-export.1:
+    - moving upstream Byobu from Launchpad.net to Github.com
+  * README.md:
+    - bumped date
+  * usr/bin/byobu-select-profile.in: LP: #1828296
+    - add missing listprofiles logic
+  * usr/lib/byobu/include/select-session.py:
+    - fix inverted logic on session reuse
+  * usr/lib/byobu/logo:
+    - added a logo for Wolfi
+  * usr/lib/byobu/include/shutil, usr/lib/byobu/release:
+    - Wolfi doesn't really have versions, so just use the distro
+      name rather than version id
+
+-------------------------------------------------------------------
 Sat Aug 29 11:25:11 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - Fix build after libexec change in distribution

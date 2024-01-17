@@ -1,8 +1,8 @@
 #
 # spec file for package byobu
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2020 Tejas Guruswamy <tejas.guruswamy@opensuse.org>.
+# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2024 Tejas Guruswamy <tejas.guruswamy@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,15 @@
 
 
 Name:           byobu
-Version:        5.133
+Version:        6.5
 Release:        0
 Summary:        Enhanced profile and configuration utilities for GNU Screen and tmux
 License:        GPL-3.0-only
 Group:          System/Console
 URL:            https://byobu.org/
-Source:         https://launchpad.net/%{name}/trunk/%{version}/+download/%{name}_%{version}.orig.tar.gz
-Source1:        https://launchpad.net/%{name}/trunk/%{version}/+download/..-%{name}_%{version}.orig.tar.gz.asc#/%{name}_%{version}.orig.tar.gz.asc
-Source2:        %{name}.keyring
+Source:         https://github.com/dustinkirkland/byobu/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  autoconf
+BuildRequires:  automake
 # For /usr/share/dbus-1/services/ ownership.
 BuildRequires:  dbus-1-devel
 BuildRequires:  fdupes
@@ -66,6 +66,8 @@ Help files and changelog for %{name}.
 %setup -q
 
 %build
+cp debian/changelog ChangeLog
+autoreconf -i
 %configure
 %make_build
 
@@ -99,9 +101,6 @@ sed -i 's,%{_bindir}/env python3,%{_bindir}/python3,' %{buildroot}%{_prefix}/lib
 %{_mandir}/man1/*.1%{?ext_man}
 %{_datadir}/icons/hicolor/*/apps/%{name}.*
 %{_datadir}/dbus-1/services/*%{name}.service
-%if 0%{?suse_version} == 1315
-%exclude %{_docdir}/%{name}/help.*.txt
-%endif
 
 %files doc
 %doc ChangeLog
