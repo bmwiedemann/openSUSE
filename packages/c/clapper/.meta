@@ -1,8 +1,0 @@
-<package name="clapper" project="openSUSE:Factory">
-  <title>A GNOME media player built using GJS with GTK4</title>
-  <description>A GNOME media player built using GJS with GTK4 toolkit and powered by GStreamer with OpenGL rendering.
-
-</description>
-  <devel project="multimedia:apps" package="clapper"/>
-  <url>https://github.com/Rafostar/clapper</url>
-</package>

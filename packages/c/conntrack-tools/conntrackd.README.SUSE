@@ -1,6 +1,0 @@
-The conntrackd daemon comes with an example conntrackd.conf configuration
-file in /etc/conntrackd/ - please adjust to your needs (the file will not 
-get overwritten during package updates) to your needs.
-
-If you want to start conntrackd with additional options (see 
-`man 8 conntrackd`), please add them in /etc/sysconfig/conntrackd.

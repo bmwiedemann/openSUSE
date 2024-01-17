@@ -1,9 +1,0 @@
-<package name="cdrdao" project="openSUSE:Factory">
-  <title>Write CD-Rs in Disk-At-Once Mode</title>
-  <description>CDRDAO creates CD-Rs in disk-at-once (DAO) mode driven by a description
-file called a toc file. In DAO mode, it is possible to create
-nonstandard track pregaps that have lengths other than 2 seconds and
-contain nonzero audio data. This is useful for dividing live recordings
-into tracks where 2 second gaps would be irritating.</description>
-  <devel project="Base:System" package="cdrdao"/>
-</package>

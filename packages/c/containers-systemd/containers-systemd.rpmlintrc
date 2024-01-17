@@ -1,6 +1,0 @@
-# This files needs to be empty be default
-addFilter("zero-length /etc/mariadb-secrets/MYSQL_.*")
-addFilter("zero-length /etc/openldap-secrets/LDAP_.*")
-addFilter("zero-length /etc/postfix-secrets/.*")
-# We don't restart all container only because the package has changed
-addFilter("systemd-service-without-service_del_postun")

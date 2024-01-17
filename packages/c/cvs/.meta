@@ -1,7 +1,0 @@
-<package name="cvs" project="openSUSE:Factory">
-  <title>Concurrent Versions System</title>
-  <description>CVS is a front-end to the rcs (Revision Control System) included in the
-standard Linux distributions. PCL-CVS, an emacs (Emacs) front-end for
-CVS, is also included.</description>
-  <devel project="devel:tools:scm" package="cvs"/>
-</package>

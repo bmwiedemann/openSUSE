@@ -1,7 +1,0 @@
-<package name="chrpath" project="openSUSE:Factory">
-  <title>Modifies the dynamic library load path (rpath and runpath) of compiled programs and libraries</title>
-  <description>Chrpath allows you to modify the dynamic library load path (rpath) of
-compiled programs. Currently, only removing and modifying the rpath is
-supported. It cannot extend or add an rpath.</description>
-  <devel project="devel:tools" package="chrpath"/>
-</package>

@@ -1,9 +1,0 @@
---- a/modules/postgresql/link.sh.in
-+++ b/modules/postgresql/link.sh.in
-@@ -4,5 +4,5 @@ ${MAKE-make} clisp-module \
- NEW_MODULES='postgresql'
- NEW_FILES=''
- for f in ${NEW_MODULES}; do NEW_FILES=${NEW_FILES}" ${f}.o"; done
--NEW_LIBS="${NEW_FILES} @LIBS@"
-+NEW_LIBS="${NEW_FILES} @LIBS@ -lcrypt -lssl"
- TO_LOAD='postgresql sql'

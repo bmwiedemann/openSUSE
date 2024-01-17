@@ -1,4 +1,0 @@
-addFilter("obsolete-not-provided")
-addFilter("systemd-service-without-service_.* freshclam.service")
-addFilter("missing-call-to-setgroups-before-setuid /usr/bin/clamscan")
-addFilter("files-duplicated-waste")

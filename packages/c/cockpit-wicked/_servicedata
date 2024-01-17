@@ -1,6 +1,0 @@
-<servicedata>
-<service name="tar_scm">
-                <param name="url">https://github.com/Nykseli/cockpit-wicked.git</param>
-              <param name="changesrevision">724a8ba948908fd4a4f8870127dc86939460bce8</param></service><service name="tar_scm">
-                <param name="url">https://github.com/openSUSE/cockpit-wicked.git</param>
-              <param name="changesrevision">82629da5860471d8cc871918790feb6751b2a9c3</param></service></servicedata>

@@ -1,5 +1,0 @@
-<package name="contractor" project="openSUSE:Factory">
-  <title>Contractor</title>
-  <description>A desktop-wide extension service.</description>
-  <devel project="X11:Pantheon" package="contractor"/>
-</package>

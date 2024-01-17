@@ -1,9 +1,0 @@
-README for SUSE packagers
-=========================
-Patches for chromium can typically be found in the following places:
-
-Stephan Hartmann - https://github.com/stha09/chromium-patches/releases
-Gentoo - https://gitweb.gentoo.org/repo/gentoo.git/tree/www-client/chromium/files
-Fedora - https://src.fedoraproject.org/rpms/chromium/tree/rawhide
-Arch - https://github.com/archlinux/svntogit-packages/tree/packages/chromium/trunk
-Arch: https://gitlab.com/Matt.Jolly/chromium-patches/

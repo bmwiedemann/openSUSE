@@ -1,5 +1,0 @@
-<package name="cargo-audit" project="openSUSE:Factory">
-  <title>Cargo Audit</title>
-  <description>Audit Cargo.lock files for crates with security vulnerabilities reported to the RustSec Advisory Database.</description>
-  <devel project="devel:languages:rust" package="cargo-audit"/>
-</package>

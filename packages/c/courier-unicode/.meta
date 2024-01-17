@@ -1,9 +1,0 @@
-<package name="courier-unicode" project="openSUSE:Factory">
-  <title>Courier Unicode Library</title>
-  <description>The Courier Unicode Library based on the Unicode 6.3.0 standard.
-This package holds all man pages.
-
-</description>
-  <devel project="server:mail" package="courier-unicode"/>
-  <url>http://www.courier-mta.org/</url>
-</package>

@@ -1,8 +1,0 @@
-<package name="cpmono_v07-fonts" project="openSUSE:Factory">
-  <title>Industrial Monotype Font</title>
-  <description>CPMono v07 is an industrial / high-tech monospace font.
-
-</description>
-  <devel project="M17N:fonts" package="cpmono_v07-fonts"/>
-  <url>http://www.fontsquirrel.com/fonts/CPMono_v07</url>
-</package>

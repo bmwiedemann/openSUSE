@@ -1,8 +1,0 @@
-<package name="chezmoi" project="openSUSE:Factory">
-  <title>chezmoi</title>
-  <description>Manage your dotfiles across multiple diverse machines, securely.
-
-chezmoi's documentation is at chezmoi.io.</description>
-  <devel project="utilities" package="chezmoi"/>
-  <url>https://github.com/twpayne/chezmoi</url>
-</package>

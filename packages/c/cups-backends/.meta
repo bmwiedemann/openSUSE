@@ -1,5 +1,0 @@
-<package name="cups-backends" project="openSUSE:Factory">
-  <title>Additional Backends for CUPS</title>
-  <description>This package contains free additional backends for CUPS.</description>
-  <devel project="Printing" package="cups-backends"/>
-</package>

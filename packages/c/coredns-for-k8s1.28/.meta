@@ -1,5 +1,0 @@
-<package name="coredns-for-k8s1.28" project="openSUSE:Factory">
-  <title>coredns-for-k8s1.28</title>
-  <description>coredns-for-k8s1.28</description>
-  <devel project="devel:kubic" package="coredns-for-k8s1.28"/>
-</package>

@@ -1,6 +1,0 @@
-<package name="calls" project="openSUSE:Factory">
-  <title>A phone dialer and call handler</title>
-  <description>A phone dialer and call handler.</description>
-  <devel project="GNOME:Factory" package="calls"/>
-  <url>https://gitlab.gnome.org/GNOME/calls</url>
-</package>

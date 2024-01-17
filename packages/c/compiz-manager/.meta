@@ -1,8 +1,0 @@
-<package name="compiz-manager" project="openSUSE:Factory">
-  <title>A wrapper script to launch Compiz with proper options</title>
-  <description>Compiz Manager wrapper script
-
-This script will detect what options we need to pass to compiz to get
-it started, and start a default plugin and possibly window decorator.</description>
-  <devel project="X11:Compiz" package="compiz-manager"/>
-</package>

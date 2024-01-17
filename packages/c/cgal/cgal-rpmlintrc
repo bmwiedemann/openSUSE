@@ -1,4 +1,0 @@
-# We prefer to let file needed by devs if transfered on other system
-# So sources are pure
-addFilter("zero-length /usr/share/CGAL/examples/Surface_mesher/skip_vcproj_auto_generation")
-addFilter("zero-length /usr/share/CGAL/examples/Ridges_3/skip_vcproj_auto_generation")

@@ -1,5 +1,0 @@
--------------------------------------------------------------------
-Wed Sep 20 18:59:36 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
-
-- Initial package version 1.10.1
-  * Version specified in kubernetes v1.28.2 -  https://github.com/kubernetes/kubernetes/blob/v1.28.2/build/dependencies.yaml#L32 

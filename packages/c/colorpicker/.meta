@@ -1,5 +1,0 @@
-<package name="colorpicker" project="openSUSE:Factory">
-  <title>Color Picker</title>
-  <description>An intuitive Color Picker</description>
-  <devel project="X11:Pantheon:Apps" package="colorpicker"/>
-</package>

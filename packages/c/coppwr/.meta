@@ -1,6 +1,0 @@
-<package name="coppwr" project="openSUSE:Factory">
-  <title>Low level PipeWire control GUI</title>
-  <description>coppwr is a tool that provides low level control over the PipeWire multimedia server.</description>
-  <devel project="multimedia:apps" package="coppwr"/>
-  <url>https://github.com/dimtpap/coppwr</url>
-</package>
