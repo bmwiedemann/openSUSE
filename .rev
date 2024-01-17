@@ -980,4 +980,15 @@
     <comment>New upstream release (forwarded request 1116723 from iznogood)</comment>
     <requestid>1117002</requestid>
   </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>9fc119c66508d733685102f11b2da546</srcmd5>
+    <version>3.12.4+3</version>
+    <time>1705526173</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.12.4+3:
+  + jxl: added support for version 0.9.0.
+  + Commenting a picture deletes its Color Profile tag.
+- Convert to source service for easier updating. (forwarded request 1139368 from dimstar)</comment>
+    <requestid>1139369</requestid>
+  </revision>
 </revisionlist>
