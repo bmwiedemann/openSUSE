@@ -1,6 +1,0 @@
-<package name="octave-forge-ga" project="openSUSE:Factory">
-  <title></title>
-  <description>Genetic optimization code.
-This is part of Octave-Forge project.</description>
-  <devel project="science" package="octave-forge-ga"/>
-</package>

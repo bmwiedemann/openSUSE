@@ -1,5 +1,0 @@
-<package name="kernel-install-tools" project="openSUSE:Factory">
-  <title>Tools for installing locally-built kernels</title>
-  <description>This project contains a few useful scripts to be used primarily by users building their own kernels outside of their distribution's package management system. Most distributions that enable kernels for UEFI Secure Boot have support for it integrated into the build rules for their kernel packages but these rules tend to be either inaccessible for direct use or overly complicated for the simple case of building a kernel for use only on local systems.</description>
-  <devel project="Kernel:tools" package="kernel-install-tools"/>
-</package>

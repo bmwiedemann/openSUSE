@@ -1,5 +1,0 @@
-<package name="konsole" project="openSUSE:Factory">
-  <title>KDE Terminal</title>
-  <description>Konsole is a terminal emulator for the K Desktop Environment.</description>
-  <devel project="KDE:Applications" package="konsole"/>
-</package>

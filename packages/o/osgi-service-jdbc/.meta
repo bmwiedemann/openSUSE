@@ -1,8 +1,0 @@
-<package name="osgi-service-jdbc" project="openSUSE:Factory">
-  <title>OSGi Service JDBC</title>
-  <description>OSGi Companion Code for org.osgi.service.jdbc Version 1.0.0.
-
-</description>
-  <devel project="Java:packages" package="osgi-service-jdbc"/>
-  <url>https://www.osgi.org</url>
-</package>

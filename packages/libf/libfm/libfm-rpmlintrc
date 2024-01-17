@@ -1,5 +1,0 @@
-# libfm is NOT a library and libgiofm.so is a gio plugin
-addFilter ("W: shlib-policy-excessive-dependency")
-addFilter ("W: shlib-unversioned-lib")
-addFilter ("W: shlib-policy-nonversioned-dir")
-addFilter ("W: shlib-policy-missing-lib")

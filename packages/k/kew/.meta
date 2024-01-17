@@ -1,6 +1,0 @@
-<package name="kew" project="openSUSE:Factory">
-  <title> A command-line music player</title>
-  <description>Listen to music in the terminal.</description>
-  <devel project="multimedia:apps" package="kew"/>
-  <url>https://github.com/ravachol/kew</url>
-</package>

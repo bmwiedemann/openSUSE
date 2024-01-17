@@ -1,5 +1,0 @@
-<package name="kubernetes1.28" project="openSUSE:Factory">
-  <title>kubernetes1.28</title>
-  <description>kubernetes1.28</description>
-  <devel project="devel:kubic" package="kubernetes1.28"/>
-</package>

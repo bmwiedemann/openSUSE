@@ -1,6 +1,0 @@
-<package name="libfm" project="openSUSE:Factory">
-  <title>A glib/gio-based lib used to develop file managers</title>
-  <description>A glib/gio-based lib used to develop file managers providing some
-file management utilities and related-widgets missing in gtk+/glib.</description>
-  <devel project="X11:lxde" package="libfm"/>
-</package>

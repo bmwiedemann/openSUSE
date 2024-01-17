@@ -1,7 +1,0 @@
-<package name="kbibtex" project="openSUSE:Factory">
-  <title>KBibTex</title>
-  <description>KBibTeX is a bibliography editor for KDE and is most often used in conjunction with Kile. KBibTeX's primary file format is BibTeX as known from LaTeX, but other formats such as RIS, PDF, or RTF can be imported and exported.
-
-https://userbase.kde.org/KBibTeX/en</description>
-  <devel project="KDE:Extra" package="kbibtex"/>
-</package>

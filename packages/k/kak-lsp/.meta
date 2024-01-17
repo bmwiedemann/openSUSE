@@ -1,6 +1,0 @@
-<package name="kak-lsp" project="openSUSE:Factory">
-  <title>kak-lsp</title>
-  <description>kak-lsp is a Language Server Protocol client for Kakoune implemented in Rust.</description>
-  <devel project="editors" package="kak-lsp"/>
-  <url>https://github.com/kak-lsp/kak-lsp</url>
-</package>

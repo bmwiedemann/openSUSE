@@ -1,6 +1,0 @@
-<package name="keyd" project="openSUSE:Factory">
-  <title></title>
-  <description>A key remapping daemon for linux</description>
-  <devel project="hardware" package="keyd"/>
-  <url>https://github.com/rvaiya/keyd</url>
-</package>

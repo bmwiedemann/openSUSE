@@ -1,6 +1,0 @@
-<package name="kyverno" project="openSUSE:Factory">
-  <title>kyverno CLI and kubectl plugin</title>
-  <description>The Kyverno Command Line Interface (CLI) is designed to validate and test policy behavior to resources prior to adding them to a cluster. The CLI can be used in CI/CD pipelines to assist with the resource authoring process to ensure they conform to standards prior to them being deployed. It can be used as a kubectl plugin or as a standalone CLI.</description>
-  <devel project="devel:kubic" package="kyverno"/>
-  <url>https://github.com/kyverno/kyverno</url>
-</package>
