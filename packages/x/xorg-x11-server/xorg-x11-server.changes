@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jan 16 13:41:43 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 21.1.11
+  * This release contains fixes for the issues reported in today's security
+    advisory: https://lists.x.org/archives/xorg/2024-January/061525.html
+
+  * CVE-2023-6816  (bsc#1218582)
+  * CVE-2024-0229  (bsc#1218583)
+  * CVE-2024-21885 (bsc#1218584)
+  * CVE-2024-21886 (bsc#1218585)
+  * CVE-2024-0408
+  * CVE-2024-0409
+- supersedes the following patches
+  * U_xephyr-Don-t-check-for-SeatId-anymore.patch
+  * U_bsc1217765-Xi-allocate-enough-XkbActions-for-our-buttons.patch
+  * U_bsc1217766-randr-avoid-integer-truncation-in-length-check-of-Pr.patch
+
+-------------------------------------------------------------------
 Sat Jan  6 20:01:20 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - u_miCloseScreen_check_for_null_pScreen_dev_private.patch
