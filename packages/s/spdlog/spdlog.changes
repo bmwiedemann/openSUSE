@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Jan 12 12:25:23 UTC 2024 - Bernd Ritter <comrad@opensuse.org>
+
+- Update spdlog to 1.13.0
+- Removed patch 2827.patch because mismatch with new release
+
+- Release notes 1.13.0:
+  * Qt Sink: Allow for darker colors for light backgrounds (#2817). Thanks to @krawq.
+  * Set CMAKE_BUILD_TYPE only for single-config generators (#2839). Thanks to @moritz-h.
+  * Provide spdlog_header_only in build directory export (#2846). Thanks to @robertmaynard.
+  * Add SPDLOG_TO_VERSION to compare spdlog version (#2853). Thanks to @kegechen.
+  * Support async_overflow_policy::discard_new (#2876). Thanks to @walkerlala.
+  * Make syslog_sink.h's syslog_prio_from_level protected (#2918). Thanks to @shannonbooth.
+  * Fix OS availability check of pthread_threadid_np for iOS (#2897). Thanks to @lowdesertpunk.
+  * Add .git-blame-ignore-revs to ignore clang-format related commits (#2899). Thanks to @lowdesertpunk.
+  * Match SPDLOG_CONSTEXPR_FUNC to FMT_CONSTEXPR (#2901). Thanks to @kkraus14.
+
+- Bugfixes:
+  * Check fd_ is not nullptr in file_helper to prevent possible crash if disk is full (#2972).
+  * Fix encoding issue in qt_sinks (#2862). Thanks to @neothenil and @tt4g .
+  * Fix wrong thread_id (TID) in systemd_sink.h (#2919). Thanks to @M010.
+  * Update example.cpp to fix the vector issue in bin_example (#2963). Thanks to @zhuzhzh.
+  * Fix MSVC compile flag for no exceptions (#2974). Thanks to @Programicus.
+  * Fix bug in circular_q::size() (#2820).
+  * Fix link to fmt license file (#2967).
+
+- Maintenance:
+  * Added and updated various tests for circular_q.
+  * Removed obsolete part from CMake configuration files (#2871). Thanks to @albert-github.
+  * Removed policy_max from cmake_minimum_required(..).
+  * Updated clang-format to google style and updated various formatting scripts.
+  * Bumped to catch2 v3.5.0.
+
+-------------------------------------------------------------------
 Sat Dec 30 16:58:29 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update symbol versioning pattern to actually match symbols
