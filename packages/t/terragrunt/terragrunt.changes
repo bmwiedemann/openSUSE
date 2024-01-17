@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 17 07:23:32 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.54.18:
+  * Fix cloning repos for the catalog command. (#2888)
+
+-------------------------------------------------------------------
 Mon Jan 15 19:10:30 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.54.17:
