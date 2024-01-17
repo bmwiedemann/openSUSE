@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 15 12:19:22 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Remove the deprecated perl-IO-Socket-INET6 dependency.
+  * Remove the dependency on perl(IO::Socket::INET6) as it has been
+    deprecated by upstream, is no longer suitable for use and its not
+    being maintained. A compatible replacement for this package is
+    perl(IO::Socket::IP) which is shipped by the perl-base package.
+  * In the sources, the perl(IO::Socket::IP) is preferred over INET6.
+
+-------------------------------------------------------------------
 Mon Jul 17 07:10:08 UTC 2023 - Flavio Castelli <fcastelli@suse.com>
 
 - Fix building with protobuf 23.3: this version of protobuf doesn't support
