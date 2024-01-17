@@ -1,0 +1,63 @@
+mod_auth_mellon Diagnostic Information
+======================================
+
+This file contains information about diagnostic logging that helps
+to identify the source of the problems with your mod_auth_mellon
+deployment.
+
+
+Mellon Diagnostics
+------------------
+"Mellon Diagnostic" is a feature, that extends the classic DEBUG
+messages to the Apache error log (which is often incomplete and mixed
+with other irrelevant messages). It gathers all relevant information
+in a human-readable format in a single file without other irrelevant
+Apache messages, and without the need for any post-processing of the
+log data. For more details please see "Mellon Diagnostics" section
+in the documentation.
+
+
+Install and load the diagnostic module
+--------------------------------------
+Diagnostic logging must be compiled into mod_auth_module at build
+time, but it adds an overhead to the execution. Therefore SUSE
+provides two separate RPM packages - one without diagnostics and the
+second with diagnostics enabled:
+
+  - apache2-mod_auth_mellon
+    * apache module with diagnostic feature DISABLED ('mod_auth_mellon.so')
+    * production usage
+
+  - apache2-mod_auth_mellon-diagnostics
+    * apache module with diagnostics ENABLED ('mod_auth_mellon-diagnostics.so')
+    * debugging purposes only
+
+!!! IMPORTANT !!!
+Diagnostic logging may potentially contain security-sensitive
+information. Therefore you should enable diagnostic logging only
+for the minimum duration necessary.
+
+Both modules can be installed simultaneously but Apache will only
+load one of the two modules. You need to add a 'LoadModule' directive
+for either 'mod_auth_mellon.so' or 'mod_auth_mellon-diagnostics.so' into
+your configuration file:
+
+    # Load normal mod_auth_mellon module
+    LoadModule auth_mellon_module /usr/lib64/apache2/mod_auth_mellon.so
+
+or
+
+    # Load diagnostic version of mod_auth_mellon module
+    LoadModule auth_mellon_module /usr/lib64/apache2/mod_auth_mellon-diagnostics.so
+
+Don't forget to change it back when you are done debugging!
+
+
+Enable diagnostic logging
+-------------------------
+When you have 'mod_auth_mellon-diagnostics.so' module loaded, enable diagnostic
+logging by adding the following line to your configuration file and restart
+Apache.
+
+    MellonDiagnosticsEnable On
+

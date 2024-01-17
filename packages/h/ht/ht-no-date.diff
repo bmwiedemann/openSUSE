@@ -1,0 +1,23 @@
+From: Jan Engelhardt <jengelh@inai.de>
+
+src: remove __DATE__/__TIME__ indicators
+
+The presence of these macros causes every build to differ.
+
+---
+ main.cc |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: ht-2.1.0/main.cc
+===================================================================
+--- ht-2.1.0.orig/main.cc
++++ ht-2.1.0/main.cc
+@@ -47,7 +47,7 @@
+ 
+ const char *htcopyrights[]=
+ {
+-	ht_name" "ht_version" (%s) "__TIME__" on "__DATE__,
++	ht_name" "ht_version" (%s)",
+ 	ht_copyright1,
+ 	ht_copyright2,
+ 	NULL

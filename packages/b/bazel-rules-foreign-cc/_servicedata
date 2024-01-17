@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/bazelbuild/rules_foreign_cc</param>
+              <param name="changesrevision">7bc4be735b0560289f6b86ab6136ee25d20b65b7</param></service></servicedata>

@@ -1,0 +1,44 @@
+##
+# Complete lang subpackage definition.
+#
+# Parameters:
+# 1. language code
+# 2. language name
+#
+%man_lang_package()\
+%package -n man-pages-%{1}\
+Summary:       Translation of man pages in %{2}\
+Requires:      man-pages\
+Provides:      locale(man-pages:%{1})\
+BuildArch:     noarch\
+\
+%description -n man-pages-%{1}\
+This package provides translations of man pages in %{2}.\
+\
+%files -n man-pages-%{1}\
+%doc AUTHORS.md CHANGES.md README.md\
+%%license COPYRIGHT.md LICENSE\
+%{_mandir}/%{1}
+
+##
+# The distribution building the package. If not recognized, defaults to debian-unstable.
+#
+%distribution_id %{lua:
+  local sle_version = tonumber(rpm.expand("%{sle_version}"))
+  local suse_version = tonumber(rpm.expand("%{suse_version}"))
+  local fedora_version = tonumber(rpm.expand("%{fedora}"))
+  local mageia_version = tonumber(rpm.expand("%{mageia}"))
+  if sle_version == 150600 then
+    print("opensuse-leap-15-6")
+  elseif suse_version ~= nil and suse_version > 1500 then
+    print("opensuse-tumbleweed")
+  elseif fedora_version == 39 then
+    print("fedora-39")
+  elseif fedora_version == 99 then
+    print("fedora-rawhide")
+  elseif mageia_version == 99 then
+    print("mageia-cauldron")
+  else
+    print("debian-unstable")
+  end
+}

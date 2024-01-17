@@ -1,0 +1,6 @@
+<package name="manpages-l10n" project="openSUSE:Factory">
+  <title></title>
+  <description>This project provides an infrastructure for translating man pages to different languages.</description>
+  <devel project="Documentation" package="manpages-l10n"/>
+  <url>https://salsa.debian.org/manpages-l10n-team/manpages-l10n</url>
+</package>

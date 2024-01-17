@@ -1,0 +1,10 @@
+<package name="perl-Text-Reform" project="openSUSE:Factory">
+  <title>Manual text wrapping and reformatting</title>
+  <description>The module supplies a re-entrant, highly configurable replacement
+for the built-in Perl format() mechanism.
+
+Author:
+-------
+        Damian Conway &lt;damian@conway.org&gt;</description>
+  <devel project="devel:languages:perl" package="perl-Text-Reform"/>
+</package>

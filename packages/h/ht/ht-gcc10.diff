@@ -1,0 +1,84 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2017-06-07 13:48:49.472854532 +0200
+
+[   53s] htapp.cc:3026:18: error: call of overloaded 'abs(uint)' is ambiguous
+[   53s] /usr/include/c++/7/bits/std_abs.h:56:3: note: candidate: long int std::abs(long int)
+[   53s] /usr/include/c++/7/bits/std_abs.h:61:3: note: candidate: long long int std::abs(long long int)
+[   53s] /usr/include/c++/7/bits/std_abs.h:70:3: note: candidate: constexpr double std::abs(double)
+[   53s] /usr/include/c++/7/bits/std_abs.h:74:3: note: candidate: constexpr float std::abs(float)
+[   53s] /usr/include/c++/7/bits/std_abs.h:78:3: note: candidate: constexpr long double std::abs(long double)
+[...]
+
+---
+ cmds.h       |    2 +-
+ htapp.cc     |    2 +-
+ htmacho.cc   |    2 +-
+ htmachohd.cc |    2 +-
+ io/types.h   |    2 +-
+ 5 files changed, 5 insertions(+), 5 deletions(-)
+
+Index: ht-2.1.0/cmds.h
+===================================================================
+--- ht-2.1.0.orig/cmds.h
++++ ht-2.1.0/cmds.h
+@@ -25,7 +25,7 @@
+ 
+ #define CMD	uint32
+ 
+-#define msg_command				0x80000000
++#define msg_command				0x80000000U
+ #define HT_COMMAND(c)				(msg_command+(c))
+ 
+ #define cmd_quit				HT_COMMAND(100)
+Index: ht-2.1.0/htapp.cc
+===================================================================
+--- ht-2.1.0.orig/htapp.cc
++++ ht-2.1.0/htapp.cc
+@@ -3023,7 +3023,7 @@ static uint isqr(uint u)
+ {
+ 	uint a = 2;
+ 	uint b = u/a;
+-	while (abs(a - b) > 1) {
++	while (abs(static_cast<long>(a - b)) > 1) {
+ 		a = (a+b)/2;
+ 		b = u/a;
+         }
+Index: ht-2.1.0/htmacho.cc
+===================================================================
+--- ht-2.1.0.orig/htmacho.cc
++++ ht-2.1.0/htmacho.cc
+@@ -146,7 +146,7 @@ void ht_macho::init(Bounds *b, File *f,
+ 				break;
+ 			case MACHO_CPU_TYPE_I386:
+ 				switch (c->flavor) {
+-				case -1:
++				case static_cast<unsigned int>(-1):
+ 					createHostStruct(&c->state, MACHO_I386_THREAD_STATE_struct, image_endianess);
+ 					break;
+ 				}
+Index: ht-2.1.0/htmachohd.cc
+===================================================================
+--- ht-2.1.0.orig/htmachohd.cc
++++ ht-2.1.0/htmachohd.cc
+@@ -313,7 +313,7 @@ static ht_view *htmachoheader_init(Bound
+ 				switch (macho_shared->header.cputype) {
+ 				case MACHO_CPU_TYPE_I386:
+ 					switch (c->flavor) {
+-					case -1:
++					case static_cast<unsigned int>(-1):
+ 						m->add_staticmask_ptable(macho_i386_thread_state, ofs+4*4/*4 32bit words in thread_header*/, isbigendian);
+ 						break;
+ 					}
+Index: ht-2.1.0/io/types.h
+===================================================================
+--- ht-2.1.0.orig/io/types.h
++++ ht-2.1.0/io/types.h
+@@ -87,7 +87,7 @@ union htmsg_param {
+ };
+ 
+ struct htmsg {
+-	int msg;
++	unsigned int msg;
+ 	int type;
+ 	htmsg_param data1;
+ 	htmsg_param data2;

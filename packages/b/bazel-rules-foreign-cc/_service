@@ -1,0 +1,15 @@
+<services>
+  <service mode="disabled" name="tar_scm">
+    <param name="url">https://github.com/bazelbuild/rules_foreign_cc</param>
+    <param name="scm">git</param>
+    <param name="changesgenerate">enable</param>
+    <param name="filename">bazel-rules-foreign-cc</param>
+    <param name="versionformat">%cd</param>
+    <param name="revision">7bc4be735b0560289f6b86ab6136ee25d20b65b7</param>
+  </service>
+  <service mode="disabled" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="disabled" name="set_version"/>
+</services>

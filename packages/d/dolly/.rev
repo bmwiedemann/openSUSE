@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cbc8209ae7e9f9619988a8ad1a8b647b</srcmd5>
+    <version>0.63.1</version>
+    <time>1612901800</time>
+    <user>dimstar_suse</user>
+    <comment>dolly can be used to distribute images to a bunch of machines in a tree like structure</comment>
+    <requestid>870626</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>96b1ba77b2a6253a29d72ffa8a5d34ee</srcmd5>
+    <version>0.63.4</version>
+    <time>1623098653</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to v0.63.4 which builds with gcc-11</comment>
+    <requestid>898117</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2dc5f610c922ec1234c4cc3d822b30d1</srcmd5>
+    <version>0.63.6</version>
+    <time>1637228040</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>931987</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9b48c5049605be1987f53804e3823865</srcmd5>
+    <version>0.64.1</version>
+    <time>1648063164</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>964340</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1b3bf79f3afbcb8397c3b82662fd42d3</srcmd5>
+    <version>0.64.2</version>
+    <time>1648159106</time>
+    <user>dimstar_suse</user>
+    <comment>upated to 0.64.2 (forwarded request 964637 from mslacken)</comment>
+    <requestid>964638</requestid>
+  </revision>
+</revisionlist>

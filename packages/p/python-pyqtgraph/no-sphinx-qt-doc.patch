@@ -1,0 +1,14 @@
+--- pyqtgraph-pyqtgraph-0.13.3/doc/source/conf.py.orig	2023-06-20 11:24:26.721006300 +0200
++++ pyqtgraph-pyqtgraph-0.13.3/doc/source/conf.py	2023-06-20 11:51:34.297913600 +0200
+@@ -37,11 +37,6 @@ extensions = [
+     "sphinx.ext.viewcode",
+     "sphinx.ext.napoleon",
+     "sphinx.ext.intersphinx",
+-    "sphinx_qt_documentation",
+-    "sphinx_design",
+-    "sphinx_favicon",
+-    "sphinxext.rediraffe",
+-    "sphinxcontrib.images",
+ ]
+ 
+ # Add any paths that contain templates here, relative to this directory.

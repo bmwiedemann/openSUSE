@@ -1,0 +1,203 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4efb61647d1760c3dd442726a923528f</srcmd5>
+    <version>4.1.0</version>
+    <time>1600801272</time>
+    <user>dimstar_suse</user>
+    <comment>This package provides translations of man pages in different languages provided by the manpages-l10n project: https://manpages-l10n-team.pages.debian.net/manpages-l10n/.
+
+This will obsolete current packages man-pages-fr &amp; man-pages-fr-extra (to be removed from Tumbleweed and from Documentation project) and man-pages-de (to be removed from Packman) which are quite outdated.</comment>
+    <requestid>824378</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ee0edab4183579509f7dfe8748d1c1f8</srcmd5>
+    <version>4.2.0</version>
+    <time>1602857656</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.2.0:
+  * Updated and added many translations.
+  * Still skip Italian and Spanish, will be included in the next
+    or any future release.</comment>
+    <requestid>842000</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f00ee8cf4c318026fcfa0ebc2e8eeca2</srcmd5>
+    <version>4.9.3</version>
+    <time>1617130847</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 4.9.3:
+  * Final release for Debian Bullseye.
+  * Updated many translations.
+
+- Update to version 4.9.2:
+  * Remove man pages of procps/procps-ng, now maintained upstream;
+    only Debian Buster keeps the files for possible backports
+    (boo#1182517).
+  * Updated and added many translations.
+
+- Update to version 4.9.1:
+  * Updated and added many translations.
+
+- Simplify macro definitions.
+
+- Update to version 4.9.0~pre1:
+  * Updated and added many translations.
+  * Enable Italian, Spanish and Macedonian.
+  * Still skip Czech, it's in a very early state.
+- Cosmetic changes in comments and in the distribution_id macro.</comment>
+    <requestid>878082</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7f450f0339f063dfffb9661c905d1268</srcmd5>
+    <version>4.9.3+406</version>
+    <time>1618387887</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.9.3+406:
+  * Add support for openSUSE Leap 15.3.
+  * Enable Czech and Danish.
+  * Updated many translations.
+- Update distribution_id macro to handle openSUSE Leap 15.3.
+</comment>
+    <requestid>885172</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d820b52e134a07321db9cb770652faec</srcmd5>
+    <version>4.10.0</version>
+    <time>1623618377</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.10.0: Updated many translations.</comment>
+    <requestid>899824</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>583846ab6b9e9f323ea414c049dd56a6</srcmd5>
+    <version>4.11.0</version>
+    <time>1631739080</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>919017</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c0a2e65e03f0752efc29f57bed4c712b</srcmd5>
+    <version>4.12.1</version>
+    <time>1640030771</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.12.1:
+  * Bugfix: Enable new languages in po/Makefile.am.
+- Changes from version 4.12.0:
+  * New languages: Finnish, Greek, Indonesian, Norwegian bokmål,
+    Swedish, Serbian.
+  * Persian (fa) is in a very early state; still disabled.
+  * Updated and added many translations.
+- Upgrade macros: Build for Leap has been upgraded to 15.4 - build
+  for 15.3 has been dropped upstream.
+</comment>
+    <requestid>941522</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>568a81005fdeeaf8dc502b77225071b4</srcmd5>
+    <version>4.13</version>
+    <time>1645461993</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>956191</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d7d5336db2e99848ebd27b6e5961eac2</srcmd5>
+    <version>4.13+56</version>
+    <time>1645891343</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>957770</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>46baae5ee8d301243493b7ff9eca430b</srcmd5>
+    <version>4.14.0</version>
+    <time>1651784795</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>974998</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6fa44406f699bde7e2b0be6f7fc78708</srcmd5>
+    <version>4.15.0</version>
+    <time>1660144461</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove ethers.5 German translation already provided by net-tools
+  (https://salsa.debian.org/manpages-l10n-team/manpages-l10n/-/issues/8).
+- Update to version 4.15.0: Updated many translations.
+</comment>
+    <requestid>994339</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>c29fb38fb3b5966691153fb55fc73d94</srcmd5>
+    <version>4.15.0</version>
+    <time>1660235534</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>994390</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>6b5587e8ea514229c11d3c1541fb0948</srcmd5>
+    <version>4.15.0</version>
+    <time>1661593822</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>999490</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5663e4412b3a2cb4132cfabda8c0f58e</srcmd5>
+    <version>4.16.0</version>
+    <time>1669484718</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1038259</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>72ae7019c81405bd36c709f676981e93</srcmd5>
+    <version>4.17.0</version>
+    <time>1674043935</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1059174</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>0d4019209597b9a795fc9711556261b1</srcmd5>
+    <version>4.18.0</version>
+    <time>1678482547</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1070736</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>55ef4ffe09f8d7ba96fb0b1e59ab84a4</srcmd5>
+    <version>4.18.1</version>
+    <time>1681058461</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1078130</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>e34db81c5c44071962b65ea7d37a56a2</srcmd5>
+    <version>4.19.0</version>
+    <time>1685830354</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1090529</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>25fb2ce2794c2023c2eeba2b276a51fd</srcmd5>
+    <version>4.20.0</version>
+    <time>1694019496</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1109131</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>171dec58b05099f9729d0ff1a4a6634d</srcmd5>
+    <version>4.21.0</version>
+    <time>1702936544</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1133762</requestid>
+  </revision>
+</revisionlist>

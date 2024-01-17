@@ -1,0 +1,136 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7af18b5bbac92b908406d1eda25e63e8</srcmd5>
+    <version>1.11</version>
+    <time>1250003917</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Text-Reform based on submit request 17449 from user coolo
+</comment>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>7af18b5bbac92b908406d1eda25e63e8</srcmd5>
+    <version>1.11</version>
+    <time>1250003917</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Text-Reform based on submit request 17449 from user coolo
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e01801019732fc7c56a8a602692f2a71</srcmd5>
+    <version>1.20</version>
+    <time>1263034334</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Text-Reform based on submit request 28339 from user coolo
+</comment>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>edebbe85c79259e4887a683eb80b7d9d</srcmd5>
+    <version>1.20</version>
+    <time>1263225760</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Text-Reform based on submit request 28953 from user coolo
+</comment>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>168f35b5be074d21d009f038a12cc660</srcmd5>
+    <version>1.20</version>
+    <time>1268925636</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>168f35b5be074d21d009f038a12cc660</srcmd5>
+    <version>1.20</version>
+    <time>1278667380</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>168f35b5be074d21d009f038a12cc660</srcmd5>
+    <version>1.20</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>52e39c3dca378039a141cdb85d653655</srcmd5>
+    <version>1.20</version>
+    <time>1280712614</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Text-Reform based on submit request 44066 from user computersalat
+</comment>
+    <requestid>44066</requestid>
+  </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>7d4439422ec87e41f462b102e4f04a13</srcmd5>
+    <version>1.20</version>
+    <time>1291584258</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54675 from user coolo
+</comment>
+    <requestid>54675</requestid>
+  </revision>
+  <revision rev="10" vrev="9">
+    <srcmd5>7f3285c30933ebb007aa0bb108709865</srcmd5>
+    <version>1.20</version>
+    <time>1291584263</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54675
+</comment>
+  </revision>
+  <revision rev="11" vrev="12">
+    <srcmd5>7f3285c30933ebb007aa0bb108709865</srcmd5>
+    <version>1.20</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="14">
+    <srcmd5>7f3285c30933ebb007aa0bb108709865</srcmd5>
+    <version>1.20</version>
+    <time>1319182316</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="15">
+    <srcmd5>1fec495f0965c16b8cf8072f4754804d</srcmd5>
+    <version>1.20</version>
+    <time>1321630796</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>92101</requestid>
+  </revision>
+  <revision rev="14" vrev="16">
+    <srcmd5>dea1bd0d58619f0cdd164ef72b73f530</srcmd5>
+    <version>1.20</version>
+    <time>1323193739</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="15" vrev="18">
+    <srcmd5>dea1bd0d58619f0cdd164ef72b73f530</srcmd5>
+    <version>1.20</version>
+    <time>1340183941</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="20">
+    <srcmd5>dea1bd0d58619f0cdd164ef72b73f530</srcmd5>
+    <version>1.20</version>
+    <time>1359109829</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="22">
+    <srcmd5>dea1bd0d58619f0cdd164ef72b73f530</srcmd5>
+    <version>1.20</version>
+    <time>1379663895</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="24">
+    <srcmd5>dea1bd0d58619f0cdd164ef72b73f530</srcmd5>
+    <version>1.20</version>
+    <time>1409302541</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

@@ -1,0 +1,11 @@
+<package name="bwidget" project="openSUSE:Factory">
+  <title>A Set of Megawidgets for Tcl/Tk</title>
+  <description>Add useful and nice-looking widgets to your interfaces with the BWidget
+Toolkit, a set of native Tk 8.x Widgets using Tcl8.x namespaces. The
+BWidgets have a professional look and feel as in other well-known
+toolkits (Tix or Incr Widget). However, the concept is radically
+different because everything is native. There is no platform
+compilation and no compiled extension libraries are needed. The code is
+in pure Tcl/Tk.</description>
+  <devel project="devel:languages:tcl" package="bwidget"/>
+</package>

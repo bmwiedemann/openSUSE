@@ -1,0 +1,6 @@
+<package name="gimp-help" project="openSUSE:Factory">
+  <title>Help System Data for GIMP</title>
+  <description>GIMP-Help is a help system designed for use with the internal GIMP help
+browser, external Web browser and HTML renderers, and human eyeballs.</description>
+  <devel project="graphics" package="gimp-help"/>
+</package>
