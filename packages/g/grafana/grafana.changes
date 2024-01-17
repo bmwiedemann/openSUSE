@@ -1161,7 +1161,7 @@ Thu Apr  6 15:03:14 UTC 2023 - Marius Kittler <marius.kittler@suse.com>
     - Alerting: Update scheduler to receive rule updates only
       from database.
     - Influxdb: Re-introduce backend migration feature toggle.
-    - Security: Fixes for CVE-2023-1410.
+    - Security: Fixes for CVE-2023-1410 (bsc#1209645).
   * Breaking changes
     The InfluxDB backend migration feature toggle
     (influxdbBackendMigration) has been reintroduced in this
@@ -2048,11 +2048,11 @@ Mon Feb 16 16:45:00 UTC 2023 - marius.kittler@suse.com
     - **CSRF:** Fix additional headers option.
     - **Chore:** Bump parse-url to 6.0.2 to fix security
       vulnerabilities.
-    - **Chore:** Fix CVE-2020-7753.
-    - **Chore:** Fix CVE-2021-3807.
-    - **Chore:** Fix CVE-2021-3918.
-    - **Chore:** Fix CVE-2021-43138.
-    - **Chore:** Fix CVE-2022-0155.
+    - **Chore:** Fix CVE-2020-7753 (bsc#1218843).
+    - **Chore:** Fix CVE-2021-3807 (bsc#1192154).
+    - **Chore:** Fix CVE-2021-3918 (bsc#1192696).
+    - **Chore:** Fix CVE-2021-43138 (bsc#1200480).
+    - **Chore:** Fix CVE-2022-0155 (bsc#1218844).
     - **Custom Branding:** Fix login logo size. (Enterprise)
     - **Dashboard:** Fixes tooltip issue with TimePicker and
       Setting buttons.
@@ -2070,7 +2070,6 @@ Mon Feb 16 16:45:00 UTC 2023 - marius.kittler@suse.com
     - **Reports:** Fix line breaks in message. (Enterprise)
     - **Reports:** Fix saving report formats. (Enterprise)
     - **SQLstore:** Fix fetching an inexistent playlist.
-    - **Security:** Fixes for CVE-2022-31107 and CVE-2022-31097.
     - **Snapshots:** Fix deleting external snapshots when using
       RBAC.
     - **Table:** Fix scrollbar being hidden by pagination.
@@ -2588,9 +2587,6 @@ Mon Aug 25 09:00:00 UTC 2022 - Marius Kittler <marius.kittler@suse.com>
   + Bug fixes (8.5.10):
     * RBAC: Fix Anonymous Editors missing dashboard controls.
       #52649, @gamab
-  + Bug fixes (8.5.9):
-    * Security: Fixes for CVE-2022-31107 and CVE-2022-31097.
-      #52238, @xlson
   + Bug fixes (8.5.6):
     * Dashboard: Fixes random scrolling on time range change.
       #50379, @torkelo
@@ -2696,8 +2692,6 @@ Mon Aug 25 09:00:00 UTC 2022 - Marius Kittler <marius.kittler@suse.com>
         DataResponse, the resulting HTTP status code is 400 Bad
         Request (no breaking change)
         --> Issue #48550
-  + Bug fixes (8.5.3):
-    * Security: fixes CVE-2022-29170. #49240, @xlson
   + Features and enhancements (8.5.2):
     * Alerting: Add safeguard for migrations that might cause
       dataloss. #48526, @JohnnyQQQQ
@@ -3152,11 +3146,7 @@ Thu Jan 20 14:01:12 UTC 2022 - witold.bedyk@suse.com
       variables.
 
 - Update to version 8.3.2
-  + Security: Fixes CVE-2021-43813 and CVE-2021-43815,
-    bsc#1193686.
-
-- Update to version 8.3.1
-  + Security: Fixes CVE-2021-43798, bsc#1193492.
+  + Security: Fixes CVE-2021-43815, bsc#1193686.
 
 - Update to version 8.3.0
   + Features and enhancements:
@@ -3306,9 +3296,6 @@ Thu Jan 20 14:01:12 UTC 2022 - witold.bedyk@suse.com
     * ValueMapping: Fixes issue with regex mappings.
   + Plugin development fixes & changes:
     * grafana/ui: Enable slider marks display.
-
-- Update to version 8.2.7
-  + Security: Fixes CVE-2021-43798.
 
 - Update to version 8.2.6
   + Features and enhancements:
@@ -3552,9 +3539,6 @@ Thu Jan 20 14:01:12 UTC 2022 - witold.bedyk@suse.com
       is set to All.
   + Plugin development fixes & changes:
     * Grafana UI: Fix TS error property css is missing in type.
-
-- Update to version 8.1.8
-  + Security: Fixes CVE-2021-43798.
 
 - Update to version 8.1.7
   + Bug fixes:
@@ -3804,7 +3788,7 @@ Thu Jan 20 14:01:12 UTC 2022 - witold.bedyk@suse.com
     * Toolkit: Improve error messages when tasks fail.
 
 - Update to version 8.0.7
-  + Security: Fixes CVE-2021-43798.
+  + Security: Fixes CVE-2021-43798, bsc#1193492.
 
 - Update to version 8.0.6
   + Features and enhancements:
