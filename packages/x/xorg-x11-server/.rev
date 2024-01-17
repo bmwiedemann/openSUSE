@@ -3991,4 +3991,24 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
     U_bsc1216261-0002-fb-properly-wrap-unwrap-CloseScreen.patch</comment>
     <requestid>1137765</requestid>
   </revision>
+  <revision rev="424" vrev="1">
+    <srcmd5>512ff8a0a0e14de4f73571d3df271963</srcmd5>
+    <version>21.1.11</version>
+    <time>1705526103</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 21.1.11
+  * This release contains fixes for the issues reported in today's security
+    advisory: https://lists.x.org/archives/xorg/2024-January/061525.html
+  * CVE-2023-6816  (bsc#1218582)
+  * CVE-2024-0229  (bsc#1218583)
+  * CVE-2024-21885 (bsc#1218584)
+  * CVE-2024-21886 (bsc#1218585)
+  * CVE-2024-0408
+  * CVE-2024-0409
+- supersedes the following patches
+  * U_xephyr-Don-t-check-for-SeatId-anymore.patch
+  * U_bsc1217765-Xi-allocate-enough-XkbActions-for-our-buttons.patch
+  * U_bsc1217766-randr-avoid-integer-truncation-in-length-check-of-Pr.patch</comment>
+    <requestid>1139223</requestid>
+  </revision>
 </revisionlist>

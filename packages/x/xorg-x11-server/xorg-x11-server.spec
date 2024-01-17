@@ -36,14 +36,14 @@
 %endif
 
 Name:           xorg-x11-server
-Version:        21.1.9
+Version:        21.1.11
 Release:        0
 URL:            http://xorg.freedesktop.org/
 Summary:        X
 License:        MIT
 Group:          System/X11/Servers/XF86_4
-Source0:        https://xorg.freedesktop.org/archive/individual/xserver/xorg-server-%{version}.tar.xz
-Source10:       https://xorg.freedesktop.org/archive/individual/xserver/xorg-server-%{version}.tar.xz.sig
+Source0:        https://xorg.freedesktop.org/archive/individual/xserver/xorg-server-%{version}.tar.gz
+Source10:       https://xorg.freedesktop.org/archive/individual/xserver/xorg-server-%{version}.tar.gz.sig
 Source11:       xorg-x11-server.keyring
 Source1:        sysconfig.displaymanager.template
 Source2:        README.updates
@@ -239,12 +239,7 @@ Patch1921:      u_xf86-Accept-devices-with-the-kernels-ofdrm-driver.patch
 
 Patch1930:      u_xfree86-activate-GPU-screens-on-autobind.patch
 
-Patch1940:      U_xephyr-Don-t-check-for-SeatId-anymore.patch
-
 Patch1960:      u_sync-pci-ids-with-Mesa.patch
-
-Patch1217765:   U_bsc1217765-Xi-allocate-enough-XkbActions-for-our-buttons.patch
-Patch1217766:   U_bsc1217766-randr-avoid-integer-truncation-in-length-check-of-Pr.patch
 
 Patch1218176:   u_miCloseScreen_check_for_null_pScreen_dev_private.patch
 
@@ -403,11 +398,7 @@ sh %{SOURCE92} --verify . %{SOURCE91}
 %patch1920 -p1
 %patch1921 -p1
 %patch1930 -p1
-%patch1940 -p1
 %patch1960 -p1
-
-%patch1217765 -p1
-%patch1217766 -p1
 
 %patch1218176 -p1
 
