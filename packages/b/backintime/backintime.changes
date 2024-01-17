@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan  7 23:31:02 UTC 2024 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
+
+- Add backintime-python_location.patch to manually specify python and allow build on Leap 15.5
+- Re-add missing Group and Provides tags
+
+-------------------------------------------------------------------
 Fri Nov  3 21:29:18 UTC 2023 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - update to 1.4.1:

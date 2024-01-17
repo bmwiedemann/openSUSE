@@ -1,7 +1,7 @@
 #
 # spec file for package backintime
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,17 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%define pythons python3
+%else
+%{?sle15_python_module_pythons}
+%endif
+
 Name:           backintime
 Version:        1.4.1
 Release:        0
 Summary:        Backup tool for Linux inspired by the "flyback project"
+Group:          Productivity/Archiving/Backup
 License:        GPL-2.0-or-later
 URL:            https://github.com/bit-team/backintime
 Source0:        https://github.com/bit-team/backintime/releases/download/v%{version}/%{name}-%{version}.tar.gz
@@ -28,19 +35,30 @@ Source2:        %{name}.keyring
 Source3:        %{name}.png
 # PATCH-FEATURE-OPENSUSE %%{name}-polkit_priv_downgrade.patch boo#1007723
 Patch0:         %{name}-polkit_priv_downgrade.patch
+# PATCH-FEATURE-UPSTREAM %%{name}-python_location.patch
+Patch1:         %{name}-python_location.patch
+BuildRequires:  %{python_module devel >= 3.8}
+# TEST REQUIREMENTS (only works on real hardware)
+#BuildRequires:  %#{python_module packaging}
+#BuildRequires:  %#{python_module dbus-python}
+#BuildRequires:  %#{python_module keyring}
+#BuildRequires:  %#{python_module pyfakefs}
+#BuildRequires:  openssh
+#BuildRequires:  rsync
+#BuildRequires:  udev
+# /TEST REQUIREMENTS
+BuildConflicts: python3-devel < 3.8
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  python3-devel >= 3.8
+BuildRequires:  python-rpm-macros
 BuildRequires:  update-desktop-files
+Requires:       %{python_flavor}-dbus-python
+Requires:       %{python_flavor}-keyring
+Requires:       %{python_flavor}-packaging
 Requires:       cron
-Requires:       dbus-1-python3
 Requires:       openssh
-%if 0%{?suse_version} > 1500
 Requires:       pkexec
-%endif
 Requires:       python3 >= 3.8
-Requires:       python3-keyring
-Requires:       python3-packaging
 Requires:       rsync
 Recommends:     encfs
 Recommends:     sshfs
@@ -65,13 +83,14 @@ You only need to specify 3 things:
 %package qt
 Summary:        Back In Time Qt5 GUI
 Requires:       %{name} = %{version}
-Requires:       dbus-1-python3
+Requires:       %{python_flavor}-dbus-python
+Requires:       %{python_flavor}-qt5
 Requires:       libqt5-qttranslations
 Requires:       polkit
-Requires:       python3-qt5
 # used as a fallback in case of missing icons
 Recommends:     oxygen5-icon-theme
-Obsoletes:      backintime-qt4
+Obsoletes:      backintime-qt4 < %{version}
+Provides:       backintime-qt4 = %{version}-%{release}
 
 %description qt
 This package has a Qt5 GUI for %{name}.
@@ -81,6 +100,7 @@ This package has a Qt5 GUI for %{name}.
 %prep
 %setup -q
 %patch0
+%patch1 -p1
 
 %build
 
@@ -94,14 +114,14 @@ sed -i -e "s|backintime-common|backintime|g" common/configure qt/configure
 sed -i 's/Icon=document-save/Icon=backintime/g' qt/backintime-qt.desktop qt/backintime-qt-root.desktop
 
 # Fix shebangs
-sed -i 's|/usr/bin/env python|#!/usr/bin/python|g' common/askpass.py
+%python_expand sed -i "s|/usr/bin/env python|#!/usr/bin/$python|g" common/askpass.py
 
 pushd common
-./configure --python3
+%python_expand ./configure --python="%{_bindir}/$python"
 make %{?_smp_mflags}
 popd
-pushd  qt
-./configure --python3
+pushd qt
+%python_expand ./configure --python="%{_bindir}/$python"
 make %{?_smp_mflags}
 popd
 
@@ -123,6 +143,11 @@ install -D -m 644 %{SOURCE3} %{buildroot}/%{_datadir}/pixmaps/%{name}.png
 
 %find_lang %{name} --without-kde --without-gnome
 
+#%#check  # Only works on real hardware
+#pushd common
+#make test
+#popd
+
 %postun
 rm -f %{_sysconfdir}/udev/rules.d/99-backintime-*.rules
 
@@ -138,7 +163,7 @@ rm -f %{_sysconfdir}/udev/rules.d/99-backintime-*.rules
 %{_mandir}/man1/%{name}-askpass.1%{ext_man}
 %{_mandir}/man1/%{name}-config.1%{ext_man}
 %{_mandir}/man1/%{name}.1%{ext_man}
-%{_sysconfdir}/xdg/autostart/backintime.desktop
+%config %{_sysconfdir}/xdg/autostart/backintime.desktop
 %exclude %{_docdir}/%{name}-*/
 %exclude %{_datadir}/%{name}/qt
 %exclude %{_datadir}/%{name}/plugins
