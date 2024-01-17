@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6608d3004931ad4e43c27528e3939811</srcmd5>
+    <version>1.2</version>
+    <time>1655396378</time>
+    <user>dimstar_suse</user>
+    <comment>qore-openldap-module is a new package after the second release on Github </comment>
+    <requestid>980141</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>801355ed7328e4ec5c7a24d5a2b92324</srcmd5>
+    <version>1.2.3</version>
+    <time>1690278670</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1100399</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>ecabd23561bb9a64d2b3789a5230d516</srcmd5>
+    <version>1.2.3</version>
+    <time>1690892159</time>
+    <user>maxlin_factory</user>
+    <comment>- Add debug package
+</comment>
+    <requestid>1101562</requestid>
+  </revision>
+</revisionlist>

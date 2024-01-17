@@ -1,0 +1,71 @@
+-------------------------------------------------------------------
+Sat Dec  9 10:01:51 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 23.5.2:
+  * README and metadata updates
+
+-------------------------------------------------------------------
+Fri Feb 24 10:56:06 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- update to 22.3.2
+  * 21.10.4: Add channel_list_enum to compare channel_list values with
+    something in a typo-free way, expose channel_list_raw with C enum
+    values [#66].
+  * 21.5.0: Fix PA_VOLUME_MAX and PA_VOLUME_UI_MAX values, both were
+    incorrect [#53].
+
+-------------------------------------------------------------------
+Fri Apr 16 13:32:15 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- update to 21.3.4
+  * Add timeout= option for connect() method [#48].
+  * Expose "base_volume" (alsa volume level) attribute for sinks/sources [#47].
+
+-------------------------------------------------------------------
+Thu Feb 25 11:33:35 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Require the pulseaudio-daemon capability instead of the
+  pulseaudio package, so alternative implementations can be used
+  (boo#1182730).
+
+-------------------------------------------------------------------
+Thu Mar 19 09:49:49 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 20.2.4
+  * Add pulse.get_card_by_name() wrapper [#38].
+  * Expose "corked" bool attr in PulseSinkInputInfo and PulseSourceOutputInfo [#37].
+
+-------------------------------------------------------------------
+Mon Jan 20 13:59:09 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 20.1.2
+ * add pulse.play_sample() - server-side stored sample playback
+ * Add pulse.get_peak_sample() func for getting volume peak within timespan
+
+-------------------------------------------------------------------
+Wed Jun  5 08:09:07 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 18.12.5
+  * pulse.connect() can now be used to reconnect to same server
+  * _pulse_op_cb: check connected state instead of _loop_stop
+  * _pulse_op_cb: fix hang if daemon dies
+  * tests: use "-F /dev/stdin" instead of -C for dummy pulse instance
+  * Add pulsectl.lookup util submodule
+
+-------------------------------------------------------------------
+Tue Dec  4 12:51:49 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Fri Jan  5 09:16:09 UTC 2018 - alarrosa@suse.com
+
+- Update to version 17.12.2
+  * Use pa_card_profile_info2 / profiles2 introspection API.
+  * Only adds one "available" property to PulseCardProfileInfo.
+    Requires pulseaudio/libpulse 5.0+.
+
+-------------------------------------------------------------------
+Fri Nov 10 15:47:08 UTC 2017 - alarrosa@suse.com
+
+- Initial release of python-pulsectl 17.9.3

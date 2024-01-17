@@ -1,0 +1,5 @@
+<package name="grafana-sap-providers" project="openSUSE:Factory">
+  <title>Grafana configuration providers for SAP applications</title>
+  <description>Automated configuration provisioners leveraged by other packages to enable a zero-config installation of Grafana dashboards</description>
+  <devel project="network:ha-clustering:sap-deployments:devel" package="grafana-sap-providers"/>
+</package>

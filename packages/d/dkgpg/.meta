@@ -1,0 +1,12 @@
+<package name="dkgpg" project="openSUSE:Factory">
+  <title>Distributed Key Generation (DKG) and Threshold Cryptography for OpenPGP</title>
+  <description>The Distributed Privacy Guard (DKGPG) implements Distributed Key Generation (DKG) and Threshold Cryptography for OpenPGP. The generated public keys are compatible with the standard and thus can be used by any RFC4880-compliant application (e.g. GnuPG). The main purposes of this software are distributing power among multiple parties, eliminating single points of failure, and increasing the difficulty of side-channel attacks on private key material.
+
+DKGPG consists of a bunch of simple command-line programs. The current implementation is in experimental state and should NOT be used in production environments. Motivation, cryptographical background and some usage scenarios have been presented at 26th Krypto-Tag (GI Working Group) and Datengarten/81 (CCCB). Please consult the slides for a first overview.
+
+Using well-established multi-party protocols a shared private key and a common public key (currently only DSA/ElGamal) is generated. Then further interactive protocols perform the private operations like decryption and signing of files, provided that a previously defined threshold of parties/devices take part in the distributed computation. Due to the interactiveness of the protocols a lot of messages between participating parties have to be exchanged in a secure way. We employ GNUnet, and in particular its mesh routed CADET service, to establish private and broadcast channels for this message exchange. However, as alternative to GNUnet a simple TCP/IP based service for message exchange is included. With torsocks and port-forwarding of a local hidden service this allows running the interactive programs over the well-known TOR network.
+
+</description>
+  <devel project="security:privacy" package="dkgpg"/>
+  <url>http://www.nongnu.org/dkgpg/</url>
+</package>

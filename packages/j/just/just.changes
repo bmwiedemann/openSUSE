@@ -1,0 +1,97 @@
+-------------------------------------------------------------------
+Thu Dec 28 05:47:44 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 1.19.0:
+  * Add modules
+
+-------------------------------------------------------------------
+Mon Dec 25 01:03:38 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 1.18.1:
+  * Display a descriptive error for `!include` directives
+  * Tweak readme
+  * Stabilize `!include path` as `import 'path'`
+
+-------------------------------------------------------------------
+Wed Dec 20 04:53:24 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 1.17.0:
+  * Pass justfile path to default chooser
+  * Pass `--unstable` and `--color always` to default chooser
+  * Update Gentoo package repository
+  * Fix readme header level
+  * Document line continuations
+  * List included recipes in load order
+  * Rename Justfile::first → Justfile::default
+  * Don't default to included recipes
+
+-------------------------------------------------------------------
+Sat Dec 02 01:51:03 UTC 2023 - xtexchooser@duck.com
+
+- Update to version 1.16.0:
+  * Fix readme typo
+  * Fix Fish completion script
+  * Add ARMv6 release target
+  * Add `semver_matches` function
+  * Clean up error display
+  * Misc fixes
+  * Fix readme build badge
+  * Add `dotenv-filename` and `dotenv-path` settings
+  * Fix set tempdir grammar
+  * Add version to attributes
+  * Allow setting echoed recipe line color
+  * Update README.md
+
+-------------------------------------------------------------------
+Wed Oct 25 03:03:03 UTC 2023 - Soc Virnyl Estela <contact@uncomfyhalomacro.pl>
+
+- Update to version 1.15.0:
+  * Add Nushell completion script
+  * Update Indentation Documentation
+  * Allow unstable features to be enabled with environment variable
+  * Fix triple-quoted string example in readme
+  * README fix: the -d in `mktemp -d` is required to created folders.
+  * Placate clippy
+  * Add num_cpus() function
+  * Document Windows Package Manager install instructions
+  * Test unpaired escaped carriage return error
+  * Allow escaping newlines
+  * Stabilize JSON dump format
+  * Avoid grep aliases in bash completions
+  * Clarify [unix] attribute in readme
+  * Add env() function
+  * Add descriptions to fish recipe completions
+  * Allow selecting multiple recipes with default chooser
+  * Add better documentation for --dump and --fmt
+
+-------------------------------------------------------------------
+Sat Sep  2 11:26:50 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Revert update of vendored dependencies.
+
+-------------------------------------------------------------------
+Sat Sep  2 10:21:43 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update vendored dependencies
+- Update source cargo_config
+
+-------------------------------------------------------------------
+Sun Aug 13 13:26:43 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Replace obsoleted `disabled` option with `manual`
+
+-------------------------------------------------------------------
+Sat Jun 03 00:46:59 UTC 2023 - socvirnyl.estela@gmail.com
+
+- Update to version 1.14.0:
+  * Ignore clippy::let_underscore_untyped
+  * Use `just --show` in default chooser
+  * Update README to reflect new attribute syntax
+  * Allow multiple attributes on one line
+  * Analyze and Compiler tweaks
+  * Downgrade to TLS 1.2 in install script
+
+-------------------------------------------------------------------
+Sun Mar  5 06:24:38 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Initial spec for just 1.13.0

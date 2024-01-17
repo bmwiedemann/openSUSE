@@ -1,0 +1,5 @@
+<package name="lua-coxpcall" project="openSUSE:Factory">
+  <title>Coroutine safe xpcall and pcall</title>
+  <description>Encapsulates the protected calls with a coroutine based loop, so errors can be handled without the usual Lua 5.x pcall/xpcall issues with coroutines yielding inside the call to pcall or xpcall.</description>
+  <devel project="devel:languages:lua" package="lua-coxpcall"/>
+</package>

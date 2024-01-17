@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Fri Jul 21 07:31:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.300:
+  * Fixed character U+FF02 FULLWIDTH QUOTATION MARK by changing
+    encoding to U+FF1F FULLWIDTH QUESTION MARK, and then
+    redrawing U+FF02 to be a quotation mark.
+  * New punctuation characters U+3018..U+301B, fullwidth form U+FF0D,
+    and halfwidth forms U+FF61..U+FF65.
+
+-------------------------------------------------------------------
+Sat May  7 18:27:48 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.200
+  * Corrected shape of U+300D and U+300F
+  * Added Latin characters to support Recommended characters for
+    Non-Roman fonts, excluding only characters relating to
+    right-to-left (RTL) scripts, since Yi is not an RTL script.
+
+-------------------------------------------------------------------
+Thu Oct 17 09:05:27 UTC 2013 - pgajdos@suse.com
+
+- initial version 2.1.1

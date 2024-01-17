@@ -1,0 +1,26 @@
+[Unit]
+Description=ISC DHCPv4 Relay Agent
+Before=multi-user.target
+After=remote-fs.target network.target nss-lookup.target time-sync.target ldap.service ndsd.service
+
+[Service]
+# added automatically, for details please see
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+ProtectSystem=full
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictRealtime=true
+# end of automatic additions 
+Type=forking
+Restart=on-abort
+ExecStart=@LIBEXECDIR@/dhcp/dhcrelay -4 start
+ExecStop=@LIBEXECDIR@/dhcp/dhcrelay -4 stop
+PIDFile=/run/dhcrelay.pid
+
+[Install]
+WantedBy=multi-user.target
+Alias=dhcp-relay.service
+

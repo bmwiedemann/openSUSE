@@ -1,0 +1,9 @@
+<package name="timewarrior" project="openSUSE:Factory">
+  <title>command line time tracker</title>
+  <description>Timewarrior is a command line time tracking application, which allows you to
+record time spent on activities.
+
+</description>
+  <devel project="utilities" package="timewarrior"/>
+  <url>http://taskwarrior.org/docs/timewarrior/</url>
+</package>

@@ -1,0 +1,21 @@
+diff -up ./src/SerialImp.c.orig ./src/SerialImp.c
+--- ./src/SerialImp.c.orig	2015-05-04 20:12:01.000000000 +0200
++++ ./src/SerialImp.c	2015-05-04 20:14:58.580336504 +0200
+@@ -872,13 +872,13 @@ int set_port_params( JNIEnv *env, int fd
+ 
+ 	   See the next ifdef below for the divisor.
+ 	*/
+-#if defined(TIOCGSERIAL)
+-	if ( cspeed == B38400 )
+-		cspeed = 38400;
+-#endif /* TIOCGSERIAL */
+ 	if(     cfsetispeed( &ttyset, cspeed ) < 0 ||
+ 		cfsetospeed( &ttyset, cspeed ) < 0 )
+ 	{
++#if defined(TIOCGSERIAL)
++		if ( cspeed == B38400 )
++			cspeed = 38400;
++#endif /* TIOCGSERIAL */
+ 		/*
+ 		    Some people need to set the baud rate to ones not defined
+ 		    in termios.h

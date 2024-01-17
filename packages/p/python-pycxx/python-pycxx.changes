@@ -1,0 +1,56 @@
+-------------------------------------------------------------------
+Wed Feb 16 20:21:38 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.1.7:
+  * Add support for building against python 3.11 alpha 4.
+  * Replace use of deprecated PyUnicode APIs with the supported version.
+  * Add support for more number methods, like matrix and the inplace versions.
+  * Use IsInstance checking so that derived classes of builtin types can be used.
+  * Add support for python 3.9 beta 1 changes
+  * Fix for memory leak caused by wrong ref count on python3 Py::String objects.
+  * Remove support for supportPrint() etc as the tp_print field is being removed
+    from python either in 3.8 or 3.9.
+  * Fix problem with compiling for Python 2 and the _Py_PackageContext symbol.
+  * Add exception errorType() and errorValue() function to access the type and
+    value of an exception.
+  * Add support for Py_LIMITED_API aka PEP-384
+- drop python-pycxx-7.0.3-python37.patch python-pycxx-7.0.3-setup.py.patch (upstream)
+
+-------------------------------------------------------------------
+Mon Feb 22 14:51:18 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Drop broken %ifpython3 macro
+
+-------------------------------------------------------------------
+Wed Jan 20 10:40:18 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Add note that this package is not PyPI 'pycxx'
+- Fix Tumbleweed multi Python 3 builds
+
+-------------------------------------------------------------------
+Fri May 29 20:32:15 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Remove %python3_only constructs and replace them with other
+  conditional constructs.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:52:02 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Thu Aug  9 10:12:35 UTC 2018 - tchvatal@suse.com
+
+- Add provides/obsoletes for python-CXX as pycxx is upstream name
+  and name used in Fedora/Debian so we rather stick with this one
+  and remove python-CXX
+
+-------------------------------------------------------------------
+Thu Aug  9 07:21:40 UTC 2018 - tchvatal@suse.com
+
+- Initial package, used by pysvn
+- Apply patches from Fedora:
+  * python-pycxx-7.0.3-python37.patch
+  * python-pycxx-7.0.3-change-include-paths.patch
+  * python-pycxx-7.0.3-setup.py.patch
+

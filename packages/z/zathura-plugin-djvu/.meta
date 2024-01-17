@@ -1,0 +1,5 @@
+<package name="zathura-plugin-djvu" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="X11:Utilities" package="zathura-plugin-djvu"/>
+</package>

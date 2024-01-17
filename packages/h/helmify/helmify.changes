@@ -1,0 +1,179 @@
+-------------------------------------------------------------------
+Thu Nov 23 06:25:54 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.4.10:
+  * fix image processing for repo with port
+
+-------------------------------------------------------------------
+Thu Nov 23 06:24:13 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.4.9:
+  * Handle images with digests
+  * chore: remove refs to deprecated io/ioutil
+
+-------------------------------------------------------------------
+Mon Oct 30 09:30:46 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.4.8:
+  * feat: add deployment revisionHistoryLimit
+
+-------------------------------------------------------------------
+Tue Oct 24 09:35:09 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.4.7:
+  * Stop trimming "controller-manager-" from PDB name
+  * Add PodDisruptionBudget processor
+  * fix readme wording
+
+-------------------------------------------------------------------
+Wed Sep 27 11:27:43 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.4.6:
+  * upgrade to go 1.21
+
+-------------------------------------------------------------------
+Thu Jul 06 16:08:50 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.4.5:
+  * fix goreleaser
+  * added cert-manager flag to Readme
+  * added cert-manager-version flag
+
+-------------------------------------------------------------------
+Mon Jun 26 05:00:22 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.4.4:
+  * Move existing annotations to values.yaml
+  * Prevent empty white line before serviceaccount annotations
+  * Properly set serviceaccount annotation variable
+  * fixing cases where theres empty annotations
+  * adding metaopt to processobjmeta
+  * test_data and examples
+  * fixing annotations yams
+  * ensuring annotations are always present
+  * [serviceaccount] Annotations as Values Support
+
+-------------------------------------------------------------------
+Sun Apr 30 10:52:45 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.4.3:
+  * Fixed the rest of the linting that went a little crazy
+  * Fixed indentions that went a little crazy
+  * Added security context processing for initContainers, refactor
+    to reduce code duplication
+  * Fixed incorrect name for the test data initContainer
+  * Updated to not include initContainers:null in templates if none
+    exist in the source manifest
+  * Regenerated chart examples
+  * This change adds support for initContainers
+
+-------------------------------------------------------------------
+Fri Apr 28 08:42:07 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.4.2:
+  * Add support for extracting args from containers.
+
+-------------------------------------------------------------------
+Thu Apr 13 07:12:05 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.4.1:
+  * remove extra files
+  * fixing logic
+  * fixing review comments
+  * Adding empty value for nodeSelector
+
+-------------------------------------------------------------------
+Thu Apr 13 07:08:34 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.4.0:
+  * #100 support filesystem as a source
+  * fix: indent issue in the Makefile demo
+
+-------------------------------------------------------------------
+Mon Apr 03 12:07:27 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.3.35:
+  * use an alias for cert-manager
+
+-------------------------------------------------------------------
+Wed Mar 29 12:28:49 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.3.34:
+  * Use the latest version of cert-manager
+  * Update the multiline annotation and use helmify.Values to add
+    the options in the values.yaml
+  * Add an option cert-manager-as-subchart to install the
+    cert-manager as subchart
+
+-------------------------------------------------------------------
+Fri Mar 24 05:41:38 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.3.33:
+  * support StatefulSet
+  * update supported resources
+
+-------------------------------------------------------------------
+Wed Mar 22 14:54:59 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.3.32:
+  * #50 support Job and CronJob
+  * #50 move out pod processing
+
+-------------------------------------------------------------------
+Fri Mar 17 18:56:29 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.3.31:
+  * #30 multiline configmap values
+  * replace codeclimate with golang-ci lint
+  * add golang-ci lint
+  * do dry-run on CI
+  * #90 upgrade dependencies
+
+-------------------------------------------------------------------
+Thu Mar 16 12:04:36 UTC 2023 - kastl@b1-systems.de
+
+- remove tarball and use obscpio
+  - use tar and recompress service at buildtime to create
+    the tarball on the fly
+- Update to version 0.3.30:
+  * further indent container securityContext values
+
+-------------------------------------------------------------------
+Wed Mar 15 12:10:30 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.3.29:
+  * add missing import, re-generate examples
+  * feat: add support for security context
+  * always use quotes for env values
+
+-------------------------------------------------------------------
+Mon Mar 13 17:23:28 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.3.28:
+  * fix duplicate topologySpreadConstraints
+
+-------------------------------------------------------------------
+Mon Mar 13 10:03:17 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.3.27:
+  * fix according to review
+  * fix test
+  * hide autofill behind CLI flag
+  * fix: tolerations and other constraint under deployment name
+  * feat: added constraints
+  * feat: introduce topologyConstraints, node selectors and
+    tolerations
+
+-------------------------------------------------------------------
+Fri Mar 10 06:37:50 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.3.26:
+  * fix: env vars with default values in values.yaml
+  * modify pull policy in deployment
+  * modify pull policy in deployment
+  * feat: add imagePullPolicy template
+
+-------------------------------------------------------------------
+Mon Mar  6 07:14:06 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package helmify: Creates Helm chart from Kubernetes yaml

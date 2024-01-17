@@ -1,0 +1,10 @@
+<package name="cbonsai" project="openSUSE:Factory">
+  <title>A bonsai tree generator for your terminal</title>
+  <description>A beautifully random bonsai tree generator. It intelligently
+creates, colors, and positions a bonsai tree, and is entirely
+configurable via CLI options.
+
+</description>
+  <devel project="games" package="cbonsai"/>
+  <url>https://gitlab.com/jallbrit/cbonsai</url>
+</package>

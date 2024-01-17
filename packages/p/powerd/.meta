@@ -1,0 +1,6 @@
+<package name="powerd" project="openSUSE:Factory">
+  <title>UPS monitoring daemon</title>
+  <description>The powerd monitors the serial port connected to an UPS device and will perform an unattended shutdown of the system if the UPS is on battery longer than a specified number of minutes.</description>
+  <devel project="Base:System" package="powerd"/>
+  <url>https://power.sourceforge.net/</url>
+</package>

@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Wed Jul 18 07:41:26 UTC 2018 - badshah400@gmail.com
+
+- Update to version 2.1.1:
+  * Octave 4.4 compatibility fixes (remove deprecation warnings)
+
+-------------------------------------------------------------------
+Mon Aug 21 08:50:16 UTC 2017 - dmitry_r@opensuse.org
+
+- Update to version 2.1.0
+  * Minor changes, see `news gsl` for details
+
+-------------------------------------------------------------------
+Thu Nov 24 14:34:58 UTC 2016 - dmitry_r@opensuse.org
+
+- Initial package, version 2.0.0
+

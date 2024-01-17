@@ -1,0 +1,211 @@
+-------------------------------------------------------------------
+Sun Jan 14 17:11:42 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.7.1:
+  * Support for subtracting delta objects when
+    iterable_compare_func is used.
+  * Better handling of force adding a delta to an object.
+  * Fix for `Can't compare dicts with both single and double
+    quotes in keys`
+  * Updated docs for Inconsistent Behavior with math_epsilon and
+    ignore_order = True
+  * Delta can be subtracted from other objects now.
+  * verify_symmetry is deprecated. Use bidirectional instead.
+  * always_include_values flag in Delta can be enabled to include
+    values in the delta for every change.
+  * Fix for Delta.__add__ breaks with esoteric dict keys.
+  * You can load a delta from the list of flat dictionaries.
+- update to 6.6.0:
+  * [x] Numpy 2.0 support
+  * [x] Adding Delta.to_flat_dicts
+
+- update to 6.4.1:
+  * Bugfix: Numpy should be optional
+- update to 6.4.0:
+  * Add Ignore List Order Option to DeepHash by
+  * pyyaml to 6.0.1 to fix cython build problems by Robert Bo
+    Davis
+  * Precompiled regex simple diff by cohml
+  * New flag: `zip_ordered_iterables` for forcing iterable items
+    to be compared one by one.
+- update to 6.3.1:
+  * Bugfix deephash for paths by maggelus
+  * Bugfix deephash compiled regex maggelus
+  * Fix tests dependent on toml by martin-kokos
+  * Bugfix for `include_paths` for nested dictionaries by kor4ik
+  * Use tomli and tomli-w for dealing with tomli files by martin-
+    kokos
+  * Bugfix for `datetime.date` by Alex Sauer-Budge
+
+-------------------------------------------------------------------
+Sat Jun 10 15:24:40 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Tue May  2 15:55:35 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 6.3.0:
+  - PrefixOrSuffixOperator: This operator will skip strings that are
+    suffix or prefix of each other.
+  - include_obj_callback and include_obj_callback_strict are added
+    by [Håvard Thom](https://github.com/havardthom).
+  - Fixed a corner case where numpy's np.float32 nans are not
+    ignored when using ignore_nan_equality by [Noam
+    Gottlieb](https://github.com/noamgot)
+  - orjson becomes optional again.
+  - Fix for ignore_type_in_groups with numeric values so it does not
+    report number changes when the number types are different.
+
+-------------------------------------------------------------------
+Tue May  2 15:47:02 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Move python-orjson from Recommends to Requires, it's a requirement
+  right now in the latest release.
+
+-------------------------------------------------------------------
+Tue Feb 21 02:29:55 UTC 2023 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v6.2.3
+  * Switching to Orjson for serialization to improve the performance.
+  * Setting equal_nan=ignore_nan_inequality in the call for np.array_equal
+  * Using Pytest's tmp_path fixture instead of /tmp/
+- from 6.2.2
+  * Enum test fix for python 3.11
+  * Adding support for dateutils rrules
+- from v6.2.1
+  * Removed the print statements.
+- from v6.2.0
+  * Major improvement in the diff report for lists when items are all
+    hashable and the order of items is important.
+- from v6.1.0
+  * DeepDiff.affected_paths can be used to get the list of all paths
+    where a change, addition, or deletion was reported for.
+  * DeepDiff.affected_root_keys can be used to get the list of all
+    paths where a change, addition, or deletion was reported for.
+  * Bugfix: ValueError when using Decimal 0.x
+  * Serialization of UUID
+- from v6.0.0
+  * Exclude obj callback strict parameter is added to DeepDiff
+    A fix for diffing using iterable_compare_func with nested objects
+
+-------------------------------------------------------------------
+Thu Sep  8 08:48:08 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Update minimum dependency ordered-set >= 4.1.0
+
+-------------------------------------------------------------------
+Fri Jun 24 13:00:27 UTC 2022 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to 5.8.2
+  * Fixing dependency for Py3.6
+- DeepDiff 5.8.1 includes bug fixes:
+  * Fixed test suite for 32bit systems
+  * Fixed the issue when using ignore_order=True and group_by
+    simultaneously
+  * Added the support for diffing object properties (@property)
+  * Better support of diffing private variables
+- DeepDiff 5.8.0 includes bug fixes and improvements:
+  * Fixed the bug with delta randomly not producing the same
+    results when ignore_order=True
+  * Display detailed pretty when verbose
+  * Allow ordered-set version 4.1.x
+  * Removing extra logging when key is not found in DeepHash
+  * Fixed error when comparing non-utf8 byte strings with
+    ignore_order=True
+  * Fixed Tests fail after 2022-05-14
+  * Fixed TypeError is thrown when comparing bool and str
+
+-------------------------------------------------------------------
+Wed Jan 26 09:55:05 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Update to 5.6.0
+  * Add custom operators, and ignore_order_func.
+  * Bugfix: verbose_level==0 should disable values_changes.
+  * Bugfix: unprocessed key error.
+  * Add iterable_compare_func for DeepDiff
+  * Add output_format of list for path() in tree view
+  * Add strict_checking for numbers in DeepSearch
+  * Add support for regular expressions in DeepSearch
+
+-------------------------------------------------------------------
+Thu Apr  1 21:00:21 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.2.3
+  * Retaining the order of multiple dictionary items added via
+    Delta.
+  * Fixed the typo with yml files in deep cli.
+  * Fixing Grep RecursionError where using non UTF-8 character.
+  * Allowing kwargs to be passed to to_json method.
+- Release 5.2.2
+  * Fixed Delta serialization when None type is present.
+- Release 5.2.0
+  * Removed Murmur3 as the preferred hashing method. Using SHA256 by
+    default now.
+  * Added commandline for deepdiff.
+  * Added group_by.
+  * Added math_epsilon.
+  * Improved ignoring of NoneType.
+- Release 5.0.2
+  * Bug Fix NoneType in ignore type groups
+    https://github.com/seperman/deepdiff/issues/207
+- Release 5.0.1
+  * Bug fix to not apply format to non numbers.
+- Release 5.0.0
+  * Introducing the Delta object
+  * Improving Numpy support
+  * Fixing tuples comparison when ignore_order=True
+  * Dramatically improving the results when ignore_order=True by
+    running in passes
+  * Introducing pretty print view, deep_distance, purge,
+    progress logging, cache and truncate_datetime.
+  * Adds support for datetime.time
+- Skip python36 build because the test suite makes extensive use of
+  NumPy.
+
+-------------------------------------------------------------------
+Thu Apr  2 10:36:40 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 4.3.2
+  * Deprecation Warning Enhancement
+  * DeepDiff not excluding paths when ignore_order is True
+  * adding exclude_obj_callback
+
+-------------------------------------------------------------------
+Fri Mar  6 10:07:40 UTC 2020 - pgajdos@suse.com
+
+- version update to 4.2.0
+  - v4-2-0: .json property is finally removed. Fix for Py3.10. Dropping support for EOL Python 3.4. Ignoring private keys when calculating hashes. For example __init__ is not a part of hash calculation anymore. Fix for #166 Problem with comparing lists, with an boolean as element.
+  - v4-0-9: Fixing the bug for hashing custom unhashable objects
+  - v4-0-8: Adding ignore_nan_inequality for float('nan')
+  - v4-0-7: Hashing of the number 1 vs. True
+  - v4-0-6: found a tiny bug in Python formatting of numbers in scientific notation. Added a workaround.
+  - v4-0-5: Fixing number diffing. Adding number_format_notation and number_to_string_func.
+  - v4-0-4: Adding ignore_string_case and ignore_type_subclasses
+  - v4-0-3: Adding versionbump tool for release
+  - v4-0-2: Fixing installation issue where rst files are missing.
+  - v4-0-1: Fixing installation Tarball missing requirements.txt . DeepDiff v4+ should not show up as pip installable for Py2. Making Murmur3 installation optional.
+  - v4-0-0: Ending Python 2 support, Adding more functionalities and documentation for DeepHash. Switching to Pytest for testing. Switching to Murmur3 128bit for hashing. Fixing classes which inherit from classes with slots didn't have all of their slots compared. Renaming ContentHash to DeepHash. Adding exclude by path and regex path to DeepHash. Adding ignore_type_in_groups. Adding match_string to DeepSearch. Adding Timedelta object diffing.
+  - v3-5-0: Exclude regex path
+
+-------------------------------------------------------------------
+Fri Oct  4 08:10:05 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use proper sentences in descriptions.
+
+-------------------------------------------------------------------
+Wed Oct  2 12:06:13 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Use correct test call
+- Format with spec-cleaner
+- Fix the Source url to point to real archive
+
+-------------------------------------------------------------------
+Mon Sep 30 20:47:00 UTC 2019 - chajain <cjain@suse.com
+
+- Fixing LICENSE and tests
+
+-------------------------------------------------------------------
+Tue Sep 24 22:31:46 UTC 2019 - chajain <cjain@suse.com>
+
+- Initial package

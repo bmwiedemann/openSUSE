@@ -1,0 +1,5 @@
+<package name="xviewer-plugins" project="openSUSE:Factory">
+  <title>A collection of plugins for xviewer</title>
+  <description>This package contains plugins for additional features in xviewer.</description>
+  <devel project="X11:Cinnamon:Factory" package="xviewer-plugins"/>
+</package>

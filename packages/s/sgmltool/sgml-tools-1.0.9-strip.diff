@@ -1,0 +1,10 @@
+--- Makefile.in
++++ Makefile.in
+@@ -74,7 +74,6 @@
+ 	( cd iso-entities; \
+ 	  $(MAKE) install )
+ endif
+-	strip sgmlpre/sgmlpre
+ 	for ii in sgmlpre/sgmlpre rtf-fix/rtf2rtf; do \
+ 	  bn=`basename $$ii`; \
+ 	  $(INSTALL_PROGRAM) $$ii $(DESTDIR)$(bindir)/$$bn; \

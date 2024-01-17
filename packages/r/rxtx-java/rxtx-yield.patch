@@ -1,0 +1,11 @@
+--- rxtx-2.2pre2/src/gnu/io/LPRPort.java	2023-03-13 17:04:38.449989594 +0100
++++ rxtx-2.2pre2/src/gnu/io/LPRPort.java	2023-03-13 17:07:16.118942900 +0100
+@@ -370,7 +370,7 @@
+ 		public void run()
+ 		{
+ 			eventLoop();
+-			yield();
++			this.yield();
+ 		}
+ 	}
+ }

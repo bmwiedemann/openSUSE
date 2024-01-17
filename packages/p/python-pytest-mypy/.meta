@@ -1,0 +1,5 @@
+<package name="python-pytest-mypy" project="openSUSE:Factory">
+  <title></title>
+  <description>Mypy static type checker plugin for Pytest</description>
+  <devel project="devel:languages:python:pytest" package="python-pytest-mypy"/>
+</package>

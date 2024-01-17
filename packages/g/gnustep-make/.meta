@@ -1,0 +1,11 @@
+<package name="gnustep-make" project="openSUSE:Factory">
+  <title>GNUstep Makefile package</title>
+  <description>This package contains the basic scripts, makefiles and directory
+layout needed to run and compile any GNUstep software. This package
+was configured for the FHS file system layout, customised for SUSE.
+
+
+</description>
+  <devel project="X11:GNUstep" package="gnustep-make"/>
+  <url>http://www.gnustep.org/</url>
+</package>

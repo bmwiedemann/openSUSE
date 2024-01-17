@@ -1,0 +1,456 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>baee6dc219b2374f70b8ef6350b36bd7</srcmd5>
+    <version>1.2.0</version>
+    <time>1354888154</time>
+    <user>namtrac</user>
+    <comment>Future OpenStack dependency</comment>
+    <requestid>144271</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>baee6dc219b2374f70b8ef6350b36bd7</srcmd5>
+    <version>1.2.0</version>
+    <time>1359109992</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>c04da14813c6410d5cf30471c3327ced</srcmd5>
+    <version>1.2.0</version>
+    <time>1360591689</time>
+    <user>coolo</user>
+    <comment>- Add Python3 support
+- Build HTML documentation
+- Install LICENSE, README.rst
+
+
+- Initial version</comment>
+    <requestid>155111</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>31728caa6d0077ddbe9b4b97ecd3ec70</srcmd5>
+    <version>1.2.0</version>
+    <time>1367932915</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>174695</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>6717164de17c5ca296050ce198b17906</srcmd5>
+    <version>1.2.0</version>
+    <time>1371651913</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>179725</requestid>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>6717164de17c5ca296050ce198b17906</srcmd5>
+    <version>1.2.0</version>
+    <time>1379664125</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>59eb7077ab2ec3ff83200d4fcf44e691</srcmd5>
+    <version>1.2.0</version>
+    <time>1382692260</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204518</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ecb40ebbb5f117410a832bc29c091df5</srcmd5>
+    <version>1.3.3</version>
+    <time>1385974384</time>
+    <user>coolo</user>
+    <comment>Update to 1.3.3 (forwarded request 209065 from appleonkel)</comment>
+    <requestid>209111</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9e4f4aebb607492e13a2ac4616a51725</srcmd5>
+    <version>1.4.0</version>
+    <time>1389799593</time>
+    <user>coolo</user>
+    <comment>- update to 1.4.0:
+ - Heartbeat implementation improved (Issue #6).
+ - NoneType is now supported in tables and arrays.
+ - SSLTransport: Now handles ``ENOENT``. (forwarded request 213855 from dirkmueller)</comment>
+    <requestid>213885</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3fdfd826d0afd23a40a95c976d0f028a</srcmd5>
+    <version>1.4.1</version>
+    <time>1390381136</time>
+    <user>scarabeus_factory</user>
+    <comment>- update to 1.4.1:
+  - Fixed error occurring when heartbeats disabled. (forwarded request 214583 from dirkmueller)</comment>
+    <requestid>214648</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c5dad052c3c327664ee4bee885b83ce1</srcmd5>
+    <version>1.4.3</version>
+    <time>1393012461</time>
+    <user>coolo</user>
+    <comment>- update to 1.4.3:
+  - Fixed bug where more data was requested from the socket
+    than was actually needed.
+  - Heartbeat negotiation would use heartbeat value from server even
+    if heartbeat disabled (Issue #31). (forwarded request 223281 from dirkmueller)</comment>
+    <requestid>223408</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>6b1d12235b4062a598cff7ace799896a</srcmd5>
+    <version>1.4.3</version>
+    <time>1394172357</time>
+    <user>coolo</user>
+    <comment>- Add amqp-drop-sphinxcontrib-issuetracker-dependency.patch: Avoid
+  unnesseary build-time dependencies.</comment>
+    <requestid>224888</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>67c03239a61eaea48dbbf784019df2f1</srcmd5>
+    <version>1.4.5</version>
+    <time>1400355844</time>
+    <user>coolo</user>
+    <comment>- update to 1.4.5:
+  - Can now deserialize more AMQP types.
+  - SSL: Workaround for Python SSL bug.
+  - ``Transport.__del_`` now handles errors occurring at late interpreter
+  shutdown (Issue #36).
+ - SSL transport accidentally disconnected after read timeout. (forwarded request 232651 from dirkmueller)</comment>
+    <requestid>234298</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>67c03239a61eaea48dbbf784019df2f1</srcmd5>
+    <version>1.4.5</version>
+    <time>1409302813</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>126e13bb6202bab06587476240c52ce8</srcmd5>
+    <version>1.4.6</version>
+    <time>1410967523</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>249307</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>e08e3ced905d7c721e859069579626d0</srcmd5>
+    <version>1.4.6</version>
+    <time>1424255970</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>286466</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>29f0ace471be96ad5bcd9e6358d884b2</srcmd5>
+    <version>1.4.6</version>
+    <time>1439274409</time>
+    <user>dimstar_suse</user>
+    <comment>- license update: LGPL-2.1+
+  LGPL includes &quot;or later&quot;</comment>
+    <requestid>321579</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>f6b4b09fd7cb53198e2d2759814d53a7</srcmd5>
+    <version>1.4.7</version>
+    <time>1445287721</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>336547</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>bb292467a22c05cd64f224b2eb1624a1</srcmd5>
+    <version>1.4.7</version>
+    <time>1451674035</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>349368</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>36ec9b03ce62693739963d8c86be3dba</srcmd5>
+    <version>1.4.9</version>
+    <time>1453799679</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>353803</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>9587e4ad7862e83f592c15aa169a8b64</srcmd5>
+    <version>2.1.4</version>
+    <time>1492011089</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>480635</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>40d0dd0495467cfb0c1a68e07d0be7d7</srcmd5>
+    <version>2.2.2</version>
+    <time>1509036386</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>536836</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>14ca30e9821f26b038255029f325d190</srcmd5>
+    <version>2.2.2</version>
+    <time>1515876401</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>563284</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>5adc10403748069b1c28f7b7e4c04de9</srcmd5>
+    <version>2.3.0</version>
+    <time>1527583733</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>612615</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>0d41e8ad1b44b7ae90fef8c2721d604a</srcmd5>
+    <version>2.3.2</version>
+    <time>1530567173</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>620010</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>43dd7b26a761642a6e5fb6aed8f81e43</srcmd5>
+    <version>2.4.1</version>
+    <time>1550402471</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>676524</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>4db83dd380056d1911221358470ca97c</srcmd5>
+    <version>2.4.2</version>
+    <time>1551883931</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.2:
+  - Added support for the Cygwin platform
+  - Correct offset incrementation when parsing bitmaps.
+  - Consequent bitmaps are now parsed correctly.</comment>
+    <requestid>682124</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>56f5a0130707e6efbee36344141b9b34</srcmd5>
+    <version>2.5.0</version>
+    <time>1560457969</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>708413</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>8062c4d78025a2ab1d49a43a05fad18a</srcmd5>
+    <version>2.5.0</version>
+    <time>1564484556</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not depend on pytest-sugar, it is just pretty-formatter</comment>
+    <requestid>717023</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>6f8e9ecf57c5ca87c09b5023685799a9</srcmd5>
+    <version>2.5.1</version>
+    <time>1569233300</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.5.1:
+  - Ignore all methods except Close and Close-OK when channel/connection is closing
+  - Fix faulty ssl sni intiation parameters (#283) 
+  - Undeprecate auto_delete flag for exchanges. (#287) 
+  - Improved tests and testing environments</comment>
+    <requestid>730145</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>843290cad879ed3e06673a004cef985e</srcmd5>
+    <version>2.5.2</version>
+    <time>1572883477</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.5.2:
+  - Ignore all methods except Close and Close-OK when channel/connection is closing
+  - Fix faulty ssl sni intiation parameters (#283) 
+  - Undeprecate auto_delete flag for exchanges. (#287) 
+  - Improved tests and testing environments</comment>
+    <requestid>736422</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>47972070a56784e63a59515d76ee0cb9</srcmd5>
+    <version>2.6.0</version>
+    <time>1591879477</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.6.0:
+  - Implement speedups in cython (#311)
+  - Updated some tests &amp; code improvements
+  - Separate logger for Connection.heartbeat_tick method
+  - Cython generic content (#315)
+  - Improve documentation a_global parameter of basic_qos() method.
+  - Fix saving partial read buffer on windows during socket timeout. (#321)
+  - Fix deserialization of long string field values that are not utf-8.
+  - Added simple cythonization of abstract_channel.py
+  - Speedups of serialization.py are more restrictive</comment>
+    <requestid>812617</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>12477ee643c8edaa858b7689111ceb38</srcmd5>
+    <version>2.6.1</version>
+    <time>1596727903</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.6.1:
+  - Fix buffer overflow in frame_writer after frame_max is increased. `frame_writer`
+  allocates a `bytearray` on intialization with a length based on the `connection.frame_max`
+  value. If `connection.frame_max` is changed to a larger value, this causes an
+  error like `pack_into requires a buffer of at least 408736 bytes`.</comment>
+    <requestid>824326</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>01da78a718ce15a21447452b193239f3</srcmd5>
+    <version>5.0.1</version>
+    <time>1607801308</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.0.1:
+  * Require vine 5.0.0.
+  * Stop to use deprecated method ssl.wrap_socket.
+  * Dropped Python 3.5 support.
+  * Removed additional compatibility code.
+  * Dropped Python 2.x support.
+  * Dropped Python 3.4 support.
+- Add vine-no-double-equals-deps.patch that loosens the vine requirement</comment>
+    <requestid>847375</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>3595e76685cd2fd52200eac9bbcefed2</srcmd5>
+    <version>5.0.2</version>
+    <time>1608729554</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.0.2:
+  - Whhels are no longer universal.
+  - Added debug representation to Connection and *Transport classes
+  - Reintroduce ca_certs and ciphers parameters of SSLTransport._wrap_socket_sni()
+  - Fix infinite wait when using confirm_publish</comment>
+    <requestid>857118</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>abbe8c99ea983ae3c3d808e9b6aaf45b</srcmd5>
+    <version>5.0.5</version>
+    <time>1612466580</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.0.5:
+  - Removed mistakenly introduced code which was causing import errors
+  - Add missing load_default_certs() call to fix a regression in v5.0.3 release. (#350)
+  - Change the default value of ssl_version to None. When not set, the
+    proper value between ssl.PROTOCOL_TLS_CLIENT and ssl.PROTOCOL_TLS_SERVER
+    will be selected based on the param server_side in order to create
+    a TLS Context object with better defaults that fit the desired
+    connection side.
+  - Change the default value of cert_reqs to None. The default value
+    of ctx.verify_mode is ssl.CERT_NONE, but when ssl.PROTOCOL_TLS_CLIENT
+    is used, ctx.verify_mode defaults to ssl.CERT_REQUIRED.
+  - Fix context.check_hostname logic. Checking the hostname depends on
+    having support of the SNI TLS extension and being provided with a
+    server_hostname value. Another important thing to mention is that
+    enabling hostname checking automatically sets verify_mode from
+    ssl.CERT_NONE to ssl.CERT_REQUIRED in the stdlib ssl and it cannot
+    be set back to ssl.CERT_NONE as long as hostname checking is enabled.
+  - Refactor the SNI tests to test one thing at a time and removing some
+    tests that were being repeated over an</comment>
+    <requestid>868434</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>961f217f50e5ef9ecb7e179151961c2b</srcmd5>
+    <version>5.0.6</version>
+    <time>1625950413</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.0.6:
+  - Change the order in which context.check_hostname and context.verify_mode get set
+    in SSLTransport._wrap_socket_sni. Fixes bug introduced in 5.0.3 where setting
+    context.verify_mode = ssl.CERT_NONE would raise
+    &quot;ValueError: Cannot set verify_mode to CERT_NONE when check_hostname is enabled.&quot;
+    Setting context.check_hostname prior to setting context.verify_mode resolves the
+    issue.
+  - Remove TCP_USER_TIMEOUT option for Solaris (#355) 
+  - Pass long_description to setup() (#353)
+  - Fix for tox-docker 2.0
+  - Moved to GitHub actions CI (#359)</comment>
+    <requestid>900656</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>f71edf20aaf95408e8f3d0f1872b4191</srcmd5>
+    <version>5.0.8</version>
+    <time>1640108416</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.0.8:
+  - Reduce memory usage of Connection (#377)
+  - Add additional error handling around code where an OSError 
+    may be raised on failed connections. Fixes (#378)
+  - Remove dependency to case
+  - Bugfix: not closing socket after server disconnect</comment>
+    <requestid>941637</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>c559675b51317e6177969a6f8e2f2ac6</srcmd5>
+    <version>5.0.9</version>
+    <time>1641386363</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.0.9:
+  - Append to _used_channel_ids in _used_channel_ids</comment>
+    <requestid>943597</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>e3b6cd46b89a641e58c1deb677a983c6</srcmd5>
+    <version>5.1.0</version>
+    <time>1648330337</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.1.0:
+  - Improve performance of _get_free_channel_id, fix channel max bug (#385).
+  - Document memoryview usage, minor frame_writer.write_frame refactor (#384).
+  - Start dropping python 3.6 (#387).
+  - Added experimental __slots__ to some classes (#368)
+  - Relaxed vine version for upcoming release.
+  - Upgraded topytest 7 (#388).
+- drop vine-no-double-equals-deps.patch (upstream)</comment>
+    <requestid>965088</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>3613f3ca30b8f908dff49ae61dfba9ce</srcmd5>
+    <version>5.1.1</version>
+    <time>1654378040</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.1.1:
+  - Use AF_UNSPEC for name resolution</comment>
+    <requestid>980751</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>7d98ed2ff48dc7ab032f5b2aa2922b76</srcmd5>
+    <version>5.1.1</version>
+    <time>1686576378</time>
+    <user>dimstar_suse</user>
+    <comment>- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1092377</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>8daa3e41bd5066baf83a99a366b04675</srcmd5>
+    <version>5.2.0</version>
+    <time>1699994621</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.2.0:
+  * Added python 3.12 and drop python 3.7 (#423).
+  * Test vine 5.1.0 (#424).
+  * Set an explicit timeout on SSL handshake to prevent hangs.
+  * Add MessageNacked to recoverable errors.
+  * Send heartbeat frames more often.
+
+  - Use AF_UNSPEC for name resolution
+  - Add additional error handling around code where an OSError
+  - Bugfix: not closing socket after server disconnect
+  - Remove TCP_USER_TIMEOUT option for Solaris (#355)
+    tests that were being repeated over an
+  - Fix faulty ssl sni intiation parameters (#283)
+  - Undeprecate auto_delete flag for exchanges. (#287)
+  - Fix faulty ssl sni intiation parameters (#283)
+  - Undeprecate auto_delete flag for exchanges. (#287)
+- replace set_socket_TCP_KEEPALIVE_and_TCP_USER_TIMEOUT.patch</comment>
+    <requestid>1125876</requestid>
+  </revision>
+</revisionlist>

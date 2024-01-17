@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1058006654d0cedcaf404eaabcb0cbe9</srcmd5>
+    <version>5.1.19</version>
+    <time>1613774896</time>
+    <user>dimstar_suse</user>
+    <comment>Rename php7-APCu to php-APCu</comment>
+    <requestid>873868</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8734af2a9f8717974937abd624a14967</srcmd5>
+    <version>5.1.20</version>
+    <time>1614948460</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>876707</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7fed4988f49d2fb7ccc6289ea3208749</srcmd5>
+    <version>5.1.21</version>
+    <time>1636577190</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>930562</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>508fc33ad04a53f924bb26266947a238</srcmd5>
+    <version>5.1.22</version>
+    <time>1665185033</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1008406</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>d33fb71b4d90cd5fb62d3ca3dd411c0d</srcmd5>
+    <version>5.1.22</version>
+    <time>1670954161</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1042519</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>948e1e1a9f9f915f8fb1f8317c3ad904</srcmd5>
+    <version>5.1.23</version>
+    <time>1700511578</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1127550</requestid>
+  </revision>
+</revisionlist>

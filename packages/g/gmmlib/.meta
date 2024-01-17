@@ -1,0 +1,5 @@
+<package name="gmmlib" project="openSUSE:Factory">
+  <title>Intel(R) Graphics Memory Management Library</title>
+  <description></description>
+  <devel project="X11:XOrg" package="gmmlib"/>
+</package>

@@ -1,0 +1,135 @@
+-------------------------------------------------------------------
+Mon Oct 30 20:18:33 UTC 2023 - Goldwyn Rodrigues <rgoldwyn@suse.com>
+
+- Update to 1.2.2
+ * exfat2img: Allow dumps for read-only devices.
+ * fsck.exfat: Revert Repairing zero size directory.
+ * fsck.exfat: Repair duplicated filename.
+ * mkfs.exfat: Add the option "q" to print only error messages.
+ * mkfs.exfat: Add the option "U" to set volume GUID.
+ * tune.exfat: Add the option "U" / "-u" to set or print volume GUID.
+ * fsck.exfat: Fix some out-of-bounds memory accesses.
+ * fsck.exfat: Change not to delete volume GUID directory entry.
+
+-------------------------------------------------------------------
+Fri May 19 09:21:26 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.2.1:
+  * fsck.exfat: Repair zero size directory.
+  * fsck.exfat: Four small clean-ups.
+
+-------------------------------------------------------------------
+Fri Oct 28 13:37:51 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.2.0:
+  Changes:
+  * fsck.exfat: Keep traveling files even if there is a corrupted
+    directory entry set.
+  * fsck.exfat: Introduce the option "b" to recover a boot sector even
+    if an exFAT filesystem is not found.
+  * fsck.exfat: Introduce the option "s" to create files in
+    "/LOST+FOUND", which have clusters allocated but was not belonged to
+    any files.
+  * fsck.exfat: Rename '.' and '..' entry name to the one user want.
+  Features:
+  * fsck.exfat: Repair corruptions of an exFAT filesystem. Please refer
+    to fsck.exfat manpage to see what kind of corruptions can be repaired.
+  * exfat2img: Dump metadata of an exFAT filesystem. Please refer to
+    exfat2img manpage to see how to use it.
+  Buf fixes:
+  * fsck.exfat: Fix an infinite loop while traveling files.
+  * tune.exfat: Fix bitmap entry corruption when adding new volume lablel.
+
+-------------------------------------------------------------------
+Thu Nov 18 08:37:16 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- update to 1.1.3:
+ * mkfs.exfat: ensure that the cluster size is greater than or
+   equal than the sector size.
+ * mkfs.exfat: replace lseek() + write() with pwrite().
+ * mkfs.exfat: prevent an integer overflow when computing the FAT
+   length.
+ * fsck.exfat: fix a double free memory error.
+
+-------------------------------------------------------------------
+Mon May 31 14:57:20 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.2:
+ * mkfs.exfat: set 0x80 to DriveSelect of the boot sector
+ * Fix issues on 4KB logical sector devices
+ * Fix issues when the sector size of of a file system is different from
+   that of a block device.
+
+-------------------------------------------------------------------
+Sun May  9 18:54:36 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.1:
+ * mkfs.exfat: adjust the boundary alignment calculations to compensate
+   for the volume offset.
+ * mkfs.exfat: add the "--pack-bitmap" option to relocate the allocation
+   bitmap to allow the FAT and the bitmap to share the same allocation
+   unit on flash media.
+ * Fix wrong bit operations on 64-bit big.
+ * Fix memory leaks in error paths.
+
+-------------------------------------------------------------------
+Wed Feb 10 07:03:06 UTC 2021 - Ismail Dönmez <idonmez@suse.com>
+
+- Switch to tar.xz tarball
+- Add signature checking for the tarball
+
+-------------------------------------------------------------------
+Tue Feb  9 22:48:51 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.1.0
+  * fsck.exfat: recover corrupted boot region.
+  * exfatlabel: Print or Set volume label and serial.
+  * dump.exfat: Show the on-disk metadata information
+    and the statistics.
+  * set _FILE_OFFSET_BITS=64 for Android build.
+- Add dump.exfat binary and manpage to %files section
+- Add exfatlabel binary and manpaeg to %files section
+
+-------------------------------------------------------------------
+Fri Sep 11 11:33:47 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- jsc#SLE-16156: Add exfatprogs to SLE
+
+-------------------------------------------------------------------
+Mon Sep  7 12:21:56 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Remove ExclusiveArch, the code compiles on all arches cleanly now. 
+
+-------------------------------------------------------------------
+Mon Aug  3 05:50:37 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 1.0.4
+  * fsck.exfat: display sector, cluster, and volume sizes in the human
+    readable format.
+  * fsck.exfat: reduce the elapsed time using read-ahead.
+  * mkfs.exfat: generate pseudo unique serials while creating filesystems.
+  * mkfs.exfat: add the "-b" option to align the start offset of FAT and
+    data clusters.
+  * fsck.exfat: repair zero-byte files which have the NoFatChain attribute.
+  * Fix memory leaks on error handling paths.
+  * fsck.exfat: fix the bug that cannot access space beyond 2TB.
+
+-------------------------------------------------------------------
+Tue May 12 15:36:26 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 1.0.3
+  * libexfat0 library is no longer installed
+  * Rename label.exfat to tune.exfat.
+  * tune.exfat: change argument style
+    (-l option for print level, -L option for setting label)
+  * mkfs.exfat: harmonize set volume label option with tune.exfat.
+  * Fix the reported build warnings/errors.
+  * Add memset to clean garbage in allocation.
+  * Fix wrong volume label array size.
+  * Open a device using O_EXCL to avoid formatting it while it is mounted.
+  * Add man page.
+
+-------------------------------------------------------------------
+Thu Apr 23 12:54:18 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Initial release on OBS 

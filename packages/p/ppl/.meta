@@ -1,0 +1,6 @@
+<package name="ppl" project="openSUSE:Factory">
+  <title>Parma Polyhedra Library</title>
+  <description>The Parma Polyhedra Library (PPL) is a library for the manipulation of (not necessarily closed) convex polyhedra and other numerical abstractions.  The applications of convex polyhedra include program analysis, optimized compilation, integer and combinatorial optimization and statistical data-editing.  The Parma Polyhedra Library comes with several user friendly interfaces, is fully dynamic (available virtual memory is the only limitation to the dimension of anything), written in accordance to all the applicable standards, exception-safe, rather efficient, thoroughly documented, and free software.  This package provides all what is necessary to run applications using the PPL through its C and C++ interfaces.
+</description>
+  <devel project="science" package="ppl"/>
+</package>

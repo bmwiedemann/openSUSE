@@ -1,0 +1,27 @@
+From 61b4b713b630febf170c58c9ebbba2e01bb28eff Mon Sep 17 00:00:00 2001
+From: Marius Tomaschewski <mt@suse.de>
+Date: Thu, 18 Aug 2011 15:09:01 +0200
+Subject: [PATCH] dhcp-4.2.2-quiet-dhclient
+References: bnc#711420
+
+---
+ client/dhclient.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/client/dhclient.c b/client/dhclient.c
+index dbc6f38..65d9eeb 100644
+--- a/client/dhclient.c
++++ b/client/dhclient.c
+@@ -451,6 +451,9 @@ main(int argc, char **argv) {
+ 	} else {
+ 		log_perror = 0;
+ 		quiet_interface_discovery = 1;
++#if !defined(DEBUG)
++		setlogmask(LOG_UPTO(LOG_NOTICE));
++#endif
+ 	}
+ 
+ 	/* If we're given a relay agent address to insert, for testing
+-- 
+1.8.4
+

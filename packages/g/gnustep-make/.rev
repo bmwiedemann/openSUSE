@@ -1,0 +1,59 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cc025383f221953dea2c113e8e482a07</srcmd5>
+    <version>2.6.8</version>
+    <time>1485250366</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>450419</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>836095b45e751b6fc47f176c8a09c3e6</srcmd5>
+    <version>2.7.0</version>
+    <time>1495883643</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>490046</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>aadb466c190d581dceb30d6794d33be0</srcmd5>
+    <version>2.7.0</version>
+    <time>1568982968</time>
+    <user>maxlin_factory</user>
+    <comment>Another try at submitting the same request over and over again.
+Disable LTO for Objective-C.</comment>
+    <requestid>729323</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4de2da3c890ce886fc737ab16c8b25f8</srcmd5>
+    <version>2.8.0</version>
+    <time>1586973245</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>793910</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>bf89fa5977387a4c355d24a6ce9a10a7</srcmd5>
+    <version>2.9.0</version>
+    <time>1656422480</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>985293</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>748b64744affea30581aa9a999047576</srcmd5>
+    <version>2.9.1</version>
+    <time>1673108259</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1056701</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>2b9ac7cabca4a093ac526a91621530db</srcmd5>
+    <version>2.9.1</version>
+    <time>1684952501</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1088512</requestid>
+  </revision>
+</revisionlist>

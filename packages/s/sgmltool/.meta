@@ -1,0 +1,18 @@
+<package name="sgmltool" project="openSUSE:Factory">
+  <title>SGML-Tools - a Text-Formatting Package</title>
+  <description>SGML-Tools is a text-formatting package based on SGML (Standard
+Generalized Markup Language), which allows you to produce LaTeX, HTML,
+GNU info, LyX, RTF, and plain ASCII documents (via groff) from a single
+source.
+
+This system is tailored for writing technical software documentation,
+an example of which is the Linux HOWTO documents. It should be useful
+for all kinds of printed and online documentation.
+
+This package is the successor to the Linuxdoc package.
+
+SGML-Tools cannot process arbitrary SGML documents. In such a case, try
+jade_dsl and write your own DSSSL scripts (take the docbk30 package as
+an example).</description>
+  <devel project="Publishing" package="sgmltool"/>
+</package>

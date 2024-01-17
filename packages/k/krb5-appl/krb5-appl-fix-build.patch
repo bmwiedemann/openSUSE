@@ -1,0 +1,13 @@
+Index: krb5-appl-1.0.3/telnet/telnet/telnet.c
+===================================================================
+--- krb5-appl-1.0.3.orig/telnet/telnet/telnet.c
++++ krb5-appl-1.0.3/telnet/telnet/telnet.c
+@@ -798,7 +798,7 @@ setupterm(tname, fd, errp)
+ }
+ #else
+ #define	termbuf	ttytype
+-extern char ttytype[];
++/*extern char ttytype[]; defined in ncurses */
+ #endif
+ 
+ int resettermname = 1;

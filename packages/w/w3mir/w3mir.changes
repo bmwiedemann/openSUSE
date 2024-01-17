@@ -1,0 +1,203 @@
+-------------------------------------------------------------------
+Mon Jan 10 19:58:49 UTC 2011 - coolo@novell.com
+
+- make it build and clean up spec file
+
+-------------------------------------------------------------------
+Wed Jan 25 21:42:44 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Nov 01 15:30:05 CET 2004 - tcrhak@suse.cz
+
+- save data in the current directory, not the root one
+  [bug #47540, patch path]
+
+-------------------------------------------------------------------
+Wed Jun 23 12:56:09 CEST 2004 - hmacht@suse.de
+
+- building as non-root user
+
+-------------------------------------------------------------------
+Wed Aug 20 20:23:19 CEST 2003 - mjancar@suse.cz
+
+- require the perl version we build with
+
+-------------------------------------------------------------------
+Mon Jul 28 17:07:01 CEST 2003 - ro@suse.de
+
+- install to vendor location 
+
+-------------------------------------------------------------------
+Tue Jul  1 22:15:29 CEST 2003 - ro@suse.de
+
+- use perl_process_packlist macro 
+
+-------------------------------------------------------------------
+Fri Aug  9 12:46:07 MEST 2002 - mls@suse.de
+
+- use sitearch macro
+
+-------------------------------------------------------------------
+Mon Jul 29 22:24:00 CEST 2002 - mls@suse.de
+
+- fixed neededforbuild for perl-5.8.0
+
+-------------------------------------------------------------------
+Tue Jul 31 14:55:29 CEST 2001 - adostal@suse.cz
+
+- change URL (new is http://langfeldt.net/w3mir/) 
+
+-------------------------------------------------------------------
+Tue Mar 13 07:59:25 CET 2001 - cihlar@suse.cz
+
+- update to version 1.0.10
+
+-------------------------------------------------------------------
+Thu Nov 16 07:54:52 CET 2000 - cihlar@suse.cz
+
+- fixed neededforbuild
+- bzipped sources
+
+-------------------------------------------------------------------
+Wed Aug 23 00:10:35 CEST 2000 - ro@suse.de
+
+- fixed perl path
+
+-------------------------------------------------------------------
+Mon Jun 19 14:46:37 CEST 2000 - cihlar@suse.cz
+
+- removed perl modules 
+
+-------------------------------------------------------------------
+Mon May 22 09:16:10 CEST 2000 - cihlar@suse.cz
+
+- fixed bug with sed 
+
+-------------------------------------------------------------------
+Thu May 18 11:42:23 CEST 2000 - cihlar@suse.cz
+
+- /usr/doc/packages -> %{_defaultdocdir} 
+
+-------------------------------------------------------------------
+Fri Mar 31 09:21:20 CEST 2000 - cihlar@suse.cz
+
+- added BuildRoot
+- clean up spec file
+- update to version 1.0.9
+- update HTML-Parser to version 3.07
+- update libwww-perl to version 5.47
+- removed conflicts perl_uri: new version of libwww use it
+- added requires perl_uri and perl_net
+
+-------------------------------------------------------------------
+Wed Mar 22 13:53:24 CET 2000 - ro@suse.de
+
+- removed libnet, is in perl_net now 
+
+-------------------------------------------------------------------
+Wed Mar 22 01:24:25 CET 2000 - ro@suse.de
+
+- removed MD5 : should work with new perl_md5 package
+- added conflicts perl_uri : libwww can't work with recent URI 
+
+-------------------------------------------------------------------
+Thu Feb 17 16:48:26 MET 2000 - grimmer@suse.de
+
+- added URL
+- use version macro
+- apply recommended patch from web site to abort
+  function rm_rf immediately
+
+-------------------------------------------------------------------
+Thu Jan 20 12:24:11 CET 2000 - ro@suse.de
+
+- use macro for mandir 
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Tue Jun 15 00:53:38 CEST 1999 - grimmer@suse.de
+
+- update to 1.0.8
+- updated Perl-Modules and changed pathnames
+- now uses "make install" to install perl modules
+
+-------------------------------------------------------------------
+Wed Mar 17 14:55:13 MET 1999 - ro@suse.de
+
+- remove .orig with -f
+
+-------------------------------------------------------------------
+Tue Mar  2 19:49:42 MET 1999 - grimmer@suse.de
+
+- new version 1.0.6
+- added perl module HTML-Parser
+- specfile changes
+
+-------------------------------------------------------------------
+Wed Jan 20 01:05:40 MET 1999 - ro@suse.de
+
+- adapted filelist to build on alpha as well
+
+-------------------------------------------------------------------
+Tue Nov 17 16:45:09 MET 1998 - ro@suse.de
+
+- adapted paths to perl5.005_02
+
+-------------------------------------------------------------------
+Tue Nov 10 18:32:22 MET 1998 - grimmer@suse.de
+
+- new version 1.0.3 -> 1.0.5
+- new versions of perl Modules:
+  MIME-Base64 2.05 -> 2.08
+- minor specfile changes
+
+-------------------------------------------------------------------
+Tue Oct  6 12:46:47 MEST 1998 - ro@suse.de
+
+- respect different perl-versions 
+
+-------------------------------------------------------------------
+Mon Jul 13 11:41:43 MEST 1998 - grimmer@suse.de
+
+- new version 0.99b2 -> 1.0.3
+- new versions of perl Modules:
+  MIME-Base64 2.04 -> 2.05
+  libwww 5.18 -> 5.34
+- fixed installation of Perl Modules
+- fixed spec- and pacfiles
+
+-------------------------------------------------------------------
+Mon Apr  6 10:43:21 MEST 1998 - ro@suse.de
+
+- fixed postin (again: removed leading /)
+
+-------------------------------------------------------------------
+Wed Mar 11 09:52:25 MET 1998 - ro@suse.de
+
+- fixed postin
+
+-------------------------------------------------------------------
+Thu Feb 12 13:11:59 MET 1998 - ro@suse.de
+
+- fixed specfile and changed usr/local/bin/perl in demos
+
+----------------------------------------------------------------------------
+Tue Jan 13 16:41:07 MET 1998 -  bb@suse.de
+
+About Version 0.99a3:
+--------------------
+
+Feature/Code freeze time.  Now we only debug.  Baring serious problems
+the next release will be 0.99b1 (beta).  New in this release
+
+- We understand the BASE tag.  It's still removed, but everything is
+  relative to it instead of the document origin.
+- Everything is in place to fix up redirected references, in a separate
+  program.
+

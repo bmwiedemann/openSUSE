@@ -1,0 +1,102 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bbb6981a55b7458f0d3b07ce14af4df6</srcmd5>
+    <version>1.2</version>
+    <time>1549916586</time>
+    <user>dimstar_suse</user>
+    <comment>- Initial package mako 1.2 for openSUSE
+</comment>
+    <requestid>672194</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6cb66b4d27b02c1660810e8198d14e28</srcmd5>
+    <version>1.3</version>
+    <time>1556023027</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 1.3:
+  * Grouping (#98 and #111)
+  * Icons (#115 and #128)
+  * Progress bar indicator (#109)
+  * Rounded corners (#134)
+  * For details see https://github.com/emersion/mako/releases/tag/v1.3</comment>
+    <requestid>696965</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a88eb292505f6ed73fa0e701f8f9f722</srcmd5>
+    <version>1.4</version>
+    <time>1563790897</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717447</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4b9e9923c7c8cb5a5012dbed546099c9</srcmd5>
+    <version>1.4.1</version>
+    <time>1578950529</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.1:
+  * `makoctl menu` to choose a notification action
+  * A CLI flag to use a custom config file path
+  * Improved touch support (multiple touches)
+  * Bug fixes</comment>
+    <requestid>763930</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3f28ae468769ed1e53f091f842ae1eed</srcmd5>
+    <version>1.5</version>
+    <time>1620158455</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>890242</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>67a89fe5d00a9d6ec3740ff0291fb388</srcmd5>
+    <version>1.6</version>
+    <time>1626118820</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6:
+  * Modes allow to conditonally change options at runtime, and allow to
+    setup things like a &quot;do not disturb&quot; mode.
+  * Add support for synchronous hints, to easily replace an existing
+    notification from a script.
+  * Add an &quot;exec&quot; binding to execute a command
+  * Add &quot;on-notify&quot; bindings to trigger an action when a notification
+    is opened.
+  * Several small improvments and bugfixes:</comment>
+    <requestid>905773</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1ccb93989c925063e4806acca56a6e89</srcmd5>
+    <version>1.7.1</version>
+    <time>1657191450</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7.1:
+  * Fix inverted has_mode condition
+
+- Update to 1.7
+  * Support for multiple modes active at the same time.
+  * A new command to list currently active modes.
+  * Improved HiDPI support.
+  * A new outer-margin option.</comment>
+    <requestid>987311</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>ab02ad7e3bf1ce51a97a8e8429091a16</srcmd5>
+    <version>1.7.1</version>
+    <time>1678125330</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1069529</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c4f121368d4b37dbaf65173ffbfaeed7</srcmd5>
+    <version>1.8.0</version>
+    <time>1685632824</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.9:
+  * A new `makoctl history` command to display history
+  * An action name can be passed to `makoctl invoke`
+  * `makoctl list` now includes desktop-entry and urgency</comment>
+    <requestid>1090236</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,46 @@
+-------------------------------------------------------------------
+Sun Sep 10 16:00:33 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 3.1.1:
+  * No changelog available.
+- Use GPG signing.
+- Add baselibs.conf.
+
+-------------------------------------------------------------------
+Fri Mar  4 07:46:25 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to 3.1.0+bzr20160125:
+  * Add basic autopkgtest support.
+  * Put braces around a test case to fix a FTBFS using GCC 6.x
+    (lp#1537161).
+  * Refresh packaging for 2016.
+  * timeout: Store uint64_t instead of converting back and forth to
+    float (lp#1475888).
+
+-------------------------------------------------------------------
+Sat Oct 10 13:26:03 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 3.1.0daily13.06.05.
+- Spec cleanup.
+
+-------------------------------------------------------------------
+Mon Dec 22 19:41:32 UTC 2014 - tchvatal@suse.com
+
+- Version bump to 3.1.0:
+  * various upstream fixes
+- Cleanup the spec
+- Explicitely set the configure variables to be sure features are
+  enabled
+
+-------------------------------------------------------------------
+Sat Aug 11 02:34:47 UTC 2012 - nmo.marques@gmail.com
+
+- update to version 3.0.6
+- package name change from 'utouch-grail' to 'grail'; following
+  upstream changes
+
+-------------------------------------------------------------------
+Thu Aug  9 16:44:55 UTC 2012 - nmo.marques@gmail.com
+
+- initial package
+

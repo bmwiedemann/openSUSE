@@ -1,0 +1,16 @@
+<services>
+  <service mode="disabled" name="obs_scm">
+    <param name="url">https://github.com/census-instrumentation/opencensus-cpp</param>
+    <param name="scm">git</param>
+    <param name="changesgenerate">enable</param>
+    <param name="filename">opencensus-cpp</param>
+    <param name="versionformat">0.4.0+git.%cd</param>
+    <param name="revision">98970f78091ae65b4a029bcf512696ba6d665cf4</param>
+  </service>
+  <service mode="buildtime" name="tar" />
+  <service mode="buildtime" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="disabled" name="set_version" />
+</services>

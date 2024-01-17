@@ -1,0 +1,37 @@
+From 0dda200877d1b801fba948a5948f321bee1a75a9 Mon Sep 17 00:00:00 2001
+From: Philipp Reisner <philipp.reisner@linbit.com>
+Date: Fri, 1 Sep 2023 08:03:01 +0200
+Subject: [PATCH 01/20] drbd: allow transports to take additional krefs on a
+ listener
+
+by making the drbd_listener_destroy() available to the transports.
+
+heming.zhao@suse.com
+- For compiling drbd, I modified this patch. please differ with upstream
+  to find changes.
+
+---
+ drbd/drbd_transport.c | 3 ++-
+ 1 files changed, 2 insertions(+), 1 deletions(-)
+
+diff --git a/drbd/drbd_transport.c b/drbd/drbd_transport.c
+index d1ec5724dec6..416a50499046 100644
+--- a/drbd/drbd_transport.c
++++ b/drbd/drbd_transport.c
+@@ -223,7 +223,7 @@ int drbd_get_listener(struct drbd_transport *transport, struct drbd_path *path,
+ 	return err;
+ }
+ 
+-static void drbd_listener_destroy(struct kref *kref)
++void drbd_listener_destroy(struct kref *kref)
+ {
+ 	struct drbd_listener *listener = container_of(kref, struct drbd_listener, kref);
+ 	struct drbd_resource *resource = listener->resource;
+@@ -331,3 +331,4 @@ EXPORT_SYMBOL_GPL(drbd_find_path_by_addr);
+ EXPORT_SYMBOL_GPL(drbd_stream_send_timed_out);
+ EXPORT_SYMBOL_GPL(drbd_should_abort_listening);
+ EXPORT_SYMBOL_GPL(drbd_path_event);
++EXPORT_SYMBOL_GPL(drbd_listener_destroy);
+-- 
+2.35.3
+

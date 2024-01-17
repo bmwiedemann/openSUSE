@@ -1,0 +1,5 @@
+<package name="scim-tables" project="openSUSE:Factory">
+  <title>Data Files for SCIM Generic Table Input Method Module</title>
+  <description>Data files for SCIM generic table input method module.</description>
+  <devel project="M17N" package="scim-tables"/>
+</package>

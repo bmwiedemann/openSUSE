@@ -1,0 +1,8 @@
+<package name="megaglest" project="openSUSE:Factory">
+  <title>Free 3D Real-Time Customizable Strategy Game</title>
+  <description>MegaGlest takes place in a context that could be compared to that of
+pre-Renaissance Europe with the license that magic forces exist in the
+environment and can be controlled.
+</description>
+  <devel project="games" package="megaglest"/>
+</package>

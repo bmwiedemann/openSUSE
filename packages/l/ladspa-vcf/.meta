@@ -1,0 +1,5 @@
+<package name="ladspa-vcf" project="openSUSE:Factory">
+  <title>LADSPA VCF plugin</title>
+  <description></description>
+  <devel project="multimedia:libs" package="ladspa-vcf"/>
+</package>

@@ -1,0 +1,137 @@
+-------------------------------------------------------------------
+Sat Mar 14 09:50:34 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Do not build pdf documentation as it fails and html version is 
+  also built
+
+-------------------------------------------------------------------
+Tue Jul 29 11:57:42 UTC 2014 - ctrippe@opensuse.org
+
+- add BuildRequires:  tex(wasysym.sty)
+      BuildRequires:  tex(wasy7.tfm)
+
+-------------------------------------------------------------------
+Mon Oct 14 09:13:19 UTC 2013 - mvyskocil@suse.com
+
+- make check fails on symlinks made by fdupes
+  * run check in build phase then
+
+-------------------------------------------------------------------
+Fri Oct  4 09:41:03 UTC 2013 - mvyskocil@suse.com
+
+- Update to 1.2.4
+  * new date_local and date_local_r appenders
+  * fixed several warnings
+  * public API functions with format strings are marked by GNU
+    C format attribute
+  1.2.3:
+  * use UTF-8 encoding in AUTHORS file
+  * update FSF address in license and headers
+  * manpage for log4c-config
+  * pkgconfig file
+  * fixed memory leaks in log4c_ini()/log4c_fini()
+  * use more recent autotools
+  1.2.1:
+  * added log4c_appender_syslog_set_facility()
+  * rollingfile appender crash fixes
+  * load only first log4crc file
+  * fixed crash on messages longer than 1024 bytes
+  * added one missing C++ declaration
+  * fixed reopening of the stream appender
+  * proper copy message over end of the file in mmap appender
+  * various small other fixes
+- Use pristine upstream tarball and source url
+- Reformat spec file and add make check call
+- Call fdupes on documentation and manual pages
+- Drop log4crc.sample installation and moved to documentation
+  of devel package
+- Moved unecessary documentation files (README, AUTHORS, ChangeLog)
+  to devel package
+- Build with pkg-config
+- Drop log4c-fix-m4-quoting.patch, already upstream
+
+-------------------------------------------------------------------
+Thu Aug  2 12:41:30 UTC 2012 - werner@suse.de
+
+- Add fonts, amssymb style, and makeindex
+
+-------------------------------------------------------------------
+Tue Jul 10 09:58:07 UTC 2012 - werner@suse.de
+
+- Make it build with latest TeXLive 2012 with new package layout 
+
+-------------------------------------------------------------------
+Sun Jan 29 20:46:21 UTC 2012 - jengelh@medozas.de
+
+- Remove redundant tags/sections per specfile guideline suggestions
+- Own all necessary dirs to complete factory build
+
+-------------------------------------------------------------------
+Mon Feb  1 11:59:16 UTC 2010 - jengelh@medozas.de
+
+- package baselibs.conf
+
+-------------------------------------------------------------------
+Tue Jan 12 17:47:08 UTC 2010 - coolo@novell.com
+
+- disable parallel make to fix build
+
+-------------------------------------------------------------------
+Thu Jan  8 21:53:05 CET 2009 - crrodriguez@suse.de
+
+- supress static libraries 
+
+-------------------------------------------------------------------
+Thu Nov 27 23:55:25 CET 2008 - ro@suse.de
+
+- added baselibs.conf (needed for libcsync0) 
+
+-------------------------------------------------------------------
+Wed Oct 22 16:17:33 CEST 2008 - mrueckert@suse.de
+
+- fix debug_packages_requires define
+
+-------------------------------------------------------------------
+Fri Aug  1 17:32:38 CEST 2008 - ro@suse.de
+
+- fix requires for debuginfo package
+
+-------------------------------------------------------------------
+Thu Jul  3 14:59:19 CEST 2008 - anschneider@suse.de
+
+- Fix quoting in the m4 file.
+- Fix rpmlint warnings.
+- Fix RPM groups in the spec file.
+
+-------------------------------------------------------------------
+Wed Feb 20 13:16:25 CET 2008 - anschneider@suse.de
+
+- disable icecream build
+
+-------------------------------------------------------------------
+Tue Feb 19 13:03:52 CET 2008 - anschneider@suse.de
+
+- Fix pdf generation
+
+-------------------------------------------------------------------
+Mon Feb 11 10:49:26 CET 2008 - anschneider@suse.de
+
+- Fix build for BETA distribution
+- Fix Requires of the doc package
+
+-------------------------------------------------------------------
+Thu Feb  7 10:54:13 CET 2008 - anschneider@suse.de
+
+- fix rpmlint warnings
+
+-------------------------------------------------------------------
+Fri Jan 25 15:22:11 CET 2008 - anschneider@suse.de
+
+- adapt to new share library packing policy
+
+-------------------------------------------------------------------
+Sun Nov 11 22:42:38 CET 2007 - anschneider@suse.de
+
+- initial package for log4c version 1.2.1
+

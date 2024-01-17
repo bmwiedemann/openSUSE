@@ -1,0 +1,158 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f0667a6b0d355aa7ff8260f55d51fcdd</srcmd5>
+    <version>1.7.2</version>
+    <time>1533292578</time>
+    <user>dimstar_suse</user>
+    <comment>Used by weblate</comment>
+    <requestid>626894</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>372aab304fe67ba8267c8a727842e622</srcmd5>
+    <version>1.7.2</version>
+    <time>1533887419</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patches to work with django 2.0 and 2.1 properly:
+  * django-20.patch
+  * django-21.patch
+
+- Trim marketing from description.</comment>
+    <requestid>628271</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>a1d0a8ae1c3481a2eae89ed83eb1a153</srcmd5>
+    <version>1.7.2</version>
+    <time>1559580872</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix old leap build</comment>
+    <requestid>707039</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>9e81b7dbd3ef9e30e974dc3d7a991943</srcmd5>
+    <version>1.7.2</version>
+    <time>1568720354</time>
+    <user>maxlin_factory</user>
+    <comment>- Test only with pytest 3, newer releases not compatible</comment>
+    <requestid>731305</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>18362614f2f40e8567bfc9fda450eefa</srcmd5>
+    <version>1.8.0</version>
+    <time>1572443344</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.0:
+  * Update to support new django releases
+  * Numerous improvements to bootstrap4 template pack
+- Remove patches:
+  * django-21.patch
+  * django-20.patch</comment>
+    <requestid>744151</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7ece3452f586cde1c534f701bb84822d</srcmd5>
+    <version>1.8.1</version>
+    <time>1578437667</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.1:
+  * Fixing FileField UI bug introduced with 1.8.0
+  * Remove is-valid css class for radio (bug introduced with 1.8.0)
+  * Various alignment and margin fixes for Bootstrap 4 template pack</comment>
+    <requestid>761489</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a7625d186fa7a905a940f192f7694e98</srcmd5>
+    <version>1.9.0</version>
+    <time>1585995990</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9.0:
+  * Removed support for Python 2.
+  * Removed support for Django versions prior to 2.2.
+  * CSS for Column layout object in Bootstrap 4 template pack changed to 'col-md'.</comment>
+    <requestid>791169</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f8ade130bfee524a3754bfac6e261879</srcmd5>
+    <version>1.9.1</version>
+    <time>1591743061</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9.1
+ * Added Bootstrap 4 styling for clearable file widget.
+ * Fixed FileField UI bug
+ * Project now uses GitHub actions for testing</comment>
+    <requestid>812876</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>080c1178baf7ca17b493c7baea644e19</srcmd5>
+    <version>1.9.2</version>
+    <time>1599343441</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>832479</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9ead0bd831f4bee3450b1b0cf1e4af79</srcmd5>
+    <version>1.11.2</version>
+    <time>1620840762</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>892499</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>44698f50a85e4e378d8eb6da0af59b35</srcmd5>
+    <version>1.13.0</version>
+    <time>1641765011</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>944967</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>439e7c1882ed1dd2ac0cc1c56e3a95e4</srcmd5>
+    <version>1.14.0</version>
+    <time>1661432943</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>999133</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8e1af3bbba605c5ea5b55a5521075030</srcmd5>
+    <version>2.0</version>
+    <time>1690278592</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1099205 from mcalabkova
+
+- Update to v2.0
+    * Removed all Bootstrap template packs. These template packs are now available as standalone packages.
+      To upgrade, install the required template pack and add it to your INSTALLED_APPS setting.
+      * See python-crispy-bootstrap3, python-crispy-bootstrap4 and python-crispy-bootstrap5
+    * Removed uni-form template pack. Uni-Form specific classes previously added to every template pack 
+      e.g. textInput are now removed.
+    * The form_style attribute of FormHelper is removed.
+    * The form_style positional argument to render_field() is removed.
+    * The form_style positional argument to the render() method of all LayoutObjects is removed.
+    * Widespread use of the |safe in crispy-form templates is removed. Audit for html input in your forms
+      especially for Field and Prepended/Appended text. To retain the previous behaviour mark text as safe
+      in your project code using mark_safe().
+    * Dropped support for Django 2.2.
+    * Added support for Django 4.1 and 4.2.
+    * Added support for Python 3.11.
+    * More changes, see https://github.com/django-crispy-forms/django-crispy-forms/releases
+  - Convert to multibuild because of the template packs</comment>
+    <requestid>1099525</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>84fb7d8b9cae0329a8fe8e29e5fefded</srcmd5>
+    <version>2.1</version>
+    <time>1701023823</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.1:
+  * Added support for Django 5.0.
+  * Dropped support for Django 3.2, 4.0 and 4.1.
+  * Added support for Python 3.12.
+  * Dropped support for Python 3.7.
+  * See the 2.1 Milestone for the full change
+
+  * Removed uni-form template pack. Uni-Form specific classes previously added to every template pack
+  * Radio and Checkbox now respect the field's disabled attribute when using the</comment>
+    <requestid>1128727</requestid>
+  </revision>
+</revisionlist>

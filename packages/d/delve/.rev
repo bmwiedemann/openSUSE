@@ -1,0 +1,132 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7d2dbc80b88d2e534abb9cca2cc97a1a</srcmd5>
+    <version>1.8.3</version>
+    <time>1652993371</time>
+    <user>dimstar_suse</user>
+    <comment>New package delve v1.8.3 is a debugger for the Go programming language.</comment>
+    <requestid>978032</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>df8b755b3834fdf0f4782a372dbb3eeb</srcmd5>
+    <version>1.8.3</version>
+    <time>1656321943</time>
+    <user>dimstar_suse</user>
+    <comment>Package can not build on s390x (forwarded request 985137 from azouhr)</comment>
+    <requestid>985192</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ab2267b604db0c0d80125cb5ce154012</srcmd5>
+    <version>1.9.0</version>
+    <time>1657191442</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.9.0: (forwarded request 987278 from jfkw)</comment>
+    <requestid>987279</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>8b10ddc7d58699ee5c6b080e179e4634</srcmd5>
+    <version>1.9.0</version>
+    <time>1661257772</time>
+    <user>dimstar_suse</user>
+    <comment>- update list of excluded archs with those that raise
+  your_operating_system_and_architecture_combination_is_not_supported_by_delve exception</comment>
+    <requestid>998639</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>62667ca47b293e145eecd8ca087b8562</srcmd5>
+    <version>1.9.1</version>
+    <time>1661346675</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.9.1:
+  * v1.9.1 (#3116)
+  * proc: make sure logical breakpoints map exists (#3115)
+  * go.mod: update starlark dependency (#3112)
+  * terminal: send large output to pager (#3060)
+  * *: switch to int64 for goroutine IDs (#3110)
+  * proc: use stdlib to compute CRC for gnu_debuglink section (#3105)
+  * _scripts: fix CI on go1.19/linux/386 (#3100)
+  * service/dap: Add support for empty string in substitutePath (#3088)
+  * proc: fuse evalToplevelTypeCast and evalTypeCast (#3057)
+  * _scripts: fix command to download Go version (#3099)
+  * service/debugger: refactor state/collectBreakpointInfo for TargetGroup (#3064)
+  * proc: do not panic reading bad G struct (#3098)
+  * TeamCity,goversion: bump test matrix (#3092)
+  * pkg/dwarf/line: Fix parsing file table for DWARFv5 (#3090)
+  * :* Improve trace subcommand output (#3091)
+  * Documentation: fix documentation of examinemem (#3087)
+  * fix StepInstruction on 1 byte instruction with a software breackpoint (#3084)
+  * pkg/proc/internal/ebpf: Fix handling of entry / return (#3081)
+  * service/dap: fix indexing bug for maps (#3068)
+  * pkg/proc/internal/ebpf: Fix size of ebpf type for fn_addr (#3080)
+  * proc/native: refactor windows framework (#3079)
+  * terminal/command: 'goroutines' command add new flags '-exec command' (#3044)
+  * proc: support gnu_debuglink section (#3073)
+  * pkg/locspec: support exact match in SubstitutePath (#3075)
+  * proc/internal/ebpf: drop dependency on cgo (#3072)
+  * cmd/dlv,proc: misc improvements to trace subcommand (#3069)
+  * dwarf/op,proc: output register name when printing location exprs (#3052)
+  * service/dap: limit disassembly range (#3045)
+  * proc,service/debugger: introduce TargetGroup abstraction (#3030)</comment>
+    <requestid>998885</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d5802052ed046215452a3b420097ae62</srcmd5>
+    <version>1.20.0</version>
+    <time>1670588283</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.20.0: (forwarded request 1041735 from jfkw)</comment>
+    <requestid>1041737</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d1ad1959ffd0ce4987b7dfad6672b8b0</srcmd5>
+    <version>1.20.2</version>
+    <time>1680884198</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.20.2:
+- Packaging update source service mode to manual formerly disabled (forwarded request 1077786 from jfkw)</comment>
+    <requestid>1077787</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6133f298d32c604540db51674d1d2c3b</srcmd5>
+    <version>1.21.0</version>
+    <time>1688052524</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.21.0: (forwarded request 1095852 from jfkw)</comment>
+    <requestid>1095857</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>8407c4f7029097c2a27d950eda0fe5f2</srcmd5>
+    <version>1.21.0</version>
+    <time>1693383648</time>
+    <user>anag+factory</user>
+    <comment>- update summary and architecture excludes</comment>
+    <requestid>1107865</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>cacf52d04c9ed5f28eac87e6bbf203f7</srcmd5>
+    <version>1.21.2</version>
+    <time>1698700303</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.21.2:
+- Packaging improvements:
+  * Re-enable binary stripping and debuginfo boo#1210938
+  * Update to BuildRequires: golang(API) &gt;= 1.17 matching go.mod
+  * Build PIE with pattern that may become recommended procedure:
+    %%ifnarch ppc64 GOFLAGS=&quot;-buildmode=pie&quot; %%endif go build
+    A go toolchain buildmode default config would be preferable
+    but none exist at this time.
+  * Drop mod=vendor, go1.14+ will detect vendor dir and auto-enable
+  * Drop go build -o arg, default binary name is pkg of main()
+  * Drop comment about upstream Makefile static build options fail
+  * Add basic %check to execute binary --help (forwarded request 1121297 from jfkw)</comment>
+    <requestid>1121298</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>95bedc07917183a8d19340e35cd4004d</srcmd5>
+    <version>1.22.0</version>
+    <time>1704281103</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.22.0: (forwarded request 1135717 from jfkw)</comment>
+    <requestid>1135718</requestid>
+  </revision>
+</revisionlist>

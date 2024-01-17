@@ -1,0 +1,13 @@
+<package name="cargo-c" project="openSUSE:Factory">
+  <title>Helper to build and install c-like libraries from Rust</title>
+  <description>The is a cargo applet to build and install C-ABI compatibile dynamic and static
+libraries from Rust.
+
+It produces and installs a correct pkg-config file, a static library and a
+dynamic library, and a C header to be used by any C (and C-compatible)
+software.
+
+</description>
+  <devel project="devel:languages:rust" package="cargo-c"/>
+  <url>https://crates.io/crates/cargo-c</url>
+</package>

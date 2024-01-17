@@ -1,0 +1,101 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7283a7b29a60bfe78633d10506a1b5fe</srcmd5>
+    <version>0.3.1</version>
+    <time>1313054329</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>78106</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>21442d3192f9056a4d1c960ba004fc42</srcmd5>
+    <version>0.3.1</version>
+    <time>1313054343</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78106
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>21442d3192f9056a4d1c960ba004fc42</srcmd5>
+    <version>0.3.1</version>
+    <time>1319182456</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>7b959c07e69719eac891ad82de0dca7b</srcmd5>
+    <version>0.3.1</version>
+    <time>1329221487</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>103866</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>3b71d0374bfad86d1a6a15a8a289f70a</srcmd5>
+    <version>0.3.1</version>
+    <time>1339352397</time>
+    <user>coolo</user>
+    <comment>fix for factory (forwarded request 124346 from MargueriteSu)</comment>
+    <requestid>124347</requestid>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>c4354ac1771eb5318055433be9e8da72</srcmd5>
+    <version>0.3.1</version>
+    <time>1339761976</time>
+    <user>coolo</user>
+    <comment>- Disable gtk3-migration patches temporarily (can be enabled by
+  defining scim_gtk3=1)</comment>
+    <requestid>124933</requestid>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>c4354ac1771eb5318055433be9e8da72</srcmd5>
+    <version>0.3.1</version>
+    <time>1340184201</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="8" vrev="10">
+    <srcmd5>2be83d09ce24121a0737c99063344194</srcmd5>
+    <version>0.3.1</version>
+    <time>1347487605</time>
+    <user>namtrac</user>
+    <comment></comment>
+    <requestid>133798</requestid>
+  </revision>
+  <revision rev="9" vrev="12">
+    <srcmd5>2be83d09ce24121a0737c99063344194</srcmd5>
+    <version>0.3.1</version>
+    <time>1359110386</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="14">
+    <srcmd5>2be83d09ce24121a0737c99063344194</srcmd5>
+    <version>0.3.1</version>
+    <time>1379664632</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="16">
+    <srcmd5>2be83d09ce24121a0737c99063344194</srcmd5>
+    <version>0.3.1</version>
+    <time>1409303336</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="17">
+    <srcmd5>79612eddb4a7165bfbababfbb69bcba6</srcmd5>
+    <version>0.3.1</version>
+    <time>1443068036</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>331549</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a00bfab0f7582cff2d152499f51cc5f7</srcmd5>
+    <version>0.3.2</version>
+    <time>1466413626</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>403395</requestid>
+  </revision>
+</revisionlist>

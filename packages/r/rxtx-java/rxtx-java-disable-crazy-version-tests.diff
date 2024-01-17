@@ -1,0 +1,45 @@
+Author: Stefan Seyfried <seife+obs@b1-systems.com>
+
+This disables the IMVHO useless checks if the running kernel is identical
+to the compiling kernel, which were broken with 3.1+ kernels anyway as
+apparently UTS_RELEASE was removed from headers.
+
+diff --git a/src/I2CImp.c b/src/I2CImp.c
+index 3a61545..a146788 100644
+--- a/src/I2CImp.c
++++ b/src/I2CImp.c
+@@ -125,7 +125,7 @@ JNIEXPORT void JNICALL Java_gnu_io_I2CPort_Initialize(
+ 	sigaction( SIGIO, NULL, &handler );
+ 	if( !handler.sa_handler ) signal( SIGIO, SIG_IGN );
+ #endif /* !__FreeBSD__ */
+-#if defined(__linux__) 
++#if 0
+ 	/* Lets let people who upgraded kernels know they may have problems */
+ 	if (uname (&name) == -1)
+ 	{
+diff --git a/src/RS485Imp.c b/src/RS485Imp.c
+index 280d64b..44b9c37 100644
+--- a/src/RS485Imp.c
++++ b/src/RS485Imp.c
+@@ -125,7 +125,7 @@ JNIEXPORT void JNICALL Java_gnu_io_RS485Port_Initialize(
+ 	sigaction( SIGIO, NULL, &handler );
+ 	if( !handler.sa_handler ) signal( SIGIO, SIG_IGN );
+ #endif /* !__FreeBSD__ */
+-#if defined(__linux__) 
++#if 0
+ 	/* Lets let people who upgraded kernels know they may have problems */
+ 	if (uname (&name) == -1)
+ 	{
+diff --git a/src/RawImp.c b/src/RawImp.c
+index 077f30e..4aa171d 100644
+--- a/src/RawImp.c
++++ b/src/RawImp.c
+@@ -270,7 +270,7 @@ JNIEXPORT void JNICALL Java_gnu_io_RawPort_Initialize(
+ 	sigaction( SIGIO, NULL, &handler );
+ 	if( !handler.sa_handler ) signal( SIGIO, SIG_IGN );
+ #endif /* !__FreeBSD__ */
+-#if defined(__linux__) 
++#if 0
+ 	/* Lets let people who upgraded kernels know they may have problems */
+ 	if (uname (&name) == -1)
+ 	{

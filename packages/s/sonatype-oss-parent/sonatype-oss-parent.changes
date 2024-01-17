@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Thu Feb  7 08:30:03 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Clean-up the pom file installation to correspond to the standard
+  xmvn directories
+
+-------------------------------------------------------------------
+Tue Dec 18 07:54:00 UTC 2018 - Fridrich Strba <fstrba@suse.com>
+
+- Initial package

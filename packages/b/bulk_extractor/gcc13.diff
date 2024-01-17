@@ -1,0 +1,23 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2023-04-04 00:21:56.539266534 +0200
+Sent: no
+
+[  113s] be20_api/unicode_escape.h:29:26: error: 'uint32_t' was not declared in this scope; did you mean 'utf8::uint32_t'?
+
+---
+ src/be20_api/unicode_escape.h |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: bulk_extractor-2.0.0/src/be20_api/unicode_escape.h
+===================================================================
+--- bulk_extractor-2.0.0.orig/src/be20_api/unicode_escape.h
++++ bulk_extractor-2.0.0/src/be20_api/unicode_escape.h
+@@ -8,7 +8,7 @@
+ #define UNICODE_ESCAPE_H
+ 
+ #include <codecvt>
+-//#include <cstdint>
++#include <cstdint>
+ #include <cstring>
+ #include <cwctype>
+ #include <iostream>

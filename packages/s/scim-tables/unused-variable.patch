@@ -1,0 +1,32 @@
+Index: scim-tables-scim-tables-0.5.14.1/src/scim_generic_table.cpp
+===================================================================
+--- scim-tables-scim-tables-0.5.14.1.orig/src/scim_generic_table.cpp
++++ scim-tables-scim-tables-0.5.14.1/src/scim_generic_table.cpp
+@@ -2181,7 +2181,6 @@ GenericTableLibrary::load_header ()
+     GenericTableHeader header;
+ 
+     bool ok = false;
+-    bool binary = false;
+ 
+     magic   = _get_line (fp);
+     version = _get_line (fp);
+Index: scim-tables-scim-tables-0.5.14.1/src/scim_table_imengine_setup.cpp
+===================================================================
+--- scim-tables-scim-tables-0.5.14.1.orig/src/scim_table_imengine_setup.cpp
++++ scim-tables-scim-tables-0.5.14.1/src/scim_table_imengine_setup.cpp
+@@ -660,7 +660,6 @@ create_table_management_page ()
+     GtkWidget *vbox;
+     GtkWidget *label;
+     GtkWidget *scrolledwindow;
+-    GtkWidget *treeview;
+     GtkWidget *hbox;
+     GtkWidget *button;
+     GtkCellRenderer *renderer;
+@@ -3034,7 +3033,6 @@ on_table_properties_clicked (GtkButton *
+     GtkTreeIter  iter;
+     GtkTreeModel *model;
+     GtkTreeSelection *selection;
+-    GtkWidget *msg;
+ 
+     selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (__widget_table_list_view));
+ 

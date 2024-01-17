@@ -1,0 +1,159 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a2d3b32c5c1bb19ca977db006e2fbe11</srcmd5>
+    <version>5.2.2</version>
+    <time>1312811393</time>
+    <user>saschpe</user>
+    <comment>New package qwt, Qt Widgets for Technical Applications.
+
+Package is also included in Debian.
+</comment>
+    <requestid>77957</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a279761dd166ef652a3b7a07f8767057</srcmd5>
+    <version>5.2.2</version>
+    <time>1312811403</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77957
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>d02bb3fe19c2acdc841c80755b1e3599</srcmd5>
+    <version>5.2.2</version>
+    <time>1313399991</time>
+    <user>saschpe</user>
+    <comment>- Changed include dir from qwt to qwt5.
+  This will make it more compatible with qwt6,
+  which is out but not well-supported yet
+- Removed build flags that are enabled by default.
+- Added building of svg item support.
+  This is needed by the bindings packages
+- Cleaned up spec file formatting. (forwarded request 78716 from TheBlackCat)</comment>
+    <requestid>78732</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>5d11d8a35ad7dfdb58bdb51747a0c9ca</srcmd5>
+    <version>5.2.2</version>
+    <time>1313400005</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78732
+</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>5d11d8a35ad7dfdb58bdb51747a0c9ca</srcmd5>
+    <version>5.2.2</version>
+    <time>1319182420</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>06fcccd29c642fb8597155d91954e58d</srcmd5>
+    <version>5.2.2</version>
+    <time>1319453536</time>
+    <user>coolo</user>
+    <comment>-&gt; (forwarded request 88981 from mlschroe)</comment>
+    <requestid>89001</requestid>
+  </revision>
+  <revision rev="7" vrev="8">
+    <srcmd5>f921ccbd55e905c2196d59c330e65614</srcmd5>
+    <version>5.2.2</version>
+    <time>1322828547</time>
+    <user>coolo</user>
+    <comment>- Add Provides for qwt package, no need for obsoletes since the base
+  package never really existed.
+- Simplify filelist
+
+- removed dependency of the devel package to the (non-existing)
+  base package
+
+- Remove nearly empty qwt base package again 
+
+- readd tests for other distributions
+- cleanup doc files
+  * mv pdf to devel-doc
+  * mv man to devel-doc
+- CHANGES, COPYING, README to qwt pkg
+  * no extra files in libqwt5 pkg
+- fix rpmlintrc file
+- fix build for SLE_10
+  * directories not owned by a package: %{_libdir}/qt4/....</comment>
+    <requestid>94431</requestid>
+  </revision>
+  <revision rev="8" vrev="10">
+    <srcmd5>f921ccbd55e905c2196d59c330e65614</srcmd5>
+    <version>5.2.2</version>
+    <time>1340184135</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="9" vrev="11">
+    <srcmd5>38e3c467eb6d70586f0a44587b2f7866</srcmd5>
+    <version>5.2.2</version>
+    <time>1340621118</time>
+    <user>coolo</user>
+    <comment>license update: SUSE-QWT-1.0
+SPDX format (or choose from list linked at license.opensuse.org) (forwarded request 125533 from babelworx)</comment>
+    <requestid>125535</requestid>
+  </revision>
+  <revision rev="10" vrev="12">
+    <srcmd5>6a0757c9f77a4d161431a36df4d1aa61</srcmd5>
+    <version>5.2.2</version>
+    <time>1354116818</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>143305</requestid>
+  </revision>
+  <revision rev="11" vrev="14">
+    <srcmd5>6a0757c9f77a4d161431a36df4d1aa61</srcmd5>
+    <version>5.2.2</version>
+    <time>1359110271</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="16">
+    <srcmd5>6a0757c9f77a4d161431a36df4d1aa61</srcmd5>
+    <version>5.2.2</version>
+    <time>1379664428</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7ae4d848baa2a1f18eb5f2d2e93188c3</srcmd5>
+    <version>5.2.3</version>
+    <time>1395154907</time>
+    <user>coolo</user>
+    <comment>updated to version 5.2.3</comment>
+    <requestid>226083</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>7ae4d848baa2a1f18eb5f2d2e93188c3</srcmd5>
+    <version>5.2.3</version>
+    <time>1409303158</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>1887f3b9c818ab0b62f0b1e05217787d</srcmd5>
+    <version>5.2.3_qt5+git20181129.2819734</version>
+    <time>1560970528</time>
+    <user>dimstar_suse</user>
+    <comment>- Use a Qt5 snapshot for qwt5, needed by qwtplot3d and scidavis 1.25</comment>
+    <requestid>698687</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>1961d755ac632cf60857d63601b2825f</srcmd5>
+    <version>5.2.3_qt5+git20181129.2819734</version>
+    <time>1563790858</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717334</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>3c9408e85c8dcccc12b71e457dd37d0e</srcmd5>
+    <version>5.2.3_qt5+git20181129.2819734</version>
+    <time>1568191242</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>729936</requestid>
+  </revision>
+</revisionlist>

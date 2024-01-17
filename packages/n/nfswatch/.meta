@@ -1,0 +1,8 @@
+<package name="nfswatch" project="openSUSE:Factory">
+  <title>An NFS traffic monitoring tool</title>
+  <description>Nfswatch is a command-line tool for monitoring NFS traffic.
+Nfswatch can capture and analyze the NFS packets on a particular
+network interface or on all interfaces.</description>
+  <devel project="network" package="nfswatch"/>
+  <url>http://nfswatch.sourceforge.net/</url>
+</package>

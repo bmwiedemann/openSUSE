@@ -1,0 +1,21 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="versionformat">0.0.13</param>
+    <param name="url">https://gitlab.com/yawning/obfs4</param>
+    <param name="scm">git</param>
+    <param name="changesgenerate">enable</param>
+    <param name="exclude">.*</param>
+    <param name="filename">obfs4</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="compression">gz</param>
+    <param name="file">obfs4*.tar</param>
+  </service>
+  <service name="go_modules" mode="disabled" />
+  <service name="recompress" mode="disabled">
+    <param name="compression">xz</param>
+    <param name="file">obfs4*.tar.gz</param>
+  </service>
+  <service name="set_version" mode="disabled" />
+  <service name="format_spec_file" mode="disabled" />
+</services>

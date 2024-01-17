@@ -1,0 +1,47 @@
+-------------------------------------------------------------------
+Mon Dec  5 20:23:41 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7:
+  * fix pip install
+  * document zsh completion script generator usage
+  * makefile option to install completion scripts
+ 
+-------------------------------------------------------------------
+Tue Oct  4 22:51:47 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- version update to  v1.6
+  * long variants for short program options
+  * completion scripts for Bash, Fish and Zsh
+  * add support for pyhton 3.10 (dropped 3.6) 
+
+-------------------------------------------------------------------
+Tue May 18 21:10:24 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.5
+  * maintenance release
+  * updated auto-generated package list
+  * drop python 3.5 support, add 3.9
+
+-------------------------------------------------------------------
+Wed May 20 07:26:09 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
+Wed Apr 24 09:21:19 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.4
+  - Command piggybacking with countdown timer
+  - Show current time for timers
+  - Disable showing epoch time on `pdd`
+- run the test suite
+
+-------------------------------------------------------------------
+Wed Aug  8 16:43:20 UTC 2018 - dmarcoux@posteo.de
+
+- Version 1.3.1
+
+-------------------------------------------------------------------
+Fri Jul  6 22:10:20 UTC 2018 - dmarcoux@posteo.de
+
+- Version 1.3

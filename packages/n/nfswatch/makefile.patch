@@ -1,0 +1,12 @@
+--- nfswatch-4.99.11/Makefile.orig
++++ nfswatch-4.99.11/Makefile
+@@ -58,7 +58,7 @@
+ ULTRIXLIBS=	-lcurses -ltermcap -lm
+ #DECOSFLIBS=	-lcurses -ltermcap -lm
+ DECOSFLIBS=	-lcurses -ltermcap -lm pfopen.c
+-LINUXLIBS=	-lpcap -lncurses -lm
++LINUXLIBS=	-lpcap -lncurses -lm -ltirpc
+ 
+ CFLAGS=
+ LIBS=
+

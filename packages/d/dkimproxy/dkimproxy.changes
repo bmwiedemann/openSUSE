@@ -1,0 +1,90 @@
+-------------------------------------------------------------------
+Tue Jan  2 21:58:50 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Remove the dependency on perl(IO::Socket::INET6) as it has been
+  deprecated by upstream, is no longer suitable for use and its not
+  being maintained. A compatible replacement for this package is
+  perl(IO::Socket::IP) which is shipped by the perl-base package.
+  * Rebase dkimproxy-1.4.1-avoid-perl-provides.diff
+  * Add dkimproxy-port-perl-IO-Socket-INET6-to-IP.patch
+  * Reported upstream: https://sourceforge.net/p/dkimproxy/bugs/39
+
+-------------------------------------------------------------------
+Wed Nov  8 22:57:15 UTC 2023 - Robert Munteanu <rombert@apache.org>
+
+- Follow-up fix for boo#1216919
+  * make sure dkimproxy-in works even when the dynamically-created
+    config file under /run does not exist 
+
+-------------------------------------------------------------------
+Mon Nov  6 22:46:16 UTC 2023 - Robert Munteanu <rombert@apache.org>
+
+- Fix boo#1216919 
+  * create /run/dkimproxy using tmpfiles
+  * use the correct env var for the hostname
+
+-------------------------------------------------------------------
+Thu Jun 10 20:17:05 UTC 2021 - Mihaly Meszaros <mmeszaros@npsh.hu>
+
+- fix PID filename typos in systemd unit files
+
+-------------------------------------------------------------------
+Fri Jun 19 14:09:15 UTC 2020 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- Remove sysvinit remains from this package.
+
+-------------------------------------------------------------------
+Mon Dec 23 13:07:28 UTC 2019 - Peter Varkoly <varkoly@suse.com>
+
+- Add the "installation" section.
+- Changed "PreExecStart" to "ExecStartPre". 
+- Added/changed the type to forking 
+
+-------------------------------------------------------------------
+Tue Nov 27 16:32:27 UTC 2018 - varkoly@suse.com
+
+- bsc#1116007 - Please convert SysV init scripts by dkimproxy into
+  native systemd services
+
+-------------------------------------------------------------------
+Mon Nov 19 18:33:56 UTC 2012 - dimstar@opensuse.org
+
+- Fix useradd and groupadd invocation: -o is useless without -u and
+  newer versions of pwdutils/shadowutils fail on this now.
+
+-------------------------------------------------------------------
+Mon Jun 11 09:42:28 UTC 2012 - coolo@suse.com
+
+- avoid providing perl modules that are not in the source, rather
+  hard require the needed module
+
+-------------------------------------------------------------------
+Sat Apr 21 09:32:46 UTC 2012 - robert.munteanu@gmail.com
+
+- Updated to upstream version 1.4.1
+ - There is a new option for setting the i= tag on generated 
+   signatures. 
+ - The $sender macro, as it is called, is not the only new macro. 
+   See the NEWS file for details.
+
+-------------------------------------------------------------------
+Tue Feb 15 14:58:37 UTC 2011 - chris@computersalat.de
+
+- remove author 
+
+-------------------------------------------------------------------
+Fri Sep  5 17:31:41 CEST 2008 - varkoly@suse.de
+
+- remove fillup_and_insserv from spec file
+
+-------------------------------------------------------------------
+Thu Aug 14 22:52:40 CEST 2008 - crrodriguez@suse.de
+
+- fix init scripts
+- fix installation  of init scripts 
+
+-------------------------------------------------------------------
+Sat Jul 26 06:55:51 CEST 2008 - varkoly@suse.de
+
+- Initial Version of dkimporxy 
+

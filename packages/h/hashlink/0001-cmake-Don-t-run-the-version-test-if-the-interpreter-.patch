@@ -1,0 +1,45 @@
+From 0bcdfac6782485dd8b3ba218e9f5b0e3b1bfe58f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jaime=20Marqui=CC=81nez=20Ferra=CC=81ndiz?=
+ <jaime.marquinez.ferrandiz@fastmail.net>
+Date: Sat, 21 May 2022 13:55:11 +0200
+Subject: [PATCH] cmake: Don't run the version test if the interpreter is not
+ enabled
+Upstream: submitted
+References: gh#HaxeFoundation/hashlink#521
+
+---
+ CMakeLists.txt | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+Index: hashlink-1.14/CMakeLists.txt
+===================================================================
+--- hashlink-1.14.orig/CMakeLists.txt
++++ hashlink-1.14/CMakeLists.txt
+@@ -321,6 +321,13 @@ if(BUILD_TESTING)
+         add_test(NAME uvsample.hl
+             COMMAND hl ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/test/uvsample.hl 6001
+         )
++        add_test(NAME version
++            COMMAND hl --version
++        )
++        set_tests_properties(version
++            PROPERTIES
++            PASS_REGULAR_EXPRESSION "${HL_VERSION}"
++        )
+     ENDIF(INTERPRETER_ENABLED)
+     add_test(NAME hello
+         COMMAND hello
+@@ -331,13 +338,6 @@ if(BUILD_TESTING)
+     add_test(NAME uvsample
+         COMMAND uvsample 6002
+     )
+-    add_test(NAME version
+-        COMMAND hl --version
+-    )
+-    set_tests_properties(version
+-        PROPERTIES
+-        PASS_REGULAR_EXPRESSION "${HL_VERSION}"
+-    )
+ 
+ endif()
+ 

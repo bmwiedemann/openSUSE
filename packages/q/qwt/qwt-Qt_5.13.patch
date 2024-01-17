@@ -1,0 +1,18 @@
+From: Luigi Baldoni <aloisio@gmx.com>
+Date: 2019-07-21 14:06:38 +0200
+Subject: Fix build with Qt 5.13
+
+Add include line to fix missing definition.
+
+Index: qwt-5.2.3_qt5+git20181129.2819734/src/qwt_clipper.cpp
+===================================================================
+--- qwt-5.2.3_qt5+git20181129.2819734.orig/src/qwt_clipper.cpp
++++ qwt-5.2.3_qt5+git20181129.2819734/src/qwt_clipper.cpp
+@@ -7,6 +7,7 @@
+  * modify it under the terms of the Qwt License, Version 1.0
+  *****************************************************************************/
+ 
++#include <QList>
+ #include <qrect.h>
+ #include "qwt_math.h"
+ #include "qwt_clipper.h"

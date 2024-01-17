@@ -1,0 +1,14 @@
+#!/usr/bin/fontforge
+#
+# Copy U+3231 from Sazanami Gothic into Sazanami Mincho
+
+Open ("sazanami-gothic.ttf")
+Select("uni3231")
+Copy ()
+Close ()
+Open ("sazanami-mincho.ttf")
+Select ("uni3231")
+Paste ()
+Generate ("sazanami-mincho.ttf", "ttf", 0)
+Close ()
+

@@ -1,0 +1,86 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>79232780eaccccb2ae4375899c8c3759</srcmd5>
+    <version>0.1.2</version>
+    <time>1331899908</time>
+    <user>coolo</user>
+    <comment>support using fcitx in fbterm</comment>
+    <requestid>107644</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>80d98ba8d76a37836b9f8aee9f79ffc7</srcmd5>
+    <version>0.1.3</version>
+    <time>1334215350</time>
+    <user>coolo</user>
+    <comment> (forwarded request 112962 from MargueriteSu)</comment>
+    <requestid>112963</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>dd7a22c9cf7a7ed112590376b89d24ad</srcmd5>
+    <version>0.1.4</version>
+    <time>1336472806</time>
+    <user>coolo</user>
+    <comment> (forwarded request 116578 from MargueriteSu)</comment>
+    <requestid>116580</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>b41f01eb35b138bee97cef24a29e9d56</srcmd5>
+    <version>0.1.4</version>
+    <time>1338476624</time>
+    <user>coolo</user>
+    <comment> (forwarded request 122636 from MargueriteSu)</comment>
+    <requestid>122838</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>4ef13ab3ec7a35e7eac88dc2b5f04cfd</srcmd5>
+    <version>0.1.4</version>
+    <time>1339076284</time>
+    <user>coolo</user>
+    <comment>fix sles builds (forwarded request 123593 from MargueriteSu)</comment>
+    <requestid>123594</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>4ef13ab3ec7a35e7eac88dc2b5f04cfd</srcmd5>
+    <version>0.1.4</version>
+    <time>1340183322</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>fb2cda7274dfc64b01ea779e61cff9b9</srcmd5>
+    <version>0.1.4</version>
+    <time>1340716917</time>
+    <user>coolo</user>
+    <comment> (forwarded request 125958 from MargueriteSu)</comment>
+    <requestid>126049</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>717faa2f7171b9e3c01a4aed865ab2ae</srcmd5>
+    <version>0.2.0</version>
+    <time>1348147548</time>
+    <user>coolo</user>
+    <comment>update 0.2.0 (forwarded request 134462 from MargueriteSu)</comment>
+    <requestid>134478</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>717faa2f7171b9e3c01a4aed865ab2ae</srcmd5>
+    <version>0.2.0</version>
+    <time>1359108869</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>717faa2f7171b9e3c01a4aed865ab2ae</srcmd5>
+    <version>0.2.0</version>
+    <time>1379662328</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>717faa2f7171b9e3c01a4aed865ab2ae</srcmd5>
+    <version>0.2.0</version>
+    <time>1409300861</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

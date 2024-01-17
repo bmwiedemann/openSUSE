@@ -1,0 +1,13 @@
+<package name="libsrtp" project="openSUSE:Factory">
+  <title>Secure Real-Time Transport Protocol (SRTP) Library</title>
+  <description>The libSRTP library is an open source implementation of the Secure
+Real-time Transport Protocol (SRTP) originally authored by Cisco
+Systems, Inc.
+
+SRTP is a security profile for RTP that adds confidentiality, message
+authentication, and replay protection to that protocol. It is specified
+in RFC 3711. More information about the SRTP protocol itself can be
+found on the Secure RTP page.
+</description>
+  <devel project="network:telephony" package="libsrtp"/>
+</package>

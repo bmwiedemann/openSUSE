@@ -1,0 +1,343 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4cdfb383079589ee0f035becc340caab</srcmd5>
+    <version>2014.02</version>
+    <time>1394516799</time>
+    <user>coolo</user>
+    <comment>Dropped leading '0.' in version.</comment>
+    <requestid>225424</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a8e2546584d5de6bd6f3e51a2ae768ef</srcmd5>
+    <version>2014.02</version>
+    <time>1394806618</time>
+    <user>coolo</user>
+    <comment>fix file list for i586 debuginfo builds</comment>
+    <requestid>225566</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>92460056fc06000a6811c02b6a135285</srcmd5>
+    <version>2014.08</version>
+    <time>1408957447</time>
+    <user>coolo</user>
+    <comment>-&gt;</comment>
+    <requestid>245760</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>92460056fc06000a6811c02b6a135285</srcmd5>
+    <version>2014.08</version>
+    <time>1409301907</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0cdc37c02a15b0bc5e5e13bd078f9404</srcmd5>
+    <version>2015.05</version>
+    <time>1435053433</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>312535</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>eb0ff4822c144c9693fd382a03ffd6ca</srcmd5>
+    <version>2016.01</version>
+    <time>1455190674</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>358564</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9bf1e46dd12743dbc53e2817d9338044</srcmd5>
+    <version>2016.07</version>
+    <time>1469831230</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 414802 from niner9)</comment>
+    <requestid>414992</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>07f9328d27dfd5e041ec670f674ea32b</srcmd5>
+    <version>2016.10</version>
+    <time>1477410226</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>437076</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a28d134472c7301c1edb2f04ba45c75e</srcmd5>
+    <version>2016.12</version>
+    <time>1483048135</time>
+    <user>lnussel_factory</user>
+    <comment>-&gt;</comment>
+    <requestid>447295</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>1be514cb90883b7a44ff736c0ea422b9</srcmd5>
+    <version>2017.05</version>
+    <time>1497786641</time>
+    <user>dimstar_suse</user>
+    <comment>Request 503681 was declined due to &quot;A Patch (moarvm-remove-rpath.diff) is being deleted without this removal being referenced in the changelog.&quot;
+
+Added information about the removal to the corresponding changelog entry.</comment>
+    <requestid>503685</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>4acbeff26d90cdb03b03be11d22bd8cd</srcmd5>
+    <version>2017.07</version>
+    <time>1501406821</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>512992</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>c7e83e6cc37464398deeb7bacaadec9e</srcmd5>
+    <version>2017.08.1</version>
+    <time>1503393049</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518010</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>5dd7f46925865f6ba70834df8b56e565</srcmd5>
+    <version>2018.01</version>
+    <time>1518514118</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>574663</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>280051490853b1670a9d49ac8c9cbd84</srcmd5>
+    <version>2018.03</version>
+    <time>1521716581</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>589114</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>93d8eaa1e477d04eb0b8da40c00a9cab</srcmd5>
+    <version>2018.04.1</version>
+    <time>1525611687</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>602782</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>c2a98a9b34496a4553d73ced24b27412</srcmd5>
+    <version>2018.04.1</version>
+    <time>1533045603</time>
+    <user>dimstar_suse</user>
+    <comment>Add reproducible.patch to make build independent of build system CPU type (boo#1100677) (forwarded request 626135 from bmwiedemann)</comment>
+    <requestid>626162</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>b2b55ed87d617f3b10af26b3a86a921e</srcmd5>
+    <version>2018.10</version>
+    <time>1543223987</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>648567</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>a08159017c96b1d303952eb86dc2206f</srcmd5>
+    <version>2018.12</version>
+    <time>1547130019</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662295</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>307ee40f450825e12ed264675588a24d</srcmd5>
+    <version>2019.03</version>
+    <time>1555237426</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>693912</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>d3440b61067a5370ca2547f4598450e8</srcmd5>
+    <version>2019.07</version>
+    <time>1568190843</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2019.07</comment>
+    <requestid>729693</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>5eb378d34d19ab78137fe99f27706ddc</srcmd5>
+    <version>2019.11</version>
+    <time>1575106800</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>751856</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>e666de6b553614bdff71f7a309974514</srcmd5>
+    <version>2019.11</version>
+    <time>1575282873</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>752702</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>8969a8deca0c18488d3c3cf8493201ae</srcmd5>
+    <version>2020.01</version>
+    <time>1578437540</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>761268</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>da17af347089eb0fa9bfebf67021f16d</srcmd5>
+    <version>2020.01.1</version>
+    <time>1580300302</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>768040</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>66630e1f54f67dc7562bccf6c0eb1486</srcmd5>
+    <version>2020.02</version>
+    <time>1583446800</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>781560</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>53d7f26551a54026d919292c670c48ee</srcmd5>
+    <version>2020.05</version>
+    <time>1589491681</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>805637</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>5dd9216e4a14373187a95aa1ef8d92f5</srcmd5>
+    <version>2021.02</version>
+    <time>1614001237</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>874252</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>41721c1274041a977322862283d694f3</srcmd5>
+    <version>2021.03</version>
+    <time>1617034915</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>881720</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>4856d229a014ab97913cb537adf4922e</srcmd5>
+    <version>2021.05</version>
+    <time>1622536505</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>895191</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>bd36c59a93a5f0424a999e0d501c9b05</srcmd5>
+    <version>2021.06</version>
+    <time>1625950487</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>905573</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>635b1fac0663b02b34c40996284d65b5</srcmd5>
+    <version>2021.07</version>
+    <time>1627236557</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>908137</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>f604708312eb3eb7a92ff799a2d2d753</srcmd5>
+    <version>2021.08</version>
+    <time>1629706096</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>913543</requestid>
+  </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>ee52eff7eb8e040838dfa056944c5ef3</srcmd5>
+    <version>2021.08</version>
+    <time>1630093441</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>914565</requestid>
+  </revision>
+  <revision rev="34" vrev="4">
+    <srcmd5>e467534a7697bcca6c145a64f2a0958a</srcmd5>
+    <version>2021.08</version>
+    <time>1630182569</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>914760</requestid>
+  </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>3769a82884e460ca1ad4b0f0f65f858f</srcmd5>
+    <version>2022.02</version>
+    <time>1645469616</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>956531</requestid>
+  </revision>
+  <revision rev="36" vrev="5">
+    <srcmd5>aa906c617b287cb6ce7841ea48c0e23d</srcmd5>
+    <version>2022.02</version>
+    <time>1645561112</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>956842</requestid>
+  </revision>
+  <revision rev="37" vrev="6">
+    <srcmd5>677797335559fefdd0a7dcb040002027</srcmd5>
+    <version>2022.02</version>
+    <time>1645723263</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>957345</requestid>
+  </revision>
+  <revision rev="38" vrev="7">
+    <srcmd5>f7235d6f5056257de819d525bad33228</srcmd5>
+    <version>2022.02</version>
+    <time>1646595343</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>959742</requestid>
+  </revision>
+  <revision rev="39" vrev="4">
+    <srcmd5>03a40dd853bd11ec8470f317e45944a0</srcmd5>
+    <version>2022.03</version>
+    <time>1649014266</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2022.03
++ Bump mimalloc to v2.0.5
++ The result of a getenv() call should not be freed
++ Some nativeref optimizations and fixes
++ Fix all returned native integers getting treated as signed
++ Fix potential invalid free in nativecall
++ Add missing _u cases to disp program callsite code
++ Correctly allocate/free CStrs when using mimalloc
++ Root orig since MVM_frame_capturelex can allocate
++ Restore jitting of sp_getarg_[inso]
++ Jit even more *_u versions of ops
++ Fix frame walker finding wrong value after multi level inlining
++ Fix spesh of named uint parameters
++ Add an MVM_nativecall_encode_string function
+- remove moarvm_wrong_value_after_multi_level_inlining.diff as is
+  contained in the release
+- Fix installation on RHEL7
+  On Redhat based distros, rpm's auto-provides requires shared libs
+  to be executable.
+- Fix build on RHEL7 which seems to lack libzstd
+</comment>
+    <requestid>966636</requestid>
+  </revision>
+  <revision rev="40" vrev="4">
+    <srcmd5>4a087e5b1f91d7baac12a5fb60cd3960</srcmd5>
+    <version>2022.07</version>
+    <time>1664797492</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1007424</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,36 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>16f48f6f149fe41ddc12942badb0e2ad</srcmd5>
+    <version>0.4.0</version>
+    <time>1574783575</time>
+    <user>dimstar_suse</user>
+    <comment>depencency of envoy-proxy and cilium-proxy</comment>
+    <requestid>748465</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d5ea09078098cec41a9245226f048f94</srcmd5>
+    <version>0.4.0</version>
+    <time>1575282889</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>752763</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>0a32af06d857f848aec3af17edf6bebc</srcmd5>
+    <version>0.4.0</version>
+    <time>1578502509</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>761161</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6dda89c60a158962619f4e916f97a2b8</srcmd5>
+    <version>0.4.0+git.20190924</version>
+    <time>1580724745</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove patches which are not needed anymore:
+  * 0001-bazel-Remove-and-add-deps-in-WORKSPACE.patch
+  * 0002-Stackdriver-stats-Return-false-in-matcher-when-type-.patch (forwarded request 765746 from mrostecki)</comment>
+    <requestid>765747</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,66 @@
+From 6e1afa2ec8b9c760e83c30c959b3ee78cd7c6776 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Daniel=20Ekl=C3=B6f?= <daniel@ekloef.se>
+Date: Fri, 13 Oct 2023 16:36:58 +0200
+Subject: [PATCH] bar: wayland: shm: try with MFD_NOEXEC_SEAL first, then
+ without
+
+MFD_NOEXEC_SEAL is only supported on kernels 6.3 and later.
+
+If we were compiled on linux >= 6.3, but run on linux < 6.3, we'd exit
+with an error, due to memfd_create() failing with EINVAL.
+
+This patch fixes the problem by first trying to call
+memfd_create() *with* MFD_NOEXEC_SEAL, and if that fails with EINVAL,
+we try again without it.
+---
+ shm.c | 23 +++++++++++++++++------
+ 1 file changed, 17 insertions(+), 6 deletions(-)
+
+diff --git a/shm.c b/shm.c
+index cff4c14..9430764 100644
+--- a/shm.c
++++ b/shm.c
+@@ -1,7 +1,8 @@
+ #include "shm.h"
+ 
+-#include <unistd.h>
+ #include <assert.h>
++#include <errno.h>
++#include <unistd.h>
+ 
+ #include <sys/types.h>
+ #include <sys/mman.h>
+@@ -13,10 +14,8 @@
+ #include "log.h"
+ #include "stride.h"
+ 
+-#if defined(MFD_NOEXEC_SEAL)
+-    #define FUZZEL_MFD_FLAGS (MFD_CLOEXEC | MFD_ALLOW_SEALING | MFD_NOEXEC_SEAL)
+-#else
+-    #define FUZZEL_MFD_FLAGS (MFD_CLOEXEC | MFD_ALLOW_SEALING)
++#if !defined(MFD_NOEXEC_SEAL)
++ #define MFD_NOEXEC_SEAL 0
+ #endif
+ 
+ static tll(struct buffer) buffers;
+@@ -75,7 +74,19 @@ shm_get_buffer(struct wl_shm *shm, int width, int height)
+ 
+     /* Backing memory for SHM */
+ #if defined(MEMFD_CREATE)
+-    pool_fd = memfd_create("fuzzel-wayland-shm-buffer-pool", FUZZEL_MFD_FLAGS);
++    /*
++     * Older kernels reject MFD_NOEXEC_SEAL with EINVAL. Try first
++     * *with* it, and if that fails, try again *without* it.
++     */
++    errno = 0;
++    pool_fd = memfd_create(
++        "fuzzel-wayland-shm-buffer-pool",
++        MFD_CLOEXEC | MFD_ALLOW_SEALING | MFD_NOEXEC_SEAL);
++
++    if (pool_fd < 0 && errno == EINVAL) {
++        pool_fd = memfd_create(
++            "fuzzel-wayland-shm-buffer-pool", MFD_CLOEXEC | MFD_ALLOW_SEALING);
++    }
+ #elif defined(__FreeBSD__)
+     // memfd_create on FreeBSD 13 is SHM_ANON without sealing support
+     pool_fd = shm_open(SHM_ANON, O_RDWR | O_CLOEXEC, 0600);

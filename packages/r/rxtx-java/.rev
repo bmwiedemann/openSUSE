@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a776272a515e62663ac99d26c5f0cadc</srcmd5>
+    <version>2.2~pre2</version>
+    <time>1586248050</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>788476</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>dd637d80eff338a5326dad9ce8c8b1b1</srcmd5>
+    <version>2.2~pre2</version>
+    <time>1627492810</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with sle12</comment>
+    <requestid>908814</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>27c6591addeb6f4ad95fbf15a750a36d</srcmd5>
+    <version>2.2~pre2</version>
+    <time>1648063124</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build on JDK 17</comment>
+    <requestid>964239</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>fa496ee1b5872dea64294dc6c425cd21</srcmd5>
+    <version>2.2~pre2</version>
+    <time>1679069112</time>
+    <user>dimstar_suse</user>
+    <comment>Don't warn about yield</comment>
+    <requestid>1072650</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>782adae7d361ed16af46a4c8ab1bf1bf</srcmd5>
+    <version>2.2~pre2</version>
+    <time>1688052526</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1212801</comment>
+    <requestid>1095861</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>4c5458168e7a93326c07ba5a231cc02b</srcmd5>
+    <version>2.2~pre2</version>
+    <time>1694630712</time>
+    <user>anag+factory</user>
+    <comment>reproducible</comment>
+    <requestid>1110776</requestid>
+  </revision>
+</revisionlist>

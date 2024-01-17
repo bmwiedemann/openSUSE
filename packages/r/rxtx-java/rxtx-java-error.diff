@@ -1,0 +1,25 @@
+Author: Stefan Seyfried <seife+obs@b1-systems.com>
+
+Report an error if we cannot lock the serial port and hint on the
+possible problem.
+Be a bit paranoid about buffer overruns when reporting locking problems.
+
+diff --git a/src/SerialImp.c b/src/SerialImp.c
+index d20adcb..8ead1cd 100644
+--- a/src/SerialImp.c
++++ b/src/SerialImp.c
+@@ -5296,12 +5296,12 @@ int lib_lock_dev_lock( const char *filename, int pid )
+ 	printf("LOCKING %s\n", filename);
+ 	if ( dev_testlock( filename ) )
+ 	{
+-		report( "fhs_lock() lockstatus fail\n" );
++		report_error( "lib_lock_dev_lock() lockstatus fail, are you in group 'lock'?\n" );
+ 		return 1;
+ 	}
+ 	if ( dev_lock( filename ) )
+ 	{
+-		sprintf( message,
++		snprintf( message, 80,
+ 			"RXTX fhs_lock() Error: creating lock file for: %s: %s\n",
+ 			filename, strerror(errno) );
+ 		report_error( message );

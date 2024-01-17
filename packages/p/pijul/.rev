@@ -1,0 +1,173 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>02815a2418fa1205d8492fe46d4579f5</srcmd5>
+    <version>0.12.2</version>
+    <time>1568065490</time>
+    <user>dimstar_suse</user>
+    <comment>Update to upstream release 0.12.2.</comment>
+    <requestid>728393</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>694037bee94327fc48f1dcff5b7f846a</srcmd5>
+    <version>0.12.2</version>
+    <time>1598885516</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>830685</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>918e70e08b61f792c40aea11ce39e161</srcmd5>
+    <version>1.0.0~alpha.38</version>
+    <time>1617130304</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>872965</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f2810a9b0e3d00c07144fe08912834a4</srcmd5>
+    <version>1.0.0~alpha.48</version>
+    <time>1617910334</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to upstream version 1.0.0-alpha.48. 
+</comment>
+    <requestid>883616</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>95ded2e36a7b0dafee6bd2e8e820bf30</srcmd5>
+    <version>1.0.0~alpha.52</version>
+    <time>1626887182</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>907323</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cb27e6728db5975700632b81c8b665ad</srcmd5>
+    <version>1.0.0~alpha.55</version>
+    <time>1635167847</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to upstream version 1.0.0-alpha.55:
+  * Better estimation of the maximum number of open patches that
+    Pijul can keep.
+  * Proper escaping of UTF-8 filenames in the patch text format.
+  * Add patch filtering to &quot;git log&quot;.
+  * Add JSON output for &quot;git log&quot;.
+  * &quot;pijul init&quot; does not modify already existing .ignore files.
+  * Improve detection of binary files.
+
+- Update to upstream version 1.0.0-alpha.54:
+  * Improve push/pull reporting.
+  * Fix a panic when outputting zombie folders.
+  * Better computation of progress bars width.
+  * Pushing/pulling from/to Nest discussions again.
+  * Allow remotes to have different push and pull addresses.
+  * Correct reporting of permission errors on external subcommands.
+  * Add a .ignore file when initializing a repository containing a
+    list of commonly ignored entries. See the &quot;--kind&quot; flag
+    of the &quot;pijul init&quot; subcommand.
+- Changes from version 1.0.0-alpha.53:
+  * Fix newline issues with OpenSSH which caused clone via SSH
+    to hang.
+  * Do not remove untracked files when outputting.
+  * Make recursive directory remove optional.
+  * Add an option to limit the output size of &quot;pijul log&quot;.
+  * Make &quot;pijul diff --short&quot; more informative.
+  * Fix &quot;pijul diff --untracked&quot;.
+  * Use the change time in addition to the modified time when
+    detecting untouched files.
+  * Print modifications only once in &quot;pijul diff&quot;.</comment>
+    <requestid>927203</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>8cecfb293ebaf0d04486c1fc570cc780</srcmd5>
+    <version>1.0.0~alpha.55</version>
+    <time>1636149515</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>929551</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f060a5a3c89538eb131071cf8f4971c1</srcmd5>
+    <version>1.0.0~alpha.56</version>
+    <time>1640108444</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to upstream version 1.0.0-alpha.56:
+  * Re-implement change printing and parsing.
+  * Add a root inode (initial support for submodules).
+  * Fix a deprecation warning in ed25519-dalek.</comment>
+    <requestid>941815</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f4cde6b4335669a757a85b93f70bc937</srcmd5>
+    <version>1.0.0~beta</version>
+    <time>1643128570</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to upstream version 1.0.0~beta:
+  * Add --force to &quot;add&quot; to include ignored files.
+  * Fix conflict identifiers.
+  * Remove the --tag option from &quot;push/pull&quot;.
+  * Fix &quot;log&quot; filters.
+- Changes from version 1.0.0~alpha.57:
+  * Add support for tags.
+  * Fix path crashes related to the non-null roots.
+  * Prioritise moving a file over undeletion.
+  * Show the correct paths in recursive file deletions.
+  * Add --force to &quot;reset/switch&quot; to ignore name conflicts.
+  * Avoid printing multiple names conflicts more than once.
+  * Better error message when pushing to a non-existent local
+    channel.
+  * Fix log --filters, along with performance improvements.
+</comment>
+    <requestid>948976</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3d9f8f2c18da90af416dc7d147020e7d</srcmd5>
+    <version>1.0.0~beta.2</version>
+    <time>1652114656</time>
+    <user>dimstar_suse</user>
+    <comment>- Update upstream version 1.0.0-beta.2:
+  * Improve &quot;pijul key&quot; documentation.
+  * &quot;pijul pull&quot; does not open $EDITOR anymore when given a list
+    of changes.
+  * Fix a bug with name conflicts.
+  * Fix a few panic/unwraps problems.
+  * Fix a bug where a zombile file could be deleted by
+    &quot;pijul unrecord&quot; but its contents would stay zombie.
+  * Update regex dependency to prevent CVE-2022-24713
+    (bsc#1196972).
+- Changes from version 1.0.0-beta.1:
+  * Fixed a failed assertion in the patch text format.
+  * Fixed a &quot;merged vertices&quot; bug when moving and editing them in
+    the same patch.
+
+- Update to upstream version 1.0.0-beta:
+- Changes from version 1.0.0-alpha.57:</comment>
+    <requestid>975746</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>fc93eda5890506136eee5842c60d1155</srcmd5>
+    <version>1.0.0~beta.4</version>
+    <time>1678283592</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1070035</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>cf85fddd8cb80250fbc3197450a0d70a</srcmd5>
+    <version>1.0.0~beta.5</version>
+    <time>1685743654</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to upstream version 1.0.0-beta.5.
+- This version uses hyper 0.14.26 and h2 0.3.19, preventing CVE-2023-26964
+  (bsc#1210361).
+</comment>
+    <requestid>1090428</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>4190a9f8b08821fb348e5744d18f6dbb</srcmd5>
+    <version>1.0.0~beta.6</version>
+    <time>1693860817</time>
+    <user>anag+factory</user>
+    <comment>- Update to upstream version 1.0.0-beta.6.</comment>
+    <requestid>1108848</requestid>
+  </revision>
+</revisionlist>

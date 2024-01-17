@@ -1,0 +1,8 @@
+<package name="libnma" project="openSUSE:Factory">
+  <title>Shared library for NetworkManager-applet</title>
+  <description>Shared library for NetworkManager-applet.
+
+</description>
+  <devel project="GNOME:Factory" package="libnma"/>
+  <url>https://gitlab.gnome.org/GNOME/libnma</url>
+</package>

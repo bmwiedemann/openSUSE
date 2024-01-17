@@ -1,0 +1,5 @@
+<package name="perl-IPC-ShareLite" project="openSUSE:Factory">
+  <title>Light-Weight Interface to Shared Memory</title>
+  <description>IPC::ShareLite provides a simple interface to shared memory, allowing data to be efficiently communicated between processes.</description>
+  <devel project="devel:languages:perl" package="perl-IPC-ShareLite"/>
+</package>

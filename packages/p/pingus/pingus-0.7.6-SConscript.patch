@@ -1,0 +1,27 @@
+--- SConscript.orig	2014-12-07 23:18:14.000000000 +0100
++++ SConscript	2014-12-11 17:05:40.770327085 +0100
+@@ -165,14 +165,12 @@
+     def configure_wiimote(self):
+         if not self.env['with_wiimote']:
+             self.reports += "  * Wiimote support: disabled\n"        
+-        elif self.conf.CheckLibWithHeader('cwiid', 'cwiid.h', 'c++'):
++        else:
+             self.reports += "  * Wiimote support: yes\n"
+             self.conf.env.Append(CPPDEFINES = [('HAVE_CWIID', 1)])
+-            self.conf.env.Append(LIBS = ['cwiid'])
++            self.conf.env.Append(LIBS = ['cwiid', 'bluetooth', 'pthread', 'rt'])
+             self.conf.env.Append(optional_sources = ['src/engine/input/wiimote/wiimote_driver.cpp',
+                                                      'src/engine/input/wiimote/wiimote.cpp'])
+-        else:
+-            self.reports += "  * Wiimote support: no (libcwiid or cwiid.h not found)\n"
+ 
+     def configure_xinput(self):
+         if not self.env['with_xinput']:
+@@ -183,6 +181,7 @@
+             self.reports += "  * XInput support: yes\n"
+             self.conf.env.Append(CPPDEFINES = [('HAVE_XINPUT', 1)])
+             self.conf.env.Append(LIBS = ['Xi'])
++            self.conf.env.Append(LIBS = ['Xi','X11'])
+             self.conf.env.Append(optional_sources = ['src/engine/input/xinput/xinput_driver.cpp',
+                                                      'src/engine/input/xinput/xinput_device.cpp'])
+             

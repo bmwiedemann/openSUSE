@@ -1,0 +1,5 @@
+<package name="python-jupyterlab-server" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:python:jupyter" package="python-jupyterlab-server"/>
+</package>

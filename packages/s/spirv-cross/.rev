@@ -1,0 +1,106 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>efec7255087d9ea1a42ca648944f57cf</srcmd5>
+    <version>unknown</version>
+    <time>1565695259</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>722300</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>435686f2bf5c263d3f544a460bd73253</srcmd5>
+    <version>unknown</version>
+    <time>1566665464</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725816</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>4c282c16fe04b41ba3d74011f74be605</srcmd5>
+    <version>unknown</version>
+    <time>1579463782</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2020-01-16 (no changelog)</comment>
+    <requestid>765488</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>6026cd760e84cb095fc174e47f707c1d</srcmd5>
+    <version>unknown</version>
+    <time>1586641578</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>792939</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>a1021fb3b5bff3bf586dcaeed71eb6c6</srcmd5>
+    <version>unknown</version>
+    <time>1590780193</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>809947</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>1a75ef939d254a7521c05af3f3898e16</srcmd5>
+    <version>unknown</version>
+    <time>1594228356</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2020-06-29 (no changelog)</comment>
+    <requestid>819297</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>864b1241e1722fa9abf120cca6e8fdfc</srcmd5>
+    <version>unknown</version>
+    <time>1617130992</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to release 2020-01-25 (forwarded request 863363 from jengelh)</comment>
+    <requestid>870910</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>28cb1ceba1aa706e782ee594c5ece621</srcmd5>
+    <version>1.3.216.0</version>
+    <time>1656587920</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.3.216.0</comment>
+    <requestid>986020</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9eca0aa7d131517b28cb2a2666c62422</srcmd5>
+    <version>1.3.231.0</version>
+    <time>1667306621</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032673</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0810e55530d1c22f7017d44e75066b29</srcmd5>
+    <version>1.3.236.0</version>
+    <time>1673281418</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1056960</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>db52efb68c16a97d9f5fa0c85da00c8f</srcmd5>
+    <version>1.3.243.0</version>
+    <time>1680125317</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release SDK-1.3.243.0</comment>
+    <requestid>1075351</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>070d129a5ffbc20c1e4d030701f6750b</srcmd5>
+    <version>1.3.261.0</version>
+    <time>1693235569</time>
+    <user>anag+factory</user>
+    <comment>- Update to release SDK-1.3.261.0</comment>
+    <requestid>1105892</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>479d8aae5be6f80128b0bda2a34b824b</srcmd5>
+    <version>1.3.268.0</version>
+    <time>1698700206</time>
+    <user>anag+factory</user>
+    <comment>new_version</comment>
+    <requestid>1120698</requestid>
+  </revision>
+</revisionlist>

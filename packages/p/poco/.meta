@@ -1,0 +1,10 @@
+<package name="poco" project="openSUSE:Factory">
+  <title>Modern C++ Framework for Network-based Applications</title>
+  <description>Modern, powerful open source C++ class libraries and frameworks for building
+network- and internet-based applications that run on desktop, server and
+embedded systems.
+
+</description>
+  <devel project="devel:libraries:c_c++" package="poco"/>
+  <url>http://pocoproject.org</url>
+</package>

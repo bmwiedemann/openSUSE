@@ -1,0 +1,129 @@
+From b993152e80676f5b9ce583c9471b630cbd0675d7 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Moritz=20=22WanzenBug=22=20Wanzenb=C3=B6ck?=
+ <moritz.wanzenboeck@linbit.com>
+Date: Fri, 8 Sep 2023 15:09:47 +0200
+Subject: [PATCH 11/20] compat: block: pass a gendisk to ->open
+
+See also upstream Linux kernel commit
+d32e2bf83791 ("block: pass a gendisk to ->open")
+
+Original message:
+
+->open is only called on the whole device.  Make that explicit by
+passing a gendisk instead of the block_device.
+---
+ ...ice_operations_open__no_takes_gendisk.cocci | 18 ++++++++++++++++++
+ drbd/drbd-kernel-compat/gen_patch_names.c      |  3 +++
+ ...lock_device_operations_open_takes_gendisk.c | 17 +++++++++++++++++
+ drbd/drbd_main.c                               | 10 +++++-----
+ 4 files changed, 43 insertions(+), 5 deletions(-)
+ create mode 100644 drbd/drbd-kernel-compat/cocci/block_device_operations_open__no_takes_gendisk.cocci
+ create mode 100644 drbd/drbd-kernel-compat/tests/block_device_operations_open_takes_gendisk.c
+
+diff --git a/drbd/drbd-kernel-compat/cocci/block_device_operations_open__no_takes_gendisk.cocci b/drbd/drbd-kernel-compat/cocci/block_device_operations_open__no_takes_gendisk.cocci
+new file mode 100644
+index 000000000000..2ba2856da9db
+--- /dev/null
++++ b/drbd/drbd-kernel-compat/cocci/block_device_operations_open__no_takes_gendisk.cocci
+@@ -0,0 +1,18 @@
++@ drbd_open_arg @
++identifier gd;
++fresh identifier bdev = "" ## "bdev";
++@@
++  drbd_open(
++- 	struct gendisk *gd,
+++ 	struct block_device *bdev,
++  ... ) {
++<...
++(
++- 	gd->part0
+++ 	bdev
++|
++- 	gd
+++ 	bdev->bd_disk
++)
++...>
++}
+diff --git a/drbd/drbd-kernel-compat/gen_patch_names.c b/drbd/drbd-kernel-compat/gen_patch_names.c
+index 7071a0a4c5ec..6e4f06d9a3a7 100644
+--- a/drbd/drbd-kernel-compat/gen_patch_names.c
++++ b/drbd/drbd-kernel-compat/gen_patch_names.c
+@@ -559,6 +559,9 @@ int main(int argc, char **argv)
+ 	patch(1, "blkdev_get_by_path", true, false,
+ 	      COMPAT_BLKDEV_GET_BY_PATH_HAS_HOLDER_OPS, "has_holder_ops");
+ 
++	patch(1, "block_device_operations_open", true, false,
++	      COMPAT_BLOCK_DEVICE_OPERATIONS_OPEN_TAKES_GENDISK, "takes_gendisk");
++
+ /* #define BLKDEV_ISSUE_ZEROOUT_EXPORTED */
+ /* #define BLKDEV_ZERO_NOUNMAP */
+ 
+diff --git a/drbd/drbd-kernel-compat/tests/block_device_operations_open_takes_gendisk.c b/drbd/drbd-kernel-compat/tests/block_device_operations_open_takes_gendisk.c
+new file mode 100644
+index 000000000000..d5f20fd569fb
+--- /dev/null
++++ b/drbd/drbd-kernel-compat/tests/block_device_operations_open_takes_gendisk.c
+@@ -0,0 +1,17 @@
++/* { "version": "v6.5-rc1", "commit": "d32e2bf83791727a84ad5d3e3d713e82f9adbe30", "comment": "block: pass a gendisk to ->open", "author": "Christoph Hellwig <hch@lst.de>", "date": "Thu Jun 8 13:02:36 2023 +0200" } */
++#include <linux/blkdev.h>
++
++#ifndef __same_type
++# define __same_type(a, b) __builtin_types_compatible_p(typeof(a), typeof(b))
++#endif
++
++int foo_open(struct gendisk *disk, unsigned int mode)
++{
++	return 0;
++}
++
++void foo(void)
++{
++	struct block_device_operations ops;
++	BUILD_BUG_ON(!(__same_type(ops.open, &foo_open)));
++}
+diff --git a/drbd/drbd_main.c b/drbd/drbd_main.c
+index e6ed1185c710..53cb4c9e7db3 100644
+--- a/drbd/drbd_main.c
++++ b/drbd/drbd_main.c
+@@ -52,7 +52,7 @@
+ #include "drbd_meta_data.h"
+ #include "drbd_dax_pmem.h"
+ 
+-static int drbd_open(struct block_device *bdev, fmode_t mode);
++static int drbd_open(struct gendisk *gd, fmode_t mode);
+ static void drbd_release(struct gendisk *gd, fmode_t mode);
+ static void md_sync_timer_fn(struct timer_list *t);
+ static int w_bitmap_io(struct drbd_work *w, int unused);
+@@ -2646,9 +2646,9 @@ out:
+ 	spin_unlock(&device->openers_lock);
+ }
+ 
+-static int drbd_open(struct block_device *bdev, fmode_t mode)
++static int drbd_open(struct gendisk *gd, fmode_t mode)
+ {
+-	struct drbd_device *device = bdev->bd_disk->private_data;
++	struct drbd_device *device = gd->private_data;
+ 	struct drbd_resource *resource = device->resource;
+ 	long timeout = resource->res_opts.auto_promote_timeout * HZ / 10;
+ 	enum ioc_rv r;
+@@ -2664,7 +2664,7 @@ static int drbd_open(struct block_device *bdev, fmode_t mode)
+ 
+ 	/* Fail read-write open early,
+ 	 * in case someone explicitly set us read-only (blockdev --setro) */
+-	if (bdev_read_only(bdev) && (mode & FMODE_WRITE))
++	if (bdev_read_only(gd->part0) && (mode & FMODE_WRITE))
+ 		return -EACCES;
+ 
+ 	if (resource->fail_io[NOW])
+@@ -2740,7 +2740,7 @@ out:
+ 
+ 	mutex_unlock(&resource->open_release);
+ 	if (err) {
+-		drbd_release(bdev->bd_disk, mode);
++		drbd_release(gd, mode);
+ 		if (err == -EAGAIN && !(mode & FMODE_NDELAY))
+ 			err = -EMEDIUMTYPE;
+ 	}
+-- 
+2.35.3
+

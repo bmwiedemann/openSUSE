@@ -1,0 +1,6 @@
+<package name="gnome-menus-branding" project="openSUSE:Factory">
+  <title>openSUSE branding of gnome-menus</title>
+  <description>This package provides openSUSE menu look for gnome-menus.
+</description>
+  <devel project="GNOME:Factory" package="gnome-menus-branding"/>
+</package>

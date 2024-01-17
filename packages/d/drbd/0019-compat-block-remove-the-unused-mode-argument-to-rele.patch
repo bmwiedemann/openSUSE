@@ -1,0 +1,107 @@
+From bf287c15359c4495a706ca270e7dcab4c2d6ebcc Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Moritz=20=22WanzenBug=22=20Wanzenb=C3=B6ck?=
+ <moritz.wanzenboeck@linbit.com>
+Date: Tue, 12 Sep 2023 15:27:01 +0200
+Subject: [PATCH 19/20] compat: block: remove the unused mode argument to
+ ->release
+
+See also upstream Linux kernel commit
+ae220766d87c ("block: remove the unused mode argument to ->release")
+
+Original message:
+
+The mode argument to the ->release block_device_operation is never used,
+so remove it.
+---
+ ...ions_release__no_takes_single_argument.cocci | 17 +++++++++++++++++
+ drbd/drbd-kernel-compat/gen_patch_names.c       |  3 +++
+ ...e_operations_release_takes_single_argument.c |  7 +++++++
+ drbd/drbd_main.c                                |  6 +++---
+ 4 files changed, 30 insertions(+), 3 deletions(-)
+ create mode 100644 drbd/drbd-kernel-compat/cocci/block_device_operations_release__no_takes_single_argument.cocci
+ create mode 100644 drbd/drbd-kernel-compat/tests/block_device_operations_release_takes_single_argument.c
+
+diff --git a/drbd/drbd-kernel-compat/cocci/block_device_operations_release__no_takes_single_argument.cocci b/drbd/drbd-kernel-compat/cocci/block_device_operations_release__no_takes_single_argument.cocci
+new file mode 100644
+index 000000000000..b0a0ee9eef39
+--- /dev/null
++++ b/drbd/drbd-kernel-compat/cocci/block_device_operations_release__no_takes_single_argument.cocci
+@@ -0,0 +1,17 @@
++@@
++identifier gd;
++fresh identifier mode = "" ## "mode";
++@@
++  drbd_release(
++  	struct gendisk *gd
+++ 	, fmode_t mode
++  ) { ... }
++
++@@
++symbol drbd_release;
++expression gd;
++@@
++  drbd_release(
++  	gd
+++ 	, 0
++  )
+diff --git a/drbd/drbd-kernel-compat/gen_patch_names.c b/drbd/drbd-kernel-compat/gen_patch_names.c
+index 4761c1ef7d0c..608be8b4f099 100644
+--- a/drbd/drbd-kernel-compat/gen_patch_names.c
++++ b/drbd/drbd-kernel-compat/gen_patch_names.c
+@@ -565,6 +565,9 @@ int main(int argc, char **argv)
+ 	patch(1, "blkdev_put", true, false,
+ 	      COMPAT_BLKDEV_PUT_HAS_HOLDER, "has_holder");
+ 
++	patch(1, "block_device_operations_release", true, false,
++	      COMPAT_BLOCK_DEVICE_OPERATIONS_RELEASE_TAKES_SINGLE_ARGUMENT, "takes_single_argument");
++
+ /* #define BLKDEV_ISSUE_ZEROOUT_EXPORTED */
+ /* #define BLKDEV_ZERO_NOUNMAP */
+ 
+diff --git a/drbd/drbd-kernel-compat/tests/block_device_operations_release_takes_single_argument.c b/drbd/drbd-kernel-compat/tests/block_device_operations_release_takes_single_argument.c
+new file mode 100644
+index 000000000000..d51c863e359a
+--- /dev/null
++++ b/drbd/drbd-kernel-compat/tests/block_device_operations_release_takes_single_argument.c
+@@ -0,0 +1,7 @@
++/* { "version": "v6.5-rc1", "commit": "ae220766d87cd6799dbf918fea10613ae14c0654", "comment": "block: remove the unused mode argument to ->release", "author": "Christoph Hellwig <hch@lst.de>", "date": "Thu Jun 8 13:02:37 2023 +0200" } */
++#include <linux/blkdev.h>
++
++void foo(struct block_device_operations *ops, struct gendisk *gd)
++{
++	ops->release(gd);
++}
+diff --git a/drbd/drbd_main.c b/drbd/drbd_main.c
+index bb05b2215dfb..1864861db21d 100644
+--- a/drbd/drbd_main.c
++++ b/drbd/drbd_main.c
+@@ -53,7 +53,7 @@
+ #include "drbd_dax_pmem.h"
+ 
+ static int drbd_open(struct gendisk *gd, fmode_t mode);
+-static void drbd_release(struct gendisk *gd, fmode_t mode);
++static void drbd_release(struct gendisk *gd);
+ static void md_sync_timer_fn(struct timer_list *t);
+ static int w_bitmap_io(struct drbd_work *w, int unused);
+ static int flush_send_buffer(struct drbd_connection *connection, enum drbd_stream drbd_stream);
+@@ -2740,7 +2740,7 @@ out:
+ 
+ 	mutex_unlock(&resource->open_release);
+ 	if (err) {
+-		drbd_release(gd, mode);
++		drbd_release(gd);
+ 		if (err == -EAGAIN && !(mode & FMODE_NDELAY))
+ 			err = -EMEDIUMTYPE;
+ 	}
+@@ -2822,7 +2822,7 @@ void drbd_fsync_device(struct drbd_device *device)
+ 	drbd_flush_peer_acks(resource);
+ }
+ 
+-static void drbd_release(struct gendisk *gd, fmode_t mode)
++static void drbd_release(struct gendisk *gd)
+ {
+ 	struct drbd_device *device = gd->private_data;
+ 	struct drbd_resource *resource = device->resource;
+-- 
+2.35.3
+

@@ -1,0 +1,96 @@
+--- /dev/null
++++ b/dune-project
+@@ -0,0 +1,25 @@
++(lang dune 1.11)
++
++(name libvirt)
++
++(generate_opam_files true)
++
++(license "LGPL-2.1-or-later WITH OCaml-LGPL-linking-exception")
++
++(authors "Richard W.M. Jones <rjones@redhat.com>")
++
++(maintainers "Richard W.M. Jones <rjones@redhat.com>")
++
++(homepage "https://libvirt.org/ocaml/")
++
++(package
++ (name libvirt)
++ (synopsis "OCaml bindings for libvirt")
++ (description
++   "OCaml bindings for libvirt, allowing you to write OCaml programs and scripts which control virtualisation features.")
++ (depends
++  (dune
++   (>= 1.11))
++  dune-configurator
++  (ocaml
++   (>= 4.02.0))))
+--- /dev/null
++++ b/examples/dune
+@@ -0,0 +1,4 @@
++(executables
++ (public_names domain_events get_all_domain_stats get_cpu_stats list_domains
++   list_secrets node_info)
++ (libraries libvirt))
+--- /dev/null
++++ b/libvirt/config/discover.ml
+@@ -0,0 +1,17 @@
++module C = Configurator.V1
++
++let () =
++C.main ~name:"libvirt" (fun c ->
++
++let conf =
++  match C.Pkg_config.get c with
++  | None -> C.die "'pkg-config' missing"
++  | Some pc ->
++    match (C.Pkg_config.query pc ~package:"libvirt") with
++      | None -> C.die "'pkg-config libvirt' missing"
++      | Some deps -> deps
++  in
++
++  C.C_define.gen_header_file c ~fname:"config.h" [];
++  C.Flags.write_sexp "c_flags.sexp"        (conf.cflags @ [ "-I"; "." ]);
++  C.Flags.write_sexp "c_library_flags.sexp" conf.libs)
+--- /dev/null
++++ b/libvirt/config/dune
+@@ -0,0 +1,3 @@
++(executable
++ (name discover)
++ (libraries dune-configurator))
+--- /dev/null
++++ b/libvirt/dune
+@@ -0,0 +1,32 @@
++(library
++ (name mllibvirt)
++ (public_name libvirt)
++ (synopsis "binding for libvirt")
++ (modules Libvirt Libvirt_version)
++ (wrapped false)
++ (libraries unix)
++ (c_names libvirt_c_common libvirt_c_oneoffs libvirt_generated)
++ (c_flags
++  "-DCAML_NAME_SPACE"
++  (:include c_flags.sexp))
++ (c_library_flags
++  (:include c_library_flags.sexp)))
++
++(rule
++ (target libvirt_version.ml)
++ (action
++  (write-file %{target}
++    "let version = \"%{version:libvirt}\"\nlet package = \"libvirt\"\n")))
++
++(rule
++ (target libvirt_generated.c)
++ (deps generator.pl)
++ (action
++  (run perl -w generator.pl)))
++
++(rule
++ (targets c_flags.sexp c_library_flags.sexp)
++ (deps
++  (:discover config/discover.exe))
++ (action
++  (run %{discover})))

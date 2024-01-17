@@ -1,0 +1,5 @@
+<package name="alure" project="openSUSE:Factory">
+  <title></title>
+  <description>ALURE is a utility library to help manage common tasks with OpenAL applications. This includes device enumeration and initialization, file loading, and streaming.</description>
+  <devel project="games" package="alure"/>
+</package>

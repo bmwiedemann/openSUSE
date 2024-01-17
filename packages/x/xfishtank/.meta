@@ -1,0 +1,6 @@
+<package name="xfishtank" project="openSUSE:Factory">
+  <title>An aquarium in the root window</title>
+  <description>A nice little aquarium with funny fish -- yet another background
+screen.</description>
+  <devel project="X11:Utilities" package="xfishtank"/>
+</package>

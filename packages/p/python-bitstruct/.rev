@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b2e7b4a58a45b7d620616179f71aed6b</srcmd5>
+    <version>8.9.0</version>
+    <time>1586248096</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>791502</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6653a552657c590d66fa3dccac93c2f3</srcmd5>
+    <version>8.11.0</version>
+    <time>1595339333</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 8.11.0:
+  * Add support for copy and deepcopy inC extension.
+  * Only build C extension for CPython 3.</comment>
+    <requestid>821998</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>8582ad638d42a02668c5fe543da00387</srcmd5>
+    <version>8.11.0</version>
+    <time>1622536501</time>
+    <user>dimstar_suse</user>
+    <comment>- %check: use %pyunittest_arch macro
+</comment>
+    <requestid>895161</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cf07f704ae0cce9e9bbb67d0e968cc35</srcmd5>
+    <version>8.15.1</version>
+    <time>1663002501</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1002724</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e778d6d675384ab37c449d0d26e472d5</srcmd5>
+    <version>8.17.0</version>
+    <time>1683559446</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 8.17.0:
+  * Text encoding and error action to unpack operations
+  * Fix memory leak
+  * Fix Text encoding and Errors to compile</comment>
+    <requestid>1085336</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ad90d0fcb629cfcce3012ea9aa07a5a3</srcmd5>
+    <version>8.19.0</version>
+    <time>1701378043</time>
+    <user>anag+factory</user>
+    <comment>- update to 8.19.0:
+  * Python 3.12 support
+  * raise minimum python version to 3.7 because of setuptools
+    compatibility
+  * try to fix pytest command
+  * do not limit max. parallel CI jobs
+  * use pytest
+  * remove verbose output
+
+  * Fix Text encoding and Errors to compile
+  * Only build C extension for CPython 3.</comment>
+    <requestid>1129796</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,8 @@
+<package name="python-pyupgrade" project="openSUSE:Factory">
+  <title>A tool to automatically upgrade syntax for newer versions</title>
+  <description>A tool to automatically upgrade syntax for newer versions.
+
+</description>
+  <devel project="devel:languages:python" package="python-pyupgrade"/>
+  <url>https://github.com/asottile/pyupgrade</url>
+</package>

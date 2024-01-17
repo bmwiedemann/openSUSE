@@ -1,0 +1,101 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bfdae94f5cdac3516b33045bdba9e38c</srcmd5>
+    <version>1.3.2</version>
+    <time>1476874833</time>
+    <user>dimstar_suse</user>
+    <comment>fate#320836</comment>
+    <requestid>414562</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c4d59bd3d786f5414c6c41082f4f2db2</srcmd5>
+    <version>1.5.0</version>
+    <time>1495883883</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>498037</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>3a0ca2bfd306fa4cf69d3f306f820ca8</srcmd5>
+    <version>1.5.0</version>
+    <time>1496926967</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>501574</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>81583293b5d5fb0fe0545b30b2a67889</srcmd5>
+    <version>1.5.0</version>
+    <time>1503061286</time>
+    <user>dimstar_suse</user>
+    <comment>- Use Group: Development/Languages/OCaml
+
+- Update Url
+
+- Wrap specfile conditionals to fix quilt setup
+
+- Remove autodeps for pre openSUSE 12.1 releases</comment>
+    <requestid>512520</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>68d6e49676d3d1f707bf23b51819fdcf</srcmd5>
+    <version>1.6.5</version>
+    <time>1550668260</time>
+    <user>maxlin_factory</user>
+    <comment>Update install files for ocaml-dune 1.7.1, which generates a dune-package file instead of a $PACKAGENAME.dune file. (forwarded request 677229 from onthewings)</comment>
+    <requestid>677298</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5a971170b6bb2ae543d83f0ad66eb50a</srcmd5>
+    <version>1.6.6</version>
+    <time>1571950967</time>
+    <user>dimstar_suse</user>
+    <comment>- use dune macros from ocaml-rpm-macros
+
+- Update to 1.6.6
+  Fix build</comment>
+    <requestid>738555</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>04f027e5ac7fff224d4fa3c9e882a221</srcmd5>
+    <version>1.6.6</version>
+    <time>1573571499</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>746694</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>f8838865271ef99b8b927a484d1d8d5d</srcmd5>
+    <version>1.6.6</version>
+    <time>1583759630</time>
+    <user>dimstar_suse</user>
+    <comment>- Require current ocaml-rpm-macros
+- Remove cppo_ocamlbuild in preparation of ocamlbuild removal</comment>
+    <requestid>778548</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c9cc4466523e7fa8aaef3de70d49f9a6</srcmd5>
+    <version>1.6.7</version>
+    <time>1619653003</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6.7
+  See included Changes for details</comment>
+    <requestid>867929</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a40fd903023c3e36936fcb3218bb8349</srcmd5>
+    <version>1.6.8</version>
+    <time>1632939519</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>921540</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>85ae4b0f70bb50cb93b40758c7b6e94f</srcmd5>
+    <version>1.6.9</version>
+    <time>1655821975</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>984128</requestid>
+  </revision>
+</revisionlist>

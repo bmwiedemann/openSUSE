@@ -1,0 +1,25 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4113e7a421dfc23ab6c5150f98294571</srcmd5>
+    <version>0.05</version>
+    <time>1395400506</time>
+    <user>coolo</user>
+    <comment>needed for other moose modules</comment>
+    <requestid>225891</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>4113e7a421dfc23ab6c5150f98294571</srcmd5>
+    <version>0.05</version>
+    <time>1409302417</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>991ff5af3232c17e4f115526ed43ecd2</srcmd5>
+    <version>0.05</version>
+    <time>1522225980</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build (forwarded request 588044 from bmwiedemann)</comment>
+    <requestid>591560</requestid>
+  </revision>
+</revisionlist>

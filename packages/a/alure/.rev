@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>11bc248bab3ef4dd1562471d1cf763fd</srcmd5>
+    <version>1.2</version>
+    <time>1567092416</time>
+    <user>dimstar_suse</user>
+    <comment>add alure to fix utilities/bucklespring in factory</comment>
+    <requestid>726946</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>413746d106602627bf7b8c01ecca0486</srcmd5>
+    <version>1.2</version>
+    <time>1619298511</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>887841</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>7413e68560da66aff9ff332bfc68ca66</srcmd5>
+    <version>1.2</version>
+    <time>1645221789</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>955915</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>977e54d5fbbced989ec9014bb7cf1a03</srcmd5>
+    <version>1.2</version>
+    <time>1663002512</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1002725</requestid>
+  </revision>
+</revisionlist>

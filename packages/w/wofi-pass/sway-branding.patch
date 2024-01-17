@@ -1,0 +1,15 @@
+---
+ wofi-pass |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/wofi-pass
++++ b/wofi-pass
+@@ -13,7 +13,7 @@ head=0
+ TYPE_CMD="wl-copy"
+ 
+ if [ -x "$(command -v -p wofi 2>/dev/null)" ] ; then
+-    menu_cmd='wofi --dmenu'
++    menu_cmd='wofi --dmenu --style=/etc/wofi/style.css'
+ else
+     menu_cmd='rofi -dmenu'
+ fi

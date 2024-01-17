@@ -1,0 +1,19 @@
+<package name="spirv-cross" project="openSUSE:Factory">
+  <title>Tool and library for SPIR-V reflection and disassembly</title>
+  <description>SPIRV-Cross is a tool designed for parsing and converting SPIR-V to
+other shader languages.
+
+Features:
+  * Convert SPIR-V to readable, usable and efficient GLSL
+  * Convert SPIR-V to readable, usable and efficient MSL
+  * Convert SPIR-V to readable, usable and efficient HLSL
+  * Convert SPIR-V to a JSON reflection format
+  * Reflection API to simplify the creation of Vulkan pipeline
+    layouts
+  * Reflection API to modify and tweak OpDecorations
+  * Supports &quot;all&quot; of vertex, fragment, tessellation, geometry
+    and compute shaders.
+  * SPIRV-Cross tries hard to emit readable and clean output from
+    the SPIR-V.</description>
+  <devel project="X11:Wayland" package="spirv-cross"/>
+</package>

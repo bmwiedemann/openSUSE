@@ -1,0 +1,340 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bcc2bf23a433b8a7ced96e05bc7bce7f</srcmd5>
+    <version>0.21.1</version>
+    <time>1507755653</time>
+    <user>dimstar_suse</user>
+    <comment>breaking up the Azure SDK</comment>
+    <requestid>531863</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>25a8bfd2a936f30f34f875bfb1100cb5</srcmd5>
+    <version>0.21.1</version>
+    <time>1517323523</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>571028</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>de14e8e8505398fb4d5d29685427bd53</srcmd5>
+    <version>0.21.1</version>
+    <time>1537971361</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Python Azure SDK to 4.0.0</comment>
+    <requestid>638003</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>edf9ebb1af9979ca76bf1f9abd797a61</srcmd5>
+    <version>0.50.0</version>
+    <time>1557833912</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Python Azure SDK to latest version (forwarded request 694342 from glaubitz)</comment>
+    <requestid>694550</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4a64b212bfe7317bccbbd69bc85ab9e9</srcmd5>
+    <version>0.50.1</version>
+    <time>1570710716</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Python Azure SDK to latest version (forwarded request 735263 from glaubitz)</comment>
+    <requestid>735758</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6bf0de7a7ee2eee5d7359f6c297ec744</srcmd5>
+    <version>0.50.2</version>
+    <time>1580205417</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.50.2
+  + For detailed information about changes see the
+    HISTORY.txt file provided with this package
+- Update %description from README.rst
+- Update Requires from setup.py (forwarded request 767757 from glaubitz)</comment>
+    <requestid>767845</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e4e1a9438007032366bab6a4a5b3a0af</srcmd5>
+    <version>0.50.3</version>
+    <time>1601652178</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.50.3
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Rename HISTORY.rst to CHANGELOG.md in %files section
+- Rename README.rst to README.md in %files section
+- Update Requires from setup.py (forwarded request 830774 from glaubitz)</comment>
+    <requestid>830910</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>435dd3e7bce52aaad59cc8d2bedcbee8</srcmd5>
+    <version>0.50.3</version>
+    <time>1607548856</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>854003</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4b67339d887bf1ea0c6d346d4ce00cc6</srcmd5>
+    <version>7.0.1</version>
+    <time>1611348690</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 7.0.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 864363 from glaubitz)</comment>
+    <requestid>864418</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c5bf297c61de92cf8c5c517068031a1f</srcmd5>
+    <version>7.1.0</version>
+    <time>1618235366</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 7.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 881896 from glaubitz)</comment>
+    <requestid>881976</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>522c0a56052a25736c8733bb7d8dfad7</srcmd5>
+    <version>7.1.1</version>
+    <time>1620400531</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 7.1.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 891222 from glaubitz)</comment>
+    <requestid>891286</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>76f0e3bb2d0f531c06b62fec957a5857</srcmd5>
+    <version>7.3.0</version>
+    <time>1623767853</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 7.3.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 898990 from glaubitz)</comment>
+    <requestid>899038</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>9b7d0bbd93e7c5fbe70324683c86337d</srcmd5>
+    <version>7.3.1</version>
+    <time>1629471466</time>
+    <user>RBrownSUSE</user>
+    <comment>- New upstream release
+  + Version 7.3.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 907760 from glaubitz)</comment>
+    <requestid>907813</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>dababa8344eea3082ef171442455c544</srcmd5>
+    <version>7.3.3</version>
+    <time>1631913937</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 7.3.3
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 917689 from glaubitz)</comment>
+    <requestid>917704</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>46cc2da65953c925bd3af4a12f8bf377</srcmd5>
+    <version>7.3.4</version>
+    <time>1633959063</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 7.3.4
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 923717 from glaubitz)</comment>
+    <requestid>923740</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>5906c98d36648c4d734824cdcd6503e8</srcmd5>
+    <version>7.4.0</version>
+    <time>1636577211</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 7.4.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 930640 from glaubitz)</comment>
+    <requestid>930652</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>89c9a8fe2ed9c20647a61339c3fe7ee5</srcmd5>
+    <version>7.5.0</version>
+    <time>1642112469</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 7.5.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 946068 from glaubitz)</comment>
+    <requestid>946137</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>1497a9bb2b841be67f874e91d00cbead</srcmd5>
+    <version>7.6.0</version>
+    <time>1644617409</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 7.6.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 953414 from glaubitz)</comment>
+    <requestid>953577</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>2bb19524b26d22b7aa514fb541ea7ce8</srcmd5>
+    <version>7.6.1</version>
+    <time>1649793067</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 7.6.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 969362 from glaubitz)</comment>
+    <requestid>969510</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>f0ed00e12df77035cd5df240746ab74c</srcmd5>
+    <version>7.7.0</version>
+    <time>1654782102</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 7.7.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 981256 from glaubitz)</comment>
+    <requestid>981503</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>e588f19ade27aaf39c54023993f34b88</srcmd5>
+    <version>7.8.0</version>
+    <time>1657378994</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 7.8.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 987809 from glaubitz)</comment>
+    <requestid>987929</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>66a3d14d84bc36f66d2b38e35e55d909</srcmd5>
+    <version>7.8.1</version>
+    <time>1665668682</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 7.8.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1010235 from glaubitz)</comment>
+    <requestid>1010244</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>148b1bcbfd76975f6fdc2326d94a5919</srcmd5>
+    <version>7.8.2</version>
+    <time>1673651000</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 7.8.2
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1058178 from glaubitz)</comment>
+    <requestid>1058235</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>97c38af10205b0362acb10db023b4966</srcmd5>
+    <version>7.8.3</version>
+    <time>1678482536</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 7.8.3
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1070635 from glaubitz)</comment>
+    <requestid>1070699</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>aa6f4fcec98de2ac70742b94df041b2d</srcmd5>
+    <version>7.9.0</version>
+    <time>1681746099</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 7.9.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1079895 from glaubitz)</comment>
+    <requestid>1079897</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>baa248bcb5a76a641cc2979114c641da</srcmd5>
+    <version>7.10.0</version>
+    <time>1683728409</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 7.10.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1085947 from glaubitz)</comment>
+    <requestid>1086067</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>73f8eb90681deefc3c383c37c45f5071</srcmd5>
+    <version>7.11.0</version>
+    <time>1688476942</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 7.11.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1096595 from glaubitz)</comment>
+    <requestid>1096627</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>6ba9396e6ac7f7130b9cabeecba745d3</srcmd5>
+    <version>7.11.1</version>
+    <time>1689261559</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 7.11.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1098500 from glaubitz)</comment>
+    <requestid>1098514</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>2e5776d5fcdd2d2bce7a9516ca2f2e6e</srcmd5>
+    <version>7.11.2</version>
+    <time>1694808358</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 7.11.2
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove unzip package from BuildRequires
+- Switch source archive format to TAR.GZ (forwarded request 1111589 from glaubitz)</comment>
+    <requestid>1111599</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>e1af4454d7823ebd425ddf6f61d335a5</srcmd5>
+    <version>7.11.3</version>
+    <time>1697390894</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1117875</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>719335bdca5c6723707b191f2a978179</srcmd5>
+    <version>7.11.4</version>
+    <time>1700078920</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 7.11.4
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1125834 from glaubitz)</comment>
+    <requestid>1126454</requestid>
+  </revision>
+</revisionlist>

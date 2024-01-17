@@ -1,0 +1,15 @@
+<package name="claws-mail" project="openSUSE:Factory">
+  <title>A lightweight and highly configurable email client</title>
+  <description>Claws Mail (previously known as Sylpheed-Claws) is a lightweight and
+highly configurable email client and news reader based on the GTK+ GUI
+toolkit, it runs on the X Window System.
+
+Claws Mail is free software distributed under the GNU GPL.
+
+To run Claws Mail use 'claws-mail' on the command line.
+
+When claws-mail is executed for the first time a configuration 'Wizard'
+will appear prompting you for the minimum information necessary to
+create a new account.</description>
+  <devel project="server:mail" package="claws-mail"/>
+</package>

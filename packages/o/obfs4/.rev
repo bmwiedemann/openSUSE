@@ -1,0 +1,21 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>46c95b5611fd761c0a730654fab06de7</srcmd5>
+    <version>0.0.12</version>
+    <time>1642633935</time>
+    <user>dimstar_suse</user>
+    <comment>Request to submit obfs4 to Factory</comment>
+    <requestid>947320</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>05f93f3d95ba1d278ef85c3f3a24f44e</srcmd5>
+    <version>0.0.13</version>
+    <time>1644099799</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0.13:
+ * Stop using utls entirely for TLS signature normalization (meek_lite).
+ * Stop pinning the certificate chain for default bridges (meek_lite).
+</comment>
+    <requestid>951752</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,140 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2043d935ba0406be5bc4a18d169e71a3</srcmd5>
+    <version>3.3.0</version>
+    <time>1571950891</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>734585</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7abb63e6e3feab0ba03f789b10d353e8</srcmd5>
+    <version>3.3.0</version>
+    <time>1572021757</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>742747</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1ae58b099a6c78d35e375b9061868f40</srcmd5>
+    <version>4.2.0</version>
+    <time>1583830286</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>782866</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>75f63babbd25014d58eb19e0de9e1dd3</srcmd5>
+    <version>4.3.2</version>
+    <time>1585842296</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>790855</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>56af5426abd6cebf34fa5fc6ce5c4aa7</srcmd5>
+    <version>5.2.3</version>
+    <time>1617723012</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>882786</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>786f82ef49a9664ba675c05758162325</srcmd5>
+    <version>5.6.0</version>
+    <time>1643228850</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>949274</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a7cb9af10fd79076e256e4bb1671724e</srcmd5>
+    <version>5.8.1</version>
+    <time>1656422567</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>985464</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>8a4bf56c2c82de2de82d823ccab05cd6</srcmd5>
+    <version>5.8.1</version>
+    <time>1662740860</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1001929</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>882ddb9dea9dcd418b88ccae2a1c3349</srcmd5>
+    <version>6.2.3</version>
+    <time>1676990185</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1066938</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4692c8e98a1d750d6e64748889459027</srcmd5>
+    <version>6.3.0</version>
+    <time>1683111416</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.3.0:
+  - PrefixOrSuffixOperator: This operator will skip strings that are
+    suffix or prefix of each other.
+  - include_obj_callback and include_obj_callback_strict are added
+    by [Håvard Thom](https://github.com/havardthom).
+  - Fixed a corner case where numpy's np.float32 nans are not
+    ignored when using ignore_nan_equality by [Noam
+    Gottlieb](https://github.com/noamgot)
+  - orjson becomes optional again.
+  - Fix for ignore_type_in_groups with numeric values so it does not
+    report number changes when the number types are different.
+- Move python-orjson from Recommends to Requires, it's a requirement
+  right now in the latest release.
+</comment>
+    <requestid>1084088</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>2aff6b0f4155e952e20be00d80d9f70d</srcmd5>
+    <version>6.3.0</version>
+    <time>1686576354</time>
+    <user>dimstar_suse</user>
+    <comment>- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1092260</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e2963c06d29c6227e6d1ee6c676ebabc</srcmd5>
+    <version>6.7.1</version>
+    <time>1705353453</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.7.1:
+  * Support for subtracting delta objects when
+    iterable_compare_func is used.
+  * Better handling of force adding a delta to an object.
+  * Fix for `Can't compare dicts with both single and double
+    quotes in keys`
+  * Updated docs for Inconsistent Behavior with math_epsilon and
+    ignore_order = True
+  * Delta can be subtracted from other objects now.
+  * verify_symmetry is deprecated. Use bidirectional instead.
+  * always_include_values flag in Delta can be enabled to include
+    values in the delta for every change.
+  * Fix for Delta.__add__ breaks with esoteric dict keys.
+  * You can load a delta from the list of flat dictionaries.
+- update to 6.6.0:
+  * [x] Numpy 2.0 support
+  * [x] Adding Delta.to_flat_dicts
+- update to 6.4.1:
+  * Bugfix: Numpy should be optional
+- update to 6.4.0:
+  * Add Ignore List Order Option to DeepHash by
+  * pyyaml to 6.0.1 to fix cython build problems by Robert Bo
+    Davis
+  * Precompiled regex simple diff by cohml
+  * New flag: `zip_ordered_iterables` for forcing iterable items
+    to be compared one by one.
+- update to 6.3.1:
+  * Bugfix deephash for paths by maggelus
+  * Bugfix deephash compiled regex maggelus
+  * Fix tests dependent on toml by martin-kokos</comment>
+    <requestid>1138688</requestid>
+  </revision>
+</revisionlist>

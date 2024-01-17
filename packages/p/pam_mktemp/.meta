@@ -1,0 +1,11 @@
+<package name="pam_mktemp" project="openSUSE:Factory">
+  <title>PAM Module to Provide Per-User Private Directories Under /tmp</title>
+  <description>PAM (Pluggable Authentication Modules) is a system security tool that
+allows system administrators to set authentication policies without
+having to recompile programs that do authentication.
+
+pam_mktemp is a PAM module which may be used with a PAM-aware login
+service to provide per-user private directories under /tmp as a part of
+PAM session or account management.</description>
+  <devel project="Linux-PAM" package="pam_mktemp"/>
+</package>

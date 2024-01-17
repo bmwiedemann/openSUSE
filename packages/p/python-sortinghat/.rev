@@ -1,0 +1,103 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9e54630acea05d3deafa13e068c93f7a</srcmd5>
+    <version>0.7.15</version>
+    <time>1628282686</time>
+    <user>dimstar_suse</user>
+    <comment>Returning back to Factory.</comment>
+    <requestid>910349</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0a10ed35656e9374dc457e68a4602835</srcmd5>
+    <version>0.7.19</version>
+    <time>1650548561</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>971333</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>ab1fcbe235f7290cc20fa028367d0c96</srcmd5>
+    <version>0.7.19</version>
+    <time>1652389189</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix a bug in %%postun.
+</comment>
+    <requestid>976374</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>50b3f88267390016a1fd37d330819797</srcmd5>
+    <version>0.7.20</version>
+    <time>1665185172</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1008876</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>762c5094fe502c8eeb3b12a3f8b9d44e</srcmd5>
+    <version>0.7.21</version>
+    <time>1667306582</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.21 
+  * Update package dependencies
+  * Update jinja2 package and dev-dependencies.
+  * Update Poetry's package dependencies
+- Clean up SPEC file to remove rpmlint warnings.
+</comment>
+    <requestid>1032563</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>27c2a0989c939d3a6c229dfa2271635a</srcmd5>
+    <version>0.7.23</version>
+    <time>1670058235</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1039739</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>25b62337a25e322c834b0a149849fb26</srcmd5>
+    <version>0.11.1</version>
+    <time>1690278569</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.11.1, changes include:
+  * SortingHat as a service
+  * GraphQL client headers updated
+  * Migration command for SortingHat 0.7: sortinghat-admin migrate-old-database
+  * Groups table removed from the UI
+  * Fix search syntax link (#735)
+  * Fix outdated recommendation count (#733)
+  * Verify SSL option for client
+  * Multi-tenancy mode
+  * Drag and drop to enroll in teams
+  * Create account command
+  * Import identities automatically (#746)
+  * Order individuals by indentities (#732)
+  * Set top domain from UI (#729)
+  * Static files not included in wheel package
+  * Tenant selection in job fixed
+  * SortingHat database performance
+  * uWSGI threads and workers
+  * Performance improved for recommendations and merging jobs
+  * Multi-tenancy using headers
+  * Job timeouts
+  * Fix enrollment in individual's profile
+  * Edit a profile name with the pencil button (#773)
+  * Unreadable large numbers in pagination (#770)
+  * Sort jobs from newest to oldest (#769)
+  * Organization profiles
+  * Show when tables are loading (#772)
+  * Enrollment filter on organizations view
+  * ADD button doesn't affiliate individuals to organizations
+  * Email affiliation error (#793)</comment>
+    <requestid>1099626</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>030c1604aa68f72352a04d27e7bf96f8</srcmd5>
+    <version>0.12.0</version>
+    <time>1690469563</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.12.0:
+  * Job scheduler
+- Refresh patch add-missing-format-calls.patch.</comment>
+    <requestid>1100980</requestid>
+  </revision>
+</revisionlist>

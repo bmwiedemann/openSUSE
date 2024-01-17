@@ -1,0 +1,306 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0ee69dec1af9dd2ebd26c9d3f7258019</srcmd5>
+    <version>3.0.1</version>
+    <time>1593606435</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>818068</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>88d6284650286f5ee770ed177a447c1c</srcmd5>
+    <version>3.0.2</version>
+    <time>1593904528</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>818402</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c12c6db222774599460c52ece8deb821</srcmd5>
+    <version>3.3.1</version>
+    <time>1594900793</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>820783</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>36e54877d58efa2145c4fc4b8d3a9b29</srcmd5>
+    <version>3.4.1</version>
+    <time>1595577797</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>822299</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>88a5cef19df146fffc1dff90b0b6fb08</srcmd5>
+    <version>5.0.0</version>
+    <time>1597306562</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>824958</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d259c31e05d71a13f1279d3955c89c7d</srcmd5>
+    <version>5.2.1</version>
+    <time>1598340853</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>828941</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>97a10c7d274d7130e1e54c6fbb816be9</srcmd5>
+    <version>7.1.0</version>
+    <time>1601398962</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>838335</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f4fb2768e05d0c8453a0c75d4c7ebeb5</srcmd5>
+    <version>9.1.0</version>
+    <time>1603725655</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>843924</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>bae3344b51c4d21c90644587b1681d65</srcmd5>
+    <version>9.1.0</version>
+    <time>1603979511</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844275</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>300fd3512feca8cfec6aef2ce540f6b8</srcmd5>
+    <version>9.5.1</version>
+    <time>1608542659</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>857159</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>878cd37ed6831d748422149b5b0f06b0</srcmd5>
+    <version>9.9.0</version>
+    <time>1611595497</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>866562</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>106d6b845a17e682760865ed570e9ee8</srcmd5>
+    <version>9.13.0</version>
+    <time>1615489815</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>877412</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>fbc3d23803496526f27c7e3e369afa24</srcmd5>
+    <version>10.0.1</version>
+    <time>1617279471</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>882371</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>31b562eb94a80405f2ce989992428068</srcmd5>
+    <version>10.1.0</version>
+    <time>1617723072</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>883225</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>a551ed8bf263112a265f3fd1d8be24bb</srcmd5>
+    <version>10.2.1</version>
+    <time>1621439361</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>894194</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>982104b4df6d94f402d118b67b8df18e</srcmd5>
+    <version>10.13.0</version>
+    <time>1636388661</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>930010</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>582a94e351671cfc75075f33fcdf5709</srcmd5>
+    <version>11.0.0</version>
+    <time>1642198424</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>946510</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>cd1924bd4435473890d349e3882e8a0e</srcmd5>
+    <version>11.0.0</version>
+    <time>1650466632</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>970999</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>1d909bd8cd315ab85d9807b252027585</srcmd5>
+    <version>12.3.0</version>
+    <time>1657191470</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 12.3.0:
+  * Ability to change terminal window title
+  * Added show_speed parameter to progress.track which will show the speed when the total is not known
+  * Python blocks can now opt out from being rendered in tracebacks's frames,
+    by setting a `_rich_traceback_omit = True` in their local scope
+  * Fall back to `sys.__stderr__` on POSIX systems when trying to get the
+    terminal size (fix issues when Rich is piped to another process)
+  * Fixed markup escaping issue
+  * Safari - Box appearing around SVG export
+  * Fixed recursion error in Jupyter progress bars
+  * Complex numbers are now identified by the highlighter
+  * Fix crash on IDLE and forced is_terminal detection to False because IDLE
+    can't do escape codes
+  * Fixed missing blank line in traceback rendering
+  * Fixed running Rich with the current working dir was deleted
+  * Setting `total=None` on progress is now possible, and will display pulsing animation
+  * Micro-optimization for Segment.divide
+  * Bumped typing-extensions minimum to 4.0.0
+  * Bumped minimum Python version to 3.6.3
+  * Progress.open and Progress.wrap_file method to track the progress while
+    reading from a file or file-like object
+  * SVG export functionality
+  * Adding Indonesian translation
+  * Add missing `end` keyword argument to `Text.from_markup`
+  * Fallback to text lexer when no lexer guessed
+  * Fixed issue with decoding ANSI reset
+  * Improve performance of cell_length
+  * Improve performance of chop_cells
+  * Fix capturing stdout on legacy Windows
+  * Added options to TimeRemainingColumn to render a compact time format and</comment>
+    <requestid>987405</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>8e54c346d4c0d7f85de48a06b15beb7e</srcmd5>
+    <version>12.5.1</version>
+    <time>1658396127</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>990494</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>be548139020028cc12bb044ce48ae720</srcmd5>
+    <version>12.6.0</version>
+    <time>1669129788</time>
+    <user>dimstar_suse</user>
+    <comment>- change Source URL to https://files.pythonhosted.org
+- change Upstream URL to https://github.com/Textualize/rich
+- add _service file to easily download this
+- remove CHANGELOG.md, as this is not present in the PyPI tarball
+- Update to 12.6.0:
+  * Added
+    - Parse ANSI escape sequences in pretty repr #2470
+    - Add support for FORCE_COLOR env var #2449
+    - Allow a max_depth argument to be passed to the install() hook #2486
+    - Document using None as name in __rich_repr__ for tuple positional args #2379
+    - Add font_aspect_ratio parameter in SVG export https://github.com/Textualize/rich/pull/2539/files
+    - Added Table.add_section method. #2544
+  * Fixed
+    - Handle stdout/stderr being null #2513
+    - Fix NO_COLOR support on legacy Windows #2458
+    - Fix pretty printer handling of cyclic references #2524
+    - Fix missing mode property on file wrapper breaking uploads via requests #2495
+    - Fix mismatching default value of parameter ensure_ascii #2538
+    - Remove unused height parameter in Layout class #2540
+    - Fixed exception in Syntax.rich_measure for empty files
+  * Changed
+    - Removed border from code blocks in Markdown
+</comment>
+    <requestid>1037125</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>df692386e16b9552cfb656c4dd368ae2</srcmd5>
+    <version>12.6.0</version>
+    <time>1682193530</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081772</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>da4361fc8981991253969d910135853d</srcmd5>
+    <version>13.3.5</version>
+    <time>1683630371</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 13.3.5:
+  * Fixed italic indent guides in SVG output
+  * Fixed for `is_terminal` ignoring FORCE_COLOR
+    https://github.com/Textualize/rich/pull/2923
+  * Added Style.clear_meta_and_links
+  * Reversed `pre` and `code` tags in base HTML format
+  * Fix syntax error when building with nuitka
+  * Fixed pretty printing of empty dataclass
+  * Use `Console(stderr=True)` in `rich.traceback.install` to
+    support io redirection.
+  * Fixes superfluous spaces in html output
+  * Fixed duplicate output in Jupyter
+  * Filter ANSI character-encoding-change codes in
+    `Text.from_ansi` parser
+  * Fixes traceback failing when a frame filename is unreadable
+  * Fix for live update rendering console markup
+  * `rich.progress.track()` will now show the elapsed time after
+    finishing the task
+  * Fixed truecolor to eight bit color conversion
+  * Fixed failing tests due to Pygments dependency
+  * Relaxed ipywidgets
+  * v13.2.0 replaces the unmaintained `commonmark` library with
+    `markdown-it-py`. This new parser has a lot more capabilities
+    and will allow us to implement a number of additional
+    Markdown features in the future.
+  * Switch Markdown parsing from commonmark to markdown-it-py
+  * Fixed wrong filenames in Jupyter tracebacks
+  * Added locals_hide_dunder and locals_hide_sunder to
+    Tracebacks, to hide double underscore and single underscore
+  * Tracebacks will now hide double underscore names from locals</comment>
+    <requestid>1084878</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>109bee6b441f6f4e212fa7a480a6c030</srcmd5>
+    <version>13.4.1</version>
+    <time>1685830305</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1090265</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>fe747a895db12da31486a22c2a6c3a08</srcmd5>
+    <version>13.4.2</version>
+    <time>1689083797</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1097985</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>f8c9bc84486e23e6db96c869057dede5</srcmd5>
+    <version>13.4.2</version>
+    <time>1690215139</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1099481</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>fe2fe538ff627f97a249f9c1d5771948</srcmd5>
+    <version>13.5.2</version>
+    <time>1693383556</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1106407</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>2ef5aade513404da0f4eaa5f11350f4e</srcmd5>
+    <version>13.7.0</version>
+    <time>1700421251</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1127363</requestid>
+  </revision>
+</revisionlist>

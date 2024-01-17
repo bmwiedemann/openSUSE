@@ -1,0 +1,28 @@
+From f211da6e4cf216a020b47ccab9b2c7806c5a8a62 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fridrich=20=C5=A0trba?= <fridrich.strba@bluewin.ch>
+Date: Wed, 13 Sep 2023 15:47:54 +0200
+Subject: [PATCH 4/4] Reproducible builds: keep order of aliases and
+ dependencies
+
+---
+ python/javapackages/metadata/artifact.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/python/javapackages/metadata/artifact.py b/python/javapackages/metadata/artifact.py
+index 72e57e62..f5cbf3be 100644
+--- a/python/javapackages/metadata/artifact.py
++++ b/python/javapackages/metadata/artifact.py
+@@ -52,8 +52,8 @@ class MetadataArtifact(ObjectBinding):
+               'compatVersions', 'dependencies']
+     defaults = {'extension': 'jar'}
+     types = {'compatVersions': set(['version']),
+-             'aliases': set([MetadataAlias]),
+-             'dependencies': set([MetadataDependency]),
++             'aliases': list([MetadataAlias]),
++             'dependencies': list([MetadataDependency]),
+              'properties': dict}
+ 
+     def __init__(self, *args, **kwargs):
+-- 
+2.42.0
+

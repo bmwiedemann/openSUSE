@@ -1,0 +1,5 @@
+<package name="rmit-sansforgetica-fonts" project="openSUSE:Factory">
+  <title>Sans Forgetica</title>
+  <description>Sans Forgetica is more difficult to read than most typefaces – and that’s by design. The 'desirable difficulty' you experience whee reading information formatted in Sans Forgetica prompts your brain to engage in deeper processing. Sans Forgetica is designed for non-commercial use only. It is bound by a creative commons, non-commercial, attributed (CCBYNC) license</description>
+  <devel project="M17N:fonts" package="rmit-sansforgetica-fonts"/>
+</package>

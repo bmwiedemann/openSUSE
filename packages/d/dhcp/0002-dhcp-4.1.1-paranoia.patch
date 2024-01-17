@@ -1,0 +1,75 @@
+From 1561b8cb9bacabc5e6064b84ba7a187bfb97d0ad Mon Sep 17 00:00:00 2001
+From: Marius Tomaschewski <mt@suse.de>
+Date: Thu, 18 Aug 2011 09:53:00 +0200
+Subject: [PATCH] dhcp-4.1.1-paranoia
+
+---
+ server/dhcpd.c | 24 ++++++++++++++++++++----
+ 1 file changed, 20 insertions(+), 4 deletions(-)
+
+diff --git a/server/dhcpd.c b/server/dhcpd.c
+index 7dc7dd2..b4c1bef 100644
+--- a/server/dhcpd.c
++++ b/server/dhcpd.c
+@@ -207,7 +207,11 @@ static void omapi_listener_start (void *foo)
+ #if defined (PARANOIA)
+ /* to be used in one of two possible scenarios */
+ static void setup_chroot (char *chroot_dir) {
+-  if (geteuid())
++  /*
++  ** getuid() instead of geteuid(), see
++  ** comment by thomas@suse.de bellow
++  */
++  if (getuid())
+     log_fatal ("you must be root to use chroot");
+ 
+   if (chroot(chroot_dir)) {
+@@ -413,7 +417,7 @@ main(int argc, char **argv) {
+ 				log_fatal ("Insufficient memory to %s %s: %s",
+ 					   "record interface", argv [i],
+ 					   isc_result_totext (result));
+-			strcpy (tmp -> name, argv [i]);
++			strncpy (tmp -> name, argv [i], sizeof(tmp->name)-1);
+ 			if (interfaces) {
+ 				interface_reference (&tmp -> next,
+ 						     interfaces, MDL);
+@@ -499,7 +503,15 @@ main(int argc, char **argv) {
+ 	if (set_user) {
+ 		struct passwd *tmp_pwd;
+ 
+-		if (geteuid())
++		/*
++		** I query for the real UID and not for the effective UID
++		** just to force the user to run this server as root and
++		** not setting it suid. It should be a paranoia patch and
++		** not a teletubbie patch. *eg*
++		** Note: That the user is still able to set it suid! *zitter*
++		** thomas@suse.de
++		*/
++		if (getuid())
+ 			log_fatal ("you must be root to set user");
+ 
+ 		if (!(tmp_pwd = getpwnam(set_user)))
+@@ -517,7 +529,10 @@ main(int argc, char **argv) {
+ #define group real_group
+ 		struct group *tmp_grp;
+ 
+-		if (geteuid())
++		/*
++		** getuid() instead of geteuid(), see above
++		*/
++		if (getuid())
+ 			log_fatal ("you must be root to set group");
+ 
+ 		if (!(tmp_grp = getgrnam(set_group)))
+@@ -771,6 +786,7 @@ main(int argc, char **argv) {
+ 	/* change uid to the specified one */
+ 
+ 	if (set_gid) {
++		/* setgroups is done, OK */
+ 		if (setgroups (0, (void *)0))
+ 			log_fatal ("setgroups: %m");
+ 		if (setgid (set_gid))
+-- 
+1.8.4
+

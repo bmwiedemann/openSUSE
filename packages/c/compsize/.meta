@@ -1,0 +1,10 @@
+<package name="compsize" project="openSUSE:Factory">
+  <title></title>
+  <description>
+compsize takes a list of files (given as arguments) on a btrfs
+filesystem and measures used compression types and effective
+compression ratio, producing a report.
+  </description>
+  <devel project="filesystems" package="compsize"/>
+  <url>https://github.com/kilobyte/compsize</url>
+</package>

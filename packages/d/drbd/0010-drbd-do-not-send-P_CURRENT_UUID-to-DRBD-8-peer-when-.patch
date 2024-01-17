@@ -1,0 +1,37 @@
+From 1b94c10250c7d37423ba894457c40d9799025a93 Mon Sep 17 00:00:00 2001
+From: Joel Colledge <joel.colledge@linbit.com>
+Date: Mon, 11 Sep 2023 09:20:24 +0200
+Subject: [PATCH 10/20] drbd: do not send P_CURRENT_UUID to DRBD 8 peer when
+ our disk fails
+
+DRBD 8 does not understand P_CURRENT_UUID. Skip the peer in
+diskfull_peers_need_new_cur_uuid() to avoid sending such a packet.
+
+This is valid because the DRBD 8 peer generates a new UUID itself when
+our disk fails.
+
+This prevents failures of the form:
+
+drbd res: Unexpected data packet Unknown (0x0044)
+drbd res: peer( Primary -> Unknown ) conn( Connected -> ProtocolError ) pdsk( Failed -> DUnknown )
+---
+ drbd/drbd_main.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/drbd/drbd_main.c b/drbd/drbd_main.c
+index ccf0f72829db..e6ed1185c710 100644
+--- a/drbd/drbd_main.c
++++ b/drbd/drbd_main.c
+@@ -4614,6 +4614,9 @@ static bool diskfull_peers_need_new_cur_uuid(struct drbd_device *device)
+ 
+ 	rcu_read_lock();
+ 	for_each_peer_device_rcu(peer_device, device) {
++		if (peer_device->connection->agreed_pro_version < 110)
++			continue;
++
+ 		/* Only an up-to-date peer persists a new current uuid! */
+ 		if (peer_device->disk_state[NOW] < D_UP_TO_DATE)
+ 			continue;
+-- 
+2.35.3
+

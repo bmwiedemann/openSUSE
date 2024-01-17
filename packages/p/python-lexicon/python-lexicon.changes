@@ -1,0 +1,58 @@
+-------------------------------------------------------------------
+Fri Apr 21 12:27:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:42:27 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
+Thu Mar 10 06:08:28 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- pytest-relaxed now supports pytest 6, so test on all python versions. 
+
+-------------------------------------------------------------------
+Mon Dec 13 23:14:40 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Don't test on python310 because of pytest-relaxed not supporting
+  Pytest 6 -- gh#bitprophet/pytest-relaxed#12
+
+-------------------------------------------------------------------
+Fri Sep 17 03:43:56 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.0.1:
+  * Fix up some project metadata.
+  * Dropped support for Python <3.6
+  * Added a _version submodule and imported its dunder-attributes into
+    the top level module
+  * Migrated CI to CircleCI (from Travis)
+  * Migrated tests to pytest(-relaxed)
+  * Moved changelog to stub Sphinx project for Releases plugin
+  * Changed README to ReStructured Text (from Markdown) 
+- Dropped patch add_test_init.patch, no longer required.
+- Added patch add-pytest-ini.patch:
+  * Add the pytest.ini file that isn't included in the source distribution
+    so the testsuite works.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:49:59 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Mon Apr 23 13:16:19 UTC 2018 - tchvatal@suse.com
+
+- Conflict with python-dns-lexicon that provides same namespace
+
+-------------------------------------------------------------------
+Sun Mar  4 09:23:34 UTC 2018 - jengelh@inai.de
+
+- Update descriptions.
+
+-------------------------------------------------------------------
+Sat Mar  3 10:38:55 UTC 2018 - sebix+novell.com@sebix.at
+
+- initial package for version 1.0.0
+- add add_test_init.patch to fix execution of tests

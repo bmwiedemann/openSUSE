@@ -1,0 +1,22 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>25f5d2793a1a97e06cfe1d20e613a60e</srcmd5>
+    <version>1.0</version>
+    <time>1594894580</time>
+    <user>dimstar_suse</user>
+    <comment>New package</comment>
+    <requestid>820937</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>67ffc80baf1327a6209d6649ca72abaa</srcmd5>
+    <version>1.1</version>
+    <time>1600801639</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 1.1:
+  * use recommends instead of requires on grafana (jsc#10545) 
+  * change attributes on provisioning dir, otherwise grafana fails to start
+  * create grafana/user groups to fix permissions
+</comment>
+    <requestid>835260</requestid>
+  </revision>
+</revisionlist>

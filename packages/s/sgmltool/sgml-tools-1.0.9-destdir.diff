@@ -1,0 +1,182 @@
+--- sgml-tools-1.0.9/./entity-map/Makefile.in.orig	Wed Apr 16 16:34:24 2003
++++ sgml-tools-1.0.9/./entity-map/Makefile.in	Wed Apr 16 16:35:17 2003
+@@ -9,6 +9,7 @@
+ 
+ PACKAGE=@PACKAGE@
+ VERSION=@VERSION@
++DESTDIR=
+ 
+ prefix=@prefix@
+ exec_prefix=@exec_prefix@
+@@ -52,14 +53,14 @@
+ 	  -e 's|[@]entitymapdir@|${entitymapdir}|g'
+ 
+ install: all installdirs
+-	${INSTALL_DATA} EntityMap.pm ${textmoddir}/EntityMap.pm
++	${INSTALL_DATA} EntityMap.pm $(DESTDIR)${textmoddir}/EntityMap.pm
+ 	cd sdata; $(MAKE) LIBDIR=${entitymapdir} \
+ 	  PERM_D=755 PERM_F=644 MKDIR="../config/install-sh -d" CP=cp install
+ 
+ installdirs:
+ 	for ii in ${prefix} ${perl5libdir} ${textmoddir} \
+ 	  ${localentitymapdir} ${entitymapdir}; do \
+-	  ./config/install-sh -d $$ii; \
++	  ./config/install-sh -d $(DESTDIR)$$ii; \
+ 	done
+ 
+ installdoc:
+@@ -66,7 +66,7 @@
+ installdoc:
+ 	./config/install-sh -d ${docdir}
+ 	for ii in ${DOCS}; do \
+-	  ${INSTALL_DATA} $$ii ${docdir}/$$ii; \
++	  ${INSTALL_DATA} $$ii $(DESTDIR)${docdir}/$$ii; \
+ 	done
+ 
+ Makefile: Makefile.in configure
+--- sgml-tools-1.0.9/./iso-entities/Makefile.in.orig	Wed Apr 16 16:37:12 2003
++++ sgml-tools-1.0.9/./iso-entities/Makefile.in	Wed Apr 16 16:37:34 2003
+@@ -9,6 +9,7 @@
+ 
+ PACKAGE=@PACKAGE@
+ VERSION=@VERSION@
++DESTDIR=
+ 
+ prefix=@prefix@
+ exec_prefix=@exec_prefix@
+@@ -39,14 +40,14 @@
+ all:
+ 
+ install: all installdirs
+-	${INSTALL_DATA} iso-entities.cat ${isoentdir}/iso-entities.cat
++	${INSTALL_DATA} iso-entities.cat $(DESTDIR)${isoentdir}/iso-entities.cat
+ 	for ii in `cd entities; find . -type f`; do \
+-	  ${INSTALL_DATA} entities/$$ii ${isoentdir}/$$ii; \
++	  ${INSTALL_DATA} entities/$$ii $(DESTDIR)${isoentdir}/$$ii; \
+ 	done
+ 
+ installdirs:
+ 	for ii in ${sgmldir} ${isoentdir}; do \
+-	  ./config/install-sh -d $$ii; \
++	  ./config/install-sh -d $(DESTDIR)$$ii; \
+ 	done
+ 
+ installdoc:
+--- sgml-tools-1.0.9/./Makefile.in.orig	Wed Apr 16 16:31:13 2003
++++ sgml-tools-1.0.9/./Makefile.in	Wed Apr 16 16:40:27 2003
+@@ -6,6 +6,7 @@
+ #  © Copyright 1996 Sven Rudolph
+ #
+ 
++DESTDIR=
+ prefix=@prefix@
+ exec_prefix=@exec_prefix@
+ bindir=@BINDIR@
+@@ -55,13 +56,13 @@
+ 
+ install::
+ 	@echo "Installing binaries in $(bindir) ..."
+-	if [ ! -d $(bindir) ]; then mkdir -p $(bindir); fi
+-	-chmod 755 $(bindir)
++	if [ ! -d $(DESTDIR)$(bindir) ]; then mkdir -p $(DESTDIR)$(bindir); fi
++	-chmod 755 $(DESTDIR)$(bindir)
+ ifeq ($(BUILD_NSGMLS), true)
+-	$(INSTALL_PROGRAM) sp/nsgmls/nsgmls $(bindir)/nsgmls
++	$(INSTALL_PROGRAM) sp/nsgmls/nsgmls $(DESTDIR)$(bindir)/nsgmls
+ endif
+ ifeq ($(BUILD_SGMLSASP), true)
+-	$(INSTALL_PROGRAM) sgmls-1.1/sgmlsasp $(bindir)/sgmlsasp
++	$(INSTALL_PROGRAM) sgmls-1.1/sgmlsasp $(DESTDIR)$(bindir)/sgmlsasp
+ endif
+ ifeq ($(BUILD_ENTITY_MAP), true)
+ 	@echo "Installing Entity Mapping library (in entity-map)..."
+@@ -76,42 +77,42 @@
+ 	strip sgmlpre/sgmlpre
+ 	for ii in sgmlpre/sgmlpre rtf-fix/rtf2rtf; do \
+ 	  bn=`basename $$ii`; \
+-	  $(INSTALL_PROGRAM) $$ii $(bindir)/$$bn; \
++	  $(INSTALL_PROGRAM) $$ii $(DESTDIR)$(bindir)/$$bn; \
+ 	done
+-	$(INSTALL_PROGRAM) bin/sgmltools $(bindir)/sgmltools.v1
++	$(INSTALL_PROGRAM) bin/sgmltools $(DESTDIR)$(bindir)/sgmltools.v1
+ 	@echo "Installing library and support files in $(libdir)..."
+-	if [ ! -d $(libdir) ]; then mkdir -p $(libdir); fi
+-	chmod 755 $(libdir)
+-	cp -r lib/* $(libdir)
+-	cp VERSION $(libdir)
++	if [ ! -d $(DESTDIR)$(libdir) ]; then mkdir -p $(DESTDIR)$(libdir); fi
++	chmod 755 $(DESTDIR)$(libdir)
++	cp -r lib/* $(DESTDIR)$(libdir)
++	cp VERSION $(DESTDIR)$(libdir)
+ 	@echo "Installing man pages in $(mandir1) ..." 
+-	if [ ! -d $(mandir1) ]; then mkdir -p $(mandir1) ; fi
+-	-chmod 755 $(mandir1)
++	if [ ! -d $(DESTDIR)$(mandir1) ]; then mkdir -p $(DESTDIR)$(mandir1) ; fi
++	-chmod 755 $(DESTDIR)$(mandir1)
+ 	for ii in man/sgml2* man/sgmlcheck.1 man/sgmltools.1; do \
+ 	  bn=`basename $$ii`; \
+-	  $(INSTALL_DATA) $$ii $(mandir1)/$$bn; \
++	  $(INSTALL_DATA) $$ii $(DESTDIR)$(mandir1)/$$bn; \
+ 	done
+ ifeq ($(BUILD_NSGMLS), true)
+-	$(INSTALL_DATA) man/nsgmls.1 $(mandir1)/nsgmls.1
++	$(INSTALL_DATA) man/nsgmls.1 $(DESTDIR)$(mandir1)/nsgmls.1
+ endif
+ ifeq ($(BUILD_SGMLSASP), true)
+-	$(INSTALL_DATA) man/sgmlsasp.1 $(mandir1)/sgmlsasp.1
++	$(INSTALL_DATA) man/sgmlsasp.1 $(DESTDIR)$(mandir1)/sgmlsasp.1
+ endif
+-	find $(libdir) -type d -print | xargs chmod 755
+-	find $(libdir) -type f -print | xargs chmod 644
+-	(cd $(libdir)/dist/sgmltool/latin1; rm -f mapping; ln -s ../groff/mapping .)
+-	(cd $(libdir)/dist; rm -f linuxdoc; ln -s sgmltool linuxdoc)
+-	(cd $(libdir)/dist; rm -f linuxdoc96; ln -s sgmltool linuxdoc96)
+-	(cd $(libdir)/dist; rm -f linuxdoc97; ln -s sgmltool linuxdoc97)
+-	(cd $(libdir)/dtd;  rm -f linuxdoc.dtd; ln -s linuxdoc96.dtd linuxdoc.dtd)
+-	(cd $(bindir); for i in $(progs); do rm -f $$i; ln sgmltools.v1 $$i;done)
++	find $(DESTDIR)$(libdir) -type d -print | xargs chmod 755
++	find $(DESTDIR)$(libdir) -type f -print | xargs chmod 644
++	(cd $(DESTDIR)$(libdir)/dist/sgmltool/latin1; rm -f mapping; ln -s ../groff/mapping .)
++	(cd $(DESTDIR)$(libdir)/dist; rm -f linuxdoc; ln -s sgmltool linuxdoc)
++	(cd $(DESTDIR)$(libdir)/dist; rm -f linuxdoc96; ln -s sgmltool linuxdoc96)
++	(cd $(DESTDIR)$(libdir)/dist; rm -f linuxdoc97; ln -s sgmltool linuxdoc97)
++	(cd $(DESTDIR)$(libdir)/dtd;  rm -f linuxdoc.dtd; ln -s linuxdoc96.dtd linuxdoc.dtd)
++	(cd $(DESTDIR)$(bindir); for i in $(progs); do rm -f $$i; ln sgmltools.v1 $$i;done)
+ 	@echo "Installing documentation in $(LINUXDOCDOC) ..."
+-	(cd doc; PATH=${PATH}:$(bindir) sh Makedoc.sh)
+-	if [ ! -d $(LINUXDOCDOC) ]; then mkdir -p $(LINUXDOCDOC); fi
+-	chmod 755 $(LINUXDOCDOC)
+-	cp -r doc/* $(LINUXDOCDOC) 
+-	find $(LINUXDOCDOC) -type d -print | xargs chmod 755
+-	find $(LINUXDOCDOC) -type f -print | xargs chmod 644
++	(cd doc; PATH=${PATH}:$(DESTDIR)$(bindir) sh Makedoc.sh)
++	if [ ! -d $(DESTDIR)$(LINUXDOCDOC) ]; then mkdir -p $(DESTDIR)$(LINUXDOCDOC); fi
++	chmod 755 $(DESTDIR)$(LINUXDOCDOC)
++	cp -r doc/* $(DESTDIR)$(LINUXDOCDOC) 
++	find $(DESTDIR)$(LINUXDOCDOC) -type d -print | xargs chmod 755
++	find $(DESTDIR)$(LINUXDOCDOC) -type f -print | xargs chmod 644
+ 
+ # what dirs do the targets clean and distclean need?
+ DDIRS=
+--- sgml-tools-1.0.9/./entity-map/sdata/Makefile.orig	Wed Apr 23 10:01:36 2003
++++ sgml-tools-1.0.9/./entity-map/sdata/Makefile	Wed Apr 23 10:02:08 2003
+@@ -14,13 +14,13 @@
+  greek.2html lat1.2sdata
+ 
+ install: 
+-	if [ ! -d $(LIBDIR) ]; then \
+-	  $(MKDIR) $(LIBDIR); \
+-	  chmod $(PERM_D) $(LIBDIR); \
++	if [ ! -d $(DESTDIR)$(LIBDIR) ]; then \
++	  $(MKDIR) $(DESTDIR)$(LIBDIR); \
++	  chmod $(PERM_D) $(DESTDIR)$(LIBDIR); \
+ 	fi
+-	$(CP) $(SDATAFILES) $(LIBDIR)
+-	(cd $(LIBDIR); chmod $(PERM_F) $(SDATAFILES))
+-	(cd $(LIBDIR); \
++	$(CP) $(SDATAFILES) $(DESTDIR)$(LIBDIR)
++	(cd $(DESTDIR)$(LIBDIR); chmod $(PERM_F) $(SDATAFILES))
++	(cd $(DESTDIR)$(LIBDIR); \
+ 	 rm -f ISOlat1.2rtf ISOlat1.2texi ISOlat1.2tr ISOlat1.2l1s ISOlat1.2l1tr \
+ 	       ISOlat2.2l1b ISOlat2.2l1s \
+ 	       ISOdia.2rtf ISOdia.2texi ISOdia.2l1b ISOdia.2l1s ISOdia.2l1tr \

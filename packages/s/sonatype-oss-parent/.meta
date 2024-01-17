@@ -1,0 +1,5 @@
+<package name="sonatype-oss-parent" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="sonatype-oss-parent"/>
+</package>

@@ -1,0 +1,15 @@
+<package name="moarvm" project="openSUSE:Factory">
+  <title>A virtual machine built especially for Rakudo Perl 6</title>
+  <description>
+Short for &quot;Metamodel On A Runtime&quot;, MoarVM is a virtual machine built
+especially for Rakudo Perl 6 and the NQP Compiler Toolchain.
+MoarVM is a backend for NQP. MoarVM already stands out amongst the
+various Rakudo and NQP compilation targets by typically:
+
+- Running the Perl 6 specification test suite fastest
+- Having the lowest memory usage
+- Having the best startup time
+- Being fastest to build both NQP and Rakudo - and thus in theory your Perl 6 and NQP programs too!
+</description>
+  <devel project="devel:languages:perl6" package="moarvm"/>
+</package>

@@ -1,0 +1,286 @@
+From 868ba56198c456ce3d5f3333329304beaa90e184 Mon Sep 17 00:00:00 2001
+From: Samir Shah <solaris.smoke@gmail.com>
+Date: Sat, 24 Dec 2022 05:21:12 +0300
+Subject: [PATCH] Update supported versions and test matrix.
+
+---
+ docs/source/tests.rst             |   11 +++----
+ setup.py                          |   13 ++++----
+ treebeard/__init__.py             |    2 -
+ treebeard/tests/settings.py       |    3 --
+ treebeard/tests/test_treebeard.py |   57 ++++++++++++++++++++++----------------
+ 5 files changed, 47 insertions(+), 39 deletions(-)
+ delete mode 100644 .travis.yml
+
+--- a/docs/source/tests.rst
++++ b/docs/source/tests.rst
+@@ -41,18 +41,17 @@ tox
+ ``django-treebeard`` uses `tox`_ to run the test suite in all the supported
+ environments - permutations of:
+ 
+-  - Python 3.6, 3.7 and 3.8
+-  - Django 2.2, 3.0 and 3.1
++  - Python 3.8 - 3.11
++  - Django 3.2, 4.0 and 4.1
+   - Sqlite, MySQL and PostgreSQL
+ 
+-This means that the test suite will run 24 times to test every
+-environment supported by ``django-treebeard``. This takes a long time.
+-If you want to test only one or a few environments, please use the `-e`
++This means that there are a lot of permutations, which takes a long time.
++If you want to test only one or a few environments, use the `-e`
+ option in `tox`_, like:
+ 
+ .. code-block:: console
+ 
+-    $ tox -e py36-dj22-pgsql
++    $ tox -e py39-dj32-postgres
+ 
+ 
+ .. _pytest: http://pytest.org/
+--- a/setup.py
++++ b/setup.py
+@@ -20,7 +20,7 @@ setup_args = dict(
+     long_description=long_description,
+     long_description_content_type='text/markdown',
+     python_requires='>=3.6',
+-    install_requires=['Django>=2.2'],
++    install_requires=['Django>=3.2'],
+     tests_require=[
+         'pytest-django>=4.0,<5.0',
+ 
+@@ -34,13 +34,14 @@ setup_args = dict(
+         'License :: OSI Approved :: Apache Software License',
+         'Environment :: Web Environment',
+         'Framework :: Django',
+-        'Framework :: Django :: 2.2',
+-        'Framework :: Django :: 3.0',
+-        'Framework :: Django :: 3.1',
++        'Framework :: Django :: 3.2',
++        'Framework :: Django :: 4.0',
++        'Framework :: Django :: 4.1',
+         'Programming Language :: Python',
+-        'Programming Language :: Python :: 3.6',
+-        'Programming Language :: Python :: 3.7',
+         'Programming Language :: Python :: 3.8',
++        'Programming Language :: Python :: 3.9',
++        'Programming Language :: Python :: 3.10',
++        'Programming Language :: Python :: 3.11',
+         'Operating System :: OS Independent',
+         'Topic :: Software Development :: Libraries',
+         'Topic :: Utilities'])
+--- a/treebeard/__init__.py
++++ b/treebeard/__init__.py
+@@ -7,7 +7,7 @@ Release logic:
+  3. git commit -m 'Bump to <version>'
+  4. git tag <version>
+  5. git push
+- 6. assure that all tests pass on https://travis-ci.org/django-treebeard/django-treebeard/builds/
++ 6. ensure that all tests pass on Github Actions
+  7. git push --tags
+  8. pip install --upgrade pip wheel twine
+  9. python setup.py clean --all
+--- a/treebeard/tests/settings.py
++++ b/treebeard/tests/settings.py
+@@ -38,7 +38,7 @@ def get_db_conf():
+         }
+     elif database_engine == "mssql":
+         return {
+-            'ENGINE': 'sql_server.pyodbc',
++            'ENGINE': 'mssql',
+             'NAME': 'master',
+             'USER': 'sa',
+             'PASSWORD': 'Password12!',
+@@ -46,7 +46,6 @@ def get_db_conf():
+             'PORT': '',
+             'OPTIONS': {
+                 'driver': 'SQL Server Native Client 11.0',
+-                'MARS_Connection': 'True',
+             },
+         }
+ 
+--- a/treebeard/tests/test_treebeard.py
++++ b/treebeard/tests/test_treebeard.py
+@@ -15,6 +15,7 @@ from django.test import TestCase
+ from django.test.client import RequestFactory
+ from django.templatetags.static import static
+ from django.contrib.admin.options import TO_FIELD_VAR
++from django import VERSION as DJANGO_VERSION
+ 
+ import pytest
+ 
+@@ -140,6 +141,14 @@ def mpm2muser_model(request):
+     return request.param
+ 
+ 
++# Compat helper, and be dropped after Django 3.2 is dropped
++def get_changelist_args(*args):
++    new_args = list(args)
++    if DJANGO_VERSION > (4,):
++        new_args.append("")     # New search_help_text arg
++    return new_args
++
++
+ class TestTreeBase(object):
+     def got(self, model):
+         if model in [models.NS_TestNode, models.NS_TestNode_Proxy]:
+@@ -2603,7 +2612,7 @@ class TestAdminTree(TestNonEmptyTree):
+         m = admin_class(model, site)
+         list_display = m.get_list_display(request)
+         list_display_links = m.get_list_display_links(request, list_display)
+-        cl = ChangeList(
++        cl = ChangeList(*get_changelist_args(
+             request,
+             model,
+             list_display,
+@@ -2616,8 +2625,8 @@ class TestAdminTree(TestNonEmptyTree):
+             m.list_max_show_all,
+             m.list_editable,
+             m,
+-            None,
+-        )
++            [],
++        ))
+         cl.formset = None
+         context = Context({"cl": cl, "request": request})
+         table_output = self.template.render(context)
+@@ -2652,7 +2661,7 @@ class TestAdminTree(TestNonEmptyTree):
+         m = UnicodeModelAdmin(model, site)
+         list_display = m.get_list_display(request)
+         list_display_links = m.get_list_display_links(request, list_display)
+-        cl = ChangeList(
++        cl = ChangeList(*get_changelist_args(
+             request,
+             model,
+             list_display,
+@@ -2665,8 +2674,8 @@ class TestAdminTree(TestNonEmptyTree):
+             m.list_max_show_all,
+             m.list_editable,
+             m,
+-            None,
+-        )
++            [],
++        ))
+         cl.formset = None
+         context = Context({"cl": cl, "request": request})
+         table_output = self.template.render(context)
+@@ -2693,7 +2702,7 @@ class TestAdminTree(TestNonEmptyTree):
+         m = admin_class(model, site)
+         list_display = m.get_list_display(request)
+         list_display_links = m.get_list_display_links(request, list_display)
+-        cl = ChangeList(
++        cl = ChangeList(*get_changelist_args(
+             request,
+             model,
+             list_display,
+@@ -2706,8 +2715,8 @@ class TestAdminTree(TestNonEmptyTree):
+             m.list_max_show_all,
+             m.list_editable,
+             m,
+-            None,
+-        )
++            [],
++        ))
+         cl.formset = None
+         context = Context({"cl": cl, "request": request})
+         table_output = self.template.render(context)
+@@ -2719,7 +2728,7 @@ class TestAdminTree(TestNonEmptyTree):
+         request.user = AnonymousUser()
+         list_display = m.get_list_display(request)
+         list_display_links = m.get_list_display_links(request, list_display)
+-        cl = ChangeList(
++        cl = ChangeList(*get_changelist_args(
+             request,
+             model,
+             list_display,
+@@ -2732,8 +2741,8 @@ class TestAdminTree(TestNonEmptyTree):
+             m.list_max_show_all,
+             m.list_editable,
+             m,
+-            None,
+-        )
++            [],
++        ))
+         cl.formset = None
+         context = Context({"cl": cl, "request": request})
+         table_output = self.template.render(context)
+@@ -2745,7 +2754,7 @@ class TestAdminTree(TestNonEmptyTree):
+         request.user = AnonymousUser()
+         list_display = m.get_list_display(request)
+         list_display_links = m.get_list_display_links(request, list_display)
+-        cl = ChangeList(
++        cl = ChangeList(*get_changelist_args(
+             request,
+             model,
+             list_display,
+@@ -2758,8 +2767,8 @@ class TestAdminTree(TestNonEmptyTree):
+             m.list_max_show_all,
+             m.list_editable,
+             m,
+-            None,
+-        )
++            [],
++        ))
+         cl.formset = None
+         context = Context({"cl": cl, "request": request})
+         table_output = self.template.render(context)
+@@ -2788,7 +2797,7 @@ class TestAdminTreeList(TestNonEmptyTree
+         m = admin_class(model, site)
+         list_display = m.get_list_display(request)
+         list_display_links = m.get_list_display_links(request, list_display)
+-        cl = ChangeList(
++        cl = ChangeList(*get_changelist_args(
+             request,
+             model,
+             list_display,
+@@ -2801,8 +2810,8 @@ class TestAdminTreeList(TestNonEmptyTree
+             m.list_max_show_all,
+             m.list_editable,
+             m,
+-            None,
+-        )
++            [],
++        ))
+         cl.formset = None
+         context = Context({"cl": cl, "request": request})
+         table_output = self.template.render(context)
+@@ -2821,7 +2830,7 @@ class TestAdminTreeList(TestNonEmptyTree
+         m = admin_class(model, site)
+         list_display = m.get_list_display(request)
+         list_display_links = m.get_list_display_links(request, list_display)
+-        cl = ChangeList(
++        cl = ChangeList(*get_changelist_args(
+             request,
+             model,
+             list_display,
+@@ -2834,8 +2843,8 @@ class TestAdminTreeList(TestNonEmptyTree
+             m.list_max_show_all,
+             m.list_editable,
+             m,
+-            None,
+-        )
++            [],
++        ))
+         cl.formset = None
+         context = Context({"cl": cl, "request": request, "action_form": True})
+         table_output = self.template.render(context)
+@@ -2864,7 +2873,7 @@ class TestAdminTreeList(TestNonEmptyTree
+         m = admin_class(model, site)
+         list_display = m.get_list_display(request)
+         list_display_links = m.get_list_display_links(request, list_display)
+-        cl = ChangeList(
++        cl = ChangeList(*get_changelist_args(
+             request,
+             model,
+             list_display,
+@@ -2877,8 +2886,8 @@ class TestAdminTreeList(TestNonEmptyTree
+             m.list_max_show_all,
+             m.list_editable,
+             m,
+-            None,
+-        )
++            [],
++        ))
+         cl.formset = None
+         context = Context({"cl": cl, "request": request})
+         table_output = self.template.render(context)

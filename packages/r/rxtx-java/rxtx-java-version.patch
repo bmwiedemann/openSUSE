@@ -1,0 +1,12 @@
+diff -up ./configure.in.orig ./configure.in
+--- ./configure.in.orig	2015-05-01 16:18:46.000000000 +0200
++++ ./configure.in	2015-05-01 16:19:59.047858458 +0200
+@@ -64,7 +64,7 @@ AC_PROG_CC
+ AC_DISABLE_STATIC
+ AM_PROG_LIBTOOL
+ # end of SCO fixes
+-AM_INIT_AUTOMAKE(Serial,2.2pre1)
++AM_INIT_AUTOMAKE(Serial,2.2pre2)
+ AC_CHECK_HEADERS(fcntl.h)
+ AC_CHECK_HEADERS(sys/fcntl.h)
+ AC_CHECK_HEADERS(sys/file.h)

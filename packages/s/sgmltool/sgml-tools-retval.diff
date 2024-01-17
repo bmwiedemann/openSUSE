@@ -1,0 +1,11 @@
+--- sgmls-1.1/replace.c
++++ sgmls-1.1/replace.c
+@@ -274,6 +274,8 @@
+   default:
+     parse_error("bad input character `%c'", c);
+   }
++  /* unreached */
++  return 0;
+ }
+ 
+ static

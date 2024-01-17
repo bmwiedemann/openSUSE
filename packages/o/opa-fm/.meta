@@ -1,0 +1,7 @@
+<package name="opa-fm" project="openSUSE:Factory">
+  <title>Intel Omni-Path Fabric Management Software</title>
+  <description>The opa-fm contains Intel Omni-Path fabric management applications. This 
+includes: the Subnet Manager, Baseboard Manager, Performance Manager, 
+Fabric Executive, and some fabric management tools.</description>
+  <devel project="science:HPC" package="opa-fm"/>
+</package>

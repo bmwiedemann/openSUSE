@@ -1,0 +1,29 @@
+diff --git a/biz.aQute.bndlib/src/aQute/bnd/osgi/Packages.java b/biz.aQute.bndlib/src/aQute/bnd/osgi/Packages.java
+index b127fc68..679a1051 100644
+--- a/biz.aQute.bndlib/src/aQute/bnd/osgi/Packages.java
++++ b/biz.aQute.bndlib/src/aQute/bnd/osgi/Packages.java
+@@ -1,9 +1,9 @@
+ package aQute.bnd.osgi;
+ 
+ import java.util.Collection;
+-import java.util.LinkedHashMap;
+ import java.util.Map;
+ import java.util.Set;
++import java.util.TreeMap;
+ 
+ import aQute.bnd.header.Attrs;
+ import aQute.bnd.osgi.Descriptors.PackageRef;
+@@ -21,11 +21,11 @@ public class Packages implements Map<PackageRef, Attrs> {
+ 	}
+ 
+ 	public Packages(Packages other) {
+-		map = new LinkedHashMap<>(other.map);
++		map = new TreeMap<>(other.map);
+ 	}
+ 
+ 	public Packages() {
+-		map = new LinkedHashMap<>();
++		map = new TreeMap<>();
+ 	}
+ 
+ 	@Override

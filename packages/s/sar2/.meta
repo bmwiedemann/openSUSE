@@ -1,0 +1,5 @@
+<package name="sar2" project="openSUSE:Factory">
+  <title>Search and Rescue II</title>
+  <description>A rescue helicopter simulator</description>
+  <devel project="games" package="sar2"/>
+</package>

@@ -1,0 +1,29 @@
+--- krb5-appl/gssftp/ftp/cmdtab.c
++++ krb5-appl/gssftp/ftp/cmdtab.c
+@@ -37,6 +37,7 @@ static char sccsid[] = "@(#)cmdtab.c	5.1
+ 
+ #include <autoconf.h>
+ 
++#include <signal.h>
+ #include <stdio.h>
+ #include "ftp_var.h"
+ 
+--- krb5-appl/gssftp/ftp/radix.c
++++ krb5-appl/gssftp/ftp/radix.c
+@@ -1,5 +1,6 @@
+ #include <autoconf.h>
+ 
++#include <signal.h>
+ #include <stdio.h>
+ #include <ctype.h>
+ #include <string.h>
+--- krb5-appl/gssftp/ftp/ruserpass.c
++++ krb5-appl/gssftp/ftp/ruserpass.c
+@@ -38,6 +38,7 @@ static char sccsid[] = "@(#)ruserpass.c
+ #include <autoconf.h>
+ 
+ #include <sys/types.h>
++#include <signal.h>
+ #include <stdio.h>
+ #include <string.h>
+ #ifdef HAVE_STDLIB_H

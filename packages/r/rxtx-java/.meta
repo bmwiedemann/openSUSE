@@ -1,0 +1,6 @@
+<package name="rxtx-java" project="openSUSE:Factory">
+  <title>Serial and Parallel I/O libraries supporting Sun's CommAPI</title>
+  <description>RXTX is a Java library, using a native implementation (via JNI), providing serial and parallel communication for the Java Development Toolkit (JDK). It is based on the specification for Sun's Java Communications API.</description>
+  <devel project="Java:packages" package="rxtx-java"/>
+  <url>http://rxtx.qbang.org/</url>
+</package>

@@ -1,0 +1,10 @@
+Index: dataquay-0.9.1/deploy/dataquay.pc.in
+===================================================================
+--- dataquay-0.9.1.orig/deploy/dataquay.pc.in
++++ dataquay-0.9.1/deploy/dataquay.pc.in
+@@ -7,4 +7,4 @@ Name: dataquay
+ Version: 0.9.1
+ Description: C++ API for an RDF data store using Qt4 classes and containers
+ Libs: -L${libdir} -ldataquay %EXTRALIBS%
+-Cflags: -I${includedir} 
++Cflags: -I${includedir} -I${includedir}/dataquay

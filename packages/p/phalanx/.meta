@@ -1,0 +1,5 @@
+<package name="phalanx" project="openSUSE:Factory">
+  <title>A Chess Program</title>
+  <description>A smart chess playing program which uses opening book.</description>
+  <devel project="games" package="phalanx"/>
+</package>

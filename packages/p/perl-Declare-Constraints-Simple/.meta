@@ -1,0 +1,8 @@
+<package name="perl-Declare-Constraints-Simple" project="openSUSE:Factory">
+  <title>Declarative Validation of Data Structures</title>
+  <description>The main purpose of this module is to provide an easy way to build a
+profile to validate a data structure. It does this by giving you a set of
+declarative keywords in the importing namespace.</description>
+  <devel project="devel:languages:perl" package="perl-Declare-Constraints-Simple"/>
+  <url>http://search.cpan.org/perldoc?Declare::Constraints::Simple</url>
+</package>

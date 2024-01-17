@@ -1,0 +1,6 @@
+<package name="obfs4" project="openSUSE:Factory">
+  <title></title>
+  <description>A tool that attempts to circumvent censorship by transforming the Tor traffic between the client and the bridge. This way censors, who usually monitor traffic between the client and the bridge, will see innocent-looking transformed traffic instead of the actual Tor traffic.</description>
+  <devel project="network" package="obfs4"/>
+  <url>https://gitlab.com/yawning/obfs4</url>
+</package>

@@ -1,0 +1,505 @@
+-------------------------------------------------------------------
+Tue Sep 12 08:29:58 UTC 2023 - jbohac@suse.com
+
+- Update to version 4.1:
+  * Version 4.1
+  * phc2sys: Fix -n option with -w.
+  * phc2sys: Avoid segfault with default UDS address.
+  * phc2sys: Improve logging with single domain.
+  * ptp4l man: Add description for setting kthreads priorities
+  * sk: don't report random errno on timeout
+  * phc_ctl: explicitly check for adjust_phase definition
+  * raw: Fix PRP trailer detection
+  * remove C99 style loop variable declarations
+  * phc2sys: Add multi-domain synchronization.
+  * phc2sys: Shallow do_loop().
+  * phc2sys: Create pmc agent after processing options.
+  * phc2sys: Rename phc2sys_private to domain.
+  * Use the 802.1AS peer delay computation when transportSpecific is 1
+  * Resolve false hybrid_e2e warning
+  * Fix SERVO_LOCKED_STABLE behavior.
+  * Version 4.0
+  * clock: Fix summary interval in free-running mode.
+  * Avoid switching PHC when phc_index is negative
+  * ts2phc: Fix memory leak on initial error path.
+  * power profile: Fix regression in the default configuration file.
+  * msg: append TLV onto all PTP event messages
+  * Fix detection of VLAN over bond support in case the driver does not support SIOCGHWTSTAMP ioctl.
+  * Clear pending errors on sockets.
+  * ntpshm: Invalidate SHM data before releasing the servo
+  * lstab: Update leapfile validity
+  * port: Don't switch to PHC with SW timestamping.
+  * ts2phc: Fix potential null-pointer dereference
+  * ts2phc: Prevent reporting poll error when received termination signal
+  * Set controlField to zero in message headers
+  * tz2alt: Add tz2alt to .gitignore
+  * Introduce a time zone helper program.
+  * pmc: Convert internal helper function into global method.
+  * Implement the ALTERNATE_TIME_OFFSET_ENABLE management message.
+  * Add the ALTERNATE_TIME_OFFSET_NAME management message.
+  * Add the ALTERNATE_TIME_OFFSET_PROPERTIES management message.
+  * Prepare clock based storage of up to four time zones.
+  * tlv: Encode and decode alternate time offset indicator TLVs.
+  * Add a custom management message for power profile settings.
+  * Introduce the power profile.
+  * tlv: Encode and decode power profile TLVs.
+  * Accept the full range for domainNumber.
+  * man pages: Bump date.
+  * Alphabetize configuration options in the ts2phc man page.
+  * Alphabetize configuration options in the pmc man page.
+  * Alphabetize configuration options in the phc2sys man page.
+  * Remove stray copy/pasteo from the phc2sys man page.
+  * Alphabetize configuration options in the ptp4l man page.
+  * ts2phc: reset servo if failed to discipline clock
+  * phc2sys: reset servo if failed to discipline clock
+  * ptp4l: reset servo if failed to discipline clock
+  * clockadj: return error if failed to adjust clock
+  * unicast: Avoid undefined integer shifts.
+  * ts2phc: Fix generic pps source when tai offset is not set in OS
+  * lstab: move update_leapsecond_table function to lstab
+  * lstab: Add LSTAB_EXPIRED result
+  * timemaster: Use refclock_sock servo with chrony.
+  * timemaster: Replace shm_segment with refclock_id.
+  * Add refclock_sock servo.
+  * Remove obsolete statement in ptp4l man page.
+  * Fix up alphetical order in port_private header file.
+  * port: start sync rx timer on grant
+  * raw: Use BPF filter based on tcpdump syntax.
+  * Fix SERVO_JUMP docstring comment
+  * Improve efficiency of nullf servo synchronization
+  * clock: Fix stale clock parent pid usage after best master change
+  * adding delay asymmetry calculation
+  * organization TLV support for interface rate
+  * adding speed field information for interface
+  * function to support get interface speed via ethtool
+  * unicast_client: cancel sync/delay_response on UC_EV_UNSELECTED event
+  * unicast_client: fix checkpatch ERROR: trailing whitespace
+  * unicast_client: stop sending abnormal contract cancel requests
+  * Don't re-arm fault clearing timer on unrelated netlink events
+  * port: Avoid faults with vclocks and PHC from command line.
+  * makefile: use conditional assignment for KBUILD_OUTPUT
+  * servo: stop rounding initial frequency to nearest ppb
+  * The PortId is defined as a couple of ClockId (an 8-bytes opaque) and the PortNumber (UInterger16).
+  * config: Fix -Wformat-truncation warnings.
+  * unciast_client: trigger BMCA upon CANCEL receive
+  * ptp4l: Add profile_id configuration support for G.8275.1 and G.8275.2.
+  * config: allow fractional freq_est_interval
+  * Added support for Standard Baudrates supported by GNSS receivers
+  * Extend clockcheck to check for changes in frequency.
+  * Don't accept errors in clockadj_get_freq().
+  * Drop support for old kernels returning zero frequency.
+  * phc2sys: Add clocks after processing configuration.
+  * ts2phc: Use system time as the default ToD source
+  * ts2phc: Add option to specify the ToD source in the config file
+  * ts2phc: Rename pps_sink to tod_sink in main()
+  * port: don't clear fault if link is down
+  * sk: Handle EINTR when waiting for transmit timestamp.
+  * ts2phc: Update default lstab expiry date
+  * phc2sys: Update TAI to UTC offset in manual
+  * Strip Parallel Redundancy Protocol (PRP) trailer
+  * ts2phc_phc_pps_source: make use of new kernel API for perout waveform
+  * ts2phc: allow PHC PPS sources to be synchronized
+  * ts2phc: reconfigure sync direction by subscribing to ptp4l port events
+  * ts2phc: split PPS sink poll from servo loop
+  * ts2phc_slave: print offset to the source clock
+  * ts2phc: instantiate a pmc agent
+  * util: import port_state_normalize() logic from phc2sys
+  * ts2phc: instantiate a full clock structure for every PPS source of the PHC kind
+  * ts2phc: instantiate a full clock structure for every PPS sink
+  * ts2phc: create a private data structure
+  * phc2sys: Add support for free-running mode
+  * G.8275.2 support for delay_mechanism NO_MECHANISM
+  * port: Disable PHC switch with vclocks.
+  * unicast: Update announce timer when renew
+  * phc2sys: Allow multiple sink clocks
+  * Add new ptp capability.
+  * Add new management TLVs to pmc.8
+  * ptp4l: add VLAN over bond support
+  * port: refactor port_link_status
+  * ptp4l: init iface->ts_label when interface created
+  * phc2sys: Don't exit when reading of PHC fails with EBUSY.
+  * sysoff: Retry on EBUSY when probing supported ioctls.
+  * sysoff: Change log level of ioctl error messages.
+  * sysoff: Change sysoff_measure() to return errno.
+  * clockadj: Change clockadj_compare() to return errno.
+  * ts2phc: rename "master" to "source"
+  * ts2phc: rename "slave clocks" to "PPS sinks"
+  * ts2phc: rename source code files ("master" to "source", "slave" to "sink")
+  * pmc_agent: make pmc_agent_query_port_properties take an enum port_state argument
+  * UDS: allow specifying different file mode for the read-only socket.
+  * UDS: added option to set file mode for the created socket.
+  * Fix management TLV print.
+  * Add new managements TLVs get size.
+  * port: cancel unicast transmission when closing port.
+  * port: unicast client - do not add master to foreign master table if not in the unicast master table.
+  * unicast: Add support to send CANCEL_UNICAST_TRANSMISSION TLVs.
+  * unicast: Add support to check if message was received from an entry in the unicast master table.
+  * TLV management messages need to be aligned to 16 bits.
+  * Fix the descriptions of "G.8275.portDS.localPriority" and "G.8275.defaultDS.localPriority" in ptp4l man page.
+  * timemaster: Add support for virtual clocks.
+  * phc2sys: Use PHC index from PORT_HWCLOCK_NP.
+  * tlv: Add PORT_HWCLOCK_NP.
+  * port: Check for virtual clocks.
+  * config: Add port-specific phc_index option.
+  * Add support for binding sockets to virtual clocks.
+  * rtnl: Add function to detect virtual clocks.
+  * rtnl: Fix rtnl_rtattr_parse() to process max attribute.
+  * phc_ctl: replace calculate_offset with clockadj_compare
+  * phc2sys: move read_phc into clock_adj.c
+  * Add UNICAST_MASTER_TABLE_NP management TLV
+  * pmc: Initialize reserved field in management_tlv_datum.
+  * Check 'print_log' before arguments are evaluated, not after.
+  * Add PORT_SERVICE_STATS_NP management TLV
+  * util: attempt to resolve symlinks to the PHC device in posix_clock_open
+  * util: fix dangling file descriptors on the error path of posix_clock_open
+  * Maintain one Sync sequence counter per destination address.
+  * Maintain one Announce sequence counter per destination address.
+  * clock: Split update of leap status from clock_time_properties().
+  * Delay Response Timeout Feature addition for PTP4L
+  * clock: Notify servo about leap second on UTC hardware clock.
+  * clock: Clear leap flags after leap second.
+  * clock: Print info message when leap flags change.
+  * clock: Accept new UTC offset after leap second.
+  * lstab: update expiration to 28 December 2021
+  * lstab: Close file after reading.
+  * Fix quoting in ptp4l man page.
+  * config: Add workaround for glibc getopt_long().
+  * Rename management ID macros.
+  * clockcheck: Increase minimum interval.
+  * port: Don't renew raw transport.
+  * port: Don't check timestamps from non-slave ports.
+  * clock: Reset clock check on best clock/port change.
+  * clock: Reset state when switching port with same best clock.
+  * Increase the default tx_timestamp_timeout to 10
+  * ts2phc: Add serial baudrate option
+  * ts2phc: Update leapfile documentation
+  * ts2phc: Close socket on peer shutdown
+  * ts2phc: Fix uninitialized variable in nmea_scan_rmc
+  * tc: Fix length of follow-up message of one-step sync.
+  * Validate the messageLength field of incoming messages.
+  * Log optimization for ptp4l in jbod and client only mode (clientOnly=1 and boundary_clock_jbod=1)
+  * Log optimization for ptp4l in jbod and client only mode (clientOnly=1 and boundary_clock_jbod=1)
+  * Add master only management TLV
+  * Set domainNumber for telecom examples
+  * Fix SLAVE_ONLY TLV
+  * Prevent client ports getting stuck in the UNCALIBRATED state.
+  * tlv: Fix coding style.
+  * Ensure TLV_PORT_STATS_NP statistics uses little endian.
+  * Revert "phc2sys: Expand the validation of the PPS mode."
+  * Avoid undefined integer operations.
+  * pmc: Fix printed totalCorrectionField.
+  * Avoid unaligned pointers to packed members.
+  * Revert "phc2sys: Ensure PHC source when using PPS mode."
+  * phc_ctl: Fix incorrect memset in do_cmp()
+  * Fix --initial_delay for automotive profile
+  * Update man page to reflect the new serverOnly option.
+  * Convert the example configuration files over to the new serverOnly option.
+  * Deprecate the masterOnly option in favor of serverOnly.
+  * Bump to IEEE 1588-2019 version
+  * Clock Class Threshold Feature addition for PTP4L
+  * sk: Don't return error for zero-length messages.
+  * clock: Introduce step_window to free run x Sync events after a clock step.
+  * timemaster: Set uds_ro_address for ptp4l instances.
+  * clock: Add read-only UDS port for monitoring.
+  * clock: Rename UDS variables to read-write.
+  * clock: Don't allow COMMAND action on non-UDS port.
+  * port: Ignore non-management messages on UDS port.
+  * port: Don't assume transport from port number.
+  * Implement push notification for TIME_STATUS_NP
+  * tlv: Fix byte reordering in ScaledNs
+  * Improve port-related log messages.
+  * port: Cache display name for logs.
+  * Update man pages to reflect the new clientOnly option.
+  * Convert the example configuration files over to the new clientOnly option.
+  * Deprecate the slaveOnly option in favor of clientOnly.
+  * Check for deprecated "long" options on the command line.
+  * lstab: Bring expiration up to date.
+  * util: add SIGHUP handling
+  * port: Fix link down/up to continue using phc_index set from command line -p option.
+  * ts2phc: Convert usage message to time source/sink terminology.
+  * ptp4l: Convert usage messages to client/server terminology.
+  * phc2sys: Convert usage messages to time source/sink terminology.
+  * ts2phc: Convert man page to source/sink terminology.
+  * ptp4l: Convert man page to client/server terminology.
+  * phc2sys: Convert man page to client/server terminology.
+  * phc2sys: Convert man page to source/sink terminology.
+  * phc2sys: Update man page to reflect the new restriction on the PPS mode.
+  * phc2sys: Ensure PHC source when using PPS mode.
+  * phc2sys: fix BC sync fault when port in uncalibrated state
+  * phc2sys: add dbg print for clock state change events
+  * Update the unicast subscriptions when the GM changes.
+  * phc2sys: Fix regression in the automatic mode.
+  * pmc_agent: Remove an obsolete method.
+  * phc2sys: Simplify the main loop.
+  * pmc_agent: Let the update method poll for push events.
+  * phc2sys: Move static configuration to its own subroutine.
+  * phc2sys: Replace yet another magical test with a proper test.
+  * phc2sys: Replace magical test with a proper test.
+  * phc2sys: Expand the validation of the PPS mode.
+  * phc2sys: Validate the PPS mode right away.
+  * phc2sys: Replace hard coded tests with a readable helper function.
+  * phc2sys: Rename PMC agent pointer from node to agent.
+  * phc2sys: Don't duplicate the command line arguments.
+  * pmc_agent: Simplify the method that gets of the number of local ports.
+  * pmc_agent: Generalize the method that queries the local clock identity.
+  * pmc_agent: Convert the method that queries the port properties.
+  * pmc_agent: Convert the method that queries TAI-UTC offset into the canonical form.
+  * phc2sys: Fix null pointer de-reference in manual mode.
+  * rtnl: Fix trivial spelling error in the name of a helper function.
+  * Update the description of the time_stamping configuration option.
+  * Avoid setting clock frequency when free running.
+  * pmc_agent: Rename the update method and attempt to document it.
+  * pmc_agent: Perform time comparison using positive logic.
+  * pmc_agent: Remove bogus comparison between last update and now.
+  * pmc_agent: Simplify logic in update method.
+  * pmc_agent: Simplify the update method.
+  * pmc_agent: Convert the subscribe method into the canonical form.
+  * Introduce error codes for the run_pmc method.
+  * Clarify the documentation of the management TLV ID helper function.
+  * Find a better home for the management TLV data helper function.
+  * Find a better home for the management TLV ID helper function.
+  * pmc_agent: Hide the implementation.
+  * pmc_agent: Rename pmc_node to something more descriptive.
+  * Introduce the PMC agent module.
+  * phc2sys: break out pmc code into pmc_common.c
+  * phc2sys: make PMC functions non-static
+  * phc2sys: extract PMC functionality into a smaller struct pmc_node
+  * phc2sys: break long lines in the PTP management message accessors
+  * phc2sys: Postpone adding of servo to clock.
+  * phc2sys: Remove superfluous code.
+  * missing.h: uclic-ng has clock_nanosleep support since v1.0.31
+
+-------------------------------------------------------------------
+Tue Oct  5 11:41:43 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * phc2sys.service
+  * ptp4l.service
+
+-------------------------------------------------------------------
+Tue Jul 06 08:06:16 UTC 2021 - jbohac@suse.com
+
+- Update to version 3.1.1:
+  * Version 3.1.1
+  * tc: Fix length of follow-up message of one-step sync.
+  * Validate the messageLength field of incoming messages.
+
+-------------------------------------------------------------------
+Tue Nov 10 21:35:12 UTC 2020 - jbohac@suse.com
+
+- Update to version 3.1:
+  * ts2phc: nmea: Drop time of day readings older than five seconds.
+  * ts2phc: nmea: Update the leap seconds table on demand.
+  * ts2phc: nmea: Add a configuration option for the current leap seconds file.
+  * ts2phc: nmea: Add error messages for leap second lookup failures.
+  * ts2phc: nmea: Correct UTC to TAI conversion.
+  * posix_clock_open: derive PHC index from device name if possible
+  * phc_ctl: display all capability information
+  * ts2phc: Ignore pulses with invalid time stamps.
+  * ts2phc: Fix memory leak.
+  * ts2phc: Use proper close method on the error path.
+  * port: Support slave event monitoring of delay timing data.
+  * monitor: Add support for slave delay timing data TLV.
+  * pmc: Show slave receive timing data TLVs attached to signaling messages.
+  * port: Support slave event monitoring of Sync timing data.
+  * clock: Create a slave event monitor.
+  * Introduce a module for slave event monitoring.
+  * Reject path trace TLVs with excessive elements.
+  * Let the free running port state reflect the synchronization uncertain flag.
+  * pmc: Support getting and setting the local synchronization uncertain flag.
+  * Implement the synchronization uncertain flag.
+  * Add support for write phase mode.
+  * Decouple servo state from automotive profile.
+  * ts2phc: Support using a GPS radio as the master clock.
+  * Introduce a leap second table.
+  * ts2phc: Support using a PHC as the master clock.
+  * Introduce the ts2phc program.
+  * pmc: Allow multiple local subscribers.
+  * pmc: Subscribe to port state push notification events when requested.
+  * clock: reset master/local rr when best clock id changes
+  * unicast: Enable sharing master tables between ports.
+  * Accept external PHC devices from the command line.
+  * phc2sys: Fix frequency estimation when synchronizing a PHC to the system clock.
+  * Correct the signature of the legacy system offset measurement method.
+  * ptp4l: Add configuration option for socket priority
+  * sk: Recognize HWTSTAMP_FILTER_SOME
+  * Improve G.8275.[12] example configs.
+  * rtnl: add team activebackup support
+  * Ignore signaling messages on target port mismatch.
+  * Avoid fault when receiving zero length packets
+  * phc2sys: Fix crash when trying to synchronize unadjustable clock.
+  * Added support for opening POSIX clock devices
+  * Allow ignoring source port identity in end to end mode.
+  * port: correction of port name used port_open
+  * Add example configuration for Automotive Profile.
+  * Add ignore_source_id config option.
+  * Add inhibit_announce config option.
+  * Add BMCA config option.
+  * port: Add configurable option to set asCapable.
+  * timemaster: Allow ptp4l-specific sections in [ptp4l.conf].
+  * unicast: Process timeouts equal to current time.
+  * snmp4lptp: added snmp4lptp.8
+  * Add possibility to set clockIdentity
+  * Introduce the maxStepsRemoved attribute
+  * config: Add hardware time stamp filter setting mode
+  * snmp4lptp: Added function for data collection from ptp4l program.
+  * snmp4lptp: Added communication to ptp4l via the UDS port.
+  * snmp4lptp: Add snmp sub agent for linuxptp
+- re-introduce the _service file
+
+-------------------------------------------------------------------
+Wed Jul 24 12:04:35 UTC 2019 - matthias.gerstner@suse.com
+
+- removal of SuSEfirewall2 service, since SuSEfirewall2 has been replaced by
+  firewalld, see [1].
+
+  [1]: https://lists.opensuse.org/opensuse-factory/2019-01/msg00490.html
+
+-------------------------------------------------------------------
+Mon Nov 26 12:43:06 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to stable release 2.0:
+  * Peer-to-Peer Transparent Clock support
+  * End-to-End Transparent Clock support
+  * Unicast support
+  * Support for all three Telecom Profiles
+    + T-REC-G.8265.1-201407
+    + T-REC-G.8275.1-201606
+    + T-REC-G.8275.2-201708
+- Changes for version 1.9.2:
+  * Fixed stack buffer overflow in the new NetSync Monitor code (since 1.9)
+  * Command line support for every configuration variable via long options
+  * IPoIB interface support
+  * Improved Delay Request performance at high message rates
+  * Improved UTC offset tracking
+  * Multiple TLV support
+  * NetSync Monitor protocol support
+  * Peer to peer one-step
+  * Support for bonded interfaces
+- No longer use _service
+
+-------------------------------------------------------------------
+Tue Apr  3 12:27:38 UTC 2018 - jbohac@suse.com
+
+Update to version 1.9+git1.gd14f11f:
+  * Expand and rationalize time stamping options.
+  * Introduce peer to peer one step.
+  * pmc: add long options and configuration file
+  * port: Implement the NetSync Monitor protocol.
+  * Introduce an option to ignore the transport specific field.
+  * clock: add option to specify initial path delay.
+  * sk: turn warnings about unexpected RX filter into debug messages.
+
+-------------------------------------------------------------------
+Thu Feb  8 12:08:37 UTC 2018 - jbohac@suse.com
+
+- change the versioning scheme, resulting in version
+  1.8+git65.g303b08c 
+
+-------------------------------------------------------------------
+Thu Feb  8 08:51:50 UTC 2018 - mpluskal@suse.com
+
+- Update to version v1.8+git.20180101 (bsc#1050682):
+  * clock: Don't forward management requests to UDS port.
+  * Add an acknowledgment in the readme for Meinberg.
+  * phc2sys: update '-s' option
+  * sk: don't leak socket when reading of IB GUID fails.
+  * Add compile time sanity check for interface name lengths.
+  * phc_ctl: fix adj command to accept negative offset.
+  * port: return timestamping iface in port properties
+  * phc2sys: re-create clock clkid and servo when phc index changed
+  * phc2sys: split servo_add from function clock_add
+  * transport: pass struct interface to transport_open
+
+-------------------------------------------------------------------
+Thu Nov 23 13:47:15 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Mon Jul 10 11:45:01 UTC 2017 - jengelh@inai.de
+
+- Remove future goals from description.
+
+-------------------------------------------------------------------
+Fri Jun 30 06:45:51 UTC 2017 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Use url for source
+- Use kernel-devel instead full source
+
+-------------------------------------------------------------------
+Thu May 25 12:20:17 UTC 2017 - lpechacek@suse.com
+
+- upgraded to 1.8
+- new tools: timemaster, phc_ctl
+
+-------------------------------------------------------------------
+Wed Sep  3 01:41:37 CEST 2014 - ro@suse.de
+
+- sanitize release line in specfile
+
+-------------------------------------------------------------------
+Thu Mar 27 12:16:20 UTC 2014 - lpechacek@suse.com
+
+- updated How To to mention ethtool (bnc#865358)
+
+-------------------------------------------------------------------
+Wed Mar 26 16:51:51 CET 2014 - jbohac@suse.cz
+
+- convert to systemd (bnc#865355)
+  - two separate services (ptp4l and phc2sys) instead of linuxptp
+  - two separate config files:
+    /etc/syscconfig/ptp4l and /etc/sysconfig/phc2sys instead of
+    /etc/sysconfig/linuxptp
+
+-------------------------------------------------------------------
+Tue Feb 18 18:59:56 CET 2014 - jbohac@suse.cz
+
+- upgraded to 1.4
+- fixed FSF address in init file
+
+-------------------------------------------------------------------
+Fri Jul 26 10:12:08 UTC 2013 - lpechacek@suse.com
+
+- added Linux PTP Howto
+
+-------------------------------------------------------------------
+Thu Jun  6 09:26:54 UTC 2013 - lpechacek@suse.com
+
+- adjusted sysconfig defaults to match changes made to phc2sys
+  behavior
+
+-------------------------------------------------------------------
+Wed Jun  5 16:00:18 CEST 2013 - jbohac@suse.cz
+
+- upgraded to 1.2.git74e70372
+
+-------------------------------------------------------------------
+Tue Apr 23 16:50:16 CEST 2013 - jbohac@suse.cz
+
+- upgraded to 1.2
+
+-------------------------------------------------------------------
+Mon Mar 25 15:44:25 UTC 2013 - lpechacek@suse.com
+
+- reviewed by Security (bnc#809336)
+
+-------------------------------------------------------------------
+Fri Mar 15 11:23:35 UTC 2013 - cfarrell@suse.com
+
+- license update: GPL-2.0+
+  No indication of a GPL version 2 only license. Also, use SPDX format
+  where possible
+
+-------------------------------------------------------------------
+Wed Mar  6 10:44:35 UTC 2013 - lpechacek@suse.com
+
+- upgraded to 1.1
+
+-------------------------------------------------------------------
+Fri Feb 15 05:37:47 UTC 2013 - lpechacek@suse.com
+
+- initial packaging
+

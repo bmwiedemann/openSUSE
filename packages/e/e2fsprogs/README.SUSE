@@ -1,0 +1,11 @@
+e2fsprogs-devel
+---------------
+Since the e2fsprogs libraries has been split out into own packages,
+each having its own devel package
+libext2fs-devel
+libblkid-devel
+libuuid-devel
+libcom_err-devel
+the e2fsprogs-devel package is deprecated and is provided for temporary
+backwards compatibility only.
+

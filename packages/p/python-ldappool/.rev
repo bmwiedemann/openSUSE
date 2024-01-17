@@ -1,0 +1,76 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>56b497f37745bec38187d4024eecc7b5</srcmd5>
+    <version>2.4.0</version>
+    <time>1546535173</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>656811</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d0c14f7f2f75d5aee3298a7740d92bdc</srcmd5>
+    <version>2.4.1</version>
+    <time>1553809818</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.1:
+  * Various release notes and docu updates</comment>
+    <requestid>689400</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>8734ab72045ee3d56234d54fd3d13811</srcmd5>
+    <version>2.4.1</version>
+    <time>1606329034</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>850745</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>762dd0fe269a3a697b9224075b31d97a</srcmd5>
+    <version>2.4.1</version>
+    <time>1615212984</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>867327</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6dcfb748ac9230365c7766dbce68af99</srcmd5>
+    <version>3.0.0</version>
+    <time>1635366062</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.0:
+  * Remove lower-constraints, uncap PrettyTable
+  * Switch to newer openstackdocstheme and reno versions
+  * Cleanup py27 support
+  * Update hacking for Python3
+  * [ussuri][goal] Drop python 2.7 support and testing
+  * Follow the PTI for docs
+  * Add Python 3 Train unit tests
+  * Add bindep.txt
+  * Sync Sphinx requirement
+  * OpenDev Migration Patch
+  * Update the min version of tox
+  * Drop py35 jobs</comment>
+    <requestid>927593</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>59b43d4170a4171a956b06e16fe1e340</srcmd5>
+    <version>3.0.0</version>
+    <time>1638052947</time>
+    <user>dimstar_suse</user>
+    <comment>- fix requires on renamed prettytable</comment>
+    <requestid>934035</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>688a6a008020f116aada765010fbd08b</srcmd5>
+    <version>3.0.0</version>
+    <time>1669378397</time>
+    <user>dimstar_suse</user>
+    <comment>- Add remove-six-dep.patch upstream patch
+  https://review.opendev.org/c/openstack/ldappool/+/805495
+- Remove python_module macro definition
+- More specific python_sitelib in %files
+- Remove tests from package
+</comment>
+    <requestid>1038064</requestid>
+  </revision>
+</revisionlist>

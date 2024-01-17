@@ -1,0 +1,34 @@
+Fix arcdie crash when called with more then 1 variable argument
+
+Add proper vararg handling to fix crash on 64 bit machines when arcdie gets
+called with more then 1 variable argument.
+
+Signed-off-by: Hans de Goede <hdegoede@redhat.com>
+diff -up arc-5.21p/arcmisc.c~ arc-5.21p/arcmisc.c
+--- arc-5.21p/arcmisc.c~	2010-08-07 15:06:42.000000000 +0200
++++ arc-5.21p/arcmisc.c	2015-01-16 16:10:29.322603290 +0100
+@@ -4,6 +4,7 @@
+  */
+ 
+ #include <stdio.h>
++#include <stdarg.h>
+ #include <ctype.h>
+ #include "arc.h"
+ 
+@@ -223,11 +224,13 @@ upper(string)
+ }
+ /* VARARGS1 */
+ VOID
+-arcdie(s, arg1, arg2, arg3)
+-	char           *s;
++arcdie(const char *s, ...)
+ {
++	va_list args;
+ 	fprintf(stderr, "ARC: ");
+-	fprintf(stderr, s, arg1, arg2, arg3);
++	va_start(args, s);
++	vfprintf(stderr, s, args);
++	va_end(args);
+ 	fprintf(stderr, "\n");
+ #if	UNIX
+ 	perror("UNIX");

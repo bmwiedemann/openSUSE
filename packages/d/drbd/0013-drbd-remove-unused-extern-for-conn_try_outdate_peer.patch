@@ -1,0 +1,38 @@
+From 9e087399533445e3df60a34f26a1e6a285b0504a Mon Sep 17 00:00:00 2001
+From: Joel Colledge <joel.colledge@linbit.com>
+Date: Tue, 12 Sep 2023 16:36:43 +0200
+Subject: [PATCH 13/20] drbd: remove unused extern for conn_try_outdate_peer()
+
+---
+ drbd/drbd_int.h | 1 -
+ drbd/drbd_nl.c  | 2 +-
+ 2 files changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/drbd/drbd_int.h b/drbd/drbd_int.h
+index 4f3228d5a4d1..f6e7c3ac2629 100644
+--- a/drbd/drbd_int.h
++++ b/drbd/drbd_int.h
+@@ -1932,7 +1932,6 @@ extern void drbd_reconsider_queue_parameters(struct drbd_device *device,
+ 			struct drbd_backing_dev *bdev);
+ extern bool barrier_pending(struct drbd_resource *resource);
+ extern enum drbd_state_rv drbd_set_role(struct drbd_resource *, enum drbd_role, bool, struct sk_buff *);
+-extern bool conn_try_outdate_peer(struct drbd_connection *connection);
+ extern void conn_try_outdate_peer_async(struct drbd_connection *connection);
+ extern int drbd_maybe_khelper(struct drbd_device *, struct drbd_connection *, char *);
+ extern int drbd_create_peer_device_default_config(struct drbd_peer_device *peer_device);
+diff --git a/drbd/drbd_nl.c b/drbd/drbd_nl.c
+index 0a67bfa4ca52..cb5cdb184824 100644
+--- a/drbd/drbd_nl.c
++++ b/drbd/drbd_nl.c
+@@ -768,7 +768,7 @@ static bool intentional_diskless(struct drbd_resource *resource)
+ 	return intentional_diskless;
+ }
+ 
+-bool conn_try_outdate_peer(struct drbd_connection *connection)
++static bool conn_try_outdate_peer(struct drbd_connection *connection)
+ {
+ 	struct drbd_resource *resource = connection->resource;
+ 	unsigned long last_reconnect_jif;
+-- 
+2.35.3
+

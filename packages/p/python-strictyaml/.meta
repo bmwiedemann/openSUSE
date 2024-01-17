@@ -1,0 +1,5 @@
+<package name="python-strictyaml" project="openSUSE:Factory">
+  <title>python-strictyaml</title>
+  <description>Strict, typed YAML parser</description>
+  <devel project="devel:languages:python" package="python-strictyaml"/>
+</package>

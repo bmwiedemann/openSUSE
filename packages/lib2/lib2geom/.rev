@@ -1,0 +1,56 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e3eb2a120d0acdca851ff173f2246722</srcmd5>
+    <version>1.1.0</version>
+    <time>1624999404</time>
+    <user>dimstar_suse</user>
+    <comment>new, needed for inkscape</comment>
+    <requestid>902994</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d3eb5c1d0c9042e7dbf8b493021934dc</srcmd5>
+    <version>1.2.2</version>
+    <time>1673108163</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1056330</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>077f9c4b31cb48ba46d5c39a243e8466</srcmd5>
+    <version>1.2.2</version>
+    <time>1678204111</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1069530</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e67ca253444fe194a6ebb0d8ea98c0eb</srcmd5>
+    <version>1.3.0</version>
+    <time>1690654197</time>
+    <user>dimstar_suse</user>
+    <comment>- add skip_failing_tests.diff to fix instable intersection tests
+- Update to version 1.3
+  * In-place expansion of bounding boxes
+  * Enhancements to the Path class
+  * See the full release notes
+    https://gitlab.com/inkscape/lib2geom/-/releases/1.3
+</comment>
+    <requestid>1101121</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>92e4210fd04cfb572254fc9a3f881f3a</srcmd5>
+    <version>1.3.0</version>
+    <time>1693685231</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1105494</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>4f8397a33ae87b86d4489fab4b2a48bb</srcmd5>
+    <version>1.3.0</version>
+    <time>1700865266</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1128380</requestid>
+  </revision>
+</revisionlist>

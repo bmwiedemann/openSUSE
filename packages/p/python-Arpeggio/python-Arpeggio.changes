@@ -1,0 +1,144 @@
+-------------------------------------------------------------------
+Tue Jul 11 13:21:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.2:
+  * fix: drop deprecated `setup_requires` and `tests_require`
+  * fix: replace ` ` with `\n` in error reports for matches
+
+-------------------------------------------------------------------
+Thu Aug 11 09:14:13 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Disable Python2 to fix build on 15.3.
+
+-------------------------------------------------------------------
+Tue Mar 22 18:46:22 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 2.0.0:
+ - Added `eval_attrs` call to `NoMatch` exceptions ([ebfd60]). See [the
+   docs](https://textx.github.io/Arpeggio/latest/handling_errors/).
+ - Dropped support for deprecated Python versions. The lowest supported version
+   is 3.6. **(BIC)**
+
+-------------------------------------------------------------------
+Thu Dec  9 10:47:09 UTC 2021 - pgajdos@suse.com
+
+- pytest-runner is not required for build
+
+-------------------------------------------------------------------
+Sun Apr 25 13:17:14 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 1.10.2:
+ - Added EditorConfig configuration ([#77]). Thanks KOLANICH@GitHub
+ - Fixed parsing of version from `setup.py` when global encoding isn't UTF-8
+    ([#86]). Thanks neirbowj@GitHub
+ - Fix repetition termination on a successful empty separator match ([#92]).
+
+-------------------------------------------------------------------
+Sun Nov  1 19:43:14 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 1.10.1:
+ - Fix packaging, exclude examples from wheel.
+
+-------------------------------------------------------------------
+Sun Nov  1 16:56:10 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 1.10.0:
+ - Fix reporting duplicate rule names in `NoMatch` exception ([a1f14bede])
+ - Raise `AttributeError` when accessing unexisting rule name on parse tree node.
+    ([#82])
+ - Added `tree_str` method to parse tree nodes for nice string representation of
+    parse trees. ([#76])
+ - Added parse tree node suppression support and overriding of special Python
+    rule syntax. (#76)
+ - UnorderedGroup matching made deterministic ([#73])
+
+-------------------------------------------------------------------
+Wed May  6 07:06:42 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not restrict pytest 5 as we work with it
+
+-------------------------------------------------------------------
+Thu Jan  2 07:31:39 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not install examples in site-packages/examples to avoid conflicts
+
+-------------------------------------------------------------------
+Sun Oct  6 17:57:05 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 1.9.2:
+ - Added explicit Python versions in setup.py classifiers ([#65])
+ - Removed pytest version constraint and fixed tests to work with both 5.x and
+   older versions. ([#57])
+ -  https://github.com/textX/Arpeggio/issues/65
+ -  https://github.com/textX/Arpeggio/issues/57
+- update to version 1.9.1:
+ - Lowered the required pytest version for running tests as we'll still support
+   Python 2.7 until its EOL.
+ - Fixed problem with `OrderedChoice` which hasn't maintained `skipws/ws`
+   state. [#61]
+   Reported at https://github.com/textX/textX/issues/205
+ - Various fixes in the docs, docstrings and examples. Thanks mcepl@GitHub and
+   zetaraku@GitHub.
+ - docs support for different versions thanks to
+   [mike](https://github.com/jimporter/mike)
+ - https://github.com/textX/Arpeggio/issues/61
+- remvove imp-to-importlib.patch, integrated upstream
+
+-------------------------------------------------------------------
+Fri Jul 19 10:36:13 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Restrict the pytest5 for now, issue reported upstream
+
+-------------------------------------------------------------------
+Wed Jun 12 05:09:35 UTC 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update imp-to-importlib.patch to deal with irregular imports as well.
+
+-------------------------------------------------------------------
+Tue Jun 11 20:52:07 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- It's better to fix a bug, than to switch off test. Add
+  imp-to-importlib.patch replacing use of imp library in Python
+  3 with importlib. gh#textX/Arpeggio#54
+
+-------------------------------------------------------------------
+Tue Jun 11 13:14:44 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Skip one randomly failing test
+
+-------------------------------------------------------------------
+Tue Mar  5 11:55:55 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.9.0:
+  * Added `extra_info` param to `Terminal` for additional information.
+    Used by textX.
+- Switch to github tarball for tests and license content
+- Drop merged patch fix-setup-encoding.patch
+
+-------------------------------------------------------------------
+Tue Dec  4 12:45:41 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Sat Jul  7 08:11:38 UTC 2018 - sebix+novell.com@sebix.at
+
+- add fix-setup-encoding.patch to fix setup.py encoding issue
+- update to version 1.8.0:
+ - Fixed issue #43.
+   *Backward incompatible change* for cleanpeg comment syntax.
+   Please see: https://github.com/igordejanovic/Arpeggio/issues/43
+ - Added `file` parser param used for `DebugPrinter` to allow the
+   output stream to be changed from stdout. This allows doctests to
+   continue to work. Thanks ianmmoir@GitHub.
+- update to version 1.7.1:
+ - Fixed bug in comment parsing optimization.
+- update to version 1.7:
+ - Added re_flag parameter to RegExMatch constructor. Thanks Aluriak@GitHub.
+ - Fix in grammar language docs. Thanks schmittlauch@GitHub.
+ - Small fixes in examples.
+
+-------------------------------------------------------------------
+Mon Aug 28 11:48:43 UTC 2017 - sebix+novell.com@sebix.at
+
+- intial package

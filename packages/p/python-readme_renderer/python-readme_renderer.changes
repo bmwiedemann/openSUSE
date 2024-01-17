@@ -1,0 +1,176 @@
+-------------------------------------------------------------------
+Wed Dec 27 16:45:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 42.0:
+  * Migrate from ``bleach`` to ``nh3`` (#295)
+  * Migrate from ``setup.py`` to ``pyproject.toml``
+
+-------------------------------------------------------------------
+Thu Sep  7 11:38:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 41.0:
+  * Allow HTML5 `figcaption` tag through cleaner (#291)
+  * Test `README.rst` from this project (#288)
+  * Add CLI option to render package README. (#271)
+  * Adapt tests to pygments 2.14.0 (#272)
+  * Update release process to use Trusted Publishing (#276)
+  * Replace usage of deprecated `pkg_resources` with
+    `importlib.metadata` (#281)
+  * Drop support for Python 3.7 (#282), Test against Python 3.11
+    (#280)
+- drop fix-tests-pygments-2.14.0.patch (upstream)
+
+-------------------------------------------------------------------
+Fri Apr 21 12:32:44 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:44:24 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
+Wed Jan  4 16:24:09 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add fix-tests-pygments-2.14.0.patch to adapt tests to the new version of
+  pygments gh#pypa/readme_renderer#272
+
+-------------------------------------------------------------------
+Wed Nov  9 18:51:01 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 37.3 (2022-10-31)
+  * Allow HTML5 figure tag through cleaner (#265)
+
+- Update to 37.2 (2022-09-24)
+  * Allow HTML5 s tag through cleaner (#261)
+
+- Update to 37.1 (2022-09-03)
+  * Allow HTML5 nav tag through cleaner (#259)
+
+- Update to 37.0 (2022-08-21)
+  * Remove command line example from docs (#197)
+  * Multiple pyproject.toml fixes (#251)
+  * Confirm handling multiple inline strong (#252)
+  * Convert RST output to HTML5 (#253)
+  * Add Typing to classifiers (#254)
+  * Development tweaks - coverage reporting, actions updates (#255)
+  * Add test confirming behavior with unknown lexers (#256)
+
+-Update to 36.0 (2022-08-06)
+ * Enable gitpod development (#238)
+ * Allow rst admonitions to render (#242)
+ * Add badges to README (#243)
+ * Update codebase for modern Python (#244)
+ * Fix table cell spans (#245)
+ * Allow math directive in rst (#246)
+ * Preserve lang attribute in pre (#247)
+
+-------------------------------------------------------------------
+Fri Jul 15 10:07:35 UTC 2022 - Jacob Michalskie <hel@lcp.world>
+
+- Update to 35.0:
+  * works with newer versions of cmarkgfm
+
+-------------------------------------------------------------------
+Wed Feb  9 10:39:46 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- We require cmarkgfm == 0.7.0 (gh#pypa/readme_renderer#221) and
+  still we have to stkip test_md_fixtures.
+
+-------------------------------------------------------------------
+Sun Jan 16 12:48:21 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 32.0:
+  * Allow start attribute in ordered lists (#216)
+  * No limit rendering RST one column field names (#219)
+  * Render disabled checkboxes from Markdown (#217)
+  * support cmarkgfm>=0.6.0 (#209)
+- drop remove-mock.patch, remove-six.patch: upstream
+
+-------------------------------------------------------------------
+Mon Mar 22 10:45:29 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 29.0
+  * Support cmarkgfm>=0.5.0 (#180)
+  * Drop support for Python 2 and 3.5 (#188)
+- Release 28.0
+  * Support Python 3.9 (#176)
+- Release 27.0
+  * Add support for align attribute rendering Markdown headers
+    (#173)
+- Add remove-mock.patch and remove-six.patch to reduce outdated
+  dependecies -- gh#pypa/readme_renderer#192
+
+--------------------------------------------------------------------
+Mon Aug  3 11:54:02 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 26.0
+  * Fix regression with image width/height attributes
+
+-------------------------------------------------------------------
+Tue Mar 24 16:03:10 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Do not build the python2 package since Pygments, which is required
+  only builds a python3 package.
+
+-------------------------------------------------------------------
+Sun Mar 15 07:07:09 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 25.0:
+  * Fix testsuite to work with new pygments
+- Remove merged patch pygments25.patch
+
+-------------------------------------------------------------------
+Sat Mar 14 09:44:32 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to fix test fixtures with new pygments:
+  * pygments25.patch
+
+-------------------------------------------------------------------
+Sun Mar  3 09:43:05 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove bcond_with test preventing the tests from running
+- Remove unnecessary dependency on flake8
+- Increase dependency on bleach to fix test failure
+- Add cmarkgfm >= 0.2.0 from upstream
+
+-------------------------------------------------------------------
+Sun Dec 30 11:27:34 UTC 2018 - Thomas Bechtold <tbechtold@suse.com>
+
+- update to 24.0:
+  * Remove dependency on ``future``. (#134)
+  * Breaking change: Move the cmarkgfm dependency into an extra (#130). Users
+    that want to render Markdown will need to install readme_render[md] instead.
+  * Unify handling of SVG and other images in RST. (#113)
+  * Support width and alignment of images in RST (#114)
+  * Allow <caption>. (#105)
+  * Add specific tests for the raw directive. (#103)
+  * Include docinfo when rendering rst. (#99)
+  * Make Python 3 the default lexer for highlighting Python code in Markdown (#97)
+  * Allow align attribute on <p> tags (#98)
+  * Reformat docutils messages into more human-friendly output. (#92)
+  * Fix incorrect escaping of html entities in pre tags when using markdown. (#89)
+  * Allow width, height, alt, and align attributes on img tags. (#91)
+  * Fix check to not report success when there is invalid RST. (#90)
+  * Allow details and summary tags. (#77)
+  * Add .pytest_cache to .gitignore. (#85)
+  * Warn about Markdown content type when checking RST. (#83)
+  * Update pep8 tox env to use py3.6. (#84)
+  * Add Pygments-based syntax highlighting for Markdown. (#82)
+  * Update docs about check to talk about Markdown. (#80)
+  * Change Github-flavored Markdown identifier from ``gfm`` to ``GFM``.
+  * Add support for GitHub-flavored Markdown. (#67)
+  * Switch to cmarkgfm completely for rendering Markdown. (#68)
+  * Warn about missing long description. (#69)
+  * Make Github-Flavored Markdown the default variant (#73)
+  * All renderers now accept arbitrary ``kwargs`` for future-proofing.
+  * Gracefully handle new exceptions from bleach.
+  * Fix an issue cleaning plaintext values.
+  * Fix an issue attempting to clean data that had ``<a>`` tags without a href.
+- Use %license macro
+
+-------------------------------------------------------------------
+Mon Aug 14 01:35:57 UTC 2017 - toddrme2178@gmail.com
+
+- Initial version

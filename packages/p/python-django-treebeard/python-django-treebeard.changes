@@ -1,0 +1,110 @@
+-------------------------------------------------------------------
+Sat Dec 24 08:35:05 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add update-tests.patch to fix
+  gh#django-treebeard/django-treebeard#241.
+
+-------------------------------------------------------------------
+Tue Apr 26 06:43:39 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- do not require pytest-pythonpath, it gets obsolete with pytest7
+
+-------------------------------------------------------------------
+Fri Dec 24 05:47:34 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Re-enable Python 3.9
+
+-------------------------------------------------------------------
+Mon Dec 20 11:17:32 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Disabled Python 3.9
+- Upgrade to 4.5.1:
+  - Removed unnecessary default in MP's depth field.
+  - Add support for custom primary key fields with custom names.
+  - Add support for Python 3.9.
+  - Add support for MSSQL 2019.
+  - Add Code of conduct
+  - Removed outdated Sqlite workaround code
+  - Remove last remains of Python 2.7 code
+  - Use Pytest-django and fixtures for testing
+  - Implement a non-destructive path-fixing algorithm for
+    MP_Node.fix_tree.
+  - Ensure post_save is triggered after the parent node is
+    updated in MP_AddChildHandler.
+  - Fix static URL generation to use static template tag instead
+    of constructing the URL manually.
+  - Declare support for Django 2.2, 3.0 and 3.1.
+  - Drop support for Django 2.1 and lower.
+  - Drop support for Python 2.7 and Python 3.5.
+  - Increase performance for MoveNodeForm when using large trees.
+- Remove upstreamed patches
+  - merged_50489e63.patch
+  - merged_56121dca.patch
+  - merged_d6f117f0.patch
+
+-------------------------------------------------------------------
+Sat Jun 27 01:48:59 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Patch tests for Django 2.1+
+  + merged_50489e63.patch, merged_d6f117f0.patch & merged_56121dca.patch
+- Activate test suite
+
+-------------------------------------------------------------------
+Tue Mar 31 08:50:01 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v4.3.1
+
+-------------------------------------------------------------------
+Sat Sep 28 17:44:06 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 2.0b2
+  + Added support for Django 1.5 and Python 3.X
+  + Updated docs: the library supports python 2.5+ and Django 1.4+. Dropped
+    support for older versions
+  + Revamped admin interface for MP and NS trees, supporting drag&drop to reorder
+    nodes. Work on this patch was sponsored by the
+  + Updated setup.py to use distribute/setuptools instead of distutils
+  + Now using pytest for testing
+  + Small optimization to ns_tree.is_root
+  + Moved treebeard.tests to it's own directory (instead of tests.py)
+  + Added the runtests.py test runner
+  + Added tox support
+  + Fixed drag&drop bug in the admin
+  + Fixed a bug when moving MP_Nodes
+  + Using .pk instead of .id when accessing nodes.
+  + Removed the Benchmark (tbbench) and example (tbexample) apps.
+  + Fixed url parts join issues in the admin.
+  + Fixed: Now installing the static resources
+  + Fixed ManyToMany form field save handling
+  + In the admin, the node is now saved when moving so it can trigger handlers
+  and/or signals.
+  + Improved translation files, including javascript.
+  + Renamed Node.get_database_engine() to Node.get_database_vendor(). As the name
+    implies, it returns the database vendor instead of the engine used. Treebeard
+    will get the value from Django, but you can subclass the method if needed.
+- Use download url as source url
+- Add documentation from tarball
+- Remove author in description
+- Don't use --record-rpm=INSTALLED_FILES; use %{python_sitelib} in %files instead
+- Fix non-SPDX license
+
+-------------------------------------------------------------------
+Mon Jul 26 01:19:55 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 1.61.
+
+-------------------------------------------------------------------
+Mon Apr 19 14:10:10 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 1.60;
+- Spec file cleaned with spec-cleaner.
+
+-------------------------------------------------------------------
+Fri Dec 18 13:05:49 UTC 2009 - alexandre@exatati.com.br
+
+- Update to 1.52.
+
+-------------------------------------------------------------------
+Thu Dec 17 10:40:48 UTC 2009 - alexandre@exatati.com.br
+
+- Initial package (1.51) for openSUSE.

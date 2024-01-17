@@ -1,0 +1,15 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/qos-ch/cal10n.git</param>
+		<param name="revision">22c048801fb6d04c991a0c8c01bb6fb97ef50b37</param>
+		<param name="match-tag">v_*</param>
+		<param name="versionformat">@PARENT_TAG@.@TAG_OFFSET@</param>
+		<param name="versionrewrite-pattern">v_(.*)</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>

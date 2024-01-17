@@ -1,0 +1,5 @@
+<package name="wlr-randr" project="openSUSE:Factory">
+  <title>Utility to manage outputs of a Wayland compositor.</title>
+  <description></description>
+  <devel project="X11:Wayland" package="wlr-randr"/>
+</package>

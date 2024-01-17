@@ -1,0 +1,53 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>463c234ef6f5d8eccf89dc6cf73485a5</srcmd5>
+    <version>1.0</version>
+    <time>1452535878</time>
+    <user>dimstar_suse</user>
+    <comment>As this package will be required by letsencrypt, it would be great to have it in factory...</comment>
+    <requestid>351313</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5a17d68602c57f717e846b0788749176</srcmd5>
+    <version>1.0</version>
+    <time>1506108849</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>527503</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ecbe5ce6dc743235f92df2e0b857dcec</srcmd5>
+    <version>1.1</version>
+    <time>1535538401</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 1.1:
+  * packaging cleanup mostly
+  * Add :meth:`.utils.FixedOffset.__deepcopy__()` method, to prevent crash on deepcopy (:issue:`8`)</comment>
+    <requestid>631980</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>c13c63c099a5b7cdce411445fb83dee3</srcmd5>
+    <version>1.1</version>
+    <time>1622759637</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>897201</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>cc6bd594ec8af34583a385e7edb540fa</srcmd5>
+    <version>1.1</version>
+    <time>1632173590</time>
+    <user>dimstar_suse</user>
+    <comment>- Add switch-to-pytest.patch
+  * Use assert and pytest rather than nose.</comment>
+    <requestid>920218</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>cdee0fc7c0a87590141401f2696f106d</srcmd5>
+    <version>1.1</version>
+    <time>1686576372</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092367</requestid>
+  </revision>
+</revisionlist>

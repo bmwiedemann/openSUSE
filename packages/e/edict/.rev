@@ -1,0 +1,130 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>141f7a346228b8d3f654802dc3492cd6</srcmd5>
+    <version>20161126</version>
+    <time>1485250304</time>
+    <user>dimstar_suse</user>
+    <comment>restore/update edict package - license has changed for the better</comment>
+    <requestid>443074</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>68bd68127d0d95f6eb2392489df88fda</srcmd5>
+    <version>20170706</version>
+    <time>1499510106</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new daily snapshot release 20170706</comment>
+    <requestid>508734</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>708187e4062739da4ee3d426f1b8dcd0</srcmd5>
+    <version>20180305</version>
+    <time>1520329693</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to snapshot 20180305</comment>
+    <requestid>583130</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e707a3c47e91eeed653f49ad5b375d8d</srcmd5>
+    <version>20181125</version>
+    <time>1543311731</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to snapshot 20181125</comment>
+    <requestid>651898</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8cdd4fd391ef57bda42f59c6cc52b98e</srcmd5>
+    <version>20190313</version>
+    <time>1552643536</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to snapshot 20190313</comment>
+    <requestid>685156</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2363ea2d534bef65a27e9ca0f83c13b0</srcmd5>
+    <version>20191016</version>
+    <time>1578069500</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>760605</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>1287a7ccf5772370a7266bf51f6d4b3a</srcmd5>
+    <version>20191016</version>
+    <time>1581694808</time>
+    <user>okurz-factory</user>
+    <comment></comment>
+    <requestid>774281</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>8bdd2723635db5a20eefe576f8da7121</srcmd5>
+    <version>20191016</version>
+    <time>1598726015</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to snapshot 20200825</comment>
+    <requestid>829636</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>3c5f824368c6ea0785c15bb41d3606a2</srcmd5>
+    <version>20201102</version>
+    <time>1604306626</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to snapshot 20201102</comment>
+    <requestid>845306</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b0294021262a9e1ecfa1b0f53f1176df</srcmd5>
+    <version>20210429</version>
+    <time>1619729195</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to snapshot 20210429</comment>
+    <requestid>889245</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>c8f39213ec052cfc0ea08983d56ebb8e</srcmd5>
+    <version>20210429</version>
+    <time>1622536706</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to snapshot 20210529</comment>
+    <requestid>896045</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>9be7e5c876b50d526ab9afa63dffdadf</srcmd5>
+    <version>20211231</version>
+    <time>1641203376</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to snapshot 20211231</comment>
+    <requestid>943370</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>7fdc10277bc8886cf4eb4eb218fdb960</srcmd5>
+    <version>20211231</version>
+    <time>1644874567</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to snapshot 20220214</comment>
+    <requestid>954130</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>d7ef529790065cce3a5db8018ce2c228</srcmd5>
+    <version>20211231</version>
+    <time>1648916460</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to snapshot 20220402</comment>
+    <requestid>966550</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>7408c9409a71e02b7de8952e382efed5</srcmd5>
+    <version>20230411</version>
+    <time>1681213873</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to snapshot 20230411</comment>
+    <requestid>1078349</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>1dbd6127dffaae7d42f562acf1156908</srcmd5>
+    <version>20230511</version>
+    <time>1683916650</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to snapshot 20230511</comment>
+    <requestid>1086582</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,6 @@
+<package name="firejail" project="openSUSE:Factory">
+  <title>Linux namepaces sandbox program</title>
+  <description>Firejail is a SUID sandbox program that reduces the risk of security breaches by restricting the running environment of untrusted applications using Linux namespaces. It includes a sandbox profile for Mozilla Firefox.
+</description>
+  <devel project="Virtualization" package="firejail"/>
+</package>

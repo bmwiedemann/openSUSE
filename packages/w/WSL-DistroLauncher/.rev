@@ -1,0 +1,73 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c35d6cff69b659b4cd12eeccbf6cdd23</srcmd5>
+    <version>0.0.1+git20181120.d7b1f10</version>
+    <time>1579032565</time>
+    <user>dimstar_suse</user>
+    <comment>new for WSL</comment>
+    <requestid>764232</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b82eab73692b54dfc9e8f06a73e12ba9</srcmd5>
+    <version>0.0.1+git20200306.f858909</version>
+    <time>1586555641</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>792983</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>76059dc35404bdc37bb2925faa86fe8e</srcmd5>
+    <version>0.0.1+git20200306.f858909</version>
+    <time>1618061261</time>
+    <user>RBrownSUSE</user>
+    <comment>- During prerelease phases, parens around RC etc. in PRETTY_NAME
+  are not properly escaped if passed to mingw configure step.
+  * PRETTY_NAME keep only alphanum+space when passing as distro-id (forwarded request 883925 from jfkw)</comment>
+    <requestid>883926</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>43352e7684615b7f904a7d3553f66a48</srcmd5>
+    <version>0.0.1+git20200918.2ed9a93</version>
+    <time>1624813156</time>
+    <user>dimstar_suse</user>
+    <comment>- Prepare distro-id and distro_name configure variables using bash
+  subst method from obs-service-kiwi_metainfo_helper and wsl-appx.
+  * PRETTY_NAME_BEFORE_PAREN
+  * PRETTY_NAME_BEFORE_PAREN_DASHED
+
+- Update to version 0.0.1+git20200918.2ed9a93:
+  * Run yast2-firstboot instead of useradd
+  * refactor QueryUid to be reusable
+  * SUSE adjustments
+  * replace wscanf_s, seems not defined in mingw
+  * Cross compiling the launcher
+  * Add Visual Studio 2019 Community support (#74)
+  * Update platformtoolset to use v142 (#60)
+  * Update README step 5 to set TargetName instead of ProjectName (#72)
+  * Update DistroLauncher/DistroLauncher.cpp to better check wsl.exe exit code
+  * Added prompt for input when wsl.exe fails to launch Linux process
+- Drop patch files now obtained from openSUSE git repository
+  * drop 0001-Cross-compiling-the-launcher.patch
+  * drop 0002-replace-wscanf_s-seems-not-defined-in-mingw.patch
+  * drop 0003-SUSE-adjustments.patch
+  * drop 0004-refactor-QueryUid-to-be-reusable.patch
+  * drop 0005-Run-yast2-firstboot-instead-of-useradd.patch (forwarded request 902543 from jfkw)</comment>
+    <requestid>902548</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>2a8c3845957cd90783f60cd728af54c0</srcmd5>
+    <version>0.0.1+git20200918.2ed9a93</version>
+    <time>1693383664</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1107968</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2417da9067bb1705a6e04ba0a1a53062</srcmd5>
+    <version>0.0.1+git20230111.22db092</version>
+    <time>1695209248</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1112056</requestid>
+  </revision>
+</revisionlist>

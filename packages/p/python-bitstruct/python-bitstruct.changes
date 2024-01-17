@@ -1,0 +1,58 @@
+-------------------------------------------------------------------
+Wed Nov 29 12:21:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.19.0:
+  * Python 3.12 support
+  * raise minimum python version to 3.7 because of setuptools
+    compatibility
+  * try to fix pytest command
+  * do not limit max. parallel CI jobs
+  * use pytest
+  * remove verbose output
+
+-------------------------------------------------------------------
+Sun May  7 18:50:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.17.0:
+  * Text encoding and error action to unpack operations
+  * Fix memory leak
+  * Fix Text encoding and Errors to compile
+
+-------------------------------------------------------------------
+Fri Sep  9 19:22:57 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 8.15.1.
+  * support bytearray unpacking for CompiledFormats
+
+- Update to 8.15.0.
+  * support bytearray unpacking
+
+- Update to 8.14.1.
+  * c implementation: fix unpacking of truncated data in the presence of padding
+
+- Update to 8.14.0.
+  * fix segmentation faults on CI
+  * C implementation: allow partial decoding of truncated data
+  * python implementation: allow partial decoding of truncated data
+  * Test on more Python versions.
+
+- Update to 8.13.0.
+  * Use PyFloat_Pack2() on Python 3.11a7
+  * Update bitstream library.
+
+-------------------------------------------------------------------
+Fri May 21 09:39:29 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pyunittest_arch macro
+
+-------------------------------------------------------------------
+Tue Jul 21 05:57:35 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 8.11.0:
+  * Add support for copy and deepcopy inC extension.
+  * Only build C extension for CPython 3.
+
+-------------------------------------------------------------------
+Fri Apr  3 15:07:22 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 8.9.0

@@ -1,0 +1,7 @@
+<package name="drbd" project="openSUSE:Factory">
+  <title>Distributed Replicated Block Device</title>
+  <description>Drbd is a distributed replicated block device. It mirrors a block
+device over the network to another machine. Think of it as networked
+raid 1. It is a building block for setting up clusters.</description>
+  <devel project="network:ha-clustering:Factory" package="drbd"/>
+</package>

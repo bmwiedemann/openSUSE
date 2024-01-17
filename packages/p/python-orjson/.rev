@@ -1,0 +1,59 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b92cbe3daf055d29ee49bdd4400c8aa2</srcmd5>
+    <version>3.8.0</version>
+    <time>1663850984</time>
+    <user>dimstar_suse</user>
+    <comment>dep of sr#1004914</comment>
+    <requestid>1005242</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>085e7c2a232145e6b3bc29ad07157f23</srcmd5>
+    <version>3.8.1</version>
+    <time>1667067398</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032049</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>60c98752411e5c43dde6c1ede50ae8ff</srcmd5>
+    <version>3.8.3</version>
+    <time>1672754729</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.8.3:
+  * `orjson.dumps()` accepts `option=None` per `Optional[int]` type.
+  * Fix tests on 32-bit for `numpy.intp` and `numpy.uintp`.
+  * Build now depends on rustc 1.60 or later.
+  * Support building with maturin 0.13 or 0.14.</comment>
+    <requestid>1046301</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2bbd311227964854923c91f9db5bd60f</srcmd5>
+    <version>3.8.10</version>
+    <time>1681470804</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.8.10:
+  - Fix compatibility with CPython 3.12.0a7.
+  - Fix compatibility with big-endian architectures.
+  - Fix crash in serialization.
+  - Fix parallel initialization of orjson.
+</comment>
+    <requestid>1079288</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>be7f3c006262e98e1903d309daa086ee</srcmd5>
+    <version>3.8.10</version>
+    <time>1686576347</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092239</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c0dc1c435b4c072ca9b2e1d2e282fd45</srcmd5>
+    <version>3.9.10</version>
+    <time>1705353599</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1138742</requestid>
+  </revision>
+</revisionlist>

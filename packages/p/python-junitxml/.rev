@@ -1,0 +1,44 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>25e664f604c13e72d4131646989c34d1</srcmd5>
+    <version>0.7</version>
+    <time>1541079507</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix download url
+- Make tests pass junitxml-tests.patch
+- switch to singlespec
+- Add missing executable
+- Update to version 0.7:
+  + Added a .testr.conf file for running tests with testrepository.
+  + Change from skip to skipped to fit the 'standard' better.
+  + There is now a runner compatible with the unittest2 command line options, for
+    easy 'just give me XML' usage.
+- Initial version
+</comment>
+    <requestid>645725</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f44628ac06ca86b1ebd16ce099948e35</srcmd5>
+    <version>0.7</version>
+    <time>1591879564</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>812934</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>b46d4dbea7c9773a1bb108343f9334d6</srcmd5>
+    <version>0.7</version>
+    <time>1636577164</time>
+    <user>dimstar_suse</user>
+    <comment>- add xml dependencies</comment>
+    <requestid>930175</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>e57bb6d5a70ef79933cbe46edab2154b</srcmd5>
+    <version>0.7</version>
+    <time>1642029732</time>
+    <user>dimstar_suse</user>
+    <comment>- add python-rpm-macros dependency</comment>
+    <requestid>945679</requestid>
+  </revision>
+</revisionlist>

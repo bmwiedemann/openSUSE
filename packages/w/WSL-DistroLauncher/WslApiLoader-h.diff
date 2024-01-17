@@ -1,0 +1,15 @@
+--- DistroLauncher/WslApiLoader.h.smb	2023-09-11 13:14:00.964544481 -0400
++++ DistroLauncher/WslApiLoader.h	2023-09-11 13:15:36.563923516 -0400
+@@ -11,6 +11,12 @@
+ #define ERROR_LINUX_SUBSYSTEM_NOT_PRESENT 414L
+ #endif // !ERROR_LINUX_SUBSYSTEM_NOT_PRESENT
+ 
++// See:   https://docs.microsoft.com/en-us/virtualization/api/hcs/reference/hcshresult
++// Also:  https://github.com/microsoft/WSL-DistroLauncher/issues/103
++#ifndef HCS_E_HYPERV_NOT_INSTALLED
++#define HCS_E_HYPERV_NOT_INSTALLED _HRESULT_TYPEDEF_(0x80370102L)
++#endif // !HCS_E_HYPERV_NOT_INSTALLED
++
+ typedef BOOL    (STDAPICALLTYPE* WSL_IS_DISTRIBUTION_REGISTERED)(PCWSTR);
+ typedef HRESULT (STDAPICALLTYPE* WSL_REGISTER_DISTRIBUTION)(PCWSTR, PCWSTR);
+ typedef HRESULT (STDAPICALLTYPE* WSL_CONFIGURE_DISTRIBUTION)(PCWSTR, ULONG, WSL_DISTRIBUTION_FLAGS);

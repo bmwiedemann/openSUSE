@@ -1,0 +1,36 @@
+diff -Ndur kde-dev-scripts-4.14.3/build-progress.sh kde-dev-scripts-4.14.3-fix-bashisms/build-progress.sh
+--- kde-dev-scripts-4.14.3/build-progress.sh	2014-08-07 01:27:53.000000000 +0300
++++ kde-dev-scripts-4.14.3-fix-bashisms/build-progress.sh	2014-11-23 07:41:50.639487523 +0200
+@@ -5,7 +5,7 @@
+ # <malte@kde.org> for the code :-)
+ set_title() {
+ if ([ "$TERM" = "xterm" ] || [ "$TERM" = "xterm-color" ] || [ "$TERM" = "screen" ]) && tty -s; then
+-  echo -ne "\033]0;$1\007"
++  printf "\033]0;$1\007"
+ fi
+ }
+ . ./kde-buildrc
+diff -Ndur kde-dev-scripts-4.14.3/cheatmake kde-dev-scripts-4.14.3-fix-bashisms/cheatmake
+--- kde-dev-scripts-4.14.3/cheatmake	2014-08-07 01:27:53.000000000 +0300
++++ kde-dev-scripts-4.14.3-fix-bashisms/cheatmake	2014-11-23 07:41:13.496485515 +0200
+@@ -31,7 +31,7 @@
+ fi
+ cd $builddir
+ srcdir=`egrep '^srcdir *=' Makefile | sed -e "s#srcdir *= *##"`
+-UNSERMAKE=`type -p unsermake`
++type unsermake >/dev/null 2>&1 && UNSERMAKE=unsermake || UNSERMAKE=
+ using_unsermake=
+ if head -n 1 Makefile | grep unsermake >/dev/null; then
+     using_unsermake=new
+diff -Ndur kde-dev-scripts-4.14.3/cvsaddcurrentdir kde-dev-scripts-4.14.3-fix-bashisms/cvsaddcurrentdir
+--- kde-dev-scripts-4.14.3/cvsaddcurrentdir	2014-08-07 01:27:53.000000000 +0300
++++ kde-dev-scripts-4.14.3-fix-bashisms/cvsaddcurrentdir	2014-11-23 07:38:19.784476123 +0200
+@@ -17,7 +17,7 @@
+ echo
+ read answer"?Add file $file to cvs ? (y/n) " rest
+ #if [ "$answer" != "y" ]; then echo $file; fi
+-if [ "$answer" == "y" ]; then cvs add $file; fi
++if [ "$answer" = "y" ]; then cvs add $file; fi
+ }
+ 
+ 

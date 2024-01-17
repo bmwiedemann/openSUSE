@@ -1,0 +1,33 @@
+From 69d9286628b730870665cd2c6f05dd9f1813c65e Mon Sep 17 00:00:00 2001
+From: Philipp Reisner <philipp.reisner@linbit.com>
+Date: Sun, 17 Sep 2023 22:21:11 +0800
+Subject: [PATCH 16/20] drbd: Fix `net-options --set-defaults` to not clear the
+ transport
+
+So far, `drbdsetup net-options --set-defaults` cleared the
+transport_name. That is a stupid bug that caused `drbdadm adjust` to
+do a disconnect/connect cycle. This affected `lb-tcp` and `rdma`. As
+`tcp` is the default, it was not affected by this.
+---
+ drbd/drbd_nl.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/drbd/drbd_nl.c b/drbd/drbd_nl.c
+index 8c968cf252ca..b0a1e6fa46f1 100644
+--- a/drbd/drbd_nl.c
++++ b/drbd/drbd_nl.c
+@@ -3729,6 +3729,11 @@ int drbd_adm_net_opts(struct sk_buff *skb, struct genl_info *info)
+ 	if (should_set_defaults(info))
+ 		set_net_conf_defaults(new_net_conf);
+ 
++	/* The transport_name is immutable taking precedence over set_net_conf_defaults() */
++	memcpy(new_net_conf->transport_name, old_net_conf->transport_name,
++	       old_net_conf->transport_name_len);
++	new_net_conf->transport_name_len = old_net_conf->transport_name_len;
++
+ 	err = net_conf_from_attrs_for_change(new_net_conf, info);
+ 	if (err && err != -ENOMSG) {
+ 		retcode = ERR_MANDATORY_TAG;
+-- 
+2.35.3
+

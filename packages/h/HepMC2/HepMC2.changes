@@ -1,0 +1,48 @@
+-------------------------------------------------------------------
+Sun Mar 14 13:15:51 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Remove conflicts with HepMC.
+
+-------------------------------------------------------------------
+Tue Jul 14 20:29:31 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.06.11:
+  * HepMC/HepMCDefs.h: Add a HEPMC_HAS_ORDERED_WEIGHTS #define.
+  * HepMC/WeightContainer.h: Add weights() and weight_names()
+    public methods.
+  * src/WeightContainer.cc: Fix print() to use canonical weight
+    ordering.
+  * src/GenEventStreamIO.cc: Fix the I/O streaming to preserve the
+    weight ordering.
+  * Fixed the tests.
+- Use %license for COPYING file.
+- Minor updates to spec file.
+- Update URL and Source Url to new upstream website.
+
+-------------------------------------------------------------------
+Tue Sep  5 23:20:53 UTC 2017 - jengelh@inai.de
+
+- Trim description for size (like was already done for HepMC
+  1st Generation).
+
+-------------------------------------------------------------------
+Tue Sep  5 13:12:09 UTC 2017 - badshah400@gmail.com
+
+- Fix shared lib Group, should be System/Libraries.
+
+-------------------------------------------------------------------
+Fri Sep  1 09:19:53 UTC 2017 - badshah400@gmail.com
+
+- Add explicit Conflicts between HepMC2-devel and HepMC-devel > 3,
+  make HepMC2-devel provide HepMC-devel = %{version}.
+
+-------------------------------------------------------------------
+Sat Aug  5 16:07:08 UTC 2017 - badshah400@gmail.com
+
+- Adapt to using HepMC2 as package name.
+
+-------------------------------------------------------------------
+Sat Aug  5 14:19:07 UTC 2017 - badshah400@gmail.com
+
+- Initial version (copy from HepMC = 2.06.09).
+

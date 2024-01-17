@@ -1,0 +1,47 @@
+From 67ac093d6dc176fd6a3bf0c7f5a3ad046d48f558 Mon Sep 17 00:00:00 2001
+From: Lars Ellenberg <lars.ellenberg@linbit.com>
+Date: Wed, 6 Sep 2023 14:38:32 +0200
+Subject: [PATCH 04/20] drbd: build: fix spurious re-build attempt of
+ compat.patch
+
+Patching changed the timestamp of the patched files,
+which are pre-requisites for generating the patch.
+
+The second build after extracting the tarball
+would try to regenerate the patch file.
+
+Exclude generated *.mod.c from "to-be-patched" files for spatch.
+Reset timestamp of patched files to that of the patch file, instead of current time.
+---
+ drbd/Kbuild   | 1 +
+ drbd/Makefile | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/drbd/Kbuild b/drbd/Kbuild
+index 1576dc19e1da..073469ae4191 100644
+--- a/drbd/Kbuild
++++ b/drbd/Kbuild
+@@ -110,6 +110,7 @@ filechk_compat.h = cat $(obj)/compat.$(KERNELVERSION).h
+ $(src)/.compat_patches_applied: $(src)/drbd-kernel-compat/compat.patch
+ 	@$(kecho) '  PATCH'
+ 	@patch -d $(src) -p0 --batch --forward --reject-file=- < $(src)/drbd-kernel-compat/compat.patch
++	@cd $(src) && p=drbd-kernel-compat/compat.patch && sed -ne 's/^--- //p' < $$p | xargs -r -- touch -r $$p
+ 	@cp -d $(src)/drbd-kernel-compat/compat.patch $(src)/.compat_patches_applied
+ 
+ $(src)/drbd-kernel-compat/compat.patch: $(obj)/compat.h
+diff --git a/drbd/Makefile b/drbd/Makefile
+index 09a1efbf7fe1..ecdff04b9808 100644
+--- a/drbd/Makefile
++++ b/drbd/Makefile
+@@ -170,7 +170,7 @@ else
+   compat_headers := $(wildcard drbd-kernel-compat/cocci_cache/*/compat.h)
+   compat_patches := $(patsubst %.h,%.patch,$(compat_headers))
+ 
+-  sources := $(filter-out drbd_strings.c drbd_buildtag.c,$(wildcard *.c))
++  sources := $(filter-out drbd_strings.c drbd_buildtag.c drbd%.mod.c,$(wildcard *.c))
+   sources += $(wildcard drbd-headers/linux/*.h)
+ 
+   $(compat_patches): $(sources)
+-- 
+2.35.3
+

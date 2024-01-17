@@ -1,0 +1,11 @@
+--- pam_mktemp-1.1.1/pam_mktemp.c.orig	2011-10-13 13:38:16.000000000 -0400
++++ pam_mktemp-1.1.1/pam_mktemp.c	2011-10-13 13:40:35.000000000 -0400
+@@ -28,6 +28,8 @@
+ #ifndef HAVE_APPEND_FL
+ # ifdef __linux__
+ #  define HAVE_APPEND_FL 1
++/* ppc64 headers need it currently for some reason or other */
++#  define u32 unsigned int
+ # endif /* __linux__ */
+ #endif /* ! HAVE_APPEND_FL */
+ 

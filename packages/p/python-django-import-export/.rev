@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6578d6086d3b46ac8f1ebb67d59830ee</srcmd5>
+    <version>2.4.0</version>
+    <time>1607017349</time>
+    <user>dimstar_suse</user>
+    <comment>common drop-in addition to any Django site</comment>
+    <requestid>852679</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2bce9bc5f8f03c0b4d02f70fc90cd120</srcmd5>
+    <version>2.5.0</version>
+    <time>1610558549</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>862656</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>1dedc0c97443caace6daaed164e4037c</srcmd5>
+    <version>2.5.0</version>
+    <time>1621531518</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>894542</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>05d97454cf06397b29d775dd798b781e</srcmd5>
+    <version>2.7.1</version>
+    <time>1640529038</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>942603</requestid>
+  </revision>
+</revisionlist>

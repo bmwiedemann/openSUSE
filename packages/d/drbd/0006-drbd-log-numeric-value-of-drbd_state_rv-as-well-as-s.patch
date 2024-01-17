@@ -1,0 +1,82 @@
+From 8c2c783a09d81f0a725e7a3ae48be4ceb2d79a63 Mon Sep 17 00:00:00 2001
+From: Joel Colledge <joel.colledge@linbit.com>
+Date: Fri, 8 Sep 2023 11:26:01 +0200
+Subject: [PATCH 06/20] drbd: log numeric value of drbd_state_rv as well as
+ string form
+
+"Auto-promote failed: ?" was seen in a log. Logging the numeric value of
+the state change return value gives us more information about what
+happened in such a case.
+---
+ drbd/drbd_main.c     | 8 ++++----
+ drbd/drbd_receiver.c | 6 +++---
+ drbd/drbd_state.c    | 3 ++-
+ 3 files changed, 9 insertions(+), 8 deletions(-)
+
+diff --git a/drbd/drbd_main.c b/drbd/drbd_main.c
+index 810df864f60b..e26cf7e2b008 100644
+--- a/drbd/drbd_main.c
++++ b/drbd/drbd_main.c
+@@ -2698,8 +2698,8 @@ static int drbd_open(struct block_device *bdev, fmode_t mode)
+ 			if (resource->role[NOW] == R_SECONDARY) {
+ 				rv = try_to_promote(device, timeout, (mode & FMODE_NDELAY));
+ 				if (rv < SS_SUCCESS)
+-					drbd_info(resource, "Auto-promote failed: %s\n",
+-						  drbd_set_st_err_str(rv));
++					drbd_info(resource, "Auto-promote failed: %s (%d)\n",
++						  drbd_set_st_err_str(rv), rv);
+ 			}
+ 		} else if ((mode & FMODE_NDELAY) == 0) {
+ 			/* Double check peers
+@@ -2856,8 +2856,8 @@ static void drbd_release(struct gendisk *gd, fmode_t mode)
+ 		    !test_bit(EXPLICIT_PRIMARY, &resource->flags)) {
+ 			rv = drbd_set_role(resource, R_SECONDARY, false, NULL);
+ 			if (rv < SS_SUCCESS)
+-				drbd_warn(resource, "Auto-demote failed: %s\n",
+-					  drbd_set_st_err_str(rv));
++				drbd_warn(resource, "Auto-demote failed: %s (%d)\n",
++					  drbd_set_st_err_str(rv), rv);
+ 		}
+ 	}
+ 
+diff --git a/drbd/drbd_receiver.c b/drbd/drbd_receiver.c
+index 95cf7ac36762..2162d13cb25e 100644
+--- a/drbd/drbd_receiver.c
++++ b/drbd/drbd_receiver.c
+@@ -983,8 +983,8 @@ static int connect_work(struct drbd_work *work, int cancel)
+ 		drbd_send_disconnect(connection);
+ 		apply_local_state_change(connection, OUTDATE_DISKS_AND_DISCONNECT, force_demote);
+ 	} else {
+-		drbd_info(connection, "Failure to connect %d %s; retrying\n",
+-			  rv, drbd_set_st_err_str(rv));
++		drbd_info(connection, "Failure to connect: %s (%d); retrying\n",
++			  drbd_set_st_err_str(rv), rv);
+ 		change_cstate(connection, C_NETWORK_FAILURE, CS_HARD);
+ 	}
+ 
+@@ -6107,7 +6107,7 @@ out:
+ 	}
+ 
+ 	if (rv < SS_SUCCESS) {
+-		drbd_err(resource, "State change failed: %s\n", drbd_set_st_err_str(rv));
++		drbd_err(resource, "State change failed: %s (%d)\n", drbd_set_st_err_str(rv), rv);
+ 		if (rv == SS_PRIMARY_READER)
+ 			log_openers(resource);
+ 	}
+diff --git a/drbd/drbd_state.c b/drbd/drbd_state.c
+index 8b60afeb097b..23eab7f867aa 100644
+--- a/drbd/drbd_state.c
++++ b/drbd/drbd_state.c
+@@ -791,7 +791,8 @@ static enum drbd_state_rv ___end_state_change(struct drbd_resource *resource, st
+ 		rv = try_state_change(resource);
+ 	if (rv < SS_SUCCESS) {
+ 		if (flags & CS_VERBOSE) {
+-			drbd_err(resource, "State change failed: %s\n", drbd_set_st_err_str(rv));
++			drbd_err(resource, "State change failed: %s (%d)\n",
++					drbd_set_st_err_str(rv), rv);
+ 			print_state_change(resource, "Failed: ");
+ 		}
+ 		goto out;
+-- 
+2.35.3
+

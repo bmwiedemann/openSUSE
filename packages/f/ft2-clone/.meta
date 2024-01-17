@@ -1,0 +1,5 @@
+<package name="ft2-clone" project="openSUSE:Factory">
+  <title>Fasttracker II clone</title>
+  <description>Multi-platform clone of the classic music making software Fasttracker II. It can load XM, MOD, S3M, STM module files.</description>
+  <devel project="multimedia:apps" package="ft2-clone"/>
+</package>

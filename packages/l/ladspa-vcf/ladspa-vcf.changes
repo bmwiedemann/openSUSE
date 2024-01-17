@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Mon Mar  3 13:54:41 CET 2014 - tiwai@suse.de
+
+- Run spec-cleaner
+- Remove obsoleted autoreq/autoprov tags
+- Patch carried from the original ladspa package:
+  vcf-Makefile.dif
+
+-------------------------------------------------------------------
+Mon Dec 16 14:46:32 CET 2013 - tiwai@suse.de
+
+- Initial version 0.0.5: split from ladspa package
+

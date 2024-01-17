@@ -1,0 +1,7 @@
+<package name="perl-XML-DOM" project="openSUSE:Factory">
+  <title>Perl module for building DOM Level 1 compliant document structures</title>
+  <description>This module extends the XML::Parser module by Clark Cooper. The XML::Parser
+module is built on top of XML::Parser::Expat, which is a lower level
+interface to James Clark's expat library.</description>
+  <devel project="devel:languages:perl" package="perl-XML-DOM"/>
+</package>

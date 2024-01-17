@@ -1,0 +1,40 @@
+diff --git a/biz.aQute.bndlib/src/aQute/bnd/osgi/Jar.java b/biz.aQute.bndlib/src/aQute/bnd/osgi/Jar.java
+index 10ec3fd0..7dd75418 100644
+--- a/biz.aQute.bndlib/src/aQute/bnd/osgi/Jar.java
++++ b/biz.aQute.bndlib/src/aQute/bnd/osgi/Jar.java
+@@ -114,7 +114,7 @@ public class Jar implements Closeable {
+ 	private String												lastModifiedReason;
+ 	private boolean												doNotTouchManifest;
+ 	private boolean												nomanifest;
+-	private boolean												reproducible;
++	private boolean												reproducible = true;
+ 	private Compression											compression				= Compression.DEFLATE;
+ 	private boolean												closed;
+ 	private String[]											algorithms;
+diff --git a/biz.aQute.bndlib/src/aQute/bnd/osgi/Macro.java b/biz.aQute.bndlib/src/aQute/bnd/osgi/Macro.java
+index e9ecd39e..f7f83d83 100644
+--- a/biz.aQute.bndlib/src/aQute/bnd/osgi/Macro.java
++++ b/biz.aQute.bndlib/src/aQute/bnd/osgi/Macro.java
+@@ -904,6 +904,10 @@ public class Macro {
+ 			reporter.warning("Too many arguments for tstamp: %s", Arrays.toString(args));
+ 		}
+ 
++		if (System.getenv("SOURCE_DATE_EPOCH") != null) {
++			now = 1000 * Long.parseLong(System.getenv("SOURCE_DATE_EPOCH"));
++		}
++
+ 		SimpleDateFormat sdf = new SimpleDateFormat(format, Locale.US);
+ 		sdf.setTimeZone(tz);
+ 		return sdf.format(new Date(now));
+@@ -922,6 +926,11 @@ public class Macro {
+ 		} else {
+ 			now = System.currentTimeMillis();
+ 		}
++
++		if (System.getenv("SOURCE_DATE_EPOCH") != null) {
++			now = 1000 * Long.parseLong(System.getenv("SOURCE_DATE_EPOCH"));
++		}
++
+ 		return now;
+ 	}
+ 

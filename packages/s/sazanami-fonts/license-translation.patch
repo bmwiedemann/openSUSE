@@ -1,0 +1,137 @@
+diff -Nru sazanami-20040629/doc/ayu/README-en.txt sazanami-20040629.new/doc/ayu/README-en.txt
+--- sazanami-20040629/doc/ayu/README-en.txt	1970-01-01 01:00:00.000000000 +0100
++++ sazanami-20040629.new/doc/ayu/README-en.txt	2004-08-06 13:20:17.000000000 +0200
+@@ -0,0 +1,27 @@
++English translation of the Japanese README.txt:
++Fri Aug  6 12:14:00 2004  Mike FABIAN  <mfabian@suse.de>
++
++
++                     Ayu Bitmap Font
++                                               After X-TT Project
++
++  The Ayu bitmap font is an improved version of the 20 dot Kappa
++bitmap font and has been created as a subset of the Kochi font.
++Apart from the Greek and Cyrillic glyphs, the bitmaps for the
++non-Kanji part have been created from the outlines of the Kochi-subst
++font and refined manually with a font editor.
++
++  The 20 dot gothic version of the Ayu font has been created
++in May and June 2003, the 18 dot gothic version has been created from
++1st of July 2003 until 10th of February 2004. Since then,
++tuning and refinement continues.
++
++   
++  We express our gratitute to Mr. Kano, the author of the Kappa font
++which has been used as the base, to Mr. Furukawa who created the
++non-Kanji outlines of the Kochi-subst font and to all others
++who helped with this software.
++
++  The Ayu bitmap font is public domain. Commercial use, non-commercial
++use, all changes to the font, reproduction, distribution is free.
++
+diff -Nru sazanami-20040629/doc/mplus/LICENSE_English sazanami-20040629.new/doc/mplus/LICENSE_English
+--- sazanami-20040629/doc/mplus/LICENSE_English	1970-01-01 01:00:00.000000000 +0100
++++ sazanami-20040629.new/doc/mplus/LICENSE_English	2004-08-06 15:04:55.464524000 +0200
+@@ -0,0 +1,16 @@
++English translation of the Japanese LICENSE_J file:
++Fri Aug  6 15:00:21 2004  Mike FABIAN  <mfabian@suse.de>
++
++-
++M+ BITMAP FONTS            Copyright 2002-2004  COZ <coz@users.sourceforge.jp>
++-
++
++LICENSE
++
++
++
++These fonts are free software.
++They can be changed without any restrictions and they can be freely
++used including commercial use.
++Reproduction and redistribution is allowed but always without
++any guarantee.
+diff -Nru sazanami-20040629/doc/oradano/README-en.txt sazanami-20040629.new/doc/oradano/README-en.txt
+--- sazanami-20040629/doc/oradano/README-en.txt	1970-01-01 01:00:00.000000000 +0100
++++ sazanami-20040629.new/doc/oradano/README-en.txt	2004-08-06 16:27:33.735876000 +0200
+@@ -0,0 +1,57 @@
++English translation of README.txt        -*- coding: utf-8 -*-
++Fri Aug  6 15:08:17 2004  Mike FABIAN  <mfabian@suse.de>
++----------------------------------------------------------------------
++About the ORADANO Mincho font Ver. 0.2003.1026
++
++October 26th, 2003.
++Akira? UCHIDA (内田明)
++<uchida@happy.email.ne.jp>
++
++
++- What is the ORADANO Mincho font?
++
++The ORADANO Mincho font is a font being created by Mr. Uchida aiming
++to cover all non-kanji from JIS X 0213:2000 and most of the kanji.
++
++The outlines for the Kana glyphs and the related symbols in this font
++are created by Mr. Uchida based on the "size five" typeface which was
++used for printing and sold by the Toukyou-Tsukiji printing factory
++during the years 30-31 of the Meiji era [1].  The other non-kanji
++glyphs are an original design by Mr. Uchida.
++
++The outlines for the kanji glyphs in this font have been drawn by
++Mr. Uchida while consulting the glyphs from the general sample
++catalogue of "size five" mincho type face glyphs published in the year
++2 of the Taishou era (1912 - 1926) by the Toukyou-Tsujiki printing
++factory which are recorded in the "Mincho type face character style
++table" of the Japanese Agency for Cultural Affairs.
++
++- usage of the ORADANO Mincho font
++
++Everybody can use this font free of charge for printing, display,
++embedding into electronic texts and similar purposes.  This font may
++be distributed and redistributed freely without having to pay any
++royalties. This font may also be bundled with other software which is
++sold. This font may also be used to develop new fonts.
++
++- exemption from responsibility
++
++The ORADANO mincho font is offered "as is". Neither the creator nor
++the redistributor give any guarantee concerning the quality, the
++usefulness or the suitability for public and personal standards and
++language customs.  Any damage which occurs due to the use of this font
++is solely the problem of the user.  Even if they know about
++possibilities to inflict damage, the creator and the redistributor
++will not take any legal and moral responsibilities.  If this font is
++proved to be defective, the creator and the redistributor have no
++obligation neither to fix it nor to announce it.
++
++
++Translation notes:
++
++[1] The Meiji Era (明治時代 1868-1912) denotes the reign of the Meiji
++Emperor. I.e. the year 30 of the Meiji era is 1898 in the western
++calendar).
++
++[2] Taishou Era (大正時代 1912 - 1926). I.e. the year 2 of the
++Taishou Era is 1914.
+\ ファイル末尾に改行がありません
+diff -Nru sazanami-20040629/doc/shinonome/LICENSE-en sazanami-20040629.new/doc/shinonome/LICENSE-en
+--- sazanami-20040629/doc/shinonome/LICENSE-en	1970-01-01 01:00:00.000000000 +0100
++++ sazanami-20040629.new/doc/shinonome/LICENSE-en	2004-08-06 16:33:42.061909000 +0200
+@@ -0,0 +1,20 @@
++English translation of LICENSE:
++Fri Aug  6 16:28:21 2004  Mike FABIAN  <mfabian@suse.de>
++----------------------------------------------------------------------
++
++- License of the Shinonome font
++                                                                    2001
++                                     The Electronic Font Open Laboratory
++                                        http://openlab.ring.gr.jp/efont/
++
++All font data, documents and scripts in this archive are
++offered as Public Domain.
++
++But, as it is currently not possible in Japan to abandon the copyright
++according to the law, the authors who are listed in the AUTHORS file
++declare herewith not to use this right to to make it essentially
++Public Domain.
++
++It can be freely changed, converted into other formats, integrated
++and redistributed. At the same time, there is no guarantee of any
++kind.

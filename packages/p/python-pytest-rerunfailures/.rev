@@ -1,0 +1,142 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>477f5d63c621016bb99a5346a29be974</srcmd5>
+    <version>5.0</version>
+    <time>1543591959</time>
+    <user>dimstar_suse</user>
+    <comment>Rerun tests on failure</comment>
+    <requestid>652701</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d45373cafe9fe7036e5e6b4a61ebd544</srcmd5>
+    <version>6.0</version>
+    <time>1551113500</time>
+    <user>coolo</user>
+    <comment>- Enable tests really
+- Update to 6.0:
+  * Drop support for pytest version 3.6 and 3.7.
+  * Add support for pytest version 4.0 and 4.1.
+  * Fixed #77 regression issue introduced in 4.2 related to the rerun attribute on the test report. (#77) (Thanks to @RibeiroAna for the PR).</comment>
+    <requestid>676366</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>163ef61e644b35c97f4fa5eb24abc14c</srcmd5>
+    <version>7.0</version>
+    <time>1553809788</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.0:
+  * Drop support for pytest version 3.8 and 3.9.
+  * Add support for pytest version 4.2 and 4.3.
+  * Fixed #83 issue about ignored pytest_runtest_logfinish hooks</comment>
+    <requestid>689361</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>dfbfe6591525b729b6ab6241b269b6f9</srcmd5>
+    <version>8.0</version>
+    <time>1575464180</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 8.0:
+  * Explicitly depend on setuptools to ensure installation when
+    working in environments without it</comment>
+    <requestid>753967</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5141a03378e02c3d6cf96f35961ba67c</srcmd5>
+    <version>9.0</version>
+    <time>1584964318</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 9.0:
+  * Add support for pytest 5.4.
+  * Add support for Python 3.8.
+  * Drop support for python 2.7</comment>
+    <requestid>787374</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>120f253eaa3e107c0ac9d4ccb85dbfd2</srcmd5>
+    <version>9.1.1</version>
+    <time>1604865553</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>846883</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>fe40ff9ac55ac8559ef799bdd165c2af</srcmd5>
+    <version>10.2</version>
+    <time>1650735913</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>965763</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>19f66c7c2a624370076feafccfbf59dd</srcmd5>
+    <version>10.2</version>
+    <time>1682434408</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082429</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>484aad5cc0b0ccae536030bbebe7744e</srcmd5>
+    <version>11.1.2</version>
+    <time>1683728244</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 11.1.2:
+  * Execute teardown when test was skipped in setup phase of a
+    fixture.
+  * Fix crash during teardown when runtest protocol hook is
+    overwritten by another plugin.
+  * Fix crash during teardown when TestCase class is used as base
+    class.
+  * Run teardown of session, class, ... scoped fixtures only once
+    after rerunning tests
+  * Expose `reruns` and `reruns_delay` through `pytest.ini` file.
+  * Drop support for Python 3.6.
+  * Drop support for pytest &lt; 6.
+  * Fix crash when pytest-xdist is installed but disabled.
+  * Fix crash when xfail(strict=True) mark is used with --rerun-
+    only flag.
+  * Added option `--rerun-except` to rerun failed tests those are
+    other than the mentioned Error.
+  * Add support for Python 3.11.
+  * Add support for pytest 7.0, 7.1, 7.2.</comment>
+    <requestid>1085836</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8966b485eb1d2669cfa9925a1d476b34</srcmd5>
+    <version>12.0</version>
+    <time>1690370503</time>
+    <user>anag+factory</user>
+    <comment>- update to 12.0:
+  * Drop support for pytest &lt; 6.2.
+  * Add ``only_rerun`` and ``rerun_except`` arguments to
+    ``@pytest.mark.flaky`` marker.
+  * Add support for pytest 7.3, 7.4.
+  * Failures are now rerun only if they match at least one
+    ``--only-rerun`` pattern (if given) and none of the 
+    ``--rerun-except`` patterns. Previously, using both 
+    ``--only-rerun`` and ``--rerun-except`` together
+    could cause failures to be rerun even if they did not
+    match any ``--only-rerun`` pattern, and when using
+    multiple ``--rerun-except`` patterns, all failures
+    would be rerun unless they matched every pattern.</comment>
+    <requestid>1100456</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f5412feb0463eb90b78a4ef355045e34</srcmd5>
+    <version>13.0</version>
+    <time>1702673165</time>
+    <user>anag+factory</user>
+    <comment>- update to 13.0:
+  * Drop support for pytest &lt; 7.0.
+  * Add support for Python 3.12.
+  * Fix crashitem names mismatch between client and server.
+  * Fix crash when setup fails with --rerun-except flag.
+
+    ``--only-rerun`` pattern (if given) and none of the
+    ``--rerun-except`` patterns. Previously, using both
+    pytest &gt;= 6.1.0, as it was removed there. This is a quick fix,
+  * Add a new flag --only-rerun to allow for users to rerun only
+    (PR from @gnikonorov)</comment>
+    <requestid>1133200</requestid>
+  </revision>
+</revisionlist>

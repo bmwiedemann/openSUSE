@@ -1,0 +1,89 @@
+-------------------------------------------------------------------
+* Wed Oct 11 12:08:24 UTC 2023 - Luca Boccassi <bluca@debian.org>
+
+- Update to new version 1.4.0:
+  - Implement API for convenient asynchronous property get/set on the client-side
+  - Add support for FreeBSD systems (including support for basu implementation of sd-bus on non-systemd machines)
+  - Add support for direct, peer-to-peer connections
+  - Add option to create IConnection directly from an underlying sd_bus instance
+  - Some additional CMake-related and code bug fixes
+
+-------------------------------------------------------------------
+* Sat Aug 26 21:28:47 UTC 2023 - Luca Boccassi <bluca@debian.org>
+
+- Update to new version 1.3.0:
+  - Add support for light-weight proxies (proxies without own event loop threads)
+  - Extend documentation with explicit mapping between D-Bus and corresponding C++ types
+  - Support move semantics in generated adaptor and proxy classes
+  - Adaptations for libsystemd v251
+  - Fix for proper complete sending of long D-Bus messages by explicitly flushing them
+  - Add support for std::future-based async calls
+  - Fix race condition in async Proxy::callMethod
+  - Fix pseudo-connection static lifetime issue with Phoenix pattern
+  - Speed up performance of of serialization of arrays of trivial D-Bus types
+  - Make sdbus::Struct a tuple-like class, so it's usable wherever std::tuple is
+  - Add support for std::array, std::span and std::unordered_map as additional C++ types for D-Bus array types
+  - Add support for libelogind as an addition to libsystemd
+  - Add support for std::future-based async methods in codegen tool
+  - Additional little fixes and improvements in code, build system, CI, and documentation
+
+-------------------------------------------------------------------
+* Tue Aug  9  9:26:43 UTC 2022 - Luca Boccassi <bluca@debian.org>
+
+- Update to new version 1.2.0:
+  - Add support for match rules
+  - Add support for session bus connection at custom address
+  - Add CMake variable for extra libsystemd config options
+  - Use pseudo D-Bus connection for plain messages
+  - Rename dont_request_slot tag to floating_slot
+  - Add validity checks for names and paths
+  - Remove executable flag from source files
+  - Detect missing type after array declaration
+  - Fix invalid assert on event fd
+  - Enable move for ObjectPath and Signature
+  - Add printer for std::chrono in googletest v1.11.0
+  - Fix potential undefined behavior in creation of sdbus::Error
+  - Additional little fixes and improvements in code, build system, and documentation
+
+-------------------------------------------------------------------
+* Wed Dec 22 14:02:26 UTC 2021 - Luca Boccassi <bluca@debian.org>
+
+- Update to new version 1.1.0:
+  - Fix timeout handling for asynchronous method calls
+  - Add support for unregistering signal handler
+  - Add support for chrono literals in sdbus-c++-xml2cpp generator
+  - Additional little fixes and improvements in code, build system, and documentation
+
+-------------------------------------------------------------------
+* Mon Oct 25 14:48:52 UTC 2021 - Luca Boccassi <bluca@debian.org>
+
+- Update to new version 1.0.0
+- Bump package name for new SOVERSION
+
+-------------------------------------------------------------------
+* Thu Oct 21 16:29:09 UTC 2021 - Luca Boccassi <bluca@debian.org>
+
+- Update to new version 0.9.0
+- Drop patch merged upstream: 0001-Find-and-link-against-pthread.patch
+- Use more wildcards to pick files to package
+
+-------------------------------------------------------------------
+* Thu Apr  1 20:10:43 UTC 2021 - Luca Boccassi <bluca@debian.org>
+
+- Initial packaging of version 0.8.3
+- Imported from Fedora https://src.fedoraproject.org/rpms/systemd/blob/rawhide/f/systemd.spec
+- Change source tarball name to sdbus-cpp-<version>.tar.gz
+- Add 0001-Find-and-link-against-pthread.patch to fix build failure
+- Use cmake_build doc, without --target, unsupported on SUSE
+- Set CMAKE_INSTALL_DOCDIR to /usr/share/doc/packages/sdbus-c++ to match _docdir
+- Explicitly list files in document page, wildcard not supported
+- Use SPDX license identifier
+- Set Group
+- Add ldconfig post/postun
+- Change main package name to libsdbus-c++0
+- Move cmake files to -devel package
+- Move changelog to sdbus-cpp.changes file
+- Move AUTHORS/ChangeLog/NEWS/README to -devel package
+- Apply changes from 'osc service localrun format_spec_file'
+- Remove 'undefine __cmake_in_source_build', not needed
+- Fix dependency from -devel/-bin packages to lib package

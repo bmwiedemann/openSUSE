@@ -1,0 +1,113 @@
+--- javapackages-5.3.1/configure	2019-06-14 12:26:27.000000000 +0200
++++ javapackages-5.3.1/configure	2020-07-16 09:04:37.316453132 +0200
+@@ -14,6 +14,7 @@
+ root_sysconfdir
+ rpmconfigdir
+ rpmmacrodir
++libdir
+ 
+ m2home
+ 
+@@ -51,6 +52,7 @@
+ test -z "${rundir}" && rundir="${localstatedir}/run"
+ test -z "${sysconfdir}" && sysconfdir="${prefix}/etc"
+ test -z "${root_sysconfdir}" && root_sysconfdir="${prefix}/etc"
++test -z "${libdir}" && libdir="${prefix}/lib/"
+ test -z "${rpmconfigdir}" && rpmconfigdir="${prefix}/lib/rpm"
+ test -z "${rpmmacrodir}" && rpmmacrodir="${rpmconfigdir}/macros.d"
+ 
+diff -urEbwB javapackages-5.3.1/etc/eclipse.conf javapackages-5.3.1/etc/eclipse.conf
+--- javapackages-5.3.1/etc/eclipse.conf	2019-06-14 12:26:27.000000000 +0200
++++ javapackages-5.3.1/etc/eclipse.conf	2020-07-16 09:04:37.316453132 +0200
+@@ -1,7 +1,7 @@
+ # Eclipse filesystem configuration file
+ 
+ # Eclipse platform root directory
+-eclipse.root=@{prefix}/lib/eclipse
++eclipse.root=@{libdir}/eclipse
+ 
+ # Location of architecture-independant dropins
+ eclipse.dropins.noarch=@{datadir}/eclipse/dropins
+@@ -10,10 +10,10 @@
+ eclipse.droplets.noarch=@{datadir}/eclipse/droplets
+ 
+ # Location of architecture-dependant dropins
+-eclipse.dropins.archful=@{prefix}/lib/eclipse/dropins
++eclipse.dropins.archful=@{libdir}/eclipse/dropins
+ 
+ # Location of architecture-dependant droplets
+-eclipse.droplets.archful=@{prefix}/lib/eclipse/droplets
++eclipse.droplets.archful=@{libdir}/eclipse/droplets
+ 
+ # Comma-separated list of directories searched for external bundles
+ eclipse.bundles=@{javadir},@{jnidir}
+--- javapackages-5.3.1/expand.sh	2019-06-14 12:26:27.000000000 +0200
++++ javapackages-5.3.1/expand.sh	2020-07-16 09:04:37.316453132 +0200
+@@ -45,6 +45,7 @@
+     sed \
+         -e "s|@{bindir}|${bindir}|g" \
+         -e "s|@{datadir}|${datadir}|g" \
++        -e "s|@{libdir}|${libdir}|g" \
+         -e "s|@{javaconfdir}|${javaconfdir}|g" \
+         -e "s|@{javadir}|${javadir}|g" \
+         -e "s|@{jnidir}|${jnidir}|g" \
+--- javapackages-5.3.1/install	2019-06-14 12:26:27.000000000 +0200
++++ javapackages-5.3.1/install	2020-07-16 09:04:37.316453132 +0200
+@@ -90,11 +90,11 @@
+ dir "${mavenpomdir}"
+ dir "${ivyxmldir}"
+ dir "${datadir}/maven-metadata"
+-dir "${prefix}/lib/eclipse"
+-dir "${prefix}/lib/eclipse/features"
+-dir "${prefix}/lib/eclipse/plugins"
+-dir "${prefix}/lib/eclipse/dropins"
+-dir "${prefix}/lib/eclipse/droplets"
++dir "${libdir}/eclipse"
++dir "${libdir}/eclipse/features"
++dir "${libdir}/eclipse/plugins"
++dir "${libdir}/eclipse/dropins"
++dir "${libdir}/eclipse/droplets"
+ dir "${datadir}/eclipse"
+ dir "${datadir}/eclipse/dropins"
+ dir "${datadir}/eclipse/droplets"
+--- javapackages-5.3.1/macros.d/macros.javapackages-filesystem	2019-06-14 12:26:27.000000000 +0200
++++ javapackages-5.3.1/macros.d/macros.javapackages-filesystem	2020-07-16 09:05:34.448792440 +0200
+@@ -13,17 +13,17 @@
+ #
+ # Root directory where all Java VMs/SDK/JREs are installed.
+ #
+-%_jvmdir        %{_prefix}/lib/jvm
++%_jvmdir        %{_libdir}/jvm
+ 
+ #
+ # Root directory for all Java VM/SDK/JRE's private things.
+ #
+-%_jvmprivdir    %{_prefix}/lib/jvm-private
++%_jvmprivdir    %{_libdir}/jvm-private
+ 
+ #
+ # Root directory for all architecture dependent parts of Java VM/SDK/JRE's
+ #
+-%_jvmlibdir     %{_prefix}/lib/jvm
++%_jvmlibdir     %{_libdir}/jvm
+ 
+ #
+ # Root directory for all architecture independent parts of Java VM/SDK/JRE's
+@@ -38,7 +38,7 @@
+ #
+ # Root directory for all common architecture dependent parts of Java VM/SDK/JRE's
+ #
+-%_jvmcommonlibdir %{_prefix}/lib/jvm-common
++%_jvmcommonlibdir %{_libdir}/jvm-common
+ 
+ #
+ # Root directory for all common architecture independent parts of Java VM/SDK/JRE's
+@@ -64,7 +64,7 @@
+ #
+ # Directory where arch-specific (JNI) version-independent jars are installed.
+ #
+-%_jnidir        %{_prefix}/lib/java
++%_jnidir        %{_libdir}/java
+ 
+ #
+ # Root directory where all javadoc is installed. Also already in RH macros.

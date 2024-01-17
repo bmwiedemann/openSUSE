@@ -1,0 +1,35 @@
+-------------------------------------------------------------------
+Fri Sep 19 05:29:17 UTC 2014 - coolo@suse.com
+
+- updated to 0.17
+     - Make unicode test work on older Perls.
+ 
+ 0.16 2009-03-09
+     - Add unicode test.
+ 
+ 0.15 2009-03-09
+     - Add some logging to help diagnose smoke failures.
+ 
+ 0.14 2009-03-07
+     - Croak if 4 char key string is not 8-bit clean. See #33672.
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:23 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:30:19 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Mon Nov 29 18:00:29 UTC 2010 - coolo@novell.com
+
+- called spec2changelog
+
+-------------------------------------------------------------------
+Thu Nov  1 00:00:00 UTC 2007 - jfunk@funktronics.ca
+
+- Initial release
+

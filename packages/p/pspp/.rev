@@ -1,0 +1,165 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3d8b45bd3d14841c3c1fb1a5d57ad098</srcmd5>
+    <version>0.8.5</version>
+    <time>1440658560</time>
+    <user>coolo</user>
+    <comment>More detailed changelog</comment>
+    <requestid>325563</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>46a7479136df2412109588bd772005a2</srcmd5>
+    <version>0.10.1</version>
+    <time>1459845868</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.10.1</comment>
+    <requestid>383556</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>be4fb0dab9dd34c82f52e686a0cfee0c</srcmd5>
+    <version>0.10.2</version>
+    <time>1470217524</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.10.2</comment>
+    <requestid>416643</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>0e1f197461f6229fc1389e654decc279</srcmd5>
+    <version>0.10.2</version>
+    <time>1486465709</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>455105</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>119522b375debcc92afe7bf4b41f852d</srcmd5>
+    <version>0.10.2</version>
+    <time>1502366673</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>513105</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3e663196cea0e791266a6b5deec8333c</srcmd5>
+    <version>1.0.1</version>
+    <time>1504000054</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>519283</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>bb010d633553caf68dc1e95056e61b71</srcmd5>
+    <version>1.0.1</version>
+    <time>1504617549</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520963</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>2aa8b9cff7d10afc7c7cc8cb78cad566</srcmd5>
+    <version>1.0.1</version>
+    <time>1505238987</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>523488</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d55854391152277d55940921da76518a</srcmd5>
+    <version>1.2.0</version>
+    <time>1548335038</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>663107</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>2a6c6e2b6f8b2fbae6d1ed92aebc390c</srcmd5>
+    <version>1.2.0</version>
+    <time>1549624264</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>672096</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>f86eef8af9bb26ebbfceb16f32910355</srcmd5>
+    <version>1.2.0</version>
+    <time>1551455315</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>680148</requestid>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>4cb5d4aba1b022cfb9b40a1b1576b5cf</srcmd5>
+    <version>1.2.0</version>
+    <time>1584447041</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>785770</requestid>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>58f0bcfe8803547149a0c90e156f375d</srcmd5>
+    <version>1.2.0</version>
+    <time>1591653657</time>
+    <user>dimstar_suse</user>
+    <comment>Fix compilation in openSUSE Factory/TW:
+- Add option -fcommon as a workaround for compilation with GCC10.
+- Don't try delete /usr/share/info/dir which does not exist before 
+  compilation in openSUSE TW</comment>
+    <requestid>812440</requestid>
+  </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>549a717b54e9d75c75bf980ca9d7bf16</srcmd5>
+    <version>1.2.0</version>
+    <time>1594045655</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>818755</requestid>
+  </revision>
+  <revision rev="15" vrev="7">
+    <srcmd5>3f798001b614509a8b246708e12a79f3</srcmd5>
+    <version>1.2.0</version>
+    <time>1594894645</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>821109</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>2c6d010be9913e3beb73cf77b32fa5dc</srcmd5>
+    <version>1.4.0</version>
+    <time>1601044339</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>835662</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>8dd346e60c7412dc20e89cd60e945f6c</srcmd5>
+    <version>1.4.1</version>
+    <time>1601398861</time>
+    <user>dimstar_suse</user>
+    <comment>update to v1.4.1, split -lang package, add documentation packages</comment>
+    <requestid>837843</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>bdeb223c3f86cf99b8b84ad1c65bbbeb</srcmd5>
+    <version>1.4.1</version>
+    <time>1621355218</time>
+    <user>dimstar_suse</user>
+    <comment>Do not own filesystem owned directories</comment>
+    <requestid>893831</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>7c1e4869d226b705b382ae15f28e153c</srcmd5>
+    <version>1.4.1</version>
+    <time>1651784861</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>975258</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>e08800dfd910eea5c23048afb4d83d88</srcmd5>
+    <version>1.6.2</version>
+    <time>1690809849</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1101327</requestid>
+  </revision>
+</revisionlist>

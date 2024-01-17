@@ -1,0 +1,28 @@
+From a98c818bd33920fd5189cdd8f5d81850ad4a945b Mon Sep 17 00:00:00 2001
+From: Joel Colledge <joel.colledge@linbit.com>
+Date: Thu, 7 Sep 2023 17:32:56 +0200
+Subject: [PATCH 05/20] drbd: log error code when thread fails to start
+
+---
+ drbd/drbd_main.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drbd/drbd_main.c b/drbd/drbd_main.c
+index 38f728f3da73..810df864f60b 100644
+--- a/drbd/drbd_main.c
++++ b/drbd/drbd_main.c
+@@ -642,9 +642,9 @@ int drbd_thread_start(struct drbd_thread *thi)
+ 
+ 		if (IS_ERR(nt)) {
+ 			if (connection)
+-				drbd_err(connection, "Couldn't start thread\n");
++				drbd_err(connection, "Couldn't start thread: %ld\n", PTR_ERR(nt));
+ 			else
+-				drbd_err(resource, "Couldn't start thread\n");
++				drbd_err(resource, "Couldn't start thread: %ld\n", PTR_ERR(nt));
+ 
+ 			return false;
+ 		}
+-- 
+2.35.3
+

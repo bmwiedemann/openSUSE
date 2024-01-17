@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Fasttracker II clone
+Comment=A clone of the classic music making software Fasttracker II
+Exec=ft2-clone
+Icon=ft2-clone
+Terminal=false
+Categories=AudioVideo;AudioVideoEditing;
+Keywords=tracker;music;
+MimeType=audio/xm;audio/mod;audio/s3m;audio/stm;

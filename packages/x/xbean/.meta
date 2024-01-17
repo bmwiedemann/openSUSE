@@ -1,0 +1,13 @@
+<package name="xbean" project="openSUSE:Factory">
+  <title>Java plugin based web server</title>
+  <description>XBean is a plugin-based server analogous to Eclipse being a
+plugin-based IDE. XBean is able to discover, download and install
+server plugins from an Internet-based repository. Support for
+multiple IoC systems, support for running with no IoC system, JMX
+without JMX code, lifecycle and class loader management, and a Spring
+integration is included.
+
+</description>
+  <devel project="Java:packages" package="xbean"/>
+  <url>http://geronimo.apache.org/xbean/</url>
+</package>

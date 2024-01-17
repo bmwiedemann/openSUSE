@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4e69c0540afa5a9c42b69f9515849450</srcmd5>
+    <version>5.21q</version>
+    <time>1517516937</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>571146</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e49f2fdae452ca2b921f5b5485ba8757</srcmd5>
+    <version>5.21q</version>
+    <time>1547130055</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>663613</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>720c464ff449cc3300c1de4436a86341</srcmd5>
+    <version>5.21q</version>
+    <time>1573164947</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>739608</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>dc05a6534476472ddd8f8d23624c2137</srcmd5>
+    <version>5.21q</version>
+    <time>1578069426</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>760478</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>ea7c46875b57db6b48808198c61bd744</srcmd5>
+    <version>5.21q</version>
+    <time>1579273619</time>
+    <user>dimstar_suse</user>
+    <comment>- Cleanup package</comment>
+    <requestid>765166</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>6799a32a38dac94a7da10367d4ba0ee0</srcmd5>
+    <version>5.21q</version>
+    <time>1591742915</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>812758</requestid>
+  </revision>
+</revisionlist>

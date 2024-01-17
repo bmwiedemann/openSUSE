@@ -1,0 +1,231 @@
+From a54f12b4c29e949458949d5bede2f74b1aa8a34a Mon Sep 17 00:00:00 2001
+From: jengelh <jengelh@inai.de>
+Date: Mon, 29 Jun 2020 03:43:01 +0200
+Subject: [PATCH] build: add cmake option to skip Lua components (#1175)
+
+sol.hpp has a lot of templates which, when building with -g
+-fsanitize=address -fsanitize=undefined, incur long compile time and
+high memory usage (~8500MB) [applies to Scripting/Export/Archive.cpp
+and Scripting/Export/Graphics.cpp].
+
+Add a cmake option so I can skip building some parts and focus on
+the rest.
+
+Co-authored-by: Simon Judd <sirjuddington@gmail.com>
+---
+ src/Application/App.cpp              |    8 ++++++++
+ src/CMakeLists.txt                   |   11 ++++++++++-
+ src/MainEditor/UI/ArchivePanel.cpp   |   10 ++++++++++
+ src/MainEditor/UI/MainWindow.cpp     |    2 ++
+ src/MapEditor/UI/MapEditorWindow.cpp |    6 ++++++
+ 5 files changed, 36 insertions(+), 1 deletion(-)
+
+Index: SLADE-3.1.12/src/Application/App.cpp
+===================================================================
+--- SLADE-3.1.12.orig/src/Application/App.cpp
++++ SLADE-3.1.12/src/Application/App.cpp
+@@ -450,8 +450,10 @@ bool App::init(vector<string>& args, dou
+ 	SAction::setBaseWxId(26000);
+ 	SAction::initActions();
+ 
++#ifdef USE_LUA
+ 	// Init lua
+ 	Lua::init();
++#endif
+ 
+ 	// Init UI
+ 	UI::init(ui_scale);
+@@ -515,8 +517,10 @@ bool App::init(vector<string>& args, dou
+ 	Log::info("Loading game configurations");
+ 	Game::init();
+ 
++#ifdef USE_LUA
+ 	// Init script manager
+ 	ScriptManager::init();
++#endif
+ 
+ 	// Show the main window
+ 	MainEditor::windowWx()->Show(true);
+@@ -644,8 +648,10 @@ void App::exit(bool save_config)
+ 		// Save custom special presets
+ 		Game::saveCustomSpecialPresets();
+ 
++#ifdef USE_LUA
+ 		// Save custom scripts
+ 		ScriptManager::saveUserScripts();
++#endif
+ 	}
+ 
+ 	// Close all open archives
+@@ -666,8 +672,10 @@ void App::exit(bool save_config)
+ 		files = temp.GetNext(&filename);
+ 	}
+ 
++#ifdef USE_LUA
+ 	// Close lua
+ 	Lua::close();
++#endif
+ 
+ 	// Close DUMB
+ 	dumb_exit();
+Index: SLADE-3.1.12/src/CMakeLists.txt
+===================================================================
+--- SLADE-3.1.12.orig/src/CMakeLists.txt
++++ SLADE-3.1.12/src/CMakeLists.txt
+@@ -105,6 +105,9 @@ find_package(OpenGL REQUIRED)
+ find_package(GLEW REQUIRED)
+ find_package(Freetype REQUIRED)
+ find_package(CURL REQUIRED)
++if (NOT NO_LUA)
++	find_package(Lua REQUIRED)
++endif()
+ include_directories(
+ 	${FREEIMAGE_INCLUDE_DIR}
+ 	${SFML_INCLUDE_DIR}
+@@ -133,6 +136,7 @@ endif ()
+ 
+ set(SLADE_SOURCES
+ )
++set(SLADE_SCRIPTING_SOURCES)
+ # Don't include external libraries here as they should be compiled separately
+ file(GLOB_RECURSE SLADE_SOURCES
+ 	Application/*.cpp
+@@ -147,9 +151,14 @@ file(GLOB_RECURSE SLADE_SOURCES
+ 	OpenGL/*.cpp
+ 	UI/*.cpp
+ 	Utility/*.cpp
+-	Scripting/*.cpp
+ 	TextEditor/*.cpp
+ 	)
++if (NOT NO_LUA)
++	file(GLOB_RECURSE SLADE_SCRIPTING_SOURCES Scripting/*.cpp)
++	set(SLADE_SOURCES ${SLADE_SOURCES} ${SLADE_SCRIPTING_SOURCES})
++	ADD_DEFINITIONS(-DUSE_LUA)
++else ()
++endif ()
+ set(SLADE_HEADERS
+ )
+ file(GLOB_RECURSE SLADE_HEADERS *.h *.hpp)
+Index: SLADE-3.1.12/src/MainEditor/UI/ArchivePanel.cpp
+===================================================================
+--- SLADE-3.1.12.orig/src/MainEditor/UI/ArchivePanel.cpp
++++ SLADE-3.1.12/src/MainEditor/UI/ArchivePanel.cpp
+@@ -522,7 +522,9 @@ void ArchivePanel::addMenus()
+ 		SAction::fromId("arch_replace_maps")->addToMenu(menu_clean);
+ 		menu_archive->AppendSubMenu(menu_clean, "&Maintenance");
+ 		auto menu_scripts = new wxMenu();
++#ifdef USE_LUA
+ 		ScriptManager::populateEditorScriptMenu(menu_scripts, ScriptManager::ScriptType::Archive, "arch_script");
++#endif
+ 		menu_archive->AppendSubMenu(menu_scripts, "&Run Script");
+ 	}
+ 	if (!menu_entry)
+@@ -546,7 +548,9 @@ void ArchivePanel::addMenus()
+ 		menu_entry->AppendSeparator();
+ 		SAction::fromId("arch_entry_bookmark")->addToMenu(menu_entry);
+ 		auto menu_scripts = new wxMenu();
++#ifdef USE_LUA
+ 		ScriptManager::populateEditorScriptMenu(menu_scripts, ScriptManager::ScriptType::Entry, "arch_entry_script");
++#endif
+ 		menu_entry->AppendSubMenu(menu_scripts, "&Run Script");
+ 	}
+ 
+@@ -3189,9 +3193,11 @@ bool ArchivePanel::handleAction(string i
+ 		dlg.ShowModal();
+ 	}
+ 
++#ifdef USE_LUA
+ 	// Archive->Scripts->...
+ 	else if (id == "arch_script")
+ 		ScriptManager::runArchiveScript(archive_, wx_id_offset);
++#endif
+ 
+ 
+ 	// ------------------------------------------------------------------------
+@@ -3269,9 +3275,11 @@ bool ArchivePanel::handleAction(string i
+ 	else if (id == "arch_entry_openext")
+ 		openEntryExternal();
+ 
++#ifdef USE_LUA
+ 	// Entry->Run Script
+ 	else if (id == "arch_entry_script")
+ 		ScriptManager::runEntryScript(entry_list_->getSelectedEntries(), wx_id_offset, MainEditor::windowWx());
++#endif
+ 
+ 
+ 	// Context menu actions
+@@ -3785,6 +3793,7 @@ void ArchivePanel::onEntryListRightClick
+ #endif
+ 	}
+ 
++#ifdef USE_LUA
+ 	// Entry scripts
+ 	if (!ScriptManager::editorScripts(ScriptManager::ScriptType::Entry).empty())
+ 	{
+@@ -3793,6 +3802,7 @@ void ArchivePanel::onEntryListRightClick
+ 		context.AppendSeparator();
+ 		context.AppendSubMenu(menu_scripts, "Run &Script");
+ 	}
++#endif
+ 
+ 	// Popup the context menu
+ 	PopupMenu(&context);
+Index: SLADE-3.1.12/src/MainEditor/UI/MainWindow.cpp
+===================================================================
+--- SLADE-3.1.12.orig/src/MainEditor/UI/MainWindow.cpp
++++ SLADE-3.1.12/src/MainEditor/UI/MainWindow.cpp
+@@ -661,12 +661,14 @@ bool MainWindow::handleAction(string id)
+ 	if (id == "main_showstartpage")
+ 		openStartPageTab();
+ 
++#ifdef USE_LUA
+ 	// Tools->Run Script
+ 	if (id == "main_runscript")
+ 	{
+ 		ScriptManager::open();
+ 		return true;
+ 	}
++#endif
+ 
+ 	// Help->About
+ 	if (id == "main_about")
+Index: SLADE-3.1.12/src/MapEditor/UI/MapEditorWindow.cpp
+===================================================================
+--- SLADE-3.1.12.orig/src/MapEditor/UI/MapEditorWindow.cpp
++++ SLADE-3.1.12/src/MapEditor/UI/MapEditorWindow.cpp
+@@ -269,7 +269,9 @@ void MapEditorWindow::setupMenu()
+ 	// Tools menu
+ 	wxMenu* menu_tools = new wxMenu("");
+ 	menu_scripts_ = new wxMenu();
++#ifdef USE_LUA
+ 	ScriptManager::populateEditorScriptMenu(menu_scripts_, ScriptManager::ScriptType::Map, "mapw_script");
++#endif
+ 	menu_tools->AppendSubMenu(menu_scripts_, "Run Script");
+ 	SAction::fromId("mapw_runscript")->addToMenu(menu_tools);
+ 	menu->Append(menu_tools, "&Tools");
+@@ -1136,7 +1138,9 @@ void MapEditorWindow::reloadScriptsMenu(
+ 	while (menu_scripts_->FindItemByPosition(0))
+ 		menu_scripts_->Delete(menu_scripts_->FindItemByPosition(0));
+ 
++#ifdef USE_LUA
+ 	ScriptManager::populateEditorScriptMenu(menu_scripts_, ScriptManager::ScriptType::Map, "mapw_script");
++#endif
+ }
+ 
+ // ----------------------------------------------------------------------------
+@@ -1436,6 +1440,7 @@ bool MapEditorWindow::handleAction(strin
+ 		return true;
+ 	}
+ 
++#ifdef USE_LUA
+ 	// Tools->Run Script
+ 	else if (id == "mapw_script")
+ 	{
+@@ -1449,6 +1454,7 @@ bool MapEditorWindow::handleAction(strin
+ 		ScriptManager::open();
+ 		return true;
+ 	}
++#endif
+ 	
+ 	return false;
+ }

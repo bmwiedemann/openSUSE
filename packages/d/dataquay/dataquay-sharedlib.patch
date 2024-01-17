@@ -1,0 +1,15 @@
+Index: dataquay-0.9.1/lib.pro
+===================================================================
+--- dataquay-0.9.1.orig/lib.pro
++++ dataquay-0.9.1/lib.pro
+@@ -4,8 +4,9 @@ exists(debug.pri) {
+ }
+ 
+ TEMPLATE = lib
+-CONFIG += warn_on staticlib c++11
++CONFIG += warn_on c++11
+ QT -= gui
++LIBS += `pkg-config --libs redland`
+ 
+ TARGET = dataquay
+ 

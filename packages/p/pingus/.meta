@@ -1,0 +1,7 @@
+<package name="pingus" project="openSUSE:Factory">
+  <title>A Lemmings Clone</title>
+  <description>Pingus is a free Lemmings-like game covered under the GNU GPL. It features
+currently 22 playable levels and runs under a wide variety of operating systems
+(Linux, Windows, etc.)</description>
+  <devel project="games" package="pingus"/>
+</package>
