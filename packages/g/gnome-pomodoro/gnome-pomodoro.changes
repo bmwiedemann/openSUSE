@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 17 07:46:27 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix requires: use boolean dep to ensure gnome-shell >= 45 and
+  gnome-shell < 46 must be satisfied by a single package.
+
+-------------------------------------------------------------------
 Tue Dec  5 07:07:58 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.24.1:

@@ -354,4 +354,13 @@ doesn't work anyway. (forwarded request 796279 from develop7)</comment>
     <comment></comment>
     <requestid>1131316</requestid>
   </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>2f41522bb8311d11e497ea78d65bffdc</srcmd5>
+    <version>0.24.1</version>
+    <time>1705526287</time>
+    <user>anag+factory</user>
+    <comment>- Fix requires: use boolean dep to ensure gnome-shell &gt;= 45 and
+  gnome-shell &lt; 46 must be satisfied by a single package. (forwarded request 1139382 from dimstar)</comment>
+    <requestid>1139422</requestid>
+  </revision>
 </revisionlist>
