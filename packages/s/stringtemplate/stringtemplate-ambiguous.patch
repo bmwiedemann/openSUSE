@@ -1,0 +1,80 @@
+--- stringtemplate-3.2.1/src/org/antlr/stringtemplate/language/action.g	2023-10-25 17:18:21.191150047 +0200
++++ stringtemplate-3.2.1/src/org/antlr/stringtemplate/language/action.g	2023-10-25 17:30:54.086240658 +0200
+@@ -27,6 +27,7 @@
+  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+ package org.antlr.stringtemplate.language;
++import org.antlr.stringtemplate.StringTemplate;
+ import org.antlr.stringtemplate.*;
+ import java.util.*;
+ }
+--- stringtemplate-3.2.1/src/org/antlr/stringtemplate/language/angle.bracket.template.g	2023-10-25 17:18:21.191150047 +0200
++++ stringtemplate-3.2.1/src/org/antlr/stringtemplate/language/angle.bracket.template.g	2023-10-25 17:30:37.242794510 +0200
+@@ -27,6 +27,7 @@
+  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+     package org.antlr.stringtemplate.language;
++    import org.antlr.stringtemplate.StringTemplate;
+     import org.antlr.stringtemplate.*;
+     import java.io.*;
+ }
+--- stringtemplate-3.2.1/src/org/antlr/stringtemplate/language/eval.g	2023-10-25 17:18:21.191150047 +0200
++++ stringtemplate-3.2.1/src/org/antlr/stringtemplate/language/eval.g	2023-10-25 17:22:13.866058127 +0200
+@@ -27,6 +27,7 @@
+  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+ package org.antlr.stringtemplate.language;
++import org.antlr.stringtemplate.StringTemplate;
+ import org.antlr.stringtemplate.*;
+ import java.util.*;
+ import java.io.*;
+--- stringtemplate-3.2.1/src/org/antlr/stringtemplate/language/group.g	2023-10-25 17:18:21.191150047 +0200
++++ stringtemplate-3.2.1/src/org/antlr/stringtemplate/language/group.g	2023-10-25 17:30:58.966273338 +0200
+@@ -27,6 +27,7 @@
+  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+ package org.antlr.stringtemplate.language;
++import org.antlr.stringtemplate.StringTemplate;
+ import org.antlr.stringtemplate.*;
+ import java.util.*;
+ }
+--- stringtemplate-3.2.1/src/org/antlr/stringtemplate/language/interface.g	2023-10-25 17:18:21.191150047 +0200
++++ stringtemplate-3.2.1/src/org/antlr/stringtemplate/language/interface.g	2023-10-25 17:30:19.806011061 +0200
+@@ -27,6 +27,7 @@
+  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+ package org.antlr.stringtemplate.language;
++import org.antlr.stringtemplate.StringTemplate;
+ import org.antlr.stringtemplate.*;
+ import java.util.*;
+ }
+--- stringtemplate-3.2.1/src/org/antlr/stringtemplate/language/template.g	2023-10-25 17:18:21.191150047 +0200
++++ stringtemplate-3.2.1/src/org/antlr/stringtemplate/language/template.g	2023-10-25 17:30:47.012859948 +0200
+@@ -27,6 +27,7 @@
+  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+     package org.antlr.stringtemplate.language;
++    import org.antlr.stringtemplate.StringTemplate;
+     import org.antlr.stringtemplate.*;
+     import java.io.*;
+ }
+--- stringtemplate-3.2.1/src/org/antlr/stringtemplate/misc/StringTemplateTreeView.java	2023-10-25 17:18:21.191150047 +0200
++++ stringtemplate-3.2.1/src/org/antlr/stringtemplate/misc/StringTemplateTreeView.java	2023-10-25 17:33:20.230552815 +0200
+@@ -28,6 +28,7 @@
+ 
+ package org.antlr.stringtemplate.misc;
+ 
++import org.antlr.stringtemplate.StringTemplate;
+ import org.antlr.stringtemplate.*;
+ import java.awt.*;
+ import java.awt.event.*;
+--- stringtemplate-3.2.1/test/org/antlr/stringtemplate/test/TestStringTemplate.java	2023-10-25 17:18:21.191150047 +0200
++++ stringtemplate-3.2.1/test/org/antlr/stringtemplate/test/TestStringTemplate.java	2023-10-25 17:34:28.124340910 +0200
+@@ -28,6 +28,7 @@
+ package org.antlr.stringtemplate.test;
+ 
+ import junit.framework.TestCase;
++import org.antlr.stringtemplate.StringTemplate;
+ import org.antlr.stringtemplate.*;
+ import org.antlr.stringtemplate.language.AngleBracketTemplateLexer;
+ import org.antlr.stringtemplate.language.DefaultTemplateLexer;

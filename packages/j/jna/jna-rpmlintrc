@@ -1,0 +1,2 @@
+# Rpm doesn't detect the library dependency on Java packages
+addFilter("^jna.*: W: explicit-lib-dependency libjnidispatch")

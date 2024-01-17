@@ -1,0 +1,56 @@
+From 4f7588da7c98b5d82dcd52963a2565b3cefb8b55 Mon Sep 17 00:00:00 2001
+From: Manan Bhavsar <mananbh9@live.com>
+Date: Sat, 8 Jul 2023 20:53:22 -0400
+Subject: [PATCH] issue-547 http header quality factor number
+
+---
+ CHANGELOG.rst                   | 12 ++++++++++++
+ tests/legacy/test_api_legacy.py |  5 +++--
+ 2 files changed, 15 insertions(+), 2 deletions(-)
+
+diff --git a/CHANGELOG.rst b/CHANGELOG.rst
+index a314e62d..dbd17bec 100644
+--- a/CHANGELOG.rst
++++ b/CHANGELOG.rst
+@@ -25,6 +25,18 @@ Releases prior to 0.3.0 were “best effort” filled out, but are missing
+ some info. If you see your contribution missing info, please open a PR
+ on the Changelog!
+ 
++.. _section-1.1.1:
++1.1.0
++-----
++.. _bug_fixes-1.1.1
++Bug Fixes
++~~~~~~~~~
++
++::
++
++   * Fixing test as HTTP Header MIMEAccept expects quality-factor number in form of `X.X` (#547) [chipndell]
++
++
+ .. _section-1.1.0:
+ 1.1.0
+ -----
+diff --git a/tests/legacy/test_api_legacy.py b/tests/legacy/test_api_legacy.py
+index a27a454a..b15a6027 100644
+--- a/tests/legacy/test_api_legacy.py
++++ b/tests/legacy/test_api_legacy.py
+@@ -108,7 +108,7 @@ def test_media_types_method(self, app, mocker):
+         api = restx.Api(app)
+ 
+         with app.test_request_context(
+-            "/foo", headers={"Accept": "application/xml; q=.5"}
++            "/foo", headers={"Accept": "application/xml; q=0.5"}
+         ):
+             assert api.mediatypes_method()(mocker.Mock()) == [
+                 "application/xml",
+@@ -119,7 +119,8 @@ def test_media_types_q(self, app):
+         api = restx.Api(app)
+ 
+         with app.test_request_context(
+-            "/foo", headers={"Accept": "application/json; q=1, application/xml; q=.5"}
++            "/foo",
++            headers={"Accept": "application/json; q=1.0, application/xml; q=0.5"},
+         ):
+             assert api.mediatypes() == ["application/json", "application/xml"]
+ 

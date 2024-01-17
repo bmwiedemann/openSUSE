@@ -1,0 +1,101 @@
+diff -ruN redland-1.0.16.orig/configure.ac redland-1.0.16/configure.ac
+--- redland-1.0.16.orig/configure.ac	2012-08-31 20:17:48.000000000 +0200
++++ redland-1.0.16/configure.ac	2013-01-02 18:32:15.254093603 +0100
+@@ -101,7 +101,9 @@
+ dnl Checks for programs.
+ AM_SANITY_CHECK
+ AM_PROG_AR
+-AC_PROG_CC
++AC_PROG_CC_STDC
++AC_USE_SYSTEM_EXTENSIONS
++AC_SYS_LARGEFILE
+ AM_PROG_CC_C_O
+ AC_MSG_CHECKING(whether $CC is clang)
+ CC_IS_CLANG=no
+diff -ruN redland-1.0.16.orig/src/rdf_files.c redland-1.0.16/src/rdf_files.c
+--- redland-1.0.16.orig/src/rdf_files.c	2011-08-01 05:56:47.000000000 +0200
++++ redland-1.0.16/src/rdf_files.c	2013-01-02 18:49:59.169792827 +0100
+@@ -44,6 +44,8 @@
+ #endif
+ #endif
+ 
++#include <fcntl.h>
++
+ #ifdef STANDALONE
+ #define LIBRDF_DEBUG 1
+ #endif
+@@ -91,7 +93,7 @@
+   
+ #ifdef HAVE_MKSTEMP
+   /* Proritise mkstemp() since GNU libc says: Never use mktemp(). */
+-  fd=mkstemp(name);
++  fd=mkostemp(name, O_CLOEXEC);
+   if(fd<0) {
+     LIBRDF_FREE(char*, name);
+     return NULL;
+diff -ruN redland-1.0.16.orig/src/rdf_parser_raptor.c redland-1.0.16/src/rdf_parser_raptor.c
+--- redland-1.0.16.orig/src/rdf_parser_raptor.c	2012-12-17 03:13:18.000000000 +0100
++++ redland-1.0.16/src/rdf_parser_raptor.c	2013-01-02 18:50:33.737360673 +0100
+@@ -570,7 +570,7 @@
+     if(!filename)
+       return NULL;
+ 
+-    fh=fopen(filename, "r");
++    fh=fopen(filename, "re");
+     if(!fh) {
+       librdf_log(pcontext->parser->world, 0, LIBRDF_LOG_ERROR,
+                  LIBRDF_FROM_PARSER, NULL, "failed to open file '%s' - %s",
+diff -ruN redland-1.0.16.orig/src/rdf_query_results.c redland-1.0.16/src/rdf_query_results.c
+--- redland-1.0.16.orig/src/rdf_query_results.c	2012-07-02 01:37:19.000000000 +0200
++++ redland-1.0.16/src/rdf_query_results.c	2013-01-02 18:51:03.936983126 +0100
+@@ -610,7 +610,7 @@
+   LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(query_results, query_results, 1);
+   LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(name, string, 1);
+ 
+-  fh = fopen(name, "w+");
++  fh = fopen(name, "w+e");
+   if(!fh) {
+     librdf_log(query_results->query->world, 0, LIBRDF_LOG_ERROR, 
+                LIBRDF_FROM_QUERY, NULL, 
+diff -ruN redland-1.0.16.orig/src/rdf_serializer.c redland-1.0.16/src/rdf_serializer.c
+--- redland-1.0.16.orig/src/rdf_serializer.c	2012-06-28 23:44:21.000000000 +0200
++++ redland-1.0.16/src/rdf_serializer.c	2013-01-02 18:52:37.006819593 +0100
+@@ -559,7 +559,7 @@
+   LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(name, string, 1);
+   LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(stream, librdf_stream, 1);
+ 
+-  fh=fopen(name, "w+");
++  fh=fopen(name, "w+e");
+   if(!fh) {
+     librdf_log(serializer->world, 0, LIBRDF_LOG_ERROR, LIBRDF_FROM_SERIALIZER,
+                NULL, "failed to open file '%s' for writing - %s",
+@@ -598,7 +598,7 @@
+   LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(name, string, 1);
+   LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, 1);
+ 
+-  fh=fopen(name, "w+");
++  fh=fopen(name, "w+e");
+   if(!fh) {
+     librdf_log(serializer->world, 0, LIBRDF_LOG_ERROR, LIBRDF_FROM_SERIALIZER,
+                NULL, "failed to open file '%s' for writing - %s",
+@@ -1102,7 +1102,7 @@
+   stream=librdf_model_as_stream(model);
+ 
+ #define FILENAME "test.rdf"
+-  fh=fopen(FILENAME, "w");
++  fh=fopen(FILENAME, "we");
+   if(!fh) {
+     fprintf(stderr, "%s: Failed to fopen for writing '%s' - %s\n",
+             program, FILENAME, strerror(errno));
+diff -ruN redland-1.0.16.orig/src/rdf_storage_file.c redland-1.0.16/src/rdf_storage_file.c
+--- redland-1.0.16.orig/src/rdf_storage_file.c	2012-06-27 05:55:51.000000000 +0200
++++ redland-1.0.16/src/rdf_storage_file.c	2013-01-02 18:53:02.916495677 +0100
+@@ -332,7 +332,7 @@
+     return 1;
+   }
+   
+-  fh=fopen(new_name, "w+");
++  fh=fopen(new_name, "w+e");
+   if(!fh) {
+     librdf_log(storage->world, 0, LIBRDF_LOG_ERROR, LIBRDF_FROM_STORAGE, NULL,
+                "failed to open file '%s' for writing - %s",

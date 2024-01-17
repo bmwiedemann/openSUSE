@@ -1,0 +1,11 @@
+Index: pynxos-0.0.5/setup.py
+===================================================================
+--- pynxos-0.0.5.orig/setup.py
++++ pynxos-0.0.5/setup.py
+@@ -8,5 +8,5 @@ setup(name='pynxos',
+       author_email='ntc@networktocode.com',
+       url='https://github.com/networktocode/pynxos/',
+       license='Apache',
+-      install_requires=['requests>=2.7.0', 'future', 'scp']
++      install_requires=['requests>=2.7.0', 'scp']
+       )

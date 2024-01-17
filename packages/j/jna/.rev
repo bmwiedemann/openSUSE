@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cbba88ee2269fd249d19142492e0da52</srcmd5>
+    <version>5.4.0</version>
+    <time>1572884094</time>
+    <user>dimstar_suse</user>
+    <comment>jnidispatch -&gt; jna</comment>
+    <requestid>742828</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c2124ecea89d7415d8baade22253b692</srcmd5>
+    <version>5.5.0</version>
+    <time>1591652719</time>
+    <user>dimstar_suse</user>
+    <comment>5.5.0 + fix build on ppc64 and s390x</comment>
+    <requestid>811312</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>796be7de27fa1746d6198a401b541423</srcmd5>
+    <version>5.5.0</version>
+    <time>1602682661</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841242</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>5a134b755c604feebf7a4b0e141fe5b4</srcmd5>
+    <version>5.5.0</version>
+    <time>1648479560</time>
+    <user>dimstar_suse</user>
+    <comment>source/target levels 8</comment>
+    <requestid>963096</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>46b6a3eca0abc1722cf97871f305a01a</srcmd5>
+    <version>5.13.0</version>
+    <time>1693482151</time>
+    <user>anag+factory</user>
+    <comment>5.13.0</comment>
+    <requestid>1108089</requestid>
+  </revision>
+</revisionlist>

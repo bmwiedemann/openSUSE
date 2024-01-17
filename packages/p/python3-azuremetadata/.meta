@@ -1,0 +1,5 @@
+<package name="python3-azuremetadata" project="openSUSE:Factory">
+  <title>Azure metadata Python module</title>
+  <description>A module for collecting instance metadata from Microsoft Azure.</description>
+  <devel project="Cloud:Tools" package="python3-azuremetadata"/>
+</package>

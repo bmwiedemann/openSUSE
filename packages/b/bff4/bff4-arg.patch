@@ -1,0 +1,55 @@
+--- bff4.c	2007-06-13 06:28:04.000000000 +0200
++++ bff4_mod.c	2010-01-25 19:54:47.538918492 +0100
+@@ -49,13 +49,15 @@ void * zalloc(void *p, int sz, int osz)
+ }
+ #define zalloci(p,sz,osz) zalloc(p,(sz)*sizeof(int),(osz)*sizeof(int));
+ 
++FILE * istrm;
++
+ int getbf()
+ {
+ 	int a;
+ 	next:
+-	a = getchar();
++	a = getc(istrm);
+ 	if( a==-1 ) return -1;
+-	if( !strchr(",.[]+-<>!",a) ) goto next;		
++	if( !strchr(",.[]+-<>!",a) ) goto next;
+ 	return a;
+ }
+ 
+@@ -119,11 +121,24 @@ int consume(op *o)
+ 	return a;
+ }
+ 
+-int main()
++int main(int argc, char *argv[])
+ {
+ 	op * o=0, *z, *zend;
+ 	int sz=0, i, *m, mp, msz;
+-	int a = getbf();
++	int a;
++	
++	if(argc == 1) {
++		istrm = stdin;
++	}
++	else {
++		istrm = fopen(argv[1],"r");
++		if (istrm == NULL) {
++			printf("error at opening file: %s\n", argv[1]);
++			return 1;
++		}
++	}
++	
++	a = getbf();
+ 	for(;;sz++)
+ 	{
+ 		o = zalloc(o,(sz+1)*sizeof(op),sz*sizeof(op));
+@@ -229,6 +244,7 @@ int main()
+ 		printf("\n");
+ #endif
+ 	}
++	fclose(istrm);
+ 	return 0;
+ }
+ 

@@ -1,0 +1,8 @@
+<package name="ocaml-sexplib0" project="openSUSE:Factory">
+  <title>Library containing the definition of S-expressions and some base converters</title>
+  <description>Library containing the definition of S-expressions and some base converters.
+
+</description>
+  <devel project="devel:languages:ocaml" package="ocaml-sexplib0"/>
+  <url>https://github.com/janestreet/sexplib0</url>
+</package>

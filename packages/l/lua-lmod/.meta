@@ -1,0 +1,7 @@
+<package name="lua-lmod" project="openSUSE:Factory">
+  <title>Lua based Environment Modules (lmod)</title>
+  <description>Lmod: An Environment Module System based on Lua, 
+  Reads TCL Modules, Supports a Software Hierarchy</description>
+  <devel project="network:cluster" package="lua-lmod"/>
+  <url>https://github.com/TACC/Lmod</url>
+</package>

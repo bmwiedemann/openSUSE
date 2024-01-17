@@ -1,0 +1,12 @@
+<package name="aldusleaf-crimson-text-fonts" project="openSUSE:Factory">
+  <title>Serif Font</title>
+  <description>Crimson Text is a font family for book production in the tradition
+of beautiful oldstyle typefaces.
+Crimson Text was born after years of discontent with the choice of
+free text typefaces. It is a friendly, classical old-style font for books.
+
+
+</description>
+  <devel project="M17N:fonts" package="aldusleaf-crimson-text-fonts"/>
+  <url>http://aldusleaf.org/</url>
+</package>

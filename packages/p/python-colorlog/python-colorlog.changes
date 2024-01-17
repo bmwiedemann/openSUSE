@@ -1,0 +1,135 @@
+-------------------------------------------------------------------
+Tue Dec  5 12:46:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.8.0:
+  * Fix running tests in environment with NO_COLOR=1
+
+-------------------------------------------------------------------
+Mon Sep 26 22:25:43 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 6.7.0
+  no log
+
+- Update to 6.6.0:
+  Changes since v6.4.1.
+  * Add a force_color option to colorlog.formatter.ColoredFormatter.
+  * Support the FORCE_COLOR environment variable.
+
+- Update to 6.4.1:
+  Changes since v5.0.0.
+  * Dropped support for Python 2 and Python versions below Python 3.5.
+  * Added type hints and added mypy to CI (#83).
+  * Support 256 colour ANSI codes (#88).
+  * Support "light" ANSI codes (#87).
+  * Support the NO_COLOR environment variable, and a no_color option (#70).
+  * Updated various examples and documentation (#85).
+  * Merged TTYColoredFormatter into ColoredFormatter, and ensure no ANSI codes are printed when colors are disabled.
+  * Replaced LevelFormatter with a far simpler implementation.
+  * Fixed version_info check for the Formatter validate parameter.
+  * Define formatMessage instead of format, so that ColoredRecord is used in fewer places.
+  * Use setuptool's "normalised" format for the version number.
+  * Add PEP 561 typing marker so mypy can find type annotations.
+  * Renamed internal modules.
+  * colorlog.colorlog is now colorlog.formatter.
+  * colorlog.logging is now colorlog.wrappers.
+  * Removed colorlog.escape_codes object so that the colorlog.escape_codes module can be imported and used.
+  * Import log levels from the logging module (#111).
+
+-------------------------------------------------------------------
+Tue Aug 17 10:48:36 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 5.0.1
+  * Fix version check
+- from version 5.0.0
+  * Release v5.0.0, warning on older Python versions
+  * Fix #68
+- from version 4.8.0
+  * Reformat code with black
+  * Fix #98
+
+-------------------------------------------------------------------
+Mon Mar  8 22:36:19 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.7.2:
+  * no upstream changes available
+
+-------------------------------------------------------------------
+Wed Sep 16 04:37:18 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.2.1:
+  * Add setuptools to setup_requires.
+
+-------------------------------------------------------------------
+Sat Mar 14 08:57:29 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build without python2
+
+-------------------------------------------------------------------
+Sat Jan 18 09:34:54 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 4.1.0:
+  * Fix for LevelFormatter in Python >= 3.8
+  * Wrapped lines to match the rest of the code
+  * Add check if fmt is dict, missed an elif
+  * Test only on all currently supported python versions
+  * Suppress docstring section related errors
+  * Update classifiers to reflect supported versions of Python
+
+-------------------------------------------------------------------
+Mon Oct 14 11:44:22 UTC 2019 - Matej Cepl <mcepl@suse.com>
+
+- Replace %fdupes -s with plain %fdupes; hardlinks are better.
+
+-------------------------------------------------------------------
+Thu Feb 28 09:43:47 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.0.2:
+  * Minor typo fixes
+
+-------------------------------------------------------------------
+Wed Jan 16 09:37:28 UTC 2019 - mvetter@suse.com
+
+- Update to 4.0.0:
+  * Breaking change: TTYColoredFormatter requires the stream
+    argument, avoiding checking the wrong stream and still
+	displaying colors when it shouldn't.
+  * Includes some other minor changes, and attempts to close the
+    last few months worth of minor issues (#54, #62, #64, #65).
+- Changes from 3.1.0:
+  * This removed the use of parse_colors directly in format
+    strings, as it relied on an implementation specific detail of
+	Python 2 and was broken on Python 3
+- Install LICENSE
+- Run tests
+
+-------------------------------------------------------------------
+Wed Mar  1 10:15:34 UTC 2017 - aloisio@gmx.com
+
+- Converted to singlespec
+
+-------------------------------------------------------------------
+Thu Jan 26 21:11:25 UTC 2017 - jengelh@inai.de
+
+- Description fixes
+
+-------------------------------------------------------------------
+Fri Dec 16 10:28:01 UTC 2016 - aloisio@gmx.com
+
+- Update to version 2.10.0
+  * Parameterise test_ttycolorlog to mock isatty()
+  * Add a TTYColoredFormatter class
+  * Remove qutebrowser from projects using colorlog
+
+-------------------------------------------------------------------
+Mon Oct 10 18:30:53 UTC 2016 - mardnh@gmx.de
+
+- Update to version 2.7.0
+  + Adds a level based formatter
+- Fix source url
+- minor spec-cleanups
+
+-------------------------------------------------------------------
+Wed Feb 11 15:50:23 UTC 2015 - aloisio@gmx.com
+
+- Initial version 2.6.0
+

@@ -1,0 +1,10 @@
+[Unit]
+Description=Scan for unresolved .rpmnew, .rpmorig, and .rpmsave files
+After=local-fs.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/rpmconfigcheck
+
+[Install]
+WantedBy=default.target

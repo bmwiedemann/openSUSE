@@ -1,0 +1,14 @@
+--- installplatform
++++ installplatform
+@@ -118,6 +118,11 @@
+   PPD="${DESTDIR}/${platformdir}/${ARCH}-${OS}"
+   [ -d $PPD ] || mkdir -p $PPD
+ 
++  if [ "$VENDOR" = suse ] ; then
++	# suse doesn't do colors
++	CANONCOLOR=0
++  fi
++
+   cat $PLATFORM \
+   | sed -e "s,@RPMRC_OPTFLAGS@,$RPMRC_OPTFLAGS," \
+ 	-e "s,@RPMCANONARCH@,$CANONARCH,g" \

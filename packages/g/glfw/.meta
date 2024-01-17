@@ -1,0 +1,5 @@
+<package name="glfw" project="openSUSE:Factory">
+  <title>Portable framework for OpenGL application development</title>
+  <description>GLFW is a free, Open Source, portable framework for OpenGL application development. In short, it is a single library providing a powerful, portable API for otherwise operating system specific tasks such as opening an OpenGL window, and reading keyboard, time, mouse and joystick input.</description>
+  <devel project="games" package="glfw"/>
+</package>

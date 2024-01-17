@@ -1,0 +1,46 @@
+<package name="perl-MooseX-Getopt" project="openSUSE:Factory">
+  <title>A Moose role for processing command line options</title>
+  <description>This is a role which provides an alternate constructor for creating objects
+using parameters passed in from the command line.
+
+This module attempts to DWIM as much as possible with the command line
+params by introspecting your class's attributes. It will use the name of
+your attribute as the command line option, and if there is a type
+constraint defined, it will configure Getopt::Long to handle the option
+accordingly.
+
+You can use the trait the MooseX::Getopt::Meta::Attribute::Trait manpage or
+the attribute metaclass the MooseX::Getopt::Meta::Attribute manpage to get
+non-default commandline option names and aliases.
+
+You can use the trait the MooseX::Getopt::Meta::Attribute::Trait::NoGetopt
+manpage or the attribute metaclass the
+MooseX::Getopt::Meta::Attribute::NoGetopt manpage to have 'MooseX::Getopt'
+ignore your attribute in the commandline options.
+
+By default, attributes which start with an underscore are not given
+commandline argument support, unless the attribute's metaclass is set to
+the MooseX::Getopt::Meta::Attribute manpage. If you don't want your
+accessors to have the leading underscore in their name, you can do this:
+
+  # for read/write attributes
+  has '_foo' =&gt; (accessor =&gt; 'foo', ...);
+
+  # or for read-only attributes
+  has '_bar' =&gt; (reader =&gt; 'bar', ...);
+
+This will mean that Getopt will not handle a --foo param, but your code can
+still call the 'foo' method.
+
+If your class also uses a configfile-loading role based on the
+MooseX::ConfigFromFile manpage, such as the MooseX::SimpleConfig manpage,
+the MooseX::Getopt manpage's 'new_with_options' will load the configfile
+specified by the '--configfile' option (or the default you've given for the
+configfile attribute) for you.
+
+Options specified in multiple places follow the following precendence
+order: commandline overrides configfile, which overrides explicit
+new_with_options parameters.</description>
+  <devel project="devel:languages:perl" package="perl-MooseX-Getopt"/>
+  <url>http://search.cpan.org/dist/MooseX-Getopt/</url>
+</package>

@@ -1,0 +1,52 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>711bfe31cc71caa8658996d05a6a58b7</srcmd5>
+    <version>0.2</version>
+    <time>1534322348</time>
+    <user>dimstar_suse</user>
+    <comment>Required by python-pytest-astropy, which in turn is required by python-astropy.</comment>
+    <requestid>629288</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>970a3a66e5454645fa2f40ea23b85678</srcmd5>
+    <version>0.3</version>
+    <time>1557170226</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3:
+  * Fixed compatibility with pytest 4+. [#15]
+- Use _multibuild to run tests</comment>
+    <requestid>701023</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>7bd1e5f4fa049d95f71fa2c6e9a52568</srcmd5>
+    <version>0.3</version>
+    <time>1619552059</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>888760</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a6c09ec197c45163e2bd222e035b9d2e</srcmd5>
+    <version>0.5.0</version>
+    <time>1667901294</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1034429</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6389d4be4ef078252b8c145cedc44c66</srcmd5>
+    <version>0.6.1</version>
+    <time>1702673320</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.6.1:
+  * Fix broken ``single_reference=True`` usage.
+  * Add ability to compare to Pandas DataFrames and store them as
+    HDF5 files
+  * Fix ``array_compare`` so that the ``atol`` parameter is
+    correctly used with FITS files.
+  * Test inside ``pytest_runtest_call`` hook.
+
+- Do not build :test on Python 3.6, due to no NumPy.</comment>
+    <requestid>1133204</requestid>
+  </revision>
+</revisionlist>

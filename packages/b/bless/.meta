@@ -1,0 +1,5 @@
+<package name="bless" project="openSUSE:Factory">
+  <title>Bless Hex Editor</title>
+  <description>Bless is a high quality, full featured hex editor. It is written in C# with Mono/Gtk#.</description>
+  <devel project="Mono:Factory" package="bless"/>
+</package>

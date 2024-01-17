@@ -1,0 +1,79 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7ec5c5c13943a729100b689a6323f817</srcmd5>
+    <version>1.0.0</version>
+    <time>1527605220</time>
+    <user>dimstar_suse</user>
+    <comment>Quote style checker for python</comment>
+    <requestid>605772</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>73cd626df181a9647a25d71a9d0b70f3</srcmd5>
+    <version>1.0.0</version>
+    <time>1544726682</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>654058</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>edab7353b50ea22a469ccc392af429e3</srcmd5>
+    <version>2.0.1</version>
+    <time>1558516658</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704521</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2095846d03fa1c1ce7e6c45d6224d2a5</srcmd5>
+    <version>2.1.0</version>
+    <time>1564994527</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720878</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>15542ae77671ca49c8a92281627c2691</srcmd5>
+    <version>3.0.0</version>
+    <time>1587071093</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.0:
+  * no upstream changelog</comment>
+    <requestid>794557</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7234a0736fc4d493ad19110eeb0d9bfd</srcmd5>
+    <version>3.2.0</version>
+    <time>1595864426</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>822786</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>bd12b087a66660c76696d54ec9e37460</srcmd5>
+    <version>3.3.1</version>
+    <time>1642273518</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.3.1
+  * python 3.9/3.10 added
+  * python 2 removed</comment>
+    <requestid>946648</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>8d4933d919ad059faddd922387bc3cd5</srcmd5>
+    <version>3.3.1</version>
+    <time>1671455298</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1043731</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8adf1f150edc64ec488eade2c788c69e</srcmd5>
+    <version>3.3.2</version>
+    <time>1672754705</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.3.2:
+  * support flake8 6.0
+- drop support-flake8-6.patch (upstream)</comment>
+    <requestid>1046241</requestid>
+  </revision>
+</revisionlist>

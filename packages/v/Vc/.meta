@@ -1,0 +1,11 @@
+<package name="Vc" project="openSUSE:Factory">
+  <title>Collection of SIMD Vector Classes</title>
+  <description>
+Vc is a free software library to ease explicit vectorization of C++ code. It
+has an intuitive API and provides portability between different compilers and
+compiler versions as well as portability between different vector instruction
+sets.
+</description>
+  <devel project="devel:libraries:c_c++" package="Vc"/>
+  <url>http://code.compeng.uni-frankfurt.de/projects/vc/</url>
+</package>

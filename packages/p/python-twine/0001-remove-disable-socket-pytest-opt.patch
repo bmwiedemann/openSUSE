@@ -1,0 +1,13 @@
+Only in twine-3.4.1: .coverage
+Only in twine-3.4.1: .pytest_cache
+---
+ pytest.ini |    1 -
+ 1 file changed, 1 deletion(-)
+
+--- a/pytest.ini
++++ b/pytest.ini
+@@ -6,4 +6,3 @@ filterwarnings=
+ 	ignore:the imp module is deprecated::setuptools
+ 
+ addopts =
+-	--disable-socket

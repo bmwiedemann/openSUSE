@@ -1,0 +1,87 @@
+diff -urEbw rebar3-3.18.0/bootstrap rebar3-3.18.0.new/bootstrap
+--- rebar3-3.18.0/bootstrap	2022-01-02 13:51:49.000000000 +0100
++++ rebar3-3.18.0.new/bootstrap	2022-03-31 13:47:34.037209305 +0200
+@@ -31,15 +31,6 @@
+     os:putenv("REBAR_PROFILE", "bootstrap"),
+     compile_vendored(),
+ 
+-    %% Fetch and build deps required to build rebar3
+-    BaseDeps = [{providers, []}
+-               ,{getopt, []}
+-               ,{cf, []}
+-               ,{erlware_commons, ["ec_dictionary.erl", "ec_vsn.erl"]}
+-               ,{certifi, ["certifi_pt.erl"]}],
+-    Deps = get_deps(),
+-    [fetch_and_compile(Dep, Deps) || Dep <- BaseDeps],
+-
+     %% Build rebar3 modules with compile:file
+     bootstrap_rebar3(),
+ 
+@@ -61,7 +52,6 @@
+     code:add_pathsa(DepsPaths),
+ 
+     rebar3:run(["clean", "-a"]),
+-    rebar3:run(["as", "prod", "escriptize"]),
+ 
+     %% Done with compile, can turn back on error logger
+     error_logger:tty(true).
+diff -urEbw rebar3-3.18.0/rebar.config rebar3-3.18.0.new/rebar.config
+--- rebar3-3.18.0/rebar.config	2022-01-02 13:51:49.000000000 +0100
++++ rebar3-3.18.0.new/rebar.config	2022-03-31 13:47:34.049209352 +0200
+@@ -1,17 +1,6 @@
+ %% -*- mode: erlang;erlang-indent-level: 4;indent-tabs-mode: nil -*-
+ %% ex: ts=4 sw=4 ft=erlang et
+ 
+-{deps, [{erlware_commons,  "1.5.0"},
+-        {ssl_verify_fun,   "1.1.6"},
+-        {certifi,          "2.8.0"},
+-        {providers,        "1.9.0"},
+-        {getopt,           "1.0.1"},
+-        {bbmustache,       "1.12.2"},
+-        {relx,             "4.6.0"},
+-        {cf,               "0.3.1"},
+-        {cth_readable,     "1.5.1"},
+-        {eunit_formatters, "0.5.0"}]}.
+-
+ {post_hooks, [{"(linux|darwin|solaris|freebsd|netbsd|openbsd)",
+                escriptize,
+                "cp \"$REBAR_BUILD_DIR/bin/rebar3\" ./rebar3"},
+diff -urEbw rebar3-3.18.0/rebar.lock rebar3-3.18.0.new/rebar.lock
+--- rebar3-3.18.0/rebar.lock	2022-01-02 13:51:49.000000000 +0100
++++ rebar3-3.18.0.new/rebar.lock	2022-03-31 13:47:28.037185288 +0200
+@@ -1,35 +0,0 @@
+-{"1.2.0",
+-[{<<"bbmustache">>,{pkg,<<"bbmustache">>,<<"1.12.2">>},0},
+- {<<"certifi">>,{pkg,<<"certifi">>,<<"2.8.0">>},0},
+- {<<"cf">>,{pkg,<<"cf">>,<<"0.3.1">>},0},
+- {<<"cth_readable">>,{pkg,<<"cth_readable">>,<<"1.5.1">>},0},
+- {<<"erlware_commons">>,{pkg,<<"erlware_commons">>,<<"1.5.0">>},0},
+- {<<"eunit_formatters">>,{pkg,<<"eunit_formatters">>,<<"0.5.0">>},0},
+- {<<"getopt">>,{pkg,<<"getopt">>,<<"1.0.1">>},0},
+- {<<"providers">>,{pkg,<<"providers">>,<<"1.9.0">>},0},
+- {<<"relx">>,{pkg,<<"relx">>,<<"4.6.0">>},0},
+- {<<"ssl_verify_fun">>,{pkg,<<"ssl_verify_fun">>,<<"1.1.6">>},0}]}.
+-[
+-{pkg_hash,[
+- {<<"bbmustache">>, <<"0CABDCE0DB9FE6D3318131174B9F2B351328A4C0AFBEB3E6E99BB0E02E9B621D">>},
+- {<<"certifi">>, <<"D4FB0A6BB20B7C9C3643E22507E42F356AC090A1DCEA9AB99E27E0376D695EBA">>},
+- {<<"cf">>, <<"5CB902239476E141EA70A740340233782D363A31EEA8AD37049561542E6CD641">>},
+- {<<"cth_readable">>, <<"F511EFCFDE04A48B014A9197FFF1B4C4860E4E35CDB8E2F3AE3C4178E20299B1">>},
+- {<<"erlware_commons">>, <<"918C56D8FB3BE52AF0DF138ED6E0755E764AD4467CD7D025761F7D0A17D3DEC1">>},
+- {<<"eunit_formatters">>, <<"6A9133943D36A465D804C1C5B6E6839030434B8879C5600D7DDB5B3BAD4CCB59">>},
+- {<<"getopt">>, <<"C73A9FA687B217F2FF79F68A3B637711BB1936E712B521D8CE466B29CBF7808A">>},
+- {<<"providers">>, <<"46F6645B0C677B1029E02B013BFD69092A2232854DAF359F2378FA42AC0BEC0D">>},
+- {<<"relx">>, <<"939DB831A63CC35A7850C99DCC758FE9F3900E32E1DAB7CBB34E5306CAF53168">>},
+- {<<"ssl_verify_fun">>, <<"CF344F5692C82D2CD7554F5EC8FD961548D4FD09E7D22F5B62482E5AEAEBD4B0">>}]},
+-{pkg_hash_ext,[
+- {<<"bbmustache">>, <<"688B33A4D5CC2D51F575ADF0B3683FC40A38314A2F150906EDCFC77F5B577B3B">>},
+- {<<"certifi">>, <<"6AC7EFC1C6F8600B08D625292D4BBF584E14847CE1B6B5C44D983D273E1097EA">>},
+- {<<"cf">>, <<"315E8D447D3A4B02BCDBFA397AD03BBB988A6E0AA6F44D3ADD0F4E3C3BF97672">>},
+- {<<"cth_readable">>, <<"686541A22EFE6CA5A41A047B39516C2DD28FB3CADE5F24A2F19145B3967F9D80">>},
+- {<<"erlware_commons">>, <<"3E7C6FB2BA4C29B0DD5DFE9D031B66449E2088ECEC1A81465BD9FDE05ED7D0DB">>},
+- {<<"eunit_formatters">>, <<"D6C8BA213424944E6E05BBC097C32001CDD0ABE3925D02454F229B20D68763C9">>},
+- {<<"getopt">>, <<"53E1AB83B9CEB65C9672D3E7A35B8092E9BDC9B3EE80721471A161C10C59959C">>},
+- {<<"providers">>, <<"D287E874406A1505608642B0A3DB5B68D6ADA3F2AB001AEC87E7F4D7C79FC017">>},
+- {<<"relx">>, <<"2FF8131C63093C621C6B37DC52D1B2848A938886584B4B701D35BDBE4377F509">>},
+- {<<"ssl_verify_fun">>, <<"BDB0D2471F453C88FF3908E7686F86F9BE327D065CC1EC16FA4540197EA04680">>}]}
+-].

@@ -1,0 +1,10 @@
+<package name="redland" project="openSUSE:Factory">
+  <title>Libraries that provide support for the Resource Description Framework (RDF)</title>
+  <description>Redland is a library that provides a high-level interface for RDF
+(Resource Description Framework) implemented in an object-based API. It
+is modular and supports different RDF parsers, serializers, storage and
+query languages.  Redland is designed for developers to provide RDF
+support in their applications as well as a core library for RDF
+developers to start with.</description>
+  <devel project="X11:common:Factory" package="redland"/>
+</package>

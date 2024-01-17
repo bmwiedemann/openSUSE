@@ -1,0 +1,57 @@
+From 0612c1181f232eb1c7be05a40c9c951a51cd0f2a Mon Sep 17 00:00:00 2001
+From: Zhang Dingyuan <zhangdingyuan@deepin.org>
+Date: Mon, 26 Dec 2022 16:22:38 +0800
+Subject: [PATCH] fix: window mode show slowly
+
+community version has qt patch
+
+Log:
+---
+ src/model/appsmanager.cpp      | 2 +-
+ src/model/iconcachemanager.cpp | 6 +++---
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/model/appsmanager.cpp b/src/model/appsmanager.cpp
+index 3542ed55..f5decc10 100644
+--- a/src/model/appsmanager.cpp
++++ b/src/model/appsmanager.cpp
+@@ -760,7 +760,7 @@ const QPixmap AppsManager::appIcon(const ItemInfo &info, const int size)
+ 
+         // 缓存中没有时，资源从主线程加载
+         m_itemInfo = info;
+-        m_iconValid = getThemeIcon(pix, info, size, !m_iconValid);
++        m_iconValid = getThemeIcon(pix, info, size, !DSysInfo::isCommunityEdition());
+ 
+         if (m_iconValid) {
+             m_tryNums = 0;
+diff --git a/src/model/iconcachemanager.cpp b/src/model/iconcachemanager.cpp
+index 7cdb57d0..21d37456 100644
+--- a/src/model/iconcachemanager.cpp
++++ b/src/model/iconcachemanager.cpp
+@@ -44,7 +44,7 @@ void IconCacheManager::createPixmap(const ItemInfo &itemInfo, int size)
+         return;
+ 
+     QPixmap pixmap;
+-    m_iconValid = getThemeIcon(pixmap, itemInfo, size, !m_iconValid);
++    m_iconValid = getThemeIcon(pixmap, itemInfo, size, !DSysInfo::isCommunityEdition());
+     if (m_iconValid) {
+         m_tryNums = 0;
+     } else {
+@@ -54,7 +54,7 @@ void IconCacheManager::createPixmap(const ItemInfo &itemInfo, int size)
+                 QIcon::setThemeSearchPaths(QIcon::themeSearchPaths());
+ 
+             QThread::msleep(10);
+-            m_iconValid = getThemeIcon(pixmap, itemInfo, size, true);
++            m_iconValid = getThemeIcon(pixmap, itemInfo, size, !DSysInfo::isCommunityEdition());
+         } else {
+             if (m_tryCount > 10) {
+                 m_tryCount = 0;
+@@ -71,7 +71,7 @@ void IconCacheManager::createPixmap(const ItemInfo &itemInfo, int size)
+ 
+             ++m_tryCount;
+             QThread::msleep(500);
+-            m_iconValid = getThemeIcon(pixmap, itemInfo, size, true);
++            m_iconValid = getThemeIcon(pixmap, itemInfo, size, !DSysInfo::isCommunityEdition());
+         }
+     }
+ }

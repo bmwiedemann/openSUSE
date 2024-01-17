@@ -1,0 +1,5 @@
+<package name="sblim-cmpi-base" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="systemsmanagement:wbem" package="sblim-cmpi-base"/>
+</package>

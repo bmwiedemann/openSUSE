@@ -1,0 +1,158 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>02e1dc7860d37882735a75d3d43a4e35</srcmd5>
+    <version>3.0.4</version>
+    <time>1575463790</time>
+    <user>dimstar_suse</user>
+    <comment>initial submission to factory</comment>
+    <requestid>745534</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d47435df584026b9b357cdd8a49ca6a5</srcmd5>
+    <version>3.0.5</version>
+    <time>1585602157</time>
+    <user>dimstar_suse</user>
+    <comment>- poppler_api.patch added to fix API changes in poppler 
+- version 3.0.5
+  * fix for API change in poppler
+</comment>
+    <requestid>789544</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>16a608df577986753cfb8f97b6667c13</srcmd5>
+    <version>3.0.5</version>
+    <time>1586973291</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>793956</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>5dc5b87ddd96e65e7b32f26efe2e7586</srcmd5>
+    <version>3.0.5</version>
+    <time>1591742929</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>812770</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>812829dd747340e384b4254a3b49c772</srcmd5>
+    <version>3.0.6</version>
+    <time>1592245797</time>
+    <user>dimstar_suse</user>
+    <comment>- version 3.0.6
+  * no changelog available
+  * poppler_api.patch removed (included in source)</comment>
+    <requestid>814644</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c4236cec5b775d3716840cbeb756beed</srcmd5>
+    <version>3.0.7</version>
+    <time>1593727938</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>818300</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>91a17d7bbf4a8f2bb371c1b38680275a</srcmd5>
+    <version>3.0.8</version>
+    <time>1603202726</time>
+    <user>dimstar_suse</user>
+    <comment>- version 3.0.8
+  * Fix TestScanner1 test
+
+Well, that changelog is not so much better than none. Seems upstream is very tight-lipped :-)</comment>
+    <requestid>842383</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>a350f7a8804d946d81a04f690a4da728</srcmd5>
+    <version>3.0.8</version>
+    <time>1604609774</time>
+    <user>dimstar_suse</user>
+    <comment>- typo corrected: fix_charls_2.patch removed
+- fixed build system
+  fix_charls2_patch removed
+  0001-Fix-build-with-CharLS-2.1.0.patch added
+</comment>
+    <requestid>846269</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>9dd3b1fe3287d4d40ef2fe07e194ba0f</srcmd5>
+    <version>3.0.8</version>
+    <time>1622839428</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>897350</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>91d798c982433a178a2804e5178adc3f</srcmd5>
+    <version>3.0.9</version>
+    <time>1627492793</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>908642</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>9362fedea761ddc816a9fb0e844ae917</srcmd5>
+    <version>3.0.9</version>
+    <time>1628675230</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>911194</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>08202a6c8111ed0ef6e6713ae42a966e</srcmd5>
+    <version>3.0.10</version>
+    <time>1639515732</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>940514</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3283500405bd23f73674f01d578bb21f</srcmd5>
+    <version>3.0.12</version>
+    <time>1648841779</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>966444</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>0b10f51ced1eab5e3420366ee93f40c6</srcmd5>
+    <version>3.0.18</version>
+    <time>1664820481</time>
+    <user>dimstar_suse</user>
+    <comment>package corrected</comment>
+    <requestid>1007692</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>5b661747457b3409e4deca75b64bf514</srcmd5>
+    <version>3.0.19</version>
+    <time>1665185174</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1008842</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>52e9e36a30a19b97f6b2bcbff60d9207</srcmd5>
+    <version>3.0.19</version>
+    <time>1667399576</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032893</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>c8967ff6acb676779221558a6ac61560</srcmd5>
+    <version>3.0.20</version>
+    <time>1670259658</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1040039</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ca9a231715116f893e1e90ba9e2cff46</srcmd5>
+    <version>3.0.21</version>
+    <time>1678380342</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1070266</requestid>
+  </revision>
+</revisionlist>

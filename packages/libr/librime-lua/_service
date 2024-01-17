@@ -1,0 +1,13 @@
+<services>
+  <service name="obs_scm" mode="disabled">
+    <param name="url">git://github.com/hchunhui/librime-lua.git</param>
+    <param name="scm">git</param>
+    <param name="versionformat">0.0.0+git%ad.%h</param>
+  </service>
+  <service name="tar" mode="disabled" />
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="disabled" />
+</services>

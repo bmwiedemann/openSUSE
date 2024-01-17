@@ -1,0 +1,17 @@
+<services>
+  <service mode="disabled" name="tar_scm">
+    <param name="url">https://github.com/networktocode/pynxos.git</param>
+    <param name="scm">git</param>
+    <param name="revision">6ee22d5</param>
+    <param name="package-meta">no</param>
+    <param name="changesgenerate">enable</param>
+    <param name="filename">pynxos</param>
+    <param name="versionformat">0.0.5</param>
+  </service>
+  <service mode="disabled" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="disabled" name="set_version"/>
+</services>
+

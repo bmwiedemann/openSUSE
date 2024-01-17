@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Mon Feb 27 09:22:05 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- don't use buildtime set-version - not compatible with factory policy
+- switch supplements for bash completion to match on bash-completion rather
+  than bash (as bash is always installed)
+
+-------------------------------------------------------------------
+Thu Mar 31 12:21:23 UTC 2022 - mvetter@suse.com
+
+- Update to version 3.18.0:
+  * bump to 3.18.0
+  * bump relx to 4.6.0 with optional_applications support
+  * add support for otp24 optional applications
+  * Use git command in non interactive mode
+  * Fix typos
+  * git_resource: print warning from git rev-list, if any, in get_patch_count/2
+  * Fix NIF compilation on Apple M1.
+  * Add regression test on parse transform rebuild
+  * Prevent a parse transform in a project triggering a full rebuild even if the transform hasn't changed
+
+-------------------------------------------------------------------
+Wed Jan 13 09:49:36 UTC 2021 - matwey.kornilov@gmail.com
+
+- Initial version
+

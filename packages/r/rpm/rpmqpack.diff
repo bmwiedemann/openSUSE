@@ -1,0 +1,115 @@
+--- Makefile.am.orig	2022-08-30 11:42:23.754853580 +0000
++++ Makefile.am	2022-12-02 13:15:01.631426573 +0000
+@@ -186,6 +186,10 @@ rpmgraph_LDADD =	lib/librpm.la rpmio/lib
+ 
+ dist_bin_SCRIPTS =	scripts/gendiff
+ 
++bin_PROGRAMS +=		rpmqpack
++rpmqpack_SOURCES =      rpmqpack.c
++rpmqpack_LDADD =        lib/librpm.la
++
+ rpmconfig_DATA = rpmrc
+ rpmrc: $(top_srcdir)/rpmrc.in
+ 	@$(SED) \
+--- docs/man/Makefile.am.orig	2022-04-07 11:13:18.958517604 +0000
++++ docs/man/Makefile.am	2022-12-02 13:16:00.071289072 +0000
+@@ -9,7 +9,7 @@ EXTRA_DIST += gendiff.1.md
+ 
+ man_man8dir = $(mandir)/man8
+ man_man8_DATA = rpm.8 rpm-misc.8 rpmbuild.8 rpmdeps.8 rpmgraph.8 rpm2cpio.8
+-man_man8_DATA += rpmdb.8 rpmkeys.8 rpmsign.8 rpmspec.8 rpmlua.8
++man_man8_DATA += rpmdb.8 rpmkeys.8 rpmsign.8 rpmspec.8 rpmlua.8 rpmqpack.8
+ 
+ EXTRA_DIST += rpm.8.md rpm-misc.8.md rpmbuild.8.md rpmdeps.8.md rpmgraph.8.md
+ EXTRA_DIST += rpm2cpio.8.md rpmdb.8.md rpmkeys.8.md rpmsign.8.md rpmspec.8.md
+--- docs/man/rpmqpack.8.orig	2022-12-02 13:15:01.635426563 +0000
++++ docs/man/rpmqpack.8	2022-12-02 13:15:01.635426563 +0000
+@@ -0,0 +1,25 @@
++.TH RPMQPACK 8 "Mar 2002"
++.SH NAME
++rpmqpack \- check for installed rpm packages
++
++.SH SYNOPSIS
++.B rpmqpack
++.RI [ pack1 "] [" pack2 ]...
++
++.SH DESCRIPTION
++rpmqpack checks if packages given as arguments are installed in
++the system. It prints each installed package to stdout.
++If no arguments are given all installed packages are printed.
++
++.SH EXIT STATUS
++rpmqpack returns 0 if all given packages are installed, otherwise
++1.
++
++.SH SEE ALSO
++.BR rpm (1)
++
++.SH COPYRIGHT
++2002 SUSE Linux AG Nuernberg, Germany.
++
++.SH AUTHOR
++Michael Schroeder <mls@suse.de>
+--- rpmqpack.c.orig	2022-12-02 13:15:01.635426563 +0000
++++ rpmqpack.c	2022-12-02 13:15:01.635426563 +0000
+@@ -0,0 +1,60 @@
++#include <sys/types.h>
++#include <limits.h>
++#include <fcntl.h>
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++
++#include <rpm/rpmts.h>
++#include <rpm/rpmdb.h>
++#include <rpm/rpmmacro.h>
++
++int
++main(int argc, char **argv)
++{
++  int ret = 0;
++  rpmts ts;
++
++  rpmDefineMacro(NULL, "_dbpath /var/lib/rpm", 0);
++  ts = rpmtsCreate();
++  if (!ts)
++    {
++      fprintf(stderr, "rpmtsCreate failed\n");
++      exit(1);
++    }
++  if (rpmtsOpenDB(ts, O_RDONLY))
++    {
++      perror("rpmtsOpenDB");
++      exit(1);
++    }
++  if (argc <= 1)
++    {
++      rpmdbIndexIterator ii;
++      ii = rpmdbIndexIteratorInit(rpmtsGetRdb(ts), RPMDBI_NAME);
++      if (ii)
++	{
++	  const void *key = 0;
++          size_t keylen = 0;
++	  while ((rpmdbIndexIteratorNext(ii, &key, &keylen)) == 0)
++	    printf("%*.*s\n", (int)keylen, (int)keylen, (char *)key);
++	}
++      rpmdbIndexIteratorFree(ii);
++    }
++  else
++    {
++      argc--;
++      while (argc--)
++	{
++          rpmdbMatchIterator mi;
++	  argv++;
++          mi = rpmdbInitIterator(rpmtsGetRdb(ts), RPMDBI_NAME, (void *)*argv, strlen(*argv));
++	  if (mi && rpmdbGetIteratorCount(mi))
++	    printf("%s\n", *argv);
++          else
++	    ret = 1;
++	  rpmdbFreeIterator(mi);
++        }
++    }
++  rpmtsFree(ts);
++  return ret;
++}

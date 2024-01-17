@@ -1,0 +1,86 @@
+-------------------------------------------------------------------
+Wed Jun  5 14:30:07 UTC 2013 - coolo@suse.com
+
+- updated to 2.05
+   Require perl 5.5
+   Test for pod
+
+-------------------------------------------------------------------
+Fri Nov 18 11:09:18 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:33 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:30:33 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Tue Oct 19 08:38:49 UTC 2010 - coolo@novell.com
+
+- add perl as explicit buildrequire
+
+-------------------------------------------------------------------
+Thu Mar 25 17:43:51 CET 2010 - anicka@suse.cz
+
+- update to 2.04
+ * Compatibility with old EU::MM.
+
+-------------------------------------------------------------------
+Thu Mar  4 14:47:03 CET 2010 - anicka@suse.cz
+
+- update to 2.03
+ * Error in test fixed.
+ * New tests added.
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:49 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sun Jan 11 11:23:35 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Fri Aug 22 15:12:44 CEST 2003 - mjancar@suse.cz
+
+- require the perl version we build with
+
+-------------------------------------------------------------------
+Tue Jul 15 15:58:46 CEST 2003 - mjancar@suse.cz
+
+- adapt to perl-5.8.1
+- use %perl_process_packlist
+
+-------------------------------------------------------------------
+Tue May 20 12:40:19 CEST 2003 - mjancar@suse.cz
+
+- remove unpackaged files
+
+-------------------------------------------------------------------
+Fri Jul 12 13:41:57 CEST 2002 - prehak@suse.cz
+
+- update to version 2.01
+
+-------------------------------------------------------------------
+Tue Jul  2 17:40:06 MEST 2002 - mls@suse.de
+
+- remove race in .packlist generation
+
+-------------------------------------------------------------------
+Mon Nov 20 16:52:26 MET 2000 - rolf@suse.de
+
+- extracted from perlmod package
+

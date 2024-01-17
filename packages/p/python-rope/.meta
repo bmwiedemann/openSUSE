@@ -1,0 +1,6 @@
+<package name="python-rope" project="openSUSE:Factory">
+  <title></title>
+  <description>Rope is a python refactoring library.</description>
+  <devel project="devel:languages:python" package="python-rope"/>
+  <url>http://rope.sf.net/</url>
+</package>

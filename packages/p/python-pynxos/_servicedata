@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/networktocode/pynxos.git</param>
+              <param name="changesrevision">bb919eeba5c883fd51b6996802fb53aa3fd99998</param></service></servicedata>

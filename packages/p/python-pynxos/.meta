@@ -1,0 +1,8 @@
+<package name="python-pynxos" project="openSUSE:Factory">
+  <title>A library for managing Cisco NX-OS devices through NX-API</title>
+  <description>A library for managing Cisco NX-OS devices through NX-API
+
+</description>
+  <devel project="devel:languages:python" package="python-pynxos"/>
+  <url>https://github.com/networktocode/pynxos/</url>
+</package>

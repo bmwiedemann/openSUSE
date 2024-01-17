@@ -1,0 +1,244 @@
+-------------------------------------------------------------------
+Fri May  5 13:44:23 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 4.0.2:
+  - Remove deprecated function to fix twine check with pkginfo
+    1.9.0.
+  - Improve logging when keyring fails.
+  - Reconfgure root logger to show all log messages.
+  - Drop support for Python 3.6.
+  - Use Rich instead of tqdm for upload progress bar.
+  - Remove Twine’s dependencies from the User-Agent header when
+    uploading.
+  - Improve detection of disabled BLAKE2 hashing due to FIPS
+    mode.
+  - Restore warning for missing long_description.
+  - Add --verbose logging for querying keyring credentials.
+  - Log all upload responses with --verbose.
+  - Show more helpful error message for invalid metadata.
+  - Require a recent version of urllib3.
+  - Add support for core metadata version 2.2, defined in PEP
+    643.
+  - Add support for Python 3.10.
+  - Show more helpful messages for invalid passwords.
+  - Allow the --skip-existing option to work with GCP Artifact
+    Registry.
+  - Add a helpful error message when an upload fails due to
+    missing a trailing slash in the URL.
+  - Generalize --verbose suggestion when an upload fails.
+  - Improve error messages
+  - Do not include md5_digest or blake2_256_digest if FIPS mode
+    is enabled on the host. This removes those fields from the
+    metadata before sending the metadata to the repository.
+- Add license_files.patch to make pip happy.
+
+-------------------------------------------------------------------
+Fri Apr 21 12:38:02 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:45:36 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
+Sun Jul 11 17:40:20 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- added 0001-remove-disable-socket-pytest-opt.patch
+- update to 3.4.1
+  * 3.4.1 (2021-03-16)
+    Bugfixes
+    - Fix a regression that was causing some namespace packages with dots in them fail to upload to PyPI. (#745)
+  * 3.4.0 (2021-03-15)
+    Features
+    - Prefer importlib.metadata for entry point handling. (#728)
+    - Rely on importlib_metadata 3.6 for nicer entry point processing. (#732)
+    - Eliminate dependency on setuptools/pkg_resources and replace with packaging and importlib_metadata. (#736)
+  * 3.3.0 (2020-12-23)
+    Features
+    - Print files to be uploaded using ``upload --verbose`` (#670)
+    - Print configuration file location when using ``upload --verbose`` (#675)
+    - Print source and values of credentials when using ``upload --verbose`` (#685)
+    - Add support for Python 3.9 (#708)
+    - Turn warnings into errors when using ``check --strict`` (#715)
+    Bugfixes
+    - Make password optional when using ``upload --client-cert`` (#678)
+    - Support more Nexus versions with ``upload --skip-existing`` (#693)
+    - Support Gitlab Enterprise with ``upload --skip-existing`` (#698)
+    - Show a better error message for malformed files (#714)
+    Improved Documentation
+    - Adopt PSF code of conduct (#680)
+    - Adopt towncrier for the changleog (#718)
+
+-------------------------------------------------------------------
+Thu Jul 23 12:22:51 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 3.2.0
+  * :feature:`666` Improve display of HTTP errors during upload
+  * :feature:`649` Use red text when printing errors on the command line
+  * :feature:`652` Print packages and signatures to be uploaded when using
+    ``--verbose`` option
+  * :bug:`655 major` Update URL to ``.pypirc`` specfication
+  * :feature:`602` Require repository URL scheme to be ``http`` or ``https``
+  * :bug:`612 major` Don't raise an exception when Python version can't be
+    parsed from filename
+
+-------------------------------------------------------------------
+Sun Apr  5 07:40:00 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update deps to really match up reality
+
+-------------------------------------------------------------------
+Thu Mar 26 09:15:04 UTC 2020 - pgajdos@suse.com
+
+- version update to 3.1.1
+  bug`548` Restore --non-interactive as a flag not expecting an argument.
+  :feature:`547` Add support for specifying --non-interactive as an environment variable.
+  :feature:`336` When a client certificate is indicated, all password processing is disabled.
+  :feature:`489` Add --non-interactive flag to abort upload rather than interactively prompt if credentials are missing.
+  :feature:`524` Twine now unconditionally requires the keyring library and no longer supports uninstalling keyring as a means to disable that functionality. Instead, use keyring --disable keyring functionality if necessary.
+  :feature:`518` Add Python 3.8 to classifiers.
+  bug`332 major` More robust handling of server response in --skip-existing
+  :feature:`437` Twine now requires Python 3.6 or later. Use pip 9 or pin to "twine<2" to install twine on older Python versions.
+  bug`491 major` Require requests 2.20 or later to avoid reported security vulnerabilities in earlier releases.
+- python3 only package
+
+-------------------------------------------------------------------
+Thu Mar 12 07:53:47 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build without python2
+
+-------------------------------------------------------------------
+Tue Feb 25 11:22:38 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 1.15.0
+- last with python2
+- Improved output on check command
+
+-------------------------------------------------------------------
+Tue Sep 10 09:42:43 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.14.0:
+  * Better error handling and gpg2 fallback if gpg not available.
+  * Fixes for python 3.8
+
+-------------------------------------------------------------------
+Sat Mar  2 04:53:11 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * be more specific in %files section
+  * remove patch fix-keyring-support.patch, included upstream
+
+- update to version 1.13.0:
+  * bug`452` Restore prompts while retaining support for suppressing
+    prompts.
+  * bug`447` Avoid requests-toolbelt to 0.9.0 to prevent attempting to
+    use openssl when it isn't available.
+  * :feature:`427` Add disable_progress_bar option to disable tqdm.
+  * :feature:`426` Allow defining an empty username and password in
+    .pypirc.
+  * bug`441` Only install pyblake2 if needed.
+  * bug`444` Use io.StringIO instead of StringIO.
+  * bug`436` Use modern Python language features.
+  * :support:`439` Refactor tox env and travis config.
+  * bug`435` Specify python_requires in setup.py
+  * bug`432` Use https URLs everywhere.
+  * bug`428` Fix --skip-existing for Nexus Repos.
+  * :feature:`419` Support keyring.get_credential.
+  * :feature:`418` Support keyring.get_username_and_password.
+  * bug`421` Remove unnecessary usage of readme_render.markdown.
+  * :feature:" Add Python 3.7 to classifiers.
+  * bug`412` Don't crash if there's no package description.
+  * bug`408` Fix keyring support.
+
+-------------------------------------------------------------------
+Sat Feb  9 19:52:43 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Add fix-keyring-support.patch fixing
+  gh#pypa/twine#408
+
+-------------------------------------------------------------------
+Sat Feb  9 13:45:55 UTC 2019 - Matej Cepl <mcepl@suse.com>
+
+- Deduplicate installed files
+
+-------------------------------------------------------------------
+Fri Jan  4 14:54:32 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
+
+- update to version 1.12.1
+  - bug`404` Fix regression with upload exit code
+
+- update to version 1.12.0
+  - feature`395 major` Add twine check command to check long description
+  - feature`392 major` Drop support for Python 3.3
+  - feature`363` Empower --skip-existing for Artifactory repositories
+  - bug`367` Avoid MD5 when Python is compiled in FIPS mode
+
+- Fix source URL
+- add python-readme_renderer dependency
+- BuildRequire python2-pyblake2 for successful testing
+
+-------------------------------------------------------------------
+Mon May 21 09:30:29 UTC 2018 - tchvatal@suse.com
+
+- Recommend the pyblake2 on python2 as it is included in py3.6+
+  but was never in py2
+
+-------------------------------------------------------------------
+Mon May 21 09:23:53 UTC 2018 - tchvatal@suse.com
+
+- Switch to github archive to have test fixtures
+- Enable tests
+
+-------------------------------------------------------------------
+Sat May 19 09:44:51 UTC 2018 - hpj@urpla.net
+
+- adjust requirements
+
+-------------------------------------------------------------------
+Fri May 18 12:16:54 UTC 2018 - hpj@urpla.net
+
+- update to version 1.11.0
+  - see https://github.com/pypa/twine/blob/master/docs/changelog.rst
+
+-------------------------------------------------------------------
+Thu May 17 08:26:25 UTC 2018 - tchvatal@suse.com
+
+- Format with spec-cleaner and reduce the license conditions
+
+-------------------------------------------------------------------
+Thu Jul  6 13:02:30 UTC 2017 - sebix+novell.com@sebix.at
+
+- fix source url
+
+-------------------------------------------------------------------
+Wed Jul  5 18:50:28 UTC 2017 - sebix+novell.com@sebix.at
+
+- update to version 1.9.1
+- update specfile to singlespec
+
+-------------------------------------------------------------------
+Wed Jan 18 11:48:32 UTC 2017 - michael@stroeder.com
+
+- Update to version 1.8.1
+- requires python-requests-toolbelt>=0.4.0
+
+-------------------------------------------------------------------
+Fri Sep 25 11:27:26 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.6.1
+  * bug:`130` Fix signing support for uploads
+- Implement update-alternatives
+
+-------------------------------------------------------------------
+Wed Jul 16 09:57:47 UTC 2014 - toddrme2178@gmail.com
+
+- BuildRequires: python-setuptools
+- Add executable
+
+-------------------------------------------------------------------
+Tue Feb  4 10:07:31 UTC 2014 - speilicke@suse.com
+
+- Initial version
+

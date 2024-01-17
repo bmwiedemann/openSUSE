@@ -1,0 +1,72 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2bda58685c160005c2eee801195af8a6</srcmd5>
+    <version>1</version>
+    <time>1306922590</time>
+    <user>saschpe</user>
+    <comment>please add bff4 to factory</comment>
+    <requestid>67778</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>44228a8933b70894be8d605a2e30a825</srcmd5>
+    <version>1</version>
+    <time>1306922598</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 67778
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>5ada65e73bf4e5bde36ee83d1e9521e5</srcmd5>
+    <version>1</version>
+    <time>1316440363</time>
+    <user>lrupp</user>
+    <comment>- Remove redundant tags/sections from specfile</comment>
+    <requestid>83053</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>5ada65e73bf4e5bde36ee83d1e9521e5</srcmd5>
+    <version>1</version>
+    <time>1319181787</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>5ada65e73bf4e5bde36ee83d1e9521e5</srcmd5>
+    <version>1</version>
+    <time>1340183200</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>cae5662090bdb1271c5f65d0dd9bd718</srcmd5>
+    <version>1</version>
+    <time>1340716477</time>
+    <user>coolo</user>
+    <comment>- added license-clarification.txt (bnc#761551) and updated
+  license tag
+- updated bff4.c
+- renamed arg.patch -&gt; bff4-arg.patch and added patch info
+- improved and cleaned-up spec file (forwarded request 125452 from etamPL)</comment>
+    <requestid>125466</requestid>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>cae5662090bdb1271c5f65d0dd9bd718</srcmd5>
+    <version>1</version>
+    <time>1359108698</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="12">
+    <srcmd5>cae5662090bdb1271c5f65d0dd9bd718</srcmd5>
+    <version>1</version>
+    <time>1379662032</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="14">
+    <srcmd5>cae5662090bdb1271c5f65d0dd9bd718</srcmd5>
+    <version>1</version>
+    <time>1409300559</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

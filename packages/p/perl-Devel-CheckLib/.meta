@@ -1,0 +1,9 @@
+<package name="perl-Devel-CheckLib" project="openSUSE:Factory">
+  <title>Check that a library is available</title>
+  <description>Devel::CheckLib is a perl module that checks whether a particular C library and
+its headers are available.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-Devel-CheckLib"/>
+  <url>http://search.cpan.org/dist/Devel-CheckLib/</url>
+</package>

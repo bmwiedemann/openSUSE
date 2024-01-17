@@ -1,0 +1,236 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3801c8b215994c2ee4662fb8b298278b</srcmd5>
+    <version>1.8.2</version>
+    <time>1503593165</time>
+    <user>dimstar_suse</user>
+    <comment>initial package checkin</comment>
+    <requestid>514567</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2e65363affb60b88c27f4ea0721144ea</srcmd5>
+    <version>1.8.3</version>
+    <time>1504617306</time>
+    <user>dimstar_suse</user>
+    <comment>- removed putsurface_wayland from filelist (now requires wayland-
+  enabled -devel package)
+
+- Version 1.8.3 - 28.Jun.2017
+  * Bump version to 1.8.3
+  * Switch AC_PROG_LIBTOOL to LT_INIT
+  * putsurface: include wayland-client.h instead of wayland-server.h
+  * avcenc: add AUD NAL unit at the beginning of pic
+  * avcenc: enable direct_spatial_mv_pred_flag for B frame
+  * avcenc: add the frame number as the command line input parameter</comment>
+    <requestid>519525</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>da4d6279c51be59667f2b6693a47a085</srcmd5>
+    <version>2.0.0</version>
+    <time>1510837449</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>542208</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>979ecadf8525a005105c16165b175f01</srcmd5>
+    <version>2.0.0</version>
+    <time>1511193904</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>542922</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fe5b4c16927664fb46f4f2e073095a96</srcmd5>
+    <version>2.1.0</version>
+    <time>1526022847</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>605110</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3885b6bff333c31ffac6652251612c60</srcmd5>
+    <version>2.3.0</version>
+    <time>1540451531</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>644257</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>09ea28e2b7331e84c3eb673b359178ee</srcmd5>
+    <version>2.4.1</version>
+    <time>1562591459</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713701</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ef00c35ec45713cff93373fccb55ff41</srcmd5>
+    <version>2.5.0</version>
+    <time>1566665267</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725683</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5984293b87e1d2a1487a43580d2670af</srcmd5>
+    <version>2.6.0</version>
+    <time>1585602159</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>789565</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4d8a3fe3bb8e8bdf47d53fa221044049</srcmd5>
+    <version>2.7.1</version>
+    <time>1586641581</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>792965</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>aac5b6d5501c4777636b681564267c6e</srcmd5>
+    <version>2.8.0</version>
+    <time>1598274344</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>828745</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>4e81757a9b491d2f09e7e855800bf23b</srcmd5>
+    <version>2.8.0</version>
+    <time>1599088425</time>
+    <user>dimstar_suse</user>
+    <comment>- version 2.8.0 needed for jira#SLE/SLE-12712</comment>
+    <requestid>831321</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d3a23acc84df800ee76b8aa2f4d5dfeb</srcmd5>
+    <version>2.9.0</version>
+    <time>1602596683</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841332</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>72796506c784b0d2c9e7259eb5f29a44</srcmd5>
+    <version>2.9.1</version>
+    <time>1603202796</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>842429</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>a4499a0152d66c75854037619be42939</srcmd5>
+    <version>2.10.0</version>
+    <time>1609783758</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>860176</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>498fdf0eae0a724d0b8102c309d92896</srcmd5>
+    <version>2.11.1</version>
+    <time>1619031566</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>886801</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>6985a83d97adaad6ad514c386d8454a4</srcmd5>
+    <version>2.13.0</version>
+    <time>1633466030</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>923139</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>254692a9644ce665d19f01eeda756a9c</srcmd5>
+    <version>2.14.0</version>
+    <time>1646241635</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>958359</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>782ce10077cb64e72c996b984f791ee9</srcmd5>
+    <version>2.15.0</version>
+    <time>1657378988</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.15.0
+  * add: Added HDR10 Tone Mapping sample code including H2H and H2S config files.
+  *  add: Support lowpower for HEVC Encoding
+  *  fix: Set correct entrypoint for lowpower
+  *  fix: Components exceed the value specified by jpeg spec
+  *  fix: hdr local variable pointer access issue
+  *  fix: Fix issue incorrect color for EU based hevcencode
+  *  fix: exclude vgem node and invalid drm node in vainfo
+  *  ci:Disable travis build
+  *  meson: check the dependency of libdrm</comment>
+    <requestid>987904</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>17969cc4a7833719e6d3cc3b30507b9d</srcmd5>
+    <version>2.16.0</version>
+    <time>1665754958</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010607</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>e794ca657518f9556eeaac1caae07c7d</srcmd5>
+    <version>2.17.1</version>
+    <time>1673888386</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1058669</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>216852be71dce4df1e340d0c30f42e13</srcmd5>
+    <version>2.18.1</version>
+    <time>1681654027</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1079662</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>c6c811a6c3d7256d9f26587cd92163ae</srcmd5>
+    <version>2.18.2</version>
+    <time>1685476966</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1089737</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>7fd326f1725d6c9df49b4fbcbde931be</srcmd5>
+    <version>2.19.0</version>
+    <time>1690215972</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1099955</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>734935a25a393941408550f7a20fa6fe</srcmd5>
+    <version>2.20.0</version>
+    <time>1697061413</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1117025</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>344cdd5c4b3a7df243a61fbb2b6e4a9e</srcmd5>
+    <version>2.20.0</version>
+    <time>1702327891</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1132486</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>8c66ad45baa55035c84c9ee6663bf16f</srcmd5>
+    <version>2.20.1</version>
+    <time>1704558615</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1137239</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,76 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>66a19a206ea99a37d2c56c83473b1d9b</srcmd5>
+    <version>1.07</version>
+    <time>1303211935</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 66749 from user babelworx
+</comment>
+    <requestid>66749</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e716007e038e232d500523736faae117</srcmd5>
+    <version>1.07</version>
+    <time>1303211948</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66749
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>e716007e038e232d500523736faae117</srcmd5>
+    <version>1.07</version>
+    <time>1319182295</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>4d86f14c3544a4014eba46d298855105</srcmd5>
+    <version>1.07</version>
+    <time>1323193535</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>4d86f14c3544a4014eba46d298855105</srcmd5>
+    <version>1.07</version>
+    <time>1340183896</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>4d86f14c3544a4014eba46d298855105</srcmd5>
+    <version>1.07</version>
+    <time>1359109768</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>4d86f14c3544a4014eba46d298855105</srcmd5>
+    <version>1.07</version>
+    <time>1379663800</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="13">
+    <srcmd5>4d86f14c3544a4014eba46d298855105</srcmd5>
+    <version>1.07</version>
+    <time>1409302436</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="14">
+    <srcmd5>3af3b393c2d72697dd06dae198d63385</srcmd5>
+    <version>1.07</version>
+    <time>1507065580</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530783</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4cfa384e773691c114decef5b9aa4a79</srcmd5>
+    <version>1.08</version>
+    <time>1542011945</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>647349</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,6 @@
+<package name="perl-Set-Object" project="openSUSE:Factory">
+  <title>Set of objects</title>
+  <description>This module implements a Set of objects, that is, a collection of
+objects without duplications. It is similar to a Smalltalk IdentitySet.</description>
+  <devel project="devel:languages:perl" package="perl-Set-Object"/>
+</package>

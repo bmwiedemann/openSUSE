@@ -1,0 +1,100 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e194c2c491982e33cb959affe4656f2d</srcmd5>
+    <version>2.10.0</version>
+    <time>1490965561</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>478845</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d4cbaac05600dc365abd2de11cbb1396</srcmd5>
+    <version>4.0.0</version>
+    <time>1548064749</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>666684</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>63791c21e2cf1815794252a1e14acbb7</srcmd5>
+    <version>4.0.2</version>
+    <time>1551455299</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.0.2:
+  * Minor typo fixes</comment>
+    <requestid>680068</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>cf65915044b40b4070c5b059bbaa8bef</srcmd5>
+    <version>4.0.2</version>
+    <time>1571210052</time>
+    <user>dimstar_suse</user>
+    <comment>Replace %fdupes -s with plain %fdupes; hardlinks are better.</comment>
+    <requestid>738303</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9213a0fb778b14667a79b58ede1ffab4</srcmd5>
+    <version>4.1.0</version>
+    <time>1579463791</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>765458</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>ff1718bc4fcac1013333577d9f7f6275</srcmd5>
+    <version>4.1.0</version>
+    <time>1584350279</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build without python2</comment>
+    <requestid>784865</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>adcbf51d6ac38c7d8547e395f57acc51</srcmd5>
+    <version>4.2.1</version>
+    <time>1600277736</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.2.1:
+  * Add setuptools to setup_requires.</comment>
+    <requestid>834776</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6525a25e7d449b64461ed114d327a518</srcmd5>
+    <version>4.7.2</version>
+    <time>1615363015</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.7.2:
+  * no upstream changes available</comment>
+    <requestid>877830</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5b6726796add536770679d3962d75bb5</srcmd5>
+    <version>5.0.1</version>
+    <time>1629269775</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>912687</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>19d2cc707fef9f742cb651f6bee3c49b</srcmd5>
+    <version>6.7.0</version>
+    <time>1664302442</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1006326</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>126644348a47fed6b10e40871a343d1c</srcmd5>
+    <version>6.8.0</version>
+    <time>1701792272</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.8.0:
+  * Fix running tests in environment with NO_COLOR=1
+
+- Update to 6.4.1:
+  * no upstream changes available
+  * Add setuptools to setup_requires.
+  * Add a TTYColoredFormatter class
+  * Remove qutebrowser from projects using colorlog</comment>
+    <requestid>1130977</requestid>
+  </revision>
+</revisionlist>

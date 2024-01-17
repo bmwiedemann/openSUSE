@@ -1,0 +1,5 @@
+<package name="gloox" project="openSUSE:Factory">
+  <title></title>
+  <description>High-level XMPP Library for C++</description>
+  <devel project="games" package="gloox"/>
+</package>

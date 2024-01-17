@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Thu Nov  8 06:43:56 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.08
+   see /usr/share/doc/packages/perl-Object-Signature/Changes
+
+-------------------------------------------------------------------
+Tue Oct  3 08:19:18 UTC 2017 - coolo@suse.com
+
+- patch the Makefile to build with perl 5.26
+
+-------------------------------------------------------------------
+Thu Mar 31 08:47:00 UTC 2011 - coolo@novell.com
+
+- update to version 1.07
+     - Updating to Module::Install::DSL 1.00
+     - Removing the use of prefork as the modules we use are fairly small
+     - Removed -w from test scripts to be compatible with tainting
+     - Added the specialised subclass Object::Signature::File
+
+-------------------------------------------------------------------
+Mon Jan 17 20:57:04 UTC 2011 - coolo@novell.com
+
+- initial package 1.05
+  * created by cpanspec 1.78.03
+

@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6f79687d51b8b061bc36a5a15a1d8141</srcmd5>
+    <version>3.2.1</version>
+    <time>1568379702</time>
+    <user>lnussel_factory</user>
+    <comment>new package</comment>
+    <requestid>730418</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>41ba444e1ded630f09b1a24d8109b632</srcmd5>
+    <version>3.2.1</version>
+    <time>1647806179</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source/target levels 8</comment>
+    <requestid>963305</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>7712aad98162b3f3cd3cbb0267d8dc67</srcmd5>
+    <version>3.2.1</version>
+    <time>1698333211</time>
+    <user>anag+factory</user>
+    <comment>fix build jdk 21</comment>
+    <requestid>1120340</requestid>
+  </revision>
+</revisionlist>

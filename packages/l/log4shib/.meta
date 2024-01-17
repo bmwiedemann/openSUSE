@@ -1,0 +1,7 @@
+<package name="log4shib" project="openSUSE:Factory">
+  <title>Log for C++</title>
+  <description>Log for C++ is a library of classes for flexible logging to files, syslog,
+and other destinations. It is modeled after the Log for Java library and
+stays as close to its API as is reasonable.</description>
+  <devel project="Apache:Shibboleth" package="log4shib"/>
+</package>

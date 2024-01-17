@@ -1,0 +1,5 @@
+<package name="python-fleming" project="openSUSE:Factory">
+  <title></title>
+  <description>Python helpers for manipulating datetime objects relative to time zones</description>
+  <devel project="devel:languages:python" package="python-fleming"/>
+</package>

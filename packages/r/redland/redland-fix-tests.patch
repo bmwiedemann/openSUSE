@@ -1,0 +1,72 @@
+Index: redland-1.0.17/src/rdf_parser.c
+===================================================================
+--- redland-1.0.17.orig/src/rdf_parser.c
++++ redland-1.0.17/src/rdf_parser.c
+@@ -1010,7 +1010,7 @@ int main(int argc, char *argv[]);
+ "    <dc:creator>Dave Beckett</dc:creator>\n" \
+ "    <dc:description>The generic home page of Dave Beckett.</dc:description>\n" \
+ "  </rdf:Description>\n" \
+-"</rdf:RDF>"
++"</rdf:RDF>\n"
+ 
+ #define NTRIPLES_CONTENT \
+ "<http://purl.org/net/dajobe/> <http://purl.org/dc/elements/1.1/creator> \"Dave Beckett\" .\n" \
+@@ -1138,11 +1138,11 @@ main(int argc, char *argv[])
+     }
+ 
+ 
++    fprintf(stderr, "%s: Adding %s string content as stream\n", program, type);
+     stream = librdf_parser_parse_string_as_stream(parser,
+                                                   file_content[testi],
+                                                   uris[testi]);
+     if(!stream) {
+-    fprintf(stderr, "%s: Adding %s string content as stream\n", program, type);
+       fprintf(stderr, "%s: Failed to parse RDF from string %d as stream\n",
+               program, testi);
+       failures++;
+@@ -1161,6 +1161,10 @@ main(int argc, char *argv[])
+       goto tidy_test;
+     }
+ 
++    if (parser) {
++      librdf_free_parser(parser);
++    }
++    parser = librdf_new_parser(world, type, NULL, NULL);
+ 
+     fprintf(stderr, "%s: Adding %s as iostream, as stream\n", program, type);
+     iostream = raptor_new_iostream_from_string(world->raptor_world_ptr,
+@@ -1190,6 +1194,10 @@ main(int argc, char *argv[])
+       goto tidy_test;
+     }
+ 
++    if (parser) {
++      librdf_free_parser(parser);
++    }
++    parser = librdf_new_parser(world, type, NULL, NULL);
+ 
+     fprintf(stderr, "%s: Adding %s counted string content\n", program, type);
+     if(librdf_parser_parse_counted_string_into_model(parser,
+@@ -1212,6 +1220,11 @@ main(int argc, char *argv[])
+       goto tidy_test;
+     }
+ 
++    if (parser) {
++      librdf_free_parser(parser);
++    }
++    parser = librdf_new_parser(world, type, NULL, NULL);
++
+ 
+     fprintf(stderr, "%s: Adding %s string content\n", program, type);
+     if(librdf_parser_parse_string_into_model(parser,
+@@ -1245,6 +1258,11 @@ main(int argc, char *argv[])
+     }
+ 
+     /* test parsing iostream */
++    if (parser) {
++      librdf_free_parser(parser);
++    }
++    parser = librdf_new_parser(world, type, NULL, NULL);
++
+     fprintf(stderr, "%s: Adding %s iostream content\n", program, type);
+     iostream = raptor_new_iostream_from_string(world->raptor_world_ptr,
+                                                (void *)file_content[testi],

@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Tue Dec 14 14:14:14 UTC 2021 - ohering@suse.de
+
+- Add python-rpm-macros (bsc#1180125)
+
+-------------------------------------------------------------------
+Wed Oct  6 13:58:07 UTC 2021 - Cédric Bosdonnat <cbosdonnat@suse.com>
+
+- Release 0.0.3
+  - Fix virtual CPU order for hyperthreads to match in QEMU
+
+-------------------------------------------------------------------
+Fri Aug 27 15:10:28 UTC 2021 - Cédric Bosdonnat <cbosdonnat@suse.com>
+
+- Release 0.0.2:
+    - Allocate entire 1GiB hugepages for each cell on the single template 
+
+-------------------------------------------------------------------
+Mon Jun 28 11:40:16 UTC 2021 - Cédric Bosdonnat <cbosdonnat@suse.com>
+
+- Release 0.0.1:
+    - Single huge VM per host use case

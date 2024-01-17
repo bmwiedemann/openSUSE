@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Wed Jan 05 13:05:16 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.8.10:
+  * Remove consistency check from compose parser (#114)
+
+-------------------------------------------------------------------
+Wed Jan 05 12:31:16 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.8.9:
+  * fork merged; use latest compose-go (#113)
+  * skip validation with forked parser (#112)
+
+-------------------------------------------------------------------
+Wed Jan 05 12:17:56 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.8.8:
+  * use compose.yml and compose.yaml (#110)
+  * Use the new compose-go parser (#109)
+
+-------------------------------------------------------------------
+Wed Jan 05 12:16:26 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.8.7:
+  * skip validation (#107)
+  * update go.mod & go versions (#106)
+
+-------------------------------------------------------------------
+Mon Jun 14 18:37:42 UTC 2021 - Johannes Kastl <kastl@b1-systems.de>
+
+- first version of package docker-lock

@@ -1,0 +1,53 @@
+-------------------------------------------------------------------
+Sat Sep 23 16:42:57 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.0.3
+  * no upstream changelog
+  * new wheel: notebook extension moved to python sitelib
+
+-------------------------------------------------------------------
+Thu Aug 17 15:32:40 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Suggest primary python package -- boo#1214354
+
+-------------------------------------------------------------------
+Sun Jan 22 14:30:30 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 2.0.1 (python and jupyterlab)
+  * no upstream changelog
+  * jupyterlab 3 compatibility
+
+-------------------------------------------------------------------
+Sun Jan 31 10:30:11 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 0.8.1
+  * no upstream changelog
+  * javascript and npm updates
+  * support newer versions of dependencies (jupyterlab, traitlets)
+  * Add property to get list of supported xy coordinates
+- Fix singlespec
+- Fix wheel location for install
+- Enable tests by getting them from GitHub
+
+-------------------------------------------------------------------
+Sat Jan 11 14:56:22 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use pyproject_install macro (boo#1094323)
+- Do not rewrite source artifact
+
+-------------------------------------------------------------------
+Mon Nov 18 16:24:38 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 0.7.0
+  + Add a `remove_callbacks` method to remove all callbacks more easily.
+  + Increase minimum Python version to 3.6 (3.5 has reached end-of-life)
+
+-------------------------------------------------------------------
+Fri Sep 20 18:25:18 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Fix building.
+
+-------------------------------------------------------------------
+Fri Sep 13 14:44:58 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Initial version

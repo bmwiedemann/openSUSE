@@ -1,0 +1,103 @@
+-------------------------------------------------------------------
+Fri Jul 28 04:44:48 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.1.0:
+  * Update Swagger-UI to latest version to fix several security
+    vulnerabiltiies.
+  * Fix minor bug introduced in 1.0.5 that changed the behaviour of how
+    flask-restx propagates exceptions. (#512)
+  * Add support for Python 3.11 (requires update to invoke ^2.0.0)
+  * Fix compatibility with upcoming release of Flask 2.3+. (#485)
+  * Fix compatibility issue with werkzeug 2.1.0 (#423)
+  * Drop support for python <3.7
+- Drop patches merged_pr_463.patch, redirect.patch and werkzeug.patch.
+- Add patch support-new-werkzeug.patch:
+  * Support Werkzeug 2.35.
+- Switch to pyproject macros.
+- Stop using greedy globs in %files.
+- Remove Python 2 leftovers.
+
+-------------------------------------------------------------------
+Wed Oct  5 22:35:03 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Add upstream patch merged_pr_463.patch to support Werkzeug 2.2.
+
+-------------------------------------------------------------------
+Fri Jul 15 13:18:17 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Add upstream patches werkzeug.patch and redirect.patch to fix the tests.
+
+-------------------------------------------------------------------
+Mon Mar 21 09:38:48 UTC 2022 - pgajdos@suse.com
+
+- python-mock is actually not required for build
+
+-------------------------------------------------------------------
+Thu Feb 10 18:15:31 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Allow Pytest 6 (not sure why it was forbidden).
+- Skip LoggingTest.test_override_app_level failing test
+  (gh#python-restx/flask-restx#411).
+
+-------------------------------------------------------------------
+Tue Sep 21 19:00:02 UTC 2021 - Sean Marlow <sean.marlow@suse.com>
+
+- Update to v0.5.1
+  + Optimize email regex (bsc#1190744)
+
+-------------------------------------------------------------------
+Sun Aug 15 01:39:26 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Fetch listed v0.5.0.tar.gz
+
+-------------------------------------------------------------------
+Mon Jul 26 20:33:20 UTC 2021 - Sean Marlow <sean.marlow@suse.com>
+
+- Update to v0.5.0
+  + Fix Marshaled nested wildcard field with ordered=True
+  + Fix Float Field Handling of None
+  + Fix Werkzeug and Flask > 2.0 issues
+  + Hotfix package.json
+  + Stop calling got_request_exception when handled explicitly
+  + Structure demo zoo app
+  + Update Contributing.rst
+  + Upgrade swagger-ui
+- Update to v0.4.0
+  + Fix Namespace error handlers when propogate_exceptions=True
+  + pin flask and werkzeug due to breaking changes
+  + The Flask/Blueprint API moved to the Scaffold base class
+  + added specs-url-scheme option for API
+- Update to v0.3.0
+  + Make error handlers order of registration respected when
+    handling errors
+  + add prefix to config setting
+  + Use relative path for `api.specs_url`
+  + Allow example=False
+  + Add support for recursive models
+  + generate choices schema without collectionFormat
+  + Catch TypeError in marshalling
+  + Unable to access nested list propert
+  + allow strict mode when validating model fields
+  + Make it possible to include "unused" models in the generated
+    swagger documentation
+
+-------------------------------------------------------------------
+Tue Apr 27 17:02:22 UTC 2021 - Sean Marlow <sean.marlow@suse.com>
+
+- Add missing python2 requirement.
+
+-------------------------------------------------------------------
+Mon Apr 12 21:46:20 UTC 2021 - Sean Marlow <sean.marlow@suse.com>
+
+- Ignore test_handle_non_api_error test which is dependent on
+  werkzeug version.
+
+-------------------------------------------------------------------
+Thu Sep 24 05:53:07 UTC 2020 - Petr Cervinka <petr@cervinka.net>
+
+- Set pytest version < 6 in build requirements
+
+-------------------------------------------------------------------
+Sat May  2 17:48:15 UTC 2020 - Petr Cervinka <petr@cervinka.net>
+
+- Initial version 

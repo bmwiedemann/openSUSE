@@ -1,0 +1,58 @@
+-------------------------------------------------------------------
+Sun Mar  5 21:11:17 UTC 2023 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 3.1.0
+  * Implement add/edit/delete password functionality
+    (pending new browser extension release)
+    (gh#browserpass/browserpass-native#99,
+     gh#browserpass/browserpass-native#129)
+  * Add Edge browser support (gh#browserpass/browserpass-native#122,
+    gh#browserpass/browserpass-native#130)
+  * Add Yandex browser (gh#browserpass/browserpass-native#133)
+- Update vendor.tar.gz
+
+-------------------------------------------------------------------
+Sat Aug  6 21:10:38 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.0.10:
+  - No functional changes
+  - Explicitly use cgo-free function to get user's home dir (was
+    already the case since 3.0.9 if your browserpass was compiled
+    without cgo as per our Makefile)
+
+-------------------------------------------------------------------
+Tue Mar  1 15:37:27 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 3.0.9
+  * No functional changes
+  * Compile without cgo to remove libc dependency
+
+-------------------------------------------------------------------
+Tue Feb  8 16:04:50 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 3.0.8
+  * Added make target for librewolf
+- Exclude ppc64, build fails due to pie not being supported
+
+-------------------------------------------------------------------
+Sat Aug 29 11:45:29 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Fix %{_libexecdir} misuse
+
+-------------------------------------------------------------------
+Fri Jul 10 03:47:25 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 3.0.7
+  * Updated dependencies
+  * Lots of small documentation updates
+- Use go >= 1.14 like upstream
+
+-------------------------------------------------------------------
+Fri Oct  4 08:21:40 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Avoid double %setup.
+
+-------------------------------------------------------------------
+Mon Sep 30 14:35:37 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Initial build for browserpass-native 3.0.6

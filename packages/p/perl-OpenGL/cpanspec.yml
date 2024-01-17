@@ -1,0 +1,24 @@
+# http://pkgs.fedoraproject.org/cgit/perl-OpenGL.git/tree/
+patches:
+  0001-Don-t-check-current-display-for-extensions.patch: -p1
+  OpenGL-0.6704-Prefer-system-GL-gl.h-on-non-Win32.patch: -p1
+  OpenGL-0.6704-Delete-functions-removed-from-Mesa.patch: -p1
+preamble: |-
+ %if 0%{suse_version} >= 1500
+ BuildRequires:  Mesa-dri
+ %endif
+ BuildRequires:  freeglut-devel
+ BuildRequires:  xvfb-run
+ BuildRequires:  pkgconfig(xi)
+ BuildRequires:  pkgconfig(xmu)
+license: GPL-1.0+ or Artistic-1.0
+post_prep: |-
+ find include -type f  \! -name glprocs.h -exec rm {} +
+custom_build: |-
+ %{__perl} Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}" dist=NO_EXCLUSIONS
+ # Certain OpenGL calls may not be present in our OpenGL
+ # implementation, let us just ignore them.
+ sed 's/PERL_DL_NONLAZY=1//' -i Makefile
+ %{__make} %{?_smp_mflags}
+custom_test: |-
+ xvfb-run -a -s "+extension GLX -screen 0 1280x1024x24" %{__make} test

@@ -1,0 +1,83 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>62e044a8030c062737daf1b91d971c3c</srcmd5>
+    <version>4.0.2</version>
+    <time>1585602292</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>789716</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>dfb1e2a6158944bc42c7820f3e6e7676</srcmd5>
+    <version>4.0.5</version>
+    <time>1591742714</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.0.5:
+  * Support for PyOxidizer</comment>
+    <requestid>810874</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>11c411eac759cc348f01d852df5a31a2</srcmd5>
+    <version>4.0.7</version>
+    <time>1621531406</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.0.7:
+  * Fix exception causes in loose.py
+  * Fix exception causes all over the codebase
+  * Add Ram Rachum to AUTHORS
+  * Update smmap upper bound in setup.py</comment>
+    <requestid>894166</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>054beea076c04115302558128aaa1b48</srcmd5>
+    <version>4.0.9</version>
+    <time>1635539575</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.0.9:
+  * update signing key
+  * fix Sphinx warnings
+  * Support Python 3.7+
+  * Allow smmap 5</comment>
+    <requestid>927594</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>976e5e421debd7cc3dc298ac1226ebc3</srcmd5>
+    <version>4.0.10</version>
+    <time>1670430884</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1040750</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>08ddfb57a7882227159e3d65aab134c2</srcmd5>
+    <version>4.0.10</version>
+    <time>1682193641</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081904</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6f2da4307e0f2cb6db4bc384f597cb93</srcmd5>
+    <version>4.0.11</version>
+    <time>1701206329</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.0.11:
+  * Use ZLIB_RUNTIME_VERSION if available
+  * Add support for Python 3.12 and drop EOL 3.7
+  * Fix mkdir race condition in LooseObjectDB.store
+  * Don't cancel other jobs from the 3.12 job failing
+  * Use actions/checkout feature to fetch all commits
+  * Revert &quot;Drop support for EOL Python 3.7&quot;
+  * Fix top-of-file license URLs here in gitdb too
+  * No longer treat 3.12 as experimental on CI
+  * Add __all__ to exc for linting
+  * Have Dependabot update smmap submodule dependency
+  * Bump gitdb/ext/smmap from `334ef84` to `f1ace75`
+
+- Update to v4.0.10:
+  * Allow smmap 5
+  * Update smmap upper bound in setup.py
+- converted to singlespec</comment>
+    <requestid>1129220</requestid>
+  </revision>
+</revisionlist>

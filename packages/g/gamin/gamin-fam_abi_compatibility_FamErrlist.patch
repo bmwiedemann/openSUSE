@@ -1,0 +1,40 @@
+--- libgamin/fam.h.orig	2009-07-25 01:23:31.000000000 +0200
++++ libgamin/fam.h	2009-07-25 01:25:27.000000000 +0200
+@@ -214,14 +214,19 @@
+ #define FAM_DEBUG_VERBOSE 2
+ 
+ /**
+- * FamErrList:
+- *
+- * In case FAMErrno is set, FAMErrlist is a global string array indexed
+- * by FAMErrno that describes the last error that happened.
++ * FamErrList: *unused* and empty.
+  * NOTE: this is not a good mechanism, it's present here only to provide
+  *       API and ABI compatibility with FAM.
+  */
+-extern const char *FamErrlist[];
++extern char *FamErrlist[];
++
++/**
++ * FamGaminErrList:
++ *
++ * In case FAMErrno is set, FamGaminErrlist is a global string array indexed
++ * by FAMErrno that describes the last error that happened.
++ */
++extern const char *FamGaminErrlist[];
+ 
+ /**
+  * FAMNoExists:
+--- libgamin/gam_api.c.orig	2009-07-25 01:25:45.000000000 +0200
++++ libgamin/gam_api.c	2009-07-25 01:26:17.000000000 +0200
+@@ -40,7 +40,9 @@
+     FAM_UNIMPLEM/* Unimplemented */
+ } FAMError;
+ 
+-const char *FamErrlist[] = {
++char* FamErrlist[1]; /* 1 = same size as FAM, for ABI compatibility */
++
++const char *FamGaminErrlist[] = {
+     "Okay",
+     "Bad arguments",
+     "Bad filename",

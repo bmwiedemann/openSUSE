@@ -1,0 +1,19 @@
+--- scripts/brp-strip-comment-note.orig	2022-04-07 11:13:19.072518377 +0000
++++ scripts/brp-strip-comment-note	2022-12-02 13:07:03.700394762 +0000
+@@ -15,7 +15,7 @@ esac
+ 
+ # Strip .comment and .note sections (the latter only if it is not allocated)
+ # for already stripped elf files in the build root
+-for f in `find "$RPM_BUILD_ROOT" -type f \( -perm -0100 -or -perm -0010 -or -perm -0001 \) -print0 | xargs -0 -r -P$NCPUS -n32 sh -c "file \"\\$@\" | grep -v \"^${RPM_BUILD_ROOT}/\?usr/lib/debug\" | sed -n -e 's/^\(.*\):[ 	]*ELF.*, stripped.*/\1/p'" ARG0`; do
++for f in `find "$RPM_BUILD_ROOT" -type f \( -perm -0100 -or -perm -0010 -or -perm -0001 \) -print0 | xargs -0 -r -P$NCPUS -n32 sh -c "file \"\\$@\" | grep -v \"^${RPM_BUILD_ROOT}/\?usr/lib/debug\" | grep -v ' shared object,' | grep -v '/lib/modules/' | sed -n -e 's/^\(.*\):[ 	]*ELF.*, stripped.*/\1/p'" ARG0`; do
+ 	note="-R .note"
+ 	if $OBJDUMP -h $f | grep '^[ 	]*[0-9]*[ 	]*.note[ 	]' -A 1 | \
+ 		grep ALLOC >/dev/null; then
+--- scripts/brp-strip.orig	2022-04-07 11:13:19.072518377 +0000
++++ scripts/brp-strip	2022-12-02 13:04:21.392758270 +0000
+@@ -14,4 +14,4 @@ esac
+ 
+ # Strip ELF binaries
+ find "$RPM_BUILD_ROOT" -type f \! -regex "${RPM_BUILD_ROOT}/*usr/lib/debug.*" \! -name "*.go" -print0 | \
+-    xargs -0 -r -P$NCPUS -n32 sh -c "file \"\$@\" | sed -n -e 's/^\(.*\):[ 	]*ELF.*, not stripped.*/\1/p' | grep -v 'no machine' | xargs -I\{\} $STRIP -g \{\}" ARG0
++    xargs -0 -r -P$NCPUS -n32 sh -c "file \"\$@\" | grep -v ' shared object,' | grep -v '/lib/modules/ | sed -n -e 's/^\(.*\):[ 	]*ELF.*, not stripped.*/\1/p' | grep -v 'no machine' | xargs -I\{\} $STRIP -g \{\}" ARG0

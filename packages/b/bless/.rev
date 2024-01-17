@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f1213aee9830449c8edab52c1c511de4</srcmd5>
+    <version>0.6.0</version>
+    <time>1478687990</time>
+    <user>dimstar_suse</user>
+    <comment>Updates to package description</comment>
+    <requestid>437953</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b7be4499716bff3f43c0d4eecc27862d</srcmd5>
+    <version>0.6.0</version>
+    <time>1564137619</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718381</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>14d9a6179040120845430f2f283f0166</srcmd5>
+    <version>0.6.2</version>
+    <time>1584531684</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>785989</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>269b78b34766078dd3b6732e2325a299</srcmd5>
+    <version>0.6.3</version>
+    <time>1615213102</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>877507</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>8d8a23b7aa3454212a79e9b792568a6b</srcmd5>
+    <version>0.6.3</version>
+    <time>1646150600</time>
+    <user>dimstar_suse</user>
+    <comment>fix the build</comment>
+    <requestid>958112</requestid>
+  </revision>
+</revisionlist>

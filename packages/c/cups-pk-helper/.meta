@@ -1,0 +1,8 @@
+<package name="cups-pk-helper" project="openSUSE:Factory">
+  <title>PolicyKit helper to configure cups with fine-grained privileges</title>
+  <description>This package provides a PolicyKit helper to configure cups with
+fine-grained privileges. For example, it's possible to let users
+enable/disable printers without requiring a password, while still
+requiring a password for editing printer settings.</description>
+  <devel project="GNOME:Factory" package="cups-pk-helper"/>
+</package>

@@ -1,0 +1,340 @@
+-------------------------------------------------------------------
+Thu Dec 28 08:47:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.20.1:
+  * [Encode] Fix some coverity issues exposed in encode
+  * [Encode] Fix some coverity issues exposed in encode
+  * Fixed VPP coverity issues.
+  * Fix some coverity issues exposed in decode
+
+-------------------------------------------------------------------
+Mon Dec  4 12:45:09 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- This includes latest version of one of the components needed for
+  Video (processing) hardware support on Intel GPUs (bsc#1217770)
+
+-------------------------------------------------------------------
+Wed Oct 11 14:34:09 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.20.0:
+  * test: Enable AV1 encode test.
+
+-------------------------------------------------------------------
+Fri Jul 21 15:35:19 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.19.0:
+  * add: Add support for VAConfigAttribEncHEVCBlockSizes &
+    VAConfigAttribEncHEVCFeatures for hevcencode.
+  * meson: guard code introduced after libva 1.xx release
+  * meson: libva-xyz should be same version as detected libva
+  * configure: libva-xyz should be same version as detected libva
+  * fix: scan num limitation.
+  * fix: pic_order_cnt_lsb to accept larger GOP
+
+-------------------------------------------------------------------
+Mon May 29 19:30:19 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.18.2:
+  * doc:Add build and install libva-utils steps
+  * test: Add VAProfileH264High10
+  * test: Don't assume our DRM node is first
+  * add: va_display_drm: Allow VGEM for WSL2
+  * win: win32 compat: Fix setenv/unsetenv return values
+  * fix: Add Th limitation by HUFFMAN_TABLES Count
+  * fix: Add refresh_frame_flags in PPS
+  * fix: Add checking of stream_scan size
+  * fix: Add Scan Num limitation
+  * fix: Changed H2S configuration template.
+  * fix: Correct maximum display luminance per VAAPI definition.
+  * fix: Fix possible memory leak
+  * fix: Fix coding issues of function return type & ref_frame_idx
+    idx too large
+
+-------------------------------------------------------------------
+Sat Apr 15 17:22:58 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.18.1:
+  * doc: Add build and install libva-utils steps
+  * test:
+    - Add VAProfileH264High10
+    - Don't assume our DRM node is first
+  * add: va_display_drm: Allow VGEM for WSL2
+  * win: win32 compat: Fix setenv/unsetenv return values
+  * fix:
+    - Add Th limitation by HUFFMAN_TABLES Count
+    - Add refresh_frame_flags in PPS
+    - Add checking of stream_scan size
+    - Add Scan Num limitation
+    - Changed H2S configuration template
+    - Correct maximum display luminance per VAAPI definition
+    - Fix possible memory leak
+    - Fix coding issues of function return type & ref_frame_idx idx
+      too large
+
+-------------------------------------------------------------------
+Mon Jan 16 08:05:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.17.0:
+  * fix: Fix possible memory leak
+  * fix: fix coding issues of array size and function return types
+  * Version 2.17.0 - 26.Dec.2022
+  * add: Upload a security disclaimer
+  * add: av1 encode sample code
+  * tests: Changed default initialization value to VAProfileNone
+  * ci: Add git dependency for mingw build for meson dependencies cloning
+  * vainfo: Add support for Win32 device enumeration and selection
+  * ci: dos2unix for windows workflow files
+  * ci: update checkout and setup-python action versions to v3 and v4
+  * ci: Add msvc/mingw Windows CI
+  * tests: enable building on Windows
+  * tests: Remove C++20 constructs in tests project targetting C++11
+  * tests: remove non C++ standard constructs
+  * vainfo: add va-win32 support
+  * add:Import OpenBSD getopt for MSVC from mesa/f9bb5323
+  * fix: Fix reporting of VAConfigAttribEncMaxSlices
+  * meson: add missing sample tools
+
+-------------------------------------------------------------------
+Thu Oct 13 19:43:17 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.16.0:
+  * trace: print the display being attempted
+  * ci: upgrade FreeBSD to 13.1
+  * meson: Search for threads in top-level meson.build
+  * meson: produce summary() when 0.53.0 is present
+
+-------------------------------------------------------------------
+Mon Jul 11 11:26:50 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- No code changes
+- Update to version 2.15.0 was part of Intel oneVPL GPU Runtime
+  2022Q2 Release 22.4.4
+
+-------------------------------------------------------------------
+Fri Jul  8 11:35:21 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to 2.15.0
+  * add: Added HDR10 Tone Mapping sample code including H2H and H2S config files.
+  *  add: Support lowpower for HEVC Encoding
+  *  fix: Set correct entrypoint for lowpower
+  *  fix: Components exceed the value specified by jpeg spec
+  *  fix: hdr local variable pointer access issue
+  *  fix: Fix issue incorrect color for EU based hevcencode
+  *  fix: exclude vgem node and invalid drm node in vainfo
+  *  ci:Disable travis build
+  *  meson: check the dependency of libdrm
+
+-------------------------------------------------------------------
+Wed Mar  2 00:11:36 UTC 2022 - Aaron Stern <ukbeast89@protonmail.com>
+
+- update to 2.14.0:
+  * Update copyright year.
+
+-------------------------------------------------------------------
+Mon Oct  4 23:40:28 UTC 2021 - Aaron Stern <ukbeast89@protonmail.com>
+
+- update to 2.13.0:
+  * code style:unify the code styles using the style_unify script
+  * fix: h264encode, hevcencode: fix integer overflow for high definition
+
+-------------------------------------------------------------------
+Mon Apr 19 20:42:33 UTC 2021 - Aaron Stern <ukbeast89@protonmail.com>
+
+- update to 2.11.1:
+  * vainfo: add VA_RC_TCBRC to reported caps list
+  * jpegenc: Allow encoding a 4K frame
+  * h264encode: Added low_power command line option
+  * test_va_api: Enable new caps for VAConfigAttribEncryption
+  * ci: upgrade FreeBSD to 12.2
+  * ci: enable github actions
+
+-------------------------------------------------------------------
+Tue Dec 22 09:50:03 UTC 2020 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.10.0:
+  * add Mediacopy Sample code
+  * Enable new caps for rate control TCBRC
+  * Add support for a --repeat command line option to vp8enc.
+  * fix one null pointer dereference risk
+
+-------------------------------------------------------------------
+Sun Oct 18 17:16:59 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.9.1:
+  * Fix one KW issue
+  * Fix null pointer dereference
+
+-------------------------------------------------------------------
+Sat Oct 10 20:35:24 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- udpate to 2.9.0:
+  * Fix KW issues
+  * Add support for csc with RGBP
+
+-------------------------------------------------------------------
+Mon Aug 31 17:24:40 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- version 2.8.0 needed for jira#SLE/SLE-12712
+
+-------------------------------------------------------------------
+Sat Aug 15 22:30:56 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.8.0:
+  * test: cast VA_STATUS_ERROR_UNKNOWN to VAStatus type
+  * test/fixture: fix GCC 10.0.1 error with drmDevicePaths
+
+-------------------------------------------------------------------
+Thu Apr  9 19:34:00 UTC 2020 - Aaron Stern <ukbeast89@protonmail.com>
+
+- Update to version 2.7.1:
+   * meson: add missing samples.
+   * sfcsample: drop unused Linux-only header.
+   * autotools: drop libdrm dependency (only libva-drm is used).
+   * autotools: drop unused X11 dependencies.
+   * Add 10/12bit RT format check.
+   * test/createsurfaces: add some scoped traces.
+   * test/streamable: add VAConfigAttrib and VASurfaceAttrib.
+   * Modify output CS settings for Chroma siting on Linux.
+   * Align libva attribute check.
+   * Added displaying supported config attributes.
+   * add the VP samples README.
+
+-------------------------------------------------------------------
+Sun Mar 29 15:36:53 UTC 2020 - Aaron Stern <ukbeast89@protonmail.com>
+
+- Update to version 2.6.0:
+  * Align libva attribute check.
+  * Added displaying supported config attributes.
+  * add the VP samples README.
+  * add VP sample for usrptr and 1:N output.
+
+-------------------------------------------------------------------
+Fri Aug 23 19:59:27 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.5.0:
+  * meson: rename the h264enc binary to be in line with the
+    autotools build.
+  * Unify NEWS format.
+  * sfcsample: don't include X11 headers.
+  * test: update vaInitialize_vaTerminate_Bad_vaSetDriverName.
+  * Check for -fstack-protector.
+  * vavpp: csc with AYUV format.
+  * vavpp: requires BGRA frame when saving a BGRA file.
+
+-------------------------------------------------------------------
+Sat Jul  6 08:09:55 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.4.1:
+  * No changes, sync with libva version only.
+- Changes from version 2.4.0:
+  * Fix make dist issue caused by decode streamout sample.
+  * Add VP sample for Blending.
+  * Add VP seperate sample for scaling, csc, sharpness, denoise,
+    chromasitting.
+
+-------------------------------------------------------------------
+Tue Oct 23 19:23:24 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.3.0:
+  * Add HEVC encode sample code
+  * Add sample code for avc decode streamout
+  * Add VP8 sample encoder application (SVCT supported)
+- Changes from version 2.2.0:
+  * Add meson build
+  * Remove driver specific test cases.
+- Switch to meson buildsystem, add meson BuildRequires and macros.
+- Drop conditionals for obsolete versions of openSUSE.
+- Disable sha1sum as source, currently not provided by upstream.
+
+-------------------------------------------------------------------
+Sun May  6 12:43:37 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.1.0:
+  * Refine gtest conformance cases.
+  * vp9enc: add support low power mode.
+  * vavpp: add support for RGBA/RGBX surface.
+  * vainfo: add support new profile/entrypoint pairs.
+
+-------------------------------------------------------------------
+Mon Mar 19 23:17:13 UTC 2018 - sndirsch@suse.com
+
+- disabled wayland build on Leap 42.3
+
+-------------------------------------------------------------------
+Fri Nov 17 10:28:40 UTC 2017 - zaitor@opensuse.org
+
+- Add vaapi-wayland-tools Obsoletes and Provides.
+
+-------------------------------------------------------------------
+Tue Nov 14 21:42:56 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2.0.0:
+  * Add option '--device ' to vainfo.
+  * Add vp9enc for VP9 encoding.
+  * Add vavpp for video processing.
+  * Add FEI gtest cases.
+  * Fix segmentation fault in putsurface_wayland.
+  * Fix GCC 7.1.1 warnings/errors.
+  * Fix libva version printed out by vainfo.
+- Pass enable-drm, enable-wayland and enable-x11 to configure,
+  ensure we build all supported backends.
+- Following the above, add pkgconfig(libdrm), pkgconfig(libva),
+  pkgconfig(libva-drm), pkgconfig(libva-wayland),
+  pkgconfig(wayland-client), pkgconfig(x11), pkgconfig(xext) and
+  pkgconfig(xfixes) BuildRequires; align with what configure looks
+  for.
+- Run spec-cleaner on spec file.
+
+-------------------------------------------------------------------
+Tue Aug 29 14:30:24 UTC 2017 - sndirsch@suse.com
+
+- removed putsurface_wayland from filelist (now requires wayland-
+  enabled -devel package)
+
+-------------------------------------------------------------------
+Wed Aug 16 17:27:10 UTC 2017 - chris@computersalat.de
+
+- Version 1.8.3 - 28.Jun.2017
+  * Bump version to 1.8.3
+  * Switch AC_PROG_LIBTOOL to LT_INIT
+  * putsurface: include wayland-client.h instead of wayland-server.h
+  * avcenc: add AUD NAL unit at the beginning of pic
+  * avcenc: enable direct_spatial_mv_pred_flag for B frame
+  * avcenc: add the frame number as the command line input parameter
+
+-------------------------------------------------------------------
+Fri Aug  4 14:03:25 UTC 2017 - sndirsch@suse.com
+
+- Version 1.8.2
+  * Bump version to 1.8.2
+
+-------------------------------------------------------------------
+Thu Jun 29 12:30:05 UTC 2017 - sndirsch@suse.com
+
+- changed Group to Development/Tools/Other
+
+-------------------------------------------------------------------
+Wed Apr 19 19:10:38 UTC 2017 - chris@computersalat.de
+
+- fix changes file
+  * add missing changes for 1.8.1
+  * fix Version string
+
+-------------------------------------------------------------------
+Tue Apr 18 20:45:56 UTC 2017 - chris@computersalat.de
+
+- Version 1.8.1 - 10.Apr.2017
+  * Bump version to 1.8.1
+- add sha1sum file
+
+-------------------------------------------------------------------
+Sat Apr 15 22:37:52 UTC 2017 - chris@computersalat.de
+
+- initial pkg 1.8.0
+- Version 1.8.0 - 31.Mar.2017
+  * First release of libva-utils as a separate project
+  * Follows libva release versioning
+  * Contains all the utilities and tests for libva API
+  * dynamically links to libva
+  * building system clean ups
+  * test suite included using GoogleTestFramework

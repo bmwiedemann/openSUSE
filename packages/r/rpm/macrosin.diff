@@ -1,0 +1,140 @@
+Index: macros.in
+===================================================================
+--- macros.in.orig
++++ macros.in
+@@ -148,6 +148,7 @@
+     %{?_unique_debug_names:--unique-debug-suffix "-%{VERSION}-%{RELEASE}.%{_arch}"} \\\
+     %{?_unique_debug_srcs:--unique-debug-src-base "%{name}-%{VERSION}-%{RELEASE}.%{_arch}"} \\\
+     %{?_find_debuginfo_dwz_opts} \\\
++    %{lua:if posix.access(rpm.expand("%_sourcedir/baselibs.conf"), "r") then print("--dwz-single-file-mode") end} \\\
+     %{?_find_debuginfo_opts} \\\
+     %{?_debugsource_packages:-S debugsourcefiles.list} \\\
+     "%{_builddir}/%{?buildsubdir}"\
+@@ -187,7 +188,8 @@ package or when debugging this package.\
+ %endif\
+ %{nil}
+ 
+-%_defaultdocdir		%{_datadir}/doc
++%_defaultdocdir		%{_datadir}/doc/packages
++%_docdir_fmt		%%{NAME}
+ %_defaultlicensedir	%{_datadir}/licenses
+ 
+ # Following macros for filtering auto deps must not be used in spec files.
+@@ -247,7 +249,8 @@ package or when debugging this package.\
+ %_tmppath		%{_var}/tmp
+ 
+ #	Path to top of build area.
+-%_topdir		%{getenv:HOME}/rpmbuild
++%_topdir		%{expand:%%global _topdir %{lua:if posix.access(rpm.expand("%{_usrsrc}/packages"), "w") then print "%{_usrsrc}/packages" else print "%{getenv:HOME}/rpmbuild" end} \
++}%_topdir
+ 
+ #==============================================================================
+ # ---- Optional rpmrc macros.
+@@ -349,7 +352,7 @@ package or when debugging this package.\
+ #		"w.ufdio"	uncompressed
+ #
+ #%_source_payload	w9.gzdio
+-#%_binary_payload	w9.gzdio
++%_binary_payload	w19.zstdio
+ 
+ #	Algorithm to use for generating file checksum digests on build.
+ #	If not specified or 0, MD5 is used.
+@@ -459,6 +462,19 @@ package or when debugging this package.\
+ #
+ #%_include_minidebuginfo	1
+ 
++# Number of debugging information entries (DIEs) above which
++# dwz will stop considering file for multifile optimizations
++# and enter a low memory mode, in which it will optimize
++# in about half the memory needed otherwise.
++%_dwz_low_mem_die_limit          10000000
++# Number of DIEs above which dwz will stop processing
++# a file altogether.
++%_dwz_max_die_limit              50000000
++
++%_find_debuginfo_dwz_opts --run-dwz\\\
++   --dwz-low-mem-die-limit %{_dwz_low_mem_die_limit}\\\
++   --dwz-max-die-limit %{_dwz_max_die_limit}
++
+ #
+ # Include a .gdb_index section in the .debug files.
+ # Requires _enable_debug_packages and gdb-add-index installed.
+@@ -491,39 +507,39 @@ package or when debugging this package.\
+ #   Same as for "separate" but if the __debug_package global is set then
+ #   the -debuginfo package will have a compatibility link for the main
+ #   ELF /usr/lib/debug/.build-id/xx/yyy -> /usr/lib/.build-id/xx/yyy
+-%_build_id_links compat
++%_build_id_links alldebug
+ 
+ # Whether build-ids should be made unique between package version/releases
+ # when generating debuginfo packages. If set to 1 this will pass
+ # --build-id-seed "%{VERSION}-%{RELEASE}" to find-debuginfo.sh which will
+ # pass it onto debugedit --build-id-seed to be used to prime the build-id
+ # note hash.
+-%_unique_build_ids	1
++#%_unique_build_ids	1
+ 
+ # Do not recompute build-ids but keep whatever is in the ELF file already.
+ # Cannot be used together with _unique_build_ids (which forces recomputation).
+ # Defaults to undefined (unset).
+-#%_no_recompute_build_ids 1
++%_no_recompute_build_ids 1
+ 
+ # Whether .debug files should be made unique between package version,
+ # release and architecture. If set to 1 this will pass
+ # --unique-debug-suffix "-%{VERSION}-%{RELEASE}.%{_arch} find-debuginfo.sh
+ # to create debuginfo files which end in -<ver>-<rel>.<arch>.debug
+ # Requires _unique_build_ids.
+-%_unique_debug_names	1
++#%_unique_debug_names	1
+ 
+ # Whether the /usr/debug/src/<package> directories should be unique between
+ # package version, release and architecture. If set to 1 this will pass
+ # --unique-debug-src-base "%{name}-%{VERSION}-%{RELEASE}.%{_arch}" to
+ # find-debuginfo.sh to name the directory under /usr/debug/src as
+ # <name>-<ver>-<rel>.<arch>.
+-%_unique_debug_srcs	1
++#%_unique_debug_srcs	1
+ 
+ # Whether rpm should put debug source files into its own subpackage
+-#%_debugsource_packages	1
++%_debugsource_packages	1
+ 
+ # Whether rpm should create extra debuginfo packages for each subpackage
+-#%_debuginfo_subpackages 1
++%_debuginfo_subpackages 1
+ 
+ #
+ # Use internal dependency generator rather than external helpers?
+@@ -542,6 +558,7 @@ package or when debugging this package.\
+ %__find_requires	%{_rpmconfigdir}/find-requires
+ #%__find_conflicts	???
+ #%__find_obsoletes	???
++%__find_supplements	%{_rpmconfigdir}/find-supplements
+ 
+ # 
+ # Path to file attribute classifications for automatic dependency 
+@@ -926,7 +943,7 @@ package or when debugging this package.\
+ %_build_vendor		%{_host_vendor}
+ %_build_os		%{_host_os}
+ %_host			@host@
+-%_host_alias		@host_alias@%{nil}
++%_host_alias		@host@%{nil}
+ %_host_cpu		@host_cpu@
+ %_host_vendor		@host_vendor@
+ %_host_os		@host_os@
+@@ -1045,11 +1062,13 @@ package or when debugging this package.\
+ 
+ #------------------------------------------------------------------------------
+ # arch macro for all supported 32-bit ARM processors
+-%arm32	armv3l armv4b armv4l armv4tl armv5tl armv5tel armv5tejl armv6l armv6hl armv7l armv7hl armv7hnl armv8l armv8hl armv8hnl armv8hcnl
++%arm32	armv3l armv4b armv4l armv4tl armv5b armv5l armv5teb armv5tel armv5tejl armv6l armv6hl armv7l armv7hl armv7hnl armv8l armv8hl armv8hnl armv8hcnl
+ 
+ #------------------------------------------------------------------------------
+ # arch macro for all supported 32-bit ARM processors (legacy, use %%arm32 instead)
+ %arm	%{arm32}
++%arml	armv3l armv4l armv5l armv5tel armv6l armv6hl armv7l armv7hl armv7hnl armv8l armv8hl armv8hnl armv8hcnl
++%armb	armv4b armv5b armv5teb
+ 
+ #------------------------------------------------------------------------------
+ # arch macro for all supported 64-bit ARM processors

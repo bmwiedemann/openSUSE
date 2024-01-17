@@ -1,0 +1,6 @@
+<package name="octave-forge-mvn" project="openSUSE:Factory">
+  <title></title>
+  <description>Multivariate normal distribution clustering and utility functions.
+This is part of Octave-Forge project.</description>
+  <devel project="science" package="octave-forge-mvn"/>
+</package>

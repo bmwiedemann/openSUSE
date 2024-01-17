@@ -1,0 +1,104 @@
+--- a/cudf.ml
++++ b/cudf.ml
+@@ -73,10 +73,10 @@ let (=%) pkg1 pkg2 =
+   pkg1.package = pkg2.package && pkg1.version = pkg2.version
+ 
+ let (<%) pkg1 pkg2 =
+-  Pervasives.compare (pkg1.package, pkg1.version) (pkg2.package, pkg2.version)
++  Stdlib.compare (pkg1.package, pkg1.version) (pkg2.package, pkg2.version)
+ 
+ let (>%) pkg1 pkg2 =
+-  Pervasives.compare (pkg2.package, pkg2.version) (pkg1.package, pkg1.version)
++  Stdlib.compare (pkg2.package, pkg2.version) (pkg1.package, pkg1.version)
+ 
+ let default_preamble = {
+   preamble_id = "" ;
+--- a/cudf.mli
++++ b/cudf.mli
+@@ -40,7 +40,7 @@ type package = {
+ val (=%) : package -> package -> bool
+ 
+ (** Package comparison up to <name, version>.  Same rules of package equality,
+-    but providing a suitable replacement for [Pervasives.compare]; useful for
++    but providing a suitable replacement for [Stdlib.compare]; useful for
+     sorting. *)
+ val (<%) : package -> package -> int
+ 
+--- a/cudf_types_pp.ml
++++ b/cudf_types_pp.ml
+@@ -101,10 +101,10 @@ let parse_value ty s =
+ 
+ (** Pretty printers *)
+ 
+-let string_of_int = Pervasives.string_of_int
++let string_of_int = Stdlib.string_of_int
+ let string_of_posint = string_of_int
+ let string_of_nat = string_of_int
+-let string_of_bool = Pervasives.string_of_bool
++let string_of_bool = Stdlib.string_of_bool
+ 
+ let string_of_keep = function
+     `Keep_version -> "version"
+--- /dev/null
++++ b/dune
+@@ -0,0 +1,32 @@
++(library
++ (public_name cudf)
++ (wrapped false)
++ (modules
++  Cudf
++  Cudf_822_lexer
++  Cudf_822_parser
++  Cudf_checker
++  Cudf_conf
++  Cudf_parser
++  Cudf_printer
++  Cudf_type_lexer
++  Cudf_type_parser
++  Cudf_types
++  Cudf_types_pp)
++ (libraries extlib stdlib-shims))
++
++(executable
++ (name main_cudf_check)
++ (public_name cudf-check)
++ (modules Main_cudf_check)
++ (libraries cudf))
++
++(executable
++ (name main_cudf_parse_822)
++ (public_name cudf-parse-822)
++ (modules Main_cudf_parse_822)
++ (libraries cudf))
++
++(ocamllex cudf_type_lexer cudf_822_lexer)
++
++(ocamlyacc cudf_type_parser cudf_822_parser)
+--- /dev/null
++++ b/dune-project
+@@ -0,0 +1,25 @@
++(lang dune 1.10)
++
++(generate_opam_files true)
++
++(license "LGPL-2.1-or-later WITH OCaml-LGPL-linking-exception")
++
++(authors "Roberto di Cosmo <roberto@dicosmo.org>, Stefano Zacchiroli, Pietro Abate")
++
++(maintainers "roberto@dicosmo.org")
++
++(homepage "http://www.mancoosi.org/cudf/")
++
++(bug_reports
++ "https://gforge.inria.fr/tracker/?atid=13811&group_id=4385&func=browse")
++
++(package
++ (name cudf)
++ (synopsis "CUDF library (part of the Mancoosi tools)")
++ (description
++  "CUDF (for Common Upgradeability Description Format) is a format for describing upgrade scenarios in package-based Free and Open Source Software distribution.")
++ (depends
++  dune
++  extlib
++  (ocaml
++   (>= 4.02.0))))
