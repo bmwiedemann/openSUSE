@@ -414,4 +414,20 @@ Dependency update required for rubocop update:
   * [#12301](https://github.com/rubocop/rubocop/issues/12301): Make `Style/RedundantFilterChain` aware of safe navigation operator. ([@koic][]) (forwarded request 1121571 from NickLion)</comment>
     <requestid>1121572</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>a9aecf20353ef660773ebbe31880a101</srcmd5>
+    <version>1.58.0</version>
+    <time>1701902919</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1131291</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>565c73b6f3b133fcc3b614e50689cfa5</srcmd5>
+    <version>1.59.0</version>
+    <time>1702587801</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1132980</requestid>
+  </revision>
 </revisionlist>
