@@ -1,0 +1,445 @@
+--- configure.in
++++ configure.in
+@@ -1035,9 +1035,10 @@
+   CPPFLAGS="${CPPFLAGS} -DPANGO_DISABLE_DEPRECATED"
+ fi
+ 
+-if ! $PKG_CONFIG --atleast-version=2.7.0 gimp-2.0; then
+-  CPPFLAGS="${CPPFLAGS} -DGIMP_DISABLE_DEPRECATED"
+-fi
++dnl gimp_md5_get_digest() is deprecated but it is still in use in gap_vid_api_util.c:
++dnl if ! $PKG_CONFIG --atleast-version=2.7.0 gimp-2.0; then
++dnl   CPPFLAGS="${CPPFLAGS} -DGIMP_DISABLE_DEPRECATED"
++dnl fi
+ 
+ 
+ AC_SUBST(GAPLIBDIR)
+--- gap/gap_pdb_calls.c
++++ gap/gap_pdb_calls.c
+@@ -52,11 +52,11 @@
+ extern int gap_debug;
+ 
+ /* ============================================================================
+- * p_status_to_string
++ * gap_status_to_string
+  * ============================================================================
+  */
+ const char *
+-p_status_to_string(int status)
++gap_status_to_string(int status)
+ {
+   switch (status)
+   {
+@@ -73,7 +73,7 @@
+     default:
+       return ("* unknown *");
+   }
+-}  /* end p_status_to_string */
++}  /* end gap_status_to_string */
+ 
+ 
+ /* check if procedure name is available in the PDB.
+@@ -247,7 +247,7 @@
+    printf("GAP: Error: PDB call of %s failed, d_status:%d %s\n"
+       , l_called_proc
+       , (int)return_vals[0].data.d_status
+-      , p_status_to_string(return_vals[0].data.d_status)
++      , gap_status_to_string(return_vals[0].data.d_status)
+       );
+    return(FALSE);
+ }       /* end gap_pdb_gimp_displays_reconnect */
+@@ -285,7 +285,7 @@
+    printf("GAP: Error: PDB call of %s failed, d_status:%d %s\n"
+       , l_called_proc
+       , (int)return_vals[0].data.d_status
+-      , p_status_to_string(return_vals[0].data.d_status)
++      , gap_status_to_string(return_vals[0].data.d_status)
+       );
+ 
+    return(-1);
+@@ -324,7 +324,7 @@
+           , filename
+           , (int)image_id
+           , (int)return_vals[0].data.d_status
+-          , p_status_to_string(return_vals[0].data.d_status)
++          , gap_status_to_string(return_vals[0].data.d_status)
+           );
+    return(FALSE);
+ }       /* end gap_pdb_gimp_file_save_thumbnail */
+@@ -412,7 +412,7 @@
+    printf("GAP: Error: PDB call of %s failed, d_status:%d %s\n"
+       , l_called_proc
+       , (int)return_vals[0].data.d_status
+-      , p_status_to_string(return_vals[0].data.d_status)
++      , gap_status_to_string(return_vals[0].data.d_status)
+       );
+    return(FALSE);
+ }       /* end gap_pdb_gimp_image_thumbnail */
+--- gap/gap_pdb_calls.h
++++ gap/gap_pdb_calls.h
+@@ -40,6 +40,8 @@
+ 
+ #include "libgimp/gimp.h"
+ 
++const char *gap_status_to_string(int status);
++
+ gint gap_pdb_procedure_available(char *proc_name);
+ 
+ gint32 gap_pdb_gimp_rotate_degree(gint32 drawable_id, gboolean interpolation, gdouble angle_deg);
+--- gap/gap_split.c
++++ gap/gap_split.c
+@@ -54,6 +54,7 @@
+ #endif
+ 
+ /* GIMP includes */
++#include <glib/gstdio.h>
+ #include "gtk/gtk.h"
+ #include "config.h"
+ #include "gap-intl.h"
+--- gap/gap_story_dialog.c
++++ gap/gap_story_dialog.c
+@@ -393,8 +393,6 @@
+                    ,gint32 mount_vs_row
+                    );
+ 
+-GtkWidget *    p_gtk_button_new_from_stock_icon(const char *stock_id);
+-
+ static gint32  p_get_gimprc_preview_size(const char *gimprc_option_name);
+ static void    p_save_gimprc_preview_size(const char *gimprc_option_name, gint32 preview_size);
+ static void    p_save_gimprc_int_value(const char *gimprc_option_name, gint32 value);
+@@ -2443,7 +2441,6 @@
+ {
+   gint32 imagewidth;
+   gint32 imageheight;
+-  long   framenr;
+ 
+ 
+ 
+@@ -2464,8 +2461,8 @@
+                      ,imageheight
+                      ,GAP_PLAYER_DONT_FORCE_ASPECT
+                      ,sgpp->image_id
+-                     ,framenr         /* play from start */
+-                     ,framenr         /* play until end */
++                     ,-1                /* play from start */
++                     ,-1                /* play until end */
+                      ,FALSE      /* play all */
+                      ,1         /* seltrack */
+                      ,0.0       /* delace */
+@@ -7611,7 +7608,7 @@
+   /* with_load_and_save button */
+   {
+     /*  The Load button  */
+-    button = p_gtk_button_new_from_stock_icon (GTK_STOCK_OPEN );
++    button = gap_gtk_button_new_from_stock_icon (GTK_STOCK_OPEN );
+     gtk_box_pack_start (GTK_BOX (hbox2), button, FALSE, FALSE, 0);
+     g_signal_connect (G_OBJECT (button), "clicked",
+                       G_CALLBACK (p_tabw_load_file_cb),
+@@ -7631,7 +7628,7 @@
+     gtk_widget_show (button);
+ 
+     /*  The Save button  */
+-    button = p_gtk_button_new_from_stock_icon (GTK_STOCK_SAVE );
++    button = gap_gtk_button_new_from_stock_icon (GTK_STOCK_SAVE );
+     tabw->save_button = button;
+     gtk_box_pack_start (GTK_BOX (hbox2), button, FALSE, FALSE, 0);
+     if(tabw->type == GAP_STB_MASTER_TYPE_STORYBOARD)
+@@ -7673,7 +7670,7 @@
+   }
+ 
+   /*  The Section Properties button  */
+-  button = p_gtk_button_new_from_stock_icon (GTK_STOCK_PROPERTIES );
++  button = gap_gtk_button_new_from_stock_icon (GTK_STOCK_PROPERTIES );
+   //tabw->edit_story_properties_button = button;
+   gtk_box_pack_start (GTK_BOX (hbox2), button, FALSE, FALSE, 0);
+   g_signal_connect (G_OBJECT (button), "clicked",
+@@ -7708,7 +7705,7 @@
+ 
+ 
+   /*  The Undo button  */
+-  button = p_gtk_button_new_from_stock_icon (GTK_STOCK_UNDO );
++  button = gap_gtk_button_new_from_stock_icon (GTK_STOCK_UNDO );
+   tabw->undo_button = button;
+   gtk_box_pack_start (GTK_BOX (hbox2), button, FALSE, FALSE, 0);
+   g_signal_connect (G_OBJECT (button), "clicked",
+@@ -7718,7 +7715,7 @@
+   gtk_widget_show (button);
+ 
+   /*  The Redo button  */
+-  button = p_gtk_button_new_from_stock_icon (GTK_STOCK_REDO );
++  button = gap_gtk_button_new_from_stock_icon (GTK_STOCK_REDO );
+   tabw->redo_button = button;
+   gtk_box_pack_start (GTK_BOX (hbox2), button, FALSE, FALSE, 0);
+   g_signal_connect (G_OBJECT (button), "clicked",
+@@ -7729,7 +7726,7 @@
+ 
+ 
+   /*  The Cut button  */
+-  button = p_gtk_button_new_from_stock_icon (GTK_STOCK_CUT );
++  button = gap_gtk_button_new_from_stock_icon (GTK_STOCK_CUT );
+   tabw->edit_cut_button = button;
+   gtk_box_pack_start (GTK_BOX (hbox2), button, FALSE, FALSE, 0);
+   g_signal_connect (G_OBJECT (button), "clicked",
+@@ -7741,7 +7738,7 @@
+   gtk_widget_show (button);
+ 
+   /*  The Copy button  */
+-  button = p_gtk_button_new_from_stock_icon (GTK_STOCK_COPY );
++  button = gap_gtk_button_new_from_stock_icon (GTK_STOCK_COPY );
+   tabw->edit_copy_button = button;
+   gtk_box_pack_start (GTK_BOX (hbox2), button, FALSE, FALSE, 0);
+   g_signal_connect (G_OBJECT (button), "clicked",
+@@ -7753,7 +7750,7 @@
+   gtk_widget_show (button);
+ 
+   /*  The Paste button  */
+-  button = p_gtk_button_new_from_stock_icon (GTK_STOCK_PASTE );
++  button = gap_gtk_button_new_from_stock_icon (GTK_STOCK_PASTE );
+   tabw->edit_paste_button = button;
+   gtk_box_pack_start (GTK_BOX (hbox2), button, FALSE, FALSE, 0);
+   g_signal_connect (G_OBJECT (button), "clicked",
+@@ -7765,7 +7762,7 @@
+   gtk_widget_show (button);
+ 
+   /*  The New Clip button  */
+-  button = p_gtk_button_new_from_stock_icon (GTK_STOCK_NEW );
++  button = gap_gtk_button_new_from_stock_icon (GTK_STOCK_NEW );
+   tabw->new_clip_button = button;
+   gtk_box_pack_start (GTK_BOX (hbox2), button, FALSE, FALSE, 0);
+   g_signal_connect (G_OBJECT (button), "button_press_event",
+@@ -7782,7 +7779,7 @@
+ 
+ 
+   /*  The Play Button */
+-  button = p_gtk_button_new_from_stock_icon (GAP_STOCK_PLAY);
++  button = gap_gtk_button_new_from_stock_icon (GAP_STOCK_PLAY);
+   tabw->play_button = button;
+   gtk_box_pack_start (GTK_BOX (hbox2), button, FALSE, FALSE, 0);
+   gimp_help_set_help_data (button,
+@@ -7885,13 +7882,13 @@
+ }  /* end p_create_button_bar */
+ 
+ /* --------------------------------
+- * p_gtk_button_new_from_stock_icon
++ * gap_gtk_button_new_from_stock_icon
+  * --------------------------------
+  * create a  button from stock, using only the icon
+  * (the text assotiated with the stock id is not rendered,
+  * to keep the button width small)
+  */
+-GtkWidget * p_gtk_button_new_from_stock_icon(const char *stock_id)
++GtkWidget * gap_gtk_button_new_from_stock_icon(const char *stock_id)
+ {
+   GtkWidget *button;
+   GtkWidget *image;
+@@ -7903,7 +7900,7 @@
+   gtk_container_add (GTK_CONTAINER (button), image);
+   return(button);
+ 
+-}  /* end p_gtk_button_new_from_stock_icon */
++}  /* end gap_gtk_button_new_from_stock_icon */
+ 
+ 
+ 
+--- gap/gap_story_dialog.h
++++ gap/gap_story_dialog.h
+@@ -71,4 +71,6 @@
+                    , GapStbTabWidgets *tabw
+                    );
+ 
++GtkWidget *    gap_gtk_button_new_from_stock_icon(const char *stock_id);
++
+ #endif
+--- gap/gap_story_properties.c
++++ gap/gap_story_properties.c
+@@ -55,6 +55,7 @@
+ #include "gap_timeconv.h"
+ #include "gap_thumbnail.h"
+ #include "gap_fmac_base.h"
++#include "gap_fmac_name.h"
+ #include "gap_story_vthumb.h"
+ 
+ 
+--- gap/gap_story_section_properties.c
++++ gap/gap_story_section_properties.c
+@@ -866,7 +866,7 @@
+   gtk_widget_show (entry);
+ 
+   /* the delete button  */
+-  button = p_gtk_button_new_from_stock_icon (GTK_STOCK_DELETE);
++  button = gap_gtk_button_new_from_stock_icon (GTK_STOCK_DELETE);
+   spw->spw_delete_button = button;
+   gimp_help_set_help_data (button,
+                              _("Delete storyboard section"),
+--- gap/gap_story_sox.c
++++ gap/gap_story_sox.c
+@@ -21,6 +21,8 @@
+ 
+ #include <config.h>
+ 
++#include <stdlib.h>
++
+ #include <glib/gstdio.h>
+ 
+ #include "gap_story_sox.h"
+--- gap/gap_wr_color_curve.c
++++ gap/gap_wr_color_curve.c
+@@ -849,7 +849,7 @@
+   
+   if (strcmp (buf, "# GIMP curves tool settings\n") != 0)
+   {
+-    printf("ERROR: file %s does not start with '%s'\n", "# GIMP curves tool settings");
++    printf("ERROR: file %s does not start with '%s'\n", filename, "# GIMP curves tool settings");
+     return FALSE;
+   }
+   
+--- gap/gimplastvaldesc.c
++++ gap/gimplastvaldesc.c
+@@ -77,7 +77,7 @@
+ static void      p_lastvals_register_persistent(const gchar *keyname, GimpLastvalDescType *lastval_desc_arr, gint32 argc);
+ 
+ 
+-static GimpLastvalTokenTabType token_tab[GIMP_LASTVAL_END];
++static GimpLastvalTokenTabType token_tab[GIMP_LASTVAL_END + 1];
+ 
+ 
+ gboolean
+--- libgapbase/gap_base.c
++++ libgapbase/gap_base.c
+@@ -50,6 +50,8 @@
+ /* GIMP includes */
+ #include "gtk/gtk.h"
+ #include "libgimp/gimp.h"
++#include <libgimpwidgets/gimpwidgetstypes.h>
++#include <libgimpwidgets/gimphelpui.h>
+ 
+ #ifdef G_OS_WIN32
+ #include <io.h>
+--- libgapvidapi/gap_vid_api.c
++++ libgapvidapi/gap_vid_api.c
+@@ -1837,6 +1837,7 @@
+   threshold = CLAMP(threshold, 0.0, 1.0);
+   l_threshold = (gdouble)MIX_MAX_THRESHOLD * (threshold * threshold * threshold);
+   l_mix_threshold = CLAMP((gint32)l_threshold, 0, MIX_MAX_THRESHOLD);
++  return l_mix_threshold;
+ }
+ 
+ 
+--- libgapvidapi/gap_vid_api_util.c
++++ libgapvidapi/gap_vid_api_util.c
+@@ -7,6 +7,7 @@
+  */
+ 
+ #include <glib/gstdio.h>
++#include <libgimpmath/gimpmd5.h>
+ 
+ 
+ /* XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX END fcache procedures */
+--- libgapvidapi/gap_vid_api_vidindex.c
++++ libgapvidapi/gap_vid_api_vidindex.c
+@@ -15,6 +15,8 @@
+  *
+  */
+ 
++#include "gap_file_util.h"
++
+ static char *   p_build_videoindex_filename(const char *filename, gint32 track, const char *decoder_name);
+ static gboolean p_equal_mtime(time_t mtime_idx, time_t mtime_file);
+ 
+--- libgapvidutil/gap_gve_misc_util.c
++++ libgapvidutil/gap_gve_misc_util.c
+@@ -33,7 +33,9 @@
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <errno.h>
++#include <string.h>
+ 
++#include <glib/gstdio.h>
+ 
+ /* GIMP includes */
+ #include "gtk/gtk.h"
+@@ -41,6 +43,7 @@
+ #include "libgimp/gimp.h"
+ 
+ 
++#include "gap_image.h"
+ #include "gap_libgapbase.h"
+ #include "gap_gve_misc_util.h"
+ 
+--- libgapvidutil/gap_gve_png.c
++++ libgapvidutil/gap_gve_png.c
+@@ -40,12 +40,15 @@
+ #include <errno.h>
+ #include <unistd.h>
+ 
++#include <glib/gstdio.h>
++
+ /* GIMP includes */
+ #include "gtk/gtk.h"
+ #include "libgimp/gimp.h"
+ 
+ /* GAP includes */
+ #include "gap_libgapbase.h"
++#include "gap_pdb_calls.h"
+ 
+ #include "gtk/gtk.h"
+ 
+@@ -66,7 +69,7 @@
+ 
+    if(gap_debug)
+    {
+-     printf("GAP: PNG encode via call of %s on filename: %s, image_id:%d, drawable_id:%d %s\n"
++     printf("GAP: PNG encode via call of %s on filename: %s, image_id:%d, drawable_id:%d\n"
+             , l_called_proc
+             , filename
+             , image_id
+@@ -105,7 +108,7 @@
+           , image_id
+           , drawable_id
+           , (int)return_vals[0].data.d_status
+-          , p_status_to_string(return_vals[0].data.d_status)
++          , gap_status_to_string(return_vals[0].data.d_status)
+           );
+    return(FALSE);
+ 
+--- libgapvidutil/gap_gve_png.h
++++ libgapvidutil/gap_gve_png.h
+@@ -23,7 +23,7 @@
+        app0_length: the length of the APP0-marker.
+    out:PNG_size: The size of the buffer that is returned.
+    returns: guchar *: A buffer, allocated by this routines, which contains
+-                      the compressed PNG, NULL on error. */
++                      the compressed PNG, NULL on error.
+  */
+ 
+ guchar *gap_gve_png_drawable_encode_png(GimpDrawable *drawable, gint32 png_interlaced, gint32 *PNG_size,
+--- vid_common/gap_cme_callbacks.c
++++ vid_common/gap_cme_callbacks.c
+@@ -45,7 +45,7 @@
+ 
+ static void            p_start_encoder_status_poll_timer(GapCmeGlobalParams *gpp);
+ static void            p_remove_encoder_status_poll_timer(GapCmeGlobalParams *gpp);
+-static gint32          p_drop_chache_and_start_video_encoder(GapCmeGlobalParams *gpp);
++static void            p_drop_chache_and_start_video_encoder(GapCmeGlobalParams *gpp);
+ static void            on_encoder_status_poll_timer(gpointer   user_data);
+ 
+ 
+@@ -142,7 +142,7 @@
+  * p_drop_chache_and_start_video_encoder
+  * ----------------------------------------
+  */
+-static gint32
++static void
+ p_drop_chache_and_start_video_encoder(GapCmeGlobalParams *gpp)
+ {
+   /* delete images in the cache
+--- vid_common/gap_cme_gui.c
++++ vid_common/gap_cme_gui.c
+@@ -53,6 +53,7 @@
+ #include <string.h>
+ #include <stdlib.h>
+ 
++#include <glib/gstdio.h>
+ #include <gtk/gtk.h>
+ 
+ #include "gap-intl.h"

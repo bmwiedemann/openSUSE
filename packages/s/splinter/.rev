@@ -1,0 +1,29 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>671d1db15c7c0e40a462f25a4088b2de</srcmd5>
+    <version>3.0</version>
+    <time>1504103071</time>
+    <user>dimstar_suse</user>
+    <comment>Finally with all RPM groups fixed
+
+- Upgrade RPM groups; trim descriptions.
+- Fix package groups: shared library -&gt; System/Libraries, devel
+  package -&gt; Productivity/Scientific/Math.
+- Properly implement shared library packaging policy.
+- Use fdupes to link duplicated files.
+- Correct packaging groups.
+- Use cmake macros for build, make and install stages.
+- Update to version 3.0.
+- Initial package.
+</comment>
+    <requestid>519587</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c047621b4c6a1a80a958edd979cb4eef</srcmd5>
+    <version>3.0</version>
+    <time>1524238301</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>598816</requestid>
+  </revision>
+</revisionlist>

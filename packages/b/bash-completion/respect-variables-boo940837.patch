@@ -1,0 +1,36 @@
+Bug boo#940837
+Bug bsc#959299
+
+That is do not escape the dollar character of a variable to allow
+commands like `ls' to go further in its completion chain.
+
+---
+ bash_completion |   15 +++++++++++++--
+ 1 file changed, 13 insertions(+), 2 deletions(-)
+
+Index: bash-completion-2.11/bash_completion
+===================================================================
+--- bash-completion-2.11.orig/bash_completion
++++ bash-completion-2.11/bash_completion
+@@ -2034,8 +2034,19 @@ _complete_as_root()
+ 
+ _longopt()
+ {
+-    local cur prev words cword split
+-    _init_completion -s || return
++    local cur=${COMP_WORDS[COMP_CWORD]}
++    local prev words cword split
++
++    if [[ "${cur:0:1}" == '$' ]] ; then
++        compopt -o dirnames +o filenames
++    else
++        compopt +o dirnames -o filenames
++    fi
++
++    if ! _init_completion -s ; then
++        _dollar $cur
++        return
++    fi
+ 
+     case "${prev,,}" in
+         --help | --usage | --version)

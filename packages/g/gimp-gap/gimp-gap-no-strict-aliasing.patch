@@ -1,0 +1,7 @@
+--- extern_libs/configure_options_ffmpeg.txt
++++ extern_libs/configure_options_ffmpeg.txt
+@@ -13,3 +13,4 @@
+ #
+ # options for the ffmpeg configure
+ 
++--extra-cflags=-fno-strict-aliasing

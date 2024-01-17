@@ -1,0 +1,158 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a68adaf39e04569f5a7829359f82da73</srcmd5>
+    <version>0.2.4</version>
+    <time>1533732889</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628061</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>530c23fe66c3ae5a3392dc8a8d43492a</srcmd5>
+    <version>0.2.4</version>
+    <time>1535122822</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628145</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>44572e68800dc406195c9292f90b471d</srcmd5>
+    <version>0.2.4</version>
+    <time>1544539704</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix fdupes call</comment>
+    <requestid>656855</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ccc66896862fa3b7e46ea27655bf74e1</srcmd5>
+    <version>0.2.7</version>
+    <time>1559837775</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.2.7:
+  * Replace pathlib with pathlib2 (#68)
+  * Bump PyYAML to 5.1 for CVE-2017-18342 (#69)
+  * Support jsonschema 3 (#72)</comment>
+    <requestid>707150</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>37cd4a713b581025f71c95722a690dbe</srcmd5>
+    <version>0.2.8</version>
+    <time>1568379472</time>
+    <user>lnussel_factory</user>
+    <comment>- Update to 0.2.8:
+  * no upstream changelog</comment>
+    <requestid>730063</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>76b027ebbe6c62fbe7f4d2be7b140271</srcmd5>
+    <version>0.2.8</version>
+    <time>1587659703</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build without python2</comment>
+    <requestid>796482</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>033c494b7e4eb5b56d746718bf143059</srcmd5>
+    <version>0.2.9</version>
+    <time>1608634314</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>857879</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>43e6a38d432a945ea21d56ce946aec3a</srcmd5>
+    <version>0.4.0</version>
+    <time>1648488271</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>965440</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f46422fbdb9e34fa0131711a77a168c4</srcmd5>
+    <version>0.5.1</version>
+    <time>1665034901</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 0.5.1:
+  * Responses schema validation #177
+  * detect spec schema version #167
+  * static types and Mypy static type check #168
+  * tests mark network #169
+  * schemas and validators lazy loading proxy #170 
+- Drop patch openapi-spec-validator-skip-urls.patch, fixed by upstream
+  by markers.</comment>
+    <requestid>1008086</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>68e03c54dc179c5e9ba10c595cd03131</srcmd5>
+    <version>0.5.1</version>
+    <time>1666780300</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove conditional definition of python_module.</comment>
+    <requestid>1031203</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e58cf5673ea2ac1fd0c7b8c3e97403b9</srcmd5>
+    <version>0.5.6</version>
+    <time>1683728312</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1085812</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>97c3b0bbfa4a10dac27342fbaa60875f</srcmd5>
+    <version>0.5.6</version>
+    <time>1686753012</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093030</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b0765c49f57a137229e79784a1393e99</srcmd5>
+    <version>0.6.0</version>
+    <time>1690278694</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.0:
+  * Compatibility with jsonschema 4.18, jsonschema-spec 0.2 and
+    openapi-schema-validator 0.6 #202
+  * spec_url parameter of spec validator is deprecated. Use base_uri
+    instead. #202
+  * Drop python 3.7 support #226
+  * Update SupportsValidation protocol #232
+  * allow path item ref fix #210
+  * openapi 3.1 schema update #213</comment>
+    <requestid>1100538</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>61f3f6b18bb30e50d734080462b07f1c</srcmd5>
+    <version>0.6.0</version>
+    <time>1690743482</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1101375</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ec889299182b633fe4403e3fe2e19261</srcmd5>
+    <version>0.7.1</version>
+    <time>1702845206</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.7.1:
+  * Move to jsonschema-path package #292
+  * Validator accepts any schema (schema dictionary or
+    SchemaPath) #293
+  * `validate` and `validate_url` shortcuts #294
+  * `validate_spec` shortcut in deprecated. Use`validate`
+    instead.
+  * `validate_spec_url` shortcut is deprecated. Use
+    `validate_url` instead.
+- update to 0.7.0:
+  * Allow validate multiple files (also with pre-commit hook)
+  * Validators and keywords refactor #286
+  * Python 3.12 support #290
+  * Bump docker image python from 3.11.5-alpine to 3.12.0-alpine
+  * `openapi_*_spec_validator` objects are deprecated. Use
+    `*SpecValidator` classes instead.
+
+  * schemas and validators lazy loading proxy #170</comment>
+    <requestid>1133688</requestid>
+  </revision>
+</revisionlist>

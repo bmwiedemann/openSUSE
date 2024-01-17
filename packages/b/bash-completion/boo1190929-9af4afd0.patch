@@ -1,0 +1,89 @@
+From 9af4afd01facc0dc3407c8b81375bedd4b2f5fa4 Mon Sep 17 00:00:00 2001
+From: Michal Suchanek <msuchanek@suse.de>
+Date: Thu, 30 Sep 2021 12:25:49 +0200
+Subject: [PATCH] insmod, modinfo, modprobe: support zstd compressed modules
+
+Signed-off-by: Michal Suchanek <msuchanek@suse.de>
+---
+ completions/insmod   |    2 +-
+ completions/modinfo  |    2 +-
+ completions/modprobe |    2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+--- a/completions/insmod
++++ b/completions/insmod	2021-10-04 13:34:04.749347460 +0000
+@@ -7,7 +7,7 @@ _insmod()
+ 
+     # do filename completion for first argument
+     if ((cword == 1)); then
+-        _filedir '@(?(k)o?(.[gx]z))'
++        _filedir '@(?(k)o?(.[gx]z|.zst))'
+     else # do module parameter completion
+         COMPREPLY=($(compgen -W "$(PATH="$PATH:/sbin" modinfo \
+             -p ${words[1]} 2>/dev/null | cut -d: -f1)" -- "$cur"))
+--- a/completions/modinfo
++++ b/completions/modinfo	2021-10-04 13:34:04.749347460 +0000
+@@ -37,7 +37,7 @@ _modinfo()
+ 
+     # do filename completion if we're giving a path to a module
+     if [[ $cur == @(*/|[.~])* ]]; then
+-        _filedir '@(?(k)o?(.[gx]z))'
++        _filedir '@(?(k)o?(.[gx]z|.zst))'
+     else
+         _modules $version
+     fi
+--- a/completions/modprobe
++++ b/completions/modprobe	2021-10-04 13:34:04.749347460 +0000
+@@ -80,7 +80,7 @@ _modprobe()
+         insert)
+             # do filename completion if we're giving a path to a module
+             if [[ $cur == @(*/|[.~])* ]]; then
+-                _filedir '@(?(k)o?(.[gx]z))'
++                _filedir '@(?(k)o?(.[gx]z|.zst))'
+             elif [[ -n $module ]]; then
+                 # do module parameter completion
+                 if [[ $cur == *=* ]]; then
+================================================================================
+From: Werner Fink <werenr@suse.de>
+Date: Mon, 04 Oct 2021 15:38:08 +0200
+Subject: Also support .bz2 compressed kernel modules
+
+---
+ completions/insmod   |    2 +-
+ completions/modinfo  |    2 +-
+ completions/modprobe |    2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+--- a/completions/insmod
++++ b/completions/insmod	2021-10-04 13:35:49.279524797 +0000
+@@ -7,7 +7,7 @@ _insmod()
+ 
+     # do filename completion for first argument
+     if ((cword == 1)); then
+-        _filedir '@(?(k)o?(.[gx]z|.zst))'
++        _filedir '@(?(k)o?(.[gx]z|.zst|.bz2))'
+     else # do module parameter completion
+         COMPREPLY=($(compgen -W "$(PATH="$PATH:/sbin" modinfo \
+             -p ${words[1]} 2>/dev/null | cut -d: -f1)" -- "$cur"))
+--- a/completions/modinfo
++++ b/completions/modinfo	2021-10-04 13:35:59.863340257 +0000
+@@ -37,7 +37,7 @@ _modinfo()
+ 
+     # do filename completion if we're giving a path to a module
+     if [[ $cur == @(*/|[.~])* ]]; then
+-        _filedir '@(?(k)o?(.[gx]z|.zst))'
++        _filedir '@(?(k)o?(.[gx]z|.zst|.bz2))'
+     else
+         _modules $version
+     fi
+--- a/completions/modprobe
++++ b/completions/modprobe	2021-10-04 13:36:14.743080796 +0000
+@@ -80,7 +80,7 @@ _modprobe()
+         insert)
+             # do filename completion if we're giving a path to a module
+             if [[ $cur == @(*/|[.~])* ]]; then
+-                _filedir '@(?(k)o?(.[gx]z|.zst))'
++                _filedir '@(?(k)o?(.[gx]z|.zst|.bz2))'
+             elif [[ -n $module ]]; then
+                 # do module parameter completion
+                 if [[ $cur == *=* ]]; then

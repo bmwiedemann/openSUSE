@@ -1,0 +1,35 @@
+-------------------------------------------------------------------
+Tue Apr 17 14:59:52 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Add upstream_add_armv8.patch and update spec to fix build for aarch64
+- Restrict build to x86* and aarch64
+
+-------------------------------------------------------------------
+Tue Aug 29 18:10:42 UTC 2017 - jengelh@inai.de
+
+- Upgrade RPM groups; trim descriptions.
+
+-------------------------------------------------------------------
+Fri Aug 25 11:55:11 UTC 2017 - badshah400@gmail.com
+
+- Fix package groups: shared library -> System/Libraries, devel
+  package -> Productivity/Scientific/Math.
+
+-------------------------------------------------------------------
+Tue Aug  8 15:02:01 UTC 2017 - badshah400@gmail.com
+
+- Properly implement shared library packaging policy.
+- Use fdupes to link duplicated files.
+- Correct packaging groups.
+- Use cmake macros for build, make and install stages.
+
+-------------------------------------------------------------------
+Tue Mar 28 13:26:55 UTC 2017 - badshah400@gmail.com
+
+- Update to version 3.0.
+
+-------------------------------------------------------------------
+Thu Jan 14 01:15:16 UTC 2016 - badshah400@gmail.com
+
+- Initial package.
+

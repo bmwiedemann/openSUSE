@@ -1,0 +1,73 @@
+From 06f94a5c855fc38c0583a3b65c27c1c814a90bac Mon Sep 17 00:00:00 2001
+From: Michal Suchanek <msuchanek@suse.de>
+Date: Mon, 30 Mar 2020 19:48:39 +0200
+Subject: [PATCH] Revert "_filedir: avoid duplicate dirs internally, and a
+ compgen -d call for files"
+
+This reverts commit da99bc55954e9f60b9c3a9e9071ff6301d7015cb.
+
+References: https://github.com/scop/bash-completion/issues/378 boo#1167952
+
+The solution without calling compgen -d proves unrealiable.
+
+Until this is fixed revert to calling compgen -d for completions with
+file pattern.
+---
+ bash_completion | 25 ++++++++-----------------
+ 1 file changed, 8 insertions(+), 17 deletions(-)
+
+Index: bash-completion-2.11/bash_completion
+===================================================================
+--- bash-completion-2.11.orig/bash_completion
++++ bash-completion-2.11/bash_completion
+@@ -571,34 +571,22 @@ _filedir()
+     local -a toks
+     local reset arg=${1-}
+ 
+-    if [[ $arg == -d ]]; then
+-        reset=$(shopt -po noglob)
+-        set -o noglob
+-        toks=($(compgen -d -- "${cur-}"))
+-        IFS=' '
+-        $reset
+-        IFS=$'\n'
+-    else
++    reset=$(shopt -po noglob); set -o noglob
++    toks=( $(compgen -d -- "$cur") )
++    IFS=' '; $reset; IFS=$'\n'
++
++    if [[ "$1" != -d ]]; then
+         local quoted
+         _quote_readline_by_ref "${cur-}" quoted
+ 
+         # Munge xspec to contain uppercase version too
+         # https://lists.gnu.org/archive/html/bug-bash/2010-09/msg00036.html
+         # news://news.gmane.io/4C940E1C.1010304@case.edu
+-        local xspec=${arg:+"!*.@($arg|${arg^^})"} plusdirs=()
+-
+-        # Use plusdirs to get dir completions if we have a xspec; if we don't,
+-        # there's no need, dirs come along with other completions. Don't use
+-        # plusdirs quite yet if fallback is in use though, in order to not ruin
+-        # the fallback condition with the "plus" dirs.
+-        local opts=(-f -X "$xspec")
+-        [[ $xspec ]] && plusdirs=(-o plusdirs)
+-        [[ ${COMP_FILEDIR_FALLBACK-} || -z ${plusdirs-} ]] ||
+-            opts+=("${plusdirs[@]}")
+ 
++        local xspec=${1:+"!*.@($1|${1^^})"}
+         reset=$(shopt -po noglob)
+         set -o noglob
+-        toks+=($(compgen "${opts[@]}" -- $quoted))
++        toks+=( $(compgen -f -X "$xspec" -- $quoted) )
+         IFS=' '
+         $reset
+         IFS=$'\n'
+@@ -607,7 +595,7 @@ _filedir()
+         [[ -n ${COMP_FILEDIR_FALLBACK-} && -n $arg && ${#toks[@]} -lt 1 ]] && {
+             reset=$(shopt -po noglob)
+             set -o noglob
+-            toks+=($(compgen -f ${plusdirs+"${plusdirs[@]}"} -- $quoted))
++            toks+=( $(compgen -f -- $quoted) )
+             IFS=' '
+             $reset
+             IFS=$'\n'

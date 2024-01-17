@@ -1,0 +1,53 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f2d41bfc49d2acd25d17011829407b90</srcmd5>
+    <version>0.3.4</version>
+    <time>1689710110</time>
+    <user>dimstar_suse</user>
+    <comment>- Initial release of 0.3.4
+- Add patch correct-packages-decl.patch:
+  * Specify all packages in pyproject.toml.
+- Add patch correct-version-to-tag.patch:
+  * Version is tagged, but pyproject.toml was not updated.</comment>
+    <requestid>1099007</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>dcc3835a172571c7b81aafc6a59ead3e</srcmd5>
+    <version>0.3.5</version>
+    <time>1690278555</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.5:
+  * Packaging improvements: Include source-files in the release
+- Drop patch correct-packages-decl.patch:
+  * Included upstream.
+- Drop patch correct-version-to-tag.patch:
+  * No longer required.</comment>
+    <requestid>1099608</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>89a548bd73aa22f3f2dbfe6155dfbe03</srcmd5>
+    <version>0.4.2</version>
+    <time>1699183166</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1123389</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>c8dbe74e5e6f26c672e88944716e1f00</srcmd5>
+    <version>0.4.2</version>
+    <time>1701727263</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1130627</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8adefa4a109aa8b0a68f6dd9a759fc72</srcmd5>
+    <version>0.5.0</version>
+    <time>1703800920</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.5.0:
+  * Improved typing support
+  * Support for INSERT/UPDATE/DELETE statements</comment>
+    <requestid>1135313</requestid>
+  </revision>
+</revisionlist>
