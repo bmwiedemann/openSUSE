@@ -1,9 +1,0 @@
--------------------------------------------------------------------
-Tue Sep 12 12:28:35 UTC 2023 - Fridrich Strba <fstrba@suse.com>
-
-- Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
-
--------------------------------------------------------------------
-Fri Jul 24 14:26:42 UTC 2020 - Fridrich Strba <fstrba@suse.com>
-
-- Initial packaging of bean-validation-api 2.0.1

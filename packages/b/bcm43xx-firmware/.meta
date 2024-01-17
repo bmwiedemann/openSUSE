@@ -1,5 +1,0 @@
-<package name="bcm43xx-firmware" project="openSUSE:Factory">
-  <title>Firmware for the Broadcom BCM43xx chipset family</title>
-  <description>BCM43438 is found on the Raspberry Pi 3 among others.</description>
-  <devel project="hardware" package="bcm43xx-firmware"/>
-</package>

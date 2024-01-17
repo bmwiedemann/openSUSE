@@ -1,5 +1,0 @@
-<package name="nginx-image" project="openSUSE:Factory">
-  <title>openSUSE Tumbleweed NGINX</title>
-  <description>NGINX open source all-in-one load balancer, content cache and web server {based_on_container}.</description>
-  <devel project="devel:BCI:Tumbleweed" package="nginx-image"/>
-</package>

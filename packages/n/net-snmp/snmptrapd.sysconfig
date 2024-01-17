@@ -1,9 +1,0 @@
-## Path:        System/Net-SNMP
-## Description: snmptrapd command line options
-## Type:        string
-## Default:     ""
-#
-# '-f' is implicitly added by snmptrapd systemd unit file
-# OPTIONS="-Lsd"
-#
-OPTIONS=""

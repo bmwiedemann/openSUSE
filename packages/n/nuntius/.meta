@@ -1,6 +1,0 @@
-<package name="nuntius" project="openSUSE:Factory">
-  <title>nuntius</title>
-  <description>Nuntius is a daemon that connects to another Nuntius app running on a phone or
-a tablet and proxies the notifications using Bluetooth.</description>
-  <devel project="GNOME:Apps" package="nuntius"/>
-</package>

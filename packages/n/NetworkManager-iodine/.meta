@@ -1,5 +1,0 @@
-<package name="NetworkManager-iodine" project="openSUSE:Factory">
-  <title>NetworkManager-iodine</title>
-  <description>A network manager VPN plugin that allows you to tunnel your connection through a DNS tunnel. This can be useful if internet access is firewalled but DNS traffic is still allowed.</description>
-  <devel project="GNOME:Factory" package="NetworkManager-iodine"/>
-</package>

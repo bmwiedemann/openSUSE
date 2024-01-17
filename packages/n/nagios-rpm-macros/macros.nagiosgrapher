@@ -1,2 +1,0 @@
-# used at least by nagios-plugins-traffic_limit
-%nagiosgrapher_sysconfdir %{nagios_sysconfdir}/ngraph.d

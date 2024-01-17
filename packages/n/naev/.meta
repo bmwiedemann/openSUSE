@@ -1,7 +1,0 @@
-<package name="naev" project="openSUSE:Factory">
-  <title>Naev</title>
-  <description>Naev is a 2D space trading and combat game, in a similar vein to Escape Velocity.
-
-Naev is played from a top-down perspective, featuring fast-paced combat, many ships, a large variety of equipment and a large galaxy to explore. The game is highly open-ended, letting you proceed at your own pace.</description>
-  <devel project="games" package="naev"/>
-</package>

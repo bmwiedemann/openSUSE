@@ -1,5 +1,0 @@
-<package name="nbsdgames" project="openSUSE:Factory">
-  <title>nbsdgames</title>
-  <description>A new collection of console games inspired by the classic bsd-games collection. </description>
-  <devel project="games" package="nbsdgames"/>
-</package>

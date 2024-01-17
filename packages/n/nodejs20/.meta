@@ -1,6 +1,0 @@
-<package name="nodejs20" project="openSUSE:Factory">
-  <title>NodeJS 20.x</title>
-  <description>LTS codestream</description>
-  <devel project="devel:languages:nodejs" package="nodejs20"/>
-  <url>https://nodejs.org/</url>
-</package>

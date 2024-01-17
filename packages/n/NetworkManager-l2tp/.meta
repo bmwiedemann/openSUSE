@@ -1,5 +1,0 @@
-<package name="NetworkManager-l2tp" project="openSUSE:Factory">
-  <title>NetworkManager VPN support for L2TP</title>
-  <description>NetworkManager-l2tp provides VPN support to NetworkManager for L2TP.</description>
-  <devel project="GNOME:Factory" package="NetworkManager-l2tp"/>
-</package>

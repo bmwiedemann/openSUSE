@@ -1,5 +1,0 @@
-<package name="bpm-tools" project="openSUSE:Factory">
-  <title></title>
-  <description>Automatic calculating and tagging the tempo (in beats-per-minute) of music files.</description>
-  <devel project="multimedia:apps" package="bpm-tools"/>
-</package>

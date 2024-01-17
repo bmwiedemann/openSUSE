@@ -1,5 +1,0 @@
-<package name="nwg-dock-hyprland" project="openSUSE:Factory">
-  <title>nwg-dock-hyprland</title>
-  <description></description>
-  <devel project="X11:Wayland" package="nwg-dock-hyprland"/>
-</package>

@@ -1,8 +1,0 @@
-<package name="ninvaders" project="openSUSE:Factory">
-  <title>A space invaders-like game using ncurses</title>
-  <description>A Space Invaders type game with text-only graphics.
-
-</description>
-  <devel project="games" package="ninvaders"/>
-  <url>http://ninvaders.sourceforge.net/</url>
-</package>

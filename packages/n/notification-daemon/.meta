@@ -1,5 +1,0 @@
-<package name="notification-daemon" project="openSUSE:Factory">
-  <title>Notification Daemon</title>
-  <description>D-BUS notification daemon.</description>
-  <devel project="GNOME:Factory" package="notification-daemon"/>
-</package>

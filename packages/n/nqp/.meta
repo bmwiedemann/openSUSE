@@ -1,7 +1,0 @@
-<package name="nqp" project="openSUSE:Factory">
-  <title>Not Quite Perl6</title>
-  <description>Not Quite Perl6, a subset of Perl6 implemented on
-the Rakudo virtual machine.
-  </description>
-  <devel project="devel:languages:perl6" package="nqp"/>
-</package>

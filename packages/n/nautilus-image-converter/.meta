@@ -1,5 +1,0 @@
-<package name="nautilus-image-converter" project="openSUSE:Factory">
-  <title>Nautilus Image Converter</title>
-  <description>ImageResizer adds a &quot;Resize Images...&quot; menu item to the context menu of all images. This opens a dialog where you set the desired image size and file name. A click on &quot;Resize&quot; finally resizes the image(s) using ImageMagick's convert tool.</description>
-  <devel project="GNOME:Apps" package="nautilus-image-converter"/>
-</package>

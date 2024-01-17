@@ -1,6 +1,0 @@
-<package name="nwg-displays" project="openSUSE:Factory">
-  <title>nwg-displays</title>
-  <description>Output management utility for sway Wayland compositor, inspired by wdisplays and wlay.</description>
-  <devel project="X11:Wayland" package="nwg-displays"/>
-  <url>https://github.com/nwg-piotr/nwg-displays</url>
-</package>

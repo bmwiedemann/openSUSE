@@ -1,5 +1,0 @@
-<package name="nunit" project="openSUSE:Factory">
-  <title>NUnit 2</title>
-  <description>The last legacy stable version of NUnit.</description>
-  <devel project="Mono:Factory" package="nunit"/>
-</package>

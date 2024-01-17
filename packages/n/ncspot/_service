@@ -1,5 +1,0 @@
-<services>
-  <service name="cargo_vendor" mode="disabled">
-    <param name="srcdir">ncspot-0.13.4</param>
-  </service>
-</services>

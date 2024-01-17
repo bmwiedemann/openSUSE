@@ -1,5 +1,0 @@
-<package name="nginx-module-vts" project="openSUSE:Factory">
-  <title></title>
-  <description></description>
-  <devel project="server:http" package="nginx-module-vts"/>
-</package>

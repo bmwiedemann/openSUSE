@@ -1,5 +1,0 @@
-<package name="nfs-ganesha" project="openSUSE:Factory">
-  <title></title>
-  <description>Middleware between NFS and CephFS/RGW</description>
-  <devel project="filesystems:ceph" package="nfs-ganesha"/>
-</package>

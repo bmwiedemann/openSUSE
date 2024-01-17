@@ -1,6 +1,0 @@
-<package name="Box2D" project="openSUSE:Factory">
-  <title>A 2D Physics Engine for Games</title>
-  <description>Box2D is an open source C++ engine for simulating rigid bodies in 2D. Box2D is developed by Erin Catto and has the zlib license. While the zlib license does not require acknowledgement, we encourage you to give credit to Box2D in your product.</description>
-  <devel project="games" package="Box2D"/>
-  <url>http://box2d.org</url>
-</package>

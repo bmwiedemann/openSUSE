@@ -1,7 +1,0 @@
-<multibuild>
-  <package>arm-none</package>
-  <package>epiphany</package>
-  <package>pru</package>
-  <package>riscv64</package>
-  <package>rx</package>
-</multibuild>

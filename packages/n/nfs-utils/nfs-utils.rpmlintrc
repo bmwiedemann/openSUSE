@@ -1,2 +1,0 @@
-# /var/lib/nfs/sm.bak is a valid directory needed by sm-notify
-addFilter("suse-filelist-forbidden-backup-file.*sm.bak")

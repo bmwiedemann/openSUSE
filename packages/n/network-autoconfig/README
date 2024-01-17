@@ -1,9 +1,0 @@
-network-autoconfig: Find a connected eth interface and create an ifcfg for it
-
-All available Ethernet network interfaces will be cycled until one
-is successfully configured.
-
-This script will be run at the first boot of a machine.
-The log of the run is saved to /var/log/network-autoconfig .
-
-Requirements: SUSE Linux, wicked: https://github.com/openSUSE/wicked/

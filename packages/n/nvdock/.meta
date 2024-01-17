@@ -1,9 +1,0 @@
-<package name="nvdock" project="openSUSE:Factory">
-  <title>Tray icon for launching NVIDIA Settings</title>
-  <description>Little NVIDIA tray icon.
-Hover over it and it will tell you your GPU temperature if your card is into that kind of thing.
-A double click will launch the NVIDIA settings control panel, and right click will bring up a nifty menu with a few options.
-Also on the menu it will show the NVIDIA driver version, which is surely to come in handy at least one time in your life.</description>
-  <devel project="hardware" package="nvdock"/>
-  <url>http://www.opsat.net/development/nvdock/</url>
-</package>

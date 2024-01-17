@@ -1,6 +1,0 @@
-<package name="nml" project="openSUSE:Factory">
-  <title>NewGRF Meta Language</title>
-  <description>A tool to convert a meta-language to nfo, making newgrf coding easier. (needed for openttd-opengfx)</description>
-  <devel project="games" package="nml"/>
-  <url>http://dev.openttdcoop.org/projects/nml</url>
-</package>

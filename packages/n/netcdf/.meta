@@ -1,6 +1,0 @@
-<package name="netcdf" project="openSUSE:Factory">
-  <title>Library for Array Oriented Data Access</title>
-  <description>This library provides array-oriented data access for the languages C
-and C++.</description>
-  <devel project="science" package="netcdf"/>
-</package>

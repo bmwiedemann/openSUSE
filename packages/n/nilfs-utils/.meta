@@ -1,5 +1,0 @@
-<package name="nilfs-utils" project="openSUSE:Factory">
-  <title>Utilities for NILFS</title>
-  <description>This package contains utility programs for NILFS v2.</description>
-  <devel project="filesystems" package="nilfs-utils"/>
-</package>

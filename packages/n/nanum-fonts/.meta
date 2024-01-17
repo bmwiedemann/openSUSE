@@ -1,7 +1,0 @@
-<package name="nanum-fonts" project="openSUSE:Factory">
-  <title>Nanum Korean TrueType Fonts</title>
-  <description>Collection of Nanum Korean TrueType fonts: NanumBrush, 
-NanumGothic, NanumMyeongjo and NanumPen.</description>
-  <devel project="M17N:fonts" package="nanum-fonts"/>
-  <url>http://hangeul.naver.com/download.nhn</url>
-</package>
