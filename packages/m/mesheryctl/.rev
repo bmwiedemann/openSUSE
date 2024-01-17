@@ -1,0 +1,138 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d5671b423c13dede549aeb91c2f41584</srcmd5>
+    <version>0.6.139</version>
+    <time>1694701539</time>
+    <user>anag+factory</user>
+    <comment>new package mesheryctl: CLI for meshery, the cloud native manager</comment>
+    <requestid>1110978</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4a6502eb7da129d7cf67efb2d304076d</srcmd5>
+    <version>0.6.142</version>
+    <time>1695209174</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1112455</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bb3343858422dbb5dae3ede909bb08eb</srcmd5>
+    <version>0.6.143</version>
+    <time>1695327739</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1112667</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>dba5351b2eb603052d292cf32236fe89</srcmd5>
+    <version>0.6.147</version>
+    <time>1695664970</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1113264</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fa32aacf71ef3c9f392a736481022636</srcmd5>
+    <version>0.6.151</version>
+    <time>1696188143</time>
+    <user>anag+factory</user>
+    <comment>update to 0.6.151</comment>
+    <requestid>1114441</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>552c984bace9e2c4672fa890bacacae4</srcmd5>
+    <version>0.6.153</version>
+    <time>1696270001</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1114689</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0679f1796cb774c8685a88b7dd75ec09</srcmd5>
+    <version>0.6.154</version>
+    <time>1696529067</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1115738</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2a75504b3f10f71303ad662bef2dc1ff</srcmd5>
+    <version>0.6.156</version>
+    <time>1696964495</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1116729</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2a38b78608f2724e3aa6fc2eec77507a</srcmd5>
+    <version>0.6.163</version>
+    <time>1698249834</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1120192</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b3588258caa3bf5bd735764f174e7587</srcmd5>
+    <version>0.6.171</version>
+    <time>1699046411</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1123125</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>2f5ef5f9bf30c74e9bd91b7ede077874</srcmd5>
+    <version>0.6.173</version>
+    <time>1699562106</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1124348</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>742db7e9b794f6b40b2f18c9370fa9fe</srcmd5>
+    <version>0.6.174</version>
+    <time>1699910526</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1125604</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>975890c759c811d495603f81a6ae3e6c</srcmd5>
+    <version>0.6.175</version>
+    <time>1699994578</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1125852</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ed494b8077c389704482c22ee04e607c</srcmd5>
+    <version>0.6.176</version>
+    <time>1700163038</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1126952</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>69eb87339cd41139c3fc6686d1accf7a</srcmd5>
+    <version>0.6.181</version>
+    <time>1701121439</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1129111</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>da9e3177a8eaffa6e1be3bd4d5072107</srcmd5>
+    <version>0.6.185</version>
+    <time>1701378241</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1129986</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>39f0e31ef53fd1144f666734a2a57638</srcmd5>
+    <version>0.7.1</version>
+    <time>1702936569</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1133808</requestid>
+  </revision>
+</revisionlist>
