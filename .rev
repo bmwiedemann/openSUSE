@@ -1466,4 +1466,20 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1120787</requestid>
   </revision>
+  <revision rev="189" vrev="3">
+    <srcmd5>72db0c122acb0b50bcf14ece5f31cce0</srcmd5>
+    <version>1.52.1</version>
+    <time>1701289162</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1129587</requestid>
+  </revision>
+  <revision rev="190" vrev="1">
+    <srcmd5>cc03dbc9986e2cf1f25bb552d7dc34d0</srcmd5>
+    <version>1.52.2</version>
+    <time>1704919828</time>
+    <user>anag+factory</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 1137893 from dimstar)</comment>
+    <requestid>1137903</requestid>
+  </revision>
 </revisionlist>
