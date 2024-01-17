@@ -17,7 +17,7 @@
 
 
 # requires python-aiohttp
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-pook
 Version:        1.1.1
 Release:        0
