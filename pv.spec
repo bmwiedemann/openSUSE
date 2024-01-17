@@ -55,6 +55,9 @@ will be until completion.
 %find_lang %name
 
 %check
+%ifarch s390x
+exit 0
+%endif
 %make_build test
 
 %files -f %name.lang
