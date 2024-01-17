@@ -1127,4 +1127,21 @@ This should fix the current openQA failure: https://openqa.opensuse.org/tests/12
   - t-u: Improve detection of existing kernel parameters</comment>
     <requestid>1111543</requestid>
   </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>f8ef6158fcd6bebbb04b043b88050f4d</srcmd5>
+    <version>4.5.0</version>
+    <time>1700675668</time>
+    <user>anag+factory</user>
+    <comment>- Version 4.5.0
+  - libtukit: Use permissions of real /etc when creating overlay [bsc#1215878]
+  - libtukit, tukit: Support &quot;rollback&quot; via library now
+  - tukitd: Implement Snapshot delete and rollback methods
+  - tukit: Check for missing arguments with &quot;close&quot; and &quot;abort&quot; commands
+  - t-u: Warn user when using &quot;kdump&quot; if it isn't configured to avoid confusion with &quot;setup-kdump&quot; [boo#1215725]
+  - t-u: Abort if mkdumprd run is not successful
+  - t-u: Use defaut from config file if t-u is called without arguments [gh#openSUSE/transactional-update#101]
+  - Improved README.md [gh#openSUSE/transactional-update#59] and API docs
+  - Code cleanup</comment>
+    <requestid>1127927</requestid>
+  </revision>
 </revisionlist>

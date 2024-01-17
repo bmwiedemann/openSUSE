@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Nov 20 17:12:20 UTC 2023 - Ignaz Forster <iforster@suse.com>
+
+- Version 4.5.0
+  - libtukit: Use permissions of real /etc when creating overlay
+    [bsc#1215878]
+  - libtukit, tukit: Support "rollback" via library now
+  - tukitd: Implement Snapshot delete and rollback methods
+  - tukit: Check for missing arguments with "close" and "abort"
+    commands
+  - t-u: Warn user when using "kdump" if it isn't configured to
+    avoid confusion with "setup-kdump" [boo#1215725]
+  - t-u: Abort if mkdumprd run is not successful
+  - t-u: Use defaut from config file if t-u is called without
+    arguments [gh#openSUSE/transactional-update#101]
+  - Improved README.md [gh#openSUSE/transactional-update#59] and
+    API docs
+  - Code cleanup
+
+-------------------------------------------------------------------
 Mon Sep 11 13:55:40 UTC 2023 - Ignaz Forster <iforster@suse.com>
 
 - Version 4.4.0
@@ -8,7 +27,7 @@ Mon Sep 11 13:55:40 UTC 2023 - Ignaz Forster <iforster@suse.com>
     automatically cleaned up by snapper after some time now; in the
     past only snapshots created by the transactional-update shell
     script would be cleanup after, and only after a `t-u cleanup`
-    run.
+    run. [gh#openSUSE/transactional-update#62]
   - tukit: enable kexec's syscall detection feature
   - tukit: Don't throw exceptions from the child process after fork
   - tukitd: Rename service file to org.opensuse.tukit.service
