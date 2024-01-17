@@ -1,8 +1,0 @@
-<package name="plasma5-bigscreen" project="openSUSE:Factory">
-  <title>Plasma Bigscreen</title>
-  <description>Plasma shell for TVs.
-
-</description>
-  <devel project="KDE:Frameworks5" package="plasma5-bigscreen"/>
-  <url>http://www.kde.org/</url>
-</package>

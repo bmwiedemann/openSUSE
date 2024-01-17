@@ -1,5 +1,0 @@
-<package name="python-pytest-sphinx" project="openSUSE:Factory">
-  <title>python-pytest-sphinx</title>
-  <description>Doctest plugin for pytest with support for Sphinx-specific doctest-directives</description>
-  <devel project="devel:languages:python:pytest" package="python-pytest-sphinx"/>
-</package>

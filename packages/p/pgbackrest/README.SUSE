@@ -1,3 +1,0 @@
-  SUSE Changes to pgbackrest
-
-move the lock file to /run/pgbackrest and make sure that it gets created with the postgres user and group.

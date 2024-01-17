@@ -1,5 +1,0 @@
-<package name="python-contextvars" project="openSUSE:Factory">
-  <title></title>
-  <description>PEP 567 (context variables) backport</description>
-  <devel project="devel:languages:python" package="python-contextvars"/>
-</package>

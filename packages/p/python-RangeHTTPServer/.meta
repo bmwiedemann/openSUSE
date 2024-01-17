@@ -1,8 +1,0 @@
-<package name="python-RangeHTTPServer" project="openSUSE:Factory">
-  <title>SimpleHTTPServer with support for Range requests</title>
-  <description>SimpleHTTPServer with support for Range requests
-
-</description>
-  <devel project="devel:languages:python" package="python-RangeHTTPServer"/>
-  <url>https://github.com/danvk/RangeHTTPServer/</url>
-</package>

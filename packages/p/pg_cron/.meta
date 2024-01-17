@@ -1,5 +1,0 @@
-<package name="pg_cron" project="openSUSE:Factory">
-  <title>PostgreSQL module for simple job schedule</title>
-  <description>pg_cron is a simple cron-based job scheduler for PostgreSQL (9.5 or higher) that runs inside the database as an extension. It uses the same syntax as regular cron, but it allows you to schedule PostgreSQL commands directly from the database.</description>
-  <devel project="server:database:postgresql" package="pg_cron"/>
-</package>

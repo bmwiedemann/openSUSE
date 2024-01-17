@@ -1,7 +1,0 @@
-<package name="python-tox-no-internet" project="openSUSE:Factory">
-  <title></title>
-  <description>Workarounds for using tox with no internet connection.
-
-Provides the same functionality as tox-virtualenv-no-download, and more.</description>
-  <devel project="devel:languages:python" package="python-tox-no-internet"/>
-</package>

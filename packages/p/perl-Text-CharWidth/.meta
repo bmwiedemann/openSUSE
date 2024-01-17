@@ -1,5 +1,0 @@
-<package name="perl-Text-CharWidth" project="openSUSE:Factory">
-  <title>Get number of occupied columns of a string on terminal</title>
-  <description>Get number of occupied columns of a string on terminal</description>
-  <devel project="devel:languages:perl" package="perl-Text-CharWidth"/>
-</package>

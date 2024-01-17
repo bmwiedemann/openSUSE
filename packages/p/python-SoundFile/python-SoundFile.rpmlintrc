@@ -1,2 +1,0 @@
-# pure python script uses dlopen()
-addFilter("explicit-lib-dependency libsndfile[0-9]+")

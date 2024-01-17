@@ -1,6 +1,0 @@
-<package name="python-dfdatetime" project="openSUSE:Factory">
-  <title>dfDateTime or Digital Forensics date and time</title>
-  <description>dfDateTime, or Digital Forensics date and time, provides date and time objects to preserve accuracy and precision.
-</description>
-  <devel project="security:forensics" package="python-dfdatetime"/>
-</package>

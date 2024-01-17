@@ -1,5 +1,0 @@
-<package name="python-evilunit" project="openSUSE:Factory">
-  <title></title>
-  <description>Evil parts of Python unittest</description>
-  <devel project="devel:languages:python" package="python-evilunit"/>
-</package>

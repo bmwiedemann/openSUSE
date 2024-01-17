@@ -1,5 +1,0 @@
-<package name="python-flit" project="openSUSE:Factory">
-  <title>python-flit</title>
-  <description>Packaging tool for simple packages</description>
-  <devel project="devel:languages:python" package="python-flit"/>
-</package>

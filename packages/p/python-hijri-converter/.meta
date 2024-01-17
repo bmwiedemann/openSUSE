@@ -1,5 +1,0 @@
-<package name="python-hijri-converter" project="openSUSE:Factory">
-  <title>Python package to convert accurately between Hijri and Gregorian dates</title>
-  <description>A Python package to convert accurately between Hijri and Gregorian dates using the Umm al-Qura calendar of Saudi Arabia.</description>
-  <devel project="devel:languages:python" package="python-hijri-converter"/>
-</package>

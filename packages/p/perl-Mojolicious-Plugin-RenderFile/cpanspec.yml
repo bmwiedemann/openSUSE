@@ -1,6 +1,0 @@
----
-#description_paragraphs: 3
-#no_testing: broken upstream
-license: GPL-1.0-or-later or Artistic-1.0
-post_build:
-   mv %{buildroot}/%{perl_vendorlib}/Mojolicious/Plugin/README{,-RenderFile}.pod

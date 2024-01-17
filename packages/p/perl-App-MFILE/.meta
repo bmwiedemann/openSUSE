@@ -1,6 +1,0 @@
-<package name="perl-App-MFILE" project="openSUSE:Factory">
-  <title>Generalized REST forwarder for MFILE-based frontends</title>
-  <description>This distro consists of general, reusable modules. Currently the modules are used mainly by L&lt;App::MFILE::WWW&gt; and other similar frontends.
-</description>
-  <devel project="devel:languages:perl" package="perl-App-MFILE"/>
-</package>

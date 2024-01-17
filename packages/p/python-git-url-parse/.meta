@@ -1,5 +1,0 @@
-<package name="python-git-url-parse" project="openSUSE:Factory">
-  <title></title>
-  <description>A GIT URL parser for Python</description>
-  <devel project="devel:languages:python" package="python-git-url-parse"/>
-</package>

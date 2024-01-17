@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=Kalpa Desktop FirstBoot Setup
-Comment=Sets up Kalpa Desktop Correctly On FirstBoot
-Exec=/usr/bin/kalpa-firstboot-aarch64
-Icon=org.kde.konsole
-Type=Application
-Categories=Utility;System;
-Name[en_GB]=startup
-Name[en_US]=startup

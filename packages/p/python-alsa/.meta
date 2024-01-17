@@ -1,7 +1,0 @@
-<package name="python-alsa" project="openSUSE:Factory">
-  <title>Python ALSA binding</title>
-  <description>
-Python ALSA binding
-  </description>
-  <devel project="multimedia:libs" package="python-alsa"/>
-</package>

@@ -1,9 +1,0 @@
-<package name="python-zope.hookable" project="openSUSE:Factory">
-  <title>Zope hookable</title>
-  <description>Hookable object support.
-
-Support the efficient creation of hookable objects, which are callable objects that are meant to be replaced by other callables, at least optionally.
-
-The idea is you create a function that does some default thing and make it hookable. Later, someone can modify what it does by calling its sethook method and changing its implementation. All users of the function, including those that imported it, will see the change.</description>
-  <devel project="devel:languages:python" package="python-zope.hookable"/>
-</package>

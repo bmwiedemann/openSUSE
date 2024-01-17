@@ -1,5 +1,0 @@
-<package name="python-pmw" project="openSUSE:Factory">
-  <title>Python megawidgets</title>
-  <description>A toolkit for building high-level compound widgets in Python using the Tkinter module. It contains a set of flexible and extensible megawidgets, including notebooks, comboboxes, selection widgets, paned widgets, scrolled widgets and dialog windows.</description>
-  <devel project="devel:languages:python" package="python-pmw"/>
-</package>

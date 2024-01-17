@@ -1,5 +1,0 @@
-<package name="python-traitsui" project="openSUSE:Factory">
-  <title>python-traitsui</title>
-  <description>The TraitsGUI project contains a toolkit-independent GUI abstraction layer (known as Pyface), which is used to support the &quot;visualization&quot; features of the Traits package  </description>
-  <devel project="devel:languages:python:numeric" package="python-traitsui"/>
-</package>

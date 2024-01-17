@@ -1,6 +1,0 @@
--------------------------------------------------------------------
-Tue Oct 18 12:44:05 UTC 2022 - Matej Cepl <mcepl@suse.com>
-
-- Initial packaging effort for ast-decompiler 0.7.0.
-- Add no-relative-imports.patch.txt to make testing work with
-  plain pytest (gh#JelleZijlstra/ast_decompiler#52).

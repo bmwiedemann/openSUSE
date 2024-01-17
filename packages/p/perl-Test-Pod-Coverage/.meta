@@ -1,5 +1,0 @@
-<package name="perl-Test-Pod-Coverage" project="openSUSE:Factory">
-  <title>Test::Pod::Coverage Perl module</title>
-  <description>Test::Pod::Coverage Perl module</description>
-  <devel project="devel:languages:perl" package="perl-Test-Pod-Coverage"/>
-</package>

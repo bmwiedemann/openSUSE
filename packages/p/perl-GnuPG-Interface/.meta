@@ -1,7 +1,0 @@
-<package name="perl-GnuPG-Interface" project="openSUSE:Factory">
-  <title>Perl interface to GnuPG</title>
-  <description>GnuPG::Interface and its associated modules are designed to provide an object-oriented method for interacting with GnuPG, being able to perform functions such as but not limited to encrypting, signing, decryption, verification, and key-listing parsing.
-</description>
-  <devel project="devel:languages:perl" package="perl-GnuPG-Interface"/>
-  <url>http://search.cpan.org/dist/GnuPG-Interface/</url>
-</package>

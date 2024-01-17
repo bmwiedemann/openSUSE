@@ -1,5 +1,0 @@
-<package name="plasma-applet-weather-widget" project="openSUSE:Factory">
-  <title>plasma-applet-weather-widget</title>
-  <description>Plasma 5 applet for displaying weather information.</description>
-  <devel project="KDE:Extra" package="plasma-applet-weather-widget"/>
-</package>

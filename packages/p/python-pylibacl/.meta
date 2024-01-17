@@ -1,5 +1,0 @@
-<package name="python-pylibacl" project="openSUSE:Factory">
-  <title>Python POSIX.1e ACL module</title>
-  <description>This Python 2.4+ extension module allows you to manipulate the POSIX.1e Access Control Lists present in some OS/file-systems combinations.</description>
-  <devel project="devel:languages:python" package="python-pylibacl"/>
-</package>

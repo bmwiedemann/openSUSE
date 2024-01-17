@@ -1,5 +1,0 @@
-<package name="python-libevdev" project="openSUSE:Factory">
-  <title>libevdev Python wrapper</title>
-  <description>python-libevdev is a wrapper around the libevdev C library, with a pythonic API</description>
-  <devel project="devel:languages:python" package="python-libevdev"/>
-</package>

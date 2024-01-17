@@ -1,8 +1,0 @@
-<package name="python-Paste" project="openSUSE:Factory">
-  <title>Tools for using a Web Server Gateway Interface stack</title>
-  <description>These provide several pieces of &quot;middleware&quot; (or filters) that can be nested
-to build web applications.  Each piece of middleware uses the WSGI (PEP 333)
-interface, and should be compatible with other middleware based on those
-interfaces.</description>
-  <devel project="devel:languages:python" package="python-Paste"/>
-</package>

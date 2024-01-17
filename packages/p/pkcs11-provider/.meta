@@ -1,5 +1,0 @@
-<package name="pkcs11-provider" project="openSUSE:Factory">
-  <title></title>
-  <description></description>
-  <devel project="security" package="pkcs11-provider"/>
-</package>

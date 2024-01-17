@@ -1,5 +1,0 @@
-<package name="python-django-upgrade" project="openSUSE:Factory">
-  <title></title>
-  <description>Automatically upgrade your Django projects</description>
-  <devel project="devel:languages:python:django" package="python-django-upgrade"/>
-</package>

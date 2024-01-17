@@ -1,7 +1,0 @@
-<package name="perl-App-Dochazka-REST" project="openSUSE:Factory">
-  <title>REST for Dochazka</title>
-  <description>Dochazka aspires to be a convenient, open-source ATT
-  solution. App::Dochazka::REST is the REST server component of Dochazka.</description>
-  <devel project="Application:Dochazka" package="perl-App-Dochazka-REST"/>
-  <url>https://metacpan.org/pod/App::Dochazka::REST</url>
-</package>

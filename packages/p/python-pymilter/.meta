@@ -1,9 +1,0 @@
-<package name="python-pymilter" project="openSUSE:Factory">
-  <title>Python interface to sendmail milter API</title>
-  <description>This is a python extension module to enable python scripts to
-attach to sendmail's libmilter functionality.  Additional python
-modules provide for navigating and modifying MIME parts, sending
-DSNs, and doing CBV.
-</description>
-  <devel project="devel:languages:python" package="python-pymilter"/>
-</package>

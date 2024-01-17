@@ -1,6 +1,0 @@
-<package name="python-reportlab" project="openSUSE:Factory">
-  <title>The Reportlab Toolkit</title>
-  <description>The ReportLab Toolkit. An Open Source Python library for generating PDFs and graphics.</description>
-  <devel project="devel:languages:python:numeric" package="python-reportlab"/>
-  <url>http://www.reportlab.com</url>
-</package>

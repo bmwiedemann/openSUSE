@@ -1,6 +1,0 @@
-<package name="pmacct" project="openSUSE:Factory">
-  <title>Promiscuous mode IP Accounting</title>
-  <description>pmacct is a small set of passive network monitoring tools to measure, account, classify and aggregate IPv4 and IPv6 traffic; a pluggable and flexible architecture allows to store the collected traffic data into memory tables or SQL (MySQL, SQLite, PostgreSQL) databases. pmacct supports fully customizable historical data breakdown, flow sampling, filtering and tagging, recovery actions, and triggers. Libpcap, sFlow v2/v4/v5 and NetFlow v1/v5/v7/v8/v9 are supported, both unicast and multicast. Also, a client program makes it easy to export data to tools like RRDtool, GNUPlot, Net-SNMP, MRTG, and Cacti.</description>
-  <devel project="server:monitoring" package="pmacct"/>
-  <url>http://www.pmacct.net/</url>
-</package>

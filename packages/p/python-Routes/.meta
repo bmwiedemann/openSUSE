@@ -1,5 +1,0 @@
-<package name="python-Routes" project="openSUSE:Factory">
-  <title></title>
-  <description>A Routing package for Python that matches URL's to dicts and vice versa.</description>
-  <devel project="devel:languages:python" package="python-Routes"/>
-</package>

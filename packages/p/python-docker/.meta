@@ -1,5 +1,0 @@
-<package name="python-docker" project="openSUSE:Factory">
-  <title>Docker SDK for Python</title>
-  <description>The Docker SDK for Python</description>
-  <devel project="devel:languages:python" package="python-docker"/>
-</package>

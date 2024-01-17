@@ -1,2 +1,0 @@
-# pure python package does not link but access it via ctypes
-addFilter("explicit-lib-dependency libspatialindex")

@@ -1,6 +1,0 @@
-<package name="ptools" project="openSUSE:Factory">
-  <title>The process tools collection</title>
-  <description>pbuildid dumps the build-ids of an executable, core file or a process,
-given the pid of that process.</description>
-  <devel project="Base:System" package="ptools"/>
-</package>

@@ -1,6 +1,0 @@
-<package name="perl-Test-Alien-CPP" project="openSUSE:Factory">
-  <title>perl-Test-Alien-CPP - Testing tools for Alien modules for projects that use C++</title>
-  <description>This module works exactly like Test::Alien except that it supports C++. All functions like 'alien_ok', etc that are exported by Test::Alien are exported by this module. The only difference is that 'xs_ok' injects C++ support before delegating to Test::Alien.
-</description>
-  <devel project="devel:languages:perl" package="perl-Test-Alien-CPP"/>
-</package>

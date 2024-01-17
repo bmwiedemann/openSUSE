@@ -1,5 +1,0 @@
-<package name="python-ruamel.yaml" project="openSUSE:Factory">
-  <title>Python YAML parser</title>
-  <description>ruamel.yaml is a YAML parser/emitter that supports roundtrip preservation of comments, seq/map flow style, and map key order</description>
-  <devel project="devel:languages:python" package="python-ruamel.yaml"/>
-</package>

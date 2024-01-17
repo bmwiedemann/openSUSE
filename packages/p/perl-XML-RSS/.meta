@@ -1,7 +1,0 @@
-<package name="perl-XML-RSS" project="openSUSE:Factory">
-  <title>A Perl module that creates and updates RSS files</title>
-  <description>This module provides a basic framework for creating and maintaining RDF Site Summary (RSS) files. This distribution also contains many examples that allow you to generate HTML from an RSS, convert between 0.9, 0.91, and 1.0 version, and other nifty things. This might be helpful if you want to include news feeds on your Web site from sources like Slashdot and Freshmeat or if you want to syndicate your own content.
-
-XML::RSS currently supports 0.9, 0.91, and 1.0 versions of RSS. See http://backend.userland.com/rss091 for information on RSS 0.91. See http://www.purplepages.ie/RSS/netscape/rss0.90.html for RSS 0.9. See http://web.resource.org/rss/1.0/ for RSS 1.0.</description>
-  <devel project="devel:languages:perl" package="perl-XML-RSS"/>
-</package>

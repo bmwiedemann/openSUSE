@@ -1,8 +1,0 @@
-<package name="python-pytlv" project="openSUSE:Factory">
-  <title>TLV(tag length value) data parser</title>
-  <description>TLV (tag length value) data parser, especially useful for EMV tag parsing.
-
-</description>
-  <devel project="devel:languages:python" package="python-pytlv"/>
-  <url>https://github.com/timgabets/pytlv</url>
-</package>

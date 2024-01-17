@@ -1,5 +1,0 @@
-<package name="python-flower" project="openSUSE:Factory">
-  <title></title>
-  <description>Flower is a web based tool for monitoring and administrating Celery clusters</description>
-  <devel project="devel:languages:python" package="python-flower"/>
-</package>

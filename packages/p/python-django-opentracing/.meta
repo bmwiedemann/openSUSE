@@ -1,5 +1,0 @@
-<package name="python-django-opentracing" project="openSUSE:Factory">
-  <title></title>
-  <description>OpenTracing support for Django applications</description>
-  <devel project="devel:languages:python:django" package="python-django-opentracing"/>
-</package>

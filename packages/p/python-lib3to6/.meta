@@ -1,5 +1,0 @@
-<package name="python-lib3to6" project="openSUSE:Factory">
-  <title></title>
-  <description>Compile Python 3.6+ code to Python 27+</description>
-  <devel project="devel:languages:python" package="python-lib3to6"/>
-</package>

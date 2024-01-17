@@ -1,5 +1,0 @@
-<package name="python-pipreqs" project="openSUSE:Factory">
-  <title></title>
-  <description>Pip requirements generator based on imports in project</description>
-  <devel project="devel:languages:python" package="python-pipreqs"/>
-</package>

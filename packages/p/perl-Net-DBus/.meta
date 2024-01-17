@@ -1,5 +1,0 @@
-<package name="perl-Net-DBus" project="openSUSE:Factory">
-  <title>Perl extension for the DBus message system</title>
-  <description>Net::DBus provides a Perl API for the DBus message system.</description>
-  <devel project="devel:languages:perl" package="perl-Net-DBus"/>
-</package>

@@ -1,5 +1,0 @@
-<package name="prometheus-saptune_exporter" project="openSUSE:Factory">
-  <title>prometheus-saptune_exporter</title>
-  <description>prometheus-saptune_exporter</description>
-  <devel project="network:ha-clustering:sap-deployments:devel" package="prometheus-saptune_exporter"/>
-</package>

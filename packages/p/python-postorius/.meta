@@ -1,8 +1,0 @@
-<package name="python-postorius" project="openSUSE:Factory">
-  <title>A web user interface for GNU Mailman</title>
-  <description>A web user interface for GNU Mailman
-
-</description>
-  <devel project="devel:languages:python:mailman" package="python-postorius"/>
-  <url>https://gitlab.com/mailman/postorius</url>
-</package>

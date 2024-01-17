@@ -1,9 +1,0 @@
-<package name="perl-Alien-wxWidgets" project="openSUSE:Factory">
-  <title>Building, finding and using wxWidgets binaries</title>
-  <description>Please see Alien for the manifesto of the Alien namespace.
-In short &quot;Alien::wxWidgets&quot; can be used to detect and get configuration
-settings from an installed wxWidgets.
-</description>
-  <devel project="devel:languages:perl" package="perl-Alien-wxWidgets"/>
-  <url>http://search.cpan.org/dist/Alien-wxWidgets</url>
-</package>

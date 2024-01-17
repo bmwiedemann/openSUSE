@@ -1,5 +1,0 @@
-addFilter("zero-length")
-addFilter("non-standard-gid")
-addFilter("non-standard-uid")
-addFilter("spurious-executable-perm .*example_project/wsgi.py")
-addFilter("obsolete-not-provided python3-postorius")

@@ -1,5 +1,0 @@
-# This line is mandatory to access the configuration functions
-from Config import *
-
-addFilter("perl.* devel-file-in-non-devel-package")
-

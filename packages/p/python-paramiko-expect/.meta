@@ -1,5 +1,0 @@
-<package name="python-paramiko-expect" project="openSUSE:Factory">
-  <title>Paramiko Expect</title>
-  <description>An expect-like extension for the Paramiko SSH library</description>
-  <devel project="devel:languages:python" package="python-paramiko-expect"/>
-</package>

@@ -1,5 +1,0 @@
-<package name="python-cracklib" project="openSUSE:Factory">
-  <title>A CPython extension module wrapping the libcrack library</title>
-  <description>This CPython extension provides Python bindings for cracklib. It contains a pythonic interface to cracklib's functions and some Python convenience functions.</description>
-  <devel project="devel:languages:python" package="python-cracklib"/>
-</package>

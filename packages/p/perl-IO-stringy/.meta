@@ -1,5 +1,0 @@
-<package name="perl-IO-stringy" project="openSUSE:Factory">
-  <title>I/O on in-core objects like strings and arrays</title>
-  <description>I/O on in-core objects like strings and arrays</description>
-  <devel project="devel:languages:perl" package="perl-IO-stringy"/>
-</package>

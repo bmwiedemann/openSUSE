@@ -1,7 +1,0 @@
-<package name="perl-MooseX-Types-Common" project="openSUSE:Factory">
-  <title>A library of commonly used type constraints</title>
-  <description>A set of commonly-used type constraints that do not ship with Moose by
-default.</description>
-  <devel project="devel:languages:perl" package="perl-MooseX-Types-Common"/>
-  <url>http://search.cpan.org/dist/MooseX-Types-Common/</url>
-</package>

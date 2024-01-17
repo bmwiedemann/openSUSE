@@ -1,9 +1,0 @@
-<package name="python-geopandas" project="openSUSE:Factory">
-  <title>Geographic pandas extensions</title>
-  <description>Geopandas combines the capabilities of pandas and shapely, providing geospatial
-operations in pandas and a high-level interface to multiple geometries to shapely.
-GeoPandas enables you to easily do operations in python that would otherwise
-require a spatial database such as PostGIS.</description>
-  <devel project="Application:Geo" package="python-geopandas"/>
-  <url>https://geopandas.org/</url>
-</package>

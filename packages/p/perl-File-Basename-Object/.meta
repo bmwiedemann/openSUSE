@@ -1,7 +1,0 @@
-<package name="perl-File-Basename-Object" project="openSUSE:Factory">
-  <title>Object-oriented syntax sugar for File::Basename</title>
-  <description>File::Basename::Object is an object-oriented wrapper around
-File::Basename. The goal is to allow pathnames to be presented and
-manipulated easily.</description>
-  <devel project="devel:languages:perl" package="perl-File-Basename-Object"/>
-</package>

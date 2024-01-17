@@ -1,6 +1,0 @@
-<package name="perl-MooseX-App" project="openSUSE:Factory">
-  <title>perl-MooseX-App - Write user-friendly command line apps with even less suffering</title>
-  <description>MooseX-App is a highly customisable helper to write user-friendly command line applications without having to worry about most of the annoying things usually involved.</description>
-  <devel project="devel:languages:perl" package="perl-MooseX-App"/>
-  <url>https://metacpan.org/release/MooseX-App</url>
-</package>

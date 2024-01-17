@@ -1,7 +1,0 @@
-<package name="python-isort" project="openSUSE:Factory">
-  <title>A Python utility / library to sort Python imports.</title>
-  <description>isort your python imports for you so you don’t have to.
-
-isort is a Python utility / library to sort imports alphabetically, and automatically separated into sections. It provides a command line utility, Python library and plugins for various editors to quickly sort all your imports. It currently cleanly supports Python 2.6 - 3.5 using pies to achieve this without ugly hacks and/or py2to3.</description>
-  <devel project="devel:languages:python" package="python-isort"/>
-</package>

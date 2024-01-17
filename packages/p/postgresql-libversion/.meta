@@ -1,8 +1,0 @@
-<package name="postgresql-libversion" project="openSUSE:Factory">
-  <title>PostgreSQL extension for version string comparison</title>
-  <description>PostgreSQL extension with support for version string comparison through libversion.
-
-</description>
-  <devel project="server:database:postgresql" package="postgresql-libversion"/>
-  <url>https://github.com/repology/postgresql-libversion</url>
-</package>

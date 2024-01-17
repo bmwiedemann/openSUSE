@@ -1,9 +1,0 @@
-<package name="python-hawkauthlib" project="openSUSE:Factory">
-  <title>Hawk Access Authentication protocol</title>
-  <description>hawkauthlib is a low-level library for implementing Hawk Access Authentication, a
-simple HTTP request-signing scheme described in:https://npmjs.org/package/hawk
-
-</description>
-  <devel project="devel:languages:python" package="python-hawkauthlib"/>
-  <url>https://github.com/mozilla-services/hawkauthlib</url>
-</package>

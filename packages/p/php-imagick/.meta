@@ -1,6 +1,0 @@
-<package name="php-imagick" project="openSUSE:Factory">
-  <title>Wrapper to the ImageMagick library</title>
-  <description>Imagick is a native php extension to create and modify mages using the ImageMagick API.</description>
-  <devel project="server:php:extensions" package="php-imagick"/>
-  <url>https://pecl.php.net/package/imagick</url>
-</package>

@@ -1,5 +1,0 @@
-<package name="python-first" project="openSUSE:Factory">
-  <title></title>
-  <description>Return the first true value of an iterable</description>
-  <devel project="devel:languages:python" package="python-first"/>
-</package>

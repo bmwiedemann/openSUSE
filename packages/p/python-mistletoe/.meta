@@ -1,6 +1,0 @@
-<package name="python-mistletoe" project="openSUSE:Factory">
-  <title>python-mistletoe</title>
-  <description>A Markdown parser in pure Python, designed to be fast, spec-compliant and fully customizable.</description>
-  <devel project="devel:languages:python" package="python-mistletoe"/>
-  <url>https://github.com/miyuchina/mistletoe</url>
-</package>

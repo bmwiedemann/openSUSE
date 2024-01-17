@@ -1,2 +1,0 @@
-# jupyter-notebook requires python3-notebook which provides one of the alternatives
-addFilter("desktopfile-without-binary .*jupyter-notebook")

@@ -1,9 +1,0 @@
-<package name="python-html2text" project="openSUSE:Factory">
-  <title>Turn HTML into equivalent Markdown-structured text</title>
-  <description>Turn HTML into equivalent Markdown-structured text.
-
-Author:
--------
-    Aaron Swartz &lt;me@aaronsw.com&gt;</description>
-  <devel project="devel:languages:python" package="python-html2text"/>
-</package>

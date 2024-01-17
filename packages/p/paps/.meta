@@ -1,5 +1,0 @@
-<package name="paps" project="openSUSE:Factory">
-  <title>A text to postscript converter through pango</title>
-  <description>paps is a command line program for converting Unicode text encoded in UTF-8 to postscript and pdf by using pango.</description>
-  <devel project="Publishing" package="paps"/>
-</package>

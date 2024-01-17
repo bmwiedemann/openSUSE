@@ -1,5 +1,0 @@
-<package name="python-terminaltables" project="openSUSE:Factory">
-  <title></title>
-  <description>Generate simple tables in terminals from a nested list of strings.</description>
-  <devel project="devel:languages:python" package="python-terminaltables"/>
-</package>

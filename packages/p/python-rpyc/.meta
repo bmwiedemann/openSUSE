@@ -1,8 +1,0 @@
-<package name="python-rpyc" project="openSUSE:Factory">
-  <title>Title of New Package</title>
-  <description>LONG DESCRIPTION 
-GOES 
-HERE
-  </description>
-  <devel project="devel:languages:python" package="python-rpyc"/>
-</package>

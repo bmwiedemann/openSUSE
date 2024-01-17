@@ -1,5 +1,0 @@
-<package name="python-flake8-pep3101" project="openSUSE:Factory">
-  <title>python-flake8-pep3101</title>
-  <description>Checks for old string formatting</description>
-  <devel project="devel:languages:python" package="python-flake8-pep3101"/>
-</package>

@@ -1,5 +1,0 @@
-<package name="python-ruamel.std.pathlib" project="openSUSE:Factory">
-  <title>python-ruamel.std.pathlib</title>
-  <description>Improvements over the standard pathlib module and pathlib2 package</description>
-  <devel project="devel:languages:python" package="python-ruamel.std.pathlib"/>
-</package>

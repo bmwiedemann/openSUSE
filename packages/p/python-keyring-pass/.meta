@@ -1,6 +1,0 @@
-<package name="python-keyring-pass" project="openSUSE:Factory">
-  <title>pass based backend for python-keyring</title>
-  <description>python-keyring backend getting data from pass.</description>
-  <devel project="security:privacy" package="python-keyring-pass"/>
-  <url>https://github.com/nazarewk/keyring_pass</url>
-</package>

@@ -1,5 +1,0 @@
-<package name="python-pytest-profiling" project="openSUSE:Factory">
-  <title></title>
-  <description>Profiling plugin for pytest</description>
-  <devel project="devel:languages:python:pytest" package="python-pytest-profiling"/>
-</package>

@@ -1,6 +1,0 @@
-<package name="picotool" project="openSUSE:Factory">
-  <title></title>
-  <description>Picotool is a tool for inspecting RP2040 binaries, and interacting with RP2040 devices when they are in BOOTSEL mode.</description>
-  <devel project="hardware" package="picotool"/>
-  <url>https://github.com/raspberrypi/picotool</url>
-</package>

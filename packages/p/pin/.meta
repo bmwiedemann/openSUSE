@@ -1,7 +1,0 @@
-<package name="pin" project="openSUSE:Factory">
-  <title>A tool for finding package information</title>
-  <description>Pin - Package InformatioN. Pin searches the installed packages (rpm
--qi, -ql) and the ARCHIVES.gz file for the desired information. It
-shows README, README.SuSE, and FAQ, when available.</description>
-  <devel project="utilities" package="pin"/>
-</package>

@@ -1,5 +1,0 @@
-<package name="python-azure-sdk" project="openSUSE:Factory">
-  <title>Microsoft Azure SDK for Python</title>
-  <description>A set of Python modules that make it easy to access the Microsoft Azure storage and queue services. </description>
-  <devel project="devel:languages:python:azure" package="python-azure-sdk"/>
-</package>

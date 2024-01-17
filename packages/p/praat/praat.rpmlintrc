@@ -1,2 +1,0 @@
-# -no-pie is intentional, see https://github.com/praat/praat/commit/dc6a3a9da250725697d9b847823f1c4cdbb8dfe5
-addFilter("position-independent-executable-suggested")

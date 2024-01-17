@@ -1,3 +1,0 @@
-addFilter('devel-file-in-non-devel-package')
-addFilter('hidden-file-or-dir .*/tests/data')
-addFilter('zero-length .*/tests/data')

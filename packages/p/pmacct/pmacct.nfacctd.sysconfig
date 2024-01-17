@@ -1,7 +1,0 @@
-# Defaults for nfacct initscript and systemd service
-
-# Location of the configuration file
-NFACCTD_CONF=/etc/pmacct/nfacctd.conf
-
-# Additional options that are passed to nfacctd
-DAEMON_OPTS=""

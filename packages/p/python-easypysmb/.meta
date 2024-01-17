@@ -1,8 +1,0 @@
-<package name="python-easypysmb" project="openSUSE:Factory">
-  <title>Easy to use PySMB wrapper library</title>
-  <description>easypysmb is a python library that wraps around the pysmb library.
-
-</description>
-  <devel project="network" package="python-easypysmb"/>
-  <url>https://github.com/pschmitt/easypysmb</url>
-</package>

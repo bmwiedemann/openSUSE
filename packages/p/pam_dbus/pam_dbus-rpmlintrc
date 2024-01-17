@@ -1,3 +1,0 @@
-from Config import *
-addFilter(".*I:.*dbus-policy-allow-receive.*/etc/dbus-1/system.d/pam_dbus.conf.*")
-addFilter(".*W:.*incorrect-fsf-address.*")
