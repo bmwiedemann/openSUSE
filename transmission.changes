@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Wed Jan 10 08:19:14 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 4.0.5:
+  + Fixed 4.0.0 bug where the IP address field in UDP announces were
+    not encoded in network byte order.
+  + Fixed a bug that incorrectly escaped JSON strings in some locales.
+  + Fixed 4.0.4 decreased download speeds for people who set a low
+    upload bandwidth limit.
+  + Fixed bug that prevented editing trackers on magnet links.
+  + Fixed HTTP tracker announces and scrapes sometimes failing after
+    adding a torrent file by HTTPS URL.
+  + In RPC responses, change the default sort order of torrents
+    to match Transmission 3.00.
+  + Fixed tr_sys_path_copy() behavior on some Synology Devices.
+  + Fix: only append .added suffix to watchdir files.
+  + Fixed crash when opening torrent file from "Recently used"
+    section in GTK 4.
+
+-------------------------------------------------------------------
+Fri Nov 24 18:39:01 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.0.4:
+  + Fixed bug in sending torrent metadata to peers.
+  + Avoid unnecessary heap memory allocations.
+  + Fixed filename collision edge case when renaming files.
+  + Fixed locale errors that broke number rounding when displaying
+    statistics, e.g. upload / download ratios.
+  + Always use a fixed-length key query in tracker announces. This
+    isn't required by the spec, but some trackers rely on that
+    fixed length because it's common practice by other BitTorrent
+    clients.
+  + Fixed potential Windows crash when getstdhandle() returns NULL.
+  + Fixed 4.0.0 bug where the port numbers in LDP announces are
+    sometimes malformed.
+  + Fixed a bug that prevented editing the query part of a tracker
+    URL.
+  + Fixed a bug where Transmission may not announce LPD on its
+    listening interface.
+  + Made small performance improvements in libtransmission.
+  + Qt Client:
+    - Fixed torrent name rendering when showing magnet links in
+      compact view.
+    - Fixed bug that broke the "Move torrent file to trash"
+      setting.
+    - Fixed Qt 6.4 deprecation warning.
+    - Fixed poor resolution of Qt application icon.
+  + GTK Client: Fixed missing 'Remove torrent' tooltip.
+  + Web Client:
+    - Don't show null as a tier name in the inspector's tier list.
+    - Fixed truncated play / pause icons.
+    - Fixed overflow when rendering peer lists and made speed
+      indicators honor prefers-color-scheme media queries.
+    - Made the main menu accessible even on smaller displays.
+  + transmission-cli:
+    - Fixed "no such file or directory" warning when adding a
+      magnet link.
+    - Fixed bug that caused the wrong decimal separator to be used
+      in some locales.
+  + transmission-remote: Fixed display bug that failed to show some
+    torrent labels.
+  + Everything Else:
+    - Ran all PNG files through lossless compressors to make them
+      smaller.
+    - Fixed potential build issue when compiling on macOS with gcc.
+
+-------------------------------------------------------------------
 Fri May  5 09:29:21 UTC 2023 - Emiliano Langella <emiliano.langella@suse.com>
 
 - Fix transmission-daemon missing /var/lib/transmission 
