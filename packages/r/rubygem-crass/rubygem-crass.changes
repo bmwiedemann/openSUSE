@@ -1,0 +1,37 @@
+-------------------------------------------------------------------
+Mon Jan 27 12:35:30 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.0.6
+
+  * Number values are now limited to a maximum of Float::MAX and a minimum of negative Float::MAX. (#11)
+  * Added project metadata to the gemspec. (#9 - @orien)
+
+-------------------------------------------------------------------
+Tue Nov 12 16:31:30 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.0.5
+
+  * Removed test files from the gem. (#8 - @t-richards)
+
+-------------------------------------------------------------------
+Mon Apr  9 14:52:00 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 1.0.4
+ see installed HISTORY.md
+
+  1.0.4 (2018-04-08)
+  ------------------
+  
+  * Fixed whitespace warnings. (#7 - @yahonda)
+
+-------------------------------------------------------------------
+Fri Nov 17 09:01:01 UTC 2017 - mschnitzer@suse.com
+
+- updated to version 1.0.3
+  * Added support for frozen string literals. (#3 - @flavorjones)
+
+-------------------------------------------------------------------
+Mon May 11 18:03:32 UTC 2015 - mrueckert@suse.de
+
+- initial package
+

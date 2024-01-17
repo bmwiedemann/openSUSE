@@ -1,0 +1,1487 @@
+-------------------------------------------------------------------
+Sun Nov 19 13:26:35 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update vendored dependencies.
+- Add add-terminator-to-sync-capability.patch
+
+-------------------------------------------------------------------
+Sat Nov 18 22:03:10 UTC 2023 - socvirnyl.estela@gmail.com
+
+- Update to version 20230712.072601.f4abf8fd+git210:
+  * cargo update
+  * docs: changelog for #4563
+  * Make RIS also clear the alternate screen
+
+-------------------------------------------------------------------
+Sat Nov 18 21:57:26 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Add do-not-send-eof-when-closing-application.patch
+  * resolves issue when closing app but also sends an EOF
+  to other multiplexers e.g. tmux, screen, zellij
+
+-------------------------------------------------------------------
+Sun Nov 12 07:56:01 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Move shell integration to /usr/etc. It won't be read but it's optional
+
+-------------------------------------------------------------------
+Sun Nov 12 06:24:46 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Remove cargo_config from source. It's part of the vendored tarball now
+
+-------------------------------------------------------------------
+Sun Nov 12 05:51:03 UTC 2023 - socvirnyl.estela@gmail.com
+
+- Update to version 20230712.072601.f4abf8fd+git207:
+  * Default G1 to ASCII
+  * docs: fix emoji stuff
+  * Fallback to SGR when rendering 16/256 colors when MaxColors is 16M
+  * Detect true color set by max_colors
+  * deps: wgpu -> 0.18
+  * docs: Fix typo
+
+-------------------------------------------------------------------
+Sun Oct 29 06:30:01 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Set wezterm-terminfo as noarch
+
+-------------------------------------------------------------------
+Sun Oct 29 06:11:15 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Create subpackage wezterm-terminfo 
+
+-------------------------------------------------------------------
+Mon Oct  9 14:14:36 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Use unupdated vendored crates for now.
+  * This is to stop OBS Notifications about build failures.
+  * Once openssl crate is updated from possibly a new release, I will
+    re-enable update of vendored crates
+- Use cargo-vendor-filterer to lessen vendored crates
+
+-------------------------------------------------------------------
+Sun Sep 17 04:14:54 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Declare higher build disk size requirement
+
+-------------------------------------------------------------------
+Thu Sep  7 07:42:24 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Enable update of vendored dependencies.
+- Update vendored dependencies.
+
+-------------------------------------------------------------------
+Tue Aug 29 04:49:29 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Revert update of vendored deps.
+
+-------------------------------------------------------------------
+Tue Aug 29 03:56:26 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Remove cargotoml parameters in _service.
+- Update vendored dependencies.
+
+-------------------------------------------------------------------
+Sun Aug 13 13:51:43 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Revert update of vendored dependencies.
+
+-------------------------------------------------------------------
+Sun Aug 13 13:26:52 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Replace obsoleted `disabled` option with `manual` from _service.
+- Update vendored dependencies.
+
+-------------------------------------------------------------------
+Mon Aug  7 14:19:49 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Fix build feature flags. Only use default + distro-defaults.
+
+-------------------------------------------------------------------
+Fri Jul 14 00:03:36 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 20230712.072601.f4abf8fd
+  * The default for front_end is now WebGpu
+  * The default for adjust_window_size_when_changing_font_size now depends on the window environment and the contents of tiling_desktop_environments.
+  * Added eigth block corner glyphs to custom block glyphs. 
+  * Don't hide mouse cursor when pressing only modifier keys.
+  * PaneSelect will now un-zoom to show all panes, then re-zoom after performing its action.
+  * Images, especially animated images, are now decoded in the background. When used as a background layer for the terminal, we now use the normal terminal background color as a placeholder until the first frame has been decoded. In other circumstances, you may observe a brief black frame while waiting for the image to decode.
+  * You may now use CTRL-J/K to change the selection in the launcher menu, in addition to CTRL-N/P which always worked previously.
+  * Duplicate entries in CharSelect are now suppressed, making it less cluttered. 
+  * Lots of changes are described in https://wezfurlong.org/wezterm/changelog.html#20230712-072601-f4abf8fd
+
+-------------------------------------------------------------------
+Thu Jun 15 17:03:30 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Package is incompatible with native libraries. Disabling by commenting
+  out CFLAGS and CXXFLAGS.
+
+-------------------------------------------------------------------
+Thu Jun 15 16:35:37 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Add missing dependencies
+
+-------------------------------------------------------------------
+Thu Jun 15 16:18:52 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Add %optflags
+- Fix install section.
+
+-------------------------------------------------------------------
+Thu Jun 15 13:27:59 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Change and reupload source upstream tarball with already downloaded third-party deps.
+
+-------------------------------------------------------------------
+Thu Jun 15 13:10:46 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Use upstream tarball.
+- Add global dashed_version since upstream uses dashses instead of periods.
+- Update vendored dependencies.
+
+-------------------------------------------------------------------
+Wed Jun  7 22:44:44 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update vendored dependencies.
+
+-------------------------------------------------------------------
+Fri Apr 14 13:41:36 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update vendored dependencies.
+
+-------------------------------------------------------------------
+Mon Apr 10 04:53:53 UTC 2023 - socvirnyl.estela@gmail.com
+
+- Update to version 20230408.112425.69ae8472:
+  * windows: fix: mess up full screen mode on config reload
+  * pty: fix unused import warning on windows
+  * windows: fix warning; mut not required here
+  * config: defer evaluating default wsl domains
+  * docs: update for wezterm replay changes
+  * docs: explain what font shaping actually is
+  * docs: add tags to a number of pages
+  * wayland: fix webgpu invalidation issue
+  * wezterm replay: add --explain-only and --cat options
+  * switch to fancy-regex crate
+  * docs: for integrated title buttons
+  * Push folks towards the bug report template
+  * schemes: fix origin url when importing toml files
+  * add more color schemes
+  * docs: update color scheme versions
+  * windows: speculative fix for recursive borrow
+  * add wezterm.has_action
+  * Make background painting more consistent when window is transparent
+  * fix build on windows
+  * docs: fix link
+  * expose the tty name associated with a pane
+  * docs: update gui.get_appearance example for mux
+  * quick select: make user patterns take precedence
+  * docs: show schemes in the per-page toc
+  * Add InputSelector action
+  * admit defeat to intel shader weirdness
+  * refine charselect move logic per comments on #3449
+  * character select pgup/down, less jerky navigation, selected centered in list (#3449)
+  * docs: ... and format the examples
+  * docs: update format-tab-title examples
+  * wezterm cli list: add is_active and is_zoomed fields to json output
+  * add `wezterm cli get-pane-direction`
+  * Add PromptInputLine and examples of (re)naming tabs/workspaces
+  * remove stray debug
+  * mux: explicitly update tab/pane active status on focus change
+  * cli: add --pane-id option to activate-pane-direction
+  * mux: increase default fetch throttle limit
+  * cli: defer parsing config in most cases
+  * make config_builder work with table.insert(config.keys, ...)
+  * mux: spawn: only use the cwd from a pane in a compatible domain
+  * mux: fix unseen output status for remote panes
+  * docs: changelog for #1872
+  * fix unused import warning
+  * mux: avoid WindowTitleChanged cycle
+  * ssh: fix token expansion for ProxyCommand
+  * fix permute_any_mods
+  * fix(clippy): Implement From instead of Into
+  * fix: 'wezterm connect --workspace foo dom' part 2
+  * render: ensure alt color and mix are well-defined for poly quads
+  * Expand sponsor section of readme
+  * docs: Add sponsor page
+  * Update FUNDING.yml
+  * mux: reduce volume of bonus lines sent by server
+  * skip pruning old logs unless we are the gui
+  * mux: forward ClearScrollback requests to remote server
+  * fix wezterm connect --workspace
+  * mux: increase unix reconnect delay
+  * suppress dead code warning for locate_app_wide_key_assignment
+  * mux: detach domain on window close
+  * wezterm: defer parsing config
+  * config: lazyily produce ssh domain list
+  * refactor: split cli subcommand into separate modules
+  * add wezterm.mux.rename_workspace
+  * add wezterm cli rename-workspace
+  * maybe fix freebsd build
+  * add wezterm cli set-tab-title and wezterm cli set-window-title
+  * tab navigator: use tab title > pane title if set
+  * mux: propagate tab and window title when it changes
+  * default format-tab-title now respects tab:set_title
+  * add window:active_tab(), window:active_pane(), tab:active_pane()
+  * add display_pixel_geometry config option for subpixel geometry
+  * font: minor refact to derive Default for FreeTypeLoadTarget
+  * windows: fix INTEGRATED_BUTTONS|RESIZE
+  * rustfmt
+  * x11: fix INTEGRATED_BUTTONS|RESIZE
+  * refactor: remove opengl and OpenGL from names
+  * refactor: tidy up window_buttons a little
+  * refactor: split render.rs into smaller modules
+  * integrated buttons: tweak gnome button logic
+  * integrated title bar: default to mac style on mac
+  * docs: changelog for #2722
+  * minor tidy up of hover handling for maximize button
+  * rename PushOval -> Oval
+  * tab bar: fixup placement of macos native titlebar buttons
+  * macos: correctly synthesize WindowState::MAXIMIZED
+  * remove redundant mix operation from shader
+  * cheaper case insensitive compare
+  * avoid bespoke lightness calc, reuse hsl function
+  * allow using Gnome and Windows styles on macos.
+  * remove some macos conditional compilation
+  * macos: fixup window_decorations w/ INTEGRATED_BUTTONS+RESIZE
+  * integrated-title-bar: Add Native button style parameter
+  * integrated-title-bar: Replace window button recoloring
+  * integrated-title-bar: Use snap layouts for any maximize button
+  * integrated-title-bar: Improve windows support
+  * integrated-title-bar: Update config options
+  * integrated-title-bar: Remove commented line
+  * integrated-title-bar: Remove macos button style
+  * integrated-title-bar: Add macOS support
+  * integrated-title-bar: Ignore style config on macos and windows
+  * integrated-title-bar: Add x11 support
+  * integrated-title-bar: Add button style option
+  * integrated-title-bar: Add option to remove useless buttons
+  * integrated-title-bar: Add button placement option
+  * integrated-title-bar: Add libadwaita styled buttons
+  * integrated-title-bar: Add initial shape for macos buttons
+  * integrated-title-bar: Add color configuration
+  * integrated-title-bar: Add windows support
+  * integrated-title-bar: Add window buttons to the tabbar
+  * mux: allow client to provide palette to mux server
+  * docs: fix list syntax
+  * doc: mention that hyperlink prefix is required
+  * Add Homebrew tap for nightly build
+  * Update webgpu_preferred_adapter.md
+  * macos: fix CTRL key behavior when use_ime=true
+  * win:perform_action now works with Copy Mode and other overlays
+  * gui: win:perform_action now awaits the underlying perform_key_assignment
+  * mux: don't request lines if we think we are dead
+  * surface config errors when running `wezterm connect`
+  * fix is_zoomed property in tab:get_panes_with_info()
+  * update libssh-rs dep to latest build
+  * Fix minor typo
+  * docs: cover new default ssh domain behavior and function
+  * serial: fix some FIXMEs
+  * docs: fixup a couple of Since thingies
+  * Add serial_ports config
+  * Fix broken link to list of features
+  * populate ssh domains from your ssh config by default
+  * fix broken link on features page
+  * mux: fix pid file locking
+  * mux server: propagate config CLI options when daemonizing
+  * term: respect log_unknown_escape_sequences for OSC
+  * docs: changelog for https://github.com/wez/wezterm/issues/3390
+  * fix build.rs on windows, take 2
+  * fix build.rs on windows
+  * windows: add manifest to config-using console apps, force UTF8 ACP
+  * add more context to errors
+  * config: add more context on some errors
+  * fix unused import
+  * mux: more robust handling of pane killing
+  * RLIMIT_NPROC is not a macos thing
+  * raise ulimit nofile and nproc to a reasonable min value on unix systems
+  * mux client: GC unreferenced remote window/tab/pane ids on resync
+  * fix stray debug
+  * add pane:activate() and tab:activate()
+  * adjust log level for 'going to run proxy' message
+  * fix overflowing sub assertion in debug mode
+  * fix: Update snapshot (see commit 31100244)
+  * fix: Derive Eq on Selection
+  * fix: Use serde with bitflags
+  * fix: Formatting
+  * chore: Update Cargo.lock
+  * fix: Update signal-hook to 0.3 and fix compilation errors
+  * chore: Update criterion to 0.4
+  * chore: Update nix to 0.26
+  * fix: Update bitflags to 2.0 and fix compilation errors
+  * chore: Update phf to 0.11
+  * deps: update sha2
+  * ci: update cargo-install
+  * docs: update for latest release
+
+-------------------------------------------------------------------
+Sun Mar 26 23:08:55 UTC 2023 - socvirnyl.estela@gmail.com
+
+- Update to version 20230326.111934.3666303c:
+  * docs: show the return values of the new pane:move_to_xxx methods
+  * mux: add lua api equivalent to move-pane-to-new-tab
+  * mux: forward move-pane-to-new-tab requests to hosting mux
+  * ci: automate making PR for flathub at release time
+  * hyperlink_rules.md: add link supported regex syntax
+  * mux: move-pane-to-new-tab didn't resync structure
+  * tidy up some debug logging
+  * mux: fix some dpi and pixel size issues
+  * images: improve logging when things are weird
+  * When a modal is active, it gets first dibs on key processing
+  * palette: exclude copy mode actions unless copy mode is active
+  * macos: invalidate window when dispatching from menubar
+  * Add new-tab-button-click event
+  * palette: prioritize platform-appropriate shortcuts
+  * palette: refactor slightly
+  * palette: add config for how ui key caps render
+  * update tests for updated JetBrainsMono
+  * update bundled JetBrainsMono to 2.304
+  * palette: show key assignment alongside entries
+  * ci: Use nextest (#3342)
+  * palette: show the label from the command in the palette
+  * docs: changelog for https://github.com/wez/wezterm/pull/3344
+  * refactor(config & macos/windows): rename window_background_blur to macos_window_background_blur
+  * feat(config & window): use CGSSetWindowBackgroundBlurRadius to set background blur on macos
+  * docs: clarify the default for allow_square_glyphs_to_overflow_width
+  * more entitlements on macos
+  * re-run black ci/generate-workflows.py
+  * ci: Use rust-cache instead of the general cache action (#3341)
+  * fix(ci): Use install action instead of manually calling `cargo-install`
+  * fixup for running the tests
+  * add wezterm cli activate-pane, wezterm cli activate-tab
+  * Add: wezterm cli kill-pane
+  * mux: notify clients when the size/structure of a tab changes
+  * mux: propagate pane focus change events to clients
+  * reformat generate-workflows.py with black
+  * update terminfo to 0.8
+  * chore: Regenerate workflows
+  * fix(ci): Wrong path to tag-name.sh
+  * fixup images with the multiplexer
+  * macos: be precised about matching cocoa BOOL
+  * macos: don't treat command line args as .command scripts
+  * docs: changelog for #3339
+  * Fix leak of Pane struct
+  * wezterm-ssh: fix occasional segv on libssh shutdown
+  * wezterm-ssh: tidy up test output
+  * docs: note about sigmask change
+  * fix: disable mouse reporting for RIS/ResetTerminal sequence
+  * pty: unix: empty signal mask in the spawned child
+  * Update shell-integration.md
+  * factor window border sizes when computing window sizes
+  * docs: changelog for #3323 #2879 #3303
+  * fix: wezterm cli activate-pane-direction now repaints (#3303)
+  * docs: add --help output from various wezterm cli subcommands
+  * term: adjust logical line wrapping behavior
+  * fix lua string escaping in wezterm show-keys
+  * docs: updated window_decorations
+  * docs: changelog for #3330
+  * cargo update
+  * Fix transparent title bar on macOS with `window_decorations = "RESIZE|MACOS_FORCE_DISABLE_SHADOW"` (#3330)
+  * allow json encoding wezterm.GLOBAL entries
+  * fix delegation of --skip-config to wezterm-gui
+  * Fix some documentation pages (#3321)
+  * docs: changelog for #3227
+  * Apply suggestions from code review
+  * Changed config option name to mouse_wheel_scrolls_tabs, made it default to true (matching current behavior)
+  * Cargo formatted
+  * Add docs for new scroll_tabs config option
+  * Add config option for scrolling the tab bar
+  * add __len and __pairs metamethods to wezterm.GLOBALS
+  * ci: persuade zypper to install deps in get-deps
+  * get-deps: set -e
+  * docs: add --help output pages to the CLI reference
+  * minor update to zsh completion
+  * docs: improve color scheme page titles
+  * docs: simplify scheme aliases a bit more
+  * docs: fix handling of color scheme aliases
+  * docs: boost font page in search index
+  * docs: allow search to find 'changelog'
+  * docs: use strict mode to hopefully catch invalid links
+  * docs: simplify templating of install pages
+  * keys: avoid scrolling to bottom when CapsLock is pressed
+  * linuxbrew: 20 rather than 22
+  * wezterm-ssh: fix parsing of proxycommand
+  * Update wezterm-linuxbrew.rb.template
+  * docs: update a bunch of since lines to new macro
+  * docs: update nightly features -> current release
+  * docs: fix fedora37 stable download link
+  * docs: update linux releases
+  * Docs: update changelog for 20230320-124340-559cb7b0 release
+  * schemes: we now allow using any of the alias names, so refine docs
+  * sync from https://github.com/folke/tokyonight.nvim
+  * sync color schemes
+  * sync-color-schemes: handle renamed schemes slightly better
+  * sync-color-schemes: update for recent gogh schema changes
+  * minor optimization for single-frame animated formats
+  * fix potential deadlock when using wezterm cli split-pane
+  * deps: update predicates for wezterm-ssh tests
+  * ci: remove some builds
+  * build(deps): bump rstest from 0.16.0 to 0.17.0
+  * docs: fix typo in changelog
+  * docs: use snippets to make since: nightly more informative
+  * docs: allow using GH issue syntax shorthands
+  * build(deps): bump actions/deploy-pages from 1 to 2
+  * docs: more config.something style adjustments
+  * docs: shift from return {} style to config.something style
+  * remove open dependency
+  * add own open_url crate
+  * time: call_after accepts fractional seconds
+  * fix split size after unzooming, when the window size is unchanged
+  * fix hover state for retro tab bar
+  * fix(clippy): Remove closures where possible
+  * fix(clippy): Use `faster` methods on Iterators
+  * Convert admonition blocks to markdown equivalent
+  * fix time.call_after when used inside an event callback
+  * mouse: don't over invalidate when hovering tabs
+  * fix non-serde termwiz build
+  * clean up blob storage on shutdown
+  * use blob leases for decoded animation frames
+  * ImageDataType::File -> EncodedLease
+  * add wezterm-blob-leases crate
+  * docs: fix video link on features page
+  * fix kitty image protocol handling
+  * handle unsupported images better
+  * fix: rewrite `.` when fetching path in lua plugin crate
+  * docs: restore foo.html rather than foo/index.html style URLs
+  * Image decoding is now done in a bg thread
+  * move animation decoding from term layer to gui layer
+  * Use mkdocs admonish for note about mux color schemes
+  * term: avoid breaking animated webp images when resizing
+  * term: improve readability of error message for oversized image
+  * fix iterm2 image cursor position
+  * pages: run only one at a time, allow them to queue up
+  * improve default hyperlink_rules. add default_hyperlink_rules()
+  * fix DisableDefaultAssignment not working for CTRL|SHIFT P
+  * apply reloaded config to all panes, regardless of zoom state
+  * Set minimum animation frame duration to match max_fps
+  * Update Homebrew section
+  * docs: Correct to new URL
+  * fix(clippy): Remove unnecessary clone/to_string calls
+  * fix trigger paths!
+  * ci: adjust wezterm-ssh triggers
+  * revise verify-pages triggers and workflow
+  * ci: adjust termwiz workflow path triggers
+  * docs: changelog for https://github.com/wez/wezterm/pull/3146
+  * Improve XDG configuration searching
+  * fix: typo about parameter
+  * docs: make them build on macos again
+  * add log_unknown_escape_sequences config option
+  * docs: don't build now-unused mdbook bits
+  * ci: workflow should run when its file is changed
+  * docs: disable instant page nav
+  * ci: adjust path triggers
+  * docs: some adjustments for mkdocs
+  * docs: switch doc build to Material for MkDocs
+  * improve handling of animated webp images
+  * fix(clippy): Derive Default where possible
+  * Apply suggestions from code review
+  * Update docs/shell-integration.md
+  * Add function for users powershell + starship
+  * build(pty): don't use `std::os::fd::RawFd` symbol directly
+  * deps: open -> 4.0
+  * wezterm-ssh: fix leaky tests, as described in https://nexte.st/book/leaky-tests.html
+  * docs: fix pane:split direction top/bottom -> up/down
+  * include ssh config map in debug logging when running wezterm ssh -v
+  * Add comment
+  * Filter figterm from stateful check
+  * gdi.rs: Avoid non-idiomatic iterations over Option, they cause warnings
+  * ssh: support %l and %L in config files
+  * deps: socket2 -> 0.5
+  * docs: add mdbook-admonish
+  * ci: docs: deploy directly, rather than via gh_pages branch
+  * docs: fixup get_pane_direction docs
+  * Fix typo in "Terminal Emulators and PTYs" section
+  * add docs
+  * simplify direction conversion to lua
+  * add lua methods to access position and pane in the direction
+  * ci: try harder for app image build
+  * docs: shell-integration: document Xonsh support
+  * ci: maybe fix appimage build
+  * ci: generate appimage from ubuntu20
+  * termwiz: bump version ready for publish
+  * fix(input): support alt-left-bracket
+  * maybe fix win32 build
+  * ssh: detect exit-signal state for channels
+  * wsl: default_cwd is now ~
+  * ls-fonts: emulate the effect of normalize_output_to_unicode_nfc
+  * Allow negative number for cli get-text line
+  * make command palette font a little larger
+  * docs: command palette font size/color
+
+-------------------------------------------------------------------
+Tue Feb 14 01:19:35 UTC 2023 - William Brown <william.brown@suse.com>
+
+- Automatic update of vendored dependencies
+
+-------------------------------------------------------------------
+Fri Feb 10 01:49:35 UTC 2023 - socvirnyl.estela@gmail.com
+
+- Update to version 20221119.145034.49b9839f+g221:
+  * x11/wayland: restore mouse copying to both clipboard and primary selection
+  * ssh: do our own proxycommand handling
+  * window: negative caching for xdg-portal
+  * Add Solus build dependencies
+  * cargo update
+  * config: allow config_builder to work with set_config_overrides
+  * window: use a shorter timeout for xdg portal reads
+  * palette: add CTRL-p / CTRL-n key bindings to move up/down
+  * docs: command palette
+  * palette: add full doc and enum name to text to match
+  * macos: make initial position consistent with window:set_position
+  * docs: webgpu
+  * ci: remove ubuntu 18
+  * mux: only resize zoomed pane when resizing a tab
+  * defer loading background until after rescaling in config reload
+  * reduce macos locale warning to debug
+  * docs: link to dark mode example from appearance section
+  * x11: avoid "Unhandled" log line for focus events
+  * wgpu: ensure that the srgb format is available before using it
+  * fixup test for nerd font symbol update
+  * deps: wgpu -> 0.15
+  * fonts: update Symbols Nerd Font Mono
+  * rust 1.67 is the minimum required version
+  * Change to the command to upgrade wezterm-nightly
+  * macos: fixup open_untitled_file handling
+  * cargo update
+  * mux: pass gui window position through from new mux window
+  * remove some debug prints
+  * macos: spawn new window when clicking on dock icon
+  * Add quit_when_all_windows_are_closed config option
+  * docs: expand wezterm.format examples
+  * docs: changelog for https://github.com/wez/wezterm/pull/2887
+  * wayland: set scale factor without wegl_surface (for WebGpu)
+  * docs: changelog for https://github.com/wez/wezterm/pull/3054
+  * macos: Add "New Window" to the dock menu
+  * docs: changelog for https://github.com/wez/wezterm/pull/2762
+  * update derived files
+  * Add bindings for Home and End in copy_mode (#2762)
+  * add `wezterm cli get-text` command
+  * cargo fmt
+  * deps: http_req -> 0.9
+  * docs: changelog for #2955
+  * fix(wezterm-gui): Move word able to jump next line
+  * finish test
+  * fix: correctly set WHEEL_POSITIVE
+  * wip: horizontal scroll support
+  * ci: reduce frequency of thread locking
+  * deps: sctk -> 0.16
+  * wayland: improve error when no seats have pointers
+  * docs: changelog for https://github.com/wez/wezterm/pull/3053
+  * Detect ALT key for mouse events on Windows
+  * docs: link (In|De)creaseFontSize <-> adjust_window_size_when_changing_font_size
+  * workflows: add auto-locking of inactive closed issues
+  * docs: changelog for #2959
+  * x11: simplify focus event matching
+  * x11: ignore pointer focus events
+  * docs: clarify that you want window_decorations=RESIZE
+  * allow window_decorations to work with config_builder
+  * ci: use freebsd 13
+  * window_decorations: add MACOS_FORCE_(EN|DIS)ABLE_SHADOW
+  * Add wezterm.plugin module, allows loading modules from git
+  * deps: update toml -> 0.7, cargo update
+  * macos: don't include LEADER based key assignments in menubar
+  * fix crash bug uncovered by rust 1.67
+  * fix command output not being displayed for short lived commands
+  * Add wezterm start --domain DOMAIN --attach + gui-attached event
+  * macos: maybe fix window positioning for multi-monitor systems
+  * docs: add a bit explaining what a terminal is
+  * docs: add version info to newer copy mode shortcuts
+  * wezterm.GLOBAL now returns references to stored data
+  * config: capture warnings and show them in config error window
+  * shell integration: check existence of `hostname` command before calling
+  * cargo fmt
+  * config: add wezterm.config_builder
+  * ci: unpin rust and mdbook versions in pages workflow
+  * docs: use new gelatyx `file-list` option
+  * fix typo in logging
+  * ci: try a bit harder to make doc builds work on PRs
+  * docs: shell-integration: cover the new built-in user-vars
+  * shell integration: set some handy user vars by default
+  * docs: add a brief bit about workspaces
+  * docs: start recipes section
+  * docs: add note about multiplexing and color schemes
+  * cargo update
+  * x11: always update selection ownership
+  * cargo fmt
+  * bleh, fix unix build
+  * mention that wayland doesn't allow --position
+  * fix build on windows
+  * reduce latency when heavily using foreground process info
+  * ci: try harder to successfully build the docs on PRs
+  * cargo update
+  * lua: add some more tab methods
+  * modals: invalidate window after assignment
+  * window:active_key_table now includes per-pane stacks
+  * add window activation items to palette and menubar
+  * docs: change log and docs for https://github.com/wez/wezterm/pull/2908
+  * chore(wezterm-gui): Create move_to_end_of_word
+  * docs(wezterm-gui): Update docs
+  * feat(wezterm-gui): Support move to word end
+  * docs: add troubleshooting section
+  * add explicit SHIFT key caps to copymode docs
+  * docs: css for https://github.com/wez/wezterm/pull/2911
+  * fmt docs
+  * Improve Copy Mode key documentation
+  * cargo fmt
+  * mux: try harder to use default_workspace from config
+  * macos: implement window:focus()
+  * windows: implement focus method
+  * add WindowOps::focus, ActivateWindow, window:focus()
+  * docs: changelog for https://github.com/wez/wezterm/pull/2977
+  * wayland: hide mouse cursor when typing
+  * docs: changelog for https://github.com/wez/wezterm/pull/2978
+  * Use dpi from configuration while resizing
+  * lua: add some pane methods for working with zones
+  * cargo update
+  * macos: ensure menubar is visible when switching away from a fullscreen window
+  * palette: ensure reverse background block spans full width
+  * macos: enable opacity for webgpu
+  * macos: retain menu menu when retrieving it from NSApp
+  * macos: fixup application termination
+  * docs: changelog for https://github.com/wez/wezterm/pull/2946
+  * docs: add version info to hide_mouse_cursor_when_typing
+  * docs: document new config option
+  * feat: hide_mouse_cursor_when_typing config option
+  * sync color schemes
+  * docs: clarify native macos full screen mode
+  * docs: changelog for https://github.com/wez/wezterm/pull/2928
+  * x11: determine active screen by using max intersecting area with active window
+  * x11: use TranslateCoordinates to get the root coordinates of focused window
+  * x11: clean up active screen detection
+  * x11: implement active screen detection
+  * macos: add version info to system name
+  * config: fix typo in error message
+  * gui: include x11 window manager in connection name
+  * gui: describe connection and show it in debug overlay
+  * gui: add target triple to debug overlay
+  * config: allow using bright but not bold text when brightening text
+  * expose some mux domain stuff to lua
+  * update base64, work around another batch of breaking API changes
+  * palette: fix min width
+  * cargo update
+  * Add Fedora 37 nightly builds
+  * ci: another pass at tumbleweed
+  * ci: make fix tumbleweed build
+  * windows: avoid panic when minimizing w/ WebGpu
+  * cargo update
+  * deps: update ntapi to 0.4
+  * ci: apparently GH_TOKEN is what it really should be
+  * Fix typo
+  * Tweak labels in the menubar/command palette
+  * ssh: respect AddressFamily for environments with broken ipv6
+  * cargo update
+  * docs: changelog for https://github.com/wez/wezterm/issues/2782
+  * Add the hidden alias `-e` for the `start` subcommand. (#2889)
+  * palette: add icons for a number of entries
+  * box model: improve max width constraint for more complex elements
+  * palette: adjust group prefix when menubar is empty
+  * macos: update menubar when the config reloads
+  * include key assignments in palette and menubar
+  * tidy up macos menubar key assignment
+  * menubar: re-categorize attach/detach
+  * command palette: tweak for empty doc case
+  * improve width constraints in box_model, center command palette
+  * synthesize commands from domains, workspaces
+  * command palette: first pass
+  * ci: potentially fixup flakey pages build
+  * removed deprecated Copy, Paste, PastePrimarySelection actions
+  * docs: changelog for https://github.com/wez/wezterm/issues/2819
+  * launcher: prefer to use human description of key assignment
+  * Re-organize default command list
+  * add descriptions for all keyassignment actions
+  * adjust default command list
+  * move OpenInBrowser -> KeyAssignment
+  * macos: allow running when there are no windows
+  * put quit at bottom of application menu
+  * macos: link to helpful resources from Help menu
+  * fixup tests
+  * macOS: add MenuBar
+  * macos: use interactive shell for .command scripts
+  * ci: refine error reporting in doc build
+  * mux: avoid deadlock in mux server
+  * deps: harfbuzz -> 6.0.0
+  * fix windows build
+  * x11: potential fix for hanging IME
+  * mux: rename Mux::get() -> try_get(), add "infallible" Mux::get()
+  * mux: Mux is now Send+Sync
+  * mux: require that Domain be Send + Sync
+  * mux: switch RefCell to RwLock internally
+  * Rc<Tab> -> Arc<Tab>
+  * mux: make Tab Send+Sync
+  * mux: reduce context switching when parsing output
+  * mux: add notify_from_any_thread helper
+  * mux: Pane is now required to be Send+Sync. Use Arc<dyn Pane>
+  * ci: add debug output when building docs
+  * withdraw DEC private SGR handling for super/subscript
+  * cargo update
+  * macos: allow association with .command file type
+  * disable window title reporting escape sequence by default
+  * docs: add aarch64 macos example to target_triple
+
+-------------------------------------------------------------------
+Wed Dec 21 12:49:12 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Add shell completions for bash, zsh, and fish.
+- Print version to `.tag` file to let `wezterm -V` or `wezterm --version`
+  command show the version. 
+
+-------------------------------------------------------------------
+Fri Dec 16 15:49:36 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Separate the multiplexer server from wezterm-gui:
+  Reason -> https://github.com/wez/wezterm/blob/main/README-DISTRO-MAINTAINER.md#binaries
+
+-------------------------------------------------------------------
+Fri Dec 16 13:17:45 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 20221119.145034.49b9839f+g21:
+  * Update of vendored dependencies
+
+-------------------------------------------------------------------
+Mon Dec 05 22:40:02 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 20221119.145034.49b9839f+g16:
+  * Remove `Source` entry in Debian control file (#2828)
+- Automatic update of vendored dependencies.
+
+-------------------------------------------------------------------
+Sun Dec 04 03:01:04 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 20221119.145034.49b9839f+g14:
+  * Fix shell-resolution documentation in launch
+  * build(deps): bump rstest from 0.15.0 to 0.16.0
+  * env_logger -> 0.10
+  * cargo update
+  * fonts: improve error message slightly
+  * cleanup: a few references to the Last Resort font
+  * docs: https://github.com/wez/wezterm/pull/2662
+  * wezterm-gui: implement move_by_page function
+  * docs: add documentation for new default key bindings
+  * wezterm-gui: support half page up/down navigation
+  * docs: mention new background option from window_background_image
+  * cargo update
+  * refactor: replace the deprecated usage of `chrono::TimeZone::ymd`
+  * docs: released 20221119-145034-49b9839f
+
+-------------------------------------------------------------------
+Mon Nov 21 03:25:19 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 20221119.145034.49b9839f:
+  * fix IME composition status applying to all panes
+  * allow disabling tabs, new tab button in tab bar
+  * Update macos docs with wezterm CLI installation (#2619)
+  * docs: changelog for https://github.com/wez/wezterm/pull/2661
+  * Fix relative CWD path given on command line being interpreted as within the server's CWD
+  * fixes flow chart and typo in config file docs
+  * docs: changelog for https://github.com/wez/wezterm/pull/2636
+  * Fix background cover algorithm
+  * Fix dragging by left or right status with retro tab bar
+  * docs: fix MoveTabRelative default key assignments
+  * docs: update first example to use wezterm.action style
+  * gui: improve error message for unsupported height/width values for Color and Gradient
+  * webgpu: improve messaging when no adapters are found
+  * webgpu: minor optimization of shader
+  * use constants for has_color values in wgsl shader and in the rust code
+  * webgpu: support hsv transforms
+  * fix resizing on windows when wgpu is enabled
+  * add some config options to influence webgpu selection
+  * make drawRect work on macos when using webgpu
+  * This makes webgpu actually render
+  * fixup crash when running in webgpu mode
+  * plumb webgpu code into draw path
+  * Abstract more over the render state, add RenderContext
+  * put WebGpuState into an Rc
+  * Add IndexBuffer abstraction
+  * Add VertexBuffer abstraction
+  * Add MappedVertexBuffer abstraction
+  * make TripleLayerQuadAlloctor::Gpu(BorrowedLayers) self-referential
+  * use a self-referential struct for mapping vertexbuffers
+  * erase generic T from Atlas, Sprite, CachedGlyph etc.
+  * notionally allow webgpu texture atlas creation
+  * make Vertex conform to Pod
+  * Basic useless wgpu based rendering foundation
+  * deps: update raw-window-handle
+  * docs: add_wsl_distributions_to_launch_menu was removed
+  * partially handling overflowing tab titles
+  * changelog for https://github.com/wez/wezterm/pull/2746
+  * Allow windows installer to run on arm64 emulating x64
+  * rustdoc markdown fences--
+  * xcursor: parse and follow theme inheritance
+  * reduce size of BoxedQuad by 2/3
+  * quads: switch to allocating quads rather than contiguous vertices
+  * remove dead code
+  * Add support for heap profiling using dhat
+  * perf: adjust clustering when bidi is disabled
+  * lfucache: improve LFU algorithm and structure
+  * refactor: move lfucache into its own crate
+  * cargo update
+  * docs: remove wezterm-nightly-bin AUR link
+  * gui: fix cursor color invalidation issue
+  * Fix horizontal wheel events
+  * docs for #2702
+  * keyevent: fixup prevent_fallback processing
+  * docs: changelog for #2112
+  * wezterm.terminfo: add statusline entries
+  * cargo update
+  * Fix compiler warning
+  * keys: add prevent_fallback option for ActivateKeyTable
+  * docs: changelog for https://github.com/wez/wezterm/pull/2670
+  * Continue parsing cmdline arguments in the desktop file
+  * Allow to pass the command to execute via "-e"
+  * rust 1.65 does a better job with enum packing
+  * termwiz: release 0.19
+  * fix: temp fix for Android build error
+  * deps: cargo update for openssl
+  * deps: cargo update
+  * deps: remove async-std dep
+
+-------------------------------------------------------------------
+Thu Nov  3 18:30:01 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Enable --all-features for suse>1500 builds:
+  contains --features distro-defaults, to stop phoning home
+  [boo#1205008]
+
+-------------------------------------------------------------------
+Wed Oct 26 22:28:40 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 20220905.102802.7d4b8249+git147:
+  * deps: textwrap -> 0.16
+  * cargo update
+  * deps: upgrade finl_unicode to 1.2
+  * macos: remove UNHANDLED: IME: do_command_by_selector warnings
+  * render: remove redundant extra quad buffer
+  * trim heap usage
+  * reduce log level strength of "breaking on overflow"
+  * ci: maybe fix suse CI
+  * update cargo.lock for bidi release
+  * bidi: bump version for publish
+  * update harfbuzz to 5.3.1
+  * mux client: add a warning
+  * gui: set up mux socket for `wezterm connect` case as well
+  * fix panic with window:set_workspace when default domain is mux
+  * bidi: move conformance tests to separate file
+  * cargo update
+  * termwiz: fixup for 32-bit systems
+  * termwiz: update widechar_width for unicode 15
+  * keys: ctrl-shift-1 didn't switch to the first tab
+  * launcher: don't panic when launching nothing
+  * fonts: fix shaping for U+28 U+FF9F
+  * fmt
+  * fix wrapping issue with double-wide cells and hyperlink rules
+  * mux client: consider domain id when mapping panes
+  * mux client: add domain id to logs
+  * mux client: refine some debug a big
+  * charselect: improve compatibility with QMK unicode inputs
+  * ssh: libssh: improve diagnostic in case connect fails
+  * mux: fix stale local/remote window id mapping in mux client
+  * config: validate consistency of domain names
+
+-------------------------------------------------------------------
+Fri Oct 14 12:21:25 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Increase both storage and memory to 16G in _constraints file to fix out of memory
+  errors.
+
+-------------------------------------------------------------------
+Fri Oct 14 01:10:11 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Increase storage to 12G in _constraints file.
+
+-------------------------------------------------------------------
+Tue Oct 11 12:05:42 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 20220905.102802.7d4b8249+git117:
+  * term: support utf8 mouse reporting (DECSET 1005)
+  * cargo update
+  * docs: changelog for https://github.com/wez/wezterm/issues/2559
+  * Allow cursor visibility to be changed by widgets
+  * Add ResetTerminal and pane:inject_output method
+  * add window-focus-changed event
+  * Expose applying an AttributeChange on CellAttributes
+  * x11: explicitly enable Dri2
+  * validate the config to prevent div by 0 for initial_cols/initial_rows
+  * tweak --always-new-process messaging
+
+------------------------------------------------------------------
+Tue Sep 06 11:44:03 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Add _constraints file to avoid memory exhaustion.
+- Update to version 20220905.102802.7d4b8249+git3:
+  * shaper: restart presentation=None from font_idx=0
+  * docs: publish release
+  * docs for switch_to_last_active_tab_when_closing_tab
+  * add switch_to_last_active_tab_when_closing_tab config option
+  * docs: slightly clarify language in ActivateLastTab
+  * docs: link to SpawnCommandInNewTab from SpawnTab
+  * docs: changelog
+  * Search incrementally in chunks of 1000 lines, show progress
+  * fix quad cache top pixel value
+  * cargo update
+  * Fix typo in harfbuzz.rs
+  * fix hangul NFC shaping
+  * lua: patch os.getenv with our own function
+  * termwiz: remove assertions
+  * docs: charselect and paneselect font & size config
+  * ci: expand auto-generated release description
+  * fontconfig: allow proportional fallbacks for codepoints
+  * docs: changelog for 20220904-064125-9a6cee2b
+  * font: fix the function signature for log_buffer_message ...
+  * docs: update for latest release
+  * docs: pane:get_metadata
+  * cargo update
+  * docs: explain about ~ in default_cwd docs
+  * docs: refine CharSelect docs
+  * charselect: options to control copy behavior, + docs
+  * delete old record/replay scripts
+  * correctly invalidate line shape data when fallback fonts load async
+  * adventures in shaping
+  * harfbuzz: allow creating an OT Face + Font
+  * harfbuzz: revise build and bindings
+  * fix build on windows
+  * deps: xkbcommon-rs released 0.5
+  * change text cursor to fa_lock when entering passwords
+  * add Pane::get_metadata
+  * reset mouse cursor to arrow when mouse leaves the window
+  * docs: update default assignments
+  * update shell completion info
+  * charselect: add explicit recent category, show category in UI
+  * cargo fmt
+  * pty: fix build on windows
+  * pty: set SHELL to the shell we selected
+  * pty: actually return the shell we found
+  * char selector: track recently selected emoji and use frecency to show it
+  * ssh: add trace logging when we send a signal
+  * ssh: reduce some redundant logging around AcceptEnv
+  * posix: prefer to resolve shell via the password database
+  * Add CharSelect modal for emoji/nerdfont/unicode input
+  * new color scheme: poimandres
+  * codec: bump version
+  * add pane_id and active state to render cache key
+  * ssh: close stdout, stderr bridges if child is done and there is no data
+  * add cursor shape/visibility to quad cache key
+  * mux: gracefully handle socketpair failure
+  * mux: refactor emit_output_for_pane and use it for exit_behavior
+  * update conpty to v1.14.2281.0 release
+
+-------------------------------------------------------------------
+Mon Aug 29 06:43:55 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 20220807.113146.c2fee766+git109:
+  * deps: tiny-skia 0.7 -> 0.8
+  * cargo update
+  * Adjust render caching; switch to LFU caches from LRU
+
+-------------------------------------------------------------------
+Sun Aug 28 00:34:09 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 20220807.113146.c2fee766+git106:
+  * add user-var-changed event
+  * improve error message in case wezterm-gui cannot be run
+  * fixup invalidation of blinking cursor, and on focus change
+  * cargo fmt
+  * track fps and recent frame duration for diagnostic purposes
+  * invalidate shape cache when reverse video mode changes
+  * Add some comments about new Pane methods and helpers
+  * flesh out some todos with new pane trait methods
+  * implement new pane trait methods for copy and quickselect overlays
+  * move shape & quad caching to hang off Line appdata
+  * revise Pane line related funcs
+  * termwiz: use interior mutability for Line::set_appdata
+  * cargo fmt
+  * disable some of the recent caching stuff
+  * termwiz: remove reverse video attribute from Line
+  * mux: remove stale portion of comment from Pane::get_lines
+  * termwiz: associate appdata with a Line
+  * fix copymode and quickselect overlays
+  * trim down lru cache sizes
+  * allow cursor_fg = "none" to use text fg color
+  * gui: cache get_lines_with_hyperlinks_applied
+  * optimize Pane::get_lines_with_hyperlinks_applied for empty rules case
+  * gui: factor out background rect calc
+  * fix blinking text
+  * fixup retro tab bar
+  * macos: make us run again on Mojave
+  * docs: mention CPU utilization improvements in changelog
+  * ssh: correctly expand %h tokens in ssh config
+  * scroll to bottom on mouse input when mouse is grabbed
+  * Avoid full path canonicalization when resolving cwd
+  * Add official dracula color scheme
+  * add focus state to cache key
+  * treat Constant ease-in-and-out as equivalent to "1 fps" case
+  * improve blink easing scheduling
+  * perf: cache quads by line
+  * Abstract quad and layer allocation
+  * add cheaper to cache shape info
+  * start building out box model based render of pane
+  * revise how uniforms are passed to shader
+  * cargo update
+  * conpty: work around mangled tmux title sequence
+  * Add Sequoia color schemes
+  * docs: changelog for max_fps https://github.com/wez/wezterm/discussions/2419
+  * compensate for flickery TUI programs by going slower(!)
+  * add pane select screenshot to appstream data
+  * docs: fix typo
+  * docs: CopyMode assignments now have their own individual pages
+  * docs: changelog for https://github.com/wez/wezterm/issues/2350
+  * respect close confirmation prompt when middle clicking a tab
+  * deps: update zbus
+  * cargo update
+  * Add `fig` to shells for shell completion
+  * macos: fixup CI build
+  * macos: NSScreen::maximumFramesPerSecond is newish
+  * docs: changelog for https://github.com/wez/wezterm/issues/2399
+  * tab bar: force x and + buttons to be square
+  * win32: implement max_fps option
+  * win32: set ScreenInfo::max_fps
+  * docs: fix link
+  * add border size and color config
+  * colors now override color_scheme
+  * gui-startup event now also works for `wezterm ssh`.
+  * fixup boundary condition for MoveBackwardZoneOfType
+  * Fixup ActivatePaneDirection to respect edge intersection
+  * x11: populate ScreenInfo::max_fps from xrandr
+  * docs: changelog for https://github.com/wez/wezterm/pull/2402
+  * Cache xdg-desktop-portal appearance
+
+-------------------------------------------------------------------
+Sat Aug 20 06:20:08 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 20220807.113146.c2fee766+git39:
+  * macos: report max_fps in ScreenInfo
+  * macos: implement max_fps
+  * docs: changelog for #2434
+  * Add control key in docs
+  * Add missing license files
+  * cargo update
+  * background: avoid weird wraparound in radial gradients
+  * docs: changelog for https://github.com/wez/wezterm/pull/2394
+  * chore: Sync color schemes with nightfox changes
+  * pty: fix doc example
+  * fixup build for pty api change
+  * pty: fixup for macos
+  * pty: try_clone_writer -> take_writer
+  * term: hook flush up to ThreadedWriter
+  * Fix `alias` for Flatpak: command wasn't quoted
+  * docs: add stable download links for suse and alpine
+  * fix bypass_mouse_reporting_modifiers
+  * add update-status event. deprecates update-right-status
+  * fix overly truncated tab titles
+  * apply executable checks to $SHELL and /etc/passwd lookup
+  * pty: cmdbuilder: check for executable access when resolving program
+  * fix fedora download links
+  * docs: update info about number of color schemes
+  * docs: add missing COMMANDS entry for ShowLauncherArgs
+  * docs: clarify ShowLauncherArgs flags behavior
+  * docs: wezterm is now on flathub
+  * ActivatePaneDirection uses recency to resolve ambiguous moves
+  * sync color schemes with nightfox
+  * remove flatpak-unsupported link types
+  * fix typo in appdata id tag
+  * flesh out appdata a bit more
+  * add content rating and release info to appdata
+  * docs: remove not yet bit
+  * cargo update
+  * cleanup log files older than 1 week
+  * don't recompile dependencies we've already got
+  * disambiguate which "git" we want
+  * color schemes: update version in .rs, re-sync, add helper for changelog
+  * docs: 20220807-113146-c2fee766 release
+  * ci: nth time's the charm for winget tag pr thing
+  * ci: format with black
+  * ci: tweak winget pr stuff a bit more
+  * ci: maybe fixup winget pr submission when tagging a release
+  * wayland: disable use of wlr-output-management protocol
+  * add window:set_left_status
+  * refine dual source blending / subpixel aa and RGBA color interaction
+  * fix positioning of visual bell
+  * boxmodel: fix missing bearing_x / x_offset
+  * add `wezterm ls-fonts --rasterize-ascii --text foo`
+  * mux: adjust window size after attach
+
+-------------------------------------------------------------------
+Fri Aug 05 06:43:44 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 20220624.141144.bd1b7c5d+git307:
+  * use titlebar bg for right status background 
+  * docs: clarify that we might be showing more recent info
+  * fix potential panic when computing hyperlink rules
+  * docs: a bit more detail for RGBA sequences
+  * wezterm show-keys --lua to print a lua version of the config
+  
+- add wezterm-20220624.141144.bd1b7c5d+git307.tar.gz 
+
+-------------------------------------------------------------------
+Thu Jul 28 03:04:12 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 20220624.141144.bd1b7c5d+git264:
+  * really fix termwiz --all-features build
+  * lua: expose metrics to lua
+  * fix termwiz --all-features build
+  * wezterm.format: now supports rgba colors
+  * termwiz: allow setting alpha for SGR fg, bg attributes
+  * termwiz: ColorSpec now allows for alpha to be tracked
+  * allow setting alpha for OSC 10, 11, 12
+  * term: avoid panic in phys_row when row is out of range
+  * deps: harfbuzz -> 5.0.1
+  * tabs: revise active index after killing panes
+  * deps: zstd 0.6 -> 0.11
+  * docs: fix typo in changelog
+  * fix "no pane" tab hang when two panes close at once
+  * Pane::search: expose range, limit. Limit quickselect by default
+  * ci: try uploading sha256 files alongside release assets
+  * json: fix visited hash set
+  * termwiz: refactor: split line into sub-modules
+  * docs: changelog for https://github.com/wez/wezterm/issues/2162
+  * term: fixup cursor position during rewrap
+  * cargo update
+  * search: fix coordinates for matches at EOL
+  * mux: prefer compressed Lines when syncing
+  * Line::wrap now prefers cluster storage
+  * docs: changelog for scrollback/search improvements
+  * search: debounce searches by ~350ms
+  * search: fix incorrect highlight in search results
+  * search: improve coordinates for new search implementation
+  * rangeset: fix accidentally quadratic complexity
+  * localpane: revise search method implementation
+  * term: refactor getting logical lines
+  * term/termwiz: microoptimize set cell
+  * termwiz: microoptimize ClusteredLine::set_last_cell_was_wrapped
+  * termwiz: micro-optimize ClusteredLine::new(), set_last_wrapped
+  * termwiz: don't claim that visible_cells is double-ended
+  * termwiz: avoid cluster -> vec conversions in a few more cases
+  * term: default to cluster storage
+  * term: compress rows as they move into scrollback
+  * Line::as_str() -> Cow<str>
+  * termwiz: add clustered line storage for line
+  * line: introduce possibility of alternate cell backing
+  * termwiz: refactor Line::visible_cells()
+  * fix reloading the global config when the appearance changes
+  * termwiz: add bench for Cell creation/drop
+  * term: refactor the charset/remapping out of flush_print
+  * termwiz: add static WcLookupTable to codegen
+  * termwiz: micro-optimize grapheme_column_width
+  * termwiz: add criterion benches for wcwidth
+  * termwiz: make emoji presentation very slightly more efficient
+  * term: remove Line::invalidate_implicit_hyperlinks calls
+  * Docs: Clean and slim the flowchart ...
+  * Docs: Bring the connected nodes together ...
+  * Docs: Improve the order in this mermaid code ...
+  * Docs: Merge the common action in the keyb-concepts
+  * docs: note about `wezterm-gui.exe --help` not outputting anything
+  * wezterm cli spawn: update help and clap constraints
+  * revise bug report template
+  * quote pwd in open-wezterm-here
+  * deploy: don't try to strip a shell script
+  * Add open-wezterm-here script
+  * rustfmt
+  * update shell completions for `wezter show-keys` subcommand
+  * wezterm cli: --workspace requires --new-window
+  * add ClearScrollback example that adds CTRL-L after clearing
+  * fix tab `x` button being obscured by tab title text
+  * add gelatyx to verify-pages workflow
+  * color schemes: add alias concept
+  * sync nightfox color schemes
+  * gui-startup event now accepts SpawnCommand
+  * config: revert taking name from the first comment line of toml color scheme files
+  * docs: changelog for #2253 #2273
+  * docs: apply stylua formatting
+  * docs: fix lua syntax
+  * docs: split MuxPane
+  * docs: fix lua syntax issues
+  * docs: only try to format tracked files
+  * docs: reformat lua code
+  * key table activation timeout is now reset on matching key presses
+  * add MuxTab:set_zoomed and SetPaneZoomState keyassignment
+  * docs: fix parameters to call_after callback
+  * lua: add wezterm.time.call_after and wezterm.reload_configuration
+  * rustfmt
+  * cargo update
+  * lua: add wezterm.time and Time object
+  * docs: changelog for #2103 #2271
+  * add `--cwd .` to desktop file `Exec` field
+  * change exec command in desktop file
+  * term: fix encoding for modified F1-F4
+  * lua: add wezterm.procinfo module
+  * lua: add tostring impls for window, tab and pane objects
+  * docs: clarify what happens when appearance changes
+  * add Catppuccin color schemes
+  * retro tab bar: use resolved palette for colors
+  * schemes: prefer name from metadata when loading toml
+
+-------------------------------------------------------------------
+Sat Jul 16 04:06:51 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 20220624.141144.bd1b7c5d+git171:
+  * macos: Add com.apple.security.automation.apple-events entitlement
+  * fix padding to the right of retro tab bar
+  * overlays: handle resize better
+  * color scheme: allow exporting schemes that set index colors
+  * x11/wayland: always try the portal for appearance
+  * exec domains: pass paneid to fixup method
+  * docs: fix typos
+  * add wezterm.color.save_scheme for exporting color schemes
+  * add lua functions for importing color scheme files
+  * colors: move wezterm.get_builtin_color_schemes to wezterm.colors.get_builtin_schemes
+  * add wezterm.color.get_default_colors
+  * add wezterm.gui.get_appearance to retrieve dark mode
+  * fix build; last commit passed `cargo check` but not `cargo build`!?
+  * fonts: allow glyph not found warnings to show after config reload
+  * color schemes: add version metadata
+  * color schemes: remove : splitting for prefix extraction
+  * fonts: limit missing glyph notification to once per hour
+  * debug overlay: remember last log line globally
+  * colors: refine importer
+  * color schemes: move other color scheme format code to color-funcs
+  * x11/wayland: subscribe to xdg desktop portal for settings changes
+  * docs: fix link discussing subpixel hinting
+  * windows: avoid recursing and borrowing inner twice
+  * x11/wayland: use xdg desktop portal settings interface to get dark mode
+  * Fix shortcut for "move between panes": `shift` was missing
+  * docs: show how to find just the dark color schemes
+  * docs: clarify order of extracted colors
+  * docs: changelog for https://github.com/wez/wezterm/issues/2234
+  * lua: add pane:is_alt_screen_active()
+  * color schemes: import all official base16 schemes
+  * sync-color-schemes: refactor caching and fetching
+  * sync-color-schemes: refactor
+  * wezterm.mux.set_active_workspace now updates the gui
+  * dynamic: add validate attribute, validate line_height.
+  * quickselect: select bottom-most match
+  * docs: add wezterm.color.from_hsla link to color object docs
+  * repl: suppress "nil" results
+  * color: refactor docs, add a couple more methods
+  * fix termwiz build
+  * lua: add wezterm.color.extract_colors_from_image
+  * ensure that we spawn open calls on a background thread
+  * colors: add RYB based complement
+  * add wezterm.color module for working with colors
+  * lua: implicit tostring(userdata) when printing and ToDynamic
+  * add distro-defaults feature
+  * color-types: add missing license file
+  * Import terminal.sexy themes
+  * fmt
+  * colorschemes: expand to include Gogh color schemes
+  * unset VTE_VERSION to avoid problems with vte.sh integration
+  * add wezterm.json_parse and wezterm.json_encode
+  * vtparse: increase MAX_OSC to load dynamic color scripts
+  * windows: fixup starting maximized
+  * wayland: double-buffer ime events
+  * wayland: ime: clear compose state after commit
+  * docs: make color scheme dirs as needed
+  * docs: even more robust idents for colorschemes
+  * docs: more robust ident generation for asciinema player
+  * docs: remove color scheme screenshots
+  * docs: show the number of color schemes
+  * wayland: workaround mutter IME issue
+  * docs: use asciinema's web player for screenshots
+  * wezterm.format: accept "ResetAttributes" to reset attributes
+  * gui: fix padding color when there are splits
+  * exec domains: report errors in label function
+  * wayland: fixup IME preedit
+  * wayland: fix ime position when scaling > 1
+  * tab bar: invalidate on resize to avoid gaps on the RHS
+  * docs: fixup changelog for https://github.com/wez/wezterm/issues/1620
+  * wayland: fix transparent gap under tab bar
+  * wayland: initial support for zwp_text_input_v3 / IME
+  * invalid tab bar on scaling changes
+  * docs: add wezterm.gui.screens() to changelog
+  * docs: wrap some text
+  * add docs for ExecDomain
+  * docs: fix typo and copy pasta
+  * fonts: allow setting assume_emoji_presentation per font
+  * fonts: assume emoji presentation for fonts with "moji" in their name
+  * docs: changelog for https://github.com/wez/wezterm/pull/2233
+  * win32: fix encoding of delete and backspace keys
+  * wsl_domains: soft-bind to the config definition
+  * exec_domains: soft-bind to the config definition
+  * docs: note about wezterm.format in launcher menu labels
+  * allow parsing attributes from launcher labels
+  * exec_domains: allow async callbacks. can now also set label for launcher
+  * wayland: use zwlr_output_manager if available
+  * wayland: implement wezterm.gui.screens()
+  * remove stray debug
+  * new: exec_domains
+  * dynamic: handle ambiguous {} object vs. array case centrally
+  * docs: window:maximize(), window:restore() and gui-startup
+  * windows: implement window:maximize(), window:restore()
+  * wayland: implement window:maximize() window:restore()
+  * add window:toggle_fullscreen()
+  * x11: implement maximize and restore
+  * add plumbing for maximize/restore on x11/wayland
+  * lua: add window:maximize() and window:restore() methods
+  * lua: make gui_window() reconcile workspace
+  * add window:set_position window:set_inner_size
+  * docs: window:gui_window, wezterm.gui.screens() and friends
+  * docs: add mux_window:gui_window()
+  * docs: split MuxWindow.md into multiple pages
+  * lua: add MuxWindow::gui_window() method
+  * lua: add wezterm.gui.gui_window_for_mux_window()
+  * lua: reduce a bit of boilerplate around registering wezterm.submodule
+  * docs: fix typo and copypasta in window:copy_to_clipboard
+  * rename `wezterm.window` to `wezterm.gui`
+  * win32: fixup initial window pos after screens changes
+  * lua: screens: fixup x11 build
+  * lua: implement wezterm.window.screens() for macos
+  * lua: add screens.active
+  * cargo update
+  * fix up x11 build for screens changes on win32
+  * screens: improve naming on Windows, move resolve_geom to Connection
+  * lua: implement wezterm.window.screens() on Windows
+  * rustfmt
+  * lua: add wezterm.window.screens()
+  * ensure that we reset attributes to defaults when producing escapes
+  * docs: changelog for #2225 #2226
+  * Add window:get_selection_escapes_for_pane()
+  * lua: add window:copy_to_clipboard method
+
+-------------------------------------------------------------------
+Wed Jul 06 05:09:05 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 20220624.141144.bd1b7c5d+git50:
+  * wayland: add global active_surface_id to fix pasting
+  * docs: remove "bad" rgb spec from docs
+  * docs: changelog for https://github.com/wez/wezterm/issues/2204
+  * speculative fix for https://github.com/wez/wezterm/issues/2204
+  * meant to remove this as part of c6672246749a7f58e5bebf68c4fcf57e1ddb4f08
+  * ci: drop support for building on debian 9
+  * update harfbuzz to 4.4.1
+  * docs: clarify when set_environment_variables is consulted
+  * deps: tiny-skia -> 0.7
+  * build(deps): bump rstest from 0.14.0 to 0.15.0
+
+-------------------------------------------------------------------
+Mon Jun 27 01:56:50 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 20220624.141144.bd1b7c5d+git17:
+  * docs: https://github.com/wez/wezterm/issues/2185
+  * fix `winget list` causes toast notification spam
+  * fix(#2175): correct get-dep script for arch distro's
+  * ActivateKeyTable replace_current wasn't actually optional
+  * docs: Use new `wezterm.action.Action` syntax in rest of the docs
+  * allow action=wezterm.action.ExtendSelectionToMouseCursor(nil)
+  * lua: catch non-array style keys in array style table
+  * docs: Improve clarity of wezterm.on wrt. callback params and example
+  * ci: make deterministic again!
+  * docs: update keyassignment reference for more ergnomic wezterm.action syntax
+  * docs: wezterm.action ergnomics
+  * ci: revise release info mapping for adjusted rpm names
+  * ci: distroid - to _
+  * ci: refine distroid
+  * ci: revise rpm filenames
+  * docs: update for newly available stable binary downloads
+  * docs: update for release
+  * docs: more tweak
+  * docs: tweak changelog
+  * macos: really really fix ctrl-shift-tab
+  * docs: add show-keys command
+  * fix: properly restore cooked mode in windows
+  * Added winapi feature "shellapi" to procinfo
+
+-------------------------------------------------------------------
+Thu Jun 23 14:49:14 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 20220408.101518.b908e2dd^git413:
+  * fonts: add negative cache into LoadedFont
+  * show-keys: make keys more readable to humans
+  * debug overlay: now supports statements as well as expressions
+  * add wezterm show-keys command
+  * x11: flush prior to mapping window
+  * docs: changelog for #1913 #2158
+  * fonts: remove no_glyphs cache from FontConfigInner
+  * Update copymode.md: description of `O` key assignment (#2156)
+  * add sample matched strings
+  * github hyperlink example
+
+-------------------------------------------------------------------
+Thu Jun 16 13:04:52 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 20220408.101518.b908e2dd^git356:
+  * macos: use shift-tab hack with ctrl-shift-tab as well
+  * docs: changelog for https://github.com/wez/wezterm/issues/2063
+  * rename focus_change_repaint_delay -> x11_focus_change_repaint_delay_ms
+  * x11: query focus after repaint delay
+  * x11: allow configuration of repaint delay
+  * macos: allow for keyboard translation data to be null
+  * term: implement OSC 1337 ReportCellSize
+  * track dpi in mux and terminal model
+  * avoid spawn failures after using `sudo -i`
+  * docs: changelog for #2125 #2052
+  * Update wezterm.desktop
+  * appease dependabot security alerts
+  * exit_behavior = "Close" is now the default
+  * make enable_wayland = true the default
+
+-------------------------------------------------------------------
+Tue Jun 14 14:41:05 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- add completions for bash, fish, and zsh
+
+- Update to version 20220408.101518.b908e2dd^git342:
+  * deps: update
+  * Fix minor typo in pad_right.md doc
+  * Fix that harfbuzz skips the usage of some freetype functions unexpectedly
+  * docs: freetype_pcf_long_family_names
+  * fonts: add freetype_pcf_long_family_names option
+  * windows: default allow_win32_input_mode=true
+  * x11: Xkb is already in the mandatory list
+  * mux: restore same-domain check for cwd when spawning tabs
+  * win32: add extended/enhanced key concept for win32 input mode
+  * deps: notify -> 5.0.0-pre.15
+  * deps: migrate from ratelimit_meter -> governor
+  * docs: fix key tables example mismatched curly braces
+  * deps: cargo update
+  * fonts: fix automatic bold synthesis
+
+-------------------------------------------------------------------
+Sat Jun 04 23:15:57 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 20220408.101518.b908e2dd^git328:
+  * x11: more hacks to deal with missing CONFIGURE_NOTIFY
+  * x11: subscribe to Present extension configure notify events
+  * background: round down fractional pixels when tiling
+  * avoid invalidating line seqno when applying hyperlinks
+  * box model: allow for eased colors to be set
+  * gui: speculative fix for #2068
+  * manual fuzzing with cat /dev/random
+  * x11: trace expose events. invalidate geometry in some cases
+  * x11: use focus change as a signal that the size may have changed
+  * gui: move ease/interpolation into shader
+
+-------------------------------------------------------------------
+Wed Jun  1 06:12:16 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Fix versioning format
+- Update to version 20220408.101518.b908e2dd+git299:
+  * background: respect alpha in background images
+  * background: use the actual sprite width
+  * fmt
+  * background: implement attachment scrolling and parallax!
+  * background: refactor where we trigger background painting
+  * background: implement scaling and repeating options
+  * render multiple backgrounds with alpha
+  * notionally allow multiple background image layers
+  * build(deps): bump crazy-max/ghaction-github-pages from 2 to 3
+  * Use clap::derive::Parser::parse() to fix deprecated warning
+
+-------------------------------------------------------------------
+Sat May 21 04:07:29 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 20220408.101518.b908e2dd~232:
+  * dynamic: allow defaulting to None for enum struct fields
+  * quickselect: allow multiline matches
+  * wayland: fix weirdness with recent mutter and display scaling
+  * wayland: avoid noisy panic-within-panic on shutdown
+  * config: fix specifying numeric font weights
+  * quickselect: avoid jumping to bottom of viewport when activated
+  * mux: match workspace to local window when syncing panes
+  * ssh: avoid busy loop when all channels are closed on the session
+  * fix typo
+  * fixup win32 build
+
+-------------------------------------------------------------------
+Thu May  5 10:36:05 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Initial spec for wezterm (20220408-101518-b908e2dd~150)
+

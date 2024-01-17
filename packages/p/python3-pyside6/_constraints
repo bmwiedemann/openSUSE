@@ -1,0 +1,25 @@
+<constraints>
+  <overwrite>
+    <conditions>
+      <package>python3-pyside6:shiboken6</package>
+    </conditions>
+    <hardware>
+      <disk>
+        <size unit="M">3500</size>
+      </disk>
+    </hardware>
+  </overwrite>
+  <overwrite>
+    <conditions>
+      <package>python3-pyside6</package>
+    </conditions>
+    <hardware>
+      <disk>
+        <size unit="G">6</size>
+      </disk>
+    <memory>
+      <size unit="G">6</size>
+    </memory>
+    </hardware>
+  </overwrite>
+</constraints>

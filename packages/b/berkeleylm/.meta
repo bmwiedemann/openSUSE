@@ -1,0 +1,10 @@
+<package name="berkeleylm" project="openSUSE:Factory">
+  <title>Berkeley Language Model library</title>
+  <description>Berkeleylm is a library for estimating storing large n-gram language models in
+memory and accessing them efficiently. It is described in 
+http://nlp.cs.berkeley.edu/pubs/Pauls-Klein_2011_LM_paper.pdf
+
+</description>
+  <devel project="Java:packages" package="berkeleylm"/>
+  <url>https://github.com/adampauls/berkeleylm</url>
+</package>

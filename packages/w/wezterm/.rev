@@ -1,0 +1,697 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>eb8debc6c8a33146d1328d54788a438c</srcmd5>
+    <version>20220408.101518.b908e2dd~150</version>
+    <time>1651856404</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain wezterm in openSUSE:Factory</comment>
+    <requestid>975387</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>98f26a76bd3442658a9982d10f30740d</srcmd5>
+    <version>20220408.101518.b908e2dd~232</version>
+    <time>1653152794</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20220408.101518.b908e2dd~232:
+  * dynamic: allow defaulting to None for enum struct fields
+  * quickselect: allow multiline matches
+  * wayland: fix weirdness with recent mutter and display scaling
+  * wayland: avoid noisy panic-within-panic on shutdown
+  * config: fix specifying numeric font weights
+  * quickselect: avoid jumping to bottom of viewport when activated
+  * mux: match workspace to local window when syncing panes
+  * ssh: avoid busy loop when all channels are closed on the session
+  * fix typo
+  * fixup win32 build
+</comment>
+    <requestid>978417</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>52dd3ed1b5cead8f97b8a0d672219b24</srcmd5>
+    <version>20220408.101518.b908e2dd+git299</version>
+    <time>1654097695</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>980238</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>37b247c980ab7ff924f0e084dc9aee50</srcmd5>
+    <version>20220408.101518.b908e2dd^git328</version>
+    <time>1654457309</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>980863</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b7bcb365984c7adc2c400e35a28a677b</srcmd5>
+    <version>20220408.101518.b908e2dd^git342</version>
+    <time>1655396387</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>982636</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4d11adccdc12cea2cea7817ebe743e86</srcmd5>
+    <version>20220408.101518.b908e2dd^git356</version>
+    <time>1655972694</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20220408.101518.b908e2dd^git356:
+  * macos: use shift-tab hack with ctrl-shift-tab as well
+  * docs: changelog for https://github.com/wez/wezterm/issues/2063
+  * rename focus_change_repaint_delay -&gt; x11_focus_change_repaint_delay_ms
+  * x11: query focus after repaint delay
+  * x11: allow configuration of repaint delay
+  * macos: allow for keyboard translation data to be null
+  * term: implement OSC 1337 ReportCellSize
+  * track dpi in mux and terminal model
+  * avoid spawn failures after using `sudo -i`
+  * docs: changelog for #2125 #2052
+  * Update wezterm.desktop
+  * appease dependabot security alerts
+  * exit_behavior = &quot;Close&quot; is now the default
+  * make enable_wayland = true the default
+</comment>
+    <requestid>984556</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>968520145e52b4de2c15102bfc98ded4</srcmd5>
+    <version>20220408.101518.b908e2dd^git413</version>
+    <time>1656053157</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>984771</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>fb10d92b7b79a7fde85db3590fa79398</srcmd5>
+    <version>20220624.141144.bd1b7c5d+git17</version>
+    <time>1656321938</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>985191</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9c01cb4611acdbe014f4aecc19e7a71a</srcmd5>
+    <version>20220624.141144.bd1b7c5d+git50</version>
+    <time>1657114926</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20220624.141144.bd1b7c5d+git50:
+  * wayland: add global active_surface_id to fix pasting
+  * docs: remove &quot;bad&quot; rgb spec from docs
+  * docs: changelog for https://github.com/wez/wezterm/issues/2204
+  * speculative fix for https://github.com/wez/wezterm/issues/2204
+  * meant to remove this as part of c6672246749a7f58e5bebf68c4fcf57e1ddb4f08
+  * ci: drop support for building on debian 9
+  * update harfbuzz to 4.4.1
+  * docs: clarify when set_environment_variables is consulted
+  * deps: tiny-skia -&gt; 0.7
+  * build(deps): bump rstest from 0.14.0 to 0.15.0
+</comment>
+    <requestid>986946</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8ad173c00b0b684d19fbfdb287179771</srcmd5>
+    <version>20220624.141144.bd1b7c5d+git171</version>
+    <time>1658857412</time>
+    <user>RBrownFactory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>990746</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>fc7049bfdf491e3ee1186c795782bcf3</srcmd5>
+    <version>20220624.141144.bd1b7c5d+git264</version>
+    <time>1659612217</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>992655</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3d9a68ea13e21260508be9b95610e360</srcmd5>
+    <version>20220624.141144.bd1b7c5d+git307</version>
+    <time>1660313216</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>994744</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7dd968d9c18bcb5083289bdff72339df</srcmd5>
+    <version>20220807.113146.c2fee766+git39</version>
+    <time>1661593831</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>999519</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>6c8d000835f7275b44f3982443d35f19</srcmd5>
+    <version>20220807.113146.c2fee766+git109</version>
+    <time>1662405707</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1001203</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>5f29a6890b983b4de42ba81ebece00a5</srcmd5>
+    <version>20220905.102802.7d4b8249+git3</version>
+    <time>1663080460</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1003313</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>1732aa0686e3e49f0b920f309826b99c</srcmd5>
+    <version>20220905.102802.7d4b8249+git117</version>
+    <time>1666366102</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1030406</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>155c945269f7b81ff55f28e30c20d88d</srcmd5>
+    <version>20220905.102802.7d4b8249+git147</version>
+    <time>1667499256</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1032967</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>1f61ed974f9b235880de27f4f1196f3e</srcmd5>
+    <version>20220905.102802.7d4b8249+git147</version>
+    <time>1667579681</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1033167</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>7fc6478db2be6ac9bd5549cc6bdd026b</srcmd5>
+    <version>20221119.145034.49b9839f</version>
+    <time>1669630032</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1038552</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>1fd4231a3e7b4db54ed89cbfeb355ded</srcmd5>
+    <version>20221119.145034.49b9839f+g16</version>
+    <time>1670954143</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1042515</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>c6b7ef6b45e63685560d037af05aab58</srcmd5>
+    <version>20221119.145034.49b9839f+g21</version>
+    <time>1672315758</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1045655</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>94ca0e04d9317ddb7ebdacd7fc42a701</srcmd5>
+    <version>20221119.145034.49b9839f+g221</version>
+    <time>1676389605</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1065634</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>b4552ee96c1f8017e2346230f4410e23</srcmd5>
+    <version>20230326.111934.3666303c</version>
+    <time>1679933781</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20230326.111934.3666303c:
+  * docs: show the return values of the new pane:move_to_xxx methods
+  * mux: add lua api equivalent to move-pane-to-new-tab
+  * mux: forward move-pane-to-new-tab requests to hosting mux
+  * ci: automate making PR for flathub at release time
+  * hyperlink_rules.md: add link supported regex syntax
+  * mux: move-pane-to-new-tab didn't resync structure
+  * tidy up some debug logging
+  * mux: fix some dpi and pixel size issues
+  * images: improve logging when things are weird
+  * When a modal is active, it gets first dibs on key processing
+  * palette: exclude copy mode actions unless copy mode is active
+  * macos: invalidate window when dispatching from menubar
+  * Add new-tab-button-click event
+  * palette: prioritize platform-appropriate shortcuts
+  * palette: refactor slightly
+  * palette: add config for how ui key caps render
+  * update tests for updated JetBrainsMono
+  * update bundled JetBrainsMono to 2.304
+  * palette: show key assignment alongside entries
+  * ci: Use nextest (#3342)
+  * palette: show the label from the command in the palette
+  * docs: changelog for https://github.com/wez/wezterm/pull/3344
+  * refactor(config &amp; macos/windows): rename window_background_blur to macos_window_background_blur
+  * feat(config &amp; window): use CGSSetWindowBackgroundBlurRadius to set background blur on macos
+  * docs: clarify the default for allow_square_glyphs_to_overflow_width
+  * more entitlements on macos
+  * re-run black ci/generate-workflows.py
+  * ci: Use rust-cache instead of the general cache action (#3341)
+  * fix(ci): Use install action instead of manually calling `cargo-install`
+  * fixup for running the tests
+  * add wezterm cli activate-pane, wezterm cli activate-tab
+  * Add: wezterm cli kill-pane
+  * mux: notify clients when the size/structure of a tab changes
+  * mux: propagate pane focus change events to clients
+  * reformat generate-workflows.py with black
+  * update terminfo to 0.8
+  * chore: Regenerate workflows
+  * fix(ci): Wrong path to tag-name.sh
+  * fixup images with the multiplexer
+  * macos: be precised about matching cocoa BOOL
+  * macos: don't treat command line args as .command scripts
+  * docs: changelog for #3339
+  * Fix leak of Pane struct
+  * wezterm-ssh: fix occasional segv on libssh shutdown
+  * wezterm-ssh: tidy up test output
+  * docs: note about sigmask change
+  * fix: disable mouse reporting for RIS/ResetTerminal sequence
+  * pty: unix: empty signal mask in the spawned child
+  * Update shell-integration.md
+  * factor window border sizes when computing window sizes
+  * docs: changelog for #3323 #2879 #3303
+  * fix: wezterm cli activate-pane-direction now repaints (#3303)
+  * docs: add --help output from various wezterm cli subcommands
+  * term: adjust logical line wrapping behavior
+  * fix lua string escaping in wezterm show-keys
+  * docs: updated window_decorations
+  * docs: changelog for #3330
+  * cargo update
+  * Fix transparent title bar on macOS with `window_decorations = &quot;RESIZE|MACOS_FORCE_DISABLE_SHADOW&quot;` (#3330)
+  * allow json encoding wezterm.GLOBAL entries
+  * fix delegation of --skip-config to wezterm-gui
+  * Fix some documentation pages (#3321)
+  * docs: changelog for #3227
+  * Apply suggestions from code review
+  * Changed config option name to mouse_wheel_scrolls_tabs, made it default to true (matching current behavior)
+  * Cargo formatted
+  * Add docs for new scroll_tabs config option
+  * Add config option for scrolling the tab bar
+  * add __len and __pairs metamethods to wezterm.GLOBALS
+  * ci: persuade zypper to install deps in get-deps
+  * get-deps: set -e
+  * docs: add --help output pages to the CLI reference
+  * minor update to zsh completion
+  * docs: improve color scheme page titles
+  * docs: simplify scheme aliases a bit more
+  * docs: fix handling of color scheme aliases
+  * docs: boost font page in search index
+  * docs: allow search to find 'changelog'
+  * docs: use strict mode to hopefully catch invalid links
+  * docs: simplify templating of install pages
+  * keys: avoid scrolling to bottom when CapsLock is pressed
+  * linuxbrew: 20 rather than 22
+  * wezterm-ssh: fix parsing of proxycommand
+  * Update wezterm-linuxbrew.rb.template
+  * docs: update a bunch of since lines to new macro
+  * docs: update nightly features -&gt; current release
+  * docs: fix fedora37 stable download link
+  * docs: update linux releases
+  * Docs: update changelog for 20230320-124340-559cb7b0 release
+  * schemes: we now allow using any of the alias names, so refine docs
+  * sync from https://github.com/folke/tokyonight.nvim
+  * sync color schemes
+  * sync-color-schemes: handle renamed schemes slightly better
+  * sync-color-schemes: update for recent gogh schema changes
+  * minor optimization for single-frame animated formats
+  * fix potential deadlock when using wezterm cli split-pane
+  * deps: update predicates for wezterm-ssh tests
+  * ci: remove some builds
+  * build(deps): bump rstest from 0.16.0 to 0.17.0
+  * docs: fix typo in changelog
+  * docs: use snippets to make since: nightly more informative
+  * docs: allow using GH issue syntax shorthands
+  * build(deps): bump actions/deploy-pages from 1 to 2
+  * docs: more config.something style adjustments
+  * docs: shift from return {} style to config.something style
+  * remove open dependency
+  * add own open_url crate
+  * time: call_after accepts fractional seconds
+  * fix split size after unzooming, when the window size is unchanged
+  * fix hover state for retro tab bar
+  * fix(clippy): Remove closures where possible
+  * fix(clippy): Use `faster` methods on Iterators
+  * Convert admonition blocks to markdown equivalent
+  * fix time.call_after when used inside an event callback
+  * mouse: don't over invalidate when hovering tabs
+  * fix non-serde termwiz build
+  * clean up blob storage on shutdown
+  * use blob leases for decoded animation frames
+  * ImageDataType::File -&gt; EncodedLease
+  * add wezterm-blob-leases crate
+  * docs: fix video link on features page
+  * fix kitty image protocol handling
+  * handle unsupported images better
+  * fix: rewrite `.` when fetching path in lua plugin crate
+  * docs: restore foo.html rather than foo/index.html style URLs
+  * Image decoding is now done in a bg thread
+  * move animation decoding from term layer to gui layer
+  * Use mkdocs admonish for note about mux color schemes
+  * term: avoid breaking animated webp images when resizing
+  * term: improve readability of error message for oversized image
+  * fix iterm2 image cursor position
+  * pages: run only one at a time, allow them to queue up
+  * improve default hyperlink_rules. add default_hyperlink_rules()
+  * fix DisableDefaultAssignment not working for CTRL|SHIFT P
+  * apply reloaded config to all panes, regardless of zoom state
+  * Set minimum animation frame duration to match max_fps
+  * Update Homebrew section
+  * docs: Correct to new URL
+  * fix(clippy): Remove unnecessary clone/to_string calls
+  * fix trigger paths!
+  * ci: adjust wezterm-ssh triggers
+  * revise verify-pages triggers and workflow
+  * ci: adjust termwiz workflow path triggers
+  * docs: changelog for https://github.com/wez/wezterm/pull/3146
+  * Improve XDG configuration searching
+  * fix: typo about parameter
+  * docs: make them build on macos again
+  * add log_unknown_escape_sequences config option
+  * docs: don't build now-unused mdbook bits
+  * ci: workflow should run when its file is changed
+  * docs: disable instant page nav
+  * ci: adjust path triggers
+  * docs: some adjustments for mkdocs
+  * docs: switch doc build to Material for MkDocs
+  * improve handling of animated webp images
+  * fix(clippy): Derive Default where possible
+  * Apply suggestions from code review
+  * Update docs/shell-integration.md
+  * Add function for users powershell + starship
+  * build(pty): don't use `std::os::fd::RawFd` symbol directly
+  * deps: open -&gt; 4.0
+  * wezterm-ssh: fix leaky tests, as described in https://nexte.st/book/leaky-tests.html
+  * docs: fix pane:split direction top/bottom -&gt; up/down
+  * include ssh config map in debug logging when running wezterm ssh -v
+  * Add comment
+  * Filter figterm from stateful check
+  * gdi.rs: Avoid non-idiomatic iterations over Option, they cause warnings
+  * ssh: support %l and %L in config files
+  * deps: socket2 -&gt; 0.5
+  * docs: add mdbook-admonish
+  * ci: docs: deploy directly, rather than via gh_pages branch
+  * docs: fixup get_pane_direction docs
+  * Fix typo in &quot;Terminal Emulators and PTYs&quot; section
+  * add docs
+  * simplify direction conversion to lua
+  * add lua methods to access position and pane in the direction
+  * ci: try harder for app image build
+  * docs: shell-integration: document Xonsh support
+  * ci: maybe fix appimage build
+  * ci: generate appimage from ubuntu20
+  * termwiz: bump version ready for publish
+  * fix(input): support alt-left-bracket
+  * maybe fix win32 build
+  * ssh: detect exit-signal state for channels
+  * wsl: default_cwd is now ~
+  * ls-fonts: emulate the effect of normalize_output_to_unicode_nfc
+  * Allow negative number for cli get-text line
+  * make command palette font a little larger
+  * docs: command palette font size/color
+</comment>
+    <requestid>1074526</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>c6bec857bbc61fca68178bce604c1186</srcmd5>
+    <version>20230408.112425.69ae8472</version>
+    <time>1681654037</time>
+    <user>dimstar_suse</user>
+    <comment>- Update vendored dependencies.
+- Update to version 20230408.112425.69ae8472:
+  * windows: fix: mess up full screen mode on config reload
+  * pty: fix unused import warning on windows
+  * windows: fix warning; mut not required here
+  * config: defer evaluating default wsl domains
+  * docs: update for wezterm replay changes
+  * docs: explain what font shaping actually is
+  * docs: add tags to a number of pages
+  * wayland: fix webgpu invalidation issue
+  * wezterm replay: add --explain-only and --cat options
+  * switch to fancy-regex crate
+  * docs: for integrated title buttons
+  * Push folks towards the bug report template
+  * schemes: fix origin url when importing toml files
+  * add more color schemes
+  * docs: update color scheme versions
+  * windows: speculative fix for recursive borrow
+  * add wezterm.has_action
+  * Make background painting more consistent when window is transparent
+  * fix build on windows
+  * docs: fix link
+  * expose the tty name associated with a pane
+  * docs: update gui.get_appearance example for mux
+  * quick select: make user patterns take precedence
+  * docs: show schemes in the per-page toc
+  * Add InputSelector action
+  * admit defeat to intel shader weirdness
+  * refine charselect move logic per comments on #3449
+  * character select pgup/down, less jerky navigation, selected centered in list (#3449)
+  * docs: ... and format the examples
+  * docs: update format-tab-title examples
+  * wezterm cli list: add is_active and is_zoomed fields to json output
+  * add `wezterm cli get-pane-direction`
+  * Add PromptInputLine and examples of (re)naming tabs/workspaces
+  * remove stray debug
+  * mux: explicitly update tab/pane active status on focus change
+  * cli: add --pane-id option to activate-pane-direction
+  * mux: increase default fetch throttle limit
+  * cli: defer parsing config in most cases
+  * make config_builder work with table.insert(config.keys, ...)
+  * mux: spawn: only use the cwd from a pane in a compatible domain
+  * mux: fix unseen output status for remote panes
+  * docs: changelog for #1872
+  * fix unused import warning
+  * mux: avoid WindowTitleChanged cycle
+  * ssh: fix token expansion for ProxyCommand
+  * fix permute_any_mods
+  * fix(clippy): Implement From instead of Into
+  * fix: 'wezterm connect --workspace foo dom' part 2
+  * render: ensure alt color and mix are well-defined for poly quads
+  * Expand sponsor section of readme
+  * docs: Add sponsor page
+  * Update FUNDING.yml
+  * mux: reduce volume of bonus lines sent by server
+  * skip pruning old logs unless we are the gui
+  * mux: forward ClearScrollback requests to remote server
+  * fix wezterm connect --workspace
+  * mux: increase unix reconnect delay
+  * suppress dead code warning for locate_app_wide_key_assignment
+  * mux: detach domain on window close
+  * wezterm: defer parsing config
+  * config: lazyily produce ssh domain list
+  * refactor: split cli subcommand into separate modules
+  * add wezterm.mux.rename_workspace
+  * add wezterm cli rename-workspace
+  * maybe fix freebsd build
+  * add wezterm cli set-tab-title and wezterm cli set-window-title
+  * tab navigator: use tab title &gt; pane title if set
+  * mux: propagate tab and window title when it changes
+  * default format-tab-title now respects tab:set_title
+  * add window:active_tab(), window:active_pane(), tab:active_pane()
+  * add display_pixel_geometry config option for subpixel geometry
+  * font: minor refact to derive Default for FreeTypeLoadTarget
+  * windows: fix INTEGRATED_BUTTONS|RESIZE
+  * rustfmt
+  * x11: fix INTEGRATED_BUTTONS|RESIZE
+  * refactor: remove opengl and OpenGL from names
+  * refactor: tidy up window_buttons a little
+  * refactor: split render.rs into smaller modules
+  * integrated buttons: tweak gnome button logic
+  * integrated title bar: default to mac style on mac
+  * docs: changelog for #2722
+  * minor tidy up of hover handling for maximize button
+  * rename PushOval -&gt; Oval
+  * tab bar: fixup placement of macos native titlebar buttons
+  * macos: correctly synthesize WindowState::MAXIMIZED
+  * remove redundant mix operation from shader
+  * cheaper case insensitive compare
+  * avoid bespoke lightness calc, reuse hsl function
+  * allow using Gnome and Windows styles on macos.
+  * remove some macos conditional compilation
+  * macos: fixup window_decorations w/ INTEGRATED_BUTTONS+RESIZE
+  * integrated-title-bar: Add Native button style parameter
+  * integrated-title-bar: Replace window button recoloring
+  * integrated-title-bar: Use snap layouts for any maximize button
+  * integrated-title-bar: Improve windows support
+  * integrated-title-bar: Update config options
+  * integrated-title-bar: Remove commented line
+  * integrated-title-bar: Remove macos button style
+  * integrated-title-bar: Add macOS support
+  * integrated-title-bar: Ignore style config on macos and windows
+  * integrated-title-bar: Add x11 support
+  * integrated-title-bar: Add button style option
+  * integrated-title-bar: Add option to remove useless buttons
+  * integrated-title-bar: Add button placement option
+  * integrated-title-bar: Add libadwaita styled buttons
+  * integrated-title-bar: Add initial shape for macos buttons
+  * integrated-title-bar: Add color configuration
+  * integrated-title-bar: Add windows support
+  * integrated-title-bar: Add window buttons to the tabbar
+  * mux: allow client to provide palette to mux server
+  * docs: fix list syntax
+  * doc: mention that hyperlink prefix is required
+  * Add Homebrew tap for nightly build
+  * Update webgpu_preferred_adapter.md
+  * macos: fix CTRL key behavior when use_ime=true
+  * win:perform_action now works with Copy Mode and other overlays
+  * gui: win:perform_action now awaits the underlying perform_key_assignment
+  * mux: don't request lines if we think we are dead
+  * surface config errors when running `wezterm connect`
+  * fix is_zoomed property in tab:get_panes_with_info()
+  * update libssh-rs dep to latest build
+  * Fix minor typo
+  * docs: cover new default ssh domain behavior and function
+  * serial: fix some FIXMEs
+  * docs: fixup a couple of Since thingies
+  * Add serial_ports config
+  * Fix broken link to list of features
+  * populate ssh domains from your ssh config by default
+  * fix broken link on features page
+  * mux: fix pid file locking
+  * mux server: propagate config CLI options when daemonizing
+  * term: respect log_unknown_escape_sequences for OSC
+  * docs: changelog for https://github.com/wez/wezterm/issues/3390
+  * fix build.rs on windows, take 2
+  * fix build.rs on windows
+  * windows: add manifest to config-using console apps, force UTF8 ACP
+  * add more context to errors
+  * config: add more context on some errors
+  * fix unused import
+  * mux: more robust handling of pane killing
+  * RLIMIT_NPROC is not a macos thing
+  * raise ulimit nofile and nproc to a reasonable min value on unix systems
+  * mux client: GC unreferenced remote window/tab/pane ids on resync
+  * fix stray debug
+  * add pane:activate() and tab:activate()
+  * adjust log level for 'going to run proxy' message
+  * fix overflowing sub assertion in debug mode
+  * fix: Update snapshot (see commit 31100244)
+  * fix: Derive Eq on Selection
+  * fix: Use serde with bitflags
+  * fix: Formatting
+  * chore: Update Cargo.lock
+  * fix: Update signal-hook to 0.3 and fix compilation errors
+  * chore: Update criterion to 0.4
+  * chore: Update nix to 0.26
+  * fix: Update bitflags to 2.0 and fix compilation errors
+  * chore: Update phf to 0.11
+  * deps: update sha2
+  * ci: update cargo-install
+  * docs: update for latest release
+</comment>
+    <requestid>1079676</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>cd9a5a8ad7ef3b12850ee9c022aedb66</srcmd5>
+    <version>20230408.112425.69ae8472</version>
+    <time>1686927213</time>
+    <user>dimstar_suse</user>
+    <comment>- Package is incompatible with native libraries. Disabling by commenting
+  out CFLAGS and CXXFLAGS.
+- Add missing dependencies
+- Add %optflags
+- Fix install section.
+- Change and reupload source upstream tarball with already downloaded third-party deps.
+- Use upstream tarball.
+- Add global dashed_version since upstream uses dashses instead of periods.
+- Update vendored dependencies.
+- Update vendored dependencies.
+</comment>
+    <requestid>1093346</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>e0fd9e2ea07da850cefb76dd045f9a95</srcmd5>
+    <version>20230712.072601.f4abf8fd</version>
+    <time>1689614591</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20230712.072601.f4abf8fd
+  * The default for front_end is now WebGpu
+  * The default for adjust_window_size_when_changing_font_size now depends on the window environment and the contents of tiling_desktop_environments.
+  * Added eigth block corner glyphs to custom block glyphs. 
+  * Don't hide mouse cursor when pressing only modifier keys.
+  * PaneSelect will now un-zoom to show all panes, then re-zoom after performing its action.
+  * Images, especially animated images, are now decoded in the background. When used as a background layer for the terminal, we now use the normal terminal background color as a placeholder until the first frame has been decoded. In other circumstances, you may observe a brief black frame while waiting for the image to decode.
+  * You may now use CTRL-J/K to change the selection in the launcher menu, in addition to CTRL-N/P which always worked previously.
+  * Duplicate entries in CharSelect are now suppressed, making it less cluttered. 
+  * Lots of changes are described in https://wezfurlong.org/wezterm/changelog.html#20230712-072601-f4abf8fd
+</comment>
+    <requestid>1098746</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>82608d2e874ee863704ae84264d07921</srcmd5>
+    <version>20230712.072601.f4abf8fd</version>
+    <time>1691502878</time>
+    <user>dimstar_suse</user>
+    <comment>Same as the SR#1102803. Forgot to check I was using cargo_build macro. Building correctly now :D
+- Fix build feature flags. Only use default + distro-defaults.
+</comment>
+    <requestid>1102804</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>50c8c7d022f207e3873544c8b755fb87</srcmd5>
+    <version>20230712.072601.f4abf8fd</version>
+    <time>1692611101</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1104905</requestid>
+  </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>c2db7c5d95797d03dde701dc8ec0eae6</srcmd5>
+    <version>20230712.072601.f4abf8fd</version>
+    <time>1694019404</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1108980</requestid>
+  </revision>
+  <revision rev="30" vrev="5">
+    <srcmd5>60c482fecd0dd0ed55dbf96ee46b28bb</srcmd5>
+    <version>20230712.072601.f4abf8fd</version>
+    <time>1696964410</time>
+    <user>anag+factory</user>
+    <comment>- Use unupdated vendored crates for now.
+  * This is to stop OBS Notifications about build failures.
+  * Once openssl crate is updated from possibly a new release, I will
+    re-enable update of vendored crates
+- Use cargo-vendor-filterer to lessen vendored crates
+- Declare higher build disk size requirement
+- Enable update of vendored dependencies.
+- Update vendored dependencies.
+</comment>
+    <requestid>1116499</requestid>
+  </revision>
+  <revision rev="31" vrev="6">
+    <srcmd5>e52ea56c17ba6de95c47e22f9a57eaab</srcmd5>
+    <version>20230712.072601.f4abf8fd</version>
+    <time>1698604903</time>
+    <user>anag+factory</user>
+    <comment>- Set wezterm-terminfo as noarch
+- Create subpackage wezterm-terminfo 
+</comment>
+    <requestid>1120963</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>04df5f93849a58314b9e1fc19692bdce</srcmd5>
+    <version>20230712.072601.f4abf8fd+git210</version>
+    <time>1700598772</time>
+    <user>anag+factory</user>
+    <comment>- Update vendored dependencies.
+- Add add-terminator-to-sync-capability.patch
+- Update to version 20230712.072601.f4abf8fd+git210:
+  * cargo update
+  * docs: changelog for #4563
+  * Make RIS also clear the alternate screen
+- Add do-not-send-eof-when-closing-application.patch
+  * resolves issue when closing app but also sends an EOF
+  to other multiplexers e.g. tmux, screen, zellij
+- Move shell integration to /usr/etc. It won't be read but it's optional
+- Remove cargo_config from source. It's part of the vendored tarball now
+- Update to version 20230712.072601.f4abf8fd+git207:
+  * Default G1 to ASCII
+  * docs: fix emoji stuff
+  * Fallback to SGR when rendering 16/256 colors when MaxColors is 16M
+  * Detect true color set by max_colors
+  * deps: wgpu -&gt; 0.18
+  * docs: Fix typo
+</comment>
+    <requestid>1127902</requestid>
+  </revision>
+</revisionlist>

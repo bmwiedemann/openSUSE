@@ -1,0 +1,13 @@
+<package name="irssi" project="openSUSE:Factory">
+  <title>Modular, Secure, and Well Designed IRC Client</title>
+  <description>Irssi is a modular IRC client for UNIX that currently only has a text
+mode user interface. However, 80-90% of the code is not text mode
+specific, so other UIs could be created easily. Also, Irssi is not
+really even IRC specific anymore. There are already working SILC and
+ICB modules available. Support for other protocols, like ICQ and
+Jabber, could be added some day, too.
+
+It is the code that separates Irssi from ircII, BitchX, epic, and the
+rest of the text clients. It is not using the ircII code.</description>
+  <devel project="server:irc" package="irssi"/>
+</package>

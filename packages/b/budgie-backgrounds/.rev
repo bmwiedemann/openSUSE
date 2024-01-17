@@ -1,0 +1,37 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b65b457198f770748a8985f4f0b15d0a</srcmd5>
+    <version>0.1+9</version>
+    <time>1669378304</time>
+    <user>dimstar_suse</user>
+    <comment>new for budgie</comment>
+    <requestid>1037895</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>888b59557e894cb88777f640086d6f3f</srcmd5>
+    <version>1.0+0</version>
+    <time>1676036050</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1064036</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8ec5d15d760c26f8aa97b8482cdab49c</srcmd5>
+    <version>2.0+0</version>
+    <time>1693482355</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.0+0:
+  * Add picture of Orange Hallway from Wikimedia Commons
+  * Add picture of Singaporean Cityscape from Flickr
+  * Add picture of Ocean Waves from rawpixel
+  * Add picture of Extreme Desert Hike from Wikimedia Commons
+  * Add picture of Casa Milá from Wikimedia Commons
+  * Add picture of Dragonfly on Lavender from Wikimedia Commons
+  * Add picture of Motherboard Circuits from Negative Space
+  * Add picture of Blue Periwinkle from Wikimedia Commons
+  * Add picture of Solaris Grapes from Wikimedia Commons
+  * Avoid to install bash for build stage
+</comment>
+    <requestid>1108122</requestid>
+  </revision>
+</revisionlist>

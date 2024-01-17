@@ -1,0 +1,11 @@
+[Desktop Entry]
+Terminal=true
+NoDisplay=true
+Exec=irssi
+Icon=irssi.png
+Type=Application
+Categories=
+Name=irssi
+GenericName=IRC Client
+Comment=irssi, the IRC client of the future
+

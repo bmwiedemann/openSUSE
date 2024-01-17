@@ -1,0 +1,6 @@
+<package name="docbook-xsl" project="openSUSE:Factory">
+  <title>XSL Stylesheets for DocBook</title>
+  <description>Wrapper package for DocBook 4 and 5 stylesheets.</description>
+  <devel project="Publishing" package="docbook-xsl"/>
+  <url>https://github.com/docbook/xslt10-stylesheets</url>
+</package>

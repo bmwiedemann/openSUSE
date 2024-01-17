@@ -1,0 +1,6 @@
+<package name="python-opengl" project="openSUSE:Factory">
+  <title>OpenGL bindings for Python</title>
+  <description>OpenGL bindings for Python including support for GL extensions, GLU,
+WGL, GLUT, GLE, and Tk.</description>
+  <devel project="devel:languages:python" package="python-opengl"/>
+</package>

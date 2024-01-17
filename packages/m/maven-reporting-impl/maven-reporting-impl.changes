@@ -1,0 +1,39 @@
+-------------------------------------------------------------------
+Sun Sep 24 01:58:46 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 3.2.0
+  * Improvement:
+    + MSHARED-1099 - Render with a skin when report is run in
+      standalone mode
+  * Dependency upgrades:
+    + MSHARED-1120 - Upgrade Maven Reporting API to 3.1.1
+    + MSHARED-1121 - Upgrade plugins and components in project and
+      ITs
+- Modified patch:
+  * 0001-Remove-dependency-on-junit-addons.patch
+    + rediff
+
+-------------------------------------------------------------------
+Wed Sep  6 22:31:19 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Remove unnecessary dependency on xmvn tools and parent pom
+
+-------------------------------------------------------------------
+Fri Mar 11 07:02:31 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 3.1.0
+  * API sync with maven-reporting-api 3.1.0
+- Modified patch:
+  * 0001-Remove-dependency-on-junit-addons.patch
+    + rediff
+
+-------------------------------------------------------------------
+Wed Mar 11 11:43:42 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build against newer doxia that requires html5 module
+
+-------------------------------------------------------------------
+Fri Mar 29 13:44:55 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of maven-reporting-impl 3.0.0
+- Generate and customize ant build.xml file

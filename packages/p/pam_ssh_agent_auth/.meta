@@ -1,0 +1,7 @@
+<package name="pam_ssh_agent_auth" project="openSUSE:Factory">
+  <title></title>
+  <description>pam_ssh_agent_auth is a PAM module which permits PAM authentication via your
+keyring in a forwarded ssh-agent.</description>
+  <devel project="Linux-PAM" package="pam_ssh_agent_auth"/>
+  <url>https://github.com/jbeverly/pam_ssh_agent_auth</url>
+</package>

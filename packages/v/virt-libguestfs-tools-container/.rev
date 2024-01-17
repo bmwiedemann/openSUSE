@@ -1,0 +1,106 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d4426d14426105ebfdaa2ba4997a6738</srcmd5>
+    <version>unknown</version>
+    <time>1628584061</time>
+    <user>RBrownSUSE</user>
+    <comment>Submit KubeVirt container for libguestfs tools to Factory</comment>
+    <requestid>911084</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>45effc2b71a994c5b65088be6f1d2e1b</srcmd5>
+    <version>unknown</version>
+    <time>1641326589</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>943762</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>a6591b417f00bbd6515dd02e71451e50</srcmd5>
+    <version>unknown</version>
+    <time>1647199539</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>961479</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>b8ce5e06417242293342eed840fa983d</srcmd5>
+    <version>unknown</version>
+    <time>1648841771</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>966373</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>fd84db85c12cd12316b7bd5f23e4d976</srcmd5>
+    <version>unknown</version>
+    <time>1649450731</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>967642</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>b488dd8cbfe22ad1fee77f264a4d072b</srcmd5>
+    <version>unknown</version>
+    <time>1659721875</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>993184</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>0424888ff6f35c789a6dff79776579cf</srcmd5>
+    <version>unknown</version>
+    <time>1660313209</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>994718</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>50c14b5e473db4191449afae24d0d9c6</srcmd5>
+    <version>unknown</version>
+    <time>1665420440</time>
+    <user>favogt_factory</user>
+    <comment></comment>
+    <requestid>1009148</requestid>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>5c62eb17a7baf4cba7cb4204b77d5b8c</srcmd5>
+    <version>unknown</version>
+    <time>1673888364</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1058617</requestid>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>e4b60c5023544e9b16fb0d862585d26a</srcmd5>
+    <version>unknown</version>
+    <time>1678902985</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1072100</requestid>
+  </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>461718edd2b89438b8f76997a9a65f4c</srcmd5>
+    <version>unknown</version>
+    <time>1689261545</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1098522</requestid>
+  </revision>
+  <revision rev="12" vrev="12">
+    <srcmd5>4e021c463d6eaf3993f201b3fd010ba5</srcmd5>
+    <version>unknown</version>
+    <time>1697488414</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1117960</requestid>
+  </revision>
+  <revision rev="13" vrev="13">
+    <srcmd5>396c7a55c4837eef43976215b4fa5ad2</srcmd5>
+    <version>unknown</version>
+    <time>1698170916</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1119858</requestid>
+  </revision>
+</revisionlist>

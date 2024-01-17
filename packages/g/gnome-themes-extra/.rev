@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a4fad9dd68f5be5d9124c5c8d00319ef</srcmd5>
+    <version>3.27.92</version>
+    <time>1521052634</time>
+    <user>dimstar_suse</user>
+    <comment>Addition</comment>
+    <requestid>584985</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c7cbb93cfba543062cff445f3877ae79</srcmd5>
+    <version>3.27.92</version>
+    <time>1521499042</time>
+    <user>dimstar_suse</user>
+    <comment>- Update descriptions.</comment>
+    <requestid>587482</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c03667c26c6564f61ceee89c9d3bf53d</srcmd5>
+    <version>3.28</version>
+    <time>1522596411</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 590559 from dimstar)</comment>
+    <requestid>592263</requestid>
+  </revision>
+</revisionlist>

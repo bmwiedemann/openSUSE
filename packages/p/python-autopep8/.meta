@@ -1,0 +1,5 @@
+<package name="python-autopep8" project="openSUSE:Factory">
+  <title></title>
+  <description>Autopep8 is automatic generated to pep8 checked code. This is old style tool, wrapped pep8 via subprocess module.</description>
+  <devel project="devel:languages:python" package="python-autopep8"/>
+</package>

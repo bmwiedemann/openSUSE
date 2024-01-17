@@ -1,0 +1,17 @@
+diff --git a/pty/src/unix.rs b/pty/src/unix.rs
+index cbe0f76..92bf82b 100644
+--- a/pty/src/unix.rs
++++ b/pty/src/unix.rs
+@@ -396,9 +396,9 @@ impl Drop for UnixMasterWriter {
+             // EOF is only interpreted after a newline, so if it is set,
+             // we send a newline followed by EOF.
+             let eot = t.c_cc[libc::VEOF];
+-            if eot != 0 {
+-                let _ = self.fd.0.write_all(&[b'\n', eot]);
+-            }
++            // if eot != 0 {
++            //     let _ = self.fd.0.write_all(&[b'\n', eot]);
++            // }
+         }
+     }
+ }

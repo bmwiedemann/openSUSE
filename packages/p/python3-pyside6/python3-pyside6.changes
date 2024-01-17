@@ -1,0 +1,244 @@
+-------------------------------------------------------------------
+Thu Dec  7 10:54:43 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.6.1. Check the installed changes-6.6.0 file for the
+  full list of changes
+- Drop patch, merged upstream:
+  * 0001-Fix-QtAsyncio-install-dir.patch
+
+-------------------------------------------------------------------
+Tue Oct 17 10:35:38 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.6.0. Check the installed changes-6.6.0 file for the
+  full list of changes
+- Drop patches, merged upstream:
+  * 0001-Fix-tests-sample_privatector-sample_privatedtor-fail.patch
+  * 0001-adapt-qC_Debug_Info_Warning_Critical_-for-new-definition.patch
+- Add patch:
+  * 0001-Fix-QtAsyncio-install-dir.patch
+
+-------------------------------------------------------------------
+Wed Oct  4 09:00:16 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch from upstream to fix a build failure:
+  * 0001-adapt-qC_Debug_Info_Warning_Critical_-for-new-definition.patch
+
+-------------------------------------------------------------------
+Mon Sep 18 12:54:20 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add patch to fix failure with Python 3.11.5:
+  * 0001-Fix-tests-sample_privatector-sample_privatedtor-fail.patch
+
+-------------------------------------------------------------------
+Wed Jul 26 10:48:26 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.5.2. Check the installed changes-6.5.2 file for the
+  full list of changes
+- Drop patch, merged upstream:
+  * 0001-CMake-Fix-installation-of-pyi-files.patch
+
+-------------------------------------------------------------------
+Tue May 30 08:23:43 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.5.1. Check the installed changes-6.5.1 file for the
+  full list of changes
+- Drop patch, merged upstream:
+  * 0001-Fix-build-when-using-QT_FEATURE_opengles2.patch
+- Add patch:
+  * 0001-CMake-Fix-installation-of-pyi-files.patch
+
+-------------------------------------------------------------------
+Mon Apr 24 09:45:54 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
+
+- Generate egg-info.
+
+-------------------------------------------------------------------
+Sat Apr 22 08:38:24 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add patch to fix build on arm (boo#1210723):
+  * 0001-Fix-build-when-using-QT_FEATURE_opengles2.patch
+
+-------------------------------------------------------------------
+Tue Apr  4 23:22:25 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.5.0. Check the installed changes-6.5.0 file for the
+  full list of changes
+- Drop patch, merged upstream:
+  * 0001-Don-t-install-CMake-files-into-versioned-directories.patch
+- Build pyside with llvm15 on Tumbleweed to work around
+  boo#1210176 / https://bugreports.qt.io/browse/PYSIDE-2268
+
+-------------------------------------------------------------------
+Fri Mar 17 09:04:56 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Temporarily disable Qt3D bindings on x86
+
+-------------------------------------------------------------------
+Wed Jan 11 11:11:25 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.4.2. Check the installed changes-6.4.2 file for the
+  full list of changes
+- Drop patches, merged upstream:
+  * 0001-Fix-a-cmake-only-build.patch
+  * 0002-Fix-a-cmake-only-build-amended.patch
+
+-------------------------------------------------------------------
+Tue Dec  6 07:34:22 UTC 2022 - Christophe Marin <christophe@krop.fr>
+
+- Disable two additional tests on aarch64
+
+-------------------------------------------------------------------
+Thu Nov 24 08:14:56 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.4.1. Check the installed changes-6.4.1 file for the
+  full list of changes
+  * The long missing support for __slots__ was finally added
+  * Documentation builds have been fixed to work with
+    system-installed versions of Qt 6.
+  * A bug when passing wrong keyword args to signals has been fixed
+  * The build with OpenGLES has been fixed
+  * Crashes when not implementing abstract methods have been
+    fixed
+  * Python 3.10 and higher are not compatible to the
+    __signature__ attribute. This has been fixed by a temporary
+    patch until the final removal of that attribute.
+- Drop patch, merged upstream:
+  * pyside-6.4.0-arm_gles.patch
+- Add patches to fix CMake builds:
+  * 0001-Fix-a-cmake-only-build.patch
+  * 0002-Fix-a-cmake-only-build-amended.patch
+
+-------------------------------------------------------------------
+Sun Oct 16 07:04:40 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.4.0. Check the installed changes-6.4.0 file for the
+  full list of changes
+  * Modules QtPdf, QtPdfWidgets and QtSpatialAudio have been added
+  * The Qt5Compat QML imports have been added (QtGraphicalEffects)
+  * Errors message about test-configuring projects with cmake
+    have been improved
+  * The feature module has been improved by a reset function
+  * The documentation build process has been improved; it no
+    longer requires a complete PySide6 build
+  * Support for Python 3.11 has been added
+- Drop patch, fixed upstream
+  * 0001-Adapt-to-Qt-6.4.patch
+- Fix the shiboken constraints
+- Add patch to fix build failures on ARM:
+  * pyside-6.4.0-arm_gles.patch
+
+-------------------------------------------------------------------
+Fri Sep 30 20:54:07 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add Qt 6.4 compatibility patch:
+  * 0001-Adapt-to-Qt-6.4.patch
+- Add QtQuick3D and QtSpeech bindings
+- Disable a failing test when building with Qt 6.4
+
+-------------------------------------------------------------------
+Tue Sep 13 06:51:16 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.3.2. Check the installed changes-6.3.2 file for the
+  complete list of changes.
+
+-------------------------------------------------------------------
+Sat Aug  6 09:27:06 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Use CMAKE_SKIP_RPATH when building python3-shiboken6 to avoid
+  non-existent RUNPATH entries in the library.
+
+-------------------------------------------------------------------
+Sun Jun 19 19:11:09 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.3.1. Check the installed changes-6.3.1 file for the
+  complete list of changes.
+- Drop patch, fixed upstream:
+  * 0001-Work-around-build-issue-in-pyside-6.3.patch
+
+-------------------------------------------------------------------
+Sun Apr 17 13:25:54 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch to fix build:
+  * 0001-Work-around-build-issue-in-pyside-6.3.patch
+- Rebase patch:
+  * 0001-Don-t-install-CMake-files-into-versioned-directories.patch
+
+-------------------------------------------------------------------
+Tue Apr 12 10:26:46 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.3.0. Check the installed changes-6.3.0 file for the
+  complete list of changes.
+  * The QtNfc module has been added.
+  * New QML tools have been added: pyside6-metaobjectdump,
+    pyside6-qmltyperegistrar and pyside6-qmllint.
+  * Several class decorators have been added for QML: QmlAttached,
+   QmlExtended, QmlForeign, QmlNamedElement, QmlSingleton and
+   QmlUncreatable.
+  * class QPyQmlPropertyValueSource for implementing QML value
+    property sources has been added.
+  * QML code has been split out from libpyside into a new library
+    libpysideqml. libpyside thus no longer depends on QtQml and
+    pyside.h no longer includes QML headers. pyside.h has been
+    split into smaller headers.
+  * A context manager for override cursors has been added. It is
+    now possible to write code like: with
+    QApplication.setOverrideCursor(Qt.WaitCursor):...
+- Don't build QtWebEngine bindings on 32 bits archs.
+
+-------------------------------------------------------------------
+Wed Mar 23 11:37:45 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.2.4
+  https://code.qt.io/cgit/pyside/pyside-setup.git/tree/doc/changelogs/changes-6.2.4
+- Drop patches, now upstream:
+  * 0001-Prospective-fix-for-broken-QByteArray-__msetitem__-o.patch
+  * 0002-Refactor-code-snippets-for-QByteArray-__msetitem__-_.patch
+
+-------------------------------------------------------------------
+Thu Feb  3 15:43:44 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.2.3
+  https://code.qt.io/cgit/pyside/pyside-setup.git/tree/doc/changelogs/changes-6.2.3
+- Add upstream patches to fix issues on big endian archs:
+  * 0001-Prospective-fix-for-broken-QByteArray-__msetitem__-o.patch
+  * 0002-Refactor-code-snippets-for-QByteArray-__msetitem__-_.patch
+- Update _constraints for pyside6.
+
+-------------------------------------------------------------------
+Thu Dec  9 08:23:19 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.2.2
+  https://code.qt.io/cgit/pyside/pyside-setup.git/tree/doc/changelogs/changes-6.2.2
+- Rebase patches:
+  * 0001-Don-t-install-CMake-files-into-versioned-directories.patch
+  * 0001-Always-link-to-python-libraries.patch
+
+-------------------------------------------------------------------
+Sat Oct 30 09:41:32 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.2.1
+  https://code.qt.io/cgit/pyside/pyside-setup.git/tree/dist/changes-6.2.1
+- Drop upstream changes:
+  * 0001-Fix-hang-in-test-bug_430.py-in-Qt-6.3.patch
+  * 0001-shiboken6-Adapt-to-LLVM-12.01.patch
+
+-------------------------------------------------------------------
+Tue Oct 12 09:51:22 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream patches to fix a test failure...
+  * 0001-Fix-hang-in-test-bug_430.py-in-Qt-6.3.patch
+- ...and failures with llvm > 12
+  * 0001-shiboken6-Adapt-to-LLVM-12.01.patch
+
+-------------------------------------------------------------------
+Thu Sep 30 13:14:54 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.2.0
+
+-------------------------------------------------------------------
+Tue Jul 27 16:40:23 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Init python3-pyside6
+- Add patches:
+  * 0001-Don-t-install-CMake-files-into-versioned-directories.patch
+  * 0001-Always-link-to-python-libraries.patch

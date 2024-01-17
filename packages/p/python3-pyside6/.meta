@@ -1,0 +1,5 @@
+<package name="python3-pyside6" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="KDE:Qt6" package="python3-pyside6"/>
+</package>

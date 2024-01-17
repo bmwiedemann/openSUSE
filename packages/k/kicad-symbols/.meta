@@ -1,0 +1,8 @@
+<package name="kicad-symbols" project="openSUSE:Factory">
+  <title>Schematic symbol library for KiCad's eeschema</title>
+  <description>KiCad is open source software for the creation of electronic
+schematic diagrams and printed circuit boards with up to 32 copper
+layers and additional techinical layers.
+This is the schematic symbol library package for KiCad EDA.</description>
+  <devel project="electronics" package="kicad-symbols"/>
+</package>

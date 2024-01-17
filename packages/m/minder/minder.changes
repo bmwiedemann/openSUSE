@@ -1,0 +1,735 @@
+-------------------------------------------------------------------
+Tue Jun 20 17:34:34 UTC 2023 - Michał Szczepaniak <m.szczepaniak.000@gmail.com>
+
+- Update to 1.15.2:
+  * Added support for embedding image path in Quick Entry.
+  * Updated Italian translation (thanks to @albanobattistella)
+  * Code cleanup
+  * Fixed issues with exported images including selection.
+  * Fixed issue with importing OPML files (thanks to Ygor Mutti).
+  * Fixed issue with undo/redo of Unicode characters.
+  * Fixed issues with exporting to Outliner format.
+
+-------------------------------------------------------------------
+Sun Feb 20 15:58:15 UTC 2022 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.14.0:
+  * Added support for shallow (one-level folding)
+  * Added import/export support for XMind version 2021.
+  * Added support for external mind-map node linking.
+  * Added node link tooltips.
+  * Added support for overriding the color of a root node.
+  * Added support for Markdown strikethrough syntax.
+  * Added support for Control-Backspace/Delete to delete the
+    previous/next word when editing node/connection titles.
+  * Added tooltip to node fill switch in style inspector.
+  * Added keyboard shortcuts for adding and removing URL links
+    from node text.
+  * Updates to Italian translation (thanks to @albanobattistella)
+  * Updates to German translation (thanks to Hannes Fritz)
+  * Improved accuracy of the list of translatable files.
+  * Removed ability to use keyboard shortcuts when a mouse button
+    is pressed.
+  * Removed Accounts permissions from Flatpak manifest as it is
+    no longer needed.
+  * Improved adding URL link UI to automatically add URL from
+    clipboard if one exists.
+  * Fixed layout issues when pressing keys while animations are
+    in process.
+  * Fixed location of text size help information in the
+    appearances preferences dialog.
+  * Fixed UX issues when the Hide Connections switch is enabled.
+  * Fixed issue with pasting nodes when a node is not selected in
+    a map.
+- Drop f5e8da83f958797157423dc23818e6ebd6681d20.patch
+
+-------------------------------------------------------------------
+Sat Dec 11 15:50:55 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add f5e8da83f958797157423dc23818e6ebd6681d20.patch: Fixing
+  compile issues and adding strikethru Markdown syntax support in
+  nodes.
+- Add pkgconfig(json-glib-1.0) BuildRequires: Dependency upstream
+  should have listed.
+- Drop lang pack Recommends, no longer needed.
+- Update URL.
+
+-------------------------------------------------------------------
+Thu Sep  9 22:34:08 UTC 2021 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.13.1:
+  * Changes
+  * Updated Italian translation (thanks to @albanobattistella)
+  * Updated screenshots for elementary OS 6.
+  * Bug Fixes
+  * Fixed command support for non-English keyboard layouts.
+  * New
+  * Added support for toggling the task indicator when multiple
+    nodes are selected.
+  * Added German translation (thanks to Peter Sonntaga).
+  * Added zoom amount in the zoom button tooltip.
+  * Added support for y command to create/remove node links when
+    multiple nodes are selected.
+  * Added support for x command to create connections when two
+  * Added support for system dark mode setting.
+  * Updated Italian translation (thanks to @albanobattistella).
+  * Updated Russian translation (thanks to Alexandre Prokoudine).
+  * Improved task indicator sizes in leaf nodes.
+  * Changed fold indicator from a circle to a square.
+  * Removed zoom in/out menu items and made them buttons instead.
+  * Node/connection is now automatically selected on right click
+    if it is not selected.
+  * Moved node change contextual menu items into their own
+    submenu.
+  * Changed forward slash command to Control-A for selecting all
+    text.
+  * Changed backward slash command to Control-Shift-A for
+    deselecting all text.
+  * Changed F1 command to Control-? for displaying keyboard
+    shortcuts.
+  * Updated keyboard shortcuts cheatsheet.
+  * Updated code base for elementary OS 6 (gtksourceview-4,
+    libhandy-1, Flatpak support, etc.)
+  * Fixed issue where sticker tooltips were not displaying
+    translated names.
+  * Fixed node resizing issues when system font is changed in
+    system settings.
+  * Fixed Flatpak issue to allow dark mode system settings to
+    affect application.
+  * Fixed layout issues when root node is resized.
+  * Fixed squared and rounded link display for nodes attached to
+    root node.
+  * Fixed cursor location when End key used.
+  * Fixed potential node identification generation issue that can
+    lead to bad connections on load.
+  * Fixed location of node stickers within the node to improve
+    look.
+  * Fixed issues copying and pasting a single selected node.
+
+-------------------------------------------------------------------
+Fri Jun 25 08:18:17 UTC 2021 - eymeric dechelette <hatchchien@protonmail.com>
+- Update 1.12.5:
+    Changes:
+      * Updated Italian translation (thanks to @albanobattistella)
+      * Updated Russian translation (thanks to Alexandre Prokoudine)
+    Bug Fixes:
+      * Added missing translatable strings in various parts of the UI.
+      * Fixed URL parser issues.
+      * Fixed application crash when forward deleting non-Latin text
+-------------------------------------------------------------------
+Sat Apr 24 18:07:01 UTC 2021 - Jason Kurzik <jason.kurzik@protonmail.com>
+- Update 1.12.2:
+  * Features and Changes
+  * Added subscript and superscript support to Markdown parser.
+  * Added support for switching tabs with Control-Tab and Shift-Control-Tab.
+  * Added support for remembering last used open/save dialog directories.
+  * Added support for Alt-Left/Right/Up/Down keyboard shortcuts to rearrange sibling nodes.
+  * Added support for searching all tabs (thanks to @Messius58).
+  * Added about window for non-elementary builds.
+  * Added ability to move child nodes to parent via Alt+direction.
+  * Added support for including images in Markdown export.
+  * Added installation instructions to README.md for Debian (thanks to Róbert Hubinák)
+  * Added support for Control-Home/End to move the cursor to the beginning/end of the text.
+  * Added support for folded children count tooltip.
+  * Added Basque translation (thanks to @alexgabi)
+  * Replaced export UI with a new, improved UI with support for export options.
+  * Moved add node menu items to a submenu.
+  * Improved focus mode behavior.
+  * Changed property header button to a toggle button and clarified the tooltip
+  * Changed keyboard shortcut to open sidebar from Control-| to F9.
+  * Changed non-symbolic header bar icons to symbolic icons for non-elementary OS environments.
+  * Improved link drawing algorithm to make link connections easier to see.
+  * Changed "Link Color" in node inspector to "Color" to reflect the colors use.
+  * Improved task button drawing.
+  * Updated to Italian translation (thanks to @albanobattistella)
+  * Updated to Brazilian Portugese translation (thanks to Felipe Simoes)
+  * Opening a file will automatically close an existing unsaved, unchanged tab.
+  * Changed color of connection drag handles to yellow.
+  * Making it easier to grab connection drag handle when it is close to connection handles.
+  * Reducing auto-saves when editing node text.
+  * Many, many bugfixes since last update on OBS.
+
+-------------------------------------------------------------------
+Fri Oct 30 15:46:50 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.11.3:
+  * Changes
+  * Updated Italian translation (thanks to Albano Battistella).
+  * Bug Fixes
+  * Fixed application crash issues due to using custom themes.
+  * Added missing theme colors in custom theme pane.
+  * Fixed issues with application crash when editing a root node.
+  * Fixed issue with filepath parser highlighting normal text
+    that contains slash characters.
+
+-------------------------------------------------------------------
+Sun Oct 11 07:30:59 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.11.1:
+  * New
+  * Added Shift-e keyboard shortcut to edit note text for nodes
+    and connections.
+  * Changes
+  * Updated Italian translation (thanks to @albanobattistella).
+  * Improved automatic layout of node trees when adjacent tree
+    sizes change.
+  * Changed node and connection contextual menus to show (Edit
+    Note) instead of (Add Note) and (Remove Note) options.
+  * Bug Fixes
+  * Fixing compilation issues.
+  * Fixing behavior of 't' command when node is selected.
+  * Fixing support for undo/redo of root node insertion.
+  * Added Preferences dialog.
+  * Added Portuguese translation (thanks to Andre Barata).
+  * Added keyboard shortcut (Menu or Shift-F10) to display
+    contextual menus in mindmap.
+  * Added default theme preference option.
+  * Added preference option to select map items on cursor hover.
+  * Added Shift+Home/End support for selecting all text from
+    current cursor to beginning/end of node or connection titles when
+    editing.
+  * Added support for PlantUML import/export.
+  * Added support for displaying notifications on completion of
+    export operation.
+  * Added keyboard shortcuts for displaying tabs in sidebar.
+  * Added support for making filepath URIs clickable in nodes,
+    connections and notes (displays the files in the file manager
+    application).
+  * When nodes are copied to clipboard, pasting them as text in
+    an external application will be displayed as in text export
+    format.
+  * When text is copied to the clipboard from an external
+    application, pasting as nodes in Minder will parse in text import
+  * Improved look of menu accelerators and added missing
+    accelerators.
+  * Changed 't' command to transition task status from disabled
+    to enabled to done and back to disabled.
+  * Fixed issues with undo/redo of node/connection title changes.
+  * Fixed issue with undoing a connection add operation.
+  * Fixed issue with connection titles being clear when
+    connection is moved to a different node.
+  * Fixed UI issue with changing window width by dragging right
+    side of window when sidebar is hidden.
+  * Fixed issues with inputting special characters with US
+    international keyboard.
+  * Fixed issue where images in resized nodes were not displaying
+    properly on application restart.
+  * Fixed issue where copying a filename in a file manager and
+    pasting in Minder would attempt to past the icon image instead of
+    the filename when editing text.
+
+-------------------------------------------------------------------
+Fri Aug 28 23:09:09 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.10.0:
+  * Working around layout issues when importing
+    Freemind/Freeplane with folded nodes.
+  * Merge pull request #205 from Fatih20/icon-redesign
+  * Icon Tweaks
+  * Fixing node link issue in Freemind/Freeplane formats.
+  * Fixing parsing support for some Freemind/Freeplane formats.
+  * Fixing application crash when node is deleted or cut.
+  * Fixing issue with being able to identify folded node based on
+    x,y coordinates.
+  * Updating README.
+  * Updating version.
+  * Updating screenshots.
+  * Updating application description.
+  * Merge branch 'devel'
+  * Merge branch 'mouse_shortcuts' into devel
+  * Adding mouse events.
+  * Checkpointing work on mouse event shortcuts.
+  * Merge branch 'group_undo' into devel
+  * Adding undo/redo group support to cut methods.
+  * Fixing undo/redo issue with node groups.
+  * Checkpointing group undo work
+  * Fixing issue with attempting to export an SVG image to XMind.
+  * Fixing image support to XMind export/import.
+  * XMind export enhancements.
+  * Merge branch 'conn_edit_title' into devel
+  * Fixing various critical errors in regards to editing
+    connections.
+  * Finishing support for edit connection title on creation
+    option.
+  * Fixing group drawing when nodes are folded.
+  * Fixing issue with making node visible when it it folded and a
+    node link to it is clicked.
+  * Fixing critical error when double-clicking an empty
+    connection title
+  * Changing connection to allow sticker to be dropped even when
+    title does not exist.
+  * Adding support for panning with middle mouse button.
+  * Adding keyboard shortcut for 'Zoom to Fit'.
+  * Attempting to fix compile issues with newer valac compilers.
+  * Merge branch 'devel' of github.com:phase1geo/Minder into
+    devel
+  * Fixing issues around opening/saving documents
+  * adding create group
+  * ...
+
+-------------------------------------------------------------------
+Thu Aug 13 19:00:52 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.9.2:
+  * Fixing some issues with tree overlay in Freemind and
+    Freeplane imports.
+  * Fixing application crash when exporting to Freemind.
+  * Merge branch 'freeplane_crash'
+
+-------------------------------------------------------------------
+Thu Jul 16 18:37:38 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.9.1:
+  * Merge branch 'xml_huge_fix'
+  * Fixing issues with reading large/deep XML-styled files
+  * Fixing issue with setting the cursor when zoom is not 100%
+  * Merge pull request #165 from albanobattistella/patch-1
+  * Update it.po
+  * Merge branch 'devel'
+  * Fixing string copy of node text to clipboard.
+  * Updating appdata.
+  * Fixing issue with pasting UTF-8 text from clipboard.
+  * Updating Minder version and appdata.xml
+  * Chaning panning to use the Alt key while the mouse is being
+    moved.
+  * Adding proper support for opening one or more files from
+    command-line.
+  * Fixing issue with connection color handling.
+  * Bug fixes
+  * Fixing issues with quick entry from previous submission.
+  * Fixing issues with pasting text in QuickEntry.
+  * Fixing issues with selection box behavior.
+  * Fixing QuickEntry issues.
+  * Checkpointing work on fixing/enhancing quick entry (work in
+    progress).
+  * Updating contextual menus.
+  * Changing select parent node algorithm to work with multiple
+    nodes.
+  * Updating selection shortcut cheatsheet.
+  * Fixing issues with selection boxes.
+  * Merge remote-tracking branch 'origin/master' into devel
+  * Fixing application crash when animation is disabled and the
+    re-enabled.
+  * Merge pull request #141 from febrezo/master
+  * changing warning to message
+  * Adding debug output
+  * Adjusting default connection colors and causing connections
+    to follow theme colors unless manually changed.
+  * Fixing syntax issue with meson.build
+  * Fixing custom theming issues.
+  * Making default connection color lighter to improve contrast
+    against background.
+  * Merge branch 'master' into devel
+  * ...
+
+-------------------------------------------------------------------
+Sun May 17 12:19:55 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.8.0:
+  * Added support for pasting an image or text as a new node.
+  * Added support for pasting an image or text, replacing the current node content.
+  * Added support for pasting text, replacing the current connection content.
+  * Added task support to Outliner import/export.
+  * Added keyboard shortcut (Control-E) to display export interface.
+  * Added support for creating a new root node hitting the Return key when no node is selected.
+  * Added ability to add a new root node via the contextual menu when no node is selected.
+  * Added ability to launch quick entry dialog via the contextual menu when no node is selected.
+  * Added node alignment support for manual node layouts.
+  * Added ability to create a connected root node.
+  * Added ability to replace/edit nodes via the Quick Entry feature.
+  * Added .editorconfig file.
+  * Updated image editor dialog button bar to include support for clipboard operations.
+  * Improved display of buttons in image area of the node inspector sidebar.
+  * Updated keyboard shortcut cheatsheet.
+  * Changed quick text entry keyboard shortcut from Control-E to Control-Shift-E.
+  * Changed the paste text in contextual menu to indicate what will be pasted.
+  * Updated Outliner import/export support for tasks.
+  * Added tooltip and changed cursor when cursor is over a link and the Control key is held down.
+  * Removed empty Outliner rows from being added when Outliner file is imported.
+  * Fixed loss of selection when shift key is held down and the background is clicked.
+  * Added themed background color to exported PDF format.
+  * Fixed exports to allow existing files to be overwritten.
+  * Fixed Org-Mode export syntax errors.
+
+
+-------------------------------------------------------------------
+Thu Apr 30 07:34:30 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.7.3:
+  * Updating screenshots.
+  * Merge pull request #129 from Vistaus/master
+  * Update LINGUAS
+  * Merge branch 'devel'
+
+-------------------------------------------------------------------
+Sat Mar 28 16:04:32 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.7.2:
+  * Fixing appdata.xml syntax issues to comply with spec.
+    Updating tooltips to use Granite tooltip generator. Improving
+    undo and redo tooltips.
+  * Updating files for 1.7.1 release.
+  * Merge branch 'devel'
+  * Fixing issue with rotating link colors on main branches.
+  * Merge branch 'archive_compile'
+  * Merge branch 'master'
+  * Fixing syntax error.
+  * Checkpointing fixes for newer versions of libarchive.
+  * Updating map properties screenshots.
+  * Updating tool version in meson.build.
+  * Merge branch 'org-mode'
+  * Updating files for upcoming 1.7.0 release.
+  * Updating README.md
+  * Checkpointing initial work on providing Org-Mode exporting.
+  * Merge branch 'portable'
+  * Clearing up debug output.
+  * Fixing ID mapping issue.
+  * Fixing issues with pminder import extraction.
+  * Checkpointing work on portable Minder exporter/importer.
+  * Checkpointing work on portable minder exporter/importer.
+  * Merge branch 'portable' of github.com:phase1geo/Minder into
+    portable
+  * Merge branch 'link_color'
+  * Fixing issues with link color rooting.
+  * Fixing issues with selections.
+  * Added ability to select children nodes using Control-click.
+  * Adding support for link color manipulation for a single node.
+  * Fixing syntax error from previous checkin.
+  * Fixing bug with updating tab tooltip and saving tab state
+    when filename is changed.
+  * Checkpointing work on parenting and re-parenting link colors.
+  * Adding ability to set all selected nodes to a specific color.
+    Adding ability to randomly set link colors of all selected nodes.
+  * Adding map inspector switch to enable/disable automatic
+    rotation of main branch link color selection.
+  * Merge branch 'outliner'
+  * Fixing import support of Outliner files.
+  * ...
+
+-------------------------------------------------------------------
+Mon Jan 13 21:37:08 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.6.0:
+  * Merge branch 'devel'
+  * Merge branch 'note_highlighter'
+  * Completing work on markdown note exporting.
+  * Checkpointing export support for Markdown notes.
+  * Fixing runtime warning in NodeInspector.
+  * Adding libmarkdown to list of meson build dependencies.
+  * Finishing work on URL support in note sidebar.
+  * Checkpointing work on URL click support in note editor.
+  * Checkpointing work on clicking on found URLs in notes.
+  * Checkpointing work on new note markdown support.
+  * Merge branch 'url'
+  * Merge branch 'master' of git@github.com:phase1geo/Minder.git
+
+-------------------------------------------------------------------
+Mon Nov 25 18:16:59 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.5.1:
+  * Create stale.yml
+  * Create main.yml
+  * Merge pull request #97 from Fatih20/icon-redesign
+
+-------------------------------------------------------------------
+Mon Sep  9 18:32:02 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.5.0:
+  * Merge branch 'devel'
+  * Fixing issues with appdata file for some parsers.
+  * Merge branch 'master'
+  * Increasing asking price from $5 to $10.
+  * Updated screenshots. Updating files for new release.
+  * Merge branch 'shortcuts'
+  * More updates to shortcuts UI file.
+  * Adding and reorganizing keyboard shortcuts to .ui file.
+    Making the shortcuts window display be sensitive to the current
+    state. Adding F1 as keyboard shortcut to display shortcuts
+    window. Adding support for copy, cut and pasting connection title
+    text. Fixing keyboard shortcut to toggle focus mode.
+  * Changing shortcuts accelerator to F1.
+  * Adding menu to miscellaneous header button.
+  * Checkpointing work on shortcuts.ui file (now displaying
+    correctly).
+  * Merge branch 'node_fill'
+  * Improving style handling when creating nodes.
+  * Fixing issue with setting fill with link color in style
+    inspector.
+  * Checkpointing.
+  * Adding missing file from previous commit.
+  * Checkpointing initial files for creating a shortcuts window
+    (not working yet).
+  * Merge branch 'text_input'
+  * Fixing issues with integrating GLib settings for quick entry
+    spaces per tab value.
+  * Checkpoint tabs per space from gsettings
+  * Adding quick entry help information.
+  * Fixing tab behavior in quick entry UI.
+  * Adding support for Control-W shortcut to close current tab.
+    Adding support for Control-E shortcut to open quick entry UI.
+    Removing ability to enter space characters in leading whitespace
+    within quick entry.
+  * Checkpointing work on quick entry UI.
+  * Fixing issues with quick entry functionality.
+  * Checkpointing work on integrating new QuickEntry UI.
+  * Completing work on adding PlainText import support.
+  * Adding ability to read in the contents of a text file for
+    importing purposes.
+  * Adding undo/redo support for inserting nodes from text.
+  * Finishing code that draws the text input to the canvas
+    properly.
+  * Starting work on text import parser.
+  * Merge branch 'custom_theme'
+  * Fixing issue where saved temporary theme was not marked as
+    permanent.
+  * More improvements to custom themes.
+  * ...
+
+-------------------------------------------------------------------
+Mon Jul 15 10:09:59 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.4.1:
+  * Merge branch 'master' of github.com:phase1geo/Minder
+  * Fixing automatic layout issue.
+  * Fixed spelling error in README
+  * Fixing version number within meson.build.
+  * Merge pull request #75 from NathanBnm/update-fr
+
+-------------------------------------------------------------------
+Thu Jul  4 17:47:35 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.4.0:
+  * Merge branch 'devel'
+  * Fixing canvas focus after adding a new tab.
+  * Fixing node link icon coloring.
+  * Cleaning up debug output.
+  * Fixing node sizing and name positioning when tasks are
+    added/removed.
+  * Fixing focus button state issues.
+  * Adding the development branch to the list of branches for
+    Travis to build.
+  * Merge branch 'focus'
+  * Merge branch 'master' of git@github.com:phase1geo/Minder.git
+  * Updating README installation command for Fedora users
+  * Merge pull request #67 from NathanBnm/fix-post-install
+- Build with granite >= 5.2.3
+
+-------------------------------------------------------------------
+Tue Jun 11 16:59:09 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.3.1:
+  * Merge branch 'master' of github.com:phase1geo/Minder
+  * Updates for new release.
+  * Fixing export issue.
+  * Fixing release information
+
+-------------------------------------------------------------------
+Mon May 20 18:13:10 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.3.0:
+  * Fixing up small UI issues.
+  * Fixing README image path.
+  * Updating screenshots.
+  * Fixing issue caused in last commit.
+  * Improving display of style inspector when connection options
+    are displayed.
+  * Changing style panels to allow each subpanel to be expandable.
+  * Changing the connection title box to use a rounded rectangle.
+  * Adding connection padding and font styling to sidebar.
+  * Updating changelist. * Initializing prefer_dark MainWindow
+    setting from desktop value, if set.
+  * Finishing and fixing several remaining issues with connections.
+  * Checkpointing work on displaying note icon for a connection.
+  * Changing the way connection titles are stored in XML.
+  * Adding support for saving connection notes to XML.
+  * Fixing keyboard focus when a note textbox needs to be changed.
+  * Adding ability to select a connection from the current node.
+  * Adding ability to select the next/previous connection.
+  * Updating contextual menu items per this feature.
+  * Fixing error when redoing a deleted root node.
+  * Updating release information.
+  * Adding ability to create a connection using the keyboard.
+  * Fixing issues with displaying the current sidebar.
+  * Adding keyboard support when a connection is selected.
+  * Fixing issues with restoring connections after deleting.
+  * ...
+
+-------------------------------------------------------------------
+Mon Apr 15 19:13:14 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.2.1:
+  * Removing styling change support when affects widget is
+    changed to a current node type.
+  * Updating screenshot.
+  * Updating appdata for the upcoming release.
+  * Fixing node detach undo operation.
+  * Fixing layout issue when pasting a node tree.
+  * Selecting pasted node.
+  * Fixing level-based styling issue. * Fixing node font styling.
+  * Adding automatic style update when current-type affects are
+    changed.
+  * Fine-tuning arrow drawing to improve look.
+  * Fixing layout issue related to tasks.
+  * Fixing style inspector UI issues when changing elements in
+    the inspector.
+  * Merge branch 'master' of github.com:phase1geo/Minder
+  * Fixing issues with scroll widgets in the style inspector in
+    reference to the undo/redo buffer.
+  * Merge pull request #56 from chiajlingvoj/master
+  * fix reference
+  * Fixing drawing issues when changing style values. * Fixing
+    style inspector updating when style change are undone/redone.
+  * Checkpointing work on undo buffer replace feature.
+  * Adding connection styling undo/redo support.
+  * Checkpointing work on reworking style undo/redo methodology.
+  * A few more fixes to undo actions.
+  * Fixing several issues with layout.
+  * Fixing UI state of the link types widget to be disabled if
+    the affected nodes do not have branches that can be changed.
+  * Fixing issues with styling undo/redo
+
+-------------------------------------------------------------------
+Mon Oct 29 19:38:46 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.1.3:
+  * Updating release notes.
+  * Adding support for special character input.
+  * Fixing syntax error in appdata.xml
+  * Updating version number in Application class.
+  * Updating appdata file.
+
+-------------------------------------------------------------------
+Tue Oct 16 17:38:27 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.1.2:
+  * Adding information for 1.1.2 release
+
+-------------------------------------------------------------------
+Mon Oct  8 11:39:52 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.1.1:
+  * Updating release number.
+  * Updating release information.
+  * Updating release notes.
+  * Fixing issues with moving nodes within a parent and attaching
+    a root node into another node.
+  * Reducing the minimum height of the note text area for screens
+    that are shorter.
+  * Fixing syntax error in appdata.xml file.
+  * Updating appdata.
+  * Fixing issues with editing and selecting unicode text that
+    spans UTF-8 characters.
+  * adjustments to README
+
+-------------------------------------------------------------------
+Mon Sep 24 10:35:49 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.1.0:
+  * Updating application description.
+  * Fixing issue where the mode property of the Node class was
+    given a default value in the property.
+  * Updating README with documentation link and adding libarchive
+    to list of dependencies.
+  * Small adjustments to some UI elements.
+  * Adding missing image support for node copying.
+  * Updating README.
+  * Fixing compiler warning.
+  * Updating screenshots.
+  * Adding code to keep from scrolling infinitely.
+  * Fixing a few issues after the merge.
+  * Merge branch 'devel'
+  * Fixed issues with calling the ImageManager cleanup method.
+  * Checkpointing refactoring of ImageManager and related code.
+  * Checkpointing image manager work.
+  * Checkpointing (things are really broken right now).
+  * Finishing image work in node inspector. * Checkpointing work
+    on ImageManager.
+  * Checkpointing work on ImageManager (work in progress).
+  * Checkpointing.
+  * Adding node resize undo action. * Fixing initial sizing of
+    images to match max_width value. * Adding Vim swap files to
+    gitignore file.
+  * Removing ability to click on NodeInspector image to edit.
+  * Adding delete and edit overlays to image in NodeInspector. *
+    Fixing URI generation issue.
+  * Attempting to fix popover handling for Loki.
+  * Adding ability to remove image from image editor.
+  * Adding support for image URI saving. * Displaying image URI
+- Add pkgconfig(libarchive)
+
+-------------------------------------------------------------------
+Wed Aug  8 14:50:26 UTC 2018 - avvissu@yandex.by
+
+- Update to 1.0.8:
+  * Adding support for opaque PNG export
+  * Improving memory footprint of undo buffer.
+  * Fixing issues with undoing a node attach operation.
+  * Fixing issues with saving colors when an RGB value is 0.
+  * Fixing CHARSET in pt_BR.po.
+  * Checkpointing work on new attachment algorithm.
+  * Update README.md
+  * Adding overview section to README.md
+  * Updating description text
+  * Updating release notes
+  * Checkpointing work on improving node attachment undo/redo
+    functionality.
+  * Fixing posx/posy original position calculation in attach
+    method.
+  * Starting to improve the attachment undo/redo functionality
+    (work in progress).
+  * Fix appadata.xml
+  * Attempting to fix keyboard support in DrawArea
+  * Initial attempt to fix layout issues when attaching a tree to
+    another tree.
+  * Updating solarized light theme.
+  * Adding new Solarized Light and Solarized Dark themes.
+  * Fixing issue with folding completed tasks. * Updating icons.
+  * Creating icons for map inspector actions.
+  * Adding button sensitivity for completed tasks and unfold all
+- Add a new package with translations
+
+-------------------------------------------------------------------
+Mon Aug  6 22:16:57 UTC 2018 - jengelh@inai.de
+
+- Switch from imperatives to noun phrasing.
+
+-------------------------------------------------------------------
+Wed Aug  1 21:29:40 UTC 2018 - avvissu@yandex.by
+
+- Update to 1.0.7:
+  * Changing release date for 1.0.4
+  * Updating README to include double-click to edit
+  * Changing update icon cache script.
+  * Update.
+  * Removing gtk-update-icon-cache call.
+  * Another attempt to fix Travis CI issues.
+  * Minor change to Travis CI.
+  * Attempting to correct Travis CI failures.
+  * Fixing build issues in Juno.
+  * Adding GTK322 define to allow for conditional compilation.
+  * Updating .pot file.
+  * Minor code enhancements.
+  * Fixing background color of DrawArea. * Attempting to fix use
+    of obsolete Gtk.Menu.popup call in Juno.
+  * Adding 1.0.3 release notes.
+  * Updating pot file.
+  * Cleaning up code.
+  * Fixing folded assignment from with Node class.
+  * Updating screenshots. * Fixing CSS handling for theme
+    selection and canvas backgrounds.
+  * Attempting to remove background override call in Theme class
+    to instead use CSS (still having issues).
+  * Modifying the search UI to a checkbutton system.
+  * Adding proper support for undo functionality for
+    automatically revealed nodes.
+  * Attempting to fix how folded nodes are handled.
+  * Adding updated search criteria items. * Adjusting margins
+    within popover menus. * Several enhancments to search UI.
+  * Updating screenshots.
+  * Changing properties icon in header to pane show/hide icons.
+
+-------------------------------------------------------------------
+Sun Jul  1 20:46:22 UTC 2018 - avvissu@yandex.by
+
+- Initial package
+

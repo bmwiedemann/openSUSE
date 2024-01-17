@@ -1,0 +1,9 @@
+<package name="withlock" project="openSUSE:Factory">
+  <title>A locking wrapper script</title>
+  <description>withlock is a locking wrapper script to make sure that some program isn't run more than once. It is ideal to prevent periodic jobs spawned by cron from stacking up.
+ 
+The locks created are valid only while the wrapper is running, and thus will never require a cleanup, as after a reboot. Thus, the wrapper is safe and easy to use, and much better than implementing half-hearted locking within scripts.
+  </description>
+  <devel project="Base:System" package="withlock"/>
+  <url>http://code.google.com/p/withlock/</url>
+</package>
