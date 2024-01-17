@@ -1,0 +1,6 @@
+<package name="stripe-mock" project="openSUSE:Factory">
+  <title>stripe-mock</title>
+  <description>stripe-mock is a mock HTTP server that responds like the real Stripe API. It can be used instead of Stripe's testmode to make test suites integrating with Stripe faster and less brittle.</description>
+  <devel project="devel:languages:go" package="stripe-mock"/>
+  <url>https://github.com/stripe/stripe-mock</url>
+</package>
