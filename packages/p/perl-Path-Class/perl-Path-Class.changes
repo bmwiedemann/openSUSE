@@ -1,0 +1,219 @@
+-------------------------------------------------------------------
+Mon Aug 15 05:41:54 UTC 2016 - coolo@suse.com
+
+- updated to 0.37
+   see /usr/share/doc/packages/perl-Path-Class/Changes
+
+  0.37  Sat Aug 13 21:33:23 CDT 2016
+  
+   - Doc update for contains/subsumes [1916528]
+   - Fix "contains" when $self is a relative path - #43 [1c01e86]
+   - Handle case where $other evaluates false [70e4b6b]
+   - Add additional test cases for contains and subsumes [434f244]
+   - Test with Perl 5.24 [a4d2d73]
+
+-------------------------------------------------------------------
+Fri Feb 19 10:45:15 UTC 2016 - coolo@suse.com
+
+- updated to 0.36
+   see /usr/share/doc/packages/perl-Path-Class/Changes
+
+  0.36  Tue Feb 16 22:16:21 CST 2016
+  
+   - 117bd64 - Use croak instead of die; use eval syntax instead of universal::isa (as perlcritic wishes) <viviparous>
+   - 4b620b6 - Load File::Copy and Perl::OSType only when used (copy_to, move_to) <Olivier Mengué>
+   - 55ecb58 - always use canonpath on arguments to splitdir <Andrew Gregory>
+   - 25c12f7 - Fix 'Operation "eq": no method found' error (RT #77259), whose underlying cause
+     isn't really understood. <mzrinsky>
+   - 935eeed - Add some fixes & tests for contains() with updir stuff (github #43) <Ken Williams>
+   - 927fa74 - Fix Carp::Croak to Carp::croak <Ken Williams>
+   - 2d615ca 34da6d3 5fcad02 1b7be68 a622acf - Fixed and improved Travis testing configuration <Dave Rolsky>
+   - 2a74c40 - Fix Pod typos <Сергей Романов>
+   - 28ca95a - Check all print calls in spew and explicitly call (and check) close <Dave Rolsky>
+
+-------------------------------------------------------------------
+Tue Sep 16 08:08:00 UTC 2014 - coolo@suse.com
+
+- updated to 0.35
+  - fce4b8e - Fixed a t/03-filesystem.t test error on Windows <Andrew Gregory>
+  - df23e17 - Add a new spew_lines() method <William Stevenson>
+  - 3ffef39 - Don't convert file into directory in subsumes() <Dagfinn Ilmari Mannsåker>
+  - 9a01a71 - Updated POD for copy_to and move_to methods <Robert Rothenberg>
+  - 210a7ef - Stringify destination for copy_to method <Robert Rothenberg>
+  - 9f83723 - Stringify destination for move_to method <Robert Rothenberg>
+  - 5e2cb26, d5c7e62 - Add Continuous Integration with Travis CI <Ken Williams>
+  - d372be1 - Change bugtracker to github's <Ken Williams>
+
+-------------------------------------------------------------------
+Wed Dec 18 10:40:28 UTC 2013 - coolo@suse.com
+
+- updated to 0.33
+  - New copy_to() and move_to() methods. [Robert Rothenberg & Ken Williams]
+ 
+  - As advised in the utime() docs, pass undef as the time for touch().
+ 
+  - Do a better job cleaning up temp files in the tests.
+ 
+  - Optimization: use parent.pm instead of base.pm. [Olivier Mengué]
+ 
+  - Changed the docs to show that file() and dir() are exported by
+    default.
+ 
+  - Fixed spelling error in POD. [Salvatore Bonaccorso]
+
+-------------------------------------------------------------------
+Sun Jun  9 14:52:47 UTC 2013 - coolo@suse.com
+
+- updated to 0.32
+  - Updated dependency on File::Spec to 3.26, fixing RT #83143.
+ 
+  - Fixed bug with leading empty string in dir() - became unintentional
+    UNC path on Cygwin. [David Golden and MITHUN@cpan.org]
+ 
+  - Fixed "Unterminated C<...> sequence" in Pod. [Olaf Alders]
+ 
+ 0.31  Tue Feb  5 11:51:59 CST 2013
+ 
+  - Optimization: stringify variables passed to canonpath [David Golden]
+ 
+  - Optimization: Use internal guts when constructing Dirs from
+    Dirs, instead of concatenating and splitting them again with
+    File::Spec. [David Golden]
+ 
+  - Fix grammar error in docs. [Karen Etheridge]
+ 
+  - Implement a 'split' parameter for the slurp() method [suggested by Yanick Champoux]
+ 
+  - In docs, replace unicode MINUS SIGN with ascii HYPHEN-MINUS [Randy Stauner]
+ 
+ 0.29  Mon Dec 17 23:55:07 CST 2012
+ 
+  - Add components() method, which returns directory names (and
+    filename, if this is a File object) as a list.
+ 
+  - Fix a test failure on non-Unix platforms, the 07-recurseprune.t
+    test was written in a Unix-specific way.
+ 
+ 0.28  Sat Dec 15 21:40:17 CST 2012
+ 
+  - Fix test failures when run as root - they were relying on
+    permissions failures, but permissions never fail as root. [Spotted
+    by AAR and Chris Williams]
+ 
+  - Add links in docs to the other modules we rely on & talk about in
+    the docs.  Makes for easier viewing through search.cpan.org /
+    MetaCPAN. [David Precious]
+ 
+  - Fixed some misleading variable names in docs. [RT#81795] [Pau Amma]
+ 
+ 0.27  Sat Dec  8 19:24:15 CST 2012
+ 
+  - Added pruning support in dir->recurse(). If recurse callback
+    returns $item->PRUNE, no children of this item will be
+    analyzed. [Marcin Kasperski]
+ 
+  - Documented 'basename' method for directories. [Fabrice Gabolde]
+ 
+  - Added traverse_if() function, which allows one to filter children
+
+-------------------------------------------------------------------
+Tue May 29 15:28:20 UTC 2012 - coolo@suse.com
+
+- it should work with all Module::Build
+
+-------------------------------------------------------------------
+Mon Feb 27 09:04:53 UTC 2012 - coolo@suse.com
+
+- updated to 0.25
+ - resolve() now croak()s instead of die()s on non-existent file. [Danijel Tašov]
+ - Added a traverse() method for directories, based on the fmap_cont()
+   method of Forest::Tree::Pure.  It's an alternative to ->recurse,
+   which allows for more control over how the recursion
+   happens. [Jesse Luehrs]
+ - Fixed a grammar error in the docs. [Shlomi Fish]
+
+-------------------------------------------------------------------
+Mon May 30 15:21:07 UTC 2011 - coolo@novell.com
+
+- updated to 0.24
+ - Added a tempfile() method for Dir objects, which provides an
+   interface to File::Temp. [RT#60485]
+
+ - Fixed a non-helpful fatal error message when calling resolve() on a
+   path that doesn't exist.  Now dies with the proper "No such file or
+   directory" message & exit status. [GRAF]
+
+-------------------------------------------------------------------
+Sat Apr  2 19:30:15 UTC 2011 - coolo@novell.com
+
+- update to 0.23:
+ - Fixed a bunch of problems with the distribution (e.g. in META.yml)
+   that I introduced in the switch to Dist::Zilla.  No code changes
+   from 0.22.
+
+-------------------------------------------------------------------
+Sun Dec 26 14:25:07 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 0.22:
+  * added a basename() method for directory objects
+
+- changes from 0.21:
+  * don't test the 'iomode' option under 5.6, because layers aren't supported yet
+  * fixes to spelling errors in the docmuentation
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:37 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Aug  9 09:34:47 UTC 2010 - chris@computersalat.de
+
+- update to 0.19
+  - slurp() now accepts an 'iolayers' option to control how the file is
+    opened. [Graham Barr]
+  - In the openr() and openw() file methods, we now croak() instead of
+    die() so that the error messages are more useful. [Ian Sillitoe]
+  - Allow subclassing, by adding dir_class() and file_class() static
+    methods, allowing them to be overridden. [Matt Trout & John LoVerso
+    & Michael Schwern]
+  - Fixed a testing failure that could occur whenever testing in a
+    directory path that contains symlinks (e.g. /tmp on Mac OS X).
+  - Added a 'no_hidden' parameter for children() [EDENC <EDENC@cpan.org>]
+  - Fixed the heading for the is_relative() POD section. [CUB <cub.uanic@gmail.com>]
+- 0.18 - Sun Dec 20 10:11:02 CST 2009
+  - Similar to the next() bug for files/directories named "0" or "0.0"
+    in the previous release, the children() and recurse() methods have
+    now been fixed in the same way. [spotted by ARTHAS, MSISK]
+- 0.17 - Sun Jun 14 21:42:16 2009
+  - dir(undef) now returns undef rather than the rootdir, because undef
+    was probably a mistake by the caller, and the rootdir is too scary
+    a default. [Suggested by John Goulah]
+  - Temporary files during testing are now created in the system temp
+    directory, rather than somewhere in t/ .  See RT #31382. [Suggested
+    by Alex Page]
+  - Added is_relative() as the obvious complement to the existing
+    is_absolute() method.
+  - Added a resolve() method to clean up paths much more thoroughly
+    than cleanup(), e.g. resolving symlinks, collapsing foo/../bar
+    sections, etc. [Suggested by David Garamond]
+  - Fixed a problem in which a file/directory called "0" or "0.0" would
+    end a loop prematurely when using the idiom 'while($x =
+    $dir->next) {...}'.  See http://rt.cpan.org/Ticket/Display.html?id=29374
+    [Spotted by Daniel Lo]
+  - Fixed an exists($array[$i]) that prevented compatibility with perl
+    5.005.
+  - Moved the repository from my personal CVS repo to Google Code.
+- recreated by cpanspec 1.78
+- noarch pkg
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Mon Aug 20 15:45:07 CEST 2007 - mrueckert@suse.de
+
+- initial package
+

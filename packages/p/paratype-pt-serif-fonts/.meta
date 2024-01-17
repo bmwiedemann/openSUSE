@@ -1,0 +1,16 @@
+<package name="paratype-pt-serif-fonts" project="openSUSE:Factory">
+  <title>Serif Fonts for Minority Languages of Russia</title>
+  <description>PT Serif is a transitional serif face with humanistic terminals designed
+for use together with PT Sans and harmonized with PT Sans on metrics,
+proportions, weights and design. PT Serif consists of six styles:
+regular and bold weights with corresponding italics form a standard
+computer font family for basic text setting; two caption styles (regular
+and italic) are for texts of small point sizes.
+
+The fonts beside standard Western, Central European and Cyrillic code
+pages contain characters of all title languages of Russian Federation
+that make them unique and very important tool of the modern digital
+communications.</description>
+  <devel project="M17N:fonts" package="paratype-pt-serif-fonts"/>
+  <url>http://www.paratype.com/public/</url>
+</package>
