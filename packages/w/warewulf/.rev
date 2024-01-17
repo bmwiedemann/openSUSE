@@ -77,4 +77,12 @@
     <comment>updated patch (forwarded request 1134308 from mslacken)</comment>
     <requestid>1134309</requestid>
   </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>83705a85965e1f88befe7f54721b0a44</srcmd5>
+    <version>3.8.1</version>
+    <time>1705526334</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1139475</requestid>
+  </revision>
 </revisionlist>

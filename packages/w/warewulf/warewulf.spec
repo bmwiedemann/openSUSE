@@ -86,7 +86,6 @@ Patch41:        Add-lib-modules-opt_kversion-sysctl.conf-to-initfs-if-present.pa
 Patch42:        vnfs-Do-not-pull-in-recommended-packages-on-SUSE.patch
 Patch43:        Add-suse-to-overlay-template.patch
 Patch44:        vnfs-On-SUSE-don-t-copy-repository-information-into-chroot.patch
-Patch45:        make-build-of-cpio-reproduceable.patch
 
 %if "%{?flavor}" != "common"
 BuildRequires:  bsdtar
@@ -421,8 +420,11 @@ cp %{SOURCE101} ./common/README.SUSE-VM-CONFIG-RECIPE
 %patch32 -p1
 %patch33 -p1
 %patch34 -p1
-# reproduceable
-%patch45 -p1
+# reproducible builds
+sed -i 's/cpio -o/xargs touch -h -d @1690848000 ; find . | sort | cpio -o --reproducible/' \
+  provision/initramfs/capabilities/*/Makefile.am \
+  ipmi/initramfs/Makefile.am \
+  provision/initramfs/Makefile.am
 
 %build
 %if "%{?flavor}" == "common"
