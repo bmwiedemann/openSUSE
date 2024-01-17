@@ -1,7 +1,0 @@
-<package name="slrn" project="openSUSE:Factory">
-  <title>News Reader</title>
-  <description>SLRN is a powerful, easy to use, and threaded Internet newsreader. It
-is highly customizable, permitting redefinition of keys and including a
-sophisticated macro language for further customization.</description>
-  <devel project="server:mail" package="slrn"/>
-</package>

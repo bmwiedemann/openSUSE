@@ -1,6 +1,0 @@
-<package name="go-for-it" project="openSUSE:Factory">
-  <title>A stylish to-do list with built-in productivity timer</title>
-  <description>Go For It! keeps track of your tasks and assists you in processing them subsequently.
-The timer avoids distraction, by keeping your focus on the recent task, while reminding you to take short breaks on a regular base.</description>
-  <devel project="X11:Utilities" package="go-for-it"/>
-</package>

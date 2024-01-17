@@ -1,8 +1,0 @@
-<package name="ibus-chewing" project="openSUSE:Factory">
-  <title>The Chewing engine for IBus input platform</title>
-  <description>The Chewing engine for IBus platform. It provides Chinese input method from
-libchewing.
-新酷音輸入法</description>
-  <devel project="M17N" package="ibus-chewing"/>
-  <url>http://code.google.com/p/ibus/</url>
-</package>

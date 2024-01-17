@@ -1,5 +1,0 @@
-<package name="libmanette" project="openSUSE:Factory">
-  <title>A simple GObject game controller library</title>
-  <description></description>
-  <devel project="GNOME:Factory" package="libmanette"/>
-</package>

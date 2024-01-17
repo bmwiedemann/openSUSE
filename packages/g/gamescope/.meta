@@ -1,6 +1,0 @@
-<package name="gamescope" project="openSUSE:Factory">
-  <title>SteamOS session compositing window manager</title>
-  <description>gamescope is a micro-compositor optimized for running video games on Wayland</description>
-  <devel project="games:tools" package="gamescope"/>
-  <url>https://github.com/Plagman/gamescope</url>
-</package>

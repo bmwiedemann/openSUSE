@@ -1,7 +1,0 @@
-<package name="gob2" project="openSUSE:Factory">
-  <title>Simple Preprocessor to Write GObject objects</title>
-  <description>GOB is a very simple preprocessor for making GObject objects with
-inline C code so that generated files are not editted. Syntax is
-inspired by java and yacc or lex.</description>
-  <devel project="GNOME:Factory" package="gob2"/>
-</package>

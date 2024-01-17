@@ -1,5 +1,0 @@
-<package name="genwqe-tools" project="openSUSE:Factory">
-  <title>genwqe-tools</title>
-  <description>Provide a suite of utilities to manage and configure the IBM GenWQE card</description>
-  <devel project="hardware" package="genwqe-tools"/>
-</package>

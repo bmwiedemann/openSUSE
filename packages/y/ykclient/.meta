@@ -1,5 +1,0 @@
-<package name="ykclient" project="openSUSE:Factory">
-  <title>Online validation of Yubikey OTPs</title>
-  <description>This project implements online validation of Yubikey OTPs. It is written in C and provides a shared library for use by other software. </description>
-  <devel project="security" package="ykclient"/>
-</package>

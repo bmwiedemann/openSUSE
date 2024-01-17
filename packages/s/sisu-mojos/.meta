@@ -1,9 +1,0 @@
-<package name="sisu-mojos" project="openSUSE:Factory">
-  <title>Sisu plugin for Apache Maven</title>
-  <description>The Sisu Plugin for Maven provides mojos to generate
-META-INF/sisu/javax.inject.Named index files for the Sisu container.
-
-</description>
-  <devel project="Java:packages" package="sisu-mojos"/>
-  <url>http://www.eclipse.org/sisu</url>
-</package>

@@ -1,4 +1,0 @@
-# Since the main package is a devel package:
-addFilter("non-devel-file-in-devel-package")
-# The package doesn't provide any libraries anymore:
-addFilter("obsolete-not-provided libgoogletest0")

@@ -1,9 +1,0 @@
-<package name="mrboom" project="openSUSE:Factory">
-  <title>Mr.Boom is a Bomberman clone</title>
-  <description>This is an SDL2 version of the original 1999 version of Mr. Boom.
-The goal of the game is to bomb away your enemies and other players.
-
-</description>
-  <devel project="games" package="mrboom"/>
-  <url>http://mrboom.mumblecore.org</url>
-</package>

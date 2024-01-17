@@ -1,5 +1,0 @@
-<package name="vcron" project="openSUSE:Factory">
-  <title>TK-Interface for cron and at</title>
-  <description>TK-Interface for cron and at.</description>
-  <devel project="Base:System" package="vcron"/>
-</package>

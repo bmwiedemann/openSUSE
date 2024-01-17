@@ -1,7 +1,0 @@
-<package name="libwmf" project="openSUSE:Factory">
-  <title>Library and Utilities for Displaying and Converting Metafile Images</title>
-  <description>This library interprets metafile images and can either display them
-using the X Window System or convert them to standard formats such as
-PNG, JPEG, PS, EPS, and more.</description>
-  <devel project="devel:libraries:c_c++" package="libwmf"/>
-</package>

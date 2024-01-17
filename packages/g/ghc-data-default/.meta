@@ -1,8 +1,0 @@
-<package name="ghc-data-default" project="openSUSE:Factory">
-  <title>A class for types with a default value</title>
-  <description>
-A class for types with a default value
-  </description>
-  <devel project="devel:languages:haskell" package="ghc-data-default"/>
-  <url>http://hackage.haskell.org/package/data-default</url>
-</package>

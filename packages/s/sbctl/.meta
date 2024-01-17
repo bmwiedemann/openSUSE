@@ -1,8 +1,0 @@
-<package name="sbctl" project="openSUSE:Factory">
-  <title>Secure Boot key manager</title>
-  <description>sbctl intends to be a user-friendly secure boot key manager capable of setting up secure boot, offer key management capabilities, and keep track of files that needs to be signed in the boot chain.
-
-</description>
-  <devel project="utilities" package="sbctl"/>
-  <url>https://github.com/Foxboron/sbctl</url>
-</package>

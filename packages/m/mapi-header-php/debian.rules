@@ -1,8 +1,0 @@
-#!/usr/bin/make -f
-INSTDIR=debian/tmp
-
-%:
-	dh $@
-
-override_dh_auto_install:
-	make install DESTDIR=${INSTDIR}

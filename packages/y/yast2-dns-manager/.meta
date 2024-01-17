@@ -1,5 +1,0 @@
-<package name="yast2-dns-manager" project="openSUSE:Factory">
-  <title>Samba Internal DNS Manager</title>
-  <description>DNS Manager for the Internal Samba Active Directory Domain Controller DNS server.</description>
-  <devel project="YaST:Head" package="yast2-dns-manager"/>
-</package>

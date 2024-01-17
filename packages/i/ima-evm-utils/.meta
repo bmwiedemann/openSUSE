@@ -1,8 +1,0 @@
-<package name="ima-evm-utils" project="openSUSE:Factory">
-  <title>Integrity Measurement Architecture EVM Tools</title>
-  <description>
-Tools for EVM enrolling of the Integrity Measurement Architecture EVM Tools.
-  </description>
-  <devel project="security" package="ima-evm-utils"/>
-  <url>http://sourceforge.net/projects/linux-ima/</url>
-</package>

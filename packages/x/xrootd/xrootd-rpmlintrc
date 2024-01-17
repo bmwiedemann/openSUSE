@@ -1,6 +1,0 @@
-addFilter("devel-file-in-non-devel-package .*/libXrdPosixPreload.so")
-addFilter("no-soname .*/lib.*-[0-9]+.so")
-
-# This is a false positive as verified by upstream
-# https://github.com/xrootd/xrootd/issues/1783
-addFilter("missing-call-to-setgroups-before-setuid")

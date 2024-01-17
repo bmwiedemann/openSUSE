@@ -1,8 +1,0 @@
-<package name="flocq" project="openSUSE:Factory">
-  <title>Formalization of floating point numbers for Coq</title>
-  <description>Flocq (Floats for Coq) is a floating-point formalization for the Coq
-system.  It provides a comprehensive library of theorems on a
-multi-radix multi-precision arithmetic.  It also supports efficient
-numerical computations inside Coq.</description>
-  <devel project="science" package="flocq"/>
-</package>

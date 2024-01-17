@@ -1,7 +1,0 @@
-<package name="jgmenu" project="openSUSE:Factory">
-  <title>Small X11 menu intended to be used with openbox and tint2</title>
-  <description>jgmenu is a simple X11 menu intended to be used with tint2 and openbox.
-  </description>
-  <devel project="X11:Utilities" package="jgmenu"/>
-  <url>https://github.com/johanmalm/jgmenu</url>
-</package>

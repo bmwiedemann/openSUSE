@@ -1,9 +1,0 @@
-<package name="skopeo" project="openSUSE:Factory">
-  <title>skopeo</title>
-  <description>skopeo is a command line utility for various operations on container images and
-image repositories. skopeo is able to inspect a repository on a Docker registry
-and fetch images layers. skopeo can copy container images between various
-storage mechanisms.
-</description>
-  <devel project="Virtualization:containers" package="skopeo"/>
-</package>

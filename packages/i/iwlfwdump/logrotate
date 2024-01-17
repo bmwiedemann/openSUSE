@@ -1,7 +1,0 @@
-/var/log/iwl-fw-error-*.dump {
-	compress
-	missingok
-	nocreate
-	weekly
-	maxage 30
-}

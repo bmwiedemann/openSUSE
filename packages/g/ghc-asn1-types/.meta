@@ -1,5 +1,0 @@
-<package name="ghc-asn1-types" project="openSUSE:Factory">
-  <title>ASN.1 types</title>
-  <description></description>
-  <devel project="devel:languages:haskell" package="ghc-asn1-types"/>
-</package>

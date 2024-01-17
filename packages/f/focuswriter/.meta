@@ -1,5 +1,0 @@
-<package name="focuswriter" project="openSUSE:Factory">
-  <title>A fullscreen, distraction-free writing program</title>
-  <description>A fullscreen, distraction-free writing program. You can customize your environment by changing the font, colors, and background image to add ambiance as you type. FocusWriter features an on-the-fly updating word count, optional auto-save, optional daily goals, and an interface that hides away to allow you to focus more clearly; additionally, when you open the program your current work-in-progress will automatically load and position you at the end of your document, so that you can immediately jump back in.</description>
-  <devel project="editors" package="focuswriter"/>
-</package>

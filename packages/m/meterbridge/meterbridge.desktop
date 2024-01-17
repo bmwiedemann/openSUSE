@@ -1,6 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Meterbridge
-Comment=A Meterbridge for the JACK Audio System
-Exec=meterbridge -t vu input
-Icon=meterbridge

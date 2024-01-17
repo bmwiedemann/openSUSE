@@ -1,6 +1,0 @@
-<package name="gtk2-metatheme-nimbus" project="openSUSE:Factory">
-  <title>Nimbus Metatheme for GNOME</title>
-  <description>Nimbus is the name of a look-and-feel designed by Sun for the Java
-Desktop System.</description>
-  <devel project="GNOME:Apps" package="gtk2-metatheme-nimbus"/>
-</package>

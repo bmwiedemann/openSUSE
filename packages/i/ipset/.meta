@@ -1,5 +1,0 @@
-<package name="ipset" project="openSUSE:Factory">
-  <title></title>
-  <description>ipset 6.x for kernel &gt;= 2.6.39</description>
-  <devel project="security:netfilter" package="ipset"/>
-</package>

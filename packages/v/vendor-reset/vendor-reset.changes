@@ -1,9 +1,0 @@
--------------------------------------------------------------------
-Fri Oct 15 08:30:01 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
-
-- Build only on supported architectures: %{ix86} x86_64
-
--------------------------------------------------------------------
-Mon May 17 23:44:27 UTC 2021 - Michał Rostecki <mrostecki@suse.com>
-
-- Initial release

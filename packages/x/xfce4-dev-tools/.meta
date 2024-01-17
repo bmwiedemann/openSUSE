@@ -1,7 +1,0 @@
-<package name="xfce4-dev-tools" project="openSUSE:Factory">
-  <title>Xfce Development Tools</title>
-  <description>The Xfce development tools are a collection of tools and macros for
-Xfce developers and people that want to build unreleased development
-versions of Xfce.</description>
-  <devel project="X11:xfce" package="xfce4-dev-tools"/>
-</package>

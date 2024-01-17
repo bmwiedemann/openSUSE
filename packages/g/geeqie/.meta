@@ -1,8 +1,0 @@
-<package name="geeqie" project="openSUSE:Factory">
-  <title>Graphic File Browser Utility</title>
-  <description>GQview is a browser for graphic files. It offers single click viewing
-of graphics files, including thumbnail view, zoom, filtering features,
-and external editor support.
-</description>
-  <devel project="GNOME:Apps" package="geeqie"/>
-</package>

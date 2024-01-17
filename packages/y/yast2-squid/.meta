@@ -1,5 +1,0 @@
-<package name="yast2-squid" project="openSUSE:Factory">
-  <title>Configuration of squid</title>
-  <description>Configuration of squid</description>
-  <devel project="YaST:Head" package="yast2-squid"/>
-</package>

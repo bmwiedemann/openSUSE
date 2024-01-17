@@ -1,8 +1,0 @@
-<package name="mednafen-server" project="openSUSE:Factory">
-  <title>Mednafen network play server</title>
-  <description>
-Network play server for mednafen
-  </description>
-  <devel project="Emulators" package="mednafen-server"/>
-  <url>https://mednafen.github.io</url>
-</package>

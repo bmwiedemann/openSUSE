@@ -1,8 +1,0 @@
-<package name="shadow" project="openSUSE:Factory">
-  <title>Utilities to Manage User and Group Accounts</title>
-  <description>This package includes the necessary programs for converting plain
-password files to the shadow password format and to manage user and
-group accounts.
-</description>
-  <devel project="Base:System" package="shadow"/>
-</package>

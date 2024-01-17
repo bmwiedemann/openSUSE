@@ -1,7 +1,0 @@
-<package name="iso-codes" project="openSUSE:Factory">
-  <title>ISO Code Lists and Translations</title>
-  <description>This package provides the ISO-639 language code list, the ISO-3166
-territory code list, ISO-3166-2 subterritory lists, and all their
-translations in gettext .po form.</description>
-  <devel project="GNOME:Factory" package="iso-codes"/>
-</package>

@@ -1,5 +1,0 @@
-<package name="yast2-s390" project="openSUSE:Factory">
-  <title>YaST2 - s390 specific modules</title>
-  <description>Modules to manage configuration of s390 systems.</description>
-  <devel project="YaST:Head" package="yast2-s390"/>
-</package>

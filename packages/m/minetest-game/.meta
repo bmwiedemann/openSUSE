@@ -1,5 +1,0 @@
-<package name="minetest-game" project="openSUSE:Factory">
-  <title>Minetest Game</title>
-  <description>The main game mod for the Minetest engine</description>
-  <devel project="games" package="minetest-game"/>
-</package>

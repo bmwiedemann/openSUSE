@@ -1,9 +1,0 @@
-<package name="freesrp" project="openSUSE:Factory">
-  <title>Library and tools for the FreeSRP SDR transceiver</title>
-  <description>A small C++ library that uses libusb to program and configure the
-FreeSRP hardware and both receive and transmit RF signals.
-
-</description>
-  <devel project="hardware:sdr" package="freesrp"/>
-  <url>http://freesrp.org/</url>
-</package>

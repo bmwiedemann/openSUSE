@@ -1,5 +1,0 @@
-<package name="ssl-cert-check" project="openSUSE:Factory">
-  <title></title>
-  <description></description>
-  <devel project="server:monitoring" package="ssl-cert-check"/>
-</package>

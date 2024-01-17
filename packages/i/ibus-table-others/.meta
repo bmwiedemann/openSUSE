@@ -1,9 +1,0 @@
-<package name="ibus-table-others" project="openSUSE:Factory">
-  <title>Other non-Chinese tables for ibus</title>
-  <description>This package contains all other non-Chinese tables for ibus
-e.g. CNS11643, Compose, Emoji, Ipx-x-sampa, Latex, Rustrad,
-Thai, Translit-ua, Translit, Viqr, Yawerty.
-This package contains only COPYING and Documents,
-Please select the table you want to use.</description>
-  <devel project="M17N" package="ibus-table-others"/>
-</package>

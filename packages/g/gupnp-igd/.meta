@@ -1,6 +1,0 @@
-<package name="gupnp-igd" project="openSUSE:Factory">
-  <title>Library to handle UPnP IGD port mapping</title>
-  <description>gupnp-igd is a library to handle UPnP IGD port mapping. It is supposed
-to have a very simple API.</description>
-  <devel project="GNOME:Factory" package="gupnp-igd"/>
-</package>

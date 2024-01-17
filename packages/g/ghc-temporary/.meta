@@ -1,5 +1,0 @@
-<package name="ghc-temporary" project="openSUSE:Factory">
-  <title>The temporary package for GHC</title>
-  <description>The functions for creating temporary files and directories in the base library are quite limited. The unixutils package contains some good ones, but they aren't portable to Windows. This library just repackages the Cabal implementations of its own temporary file and folder functions so that you can use them without linking against Cabal or depending on it being installed. </description>
-  <devel project="devel:languages:haskell" package="ghc-temporary"/>
-</package>

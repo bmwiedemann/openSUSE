@@ -1,7 +1,0 @@
-<package name="installation-images" project="openSUSE:Factory">
-  <title>Installation Image Files</title>
-  <description>Installation image files (boot and module disks, root image, and
-suse/inst-sys directory).
-</description>
-  <devel project="system:install:head" package="installation-images"/>
-</package>

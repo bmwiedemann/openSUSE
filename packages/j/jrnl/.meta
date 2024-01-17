@@ -1,6 +1,0 @@
-<package name="jrnl" project="openSUSE:Factory">
-  <title>jrnl</title>
-  <description>Collect your thoughts and notes without leaving the command line.</description>
-  <devel project="utilities" package="jrnl"/>
-  <url>https://jrnl.sh/en/stable/</url>
-</package>

@@ -1,7 +1,0 @@
-<package name="ibus-hangul" project="openSUSE:Factory">
-  <title>The Hangul engine for IBus input platform</title>
-  <description>The Hangul engine for IBus platform. It provides Korean input method from
-libhangul.
-한국어</description>
-  <devel project="M17N" package="ibus-hangul"/>
-</package>

@@ -1,6 +1,0 @@
-<package name="viu" project="openSUSE:Factory">
-  <title>Terminal image viewer with native support</title>
-  <description>A small command-line application to view images from the terminal written in Rust. It is basically the front-end of viuer. It uses either iTerm, Kitty or SIXEL graphics protocol, if supported. If not, lower half blocks are displayed instead.</description>
-  <devel project="graphics" package="viu"/>
-  <url>https://github.com/atanunq/viu</url>
-</package>

@@ -1,6 +1,0 @@
-<package name="vtk-m" project="openSUSE:Factory">
-  <title>vtk-m</title>
-  <description>VTK-m is a toolkit of scientific visualization algorithms for emerging processor architectures</description>
-  <devel project="science" package="vtk-m"/>
-  <url>https://m.vtk.org/</url>
-</package>

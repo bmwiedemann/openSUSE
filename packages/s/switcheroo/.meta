@@ -1,6 +1,0 @@
-<package name="switcheroo" project="openSUSE:Factory">
-  <title>Convert and manipulate images</title>
-  <description>Switcheroo is designed to give you a simple, quick, and easy-to-use tool to convert and manipulate your images in whatever way you like.</description>
-  <devel project="graphics" package="switcheroo"/>
-  <url>https://gitlab.com/adhami3310/Switcheroo</url>
-</package>

@@ -1,6 +1,0 @@
-# these can't be helped
-addFilter("devel-file-in-non-devel-package .*/usr/share/GNUstep/Makefiles/TestFramework/ObjectTesting.h")
-addFilter("devel-file-in-non-devel-package .*/usr/share/GNUstep/Makefiles/TestFramework/Testing.h")
-addFilter("script-without-shebang .*/usr/share/GNUstep/Makefiles/.*")
-# It can't be noarch because the library path set in fhs-other changes
-addFilter("no-binary")

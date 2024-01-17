@@ -1,8 +1,0 @@
-<package name="monitoring-plugins-rsync" project="openSUSE:Factory">
-  <title>Nagios plugin to check for software updates</title>
-  <description>This plugin checks for software updates on systems that use
-package management systems based on the libzypp command found in openSUSE.
-  </description>
-  <devel project="server:monitoring" package="monitoring-plugins-rsync"/>
-  <url>http://www.nagiosexchange.org/cgi-bin/page.cgi?g=Detailed%2F2094.html;d=1  </url>
-</package>

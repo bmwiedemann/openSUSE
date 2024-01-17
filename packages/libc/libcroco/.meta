@@ -1,6 +1,0 @@
-<package name="libcroco" project="openSUSE:Factory">
-  <title>CSS2 Parser Library</title>
-  <description>Libcroco is a stand-alone CSS2 parsing library. It provides a low-level
-event-driven SAC-like API and a CSS object model-like API.</description>
-  <devel project="GNOME:Factory" package="libcroco"/>
-</package>

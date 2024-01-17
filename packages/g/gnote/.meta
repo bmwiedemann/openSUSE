@@ -1,6 +1,0 @@
-<package name="gnote" project="openSUSE:Factory">
-  <title>A Port of Tomboy to C++</title>
-  <description>It is the same note taking application, including most of the add-ins (more are
-to come). Synchronization support is being worked on.</description>
-  <devel project="GNOME:Apps" package="gnote"/>
-</package>

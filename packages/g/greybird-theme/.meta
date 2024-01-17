@@ -1,5 +1,0 @@
-<package name="greybird-theme" project="openSUSE:Factory">
-  <title>Greybird</title>
-  <description>This theme for GTK2/3 and xfwm4/emerald/metacity started out on the basis of Bluebird, but aims at reworking the intense blue tone to a more neutral grey-ish look that will be more pleasant to look at in everyday use.</description>
-  <devel project="X11:xfce" package="greybird-theme"/>
-</package>

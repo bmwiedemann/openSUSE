@@ -1,9 +1,0 @@
-### Known warnings:
-# - traditional name
-addFilter("strongswan.* incoherent-init-script-name ipsec")
-# - readme only, triggers full ipsec + ikev1&ikev2 install
-addFilter("strongswan.* no-binary")
-# - link to init script, covered by service(8)
-addFilter("strongswan.* no-manual-page-for-binary rcipsec")
-# - no, restating tunnels on update may break the update
-addFilter("strongswan.*restart_on_update-postun /etc/init.d/ipsec")

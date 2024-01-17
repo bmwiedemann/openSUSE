@@ -1,7 +1,0 @@
-<package name="libksane" project="openSUSE:Factory">
-  <title>KDE Image Plugin Interface</title>
-  <description>This package contains a library to add scan support to KDE
-applications.
- </description>
-  <devel project="KDE:Applications" package="libksane"/>
-</package>

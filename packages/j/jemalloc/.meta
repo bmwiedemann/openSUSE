@@ -1,8 +1,0 @@
-<package name="jemalloc" project="openSUSE:Factory">
-  <title>General-purpose scalable concurrent malloc implementation</title>
-  <description>
-This distribution is the stand-alone &quot;portable&quot; implementation of jemalloc.
-  </description>
-  <devel project="devel:libraries:c_c++" package="jemalloc"/>
-  <url>http://www.canonware.com/jemalloc</url>
-</package>

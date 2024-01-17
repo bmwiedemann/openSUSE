@@ -1,5 +1,0 @@
-<package name="sonnet" project="openSUSE:Factory">
-  <title>sonnet</title>
-  <description>Sonnet</description>
-  <devel project="KDE:Frameworks5" package="sonnet"/>
-</package>

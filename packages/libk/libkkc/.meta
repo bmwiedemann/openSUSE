@@ -1,5 +1,0 @@
-<package name="libkkc" project="openSUSE:Factory">
-  <title>libkkc</title>
-  <description>A new japanese input method engine introduced in Fedora 19.</description>
-  <devel project="M17N" package="libkkc"/>
-</package>

@@ -1,6 +1,0 @@
-<package name="freetype2" project="openSUSE:Factory">
-  <title>A TrueType Font Library</title>
-  <description>This library features TrueType fonts for open source projects. This
-version also contains an autohinter for producing improved output.</description>
-  <devel project="M17N" package="freetype2"/>
-</package>

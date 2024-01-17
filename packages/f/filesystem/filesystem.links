@@ -1,4 +1,0 @@
-# links to be created
-# systemd
-../run                  /var/run  %ghost
-../run/lock             /var/lock %ghost

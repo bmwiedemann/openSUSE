@@ -1,5 +1,0 @@
-<package name="gr-iqbal" project="openSUSE:Factory">
-  <title>gr-iqbal</title>
-  <description>Osmocom GNU Radio IQ Balancing support</description>
-  <devel project="hardware:sdr" package="gr-iqbal"/>
-</package>

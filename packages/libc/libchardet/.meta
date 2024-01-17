@@ -1,5 +1,0 @@
-<package name="libchardet" project="openSUSE:Factory">
-  <title>Mozilla Universal Chardet library</title>
-  <description>Mozilla's Universal Charset Detector C/C++ API.</description>
-  <devel project="devel:libraries:c_c++" package="libchardet"/>
-</package>

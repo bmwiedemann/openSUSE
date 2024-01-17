@@ -1,2 +1,0 @@
-# RPM doesn't find the dependency itself
-addFilter("E: devel-dependency newt-devel")

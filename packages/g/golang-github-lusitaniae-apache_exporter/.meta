@@ -1,5 +1,0 @@
-<package name="golang-github-lusitaniae-apache_exporter" project="openSUSE:Factory">
-  <title>Prometheus exporter for Apache</title>
-  <description>Exports apache mod_status statistics via HTTP for Prometheus consumption.</description>
-  <devel project="server:monitoring" package="golang-github-lusitaniae-apache_exporter"/>
-</package>

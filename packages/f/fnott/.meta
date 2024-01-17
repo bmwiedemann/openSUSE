@@ -1,6 +1,0 @@
-<package name="fnott" project="openSUSE:Factory">
-  <title>fnott</title>
-  <description>Fnott is a keyboard driven and lightweight notification daemon for wlroots-based Wayland compositors.</description>
-  <devel project="X11:Wayland" package="fnott"/>
-  <url>https://codeberg.org/dnkl/fnott</url>
-</package>

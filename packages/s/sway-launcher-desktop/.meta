@@ -1,6 +1,0 @@
-<package name="sway-launcher-desktop" project="openSUSE:Factory">
-  <title></title>
-  <description>This is a TUI-based launcher menu made with bash and the amazing fzf. Despite its name, it does not (read: no longer) depend on the Sway window manager in any way and can be used with just about any WM.</description>
-  <devel project="X11:Utilities" package="sway-launcher-desktop"/>
-  <url>https://github.com/Biont/sway-launcher-desktop</url>
-</package>

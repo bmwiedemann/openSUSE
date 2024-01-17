@@ -1,2 +1,0 @@
-addFilter ("^libvirt-sandbox.*: W: statically-linked-binary /usr/lib/libvirt-sandbox-init-qemu")
-addFilter ("^libvirt-sandbox.*: W: statically-linked-binary /usr/lib/libvirt-sandbox-init-lxc")

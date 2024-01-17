@@ -1,6 +1,0 @@
-<package name="gv" project="openSUSE:Factory">
-  <title>A Program to View PostScript Files</title>
-  <description>GV offers you an X Window System GUI for viewing PostScript files. This
-is an X Window System interface to ghostscript.</description>
-  <devel project="Publishing" package="gv"/>
-</package>

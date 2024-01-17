@@ -1,5 +1,0 @@
-<package name="java11-devel-container" project="openSUSE:Factory">
-  <title>Derived Container using Dockerfile</title>
-  <description>Derived from the base container, with bash and zypper preinstalled.</description>
-  <devel project="devel:kubic:containers" package="java11-devel-container"/>
-</package>

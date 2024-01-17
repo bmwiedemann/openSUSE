@@ -1,7 +1,0 @@
-[Unit]
-Description=Toggle recording state of Jamulus server
-Requisite=Jamulus-Server
-
-[Service]
-Type=oneshot
-ExecStart=/bin/systemctl kill -s SIGUSR2 jamulus

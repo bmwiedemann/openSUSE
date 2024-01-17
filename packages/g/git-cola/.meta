@@ -1,5 +1,0 @@
-<package name="git-cola" project="openSUSE:Factory">
-  <title>Sleek and powerful git GUI</title>
-  <description>git-cola is a simple, powerful, and feature-rich GUI for git that provides an easy way to interact with Git repositories.</description>
-  <devel project="devel:tools:scm" package="git-cola"/>
-</package>

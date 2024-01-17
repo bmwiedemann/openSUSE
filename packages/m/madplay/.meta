@@ -1,8 +1,0 @@
-<package name="madplay" project="openSUSE:Factory">
-  <title>MPEG audio decoder and player</title>
-  <description>madplay is a command-line MPEG audio decoder and player based on the MAD library (libmad).
-
-</description>
-  <devel project="multimedia:apps" package="madplay"/>
-  <url>http://www.underbit.com/products/mad/</url>
-</package>

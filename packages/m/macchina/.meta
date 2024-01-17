@@ -1,6 +1,0 @@
-<package name="macchina" project="openSUSE:Factory">
-  <title>Macchina</title>
-  <description>Fast, minimal and customizable system information frontend.</description>
-  <devel project="utilities" package="macchina"/>
-  <url>https://github.com/Macchina-CLI/macchina</url>
-</package>

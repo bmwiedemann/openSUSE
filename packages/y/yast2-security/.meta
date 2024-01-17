@@ -1,5 +1,0 @@
-<package name="yast2-security" project="openSUSE:Factory">
-  <title>YaST2 - Security Configuration</title>
-  <description>The YaST2 component for security settings configuration.</description>
-  <devel project="YaST:Head" package="yast2-security"/>
-</package>

@@ -1,8 +1,0 @@
-<package name="ghc-split" project="openSUSE:Factory">
-  <title>split: Combinator library for splitting lists</title>
-  <description>
-    Combinator library and utility functions for splitting lists.
-  </description>
-  <devel project="devel:languages:haskell" package="ghc-split"/>
-  <url>http://hackage.haskell.org/cgi-bin/hackage-scripts/package/split</url>
-</package>

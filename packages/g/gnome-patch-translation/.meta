@@ -1,6 +1,0 @@
-<package name="gnome-patch-translation" project="openSUSE:Factory">
-  <title>Collect and Merge Translations From RPM Patches</title>
-  <description>This package provides scripts for collecting strings changed in RPM
-patches and merging them to one translation compendium.</description>
-  <devel project="GNOME:Factory" package="gnome-patch-translation"/>
-</package>

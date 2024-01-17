@@ -1,7 +1,0 @@
-<package name="gnome-usage" project="openSUSE:Factory">
-  <title>GNOME Usage</title>
-  <description>A nice way to view information about use of system resources, like memory and disk space.
-
-</description>
-  <devel project="GNOME:Factory" package="gnome-usage"/>
-</package>

@@ -1,0 +1,12 @@
+#!/bin/sh -e
+pkg=$1
+if [ -z "$pkg" ] ; then
+    exit 1
+fi
+cd packages/*/$pkg
+rm -rf .git
+git clone https://code.opensuse.org/package/$pkg.git
+mv $pkg/.git .
+rm -rf $pkg
+cd -
+git branch -D pkg_$pkg

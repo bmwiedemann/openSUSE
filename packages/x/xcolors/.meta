@@ -1,6 +1,0 @@
-<package name="xcolors" project="openSUSE:Factory">
-  <title>Displays colors defined in rgb.txt</title>
-  <description>Xcolorsel displays colors defined in rgb.txt. You can create an RGB
-file by redirecting the output of showrgb to a file.</description>
-  <devel project="X11:Utilities" package="xcolors"/>
-</package>

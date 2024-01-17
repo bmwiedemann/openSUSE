@@ -1,8 +1,0 @@
-<package name="fprintd" project="openSUSE:Factory">
-  <title>D-Bus service for Fingerprint reader access</title>
-  <description>D-Bus service to access fingerprint readers.
-
-</description>
-  <devel project="hardware" package="fprintd"/>
-  <url>http://www.reactivated.net/fprint/wiki/Fprintd</url>
-</package>

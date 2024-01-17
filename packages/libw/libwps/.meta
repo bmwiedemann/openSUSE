@@ -1,6 +1,0 @@
-<package name="libwps" project="openSUSE:Factory">
-  <title>Library for importing the Microsoft Works word processor file format</title>
-  <description>libwps is a library (for use by word procesors, for example) for
-importing the Microsoft Works word processor file format.</description>
-  <devel project="LibreOffice:Factory" package="libwps"/>
-</package>

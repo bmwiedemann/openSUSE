@@ -1,8 +1,0 @@
-<package name="iperf" project="openSUSE:Factory">
-  <title>A Tool To Measure Network Performance</title>
-  <description>Iperf was developed by NLANR/DAST as a modern alternative for
-measuring maximum TCP and UDP bandwidth performance.
-Iperf allows the tuning of various parameters and UDP characteristics.
-Iperf reports bandwidth, delay jitter, datagram loss.</description>
-  <devel project="network:utilities" package="iperf"/>
-</package>

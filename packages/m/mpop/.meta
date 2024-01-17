@@ -1,5 +1,0 @@
-<package name="mpop" project="openSUSE:Factory">
-  <title>A small and featurerich pop3 client</title>
-  <description>mpop is a small and fast POP3 client. Features include mail filtering, delivery to mbox files, maildir folders or a mail delivery agent, a very fast POP3 implementation, many authentication methods, good TLS/SSL support, IPv6 support, and more.</description>
-  <devel project="server:mail" package="mpop"/>
-</package>

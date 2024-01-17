@@ -1,6 +1,0 @@
-<package name="sendxmpp" project="openSUSE:Factory">
-  <title>A perl-script to send xmpp, similar to what mail does for mail</title>
-  <description>sendxmpp is a perl-script to send xmpp (jabber), similar to 
-what mail(1) does for mail.</description>
-  <devel project="devel:languages:perl" package="sendxmpp"/>
-</package>

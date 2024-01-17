@@ -1,5 +1,0 @@
-<package name="super-csv" project="openSUSE:Factory">
-  <title>Super CSV</title>
-  <description>A fast, programmer-friendly, free CSV library for Java</description>
-  <devel project="Java:packages" package="super-csv"/>
-</package>

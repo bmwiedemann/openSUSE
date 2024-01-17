@@ -1,7 +1,0 @@
-<package name="xdg-terminal-exec" project="openSUSE:Factory">
-  <title>XDG terminal execution utility and default terminal specification</title>
-  <description>As used by Glib for defining the default terminal application, of great use in the non-Gnome desktops
-
-https://gitlab.gnome.org/GNOME/glib/-/merge_requests/2839</description>
-  <devel project="X11:common:Factory" package="xdg-terminal-exec"/>
-</package>

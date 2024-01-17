@@ -1,6 +1,0 @@
-<package name="maeparser" project="openSUSE:Factory">
-  <title></title>
-  <description>maeparser is a parser for Schrödinger Maestro files.</description>
-  <devel project="science" package="maeparser"/>
-  <url>https://github.com/schrodinger/maeparser</url>
-</package>

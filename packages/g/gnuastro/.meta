@@ -1,9 +1,0 @@
-<package name="gnuastro" project="openSUSE:Factory">
-  <title>GNU Astronomy Utilities</title>
-  <description>The GNU Astronomy Utilities (Gnuastro) contains various programs and library functions
-for the manipulation and analysis of astronomical data.
-
-</description>
-  <devel project="science" package="gnuastro"/>
-  <url>https://www.gnu.org/software/gnuastro/</url>
-</package>

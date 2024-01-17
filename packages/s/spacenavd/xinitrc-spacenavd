@@ -1,2 +1,0 @@
-#!/bin/sh
-test -f /usr/run/spacenavd.pid && /usr/sbin/spacenav_ctl x11 start

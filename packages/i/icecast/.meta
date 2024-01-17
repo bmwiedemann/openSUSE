@@ -1,6 +1,0 @@
-<package name="icecast" project="openSUSE:Factory">
-  <title>Audio Streaming Server</title>
-  <description>Icecast is a MP3 and OGG streaming server able to serve many clients
-with MP3 and OGG audio.</description>
-  <devel project="multimedia:apps" package="icecast"/>
-</package>

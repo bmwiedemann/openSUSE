@@ -1,7 +1,0 @@
-<package name="manaplus" project="openSUSE:Factory">
-  <title>ManaPlus</title>
-  <description>ManaPlus is advanced client for Evol Online, The Mana World and similar servers based on eAthena fork.
-</description>
-  <devel project="games" package="manaplus"/>
-  <url>http://manaplus.org/</url>
-</package>

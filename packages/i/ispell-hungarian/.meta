@@ -1,5 +1,0 @@
-<package name="ispell-hungarian" project="openSUSE:Factory">
-  <title>Hungarian Ispell Dictionary</title>
-  <description>Hungarian ispell dictionary.</description>
-  <devel project="devel:libraries:c_c++" package="ispell-hungarian"/>
-</package>

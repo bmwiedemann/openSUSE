@@ -1,7 +1,0 @@
-<package name="gocr" project="openSUSE:Factory">
-  <title>Optical Character Recognition Program</title>
-  <description>GOCR is an optical character recognition program. It reads images in
-many formats and outputs a text file. It is also able to recognize
-and translate barcodes.</description>
-  <devel project="graphics" package="gocr"/>
-</package>

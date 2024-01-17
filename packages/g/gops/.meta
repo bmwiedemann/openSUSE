@@ -1,6 +1,0 @@
-<package name="gops" project="openSUSE:Factory">
-  <title>gops</title>
-  <description>A tool to list and diagnose Go processes currently running on your system</description>
-  <devel project="devel:languages:go" package="gops"/>
-  <url>https://github.com/google/gops</url>
-</package>

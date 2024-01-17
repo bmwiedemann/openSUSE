@@ -1,5 +1,0 @@
-<package name="modsecurity" project="openSUSE:Factory">
-  <title>modsecurity</title>
-  <description>Open source, cross platform web application firewall (WAF) engine for Apache, IIS and Nginx</description>
-  <devel project="server:http" package="modsecurity"/>
-</package>

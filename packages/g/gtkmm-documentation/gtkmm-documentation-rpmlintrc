@@ -1,4 +1,0 @@
-# The package itself is documentation
-addFilter('gtkmm4-tutorial-lang.noarch: W: package-with-huge-docs.*')
-# Those packages shall be provided by gtkmm3-documentation legacy package.
-addFilter('.* W: obsolete-not-provided gtkmm3-tutorial|-lang')

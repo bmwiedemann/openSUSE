@@ -1,5 +1,0 @@
-<package name="inwee" project="openSUSE:Factory">
-  <title>inwee</title>
-  <description>Conveniently send text and commands from file or standard input to WeeChat with this wrapper around WeeChat's FIFO pipe</description>
-  <devel project="server:irc" package="inwee"/>
-</package>

@@ -1,5 +1,0 @@
-<package name="mokutil" project="openSUSE:Factory">
-  <title>The utility to manipulate machine owner keys</title>
-  <description>This program provides the means to enroll and erase the machine owner keys (MOK) stored in the database of shim.</description>
-  <devel project="Base:System" package="mokutil"/>
-</package>

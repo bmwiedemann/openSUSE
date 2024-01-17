@@ -1,5 +1,0 @@
-<package name="go-sendxmpp" project="openSUSE:Factory">
-  <title></title>
-  <description></description>
-  <devel project="network:messaging:xmpp" package="go-sendxmpp"/>
-</package>

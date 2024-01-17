@@ -1,6 +1,0 @@
-<package name="stern" project="openSUSE:Factory">
-  <title>stern</title>
-  <description>Multi pod and container log tailing for Kubernetes</description>
-  <devel project="devel:kubic" package="stern"/>
-  <url>https://github.com/stern/stern</url>
-</package>

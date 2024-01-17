@@ -1,6 +1,0 @@
-<package name="fetchmsttfonts" project="openSUSE:Factory">
-  <title>Helper package to run the fetchmsttfonts script</title>
-  <description>This package contains the fetchmsttfonts helper script, which on
-running retrieves and unpacks the freely available MS Truetype fonts.</description>
-  <devel project="graphics" package="fetchmsttfonts"/>
-</package>

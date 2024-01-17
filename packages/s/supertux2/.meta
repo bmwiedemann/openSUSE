@@ -1,6 +1,0 @@
-<package name="supertux2" project="openSUSE:Factory">
-  <title>Jump'n run game</title>
-  <description>SuperTux is a classic 2D jump'n run sidescroller game in a similar
-style like the original SuperMario games.</description>
-  <devel project="games" package="supertux2"/>
-</package>

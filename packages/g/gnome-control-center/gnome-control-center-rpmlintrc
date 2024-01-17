@@ -1,8 +1,0 @@
-#
-# Safe to ignore Warnings/Errors
-#
-
-# English should be installed by the main package to ensure things don't go South.
-addFilter("W: file-not-in-%lang /usr/share/locale/en/LC_MESSAGES/gnome-control-center-2.0.mo")
-# GOA and Color and siblings don't have binaries of their own, they use "Exec=gnome-control-center PANEL".
-addFilter("W: desktopfile-without-binary /usr/share/applications/gnome-.*.desktop gnome-control-center")

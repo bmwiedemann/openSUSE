@@ -1,8 +1,0 @@
---- MLRISC/Doc/html/mltex2html
-+++ MLRISC/Doc/html/mltex2html	2004/05/14 21:15:54
-@@ -1,4 +1,4 @@
--#!/usr/local/bin/perl
-+#!/usr/bin/perl
- #
- # This tool generates HTML pages in my own format given a stylized Latex file.
- #

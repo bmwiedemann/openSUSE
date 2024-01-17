@@ -1,1 +1,0 @@
-command[check_mysql]=/usr/lib/nagios/plugins/check_mysql -H localhost -u root

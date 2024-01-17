@@ -1,7 +1,0 @@
-<package name="fastjar" project="openSUSE:Factory">
-  <title>The fastjar Java package archiver</title>
-  <description>Fastjar is an implementation of Sun's jar utility that comes with the
-JDK, written entirely in C, and runs in a fraction of the time while
-being 100% feature compatible.</description>
-  <devel project="Java:packages" package="fastjar"/>
-</package>

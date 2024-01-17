@@ -1,7 +1,0 @@
-<package name="gdl" project="openSUSE:Factory">
-  <title>Gnome Devtool Libraries contains components and libraries</title>
-  <description>Gnome Devtool Libraries contains components and libraries that are
-intended to be shared between GNOME development tools, including
-gnome-debug, gnome-build, and anjuta2.</description>
-  <devel project="GNOME:Factory" package="gdl"/>
-</package>

@@ -1,5 +1,0 @@
-<package name="x11-tools" project="openSUSE:Factory">
-  <title>Tools for the X Window System</title>
-  <description>Some useful tools for the X Window System.</description>
-  <devel project="X11:Utilities" package="x11-tools"/>
-</package>

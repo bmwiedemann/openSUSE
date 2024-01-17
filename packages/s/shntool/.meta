@@ -1,5 +1,0 @@
-<package name="shntool" project="openSUSE:Factory">
-  <title>shntool</title>
-  <description>shntool is a multi-purpose WAVE data processing and reporting utility. File formats are abstracted from its core, so it can process any file that contains WAVE data, compressed or not - provided there exists a format module to handle that particular file type.</description>
-  <devel project="multimedia:apps" package="shntool"/>
-</package>

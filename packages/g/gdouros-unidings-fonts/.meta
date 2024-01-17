@@ -1,5 +1,0 @@
-<package name="gdouros-unidings-fonts" project="openSUSE:Factory">
-  <title>Font with basic icon glyphs</title>
-  <description>Unidings contains glyphs that may be used in a Last Resort font, as well as icon glyphs for control and special characters, encoded in F200..F3B4 and F400..F5B4 of the Private Use Area in BMP. Block names are from “Roadmaps, a snapshot as of 2011-05-30”, http://std.dkuug.dk/JTC1/SC2/WG2/docs/n4056.htm</description>
-  <devel project="M17N:fonts" package="gdouros-unidings-fonts"/>
-</package>

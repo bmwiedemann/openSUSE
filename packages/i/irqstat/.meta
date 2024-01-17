@@ -1,5 +1,0 @@
-<package name="irqstat" project="openSUSE:Factory">
-  <title></title>
-  <description></description>
-  <devel project="server:monitoring" package="irqstat"/>
-</package>

@@ -1,6 +1,0 @@
-<package name="mcpp" project="openSUSE:Factory">
-  <title>Matsui's C Preprocessor</title>
-  <description>mcpp is a small and portable C/C++ preprocessor implementing all of
-C90, C99 and C++98.</description>
-  <devel project="devel:tools" package="mcpp"/>
-</package>

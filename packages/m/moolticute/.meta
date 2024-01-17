@@ -1,6 +1,0 @@
-<package name="moolticute" project="openSUSE:Factory">
-  <title>Moolticute</title>
-  <description>Stable releases of moolticute.</description>
-  <devel project="security:privacy" package="moolticute"/>
-  <url>https://github.com/mooltipass/moolticute</url>
-</package>

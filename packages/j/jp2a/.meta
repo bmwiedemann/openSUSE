@@ -1,8 +1,0 @@
-<package name="jp2a" project="openSUSE:Factory">
-  <title>Converts jpg images to ASCII</title>
-  <description>jp2a is a simple JPEG to ASCII converter.
-
-</description>
-  <devel project="utilities" package="jp2a"/>
-  <url>https://github.com/cslarsen/jp2a</url>
-</package>

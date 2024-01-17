@@ -1,8 +1,0 @@
---- graphviz-2.46.1/lib/vmalloc/Makefile.am.orig	2021-02-18 17:44:23.990163756 +0100
-+++ graphviz-2.46.1/lib/vmalloc/Makefile.am	2021-02-18 17:46:38.615438829 +0100
-@@ -9,4 +9,5 @@
- 	vmopen.c \
- 	vmstrdup.c
- 
-+libvmalloc_C_la_CFLAGS = -fno-strict-aliasing
- EXTRA_DIST = vmalloc.vcxproj*

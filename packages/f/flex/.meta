@@ -1,6 +1,0 @@
-<package name="flex" project="openSUSE:Factory">
-  <title>Fast Lexical Analyzer Generator</title>
-  <description>FLEX is a tool for generating scanners: programs that recognize lexical
-patterns in text.</description>
-  <devel project="devel:tools:compiler" package="flex"/>
-</package>

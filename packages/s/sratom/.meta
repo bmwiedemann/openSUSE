@@ -1,8 +1,0 @@
-<package name="sratom" project="openSUSE:Factory">
-  <title>A library for serialising LV2 atoms to/from RDF</title>
-  <description>A library for serialising LV2 atoms to/from RDF, particularly the Turtle syntax.
-
-</description>
-  <devel project="multimedia:libs" package="sratom"/>
-  <url>http://drobilla.net/software/sratom/</url>
-</package>

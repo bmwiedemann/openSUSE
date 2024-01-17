@@ -1,5 +1,0 @@
-<package name="sleuthkit" project="openSUSE:Factory">
-  <title></title>
-  <description>The Sleuth Kit (TSK) is a library and collection of command line tools that allow you to investigate volume and file system data</description>
-  <devel project="security:forensics" package="sleuthkit"/>
-</package>

@@ -1,7 +1,0 @@
-# rpmlint reads all *-rpmlintrc files, so one only needs one rpmlintrc even for multispec packages
-
-addFilter("devel-dependency")
-
-# our .a files contain COFF not ELF, rpmlint is upset:
-# libgcc_eh.a Error: Not an ELF file - it has the wrong magic bytes at the start
-addFilter("readelf-failed")

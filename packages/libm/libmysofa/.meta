@@ -1,6 +1,0 @@
-<package name="libmysofa" project="openSUSE:Factory">
-  <title>Reader for AES SOFA HRTF files</title>
-  <description>This is a simple C library to read AES SOFA files that contain HRTFs stored
-according to the AES69-2015 standard.</description>
-  <devel project="multimedia:libs" package="libmysofa"/>
-</package>

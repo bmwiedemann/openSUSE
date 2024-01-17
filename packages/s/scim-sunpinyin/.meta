@@ -1,5 +1,0 @@
-<package name="scim-sunpinyin" project="openSUSE:Factory">
-  <title>scim-sunpinyin</title>
-  <description>sunpinyin 的 Scim 输入法模块</description>
-  <devel project="M17N" package="scim-sunpinyin"/>
-</package>

@@ -1,9 +1,0 @@
-diff -rNu bats.vim-0.10.0.orig/after/indent/bats.vim bats.vim-0.10.0/after/indent/bats.vim
---- bats.vim-0.10.0.orig/after/indent/bats.vim	1970-01-01 01:00:00.000000000 +0100
-+++ bats.vim-0.10.0/after/indent/bats.vim	2023-09-04 16:26:22.078065023 +0200
-@@ -0,0 +1,5 @@
-+" Bats.vim - Syntax files for Bats (Bash Automated Testing System).
-+" Version: 0.10.0
-+
-+" Use Bash indentation.
-+runtime! indent/sh.vim

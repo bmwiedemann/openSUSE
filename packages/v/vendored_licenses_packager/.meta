@@ -1,6 +1,0 @@
-<package name="vendored_licenses_packager" project="openSUSE:Factory">
-  <title>vendored_licenses_packager</title>
-  <description>This bash script with RPM macros may help packagers to include some legal files of vendored dependencies</description>
-  <devel project="devel:tools:building" package="vendored_licenses_packager"/>
-  <url>https://codeberg.org/cunix/vendored_licenses_packager</url>
-</package>

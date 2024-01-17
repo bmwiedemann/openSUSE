@@ -1,7 +1,0 @@
-<services>
- <service name="download_url" mode="localonly">
-    <param name="protocol">https</param>
-    <param name="host">github.com</param>
-    <param name="path">/openSUSE/seccheck/archive/master.zip</param>
-  </service>
-</services>

@@ -1,5 +1,0 @@
-# This line is mandatory to access the configuration functions
-from Config import *
-
-# The *are* configuration files, just not in /etc
-addFilter("joe.* non-etc-or-var-file-marked-as-conffile")

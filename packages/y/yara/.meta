@@ -1,6 +1,0 @@
-<package name="yara" project="openSUSE:Factory">
-  <title>A malware identification and classification tool</title>
-  <description>YARA is a tool aimed at helping malware researchers to identify and classify malware samples. With YARA you can create descriptions of malware families based on textual or binary patterns contained on samples of those families. Each description consists of a set of strings and a Boolean expression which determines its logic. Let's see an example:
-</description>
-  <devel project="security:forensics" package="yara"/>
-</package>

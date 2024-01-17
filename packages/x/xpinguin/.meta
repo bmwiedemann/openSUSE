@@ -1,5 +1,0 @@
-<package name="xpinguin" project="openSUSE:Factory">
-  <title>The 'Logo' of Linux 2.0</title>
-  <description>Based on xteddy -- really cute ;-)</description>
-  <devel project="X11:Utilities" package="xpinguin"/>
-</package>

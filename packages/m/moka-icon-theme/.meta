@@ -1,5 +1,0 @@
-<package name="moka-icon-theme" project="openSUSE:Factory">
-  <title>Moka Icons</title>
-  <description></description>
-  <devel project="X11:common:Factory" package="moka-icon-theme"/>
-</package>

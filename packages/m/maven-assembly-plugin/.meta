@@ -1,5 +1,0 @@
-<package name="maven-assembly-plugin" project="openSUSE:Factory">
-  <title></title>
-  <description></description>
-  <devel project="Java:packages" package="maven-assembly-plugin"/>
-</package>

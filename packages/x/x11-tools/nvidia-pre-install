@@ -1,4 +1,0 @@
-#!/bin/sh
-
-echo "blacklist nouveau" > /etc/modprobe.d/nvidia.conf
-

@@ -1,5 +1,0 @@
-<package name="setconf" project="openSUSE:Factory">
-  <title>Utility to easily change settings in configuration files</title>
-  <description>setconf is a small utility that can be used for changing settings in configuration textfiles.</description>
-  <devel project="utilities" package="setconf"/>
-</package>

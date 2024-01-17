@@ -1,5 +1,0 @@
-<package name="intel-graphics-compiler" project="openSUSE:Factory">
-  <title>Intel® Graphics Compiler for OpenCL™</title>
-  <description>The Intel® Graphics Compiler for OpenCL™ is an LLVM based compiler for OpenCL™ targeting Intel Gen graphics hardware architecture.</description>
-  <devel project="X11:XOrg" package="intel-graphics-compiler"/>
-</package>

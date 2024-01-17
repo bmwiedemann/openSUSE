@@ -1,7 +1,0 @@
-<package name="mysql-xml-to-csv" project="openSUSE:Factory">
-  <title>Convert MySQL XML output to CSV</title>
-  <description>mysql-xml-to-csv converts MySQL XML query results (i.e., produced using the mysql(1) command when given the --xml flag) into a CSV file.
-</description>
-  <devel project="server:database" package="mysql-xml-to-csv"/>
-  <url>https://github.com/archiecobbs/mysql-xml-to-csv</url>
-</package>

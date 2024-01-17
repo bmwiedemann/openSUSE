@@ -1,1 +1,0 @@
-command[check_total_procs]=/usr/lib/nagios/plugins/check_procs -w 6000 -c 7500

@@ -1,7 +1,0 @@
-<package name="jsch" project="openSUSE:Factory">
-  <title>Pure Java implementation of SSH2</title>
-  <description>JSch allows you to connect to an sshd server and use port forwarding,
-X11 forwarding, file transfer, etc., and you can integrate its
-functionality into your own Java programs.</description>
-  <devel project="Java:packages" package="jsch"/>
-</package>

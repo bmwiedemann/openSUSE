@@ -1,5 +1,0 @@
-<package name="sway-marker" project="openSUSE:Factory">
-  <title>Simple popup for using marks in Sway</title>
-  <description>This allows you to use vim-like marks to switch between different containers (windows) in sway easily.</description>
-  <devel project="X11:Wayland" package="sway-marker"/>
-</package>

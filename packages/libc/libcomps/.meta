@@ -1,5 +1,0 @@
-<package name="libcomps" project="openSUSE:Factory">
-  <title>libcomps - Library for parsing comps.xml data</title>
-  <description></description>
-  <devel project="system:packagemanager:dnf" package="libcomps"/>
-</package>

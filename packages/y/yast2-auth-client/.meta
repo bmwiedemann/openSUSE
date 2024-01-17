@@ -1,7 +1,0 @@
-<package name="yast2-auth-client" project="openSUSE:Factory">
-  <title>YaST2 - Network Authentication Configuration</title>
-  <description>With this YaST2 module you can configure the network authentication
-for your computer. This modul provides multi domain authentication
-using sssd.</description>
-  <devel project="YaST:Head" package="yast2-auth-client"/>
-</package>

@@ -1,8 +1,0 @@
-<package name="ior" project="openSUSE:Factory">
-  <title>Parallel filesystem I/O benchmark</title>
-  <description>Parallel filesystem I/O benchmark
-
-</description>
-  <devel project="benchmark" package="ior"/>
-  <url>https://github.com/LLNL/ior</url>
-</package>

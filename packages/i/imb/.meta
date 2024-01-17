@@ -1,5 +1,0 @@
-<package name="imb" project="openSUSE:Factory">
-  <title>Intel MPI Benchmarks (IMB)</title>
-  <description>The Intel MPI Benchmarks (IMB) perform a set of MPI performance measurements for point-to-point and global communication operations for a range of message sizes.</description>
-  <devel project="science:HPC" package="imb"/>
-</package>

@@ -1,6 +1,0 @@
-<package name="intel-ipsec-mb" project="openSUSE:Factory">
-  <title>Intel(R) Multi-Buffer Crypto for IPsec Library</title>
-  <description>The library provides software crypto acceleration primarily targeting packet processing applications. It can be used for application such as: IPsec, TLS, Wireless (RAN), Cable or MPEG DRM</description>
-  <devel project="devel:libraries:c_c++" package="intel-ipsec-mb"/>
-  <url>https://github.com/intel/intel-ipsec-mb</url>
-</package>

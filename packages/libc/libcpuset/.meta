@@ -1,8 +1,0 @@
-<package name="libcpuset" project="openSUSE:Factory">
-  <title>cpuset processor and memory placement library</title>
-  <description>The Cpuset System is a processor and memory placement mechanism that
-enables a system administrator to confine tasks to running certain
-CPUs, and to allocating memory on certain Memory Nodes.  The libcpuset
-library provides a convenient 'C' API to cpusets.</description>
-  <devel project="devel:libraries:c_c++" package="libcpuset"/>
-</package>

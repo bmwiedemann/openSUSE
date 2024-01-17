@@ -1,9 +1,0 @@
-<package name="libmirisdr" project="openSUSE:Factory">
-  <title>Support programs for MRi2500</title>
-  <description>Programs that controls Mirics MRi2500 based DVB dongle in raw mode, so
-it can be used as a SDR receiver.
-
-</description>
-  <devel project="hardware:sdr" package="libmirisdr"/>
-  <url>http://cgit.osmocom.org/libmirisdr/</url>
-</package>

@@ -1,6 +1,0 @@
-<package name="jaxodraw" project="openSUSE:Factory">
-  <title>Jaxodraw</title>
-  <description>JaxoDraw is a Java GUI program for drawing Feynman diagrams.</description>
-  <devel project="Java:packages" package="jaxodraw"/>
-  <url>http://jaxodraw.sourceforge.net</url>
-</package>

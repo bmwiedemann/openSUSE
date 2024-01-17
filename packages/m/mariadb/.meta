@@ -1,9 +1,0 @@
-<package name="mariadb" project="openSUSE:Factory">
-  <title>A True Multiuser, Multithreaded SQL Database Server</title>
-  <description>MariaDB is a backward compatible, drop-in replacement branch of the MySQL
-Database Server. It includes all major open source storage engines, including
-the Maria storage engine.
-
-This package only contains the server-side programs.</description>
-  <devel project="server:database" package="mariadb"/>
-</package>

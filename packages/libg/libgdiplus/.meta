@@ -1,7 +1,0 @@
-<package name="libgdiplus" project="openSUSE:Factory">
-  <title>Open Source Implementation of the GDI+ API</title>
-  <description>This is part of the Mono project. It is required when using
-Windows.Forms.
-</description>
-  <devel project="Mono:Factory" package="libgdiplus"/>
-</package>

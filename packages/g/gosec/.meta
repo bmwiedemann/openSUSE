@@ -1,6 +1,0 @@
-<package name="gosec" project="openSUSE:Factory">
-  <title>Golang security checker</title>
-  <description>Inspects source code for security problems by scanning the Go AST.</description>
-  <devel project="devel:languages:go" package="gosec"/>
-  <url>https://securego.io/</url>
-</package>

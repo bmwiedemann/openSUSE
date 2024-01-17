@@ -1,6 +1,0 @@
-<package name="iverilog" project="openSUSE:Factory">
-  <title>Icarus Verilog</title>
-  <description>Icarus Verilog is a Verilog compiler that generates a variety of engineering formats, including simulation. It strives to be true to the IEEE-1364 standard.
-  </description>
-  <devel project="electronics" package="iverilog"/>
-</package>

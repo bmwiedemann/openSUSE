@@ -1,5 +1,0 @@
-<package name="gnome-pomodoro" project="openSUSE:Factory">
-  <title></title>
-  <description>This GNOME app helps to manage time according to Pomodoro Technique. It intends to improve productivity and quality of work by reminding you to take short breaks.</description>
-  <devel project="GNOME:Apps" package="gnome-pomodoro"/>
-</package>

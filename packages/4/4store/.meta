@@ -1,5 +1,0 @@
-<package name="4store" project="openSUSE:Factory">
-  <title>4store, an efficient, scalable and stable RDF database</title>
-  <description>4store was designed by Steve Harris and developed at Garlik to underpin their Semantic Web applications. It has been providing the base platform for around 3 years. At times holding and running queries over databases of 15GT, supporting a Web application used by thousands of people.</description>
-  <devel project="server:database" package="4store"/>
-</package>

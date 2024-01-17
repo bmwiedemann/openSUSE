@@ -1,1 +1,0 @@
-command[check_ups]=/usr/lib/nagios/plugins/check_ups -H 127.0.0.1 -u liebert

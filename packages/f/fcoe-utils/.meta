@@ -1,7 +1,0 @@
-<package name="fcoe-utils" project="openSUSE:Factory">
-  <title>Open-FCoE userspace management tools</title>
-  <description>Userspace tools to manage FibreChannel over Ethernet (FCoE)
-connections.
-</description>
-  <devel project="network:fcoe" package="fcoe-utils"/>
-</package>

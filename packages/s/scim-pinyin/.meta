@@ -1,6 +1,0 @@
-<package name="scim-pinyin" project="openSUSE:Factory">
-  <title>Intelligent Pinyin input module for Smart Chinese/Common Input Method platform</title>
-  <description>Intelligent Pinyin input module for Smart Chinese/Common Input Method
-platform</description>
-  <devel project="M17N" package="scim-pinyin"/>
-</package>

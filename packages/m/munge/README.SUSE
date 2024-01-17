@@ -1,6 +1,0 @@
-The file 
-/etc/munge/munge.key
-is created from /dev/urandom at installation time via the command
-  dd if=/dev/urandom bs=1 count=1024 
-so it might differ from host to host, one might to replace by identical
-one (pick one from a host) and copy it to all hosts.

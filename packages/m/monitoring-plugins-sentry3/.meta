@@ -1,5 +1,0 @@
-<package name="monitoring-plugins-sentry3" project="openSUSE:Factory">
-  <title>asd</title>
-  <description></description>
-  <devel project="server:monitoring" package="monitoring-plugins-sentry3"/>
-</package>

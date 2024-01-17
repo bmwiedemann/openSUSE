@@ -1,8 +1,0 @@
-<package name="xtrx_lms7002m" project="openSUSE:Factory">
-  <title>XTRX's fork from myriadrf/LMS7002M-driver</title>
-  <description>XTRX's fork from myriadrf/LMS7002M-driver.
-
-</description>
-  <devel project="hardware:sdr" package="xtrx_lms7002m"/>
-  <url>http://xtrx.io</url>
-</package>

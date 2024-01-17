@@ -1,6 +1,0 @@
-<package name="sanlock" project="openSUSE:Factory">
-  <title>sanlock</title>
-  <description>sanlock is a shared disk lock manager that uses disk paxos to manage leases on shared storage.  Hosts connected to a common SAN can use this to synchronize their access to the shared disks.
-</description>
-  <devel project="Virtualization" package="sanlock"/>
-</package>

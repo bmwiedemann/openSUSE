@@ -1,5 +1,0 @@
-<package name="xbench" project="openSUSE:Factory">
-  <title>Benchmark for X11</title>
-  <description>A benchmark for X11.</description>
-  <devel project="benchmark" package="xbench"/>
-</package>

@@ -1,6 +1,0 @@
-<package name="FirmwareUpdateKit" project="openSUSE:Factory">
-  <title>Assist with DOS-based firmware updates</title>
-  <description>Create a bootable mini-DOS system and add files to it. Useful if you
-have to do firmware updates from DOS.</description>
-  <devel project="Base:System" package="FirmwareUpdateKit"/>
-</package>

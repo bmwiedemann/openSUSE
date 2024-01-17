@@ -1,0 +1,15 @@
+#!/bin/sh
+pkg=$1
+dir=packages/*/$pkg
+d2=~/openSUSE/$dir
+rabbit=/home/opensuserabbit
+
+( cd $d2 && git pushf)
+( cd $dir && git fetch origin ; git reset origin/master)
+
+# find last rabbit entry
+for f in $rabbit/dumprabbit.json $(ls $rabbit/dumprabbit.json-*|tac) ; do
+  grep '"package":"'"$pkg"\" "$f" && break
+done | tail -1 | timeout 20 scripts/rabbithandle.py
+
+( cd $d2 && git fetch origin && git diff origin/master | grep . ; echo $? ; git reset origin/master ; echo "(cd $d2 && git log -p --format=fuller)" >> /dev/shm/reviewlist)

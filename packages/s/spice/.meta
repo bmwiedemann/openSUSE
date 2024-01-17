@@ -1,8 +1,0 @@
-<package name="spice" project="openSUSE:Factory">
-  <title>SPICE client and server library</title>
-  <description>The SPICE client provides access to a remote machine's display and devices.
-The SPICE server library is used by virtualization software (eg kvm) to expose
-a (virtual) machine's display and devices to a SPICE client.</description>
-  <devel project="Virtualization" package="spice"/>
-  <url>http://www.spice-space.org/</url>
-</package>

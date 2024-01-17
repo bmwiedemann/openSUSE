@@ -1,3 +1,0 @@
-# env_parallel and parset are intended to be sourced and *not* executed directly
-addFilter(".*env-script-interpreter.*/usr/bin/env_parallel.*")
-addFilter(".*env-script-interpreter.*/usr/bin/parset")

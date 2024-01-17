@@ -1,9 +1,0 @@
-export LC_CTYPE=$LANG
-export XMODIFIERS="@im=SCIM"
-export GTK_IM_MODULE="scim"
-export QT_IM_SWITCHER=imsw-multi
-export QT_IM_MODULE=scim
-scim -d
-
-# success:
-return 0

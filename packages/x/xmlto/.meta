@@ -1,7 +1,0 @@
-<package name="xmlto" project="openSUSE:Factory">
-  <title>Tool for Converting XML Files to Various Formats</title>
-  <description>This is a package for converting XML files to various formats using XSL
-stylesheets.  As a processor it depends on xsltproc and as a formatter
-for print output it makes use of passivetex.</description>
-  <devel project="Publishing" package="xmlto"/>
-</package>

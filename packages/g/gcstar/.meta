@@ -1,9 +1,0 @@
-<package name="gcstar" project="openSUSE:Factory">
-  <title>Application to manage collections</title>
-  <description>GCstar is a free open source application for managing collections of
-movies, books, music, etc. Detailed information on each item can be
-automatically retrieved from the internet and you can store additional
-data, such as the location or who you've lent it to. You may also
-search and filter your collection by many criteria.</description>
-  <devel project="GNOME:Apps" package="gcstar"/>
-</package>

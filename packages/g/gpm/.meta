@@ -1,8 +1,0 @@
-<package name="gpm" project="openSUSE:Factory">
-  <title>Console Mouse Support</title>
-  <description>The gpm (general purpose mouse) daemon tries to be a useful mouse
-server for applications running on the Linux console. It can be used by
-mc (Midnight Commander) or by w3m, the text-based Web browser. It
-provides console cut and paste operations.</description>
-  <devel project="Base:System" package="gpm"/>
-</package>

@@ -1,6 +1,0 @@
-<package name="slurm" project="openSUSE:Factory">
-  <title>Simple Linux Utility for Resource Management</title>
-  <description>SLURM is an open source, fault-tolerant, and highly scalable cluster management and job scheduling system for Linux clusters
-containing up to 65,536 nodes. Components include machine status, partition management, job management, scheduling and accounting modules.</description>
-  <devel project="network:cluster" package="slurm"/>
-</package>

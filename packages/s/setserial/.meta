@@ -1,7 +1,0 @@
-<package name="setserial" project="openSUSE:Factory">
-  <title>A utility for configuring serial ports</title>
-  <description>Setserial is a basic system utility for displaying or setting serial
-port information. Setserial can reveal and allow you to alter the I/O
-port and IRQ that a particular serial device is using.</description>
-  <devel project="Base:System" package="setserial"/>
-</package>

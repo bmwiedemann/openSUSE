@@ -1,5 +1,0 @@
-<package name="libcryptopp" project="openSUSE:Factory">
-  <title>Crypto++ Library</title>
-  <description>Crypto++ Library is a free C++ class library of cryptographic schemes.</description>
-  <devel project="devel:libraries:c_c++" package="libcryptopp"/>
-</package>

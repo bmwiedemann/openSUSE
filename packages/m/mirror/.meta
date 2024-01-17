@@ -1,5 +1,0 @@
-<package name="mirror" project="openSUSE:Factory">
-  <title>Perl Scripts for Mirroring FTP Servers</title>
-  <description>Documentation: &quot;man mirror&quot; and &quot;man mm&quot;.</description>
-  <devel project="network:utilities" package="mirror"/>
-</package>

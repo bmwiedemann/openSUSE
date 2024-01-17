@@ -1,8 +1,0 @@
-<package name="gdm-branding-openSUSE" project="openSUSE:Factory">
-  <title>The GNOME Display Manager -- openSUSE default configuration</title>
-  <description>The GNOME Display Manager is a system service that is responsible for
-providing graphical log-ins and managing local and remote displays.
-
-This package provides the openSUSE default configuration for gdm.</description>
-  <devel project="GNOME:Factory" package="gdm-branding-openSUSE"/>
-</package>

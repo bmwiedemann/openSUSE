@@ -1,5 +1,0 @@
-<package name="yaics" project="openSUSE:Factory">
-  <title>A simple GNU social client written in C++/Qt</title>
-  <description>Yaics is a simple GNU social client written in C++ and Qt and licensed under the GNU GPL 3.0 (or later).</description>
-  <devel project="network" package="yaics"/>
-</package>

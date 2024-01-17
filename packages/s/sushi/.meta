@@ -1,5 +1,0 @@
-<package name="sushi" project="openSUSE:Factory">
-  <title>Quick Previewer for Nautilus</title>
-  <description>Sushi is a quick previewer for Nautilus, the GNOME desktop file manager.</description>
-  <devel project="GNOME:Factory" package="sushi"/>
-</package>

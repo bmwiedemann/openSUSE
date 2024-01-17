@@ -1,8 +1,0 @@
-<package name="libva-utils" project="openSUSE:Factory">
-  <title>A collection of utilities and examples to exercise VA-API</title>
-  <description>libva-utils is a collection of utilities and examples to exercise VA-API in accordance with the libva project. --enable-tests (default = no) provides a suite of unit-tests based on Google Test Framework. A driver implementation is necessary to properly operate.
-
-</description>
-  <devel project="X11:XOrg" package="libva-utils"/>
-  <url>https://github.com/01org/libva-utils</url>
-</package>

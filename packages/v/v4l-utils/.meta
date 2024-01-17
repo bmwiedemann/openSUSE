@@ -1,7 +1,0 @@
-<package name="v4l-utils" project="openSUSE:Factory">
-  <title>Utilities for video4linux and DVB devices</title>
-  <description>v4l-utils is a collection of various video4linux (V4L) and DVB utilities. The
-main v4l-utils package contains cx18-ctl, ir-keytable, ivtv-ctl, v4l2-ctl and
-v4l2-sysfs-path.</description>
-  <devel project="devel:libraries:c_c++" package="v4l-utils"/>
-</package>

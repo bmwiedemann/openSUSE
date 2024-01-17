@@ -1,6 +1,0 @@
-<package name="ikiwiki" project="openSUSE:Factory">
-  <title>ikiwiki</title>
-  <description>ikiwiki
-  </description>
-  <devel project="devel:languages:perl" package="ikiwiki"/>
-</package>

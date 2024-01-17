@@ -1,7 +1,0 @@
-<package name="ffms2" project="openSUSE:Factory">
-  <title>FFmpeg wrapper library</title>
-  <description>FFmpegSource (usually known as FFMS or FFMS2) is a cross-platform wrapper
-library around FFmpeg, plus some additional components to deal with file
-formats libavformat has (or used to have) problems with.</description>
-  <devel project="multimedia:libs" package="ffms2"/>
-</package>

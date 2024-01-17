@@ -1,5 +1,0 @@
-<package name="vino" project="openSUSE:Factory">
-  <title>GNOME VNC Server</title>
-  <description>A VNC Server for GNOME</description>
-  <devel project="GNOME:Factory" package="vino"/>
-</package>

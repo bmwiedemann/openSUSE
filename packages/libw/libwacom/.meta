@@ -1,9 +1,0 @@
-<package name="libwacom" project="openSUSE:Factory">
-  <title>GLib-based library for accessing online service APIs using the GData protocol</title>
-  <description>libgdata is a GLib-based library for accessing online service APIs
-using the GData protocol — most notably, Google's services. It provides
-APIs to access the common Google services, and has full asynchronous
-support.
-</description>
-  <devel project="hardware" package="libwacom"/>
-</package>

@@ -1,0 +1,2 @@
+#!/bin/sh
+for p in packages/*/* ; do test -e .git && (cd $p ; diff=$(git diff origin/master -- |wc -l) ; if [[ $diff -gt 0 ]] ; then echo $p ; fi ) ; done

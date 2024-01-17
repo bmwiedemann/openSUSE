@@ -1,8 +1,0 @@
-<package name="storage-fixup" project="openSUSE:Factory">
-  <title>Storage Fixup Script</title>
-  <description>storage-fixup executes fixup commands for devices matched using dmi and
-hal properties.  This is primarily to adjust too aggressive ATA APM
-settings which makes the drive unload its head frequently shortening
-its lifespan.</description>
-  <devel project="Base:System" package="storage-fixup"/>
-</package>

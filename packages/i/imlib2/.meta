@@ -1,9 +1,0 @@
-<package name="imlib2" project="openSUSE:Factory">
-  <title>Image handling and conversion library.</title>
-  <description>Imlib2 is an advanced replacement library for libraries like libXpm
-that provides many more features with much greater flexibility and
-speed than standard libraries, including font rasterization, rotation,
-RGBA space rendering and blending, dynamic binary filters, scripting,
-and more.</description>
-  <devel project="graphics" package="imlib2"/>
-</package>

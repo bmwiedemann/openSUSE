@@ -1,6 +1,0 @@
-#!/bin/bash
-
-# Switching off swap
-swapoff /dev/zram0
-
-rmmod zram

@@ -1,6 +1,0 @@
-<package name="yast2-sudo" project="openSUSE:Factory">
-  <title>YaST2 - sudo configuration</title>
-  <description>The YaST2 component for sudo configuration. It configures capabilities
-of users to run commands as root or other user.</description>
-  <devel project="YaST:Head" package="yast2-sudo"/>
-</package>

@@ -1,8 +1,0 @@
-<package name="iosevka-fonts" project="openSUSE:Factory">
-  <title>Slender typeface for code, from code.</title>
-  <description>
-Iosevka is an open-source, sans-serif + slab-serif, monospace + quasi‑proportional typeface family, designed for writing code, using in terminals, and preparing technical documents.
-  </description>
-  <devel project="M17N:fonts" package="iosevka-fonts"/>
-  <url>https://typeof.net/Iosevka/</url>
-</package>

@@ -1,5 +1,0 @@
-<package name="gdbm" project="openSUSE:Factory">
-  <title>GNU Database Routines</title>
-  <description>A static and dynamic library for the GNU database routines.</description>
-  <devel project="devel:libraries:c_c++" package="gdbm"/>
-</package>

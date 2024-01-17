@@ -1,3 +1,0 @@
-# Initialize SCSI magnetic tape drives
-
-ACTION!="remove", SUBSYSTEM=="scsi_tape", KERNEL=="st*[0-9]", RUN+="/usr/sbin/stinit %n"

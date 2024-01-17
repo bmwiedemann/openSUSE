@@ -1,7 +1,0 @@
-In the default (ie unconfigured) configuration sudo asks for root password.
-This allows to use an ordinary user account for administration of a freshly
-installed system. When configuring sudo, please make sure to delete the two
-following lines:
-
-Defaults targetpw    # ask for the password of the target user i.e. root
-%users ALL=(ALL) ALL # WARNING! Only use this together with 'Defaults targetpw'!

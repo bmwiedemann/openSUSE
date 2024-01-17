@@ -1,5 +1,0 @@
-<package name="smpeg" project="openSUSE:Factory">
-  <title>SMPEG</title>
-  <description>SDL MPEG Player Library</description>
-  <devel project="games" package="smpeg"/>
-</package>

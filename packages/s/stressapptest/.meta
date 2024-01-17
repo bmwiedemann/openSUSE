@@ -1,6 +1,0 @@
-<package name="stressapptest" project="openSUSE:Factory">
-  <title>Stressful application test</title>
-  <description>Stressful Application Test (or stressapptest, its unix name) tries to maximize randomized traffic to memory from processor and I/O, with the intent of creating a realistic high load situation in order to test the existing hardware devices in a computer. It has been used at Google for some time and now it is available under the apache 2.0 license. </description>
-  <devel project="hardware" package="stressapptest"/>
-  <url>http://code.google.com/p/stressapptest/</url>
-</package>

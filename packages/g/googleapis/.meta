@@ -1,6 +1,0 @@
-<package name="googleapis" project="openSUSE:Factory">
-  <title>googleapis</title>
-  <description>Public interface and protobuf definitions of Google APIs</description>
-  <devel project="devel:libraries:c_c++" package="googleapis"/>
-  <url>https://github.com/googleapis/googleapis</url>
-</package>

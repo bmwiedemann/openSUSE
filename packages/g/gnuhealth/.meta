@@ -1,5 +1,0 @@
-<package name="gnuhealth" project="openSUSE:Factory">
-  <title>GNU Health is a free Health and Hospital Information System</title>
-  <description>See https://en.opensuse.org/GNUHealth_on_openSUSE or /usr/share/doc/packages/gnuhealth/GNUHealth.README.SUSE for details</description>
-  <devel project="Application:ERP:GNUHealth:Factory" package="gnuhealth"/>
-</package>

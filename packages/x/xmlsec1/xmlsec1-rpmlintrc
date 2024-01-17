@@ -1,7 +1,0 @@
-# This is not devel, those so files are loaded as plugins and there is no
-# actual versioning there
-addFilter("devel-file-in-non-devel-package")
-# Again the packages do not link yet as these are modules they are useless
-# without the main library
-addFilter("shlib-fixed-dependency")
-

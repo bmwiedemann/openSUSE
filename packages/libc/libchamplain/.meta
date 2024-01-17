@@ -1,9 +1,0 @@
-<package name="libchamplain" project="openSUSE:Factory">
-  <title>Library to display maps</title>
-  <description>Libchamplain is a C library providing a ClutterActor to display maps. It
-also provides a Gtk+ widget to display maps in Gtk+ applications.
-
-It supports numerous free map sources such as OpenStreetMap,
-OpenAerialMap and Maps for free.</description>
-  <devel project="GNOME:Factory" package="libchamplain"/>
-</package>

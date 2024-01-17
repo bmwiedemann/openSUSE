@@ -1,7 +1,0 @@
-<package name="vinagre" project="openSUSE:Factory">
-  <title>VNC client for GNOME</title>
-  <description>Vinagre is a VNC client for GNOME that supports connecting to multiple
-machines, browsing for VNC servers via avahi and password storage in
-gnome-keyring.</description>
-  <devel project="GNOME:Factory" package="vinagre"/>
-</package>

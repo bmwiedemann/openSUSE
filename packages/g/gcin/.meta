@@ -1,9 +1,0 @@
-<package name="gcin" project="openSUSE:Factory">
-  <title>Gcin is a Chinese input method server</title>
-  <description>
-gcin is a Chinese input method server for traditional Chinese. 
-It features a better GTK user interface. 
-  </description>
-  <devel project="M17N" package="gcin"/>
-  <url>http://hyperrate.com/dir.php?eid=67</url>
-</package>

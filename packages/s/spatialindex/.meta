@@ -1,5 +1,0 @@
-<package name="spatialindex" project="openSUSE:Factory">
-  <title>SpatialIndex</title>
-  <description>libspatialindex provides a general framework for developing spatial indices. Currently it defines generic interfaces, provides simple main memory and disk based storage managers and a robust implementation of an R*-tree, an MVR-tree and a TPR-tree.</description>
-  <devel project="Application:Geo" package="spatialindex"/>
-</package>

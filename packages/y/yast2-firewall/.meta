@@ -1,5 +1,0 @@
-<package name="yast2-firewall" project="openSUSE:Factory">
-  <title>YaST2 - Firewall Configuration</title>
-  <description>A YaST2 module to be used for configuring a firewall.</description>
-  <devel project="YaST:Head" package="yast2-firewall"/>
-</package>

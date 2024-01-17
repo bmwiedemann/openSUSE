@@ -1,8 +1,0 @@
-<package name="ghc-xml" project="openSUSE:Factory">
-  <title>A simple XML library</title>
-  <description>
-iA simple XML library
-  </description>
-  <devel project="devel:languages:haskell" package="ghc-xml"/>
-  <url>http://hackage.haskell.org/package/xml</url>
-</package>

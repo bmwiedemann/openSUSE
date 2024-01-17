@@ -1,5 +1,0 @@
-<package name="ginac" project="openSUSE:Factory">
-  <title>ginac</title>
-  <description>e name GiNaC is an iterated and recursive abbreviation for GiNaC is Not a CAS, where CAS stands for Computer Algebra System. </description>
-  <devel project="science" package="ginac"/>
-</package>

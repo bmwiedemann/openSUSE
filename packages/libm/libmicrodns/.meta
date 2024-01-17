@@ -1,8 +1,0 @@
-<package name="libmicrodns" project="openSUSE:Factory">
-  <title>Minimal mDNS resolver library</title>
-  <description>Minimal mDNS resolver (and announcer) library.
-
-</description>
-  <devel project="multimedia:libs" package="libmicrodns"/>
-  <url>https://github.com/videolabs/libmicrodns</url>
-</package>

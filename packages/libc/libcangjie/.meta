@@ -1,5 +1,0 @@
-<package name="libcangjie" project="openSUSE:Factory">
-  <title>libcangjie</title>
-  <description>A C library implementing the Cangjie input method</description>
-  <devel project="M17N" package="libcangjie"/>
-</package>

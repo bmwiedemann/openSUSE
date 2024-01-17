@@ -1,9 +1,0 @@
-<package name="flowgrind" project="openSUSE:Factory">
-  <title>Network performance measurement</title>
-  <description>Flowgrind is a tool similar to iperf, netperf to measure throughput and other
-metrics for TCP and other protocols. It features some unique characteristics
-which are of use when exploring the idiosyncrasies of wireless mesh networks.
-
-</description>
-  <devel project="benchmark" package="flowgrind"/>
-</package>

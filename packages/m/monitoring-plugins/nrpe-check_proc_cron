@@ -1,1 +1,0 @@
-command[check_proc_cron]=/usr/lib/nagios/plugins/check_procs --command=cron -u root -c 1:1024 

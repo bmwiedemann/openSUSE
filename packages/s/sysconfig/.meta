@@ -1,6 +1,0 @@
-<package name="sysconfig" project="openSUSE:Factory">
-  <title>The sysconfig scheme and traditional network scripts</title>
-  <description>This package provides the SuSE system configuration scheme and
-the netcontrol alias ifup network scripts.</description>
-  <devel project="Base:System" package="sysconfig"/>
-</package>

@@ -1,5 +1,0 @@
-<package name="vendor-reset" project="openSUSE:Factory">
-  <title>vendor-reset</title>
-  <description>Kernel module for resetting devices used by VFIO</description>
-  <devel project="Virtualization" package="vendor-reset"/>
-</package>

@@ -1,5 +1,0 @@
-#
-# Rule for prandom character device node permissions
-# This file should be installed in /usr/lib/udev/rules.d
-#
-ACTION=="add", SUBSYSTEM=="misc", KERNEL=="prandom", MODE="0444"

@@ -1,5 +1,0 @@
-<package name="filebench" project="openSUSE:Factory">
-  <title>File system and storage benchmark</title>
-  <description>Filebench is a file system and storage benchmark that allows to generate a large variety of workloads. Unlike typical benchmarks it is very flexible and allows to minutely specify (any) applications' behaviour using extensive Workload Model Language (WML). Filebench uses loadable workload personalities to allow easy emulation of complex applications (e.g., mail, web, file, and database servers). Filebench is quick to set up and easy to use compared to deploying real applications. It is also a handy tool for micro-benchmarking. </description>
-  <devel project="benchmark" package="filebench"/>
-</package>

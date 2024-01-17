@@ -1,6 +1,0 @@
-<package name="slib" project="openSUSE:Factory">
-  <title>Portable Scheme Library</title>
-  <description>SLIB is a portable Scheme library providing compatibility and utility
-functions for all standard Scheme implementations.</description>
-  <devel project="devel:languages:misc" package="slib"/>
-</package>

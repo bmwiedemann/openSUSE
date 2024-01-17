@@ -1,8 +1,0 @@
-<package name="glassfish-annotation-api" project="openSUSE:Factory">
-  <title>Common Annotations API Specification (JSR 250)</title>
-  <description>Common Annotations APIs for the Java Platform (JSR 250).
-
-</description>
-  <devel project="Java:packages" package="glassfish-annotation-api"/>
-  <url>https://github.com/javaee/</url>
-</package>

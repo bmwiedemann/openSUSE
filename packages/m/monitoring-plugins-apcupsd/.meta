@@ -1,8 +1,0 @@
-<package name="monitoring-plugins-apcupsd" project="openSUSE:Factory">
-  <title>Monitor APC Smart-UPSes using apcupsd</title>
-  <description>Nagios plugin to monitor APC Smart-UPSes using apcupsd.
-
-</description>
-  <devel project="server:monitoring" package="monitoring-plugins-apcupsd"/>
-  <url>https://github.com/jkramarz/check_apcupsd/blob/master/check_apcupsd</url>
-</package>

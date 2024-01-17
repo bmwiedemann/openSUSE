@@ -1,5 +1,0 @@
-<package name="museic" project="openSUSE:Factory">
-  <title>MuseIC</title>
-  <description>Audio player with remote control</description>
-  <devel project="X11:Pantheon:Apps" package="museic"/>
-</package>

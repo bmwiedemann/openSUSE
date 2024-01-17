@@ -1,9 +1,0 @@
-<package name="yast2-apparmor" project="openSUSE:Factory">
-  <title>YaST2 - Plugins for AppArmor Profile Management</title>
-  <description>Yast2 forms and components for the management of Novell AppArmor
-profiles.
-
-This package is part of a suite of tools that used to be named
-SubDomain.</description>
-  <devel project="YaST:Head" package="yast2-apparmor"/>
-</package>

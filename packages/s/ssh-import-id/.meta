@@ -1,6 +1,0 @@
-<package name="ssh-import-id" project="openSUSE:Factory">
-  <title>ssh-import-id</title>
-  <description>Retrieve an SSH public key and append it to authorized_keys</description>
-  <devel project="security" package="ssh-import-id"/>
-  <url>https://launchpad.net/ssh-import-id</url>
-</package>

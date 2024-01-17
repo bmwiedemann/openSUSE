@@ -1,5 +1,0 @@
-<package name="libgig" project="openSUSE:Factory">
-  <title>libgig</title>
-  <description>C++ library for loading and modifying Gigasampler and DLS files.</description>
-  <devel project="multimedia:libs" package="libgig"/>
-</package>

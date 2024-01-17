@@ -1,2 +1,0 @@
-# Only used to detec whether scdoc is present. No requires on devel other files.
-addFilter("E: devel-file-in-non-devel-package .* /usr/share/pkgconfig/scdoc.pc")

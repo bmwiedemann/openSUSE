@@ -1,8 +1,0 @@
-<package name="iftop" project="openSUSE:Factory">
-  <title>Real-Time Interface Bandwidth Usage</title>
-  <description>iftop does for network usage what top(1) does for CPU usage. It listens
-to network traffic on a named interface and displays a table of current
-bandwidth usage by pairs of hosts. It is handy for explaining why the
-network links slow.</description>
-  <devel project="network:utilities" package="iftop"/>
-</package>

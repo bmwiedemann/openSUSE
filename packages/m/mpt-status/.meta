@@ -1,6 +1,0 @@
-<package name="mpt-status" project="openSUSE:Factory">
-  <title>Program Showing the Status of LSI 1030 RAID Controller</title>
-  <description>This program shows the status of the physical and logical drives
-attached to a LSI 1030 RAID (mptlinux, fusion, mpt, ioc) controller.</description>
-  <devel project="Base:System" package="mpt-status"/>
-</package>

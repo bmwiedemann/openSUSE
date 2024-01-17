@@ -1,6 +1,0 @@
-<package name="schedtool" project="openSUSE:Factory">
-  <title>Query and set CPU scheduling parameters</title>
-  <description>schedtool can set all CPU scheduling parameters Linux is capable
-of or display information for given processes.</description>
-  <devel project="utilities" package="schedtool"/>
-</package>

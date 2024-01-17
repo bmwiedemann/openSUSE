@@ -1,9 +1,0 @@
--------------------------------------------------------------------
-Fri Mar 18 15:00:55 UTC 2022 - Fridrich Strba <fstrba@suse.com>
-
-- Intial packaging of felix-bundlerepository 2.0.10
-- Added patches:
-  * 0001-Unbundle-libraries.patch
-    + Use system jars instead of bundling them in a fat jar
-  * 0002-Compatibility-with-osgi-r6.patch
-    + Allow building with newer osgi-core/osgi-compendium

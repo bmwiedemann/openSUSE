@@ -1,5 +1,0 @@
-<package name="systemd-presets-branding-Kalpa" project="openSUSE:Factory">
-  <title>systemd-presets-branding-Kalpa</title>
-  <description>Systemd default presets for openSUSE Kalpa</description>
-  <devel project="devel:microos:kalpa" package="systemd-presets-branding-Kalpa"/>
-</package>

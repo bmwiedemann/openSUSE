@@ -1,5 +1,0 @@
-<package name="slurm-plugin-oom-score-adj" project="openSUSE:Factory">
-  <title>slurm-plugin-oom-score-adj</title>
-  <description></description>
-  <devel project="network:cluster" package="slurm-plugin-oom-score-adj"/>
-</package>

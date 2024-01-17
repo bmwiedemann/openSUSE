@@ -1,6 +1,0 @@
-<package name="libmpd" project="openSUSE:Factory">
-  <title>Client Library to the Music Player Daemon</title>
-  <description>libmpd is a library that provides high-level, callback-based access to Music
-Player Daemon.</description>
-  <devel project="multimedia:libs" package="libmpd"/>
-</package>

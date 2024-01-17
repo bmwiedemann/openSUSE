@@ -1,9 +1,0 @@
-<package name="libmodulemd" project="openSUSE:Factory">
-  <title>libmodulemd - Module metadata manipulation library</title>
-  <description>C Library for manipulating module metadata files.
-
-
-</description>
-  <devel project="system:packagemanager:dnf" package="libmodulemd"/>
-  <url>https://github.com/fedora-modularity/libmodulemd</url>
-</package>

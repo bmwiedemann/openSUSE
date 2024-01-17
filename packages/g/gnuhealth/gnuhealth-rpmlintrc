@@ -1,5 +1,0 @@
-# false positive: the lib dependency check is wrong here 
-# ignore the warning for now
-addFilter("explicit-lib-dependency python3-passlib");
-# ignore suse-missing-rclink
-addFilter("suse-missing-rclink gnuhealth");

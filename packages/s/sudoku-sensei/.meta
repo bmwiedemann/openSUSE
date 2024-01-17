@@ -1,8 +1,0 @@
-<package name="sudoku-sensei" project="openSUSE:Factory">
-  <title>Enjoy playing with Sudoku boards designed by yourself</title>
-  <description>The engine solves sudokus by applying complex logical rules a few times,
-instead of applying simpler rules (like guessing and backtracking)
-many many times. These complex logical rules are exactly the same ones
-that people use with paper and pen.</description>
-  <devel project="games" package="sudoku-sensei"/>
-</package>

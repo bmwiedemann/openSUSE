@@ -1,6 +1,0 @@
-<package name="scidavis" project="openSUSE:Factory">
-  <title>SciDAVis</title>
-  <description>SciDAVis is a free application for Scientific Data Analysis and Visualization. It is a fork of QtiPlot.</description>
-  <devel project="science" package="scidavis"/>
-  <url>http://scidavis.sourceforge.net/</url>
-</package>

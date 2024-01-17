@@ -1,5 +1,0 @@
-<package name="gdouros-atavyros-fonts" project="openSUSE:Factory">
-  <title>Parangonne Greque typeface</title>
-  <description>Robert Granjon (1513 – 1589) produced his Parangonne Greque typeface (Garmond size) at the instigation of Plantin as a counterpart to Garamond’s Grec du roi, in Antwerp Holland, between 1560 - 1565. A version of the font was used (a century later!) for the 1692 edition of Diogenes Laertius by Aegidius Menagius (Gilles Ménage of Angers, 1613 – 92), published by Henric Wetstenium in Amsterdam. A second variant, at Kolonel size, was cut by Nikolaas Kis for the Greek-Dutch edition of the New Testament in 1698, again by Henric Wetstenium. A digital revival, was prepared by Ralph P. Hancock, in his Vusillus font. Latin and Cyrillic are based on a Goudy typeface. The font covers the Windows Glyph List, Greek Extended, various typographic extras and some Open Type features (Numerators, Denominators, Fractions, Old Style Figures, Historical Forms, Stylistic Alternates, Ligatures).</description>
-  <devel project="M17N:fonts" package="gdouros-atavyros-fonts"/>
-</package>

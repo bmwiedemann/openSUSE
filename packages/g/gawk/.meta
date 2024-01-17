@@ -1,6 +1,0 @@
-<package name="gawk" project="openSUSE:Factory">
-  <title>GNU awk</title>
-  <description>GNU awk is upwardly compatible with the System V Release 4 awk.  It is
-almost completely POSIX 1003.2 compliant.</description>
-  <devel project="Base:System" package="gawk"/>
-</package>

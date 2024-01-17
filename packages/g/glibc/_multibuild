@@ -1,9 +1,0 @@
-<multibuild>
-  <package>i686</package>
-  <package>utils</package>
-  <package>testsuite</package>
-  <package>cross-aarch64</package>
-  <package>cross-ppc64le</package>
-  <package>cross-riscv64</package>
-  <package>cross-s390x</package>
-</multibuild>

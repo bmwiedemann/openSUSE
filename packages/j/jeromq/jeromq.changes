@@ -1,9 +1,0 @@
--------------------------------------------------------------------
-Sat Sep  9 14:22:05 UTC 2023 - Fridrich Strba <fstrba@suse.com>
-
-- Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
-
--------------------------------------------------------------------
-Wed Jun 15 16:40:36 UTC 2022 - Fridrich Strba <fstrba@suse.com>
-
-- Initial packaging of jeromq 0.5.2

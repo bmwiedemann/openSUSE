@@ -1,6 +1,0 @@
-<package name="yq" project="openSUSE:Factory">
-  <title></title>
-  <description>A portable command-line YAML processor </description>
-  <devel project="utilities" package="yq"/>
-  <url>https://github.com/mikefarah/yq</url>
-</package>

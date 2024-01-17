@@ -1,9 +1,0 @@
-<package name="screen" project="openSUSE:Factory">
-  <title>A program to allow multiple screens on a VT100/ANSI Terminal</title>
-  <description>With this program you can take advantage of the multitasking abilities
-of your Linux system by opening several sessions over one terminal. The
-sessions can also be detached and resumed from another login terminal.
-
-Documentation: man page</description>
-  <devel project="Base:System" package="screen"/>
-</package>

@@ -1,5 +1,0 @@
-<package name="mgopen-fonts" project="openSUSE:Factory">
-  <title>Free High-Quality Greek Fonts</title>
-  <description>Free high-quality Greek fonts created by Magenta Ltd.</description>
-  <devel project="M17N:fonts" package="mgopen-fonts"/>
-</package>

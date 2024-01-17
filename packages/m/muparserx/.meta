@@ -1,6 +1,0 @@
-<package name="muparserx" project="openSUSE:Factory">
-  <title>muparserx</title>
-  <description>A C++ Library for Parsing Expressions with Strings, Complex Numbers, Vectors, Matrices and more.</description>
-  <devel project="science" package="muparserx"/>
-  <url>http://muparserx.beltoforion.de/</url>
-</package>

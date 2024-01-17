@@ -1,6 +1,0 @@
-<package name="sd" project="openSUSE:Factory">
-  <title>sd</title>
-  <description>Intuitive find &amp; replace CLI (sed alternative)</description>
-  <devel project="utilities" package="sd"/>
-  <url>https://github.com/chmln/sd</url>
-</package>

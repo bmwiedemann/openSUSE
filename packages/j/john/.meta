@@ -1,7 +1,0 @@
-<package name="john" project="openSUSE:Factory">
-  <title>Detects Weak Passwords</title>
-  <description>John the Ripper is a fast password cracker (password security auditing
-tool). Its primary purpose is to detect weak Unix passwords, but a
-number of other hash types are supported as well.</description>
-  <devel project="security" package="john"/>
-</package>

@@ -1,5 +1,0 @@
-<services>
-  <service name="cargo_vendor" mode="disabled">
-    <param name="srcdir">jless-0.9.0</param>
-  </service>
-</services>

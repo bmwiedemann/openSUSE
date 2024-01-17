@@ -1,5 +1,0 @@
-<package name="sisctrl" project="openSUSE:Factory">
-  <title>SiS Display Control Panel</title>
-  <description>Utility to set some display properties during server runtime.</description>
-  <devel project="X11:Utilities" package="sisctrl"/>
-</package>

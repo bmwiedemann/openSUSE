@@ -1,7 +1,0 @@
-<package name="iucode-tool" project="openSUSE:Factory">
-  <title>iucode-tool</title>
-  <description>iucode_tool is a program to manipulate microcode update collections for Intel® i686 and X86-64 system processors, and prepare them for use by the Linux kernel. Please refer to the project wiki for documentation and more details:
-
-https://gitlab.com/iucode-tool/iucode-tool</description>
-  <devel project="hardware" package="iucode-tool"/>
-</package>

@@ -1,5 +1,0 @@
-<package name="make" project="openSUSE:Factory">
-  <title>GNU make</title>
-  <description>The GNU make command with extensive documentation.</description>
-  <devel project="Base:System" package="make"/>
-</package>

@@ -1,5 +1,0 @@
-<package name="matrix-quaternion" project="openSUSE:Factory">
-  <title>QT Matrix client</title>
-  <description>Quaternion is a cross-platform desktop IM client for the Matrix protocol.</description>
-  <devel project="network:messaging:matrix" package="matrix-quaternion"/>
-</package>

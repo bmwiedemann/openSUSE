@@ -1,5 +1,0 @@
-<package name="icecream" project="openSUSE:Factory">
-  <title>For Distributed Compile in the Network</title>
-  <description>icecream is the next generation distcc.</description>
-  <devel project="devel:tools:building" package="icecream"/>
-</package>

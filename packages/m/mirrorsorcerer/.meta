@@ -1,8 +1,0 @@
-<package name="mirrorsorcerer" project="openSUSE:Factory">
-  <title>Mirror Sorcerer</title>
-  <description>This tool will profile official instances of OpenSUSE mirrorcache to determine the fastest repositories for your system.
-
-</description>
-  <devel project="utilities" package="mirrorsorcerer"/>
-  <url>https://github.com/Firstyear/mirrorsorcerer</url>
-</package>

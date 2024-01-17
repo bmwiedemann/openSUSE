@@ -1,9 +1,0 @@
-<package name="mtd-utils" project="openSUSE:Factory">
-  <title>Tools for maintaining Memory Technology Devices</title>
-  <description>This package contains tools for erasing and formatting flash devices,                                                                       
-including JFFS2, M-Systems DiskOnChip devices, etc.                                                                                         
-
-</description>
-  <devel project="filesystems" package="mtd-utils"/>
-  <url>http://www.linux-mtd.infradead.org/</url>
-</package>

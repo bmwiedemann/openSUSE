@@ -1,5 +1,0 @@
-<package name="sblim-cmpiutil" project="openSUSE:Factory">
-  <title>utility library for cmpi development</title>
-  <description>A set of utility functions that make cmpi provider development easier</description>
-  <devel project="systemsmanagement:wbem" package="sblim-cmpiutil"/>
-</package>

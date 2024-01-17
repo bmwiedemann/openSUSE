@@ -1,9 +1,0 @@
-[Unit]
-Description=Monthly execution of sarg-reports
-
-[Timer]
-OnCalendar=monthly
-Persistent=true
-
-[Install]
-WantedBy=timers.target

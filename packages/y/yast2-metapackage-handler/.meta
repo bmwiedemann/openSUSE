@@ -1,6 +1,0 @@
-<package name="yast2-metapackage-handler" project="openSUSE:Factory">
-  <title>YaST2 - Easy Installation of Add-on RPMs using Metapackages</title>
-  <description>With this technology users can install packages and add repositories
-with a simple click on a link in a website.</description>
-  <devel project="YaST:Head" package="yast2-metapackage-handler"/>
-</package>

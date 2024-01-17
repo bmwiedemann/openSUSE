@@ -1,6 +1,0 @@
-<package name="gobject-introspection" project="openSUSE:Factory">
-  <title>GObject Introspection Tools</title>
-  <description>The goal of the project is to describe the APIs and collect them in
-a uniform, machine readable format.</description>
-  <devel project="GNOME:Factory" package="gobject-introspection"/>
-</package>

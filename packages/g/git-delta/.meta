@@ -1,6 +1,0 @@
-<package name="git-delta" project="openSUSE:Factory">
-  <title>delta</title>
-  <description>A syntax-highlighter for git and diff output
-</description>
-  <devel project="utilities" package="git-delta"/>
-</package>

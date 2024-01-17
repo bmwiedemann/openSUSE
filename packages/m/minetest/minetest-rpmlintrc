@@ -1,7 +1,0 @@
-# Because we're using opengl-game-wrapper.sh
-addFilter("W: desktopfile-without-binary")
-# .orig files...
-addFilter("E: suse-filelist-forbidden")
-addFilter("W: backup-file-in-package")
-# False positive:
-addFilter("W: explicit-lib-dependency liberation-fonts")

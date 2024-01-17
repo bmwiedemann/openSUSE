@@ -1,8 +1,0 @@
-<package name="speexdsp" project="openSUSE:Factory">
-  <title></title>
-  <description>Speex is a patent free audio codec designed especially for voice
-(unlike Vorbis which targets general audio) signals and providing good
-narrowband and wideband quality. This project aims to be complementary
-to the Vorbis codec.</description>
-  <devel project="multimedia:libs" package="speexdsp"/>
-</package>

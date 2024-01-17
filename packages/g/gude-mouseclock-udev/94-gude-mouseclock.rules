@@ -1,2 +1,0 @@
-# GUDE Expert mouseCLOCK USB II
-KERNEL=="ttyUSB*", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="e88a", GROUP:="ntp", MODE:="0660", SYMLINK+="refclock-%m"

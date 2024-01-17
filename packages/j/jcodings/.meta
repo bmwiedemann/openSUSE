@@ -1,5 +1,0 @@
-<package name="jcodings" project="openSUSE:Factory">
-  <title>Java-based codings helper classes for Joni and JRuby</title>
-  <description>Java-based codings helper classes for Joni and JRuby.</description>
-  <devel project="Java:packages" package="jcodings"/>
-</package>

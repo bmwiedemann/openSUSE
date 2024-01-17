@@ -1,5 +1,0 @@
-<package name="ghc-syb" project="openSUSE:Factory">
-  <title>The syb package for GHC</title>
-  <description>This package contains the generics system described in the Scrap Your Boilerplate papers (see http://www.cs.uu.nl/wiki/GenericProgramming/SYB). It defines the Data class of types permitting folding and unfolding of constructor applications, instances of this class for primitive types, and a variety of traversals. </description>
-  <devel project="devel:languages:haskell" package="ghc-syb"/>
-</package>

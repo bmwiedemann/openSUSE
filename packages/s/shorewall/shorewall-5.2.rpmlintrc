@@ -1,3 +1,0 @@
-addFilter("files-duplicate /usr/share/shorewall6/configfiles/scfilter")
-addFilter("perl5-naming-policy-not-applied")
-addFilter("systemd-service-without-service_del_postun shorewall-init.service")

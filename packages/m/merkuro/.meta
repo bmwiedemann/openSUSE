@@ -1,8 +1,0 @@
-<package name="merkuro" project="openSUSE:Factory">
-  <title>Calendar Application</title>
-  <description>Calendar application using Akonadi to sync with external services (NextCloud, GMail, ...).
-
-</description>
-  <devel project="KDE:Applications" package="merkuro"/>
-  <url>https://apps.kde.org/merkuro.calendar</url>
-</package>

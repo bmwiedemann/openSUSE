@@ -1,6 +1,0 @@
-<package name="vacuum-im-plugins-usertune" project="openSUSE:Factory">
-  <title>Vacuum-IM User Tune Handler plugin</title>
-  <description>This plugin provides support to XEP-0118: defines a payload format for communicating information about music to which a user is listening, including the title, track number, collection, performer, composer, length, and user rating. The payload format is typically transported using the personal eventing protocol, a profile of XMPP publish-subscribe specified in XEP-0163.</description>
-  <devel project="network" package="vacuum-im-plugins-usertune"/>
-  <url>http://code.google.com/p/vacuum-plugins</url>
-</package>

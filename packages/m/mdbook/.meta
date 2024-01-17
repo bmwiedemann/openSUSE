@@ -1,6 +1,0 @@
-<package name="mdbook" project="openSUSE:Factory">
-  <title>mdBook</title>
-  <description>Create books from Markdown files.</description>
-  <devel project="devel:languages:rust" package="mdbook"/>
-  <url>https://github.com/rust-lang/mdBook</url>
-</package>

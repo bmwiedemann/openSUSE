@@ -1,0 +1,4 @@
+#!/bin/sh
+export SSH_AUTH_SOCK=/tmp/ssh-HDVzpHDIIo5i/agent.2183
+exec /home/opensusegit/openSUSE/scripts/subtree-check
+

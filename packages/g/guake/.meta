@@ -1,8 +1,0 @@
-<package name="guake" project="openSUSE:Factory">
-  <title>Drop-down terminal for GNOME</title>
-  <description>Guake is a dropdown terminal made for the GNOME desktop environment.
-
-</description>
-  <devel project="X11:terminals" package="guake"/>
-  <url>http://guake-project.org/</url>
-</package>

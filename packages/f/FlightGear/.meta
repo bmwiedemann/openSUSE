@@ -1,8 +1,0 @@
-<package name="FlightGear" project="openSUSE:Factory">
-  <title>FlightGear Flight Simulator</title>
-  <description>The Flight Gear project is working to create a sophisticated flight simulator framework for the development and pursuit of interesting flight simulator ideas. We are developing a solid basic sim that can be expanded and improved upon by anyone interested in contributing
-
-</description>
-  <devel project="games" package="FlightGear"/>
-  <url>http://www.flightgear.org/</url>
-</package>

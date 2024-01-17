@@ -1,5 +1,0 @@
-<package name="libcap-ng" project="openSUSE:Factory">
-  <title>An alternate POSIX capabilities library</title>
-  <description>Libcap-ng is a library that makes using posix capabilities easier</description>
-  <devel project="security" package="libcap-ng"/>
-</package>

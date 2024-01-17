@@ -1,5 +1,0 @@
-<package name="mangohud" project="openSUSE:Factory">
-  <title>A Vulkan and OpenGL overlay for monitoring</title>
-  <description>A Vulkan and OpenGL overlay for monitoring FPS, temperatures, CPU/GPU load and more.</description>
-  <devel project="games:tools" package="mangohud"/>
-</package>

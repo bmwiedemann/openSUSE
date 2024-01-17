@@ -1,0 +1,6 @@
+#!/bin/sh
+p=$1
+cd $p || exit 1
+d=`date -I`
+git add . ; git commit -a -m "Update $d" ; git pull --rebase ; git push
+cd /data/openSUSE-test/$p && git fetch origin ; git reset --hard origin/master

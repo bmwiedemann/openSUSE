@@ -1,2 +1,0 @@
-%__mingw32_cmake_provides	%{_rpmconfigdir}/mingw32-cmake.prov
-%__mingw32_cmake_path		^(%{_mingw32_libdir}/cmake|%{_mingw32_datadir})/.*/.*(Config\.cmake|-config\.cmake)$

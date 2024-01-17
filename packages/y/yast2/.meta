@@ -1,6 +1,0 @@
-<package name="yast2" project="openSUSE:Factory">
-  <title>YaST2 - Main Package</title>
-  <description>This package contains scripts and data needed for SuSE Linux
-installation with YaST2</description>
-  <devel project="YaST:Head" package="yast2"/>
-</package>

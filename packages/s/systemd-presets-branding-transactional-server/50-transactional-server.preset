@@ -1,4 +1,0 @@
-enable transactional-update.timer
-enable create-dirs-from-rpmdb.service
-enable rebootmgr.service
-enable ca-certificates.service

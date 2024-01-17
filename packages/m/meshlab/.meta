@@ -1,6 +1,0 @@
-<package name="meshlab" project="openSUSE:Factory">
-  <title>System for processing and editing unstructured 3D triangular meshes.</title>
-  <description>MeshLab is designed for the processing of typical large unstructured models arising in 3D scanning, providing a set of tools for editing, cleaning, healing, inspecting, rendering and converting this kind of meshes.
-</description>
-  <devel project="graphics" package="meshlab"/>
-</package>

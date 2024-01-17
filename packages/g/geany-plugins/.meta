@@ -1,6 +1,0 @@
-<package name="geany-plugins" project="openSUSE:Factory">
-  <title>A collection of different plugins for Geany</title>
-  <description>Geany-Plugins is a collection of different plugins for Geany,
-a lightweight IDE.</description>
-  <devel project="GNOME:Apps" package="geany-plugins"/>
-</package>

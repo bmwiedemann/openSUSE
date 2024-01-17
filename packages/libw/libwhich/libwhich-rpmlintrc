@@ -1,2 +1,0 @@
-# named lib* but only contains a cli utility
-addFilter("libwhich.* shlib-policy-missing-lib")

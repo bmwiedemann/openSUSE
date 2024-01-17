@@ -1,9 +1,0 @@
-<package name="xpenguins" project="openSUSE:Factory">
-  <title>cute little penguins that walk along the tops of your windows</title>
-  <description>This program animates a friendly family of penguins on your root
-window. They drop in from the top of the screen, walk along the tops of
-your windows, up the sides of your windows, up the side of the screen,
-and sometimes even levitate with their genetically-modified
-go-go-gadget 'copter ability.</description>
-  <devel project="X11:Utilities" package="xpenguins"/>
-</package>

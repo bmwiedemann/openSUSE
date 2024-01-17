@@ -1,8 +1,0 @@
-<package name="jo" project="openSUSE:Factory">
-  <title>JSON output from a shell</title>
-  <description>This is jo, a small utility to create JSON objects
-
-</description>
-  <devel project="utilities" package="jo"/>
-  <url>https://github.com/jpmens/jo/</url>
-</package>

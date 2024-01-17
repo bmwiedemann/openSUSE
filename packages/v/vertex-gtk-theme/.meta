@@ -1,7 +1,0 @@
-<package name="vertex-gtk-theme" project="openSUSE:Factory">
-  <title>Vertex GTK+ theme</title>
-  <description>Vertex is a modern theme that comes with three variants to choose
-from. The default variant with dark header-bars, a light variant,
-and a dark variant. It supports MATE, GNOME, Xfce, and Cinnamon.</description>
-  <devel project="X11:common:Factory" package="vertex-gtk-theme"/>
-</package>

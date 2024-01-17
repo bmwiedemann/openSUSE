@@ -1,2 +1,0 @@
-addFilter("systemd-service-without-service_.* sa-update.service")
-addFilter("spamassassin.* no-binary")

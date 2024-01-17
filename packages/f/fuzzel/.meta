@@ -1,6 +1,0 @@
-<package name="fuzzel" project="openSUSE:Factory">
-  <title>fuzzel</title>
-  <description>Application launcher for wlroots based Wayland compositors, similar to rofi's `drun` mode.</description>
-  <devel project="X11:Wayland" package="fuzzel"/>
-  <url>https://codeberg.org/dnkl/fuzzel</url>
-</package>

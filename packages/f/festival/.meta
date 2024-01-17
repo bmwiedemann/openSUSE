@@ -1,9 +1,0 @@
-<package name="festival" project="openSUSE:Factory">
-  <title>The Festival Speech Synthesis System</title>
-  <description>Festival is a multilingual speech synthesis system developed at CSTR.
-It offers a full text-to-speech system with various APIs as well as an
-environment for development and research of speech synthesis
-techniques. It is written in C++ and has a Scheme-based command
-interpreter for general control.</description>
-  <devel project="KDE:KDE3" package="festival"/>
-</package>

@@ -1,7 +1,0 @@
-<package name="inxi" project="openSUSE:Factory">
-  <title>A system information script</title>
-  <description>inxi is a command line system information tool. It was forked from infobash.
-The primary purpose of inxi is for support, and sys admin use.
-inxi is used widely for forum and IRC support.</description>
-  <devel project="utilities" package="inxi"/>
-</package>

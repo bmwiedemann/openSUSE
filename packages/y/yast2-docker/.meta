@@ -1,5 +1,0 @@
-<package name="yast2-docker" project="openSUSE:Factory">
-  <title>Docker module for YaST2</title>
-  <description></description>
-  <devel project="YaST:Head" package="yast2-docker"/>
-</package>

@@ -1,8 +1,0 @@
-<package name="jfbterm" project="openSUSE:Factory">
-  <title>Framebuffer Terminal to Display Japanese Characters</title>
-  <description>JFBTERM is a program to display Japanese Kanji characters using the
-framebuffer. Similar to the well-known program kon, it uses a terminal
-emulator on the console and hooks into its output. But JFBTERM does not
-use VGA (like kon does). It uses the framebuffer instead.</description>
-  <devel project="M17N" package="jfbterm"/>
-</package>

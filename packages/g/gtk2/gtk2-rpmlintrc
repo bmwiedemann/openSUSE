@@ -1,5 +1,0 @@
-# Legacy package, gtk2 internally is the only consumer of libgail
-addFilter("shlib-policy-name-error SONAME: libgailutil.so.18");
-# rpmlint error, the library shares so-version info and is allowed in the main package
-addFilter("shlib-policy-name-error SONAME: libg[dt]k-x11-2.0.so.0");
-

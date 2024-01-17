@@ -1,9 +1,0 @@
-<package name="forge-parent" project="openSUSE:Factory">
-  <title>Sonatype Forge Parent Pom</title>
-  <description>Sonatype Forge is a community dedicated to the creation of
-development tools and technologies.
-
-</description>
-  <devel project="Java:packages" package="forge-parent"/>
-  <url>https://docs.sonatype.org/display/FORGE/Index</url>
-</package>

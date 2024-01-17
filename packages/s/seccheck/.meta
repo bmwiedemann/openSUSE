@@ -1,6 +1,0 @@
-<package name="seccheck" project="openSUSE:Factory">
-  <title>Security-Check Scripts</title>
-  <description>Regularly executable scripts (via cron) for checking the security of
-your system.</description>
-  <devel project="security" package="seccheck"/>
-</package>

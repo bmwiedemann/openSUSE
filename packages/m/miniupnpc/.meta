@@ -1,6 +1,0 @@
-<package name="miniupnpc" project="openSUSE:Factory">
-  <title>Universal Plug'n'Play (UPnP) Client</title>
-  <description>The MiniUPnP project offers software which supports the UPnP Internet Gateway
-Device (IGD) specifications.</description>
-  <devel project="devel:libraries:c_c++" package="miniupnpc"/>
-</package>

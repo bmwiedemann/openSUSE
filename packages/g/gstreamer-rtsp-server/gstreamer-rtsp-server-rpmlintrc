@@ -1,3 +1,0 @@
-# Filter out bogus warning about missing deps in devel package
-# gstreamer-rtsp-server-devel.x86_64: W: no-dependency-on gstreamer-rtsp-server*/gstreamer-rtsp-server-libs/libgstreamer-rtsp-server*
-addFilter("no-dependency-on");

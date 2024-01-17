@@ -1,7 +1,0 @@
-<package name="mono-addins" project="openSUSE:Factory">
-  <title>Mono Addins Framework</title>
-  <description>Mono.Addins is a generic framework for creating extensible
-applications, and for creating libraries which extend those
-applications.</description>
-  <devel project="Mono:Factory" package="mono-addins"/>
-</package>

@@ -1,6 +1,0 @@
-<package name="yast2-testsuite" project="openSUSE:Factory">
-  <title>YaST2 - Testsuite</title>
-  <description>This is a package for the YaST2 modules testsuite preparation and
-execution.</description>
-  <devel project="YaST:Head" package="yast2-testsuite"/>
-</package>

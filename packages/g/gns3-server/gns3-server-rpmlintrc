@@ -1,2 +1,0 @@
-# docker builds an isolated buildroot, this not in the system
-addFilter("E: wrong-script-interpreter")

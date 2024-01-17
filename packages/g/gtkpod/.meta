@@ -1,9 +1,0 @@
-<package name="gtkpod" project="openSUSE:Factory">
-  <title>A platform independent GUI for the Apple® iPod®</title>
-  <description>gtkpod is a Platform-Independent GUI for the Apple iPod using GTK2. It
-allows you to upload songs and play lists to your iPod. It supports ID3
-tag editing with multiple charsets for ID3 tags, detects duplicate
-songs, allows offline modification of the database with later
-synchronization, and more.</description>
-  <devel project="GNOME:Apps" package="gtkpod"/>
-</package>

@@ -1,6 +1,0 @@
-<package name="yast2-fcoe-client" project="openSUSE:Factory">
-  <title>Configuration of fcoe-client</title>
-  <description>This package contains the YaST2 component for the Fibre Channel over
-Ethernet (FCoE) configuration.</description>
-  <devel project="YaST:Head" package="yast2-fcoe-client"/>
-</package>

@@ -1,5 +1,0 @@
-<package name="geis" project="openSUSE:Factory">
-  <title>Open Input Framework Geis C API</title>
-  <description>An implementation of the GEIS (Gesture Engine Interface and Support) interface.</description>
-  <devel project="X11:Unity" package="geis"/>
-</package>

@@ -1,9 +1,0 @@
-<package name="gimp-save-for-web" project="openSUSE:Factory">
-  <title>Save for Web plug-in for The Gimp</title>
-  <description>Save for Web allows to find compromise between minimal file size and
-acceptable quality of image quickly. While adjusting various settings,
-you may explore how image and file size change. Options to decrease
-image file size include setting quality, number or colors, resizing,
-cropping, Exif information removal, etc.</description>
-  <devel project="graphics" package="gimp-save-for-web"/>
-</package>

@@ -1,5 +1,0 @@
-<package name="samba-client" project="openSUSE:Factory">
-  <title>Samba Client container</title>
-  <description></description>
-  <devel project="network:samba:CONTAINERS" package="samba-client"/>
-</package>

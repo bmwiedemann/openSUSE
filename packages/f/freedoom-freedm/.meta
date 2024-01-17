@@ -1,5 +1,0 @@
-<package name="freedoom-freedm" project="openSUSE:Factory">
-  <title>Deathmatch levels for Doom</title>
-  <description>A set of deathmatch levels for the DOOM game engine, based on the freely redistributable Freedoom game files.</description>
-  <devel project="games" package="freedoom-freedm"/>
-</package>

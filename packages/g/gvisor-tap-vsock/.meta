@@ -1,5 +1,0 @@
-<package name="gvisor-tap-vsock" project="openSUSE:Factory">
-  <title>Go replacement for libslirp and VPNKit</title>
-  <description></description>
-  <devel project="devel:microos" package="gvisor-tap-vsock"/>
-</package>

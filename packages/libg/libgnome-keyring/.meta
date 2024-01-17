@@ -1,7 +1,0 @@
-<package name="libgnome-keyring" project="openSUSE:Factory">
-  <title>Library to integrate with the GNOME Keyring</title>
-  <description>The GNOME Keyring is a program that keep password and other secrets
-for users. The libgnome-keyring library is used by applications to
-integrate with the GNOME Keyring system.</description>
-  <devel project="GNOME:Factory" package="libgnome-keyring"/>
-</package>

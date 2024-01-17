@@ -1,7 +1,0 @@
-<package name="libcdatetime" project="openSUSE:Factory">
-  <title>Library for cross-platform C date and time functions</title>
-  <description>Library for cross-platform C date and time functions.  
-
-Part of the libyal library family.</description>
-  <devel project="security:forensics" package="libcdatetime"/>
-</package>

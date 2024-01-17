@@ -1,5 +1,0 @@
-<package name="gammastep" project="openSUSE:Factory">
-  <title>gammastep</title>
-  <description>Adjust the color temperature of your screen according to your surroundings in wayland.</description>
-  <devel project="X11:Utilities" package="gammastep"/>
-</package>

@@ -1,8 +1,0 @@
-Index: gsettings-qt-0.1.20160329/gsettings-qt.pro
-===================================================================
---- gsettings-qt-0.1.20160329.orig/gsettings-qt.pro
-+++ gsettings-qt-0.1.20160329/gsettings-qt.pro
-@@ -1,2 +1,3 @@
- TEMPLATE = subdirs
- SUBDIRS += src/gsettings-qt.pro GSettings/gsettings-qt.pro tests/tests.pro tests/cpptest.pro
-+CONFIG += ordered

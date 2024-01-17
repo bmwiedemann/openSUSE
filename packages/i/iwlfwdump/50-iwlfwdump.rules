@@ -1,1 +1,0 @@
-SUBSYSTEM=="devcoredump", ACTION=="add", RUN+="/sbin/iwlfwdump"

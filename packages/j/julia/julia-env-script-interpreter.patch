@@ -1,9 +1,0 @@
-diff -ruN a/contrib/julia-config.jl b/contrib/julia-config.jl
---- julia-1.9.4.orig/contrib/julia-config.jl	2023-12-08 06:25:53.680851149 +0800
-+++ julia-1.9.4/contrib/julia-config.jl	2023-12-08 06:26:33.647145750 +0800
-@@ -1,4 +1,4 @@
--#!/usr/bin/env julia
-+#!/usr/bin/julia
- # This file is a part of Julia. License is MIT: https://julialang.org/license
- 
- import Libdl

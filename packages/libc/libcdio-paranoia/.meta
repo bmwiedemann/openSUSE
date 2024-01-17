@@ -1,5 +1,0 @@
-<package name="libcdio-paranoia" project="openSUSE:Factory">
-  <title>CDDA reader</title>
-  <description>This CDDA reader distribution ('libcdio-cdparanoia') reads audio from the CDROM directly as data, with no analog step between, and writes the data to a file or pipe as .wav, .aifc or as raw 16 bit linear PCM.</description>
-  <devel project="multimedia:libs" package="libcdio-paranoia"/>
-</package>

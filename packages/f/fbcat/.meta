@@ -1,6 +1,0 @@
-<package name="fbcat" project="openSUSE:Factory">
-  <title>fbcat</title>
-  <description>Contains fbcat and fbgrab for taking a screenshot using the framebuffer
-device.</description>
-  <devel project="utilities" package="fbcat"/>
-</package>

@@ -1,2 +1,0 @@
-addFilter("E: arch-dependent-file-in-usr-share .*")
-addFilter("W: shared-lib-without-dependency-information .*")

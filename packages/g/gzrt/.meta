@@ -1,8 +1,0 @@
-<package name="gzrt" project="openSUSE:Factory">
-  <title>Recover data from a corrupted gzip file</title>
-  <description>gzrecover is a program that will attempt to extract any readable data
-out of a gzip file that has been corrupted. 
-
-</description>
-  <devel project="Archiving" package="gzrt"/>
-</package>

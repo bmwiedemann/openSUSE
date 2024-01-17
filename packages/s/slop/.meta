@@ -1,9 +1,0 @@
-<package name="slop" project="openSUSE:Factory">
-  <title>Query for a selection from the user and print the region to stdout</title>
-  <description>slop (Select Operation) queries for a selection from the user and prints
-the region to stdout. It grabs the mouse and turns it into a crosshair,
-lets the user click and drag to make a selection (or click on a window)
-while drawing a pretty box around it, then finally prints the selection's
-dimensions to stdout.</description>
-  <devel project="X11:Utilities" package="slop"/>
-</package>

@@ -1,7 +1,0 @@
-<package name="libass" project="openSUSE:Factory">
-  <title>Portable Library for SSA/ASS Subtitles Rendering</title>
-  <description>libass is a portable subtitle renderer for the ASS/SSA
- (Advanced Substation Alpha/Substation Alpha) subtitle 
-format. It is mostly compatible with VSFilter.</description>
-  <devel project="multimedia:libs" package="libass"/>
-</package>

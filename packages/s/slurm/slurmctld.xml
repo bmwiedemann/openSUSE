@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<service>
-	<short>slurmctld</short>
-    <description>slurmctld is the management daemon for SLURM cluster management.</description>
-  <port protocol="tcp" port="6817"/>
-  <port protocol="udp" port="6817"/>
-</service>

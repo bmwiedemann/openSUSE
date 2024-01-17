@@ -1,6 +1,0 @@
-<package name="metronome" project="openSUSE:Factory">
-  <title>Metronome.</title>
-  <description>A very light and neat click app for elementary OS.
-  </description>
-  <devel project="X11:Pantheon:Apps" package="metronome"/>
-</package>

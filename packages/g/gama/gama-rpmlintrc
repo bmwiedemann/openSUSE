@@ -1,2 +1,0 @@
-# tools package dependendy, not a library
-addFilter("explicit-lib-dependency libxml2-tools")

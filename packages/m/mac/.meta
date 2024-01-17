@@ -1,5 +1,0 @@
-<package name="mac" project="openSUSE:Factory">
-  <title>APE codec and decompressor</title>
-  <description></description>
-  <devel project="multimedia:apps" package="mac"/>
-</package>

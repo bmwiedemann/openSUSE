@@ -1,5 +1,0 @@
-<package name="yast2-update" project="openSUSE:Factory">
-  <title>YaST2 - Update</title>
-  <description>Use this component if you wish to update your system.</description>
-  <devel project="YaST:Head" package="yast2-update"/>
-</package>

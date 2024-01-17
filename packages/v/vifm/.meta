@@ -1,6 +1,0 @@
-<package name="vifm" project="openSUSE:Factory">
-  <title>Ncurses based file manager with vi like keybindings</title>
-  <description>Vifm is a ncurses based file manager with vi like keybindings that allow complete keyboard control over your files without having to learn a new set of commands. It supports UTF-8, a quick file view similar to midnight commander's quick view, and configurable color schemes.</description>
-  <devel project="utilities" package="vifm"/>
-  <url>http://vifm.sourceforge.net</url>
-</package>

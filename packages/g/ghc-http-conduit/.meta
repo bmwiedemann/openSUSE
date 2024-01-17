@@ -1,5 +1,0 @@
-<package name="ghc-http-conduit" project="openSUSE:Factory">
-  <title>HTTP client package with conduit interface and HTTPS support.</title>
-  <description></description>
-  <devel project="devel:languages:haskell" package="ghc-http-conduit"/>
-</package>

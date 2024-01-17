@@ -1,6 +1,0 @@
-<package name="mosh" project="openSUSE:Factory">
-  <title>mosh</title>
-  <description>mosh: the mobile shell</description>
-  <devel project="network" package="mosh"/>
-  <url>http://mosh.mit.edu/</url>
-</package>

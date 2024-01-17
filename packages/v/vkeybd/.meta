@@ -1,7 +1,0 @@
-<package name="vkeybd" project="openSUSE:Factory">
-  <title>Vkeybd - Virtual Keyboard Instrument</title>
-  <description>Vkeybd is a virtual keyboard (as in musical instrument) for AWE32/64,
-raw MIDI, and ALSA sequencer drivers.  It is written in Tcl/Tk.  Enjoy
-playing music with your &quot;computer&quot; keyboard.</description>
-  <devel project="multimedia:apps" package="vkeybd"/>
-</package>

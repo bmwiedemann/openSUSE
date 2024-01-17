@@ -1,9 +1,0 @@
-<package name="facetimehd" project="openSUSE:Factory">
-  <title>Kernel device driver for facetimehd webcam</title>
-  <description>Kernel module for the facetimehd webcams found in various Apple systems.
-This package also downloads and installs a firmware provided by Apple.
-
-</description>
-  <devel project="hardware" package="facetimehd"/>
-  <url>https://github.com/patjak/bcwc_pcie</url>
-</package>

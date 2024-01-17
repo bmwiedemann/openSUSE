@@ -1,6 +1,0 @@
-<package name="identity" project="openSUSE:Factory">
-  <title>Compare images and videos</title>
-  <description>A program for comparing multiple versions of an image or video.</description>
-  <devel project="multimedia:apps" package="identity"/>
-  <url>https://gitlab.gnome.org/YaLTeR/identity</url>
-</package>

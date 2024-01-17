@@ -1,7 +1,0 @@
-<package name="ftp" project="openSUSE:Factory">
-  <title>The Standard UNIX FTP Client</title>
-  <description>This package provides the standard UNIX command line FTP client. FTP is
-the file transfer protocol, which is a widely used Internet protocol
-for transferring files.</description>
-  <devel project="network" package="ftp"/>
-</package>

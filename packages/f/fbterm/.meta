@@ -1,5 +1,0 @@
-<package name="fbterm" project="openSUSE:Factory">
-  <title>A fast frame-buffer based terminal emulator</title>
-  <description>FbTerm is a fast terminal emulator for linux with frame buffer device.</description>
-  <devel project="M17N" package="fbterm"/>
-</package>

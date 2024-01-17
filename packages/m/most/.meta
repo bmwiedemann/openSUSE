@@ -1,7 +1,0 @@
-<package name="most" project="openSUSE:Factory">
-  <title>most</title>
-  <description>Most is a paging program.
-It supports multiple windows and can scroll left and right.</description>
-  <devel project="utilities" package="most"/>
-  <url>https://www.jedsoft.org/most/</url>
-</package>

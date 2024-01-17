@@ -1,2 +1,0 @@
-addFilter(".*devel-file-in-non-devel-package.*/usr/share/gir-.*/*\.gir")
-addFilter(".*devel-file-in-non-devel-package.*/usr/share/gobject-introspection-.*/*\.[ch]")

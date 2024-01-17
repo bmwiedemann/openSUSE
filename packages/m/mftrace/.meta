@@ -1,7 +1,0 @@
-<package name="mftrace" project="openSUSE:Factory">
-  <title>Scalable PostScript Fonts for MetaFont</title>
-  <description>Mftrace is a small Python program that lets you trace a TeX bitmap font
-into a PFA or PFB font (A PostScript Type1 Scalable Font) or TTF
-(TrueType) font.</description>
-  <devel project="graphics" package="mftrace"/>
-</package>

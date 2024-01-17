@@ -1,0 +1,2 @@
+#!/bin/sh
+scripts/subtree-check|grep -v missing|cut -c 14- | tee /dev/shm/missing-list-$(date -I)

@@ -1,5 +1,0 @@
-<package name="gdouros-maya-fonts" project="openSUSE:Factory">
-  <title>Font with basic Maya glyphs</title>
-  <description>Maya covers the glyphs in J. Eric S. Thompson’s “A Catalog of Maya Hieroglyphs”, as well as some extra glyphs for days, months and numbers. This is a work-font that may be of some scholarly use; it is not a proposal of any kind. There are no plans to improve or expand it.</description>
-  <devel project="M17N:fonts" package="gdouros-maya-fonts"/>
-</package>

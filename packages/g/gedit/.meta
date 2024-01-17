@@ -1,6 +1,0 @@
-<package name="gedit" project="openSUSE:Factory">
-  <title>Small and lightweight UTF-8 text editor</title>
-  <description>Gedit is a small and lightweight UTF-8 text editor for the GNOME
-environment.</description>
-  <devel project="GNOME:Factory" package="gedit"/>
-</package>

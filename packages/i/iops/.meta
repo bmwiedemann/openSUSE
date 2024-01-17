@@ -1,8 +1,0 @@
-<package name="iops" project="openSUSE:Factory">
-  <title>Disk I/O Benchmark</title>
-  <description>Benchmark script to measure disk I/O performance.
-
-</description>
-  <devel project="benchmark" package="iops"/>
-  <url>http://benjamin-schweizer.de/measuring-disk-io-performance.html</url>
-</package>

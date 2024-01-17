@@ -1,5 +1,0 @@
-<package name="galene" project="openSUSE:Factory">
-  <title></title>
-  <description>Galène videoconferencing server</description>
-  <devel project="network:telephony" package="galene"/>
-</package>

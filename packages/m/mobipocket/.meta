@@ -1,5 +1,0 @@
-<package name="mobipocket" project="openSUSE:Factory">
-  <title>E-book plugin for Okular</title>
-  <description>Mobipocket E-book support for Okular.</description>
-  <devel project="KDE:Applications" package="mobipocket"/>
-</package>

@@ -1,5 +1,0 @@
-<package name="gucharmap" project="openSUSE:Factory">
-  <title>A Featureful Unicode Character Map</title>
-  <description>Gucharmap is a featureful unicode character map.</description>
-  <devel project="GNOME:Factory" package="gucharmap"/>
-</package>

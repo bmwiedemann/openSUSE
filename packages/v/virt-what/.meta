@@ -1,5 +1,0 @@
-<package name="virt-what" project="openSUSE:Factory">
-  <title>Detect if running in a virtual machine</title>
-  <description>This is a collection of scripts which you can use to work out what sort of virtualization you are running inside.  Please read the manual page virt-what(1) to find out how to use it.  This file is for developers and people compiling from source.</description>
-  <devel project="Virtualization" package="virt-what"/>
-</package>
