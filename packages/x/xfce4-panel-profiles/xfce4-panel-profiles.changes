@@ -1,0 +1,140 @@
+-------------------------------------------------------------------
+Tue Jun  6 14:46:19 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Refresh Libxfce4ui.patch again to ensure we require both
+  typelib(Libxfce4ui) *and* typelib(Libxfce4util)
+- Add Requires: python3-psutil
+
+-------------------------------------------------------------------
+Tue Jun  6 13:05:38 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Really fix files list and permissions of installed files
+
+-------------------------------------------------------------------
+Mon Jun  5 13:42:59 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.0.14
+  * Save and restore rc-files
+  * Add keywords to .desktop file (Fixes #9)
+  * Properly filter filenames on startup
+  * Ensure unique profile name and consistent filename
+  * Pass correct length to GLib.KeyFile.load_from_data() (Fixes #20)
+  * Open panel prefs dialog also on delete-event (Fixes #42)
+  * configure: Use shell builtins instead of sed
+  * Add missing translatable flags
+  * Fix translations when $prefix != /usr
+  * Add Unity layout
+  * Use get_user_config_dir instead of get_home_dir (Fixes #38)
+  * Show errors before saving profile to file
+  * Ignore corrupted desktop-files on store Ignore empty launchers on
+  store
+  * Set correct desktop file name for translations
+  * Makefile.in.in: Pass arguments to tar to make build reproducible
+  regardless of user or umask
+  * removed extra created link in makefile(#10)
+  * Translation Updates
+- Refresh Libxfce4ui.patch
+- Fix files list and permissions of installed files
+
+-------------------------------------------------------------------
+Thu Jun 30 11:25:59 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add Git-Clone URL
+
+-------------------------------------------------------------------
+Mon Feb 22 13:31:48 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.0.13
+  * Add Cupertino layout (gxo#apps/xfce4-panel-profiles#7)
+  * Add Redmond 7 layout (gxo#apps/xfce4-panel-profiles#8)
+  * Add Xfce 4.16 layout
+  * Updated existing templates to support Xfce 4.16
+  * Makefile.in.in: remove bashisms
+  * Enabled exporting Whisker menu configuration
+    (gxo#apps/xfce4-panel-profiles#11)
+  * Translation Updates
+
+-------------------------------------------------------------------
+Thu Dec 31 06:03:10 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Fixed Libxfce4ui.patch
+
+-------------------------------------------------------------------
+Wed Dec 30 02:35:12 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Added Libxfce4ui.patch. OBS gets confused which typelib to require 
+  as dependency and we only need Libxfce4ui. 
+
+-------------------------------------------------------------------
+Tue Dec 29 06:35:30 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to version 1.0.12
+  * New Features:
+    - New build option `--docdir` for documentation install path
+    - New build option `--mandir` for manpage install path
+  * General:
+    - Manpage `xfce4-panel-profiles.1` is no longer gzipped 
+      (gxo#apps/xfce4-panel-profiles#5)
+  * Bugs Fixed:
+    - Release install error: incorrect README filename 
+      (gxo#apps/xfce4-panel-profiles#24) 
+
+- Updates from version 1.0.11
+  * New Features
+    - Add support for saving xfce4-whiskermenu's configuration file
+    - Prefer CSD in XfceTitledDialog
+    - Use XfceTitledDialog from libxfce4ui 
+    - Use Xfce's about dialog via libxfce4ui
+    - Add new icons and use reverse DNS for icons and files
+    - Open xfce4-panel on close button (bxo#16505)
+  * General
+    - Add new README.md over old README
+    - Try the new and old libxfce4ui gir file name
+    - Add basic GitLab pipeline
+    - Make tarball creation reproducible
+  * Bugs Fixed
+    - Update openSUSE profile and fix build
+    - Removed check for if the menu is installed. This would probably
+      get in the way.
+    - Use current branch in 'make distcheck'
+    - Use configured appname instead of argv[0]
+    - Fix typos in comments.
+  * Updated translations
+
+-------------------------------------------------------------------
+Wed Jan 15 10:36:48 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to version 1.0.10
+  * Add openSUSE profile
+  * Add new error for invalid configuration files (bxo#15983)
+  * 'Current Configuration' now pulls the current panel state instead of
+    the state cached when the program starts (bxo#16114)
+  * A cancellable warning is now displayed when applying configurations
+    (bxo#14559)
+  * Translations updates
+- Removed patch openSUSE-profile.patch because merged upstream
+
+-------------------------------------------------------------------
+Sun Jul 28 19:09:54 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to version 1.0.9
+  * Add Xfce 4.14 profile
+  * Suppress deprecation warnings
+  * Rename launchers to be more explicit
+  * Rename Xubuntu releases to version numbers instead of codenames
+  * Unversion gimp desktop file to work with any release
+  * Fix KeyError when processing some layouts (bxo#14934)
+  * Safely handle values that GLib cannot process (bxo#14597)
+  * Translation updates
+- Fixed and updated patch openSUSE-profile.patch
+
+-------------------------------------------------------------------
+Sun Dec  2 14:49:45 UTC 2018 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- added openSUSE-profile.patch for openSUSE panel layout
+- run spec cleaner
+
+-------------------------------------------------------------------
+Sun Dec  2 06:59:52 UTC 2018 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Version 1.0.8 Initial Build

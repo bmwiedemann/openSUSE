@@ -1,0 +1,35 @@
+From 414a5a3dee8639b28ca6edd37e5f91adbc622e37 Mon Sep 17 00:00:00 2001
+From: Jonas Kittner <jonas.kittner@rub.de>
+Date: Wed, 17 May 2023 12:44:06 +0200
+Subject: [PATCH] replace deprecated locked_cached_property decorator with
+ cached_property
+
+---
+ flask_babel/__init__.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/flask_babel/__init__.py b/flask_babel/__init__.py
+index a76bf7c..9f94d22 100644
+--- a/flask_babel/__init__.py
++++ b/flask_babel/__init__.py
+@@ -16,10 +16,10 @@
+ 
+ from babel.support import Translations, NullTranslations
+ from flask import current_app, g
+-from flask.helpers import locked_cached_property
+ from babel import dates, numbers, support, Locale
+ from pytz import timezone, UTC
+ from werkzeug.datastructures import ImmutableDict
++from werkzeug.utils import cached_property
+ 
+ from flask_babel.speaklater import LazyString
+ 
+@@ -221,7 +221,7 @@ def domain(self) -> str:
+         """
+         return get_babel().default_domain
+ 
+-    @locked_cached_property
++    @cached_property
+     def domain_instance(self):
+         """The message domain for the translations.
+         """

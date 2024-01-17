@@ -1,0 +1,6 @@
+<package name="perl-Net-CIDR-Lite" project="openSUSE:Factory">
+  <title>Perl extension for merging IPv4 or IPv6 CIDR addresses</title>
+  <description>Faster alternative to Net::CIDR when merging a large number of CIDR
+address ranges. Works for IPv4 and IPv6 addresses.</description>
+  <devel project="devel:languages:perl" package="perl-Net-CIDR-Lite"/>
+</package>

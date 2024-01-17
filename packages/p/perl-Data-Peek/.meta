@@ -1,0 +1,9 @@
+<package name="perl-Data-Peek" project="openSUSE:Factory">
+  <title>A collection of low-level debug facilities</title>
+  <description>Data::Peek started off as 'DDumper' being a wrapper module over the
+Data::Dumper manpage, but grew out to be a set of low-level data
+introspection utilities that no other module provided yet, using the lowest
+level of the perl internals API as possible.</description>
+  <devel project="devel:languages:perl" package="perl-Data-Peek"/>
+  <url>http://search.cpan.org/dist/Data-Peek/</url>
+</package>

@@ -1,0 +1,8 @@
+<package name="myspell-dictionaries" project="openSUSE:Factory">
+  <title>A Source Package for Dictionaries Used by MySpell</title>
+  <description>This source package contains dictionaries for MySpell.
+
+The MySpell spell-checker is used by the OpenOffice.org office suite,
+the Mozilla Composer, and the Mozilla Mail message composition window.</description>
+  <devel project="LibreOffice:Factory" package="myspell-dictionaries"/>
+</package>

@@ -1,0 +1,265 @@
+-------------------------------------------------------------------
+Tue Nov  7 16:25:01 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.4.8:
+  + Add an device error code for 'busy'.
+
+-------------------------------------------------------------------
+Sun Oct 15 08:16:29 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.4.7:
+  + Add new API to get the HID descriptor data
+  + Add calling convention to libusb callback functions
+- Changes from version 0.4.6:
+  + Add JSON compatibility helpers for old json-glib versions
+  + Fix emulation of devices using out-of-order BulkTransfer
+    replies
+  + Use project_source_root to fix building as a subproject
+- Changes from version 0.4.5:
+  + Add new API to better detect emulated replug
+  + Do not emit spurious ::device-removed events when emulating
+  + Record zero-sized device events
+  + Reset the in-order event index when clearing the event array
+  + Save the libusb error if libusb_submit_transfer() fails
+- Changes from version 0.4.4:
+  + Add new API to make emulation easier to use
+  + Emit remove devices with matching tags when loading contexts
+  + Fix a critical warning when finalizing devices without
+    endpoints
+  + Reduce the debugging level when emulating firmware
+- Changes from version 0.4.3:
+  + Export g_usb_device_has_tag()
+  + Work around a libusb issue which causes devices to appear twice
+- Add pkgconfig(gi-docgen) and pkgconfig(json-glib-1.0)
+  BuildRequires: New dependencies.
+- Drop gtk-doc BuildRequires: No longer needed, nor used after the
+  port upstream.
+- Pass tests=false to meson setup, do not build or install any
+  tests at this time.
+- Use ldconfig_scriptlets macro for post(un) handling.
+
+-------------------------------------------------------------------
+Fri Aug  5 11:30:24 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add no-pkg-resources.patch:
+  * Replaces pkg_resources with python-packaging
+  * pkg_resources is provided by setuptools, but the previously
+    transitive pull in of setuptools has been broken by
+    gtk-doc --> python3-Pygments -/-> python3-setuptools
+
+-------------------------------------------------------------------
+Mon May  9 07:58:08 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 0.3.10:
+  + New Features:
+    - Add API to change the hotplug poll interval.
+
+-------------------------------------------------------------------
+Wed Dec 22 12:12:22 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 0.3.9:
+  - Add g_usb_device_get_string_descriptor_bytes()
+  - Do not double-reference USB devices
+  - Fix hotplug handling and signal emission during enumerate
+  - Add the GUsbEndpoint methods to the docs
+  - Add g_usb_device_get_string_descriptor_bytes_full
+  - Fix hotplug after threaded device removal
+  - Don't hard-code the list of OS supporting --version-script
+
+-------------------------------------------------------------------
+Fri Jan  8 07:46:54 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add baselibs.conf: build libgusb2-32bit, which is a dependency to
+  libfprint-2-2-32bit. Due to a installcheck bot issue, this
+  happened to be undetected for a while though.
+
+-------------------------------------------------------------------
+Mon Sep 14 10:51:19 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.3.5:
+  - Add a way to get iConfiguration (Benson Leung)
+  - Allow building GtkDoc when building as a subproject (Richard Hughes)
+  - Fix version script to be more portable (Laurent Bigonville, Ting-Wei Lan)
+  - Include methods on plain structs in the version script (Simon McVittie)
+  - This fixes the symbol version for g_usb_version_string() to be in the right
+    place, so update this library alongside with external programs if you've
+    already started using this symbol for example in fwupd. We've put a mechanism
+    in place so this kind of thing can't happen again. Sorry!
+  - Validate the exported symbol list during check (Richard Hughes)
+  - Include the USB bus in the generated platform_id (Richard Hughes)
+  - Add a thin glib wrapper around libusb_endpoint_descriptor (Emmanuel Pacaud)
+  - Fix high number of wakeups when checking the GUsbContext (Richard Hughes)
+  - Use '#pragma once' to reduce boilerplate (Richard Hughes)
+  - Wrap the upstream libusb_strerror() (Richard Hughes)
+  - Do not use deprecated libusb API (Richard Hughes)
+  - Fix compilation on macOS (Richard Hughes)
+  - Use a 1ms timeout in the Windows event thread (Richard Hughes)
+  - Use has_link_argument() to detect linker flags (Richard Hughes)
+  - Add g_usb_device_get_spec() (Richard Hughes)
+  - Add g_usb_version_string() for fwupd (Richard Hughes)
+  - Add -Wswitch-enum (Benjamin Berg)
+  - Fix GI length introspection annotations (grindhold)
+  - Make gir generation optional (maxice8)
+
+-------------------------------------------------------------------
+Thu Mar  8 12:23:43 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 0.3.0:
+  + New Features:
+    - Add Travis integration.
+    - Allow changing the path to usb.ids file.
+    - Port to the Meson build system.
+  + Replace libusb-1.0/libusb.h with libusb.h.
+- Port to meson build system:
+  + Add meson BuildRequires.
+  + Replace configure/make/make_install with
+    meson/meson_build/meson_install.
+- Add gtk-doc BuildRequires: the meson-based tarball no longer
+  ships pre-built documentation.
+- Drop xz BuildRequires: this is implicit in all openSUSE
+  buildroots.
+
+-------------------------------------------------------------------
+Mon Mar  5 19:25:54 UTC 2018 - jengelh@inai.de
+
+- Fix SRPM group. Update summaries.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:35:13 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Wed Sep  6 20:08:26 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 0.2.11:
+  + New Features: Add g_usb_context_set_flags().
+  + Bugfix: Fix the actual required GLib version.
+
+-------------------------------------------------------------------
+Tue Jun 13 14:09:40 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 0.2.10:
+  + Correctly detect removed devices when rescanning.
+  + Fix a memory leak when using control tranfers.
+  + Fix gtk-doc build when builddir != srcdir.
+  + Fix symbol version table up to version 0.2.9.
+
+-------------------------------------------------------------------
+Thu Apr 14 11:17:08 UTC 2016 - idonmez@suse.com
+
+- Update to GNOME 3.20  Fate#318572
+
+-------------------------------------------------------------------
+Wed Mar 23 17:10:18 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 0.2.9:
+  + Add g_usb_context_wait_for_replug().
+  + Install gusbcmd as a debugging aid.
+
+-------------------------------------------------------------------
+Thu Dec 10 15:50:30 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 0.2.8:
+  + New Features:
+    - Add a PERMISSION_DENIED error enum.
+    - Add a thin glib wrapper around a libusb_interface_descriptor.
+    - Add g_usb_device_get_interfaces().
+    - Add g_usb_device_get_release().
+    - Add g_usb_device_set_interface_alt().
+  + Bugfix: Ignore the not-found error when resetting a device.
+
+-------------------------------------------------------------------
+Wed Sep 16 09:08:33 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 0.2.7:
+  + Support g_autoptr() for all gusb object types.
+  + Bugfixes:
+    - Add missing element-type annotations.
+- Changes from version 0.2.6:
+  + Bugfixes:
+    - Do not unref the GMainContext after each request.
+
+-------------------------------------------------------------------
+Thu Jun 18 13:43:34 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 0.2.5:
+  + Add g_usb_device_get_custom_index().
+  + Allow setting the GMainContext when used for sync methods.
+  + Include all the USB device class codes.
+  + Use symbol versioning.
+
+-------------------------------------------------------------------
+Sun Feb 22 10:43:24 UTC 2015 - benoit.monin@gmx.fr
+
+- Update to version 0.2.4:
+  + Various API extensions.
+  + Bugfixes:
+    - Don't filter out hub devices when getting the device list.
+    - Make the platform ID persistent across re-plug.
+    - Port to GTask.
+    - Use new Glib features for various code cleanups.
+
+-------------------------------------------------------------------
+Fri Dec 19 09:20:02 UTC 2014 - kkaempf@suse.com
+
+- Update to version 0.2.3:
+  + Bugfixes: Correctly terminate the libusb event thread.
+- Changes from version 0.2.2:
+  + New Features: Official Windows support!
+  + Bugfixes:
+    - No longer require G_USB_API_IS_SUBJECT_TO_CHANGE.
+    - Use a thread to process libusb1 events.
+- Changes from version 0.2.1:
+  + Bugfixes:
+    - Always set a device platform ID.
+    - Ignore 'unsupported' as a return value for kernel drivers.
+- Changes from version 0.2.0:
+  + Notes:
+    - This release raises the GLib requirement to 2.32 and libusb
+      to 1.0.19.
+    - No GUdev functionality is now required.
+  + New Features:
+    - Add g_usb_device_get_device_class().
+    - Use the native hotplug support in libusb 1.0.19.
+  + Bugfixes:
+    - Fix a crash where libusb_get_pollfds() is unavailable.
+    - Manually coldplug devices and poll if hotplugging is not
+      available.
+
+-------------------------------------------------------------------
+Tue Mar 12 12:36:56 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.1.6:
+  + Do not use deprecated GLib functionality.
+  + Remove duplicate gtk-doc check in configure.
+  + Unref the GMainloop after it has been run, not when just quit.
+- Changes from version 0.1.5:
+  + Don't use the deprecated INCLUDES in Makefile.am.
+  + Fix documentation build.
+  + Fix obvious typo in README.
+
+-------------------------------------------------------------------
+Tue Nov 13 15:54:01 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.1.4:
+  + Add GObject Introspection support.
+  + Add g_usb_device_reset() to reset a connected device.
+  + Add Vala bindings.
+  + Assorted introspection annotation fixes.
+  + Rename inconsistently named gusb_* symbols to g_usb_*.
+- Add pkgconfig(gobject-introspection-1.0) and vala BuildRequires:
+  New dependency for the GObject introspection support and the vala
+  bindings.
+- Create new typelib-1_0-GUsb-1_0 subpackage.
+
+-------------------------------------------------------------------
+Fri Jan 13 11:05:55 UTC 2012 - vuntz@opensuse.org
+
+- Cleanup packaging so it can get pushed to Factory.
+
+-------------------------------------------------------------------
+Mon Jan  2 09:01:58 UTC 2012 - kkaempf@suse.com
+
+- Initial package, version 0.1.3
+

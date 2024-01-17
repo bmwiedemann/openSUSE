@@ -1,0 +1,21 @@
+
+Juse use $libdir, will ya? Relying on uname -m (see configure.ac)
+to detect bitness is wrong.
+
+---
+ Makefile.am |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: beecrypt-4.1.2/Makefile.am
+===================================================================
+--- beecrypt-4.1.2.orig/Makefile.am
++++ beecrypt-4.1.2/Makefile.am
+@@ -47,7 +47,7 @@ BEECRYPT_OBJECTS = aes.lo aesopt.lo base
+ 
+ libaltdir=$(prefix)/lib@LIBALT@
+ 
+-libalt_LTLIBRARIES = libbeecrypt.la
++lib_LTLIBRARIES = libbeecrypt.la
+ 
+ libbeecrypt_la_SOURCES = aes.c base64.c beecrypt.c blockmode.c blockpad.c blowfish.c dhaes.c dldp.c dlkp.c dlpk.c dlsvdp-dh.c dsa.c elgamal.c endianness.c entropy.c fips186.c hmac.c hmacmd5.c hmacsha1.c hmacsha256.c md5.c hmacsha384.c hmacsha512.c memchunk.c mp.c mpbarrett.c mpnumber.c mpprime.c mtprng.c pkcs1.c pkcs12.c rsa.c rsakp.c rsapk.c sha1.c sha256.c sha384.c sha512.c sha_k.c timestamp.c
+ libbeecrypt_la_DEPENDENCIES = $(BEECRYPT_OBJECTS)

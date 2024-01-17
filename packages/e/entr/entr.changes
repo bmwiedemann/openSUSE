@@ -1,0 +1,189 @@
+-------------------------------------------------------------------
+Tue Nov 21 14:49:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.5:
+  * Report correct error if open(3) fails
+
+-------------------------------------------------------------------
+Fri Sep  8 09:23:42 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 5.4
+ * 'make test' runs a quick smoketest, 'make check' runs regressions
+ * Set IN_CLOEXEC only for inotify_init, kqueue uses similar setting by default
+ * Unconditionally try to set soft file limit to 2^16 on MacOS
+ * Use non-reentrant calls sparingly in signal handlers
+ * configure: use TARGET_OS to override the output of uname(1)
+
+- added only basic smoke test
+
+-------------------------------------------------------------------
+Sat Jan 21 21:36:42 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.3
+  * Symlink changes detected on Linux by setting
+    'ENTR_INOTIFY_SYMLINK'.
+  * Use /dev/null rather then closed pipe for stdin in -r mode.
+  * Utilize {O,FD}_CLOEXEC flag for unintentional leaks of
+    descriptors to executed utilities.
+  * Remove C unit tests.
+  * Only respond to attribute/inode changes on Linux.
+- Drop tests. The new tests do not run within a chroot.
+
+-------------------------------------------------------------------
+Sat May  7 13:18:32 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.2
+  * Update copy of strlcpy(3) for Linux
+  * Detect file deletion from directories on Linux
+  * Print the signal that terminated a child when using '-s'
+  * Return 128+signal that terminated a child when using '-z'
+  * Ensure terminal settings are reset when '-z' is set
+
+-------------------------------------------------------------------
+Tue Dec 28 17:28:11 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.1
+  * Detect files moved to or from directories on Linux.
+  * Allow detection of directory entries beginning with '.' by
+    specifying '-d' twice.
+  * Only reset terminal settings in exit handler if settings were
+    changed.
+
+-------------------------------------------------------------------
+Sun Jul  4 11:56:13 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.0
+  * Eliminate memory management warnings on Linux.
+  * EV_TRACE prints file mode and file name.
+- Update to version 4.8
+  * EV_TRACE also prints file/notify descriptor limit.
+  * Set 2^16 watches if inotify limits cannot be read.
+  * Raise an error and suggest '-n' if terminal attributes cannot
+    be read.
+
+-------------------------------------------------------------------
+Sun Feb 28 12:49:02 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.8
+  * Set a maximum of 2^19 watches to guard against absurd file
+    open limits on MacOS.
+  * Use control sequences to clear the display and specify '-c'
+    twice to erase the scrollback buffer.
+
+-------------------------------------------------------------------
+Fri Jan 29 23:43:44 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.7:
+  * Use system file descriptor limits when max_user_watches is not accessible
+  * Return the exit status of the child process when the '-z' option is used
+  * Handle SIGHUP so child process are terminated when a terminal is closed
+  * More accurately return shell exit code using '-s' option
+
+-------------------------------------------------------------------
+Thu Jul  2 19:25:35 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.6
+  * Always call waitpid(2) to avoid dead processes
+  * Duplicate STDIN file descriptor before closing; for the '-r'
+    option
+
+-------------------------------------------------------------------
+Tue Apr 21 19:39:03 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.5
+  * New '-z' "one-shot" option self-terminates after the utility
+    exits
+  * Termination by 'q' or 'SIGINT' results in an exit status of 0
+- Add source verification
+
+-------------------------------------------------------------------
+Sun Jan  5 19:24:47 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.4
+  * Use a single inotify queue on Linux, limited by
+    /proc/sys/fs/inotify/max_user_watches
+  * Set the environment variable `ENTR_INOTIFY_WORKAROUND` to
+    enable a compatibility mode for platforms with deformed
+    inotify support
+
+-------------------------------------------------------------------
+Sat Oct  5 20:49:45 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.3
+  * No functional changes
+
+-------------------------------------------------------------------
+Fri Apr  5 22:47:59 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.2
+  * New '-a' option enables response to events that occur while the
+    utility is running
+  * Correctly report error when a file cannot be reopened
+- Includes change from 4.1
+  * New '-n' non-interactive option disables keyboard input
+  * EV_TRACE environment variable enables file system event
+    tracing.
+  * Track changes to the inode number as a workaround for missing
+    delete events on the Linux kernel
+
+-------------------------------------------------------------------
+Sat Feb  3 18:05:13 UTC 2018 - avindra@opensuse.org
+
+- Bump to 4.0
+  - Warn instead of error if kqueue fails to register on STDIN
+  - Close STDIN before running the utility when the restart option
+    is used
+  - Restore terminal settings if terminated by a signal
+
+-------------------------------------------------------------------
+Tue Nov  7 03:00:10 UTC 2017 - aavindraa@gmail.com
+
+- Bump to 3.9
+  * Fix use of poll(2) to avoid possible busy-loop on Linux
+  * Disable keyboard input if STDIN read fails
+- Includes changes from 3.8
+  * Run the utility if spacebar is pressed
+  * 'q' for quit
+- Includes changes from 3.7
+  * Terminate subprocess in restart mode if a file under watch
+    disappears
+  * Allow NOTE_ATTRIB to set '/_' only if file mode changes
+  * New '-s' option executes commands using $SHELL -c
+  * Print usage and exit if input is from tty instead of pipe
+- Switch to bz2 download (smaller filesize)
+- Cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Wed Jun 21 09:26:55 UTC 2017 - jengelh@inai.de
+
+- Trim redundant wording.
+
+-------------------------------------------------------------------
+Sun Dec 11 19:32:30 UTC 2016 - mpluskal@suse.com
+
+- Small packaging cleanup with help of spec-cleaner
+
+-------------------------------------------------------------------
+Sun Dec 11 17:10:52 UTC 2016 - daniel.lichtenberger@gmail.com
+
+- Moved configure to %build, use separate changelog file.
+
+-------------------------------------------------------------------
+Sun Dec 11 2016 - daniel.lichtenberger@gmail.com
+
+- Added NEWS and README.md
+
+-------------------------------------------------------------------
+Sun Dec 11 2016 - daniel.lichtenberger@gmail.com
+
+- Use %%doc instead of %%license
+
+-------------------------------------------------------------------
+Sat Dec 10 2016 - daniel.lichtenberger@gmail.com
+
+- Fix for rpm older than 4.12
+
+-------------------------------------------------------------------
+Sat Dec 10 2016 - daniel.lichtenberger@gmail.com
+
+- Initial version based on Fedora spec file by Lubomír Sedlář <lsedlar@redhat.com>

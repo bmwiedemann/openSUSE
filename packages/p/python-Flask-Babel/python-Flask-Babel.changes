@@ -1,0 +1,96 @@
+-------------------------------------------------------------------
+Thu Nov 30 13:24:16 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Mon Aug 21 02:26:03 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-flask-2.4.patch:
+  * Silence deprecation warnings.
+
+-------------------------------------------------------------------
+Thu Jun 15 07:04:22 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.1.0:
+  * Don't return the default locale twice.
+  * Fix tests breaking against babel 12.2, which changed localized times to
+    use non-breaking-spaces.
+  * Relax version requirements for dependencies.
+  * Dropped support for end-of-life Python 3.5 and 3.6, added tests for 3.10
+    and 3.11.
+  * Jinja version 3 or greater is now required.
+  * Removed Babel._date_formats, use the public Babel.date_formats instead.
+  * list_translations() always returns the default locale, even if it does
+    not exist.
+  * Babel.locale_selector and Babel.timezone_selector no longer exist.
+  * Most configuration options can be passed directly through init_app().
+
+-------------------------------------------------------------------
+Sat Sep  5 16:08:27 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+  * skip python2 builds
+  * change to pytest
+  * added pytz as requirement (from setup.py)
+
+- update to version 2.0.0:
+  * Starting with version 2, flask-babel drops official support for
+    Python2.
+  * Tests moved from unittest to pytest (#163)
+  * Domain and caching support from Flask-BabelEx (#163)
+  * Documentation moved from python-hosted to Github Pages.
+  * CI moved from Travisci to Github Actions
+  * Small documentation improvements.
+  * Removed uncessary checks on get_translations() (#127, #126)
+  * localeselector and timezoneselector can be changed after creation.
+
+-------------------------------------------------------------------
+Sun Feb 16 05:57:42 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 1.0.0:
+  * pytz is an explicit dependency. (#14)
+  * pytz.gae, used for Google App Engine, is no longer necessary and
+    has been removed. (#153)
+  * Fixed a deprecated werkzeug import (#158).
+  * Fix issues switching locales in threaded contexts (#125).
+
+-------------------------------------------------------------------
+Sun Nov  4 23:43:26 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase.
+
+-------------------------------------------------------------------
+Tue Oct 30 02:23:03 UTC 2018 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+  * remove devel from noarch
+  * be more specific in %files section
+  * add README.md
+
+- update to version 0.12.2:
+  * Switch to using README.md for project description on pypi.
+  * Fix heading underline in index.rst
+
+-------------------------------------------------------------------
+Thu Aug 31 22:11:43 UTC 2017 - toddrme2178@gmail.com
+
+- Update to 0.11.2
+  * No upstream changelog
+- Implement single-spec version
+
+-------------------------------------------------------------------
+Thu Sep 15 19:01:28 UTC 2016 - toddrme2178@gmail.com
+
+- Update to 0.11.1
+  * No upstream changelog
+
+-------------------------------------------------------------------
+Thu Oct 23 13:32:31 UTC 2014 - axel.braun@gmx.de
+
+- initial OBS build

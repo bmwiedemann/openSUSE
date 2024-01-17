@@ -1,0 +1,6 @@
+<package name="python-lfdfiles" project="openSUSE:Factory">
+  <title>python-lfdfiles</title>
+  <description>Laboratory for Fluorescence Dynamics (LFD) file formats</description>
+  <devel project="devel:languages:python:numeric" package="python-lfdfiles"/>
+  <url>https://www.lfd.uci.edu/~gohlke/</url>
+</package>

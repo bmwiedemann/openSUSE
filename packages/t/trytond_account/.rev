@@ -1,0 +1,401 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c89c237dc753d82e1d4a95644ab284f7</srcmd5>
+    <version>3.8.3</version>
+    <time>1474623114</time>
+    <user>dimstar_suse</user>
+    <comment>part of GNU Health</comment>
+    <requestid>425113</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>23adf91216d0ef879c29ea431be12f34</srcmd5>
+    <version>3.8.4</version>
+    <time>1475750891</time>
+    <user>dimstar_suse</user>
+    <comment>new version</comment>
+    <requestid>433479</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1b8eed5b64760f4550da698df6918166</srcmd5>
+    <version>3.8.5</version>
+    <time>1484041412</time>
+    <user>dimstar_suse</user>
+    <comment>bnc101681</comment>
+    <requestid>447347</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>19ca5c96e3f8ec3a4aa6506ed9d68542</srcmd5>
+    <version>4.2.1</version>
+    <time>1499291740</time>
+    <user>dimstar_suse</user>
+    <comment>Release 3.2 of GNU Health</comment>
+    <requestid>505306</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d8fb69d41e74d4387a65751fa04c4f05</srcmd5>
+    <version>4.2.2</version>
+    <time>1503061452</time>
+    <user>dimstar_suse</user>
+    <comment>Bugfix update for Tryton &amp; GNUHealth</comment>
+    <requestid>517034</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2beddcf8a62821b491430c2f45f895e1</srcmd5>
+    <version>4.2.3</version>
+    <time>1507280619</time>
+    <user>dimstar_suse</user>
+    <comment>Bugfix update for Tryton &amp; GNUHealth</comment>
+    <requestid>531465</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>bea190f8688c26a0a08b32573ff4df7a</srcmd5>
+    <version>4.2.4</version>
+    <time>1510837402</time>
+    <user>dimstar_suse</user>
+    <comment>bnc1065671</comment>
+    <requestid>542140</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f42094ab301c6f4568e7b2711f005b48</srcmd5>
+    <version>4.2.5</version>
+    <time>1520778276</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>584729</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fa664debd6f99d53f0a75c7e0887035b</srcmd5>
+    <version>4.2.8</version>
+    <time>1526372040</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 4.2.8 - Bugfix Release
+- Version 4.2.7 - Bugfix Release
+- Version 4.2.6 - Bugfix Release
+- Version 4.2.5 - Bugfix Release
+- Version 4.2.4 - Bugfix Release
+- Version 4.2.3 - Bugfix Release
+- Version 4.2.2
+- Version 4.2.1
+ 
+- Tryton Release 4.2 
+ 
+- Tryton Release 4.0 
+ 
+- Tryton Release 3.8 
+ 
+- Tryton Release 3.6 
+%changelog
+* 
+- initial build on OBS</comment>
+    <requestid>606650</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d10a19d0ed41df99a8c45fd7ce17b5dc</srcmd5>
+    <version>4.2.9</version>
+    <time>1538502465</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>639345</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e695b13e83eb40961a76e509e2f8ddbc</srcmd5>
+    <version>4.2.10</version>
+    <time>1544264481</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>653621</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0a0cd8dbadc8dc66a93cc2a5d3435f47</srcmd5>
+    <version>4.6.8</version>
+    <time>1548064145</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 4.6.8 - Bugfix Release
+- Version 4.6.7 - Bugfix Release
+- Version 4.2.10 - Bugfix Release
+- Version 4.2.9 - Bugfix Release
+- Version 4.2.8 - Bugfix Release
+- Version 4.2.7 - Bugfix Release
+- Version 4.2.6 - Bugfix Release
+- Version 4.2.5 - Bugfix Release
+- Version 4.2.4 - Bugfix Release
+- Version 4.2.3 - Bugfix Release
+- Version 4.2.2
+- Version 4.2.1
+ 
+- Tryton Release 4.2 
+ 
+- Tryton Release 4.0 
+ 
+- Tryton Release 3.8 
+ 
+- Tryton Release 3.6 
+%changelog
+* 
+- initial build on OBS</comment>
+    <requestid>664360</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e405a641d9aac9f843a5d6b3ecb0f03d</srcmd5>
+    <version>4.6.9</version>
+    <time>1551025090</time>
+    <user>coolo</user>
+    <comment>- Version 4.6.9 - Bugfix Release
+- Version 4.6.8 - Bugfix Release
+- Version 4.6.7 - Bugfix Release
+- Version 4.2.10 - Bugfix Release
+- Version 4.2.9 - Bugfix Release
+- Version 4.2.8 - Bugfix Release
+- Version 4.2.7 - Bugfix Release
+- Version 4.2.6 - Bugfix Release
+- Version 4.2.5 - Bugfix Release
+- Version 4.2.4 - Bugfix Release
+- Version 4.2.3 - Bugfix Release
+- Version 4.2.2
+- Version 4.2.1
+ 
+- Tryton Release 4.2 
+ 
+- Tryton Release 4.0 
+ 
+- Tryton Release 3.8 
+ 
+- Tryton Release 3.6 
+%changelog
+* 
+- initial build on OBS</comment>
+    <requestid>677897</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>009be2860a4a4d50685bfb06c254ca17</srcmd5>
+    <version>4.6.10</version>
+    <time>1563362090</time>
+    <user>dimstar_suse</user>
+    <comment>boo#1141369</comment>
+    <requestid>714988</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c0fcd599bca637248e4629de34f73aac</srcmd5>
+    <version>4.6.11</version>
+    <time>1573556156</time>
+    <user>dimstar_suse</user>
+    <comment>boo#1156476</comment>
+    <requestid>747419</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>347731abb6bed9d7f82ba7cf8b280f3e</srcmd5>
+    <version>5.0.9</version>
+    <time>1575463880</time>
+    <user>dimstar_suse</user>
+    <comment>version bump (forwarded request 750812 from DocB)</comment>
+    <requestid>752393</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ec5d399358c8370e967e21d41fb577a1</srcmd5>
+    <version>5.0.10</version>
+    <time>1578675073</time>
+    <user>dimstar_suse</user>
+    <comment>bugfix release</comment>
+    <requestid>762862</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>647c1d88cbf6215c3434fbd38f7917dc</srcmd5>
+    <version>5.0.11</version>
+    <time>1586112863</time>
+    <user>dimstar_suse</user>
+    <comment>bufix release</comment>
+    <requestid>791415</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>6c52b405a9bab698e3fb520c4c3ab2dd</srcmd5>
+    <version>5.0.12</version>
+    <time>1588972138</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>801846</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>45fa5fb0f811a3ce7183a61027d27190</srcmd5>
+    <version>5.0.13</version>
+    <time>1589751784</time>
+    <user>dimstar_suse</user>
+    <comment>new version</comment>
+    <requestid>806126</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>74b3a352e7d10bcee216b87596aabe08</srcmd5>
+    <version>5.0.14</version>
+    <time>1598030354</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>828499</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>c9cdabfc6b69861a2b8187a81fae7a1a</srcmd5>
+    <version>5.0.15</version>
+    <time>1603283933</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>842981</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>bc32fa1676d30982085e8a14039ca78a</srcmd5>
+    <version>5.0.16</version>
+    <time>1605217549</time>
+    <user>dimstar_suse</user>
+    <comment>bugfix release</comment>
+    <requestid>847929</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>ce4672b45990ca7139110258284569a5</srcmd5>
+    <version>5.0.16</version>
+    <time>1612182467</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>868166</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>8f3c1e739dfa9a83f203cb83096c4acc</srcmd5>
+    <version>5.0.16</version>
+    <time>1614684775</time>
+    <user>RBrownSUSE</user>
+    <comment> (forwarded request 875658 from AndreasStieger)</comment>
+    <requestid>875723</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>435824af25658c55b295f422a00c57bb</srcmd5>
+    <version>5.0.17</version>
+    <time>1621355250</time>
+    <user>dimstar_suse</user>
+    <comment>bugfix release</comment>
+    <requestid>894082</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>79a950134084dc1394a7b8c15091b233</srcmd5>
+    <version>5.0.18</version>
+    <time>1624136681</time>
+    <user>dimstar_suse</user>
+    <comment>bugfix release</comment>
+    <requestid>900907</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>0cad2e84a723eb6ba7260a12d2b94750</srcmd5>
+    <version>5.0.19</version>
+    <time>1638831627</time>
+    <user>dimstar_suse</user>
+    <comment>Bugfix Release</comment>
+    <requestid>936099</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>accecd8b38b06813d93be1a45c74e0be</srcmd5>
+    <version>5.0.20</version>
+    <time>1641855219</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>945351</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>e58351874b1e543db3a6b2658169920f</srcmd5>
+    <version>5.0.21</version>
+    <time>1644435571</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>952806</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>e86208d8bf4dfcd1db75771608012df2</srcmd5>
+    <version>6.0.9</version>
+    <time>1646671678</time>
+    <user>dimstar_suse</user>
+    <comment>version bump (forwarded request 959951 from DocB)</comment>
+    <requestid>959970</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>8a39c47c64affc72089d11875b7d6bf8</srcmd5>
+    <version>6.0.10</version>
+    <time>1650466639</time>
+    <user>dimstar_suse</user>
+    <comment>bugfix version</comment>
+    <requestid>971013</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>4fc2e92719718611eec98921b4271835</srcmd5>
+    <version>6.0.11</version>
+    <time>1655048483</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>982120</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>f7f5e322fd314c867dff09283e85de31</srcmd5>
+    <version>6.0.12</version>
+    <time>1659721922</time>
+    <user>dimstar_suse</user>
+    <comment>bugfix version</comment>
+    <requestid>993356</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>2a15745a47dee80b14f3e1eed36b56b7</srcmd5>
+    <version>6.0.13</version>
+    <time>1660834163</time>
+    <user>dimstar_suse</user>
+    <comment>bugfix version</comment>
+    <requestid>997703</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>897954364bca2ccc86e6ced8a2f5895d</srcmd5>
+    <version>6.0.14</version>
+    <time>1676225682</time>
+    <user>dimstar_suse</user>
+    <comment>removing 5.0 series files</comment>
+    <requestid>1064663</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>6095fcda00d5a168fc7be26b0bd86bf2</srcmd5>
+    <version>6.0.15</version>
+    <time>1676911572</time>
+    <user>dimstar_suse</user>
+    <comment>bugfix version</comment>
+    <requestid>1066722</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>5e8223b98df8632ae6b5f7d5cc51eeec</srcmd5>
+    <version>6.0.17</version>
+    <time>1684846527</time>
+    <user>dimstar_suse</user>
+    <comment>bugfix</comment>
+    <requestid>1088643</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>028056a6a9f8df01692a0f1eb7b84106</srcmd5>
+    <version>6.0.18</version>
+    <time>1694114015</time>
+    <user>anag+factory</user>
+    <comment>bugfix release</comment>
+    <requestid>1109470</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>0538eeab29f7736c084d562eb9077f0f</srcmd5>
+    <version>6.0.18</version>
+    <time>1697748604</time>
+    <user>anag+factory</user>
+    <comment>Remove %python3_install prefix and root options, that's included in the macro by default. (forwarded request 1118919 from dgarcia)</comment>
+    <requestid>1118952</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>3c86a8595700e5c50b4d01f556083ced</srcmd5>
+    <version>6.0.19</version>
+    <time>1699910481</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1125405</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>aeb797cae8781e4e1b23aafa51ab7d56</srcmd5>
+    <version>6.0.20</version>
+    <time>1704281158</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1135783</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,12 @@
+diff -ruN a/tests/mmtf_tests.cpp b/tests/mmtf_tests.cpp
+--- a/tests/mmtf_tests.cpp	2019-02-06 01:55:57.000000000 +0700
++++ b/tests/mmtf_tests.cpp	2021-02-06 01:16:13.126170766 +0700
+@@ -5,7 +5,7 @@
+ #define CATCH_CONFIG_MAIN
+ #endif
+ 
+-#include "catch.hpp"
++#include <catch2/catch.hpp>
+ 
+ #include <mmtf.hpp>
+ #include <mmtf/export_helpers.hpp>

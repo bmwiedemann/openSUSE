@@ -1,0 +1,9 @@
+<package name="hactool" project="openSUSE:Factory">
+  <title>View/extract information about Nintendo Switch Archives</title>
+  <description>hactool is a tool to view information about, decrypt, and extract common file formats for the Nintendo Switch, especially Nintendo Content Archives.
+
+
+</description>
+  <devel project="hardware" package="hactool"/>
+  <url>https://github.com/SciresM/hactool</url>
+</package>

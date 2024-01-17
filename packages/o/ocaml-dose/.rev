@@ -1,0 +1,48 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e0ab87e057398a30d0b8502d6f804fc2</srcmd5>
+    <version>3.5.0.1</version>
+    <time>1526463325</time>
+    <user>dimstar_suse</user>
+    <comment>Dose3 is a framework made of several OCaml libraries for managing distribution packages and their dependencies.
+
+It is a dependency of opam.</comment>
+    <requestid>604407</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d528f6981e52b1c25fdbd457f6c1a085</srcmd5>
+    <version>5.0.1</version>
+    <time>1571307764</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>739013</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>15d7f433cf338bcd0668ab8b2f4b1396</srcmd5>
+    <version>5.0.1</version>
+    <time>1583763775</time>
+    <user>dimstar_suse</user>
+    <comment>- use dune branch to make dose3 compatible with safe-strings
+- remove obsolete ocaml-dose.patch
+
+- Require current dune macros</comment>
+    <requestid>780713</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>57e68108b831a8b6ea6ac32f6f9d20a5</srcmd5>
+    <version>6.1</version>
+    <time>1619653041</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.1
+  master branch has dune support</comment>
+    <requestid>885060</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>57d08f8c8e2d863978b799abed8aaae1</srcmd5>
+    <version>7.0.0</version>
+    <time>1632939506</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>921265</requestid>
+  </revision>
+</revisionlist>

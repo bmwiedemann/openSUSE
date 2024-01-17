@@ -1,0 +1,41 @@
+---
+ acinclude.m4 |    4 ++--
+ configure.ac |    2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+Index: beecrypt-4.1.2/configure.ac
+===================================================================
+--- beecrypt-4.1.2.orig/configure.ac
++++ beecrypt-4.1.2/configure.ac
+@@ -1,8 +1,8 @@
+ # Process this file with autoconf to produce a configure script.
+ 
+ AC_INIT([beecrypt],[4.1.2],[bob.deblier@telenet.be])
+-AM_INIT_AUTOMAKE
+ AC_CANONICAL_TARGET
++AM_INIT_AUTOMAKE
+ AC_CONFIG_SRCDIR(beecrypt.h)
+ AC_CONFIG_HEADERS([config.h])
+ 
+Index: beecrypt-4.1.2/acinclude.m4
+===================================================================
+--- beecrypt-4.1.2.orig/acinclude.m4
++++ beecrypt-4.1.2/acinclude.m4
+@@ -459,7 +459,7 @@ AC_DEFUN([BEECRYPT_GNU_CC],[
+     CFLAGS="$CFLAGS -Wall -pedantic"
+   else
+     # Generic optimizations, including cpu tuning
+-    BEECRYPT_CFLAGS_REM([-g])
++    #BEECRYPT_CFLAGS_REM([-g])
+     CFLAGS="$CFLAGS -DNDEBUG -fomit-frame-pointer"
+     if test "$bc_cv_c_aggressive_opt" = yes; then
+       case $bc_target_cpu in
+@@ -571,7 +571,7 @@ AC_DEFUN([BEECRYPT_GNU_CXX],[
+     CXXFLAGS="$CXXFLAGS -Wall -pedantic"
+   else
+     # Generic optimizations, including cpu tuning
+-    BEECRYPT_CXXFLAGS_REM([-g])
++    #BEECRYPT_CXXFLAGS_REM([-g])
+ 	CXXFLAGS="$CXXFLAGS -DNDEBUG"
+     if test "$bc_cv_c_aggressive_opt" = yes; then
+       case $bc_target_cpu in

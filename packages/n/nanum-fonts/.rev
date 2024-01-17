@@ -1,0 +1,124 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>54578678e0d34b0457c5437ceb326d57</srcmd5>
+    <version>20101109</version>
+    <time>1289866227</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52836 from user pgajdos
+</comment>
+    <requestid>52836</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9a90ba04b08b86beec660f0e926c6eab</srcmd5>
+    <version>20101109</version>
+    <time>1289866232</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52836
+</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>9a90ba04b08b86beec660f0e926c6eab</srcmd5>
+    <version>20101109</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>80ff379789e628243d0eec92ecd994a8</srcmd5>
+    <version>unknown</version>
+    <time>1306222439</time>
+    <user>saschpe</user>
+    <comment>- updated to 20110523
+  * improved A glyph</comment>
+    <requestid>71074</requestid>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>002b2e45de97c8bcb077034322188223</srcmd5>
+    <version>unknown</version>
+    <time>1306222448</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71074
+</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>002b2e45de97c8bcb077034322188223</srcmd5>
+    <version>unknown</version>
+    <time>1319182194</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>f59d4b00c04bd36b4f14d832a96c419a</srcmd5>
+    <version>unknown</version>
+    <time>1323192658</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>4911ce354fce6c621a5a2f1e21469e5e</srcmd5>
+    <version>unknown</version>
+    <time>1323705475</time>
+    <user>coolo</user>
+    <comment>- avoid packaging twice</comment>
+    <requestid>96331</requestid>
+  </revision>
+  <revision rev="9" vrev="12">
+    <srcmd5>90633a5d3f895c9a8315fc685a85f37b</srcmd5>
+    <version>unknown</version>
+    <time>1332416157</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>110427</requestid>
+  </revision>
+  <revision rev="10" vrev="13">
+    <srcmd5>3d6739b2995350064c35df9ed7636245</srcmd5>
+    <version>unknown</version>
+    <time>1338017248</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>122172</requestid>
+  </revision>
+  <revision rev="11" vrev="15">
+    <srcmd5>3d6739b2995350064c35df9ed7636245</srcmd5>
+    <version>unknown</version>
+    <time>1340183722</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="12" vrev="16">
+    <srcmd5>2b072209baa85fe6bf5a984d52ee28ee</srcmd5>
+    <version>unknown</version>
+    <time>1347618696</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>133974</requestid>
+  </revision>
+  <revision rev="13" vrev="18">
+    <srcmd5>2b072209baa85fe6bf5a984d52ee28ee</srcmd5>
+    <version>unknown</version>
+    <time>1359109487</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="19">
+    <srcmd5>aa7d2f34376b18f7702b8f3032ffc751</srcmd5>
+    <version>unknown</version>
+    <time>1373470050</time>
+    <user>coolo</user>
+    <comment>Updated the Nanum Gothic font, and fixed two misleading define names in the spec file (forwarded request 182667 from stknorr)</comment>
+    <requestid>182698</requestid>
+  </revision>
+  <revision rev="15" vrev="21">
+    <srcmd5>aa7d2f34376b18f7702b8f3032ffc751</srcmd5>
+    <version>unknown</version>
+    <time>1379663342</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="23">
+    <srcmd5>aa7d2f34376b18f7702b8f3032ffc751</srcmd5>
+    <version>unknown</version>
+    <time>1409301954</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

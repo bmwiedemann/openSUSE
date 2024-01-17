@@ -1,0 +1,39 @@
+From f546dbab758defb2eb9bd8fc2184ee8a260d705b Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Fri, 8 Sep 2023 13:49:33 +1000
+Subject: [PATCH] Remove future from install_requires
+
+The future module is not used, so remove it from install_requires. I've
+also cleaned up the readme, dropping it and six.
+---
+ README.md | 3 +--
+ setup.py  | 2 +-
+ 2 files changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/README.md b/README.md
+index 42f6191..abad06d 100644
+--- a/README.md
++++ b/README.md
+@@ -67,8 +67,7 @@ Hosted at Read The Docs: [tableprint.readthedocs.org](http://tableprint.readthed
+ ## 📦 Dependencies
+ 
+ -   Python 3.6+
+--   [future](https://pypi.org/project/future/)
+--   [six](https://pypi.org/project/six/)
++-   [wcwidth](https://pypi.org/project/wcwidth/)
+ 
+ ## :heart: Contributors
+ 
+diff --git a/setup.py b/setup.py
+index a533f99..814d138 100644
+--- a/setup.py
++++ b/setup.py
+@@ -56,7 +56,7 @@
+     # project is installed. For an analysis of "install_requires" vs pip's
+     # requirements files see:
+     # https://packaging.python.org/en/latest/requirements.html
+-    install_requires=['future', 'wcwidth'],
++    install_requires=['wcwidth'],
+ 
+     # List additional groups of dependencies here (e.g. development dependencies).
+     # You can install these using the following syntax, for example:

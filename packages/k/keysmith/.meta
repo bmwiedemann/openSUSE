@@ -1,0 +1,8 @@
+<package name="keysmith" project="openSUSE:Factory">
+  <title>Convergent OTP client</title>
+  <description>OTP client for Plasma Mobile and Desktop
+
+</description>
+  <devel project="KDE:Applications" package="keysmith"/>
+  <url>https://apps.kde.org/keysmith</url>
+</package>

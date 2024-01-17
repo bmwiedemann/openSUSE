@@ -1,0 +1,2 @@
+# Required for testing the installed module
+addFilter("devel-file-in-non-devel-package.*bottleneck/tests/data/template_test")

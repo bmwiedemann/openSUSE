@@ -1,0 +1,35 @@
+-------------------------------------------------------------------
+Thu May  3 16:26:31 UTC 2012 - suse@ammler.ch
+
+- update to 1.0.5
+  -Fix: compilation with GCC 4.7 
+
+-------------------------------------------------------------------
+Sun Oct 31 17:08:02 UTC 2010 - ammler@openttdcoop.org
+
+- upstream update 1.0.2
+  * uniform the Makesystem with grfcodec
+
+-------------------------------------------------------------------
+Wed Jul  7 12:43:19 UTC 2010 - ammler@openttdcoop.org
+
+- rename
+
+-------------------------------------------------------------------
+Fri Dec 18 00:00:00 CET 2009 - ammler@openttdcoop.org
+
+- upstream release 1.0.0
+
+-------------------------------------------------------------------
+Thu Dec 10 00:00:00 CET 2009 - ammler@openttdcoop.org
+
+- upstream update to r17982
+- man page
+- make REVISON changed to VERSION
+- rename package
+
+-------------------------------------------------------------------
+Sat Sep 19 00:00:00 CEST 2009 - ammler@openttdcoop.org
+
+- initial build
+

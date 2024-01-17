@@ -1,0 +1,11 @@
+<package name="healpix" project="openSUSE:Factory">
+  <title>Data Analysis, Simulations and Visualization on the Sphere</title>
+  <description>HEALPix is a Hierarchical, Equal Area, and iso-Latitude Pixelation of the
+sphere designed to support efficiently (1) local operations on the pixel set,
+(2) a hierarchical tree structure for multi-resolution applications, and (3)
+the global Fast Spherical Harmonic transform.
+
+</description>
+  <devel project="devel:libraries:c_c++" package="healpix"/>
+  <url>https://healpix.sourceforge.io</url>
+</package>

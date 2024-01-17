@@ -1,0 +1,5 @@
+<package name="mmtf-cpp" project="openSUSE:Factory">
+  <title>mmtf-cpp</title>
+  <description>Macromolecular transmission format documentation, including README, license and HTML docs.</description>
+  <devel project="science" package="mmtf-cpp"/>
+</package>

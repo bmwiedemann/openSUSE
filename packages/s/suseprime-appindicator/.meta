@@ -1,0 +1,5 @@
+<package name="suseprime-appindicator" project="openSUSE:Factory">
+  <title>Appindicator for SUSE Prime</title>
+  <description></description>
+  <devel project="X11:common:Factory" package="suseprime-appindicator"/>
+</package>

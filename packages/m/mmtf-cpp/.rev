@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fb509d92f0c0fec2656c7c43731d7ad6</srcmd5>
+    <version>1.0.0</version>
+    <time>1598274737</time>
+    <user>dimstar_suse</user>
+    <comment>This is a dependency for avogadrolibs update to version 1.93.0</comment>
+    <requestid>828584</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>83e4835539b2c1fc6eb0ee63345d7933</srcmd5>
+    <version>1.0.0</version>
+    <time>1613427534</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>872016</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>7d64cec06ddc1047fd4a75c188b9e78a</srcmd5>
+    <version>1.0.0</version>
+    <time>1622536703</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>896038</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>b1eaecfd3a22390a34a9d3f6274c072d</srcmd5>
+    <version>1.0.0</version>
+    <time>1662639778</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1001742</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fe36d85c5e2be9f20b134728c74f3865</srcmd5>
+    <version>1.1.0</version>
+    <time>1666780310</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1031230</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,39 @@
+-------------------------------------------------------------------
+Sun Dec 27 11:26:39 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.59.1
+  * Fix some options not taking effect (#20)
+
+-------------------------------------------------------------------
+Sat Dec 12 22:13:10 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.59
+  * Highlight last high score
+  * Change qualification for high score when in B-type
+  * Enhance desktop entry file
+  * Remove explicit ownership for installed files
+  * Add runtime library search path
+- Drop patch:
+  * vitetris-no-need-for-root-to-install.patch
+
+-------------------------------------------------------------------
+Sun Mar 10 16:32:02 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.58
+  * bugfix release - no functional changes
+- Remove patches (included upstream):
+   * 0001-fix-extraneous-licence.patch
+   * 0002-fix-insecure-printf.patch
+   * 0003-rename-program-to-vitetris.patch
+   * 0004-add-comment-desktop.patch
+   * 0005-fix-implicit-declaration.patch
+
+-------------------------------------------------------------------
+Thu Jan 17 15:29:01 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim filler wording from description.
+
+-------------------------------------------------------------------
+Sun Jan 13 08:59:11 UTC 2019 - mardnh@gmx.de
+
+- Initial package, version 0.57.2

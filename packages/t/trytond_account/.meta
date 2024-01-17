@@ -1,0 +1,5 @@
+<package name="trytond_account" project="openSUSE:Factory">
+  <title>The accounting module of the Tryton ERP system</title>
+  <description></description>
+  <devel project="Application:ERP:GNUHealth:Factory" package="trytond_account"/>
+</package>

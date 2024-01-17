@@ -1,0 +1,5 @@
+<package name="python-Bottleneck" project="openSUSE:Factory">
+  <title>A collection of fast NumPy array functions</title>
+  <description>Bottleneck is a collection of fast NumPy array functions written in Cython.</description>
+  <devel project="devel:languages:python:numeric" package="python-Bottleneck"/>
+</package>

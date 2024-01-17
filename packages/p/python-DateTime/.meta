@@ -1,0 +1,5 @@
+<package name="python-DateTime" project="openSUSE:Factory">
+  <title>python-DateTime</title>
+  <description>Zope DateTime data type</description>
+  <devel project="devel:languages:python" package="python-DateTime"/>
+</package>

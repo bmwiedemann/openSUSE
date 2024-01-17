@@ -1,0 +1,20 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="exclude">.cvsignore</param>
+    <param name="exclude">doc/webpages</param>
+    <param name="exclude">experimental</param>
+    <param name="filename">ocaml-dose</param>
+    <param name="revision">b6654af8b26ff88eb40ea24d6aceda91e78638ed</param>
+    <param name="scm">git</param>
+    <param name="submodules">disable</param>
+    <param name="url">https://gitlab.com/irill/dose3.git</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">[v]?([^\+]+)(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+</services>

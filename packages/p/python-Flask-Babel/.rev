@@ -1,0 +1,79 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>aa386f32edc8b8d0db3894bc12727598</srcmd5>
+    <version>0.11.2</version>
+    <time>1504521220</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by python-Flask-WTF</comment>
+    <requestid>520043</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>39629e190e158c5bd5fe74fc0c5710ac</srcmd5>
+    <version>0.12.2</version>
+    <time>1541079674</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>645761</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>9e7f7990bac7e62aa58db6d7ac87327a</srcmd5>
+    <version>0.12.2</version>
+    <time>1541666912</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>646570</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f25c36c18591f8755c07a6eaa5ce26ad</srcmd5>
+    <version>1.0.0</version>
+    <time>1582028959</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>774993</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>882d373c586d5d1eef22437dc0637c6e</srcmd5>
+    <version>2.0.0</version>
+    <time>1599421048</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>832533</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7321157381b3f144f140d83c8035e3c9</srcmd5>
+    <version>3.1.0</version>
+    <time>1686927240</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.0:
+  * Don't return the default locale twice.
+  * Fix tests breaking against babel 12.2, which changed localized times to
+    use non-breaking-spaces.
+  * Relax version requirements for dependencies.
+  * Dropped support for end-of-life Python 3.5 and 3.6, added tests for 3.10
+    and 3.11.
+  * Jinja version 3 or greater is now required.
+  * Removed Babel._date_formats, use the public Babel.date_formats instead.
+  * list_translations() always returns the default locale, even if it does
+    not exist.
+  * Babel.locale_selector and Babel.timezone_selector no longer exist.
+  * Most configuration options can be passed directly through init_app().</comment>
+    <requestid>1093219</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>2ae2509de9cccd264d5100a84cdca366</srcmd5>
+    <version>3.1.0</version>
+    <time>1692611157</time>
+    <user>anag+factory</user>
+    <comment>- Add patch support-flask-2.4.patch:
+  * Silence deprecation warnings.</comment>
+    <requestid>1104968</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>d7bdb607ce45e19693c50cf767bbef2f</srcmd5>
+    <version>3.1.0</version>
+    <time>1701902825</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1130999</requestid>
+  </revision>
+</revisionlist>
