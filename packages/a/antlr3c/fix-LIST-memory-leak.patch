@@ -1,0 +1,45 @@
+From 26aaa0f97e45025c48139bd39adc8808f9b4e697 Mon Sep 17 00:00:00 2001
+From: Jiri Slaby <jirislaby@gmail.com>
+Date: Thu, 17 Feb 2011 21:26:57 +0100
+Subject: [PATCH] collections: fix a LIST memory leak
+
+When using antlr3 lists, Valgrind reports leaks like this:
+==30092== HEAP SUMMARY:
+==30092==     in use at exit: 80 bytes in 2 blocks
+==30092==   total heap usage: 286 allocs, 284 frees, 1,781,381 bytes allocated
+==30092==
+==30092== 40 bytes in 1 blocks are definitely lost in loss record 1 of 2
+==30092==    at 0x4C2659D: malloc (in /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so)
+==30092==    by 0x4E333B8: antlr3HashPutI (antlr3collections.c:569)
+
+It's because we use HASH as a representation for LIST. The LIST
+abstracts from HASH, so a user doesn't see a hash 'entry' itself.
+Hence if the user do list->remove, the HASH returns an 'entry' to us
+and we return entry->data to the user. But nobody frees the entry
+itself.
+
+So free the entry from now on.
+
+Signed-off-by: Jiri Slaby <jirislaby@gmail.com>
+---
+ src/antlr3collections.c |    4 +++-
+ 1 files changed, 3 insertions(+), 1 deletions(-)
+
+diff --git a/src/antlr3collections.c b/src/antlr3collections.c
+index 48ffe18..01f3f7e 100644
+--- a/src/antlr3collections.c
++++ b/src/antlr3collections.c
+@@ -946,7 +946,9 @@ antlr3ListRemove	    (pANTLR3_LIST list, ANTLR3_INTKEY key)
+ 
+     if	(entry != NULL)
+     {
+-        return  entry->data;
++	void *data = entry->data;
++	ANTLR3_FREE(entry);
++        return  data;
+     }
+     else
+     {
+-- 
+1.7.3.4
+

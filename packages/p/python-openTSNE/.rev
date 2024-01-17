@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2f014e681fe32267615ba6ed9fca2f51</srcmd5>
+    <version>0.5.1</version>
+    <time>1617130569</time>
+    <user>RBrownSUSE</user>
+    <comment>replaces python-fastTSNE</comment>
+    <requestid>867964</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1039cc390a955d6c0196bbf870af3fb2</srcmd5>
+    <version>0.5.1</version>
+    <time>1617722983</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>882539</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>522d4ce3d3857e71cf945d046f5949f0</srcmd5>
+    <version>0.6.1</version>
+    <time>1644188082</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>951934</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>94a020aae8697718296e3ebdf6b114b9</srcmd5>
+    <version>0.6.2</version>
+    <time>1647889897</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>963465</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2b383e6459d6fa009055671a9620b79b</srcmd5>
+    <version>1.0.0</version>
+    <time>1695209123</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1111748</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,571 @@
+-------------------------------------------------------------------
+Fri Dec 29 09:17:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.1.11:
+  * Added vlan trunks on the server detail page
+  * Added a thread capable client.cf_call() function
+
+-------------------------------------------------------------------
+Fri Dec  8 16:45:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.1.10:
+  * Implement IBM Detect-Secrets
+  * Fixing sphinx-build issues
+  * A few more additions to the documentation updates
+  * #2095 changed os version for readthedocs to a supported
+    version
+  * fixing build errors for documentation
+  * Fixing readthedocs build
+  * apparently style.css is a reserved word for
+    sphinx/readthedocs
+  * updating requirements with specific versions
+  * pip prod(deps): bump rich from 13.5.3 to 13.6.0
+  * fixed vs list with tag search, allowing multiple tags as well
+  * Show both binary flag options
+- update to 6.1.9:
+  * Added Example and some sub features in slcli file volume-
+    cancel, slcli file volume-duplicate, slcli file volume-limits
+  * PyPi publishing update
+  * fixed image detail object mask
+  * added force feature for hardware poweron and poweroff
+- update to 6.1.8:
+  * Added double quotes in CSV outputformat
+  * add a new command on order items-cancelation
+  * New Command: `slcli user apikey`
+  * Add ability to filter in slcli account billing-items
+  * added unit test cases
+  * Added Unit Test Case and Fixture
+  * Remove `bytes-used` from block volume-list
+  * Updated command - slcli cdn purge
+  * add a limit default 100 to image list --public
+  * Updated command - slcli report bandwidth
+  * Updated command - slcli account bandwidth-pools
+  * Related this issue:#1744
+  * New Command: `slcli security`
+  * Figure out why slcli vs list --tag  doesnt work properly
+  * Updated readthedocs documentation
+  * add a new column on ipAddress table subnet details
+  * #1954
+  * Group bandwidth commands
+  * pip prod(deps): bump rich from 13.3.5 to 13.4.1
+  * F-String Updates - account/bandwidthblock
+  * f-string changes for order, storage_utils, subnet, tags
+    module
+  * #1968
+  * `slcli account billing-items --create` always return an empty
+    table
+  * update the network vlan on hardware detail
+  * Improve resolve ids functionality
+  * New command `slcli bandwidth pools-create`
+  * F-Strings - call-api / config /  dns / file
+  * F-Strings - hardware / image / lb
+  * f-string changes for user, virt, vlan and vpn module
+  * pip prod(deps): bump rich from 13.4.1 to 13.4.2
+  * F-string changes for managers, transports, test module and
+    few other files
+  * Fix misspelling
+  * New command `slcli bandwidth pools-edit`
+  * Error on hardware create with Operation system #1638
+  * Added new command `slcli bandwidth pools-delete`
+  * LB protocol features
+  * slcli bandwidth pools-create with single locations as option
+    #1990
+  * Added blank value if it is empty when "Deletion Scheduled" to
+    bandwidth pools and pool-details
+  * block volume-list errors for this issue #1732
+  * slcli image list should use an iterative cal
+  * Multithreading implementation for slcli bandwidth pools
+    command
+  * Removed Deduplicate code in LB of protocol edit cli commands
+    for Issue 2003
+  * slcli search command help/abort message when no option
+    provided
+  * moved cliChecker folder to softlayer-python folder because
+    new changes are not picking up
+  * Example text added in slcli block access-authorise, slcli
+    block access-list, slcli block access-revoke, slcli block
+    disaster-recovery-failover
+  * added Description of Example
+  * Fixed Description and some features are missing in slcli
+    block snapshot-set-notification, slcli block subnets-assign,
+    slcli block subnets-list, slcli block subnets-remove
+  * --force option for slcli firewall add, firewall cancel
+    command - issue #2032
+  * Example and sub feature for slcli file volume-order, volume-
+    refresh, volume-set-note command #2031
+  * Sub features and Example were missing in slcli cdn edit,
+    slcli cdn origin-add
+  * Example and sub feature for slcli firewall monitoring, slcli
+    globalip specific commands #2033
+  * pip prod(deps): bump rich from 13.4.2 to 13.5.1
+  * ./slcli account cancel-item message/help text is added.
+  * Feature added in slcli block snapshot-cancel, Text updated in
+    slcli block snapshot-enable
+  * Example text and some features for slcli block volume-cancel,
+    slcli block volume-duplicate command #2015
+  * Example text for slcli block volume-list, slcli block volume-
+    limit command #2016
+  * Example for slcli block volume-modify, slcli block volume-
+    options #2017
+  * Example for slcli dedicatedhost create-options, slcli dns
+    import, slcli dns record-edit command #2021
+  * Example for slcli dns zone-create, slcli dns record-list,
+    slcli dns record-remove command #2022
+  * Example for slcli dns zone-delete, slcli dns zone-list, slcli
+    dns zone-print command #2023
+  * Example for slcli file access-authorize, slcli file access-
+    list, slcli file access-revoke command #2024
+  * Example for slcli file disaster-recovery-failover, slcli file
+    replica-failback, slcli file replica-failover, slcli file
+    replica-locations #2025
+  * pip prod(deps): bump rich from 13.5.1 to 13.5.2
+  * Added new slcli user vpn-disable and slcli user vpn-enable
+    command
+  * Enable all user permissions doesn't get all permissions
+  * slcli file snapshot-list, snapshot-order, snapshot-restore
+    command example addition #2028
+  * added Example for slcli file snapshot-create, slcli file
+    snapshot-disable, slcli file snapshot-enable
+  * slcli ticket list command with user limit option #2049
+  * added example in order, partners and cancel in file, added
+    force and unit test cases  in order, cancel commands.
+  * Added example in slcli loadbal health, slcli loadbal
+    l7policies, slcli loadbal l7pool-add
+  * slcli ipsec cancel, ipsec list, loadbal cancel command
+    missing feature fix #2042
+  * Added force flag and unit test cases in slcli hardware
+    cancel, slcli hardware create
+- update to 6.1.7:
+  * Added new command - slcli cdn delete
+  * Added new command - slcli cdn create
+  * slcli firewall detail multiVlan:14109 --credentials
+  * add a new option on account orders
+  * Issues with block/file volume-details on some volumes
+  * Need a command for slcli object-storage delete
+  * New Command: `slcli user vpn-password`
+  * Update `slcli user detail` to display if user has API key
+  * Fixed an issue with 'slcli event-log get'
+  * pip prod(deps): bump rich from 13.3.3 to 13.3.4
+  * #1922 added the slcli file to this repo
+  * Updated date field in command - slcli cdn purge
+  * New command: slcli order quote-delete
+  * pip prod(deps): bump rich from 13.3.4 to 13.3.5
+- update to 6.1.6:
+  * New Command, account hook-create feature
+  * Updated request to list all permissions to users
+  * Dont fail when trying to get user information from slcli
+    event-log get
+  * Fix `slcli hardware create-credential` command
+  * new feature on account hook-delete
+  * v6.1.6 version
+- update to 6.1.5:
+  * removed snapcraft from publish build.
+  * Updated command slcli block snapshot-order, added flag iops
+  * Fix email commands
+  * fixed an issue showing block/file snapshot prices
+  * `vs list --search` functionality
+  * pip prod(deps): bump rich from 13.3.1 to 13.3.2
+  * slcli hw list --search "query"
+  * new command account hooks
+  * New command `slcli image share-deny`
+  * Updated command `slcli image detail`
+  * Add columns to `image list`
+  * New command `slcli image share`
+  * removed autoscale commands
+  * Unable to determine file-lock storage limits per datacenter
+  * Solved bug `slcli vs capture` Error: Got unexpected extra
+    argument
+
+-------------------------------------------------------------------
+Sat Jul  1 09:08:05 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Mon Feb 20 05:00:48 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 6.1.4:
+  * Remove default filter on subnet list and fix the subnet detail
+  * fixing issues with the auto build for releases
+  * Improve subnet list
+  * add a limit and sortby on data time on ticket list command on result
+  * slcli vs upgrade --resize-disk is resizing another disk and not the
+    selected one
+  * Improve subnet detail by @caberos
+  * Added example to slcli call-api
+  * subnet route and subnet clear-route
+  * slcli vs notifications is displaying a hardware description
+  * Added script to list all commands in slcli
+  * New Command: slcli user grant-access
+  * Fixes firewall cancel so it can properly do multiVlan firewalls
+  * user remove-access is not displaying all removed device access and
+    its help command displaying error message
+  * feature search
+  * Added flag to command slcli account events --date-min
+  * slcli vs capture uses a deprecated API
+  * Updated command slcli block replica-order
+  * unexpected error when using vlan list with --limit 0 or 999
+  * New Command: slcli virtual host-list
+  * update volume-refresh command
+  * vs os-available command
+  * New Command: slcli virtual host-create
+  * slcli block access, updated some descriptions, change flag -h to -d,
+    sort flags
+  * slcli vlan list only returns 100 results
+  * New Command: Hardware notifications
+  * New Command: virtual notifications
+  * Change regex in rich text in simple option in help text
+  * add more information to vs credentials
+  * Fixed maxint issue
+  * Added csv output format
+  * add more information on hw credentials
+  * Delete twitter link in documentation
+  * new command hw create-credential
+  * fix the hw credential error
+  * Added test suite for py311
+  * New feature to change theme in slcli like dark, light o maintain in default
+  * Match virtual detail --prices option with hardware detail --prices option
+  * Fixing preset-list pricing table
+  * fix the call api cannot handle empty results
+  * Debug output changed to a valid JSON
+  * slcli hw add-notifications crashes with a bad user
+  * del-notification commands, rename the commands to notifications-add
+  * Add --extras to slcli order quote
+  * An error is displaying for volume with replica in slcli
+- Drop patch fix-maint-issue.patch, included upstream.
+
+-------------------------------------------------------------------
+Mon Oct 17 18:04:18 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add fix-maint-issue.patch (fixes bsc#1203311).
+- No, we actually don't need python-six at all.
+
+-------------------------------------------------------------------
+Thu Oct  6 06:15:44 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 6.1.2:
+  - Add status, create date and domain columns in slcli vs list
+    command
+  - New command: ipsec cancel
+  - New command: subnet clear-route
+  - Deprecate slcli hw guests
+  - Remove real usersnames from test fixtrues
+  - Fix tox request.get hangout issue
+  - add vs user-access command
+  - Update Help message for commands that take in multiple
+    arguments
+  - Error with slcli order item-list
+  - deprecate sl autoscale
+  - Unhandled error running a subcommand in slcli
+- Update to 6.1.1:
+  - item-list fix
+  - updating release job to actually publish to pypi
+  - Update command - slcli object-storage endpoints
+  - add the block volume-options command
+  - add the file volume-options command
+  - fixed issues where a message warned users about closing
+    datacenter
+  - Enable --format=raw and fixes table width
+  - Update slcli hardware sensor
+  - Improved successful response to command - slcli vs cancel
+  - Fixed an issue with printing tables that contained empty
+    items
+  - Added a dependabot scanner
+  - block|file volume-options improvements
+  - Option create-options in commands hardware and dedicatedhost
+    fixed
+  - pip prod(deps): bump rich from 12.3.0 to 12.5.1
+  - block/file volume-options improvements 2
+  - New command ipsec order
+  - block/file volume-options improvement 3
+  - Command slcli vlan create - displaying an error message
+  - New Command: user device-access
+  - Command slcli vlan edit accept that we do not send any
+    parameters
+  - Updated command - slcli vlan list
+  - slcli block subnets-list command display an error message
+  - add user remove-access command
+  - Add Devices with Trunks to vlan detail
+  - slcli hardware reflash-firmware command does not display
+    success message
+  - Fix bug with command - slcli cdn edit
+
+-------------------------------------------------------------------
+Thu Jul  7 08:49:06 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.1.0:
+  * [Rich](https://github.com/Textualize/rich) tables
+  * [Rich](https://github.com/Textualize/rich) Text support
+  * slcli licenses is missing the help text
+  * Add a warning if user orders in a POD that is being closed
+  * updated number of updates in the command account event-detail
+  * Add an orderBy filter to slcli vlan list
+  * Add options to print a specific table in command slcli account events
+  * Update global ip assign/unassign to use new API
+  * Ability to route/unroute subnets
+  * Improved successful response to command - slcli account cancel-item
+  * Improved successful response to command - slcli virtual edit
+  * Improved successful response to command - slcli vlan cancel
+  * Mishandling of domain and hostname data in `slcli account item-detail`
+  * Unable to get VSI details when last TXN is "Software install is finis…
+  * new command on autoscale delete
+  * Incorrect table title is displayed when an Auto Scale Group is scaled to reduce members
+  * slcli autoscale create
+  * Soap transport
+  * fix issue on loadbal order command
+  * Policy is not added when an AutoScale Group is created
+  * When `slcli event-log` not return any event log the command display an error
+  * add new columns on vlan list(premium, tags)
+  * fixed documentation build issues
+  * Improved successful response to command - slcli licenses cancel
+  * update the firewall list
+  * Updated readme
+  * Update `slcli firewall detail` to handle multi vlan firewalls
+  * New command for getting duplicate convert status
+  * Fixed TOX errors
+  * add a new feature to get all cloud object storage
+  * Update `slcli report bandwidth` command
+  * add firewall monitoring command
+  * add a new command on block object-storage details
+  * slcli account bandwidth-pools-detail command displays an error with b…
+  * new feature block object-storage permissions command
+  * fix the vlan table
+
+-------------------------------------------------------------------
+Tue Apr 19 09:40:42 UTC 2022 - pgajdos@suse.com
+
+- version update to 6.0.2
+  ## [6.0.2] - 2022-03-30
+  * New Command slcli hardware|virtual monitoring by @caberos
+  * When listing datacenters/pods, mark those that are closing soon. by @caberos
+  ## [6.0.1] - 2022-03-11
+  * Replace the use of ptable with prettytable by @dvzrv
+  * Bandwidth pool management by @caberos
+  * Add id
+  * Datacenter closure report by @allmightyspiff
+  * fix to errors
+  ## [5.9.9] - 2022-02-04
+  * Add loadbalancer timeout values #1576
+  * Add pricing date to slcli order preset-list #1578
+  * `slcli vlan create-options` add new feature on vlan #1572
+  * `slcli account bandwidth-pools` Bandwidth pool features #1579
+- python-mock is not required for build
+
+-------------------------------------------------------------------
+Tue Jan 11 05:56:49 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 5.9.8:
+  * Fix code blocks formatting of The Solution section docs #1534
+  * Add retry decorator to documentation #1535
+  * Updated utility docs #1536
+  * Add Exceptions to Documentation #1537
+  * Forces specific encoding on XMLRPC requests #1543
+  * Add sensor data to hardware #1544
+  * Ignoring f-string related messages for tox for now #1548
+  * Fix account events #1546
+  * Improved loadbal details #1549
+  * Fix initialized accountmanger #1552
+  * Fix hw billing reports 0 items #1556
+  * Update API docs link and remove travisCI mention #1557
+  * Fix errors with vs bandwidth #1563
+  * Add Item names to vs billing report #1564
+  * Mapping is now in collections.abc #1565
+  * fix vs placementgroup list #1567
+  * fixed up snapshot-notification cli commands #1569
+  * loadbal l7policies #1553
+  * snapshot notify #1554
+
+-------------------------------------------------------------------
+Fri Nov 26 11:37:43 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- fix for prettytable rename
+
+-------------------------------------------------------------------
+Mon Aug 16 05:51:52 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 5.9.7:
+  * Fix the network space is empty on subnet detail #1523
+  * Add a table result for `slcli hw upgrade` output. #1488
+  * Remove block/file interval option for replica volume. #1497
+  * `slcli vlan cancel` should report if a vlan is automatic. #1495
+  * New method to manage how long text is in output tables. #1506
+  * Fix Tox-analysis issues. #1510
+  * Changed a testing domain to one that really doesnt exist #1492
+  * Fix Incomplete notes field for file and block #1484
+  * Show component versions on hw detail #1470
+  * Add the firewall information on slcli firewall detail #1475
+  * Add an --orderBy parameters to call-api #1459
+  * Add image detail transaction data #1479
+  * Add routers for each DC in slcli hw create-options #1432
+  * Add preset datatype in slcli virtual detail #1435
+  * Add upgrade option to slcli hw. #1437
+  * Add the Hardware components on "slcli hardware detail" #1452
+  * Updating author_email to SLDN distro list #1469
+  * Add the option to add and upgrade the hw disk. #1455
+  * Add Billing and lastTransaction on slcli virtual detail #1466
+  * Add pagination to object storage list accounts. #1411
+  * Add username lookup to slcli object-storage credential #1415
+  * Add IOPs data to slcli block volume-list. #1418
+  * Add a flags in the report bandwidth #1420
+  * Add the option network component by router to slcli hw create. #1422
+  * Add slcli vs create by router data. #1414
+  * Add testing and support for python 3.9. #1429
+  * Checking for TermLength on prices #1428
+  * Added order lookup command to block and file orders. #1350
+  * Allow orders without a location if needed #1356
+  * Fix create subnet static for ipv4 price. #1358
+  * Fix order item-list --prices location #1360
+  * Removed Nessus scanner from docs and examples #1368
+  * Fix subnet list. #1379
+  * #1309 Fix the empty lines in slcli vs create-options
+  * #875 added option to reload bare metal servers with LVM enabled
+  * #874 Added Migrate command
+  * #1313 Added support for filteredMask
+  * #900 Support for STDIN on creating and updating tickets.
+  * #1318 add Drive number in guest drives details using the device number
+  * #1323 add vs list hardware and all option
+- Skip one test, so we don't require tkinter.
+- Conflict with sl, we both provide the same file.
+
+-------------------------------------------------------------------
+Wed Jul 29 07:47:04 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 5.8.9
+  * #1252 Automated Snap publisher
+  * #1230 Tag Management
+  * #1287 Edit IP note and add ipAddress table in detail view
+  * #1291 Storage documentation updates
+  * #1266 Fixed ticket upload with REST endpoint
+  * #1263 add the redundant/degraded option to hardware
+  * #1262 Added `iter` option for ordering manager functions
+  * #1264 Add Account planned, unplanned and announcement events
+  * #1241 Storage feature for virtual and hardware servers
+
+-------------------------------------------------------------------
+Tue May 19 09:28:05 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
+Wed Apr 15 15:19:02 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 5.8.7
+  * #1222 Get load balancer (LBaaS) by name
+  * #1221 Added version checker
+  * #1227 Updated unit test suite for TravisCI to run properly
+  * #1225 Add note about using multiple colon symbols not working when setting tags.
+  * #1228 Support ordering [Dependent Duplicate Volumes](https://cloud.ibm.com/docs/BlockStorage?topic=BlockStorage-dependentduplicate)
+  * #1233 Refactored File/Block managers to reduce duplicated code.
+  * #1231 Added Refresh functions for Dependent Duplicate Volumes
+  * #801 Added support for JSON styled parameters and object filters
+  * #1234 Added ability to change which datacenters an image template was stored in
+
+-------------------------------------------------------------------
+Tue Mar 17 14:29:19 UTC 2020 - pgajdos@suse.com
+
+- version update to 5.8.5
+  ## [5.8.5] - 2012-01-29
+  -  #1195 Fixed an issue with `slcli vs dns-sync --ptr`. Added `slcli hw dns-sync`
+  -  #1199 Fix File Storage failback and failover.
+  -  #1198 Fix issue where the summary command fails due to None being provided as the datacenter name.
+  -  #1208 Added The following commands:
+      - `slcli block volume-limits`
+      - `slcli file  volume-limits`
+  - #1209  Add testing/CI for python 3.8.
+  - #1212 Fix vs detail erroring on servers pending cancellation.
+  - #1210 support subnet ACL management through cli
+      + `slcli block subnets-list`
+      + `slcli block subnets-assign`
+      + `slcli block subnets-remove`
+  - #1215 Added documentation for all SLCLI commands.
+  ## [5.8.4] - 2019-12-20
+  - #1199 Fix block storage failback and failover.
+  - #1202 Order a virtual server private.
+  ## [5.8.3] - 2019-12-11
+  - #771 Fixed unicode errors in image list (for windows)
+  - #1191 Fixed ordering virtual server dedicated from the CLI
+  - #1155 Fixed capacity restriction when ordering storage quotes
+  - #1192 Fixed hardware detail bandwidth allocation errors.
+  ## [5.8.2] - 2019-11-15
+  + #1186 Fixed a unit test that could fail if the test took too long to run.
+  + #1183 Added a check to ensure subnet and vlan options are properly added to the order for virtual servers.
+  + #1184 Fixed a readme misspelling.
+  + #1182 Fixed vs reboot unable to resolve vs names.
+  + #1095 Handle missing Fixtures better for unit tests.
+  + #1169 Drop python 2.7 support
+  + #1170 Added CS# to ticket listing
+  + #1162 Fixed issue looking up OS keyName instead of referenceCode
+  + #627 Autoscale support
+      * slcli autoscale detail
+      * slcli autoscale edit
+      * slcli autoscale list
+      * slcli autoscale logs
+      * slcli autoscale scale
+      * slcli autoscale tag
+
+-------------------------------------------------------------------
+Tue Sep 10 10:15:52 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Bump to 5.8.0:
+  * use prompt_toolkit >= 2.0
+  * various tests/documentation improvements
+  * Removed legacy loadbalancer command
+
+-------------------------------------------------------------------
+Tue May  7 07:27:35 UTC 2019 - pgajdos@suse.com
+
+- version update to 5.7.2
+  + #1107 Added exception to handle json parsing error when ordering
+  + #1068 Support for -1 when changing port speed
+  + #1109 Fixed docs about placement groups
+  + #1112 File storage endurance iops upgrade
+  + #1101 Handle the new user creation exceptions
+  + #1116 Fix order place quantity option
+  + #1002 Invoice commands
+      * account invoices
+      * account invoice-detail
+      * account summary
+  + #1004 Event Notification Management commands
+      * account events
+      * account event-detail
+  + #1117 Two PCIe items can be added at order time
+  + #1121 Fix object storage apiType for S3 and Swift.
+  + #1100 Event Log performance improvements.
+  + #872 column 'name' was renamed to 'hostname'
+  + #1127 Fix object storage credentials.
+  + #1129 Fixed unexpected errors in slcli subnet create
+  + #1134 Change encrypt parameters for importing of images. Adds root-key-crn
+  + #208 Quote ordering commands
+      * order quote
+      * order quote-detail
+      * order quote-list
+  + #1113 VS usage information command
+      * virtual usage
+  + #1131 made sure config_tests dont actually make api calls.
+- deleted patches
+  - python-softlayer-fix-teset_setup_cancel.patch (upstreamed)
+
+-------------------------------------------------------------------
+Thu Apr 25 06:27:39 UTC 2019 - pgajdos@suse.com
+
+- added patches
+  fix https://github.com/softlayer/softlayer-python/issues/1095
+  + python-softlayer-fix-teset_setup_cancel.patch
+
+-------------------------------------------------------------------
+Tue Apr  9 13:07:50 UTC 2019 - pgajdos@suse.com
+
+- version update to 5.7.1
+  * many changes, see CHANGELOG.md
+- run testsuite
+- package change log
+
+-------------------------------------------------------------------
+Fri May 11 20:24:15 UTC 2018 - toddrme2178@gmail.com
+
+- Don't foget python_module workaround.
+
+-------------------------------------------------------------------
+Sun Apr 15 14:22:52 UTC 2018 - tchvatal@suse.com
+
+- Initial commit, needed by python-dns-lexicon

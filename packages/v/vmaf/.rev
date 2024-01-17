@@ -1,0 +1,76 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2617f12b71debb8e875ad2d08d06365d</srcmd5>
+    <version>1.5.3</version>
+    <time>1603545396</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>843561</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0ffea0774ebc35b0c32f43fe5caa3867</srcmd5>
+    <version>2.1.0</version>
+    <time>1610381469</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1.0</comment>
+    <requestid>861653</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4eca58ceaa6954609c47e3ff0b9637d5</srcmd5>
+    <version>2.1.1</version>
+    <time>1615552269</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>877727</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7b130709040851326a0b759a062d4c74</srcmd5>
+    <version>2.2.0</version>
+    <time>1625516552</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.2.0</comment>
+    <requestid>903769</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8432326ce827c1bd22be683f3147a8d3</srcmd5>
+    <version>2.3.0</version>
+    <time>1634754214</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.3.0</comment>
+    <requestid>925760</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>dddae0e4b0fcd4999460ed951a5d7606</srcmd5>
+    <version>2.3.1</version>
+    <time>1649949796</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.3.1</comment>
+    <requestid>969285</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>db7ca8d72d033b0043190f608c9f8651</srcmd5>
+    <version>2.3.1</version>
+    <time>1668086359</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop recommends on vmaf-data, the package is gone since vmaf 2.x.
+  Build model data into the library, since `make install` does not
+  do anything by default. [boo#1189023]</comment>
+    <requestid>1034811</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>6de11de7777b2a53a79888b55ae92c3f</srcmd5>
+    <version>2.3.1</version>
+    <time>1679238955</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix &quot;no such built-in model&quot; due to missing build dependency</comment>
+    <requestid>1072487</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>71fa051deca6388f4dd3058aaf4941b0</srcmd5>
+    <version>3.0.0</version>
+    <time>1703800510</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 3.0</comment>
+    <requestid>1135305</requestid>
+  </revision>
+</revisionlist>

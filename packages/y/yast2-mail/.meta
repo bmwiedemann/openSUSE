@@ -1,0 +1,6 @@
+<package name="yast2-mail" project="openSUSE:Factory">
+  <title>YaST2 - Mail Configuration</title>
+  <description>The YaST2 component for mail configuration. It handles Postfix, Cyrus,
+Amavis and Fetchmail.</description>
+  <devel project="YaST:Head" package="yast2-mail"/>
+</package>

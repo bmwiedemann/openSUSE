@@ -1,0 +1,12 @@
+<package name="perl-Config-Auto" project="openSUSE:Factory">
+  <title>Magical config file parser</title>
+  <description>This module was written after having to write Yet Another Config File
+Parser for some variety of colon-separated config. I decided &quot;never again&quot;.
+
+Config::Auto aims to be the most 'DWIM' config parser available, by
+detecting configuration styles, include paths and even config filenames
+automagically.
+
+See the the HOW IT WORKS manpage section below on implementation details.</description>
+  <devel project="devel:languages:perl" package="perl-Config-Auto"/>
+</package>

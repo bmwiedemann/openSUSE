@@ -1,0 +1,62 @@
+-------------------------------------------------------------------
+Fri Mar  7 08:52:59 UTC 2014 - coolo@suse.com
+
+- updated to 0.44
+  - Resolve RT#91891 an edge-case with equal and space format detection
+
+-------------------------------------------------------------------
+Mon Feb 13 19:38:26 UTC 2012 - coolo@suse.com
+
+- updated to 0.42
+  - Add a test fstab file instead of relying on the vagaries of system ones
+  - Resolve RT#74711 reported by David Oswald
+    ( Calling Config::Auto::parse while $_ aliases a constant value throws exception )
+
+-------------------------------------------------------------------
+Wed Oct 26 20:17:09 UTC 2011 - tabraham@novell.com
+
+- updated to 0.38
+  - Resolve RT 69984 reported by Thomas Johnson
+    ( Array handling regression when using equals format )
+
+- updated to 0.36 Fri Jul  1 14:38:57 2011
+  - Fix for RT 68913 reported by Michael Lackhoff
+    ( config files with DOS line endings do not work in Linux )
+
+-------------------------------------------------------------------
+Mon May 30 15:18:31 UTC 2011 - coolo@novell.com
+
+- rengerate with cpanspec 1.78.04
+
+-------------------------------------------------------------------
+Mon Apr  4 08:30:08 UTC 2011 - coolo@novell.com
+
+- updated to 0.34
+   - Apply patch from Andrew Ruthven RT #66460
+     ( also Debian Bug # 617305 )
+   - Fix a regression with space separated format
+     reported by Karel Petera RT #66050
+   - Apply a fix from Nigel Horne RT #65019
+   - Not all versions of XML::Parser deal well with an IO::String filehandle;
+     pass the value in as string instead
+   - Fix a broken XML test
+   - Remove stray $DB::single = 1
+   - Don't delete XML tests, skip them
+   - Address #44018: Speed enhancements to only load modules if they are
+     actually needed. By Lyle Hopkins
+   - Address #32927: Hash key being assigned to $1 instead of $_
+   - Address #28608: Quoted parameters in Config::Auto
+     parsing now properly splits on quoted words, shell like
+   - Address #27686: an odd config format could throw uninitialized
+     value warnings
+   - Guts of Config::Auto rewritten to allow access to data in various
+     stages.
+   - Updates prereq list
+   - Increased test coverage
+
+-------------------------------------------------------------------
+Sat Jan 22 20:15:44 UTC 2011 - coolo@novell.com
+
+- initial package 0.20
+  * created by cpanspec 1.78.03
+

@@ -1,0 +1,21 @@
+diff -Nura ibus-1.5.16/xim.d-ibus-121 ibus-1.5.16_new/xim.d-ibus-121
+--- ibus-1.5.16/xim.d-ibus-121	2017-06-05 14:38:10.728021247 +0800
++++ ibus-1.5.16_new/xim.d-ibus-121	2017-06-05 14:40:44.380353362 +0800
+@@ -13,17 +13,6 @@
+     # G-S-D. see bnc#873016.
+     *gnome*)
+         SOURCES=$(gsettings get org.freedesktop.ibus.general preload-engines)
+-        if [ "$SOURCES" == '@as []' ]; then
+-        echo "initial GNOME startup, ibus default configuration applied"
+-        ibus-daemon -d
+-        timer=5
+-        while [ "$SOURCES" == '@as []' ] && [ ${timer} -gt 0 ]; do
+-            sleep 1
+-            timer=$[${timer}-1]
+-            SOURCES=$(gsettings get org.freedesktop.ibus.general preload-engines)
+-        done
+-        ibus exit
+-        fi
+         # make sure G-S-D keyboard plugin is active
+         echo "ibus will be managed by GNOME."
+         gsettings set org.gnome.settings-daemon.plugins.keyboard active true

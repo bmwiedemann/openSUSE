@@ -1,0 +1,102 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7f6f6ddea232fa2676b77d376090976f</srcmd5>
+    <version>0.34</version>
+    <time>1306416172</time>
+    <user>saschpe</user>
+    <comment>new perl package, based on this list: is in devel:languages:perl without additional dependencies against O:F, has non-trivial test suite and is included in debian stable and has standard perl license</comment>
+    <requestid>66705</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7764839554b438133d739793ea1a2ec7</srcmd5>
+    <version>0.34</version>
+    <time>1306416184</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66705
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>91019c5e733883b2a052834e72ab9fd3</srcmd5>
+    <version>0.34</version>
+    <time>1306854084</time>
+    <user>saschpe</user>
+    <comment>- rengerate with cpanspec 1.78.04</comment>
+    <requestid>72107</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>4d56ecc2ec266e2b40e1a498d8f54d3c</srcmd5>
+    <version>0.34</version>
+    <time>1306854091</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72107
+</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>4d56ecc2ec266e2b40e1a498d8f54d3c</srcmd5>
+    <version>0.34</version>
+    <time>1319182250</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>62c6a7c46e16d6cb7fa130fe6f4b22df</srcmd5>
+    <version>0.38</version>
+    <time>1319736152</time>
+    <user>coolo</user>
+    <comment>update to 0.38 (forwarded request 89459 from tabraham1)</comment>
+    <requestid>89496</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>4537e5b45aabf5c0bb43514613993d95</srcmd5>
+    <version>0.38</version>
+    <time>1323193141</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0b9a0e178733714a4de01b0b75a99dd0</srcmd5>
+    <version>0.42</version>
+    <time>1329383201</time>
+    <user>coolo</user>
+    <comment>- updated to 0.42
+  - Add a test fstab file instead of relying on the vagaries of system ones
+  - Resolve RT#74711 reported by David Oswald
+    ( Calling Config::Auto::parse while $_ aliases a constant value throws exception )</comment>
+    <requestid>104801</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>0b9a0e178733714a4de01b0b75a99dd0</srcmd5>
+    <version>0.42</version>
+    <time>1340183812</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>0b9a0e178733714a4de01b0b75a99dd0</srcmd5>
+    <version>0.42</version>
+    <time>1359109623</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>0b9a0e178733714a4de01b0b75a99dd0</srcmd5>
+    <version>0.42</version>
+    <time>1379663593</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>edbad88e576b21a198c52d0b4419d241</srcmd5>
+    <version>0.44</version>
+    <time>1394386509</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>224975</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>edbad88e576b21a198c52d0b4419d241</srcmd5>
+    <version>0.44</version>
+    <time>1409302212</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

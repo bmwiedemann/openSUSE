@@ -1,0 +1,51 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0468ddd4652543ad54e9b8adc9986072</srcmd5>
+    <version>3.1.1</version>
+    <time>1554458563</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>690923</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>009d813ec014feee1229e566b9a62b27</srcmd5>
+    <version>3.1.1</version>
+    <time>1620840734</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not build against legacy guava20 any more
+</comment>
+    <requestid>892415</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>93637c34c9cd699600d7a0de210fdcb6</srcmd5>
+    <version>3.1.1</version>
+    <time>1647889867</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source/target levels 8</comment>
+    <requestid>963346</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>71ced5e81c324b2ed8bf71decc507760</srcmd5>
+    <version>3.2.0</version>
+    <time>1651272317</time>
+    <user>dimstar_suse</user>
+    <comment>3.2.0</comment>
+    <requestid>973698</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>191e211f1d86763b7b60f5b1989bebd7</srcmd5>
+    <version>3.2.0</version>
+    <time>1657809219</time>
+    <user>dimstar_suse</user>
+    <comment>appease darix</comment>
+    <requestid>989031</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a9783670860e1e4dbd587d09cedeae8a</srcmd5>
+    <version>3.3.1</version>
+    <time>1694019607</time>
+    <user>anag+factory</user>
+    <comment>3.3.1</comment>
+    <requestid>1109286</requestid>
+  </revision>
+</revisionlist>

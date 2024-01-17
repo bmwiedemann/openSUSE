@@ -1,0 +1,16 @@
+#
+# The name for the init script is correct. kexec-tools is no name
+# for an init script.
+addFilter(".*incoherent-init-script-name.*");
+
+#
+# $null is a valid dependency.
+addFilter(".*init-script-undefined-dependency.*");
+
+#
+# It does not make any sense to stop the "service" kexec on removal.
+# kexec is no service but an init script to run kexec when rebooting.
+# Stopping it here would lead to a very unexpected behaviour on reboot. :)
+addFilter(".*init-script-without-%stop_on_removal-preun.*");
+
+# :mode=python:

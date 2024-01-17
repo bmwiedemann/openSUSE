@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=IBus
+GenericName=IBus Daemon
+Comment=Start IBus daemon
+Exec=ibus-autostart
+Icon=ibus-setup
+Terminal=false
+Type=Application
+StartupNotify=false
+NoDisplay=true
+X-KDE-autostart-after=panel
+X-KDE-StartupNotify=false

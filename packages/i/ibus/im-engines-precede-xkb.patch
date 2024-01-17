@@ -1,0 +1,17 @@
+diff -Nur ibus-1.5.29/ui/gtk3/panel.vala ibus-1.5.29-new/ui/gtk3/panel.vala
+--- ibus-1.5.29/ui/gtk3/panel.vala	2023-11-09 13:59:25.000000000 +0800
++++ ibus-1.5.29-new/ui/gtk3/panel.vala	2023-11-30 23:07:02.891766723 +0800
+@@ -636,10 +636,11 @@
+                 get_engines_from_locale(engines);
+ 
+         string[] names = {};
+-        foreach (unowned IBus.EngineDesc engine in xkb_engines)
+-            names += engine.get_name();
+         foreach (unowned IBus.EngineDesc engine in im_engines)
++        names += engine.get_name();
++        foreach (unowned IBus.EngineDesc engine in xkb_engines)
+             names += engine.get_name();
++        
+ 
+         m_settings_general.set_strv("preload-engines", names);
+     }

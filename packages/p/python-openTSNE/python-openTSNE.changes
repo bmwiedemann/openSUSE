@@ -1,0 +1,65 @@
+-------------------------------------------------------------------
+Thu Sep 14 13:26:03 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.0.0
+  * Given the longtime stability of openTSNE, it is only fitting 
+    that we release a v1.0.0.
+  * Various documentation fixes
+  * Include Python 3.11 in the test and build matrix
+  * Uniform affinity kernel now supports mean and max mode
+- add get-numpy-include.patch
+
+-------------------------------------------------------------------
+Sun Mar 20 19:38:50 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.6.2
+  * By default, we now use the MultiscaleMixture affinity model,
+    enabling us to pass in a list of perplexities instead of a
+    single perplexity value. This is fully backwards compatible.
+  * Previously, perplexity values would be changed according to the
+    dataset. E.g. we pass in perplexity=100 with N=150. Then
+    TSNE.perplexity would be equal to 50. Instead, keep this value
+    as is and add an effective_perplexity_ attribute (following the
+    convention from scikit-learn, which puts in the corrected
+    perplexity values.
+  * Fix bug where interpolation grid was being prepared even when
+    using BH optimization during transform.
+  * Enable calling .transform with precomputed distances. In this
+    case, the data matrix will be assumed to be a distance matrix.
+  * Fix potential problem with clang-13, which actually does
+    optimization with infinities using the -ffast-math flag
+- Enable python310 build
+- Skip a test in 32bit failing due to rounding errors
+
+-------------------------------------------------------------------
+Fri Feb  4 16:10:13 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.6.1
+  * Remove affinites from TSNE construction, allow custom
+    affinities and initialization in .fit method. This improves the
+    API when dealing with non-tabular data. This is not backwards
+    compatible.
+  * Add metric="precomputed". This includes the addition of
+    openTSNE.nearest_neighbors.PrecomputedDistanceMatrix and
+    openTSNE.nearest_neighbors.PrecomputedNeighbors.
+  * Add knn_index parameter to openTSNE.affinity classes.
+  * Add (less-than-ideal) workaround for pickling Annoy objects.
+  * Extend the range of recommended FFTW boxes up to 1000.
+  * Remove deprecated openTSNE.nearest_neighbors.BallTree.
+  * Remove deprecated openTSNE.callbacks.ErrorLogger.
+  * Remove deprecated TSNE.neighbors_method property.
+  * Add and set as default negative_gradient_method="auto".
+- Skip building on python310: gh#pavlin-policar/openTSNE#205
+
+-------------------------------------------------------------------
+Thu Apr  1 07:36:31 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add python-openTSNE-disable-CPU-autodetection.patch (boo#1100677)
+
+-------------------------------------------------------------------
+Fri Jan 29 19:18:18 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- initial specfile for version 0.5.1
+- replaces python-fastTSNE
+- The pytest_arch macro needs the "Cepl-Strangelove-Parameter"
+  (= specify --import-mode)

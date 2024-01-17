@@ -1,0 +1,139 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ddbeda887de664c3b91407b994ac1ef8</srcmd5>
+    <version>0.8.0</version>
+    <time>1698438511</time>
+    <user>anag+factory</user>
+    <comment>Submit new package obs-service-cargo.
+
+This will replace the previous python versions of the obs service cargo audit and vendor
+packages. This library is fasted, easier to maintain and easier for a user to configure.</comment>
+    <requestid>1120662</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>20e4abf0e8acdb78063c4092a420093f</srcmd5>
+    <version>0.8.4</version>
+    <time>1698873010</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.4:
+  * fix: also check attempt to vendor if it is also a workspace
+  * misc: add stop sign in error message
+  * improve error handling impl
+  * fix: also make sure it really has no deps
+  * utils: exit vendor step if no dependencies found
+  * update README again
+  * update README
+  * docs: update README regarding the new flag
+  * all: apply clippy lint suggestions
+  * fix: also copy top-level folder if src is a directory
+  * Rework of compression and vendoring to be clearer
+  * Minor output improvements
+  * fix: also copy top-level folder if src is a directory
+  * update email address in manifest file
+  * remove unused dead code
+  * clippy: apply clippy suggestions
+</comment>
+    <requestid>1121524</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>49c89c898e84c442f2e9deae6ef35fb1</srcmd5>
+    <version>0.8.9</version>
+    <time>1700250606</time>
+    <user>anag+factory</user>
+    <comment>- Remove cargo_config. Part of vendored tarball now
+- Update to 0.8.9:
+  * dummy determine the path of the lockfile
+- Update to 0.8.8:
+  * clippy: change match to if let
+  * docs: add dependencies section in the README
+  * fix: just warn and don't return an error
+  * fix: hasdeps should inherit should_vendor value
+  * fix: also join the paths from `prjdir`
+  * Remove tags, fix multitoml vendor, automatically add .cargo/config
+  * fix multi cargo issue
+  * do not exit process when terminfo is not found.
+- Disable update. Cargo cannot find glob crate when trying to update.
+</comment>
+    <requestid>1127232</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d2d132ee58b3aa52e63054209802dc64</srcmd5>
+    <version>0.8.12</version>
+    <time>1700675698</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.8.12:
+  * improv: reintroduced tag in README
+  * Add tagging
+  * docs: add possible vendor failures in README
+  * make cargotoml usage clearer
+- Update to version 0.8.10:
+  * docs: update README
+  * move lints to configuration manifest
+  * an improvement of commit 24aaa0056
+  * configure rust version and toolchain&quot;
+  * check if there are lockfiles from aforementioned manifest paths
+  * fix: check if dependencies section is empty or not
+  * misc: remove redundant messages
+  * improvement: better handling on when and when not to vendor
+  
+</comment>
+    <requestid>1128058</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>005cba9514ca1ab74405f756b6890f60</srcmd5>
+    <version>0.8.15</version>
+    <time>1700865298</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.8.15:
+  * fix: we also include build_dependencies
+  * test: add VBox-Starter in runtests.sh
+  * fix: check also the targets section
+  * misc: nitpick. remove small space
+  * fix typo
+  * docs: put warning on README
+</comment>
+    <requestid>1128555</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b27d7779018cf69f75cd8b32b9e43d01</srcmd5>
+    <version>0.8.18</version>
+    <time>1701902901</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.8.18:
+  * (de)compress: add Bz2 compression
+  * refactor return types and initial boilerplate for bz2 compress
+  * nitpick. slight refactor because Ok(()) looks yuck in some contexts
+  * it should be `--output` if we want to download a file
+</comment>
+    <requestid>1131221</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>96cc14559758014cab34a54ad9e155c0</srcmd5>
+    <version>0.8.20</version>
+    <time>1701972692</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.8.20:
+  * added bz2 mime
+  * add fixes to make bz2 mime supported
+</comment>
+    <requestid>1131611</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4eed564679dc1f1dabfdcb7ca6da7094</srcmd5>
+    <version>0.8.21</version>
+    <time>1702488923</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.8.21:
+  * Improve errors with outpath
+</comment>
+    <requestid>1132774</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fc3582b4faa623ec83073496bb155ee9</srcmd5>
+    <version>0.9.0</version>
+    <time>1704281239</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1135890</requestid>
+  </revision>
+</revisionlist>

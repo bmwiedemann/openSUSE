@@ -1,0 +1,5 @@
+<package name="python-sat-search" project="openSUSE:Factory">
+  <title>python-sat-search</title>
+  <description>Sat-search is a Python 3 library and a command line tool for discovering and downloading publicly available satellite imagery using a conformant API such as sat-api.</description>
+  <devel project="devel:languages:python" package="python-sat-search"/>
+</package>
