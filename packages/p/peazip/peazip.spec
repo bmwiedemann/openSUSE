@@ -1,7 +1,7 @@
 #
 # spec file for package peazip
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,6 +35,8 @@ Patch2:         peazip-build_PIE.patch
 Patch3:         peazip-help_path.patch
 # PATCH-FEATURE-OPENSUSE peazip-debuginfo.patch
 Patch4:         peazip-debuginfo.patch
+# PATCH-FIX-UPSTREAM peazip-lazfileutils.patch fix build with Lazarus 3.x (compatible with 2.x too)
+Patch5:         peazip-lazfileutils.patch
 BuildRequires:  arc
 BuildRequires:  brotli
 BuildRequires:  dos2unix
@@ -42,6 +44,7 @@ BuildRequires:  fdupes
 BuildRequires:  fpc
 BuildRequires:  fpc-src
 BuildRequires:  kf5-filesystem
+BuildRequires:  lazarus-ide
 BuildRequires:  lazarus-lcl-qt5
 BuildRequires:  lazarus-tools
 BuildRequires:  libX11-devel

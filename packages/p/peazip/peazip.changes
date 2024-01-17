@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 17 06:59:09 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Add peazip-lazfileutils.patch (patch by pragmalin).
+  This fix is backward compatible with Lazarus 2.x.y, because unit
+  LazFileUtils already exists there too. They just moved a few
+  things from FileUtils to LazFileUtils.
+
+-------------------------------------------------------------------
 Fri Dec 22 06:31:46 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 9.6.0:

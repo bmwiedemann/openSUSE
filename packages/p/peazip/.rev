@@ -1132,4 +1132,16 @@
 </comment>
     <requestid>1134586</requestid>
   </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>f7a6ab23a5725cbef33f4eba89da2796</srcmd5>
+    <version>9.6.0</version>
+    <time>1705526178</time>
+    <user>anag+factory</user>
+    <comment>- Add peazip-lazfileutils.patch (patch by pragmalin).
+  This fix is backward compatible with Lazarus 2.x.y, because unit
+  LazFileUtils already exists there too. They just moved a few
+  things from FileUtils to LazFileUtils.
+</comment>
+    <requestid>1139371</requestid>
+  </revision>
 </revisionlist>
