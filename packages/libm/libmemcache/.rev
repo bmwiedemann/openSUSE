@@ -1,0 +1,146 @@
+<revisionlist>
+  <revision rev="1" vrev="12">
+    <srcmd5>b58a3224fe84e54e86685f52ac722922</srcmd5>
+    <version>1.4.0.rc2</version>
+    <time>1168903344</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="97">
+    <srcmd5>af96f9fda2f4c964483063025d7ed1fa</srcmd5>
+    <version>1.4.0.rc2</version>
+    <time>1210981142</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="125">
+    <srcmd5>af96f9fda2f4c964483063025d7ed1fa</srcmd5>
+    <version>1.4.0.rc2</version>
+    <time>1210981142</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="126">
+    <srcmd5>a4dec00fceb61b59ba6ca6f48a6f70b4</srcmd5>
+    <version>1.4.0.rc2</version>
+    <time>1236636917</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="127">
+    <srcmd5>cf7a7e77211bf7d292a82291ca356ce6</srcmd5>
+    <version>1.4.0.rc2</version>
+    <time>1245366042</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="129">
+    <srcmd5>cf7a7e77211bf7d292a82291ca356ce6</srcmd5>
+    <version>1.4.0.rc2</version>
+    <time>1245366042</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="130">
+    <srcmd5>4e8d1224a5f6b007cdbff2e35dd16659</srcmd5>
+    <version>1.4.0.rc2</version>
+    <time>1263230349</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/libmemcache based on submit request 29092 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="8" vrev="131">
+    <srcmd5>c4c64dfc596075f9ab4dd49a5d5e3633</srcmd5>
+    <version>1.4.0.rc2</version>
+    <time>1268924629</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="133">
+    <srcmd5>c4c64dfc596075f9ab4dd49a5d5e3633</srcmd5>
+    <version>1.4.0.rc2</version>
+    <time>1278667360</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="134">
+    <srcmd5>c4c64dfc596075f9ab4dd49a5d5e3633</srcmd5>
+    <version>1.4.0.rc2</version>
+    <time>1278678590</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="137">
+    <srcmd5>c4c64dfc596075f9ab4dd49a5d5e3633</srcmd5>
+    <version>1.4.0.rc2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="139">
+    <srcmd5>c4c64dfc596075f9ab4dd49a5d5e3633</srcmd5>
+    <version>1.4.0.rc2</version>
+    <time>1319182109</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="140">
+    <srcmd5>92492a08f75094923bf46f15d79a2373</srcmd5>
+    <version>1.4.0.rc2</version>
+    <time>1321886803</time>
+    <user>coolo</user>
+    <comment>- add libtool as buildrequire to avoid implicit dependency (forwarded request 92542 from coolo)</comment>
+    <requestid>92569</requestid>
+  </revision>
+  <revision rev="14" vrev="141">
+    <srcmd5>9dff1c318b2a8367bef2d0ba009ee661</srcmd5>
+    <version>1.4.0.rc2</version>
+    <time>1323192274</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="15" vrev="142">
+    <srcmd5>1330c57ff774d8f66f1e82d10c7bf9e2</srcmd5>
+    <version>1.4.0.rc2</version>
+    <time>1329383156</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>103985</requestid>
+  </revision>
+  <revision rev="16" vrev="144">
+    <srcmd5>1330c57ff774d8f66f1e82d10c7bf9e2</srcmd5>
+    <version>1.4.0.rc2</version>
+    <time>1340183604</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="146">
+    <srcmd5>1330c57ff774d8f66f1e82d10c7bf9e2</srcmd5>
+    <version>1.4.0.rc2</version>
+    <time>1359109302</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="147">
+    <srcmd5>183aa130193c4ecb318ddcc6da60a878</srcmd5>
+    <version>1.4.0.rc2</version>
+    <time>1362119130</time>
+    <user>coolo</user>
+    <comment>update license to new format (forwarded request 156786 from coolo)</comment>
+    <requestid>156807</requestid>
+  </revision>
+  <revision rev="19" vrev="149">
+    <srcmd5>183aa130193c4ecb318ddcc6da60a878</srcmd5>
+    <version>1.4.0.rc2</version>
+    <time>1379663002</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="151">
+    <srcmd5>183aa130193c4ecb318ddcc6da60a878</srcmd5>
+    <version>1.4.0.rc2</version>
+    <time>1409301617</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="152">
+    <srcmd5>e771462e1a2a9cdb501d29191c1e8693</srcmd5>
+    <version>1.4.0.rc2</version>
+    <time>1438421946</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>319657</requestid>
+  </revision>
+</revisionlist>

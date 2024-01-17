@@ -1,0 +1,176 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2189c2dcbce1482a8b44a0bd6ac8f1c5</srcmd5>
+    <version>0.10.2</version>
+    <time>1558516317</time>
+    <user>dimstar_suse</user>
+    <comment>A Jupyter widget for dynamic Leaflet maps
+
+- Update to 0.10.2
+- Fix dependencies
+</comment>
+    <requestid>702896</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4116c9b6d8a1965fb4564e4823049c9c</srcmd5>
+    <version>0.11.4</version>
+    <time>1574551572</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>749330</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>09b8f20a58d2310def798c70211f450f</srcmd5>
+    <version>0.11.7</version>
+    <time>1579195238</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>764789</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>96c52fda308ffa24d920dcded1b4088a</srcmd5>
+    <version>0.12.1</version>
+    <time>1580300344</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>768095</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>03816360992c1f50e3e1305aeae0edb0</srcmd5>
+    <version>0.12.2</version>
+    <time>1581368180</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>773173</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ae8e9afbf7255d3035d29fe0fb652596</srcmd5>
+    <version>0.13.6</version>
+    <time>1619447994</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>888493</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>54c9289ba291d1289664e957f2c08aaa</srcmd5>
+    <version>0.14.0</version>
+    <time>1634587169</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925901</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7989b282426e338152babb49c65b5ccd</srcmd5>
+    <version>0.15.0</version>
+    <time>1645998189</time>
+    <user>dimstar_suse</user>
+    <comment>- specfile:
+  * update copyright year
+- update to version 0.15.0:
+  * Add prefer_canvas option to the Map class
+  * Use xyzservices for base maps
+  * Add Colab support by default
+  * Support any layer type in MarkerCluster
+  * Add location_found event to the SearchControl
+</comment>
+    <requestid>957878</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d2f87b3efc945ed969968227e81bfb5c</srcmd5>
+    <version>0.16.0</version>
+    <time>1655582760</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>983482</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ccff776f3ad7f96f3645f68205d0a336</srcmd5>
+    <version>0.17.0</version>
+    <time>1657487727</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>988046</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>bdeed4bf8c865c5231c1952352913326</srcmd5>
+    <version>0.17.1</version>
+    <time>1664380306</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 0.17.1:
+  - Add a colormap control to be used with Choropleth layer
+  - Add zoom_offset param to TileLayer by @ned2
+  - Add support for as_leaflet_layer in Map.add
+  - ipywidgets 8.0 support
+  - Pin nodejs=16, drop base setup
+  - Remove HikeBike basemap from the examples
+  - Use the latest jupyterlite-sphinx release on ReadTheDocs
+  - Lazy-load the JupyterLite embedded page in documentation
+</comment>
+    <requestid>1006538</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6788c3dea54b9cdf4183203a359cc0fe</srcmd5>
+    <version>0.17.2</version>
+    <time>1672093675</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.17.2
+  * Fix view bounds by @davidbrochart in #1064
+  * Add subitems to layers by @HaudinFlorence in #1011
+- Fix requirements</comment>
+    <requestid>1045316</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>9209fad8283bc251f974ca49b9ff29bc</srcmd5>
+    <version>0.17.3</version>
+    <time>1686665382</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.17.3
+  * Add image service layers to address #932 by @tsutterley in #933
+  * Revert change from #965 that sets the default zoom to None by
+    @martinRenou in #1068
+  * Fix in tab by @maartenbreddels in #1099 (forwarded request 1092695 from bnavigator)</comment>
+    <requestid>1092696</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>337653fbb59e2bc0ea68c3dd6ed67682</srcmd5>
+    <version>0.17.3</version>
+    <time>1692379695</time>
+    <user>anag+factory</user>
+    <comment>- Suggest primary python package -- boo#1214354</comment>
+    <requestid>1104433</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>87d2d34526cfac28e0be4d98e8752afa</srcmd5>
+    <version>0.17.3</version>
+    <time>1693235685</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1106051</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>e2d0612772a3d35a3811b5c51295e390</srcmd5>
+    <version>0.17.4</version>
+    <time>1695664954</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.17.4
+  * no upstream changelog</comment>
+    <requestid>1113220</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>a5360d230039b591bdc3f1dbcc7511d2</srcmd5>
+    <version>0.18.1</version>
+    <time>1703527527</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.18.1
+  * Add &quot;collapsed&quot; property to the &quot;LayersControl&quot; by @gjmooney in
+    #1156
+  * Add &quot;index&quot; argument to the Map's &quot;add&quot; method by @gjmooney in
+    #1156
+- Release 0.18.0
+  * Removed the unwanted character from Python code. by @frankwwu
+    in #1139
+  * Added Jupyter Lab 4 support by @cdanielw in #1146
+  * Add support for PMTiles by @giswqs in #1138</comment>
+    <requestid>1134921</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,376 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0373ac4350b6060743e8c13cea3bec05</srcmd5>
+    <version>20130120</version>
+    <time>1363982784</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>158757</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>13ea782f427377faa4a426f5c60229b3</srcmd5>
+    <version>20130409</version>
+    <time>1366214113</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>171192</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>065b9675617cb84429e60631fb035559</srcmd5>
+    <version>20130728</version>
+    <time>1375364223</time>
+    <user>coolo</user>
+    <comment>- Update to version 20130728</comment>
+    <requestid>185334</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>065b9675617cb84429e60631fb035559</srcmd5>
+    <version>20130728</version>
+    <time>1379662802</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>065b9675617cb84429e60631fb035559</srcmd5>
+    <version>20130728</version>
+    <time>1409301378</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>04db4dadc4845c32da4928a41804de08</srcmd5>
+    <version>4.0.0~20150925</version>
+    <time>1446049815</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>336002</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d73dcba6502a6dc12510642526310dd7</srcmd5>
+    <version>4.0.0</version>
+    <time>1449687009</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>347204</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5f8d68de96064979ead91afd2d77cc6c</srcmd5>
+    <version>4.0.2</version>
+    <time>1459002308</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>376527</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a4f3c6f823ad1c6b05f3cc88de802ac7</srcmd5>
+    <version>4.0.4</version>
+    <time>1473798288</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>427093</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>77a67fd7a1b93e380062051c9ccfcb98</srcmd5>
+    <version>4.0.5</version>
+    <time>1485167731</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>450337</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>53e07cb527433eb5d0f20e960e2b532a</srcmd5>
+    <version>4.0.6</version>
+    <time>1491469289</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>482798</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>c51b4535af2f9a267e8d974a6f799fde</srcmd5>
+    <version>4.0.6</version>
+    <time>1492714501</time>
+    <user>dimstar_suse</user>
+    <comment>Correct Indonesian provides</comment>
+    <requestid>487829</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8fb5c9aa7a2df74006947d2a17484bb9</srcmd5>
+    <version>4.0.7</version>
+    <time>1504617510</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520857</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>6926ca4f5eacca946e1b9a474361e652</srcmd5>
+    <version>5.0.0</version>
+    <time>1536094442</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>627400</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>d9671fe076fc4ba3f5d436bf27111de7</srcmd5>
+    <version>5.0.0</version>
+    <time>1538117625</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>638705</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>53f99ef146ae2588d75b554fc40143ec</srcmd5>
+    <version>5.0.0</version>
+    <time>1538502421</time>
+    <user>dimstar_suse</user>
+    <comment>- Require kicad-doc-en from other translation subpackages
+  to provide a fallback for incomplete translations.
+</comment>
+    <requestid>639237</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>bc6d6f2ad527a4ea5a6a048d3bf71472</srcmd5>
+    <version>5.0.1</version>
+    <time>1541865349</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>644742</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>26d51dc687ae15cf911389ca8b5a3094</srcmd5>
+    <version>5.0.2</version>
+    <time>1545141346</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.0.2</comment>
+    <requestid>657551</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>5f97f22970ae1aab1f7a60a0231169a0</srcmd5>
+    <version>5.1.0</version>
+    <time>1553263426</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685406</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>379fec86cd898074b570a16668d23b4c</srcmd5>
+    <version>5.1.2</version>
+    <time>1556916369</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to minor release 5.1.2
+  * Updates to chinese and italian translations
+- Update to minor release 5.1.1
+  * Various smaller changes and translation updates
+</comment>
+    <requestid>697955</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>3db871e5a48eb595217671fe1d8ab54c</srcmd5>
+    <version>5.1.4</version>
+    <time>1565695094</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>722172</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>5c8c2c03e61cdb526dd13b042fce8034</srcmd5>
+    <version>5.1.5</version>
+    <time>1574337474</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>749706</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>9968fd4d36cb67abea45f2fcbff842be</srcmd5>
+    <version>5.1.7</version>
+    <time>1601919498</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>839204</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>d827c83c23d860ed24dce1629c881e4a</srcmd5>
+    <version>5.1.8</version>
+    <time>1604779323</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>846553</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>4be674164f3666bc2c247cf688d075b3</srcmd5>
+    <version>5.1.9</version>
+    <time>1609866722</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>859782</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>b8ebbee03c4be77a6bafd54cdde8f75c</srcmd5>
+    <version>5.1.10</version>
+    <time>1621269897</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.1.10
+  See https://kicad.org/blog/2021/05/KiCad-5.1.10-Release/ for details.
+</comment>
+    <requestid>892954</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>4b3ae08535e1df63cb8ddaa11be2f892</srcmd5>
+    <version>5.1.11</version>
+    <time>1635877125</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>928617</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>f2bb0f8920a5a83a96c6aa9b15243f88</srcmd5>
+    <version>5.1.12</version>
+    <time>1638131408</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>934333</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>e6826088dcc4bc681f4f7ba5a9291ed6</srcmd5>
+    <version>6.0.0</version>
+    <time>1641555928</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>942655</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>8e4a3b06c1fe2db3b585272be1dea776</srcmd5>
+    <version>6.0.1</version>
+    <time>1643404351</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>949580</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>37529037e9629c744224fc2411167e8e</srcmd5>
+    <version>6.0.2</version>
+    <time>1644874561</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>954105</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>2b3e182d21fe7bebafaa013871a16077</srcmd5>
+    <version>6.0.4</version>
+    <time>1647806150</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>963272</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>c61bad46856d5a0e120a7df7c65597a0</srcmd5>
+    <version>6.0.5</version>
+    <time>1652717294</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>977380</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>3f2b8bdbc144f0caf9c6f1fd170cb95e</srcmd5>
+    <version>6.0.6</version>
+    <time>1656422524</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>985370</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>6180f70accb0317e37a648f57895f0c0</srcmd5>
+    <version>6.0.7</version>
+    <time>1661758952</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>999704</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>3285ddc5e1b1fa1e5071fd5943b35a69</srcmd5>
+    <version>6.0.8</version>
+    <time>1667306503</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032425</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>91d058389d7412112c1a0099de40ae4a</srcmd5>
+    <version>6.0.9</version>
+    <time>1667741385</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1033787</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>ff8166e11ac6b7f95661592ecdf79905</srcmd5>
+    <version>6.0.11</version>
+    <time>1674927828</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1061518</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>877684a80b2ced4516a7da2cda74b2c0</srcmd5>
+    <version>7.0.0</version>
+    <time>1676464816</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1065839</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>7f35e23e3715b9ff158758a595e537f1</srcmd5>
+    <version>7.0.1</version>
+    <time>1678634656</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1070947</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>f756baaccb93fa98bab8f906d622df49</srcmd5>
+    <version>7.0.2</version>
+    <time>1682618400</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1083034</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>d7c871ca064e2261c485618b61eec830</srcmd5>
+    <version>7.0.5</version>
+    <time>1685889711</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1090684</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>b8e95e4bd730b47229cb8c46fca86c80</srcmd5>
+    <version>7.0.6</version>
+    <time>1692611009</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1104223</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>f236fb993a29e710600fe2b4556cf8a7</srcmd5>
+    <version>7.0.7</version>
+    <time>1694460171</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1110303</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>ef0006297ac088a4b44d6d1a6ebcb4c9</srcmd5>
+    <version>7.0.9</version>
+    <time>1702071154</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1132015</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>54a47073af14cee81fa094ce11a86b06</srcmd5>
+    <version>7.0.10</version>
+    <time>1704281289</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1136020</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,370 @@
+-------------------------------------------------------------------
+Sat Dec 23 18:45:01 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.18.1
+  * Add "collapsed" property to the "LayersControl" by @gjmooney in
+    #1156
+  * Add "index" argument to the Map's "add" method by @gjmooney in
+    #1156
+- Release 0.18.0
+  * Removed the unwanted character from Python code. by @frankwwu
+    in #1139
+  * Added Jupyter Lab 4 support by @cdanielw in #1146
+  * Add support for PMTiles by @giswqs in #1138
+
+-------------------------------------------------------------------
+Sat Sep 23 16:56:46 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.17.4
+  * no upstream changelog
+
+-------------------------------------------------------------------
+Sat Aug 26 14:25:52 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Make sure notebook 7 does not break this: nbclassic or notebook 6
+
+-------------------------------------------------------------------
+Thu Aug 17 15:34:36 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Suggest primary python package -- boo#1214354
+
+-------------------------------------------------------------------
+Sun Jun 11 20:13:31 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.17.3
+  * Add image service layers to address #932 by @tsutterley in #933
+  * Revert change from #965 that sets the default zoom to None by
+    @martinRenou in #1068
+  * Fix in tab by @maartenbreddels in #1099
+
+-------------------------------------------------------------------
+Sun Dec 25 18:11:59 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 0.17.2
+  * Fix view bounds by @davidbrochart in #1064
+  * Add subitems to layers by @HaudinFlorence in #1011
+- Fix requirements
+
+-------------------------------------------------------------------
+Tue Sep 27 22:31:15 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to version 0.17.1:
+  - Add a colormap control to be used with Choropleth layer
+  - Add zoom_offset param to TileLayer by @ned2
+  - Add support for as_leaflet_layer in Map.add
+  - ipywidgets 8.0 support
+  - Pin nodejs=16, drop base setup
+  - Remove HikeBike basemap from the examples
+  - Use the latest jupyterlite-sphinx release on ReadTheDocs
+  - Lazy-load the JupyterLite embedded page in documentation
+
+-------------------------------------------------------------------
+Sat Jul  9 13:22:48 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.17.0:
+  * New Features
+    + Make it possible to use Choropleth layer with data containing
+      NaNs #972
+    + Add Map panes #999
+    + Allow setting Map.dragging #1001
+    + Add visible attribute to GeoJSON layer #1002
+  * Deprecated API
+    + Deprecate LegendControl properties name, legends, positioning,
+      and positionning #979 and #1005. Update your code with the
+      following substitutions for a LegendControl legend:
+        legend.name -> legend.title
+        legend.legends -> legend.legend
+        legend.positioning -> legend.position
+        legend.positionnning -> legend.position
+     The name argument in creating a LegendControl is also deprecated,
+     please use the title argument instead: LegendControl({},
+     title='My Title').
+    + Deprecate layer and control-specific method names for Map and
+      LayerGroup, in favor of methods that work for both layers and
+      controls #982. Update your code with the following substitutions
+      for a Map map (or LayerGroup):
+        map.add_control(...) or map.add_layer(...) -> map.add(...)
+        map.remove_control(...) or map.remove_layer(...) -> map.remove(...)
+        map.substitute_control(...) or map.substitute_layer(...) -> map.substitute(...)
+        map.clear_controls(...) or map.clear_layers(...) -> map.clear(...)
+      The inline operators still continue to work as before, such as
+      map += control or map -= layer.
+  * Maintenance
+    + Compute the public path automatically #988
+  * Docs
+    + Document use of multiple basemaps #971
+    + Add a small introduction text #992
+
+-------------------------------------------------------------------
+Fri Jun 17 15:53:22 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- update to version 0.16.0: 
+  New features
+  * Add bounds attribute to TileLayer by @davidbrochart in #907
+  * Implemented open_popup and close_popup methods by @PROgram52bc in #914
+  Maintainance
+  * Stop layer loading spinner when layer is removed by @clydebw in #903
+  * Added backward compatibility for dict basemaps by @sackh in #901
+  * Pin openssl=1.1.1l in CI script by @trungleduc in #906
+  * Test ipyleaflet widgets with galata by @trungleduc in #905
+  * Clean up UI tests by @davidbrochart in #908
+  * Remove map callbacks when DrawControl removed from map by @clydebw in #916
+  * Add Galata bot by @martinRenou in #938
+  * Fix CI by @martinRenou in #946
+  * Fix Galata screenshot update CI job by @martinRenou in #945
+  * Missing jupyter-packaging on CI by @martinRenou in #948
+  * Fix ui-tests port by @martinRenou in #949
+  * UI-tests: Update scripts to match bot implementation by @martinRenou in #950
+  * Remove OpenSSL pinning by @martinRenou in #952
+  * Update Galata screenshots by @martinRenou in #947
+  * Update build script by @martinRenou in #954
+  * Fix watch script in ipyleaflet by @HaudinFlorence in #963
+  Docs:
+  * Fix docs table by @martinRenou in #898
+  * Update basemaps by @MackyDIARRA in #924
+  * Updates on ipyleaflet documentation by @HaudinFlorence in #953
+  * Change the theme to pydata-sphynx-theme by @HaudinFlorence in #955
+  * Update installation instructions by @martinRenou in #956
+  * Add to ipyleaflet's documentation some missing attributes sections with autodoc. by @HaudinFlorence in #957
+  * Add jupyterlite-sphinx by @HaudinFlorence in #958
+  * Fix formatting issues in the doc for attributes and methods sections using autodoc by @HaudinFlorence in #959
+  * radiation notebook updated with SearchControl object adding by @MackyDIARRA in #899
+
+-------------------------------------------------------------------
+Sun Feb 27 01:00:40 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 0.15.0:
+  * Add prefer_canvas option to the Map class
+  * Use xyzservices for base maps
+  * Add Colab support by default
+  * Support any layer type in MarkerCluster
+  * Add location_found event to the SearchControl
+
+-------------------------------------------------------------------
+Sun Oct 17 19:16:56 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.14.0
+  * Remove Shapely and branca dependencies
+    (for support in JupyterLite)
+  * Add new options to marker cluster
+
+-------------------------------------------------------------------
+Fri Apr 23 18:53:02 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.13.6
+  * Fix support for Jupyter Notebook
+  * Change imports from Phosphor to Lumino
+- Release 0.13.5
+  * Add support for JupyterLab 3 #714
+- Release 0.13.4
+  * Improve GeoJSON data update #668
+  * Add support for WKT layer #679
+  * Add Gaode basemap #681
+  * Change SearchControl zoom trait to None #688
+  * Add example notebooks for KML and GPX file formats #691
+  * Update GeoData API documentation to add point_stype attribute
+    #695
+  * Add a callback on found event for searching in GeoJSON layer
+    #707
+  * Add custom tile server GIF to example notebook #724
+  * Add support for DivIcon #727
+  * Support for transparent WidgetControl #732
+  * Update LeafletJS from 1.3.0 to 1.7.1 #734
+  * Add Map.fit_bounds(bounds) #737
+  * Add MagnifyingGlass layer #733
+  * Add Shapely as a dependency #683
+  * Add nodejs dependency to Binder environment #700
+  * Set --minimize=False on Binder #704
+  * Remove class_name #729
+  * Change license to MIT #736
+  * Fix WMS layer options #755
+- Release 0.13.3
+  * Fix recursion error on GeoJSON #661
+- Release 0.13.2
+  * Add found_style property to SearchControl #640
+  * Fix DrawControl position #656
+  * Fix GeoJSON style update #658
+- Release 0.13.1
+  * Add layer attribute for search control #622
+  * Simplify main JS file #631
+  * Remove Travis #627
+  * Add GitHub Actions #626
+  * Add docstrings #623 #628 #630
+  * Implement __geo_interface__ #621
+  * Add pixel_bounds to Map #616
+  * Enable float zoom levels #608
+  * Pin branca>=0.3.1,<0.5 #639
+  * Fix Icon traits #634 #636 #637
+  * Fix GeoJSON click event #629
+  * Fix bounds type #625
+  * Fix ipyleaflet import #624
+  * Fix EPSG:3413 and EPSG:3031 #620
+  * Fix layer removal #619
+  * Fix option update #611
+  * Fix flake8 errors #609
+- Release 0.13.0
+  * Add support for custom map and WMS projections #598
+  * Add SearchControl feature #576
+  * Add SearchControl documentation #584
+  * Add window_url attribute to Map #587
+  * Add Vector tile docs #590
+  * Fix missing dependency in documentation #581
+  * Fix overwriting of colormap ranges for Choropleth #577
+  * Prevent updating dictionary in GeoJSON style_callback #600
+- Release 0.12.6
+  * Use leaflet-defaulticon-compatibility for icon image bundling
+    #552
+  * Refactor GeoJSON layer #573
+  * Add means to save to HTML #574
+  * Improve docs #575
+  * Make the xarray dependency optional #561
+  * Fix in the Vector tile layer #568
+  * Fix issue with Phosphor dependency #563
+  * Bug fix with respect to the GeoJSON layer #572
+- Release 0.12.4
+  * The package now ships the JupyterLab extension automatically.
+    So jupyter labextension install jupyter-leaflet should not be
+    needed anymore #510
+  * Add support for int data in Choropleth #539
+  * Add style_callback to GeoJSON/Choropleth/GeoData layers #518
+  * Rename positional argument in handle_draw callback #530
+  * Add VectorTilesLayer #544
+- Release 0.12.3
+  * JupyterLab 2 support #509
+  * Sync Path's fill_color attribute with color attribute #505
+  * Documentation improvements #497 #506
+
+-------------------------------------------------------------------
+Mon Feb 10 16:13:13 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.12.2
+  + Fixes:
+    * Popup creation
+    * DrawControl creation
+  + New features and improvements
+    * Smoother URL changes on GridLayers
+    * ScaleControl
+    * Documentation improvements
+    * WMSLayer: Listen for dynamic changes on parameters
+
+-------------------------------------------------------------------
+Tue Jan 28 16:03:48 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.12.1
+  * Update environment.yml
+  * Allow passing a TileLayer as basemap
+  * Add Here basemaps
+- Update to 0.12.0
+  * Add zoom_control_instance default value
+  * Move to modern javascript
+
+-------------------------------------------------------------------
+Wed Jan 15 16:03:43 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.11.7
+  * Add support for font-awesome icons in Markers
+  * Add support for setting layer.popup to a Popup instance
+  * Add loading attribute to TileLayer (#460)
+  * Improvements suggested by @martinRenou
+  * Add leaflet-ant-path plugin
+  * Remove on_displayed event listener
+  * Use Bunch from traitlets
+  * Add BSD copyright headers
+- Update to 0.11.5
+  * Add Leaflet.Path.Transform
+  * Bump macaddress from 0.2.8 to 0.2.9 in /js
+  * Add show_loading attribute in docs
+  * Remove show_progress Map attribute
+  * Add leaflet.py
+  * Add spinner when tiles are loading
+  * Allow rendering GeoJSON points with CircleMarkers. 
+  * Bump lodash from 4.17.5 to 4.17.15 in /js 
+  * Sync locations
+  * Improve README
+
+-------------------------------------------------------------------
+Sat Jan 11 14:50:34 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use pyproject_install macro (boo#1094323)
+
+-------------------------------------------------------------------
+Mon Nov 18 16:08:19 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.11.4
+  * Add substitute_layer to LayerGroup clas
+  * fix DeprecationWarning
+- Update to 0.11.3
+  * Fix documentation
+  * Fix LocalTileLayer
+  * Clean GeoData on_hover Notebook
+  * Add screencast
+  * Add Wealth Of Nations Notebook example
+  * silence traitlet deprecation warnings
+- Update to 0.11.2
+  * Add missing installation command
+  * Add keywords to allow for package to be visible in JupyterLab extension
+  * Update Numpy.ipynb to use new USGS url for data download
+  * Geodata on hover example
+  * changes Geodata Class
+  * adding feature in on hover with ex
+  * Fix issue when the view is not rendered yet
+- Update to 0.11.1
+  * Drop lab variables polyfill
+  * Load Stamen tiles over HTTPS
+- Update to 0.11.0
+  * Add Attribution control
+  * Add missing add of the ZoomControl in __init__
+  * Add ZoomControl as an ipyleaflet.Control
+  * Feat : Add redraw method for TileLayer
+  * Options are now given to the JS control
+- Update to 0.10.8
+  * Fix Layer's Popup and typo in Popup class
+- Update to 0.10.7
+  * Make geopandas an optional dependency
+- Update to 0.10.6
+  * Trigger before-attach events and fix popup display 
+  * Trigger after-attach phosphor event in WidgetControl
+- Update to 0.10.5
+  * Add Usage section in the docs
+  * Add jlab themes support
+  * Add docs for min_native_zoom and max_native_zoom for TileLayer
+  * Features : Add attributes for TileLayer
+  * Add Select GeoJSON example
+  * Add flask for examples/CustomTileServer.ipynb on binder
+  * Create CustomTileServer.ipynb
+- Update to 0.10.4
+  * Fix wrong requirement string
+- Update to 0.10.3
+  * geodata class
+  * choropleth doc improve
+  * Add no_wrap option for TileLayer
+
+-------------------------------------------------------------------
+Tue May 14 16:35:14 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.10.2
+  * Add WidgetControl
+  * Fix Popup attribute changing
+  * Use JLab background color for widget controls
+  * add MapStyle to change Map's css style, aiming to change the cursor
+  * make MapStyle work and change default cursor to "hand"
+  * Put the map in a subcontainer
+  * return normal behavior of the cursor when map is dragging
+  * change "hand" cursor to "grab"
+  * check for allowed cursor
+  * Change name of OpenTopoMap from 'OpenTopMap' to 'OpenTopoMap'
+  * change name 'Esri.WoldStreetMap' to 'Esri.WorldStreetMap'
+  * Use latest version of leaflet-draw plugin 
+  * Fix styling problems for GeoJSON
+  * Expose fullscreen control/state
+  * Fix map size issue
+  * Use more robust check before using noConflict() mode
+- Fix dependencies
+
+-------------------------------------------------------------------
+Mon Apr 29 21:22:55 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- initial version (0.10.1)

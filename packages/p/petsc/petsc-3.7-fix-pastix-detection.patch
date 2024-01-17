@@ -1,0 +1,28 @@
+From f07d605e30132f57a90c68b9ae512199e58d0f64 Mon Sep 17 00:00:00 2001
+From: mslacken <christian.goll@gmail.com>
+Date: Wed, 24 Feb 2021 16:16:16 +0100
+Subject: [PATCH 2/2] petsc 3.7 fix pastix detection
+
+---
+ config/BuildSystem/config/package.py | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/config/BuildSystem/config/package.py b/config/BuildSystem/config/package.py
+index b1a88556..fb0ef22e 100644
+--- a/config/BuildSystem/config/package.py
++++ b/config/BuildSystem/config/package.py
+@@ -180,7 +180,10 @@ class Package(config.base.Configure):
+       self.name           = 'DEBUGGING'
+     self.PACKAGE          = self.name.upper()
+     self.package          = self.name.lower()
+-    self.pkgname          = self.package
++    if self.name == 'PaStiX':
++        self.pkgname = self.name.lower()
++    else:
++        self.pkgname          = self.package
+     self.downloadname     = self.name
+     self.downloaddirnames = [self.downloadname]
+     return
+-- 
+2.26.2
+

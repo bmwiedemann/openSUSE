@@ -1,0 +1,6 @@
+<package name="mobile-broadband-provider-info" project="openSUSE:Factory">
+  <title>Mobile Service Provider Database</title>
+  <description>This package contains mobile broadband settings for different service
+providers in different countries.</description>
+  <devel project="GNOME:Factory" package="mobile-broadband-provider-info"/>
+</package>

@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a665bf28e7a3e9267027a9b0aceaa0cb</srcmd5>
+    <version>0.2.3</version>
+    <time>1645461981</time>
+    <user>dimstar_suse</user>
+    <comment>Required by cirq-core</comment>
+    <requestid>956092</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b2f7d58b085016c0626377b2f0a4224e</srcmd5>
+    <version>0.2.7</version>
+    <time>1664467927</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1006513</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>85ad8e282bcd3ea2adcb4d7398374a19</srcmd5>
+    <version>0.2.7</version>
+    <time>1665754895</time>
+    <user>dimstar_suse</user>
+    <comment>- use https for urls</comment>
+    <requestid>1010398</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4700c2cdb24526a293a2b2321d56cb21</srcmd5>
+    <version>0.2.8</version>
+    <time>1682368272</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.2.8:
+  * Test duet against python 3.11 
+  * Loosen version requirement on typing_extensions
+  * Make Limiter work with cancellation
+  * Add support for overloaded sync callbacks 
+  * Fix timeout clipping in Scheduler.tick</comment>
+    <requestid>1082327</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3b652fa6a01640f0cc9d7cde5c21cf00</srcmd5>
+    <version>0.2.9</version>
+    <time>1690654226</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.2.9:
+  * AwaitableFuture: propagate cancellation to wrapped future
+  * AwaitableFuture: check cancelled future in callback
+  * Drop support for python &lt; 3.9</comment>
+    <requestid>1101270</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,8 @@
+<package name="texstudio" project="openSUSE:Factory">
+  <title>TeXstudio</title>
+  <description>TeXstudio is a program based on texmaker, that integrates many tools needed
+to develop documents with LaTeX, in just one application. Using its editor
+you can write your documents with the help of interactive spell checking,
+syntax highlighting, automatically code completion and more.</description>
+  <devel project="Publishing" package="texstudio"/>
+</package>

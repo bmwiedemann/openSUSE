@@ -1,0 +1,188 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>872a5e4000c94afc6f8ff0a2af41a947</srcmd5>
+    <version>0.241</version>
+    <time>1168903820</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="171">
+    <srcmd5>872a5e4000c94afc6f8ff0a2af41a947</srcmd5>
+    <version>0.241</version>
+    <time>1168903820</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="172">
+    <srcmd5>b59cd0af78844f820eaf88ce102e2993</srcmd5>
+    <version>0.241</version>
+    <time>1245337294</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="174">
+    <srcmd5>b59cd0af78844f820eaf88ce102e2993</srcmd5>
+    <version>0.241</version>
+    <time>1245337294</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="175">
+    <srcmd5>c45b8bad8f46fa04a451b1faa4487816</srcmd5>
+    <version>0.241</version>
+    <time>1263300999</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-DBD-XBase based on submit request 29294 from user coolo
+</comment>
+  </revision>
+  <revision rev="6" vrev="176">
+    <srcmd5>ee10c7800a7147c92e25fc5cbce5fbf4</srcmd5>
+    <version>0.241</version>
+    <time>1268925413</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="178">
+    <srcmd5>ee10c7800a7147c92e25fc5cbce5fbf4</srcmd5>
+    <version>0.241</version>
+    <time>1278667378</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="179">
+    <srcmd5>ee10c7800a7147c92e25fc5cbce5fbf4</srcmd5>
+    <version>0.241</version>
+    <time>1278678609</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="180">
+    <srcmd5>33ae56f1bcefd471353d09104e15ea38</srcmd5>
+    <version>0.241</version>
+    <time>1291581951</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54518 from user coolo
+</comment>
+    <requestid>54518</requestid>
+  </revision>
+  <revision rev="10" vrev="181">
+    <srcmd5>19f7b7a2be5e5273b6fa6ca7d1011959</srcmd5>
+    <version>0.241</version>
+    <time>1291581956</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54518
+</comment>
+  </revision>
+  <revision rev="11" vrev="180">
+    <srcmd5>76b57e9f4f60682b31f95c37b8146c52</srcmd5>
+    <version>1.01</version>
+    <time>1297508150</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60569 from user vitezslav_cizek
+</comment>
+    <requestid>60569</requestid>
+  </revision>
+  <revision rev="12" vrev="181">
+    <srcmd5>a81d2d9bbb33a282a00dfbc8cc49d087</srcmd5>
+    <version>1.01</version>
+    <time>1297508162</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60569
+</comment>
+  </revision>
+  <revision rev="13" vrev="184">
+    <srcmd5>a81d2d9bbb33a282a00dfbc8cc49d087</srcmd5>
+    <version>1.01</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5f84a2c8376092ec99dc1b0ecb46ed99</srcmd5>
+    <version>1.03</version>
+    <time>1299507431</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63533 from user vitezslav_cizek
+</comment>
+    <requestid>63533</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>5f84a2c8376092ec99dc1b0ecb46ed99</srcmd5>
+    <version>1.03</version>
+    <time>1319182255</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>6842dc1b231a62d54e1b824ff0b31a98</srcmd5>
+    <version>1.03</version>
+    <time>1321875526</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>92113</requestid>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>0d6d036a8b4d392c0b9520406793b8c6</srcmd5>
+    <version>1.03</version>
+    <time>1323193215</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="18" vrev="7">
+    <srcmd5>0d6d036a8b4d392c0b9520406793b8c6</srcmd5>
+    <version>1.03</version>
+    <time>1340183821</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="19" vrev="9">
+    <srcmd5>0d6d036a8b4d392c0b9520406793b8c6</srcmd5>
+    <version>1.03</version>
+    <time>1359109634</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>bbf6a3112daa13e23f19f6d8cda0595e</srcmd5>
+    <version>1.05</version>
+    <time>1370432029</time>
+    <user>coolo</user>
+    <comment>- updated to 1.05
+      Fix for prepare_select_eq and empty MDX indexes, patch by Julian
+      Bridle.
+      Fix for handling MDX indexes, patch by Julian Bridle. (forwarded request 177328 from coolo)</comment>
+    <requestid>177378</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>bbf6a3112daa13e23f19f6d8cda0595e</srcmd5>
+    <version>1.05</version>
+    <time>1379663613</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>bbf6a3112daa13e23f19f6d8cda0595e</srcmd5>
+    <version>1.05</version>
+    <time>1409302232</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>8991e3284df4b8415abbf6044a7b41d5</srcmd5>
+    <version>1.06</version>
+    <time>1461855297</time>
+    <user>dimstar_suse</user>
+    <comment>Fix license according to README</comment>
+    <requestid>390639</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>2701feeafc80a3a1f979b6547c82ff9d</srcmd5>
+    <version>1.07</version>
+    <time>1465335956</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>396941</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>4aa006402fe6be551fcf5a5ae6f1abe7</srcmd5>
+    <version>1.08</version>
+    <time>1487261016</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>456917</requestid>
+  </revision>
+</revisionlist>

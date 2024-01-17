@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5cd4b227a3ca5896fcc6a2f40d95ad3c</srcmd5>
+    <version>2.6.0</version>
+    <time>1582899619</time>
+    <user>dimstar_suse</user>
+    <comment>Initial packaging for openSUSE</comment>
+    <requestid>779395</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>058fb7027081cee423f63e34fc7a2525</srcmd5>
+    <version>2.6.1</version>
+    <time>1589315455</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>802697</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e896c6220bb7a988228346b9437f1a73</srcmd5>
+    <version>2.7.0</version>
+    <time>1624300548</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>901099</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>f6b885c62499aacf672b51d2cedffa01</srcmd5>
+    <version>2.7.0</version>
+    <time>1631739092</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>919159</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6f7ac941925fe65455d6a80386cd2699</srcmd5>
+    <version>2.8.0</version>
+    <time>1647458486</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>962135</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>566fc4c4c873b7a92aa439f4c1397853</srcmd5>
+    <version>2.8.2</version>
+    <time>1679182317</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1072772</requestid>
+  </revision>
+</revisionlist>

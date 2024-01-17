@@ -1,0 +1,55 @@
+From b3059ae50b905b265913dc541b740eef85c54814 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Tue, 23 May 2023 12:48:55 +0200
+Subject: [PATCH 1/2] fabrics: autoconnect: add service unit for connecting
+ NBFT subsystems
+
+Create a separate unit file for connecting to NBFT-defined subsystems.
+This unit is intended to be called in "post-up" scripts from network
+management software if an interface defined in the HFI section of the
+NBFT is brought up (L3-configured).
+
+In simple scenarios with just one HFI, this won't be necessary because the
+interface must be brought up in the initramfs already. But in multipath
+scenarios, the initramfs may choose not to wait for every HFI to come up, and
+thus it may be necessary to bring up the secondary connection(s) later on.
+
+Signed-off-by: Martin Wilck <mwilck@suse.com>
+---
+ meson.build                                           |  1 +
+ nvmf-autoconnect/systemd/nvmf-connect-nbft.service.in | 11 +++++++++++
+ 2 files changed, 12 insertions(+)
+ create mode 100644 nvmf-autoconnect/systemd/nvmf-connect-nbft.service.in
+
+diff --git a/meson.build b/meson.build
+index 3d3fb08541ff..de595c82c064 100644
+--- a/meson.build
++++ b/meson.build
+@@ -222,6 +222,7 @@ endforeach
+ systemd_files = [
+   'nvmefc-boot-connections.service',
+   'nvmf-autoconnect.service',
++  'nvmf-connect-nbft.service',
+   'nvmf-connect.target',
+   'nvmf-connect@.service',
+ ]
+diff --git a/nvmf-autoconnect/systemd/nvmf-connect-nbft.service.in b/nvmf-autoconnect/systemd/nvmf-connect-nbft.service.in
+new file mode 100644
+index 000000000000..8769884da415
+--- /dev/null
++++ b/nvmf-autoconnect/systemd/nvmf-connect-nbft.service.in
+@@ -0,0 +1,11 @@
++# This unit is meant to be started by network management software
++# after a network interface defined in the NBFT gets set up
++[Unit]
++Description=Connect NBFT-defined NVMe-oF subsystems automatically
++ConditionPathExists=|/sys/firmware/acpi/tables/NBFT
++ConditionPathExists=|/sys/firmware/acpi/tables/NBFT1
++
++[Service]
++Type=oneshot
++ExecStartPre=/sbin/modprobe nvme-fabrics
++ExecStart=@SBINDIR@/nvme connect-nbft
+-- 
+2.42.0
+

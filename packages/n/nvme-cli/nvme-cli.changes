@@ -1,0 +1,2286 @@
+-------------------------------------------------------------------
+Thu Oct 12 17:05:14 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Add missing jsc# and bsc# tracking entries in change log.
+
+-------------------------------------------------------------------
+Mon Oct  9 14:17:21 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Use fixed timestamps for documentation allowing reproducable builds
+- Announce nvmeof-boot-support support via Provides
+- Filter rpmlint warnings for systemd-service-without-service_ macros
+- Add missing service files for NBFT feature
+  * add 0001-fabrics-autoconnect-add-service-unit-for-connecting-.patch
+  * add 0002-fabrics-add-udev-rule-to-avoid-renaming-nbft-interfa.patch
+
+-------------------------------------------------------------------
+Wed Oct  4 15:11:19 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Enable test during build (bsc#1207686)
+- Drop minimum version meson dependency
+- Add asciidoc dependency
+- Build documentation when requested
+
+-------------------------------------------------------------------
+Fri Sep 29 11:49:56 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version 2.6 (jsc#PED-3610 jsc#PED-4879 jsc#PED-5061):
+  * nvme: allocate payload buffer in create-ns command
+  * nvme-print-stdout: Add CAP.CPS and CAP.NSSS human readable outputs
+  * nvme: Add output-format default option instead of argconfig json option
+  * nvme: fw-download offset only describes FW offset, not file offset
+  * unit: add locale number test
+  * util: handle utf-8 thousend separators correctly
+  * nvme: Change to use NVME_ARGS verbose default option from OPT_ARGS
+  * fabrics: Fix NVMF_ARGS macro to use parameter n correctly
+  * nvme: Add verbose default option to show command debug output
+  * util: Fix to set argconfig output format json option correctly
+  * util: Split argconfig output format json function to set and get
+  * nvme: Spport Phy Rx Eye Opening Measurement Log
+  * nvme: Introduce nvme_realloc function
+  * nvme: Fix for fdpa reserved field printing
+  * completion: add 'version' and 'help' to list
+  * udev-rule: apply round-robin iopolicy on i/o subsystems alone (bsc#1215994)
+  * nvme: Add support for the OAQD ID controller field
+  * plugins/solidigm: use static log macro to calc bitmask
+  * plugins/ocp: Rename FW activation history command
+  * nvme: auto free nvme_dev resource
+  * nvme: allocate aligned payloads for all nvme commands
+  * nvme: introduce alloc helper with alignment support
+  * util: add cleanup function for generic memory allocations
+  * nvme: append huge to nvme_{alloc|free} function
+  * nvme: fw_download use nvme_alloc only
+  * fabrics: Removing duplicate code and moving to libnvme
+  * nvme-print: omit size of protection information
+  * tree: Modify label name close_fd to close_dev
+  * fabrics: For TCP/RDMA, compare IP addresses with nvme_ipaddrs_eq() (bsc#1213768)
+  * fabrics: lookup_discovery_ctrl() must look under host and not root (bsc#1213768)
+  * nvme: Do not map status to errno codes
+  * completions: Add bash completion for DSSD Power state feature(FID: C7h)
+  * Documentation: Add document for DSSD Power state feature(FID: C7h)
+  * plugins/ocp: Add DSSD Power state feature(FID: C7h)
+  * avoid casting pointer arguments to argconfig functions
+  * nvme-print: Add support for EGFEAT, Domain Identifier, TEGCAP and UEGCAP
+  * nvme-print: Fix endurance_log whitespace changes
+  * nvme: Fix retrieval of telemetry log up to specified data area.
+  * nvme: Update list secondary command
+  * wdc: Add support for SN861 drive
+  * util: Set errno to 0 before strtol/stroul call
+  * nvme: Revert passthru and submit_io to print status to stderr from stdout
+  * plugins/zns: Fix offset in report zones
+  * nvme-rpmb: Fix nvme_show_id_ctrl_rpmbs() definition error
+  * fabrics: Use corresponding hostid when hostnqn is generated
+  * json: fix seg. fault converting NULL to JSON string (bsc#1213762)
+  * nvme-cli: fix extended metadata size calculation
+  * nvme-print: Show subsystem iopolicy (bsc#1124564)
+  * nvme-print-stdout: Do not show non reachable ns in namespace topology (bsc#1212598)
+  * nvme-print: Fix show-topolocy for ctrls
+  * doc: Fix typo in documentation
+  * nvme-print-stdout: fix storage tag size label
+  * nvme-print-stdout: List only ctrls which are part of ns (bsc#1212598)
+  * nvme-print-stdout: Support subsys reachable from several hosts (bsc#1212598)
+  * ccan: Add htable, strset and dependencies (bsc#1212598)
+  * ccan: Remove unused documentation (bsc#1212598)
+  * nvme-print: Split max power flags
+  * nvme-print: fix counter while looping through uuid_list (bsc#1212598)
+  * fabrics: only look for matching ctrl on same host (bsc#1213768)
+  * README: Correct hugetlbfs spelling error
+  * util: Delete unused CFG_BOOL argconfig type as duplicated with CFG_FLAG
+  * util: Set LC_ALL=C as default if -H option is not used
+  * nvme: Add support for create-ns command endg-id option parameter
+  * nvme-print: fix argument order for show functions
+  * plugins/solidigm: Added Marketing Name Log support for Solidigm.
+  * nvme-print: Remove left overs from refactoring
+  * nvme-print: Move num argument parsing into callbacks
+  * nvme-print: Fix typo in callback definition
+  * scripts: Make release script project neutral
+  * scripts: Update update-docs.sh scripts
+  * scripts: Execute the scripts from toplevel directory
+  * scripts: Move helper scripts to a central place
+  * docs: Update file modes
+  * doc: Add information on --context
+  * nvmf-autoconnect: Annotate the context to autoconnect
+  * fabrics: Add support for volatile configuration
+  * plugins/solidigm: Formated log page directory table consistently with "nvme list" format.
+  * plugins/solidigm: Added Identify controller VU extensions parsing.
+  * nvme-print-json: Print PCI pysical slot number for controller
+  * nvme-print-stdout: Print PCI physical slot number for controller
+  * libnvme.wrap: Bump to 42ac453
+  * plugins/nbft: Use common code to parse print flags
+  * fabrics: Do not print device on connect per default
+  * fabrics: Revert 'fabrics: prevent 'nvme connect' to well-known discovery NQN'
+  * nvme-print: fix wrong list-subsys output when ns are attached to different ctrls
+  * plugins/micron: Correct NULL pointer checking error
+  * plugins/innogrit: Add vendor command get-eventlog and get-cdump
+  * nvme: Use correct data buffer size
+  * nvme: Fix quoted string split across lines to use quoted newline
+  * plugins/zns: Fix zns.c linux kernel check patch errors and warnings
+  * plugins/ymtc: Fix ymtc-nvme.c linux kernel check patch warning
+  * plugins/ymtc: Fix ymtc-nvme.c space indentation to tab indentation
+  * plugins/virtium: Fix virtium-nvme.c linux kernel check patch errors and warnings
+  * plugins/transcend: Fix transcend-nvme.c linux kernel check patch errors and warnings
+  * plugins/solidigm: Fix linux kernel check patch errors and warnings
+  * plugins/shannon: Fix shannon-nvme.c linux kernel check patch errors and warnings
+  * plugins/seagate: Fix seagate-nvme.c linux kernel check patch warnings
+  * plugins/scaleflux: Fix sfx-nvme.c linux kernel check patch errors and warnings
+  * plugins/netapp: Fix netapp-nvme.c linux kernel check patch errors and warnings
+  * plugins/nbft: Fix nbft-plugin.c linux kernel check patch warnings
+  * plugins/micron: Fix micron-nvme.c linux kernel check patch errors and warnings
+  * plugins/micron: Fix micron-nvme.c space indentation to tab indentation
+  * plugins/memblaze: Fix memblaze-nvme.c linux kernel check patch errors and warnings
+  * plugins/memblaze: Fix memblaze-utils.h space indentation to tab indentation
+  * plugins/memblaze: Fix memblaze-nvme.c space indentation to tab indentation
+  * plugins/intel: Fix intel-nvme.c linux kernel check patch errors and warnings
+  * plugins/inspur: Fix inspur-nvme.c linux kernel check patch warnings
+  * plugins/inspur: Fix inspur-nvme.c space indentation to tab indentation
+  * plugins/innogrit: Fix innogrit-nvme.c linux kernel check patch errors
+  * plugins/huawei: Fix huawei-nvme.c linux kernel check patch errors and warnings
+  * plugins/fdb: Fix fdb.c linux kernel check patch warnings
+  * plugins/dera: Fix dera-nvme.c linux kernel check patch errors and warnings
+  * plugins/amzn: Fix amzn-nvme.c linux kernel check patch error and warnings
+  * plugins/wdc: Fix wdc-utils.c linux kernel check patch errors and warnings
+  * plugins/wdc: Refactor wdc-nvme.c for linux kernel check patch errors and warnings
+  * util: Move falltrhough feature check to meson.builds
+  * ocp: Add eol plp failure mode json outputs
+  * nvme-print: Add nvme show result function
+  * nvme-print-json: Add json output result function
+  * nvme-print: Fix nvme_show_error() to call va_end() for json output format
+  * nvme: Fix nvme format block-size option handling
+  * Revert "nvme: Masks SSTAT in sanize-log output"
+  * fabrics: Fix NVMF_ARGS macro indentation error
+  * Documentation: Add document for OCP Device capability(LID: 0xC4) log page
+  * completions: Add bash completion for OCP Device capability(LID: 0xC4) log page
+  * plugins/ocp: Add Device capability(LID: 0xC4) log page
+  * udev: fix warning reported by udevadm verify
+  * fabrics: fix conditions in nvmf-autoconnect.service
+  * fabrics: Change NVMF_OPTS as NVMF_ARGS to fix linux kernel check patch error
+  * nvme: Split passthru commands read output
+  * nvme: Fix io-passthru command read metadata output
+  * plugin/ocp: Added implementation for 0xC1 log page
+  * util: Fix suffix_si_parse to parse no decimal point but suffix value correctly
+  * completions: Add zsh option values handling for sanitize command action
+  * completions: Add ocp sub commands zsh completion
+  * completions: Add ocp commands zsh completion
+  * completions: Add ocp commands bash completion
+  * nvmf-autoconnect: restart service to avoid dropping AEN
+  * solidigm: Reduce memory usage in supported log pages feature
+  * solidigm: Changes to supported log pages feature requested by review
+  * solidigm: Add supported log pages log feature to Solidigm plugin
+  * plugins/ocp: Added ocp unsupported requirements log page
+  * completions: Add bash option values handling for sanitize command action
+  * doc: Correct nvme-show-hostnqn command NAME description
+  * completions: Add missing zsh commands descriptions
+  * plugins/wdc: Extend SN530 support.
+  * Fix incorrect article 'an' as 'a' to use for descriptions and message
+  * nvme: Set effects-log command csi option help message string
+  * completions: bash: Delete unsupported id-iocs command options
+  * completions: bash: Add id-domain command
+  * completions: Fix nvm-id-ns-lba-format command zsh definition
+  * completions: Add json command option
+  * nvme: Fix get-feature command sel parameter check to allow value 8
+  * util: Delete unnecessary argconfig definitions OPT_VAL and CFG_VAL
+  * util: Delete argconfig value type to add option value as va lists instead
+  * util: Split to set argconfig option value
+  * util: Delete argconfig value length to calcurate instead
+  * nvme: Change sanitize command action option to use argconfig parse value
+  * util: Add argconfig parse value function
+  * util: Delete unused argconfig subopts type
+  * util: Delete unused argconfig file types
+  * util: Delete unused argconfig help function
+  * nvme-wrap: do_admin_args_op should not clear args timeout
+  * nvme: Fix linux kernel check patch warnings
+  * nvme: Fix linux kernel check patch errors
+  * plugins/ocp: Add telemetry-log command to OCP plugin
+  * plugins/ocp: Add OCP set latency monitor feature command
+  * plugins/ocp: Fix endianness in Latency Monitor Log output
+  * plugins/ocp: Add missing fields in Latency Monitor Log
+  * plugins/ocp: Fix typos in Latency Monitor Log
+  * plugins/ocp: Reorganize OCP plugin source code
+  * tests: Add tests for controller reset
+  * plugin/solidigm: Added vs-internal-log command.
+  * nvme: Add nvme_show_perror to use instead of perror for json output
+  * nvme-print-json: Use vasprintf instead of vsnprintf to allocate string
+  * nvme: fix rnlpt to_string() values.
+  * nvme: fix io_mgmt args parse error
+  * fdp: set-events feature is saveable
+  * fabrics: Return errno value as negative
+  * fabrics: Fix linux kernel check patch errors and warnings
+  * nbft: add the nbft show plugin
+  * nbft: added NBFT v1.0 table support (jsc#PED-1449)
+  * nbft: make lookup_ctrl function public
+  * nvme: Fix indentation errors around nvme show error API
+  * nvme: Check validate output format err value instead of flags
+  * nvme: Use nvme show error API to outptu stderr messages for json format
+  * util: Check output format json for json error message output
+  * nvme-printf: Add show error function for nvme list command json output
+  * nvme: Add zns specfic field for create ns
+  * nvme: Add ns-mgmt host software specified fields
+  * nvme: Add dtype, dspec on write-zeroes, write-uncor
+  * nvme-print: Add new fields print on id directive
+  * nvme-print: Add VWCNP on NSFEAT of id-ns
+  * nvme: Fix format command to skip to reread NSID all block device
+  * plugins/solidigm: Fixes and clean-up of Telemetry parse code. Fixed parsing of 64 bit values. Fixed COD field name. Fixed compilation warnings when compiling for 32 bit. Added missing free(). Consolidated single entry function to telemetry parser. Consolidated use of integer types.
+  * doc: Documentations maintenance changes
+  * doc: Add nvme-mi-send command documentation
+  * doc: Add nvme-mi-recv command documentation
+  * doc: Add clear-pcie-correctable-error-counters command documentation
+  * doc: Add eol-plp-failure-mode command documentation
+  * plugins/solidigm: Add firmware activation history log to Solidigm plugin
+  * plugins/ocp: Add firmware activation history log to OCP plugin
+  * nvme-print: Use enum nvme_print_flags for nvme_show_id_ctrl
+  * nvme: Add support for NVMe-MI send command
+  * nvme: Use stdout for passthru and submit_io commands success messages
+  * nvme: Fix passthru command function indentation errors
+  * nvme: Add support for NVMe-MI receive command
+  * fabrics: fix fc config JSON file handling (bsc#1210089)
+ Refresh 0100-harden_nvmf-connect@.service.patch
+- Fix install path for nvme-regress script
+
+-------------------------------------------------------------------
+Fri Mar 31 15:44:20 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version 2.4 (jsc#PED-553 jsc#PED-3884):
+  * plugins/ocp: Add SMART cloud log to solidigm plugin
+  * nvme-print: Unify number base format for nsid
+  * nvme-(discover,connect,connect-all): enable options '--keyring' and '--tls_key'
+  * nvme-connect: enable option '--tls'
+  * nvme-check-tls-key: add options to derive a 'retained' TLS key
+  * nvme-gen-tls-key: add options to derive a TLS key
+  * plugins/ocp: Move SMART cloud log methods to separate file for reusability
+  * nvme: validate storage tag size correctly
+  * nvme-print-json: Add json output status function
+  * util: Cleanup argconfig parse function
+  * nvme: Fix format command function indentation errors
+  * util: Use argconfig commandline options pointer directly
+  * nvme-print: Fix nvme show status function indentation errors
+  * nvme: Check fw-commit command support MUD
+  * print: print csi and opcode in error log (TP4113)
+  * plugins/inspur: Cast vendor specific smart log value
+  * nvme: Use correct ABORT type for self abort test
+  * plugins/solidigm: Do not overwrite previously initialized variable
+  * nvme-print: sanitize supported-log-pages output (bsc#1209550)
+  * nvme: Enforce length to a multiple of 4 in get_log_page
+  * nvme: fix block count and data size logic (bsc#1209564)
+  * util: Introduce argconfig simple helper to check seen condition
+  * plugins/ocp: Add set feature EOL/PLP failure mode no-uuid option
+  * plugins/ocp: Refactor to clear feature identifier C1h and C3h
+  * plugins/ocp: Add support for clear PCIe correctable error counters feature
+  * nvme-doc: update man page for supported-log-pages (bsc#1209550)
+  * plugins/ocp: OCP 2.0 field updates for SMART cloud log
+  * nvme: Fix parameter limit range
+  * fdp: Fix wrong Reclaim Unit Handle Status size
+  * plugins/ocp: Add support for EOL/PLP failure mode feature
+  * nvme-print: Fix printing of u32 values
+  * nvme: Fix invalid memory access in show_registers
+  * util: Add argconfig seen flag parameter to check if feature NSID set
+  * nvme-print: fix segfault in supported-log-pages json output
+  * fabrics: Fix ordering for auto connect services (bsc#1208075)
+  * nvme.c: Check Firmware Update Granularity in fwdl
+  * log: high latency timestamp issue
+  * nvme: Align get feature data buffer length by page size to allocate
+  * nvme: Continue get feature on invalid NS error to get multiple feature ids
+  * plugins/ocp: SMART cloud log bug fixes.
+  * Made temperature readouts in line with the SI.
+  * Changed 'Kelvin' to 'kelvin', as recommended by the BIPM.
+  * plugins/ocp: Fix whitespace and style issues
+  * util: Revert JSON output to plain numbers
+  * nvme: Add rae argument to telemetry-log command
+  * nvme: Refactor get telemetry log page helper
+  * nvme: Factor out parse telemetry log da element
+  * nvme: Fix type in error message
+  * unit: Add test-argconfig-parse
+  * nvme: Use chunked read in get_log()
+  * nvme: Use fprintf for error message logging in get_log()
+  * nvme: fix /dev/spkd/ typo
+  * doc: --storage-tag-check doesn't take any arguments
+  * fabrics: Ensure host-traddr/iface consistency for "connect-all"
+  * nvme-print: print the nvme generic name in json output as well
+  * plugins/innogrit: modify command opcode for eventlog and cdump
+  * completion: fix typo, add missing args
+  * plugins/wdc: Fix data Formatting for Latency Monitor Log Page
+  * nvme: Make json-c optional again
+  * nvme-print: Move JSON printing function into a new file
+  * plugins/solidigm: Use json_create_object wrapper
+  * plugins/solidigm: Use struct json_object instead of typedef
+  * fabrics: No need to sanitize trsvcid and traddr
+  * docs: Fixed typos and missing options
+  * util: Numbers without any suffix are also valid
+  * util: Update suffix_binary_parse API
+  * util: Reimplement suffix_si_parse
+  * nvme: Filter out status flags for get feature command
+  * util: Add crc32 implementation
+  * nvme-print: Use attrs_info as key for Zone Attributes Information
+  * nvme: Support effects-log for fabrics ctrl
+  * plugins/solidigm: Add uuid index resolution
+  * plugins/ocp: Use network byte order for OCP UUID value
+  * json_discovery_log: avoid buffer overrun (bsc#1207435)
+  * Fix connect nbft regressions (bsc#1209905)
+  * Fix auto connect conditions (bsc#1210105)
+  * Fix auto boot for NBFT connections (bsc#1211647)
+
+-------------------------------------------------------------------
+Mon Jan 30 13:55:50 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version 2.3:
+  * Added support for Flexible Data Placement (TP4146)
+  * Added Persistent Discovery Controller support (TP8013/TP8014)
+  * nvme-mi: support for firmware downloads
+  * nvme device-self-test learned the --wait command line argument
+    which makes nvme-cli to wait (incl. progress bar) in foreground
+    until the test has finished.
+  * A lot of bug fixes all over the place
+- Update spec file
+  * Project depends on meson >= 0.50.0
+  * make build dependency dropped
+
+-------------------------------------------------------------------
+Wed Nov 02 17:10:58 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version 2.2.1:
+  * Added parsing for Solidigm telemetry observable data.
+  * add item ddr_ecc_err_cnt in smart-log-add
+  * build: Drop dependency on libuuid
+  * build: Fix endian check for cross build
+  * build: Remove unused uuid.wrap file
+  * build: Remove unusned uuid.h include
+  * completions: Add show-topology tab completion
+  * fabrics: Honor JSON config file in connect-all command (bsc#1199504)
+  * fabrics: Trigger auto connect if config.json exists
+  * fabrics: fix 'persistent' handling during connect-all with JSON file
+  * fabrics: nvme config --modify depends on -n and -t argument
+  * fabrics: re-read the discovery log page when a discovery controller reconnected
+  * json: Support uint64 types serialization for older json-c versions
+  * nvme, plugins: fix __u64 -> unsigned long long assumptions
+  * nvme-print: Add missing values in id-ctrl for JSON output
+  * nvme-print: Handle NULL hostid in JSON output
+  * nvme-print: Output 128bit values as uint128 type instead of double
+  * nvme-print: Print fguid as a UUID
+  * nvme-print: Use uint128 JSON function for media_units_written
+  * nvme-print: decode MI status values
+  * nvme-print: decode status types
+  * nvme-print: fix wrong json key
+  * nvme: Add helper function to parse 16-bit comma separated list
+  * nvme: Add nvme_cmd wrapper for get_features
+  * nvme: Add show-topology command
+  * nvme: Add wrapper for Format NVM
+  * nvme: Add wrapper for Sanitize NVM
+  * nvme: Add wrappers for Get Log page helpers
+  * nvme: Add wrappers for Identify controller lists
+  * nvme: Add wrappers for NS attach/detach
+  * nvme: Add wrappers for NS management functions
+  * nvme: Add wrappers for basic NS identify
+  * nvme: Add wrappers for firmware commands
+  * nvme: Fix set feature command to get feature identifier 0Dh length as zero
+  * nvme: Introduce a union in struct nvme_dev for different transport types
+  * nvme: Introduce nvme_cli_ wrappers, wrap identify and identify_ctrl
+  * nvme: Make static nvme_dev private to open_dev(), use locals elsewhere
+  * nvme: Masks SSTAT in sanize-log output
+  * nvme: Remove static nvme_dev, allocate on open instead
+  * nvme: Use correct print format specifier for sizeof arguments
+  * nvme: Use local struct nvme_dev for show_registers & map_registers
+  * nvme: check if cfg.metadata is NULL before passing it to strlen()
+  * nvme: use helpers for checking status types
+  * plugins/innogrit: Include timer.h
+  * plugins/innogrit: add smart items for smart-log-add
+  * plugins/micron-nvme: Use correct print format specifier for sizeof arguments
+  * plugins/ocp: Include timer.h
+  * plugins/ocp: Output 128bit values as uint128 type instead of double
+  * plugins/ocp: pass struct nvme_dev to internal functions
+  * plugins/seagate: Add support for OCP
+  * plugins/toshiba: pass struct nvme_dev rather than fd + name
+  * plugins/virtium: Output 128bit values as uint128 type instead of double
+  * plugins/wdc: Add support for SN660 drive
+  * plugins/wdc: Add type case for feature id
+  * plugins/wdc: Output 128bit values as uint128 type instead of double
+  * plugins/wdc: pass a struct nvme_dev around rather than a fd
+  * plugins/wdc: pass struct nvme_dev rather than using global nvme_dev
+  * plugins/ytmc: pass struct nvme_dev rather than fd + name
+  * plugins: Use PRIu64 format specifier for 64bit types
+  * print: Add Controller Ready Timeout Exceeded HW error code
+  * solidgm: fix initialization warning
+  * solidigm: Added parsing for telemetry customer screenable data
+  * solidigm: Fix printf format for size_t variable
+  * solidigm: Updated Telemetry parsing code to MIT license.
+  * subprojects/libnvme: update for MI admin command coverage
+  * tests: Update license to GPL-2.0-or-later
+  * tree: Add NVMe-MI support
+  * tree: Add dev_fd() helper
+  * tree: Change nvme_dev from global to static
+  * tree: Combine NVMe file descriptor into struct nvme_dev
+  * tree: Move global device info to a single struct
+  * tree: fail on non-negative return values from parse_and_open
+  * udev: Add HOST_IFACE to udev rule (bsc#1208001)
+  * util/json.h: Add json_object_get_uint64 fallback implementation
+  * util/json: Add 128 bit JSON helpers
+  * util/types: Add 128 bit conversion helpers
+  * util: Fix le128_to_cpu on big-endian
+  * util: Fix le128_to_cpu on little-endian
+  * util: Move common type conversion helpers into util section
+  * utils/json: Add json_object_new_uint64 for json-c < 0.14
+  * utils: Fix uint128_t usage
+  * wdc:  OCP Log page updates and fixes
+  * zns.c: report zones should be started after retrieved zone
+- Handle suse-missing-rclink lint warnings by providing the symlinks
+- Drop rpmlintrc as it is not needed anymore
+
+-------------------------------------------------------------------
+Wed Sep 21 08:32:38 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Support auto discovery, add %systemd_ordering to spec file (bsc#1186399)
+- Mark no binaries rpms as noarch
+
+-------------------------------------------------------------------
+Wed Aug 17 19:26:17 UTC 2022 - dmueller@suse.com
+
+- Update to version 2.1.2:
+  * build: Update version to v2.1.2
+  * wrapper: Update SPDIX license
+  * wrapper: Call library version of nvme_init_copy_range_f1
+  * Revert "udev: re-read the discovery log page when a discovery controller reconnected"
+  * nvme: Simplify ns list identify
+  * meson: we don't need a c++ compiler
+  * plugins/ocp: drop unused fd argument
+  * plugins/wdc: remove fd argument from print functions
+  * plugins/wdc: fix memset() on the address of a pointer
+  * plugins/solidigm: fix return value on format parse failure
+  * plugins/wdc: prevent duplicate close on NVMe device
+
+-------------------------------------------------------------------
+Wed Aug  3 08:04:42 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 2.1.1:
+  * build: Update version to v2.1.1
+  * build: Extend release script to support micro version releases
+  * build: Add minimum build requirement on libnvme
+  * wrapper: Add weak nvme_init_copy_range_f1 symbol
+  * build: Update version before regenerating docs
+  * build: Update release version rules
+
+-------------------------------------------------------------------
+Mon Aug 01 13:17:48 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version v2.1:
+  * nvme: Do not print error message in collect_effects_log helper
+  * fabrics: Remove dhchap-ctrl-secret from discover/connect-all (bsc#1201701)
+  * nvme-print: sanitize the get-feature async event config output
+  * nvme: Set default rae value for nvme_get_nsid_log users
+  * fabrics: Avoid nvme_scan_ctrl when disconnecting
+  * print: Fix nvme_id_uuid_list
+  * fabrics: Already connected uses a different error code (bsc#1199994)
+  * fabrics: skip connect if the transport types don't match (bsc#1199949 bsc#1199994)
+  * nvme-print: Show ANA state only for one namespace (bsc#1200044 bsc#1199956 bsc#1199990)
+
+-------------------------------------------------------------------
+Thu Jul 14 14:37:05 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version v2.1~rc0:
+  * build and install fixes/improvements
+  * documentation fixes
+  * version reporting includes library version
+  * various fixes reported by coverity
+  * new solidigm plugin
+
+-------------------------------------------------------------------
+Fri Apr 08 17:07:11 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version 2.0:
+  * fabrics: Create persistent controller using unique subsystem NQN (bsc#1198243)
+  * fabrics: Set KATO for discovery controller when connecting
+  * fabrics: Do no modify default config for discovery controller
+  * fabrics: Set default trsvcid ports for TCP and RDMA (bsc#1195858)
+  * fabrics: Support connect even when no /etc/nvme/hostnqn file exists
+  * nvme: update to nvme_scan_filter_t modifications (bsc#1195938)
+  * plugins/intel: make 'buckets' a json array
+  * plugins: Update WDC capabilities command with new commmands
+  * plugins: Add OCP plugin
+
+-------------------------------------------------------------------
+Fri Apr 01 13:32:25 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version 2.0-rc8:
+  * fabrics: Add DIM command
+  * fabrics: Introduce force flag to overwrite persistence logic (bsc#1197076)
+  * fabrics: Free non-matching controller during discovery
+  * fabrics: add 'nvme config' command
+  * fabrics: Correctly stringify discovery.conf and config.json paths
+  * nvme-print: Add human readable print for nsattr field
+  * nvme-print: Update Persistent Event log fields
+  * nvme-print: print discovery async event support
+  * nvme-rpmb: Fix spelling for 'Partition'
+  * nvme-copy: add missing field to the command
+  * nvme: add get_mi_cmd_support_effects_log command
+  * nvme: Fixup namespace filtering yet again
+  * nvme: Use type bool for OPT_FLAG
+  * nvme: use filter for 'list-subsys <devname>' (bsc#1195938)
+  * Add lbstm option to create-ns
+  * argconfig: Do not use default value loading by getopt_long_only
+  * argconfig: Rename CFG_NONE to CFG_FLAG
+  * plugins: Use type bool for OPT_FLAG
+  * documenation updates
+- Drop 'ProtectKernelTunables=true' (bsc#1197076)
+
+-------------------------------------------------------------------
+Tue Mar 22 13:49:50 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Fix install conflict caused by new bash completion script
+  location (bsc#1197365).
+
+-------------------------------------------------------------------
+Fri Mar 18 19:13:06 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version 2.0-rc7:
+  * netapp-nvme: fix smdevices segfault in json output (bsc#1195937)
+  * fabrics: keep the backward compatibility
+  * nvme: Do not slash escape strings in JSON output (bsc#1195937)
+  * nvme: Print full device path
+  * nvme-print: Make JSON keys consistent with nvme-cli 1.x
+  * nvme-print: print generic device in list command
+  * fabrics: check for discovery controller instead of subsystem NQN (bsc#1197061)
+  * connect: Set errno to zero on nvmf_add_ctrl() success
+  * documenation updates
+- Set path to systemctl via newly introduced config option
+- Update 0100-harden_nvmf-connect@.service.patch due to upstream file rename
+- Moved bash completion script to /usr/share/bash-completion/completions/nvme
+
+-------------------------------------------------------------------
+Fri Mar 11 18:01:17 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version 2.0-rc6:
+  * nvme: print out ANA state for 'list-subsys' (bsc#1195938)
+  * nvme: Explicit initialize all command line options (bsc#1195945)
+  * nvme: Explicit initialize passthru command line options
+  * nvme: list_ns bug fix (csi option enable)
+  * nvme: nvme write bug fix (no parse for option)
+  * documenation updates
+
+-------------------------------------------------------------------
+Thu Mar 03 19:00:27 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version 2.0-rc5:
+  * nvme: passthru bugfix(wrong jump, wrong file descriptor)
+  * nvme-cli: Ignore traddr case (bsc#1194025)
+  * nvme: fix segfault in nvme telemetry-log error handling
+  * fabrics: ensure zero kato for non-persistent controllers
+  * documenation updates
+
+-------------------------------------------------------------------
+Tue Feb 22 17:45:10 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version 2.0-rc4:
+  * netapp-nvme: free the nsdescs pointer after use
+  * netapp-nvme: fix ontapdevices segfault in json output
+  * nvme-print: fix 'nvme list -o json' segfault
+  * nvme: get_ns_id command fails on nvme device
+  * wdc: updated products list for telemetry (--type) argument
+  * docs: fix typo in Data Set Management section
+  * Fix ctrlist for attach-ns and detach-ns
+  * netapp-nvme: fix nvme ns desc uuid handling for ontapdevices
+  * wdc: Fix use-after-free access of cbs_data
+  * Fixed regression with 'open namespace exclusive' (bsc#1195945)
+
+-------------------------------------------------------------------
+Fri Feb 11 13:38:15 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version v2.0-rc3:
+  * nvme-print: Fix json output for list-subsys
+  * nvme: Allow --verbose flag to increase log level
+  * Added telemetry log fetch support for SN810, SN530 and SN740 series NVMe SSDs through wdc vs-internal-log command
+  * nvmf: Remove --matching from systemd service file (bsc#1195665)
+  * nvme: Fix --force flag inversion (bsc#1195637)
+  * nvme: Add support for data area 4 to get-telemetry-log
+  * nvme: Add Supported Capacity Configuration List log page(LID: 0x11)
+  * nvme: Add Enhanced Controller Meta Data(FID: 0x7D)
+  * nvme-print: Add NVME_FEAT_FID_ENH_CTRL_METADATA to nvme_feature_to_string
+  * nvme-print: remove unused nvme_show_id_ctrl function
+  * nvme: Add nvm-id-ns-lba-format(CNS 0Ah) command from TP4095
+  * nvme: Add NVM Command Set specific identify namespace command
+  * nvme: Add id-ns-lba-format(CNS 09h) command from TP4095
+  * nvme: Add nulbaf(Number of Unique Capability LBA Formats) field on nvmd_id_ns
+- Include precompiled documentation
+
+-------------------------------------------------------------------
+Tue Feb 01 11:39:02 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version 2.0~2:
+  * Adapt to logging API changes in libnvme
+  * Adapt to scan API changes in libnvme
+  * Reworked error message handling
+  * Fix 'list-ns' (bsc#1195151)
+  * Add 'gen-tls-key' and 'check-tls-key'
+  * Add Media Unit Status log page support
+  * Cleanups and build fixes
+- Fix path to systemctl (bsc#1193699)
+
+-------------------------------------------------------------------
+Wed Jan 19 11:46:18 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Fix zsh completion package depenedencies.
+
+-------------------------------------------------------------------
+Tue Jan 18 15:42:36 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Use osc_scm to manage upstream input source.
+- Fix version string.
+
+-------------------------------------------------------------------
+Mon Jan 17 11:29:55 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update Source URL and introduce a variable for the release canditate
+  version string.
+
+-------------------------------------------------------------------
+Fri Jan 14 17:57:47 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to v2.0-rc0
+ * Depends on libnvme
+ * rename harden_nvmf-connect@.service.patch to 0100-harden_nvmf-connect@.service.patch
+ * drop 0102-nvme-cli-Add-script-to-determine-host-NQN.patch
+
+-------------------------------------------------------------------
+Thu Dec  9 08:00:28 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.16:
+  + Print ProductName found even if subvendor/subdevice is unknown.
+  + Add New fields on PEL based on NVMe 2.0a.
+  + nvme-cli:
+    - Split media units written/read into hi/lo 64 bit fields.
+    - Add support for new SN650 device.
+    - Update WDC pluging version to 1.15.3.
+    - fix the [data|mdata]_len param (boo#1193547).
+    - Add support for C3/Latency Monitor Log page parsing.
+    - ctrl-loss-tmo should accept -1 as value.
+  + nvme: add spinup control feature (fid=0x1A).
+  + nvme: Add Identify for CNS 08h NVMe spec 2.0a based.
+  + nvme: add boot partition log support.
+  + nvme: add support for fid supported and effects log(lid =
+    0x12).
+  + add identify endurance group list (cns 0x19) support.
+  + add json support for zns report zones.
+  + fabrics: fix 'nvme discover' segfault if sysfs path is not
+    available.
+
+-------------------------------------------------------------------
+Fri Oct 15 12:12:46 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Drop ProtectClock hardening, can cause issues if other device acceess is needed
+
+-------------------------------------------------------------------
+Tue Oct 12 11:40:48 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_nvmf-connect@.service.patch
+
+-------------------------------------------------------------------
+Wed Aug 18 13:19:10 UTC 2021 - Daniel Wagner <daniel.wagner@suse.com>
+
+- update to 1.15
+  * add NVMe MI features
+  * add uuid index in get and set features command 
+  * nvme-cli: Add lsi option for get-log command
+  * nvme: add json output format for list_ns
+  * fabrics: add fast_io_fail_tmo option
+  * fabrics: add --host-iface option
+  * nvme: add latency parameter for passthru commands
+  * nvme: add optional copy format support id ctrl field
+  * nvme: add zone desc changed notice async event
+  * nvme: add json, binary and human readable output format for id iocs
+  * fabrics: print device name on connect
+  * nvme: add get log page 2.0 spec fields
+  * nvme: add the status codes from 2.0 spec
+  * zns: add timeout parameter for Zone Management Commands
+  * nvme: add CDW2 and CDW3 support for Write Zeroes and Verify Command
+  * nvme: add Storage Tag Check field in NVM Commands
+  * bash: updated completion support for latest commands and plugins
+  * nvme: add capacity management command support
+  * add identify CNS 0x18 domain list support
+
+-------------------------------------------------------------------
+Fri Jul 23 10:43:15 UTC 2021 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update copyright date
+- Move bash-completion into subpackage to avoid zypper
+  recommanding bash-completion everytime.
+
+-------------------------------------------------------------------
+Fri Jul  2 13:37:07 UTC 2021 - Manfred Schwarb <manfred99@gmx.ch>
+
+- install bash-completion file in correct directory
+- recommend bash-completion 
+
+-------------------------------------------------------------------
+Tue May  4 09:46:14 UTC 2021 - Daniel Wagner <daniel.wagner@suse.com>
+
+- update to 1.14
+  * nvme-discover: add json output
+  * nvme: add support for lba status log page
+  * nvme: add support for endurance group event aggregate log
+  * nvme: add endurance group event configuration feature
+  * nvme: add latest opcodes for command supported and effects log
+  * zns: print select_all field for Zone Management Send
+  * print topology for NVMe nodes in kernel and path
+  * nvme: add support for predictable latency event aggregate log page
+  * nvme: add support for persistent event log page
+  * Show more async event config fields
+
+-------------------------------------------------------------------
+Fri Nov 13 17:46:38 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Drop '-f' option with %service_del_postun
+
+  This option shouldn't be needed besides very few special cases. But
+  this package doesn't seem to belong to this category.
+
+-------------------------------------------------------------------
+Fri Oct 23 08:22:27 UTC 2020 - Daniel Wagner <daniel.wagner@suse.com>
+
+- update to 1.13
+  * support for zoned command set
+  * Identify I/O Command Set data structure command added
+  * Added new namespace list command on list-ns, 4056 modification added
+  * Added temperature information getting and text formatting
+  * Implemented additional statistics to display
+  * nvme: add support for non shared namespaces
+
+-------------------------------------------------------------------
+Sun Aug 16 00:14:42 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.12
+  * Corrected text output in FW activation history
+  * nvme: allow addr family to recognize loop
+  * Add log page CA parsing
+  * nvme status code updates based nvme spec v1.4
+  * Provide documentation for log page directory WDC plugin command 
+  * Fix status displayed by vs-telemetry-controller-option wdc plugin
+  * fabrics: ignore hostnqn file if its empty
+
+-------------------------------------------------------------------
+Mon Jan 27 07:11:47 UTC 2020 - hare@suse.com
+
+- Update to version 1.10.1+git9.872e6b0:
+  * fabrics: fix connection args parsing
+  * nvmf-autoconnect.service
+  * Fix status displayed by vs-telemetry-controller-option wdc plugin command.
+  * Provide documentation for log page directory WDC plugin command
+  * Provide WDC plugin command to dump log page directory
+  * Tests: Hande string encoding and handling failures
+  * Makefile: use UDEVRULESDIR instead of UDEVDIR
+- Rename 'nvme-det-hostnqn' script to 'nvme-gen-hostnqn'
+
+-------------------------------------------------------------------
+Thu Jan 16 12:12:55 UTC 2020 - hare@suse.com
+
+- Update to version 1.10.1+git2.797ec65:
+  * Makefile: generate Dracut config according to UDEVDIR
+  * Add additional smart log critical warn decoding
+  * New tag for missing docs
+  * Add new wdc documentation
+  * Release v1.10
+  * Regen documentation
+  * Use asprintf for long names
+  * [NVME-CLI] Add documentation file for vs-error-reason-identifier WDC            plugin command. [NVME-CLI] Minor updates/corrections to the clear-fw-activate-history            and vs-fw-activate-history command help text.
+  * [NVME-CLI] Add support for WDC plugin command - vs-error-reason-identifier [NVME-CLI] Reverse enable/disable bit on the vs-telemetry-controller-option            WDC plugin command
+  * Fix systemd service script use of CONNECT_ARGS env var
+  * Shannon Plugin update.
+  * Doc/Makefile: Introduce 'quiet' build option
+  * Makefile: use 'quiet' compile
+  * Makefile: Use special variables
+  * micron: don't ignore 'system()' return value
+  * Fix libhugetlbfs flags
+  * Regenerate documentation
+  * Micron plugin updates
+  * README.md: Mention the buildroot package
+  * nvmf-autoconnect: add udev rules to set iopolicy for certain NetApp devices
+  * Fix intel json latency statistics output format
+  * intel: Add function lat-stats to cli Adds the lat-stats function to intel plugin. If lat-stats-tracking is enabled, lat-stats will print out latency statistics according to the user's desired format.
+  * [NVMe-CLI] Update documentation for telemetry data retrieval to vs-internal-log wdc plugin command.
+  * [NVMe-CLI] Add support to retrieve telemetry data in vs-internal-log
+  * [nvme-cli] Add documentation file for new  wdc plugin command - vs-telemetry-controller-option
+  * [nvme-cli] Add support for wdc plugin command - vs-telemetry-controller-option
+  * Fix typo (bulit -> built)
+  * Warn on admin-passthru opcode not matching read/write flag
+  * MAINT: Fix format compile warning error on 32 bit system
+  * nvme-cli: Check for sysfs interface before NVMe discovery
+  * Revert "Add Dera plugin extension."
+  * Revert "Add Dera plugin extension."
+  * Add Dera plugin extension. Add stat sub-command to retrieve Dera device status and additional SMART log.
+  * Add Dera plugin extension. Add stat sub-command to retrieve Dera device status and additional SMART log.
+  * Improve self test log command
+  * nvme-cli: Update err to 0 in get_telemetry_log
+  * fixup up self-test log when no test is in progress
+  * nvme-cli: Update err value to 0 in get_ns_id func.
+  * Add Dera plugin extension. Add stat sub-command to retrieve Dera device status and additional SMART log.
+  * nvme.c: create-ns arguments are added
+- Remove patch merged with upstream
+  * Delete 0101-nvme-add-iopolicy-rules-for-netapp.patch
+
+-------------------------------------------------------------------
+Tue Nov 19 14:49:40 CET 2019 - hare@suse.de
+
+- Add libhugetlbfs to the list of build requirements
+
+-------------------------------------------------------------------
+Mon Nov 18 14:00:12 UTC 2019 - hare@suse.com
+
+- Update to version 1.9+git122.c5097d5:
+  * [NVMe-CLI] Get DUI for SN-340 failing with Data Area 4 - Buffer Misalignment
+  * Minor intel-nvme print refactor
+  * Use simpler nvme ioctl api for admin
+  * Relocate functions and constants to the files that use them
+  * Move all spec defined structs to single file
+  * Update build rules for .c with no .h
+  * Update my email address
+  * Makefile: fix cleaning subdirectories
+  * remove unused "paths" controller field
+  * reign in line lengths
+  * Add print for directive receive
+  * Unify print routines
+  * regenerate documentation
+  * fix fw-download reference to committing fw
+  * argconfig: Remove unused paramters
+  * fix huawei filter to search all namespaces
+  * nvme-cli: Support for hugetlbfs
+  * Remove all 'struct nvme_command' usage
+  * nvme-cli: Update PMR Capability and PMR Status 	1. Adding Controller Memory Space Supported(CMSS) in PMRCAP 	2. Adding Persistent Memory Region Status(CBAI) in PMRSTS
+  * nvme-cli: Update Controller Capabilities Register 	1. Add Controller Memory Buffer Supported (CMBS)
+  * nvme-cli: Update NVMe Registers 	1. Add Controller Memory Buffer Memory Space Control (CMBMSC) 	2. Add Controller Memory Buffer Status (CMBSTS) 	3. Add Persistent Memory Region Memory Space Control (PMRMSC)
+  * fixup attach-ns documentation
+  * Add files via upload
+  * [NVMe-CLI] Updates and fixes to WDC plugin command vs-internal-log for the SN340 drive.
+  * Regen docs, add host-nqn man page
+  * [NVMe-ClI] Add Documentation files for clear-fw-activate-history command
+  * [NVMe-CLI] Add clear-fw-activate-history WDC plugin command
+  * fix namespace checks for legacy list
+  * Reset wdc_do_cap_dui default parameters to the proper values
+  * README.md: Mention the OpenEmbedded/Yocto recipe
+  * Intel plugin: Adding fields to id-ctrl VU region Per https://github.com/linux-nvme/nvme-cli/pull/584/commits/f33510efbf5192116e5757d13a02463d446a1dc5#r332178975 removing pack pragma on vu_id_ctrl_field struct.
+  * udev: convert the discovery event handler to the kernel support
+  * Use a systemd app-specific machine ID for hostnqn
+  * nvme-cli: Add 'transport type' error to the error log
+  * nvme-cli: Update nvme_endurance_group_log structure
+  * Adding fields to id-ctrl VU reigon for Intel DC drives
+  * Check return value of scandir
+  * nvme-cli: Add namespace-id option to self-test-log
+  * Report invalid output format for 'list' command
+  * Provide no-binary output format help text
+  * regen documentation
+  * Documentation: nvme-wdc-vs-fw-activate-history(1,html) generated
+  * nvme-cli/fabrics: Add tos param to connect cmd
+  * nvme.spec.in: fix rpm build error
+  * Correct self-test-log output
+  * nvme: Add 'Endurance Group Critical Warning Summary' to the Smart/Health information Log
+  * [NVMe-CLI] Documentation file for WDC vs-fw-activate-history command.
+  * [NVMe-CLI] Add new WDC plugin command vs-fw-activate-history.
+  * make: install-hostparams depends on install-etc
+  * MAINT: compile warning error on 32 bit system
+  * nvme-print: fix to print ctrltype when human-readable
+  * nvme: add Persistent Memory Region(PMR) Write Elasticity Status Registers
+  * [NVMe-CLI] Fix Potential Memory Leak with vs-internal-log command.
+  * regen docs
+  * fix admin-passthru documentation typo
+  * [NVMe-CLI] Fix empty file issue with vs-internal-log wdc plugin command
+  * nvme-cli: Fix namespace list output
+  * Fix builds for missing uuid
+  * Revert "remove LIBUUID things from nvme.h"
+  * Revert "nvme-cli: Fix compile on non-libuuid machines"
+  * Revert "fix uuid include typo"
+  * [NVMe-CLI] Fix offset parameter size for vs-internal-log wdc plugin command.
+  * remove LIBUUID things from nvme.h
+  * fix build error due to asprintf()
+  * id-ctrl: show Flush command behavior in VWC
+  * fix uuid include typo
+  * nvme-cli: Fix compile on non-libuuid machines
+  * [NVMe-CLI] Add updated documentation for additional parameters to specify file size   in vs-internal-log command.
+  * Regen docs
+  * nvme-cli: Code cleanup
+  * nvme-cli: Macro'ify argument defines
+  * nvme-cli: Code reorg
+  * [NVMe-CLI] Add support to specify file size in get DUI data for SN340.
+  * Regenerate documentation
+  * nvme-cli: Make 'list' more useful
+  * id-ctrl: show Persistent Event Log support in LPA
+  * id-ctrl: show Persistent Event Log Size(PELS)
+  * id-ctrl: show Endurance Group Maximum ID(ENDGIDMAX)
+  * id-ctrl: show FRU Globally Unique Identifier(FGUID)
+  * id-ctrl: show Controller Type(CNTRLTYPE)
+  * id-ctrl: update id-ctrl header for 1.4
+  * systemd: fix echo call with absolute path
+  * nvmf-autoconnect: fix absolute path for systemctl
+  * make: install udev rules in sysconfdir
+  * Add an example for attach-ns
+  * make: fix discovery.conf override
+  * fabrics: fix loop connect-all
+  * nvme: fix compilation error
+  * nvme-cli: Enhance format FNA detection
+  * nvme-cli: Warn and delay before formatting
+  * nvme-cli: prefill metadata buffers
+  * Fixed bash-nvme-completion.sh typo
+  * Tag release: v1.9
+  * Regen docs
+  * nvme: UUIDs for Vendor-Specific Information
+  * nvme: add Persistent Memory Region (PMR) registers
+  * get-lba-status: add Get LBA Status command
+  * Added openSUSE Leap to README.md
+  * id-ctrl: add 1.4 features to OAES
+  * Update packaging state in Arch Linux
+  * Fix code block style in the first section
+  * nvme-cli: nvmf auto-connect scripts
+  * nvme-cli: add --quiet option
+  * nvme-cli: Expand --device argument processing
+  * nvme-cli: Add routine to search for controller with specific attributes
+  * nvme-cli: Add routine to compare ctrl_list_item to connect args
+  * nvme-cli: extend ctrl_list_item for connect attributes
+  * nvme-cli: Refactor to create a get_nvme_ctrl_info routine
+  * nvme-cli: allow discover to address discovery controller by persistent name
+  * nvme-cli: support persistent connections to a discovery controller
+  * nvme-cli: ignore arguments that pass in "none"
+  * nvme-print: show new CMBLOC bit fields added in NVMe 1.4
+  * nvme: add support for Namespace Granularity
+  * nvme: sanitize enhancements
+  * nvme-cli: Update manpages to reflect discovery particulars
+  * nvme-cli: mask out invalid options during discovery
+  * nvme-cli: do not use 'queue_size' and 'nr_io_queues' for discovery controller
+  * nvme: Enhanced Command Retry
+  * id-ctrl: add an indicator for get lba status capability
+  * nvme: change format default namespace id
+  * lnvm: introduce alias geometry for id-ns for lnvm
+  * lnvm: introduce chunk-log command for chunk info
+  * lnvm: make data_len to sizeof() instead of magic number
+- Add patches from SLE15:
+  * 0101-nvme-add-iopolicy-rules-for-netapp.patch
+  * 0102-nvme-cli-Add-script-to-determine-host-NQN.patch
+- Drop patches merged with upstream:
+  * 0001-nvme_fc-auto-connect-scripts.patch
+  * 0002-71-nvme-iopolicy-netapp.rules-add-default-rules-for-.patch
+  * 0003-Add-nvmefc-connect.target.patch
+  * 0004-Change-service-to-type-simple.patch
+  * 0005-nvme-cli-Check-for-sysfs-interface-before-NVMe-disco.patch
+  * 0006-nvme-cli-add-default-IO-policy-rule-for-NetApp-E-Ser.patch
+  * 0007-nvme-cli-Rename-udev-rule-for-ONTAP-controller.patch
+  * 0008-nvme-cli-Add-script-to-determine-host-NQN.patch
+
+-------------------------------------------------------------------
+Fri Jul 26 20:22:17 UTC 2019 - sschricker@suse.com
+
+- Update to version 1.8.1+git135.9bab71e:
+  * various documentation improvements
+  * nvme-cli: Restore support for older gcc versions
+  * [NVMe-CLI] Add support for larger data sizes needed to get DUI data.
+  * [Log] Memblaze add more log infomation for S.M.A.R.T.
+  * nvme: add Verify command
+  * lnvm: do not print 0 when the arg is not given
+  * lnvm: remove redundant whitespace in lnvm_init()
+  * nvme: clean up goto labels without whitespace
+  * format: check BLKRRPART failure
+  * [NVMe-CLI] Add support for SN730 to WDC plugin commmands
+  * Add verbose capability to get DUI function to improve debug
+  * nvme-print: Show value for Transport SGL Data Block Descriptor support
+  * [NVMe-CLI] WDC: Add support for 64 bit data addresses in Get DUI Data functions
+  * nvme-cli: Fix more endianness issues
+  * nvme-print: add JSON for NVMe 1.4 NPWG, NPWA, NPDG, NPDA and NOWS fields
+  * fabrics: Return errno mapped for fabrics error status
+  * fabrics: return error when discovery retry exhausted
+  * nvme: Return errno mapped for nvme error status
+  * nvme-status: Introduce nvme status module to map errno
+  * nvme: Return negative error value for internal errors
+  * fabrics: Do not return in the middle of the subcommand
+  * nvme: Do not return in the middle of the subcommand
+  * nvme-cli: Report the NVMe 1.4 NPWG, NPWA, NPDG, NPDA and NOWS fields
+  * Introduce NVMe 1.4 Identify Namespace fields in struct nvme_id_ns
+  * nvme-cli: Skip properties that are not supported
+  * Fix various bugs related to endianness bugs
+  * NVMe-Cli Shannon Plugin-add support for shannon systems.
+  * nvme-print: fix json object memory leak
+  * fabrics: Fix memory leak of subsys list
+  * nvme: update description for "nvme list" command
+  * nvme: update list-ns nsid option
+  * nvme-print: add pretty print for estimated sanitize time
+  * add namespace to json output of nvme list
+  * add free call for json object for commands show-regs
+  * add newline for command show-regs
+  * nvme-cli: remove unnecessary initialize of local var
+  * nvme-cli: don't try to disconnect for ctrl with pcie transport
+  * Fix sprintf truncate
+- Reorder install steps: Install systemd services first, since they
+  are required for the udev rules, avoiding a theoretical race
+  condition.
+
+-------------------------------------------------------------------
+Thu May 23 06:55:34 UTC 2019 - Simon Schricker <sschricker@suse.com>
+
+- Add new subpackage containing the nvme-cli regress script
+- Add script to determine host NQN based on the system UUID
+  + 0008-nvme-cli-Add-script-to-determine-host-NQN.patch
+- Add new udev rule for NetApp E-Series and adjust udev rule naming
+  scheme accordingly. (bsc#1124564)
+  + 0006-nvme-cli-add-default-IO-policy-rule-for-NetApp-E-Ser.patch
+  + 0007-nvme-cli-Rename-udev-rule-for-ONTAP-controller.patch
+- Update to version 1.8.1+git64.b969cf0:
+  * fix json print for list-subsys command
+  * Add Virtium plugin extension document
+  * Add Virtium plugin extension
+  * nvme.h: Fix typos in status code values
+  * nvme-cli: remove unused NVME_AER_NOTICE_
+  * list-ctrl, create-ns, format: Do not return directly without
+    freeing fd
+
+-------------------------------------------------------------------
+Thu May  9 15:19:44 UTC 2019 - Simon Schricker <sschricker@suse.com>
+
+- Update to version 1.8.1+git41.2c43c51:
+  * nvme-print: remove Virtual Management support from ONCS
+  * nvme-print: update self-test log to include 'aborted due to
+    sanitize'
+  * move to DocBook 5
+  * nvme-cli: add missing endianness conversions for telemetry log
+    page
+  * property: Fit print size for a property
+  * Add Disable IO flag to wdc_dump_dui_data function
+  * Reorder primary commands
+  * nvme-cli: add identify secondary controller list
+  * sanitize/get-telemetry-log: Print nvme status in case ret > 0
+  * print: Introduce show_nvme_status to print nvme status
+  * ioctl: Fix wrong return case of get_property
+  * ioctl: Fix double-free in a loop of get_property
+  * improved Documentation
+  * fix compilation with GCC-8
+  * fix CFLAGS parameter
+  * nvme-cli: fix compilation with uint64_t cast
+  * nvme-cli: minor cleanup for submit_io()
+  * nvme-cli: align all the macros
+  * wdc: Change device capability checking
+  * wdc: Add additional device for vs-internal-log
+  * wdc: Add device unit info log extraction
+  * wdc: Add get drive status command
+  * wdc: Add clear assert dump status command
+  * wdc: Add drive resize command
+  * wdc: Update device capabilities for clear pcie corr
+  * wdc: Update file parameter checking
+  * wdc: Add command to extract NAND statistics
+  * wdc: Add data area extraction for DUI command
+  * wdc: Additional device capabilities check
+  * nvme-cli: fix fc trtype string
+  * NVMe-CLI WDC Plugin - add support for additional SN840 device ID.
+  * WDC plugin Change vs-internal-log Command to Save Partial E6 Log Data.
+  * WDC Plugins vs-internal-log command unsupported on SN340.
+  * Fix print format specifiers
+  * Fix format block size usage
+  * Add reporting of Virtual Management support to id-ctrl
+  * Fix possible NULL pointer dereferences
+  * Fix possible memory leak on get-internal-log
+  * Print timestamp as a date and time string
+  * nvme-cli: add netapp ontapdevices command
+  * Add FreeBSD installation instructions
+  * Adding a helper to format command
+  * fabrics: Return negative errno when asprintf() fails
+  * fabrics: Return negative errno to check remove_ctrl() is failed
+  * nvme: Support raw_binary and json format for show-regs
+  * ioctl: Free memory if get_property for fabrics failed
+  * nvme: Use ARRAY_SIZE() macro in common.h
+  * nvme: Unify min(), max() macro as a common one
+  * nvme: Simplify description for virt-mgmt
+  * nvme: Simplify virt-mgmt options to lowercase
+  * nvme-print: Fix evaluation of ctratt on pretty print
+  * nvme: print I/O error to stderr
+- Drop obsolete patches:
+  - 0001-wdc-Change-device-capability-checking.patch
+  - 0002-wdc-Add-additional-device-for-vs-internal-log.patch
+  - 0003-generate-new-documentation.patch
+  - 0004-Fix-compilation-with-GCC-8.patch
+  - 0005-Fix-CFLAGS-parameter.patch
+  - 0006-nvme-cli-fix-compilation-with-uint64_t-cast.patch
+  - 0007-Regen-docs.patch
+  - 0008-nvme-cli-minor-cleanup-for-submit_io.patch
+  - 0009-Regen-documentation.patch
+  - 0010-nvme-cli-fix-fc-trtype-string.patch
+  - 0011-nvme-cli-add-netapp-ontapdevices-command.patch
+  - 0012-nvme-cli-add-netapp-ontapdevices-man-page.patch
+  - 0013-nvme-cli-Revert-stop-on-failure-with-connect-all.patch
+  - 0014-nvme-cli-Increase-size-of-ONTAP-namespace-path-varia.patch
+  - 0015-DOC-Move-to-DocBook-5-when-using-asciidoctor.patch
+  - 0104-nvme-cli-Fix-documentation-syntax-and-typo.patch
+- Rename downstream patch:
+  + 0001-nvme_fc-auto-connect-scripts.patch
+  + 0002-71-nvme-iopolicy-netapp.rules-add-default-rules-for-.patch
+  + 0003-Add-nvmefc-connect.target.patch
+  + 0004-Change-service-to-type-simple.patch
+  + 0005-nvme-cli-Check-for-sysfs-interface-before-NVMe-disco.patch
+  - 0100-nvme_fc-auto-connect-scripts.patch
+  - 0101-71-nvme-iopolicy-netapp.rules-add-default-rules-for-.patch
+  - 0102-Add-nvmefc-connect.target.patch
+  - 0103-Change-service-to-type-simple.patch
+  - 0105-nvme-cli-Check-for-sysfs-interface-before-NVMe-disco.patch
+
+-------------------------------------------------------------------
+Wed May  8 16:04:34 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer convert via obsolete DocBook 4.5 format, but rather via
+  DocBook 5.x. This due to asciidoctor 2.x no longer supporting
+  DocBook 4.x
+  + 0015-DOC-Move-to-DocBook-5-when-using-asciidoctor.patch
+
+-------------------------------------------------------------------
+Mon May  6 12:34:32 UTC 2019 - Simon Schricker <sschricker@suse.com>
+
+- Increase size of ONTAP namespace path variable
+  + 0014-nvme-cli-Increase-size-of-ONTAP-namespace-path-varia.patch
+- Fix failing service on devices without fc-hardware (bsc#1133594)
+  + 0105-nvme-cli-Check-for-sysfs-interface-before-NVMe-disco.patch
+
+-------------------------------------------------------------------
+Fri Apr 12 08:45:04 UTC 2019 - Simon Schricker <sschricker@suse.com>
+
+- Add new 'ontapdevices' command and corresponding documentation.
+  Requested in (bsc#1131930).
+  + 0011-nvme-cli-add-netapp-ontapdevices-command.patch
+  + 0012-nvme-cli-add-netapp-ontapdevices-man-page.patch
+  + 0104-nvme-cli-Fix-documentation-syntax-and-typo.patch
+- Revert stop-on-failure patch for connect-all, which caused
+  unintended behaviour (bsc#1132124)
+  + 0013-nvme-cli-Revert-stop-on-failure-with-connect-all.patch
+
+-------------------------------------------------------------------
+Wed Mar 13 13:43:17 UTC 2019 - Simon Schricker <sschricker@suse.com>
+
+- Add nvmefc-connect.target to allow stopping the parameterized
+  services (bsc#1127076). Also change the service type so udevd
+  doesn't have to wait for the termination of the service process.
+  + 0102-Add-nvmefc-connect.target.patch
+  + 0103-Change-service-to-type-simple.patch
+
+-------------------------------------------------------------------
+Mon Feb 11 12:32:27 CET 2019 - hare@suse.de
+
+- Regenerate documentation (bsc#1124713)
+  * Add 0007-Regen-docs.patch
+- Minor cleanup for submit_io (bsc#1124713)
+  * Add 0008-nvme-cli-minor-cleanup-for-submit_io.patch
+- Regenerate documentation ((bsc#1124713)
+  * Add 0009-Regen-documentation.patch
+- Fix fc_trtype string (bsc#1124713)
+  * Add 0010-nvme-cli-fix-fc-trtype-string.patch
+- Add 71-nvme-iopolicy-netapp.rules (bsc#1124564)
+  * Add 0101-71-nvme-iopolicy-netapp.rules-add-default-rules-for-.patch
+
+-------------------------------------------------------------------
+Tue Jan 29 15:30:35 CET 2019 - tiwai@suse.de
+
+- Build documents with asciidoctor (bsc#1075764)
+
+-------------------------------------------------------------------
+Mon Jan 28 14:36:32 UTC 2019 - hare@suse.com
+
+- Update to version 1.7:
+  * Use tnvmcap register for creating namespace
+  * don't execute a command if --dry-run is supplied
+  * Remove trailing "\n" so that the output is valid json
+  * nvme-cli: remove unnecessary assignments
+  * nvme-print.c : fix ns-descs JSON output
+  * nvme-cli: fix typo in json_print_list_items
+  * nvme-get-property : Add documentation
+  * fabrics: write ctrl_loss_tmo to fabrics device on connect
+  * fabrics: write keep-alive-timeout to fabrics device on connect
+  * nvme-models.c - search for pci.ids
+  * nvme-cli add ns write protect feature support
+  * nvme-cli: add minimal ana-log page support
+  * nvme-cli: add ana-log documentation
+  * Fix print format specifier for 64-bit
+  * nvme-ana-log: fixup compiler warning in show_ana_log()
+  * nvme-vendor: fixup c99 declaration in huawei plugin
+  * nvme-discover: sanitize options
+  * Fix nvme id namespace struct
+  * nvme-cli: make show_registers_cap() static
+  * nvme-cli: wdc-plugin mark array static declaration
+  * nvme-cli: fix sparse warnings for declaration
+  * nvme-cli: don't use unsigned for fd in lnvm-nvme.c
+  * nvme-cli: remove always true condition for u8
+  * nvme-cli: fix dead-code nvmf log page discovery
+  * nvme-cli: code cleanup for passthru() handlers
+  * nvme-cli: fix scaandir() return value
+  * nvme-cli: netapp plugin handle empty strings
+  * nvme-cli: Fix the displayed metadata length value on Big Endian systems.
+  * nvme list : fix nvme list output if identify failed on device
+  * nvme-cli: use uniform error message for open
+  * nvme-cli: fix indentation
+  * nvme-cli: make wdc plug-in functions static
+  * nvme-cli: mark functions static
+  * nvme-cli: make malloc error handling uniform
+  * Enlarge local char[] so snprintf(3) can't truncate path.
+  * fabrics: make some arguments integers
+  * fabrics: don't fail empty discovery log page
+  * nvme: commonize subsystems info in a helper
+  * fabrics: add disconnect-all command
+  * Regen documentation
+  * attach-ns : fix segfault for ctrl list wrong input
+  * nvme-discover: Retry discovery log if the generation counter changes
+  * nvme-ioctl: retrieve log pages in 4k chunks
+  * nvme-discover: Re-check generation counter after log page transfer
+  * seagate-nvme: fixup coding style
+  * nvme-cli: Add 'rae' argument to nvme_get_log()
+  * nvme-cli: kill nvme_passthru_admin()
+  * nvme-cli: print "\n" after nvme list-subsys -o json
+  * nvme-cli: tests: fix fw_log test coding style
+  * nvme-cli: tests: fix id_ctrl test coding style
+  * nvme-cli: tests: fix id_ns test coding style
+  * nvme-cli: tests: Add get_id_ctrl function
+  * Update gitignore for generated test files
+  * Add PCI device id checking for the WDC plugin commands.
+  * Fix nvme test device selection to use controller value defined in the config.json file. Before this fix, the value was hard coded to nvme0.
+  * nvme-cli: prevent resv action field overflow
+  * nvme-cli: report subsystem-reset not supported by controller
+  * nvme-cli: fix indentation for dir_[send/receive]
+  * nvme-cli: make read error handling uniform
+  * Use sys/ioctl.h to pull in definitions.
+  * Remove unnecessary asm/byteorder.h
+  * Remove unnecessary linux/types.h include.
+  * Include libgen.h for basename prototype.
+  * Include sys/stat.h
+  * nvme-cli: remove endian.h
+  * We don't need to include linux/types.h here.
+  * Initialize line.
+  * Use standard interfaces to get timezone offsets.
+  * nvme-cli: fix ioctl argument
+  * nvme-cli: fix a typo
+  * Enable code block syntax highlight in README.md
+  * Makefile: fix bash completion install path
+  * NVMe-CLI WDC Plugin - Simplify the device id checking routines.
+  * nvme-cli: Add wdc-plugin command vs-internal-log and update wdc-plug cap-diag command with transfer-size parameter.
+  * nvme-cli: Add help text for wdc-plugin command vs-internal-log. Update help text for wdc-plugin command cap-diag.
+  * Update documentation
+  * nvme.spec.in : fix bash completion path, require
+  * nvme-cli wdc plugin: Add get pfail dump command.
+  * nvme-cli wdc plugin: Add documentation for pfail dump.
+  * Re-gen documentation for new files
+  * wdc: Fix strncpy warning
+  * Refactor plugins in a file hierarchy
+  * nvme-cli: fix sanitize status endianness
+  * nvme-cli: fix ana-log endianness
+  * wdc: Use const string for suffix
+  * nvme-cli:fix a typo in SELF-TEST log
+  * nvme-cli: fix a typo
+  * nvme-cli: fix array len to hold string of size 4
+  * nvme-cli: fix endianness for the structure field
+  * nvme: Handle supported capabilities result for get features
+  * connect-all: special treatment to EALREADY afetr write to /dev/nvme-fabrics
+  * Added zsh completion installation
+  * nvme-cli: fix a typo
+  * nvme: fixup ANA group descriptor offset
+  * nvme: introduce get_nvme_ctrl_attr()
+  * nvme: print out controller state for 'list-subsys'
+  * nvme-list-subsys: Add device name argument and print out ANA state
+  * list-subsys: Preserve line breaks and spaces
+  * Regen documentation
+  * In json output, if the commands add zero length string, it occur allocation fail & abort (cannot display empty value)
+  * Fix printing of large ANAGRPID values
+  * micron-nvme: Replace direct use of ioctl
+  * Fix printing of large ANAGRPID values
+  * Fix typos in docs
+  * Fix typos in tests and utils
+  * fabrics: support fabrics sq flow control disable
+  * fabrics: use trtype_str when parsing a discovery log entry
+  * nvme: Add TCP transport
+  * fabrics: add tcp port tsas decoding
+  * fabrics: add transport header and data digest
+  * nvme-ioctl: clear rae for discovery log pages
+  * Added support for virtualization-management command
+  * nvme-cli: Don't print result on passthru error
+  * nvme-cli: readme: fix typo in Alpine distro support
+  * Added gentoo to README.md
+  * fabrics: pass in number of write queues
+  * fabrics: pass in number of polling queues
+  * Update documentation
+  * README: update Arch Linux install instructions
+  * fabrics: allow nr_io/write/poll_queues and queue size to discovery
+  * nvme: Adding a block size selector to format
+  * nvme: Regenerate documentation
+  * timeout option added to ns_create/delete (#440)
+  * nvme: Remove duplicate error message
+  * rpm spec file: add zsh completion (#447)
+  * nvme: Release 1.7
+- Drop obsolete patches:
+  - 0001-Use-tnvmcap-register-for-creating-namespace.patch
+  - 0002-don-t-execute-a-command-if-dry-run-is-supplied.patch
+  - 0003-Remove-trailing-n-so-that-the-output-is-valid-json.patch
+  - 0004-nvme-cli-remove-unnecessary-assignments.patch
+  - 0005-nvme-print.c-fix-ns-descs-JSON-output.patch
+  - 0006-nvme-cli-fix-typo-in-json_print_list_items.patch
+  - 0007-nvme-get-property-Add-documentation.patch
+  - 0008-fabrics-write-ctrl_loss_tmo-to-fabrics-device-on-con.patch
+  - 0009-fabrics-write-keep-alive-timeout-to-fabrics-device-o.patch
+  - 0010-nvme-models.c-search-for-pci.ids.patch
+  - 0011-nvme-cli-add-ns-write-protect-feature-support.patch
+  - 0012-nvme-cli-add-minimal-ana-log-page-support.patch
+  - 0013-nvme-cli-add-ana-log-documentation.patch
+  - 0014-Fix-print-format-specifier-for-64-bit.patch
+  - 0015-nvme-ana-log-fixup-compiler-warning-in-show_ana_log.patch
+  - 0016-nvme-vendor-fixup-c99-declaration-in-huawei-plugin.patch
+  - 0017-nvme-discover-sanitize-options.patch
+  - 0018-Fix-nvme-id-namespace-struct.patch
+  - 0019-nvme-cli-make-show_registers_cap-static.patch
+  - 0020-nvme-cli-wdc-plugin-mark-array-static-declaration.patch
+  - 0021-nvme-cli-fix-sparse-warnings-for-declaration.patch
+  - 0022-nvme-cli-don-t-use-unsigned-for-fd-in-lnvm-nvme.c.patch
+  - 0023-nvme-cli-remove-always-true-condition-for-u8.patch
+  - 0024-nvme-cli-fix-dead-code-nvmf-log-page-discovery.patch
+  - 0025-nvme-cli-code-cleanup-for-passthru-handlers.patch
+  - 0026-nvme-cli-fix-scaandir-return-value.patch
+  - 0027-nvme-cli-netapp-plugin-handle-empty-strings.patch
+  - 0028-nvme-cli-Fix-the-displayed-metadata-length-value-on-.patch
+  - 0029-nvme-list-fix-nvme-list-output-if-identify-failed-on.patch
+  - 0030-nvme-cli-use-uniform-error-message-for-open.patch
+  - 0031-nvme-cli-fix-indentation.patch
+  - 0032-nvme-cli-make-wdc-plug-in-functions-static.patch
+  - 0033-nvme-cli-mark-functions-static.patch
+  - 0034-nvme-cli-make-malloc-error-handling-uniform.patch
+  - 0035-Enlarge-local-char-so-snprintf-3-can-t-truncate-path.patch
+  - 0036-fabrics-make-some-arguments-integers.patch
+  - 0037-fabrics-don-t-fail-empty-discovery-log-page.patch
+  - 0038-nvme-commonize-subsystems-info-in-a-helper.patch
+  - 0039-fabrics-add-disconnect-all-command.patch
+  - 0040-Regen-documentation.patch
+  - 0041-attach-ns-fix-segfault-for-ctrl-list-wrong-input.patch
+  - 0042-nvme-discover-Retry-discovery-log-if-the-generation-.patch
+  - 0043-nvme-ioctl-retrieve-log-pages-in-4k-chunks.patch
+  - 0044-nvme-discover-Re-check-generation-counter-after-log-.patch
+  - 0045-seagate-nvme-fixup-coding-style.patch
+  - 0046-nvme-cli-Add-rae-argument-to-nvme_get_log.patch
+  - 0047-nvme-cli-kill-nvme_passthru_admin.patch
+  - 0048-nvme-cli-print-n-after-nvme-list-subsys-o-json.patch
+  - 0049-nvme-cli-tests-fix-fw_log-test-coding-style.patch
+  - 0050-nvme-cli-tests-fix-id_ctrl-test-coding-style.patch
+  - 0051-nvme-cli-tests-fix-id_ns-test-coding-style.patch
+  - 0052-nvme-cli-tests-Add-get_id_ctrl-function.patch
+  - 0054-Add-PCI-device-id-checking-for-the-WDC-plugin-comman.patch
+  - 0055-Fix-nvme-test-device-selection-to-use-controller-val.patch
+  - 0056-nvme-cli-prevent-resv-action-field-overflow.patch
+  - 0057-nvme-cli-report-subsystem-reset-not-supported-by-con.patch
+  - 0058-nvme-cli-fix-indentation-for-dir_-send-receive.patch
+  - 0059-nvme-cli-make-read-error-handling-uniform.patch
+  - 0060-Use-sys-ioctl.h-to-pull-in-definitions.patch
+  - 0061-Remove-unnecessary-asm-byteorder.h.patch
+  - 0062-Remove-unnecessary-linux-types.h-include.patch
+  - 0063-Include-libgen.h-for-basename-prototype.patch
+  - 0064-Include-sys-stat.h.patch
+  - 0065-nvme-cli-remove-endian.h.patch
+  - 0066-We-don-t-need-to-include-linux-types.h-here.patch
+  - 0067-Initialize-line.patch
+  - 0068-Use-standard-interfaces-to-get-timezone-offsets.patch
+  - 0069-nvme-cli-fix-ioctl-argument.patch
+  - 0070-nvme-cli-fix-a-typo.patch
+  - 0071-Enable-code-block-syntax-highlight-in-README.md.patch
+  - 0072-Makefile-fix-bash-completion-install-path.patch
+  - 0073-NVMe-CLI-WDC-Plugin-Simplify-the-device-id-checking-.patch
+  - 0074-nvme-cli-Add-wdc-plugin-command-vs-internal-log-and-.patch
+  - 0075-nvme-cli-Add-help-text-for-wdc-plugin-command-vs-int.patch
+  - 0076-Update-documentation.patch
+  - 0077-nvme.spec.in-fix-bash-completion-path-require.patch
+  - 0078-nvme-cli-wdc-plugin-Add-get-pfail-dump-command.patch
+  - 0079-nvme-cli-wdc-plugin-Add-documentation-for-pfail-dump.patch
+  - 0080-Re-gen-documentation-for-new-files.patch
+  - 0081-wdc-Fix-strncpy-warning.patch
+  - 0082-Refactor-plugins-in-a-file-hierarchy.patch
+  - 0083-nvme-cli-fix-sanitize-status-endianness.patch
+  - 0084-nvme-cli-fix-ana-log-endianness.patch
+  - 0085-wdc-Use-const-string-for-suffix.patch
+  - 0086-nvme-cli-fix-a-typo-in-SELF-TEST-log.patch
+  - 0087-nvme-cli-fix-a-typo.patch
+  - 0088-nvme-cli-fix-array-len-to-hold-string-of-size-4.patch
+  - 0089-nvme-cli-fix-endianness-for-the-structure-field.patch
+  - 0090-nvme-Handle-supported-capabilities-result-for-get-fe.patch
+  - 0091-connect-all-special-treatment-to-EALREADY-afetr-writ.patch
+  - 0092-Added-zsh-completion-installation.patch
+  - 0093-nvme-cli-fix-a-typo.patch
+  - 0094-nvme-fixup-ANA-group-descriptor-offset.patch
+  - 0095-nvme-introduce-get_nvme_ctrl_attr.patch
+  - 0096-nvme-print-out-controller-state-for-list-subsys.patch
+  - 0097-nvme-list-subsys-Add-device-name-argument-and-print-.patch
+  - 0098-list-subsys-Preserve-line-breaks-and-spaces.patch
+  - 0099-Regen-documentation.patch
+  - 0100-In-json-output-if-the-commands-add-zero-length-strin.patch
+  - 0101-Fix-printing-of-large-ANAGRPID-values.patch
+  - 0102-micron-nvme-Replace-direct-use-of-ioctl.patch
+  - 0104-Fix-typos-in-docs.patch
+  - 0105-Fix-typos-in-tests-and-utils.patch
+  - 0106-fabrics-support-fabrics-sq-flow-control-disable.patch
+  - 0107-fabrics-use-trtype_str-when-parsing-a-discovery-log-.patch
+  - 0108-nvme-Add-TCP-transport.patch
+  - 0109-fabrics-add-tcp-port-tsas-decoding.patch
+  - 0110-fabrics-add-transport-header-and-data-digest.patch
+  - 0111-nvme-ioctl-clear-rae-for-discovery-log-pages.patch
+  - 0112-Added-support-for-virtualization-management-command.patch
+  - 0113-nvme-cli-Don-t-print-result-on-passthru-error.patch
+  - 0114-nvme-cli-readme-fix-typo-in-Alpine-distro-support.patch
+  - 0115-Added-gentoo-to-README.md.patch
+  - 0116-fabrics-pass-in-number-of-write-queues.patch
+  - 0117-fabrics-pass-in-number-of-polling-queues.patch
+  - 0118-Update-documentation.patch
+  - 0119-README-update-Arch-Linux-install-instructions.patch
+  - 0120-fabrics-allow-nr_io-write-poll_queues-and-queue-size.patch
+  - 0121-nvme-Adding-a-block-size-selector-to-format.patch
+  - 0122-nvme-Regenerate-documentation.patch
+  - 0123-timeout-option-added-to-ns_create-delete-440.patch
+  - 0124-nvme-Remove-duplicate-error-message.patch
+- Add patches from upstream git tree (FATE#326925)
+  + 0001-wdc-Change-device-capability-checking.patch
+  + 0002-wdc-Add-additional-device-for-vs-internal-log.patch
+  + 0003-generate-new-documentation.patch
+  + 0004-Fix-compilation-with-GCC-8.patch
+  + 0005-Fix-CFLAGS-parameter.patch
+  + 0006-nvme-cli-fix-compilation-with-uint64_t-cast.patch
+- Add FC-NVMe autoconnect scripts (bsc#1103354)
+  + 0100-nvme_fc-auto-connect-scripts.patch
+
+-------------------------------------------------------------------
+Thu Jan 10 08:52:57 CET 2019 - hare@suse.de
+
+- Use tnvmcap register for creating namespace (FATE#326925)
+  + 0001-Use-tnvmcap-register-for-creating-namespace.patch
+- don't execute a command if --dry-run is supplied (FATE#326925)
+  + 0002-don-t-execute-a-command-if-dry-run-is-supplied.patch
+- Remove trailing "\n" so that the output is valid json (FATE#326925)
+  + 0003-Remove-trailing-n-so-that-the-output-is-valid-json.patch
+- nvme-cli: remove unnecessary assignments (FATE#326925)
+  + 0004-nvme-cli-remove-unnecessary-assignments.patch
+- nvme-print.c : fix ns-descs JSON output (FATE#326925)
+  + 0005-nvme-print.c-fix-ns-descs-JSON-output.patch
+- nvme-cli: fix typo in json_print_list_items (FATE#326925)
+  + 0006-nvme-cli-fix-typo-in-json_print_list_items.patch
+- nvme-get-property : Add documentation (FATE#326925)
+  + 0007-nvme-get-property-Add-documentation.patch
+- fabrics: write ctrl_loss_tmo to fabrics device on connect (FATE#326925)
+  + 0008-fabrics-write-ctrl_loss_tmo-to-fabrics-device-on-con.patch
+- fabrics: write keep-alive-timeout to fabrics device on (FATE#326925)
+  + 0009-fabrics-write-keep-alive-timeout-to-fabrics-device-o.patch
+- nvme-models.c - search for pci.ids (FATE#326925)
+  + 0010-nvme-models.c-search-for-pci.ids.patch
+- nvme-cli add ns write protect feature support (FATE#326925)
+  + 0011-nvme-cli-add-ns-write-protect-feature-support.patch
+- nvme-cli: add minimal ana-log page support (FATE#326925)
+  + 0012-nvme-cli-add-minimal-ana-log-page-support.patch
+- nvme-cli: add ana-log documentation (FATE#326925)
+  + 0013-nvme-cli-add-ana-log-documentation.patch
+- Fix print format specifier for 64-bit (FATE#326925)
+  + 0014-Fix-print-format-specifier-for-64-bit.patch
+- nvme-ana-log: fixup compiler warning in show_ana_log() (FATE#326925)
+  + 0015-nvme-ana-log-fixup-compiler-warning-in-show_ana_log.patch
+- nvme-vendor: fixup c99 declaration in huawei plugin (FATE#326925)
+  + 0016-nvme-vendor-fixup-c99-declaration-in-huawei-plugin.patch
+- nvme-discover: sanitize options (FATE#326925)
+  + 0017-nvme-discover-sanitize-options.patch
+- Fix nvme id namespace struct (FATE#326925)
+  + 0018-Fix-nvme-id-namespace-struct.patch
+- nvme-cli: make show_registers_cap() static (FATE#326925)
+  + 0019-nvme-cli-make-show_registers_cap-static.patch
+- nvme-cli: wdc-plugin mark array static declaration (FATE#326925)
+  + 0020-nvme-cli-wdc-plugin-mark-array-static-declaration.patch
+- nvme-cli: fix sparse warnings for declaration (FATE#326925)
+  + 0021-nvme-cli-fix-sparse-warnings-for-declaration.patch
+- nvme-cli: don't use unsigned for fd in lnvm-nvme.c (FATE#326925)
+  + 0022-nvme-cli-don-t-use-unsigned-for-fd-in-lnvm-nvme.c.patch
+- nvme-cli: remove always true condition for u8 (FATE#326925)
+  + 0023-nvme-cli-remove-always-true-condition-for-u8.patch
+- nvme-cli: fix dead-code nvmf log page discovery (FATE#326925)
+  + 0024-nvme-cli-fix-dead-code-nvmf-log-page-discovery.patch
+- nvme-cli: code cleanup for passthru() handlers (FATE#326925)
+  + 0025-nvme-cli-code-cleanup-for-passthru-handlers.patch
+- nvme-cli: fix scaandir() return value (FATE#326925)
+  + 0026-nvme-cli-fix-scaandir-return-value.patch
+- nvme-cli: netapp plugin handle empty strings (FATE#326925)
+  + 0027-nvme-cli-netapp-plugin-handle-empty-strings.patch
+- nvme-cli: Fix the displayed metadata length value on Big (FATE#326925)
+  + 0028-nvme-cli-Fix-the-displayed-metadata-length-value-on-.patch
+- nvme list : fix nvme list output if identify failed on device (FATE#326925)
+  + 0029-nvme-list-fix-nvme-list-output-if-identify-failed-on.patch
+- nvme-cli: use uniform error message for open (FATE#326925)
+  + 0030-nvme-cli-use-uniform-error-message-for-open.patch
+- nvme-cli: use uniform error message for open (FATE#326925)
+  + 0030-nvme-cli-use-uniform-error-message-for-open.patch~
+- nvme-cli: fix indentation (FATE#326925)
+  + 0031-nvme-cli-fix-indentation.patch
+- nvme-cli: make wdc plug-in functions static (FATE#326925)
+  + 0032-nvme-cli-make-wdc-plug-in-functions-static.patch
+- nvme-cli: mark functions static (FATE#326925)
+  + 0033-nvme-cli-mark-functions-static.patch
+- nvme-cli: make malloc error handling uniform (FATE#326925)
+  + 0034-nvme-cli-make-malloc-error-handling-uniform.patch
+- Enlarge local char[] so snprintf(3) can't truncate path. (FATE#326925)
+  + 0035-Enlarge-local-char-so-snprintf-3-can-t-truncate-path.patch
+- fabrics: make some arguments integers (FATE#326925)
+  + 0036-fabrics-make-some-arguments-integers.patch
+- fabrics: don't fail empty discovery log page (FATE#326925)
+  + 0037-fabrics-don-t-fail-empty-discovery-log-page.patch
+- nvme: commonize subsystems info in a helper (FATE#326925)
+  + 0038-nvme-commonize-subsystems-info-in-a-helper.patch
+- fabrics: add disconnect-all command (FATE#326925)
+  + 0039-fabrics-add-disconnect-all-command.patch
+- Regen documentation (FATE#326925)
+  + 0040-Regen-documentation.patch
+- attach-ns : fix segfault for ctrl list wrong input (FATE#326925)
+  + 0041-attach-ns-fix-segfault-for-ctrl-list-wrong-input.patch
+- nvme-discover: Retry discovery log if the generation counter (FATE#326925)
+  + 0042-nvme-discover-Retry-discovery-log-if-the-generation-.patch
+- nvme-ioctl: retrieve log pages in 4k chunks (FATE#326925)
+  + 0043-nvme-ioctl-retrieve-log-pages-in-4k-chunks.patch
+- nvme-discover: Re-check generation counter after log page (FATE#326925)
+  + 0044-nvme-discover-Re-check-generation-counter-after-log-.patch
+- seagate-nvme: fixup coding style (FATE#326925)
+  + 0045-seagate-nvme-fixup-coding-style.patch
+- nvme-cli: Add 'rae' argument to nvme_get_log() (FATE#326925)
+  + 0046-nvme-cli-Add-rae-argument-to-nvme_get_log.patch
+- nvme-cli: kill nvme_passthru_admin() (FATE#326925)
+  + 0047-nvme-cli-kill-nvme_passthru_admin.patch
+- nvme-cli: print "\n" after nvme list-subsys -o json (FATE#326925)
+  + 0048-nvme-cli-print-n-after-nvme-list-subsys-o-json.patch
+- nvme-cli: tests: fix fw_log test coding style (FATE#326925)
+  + 0049-nvme-cli-tests-fix-fw_log-test-coding-style.patch
+- nvme-cli: tests: fix id_ctrl test coding style (FATE#326925)
+  + 0050-nvme-cli-tests-fix-id_ctrl-test-coding-style.patch
+- nvme-cli: tests: fix id_ns test coding style (FATE#326925)
+  + 0051-nvme-cli-tests-fix-id_ns-test-coding-style.patch
+- nvme-cli: tests: Add get_id_ctrl function (FATE#326925)
+  + 0052-nvme-cli-tests-Add-get_id_ctrl-function.patch
+- Add PCI device id checking for the WDC plugin commands. (FATE#326925)
+  + 0054-Add-PCI-device-id-checking-for-the-WDC-plugin-comman.patch
+- Fix nvme test device selection to use controller value (FATE#326925)
+  + 0055-Fix-nvme-test-device-selection-to-use-controller-val.patch
+- nvme-cli: prevent resv action field overflow (FATE#326925)
+  + 0056-nvme-cli-prevent-resv-action-field-overflow.patch
+- nvme-cli: report subsystem-reset not supported by controller (FATE#326925)
+  + 0057-nvme-cli-report-subsystem-reset-not-supported-by-con.patch
+- nvme-cli: fix indentation for dir_[send/receive] (FATE#326925)
+  + 0058-nvme-cli-fix-indentation-for-dir_-send-receive.patch
+- nvme-cli: make read error handling uniform (FATE#326925)
+  + 0059-nvme-cli-make-read-error-handling-uniform.patch
+- Use sys/ioctl.h to pull in definitions. (FATE#326925)
+  + 0060-Use-sys-ioctl.h-to-pull-in-definitions.patch
+- Remove unnecessary asm/byteorder.h (FATE#326925)
+  + 0061-Remove-unnecessary-asm-byteorder.h.patch
+- Remove unnecessary linux/types.h include. (FATE#326925)
+  + 0062-Remove-unnecessary-linux-types.h-include.patch
+- Include libgen.h for basename prototype. (FATE#326925)
+  + 0063-Include-libgen.h-for-basename-prototype.patch
+- Include sys/stat.h (FATE#326925)
+  + 0064-Include-sys-stat.h.patch
+- nvme-cli: remove endian.h (FATE#326925)
+  + 0065-nvme-cli-remove-endian.h.patch
+- We don't need to include linux/types.h here. (FATE#326925)
+  + 0066-We-don-t-need-to-include-linux-types.h-here.patch
+- Initialize line. (FATE#326925)
+  + 0067-Initialize-line.patch
+- Use standard interfaces to get timezone offsets. (FATE#326925)
+  + 0068-Use-standard-interfaces-to-get-timezone-offsets.patch
+- nvme-cli: fix ioctl argument (FATE#326925)
+  + 0069-nvme-cli-fix-ioctl-argument.patch
+- nvme-cli: fix a typo (FATE#326925)
+  + 0070-nvme-cli-fix-a-typo.patch
+- Enable code block syntax highlight in README.md (FATE#326925)
+  + 0071-Enable-code-block-syntax-highlight-in-README.md.patch
+- Makefile: fix bash completion install path (FATE#326925)
+  + 0072-Makefile-fix-bash-completion-install-path.patch
+- NVMe-CLI WDC Plugin - Simplify the device id checking (FATE#326925)
+  + 0073-NVMe-CLI-WDC-Plugin-Simplify-the-device-id-checking-.patch
+- nvme-cli: Add wdc-plugin command vs-internal-log and update (FATE#326925)
+  + 0074-nvme-cli-Add-wdc-plugin-command-vs-internal-log-and-.patch
+- nvme-cli: Add help text for wdc-plugin command (FATE#326925)
+  + 0075-nvme-cli-Add-help-text-for-wdc-plugin-command-vs-int.patch
+- Update documentation (FATE#326925)
+  + 0076-Update-documentation.patch
+- nvme.spec.in : fix bash completion path, require (FATE#326925)
+  + 0077-nvme.spec.in-fix-bash-completion-path-require.patch
+- nvme-cli wdc plugin: Add get pfail dump command. (FATE#326925)
+  + 0078-nvme-cli-wdc-plugin-Add-get-pfail-dump-command.patch
+- nvme-cli wdc plugin: Add documentation for pfail dump. (FATE#326925)
+  + 0079-nvme-cli-wdc-plugin-Add-documentation-for-pfail-dump.patch
+- Re-gen documentation for new files (FATE#326925)
+  + 0080-Re-gen-documentation-for-new-files.patch
+- wdc: Fix strncpy warning (FATE#326925)
+  + 0081-wdc-Fix-strncpy-warning.patch
+- Refactor plugins in a file hierarchy (FATE#326925)
+  + 0082-Refactor-plugins-in-a-file-hierarchy.patch
+- nvme-cli: fix sanitize status endianness (FATE#326925)
+  + 0083-nvme-cli-fix-sanitize-status-endianness.patch
+- nvme-cli: fix ana-log endianness (FATE#326925)
+  + 0084-nvme-cli-fix-ana-log-endianness.patch
+- wdc: Use const string for suffix (FATE#326925)
+  + 0085-wdc-Use-const-string-for-suffix.patch
+- nvme-cli:fix a typo in SELF-TEST log (FATE#326925)
+  + 0086-nvme-cli-fix-a-typo-in-SELF-TEST-log.patch
+- nvme-cli: fix a typo (FATE#326925)
+  + 0087-nvme-cli-fix-a-typo.patch
+- nvme-cli: fix array len to hold string of size 4 (FATE#326925)
+  + 0088-nvme-cli-fix-array-len-to-hold-string-of-size-4.patch
+- nvme-cli: fix endianness for the structure field (FATE#326925)
+  + 0089-nvme-cli-fix-endianness-for-the-structure-field.patch
+- nvme: Handle supported capabilities result for get features (FATE#326925)
+  + 0090-nvme-Handle-supported-capabilities-result-for-get-fe.patch
+- connect-all: special treatment to EALREADY afetr write to (FATE#326925)
+  + 0091-connect-all-special-treatment-to-EALREADY-afetr-writ.patch
+- Added zsh completion installation (FATE#326925)
+  + 0092-Added-zsh-completion-installation.patch
+- nvme-cli: fix a typo (FATE#326925)
+  + 0093-nvme-cli-fix-a-typo.patch
+- nvme: fixup ANA group descriptor offset (FATE#326925)
+  + 0094-nvme-fixup-ANA-group-descriptor-offset.patch
+- nvme: introduce get_nvme_ctrl_attr() (FATE#326925)
+  + 0095-nvme-introduce-get_nvme_ctrl_attr.patch
+- nvme: print out controller state for 'list-subsys' (FATE#326925)
+  + 0096-nvme-print-out-controller-state-for-list-subsys.patch
+- nvme-list-subsys: Add device name argument and print out ANA (FATE#326925)
+  + 0097-nvme-list-subsys-Add-device-name-argument-and-print-.patch
+- list-subsys: Preserve line breaks and spaces (FATE#326925)
+  + 0098-list-subsys-Preserve-line-breaks-and-spaces.patch
+- Regen documentation (FATE#326925)
+  + 0099-Regen-documentation.patch
+- In json output, if the commands add zero length string, it (FATE#326123)
+  + 0100-In-json-output-if-the-commands-add-zero-length-strin.patch
+- Fix printing of large ANAGRPID values (FATE#326123)
+  + 0101-Fix-printing-of-large-ANAGRPID-values.patch
+- micron-nvme: Replace direct use of ioctl (FATE#326123)
+  + 0102-micron-nvme-Replace-direct-use-of-ioctl.patch
+- Fix printing of large ANAGRPID values (FATE#326123)
+  + 0103-Fix-printing-of-large-ANAGRPID-values.patch
+- Fix typos in docs (FATE#326123)
+  + 0104-Fix-typos-in-docs.patch
+- Fix typos in tests and utils (FATE#326123)
+  + 0105-Fix-typos-in-tests-and-utils.patch
+- fabrics: support fabrics sq flow control disable (FATE#326123)
+  + 0106-fabrics-support-fabrics-sq-flow-control-disable.patch
+- fabrics: use trtype_str when parsing a discovery log entry (FATE#326123)
+  + 0107-fabrics-use-trtype_str-when-parsing-a-discovery-log-.patch
+- nvme: Add TCP transport (FATE#326123)
+  + 0108-nvme-Add-TCP-transport.patch
+- fabrics: add tcp port tsas decoding (FATE#326123)
+  + 0109-fabrics-add-tcp-port-tsas-decoding.patch
+- fabrics: add transport header and data digest (FATE#326123)
+  + 0110-fabrics-add-transport-header-and-data-digest.patch
+- nvme-ioctl: clear rae for discovery log pages (FATE#326123)
+  + 0111-nvme-ioctl-clear-rae-for-discovery-log-pages.patch
+- Added support for virtualization-management command (FATE#326123)
+  + 0112-Added-support-for-virtualization-management-command.patch
+- nvme-cli: Don't print result on passthru error (FATE#326123)
+  + 0113-nvme-cli-Don-t-print-result-on-passthru-error.patch
+- nvme-cli: readme: fix typo in Alpine distro support (FATE#326123)
+  + 0114-nvme-cli-readme-fix-typo-in-Alpine-distro-support.patch
+- Added gentoo to README.md (FATE#326123)
+  + 0115-Added-gentoo-to-README.md.patch
+- fabrics: pass in number of write queues (FATE#326123)
+  + 0116-fabrics-pass-in-number-of-write-queues.patch
+- fabrics: pass in number of polling queues (FATE#326123)
+  + 0117-fabrics-pass-in-number-of-polling-queues.patch
+- Update documentation (FATE#326123)
+  + 0118-Update-documentation.patch
+- README: update Arch Linux install instructions (FATE#326123)
+  + 0119-README-update-Arch-Linux-install-instructions.patch
+- fabrics: allow nr_io/write/poll_queues and queue size to (FATE#326123)
+  + 0120-fabrics-allow-nr_io-write-poll_queues-and-queue-size.patch
+- nvme: Adding a block size selector to format (FATE#326123)
+  + 0121-nvme-Adding-a-block-size-selector-to-format.patch
+- nvme: Regenerate documentation (FATE#326123)
+  + 0122-nvme-Regenerate-documentation.patch
+- timeout option added to ns_create/delete (#440) (FATE#326123)
+  + 0123-timeout-option-added-to-ns_create-delete-440.patch
+- nvme: Remove duplicate error message (FATE#326123)
+  + 0124-nvme-Remove-duplicate-error-message.patch
+
+-------------------------------------------------------------------
+Tue Oct 16 07:29:31 UTC 2018 - jthumshirn@suse.com
+
+- Update to version v1.6 (FATE#326139, FATE#326434, FATE#326558):
+  * Release 1.6
+  * lightnvm: fix type coercion
+  * fix reservation report 0's based dword count
+  * nvme.c, list_ns: use le32_to_cpu in display
+  * nvme-cli: adjust memset size for data buffer in submit_io
+  * fabrics: omit newline character when reading nvme host nqn
+  * fabrics: fail early if argconfig_parse failed
+  * nvme-cli: print firmware activation notices support bit to id_ctrl
+  * nvme-cli: add support of RAE
+  * Add a single get-property command for NVMeOF.
+  * nvme-ioctl.c : nvme_get_properties(): fix 64bit offset advance
+  * nvme-cli: add support for DLFEAT
+  * intel: fix latency stats printing
+  * Update doc
+  * nvme-cli: add changed-ns-list-log documentation
+  * nvme-cli: add changed log ns support
+  * NVMe-CLI Fix id-ns fpi field when Human Readable option selected.
+  * Fix format specifier for 32-bit
+  * Fix json output of 128-bit numbers
+  * Replace host-gen telemetry short-option 'h' with 'g'
+  * Add man pages for new device self test commands
+  * Updating version to 1.1
+  * nvme-cli: Implement printing get NOPSC feature
+  * nvme-cli: Implement printing the get Keep Alive Timer feature
+  * nvme-cli: Implement printing the get host controlled thermal management feature.
+  * nvme-cli: Implement printing the get timestamp feature.
+  * Adding ppc big endian support
+  * Revert "nvme-cli: Wait for device file if not present after successful add_ctrl"
+  * Revert "nvme-cli: Add ioctl retry support for "connect-all""
+  * nvme-cli: fix compilation error
+  * Updatign the plugin version
+  * refactored some strings
+  * Removed Duplicate commands.
+  * Initial checkin for Seagate Plugin
+  * nvme-cli: update the document for id-nvmset subcommand
+  * nvme-cli: update new fields in id-ns subcommand
+  * nvme-cli: add support for id-nvmset subcommand
+  * Wrote man page for telemetry
+  * nvme-cli: Implemented Device self test and log.
+  * Add user parameter to specify data area region from telemetry log
+  * Regenerate man pages
+  * Documentation: allow to format with asciidoctor
+  * Documentation: fix title markers
+  * fabrics: add ctrl-loss-tmo to connect-all
+  * nvme-cli: Modify Get Features-Asynchronous Event Configuration
+  * Add open-channel 2.0 identify support
+  * nvme-cli: fix show command typo
+  * nvme-cli: Fix build breaks for GCC 8.1 Signed-off-by: Alexey Timofeyev <alexey.timofeyev@sk.com>
+  * Add nvme id-ns command test
+  * Add nvme id-ctrl command test
+  * Add nvme fw-log commmand test
+  * Add support for Micron plugin
+  * nvme-cli: fix get_nsid() return value check
+  * nvme-cli: allow block device for delete-ns
+  * nvme-cli: Add ioctl retry support for "connect-all"
+  * nvme-cli: Wait for device file if not present after successful add_ctrl
+  * nvme-cli: show partial results if controller fails during list and list-subsys
+  * fabrics: add option to supply keep-alive-timeout for connect-all
+  * nvme-cli: fix perror when blkdev not given when get-ns-id
+  * Fixes for log page access.
+  * nvme-cli: make it return 0 in case of non-fabric for show-regs
+  * Regenrate documentation
+  * Documentation: add manpage entry for connect's --ctrl-loss-tmo setting
+  * nvme-cli: fix leak in endurance_log command
+  * nvme-cli: fix seg_fault by cmd options in endurance_log
+  * Remove error print for telemetry log arg parse
+  * Fix intel media wear json output
+  * Use fixed-width integer types for long suffixed parameters
+  * Add toshiba plugin to makefile rules.
+  * Add toshiba plugin code and command documentation.
+  * nvme-cli: Add friendly status messages
+  * nvme-cli: correct spelling of discovery
+  * get-log: Make log identifier a required parameter
+  * nvme-cli: fabrics: Fix passing "host_traddr" for all transports
+  * Log error incase of failure in get_nvme_subsystem_info()
+  * Fix double free in list_subsys
+  * Fix parameter descriptions
+  * Add remaining fields from NVM Sets
+  * Don't print non-existent command line options
+  * Fixed a bug where cdw11 was being overwritten by cdw12
+  * Regenerate documentation
+  * Add manpage for endurance log
+  * nvme-cli: fix typo in 'disconnect' docs
+  * Fix fabrics property commands
+  * Fix endianess in WDC plugin.
+  * Ignore cscope files
+  * Add read-recover level feature decoding
+  * Add support for NVMe Sets log page
+  * Add support for decoding IO Determinism features
+  * Add decoding for new controller attributes
+  * Update makefile dependencies
+  * nvme-cli: add netapp smdevices man page
+  * nvme-cli: add NetApp plugin
+  * Fix freeing wrong address
+  * nvme-cli: make it use NVME_IDENTIFY_DATA_SIZE
+  * nvme-cli: adjust json print according to uint format
+  * nvme-cli: add helper for sanitize command
+  * nvme-cli: telemetry-log add controller initiated log gathering
+  * flush: Use device NSID if issuing through block device
+  * NVMe-CLI Fix fw_log Command json output
+  * nvme-cli: fix typo in Intel SMART json output
+  * nvme-cli: update documentations to sync up with subcommands
+  * nvme-cli: convert iekey into a no_argument parameter
+  * nvme-cli: make return negative value in nvme_get_nsid() when not blkdev
+  * nvme-cli: move print-function to nvme-print
+  * nvme-cli: fix leaks in subcommands
+  * nvme-cli: add print for command name to effects-log
+  * nvme-cli: make it have bpid in cdw10 for fw-commit
+  * nvme-cli: add command specific field to json output of error-log
+  * nvme-cli: Fixed incosistency of error handling in intel plugin Signed-off-by: Oleksii Timofieiev <tim.oleksii@gmail.com>
+  * Use '-' for compounded word telemetry-log subcommand
+  * Use NSID all for error log
+  * nvme-cli: Implement nvme_get_log13
+  * nvme-cli: handle long commands in help message by adjusting minimal padding Signed-off-by: Oleksii Timofieiev <tim.oleksii@gmail.com>
+  * nvme-cli: wdc: Removed superfluous output in WDC plugin
+  * NVMe-CLI WDC-Plugin Update drive essentials code with review comments.
+  * nvme-cli: Add support of unsigned long long to json routines Signed-off-by: Oleksii Timofieiev <tim.oleksii@gmail.com>
+  * NVMe-CLI WDC-Plugin Add clear-pcie-corr documentation.
+  * NVMe-CLI WDC-Plugin Add clear-pcie-corr command
+  * NVMe-CLI WDC-Plugin Add drive-essentials documentation
+  * NVMe-CLI WDC-Plugin Add drive-essentials command
+  * nvme-cli: memblaze: add error return after parse_and_open()
+  * nvme-cli: memblaze: fix memory leak in memblaze-nvme.c
+  * nvme-cli: Implement get_telemetry_log from 1.3 spec
+  * nvme/vendor: Add get log LSP/LSO fields from 1.3 spec
+  * nvme-cli: lnvm: Make it return error status when argconfig_parse fails
+  * nvme-cli: fix memory leak in passthru()
+  * nvme-cli: wdc: fix mismatch in document for smart-add-log
+  * nvme-cli: wdc: add const to descriptions
+  * nvme-cli: fix memory leak in dir_receive()
+  * nvme-cli: fix memory leak in sec_recv()
+  * nvme-cli: fix memory leak in dir_send()
+  * nvme-cli: fix memory leak in sec_send()
+  * nvme-cli: fix memory leak in set_feature()
+  * nvme-cli: fix memory leak in fw_download()
+  * nvme-cli: fix memory leak in ns_descs()
+  * nvme-cli: fix memory leak in list_ctrl()
+  * nvme-cli: add error handling for a failure of malloc
+  * nvme-cli: tests: fix typo in get_feature_test
+  * nvme-cli: tests: remove nsid parameter in a testcase of error-log
+  * nvme-cli: update documentation of effects-log
+  * nvme-cli: add support for options to effects-log subcommand
+  * nvme-cli: intel: add const to descriptions of subcommand option
+  * nvme-cli: intel: add check for fd after open to intel commands
+  * nvme-cli: intel: fix smart-log-add documentation
+  * lightnvm: enable to set OP on target creation
+  * nvme-cli: intel: update smart-log-add command documentation
+  * nvme-cli: update error-log documentation
+  * nvme-cli: lnvm: add human-readable print format to ns-id subcommand
+  * nvme-cli: lnvm: add check for fd after open operation
+  * nvme-cli: lnvm: remove unnecessary force parameter of ns-id in lnvm
+  * nvme-cli: lnvm: add whitespace between words in a description
+  * nvme-cli: add BPS bit field to CAP controller register
+  * Update subcommand alias description in README.md
+  * nvme-cli: add support for json output format of sanitize-log command
+  * nvme-cli: Remove unnecessary nsid field in error-log
+  * nvme-cli: add print for command specific info field of error log page
+  * nvme-cli: update print for sanitize-log command with output-format
+  * nvme-cli: make sanitize description const
+  * Fix verbose decoding for coalescing aggregation time
+  * Allow hierarchy of similiarly named plugins
+  Drop:
+  - 0001-nvme-cli-add-NetApp-plugin.patch
+  - 0002-nvme-cli-add-netapp-smdevices-man-page.patch
+  - 0003-get-log-Make-log-identifier-a-required-parameter.patch
+  - 0004-Documentation-add-manpage-entry-for-connect-s-ctrl-l.patch
+  - 0005-fabrics-add-option-to-supply-keep-alive-timeout-for.patch
+  - 0006-fabrics-add-ctrl-loss-tmo-to-connect-all.patch
+  - 0007-nvme-vendor-Add-get-log-LSP-LSO-fields-from-1.3-spec.patch
+  - 0008-nvme-cli-Implement-nvme_get_log13.patch
+  - 0009-nvme-cli-Add-support-of-unsigned-long-long-to-json-r.patch
+  - 0010-nvme-cli-add-support-of-RAE.patch
+  - 0011-nvme-cli-add-minimal-ana-log-page-support.patch
+  - 0012-nvme-cli-add-ana-log-documentation.patch
+  - 0013-nvme-discover-sanitize-options.patch
+  - 0014-Fix-double-free-in-list_subsys.patch
+  - 0015-Log-error-incase-of-failure-in-get_nvme_subsystem_in.patch
+  - 0016-nvme-cli-move-print-function-to-nvme-print.patch
+  - 0017-nvme-cli-show-partial-results-if-controller-fails-du.patch
+  - 0018-nvme-list-subsys-Add-device-name-argument-and-print-.patch
+  - 0019-nvme-discover-Retry-discovery-log-if-the-generation-.patch
+  - 0020-nvme-cli-fabrics-Fix-passing-host_traddr-for-all-tra.patch
+  - 0021-fabrics-write-ctrl_loss_tmo-to-fabrics-device-on-con.patch
+  - 0022-fabrics-write-keep-alive-timeout-to-fabrics-device-o.patch
+
+-------------------------------------------------------------------
+Fri Aug 10 11:13:43 CEST 2018 - hare@suse.de
+
+- nvme-discover: Retry discovery log if the generation counter changes
+  (bsc#1087848)
+  + 0019-nvme-discover-Retry-discovery-log-if-the-generation-.patch
+- nvme-fabrics: Fix passing "host_traddr" for all transports (bsc#1084379)
+  + 0020-nvme-cli-fabrics-Fix-passing-host_traddr-for-all-tra.patch
+- fabrics: write ctrl_loss_tmo to fabrics device on connect (bsc#1084379)
+  + 0021-fabrics-write-ctrl_loss_tmo-to-fabrics-device-on-con.patch
+- fabrics: write keep-alive-timeout to fabrics device on connect (bsc#1090568)
+  + 0022-fabrics-write-keep-alive-timeout-to-fabrics-device-o.patch
+
+-------------------------------------------------------------------
+Tue Aug  7 13:00:23 CEST 2018 - hare@suse.de
+
+- nvme-vendor: Add get_log LSP & LSO fields from 1.3 spec
+  (bsc#1099018)
+  + 0007-nvme-vendor-Add-get-log-LSP-LSO-fields-from-1.3-spec.patch
+- nvme-cli: Implement nvme_get_log13 (bsc#1099018)
+  + 0008-nvme-cli-Implement-nvme_get_log13.patch
+- nvme-cli: Add support of unsigned long long to json (bsc#1099018)
+  + 0009-nvme-cli-Add-support-of-unsigned-long-long-to-json-r.patch
+- nvme-cli: add support of RAE (bsc#1099018)
+  + 0010-nvme-cli-add-support-of-RAE.patch
+- nvme-cli: add minimal ana-log page support (bsc#1099018)
+  + 0011-nvme-cli-add-minimal-ana-log-page-support.patch
+- nvme-cli: add ana_log documentation (bsc#1099018)
+  + 0012-nvme-cli-add-ana-log-documentation.patch
+- nvme-discover: sanitize options
+  + 0013-nvme-discover-sanitize-options.patch
+- Fix double free in list_subsys
+  + 0014-Fix-double-free-in-list_subsys.patch (bsc#1099018)
+- Log error in case of failure in get_nvme_subsystem (bsc#1099018)
+  + 0015-Log-error-incase-of-failure-in-get_nvme_subsystem_in.patch
+- nvme-cli: move print function to nvme-print.c (bsc#1099018)
+  + 0016-nvme-cli-move-print-function-to-nvme-print.patch
+- nvme-cli: show partial results if controller fails (bsc#1099018)
+  + 0017-nvme-cli-show-partial-results-if-controller-fails-du.patch
+- nvme-list-subsys: Add device name argument and print ANA state
+  (bsc#1099018)
+  + 0018-nvme-list-subsys-Add-device-name-argument-and-print-.patch
+
+-------------------------------------------------------------------
+Thu Jun  7 11:05:39 UTC 2018 - jthumshirn@suse.com
+
+- Add ctrl-loss-tmo to connect-all command (bsc#1084379)
+   + 0006-fabrics-add-ctrl-loss-tmo-to-connect-all.patch
+
+-------------------------------------------------------------------
+Wed May  2 07:49:52 UTC 2018 - jthumshirn@suse.com
+
+- Add keep-alive-tmo option to connect-all command (bsc#1090568)
+  + 0005-fabrics-add-option-to-supply-keep-alive-timeout-for.patch
+
+-------------------------------------------------------------------
+Thu Apr 12 08:22:04 UTC 2018 - jthumshirn@suse.com
+
+- Add ctrl-loss-tmo option to fabrics connect manpage (bsc#1084379)
+   + 0004-Documentation-add-manpage-entry-for-connect-s-ctrl-l.patch
+
+-------------------------------------------------------------------
+Wed Apr  4 09:56:54 UTC 2018 - jthumshirn@suse.com
+
+- Make log identifier a required parameter (bsc#1086240)
+  + 0003-get-log-Make-log-identifier-a-required-parameter.patch
+
+-------------------------------------------------------------------
+Tue Feb 13 13:18:29 UTC 2018 - jthumshirn@suse.com
+
+- Add NetApp vendor plugin (bsc#1080672) 
+  + 0001-nvme-cli-add-NetApp-plugin.patch
+  + 0002-nvme-cli-add-netapp-smdevices-man-page.patch
+
+-------------------------------------------------------------------
+Wed Jan 10 10:17:08 UTC 2018 - jthumshirn@suse.com
+
+- Update to version v1.5 (FATE#322735):
+  * Remove upstreamed patches:
+    - 0001-nvme-Introduce-new-list-subsys-command.patch
+    - 0009-fabrics-also-set-queue_size-and-nr_io_queues-on-conn.patch
+  * fabrics: also set queue_size and nr_io_queues on connect-all connects
+  * nvme-cli: add duplicate_connect parameter support
+  * nvme-cli : wdc-plugin Add support for WDC SN100 and SN200 devices.
+  * Add AEN decoder helper to get-log
+  * Regen documentation
+  * Add Nix(OS) install instructions to the README
+  * Fix the Markdown code for the Alpine install instructions
+  * nvme-cli: make address print format more human-readable
+  * intel-nvme: Fix compiler errors and warnings
+  * Include sizing data in json output that's already included in the non-json results.
+  * Cleanup variable definitions
+  * Add command effects log page
+  * Increase default format timeout
+  * Revert "nvme-cli: add duplicate_connect parameter support"
+  * nvme-cli: add duplicate_connect parameter support
+  * nvme-cli: fix wrong bitmask in number of rpmb units.
+  * nvme-cli: make command description const
+  * nvme/id-ns: do not try to get namespace id from non-block device.
+  * Fix typo in previous commit
+  * Fix long suffix parse on 32-bit machines
+  * Nitpicked a printing alignment issue with the id-ns vendor specific field
+  * Avoid unnecessary abbreviation.
+  * nvme/flush: explicitely close file descriptor
+  * Fix memory leak
+  * Add 'DEAC' support to write-zeroes command
+  * Rebuild documentation
+  * nvme-cli: resync nvme.h with the kernel's
+  * NVMe-CLI : WDC-Plugin Updated Smart Log Command
+  * NVMe-CLI : WDC-Plugin Documentation for Updated Smart Log Command
+  * Regenerate documentation
+  * nvme-cli: update show_registers_cc() to use nvme.h
+  * nvme-cli: replace values of all namespaces with NVME_NSID_ALL
+  * nvme-cli: add prints for new HMB identify fields of TP 4002
+  * Update get-feature help text
+  * Improve code alignment on intel plugin
+  * Update intel internal log man page.
+  * nvme-cli/intel: Return if arg parsing returns error
+  * nvme: add options for write command directives
+  * Update documentation
+  * Updated the human readable printing for the SGLS field in the id-ctrl command to be compliant with NVMe 1.3
+  * nvme: Introduce new 'list-subsys' command
+  * nvme-cli: add support to get properties for NVMe over Fabric
+  * nvme-cli: support to set the property for NVMe over Fabric
+  * Reorder command list
+  * Documentation fixes
+  * nvme-cli: add support alias command with Firmware Activate
+  * nvme-cli: update Firmware Commit with boot partition feature
+  * nvme-cli: add command specific status of Firmware Commit
+  * Update documentation to use aliases
+  * nvme-cli: add prints of boot partition feature to show-regs
+  * nvme-cli: Fix small mem leak.
+  * Release v1.5
+
+-------------------------------------------------------------------
+Thu Dec 14 09:01:52 UTC 2017 - jthumshirn@suse.com
+
+- Add list-subs subcommand (bsc#1072813)
+  + 0001-nvme-Introduce-new-list-subsys-command.patch
+
+-------------------------------------------------------------------
+Tue Oct 24 12:40:48 UTC 2017 - jengelh@inai.de
+
+- Update descriptions.
+
+-------------------------------------------------------------------
+Wed Oct 18 07:11:40 UTC 2017 - jthumshirn@suse.com
+
+- Update to version v1.4 (FATE#322735):
+  * Fixup Security send/recv to read data from disk
+  * Unbreak RPM build after bash completion files were moved in 7e4c7596
+  * fabrics: Fix disconnect_by_device from disconnecting instance 0 on error
+  * lightnvm: allow to init target on factory mode
+  * Fixed problem with security-recv binary output not working correctly
+  * nvme-cli: return 0 if disconnect operation with cfg.nqn successfully
+  * Fix compile for 32-bit
+  * nvme-cli: Fix build on aarch64-linux-android-4.9
+  * nvme-cli: Huawei plug-in.
+  * nvme-print: Fix line spacing on -H option
+  * id-ctrl: remove new lines from json output
+  * nvme-list: print empty lists when no devices are present
+  * fabrics: add option to override drivers queue depth
+  * nvme-cli: nvme-intel implement json output for smart-log
+  * nvme-cli: Add parsing support for noiob
+  * Fix potential device string truncation
+  * fabrics: add option to override drivers queue depth also for connect-all command
+  * Regenerate man-pages
+  * Release v1.3
+  * nvme-print: Free only top-level json objects
+  * fix use-after-free in pci.ids parsing
+  * nvme-cli: add fields into identify controller data structure
+  * nvme-cli: show more fields for id-ctrl
+  * nvme-cli: id-ctrl: display additional fields
+  * Show help when no or an invalid device is given
+  * nvme-cli: add id-ctrl for nvme-huawei plug-in.
+  * Fix spelling errors
+  * fabrics: add hostid option to connect command
+  * nvme-cli: add ns-descs subcommand
+  * nvme-cli: Get Feature support for Extended Host Id
+  * nvme-cli: Fix typo in Intel plugin and improve generic help text
+  * Implement Intel Vendor specific logs
+  * nvme-cli: add thermal management fields for smart-log
+  * nvme-cli: add temperature sensor fields in json_smart_log
+  * nvme-cli: add output-format discription for smart-log
+  * Formatting update
+  * Regenerate documentation
+  * nvme-cli: add error message for nvme list.
+  * Fix typo of flbas in nvme_create_max_ns_test
+  * Show help for get-ns-id
+  * Show help for nvme reset and subsystem-reset
+  * nvme-cli: Extended Data Structure in resv-report
+  * Update docs
+  * resync nvme.h with the kernel nvme.h
+  * nvme-cli : add support for sanitize command.
+  * nvme-cli : add sanitize command documentation.
+  * nvme-cli : add support for retrieving sanitize log.
+  * nvme-cli : add sanitize-log command documentation.
+  * fix build without libuuid
+  * nvme-cli : wdc-plug-in : return on invalid input device.
+  * nvme-cli : only print help text and return for nvme list -h option.
+  * nvme-cli/list-ns: fix identifying active or allocated namespaces list
+  * Fixed get_internal_log to parse the entire nlog and allow selection of specific regions to be parsed.
+  * NVMe-CLI Fix Sanitize Command Parameter Types
+  * Fix app tag and mask setting
+  * Fix app tag field sizes
+  * nvme-cli/list: fix when nvme device can not be open
+  * nvme-cli/list: change fd returned by open operation from unsigned to signed.
+  * Makefile: allow linker override for cross uuid test
+  * nvme-cli: fix connecting failure due to invalid uuid format of hostid
+  * nvme-cli/fabrics: Add ctrl-loss-tmo param to connect cmd
+  * Fixing macro definitions to avoid issues when these are used in expressions
+  * nvme-cli: add nvme directive command support
+  * nvme-cli: add documentation for directive commands
+  * fix for issue 219, show-regs reports AQA.ACQS and AQA.ASQS as bytes
+  * nvme-cli: Fix nvme ns desc
+  * new bit fields (6, 7, and 8) for OACS from NVMe rev 1.3
+  * added new bit field (6) to ONCS from NVMe rev 1.3
+  * nvme-cli: Describe action 3 of nvme activate
+  * nvme-cli: generate spec-compliant UUID NQNs
+  * NVMe-CLI Fixed Status Code check for reset type on fw-activate.
+  * Added handling for temperature threshold values below 0C(273K) and removed buffer check for human readable output as Temperature threshold feature does not use Memory Buffer for Attributes
+  * Update nvme.c
+  * nvme-cli : Add Namespace Rescan Command
+  * nvme-cli : Add man documentation files for ns-rescan command.
+  * Version 1.4 Release
+  * Drop upstream patches:
+    - 0001-fabrics-add-option-to-override-drivers-queue-depth.patch
+    - 0002-fabrics-add-option-to-override-drivers-queue-depth-a.patch
+    - add-missing-nvme_id_crtl-fileds.patch
+    - 0003-nvme-cli-show-more-fields-for-id-ctrl.patch
+    - 0004-nvme-cli-id-ctrl-display-additional-fields.patch
+    - 0005-nvme-cli-add-ns-descs-subcommand.patch
+    - 0006-fabrics-add-hostid-option-to-connect-command.patch
+    - 0007-nvme-cli-fix-connecting-failure-due-to-invalid-uuid-format.patch
+    - 0008-nvme-cli-generate-spec-compliant-uuid-nqns.patch
+
+-------------------------------------------------------------------
+Tue Oct 17 08:55:35 UTC 2017 - jthumshirn@suse.com
+
+- allow override queue depth and nr io queues on connect-all (bsc#1063462)
+  + 0009-fabrics-also-set-queue_size-and-nr_io_queues-on-conn.patch
+
+-------------------------------------------------------------------
+Thu Sep  7 07:25:27 UTC 2017 - jthumshirn@suse.com
+
+- Generate Spec compliant UUID NQNs (bsc#1057498)
+  + 0008-nvme-cli-generate-spec-compliant-uuid-nqns.patch
+
+-------------------------------------------------------------------
+Thu Aug 31 10:21:34 UTC 2017 - jthumshirn@suse.com
+
+- Fix hostid parsing (bsc#1049272)
+  + 0007-nvme-cli-fix-connecting-failure-due-to-invalid-uuid-format.patch
+
+-------------------------------------------------------------------
+Fri Jun 30 13:23:48 UTC 2017 - jthumshirn@suse.com
+
+- Add hostid option to connect command (bsc#1045293)
+  + 0006-fabrics-add-hostid-option-to-connect-command.patch
+
+-------------------------------------------------------------------
+Mon Jun 26 08:31:50 UTC 2017 - jthumshirn@suse.com
+
+- Create nvme files and directories in /etc/nvme (bsc#1045931 )
+
+-------------------------------------------------------------------
+Mon Jun 26 08:25:16 UTC 2017 - jthumshirn@suse.com
+
+- Provide nvme ns-descs subcommand (bsc#1038235) 
+  + 0005-nvme-cli-add-ns-descs-subcommand.patch
+
+-------------------------------------------------------------------
+Fri Jun 16 10:07:38 UTC 2017 - jthumshirn@suse.com
+
+-  Also re-build documentation on each build (bsc#1037297)
+
+-------------------------------------------------------------------
+Wed Jun 14 07:01:27 UTC 2017 - jthumshirn@suse.com
+
+- Add NVMe over Fabrics specific id-ctrl fields (bsc#1037293)
+  + add-missing-nvme_id_crtl-fileds.patch
+  + 0003-nvme-cli-show-more-fields-for-id-ctrl.patch
+  + 0004-nvme-cli-id-ctrl-display-additional-fields.patch
+
+-------------------------------------------------------------------
+Fri May 12 07:10:37 UTC 2017 - jthumshirn@suse.com
+
+- Add possibility to change queue depth at connect time (bsc#1037297)
+  + 0001-fabrics-add-option-to-override-drivers-queue-depth.patch
+  + 0002-fabrics-add-option-to-override-drivers-queue-depth-a.patch
+
+-------------------------------------------------------------------
+Mon Apr 24 07:33:25 UTC 2017 - jthumshirn@suse.com
+
+- Update to version v1.2 (FATE#322735 ,bsc#1033410):
+  * Include endian.h for byte/host order functions
+  * nvme-cli: Add nvme hostnqn generation option
+  * nvme.spec/debian: Auto generate host nqn as part of install
+  * Documentation: Add entry for gen-hostnqn
+  * Regenerate Documentation
+  * Fix read/write man pages
+  * get-features: Don't try to read the data buffer for sel == 3
+  * Documentation: fix location of device reset
+  * Regen documentation
+  * Remove debian/ directory
+  * Remove pyc files generated by 'make test'
+  * Moving the bash completion files to the standard
+  * lightnvm: default to -1 on lun begin and end
+  * nvme-cli: fabrics: Fix to pass "host_traddr" to the kernel driver.
+  * nvme-cli: id-ctrl: Fix memory leak for JSON.
+  * nvme-cli: id-ns: Fix memory leak for JSON.
+  * nvme-cli: error-log: Fix memory leak for JSON.
+  * nvme-cli: resv-report: Fix memory leak.
+  * nvme-cli: smart-log: Fix memory leak for JSON.
+  * nvme-cli: fw-log: Fix memory leak for JSON.
+  * nvme-cli: json_add_smart_log(): Fix memory leak for JSON.
+  * nvme-cli: smart-log: Allow negative values for temp sensors.
+  * Don't print unimplemented sensor
+  * Build without uuid
+  * get-ns-id: Exit when no device provided.
+  * nvme-cli: id-ctrl: Add vendor fields in JSON id-ctrl.
+  * nvme-cli: nvme.c: Allow plug-ins to access to output formats and helper.
+  * nvme-cli: Western Digital/HGST plug-in.
+  * nvme-cli: Western Digital/HGST plug-in documentation.
+  * <linux/nvme.h>: Correct NVMF enum values to match NVMe-oF rev 1.0
+  * fabrics: Handle space-padded TRSVCID and TRADDR fields
+  * nvme-cli: bug-fix: use right file name for perror.
+  * move show_intel_smart_log to intel-nvme.c
+  * remove json_add_smart_log
+  * remove nvme_intel_smart_log
+  * move struct nvme_additional_smart_log to intel-nvme.c
+  * nvme-cli/format: use existing LBAF if none requested
+  * nvme-cli: Release v1.2
+
+-------------------------------------------------------------------
+Thu Mar  2 07:43:02 UTC 2017 - jthumshirn@suse.com
+
+-  Update to upstream release v1.1 (FATE#322735)
+   * This fixes multiple compiler warnings for 32-bit and other environments
+     from v1.0, adds more documentation to fabrics, removes the libudev
+     dependency entirely from this project, adds a framework for unit testing
+     devices, and fixes usage for user defined install paths
+
+-------------------------------------------------------------------
+Thu Sep 15 09:05:22 UTC 2016 - jthumshirn@suse.com
+
+- Update to upstream release v0.9
+  - Remove merged remove-version-from-list.patch
+  * New extensions, fabrics support, a bug fixes. The 'list' command
+    is liberated from its udev dependency, and no longer requires
+    CONFIG_IO_STRICT_DEVMEM be disabled.
+
+-------------------------------------------------------------------
+Wed Aug 31 11:31:15 UTC 2016 - jthumshirn@suse.com
+
+- Don't map controller registers in 'list' command (boo#986891)
+  + remove-version-from-list.patch
+
+-------------------------------------------------------------------
+Tue Aug  9 12:19:35 UTC 2016 - jthumshirn@suse.com
+
+- Update to upstream release v0.8
+  - Remove merged patch 0001-bash-completion-Remove-shebang-line.patch  
+  * Code re-organized to support new extensions. While these are called
+    "plugins", they currently have to be built into the executable. Support
+    for dynamically loadable plugins is under consideration.
+  * LightNVM is added as a built-in plugin.
+  * Intel vendor specific commands and structure decodings are supported
+    in a new intel plugin.
+  * Support for NVMe-over-Fabrics
+  * New output format "json" for a subset of commands that decode returned
+    structures.
+  * Lots of various documentation and minor code fixes.
+
+-------------------------------------------------------------------
+Wed Jun  1 10:21:39 UTC 2016 - jthumshirn@suse.com
+
+- Update to upstream release v0.7
+  + 0001-bash-completion-Remove-shebang-line.patch
+  Keith writes:
+    Just a few minor updates and documentation fixes. There is also a new
+    option for passthrough commands that can be used to help detect data
+    over/under run.
+    
+    Tagging a stable release so we can consider features that bring in other
+    transports and third party extensions.
+
+-------------------------------------------------------------------
+Wed Apr 13 12:57:48 UTC 2016 - jthumshirn@suse.com
+
+- Exclude build on s390x (FATE#319560)
+
+-------------------------------------------------------------------
+Fri Mar 18 09:31:01 UTC 2016 - jthumshirn@suse.com
+
+- Update to upstream release v0.5
+    The v0.4 breakage should all be resolved now. Tagging release
+    v0.5, and back to stability.
+
+-------------------------------------------------------------------
+Wed Mar  2 09:08:35 UTC 2016 - jthumshirn@suse.com
+
+- Update to upstream release v0.4
+
+-------------------------------------------------------------------
+Mon Feb 15 14:52:51 UTC 2016 - jthumshirn@suse.com
+
+- Fix display of version number (boo#966740)
+
+-------------------------------------------------------------------
+Thu Feb 11 09:23:55 UTC 2016 - jthumshirn@suse.com
+
+- Initial packaging for openSUSE
+

@@ -1,0 +1,36 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>15ebf973e7b7e63718afbd6d15d672a6</srcmd5>
+    <version>1.2</version>
+    <time>1553611427</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>687813</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5dfb0c2f4ba6979bb4ba5dd7d635d46f</srcmd5>
+    <version>1.2</version>
+    <time>1620840742</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not compiler/run the test build against legacy guava20 any
+  more
+</comment>
+    <requestid>892425</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>852810ae202e85a563988a6c113b8687</srcmd5>
+    <version>1.2</version>
+    <time>1647974463</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source and target levels 8</comment>
+    <requestid>963992</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>8e75a3ebd294e0435c15cae64b1c6e5e</srcmd5>
+    <version>1.2</version>
+    <time>1648580819</time>
+    <user>dimstar_suse</user>
+    <comment>Simplify the build</comment>
+    <requestid>965692</requestid>
+  </revision>
+</revisionlist>

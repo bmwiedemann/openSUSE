@@ -1,0 +1,9 @@
+<package name="lasso" project="openSUSE:Factory">
+  <title>Liberty Alliance Single Sign On</title>
+  <description>Lasso is a library that implements the Liberty Alliance Single Sign On
+standards, including the SAML and SAML2 specifications. It allows to handle
+the whole life-cycle of SAML based Federations, and provides bindings
+for multiple languages.
+</description>
+  <devel project="security:idm" package="lasso"/>
+</package>

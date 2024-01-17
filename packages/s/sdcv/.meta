@@ -1,0 +1,7 @@
+<package name="sdcv" project="openSUSE:Factory">
+  <title>Console version of the Stardict program</title>
+  <description>Console version of the Stardict program that can employ all the dictionary files that belong to StarDict.
+The word sdcv stands for StarDict under Console Version.</description>
+  <devel project="Education" package="sdcv"/>
+  <url>http://sdcv.sourceforge.net/</url>
+</package>

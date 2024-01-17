@@ -1,0 +1,501 @@
+-------------------------------------------------------------------
+Fri Jun 23 06:12:19 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.4.1:
+  * Fixed showing of the number of selected characters when selection
+    highlighting is disabled.
+  * Added an option for a small margin around the text.
+  * Fixed a problem with non-Linux systems.
+  * In Preferences dialog, prevent unintentional changes to the
+    values of spin and combo boxes. Also, set their
+  * to default when they're cleared.
+  * Don't remove single trailing spaces with LaTeX.
+  * Prevent window dragging from the line number strip.
+
+-------------------------------------------------------------------
+Tue Apr 18 11:25:32 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.4.0:
+  * An option has been added for showing the window title on the menu-bar.
+  * application/x-zerosize is associated to FeatherPad by default,
+    alongside text/plain (because of a change in GLib).
+  * The recent files menu shows icons where possible.
+  * The side-pane can be focused by Ctrl+Escape.
+  * text/plain;charset=... is recognized as plain text when pasted
+   (Qt didn't see it as plain text
+  * The file type filters of file dialogs are protected against
+    incorrect translations.
+
+-------------------------------------------------------------------
+Mon Jan  9 08:10:57 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.3.5:
+  * Grouped files are always opened in a single window, even when
+    the app is configured to open files in separate windows.
+  * Tab DND is enabled under Wayland.
+  * A total item deselection is prevented in the side-pane with
+    Qt6 (Qt5 had no problem).
+  * Side-pane and session buttons have been added to the tool-bar.
+
+-------------------------------------------------------------------
+Thu Dec  1 09:26:13 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.3.4:
+  * A potential cause of crash is removed (by initializing the
+    variables of TextEdit and TabBar before any event is triggered).
+  * The Paste item of the Edit menu is enabled/disabled appropriately.
+  * The single quote is covered as the digit separator in C++(≥14)
+    syntax highlighting.
+  * Enabled instant tooltips and corrected context menus on Wayland.
+
+-------------------------------------------------------------------
+Sat Oct  8 08:31:18 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.3.3:
+  * A crash on pasting empty clipboard is fixed.
+    The fix can be seen as a workaround because the root cause is in Qt.
+  * Silenced the compilation warnings with Qt 6.4.
+  * Covered indented here-docs in Bash and Perl syntax highlighting.
+
+-------------------------------------------------------------------
+Tue Sep 13 05:45:04 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.3.2:
+  * The Unix signal handling is revamped.
+  * Instant tab tooltips are replaced by ordinary ones under Wayland
+    (because Wayland compositors have problem with instant tooltips
+    of inactive windows).
+  * Toml syntax highlighting is added.
+  * The detection of legacy encodings has been totally removed with Qt6.
+
+-------------------------------------------------------------------
+Wed Aug  3 06:58:13 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Updtae to 1.3.1:
+  * D-Bus is used — instead of the old, network-based method — for
+    making the app have a single process. D-Bus is faster, more
+    versatile, and much more reliable, especially under
+    extreme circumstances.
+    FeatherPad still works under non-Linux systems without D-Bus,
+    but as a multi-process app.
+  * The qmake compilation has been removed. Its maintenance wasn't
+    justified, especially with D-Bus.
+  * A workaround has been added for a Qt5 bug that caused a crash
+    if SIGTERM was sent while the replacement dock was visible.
+    The bug doesn't exist in Qt6.
+
+-------------------------------------------------------------------
+Fri Jun 17 08:34:55 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.3.0:
+  * An option is added for using system icons where possible.
+  * Small problems in restoring of window size, state and position are fixed.
+  * Automatic scrolling to current item is fixed in the side-pane mode.
+  * Qt6's reaction to SIGTERM is fixed.
+  * Prevented a high CPU usage with selection highlighting when a huge
+    amount of text is selected.
+  * Fixes and enhancements to Yaml and CMake syntax highlighting.
+  * Center page numbers horizontally when printing.
+
+-------------------------------------------------------------------
+Sun Apr 24 09:16:16 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.2.0:
+  * Try the file manager DBus interface when opening the containing folder
+  * Restore the view position on reloading, as precisely as possible.
+  * Fixed searching in unusually large documents.
+  * Select the text between spaces with Ctrl + double click.
+  * Added Rust syntax highlighting.
+  * Fixes and enhancement to XML and QML syntax highlighting.
+  * Bumped the minimum required version of Qt5 to 5.15.0.
+  * With Qt6, hide encodings that are not supported by Qt6.
+
+-------------------------------------------------------------------
+Fri Jan  7 14:09:41 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.1.1:
+  * Fixed highlighting of Markdown's single-line codes with multiple
+    back-quotes.
+  * Prevented a rare hang-like behavior with some malformed
+    XML documents.
+  * Fixed the positions of instant tab tool-tips with Qt6.
+
+-------------------------------------------------------------------
+Fri Jan  7 14:08:52 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.1.0:
+  * A problem is fixed in saving with UTF-16.
+  * A very rare stack overflow is prevented when matching brackets
+    inhuge files.
+  * The maximum number of recent files is increased to 50.
+  * Added Tcl syntax highlighting.
+  * Lots of keywords are added to syntax highlighting for
+    various programming languages.
+  * Fixes and improvements to XML and Lua syntax highlighting.
+  * Enabled experimental compilation against Qt6.
+    The default cmake compilation is still against Qt5.
+
+-------------------------------------------------------------------
+Fri Oct 15 10:59:37 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.0.1:
+  * Fixed the detection of UTF-16 in special cases.
+  * Fixed tab detaching when the window is closed with its last tab.
+  * Don't try to restore window position under Wayland.
+  * Better inertial scrolling with touchpad and sensitive devices.
+
+-------------------------------------------------------------------
+Wed Sep  1 10:14:21 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.0.0:
+  * Miscellaneous fixes to syntax highlighting of some programming
+    languages. Also, a little faster highlighting in general.
+  * Go is added to syntax highlighting.
+  * Final symlink targets are also checked for detecting programming languages.
+  * An option is added for disabling menu-bar accelerators.
+  * Number separators are used on the status-bar.
+  * AppStream metadata is added by Balló György
+  * Support for OS/2 is added by josch1710 at GitHub.
+  * Bumped the version to 1.0.0
+
+-------------------------------------------------------------------
+Wed Mar 10 08:45:18 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.18.0:
+  * Fixed a rare problem in highlighting of multiline comments.
+  * Added Java, JSON and Pascal to syntax highlighting.
+  * Improved Perl, Ruby, PHP and LaTex syntax highlighting.
+  * Prevented Qt from giving non-plain text to the selection
+    clipboard.
+  * Made PageUp/PageDown select the first/last item of the search
+    history when the search line-edit is focused.
+  * If needed, the cursor positions is also saved when the
+    app is terminated by SIGTERM.
+  * Prevented the spell checker from changing an uneditable document.
+  * Added an icon and two context menu items to tabs/view-items
+    of files that have final targets other than immediate symlink
+    targets (e.g., when their parent directories are symlinks).
+
+-------------------------------------------------------------------
+Wed Jan 13 08:19:06 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.17.2:
+  * Fixed a regression in 0.17.0 about here-documents.
+
+-------------------------------------------------------------------
+Wed Jan  6 18:21:02 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.17.1:
+  * Avoided making the cursor busy from a separate thread
+
+-------------------------------------------------------------------
+Wed Jan  6 08:30:18 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.17.0:
+  Main changes:
+  * Now, FeatherPad can save as root without a root instance when
+    the user doesn't have the permission to write. Polkit's
+    pkexec is used (as a run-time dependency) for gaining the
+    root privilege.
+  * Printing is done in a separate thread, so that, if it takes
+    a long time, other windows of FeatherPad could still be used.
+  * Workarounds are added for bugs in Qt's default printing.
+    Qt can't handle dark color schemes and the reverse order
+    with printing; FeatherPad supports both.
+  Other changes:
+  * Made the warning bar more flexible for use with saving to
+    root as well as printing.
+  * Guarantee that the session dialog has focus after opening
+    a session.
+  * Added LaTex to the recognized syntaxes.
+  * Added simple support for gvfs' admin.
+  * Fixes to Perl syntax highlighting.
+  * Several fixes to various small issues.
+
+-------------------------------------------------------------------
+Mon Nov  2 15:10:48 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.16.0:
+  * A right-click item is added to tab/side-pane for opening
+    containing folder.
+  *  Natural sorting of items in the side-pane and session dialog.
+  *  The warning bar disappears when clicked or, automatically,
+     after 10 seconds.
+  *  "To Start Case" is added to the case changing actions.
+  *  The 50-ms delay of format updating is removed because
+     Qt's update requests seem appropriate now.
+  *  Focus the editor's view with the Escape key.
+  *  Current line highlight is made customizable.
+  *  The recent files feature can be disabled by setting its
+     number to zero.
+  *  Added a "standalone" option to the command-line.It's
+     especially useful when FeatherPad is chosen as the "git" editor.
+  *  Fixes and improvements here and there.
+
+-------------------------------------------------------------------
+Mon Aug 24 08:04:08 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.15.0:
+  * An optional selection highlighting (Preferences → Text →
+    Selection highlighting; also, see Help).
+  * A menu item for converting all text tabs to spaces.
+  * An option for pasting file paths instead of opening files
+    that are copied and pasted into FeatherPad (which is the
+	default behavior).
+  * Highlight only the first 1000 replacements if there are more.
+  * Added a simple syntax highlighting for Haxe (by using
+    JS highlighting).
+  * Fixes and code cleanup.
+
+-------------------------------------------------------------------
+Thu Jun 11 12:08:12 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.14.2:
+  * Overrode Qt's default behavior when the Home key is pressed.
+  * Fixed a bug that allowed cutting of read-only texts.
+  * Fixes for Yaml, CSS and JavaScript.
+  * Updated the code for Qt 5.15 (backward compatibly).
+
+-------------------------------------------------------------------
+Tue May  5 07:16:05 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.14.1:
+  * Fix miscalculation in highlighting of mult-iline CSS values
+
+-------------------------------------------------------------------
+Sat Apr 25 08:32:23 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.14.0:
+  * Speed up syntax highlighting
+  * Fix handling relative file paths that contain no slash
+  * JavaScript template literals (back quotes) are supported
+  * CSS syntax highlighting is fixed and improved
+  * Small fixes
+
+-------------------------------------------------------------------
+Thu Mar 12 09:33:32 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.13.1:
+  * Don't suggest the last file extension when saving a
+    newly created doc
+
+-------------------------------------------------------------------
+Tue Mar 10 06:47:33 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.13.0:
+  * Support for syntax color customization, with separate settings
+    for light and dark backgrounds.
+  * Color value of whitespaces can be customized, in case they're shown.
+  * Allow dash and some other characters in URLs.
+  * Considered extra cases of valid ampersands in HTML.
+  * Yet smarter Shift+Enter with alphabetical lists.
+  * Removed QCoreApplication::processEvents() to prevent a rare crash.
+  * Remember cursor's horizontal pixel position before Backspace/Enter
+    and restore it after Down/Up.
+  * A few fixes.
+
+-------------------------------------------------------------------
+Mon Jan 13 12:18:05 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.12.1:
+  * Allow searching in the language menu by typing continuously.
+  * More informative message when a non-text file isn't opened
+    because of Preferences.
+  * Fixed the disabled sort line actions in context menu.
+  * Considered the new behavior of horizontal wheel
+    scrolling in Qt 5.14.0.
+  * Added a workaround to the text editor for the bug in
+    horizontal scrollbars of Qt 5.14.0.
+
+-------------------------------------------------------------------
+Sun Dec 29 16:15:21 UTC 2019 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.12.0:
+  * Removed useless options related to icons.
+  * Added an option for a single shared search history.
+  * Don't replace double hyphens with em dashes in programming texts.
+  * Also replace "->", "<-", ">=" and "<=" with "→", "←", "≥"
+    and "≤", respectively, in non-programming texts.
+  * Mark encoded and unencoded ampersands in HTML.
+  * Set the limit of highlighting the syntax of a line
+    to 10,000 characters.
+  * Allow shortcut removal.
+  * Added "Save All Files" for saving modifications to
+    all files that are open inside a window.
+  * Added mnemonics to the close prompt dialog.
+  * Added support for Dart syntax highlighting.
+  * Better JS, YAML and Markdown syntax highlighting.
+  * Added a menu item to open the user dictionary.
+  * Fixed a minor problem in backward search and replacement.
+  * On triple clicking, select the current block without
+    selecting its newline and start and end whitespaces.
+  * Fixes for RTL, including a workaround for a Qt bug.
+  * Added a (temporary) workaround for the text rendering
+    bug of Qt 5.14.0.
+
+-------------------------------------------------------------------
+Tue Aug 20 07:15:49 UTC 2019 - mvetter@suse.com
+
+- Update to 0.11.1:
+  * Fix a regression in compilation without X11.
+  * Fixes and improvements to syntax highlighting and support it with printing.
+- Changes from 0.11.0:
+  * FeatherPad supports spell checking with Hunspell. Spell checking
+    requires adding an appropriate Hunspell dictionary (see
+	Preferences → Text → Spell Checking). New words can also be
+    added to each dictionary and are saved in FeatherPad's config directory.
+  * A new font dialog that distinguishes programming fonts from others.
+  * Shift+Enter is made smarter, especially with numbered lists.
+  * Better handling of typed custom shortcuts (including a workaround
+    for a new Qt bug related to Meta key).
+  * False warnings are prevented on startup.
+  * Recent changes to settings won't be lost if the app is running on logout.
+  * Native file dialogs are used by default.
+  * The insert mode is also toggled by the keypad insert key.
+  * Many fixes are made to Perl's syntax highlighting.
+  * Deprecated Qt methods are replaced.
+
+-------------------------------------------------------------------
+Wed May 22 09:09:19 UTC 2019 - mvetter@suse.com
+
+- Update to 0.10.0:
+  * Added support for searching/replacing regular expressions.
+  * Added cmake support.
+  * Replace triple periods and double hyphens with ellipses and em dashes respectively on typing (can be disabled in Preferences).
+  * The Preferences dialog has a better layout and its size is always remembered.
+  * Workaround for a Qt bug that gives non-plain text to clipboard on copying/cutting/selecting text.
+  * Fixed a crash under Wayland.
+  * Fixed a small issue in determining whether files should be opened in tabs or separate windows.
+  * Added lots of cmake patterns for syntax highlighting.
+  * Disabled tab DND without X11, mainly because Wayland still has a serious problem with QDrag. 
+
+-------------------------------------------------------------------
+Mon Feb 25 09:58:56 UTC 2019 - mvetter@suse.com
+
+- Update to 0.9.4:
+  * Don't toggle the insert mode when a modifier is also pressed.
+  * BSD issues are fixed by Brian Callahan (ibara at GitHub).
+  * Added YAML and Fountain to syntax highlighting.
+  * Don't consider empty shortcuts ambiguous.
+  * Fixed an issue about savable docs in Preferences dialog.
+
+-------------------------------------------------------------------
+Tue Feb  5 07:07:24 UTC 2019 - mvetter@suse.com
+
+- Update to 0.9.3:
+  * Added support for highlighting C++11 raw string literals.
+  * Added reStructuredText to syntax highlighting.
+  * Fixes for custom shortcuts with different languages/platforms.
+  * Set the size of default font to that of system font.
+  * Supported optional translations for Help.
+  * Added a (transient) warning bar to root windows.
+  * Fixed small mistakes in the code and dropped the obsolete class QDesktopWidget.
+  * Do not open non-text files by default (because they may take a lot of CPU time -- can be changed in Preferences).
+
+-------------------------------------------------------------------
+Sun Dec 16 02:59:06 UTC 2018 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.2:
+  * Fixed the extra CPU time taken by bracket matching.
+  * Fixed some typos (thanks to flopp at GitHub).
+  * Ensure that the tab drag source is one of our windows (and not a root instance, for example).
+  * Use our standard URL pattern with changelog too.
+  * Added an option to remember the window position (disabled by default).
+  * Show status bar by default (for users to find advanced options more easily).
+  * When copying the file path to the clipboard, include its name too.
+  * Added actions for sorting selected lines (to the right-click menu).
+  * Removed an old workaround for KDE's clipboard because it isn't needed anymore and can cause a delay on startup
+
+-------------------------------------------------------------------
+Mon Oct  8 08:20:00 UTC 2018 - mvetter@suse.com
+
+- Update to 0.9.1:
+  * The window title is set to the whole file path, including the file name.
+  * The line number strip is enhanced.
+  * Tab switch shortcuts can be customized now.
+  * The warning bar is shown as a translucent layer over the tab widget with animation.
+  * A shortcut is added for activating the last active tab.
+  * "gio" is tried first for opening hyperlinks because Qt may resort to "xdg-open", which isn't always a good choice.
+  * A workaround is added for a new bug in KDE's file dialog.
+  * Compilation without X11 is possible with qmake WITHOUT_X11=YES. Also, Haiku OS is supported.
+  * Several fixes and improvements.
+
+-------------------------------------------------------------------
+Wed Aug  8 16:59:26 UTC 2018 - jengelh@inai.de
+
+- Ensure neutrality of descriptions.
+
+-------------------------------------------------------------------
+Tue May 22 09:40:32 UTC 2018 - mvetter@suse.com
+
+- Update to 0.9:
+  * Added an option for the text tab size in terms of spaces.
+  * Added "To Upper Case" and "To Lower Case".
+  * Disable the language button for documents that are made uneditable because of their contents.
+  * Open the files of the last window instead of starting with all recent files (if the related option is checked).
+  * Restore cursor positions with last window files too.
+  * Remove the lock file only at the end, when the config is written, because writing may take some time with cursor positions.
+  * Before focusing an existing side-pane with its toggling shortcut, ensure its visibility.
+  * Added the overwrite mode, which is toggled by pressing the Insert key.
+  * Added an option for saving unmodified files.
+  * Added an option for closing a window on closing its last tab.
+  * Fixed a regression in recognizing special files (started when QRegExp was replaced by QRegularExpression).
+  * Added Ctrl+Up/Down for scrolling by one line without moving the cursor.
+  * Added Meta+Up/Down for going to the same position in the previous/next unwrapped line.
+  * Added shortcuts (Ctrl+Shift+Up/Down) for moving lines.
+  * Added a history popup to the search bar.
+  * Set the window title to the path.
+  * Also open paths that point to nonexistent files (to save them later).
+  * Don't show the warning bar when there's a modal dialog.
+  * Added command-line options for cursor position.
+  * Deal with relative paths completely.
+  * Added an option to not permit opening of non-text files.
+  * Added the number of pages to tab/side-item context menu.
+  * Made Ctrl+Tab, Ctrl+Meta+Tab and Shift+Tab really align the text.
+  * Covered regex inside QML too (with syntax highlighting).
+  * Never remove trailing spaces with diff files.
+  * Made highlighting of JavaScript regex faster and fixed some bugs in it.
+  * Added an option for thick text cursor.
+  * Made the current line number bold and added a marker for wrapped lines. Also made the line highlighter much milder.
+  * Center the current line on clicking inside the line number strip.
+  * Toggle side-pane by middle clicking an empty space inside it or inside the tab-bar.
+  * Put the line number strip on the right with an RTL layout.
+
+-------------------------------------------------------------------
+Sun May 20 09:57:55 UTC 2018 - mvetter@suse.com
+
+- Run spec-cleaner
+- Delete _service file
+- Remove desktop and icon cache update
+- Update to 0.8:
+  * Close the warning-bar when the text is scrolled.
+  * Fixed highlighting and markdown.
+  * Added the symlink "fpad".
+  * Added an options for auto-saving of opened files (disabled by default).
+  * Add a new tab on double clicking an empty space of the tabbar.
+  * An option for showing the cursor position on the statusbar (disabled by default).
+  * Support syntax override (disabled by default).
+  * An option for vertical position lines.
+  * Open hyperlinks of highlighted texts by left-clikcing them while the Ctrl key is pressed and also with an item in the context menu.
+  * Added an option for removing trailing spaces on saving (Markdown's trailing double spaces are taken care of).
+  * Added Undo/Redo to custom shortcuts, although their default shortcuts are hard-coded in Qt.
+  * Show whitespaces or line/document ends with normal texts too (by using the URL syntax highlighting).
+  * Never show the horizontal scrollbar on wrapping (when whitespaces are visible).
+  * Handle "&quot;", "&gt;" and "&lt;", especially in XML.
+  * Support hard-coded symbolic icons that change their colors appropriately (adapted from Cantata).
+  * Bug fixes
+
+-------------------------------------------------------------------
+Tue Jan 30 16:07:24 UTC 2018 - and.november@opensuse.org
+
+- update to version 0.7
+
+-------------------------------------------------------------------
+Tue Jan  2 20:30:41 UTC 2018 - and.november@opensuse.org
+
+- update to version 0.6.3
+
+-------------------------------------------------------------------
+Sun Apr 16 04:22:05 UTC 2017 - and.november@opensuse.org
+
+- initial package (version 0.5.8) for openSUSE

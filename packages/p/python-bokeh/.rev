@@ -1,0 +1,402 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>18a7424dfc767e2b2c12384f2bbeac7d</srcmd5>
+    <version>0.12.6</version>
+    <time>1504521051</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by python-holoviews</comment>
+    <requestid>519704</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>fd4308bf03954e755da72d13e2bd406d</srcmd5>
+    <version>0.12.9</version>
+    <time>1507570866</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530453</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3cbeadfa7b1838e2a8aa81abf43d20ce</srcmd5>
+    <version>0.12.10</version>
+    <time>1510150196</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>536028</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0885962f1ee7d3232a6f2d67c8fbedc5</srcmd5>
+    <version>0.12.11</version>
+    <time>1512734290</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>554726</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>06b93898c0bed9cbe7bb13beccbea6e6</srcmd5>
+    <version>0.12.13</version>
+    <time>1513014996</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555535</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b83d305d412c564c3730c2e44a27779e</srcmd5>
+    <version>0.12.14</version>
+    <time>1518597963</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>575872</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>1c2402c948d0bd903612ede2ec58dd2a</srcmd5>
+    <version>0.12.14</version>
+    <time>1522062429</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>590699</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8ebe006c3d2929bd6ecd8e01b73eaa7a</srcmd5>
+    <version>0.12.15</version>
+    <time>1523616579</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>595423</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f123a272bd4cc58771029938f2e6c99a</srcmd5>
+    <version>0.13.0</version>
+    <time>1530866409</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>620051</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6cd6d802316af6369c09594704d0a6ef</srcmd5>
+    <version>1.0.0</version>
+    <time>1540988461</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>645562</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ab86e0b595120224b73392d0f57e9f1c</srcmd5>
+    <version>1.0.1</version>
+    <time>1541454689</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>645931</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>5e4cea3f969ef7c399ecf75b2a71aeac</srcmd5>
+    <version>1.0.2</version>
+    <time>1543828319</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>653421</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>62ead5e549bc097d91a1b2e2b04ad018</srcmd5>
+    <version>1.0.3</version>
+    <time>1546946951</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>663299</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e8e48adf6f2dcf4c31ab2e7dad4ca657</srcmd5>
+    <version>1.0.4</version>
+    <time>1548064894</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>667293</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>9f963699b7793112d2fcab20b9e88ae5</srcmd5>
+    <version>1.1.0</version>
+    <time>1557263781</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>696881</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>0c16a8f493e1a7794d8aa1d55ed0a997</srcmd5>
+    <version>1.2.0</version>
+    <time>1559375485</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706144</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>66aa27a2684400809c658081f68ce6fe</srcmd5>
+    <version>1.3.0</version>
+    <time>1564302139</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718988</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>46e0ec9cde2b2bcb5e5c238b51b02b08</srcmd5>
+    <version>1.3.4</version>
+    <time>1566463827</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>724170</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a742493060616f8d1a76fd96d3cba915</srcmd5>
+    <version>1.4.0</version>
+    <time>1573422638</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>747197</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>e2ed84d4ec358517d0b649b4c2dd1844</srcmd5>
+    <version>1.4.0</version>
+    <time>1587659909</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build without python2</comment>
+    <requestid>796514</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>6a394dd0272f03fbb72354ad9a564ea6</srcmd5>
+    <version>2.0.2</version>
+    <time>1591654181</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>812622</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>a53049fe1e9194ce4917e660009f960a</srcmd5>
+    <version>2.1.1</version>
+    <time>1594119477</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>816740</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>524c4e55f6b3ad86f2dd1e4166b64dbe</srcmd5>
+    <version>2.2.0</version>
+    <time>1598726116</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>829626</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>3d09dd05e93a1e1d83429b7d6098b822</srcmd5>
+    <version>2.2.1</version>
+    <time>1599343379</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>832065</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>b2cc39e6646fcc9de202ebf51fc1f96e</srcmd5>
+    <version>2.2.2</version>
+    <time>1602762639</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841774</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>488c6bb60470d6c9d544439704920e69</srcmd5>
+    <version>2.2.3</version>
+    <time>1603369529</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>843326</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>17e4ed4cb76ab30b7c6ea3b1b898856b</srcmd5>
+    <version>2.2.3</version>
+    <time>1614001221</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>874196</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>32399e1ac41fd2dce0b4d645fd84be8d</srcmd5>
+    <version>2.3.0</version>
+    <time>1614684743</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>875601</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>b1c83014f2fa36b189fada4954f34bc5</srcmd5>
+    <version>2.3.0</version>
+    <time>1622928710</time>
+    <user>dimstar_suse</user>
+    <comment>- Test suite complete useless.
+</comment>
+    <requestid>897701</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>872b837e6c19a650fc46778eccf489a6</srcmd5>
+    <version>2.4.0.dev1</version>
+    <time>1626557796</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>906059</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>776422234e2d349803d5d47a9405fd30</srcmd5>
+    <version>2.3.3</version>
+    <time>1626887182</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>907358</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>258a1e9227ac5ff3446d9a171055f635</srcmd5>
+    <version>2.4.0</version>
+    <time>1632431047</time>
+    <user>dimstar_suse</user>
+    <comment>- Bokeh requires Python &gt;= 3.7:  disable failing Leap builds
+- Reactivate test suite (at least the unit tests packaged in the
+  sdist) by adding conftest.py from the github archive
+
+- updates-alternatives actions should be in postun, not preun
+
+- Update to version 2.4.0:
+  * Long list, see
+    https://github.com/bokeh/bokeh/blob/2.4.0/CHANGELOG
+- Drop bokeh-pr11218-figure-toolbar-active-properties.patch,
+  upstream PR merged.</comment>
+    <requestid>921137</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>4ba4e2246ede652e24047a9a22335586</srcmd5>
+    <version>2.4.1</version>
+    <time>1634331819</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925198</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>38f1448bc0cc57431734665dd69af5bb</srcmd5>
+    <version>2.4.2</version>
+    <time>1639075557</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>938229</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>6669fa0969caa9a6e986980d3fa9eb14</srcmd5>
+    <version>2.4.3</version>
+    <time>1653907437</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>979712</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>ad472715da82f281a600256e4e04d866</srcmd5>
+    <version>2.4.3</version>
+    <time>1657281762</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>987755</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>82ee6d84c4a8f669c1272b7935dcdfd2</srcmd5>
+    <version>3.0.1</version>
+    <time>1667825521</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1034131</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>82548a57a9e3453e9d48414c1489668a</srcmd5>
+    <version>3.0.2</version>
+    <time>1669040985</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.0.2
+  ## bugfixes
+  * #4930 interaction between tooltips and gridplots
+  * #12429 [component: bokehjs] [BUG] Line selection does not
+    render the unselected end line segments
+  * #12531 [component: bokehjs] [BUG] latex in titles - upright
+    characters that should be italic
+  * #12551 [component: tests] bokehjs' unit tests fail on chromium
+    107
+  * #12554 [component: docs] Custom.js needs update for switcher
+  * #12578 [component: bokehjs] [BUG] gridplot reset button does
+    not reset all figures 
+  * #12585 [component: bokehjs] [BUG] line_policy='none' for
+    HoverTool does not generate any tooltip
+  * #12587 [component: server] [BUG] Don't delete
+    importlib.metadata in __init__.py
+  * #12593 [BUG] Guard numpy.typing.ArrayType with `if
+    TYPE_CHECKING`
+  ## tasks
+  * #12557 [component: docs] Need automation for updating
+    switcher.json
+  * #12560 [FEATURE] remove mock
+  * #12562 [BUG]  Tests: &quot;python&quot; is not a guaranteed executable
+  * #12566 [component: docs] Fix dates and typo in release docs for
+    3.0.0/3.0.1
+  * #12569 [component: build] Add Python 3.11 to CI
+  * #12571 [component: tests] Remove flaky from integration tests
+  * #12573 [component: tests] Add a regression test for issue #4888
+  * #12579 Upgrade to mypy 0.990
+  * #12581 Disable Selenium integration tests for now</comment>
+    <requestid>1036991</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>1b2a4e46b12ec0c35f4c5630cb91873c</srcmd5>
+    <version>3.0.3</version>
+    <time>1672927284</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1056134</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>4e4378a2d2751cf0999386c8ae7bfa7d</srcmd5>
+    <version>3.0.3</version>
+    <time>1684426953</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to default npm</comment>
+    <requestid>1087813</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>9ffef430ef649d8ef9f1ea9cdbddfa9f</srcmd5>
+    <version>3.1.1</version>
+    <time>1685051579</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1089046</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>8b8590d9a25e59210d367fc98ca57cbf</srcmd5>
+    <version>3.2.0</version>
+    <time>1688476952</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1096651</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>791c3e15ea09be6678ada2d33f4d2d83</srcmd5>
+    <version>3.2.2</version>
+    <time>1695209168</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1111933</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>e202aedc6679d1d1241cd596d14c2f23</srcmd5>
+    <version>3.3.0</version>
+    <time>1697231739</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1117666</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>1c639972848f47b4fc56674dc8b85155</srcmd5>
+    <version>3.3.2</version>
+    <time>1702845145</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1133619</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,361 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ddd7953537b803d477f0102b88f85345</srcmd5>
+    <version>3.7.6</version>
+    <time>1508876616</time>
+    <user>dimstar_suse</user>
+    <comment>- Include in Factory (FATE#321718).</comment>
+    <requestid>536010</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2d6ade4eb508e879f2c71159ef544d9f</srcmd5>
+    <version>3.7.6</version>
+    <time>1509461078</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix Requires for HPC build. (forwarded request 537753 from eeich)</comment>
+    <requestid>537754</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>52a6011a35abf9d22d1b4068046811d6</srcmd5>
+    <version>3.7.6</version>
+    <time>1509722925</time>
+    <user>dimstar_suse</user>
+    <comment>- Simplify Group: - do not destinguish between MPI
+  and non-MPI: the IBS check scripts cannot handle
+  this well. (forwarded request 538505 from eeich)</comment>
+    <requestid>538506</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>68430fcece7d8ce1f4bbe2b351c638a2</srcmd5>
+    <version>3.7.6</version>
+    <time>1510578336</time>
+    <user>dimstar_suse</user>
+    <comment>- Add libhdf5/libscalapack*-hpc as Requires to the library package 
+  for HPC. (forwarded request 541147 from eeich)</comment>
+    <requestid>541148</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>6f2230fe840f09829cfebeac0dd518f9</srcmd5>
+    <version>3.7.6</version>
+    <time>1511274793</time>
+    <user>dimstar_suse</user>
+    <comment>- emvironment modules: only set BIN when binary path exists.
+- Fix RPM macro name %hpc_upcase. (forwarded request 542050 from eeich)</comment>
+    <requestid>543900</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>f3025ca354649883dc7058f9adb81709</srcmd5>
+    <version>3.7.6</version>
+    <time>1517932228</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't use baselibs.conf: some dependencies are not available for
+  i586 on Factory.
+
+- The HPC build of petsc depends on openBLAS. OpenBLAS doesn't
+  support s390: skip building on s390 (bsc#1079513). (forwarded request 573245 from eeich)</comment>
+    <requestid>573258</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>1890f0a6b9434e0a86abd03ada5da0f1</srcmd5>
+    <version>3.7.6</version>
+    <time>1519308023</time>
+    <user>dimstar_suse</user>
+    <comment>- Since the OpenBLAS build was fixed, reenable scalapack
+  on s390 (bsc#1079513).
+- Add support for openmpi2 for HPC (FATE#325089).
+- Fix build on ppc64le (bsc#1080380).
+
+- Fix summary in module files (bnc#1080259)</comment>
+    <requestid>574865</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ccf01af5fddee74d1e0f63653331b9b3</srcmd5>
+    <version>3.8.3</version>
+    <time>1519396259</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.8.3:
+  http://www.mcs.anl.gov/petsc/documentation/changes/37.html
+  (FATE#325333). (forwarded request 579204 from eeich)</comment>
+    <requestid>579205</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>098e9217868f668a97dbba86b504eb02</srcmd5>
+    <version>3.8.3</version>
+    <time>1521052643</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't build the serial flavor as the build presently breaks
+  everywhere (bsc#1084677).
+
+- Python-Fix-a-number-of-scripts-to-by-Python-3-compliant.patch:
+  Fix python scripts - convert to Python 3 (bsc#1082209).
+- Restructure package: factor out SAWs stuff. We cannot
+  support this as SAWs itself isn't available for SUSE.
+- Move python files that are not stand-alone out of the
+  bin directory.
+- Fix permissions in bin and other directories.
+- Removed some unwanted scripts:
+  rules - make rules
+  sendToJenkins - this should probably be modified to print an error message
+  uncrustify.cfg - used by 'rules'
+- Removed win32fe: DLLs for Windows
+- Set '-fPIC' on ppc64.</comment>
+    <requestid>585011</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>7efca311c1a8864079dcba5bf5ab9b71</srcmd5>
+    <version>3.8.3</version>
+    <time>1522702156</time>
+    <user>dimstar_suse</user>
+    <comment>- Convert doc package build to noarch. This will hopefully avoid
+  spurious build errors on SLE-12.
+
+- Set '-fPIC' also on aarch64
+
+- Reenable flavor 'serial' to build the doc package only
+  (bsc#1087050).
+  Note: for this flavor nothing else gets built: once the
+  missing dependencies have been fixed, rearrange the 
+  #%if 0%{?makedoc:1} ... %endif.
+
+- use &quot;-fPIC&quot; also on s390, like on ppc64 (bsc#1086008)</comment>
+    <requestid>592908</requestid>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>a27c7942459c1f67f22d9cceb24935fa</srcmd5>
+    <version>3.8.3</version>
+    <time>1524144663</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not require 'Modules' for HPC build: seetings from 
+  /etc/profile.d/lmod.[c]sh will be overwritten by
+  /etc/profile.d/modules.[c]sh installed by Modules
+  (bsc#1089865).</comment>
+    <requestid>597535</requestid>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>1a8b2f8d23bb19d707f82d68dce3a8ed</srcmd5>
+    <version>3.8.3</version>
+    <time>1525210292</time>
+    <user>dimstar_suse</user>
+    <comment>- (Temporarily) disable fpr S390* as a check test for netcdf fails
+  currently on BE (bsc#1091474). (forwarded request 602639 from eeich)</comment>
+    <requestid>602640</requestid>
+  </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>5ad7facc5585b02f4e10e9ad72f3dee9</srcmd5>
+    <version>3.8.3</version>
+    <time>1526488989</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>609067</requestid>
+  </revision>
+  <revision rev="14" vrev="7">
+    <srcmd5>27a325ee7c0ba88d84c4b61356b0ca78</srcmd5>
+    <version>3.8.3</version>
+    <time>1562327322</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>688860</requestid>
+  </revision>
+  <revision rev="15" vrev="8">
+    <srcmd5>40c27e8ce790397e9264f6dab9a5df3c</srcmd5>
+    <version>3.8.3</version>
+    <time>1563701699</time>
+    <user>dimstar_suse</user>
+    <comment>- Upped memory constraints to 6G for non-ppc systems as well,
+  leaving the special ppc treatment in place in case we need to up it
+  some more there.
+
+- update _constraints for PowerPC more than 4G memory
+- Add BuildRequires libopenblas-gnu-hpc &gt;=  0.3.6 for hpc to  avoid
+  to build when openblas library not available.</comment>
+    <requestid>717127</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>2cae563083c21fa0c9c414752735297a</srcmd5>
+    <version>3.11.3</version>
+    <time>1567001011</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725362</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>7207a1d27e0cd77c56c96a197537ac64</srcmd5>
+    <version>3.11.3</version>
+    <time>1569851939</time>
+    <user>dimstar_suse</user>
+    <comment>Add Jira feature ID</comment>
+    <requestid>733697</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>9ffd80bf6a228707082b62a987cd721d</srcmd5>
+    <version>3.11.3</version>
+    <time>1574945478</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>751565</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>de573cb408b25a1743fdc3bbc1e687b4</srcmd5>
+    <version>3.12.2</version>
+    <time>1575464118</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.12.2 (jsc#SLE-8505)
+  * https://www.mcs.anl.gov/petsc/documentation/changes/312.html
+- Remove petsc-3.3-p2-fix-shared-libs-sonames.patch
+  link created directly in %install section
+- Remove petsc-3.3-p2-dont-check-for-option-mistakes.patch
+  not needed.
+- Remove petsc-3.3-fix-error-detection-in-makefile.patch
+  not needed.
+- Add non-HPC build with openmpi3
+- Add HPC builds for gcc8 &amp;amp; gcc 9 (jsc#SLE-7766 &amp;amp; jsc#SLE-8609).
+- Disable openmpi1 builds for SLE/Leap &amp;gt; 15.1.
+- Enable openmpi3 builds for Leap and SLE &amp;gt; 15.1 (jsc#SLE-7773). (forwarded request 753309 from eeich)</comment>
+    <requestid>753898</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>dcfd6b836cafa05d55b3e6d1723155d9</srcmd5>
+    <version>3.12.2</version>
+    <time>1576062782</time>
+    <user>dimstar_suse</user>
+    <comment>- Add HPC builds for gcc8 &amp; gcc 9 (jsc#SLE-7766 &amp; jsc#SLE-8604).</comment>
+    <requestid>755676</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>f8354f9f5b3f231b44054e5d61ffbe07</srcmd5>
+    <version>3.12.2</version>
+    <time>1576189117</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unneeded dependency from HPC devel package.</comment>
+    <requestid>755903</requestid>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>7103de8e861493ba5deefbba1cd7ef56</srcmd5>
+    <version>3.12.2</version>
+    <time>1578606826</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>762495</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>f331f0e83f6abda1699ea4844bef226e</srcmd5>
+    <version>3.14.1</version>
+    <time>1604702722</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>846459</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>4513025d6516bada9d7aec361345c1be</srcmd5>
+    <version>3.14.1</version>
+    <time>1611928646</time>
+    <user>dimstar_suse</user>
+    <comment>- Change 'Requires:' to other HPC packages to %requires_eq to depend
+  on the exact version. This should take care of HPC packages ignoring
+  proper ABI versioning. (forwarded request 867621 from eeich)</comment>
+    <requestid>867657</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>c19617633bb25726b47baed0547494d7</srcmd5>
+    <version>3.14.1</version>
+    <time>1612182537</time>
+    <user>dimstar_suse</user>
+    <comment>
+- Make sure, doc package is built for SLE (bsc#1173269).</comment>
+    <requestid>868292</requestid>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>053d638e208d20700ba9825afd5d64c1</srcmd5>
+    <version>3.14.1</version>
+    <time>1612901765</time>
+    <user>dimstar_suse</user>
+    <comment>- Add build support for gcc10 to HPC build (bsc#1174439).
+- Add openmpi4 flavors. (forwarded request 869850 from eeich)</comment>
+    <requestid>869851</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>5d54e201e3adebef285f9cda4211a4ed</srcmd5>
+    <version>3.14.4</version>
+    <time>1614274205</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>875061</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>82ffb915216b2dd62d8063e04032d939</srcmd5>
+    <version>3.14.5</version>
+    <time>1616680327</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 3.14.5.
+  * Documentation &amp;amp; man page fixes, removal of non-existing functions.
+  * CPARDISO: stick to OpenMPI BLACS when needed
+  * bugfix for MatMatMultSymbolic_MPIAIJ_MPIDense() when Bbn1 = 0.
+    Bb (column block size) zero lead to infinite loop in
+    MatMatMultNumeric_MPIAIJ_MPIDense() with n=0.
+  * petscviewer: fix the fortran bindings of XXXViewFromOptions
+    when called with obj=PETSC_NULL_XXX.
+  * PetscOptionsPrefixPush: Accept numbers if the stack is not
+    empty.
+  * PetscOptionsClearValue: Also clear 'help_intro' slot.
+  * PetscOptionsDestroyDefault: Fix possible NULL-dereference.
+  * PetscOptionsUsed: Fix for case-insensitive string comparison.
+  * Do not use MPI_Bcast() on a single rank - This allows direct
+    reading  of much larger files, in, for example, MatLoad_SeqAIJ_Binary.
+  * PCHPDDM: fix for KSPLSQR.
+  * DMPlexVTKWriteAll_VTU: numerous bugfixes.
+  * MatBAIJ: FIx specialization for size 9. (forwarded request 881044 from eeich)</comment>
+    <requestid>881052</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>2affb1f41427d0c51c9ac6e76b92cb78</srcmd5>
+    <version>3.14.5</version>
+    <time>1645054260</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove dependency on librt for libsuitparse to make the non-HPC
+  build on Factory again. (forwarded request 955472 from eeich)</comment>
+    <requestid>955473</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>438934cffb8d16b869b3dbc5e4bbc286</srcmd5>
+    <version>3.14.5</version>
+    <time>1659470930</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>992073</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>40c2b090617d81f179a8817b08fdada6</srcmd5>
+    <version>3.18.4</version>
+    <time>1676464849</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1065849</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>ff2e6bb66c31110cec928663345e0392</srcmd5>
+    <version>3.18.5</version>
+    <time>1679766920</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1073972</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>41c05b3b7e24caaa3cba8d88e6b3afe8</srcmd5>
+    <version>3.18.5</version>
+    <time>1698170890</time>
+    <user>anag+factory</user>
+    <comment>- Disable HPC flavors on i586
+
+- Drop support for obsolete openmpi[123]
+- Prepare support for openmpi5</comment>
+    <requestid>1119878</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>e602be83867e4371f240d92a82c73315</srcmd5>
+    <version>3.18.5</version>
+    <time>1703527553</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1134959</requestid>
+  </revision>
+</revisionlist>

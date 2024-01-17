@@ -1,0 +1,9 @@
+--- lekha.desktop	2015-08-24 14:51:32.150572164 +0930
++++ lekha.desktop 2015-08-24 14:51:48.409147827 +0930
+@@ -7,6 +7,5 @@
+ Terminal=false
+ Type=Application
+ Categories=Office;Viewer;X-EFL;
+-Actions=Window;Document;
+ StartupWMClass=lekha
+ MimeType=application/pdf;
