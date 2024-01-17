@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan  7 15:53:06 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 0.7:
+  * made autofuzz nondeterministic
+- added library https://gitlab.com/owl-lisp/hex
+- bump OWL dependency ol.c.gz to 0.2.2
+
+-------------------------------------------------------------------
 Tue Jun 20 13:24:55 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Update project url
