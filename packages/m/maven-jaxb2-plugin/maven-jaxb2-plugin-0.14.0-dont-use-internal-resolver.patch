@@ -1,0 +1,67 @@
+--- maven-jaxb2-plugin-0.14.0/plugin-core/pom.xml	2018-05-31 13:32:51.000000000 +0200
++++ maven-jaxb2-plugin-0.14.0/plugin-core/pom.xml	2019-04-10 14:03:17.680190735 +0200
+@@ -23,9 +23,9 @@
+ 			<artifactId>commons-lang3</artifactId>
+ 		</dependency>
+ 		<dependency>
+-			<groupId>com.sun.org.apache.xml.internal</groupId>
+-			<artifactId>resolver</artifactId>
+-			<version>20050927</version>
++			<groupId>xml-resolver</groupId>
++			<artifactId>xml-resolver</artifactId>
++			<version>1.2</version>
+ 		</dependency>
+ 		<dependency>
+ 			<groupId>org.glassfish.jaxb</groupId>
+--- maven-jaxb2-plugin-0.14.0/plugin-core/src/main/java/org/jvnet/jaxb2/maven2/RawXJC2Mojo.java	2018-05-31 13:32:51.000000000 +0200
++++ maven-jaxb2-plugin-0.14.0/plugin-core/src/main/java/org/jvnet/jaxb2/maven2/RawXJC2Mojo.java	2019-04-10 14:10:09.606353246 +0200
+@@ -77,8 +77,8 @@
+ import org.xml.sax.InputSource;
+ import org.xml.sax.SAXException;
+ 
+-import com.sun.org.apache.xml.internal.resolver.CatalogManager;
+-import com.sun.org.apache.xml.internal.resolver.tools.CatalogResolver;
++import org.apache.xml.resolver.CatalogManager;
++import org.apache.xml.resolver.tools.CatalogResolver;
+ import com.sun.xml.txw2.annotation.XmlNamespace;
+ 
+ /**
+--- maven-jaxb2-plugin-0.14.0/plugin-core/src/main/java/org/jvnet/jaxb2/maven2/resolver/tools/ClasspathCatalogResolver.java	2018-05-31 13:32:51.000000000 +0200
++++ maven-jaxb2-plugin-0.14.0/plugin-core/src/main/java/org/jvnet/jaxb2/maven2/resolver/tools/ClasspathCatalogResolver.java	2019-04-10 14:03:17.680190735 +0200
+@@ -5,7 +5,7 @@
+ import java.net.URL;
+ 
+ public class ClasspathCatalogResolver extends
+-		com.sun.org.apache.xml.internal.resolver.tools.CatalogResolver {
++		org.apache.xml.resolver.tools.CatalogResolver {
+ 
+ 	public static final String URI_SCHEME_CLASSPATH = "classpath";
+ 
+--- maven-jaxb2-plugin-0.14.0/plugin-core/src/main/java/org/jvnet/jaxb2/maven2/resolver/tools/MavenCatalogResolver.java	2018-05-31 13:32:51.000000000 +0200
++++ maven-jaxb2-plugin-0.14.0/plugin-core/src/main/java/org/jvnet/jaxb2/maven2/resolver/tools/MavenCatalogResolver.java	2019-04-10 14:03:17.680190735 +0200
+@@ -10,10 +10,10 @@
+ import org.jvnet.jaxb2.maven2.DependencyResourceResolver;
+ import org.jvnet.jaxb2.maven2.plugin.logging.NullLog;
+ 
+-import com.sun.org.apache.xml.internal.resolver.CatalogManager;
++import org.apache.xml.resolver.CatalogManager;
+ 
+ public class MavenCatalogResolver extends
+-		com.sun.org.apache.xml.internal.resolver.tools.CatalogResolver {
++		org.apache.xml.resolver.tools.CatalogResolver {
+ 
+ 	public static final String URI_SCHEME_MAVEN = "maven";
+ 	private final DependencyResourceResolver dependencyResourceResolver;
+--- maven-jaxb2-plugin-0.14.0/plugin-core/src/test/java/org/jvnet/jaxb2/maven2/resolver/tools/tests/MavenCatalogResolverTest.java	2018-05-31 13:32:51.000000000 +0200
++++ maven-jaxb2-plugin-0.14.0/plugin-core/src/test/java/org/jvnet/jaxb2/maven2/resolver/tools/tests/MavenCatalogResolverTest.java	2019-04-10 14:03:17.680190735 +0200
+@@ -7,8 +7,8 @@
+ import org.junit.Test;
+ import org.xml.sax.InputSource;
+ 
+-import com.sun.org.apache.xml.internal.resolver.CatalogManager;
+-import com.sun.org.apache.xml.internal.resolver.tools.CatalogResolver;
++import org.apache.xml.resolver.CatalogManager;
++import org.apache.xml.resolver.tools.CatalogResolver;
+ 
+ public class MavenCatalogResolverTest {
+ 

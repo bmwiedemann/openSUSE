@@ -1,0 +1,432 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5f8095a352d40fb63a747333bd5ab6a1</srcmd5>
+    <version>0.3</version>
+    <time>1551024690</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>671005</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>fca3640c25a380e9f7759cfe60628c79</srcmd5>
+    <version>0.4.1</version>
+    <time>1551455252</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.1:
+  * rootston: Make add_{switch,binding}_config static
+  * clang compile fix#1572[1]
+
+- Update to 0.4:
+  * xwm: stack below on map
+  * drm: do not modeset to current mode
+  * wlr_output: do not modeset to current mode
+  * backend/drm: fix modeset on drm fd resume
+  * Make popup inert when destroyed.
+  * Add build-*/ to gitignore.
+  * Revert &quot;drm: do not modeset to current mode&quot;
+  * Add a wlr_output_set_subpixel()
+  * data-control: add primary selection support
+  * Prevent NULL dereference in tablet_tool handler
+  * backend/drm: fix memory leak in realloc crtcs
+  * backend/drm: Unset cursor on cleanup
+  * Post protocol error on invalid wl_surface scale
+  * rootston: don't try to maximize fullscreen surfaces
+  * rootston: surface_at: check for fullscreen surfaces in between TOP and OVERLAY layers
+  * xwm: Add _NET_CLIENT_LIST support
+  * Allow cursor render surface to be used as fb
+  * Copy cursor surface to secondary gpu if necessary
+  * Add workaround for hardware cursors on nouveau
+  * data-device: destroy previous source when starting drag
+  * xdg-shell: destroy child popups on unmap
+  * Deprecate old protocols
+  * primary-selection-v1: copy from gtk-primary-selection
+  * surface: error out on invalid transform
+  * subsurface: add map/unmap events</comment>
+    <requestid>680033</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b0aabf28b8472adc5f576648216065c8</srcmd5>
+    <version>0.5.0</version>
+    <time>1552464929</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.0:
+  * DISPLAY is no longer set automatically for Xwayland
+  * wlr_output_layout_get_box: handle empty layout
+  * Unbreak build with '-Wstrict-prototypes'
+  * rootston/view: Remove redundant declaration in the same file
+  * wlr_xdg_shell: Remove redundant declaration in the same file
+  * Remove glEGLImageTargetTexture2DOES
+  * seat: fix remaining wlr_button_state enum rename
+  * xwm: use min size as base size hint if it is missing and vice versa
+  * xwm: fix typos in WM_NORMAL_HINTS handling
+  * backend/session: Allow setting a custom tty via WLR_DIRECT_TTY
+  * backend/drm: Don't fail on failing to find overlay format
+  * seat: guard against button count corruption
+  * meson: enable more compiler warnings
+  * seat: use wlr_button_state enum instead of uint32_t
+  * seat: only store serial if pressing a button
+  * tinywl: send pointer frame events
+  * backend/session: add noop session
+  * rootston: refactor rendering
+  * rootston: fix rotated views rendering
+  * rootston: fix Xwayland children rendering when fullscreen
+  * rootston: split rendering code into render.c
+  * rootston: fix input events for rotated views
+  * xwayland: don't set DISPLAY
+  * seat: add debug logs when validating grab serials
+  * backend/session: open TTY with O_CLOEXEC for direct session
+  * xwayland: set CLOEXEC on /dev/null FD
+- Compile with -Wno-redundant-decls
+  See: https://gitlab.freedesktop.org/wayland/wayland/issues/82
+</comment>
+    <requestid>684440</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>20a0b853b6cd1337bbf8a954ccabcac6</srcmd5>
+    <version>0.6.0</version>
+    <time>1559643274</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.0:
+  * We have removed the long-deprecated wl_shell implementation from wlroots.
+  * output: refactor frame submission API
+  * output: remove lx, ly
+  * Rename lid_switch to switch_device to disambiguate lid and tablet mode switches
+  * Add FreeRDP backend for remote desktop support
+- Remove wlroots-0.3-libinput-include.patch: not needed anymore</comment>
+    <requestid>707383</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b4acc29f187a4d46d41e51c7e2ca8e0f</srcmd5>
+    <version>0.7.0</version>
+    <time>1566912390</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.0:
+  * backend: touch: Assign good ids to single touch devices
+  * backend: touch: Fixup incomplete patch for single touch devices.
+  * render/drm: keep old drm_format if realloc fails
+  * xcursor: avoid leak and loss of all cursors if cursors realloc fails
+  * Fix memory leak
+  * Simplify check
+  * wlr_surface: condition is always false
+  * xdg_shell: remove variable self-assignment
+  * backend/session: non-void function should return a value
+  * backend/drm: use UINT64_C for uint64_t literals
+  * Avoid loss of a fractional part
+  * backend/wayland: check if zxdg_toplevel_decoration_v1 is not NULL
+  * xwayland: prevent possible array overrun
+  * examples: remove duplicated condition
+  * Use a set to track pointer button state.
+  * session/logind: keep active for pause_device gone
+  * zwp_virtual-keyboard: fix mmap error handling
+  * wlr_xdg_toplevel: reparent on parent unmap
+  * wlr-layer-shell-v1: destroy xdg popups on unmap
+  * x11: Send a frame event on the pointer after button events
+  * virtual_keyboard: Require keymap before accepting keycodes
+  * Remove rootston
+  * Add libinput-1.14 support
+  * Revert &quot;render/drm: keep old drm_format if realloc fails&quot;
+  * Add _incr_version to contrib/
+  * Support pointer-gestures on Wayland backend
+  * wlr_seat_touch: Don't destroy touch point with surface
+  * layer-shell: Remove unused event source
+  * layer-shell: Reject requests on gone surfaces</comment>
+    <requestid>726417</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2e4244b4c695ac6363cfb0f79c013968</srcmd5>
+    <version>0.9.1</version>
+    <time>1579557344</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>765771</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a95fc2d684cbf0c18290dff255440b9f</srcmd5>
+    <version>0.10.0</version>
+    <time>1579791295</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.10.0:
+  * The RDP backend has been removed entirely in favor of solutions
+    like wayvnc
+  * Code cleanups and bug fixes</comment>
+    <requestid>766500</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4fbcc161cf3eecdc906d24d07c6d6dc1</srcmd5>
+    <version>0.10.1</version>
+    <time>1583949141</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.10.1:
+  * xdg-shell: fix popups rendered outside of the screen
+  * meson: Fix protocol includes for compositor examples
+  * examples: Fix compositor-examples
+  * xwayland: ignore pointer focus changes</comment>
+    <requestid>783681</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>e1d252af04147c7e4bc8c8f61b15d498</srcmd5>
+    <version>0.10.1</version>
+    <time>1584050781</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>784165</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>6678232de7b9436d0dffe021ec8c8baa</srcmd5>
+    <version>0.10.1</version>
+    <time>1591653918</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>812479</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>693dfaeccec13b872fb53bd77a3839a7</srcmd5>
+    <version>0.11.0</version>
+    <time>1594894748</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.11.0:
+  * build: replace version with soversion (#2005)
+  * Fix wl_output_transform rotation direction, and composition (#2023)
+  * backend/drm: add support for custom modes (#1881)
+  * Introduce wlr_client_buffer (#2043)
+  * Augment wlr_buffer to support swapchains (#2044)
+  * output: remove wlr_output_impl.schedule_frame (#2046)
+  * output: replace wlr_output.damage with a damage event (#2065)
+  * Implement the viewporter protocol (#2092)
+  * output: introduce wlr_output_test (#2097)
+  * output: fix blurred hw cursors with fractional scaling (#2107)
+  * Texture improvements (#2139)
+  * xwayland: split server (#2175)
+  * Make wlr_xcursor_manager_load() return a bool (#2195)
+  * output: make wlr_output_set_gamma atomic (#2196)
+  * Allow keyboard and pointer grabs to hook clear_focus() (#2217)
+  * backend/drm: atomic improvements (#2238)
+  * render: choose DMA-BUF texture target via eglQueryDmaBufModifiersEXT (#2255)
+  * output: fix dangling renderer context after wlr_output_preferred_read_format (#2292)
+  * layer-shell: remove unused surface list (#2309)
+  * For details see: https://github.com/swaywm/wlroots/releases/tag/0.11.0
+- Remove 0001-Declare-wlr_seat-globals-as-extern.patch: in new release
+- Remove viewport-implementation.patch: in new release
+- Set -Dlogind-provider=systemd
+
+- Add viewport-implementation.patch:
+  To be able to compile sway 1.5 RC1 which depends on unreleased
+  wlroots</comment>
+    <requestid>821251</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e961ac355e7b02480bd9f53e5e8bd02a</srcmd5>
+    <version>0.12.0</version>
+    <time>1605124005</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12.0:
+  breaking changes:
+  * render/gles2: remove gles2_procs global (#2351)
+    The wlr_gles2_texture_from_* family of functions are no longer
+    public API.
+  * Remove xdg-shell-unstable-v6 support (#2391)
+    wlr_xdg_shell_v6 has been dropped and is superseded by wlr_xdg_shell.
+  * output: fix blurred hw cursors with fractional scaling (#2107)
+    For backends: wlr_output_impl.set_cursor now takes a float scale
+    instead of an int32_t.
+  * Introduce wlr_output_event_commit (#2315)
+    The wlr_output.events.commit event now has a data argument of
+    type struct wlr_output_event_commit * instead of struct wlr_output *.
+  * For details see: https://github.com/swaywm/wlroots/releases/tag/0.12.0</comment>
+    <requestid>847692</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>49f26ad2b40b9eac3d7a0b9c0303588c</srcmd5>
+    <version>0.13.0</version>
+    <time>1617910350</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 0.13.0:
+  * Replace wlr_key_state with wl_keyboard_key_state (#2446[1]):
+    enum wlr_key_state has been replaced with enum wl_keyboard_key_state
+  * Use uint32_t in wlr_renderer_begin signature (#2433[2])
+  * Remove unneeded includes from wlr_input_device.h (#2470[3])
+  * Renderer v6, incremental version (#2240[4]): some implicit assumptions about
+    wlr_renderer's EGL context no longer hold true. Compositors not using EGL
+    directly shouldn't be affected.
+    + wlroots' framebuffer no longer is the EGL default framebuffer
+    + wlroots' framebuffer no longer has a depth attachment
+  * Remove wlr_create_renderer_func_t (#2561[5])
+    + wlr_backend_autocreate, wlr_drm_backend_create, wlr_headless_backend_create,
+      wlr_wl_backend_create, wlr_x11_backend_create no longer take a
+      wlr_renderer_create_func_t parameter
+    +The wlr_renderer_create_func_t type has been removed
+  * backend/noop: listen to display destroy and destroy the backend (#2583[6]):
+    the noop backend should no longer be manually destroyed after the wl_display
+  * xdg shell: remove wlr_xdg_surface_for_each_popup (#2610[7])
+    wlr_xdg_surface_for_each_popup has been removed, use
+    wlr_xdg_surface_for_each_popup_surface instead.
+  * layer shell: rename popup iterator for consistency (#2617[8]):
+    wlr_layer_surface_v1_for_each_popup has been renamed to
+    wlr_layer_surface_v1_for_each_popup_surface.
+  * Keyboard interactivity options (#2555[9]):
+    wlr_layer_surface_v1_state.keyboard_interactivity has now the type
+    enum zwlr_layer_surface_v1_keyboard_interactivity to reflect protocol changes.
+  * output: remove scale/transform events (#2631[10]): the scale and transform
+    output events have been removed, compositors should use the commit event instead.
+  * output: send commit event after pending state is cleared (#2630[11]):
+    compositors can no longer read the to-be-committed state from wlr_output.pending in</comment>
+    <requestid>883781</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>3da2b4c464fb5accca91f0aa041df4af</srcmd5>
+    <version>0.13.0</version>
+    <time>1624136682</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>900940</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3259f91d3bc2d57b0b65d7f012399c2d</srcmd5>
+    <version>0.14.0</version>
+    <time>1624626087</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>902217</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>0fd9936e54a6699b495f223383e4e907</srcmd5>
+    <version>0.14.1</version>
+    <time>1625868029</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.14.1:
+  * surface: accept commits with buffer size not divisible by scale
+  * buffer: make enum wlr_buffer_cap public
+  * surface: allow locking pending state in commit handler
+  * Revert &quot;backend/drm: populate cursor plane's current_fb&quot;
+  * backend/drm: don't clear pending cursor FB on failed commit
+  * output: detach buffer from renderer before commit
+  * output-damage: fix output swapchain handling
+  * tablet-v2: fix pad and tool object versions
+  * backend/drm: force linear layout for multi-GPU buffers</comment>
+    <requestid>905285</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>21b6acc5ee7458ce0c8d8be446ad6761</srcmd5>
+    <version>0.14.1</version>
+    <time>1638831590</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>935934</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>82b9e2ab75831ea8edd76787866cda9e</srcmd5>
+    <version>0.14.1</version>
+    <time>1642548927</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove libcap build option. It's not used since 0.11.0:
+  https://github.com/swaywm/wlroots/pull/2140
+- Fix x11 backend option: x11_backend is actually x11-backend</comment>
+    <requestid>947258</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>79a73319f7b91609e7df178907dc44a5</srcmd5>
+    <version>0.15.0</version>
+    <time>1643486364</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>949720</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>f70f8db6205958776c166b648392fd4c</srcmd5>
+    <version>0.15.1</version>
+    <time>1645561084</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>956559</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>71639b4fb50ce5ec139b4bf7fb376f65</srcmd5>
+    <version>0.15.1</version>
+    <time>1657712732</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>988905</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>ad4cdb276da23aac6f3f0923f06a149c</srcmd5>
+    <version>0.16.0</version>
+    <time>1668432544</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1035598</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>b16f94da46da98663139d640a5bca474</srcmd5>
+    <version>0.16.0</version>
+    <time>1669983176</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1039311</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>151aa1177643d81f01d568316808a4e9</srcmd5>
+    <version>0.16.1</version>
+    <time>1672221270</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1045488</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>28227c7bf197221cb39731cfc7f7a063</srcmd5>
+    <version>0.16.2</version>
+    <time>1676149075</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1064383</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>6c3b75c509506e060137e89cf565f292</srcmd5>
+    <version>0.16.2</version>
+    <time>1684162486</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1087218</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>4ef88822a45c20bc8b2a208b5532d6f8</srcmd5>
+    <version>0.17.0</version>
+    <time>1703024196</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1133990</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>7f888a62fafad1dcf43226780b8e8ab6</srcmd5>
+    <version>0.17.0</version>
+    <time>1703198301</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1134407</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>ab8ff712c6308730d62a99ed48b6f142</srcmd5>
+    <version>0.17.1</version>
+    <time>1704281251</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.17.1:
+  * backend/x11: don't send ConfigureRequest with the same size
+  * backend/x11: check buffer format in output_test()
+  * tinywl: fix wlroots dependency constraint in Makefile
+  * viewporter: rename state var in viewport_handle_surface_commit()
+  * viewporter: listen to client_commit
+  * viewporter: fix src buffer bounds check
+  * render/egl: fallback to GBM FD if EGLDevice is not available
+  * render: disable linux-dmabuf without DRM FD
+  * cursor: send surface scale events
+  * cursor: fix initial cursor position for new outputs
+  * xcursor: fix duplicate cursor check check in load_callback()
+  * input-method-v2: drop unnecessary variable and cast
+  * output-layout: fix missing global for outputs with a custom mode
+  * build: bump vesion to 0.17.1
+  * types/output: emit destroy event before destroying global
+  * input-method-v2: free current strings on commit
+  * input-method-v2: validate commit serial
+</comment>
+    <requestid>1135923</requestid>
+  </revision>
+</revisionlist>

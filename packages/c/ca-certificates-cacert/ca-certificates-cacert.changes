@@ -1,0 +1,54 @@
+-------------------------------------------------------------------
+Tue Jun  7 12:19:46 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- remove CAcert.pem (md5 based, super outdated)
+- added CAcert_class1.pem (new class1 cert)
+
+-------------------------------------------------------------------
+Sun May 23 15:18:32 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Update class3.crt to the new one expiring 2031 again
+
+-------------------------------------------------------------------
+Sat May 22 11:15:34 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- spec-cleaner run (bsc#1186362)
+
+-------------------------------------------------------------------
+Thu May 20 21:35:37 UTC 2021 - Christian Boltz <suse-beta@cboltz.de>
+
+- update Class 3 certificate from https://www.cacert.org/class3.crt
+  (the old one expired today)
+
+-------------------------------------------------------------------
+Sun Jan  8 07:44:41 UTC 2017 - mpluskal@suse.com
+
+- Use urls for sources
+- Simplify spec file
+
+-------------------------------------------------------------------
+Wed Jul 30 12:00:19 UTC 2014 - meissner@suse.com
+
+- replaced the "Class 3 PKI Key" by the current version. Changes its
+  signature algorithm from RSA-MD5 to RSA-SHA256. (bnc#868884)
+
+-------------------------------------------------------------------
+Fri Jun 21 13:00:14 UTC 2013 - lnussel@suse.de
+
+- use correct 'anchors' subdirectory
+
+-------------------------------------------------------------------
+Thu Jun 20 08:31:44 UTC 2013 - lnussel@suse.de
+
+- adjust to new filesytem location
+
+-------------------------------------------------------------------
+Thu May 10 09:10:03 UTC 2012 - lnussel@suse.de
+
+- include root distribution license (bnc#761554)
+
+-------------------------------------------------------------------
+Wed Mar 24 13:46:27 UTC 2010 - lnussel@suse.de
+
+- new package
+

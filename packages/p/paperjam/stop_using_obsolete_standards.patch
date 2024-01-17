@@ -1,0 +1,22 @@
+Index: paperjam-1.1.1/Makefile
+===================================================================
+--- paperjam-1.1.1.orig/Makefile
++++ paperjam-1.1.1/Makefile
+@@ -3,12 +3,12 @@ YEAR=2020
+ BUILD_DATE:=$(shell if [ -e .git ] ; then git log -1 --format=%cs ; else date -u -r NEWS '+%Y-%m-%d' 2>/dev/null || date '+%Y-%m-%d' ; fi)
+ BUILD_COMMIT:=$(shell if git rev-parse >/dev/null 2>/dev/null ; then git describe --always --tags ; else echo '<unknown>' ; fi)
+ 
+-DESTDIR=
+-PREFIX=/usr/local
+-BINDIR=$(PREFIX)/bin
+-MANDIR=$(PREFIX)/share/man
++DESTDIR?=
++PREFIX?=/usr/local
++BINDIR?=$(PREFIX)/bin
++MANDIR?=$(PREFIX)/share/man
+ 
+-CXXFLAGS=-O2 -Wall -Wextra -Wno-parentheses -std=gnu++11 -g
++CXXFLAGS?=-O2 -Wall -Wextra -Wno-parentheses -g
+ 
+ all: paperjam paperjam.1 paperjam.1.html
+ 

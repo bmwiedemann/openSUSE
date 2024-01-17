@@ -1,0 +1,6 @@
+<package name="mg" project="openSUSE:Factory">
+  <title>mg</title>
+  <description>Mg is a Micro Emacs clone created in 1987, based on the original MicroEMACS v30 released by Dave Conroy in 1985. The name, &quot;Micro GNU Emacs&quot;, was disputed early on by the FSF, so today it simply goes by mg. This software is fully free and in the public domain.</description>
+  <devel project="editors" package="mg"/>
+  <url>https://github.com/troglobit/mg</url>
+</package>

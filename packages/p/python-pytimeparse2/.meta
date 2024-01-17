@@ -1,0 +1,5 @@
+<package name="python-pytimeparse2" project="openSUSE:Factory">
+  <title>python-pytimeparse2</title>
+  <description>This is a pytimeparse based project with the aim of optimizing functionality and providing stable support.</description>
+  <devel project="devel:languages:python" package="python-pytimeparse2"/>
+</package>

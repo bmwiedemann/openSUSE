@@ -1,0 +1,4 @@
+# This is not a devel package
+addFilter("devel-file-in-non-devel-package")
+# This is not fixable look yet
+addFilter("binary-or-shlib-calls-gethostbyname")

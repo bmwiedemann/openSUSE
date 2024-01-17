@@ -1,0 +1,24 @@
+Index: libavc1394-0.5.4/librom1394/Makefile.am
+===================================================================
+--- libavc1394-0.5.4.orig/librom1394/Makefile.am
++++ libavc1394-0.5.4/librom1394/Makefile.am
+@@ -1,6 +1,6 @@
+ MAINTAINERCLEANFILES = Makefile.in
+ lib_LTLIBRARIES = librom1394.la
+-librom1394_la_LDFLAGS = @LIBRAW1394_LIBS@ \
++librom1394_la_LDFLAGS = @LIBRAW1394_LIBS@ -export-symbols-regex '^rom1394_' \
+ 	-version-info @lt_major@:@lt_revision@:@lt_age@  -lm
+ librom1394_la_LIBADD = $(top_builddir)/common/raw1394util.lo
+ librom1394_la_SOURCES = \
+Index: libavc1394-0.5.4/libavc1394/Makefile.am
+===================================================================
+--- libavc1394-0.5.4.orig/libavc1394/Makefile.am
++++ libavc1394-0.5.4/libavc1394/Makefile.am
+@@ -1,6 +1,6 @@
+ MAINTAINERCLEANFILES = Makefile.in
+ lib_LTLIBRARIES = libavc1394.la
+-libavc1394_la_LDFLAGS = @LIBRAW1394_LIBS@ \
++libavc1394_la_LDFLAGS = @LIBRAW1394_LIBS@ -export-symbols-regex '^avc1394_' \
+ 	-version-info @lt_major@:@lt_revision@:@lt_age@ 
+ libavc1394_la_LIBADD = $(top_builddir)/common/raw1394util.lo 
+ libavc1394_la_SOURCES = \

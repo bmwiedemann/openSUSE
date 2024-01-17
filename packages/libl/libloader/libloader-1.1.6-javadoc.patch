@@ -1,0 +1,12 @@
+Index: libloader-1.1.6/common_build.xml
+===================================================================
+--- libloader-1.1.6.orig/common_build.xml
++++ libloader-1.1.6/common_build.xml
+@@ -1353,6 +1353,7 @@ TYPICAL TARGET SEQUENCE
+              nodeprecatedlist="false"
+              nodeprecated="false"
+              packagenames="${javadoc.packagenames}"
++			 excludepackagenames="org.pentaho.reporting.libraries.resourceloader.modules.cache.ehcache,org.pentaho.reporting.libraries.resourceloader.modules.factory.svg,org.pentaho.reporting.libraries.resourceloader.modules.factory.wmf"
+              sourcepath="${src.dir}"
+              doctitle="${impl.title} documentation">
+       <link href="http://java.sun.com/j2se/${javac.source}.0/docs/api/" />

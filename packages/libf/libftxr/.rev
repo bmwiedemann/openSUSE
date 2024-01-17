@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>13540abfdca05cf10d5a4ff77034b212</srcmd5>
+    <version>20210415</version>
+    <time>1623443442</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>899368</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9f7ca410727424dbc1e6509dfb7cecd6</srcmd5>
+    <version>20220118</version>
+    <time>1642633942</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20220118</comment>
+    <requestid>947382</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>47b05386358c811f5903c2da30d93a3d</srcmd5>
+    <version>20220118</version>
+    <time>1660051722</time>
+    <user>dimstar_suse</user>
+    <comment>- Add forced symvers</comment>
+    <requestid>994000</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>6e0a769d22e8e9efbcd04f923dd75a5d</srcmd5>
+    <version>20220118</version>
+    <time>1669629985</time>
+    <user>dimstar_suse</user>
+    <comment>delete system-libs.patch</comment>
+    <requestid>1038471</requestid>
+  </revision>
+</revisionlist>

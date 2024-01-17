@@ -1,0 +1,14 @@
+Index: setup.cfg
+===================================================================
+--- setup.cfg.orig
++++ setup.cfg
+@@ -21,9 +21,6 @@ show-source = true
+ statistics = true
+ max-line-length = 128
+ 
+-[tool:pytest]
+-addopts = --cov=sshuttle --cov-branch --cov-report=term-missing
+-
+ [egg_info]
+ tag_build = 
+ tag_date = 0

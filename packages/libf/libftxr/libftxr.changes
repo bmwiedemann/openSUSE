@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Sat Nov 26 16:43:24 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Delete system-libs.patch (not needed - system libs are
+  autodetected)
+
+-------------------------------------------------------------------
+Mon Aug  8 11:37:44 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Add forced symvers
+
+-------------------------------------------------------------------
+Wed Jan 19 10:31:43 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20220118
+  * No changes, version bump only.
+
+-------------------------------------------------------------------
+Sun May 16 11:32:34 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Initial package for build.opensuse.org
+  (version 20210415/commit 51b08964)
+- Add system-libs.patch

@@ -1,0 +1,22 @@
+The test suite does not differentiate between stdout and stderr. When
+messages are printed to both, the order in which they will reach us
+is apparently no guaranteed. Ideally this would be deterministic, but
+until then, I don't want to waste Build Service resources with
+useless rebuilds, so let's just test stdout and stderr separately.
+---
+ test/faildiff.test |    3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+--- a/test/faildiff.test
++++ b/test/faildiff.test
+@@ -27,8 +27,9 @@ What happens on binary files?
+ 	> File test.bin added to patch %{P}test.diff
+ 
+ 	$ printf "\\003\\000\\001" > test.bin
+-	$ quilt diff -pab --no-index
++	$ quilt diff -pab --no-index 2>/dev/null
+ 	>~ (Files|Binary files) a/test\.bin and b/test\.bin differ
++	$ quilt diff -pab --no-index >/dev/null
+ 	> Diff failed on file 'test.bin', aborting
+ 	$ echo %{?}
+ 	> 1

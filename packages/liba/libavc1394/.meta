@@ -1,0 +1,11 @@
+<package name="libavc1394" project="openSUSE:Factory">
+  <title>Libavc1394--Programming Interface to the AV/C Specification</title>
+  <description>Libavc1394 is a programming interface to the AV/C specification from
+the 1394 Trade Association. AV/C stands for Audio/Video Control.
+Currently, applications use the library to control the tape transport
+mechanism on DV camcorders. However, there are many devices and device
+functions that can be controlled via AV/C. Eventually, the library will
+be expanded to implement more of the specification and to provide a
+high level interface to various devices.</description>
+  <devel project="multimedia:libs" package="libavc1394"/>
+</package>

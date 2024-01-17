@@ -1,0 +1,5 @@
+<package name="ca-certificates-cacert" project="openSUSE:Factory">
+  <title>CAcert root certificates</title>
+  <description>This package contains the root certificates from cacert.org</description>
+  <devel project="Base:System" package="ca-certificates-cacert"/>
+</package>

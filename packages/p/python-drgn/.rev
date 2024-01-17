@@ -1,0 +1,74 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0eb1e518dde719280b675b16fba6ed98</srcmd5>
+    <version>0.0.20</version>
+    <time>1660586299</time>
+    <user>dimstar_suse</user>
+    <comment>Initial submission of drgn.</comment>
+    <requestid>995072</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e369c12da61c6a5b2a65a3f8c050f35d</srcmd5>
+    <version>0.0.21</version>
+    <time>1665844661</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010977</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ba8b880cb84003242cadbb46823fb4a9</srcmd5>
+    <version>0.0.22</version>
+    <time>1673281409</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to drgn-0.0.22:
+  * License changed to LGPLv2.1+.
+  * Linux kernel support was tested up to Linux 6.2-rc2.
+  * Oldest kernel version officially supported is now 4.9.
+  * The StackFrame.locals() method was added.
+  * The StackFrame.sp attribute was added.
+  * Helpers for XArrays were added.
+  * The drgn.helpers.linux.slab.get_slab_aliases() helper was added.
+  * The drgn.helpers.linux.slab.slab_object_info() helper was added.
+  * The drgn.helpers.common.memory.identify_address() helper now
+    provide the offset from the beginning of the slab object and
+    whether it is allocated or free.
+  * The drgn.helpers.common.stack.print_annotated_stack() helper was
+    added.
+  * Support for Linux kernel modules and stack unwinding on s390x.
+  * Partial support for looking up types with C++ template
+    arguments.
+  * Parsing debug info for C++ template parameter packs.
+</comment>
+    <requestid>1057008</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a2a7e92cd68a01f957818be861a281f5</srcmd5>
+    <version>0.0.23</version>
+    <time>1688052561</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to drgn-0.0.23:
+  * Support Linux 6.3 and 6.4
+  * Full s390x support
+  * Extend idr helpers for pre-4.11 Linux
+  * Support GNU-style compressed .zdebug_* sections
+  * New scripts in contrib
+</comment>
+    <requestid>1095952</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f7926e5a5378d42490f8549c44f1b3ad</srcmd5>
+    <version>0.0.24</version>
+    <time>1694344209</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1109773</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2708f983dc0477113aff0a8f84bbd085</srcmd5>
+    <version>0.0.25</version>
+    <time>1703198298</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1134318</requestid>
+  </revision>
+</revisionlist>

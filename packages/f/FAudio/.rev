@@ -1,0 +1,427 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e16ba26b73558379cbedad17df9fa57e</srcmd5>
+    <version>19.03</version>
+    <time>1553611130</time>
+    <user>dimstar_suse</user>
+    <comment>add to factory for use by Wine</comment>
+    <requestid>681104</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b0fb6f9dbab49803775a41a33a920c2b</srcmd5>
+    <version>20.03</version>
+    <time>1585085769</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 20.03. No changelog
+- Update faudio-older-sdl2.patch. (forwarded request 787711 from cgiboudeaux)</comment>
+    <requestid>787712</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>334a85ac65a633442c305cb902cb50db</srcmd5>
+    <version>20.05</version>
+    <time>1588855882</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20.05:
+  * No changelog available (forwarded request 800658 from pluskalm)</comment>
+    <requestid>800697</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>2068a5559643669f75247f88f03458b4</srcmd5>
+    <version>20.05</version>
+    <time>1591101539</time>
+    <user>dimstar_suse</user>
+    <comment>- Rebase faudio-older-sdl2.patch to fix build error in Leap.</comment>
+    <requestid>810557</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>928407d76bb65a8913ec65b20dd9ec31</srcmd5>
+    <version>20.09</version>
+    <time>1601200120</time>
+    <user>dimstar_suse</user>
+    <comment>- The FFmpeg backend for WMA decoding has been replaced with GStreamer. 
+  Distributors are encouraged to configure their FAudio builds with 
+  -DGSTREAMER=ON even if a WMA plugin is not available by default; 
+  end users can provide their own plugins if needed.
+  added -DGSTREAMER=ON flag for gstreamer backend. (forwarded request 833818 from ukbeast89)</comment>
+    <requestid>833872</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7b0e7699765dee5deb6e9b3711a05387</srcmd5>
+    <version>20.10</version>
+    <time>1602349449</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 20.10:
+  Add support for WAVESTOP notifications
+  Add support for engines without settings files (or empty settings files)
+  Add power-of-two quantum fallback paths for *BSD and Emscripten
+  Return a unique error code for audio engines with a bad platform ID
+  Fix a deadlock in Wolfenstein: The Old Blood related to callbacks
+  Fix a crash for streaming WaveBanks when calling Destroy
+  stb_vorbis: Handle malloc(0) calls (forwarded request 840135 from ukbeast89)</comment>
+    <requestid>840447</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>dfe05fddfa002c7ae8c8f09e4e7fc6e6</srcmd5>
+    <version>20.12</version>
+    <time>1609253599</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>859172</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e9cc027532791891fb2f0fe7b1034c1a</srcmd5>
+    <version>21.01</version>
+    <time>1609783710</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 21.01:
+  Enforce SDL 2.0.9 or newer as a build requirement
+  Micro-optimize byte swapping for XACT file parsing</comment>
+    <requestid>860082</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d54a2bc7140f5dc3a14792570304eea5</srcmd5>
+    <version>21.02</version>
+    <time>1612781268</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 21.02:
+  * XACT: All notification types with the PERSIST flag are now recorded (forwarded request 870133 from elimat)</comment>
+    <requestid>870191</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a5c7c9cb36c191cba531af24e4795b16</srcmd5>
+    <version>21.03</version>
+    <time>1614792889</time>
+    <user>RBrownSUSE</user>
+    <comment>- update to 21.03:
+  * Implemented FACT_FLAG_MANAGEDATA
+  * Implemented the CUEPLAY and CUESTOP notification types
+  * Added support for XACT 3.0 content
+  * Added support for WaveBanks with endian-swapped PCM data (forwarded request 876299 from ukbeast89)</comment>
+    <requestid>876381</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0c2ab16aefba09425ffd30614cac77e8</srcmd5>
+    <version>21.03.05</version>
+    <time>1615802100</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 21.03.5:
+  * Fixes a regression that caused SoundBanks to no longer parse correctly (forwarded request 878747 from ukbeast89)</comment>
+    <requestid>878766</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>81615e9d8be1eaa566f347248e81f01a</srcmd5>
+    <version>21.04</version>
+    <time>1617723052</time>
+    <user>RBrownSUSE</user>
+    <comment>- update to 21.04:
+  * Added support for SDL_GetAudioDeviceSpec, coming in a future SDL release
+  * FACT: Implemented accurate Fast/Slow/SinCos RPC curve types
+  * Added support for XMA2 audio, for Xbox 360 data
+  * Voice filters/effects should be processed even when SendCount is 0
+  * FACT: Fix parsing/calculation of filter Q factors
+  * FACT: Enforce STOPPING flag for fade-outs or RPC releases
+  * FACT: Various fixes for parsing big-endian SoundBanks (forwarded request 883069 from ukbeast89)</comment>
+    <requestid>883070</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>1acbb3ca7d435b2dd9cf323dc0da7983</srcmd5>
+    <version>21.05</version>
+    <time>1620334386</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>891074</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>cfa7b25f78c905b88360f7a2f4cc55f8</srcmd5>
+    <version>21.07</version>
+    <time>1626208655</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 21.07:
+ *  Fix incorrect value for MF_MT_AUDIO_AVG_BYTES_PER_SECOND. (forwarded request 906046 from ukbeast89)</comment>
+    <requestid>906062</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>144fac7633613c9f4c5f1e696dcde272</srcmd5>
+    <version>21.09</version>
+    <time>1631913960</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 21.09:
+  * FACT: Fix a crash from an uninitialized pointer when a WaveBank does not have a name 
+    table.
+  * platform_sdl2: When querying the default device, ignore audio devices with way too many 
+    channels.
+  * platform_win32: Minor Win32 buildfixes
+- update to 21.07:
+  * Fix incorrect value for MF_MT_AUDIO_AVG_BYTES_PER_SECOND.
+- update to 21.05:
+  * CMake: Add 'Requires' for GStreamer to the pkgconfig file
+  * Updated source to github.
+- update to 21.04:
+  * Added support for SDL_GetAudioDeviceSpec, coming in a future SDL release
+  * FACT: Implemented accurate Fast/Slow/SinCos RPC curve types
+  * Added support for XMA2 audio, for Xbox 360 data
+  * Voice filters/effects should be processed even when SendCount is 0
+  * FACT: Fix parsing/calculation of filter Q factors
+  * FACT: Enforce STOPPING flag for fade-outs or RPC releases
+  * FACT: Various fixes for parsing big-endian SoundBanks
+  
+- update to 21.03.5:
+  * Fixes a regression that caused SoundBanks to no longer parse correctly
+- update to 21.03:
+  * Implemented FACT_FLAG_MANAGEDATA
+  * Implemented the CUEPLAY and CUESTOP notification types
+  * Added support for XACT 3.0 content
+  * Added support for WaveBanks with endian-swapped PCM data
+- update to 21.02:
+  * XACT: All notification types with the PERSIST flag are now recorded
+- update to 21.01:
+  Enforce SDL 2.0.9 or newer as a build requirement
+  Micro-optimize byte swapping for XACT file parsing
+- update to 20.12:
+  Added an x64 configuration to visualc
+  CMake project now generates a pkgconfig file
+  Fix compatibility with CMake 2.8.12
+  GStreamer builds now explicitly check for &gt;=1.9.2
+  Initialize the subformat for GetDeviceFormat, fixes a ton of Ubisoft games
+  Don't assert when FAudio_Initialize Flags includes FAUDIO_DEBUG_ENGINE
+  
+- update to 20.10:
+  Add support for WAVESTOP notifications
+  Add support for engines without settings files (or empty settings files)
+  Add power-of-two quantum fallback paths for *BSD and Emscripten
+  Return a unique error code for audio engines with a bad platform ID
+  Fix a deadlock in Wolfenstein: The Old Blood related to callbacks
+  Fix a crash for streaming WaveBanks when calling Destroy
+  stb_vorbis: Handle malloc(0) calls
+  
+- The FFmpeg backend for WMA decoding has been replaced with GStreamer. 
+  Distributors are encouraged to configure their FAudio builds with 
+  -DGSTREAMER=ON even if a WMA plugin is not available by default; 
+  end users can provide their own plugins if needed.
+  added -DGSTREAMER=ON flag for gstreamer backend.
+  
+- update to 20.09:
+  IGLDevice has been replaced with FNA3D, the new graphics library for FNA!
+  Direct3D 11 is now supported and is the default for Windows/Xbox
+  Vulkan is now available as an experimental backend
+  Metal is now the default for Apple platforms
+  ModernGL and ThreadedGL have been removed
+  THREADED_GL and DISABLE_THREADING have been removed
+  MojoShader is now statically linked directly into FNA3D
+  SDL2_image has been replaced with FNA3D_Image, which is built into FNA3D
+  Add experimental support for WebAssembly via Emscripten and mono-wasm
+  Update to FAudio 20.09
+- Rebase faudio-older-sdl2.patch to fix build error in Leap.
+- Update to version 20.05:
+  * No changelog available
+- Update to 20.03. No changelog
+- Update faudio-older-sdl2.patch.
+- Avoid name repetition in summaries.
+- Update RPM groups.
+- Ensure directories are owned.
+- initial import of the FAudio library used by Wine
+- Verson 19.03
+- We build only the lib/FAudio part of this package.
+- faudio-older-sdl2.patch: build against a bit older SDL2 on Leap 42.3. (forwarded request 919562 from ukbeast89)</comment>
+    <requestid>919669</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>9c052e97aaf16a680b4dd521e92c5441</srcmd5>
+    <version>21.10</version>
+    <time>1634587163</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 21.10:
+  * Minor WinRT project update for latest SDL Git revision
+  * Continued work on the experimental Wine/Win32 platform backend (forwarded request 925821 from ukbeast89)</comment>
+    <requestid>925850</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>2db02946e86ae7299a8f7df3311945ca</srcmd5>
+    <version>21.11</version>
+    <time>1638203321</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 21.11:
+  * GStreamer support is now deprecated.
+    Wine users should migrate to 6.20 and newer, and everyone else should move to 
+    codecs that are not patent-encumbered.
+    GStreamer support will be fully removed in the first release after Wine 7.0.
+  * Removed the C++ wrapper. Use the headers/PE binaries found in Wine 6.20 and newer.
+  * Minor fixes and cleanups found by Coverity
+  * Dont assert on WMA buffer and FAUDIO_FORMAT_EXTENSIBLE type
+  * FACT: Send FACTNOTIFICATIONTYPE_CUESTOP Notification on Cue Stop
+  * Continued work on the experimental Wine/Win32 platform backend (forwarded request 934439 from ukbeast89)</comment>
+    <requestid>934538</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>045298ef75a339fe59e1ca9550590526</srcmd5>
+    <version>21.12</version>
+    <time>1641203356</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 21.12:
+  * Fixed a build error when WMA support is enabled. (forwarded request 943267 from ukbeast89)</comment>
+    <requestid>943295</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>634bdbec869109f37a3757e4b36e697c</srcmd5>
+    <version>22.01</version>
+    <time>1641932402</time>
+    <user>dimstar_suse</user>
+    <comment>- update 22.01:
+  * Continued work on the experimental Wine/Win32 platform backend. (forwarded request 945404 from ukbeast89)</comment>
+    <requestid>945517</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>608ba6a36148aa03474cf0d0a4e415f1</srcmd5>
+    <version>22.02</version>
+    <time>1645054230</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 22.02:
+  * The Wine/Win32 backend is now considered stable.
+    All Wine users should upgrade to 7.0 or newer
+    All non-Wine users will (and should) continue to use 
+    the SDL backend.
+  * GStreamer support has been removed.
+    Wine/Win32 will continue to use MediaFoundation.
+    All other users should already be on patent/royalty-free 
+    codecs.
+  * utils: Minor cleanup of uicommon.
+  * csharp: Expose an IntPtr overload for
+    stb_vorbis_get_samples_float_interleaved. (forwarded request 955067 from ukbeast89)</comment>
+    <requestid>955172</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>ad73b9c666d087060015c4feedc01830</srcmd5>
+    <version>22.05</version>
+    <time>1652114680</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 22.05. Changes since 22.02:
+  * FACT: Clamp SoundBank Q factor to ignore the 0.67 case, for now
+  * CMake: Remove some uicommon files that no longer exist (forwarded request 975857 from cgiboudeaux)</comment>
+    <requestid>975858</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>f39cac7824ffd3ccf876dd9057de0eb4</srcmd5>
+    <version>22.08</version>
+    <time>1660144451</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 22.08:
+  * FACT: Add support for WAVEBANKPREPARED notifications
+  * Included the matrix coefficient test program in matrix_defaults.inl, 
+    for developers that need to replicate it
+  * FXReverb: Fix a spec violation in Process() that could corrupt reverb output 
+    when enabled/disabled with precise timing
+  * FACT: Fill all fields for WAVESTOP notifications, avoiding uninitialized memory issues (forwarded request 994144 from ukbeast89)</comment>
+    <requestid>994145</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>a7f2bb3195aff31fa90edb997b0152ca</srcmd5>
+    <version>22.10</version>
+    <time>1666689594</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 22.10:
+  * Added a quick comment to the SDL backend.
+- Update to 22.09.01:
+  * Fix a regression where requesting a specific mastering voice format 
+    would return a format overwritten by device defaults
+- Update to 22.09:
+  * Update to SDL 2.24. This has been made a hard requirement, as it 
+    fixes/adds way too much to ignore:
+    2.1 and 4.1 audio is now supported
+  * On Windows, we now prioritize DirectSound over WASAPI
+  * The PulseAudio samples hack has been removed
+  * The non-power-of-two samples hack for Emscripten/OSS has also been removed
+  * GetDeviceDetails(0) now uses SDL_GetDefaultAudioInfo, obsoleting our hack (forwarded request 1030904 from ukbeast89)</comment>
+    <requestid>1030912</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>01bd01c4f5bf4e9cd9588bf7738e96e0</srcmd5>
+    <version>22.12</version>
+    <time>1670259707</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 22.12:
+  * Added a Visual Studio solution for GDK support
+  * Minor cleanup in the utils/ folder (forwarded request 1040072 from dirkmueller)</comment>
+    <requestid>1040172</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>bf2b43398e8232989942b1a7f1885bbb</srcmd5>
+    <version>23.01</version>
+    <time>1672754761</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 23.01:
+  * Remove PlatformToolset lines from visualc-gdk project (forwarded request 1046435 from dirkmueller)</comment>
+    <requestid>1046454</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>0998a57acd8c27a65cd9d6faa3d5b193</srcmd5>
+    <version>23.03</version>
+    <time>1679182313</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1072808</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>2887da9ebdf114d4f7be522a2bbe0a7a</srcmd5>
+    <version>23.07</version>
+    <time>1690370540</time>
+    <user>anag+factory</user>
+    <comment>- update to 23.07:
+  * FACT: When parsing SoundBanks, explicitly update the read
+    offset for each data region
+  * XNA_Song: Fix possible truncation of total seconds when
+    opening QOA files
+  * Xbox GDK support is now considered Ready to Ship
+  * UWP support is now deprecated and will be removed in FAudio
+    24.01
+  * XNA_Song now supports QOA input files
+  * FACT: Add support for `WAVEBANKSTREAMING_INVALIDCONTENT`
+    notifications
+  * Added FilterWetDryMixEXT extension</comment>
+    <requestid>1099949</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>267149bf6242c41fdd5df65fc48f60c5</srcmd5>
+    <version>23.10</version>
+    <time>1697748574</time>
+    <user>anag+factory</user>
+    <comment>- update to 23.10:
+  * Minor static analysis fix for F3DAudio
+  * FACT now supports all publicly known WaveBank format versions
+
+  * Fix a regression where requesting a specific mastering voice format
+  * Update to SDL 2.24. This has been made a hard requirement, as it
+  * Included the matrix coefficient test program in matrix_defaults.inl,
+  * FXReverb: Fix a spec violation in Process() that could corrupt reverb output
+    All non-Wine users will (and should) continue to use
+    All other users should already be on patent/royalty-free
+    Wine users should migrate to 6.20 and newer, and everyone else should move to
+  * FACT: Fix a crash from an uninitialized pointer when a WaveBank does not have a name
+  * platform_sdl2: When querying the default device, ignore audio devices with way too many
+- The FFmpeg backend for WMA decoding has been replaced with GStreamer.
+  Distributors are encouraged to configure their FAudio builds with
+  -DGSTREAMER=ON even if a WMA plugin is not available by default; (forwarded request 1118661 from dirkmueller)</comment>
+    <requestid>1118830</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>bedc523648c1432316b4da8687a866ed</srcmd5>
+    <version>23.11</version>
+    <time>1700675691</time>
+    <user>anag+factory</user>
+    <comment>- update to 23.11:
+  * The mixer thread no longer crashes when attempting to read
+    voices using WMAUDIO3 buffer data
+  * SDL2: Fix regression that prevented devices with &gt;8 channels
+    from opening (forwarded request 1127932 from dirkmueller)</comment>
+    <requestid>1128034</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>2d4fdba4b86c54c022e271bc37b9a3bd</srcmd5>
+    <version>23.12</version>
+    <time>1701533608</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 23.12:
+  * Removed an unused variable from the QOA decoder. 23.12 is
+    functionally identical to 23.11. (forwarded request 1130290 from dirkmueller)</comment>
+    <requestid>1130445</requestid>
+  </revision>
+</revisionlist>

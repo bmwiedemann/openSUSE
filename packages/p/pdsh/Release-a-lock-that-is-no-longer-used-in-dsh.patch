@@ -1,0 +1,30 @@
+From: ycaibb <ycaibb@gmail.com>
+Date: Thu Sep 9 10:52:21 2021 +0800
+Subject: Release a lock that is no longer used in dsh()
+Patch-mainline: Not yet
+Git-repo: https://github.com/chaos/pdsh
+Git-commit: 5bf75e2b4ad6178eacad426fb76addcbfd7a8841
+References: 
+
+In dsh(), the threadcount_mutex is never released. While technically not
+ a bug, this could cause a problem or confusion in the future if a lock
+is attempted on the mutex. Thus, we fix it by releasing the lock at the
+end of dsh().
+
+Signed-off-by: ycaibb <ycaibb@gmail.com>
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ src/pdsh/dsh.c | 1 +
+ 1 file changed, 1 insertion(+)
+diff --git a/src/pdsh/dsh.c b/src/pdsh/dsh.c
+index a2c9e0a..1957421 100644
+--- a/src/pdsh/dsh.c
++++ b/src/pdsh/dsh.c
+@@ -1192,6 +1192,7 @@ int dsh(opt_t * opt)
+     dsh_mutex_lock(&threadcount_mutex);
+     while (threadcount > 0)
+         pthread_cond_wait(&threadcount_cond, &threadcount_mutex);
++    dsh_mutex_unlock(&threadcount_mutex);
+ 
+     if (debug)
+         _dump_debug_stats(rshcount);

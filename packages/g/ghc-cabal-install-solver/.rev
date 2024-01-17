@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bb4bb7b79bc6e3a1f37ab4d42a48b001</srcmd5>
+    <version>3.8.1.0</version>
+    <time>1680635936</time>
+    <user>dimstar_suse</user>
+    <comment>update for ghc-9.4.4</comment>
+    <requestid>1075798</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>878f7fda67d2c8e0a2195a0679d903c2</srcmd5>
+    <version>3.10.2.1</version>
+    <time>1700772032</time>
+    <user>anag+factory</user>
+    <comment>version update</comment>
+    <requestid>1128069</requestid>
+  </revision>
+</revisionlist>

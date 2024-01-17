@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3504cb7dc771bb0644b9e8e4d0191c8c</srcmd5>
+    <version>3.6.1</version>
+    <time>1663327939</time>
+    <user>dimstar_suse</user>
+    <comment>Python library for testing Ansible roles</comment>
+    <requestid>1003894</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d90f483d94909dd2100d99c8d146afec</srcmd5>
+    <version>4.0.4</version>
+    <time>1675095023</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1061943</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fc6132180193c092922ec51568ccb763</srcmd5>
+    <version>5.0.1</version>
+    <time>1684313596</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1087421</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>4855406cf37ddb6f1e473023f7d1ecb1</srcmd5>
+    <version>5.0.1</version>
+    <time>1684849373</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1088423</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>65fa6c50938c3511d2752544501c7c0d</srcmd5>
+    <version>5.1.0</version>
+    <time>1687900589</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1095452</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>95a52d734309ac6aff33c16b8f53ef72</srcmd5>
+    <version>6.0.2</version>
+    <time>1694460093</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1110135</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>e6ddb1527e57820d95fcb8677061ffc0</srcmd5>
+    <version>6.0.2</version>
+    <time>1700162899</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1126713</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a99b2e9de3717842170419bb3fc3685a</srcmd5>
+    <version>6.0.3</version>
+    <time>1702673447</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1133467</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,17 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bef663b236dedcef203f8ed0a2dc4487</srcmd5>
+    <version>1.002</version>
+    <time>1385993264</time>
+    <user>coolo</user>
+    <comment>package needed to have a font compatible with Microsoft Cambria in Factory</comment>
+    <requestid>207771</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>bef663b236dedcef203f8ed0a2dc4487</srcmd5>
+    <version>1.002</version>
+    <time>1409301078</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

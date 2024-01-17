@@ -1,0 +1,7 @@
+<package name="ghex" project="openSUSE:Factory">
+  <title>GNOME Binary Editor</title>
+  <description>GHex allows the user to load data from any file and to view and edit it
+in either hex or ASCII. It is a must for anyone playing games that use
+a non-ASCII format for saving.</description>
+  <devel project="GNOME:Apps" package="ghex"/>
+</package>

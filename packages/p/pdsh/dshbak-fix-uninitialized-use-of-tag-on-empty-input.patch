@@ -1,0 +1,51 @@
+From: Mark A. Grondona <mark.grondona@gmail.com>
+Date: Wed Aug 11 15:26:10 2021 -0700
+Subject: dshbak: fix uninitialized use of $tag on empty input
+Patch-mainline: Not yet
+Git-repo: https://github.com/chaos/pdsh
+Git-commit: b32d9d312b52447a68d1ee52fbbe0394f857d87a
+References: 
+
+Problem: The fix for hostnames of `0` in dshbak, i.e. the
+following commit
+
+ commit dee6adf334376da560afa0f8beebe4cae36d8e7c
+ Author: Mark A. Grondona <mgrondona@llnl.gov>
+ Date:   Thu Jun 25 13:37:51 2015 -0700
+
+    dshbak: Handle hostname of "0"
+
+    @garlick found that dshbak can't handle the smallest of numbers.
+    This is because dshbak skips lines where $tag resolves to false.
+    But in perl, 0 is also false.
+
+    What we really want to check for is an "empty" tag, so fix up the
+    test to reflect that.
+
+    Resolves #70.
+
+breaks handling of empty input to dshbak, since now the variable
+"$tag" can be used when it is uninitialized. The proper fix for
+issue #70 was to check if the variable was either uninitialized or
+an empty string.
+
+Fixes #132
+
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ scripts/dshbak | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/scripts/dshbak b/scripts/dshbak
+index a6e17eb..fbb4e71 100755
+--- a/scripts/dshbak
++++ b/scripts/dshbak
+@@ -112,7 +112,7 @@ sub process_lines
+ 	while (<>) {
+ 		my ($tag, $data) = m/^\s*(\S+?)\s*: ?(.*\n)$/;
+ 		#  Ignore lines that aren't prefixed with a hostname:
+-		next unless "$tag" ne "";
++		next unless defined $tag and "$tag" ne "";
+ 		push(@{$lines{$tag}}, $data);
+ 	}
+ 	return %lines;

@@ -1,0 +1,29 @@
+Tool is not needed for kernel 2.6
+---
+ test/Makefile.am |    7 ++-----
+ 1 file changed, 2 insertions(+), 5 deletions(-)
+
+Index: libavc1394-0.5.4/test/Makefile.am
+===================================================================
+--- libavc1394-0.5.4.orig/test/Makefile.am
++++ libavc1394-0.5.4/test/Makefile.am
+@@ -1,7 +1,7 @@
+ MAINTAINERCLEANFILES = Makefile.in
+-bin_PROGRAMS = dvcont mkrfc2734 panelctl
++bin_PROGRAMS = dvcont panelctl
+ noinst_PROGRAMS = romtest setrom avc_vcr 
+-man_MANS = dvcont.1 mkrfc2734.1 panelctl.1
++man_MANS = dvcont.1 panelctl.1
+ EXTRA_DIST = $(man_MANS)
+ 
+ dvcont_SOURCES = dvcont.c
+@@ -12,9 +12,6 @@ romtest_SOURCES = romtest.c
+ romtest_LDADD = ../librom1394/librom1394.la \
+ 	@LIBRAW1394_LIBS@
+ 
+-mkrfc2734_SOURCES = mkrfc2734.c
+-mkrfc2734_LDADD = ../librom1394/librom1394.la \
+-	@LIBRAW1394_LIBS@
+ 
+ setrom_SOURCES = setrom.c
+ setrom_LDADD = ../librom1394/librom1394.la \

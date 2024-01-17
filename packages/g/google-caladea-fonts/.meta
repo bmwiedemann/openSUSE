@@ -1,0 +1,12 @@
+<package name="google-caladea-fonts" project="openSUSE:Factory">
+  <title>Sans-serif Font Metrics-compatible with Cambria</title>
+  <description>Workhorse serif font that is designed to be a metrics-compatible drop-in 
+replacement for Cambria.
+Contains Regular, Bold, Italic, and Bold Italic version.
+
+Designed by Huerta Típografica for Google.
+
+</description>
+  <devel project="M17N:fonts" package="google-caladea-fonts"/>
+  <url>https://commondatastorage.googleapis.com/chromeos-localmirror/distfiles/</url>
+</package>

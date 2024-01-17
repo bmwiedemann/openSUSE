@@ -1,0 +1,31 @@
+From: Dylan Simon <dylan@dylex.net>
+Date: Mon Nov 9 20:41:27 2020 -0500
+Subject: slurm: add documentation for -C
+Patch-mainline: Not yet
+Git-repo: https://github.com/chaos/pdsh
+Git-commit: 9ed9f978598b8a18820d41d8af3779a7a52817a7
+References: 
+
+
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ doc/pdsh.1.in | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/doc/pdsh.1.in b/doc/pdsh.1.in
+index 1f0c1ff..ccd529d 100644
+--- a/doc/pdsh.1.in
++++ b/doc/pdsh.1.in
+@@ -303,6 +303,12 @@ argument "all" can be used to target all nodes running SLURM jobs, e.g.
+ Target list of nodes containing in the SLURM partition \fIpartition\fR.
+ This option may be used multiple times to target multiple SLURM partitions
+ and/or partitions may be given in a comma-delimited list.
++.TP
++.I "-C feature[,feature,...]"
++Restrict selected nodes to those SLURM nodes that have one of the specified
++\fIfeature\fRs active.  This option should be used in combination with other
++node selectors, and filters the resulting list.  Any nodes that do not have
++one of the specified features (or is not a SLURM node) will be excluded.
+ 
+ .SH "torque module options"
+ The \fBtorque\fI module allows \fBpdsh\fR to target nodes based on

@@ -1,0 +1,34 @@
+From: Jerry Mannil <jmannil@amazon.com>
+Date: Mon Jun 13 11:26:39 2022 -0700
+Subject: doc: fast-fail update
+Patch-mainline: Not yet
+Git-repo: https://github.com/chaos/pdsh
+Git-commit: 36f2f561d336abd07b587baf91a02835d68d7ea7
+References: 
+
+Add '-k' option for fast-fail
+
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ doc/pdsh.1.in | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/doc/pdsh.1.in b/doc/pdsh.1.in
+index ccd529d..d4d7f0d 100644
+--- a/doc/pdsh.1.in
++++ b/doc/pdsh.1.in
+@@ -144,10 +144,13 @@ as if they had been given to \fB\-w\fR and preceeded with the minus `-'
+ character.
+ 
+ .SH "Standard pdsh options"
+-.TP 
++.TP
+ .I "-S"
+ Return the largest of the remote command return values.
+ .TP
++.I "-k"
++Fail fast on connect failure or non-zero return code.
++.TP
+ .I "-h"
+ Output usage menu and quit. A list of available rcmd modules
+ will also be printed at the end of the usage message.

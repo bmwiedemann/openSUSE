@@ -1,0 +1,58 @@
+-------------------------------------------------------------------
+Tue May 26 07:33:07 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- python-psutil is only used to call its "swap_memory" and
+  "virtual_memory" functions, so we reduced the required version
+  from 5.6 to 5.4.8 so we can build packages for SLE/Leap.
+
+-------------------------------------------------------------------
+Mon May 25 10:59:16 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
+Mon May 18 08:11:04 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 0.7.1 (fixes issue reported in boo#1135733 #c4):
+  * Fix pipeline, doc8 linting ignores D001, line too long
+  * Add customize function, part of #1
+  * Change _filter to filter_packages and make it public
+  * Improve filter_package explanation
+  * Improve docs
+  * Add check_qt() function
+  * Add check_numbers() function
+  * Enhance help from command line parser
+  * Enhance command line order
+  * Correct mispelling errors
+  * Remove importlib_metadata for Python 3.8+, incoporated into std lib, MR#2
+  * Add MANIFEST.in, part of #9
+  * Improve internal code and linting
+  * Remove support for Python 2.7 and 3.4, closes #8
+
+- There's no 0.7.0 release by upstream.
+
+- Remove patch already included by upstream:
+  * python38.patch
+
+-------------------------------------------------------------------
+Sun Mar  8 03:51:01 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Use proper name for importlib-metadata
+
+-------------------------------------------------------------------
+Tue Jan 28 08:38:12 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch to github tarball to get tests and license
+- Run the tests
+
+-------------------------------------------------------------------
+Tue Jan 28 08:20:21 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Format with spec cleaner
+- Add patch to work with python 3.8:
+  * python38.patch
+
+-------------------------------------------------------------------
+Sat Jan 25 14:53:04 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- initial version for package

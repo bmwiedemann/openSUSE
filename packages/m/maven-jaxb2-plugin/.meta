@@ -1,0 +1,9 @@
+<package name="maven-jaxb2-plugin" project="openSUSE:Factory">
+  <title>Provides the capability to generate java sources from schemas</title>
+  <description>This Maven 2 plugin wraps the JAXB 2.x XJC compiler and provides the capability
+to generate Java sources from XML Schemas.
+
+</description>
+  <devel project="Java:packages" package="maven-jaxb2-plugin"/>
+  <url>http://java.net/projects/maven-jaxb2-plugin/pages/Home</url>
+</package>

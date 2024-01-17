@@ -1,0 +1,244 @@
+-------------------------------------------------------------------
+Wed Dec 13 14:40:56 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.0.3:
+  * Bugfixes
+    - Change molecule_inventory in podman example to remove ansible
+      warning (#4086) @buckaroogeek
+    - Update collection structure image in the docs (#4098)
+      @ajinkyau
+    - Enable ansible-lint (#4069) @ssbarnea
+    - Correct git-archival settings (#4071) @ssbarnea
+    - Docs: highlight importance of ansible_collections at root dir
+      (#4060) @felher
+    - Skip create step when created == true (#4038) @mluzarreta
+    - Address ansible-lint reported issues (#4056) @muellerbe
+    - Add podman driver option to podman config (#4062) @brandor5
+    - Fix docker and podman examples to work with multiple
+      platforms (#4068) @clickthisnick
+    - Update docs to remove references to Docker being the default
+      driver (#4065) @Qalthos
+    - Fix forbidden implicit octal value (#4049) @jooola
+    - Pin linkchecker version (#4050) @zhan9san
+    - Update getting-started.md (#4030) @aogier
+    - Address documentation username typo (#4031) @iamgini
+- remove patch 4ab4f1c7_improve_test_names.patch that was taken
+  from upstream originally and is included in this release
+
+-------------------------------------------------------------------
+Mon Nov 13 07:05:39 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- add patch 4ab4f1c7_improve_test_names.patch
+  https://github.com/ansible/molecule/commit/4ab4f1c76fca978485ba63c67c944c489277aa0d
+  to fix the pytest failures due to test names and duplicates
+
+-------------------------------------------------------------------
+Wed Sep  6 06:29:17 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.0.2:
+  * Bugfixes
+    - Update the getting started guide (#4023) @ajinkyau
+    - Update ansible-compat to v4.1.7 (#4022) @ajinkyau
+- drop Requires and BuildRequires that are no longer needed
+- add Requires for wcmatch >= 8.1.2
+- ignore some more pytest checks that cannot be run in OBS as they
+  required podman/docker etc.
+
+-------------------------------------------------------------------
+Wed Sep  6 06:26:45 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.0.1:
+  * Bugfixes
+    - Pass environment in testinfra (#4014) @zhan9san
+    - fix: remove `role` from `init` help info (#4010) @chenrui333
+
+-------------------------------------------------------------------
+Wed Sep  6 06:24:50 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.0.0:
+  * Major Changes
+    - Change current directory to scenario before running playbooks
+      (#3966) @ssbarnea
+    - Temporary disable support for external drivers (#3961)
+      @ssbarnea
+    - Reimplemented templating (init command) (#3959) @ssbarnea
+    - Remove ability to configure collections-path and roles-path
+      for dependency (#3956) @ssbarnea
+  * Minor Changes
+    - Allow molecule to list scenarios present under molecule
+      directory within a collection (#3989) @ajinkyau
+    - Avoid skipping create and destroy steps on delegated (#3949)
+      @ssbarnea
+  * Bugfixes
+    - Ignore scenarios in virtual envrionments (#3996) @ajinkyau
+    - Scaffold future docs structure (#3997) @cidrblock
+    - Update documentation (#3985) @ajinkyau
+    - Add example of integration with kubevirt (#3972) @jangel97
+    - Make pytest-testinfra as an optional dependency (#3982)
+      @ajinkyau
+    - Dependency installation directory is changed (#3980)
+      @zhan9san
+    - Avoid reinstalling dependencies (#3979) @zhan9san
+    - Remove constraints requirement files (#3981) @zhan9san
+    - Add example of using docker collection using default driver
+      (#3978) @zhan9san
+    - Update documentation (#3975) @ajinkyau
+    - Fix connection plugin name setting (#3957) @apatard
+    - Disable isolation from ansible-compat Runtime (#3962)
+      @ssbarnea
+    - Add example of using podman collection using default driver
+      (#3947) @ssbarnea
+    - Improve how executed commands are logged (#3948) @ssbarnea
+    - Make driver optional in molecule.yml file (#3946) @ssbarnea
+
+-------------------------------------------------------------------
+Mon Jun 26 05:10:13 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- remove fix_ansible_compat.patch that is no longer needed
+- update to 5.1.0:
+  * Minor Changes
+    - Ensure external drivers are installed (#3901) @apatard
+    - Update dependency doc (#3916) @zhan9san
+    - Improve documentation for upgrade scenario (#3899) @fauust
+  * Bugfixes
+    - Fix documentation links (#3940) @ssbarnea
+    - Fix quoted strings templating (#3911) @samiam
+    - Adds Support for Shell Type Instance Param to Delegated
+      Driver (#3932) @zollo
+    - Fix dead link in documentation (#3923) @rtakasuke
+    - Use backwards incompatible change from ansible-compat 4.0.1
+      (#3904) @asmacdo
+
+-------------------------------------------------------------------
+Mon May 22 13:30:53 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
+
+- Add fix_ansible_compat.patch from upstream pull request to fix
+  compatibility with python-ansible-compat v4.
+
+-------------------------------------------------------------------
+Tue May 16 09:18:43 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- modify %if-condition to allow building for python3.10 or
+  python3.11 on SLES15
+
+-------------------------------------------------------------------
+Wed May 10 07:23:47 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 5.0.1:
+  * Bugfixes
+    - Avoid using incompatible ansible-compat version (#3906)
+      @ssbarnea
+    - Fix tree example in use case document (#3894) @akira6592
+    - Use api to get driver schema file (#3898) @apatard
+    - Add subprocess-run-check (#3896) @Ruchip16
+    - Add unidiomatic-typecheck check (#3893) @Ruchip16
+    - Add unnecessary-lambda check (#3892) @Ruchip16
+    - Address ruff S, EXE skips (#3889) @ssbarnea
+    - More ruff fixes (#3887) @ssbarnea
+    - Fix colors when displaying plugin versions (#3886) @ssbarnea
+    - Add raise-missing-from rule (#3885) @Ruchip16
+    - Add no-else-return, no-else-raise & logging-not-lazy check
+      (#3884) @Ruchip16
+    - Add implicit-str-concat & inconsistent-return-statements
+      check (#3882) @Ruchip16
+
+-------------------------------------------------------------------
+Wed May 10 06:49:25 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 5.0.0:
+  * Major Changes
+    - Remove lint command (#3802) @ssbarnea
+  * Minor Changes
+    - Add tags document (#3866) @zhan9san
+    - Replace sphinx documentation with mkdocs (#3811) @ssbarnea
+    - Require ansible-core>=2.12.10 (#3799) @ssbarnea
+    - Remove support for python3.8 (#3770) @ssbarnea
+    - Adopt PEP-621 for packaging (#3767) @ssbarnea
+  * Bugfixes
+    - Refactor dependency locks (#3879) @ssbarnea
+    - Add consider-using-in check (#3880) @Ruchip16
+    - Extend schema validation (#3765) @zhan9san
+    - fix link to monorepo under faq (#3863) @ahmedwonolo
+    - Fix documentation (#3833) @ziegenberg
+    - Documentation: Improve group names (#3812) @ltog
+    - Better indentation in verify template (#3816) @muellerbe
+    - Replace sphinx documentation with mkdocs (#3811) @ssbarnea
+    - Remove embedded dockerfile (#3824) @ssbarnea
+    - Upgrade linters (#3813)
+    - Add support for custom driver name (#3795) @gciavarrini
+    - Document molecule-plugins package (#3805) @ssbarnea
+    - Update test dependencies (#3800) @ssbarnea
+    - Fix rpm building (#3798) @ssbarnea
+    - Reorder heading and reformat badges (#3778) @mamercad
+    - Fixed typo in docs/ci.rst (#3796) @mitchellroe
+    - Bump test dependencies (#3797) @ssbarnea
+  * Deprecations
+    - Remove lint command (#3802) @ssbarnea
+- drop patch skip-broken-test.patch
+
+-------------------------------------------------------------------
+Mon May  8 13:47:59 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- add macro definitions to allow building for SLES15 with
+  python3.11 instead of python3
+
+-------------------------------------------------------------------
+Sun Jan 29 15:48:17 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
+
+- Disable deprecation warnings and tests requiring internet connection.
+- Update to version 4.0.4.
+  Changelog: https://github.com/ansible-community/molecule/releases/tag/v4.0.4
+  * Allow side_effect and verify to have parameters (#3730) @ehartmann
+  * Fix running tox:dockerfile with docker secretservice enabled (#3764) @zeitounator
+  * Add some FQCNs (#3750) @muellerbe
+  * Accept any string for "network_mode" in molecule.json schema (#3725) @fredflev
+  * Fix moved libera channel (#3727) @staticdev
+  * Add "default" as a valid docker "network_mode" in molecule.json schema (#3724) @fredflev
+  * JSON Schema: Allow additionalProperties in ProvisionerConfigOptionsSshConnectionModel (#3721) @fredflev
+  * Help messages when config does not match state file (#3713) @scottalreadytaken
+  * Re-add credentials to Docker registry schema (#3706) @TheLastProject
+  Changes from version 4.0.3:
+  Changelog: https://github.com/ansible-community/molecule/releases/tag/v4.0.3
+  * Add support for cgroupns_mode (#3700) @zhan9san
+  * Platform env expects a dict of vars (#3690) @zeitounator
+  * Support ANSIBLE_COLLECTIONS_PATH environment var (#3681) @nre-ableton
+  * Fix schema (#3687) @jsf9k
+  * Bump ansible-compat from 2.2.0 to 2.2.1 (#3670)
+  Changes from version 4.0.2:
+  Changelog: https://github.com/ansible-community/molecule/releases/tag/v4.0.2
+  * Use FQCN at any point I found (#3680) @muellerbe
+  * Schema fix (#3671) @apatard
+  * Adopt molecule config JSON schema (#3668) @ssbarnea
+  * Replace cerberus with jsonschema for configuration validation (#3638) @zhan9san
+  * Downgrade log level when linking Ansible variables (#3646) @sleiner
+  Changes from version 4.0.1:
+  Changelog: https://github.com/ansible-community/molecule/releases/tag/v4.0.1
+  * Add support for Python 3.11 (#3621) @ssbarnea
+  * Added clarifications about customizing docker images (#3604) @timblaktu
+  * Fix undocumented env vars (#3600) @gardar
+  * Document description for action arguments (verify and side_effect) (#3605) @amarao
+  Changes from version 4.0.0:
+  Full Changelog: https://github.com/ansible-community/molecule/releases/tag/v4.0.0
+  * Removed mol command line alias (#3457) @ssbarnea
+  * Remove ansible and ansible-base extras (#3395) @ssbarnea
+  * Remove support for py36 and py37 (#3436) @ssbarnea
+  * Allow bypassing role name checking (#3549) @zhan9san
+  * Add support for MOLECULE_PLATFORM_NAME (#3416) @zhan9san
+  * Add args for verify and side_effect actions (#3467) @amarao
+  * Enable packit rpm building for Fedora 35 (#3456) @ssbarnea
+  * Remove ansible and ansible-base extras (#3395) @ssbarnea
+
+-------------------------------------------------------------------
+Tue Jul 26 21:44:46 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- Disable tests on Leap.
+
+-------------------------------------------------------------------
+Mon Jun 20 16:27:59 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- Add patch to skip a broken test in TW with Python 3.10.
+
+-------------------------------------------------------------------
+Thu Apr 28 16:06:03 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- Create initial package.

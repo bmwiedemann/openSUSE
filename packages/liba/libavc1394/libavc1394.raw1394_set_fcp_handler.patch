@@ -1,0 +1,21 @@
+Bug 431913 - libavc1394-0.5.3-104: ordered comparison of pointer with integer zero
+
+avc1394_simple.c:552: warning: ordered comparison of pointer with integer zero
+---
+ libavc1394/avc1394_simple.c |    3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+Index: libavc1394-0.5.4/libavc1394/avc1394_simple.c
+===================================================================
+--- libavc1394-0.5.4.orig/libavc1394/avc1394_simple.c
++++ libavc1394-0.5.4/libavc1394/avc1394_simple.c
+@@ -549,8 +549,7 @@ avc1394_init_target( raw1394handle_t han
+ 	if (cmd_handler == NULL)
+ 		return -1;
+ 	g_command_handler = cmd_handler;
+-	if (raw1394_set_fcp_handler( handle, target_fcp_handler ) < 0)
+-		return -1;
++	raw1394_set_fcp_handler( handle, target_fcp_handler );
+ 	return raw1394_start_fcp_listen( handle );
+ }
+ 
