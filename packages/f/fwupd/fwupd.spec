@@ -16,7 +16,7 @@
 #
 
 
-%ifarch %{ix86} x86_64 aarch64 riscv64
+%ifarch %{ix86} x86_64 aarch64 riscv64 s390x ppc64le
 %bcond_without efi_fw_update
 %else
 %bcond_with efi_fw_update
