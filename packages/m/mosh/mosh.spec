@@ -1,7 +1,7 @@
 #
 # spec file for package mosh
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2012 Flavio Castelli.
 #
 # All modifications and additions to the file contributed by third parties
@@ -36,7 +36,7 @@ BuildRequires:  pkgconfig(bash-completion)
 BuildRequires:  pkgconfig(protobuf)
 BuildRequires:  pkgconfig(zlib)
 Requires:       openssh
-Requires:       perl-IO-Socket-INET6
+Requires:       perl-IO-Socket-IP
 Requires:       perl-IO-Tty
 
 %description
