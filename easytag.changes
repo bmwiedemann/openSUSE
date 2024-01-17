@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 28 11:22:11 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -p N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Sat Aug  6 19:23:07 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Temporarily disable the nautilus extension: not yet compatible

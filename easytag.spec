@@ -1,7 +1,7 @@
 #
 # spec file for package easytag
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -71,7 +71,7 @@ easier access to EasyTAG when opening directories and audio files.
 
 %prep
 %setup -q
-%patch0 -p1 -R
+%patch -P 0 -p1 -R
 
 %build
 %if %{with nautilus_extension}
