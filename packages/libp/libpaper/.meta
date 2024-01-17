@@ -1,0 +1,6 @@
+<package name="libpaper" project="openSUSE:Factory">
+  <title>libpaper</title>
+  <description></description>
+  <devel project="Publishing" package="libpaper"/>
+  <url>https://github.com/rrthomas/libpaper</url>
+</package>

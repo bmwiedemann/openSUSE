@@ -1,0 +1,59 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>73c262f97c484f6abe8db9d291b6c1f8</srcmd5>
+    <version>1.2.0</version>
+    <time>1316445699</time>
+    <user>lrupp</user>
+    <comment>I want to maintain icc-profiles-basiccolor-printing2009 in factory and would like to use multimedia:color_management as development base. rev2</comment>
+    <requestid>82267</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>73c262f97c484f6abe8db9d291b6c1f8</srcmd5>
+    <version>1.2.0</version>
+    <time>1319181981</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>ad8e672a1dde42fc54d7f8c38ae27d79</srcmd5>
+    <version>1.2.0</version>
+    <time>1319822556</time>
+    <user>coolo</user>
+    <comment>- remove vendor tag, the vendor is defined by the project config</comment>
+    <requestid>89621</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>67523ff39f89d82196d13ddc864b9c96</srcmd5>
+    <version>1.2.0</version>
+    <time>1323191933</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>67523ff39f89d82196d13ddc864b9c96</srcmd5>
+    <version>1.2.0</version>
+    <time>1340183450</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>67523ff39f89d82196d13ddc864b9c96</srcmd5>
+    <version>1.2.0</version>
+    <time>1359109066</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>67523ff39f89d82196d13ddc864b9c96</srcmd5>
+    <version>1.2.0</version>
+    <time>1379662647</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="13">
+    <srcmd5>67523ff39f89d82196d13ddc864b9c96</srcmd5>
+    <version>1.2.0</version>
+    <time>1409301204</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

@@ -1,0 +1,17 @@
+<package name="python-keyring-keyutils" project="openSUSE:Factory">
+  <title>A python-keyring backend for the kernel keyring</title>
+  <description>A python-keyring [1] backend that can be used to access the kernel
+keyring. In particular, this package ships
+
+- a python-keyring [1] backend for the kernel keyring
+- a special python-keyring backend that can be used by osc
+- a high-level interface to the kernel keyring
+- a low-level module that wraps around the C keyutils library [2]
+
+[1] https://github.com/jaraco/keyring
+[2] https://git.kernel.org/pub/scm/linux/kernel/git/dhowells/keyutils.git
+
+</description>
+  <devel project="devel:languages:python" package="python-keyring-keyutils"/>
+  <url>https://github.com/marcus-h/python-keyring-keyutils</url>
+</package>

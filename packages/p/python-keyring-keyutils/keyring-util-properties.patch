@@ -1,0 +1,24 @@
+---
+ keyutils/backend.py |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- a/keyutils/backend.py
++++ b/keyutils/backend.py
+@@ -3,7 +3,7 @@
+ import errno
+ 
+ from keyring.backend import KeyringBackend
+-from keyring.util import properties
++from jaraco.classes import properties
+ from keyring.errors import PasswordDeleteError
+ 
+ from keyutils.keys import session_keyring
+@@ -20,7 +20,7 @@ class KeyutilsKeyringBackend(KeyringBack
+         self._key_type = key_type
+         self._payload_encoding = payload_encoding
+ 
+-    @properties.ClassProperty
++    @properties.classproperty
+     @classmethod
+     def priority(cls):
+         return 1

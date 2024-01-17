@@ -1,0 +1,184 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>65f1c9b55efced4d2748cae05b39df28</srcmd5>
+    <version>1.22</version>
+    <time>1292246094</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55644 from user coolo
+</comment>
+    <requestid>55644</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f109d4fd112a9935d0343bce5111285a</srcmd5>
+    <version>1.22</version>
+    <time>1292246099</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55644
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d187cd6c244ea753d0cd45d645959685</srcmd5>
+    <version>1.27</version>
+    <time>1297113257</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60118 from user computersalat
+</comment>
+    <requestid>60118</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>d3cec22c43f6c2739f9b2f246a06fe25</srcmd5>
+    <version>1.27</version>
+    <time>1297113263</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60118
+</comment>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>d3cec22c43f6c2739f9b2f246a06fe25</srcmd5>
+    <version>1.27</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>d3cec22c43f6c2739f9b2f246a06fe25</srcmd5>
+    <version>1.27</version>
+    <time>1319182260</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="7" vrev="8">
+    <srcmd5>1b12be425b66eab78936cc77c6bcb2a9</srcmd5>
+    <version>1.27</version>
+    <time>1321875553</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>92169</requestid>
+  </revision>
+  <revision rev="8" vrev="9">
+    <srcmd5>fe50dea8de942c7aedb05c2a0ea81c02</srcmd5>
+    <version>1.27</version>
+    <time>1323193231</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="9" vrev="11">
+    <srcmd5>fe50dea8de942c7aedb05c2a0ea81c02</srcmd5>
+    <version>1.27</version>
+    <time>1340183831</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="10" vrev="13">
+    <srcmd5>fe50dea8de942c7aedb05c2a0ea81c02</srcmd5>
+    <version>1.27</version>
+    <time>1359109648</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f600b0b98ccff7f5a5a92d917bfee72c</srcmd5>
+    <version>1.30</version>
+    <time>1370592381</time>
+    <user>coolo</user>
+    <comment>- updated to 1.30
+ - There was an eval which did not first localize $@ and $SIG{__DIE__}. This
+   broke Plack::Middleware::StackTrace (and possibly other tihngs).
+ 
+ - The Devel::StackTrace-&gt;frames() method is now read-write. This allows you to
+   do more complex filtering of frames than is easily possible with the
+   frame_filter argument to the constructor. Patch by David Cantrell.
+ 
+ - Allow arguments to a trace's as_string method, specifically max_arg_length
+   Patch by Ricardo Signes.
+ 
+ - Added a no_args option to the constructor in 1.26 but forgot to mention it
+   in Changes. Requested by Scott J. Miller. RT #71482. (forwarded request 177355 from coolo)</comment>
+    <requestid>177412</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>f600b0b98ccff7f5a5a92d917bfee72c</srcmd5>
+    <version>1.30</version>
+    <time>1379663647</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7d250a58c44de2bdafdc2165917ff943</srcmd5>
+    <version>1.31</version>
+    <time>1393247542</time>
+    <user>coolo</user>
+    <comment>- updated to 1.31
+ - No code changes, just doc updates, including documenting the as_string()
+   method in Devel::StackTrace::Frame. Requested by Skef. RT #91575.
+- remove Devel-StackTrace-1.27_Test_More.patch</comment>
+    <requestid>223609</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>7d250a58c44de2bdafdc2165917ff943</srcmd5>
+    <version>1.31</version>
+    <time>1409302261</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>480f958ec02a68fcf68607a1e514b89b</srcmd5>
+    <version>1.34</version>
+    <time>1411158464</time>
+    <user>coolo</user>
+    <comment>- updated to 1.34
+ - Fixed use of // operator (my use, not Graham's) in previous release.
+ 
+ 
+ 1.33   2014-06-26
+ 
+ - Added a skip_frames option. This causes the stack trace to skip an arbitrary
+   number of frames. Patch by Graham Knopp. PR #5.
+ 
+ 
+ 1.32   2014-05-05
+ 
+ - Added a filter_frames_early option to filter frames before arguments are
+   stringified. Added by Dagfinn Ilmari Mannsåker. PR #4.</comment>
+    <requestid>250223</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>9e008c3a55f11358cc14bf8694cbf78a</srcmd5>
+    <version>2.00</version>
+    <time>1429346371</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>297253</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>487bb2bf0026e8edecc8c3821ccbcece</srcmd5>
+    <version>2.01</version>
+    <time>1458120858</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>368916</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>49b3c5c5476a4c296098c8b7c8d68ca2</srcmd5>
+    <version>2.02</version>
+    <time>1481391000</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>445082</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>eb3f155129c697b9475849009be572f9</srcmd5>
+    <version>2.03</version>
+    <time>1511426256</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>543840</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>11e4d0873180b08efd7e39088df131cc</srcmd5>
+    <version>2.04</version>
+    <time>1559029196</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>705413</requestid>
+  </revision>
+</revisionlist>

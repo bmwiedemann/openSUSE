@@ -1,0 +1,5 @@
+<package name="yast2-cluster" project="openSUSE:Factory">
+  <title>Configuration tool for HA clusters</title>
+  <description>YaST2 configuration tool to configure HA clusters</description>
+  <devel project="YaST:Head" package="yast2-cluster"/>
+</package>

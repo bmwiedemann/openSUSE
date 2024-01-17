@@ -1,0 +1,88 @@
+-------------------------------------------------------------------
+Wed Oct 25 05:04:37 UTC 2023 - ming li <mli@suse.com>
+
+- update to 2.7.5:
+  * fix workaround Amazon sources 503 error
+
+-------------------------------------------------------------------
+Mon Feb 27 21:50:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.7.4:
+  * crunch using oxipng if available
+  * improve FLAC cover tag compatibility
+  * update UA to fix Amazon sources 503 errors
+
+-------------------------------------------------------------------
+Mon Jan  2 13:47:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.7.3:
+  * fix error logs when closing eventloop
+  * exclude non-CD covers 
+
+-------------------------------------------------------------------
+Sun Dec  4 12:04:08 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.7.2:
+  * fix: remove fake-useragent dependency because of lack of API stability
+  * fix: version fake-useragent cache file
+  * fix: pre-commit URL 
+
+-------------------------------------------------------------------
+Mon Nov 14 15:24:02 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 2.7.0
+  * Support embedding album art in APEv2 tags
+  * fix: unzip overwrite prompt
+  * feat: allow choosing cover sources with -s/--cover-sources
+  * feat: add Itunes cover source
+  * officially support Python 3.10
+  * drop Python 3.6 support
+
+-------------------------------------------------------------------
+Wed May 19 19:37:39 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.4.0
+  * Fix embedding cover in files without tags
+  * drop Python 3.5 + officially support Python 3.9
+  * Set PIL flag to allow loading partial images
+  * Improve handling of APEv2 tags
+
+-------------------------------------------------------------------
+Sat Oct 24 08:24:06 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.3.4
+  * Workaround bitarray.bitdiff deprecation
+
+-------------------------------------------------------------------
+Fri Aug 21 17:29:20 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.3.3:
+  * Fix tqdm_logging thread safety 
+
+-------------------------------------------------------------------
+Wed Jul 29 20:29:21 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.3.2
+  * Fix tests
+
+-------------------------------------------------------------------
+Sat Jun 13 11:19:24 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.3.0
+  * Add Deezer cover source
+
+-------------------------------------------------------------------
+Sat Mar 21 14:41:08 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.3
+- Use github source URL
+
+-------------------------------------------------------------------
+Fri Apr 26 12:29:44 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.1.9
+
+-------------------------------------------------------------------
+Fri Nov 17 12:50:20 UTC 2017 - alarrosa@suse.com
+
+- Initial version of sacad 1.9.0

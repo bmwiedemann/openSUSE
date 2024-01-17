@@ -1,0 +1,110 @@
+-------------------------------------------------------------------
+Tue Sep 13 09:27:12 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.3:
+  * Workaround for glibc 2.36 sys/mount.h
+  * ioping: add RWF_HIPRI
+  * ioping: add "make static"
+  * ioping: print notice "slow"/"fast" when twice slower/faster than average
+  * ioping: cleanup timing notice
+  * ioping: fix mingw build
+  * ioping: add option -burst
+  * ioping: include stdbool
+  * ioping: restore CPPFLAGS in makefile
+  * ioping: use 64-bit printf format
+  * ioping: switch mingw build to 64-bit and ucrt
+  * ioping: retrive device size and name for windows
+  * ioping: use F_FULLFSYNC for OSX
+  * ioping: move fdatasync after write out of make_request()
+  * ioping: implement O_SYNC for windows by FILE_FLAG_WRITE_THROUGH
+  * ioping: fallback from non-cached to direct only for reads
+  * ioping: rename global target fd variable
+  * ioping: add option -e, -entropy for deterministic randomization
+  * ioping: add support nowait I/O (RWF_NOWAIT)
+  * ioping: print help and version into stdout
+  * ioping: add option -I|-time to print current time
+  * ioping: describe json format in manpage
+  * ioping: add human-readable localtime into json output
+
+-------------------------------------------------------------------
+Fri Mar 13 13:29:05 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.2:
+  * ioping: add -r, -rate-limit
+  * ioping: option -J|-json for printing JSON
+  * ioping: add option -a|-warmup
+  * ioping: add long options
+  * ioping: print filesystem size for file or directory target
+  * ioping.1: raw statisitics in nanoseconds
+
+-------------------------------------------------------------------
+Fri Mar 24 18:16:05 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.0:
+  * ioping: update changelog
+  * ioping: cleanup statistics
+  * ioping: allow fractional values in arguments
+  * ioping: print total requests count in raw statistics
+  * ioping: ignore first and classify other requests
+  * ioping: add read-write mode
+  * ioping: add option for speed limit
+  * ioping: print total time, speed and count of requests
+  * ioping: add mkostemp
+  * ioping: add O_SYNC and O_DSYNC modes
+  * ioping: call fadvise(RANDOM) for random I/O
+  * ioping: remove fdatasync test before oprations
+  * Merge pull request #29 from vapier/master
+  * Makefile: do not strip while installing
+  * Makefile: make it easier to override default optimization settings
+  * Makefile: respect CPPFLAGS when compiling
+  * ignore generated files
+  * ioping: include sys/sysmacros.h for makedev
+  * ioping: use xorshift128+ for randomization
+  * Makefile: fix mac detection
+  * Makefile: no -lrt for mac
+  * ioping: no clock_gettime for mac
+  * travis-ci: enable osx
+  * ioping: link mingw without -lrt
+  * ioping: link with -lrt
+  * travis-ci: add .travis.yml
+  * Makefile: add test target
+  * ioping: switch to nanosecond precision
+  * Makefile: rename README to README.md
+  * Merge branch 'patch-1' of https://github.com/davidak/ioping
+  * README.md: update formatting
+  * Merge pull request #27 from jgrizou/master
+  * Rename README to README.md
+  * Update README
+  * add link to Nix expression
+  * ioping: update changelog
+  * ioping: use long long for count of requests
+  * ioping: add option -t for detecting cache hits
+  * ioping: use cached direct I/O by default if non-cached isn't supported
+  * ioping: add windows "overlapped" aio
+  * ioping: declare windows have direct I/O
+  * ioping: open files with CreateFile on windows
+  * ioping: get more randomness on windows
+  * ioping: do not override custom interval and deadline by -R
+  * Makefile: add top directory into binary archives
+  * ioping: keep VERSION right in ioping.c
+  * ioping: update help and manpage
+  * ioping: update README
+  * ioping: fix several integer overflows
+  * ioping: handle big requests on linux
+  * ioping: always respect explicitly set size
+  * ioping: print amount of data written/read
+  * ioping: print io run-time instead of real-time
+	* ioping: expand all symlinks in device path
+
+-------------------------------------------------------------------
+Fri Oct 28 12:00:23 UTC 2016 - jengelh@inai.de
+
+- Summary fix
+
+-------------------------------------------------------------------
+Tue Oct 25 13:19:54 UTC 2016 - mpluskal@suse.com
+
+- Cleanup spec file
+- Update url
+- Package based on home:borzz/ioping
+

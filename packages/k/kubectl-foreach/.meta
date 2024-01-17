@@ -1,0 +1,5 @@
+<package name="kubectl-foreach" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:kubic" package="kubectl-foreach"/>
+</package>

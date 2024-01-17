@@ -1,0 +1,14 @@
+diff --git a/lib/tomoe-xml-parser.c b/lib/tomoe-xml-parser.c
+index a9e458b..fe50485 100644
+--- a/lib/tomoe-xml-parser.c
++++ b/lib/tomoe-xml-parser.c
+@@ -441,7 +441,7 @@ tomoe_xml_parser_parse_dictionary_file (const gchar *filename,
+     f = fopen (filename, "rb");
+     if (!f) {
+         g_warning ("failed to open dictionary file %s: %s", filename,
+-                   sys_errlist[errno]);
++                   strerror(errno));
+     }
+     g_return_val_if_fail (f, FALSE);
+ 
+

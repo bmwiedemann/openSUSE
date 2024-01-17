@@ -1,0 +1,111 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a5916ba2bad9823940d7bc4a63e90b59</srcmd5>
+    <version>4.106</version>
+    <time>1333389134</time>
+    <user>coolo</user>
+    <comment>Moving M17N/sil-charis to M17N:fonts/sil-charis-fonts.</comment>
+    <requestid>112018</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>995045cd54c0049c556a9aa4853d548d</srcmd5>
+    <version>4.106</version>
+    <time>1338017328</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>122182</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>995045cd54c0049c556a9aa4853d548d</srcmd5>
+    <version>4.106</version>
+    <time>1340184216</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>f5a65d6ee970494a239dbd4f69cc8f2d</srcmd5>
+    <version>4.106</version>
+    <time>1347619086</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>133982</requestid>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>f5a65d6ee970494a239dbd4f69cc8f2d</srcmd5>
+    <version>4.106</version>
+    <time>1359110405</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>f5a65d6ee970494a239dbd4f69cc8f2d</srcmd5>
+    <version>4.106</version>
+    <time>1379664678</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>deee821a780dd6bbb459c307a9fb960e</srcmd5>
+    <version>4.114</version>
+    <time>1397216557</time>
+    <user>coolo</user>
+    <comment>update to 4.114, which for me fixes the use of this font with graphite in LibreOffice (forwarded request 229573 from cornelisbb)</comment>
+    <requestid>229640</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>1115558fbbfeec762075180b0c25739c</srcmd5>
+    <version>4.114</version>
+    <time>1400255782</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>233718</requestid>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>1115558fbbfeec762075180b0c25739c</srcmd5>
+    <version>4.114</version>
+    <time>1409303366</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4f6bb216a5c259d1b36dd757fb1b59e5</srcmd5>
+    <version>5.000</version>
+    <time>1427736692</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>292909</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>ee16032da98fe025db60adec744627fb</srcmd5>
+    <version>5.000</version>
+    <time>1618775079</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixed URL in spec (forwarded request 885486 from susnux)</comment>
+    <requestid>885501</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>278dacd118bd80b648505a7c3d67544c</srcmd5>
+    <version>6.001</version>
+    <time>1628751679</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>911207</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0771ae7bf03477e825490ca17f572d56</srcmd5>
+    <version>6.101</version>
+    <time>1645629951</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.101:
+  * Maintenance release (forwarded request 956609 from cornelisbb)</comment>
+    <requestid>956690</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>01f53b915b33be766b4fc4538e48bbe3</srcmd5>
+    <version>6.200</version>
+    <time>1675516298</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1063074</requestid>
+  </revision>
+</revisionlist>

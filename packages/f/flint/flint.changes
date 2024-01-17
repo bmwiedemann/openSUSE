@@ -1,0 +1,257 @@
+-------------------------------------------------------------------
+Fri Nov 10 12:20:30 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.0.1
+  * A few build fixes
+  * n_factor_ecm_select_curve: fix rare arithmetic bug and
+    fix memory leak
+
+-------------------------------------------------------------------
+Sat Oct 21 00:32:33 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.0.0
+  * The following libraries have been merged into FLINT and are no
+    longer maintianed as separate libs: arb-2.23, calcium-0.4,
+    antic-0.2.5. The API is largely backwards-compatible but there
+    are some changes to rarely-used and internal functions,
+    documented in history.rst.
+
+-------------------------------------------------------------------
+Fri Apr  7 20:54:01 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update homepage/source URLs.
+
+-------------------------------------------------------------------
+Tue Jul  5 09:34:01 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.9.0
+  * Add Eulerian polynomials
+  * Support "multivariate" polynomials with zero variables
+  * Improve Stirling numbers of both kinds
+  * Speed up numerous fmpz functions for small inputs
+  * Speedups to nmod arithmetic
+  * Improve nmod_mat LU decomposition
+  * Speed up Hermite polynomials
+  * Add n-th derivative for Z[x] and Q[x]
+  * Improve fq_default module (nmod is now used where optimal)
+  * Add sqrt functions for numerous polynomial/series modules and
+    finite fields
+  * Add FFT matrix multiplication
+  * Improve LLL for general use
+  * Add matrix-vector products over Q
+  * Add can_solve function for fmpq_mat, handling
+    non-square/singular matrices
+
+-------------------------------------------------------------------
+Tue Apr 26 08:33:32 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.8.5
+  * Fix unspecified serious bug in LLL
+
+-------------------------------------------------------------------
+Thu Apr 21 10:03:05 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.8.4
+  * Fix a serious bug in nmod_poly_xgcd_hgcd, nmod_poly_xgcd,
+    fmpz_poly_xgcd_modular, fmpz_poly_xgcd, fmpq_poly_xgcd for
+    polynomials of length >= 340.
+  * Fix a serious big in fmpz_mod_poly_xgcd for polynomials of
+    large length
+  * Fix an assertion failure in fmpz_mat_solve_fflu (only
+    relevant if asserts enabled)
+  * Fix some bugs on 32 bit machines
+  * Fix bug in nmod_mpoly_factor (returned 0 for some
+    factorisations)
+
+-------------------------------------------------------------------
+Mon Nov  1 13:16:41 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to release 2.8.2
+  * New fq_default module which combines existing finite fields
+  * Speedups for linear algebra when using BLAS and/or threading
+  * New series expansions with coefficients in QQ
+  * Faster CRT
+  * New fmpz_mod_mpoly module
+  * Polynomial factoring improvements over ZZ
+  * Add fmpz_mat_can_solve_fflu and fmpz_mat_can_solve
+  * Implement nmod_mat_det_howell
+  * Add fmpz_mod_poly_divides, fmpz_divides, n_divides, nmod_poly_divides
+  * Interface for multiplying matrices by vectors and arrays
+  * Nearest Euclidean division
+  * Subresultant GCD
+  * XGCD over ZZ with canonical Bezout coefficients
+  * Add fmpz_mpoly resultant and discriminant
+  * Add deprecations list
+  * Add FLINT_SGN macro
+  * Speedups for series computations
+  * Improve Taylor shift
+  * Numerous bug fixes and speedups
+
+-------------------------------------------------------------------
+Fri May 07 08:41:53 UTC 2021 - Wang Jun <jgwang@suse.com>
+
+- Update to release 2.7.1
+  * Fix build bug due to missing test files
+  * Fix bug in multivariate factoring when there are more than six factors
+  * Fix issue when using MPIR 3.0.0 on Win64 with command line build
+  * Fix bug in fmpz_mod_poly_div_series
+  * Fix some broken asserts
+  * Support standard GNU installation directories in CMake build
+  * Fix stack overflow with ICC
+
+-------------------------------------------------------------------
+Thu Dec 24 11:03:58 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.7.0
+  * Multivariate factorisation
+  * Square root and square testing for finite fields
+  * Square root and square testing for multivariates
+  * Zassenhaus factoring speedups (incl. degree pruning)
+  * Fast factorisation of cubic univariate polynomials
+  * Add context objects to fmpz_mod_poly functions
+  * Use BLAS for matrix multiplication over Z/nZ (small n)
+  * Linear solving for non-square/singular matrices (can_solve)
+  * Speed up factorisation over Z/nZ (for multiprecision n)
+
+-------------------------------------------------------------------
+Tue Sep 22 11:56:18 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Add header file dependencies to flint-devel
+
+-------------------------------------------------------------------
+Sat Aug 29 22:49:20 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to version 2.6.3 [boo#1169283]
+  * New features:
+  * Multivariate polynomials over most standard rings (sparse
+    distributed)
+  * APR-CL primality proving
+  * Elliptic Curve integer factoring
+  * Pollard rho integer factoring
+  * p+1 integer factoring
+  * Best of Breed smooth & general integer factoring routine
+  * Howell and Strong Echelon form
+  * Möller–Granlund precomputed inverses
+  * Fibonacci polynomials
+  * sqrt of series and polynomials
+  * Division of series over Z
+  * Shifted Legendre polynomials, Laguerre polynomials, Gegenbauer
+    polys.
+  * Threading of FFT for integer and polynomial multiplication over
+    Z; threading of quadratic sieve for integer factoring; threading
+    for multivariate polynomial multiplication, division and GCD;
+    threaded multiplication of matrices mod p.
+  * For more, see the NEWS file in the flint-devel subpackage.
+- Enable integration with libntl
+- Drop 0001-build-provide-autotools-files.patch
+
+-------------------------------------------------------------------
+Sun May 28 07:21:16 UTC 2017 - bwiedemann@suse.com
+
+- Sort input files to make build reproducible (boo#1041090)
+
+-------------------------------------------------------------------
+Sun Nov 13 19:15:35 UTC 2016 - jengelh@inai.de
+
+- Adjust 0001-build-provide-autotools-files.patch for new
+  NTL-10.x header file names.
+
+-------------------------------------------------------------------
+Sun Mar 13 09:43:42 UTC 2016 - jengelh@inai.de
+
+- Update to git snapshot of the master branch
+  [marked as 3.0~ in openSUSE due to lack of any prospect on what
+  the version will be]
+* Add implementation of Moller-Granlund invert_limb
+* Add implementations of n_div2_preinv and n_divrem2_preinv.
+* Add primitive flint exception mechanism.
+* Add n_powmod2_ui_preinv
+* Add exception for impossible inverse to n_invmod and remove resulting exceptions throughout Flint.
+* Remove smooth factorisation since it is completely broken.
+- Remove 0002-compile-fixes.diff
+
+-------------------------------------------------------------------
+Sat Nov 14 12:39:56 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 2.5.2
+* LLL (rational, Nguyen-Stehle, from Gram matrix, with_removal,
+  Storjohann/ULLL)
+* Hermite normal form (naive, xgcd, Domich-Kannan-Trotter,
+  Kannan-Bachem, Pernet-Stein)
+* Smith normal form (diagonal, Kannen-Bachem, Iliopoulos)
+* Paterson-Stockmeyer algorithm
+* modular resultant; hgcd resultant; polynomial discriminant
+* multithreaded multimodular Taylor shift
+* multithreaded Brent-Kung composition
+* multithreaded Kaltofen-Shoup distinct degree factorisation
+* multiplication based reduced row echelon form
+* place inline functions in library for foreign function interfaces
+* Primality tests for large integers (Pocklington, Morrison)
+* Probable prime tests for large integers (Lucas, Baillie-PSW,
+  strong-psp, Brillhart-Lehmer-Selfridge)
+* CRT for large integers
+* Dixon algorithm for nullspace
+* Brent-Kung composition in irreducibility and distinct degree
+  factorisation
+* floating point QR decomposition
+* Schwarz-Rutishauser Gram-Schmidt algorithm
+* Ogita-Rump-Oishi dot product
+* Bodrato matrix squaring
+* matrix concatenation functions
+* additional functions for returning factor of modulus in polys
+  over Z/nZ
+* Hadamard matrix construction
+* series addition/subtraction
+* teach flint_printf/sprintf about explicit width format specifiers
+
+-------------------------------------------------------------------
+Fri Jun 26 11:06:51 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 2.4.5
+* fixed a severe bug in flint's fmpz_poly_gcd_heuristic
+
+-------------------------------------------------------------------
+Thu Feb 19 12:41:41 UTC 2015 - jengelh@inai.de
+
+- Add 0002-compile-fixes.diff to fend off improper usage of NTL
+  headers.
+
+-------------------------------------------------------------------
+Mon Oct 20 15:59:39 UTC 2014 - schwab@suse.de
+
+- Don't use unknown option -mno-popcnt
+
+-------------------------------------------------------------------
+Sun Aug 10 05:42:27 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 2.4.4
+* Fix a bug in the ARM assembly
+
+-------------------------------------------------------------------
+Fri Feb  7 12:25:48 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 2.4.1
+* C++ expressions template wrapper
+* Fast factorisation of polynomials over Z/nZ
+* improved p-adics
+* polynomials/matrices over p-adics
+* qadics
+* Finite fields (small and large F_q), polynomials/matrices over F_q
+* Finite fields with Zech logarithm representation
+* Fast factorisation of polynomials over F_q
+* Faster Brent-Kung modular composition
+* New prime sieving code
+* Lambert-W function
+* Precomputed inverses for polynomials and large integers
+* Williams' P+1 integer factoring algorithm
+* Harvey's KS2/KS4 polynomial multiplication  
+* Faster primality testing up to 64 bits
+* Support for GMP
+* Support for Boehm-Demers-Weiser GC
+* Support for flint extension modules
+
+-------------------------------------------------------------------
+Thu Dec  6 16:11:21 UTC 2012 - jengelh@inai.de
+
+- Initial package (version 2.3+, revision 375f4c8696b4)
+  for build.opensuse.org

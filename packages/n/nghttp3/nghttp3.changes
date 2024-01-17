@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Thu Dec 28 21:06:49 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.0:
+  * Bump clang to 15
+  * Bump clang-format to 15
+  * windows: Fix warnings
+  * Use __FILE_NAME__ instead of __FILE__
+  * Add nghttp3_pri_parse_priority
+  * Define varint identifiers as macros
+  * Fix doc
+
+-------------------------------------------------------------------
+Tue Nov  7 12:33:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- Initial package (1.0.0)

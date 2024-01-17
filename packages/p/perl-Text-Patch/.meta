@@ -1,0 +1,6 @@
+<package name="perl-Text-Patch" project="openSUSE:Factory">
+  <title>Patches text with given patch</title>
+  <description>Text::Patch combines source text with given diff (difference) data. Diff data is produced by Text::Diff module or by the standard diff utility (man diff, see -u option).
+</description>
+  <devel project="devel:languages:perl" package="perl-Text-Patch"/>
+</package>

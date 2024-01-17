@@ -1,0 +1,4 @@
+#!/bin/bash
+
+zypper -n clean
+rm -rf /var/log/*

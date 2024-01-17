@@ -1,0 +1,90 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c66c56d2d95c43ec8a38df1fdead05db</srcmd5>
+    <version>2.2.3</version>
+    <time>1585261965</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain sacad in Factory</comment>
+    <requestid>788344</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c31951fde42d10a3719cbb299c1528da</srcmd5>
+    <version>2.3.0</version>
+    <time>1592152433</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>814322</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e8ae9a5a84bee5a9e0b867ad3ad3d966</srcmd5>
+    <version>2.3.2</version>
+    <time>1596457045</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>823993</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>956a912825dd6f0799c4ac135726365e</srcmd5>
+    <version>2.3.3</version>
+    <time>1600801428</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>828654</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>87905e54e6f51a0e96c0bf8ddd5c06c2</srcmd5>
+    <version>2.3.4</version>
+    <time>1603725712</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844019</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>414429d0bf6dc6d6e7fb0dcfbb228dfc</srcmd5>
+    <version>2.4.0</version>
+    <time>1621721171</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>894932</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7fc1ba0d8a035d37fff6cb3c7c931d5b</srcmd5>
+    <version>2.7.0</version>
+    <time>1668514735</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1035703</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0842aeba4cfa3c38123bde409434b32d</srcmd5>
+    <version>2.7.2</version>
+    <time>1670162347</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1039969</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>93caadf6b573ce6120715c836ccf6cbf</srcmd5>
+    <version>2.7.3</version>
+    <time>1672754707</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1046245</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0506a1d0d0582c3f01fc8c8950e15f63</srcmd5>
+    <version>2.7.4</version>
+    <time>1678125337</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1069537</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>bfc751cf959c8e026dde8b52fc1443b8</srcmd5>
+    <version>2.7.5</version>
+    <time>1698249832</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1120180</requestid>
+  </revision>
+</revisionlist>

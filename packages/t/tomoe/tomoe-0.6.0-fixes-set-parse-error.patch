@@ -1,0 +1,18 @@
+Index: tomoe-0.6.0/lib/tomoe-xml-parser.c
+===================================================================
+--- tomoe-0.6.0.orig/lib/tomoe-xml-parser.c
++++ tomoe-0.6.0/lib/tomoe-xml-parser.c
+@@ -80,9 +80,9 @@ set_parse_error (GMarkupParseContext *co
+                 "Invalid content at line %d char %d of %s.",
+                 line, chr, data->filename);
+ 
+-    *error = g_error_new (G_MARKUP_ERROR,
+-                          G_MARKUP_ERROR_INVALID_CONTENT,
+-                          buf);
++    *error = g_error_new_literal (G_MARKUP_ERROR,
++                                  G_MARKUP_ERROR_INVALID_CONTENT,
++                                  buf);
+ }
+ 
+ static void
+

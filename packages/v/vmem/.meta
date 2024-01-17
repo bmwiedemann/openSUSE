@@ -1,0 +1,5 @@
+<package name="vmem" project="openSUSE:Factory">
+  <title>malloc-like volatile allocations</title>
+  <description>libvmem and libvmmalloc are a couple of libraries for using persistent memory for malloc-like volatile uses. </description>
+  <devel project="hardware:nvdimm" package="vmem"/>
+</package>

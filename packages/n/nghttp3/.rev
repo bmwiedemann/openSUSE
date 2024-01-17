@@ -1,0 +1,25 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a6e424302bd1e70b7f5944916fe2a0f4</srcmd5>
+    <version>1.0.0</version>
+    <time>1700598699</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1127893</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3f8eb724d5e3cbaf229fc6255a6c8e38</srcmd5>
+    <version>1.1.0</version>
+    <time>1704280986</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.0:
+  * Bump clang to 15
+  * Bump clang-format to 15
+  * windows: Fix warnings
+  * Use __FILE_NAME__ instead of __FILE__
+  * Add nghttp3_pri_parse_priority
+  * Define varint identifiers as macros
+  * Fix doc</comment>
+    <requestid>1135546</requestid>
+  </revision>
+</revisionlist>

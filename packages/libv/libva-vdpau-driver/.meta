@@ -1,0 +1,5 @@
+<package name="libva-vdpau-driver" project="openSUSE:Factory">
+  <title>libva-vdpau-driver</title>
+  <description></description>
+  <devel project="X11:XOrg" package="libva-vdpau-driver"/>
+</package>

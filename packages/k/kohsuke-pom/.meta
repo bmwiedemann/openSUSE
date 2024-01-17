@@ -1,0 +1,5 @@
+<package name="kohsuke-pom" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="kohsuke-pom"/>
+</package>

@@ -1,0 +1,7 @@
+<package name="perl-CLASS" project="openSUSE:Factory">
+  <title>Alias for __PACKAGE__</title>
+  <description>CLASS and $CLASS are both synonyms for __PACKAGE__. Easier to type.
+
+$CLASS has the additional benefit of working in strings.</description>
+  <devel project="devel:languages:perl" package="perl-CLASS"/>
+</package>

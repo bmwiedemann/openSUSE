@@ -1,0 +1,6 @@
+<package name="tomoe" project="openSUSE:Factory">
+  <title>Japanese handwriting recognition engine</title>
+  <description>Japanese handwriting recognition engine (Tegaki Online MOji-ninshiki
+Engine)</description>
+  <devel project="M17N" package="tomoe"/>
+</package>

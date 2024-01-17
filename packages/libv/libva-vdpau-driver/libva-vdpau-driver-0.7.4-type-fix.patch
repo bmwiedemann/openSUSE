@@ -1,0 +1,20 @@
+diff -u -r libva-vdpau-driver-0.7.4.orig/src/vdpau_video.h libva-vdpau-driver-0.7.4/src/vdpau_video.h
+--- libva-vdpau-driver-0.7.4.orig/src/vdpau_video.h	2019-09-05 15:56:54.085894000 +0200
++++ libva-vdpau-driver-0.7.4/src/vdpau_video.h	2019-09-05 15:57:27.503006000 +0200
+@@ -269,16 +269,6 @@
+     VASurfaceID        *surface
+ ) attribute_hidden;
+ 
+-// vaCreateSurfaceFromV4L2Buf
+-VAStatus
+-vdpau_CreateSurfaceFromV4L2Buf(
+-    VADriverContextP    ctx,
+-    int                 v4l2_fd,
+-    struct v4l2_format *v4l2_fmt,
+-    struct v4l2_buffer *v4l2_buf,
+-    VASurfaceID        *surface
+-) attribute_hidden;
+-
+ // vaCopySurfaceToBuffer
+ VAStatus
+ vdpau_CopySurfaceToBuffer(

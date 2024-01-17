@@ -1,0 +1,119 @@
+-------------------------------------------------------------------
+Tue Nov 28 07:06:37 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.1.2:
+  * This release contains a change only to the tests, which improves
+    the detection of glibc.
+
+-------------------------------------------------------------------
+Wed Aug  2 12:29:21 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.1.1:
+  * This release fixes the -N flag of paperconf.
+
+-------------------------------------------------------------------
+Thu Apr 20 07:37:34 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.1.0:
+  * This release reintroduces the old ‘paperconf’ utility, for
+    backwards compatibility only.
+
+-------------------------------------------------------------------
+Mon Feb 27 10:40:11 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.0.10:
+  * minor build fix.
+
+-------------------------------------------------------------------
+Mon Feb 20 13:58:04 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- update to 2.0.9:
+  * Tweak the documentation of how paper sizes are set to make it
+    easier to find and more accurate.
+  * Removes the requirement for help2man at build time
+  * Various fixes.
+
+-------------------------------------------------------------------
+Thu Dec  8 20:33:45 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.4:
+  * don't hardcode make binary name in tests  
+
+-------------------------------------------------------------------
+Mon Nov  7 15:45:30 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.0.3:
+  * avoid error in paperconfig
+  * paperinit: fix a space leak in case of error parsing paperspecs
+  * paper.c: make unit_list const char *, to fix a warning
+  * paper.c: fix a trivial leak
+  * fix segfault when HOME is unset (thanks, Werner Fink)
+  * fix a segfault in systempapername() (fix from Werner Fink, thanks!)
+  * hardwire papersize configuration filename to ‘papersize’
+- Remove upstreamed libpaper-foul.patch
+
+-------------------------------------------------------------------
+Wed Aug 24 11:55:26 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Do not assume that HOME is set in the environment 
+
+-------------------------------------------------------------------
+Wed Aug 24 11:14:10 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- As told: require libpaper for libpaper1 to get paperspecs back 
+
+-------------------------------------------------------------------
+Wed Aug 24 10:11:50 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Ignore existing /etc 
+
+-------------------------------------------------------------------
+Wed Aug 24 09:19:40 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add required configure paperspecs to /etc as otherwise the
+  libpaper.so.1.2.2 and all tools like paper(1) to not know
+  any paper layout nor the size of those
+
+-------------------------------------------------------------------
+Wed Aug 24 08:28:31 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Correct patch libpaper-foul.patch to patch the correct file! 
+
+-------------------------------------------------------------------
+Wed Aug 24 07:41:07 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch libpaper-foul.patch
+  * Do not expect that defaultpapername() returns a default paper
+    size but also NULL (nada) 
+
+-------------------------------------------------------------------
+Mon Aug 22 12:37:32 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- The new libpaper also conflicts with paper directly, as
+  /etc/paperspecs used to be in paper. Add split provides for the
+  move from paper to libpaper for /etc/paperspecs.
+
+-------------------------------------------------------------------
+Mon Aug 22 08:54:13 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Try to fix upgrade issues:
+  + Move paper provides/obsoletes to libpaper-tools sub-package:
+    the paper binary is there, making this the most correct place.
+  + Have libpaper conflict with libpaper-utils: the old package
+    had doc files in /usr/share/doc/packages/libpaper, which now
+    conflicts.
+- Do not package ChangeLog file: it only has a reference to 'check
+  git history' (not even with a link to the repository).
+
+-------------------------------------------------------------------
+Wed Aug  3 06:35:24 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.2.2:
+  * Allow the user paperspecs file to be invalid.
+  * Make systempapername() return a value that must be freed by the caller.
+  * Set free_xdg_config_home precisely when needed.
+
+-------------------------------------------------------------------
+Mon Jul  4 07:59:41 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Initial OBS release. This package provides and obsoletes paper.

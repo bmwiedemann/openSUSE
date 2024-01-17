@@ -1,0 +1,5 @@
+<package name="container-selinux" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="security:SELinux" package="container-selinux"/>
+</package>

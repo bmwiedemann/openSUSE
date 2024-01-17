@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7355e75a9c6d6b2e547f55f28fd0fc0a</srcmd5>
+    <version>3.2.1</version>
+    <time>1554281419</time>
+    <user>dimstar_suse</user>
+    <comment>New package</comment>
+    <requestid>688998</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>12b387f0a150843db455f117a6bcf04e</srcmd5>
+    <version>3.2.1</version>
+    <time>1647806183</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source/target levels 8</comment>
+    <requestid>963312</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>07debb775ef1a2ea08c9429a375eb59e</srcmd5>
+    <version>3.3.3</version>
+    <time>1651180093</time>
+    <user>dimstar_suse</user>
+    <comment>3.3.3; fixes bsc#1198833, CVE-2022-29599</comment>
+    <requestid>973672</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>e8dba35bda73269977cd957c5c2b4fda</srcmd5>
+    <version>3.3.3</version>
+    <time>1653503686</time>
+    <user>dimstar_suse</user>
+    <comment>Sync changes with sle</comment>
+    <requestid>979206</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>82dc9c0357ba2944654d74f64c880aab</srcmd5>
+    <version>3.3.4</version>
+    <time>1683213006</time>
+    <user>dimstar_suse</user>
+    <comment>3.3.4</comment>
+    <requestid>1084298</requestid>
+  </revision>
+</revisionlist>

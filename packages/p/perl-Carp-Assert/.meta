@@ -1,0 +1,5 @@
+<package name="perl-Carp-Assert" project="openSUSE:Factory">
+  <title>Executable comments</title>
+  <description>Carp::Assert is intended for a purpose like the ANSI C library assert.h</description>
+  <devel project="devel:languages:perl" package="perl-Carp-Assert"/>
+</package>
