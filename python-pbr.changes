@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jan  2 22:34:18 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- require setuptools
+
+-------------------------------------------------------------------
+Mon Nov 27 11:56:49 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.0.0:
+  * build: Use kwargs
+  * Add support for PEP-660
+  * Fix PBR integration testing
+  * Replace imp with importlib.machinery
+  * Add release note for build\_sphinx removal
+  * Use \_ instead of - in setup.cfg directives
+  * Remove sphinx doc building integration
+
+-------------------------------------------------------------------
 Thu May  4 07:09:44 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Support Sphinx 7.0 by skipping of some tests that depend
@@ -27,7 +44,7 @@ Thu Apr 13 22:42:57 UTC 2023 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Tue Apr  4 02:27:52 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Remove unneeded BuildRequires on pep517. 
+- Remove unneeded BuildRequires on pep517.
 
 -------------------------------------------------------------------
 Sat Jan 21 09:57:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
@@ -41,7 +58,7 @@ Sat Jan 21 09:57:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Fri Oct 28 19:46:28 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to 5.11.0 
+- Update to 5.11.0
   * Fix symbol identification in multiline message
   * Replace deprecated readfp method with read_file
 
@@ -72,7 +89,7 @@ Tue Feb 22 09:04:17 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * Don't test with setuptools local distutils
   * Use context blocks for open() calls in packaging
 - remove remove_mock.patch (upstream)
-   
+
 -------------------------------------------------------------------
 Mon Dec  6 10:23:57 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
@@ -253,7 +270,7 @@ Tue Dec  4 12:51:21 UTC 2018 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Wed Nov  7 11:22:59 UTC 2018 - mmnelemane@suse.com
 
-- Fix for error "invalid option --#" in SLE_12_SP4 build. 
+- Fix for error "invalid option --#" in SLE_12_SP4 build.
 
 -------------------------------------------------------------------
 Mon Oct 15 13:23:36 UTC 2018 - Matej Cepl <mcepl@suse.com>
@@ -286,7 +303,7 @@ Sun Oct  7 06:34:26 UTC 2018 - Matěj Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Fri Sep 14 21:18:14 UTC 2018 - dmueller@suse.com
 
-- add 0001-Skip-test-for-testr-hook-being-installed-when-testr-.patch 
+- add 0001-Skip-test-for-testr-hook-being-installed-when-testr-.patch
 
 -------------------------------------------------------------------
 Tue Sep  4 08:47:32 UTC 2018 - dmueller@suse.com
@@ -747,7 +764,7 @@ Thu Apr 16 08:53:20 UTC 2015 - hpj@urpla.net
   * Stop filtering out argparse
   * Remove mirror testing from the integration script
 - Changes from 0.10.1
-  * Prefix git suffixes with + instead of 
+  * Prefix git suffixes with + instead of
 - fix Sphinx config.init_values fallout
 - add update-alternatives
 - remove outdated patches
@@ -924,7 +941,7 @@ Thu Jul  4 07:29:43 UTC 2013 - speilicke@suse.com
 -------------------------------------------------------------------
 Tue Jul  2 16:06:42 UTC 2013 - dmueller@suse.com
 
-- update description 
+- update description
 
 -------------------------------------------------------------------
 Wed Jun 26 15:29:49 UTC 2013 - cdenicolo@suse.com
@@ -935,7 +952,7 @@ Wed Jun 26 15:29:49 UTC 2013 - cdenicolo@suse.com
 -------------------------------------------------------------------
 Wed Jun 26 09:47:22 UTC 2013 - dmueller@suse.com
 
-- remove python-discover dependency for newer distros 
+- remove python-discover dependency for newer distros
 
 -------------------------------------------------------------------
 Fri Jun 21 07:28:12 UTC 2013 - dmueller@suse.com
@@ -949,7 +966,7 @@ Fri Jun 21 07:28:12 UTC 2013 - dmueller@suse.com
 -------------------------------------------------------------------
 Mon Jun 10 13:35:54 UTC 2013 - dmueller@suse.com
 
-- add 0001-Use-pip-instead-of-easy_install-for-installation.patch 
+- add 0001-Use-pip-instead-of-easy_install-for-installation.patch
 
 -------------------------------------------------------------------
 Mon Jun 10 12:01:19 UTC 2013 - dmueller@suse.com

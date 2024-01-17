@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-pbr%{psuffix}
-Version:        5.11.1
+Version:        6.0.0
 Release:        0
 Summary:        Python Build Reasonableness
 License:        Apache-2.0
@@ -34,14 +34,14 @@ Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/pbr/latest/
 Source:         https://files.pythonhosted.org/packages/source/p/pbr/pbr-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-setuptools
+Requires:       python-setuptools >= 64.0.0
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Recommends:     git-core
-Suggests:       python-nose
 Obsoletes:      python-pbr-doc
 BuildArch:      noarch
 %if %{with test}

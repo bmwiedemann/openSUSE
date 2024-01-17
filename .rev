@@ -735,4 +735,36 @@
     <comment></comment>
     <requestid>1084561</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>fa56b59c94e8f45d24d51740120a7291</srcmd5>
+    <version>6.0.0</version>
+    <time>1701121315</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.0.0:
+  * build: Use kwargs
+  * Add support for PEP-660
+  * Fix PBR integration testing
+  * Replace imp with importlib.machinery
+  * Add release note for build\_sphinx removal
+  * Use \_ instead of - in setup.cfg directives
+  * Remove sphinx doc building integration</comment>
+    <requestid>1129112</requestid>
+  </revision>
+  <revision rev="67" vrev="2">
+    <srcmd5>04c3c2f28bea8104d48b0abeca8967c3</srcmd5>
+    <version>6.0.0</version>
+    <time>1704491964</time>
+    <user>dimstar_suse</user>
+    <comment>- require setuptools
+
+- Remove unneeded BuildRequires on pep517.
+- Update to 5.11.0
+- Fix for error &quot;invalid option --#&quot; in SLE_12_SP4 build.
+- add 0001-Skip-test-for-testr-hook-being-installed-when-testr-.patch
+  * Prefix git suffixes with + instead of
+- update description
+- remove python-discover dependency for newer distros
+- add 0001-Use-pip-instead-of-easy_install-for-installation.patch</comment>
+    <requestid>1136312</requestid>
+  </revision>
 </revisionlist>
