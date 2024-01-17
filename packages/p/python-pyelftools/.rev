@@ -101,4 +101,12 @@
 - Intial package</comment>
     <requestid>1133189</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>b28046640431108ce2f2f4d712351620</srcmd5>
+    <version>0.30</version>
+    <time>1705526092</time>
+    <user>anag+factory</user>
+    <comment>- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1139248</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyelftools
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-pyelftools
 Version:        0.30
 Release:        0
@@ -25,7 +25,9 @@ License:        SUSE-Public-Domain
 Group:          Development/Languages/Python
 URL:            https://github.com/eliben/pyelftools
 Source:         https://files.pythonhosted.org/packages/source/p/pyelftools/pyelftools-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
@@ -37,13 +39,13 @@ BuildArch:      noarch
 pyelftools is a pure python library for analyzing ELF files and DWARF debugging information
 
 %prep
-%setup -q -n pyelftools-%{version}
+%autosetup -p1 -n pyelftools-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/readelf.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -66,6 +68,7 @@ pyelftools is a pure python library for analyzing ELF files and DWARF debugging 
 %license LICENSE
 %doc CHANGES
 %python_alternative %{_bindir}/readelf.py
-%{python_sitelib}/*
+%{python_sitelib}/elftools
+%{python_sitelib}/pyelftools-%{version}*-info
 
 %changelog
