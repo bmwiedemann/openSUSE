@@ -1,0 +1,771 @@
+-------------------------------------------------------------------
+Fri Dec 15 22:03:31 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Require extra-cmake-modules at build time
+
+Fri Dec  8 20:48:26 UTC 2023 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Update to version 0.11.0~20231201T052657:
+  * optionally maximise panel size in presence of maximised windows
+- remove -lang tarball to use po files from git instead
+- hardlink svg duplicate with fdupes
+
+-------------------------------------------------------------------
+Thu Aug 11 03:23:49 UTC 2022 - Tranter Madi <trmdi@yandex.com>
+
+-  Remove unused keyring file
+
+-------------------------------------------------------------------
+Sun Jun 19 19:26:44 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 0.11.0~20220619T183501:
+  * support json files from indicators
+  * taks:provide single json metadata file
+  * replace deprecated cmake library
+
+-------------------------------------------------------------------
+Sun Jun 19 09:51:03 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to a git snapshot (48a60c6268):
+  * Better Plasma 5.25 compatibility
+  * Add -lang tarball explicitly
+
+-------------------------------------------------------------------
+Tue Jan 25 10:47:32 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 0.10.8
+  * Multi-Screen: fix docks/panels screen repositioning when the
+    user specifies different screen for dock or panel
+    (kde#448569)
+  * Fix borders identification for autopositioning vertical
+    docks/panels
+  * Fix vertical docks/panels autopositioning which is relevant to
+    top and bottom panels (kde#448519)
+  * Position kwin edges helper window properly on startup after
+    offscreen positioning (kde#448433)
+  * X11: center applets config window on screen
+  * Do not shrink vertical docks/panels on startup after switching
+    from offscreen to onscreen
+  * Make dock and panel work properly when they undo their removal
+
+-------------------------------------------------------------------
+Tue Jan 11 11:47:08 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 0.10.7
+  * Multi-Screen: always trust KWin under X11 in order to set
+    correct struts for panels and docks (kde#447595)
+  * Automatically offset centered applets when the left or right
+    widgets overlap the centered one
+  * WindowsGoBelow: show properly during startup (kde#448099)
+  * KWinEdges: calculate accurately their size and position
+  * Improve applets dragging during rearrange and configure widgets
+    mode
+  * Hide thin tooltips properly at some cases that were stuck
+    (kde#443645)
+  * Fill one pixel gap of justify splitters during rearrange and
+    configure widgets mode
+  * Fix, windows belong to screen whenever they are touching it.
+    This way a window could belong in more than one screens and be
+    taken into account for visibility modes and active window
+    tracking
+  * Remove file extensions for layouts and templates properly in
+    order to identify the layout or template name
+  * Fix build for Freebsd
+  * X11: force OnAllDesktops for all docks and panels during
+    creation (kde#447689)
+  * Fix empty availableScreenRegion broadcast to Plasma
+
+-------------------------------------------------------------------
+Sat Dec 18 14:54:12 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 0.10.6
+  * Fix build with Qt 5.12 (kde#447111)
+  * Initialize windows tracking properly
+
+-------------------------------------------------------------------
+Thu Dec 16 16:57:34 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 0.10.5
+  * Improve startup behavior and reduce visual glitches whenever a
+    dock or panel is first appearing
+  * Prepare code for Plasma LookNFeel packages (kde#446249)
+  * Improve applets dragging behavior when changing their position
+    in a dock or panel
+  * Ignore window states when kwin window manager is showing
+    desktop effect
+  * Reposition vertical docks and panels when surrounding docks and
+    panels are changing their maximum length independent of their
+    visibility mode
+  * Reduce/increase maximum length through canvas ruler even when
+    the minimum length equals the maximum length
+  * Do not update kwin borderless windows behavior when it is not
+    really changed for the current running layouts structure
+  * Copied and duplicated docks or panels should not have
+    AllBorders background enabled with no reason (kde#446903)
+  * Ignore maxlength that equals zero for fillLength applets as Qt
+    already doing (kde#445869)
+  * Support 30bit systems under x11 and not show only a blurred
+    area in that case
+  * Multiscreen: disable struts under x11 for docks or panels that
+    stand between two or more different screens (kde#445595)
+  * Tasks: reassign launchers group properly when a dock or panel
+    view is recreated for any of reasons
+  * Tasks: identify vivaldi audio stream properly and show the
+    audio badge in that case (kde#446828)
+  * Cmd: support --add-dock through command line even when
+    application is not already running (kde#446526)
+  * Cmd: provide option to print all available templates
+  * Cmd: provide option to enable/disable application autostart
+
+-------------------------------------------------------------------
+Sun Dec 12 16:37:32 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Use %suse_version instead of %is_opensuse
+- Add signature file and keyring
+- Update URL, Summary and description
+- Make -lang package optional for git builds
+- Drop redundant recommendation of the -lang package
+
+-------------------------------------------------------------------
+Thu Nov 18 14:31:09 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 0.10.4
+  * Feature Indicators: extend Indicators API in order for
+    indicators to be able to animate their parent icon including
+    when a task launcher is activated
+  * Feature Indicators: expose more Icon properties to indicators
+  * Important: Fix 25secs startup freezes from QDBusInterface
+    desktop geometry calls (kde#444739)
+  * Important: Fix startup delays because KWin was reconfiguring
+    even though it was needed when BorderlessMaximized windows were
+    activated
+  * Important: Remove plasma workarounds that were hiding plasma
+    desktop bug #445495
+  * Wayland: hide black line in the dock/panel center for
+    AlwaysVisible visibility mode (kde#444419)
+  * LastActiveWindow: update last activated window properties when
+    changed
+  * Initialize VirtualDesktopsWrappingAround property in a proper
+    way (kde#444572)
+  * Plasmoid: decouple bouncing launcher animation for task real
+    removal animation
+  * Fix binding loops for Indexer qml ability
+  * Respect applets maximumLength when equals zero
+
+-------------------------------------------------------------------
+Tue Oct 26 09:02:25 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 0.10.3
+  * Support GlobalScale in combination with PLASMA_USE_QT_SCALING
+    properly under X11 environment (kde#444222)
+  * Add CornerMargin option for latte and plasma indicators and
+    expose it through the indicators api (kde#442675)
+  * Unblock visibility mode properly when Meta is used to show an
+    application launcher such as Win11, Simple menu etc.
+    (kde#441053)
+  * Fix focus behavior when applets are requesting input such as
+    notes applet (kde#443236)
+  * Expose indicators iconOffsetX/Y value to applets
+  * Enable/disable "CanBeAboveFullscreenWindows" option properly
+    (kde#443536)
+  * Disable GtkFrameExtents for docks and panels that
+    ByPassWindowManager ("CanBeAboveFullscreenWindows" option)
+    under X11
+  * Draw always a contrasted border for latte indicator
+  * Simplify latte indicator implementation
+  * Enforce RoundToIconSize for all applets always and as such the
+    Items Size is always respected. If the user has blur issues
+    with its icons, he should specify an items size that is
+    provided by its icons theme. For example, 16px., 24px., 36px.,
+    48px.
+  * Identify kickofflegacy applet properly
+  * Fix popup positioning for plasma-style popups when the dock
+    background is using very big corner roundness
+  * Prevent session manager from restoring latte just like
+    Spectacle is already doing
+  * Respect virtual desktops navigation wrapping around option
+  * Expose translations for default dock and panel templates
+    (kde#442435)
+
+-------------------------------------------------------------------
+Mon Sep 13 18:27:27 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 0.10.2
+  * Fix crash from containmentactions loading after KDE Frameworks
+    5.86 (kde#441448)
+  * Fitt's Law fix for vertical panels in justify alignment
+  * Fitt's Law fix for applets touching the screen edge and at the
+    same time using parabolic effect
+  * Hide all context menu actions if the user has chosen it
+  * Add missing translations for docks/panels dialog
+
+-------------------------------------------------------------------
+Wed Aug 25 20:13:37 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 0.10.1
+  * fix autostart crash: do not show settings dialog too early
+    (kde#440731)
+  * fix build for Fedora (kde#440759)
+  * specify product name in KAboutData to receive bug reports
+    correctly at kde bug tracker
+
+-------------------------------------------------------------------
+Tue Aug 10 07:34:54 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Exclude private QML requires
+
+-------------------------------------------------------------------
+Sun Aug  8 12:40:15 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 0.10.0
+  * 2200 commits after version 0.9
+  * plenty of bug fixes and improvements
+  * Highlights:
+    + multiple docks and panels on the same screen edge
+    + floating docks and panels
+    + support background radius and background shadow size
+    + ten different visibility modes
+    + ondemand sidebars support
+    + inform Plasma Desktop about panels and docks geometries
+      (since plasma 5.18)
+    + inform window managers about docks visible area
+      (GTK_FRAME_EXTENTS support)
+    + provide internal Widgets Explorer dialog and thus being able
+      to be used completely in other desktop environments such as
+      GNOME and XFCE
+    + support multiple Latte Tasks in the same dock or panel
+    + improve applets positioning for Justify alignment in latte
+      panels
+    + support latte centric applets that can use parabolic effect
+      easily
+    + support Plasma Margins Area Separators
+    + user can specify custom color scheme per layout
+    + redesign and improve all layouts dialogs
+    + use templates for all layout functionality
+    + provide move/copy/paste functionality for docks and panels
+    + export layouts and docks/panels as templates for public use
+- Remove conditional for obsolete openSUSE versions
+- Use %cmake_build instead of %make_jobs
+
+-------------------------------------------------------------------
+Thu May 20 11:56:49 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 0.9.12
+  * Support Plasma 5.22
+- Drop 0001-Tasks-support-new-private-api-for-Plasma-5.22.patch,
+  merged upstream
+
+-------------------------------------------------------------------
+Mon May 17 08:03:29 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix compatibility with Plasma 5.22:
+  * 0001-Tasks-support-new-private-api-for-Plasma-5.22.patch
+
+-------------------------------------------------------------------
+Wed Apr 15 10:35:27 UTC 2020 - wbauer@tmo.at
+
+- Update to 0.9.11
+  * Fix context menu for classic systray items such as Viber and
+    Telegram (kde#419263)
+  * Fix compatibility with KDE Frameworks 5.38 (kde#419657,
+    kde#419678)
+
+-------------------------------------------------------------------
+Sat Mar 28 17:03:47 UTC 2020 - wbauer@tmo.at
+
+- Update to 0.9.10
+  * Dodge All Windows: work properly after the dock becomes hidden
+    and not show inappropriately when any window touches the dock
+  * Fix mask calculations for NO COMPOSITING environment
+    (kde#418456)
+  * Fix blur for Latte panels when exiting edit mode
+  * Protect LastActiveWindow application data updating in
+    multi-screen environments and dont assign faulty application
+    name and icons to irrelevant last active windows
+  * Fix right click context menu for Group plasmoid. Take note that
+    Group plasmoid can only be used in Single Layout mode and NOT
+    in Multiple Layouts mode. It is scheduled to be fixed in next
+    major stable version
+  * Fix Indicators positioning when a Tasks is bouncing or requires
+    attention
+  * X11: smart way to ignore all plasma popups
+  * Wayland: smart way to ignore all plasma popups but first Plasma
+    needs to update its popups flags in order to work correctly
+  * Support Chromium/Chrome audio channels for Tasks previews
+    and context menu
+
+-------------------------------------------------------------------
+Thu Feb 27 12:27:04 UTC 2020 - wbauer@tmo.at
+
+- Update to 0.9.9
+  * CRITICAL: Initialize properly configuration files during
+    startup (kde#417886)
+  * IMPORTANT: Do not load a Shared Layout as Central when it is
+    already loaded and as such do not mess the MultipleLayouts
+    appearance when a Shared layout should also be used
+    (kde#417886)
+  * [wayland] Do not crash when right clicking Tasks plasmoid
+    (kde#417546)
+  * Update animations speed to support plasma 5.18 new animation
+    speed values
+  * Do not double release dock visibility after Meta application
+    launcher triggering (kde#417239)
+  * Improve blur region calculations in general and do not send
+    invalid areas to kwin (kde#417254)
+  * Improve blur area calculations during startup when parabolic
+    effect is disabled (kde#416928)
+  * Show Tasks icon size properly during startup when parabolic
+    effect is disabled
+
+-------------------------------------------------------------------
+Wed Jan 29 16:02:44 UTC 2020 - wbauer@tmo.at
+
+- Update to 0.9.8.1
+  * Fix availableScreenRegionWithCriteria calculations. A commit
+    from master branch was lost even though it should be inside
+    initial 0.9.8 release (kde#416791)
+
+-------------------------------------------------------------------
+Mon Jan 27 18:31:37 UTC 2020 - wbauer@tmo.at
+
+- Update to 0.9.8
+  * Provide new way to set which application launcher in all
+    docks/panels has the highest priority to trigger with Meta. The
+    one having a global shortcut applied is the one that has the
+    highest priority
+  * Consider plasma panels under x11 environment in order for dock
+    settings window to not overlap with them
+  * Fix which Plasma theme colors are used for all Latte painting
+    mechanisms and make them consistent with Plasma
+  * Use KDE frameworks official Help Menu
+  * Provide KDE frameworks official way to set application's
+    language
+  * Add hidden debug option for "--kwinedges"
+  * Paint properly the dock settings window external shadows
+  * Fix margins/padding for applets that must follow Fitt's Law at
+    the thick screen edge and at the same time be consisten with
+    all surrounding applets
+  * Add new LastActiveWindow APIs for window properties
+    Closable/Minimizable/Maximizable etc. and provide them to
+    applets. Applet Window Buttons applet is already using it in
+    order to identify buttons that should not be drawn for
+    specific windows
+  * Add availableScreenRegion calculations for Left and Right
+    screen edge docks/panels in order to be ready for new Plasma
+    5.18 API that will let us expose to plasma what are the free
+    areas that are not occupied by Latte panels/docks
+  * Fix wayland crash when showing dock settings window
+  * Improve kwin workarounds in order to reapply properly
+    docks/panels activities to them when kwin wrongly is losing
+    them
+
+-------------------------------------------------------------------
+Thu Jan  2 09:55:59 UTC 2020 - wbauer@tmo.at
+
+- Update to 0.9.7
+  * Fix build with Qt 5.9 (kde#415715)
+- Drop Fixed-compile-with-qt-5.9.patch, merged upstream
+
+-------------------------------------------------------------------
+Mon Dec 30 20:37:19 UTC 2019 - wbauer@tmo.at
+
+- Update to 0.9.6
+  * Qt5.14 - restore properly the dragged tasks to normal mode
+    (kde#415333)
+  * Qt5.14 - release properly the edit mode animation state
+    (kde#412940)
+  * Do not wait for dock to show in order to activate based on
+    position global shortcuts. The new approach is smart enough in
+    order to identify applets with popups in order to wait for them
+    to slide-in first. (kde#415417)
+  * Dynamic touching of views enabled isBusy state for them only
+    when they are really touching. If one of them is hidden from
+    its visibility mode then isBusy states should not be applied
+    (kde#415347)
+  * Wayland: fix crash from unavailable windows
+  * Set a minimum length of screen edge activation area to 25% of
+    the entire screen length this view is attached at.
+  * Fix crash from unloading views by disconnecting their sensitive
+    signals early in the chain
+  * Show proper tooltip for installed indicators in Effects page
+  * Update panelshadows to latest plasma code
+  * Improve behavior of the AutomaticItemSizer
+  * Improve publish tasks geometries code
+  * Accept only left click as valid action when clicking neutral
+    areas of applets, that is areas that even though the visually
+    belong to the applet, the applet does not have any access to
+    it.
+  * Do not require a window to intersect with the view in order to
+    be considered maximized
+  * Consider windows as maximized only when both MaxHorizontally
+    and MaxVertically are both applied
+  * Remove various deprecated code
+- Add Fixed-compile-with-qt-5.9.patch to fix build with Qt 5.9
+  (kde#415715)
+
+-------------------------------------------------------------------
+Thu Dec 12 13:47:14 UTC 2019 - wbauer@tmo.at
+
+- Update to 0.9.5
+  * Improve dynamic background animated transitions (kde#414174)
+  * Fix endless growing/shrinking for items size by introducing an
+    AutomaticItemSizer class that is tracking the algorithm
+    predictions and results in order to identify the issue/case
+    (kde#414180)
+  * Improve paddings and margins for applets that are touching the
+    screen edge and at the same time follow Fitt's Law
+  * Remove workarounds for margins and paddings for plasma systray
+    (kde#414104)
+  * Don't crash when changing layouts by unloading Latte::View(s)
+    first and their Plasma::Containment(s) afterwards (kde#412864)
+  * Don't drag/maximize windows from different virtual desktops
+    than the current one (kde#414089)
+  * Fixes for dynamic background: force transparency codepath
+    (kde#414071)
+  * Ignore plasma panels for Latte heuristics. Any plasma window
+    touching the screen edge and having thickness <=96px is
+    considered a plasma panel.
+  * Update application data after 1500ms after their first fetching
+    to catch up with some applications that are changing them with
+    delay such as libreoffice (kde#413671)
+  * Remove some deprecated code for qt>=5.14
+  * Drop ksysguard dependency with kde frameworks >=5.62
+
+-------------------------------------------------------------------
+Mon Oct 28 08:22:43 UTC 2019 - wbauer@tmo.at
+
+- Update to 0.9.4
+  * Import and load a layout when Latte is running through its dbus
+    interface
+  * Expose the last active window colorscheme in order to be used
+    from applets. In upcoming Window AppMenu version the user will
+    be able to define the color scheme to be used for its app menus
+  * Fix advanced switch button when changing between different
+    states (kde#411624)
+  * Fix autostart option for some distros that did not work such as
+    Manjaro (kde#412612)
+
+-------------------------------------------------------------------
+Tue Oct  1 13:10:55 UTC 2019 - wbauer@tmo.at
+
+- Update to 0.9.3
+  * Important: plenty of fixes for margins and Fitt's Law
+  * Support android click animation even for panel empty areas
+  * Latte indicators can now support animations for panel empty
+    areas
+  * Track kwinrc changes only when needed (kde#411657)
+  * Latte plasmoid is now using the last used activity from its
+    layouts instead of the plasma current one. In that way tasks
+    animations are improved under multiple layouts environments
+  * Fix for all screens last active window tracking (kde#411670)
+  * Fix automatic icon size calculations in order to avoid constant
+    cpu usage (kde#411860)
+  * Update some qt deprecated code
+
+-------------------------------------------------------------------
+Thu Sep  5 15:18:06 UTC 2019 - wbauer@tmo.at
+
+- Update to 0.9.2
+  * Do not hide contents/icons when qtquick software rendering is
+    used (kde#410920, kde#411037)
+  * Reverse scrolling direction for desktops and activities through
+    empty areas (kde#411086)
+  * After dragging active windows send a leave event and restore
+    this way applets in normal state
+  * Close multiple windows from previews when using middle-click
+    (kde#411461)
+  * Activate single windows directly with left click in non
+    compositing mode, and do not show the preview window in that
+    case
+  * Send tasks progress information to latte indicators
+  * Latte indicators can offset their icons if they want
+  * Latte indicators can provide different length padding values
+    for applets compared to tasks
+  * Autostart Latte earlier in order to catch up with windows
+    global menu activation. You need to reactivate it in order to
+    work. (kde#411341)
+  * Forced solidness for panels has higher priority compared to
+    panel backgrounds in isBusy state
+  * Disable panel shadow if the user has enabled the corresponding
+    option
+  * Do not draw the panel background outline if the plasma default
+    behavior was chosen for popups
+  * Do not draw progress badge if user has disabled it
+  * Support struts with thickness < 24px (kde#410707)
+  * Fixes for Clang
+
+-------------------------------------------------------------------
+Mon Aug  5 19:31:46 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Include COPYING* as %license
+
+-------------------------------------------------------------------
+Mon Aug  5 11:45:11 UTC 2019 - wbauer@tmo.at
+
+- Update to 0.9.1
+  * When preview windows left click action is used then for single
+    windows it is just activating them without triggering the
+    preview window (kde#410417)
+  * Consider the case when a horizontal and a vertical Latte
+    dock/panel are touching each other and the vertical one is
+    isBusy desktop background case, in such case the horizontal
+    view is also changing to isBusy state
+  * Fix blurred icons for items size that should not be blurred
+    e.g. 48px and >=64px (kde#410365)
+  * Fix geometries calculation under !compositing environment
+    (kde#410370)
+  * Forward pressed/released event to applets even when parabolic
+    effect is enabled. The issue was pretty obvious with
+    lock/logout plasma applet (kde#410350)
+  * Update progress badge properly (kde#410318)
+  * Fix tasks icons pixelization when being dragged
+  * Wayland: show preview window for grouped tasks when clicked
+    (kde#410408)
+
+-------------------------------------------------------------------
+Sun Jul 28 21:59:39 UTC 2019 - wbauer@tmo.at
+
+- Update to 0.9.0
+  * Smart Coloring
+    + maximum contrast with desktop background when needed
+    + use active or touching window color scheme to paint
+      dock/panel contents
+    + use reverse colors from plasma theme, meaning dark plasma
+      themes can provide also whitish docks/panels
+  * Self-packaged Indicators that can be installed from kde store
+  * Live Editing Mode to inspect your settings changes immediately
+  * Flexible window layout for settings
+  * Shared Layouts under Multiple Layouts Environments
+  * Improve badges experience and layout
+  * Enhanced Active Window experience, drag/maximize/restore active
+    window from empty areas
+  * Track "LastActiveWindow" at per screen/activity and inform
+    applets
+  * Support scrolling for Latte Tasks plasmoid
+  * Independent multi-screen dynamic background and identify "busy"
+    backgrounds
+  * Outline option for background
+  * Plenty more fixes and improvements all over the place
+
+-------------------------------------------------------------------
+Sun Jun 30 20:34:23 UTC 2019 - wbauer@tmo.at
+
+- Update to 0.8.9
+  * Fix: show notifications applet when in Latte (for plasma >=
+    5.16) (kde#408566)
+
+-------------------------------------------------------------------
+Mon Apr 15 09:03:38 UTC 2019 - wbauer@tmo.at
+
+- Update to 0.8.8
+  * Multi-screen: unload properly explicit screen docks when its
+    screen is not available any more
+
+-------------------------------------------------------------------
+Sat Mar  2 08:17:51 UTC 2019 - wbauer@tmo.at
+
+- Update to 0.8.7
+  * Show dock properly on first startup. New users were trying
+    Latte but it was reported that something broke during updates
+    and on first startup Latte was not appearing at all. Problem
+    was tracked down and identified when ~/.config/latte directory
+    was not created properly. This is fixed now. (kde#404762)
+
+-------------------------------------------------------------------
+Fri Feb 15 21:38:37 UTC 2019 - wbauer@tmo.at
+
+- Update to 0.8.6
+  * Fix previews that broke after kf5>=5.55 upgrade
+  * Fix plasma shortcuts behavior for applets when "Multiple"
+    layouts are used
+
+-------------------------------------------------------------------
+Sun Jan 27 01:11:46 UTC 2019 - wbauer@tmo.at
+
+- Update to 0.8.5
+  * Important improvements for fillWidth(s)/Height(s) applets.
+    Latte now tries to use plasma panels as an example in order to
+    provide very similar experience with its Latte panels
+  * Adjust Latte taskmanager in order to support new Plasma 5.15
+    Virtual Desktops interface (kde#403358)
+  * Improve splitters positioning during startup for Justify
+    alignment (kde#403469)
+  * Improve --replace option in order to restart Latte properly for
+    all systems (kde#401041)
+  * Fix maximum length ruler behavior for Latte panels
+  * Create autostart folder when missing from user folder
+    (kde#402934)
+
+-------------------------------------------------------------------
+Sun Dec 30 08:15:40 UTC 2018 - wbauer@tmo.at
+
+- Update to 0.8.4
+  * Restore mouse wheel action to activate your tasks that broke
+    with v0.8.3
+  * Support fillWidth(s)/Height(s) applets in Left/Center/Right
+    alignments, add a plasma taskmanager to see what happens
+  * Do not break applets order in Justify alignment when some of
+    the applets in the layout are not found in the system
+  * Fix a crash that was related to grouped tasks
+  * Improve launchers synchronization between different
+    docks/panels
+- Mark license file as %license instead of %doc
+
+-------------------------------------------------------------------
+Fri Nov 23 19:05:58 UTC 2018 - wbauer@tmo.at
+
+- Update to 0.8.3
+  * Support multi-screen plasmoids that use plasmoid.screenGeometry
+    such as plasma pager, plasma taskmanagers etc. Latte did not
+    update the plasmoid.screenGeometry value properly in previous
+    versions
+  * Do not crash when moving launchers that are being synced
+    between multiple docks/panels
+  * Make sure that launchers order between synced docks/panels is
+    always the current one after the user has ended its dragging
+  * Support fillWidth/Height plasmoids better (such as plasma
+    taskmanagers), now such applets can be added for all alignments
+    including Left/Center/Right
+  * Do not show the warning message "Your layout file is broken"
+    when the statement is not valid. This check validates that the
+    containments and applets ids are unique in a layout file but
+    the way this was implemented in the past it was returning false
+    results in some cases
+
+-------------------------------------------------------------------
+Fri Oct 26 20:31:59 UTC 2018 - wbauer@tmo.at
+
+- Update to 0.8.2
+  * Fix wrong placement of docks during startup for multi-screen
+    environments
+  * Show explicit docks automatically when their corresponding
+    screen is added in a multi-screen environment
+  * Open files properly when dropping them on launchers
+  * Improve behavior according to Fitt's Law when shrinking panel
+    margins
+  * Don't hide previews when hovering player buttons
+  * Update delete icons to plasma design
+  * Don't break BorderlessMaximized window default value
+
+-------------------------------------------------------------------
+Thu Sep 20 17:46:31 UTC 2018 - wbauer@tmo.at
+
+- Update to 0.8.1
+  * redesign the multi-screens implementation. OnPrimary docks have
+    always higher priority in multi-screen environments
+  * do not move explicit dock on primary screen
+  * consider "not show background" case as full transparency
+  * consider preferredSize(s) only for >0 values (case of locked
+    analog clock disappearing at a vertical panel)
+  * if there is not any active window at all, dodge set docks should
+    reappear
+  * do not crash in wayland when right clicking with touchpad
+  * do not double paint plama theme background when the theme does
+    not contain a shadow
+  * draw properly plasma theme panel backgrounds based on the edge
+    that the dock or panel is present, e.g. Unity Ambiance, Nilium
+  * identify maximized window screen differently
+  * show grouped windows previews properly (follow plasma design
+    for window previews)
+  * place correctly a new copied dock in a multi-screen environment
+  * enable blur for solid theme panels
+  * missing global shortcuts '9' badge
+  * support unified or not global shortcuts in case the user does
+    not want to use the Latte unified system for its applets
+
+-------------------------------------------------------------------
+Thu Jul 19 19:24:01 UTC 2018 - cornelis@solcon.nl
+
+- Update to 0.8.0:
+  * Simultaneous Multiple Layouts in different Activities
+  * Smart dynamic Background
+  * Monochrome contents based on the underlying background
+    Activation Global Shortcuts are taken into account the surrounding
+    applets and increased from nine to nineteen (Meta+1..9,0,z..>)
+  * New improved Edit Mode image patterns or User Set ones
+  * Download community-provided Latte layouts from Latte Settings window
+  * Beautiful Animations (e.g. changing alignment)
+  * New Maximum Length indicator at Edit Mode that you can change its value with the mouse wheel
+  * Multiple Separators between Tasks and Applets
+  * Borderless maximized windows per layout, the user can use that
+    setting in order to replicate a Unity-style layout and a Plasma one at the same time.
+  * Lock/Unlock Layouts, different layouts can become read-only and writeable
+  * Ungroup tasks of the same application
+  * One-Click Option to change between Panel/Dock modes
+  * New Appearance Settings for Active Indicator and Glow
+  * Support big number of messages badge (<=9999), like the plasma taskmanager
+  * Expose Latte options in the context menu when plasma taskmanagers are used
+  * More command line options to handle Latte
+  * Various Wayland improvements. I use it daily in my system with Plasma 5.12
+    and it provides a fantastic experience with fantastic painting.
+  * Smoother parabolic animation
+  * Support Kwin edges behavior when hiding the dock or panel
+  * New improved splitters icons in Justify (Edit Mode)
+  * Improve the entire experience with Layouts/Latte Settings window
+  * Filter Windows by Launchers, show only windows that there is already a launcher present for the current running activity
+  * Vastly improve the experience in !compositing environments. No more
+    showing an 1px line at the screen edge when the dock is hidden.
+  * New Global Shortcuts to open/hide dock settings and Latte settings (Meta+A, Meta+W, Meta+E)
+  * New Kwin script to trigger the application menu from a corner-edge
+  * Hide the audio badge when there no audio is coming from a pulseaudio stream
+  * various fixes for RTL languages
+  * New more robust animations all over the place
+  * Plenty of bug fixes and improvements all over the place
+_ Update urls
+
+-------------------------------------------------------------------
+Sun Apr 22 11:28:55 UTC 2018 - mvourlakos@gmail.com
+
+- Update to 0.7.5
+  * fix for dodge maximized in multi-screen environment
+  * when copying default layouts make sure they are writable in the
+  destination
+  * new protocol to communicate between applets and Latte in order
+  to inform them when they are in a Latte panel/dock and when they
+  dont want any change in their main icon behavior
+
+-------------------------------------------------------------------
+Sat Mar 17 13:18:32 UTC 2018 - wbauer@tmo.at
+
+- Update to 0.7.4
+  * new improved image patterns for edit mode
+  * support v0.8 layout files in order to not break compatibility
+  * use an svg file for Latte trademark in settings window instead
+    of a font
+  * fix for multi-screen environments
+  * fix parabolic effect in some corner cases
+  * import v0.6 launchers to v0.7 only once
+  * improve bouncing anchoring
+- Requires at least Qt 5.7.0 to build
+
+-------------------------------------------------------------------
+Sun Jan  7 11:15:32 UTC 2018 - mvourlakos@gmail.com
+
+- update to 0.7.3
+  * support RTL languages
+  * fix crash occuring from badges
+  * improve shadow behavior and calculations for corner cases
+  * support "nomad systray" and "kdeconnect sms" in Latte
+    heuristics
+  * expand applets when clicked at neutral areas
+  * shrink a bit the task number
+  * support Fitt's Law in more corner cases
+  * execute Latte at the same time between different users
+  * ignore X11 signals that are sent with no reason
+    (e.g. Firefox 57 upstream bug:
+    https://bugzilla.mozilla.org/show_bug.cgi?id=1389953)
+  * take into account the applets shadow size for mask calculations
+
+-------------------------------------------------------------------
+Wed Jan  3 19:28:18 UTC 2018 - jengelh@inai.de
+
+- Ensure neutrality of description.
+
+-------------------------------------------------------------------
+Tue Jan  2 18:53:06 UTC 2018 - fabian@ritter-vogt.de
+
+- Rename to latte-dock.spec
+- Add a .changes file
+- Run spec-cleaner
+- Split into -lang subpackage
+- Don't use %fdupes with -s

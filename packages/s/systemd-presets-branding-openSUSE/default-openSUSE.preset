@@ -1,0 +1,24 @@
+enable acpid.service
+enable cups.path
+enable cups.service
+enable cups.socket
+enable epmd.socket
+enable restorecond.service
+enable hostinfo.timer
+enable hostinfo.service
+enable hylafax-faxqclean.timer
+enable hylafax-usage.timer
+enable storeBackup.timer
+enable drkonqi-coredump-processor@.service
+# libvirt hypervisor specific daemons. Start by default at boot for VM autostart,
+# but shutdown after 2 minutes of inactivity. Socket activated thereafter.
+enable virtqemud.service
+enable virtxend.service
+enable virtlxcd.service
+# libvirt secondary daemons providing supporting functionality to main hypervisor
+# daemons. Socket activated only when required.
+enable virtnetworkd.socket
+enable virtnodedevd.socket
+enable virtnwfilterd.socket
+enable virtsecretd.socket
+enable virtstoraged.socket

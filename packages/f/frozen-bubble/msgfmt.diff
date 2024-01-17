@@ -1,0 +1,45 @@
+diff -ur frozen-bubble-2.212/Build.PL frozen-bubble-2.212_fix/Build.PL
+--- frozen-bubble-2.212/Build.PL	2012-10-24 19:53:38.000000000 +0200
++++ frozen-bubble-2.212_fix/Build.PL	2012-10-31 23:08:54.479237399 +0100
+@@ -116,7 +116,7 @@
+         'File::Slurp'               => 0,
+         'Compress::Bzip2'           => 0,
+         'IPC::System::Simple'       => 0,
+-
++        'Locale::Msgfmt'   => '0.14',
+     },
+     requires    => {
+         'perl'                      => '5.008',
+@@ -135,7 +135,7 @@
+         'SDL'                       => '2.511',
+         'Time::HiRes'               => 0,
+         'Locale::Maketext::Simple'  => 0,
+-	'Locale::Maketext::Extract'  => 0,
++	'Tie::Simple'               => 0,
+         'File::Glob'                => 0,
+ 	'File::Which'		    => 0,
+         'Compress::Bzip2'           => 0,
+diff -ur frozen-bubble-2.212/inc/My/Builder.pm frozen-bubble-2.212_fix/inc/My/Builder.pm
+--- frozen-bubble-2.212/inc/My/Builder.pm	2012-10-24 19:53:38.000000000 +0200
++++ frozen-bubble-2.212_fix/inc/My/Builder.pm	2012-10-31 23:20:34.863408331 +0100
+@@ -8,10 +8,12 @@
+ use File::Slurp qw(read_file write_file);
+ use File::Spec::Functions qw(catdir catfile rootdir);
+ use IO::File qw();
++use Alien::SDL;
+ use Module::Build '0.36' => qw();
+ use autodie qw(:all move read_file write_file);
+ use parent 'Module::Build';
+ use Locale::Maketext::Extract;
++use Locale::Msgfmt;
+ 
+ use lib 'lib';
+ use Games::FrozenBubble;
+@@ -44,6 +46,7 @@
+     my ($self) = @_;
+     #$self->depends_on('messages'); #temporarily disabled by kmx, the new ACTION_messages() needs more testing
+     $self->depends_on('server');
++    msgfmt({in => "share/locale/", out => "share/locale/"});
+     $self->SUPER::ACTION_build;
+     return;
+ }

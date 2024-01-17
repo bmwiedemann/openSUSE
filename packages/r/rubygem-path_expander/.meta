@@ -1,0 +1,5 @@
+<package name="rubygem-path_expander" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-path_expander"/>
+</package>

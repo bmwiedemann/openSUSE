@@ -1,0 +1,330 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b3f4ebe9daa3c170f2dfd72b04b30221</srcmd5>
+    <version>0.7.2</version>
+    <time>1515505925</time>
+    <user>dimstar_suse</user>
+    <comment>request to add latte-dock to openSUSE:Factory</comment>
+    <requestid>561424</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d2e19f30a0810553565e2db5653d151a</srcmd5>
+    <version>0.7.4</version>
+    <time>1521579570</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>588155</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>745b4360cddbbeb824ad001b02463a34</srcmd5>
+    <version>0.8.0</version>
+    <time>1532774431</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>624135</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9bb4cffdeed37fa4c5d3a3477938aab7</srcmd5>
+    <version>0.8.1</version>
+    <time>1537787553</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>636938</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0afd1d698fa8a06621da61302a72867e</srcmd5>
+    <version>0.8.2</version>
+    <time>1540819343</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>644961</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b8a16b1a831bb214030614f33b31b0b5</srcmd5>
+    <version>0.8.3</version>
+    <time>1543224696</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>651504</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b6f1645c865f5abbe4628f5f5ea8dbaa</srcmd5>
+    <version>0.8.4</version>
+    <time>1546246035</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662054</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d43f1c50eaa5646b8f08842b493314e3</srcmd5>
+    <version>0.8.5</version>
+    <time>1548704925</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>668897</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c1effd4fd52dddb0a07770c1a4fd6345</srcmd5>
+    <version>0.8.6</version>
+    <time>1550402505</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>676646</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>de13ed2a13a5d8a09db9eda4b37eebdb</srcmd5>
+    <version>0.8.7</version>
+    <time>1551687815</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>681068</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>efd9332f0c1ec787185a8345731b04f5</srcmd5>
+    <version>0.8.8</version>
+    <time>1555329601</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>694234</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8dc98bda23763ff1ef28867a99544131</srcmd5>
+    <version>0.8.9</version>
+    <time>1562159710</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713124</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7fe1568cab290a2d96f4a3fa5004b4f6</srcmd5>
+    <version>0.9.1</version>
+    <time>1565694952</time>
+    <user>dimstar_suse</user>
+    <comment>- Include COPYING* as %license
+
+- Update to 0.9.1
+  * When preview windows left click action is used then for single
+    windows it is just activating them without triggering the
+    preview window (kde#410417)
+  * Consider the case when a horizontal and a vertical Latte
+    dock/panel are touching each other and the vertical one is
+    isBusy desktop background case, in such case the horizontal
+    view is also changing to isBusy state
+  * Fix blurred icons for items size that should not be blurred
+    e.g. 48px and &gt;=64px (kde#410365)
+  * Fix geometries calculation under !compositing environment
+    (kde#410370)
+  * Forward pressed/released event to applets even when parabolic
+    effect is enabled. The issue was pretty obvious with
+    lock/logout plasma applet (kde#410350)
+  * Update progress badge properly (kde#410318)
+  * Fix tasks icons pixelization when being dragged
+  * Wayland: show preview window for grouped tasks when clicked
+    (kde#410408)
+
+- Update to 0.9.0
+  * Smart Coloring
+    + maximum contrast with desktop background when needed
+    + use active or touching window color scheme to paint
+      dock/panel contents
+    + use reverse colors from plasma theme, meaning dark plasma
+      themes can provide also whitish docks/panels
+  * Self-packaged Indicators that can be installed from kde store</comment>
+    <requestid>721107</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>450b524f9c4265097239f7cd5022d2bb</srcmd5>
+    <version>0.9.2</version>
+    <time>1567849960</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>728575</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>781f8a74af9a70f90fd9ec83c9377400</srcmd5>
+    <version>0.9.3</version>
+    <time>1570010440</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>734405</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c216bbe23c61a8399e381d26011fb3c7</srcmd5>
+    <version>0.9.4</version>
+    <time>1572278351</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>743448</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>318fd383882fe10d62cb1dbaab0f2dd4</srcmd5>
+    <version>0.9.5</version>
+    <time>1576189210</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>756098</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>0e3807bb0258333eb93b72fcb1f60ec4</srcmd5>
+    <version>0.9.6</version>
+    <time>1577784511</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>760094</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>654b8183478803f77fc5d9c769e07155</srcmd5>
+    <version>0.9.7</version>
+    <time>1577972691</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>760404</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>885642a290edd44154cca28a940c54bf</srcmd5>
+    <version>0.9.8.1</version>
+    <time>1580373710</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>768419</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>217e5ee64039ea8c688caf466c8d2399</srcmd5>
+    <version>0.9.9</version>
+    <time>1582899644</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>780000</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>29947ea445798c44ba0b48d3d1ce0ad8</srcmd5>
+    <version>0.9.10</version>
+    <time>1585484882</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>789394</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>002ff0804e6183d47c61f36df70f5840</srcmd5>
+    <version>0.9.11</version>
+    <time>1587162698</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>794838</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>5f648c0b3d220cfa4dda3d6b588395fe</srcmd5>
+    <version>0.9.11</version>
+    <time>1621355221</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>893872</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>069336f7290dc36fe6db67c57bfe2911</srcmd5>
+    <version>0.9.12</version>
+    <time>1621531541</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>894626</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>7d1687f61583e31a17e3eb65f111ba58</srcmd5>
+    <version>0.10.0</version>
+    <time>1628675226</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>911236</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>ab4c3c54dc4619687b870afdc457f210</srcmd5>
+    <version>0.10.1</version>
+    <time>1630265633</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>914828</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>b149803b48832a48cd6977fb99df9528</srcmd5>
+    <version>0.10.2</version>
+    <time>1631646894</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>918970</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>374bbde9264c84c157ea28e079a68c1d</srcmd5>
+    <version>0.10.3</version>
+    <time>1635272040</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>927485</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>913ec313439899fa843cf1059392b453</srcmd5>
+    <version>0.10.4</version>
+    <time>1637372339</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>932319</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>4fc05c36513211fd8f85e91f1645f0b8</srcmd5>
+    <version>0.10.4</version>
+    <time>1639340874</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>940105</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>0ebcc13a86ba86fdb677f03e8d17ddf2</srcmd5>
+    <version>0.10.6</version>
+    <time>1639930997</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>941440</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>90656a42db7303fa5852900b6da0faad</srcmd5>
+    <version>0.10.7</version>
+    <time>1641932420</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>945610</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>4403854f18af59537ffc71dda2f162f1</srcmd5>
+    <version>0.10.8</version>
+    <time>1643128574</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>949010</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>f3fdc67086763dede7fd8190c8343373</srcmd5>
+    <version>0.11.0~20220619T183501</version>
+    <time>1660586326</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>995204</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>e8992278856cde04ef7c1e947d8c4825</srcmd5>
+    <version>0.11.0~20231201T052657</version>
+    <time>1702673387</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.11.0~20231201T052657:
+  * optionally maximise panel size in presence of maximised windows
+- remove -lang tarball to use po files from git instead
+- hardlink svg duplicate with fdupes (forwarded request 1132276 from iDesmI)</comment>
+    <requestid>1133353</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>e5adcccc27fb61a89f148d4e22aeb588</srcmd5>
+    <version>0.11.0~20231201T052657</version>
+    <time>1702845090</time>
+    <user>anag+factory</user>
+    <comment>Require extra-cmake-modules at build time</comment>
+    <requestid>1133542</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,7 @@
+<package name="lxlauncher" project="openSUSE:Factory">
+  <title>Open source clone of Asus launcher for Netbooks</title>
+  <description>LXLauncher is an open source clone of Asus launcher for
+EeePC or Netbooks anyway. It's an LXDE project and it's
+based on menu-cache library.</description>
+  <devel project="X11:lxde" package="lxlauncher"/>
+</package>

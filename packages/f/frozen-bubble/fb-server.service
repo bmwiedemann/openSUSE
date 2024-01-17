@@ -1,0 +1,12 @@
+[Unit]
+Description=Frozen-Bubble Server Daemon
+After=network.target
+
+[Service]
+User=nobody
+Group=nogroup
+Type=forking
+ExecStart=/usr/bin/fb-server -c /etc/fb-server.conf
+
+[Install]
+WantedBy=multi-user.target

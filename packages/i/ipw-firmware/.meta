@@ -1,0 +1,7 @@
+<package name="ipw-firmware" project="openSUSE:Factory">
+  <title>Firmware for Intel PRO/Wireless WLAN Cards</title>
+  <description>This package contains firmware binaries needed for Intel PRO/Wireless
+2100/2200BG (aka Centrino) WLAN cards. The package is covered by the
+Intel license.	See http://ipw2100.sourceforge.net/firmware.php?fid=4.</description>
+  <devel project="hardware" package="ipw-firmware"/>
+</package>
