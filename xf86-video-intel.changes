@@ -11,7 +11,7 @@ Wed Oct 18 12:37:29 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 - n_Mesa-i965-crocus.patch
   * Mesa's DRI driver is now called "crocus" (previously "i965");
     fixes hardware OpenGL support when still using "intel" X
-    driver instead of "modesetting" one ...
+    driver instead of "modesetting" one ... (boo@1214448)
 
 -------------------------------------------------------------------
 Sat May 14 17:38:39 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
