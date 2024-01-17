@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan 15 14:38:58 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 5.8.7.1+git20240108.476ef38:
+  * Add v6.5.5 and v6.6.1 to compatibility list
+  * Change order of #if and #else
+  * Follow renaming of _settings to _update
+  * Adapt type of change_beacon
+  * Add v6.5.2 to compatibility list
+  * Use tee to redirect content to root file
+  * Improve wording minorly
+
+-------------------------------------------------------------------
 Tue Aug 22 11:54:17 UTC 2023 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to version 5.8.7.1+git20230713.6789143:
