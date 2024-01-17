@@ -1,5 +1,0 @@
-<package name="python-babelfish" project="openSUSE:Factory">
-  <title>A module to work with countries and languages</title>
-  <description>BabelFish is a Python library to work with countries and languages.</description>
-  <devel project="devel:languages:python" package="python-babelfish"/>
-</package>

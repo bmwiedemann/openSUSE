@@ -1,3 +1,0 @@
-# False positive from rpmlintrc
-addFilter("devel-file-in-non-devel-package .*\.h$")
-addFilter("zero-length .*\.bs$")

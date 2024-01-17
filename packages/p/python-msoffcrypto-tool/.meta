@@ -1,5 +1,0 @@
-<package name="python-msoffcrypto-tool" project="openSUSE:Factory">
-  <title>python-msoffcrypto-tool</title>
-  <description>Library for decrypting MS Office files</description>
-  <devel project="devel:languages:python" package="python-msoffcrypto-tool"/>
-</package>

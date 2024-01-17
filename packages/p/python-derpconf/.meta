@@ -1,5 +1,0 @@
-<package name="python-derpconf" project="openSUSE:Factory">
-  <title></title>
-  <description>derpconf abstracts loading configuration files for your app</description>
-  <devel project="devel:languages:python" package="python-derpconf"/>
-</package>

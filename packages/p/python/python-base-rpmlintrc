@@ -1,3 +1,0 @@
-addFilter("devel-file-in-non-devel-package.*/usr/lib.*/python.*/distutils/tests/xxmodule.c")
-addFilter("devel-file-in-non-devel-package.*/usr/include/python.*/pyconfig.h")
-addFilter("executable-stack.*/usr/lib/python2.7/lib-dynload/_ctypes.so")

@@ -1,6 +1,0 @@
-<package name="python-django-jsonfield" project="openSUSE:Factory">
-  <title>A reusable Django field to store validated JSON</title>
-  <description>Django-jsonfield is a reusable Django field that allows you to
-store validated JSON in your model.</description>
-  <devel project="devel:languages:python:django" package="python-django-jsonfield"/>
-</package>

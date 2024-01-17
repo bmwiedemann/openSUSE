@@ -1,5 +1,0 @@
-<package name="python-cfgv" project="openSUSE:Factory">
-  <title></title>
-  <description>Validate configuration and produce human readable error messages.</description>
-  <devel project="devel:languages:python" package="python-cfgv"/>
-</package>

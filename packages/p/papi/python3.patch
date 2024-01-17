@@ -1,8 +1,0 @@
---- papi-6.0.0.1/src/high-level/scripts/papi_hl_output_writer.py.orig	2022-03-04 13:11:39.915443000 -0800
-+++ papi-6.0.0.1/src/high-level/scripts/papi_hl_output_writer.py	2022-03-04 13:09:46.986474000 -0800
-@@ -1,4 +1,4 @@
--#!/usr/bin/python
-+#!/usr/bin/python3
- from __future__ import division
- from collections import OrderedDict
- 

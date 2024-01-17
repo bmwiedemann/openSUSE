@@ -1,8 +1,0 @@
-<package name="perl-Test2-Formatter-YAMLEnhancedTAP" project="openSUSE:Factory">
-  <title>YAML-enhanced TAP output for your tests</title>
-  <description>Test2::Formatter::YAMLEnhancedTAP provides context on failed assertions as YAML snippets following TAP version 13 grammar.
-
-The sole purpose of this module is to be used with TAP::Formatter::GitHubActions to bring more accurate annotations.</description>
-  <devel project="devel:languages:perl" package="perl-Test2-Formatter-YAMLEnhancedTAP"/>
-  <url>https://metacpan.org/pod/Test2::Formatter::YAMLEnhancedTAP</url>
-</package>

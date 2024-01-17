@@ -1,5 +1,0 @@
-<package name="perl-Pod-HtmlPsPdf" project="openSUSE:Factory">
-  <title>Perl module Pod::HtmlPsPdf</title>
-  <description>Documentation projects builder in HTML, PS and PDF formats.</description>
-  <devel project="devel:languages:perl" package="perl-Pod-HtmlPsPdf"/>
-</package>

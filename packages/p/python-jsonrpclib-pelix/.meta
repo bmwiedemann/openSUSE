@@ -1,5 +1,0 @@
-<package name="python-jsonrpclib-pelix" project="openSUSE:Factory">
-  <title>JSPN-RPC over HTTP Library for Pelix Remote Services</title>
-  <description>A Python (2 &amp; 3) JSON-RPC over HTTP that mirrors xmlrpclib syntax.</description>
-  <devel project="devel:languages:python" package="python-jsonrpclib-pelix"/>
-</package>

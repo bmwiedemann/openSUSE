@@ -1,5 +1,0 @@
-<package name="python-zope.security" project="openSUSE:Factory">
-  <title>Zope Security Framework</title>
-  <description>The Security framework provides a generic mechanism to implement security policies on Python objects.</description>
-  <devel project="devel:languages:python" package="python-zope.security"/>
-</package>

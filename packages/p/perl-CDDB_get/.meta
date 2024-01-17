@@ -1,7 +1,0 @@
-<package name="perl-CDDB_get" project="openSUSE:Factory">
-  <title>Read the CDDB entry for an audio CD in your drive</title>
-  <description>This module/script gets the CDDB info for an audio cd. You need LINUX,
-SUNOS or *BSD, a cdrom drive and an active internet connection in order
-to do that.</description>
-  <devel project="devel:languages:perl" package="perl-CDDB_get"/>
-</package>

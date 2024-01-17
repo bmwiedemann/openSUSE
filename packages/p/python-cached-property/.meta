@@ -1,5 +1,0 @@
-<package name="python-cached-property" project="openSUSE:Factory">
-  <title>python-cached-property</title>
-  <description>A decorator for caching properties in classes</description>
-  <devel project="devel:languages:python" package="python-cached-property"/>
-</package>
