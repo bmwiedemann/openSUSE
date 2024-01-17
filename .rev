@@ -109,4 +109,14 @@
     <comment></comment>
     <requestid>1091746</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>00f777481215729bb50beff35e9e4613</srcmd5>
+    <version>0.7.0</version>
+    <time>1705437545</time>
+    <user>anag+factory</user>
+    <comment>- Add fix-tests.patch to make the current version (0.7.0) compatible
+  with latest version of panel, pandas and fsspec.
+</comment>
+    <requestid>1139155</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-intake
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,6 +23,8 @@ Summary:        Data loading and cataloging system
 License:        BSD-2-Clause
 URL:            https://github.com/intake/intake
 Source:         https://github.com/intake/intake/archive/refs/tags/%{version}.tar.gz#/intake-%{version}-gh.tar.gz
+# PATCH-FIX-OPENSUSE fix-tests.patch
+Patch1:         fix-tests.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -108,7 +110,7 @@ donttest+=" or test_search_inherit_params"
 donttest+=" or test_multiple_cats_params"
 # wrong exception class
 donttest+=" or test_mlist_parameter"
-%pytest -ra -k "not (${donttest:4})"
+%pytest -x -ra -k "not (${donttest:4})"
 
 %post
 %python_install_alternative intake
