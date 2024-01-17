@@ -1,0 +1,229 @@
+-------------------------------------------------------------------
+Tue Aug  1 12:04:41 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 5.13.6+git20230722.b5f4e6e
+  * Update wifi_regd.c
+  * support for kernel 6.4.4 due to a backport from kernel 6.5
+  * update docs
+  * support for kernel 6.5
+  * revert ping fixes
+  * fix delay that showed with ping
+
+-------------------------------------------------------------------
+Thu May 18 10:03:31 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 5.13.6+git20230511.765d4e4
+  * TP-Link - T4UHP_US VID/PID problem
+  * Update supported-device-IDs
+  * Update usb_intf.c
+  * Add support for 2357:0122 (TP-LINK Archer T4UHP)
+  * fix this driver collide with 88x2bu due ID 7392:b822. That
+    card has a 8822B chip not 8821.
+  * kernel 6.3 support
+  * major updates to various components 
+  * makefile Secure Boot support
+  * remove some dated docs
+  * upgrade installation and removal scripts
+  * support kernel 6.1
+- Drop patch already included in this version:
+  * fix_api_changes_kernel_6.1.patch 
+
+-------------------------------------------------------------------
+Mon Jan 23 02:25:03 UTC 2023 - Larry Finger <Larry.Finger@gmail.com>
+
+- Add patch to build with Tumbleweed kernels 6.1.x:
+  * fix_api_changes_kernel_6.1.patch
+- The "kernel-source" package is removed from the BuildRequires
+  list. The much smaller "kernel-default-devel" is sufficient.
+
+-------------------------------------------------------------------
+Tue Sep 27 06:59:36 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Disable the service to submit the package to Factory
+- Add missing changelog entry
+- Update version to 5.13.6+git20220905.a8450b0
+
+-------------------------------------------------------------------
+Tue Sep 27 06:56:53 UTC 2022 - Victor Kwan <vkwan8@uwo.ca>
+
+- Update version to 5.13.6+git20220821.7aa0e0c
+- Fix links to point to the right repository
+- Enable the service
+
+-------------------------------------------------------------------
+Fri Apr  8 06:16:25 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Move upstream repository to
+  https://github.com/morrownr/8812au-20210629 since
+  https://github.com/gordboy/rtl8812au-5.9.3.2 is now archived
+  and the morrownr repository is the recommended alternative.
+- Update version to 5.13.6+git20220308.0ae0e77 which is the
+  version in the new upstream.
+- Drop patch. Linux 5.15 support is already included in the new
+  upstream:
+  * Drop-ipx-support-on-Linux-5.15.patch
+
+-------------------------------------------------------------------
+Mon Nov 15 11:25:06 UTC 2021 - Michal Suchanek <msuchanek@suse.de>
+
+- Fix build on Tumbleweed - use kernel_module_directory
+- Fix build on Linux 5.15
+  + Drop-ipx-support-on-Linux-5.15.patch
+
+-------------------------------------------------------------------
+Fri Oct  1 18:29:22 UTC 2021 - Rashmi Lengade <rashmi.lengade@gmail.com>
+
+- Exclude the s390x Architecture
+
+-------------------------------------------------------------------
+Wed May 12 06:21:36 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to build with Leap 15.3's kernel which includes
+  backported patches to support update_mgmt_frame_registrations
+  instead of mgmt_frame_register which would be expected
+  according to the kernel version:
+  * fix-backported-update_mgmt_frame_registrations.patch
+
+-------------------------------------------------------------------
+Tue May 11 21:50:35 UTC 2021 - Victor Kwan <vkwan8@uwo.ca>
+
+- Update to 5.9.3.2+git20210427.6ef5d8f
+  * Works with kernel 5.12.
+
+-------------------------------------------------------------------
+Thu Mar 11 14:02:34 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 5.9.3.2+git20210302.d1bf6df
+  * Works with kernel 5.11.
+
+-------------------------------------------------------------------
+Fri Jan 15 11:54:40 UTC 2021 - Victor Kwan <vkwan8@uwo.ca>
+
+- Update to 5.9.3.2+git20201214.b95e750
+  * Works with kernel 5.10.
+
+-------------------------------------------------------------------
+Sat Sep 12 21:30:55 UTC 2020 - Victor Kwan <vkwan8@uwo.ca>
+
+- Update to 5.6.4.2+git20200702.3110ad6
+  * Works with kernel 5.8rc3.
+
+-------------------------------------------------------------------
+Mon Jul  6 09:32:47 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Use ARCH=riscv for riscv64
+
+-------------------------------------------------------------------
+Fri Apr  3 07:20:53 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 5.6.4.2+git20200318.49e98ff
+  * Upstream changed the github repository, so changed it to since
+    the previous one is now marked as obsolete
+  * Works with (at least) a 5.6rc5 kernel
+  * Added device USB IDs. Added regdb files.
+  * Removed LED control, which was added for driver version 5.2.20
+  * Users of NetworkManager need to add the following config option to
+    /etc/NetworkManager/NetworkManager.conf:
+    [device]
+    wifi.scan-rand-mac-address=no
+- Rebase patch fix-backported-ndo_select_queue.patch
+
+-------------------------------------------------------------------
+Thu Oct 31 09:49:41 UTC 2019 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 5.2.20.2+git20190904.30d47a0
+  * Fixes to make it work with kernel 5.3 (boo#1154539)
+
+-------------------------------------------------------------------
+Mon May 27 09:19:54 UTC 2019 - Antonio Larrosa <alarrosa@suse.com>
+
+- Fix _service file so it follows Factory policies
+
+-------------------------------------------------------------------
+Mon May 27 00:32:15 UTC 2019 - Ryan Bach <romulasry@protonmail.com>
+
+- Update to 5.2.20.2+git1558384184.6faa3ea
+  * Fixes to make it work with kernel 5.1
+  * Fixes to make it work with kernel 5.2
+
+- Use obs_scm instead of depricated tar_scm service file for maintainability in the future
+
+-------------------------------------------------------------------
+Wed Jan 30 13:25:18 UTC 2019 - alarrosa@suse.com
+
+- Add fix-backported-ndo_select_queue.patch to fix building with
+  SLE-15-SP1's 4.12 kernel with backported features from 4.19.
+
+-------------------------------------------------------------------
+Wed Jan 23 09:31:46 UTC 2019 - alarrosa@suse.com
+
+- Update to 5.2.20.2+git20190117.edcd447
+  * Fixes to make it work with kernel 5.0
+  * Fixes to make it work with kernel 4.20
+  * Minor compiler warning turned off
+
+-------------------------------------------------------------------
+Thu Aug 30 14:38:49 UTC 2018 - alarrosa@suse.com
+
+- Add new supported hardware to the preamble file
+
+-------------------------------------------------------------------
+Thu Aug 30 11:50:59 UTC 2018 - alarrosa@suse.com
+
+- Update to version 5.2.20.2
+  * Update phydm to improve TP stability
+  * Support WiFi-HAL for Android 8
+  * Build with kernel 4.19
+
+- Drop patch allow-reproducible-builds.patch which was
+  merged upstream by gordboy
+
+- Fix build with Leap 15 by parsing correctly the lp150 suffix
+
+-------------------------------------------------------------------
+Fri Mar 30 09:20:00 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Handle %arm, aarch64 and ppc* properly
+
+-------------------------------------------------------------------
+Thu Mar  1 11:45:59 UTC 2018 - alarrosa@suse.com
+
+- Update to 5.2.20 from https://github.com/gordboy/rtl8812au. This
+  includes support for kernel 4.15 and VHT extras.
+
+- Dropped patches already upstream:
+  * 0001-add-support-for-kernel-4.11.patch
+  * 0002-add-support-for-kernel-4.12.patch
+  * 0003-Fix-build-with-kernel-4.11.9.patch
+  * 0004-Fix-for-Linux-kernel-4.12.5.patch
+
+- Added patch:
+  * allow-reproducible-builds.patch
+
+- Added LICENSE file from upstream
+
+-------------------------------------------------------------------
+Thu Oct 19 13:39:01 UTC 2017 - alarrosa@suse.com
+
+- spec_cleaner
+
+-------------------------------------------------------------------
+Mon Oct  2 14:34:29 UTC 2017 - alarrosa@suse.com
+
+- Add 0001-add-support-for-kernel-4.11.patch
+  0002-add-support-for-kernel-4.12.patch
+  0003-Fix-build-with-kernel-4.11.9.patch
+  0004-Fix-for-Linux-kernel-4.12.5.patch
+  from https://github.com/maurossi/rtl8812au/ to fix
+  builds with the kernel versions in TW
+
+-------------------------------------------------------------------
+Fri Sep 29 16:46:58 UTC 2017 - alarrosa@suse.com
+
+- Build fixes and add Supplements modalias
+
+-------------------------------------------------------------------
+Fri Nov 25 14:02:17 UTC 2016 - alarrosa@suse.com
+
+- Initial build
+

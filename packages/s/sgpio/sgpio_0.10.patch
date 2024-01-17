@@ -1,0 +1,1205 @@
+Index: sgpio.c
+===================================================================
+--- sgpio.c.orig
++++ sgpio.c
+@@ -8,7 +8,7 @@
+  *
+  * This program is distributed in the hope that it will be useful, but
+  * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License 
++ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
+  * for more details.
+  *
+  * You should have received a copy of the GNU General Public License along
+@@ -19,15 +19,16 @@
+ 
+ /*
+  * Intel SGPIO enclosure management utility
+- * Author: Eric R Hall <Eric.R.Hall@intel.com> 
+- * 
++ * Author: Eric R Hall <Eric.R.Hall@intel.com>
++ * Rework: Krzysztof Wojcik <krzysztof.wojcik@intel.com>
++ *
+  */
+ 
+ #include <stdio.h>     /* used by printf */
+ #include <unistd.h>    /* used by chdir and write */
+ #include <stdlib.h>    /* used by exit */
+-#include <math.h>	   /* used by math functions */
+-#include <getopt.h>    /* used by command.c to parse the command line */ 
++#include <math.h>      /* used by math functions */
++#include <getopt.h>    /* used by command.c to parse the command line */
+ #include <string.h>    /* used to manipulate strings */
+ #include <fcntl.h>     /* used for O_WRONLY definition in 'open()' */
+ #include <time.h>      /* used by usleep because SGPIO driver is slow */
+@@ -35,6 +36,7 @@
+ #include <signal.h>    /* needed by signals */
+ #include <syslog.h>    /* used for message log */
+ #include <sys/types.h> /* used by read() */
++#include <dirent.h>
+ 
+ /***************** 80 chars ***************************************************/
+ 
+@@ -48,23 +50,23 @@
+ #include "version.h"
+ 
+ /* this programs available commands */
+-#include "commands.h"  
++#include "commands.h"
+ 
+ /* define the directory paths to the LED "files" */
+-#define SUPPORTED_DISKS 5  // 0-5=6	
++#define MAX_DISK_IDX    5  
+ #define SYSFS_BASE      "/sys/class"
+-#define PORT_NAME		"/scsi_host/host" /* host0 = port0 ~ sda */
+-#define SW_CONTROL		"/scsi_device"
+-#define EM_MESSAGE		"/em_message"
++#define PORT_NAME	"/scsi_host/host" /* host0 = port0 ~ sda */
++#define SW_CONTROL	"/scsi_device"
++#define EM_MESSAGE	"/em_message"
+ #define EM_MESSAGE_TYPE	"/em_message_type"
+ #define EM_MESSAGE_DFLT	"0"
+ 
+ /* per section 12.2.1 in the ACHI 1.2 spec */
+-#define LOCATE_LED   524288  /* or bitmask 2^19 */
+-#define FAULT_LED    4194304 /* or bitmask 2^22 */
+-#define REBUILD_LED  4718592 /* 2^19 + 2^22 */
+-#define ACTIV_LED	 65536	 /* 2^16 */
+-#define OFF_LED      0       /* nothing! */
++#define LOCATE_LED      524288  /* or bitmask 2^19 */
++#define FAULT_LED    	4194304 /* or bitmask 2^22 */
++#define REBUILD_LED  	4718592 /* 2^19 + 2^22 */
++#define ACTIV_LED	65536	/* 2^16 */
++#define OFF_LED      	0       /* nothing! */
+ 
+ /* LEDs in the backplane per disk and the order of the leds
+  * Although there are only physically two LEDs on an Intel Intelliegent
+@@ -73,62 +75,85 @@
+  * and off. */
+ #define LEDS_PER_DISK  5 /* locate, fault, rebuild, activity, and off */
+ /* time to wait in uSec before sending next command to the SGPIO bus */
+-#define SGPIO_wait      1000
++#define SGPIO_WAIT      1500
+ 
+-/* set the buf size for led_write, which should also be
+- * the return from the write() */
++/* set the buf size for led_write */
+ #define WRITE_BUF 20
+ 
++/* some number that's unlikely to be random */
++#define INITIATED 1009
++
++/* /sys/class/scsi_device/0:0:0:0/device/block:sda
++* the path in the fs is 47 char */
++#define FS_PATH_LEN 47
++
++/* message lenth */
++#define MESSAGE_LEN 50
++
++/*index of port number in fs path*/
++#define PORT_NUM_LOC 21
++
++/*denotes free record in the disk structure*/
++#define PORT_FREE -1
++
++#define NONE -1
++
++static const char *sys_scsi_path = "/sys/class/scsi_disk/";
++static const char *sys_scsi_dev_blk_sles = "/device/block/";
++static const char *sys_scsi_dev_blk_rh = "/device/block:";
++
+ /* define global variables */
+ /* the led list is used to dynamically set the 'LEDs' for each disk */
+-int _led_list[] = { LOCATE_LED, FAULT_LED, REBUILD_LED, ACTIV_LED, OFF_LED };
+-/* blink rates in Hz for locate, fault, rebuild, activity */ 
++int _led_list[] = {LOCATE_LED, FAULT_LED, REBUILD_LED, ACTIV_LED, OFF_LED};
++/* blink rates in Hz for locate, fault, rebuild, activity */
+ int _led_rate = 0;
++/* SIGALRM flag*/
++volatile sig_atomic_t sigal_flag = 0;
+ /* done defining global variables */
+ 
+ /* led structure; path to control, init'd status, states, and file handler */
+-struct led_context {
+-    char path[256];
+-    int init;
+-    int current_state;
+-    int next_state;
+-    int fd;
++struct led_context{
++	char path[256];
++	int init;
++	int current_state;
++	int next_state;
++	int fd;
+ };
+ 
+ /* uses the led_context to associate disks to leds */
+-struct disk {
+-    struct led_context data[LEDS_PER_DISK];
+-    int id;
+-    int port;
+-    int init;
+-    char name[7];
++struct disk{
++	struct led_context data[LEDS_PER_DISK];
++	int id;
++	int host_port;
++	int init;
++	char name[7];
+ };
+ 
+ /* structure for the disks associated with the led structure */
+-struct disk disks[(SUPPORTED_DISKS+1)];
++struct disk disks[(MAX_DISK_IDX+1)];
+ 
+ /* define the version to return.  Uses version.h */
+-static int version() {
+-    printf("Utility Version %i.%i\n", UTIL_VERSION_MAJOR, \
+-     UTIL_VERSION_MINOR);
+-    printf("SGPIO Specification Version %i.%i\n", SGPIO_VERSION_MAJOR, \
+-     SGPIO_VERSION_MINOR);
+-    return 0;
++static int version(){
++	printf("Utility Version %i.%i\n", UTIL_VERSION_MAJOR, \
++	UTIL_VERSION_MINOR);
++	printf("SGPIO Specification Version %i.%i\n", SGPIO_VERSION_MAJOR, \
++	SGPIO_VERSION_MINOR);
++	return 0;
+ }
+ 
+ /* display help information */
+-static int help(char *argv) {
+-    printf("SGPIO tool for intelligent hard disk drive backplanes\nUsage:\n" \
+-     "%s [[-d|--disk] <sda,sdb,sdc,etc...> | [-p|--port] <0,1,2,etc...>]\n" \
+-     "[-s|--status] <fault|locate|rebuild|off> [-f|--freq] <1,2,3,etc...>\n",
+-     argv);
+-    return 0;
++static int help(char *argv){
++	printf("SGPIO tool for intelligent hard disk drive backplanes\nUsage:\n" \
++	"%s [[-d|--disk] <sda,sdb,sdc,etc...> | [-p|--port] <0,1,2,etc...>]\n" \
++	"[-s|--status] <fault|locate|rebuild|off> [-f|--freq] <1,2,3,etc...>\n",
++	argv);
++	return 0;
+ }
+ 
+ /* define the led states */
+-static void init_led(struct led_context *led) {
+-    led->current_state = 0;
+-    led->next_state = 0;
++static void init_led(struct led_context *led){
++	led->current_state = 0;
++	led->next_state = 0;
+ }
+ 
+ /* declare the whatportis [sdX] prototype */
+@@ -142,6 +167,12 @@ int led_write(struct led_context *data,
+ 
+ int led_set(int port_num);
+ 
++/* declare the led_change_state function prototype */
++int led_change_state(void);
++
++void led_init(void);
++
++int led_execute(int next_state, char *message);
+ 
+ /* declare the timer event function prototype */
+ void alarm_handler(int signo);
+@@ -149,505 +180,504 @@ void alarm_handler(int signo);
+ /* declare the timer function that runs every x sec or usec prototype */
+ int led_timer();
+ 
++int find_port_number(char *location);
++
+ /* the main */
+-int main (int argc, char **argv) {
+-    char delims[] = ","; /* used to split --disk argument sda,sdb,sdc */
+-    char* result;  /* the result of the 'split' disks used in the -d argument */
+-    int c;  /* used as the command argument case selector */
+-    int ii = 0; /* used in the jj for loop */
+-    int leds = 0; /* used in the jj loop for number of supported LEDs */
+-    int port_num = -1; /* 'case: p' port number */
+-    int freq = 0;
+-    
+-    /* Let's dynamically figure out what this program was called as
+-     * in case someone renames the utility. */
+-    char *progname = argv[0];
+-    /* if there is a '/' before the program name, then truncate the data
+-     * before it.  In case there is no '/' before the filename, the
+-     * if statement resets progname to argv[0].
+-     * This program will segFault without the test. */
+-    if((progname = strrchr (progname, '/')) != 0) {
+-    	/* remove the first char, '/', from the beginning of the
+-    	 * string by incrementing the pointer location. */
+-    	progname++;
+-    } else {
+-    	/* This will seem cheap, but if we get here then progname
+-    	 * is a null pointer and we need to fill it with something.
+-    	 * In this case, we'll fill it with the called program name. */
+-    	progname = argv[0];
+-    }
+-    /* done figuring out the program name. */
+-
+-    if (argc < 2) {
+-       	help(progname);
+-        exit(1);
+-    }
+-    
+-
+-    while (1) {
+-        /* getopt_long uses this option index */
+-        int option_index = 0;
+-     
+-        c = getopt_long(argc, argv, short_options, long_options,
+-          &option_index);
+-             
+-        /* Detect the end of the options. */
+-        if (c == -1) {
+-        	break;
+-        }
+-
+-        switch (c) {
+-            case 0:
+-                if (long_options[option_index].flag != 0)
+-                    break;
+-                printf ("option %s", long_options[option_index].name);
+-                if (optarg)
+-                    printf (" with arg %s", optarg);
+-                printf ("\n");
+-                break;
+-            
+-            case 'h':
+-            	/* print help to the screen with the parsed program name */
+-                help(progname);
+-                break;
+-            	
+-            case 'p':
+-            	      	                	
+-                /* split the string at the 'delims' and then loop */
+-                result = strtok( optarg, delims );
+-                while( result != NULL ) {
+-                	port_num = abs(atoi(result));
+-                	if(port_num > SUPPORTED_DISKS) {
+-                		printf("Error: not a valid port number!\n");
+-                		return -1;
+-                	}	                    
+-                	
+-                	/* call the led_set function that initalized and sets the 
+-	            	 * paths and data for the disks LED */
+-	            	led_set(port_num);
+-	            	
+-                	/* move to the next entry after the current deliminator,
+-                	 *  this should be the next port number */
+-                	result = strtok( NULL, delims );
+-                }
+-            	break;
+-                
+-            case 'd':
+-        	       	                	
+-            /* split the string at the 'delims' and then loop */
+-            result = strtok( optarg, delims );
+-                        	
+-            while( result != NULL ) {
+-            	           	
+-            	port_num = whatportis(result);
+-            	
+-            	/* bounds checking, if anything is out of bounds here
+-            	 * the tool will segfault - we must quit! */
+-            	if(strlen(result) != 3 || port_num > SUPPORTED_DISKS
+-            			|| port_num < 0) {
+-            		printf("Error: not a valid device: %s\n", result);
+-            		return -1;
+-                    
+-            	}	                    
+-            	
+-            	/* call the led_set function that initalized and sets the 
+-            	 * paths and data for the disks LED */
+-            	led_set(port_num);
+-            	
+-            	/* move to the next entry after the current deliminator,
+-            	 *  this should be the next port number */
+-            	result = strtok( NULL, delims );
+-            }
+-        	break;          
+-
+-            case 's':
+-                /* strcmp exits 0 for true, it needs to be 1 for locate */
+-                if (!(strcmp(optarg, "locate"))) {
+-	                /* since we don't know which disk LEDs have been
+-	            	 * init'd we'll just cycle through all of them.
+-	            	 */
+-                	for(ii=0;ii<=SUPPORTED_DISKS; ii++) {
+-                		                	
+-                		/* the problem with cycling through all of the disks
+-	            		 * is that the un-init'd ones have junk data that we
+-	            		 * don't want to write to the fs; a simple check is 
+-	            		 * made to make sure that the disk was init'd. */
+-	            		for (leds=0;leds<LEDS_PER_DISK;leds++) {
+-	            			if((disks[ii].data[leds].next_state == LOCATE_LED)
+-	            				&& (disks[ii].init == 1009)){
+-	            				printf("Locate LED was ");
+-	            				/* some number that's unlikely to be random */
+-	            				disks[ii].data[leds].init = 1009;
+-	            				                		
+-	            				if(led_write(&disks[ii].data[leds], 1) \
+-	            						!= WRITE_BUF)
+-	            					printf("not set");
+-	            				else
+-	            					printf("set");
+-	            				
+-	            				printf(" for %s\n",disks[ii].name);
+-	            			}
+-	            		}
+-	           		}
+-                }
+-                
+-                if (!(strcmp(optarg, "fault"))) {
+-	            	/* since we don't know which disk LEDs have been
+-	            	 * init'd we'll just cycle through all of them.
+-	            	 */
+-                	for(ii=0;ii<=SUPPORTED_DISKS; ii++) {
+-                		/* the problem with cycling through all of the disks
+-	            		 * is that the un-init'd ones have junk data that we
+-	            		 * don't want to write to the fs; a simple check is 
+-	            		 * made to make sure that the disk was init'd. */
+-	            		for (leds=0;leds<LEDS_PER_DISK;leds++) {
+-	            			if((disks[ii].data[leds].next_state == FAULT_LED) &&
+-	            				(disks[ii].init == 1009)) {
+-	            				/* some number that's unlikely to be random */
+-	            				disks[ii].data[leds].init = 1009;
+-	            				                		
+-	            				printf("Fault LED was ");
+-	            				if(led_write(&disks[ii].data[leds], 1) \
+-	            						!= WRITE_BUF)
+-	            					printf("not set");
+-	            				else
+-	            					printf("set");
+-	            				
+-	            				printf(" for %s\n",disks[ii].name);
+-	            			}
+-	            		}
+-	           		}
+-                }
+-
+-                if (!(strcmp(optarg, "rebuild"))) {
+-                	/* since we don't know which disk LEDs have been
+-	            	 * init'd we'll just cycle through all of them.
+-	            	 */
+-                	for(ii=0;ii<=SUPPORTED_DISKS; ii++) {
+-                		/* the problem with cycling through all of the disks
+-	            		 * is that the un-init'd ones have junk data that we
+-	            		 * don't want to write to the fs; a simple check is 
+-	            		 * made to make sure that the disk was init'd. */
+-	            		for (leds=0;leds<LEDS_PER_DISK;leds++) {
+-	            			if((disks[ii].data[leds].next_state == REBUILD_LED)
+-	            				&& (disks[ii].init == 1009)) {
+-	            				/* some number that's unlikely to be random */
+-	            				disks[ii].data[leds].init = 1009;
+-	            				                		
+-	            				printf("Rebuild LED was ");
+-	            				if(led_write(&disks[ii].data[leds], 1) \
+-	            						!= WRITE_BUF)
+-	            					printf("not set");
+-	            				else
+-	            					printf("set");
+-	            				
+-	            				printf(" for %s\n",disks[ii].name);
+-	            			}
+-	            		}
+-	           		}
+-                }
+-
+-                if (!(strcmp(optarg, "off"))) {
+-	            	/* since we don't know which disk LEDs have been
+-	            	 * init'd we'll just cycle through all of them.
+-	            	 */
+-	            	for(ii=0;ii<=SUPPORTED_DISKS; ii++) {
+-	            		/* the problem with cycling through all of the disks
+-	            		 * is that the un-init'd ones have junk data that we
+-	            		 * don't want to write to the fs; a simple check is 
+-	            		 * made to make sure that the disk was init'd. */
+-	            		for (leds=0;leds<LEDS_PER_DISK;leds++) {
+-	            			if((disks[ii].data[leds].next_state == OFF_LED) &&
+-	            					(disks[ii].init == 1009)) {
+-	            				/* some number that's unlikely to be random */
+-	            				disks[ii].data[leds].init = 1009;
+-	            				                		
+-	            				printf("LED was ");
+-	            				if(led_write(&disks[ii].data[leds], 1) \
+-	            						!= WRITE_BUF)
+-	            					printf("not set");
+-	            				else
+-	            					printf("set");
+-	            				
+-	            				printf(" to off for %s\n",disks[ii].name);
+-	            			}
+-	            		}
+-	           		}
+-                }
+-                if (!(strcmp(optarg, "activity"))) {
+-	            	/* since we don't know which disk LEDs have been
+-	            	 * init'd we'll just cycle through all of them.
+-	            	 */
+-	            	for(ii=0;ii<=SUPPORTED_DISKS; ii++) {
+-	            		/* the problem with cycling through all of the disks
+-	            		 * is that the un-init'd ones have junk data that we
+-	            		 * don't want to write to the fs; a simple check is 
+-	            		 * made to make sure that the disk was init'd. */
+-	            		for (leds=0;leds<LEDS_PER_DISK;leds++) {
+-	            			if((disks[ii].data[leds].next_state == ACTIV_LED) &&
+-	            				(disks[ii].init == 1009)) {
+-	            				/* some number that's unlikely to be random */
+-	            				disks[ii].data[leds].init = 1009;
+-	            				                		
+-	            				printf("Activity LED was ");
+-	            				if(led_write(&disks[ii].data[leds], 1) \
+-	            						!= WRITE_BUF)
+-	            					printf("not set");
+-	            				else
+-	            					printf("set");
+-	            				
+-	            				printf(" for %s\n",disks[ii].name);
+-	            			}
+-	            		}
+-	           		}
+-                }
+-                
+-                break;
+-                
+-            case 'f':
+-            	freq = abs(atoi(optarg));
+-            	if(freq < 1 || freq > 10)
+-            		printf("Invalid frequency, please use between 1 and 10\n");
+-            	else
+-            		_led_rate = freq;
+-            	break;
+-            	
+-            case 'V':
+-                version();
+-                break;
+-
+-            default:
+-            	//printf("Unknown command\n");
+-            	help(progname);
+-                exit(1);
+-            }
+-    }
+-    
+-    /* Print any remaining command line arguments that were not parsed */
+-    if (optind < argc) {
+-        printf ("Error!  Unknown arguments: ");
+-        while (optind < argc)
+-            printf ("%s ", argv[optind++]);
+-        printf("\nPlease use -h for more information.\n");    
+-    }
+-   
+-   /* not sure if we need to close the file
+-    *close(disks[jj].data[0].path); */
+-    
+-    /* start the timer.  It loops continuously because the timer needs
+-     * to be reset.  This might not be the best idea since we've basically
+-     * locked the tool down until the timer fails. */
+-    if(_led_rate != 0)
+-    	for(;;)
+-    		led_timer();
+-    
+-    exit (0);
+-}
+-
+-/* used for debugging.  Could be removed */
+-int port_status(struct led_context *data, int port) {
+-	char Buff[8];
+-    read(data->fd, Buff, sizeof(Buff));
+-    printf("Port: %d buff: %d\n", port, abs( atoi( Buff ) ));
+-    return 0;
++int main(int argc, char **argv){
++	char delims[] = ","; /* used to split --disk argument sda,sdb,sdc */
++	char* result;  /* the result of the 'split' disks used in the -d argument */
++	int c;  /* used as the command argument case selector */
++	int port_num = -1; /* 'case: p' port number */
++	int freq = 0;     /* blink rates reset to zero- disable blinking*/
++	int next_state = NONE; /* store next sate of LEDs*/
++	char message[MESSAGE_LEN]; /* store messages */
++	int i = 0;
++		
++	/* Let's dynamically figure out what this program was called as
++	 * in case someone renames the utility. */
++	char *progname = argv[0];
++	/* if there is a '/' before the program name, then truncate the data
++	* before it.  In case there is no '/' before the filename, the
++	* if statement resets progname to argv[0].
++	* This program will segFault without the test. */
++	if((progname = strrchr (progname, '/')) != 0){
++	/* remove the first char, '/', from the beginning of the
++	 * string by incrementing the pointer location. */
++		progname++;
++	}
++	else{
++	/* This will seem cheap, but if we get here then progname
++	 * is a null pointer and we need to fill it with something.
++	 * In this case, we'll fill it with the called program name. */
++		progname = argv[0];
++	}
++	/* done figuring out the program name. */
++
++	if(argc < 2){
++		help(progname);
++		exit(1);
++	}
++
++	led_init();
++
++	while(1){
++		/* getopt_long uses this option index */
++		int option_index = 0;
++		char *end_str = 0;
++
++		c = getopt_long(argc, argv, short_options, long_options,
++		  &option_index);
++
++		/* Detect the end of the options. */
++		if(c == -1){
++			break;
++		}
++
++		switch(c){
++			case 0:
++				if(long_options[option_index].flag != 0)
++					break;
++				printf ("option %s",
++				        long_options[option_index].name);
++				if(optarg)
++					printf (" with arg %s", optarg);
++				printf ("\n");
++				break;
++			case 'h':
++				/* print help to the screen with the
++				 * parsed program name */
++				help(progname);
++				break;
++			case 'p':
++				/* split the string at the 'delims' and then loop */
++				result = strtok(optarg, delims);
++				while(result != NULL){
++					port_num = strtol(result, &end_str, 10);
++					if(port_num < 0 || *end_str != '\0'){
++						printf("Error: %s is not a "
++							"valid port number!\n",
++							result);
++						return -1;
++					}
++					/* call the led_set function that
++					 * initalized and sets the
++					 * paths and data for the disks LED */
++					if(led_set(port_num) != 0){
++						printf("Error: can not initialize "
++							"data for disks LED!\n");
++						return -1;
++					}
++					/* move to the next entry after the
++					 * current deliminator,
++					 * this should be the next port number */
++					result = strtok(NULL, delims);
++				}
++				break;
++			case 'd':
++				/* split the string at the 'delims' and then loop */
++				result = strtok(optarg, delims);
++				while(result != NULL){
++					if((port_num = whatportis(result)) == -1){
++						printf("Error: can not extract "
++							"port number!\n");
++						return -1;
++					}
++					/* bounds checking, if anything is
++					 * out of bounds here
++					 * the tool will segfault - we must quit! */
++					if(strlen(result) != 3 || port_num < 0){
++						printf("Error: not a valid "
++							"device: %s\n", result);
++						return -1;
++
++					}
++					/* call the led_set function that
++					 * initalized and sets the
++					 * paths and data for the disks LED */
++					if(led_set(port_num) != 0){
++						printf("Error: can not initialize "
++							"data for disks LED!\n");
++						return -1;
++					}
++					/* move to the next entry after the
++					 * current deliminator,
++					 *  this should be the next port number */
++					result = strtok(NULL, delims);
++				}
++				break;
++			case 's':
++				if(!(strcmp(optarg, "locate"))){
++					next_state = LOCATE_LED;
++					sprintf(message,"Locate LED was ");
++				}
++				else if(!(strcmp(optarg, "fault"))){
++					next_state = FAULT_LED;
++					sprintf(message,"Fault LED was ");
++				}
++				else if(!(strcmp(optarg, "rebuild"))){
++					next_state = REBUILD_LED;
++					sprintf(message, "Rebuild LED was ");
++				}
++				else if(!(strcmp(optarg, "off"))){
++					next_state = OFF_LED;
++					sprintf(message, "Off LED was ");
++				}
++				else if(!(strcmp(optarg, "activity"))){
++					next_state = ACTIV_LED;
++					sprintf(message, "Activate LED was ");
++				}
++				else{
++					printf("Error: Unknown option: %s!\n",
++					       optarg);
++					return -1;
++				}
++				break;
++			case 'f':
++				freq = strtol(optarg, &end_str, 10);
++				if(freq < 1 || freq > 10 || *end_str != '\0'){
++					printf("Error: Invalid frequency, "
++						"please use number between 1 and 10!\n");
++					return -1;
++				}
++				else
++					_led_rate = freq;
++				break;
++			case 'V':
++				version();
++				break;
++			default:
++				printf("Unknown command\n");
++				help(progname);
++				exit(1);
++			}
++		}
++
++	/* Print any remaining command line arguments that were not parsed */
++	if(optind < argc){
++		printf ("Error!  Unknown arguments: ");
++		while (optind < argc)
++		printf ("%s ", argv[optind++]);
++		printf("\nPlease use -h for more information.\n");
++	}
++
++	/* not sure if we need to close the file
++	*close(disks[jj].data[0].path); */
++
++	/* start the timer for non inteligent backplanes.
++	* It loops continuously because the timer needs
++	* to be reset.  */
++	if(_led_rate != 0){
++		sigal_flag = 1;
++		while(1){
++		/* use signals to alert the user if the alarm failed */
++			if (signal(SIGALRM, alarm_handler) == SIG_ERR) {
++				printf("Error: Unable to catch SIGALRM\n!");
++			}
++			if(sigal_flag){
++				if(led_timer() != 0){
++					printf("Error: Unable to set "
++						"LEDs timer!\n");
++					exit(0);
++				}
++				if(led_change_state() != 0){
++					printf("Error: Unable to change "
++						"state of LEDs\n");
++					exit(0);
++				}
++				sigal_flag = 0;
++			}
++		}
++	}
++	if(next_state == NONE){
++		printf("Error: State of LED must be specified!\n");
++		exit(0);
++	}
++	while(disks[i++].host_port == PORT_FREE){
++		if(i > MAX_DISK_IDX){
++			printf("Error: Port number or disk name must be specified!\n");
++			exit(0);
++		}
++	}
++	if(led_execute(next_state, message) != 0){
++		printf("Error: Unable to execute set command!\n");
++	}
++	exit(0);
+ }
+ 
+-int led_write(struct led_context *data, int chg_state) {
+-	
+-	/* set the return state in case write fails to */
+-	int return_state = -1;
+-    
+-	/* this timeout is needed because the utility
+-	 * will write to the sgpio bus too fast and
+-	 * the Intel backplane will miss the data */
+-	usleep(SGPIO_wait);
+-	
+-    /* get the net state of the led from the data structure */
+-    int state = data->next_state;
+-    
+-    /* if the change state is set to 0, then the LED should be turned off 
+-     * and the state from the data structure should be ignored */
+-    if(chg_state == 0)
+-    	state = 0;
+-    
+-    /* create a char buffer to store the led state since
+-     * we will be printing it as a char/string to the fs */
+-    char buf[WRITE_BUF];
+-    
+-    /* cast buf with a string of the decimal value of the led state */
+-    sprintf(buf, "%d", state);
+-    
+-    /* This is just debug to make sure the 'data' is correct */
+-     if (verbose_flag) {
+-        printf("led_write: led state: %d led next state: %d path: %s\n",\
+-            data->current_state, state, data->path);
+-     } 
+-    
+-    /* use the file handler in the data struct to print the buffer 
+-     * and only print x bytes of the size of the buffer.
+-     * The number returned from write is the number of bytes written.
+-     * Write should only ever write two bytes, else it's a failure
+-     */
+-    return_state = write(data->fd,buf,sizeof(buf));
+-    //printf("ledwrite return: %d\n\n", return_state);
+-    /* time to swap the LED states.  This may not be needed if
+-       flashing the LEDs is not required */
+-    data->next_state = data->current_state;
+-    data->current_state = state;
+-    
+-    /* should return the buf size */
+-    return return_state;
+-}
+-
+-int isSWControl(int port) {
+-	char location[49];
+-	int loc;
+-	int buffer;
+-	
+-	sprintf(location,"%s%s/%d:0:0:0/device/sw_control",
+-		SYSFS_BASE, SW_CONTROL, port);
+-	loc = open("test", O_RDWR, 0);
+-	char Buff[2];
+-	read(loc, Buff, sizeof(Buff));
+-	buffer = abs( atoi( Buff ) );
+-	printf("isSWControl: %d buff: %d\n", port, buffer);
+-	return buffer;
+-}
+-
+-int whatportis(const char *disk) {
+-    int port;
+-    /* /sys/class/scsi_device/0:0:0:0/device/block:sda
+-     * the path in the fs is 47 char */
+-    char location[48];  
+-    
+-    /* quit if disk is not 3 chars */ 
+-    if (strlen(disk) != 3)
+-        return -1;
+-
+-    for(port = 0; port <= SUPPORTED_DISKS; port++ ) {
+-    	/* fill 'location' with a string of SYSFS_BASE, port number, port name
+-    	 * and disk name */
+-    	sprintf(location,"%s%s/%d:0:0:0/device/block:%s",
+-    			SYSFS_BASE, SW_CONTROL, port, disk);
+-	
+-    	if (verbose_flag)
+-    		printf("whatportis: disk: %s location: %s\n", disk, location);
+-	
+-    	/* chdir returns 0 for completion and -1 for incomplete */
+-    	if (chdir(location) == 0)
+-    		return port;
+-    }
+-    return -1;
++void led_init(void){
++	int i;
++	for(i=0;i<=MAX_DISK_IDX;i++){
++		disks[i].host_port = PORT_FREE;
++	}
+ }
+ 
+-void alarm_handler(int signo) {
++/* since we don't know which disk LEDs have been
++ * init'd we'll just cycle through all of them.
++ */
++int led_execute(int next_state, char *message){
++	int leds = 0;
++	int ii = 0;
++	for(ii=0;ii<=MAX_DISK_IDX; ii++){
++		/* the problem with cycling through all of the disks
++		 * is that the un-init'd ones have junk data that we
++		 * don't want to write to the fs; a simple check is
++		 * made to make sure that the disk was init'd. */
++		for(leds=0;leds<LEDS_PER_DISK;leds++){
++			if((disks[ii].data[leds].next_state == next_state)
++					&& (disks[ii].init == INITIATED)){
++				disks[ii].data[leds].init = INITIATED;
++				if(led_write(&disks[ii].data[leds], 1) == -1){
++					syslog(LOG_INFO, "%snot set for %s\n",
++					       message, disks[ii].name);
++					if(verbose_flag)
++						printf("%snot set for %s\n",
++						       message, disks[ii].name);
++					return -1;
++				}
++				else{
++					syslog(LOG_INFO, "%sset for %s\n",
++					       message, disks[ii].name);
++					if(verbose_flag)
++						printf("%sset for %s\n",
++						       message, disks[ii].name);
++				}
++			}
++		}
++	}
++	return 0;
++}
++
++int led_change_state(void){
+ 	int myleds = 0;
+ 	int mydisks = 0;
+-	if (verbose_flag)
+-		printf("Timer hit! %d\n", abs(time(NULL)));
+-	
+-	for (mydisks=0;mydisks<=SUPPORTED_DISKS;mydisks++) {
+-		for(myleds=0;myleds<LEDS_PER_DISK;myleds++) {
+-			if (disks[mydisks].data[myleds].init == 1009) {
+-				if (verbose_flag) {
+-					printf("Timer:\n\tname: %s\n", disks[mydisks].name);
+-					printf("\tdisk: %d led: %d\n", mydisks, myleds);
++
++	for(mydisks=0;mydisks<=MAX_DISK_IDX;mydisks++){
++		for(myleds=0;myleds<LEDS_PER_DISK;myleds++){
++			if(disks[mydisks].data[myleds].init == INITIATED){
++				if(verbose_flag){
++					printf("Timer:\n\tname: %s\n",
++					       disks[mydisks].name);
++					printf("\tdisk: %d led: %d\n",
++					       mydisks, myleds);
+ 					printf("\tcurrent_state: %d\n",
+-						disks[mydisks].data[myleds].current_state);
++					       disks[mydisks].data[myleds].current_state);
+ 					printf("\tnext_state: %d\n",
+-						disks[mydisks].data[myleds].next_state);
+-					printf("\tinit: %d\n\n", disks[mydisks].data[myleds].init);	
++					       disks[mydisks].data[myleds].next_state);
++					printf("\tinit: %d\n\n",
++					       disks[mydisks].data[myleds].init);
++				}
++				if(led_write(&disks[mydisks].data[myleds], 1) == -1){
++					printf("Error: Failed to set led %d for "
++					       "port %d!\n", myleds, disks[mydisks].host_port);//fix!!!!
++					return -1;
+ 				}
+-				if(led_write(&disks[mydisks].data[myleds], 1) != WRITE_BUF)
+-					printf("Failed to set led %d for port %d\n", myleds,
+-							mydisks);
+ 			}
+ 		}
+ 	}
++	return 0;
+ }
+ 
+-/* set up the timer function that runs every x sec or usec */
+-int led_timer() {
+-	/* create the delay structure */
+-	struct itimerval delay;
+-	int ret;
+-	
+-	/* use signals to alert the user if the alarm failed */
+-	if (signal(SIGALRM, alarm_handler) == SIG_ERR) {
+-		perror("Unable to catch SIGALRM");
++int led_write(struct led_context *data, int chg_state){
++
++	/* set the return state in case write fails to */
++	int return_state = -1;
++
++	/* this timeout is needed because the utility
++	 * will write to the sgpio bus too fast and
++	 * the Intel backplane will miss the data */
++	usleep(SGPIO_WAIT);
++
++	/* get the next state of the led from the data structure */
++	int state = data->next_state;
++
++	/* if the change state is set to 0, then the LED should be turned off
++	* and the state from the data structure should be ignored */
++	if(chg_state == 0)
++		state = 0;
++
++	/* create a char buffer to store the led state since
++	* we will be printing it as a char/string to the fs */
++	char buf[WRITE_BUF];
++
++	/* cast buf with a string of the decimal value of the led state */
++ 	if(sprintf(buf, "%d", state) < 1){
++		printf("Error: Unable to write LED state to buffor!\n");
+ 		return -1;
+ 	}
+-	
+-	float temp_rate = 1.0/_led_rate/2;
+-	int rate = temp_rate*1000000;
+-	//printf("%d", test);
+-	        
+-	    
+-	
+-	/* the time values for the alarm.  It has uS granularity */
+-	delay.it_value.tv_sec = 0;
+-	delay.it_value.tv_usec = rate;
+-	delay.it_interval.tv_sec = 0;
+-	delay.it_interval.tv_usec = rate;
+-	
+-	/* reset the timer with the above time values */
+-	ret = setitimer(ITIMER_REAL, &delay, NULL);
+-	
+-	/* if the timer failed to reset, error out */
+-	if (ret) {
+-		perror("setitimer\n");
+-		return -1;
++
++ 	/* This is just debug to make sure the 'data' is correct */
++ 	if(verbose_flag){
++ 	printf("led_write: led state: %d led next state: %d path: %s\n",
++ 	       data->current_state, state, data->path);
++ 	}
++
++ 	/* use the file handler in the data struct to print the buffer
++ 	 * and only print x bytes of the size of the buffer.
++ 	 * The number returned from write is the number of bytes written.
++ 	 * Write should only ever write two bytes, else it's a failure
++ 	 */
++ 	return_state = write(data->fd,buf,strlen(buf));
++	if(return_state == -1){
++		printf("Error: Unable to write to descriptor!\n");
++		return return_state;
+ 	}
+-	pause();
+-	return 0;
++	data->next_state = data->current_state;
++	data->current_state = state;
++
++	/* should return the buf len */
++	return return_state;
+ }
+ 
+-int led_set(int port_num) {
++int led_set(int port_num){
+ 	int leds = 0;
++	int index = 0;
++
++	while(disks[index].host_port != PORT_FREE){
++		if(++index > MAX_DISK_IDX){
++			printf("Error: Too many disks!\n");
++			return -1;
++		} 
++	}
++
+ 	/* Give the port a name */
+-	sprintf(disks[port_num].name,"Port %d", port_num);
+-	disks[port_num].init = 1009;
++	if(sprintf(disks[index].name,"Port %d", port_num) < 0){
++		printf("Error: Unable to write port number to buffor!\n");
++		return -1;
++	}
++	disks[index].init = INITIATED;
+ 	/* set up the LEDs for each port */
+-	for(leds=0;leds<LEDS_PER_DISK;leds++) {
++	for(leds=0;leds<LEDS_PER_DISK;leds++){
+ 		/* creates the inital LED struct with
+ 		 * current_state and next_state */
+-		init_led(&disks[port_num].data[leds]);
+-		
+-		
++		init_led(&disks[index].data[leds]);
++
+ 		/* if the disk has already been init'd then skip it.
+-		 * This would only occur if the user specified the 
+-		 * same port/disk twice 
+-		if (disks[port_num].data[leds].init == 1009)
++		 * This would only occur if the user specified the
++		 * same port/disk twice
++		if (disks[port_num].data[leds].init == INITIATED)
+ 		    break;
+ 		*/
+-		
++
+ 		/* populate the port path */
+-		sprintf(disks[port_num].data[leds].path,"%s%s%d%s",\
+-				SYSFS_BASE, PORT_NAME, port_num, EM_MESSAGE);
+-		
+-		
+-		disks[port_num].data[leds].next_state = _led_list[leds];
+-		
+-		
+-		if (verbose_flag) {
++		if(sprintf(disks[index].data[leds].path,"%s%s%d%s",\
++				SYSFS_BASE, PORT_NAME, port_num, EM_MESSAGE) < 0){
++			printf("Error: Unable to write port path to buffor!\n");
++			return -1;
++		}
++
++		disks[index].data[leds].next_state = _led_list[leds];
++
++
++		if(verbose_flag){
+ 			printf("port %d leds %d\n" \
+-		   "next_state %d init %d\n", port_num, leds,
+-		   disks[port_num].data[leds].next_state,
+-		   disks[port_num].data[leds].init);
++			       "next_state %d init %d\n", port_num, leds,
++			       disks[index].data[leds].next_state,
++			       disks[index].data[leds].init);
+ 		}
+-		        				
++
+ 		/* create the file handler and set it as read/write
+ 		 * to allow port_status to read em_message */
+-		disks[port_num].data[leds].fd = 
+-			open(disks[port_num].data[leds].path, O_RDWR,0);
+-		
++		disks[index].data[leds].fd =
++			open(disks[index].data[leds].path, O_RDWR,0);
++
+ 		/* if the file handler failed, the path to the
+ 		 * requested disk was not found, we'll need to quit */
+-		if (disks[port_num].data[leds].fd < 0) {
+-			printf("Unable to find port: %d\n", port_num);
+-				return -1;
+-		}	
+-	}           
++		if(disks[index].data[leds].fd < 0){
++			printf("Error: Unable to find path to requested disk: port %d!\n", 
++				port_num);
++			return -1;
++		}
++	}
+ 	/* done setting up the LEDs */
++	disks[index].host_port = port_num;
+ 	return 0;
+ }
++
++int find_port_number(char *location){
++	DIR *dir;
++	char *ptr = NULL;
++	int port = -1;
++	if((dir = opendir(location))){
++		closedir(dir);
++		ptr = strchr((const char *)&location[PORT_NUM_LOC], ':');
++		if(ptr){
++			*ptr = 0;
++			port = atoi((char *) &location[PORT_NUM_LOC]);
++		}
++	}
++	return port;
++}
++	
++
++int whatportis(const char *disk){
++	int port = -1;
++	/* /sys/class/scsi_device/0:0:0:0/device/block:sda
++	 * the path in the fs is 47 char */
++	char location[FS_PATH_LEN+1];
++
++	char dir_qan, len;
++	int i;
++	struct dirent **dir_ent;
++
++	/* quit if disk is not 3 chars */
++	if(strlen(disk) != 3)
++		return -1;
++
++	dir_qan = scandir(sys_scsi_path, &dir_ent, 0, alphasort);
++	if(dir_qan < 0){
++		printf("Error: /sys/class/scsi_disk not contain any directory\n");
++		return -1;
++	}
++
++	strcpy(location, sys_scsi_path);
++	len = strlen(location);
++
++	for(i=0;i<dir_qan;i++){
++		const char *dir_name = dir_ent[i]->d_name;
++		if(port == -1){
++			sprintf(location + len, "%s%s%s", 
++				dir_name, sys_scsi_dev_blk_sles, disk);
++			port = find_port_number(location);
++			if(port == -1){
++				sprintf(location + len, "%s%s%s", 
++					dir_name, sys_scsi_dev_blk_rh, disk);
++				port = find_port_number(location);
++			}
++		}
++		free(dir_ent[i]);
++	}
++	free(dir_ent);
++	return port;
++}
++
++void alarm_handler(int signo){
++	sigal_flag = 1;
++}
++
++/* set up the timer function that runs every x sec or usec */
++int led_timer(){
++	/* create the delay structure */
++	struct itimerval delay;
++	int ret;
++
++	float temp_rate = 1.0/_led_rate/2;
++	int rate = temp_rate*1000000;
++
++	/* the time values for the alarm.  It has uS granularity */
++	delay.it_value.tv_sec = 0;
++	delay.it_value.tv_usec = rate;
++	delay.it_interval.tv_sec = 0;
++	delay.it_interval.tv_usec = rate;
++
++	/* reset the timer with the above time values */
++	ret = setitimer(ITIMER_REAL, &delay, NULL);
++
++	/* if the timer failed to reset, error out */
++	if(ret){
++		perror("setitimer\n");
++		return -1;
++	}
++	return 0;
++}
++
++
+Index: version.h
+===================================================================
+--- version.h.orig
++++ version.h
+@@ -8,7 +8,7 @@
+  *
+  * This program is distributed in the hope that it will be useful, but
+  * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License 
++ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
+  * for more details.
+  *
+  * You should have received a copy of the GNU General Public License along
+@@ -18,11 +18,11 @@
+ 
+ /*
+  * Intel SGPIO enclosure management utility
+- * Author: Eric R Hall <Eric.R.Hall@intel.com> 
+- * 
++ * Author: Eric R Hall <Eric.R.Hall@intel.com>
++ *
+  */
+ 
+ #define UTIL_VERSION_MAJOR 0
+-#define UTIL_VERSION_MINOR 9
++#define UTIL_VERSION_MINOR 10
+ #define SGPIO_VERSION_MAJOR 1
+ #define SGPIO_VERSION_MINOR 2

@@ -1,0 +1,12 @@
+Index: dynare-5.0/contrib/ms-sbvar/switch_dw/switching/dw_switch.c
+===================================================================
+--- dynare-5.0.orig/contrib/ms-sbvar/switch_dw/switching/dw_switch.c
++++ dynare-5.0/contrib/ms-sbvar/switch_dw/switching/dw_switch.c
+@@ -2055,6 +2055,7 @@ TVector ProbabilitiesState(TVector p, in
+ PRECISION LogProbabilityStates(int *S, TStateModel *model)
+ {
+   printf("LogProbabilityStates() not implemented\n");
++  return 0;
+   dw_exit(0);
+ 
+ /**

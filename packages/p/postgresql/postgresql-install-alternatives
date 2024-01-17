@@ -1,0 +1,36 @@
+#!/bin/bash
+
+shopt -s nullglob
+
+if test "$#" -ne 1; then
+	echo "usage: $0 pgversion" 1>&2
+	exit 1
+fi
+
+PRIO=$1
+case "$PRIO" in
+  postgresql*)
+    PRIO="${PRIO##postgresql}"
+  ;;
+esac
+
+PGBASEDIR=/usr/lib/postgresql$PRIO
+if [ $PRIO -lt 80 ] ; then
+  PRIO="${PRIO}0"
+fi
+
+PGBINDIR=$PGBASEDIR/bin
+
+for FILE in $PGBINDIR/*; do
+    NAME=$(basename $FILE)
+    DIR=/usr/bin
+    SLAVES="$SLAVES --slave $DIR/$NAME $NAME $FILE"
+done
+
+if test -n "$SLAVES"; then
+    update-alternatives --quiet --install \
+        /usr/lib/postgresql postgresql $PGBASEDIR $PRIO \
+        $SLAVES
+else
+    update-alternatives --remove postgresql $PGBASEDIR
+fi

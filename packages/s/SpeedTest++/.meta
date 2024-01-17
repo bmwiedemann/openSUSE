@@ -1,0 +1,8 @@
+<package name="SpeedTest++" project="openSUSE:Factory">
+  <title></title>
+  <description>Yet another unofficial speedtest.net client cli interface.
+
+It supports the new (undocumented) raw TCP protocol for better accuracy.</description>
+  <devel project="benchmark" package="SpeedTest++"/>
+  <url>https://github.com/taganaka/SpeedTest</url>
+</package>

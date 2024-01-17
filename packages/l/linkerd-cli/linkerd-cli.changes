@@ -1,0 +1,725 @@
+-------------------------------------------------------------------
+Thu Jan 04 18:46:36 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.14.8:
+  * This stable release fixes an issue in the control plane where
+    discovery for pod IP addresses could hang indefinitely
+    (#11815).
+
+-------------------------------------------------------------------
+Thu Dec 21 17:39:25 UTC 2023 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.14.7:
+  * stable-2.14.7
+  * Keep other controller statuses when updating httproute status
+    (#11705)
+  * Destination controller should initialize jobs metadata api
+    (#11541)
+
+-------------------------------------------------------------------
+Thu Dec 07 19:00:24 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.14.6:
+  * stable-2.14.6
+  * Bump prometheus to v2.48.0 (#11633)
+  * Add ability to configure client-go's `QPS` and `Burst` settings
+    (#11644)
+  * Improve klog (client-go logs) handling (#11632)
+  * service-mirror: support gateway resolving to multiple addresses
+    (#11499)
+  * Add imagePullSecrets to the multicluster chart. (#11287)
+
+-------------------------------------------------------------------
+Thu Nov 23 06:24:55 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.14.5:
+  * stable-2.14.5
+  * proxy: v2.210.4
+  * policy: Update to OpenSSL 3 (#11625)
+  * Restart destination, proxy-injector controllers on config
+    change. (#11440)
+  * helm: Add a controllerImageVersion override (#11406)
+
+-------------------------------------------------------------------
+Fri Nov 17 05:52:28 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.14.4:
+  This stable release improves observability for the control plane
+  by adding additional logging to the destination controller and by
+  adding histograms which can detect Kubernetes informer lag. It
+  also adds the ability to configure protocol detection.
+    - Improved logging in the destination controller by adding the
+      client pod's name to the logging context. This will improve
+      visibility into the messages sent and received by the control
+      plane from a specific proxy (#11532)
+    - helm: Introduce configurable values for protocol detection
+      (#11536)
+    - Fixed an issue where the Destination controller could stop
+      processing service profile updates, if a proxy subscribed to
+      those updates stops reading them; this is a followup to the
+      issue [#11491] fixed in stable-2.14.2 (#11546)
+    - In the Destination controller, added informer lag histogram
+      metrics to track whenever the Kubernetes objects watched by
+      the controller are falling behind the state in the
+      kube-apiserver (#11534)
+    - proxy: Fix grpc_status metric labels for inbound traffic
+
+-------------------------------------------------------------------
+Wed Nov 08 05:55:42 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.14.3:
+  * Disable cni-calico-deep test (#11588)
+  * Be more precise on the component involving each change
+  * Changes for stable-2.14.3
+  * Fix GetProfiles error when address is opaque and unmeshed
+    (#11556)
+  * Bump proxy to v2.210.2
+
+-------------------------------------------------------------------
+Fri Oct 27 05:42:50 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.14.2:
+  * stable-2.14.2 (#11539)
+  * Correct proxy version
+  * Bump proxy to v.203.5
+  * Add update queue to endpoint translator (#11491)
+  * Extend unit test for HostPort subscriptions (#11439)
+  * dst: Update `GetProfile`'s stream when pod associated to
+    HostPort lookup changes (#11334)
+  * build(deps): bump google.golang.org/grpc from 1.58.2 to 1.59.0
+    (#11496)
+  * build(deps): bump golang.org/x/net from 0.16.0 to 0.17.0
+    (#11475)
+  * Bump Prometheus to v2.47.0 (#11404)
+
+-------------------------------------------------------------------
+Tue Sep 26 05:01:09 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.14.1:
+  * stable-2.14.1 (#11405)
+  * edge-23.9.2 (#11367)
+  * build(deps): bump actions/checkout from 3.5.3 to 4.0.0 (#11336)
+  * Check cli version match only for running pods (#11295)
+  * proxy: v2.209.0 (#11361)
+  * Remove unnecessary helm-release-version annotation (#11329)
+  * build(deps): bump actions/upload-artifact from 3.1.2 to 3.1.3
+    (#11346)
+  * Bump node version to v20 (#11341)
+  * build(deps): bump peter-evans/repository-dispatch from 2.1.1 to
+    2.1.2 (#11351)
+  * build(deps-dev): bump @babel/preset-react in /web/app (#11353)
+  * build(deps-dev): bump @babel/eslint-parser in /web/app (#11354)
+  * build(deps-dev): bump chai from 4.3.7 to 4.3.8 in /web/app
+    (#11355)
+  * build(deps): bump crazy-max/ghaction-chocolatey from 2.3.0 to
+    3.0.0 (#11356)
+  * build(deps): bump tj-actions/changed-files from 37.6.0 to
+    39.0.1 (#11357)
+  * edge-23.9.1 (#11350)
+  * Fix mirroring all services when remote selector is empty
+    (#11344)
+  * Bump CNI plugin and proxy-init versions (#11348)
+  * build(deps): bump docker/setup-buildx-action from 2.9.1 to
+    2.10.0 (#11310)
+  * build(deps): bump github.com/cyphar/filepath-securejoin
+    (#11347)
+  * build(deps): bump crazy-max/ghaction-chocolatey from 2.2.0 to
+    2.3.0 (#11339)
+  * Update apiVersions of webhook rule (#11149)
+  * build(deps): bump `rustls-webpki` to 0.104.0 (#11327)
+  * dst: Stop overriding Host IP with Pod IP on HostPort lookup
+    (#11328)
+  * Fix wrong `skipped` message of `linkerd inject` for a namespace
+    (#11179)
+  * build(deps-dev): bump @babel/eslint-parser in /web/app (#11297)
+  * build(deps): bump actions/setup-go from 4.0.1 to 4.1.0 (#11225)
+  * build(deps-dev): bump jest-environment-jsdom in /web/app
+    (#11298)
+  * `linkerd mc link|gateways` small improvements (#11265)
+  * build(deps): bump DavidAnson/markdownlint-cli2-action (#11323)
+  * build(deps-dev): bump eslint-plugin-react in /web/app (#11272)
+  * helm: Configure policy controller resource requests/limits
+    (#11306)
+  * Update ADOPTERS.md (#11324)
+  * proxy: v2.208.0 (#11316)
+
+-------------------------------------------------------------------
+Tue Sep 05 15:08:04 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.14.0:
+  * Stable 2.14.0 (#11282)
+  * Add p2p integration test (#11270)
+  * edge-23.8.3 Change notes (#11262)
+  * ci: increase release docker build timeout (#11236)
+  * Disable local traffic policy for remote discovery (#11257)
+  * Fixed destination metrics warning when re-linking (#11253)
+    2.28.0 in /web/app (#11209)
+  * Add cluster store size gauge (#11256)
+  * Fixed service-mirror metrics warning (#11246)
+  * Fix service mirror controller warnings for remote-discover
+    services (#11251)
+  * policy: update to `kube-rs` v0.85 and friends (#11255)
+  * Set readOnlyRootFilesystem: true on control plane / jaeger /
+    multicluster (#11221)
+  * Allow clusters to be linked without a gateway (#11226)
+  * edge-23.8.2 (#11235)
+  * Add support for remote discovery (#11224)
+  * fix(web/locales): added services to locales es (#11229)
+  * Add `just` recipe to configure flat network multicluster
+    (#11187)
+  * service mirror improvements (#11223)
+  * Introduce small improvements to ClusterStore (#11220)
+  * Add remote-discovery service mirroring (#11201)
+  * Replaced deprecated label failure-domain (#11148)
+  * Replace `server_port_subscribers` metric (#11206)
+  * Adds Adidas to list of adopters (#11207)
+  * Introduce an EndpointsWatcher cache structure (#11190)
+  * Add link credentials secret to linkerd namespace (#11188)
+  * edge-23.8.1 (#11200)
+  * proxy: v2.207.0 (#11198)
+  * Removed hostNetwork: true from linkerd-cni Helm chart templates
+    (#11158)
+  * Incorporate links to fixed issues in the release notes (#11177)
+  * Add Docker to list of adopters. (#11195)
+  * edge-23.7.3 (#11176)
+  * cli: inconsistent precedence for registry flag (#11144)
+  * Add ResponseHeaderModifier filter (#11106)
+  * Add mutex lock to updateServer (#11169)
+  * proxy: v2.206.0 (#11171)
+  * Introduce trace logging in Control Plane (#11147)
+  * Add support for consumer routes (#11118)
+  * Update Go codegen for httproute timeout fields (#11164)
+  * Fix `linkerd check --output` flag description (#11145)
+  * [grafana] update datasource (#11017)
+  * Allow port in HttpRoute parent_ref to be optional (#11107)
+  * Make `CheckURL` and `DefaultDockerRegistry` vars (#11128)
+  * Add HA mode for service-mirror (#11047)
+  * Add networkValidator.enableSecurityContext value (#11064)
+  * edge-23.7.2 (#11109)
+  * Fix missing resource-cni label on linkerd-cni (#11072)
+  * Add support for HTTP filters in outbound policy (#11083)
+  * prepare to release edge-23.7.1 (#11090)
+  * proxy: v2.205.0 (#11089)
+  * Policy controller watches gateway-api HttpRoutes (#11042)
+  * ## edge-23.6.3 (#11074)
+  * Add leader election to the service-mirror controller (#11046)
+  * Fix support of config.linkerd.io/admin-port annotation (#11031)
+  * Implement jsonpath Relax func in linkerd (#11001)
+  * Fix github-actions-badge in the README.md file (#11028)
+  * Updated release notes for edge-23.6.2 (#11030)
+  * proxy: v2.204.0 (#11024)
+  * fix: supplement the HA flag (#11011)
+  * Add codegen for httproute v1beta3 (#11008)
+  * Add docker builder option to improve build tooling (#10935)
+  * edge-23.6.1 (#10982)
+  * Add log-format value to the multicluster-link helm chart
+    (#10779)
+  * implement GEP-1742 timeouts in the policy controller (#10975)
+  * linkerd-cni v1.2.0 (#10973)
+  * Add timeout to HttpRoute CRD and bindings (#10969)
+  * Add PITS Global Data Recovery Services to the adopters list
+    (#10942)
+  * Fix bug where topology routing would not disable while service
+    was under load. (#10925)
+  * edge-23.5.3 (#10945)
+  * proxy: v2.203.0 (#10944)
+  * Parse probe paths as URI (#10934)
+  * Update ADOPTERS.md (#10924)
+  * Use namespace field of backend ref when it is set (#10909)
+  * edge-23.5.2 change notes (#10915)
+  * Add integration tests for loopback routing (#10882)
+  * Force MeshTLSAuthentication CRs to provide at least one
+    identity/identityRef (#10888)
+  * Fix `linkerd mc check` failing in the presence of lots of
+    mirrored services (#10893)
+  * Tolerations and nodeSelector support for extensions'
+    namespace-metadata (#10854)
+  * edge-23.5.1 (#10885)
+  * proxy: v2.202.0 (#10883)
+  * Add cache configuration annotation support (#10871)
+  * Block `linkerd viz check` on pods readiness (#10872)
+  * Validate failure accrual annotations in policy controller
+    (#10868)
+  * Introduce discovery cache timeout values (#10831)
+  * Add indentation in prometheus configmap (#10812)
+  * cni-plugin: v1.1.3 (#10855)
+  * proxy: v2.201.0 (#10856)
+  * stats summary api returns error for from and to policy resource
+    summary (#10765)
+  * Fix memory leak in service mirror (#10833)
+  * Add missing label "linkerd.io/extension" (#10821)
+  * Add -o json flag for linkerd multicluster gateways (#10773)
+  * Update a handful of rust deps (#10834)
+  * edge-23.4.3 (#10832)
+  * inject: don't expand opaque port ranges (#10827)
+  * Create policy-controller-write Lease at runtime (#10823)
+  * Fix `server_port_subscribers` metric in Destination (#10820)
+  * proxy: v2.200.0 (#10822)
+  * fix broken link to circuit-breaking docs in CHANGES.md (#10792)
+  * update `h2` dependency to v0.3.18 (#10802)
+  * edge-23.4.2 (#10794)
+  * Bump cni-plugin to v1.1.1 (#10780)
+  * Add new integration test for "linkerd multicluster allow"
+    command (#6693) (#10632)
+  * added --set flag to install-cni plugin (#10633)
+  * add `trust_dns=error` to default proxy log level (#10774)
+  * Update viz helm chart readme (#10784)
+  * Enable smoke tests (#10766)
+  * Check for helm docs diffs in extension charts (#10781)
+  * Explicitly use bash when using pipes in CI workflows (#10723)
+  * Bump prometheus image to v2.43.0 (#10755)
+  * Add podAnnotations option to linkerd-multicluster-link chart
+    (#10696)
+  * proxy: v2.199.0 (#10776)
+  * jaeger/charts/linkerd-jaeger: remove "/bin/sh" command for
+    namespace (#10757)
+  * charts: set defaultRegistry for namespace metadata (#10739)
+  * charts: fix uninstall issue (#10704)
+  * destination: send `Opaque` protocol hint for opaque ports
+    (#10301)
+
+-------------------------------------------------------------------
+Tue Sep 05 15:04:01 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.13.6:
+  * stable-2.13.6
+  * linkerd-cni v1.2.0 (#10973)
+  * proxy: v2.203.2
+  * Removed hostNetwork: true from linkerd-cni Helm chart templates
+    (#11158)
+  * cli: inconsistent precedence for registry flag (#11144)
+  * Add mutex lock to updateServer (#11169)
+  * Introduce trace logging in Control Plane (#11147)
+  * Fix `linkerd check --output` flag description (#11145)
+  * Make `CheckURL` and `DefaultDockerRegistry` vars (#11128)
+  * Fix `linkerd mc check` failing in the presence of lots of
+    mirrored services (#10893)
+
+-------------------------------------------------------------------
+Fri Jun 23 07:15:45 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.13.5:
+  This stable release fixes a memory leak in the multicluster
+  extension and fixes an issue where the proxy was failing certain
+  requests when running in ingress mode.
+  * Fixed a memory leak in the service mirror controller
+  * Fixed an issue where the proxy would fail requests that were
+    missing the `l5d-dst-override` header when run in ingress mode
+
+-------------------------------------------------------------------
+Fri Jun 02 11:36:26 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.13.4:
+  This stable release fixes a few issues in the proxy and in the
+  outbound policy API. Two new configuration options are also
+  introduced to configure the outbound (and inbound) cache
+  discovery idle period for proxies. The configuration is supported
+  through annotations and through Helm values.
+  * Control Plane
+    - Fixed an issue where the namespace field on HTTPRoute
+      backendRefs was ignored, and the backend Service would always
+      be assumed to be in the namespace as the parent Service
+    - Fixed an issue where default authorizations generated for
+      readiness and liveness probes would fail if the probe path
+      included URI query parameters
+    - Added the ability to configure the proxy's discovery cache
+      timeouts with the
+      config.linkerd.io/proxy-outbound-discovery-cache-unused-timeout
+      and
+      config.linkerd.io/proxy-inbound-discovery-cache-unused-timeout
+      annotations
+    - Fixed bug where topology routing would not disable while
+      service was under load (thanks @MarkSRobinson!)
+  * Proxy
+    - Fixed an issue where meshed pods could not communicate with
+      themselves through a ClusterIP Service
+    - Fixed an issue with W3C trace context propagation which
+      caused proxy spans to be siblings rather than children of
+      their original parent (thanks @whiskeysierra)
+    - Fixed the proxy not using gRPC response classification for
+      gRPC requests to destinations without ServiceProfiles
+  * Helm
+    - Introduced outbound/inbound cache discovery cache idle
+      timeout configuration values
+
+-------------------------------------------------------------------
+Tue May 09 05:20:08 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.13.3:
+  * Removed changelog indication that CNI init container base image
+    had changed.
+  * Update CHANGES.md
+  * Fix whitespace
+  * Removing multicluster namespace declarations to match main
+  * Updated Readmes for helm
+  * Updated wording on release notes
+  * Updated formatting on release notes and updated
+    install_crds.golden to remove bad merge changes
+  * Removing more whitespace
+  * Removing whitespace
+  * Updating changelog notes to fix line length and indentation
+  * Updated release notes and helm chart values
+  * inject: don't expand opaque port ranges (#10827)
+  * Create policy-controller-write Lease at runtime (#10823)
+  * Fix `server_port_subscribers` metric in Destination (#10820)
+  * proxy: v2.200.0 (#10822)
+  * build(deps): bump k8s.io/apiextensions-apiserver from 0.26.3 to
+    0.27.1 (#10786)
+  * build(deps): bump tj-actions/changed-files from 35.8.0 to
+    35.9.0 (#10811)
+  * build(deps-dev): bump eslint-webpack-plugin in /web/app
+    (#10808)
+  * build(deps): bump github.com/go-openapi/spec from 0.20.8 to
+    0.20.9 (#10810)
+  * build(deps): bump github.com/prometheus/client_golang (#10787)
+  * build(deps): bump codecov/codecov-action from 3.1.2 to 3.1.3
+    (#10796)
+  * build(deps-dev): bump html-webpack-plugin in /web/app (#10809)
+  * build(deps-dev): bump eslint from 8.38.0 to 8.39.0 in /web/app
+    (#10807)
+  * build(deps-dev): bump sinon from 15.0.3 to 15.0.4 in /web/app
+    (#10806)
+  * build(deps-dev): bump webpack-cli from 5.0.1 to 5.0.2 in
+    /web/app (#10805)
+  * build(deps): bump helm.sh/helm/v3 from 3.11.2 to 3.11.3
+    (#10785)
+  * fix broken link to circuit-breaking docs in CHANGES.md (#10792)
+  * update `h2` dependency to v0.3.18 (#10802)
+  * Bump cni-plugin to v1.1.1 (#10780)
+  * build(deps): bump github.com/spf13/cobra from 1.6.1 to 1.7.0
+    (#10686)
+  * Add new integration test for "linkerd multicluster allow"
+    command (#6693) (#10632)
+  * added --set flag to install-cni plugin (#10633)
+  * build(deps): bump google-github-actions/auth from 1.0.0 to
+    1.1.0 (#10768)
+  * add `trust_dns=error` to default proxy log level (#10774)
+  * build(deps-dev): bump webpack from 5.76.3 to 5.80.0 in /web/app
+    (#10783)
+  * build(deps): bump k8s.io/kube-aggregator from 0.26.3 to 0.27.1
+    (#10761)
+  * build(deps-dev): bump webpack-dev-server in /web/app (#10760)
+  * build(deps): bump core-js from 3.29.1 to 3.30.1 in /web/app
+    (#10758)
+  * Update viz helm chart readme (#10784)
+  * build(deps): bump tj-actions/changed-files from 35.7.8 to
+    35.8.0 (#10743)
+  * build(deps): bump EmbarkStudios/cargo-deny-action from 1.5.0 to
+    1.5.2 (#10742)
+  * build(deps): bump golang.org/x/tools from 0.7.0 to 0.8.0
+    (#10721)
+  * build(deps): bump github.com/docker/docker (#10683)
+  * build(deps): bump codecov/codecov-action from 3.1.1 to 3.1.2
+    (#10732)
+  * build(deps-dev): bump eslint from 8.36.0 to 8.38.0 in /web/app
+    (#10719)
+  * build(deps-dev): bump @babel/core from 7.21.3 to 7.21.4 in
+    /web/app (#10718)
+  * Enable smoke tests (#10766)
+  * Check for helm docs diffs in extension charts (#10781)
+  * Explicitly use bash when using pipes in CI workflows (#10723)
+  * Bump prometheus image to v2.43.0 (#10755)
+  * build(deps): bump golang.org/x/net from 0.8.0 to 0.9.0 (#10701)
+  * Add podAnnotations option to linkerd-multicluster-link chart
+    (#10696)
+  * build(deps): bump cpufeatures from 0.2.5 to 0.2.6 (#10646)
+  * proxy: v2.199.0 (#10776)
+  * jaeger/charts/linkerd-jaeger: remove "/bin/sh" command for
+    namespace (#10757)
+  * charts: set defaultRegistry for namespace metadata (#10739)
+  * charts: fix uninstall issue (#10704)
+  * destination: send `Opaque` protocol hint for opaque ports
+    (#10301)
+  * stable-2.13.2 change notes
+  * fix broken link to circuit-breaking docs in CHANGES.md (#10792)
+  * update `h2` dependency to v0.3.18 (#10802)
+  * Bump cni-plugin to v1.1.1 (#10780)
+  * add `trust_dns=error` to default proxy log level (#10774)
+  * Enable smoke tests (#10766)
+  * Bump prometheus image to v2.43.0 (#10755)
+  * proxy: v2.199.0 (#10776)
+  * jaeger/charts/linkerd-jaeger: remove "/bin/sh" command for
+    namespace (#10757)
+  * charts: fix uninstall issue (#10704)
+
+-------------------------------------------------------------------
+Tue Apr 25 18:15:41 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.13.2:
+  * stable-2.13.2 change notes
+  * fix broken link to circuit-breaking docs in CHANGES.md (#10792)
+  * update `h2` dependency to v0.3.18 (#10802)
+  * Bump cni-plugin to v1.1.1 (#10780)
+  * add `trust_dns=error` to default proxy log level (#10774)
+  * Enable smoke tests (#10766)
+  * Bump prometheus image to v2.43.0 (#10755)
+  * proxy: v2.199.0 (#10776)
+  * jaeger/charts/linkerd-jaeger: remove "/bin/sh" command for
+    namespace (#10757)
+  * charts: fix uninstall issue (#10704)
+
+-------------------------------------------------------------------
+Fri Apr 14 18:46:12 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.13.1:
+  * stable-2.13.1 (#10754)
+  * policy: add end-to-end test for failure accrual (#10681)
+  * proxy: v2.198.1 (#10748)
+  * Pass cluster domain flag to policy controller (#10741)
+  * proxy: v2.198.0 (#10736)
+  * Remove extra space from flag in namespace metadata (#10730)
+
+-------------------------------------------------------------------
+Thu Apr 13 09:32:29 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.13.0:
+  * stable-2.13.0 (#10727)
+  * Remove -v flag from e2e test curl pod (#10728)
+  * update `linkerd2-proxy-api` to v0.9.0 (#10724)
+  * update `kubert` to v0.16 (#10725)
+  * Update `linkerd upgrade` instructions (#10700)
+  * Remove `linkerd mc prune` (#10707)
+  * Remove namespace field from cluster scoped resources (#10713)
+  * Add kubelet NetworkAuthentication back into linkerd-viz
+    (#10712)
+  * Fix typo in resource name for prune (#10710)
+  * proxy: v2.197.1 (#10711)
+  * Add outbound policy support to diagnostics policy command
+    (#10695)
+  * edge-23.4.1 (#10692)
+  * proxy: v2.196.0 (#10685)
+  * Remove duplicate authorizationpolicy from gateway chart
+    (#10684)
+  * Add outbound policy e2e test (#10621)
+  * Bump linkerd2-proxy-init packages (#10678)
+  * policy: Include ports in OutboundPolicies service references
+    (#10677)
+  * proxy: v2.195.0 (#10668)
+  * HTTPRoute should not accept parent Services without clusterIPs
+    (#10672)
+  * Allow controller to serve failure accrual overrides (#10655)
+  * sign digest instead of tag (#10599)
+  * Remove duplicate SecurityContext entry in prometheus manifest
+    (#10654)
+  * policy: Return Service metadata in OutboundPolicy responses
+    (#10658)
+  * Enable admin server metrics in the policy controller (#10645)
+  * Add support for customizable ignore headers list in Linkerd Tap
+    (#10443)
+  * edge-23.3.4 change notes (#10649)
+  * proxy: v2.194.0 (#10648)
+  * Batch transitive dependency bumps (`syn@2.x.x`). (#10608)
+  * Remove viz dependency in multicluster tests (#10609)
+  * cli: Support running `check` on CLI-only extensions (#10588)
+  * Add status support for BackendReferences (#10601)
+  * Send queue config even when outbound backend service is missing
+    (#10634)
+  * Adds a new global flag for viz to override the default viz
+    namespace (#10345)
+  * Ignore HTTPRoutes in outbound API if they have not been
+    accepted (#10558)
+  * Replace `github.com/ghodss/yaml` with `sigs.k8s.io/yaml`
+    (#10610)
+  * Add integration tests for HTTPRoute Accept statuses (#10555)
+  * inject: avoid extra serialization when building ResourceConfig
+    (#10589)
+  * Set accepted status for HTTPRoutes with Service parents
+    (#10545)
+  * edge-23.3.3 (#10592)
+  * policy: minor OutboundPolicy gRPC server refactors  (#10547)
+  * Avoid busy looping after losing lease watch (#10584)
+  * proxy: v2.193.0 (#10542)
+  * doc: update BUILD (#10579)
+  * policy status: don't iterate all servers for each HTTPRoute
+    (#10582)
+  * Remove parent ref validation from policy admission (#10557)
+  * ci: increase timeout for `build-core` (#10556)
+  * Remove TrafficSplit from Dashboard (#10532)
+  * Add index_list to remove redundant kubert watches (#10548)
+  * policy: return `NotFound` for valid non-Service authorities
+    (#10546)
+  * Modularize policy controller (#10524)
+  * Update MAINTAINERS.md (#10534)
+  * Bump containerd dep to v1.6.18 (#10535)
+  * edge-23.3.2 (#10523)
+  * proxy-injector: Skip Kube API server ports (#10519)
+  * proxy: v2.192.1 (#10498)
+  * test: Cleanup trafficsplit, improve diagnostics (#10518)
+  * Add Service backend metadata to outbound policy API (#10513)
+  * destination: Avoid sending spurious profile updates (#10517)
+  * policy: Support lookups of named services (#10516)
+  * destination: Split GetProfile into smaller functions (#10514)
+  * policy: Configure opaque outbound routes (#10515)
+  * policy: Cleanup outbound policy indexing (#10494)
+  * Remove separate naming of "status controller" from policy
+    controller (#10496)
+  * Build policy controller with lto=thin (#10495)
+  * Consider HTTPRoute `status` in policy controller (#10486)
+  * policy: Use ClusterInfo in outbound indexer (#10493)
+  * Add Samarkand Global to adopters (#10490)
+  * Implement outbound policy API in the policy controller (#10485)
+  * policy: Update HTTPRoute type to v1beta2 (#10484)
+  * Consider status-controller lease holder when patching
+    HTTPRoutes (#10444)
+  * Bump k8s-gateway to v0.11.0 (#10474)
+  * update network-validator helm charts to use proxy-init
+    resources (#10461)
+  * Add lease claims to status controller (#10424)
+  * Fix Grafana dashboard regex for filesystem usage on Linode
+    (#10445)
+  * Skip cosign prompt (#10440)
+  * edge-23.3.1 change notes (#10432)
+  * switched not actionable and are alarming log messages to Debugf
+    from Errorf (#10388)
+  * Replace curl script with linkerd-extension-init (#10376)
+  * dev: Fix local `just policy-test` (#10426)
+  * proxy: v2.191.2 (#10427)
+  * Fix GitHub Actions deprecation warnings (#10423)
+  * all: fix some comments (#10387)
+  * Update kubert to 0.14.0 (#10407)
+  * edge-23.2.3 (#10378)
+  * Fix deleteEndpointSlice when there are multiple EndpointSlices
+    (#10370)
+  * fix: small typo (#10369)
+  * build(deps): update kubert (0.13) and related k8s dependencies
+    (#10360)
+  * Add support to cross-build policy controller (#10334)
+  * Update Helm chart docs with external issuer info (#10349)
+  * proxy: v2.190.1 (#10342)
+  * Add prune command to linkerd and to extensions (#10303)
+  * Enable Dashboard Service annotations (#9581)
+  * Add changes for edge-23.2.2 (#10344)
+  * Update to dev:v39 with Go 1.19 (#10336)
+  * Add policy status controller (#10236)
+  * Fix regex type conversion in http_route (#10306)
+  * Implement the k8s metadata API in the Destination controller
+    (#10326)
+  * Don't use pods in map keys in server watcher (#10245)
+  * Remove unneeded `namespaces` access in Destination (#10324)
+  * Updated wording for multicluster check (#10287)
+  * rust: downgrade yanked versions of `thread_local` (#10307)
+  * policy: include colliding Server in validation error (#10187)
+  * edge-23.2.1 (#10288)
+  * linkerd-cni: add new release to the build (#10209)
+  * Add metrics to server and service watchers (#10213)
+  * Don't apply `waitBeforeExitSeconds` to control-plane pods
+    (#10276)
+  * Support service internal traffic policy (#10186)
+  * chore: add pento to adopters (#10274)
+  * network-validator: use limits and requests for ResourceQuota
+    interop (#10254)
+  * Add block chomping and update golden files (#10244)
+  * Add multicluster gateway nodeSelector and tolerations helm
+    parameters (#10177)
+  * Protect against nil dereference in resources helm template
+    (#10235)
+  * Bump version of go-restful (#10237)
+  * Upgrading proxy-init from v2.1.0 to v2.2.0 this time without
+    JSON formatting (#10234)
+  * fix typo with provenance flag (#10226)
+  * Do not include attestations in policy controller docker
+    manifests (#10225)
+  * edge-23.1.2 (#10210)
+  * Fix PSP (#10208)
+  * Fix memory leak in Server listeners (#10201)
+  * Run integration tests on k8s 1.26 (#10195)
+  * Readiness checks fail until caches are synced (#10166)
+  * Fix Jaeger link in viz dashboard
+  * Support loadBalancerSourceRanges in gateway service #10154
+    (#10155)
+  * Add v1beta2 version to HTTPRoute CRD (#9973)
+  * Update readme: security audits, and year (#10165)
+  * Optional AuthorizationPolicy for Grafana (#10151)
+  * Add multicluster deployment template annotations and
+    terminationGracePeriodSeconds (#10121)
+  * Add @stevej to maintainers (#10152)
+  * Provide additional shortnames for resources (#10030)
+  * edge-23.1.1 (#10129)
+  * convert ServerAuthorizations to AuthorizationPolicies  (#10079)
+  * add Cabify as adopter (#10117)
+  * Remove admin policy resources from extensions (#10073)
+  * Removed dupe imports (#10049)
+  * proxy: v2.189.0 (#10110)
+  * Update go.mod `replace` directives (#10054)
+  * Reenable `helm-upgrade` integration test (#10047)
+  * Authenticate requests when setting up `just` in CI (#10109)
+  * Add mydukaan.io to Adopters (#10096)
+  * Add winuall.com to Adopters list (#10108)
+  * Add support for resources on linkerd-cni containers (#9874)
+  * Correct `identity.issuer.externalCA` to `identity.externalCA`
+    (#10071)
+  * Update endpoints watcher to not fetch pods for removed
+    endpoints (#10013)
+  * Add ns to namespace-metadata resources (#10043) (#10044)
+  * Update from yanked version of openssl (#10046)
+  * Refactor `linkerd check` calls in the integration tests (#9989)
+  * Add support for Pod Security Admission (#9719)
+  * Take seconds from TapEvents into account (#9964)
+  * Update RELEASE.md with announcement email instructions (#9972)
+  * dev: Always rebuild the CLI in bin/linkerd (#9957)
+  * Add changes for edge-22.12.1 (#9926)
+  * Add static and dynamic port overrides for CNI ebpf (#9841)
+  * Fixes HostPort mapping lookup that was generating a false
+    warning (#9918)
+  * Add True Tickets to ADOPTERS.md (#9919)
+  * Guard `endpointTranslator` with mutex (#9901)
+  * just: Fix justfile command silencing (#9900)
+  * Introduce value to run proxy-init as privileged (#9873)
+  * Update otel-collector image version and add port 4318 to
+    otel-collector (#9379)
+  * Remove extra whitespace (#9889)
+  * Add Bitfactory as an adopter (#9893)
+  * edge-22.11.3 change notes (#9884)
+  * Follows the HostPort mapping when a request for a pod comes in
+    on node network (#9819)
+  * Adds a default Exists toleration to linkerd-cni (#9789)
+  * Bump linkerd-validator to v0.1.1 (#9882)
+  * Fix `arm64_integration_tests` job (#9854)
+  * Add changes for edge-22.11.2 (#9850)
+  * Use self-hosted runner for ARM64 integration tests (#9830)
+  * Use metadata API in the proxy and tap injectors (#9650)
+  * proxy: v2.188.0 (#9832)
+  * Tidy go.mod file (#9829)
+  * Remove mention of `linkerd repair` (#9816)
+  * edge-22.11.1 (#9815)
+  * cli: Fix upgrade when using --from-manifests (#9802)
+  * Don't suggest to inject un-meshable namespaces (#9520)
+  * Fix wrong main script path (#9447)
+  * Remove dependabot docker updates (#9770)
+  * Bump tj-actions/changed-files to v34.3.2 (#9773)
+  * Change the default proxyProtocol for multicluster. Fixes #9574
+    (#9575)
+  * Fix MC gateway UID when installing through CLI (#9717)
+  * Possibility to add additional labels on all resources for
+    linkerd-control-plane helm chart (#9511)
+  * Updating release to use Go 1.18 (#9720)
+  * Changelog for edge-22.10.3 release (#9712)
+  * dev: Disable YAML formatting in Code (#9710)
+  * Remove deprecation option from Gateways API (#9692)
+  * Validate CNI configurations during pod startup (#9678)
+  * Temporary fix for go lint breakage (#9693)
+  * Fix "cluster networks contains all services" fails with
+    services with no ClusterIP (#9662)
+  * Update to dev:v32 with Rust 1.64.0 (#9675)
+  * Fixes #9616 remove kubectl version check (#9623)
+  * refactor use of `watch` channels in policy controller index
+    (#9405)
+  * Set readOnlyRootFilesystem: true in viz chart (#9410)
+  * Replace usage of io/ioutil package (#9613)
+  * Remove _pause-image variable from justfile (#9614)
+  * ci: Run multicluster tests on min and max k8s versions (#9135)
+  * Add gateway pauseImage to CLI values struct (#9603)
+  * Linkerd viz have hardcoded image value in namespace
+    metadata.yml template (#9481)
+  * Add Applause to ADOPTERS.md (#9598)
+  * Move pause container declaration to values (#9566)
+
+-------------------------------------------------------------------
+Tue Mar 28 10:51:03 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- bash-completion subpackage now Requires bash-completion
+
+-------------------------------------------------------------------
+Fri Mar  3 11:54:28 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package linkerd-cli: CLI for the linkerd service mesh for Kubernetes

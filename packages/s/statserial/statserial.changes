@@ -1,0 +1,92 @@
+-------------------------------------------------------------------
+Mon Dec  7 11:30:55 UTC 2015 - mpluskal@suse.com
+
+- Update url
+
+-------------------------------------------------------------------
+Fri Mar 13 12:39:50 UTC 2015 - tchvatal@suse.com
+
+- Use cc instead of gcc
+
+-------------------------------------------------------------------
+Mon May 12 14:18:55 UTC 2014 - tchvatal@suse.com
+
+- Use at least bit living URL as homepage.
+
+-------------------------------------------------------------------
+Mon May 12 14:17:24 UTC 2014 - tchvatal@suse.com
+
+- Cleanup with spec-cleaner
+- Remove provides obsoletes for move that was done in 2000.
+
+-------------------------------------------------------------------
+Wed Nov 30 09:39:01 UTC 2011 - aj@suse.de
+
+- Remove asneeded workaround and fix compile line instead.
+
+-------------------------------------------------------------------
+Tue Nov 29 08:47:10 UTC 2011 - vcizek@suse.com
+
+- added -ltinfo to fix build
+
+-------------------------------------------------------------------
+Fri Sep 30 16:18:19 UTC 2011 - uli@suse.com
+
+- cross-build fix: use %__cc macro
+
+-------------------------------------------------------------------
+Fri Jun 19 10:35:46 CEST 2009 - coolo@novell.com
+
+- disable as-needed for this package as it fails to build with it
+
+-------------------------------------------------------------------
+Sat Nov 11 11:59:37 CET 2006 - ro@suse.de
+
+- fix manpage permissions 
+
+-------------------------------------------------------------------
+Mon Oct 30 15:47:19 CET 2006 - mjancar@suse.cz
+
+- change default device from /dev/cua1 to /dev/ttyS1
+- link dynamicaly
+
+-------------------------------------------------------------------
+Wed Jan 25 21:41:49 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Oct 31 12:36:47 CET 2005 - dmueller@suse.de
+
+- don't build as root 
+
+-------------------------------------------------------------------
+Mon Jun 21 12:51:15 CEST 2004 - ro@suse.de
+
+- use -static instead of -N
+
+-------------------------------------------------------------------
+Wed Nov 29 14:43:30 CET 2000 - smid@suse.cz
+
+- renamed: statseri => statserial
+
+-------------------------------------------------------------------
+Thu May  4 16:26:09 CEST 2000 - smid@suse.de
+
+- buildroot added
+
+-------------------------------------------------------------------
+Fri Mar  3 17:37:36 MET 2000 - uli@suse.de
+
+- moved man page to /usr/share
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Tue Jul 20 17:43:47 MEST 1999 - uli@suse.de
+
+- new package, version 1.1
+

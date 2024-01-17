@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Thu Jan 19 14:46:58 UTC 2017 - sndirsch@suse.com
+
+- Update to version 0.9.7
+  * Remove mibstore.h
+  * Adapt Block/WakeupHandler signature for ABI 23
+- supersedes U_Remove-mibstore.h.patch,
+  u_Adapt-Block-WakeupHandler-signature-for-ABI-23.patch
+
+-------------------------------------------------------------------
+Wed Nov 30 16:38:51 UTC 2016 - sndirsch@suse.com
+
+- u_Adapt-Block-WakeupHandler-signature-for-ABI-23.patch 
+  * Adapt Block/WakeupHandler signature for ABI 23
+
+-------------------------------------------------------------------
+Wed Aug  7 15:03:45 CEST 2013 - ro@suse.de
+
+- add ExcludeArch for s390 and s390x 
+
+-------------------------------------------------------------------
+Thu Mar 21 14:49:59 UTC 2013 - sndirsch@suse.com
+
+- Add mibstore.patch, fixes build with xorg-server 1.14 
+- No longer install this driver by default 
+
+-------------------------------------------------------------------
+Sun Oct 21 13:13:19 UTC 2012 - dmueller@suse.com
+
+- Initial package (0.9.6)
+

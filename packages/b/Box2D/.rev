@@ -1,0 +1,82 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fb9640fa6d10191e345c6fb59abd3547</srcmd5>
+    <version>2.3.1</version>
+    <time>1471249889</time>
+    <user>dimstar_suse</user>
+    <comment>Box2D is an open source C++ engine for simulating rigid bodies in 2D. Box2D is developed by Erin Catto and has the zlib license.
+It's a necessary dependency for qml-box2d and thus newer gcompris-qt</comment>
+    <requestid>418983</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>818f4f59b10389200e9dcf36264509a7</srcmd5>
+    <version>2.3.1</version>
+    <time>1472111786</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>420983</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3496d5a92782a2bf9b142d9944503a71</srcmd5>
+    <version>2.4.1</version>
+    <time>1613581739</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the source URL
+- Update to version 2.4.1.
+  * API Changes
+    * Extended distance joint to have a minimum and maximum limit.
+    * Removed rope joint. Use the distance joint instead.
+    * B2_USER_SETTINGS and b2_user_settings.h can control user 
+      data, length units, and maximum polygon vertices.
+    * Default user data is now uintptr_t instead of void*
+    * b2FixtureDef::restitutionThreshold lets you set the 
+      restitution velocity threshold per fixture.
+  * BREAKING Changes
+    * BREAKING: distance joint 0 stiffness now means the spring is 
+     turned off rather than making the joint rigid.
+    * BREAKING: distance joint minimum and maximum must be set 
+      correctly to get old behavior.
+  * Infrastructure
+    * Library installation function available in CMake.
+    * Shared library (DLL) option available.
+    * Bug fixes
+- Updates since 2.3.1
+  * Infrastructure
+    * Documentation in Doxygen format
+    * Unit test support
+    * Continuous integration testing using Travis CI
+    * Limited use of C++11 (nullptr and override)
+  * Collision
+    * Chain and edge shape must now be one-sided to eliminate ghost 
+      collisions
+    * Broad-phase optimizations
+    * Added b2ShapeCast for linear shape casting
+  * Dynamics
+    * Joint limits are now predictive and not stateful
+    * Experimental 2D cloth (rope)
+    * b2Body::SetActive -&gt; b2Body::SetEnabled
+    * Better support for running multiple worlds
+    * Handle zero density better
+      * The body behaves like a static body
+      * The body is drawn with a red color
+    * Added translation limit to wheel joint
+    * World dump now writes to box2d_dump.inl
+    * Static bodies are never awake
+    * All joints with spring-dampers now use stiffness and damping
+    * Added utility functions to convert frequency and damping 
+      ratio to stiffness and damping
+- Remove Box2D-fix-version-2.3.1.patch, fixed.
+- Change package name from Box2D to box2d.
+    
+</comment>
+    <requestid>871296</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>005c98abd4b855f27d498a7a13410bdb</srcmd5>
+    <version>2.4.1</version>
+    <time>1628751668</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>911014</requestid>
+  </revision>
+</revisionlist>

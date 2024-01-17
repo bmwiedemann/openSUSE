@@ -1,0 +1,60 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>aecf85dfb82321e7b28f9d8c8a1047f6</srcmd5>
+    <version>5.0</version>
+    <time>1642961600</time>
+    <user>dimstar_suse</user>
+    <comment>dynare is a platform for handling a wide class of economic models </comment>
+    <requestid>948232</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>34f504bd5ede43c9c7cafac2aac99c3f</srcmd5>
+    <version>5.1</version>
+    <time>1651501516</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>974108</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>0f54081e4de6ddf677864a8a055b552d</srcmd5>
+    <version>5.1</version>
+    <time>1656422551</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>985399</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>32e7874290312c43fa019c1959025d3e</srcmd5>
+    <version>5.3</version>
+    <time>1672482191</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1045880</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>14927f661babaeb3240d521c0160620e</srcmd5>
+    <version>5.3</version>
+    <time>1681296733</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1078552</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cdab74d85ac427eed5559a6c4fac428a</srcmd5>
+    <version>5.4</version>
+    <time>1682522776</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.4
+- Make doc packages noarch.
+</comment>
+    <requestid>1082889</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6b6b0c0305a734d1bd856ffe12edc648</srcmd5>
+    <version>5.5</version>
+    <time>1701632978</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1130566</requestid>
+  </revision>
+</revisionlist>

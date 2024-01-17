@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<constraints>
+  <hardware>
+    <disk>
+      <size unit="G">18</size>
+    </disk>
+    <processors>4</processors>
+  </hardware>
+  <overwrite>
+    <conditions>
+      <arch>ppc64</arch>
+      <arch>ppc64le</arch>
+    </conditions>
+    <hardware>
+      <memory>
+        <size unit="G">5</size>
+      </memory>
+    </hardware>
+  </overwrite>
+  <overwrite>
+    <conditions>
+      <arch>aarch64</arch>
+      <arch>riscv64</arch>
+    </conditions>
+    <hardware>
+      <memory>
+        <size unit="G">7</size>
+      </memory>
+    </hardware>
+  </overwrite>
+  <!-- relax constraints for qt6-declarative:docs -->
+  <overwrite>
+    <conditions>
+      <package>qt6-declarative:docs</package>
+    </conditions>
+    <hardware>
+      <disk>
+        <size unit="G">2</size>
+      </disk>
+      <memory>
+        <size unit="G">2</size>
+      </memory>
+    </hardware>
+  </overwrite>
+</constraints>

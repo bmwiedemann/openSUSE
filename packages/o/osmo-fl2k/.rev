@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a5a93f76d342958b6bc3f296bde62a21</srcmd5>
+    <version>0.1.0+git.20180424</version>
+    <time>1525121602</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain osmo-fl2k in Factory</comment>
+    <requestid>601070</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>da6a6e054f5a8f9cd4e449ac0d967063</srcmd5>
+    <version>0.1.1+git.20200602</version>
+    <time>1591990892</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>814048</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6439223b481ba5ba9ed45b24d9443de7</srcmd5>
+    <version>0.2.0+git.20231103</version>
+    <time>1699046458</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1123218</requestid>
+  </revision>
+</revisionlist>

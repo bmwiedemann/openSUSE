@@ -1,0 +1,31 @@
+<package name="perl-Carp-Always" project="openSUSE:Factory">
+  <title>Warns and dies noisily with stack backtraces</title>
+  <description>This module is meant as a debugging aid. It can be used to make a script
+complain loudly with stack backtraces when warn()ing or die()ing.
+
+Here are how stack backtraces produced by this module looks:
+
+  # it works for explicit die's and warn's
+  $ perl -MCarp::Always -e 'sub f { die &quot;arghh&quot; }; sub g { f }; g'
+  arghh at -e line 1
+          main::f() called at -e line 1
+          main::g() called at -e line 1
+
+  # it works for interpreter-thrown failures
+  $ perl -MCarp::Always -w -e 'sub f { $a = shift; @a = @$a };' \
+                           -e 'sub g { f(undef) }; g'
+  Use of uninitialized value in array dereference at -e line 1
+          main::f('undef') called at -e line 2
+          main::g() called at -e line 2
+
+In the implementation, the 'Carp' module does the heavy work, through
+'longmess()'. The actual implementation sets the signal hooks
+'$SIG{__WARN__}' and '$SIG{__DIE__}' to emit the stack backtraces.
+
+Oh, by the way, 'carp' and 'croak' when requiring/using the 'Carp' module
+are also made verbose, behaving like 'cloak' and 'confess', respectively.
+
+EXPORT
+    Nothing at all is exported.</description>
+  <devel project="devel:languages:perl" package="perl-Carp-Always"/>
+</package>

@@ -1,0 +1,65 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>42912fb2d2aafba620e12492e4b26eb7</srcmd5>
+    <version>0.9.18+git20170507.07bb944</version>
+    <time>1495133229</time>
+    <user>dimstar_suse</user>
+    <comment>Fix the legal review issues</comment>
+    <requestid>495546</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>79eac20b917c18fa5c43ce04b9524b60</srcmd5>
+    <version>0.9.18+git20180511.bad2f09</version>
+    <time>1538502037</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>638718</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8e6b7e0f9a9e991f0b2c11ea5be5a458</srcmd5>
+    <version>0.9.18+git20200221.5e5521e</version>
+    <time>1583311121</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.18+git20200221.5e5521e bsc#1160265:
+  * Ignore dylibs
+  * Removed dependency on six
+  * Bugfixes for Python
+  * Added Python 3 port of foma2js.perl
+  * Better py3 compatibility
+  * Add test for apply_down().
+  * Get apply_up() working.
+  * Add simple Python tests.
+  * Port FST.encode() to use correct types for Python 3.
+  * Add Python six 1.11.0 module.
+  * Added TextWrangler codeless language modules.
+  * add object files and many temp files to .gitignore
+  * remove SVN_REV var in Makefile
+- Remove upstream merged patch:
+  * foma-fix-sizeof.patch</comment>
+    <requestid>780929</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>e75e497d70d271750f69831f3dbdf8c9</srcmd5>
+    <version>0.9.18+git20200221.5e5521e</version>
+    <time>1622536436</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>895575</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e8f1cd8761f01eebd6a0319e64bcec37</srcmd5>
+    <version>0.9.18+git20210604.180b6fe</version>
+    <time>1629360037</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>912239</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0c864ca98d5d13f088ab0a087c4bc3bf</srcmd5>
+    <version>0.10.0</version>
+    <time>1661863714</time>
+    <user>dimstar_suse</user>
+    <comment>update</comment>
+    <requestid>999977</requestid>
+  </revision>
+</revisionlist>

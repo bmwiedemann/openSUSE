@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3548cd7c0f5f6cd850e2e4902e02d63b</srcmd5>
+    <version>4.0.8</version>
+    <time>1568025239</time>
+    <user>dimstar_suse</user>
+    <comment>Replace the request form Application:Geo, needed for qgis</comment>
+    <requestid>728277</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>83d6931ad0465ed78488f8670f86cdfe</srcmd5>
+    <version>4.0.11</version>
+    <time>1637794462</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 4.0.11</comment>
+    <requestid>933344</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>4263f73a5d48f0be5fe87e187a91ed74</srcmd5>
+    <version>4.0.11</version>
+    <time>1677794646</time>
+    <user>dimstar_suse</user>
+    <comment>- Split fairly large API documentation from devel subpackage</comment>
+    <requestid>1068636</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c8be187410764fb79783303e294af49c</srcmd5>
+    <version>4.0.12</version>
+    <time>1678043287</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 4.0.12</comment>
+    <requestid>1069427</requestid>
+  </revision>
+</revisionlist>

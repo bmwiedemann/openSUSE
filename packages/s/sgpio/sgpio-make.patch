@@ -1,0 +1,61 @@
+Index: Makefile
+===================================================================
+--- Makefile.orig
++++ Makefile
+@@ -20,10 +20,11 @@
+ # Intel SGPIO enclosure management utility
+ #
+ # Author: Eric R Hall <Eric.R.Hall@intel.com>
+-
++#
++# Support for MD RAID: Marcin Labun <Marcin.Labun@intel.com>        
+ 
+ MANDIR ?= /usr/local/man
+-ALL = sgpio
++ALL = sgpio sgpio.sh
+ 
+ all: $(ALL)
+ 
+Index: README
+===================================================================
+--- README.orig
++++ README
+@@ -1,7 +1,7 @@
+ ==========================================================================
+ Intel(R) SGPIO tool RELEASE NOTES
+ ==========================================================================
+-DATE:       January 2007
++DATE:       January 2007 (updated Dec 2008)
+ TO:         Validation Team
+ SUBJECT:    SGPIO captive backplane tool 
+ 
+@@ -17,6 +17,7 @@ The following files are included in this
+ - sgpio.1                                      (the sgpio tool's man page)
+ - sgpio.c                                          (the sgpio tool source)
+ - version.h                (contains the tool and sgpio interface version)
++- sgpio.sh                                    (script support for MD RAID)
+ 
+ ==========================================================================
+      B. INSTALLATION 
+@@ -39,10 +40,9 @@ The following files are included in this
+      C. NOTES
+ ==========================================================================
+ 
+-- This tool will only function with a 2.6.23 Kernel that has been patched
+-  for SGPIO support.
+-- This tool has not been validated beyond normal funcationality.
+-- This tool has only been tested on Fedora 7 and RHEL 5.
++- This tool has only been tested on Red Hat* Fedora 7, Red Hat* RHEL 5.3 
++  (kernel 2.6.18-128) and Novell* SLES 11 (kernel 2.6.27)
++- This tool has not been validated beyond normal functionality.
+ 
+ ==========================================================================
+      D. KNOWN ISSUES
+@@ -50,6 +50,7 @@ The following files are included in this
+ 
+ - Tool will not control SGPIO on SATA port multipliers. 
+ 
++*Other names and brands may be claimed as the property of others.
+ 
+ 
+ 

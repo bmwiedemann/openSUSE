@@ -1,0 +1,17 @@
+---
+ Makefile |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: Makefile
+===================================================================
+--- Makefile.orig
++++ Makefile
+@@ -28,7 +28,7 @@ ALL = sgpio
+ all: $(ALL)
+ 
+ sgpio.o: sgpio.c
+-	gcc -g -Wall -c sgpio.c
++	cc $(CFLAGS) -g -Wall -c sgpio.c
+ 
+ sgpio: sgpio.o
+ 	gcc -g sgpio.o -o sgpio

@@ -1,0 +1,7 @@
+<package name="statserial" project="openSUSE:Factory">
+  <title>Helps to Debug Serial Lines</title>
+  <description>Statserial displays a table of the signals on a standard 9-pin or
+25-pin serial port and indicates the status of the handshaking lines. 
+It can be useful for debugging problems with serial ports or modems.</description>
+  <devel project="Base:System" package="statserial"/>
+</package>

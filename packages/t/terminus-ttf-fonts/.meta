@@ -1,0 +1,5 @@
+<package name="terminus-ttf-fonts" project="openSUSE:Factory">
+  <title>Terminus Truetype Fonts</title>
+  <description>Terminus TTF is a TrueType version of the great Terminus Font, a fixed-width bitmap font optimised for long work with computers.</description>
+  <devel project="M17N:fonts" package="terminus-ttf-fonts"/>
+</package>

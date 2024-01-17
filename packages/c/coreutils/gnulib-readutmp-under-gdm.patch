@@ -1,0 +1,35 @@
+Upstream gnulib patch to fix crash when gdm is in use. [bsc#1215361]
+
+From 579f2d6f3d1d817c2f7e2c603c9a3ded63dcaa92 Mon Sep 17 00:00:00 2001
+From: Bruno Haible <bruno@clisp.org>
+Date: Fri, 15 Sep 2023 17:40:10 +0200
+Subject: [PATCH] readutmp: Fix crash when gdm is in use.
+
+Reported by Thorsten Kukuk <kukuk@suse.com> in
+<https://lists.gnu.org/archive/html/bug-gnulib/2023-09/msg00093.html>.
+
+* lib/readutmp.c (read_utmp_from_systemd): Don't use the value returned
+by sd_session_get_display if it is NULL.
+---
+ lib/readutmp.c | 5 ++++-
+ 1 files changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/lib/readutmp.c b/lib/readutmp.c
+index ec09feb59b..d8213e7ad5 100644
+--- a/lib/readutmp.c
++++ b/lib/readutmp.c
+@@ -873,7 +873,10 @@ read_utmp_from_systemd (idx_t *n_entries, STRUCT_UTMP **utmp_buf, int options)
+                           char *display;
+                           if (sd_session_get_display (session, &display) < 0)
+                             display = NULL;
+-                          host = display;
++                          /* Workaround: gdm "forgets" to pass the display to
++                             systemd, thus display may be NULL here.  */
++                          if (display != NULL)
++                            host = display;
+                         }
+                     }
+                   else
+-- 
+2.42.0
+

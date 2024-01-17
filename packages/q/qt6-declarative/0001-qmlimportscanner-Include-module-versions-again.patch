@@ -1,0 +1,25 @@
+From c75d424ea77385688e97f150df0d3e68ba55f5f4 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fvogt@suse.de>
+Date: Tue, 11 Jul 2023 10:51:35 +0200
+Subject: [PATCH] qmlimportscanner: Include module versions again
+
+Fixes: QTBUG-115170
+---
+ tools/qmlimportscanner/main.cpp | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/tools/qmlimportscanner/main.cpp b/tools/qmlimportscanner/main.cpp
+index 7c8f1bc98e..c8635323ce 100644
+--- a/tools/qmlimportscanner/main.cpp
++++ b/tools/qmlimportscanner/main.cpp
+@@ -434,7 +434,6 @@ getImportDetails(const QVariant &inputImport,
+             import.insert(preferLiteral(), prefer);
+         }
+     }
+-    import.remove(versionLiteral());
+ 
+     const ImportDetailsAndDeps result = {import, dependencies};
+     cache.insert({inputImport, result});
+-- 
+2.41.0
+

@@ -1,0 +1,138 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2d94b989281b451f127010375ecfbfce</srcmd5>
+    <version>0.148.0</version>
+    <time>1688928060</time>
+    <user>dimstar_suse</user>
+    <comment>new package eksctl: The official CLI for Amazon EKS</comment>
+    <requestid>1097766</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2af5b353d0149776fe2ef6061de8b101</srcmd5>
+    <version>0.149.0</version>
+    <time>1689261504</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1098448</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b0caec366b8ae0fcd7acd54df0d61dc6</srcmd5>
+    <version>0.150.0</version>
+    <time>1690278621</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1099757</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8bd4745dfb732def08a2fa2130a2ac28</srcmd5>
+    <version>0.151.0</version>
+    <time>1691332209</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1102550</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ab7a284788dfcc258221a151ee793c70</srcmd5>
+    <version>0.155.0</version>
+    <time>1694113953</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1109280</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d5bd9487e85bef5758388f29b7afd6b3</srcmd5>
+    <version>0.156.0</version>
+    <time>1694200571</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1109725</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9522ddea3f1834165fb8c399115c1cb6</srcmd5>
+    <version>0.157.0</version>
+    <time>1694808346</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1111549</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9442c29cc108e2f71456271568befb07</srcmd5>
+    <version>0.158.0</version>
+    <time>1695664937</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1113190</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a21dc150a70f86f4c062004e8186734f</srcmd5>
+    <version>0.159.0</version>
+    <time>1695853507</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1113685</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>62764a3d30e81a061e66152a0ff38e5e</srcmd5>
+    <version>0.160.0</version>
+    <time>1696269909</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1114324</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8ebb790c30ef71ff478974382104265a</srcmd5>
+    <version>0.161.0</version>
+    <time>1696619666</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1116060</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>2d74824958ebca444fd80f2360367249</srcmd5>
+    <version>0.162.0</version>
+    <time>1697231725</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1117619</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>037d60e8303017a089fbfe2d10a8bd3e</srcmd5>
+    <version>0.163.0</version>
+    <time>1698170944</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1119927</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>94fcc42a4bee5a4b9250d10c9a3c1595</srcmd5>
+    <version>0.164.0</version>
+    <time>1698438542</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1120768</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>2ad1d4ad4289f3fde464a465c0d1a33c</srcmd5>
+    <version>0.165.0</version>
+    <time>1701289195</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1129712</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>fcfcb88a640ffda52720da8b8ff6c0d1</srcmd5>
+    <version>0.166.0</version>
+    <time>1702673449</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1133472</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>6b2f239208e6baae3a8af0fcd3e7626e</srcmd5>
+    <version>0.167.0</version>
+    <time>1704660137</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1137401</requestid>
+  </revision>
+</revisionlist>

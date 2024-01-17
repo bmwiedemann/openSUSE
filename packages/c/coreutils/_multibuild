@@ -1,0 +1,5 @@
+<multibuild>
+  <flavor>systemd</flavor>
+  <flavor>single</flavor>
+  <flavor>testsuite</flavor>
+</multibuild>

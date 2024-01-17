@@ -1,0 +1,210 @@
+From 81a7a93636d9472fcb0c2ff32d9bfdf6ed10763d Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Wed, 13 Sep 2023 12:27:21 +0200
+Subject: [PATCH] reshuffle included files to include config.h as first - v2
+
+config.h may contain defines like _FILE_OFFSET_BITS which influence
+the system wide include files (off_t types, open -> open64 function
+usage etc.).
+
+Fixes: ad3a8b8b ("reshuffle included files to include config.h as first")
+Related: https://github.com/alsa-project/alsa-lib/pull/333
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/control/setup.c         | 2 +-
+ src/rawmidi/rawmidi.c       | 2 +-
+ src/rawmidi/rawmidi_local.h | 2 +-
+ src/rawmidi/rawmidi_virt.c  | 4 +---
+ src/rawmidi/ump.c           | 4 ----
+ src/seq/seq.c               | 2 +-
+ src/seq/seq_hw.c            | 2 +-
+ src/seq/seq_local.h         | 2 +-
+ src/seq/seq_midi_event.c    | 2 +-
+ src/seq/seqmid.c            | 4 +---
+ src/userfile.c              | 2 +-
+ 11 files changed, 10 insertions(+), 18 deletions(-)
+
+diff --git a/src/control/setup.c b/src/control/setup.c
+index 88635e42e446..fb09611764cf 100644
+--- a/src/control/setup.c
++++ b/src/control/setup.c
+@@ -29,13 +29,13 @@
+  *
+  */
+ 
++#include "local.h"
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <stdarg.h>
+ #include <unistd.h>
+ #include <string.h>
+ #include <ctype.h>
+-#include "local.h"
+ 
+ #ifndef DOC_HIDDEN
+ typedef struct {
+diff --git a/src/rawmidi/rawmidi.c b/src/rawmidi/rawmidi.c
+index 316f524b85ad..c4b45fa227f1 100644
+--- a/src/rawmidi/rawmidi.c
++++ b/src/rawmidi/rawmidi.c
+@@ -144,12 +144,12 @@ This example shows open and read/write rawmidi operations.
+  * Shows open and read/write rawmidi operations.
+  */
+  
++#include "rawmidi_local.h"
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <stdarg.h>
+ #include <unistd.h>
+ #include <string.h>
+-#include "rawmidi_local.h"
+ 
+ /**
+  * \brief setup the default parameters
+diff --git a/src/rawmidi/rawmidi_local.h b/src/rawmidi/rawmidi_local.h
+index 19dbf72584fa..f0bb06a7d824 100644
+--- a/src/rawmidi/rawmidi_local.h
++++ b/src/rawmidi/rawmidi_local.h
+@@ -19,10 +19,10 @@
+  *
+  */
+ 
++#include "local.h"
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <limits.h>
+-#include "local.h"
+ 
+ typedef struct {
+ 	int (*close)(snd_rawmidi_t *rawmidi);
+diff --git a/src/rawmidi/rawmidi_virt.c b/src/rawmidi/rawmidi_virt.c
+index 884b8ff8deee..04c485d3eabf 100644
+--- a/src/rawmidi/rawmidi_virt.c
++++ b/src/rawmidi/rawmidi_virt.c
+@@ -19,13 +19,11 @@
+  *
+  */
+ 
+-#include <stdio.h>
+-#include <stdlib.h>
++#include "rawmidi_local.h"
+ #include <unistd.h>
+ #include <string.h>
+ #include <fcntl.h>
+ #include <sys/ioctl.h>
+-#include "rawmidi_local.h"
+ #include "seq.h"
+ #include "seq_midi_event.h"
+ 
+diff --git a/src/rawmidi/ump.c b/src/rawmidi/ump.c
+index 25fbaff23c9d..39c1c4a91928 100644
+--- a/src/rawmidi/ump.c
++++ b/src/rawmidi/ump.c
+@@ -4,10 +4,6 @@
+  * \brief Universal MIDI Protocol (UMP) Interface
+  */
+ 
+-#include <stdio.h>
+-#include <stdlib.h>
+-#include <limits.h>
+-#include "local.h"
+ #include "rawmidi_local.h"
+ #include "ump_local.h"
+ 
+diff --git a/src/seq/seq.c b/src/seq/seq.c
+index 899dfe9f96ba..fd8ca30e2472 100644
+--- a/src/seq/seq.c
++++ b/src/seq/seq.c
+@@ -777,8 +777,8 @@ void event_filter(snd_seq_t *seq, snd_seq_event_t *ev)
+ 
+ */
+ 
+-#include <poll.h>
+ #include "seq_local.h"
++#include <poll.h>
+ 
+ /****************************************************************************
+  *                                                                          *
+diff --git a/src/seq/seq_hw.c b/src/seq/seq_hw.c
+index a51ebfb68ebd..b74948c81c9e 100644
+--- a/src/seq/seq_hw.c
++++ b/src/seq/seq_hw.c
+@@ -20,9 +20,9 @@
+  *
+  */
+ 
++#include "seq_local.h"
+ #include <fcntl.h>
+ #include <sys/ioctl.h>
+-#include "seq_local.h"
+ 
+ #ifndef PIC
+ /* entry for static linking */
+diff --git a/src/seq/seq_local.h b/src/seq/seq_local.h
+index 9b4a65459d3d..468248062638 100644
+--- a/src/seq/seq_local.h
++++ b/src/seq/seq_local.h
+@@ -23,10 +23,10 @@
+ #ifndef __SEQ_LOCAL_H
+ #define __SEQ_LOCAL_H
+ 
++#include "local.h"
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <limits.h>
+-#include "local.h"
+ 
+ #define SND_SEQ_OBUF_SIZE	(16*1024)	/* default size */
+ #define SND_SEQ_IBUF_SIZE	500		/* in event_size aligned */
+diff --git a/src/seq/seq_midi_event.c b/src/seq/seq_midi_event.c
+index df09bde30eea..95a44e9bc323 100644
+--- a/src/seq/seq_midi_event.c
++++ b/src/seq/seq_midi_event.c
+@@ -28,10 +28,10 @@
+  *   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+  */
+ 
++#include "local.h"
+ #if HAVE_MALLOC_H
+ #include <malloc.h>
+ #endif
+-#include "local.h"
+ 
+ #ifndef DOC_HIDDEN
+ 
+diff --git a/src/seq/seqmid.c b/src/seq/seqmid.c
+index 55651f3896f3..9ec93ee8ade1 100644
+--- a/src/seq/seqmid.c
++++ b/src/seq/seqmid.c
+@@ -20,14 +20,12 @@
+  *
+  */
+ 
+-#include <stdio.h>
+-#include <stdlib.h>
++#include "seq_local.h"
+ #include <unistd.h>
+ #include <string.h>
+ #include <fcntl.h>
+ #include <ctype.h>
+ #include <sys/ioctl.h>
+-#include "seq_local.h"
+ 
+ /**
+  * \brief queue controls - start/stop/continue
+diff --git a/src/userfile.c b/src/userfile.c
+index 4a740834313c..492ea9cbc238 100644
+--- a/src/userfile.c
++++ b/src/userfile.c
+@@ -18,7 +18,7 @@
+  *
+  */
+   
+-#include <config.h>
++#include "config.h"
+ #include <string.h>
+ #include <errno.h>
+ #include <assert.h>
+-- 
+2.35.3
+

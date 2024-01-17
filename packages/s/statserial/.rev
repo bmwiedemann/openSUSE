@@ -1,0 +1,143 @@
+<revisionlist>
+  <revision rev="1" vrev="604">
+    <srcmd5>a0a83bfa80f9712f02be4027d7fe1baf</srcmd5>
+    <version>1.1</version>
+    <time>1168904284</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="715">
+    <srcmd5>a0a83bfa80f9712f02be4027d7fe1baf</srcmd5>
+    <version>1.1</version>
+    <time>1168904284</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="716">
+    <srcmd5>579dc01f4038b72ba4e6a3e65f574c4a</srcmd5>
+    <version>1.1</version>
+    <time>1224730092</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="717">
+    <srcmd5>c606672ab0f0a3015ca6c1c83ec323b8</srcmd5>
+    <version>1.1</version>
+    <time>1245466431</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="719">
+    <srcmd5>c606672ab0f0a3015ca6c1c83ec323b8</srcmd5>
+    <version>1.1</version>
+    <time>1245466431</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="720">
+    <srcmd5>4395ed1556974048894af224d7e7b4d8</srcmd5>
+    <version>1.1</version>
+    <time>1268926233</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="722">
+    <srcmd5>4395ed1556974048894af224d7e7b4d8</srcmd5>
+    <version>1.1</version>
+    <time>1278667391</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="723">
+    <srcmd5>4395ed1556974048894af224d7e7b4d8</srcmd5>
+    <version>1.1</version>
+    <time>1278678621</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="726">
+    <srcmd5>4395ed1556974048894af224d7e7b4d8</srcmd5>
+    <version>1.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="727">
+    <srcmd5>caa5eec822fb754d8d41f4066e9ee7d1</srcmd5>
+    <version>1.1</version>
+    <time>1317744898</time>
+    <user>oertel</user>
+    <comment>- cross-build fix: use %__cc macro (forwarded request 86473 from uli_suse)</comment>
+    <requestid>86499</requestid>
+  </revision>
+  <revision rev="11" vrev="729">
+    <srcmd5>caa5eec822fb754d8d41f4066e9ee7d1</srcmd5>
+    <version>1.1</version>
+    <time>1319182490</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="730">
+    <srcmd5>6aa1a05494021bb4cd3bc36a1ead6126</srcmd5>
+    <version>1.1</version>
+    <time>1322828575</time>
+    <user>coolo</user>
+    <comment>Fix license string again. (forwarded request 94485 from a_jaeger)</comment>
+    <requestid>94486</requestid>
+  </revision>
+  <revision rev="13" vrev="731">
+    <srcmd5>ae860a27958e4bd48903d98c344a96a2</srcmd5>
+    <version>1.1</version>
+    <time>1323194762</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="14" vrev="733">
+    <srcmd5>ae860a27958e4bd48903d98c344a96a2</srcmd5>
+    <version>1.1</version>
+    <time>1340184240</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="735">
+    <srcmd5>ae860a27958e4bd48903d98c344a96a2</srcmd5>
+    <version>1.1</version>
+    <time>1359110440</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="737">
+    <srcmd5>ae860a27958e4bd48903d98c344a96a2</srcmd5>
+    <version>1.1</version>
+    <time>1379664734</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="738">
+    <srcmd5>3c90be16d65d175079ea4f3956cfdfb2</srcmd5>
+    <version>1.1</version>
+    <time>1400006909</time>
+    <user>coolo</user>
+    <comment>- Use at least bit living URL as homepage.
+
+- Cleanup with spec-cleaner
+- Remove provides obsoletes for move that was done in 2000.</comment>
+    <requestid>233618</requestid>
+  </revision>
+  <revision rev="18" vrev="740">
+    <srcmd5>3c90be16d65d175079ea4f3956cfdfb2</srcmd5>
+    <version>1.1</version>
+    <time>1409303417</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="741">
+    <srcmd5>34fb0a8cf5712af5aa9a89dfb8c75d4a</srcmd5>
+    <version>1.1</version>
+    <time>1426680243</time>
+    <user>dimstar_suse</user>
+    <comment>- Use cc instead of gcc</comment>
+    <requestid>290629</requestid>
+  </revision>
+  <revision rev="20" vrev="742">
+    <srcmd5>75e235f545989510257b737c50294502</srcmd5>
+    <version>1.1</version>
+    <time>1449687183</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>347750</requestid>
+  </revision>
+</revisionlist>

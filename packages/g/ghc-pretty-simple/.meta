@@ -1,0 +1,5 @@
+<package name="ghc-pretty-simple" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:haskell" package="ghc-pretty-simple"/>
+</package>

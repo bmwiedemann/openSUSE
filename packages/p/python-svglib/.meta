@@ -1,0 +1,5 @@
+<package name="python-svglib" project="openSUSE:Factory">
+  <title></title>
+  <description>Python library for reading and converting SVG</description>
+  <devel project="devel:languages:python" package="python-svglib"/>
+</package>

@@ -1,0 +1,1156 @@
+-------------------------------------------------------------------
+Fri Dec 15 09:23:57 UTC 2023 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- VERSION 4.2 Patch 8 - 2023-12-14
+
+- NEW FEATURE: Add the $MaxLateMinutes system variable.  This suppresses
+  a queued time reminder if the current time is more than $MaxLateMinutes
+  past the trigger time.  (This typically only occurs if the computer
+  has been suspended/hibernated and then resumed.)
+
+- IMPROVEMENT: tkremind: If an error occurs during printing, catch it
+  and change the Queue... button to Errors... (the same way errors in
+  reminder files are handled.)
+
+- IMPROVEMENT: rem2html: add the --utf8 flag to set the HTML charset to
+  UTF-8.
+
+- MINOR IMPROVEMENTS: Refactor some of the C code; use symbolic exit
+  statuses and file descriptors for stdin/stdout/stderr where possible.
+
+- BUG FIX: configure.in: Use better option detection so we don't use the
+  unsupported option -ffat-lto-objects if compiling with clang instead of gcc.
+
+- BUG FIXES: Many fixes to man pages, some by Jochen Sprickerhof
+
+- MINOR BUG FIX: If Remind puts itself in the background, only close
+  stdout/stderr if they are not associated with a terminal.  If
+  we close a descriptor, dup /dev/null onto it.
+
+- MINOR BUG FIX: Catch SIGCONT when running in daemon/background mode.
+  This forces the select() call to be interrupted so we can update the
+  sleep time.  This really only matters if the computer or the background
+  Remind process is suspended and then resumed.
+
+-------------------------------------------------------------------
+Mon Oct  9 18:39:05 UTC 2023 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- VERSION 4.2 Patch 7 - 2023-10-09
+
+- IMPROVEMENT: remind: On 32-bit systems, attempt to use a 64-bit time_t
+  if the C library supports that.  This lets Remind work properly with
+  dates after 2038 in the few cases it has to call mktime() internally.
+
+- MINOR NEW FEATURE: remind: Attempt to obtain the terminal background
+  color using an OSC sequence.  This normally only happens if standard
+  output is a terminal, but can be forced with the '-@..,t' option.
+
+- MINOR NEW FEATURE: remind: Add "--version" long option to print out
+  Remind's version and exit.
+
+- MINOR IMPROVEMENT: tkremind: Use a higher-resolution PNG image for
+  the icon.
+
+- MINOR IMPROVEMENT: remind-conf-mode.el: Update highlighting rules
+  courtesy of Bill Benedetto
+
+- MINOR CHANGE: Make AT optional.  If we encounter a TIME in a REM
+  command, implicitly begin an AT clause.
+
+- DOCUMENTATION: Many minor fixes and improvements courtesy of Dan Jacobson.
+
+- BUG FIX: Make "-w0" set the calendar width based on standard output
+  rather than setting it to zero and causing an infinite loop.
+
+-------------------------------------------------------------------
+Tue Sep 12 20:12:40 UTC 2023 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- VERSION 4.2 Patch 6 - 2023-09-12
+
+- NEW FEATURE: remind: The "nonomitted()" function takes an optional
+  extra INT argument called "step".  See man page for details.  Also
+  allows the "start" argument to be greater than the "end" argument,
+  in which case they are effectively swapped.
+
+- NEW FEATURE: remind: The "slide()" function takes an optional extra
+  INT argument called "step", similar to "nonomitted()".  See man page
+  for details.
+
+- NEW FEATURE: remind: Added the $ParseUntriggered system variable;
+  see the man page for details.  You almost certainly will never need
+  to use this.
+
+- NEW FILE: holidays/ie.rem: Added Irish holidays, courtesy of
+  Amy de Buitléir.
+
+- CHANGE: remind: The "-tn" option sets all REM statement deltas to
+  ++n rather than adding n to any existing REM statement's delta.
+  Additionally, the corresponding system variable $DeltaOffset has
+  been renamed to $DeltaOverride.
+
+- NEW OPTION: remind: Add the "-tz" option to explicitly set all
+  REM statement deltas to zero.
+
+- DOCUMENTATION FIX: remind: various documentation improvements.
+
+- BUG FIX: Correct some errors in Italian localization, courtesy of
+  Emanuele Torre
+
+-------------------------------------------------------------------
+Tue Apr 11 13:40:47 UTC 2023 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- VERSION 4.2 Patch 5 - 2023-04-11
+
+- MINOR IMPROVEMENT: remind: If someone uses OMIT yyyy-mm-dd UNTIL yyyy-mm-dd
+  give a better error message suggesting THROUGH instead of UNTIL.
+
+- BUG FIX: remind: The fix for the combination of ADDOMIT and SATISFY that
+  appeared in version 04.02.00 was not complete; the bug has finally been
+  properly fixed.
+
+- BUG FIX: remind: Remove an unnecessary #include <sys/file.h>.
+  Nothing needed that and it broke compilation on FreeBSD.
+
+- VERSION 4.2 Patch 4 - 2023-03-15
+
+- NEW FEATURE: Remind: Add "htmlescape" and "htmlstriptags" built-in
+  functions.
+
+- NEW FEATURE: Rem2PDF: Add the "--wrap, -y" option to ensure that no
+  printed calendar takes up more than 5 rows.  If a calendar would normally
+  require 6 rows, wrap it so the last day or two appear on the first
+  row instead of on a sixth row.
+
+- NEW FEATURE: Remind: Improve the -k option to allow specification of
+  separate commands for immediately-issued vs. queued reminders.  For
+  example:
+
+     remind '-kcmd1 %s' '-k:cmd2 %s' ...
+
+  will use "cmd1" for immediately-issued reminders and "cmd2" for queued
+  ones.  If you only use '-k:cmd2 %s' then immediately-issued reminders
+  are simply printed as usual rather than being passed to a command.
+
+- IMPROVEMENT: Remind:  Make "SPECIAL MSG" the same as just "MSG" and
+  the same for MSF, RUN, PS and PSFILE.  This effectively lets you use
+  expression-pasting to determine the type of a REM command; see the
+  remind(1) man page for details.
+
+- MINOR IMPROVEMENT: If "make test" fails, output up to 200 lines of diff
+  so we can see immediately what failed.
+
+- DOCUMENTATION FIX: Fix some typos; fix TkRemind syntax description.
+
+- TEST FIX: Make tests run reliably regardless of local machine's time zone.
+
+- BUG FIX: TkRemind: Don't crash if local installation of Tk lacks the
+  -underlinefg configuration option.
+
+- BUG FIX: examples/defs.rem: Fix up US Thanksgiving example.
+
+- BUG FIX: include/holidays/us.rem: Add logic for US holidays that are
+  observed on a Friday if the holiday is a Saturday, or on a Monday if the
+  holiday is a Sunday.
+
+- BUG FIX: TkRemind: Don't cut off MOON text at the first white-space
+  character.
+
+- BUG FIX: Remind: prevent functions defined on the command-line (as in
+  remind '-if(x)=whatever') from segfaulting.
+
+-------------------------------------------------------------------
+Fri Feb 10 19:28:53 UTC 2023 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- VERSION 4.2 Patch 3 - 2023-02-10
+
+- NEW FEATURE: Remind: add the orthodoxeaster() function to return the
+  date of Orthodox Easter.
+
+- IMPROVEMENT: Add Greek language support courtesy of JeiEl.
+
+- IMPROVEMENT: Add Greek holiday file courtesy of JeiEl.
+
+- IMPROVEMENT: Fix the Perl code (rem2pdf, rem2html) to silence Perl::Critic
+  warnings
+
+- IMPROVEMENT: Many internal code tweaks to eliminate many cppcheck
+  static analysis warnings.
+
+- DOCUMENTATION IMPROVEMENT: Clarify the distinction between a "time"
+  and a "duration" as suggested by Ian! D. Allen.
+
+- BUG FIX: Remind: Fix incorrect interaction between sortbanner() and
+  MSF-type reminders.  Bug found by Tim Chase.
+
+- BUG FIX: examples/defs.rem: Fix the calculation of US Tax Day as per
+  Tavis Ormandy and Tim Chase.  Also fixed in include/holidays/us.rem
+
+- BUG FIX: Remind: Add missing #include <fcntl.h> to funcs.c
+
+- BUG FIX: Remind: Fix undefined integer-overflow behavior in built-in abs()
+  function.  Pointed out on IRC by "ubitux". 
+
+-------------------------------------------------------------------
+Mon Jan  2 09:24:28 UTC 2023 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- VERSION 4.2 Patch 2 - 2023-01-01
+
+- NEW FEATURE: Remind: Add the NOQUEUE modifier to the REM statement for
+  explicitly telling Remind not to queue a timed reminder.
+
+- NEW FEATURE: Remind: Add soleq() function to return the DATETIME of
+  solstices and equinoxes.  See $SysInclude/seasons.rem for an example
+  of how to use the function.
+
+- MINOR IMPROVEMENT: Update examples/astro to include solstices and equinoxes.
+
+- BUG FIX: TkRemind: Provide better error indication if showing today's
+  reminders fails on startup.
+
+- BUG FIX: Remind: Refuse to read world-writable directories.
+
+- BUG FIX: Tests depended on the actual date of the test run.  This has
+  been fixed.
+
+- INTERNAL CHANGE: Remind: Change inappropriately-named "Julian" variables
+  to "DSE" (= Days Since Epoch) since they weren't really holding true
+  Julian dates.
+
+- INTERNAL CHANGE: Add "SPDX-License-Identifier" tags to most files.
+
+-------------------------------------------------------------------
+Fri Dec 16 08:57:42 UTC 2022 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- VERSION 4.2 Patch 1 - 2022-12-15
+
+- MINOR IMPROVEMENT: TkRemind: If "Extra Remind Options" contains -m, make
+  TkRemind start the calendar with Monday instead of Sunday.
+
+- MINOR IMPROVEMENT: Sample files: Add French holidays courtesy of
+  Clément Bœsch.
+
+- MINOR IMPROVEMENT: A few performance fixes, likely not even noticeable in
+  most cases.
+
+- MINOR FIXES: Fix misleading comments in the source code.
+
+- MINOR FIX: Remove a bunch of dead code in the moon-phase routines.
+
+- MINOR FIX: Remove unnecessary %"...%" markers in holidays/us.rem
+
+- MINOR FIX: Don't use the -ffat-lto-objects if we're compiling with Clang.
+
+- MINOR FIX: Remind: Fix a broken printf-format string (need to double up on %
+  to get a literal % in the output.)
+
+- BUG FIX: Make test suite pass regardless of the date on which it is run.
+  D'oh!!!
+
+- BUG FIX: Make sure the banner gets printed each time through a "*N"
+  command-line option loop.
+
+-------------------------------------------------------------------
+Fri Oct 14 15:39:42 UTC 2022 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- VERSION 4.2 Patch 0 - 2022-10-14
+
+- NEW FEATURE: remind: Allow weekdays to be globally-omitted.  For example:
+
+       OMIT Saturday Sunday
+
+  globally-omits all Saturdays and Sundays.
+
+- NEW FEATURE: remind: Add ansicolor() built-in function to make it easier
+  to colorize reminders on the terminal.  Suggested by Tim Chase.
+
+- NEW FEATURE: remind: Add several special variables related to the color
+  mode: $UseVTColors, $UseBGVTColors, $Use256Colors, $UseTrueColors and
+  $TerminalBackground.  Based on a suggestion by Tim Chase.
+
+- NEW FEATURE: remind: Add utctolocal() and localtoutc() built-in functions.
+
+- NEW FEATURE: remind: Add timezone() built-in function.
+
+- NEW FEATURE: remind: Add trigtags() function per suggestion from Tim Chase.
+
+- NEW FEATURE: remind: The $AddBlankLines system variable controls whether or
+  not a blank line is added after each reminder.
+
+- NEW FEATURE: remind: The built-in functions columns() and rows() return the
+  width and height of the terminal (in character positions) respectively.
+
+- NEW FEATURE: remind: The built-in function columns("string") returns the
+  number of columns occupied by "string" on the terminal, taking into account
+  double-width Unicode characters and zero-width ANSI escape sequences.
+
+- NEW FEATURE: remind: You can add custom substitution sequences of the form
+  %{name} or %*{name} that end up calling the function subst_name and using
+  its return value as the replacement for the substitution sequence.
+
+- NEW FEATURE: remind: Add the FUNSET command to undefine a user-defined
+  function.
+
+- NEW FILES: Add standard include files holidays/jewish.rem and
+  ansitext.rem (the latter defines standard ANSI escape codes for
+  changing text attributes such as bold, underline, etc.)
+
+- NEW EXAMPLES: add examples/alignmemt.rem, examples/ansitext and
+  examples/astro
+
+- BUG FIX: remind: Make MSF correctly format UTF-8 text and text with
+  embedded ANSI color-changing codes.
+
+- BUG FIX: remind: Make ADDOMIT actually work correctly in a SATISFY-type
+  REM command.  Bug found by Gunther Reißig
+
+- BUG FIX: Convert documentation files and src/lang.h to UTF-8.  Patch
+  from Jochen Sprickerhof.
+
+- BUG FIX: Fix tests in non-UTF-8 locales.
+
+- BUG FIX: Fix a few problems with the include/holidays/us.rem file.
+
+- BUG FIX: remind: Fix an ancient logic error in DBufPutc that hurt
+  performance.
+
+- MINOR IMPROVEMENT: Clean up code and remove some dead code.
+
+-------------------------------------------------------------------
+Wed Sep 28 15:06:04 UTC 2022 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- VERSION 4.1 Patch 0 - 2022-09-25
+
+- NEW FEATURE: remind: "remind -c" now supports the MOON special, printing
+  the moon phases in the calendar if the locale supports UTF-8 encoding.
+
+- NEW FEATURE: remind: "remind -c" now supports the SHADE special.  Works
+  best with the 256-color extended XTerm palette or 24-bit true-color
+  terminal escape sequences.
+
+- NEW FEATURE: remind: "remind -c" now supports the WEEK special.
+
+- NEW FEATURE: remind: The new "stdout()" function returns a string describing
+  where stdout is going.  Examples of return values are "TTY" if remind's
+  output is going to terminal, "FILE" if it's redirected to a plain file,
+  or "PIPE" if it's going to a pipe.  See the man page for all the details.
+
+- NEW FEATURE: Add the "-wt" option to set the calendar width to the terminal
+  width even if standard output is a pipe.  Useful for situations like this:
+
+      remind -wt -c .reminders | less -R
+
+- CHANGE: "make install" now no longer strips debugging symbols from the
+  remind and rem2ps executables.  Use "make install-stripped" if you want
+  them stripped.
+
+- CHANGE: remind: "remind -c" highlights today's date in bold, if
+  colors are enabled.
+
+- CHANGE: Dump string values with control characters escaped.
+
+- DOCUMENTATION FIX: Document behavior of DO and filedir() with respect
+  to symbolic links.
+
+- DOCUMENTATION FIX: Add home page link to man pages.  Suggested by Ian! D.
+  Allen.
+
+- DOCUMENTATION FIX: Make date in man pages actually be the release date.
+  Include Remind version in man pages.  Also suggested by Ian! D. Allen.
+
+- DOCUMENTATION FIX: Fix inaccuracy in how string constants were documented.
+
+- BUG FIX: Makefiles: Pass CFLAGS at link-time so link-time optimization
+  actually happens.  Pointed out by Zolan Puskas.
+
+- BUG FIX: If the first REM command to trigger was a RUN command, the banner
+  would not print.  This has been fixed.
+
+- BUG FIX: replace deprecated 'fgrep' with 'grep -F' (Jochen Sprickerhof)
+
+- BUG FIX: make "make test" depend on "make all" (Jochen Sprickerhof)
+
+- BUG FIX: make "REM ... SATISFY ... MSG foo" respect $DefaultColor.  Bug
+  reported by Gunther Reißig.
+
+- BUG FIX: Don't consider IFTRIG true if we could not compute a trigger date.
+  Bug noted by Gunther Reißig
+
+-------------------------------------------------------------------
+Fri Aug 19 07:52:25 UTC 2022 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- VERSION 4.0 Patch 3 - 2022-08-16
+
+- IMPROVEMENT: remind: add plain_body and calendar_body JSON keys in -pp...
+  output.
+
+- BUG FIX: tkremind: Don't create empty files called '&1' when creating
+  a new reminder.
+
+- BUG FIX: remind: Don't call signal-unsafe functions from signal handler
+
+-------------------------------------------------------------------
+Tue Aug  2 21:54:06 UTC 2022 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- VERSION 4.0 Patch 2 - 2022-08-02
+
+- IMPROVEMENT: remind: Allow more forms of OMIT as per Ian D. Allen!'s request:
+
+               OMIT Month [THROUGH Month]
+               OMIT Day Month [THROUGH Day Month]
+               OMIT Day Month Year [THROUGH Day Month Year]
+
+- BUG FIX: Make $T behave as documented, exactly like trigdate().  $T would
+  return '1989-12-31' rather than 0 if the trigger date was not valid.
+
+- BUG FIX: TkRemind: Fix resizing bug for a calendar with 6 rows.
+
+- DOCUMENTATION IMPROVEMENT: Improve TkRemind documentation; document use
+  of inotifywait if available. 
+
+-------------------------------------------------------------------
+Sat Jun  4 13:52:17 UTC 2022 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- VERSION 4.0 Patch 1 - 2022-06-03
+
+- IMPROVEMENT: Add $SuppressLRM system variable to suppress the UTF-8
+  Left-to-Right mark in "remind -c" output.
+
+- DOCUMENTATION FIX: Document the "q" sub-option to the "-p" option.
+
+-------------------------------------------------------------------
+Tue Apr  5 18:53:29 UTC 2022 - Detlef Steuer <detlef.steuer@gmx.de>
+
+-  VERSION 4.0 Patch 0 - 2022-04-04
+
+- MAJOR NEW FEATURE: remind: Remind output can effectively be
+  translated into other languages at run-time.  A number of system
+  variables let you translate English words to another language, and a
+  mechanism for altering the substitution filter at run-time lets you
+  translate its output so the results are idiomatic.  See the man page
+  sections "RUN-TIME SUPPORT FOR OTHER LANGUAGES", "RUN-TIME
+  MODIFICATION OF THE SUBSTITUTION FILTER" and "LANGUAGE PACKS".
+
+- NEW FEATURE: remind: Add the pad() built-in function
+
+- NEW FEATURE: tkremind: Day numbers can be displayed left-aligned,
+  centered or right-aligned.
+
+- IMPROVEMENT: contrib/remind-conf-mode: The Emacs syntax-highlighter
+  has been updated with the latest system variables and functions
+  and has been made case-insensitive.
+
+- IMPROVEMENT: remind, rem2ps: Use link-time optimization with gcc if
+  possible.
+
+- IMPROVEMENT: remind: Print better diagnostics when errors occur inside
+  a user-defined function.  We now show the stack trace to make it easier
+  to figure out where the error actually is.
+
+- CHANGE: Add a "q" sub-option to the "-p", "-pp", and "-ppp" options.
+  This causes Remind *not* to remove the %"...%" marker sequence from
+  remind bodies.
+
+- BUG FIX: rem2pdf: Make rem2pdf respect the --prefix ./configure flag.
+  Loosely based on patch by Jonathan Kamens.
+
+- BUG FIX: tkremind: Fix the "-m" flag, which was broken in 03.04.00.
+
+- BUG FIX: Fix the overflow-detection functions so they work with link-time
+  optimization.  The previous versions would be optimized away.
+
+- BUG FIX: Warn if the arguments to the "-@" option are out of range.
+  Problem noted by Ian! D. Allen.
+
+- BUG FIX: Always interpret $Latitude and $Longitude input values in the
+  "C" locale.  (We do accept localized input, but warn.)
+
+- BUG FIX: Fix many spelling mistakes caught by Jens Schleusener
+
+-------------------------------------------------------------------
+Sat Mar 26 18:00:17 UTC 2022 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- remind-nostrip.patch removed, no longer needed 
+
+-------------------------------------------------------------------
+Sun Mar 20 21:22:30 UTC 2022 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- nostrip-patch removed, does no longer apply, and no longer needed
+
+- Version 3.4 Patch 2 - 2022-03-14
+
+- NEW FEATURE: remind: Add syntactic sugar to simplify some common
+  types of reminders.  See "SYNTACTIC SUGAR FOR REM" in the remind
+  man page.  Based on suggestions from Ian! D. Allen.
+
+- CHANGE: examples/defs.rem: The examples file has been updated to use
+  the newer syntactic sugar.
+
+- CHANGE: remind: Always parse the body of REM statements to catch
+  expression errors.  In the past, something like:
+
+      REM 2025-01-02 MSG [1/0]
+
+  would not cause a division-by-zero error except on 2025-01-02.  Now,
+  the error is always caught.  NOTE POTENTIAL INCOMPATIBILITY: There may
+  be edge-cases when formerly-valid remind scripts now trigger errors.
+  However, this is pretty unlikely.
+
+- NEW FEATURE: remind: Add the "trig" function to allow more
+  expressiveness when creating triggers.  See man page for details.
+
+- IMPROVEMENT: tkremind: Tweak the calendar display; improve ability to
+  customize colors, including supplying two built-in themes.  Based on
+  patch and suggestion from Paulo (last name unknown).
+
+- IMPROVEMENT: tkremind: TkRemind handles errors in reminders scripts
+  much more unobtrusively.  Instead of popping up a modal dialog box
+  with almost-unreadable error output, it discreetly notifies you of
+  errors with a button that lets you view the specific error messages
+  in a more readable format.
+
+- IMPROVEMENT: examples/remind.vim: Update list of keywords in vim syntax
+  highlighting file.
+
+- IMPROVEMENT: contrib/remind-conf-mode: Update the list of keywords,
+  functions and variables in the Emacs syntax-highlighting file.  Also make
+  it match them case-insensitively.
+
+- CHANGE: remind: Increase $MaxSatIter default to 1000 instead of 150.
+  Computers are much faster than when I first wrote remind and they
+  can handle this higher limit easily.  The higher limit also enables
+  certain reasonable reminders that failed in the past because of the
+  low SATISFY iteration limit.
+
+- CHANGE: remind: The "||" operator now returns the value of the first
+  non-zero operand rather than just returning 1 or 0.  Similarly, "&&"
+  returns 0 if either operand is false or the value of the last
+  operand if both operands are true.
+
+     NOTE POTENTIAL INCOMPATIBILITY: Remind scripts that depend on ||
+     and && always returning exactly one of 1 or 0 may need
+     adjustment.
+
+- CHANGE: The || and && operators can accept any non-STRING type as long
+  as both operands have the same type.  The "false" values are defined
+  as follows; true values are any other value:
+
+     INT:      0
+     TIME:     00:00
+     DATE:     '1990-01-01'             (the Remind epoch)
+     DATETIME: '1990-01-01@00:00'       (the Remind epoch)
+
+- IMPROVEMENT: remind: Issue diagnostics if an UNTIL or THROUGH date
+  is earlier than any possible trigger date, as well as an UNTIL date
+  with a fully-specified date and no repeat ("*N").  Suggestion from
+  Ian! D. Allen.
+
+- BUG FIX: tkremind: If the same moon phase appeared twice in a month,
+  TkRemind would not display the first occurrence correctly.  This has
+  been fixed.
+
+- BUG FIX: rem2pdf: Fix typos in the man page.
+
+- BUG FIX: remind: The IF command documentation didn't reflect how it
+  actually worked; now it does.
+
+- BUG FIX: remind: Use correct UNTIL/THROUGH keyword in error message.
+
+- BUG FIX: rem2pdf: Correct the calculation that warns about an over-full
+  calendar box.  Problem noted by Jonathan Kamens.
+
+- BUG FIX: remind: The "remind -c" output would sometimes be incorrect if
+  scripts with double-wide characters were used.  This has been fixed.
+
+- BUG FIX: remind: The "remind -c" output would sometimes be incorrect
+  if right-to-left scripts were used in reminders.  This has been fixed.
+
+
+-------------------------------------------------------------------
+Wed Feb 23 19:37:21 UTC 2022 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- VERSION 3.4 Patch 1 - 2022-02-23
+
+- MINOR IMPROVEMENT: Support the INSTALL_BASE environment variable for
+  installing rem2pdf in a non-standard location like your home directory.
+  This is passed in to rem2pdf's Makefile at build and install time.
+
+- MINOR IMPROVEMENT: ./configure: Add --disable-perl-build-artifacts flag
+  to avoid installation of perllocal.pod and .packlist files.
+
+- BUG FIX: tkremind: If the system date rolls over, update the display
+  to correctly highlight the current date.  This worked in older versions
+  of Remind, but was broken by 03.04.00.
+
+- BUG FIX: rem2pdf: The small calendar font would sometimes be scaled
+  incorrectly so the small calendar overflowed the box.  This has been
+  fixed. 
+
+-------------------------------------------------------------------
+Sun Feb 13 17:39:19 UTC 2022 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- VERSION 3.4 Patch 0 - 2022-02-10
+
+- MAJOR CHANGE: Remind and its helpers (except for rem2ps) fully support
+  UTF-8.  If your system locale is a UTF-8 locale and your terminal
+  can handle UTF-8 encoding, you can enjoy full Unicode support in Remind.
+
+- NEW FEATURE: Added a rem2pdf Remind-to-PDF converter.  It can handle
+  the full UTF-8 character set and features a new PANGO special reminder
+  type that lets you format the text in the PDF calendar (by changing the
+  font size, color, underlining, etc.)
+
+- NEW FEATURE: remind:  New system variables $Sunday through $Saturday
+  and $January through $December let you set weekday and month names
+  to whatever you like, permitting you to produce calendars in your
+  local language, even if it's not one of the languages Remind supports
+  by default.
+
+- NEW FEATURE: tkremind: If rem2pdf installed, TkRemind offers you the
+  choice of PDF or PostScript output in the Print dialog.
+
+- CHANGE: remind: Increase the number of allowed "full OMITs" from 500
+  to 1000.
+
+- CHANGE: Remove the annoying code that slowed compilation and running
+  on Windows and Mac OS X.  I believe the point has been made and free
+  OSes have enough of a critical mass that the annoyances are
+  counter-productive.
+
+- CLEANUP: remind: C source code: Replace the LAT_DEG, LAT_MIN,
+  LAT_SEC and LON_DEG, LON_MIN, LON_SEC macros with DEFAULT_LATITUDE
+  and DEFAULT_LONGITUDE.
+
+- CLEANUP: remind: C source code: Remove various unused or obsolete macros.
+
+- BUG FIXES: Minor fixups to groff source and Makefiles courtesy of
+  Jochen Sprickerhof.
+
+- BUG FIX: Properly support formatting of double-wide characters in the
+  terminal mode "remind -c" calendar.
+
+- BUG FIX: rem2html: Document how to highlight today with a red border
+
+- BUG FIX: rem2html: Generate and install a man page for rem2html
+
+- BUG FIX: remind: Get rid of LAT_DEG/LAT_MIN/LAT_SEC and
+  LON_DEG/LON_MIN/LON_SEC macros in favour of DEFAULT_LATITUDE and
+  DEFAULT_LONGITUDE.
+
+- IMPROVEMENT: All localized languages now use UTF-8 exclusively.
+  Support for old character encodings like ISO-8859-1 and ISO-8859-2
+  has been dropped since modern UNIXes have pretty much standardized
+  on UTF-8.
+
+- CHANGE: remind: Non-English versions of remind *no longer* accept
+  non-English month- and weekday-names in trigger specifications.  This
+  was a misfeature.  NOTE INCOMPATIBILITY.
+
+-------------------------------------------------------------------
+Tue Jan 25 18:18:20 UTC 2022 - Detlef Steuer <detlef.steuer@gmx.de>
+
+* VERSION 3.3 Patch 12 - 2022-01-24
+
+- UPDATE: rem2html: Use JSON::MaybeXS instead of JSON::Any, since JSON::Any
+  is deprecated.  NOTE INCOMPATIBILITY: If you don't have JSON::MaybeXS
+  installed, you'll need to install it before trying to install or update
+  rem2html
+
+- NEW FEATURE: Add a DO command.  This is just like INCLUDE, but relative
+  paths are interpreted relative to the directory containing the current
+  file.  That is:
+
+      DO somefile.rem
+
+  is equivalent to:
+
+      INCLUDE [filedir()]/somefile.rem
+
+- NEW FEATURE: Add the $DefaultTDelta system variable and associated
+  -tt[N] command-line option to set a default time delta for timed
+  reminder without an explicit +N delta.
+
+- IMPROVEMENT: TkRemind: Store .tkremindrc in $XDG_CONFIG_HOME/tkremindrc
+  or $HOME/.config/tkremindrc as per the XDG Base Directory Specification.
+
+- BUG FIX: remind: Make the shell() built-in function respect
+  $MaxStringLen
+
+- BUG FIX: Use size_t to track the size of dynamic buffers rather than int.
+  This permits Remind to read in files with lines longer than 1GB and to
+  consume more than 1GB of output from the shell() command, both of which
+  will surely be massively useful.  (The old limit was 1GB rather than 2GB
+  because of details of the dynamic buffer resizing algorithm.)
+
+-------------------------------------------------------------------
+Thu Dec 30 15:20:00 UTC 2021 - Detlef Steuer <detlef.steuer@gmx.de>
+
+* VERSION 3.3 Patch 11 - 2021-12-30
+
+- IMPROVEMENT: TkRemind: Save the print dialog settings so they persist.
+
+- IMPROVEMENT: TkRemind: Show queue in sorted order.
+
+- IMPROVEMENT: TkRemind: Pass "-r" flag to inotifywait
+
+- IMPROVEMENT: TkRemind: Draw moon phases with Tk canvas items rather than
+  using PNG images.  This lets them change color along with other TkRemind
+  preferences.
+
+- IMPROVEMENT: TkRemind: Underline editable reminders when the pointer enters
+  them; fire up the editor with either Button-1 or Button-3 for
+  non-TkRemind-generated reminders.
+
+- NEW FUNCTION: Remind: Add the isany() built-in function.
+
+- IMPROVEMENT: rem2html: Add class names indicating number of rows in calendar
+
+- IMPROVEMENT: remind: In -z0 mode, sleep with higher precision to ensure we
+  wake as close to possible to each 1-minute boundary.
+
+- IMPROVEMENT: rem2html: Coalesce table.rem-cal CSS into one block.  Thanks
+  to Ian! D. Allen for pointing this out.
+
+- IMPROVEMENT: examples/defs.rem: Modernize the examples and get rid of some
+  cruft.
+
+- CHANGE: Add $Latitude and $Longitude system variables.  Deprecate
+  $LatDeg, $LatMin, $LatSec, $LongDeg, $LongMin and $LongSec.
+
+- CHANGE: Test: Add "dump $" to test.rem.
+
+-------------------------------------------------------------------
+Tue Nov 30 15:04:45 UTC 2021 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- Changes to remind 
+
+* VERSION 3.3 Patch 10 - 2021-11-30
+
+- IMPROVEMENT: TkRemind: Apply window and text colors to all GUI elements
+  including buttons and status labels.
+
+- NEW FEATURE: The new ADDOMIT keyword can shorten reminder files.
+  The command:
+
+      REM ...whatever... ADDOMIT MSG Foo
+
+  behaves identically to:
+
+      REM ...whatever... SATISFY 1
+      IF trigvalid()
+          OMIT [trigdate()] MSG Foo
+      ENDIF
+
+  For example, Labour Day can be displayed and omitted as follows:
+
+      REM Mon 1 Sep SCANFROM -7 ADDOMIT MSG Labour Day
+
+- UPDATE: Update contrib/remind-conf-mode to latest release
+
+- CHANGE: The parser does not auto-convert numbers 90-99 to 1990-1999.  This
+  was messing up things like "DURATION 90".  It also means you can no longer
+  abbreviate the years 1990-1999 as 90-99.
+
+- BUG FIX: Various documentation fixes
+
+- BUG FIX: When switching users with the "-u" option, call initgroups()
+  to properly set group membership list.
+
+-------------------------------------------------------------------
+Fri Oct 15 07:30:07 UTC 2021 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- rem2html is included, cleanup of specfile
+
+- CHANGES TO REMIND
+
+* VERSION 3.3 Patch 9 - 2021-10-14
+
+- NEW FEATURE: Add "-+username" option to tell Remind to trust files owned by
+  "username" and allow RUN directives in them.  Idea courtesy of Ian! D. Allen
+
+- NEW FEATURE: Add "-u+username" variant to tell Remind to switch users to
+  "username" without disabling RUN directives.  Idea courtesy of Ian! D. Allen
+
+- CHANGE: rem2html: rem2html has been moved out of the www/ directory into
+  its own rem2html/ directory.  If your system has the prerequisites
+  (namely Perl, Getopt::Long and JSON::Any) then rem2html will be installed
+  by "make install".
+
+- CHANGE: Remove "cm2rem".  It was about 20 years obsolete.
+
+- CHANGE: rem2html: Use inline data: URL images for moon images by default,
+  thus producing a completely stand-alone HTML file.
+
+- CHANGE: Remove unnecessary spaces from "remind -pp" JSON output.
+
+- DOCUMENTATION FIX: Various man page fixes and tweaks.
+
+- BUG FIX: rem2html: Tweak the default CSS stylesheet; more rational
+  handling of rem2html command-line options.
+
+- BUG FIX: remind: "remind -c" would sometimes highlight *two* days as
+  "today"; this has been fixed.
+
+- BUG FIX: Add a missing #ifdef...#endif and remove a C99-ism.  This once again
+  allows Remind to be compiled with some very old C compilers.
+
+-------------------------------------------------------------------
+Tue Sep 14 06:33:59 UTC 2021 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- CHANGES TO REMIND
+
+* VERSION 3.3 Patch 8 - 2021-09-13
+
+- NEW FEATURE: remind: Add INCLUDECMD command
+
+- NEW FEATURE: remind: Add shellescape() built-in function
+
+- BUG FIX: tkremind: TkRemind would sometimes fill in incorrect initial
+  values for the reminder-editing form if you clicked on a TkRemind-created
+    reminder to edit it.  This has been fixed.
+
+- BUG FIX: tkremind: Get back better error messages from Remind if you
+  try to create a reminder with an invalid date specification.
+
+- BUG FIX: remind: Catch integer overflow if we try to evaluate $IntMin * -1
+
+- DOC UPDATES: remind: Minor man page fixes
+
+-------------------------------------------------------------------
+Tue May 11 08:50:47 UTC 2021 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- CHANGES TO REMIND
+
+* VERSION 3.3 Patch 7 - 2021-05-10
+
+- MINOR FIX: Refuse to run "make test" as root --- it would fail
+  anyway with an obscure message.
+
+- BUG FIX: Remind would sometimes compute incorrect trigger date for:
+  REM Tue 29 Feb MSG ...
+
+- BUG FIX: Remind would sometimes compute incorrect trigger date for
+  a date spec like: Tue 31 2021 MSG ... 
+
+-------------------------------------------------------------------
+Tue Mar 30 21:48:24 UTC 2021 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- CHANGES TO REMIND
+
+* VERSION 3.3 Patch 6 - 2021-03-30
+
+- test/test.rem: Change local to en_US.utf-8 only if current locale
+  is not a UTF-8 locale.
+
+- MINOR CHANGE: Remind's arithemtic operators (+, -, *, /) give errors
+  on overflow rather than silently giving the wrong answer.
+
+- MINOR CHANGE: Add $IntMin and $IntMax system variables.
+
+- DOCUMENTATION FIX: Document that TkRemind now requires Tcl/Tk version
+  8.5 or newer.
+
+-------------------------------------------------------------------
+Fri Jan 22 08:16:00 UTC 2021 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- update to remind 3.3.5
+
+- CHANGES TO REMIND
+
+* VERSION 3.3 Patch 5 - 2021-01-21
+
+- NEW FEATURE: tkremind: Add ability to change fonts and colors from
+  within TkRemind "Options" dialog.
+
+- CHANGE: tkremind: TkRemind now requires Tcl/Tk 8.5 or newer.
+
+- CHANGE: tkremind: You can specify the location of the options
+  file on the command-line if you want to use one other than ~/.tkremindrc
+
+- CLEANUP: tkremind: Remove "Apply Options" from Options dialog; we only
+  need "Save Options".
+
+- DOC FIX: Add missing release note in 3.3.4 notes regarding
+  setpagedevice patch
+
+- DOC FIX: tkremind: Document shortcut keys.
+
+-------------------------------------------------------------------
+Tue Jan 12 15:50:42 UTC 2021 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- update to remind 3.3.4
+
+- CHANGES TO REMIND
+
+* VERSION 3.3 Patch 4 - 2021-01-12
+
+- NEW FEATURE: If "inotifywait" is installed, TkRemind uses it to refresh
+  the calendar display right away when the reminders file/directory is updated.
+  This makes TkRemind react almost instantly if external tools are editing
+  or updating reminders.
+
+- MINOR NEW FEATURE: rem2ps has a new '-x' option; this puts the day numbers
+  on the top-left of the day's box instead of the top-right.
+
+- MINOR FIXES: A typo in remind.1 was fixed; additional comments regarding
+  UNTIL were added.
+
+- BUG FIX: rem2ps: Call setpagedevice to set page size
+  Based on a patch from Jonathan Kamens
+
+-------------------------------------------------------------------
+Mon Nov  9 13:47:55 UTC 2020 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- update to remind 3.3.3
+
+- CHANGES TO REMIND
+
+* VERSION 3.3 Patch 3 - 2020-11-09
+
+- BUG FIX: Fix startup crash in TkRemind if "Show Today's Reminders on
+  Startup" is enabled (which, unfortunately, is the default.)  Bug reported
+  by Martin Ziemer.
+
+
+-------------------------------------------------------------------
+Sun Nov  8 21:21:33 UTC 2020 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- update to remind 3.3.2
+
+- CHANGES TO REMIND
+
+* VERSION 3.3 Patch 2 - 2020-11-08
+
+- MINOR NEW FEATURE: Add MAYBE-UNCOMPUTABLE keyword; see the man page
+  and discussion at
+  https://dianne.skoll.ca/pipermail/remind-fans/2020/003745.html
+
+- CHANGE: TkRemind always invokes Remind with the "-itkremind=1" option,
+  even when printing.  NOTE INCOMPATIBILITY: This is a behavior change!
+  When you print from TkRemind, we also invoke Remind with "-itkprint=1"
+  so you can detect that PostScript is being generated.
+
+- CHANGE: The maxmimum length of a variable name has been increased from
+  16 characters to 64 characters.  Modern computers have plenty of memory.
+
+- BUG FIXES: Minor documentation updates, typo fixes, clarifications, etc.
+
+- BUG FIX: Fix calendar-drawing alignment errors when displaying UTF-8
+  strings with zero-width combining characters and strings with tabs.
+
+- BUG FIX: TkRemind would mess up placement of the WEEK special if invoked
+  with the "-m" option.  This has been fixed.
+
+- BUG FIX: TkRemind would sometimes fail with an error message when editing
+  a reminder; this is because it was interpreting months 08 and 09 as
+  illegal octal numbers.  This has been fixed.
+
+-------------------------------------------------------------------
+Fri Mar 20 19:49:55 UTC 2020 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- update to remind 3.3.1
+- CHANGE: For overlapping multi-day events, issue a reminder for the
+  most *recent* event rather than the earliest event.  NOTE
+  INCOMPATIBILITY: This is a behavior change!
+- CHANGE: Do not convert 90-99 to 1990-1999 when parsing numbers to
+  recognize years.  NOTE INCOMPATIBILITY: This is a behavior change!
+- CHANGE: Revert change to -y option that included filename and line
+  number in the hash.
+- CHANGE: Retain newlines (produced by %_) in JSON output.
+- FIX: Document $FormWidth system variable
+- FIX: Highlight today's date in "remind -c" output
+- FIX: Eliminate compiler warnings on Ubuntu 18.04.
+- IMPROVEMENT: Allow times to be specified either in 24-hour mode
+  (HH:MM or HH.MM) or AM/PM mode (HH:MMam; HH:MMpm, etc.)
+- IMPROVEMENT: Allow DURATION to be specified as a time (1:30) or a
+  number of minutes (90).
+- IMPROVEMENT: If terminal size can be determined, set $FormWidth to
+  terminal width - 8; if not, set $FormWidth to 72.
+- MINOR IMPROVEMENT: Add the "ampm()" built-in function.
+
+-------------------------------------------------------------------
+Sat Feb  1 11:46:46 UTC 2020 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- update to remind-3.3.0
+- FIX: rem2ps: Add a %%PageBoundingBox: document structuring convention
+  comment.
+- FIX: rem2ps: Ignore unknown SPECIAL-type reminders.
+- IMPROVEMENT: In calendar mode ("-c" option), Remind automatically adjusts
+  the width of the calendar to fit the terminal window if standard output
+  is a TTY.
+- IMPROVEMENT: Add JSON-based output with "remind -pp" and "remind -ppp"
+  The JSON-based intermediate format preserves a lot more information
+  about the original reminder, allowing back-ends more insight into
+  the intent of the reminder, the recurrence used, etc.  See the documentation
+  in "man rem2ps"
+- IMPROVEMENT: TkRemind can "reverse-engineer" reminders that it creates
+  using the additional information in the "remind -pp" format, so it
+  doesn't create or use ugly comment blocks to delimit the reminders
+  it creates.
+- IMPROVEMENT: TkRemind: Add popup help to most buttons and controls.
+- NEW FEATURE: Add support for $DefaultColor system variable, suggested
+  by Tim Chase.
+- NEW FEATURE: The "-@[n][,m]" command-line option allows colored reminders
+  in Agenda Mode as well as in Calendar Mode.  It also adds support for
+  terminal emulators that can handle the xterm 256-color escape sequences
+  as well as the true 24-bit color escape sequences.
+- CHANGE: SPECIALs are now case-insensitive.  Before, only SPECIAL COLOR
+  would work.  Now you can use Special Color, special color, etc.
+  
+-------------------------------------------------------------------
+Sat Jan  4 10:11:59 UTC 2020 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- defattr still needed to support SLE11-SP4 
+
+-------------------------------------------------------------------
+Sat Jan  4 10:04:23 UTC 2020 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- update to remind-3.2.0
+- removed buildroot and defattr calls from spec. No londer needed. 
+- IMPROVEMENT: Add support for events spanning multiple days (with AT
+  and DURATION).  Add trigeventstart() and trigeventduration()
+  introspection functions; see "MULTI-DAY EVENTS" in the man page.
+- IMPROVEMENT: Add introspection functions trigback(), trigdelta(),
+  trigduration(), trigfrom(), trigpriority(), trigrep(),
+  trigscanfrom(), trigtimedelta(), trigtimerep(), and triguntil().  See
+  man page for details; thanks to Tim Chase for the suggestion.
+- IMPROVEMENT: TkRemind: Use PNG images for the next month / previous
+  month buttons rather than -> and <-.  Also use nice anti-aliased
+  moon phase images instead of ugly blocky bitmaps.
+- CHANGE: Modify addition so that previously-illegal combinations
+  TIME + TIME, TIME + DATETIME and DATETIME + TIME are now allowed.
+  Also allow DATETIME - TIME.  If t1 and t2 are expressions of type TIME
+  and dt is an expression of type DATETIME, then the following are now
+  equivalent (before, the expressions on the left-hand side would fail
+  with a "Type mismatch" error.)
+  t1 + t2     ==     t1                + coerce("INT", t2)
+  dt + t2     ==     dt                + coerce("INT", t2)
+  t1 + dt     ==     coerce("INT", t1) + dt
+  dt - t2     ==     dt                - coerce("INT", t2)
+- DOC FIX: Document previously-undocumented $MaxStringLen system variable
+- DOC FIX: Various minor documentation fixes.
+- BUG FIX: Specifying a DURATION without an AT clause results in an error.
+  Before, it would be accepted but not do anything useful.
+- BUG FIX: Catch potential date overflow in slide() function
+- BUG FIX: Fix compile error when compiling Romanian version; eliminate
+  compiler warning when compiling non-English versions.
+- BUG FIX: TkRemind: Fix startup failure of TkRemind if options are at
+  default. :(
+-------------------------------------------------------------------
+Fri Aug 14 15:32:07 UTC 2015 - puzel@suse.com
+
+- update to remind-3.1.15 
+  - BUG FIX: Fix a buffer overflow found by Alexander Keller
+    (CVE-2015-5957)
+  - BUG FIX: Make parser reject an AT followed by more than one time.
+  - BUG FIX: Make parser reject repeated delta or *repeat values.
+  - NEW FEATURE: Putting the line __EOF__ in a .rem file causes
+    Remind to treat it as end-of-file.
+  - IMPROVEMENT: Use better PNG images for moons in the HTML display
+  - BUG FIX: The "-n" command-line option should really run in
+    "ADVANCE_MODE" rather than "CAL_MODE" internally; otherwise,
+    the substitution sequences may be misinterpreted.
+  - BUG FIX: A typo in clearing out MD5 sum context has been fixed.
+  - BUG FIX: Typo in Spanish translation was fixed.
+
+-------------------------------------------------------------------
+Mon Apr 22 20:28:03 UTC 2013 - puzel@suse.com
+
+- update to remind-3.1.13 
+  - BUG FIX: Sunrise/Sunset calculations greatly improved thanks to
+    John McGowan.  Accuracy should now be within a couple of
+    minutes in most places.
+  - BUG FIX: Allow specification of margins as low as 0 points in
+    rem2ps, courtesy of Jonathan Kamens.
+  - BUG FIX: Permit compilation with gcc 2.95 (which doesn't allow
+    variable declarations after non-declaration statements in a
+    block.)
+  - BUG FIX: Several minor documentation errors corrected courtesy
+    of Simon Ruderich.
+  - BUG FIX: Spurious test harness failure was fixed.
+
+-------------------------------------------------------------------
+Tue Feb 28 11:42:15 UTC 2012 - puzel@suse.com
+
+- update to remind-3.1.12 
+  - NEW FEATURE: Many substitution sequences "%x" have an alternate
+    mode denoted by "%*x".  This alternate mode leaves out
+    prepositions.  For example, in English "%i" might yield "on
+    01-25" while "%*i" yields only "01-25".
+  - BUG FIX: The "dusk" and "dawn" calculations were completely
+    wrong.  They have been fixed.  Also, sunrise/sunset calculations
+    have been tweaked, so the results may be off by a minute or two
+    compared to previous versions of Remind.
+  - BUG FIX: For some inexplicable reason, dawn was considered to
+    happen when the sun was 14 degrees below the horizon instead of
+    the standard 6 degrees for Civil Dawn.  This has been fixed.
+  - BUG FIXES: Clarified the man pages and fixed some typos.
+  - BUG FIX: Add THROUGH to the remind.vim syntax highlighting file.
+  - ENHANCEMENT (?): Allow SPECIAL COLOR to be spelled SPECIAL
+    COLOUR.
+  - BUG FIX: Apply minor Debian cleanups reported by Kurt B. Kaiser.
+
+-------------------------------------------------------------------
+Mon Feb 20 06:17:56 UTC 2012 - mrdocs@opensuse.org
+
+- disable make check - it breaks the build
+
+-------------------------------------------------------------------
+Mon Feb 13 10:54:29 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Wed Dec 22 12:32:25 UTC 2010 - puzel@novell.com
+
+- clean up specfile
+- enable 'make check' again
+
+-------------------------------------------------------------------
+Tue Nov  2 11:10:39 UTC 2010 - puzel@novell.com
+
+- update to remind-3.1.10 
+  - add the THROUGH keyword.  You can omit blocks of dates
+    with: OMIT start THROUGH end
+  - add support for multibyte characters (eg, UTF-8) in calendar
+    output. Note that UTF-8 strings are still not supported in
+    PostScript output.
+  - add support for UTF-8 line-drawing characters in calendar
+    output
+  - you can have multiple TAG clauses in a REM statement
+  - avoid spawning long-running background processes in "make
+    test"
+  - don't declare variables in the middle of statements (old C
+    compilers choke.)
+
+-------------------------------------------------------------------
+Mon Jun 21 07:17:06 UTC 2010 - puzel@novell.com
+
+- update to remind-3.1.9
+  - New "purge mode" to delete expired reminders. See
+    the PURGE MODE section of the remind man page.
+  - Support DURATION in TkRemind. Thanks to Marek Marczykowski.
+  - Don't change the order of PS and PSFILE reminders.  Bug found
+    by John McGowan.
+  - "REM 1990-01-01 SATISFY 1" would yield a spurious parse error
+    in earlier versions of Remind.
+  - Yom HaShoah is moved to Thursday if it would normally fall on
+    a Friday. Thanks to Jonathan Kamens for pointing this out.
+
+-------------------------------------------------------------------
+Wed Mar 10 08:54:34 UTC 2010 - puzel@novell.com
+
+- update to remind-3.1.8 
+  - Add the $T, $Td, $Tm, $Tw, $Ty, $U, $Ud, $Um, $Uw, $Uy
+    special variables to make reminder files less wordy. See man page
+    for details.
+  - Ignore msgprefix() and msgsuffix() on RUN-type reminders.
+  - Adjust Remind and Rem2PS so that SHADE specials don't obliterate
+    earlier MOON specials.
+  - Fix bug in SCHED calculations if Remind is started in the middle
+    of a SCHED interval.
+
+-------------------------------------------------------------------
+Fri Jan 22 12:09:10 UTC 2010 - puzel@novell.com
+
+- initial package for Contrib, based on obs://home:code933k/remind 
+

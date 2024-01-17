@@ -1,0 +1,96 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>98f5a8752b869503e80999ce3d2cca14</srcmd5>
+    <version>0.3.0</version>
+    <time>1554189654</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>688678</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>cd96cd6798d64951e9d17832e7a4654c</srcmd5>
+    <version>0.3.0</version>
+    <time>1565695194</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>722235</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f8708dc5132e1e2701ae87ccc6f30b8a</srcmd5>
+    <version>0.3.2</version>
+    <time>1585995945</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.2:
+  * no upstream changelog</comment>
+    <requestid>791147</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f941298c25eb42037bced5ffd7e946fa</srcmd5>
+    <version>0.3.4</version>
+    <time>1588324147</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.4:
+  * no changelog</comment>
+    <requestid>798142</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>13b37daab4c48e447f07cc9f9c777444</srcmd5>
+    <version>0.4.0</version>
+    <time>1588538830</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.0:
+  * Drop py27 support and add badges #15
+  * Use requests(-cache) #12
+  * Add checking of self- and local html anchors #10</comment>
+    <requestid>799795</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a2724bbfee21226b725906984a9d833f</srcmd5>
+    <version>0.4.2</version>
+    <time>1589892457</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.2:
+  * Another improvement to retry logic #20
+  * Clean up metadata for dist generation #19
+  * Improve retry logic and add python 3 classifier #18</comment>
+    <requestid>806849</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f51839e6d76b268eea4c0059c522fb5d</srcmd5>
+    <version>0.8.0</version>
+    <time>1683299570</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.8.0:
+  * Update for newer requests-cache
+  * Add docstring enforcement
+  * Add releaser workflows
+  * Include py.typed file
+  * Update for pytest 7
+  * Add flake8 and mypy linting
+  * Apply Auto Formatting
+  * Enforce labels on PRs
+  * Update for Jupyter Releaser
+  * Add changelog entry for 0.6.0
+  * Handle ignore links for `ipynb` files
+  * Drop support for Python 3.6 and add support for Python 3.10
+  * Handle attachments in notebook cells
+  * Fix handling of Nested RST links
+  * Fix check-links-ignore example in Readme
+  * Add Ability to Ignore Link Patterns
+  * Update for recommended usage of CheckLinks</comment>
+    <requestid>1085127</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1e0d883e91f7e3e13a051f7fbb235dd3</srcmd5>
+    <version>0.9.0</version>
+    <time>1690278682</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.0:
+  * Support Python 3.8-3.12 and Handle Flaky Tests #110
+  * Update ruff #106
+  * Use local coverage #105
+  * Switch to pytester in tests
+  * Add more linting #100</comment>
+    <requestid>1100441</requestid>
+  </revision>
+</revisionlist>

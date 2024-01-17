@@ -1,0 +1,8 @@
+<package name="termshark" project="openSUSE:Factory">
+  <title>A terminal UI for tshark</title>
+  <description>A terminal UI for tshark, inspired by Wireshark.
+
+</description>
+  <devel project="network:utilities" package="termshark"/>
+  <url>https://termshark.io/</url>
+</package>

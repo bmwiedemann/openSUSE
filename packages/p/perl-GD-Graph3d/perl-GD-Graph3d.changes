@@ -1,0 +1,66 @@
+-------------------------------------------------------------------
+Tue Mar 13 15:13:56 UTC 2018 - crrodriguez@opensuse.org
+
+- Remove buildrequires on jpeg and xorg-x11-devel 
+
+-------------------------------------------------------------------
+Thu Jan 16 14:29:06 UTC 2014 - coolo@suse.com
+
+- own all subdirectories
+
+-------------------------------------------------------------------
+Wed Sep 11 13:10:48 UTC 2013 - pgajdos@suse.com
+
+- own %{perl_vendorarch}/auto/GD dir
+
+-------------------------------------------------------------------
+Fri Nov 18 11:08:27 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Wed Dec  1 13:32:33 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:30:02 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:42 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Mar  3 18:08:41 CET 2005 - ro@suse.de
+
+- added trim_miter patch from Juergen 
+
+-------------------------------------------------------------------
+Thu Jul 29 00:38:36 CEST 2004 - ro@suse.de
+
+- update to 0.63
+- renamed from perl-GDGraph3d to perl-GD-Graph3d
+
+-------------------------------------------------------------------
+Sat Jan 10 21:59:17 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Thu Nov 20 15:58:31 CET 2003 - ro@suse.de
+
+- added requires
+
+-------------------------------------------------------------------
+Thu Nov 20 15:51:09 CET 2003 - ro@suse.de
+
+- created package version 0.56
+

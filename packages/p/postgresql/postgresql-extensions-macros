@@ -1,0 +1,53 @@
+#
+# License AGPL-3.0
+#
+# keep in sync with the postgresqlXY packages
+#
+
+%pg_config_bindir            %(pg_config --bindir)
+%pg_config_docdir            %(pg_config --docdir)
+%pg_config_htmldir           %(pg_config --htmldir)
+%pg_config_includedir        %(pg_config --includedir)
+%pg_config_pkgincludedir     %(pg_config --pkgincludedir)
+%pg_config_includedir_server %(pg_config --includedir-server)
+%pg_config_libdir            %(pg_config --libdir)
+%pg_config_pkglibdir         %(pg_config --pkglibdir)
+%pg_config_localedir         %(pg_config --localedir)
+%pg_config_mandir            %(pg_config --mandir)
+%pg_config_sharedir          %(pg_config --sharedir)
+%pg_config_sysconfdir        %(pg_config --sysconfdir)
+%pg_config_pgxs              %(pg_config --pgxs)
+%pg_config_configure         %(pg_config --configure)
+%pg_config_cc                %(pg_config --cc)
+%pg_config_cppflags          %(pg_config --cppflags)
+%pg_config_cflags            %(pg_config --cflags)
+%pg_config_cflags_sl         %(pg_config --cflags_sl)
+%pg_config_ldflags           %(pg_config --ldflags)
+%pg_config_ldflags_ex        %(pg_config --ldflags_ex)
+%pg_config_ldflags_sl        %(pg_config --ldflags_sl)
+%pg_config_libs              %(pg_config --libs)
+
+%make_pgxs \
+make USE_PGXS=1 %{?_smp_mflags} \
+%nil
+
+%make_pgxs_install \
+%make_install USE_PGXS=1 \
+%nil
+
+%pg_obsolete_llvm_subpackage \
+Provides:       %{pg_name}-%{ext_name}-llvmjit = %{version}-%{release} \
+Obsoletes:      %{pg_name}-%{ext_name}-llvmjit < %{version}-%{release} \
+%nil
+
+%pg_server_requires                  \
+%{requires_eq    %{pg_name}-server}  \
+%if %{postgresql_has_llvm}           \
+Recommends:     %{pg_name}-llvmjit   \
+%pg_obsolete_llvm_subpackage         \
+%endif                               \
+%nil
+
+%pg_version_from_name %define pg_version %( echo %{?pg_name} | sed -e 's|^postgresql||g' )%{nil}
+%postgresql_has_llvm (0%{?suse_version} >= 1500 && "%{_target_cpu}" != "riscv64" && 0%{?pg_version} >= 11 && 0%{?pg_version} < 90)
+

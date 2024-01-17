@@ -1,0 +1,177 @@
+-------------------------------------------------------------------
+Thu Aug 17 15:54:54 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Suggest primary python package -- boo#1214354
+
+-------------------------------------------------------------------
+Sat Aug  5 16:16:10 UTC 2023 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * require jupyterlab >=4 (according to metadata in wheel)
+
+- update to version 0.5.0:
+  * Support JupyterLab 4
+  * Bump semver from 5.7.1 to 5.7.2 in /js
+  * Bump tough-cookie from 4.1.2 to 4.1.3 in /js
+
+- changes from version 0.4.1:
+  * fix lint
+  * add allowed_extensions setting
+  * switch from notebook handler to jupyter server handler
+  * Bump yaml from 2.2.1 to 2.2.2 in /js
+  * publish junit test results for js and python
+  * fix typo and capitalize repository links
+
+-------------------------------------------------------------------
+Tue Jun 13 20:48:53 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Jupyterlab 4 does not hard require notebook anymore:
+  get it explicitly
+
+-------------------------------------------------------------------
+Sun Apr 23 20:36:04 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.4.0
+  * fix manifest to exclude node_modules and built assets by
+    @timkpaine in #177
+  * Clean up references and add files for FINOS move by @timkpaine
+    in #181
+  * add security checks, add license checks, prune docs by
+    @timkpaine in #180
+  * fixes #167 for new jupyter-server by @timkpaine in #200
+  * Use nb server logging instead of print by @toslunar in #202
+
+-------------------------------------------------------------------
+Tue Jan  3 18:21:12 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.3.2
+  * Maintenance release without release notes
+- Update macro usage
+- Remove invalid PEP440 specifier in dev-extra which made
+  pythondistdeps.py choke
+
+-------------------------------------------------------------------
+Sun Nov 14 20:34:30 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Allow to keep the config in %_distconfdir
+
+-------------------------------------------------------------------
+Fri Nov 12 22:05:49 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update o 0.3.1
+  * Drop python 3.6
+  * Add python 3.9
+  * Fix bugs with JLab 3.0
+  * Dist with prebuilt extension
+
+-------------------------------------------------------------------
+Thu Feb  4 19:31:36 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.3.0
+  * No upstream changelog. Mostly internal changes.
+- Fix wheel install location for pyproject_install
+- Enable tests
+
+-------------------------------------------------------------------
+Sun May 24 08:27:10 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix download url
+
+-------------------------------------------------------------------
+Sat Apr 25 16:46:11 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 0.2.3:
+  * set long description type
+
+-------------------------------------------------------------------
+Mon Dec 16 15:35:53 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use pyproject_install macro (boo#1094323)
+
+-------------------------------------------------------------------
+Thu Dec 12 18:55:07 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Fix conflict with old version
+
+-------------------------------------------------------------------
+Mon Dec  9 15:09:36 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.2.2
+  * Fix random typos
+  * Refactor setup.py and add make fix
+  * Allow for opting out of core paths
+- Rename spec file to python-jupyterlab-templates to work better
+  with OSC python tooling.
+
+-------------------------------------------------------------------
+Wed Nov 27 15:42:24 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.2.1
+  * Reload templates on disk
+
+-------------------------------------------------------------------
+Sat Jul 27 23:24:10 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.2.0
+  * JupyterLab 1.0.0 support
+  * Will now scan standard locations for vendor notebooks
+
+-------------------------------------------------------------------
+Mon Jun  3 19:04:21 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Fix dependency name
+
+-------------------------------------------------------------------
+Mon Apr 29 14:55:44 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.0.8
+  * Allow to delete default template #20
+  * Docs update/formatting/bugfixes/better linting/move to pytest
+
+-------------------------------------------------------------------
+Thu Apr 25 01:59:57 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Rename to to match jupyter package naming guidelines.
+
+-------------------------------------------------------------------
+Thu Sep 20 18:51:43 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Disable python2 build since jupyterlab no longer supports python2
+
+-------------------------------------------------------------------
+Fri Sep  7 15:56:41 UTC 2018 - toddrme2178@gmail.com
+
+- Update to 0.0.7
+  * fixing icon
+  * remove ujson
+  * badges
+
+-------------------------------------------------------------------
+Thu Aug  2 18:17:16 UTC 2018 - toddrme2178@gmail.com
+
+- Update to 0.0.5
+  * fixing #10 svg parsing error for icon
+  * fixed missing template names in firefox
+
+-------------------------------------------------------------------
+Sun Jun 10 23:46:20 UTC 2018 - jengelh@inai.de
+
+- Avoid bashism in scriptlet.
+
+-------------------------------------------------------------------
+Tue May 29 14:59:34 UTC 2018 - toddrme2178@gmail.com
+
+- Use || true syntax instead of exit 0
+
+-------------------------------------------------------------------
+Thu May  3 14:07:08 UTC 2018 - toddrme2178@gmail.com
+
+- Use %license tag
+
+-------------------------------------------------------------------
+Fri Apr 20 20:18:49 UTC 2018 - toddrme2178@gmail.com
+
+- Initial version

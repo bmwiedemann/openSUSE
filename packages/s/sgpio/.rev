@@ -1,0 +1,117 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>3b907e557d5813fdd8d80215113c4acf</srcmd5>
+    <version>1.2</version>
+    <time>1223915536</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>db628544c1aa6107de06e14b37366e5d</srcmd5>
+    <version>1.2.1</version>
+    <time>1228318863</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>1806a9c973cc95996489d288fd62c1cd</srcmd5>
+    <version>1.2.1</version>
+    <time>1229350060</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>08a7fa0f52dd6e96700311e7c54fe441</srcmd5>
+    <version>1.2.1</version>
+    <time>1231462923</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>08a7fa0f52dd6e96700311e7c54fe441</srcmd5>
+    <version>1.2.1</version>
+    <time>1231462923</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>40deabd2bf3de490a1834670dc5e6a15</srcmd5>
+    <version>1.2.1</version>
+    <time>1268926157</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="8">
+    <srcmd5>40deabd2bf3de490a1834670dc5e6a15</srcmd5>
+    <version>1.2.1</version>
+    <time>1278667389</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="9">
+    <srcmd5>40deabd2bf3de490a1834670dc5e6a15</srcmd5>
+    <version>1.2.1</version>
+    <time>1278678619</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="12">
+    <srcmd5>40deabd2bf3de490a1834670dc5e6a15</srcmd5>
+    <version>1.2.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="13">
+    <srcmd5>2791ec270a91c16f3d6a8793495f2d36</srcmd5>
+    <version>1.2.1</version>
+    <time>1317912357</time>
+    <user>oertel</user>
+    <comment>- cross-build workaround: fake gcc script to work around build system
+  not honoring CC (forwarded request 86484 from uli_suse)</comment>
+    <requestid>86728</requestid>
+  </revision>
+  <revision rev="11" vrev="15">
+    <srcmd5>2791ec270a91c16f3d6a8793495f2d36</srcmd5>
+    <version>1.2.1</version>
+    <time>1319182466</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="16">
+    <srcmd5>b914613231fea7cf2629b87c4a441d1a</srcmd5>
+    <version>1.2.1</version>
+    <time>1323194632</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="13" vrev="18">
+    <srcmd5>b914613231fea7cf2629b87c4a441d1a</srcmd5>
+    <version>1.2.1</version>
+    <time>1340184213</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="14" vrev="20">
+    <srcmd5>b914613231fea7cf2629b87c4a441d1a</srcmd5>
+    <version>1.2.1</version>
+    <time>1359110400</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="22">
+    <srcmd5>b914613231fea7cf2629b87c4a441d1a</srcmd5>
+    <version>1.2.1</version>
+    <time>1379664660</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="24">
+    <srcmd5>b914613231fea7cf2629b87c4a441d1a</srcmd5>
+    <version>1.2.1</version>
+    <time>1409303357</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="25">
+    <srcmd5>b0f85661fa4f6b6307506b6d93a5b51c</srcmd5>
+    <version>1.2.1</version>
+    <time>1460028732</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>383808</requestid>
+  </revision>
+</revisionlist>

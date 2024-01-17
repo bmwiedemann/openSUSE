@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a1cda004a0dbd87da282e30dcea9a1f9</srcmd5>
+    <version>2.18.2</version>
+    <time>1642836049</time>
+    <user>dimstar_suse</user>
+    <comment>new package: https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/M773P6HXCUCFJADLSDHV3TYZWSURCQXD/</comment>
+    <requestid>948011</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ff0c8f43e38f90623c5cf8871a71d78a</srcmd5>
+    <version>2.18.2</version>
+    <time>1645054235</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>955238</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8de96ab44633b1ec8139b98c3bbffd4e</srcmd5>
+    <version>2.18.3</version>
+    <time>1687796190</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1095353</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e00652de3a39b8bfc07df2b7fbca8cfd</srcmd5>
+    <version>2.19.1</version>
+    <time>1693482368</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1108167</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>58f4750d7d62c655bbe3df4f327b8fa8</srcmd5>
+    <version>2.19.3</version>
+    <time>1704487494</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1137019</requestid>
+  </revision>
+</revisionlist>

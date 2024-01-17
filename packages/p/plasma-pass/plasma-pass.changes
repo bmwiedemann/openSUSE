@@ -1,0 +1,42 @@
+-------------------------------------------------------------------
+Wed Jan  5 13:41:38 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Fix installation with plasma-framework 5.89.
+
+-------------------------------------------------------------------
+Sun Jul 18 09:10:07 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Fix the %files section. plasma-framework >= 5.84 doesn't install
+  desktop files in %_kf5_servicesdir anymore.
+
+-------------------------------------------------------------------
+Fri Mar  5 20:37:14 UTC 2021 - Michal Hlavac <miso@hlavki.eu>
+
+- Update to 1.2.0
+  * Add support for OTP codes
+- Remove 0001-Fix-build-against-Qt-5.15.patch
+  * Fixed upstream
+- Add patch 0001-Fix-build-Qt-5.12.patch
+  * Fix build for Qt 5.12 and lower
+
+-------------------------------------------------------------------
+Thu Jun  4 15:11:08 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream patch:
+  * 0001-Fix-build-against-Qt-5.15.patch
+
+-------------------------------------------------------------------
+Fri Dec  6 11:37:14 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 1.1.0
+  * Delay filtering after user paused typing (kde#411815)
+
+-------------------------------------------------------------------
+Wed Feb 27 10:50:27 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Wed Feb 27 09:11:32 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Initial package

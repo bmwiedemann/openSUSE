@@ -1,0 +1,53 @@
+-------------------------------------------------------------------
+Sat May  8 13:38:42 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.0.3:
+  * Add support for m3u and VCLT playlists
+  * Add support for TLS
+  * Add support for Ogg/Opus, Ogg/Speex, and Ogg/FLAC
+    (without transcoding support)
+  * Add support to run a command after a track finished
+  * Improved shuffling for playlists
+  * Several fixes, code improvements, and hardening
+- Drop outdated and resolved ices-gcc-warning-fix.diff
+
+-------------------------------------------------------------------
+Sat Aug 15 23:12:58 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.0.2:
+  * Support for RoarAudio input
+  * Updated Documentation (Closes: #1238)
+  * Fixed double shout_close() (Closes: #720)
+  * Reduced error to warning in case of duplicate serial number.
+  * Fixed handling of <reconnectattempts> when set to zero (Closes: #735)
+  * Did some code cleanup and hardening (Closes: #1795)
+  * Enabled compiler warnings (Closes: #1796)
+  * Added <retry-initial> (Closes: #994)
+  * Upated handling of empty strings in config file (Closes: #1875)
+
+-------------------------------------------------------------------
+Sat Oct 15 04:47:07 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to make the spec file more reliable
+
+-------------------------------------------------------------------
+Tue Aug  4 14:59:55 CEST 2009 - tiwai@suse.de
+
+- fix missing fclose (bnc#525802)
+
+-------------------------------------------------------------------
+Tue Jun 12 12:05:47 CEST 2007 - tiwai@suse.de
+
+- fix compile warning, comparison with string literal.
+- clean up spec file.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:36:33 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Jun 17 15:42:48 CEST 2005 - tiwai@suse.de
+
+- initial version: 2.0.1.
+

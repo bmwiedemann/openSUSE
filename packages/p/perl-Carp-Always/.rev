@@ -1,0 +1,95 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8c19c42e437f21e5336bb73d9f8281bc</srcmd5>
+    <version>0.09</version>
+    <time>1303382469</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 66692 from user babelworx
+</comment>
+    <requestid>66692</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>147a9a805327b9da1a63776d2ce64af2</srcmd5>
+    <version>0.09</version>
+    <time>1303382484</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66692
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>147a9a805327b9da1a63776d2ce64af2</srcmd5>
+    <version>0.09</version>
+    <time>1319182245</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d811a6587ccecb7650df4ae8e3338687</srcmd5>
+    <version>0.10</version>
+    <time>1319707063</time>
+    <user>coolo</user>
+    <comment>update to 0.10 (forwarded request 89308 from tabraham1)</comment>
+    <requestid>89436</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>435c2cccddcd11c33bf9f5c863b3a23a</srcmd5>
+    <version>0.10</version>
+    <time>1323193087</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>435c2cccddcd11c33bf9f5c863b3a23a</srcmd5>
+    <version>0.10</version>
+    <time>1340183802</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>435c2cccddcd11c33bf9f5c863b3a23a</srcmd5>
+    <version>0.10</version>
+    <time>1359109610</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1d1dfc0acff4d690143d0300ea74f37b</srcmd5>
+    <version>0.12</version>
+    <time>1370516939</time>
+    <user>coolo</user>
+    <comment>- updated to 0.12
+    - fix failing t/pod.t due to bad encoding (CPAN #77656)
+    - fix test failure with Carp 1.25+ RT#75320 [thanks ANDK and greeneg]
+    - Test::Base is required in BUILD (otherwise we haven't tested anything) (forwarded request 177624 from coolo)</comment>
+    <requestid>177657</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>1d1dfc0acff4d690143d0300ea74f37b</srcmd5>
+    <version>0.12</version>
+    <time>1379663573</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>eaaa4893a8a5ad6e35156588c56e2a2e</srcmd5>
+    <version>0.13</version>
+    <time>1385490255</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>208388</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>eaaa4893a8a5ad6e35156588c56e2a2e</srcmd5>
+    <version>0.13</version>
+    <time>1409302187</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>776ecc25f5f54956663da31c233d80c1</srcmd5>
+    <version>0.16</version>
+    <time>1535704985</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>631324</requestid>
+  </revision>
+</revisionlist>

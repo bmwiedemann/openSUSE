@@ -1,0 +1,36 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>26b44dea7c96f1b5cecca9d19638ab01</srcmd5>
+    <version>4.47.0</version>
+    <time>1614001196</time>
+    <user>RBrownSUSE</user>
+    <comment>new package</comment>
+    <requestid>874162</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>61fa96a0a3d232817e17e9d1e8c33455</srcmd5>
+    <version>4.49.1</version>
+    <time>1632766144</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>921834</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bdc2c84d1df5fe3700479b77fe418705</srcmd5>
+    <version>4.49.2</version>
+    <time>1652114648</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.49.2
+  * The td1 variant did not actually have the td1 patch applied.
+</comment>
+    <requestid>975717</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f8bc3f7e0a141c3bf9691ea558020d28</srcmd5>
+    <version>4.49.3</version>
+    <time>1682782100</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1083574</requestid>
+  </revision>
+</revisionlist>

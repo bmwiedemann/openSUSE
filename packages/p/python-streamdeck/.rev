@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3111e5112c6f968c79e409f16d4f9403</srcmd5>
+    <version>0.9.3</version>
+    <time>1689710941</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1099278</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e2da8505d80a560df8b3153a3e4b764c</srcmd5>
+    <version>0.9.3</version>
+    <time>1689786695</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1099480</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>393ebdaa355ef7640a893fccef865582</srcmd5>
+    <version>0.9.4</version>
+    <time>1699910523</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1125600</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>761c0eb7d70f0fcbbe22c4a6bc4b16db</srcmd5>
+    <version>0.9.5</version>
+    <time>1704281072</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.5:
+  * Added support for the StreamDeck Plus.</comment>
+    <requestid>1135638</requestid>
+  </revision>
+</revisionlist>

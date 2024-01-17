@@ -1,0 +1,126 @@
+-------------------------------------------------------------------
+Fri Sep 15 13:08:03 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
+
+- cpio on SLE12 does not support -D option, emulate it.
+
+-------------------------------------------------------------------
+Tue Dec  6 17:10:20 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not ever use "%setup -n .": rpm 4.18 tries to be cleaner and
+  remove stuff it extraced, which would lead to 'rm -rf .', which
+  rm does not like. Use "%setup -c" instead, which creates the
+  appropriate %{name}-%{version} directory expected.
+
+-------------------------------------------------------------------
+Tue Feb 15 11:03:50 UTC 2022 - Frederic Crozat <fcrozat@suse.com>
+
+- Generate OS_VERSION_NO_DASH based on os-release VERSION,
+  as workaround to replace dash with space in OS name
+  (bsc#1195061).
+- Bump version to 0.6
+
+-------------------------------------------------------------------
+Tue Feb  8 16:10:01 UTC 2022 - Frederic Crozat <fcrozat@suse.com>
+
+- Improve examples in README.
+
+-------------------------------------------------------------------
+Mon Jan 24 09:36:17 UTC 2022 - Frederic Crozat <fcrozat@suse.com>
+
+- Generate OS_VERSION based on os-release VERSION (bsc#1195061).
+- Bump version to 0.5
+
+-------------------------------------------------------------------
+Mon Jan 17 09:57:02 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Add test suite (test.sh, sles-release-15.4-150400.32.2.x86_64.rpm)
+- Fix SOURCEURL for multibuild DISTURLs
+- Set SOURCEURL also in chroot builds
+
+-------------------------------------------------------------------
+Thu Jan 13 09:32:09 UTC 2022 - Frederic Crozat <fcrozat@suse.com>
+
+- Generate SOURCEURL based on DISTURL.
+- Bump version to 0.4
+
+-------------------------------------------------------------------
+Wed Jun  2 14:23:53 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Provide various modified spellings of PRETTY_NAME useful for
+  writing KIWI image definitions with reduced diff between SLE,
+  Leap and Tumbleweed. DASHED satisfies the requirement that kiwi
+  image names must not have spaces. The BEFORE_PAREN variations
+  drop the release label in parentheses (SLE only) and can be used
+  as a stable name for image registries and WSL app store
+  submissions.
+  * VENDOR
+  * PRETTY_NAME_DASHED
+  * PRETTY_NAME_BEFORE_PAREN
+  * PRETTY_NAME_BEFORE_PAREN_DASHED
+  (Needed for jsc#SLE-12986)
+- Update README and service definition XML to reflect all variables
+- Bump version to 0.3
+
+-------------------------------------------------------------------
+Mon Feb  1 10:29:08 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Don't enable pipefail: rpm got SIGPIPE because grep -q exits early
+  and closes the other end, which made the whole expression fail
+
+-------------------------------------------------------------------
+Wed Jan 27 11:25:26 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Read os-release from the to be installed RPMs. This avoids pulling
+  in distribution-release when not necessary (boo#1180263)
+- Bump version to 0.2
+
+-------------------------------------------------------------------
+Tue Sep  1 08:42:45 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Use a boolean dep to avoid use of %{is_opensuse}. The prjconf
+  selects which one to use this way.
+- Bump version to 0.1
+
+-------------------------------------------------------------------
+Thu Aug 27 07:12:48 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Fix grammar, update README and .service. Technically the name
+  should be changed as well, but that's just cosmetic.
+
+-------------------------------------------------------------------
+Tue Aug 25 11:10:50 UTC 2020 - Stefan Nica <snica@suse.com>
+
+- Also allow working on Chart.yaml (jsc#CAPS-5)
+
+-------------------------------------------------------------------
+Tue Jul  7 13:53:33 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Add explicit fallback for chroot builds
+- Refactor into a single sed call
+
+-------------------------------------------------------------------
+Tue May  5 09:19:56 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Also allow working on Dockerfile (jsc#CAPS-10)
+
+-------------------------------------------------------------------
+Mon May  4 13:40:20 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Strip service prefix from the recipe name to work with enabled
+  services in OBS
+
+-------------------------------------------------------------------
+Thu Jan 10 15:42:38 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Add %OS_VERSION_ID(_SP)% and %PRETTY_NAME% (boo#1119378)
+
+-------------------------------------------------------------------
+Thu Jan 10 08:06:05 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Remove spurious parameter to %setup -T
+- Mention that it's a service in the summary
+
+-------------------------------------------------------------------
+Wed Oct 17 14:56:38 UTC 2018 - Fabian Vogt <fvogt@suse.com>
+
+- Initial commit (fate#326856, bsc#1118103)

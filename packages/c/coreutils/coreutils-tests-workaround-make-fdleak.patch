@@ -1,0 +1,25 @@
+---
+ tests/init.sh |   10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+Index: tests/init.sh
+===================================================================
+--- tests/init.sh.orig
++++ tests/init.sh
+@@ -690,6 +690,16 @@ compare ()
+ }
+ 
+ # -----------------------------------------------------------------------------
++# OpenSUSE/OSC workaround.
++# GNU make 4.3.90 leaks a lot of file descriptors when using the jobserver.
++# Close all of them pointing to files matching '/tmp/Gm*'.
++p=$$
++for n in $(find /proc/$p/fd -lname '/tmp/Gm*' -printf '%P\n'); do
++  exec {n}>&-
++done
++# -----------------------------------------------------------------------------
++
++# -----------------------------------------------------------------------------
+ 
+ # If you want to override the testdir_prefix_ function,
+ # or to add more utility functions, use this file.

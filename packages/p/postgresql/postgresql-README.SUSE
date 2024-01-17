@@ -1,0 +1,110 @@
+PostgreSQL packages openSUSE and SUSE Linux Enterprise Server
+=============================================================
+
+This section describes the RPM package layout for PostgreSQL at
+SUSE.
+
+In certain situations (see "Upgrading PostgreSQL" below) it is needed
+to have more than one version of PostgreSQL installed on a system at
+the same time. For that SUSE has put the major version number into the
+name of the package containing the respective PostgreSQL binaries,
+e.g. postgresql14 or postgresql15. The package set for each major
+version further consists of multiple subpackages containing different
+aspects of a PostgreSQL installation such as postgresql14-server, or
+postgresql15-contrib.
+
+Inside the packages the files are moved from their standard locations
+to a versioned location such as /usr/lib/postgresql14/bin or
+/usr/lib/postgresql15/bin to avoid file conflicts. The
+update-alternatives mechanism is used to create and maintain symbolic
+links that cause one version (by default the highest installed
+version) to re-appear in the standard locations.
+
+There is also a set of unversioned packages (postgresql,
+postgresql-server, etc.) that contains some common stuff that is
+needed for all versions, like dependencies, scripts, or this
+README. These packages also define the default version for a SUSE
+product by recommending the respective binary packages.
+
+By default, database data are stored under /var/lib/pgsql/data on SUSE
+Linux.
+
+
+Unix-Domain Socket Directory
+============================
+
+Traditionally a PostgreSQL server puts its unix domain sockets for
+local client connections into the /tmp directory, which is not
+intended for this kind of use and allows unprivileged users to start
+rogue PostgreSQL servers. For that reason SUSE has moved the default
+directory for these sockets to /run/postgresql and set the permissions
+of that directory to only allow the postgres user and members of the
+postgres group to start servers that have their sockets here.
+
+A secondary socket is still also opened under /tmp for backwards
+compatibility with old clients, but this is deprecated and should not
+be used anymore in new deployments.
+
+
+Upgrading PostgreSQL
+====================
+
+PostgreSQL databases are compatible among minor versions of the same
+major version (e.g. 14.1, 14.2, 14.3), but need migration when
+switching to a new major version (e.g. 14.x to 15.y).
+
+Since version 9.1 PostgreSQL comes with the pg_upgrade tool that
+simplifies and speeds up the migration of a PostgreSQL installation to
+a new major version. Starting at version 11 logical replication
+between two server instances provides anoter way of migrating a
+PostgreSQL database to a new major version with minimal downtimes.
+Before version 9.1 dump and restore was needed which is much slower,
+but might still be usful in certain upgrade situations.
+
+The following text will only explain migration through pg_upgrade. For
+the other variants, please refer to the original documentation online
+or in the respective postgresqlXX-docs package.
+
+pg_upgrade needs to have the server binaries of both versions
+available, so e.g. for migrating from version 14 to 15 both,
+postgresql14-server and postgresql15-server need to be installed.
+
+
+
+The following preconditions have to be fulfilled before data migration
+can be started:
+
+ 1. If not already done, the packages of the old PostgreSQL version
+ must be upgraded to the new packaging scheme through a maintenance
+ update.
+
+ 2. The packages of the new PostgreSQL major version need to be
+ installed. As pg_upgrade is contained in the contrib subpackage, that
+ one has to be installed as well, at least for the migration period.
+
+ 3. Unless pg_upgrade is used in link mode, the server must have
+ enough free disk space to temporarily hold a copy of the database
+ files. If the database instance was installed in the default
+ location, the needed space in megabytes can be determined by running
+ the follwing command as root: "du -hs /var/lib/pgsql/data". If space
+ is tight, it might help to run the "VACUUM FULL" SQL command on each
+ database in the instance to be migrated, but be aware that it might
+ take very long.
+
+The latest upstream documentation for pg_upgrade including step by
+step instructions for performing a database migration can be found
+online under https://www.postgresql.org/docs/current/pgupgrade.html ,
+or locally under
+file:///usr/share/doc/packages/postgresqlXX/html/pgupgrade.html , if
+the postgresqlXX-docs package is installed. XX is a place holder for
+the respective major version here.
+
+NOTE: The online documentation starts with explaining how you can
+install PostgreSQL from the upstream sources (which is not necessary
+when you install the SUSE RPMs) and also uses other directory names
+(/usr/local instead of the update-alternatives based path as described
+above).
+
+For background information about the inner workings of pg_upgrade and
+a performance comparison with the old dump and restore method, see
+http://momjian.us/main/writings/pgsql/pg_upgrade.pdf .

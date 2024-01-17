@@ -1,0 +1,5 @@
+<package name="python-pytest-check-links" project="openSUSE:Factory">
+  <title></title>
+  <description>Check links in files</description>
+  <devel project="devel:languages:python:pytest" package="python-pytest-check-links"/>
+</package>

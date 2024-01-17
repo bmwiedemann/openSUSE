@@ -1,0 +1,36 @@
+-------------------------------------------------------------------
+Fri Dec 29 10:24:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.5:
+  * Added support for the StreamDeck Plus.
+
+-------------------------------------------------------------------
+Mon Nov 13 12:21:44 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
+
+- Update to 0.9.4:
+  * Updated Windows HIDAPI backend to attempt to load from the
+    local working directory.
+  * Added detection for MacOS Homebrew installations of the
+    libhidapi back-end library.
+
+-------------------------------------------------------------------
+Wed Jul 19 09:32:34 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
+
+- Add requires on libhidapi-libusb0, its shared library is loaded
+  dynamically by python module and is a must for this module to
+  work properly.
+
+-------------------------------------------------------------------
+Tue Jul 18 13:08:32 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- fix formatting
+
+-------------------------------------------------------------------
+Tue Jul 18 12:29:10 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
+
+- Update to 0.9.3.
+
+-------------------------------------------------------------------
+Mon Aug  2 01:41:48 UTC 2021 - Simon Lees <sflees@suse.de>
+
+- Initial Package

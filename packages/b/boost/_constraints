@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<constraints>
+  <hardware>
+    <physicalmemory>
+      <size unit="M">2000</size>
+    </physicalmemory>
+    <disk>
+      <size unit="G">5</size>
+    </disk>
+  </hardware>
+  <sandbox>kvm</sandbox>
+  <hostlabel exclude="true">SLOW_CPU</hostlabel>
+</constraints>
+

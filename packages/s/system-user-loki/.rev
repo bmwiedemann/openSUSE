@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9eda56e9ae6c4cb8d1c2c6406db5fa8b</srcmd5>
+    <version>1.0.0</version>
+    <time>1606828909</time>
+    <user>dimstar_suse</user>
+    <comment>Sibling package to configure the user via systemd-sysuser.
+This allows to make the main package more container-friendly.</comment>
+    <requestid>849380</requestid>
+  </revision>
+</revisionlist>

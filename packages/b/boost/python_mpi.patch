@@ -1,0 +1,27 @@
+Author: Adam Majer <adam.majer@suse.de>
+Summary: Fix MPI module loading
+
+MPI requires dl.RTLD_NOW|dl.RTLD_GLOBAL flags to load
+properly.
+
+
+Index: boost_1_64_0/libs/mpi/build/__init__.py
+===================================================================
+--- boost_1_64_0.orig/libs/mpi/build/__init__.py
++++ boost_1_64_0/libs/mpi/build/__init__.py
+@@ -1,10 +1,7 @@
+ import sys
+-if sys.platform == 'linux2':
+-    import DLFCN as dl
+-    flags = sys.getdlopenflags()
+-    sys.setdlopenflags(dl.RTLD_NOW|dl.RTLD_GLOBAL)
+-    import mpi
+-    sys.setdlopenflags(flags)
+-else:
+-    import mpi
++import DLFCN as dl
++flags = sys.getdlopenflags()
++sys.setdlopenflags(dl.RTLD_NOW|dl.RTLD_GLOBAL)
++import boost.parallel.mpi.mpi
++sys.setdlopenflags(flags)
+ 

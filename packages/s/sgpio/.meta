@@ -1,0 +1,9 @@
+<package name="sgpio" project="openSUSE:Factory">
+  <title>SGPIO captive backplane tool</title>
+  <description>Serial General Purpose Input Output (SGPIO) is a communication method
+used between a main board and a variety of internal and external hard
+disk drive bay enclosures. This utility can be used to control LEDs in
+an enclosure. For more information about SGPIO, please consult the
+SFF-8485 Specification.</description>
+  <devel project="Base:System" package="sgpio"/>
+</package>

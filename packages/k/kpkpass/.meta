@@ -1,0 +1,5 @@
+<package name="kpkpass" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="KDE:Applications" package="kpkpass"/>
+</package>

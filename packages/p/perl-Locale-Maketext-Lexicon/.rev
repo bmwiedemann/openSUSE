@@ -1,0 +1,204 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a1631310bad0be9a7ca800f0f2411460</srcmd5>
+    <version>0.62</version>
+    <time>1168903861</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="120">
+    <srcmd5>a1631310bad0be9a7ca800f0f2411460</srcmd5>
+    <version>0.62</version>
+    <time>1168903861</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="121">
+    <srcmd5>14c37db35b727431fdfd1176f1c3ccc5</srcmd5>
+    <version>0.62</version>
+    <time>1245337682</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="123">
+    <srcmd5>14c37db35b727431fdfd1176f1c3ccc5</srcmd5>
+    <version>0.62</version>
+    <time>1245337682</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="124">
+    <srcmd5>1eae956e73a34ba6aa6bc4bae1d2056b</srcmd5>
+    <version>0.62</version>
+    <time>1263300406</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Locale-Maketext-Lexicon based on submit request 29238 from user coolo
+</comment>
+  </revision>
+  <revision rev="6" vrev="125">
+    <srcmd5>45705a0a6be2866e2f9ca906a0d08289</srcmd5>
+    <version>0.62</version>
+    <time>1268925511</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5fdf3b37ec650e9eb7961d544ec6d44f</srcmd5>
+    <version>0.79</version>
+    <time>1270722992</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Locale-Maketext-Lexicon based on submit request 37292 from user computersalat
+</comment>
+    <requestid>37292</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2f100c6aff336d5839a6e40b5582ac61</srcmd5>
+    <version>0.82</version>
+    <time>1271435877</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Locale-Maketext-Lexicon based on submit request 38058 from user computersalat
+</comment>
+    <requestid>38058</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>2f100c6aff336d5839a6e40b5582ac61</srcmd5>
+    <version>0.82</version>
+    <time>1278667379</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>2f100c6aff336d5839a6e40b5582ac61</srcmd5>
+    <version>0.82</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>1b17ae4dd7d962651bfc3d1560424565</srcmd5>
+    <version>0.82</version>
+    <time>1292003932</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55525 from user coolo
+</comment>
+    <requestid>55525</requestid>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>688a0cb4f1d618a2a1f0d71f4a9438e6</srcmd5>
+    <version>0.82</version>
+    <time>1292003939</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55525
+</comment>
+  </revision>
+  <revision rev="13" vrev="8">
+    <srcmd5>688a0cb4f1d618a2a1f0d71f4a9438e6</srcmd5>
+    <version>0.82</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5862d310fa76306e0596c3a9e266e624</srcmd5>
+    <version>0.86</version>
+    <time>1302082082</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 66076 from user licensedigger
+</comment>
+    <requestid>66076</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>5ac926797420c43331950b41e3bfb4a5</srcmd5>
+    <version>0.86</version>
+    <time>1302082092</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66076
+</comment>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>5ac926797420c43331950b41e3bfb4a5</srcmd5>
+    <version>0.86</version>
+    <time>1319182283</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>bd9cce6a7e8f1d566b596e5312040493</srcmd5>
+    <version>0.91</version>
+    <time>1321875740</time>
+    <user>coolo</user>
+    <comment>- update to 0.91
+  * Fixed test count for newly added tests
+  
+  * Doc changes
+  
+  * Added support to the TT2 parser for Mojolicious style tags
+    Thanks to COSIMO for the patch
+  
+  * Fixed the t/5-extract.t test count
+  
+  * Locale::Maketext::Extract::Plugin::Mason
+     - Added support for Mason 2
+       Thanks to ASIMON for the patch.
+  
+  * Locale::Maketext::Extract
+     - Now warns on loading bad plugins if warnings enabled
+  
+  * Locale::Maketext::Extract::Plugin::Base
+     - Corrected the synopsis
+  
+    Thanks to TOKUHIROM for the bug reports</comment>
+    <requestid>92376</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>f7e75c1b191dd58e84c52c68be11f4f1</srcmd5>
+    <version>0.91</version>
+    <time>1323193426</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>f7e75c1b191dd58e84c52c68be11f4f1</srcmd5>
+    <version>0.91</version>
+    <time>1340183868</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="20" vrev="6">
+    <srcmd5>f7e75c1b191dd58e84c52c68be11f4f1</srcmd5>
+    <version>0.91</version>
+    <time>1359109723</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>6172c29d8e59011d0bd61f41d1b916e5</srcmd5>
+    <version>0.96</version>
+    <time>1372863130</time>
+    <user>coolo</user>
+    <comment>- updated to 0.96
+  * Handle Haml blocks too (Calum Halcrow)
+  * Corrected spelling of Text::Haml
+  * xgettext.pl was not being installed
+  * Moved to Dist::Zilla
+  * Added support for HAML (Calum Halcrow)
+  * Fixed test for Perl 5.17.6+. (ANDK)</comment>
+    <requestid>181860</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>6172c29d8e59011d0bd61f41d1b916e5</srcmd5>
+    <version>0.96</version>
+    <time>1379663731</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>6172c29d8e59011d0bd61f41d1b916e5</srcmd5>
+    <version>0.96</version>
+    <time>1409302357</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>9b52759e4036258c187b352fde2c3be9</srcmd5>
+    <version>1.00</version>
+    <time>1429186437</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>297045</requestid>
+  </revision>
+</revisionlist>

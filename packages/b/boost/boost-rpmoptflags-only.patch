@@ -1,0 +1,31 @@
+Index: tools/build/src/tools/gcc.jam
+===================================================================
+--- tools/build/src/tools/gcc.jam.orig
++++ tools/build/src/tools/gcc.jam
+@@ -623,17 +623,17 @@ actions compile.c.pch
+ ###
+ 
+ # Declare flags and action for compilation.
+-toolset.flags gcc.compile OPTIONS <optimization>off   : -O0 ;
+-toolset.flags gcc.compile OPTIONS <optimization>speed : -O3 ;
+-toolset.flags gcc.compile OPTIONS <optimization>space : -Os ;
+-toolset.flags gcc.compile OPTIONS <optimization>minimal : -O1 ;
+-toolset.flags gcc.compile OPTIONS <optimization>debug : -Og ;
++toolset.flags gcc.compile OPTIONS <optimization>off   : ;
++toolset.flags gcc.compile OPTIONS <optimization>speed : ;
++toolset.flags gcc.compile OPTIONS <optimization>space : ;
++toolset.flags gcc.compile OPTIONS <optimization>minimal : ;
++toolset.flags gcc.compile OPTIONS <optimization>debug : ;
+ 
+-toolset.flags gcc.compile OPTIONS <inlining>off  : -fno-inline ;
+-toolset.flags gcc.compile OPTIONS <inlining>on   : -Wno-inline ;
+-toolset.flags gcc.compile OPTIONS <inlining>full : -finline-functions -Wno-inline ;
++toolset.flags gcc.compile OPTIONS <inlining>off  : ;
++toolset.flags gcc.compile OPTIONS <inlining>on   : ;
++toolset.flags gcc.compile OPTIONS <inlining>full : ;
+ 
+-toolset.flags gcc.compile OPTIONS <warnings>off : -w ;
++toolset.flags gcc.compile OPTIONS <warnings>off : ;
+ toolset.flags gcc.compile OPTIONS <warnings>on  : -Wall ;
+ toolset.flags gcc.compile OPTIONS <warnings>all : -Wall ;
+ toolset.flags gcc.compile OPTIONS <warnings>extra : -Wall -Wextra ;

@@ -1,0 +1,13 @@
+<package name="nagios-theme-switcher" project="openSUSE:Factory">
+  <title>Simple Theme Switcher for Nagios Webfrontend</title>
+  <description>This package contains a simple script with configures Nagios to use 
+    a theme below /usr/share/nagios-themes.
+
+Author: 
+-------
+    Lars Vogdt
+
+</description>
+  <devel project="server:monitoring" package="nagios-theme-switcher"/>
+  <url>http://en.opensuse.org/nagios-theme-switcher</url>
+</package>

@@ -1,0 +1,93 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cbc8e0f37d9c407c2c339e9b7a51b026</srcmd5>
+    <version>0.5.5</version>
+    <time>1528492376</time>
+    <user>dimstar_suse</user>
+    <comment>Required by python-coala</comment>
+    <requestid>613318</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>63c6b6ed1bbb37204d2c27e0ae2df528</srcmd5>
+    <version>0.5.5</version>
+    <time>1533045626</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626366</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>3e92435cb53491ad8f08984559e1722a</srcmd5>
+    <version>0.5.5</version>
+    <time>1545648332</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659732</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>a56eae365e9cf6a98c6b20fa5641bd9c</srcmd5>
+    <version>0.5.5</version>
+    <time>1559837778</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707160</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>e2d52589a3eec1abb998975a4dd4e648</srcmd5>
+    <version>0.5.5</version>
+    <time>1589892514</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>806963</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1953c11a0badceac349ad7f720d959f1</srcmd5>
+    <version>0.6.0</version>
+    <time>1591743120</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>809785</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>03a45e5507e9270e588a31e62376aba7</srcmd5>
+    <version>0.7.0</version>
+    <time>1629706070</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>912667</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e7d28ce562e7ba45896b5e9fffaef9f1</srcmd5>
+    <version>0.7.2</version>
+    <time>1643486374</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>949788</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>eaf3b4ac40ff7b9f21c7505c464e1e95</srcmd5>
+    <version>0.7.3</version>
+    <time>1644435585</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>952931</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ad29ed06529dc2673d0e2a611b7c1a17</srcmd5>
+    <version>0.7.4</version>
+    <time>1656422569</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>985511</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>2b8a31ae3f3cdb606fb4b01d0da22262</srcmd5>
+    <version>0.7.5</version>
+    <time>1704281051</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.7.5:
+  * Fixed issue with spaces in filename when using custom git
+    prefix.
+  * Support binary patch format.</comment>
+    <requestid>1135623</requestid>
+  </revision>
+</revisionlist>

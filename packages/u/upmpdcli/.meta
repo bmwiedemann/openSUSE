@@ -1,0 +1,7 @@
+<package name="upmpdcli" project="openSUSE:Factory">
+  <title>UPnP Media Renderer front-end to MPD, the Music Player Daemon</title>
+  <description>Upmpdcli turns MPD, the Music Player Daemon into an UPnP Media Renderer,
+usable with most UPnP Control Point applications, such as those which run
+on Android tablets or phones.</description>
+  <devel project="multimedia:apps" package="upmpdcli"/>
+</package>

@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+            <param name="url">git://github.com/openSUSE/release-notes-openSUSE.git</param>
+          <param name="changesrevision">827b030703f5f1b3d3add878d9cc01d7e17364db</param></service></servicedata>

@@ -1,0 +1,70 @@
+-------------------------------------------------------------------
+Fri Apr 28 19:56:35 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.49.3
+  * The scalable outlines now look a lot better than before, and
+    almost fully match the bitmaps.
+  * Anti-aliasing might still make the outlines look not as
+    crisp as the bitmaps, but in my humble opinion, they look a
+    lot better than before!
+  * The OS/2 vendor ID (aka the foundry ID) has been changed to
+    AX86 (which is also a registered vendor ID!).
+  * The Bold Italic variant now includes Bold-Italic in its font
+    names, and its filename; before, those places contained Bold
+    Italic.
+  * A new variant has been added: Variant ll2-td1 combines the
+    existing variants ll2 and td1.
+
+-------------------------------------------------------------------
+Mon May  9 06:41:30 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.49.2
+  * The td1 variant did not actually have the td1 patch applied.
+
+-------------------------------------------------------------------
+Thu Sep 23 09:53:10 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.49.1
+  * Added the basic 27 hebrew letters and sheqel, with uppercase
+    height.
+  * Altered ascii grave in some sizes to be more useful as a back
+    quote.
+  * Fixed 21B5, added 21B2 and 21B3.
+
+-------------------------------------------------------------------
+Sat Jan  5 17:20:38 UTC 2019 - aloisio@gmx.com
+
+- Update to version 4.47.0
+  * Added 35 new characters (33 glyphs).
+  * Some fixes and improvements (17 characters in various
+    sizes/styles).
+
+-------------------------------------------------------------------
+Sun Nov 12 21:59:21 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 4.46.0:
+  * Added 50 new characters. Mostly math, but also Buglarian yat
+    and yus.
+  * Small fixes and improvements (7 characters in various sizes).
+
+-------------------------------------------------------------------
+Sat May  7 07:12:54 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 4.40.1 (changes since 4.39):
+  * Add 6 combining accents as separate characters.
+  * Add 14 letters with dot above / dot below.
+  * Add partial subscript and superscript: all digits and 11 letters.
+  * Add 30+ math characters, notably large braces, brackets and parens.
+  * Add unicode range 2800-28FF in two variants (br1 and br2).
+  * A few small character fixes.
+  * There now is a Bold Italic variant in order to satisfy some
+    applications which refuse to treat Terminus TTF as monospaced
+    unless that variant exists. It has the same drawbacks as the
+    existing Italic variant: it is generated automatically by
+    slanting the Bold variant of Terminus Font, so it is of lower
+    quality than the Bold variant.
+
+-------------------------------------------------------------------
+Sat Jun 27 10:43:12 UTC 2015 - sor.alexei@meowr.ru
+
+- Initial package.

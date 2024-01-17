@@ -1,0 +1,20 @@
+<package name="boost" project="openSUSE:Factory">
+  <title>Boost C++ Libraries</title>
+  <description>Boost provides free peer-reviewed portable C++ source libraries. The
+emphasis is on libraries that work well with the C++ Standard Library.
+One goal is to establish &quot;existing practice&quot; and provide reference
+implementations so that the Boost libraries are suitable for eventual
+standardization. Some of the libraries have already been proposed for
+inclusion in the C++ Standards Committee's upcoming C++ Standard
+Library Technical Report.
+
+Although Boost was begun by members of the C++ Standards Committee
+Library Working Group, membership has expanded to include nearly two
+thousand members of the C++ community at large.
+
+This package is mainly needed for updating from a prior version, the
+dynamic libraries are found in their respective package. For development
+using Boost, you also need the boost-devel package. For documentation,
+see the boost-doc package.</description>
+  <devel project="devel:libraries:c_c++" package="boost"/>
+</package>

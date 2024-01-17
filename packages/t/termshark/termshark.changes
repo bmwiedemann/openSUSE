@@ -1,0 +1,134 @@
+-------------------------------------------------------------------
+Wed Jul 13 17:02:50 UTC 2022 - jkowalczyk@suse.com
+
+- Update to version 2.4.0:
+  * Use the latest version of gowid
+  * Optimistically update the ChangeLog for the v2.4 release date
+  * Test out an updated demo animated gif
+  * Fix bug that resulted in sporadic failed stream reassembly
+  * Fix bug meaning that default config was not reloaded
+  * Update the ChangeLog with info about suppress-tshark-errors
+  * Factor out a function to turn a KeyValue error into a string
+  * Change default suppress-errors boolean to true, not false
+  * Fix the same bugs in the struct and bytes search code
+  * Improve the one-line explanation of v2.4
+  * Bug fix to prevent packet list search not returning
+  * Fix a deadlock in the packet list search implementation
+  * The cli package can also move to pkg
+  * This should also be moved from the top-level
+  * Move the tshark fields extracting code to pkg too
+  * Move file tailing logic under pkg too
+  * Some more involved refactoring to move confwatcher to pkg
+  * Move more top-level packages under pkg
+  * Move capinfo under pkg
+  * Add a summary of stderr to the dialog displayed when tshark fails
+  * Update the What's Next section
+  * Fix a race condition that sporadically breaks extcap captures
+  * Fix capture method comparison
+  * Fix up stderr for all external dumpcap routines
+  * Provide more information when packet capture fails
+  * Make current the arch linux install instructions
+  * Go back to contributor defaults!
+  * Update after refreshing the all-contributors npm module
+  * Rearrange the contributors list
+  * Thanks @elig0n for the packet search idea!
+  * More documentation updates for upcoming v2.4
+  * Add profiles to the table of contents
+  * Add some documentation on the new profile support
+  * Add missing minibuffer commands to the docs
+  * Add note on tshark -G folders use
+  * Add profile suppport to the ChangeLog
+  * Update the info shown via "help cmdline"
+  * Make sure the minibuffer doesn't allow styles to bleed through
+  * Fix view problems when moving around the packet structure
+  * Rework profile minibuffer commands and add a connection to Wireshark
+  * Generalize the TsharkSettings function
+  * Abstract this simple confirmation function
+  * A function to provide a list of Wireshark profiles
+  * Add an extra token to each line of stderr from termshark processes
+  * Reduce use of legacy GOWID_TTY variable
+  * Try to ensure the profiles dir exists when termshark starts
+  * Initial implementation of a profiles feature for termshark
+  * Remove a use of the global viper struct
+  * Rearrange the config file handling code
+  * Make dark-mode the default
+  * Fix typo in menu operation leading to UI inconsistencies
+  * Update copyrights
+  * Update instructions for building with the Go toolchain
+  * Remove my local replace comments
+  * Update Travis build workflow for Go 1.18
+  * Update the github build workflow
+  * Fix a bug that could cause a hang at shutdown
+  * Document the new config settings for packet search.
+  * Silly error in the edit widget led to losing cursor control
+  * Try harder to make it possible to go install termshark
+  * Explain how termshark uses tshark when searching packets
+  * Add a short summary of packet search to the ChangeLog
+  * Add search to the main menu
+  * A screenshot of search in action
+  * Add information on the packet search feature to the user guide
+  * A search implementation for termshark
+  * Generalize a toml-writing function
+  * Various changes to termshark's hex/bytes packet view
+  * Add a new termshark filter state
+  * Eliminate unnecessary inactivity timer work
+  * Don't activate the termshark tcell screen right away
+  * A new tree iterator that disregards expanded and contracted nodes
+  * Make the hex view's cursor position more visible
+  * Eliminate a github dependabot warning
+  * Enable bracketed paste in various edit widgets e.g. display filter
+  * Generalize the simple file viewer widget
+  * Bug fix to restore preservation and display of recently-used filters
+  * Bug fix for conversations view table sorting
+  * Update to latest gowid and to tcell/v2
+  * Fix sporadic crash on startup - seen on termux
+  * Provide a better table sorter for the conversations view
+  * When capinfo is opened, put focus on the Close button
+  * Make these dialogs modal
+  * Bug fix - the client and server packet counts were not being updated
+  * Add a command and menu option to view the termshark config
+  * Update version string in binary for ongoing development
+  * Local build instructions need to change
+  * Fix the ChangeLog anchor to reflect a slightly earlier release date
+- Use OBS Source Service tar_scm for automated changelog generation
+- Drop BuildRequires: golang-packaging since GOPATH macros are not needed for Go modules
+
+-------------------------------------------------------------------
+Sun Sep  5 21:35:01 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.3.0
+  Added
+  * Termshark's columns can now be changed via the minibuffer
+    columns command. Columns can be added, removed or hidden from
+    view. If your Wireshark config is available, termshark can
+    import your Wireshark column configuration. Custom columns can
+    be chosen via a display filter expression.
+  * The packet structure view now provides a contextual menu with
+    options to
+    + apply the structure filter as a custom column
+    + prepare or apply the same filter as a display filter
+  * A new console-command, "wormhole", allows you to send
+    termshark's current pcap with magic wormhole. Pair with the
+    tmux plugin tmux-wormhole to open the pcap quickly in Wireshark
+  * Added a -w flag - if supplied for a live capture, termshark
+    will write the packets to this capture file.
+  * Added a config option, main.disk-cache-size-mb, that can be set
+    to have termshark limit the size of its pcap cache directory.
+    When the directory size exceeds its limit, termshark deletes
+    oldest pcap files first.
+  * Added a workflow that helps a user to upgrade from a low-color
+    TERM setting if termshark detects that there is a 256-color
+    version available in the terminfo database.
+  * Added 8-color light and dark themes for TERMs such as xterm
+    and screen.
+  Changed
+  * Fixed a bug that caused "And" and "Or" conversation filters
+    to be incorrect if the current display filter is empty.
+  * Fixed a bug that caused multi-token capture filters to fail.
+  * Fixed a bug that slowed down the user's interaction with the
+    display filter widget.
+
+-------------------------------------------------------------------
+Thu Apr 29 07:05:59 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 2.2.0

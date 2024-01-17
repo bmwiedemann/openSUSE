@@ -1,0 +1,230 @@
+-------------------------------------------------------------------
+Thu Jul 19 09:39:07 UTC 2018 - kkirill@opensuse.org
+
+- add Apache-2.0 to the license tag
+
+-------------------------------------------------------------------
+Mon Jun  4 20:59:24 UTC 2018 - kkirill@opensuse.org
+
+- update to 1.8.1:
+  + Added bindings: Android and cordova
+  + Added French mapping data
+  + Added --with-icuregex option to use ICU regex engine
+- remove sword-gcc6-ftemplate-depth.patch as fixed upstream 
+- add -DU_USING_ICU_NAMESPACE=1 to fix boo#1095666
+
+-------------------------------------------------------------------
+Mon Dec 18 09:43:47 UTC 2017 - mpluskal@suse.com
+
+- Use pkgconfig style dependencies and drop distro specific
+  conditions
+- Let rpm generate dependencies/requirements and do not inject them
+  manually
+- Cleanup with spec-cleaner
+- Do not strip created libraries
+
+-------------------------------------------------------------------
+Tue Jul 12 09:13:31 UTC 2016 - i@marguerite.su
+
+- update version 1.7.5a1
+- add sword-gcc6-ftemplate-depth.patch, fixed boo#985162
+  * fix: template instantiation depth exceeds maximum of 25
+  * according to https://gcc.gnu.org/bugzilla/show_bug.cgi?id=65042
+    we can only increase -ftemplate-depth to greater number than 25
+    there's no better way.
+
+-------------------------------------------------------------------
+Wed Feb 24 13:33:48 UTC 2016 - normand@linux.vnet.ibm.com
+
+- add sword_sysdata_changes.patch required for build xiphos
+
+-------------------------------------------------------------------
+Sun Dec 28 01:17:58 UTC 2014 - lars@linux-schulserver.de
+
+- update to 1.7.4:
+  + Fixed endless loop in osis2mod for some inputs.
+  + Added support for Psalm Book divisions using 
+    <div type=majorSection> from GHellings
+  + Corrected anomalous OSIS highlighting output w/GHellings' 
+    patches in src/modules/filters/osis{plain,xhtml}.cpp
+
+-------------------------------------------------------------------
+Wed May 14 11:17:00 UTC 2014 - riggwelter@opensuse.org
+
+- update to 1.7.3:
+  + Added support for xz (LZMA2) module compression via liblzma
+  + Added support for bzip2 (Burrows-Wheeler) module compression via
+    libbz2
+  + Added zVerse4, zText4, & zCom4 classes to support compressed
+    text/commentary modules with entry sizes > 64k
+  + Added C# bindings contributed by Daniel Hughes
+    <trampster@gmail.com>
+
+-------------------------------------------------------------------
+Tue Dec 31 14:39:46 UTC 2013 - lars@linux-schulserver.de
+
+- update to 1.7.1:
+  Many new versifications and locale, large scale refactoring and 
+  standardisation of many methods and the addition of filters for 
+  standard compliant XHTML output are probably the most important 
+  improvements. 
+  Improved output in various formats, handling of bibliographic data 
+  and addition of new transports to the install manager are other 
+  changes. 
+  We will from now on maintain both a maintenance branch for 1.7 and
+  a development branch for new features. 
+  Some entries from Changelog:
+  + Add a new Option filter, OSISReferenceLinks 
+  + Removed PLAINHTML and PLAINFootnotes filters 
+  + More examples, including: show a chapter, verse range
+  + Greatly improved navigation with intros and normalization 
+    turned on/off
+  + New .conf entries honored:
+        StrongsPadding=false, which turns off
+            logic to detect strongs numbers and add padding
+        CaseSensitiveKeys=true, which makes a lexicon case sensitive
+  + Added support to install from SFTP sources using username/password
+    authentication in places where cURL has SFTP support (no support
+    for public-key auth yet)
+  + Starting (very minimal) support for TEI in xml2gbs
+  + Changed default log level to WARN from INFO
+  + New Lucene index field for searching 'morph' 
+  + InstallMgr now supports HTTPS connections where cURL has support
+    for that transport
+  + Allow div in header of osis document
+  + Allow comments to be in osis document and to be stripped out
+  + Added ability for *HTML* wrappers to render n attribute from notes
+  + Removed SynodalP v11n from library
+  + Improved handling of CLucene and included support for CLucene 2
+  + Added RTFHTML parsing of rtf \\number codes to facilitate .conf files
+  + Added sane parameter parsing to imp2ld
+  + Added methods for utf8 / wchar conversion to help clucene 
+  + added Faroese, Pohnpeian Locale
+- disabled osis testsuite for the moment
+- removed sword-gcc47.patch and 
+- adapted sword-1.6.1-curl.patch (sword-1.7.1-curl.patch)
+- removed sword-1.6.1-fix_compiler_warnings.patch
+- added rpmlintrc to ignore notes for the examples 
+
+-------------------------------------------------------------------
+Fri Mar 16 17:43:53 UTC 2012 - dimstar@opensuse.org
+
+- Add sword-gcc47.patch: Fix build with gcc 4.7.
+
+-------------------------------------------------------------------
+Thu Sep  8 22:36:19 UTC 2011 - kirill.kirillov@gmail.com
+
+- added sword-1.6.2-fix_build_with_new_curl.patch
+
+-------------------------------------------------------------------
+Sat Dec 18 19:20:35 UTC 2010 - lars@linux-schulserver.de
+
+- update to 1.6.2:
+  + Fixed imp2vs not flushing cache before exiting when
+    creating compressed modules
+  + Fixed LZSS compression
+  + Fixed parsing book names containing the letter 'f'
+  + Added support for building Python and Perl with CMake
+  + Allow <hi> to be nested in any order in OSIS markup
+    Updates to allow hyphenated book names
+  + Set verse to 1 when changing chapter and book in VerseKey
+  + Fixed a bug where book designations ending in 'f' would
+    trigger the verse+'f'/'ff' feature.
+  + Fixed curl bug which seems to hold on to progress
+    object even after scope of data retrival
+
+-------------------------------------------------------------------
+Wed Aug 18 08:38:51 UTC 2010 - lars@linux-schulserver.de
+
+- include sword-1.6.1-curl.patch from Karl Kleinpaste to fix a 
+  problem with SWORD and latest curl. Thanks to Gary Holmlund for 
+  the hint.
+
+-------------------------------------------------------------------
+Sun Mar 28 21:45:51 UTC 2010 - lars@linux-schulserver.de
+
+- update to 1.6.1:
+  + Added locales.d/locales.conf - a special locale which can be 
+    queried for localize and English lang names
+  + Updated installmgr util to allow multiple commands and 
+    update dl progress
+  + Added checks for Hebrew and Arabic when stripping for searching
+  + Added initial impl for CurlHTTPTransport
+  + Added progress reporting to FtpLib transport
+  + Added ability to cancel during file transport
+- reworked sword-1.6.1-fix_compiler_warnings.patch
+- remove all other patches
+- buildrequire zlib-devel to enable zlib support
+
+-------------------------------------------------------------------
+Sun Dec 13 16:09:14 UTC 2009 - lars@linux-schulserver.de
+
+- fix build for Mandriva and Fedora
+
+-------------------------------------------------------------------
+Wed Jul 22 23:03:39 CEST 2009 - lars@linux-schulserver.de
+
+- update to 1.6.0:
+  + Added list support in OSIS HTML conversion 
+  + Added fallback checks for OS specific module locations:
+  ++$ALLUSERSPROFILE/Application Data/sword
+    additionally looked for at:
+  ++ $HOMEDRIVE$HOMEPATH/Application Data
+  ++ added ~/sword (note the absense of '.')
+  + added new bookname translations
+  + general cleanup and bugfixing
+- use/adapt debian patches:
+  + sword-1.6.0-closing_section_not_chapter.patch
+  + sword-1.6.0-fix_compiler_warnings.patch
+  + sword-1.6.0-fix_osis2mod_compression_default.patch
+  + sword-1.6.0-missing_includes.patch
+  + sword-1.6.0-regex_only_when_needed.patch
+- disable static lib
+- enable icu
+- enable tests (disable verseparsing test for now)
+- enable examples
+- strip binaries and lib
+
+-------------------------------------------------------------------
+Thu Sep 25 09:54:20 CEST 2008 - lars@linux-schulserver.de
+
+- moved to Education base repository
+
+-------------------------------------------------------------------
+Tue Jun 10 00:25:23 CEST 2008 - lars@linux-schulserver.de
+
+- recommend sword-bible, so language specific bibles can be 
+  installed automatically
+- recommend sword-commentary
+
+-------------------------------------------------------------------
+Sun Jun  8 18:21:17 CEST 2008 - lars@linux-schulserver.de
+
+- update to 1.5.11:
+  + Added ability for lexicon drivers to accept
+    ####![a-z] as strong number. 
+  + Added basic TEIRTF filters
+  + Added tei2mod utility
+  + Added Japanese locale from http://bible.50webs.org/en/
+  + Applied Ben Morgan's TEIHTMLHREF filter
+  + Added TEIHTMLHREF filter to BCB5 project
+  + Applied patch to better handle x-refs in notes
+  + Applied patch to better output OSIS in plaintext
+  + Updated rawstr and rawstr4 to work consistently with 
+    buffer sizes
+  + Updated Farsi and French locales
+  + Implemented a basic TreeKeyIdx::remove() method
+- removed upstreamed sword-gcc43.patch
+
+-------------------------------------------------------------------
+Mon May 19 17:34:23 CEST 2008 - lars@linux-schulserver.de
+
+- fix rpm groups
+- added patches from fedora to build with gcc4.3
+- own the directories in %_datadir/sword
+
+-------------------------------------------------------------------
+Sun Dec 23 16:55:05 CET 2007 - lars@linux-schulserver.de
+
+- initial package for openSUSE-Education
+

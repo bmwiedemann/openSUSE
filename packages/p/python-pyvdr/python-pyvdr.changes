@@ -1,0 +1,47 @@
+-------------------------------------------------------------------
+Mon Jun  7 19:58:07 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.3.1
+  * Bugfix: send_cmd now checks whether offline or not
+
+-------------------------------------------------------------------
+Thu Mar 18 07:24:38 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.3.0
+  * refactored svdrp socket handling.
+  * changed behaviour of get_channel_epg_info which now expects
+    the channel no as parameter instead of getting the channel
+    itself.
+
+-------------------------------------------------------------------
+Wed Jul 29 21:12:34 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.2.3
+  * Parsing of timers couldn't handle channel numbers > 10
+
+-------------------------------------------------------------------
+Fri Jul 10 17:47:20 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.2.2
+  Fixes:
+  * channel epg info
+  * channel up/down controls
+
+-------------------------------------------------------------------
+Thu Jul  9 19:27:33 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.2.1
+  * Fix Regex for parsing of instant timers
+
+-------------------------------------------------------------------
+Fri Mar 13 19:45:04 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.2.0
+  * fix for list recordings
+  * fix for list timers
+  * some incompatible refactoring
+
+-------------------------------------------------------------------
+Sun Mar  1 12:31:18 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 0.0.0+git.20200112

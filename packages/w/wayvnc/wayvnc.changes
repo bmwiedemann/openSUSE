@@ -1,0 +1,134 @@
+-------------------------------------------------------------------
+Mon Nov  6 08:01:17 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.7.2:
+  * Missing documentation for the websocket flag
+  * Null-dereferencing when input is disabled
+  * Out-of-bounds memory access when compositors submit out-of-bounds damage
+  * Too strict authentication related config parameter sanitation
+
+-------------------------------------------------------------------
+Thu Oct  5 07:48:48 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.7.1:
+  * Fix version requirement for Neat VNC
+
+-------------------------------------------------------------------
+Thu Oct  5 07:48:15 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.7.0:
+  * Each client can now have its own seat, i.e. it's own cursor
+    and separate keyboard focus
+  * A new option to create a websocket instead of a regular TCP socket
+  * Software pixel buffers with fewer bits per pixel than 32 are now supported
+  * A new RSA based authentication method with encryption has been added
+  * A config file can now reference files relative to the directory
+    in which it resides
+  * The unix-socket option is fixed
+  * Various kinks in wayvncctl have been ironed out
+
+-------------------------------------------------------------------
+Thu Jun 29 16:31:23 UTC 2023 - Joan Torres <joan.torres@suse.com>
+
+- Drop egl, gegl, gles and glx dependencies which aren't needed
+  for build.
+- libdrm_intel is not required neither available for s390x so stop
+  requiring it when is s390x arch.
+
+-------------------------------------------------------------------
+Fri Jan 27 12:20:55 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Prefixe include of wayland-client.h with directory name
+
+-------------------------------------------------------------------
+Fri Jan 27 10:20:20 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.2:
+  * This fixes control commands that don't take any parameters
+
+-------------------------------------------------------------------
+Tue Jan 24 05:11:55 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.1:
+  * Fix compatibility issues with FreeBSD and a few other systems
+
+-------------------------------------------------------------------
+Mon Jan 23 16:49:02 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.0:
+  New wayvncctl:
+  * The captured output can be changed on the fly
+  * Connected clients can be listed and managed
+  * Various events can be monitored
+  Highlights:
+  * Control interface, mentioned above.
+  * Screen capturing is paused when no client is connected
+  * Screen capturing is paused for outputs that are powered off
+  * Horizontal scrolling
+  * Each client now gets its own set of virtual inputs. This helps
+    with state tracking.
+  * Symbol to key code mapping now works better with xwayland
+
+-------------------------------------------------------------------
+Mon Nov  7 22:57:32 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.5.0:
+  * The most significant addition for this release is H.264 encoding
+    via the Open H.264 RFB protocol extension. Clients that have
+    implemented Open H.264 at this time are TigerVNC and wlvncc,
+    of which only the latter uses hardware accelerated decoding.
+    H.264 encoding is hardware accelerated and requires the --gpu
+    command line flag to be enabled. It isn't particularly useful
+    without hardware acceleration, so it's better to stick with
+    "Tight" encoding if you don't have GPU rendering.
+  * Input can now be disabled
+  * UNIX Sockets
+  * Screen-capturing via DMA-BUF is now a command line flag (--gpu)
+  * Improved logging and error messages
+
+-------------------------------------------------------------------
+Mon Jan 24 22:04:43 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.4.1:
+  * main: Pin wl_output version to 3
+  * screencopy: Set upper bounds on protocol version
+  * main: Set upper bounds on pointer manager version 
+
+-------------------------------------------------------------------
+Sun Feb 28 20:53:16 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.4.0:
+  * PAM Authentication, thanks to Nicholas Sica.
+  * Faking of modifiers to match keyboard symbols not found at the current shift
+  * QEMU extended key event, which uses key codes instead of key symbols. This
+    bypasses the need for reverse keyboard symbol mapping for clients that
+    support the extension, so the server doesn't need to know about keyboard
+    layouts.
+  * Xkb config parameters have been added. 
+
+-------------------------------------------------------------------
+Thu Aug  6 21:47:06 UTC 2020 - Alexander Graul <alexander.graul@suse.com>
+
+- Update to version 0.2.0
+- New features:
+  + The OpenGL ES 2.0 based renderer has now been replaced with a pixman based
+    renderer. The new renderer is both simpler and performs better on devices
+    with poor memory bandwidth such as the Raspberry Pi 3.
+  + Extra damage checking is now done using a fash-hash (murmur3) based method,
+    rather than comparing frames. This saves memory bandwidth.
+  + Experimental support for GPU side wlr-screencopy (wlroots 0.11.0 is
+    required).
+  + dtrace probes have been added for latency measurements.
+- Bugs fixed:
+  + Output transformations are now in line with wlroots's output transformation
+    behaviour.
+  + Shared memory files are now allocated with the correct size rather than zero.
+  + Keyboard modifiers no longer get stuck.
+  + Wayvnc exits when the compositor goes away rather than crashing.
+  + Wayvnc exits when the selected seat or output goes away rather than crashing.
+- Default frame rate limit is now 30fps 
+
+-------------------------------------------------------------------
+Wed Jun  3 04:43:22 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Initial package of wayvnc 0.1.2 for openSUSE

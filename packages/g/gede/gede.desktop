@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Gede
+GenericName=Debugger
+Comment=Frontend for GNU Debugger (gdb)
+Exec=gede
+Terminal=false
+Type=Application
+Categories=Development;Debugger;Qt

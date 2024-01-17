@@ -1,0 +1,5 @@
+<package name="purple-rocketchat" project="openSUSE:Factory">
+  <title>RocketChat protocol plugin for libpurple</title>
+  <description>RocketChat protocol plugin for libpurple.</description>
+  <devel project="network:pidgin" package="purple-rocketchat"/>
+</package>

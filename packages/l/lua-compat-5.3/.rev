@@ -1,0 +1,98 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8fc45d2d4cab6f0da5e862a018817b5f</srcmd5>
+    <version>0.7</version>
+    <time>1560971607</time>
+    <user>dimstar_suse</user>
+    <comment>Initial submission.</comment>
+    <requestid>710830</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>44eab280a67e364f47d8cd91f0bd7f0d</srcmd5>
+    <version>0.7</version>
+    <time>1573473681</time>
+    <user>dimstar_suse</user>
+    <comment>- Add BR lua-macros.</comment>
+    <requestid>747300</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2dd15d1c2b7146e148215c9aa2c6af8f</srcmd5>
+    <version>0.9</version>
+    <time>1594818059</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>820839</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>e417daeac78963a15cee89da4eb1cc74</srcmd5>
+    <version>0.9</version>
+    <time>1610633128</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>862976</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>46d65765e1646f44368c7cfd9020b9f0</srcmd5>
+    <version>0.9</version>
+    <time>1610736384</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>863155</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>693403bc01b0244cb4989876cf0d0733</srcmd5>
+    <version>0.9</version>
+    <time>1613677388</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>873547</requestid>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>ad4a979e1507047942509c8e921d77b6</srcmd5>
+    <version>0.9</version>
+    <time>1615489812</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>875429</requestid>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>2f9df2a1e77ff51a347ab48d42773a07</srcmd5>
+    <version>0.9</version>
+    <time>1623268366</time>
+    <user>dimstar_suse</user>
+    <comment>- Split bit32 into separate package
+- Install correct files
+</comment>
+    <requestid>898547</requestid>
+  </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>a25fbd463d3c2d6677e5cd16f60226b3</srcmd5>
+    <version>unknown</version>
+    <time>1626045912</time>
+    <user>dimstar_suse</user>
+    <comment>- Use %lua_provides for bit32
+- Create bit32 for Lua 5.1
+- Use correct bit32 version
+- Update to version 0.10
+  * Fix bit32 conversion issues for Lua 5.1 on 32 bit
+</comment>
+    <requestid>905681</requestid>
+  </revision>
+  <revision rev="10" vrev="8">
+    <srcmd5>7b71ee04706c9a5760987157bf06d2df</srcmd5>
+    <version>unknown</version>
+    <time>1669486831</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1038351</requestid>
+  </revision>
+  <revision rev="11" vrev="9">
+    <srcmd5>e3af8a66b81fb692f369b153da0de6be</srcmd5>
+    <version>unknown</version>
+    <time>1679069059</time>
+    <user>dimstar_suse</user>
+    <comment>- Change upstream homepage to the current one at Lunar Modules.
+</comment>
+    <requestid>1072464</requestid>
+  </revision>
+</revisionlist>

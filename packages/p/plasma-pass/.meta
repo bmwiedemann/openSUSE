@@ -1,0 +1,5 @@
+<package name="plasma-pass" project="openSUSE:Factory">
+  <title>plasma-pass</title>
+  <description>Plasma 5 frontend to the &quot;pass&quot; password manager</description>
+  <devel project="KDE:Extra" package="plasma-pass"/>
+</package>

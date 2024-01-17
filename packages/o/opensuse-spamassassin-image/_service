@@ -1,0 +1,35 @@
+<services>
+    <service name="obs_scm" mode="disabled">
+        <param name="url">https://github.com/thkukuk/containers-mailserver.git</param>
+        <param name="scm">git</param>
+        <param name="subdir">spamassassin</param>
+        <param name="extract">README.md</param>
+        <param name="extract">opensuse-spamassassin-image.kiwi</param>
+        <param name="extract">config.sh</param>
+        <param name="revision">master</param>
+	<param name="changesgenerate">enable</param>
+    </service>
+    <service name="obs_scm" mode="disabled">
+        <param name="url">https://github.com/thkukuk/containers-mailserver.git</param>
+        <param name="scm">git</param>
+        <param name="extract">LICENSE</param>
+    </service>
+    <service name="obs_scm" mode="disabled">
+        <param name="url">https://github.com/thkukuk/containers-mailserver.git</param>
+        <param name="scm">git</param>
+        <param name="version">_none_</param>
+        <param name="subdir">spamassassin</param>
+        <param name="filename">root</param>
+        <param name="include">entrypoint.sh</param>
+        <param name="include">update-sa-rules.sh</param>
+        <param name="include">start-spamd.sh</param>
+    </service>
+    <service mode="buildtime" name="kiwi_metainfo_helper"/>
+    <service mode="buildtime" name="kiwi_label_helper"/>
+    <service name="replace_using_package_version" mode="buildtime">
+        <param name="file">opensuse-spamassassin-image.kiwi</param>
+        <param name="regex">%PKG_VERSION%</param>
+        <param name="parse-version">patch</param>
+        <param name="package">spamassassin</param>
+    </service>
+</services>

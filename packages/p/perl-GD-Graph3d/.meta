@@ -1,0 +1,7 @@
+<package name="perl-GD-Graph3d" project="openSUSE:Factory">
+  <title>3d extension for perl-GDGraph</title>
+  <description>This is the GD::Graph3d extensions module. It provides 3D graphs for
+the GD::Graph module by Martien Verbruggen, which in turn generates
+graph using Lincoln Stein's GD.pm.</description>
+  <devel project="devel:languages:perl" package="perl-GD-Graph3d"/>
+</package>

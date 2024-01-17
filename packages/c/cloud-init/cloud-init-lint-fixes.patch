@@ -1,0 +1,412 @@
+--- cloudinit/cmd/main.py.orig
++++ cloudinit/cmd/main.py
+@@ -28,26 +28,27 @@ from cloudinit.config.modules import Mod
+ 
+ patcher.patch_logging()
+ 
+-from cloudinit.config.schema import validate_cloudconfig_schema
+-from cloudinit import log as logging
+-from cloudinit import netinfo
+-from cloudinit import signal_handler
+-from cloudinit import sources
+-from cloudinit import stages
+-from cloudinit import url_helper
+-from cloudinit import util
+-from cloudinit import version
+-from cloudinit import warnings
+-
+-from cloudinit import reporting
+-from cloudinit.reporting import events
++from cloudinit.config.schema import validate_cloudconfig_schema  # noqa: E402
++from cloudinit import log as logging  # noqa: E402
++from cloudinit import netinfo  # noqa: E402
++from cloudinit import signal_handler  # noqa: E402
++from cloudinit import sources  # noqa: E402
++from cloudinit import stages  # noqa: E402
++from cloudinit import url_helper  # noqa: E402
++from cloudinit import util  # noqa: E402
++from cloudinit import version  # noqa: E402
++from cloudinit import warnings  # noqa: E402
++
++from cloudinit import reporting  # noqa: E402
++from cloudinit.reporting import events  # noqa: E402
+ 
+-from cloudinit.settings import PER_INSTANCE, PER_ALWAYS, PER_ONCE, CLOUD_CONFIG
++from cloudinit.settings import (  # noqa: E402
++        PER_INSTANCE, PER_ALWAYS, PER_ONCE, CLOUD_CONFIG)  # noqa: E402
+ 
+-from cloudinit import atomic_helper
++from cloudinit import atomic_helper  # noqa: E402
+ 
+-from cloudinit.config import cc_set_hostname
+-from cloudinit.cmd.devel import read_cfg_paths
++from cloudinit.config import cc_set_hostname  # noqa: E402
++from cloudinit.cmd.devel import read_cfg_paths  # noqa: E402
+ 
+ 
+ # Welcome message template
+@@ -538,7 +539,7 @@ def di_report_warn(datasource, cfg):
+     # where Name is the thing that shows up in datasource_list.
+     modname = datasource.__module__.rpartition(".")[2]
+     if modname.startswith(sources.DS_PREFIX):
+-        modname = modname[len(sources.DS_PREFIX) :]
++        modname = modname[len(sources.DS_PREFIX):]
+     else:
+         LOG.warning(
+             "Datasource '%s' came from unexpected module '%s'.",
+--- cloudinit/config/cc_apt_configure.py.orig
++++ cloudinit/config/cc_apt_configure.py
+@@ -354,7 +354,7 @@ def mirrorurl_to_apt_fileprefix(mirror):
+         string = string[0:-1]
+     pos = string.find("://")
+     if pos >= 0:
+-        string = string[pos + 3 :]
++        string = string[pos + 3:]
+     string = string.replace("/", "_")
+     return string
+ 
+--- cloudinit/config/cc_ssh_authkey_fingerprints.py.orig
++++ cloudinit/config/cc_ssh_authkey_fingerprints.py
+@@ -44,7 +44,7 @@ LOG = logging.getLogger(__name__)
+ def _split_hash(bin_hash):
+     split_up = []
+     for i in range(0, len(bin_hash), 2):
+-        split_up.append(bin_hash[i : i + 2])
++        split_up.append(bin_hash[i: i + 2])
+     return split_up
+ 
+ 
+--- cloudinit/config/modules.py.orig
++++ cloudinit/config/modules.py
+@@ -39,7 +39,7 @@ class ModuleDetails(NamedTuple):
+ def form_module_name(name):
+     canon_name = name.replace("-", "_")
+     if canon_name.lower().endswith(".py"):
+-        canon_name = canon_name[0 : (len(canon_name) - 3)]
++        canon_name = canon_name[0: (len(canon_name) - 3)]
+     canon_name = canon_name.strip()
+     if not canon_name:
+         return None
+--- cloudinit/distros/parsers/ifconfig.py.orig
++++ cloudinit/distros/parsers/ifconfig.py
+@@ -140,7 +140,7 @@ class Ifconfig:
+                 dev.index = int(toks[1])
+ 
+             if toks[0] == "description:":
+-                dev.description = line[line.index(":") + 2 :]
++                dev.description = line[line.index(":") + 2:]
+ 
+             if (
+                 toks[0].startswith("options=")
+@@ -165,7 +165,7 @@ class Ifconfig:
+                 dev.groups += toks[1:]
+ 
+             if toks[0] == "media:":
+-                dev.media = line[line.index(": ") + 2 :]
++                dev.media = line[line.index(": ") + 2:]
+ 
+             if toks[0] == "nd6":
+                 nd6_opts = re.split(r"<|>", toks[0])
+--- cloudinit/net/dhcp.py.orig
++++ cloudinit/net/dhcp.py
+@@ -415,24 +415,24 @@ class IscDhclient(DhcpClient):
+                 if len(tokens[idx:]) < req_toks:
+                     _trunc_error(net_length, req_toks, len(tokens[idx:]))
+                     return static_routes
+-                net_address = ".".join(tokens[idx + 1 : idx + 5])
+-                gateway = ".".join(tokens[idx + 5 : idx + req_toks])
++                net_address = ".".join(tokens[idx + 1: idx + 5])
++                gateway = ".".join(tokens[idx + 5: idx + req_toks])
+                 current_idx = idx + req_toks
+             elif net_length in range(17, 25):
+                 req_toks = 8
+                 if len(tokens[idx:]) < req_toks:
+                     _trunc_error(net_length, req_toks, len(tokens[idx:]))
+                     return static_routes
+-                net_address = ".".join(tokens[idx + 1 : idx + 4] + ["0"])
+-                gateway = ".".join(tokens[idx + 4 : idx + req_toks])
++                net_address = ".".join(tokens[idx + 1: idx + 4] + ["0"])
++                gateway = ".".join(tokens[idx + 4: idx + req_toks])
+                 current_idx = idx + req_toks
+             elif net_length in range(9, 17):
+                 req_toks = 7
+                 if len(tokens[idx:]) < req_toks:
+                     _trunc_error(net_length, req_toks, len(tokens[idx:]))
+                     return static_routes
+-                net_address = ".".join(tokens[idx + 1 : idx + 3] + ["0", "0"])
+-                gateway = ".".join(tokens[idx + 3 : idx + req_toks])
++                net_address = ".".join(tokens[idx + 1: idx + 3] + ["0", "0"])
++                gateway = ".".join(tokens[idx + 3: idx + req_toks])
+                 current_idx = idx + req_toks
+             elif net_length in range(1, 9):
+                 req_toks = 6
+@@ -440,9 +440,9 @@ class IscDhclient(DhcpClient):
+                     _trunc_error(net_length, req_toks, len(tokens[idx:]))
+                     return static_routes
+                 net_address = ".".join(
+-                    tokens[idx + 1 : idx + 2] + ["0", "0", "0"]
++                    tokens[idx + 1: idx + 2] + ["0", "0", "0"]
+                 )
+-                gateway = ".".join(tokens[idx + 2 : idx + req_toks])
++                gateway = ".".join(tokens[idx + 2: idx + req_toks])
+                 current_idx = idx + req_toks
+             elif net_length == 0:
+                 req_toks = 5
+@@ -450,7 +450,7 @@ class IscDhclient(DhcpClient):
+                     _trunc_error(net_length, req_toks, len(tokens[idx:]))
+                     return static_routes
+                 net_address = "0.0.0.0"
+-                gateway = ".".join(tokens[idx + 1 : idx + req_toks])
++                gateway = ".".join(tokens[idx + 1: idx + req_toks])
+                 current_idx = idx + req_toks
+             else:
+                 LOG.error(
+--- cloudinit/net/network_state.py.orig
++++ cloudinit/net/network_state.py
+@@ -135,7 +135,7 @@ class CommandHandlerMeta(type):
+         command_handlers = {}
+         for attr_name, attr in dct.items():
+             if callable(attr) and attr_name.startswith("handle_"):
+-                handles_what = attr_name[len("handle_") :]
++                handles_what = attr_name[len("handle_"):]
+                 if handles_what:
+                     command_handlers[handles_what] = attr
+         dct["command_handlers"] = command_handlers
+--- cloudinit/reporting/handlers.py.orig
++++ cloudinit/reporting/handlers.py
+@@ -295,13 +295,13 @@ class HyperVKvpReportingHandler(Reportin
+                 )
+             )
+         k = (
+-            record_data[0 : self.HV_KVP_EXCHANGE_MAX_KEY_SIZE]
++            record_data[0: self.HV_KVP_EXCHANGE_MAX_KEY_SIZE]
+             .decode("utf-8")
+             .strip("\x00")
+         )
+         v = (
+             record_data[
+-                self.HV_KVP_EXCHANGE_MAX_KEY_SIZE : self.HV_KVP_RECORD_SIZE
++                self.HV_KVP_EXCHANGE_MAX_KEY_SIZE: self.HV_KVP_RECORD_SIZE
+             ]
+             .decode("utf-8")
+             .strip("\x00")
+@@ -320,7 +320,7 @@ class HyperVKvpReportingHandler(Reportin
+     def _break_down(self, key, meta_data, description):
+         del meta_data[self.MSG_KEY]
+         des_in_json = json.dumps(description)
+-        des_in_json = des_in_json[1 : (len(des_in_json) - 1)]
++        des_in_json = des_in_json[1: (len(des_in_json) - 1)]
+         i = 0
+         result_array = []
+         message_place_holder = '"' + self.MSG_KEY + '":""'
+@@ -353,7 +353,7 @@ class HyperVKvpReportingHandler(Reportin
+         Values will be truncated as needed.
+         """
+         if len(value) >= self.HV_KVP_AZURE_MAX_VALUE_SIZE:
+-            value = value[0 : self.HV_KVP_AZURE_MAX_VALUE_SIZE - 1]
++            value = value[0: self.HV_KVP_AZURE_MAX_VALUE_SIZE - 1]
+ 
+         data = [self._encode_kvp_item(key, value)]
+ 
+--- cloudinit/sources/__init__.py.orig
++++ cloudinit/sources/__init__.py
+@@ -747,7 +747,7 @@ class DataSource(CloudInitPickleMixin, m
+             if not short_name.startswith(nfrom):
+                 continue
+             for nto in tlist:
+-                cand = "/dev/%s%s" % (nto, short_name[len(nfrom) :])
++                cand = "/dev/%s%s" % (nto, short_name[len(nfrom):])
+                 if os.path.exists(cand):
+                     return cand
+         return None
+--- cloudinit/sources/helpers/azure.py.orig
++++ cloudinit/sources/helpers/azure.py
+@@ -566,7 +566,7 @@ class OpenSSLManager:
+         """
+         raw_fp = self._run_x509_action("-fingerprint", certificate)
+         eq = raw_fp.find("=")
+-        octets = raw_fp[eq + 1 : -1].split(":")
++        octets = raw_fp[eq + 1: -1].split(":")
+         return "".join(octets)
+ 
+     @azure_ds_telemetry_reporter
+--- cloudinit/sources/helpers/netlink.py.orig
++++ cloudinit/sources/helpers/netlink.py
+@@ -150,7 +150,7 @@ def unpack_rta_attr(data, offset):
+         return None  # Should mean our offset is >= remaining data
+ 
+     # Unpack just the attribute's data. Offset by 4 to skip length/type header
+-    attr_data = data[offset + RTA_DATA_START_OFFSET : offset + length]
++    attr_data = data[offset + RTA_DATA_START_OFFSET: offset + length]
+     return RTAAttr(length, rta_type, attr_data)
+ 
+ 
+--- cloudinit/ssh_util.py.orig
++++ cloudinit/ssh_util.py
+@@ -659,7 +659,7 @@ def get_opensshd_version():
+     prefix = "OpenSSH_"
+     for line in err.split("\n"):
+         if line.startswith(prefix):
+-            return line[len(prefix) : line.find(",")]
++            return line[len(prefix): line.find(",")]
+     return None
+ 
+ 
+--- cloudinit/url_helper.py.orig
++++ cloudinit/url_helper.py
+@@ -73,7 +73,7 @@ def read_file_or_url(url, **kwargs) -> U
+     if url.lower().startswith("file://"):
+         if kwargs.get("data"):
+             LOG.warning("Unable to post data to file resource %s", url)
+-        file_path = url[len("file://") :]
++        file_path = url[len("file://"):]
+         try:
+             with open(file_path, "rb") as fp:
+                 contents = fp.read()
+--- cloudinit/user_data.py.orig
++++ cloudinit/user_data.py
+@@ -211,13 +211,13 @@ class UserDataProcessor:
+         for line in content.splitlines():
+             lc_line = line.lower()
+             if lc_line.startswith("#include-once"):
+-                line = line[len("#include-once") :].lstrip()
++                line = line[len("#include-once"):].lstrip()
+                 # Every following include will now
+                 # not be refetched.... but will be
+                 # re-read from a local urlcache (if it worked)
+                 include_once_on = True
+             elif lc_line.startswith("#include"):
+-                line = line[len("#include") :].lstrip()
++                line = line[len("#include"):].lstrip()
+                 # Disable the include once if it was on
+                 # if it wasn't, then this has no effect.
+                 include_once_on = False
+--- cloudinit/util.py.orig
++++ cloudinit/util.py
+@@ -1177,7 +1177,7 @@ def read_cc_from_cmdline(cmdline=None):
+         if end < 0:
+             end = clen
+         tokens.append(
+-            parse.unquote(cmdline[begin + begin_l : end].lstrip()).replace(
++            parse.unquote(cmdline[begin + begin_l: end].lstrip()).replace(
+                 "\\n", "\n"
+             )
+         )
+@@ -1724,7 +1724,7 @@ def get_output_cfg(cfg, mode):
+         found = False
+         for s in swlist:
+             if val.startswith(s):
+-                val = "%s %s" % (s, val[len(s) :].strip())
++                val = "%s %s" % (s, val[len(s):].strip())
+                 found = True
+                 break
+         if not found:
+@@ -2362,7 +2362,7 @@ def shellify(cmdlist, add_header=True):
+ 
+ def strip_prefix_suffix(line, prefix=None, suffix=None):
+     if prefix and line.startswith(prefix):
+-        line = line[len(prefix) :]
++        line = line[len(prefix):]
+     if suffix and line.endswith(suffix):
+         line = line[: -len(suffix)]
+     return line
+@@ -2942,7 +2942,7 @@ def human2bytes(size):
+     for m in mpliers:
+         if size.endswith(m):
+             mplier = m
+-            num = size[0 : -len(m)]
++            num = size[0: -len(m)]
+ 
+     try:
+         num = float(num)
+@@ -3022,12 +3022,12 @@ def rootdev_from_cmdline(cmdline):
+     if found.startswith("/dev/"):
+         return found
+     if found.startswith("LABEL="):
+-        return "/dev/disk/by-label/" + found[len("LABEL=") :]
++        return "/dev/disk/by-label/" + found[len("LABEL="):]
+     if found.startswith("UUID="):
+-        return "/dev/disk/by-uuid/" + found[len("UUID=") :].lower()
++        return "/dev/disk/by-uuid/" + found[len("UUID="):].lower()
+     if found.startswith("PARTUUID="):
+         disks_path = (
+-            "/dev/disk/by-partuuid/" + found[len("PARTUUID=") :].lower()
++            "/dev/disk/by-partuuid/" + found[len("PARTUUID="):].lower()
+         )
+         if os.path.exists(disks_path):
+             return disks_path
+--- setup.py.orig
++++ setup.py
+@@ -187,7 +187,7 @@ elif os.path.isfile("/etc/system-release
+         else:
+             # String formatted CPE
+             inc = 1
+-        (cpe_vendor, cpe_product, cpe_version) = cpe_data[2 + inc : 5 + inc]
++        (cpe_vendor, cpe_product, cpe_version) = cpe_data[2 + inc: 5 + inc]
+         if cpe_vendor == "amazon":
+             USR_LIB_EXEC = "usr/libexec"
+ 
+--- tests/unittests/helpers.py.orig
++++ tests/unittests/helpers.py
+@@ -265,7 +265,7 @@ class FilesystemMockingTestCase(Resource
+         real_root = os.path.join(real_root, "roots", example_root)
+         for (dir_path, _dirnames, filenames) in os.walk(real_root):
+             real_path = dir_path
+-            make_path = rebase_path(real_path[len(real_root) :], target_root)
++            make_path = rebase_path(real_path[len(real_root):], target_root)
+             util.ensure_dir(make_path)
+             for f in filenames:
+                 real_path = util.abs_join(real_path, f)
+@@ -469,7 +469,7 @@ def dir2dict(startdir, prefix=None):
+     for root, _dirs, files in os.walk(startdir):
+         for fname in files:
+             fpath = os.path.join(root, fname)
+-            key = fpath[len(prefix) :]
++            key = fpath[len(prefix):]
+             flist[key] = util.load_file(fpath)
+     return flist
+ 
+--- tests/unittests/reporting/test_reporting_hyperv.py.orig
++++ tests/unittests/reporting/test_reporting_hyperv.py
+@@ -293,7 +293,7 @@ class TextKvpReporter(CiTestCase):
+                 reporter,
+                 2,
+                 [
+-                    log_content[-azure.MAX_LOG_TO_KVP_LENGTH :].encode(),
++                    log_content[-azure.MAX_LOG_TO_KVP_LENGTH:].encode(),
+                     extra_content.encode(),
+                 ],
+             )
+--- tests/unittests/sources/test_configdrive.py.orig
++++ tests/unittests/sources/test_configdrive.py
+@@ -412,7 +412,7 @@ class TestConfigDriveDataSource(CiTestCa
+         }
+         for name, dev_name in name_tests.items():
+             with ExitStack() as mocks:
+-                provided_name = dev_name[len("/dev/") :]
++                provided_name = dev_name[len("/dev/"):]
+                 provided_name = "s" + provided_name[1:]
+                 find_mock = mocks.enter_context(
+                     mock.patch.object(
+--- tests/unittests/sources/test_maas.py.orig
++++ tests/unittests/sources/test_maas.py
+@@ -131,7 +131,7 @@ class TestMAASDataSource(CiTestCase):
+             if not url.startswith(prefix):
+                 raise ValueError("unexpected call %s" % url)
+ 
+-            short = url[len(prefix) :]
++            short = url[len(prefix):]
+             if short not in data:
+                 raise url_helper.UrlError("not found", code=404, url=url)
+             return url_helper.StringResponse(data[short])
+--- tests/unittests/sources/test_smartos.py.orig
++++ tests/unittests/sources/test_smartos.py
+@@ -766,7 +766,7 @@ class ShortReader:
+             rsize = next_null - self.index + 1
+         i = self.index
+         self.index += rsize
+-        ret = self.data[i : i + rsize]
++        ret = self.data[i: i + rsize]
+         if len(ret) and ret[-1:] == self.endbyte:
+             ret = ret[:-1]
+         return ret

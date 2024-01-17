@@ -1,0 +1,12 @@
+Index: sword-1.7.1/src/mgr/curlftpt.cpp
+===================================================================
+--- sword-1.7.1.orig/src/mgr/curlftpt.cpp
++++ sword-1.7.1/src/mgr/curlftpt.cpp
+@@ -129,6 +129,7 @@ CURLFTPTransport::CURLFTPTransport(const
+ 
+ 
+ CURLFTPTransport::~CURLFTPTransport() {
++	curl_easy_setopt(session, CURLOPT_PROGRESSDATA, (void*)NULL);
+ 	curl_easy_cleanup(session);
+ }
+ 

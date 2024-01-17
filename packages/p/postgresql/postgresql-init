@@ -1,0 +1,198 @@
+#!/bin/sh
+# Copyright (c) 1995-2004 SUSE Linux AG, Nuernberg, Germany.
+# All rights reserved.
+#
+# System startup script for PostgreSQL
+#
+# LSB compatible service control script; see http://www.linuxbase.org/spec/
+#
+### BEGIN INIT INFO
+# Provides:       postgresql
+# Required-Start: $network $remote_fs
+# Required-Stop: $network $remote_fs
+# Default-Start:  3 5
+# Default-Stop:   
+# Description:    Start the PostgreSQL master daemon
+### END INIT INFO
+
+# Source SuSE config
+PG_SYSCONFIG=/etc/sysconfig/postgresql
+test -f $PG_SYSCONFIG && . $PG_SYSCONFIG
+
+# Shell functions sourced from /etc/rc.status:
+#      rc_check         check and set local and overall rc status
+#      rc_status        check and set local and overall rc status
+#      rc_status -v     ditto but be verbose in local rc status
+#      rc_status -v -r  ditto and clear the local rc status
+#      rc_failed        set local and overall rc status to failed
+#      rc_reset         clear local rc status (overall remains)
+#      rc_exit          exit appropriate to overall rc status
+. /etc/rc.status
+
+eval DATADIR=${POSTGRES_DATADIR:-~postgres/data}
+OPTIONS=${POSTGRES_OPTIONS}
+PIDFILE=$DATADIR/postmaster.pid
+
+# The echo return value for success (defined in /etc/rc.config).
+rc_reset
+
+# Return values acc. to LSB for all commands but status:
+# 0 - success
+# 1 - generic or unspecified error
+# 2 - invalid or excess argument(s)
+# 3 - unimplemented feature (e.g. "reload")
+# 4 - insufficient privilege
+# 5 - program is not installed
+# 6 - program is not configured
+# 7 - program is not running
+# 
+# Note that starting an already running service, stopping
+# or restarting a not-running service as well as the restart
+# with force-reload (in case signalling is not supported) are
+# considered a success.
+
+# 
+if test -r $DATADIR/PG_VERSION ; then
+    DATA_VERSION=$(cat $DATADIR/PG_VERSION)
+    POSTGRES=/usr/lib/postgresql${DATA_VERSION/./}/bin/postgres
+fi
+if test -x /usr/bin/postgres; then
+    ACTIVE=$(readlink -q -f /usr/bin/postgres)
+    test -z "$POSTGRES" && POSTGRES="$ACTIVE"
+fi
+if test -z "$POSTGRESQL_QUIET"; then
+    export POSTGRESQL_QUIET=1
+    if test -n "$DATA_VERSION"; then
+        if test -z "$ACTIVE" -o "$ACTIVE" != "$POSTGRES"; then
+            echo " Your database files were created by PostgreSQL version $DATA_VERSION."
+            if test -x "$POSTGRES"; then
+                echo " Using the executables in $(dirname $POSTGRES)."
+            else
+                echo " Could not find executables for this version."
+                echo " Please install the PostgreSQL server package for version $DATA_VERSION."
+            fi
+        fi
+    elif test -z "$ACTIVE"; then
+        echo " Cannot find an active PostgreSQL server binary. Please install one of the PostgreSQL"
+        echo " server packages or activate an already installed version using update-alternatives."
+    fi
+fi
+if test ! -x "$POSTGRES"; then
+    test "$1" = "stop" && exit 0 || exit 5
+fi
+BINDIR=$(dirname $POSTGRES)
+VERSION=$($POSTGRES --version|awk '{print $NF}')
+LOGFILE=$DATADIR/postmaster.log
+pg_ctl () {
+	CMD="$BINDIR/pg_ctl ${POSTGRES_TIMEOUT:+-t $POSTGRES_TIMEOUT} $@"
+	su - postgres -c "$CMD"
+}
+
+case "$1" in
+    start)
+	if [ ! -f $DATADIR/PG_VERSION ]; then
+	    echo -n "Initializing PostgreSQL $VERSION at location ${DATADIR}"
+	    LANG_SYSCONFIG=/etc/sysconfig/language
+	    test -f "$LANG_SYSCONFIG" && . $LANG_SYSCONFIG
+	    LANG=${POSTGRES_LANG:-$RC_LANG}
+	    INITDB=/usr/bin/initdb
+            V=$(printf "%02d%02d" $(echo $VERSION|awk -F. '{print $1, $2}'))
+            AUTH="ident"; test $V -lt 0804 && AUTH="ident sameuser"
+            su - postgres -c \
+                "$INITDB --locale=$LANG --auth=\"$AUTH\" $DATADIR &> initlog" ||
+	    rc_failed
+	    rc_status -v
+	    rc_status || {
+		echo "You can find a log of the initialisation in ~postgres/initlog ."
+		rc_exit
+	   } 
+	fi
+	echo -n "Starting PostgreSQL $VERSION "
+        if pg_ctl status -s -D $DATADIR >/dev/null
+        then
+            rc_failed 0
+	else
+            set -o pipefail
+            pg_ctl start -s -w -D $DATADIR -l $LOGFILE -o "\"$OPTIONS\""
+	fi
+	rc_status -v
+    ;;
+
+    stop)
+	echo -n "Shutting down PostgreSQL $VERSION "
+	if pg_ctl status -s -D $DATADIR >/dev/null
+        then
+            pg_ctl stop -s -D $DATADIR -m fast &> /dev/null
+	else
+            rc_failed 0
+	fi
+	rc_status -v
+    ;;
+
+    try-restart|condrestart)
+        ## Do a restart only if the service was active before.
+        ## Note: try-restart is now part of LSB (as of 1.9).
+        ## RH has a similar command named condrestart.
+        if test "$1" = "condrestart"; then
+                echo "${attn} Use try-restart ${done}(LSB)${attn} rather than condrestart ${warn}(RH)${norm}"
+        fi
+        $0 status
+        if test $? = 0; then
+            $0 restart
+        else
+            rc_reset        # Not running is not a failure.
+        fi
+        # Remember status and be quiet
+        rc_status
+    ;;
+
+    restart)
+        ## Stop the service and regardless of whether it was
+        ## running or not, start it again.
+        $0 stop
+        $0 start
+	rc_status
+    ;;
+
+    force-reload | reload)
+	echo -n "Reloading configuration for PostgreSQL $VERSION "
+	pg_ctl reload -s -D $DATADIR
+        rc_status -v
+    ;;
+
+    status)
+	echo -n "Checking for PostgreSQL $VERSION: "
+        ## Check status with checkproc(8), if process is running
+        ## checkproc will return with exit status 0.
+
+        # Status has a slightly different for the status command:
+        # 0 - service running
+        # 1 - service dead, but /var/run/  pid  file exists
+        # 2 - service dead, but /var/lock/ lock file exists
+        # 3 - service not running
+
+        # NOTE: checkproc returns LSB compliant status values.
+	if ! pg_ctl status -s -D $DATADIR >/dev/null
+	then
+	    if test -f $DATADIR/postmaster.pid; then
+		rc_failed 1
+	    else
+		rc_failed 3
+	    fi
+	fi
+        rc_status -v
+    ;;
+    
+    probe)
+        rc_failed 3
+        rc_status -v
+    ;;
+
+    *)
+        echo "Usage: $0 {start|stop|status|try-restart|restart|force-reload|reload|probe}"
+        exit 1
+    ;;
+esac
+
+# Inform the caller not only verbosely and set an exit status.
+rc_exit

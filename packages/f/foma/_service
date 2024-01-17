@@ -1,0 +1,14 @@
+<services>
+	<service mode="disabled" name="tar_scm">
+		<param name="url">https://github.com/mhulden/foma</param>
+		<param name="scm">git</param>
+		<param name="filename">foma</param>
+		<param name="revision">dfe1ccb1055af99be0232a26520d247b5fe093bc</param>
+		<param name="versionformat">0.10.0</param>
+	</service>
+	<service mode="disabled" name="recompress">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service mode="disabled" name="set_version"/>
+</services>
