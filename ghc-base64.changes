@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Nov  5 02:39:42 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update base64 to version 0.4.2.4 revision 4.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:05:53 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
