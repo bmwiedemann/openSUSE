@@ -98,7 +98,16 @@ rm pytest.ini
 # skip all travis known fails as they would most likely fail in obs too
 export TRAVIS="true"
 # testCombinedTools fails with trace in cheroot tests
-%pytest -k 'not testCombinedTools'
+donttest="testCombinedTools"
+
+%if "%{_arch}" == "s390x"
+# Increase timeout for tests in OBS for s390x
+sed -i "s/timeout=1/timeout=10/" cherrypy/test/helper.py
+sed -i "s/timeout=5/timeout=20/" cherrypy/test/helper.py
+sed -i "s/timeout=5/timeout=20/" cherrypy/test/test_states.py
+%endif
+
+%pytest -k "not ($donttest)"
 
 %pre
 # If libalternatives is used: Removing old update-alternatives entries.

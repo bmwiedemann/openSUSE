@@ -320,4 +320,12 @@
 - minor spec improvement</comment>
     <requestid>1138690</requestid>
   </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>e5a2a44f2c8cb70a958316f708232655</srcmd5>
+    <version>18.9.0</version>
+    <time>1705526091</time>
+    <user>anag+factory</user>
+    <comment>- Increase timeouts for tests for s390x architecture, bsc#1218602</comment>
+    <requestid>1139238</requestid>
+  </revision>
 </revisionlist>
