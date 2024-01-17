@@ -17,18 +17,22 @@
 
 
 Name:           python-cattrs
-Version:        22.2.0
+Version:        23.2.3
 Release:        0
 Summary:        Composable complex class support for attrs and dataclasses
 License:        MIT
 URL:            https://github.com/python-attrs/cattrs
-Source:         https://github.com/python-attrs/cattrs/archive/refs/tags/v%{version}.tar.gz#/cattrs-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/c/cattrs/cattrs-%{version}.tar.gz
+Requires:       python-exceptiongroup
+BuildRequires:  %{python_module hatch-vcs}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core >= 1.1}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module attrs >= 20}
 BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module cbor2}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module immutables}
 BuildRequires:  %{python_module msgpack >= 1.0.2}
@@ -37,10 +41,13 @@ BuildRequires:  %{python_module pymongo}
 BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module tomlkit}
+BuildRequires:  %{python_module typing_extensions}
 BuildRequires:  %{python_module ujson}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-attrs >= 20
+Requires:       python-cbor2
+Requires:       python-typing_extensions
 Suggests:       python-ujson
 Suggests:       python-orjson
 Suggests:       python-msgpack
@@ -55,7 +62,7 @@ BuildArch:      noarch
 Composable complex class support for attrs and dataclasses.
 
 %prep
-%setup -q -n cattrs-%{version}
+%autosetup -p1 -n cattrs-%{version}
 
 %build
 %pyproject_wheel
@@ -68,7 +75,7 @@ Composable complex class support for attrs and dataclasses.
 %pytest
 
 %files %{python_files}
-%doc README.rst
+%doc README.md HISTORY.md CONTRIBUTING.md
 %license LICENSE
 %{python_sitelib}/cattr
 %{python_sitelib}/cattrs
