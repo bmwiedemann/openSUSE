@@ -1,0 +1,10 @@
+<package name="python-lhafile" project="openSUSE:Factory">
+  <title>LHA archive support for Python</title>
+  <description>Lhafile is a python C extension to extract lha files (.lzh).
+The interface is similar to the zipfile module in the regular
+Python distribution.
+
+</description>
+  <devel project="devel:languages:python" package="python-lhafile"/>
+  <url>https://fengestad.no/python-lhafile/</url>
+</package>

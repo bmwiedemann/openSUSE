@@ -1,0 +1,104 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a2fa055b3b51a552c7f04fdd938f84b0</srcmd5>
+    <version>1.18.0</version>
+    <time>1515623561</time>
+    <user>dimstar_suse</user>
+    <comment>new package, dependency of scrapy</comment>
+    <requestid>559199</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>14f4291660c7826be81b0a79f5284e94</srcmd5>
+    <version>1.19.0</version>
+    <time>1542580351</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>649920</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>6b87e8f8661a11a824d5edd88e4eb967</srcmd5>
+    <version>1.19.0</version>
+    <time>1544726723</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>654075</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4a812438e9052c8b02f0672f22dad267</srcmd5>
+    <version>1.20.0</version>
+    <time>1553888609</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689787</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>115b68b4cd30145b622706acc5cbe1ac</srcmd5>
+    <version>1.21.0</version>
+    <time>1567581005</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727099</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d32cdf9b4ff95c8ff067047cb1c32a46</srcmd5>
+    <version>1.22.0</version>
+    <time>1595577644</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>822239</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>8c3e4f86f45a34ece22bdb63d4ddfaa0</srcmd5>
+    <version>1.22.0</version>
+    <time>1616271956</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 166-add-xfail-test_add_or_replace_parameter_fail.patch,
+  which makes tests working with CVE-2021-23336 (bsc#1181270).</comment>
+    <requestid>880134</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>6470857377aa0b30cb7abf1e8c57e550</srcmd5>
+    <version>1.22.0</version>
+    <time>1666089897</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1012116</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>069e198bbb4887277b53d7e184ef70ca</srcmd5>
+    <version>2.1.2</version>
+    <time>1705099570</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.1.2:
+  * Fix test failures on Python 3.11.4+ (#212, #213).
+  * Fix an incorrect type hint (#211).
+  * Add project URLs to setup.py (#215).
+  * Dropped Python 3.6 support, and made Python 3.11 support
+    official.
+  * :func:`~w3lib.url.safe_url_string` now generates safer
+    URLs.
+  * :func:`~w3lib.url.canonicalize_url` now strips spaces from
+    the input URL, to be more in line with the `URL living standard`_.
+  * :func:`~w3lib.html.get_base_url` now ignores HTML comments.
+  * Fixed :func:`~w3lib.url.safe_url_string` re-encoding
+    percent signs on the URL username and password even when
+    they were being used as part of an escape sequence. (#187, #196)
+  * Fixed :func:`~w3lib.http.basic_auth_header` using the wrong
+    flavor of base64 encoding, which could prevent authentication
+    in rare cases.
+  * Python 2 is no longer supported;
+  * The ``w3lib.form`` module is removed.
+  * The ``w3lib.html.remove_entities`` function is removed.
+  * The ``w3lib.url.urljoin_rfc`` function is removed.
+  * The following functions are deprecated, and will be removed
+    in future releases
+  * Type annotations are added (#172, #184).
+  * Added support for Python 3.9 and 3.10 (#168, #176).
+  * Fixed :func:`w3lib.html.get_meta_refresh` for ``&lt;meta&gt;`` tags
+    where ``http-equiv`` is written after ``content`` (#179).
+  * Fixed :func:`w3lib.url.safe_url_string` for IDNA domains with
+    ports (#174).
+  * :func:`w3lib.url.url_query_cleaner` no longer adds an</comment>
+    <requestid>1138240</requestid>
+  </revision>
+</revisionlist>

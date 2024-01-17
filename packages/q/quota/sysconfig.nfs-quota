@@ -1,0 +1,12 @@
+
+## Path:               Network/File systems/NFS server
+## Description:        use fixed port number for rquotad
+## Type:               integer
+## Default:            ""
+## ServiceRestart:     quotad
+#
+#  Only set this if you want to start quotad on a fixed
+#  port instead of the port assigned by rpc. Only for use
+#  to export nfs-filesystems through firewalls.
+#
+RQUOTAD_PORT=""

@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9e3ed4d56730c1a7a1fcaffefb3fa05a</srcmd5>
+    <version>1.2.1</version>
+    <time>1633466024</time>
+    <user>dimstar_suse</user>
+    <comment>required by python-setuptools_scm</comment>
+    <requestid>923002</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1f961491285f86e177c1630009933a93</srcmd5>
+    <version>1.2.1</version>
+    <time>1635167822</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925553</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>50d12376f155795684cd99a6af0b9205</srcmd5>
+    <version>2.0.0</version>
+    <time>1643926558</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>948285</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0594225d4917ab33996462e133b5097a</srcmd5>
+    <version>2.0.1</version>
+    <time>1645998162</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>957673</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>2b20ef32a1f079b30e73b483aae0d258</srcmd5>
+    <version>2.0.1</version>
+    <time>1682193502</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081740</requestid>
+  </revision>
+</revisionlist>

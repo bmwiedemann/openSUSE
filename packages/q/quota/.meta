@@ -1,0 +1,8 @@
+<package name="quota" project="openSUSE:Factory">
+  <title>Disk Quota System</title>
+  <description>The quota subsystem allows a system administrator to set soft and hard
+limits on used space and the number of inodes used for users and
+groups. The kernel must be compiled with disk quota support enabled
+(SUSE kernels have this support).</description>
+  <devel project="Base:System" package="quota"/>
+</package>

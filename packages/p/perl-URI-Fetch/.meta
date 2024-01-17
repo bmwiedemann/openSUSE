@@ -1,0 +1,5 @@
+<package name="perl-URI-Fetch" project="openSUSE:Factory">
+  <title>Smart URI Fetching/Caching Module for Perl</title>
+  <description>URI::Fetch is a smart client for fetching HTTP pages, notably syndication feeds (RSS, Atom, and others), in an intelligent, bandwidth- and time-saving way.</description>
+  <devel project="devel:languages:perl" package="perl-URI-Fetch"/>
+</package>

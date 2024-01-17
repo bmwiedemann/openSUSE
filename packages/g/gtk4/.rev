@@ -1,0 +1,817 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>202653a67a8addc755f2f43827714547</srcmd5>
+    <version>3.89.1</version>
+    <time>1485041059</time>
+    <user>dimstar_suse</user>
+    <comment>Resolve file conflict with GTK3</comment>
+    <requestid>445169</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4af02c53717ef21453482d546ff768c0</srcmd5>
+    <version>3.89.2</version>
+    <time>1485682592</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>451937</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3297ac52d4ed42100f13c73c79f08b9f</srcmd5>
+    <version>3.89.4</version>
+    <time>1487592870</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>457392</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1d1d13f9bce2b24ff31b713a6d643c91</srcmd5>
+    <version>3.89.5</version>
+    <time>1490220169</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 479231 from dimstar)</comment>
+    <requestid>479344</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6b62bb2e02e3b13e1ffe9ad758f04e75</srcmd5>
+    <version>3.90.0</version>
+    <time>1493455711</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 489117 from Zaitor)</comment>
+    <requestid>490192</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9ac87f617849296a2aa0e4a4a257c412</srcmd5>
+    <version>3.91.2</version>
+    <time>1505331555</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Factory</comment>
+    <requestid>520656</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>e45a99040f887be36f0127b9a370ccee</srcmd5>
+    <version>3.91.2</version>
+    <time>1505507514</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop the SLE12 / Leap42 build_wayland_backend conditional, build
+  with wayland unconditionally. (forwarded request 526163 from zhangxiaofei)</comment>
+    <requestid>526321</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f623939d4a770e4a0a81bb7ef33e4f75</srcmd5>
+    <version>3.92.1</version>
+    <time>1510660171</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.92.1:
+  + Drop autotools support. Meson 0.42.1 is now required
+  + Implement most of CSS3 font-variant
+  + Add an Emoji chooser to GtkEntry
+  + Add new input hints for Emoji input
+  + Remaining widgets have been ported to GtkSnapshot
+  + GtkLabel and GtkEntry have been ported to use GSK
+  + Add a way for GtkOverlay to blur behind children. This is has a
+    demo in gtk4-demo
+  + Add support for native file choosers on older OS X versions
+  + Add support for libcloudproviders in GtkPlacesSidebar
+  + Non-windowed widgets are now allowed to have a size of 0x0
+  + Allow tiled windows to be resized. Under wayland, this uses
+    version 2 of the gtk-shell protocol. Under X, it uses the
+    _GTK_EDGE_CONSTRAINTS property
+  + Input handling changes
+    - GdkEvent has new accessors for fields
+    - Traditional event signals (eg ::key-press-event) are now emitted from
+      an event controller
+    - Most widgets inside gtk have stopped using traditional event signals
+    - GDK_SEAT_CAPABILITY_ALL_POINTING now includes touch events
+  + Scrollbars allow middle-click to jump to a position again
+  + Bugs fixed: bgo#639931, bgo#644248, bgo#701296, bgo#705640,
+    bgo#728452, bgo#763517, bgo#766909, bgo#773299, bgo#775074,
+    bgo#775126, bgo#778382, bgo#778811, bgo#780750, bgo#780758,
+    bgo#781757, bgo#782981, bgo#783649, bgo#783669, bgo#784016,
+    bgo#784421, bgo#785210, bgo#785306, bgo#785736, bgo#786144,
+    bgo#786209, bgo#786400, bgo#786469, bgo#786485, bgo#786492,
+    bgo#786553, bgo#786613, bgo#786673, bgo#786794, bgo#786885,
+    bgo#786931, bgo#786932, bgo#786938, bgo#786940, bgo#786956,</comment>
+    <requestid>539478</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>ea44a07d7ec7e60e4edaf4134c3cbaaf</srcmd5>
+    <version>3.92.1</version>
+    <time>1514679238</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>560576</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>627b8fa5d476fbc1de2231a8ea4436c5</srcmd5>
+    <version>3.93.0</version>
+    <time>1517668957</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.93.0:
+  + GdkScreen has been removed. All screen-related APIs have
+    equivalents in GdkDisplay.
+  + GdkVisual has been removed.
+  + GdkDeviceManager has been replaced by GdkSeat.
+  + Clipboard handling has been moved from GTK to GDK, and has been
+    modernized to provide an extensible, asynchronous, stream-based
+    API.
+  + The GdkCursor API has been modernized.
+  + Settings and window-state changes have been converted from
+    events to signals on GdkDisplay and GdkWindow, respectively.
+  + GdkEvent has been converted to an opaque GObject.
+  + The GL renderer in GSK has been substantially completed, and is
+    now on par with the Vulkan renderer.
+  + The use of GdkPixbuf in APIs has been reduced, and the
+    GskTexture object has been moved to GDK as GdkTexture, to take
+    its place.
+  + The handling of icon sizes has been changed.
+  + Bugs fixed: bgo#668590, bgo#773299, bgo#775279, bgo#777072,
+    bgo#779009, bgo#779862, bgo#783995, bgo#784314, bgo#785176,
+    bgo#785210, bgo#786123, bgo#787089, bgo#787128, bgo#787142,
+    bgo#787665, bgo#788841, bgo#788898, bgo#789054, bgo#789134,
+    bgo#789149, bgo#789160, bgo#789163, bgo#789198, bgo#789213,
+    bgo#789327, bgo#789357, bgo#789678, bgo#789733, bgo#789777,
+    bgo#789870, bgo#790029, bgo#790031, bgo#790171, bgo#790201,
+    bgo#790287, bgo#790489, bgo#790920, bgo#790963, bgo#791062,
+    bgo#791176, bgo#791281, bgo#791363, bgo#791549, bgo#791650,
+    bgo#791926, bgo#791927.
+  + Updated translations.
+- Drop gtk4-return-nonvoid.patch: fixed upstream. (forwarded request 571064 from dimstar)</comment>
+    <requestid>572146</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>00397297cea061069e49770d67ac3cae</srcmd5>
+    <version>3.93.0</version>
+    <time>1521052582</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 583493 from dimstar)</comment>
+    <requestid>584660</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>d77f6c2cce569792ac960492536f26b5</srcmd5>
+    <version>3.93.0</version>
+    <time>1521716938</time>
+    <user>dimstar_suse</user>
+    <comment>t-u-u / boo#1086036 (forwarded request 589299 from dimstar)</comment>
+    <requestid>589990</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>1186f687ad74e41d58bc0832ebc4e836</srcmd5>
+    <version>3.93.0</version>
+    <time>1535123427</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix package name to be uniform immodules -&amp;gt; immodule bsc#1104264 (forwarded request 630761 from scarabeus_iv)</comment>
+    <requestid>630916</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b97b2f0e70cddd6500d94be2e30c103f</srcmd5>
+    <version>3.94.0</version>
+    <time>1538117620</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>638615</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>6552a73a9d11392a2cc7c1ae3e3475ae</srcmd5>
+    <version>3.94.0</version>
+    <time>1556916334</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 695565 from dimstar)</comment>
+    <requestid>695737</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>9e125b65c329a207a5d4ae8ac71b4e5d</srcmd5>
+    <version>3.96.0</version>
+    <time>1568804950</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>729844</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>98035adb3447700adc20671039a54443</srcmd5>
+    <version>3.98.1</version>
+    <time>1585484812</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 787305 from iznogood)</comment>
+    <requestid>789273</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>3978a93bbdccb976332203285d28b5f3</srcmd5>
+    <version>3.98.2</version>
+    <time>1585842207</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>790718</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>7df8b4e46aa733169737132516455962</srcmd5>
+    <version>3.98.3</version>
+    <time>1588186277</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>796644</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>da0f403bb7dbff7c2730aa6e11da0d75</srcmd5>
+    <version>3.98.4</version>
+    <time>1591286193</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 807959 from iznogood)</comment>
+    <requestid>811413</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>d4fcaecfee702b6a2aa159a5c8cbd998</srcmd5>
+    <version>3.99.4</version>
+    <time>1605800769</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 847476 from dimstar)</comment>
+    <requestid>848844</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>9f5c75a6bed4ae67f4acedaa4fd8e1d9</srcmd5>
+    <version>4.0.0+107</version>
+    <time>1609160145</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>858998</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>07b635a91e1955f198f0b7db65be1f07</srcmd5>
+    <version>4.0.1</version>
+    <time>1610633750</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.0.1</comment>
+    <requestid>862667</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>0908ec6c292cee1c023e11834006e083</srcmd5>
+    <version>4.0.2</version>
+    <time>1611262646</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.2:
+  + GtkAboutDialog:
+    - Set icon size for the logo.
+    - Fix initial focus to be the same as in GTK 3.
+  + GtkImage: Update icons on scale change.
+  + Wayland: Fix crashes with touch and tablet events.
+  + Windows:
+    - Fix surface and geometry computation.
+    - Remove layered window usage.
+  + MacOS: Support stylus devices.
+  + Themes:
+    - Adwaita: Remove edge highlights.
+    - Adwaita: Update image assets.
+    - Make Adwaita-dark available as standalone theme.
+    - Make HighContrastInverse the dark variant of HighContrast.
+  + Docs:
+    - Complete GtkAspectFrame docs.
+    - Clarify migration docs for widget signals.
+  + Inspector:
+    - Fix a critical with the recorder.
+    - Fix a crash with treeviews.
+    - Show overlay layout properties.
+    - Add a legend for the layout overlay.
+  + Build:
+    - Fix build with gcc 11.
+    - Support building without sassc.
+  + Updated translations.
+- Switch back to regular releases: with GTK 4 having a consumer
+  (GNOME 40) the focus is much more active on it now. (forwarded request 864285 from dimstar)</comment>
+    <requestid>865370</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>2b119ebbf638fe7d85e29563aad7457a</srcmd5>
+    <version>4.1.2</version>
+    <time>1616168625</time>
+    <user>RBrownSUSE</user>
+    <comment>UPdate to 4.1.2 (forwarded request 879855 from dimstar)</comment>
+    <requestid>880098</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>0e81273b738968e85b676fa60ea86d66</srcmd5>
+    <version>4.2.0</version>
+    <time>1619298410</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.2.0 (forwarded request 886249 from dimstar)</comment>
+    <requestid>887486</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>e0945706eb8a4d3a5d7f9e8504f94460</srcmd5>
+    <version>4.2.1</version>
+    <time>1621439338</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 4.2.1 (forwarded request 893145 from susnux)</comment>
+    <requestid>893653</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>ae62aa1813236961fae0b12f72f4e3be</srcmd5>
+    <version>4.2.1</version>
+    <time>1623705039</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 898513 from dimstar)</comment>
+    <requestid>899633</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>44450648de6c1280c9a6033f15fd7b43</srcmd5>
+    <version>4.2.1</version>
+    <time>1627898685</time>
+    <user>dimstar_suse</user>
+    <comment>- Add back Mesa-libGLESv2-devel BuildRequires for SLE and Leap.
+  The necessary header GLES2/gl2ext.h is still in the v2 package on
+  SLE/Leap. (forwarded request 908848 from yfjiang)</comment>
+    <requestid>908867</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>20b3f4b5a14fba50b3e3e299119a3ac6</srcmd5>
+    <version>4.4.0</version>
+    <time>1630697126</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.4.0:
+  + Input:
+    - Match IBus for display of Compose sequences
+    - Match IBus for handling of mismatches
+    - Handle Escape in Compose sequences
+    - Allow multiple dead keys
+    - Support 32bit keysyms
+  + GtkCheckButton: Activate when moving focus
+  + GtkLabel: Propertly ignore double underscores for mnemonics
+  + GtkPopoverMenu: Fix focus cycling
+  + GtkTextView:
+    - Improve word selection
+    - Fix block cursors on empty lines
+  + GdkToplevel: Support the gnome-shell titlebar gesture protocol
+  + GdkDropTarget: Allow creating drop targets in ui files
+  + gsk:
+    - Handle partial color fonts correctly
+    - Use harfbuzz for color font information
+    - Avoid pango for glyph cache rendering
+    - Shrink shadow extents
+  + Settings: Change the default for gtk-split-cursor to FALSE
+  + Demos:
+    - Small improvements to widget-factory
+    - gtk-demo: Improve the hypertext demo
+    - gtk-dem: Improve the clipboard demo
+  + X11: Set WM_CLASS on toplevels
+  + Wayland: Support wl_seat v7
+  + Updated translations. (forwarded request 915065 from dimstar)</comment>
+    <requestid>915443</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>ca73c469d8dcc8236f18a8c804667bcc</srcmd5>
+    <version>4.4.0</version>
+    <time>1632522902</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105). (forwarded request 920425 from sbrabec)</comment>
+    <requestid>920586</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>97e59b53cfe2ed96973f29e1a072b077</srcmd5>
+    <version>4.4.0</version>
+    <time>1632939490</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>921877</requestid>
+  </revision>
+  <revision rev="33" vrev="4">
+    <srcmd5>4ca9c4a77db67027289340eae7671907</srcmd5>
+    <version>4.4.0</version>
+    <time>1633723492</time>
+    <user>RBrownSUSE</user>
+    <comment>- Fix a syntax error in the gtk4_immodule_postun RPM macro (forwarded request 922847 from ftake)</comment>
+    <requestid>923220</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>c3d6f296ab2adcd4cadbfa359c6adad2</srcmd5>
+    <version>4.4.1</version>
+    <time>1636931205</time>
+    <user>dimstar_suse</user>
+    <comment>New release++</comment>
+    <requestid>931264</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>cd96f2ea684379d1bf8b71cff0c1f79c</srcmd5>
+    <version>4.6.0</version>
+    <time>1641203345</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>943301</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>4d3530ae1bef23d1ae6a57aeab5857fe</srcmd5>
+    <version>4.6.0</version>
+    <time>1641764998</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gtk4-make-our-stack-noexec.patch: Make our stack noexec. (forwarded request 944686 from teohhanhui)</comment>
+    <requestid>944754</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>154c357dc181df28acf125a9eebb61b3</srcmd5>
+    <version>4.6.1</version>
+    <time>1644778239</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release</comment>
+    <requestid>953843</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>f9f1e1857dd7d5cf73123e2529e225d5</srcmd5>
+    <version>4.6.1</version>
+    <time>1645461941</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>956055</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>8b0fa3c700a5ff534baf940db53e055a</srcmd5>
+    <version>4.6.2</version>
+    <time>1648062995</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 42 - ready for impact</comment>
+    <requestid>963613</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>689aa2229a493b6b4f9380e94a6b7b93</srcmd5>
+    <version>4.6.2</version>
+    <time>1649014243</time>
+    <user>dimstar_suse</user>
+    <comment>- gtkimmulticontext: Handle switches between displays
+  (glgo#GNOME/gtk#4805). Added:
+  gtkimmulticontext-Handle-switches-between-displays.patch
+</comment>
+    <requestid>966461</requestid>
+  </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>345884fd26a209bf3f668eac73d0a83e</srcmd5>
+    <version>4.6.2</version>
+    <time>1649181310</time>
+    <user>dimstar_suse</user>
+    <comment>Move and split (forwarded request 966460 from iznogood)</comment>
+    <requestid>966825</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>251bf72d1a5cf6fe201b3193fc612a2c</srcmd5>
+    <version>4.6.4</version>
+    <time>1652801027</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 977084 from iznogood)</comment>
+    <requestid>977506</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>f46bb5aec377cb407a15d29697d4e731</srcmd5>
+    <version>4.6.5</version>
+    <time>1654097654</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.6.5 (forwarded request 980017 from dimstar)</comment>
+    <requestid>980067</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>cd599d026fd27f3a8672bad11822b9f3</srcmd5>
+    <version>4.7.0</version>
+    <time>1654776573</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 980348 from dimstar)</comment>
+    <requestid>981300</requestid>
+  </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>f92932735f9ad576a83672def8811d13</srcmd5>
+    <version>4.7.0</version>
+    <time>1655582747</time>
+    <user>dimstar_suse</user>
+    <comment>- Add dependency &quot;python3x-gobject-Gdk if python3x-gobject&quot; to the
+  typelib package (boo#1200614). (forwarded request 983262 from dimstar)</comment>
+    <requestid>983441</requestid>
+  </revision>
+  <revision rev="46" vrev="3">
+    <srcmd5>171bb5807a3eed6063b64deabfb976b6</srcmd5>
+    <version>4.7.0</version>
+    <time>1657016836</time>
+    <user>dimstar_suse</user>
+    <comment>- Add compatible dependency &quot;python3-gobject-Gdk if python3-gobject&quot;
+  to the typelib package for SLE and Leap (boo#1200614). (forwarded request 986562 from yfjiang)</comment>
+    <requestid>986586</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>74b091f8dabfd3fa3a8f2c386a29b678</srcmd5>
+    <version>4.7.2</version>
+    <time>1660924409</time>
+    <user>dimstar_suse</user>
+    <comment>I changed my mind a bit, with the patch, we can move this into TW, as it seems to be perfectly stable still, even if its the unstable branch.
+
+- Update to version 4.7.2:
+  + GtkTextView: Fix child positioning with gutters.
+  + GtkText: Update placeholder visibility when necessary.
+  + GtkPicture: Add a content-fit property.
+  + GtkPopover: Fix a size allocation problem with the arrow.
+  + GtkTreeView: Fix a problem with DND.
+  + GtkTreePopover: Support scrolling.
+  + GtkGridView: Fix issues with rubberband selection.
+  + GtkLabel: Add a tabs property.
+  + GtkSnapshot: Make GtkSnapshot work from bindings.
+  + GtkScrolledWindow: Scroll at a reasonable speed.
+  + GtkPaned: Avoid an infinite loop.
+  + GtkWindow: Improve generation and handling of crossing events.
+  + CSS: Fix handling of certain transform values.
+  + Media support:
+    - Add audio support to the ffmpeg backend.
+    - Avoid oom with pathological jpeg images.
+  + GDK:
+    - Fix handling of touchpad hold events.
+    - Add support for hi-resolution scroll events.
+  + X11: Fix preferred action for DND.
+  + List models:
+    - Fix items-changed emission.
+    - Add more list model tests.
+  + Demos:
+    - Add a winning sound to game demos.
+    - Make app icons work uninstalled.
+  + Updated translations.
+- Add 0001-Revert-Meson-Simplify-pkgconfig-file-generator.patch:
+  Revert &quot;Meson: Simplify pkgconfig file generator&quot;. Temporarily
+  revert this until we figure out how to best restore private
+  requires that are needed for rpm automatic dep extraction.
+  https://gitlab.gnome.org/GNOME/gtk/-/merge_requests/4756
+  This reverts commit 802bf4199911c811938b0454a876089bafa97dba.
+- Update to version 4.7.1:
+  + GtkInscription: A new label-like widget for use in list views.
+  + GtkColorChooser: Style improvements.
+  + GtkFontChooser: Improve support for OpenType features a bit.
+  + GtkLabel: Allow selectable labels to be activated via mnemonic.
+  + GtkTextView: Implement GetCharacterExtents for accessibility.
+  + GtkStack: Fix a poblem with stack page accessibility.
+  + GtkListView:
+    - Cull listitems that are out of view.
+    - Make all our list models implement ::n-items and
+      ::item-type properties.
+  + Translations:
+    - Stop translating property nicks and blurbs.
+    - Fix extracting translations from ui files.
+  + Debugging:
+    - Support GTK_DEBUG=invert-text-dir.
+    - Allow inspecting inspectors.
+    - Replace GTK_USE_PORTAL with GDK_DEBUG=portals.
+    - Improve responsiveness of the inspector.
+  + CSS: Allow fractional letterspacing.
+  + Theme: Improve legibility of selectable labels.
+  + Demos:
+    - Improve the font features demo.
+    - Add demos for GtkInscription.
+  + Wayland:
+    - Freeze popups when hidden.
+    - Only send smooth scroll events for tablet tools.
+    - Make scaled cursor image have the right size.
+    - Fix problems with the activation protocol.
+    - Don't force the HighContrast icon theme.
+    - Support xdg_toplevel.bounds.
+  + X11: Always update the shadoe size.
+  + Windows:
+    - Improve touchpad support by using DirectManipulation.
+    - Add more directories to the builtin hicolor icon theme.
+  + Updated translations.
+- Add pkgconfig(harfbuzz) BuildRequires: new dependency. (forwarded request 997588 from iznogood)</comment>
+    <requestid>997734</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>876258a927df54be5ac8b1f01f3bbd6b</srcmd5>
+    <version>4.8.0</version>
+    <time>1662639695</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1001679</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>30db99236fe1bf06c9d9ae948d2998b9</srcmd5>
+    <version>4.8.1</version>
+    <time>1663764046</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1004814</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>0a8161ab0fc3845eea24cc620360ba3b</srcmd5>
+    <version>4.8.2</version>
+    <time>1666871549</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 1030948 from iznogood)</comment>
+    <requestid>1031308</requestid>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>03b3f59cde983a3a80c65ce9661166d5</srcmd5>
+    <version>4.8.2</version>
+    <time>1668514695</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1035591</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>ac0f3605379cf2b87f01a8efd3e50b3c</srcmd5>
+    <version>4.8.3</version>
+    <time>1671889870</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 1044333 from iznogood)</comment>
+    <requestid>1044371</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>a69d7f71ed7b9c3a6fbde67fa9f5a675</srcmd5>
+    <version>4.10.0</version>
+    <time>1678204151</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1069715</requestid>
+  </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>a9ef42df64362c23f3fd4b8e3b65ab4a</srcmd5>
+    <version>4.10.0</version>
+    <time>1678555388</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1070779</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>c81d60dd4bb7dfad09687a48718acbc6</srcmd5>
+    <version>4.10.1</version>
+    <time>1679068846</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1071898</requestid>
+  </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>99b2c56b908f70863730ab656e88719a</srcmd5>
+    <version>4.10.1</version>
+    <time>1681058346</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1077984</requestid>
+  </revision>
+  <revision rev="57" vrev="3">
+    <srcmd5>1bbd1b720b5a7332327142a486fb2372</srcmd5>
+    <version>4.10.1</version>
+    <time>1681996420</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1080265</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>fc43bb3a8a34ddfd8f653d10f534638f</srcmd5>
+    <version>4.10.3</version>
+    <time>1682282620</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.10.3:
+  + Fix a popover positioning regression in 4.10.2.
+  + Fix issues with slow loading files in the file chooser.
+- Update to version 4.10.2:
+  + Holding control to select multiple files broken in filechooser
+  + Inspector crash
+  + Listbase doesn't account for bottom padding in
+    size_allocate_child
+  + Leaking AT contexts
+  + OpenGL / Windows: Crash when closing gtk4-widget-factory
+  + GTK apps crash on startup when setting cursor-size to 0 on
+    Wayland
+  + Segmentation fault: gdk_wayland_toplevel_set_startup_id() needs
+    to null-check display-&gt;xdg_activation before using it
+  + Possible use-after-free under
+    gtk_scrolled_window_update_use_indicators()
+  + Wrong error message in `gtk_init`
+  + Segfault when scrolling after changing ListView model
+  + Bluetooth panel from the Settings app: clicking in the
+    &quot;Downloads&quot; link no longer opens Nautilus
+  + Broadway docs or code is broken
+  + Disabled GtkPicture's are not properly themed
+  + Setting CSS padding to a GtkTextView gives the context menu an
+    offset
+  + A11y: the Showing state is used only for windows
+  + Gtk4 expander: CSS nodes mismatch code vs. documentation
+  + Invoking gtk inspector on a folder results in a crash
+  + Double tap requires very precise touch input
+  + Name autocompletion dropdown in the GTK4 FileChooser's Save
+    dialog gets stuck, creates artifacts, jumps around
+  + Links are not opened when xdg-desktop-portal OpenURI is not
+    available
+  + GtkSnapshot generates no nodes appending whitespace-only
+    layouts
+  + Updated translations.
+</comment>
+    <requestid>1082209</requestid>
+  </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>2303cf39a7bf99e24ec6e0cd0d4a3c52</srcmd5>
+    <version>4.10.3</version>
+    <time>1682691766</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1083289</requestid>
+  </revision>
+  <revision rev="60" vrev="3">
+    <srcmd5>a169fc754d9e368e6d2ae6067b60cfe8</srcmd5>
+    <version>4.10.3</version>
+    <time>1683212968</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1084214</requestid>
+  </revision>
+  <revision rev="61" vrev="4">
+    <srcmd5>8779794edd9d57f59e9475c0ecca645c</srcmd5>
+    <version>4.10.3</version>
+    <time>1683559427</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1085296</requestid>
+  </revision>
+  <revision rev="62" vrev="5">
+    <srcmd5>07e7840d2c0ae374f112e5a8b6178a28</srcmd5>
+    <version>4.10.3</version>
+    <time>1686074134</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1090934</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>2dc2b10bb0ff4740ec8a227930210b25</srcmd5>
+    <version>4.10.4</version>
+    <time>1686253307</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1090971 from iznogood
+
+New upstream release</comment>
+    <requestid>1091207</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>0b569eb2f2587053fce9e2a2e9ad3723</srcmd5>
+    <version>4.10.5</version>
+    <time>1691594656</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.10.5:
+  + Fix ordering problems with filter model signals
+  + Avoid lingering resize cursors
+  + Fix alignment issues on sparc
+  + Fix a problem with CSS corner values
+  + Updated translations. (forwarded request 1102464 from iznogood)</comment>
+    <requestid>1102936</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>eff53c93b489d7bce9a683fc9c94fcb1</srcmd5>
+    <version>4.12.0</version>
+    <time>1692110372</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1103891</requestid>
+  </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>0a16df2c344fda8ffdcc0d66bbb1a8a1</srcmd5>
+    <version>4.12.0</version>
+    <time>1692687363</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1105072</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>786e087d84bd76b81d841fadd8eb62a2</srcmd5>
+    <version>4.12.1</version>
+    <time>1695208969</time>
+    <user>dimstar_suse</user>
+    <comment>Adding versioned library deps is never done in openSUSe/Factory - zypper dup is the only supported way. In a perfect world, upstreams would use versioned symbols, but this won't happen</comment>
+    <requestid>1112453</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>a65562d9a329db701efda45bb928958e</srcmd5>
+    <version>4.12.2</version>
+    <time>1695412037</time>
+    <user>anag+factory</user>
+    <comment>Resub - typofix
+
+- Update to version 4.12.2:
+  + GtkTooltip: Don't cross native boundaries when looking for
+    tooltips.
+  + GtkCenterLayout, GtkEntry, GtkSearchEntry: Fix some issues with
+    baseline handling.
+  + GtkSwitch: Respect text direction.
+  + Theme: Use relative font sizes.
+  + GSK:
+    - Make repeated gradients match between GL and cairo.
+    - Make rounded rect shrinking match between Vulkan, GL and
+      cairo.
+    - Fix parsing of text nodes with color glyphs.
+    - Restrict an optimization to the cases where it is correct.
+    - Fix rendering of shadows with opacity.
+  + Updated translations.
+- Drop merged upstream patch: e001b421.patch.
+- Add e001b421.patch: tooltip: don't cross native boundaries.
+</comment>
+    <requestid>1112722</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>d26e8c84927dae3026aba04d3f6253ff</srcmd5>
+    <version>4.12.3</version>
+    <time>1696356898</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1114702</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>038b00f89d3b3f4e9608693c9d52f4a2</srcmd5>
+    <version>4.12.4</version>
+    <time>1701533538</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.12.4 (forwarded request 1130207 from dimstar)</comment>
+    <requestid>1130318</requestid>
+  </revision>
+</revisionlist>

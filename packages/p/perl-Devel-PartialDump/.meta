@@ -1,0 +1,9 @@
+<package name="perl-Devel-PartialDump" project="openSUSE:Factory">
+  <title>Data Dumper optimized for Logging of arbitrary Parameters</title>
+  <description>This module is a data dumper optimized for logging of arbitrary
+parameters.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-Devel-PartialDump"/>
+  <url>http://search.cpan.org/dist/Devel-PartialDump</url>
+</package>

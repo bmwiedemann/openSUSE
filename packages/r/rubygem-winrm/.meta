@@ -1,0 +1,8 @@
+<package name="rubygem-winrm" project="openSUSE:Factory">
+  <title>Ruby library for Windows Remote Management</title>
+  <description>Ruby library for Windows Remote Management.
+
+</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-winrm"/>
+  <url>https://github.com/WinRb/WinRM</url>
+</package>

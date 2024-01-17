@@ -1,0 +1,63 @@
+-------------------------------------------------------------------
+Thu Apr 13 12:06:20 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update hslua-module-path to version 1.1.0.
+  ## hslua-module-path-1.1.0
+
+  Released 2023-03-13.
+
+  -   Update to hslua-2.3; this includes the addition of type
+      initializers to the module and type specifiers to the fields.
+
+  -   Fixed tests for `make_relative` on Windows.
+
+-------------------------------------------------------------------
+Thu Mar 30 17:07:03 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Fri Aug 19 11:09:37 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update hslua-module-path to version 1.0.3.
+  ## hslua-module-path-1.0.3
+
+  Released 2022-08-19.
+
+  -   Fixed `make_relative` for longer base paths: Ensure that the
+      function produces correct results in cases where the root
+      (base) path has more components than the path that should be
+      made relative.
+
+-------------------------------------------------------------------
+Sat Feb 19 14:38:21 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update hslua-module-path to version 1.0.2.
+  ## hslua-module-path-1.0.2
+
+  Released 2022-02-19.
+
+  -   Adjusted package bounds, for hslua-core, hslua-marshalling,
+      and hslua-packaging.
+
+-------------------------------------------------------------------
+Sun Jan 30 07:59:36 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update hslua-module-path to version 1.0.1 revision 1.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/hslua-module-path-1.0.1/src/CHANGELOG.md
+
+-------------------------------------------------------------------
+Mon Nov  1 08:26:33 UTC 2021 - psimons@suse.com
+
+- Update hslua-module-path to version 1.0.0.
+  Upstream has not updated the file "CHANGELOG.md" since the last
+  release.
+
+-------------------------------------------------------------------
+Tue Mar  9 11:01:00 UTC 2021 - psimons@suse.com
+
+- Add hslua-module-path at version 0.1.0.1.
+

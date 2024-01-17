@@ -1,0 +1,5 @@
+<package name="ffnvcodec" project="openSUSE:Factory">
+  <title>FFmpeg version of NVIDIA codec API headers</title>
+  <description>This package contains the headers required for FFmpeg to interface with NVIDIA codec APIs.</description>
+  <devel project="multimedia:libs" package="ffnvcodec"/>
+</package>

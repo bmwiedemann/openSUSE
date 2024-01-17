@@ -1,0 +1,164 @@
+-------------------------------------------------------------------
+Sat Dec  2 04:06:33 UTC 2023 - Gagah Pangeran <gagahpangeran29@gmail.com>
+
+- update to 1.22.21:
+  https://github.com/yarnpkg/yarn/releases/tag/v1.22.20
+  https://github.com/yarnpkg/yarn/releases/tag/v1.22.21
+
+-------------------------------------------------------------------
+Thu May 12 20:58:07 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 1.22.19:
+  https://github.com/yarnpkg/yarn/releases/tag/v1.22.19
+
+-------------------------------------------------------------------
+Fri Mar 25 16:30:02 UTC 2022 - Manu Maier <mmanu84@outlook.de>
+
+- update to 1.22.18:
+  https://github.com/yarnpkg/yarn/releases/tag/v1.22.18
+
+-------------------------------------------------------------------
+Wed Oct 20 10:51:37 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 1.22.17:
+  https://github.com/yarnpkg/yarn/releases/tag/v1.22.16
+  https://github.com/yarnpkg/yarn/releases/tag/v1.22.17
+
+-------------------------------------------------------------------
+Thu Sep 30 21:18:07 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 1.22.15:
+  https://github.com/yarnpkg/yarn/releases/tag/v1.22.15
+
+-------------------------------------------------------------------
+Wed Sep 29 21:40:30 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 1.22.14:
+  https://github.com/yarnpkg/yarn/releases/tag/v1.22.14
+
+-------------------------------------------------------------------
+Wed Sep 29 15:27:16 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 1.22.13:
+  https://github.com/yarnpkg/yarn/releases/tag/v1.22.13
+
+-------------------------------------------------------------------
+Fri Jul 30 11:19:58 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 1.22.11:
+  https://github.com/yarnpkg/yarn/releases/tag/v1.22.11
+
+-------------------------------------------------------------------
+Fri Apr 23 15:43:59 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+- Add missing Requires: sed
+- Run spec cleaner
+
+-------------------------------------------------------------------
+Wed Nov 11 23:20:04 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.22.10:
+  https://github.com/yarnpkg/yarn/releases/tag/v1.22.10
+
+-------------------------------------------------------------------
+Thu Aug 27 13:08:04 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 1.22.5
+  https://github.com/yarnpkg/yarn/releases/tag/v1.22.5
+
+-------------------------------------------------------------------
+Tue Apr 14 12:07:59 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- Remove nodejs from build requires
+
+  Just the runtime dependency is needed.
+
+-------------------------------------------------------------------
+Mon Mar  9 22:59:39 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 1.22.4
+  https://github.com/yarnpkg/yarn/releases/tag/v1.22.3
+  https://github.com/yarnpkg/yarn/releases/tag/v1.22.4
+
+-------------------------------------------------------------------
+Sat Mar  7 13:32:07 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 1.22.2
+  https://github.com/yarnpkg/yarn/releases/tag/v1.22.2
+
+-------------------------------------------------------------------
+Fri Mar  6 21:58:07 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 1.22.1
+  https://github.com/yarnpkg/yarn/releases/tag/v1.22.1
+
+-------------------------------------------------------------------
+Thu Feb  6 11:24:31 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 1.22.0
+  https://github.com/yarnpkg/yarn/releases/tag/v1.22.0
+
+-------------------------------------------------------------------
+Wed Dec 11 15:50:08 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 1.21.1
+  https://github.com/yarnpkg/yarn/releases/tag/v1.21.1
+
+-------------------------------------------------------------------
+Mon Dec  2 19:51:21 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 1.21.0
+  https://github.com/yarnpkg/yarn/releases/tag/v1.20.0
+  https://github.com/yarnpkg/yarn/releases/tag/v1.21.0
+
+-------------------------------------------------------------------
+Fri Nov 22 20:27:38 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 1.19.2
+  https://github.com/yarnpkg/yarn/releases/tag/v1.19.2
+
+-------------------------------------------------------------------
+Tue Oct  8 12:04:10 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 1.19.1
+  https://github.com/yarnpkg/yarn/releases/tag/v1.19.1
+
+-------------------------------------------------------------------
+Sun Sep 29 00:49:07 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 1.19.0
+  https://github.com/yarnpkg/yarn/releases/tag/v1.18.0
+  https://github.com/yarnpkg/yarn/releases/tag/v1.19.0
+
+-------------------------------------------------------------------
+Thu Sep 19 03:48:21 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 1.17.3
+  https://github.com/yarnpkg/yarn/releases/tag/v1.17.0
+  https://github.com/yarnpkg/yarn/releases/tag/v1.17.1
+  https://github.com/yarnpkg/yarn/releases/tag/v1.17.2
+  https://github.com/yarnpkg/yarn/releases/tag/v1.17.3
+
+-------------------------------------------------------------------
+Tue Apr 30 11:31:47 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 1.16.0
+  - Retries downloading a package on `yarn install` when we get a ETIMEDOUT error.
+    [#7163](https://github.com/yarnpkg/yarn/pull/7163) - [**Vincent Bailly**](https://github.com/VincentBailly)
+  - Implements `yarn audit --level [severity]` flag to filter the audit command's output.
+    [#6716](https://github.com/yarnpkg/yarn/pull/6716) - [**Rogério Vicente**](https://twitter.com/rogeriopvl)
+  - Implements `yarn audit --groups group_name [group_name ...]`.
+    [#6724](https://github.com/yarnpkg/yarn/pull/6724) - [**Tom Milligan**](https://github.com/tommilligan)
+  - Exposes the script environment variables to `yarn create` spawned processes.
+    [#7127](https://github.com/yarnpkg/yarn/pull/7127) - [**Eli Perelman**](https://github.com/eliperelman)
+  - Prevents EPIPE errors from being printed.
+    [#7194](https://github.com/yarnpkg/yarn/pull/7194) - [**Abhishek Reddy**](https://github.com/arbscht)
+  - Adds support for the npm enterprise URLs when computing the offline mirror filenames.
+    [#7200](https://github.com/yarnpkg/yarn/pull/7200) - [**John Millikin**](https://john-millikin.com)
+  - Tweaks the lockfile parser logic to parse a few extra cases
+    [#7210](https://github.com/yarnpkg/yarn/pull/7210) - [**Maël Nison**](https://twitter.com/arcanis)
+
+-------------------------------------------------------------------
+Tue Mar 19 14:48:43 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- initial package
