@@ -1,0 +1,111 @@
+-------------------------------------------------------------------
+Wed Sep  6 12:00:38 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.5:
+  * The keyword used for ASTAP parity was updated since some images were getting the opposite parity due to an issue with the other keyword.
+  * The Online flip for astrometry was removed since it was not needed anymore.
+  * The he URL for Online astrometry was updated as well.
+
+-------------------------------------------------------------------
+Fri Mar 10 07:39:31 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Revert hwcaps.
+
+-------------------------------------------------------------------
+Wed Mar  8 10:11:09 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Build AVX2 enabled hwcaps library for x86_64-v3 
+
+-------------------------------------------------------------------
+Mon Aug  1 12:09:18 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.4:
+  * Make sure stellarsolver does not run after its deleted.
+  * Adding an abort and wait function that will wait synchronously, if desired.
+  * Add parallel abort support.
+  * Preventing program freezes and improving messages.
+
+-------------------------------------------------------------------
+Thu Jun 16 06:05:43 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.3:
+  * It can now selected the color channel one would like to extract or solve,
+    if it is an RGB image, or one can select to integrate or average the channels.
+  * Add StellarBatchSolver, a tool that can be used to automatically solve, extract,
+    and export a large number of images.
+  * Improvements to memory management.
+  * Performance improvements.
+  * Bug fixes.
+
+-------------------------------------------------------------------
+Wed Mar 16 06:49:12 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.2:
+  * fix valgrind issues
+  * improve memory management
+  * correcting downsample in WCSData
+
+-------------------------------------------------------------------
+Thu Mar 10 07:32:13 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.1:
+  * fix for watney solver
+  * remove wrong options from watney solver
+  * add ability to abort on internal star extraction
+  * detect ASTAP in /usr/bin
+  * add support for saving results
+  * avoid name conflict in includes in Kstars
+  * fix crash that may happen during logging
+  * fix solver paths
+
+-------------------------------------------------------------------
+Thu Mar  3 07:37:02 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.0:
+  * Eliminating the last external files: solved and cancel files from the internal solver
+  * Making an interface between the C++ and astrometry.net logging that works well to fix logging issues
+  * Making StellarSolver easier to use in a blocking way, including using it as a C++ temporary object
+  * Making the convolution filter easier to generate and use as well as adding more types of filters
+  * Significantly reducing the astrometry code needed for the solver
+  * Adding support for a new external solver: the Watney Astrometry Solver
+  * Improving the abort code so that it shuts down faster
+  * Adding a number of demos to show how to use StellarSolver
+  * Adding healpix and index series hints so that you can speed up solves in localized areas based on former solves
+  * Making it possible to run two stellar solvers simultaneously
+  * Adding some new options for star extraction
+  * Making API simplifications
+  * Fixing some memory leaks and other warnings on various operating systems
+  * Removing some unused code
+- Remove fix-version.patch
+
+-------------------------------------------------------------------
+Mon Jan 24 15:42:57 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.9:
+  * use C locale for numbers
+  * fixed some warnings
+  * enclosing the deprecated code corrections in qt version check ifdefs
+- Add fix-version.patch
+
+-------------------------------------------------------------------
+Mon Aug 30 09:27:45 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.8:
+  * it is now possible to use the external astrometry.net
+    local solver without it needing to invoke python
+  * fixes and improvements wrt astrometry.net
+  * protect against malformed subframes that might lead to crashes
+  * fix parity calculations for ASTAP and Local Astrometry.net
+
+-------------------------------------------------------------------
+Mon May 17 13:26:41 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Fix License as, according to
+  https://github.com/rlancaste/stellarsolver/blob/master/LICENSE#L640,
+  it should be GPL 3.0 or later and not GPL 3.0 only.
+
+-------------------------------------------------------------------
+Fri Nov 27 10:30:45 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Initial package
+

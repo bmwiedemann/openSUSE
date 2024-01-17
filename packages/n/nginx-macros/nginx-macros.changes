@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Tue Feb 16 23:31:02 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- Since we only target sle 12 and above we can skip all
+  conditionals which apply to suse_version before 1315
+
+  With changes in nginx itself we will drop support for sysvinit.
+  http2, libatomic support and pcre_jit will always be on now.
+  and we build all binaries with PIE now.
+- Moved the last 2 path macros from nginx.spec to the macros file.
+  (pid and lock path)
+
+-------------------------------------------------------------------
+Thu Feb 11 08:43:09 UTC 2021 - Felix Schnizlein <fschnizlein@suse.com>
+
+- Remove {?is_opensuse} conditions to sync openSUSE and SLE (jsc#SLE-12124)
+
+-------------------------------------------------------------------
+Mon Nov  9 15:41:53 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Refresh spec-file via spec-cleaner and manual optimizations.
+
+-------------------------------------------------------------------
+Fri Oct  2 03:15:57 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- initial package

@@ -1,0 +1,209 @@
+-------------------------------------------------------------------
+Tue Jan 12 04:49:20 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to 1.5.4
+  * Fixed an issue that occurs with custom commands in newer VTE versions
+  * Fixes an incorrect usage of 32bit data type for X11 time, which
+    should be 64bit instead
+- includes 1.5.3:
+  * Fixed an issue that could cause tilda to crash due to a BadMatch X11
+    error in certain situations (such as when using the Marco
+    window manager of the Mate Desktop 1.24.1)
+
+-------------------------------------------------------------------
+Wed Jul 29 09:52:39 UTC 2020 - Martin Rey <mrey@suse.com>
+
+- Update to 1.5.2
+  * Fix reported version
+- update copyright notice in spec file
+
+-------------------------------------------------------------------
+Thu May  7 08:39:23 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.5.1
+    * tilda_terminal: match '@' character in URLs
+
+-------------------------------------------------------------------
+Sat Apr  4 11:57:49 UTC 2020 - Sam Yu <ytz1995@hotmail.com>
+
+- Update to version 1.5.0:
+	* Search is now backwards by default (Sebastian Geiger).
+	* Tilda now handles monitor changes and adjusts its size automatically.
+	  This is useful in cases when a notebook is connected to an external
+	  monitor (Sebastian Geiger).
+	* Tilda now stores the relative sizes of the window in percent rather
+	  than the absolute values in pixels (Sebastian Geiger).
+	* The confirmation dialogs for confirm tab close and prompt on exit are
+	  now enabled by default (Sebastian Geiger).
+	* When using the block cursor, the background color of the cursor
+	  is now correctly applied (Brian Hsu).
+	* Fixed issue in transparency. Fixes #269 (Sebastian Geiger).
+	* Fixed a resize issue in fullscreen mode. Fixes #306 (Sebastian Geiger).
+	* Tilda now uses asynchronous command spawning. A new option supports
+	  changing the default timeout when spawning a command
+	  (default is 3 seconds) (Sebastian Geiger).
+	* Various fixes related to the window title. Tooltips now display
+	  full tab title (Tom Briden). Fixed missing title on initial window and
+	  fixed a problem with setting the title when switching between tabs. Also
+	  the computation of the title is now more consistent between the window
+	  title, tooltips and the tab title (Sebastian Geiger).
+	* When loading configuration files tilda follows symlinks.
+	  Fixes #327 (Sebastian Geiger).
+	* Tilda now uses xdg-open to open web links rather
+	  than x-www-browser (lucasbru).
+	* In non-X11 environments such as Wayland tilda will now always use the
+	  X11 backend (Roman Hoellen).
+	* Exclamation mark '!' is now supported by the HTTP regex for detecting
+	  web links.
+	* Added a check if lock dir exists which avoids a warning when tilda
+	  starts the first time and the lock dir has not been created yet
+	  (Sebastian Geiger).
+	* We now correctly free the resources when closing the a terminal tab
+	  (Sebastian Geiger).
+	* Tilda now uses structured logging. In debug mode tilda will automatically
+	  output all debug messages. In non-debug mode, debug messages can still
+	  be output by exporting G_MESSAGES_DEBUG=tilda (Sebastian Geiger).
+	* Removed 'Allow Bold' option (Sebastian Geiger).
+	* Removed deprecated antialiasing option (Sebastian Geiger).
+	* Dropped support for older VTE versions (Sebastian Geiger).
+
+-------------------------------------------------------------------
+Thu Mar 14 17:42:59 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Remove conditionals for no longer supported versions of openSUSE.
+- Run spec-cleaner, modernize spec where possible, replace
+  gtk3-devel and vte-devel for their pkgconfig() variants.
+
+-------------------------------------------------------------------
+Wed Feb 21 16:48:43 UTC 2018 - malcolmlewis@opensuse.org
+
+- Updated to version 1.4.1:
+  * Traslation updates.
+- Changes from version 1.4.0:
+  * Fixes a problem with close-tab action in the context menu.
+  * The default word matching expression now matches IPv6
+    addresses.
+  * The keybindings in the wizard are now displayed in form of a
+    list.
+  * Fixed an issue which broke the transparency feature after
+    changing the color scheme.
+  * Fixed an issue that prevented the initial tab title from being
+    correctly set.
+  * Tilda now supports a new command line option to specify the
+    configuration file.
+  * The 'Tab Position' option has been moved to appearance section
+    in the wizard.
+  * New option 'Expand Tabs' causes tabs in the tilda window to
+    fill all available horizontal space.
+  * New option 'Show Single Tab' to show the tab bar also when
+    only a single tab is open.
+  * Tilda can now be configured to show a confirmation dialog when
+    closing a tab or when when tilda is closed.
+  * Tilda now knows a new color scheme called 'Snazzy'.
+  * The tab title learned more options to configure behavior of
+    long tab tiles.
+  * The option for double buffering has long been deprecated and
+    was removed in this release.
+- Changes from version 1.3.4:
+  * Fixed crash that occured when the VTE version in use is 0.3.
+- There is an issue when trying to run on wayland, a work-around
+  is to start tilda via 'env GDK_BACKEND=x11 /usr/bin/tilda', but
+  hotkey support may be lost (boo#1080341).
+
+-------------------------------------------------------------------
+Sun Sep 25 13:01:54 UTC 2016 - malcolmlewis@opensuse.org
+
+- Update to version 1.3.3:
+  + Bumped GTK+ version to 3.10, we are already implicitly
+    depending on it.
+  + Fixed the close-tab regression introduced in the last patch.
+  + Fixed CTRL+SHIFT+W closing two tabs.
+- Changes from version 1.3.2:
+  + Updated Hacking.md's instructions to reflect VTE 2.91 api bump.
+  + Added a widget name to the search widget for easier styling.
+  + Several code cleanups and a few deprecation warnings where
+    removed.
+  + Added default styling to the tilda search bar.
+  + Cleanup code for CSS loading. It now reports an error if
+    something went wrong.
+  + Fixed a problem that caused tilda to close two tabs when the
+    close tab hotkey was used.
+  + The preference dialog is now also shown above the tilda window
+    if the tilda window is in fullscreen mode.
+- Changes from version 1.3.1:
+  + Transparency regression for GNOME shell fixed.
+  + Images in the appdata file and Readme.md have been updated.
+  + Fixed an issue that would the background transparancy to be
+    reset on a color palette change.
+- NOTE: No wayland support (yet?).
+
+-------------------------------------------------------------------
+Sat Nov 21 02:17:55 UTC 2015 - rpm@fthiessen.de
+
+- Updated to version 1.3.0:
+  * Clean up SPEC
+  * Removed now obsolete patches (fixed in this version):
+    * tilda-add-xrandr-check.patch
+    * tilda-desktop-icon.patch
+    * tilda-fix-gdk-x11-window-set-user-time.patch
+    * tilda-fix-glib-include.patch
+    * tilda-fix-pointers.patch
+
+-------------------------------------------------------------------
+Thu Feb 23 15:30:43 UTC 2012 - malcolmlewis@opensuse.org
+
+- Add tilda-add-xrandr-check.patch: Add check for the presence of
+  the xrandr headers in configure since xrandr is used in the code
+  (sf#3492123).
+
+-------------------------------------------------------------------
+Tue Feb 21 21:38:25 UTC 2012 - dimstar@opensuse.org
+
+- Update BuildRequires after reorganization of xorg-x11 packages:
+  + On 12.2/Factory and later, add libX11-devel, libXrandr-devel
+    and libXt-devel.
+  + Only use xorg-x11-libXt-devel on 12.1 and earlier.
+
+-------------------------------------------------------------------
+Thu Jan 12 17:51:08 UTC 2012 - malcolmlewis@opensuse.org
+
+- Major spec file cleanup via spec-cleaner.
+- Add tilda-fix-glib-include.patch: Only <glib.h> can be included
+  directly (sf#3473000).
+- Add tilda-desktop-icon.patch: Fix fullpath to icon and icon file
+  extension (sf#3473002).
+- Upstream tilda-0.9.6-pointers.patch: Fix 64bit-portability-issue
+  (sf#3473004).
+- Rename tilda-0.9.6-fix-bnc633863.patch: To
+  tilda-fix-gdk-x11-window-set-user-time.patch
+  (bnc#633863, sf#2988694).
+- Update spec file License field from GPLv2+ to GPL-2.0+ to
+  conform with spdx.org identifier.
+
+-------------------------------------------------------------------
+Mon Aug 23 22:53:17 UTC 2010 - andrea@opensuse.org
+
+- added tilda-0.9.6-fix-bnc633863.patch to fix a segfault
+ (thanks to mandriva https://qa.mandriva.com/show_bug.cgi?id=58153) 
+- renamed desktop_icon.patch according to packaging standards
+- fixed RPM group
+
+-------------------------------------------------------------------
+Mon Feb 23 16:16:18 CET 2009 - mhrusecky@suse.cz
+
+- explicit cast (tilda-0.9.6-pointers) to fix rpmlint error
+- bziped sources to get rid off the last rpmlint warning
+
+-------------------------------------------------------------------
+Fri Oct 31 19:44:41 CET 2008 - claes.backstrom@fsfe.org
+
+- Small fixes to build for factory
+- Add GenericName to .desktop
+- Remove absolute patch to icon in .desktop
+- Create lang package
+- Removed debug package
+
+-------------------------------------------------------------------
+Wed Aug 13 14:38:43 CEST 2008 - claes.backstrom@fsfe.org
+
+- Initial Package

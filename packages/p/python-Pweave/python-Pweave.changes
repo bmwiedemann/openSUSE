@@ -1,0 +1,50 @@
+-------------------------------------------------------------------
+Sat Oct 15 23:41:37 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Skip failing test testFIR_FilterExampleTex (gh#mpastell/Pweave#168)
+
+-------------------------------------------------------------------
+Thu Oct  6 14:02:25 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Add markdown.patch to fix the tests
+
+-------------------------------------------------------------------
+Fri Feb 12 15:04:56 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- skip python 36 build (scipy) 
+
+-------------------------------------------------------------------
+Tue Feb  2 13:42:49 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update-alternatives for multi-python3 builds 
+
+-------------------------------------------------------------------
+Mon Jun  8 07:55:03 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Adjust the tests to run with pytest and not nose
+- Skip format checking tests that rely on jupyter behaviour
+  and thus break with updates
+
+-------------------------------------------------------------------
+Wed Sep 18 09:24:15 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Skip one more test that fails due to extra output from
+  new matplotlib:
+  * testFIR_FilterExampleTex
+
+-------------------------------------------------------------------
+Tue Mar  5 19:39:05 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update 0.30.3:
+  * no upstream changelog for this release
+- Run tests
+
+-------------------------------------------------------------------
+Tue Dec  4 12:51:52 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Tue Sep 12 20:58:25 UTC 2017 - toddrme2178@gmail.com
+
+- Initial version

@@ -1,0 +1,9 @@
+<package name="perl-Class-Load-XS" project="openSUSE:Factory">
+  <title>XS implementation of parts of Class::Load</title>
+  <description>This module provides an XS implementation for portions of the Class::Load
+manpage. See the Class::Load manpage for API details.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-Class-Load-XS"/>
+  <url>http://search.cpan.org/dist/Class-Load-XS/</url>
+</package>

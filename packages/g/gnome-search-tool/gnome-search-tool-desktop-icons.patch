@@ -1,0 +1,26 @@
+Index: gnome-search-tool-3.3.1/data/gnome-search-tool.desktop.in
+===================================================================
+--- gnome-search-tool-3.3.1.orig/data/gnome-search-tool.desktop.in
++++ gnome-search-tool-3.3.1/data/gnome-search-tool.desktop.in
+@@ -2,7 +2,7 @@
+ _Name=Search for Files...
+ _Comment=Locate documents and folders on this computer by name or content
+ Exec=gnome-search-tool
+-Icon=system-search
++Icon=gnome-search-tool
+ Terminal=false
+ Type=Application
+ StartupNotify=true
+Index: gnome-search-tool-3.3.1/data/gnome-search-tool.desktop
+===================================================================
+--- gnome-search-tool-3.3.1.orig/data/gnome-search-tool.desktop
++++ gnome-search-tool-3.3.1/data/gnome-search-tool.desktop
+@@ -158,7 +158,7 @@ Comment[zh_CN]=按照名称或内容定�
+ Comment[zh_HK]=以名稱或內容尋找此電腦中的文件及資料夾
+ Comment[zh_TW]=以名稱或內容尋找此電腦中的文件及資料夾
+ Exec=gnome-search-tool
+-Icon=system-search
++Icon=gnome-search-tool
+ Terminal=false
+ Type=Application
+ StartupNotify=true

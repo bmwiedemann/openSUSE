@@ -1,0 +1,129 @@
+-------------------------------------------------------------------
+Wed Feb 11 00:44:14 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 11.8.17
+  * ChangeLog has not been updated
+- Update home page Url
+- Use download Url as source
+- Update and unversion libmpd-0.20.0_glibc-2.20.patch
+  > libmpd-glibc-2.20.patch 
+- Removed libmpd-overflow.patch
+
+-------------------------------------------------------------------
+Sat Nov  8 02:29:19 UTC 2014 - crrodriguez@opensuse.org
+
+- add baselibs.conf as source 
+
+-------------------------------------------------------------------
+Tue Oct 21 03:31:14 UTC 2014 - crrodriguez@opensuse.org
+
+- Correct previous SR that I accepted too fast..one should not 
+  include config.h in public headers. fix the problem the right
+  way.
+
+-------------------------------------------------------------------
+Mon Oct 20 22:57:59 UTC 2014 - avvissu@yandex.ru
+
+- Fix build error on openSUSE > 13.1:
+  * add libmpd-0.20.0_glibc-2.20.patch
+- Fix unresolvable dependencies on SLES11:
+  * add BuildRequires:  glib2-devel
+  
+-------------------------------------------------------------------
+Mon Feb 13 10:48:53 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Sun May  1 17:35:27 UTC 2011 - toddrme2178@gmail.com
+ 
+- Added 32bit compatibility libraries
+- Removed duplicate documentation files (fix for RPMLINT warning)
+ 
+-------------------------------------------------------------------
+Sun Jan 30 22:04:11 UTC 2011 - gber@opensuse.org
+
+- fix dependencies of the -devel package
+- improved summary/description
+
+-------------------------------------------------------------------
+Wed Dec 29 19:40:07 UTC 2010 - gber@opensuse.org
+
+- update to version 0.20.0
+  * add replaygain support
+  * add mpd_playlist_load
+- cleanup
+  * do not build static libs
+  * dropped empty documentation files
+  * improved summary/description
+  * use separate .changes files
+- build and include API documentation
+
+-------------------------------------------------------------------
+Wed Sep  2 00:00:00 UTC 2009 - detlef@links2linux.de
+
+- new upstream version <0.19.0>
+
+-------------------------------------------------------------------
+Tue Mar 10 00:00:00 UTC 2009 - detlef@links2linux.de
+
+- new upstream version <0.18.0>
+
+-------------------------------------------------------------------
+Sat Dec 27 00:00:00 UTC 2008 - detlef@links2linux.de
+
+- new upstream version <0.17.0>
+  * Concatenate artist/composer/performer tag.
+  * Support Query changes using idle command.
+  * Unix socket support.
+  * Fix false MPD_CST_STORED_PLAYLIST update.
+  * Fix build on opensolaris.
+  * Convert error messages to utf-8 before passing to gmpc.
+  * Fix memory leak in idle check.
+  * Several typo's fixed (thx to Priyank)
+  * (Open) Solaris build fix.
+  * Fix document distribution (thx to Priyank).
+  * Support for playlist modification time.
+  * Get more changed signals using idle command.
+  * Convert debug output to locale before outputting.
+
+-------------------------------------------------------------------
+Fri Sep 26 00:00:00 UTC 2008 - detlef@links2linux.de
+
+- new upstream version <0.16.1>
+  * Allow the error_callback to make an error critical (causing
+    libmpd to disconnect)
+
+-------------------------------------------------------------------
+Mon Sep 22 00:00:00 UTC 2008 - detlef@links2linux.de
+
+- new upstream version <0.16.0>
+
+-------------------------------------------------------------------
+Mon Dec 17 00:00:00 UTC 2007 - detlef@links2linux.de
+
+- new upstream version <0.15.0>
+
+-------------------------------------------------------------------
+Thu Jul 26 00:00:00 UTC 2007 - detlef@links2linux.de
+
+- new upstream release <0.14.0>
+- rename libmpd -> libmpd0
+
+-------------------------------------------------------------------
+Wed Mar 28 00:00:00 UTC 2007 - detlef@links2linux.de
+
+- new upstream release <0.13.0>
+- fix URL
+
+-------------------------------------------------------------------
+Mon Jul 24 00:00:00 UTC 2006 - bernhard@links2linux.de
+
+- new upstream release
+
+-------------------------------------------------------------------
+Wed Feb 22 00:00:00 UTC 2006 - bernhard@links2linux.de
+
+- first package
+
+

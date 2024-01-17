@@ -1,0 +1,65 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ba12800a14edf39bd60723bfae6adc1d</srcmd5>
+    <version>0.6.0</version>
+    <time>1382361254</time>
+    <user>scarabeus_factory</user>
+    <comment>needed by perl-File-ShareDir-ProjectDistDir</comment>
+    <requestid>202650</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b930bf2650e92395d18a007993a2e19f</srcmd5>
+    <version>1.000002</version>
+    <time>1386772906</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>208433</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6e0661f86d9fde82632aa580db4c2ebd</srcmd5>
+    <version>1.001000</version>
+    <time>1394451784</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>225395</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>854ffc808e78bfdb0bcae574f60ff535</srcmd5>
+    <version>1.001001</version>
+    <time>1406556730</time>
+    <user>coolo</user>
+    <comment>- updated to 1.001001
+  [00 Trivial]
+  - Misc packaging cleanups.
+ 
+  [Dependencies::Stats]
+  - Dependencies changed since 1.001000, see misc/*.deps* for details
+  - configure: (recommends: ↑1)
+  - develop: +3 -3 (suggests: +2 -1)
+  - test: (recommends: ↑2)</comment>
+    <requestid>242648</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>854ffc808e78bfdb0bcae574f60ff535</srcmd5>
+    <version>1.001001</version>
+    <time>1409302449</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6d9bdac62ce45d4183e6de17d2003844</srcmd5>
+    <version>1.001002</version>
+    <time>1429107995</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296677</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9f2c911985308123965bb90edab0bb7b</srcmd5>
+    <version>1.001003</version>
+    <time>1489415602</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>478920</requestid>
+  </revision>
+</revisionlist>

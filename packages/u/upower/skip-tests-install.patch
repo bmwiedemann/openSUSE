@@ -1,0 +1,13 @@
+Index: upower-v1.90.2/src/meson.build
+===================================================================
+--- upower-v1.90.2.orig/src/meson.build
++++ upower-v1.90.2/src/meson.build
+@@ -120,7 +120,7 @@ test(
+ 
+ # On Linux, we can run the additional integration test;
+ # defined here as we would have a circular dependency otherwise.
+-if os_backend == 'linux' and gobject_introspection.found()
++if false and os_backend == 'linux' and gobject_introspection.found()
+     env = environment()
+     env.prepend('top_builddir', join_paths(meson.project_build_root()))
+     env.prepend('LD_LIBRARY_PATH', join_paths(meson.project_build_root(), 'libupower-glib'))

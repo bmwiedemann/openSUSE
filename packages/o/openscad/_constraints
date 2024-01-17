@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<constraints>
+  <hardware>
+    <physicalmemory>
+      <size unit="G">3</size>
+    </physicalmemory>
+    <memory>
+      <size unit="G">5</size>
+    </memory>
+    <!--
+    <memoryperjob>
+      <size unit="M">2500</size>
+    </memoryperjob>
+    -->
+  </hardware>
+</constraints>
