@@ -1,0 +1,10 @@
+diff -Pdpru lsyncd-release-2.2.3.orig/CMakeLists.txt lsyncd-release-2.2.3/CMakeLists.txt
+--- lsyncd-release-2.2.3.orig/CMakeLists.txt	2018-03-09 13:39:11.000000000 +0100
++++ lsyncd-release-2.2.3/CMakeLists.txt	2018-04-26 14:33:58.192477436 +0200
+@@ -107,5 +107,5 @@ add_executable( lsyncd ${LSYNCD_SRC} )
+ target_link_libraries( lsyncd ${LUA_LIBRARIES} )
+ 
+ install( TARGETS lsyncd RUNTIME DESTINATION bin )
+-install( FILES doc/manpage/lsyncd.1 DESTINATION man )
++install( FILES doc/manpage/lsyncd.1 DESTINATION ${CMAKE_INSTALL_MANDIR}/man1 COMPONENT man )
+ 

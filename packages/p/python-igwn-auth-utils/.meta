@@ -1,0 +1,12 @@
+<package name="python-igwn-auth-utils" project="openSUSE:Factory">
+  <title>Authorisation utilities for International Gravitational-Wave Observatory Network (IGWN)</title>
+  <description>Python library functions to simplify using International Gravitational-Wave
+Observatory Network (IGWN) authorisation credentials.
+
+This project is primarily aimed at discovering X.509 credentials and
+SciTokens for use with HTTP(S) requests to IGWN-operated services.
+
+</description>
+  <devel project="science" package="python-igwn-auth-utils"/>
+  <url>https://git.ligo.org/computing/igwn-auth-utils</url>
+</package>

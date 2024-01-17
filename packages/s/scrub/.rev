@@ -1,0 +1,32 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e3c9cf460d0382b07be84c06fa53eb8a</srcmd5>
+    <version>2.5.2</version>
+    <time>1376513720</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>186387</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>e3c9cf460d0382b07be84c06fa53eb8a</srcmd5>
+    <version>2.5.2</version>
+    <time>1379664639</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>e3c9cf460d0382b07be84c06fa53eb8a</srcmd5>
+    <version>2.5.2</version>
+    <time>1409303340</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>523b630286c6fc5a1e1368e61bf9fc1c</srcmd5>
+    <version>2.6.1</version>
+    <time>1427109568</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>292410</requestid>
+  </revision>
+</revisionlist>

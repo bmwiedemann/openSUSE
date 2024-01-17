@@ -1,0 +1,6 @@
+<package name="gojq" project="openSUSE:Factory">
+  <title>gojq</title>
+  <description>Pure Go implementation of jq</description>
+  <devel project="utilities" package="gojq"/>
+  <url>https://github.com/itchyny/gojq</url>
+</package>

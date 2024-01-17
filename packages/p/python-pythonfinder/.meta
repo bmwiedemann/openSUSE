@@ -1,0 +1,5 @@
+<package name="python-pythonfinder" project="openSUSE:Factory">
+  <title></title>
+  <description>A cross-platform tool to help locate python on any system</description>
+  <devel project="devel:languages:python" package="python-pythonfinder"/>
+</package>

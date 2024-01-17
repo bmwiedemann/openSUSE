@@ -1,0 +1,10 @@
+<package name="ccrtp" project="openSUSE:Factory">
+  <title>A Common C++ Class Framework for RTP Packets</title>
+  <description>This package is based on the package 'libccrtp' from project 'openSUSE:Factory'.
+
+The ccrtp package offers a generic framework for sending and receiving
+real-time streaming data over UDP packets using sending and receiving
+packet queues.
+</description>
+  <devel project="network:telephony" package="ccrtp"/>
+</package>

@@ -1,0 +1,13 @@
+Index: html5lib-1.1/html5lib/tests/test_meta.py
+===================================================================
+--- html5lib-1.1.orig/html5lib/tests/test_meta.py	2020-06-23 01:23:02.000000000 +0200
++++ html5lib-1.1/html5lib/tests/test_meta.py	2022-03-21 14:42:19.011204038 +0100
+@@ -1,7 +1,7 @@
+ from __future__ import absolute_import, division, unicode_literals
+ 
+ import six
+-from mock import Mock
++from unittest.mock import Mock
+ 
+ from . import support
+ 

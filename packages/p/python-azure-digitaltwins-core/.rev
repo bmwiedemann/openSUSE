@@ -1,0 +1,23 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>102708d77d1fcf44dc3cbcf64840be39</srcmd5>
+    <version>1.1.0</version>
+    <time>1611348695</time>
+    <user>dimstar_suse</user>
+    <comment>- Initial build
+  + Version 1.0.0</comment>
+    <requestid>864635</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d58eeb83bf99cc758f75b31e2398e637</srcmd5>
+    <version>1.2.0</version>
+    <time>1660586331</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.2.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 995171 from glaubitz)</comment>
+    <requestid>995201</requestid>
+  </revision>
+</revisionlist>

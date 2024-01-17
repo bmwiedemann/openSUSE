@@ -1,0 +1,8 @@
+<package name="libxtrxdsp" project="openSUSE:Factory">
+  <title>DSP function library</title>
+  <description>DSP specific functions for SDR in general and XTRX in specific.
+
+</description>
+  <devel project="hardware:sdr" package="libxtrxdsp"/>
+  <url>http://xtrx.io</url>
+</package>

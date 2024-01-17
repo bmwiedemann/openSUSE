@@ -1,0 +1,38 @@
+-------------------------------------------------------------------
+Tue Dec 13 16:23:06 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to v1.9.0 
+  * chore: Jul 2022 update
+    Now that this is one of the Critical Projects (thanks?) I should
+    update it to be more modern, clean up some of the crap, and
+    run it through flake8 at least.
+  * Add a rst version of the README
+  * update rust version to 0.6.0
+
+-------------------------------------------------------------------
+Tue Apr 12 09:03:27 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- do not use mock
+
+-------------------------------------------------------------------
+Wed Sep  8 04:27:28 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.8.2:
+  * allow hyphens in sub domains (#96)
+  * Fix argument declaration (#95)
+  * use better host validation(#92)
+  * do not enforce dot in sub claim email host part (#90)
+  * switch to pytest from nose
+  * fix JWT padding (Thanks @JohnDoee) #81 
+- Drop skip-test_sign_01.patch, no longer required
+
+-------------------------------------------------------------------
+Sun Jun  7 06:14:33 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Tidy spec, removing unnecessary build dependencies
+
+-------------------------------------------------------------------
+Wed Aug 14 18:02:53 UTC 2019 - Antonio Larrosa <alarrosa@suse.com>
+
+- Initial release of python-py-vapid 1.7.0
+- Add skip-test_sign_01.patch to skip a test that fails randomly

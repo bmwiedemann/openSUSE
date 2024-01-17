@@ -1,0 +1,41 @@
+From 52ac9fe79c41f300b86a8f51df5b02d0d562b966 Mon Sep 17 00:00:00 2001
+From: Tom Tromey <tom@tromey.com>
+Date: Wed, 10 Jun 2020 20:38:27 -0600
+Subject: [PATCH] Remove "throw" specifications
+
+C++ throw specifications were deprecated in C++11.
+This patch removes them from the library.
+---
+ lib/srchilite/fileutil.cc | 2 +-
+ lib/srchilite/fileutil.h  | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/lib/srchilite/fileutil.cc b/lib/srchilite/fileutil.cc
+index 59a6d64..963178c 100644
+--- a/lib/srchilite/fileutil.cc
++++ b/lib/srchilite/fileutil.cc
+@@ -48,7 +48,7 @@ void set_file_util_verbose(bool b) {
+ // FIXME avoid using a global variable
+ std::string start_path;
+ 
+-string readFile(const string &fileName) throw (IOException) {
++string readFile(const string &fileName) {
+     ifstream file(fileName.c_str());
+ 
+     if (!file.is_open()) {
+diff --git a/lib/srchilite/fileutil.h b/lib/srchilite/fileutil.h
+index 7335a9b..042eb56 100644
+--- a/lib/srchilite/fileutil.h
++++ b/lib/srchilite/fileutil.h
+@@ -27,7 +27,7 @@ extern std::string start_path;
+  * @return the contents of the file
+  * @throw IOException
+  */
+-string readFile(const string &fileName) throw (IOException);
++string readFile(const string &fileName);
+ 
+ //char *read_file(const string &fileName);
+ 
+-- 
+2.31.1
+

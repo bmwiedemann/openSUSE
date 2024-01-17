@@ -1,0 +1,54 @@
+From 278d7e48deeaf8fcf2ac347a452c4e7ca0389007 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Thu, 1 Apr 2021 17:25:59 +0800
+Subject: [PATCH 1/1] Disable brotli
+
+The brotli compression/decompression function was never used and it
+requires additional source tarball for packaging. Remove brotli from
+building for good.
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ BaseTools/Source/C/GNUmakefile | 1 -
+ MdeModulePkg/MdeModulePkg.dec  | 3 ---
+ MdeModulePkg/MdeModulePkg.dsc  | 1 -
+ 3 files changed, 5 deletions(-)
+
+Index: edk2-edk2-stable202305/BaseTools/Source/C/GNUmakefile
+===================================================================
+--- edk2-edk2-stable202305.orig/BaseTools/Source/C/GNUmakefile
++++ edk2-edk2-stable202305/BaseTools/Source/C/GNUmakefile
+@@ -51,7 +51,6 @@ all: makerootdir subdirs
+ LIBRARIES = Common
+ VFRAUTOGEN = VfrCompile/VfrLexer.h
+ APPLICATIONS = \
+-  BrotliCompress \
+   VfrCompile \
+   EfiRom \
+   GenFfs \
+Index: edk2-edk2-stable202305/MdeModulePkg/MdeModulePkg.dec
+===================================================================
+--- edk2-edk2-stable202305.orig/MdeModulePkg/MdeModulePkg.dec
++++ edk2-edk2-stable202305/MdeModulePkg/MdeModulePkg.dec
+@@ -26,9 +26,6 @@
+   Include
+   Test/Mock/Include
+ 
+-[Includes.Common.Private]
+-  Library/BrotliCustomDecompressLib/brotli/c/include
+-
+ [LibraryClasses]
+   ##  @libraryclass  Defines a set of methods to reset whole system.
+   ResetSystemLib|Include/Library/ResetSystemLib.h
+Index: edk2-edk2-stable202305/MdeModulePkg/MdeModulePkg.dsc
+===================================================================
+--- edk2-edk2-stable202305.orig/MdeModulePkg/MdeModulePkg.dsc
++++ edk2-edk2-stable202305/MdeModulePkg/MdeModulePkg.dsc
+@@ -453,7 +453,6 @@
+   MdeModulePkg/Universal/EbcDxe/EbcDebuggerConfig.inf
+ 
+ [Components.IA32, Components.X64, Components.ARM, Components.AARCH64]
+-  MdeModulePkg/Library/BrotliCustomDecompressLib/BrotliCustomDecompressLib.inf
+   MdeModulePkg/Library/LzmaCustomDecompressLib/LzmaCustomDecompressLib.inf
+   MdeModulePkg/Library/VarCheckUefiLib/VarCheckUefiLib.inf
+   MdeModulePkg/Core/Dxe/DxeMain.inf {

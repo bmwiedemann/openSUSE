@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="17">
+    <srcmd5>a0c8aa30c91fc6017bd88d3c33bf18e3</srcmd5>
+    <version>2.3.0</version>
+    <time>1557141982</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>700408</requestid>
+  </revision>
+  <revision rev="2" vrev="18">
+    <srcmd5>2e70ef71995df02116473a697124f5e0</srcmd5>
+    <version>2.3.0</version>
+    <time>1648063101</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build on JDK 17</comment>
+    <requestid>964164</requestid>
+  </revision>
+  <revision rev="3" vrev="19">
+    <srcmd5>110ea17a14b483d6146d288595107966</srcmd5>
+    <version>2.3.0</version>
+    <time>1649370511</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1182284</comment>
+    <requestid>967580</requestid>
+  </revision>
+</revisionlist>

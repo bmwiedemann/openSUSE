@@ -1,0 +1,82 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>635b98490fe5e71ef875b094be173ab6</srcmd5>
+    <version>20160504</version>
+    <time>1468579603</time>
+    <user>dimstar_suse</user>
+    <comment>coccinelle
+ocaml 4.03 (fate#320836)</comment>
+    <requestid>404357</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1759119aeb6f628474737b24f1d81efc</srcmd5>
+    <version>20170712</version>
+    <time>1503592922</time>
+    <user>dimstar_suse</user>
+    <comment>- Use Group: Development/Languages/OCaml
+
+- Update to version 20170712
+
+- Wrap specfile conditionals to fix quilt setup
+
+- Remove autodeps for pre openSUSE 12.1 releases</comment>
+    <requestid>512533</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ad30967344600c8496acc3b19970a048</srcmd5>
+    <version>20200211</version>
+    <time>1583759640</time>
+    <user>dimstar_suse</user>
+    <comment>- update version 20200211, with _service file
+- Require dune 2.0+</comment>
+    <requestid>780711</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>041a55d27f25a00bf79da32ec2bd8a8e</srcmd5>
+    <version>20210310</version>
+    <time>1619653046</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20210310</comment>
+    <requestid>885614</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ffeb2c99855954dfaf16cc7a70ec542c</srcmd5>
+    <version>20211012</version>
+    <time>1634754232</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>926417</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>dc7b9e99e16fb754a2e694a9c7048c6c</srcmd5>
+    <version>20211215</version>
+    <time>1640278430</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>942202</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a1dea2ad18ffd7ddf0677f99df2938ca</srcmd5>
+    <version>20220210</version>
+    <time>1649274679</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20220210</comment>
+    <requestid>967061</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e609d033699bd7daaed77a0247db2c8c</srcmd5>
+    <version>20230415</version>
+    <time>1684846424</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1086692</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7f156ef1a7a1ab6c21e4b610ef0f1565</srcmd5>
+    <version>20231231</version>
+    <time>1704753964</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20231231</comment>
+    <requestid>1137514</requestid>
+  </revision>
+</revisionlist>

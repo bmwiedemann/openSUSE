@@ -1,0 +1,135 @@
+-------------------------------------------------------------------
+Mon Dec 18 14:03:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 23.11.0:
+  * Support for specifying task type
+  * Use function to calculate timestamps
+  * Do not truncate operating system names
+  * Filter for correct target
+- update to 23.10.0:
+  * Auto-merge workflow, to enable squash auto-merge in open PRs
+  * Improve application-detection requests
+  * Group dependabot updates
+  * Fix param use in generate-random-reports
+  * Fix getting hosts in application-detection
+  * Remove superfluous output from check-gmp
+- update to 23.9.0:
+  * Allow to auto re-build the docs on changes via livehtml
+  * Add installation instructions using pipx because of PEP 668
+  * CERT-Bund Advisory script, parsing reports to CSV (#964)
+  * Drop support for Python 3.7 and 3.8
+  * Remove obsolete project files
+  * Convert docs to use markdown formatting
+  * Update copyright year in README
+  * Adjust docker image for Debian Bookworm
+  * Use generic reusable workflows
+  * Create conventional commits for dependabot
+  * Remove `cache: "true"` input (#1004)
+  * Fix conventional commits workflow
+  * Set permissions for conventional commits workflow
+
+-------------------------------------------------------------------
+Tue Aug  1 08:46:57 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- update to 23.4.0
+  * Support Python 3.11
+  * Auto-allow host for SSH connection
+
+-------------------------------------------------------------------
+Tue Feb 21 12:39:36 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 23.2.0
+  * Added --with-descriptions and host details source types to
+    generate-random-reports.
+
+-------------------------------------------------------------------
+Thu Sep 29 01:28:42 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- version update  to 22.9.0
+  * Changelog created for release to 22.9.0
+  * Fix: Consolidated Report script finds last report in time period now (#771)
+  * Bump bcrypt from 3.2.2 to 4.0.0
+  * Bump urllib3 from 1.26.11 to 1.26.12
+  * Change: Don't use a pip cache within the container build
+  * Bump charset-normalizer from 2.1.0 to 2.1.1 (#767)
+  * Bump pygments from 2.12.0 to 2.13.0
+  * Bump coverage from 6.4.3 to 6.4.4
+  * Bump autohooks from 22.8.0 to 22.8.1
+  * Bump github/codeql-action from 1 to 2
+  * Bump actions/checkout from 2 to 3
+  * Bump actions/setup-python from 2 to 4
+  * Add: Update GitHub actions via dependabot too
+  * Add dockerignor file for a cleaner container build context
+  * Remove unnecessary installation of poetry in container workflow
+  * Try to fix poetry issue not being able to find python
+  * Update Dockerfile
+  * Update container.yml
+  * Update container.yml
+  * Update container.yml
+  * Add: Build container image for gvm-tools
+  * Update and improve docs
+  * Change: Update links and terms in README and docs
+  * Add: Deploy docs to GitHub pages too
+  * Normalize strings for gmp scripts too
+  * Change: Enable string normalization with black
+  * Sort all imports with isort
+  * Change: Add autohooks-plugin-isort for import sorting
+  * Change: Use greater or equal then for dependencies with calver
+
+-------------------------------------------------------------------
+Thu Feb 17 10:32:18 UTC 2022 - pgajdos@suse.com
+
+- version update to 21.10.0
+  Using traceback to print the full error traceback, when a script fails ... db5a7c9
+  Fixing and refactoring the update-task-target script. [#544] 8431844
+  Fixing some scripts that use Gmp.types... [#535] d7f7eb5
+  Fixed the GMP authentication for gvm-cli. #472
+  etc. see https://github.com/greenbone/gvm-tools/releases
+
+-------------------------------------------------------------------
+Wed Aug 25 05:36:04 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Do not build for Python 3.6 or 3.9 due to python-python-gvm.
+
+-------------------------------------------------------------------
+Mon Oct 26 23:17:55 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Kill dephell dependency
+
+-------------------------------------------------------------------
+Sun Oct 25 16:20:59 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 20.10.1
+  Changed
+  * Fixed send-schedule.gmp.py script, because <timezone_abbrev>
+    has been removed from Schedules, using instead.
+  * Fixed send-targets.gmp.py script, because alive_test needs to
+    be from AliveTest enum in create_target function.
+  * Added gmpv20.08 support to the scan-new-system.gmp.py script,
+    as create_target requires an argument port_range or
+    port_list_id now.
+  * Using the --log argument is not casesensitive anymore. Use the
+    lower-case or upper-case loglevel as the argument now.
+  Fixed
+  * Fixed the check-gmp.gmp.py script, as it was not compatible to
+    Python 3.5 anymore.
+  * Fixed the check-gmp.gmp.py script: results have not been
+    loaded with -F host -T task --status and probably some other
+    cases. Added details=True to the command that requests the
+    report.
+  * Fixed the pdf-report.gmp.py script. Joining the Content of the
+    tag was not the correct way here ... we needed the tail of the
+    <report_format> tag ...
+  Removed
+  * Removed gvm.version module in favor of using pontos.version
+- Temporary disable source verification (upstream messed it up)
+
+-------------------------------------------------------------------
+Mon Aug 17 07:03:44 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix signature verification by using github archive
+
+-------------------------------------------------------------------
+Tue Aug 11 08:12:59 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 2.1.0

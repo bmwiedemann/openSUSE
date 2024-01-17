@@ -1,0 +1,176 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>de373d06ce1616e493ec860fca80abfd</srcmd5>
+    <version>6.4</version>
+    <time>1168903790</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="136">
+    <srcmd5>de373d06ce1616e493ec860fca80abfd</srcmd5>
+    <version>6.4</version>
+    <time>1168903790</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="137">
+    <srcmd5>3caee4cd3c15374ecf549715b2a02b8d</srcmd5>
+    <version>6.4</version>
+    <time>1245337110</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>476b08274865a4808676711f98cf37fe</srcmd5>
+    <version>6.6</version>
+    <time>1249318206</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>476b08274865a4808676711f98cf37fe</srcmd5>
+    <version>6.6</version>
+    <time>1249318206</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f1809afeb1b47a2eecb5a5dc7217e85d</srcmd5>
+    <version>7.1</version>
+    <time>1263824740</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Bit-Vector based on submit request 29845 from user coolo
+</comment>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>ce32d863404b9df8c712f02617d4297a</srcmd5>
+    <version>7.1</version>
+    <time>1268925371</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>ce32d863404b9df8c712f02617d4297a</srcmd5>
+    <version>7.1</version>
+    <time>1278667376</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>ce32d863404b9df8c712f02617d4297a</srcmd5>
+    <version>7.1</version>
+    <time>1278678609</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>5e94a8c919f512e360b400d69c3e0cd3</srcmd5>
+    <version>7.1</version>
+    <time>1290788461</time>
+    <user>darix</user>
+    <comment>Accepted submit request 53925 from user computersalat
+</comment>
+    <requestid>53925</requestid>
+  </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>e038cb5bf73639befa19904272eae2ac</srcmd5>
+    <version>7.1</version>
+    <time>1290788469</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 53925
+</comment>
+  </revision>
+  <revision rev="12" vrev="8">
+    <srcmd5>dd250482f1999e5c3883464d04c055bc</srcmd5>
+    <version>7.1</version>
+    <time>1291581425</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54469 from user coolo
+</comment>
+    <requestid>54469</requestid>
+  </revision>
+  <revision rev="13" vrev="9">
+    <srcmd5>5220f2faccfe0212ff32027064a710b4</srcmd5>
+    <version>7.1</version>
+    <time>1291581431</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54469
+</comment>
+  </revision>
+  <revision rev="14" vrev="12">
+    <srcmd5>5220f2faccfe0212ff32027064a710b4</srcmd5>
+    <version>7.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="15" vrev="14">
+    <srcmd5>5220f2faccfe0212ff32027064a710b4</srcmd5>
+    <version>7.1</version>
+    <time>1319182241</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="16" vrev="15">
+    <srcmd5>81be306bf0f91946d3d603e338d178a6</srcmd5>
+    <version>7.1</version>
+    <time>1321627580</time>
+    <user>coolo</user>
+    <comment>- use original tar</comment>
+    <requestid>91948</requestid>
+  </revision>
+  <revision rev="17" vrev="16">
+    <srcmd5>2cf45f75f7a566e98764c65fbc614cc0</srcmd5>
+    <version>7.1</version>
+    <time>1323193066</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>28710b632274601fa5f90ed5ca1bac92</srcmd5>
+    <version>7.2</version>
+    <time>1338029983</time>
+    <user>coolo</user>
+    <comment>- update to 7.2
+ * change boolean type</comment>
+    <requestid>121938</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>28710b632274601fa5f90ed5ca1bac92</srcmd5>
+    <version>7.2</version>
+    <time>1340183796</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>28710b632274601fa5f90ed5ca1bac92</srcmd5>
+    <version>7.2</version>
+    <time>1359109602</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>225c5b5f36b2323eac0372632fcc6bf4</srcmd5>
+    <version>7.3</version>
+    <time>1370516779</time>
+    <user>coolo</user>
+    <comment>- updated to 7.3
+ *  Fixed t/02_____destroy.t to make it pass on perl-5.17.11 (forwarded request 177444 from coolo)</comment>
+    <requestid>177473</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>225c5b5f36b2323eac0372632fcc6bf4</srcmd5>
+    <version>7.3</version>
+    <time>1379663559</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>225c5b5f36b2323eac0372632fcc6bf4</srcmd5>
+    <version>7.3</version>
+    <time>1409302170</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>c6ec46ce9e856c0c4ba4f9814f74f1d1</srcmd5>
+    <version>7.4</version>
+    <time>1429989337</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>296982</requestid>
+  </revision>
+</revisionlist>

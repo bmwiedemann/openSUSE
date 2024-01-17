@@ -1,0 +1,41 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f83cd207fe9a872286e9dd7f0d4ee786</srcmd5>
+    <version>1.7.0</version>
+    <time>1592468835</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>815519</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4174dba5b8b45949735fd12441e7e778</srcmd5>
+    <version>1.8.2</version>
+    <time>1631129805</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.2:
+  * allow hyphens in sub domains (#96)
+  * Fix argument declaration (#95)
+  * use better host validation(#92)
+  * do not enforce dot in sub claim email host part (#90)
+  * switch to pytest from nose
+  * fix JWT padding (Thanks @JohnDoee) #81 
+- Drop skip-test_sign_01.patch, no longer required</comment>
+    <requestid>917409</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>ab3469056d7c26e6b5528f3300e5ad7c</srcmd5>
+    <version>1.8.2</version>
+    <time>1649876696</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>969583</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>dbd122f79936ed8e61ac83e9ef4d3aae</srcmd5>
+    <version>1.9.0</version>
+    <time>1671128692</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1042872</requestid>
+  </revision>
+</revisionlist>

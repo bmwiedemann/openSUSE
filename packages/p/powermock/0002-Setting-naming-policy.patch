@@ -1,0 +1,39 @@
+From 01a5c14a254fac3e5b7404e90b2899e1bb99c26b Mon Sep 17 00:00:00 2001
+From: Michael Simacek <msimacek@redhat.com>
+Date: Wed, 22 Jun 2016 12:14:30 +0200
+Subject: [PATCH 2/2] Setting naming policy
+
+---
+ .../src/main/java/org/powermock/api/mockito/repackaged/CGLIBHacker.java | 2 ++
+ .../src/main/java/org/powermock/api/mockito/repackaged/CGLIBHacker.java | 2 ++
+ 2 files changed, 4 insertions(+)
+
+diff --git a/api/mockito/src/main/java/org/powermock/api/mockito/repackaged/CGLIBHacker.java b/api/mockito/src/main/java/org/powermock/api/mockito/repackaged/CGLIBHacker.java
+index a39e1cf..0e32c33 100644
+--- a/api/mockito/src/main/java/org/powermock/api/mockito/repackaged/CGLIBHacker.java
++++ b/api/mockito/src/main/java/org/powermock/api/mockito/repackaged/CGLIBHacker.java
+@@ -16,6 +16,8 @@ class CGLIBHacker {
+             Field createInfoField = reflectOnCreateInfo(methodProxy);
+             createInfoField.setAccessible(true);
+             Object createInfo = createInfoField.get(methodProxy);
++            if (createInfo == null)
++                return;
+             Field namingPolicyField = createInfo.getClass().getDeclaredField("namingPolicy");
+             namingPolicyField.setAccessible(true);
+             if (namingPolicyField.get(createInfo) == null) {
+diff --git a/api/mockito2/src/main/java/org/powermock/api/mockito/repackaged/CGLIBHacker.java b/api/mockito2/src/main/java/org/powermock/api/mockito/repackaged/CGLIBHacker.java
+index a78a962..e457813 100644
+--- a/api/mockito2/src/main/java/org/powermock/api/mockito/repackaged/CGLIBHacker.java
++++ b/api/mockito2/src/main/java/org/powermock/api/mockito/repackaged/CGLIBHacker.java
+@@ -16,6 +16,8 @@ class CGLIBHacker {
+             Field createInfoField = reflectOnCreateInfo(methodProxy);
+             createInfoField.setAccessible(true);
+             Object createInfo = createInfoField.get(methodProxy);
++            if (createInfo == null)
++                return;
+             Field namingPolicyField = createInfo.getClass().getDeclaredField("namingPolicy");
+             namingPolicyField.setAccessible(true);
+             if (namingPolicyField.get(createInfo) == null) {
+-- 
+2.7.4
+

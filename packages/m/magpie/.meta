@@ -1,0 +1,11 @@
+<package name="magpie" project="openSUSE:Factory">
+  <title>Magpie</title>
+  <description>Magpie is a X11 window manager and compositor library.
+
+It contains functionality related to, among other things, window management, window compositing, focus tracking, workspace management, keybindings and monitor configuration.
+
+Internally it uses a fork of Cogl, a hardware acceleration abstraction library used to simplify usage of OpenGL pipelines, as well as a fork of Clutter, a scene graph and user interface toolkit.
+
+Magpie is a soft-fork of GNOME's mutter at version 43 tailored to the requirements of the Budgie Desktop 10 series (from v10.8 and later). Magpie allows mutter based desktops such as GNOME Shell to co-exist since the key-components such as libmagpie are separated by both name and file-system install location.</description>
+  <devel project="X11:Solus" package="magpie"/>
+</package>

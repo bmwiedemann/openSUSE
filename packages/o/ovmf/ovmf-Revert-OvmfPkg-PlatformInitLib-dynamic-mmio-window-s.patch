@@ -1,0 +1,28 @@
+From 5b3a40038886774228826b42c9aa3c9645a799a9 Mon Sep 17 00:00:00 2001
+From: "Lee, Chun-Yi" <jlee@suse.com>
+Date: Wed, 15 Mar 2023 17:21:25 +0800
+Subject: [PATCH 6/6] Revert "OvmfPkg/PlatformInitLib: dynamic mmio window
+ size"
+
+This reverts commit ecb778d0ac62560aa172786ba19521f27bc3f650.
+
+Joey Lee:
+Only revert one line to keep this workaround patch simple. Because
+bsc#1205588 is a SUSE specific issue. 
+
+---
+ OvmfPkg/Library/PlatformInitLib/MemDetect.c | 28 ---------------------
+ 1 file changed, 28 deletions(-)
+
+Index: edk2-edk2-stable202305/OvmfPkg/Library/PlatformInitLib/MemDetect.c
+===================================================================
+--- edk2-edk2-stable202305.orig/OvmfPkg/Library/PlatformInitLib/MemDetect.c
++++ edk2-edk2-stable202305/OvmfPkg/Library/PlatformInitLib/MemDetect.c
+@@ -855,7 +855,6 @@ PlatformAddressWidthInitialization (
+   PlatformAddressWidthFromCpuid (PlatformInfoHob, TRUE);
+   if (PlatformInfoHob->PhysMemAddressWidth != 0) {
+     // physical address width is known
+-    PlatformDynamicMmioWindow (PlatformInfoHob);
+     return;
+   }
+ 

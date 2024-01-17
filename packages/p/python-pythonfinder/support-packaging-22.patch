@@ -1,0 +1,66 @@
+From a8a74b076c43c9fc5af7e52f7fc9cd2bd394bd0f Mon Sep 17 00:00:00 2001
+From: finswimmer <finswimmer77@gmail.com>
+Date: Wed, 21 Dec 2022 12:04:47 +0100
+Subject: [PATCH 1/2] fix: catch InvalidVersion instead of handling
+ LegacyVersion
+
+LegacyVersion was removed from packaging in version 22.0
+---
+ src/pythonfinder/utils.py | 11 +++++++----
+ 1 file changed, 7 insertions(+), 4 deletions(-)
+
+diff --git a/src/pythonfinder/utils.py b/src/pythonfinder/utils.py
+index 4330e17..2b28c2f 100644
+--- a/src/pythonfinder/utils.py
++++ b/src/pythonfinder/utils.py
+@@ -9,7 +9,7 @@
+ from threading import Timer
+ 
+ import attr
+-from packaging.version import LegacyVersion, Version
++from packaging.version import Version, InvalidVersion
+ 
+ from .compat import Path, TimeoutError, lru_cache  # noqa
+ from .environment import MYPY_RUNNING, PYENV_ROOT, SUBPROCESS_TIMEOUT
+@@ -130,12 +130,15 @@ def parse_python_version(version_str):
+     is_devrelease = True if version_dict.get("dev") else False
+     if patch:
+         patch = int(patch)
+-    version = None  # type: Optional[Union[Version, LegacyVersion]]
++
++    version = None  # type: Optional[Version]
++
+     try:
+         version = parse_version(version_str)
+-    except TypeError:
++    except (TypeError, InvalidVersion):
+         version = None
+-    if isinstance(version, LegacyVersion) or version is None:
++
++    if version is None:
+         v_dict = version_dict.copy()
+         pre = ""
+         if v_dict.get("prerel") and v_dict.get("prerelversion"):
+
+From e9ff2792712615965b793b6b4cc26c28f88cdb2c Mon Sep 17 00:00:00 2001
+From: finswimmer <finswimmer77@gmail.com>
+Date: Wed, 21 Dec 2022 12:12:28 +0100
+Subject: [PATCH 2/2] chore: set minimum required packaging version to 22.0
+
+---
+ setup.cfg | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.cfg b/setup.cfg
+index 9d615bf..fb83de1 100644
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -39,7 +39,7 @@ package_data =
+ install_requires =
+     attrs
+     cached-property
+-    packaging
++    packaging>=22.0
+ 
+ [options.packages.find]
+ where = src

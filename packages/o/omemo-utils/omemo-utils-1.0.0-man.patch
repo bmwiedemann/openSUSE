@@ -1,0 +1,63 @@
+From 866db1fc3577c93e1be44d558feca5b5a679d33c Mon Sep 17 00:00:00 2001
+From: Michael Vetter <jubalh@iodoru.org>
+Date: Tue, 11 Oct 2022 12:03:10 +0200
+Subject: [PATCH] Add basic man page
+
+---
+ Makefile |  2 ++
+ omut.1   | 33 +++++++++++++++++++++++++++++++++
+ 2 files changed, 35 insertions(+)
+ create mode 100644 omut.1
+
+diff --git a/Makefile b/Makefile
+index ed216d1..74e4e2b 100644
+--- a/Makefile
++++ b/Makefile
+@@ -15,6 +15,8 @@ all: test omut
+ install: omut
+ 	mkdir -p $(DESTDIR)$(PREFIX)/bin
+ 	cp omut $(DESTDIR)$(PREFIX)/bin
++	mkdir -p $(DESTDIR)$(PREFIX)/share/man/man1
++	cp omut.1 $(DESTDIR)$(PREFIX)/share/man/man1/omut.1
+ 
+ uninstall: omut
+ 	rm $(DESTDIR)$(PREFIX)/bin/omut
+diff --git a/omut.1 b/omut.1
+new file mode 100644
+index 0000000..253d8c4
+--- /dev/null
++++ b/omut.1
+@@ -0,0 +1,33 @@
++.TH man 1 "2022-10-11" "1.0.0" "Utilities for OMEMO media sharing"
++.SH NAME
++omemo-utils - Utilities for OMEMO media sharing
++.SH SYNOPSIS
++.B omut
++[\-d] [\-o FILE] URL
++.SH DESCRIPTION
++.B omemo-utils
++ are utilities for OMEMO media sharing.
++The binary is called omut.
++By default the downloaded file will be send to standard output.
++.br
++.SH OPTIONS
++.TP
++.BI "\-d"
++Enable debug output.
++.br
++.TP
++.BI "\-o FILE"
++Redirect the output to a file.
++.SH BUGS
++Bugs can be reported by raising an issue at the Github issue tracker:
++.br
++.PP
++<https://github.com/wstrm/omemo-utils/issues>
++.br
++.SH AUTHOR
++Copyright (C) 2020 \- 2022  William Wennerström <william@wstrm.dev>.
++.br
++Licensed under MIT.
++.br
++.br
++Man page is written by Michael Vetter <jubalh@iodoru.org>.

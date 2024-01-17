@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>78c8431e515250d7926de0842326d40b</srcmd5>
+    <version>0.9.3+0</version>
+    <time>1693482355</time>
+    <user>anag+factory</user>
+    <comment>10.8</comment>
+    <requestid>1108121</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>96f43807edf440668f3fa22331e78caf</srcmd5>
+    <version>0.9.3+0</version>
+    <time>1693570768</time>
+    <user>anag+factory</user>
+    <comment>- Remove wayland build dependencies: not needed until 1.0 ABI
+- Sync meson options with mutter
+</comment>
+    <requestid>1108279</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>a32a159578c3b6b36309d26738ca0efb</srcmd5>
+    <version>0.9.3+0</version>
+    <time>1695412205</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1112980</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,85 @@
+Upgrade openssl tarball
+======================
+
+Sometimes you need also update openssl source code tarball when
+upgrading EDK2 source code. Normally you should see similar patch
+commit in EDK2 git repo:
+
+commit 4ca4041b0dbb310109d9cb047ed428a0082df395
+Author: Sheng Wei <w.sheng@intel.com>
+Date:   Tue Feb 28 10:43:57 2023 +0800
+
+    CryptoPkg/OpensslLib: Upgrade OpenSSL to 1.1.1t
+
+Then you will need to update openssl-%{openssl_version}.tar.gz and
+openssl-%{openssl_version}.tar.gz.asc signature. You can find them
+from https://www.openssl.org/source/old/1.1.1/
+e.g.
+https://www.openssl.org/source/old/1.1.1/openssl-1.1.1t.tar.gz 
+https://www.openssl.org/source/old/1.1.1/openssl-1.1.1t.tar.gz.asc
+
+Update the key of signature for tarball 
+----------------------------------------
+You will use "osc ci" command to commit new openssl tarball to OBS.
+But sometimes you will see fail like this:
+
+ovmf> osc ci -m "Upgrade OpenSSL to 1.1.1t"
+- package has ovmf-rpmlintrc: (unchanged)
+gpg: Signature made Tue 07 Feb 2023 09:37:18 PM CST
+gpg:                using RSA key 7953AC1FBC3DC8B3B292393ED5E9E43F7DF9EE8C
+gpg: Can't check signature: No public key
+ERROR: signature ovmf/openssl-1.1.1t.tar.gz.asc does not validate
+
+It means that osc caommand didn't find corresponding key to validate
+openssl-%{openssl_version}.tar.gz.asc. It will stop to submit your change
+to OBS.
+
+In the above example, it indicates that the signature is using RSA key
+7953AC1FBC3DC8B3B292393ED5E9E43F7DF9EE8C. You should go to openssl's
+"OpenSSL Technical Committee" page to download the corresponding key
+to local. In this case:
+
+https://www.openssl.org/community/otc.html
+Richard Levitte (I)             7953 AC1F BC3D C8B3 B292 393E D5E9 E43F 7DF9 EE8C
+
+Then you just use downloaded key to overwrite openssl.keyring file.  
+e.g.
+ovmf> cp 7953AC1FBC3DC8B3B292393ED5E9E43F7DF9EE8C openssl.keyring
+
+Then the osc verification of openssl-%{openssl_version}.tar.gz.asc will pass.
+Like this:
+
+ovmf> osc ci -m "Upgrade OpenSSL to 1.1.1t"
+(W) Attention, 7953AC1FBC3DC8B3B292393ED5E9E43F7DF9EE8C is not mentioned in spec files as source or patch.
+###ASK ovmf/7953AC1FBC3DC8B3B292393ED5E9E43F7DF9EE8C
+- package has ovmf-rpmlintrc: (unchanged)
+gpg: Signature made Tue 07 Feb 2023 09:37:18 PM CST
+gpg:                using RSA key 7953AC1FBC3DC8B3B292393ED5E9E43F7DF9EE8C
+gpg: Good signature from "Richard Levitte <richard@levitte.org>" [unknown]
+gpg:                 aka "Richard Levitte <levitte@lp.se>" [unknown]
+gpg:                 aka "Richard Levitte <levitte@openssl.org>" [unknown]
+
+Please maintain the openssl.keyring file in ovmf package with new openssl
+tarball and signature. 
+
+Take the key of signature from gpg server
+----------------------------------------- 
+
+Sometimes that the gpg key will be removed or changed from otc.html on
+www.openssl.org, you can NOT find the key for tarball verification.
+
+Another way for getting the gpg key is from key server.
+e.g.
+gpg --keyserver 'keys.openpgp.org' --recv-keys 'DC7032662AF885E2F47F243F527466A21CA79E6D'
+
+The above command will download the key from gpg key server to your local
+machine. Then you can use it to verify openssl source code tarball:
+
+gpg --verify openssl-1.1.1u.tar.gz.asc openssl-1.1.1u.tar.gz
+
+If you confirmed that the key can be used to verify tarball. Then you can
+export it to openssl.keyring file for uploading to OBS/IBS: 
+
+gpg2 -a --export DC7032662AF885E2F47F243F527466A21CA79E6D > openssl.keyring
+
+

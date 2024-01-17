@@ -1,0 +1,64 @@
+-------------------------------------------------------------------
+Sun Aug 20 06:28:28 UTC 2023 - Marguerite Su <i@marguerite.su>
+
+- update to 5.1.0
+  * some table's matching key is updated to * instead of old ?,
+    to solve the full width ? are not able to be used. 
+
+-------------------------------------------------------------------
+Mon May 22 11:51:16 UTC 2023 - Marguerite Su <i@marguerite.su>
+
+- Update to 5.0.13
+  * add all size of icon
+
+-------------------------------------------------------------------
+Sun Nov 20 10:39:02 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
+
+- Update to 5.0.12
+  * Update translation
+
+-------------------------------------------------------------------
+Tue Jul  5 11:29:26 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
+
+- Update to 5.0.11
+  * Update translation
+
+-------------------------------------------------------------------
+Wed Mar 16 11:46:24 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.9
+  * translation update
+
+-------------------------------------------------------------------
+Wed Dec 15 12:48:57 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.7
+  * add wubi98
+
+-------------------------------------------------------------------
+Wed May  5 08:16:32 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.4
+  * update translation
+- changes in version 5.0.3
+  * update licenses
+
+-------------------------------------------------------------------
+Sun Jan 31 04:24:10 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.2
+
+-------------------------------------------------------------------
+Sun Dec  6 05:50:48 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.1
+
+-------------------------------------------------------------------
+Tue Nov 10 07:33:23 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.0
+
+-------------------------------------------------------------------
+Fri Sep  4 06:45:15 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- initial package

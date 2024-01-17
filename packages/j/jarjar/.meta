@@ -1,0 +1,10 @@
+<package name="jarjar" project="openSUSE:Factory">
+  <title>Repackage Java libraries</title>
+  <description>Jar Jar Links is a utility that makes it easy to repackage Java
+libraries and embed them into your own distribution. This is useful for
+two reasons: You can easily ship a single jar file with no external
+dependencies. You can avoid problems where your library depends on a
+specific version of a library, which may conflict with the dependencies
+of another library.</description>
+  <devel project="Java:packages" package="jarjar"/>
+</package>

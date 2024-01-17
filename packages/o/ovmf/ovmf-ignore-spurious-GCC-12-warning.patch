@@ -1,0 +1,60 @@
+diff --git a/BaseTools/Source/C/DevicePath/DevicePathUtilities.c b/BaseTools/Source/C/DevicePath/DevicePathUtilities.c
+index 2ffefa8..c9fb432 100644
+--- a/BaseTools/Source/C/DevicePath/DevicePathUtilities.c
++++ b/BaseTools/Source/C/DevicePath/DevicePathUtilities.c
+@@ -16,6 +16,10 @@
+ #include "UefiDevicePathLib.h"
+ #include <Protocol/DevicePathUtilities.h>
+ 
++#if __GNUC__ >= 12
++#  pragma GCC diagnostic ignored "-Wstringop-overflow"
++#endif
++
+ //
+ // Template for an end-of-device path node.
+ //
+diff --git a/BaseTools/Source/C/GenFfs/GenFfs.c b/BaseTools/Source/C/GenFfs/GenFfs.c
+index 949025c..be55a52 100644
+--- a/BaseTools/Source/C/GenFfs/GenFfs.c
++++ b/BaseTools/Source/C/GenFfs/GenFfs.c
+@@ -36,6 +36,10 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
+ #define UTILITY_MAJOR_VERSION   0
+ #define UTILITY_MINOR_VERSION   1
+ 
++#if __GNUC__ >= 12
++#  pragma GCC diagnostic ignored "-Wuse-after-free"
++#endif
++
+ STATIC CHAR8 *mFfsFileType[] = {
+   NULL,                                   // 0x00
+   "EFI_FV_FILETYPE_RAW",                  // 0x01
+diff --git a/BaseTools/Source/C/GenSec/GenSec.c b/BaseTools/Source/C/GenSec/GenSec.c
+index d54a4f9..fb40ad3 100644
+--- a/BaseTools/Source/C/GenSec/GenSec.c
++++ b/BaseTools/Source/C/GenSec/GenSec.c
+@@ -37,6 +37,10 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
+ #define UTILITY_MAJOR_VERSION   0
+ #define UTILITY_MINOR_VERSION   1
+ 
++#if __GNUC__ >= 12
++#  pragma GCC diagnostic ignored "-Wuse-after-free"
++#endif
++
+ STATIC CHAR8      *mSectionTypeName[] = {
+   NULL,                                 // 0x00 - reserved
+   "EFI_SECTION_COMPRESSION",            // 0x01
+diff --git a/BaseTools/Source/C/LzmaCompress/Sdk/C/LzmaEnc.c b/BaseTools/Source/C/LzmaCompress/Sdk/C/LzmaEnc.c
+index 4e9b499..ab9b7cc 100644
+--- a/BaseTools/Source/C/LzmaCompress/Sdk/C/LzmaEnc.c
++++ b/BaseTools/Source/C/LzmaCompress/Sdk/C/LzmaEnc.c
+@@ -40,6 +40,10 @@ static unsigned g_STAT_OFFSET = 0;
+ 
+ #define REP_LEN_COUNT 64
+ 
++#if __GNUC__ >= 12
++#  pragma GCC diagnostic ignored "-Wdangling-pointer"
++#endif
++
+ void LzmaEncProps_Init(CLzmaEncProps *p)
+ {
+   p->level = 5;

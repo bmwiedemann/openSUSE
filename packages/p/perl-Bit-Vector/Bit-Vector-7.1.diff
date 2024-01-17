@@ -1,0 +1,40 @@
+--- examples/SetObject.pl
++++ examples/SetObject.pl
+@@ -1,4 +1,4 @@
+-#!perl
++#!/usr/bin/perl
+ 
+ ###############################################################################
+ ##                                                                           ##
+--- examples/benchmk1.pl
++++ examples/benchmk1.pl
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/perl
++#!/usr/bin/perl
+ 
+ use Benchmark;
+ 
+--- examples/benchmk2.pl
++++ examples/benchmk2.pl
+@@ -1,4 +1,4 @@
+-#!perl
++#!/usr/bin/perl
+ 
+ use Benchmark;
+ use Bit::Vector::String;
+--- examples/benchmk3.pl
++++ examples/benchmk3.pl
+@@ -1,4 +1,4 @@
+-#!perl -w
++#!/usr/bin/perl -w
+ 
+ package Bit::Vector;
+ 
+--- examples/primes.pl
++++ examples/primes.pl
+@@ -1,4 +1,4 @@
+-#!perl -w
++#!/usr/bin/perl -w
+ 
+ ###############################################################################
+ ##                                                                           ##

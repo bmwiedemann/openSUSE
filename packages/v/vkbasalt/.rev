@@ -1,0 +1,71 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>69132b32a7f53a9bb2edc2792972c599</srcmd5>
+    <version>0.3.2.2</version>
+    <time>1600701996</time>
+    <user>dimstar_suse</user>
+    <comment>Dependency for upcoming goverlay package.</comment>
+    <requestid>835380</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>469664d6cff15281148f548517e928a0</srcmd5>
+    <version>0.3.2.3</version>
+    <time>1606428867</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>850913</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>73f2023e240f799ad3ef2aa56d1338f2</srcmd5>
+    <version>0.3.2.4</version>
+    <time>1627076474</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.3.2.4.
+  * Fixed more issues where incorrect engine name would be shown
+  * ToGL detection
+  * middle-left and middle-right are now options in the position param
+  * Fixed issue where vulkan driver version would be incorrect
+</comment>
+    <requestid>907917</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>96f6958128c6984f6e6700c09a43ba09</srcmd5>
+    <version>0.3.2.5</version>
+    <time>1645629961</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>956880</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>723c91c5a3bcb7387ec99e2e5fc895b3</srcmd5>
+    <version>0.3.2.6</version>
+    <time>1670954233</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1042690</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2aaa3062315f464c5139edc2658ad607</srcmd5>
+    <version>0.3.2.8</version>
+    <time>1672851275</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1055929</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8b994a67d8a558374885efabfd1808e4</srcmd5>
+    <version>0.3.2.9</version>
+    <time>1680636362</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1077082</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3e9087e4e3aeb6a09690c5550c2eb857</srcmd5>
+    <version>0.3.2.10</version>
+    <time>1701792260</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1130957</requestid>
+  </revision>
+</revisionlist>

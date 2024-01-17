@@ -1,0 +1,129 @@
+-------------------------------------------------------------------
+Tue Apr 14 12:24:17 UTC 2015 - coolo@suse.com
+
+- updated to 7.4
+   see /usr/share/doc/packages/perl-Bit-Vector/CHANGES.txt
+
+-------------------------------------------------------------------
+Mon Jun  3 11:39:43 UTC 2013 - coolo@suse.com
+
+- updated to 7.3
+ *  Fixed t/02_____destroy.t to make it pass on perl-5.17.11
+
+-------------------------------------------------------------------
+Wed May 23 13:19:49 UTC 2012 - coolo@suse.com
+
+- update to 7.2
+ * change boolean type
+
+-------------------------------------------------------------------
+Thu Nov 17 12:56:55 UTC 2011 - coolo@suse.com
+
+- use original tar
+
+-------------------------------------------------------------------
+Wed Dec  1 13:30:47 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Wed Nov 24 21:36:24 UTC 2010 - chris@computersalat.de
+
+- recreated by cpanspec 1.78
+  o fix deps
+
+-------------------------------------------------------------------
+Wed Jan 13 16:36:27 CET 2010 - anicka@suse.cz
+
+- update to 7.1
+ *  Added prefix "BV_" to all global identifiers in "BitVector.c",
+    "BitVector.h" and "Vector.xs"
+ *  Fixed a bug in "GCD2()" in "BitVector.c" with null-size vectors
+ *  Added more test cases for "GCD()" in "t/17_________gcd.t"
+ *  Almost completely rewrote "BitVector_Boot()" in "BitVector.c"
+    in order to fix the problem that it calculated an unsigned
+    long to have 33 bits under MacOS X (Darwin), leading to
+    failing tests in "t/28___chunklist.t"
+ *  BEWARE that the type "ErrCode", which is part of the inter-
+    face of the C library "BitVector.c", has been changed!
+ *  Added more tests and a debugging aid to "t/28___chunklist.t"
+ *  Removed the two example files showing how to freeze/thaw
+    "Bit::Vector" objects using "Data::Dumper", because after
+    closer inspection this proved to be a can of worms
+ *  Replaced "Storable::freeze()" by "Storable::nfreeze()"
+ *  Added more test cases for "Storable"
+ *  Added two example files showing how to freeze/thaw
+    using "Data::Dumper"
+ *  Fixed the bug of "Storable" not reconstructing nested data
+    structures properly which contain several references to
+    the same "Bit::Vector" object
+ *  Fixed hard-coded table size "MASKTABSIZE" in "BitVector.c"
+ *  Small cosmetic fixes to the documentation
+ *  Replaced "STORABLE_thaw()" by "STORABLE_attach()"
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Mon Aug  3 16:04:27 CEST 2009 - anicka@suse.cz
+
+- update to 6.6
+ -  Made the module thread-safe and MacOS X compatible
+ -  Added automatic support for module "Storable"
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:29 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Aug  1 14:46:20 CEST 2005 - mjancar@suse.cz
+
+- update to 6.4
+- add perl-Carp-Clan to Requires
+
+-------------------------------------------------------------------
+Sun Jan 11 10:58:48 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Fri Aug 22 14:05:19 CEST 2003 - mjancar@suse.cz
+
+- require the perl version we build with
+
+-------------------------------------------------------------------
+Tue Jul 15 11:14:17 CEST 2003 - mjancar@suse.cz
+
+- adapt to perl-5.8.1
+- use %perl_process_packlist
+
+-------------------------------------------------------------------
+Mon Jun 16 18:18:03 CEST 2003 - mjancar@suse.cz
+
+- use $RPM_OPT_FLAGS
+- fix filelist
+
+-------------------------------------------------------------------
+Tue May 20 12:38:42 CEST 2003 - mjancar@suse.cz
+
+- remove unpackaged files
+
+-------------------------------------------------------------------
+Sat Oct 12 18:34:04 CEST 2002 - prehak@suse.cz
+
+- update to version 6.3
+- removed .txt extension from documentation files
+
+-------------------------------------------------------------------
+Tue Jul  2 17:40:06 MEST 2002 - mls@suse.de
+
+- remove race in .packlist generation
+
+-------------------------------------------------------------------
+Mon Jan 21 20:03:22 CET 2002 - rvasice@suse.cz
+
+- initial package release (version 6.1)
+

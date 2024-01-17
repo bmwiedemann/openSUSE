@@ -1,0 +1,172 @@
+-------------------------------------------------------------------
+Wed Jan  3 09:41:42 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- require setuptools
+
+-------------------------------------------------------------------
+Thu Nov 16 07:20:10 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 4.13.1
+  csharp target
+  * [CSharp] Fix for #4386 -- change signatures for ReportAttemptingFullContext()
+    and ReportContextSensitivity() to be identical to all other targets (target:csharp,
+    type:cleanup)
+  go target
+  * Move GetText(), SetText(), and String() from CommonToken to BaseToken
+    (target:go, type:cleanup)
+  * Restore "Obtained from string" source name. (target:go, type:cleanup)
+  * fix: Fix very minor code issues spotted by goreportcard.com (target:go, type:cleanup)
+  java target
+  * Java: suppress this-escape warning introduced in JDK 21. (actions, target:java)
+  javascript target
+  * Adds default targets for babel configuration (target:javascript)
+  * fix dependabot warnings (target:javascript, type:cleanup)
+  swift target
+  * [SWIFT] Add Antlr4Dynamic product (target:swift)
+  * Cleanup duplicate SwiftTarget code (target:swift, type:cleanup)
+  dart target
+  * [Dart] Fix for #4320--export additional types (type:bug, target:dart)
+- from version 4.13.0
+  Issues fixed
+  * antlr4 jar doubled in size in 4.9.3 (unicode, comp:performance)
+  * Go: exponentially bad/absymal performance as of ... (type:bug, target:go)
+  * Go runtime panic (type:bug, target:go)
+  Improvements, features
+  * Update LexerATNSimulator.cs with virtual Consume (type:improvement, target:csharp)
+  * Feature/fixembedding (type:improvement, target:go, comp:performance)
+  * Provide Javascript port of TokenStreamRewriter (type:feature,
+    target:javascript, target:typescript)
+- from version 4.12.0
+  Issues fixed
+  * github actions now fail for python2 and ubuntu clang and ubuntu swift
+    (comp:runtime, comp:build, comp:testing)
+  * js mergeArrays output differs from java (atn-analysis, target:javascript)
+  * C++ target fails Performance/DropLoopEntryBranchInLRRule_4.txt
+    (atn-analysis, type:bug, target:cpp)
+  * Wrong grammarFileName in generated code (code-gen, type:bug)
+  * C++ crashes on new test ParserExec/ListLabelsOnRuleRefStartOfAlt.txt
+    (atn-analysis, type:bug, target:cpp)
+  * [JavaScript runtime] Bad field name, bad comments (type:bug)
+  Improvements, features
+  * Fully qualify std::move invocations to fix -Wunqualified-std-cast-call
+    (type:improvement, target:cpp)
+  * Extract FileUtils updates by @ericvergnaud (type:improvement,
+    cross-platform-issue, comp:testing)
+  * Extract unit test updates by @ericvergnaud needed for TypeScript
+    (type:improvement, comp:testing)
+  * [Go target] Fix for #3926: Add accessors for tree navigation to interfaces
+    in generated parser (trees-contexts, code-gen, type:improvement, target:go)
+  * GitHub Workflows security hardening (actions, type:improvement, comp:testing)
+- from version 4.11.1
+  * Just fixes 4.11.0 release issue. I forgot to change runtime
+    tool version so it didn't say SNAPSHOT.
+- from version 4.11.0
+  Issues fixed
+  * Disable failing CI tests in master (comp:build, comp:testing)
+  * Create accessor for Go-based IntervalSet.intervals (target:go)
+  * Grammar Name Conflict Golang with SPARQL issue (target:go, type:cleanup)
+  * Dependency declaration error in ANTLR 4.10.1 (comp:build)
+  * Drop old version of Visual Studio C++ (2013, 2015, 2017)
+    (comp:build, target:cpp)
+  * Circular grammar inclusion causes stack overflow in the tool.
+    (comp:tool, type:bug)
+  * Cpp, Go, JavaScript, Python2/3: Template rendering error. (code-gen, comp:runtime,
+    target:java, target:javascript, target:python2, target:python3, target:go)
+  Improvements, features
+  * Augment error message during testing to include full cause of problem.
+    (type:improvement, comp:testing)
+  * Include swift & tool verification in CI workflow (type:improvement,
+    comp:build, cross-platform-issue, target:swift)
+  * Issue #3783: CI Check Builds (type:improvement, comp:build,
+    cross-platform-issue, comp:testing)
+  * Parallel lock free testing, remove potential deadlocks, cache static data,
+    go to descriptor via test (comp:runtime, type:improvement, comp:testing)
+  * update getting-started doc (type:improvement, comp:doc)
+  * Getting Started has error (type:improvement, comp:doc)
+  * new nuget directory for building ANTLR4 C++ runtime as 3 Nuget packages
+    (type:improvement, comp:build, target:cpp)
+  * Add interp tool like TestRig (comp:tool, type:feature)
+  * Issue 3720: Java 2 Security issue (type:improvement, target:java)
+  * Cpp: Disable warnings for external project (type:bug, type:improvement, target:cpp)
+  * Fix Docker README for arm OS user (type:improvement, comp:doc)
+- from version 4.10.1
+  * [C++] Remove reference to antlrcpp:s2ws
+  * Update publishing instruction for Dart
+- from version 4.10.0
+  Issues fixed
+  * C++ runtime: Version identifier macro ? (target:cpp, type:cleanup)
+  * Generating XPath lexer/parser (actions, type:bug)
+  * do we need this C++ ATN serialization? (target:cpp, type:cleanup)
+  * Incorrect type of token with number 0xFFFF because of incorrect
+    ATN serialization (atn-analysis, type:bug)
+  * Clean up ATN serialization: rm UUID and shifting by value of 2
+    (atn-analysis, type:cleanup)
+  * The parseFile method of the InterpreterDataReader class is missing
+    code: "line = br.readLine();" (type:bug, target:java)
+  * antlr.runtime.standard 4.9.3 invalid strong name.
+    (type:bug, comp:build, target:csharp)
+  * Serialized ATN data element 810567 element 11 out of
+    range 0..65535 (atn-analysis, type:cleanup)
+  * Go target, unable to check when custom error strategy
+    is in recovery mode (target:go)
+  * Escape issue for characeters (grammars, type:bug)
+  * antlr4 java.lang.NullPointerException Antlr 4 4.8
+    (grammars, comp:tool, type:bug)
+  * UnsupportedOperationException while generating code for large grammars.
+    (atn-analysis, type:cleanup)
+  * Add a more understandable message than "Serialized ATN data element ....
+    element ... out of range 0..65535" (atn-analysis, type:cleanup)
+  * avoid java.lang.StackOverflowError (lexers, error-handling)
+  * Getting this error: Exception in thread "main" java.lang.UnsupportedOperationException:
+    Serialized ATN data element out of range (atn-analysis, type:cleanup)
+  Improvements, features
+  * Updated getting started with Cpp documentation. (type:improvement, comp:doc)
+  * Escape bad words during grammar generation (code-gen, type:improvement)
+  * Implement caseInsensitive option (lexers, options, type:improvement)
+  * Some tool bugfixes (error-handling, comp:tool, type:improvement, type:cleanup)
+- Run testsuite using the tests/run.py script instead of %pyunittest
+- Switch build systemd from setuptools to pyproject.toml
+- Update BuildRequires from pyproject.toml
+- Update filename pattern in %files section
+
+-------------------------------------------------------------------
+Tue May 24 12:02:27 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 4.9.3
+  Issues fixed
+  * Swift Target Crashes with Multi-Threading
+  * JavaScript Runtime bug
+  * Go target, cannot use superClass for the lexer grammar!
+  * Python runtime is inconsistent with Java
+  * FunctionDef source extract using getText()
+  * Provide .NET Framework target in the csharp nuget package
+  * Go target for Antlr tool, type ",int8" => "int8"
+  * Flutter/Dart web support
+  * Allow Antlr Javascript runtime to be loaded into Kindle Touch
+  * Fix Go test suite
+  * Weird error
+  Improvements, features
+  * [C++] Use faster alternative to dynamic_cast when not testing inherit
+  * Stackoverflow after upgrading from 4.6 to 4.7
+- from version 4.9.2
+  Issues fixed
+  * CSharp and Java produce different results for identical input, identical tokens
+  Improvements, features
+  * Moved away from travis-ci.com
+- Source upstream tarball from Github since PyPi tarball no longer ships testsuite
+
+-------------------------------------------------------------------
+Sun Jan 31 10:41:57 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 4.9.1.
+  * Improve python3 performance by adding slots
+  * Fix incorrect python token string templates
+- Add testing.
+- Skip python2 because this is for python3.
+- Use python_alternative
+
+-------------------------------------------------------------------
+Wed Apr 29 12:49:38 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Initial build
+  + Version 4.8

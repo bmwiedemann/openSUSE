@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a07473afb0a42d1b275f8356369f80ab</srcmd5>
+    <version>0.0.0+git.1487961889.dc4e96e</version>
+    <time>1602595899</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>839734</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>dcc59cfe07c18288d67d8968bfb582ca</srcmd5>
+    <version>0.0.0+git.1487961889.dc4e96e</version>
+    <time>1606428824</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>850613</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>f72d7afa588451279ebaf86d416f938e</srcmd5>
+    <version>0.0.0+git.1487961889.dc4e96e</version>
+    <time>1611163654</time>
+    <user>dimstar_suse</user>
+    <comment>- Also clone the cfgdiff.1 manual page as an alternative</comment>
+    <requestid>864494</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8387e29c9ee4cbedae3e3104a752aa22</srcmd5>
+    <version>0.0.0+git.1641843506.dc1234a</version>
+    <time>1642835902</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>947920</requestid>
+  </revision>
+</revisionlist>
