@@ -1,7 +1,7 @@
 #
 # spec file for package apache2-mod_auth_openidc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           apache2-mod_auth_openidc
-Version:        2.4.12.2
+Version:        2.4.14.4
 Release:        0
 Summary:        Apache2.x module for an OpenID Connect enabled Identity Provider
 License:        Apache-2.0
