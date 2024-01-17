@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c46c3a36c33fc482c7c1b7046618f054</srcmd5>
+    <version>0.8.1</version>
+    <time>1527933429</time>
+    <user>dimstar_suse</user>
+    <comment>Interval data type for python</comment>
+    <requestid>606170</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d2046d173fd8495d6f3f28f701666660</srcmd5>
+    <version>0.8.1</version>
+    <time>1535705134</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix pytest call so it works on 42.3</comment>
+    <requestid>632128</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>001b8cb5444d1c41809e7bd796435cee</srcmd5>
+    <version>0.8.1</version>
+    <time>1575382913</time>
+    <user>dimstar_suse</user>
+    <comment>- Restrict pytest5 as the tests are not compatible with it</comment>
+    <requestid>753226</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>c0bc4ab751ede225006d339bb617685c</srcmd5>
+    <version>0.8.1</version>
+    <time>1588855787</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not restrict pytest5 as newer updates made it work</comment>
+    <requestid>800593</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8471df328f6bfb7b9eae8962a22e8308</srcmd5>
+    <version>0.9.0</version>
+    <time>1605644792</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>848976</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a37a538ecd80198d63172b346e87cc2d</srcmd5>
+    <version>0.9.2</version>
+    <time>1653313908</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>978586</requestid>
+  </revision>
+</revisionlist>

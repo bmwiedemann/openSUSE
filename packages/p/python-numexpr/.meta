@@ -1,0 +1,7 @@
+<package name="python-numexpr" project="openSUSE:Factory">
+  <title></title>
+  <description>Numexpr is a fast numerical expression evaluator for NumPy.  With it,
+expressions that operate on arrays (like &quot;3*a+4*b&quot;) are accelerated
+and use less memory than doing the same calculation in Python.</description>
+  <devel project="devel:languages:python:numeric" package="python-numexpr"/>
+</package>

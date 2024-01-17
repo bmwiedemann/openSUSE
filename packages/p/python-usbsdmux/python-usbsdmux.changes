@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Thu Mar 17 08:56:58 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 0.2.1. Main changes:
+  * cli: Handle well-known Exceptions
+  * usb2642i2c: Do not create if device node does not exist 
+  * commandline: 'get' must respect hardware signal priority
+- Main changes in 0.2.0:
+  * Remove the service/client split and access /dev/sg* directly
+  * usb2642i2c: Fix sg device open arguments
+  * Simplify the read-only to read-write mode transition
+  * usbsdmux: honor wait argument in mode_disconnect()
+  * main/service: add get action
+  * usdbsdmux: set/enable default output values only for writes
+
+-------------------------------------------------------------------
+Wed May 20 07:35:06 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Move udev to a separate package
+- Use update-alternatives
+
+-------------------------------------------------------------------
+Wed Apr 22 13:42:04 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add udev rule to have /dev/usb-sd-mux/id-<SERIAL> links
+
+-------------------------------------------------------------------
+Wed Apr 22 12:54:23 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Version 0.1.8
+

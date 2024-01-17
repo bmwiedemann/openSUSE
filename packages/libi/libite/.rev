@@ -1,0 +1,109 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d45109ab27c6c50ce83339cde7e85463</srcmd5>
+    <version>2.0.2</version>
+    <time>1530304293</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain libite in Factory</comment>
+    <requestid>618126</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>027b9712355ba92acac4c71670106181</srcmd5>
+    <version>2.0.2</version>
+    <time>1533045574</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626056</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e40ed4640b81f56a80b5ca32fc9de0bb</srcmd5>
+    <version>2.1.0</version>
+    <time>1567010106</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726464</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>931b9b0049163759a386ebd29298f8d7</srcmd5>
+    <version>2.2.0</version>
+    <time>1584531663</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>785962</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>76608c678d8a78ea9085712c069c0788</srcmd5>
+    <version>2.3.1</version>
+    <time>1613427530</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>872005</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b0a51367830037d06a6c4ec1f13768c8</srcmd5>
+    <version>2.4.0</version>
+    <time>1617279427</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>882003</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>737769a6f5d2a5cdf2f87eddbee92a16</srcmd5>
+    <version>2.4.1</version>
+    <time>1635539672</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>928129</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>be1f9fa9a77b00112cc533bc94035cb5</srcmd5>
+    <version>2.5.0</version>
+    <time>1638560133</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>935305</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>808980fae24a9b13519d799b84e3b58b</srcmd5>
+    <version>2.5.2</version>
+    <time>1670068113</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.5.2:
+  * Add printf format attribute hint to all vararg functions.  This will
+    help users of these functions by telling CC what to look for
+  * Fix `fisdir()` segfault on GNU/Hurd
+  * Fix `touch)` on Debian/kFreeBSD, use `creat()` instad of `mknod()`</comment>
+    <requestid>1039769</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>36e556f9c8e011e5c9467c04640ad416</srcmd5>
+    <version>2.5.3</version>
+    <time>1682691814</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.5.3:
+  * Refactor `copyfile()` unit test and verify number of bytes
+    copied
+  * Add missing `rsync()` unit test to ensure proper function
+  * `rsync()` does not copy single files correctly
+  * `copyfile()` does not handle empty source files correctly
+    (error)
+  * `copyfile()` does not properly create destination dir</comment>
+    <requestid>1083360</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0edc9395b2b266803ab993627f4878da</srcmd5>
+    <version>2.6.0</version>
+    <time>1695327245</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1112555</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8bf128c8d3ca23d4b43fd1d2630a642d</srcmd5>
+    <version>2.6.1</version>
+    <time>1699994528</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1125276</requestid>
+  </revision>
+</revisionlist>

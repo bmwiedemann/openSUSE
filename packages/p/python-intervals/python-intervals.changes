@@ -1,0 +1,48 @@
+-------------------------------------------------------------------
+Sun May 22 12:44:49 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 0.9.2
+  * Make invalid value coercions throw ValueCoercionException
+- Update to 0.9.1
+  * Fixed discrete interval length
+
+-------------------------------------------------------------------
+Mon Nov 16 13:49:23 UTC 2020 - Marketa Machova <mmachova@suse.com>
+
+- update to 0.9.0
+  * Fixed interval coercion (#42)
+  * Dropped py27 and py34 support
+
+-------------------------------------------------------------------
+Wed May  6 07:50:09 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not restrict pytest5 as newer updates made it work
+
+-------------------------------------------------------------------
+Tue Dec  3 12:44:42 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Restrict pytest5 as the tests are not compatible with it
+
+-------------------------------------------------------------------
+Wed Aug 29 10:41:42 UTC 2018 - tchvatal@suse.com
+
+- Fix pytest call so it works on 42.3
+
+-------------------------------------------------------------------
+Wed May  9 02:03:28 UTC 2018 - toddrme2178@gmail.com
+
+- Update to version 0.8.1
+  * Fixed interval coercion (#41)
+
+-------------------------------------------------------------------
+Wed Oct 18 16:43:59 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version
+- Update to version 0.8.0
+  * See changelog at https://github.com/kvesteri/intervals/blob/0.8.0/CHANGES.rst
+
+-------------------------------------------------------------------
+Fri Sep 19 09:08:23 UTC 2014 - toddrme2178@gmail.com
+
+- Initial version
+

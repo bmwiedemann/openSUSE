@@ -1,0 +1,142 @@
+-------------------------------------------------------------------
+Sun Nov 12 17:14:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.6.1:
+  * FTBFS uClibc and musl libc, `lite.h` missing `stdarg.h`
+    include
+
+-------------------------------------------------------------------
+Mon Sep 18 14:53:04 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to 2.6.0:
+  Changes
+  * New APIs from the Infix Project:
+    + fexistf()
+    + vfopenf()
+    + popenf()
+    + vreadsnf(), readsnf(), writesf()
+    + vreadllf(), readllf(), readdf()
+    + writellf(), writedf()
+  Fixes
+  * Spellchecking of API docs
+
+-------------------------------------------------------------------
+Thu Apr 27 22:26:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.5.3:
+  * Refactor `copyfile()` unit test and verify number of bytes
+    copied
+  * Add missing `rsync()` unit test to ensure proper function
+  * `rsync()` does not copy single files correctly
+  * `copyfile()` does not handle empty source files correctly
+    (error)
+  * `copyfile()` does not properly create destination dir
+
+-------------------------------------------------------------------
+Sat Dec  3 09:50:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.5.2:
+  * Add printf format attribute hint to all vararg functions.  This will
+    help users of these functions by telling CC what to look for
+  * Fix `fisdir()` segfault on GNU/Hurd
+  * Fix `touch)` on Debian/kFreeBSD, use `creat()` instad of `mknod()`
+
+-------------------------------------------------------------------
+Thu Dec  2 08:47:43 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.5.0
+  Changes
+  * Header files have moved from `lite/*.h` to `libite/*.h` to
+    prevent clashing with DirectFB LiTE library.
+  * Include guards in header files have been renamed, much in the
+    same fashion as the move (above), from `LITE_foo_H_` to
+    `LIBITE_FOO_H_`.
+  * Add configure option to disable compatibility symlink, for
+    systems that do not want name clashes with DirectFB/LiTE, or
+    do not need to be backwards compatible; use `configure
+    --without-symlink`
+  Fixes
+  * Minor, use defensive coding in `strnlen()` replacement.  Only
+    used on systems that do not have a native implementation.
+
+-------------------------------------------------------------------
+Sun Oct 17 13:27:13 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.4.1
+  Changes
+  * Relocate tests/ to test/ in source tree
+  * Relocate docs/ to doc/ in source tree
+  Fixes
+  * Prefix CFLAGS/CPPFLAGS/etc with AM_ in test/Makefile.am to
+    prevent clashing with environment. Fix imported from libuEv
+  * Replace obsolete AM_CONFIG_HEADER with AC_CONFIG_HEADERS
+
+-------------------------------------------------------------------
+Sun Mar 28 13:37:43 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.4.0
+  Changes
+  * Add support for touchf(), formatted string support for touch()
+  * Add support for erasef(), formatted string support for erase()
+  * Add support for strtrim(), trims leading and trailing
+    white-space from a string
+  Fixes
+  * Fix systemf() improper handling of system() return value. Now
+    checks if exited OK, then returning the exit status of the
+    command, or if not exited OK, then checks if the command was
+    signaled, and returns -1 with errno set. This also allows for
+    returning 127, like system(), if the shell, or the program
+    itself, did not exist
+
+-------------------------------------------------------------------
+Sat Feb 13 14:18:13 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.3.1
+  Changes
+  * Add support for fremove(), formatted remove() replacement
+  * Add support for truncatef(), formatted truncate() replacement
+  Fixes
+  * Handle ETIMEDOUT error for connect() call in telnet_open()
+
+-------------------------------------------------------------------
+Tue Mar 17 08:53:03 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to versino 2.2.0
+  Changes
+  * Add support for systemf(), formatted string system() replacement
+  * Add support for fmkpath(), formatted string mkpath()
+  * Add support for fopenf(), formatted string fopen() replacement
+  Fixes
+  * Fix possible memory leak in rsync(), found by Coverity Scan
+  * Check return value of fstat() to prevent bogus destination file
+    times when using copyfile(), found by Coverity Scan
+
+-------------------------------------------------------------------
+Tue Aug 27 10:10:20 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.1.0
+  Changes
+  * Add support for strmatch() and strnmatch()
+  * Add support for yorn(), safe yes-or-no prompt
+  * Add support for telnet expect/session APIs
+  * Add modified printhdr() which takes ANSI attribute
+  Fixes
+  * Fix pidfile_signal(): always return result of kill(), or the
+    result of remove() if we successfully sent SIGKILL
+  * Fix strtonum(): POSIX strtoll() returns EINVAL, check that
+  * Fix #13, support C++ extern "C" {} for header files
+
+-------------------------------------------------------------------
+Sun Jul 29 10:36:46 UTC 2018 - jengelh@inai.de
+
+- Use noun phrase in summary. Ensure neutrality of descriptions.
+
+-------------------------------------------------------------------
+Wed Jun 20 06:56:18 UTC 2018 - mardnh@gmx.de
+
+- Update package summary and description
+
+-------------------------------------------------------------------
+Mon Jun 18 12:33:36 UTC 2018 - mardnh@gmx.de
+
+- Initial package, version 2.0.2

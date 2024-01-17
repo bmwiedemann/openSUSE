@@ -1,0 +1,27 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2017-09-14 22:15:05.095341778 +0200
+
+patch some real bad code
+
+[   19s] traces.c: In function 'refine_tr_refine':
+[   19s] traces.c:5316:12: warning: 'TraceInd' is used uninitialized in this function [-Wuninitialized]
+[   19s]      return TraceInd;
+[   40s] checks6.c: In function 'seemsbad':
+[   40s] checks6.c:124:1: warning: control reaches end of non-void function [-Wreturn-type]
+[   40s]  }
+---
+ checks6.c |    1 +
+ 1 file changed, 1 insertion(+)
+
+Index: nauty2_8_8/checks6.c
+===================================================================
+--- nauty2_8_8.orig/checks6.c
++++ nauty2_8_8/checks6.c
+@@ -121,6 +121,7 @@ seemsbad(char *s)
+         else
+             return FALSE;
+     }
++   return FALSE;
+ }
+ 
+ /***********************************************************************/

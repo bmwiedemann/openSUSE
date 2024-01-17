@@ -1,0 +1,5 @@
+patches:
+  perl-IO-Socket-SSL-use-system-default-cipher-list.patch: -p1 PATCH-FIX-UPSTREAM (bsc1200295) perl-IO-Socket-SSL doesn't follow system "PROFILE=SYSTEM" openSSL ciphers - https://git.centos.org/rpms/perl-IO-Socket-SSL/blob/e0b0ae04f5cdb41b1f29cb7d76c23abba7ac35e9/f/SOURCES/IO-Socket-SSL-2.066-use-system-default-cipher-list.patch
+ignore_requires: Mozilla::CA
+prep: |-
+ rm README.Win32

@@ -1,0 +1,127 @@
+diff -uNr driverctl-0.111/driverctl driverctl-0.111+git20220928.ec10248/driverctl
+--- driverctl-0.111/driverctl	2020-02-05 17:49:46.000000000 +0100
++++ driverctl-0.111+git20220928.ec10248/driverctl	2022-09-28 18:28:13.000000000 +0200
+@@ -52,6 +52,7 @@
+     echo "                                    for <device>"
+     echo "  list-devices                      List all overridable devices"
+     echo "  list-overrides                    List all currently specified overrides"
++    echo "  list-persisted                    List all persisted overrides"
+     echo
+     echo "Supported options:"
+     echo " -h --help             Show this help"
+@@ -93,13 +94,18 @@
+     fi
+ }
+ 
++function override_is_set()
++{
++    [ "$1" != "(null)" ] && [ "$1" != "" ]
++}
++
+ function list_devices()
+ {
+     devices=()
+     for d in "/sys/bus/$bus/devices"/*; do
+         if [ -f "$d/driver_override" ]; then
+             override="$(< "$d/driver_override")"
+-            if [ "$1" -eq 1 ] && [ "$override" == "(null)" ]; then
++            if [ "$1" -eq 1 ] && ! override_is_set "$override"; then
+                 continue
+             fi
+           
+@@ -115,7 +121,7 @@
+             else
+                 line+=" (none)"
+             fi
+-            if [ "$1" -ne 1 ] && [ "$override" != "(null)" ]; then
++            if [ "$1" -ne 1 ] && override_is_set "$override"; then
+                 line+=" [*]"
+             fi
+ 
+@@ -130,6 +136,19 @@
+     fi
+ }
+ 
++function list_persisted()
++{
++    busL=$(( ${#bus} + 1 ))
++    for d in "$confdir/$bus"-*; do
++        if [ -f "$d" ]; then
++            fn=$(basename "$d")
++            line="${fn:$busL}"
++            line+=" $(< "$d")"
++            echo "$line"
++        fi
++    done
++}
++
+ function set_override()
+ {
+     if [ ! -f "$syspath/driver_override" ]; then
+@@ -145,6 +164,9 @@
+         debug "unsetting driver override for $dev"
+     fi
+     unbind
++    if [ "$drv" = "vfio-pci" ]; then
++      echo -n $(< "$syspath/vendor") $(< "$syspath/device") > "/sys/module/vfio_pci/drivers/pci:vfio-pci/new_id"
++    fi
+     echo "$drv" > "$syspath/driver_override"
+ 
+     if [ "$drv" != "none" ] && [ $probe -ne 0 ]; then 
+@@ -208,6 +230,15 @@
+         devtype="${devclasses[${2:-all}]}"
+         break
+         ;;
++    list-persisted)
++        if [ $# -gt 1 ]; then
++            usage
++            exit 1
++        fi
++
++        cmd=$1
++        break
++        ;;
+     *)
+         usage
+         exit 1
+@@ -254,6 +285,9 @@
+     list-overrides)
+         list_devices 1 "$devtype"
+         ;;
++    list-persisted)
++        list_persisted
++        ;;
+     set-override)
+         set_override "$dev" "$drv"
+         if [ $save -ne 0 ]; then
+diff -uNr driverctl-0.111/driverctl.8 driverctl-0.111+git20220928.ec10248/driverctl.8
+--- driverctl-0.111/driverctl.8	2020-02-05 17:49:46.000000000 +0100
++++ driverctl-0.111+git20220928.ec10248/driverctl.8	2022-09-28 18:28:13.000000000 +0200
+@@ -117,6 +117,13 @@
+ as an optional argument, for example "network" to list only network devices.
+ .RE
+ 
++.PP
++\fBlist-persisted\fR
++.RS 4
++List devices with currently persisted overrides on a bus (\fBpci\fR
++by default) along with their driver to be bound on the next boot.
++.RE
++
+ .SH "EXIT STATUS"
+ On success, 0 is returned, a non-zero failure code otherwise.
+ 
+@@ -147,6 +154,13 @@
+ Remove the override from slot 0000:01:00.1:
+ # driverctl unset-override 0000:01:00.1
+ 
++Transiently remove the override from slot 0000:01:00.0:
++# driverctl --nosave unset-override 0000:01:00.0
++
++Find devices with persisted driver overrides:
++# driverctl list-persisted
++0000:01:00.0 vfio-pci
++
+ .SH FILES
+ \fI/etc/driverctl.d/*\fR
+ 

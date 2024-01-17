@@ -1,0 +1,29 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>394bf98e7bcd9bac5b603a0137a5b2d3</srcmd5>
+    <version>0.1.8</version>
+    <time>1590506169</time>
+    <user>maxlin_factory</user>
+    <comment>Initial version 0.1.8</comment>
+    <requestid>807579</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a5ee446967162a632f525fe1e6635c1c</srcmd5>
+    <version>0.2.1</version>
+    <time>1647532902</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.2.1. Main changes:
+  * cli: Handle well-known Exceptions
+  * usb2642i2c: Do not create if device node does not exist 
+  * commandline: 'get' must respect hardware signal priority
+- Main changes in 0.2.0:
+  * Remove the service/client split and access /dev/sg* directly
+  * usb2642i2c: Fix sg device open arguments
+  * Simplify the read-only to read-write mode transition
+  * usbsdmux: honor wait argument in mode_disconnect()
+  * main/service: add get action
+  * usdbsdmux: set/enable default output values only for writes
+</comment>
+    <requestid>962464</requestid>
+  </revision>
+</revisionlist>

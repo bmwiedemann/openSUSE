@@ -1,0 +1,228 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>62e27fd53a2aedd4ead49f46f7a5750c</srcmd5>
+    <version>0.103000</version>
+    <time>1306312842</time>
+    <user>saschpe</user>
+    <comment>new perl module</comment>
+    <requestid>67629</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>dc86435be3c63063b6100029adaec5a8</srcmd5>
+    <version>0.103000</version>
+    <time>1306312853</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 67629
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>dc86435be3c63063b6100029adaec5a8</srcmd5>
+    <version>0.103000</version>
+    <time>1319182244</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>260cd33afafe8ec048a43b2a991f0707</srcmd5>
+    <version>0.103000</version>
+    <time>1323193166</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d47c33d365cc06cf1ab265a5f6626376</srcmd5>
+    <version>0.103001</version>
+    <time>1337955463</time>
+    <user>coolo</user>
+    <comment>- updated to 0.103001
+ * Small fixes about upload_uri usage (Getty)</comment>
+    <requestid>121942</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>d47c33d365cc06cf1ab265a5f6626376</srcmd5>
+    <version>0.103001</version>
+    <time>1340183801</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>d47c33d365cc06cf1ab265a5f6626376</srcmd5>
+    <version>0.103001</version>
+    <time>1359109609</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7f75db5c2a902384fae8ee127e409412</srcmd5>
+    <version>0.103004</version>
+    <time>1370447432</time>
+    <user>coolo</user>
+    <comment>- updated to 0.103004
+          like 0.103003, but a production release
+          use https by default (thanks, Mike Doherty)
+          cpan-uploader now can take a list of filenames to upload (Thanks,
+          Gabor Szabo!) (forwarded request 177251 from coolo)</comment>
+    <requestid>177352</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>7f75db5c2a902384fae8ee127e409412</srcmd5>
+    <version>0.103004</version>
+    <time>1379663570</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5aae34a90e8cc5b4aa981ebcbb97916e</srcmd5>
+    <version>0.103006</version>
+    <time>1392111830</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>221605</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>5aae34a90e8cc5b4aa981ebcbb97916e</srcmd5>
+    <version>0.103006</version>
+    <time>1409302183</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b698be570284cc4ade4eddb02e744964</srcmd5>
+    <version>0.103008</version>
+    <time>1429346424</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>297529</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0cabb86d07d283f29ddda1bdd3fe8821</srcmd5>
+    <version>0.103009</version>
+    <time>1434133857</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>311539</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>584b7c1569ff5a3f769b75b1ef8d4317</srcmd5>
+    <version>0.103010</version>
+    <time>1440658597</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>325705</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>65ca5b80b75dbce35beb693332ddf822</srcmd5>
+    <version>0.103011</version>
+    <time>1444636912</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>336707</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c9bcce359960a568c11de39bbb697ab1</srcmd5>
+    <version>0.103012</version>
+    <time>1452027291</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>351712</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>f5abf6096d4d83b691208ea35c1e6bce</srcmd5>
+    <version>0.103013</version>
+    <time>1473548132</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>426310</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>e60b27ab3eac25ef32541a053a3b2681</srcmd5>
+    <version>0.103014</version>
+    <time>1592398331</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.103014
+   see /usr/share/doc/packages/perl-CPAN-Uploader/Changes
+  0.103014  2020-06-07 13:40:36-04:00 America/New_York
+          - add a --retries option to make multiple upload attempts in the face
+            of a 500 error (thanks, PERLANCAR)
+- updated to 0.103013
+   see /usr/share/doc/packages/perl-CPAN-Uploader/Changes
+  0.103013  2016-09-06 19:18:12-04:00 America/New_York
+          - the cpan-uploader program now skips directories, while the
+            upload_file method throws an exception on non-files; thanks to
+            Vincent Pit for reporting the weird behavior when trying to upload a
+            directory
+- updated to 0.103012
+   see /usr/share/doc/packages/perl-CPAN-Uploader/Changes
+  0.103012  2015-12-31 21:41:09-05:00 America/New_York
+          - don't chomp undef (Graham Knop)
+- updated to 0.103011
+   see /usr/share/doc/packages/perl-CPAN-Uploader/Changes
+  0.103011  2015-10-05 21:45:26-04:00 America/New_York
+          - document the availability of Config::Identity-based encrypted config
+- updated to 0.103010
+   see /usr/share/doc/packages/perl-CPAN-Uploader/Changes
+  0.103010  2015-08-10 22:23:25-04:00 America/New_York
+          - add --md5 option to print md5sum of uploaded files (Vincent Pit)
+- updated to 0.103009
+   see /usr/share/doc/packages/perl-CPAN-Uploader/Changes
+  0.103009  2015-05-27 13:56:16-04:00 America/New_York
+          - Do (minor) validation on the user in the config file (Mark Fowler)
+- updated to 0.103008
+   see /usr/share/doc/packages/perl-CPAN-Uploader/Changes
+  0.103008  2015-02-08 22:09:59-05:00 America/New_York
+          - fix documentation link to cpan-upload/CONFIGURATION (Kent Fredric)
+          - you can now &quot;cpan-upload http://some.cool/file.tgz&quot; (Barbie)
+          - add --ignore-errors for cpan-upload (perlancar)
+  
+  0.103007  2014-04-04 22:02:22-04:00 America/New_York
+          - added &quot;-c&quot; option to cpan-uploader to specify an alternate config
+- updated to 0.103006
+          update bugtracker and repo metadata
+          Use Config::Identity to permit GPG-encrypting on-disk credentials
+          (thanks, Mike Doherty)
+- updated to 0.103004
+          like 0.103003, but a production release
+          use https by default (thanks, Mike Doherty)
+          cpan-uploader now can take a list of filenames to upload (Thanks,
+          Gabor Szabo!)
+- updated to 0.103001
+ * Small fixes about upload_uri usage (Getty)
+- updated to 0.103000
+ * allow an alternate upload_uri via constructor arg or env var
+- initial package 0.102150
+  * created by cpanspec 1.78.03
+</comment>
+    <requestid>815285</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>e0b29ac9b328243bb5edb8dc1ceb589c</srcmd5>
+    <version>0.103015</version>
+    <time>1598341072</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>828994</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>96b3ea620e79bacc815b50217640b0fb</srcmd5>
+    <version>0.103016</version>
+    <time>1635956773</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>928931</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>c21ddb9cf67d594aeba05c9c53724479</srcmd5>
+    <version>0.103017</version>
+    <time>1672851254</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1055908</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>80899764bc20d408bd9b2564075477ee</srcmd5>
+    <version>0.103018</version>
+    <time>1675177825</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1062266</requestid>
+  </revision>
+</revisionlist>

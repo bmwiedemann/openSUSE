@@ -1,0 +1,236 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>39f2286336e2a02a45b30d7f4bf3155e</srcmd5>
+    <version>0.3.3</version>
+    <time>1549140566</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>670345</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>809fbdc303cdbd0ff1a2f35275029b46</srcmd5>
+    <version>0.4.0</version>
+    <time>1557263538</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701008</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a7b0659f2ca9bb840c99379c0c1a5ddd</srcmd5>
+    <version>0.5.0</version>
+    <time>1558036803</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>703034</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>222498515b8732ee7fdc457ac4ce4c49</srcmd5>
+    <version>0.5.1</version>
+    <time>1558340819</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>703557</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>18d98b8ef7255d5a98dc0f5a03f6fc35</srcmd5>
+    <version>0.5.1</version>
+    <time>1560458281</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to mulitbuild to avoid build cycle</comment>
+    <requestid>708170</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ebda017b69ac7058d3a0bfc04c88b12a</srcmd5>
+    <version>0.5.2</version>
+    <time>1564484670</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.2:
+  * #7: Parent of a directory now actually returns the parent.</comment>
+    <requestid>717548</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>aabcd955bb2d4b72ae7536a47bff09a3</srcmd5>
+    <version>0.6.0</version>
+    <time>1567580197</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727096</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f4a05bc35640d22e63cf1652d2d1f4cf</srcmd5>
+    <version>3.1.0</version>
+    <time>1587325201</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop not-removed py2 dependencies
+
+- version update to 3.1.0
+  * #47: ``.open`` now raises ``FileNotFoundError`` and
+    ``IsADirectoryError`` when appropriate.
+  * #44: ``zipp.Path.open()`` now supports a compatible signature
+    as ``pathlib.Path.open()``, accepting text (default) or binary
+    modes and soliciting keyword parameters passed through to
+    ``io.TextIOWrapper`` (encoding, newline, etc). The stream is
+    opened in text-mode by default now. ``open`` no
+    longer accepts ``pwd`` as a positional argument and does not
+    accept the ``force_zip64`` parameter at all. This change is
+    a backward-incompatible change for that single function.
+  * #43: Restored performance of implicit dir computation.
+  * #36: Rebuild package with minimum Python version declared both
+    in package metadata and in the python tag.
+  * #32: For read-only zip files, complexity of ``.exists`` and
+    ``joinpath`` is now constant time instead of ``O(n)``, preventing
+    quadratic time in common use-cases and rendering large
+    zip files unusable for Path. Big thanks to Benjy Weinberger
+    for the bug report and contributed fix (#33).</comment>
+    <requestid>784549</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>01016c6f7f293e2c301249719091af31</srcmd5>
+    <version>3.2.0</version>
+    <time>1603961173</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2.0:
+  * #57 and bpo-40564: Mutate the passed ZipFile object
+  type instead of making a copy. Prevents issues when
+  both the local copy and the caller's copy attempt to
+  close the same file handle.
+  * #56 and bpo-41035: ``Path._next`` now honors
+  subclasses.
+  * #55: ``Path.is_file()`` now returns False for non-existent names.</comment>
+    <requestid>838271</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4072a7dd4afd8d2ce4c54f9aa5e7fa8c</srcmd5>
+    <version>3.4.0</version>
+    <time>1606649216</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.4.0:
+  #68 and bpo-42090: ``Path.joinpath`` now takes arbitrary
+  positional arguments and no longer accepts ``add`` as a
+  keyword argument.
+  Updated project metadata including badges.
+  bpo-42043: Add tests capturing subclassing requirements.
+  #9: ``Path`` objects now expose a ``.filename`` attribute
+  and rely on that to resolve ``.name`` and ``.parent`` when
+  the ``Path`` object is at the root of the zipfile.</comment>
+    <requestid>850769</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e6874b1a9b95f36e0a15ed09b0d5dc98</srcmd5>
+    <version>3.4.1</version>
+    <time>1615552262</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.4.1:
+  * refresh packaging</comment>
+    <requestid>877636</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>295868ef892688ea92c815a42cbc0f8a</srcmd5>
+    <version>3.5.0</version>
+    <time>1626887135</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.5.0:
+  * Added ``.suffix``, ``.suffixes``, and ``.stem`` properties.</comment>
+    <requestid>906829</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ec9172731c91203d2ee20f065e0d007e</srcmd5>
+    <version>3.6.0</version>
+    <time>1634754209</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.6.0:
+  *  Only ``Path`` is exposed in the public API.
+  *  Remove news file intended only for CPython.</comment>
+    <requestid>925743</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e1caeac7c379c897273ba3533e260cd8</srcmd5>
+    <version>3.7.0</version>
+    <time>1641932230</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.7.0:
+  * Require Python 3.7 or later.
+
+- add python-rpm-macros buildrequires</comment>
+    <requestid>945425</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ee752ba4fdda1aec25ddac02c62918ea</srcmd5>
+    <version>3.8.0</version>
+    <time>1654004806</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.8.0:
+  * Removed compatibility code.</comment>
+    <requestid>979729</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>4172bdd3863b424e9d0115556ac9a88c</srcmd5>
+    <version>3.8.1</version>
+    <time>1661863691</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>999761</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>0d6231a9fc4975171d8f36da03113ce3</srcmd5>
+    <version>3.15.0</version>
+    <time>1681654009</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.15.0:
+  * gh-102209: ``test_implied_dirs_performance`` now tests
+  * measures the time complexity experimentally.
+  * Minor cleanup in tests, including #93.
+  * In tests, add a fallback when ``func_timeout`` isn't
+    available.
+  * gh-101566: In ``CompleteDirs``, override ``ZipFile.getinfo``
+  * to supply a ``ZipInfo`` for implied dirs.
+  * gh-101144: Honor ``encoding`` as positional parameter
+  * to ``Path.open()`` and ``Path.read_text()``.
+  * #85: Added support for new methods on ``Path``:
+  * ``match`` * ``glob`` and ``rglob`` * ``relative_to``
+  * ``is_symlink``
+  * Removed 'print' expression in test_pickle.
+  * bpo-43651: Apply ``io.text_encoding`` on Python 3.10 and
+    later.
+  * #81: ``Path`` objects are now pickleable if they've been
+  * constructed from pickleable objects. Any restored objects
+  * will re-construct the zip file with the original arguments.</comment>
+    <requestid>1079595</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>cc26a6df811aa9da3662973268d90818</srcmd5>
+    <version>3.15.0</version>
+    <time>1682193548</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081794</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>940d7690d1c8b938929a5010d7d3c098</srcmd5>
+    <version>3.17.0</version>
+    <time>1701206288</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.17.0:
+  * Added ``CompleteDirs.inject`` classmethod to make available
+    for use elsewhere.
+  * Avoid matching path separators for '?' in glob.
+  * In ``Path.match``, Windows path separators are no longer
+    honored. The fact that they were was incidental and never
+    supported. (#92)
+  * Fixed name/suffix/suffixes/stem operations when no filename
+    is present and the Path is not at the root of the zipfile.
+    (#96)
+  * Reworked glob utilizing the namelist directly. (#101)
+  * Replaced the ``fnmatch.translate`` with a fresh glob-to-regex
+    translator for more correct matching behavior. (#98)
+  * Require Python 3.8 or later.
+
+  * Removed compatibility code.
+- add python-rpm-macros buildrequires
+  *  Remove news file intended only for CPython.
+  * refresh packaging
+  * When adding implicit dirs, ensure that ancestral directories
+  * Declared package as backport.</comment>
+    <requestid>1129068</requestid>
+  </revision>
+</revisionlist>

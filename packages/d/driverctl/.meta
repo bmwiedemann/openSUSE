@@ -1,0 +1,6 @@
+<package name="driverctl" project="openSUSE:Factory">
+  <title>Device driver control utility</title>
+  <description>driverctl is a tool for manipulating and inspecting the system
+device driver choices.</description>
+  <devel project="network" package="driverctl"/>
+</package>
