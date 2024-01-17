@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 17 07:23:47 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.63.2:
+  * re-enable ifElseChain in go critic (#881)
+  * go 1.21.6 (#880)
+  * Bump golang.org/x/net from 0.19.0 to 0.20.0 (#878)
+
+-------------------------------------------------------------------
 Wed Dec 20 12:57:29 UTC 2023 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.63.1:
