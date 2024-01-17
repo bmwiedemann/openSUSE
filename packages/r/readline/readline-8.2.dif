@@ -43,7 +43,7 @@
  	{
  	  scan = rl_line_buffer[rl_point];
  
-@@ -2216,7 +2216,7 @@ rl_completion_matches (const char *text,
+@@ -2232,7 +2232,7 @@ rl_completion_matches (const char *text,
    match_list = (char **)xmalloc ((match_list_size + 1) * sizeof (char *));
    match_list[1] = (char *)NULL;
  
@@ -52,7 +52,7 @@
      {
        if (RL_SIG_RECEIVED ())
  	{
-@@ -2288,7 +2288,7 @@ rl_username_completion_function (const c
+@@ -2304,7 +2304,7 @@ rl_username_completion_function (const c
      }
  
  #if defined (HAVE_GETPWENT)

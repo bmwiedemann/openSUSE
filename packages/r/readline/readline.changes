@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jan 16 07:49:48 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Add upstream patch readline82-008
+  * Add missing prototypes for several function declarations
+- Add upstream patch readline82-009
+  * Fix issue where the directory name portion of the word to be
+    completed (the part that is passed to opendir()) requires both
+    tilde expansion and dequoting.  Readline only performed tilde
+    expansion in this case, so filename completion would fail.
+- Add upstream patch readline82-010
+  * Fix the case where text to be completed from the line buffer
+    (quoted) is compared to the common prefix of the possible
+    matches (unquoted) and the quoting makes the former appear to
+    be longer than the latter. Readline assumes the match doesn't
+    add any characters to the word and doesn't display multiple matches.
+- Port patches
+  * readline-5.2-conf.patch
+  * readline-6.2-metamode.patch
+  * readline-7.0-screen.patch
+  * readline-8.2.dif
+
+-------------------------------------------------------------------
 Tue Nov 21 07:04:06 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Add upstream patch readline82-002
