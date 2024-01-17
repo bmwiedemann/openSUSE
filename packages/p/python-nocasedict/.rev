@@ -1,0 +1,62 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>572b968c593b4d9a0a07926c6d903834</srcmd5>
+    <version>1.0.1</version>
+    <time>1603283893</time>
+    <user>dimstar_suse</user>
+    <comment>new dependency of python-pywbem</comment>
+    <requestid>841609</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>839d5fbc5ea63227db5d90f36ceeb53e</srcmd5>
+    <version>1.0.2</version>
+    <time>1612466585</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.2:
+  * Migrated from Travis and Appveyor to GitHub Actions. This required changes
+    in several areas including dependent packages used for testing and
+    coverage. This did not cause any changes on dependent packages used for the
+    installation of the package.</comment>
+    <requestid>868442</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9ace81918e1969f442652baf0f18bfc7</srcmd5>
+    <version>1.0.3</version>
+    <time>1654869433</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.3:
+  * Mitigated the coveralls HTTP status 422 by pinning coveralls-python to &lt;3.0.0 (issue #55).
+  * Fixed issues raised by new Pylint 2.9 and 2.10.
+  * Fixed a dependency error that caused importlib-metadata to be installed on
+    Python 3.8, while it is included in the Python base.
+  * Disabled new Pylint issue 'consider-using-f-string', since f-strings were
+    introduced only in Python 3.6.
+  * Fixed install error of wrapt 1.13.0 on Python 2.7 on Windows due to lack of
+    MS Visual C++ 9.0 on GitHub Actions, by pinning it to &lt;1.13.
+  * Fixed potential issue with Sphinx/docutils versions on Python 2.7.
+  * Fixed error when installing virtualenv in install test on Python 2.7.
+  * Fixed that the added setup.py commands (test, leaktest, installtest) were
+    not displayed. They are now displayed at verbosity level 1 (using '-v').
+  * Support for Python 3.10: Added Python 3.10 in GitHub Actions tests, and in package metadata.
+  * Removed old tools that were needed for travis and Appveyor but no longer on</comment>
+    <requestid>981385</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4e9927b1690f8f1b1ad03cabc40602e9</srcmd5>
+    <version>1.0.4</version>
+    <time>1664797470</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.4:
+  * Fixed recursion issue with flake8 5.0
+  * Add python 3.7 support</comment>
+    <requestid>1007445</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9cb5f37fccb5088dc634d635f0625956</srcmd5>
+    <version>2.0.1</version>
+    <time>1694971725</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1111340</requestid>
+  </revision>
+</revisionlist>

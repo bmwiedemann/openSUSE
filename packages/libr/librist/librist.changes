@@ -1,0 +1,48 @@
+-------------------------------------------------------------------
+Sun Nov 12 17:00:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.2.10:
+  * segfault in recv path when receiving corrupted data without
+    matching peer
+  * fix compilation on 32bit systems
+  * fix regression in stats obj rtt value
+  * remove unneeded locking in buffer scaling
+  * fix too old packages error due to buffer scaling
+  * fix empty buffer time check
+  * disable buffer negotiation when sender max buffer is smaller
+    than our buffer
+  * fix deadlock caused by wrong lock order when removing peers
+  * fix building Prometheus code against older libmicrohttpd
+  * fix compilation on Hurd
+  * Added support for Nettle+GMP+GnuTLS as a crypto (PSK & SRP)
+    backend
+  * Buffer-min and -max parameters for experimental dynamic buffer
+    scaling (see --help-url)
+  * Performance tuning for better/more efficient recovery at
+    latencies below 50ms
+  * Implemented main profile Keep Alive message format
+  * Binding on IP (*Nix + win32) or iface name (*nix) via miface
+    param for use with outgoing connections
+  * Simplified peer start and keep-alive (on reception of GRE
+    Keepalive)
+  * Connection status callback function for peer added
+  * New API function to get peer-id (for correlation with
+    stats peer-id)
+  * New API function to access underlying socket (for use with
+    DSCP etc)
+  * Prometheus compatible stats output
+  * Higher precision RTT logging
+  * Increased performance of EAP-SRP by only requesting a
+    reauthentication user verifier generation has changed
+  * Added ability to set/exchange passphrase via EAP-SRP
+
+-------------------------------------------------------------------
+Thu Dec  8 12:23:03 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase for summary. Trim marketing from descriptions.
+
+-------------------------------------------------------------------
+Thu Dec  1 17:18:17 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Initial packaging version 0.2.7
+

@@ -1,0 +1,5 @@
+<package name="CalcMySky" project="openSUSE:Factory">
+  <title></title>
+  <description>CalcMySky is a software package that simulates scattering of light by the atmosphere to render daytime and twilight skies (without stars). </description>
+  <devel project="Education" package="CalcMySky"/>
+</package>

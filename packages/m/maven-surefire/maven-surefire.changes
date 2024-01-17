@@ -1,0 +1,36 @@
+-------------------------------------------------------------------
+Fri May  5 08:30:46 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Add _multibuild to define 2nd spec file as additional flavor.
+  Eliminates the need for source package links in OBS.
+
+-------------------------------------------------------------------
+Wed Apr 27 13:52:13 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patches:
+  * 0004-Port-to-current-maven-shared-utils.patch
+    + Add some try/catch blocks so that we catch new exceptions
+      potentially thrown by maven-shared-utils-3.3.x
+  * 0003-Port-to-TestNG-6.11.patch -> 0003-Port-to-TestNG-7.4.0.patch
+    + Allow building with the new testng 7.4.0
+
+-------------------------------------------------------------------
+Tue Mar 22 13:52:58 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with java source and target levels 8
+
+-------------------------------------------------------------------
+Mon Apr 19 16:59:36 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update generate-tarball.sh to use https URL [bsc#1182708]
+
+-------------------------------------------------------------------
+Tue Apr  2 09:06:05 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of maven-surefire 2.22.0
+- Generate and customize ant build files
+- Build the maven plugins as bootstrap packages
+- Added patch:
+  * maven-surefire-bootstrap-resources.patch
+    + Add to the build of the plugins generated files that
+      we cannot generate when building outside maven

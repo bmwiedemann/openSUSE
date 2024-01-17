@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Tue Sep 19 11:10:30 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Do not require maven-javadoc-plugin that we don't use
+
+-------------------------------------------------------------------
+Sat Sep  9 14:47:22 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
+
+-------------------------------------------------------------------
+Wed Mar 30 09:44:55 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build against the standalone JavaEE modules inconditionally
+
+-------------------------------------------------------------------
+Wed Mar 23 10:00:34 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with source and target levels 8
+
+-------------------------------------------------------------------
+Thu Mar 17 12:56:51 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build against standalone jaxb-api on distributions that have JDK
+  without the JavaEE modules
+
+-------------------------------------------------------------------
+Tue Feb 22 18:22:41 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Do not build against the log4j12 packages
+
+-------------------------------------------------------------------
+Tue May 11 17:47:28 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Do not build against the legacy guava version
+
+-------------------------------------------------------------------
+Fri Feb 28 07:15:42 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of prometheus-simpleclient-java 0.8.0

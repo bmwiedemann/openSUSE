@@ -1,0 +1,31 @@
+GNU binaries live in /bin and /usr/bin in SuSE systems:
+
+Index: x3270/Examples/peer_script.expect
+===================================================================
+--- x3270/Examples/peer_script.expect.orig
++++ x3270/Examples/peer_script.expect
+@@ -1,4 +1,4 @@
+-#! /usr/local/bin/expect
++#! /usr/bin/expect
+ # TSO login script, which runs as a peer of x3270.
+ # expect version
+ 
+Index: x3270/Examples/cms_logon.bash
+===================================================================
+--- x3270/Examples/cms_logon.bash.orig	2009-01-17 16:52:06.000000000 +0100
++++ x3270/Examples/cms_logon.bash	2011-09-15 10:00:49.214331232 +0200
+@@ -1,4 +1,4 @@
+-#! /usr/local/bin/bash
++#! /usr/bin/bash
+ 
+ # Copyright (c) 1995-2009, Paul Mattes.
+ # All rights reserved.
+===================================================================
+--- tcl3270/Examples/cms_cmd.tcl3270	2011/09/15 08:15:35	1.1
++++ tcl3270/Examples/cms_cmd.tcl3270	2011/09/15 08:15:45
+@@ -1,4 +1,4 @@
+-#!tcl3270
++#!/usr/bin/tcl3270
+ 
+ # Copyright (c) 2000-2009, Paul Mattes.
+ # All rights reserved.

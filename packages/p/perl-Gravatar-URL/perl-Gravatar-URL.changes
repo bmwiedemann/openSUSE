@@ -1,0 +1,55 @@
+-------------------------------------------------------------------
+Sat Oct  8 16:03:41 UTC 2016 - coolo@suse.com
+
+- updated to 1.07
+   see /usr/share/doc/packages/perl-Gravatar-URL/Changes
+
+  1.07  Wed Aug 10 17:47:19 PDT 2016
+      Bug Fixes
+      * Require an updated version of Net::DNS to avoid
+        "resolver->dnssec(1) without Net::DNS::SEC installed"
+        (Schwern) [github #4]
+  
+      Test Fixes
+      * Fix our fake random number generator to avoid cross platform issues.
+        [rt.cpan.org 71064] [github #7] (Lisa Hare)
+  
+      Distribution
+      * Kwalitee fixups (BooK) (Lisa Hare)
+      * Added a LICENSE file (Lisa Hare)
+      * Now using Travis CI for Unix testing (Schwern)
+      * Now using AppVeyor for Windows testing (Schwern)
+
+-------------------------------------------------------------------
+Tue May 29 13:54:04 UTC 2012 - coolo@suse.com
+
+- updated to 1.06
+    Bug fixes
+    * Fixed some undef warnings during sanitization.
+
+    Test fixes
+    * Adapt to changes in Carp 1.25 [RT#75523]
+
+-------------------------------------------------------------------
+Mon Feb 13 10:52:01 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Tue Nov 29 15:11:01 UTC 2011 - coolo@suse.com
+
+- update to 1.05
+    Security fix
+    * Sanitize DNS results in Libravatar::URL
+
+-------------------------------------------------------------------
+Mon May 30 15:24:22 UTC 2011 - coolo@novell.com
+
+- regenerate with newest cpanspec
+
+-------------------------------------------------------------------
+Fri Apr  8 19:47:44 UTC 2011 - coolo@novell.com
+
+- initial package 1.04
+    * created by cpanspec 1.78.04
+

@@ -1,0 +1,54 @@
+-------------------------------------------------------------------
+Fri Jan 13 13:10:17 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
+
+- Removed PrivateDevices setting and allow access to /dev/net/tun for the
+  service. Updated harden_tinc@.service.patch (also harden_tinc.service.patch 
+  to keep it in sync, even thought nothing really happens in there)
+  (bsc#1181400)
+
+-------------------------------------------------------------------
+Thu Nov 25 07:30:37 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_tinc.service.patch
+  * harden_tinc@.service.patch
+
+-------------------------------------------------------------------
+Tue Feb  4 11:25:55 UTC 2020 - Michele Bologna <Michele.Bologna@suse.com>
+
+- Update to tinc 1.0.36
+- Rename tinc-1.0.35-systemd-path-fix.patch to tinc-systemd-path-fix.patch
+
+-------------------------------------------------------------------
+Mon Feb  3 16:42:12 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
+  shortcut through the -mini flavors.
+
+-------------------------------------------------------------------
+Mon May 20 13:14:03 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add the missing zlib requirement.
+
+-------------------------------------------------------------------
+Fri Apr 19 11:03:50 UTC 2019 - Pavol Cupka <palica@liguros.net>
+
+- Adding tinc.service and tinc@.service
+
+-------------------------------------------------------------------
+Mon Oct  8 21:13:23 UTC 2018 - abergmann@suse.com
+
+- Fix systemd path problem. 
+  * Add tinc-1.0.35-systemd-path-fix.patch  
+
+-------------------------------------------------------------------
+Mon Oct  8 20:04:17 UTC 2018 - abergmann@suse.com
+
+- Security update to version 1.0.35.
+  * Prevent oracle attacks (CVE-2018-16737, CVE-2018-16738).
+  * Prevent a MITM from forcing a NULL cipher for UDP (CVE-2018-16758).
+
+-------------------------------------------------------------------
+Wed Feb  7 09:30:53 UTC 2018 - michele.bologna@suse.com
+- Initial package creation
+

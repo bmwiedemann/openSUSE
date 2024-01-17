@@ -1,0 +1,170 @@
+-------------------------------------------------------------------
+Fri Oct 13 15:11:26 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.8:
+  * Add date to version output
+  * Print meaningful error messages
+  * use cmake as build tool
+  * Add -z option for printing timestamps in front of TCP headers
+
+- Update to version 1.7:
+  * For Y2K38 on 32 bit systems time_t tv_sec can be long long 
+  * Adding tls1.3 decryption support 
+
+-------------------------------------------------------------------
+Sun Feb  5 18:20:24 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.6
+  Changes:
+  * Fix missing port # in pcap files
+  * Print MAC keys only for non AEAD ciphers
+
+-------------------------------------------------------------------
+Thu May 26 13:14:26 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.5
+  Changes
+  * doc: An example use-case of JA3.
+  Other
+  * Add parentheses around MAX and MIN.
+  * Add support for pcap output to FIFO.
+
+-------------------------------------------------------------------
+Mon Apr 12 20:07:03 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Specfile overhaul
+- Update source URL (original upstream is dead)
+- Update to version 1.4
+  * Add support for IPv6 traffic dump
+  * Fix ja3(s) length of strings used in MD5 computation + update
+    MD5 functions.
+  * Add support for ja3 & ja3s.
+- Update to version 1.3
+  * Avoid leak in TCP segment reassembly code.
+  * Avoid client session_id related leak.
+  * Avoid server_random related leak.
+  * Avoid client_random related leak.
+  * Check ssl_decode_enum() return code correctly.
+  * Exit process_tcp_packet() in case TCP header is incomplete.
+  * Check timestamp_diff return code correctly.
+  * Cleanup before exit on error.
+  * Fix for crash if length of captured frame is less than
+    Ethernet header size.
+  * Check packet size before looking at IP header.
+  * Check return code after string extraction.
+  * Limit length during server name decoding.
+  * Decode ClientHello v2 properly.
+  * Output error to stderr.
+  * Avoid leak by freeing SSL decoding context properly.
+  * Close everything properly in case of SIGINT.
+  * Fix leak in associative array implementation.
+  * First import of the JSON output code
+  * Do not print information message when no connection is
+    cleaned at shutdown.
+  * Fix memory leak in ssl_process_server_session_id()
+  * Close global pcap struct properly in case of SIGINT.
+  * Add missing extension names
+  * Code cleanup
+  * Add save decrypted datato pcap. first alpha version.
+  * Fix for use of deprecated OpenSSL HMAC functions.
+  * Fix for type casting related warnings.
+  * Add missing function prototype.
+  * Remove definitions of unused variables.
+  * Fix for uninitialized variables and possible overflow.
+  * Remove unused RCSSTRING variable globally.
+- Drop patches (not longer needed)
+  * ssldump-0.9b3-libpcap.diff
+  * random_return.patch
+  * ssldump-0.9b3-aes.patch
+  * implicit_def.patch
+  * ssldump-0.9b3-newssl.patch
+  * ssldump-cvs-06-19-2006.diff
+  * update-config.patch
+
+-------------------------------------------------------------------
+Tue Mar 24 10:16:11 UTC 2020 - Michael Calmer <mc@suse.com>
+
+- fix macro to fix build on openSUSE Leap 15.2
+
+-------------------------------------------------------------------
+Thu Jun 29 08:58:41 UTC 2017 - mlin@suse.com
+
+- Compile with libpcap-devel-static if Leap
+  * Since pcap updated to new version in 42.3 too, ssldump need to
+    compile with libpcap-devel-static.
+
+-------------------------------------------------------------------
+Fri Jul  3 16:45:13 UTC 2015 - alarrosa@suse.com
+
+- Added a conditional build requirement to compile in versions
+  other than Factory. 
+
+-------------------------------------------------------------------
+Fri Jul  3 07:54:48 UTC 2015 - dimstar@opensuse.org
+
+- BuildRequires libpcap-devel-static instead of libpcap: the static
+  library has been split out.
+
+-------------------------------------------------------------------
+Sun Jan 29 06:51:43 UTC 2012 - coolo@suse.com
+
+- update config.* files - upstream is dead ;(
+
+-------------------------------------------------------------------
+Sun Nov 27 06:48:11 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Thu Jul 26 16:57:55 CEST 2007 - prusnak@suse.cz
+
+- changed libpcap to libpcap-devel in BuildRequires
+
+-------------------------------------------------------------------
+Tue Jun  5 11:21:19 CEST 2007 - mc@suse.de
+
+- add ssldump-cvs-06-19-2006.diff
+- re-work patch for new ssl version 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:41:48 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Oct 14 02:41:30 CEST 2005 - ro@suse.de
+
+- include openssl/md5.h in ssldecode.c 
+
+-------------------------------------------------------------------
+Wed Jul  6 11:25:12 CEST 2005 - choeger@suse.de
+
+- #include <string.h> when using related functions
+
+-------------------------------------------------------------------
+Thu Feb 17 16:44:38 CET 2005 - choeger@suse.de
+
+- Bugfix Bugzilla ID#50952 - ssldump has no support for AES cipher-suites
+
+-------------------------------------------------------------------
+Fri Apr 23 17:06:39 CEST 2004 - choeger@suse.de
+
+- use -fno-strict-aliasing to compile
+- fixed two functions which does not return anything matching
+  their prototypes
+
+-------------------------------------------------------------------
+Thu Feb 12 01:32:49 CET 2004 - ro@suse.de
+
+- adapt to change in libpcap: include moved to pcap_bpf.h
+
+-------------------------------------------------------------------
+Mon Nov  3 11:21:45 CET 2003 - choeger@suse.de
+
+- make it build on biarch platforms
+
+-------------------------------------------------------------------
+Fri Oct 31 17:26:36 CET 2003 - choeger@suse.de
+
+- new package (v0.9b3)
+

@@ -1,0 +1,11 @@
+<package name="tinc" project="openSUSE:Factory">
+  <title>A virtual private network daemon</title>
+  <description>tinc is a Virtual Private Network (VPN) daemon that uses tunnelling
+and encryption to create a secure private network between hosts on
+the Internet. Because the tunnel appears to the IP level network
+code as a normal network device, there is no need to adapt any
+existing software. This tunnelling allows VPN sites to share
+information with each other over the Internet without exposing any
+information to others.</description>
+  <devel project="network:vpn" package="tinc"/>
+</package>

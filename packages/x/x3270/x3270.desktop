@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=x3270
+GenericName=x3270
+Comment=IBM 3270 Terminal Emulator
+Exec=x3270
+Icon=utilities-terminal
+Terminal=false
+Type=Application
+Categories=System;TerminalEmulator;X-GNOME-Utilities;

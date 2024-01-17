@@ -1,0 +1,5 @@
+<package name="prometheus-simpleclient-java" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="prometheus-simpleclient-java"/>
+</package>

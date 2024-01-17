@@ -1,0 +1,322 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f8ae98fdd1ffc9e254d4fe9d3566cda4</srcmd5>
+    <version>2.0.0</version>
+    <time>1606648701</time>
+    <user>dimstar_suse</user>
+    <comment>This is needed in the python36 flavor branch (Staging:N).
+
+It does NOT conflict with python38 standard library (see upstream description)</comment>
+    <requestid>850139</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>37d994c86a0c2473e4283d7638b7fdca</srcmd5>
+    <version>3.1.1</version>
+    <time>1608112732</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>853675</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b110019cf5101a108893cae83b3ff379</srcmd5>
+    <version>3.3.0</version>
+    <time>1608835246</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>857124</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6d4127368b66dfb0ee6af6b3faa7c51e</srcmd5>
+    <version>3.4.0</version>
+    <time>1612182397</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.4.0:
+  * Project now declares itself as being typed.
+  * Additional performance enhancements to distribution
+    discovery.
+  * For PyPA projects, add test ensuring that
+    ``MetadataPathFinder._search_paths`` honors the needed
+    interface. Method is still private.</comment>
+    <requestid>866399</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a33b5fbb55bb1d94225dad14d7f68738</srcmd5>
+    <version>3.7.0</version>
+    <time>1614948182</time>
+    <user>RBrownSUSE</user>
+    <comment>- update to 3.7.0:
+  * #131: Added ``packages_distributions`` to conveniently
+    resolve a top-level package or module to its distribution(s).
+  * #284: Introduces new ``EntryPoints`` object, a tuple of
+    ``EntryPoint`` objects but with convenience properties for
+    selecting and inspecting the results:
+    - ``.select()`` accepts ``group`` or ``name`` keyword
+      parameters and returns a new ``EntryPoints`` tuple
+      with only those that match the selection.
+    - ``.groups`` property presents all of the group names.
+    - ``.names`` property presents the names of the entry points.
+    - Item access (e.g. ``eps[name]``) retrieves a single
+      entry point by name.
+    ``entry_points`` now accepts &quot;selection parameters&quot;,
+    same as ``EntryPoint.select()``.
+    ``entry_points()`` now provides a future-compatible
+    ``SelectableGroups`` object that supplies the above interface
+    but remains a dict for compatibility.
+    In the future, ``entry_points()`` will return an
+    ``EntryPoints`` object, but provide for backward
+    compatibility with a deprecated  ``__getitem__``
+    accessor by group and a ``get()`` method.
+    If passing selection parameters to ``entry_points``, the
+    future behavior is invoked and an ``EntryPoints`` is the
+    result.
+    Construction of entry points using
+    ``dict([EntryPoint, ...])`` is now deprecated and raises
+    an appropriate DeprecationWarning and will be removed in
+    a future version.
+  * #280: ``entry_points`` now only returns entry points for</comment>
+    <requestid>876090</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3c4f146d3cbf670f2510b8d29fd981b7</srcmd5>
+    <version>3.7.2</version>
+    <time>1619552053</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.7.2:
+  * Cleaned up cruft in entry_points docstring.
+  * Internal refactoring to facilitate ``entry_points() -&gt; dict``
+    deprecation.</comment>
+    <requestid>888422</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3950d447922cc9e8b41144276b137d99</srcmd5>
+    <version>4.8.1</version>
+    <time>1632685712</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>920613</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>10ea9b4f323f05ce804b8eb82b8875d9</srcmd5>
+    <version>4.8.2</version>
+    <time>1639075511</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.8.2:
+  * #353: Fixed discovery of distributions when path is empty.</comment>
+    <requestid>935953</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>37c0a5739ef1ba599959804f26ce76de</srcmd5>
+    <version>4.11.3</version>
+    <time>1652188293</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.11.3:
+  * #372: Removed cast of path items in FastPath, not needed.
+  * #369: Fixed bug where ``EntryPoint.extras`` was returning
+    match objects and not the extras strings.
+  * #367: In ``Distribution.requires`` for egg-info, if ``requires.txt``
+    is empty, return an empty list.
+  * bpo-46246: Added ``__slots__`` to ``EntryPoints``.
+  * #365 and bpo-46546: Avoid leaking ``method_name`` in
+    ``DeprecatedList``.
+
+- update to 4.10.1:
+  - #361: Avoid potential REDoS in ``EntryPoint.pattern``. 
+
+- Update to 4.10.0:
+  - #354: Removed Distribution._local factory. This
+    functionality was created as a demonstration of the possible
+    implementation. Now, the pep517 package provides this
+    functionality directly through pep517.meta.load.
+  - Require Python 3.7 or later.
+  - #357: Fixed requirement generation from egg-info when a URL
+    requirement is given.</comment>
+    <requestid>975783</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>f17b9ea96ee72253d0a65bd7436f8211</srcmd5>
+    <version>4.11.3</version>
+    <time>1652389071</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>976127</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>67c01f680515806938bc0c59aefe60ba</srcmd5>
+    <version>4.11.4</version>
+    <time>1654869430</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.11.4:
+ * #379: In ``PathDistribution._name_from_stem``, avoid including
+   parts of the extension in the result.
+ * #381: In ``PathDistribution._normalized_name``, ensure names
+   loaded from the stem of the filename are also normalized, ensuring
+   duplicate entry points by packages varying only by non-normalized
+   name are hidden.</comment>
+    <requestid>981371</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>5c5a4aef8384d22cebc159e374782c8e</srcmd5>
+    <version>4.12.0</version>
+    <time>1659554180</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>992111</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a83831cf48873b4dd47a1a17d11ece93</srcmd5>
+    <version>5.0.0</version>
+    <time>1667579491</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032185</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>a0690b5c540fa4a08133fc400d27d5fa</srcmd5>
+    <version>5.1.0</version>
+    <time>1670430878</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1040482 from yarunachalam
+
+- Update to versino 5.1.0 
+    #415: Instrument SimplePath with generic support.</comment>
+    <requestid>1040692</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>0eaf746af8db786223c9125dfe0f5c3d</srcmd5>
+    <version>6.0.0</version>
+    <time>1672851048</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.0.0:
+  * #419: Declared ``Distribution`` as an abstract class, enforcing
+  definition of abstract methods in instantiated subclasses. It's no
+  longer possible to instantiate a ``Distribution`` or any subclasses
+  unless they define the abstract methods.
+  * #371: Deprecated expectation that ``PackageMetadata.__getitem__``
+  will return ``None`` for missing keys. In the future, it will raise a
+  ``KeyError``.</comment>
+    <requestid>1046282</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>4097cd1472d06000aa485d29c164dae7</srcmd5>
+    <version>6.1.0</version>
+    <time>1679416805</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.1.0:
+  * ``packages_distributions`` now honors packages and
+    modules with Python modules that not ``.py`` sources (e.g.
+    ``.pyc``, *   ``.so``).
+  * #434: Expand protocol for ``PackageMetadata.get_all`` to
+    match the upstream implementation of ``email.message.Message.get_all``
+    in python/typeshed#9620.</comment>
+    <requestid>1072924</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>c194bab67397cf050028130dcb11e2a5</srcmd5>
+    <version>6.1.0</version>
+    <time>1680635816</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unneeded BuildRequires on pep517.</comment>
+    <requestid>1076787</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>820416ef43f242005f9e80cbf0b8c163</srcmd5>
+    <version>6.3.0</version>
+    <time>1681654001</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.3.0:
+  * #115: Support ``installed-files.txt`` for
+    ``Distribution.files`` when present.
+  * #442: Fixed issue introduced in v6.1.0 where non-importable
+  * names (metadata dirs) began appearing in ``packages_distributions``.
+  * #384: ``PackageMetadata`` now stipulates an additional
+    ``get`` method allowing for easy querying of metadata keys that may
+    not be present</comment>
+    <requestid>1079571</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>2df874984707c71d4894034e698bca7d</srcmd5>
+    <version>6.3.0</version>
+    <time>1682193625</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081884</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>e815e7fe0400ab955d01b3dc72f53763</srcmd5>
+    <version>6.6.0</version>
+    <time>1683630390</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.6.0:
+  * Expanded type annotations.
+  * python/cpython#103661: Removed excess error suppression in
+    ``_read_files_egginfo_installed`` and fixed path handling
+    on Windows.
+  * #422: Removed ABC metaclass from ``Distribution`` and instead
+    deprecated construction of ``Distribution`` objects without
+    concrete methods.
+  * Updated docs with tweaks from upstream CPython.
+  * Consolidated some behaviors in tests around ``_path``.
+  * Added type annotation for ``Distribution.read_text``.</comment>
+    <requestid>1084915</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>4d666c709992279b0c71e02a872bd159</srcmd5>
+    <version>6.8.0</version>
+    <time>1689614568</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.8.0:
+  * Require Python 3.8 or later.
+  * #453: When inferring top-level names that are importable for
+    distributions in ``package_distributions``, now symlinks to
+    other directories are honored.</comment>
+    <requestid>1098809</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>d9d98886dbe53e747c579e9511b797b7</srcmd5>
+    <version>7.0.0</version>
+    <time>1702158546</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.0.0:
+  * Removed EntryPoint access by numeric index (tuple behavior).
+  * Added ``Distribution.origin`` supplying the
+    ``direct_url.json`` in a ``SimpleNamespace``. (#404)
+  * Added diagnose script. (#461)
+  * Added EntryPoints.__repr__ (#473)
+
+- Remove unneeded BuildRequires on pep517.
+- Update to versino 5.1.0
+  * #396: Added compatibility for PathDistributions originating from Python 3.8 and 3.9.
+- update to 4.12.0:
+  - #361: Avoid potential REDoS in ``EntryPoint.pattern``.
+  * #353: Fixed discovery of distributions when path is empty.
+- Update to v4.8.1
+  * #334: Correct SimplePath protocol to match pathlib protocol
+  * bpo-44784: Avoid errors in test suite when DeprecationWarnings
+  * #327: Deprecation warnings now honor call stack variance on
+  * #326: Performance tests now rely on pytest-perf. To disable
+    these tests, which require network access and a git checkout,
+    entry_points (EntryPoints) to honor expectations in older
+    implementations and issuing deprecation warnings for these
+    () and other list-based mutation operations. Avoid deprecation
+  * EntryPoints results once again allow for access by index. To
+    avoid deprecation warnings, cast the result to a Sequence
+  * #320: Fix issue where normalized name for eggs was incorrectly
+  * #317: De-duplication of distributions no longer requires
+    loading the full metadata for PathDistribution objects, entry
+  * #315: Add SimplePath protocol for interface clarity in
+  * #304: PackageMetadata as returned by metadata() and
+    Distribution.metadata() now provides normalized metadata</comment>
+    <requestid>1131745</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>18c6926edfe5461063c83bee62360521</srcmd5>
+    <version>7.0.1</version>
+    <time>1703800488</time>
+    <user>anag+factory</user>
+    <comment>- update to 7.0.1:
+  * Corrected the interface for SimplePath to encompass the
+    expectations of locate_file and PackagePath.
+  * Fixed type annotations to allow strings.</comment>
+    <requestid>1135283</requestid>
+  </revision>
+</revisionlist>

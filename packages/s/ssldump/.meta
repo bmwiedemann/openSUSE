@@ -1,0 +1,10 @@
+<package name="ssldump" project="openSUSE:Factory">
+  <title>SSLv3/TLS Network Protocol Analyzer</title>
+  <description>ssldump is an SSLv3/TLS network protocol analyzer. It identifies TCP
+connections on the chosen network interface and attempts to interpret
+them as SSLv3/TLS traffic. When it identifies SSLv3/TLS traffic, it
+decodes the records and outputs them in a textual form to stdout. If
+provided with the appropriate keying material, it also decrypts the
+connections and displays the application data traffic.</description>
+  <devel project="security" package="ssldump"/>
+</package>

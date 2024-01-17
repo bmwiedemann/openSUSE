@@ -1,0 +1,1023 @@
+-------------------------------------------------------------------
+Mon Jan 15 19:10:30 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.54.17:
+  * Fixed identification of terragrunt cache dir (#2874)
+  * Updated CICD to use release version of OpenTofu 1.6.0 (#2887)
+
+-------------------------------------------------------------------
+Mon Jan 15 17:13:32 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.54.16:
+  * Fix reading `catalog` configuration (#2884)
+
+-------------------------------------------------------------------
+Mon Jan 15 17:08:31 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.54.15:
+  * Manifest file removal in Windows (#2875)
+
+-------------------------------------------------------------------
+Mon Jan 15 17:00:09 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.54.14:
+  * Add handling for missing policy bucket (#2881)
+
+-------------------------------------------------------------------
+Mon Jan 15 16:57:03 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.54.13:
+  * AWS SDK version upgrade (#2883)
+
+-------------------------------------------------------------------
+Thu Jan 04 18:17:18 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.54.12:
+  * Fix built-in `find_in_parent_folders` func (#2869)
+  * Usage of tofu 1.6.0-rc1 in tests (#2790)
+
+-------------------------------------------------------------------
+Thu Jan 04 18:08:37 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.54.11:
+  * build(deps): bump golang.org/x/crypto from 0.14.0 to 0.17.0
+    (#2858)
+
+-------------------------------------------------------------------
+Thu Jan 04 18:06:12 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.54.10:
+  * fix: findInParentFolders func (#2866)
+
+-------------------------------------------------------------------
+Thu Dec 21 17:12:08 UTC 2023 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.54.9:
+  * Fix catalog configuration file search. (#2862)
+
+-------------------------------------------------------------------
+Wed Dec 20 12:59:35 UTC 2023 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.54.8:
+  * Speed up repo cloning for the `catalog` command (#2857)
+
+-------------------------------------------------------------------
+Tue Dec 19 13:30:02 UTC 2023 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.54.7:
+  * feat: update the log level from debug to info (#2820)
+
+-------------------------------------------------------------------
+Tue Dec 19 13:22:23 UTC 2023 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.54.6:
+  * Fixed passing assume_role generation (#2853)
+
+-------------------------------------------------------------------
+Sat Dec 16 18:59:53 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.54.5:
+  * Read the list of repositories for the `catalog` command from
+  * the terragrunt configuration file (#2852)
+
+-------------------------------------------------------------------
+Fri Dec 15 06:27:03 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.54.4:
+  * Non interactive state initialization (#2840)
+
+-------------------------------------------------------------------
+Thu Dec 14 10:57:53 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.54.3:
+  * Catalog handling https urls (#2850)
+
+-------------------------------------------------------------------
+Wed Dec 13 15:46:23 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.54.2:
+  * Parse frontmatter data in the `catalog` command  (#2843)
+
+-------------------------------------------------------------------
+Mon Dec 11 17:22:27 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.54.1:
+  * Fixed passing of module URL from catalog to scaffold (#2842)
+  * scaffold blank spaces fix (#2839)
+  * Scaffold and catalog documentation fixes (#2838)
+
+-------------------------------------------------------------------
+Sat Dec 09 19:50:39 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.54.0:
+  * Initial catalog implementation (#2815)
+  * Fixed scaffold docs (#2829)
+  * Terragrunt scaffold  (#2821)
+  * Update regex for version check (#2817)
+
+-------------------------------------------------------------------
+Tue Nov 28 09:37:08 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.53.8:
+  * Add handling of backend configs (#2810)
+
+-------------------------------------------------------------------
+Mon Nov 27 19:24:29 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.53.7:
+  * Updated jw v4 dependency version (#2805)
+
+-------------------------------------------------------------------
+Thu Nov 23 06:42:42 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.53.6:
+  * feat: Support assume_role in s3 backend config. Starting with
+    TF1.6 (#2800)
+  * Update Arch Linux package URL in install.md (#2802)
+
+-------------------------------------------------------------------
+Tue Nov 21 06:14:14 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.53.5:
+  * Reverted function name, added test to track usage of function
+    (#2801)
+  * feat: disallow undefined flags (#2799)
+
+-------------------------------------------------------------------
+Fri Nov 17 05:57:40 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.53.4:
+  * Add a new built-in function `get_working_dir()` (#2791)
+  * Fix TestErrorExplaining (#2793)
+  * Add shell completion (#2788)
+
+-------------------------------------------------------------------
+Thu Nov 16 12:09:49 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.53.3:
+  * Improved explanation of missing aws creds (#2787)
+  * Update usage of private repo docs (#2784)
+  * Add missing terraform commands (#2780)
+
+-------------------------------------------------------------------
+Mon Nov 06 05:45:53 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.53.2:
+  * GCP dependencies update (#2775)
+
+-------------------------------------------------------------------
+Thu Nov 02 05:59:43 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.53.1:
+  * Update aws-sdk to support SSO (#2774)
+  * Add Default Retryable Error List to Docs (#2771)
+  * test: use `T.Setenv` to set env vars in tests (#2205)
+
+-------------------------------------------------------------------
+Mon Oct 30 07:28:28 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.53.0:
+  * Terraform 1.6 (#2754)
+
+-------------------------------------------------------------------
+Fri Oct 27 09:19:06 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.52.7:
+  * Bump google.golang.org/grpc from 1.55.0 to 1.56.3 (#2767)
+
+-------------------------------------------------------------------
+Fri Oct 27 09:16:51 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.52.6:
+  * fix!: output-module-groups to work like run-all (#2769)
+  * Update tofu version to 1.6.0-alpha3 (#2766)
+
+-------------------------------------------------------------------
+Wed Oct 25 04:37:23 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.52.5:
+  * feat: add read_tfvars_file function (#2757)
+
+-------------------------------------------------------------------
+Sat Oct 21 18:16:45 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.52.4:
+  * Add linting of source code (#2743)
+
+-------------------------------------------------------------------
+Sat Oct 14 06:31:31 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.52.3:
+  * Bump golang.org/x/net from 0.15.0 to 0.17.0 (#2755)
+
+-------------------------------------------------------------------
+Fri Oct 13 05:01:42 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.52.2:
+  * Add option to skip S3 credentials validation (#2753)
+
+-------------------------------------------------------------------
+Sun Oct 08 16:00:18 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.52.1:
+  * Dependent modules scanning improvements (#2749)
+  * Add opentofu notice (#2738)
+
+-------------------------------------------------------------------
+Fri Oct 06 13:17:52 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.52.0:
+  * Add OpenTofu support (#2745)
+
+-------------------------------------------------------------------
+Thu Oct 05 04:49:53 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.51.9:
+  * Update render-json to include list of dependent modules (#2740)
+  * refactor: fix usage of deprecated calls to io/ioutil package
+    (#2742)
+
+-------------------------------------------------------------------
+Wed Oct 04 09:37:21 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.51.8:
+  * Add check for aws session before checking S3 bucket (#2739)
+  * docs: removes two errors in the markdown (#2741)
+
+-------------------------------------------------------------------
+Fri Sep 29 19:18:17 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.51.7:
+  * State file handling improvements (#2735)
+
+-------------------------------------------------------------------
+Thu Sep 28 13:46:06 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.51.6:
+  * Updated dependencies to fix security issues (#2733)
+
+-------------------------------------------------------------------
+Wed Sep 27 04:35:36 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.51.5:
+  * #2280 Add validation of generate blocks from includes (#2281)
+
+-------------------------------------------------------------------
+Thu Sep 21 10:00:38 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.51.4:
+  * fix: make `auto-init` respect `-no-color` flag (#2722)
+  * Add built-in function `get_default_retryable_errors` (#2725)
+
+-------------------------------------------------------------------
+Wed Sep 20 05:14:16 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.51.3:
+  * Add debug log message to print chdir option (#2724)
+
+-------------------------------------------------------------------
+Wed Sep 20 05:08:00 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.51.2:
+  * S3 bucket errors handling (#2721)
+
+-------------------------------------------------------------------
+Tue Sep 19 04:45:48 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.51.1:
+  * Removes trailing slash appended to the end of
+    `get_path_to_repo_root()` (#2719)
+
+-------------------------------------------------------------------
+Mon Sep 18 05:35:23 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.51.0:
+  * Updated to go 1.21 (#2715)
+
+-------------------------------------------------------------------
+Fri Sep 15 09:26:32 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.50.17:
+  * Add enabled property for dependency (#2712)
+
+-------------------------------------------------------------------
+Wed Sep 13 14:34:38 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.50.16:
+  * Improved checking of windows console errors (#2711)
+
+-------------------------------------------------------------------
+Wed Sep 13 04:57:13 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.50.15:
+  * Fixed searching for configs with non-default names #2704.
+    (#2704)
+  * Updating link to before-and-after-hooks (#2708)
+
+-------------------------------------------------------------------
+Thu Sep 07 05:38:10 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.50.14:
+  * Terragrunt version in AWS API Calls (#2701)
+
+-------------------------------------------------------------------
+Wed Sep 06 07:42:13 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.50.13:
+  * Module path checking improvements (#2700)
+
+-------------------------------------------------------------------
+Wed Sep 06 07:35:52 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.50.12:
+  * Updated setting of fetch depednency flag (#2699)
+
+-------------------------------------------------------------------
+Wed Sep 06 07:30:42 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.50.11:
+  * feat: disable terraform command validation (#2697)
+  * Prevent `init` command from parallel running if plugin cache is
+    used (#2698)
+
+-------------------------------------------------------------------
+Wed Sep 06 07:15:54 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.50.10:
+  * GCS remote state configuration prefix (#2695)
+  * Move shared libraries to go-commons repository (#2688)
+
+-------------------------------------------------------------------
+Wed Sep 06 07:11:49 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.50.9:
+  * Improved handling of errors from AWS API (#2684)
+
+-------------------------------------------------------------------
+Wed Sep 06 06:30:36 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.50.8:
+  * TFLint configuration loading from hook parameters (#2683)
+
+-------------------------------------------------------------------
+Wed Sep 06 06:29:10 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.50.7:
+  * fix: terraform console command in non-interactive mode (#2686)
+
+-------------------------------------------------------------------
+Wed Sep 06 06:21:12 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.50.6:
+  * Google Cloud impersonate fixes (#2679)
+
+-------------------------------------------------------------------
+Wed Sep 06 06:10:50 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.50.5:
+  * Add terraform command validation (#2676)
+
+-------------------------------------------------------------------
+Wed Sep 06 06:09:13 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.50.4:
+  * Null vars file cleanup (#2672)
+
+-------------------------------------------------------------------
+Wed Sep 06 06:02:19 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.50.3:
+  * Logrus dependency update (#2665)
+
+-------------------------------------------------------------------
+Wed Sep 06 05:45:35 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.50.2:
+  * fix: "null" values in json for aws policy (#2667)
+
+-------------------------------------------------------------------
+Wed Sep 06 05:41:09 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.50.1:
+  * Prevent parsing of excluded modules (#2664)
+
+-------------------------------------------------------------------
+Wed Sep 06 05:37:29 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.50.0:
+  * Pass null values in Terraform inputs (#2663)
+
+-------------------------------------------------------------------
+Wed Sep 06 05:34:33 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.49.1:
+  * Update CircleCI config to sign MacOS binaries (#2661)
+
+-------------------------------------------------------------------
+Wed Sep 06 05:32:13 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.49.0:
+  * TFLint variables and arguments (#2645)
+
+-------------------------------------------------------------------
+Wed Sep 06 05:23:37 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.48.7:
+  * Refactoring cli related code (#2608)
+
+-------------------------------------------------------------------
+Thu Aug 03 17:44:19 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.48.6:
+  * Simplified run-all confirmation dialog (#2653)
+
+-------------------------------------------------------------------
+Tue Aug 01 10:03:34 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.48.5:
+  * Add a "output-module-groups" command (#2130)
+  * Updated CLI flag wording (#2647)
+  * Bump tzinfo from 1.2.7 to 1.2.10 in /docs (#2207)
+  * Bump nokogiri from 1.13.6 to 1.14.3 in /docs (#2526)
+
+-------------------------------------------------------------------
+Thu Jul 20 04:50:04 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.48.4:
+  * Add CLI flags to set handling state buckets (#2644)
+
+-------------------------------------------------------------------
+Tue Jul 18 09:13:18 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.48.3:
+  * Added handling of no outputs in render-json execution (#2635)
+
+-------------------------------------------------------------------
+Tue Jul 18 04:49:58 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.48.2:
+  * fix: include missing param in parsing cache key construction
+    (#2518)
+  * [skip ci] Removing former Grunts (#2640)
+  * Update scripts.html (#2638)
+
+-------------------------------------------------------------------
+Thu Jul 06 07:19:36 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.48.1:
+  * Updated source version identification (#2630)
+  * Update documentation to reference Terragrunt Github action
+    (#2628)
+  * [skip ci] git-xargs programmatic commit (#2623)
+
+-------------------------------------------------------------------
+Tue Jun 27 04:50:41 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.48.0:
+  * Add support for Terraform 1.5 (#2616)
+  * Circleci resource_class update (#2609)
+
+-------------------------------------------------------------------
+Fri Jun 16 05:13:44 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.47.0:
+  * Go upgrade to 1.20 (#2605)
+- BuildRequire go1.20
+
+-------------------------------------------------------------------
+Mon Jun 12 20:00:20 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.46.3:
+  * #2595 Fix for fetching reference value with slashes (#2597)
+
+-------------------------------------------------------------------
+Mon Jun 12 19:57:44 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.46.2:
+  * feat: support git tag in `--terragrunt-source-map` option
+    (#2586)
+
+-------------------------------------------------------------------
+Fri Jun 02 04:50:38 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.46.1:
+  * Fixed reading of outputs during destroy (#2589)
+
+-------------------------------------------------------------------
+Fri Jun 02 04:49:13 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.46.0:
+  * fix: redirecting stdout to stderr in hook commands (#2587)
+
+-------------------------------------------------------------------
+Wed May 31 13:07:18 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.45.18:
+  * feat: implement hclfmt diff output (#2570)
+
+-------------------------------------------------------------------
+Wed May 31 04:45:56 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.45.17:
+  * fix: checking dependent modules in `destroy` command (#2581)
+
+-------------------------------------------------------------------
+Thu May 25 06:19:28 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.45.16:
+  * Add support for Disable field in generate blocks (#2497)
+
+-------------------------------------------------------------------
+Mon May 22 05:45:49 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.45.15:
+  * Simplified source code locking/unlocking (#2576)
+
+-------------------------------------------------------------------
+Fri May 19 04:57:29 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.45.14:
+  * #2566 Update error message to include module directory (#2574)
+
+-------------------------------------------------------------------
+Wed May 17 17:42:37 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.45.13:
+  * feat: add `timecmp` config function (#2571)
+
+-------------------------------------------------------------------
+Wed May 17 17:38:30 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.45.12:
+  * Handle provider lock file when fetching dependency outputs
+    (#2568)
+  * Update aws-auth.md (#2563)
+  * Add missing IAM Permissions s3:PutBucketOwnershipControls to
+    docs this is required now with TG versions starting from
+    v0.45.4 (#2562)
+
+-------------------------------------------------------------------
+Thu May 11 04:51:07 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.45.11:
+  * fix: disable sending a second interrupt signal to `terraform`
+    (#2559)
+
+-------------------------------------------------------------------
+Tue May 09 05:41:30 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.45.10:
+  * fix: avoid double-rendering `terraform init` output (#2558)
+
+-------------------------------------------------------------------
+Fri May 05 10:42:22 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.45.9:
+  * Fix parsing output when AWS CSM is enabled (#2554)
+  * Moved issue template files to ISSUE_TEMPLATE directory (#2555)
+  * Add issues templates (#2553)
+
+-------------------------------------------------------------------
+Tue May 02 05:32:12 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.45.8:
+  * Lazily evaluate the IAM Role (#2507)
+
+-------------------------------------------------------------------
+Tue May 02 05:30:38 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.45.7:
+  * Mozilla sops upgrade to v3.7.3 (#2549)
+
+-------------------------------------------------------------------
+Sun Apr 30 07:02:03 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.45.6:
+  * JSON output prefix update (#2548)
+
+-------------------------------------------------------------------
+Fri Apr 28 04:26:39 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.45.5:
+  * Add explanation for terraform errors (#2547)
+
+-------------------------------------------------------------------
+Thu Apr 20 14:27:09 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.45.4:
+  * Update S3 bucket creation to pass ObjectOwnership (#2540)
+  * ~ aws-auth docs - iam remove object level actions from the
+    bucket resource (#2533)
+
+-------------------------------------------------------------------
+Tue Apr 18 04:55:31 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.45.3:
+  * #2512 Improve reporting errors on modules (#2527)
+
+-------------------------------------------------------------------
+Thu Apr 06 03:25:11 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.45.2:
+  * #2515 Add option to disable module output (#2516)
+
+-------------------------------------------------------------------
+Tue Apr 04 06:16:30 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.45.1:
+  * Add --terragrunt-include-module-prefix option (#2493)
+  * [skip ci] Refactor contexts (#2503)
+  * Update v0.45.0 link title (#2491)
+
+-------------------------------------------------------------------
+Fri Mar 17 19:32:39 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.45.0:
+  * #2488 Terraform dependencies upgrade (#2489)
+  * Add automatic lock release (#2487)
+  * Add comment for sourceChangeLocks variable (#2476)
+
+-------------------------------------------------------------------
+Wed Mar 08 14:37:34 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.44.5:
+  * #2471 Include in download directory tflint config (#2474)
+
+-------------------------------------------------------------------
+Fri Mar 03 05:39:34 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.44.4:
+  * chore: Add access_token support for the GCS remote state
+    backend config (#2463)
+
+-------------------------------------------------------------------
+Fri Mar 03 05:37:20 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.44.3:
+  * Bump golang.org/x/net from 0.5.0 to 0.7.0 (#2455)
+
+-------------------------------------------------------------------
+Thu Mar 02 07:17:38 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.44.2:
+  * Bump github.com/hashicorp/go-getter from 1.6.2 to 1.7.0 (#2454)
+
+-------------------------------------------------------------------
+Tue Feb 28 14:35:28 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.44.1:
+  * #2467 Parallel TFLint execution errors (#2469)
+
+-------------------------------------------------------------------
+Thu Feb 23 10:37:55 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.44.0:
+  * isRetryable also checks the stdout (#2464)
+
+-------------------------------------------------------------------
+Wed Feb 22 17:26:34 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.43.3:
+  * #2450 Improved loading of TFLint configuration (#2456)
+  * #2417 Add handling of intermittent errors in fixture-stack tests (#2439)
+
+-------------------------------------------------------------------
+Sat Feb 04 12:23:12 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.43.2:
+  * Improved handling of default value for sse_algorithm (#2438)
+
+-------------------------------------------------------------------
+Thu Feb 02 06:50:01 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.43.1:
+  * fix AES256 encryption validation (#2337)
+  * Fix typos (#2406)
+  * [skip ci] Added FUNDING.yml (#2429)
+  * Flaky TestInputsToTflintVar fix (#2427)
+
+-------------------------------------------------------------------
+Fri Jan 20 09:54:54 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.43.0:
+  * feat: update tflint to v0.44.1 (#2422)
+  * Remove GITHUB_OAUTH_TOKEN from tflint + update docs (#2424)
+
+-------------------------------------------------------------------
+Fri Jan 13 10:11:25 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.42.8:
+  * Updated golang.org/x/crypto dependency (#2412)
+
+-------------------------------------------------------------------
+Fri Jan 06 11:41:03 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.42.7:
+  * #2377 MockOutputs validation before merge (#2379)
+
+-------------------------------------------------------------------
+Thu Jan 05 14:02:07 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.42.6:
+  * Update error message (#2404)
+
+-------------------------------------------------------------------
+Fri Dec 16 12:38:27 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.42.5:
+  * Fix debug log for GITHUB_TOKEN for tflint (#2395)
+
+-------------------------------------------------------------------
+Fri Dec 16 12:35:49 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.42.4:
+  * Expose a token for tflint  (#2387)
+  * Fix typo (#2383)
+  * Add tflint as built-in hook (#2362)
+
+-------------------------------------------------------------------
+Fri Dec 02 12:04:24 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.42.3:
+  * #2347 - add --terragrunt-global-cache support to run_cmd (#2348)
+
+-------------------------------------------------------------------
+Wed Nov 30 13:38:48 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.42.2:
+  * Improve encryption setting on access log bucket (#2375)
+
+-------------------------------------------------------------------
+Wed Nov 30 13:20:21 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.42.1:
+  * Feat(#2292) add accesslogging bucket tags property to remote state s3 config block (#2355)
+  * Update documentation to reference actions for S3 bucket configuration (#2366)
+
+-------------------------------------------------------------------
+Tue Nov 29 14:07:41 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.42.0:
+  * #1717 Enable security layers for access logging buckets (#2367)
+
+-------------------------------------------------------------------
+Thu Nov 24 17:53:09 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.41.0:
+  * Go 1.18 upgrade (#2365)
+
+-------------------------------------------------------------------
+Tue Nov 15 09:53:01 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.40.2:
+  * Bump `golang.org/x/text` and `golang.org/x/net` (#2341)
+  * #2331 - fix(docs): Fixes azs in the quick start example (#2340)
+
+-------------------------------------------------------------------
+Tue Nov 15 09:49:04 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.40.1:
+  * fix: protect sops cache from multiple parallel writes (#2352)
+
+-------------------------------------------------------------------
+Tue Nov 15 09:44:02 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.40.0:
+  * Add support for Terraform 1.3 (#2308)
+  * Fix installation of goimports (#2339)
+  * fix: modified single quotes to back quotes. (#2310)
+
+-------------------------------------------------------------------
+Tue Oct 18 05:10:42 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.39.2:
+  * Navbar we are hiring fix (#2321)
+  * navbar - update we are hiring (#2313)
+  * Fix a mistake in markdown (#2303)
+  * fix typo. (#2307)
+
+-------------------------------------------------------------------
+Thu Oct 06 05:07:43 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.39.1:
+  * #2222 Terragrunt sub-commands help output (#2297)
+  * [skip ci] Update CODEOWNERS (#2296)
+
+-------------------------------------------------------------------
+Fri Sep 30 05:12:17 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.39.0:
+  * #2259 Improve handling of failures in outputs reading (#2288)
+  * Docs: update to mention run-all commands not xxx-all (#2266)
+
+-------------------------------------------------------------------
+Thu Sep 15 07:52:16 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.38.12:
+  * Adds retryable error regex to match rate limit message from CodeCommit (#2276)
+
+-------------------------------------------------------------------
+Thu Sep 15 07:49:43 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.38.11:
+  * Uses partition from session when constructing the KMS Key ARN (#2257)
+
+-------------------------------------------------------------------
+Tue Sep 13 12:46:18 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.38.10:
+  * Share `Env` attributes with `cfgOptions`. (#2274)
+
+-------------------------------------------------------------------
+Wed Sep 07 11:06:00 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.38.9:
+  * Improve partial parsing HCL strings by adding cache (#2204)
+
+-------------------------------------------------------------------
+Wed Sep 07 11:04:41 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.38.8:
+  * #2245: Add option to skip state bucket public access blocking (#2246)
+  * fix(docs): use correct link (#2250)
+  * Update render json tests to use different directories and avoid parallel execution errors (#2248)
+  * fix(docs): correct spelling (#2238)
+
+-------------------------------------------------------------------
+Wed Sep 07 10:57:44 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.38.7:
+  * Fix bug where terragrunt run-all render-json overwrites all files (#2230)
+  * Remove commercial-support page and references (#2197)
+  * Fix typo (#2213)
+
+-------------------------------------------------------------------
+Fri Jul 22 17:39:05 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.38.6:
+  * Add metadata to render-json output (#2199)
+  * Remove unused appveyor (#2194)
+
+-------------------------------------------------------------------
+Sat Jul 16 19:04:18 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.38.5:
+  * Improve Terragrunt error logs (#2175)
+  * Fix bug in render-json with dependency and locals (#2191)
+  * Addresses dependabot alerts (#2192)
+  * Bump nokogiri from 1.12.5 to 1.13.6 in /docs (#2115)
+  * Fix quick-start typo (#2183)
+  * Fix typo (#2186)
+  * Set compatibilty version to go 1.17 (#2180)
+  * Update codeowners (#2162)
+
+-------------------------------------------------------------------
+Tue Jul 05 14:19:25 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.38.4:
+  * Use faster hashing approach when handling local module sources (#2168)
+
+-------------------------------------------------------------------
+Fri Jul 01 10:52:34 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.38.3:
+  * #2113 Improved parsing of AWS policy response (#2118)
+  * #2109  Updated reading of AWS response using BoolValue function (#2111)
+  * Integration tests stability (#2160)
+
+-------------------------------------------------------------------
+Tue Jun 28 14:22:42 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.38.2:
+  * #2045 Fixed pattern matching for error hooks  (#2101)
+
+-------------------------------------------------------------------
+Wed Jun 22 20:45:14 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.38.1:
+  * feat: fetch dependency output from state (#2123)
+  * Add ability to customize SSE settings for the remote state bucket (#2157)
+  * Add ability to disable auto-approve (#2156)
+
+-------------------------------------------------------------------
+Wed Jun 22 07:54:16 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.38.0:
+  * Test against terraform 1.2 (#2147)
+
+-------------------------------------------------------------------
+Wed Jun 22 07:50:00 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.37.4:
+  * Make include_in_copy work for patterns containing parent folders (#2112)
+
+-------------------------------------------------------------------
+Wed Jun 22 07:44:55 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.37.3:
+  * feat: improve local source code download behaviour (#2006)
+
+-------------------------------------------------------------------
+Thu Jun 09 17:10:17 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.37.2:
+  * Bump github.com/hashicorp/go-getter from 1.5.11 to 1.6.1 (#2131)
+  * Check in Pull Request template (#2124)
+
+-------------------------------------------------------------------
+Sat May 14 08:25:49 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.37.1:
+  * Update remote state docs to recommend generate first (#2106)
+
+-------------------------------------------------------------------
+Sat May 14 08:20:02 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.37.0:
+  * fix config remote state s3 and update if needs (#2063)
+
+-------------------------------------------------------------------
+Fri May 13 19:58:52 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.36.12:
+  * Allow v0.36 to define disable_bucket_update to make it easier to transition to v0.37 (#2105)
+
+-------------------------------------------------------------------
+Fri May 13 19:40:56 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.36.11:
+  * Bump github.com/hashicorp/go-getter from 1.5.7 to 1.5.11 (#2095)
+
+-------------------------------------------------------------------
+Thu May 05 06:37:34 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.36.10:
+  * fix bug where strict validation wasn't always respected (#2056)
+  * fix(docs): missing cli options on the summary (#2088)
+
+-------------------------------------------------------------------
+Sat Apr 30 15:45:50 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.36.9:
+  * git_functions: propegate the opts.Env for git commands (#2086)
+  * Fix get_path_from_repo_root typo (#2035)
+
+-------------------------------------------------------------------
+Thu Apr 28 06:28:01 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.36.8:
+  * Bump sops from v3.7.0 to v3.7.2 (#2083)
+  * Failing tests fixes (#2073)
+  * Clarify behavior of terragrunt-tfpath override with respect to dependencies (#2077)
+
+-------------------------------------------------------------------
+Sat Apr 16 09:05:37 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.36.7:
+  * Additional known transient error handling (#2066)
+  * Update inputs.md (#2053)
+
+-------------------------------------------------------------------
+Fri Mar 18 10:23:58 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.36.6:
+  * fix: use correct slashes for repo root functions (#2042)
+
+-------------------------------------------------------------------
+Wed Mar 16 18:02:37 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.36.5:
+  * Enable public access blocking for access logs S3 bucket as well, if configured (#2040)
+
+-------------------------------------------------------------------
+Wed Mar 16 18:01:24 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.36.4:
+  * #1971 Added caching of IAM roles parsed from HCL files (#2010)
+  * Removed empty list item (#2030)
+
+-------------------------------------------------------------------
+Thu Mar 03 09:41:18 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.36.3:
+  * Add get_repo_root() built-in (#2027)
+
+-------------------------------------------------------------------
+Thu Mar 03 09:39:19 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.36.2:
+  * Add merge strategies for mock outputs with state (#1936)
+  * Update cli-options.md to mention silent auto-approve on run-all. (#1992)
+
+-------------------------------------------------------------------
+Tue Feb 01 07:05:48 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.36.1:
+  * Handle relative paths correctly when fetching tfr (#2005)
+  * CI Build fix (#2001)
+  * Add 1.1.x to version compatibility table (#1991)
+
+-------------------------------------------------------------------
+Wed Jan 26 07:34:16 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package terragrunt at version 0.36.0

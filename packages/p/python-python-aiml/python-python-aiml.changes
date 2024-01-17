@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Tue Jun  1 18:15:22 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add missing Provides for obsoleted symbol.
+
+-------------------------------------------------------------------
+Tue Jun  1 11:28:14 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pyunittest rpm macro
+
+-------------------------------------------------------------------
+Wed May 20 07:26:47 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
+Mon Mar  9 09:38:30 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.9.3:
+  * various python compatiblity fixes
+
+-------------------------------------------------------------------
+Tue Dec  4 12:52:57 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Sun Mar  4 19:30:17 UTC 2018 - alarrosa@suse.com
+
+- Initial release of python-python-aiml 0.9.1

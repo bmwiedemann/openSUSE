@@ -1,0 +1,37 @@
+-------------------------------------------------------------------
+Thu May  5 10:46:11 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Clean and simplify the spec file in order to be able to generate
+  the javadoc with either maven-javadoc-plugin or xmvn javadoc mojo
+
+-------------------------------------------------------------------
+Wed Apr 27 13:52:13 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patches:
+  * 0004-Port-to-current-maven-shared-utils.patch
+    + Add some try/catch blocks so that we catch new exceptions
+      potentially thrown by maven-shared-utils-3.3.x
+  * 0003-Port-to-TestNG-6.11.patch -> 0003-Port-to-TestNG-7.4.0.patch
+    + Allow building with the new testng 7.4.0
+
+-------------------------------------------------------------------
+Tue Mar 22 13:53:34 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with source and target level 8
+
+-------------------------------------------------------------------
+Mon Apr 19 16:59:36 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update generate-tarball.sh to use https URL [bsc#1182708]
+
+-------------------------------------------------------------------
+Sun Nov 24 17:49:18 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Specify maven.compiler.release to fix build with jdk9+ and newer
+  maven-javadoc-plugin
+
+-------------------------------------------------------------------
+Wed Apr  3 09:30:18 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of the non-bootstrap versions of maven plugins
+  distributed with surefire 2.22.0
