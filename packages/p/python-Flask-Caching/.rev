@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d242102c5d7cc83882d0c8f457c13a2f</srcmd5>
+    <version>1.8.0</version>
+    <time>1588697723</time>
+    <user>dimstar_suse</user>
+    <comment>New package for Flask-Caching, it is continuation of the Flask-Cache</comment>
+    <requestid>799691</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2aeea8ef8c3f53cf802155a8a9d8cd87</srcmd5>
+    <version>1.9.0</version>
+    <time>1591209254</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>810985</requestid>
+  </revision>
+</revisionlist>

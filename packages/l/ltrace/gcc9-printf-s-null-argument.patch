@@ -1,0 +1,13 @@
+Index: output.c
+===================================================================
+--- output.c.orig
++++ output.c
+@@ -659,7 +659,7 @@ frame_callback (Dwfl_Frame *state, void
+ 
+ 	/* This mimics the output produced by libunwind below.  */
+ 	fprintf(options.output, " > %s(%s+0x%" PRIx64 ") [%" PRIx64 "]\n",
+-		modname, symname, off, pc);
++		modname ?: "(null)", symname ?: "(null)", off, pc);
+ 
+ 	/* See if we can extract the source line too and print it on
+ 	   the next line if we can find it.  */

@@ -1,0 +1,89 @@
+From 59a56a1b9a35f202288388b109e723a616631e64 Mon Sep 17 00:00:00 2001
+Message-Id: <59a56a1b9a35f202288388b109e723a616631e64.1609252805.git.matthias@mailaender.name>
+From: =?UTF-8?q?Matthias=20Mail=C3=A4nder?= <matthias@mailaender.name>
+Date: Tue, 29 Dec 2020 15:39:59 +0100
+Subject: [PATCH] Add project metadata.
+
+---
+ misc/Makefile.am             |  3 ++
+ misc/starfighter.appdata.xml | 58 ++++++++++++++++++++++++++++++++++++
+ 2 files changed, 61 insertions(+)
+
+diff --git a/misc/Makefile.am b/misc/Makefile.am
+index c2cb843..0be06c7 100644
+--- a/misc/Makefile.am
++++ b/misc/Makefile.am
+@@ -10,3 +10,6 @@ icondir = $(datarootdir)/pixmaps
+ icon_DATA = starfighter.png
+ 
+ dist_man6_MANS = starfighter.6
++
++appdatadir = $(datarootdir)/metainfo
++appdata_DATA = starfighter.appdata.xml
+diff --git a/misc/starfighter.appdata.xml b/misc/starfighter.appdata.xml
+new file mode 100644
+index 0000000..93d9b18
+--- /dev/null
++++ b/misc/starfighter.appdata.xml
+@@ -0,0 +1,58 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<component type="desktop">
++  <id>starfighter.desktop</id>
++  <metadata_license>BY-SA-4.0</metadata_license>
++  <project_license>GPL-3.0</project_license>
++  <name>Project: Starfighte</name>
++  <summary>Space shoot 'em up game.</summary>
++  <description>
++    <p>
++      Project: Starfighter is a space shoot 'em up game originally developed
++by Parallel Realities in 2002, and released in 2003. You assume the role
++of Chris Bainfield in his quest to put an end to WEAPCO, the weapons
++corporation which has enslaved the galaxy.
++    </p>
++  </description>
++  <screenshots>
++    <screenshot>
++      <image>https://pr-starfighter.github.io/images/screenshot1.png</image>
++      <caption>Explosions</caption>
++    </screenshot>
++    <screenshot>
++      <image>https://pr-starfighter.github.io/images/screenshot2.png</image>
++      <caption>Main Menu</caption>
++    </screenshot>
++    <screenshot>
++      <image>https://pr-starfighter.github.io/images/screenshot3.png</image>
++      <caption>Boss Fight</caption>
++    </screenshot>
++    <screenshot>
++      <image>https://pr-starfighter.github.io/images/screenshot4.png</image>
++      <caption>Mines and Asteroids</caption>
++    </screenshot>
++  </screenshots>
++  <url type="homepage">https://pr-starfighter.github.io/</url>
++  <update_contact>diligentcircle@riseup.net</update_contact>
++  <content_rating type="oars-1.0">
++    <content_attribute id="violence-cartoon">none</content_attribute>
++    <content_attribute id="violence-fantasy">none</content_attribute>
++    <content_attribute id="violence-realistic">moderate</content_attribute>
++    <content_attribute id="violence-bloodshed">none</content_attribute>
++    <content_attribute id="violence-sexual">none</content_attribute>
++    <content_attribute id="drugs-alcohol">none</content_attribute>
++    <content_attribute id="drugs-narcotics">none</content_attribute>
++    <content_attribute id="drugs-tobacco">none</content_attribute>
++    <content_attribute id="sex-nudity">none</content_attribute>
++    <content_attribute id="sex-themes">none</content_attribute>
++    <content_attribute id="language-profanity">none</content_attribute>
++    <content_attribute id="language-humor">none</content_attribute>
++    <content_attribute id="language-discrimination">none</content_attribute>
++    <content_attribute id="social-chat">none</content_attribute>
++    <content_attribute id="social-info">none</content_attribute>
++    <content_attribute id="social-audio">none</content_attribute>
++    <content_attribute id="social-location">none</content_attribute>
++    <content_attribute id="social-contacts">none</content_attribute>
++    <content_attribute id="money-purchasing">none</content_attribute>
++    <content_attribute id="money-gambling">none</content_attribute>
++  </content_rating>
++</component>
+-- 
+2.26.2
+

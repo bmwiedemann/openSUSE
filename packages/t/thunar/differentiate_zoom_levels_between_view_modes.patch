@@ -1,0 +1,126 @@
+From 9d0b2fc475de9bb0911a39ba623efe104eb675b8 Mon Sep 17 00:00:00 2001
+From: Alexander Schwinn <alexxcons@xfce.org>
+Date: Sat, 21 Jan 2023 23:27:24 +0100
+Subject: [PATCH] Directory specific settings - zoom improvm. (#832)
+
+When directory specific settings are enabled, zoom level now is stored per view-type
+---
+ thunar/thunar-file.c          | 15 +++++++++++++++
+ thunar/thunar-standard-view.c | 13 ++++++++++---
+ 2 files changed, 25 insertions(+), 3 deletions(-)
+
+diff --git a/thunar/thunar-file.c b/thunar/thunar-file.c
+index 6961fbf50..ca2a951e2 100644
+--- a/thunar/thunar-file.c
++++ b/thunar/thunar-file.c
+@@ -4978,6 +4978,9 @@ thunar_file_clear_directory_specific_settings (ThunarFile *file)
+   g_file_info_remove_attribute (file->info, "metadata::thunar-sort-column");
+   g_file_info_remove_attribute (file->info, "metadata::thunar-sort-order");
+   g_file_info_remove_attribute (file->info, "metadata::thunar-zoom-level");
++  g_file_info_remove_attribute (file->info, "metadata::thunar-zoom-level-ThunarDetailsView");
++  g_file_info_remove_attribute (file->info, "metadata::thunar-zoom-level-ThunarIconView");
++  g_file_info_remove_attribute (file->info, "metadata::thunar-zoom-level-ThunarCompactView");
+ 
+   g_file_set_attribute (file->gfile, "metadata::thunar-view-type", G_FILE_ATTRIBUTE_TYPE_INVALID,
+                         NULL, G_FILE_QUERY_INFO_NONE, NULL, NULL);
+@@ -4987,6 +4990,12 @@ thunar_file_clear_directory_specific_settings (ThunarFile *file)
+                         NULL, G_FILE_QUERY_INFO_NONE, NULL, NULL);
+   g_file_set_attribute (file->gfile, "metadata::thunar-zoom-level", G_FILE_ATTRIBUTE_TYPE_INVALID,
+                         NULL, G_FILE_QUERY_INFO_NONE, NULL, NULL);
++  g_file_set_attribute (file->gfile, "metadata::thunar-zoom-level-ThunarDetailsView", G_FILE_ATTRIBUTE_TYPE_INVALID,
++                        NULL, G_FILE_QUERY_INFO_NONE, NULL, NULL);
++  g_file_set_attribute (file->gfile, "metadata::thunar-zoom-level-ThunarIconView", G_FILE_ATTRIBUTE_TYPE_INVALID,
++                        NULL, G_FILE_QUERY_INFO_NONE, NULL, NULL);
++  g_file_set_attribute (file->gfile, "metadata::thunar-zoom-level-ThunarCompactView", G_FILE_ATTRIBUTE_TYPE_INVALID,
++                        NULL, G_FILE_QUERY_INFO_NONE, NULL, NULL);
+ 
+   thunar_file_changed (file);
+ }
+@@ -5017,6 +5026,12 @@ thunar_file_has_directory_specific_settings (ThunarFile *file)
+     return TRUE;
+   if (g_file_info_has_attribute (file->info, "metadata::thunar-zoom-level"))
+     return TRUE;
++  if (g_file_info_has_attribute (file->info, "metadata::thunar-zoom-level-ThunarDetailsView"))
++    return TRUE;
++  if (g_file_info_has_attribute (file->info, "metadata::thunar-zoom-level-ThunarIconView"))
++    return TRUE;
++  if (g_file_info_has_attribute (file->info, "metadata::thunar-zoom-level-ThunarCompactView"))
++    return TRUE;
+ 
+   return FALSE;
+ }
+diff --git a/thunar/thunar-standard-view.c b/thunar/thunar-standard-view.c
+index 0ad6b9c4e..3476fc546 100644
+--- a/thunar/thunar-standard-view.c
++++ b/thunar/thunar-standard-view.c
+@@ -1840,7 +1840,8 @@ thunar_standard_view_set_zoom_level (ThunarView     *view,
+                                      ThunarZoomLevel zoom_level)
+ {
+   ThunarStandardView *standard_view = THUNAR_STANDARD_VIEW (view);
+-  gboolean newThumbnailSize = FALSE;
++  gboolean            newThumbnailSize = FALSE;
++  gchar              *zoom_level_attribute_name;
+ 
+   /* check if we have a new zoom-level here */
+   if (G_LIKELY (standard_view->priv->zoom_level != zoom_level))
+@@ -1854,7 +1855,9 @@ thunar_standard_view_set_zoom_level (ThunarView     *view,
+           if (zoom_level_name != NULL)
+             {
+               /* do not set it asynchronously to ensure the correct operation of thumbnails (check the commit message for more) */
+-              thunar_file_set_metadata_setting (standard_view->priv->current_directory, "zoom-level", zoom_level_name, FALSE);
++              zoom_level_attribute_name = g_strdup_printf ("zoom-level-%s", G_OBJECT_TYPE_NAME (standard_view));
++              thunar_file_set_metadata_setting (standard_view->priv->current_directory, zoom_level_attribute_name, zoom_level_name, FALSE);
++              g_free (zoom_level_attribute_name);
+             }
+         }
+ 
+@@ -1901,6 +1904,7 @@ thunar_standard_view_apply_directory_specific_settings (ThunarStandardView *stan
+   ThunarColumn sort_column;
+   GtkSortType  sort_order;
+   gint         zoom_level;
++  gchar       *zoom_level_attribute_name;
+ 
+   /* get the default sort column and sort order */
+   g_object_get (G_OBJECT (standard_view->preferences), "last-sort-column", &sort_column, "last-sort-order", &sort_order, NULL);
+@@ -1908,7 +1912,10 @@ thunar_standard_view_apply_directory_specific_settings (ThunarStandardView *stan
+   /* get the stored directory specific settings (if any) */
+   sort_column_name = thunar_file_get_metadata_setting (directory, "sort-column");
+   sort_order_name = thunar_file_get_metadata_setting (directory, "sort-order");
+-  zoom_level_name = thunar_file_get_metadata_setting (directory, "zoom-level");
++
++  zoom_level_attribute_name = g_strdup_printf ("zoom-level-%s", G_OBJECT_TYPE_NAME (standard_view));
++  zoom_level_name = thunar_file_get_metadata_setting (directory, zoom_level_attribute_name);
++  g_free (zoom_level_attribute_name);
+ 
+   /* convert the sort column name to a value */
+   if (sort_column_name != NULL)
+-- 
+GitLab
+
+From 99ba6602cb2848be3235abb049a8b8cd65dcd751 Mon Sep 17 00:00:00 2001
+From: Alexander Schwinn <alexxcons@xfce.org>
+Date: Sat, 21 Jan 2023 23:37:07 +0100
+Subject: [PATCH] Add fallback to shared zoom-level (#832)
+
+---
+ thunar/thunar-standard-view.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/thunar/thunar-standard-view.c b/thunar/thunar-standard-view.c
+index 3476fc546..4ae94be3b 100644
+--- a/thunar/thunar-standard-view.c
++++ b/thunar/thunar-standard-view.c
+@@ -1917,6 +1917,10 @@ thunar_standard_view_apply_directory_specific_settings (ThunarStandardView *stan
+   zoom_level_name = thunar_file_get_metadata_setting (directory, zoom_level_attribute_name);
+   g_free (zoom_level_attribute_name);
+ 
++  /* View specific zoom level was added later on .. fall back to shared zoom-level if not found */
++  if (zoom_level_name == NULL)
++    zoom_level_name = thunar_file_get_metadata_setting (directory, "zoom-level");
++
+   /* convert the sort column name to a value */
+   if (sort_column_name != NULL)
+     thunar_column_value_from_string (sort_column_name, &sort_column);
+-- 
+GitLab
+

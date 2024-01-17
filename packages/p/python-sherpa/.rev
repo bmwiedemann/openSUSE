@@ -1,0 +1,192 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b413129f36afd06f6a78d0b95e5ed563</srcmd5>
+    <version>4.12.0</version>
+    <time>1577450634</time>
+    <user>dimstar_suse</user>
+    <comment>Modeling and fitting package for scientific data analysis</comment>
+    <requestid>755354</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a608e9734d5d5986c2406a79f2a75a80</srcmd5>
+    <version>4.12.0</version>
+    <time>1578234129</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>760916</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>3b921b86959eaa423df8d8083d5ade34</srcmd5>
+    <version>4.12.0</version>
+    <time>1584050964</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>784359</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>e7debcebaef097ca5baf979272f9a565</srcmd5>
+    <version>4.12.0</version>
+    <time>1589893152</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>807290</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d80126006175bf4a8b056cd300a49782</srcmd5>
+    <version>4.12.1</version>
+    <time>1600180073</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>834270</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>77f8c0e85c5617605c7446a092010ede</srcmd5>
+    <version>4.12.1</version>
+    <time>1602762677</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841871</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1f83e1f400ee3e76dea85de351561ef3</srcmd5>
+    <version>4.13.0</version>
+    <time>1613581954</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>873034</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>41ae6691c5ec10aa7d6b43e51e4f7230</srcmd5>
+    <version>4.13.0</version>
+    <time>1619378840</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>888258</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9a8acd57b9220b22d3d348da33347521</srcmd5>
+    <version>4.13.1</version>
+    <time>1623443448</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>899444</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>346b9f3040af87556f26e139558428c3</srcmd5>
+    <version>4.13.1</version>
+    <time>1628282690</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>910430</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d7a7d1584eb82b93b057edff24428720</srcmd5>
+    <version>4.14.0</version>
+    <time>1638831596</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>935928</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>b0e34bdf0ecf8f573440c88322641d8f</srcmd5>
+    <version>4.14.0</version>
+    <time>1644273493</time>
+    <user>dimstar_suse</user>
+    <comment>- Add sherpa-pr1318-py310tests.patch -- gh#sherpa/sherpa#1318
+- Skip two tests failing on non x86_64 due to floating point
+  precision
+- Disable 32-bit ARM build
+- Add sherpa-pr1319-distutils-hack.patch -- another attempt for
+  python310 compatibility (gh#sherpa/sherpa#1319)
+</comment>
+    <requestid>952081</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>084330b0611daf5721a332bb81a7b801</srcmd5>
+    <version>4.14.1</version>
+    <time>1655245915</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>982377</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>3ea64e43cf9b5a6c9fc30bb5b56b8b12</srcmd5>
+    <version>4.14.1</version>
+    <time>1660662422</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>995127</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>314cfa6a07047ae9799cf9c4bff2535a</srcmd5>
+    <version>4.15.0</version>
+    <time>1674324677</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1060053</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f64a0d4726846941bbeef07b37abecc3</srcmd5>
+    <version>4.15.1</version>
+    <time>1685476932</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.15.1:
+  * further improvements to filtering/grouping including
+    reporting a filter change in the UI
+  * fake_pha can be called with a list of ARF/RMF names
+  * added linewidth option for line and histogram plots
+  * documentation changes:
+  * fixed broken URLs
+  * improved documentation for templates, plot_pvalue
+  * added documentation testing with doctestplus
+  * Infrastructure changes:
+  * dropped support for Python 3.8
+  * experimental support of Python 3.11
+  * supported versions of Xspec are 12.12.0 - 12.13.0
+  * bug fixes:
+  * various updates to notice/ignore and group/ungroup code
+  * fixed issue with show_bkg
+  * fixed issue when binning values into a 1D histogram
+  * fixed cache errors with the TableModel class</comment>
+    <requestid>1089585</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>41d1e67894139bd10a10462ab1597554</srcmd5>
+    <version>4.15.1</version>
+    <time>1694344201</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1109765</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>f5f1c8491a70ee84a76b28cc3db1f5e7</srcmd5>
+    <version>4.16.0</version>
+    <time>1702673324</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.16.0:
+  * enhancements:
+    + the grouping commands like group_counts and group_snr now default to
+      only grouping within the noticed range of channels, which is a change
+      in behaviour
+    + new plotting backend: Users can now choose between matplotlib and
+      bokeh (experimental) support use of arbitrary python functions when
+      linking model parameters
+    + updates to fake_pha, save_all, allowing to write out RMF/ARF files
+    + get_plot_prefs and get_contour_prefs call to simplify access to the
+      plot and contour preferences
+    + implementation of RMFPlot and DataIMGPlot classes and associated UI
+      functions (plot_rmf, get_rmf_plot)
+    + update support for XSPEC to include version 12.13.1, allow XSPEC
+      table models which include the ESCALE parameter, and provide
+      experimental support for writing out XSPEC table models.
+  * changes to use the NumPy random generator API
+  * bug fixes:
+    + PHA source plot Y axis scaling (#1825)
+    + fix model display for grouped data (#1779, #1784)
+    + Change in the ordering of operations when grouping background PHA
+      datasets. (#1881)
+- Drop patch numpy125.patch and numpy125-CI.patch: Included upstream.
+- Skip a misbehaving test.</comment>
+    <requestid>1133227</requestid>
+  </revision>
+</revisionlist>

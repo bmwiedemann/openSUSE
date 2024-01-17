@@ -1,0 +1,5 @@
+<package name="gtksourceviewmm" project="openSUSE:Factory">
+  <title>C++ interface for gtksourceview</title>
+  <description>gtksourceviewmm provides a C++ interface to the gtksourceview library.</description>
+  <devel project="GNOME:Factory" package="gtksourceviewmm"/>
+</package>

@@ -1,0 +1,217 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>692dc4c38aea8940768d57ef51a15a5c</srcmd5>
+    <version>2.1.0</version>
+    <time>1424779333</time>
+    <user>dimstar_suse</user>
+    <comment>New cool package</comment>
+    <requestid>287153</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>39dfaf7810155960ea86446abee26696</srcmd5>
+    <version>2.2.1</version>
+    <time>1447146198</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>342996</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>76b7107a881ad7236f94faf8fdcf95f0</srcmd5>
+    <version>2.2.2</version>
+    <time>1454921269</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.2
+  * geoipupdate now calls fsync on the database directory after a 
+    rename to make it durable in the event of a crash.</comment>
+    <requestid>357789</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>b1457773700da28a4ee760e8abd2adf8</srcmd5>
+    <version>2.2.2</version>
+    <time>1467541737</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>405978</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4e50d0dbe2b200be4275c2f29feddfee</srcmd5>
+    <version>2.3.1</version>
+    <time>1484041720</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3.1:</comment>
+    <requestid>448900</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>27c0594b0e3338afb4be2d1c40210790</srcmd5>
+    <version>2.5.0</version>
+    <time>1510837433</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.5.0:</comment>
+    <requestid>542193</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c1089175916ac6f53264292ca0fb4e70</srcmd5>
+    <version>3.1.1</version>
+    <time>1560971647</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710871</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>fd986368689e819bd6de18f0703ff47f</srcmd5>
+    <version>3.1.1</version>
+    <time>1561049794</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>711034</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d6ce115efaadf9cea55504b743e8e5cd</srcmd5>
+    <version>4.2.2</version>
+    <time>1583446738</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>781418</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>e30ae2afa8d939a69da9eda039f58321</srcmd5>
+    <version>4.2.2</version>
+    <time>1584446987</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>785641</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>c45d774899ebbd8d07c89b739a73b209</srcmd5>
+    <version>4.2.2</version>
+    <time>1585262049</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>788574</requestid>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>9db35da61eae92a6c336b809013dea9a</srcmd5>
+    <version>4.2.2</version>
+    <time>1587162769</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>794910</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7ae8a8073fd3c455ec612858e9d517be</srcmd5>
+    <version>4.3.0</version>
+    <time>1588856193</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>800977</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>efd8dc8fa9256c5b740ccd39ff132a5e</srcmd5>
+    <version>4.5.0</version>
+    <time>1604609687</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>846049</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>7c2d4c22e2e0e03a49b3a7f0ad274593</srcmd5>
+    <version>4.6.0</version>
+    <time>1608221082</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>856477</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>05d2b4ffaa03954c37fe1940f989e567</srcmd5>
+    <version>4.7.1</version>
+    <time>1619193049</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>888064</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>40c8f02e02c47ae6254cb21c956c15c8</srcmd5>
+    <version>4.7.1</version>
+    <time>1632251594</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>920597</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>6e3bc255da406442645c55ab9e639ef7</srcmd5>
+    <version>4.8.0</version>
+    <time>1636498484</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.8.0:
+  * The Docker container now supports the following new environment
+variables: GEOIPUPDATE_CONF_FILE and GEOIPUPDATE_DB_DIR
+</comment>
+    <requestid>930210</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>6b650c1abbc268e2ef3ccbb8674f9e6b</srcmd5>
+    <version>4.9.0</version>
+    <time>1646150648</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.9.0:
+  * The client now sets the User-Agent header.
+  * The error handling has been improved.
+  * The goreleaser configuration has been consolidated. There is now
+    one checksum file for all builds.
+</comment>
+    <requestid>958302</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>10afc8d441c1a4cdd0137e0700c5c964</srcmd5>
+    <version>4.10.0</version>
+    <time>1667995104</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.10.0:
+  * HTTPS proxies are now supported.
+  * An HTTP request to get the filename for the edition ID
+    has been removed. This was previously required as the GeoIP
+    Legacy edition IDs bore little relation to the name of
+    the database on disk.
+</comment>
+    <requestid>1034814</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>3f9416fffe44c4196452a6d116eab0a2</srcmd5>
+    <version>4.11.1</version>
+    <time>1679417025</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.11.1:
+  * github.com/pkg/errors is no longer used to wrap errors.
+  * Docker secrets are now supported for the MaxMind account ID and license key. 
+  * The Dockerfile now has a Healthcheck that makes sure the modification date of
+    the database directory is within the update period.
+  * Removed extra underscore in script variables preventing the Docker secret
+    support added in 4.11.0 from working as expected.
+</comment>
+    <requestid>1073473</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>e6d2b9e901fda1e0becb574db2e2cd24</srcmd5>
+    <version>5.0.3</version>
+    <time>1681746098</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1079896</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>45bb2bb9f8637cd704369fd436c066bf</srcmd5>
+    <version>5.1.1</version>
+    <time>1687380013</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1094336</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>1fe207e7e52c929a214216b43924b3aa</srcmd5>
+    <version>6.0.0</version>
+    <time>1693235772</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1106213</requestid>
+  </revision>
+</revisionlist>

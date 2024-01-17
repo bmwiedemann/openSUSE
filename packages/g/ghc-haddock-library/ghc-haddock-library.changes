@@ -1,0 +1,171 @@
+-------------------------------------------------------------------
+Mon Oct 23 21:39:13 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update haddock-library to version 1.11.0 revision 3.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Fri Apr  7 16:08:34 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update haddock-library to version 1.11.0 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Thu Mar 30 17:06:55 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Sat Sep 24 14:14:21 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update haddock-library to version 1.11.0 revision 1.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/haddock-library-1.11.0/src/CHANGES.md
+
+-------------------------------------------------------------------
+Thu Mar  3 19:26:44 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update haddock-library to version 1.10.0 revision 3.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Sat Dec 11 21:38:17 UTC 2021 - Peter Simons <psimons@suse.com>
+
+- Update haddock-library to version 1.10.0 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Wed Oct 13 11:32:00 UTC 2021 - psimons@suse.com
+
+- Update haddock-library to version 1.10.0 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Sun May 30 18:14:56 UTC 2021 - psimons@suse.com
+
+- Update haddock-library to version 1.10.0.
+  ## Changes in version 1.10.0
+
+   * Add support for labeled module references (#1319, #1315)
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Tue Aug 18 10:44:57 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Tue Jun 16 11:14:08 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Re-generate file with latest version of spec-cleaner.
+
+-------------------------------------------------------------------
+Wed May  6 06:52:11 UTC 2020 - psimons@suse.com
+
+- Update haddock-library to version 1.9.0.
+  ## Changes in version 1.9.0
+
+   * Fix build-time regression for `base < 4.7` (#1119)
+
+   * Update parsing to strip whitespace from table cells (#1074)
+
+-------------------------------------------------------------------
+Mon Dec 23 17:45:40 UTC 2019 - psimons@suse.com
+
+- Update haddock-library to version 1.8.0.
+  ## Changes in version 1.8.0
+
+   * Support inline markup in markdown-style links (#875)
+
+   * Remove now unused `Documentation.Haddock.Utf8` module.
+     This module was anyways copied from the `utf8-string` package.
+
+-------------------------------------------------------------------
+Fri Nov  8 16:13:49 UTC 2019 - Peter Simons <psimons@suse.com>
+
+- Drop obsolete group attributes.
+
+-------------------------------------------------------------------
+Wed Oct 17 02:01:32 UTC 2018 - psimons@suse.com
+
+- Update haddock-library to version 1.7.0.
+  ## Changes in version 1.7.0
+
+   * Make `Documentation.Haddock.Parser.Monad` an internal module
+
+  ## Changes in version 1.6.1
+
+   * Replace `attoparsec` with `parsec` (#799)
+
+-------------------------------------------------------------------
+Wed Jul 18 14:26:26 UTC 2018 - psimons@suse.com
+
+- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+-------------------------------------------------------------------
+Tue Jul 17 19:31:19 UTC 2018 - psimons@suse.com
+
+- Update haddock-library to version 1.6.0.
+  ## Changes in version 1.6.0
+
+   * `MetaDoc` stores package name for since annotations
+
+-------------------------------------------------------------------
+Mon May 14 17:02:11 UTC 2018 - psimons@suse.com
+
+- Update haddock-library to version 1.5.0.1.
+ * Support for parsing unicode operators (#458)
+ * Bifunctor, Bifoldable and Bitraversable instances for DocH and MetaDoc
+ * Support for grid tables
+   * added `DocTable` constructor to `DocH`
+   * added `Table`, `TableCell` and `TableRow` data types
+   * added `markupTable` to `DocMarkupH` data type
+ * Move markup related data types to haddock-library
+
+-------------------------------------------------------------------
+Thu Aug  3 15:38:38 UTC 2017 - psimons@suse.com
+
+- Updated with latest spec-cleaner version 0.9.8-8-geadfbbf.
+
+-------------------------------------------------------------------
+Wed Apr 19 13:32:16 UTC 2017 - psimons@suse.com
+
+- Update to version 1.4.3 with cabal2obs.
+
+-------------------------------------------------------------------
+Thu Sep 15 06:51:07 UTC 2016 - psimons@suse.com
+
+- Update to version 1.4.2 revision 0 with cabal2obs.
+
+-------------------------------------------------------------------
+Sun Jul 10 16:59:00 UTC 2016 - psimons@suse.com
+
+- Update to version 1.2.1 revision 0 with cabal2obs.
+
+-------------------------------------------------------------------
+Fri Aug  7 07:16:17 UTC 2015 - mimi.vx@gmail.com
+
+- update to 1.2.1
+
+-------------------------------------------------------------------
+Tue May 12 14:40:38 UTC 2015 - mimi.vx@gmail.com
+
+- update to 1.2.0
+* no upstream changelog
+
+-------------------------------------------------------------------
+Mon Apr 20 12:03:43 UTC 2015 - mimi.vx@gmail.com
+
+- remove unneeded dep
+
+-------------------------------------------------------------------
+Tue Feb  3 13:09:32 UTC 2015 - mimi.vx@gmail.com
+
+- initial commit of haddoc-library package

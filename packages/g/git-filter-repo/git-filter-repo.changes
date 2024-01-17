@@ -1,0 +1,50 @@
+-------------------------------------------------------------------
+Sun Dec  4 15:52:06 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.38.0:
+  https://github.com/newren/git-filter-repo/compare/v2.34.0...v2.38.0 
+
+-------------------------------------------------------------------
+Fri Dec 17 19:04:47 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 2.34.0
+  * https://github.com/newren/git-filter-repo/releases/tag/v2.34.0
+
+-------------------------------------------------------------------
+Mon Mar 15 09:07:19 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 2.29.0
+  * https://github.com/newren/git-filter-repo/releases/tag/v2.29.0
+- Removed filter-repo-README-remove-outdated-2.28.0-not-yet-re.patch
+
+-------------------------------------------------------------------
+Wed Sep  9 14:30:44 UTC 2020 - Martin Wilck <mwilck@suse.com>
+
+- Upstream fix: Remove wrong note in README that 2.28.0 isn't released yet
+  add patch: filter-repo-README-remove-outdated-2.28.0-not-yet-re.patch
+
+-------------------------------------------------------------------
+Wed Sep  9 14:19:12 UTC 2020 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 2.28.0
+  * --path-glob can now be used with directory globs like '*/bin'
+  * allow comments starting with '#' with --paths-from-file
+
+-------------------------------------------------------------------
+Tue Jun  2 06:29:40 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 2.27.0
+  * https://github.com/newren/git-filter-repo/releases/tag/v2.27.0
+
+-------------------------------------------------------------------
+Wed Mar 25 07:03:38 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 2.26.0
+  * https://github.com/newren/git-filter-repo/releases/tag/v2.26.0
+  * https://github.com/newren/git-filter-repo/releases/tag/v2.25.0
+
+-------------------------------------------------------------------
+Thu Dec 19 15:15:23 UTC 2019 - Andreas Schneider <asn@cryptomilk.org>
+
+- Initial package version 2.24.0
+  * https://github.com/newren/git-filter-repo/releases/tag/v2.24.0

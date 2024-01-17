@@ -1,0 +1,5 @@
+<package name="libclc" project="openSUSE:Factory">
+  <title></title>
+  <description>Library requirements of the OpenCL C programming language.</description>
+  <devel project="X11:XOrg" package="libclc"/>
+</package>
