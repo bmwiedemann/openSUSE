@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 16 08:30:56 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch to avoid embedding a random tmp dir (boo#1062303)
+
+-------------------------------------------------------------------
 Mon Jan  8 09:11:26 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.1:

@@ -25,6 +25,8 @@ License:        Apache-2.0
 URL:            https://github.com/aio-libs/frozenlist
 Source:         https://files.pythonhosted.org/packages/source/f/frozenlist/frozenlist-%{version}.tar.gz
 Patch1:         no-pytest-cov.patch
+# PATCH-FIX-OPENSUSE - avoid embedding random tmp dir in .so
+Patch2:         reproducible.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module expandvars}
