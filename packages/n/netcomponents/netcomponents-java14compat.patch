@@ -1,0 +1,196 @@
+diff -ru NetComponents-1.3.8.orig/src/java/com/oroinc/net/ftp/FTP.java NetComponents-1.3.8/src/java/com/oroinc/net/ftp/FTP.java
+--- NetComponents-1.3.8.orig/src/java/com/oroinc/net/ftp/FTP.java	2001-11-30 04:20:12.000000000 +0100
++++ NetComponents-1.3.8/src/java/com/oroinc/net/ftp/FTP.java	2007-07-23 21:10:49.091561000 +0200
+@@ -522,16 +522,16 @@
+    * @return The entire text from the last FTP response as a String.
+    ***/
+   public String getReplyString() {
+-    Enumeration enum;
++    Enumeration myenum;
+     StringBuffer buffer;
+ 
+     if(!_newReplyString)
+       return _replyString;
+ 
+     buffer = new StringBuffer(256);
+-    enum = _replyLines.elements();
+-    while(enum.hasMoreElements()) {
+-      buffer.append((String)enum.nextElement());
++    myenum = _replyLines.elements();
++    while(myenum.hasMoreElements()) {
++      buffer.append((String)myenum.nextElement());
+       buffer.append(SocketClient.NETASCII_EOL);
+     }
+ 
+diff -ru NetComponents-1.3.8.orig/src/java/com/oroinc/net/pop3/POP3Client.java NetComponents-1.3.8/src/java/com/oroinc/net/pop3/POP3Client.java
+--- NetComponents-1.3.8.orig/src/java/com/oroinc/net/pop3/POP3Client.java	2001-11-30 04:20:12.000000000 +0100
++++ NetComponents-1.3.8/src/java/com/oroinc/net/pop3/POP3Client.java	2007-07-23 21:10:49.142516000 +0200
+@@ -355,7 +355,7 @@
+    ***/
+   public POP3MessageInfo[] listMessages() throws IOException {
+     POP3MessageInfo[] messages;
+-    Enumeration enum;
++    Enumeration myenum;
+     int line;
+ 
+     if(getState() != TRANSACTION_STATE)
+@@ -366,14 +366,14 @@
+ 
+     // This could be a zero length array if no messages present
+     messages = new POP3MessageInfo[_replyLines.size() - 2];
+-    enum = _replyLines.elements();
++    myenum = _replyLines.elements();
+ 
+     // Skip first line
+-    enum.nextElement();
++    myenum.nextElement();
+ 
+     // Fetch lines.
+     for(line = 0; line < messages.length; line++)
+-      messages[line] = __parseStatus((String)enum.nextElement());
++      messages[line] = __parseStatus((String)myenum.nextElement());
+ 
+     return messages;
+   }
+@@ -426,7 +426,7 @@
+    ***/
+   public POP3MessageInfo[] listUniqueIdentifiers() throws IOException {
+     POP3MessageInfo[] messages;
+-    Enumeration enum;
++    Enumeration myenum;
+     int line;
+ 
+     if(getState() != TRANSACTION_STATE)
+@@ -437,14 +437,14 @@
+ 
+     // This could be a zero length array if no messages present
+     messages = new POP3MessageInfo[_replyLines.size() - 2];
+-    enum = _replyLines.elements();
++    myenum = _replyLines.elements();
+ 
+     // Skip first line
+-    enum.nextElement();
++    myenum.nextElement();
+ 
+     // Fetch lines.
+     for(line = 0; line < messages.length; line++)
+-      messages[line] = __parseUID((String)enum.nextElement());
++      messages[line] = __parseUID((String)myenum.nextElement());
+ 
+     return messages;
+   }
+diff -ru NetComponents-1.3.8.orig/src/java/com/oroinc/net/pop3/POP3.java NetComponents-1.3.8/src/java/com/oroinc/net/pop3/POP3.java
+--- NetComponents-1.3.8.orig/src/java/com/oroinc/net/pop3/POP3.java	2001-11-30 04:20:12.000000000 +0100
++++ NetComponents-1.3.8/src/java/com/oroinc/net/pop3/POP3.java	2007-07-23 21:10:49.130525000 +0200
+@@ -305,12 +305,12 @@
+    * @return The last server response.
+    ***/
+   public String getReplyString() {
+-    Enumeration enum;
++    Enumeration myenum;
+     StringBuffer buffer = new StringBuffer(256);
+ 
+-    enum = _replyLines.elements();
+-    while(enum.hasMoreElements()) {
+-      buffer.append((String)enum.nextElement());
++    myenum = _replyLines.elements();
++    while(myenum.hasMoreElements()) {
++      buffer.append((String)myenum.nextElement());
+       buffer.append(SocketClient.NETASCII_EOL);
+     }
+ 
+diff -ru NetComponents-1.3.8.orig/src/java/com/oroinc/net/ProtocolCommandSupport.java NetComponents-1.3.8/src/java/com/oroinc/net/ProtocolCommandSupport.java
+--- NetComponents-1.3.8.orig/src/java/com/oroinc/net/ProtocolCommandSupport.java	2001-11-30 04:20:12.000000000 +0100
++++ NetComponents-1.3.8/src/java/com/oroinc/net/ProtocolCommandSupport.java	2007-07-23 21:10:49.239414000 +0200
+@@ -66,16 +66,16 @@
+    *        including all arguments.
+    ***/
+   public void fireCommandSent(String command, String message){
+-    Enumeration enum;
++    Enumeration myenum;
+     ProtocolCommandEvent event;
+     ProtocolCommandListener listener;
+ 
+-    enum = __listeners.getListeners();
++    myenum = __listeners.getListeners();
+ 
+     event = new ProtocolCommandEvent(__source, command, message);
+ 
+-    while(enum.hasMoreElements()) {
+-      listener = (ProtocolCommandListener)enum.nextElement();
++    while(myenum.hasMoreElements()) {
++      listener = (ProtocolCommandListener)myenum.nextElement();
+       listener.protocolCommandSent(event);
+     }
+   }
+@@ -94,16 +94,16 @@
+    * @param message The entire reply as received from the server.
+    ***/
+   public void fireReplyReceived(int replyCode, String message){
+-    Enumeration enum;
++    Enumeration myenum;
+     ProtocolCommandEvent event;
+     ProtocolCommandListener listener;
+ 
+-    enum = __listeners.getListeners();
++    myenum = __listeners.getListeners();
+ 
+     event = new ProtocolCommandEvent(__source, replyCode, message);
+ 
+-    while(enum.hasMoreElements()) {
+-      listener = (ProtocolCommandListener)enum.nextElement();
++    while(myenum.hasMoreElements()) {
++      listener = (ProtocolCommandListener)myenum.nextElement();
+       listener.protocolReplyReceived(event);
+     }
+   }
+diff -ru NetComponents-1.3.8.orig/src/java/com/oroinc/net/smtp/SMTP.java NetComponents-1.3.8/src/java/com/oroinc/net/smtp/SMTP.java
+--- NetComponents-1.3.8.orig/src/java/com/oroinc/net/smtp/SMTP.java	2001-11-30 04:20:12.000000000 +0100
++++ NetComponents-1.3.8/src/java/com/oroinc/net/smtp/SMTP.java	2007-07-23 21:10:49.192463000 +0200
+@@ -410,16 +410,16 @@
+    * @return The entire text from the last SMTP response as a String.
+    ***/
+   public String getReplyString() {
+-    Enumeration enum;
++    Enumeration myenum;
+     StringBuffer buffer;
+ 
+     if(!_newReplyString)
+       return _replyString;
+ 
+     buffer = new StringBuffer(256);
+-    enum = _replyLines.elements();
+-    while(enum.hasMoreElements()) {
+-      buffer.append((String)enum.nextElement());
++    myenum = _replyLines.elements();
++    while(myenum.hasMoreElements()) {
++      buffer.append((String)myenum.nextElement());
+       buffer.append(SocketClient.NETASCII_EOL);
+     }
+ 
+diff -ru NetComponents-1.3.8.orig/src/java/examples/mail.java NetComponents-1.3.8/src/java/examples/mail.java
+--- NetComponents-1.3.8.orig/src/java/examples/mail.java	2001-11-30 04:20:12.000000000 +0100
++++ NetComponents-1.3.8/src/java/examples/mail.java	2007-07-23 21:10:49.013639000 +0200
+@@ -43,7 +43,7 @@
+     Writer writer;
+     SimpleSMTPHeader header;
+     SMTPClient client;
+-    Enumeration enum;
++    Enumeration myenum;
+ 
+     if(args.length < 1) {
+       System.err.println("Usage: mail smtpserver");
+@@ -115,10 +115,10 @@
+       client.setSender(sender);
+       client.addRecipient(recipient);
+ 
+-      enum = ccList.elements();
++      myenum = ccList.elements();
+ 
+-      while(enum.hasMoreElements())
+-	client.addRecipient((String)enum.nextElement());
++      while(myenum.hasMoreElements())
++	client.addRecipient((String)myenum.nextElement());
+ 
+       writer = client.sendMessageData();
+ 

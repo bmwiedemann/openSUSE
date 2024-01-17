@@ -1,0 +1,106 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>3e40e01f8517199ddb3e83e769ff620e</srcmd5>
+    <version>0.16</version>
+    <time>1303211509</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 66782 from user babelworx
+</comment>
+    <requestid>66782</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>8af22bf085d7135984e2524ea5c777a2</srcmd5>
+    <version>0.16</version>
+    <time>1303211520</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66782
+</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>8af22bf085d7135984e2524ea5c777a2</srcmd5>
+    <version>0.16</version>
+    <time>1319182319</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6d4a31ec51596dfcf95d72fb18a5e20f</srcmd5>
+    <version>20111103</version>
+    <time>1324547687</time>
+    <user>coolo</user>
+    <comment>- updated to 20111103 from very old sources, see Changes</comment>
+    <requestid>97032</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>6d4a31ec51596dfcf95d72fb18a5e20f</srcmd5>
+    <version>20111103</version>
+    <time>1340183948</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>6d4a31ec51596dfcf95d72fb18a5e20f</srcmd5>
+    <version>20111103</version>
+    <time>1359109840</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>6d4a31ec51596dfcf95d72fb18a5e20f</srcmd5>
+    <version>20111103</version>
+    <time>1379663908</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="9">
+    <srcmd5>6d4a31ec51596dfcf95d72fb18a5e20f</srcmd5>
+    <version>20111103</version>
+    <time>1409302557</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2696d1ff5fe889af114f7290cedc97e3</srcmd5>
+    <version>20140709</version>
+    <time>1410967556</time>
+    <user>coolo</user>
+    <comment>- updated to 20140709
+     New Features
+     * The &quot;git&quot; scheme is supported. (Schwern)
+     * svn, ssh and svn+ssh schemes are supported. [rt.cpan.org 57490] (Schwern)
+     * Added a --schemeless option to urifind. (Schwern)
+ 
+     Bug Fixes
+     * http:// is no longer matched [rt.cpan.org 63283] (Schwern)
+ 
+     Backwards Incompatibilities
+     * Previously, URIs stringified to their canonical version.  Now
+       they stringify as written.  This results in less loss of
+       information.  For example.  &quot;Blah HTTP:://FOO.COM&quot; previously
+       would stringify as &quot;http://foo.com/&quot; and now it will stringify
+       as &quot;HTTP://FOO.COM&quot;.  To restore the old behavior you can call
+       $uri-&gt;canonical. (Schwern)
+ 
+     Distribution Changes
+     * No longer using URI::URL. (Schwern)
+     * Now requires URI 1.60 for Unicode support. (Schwern)
+ 
+ 
+ 20140702  Wed Jul  2 13:41:47 PDT 2014
+     New Features
+     * IDNA (aka Unicode) domains are now supported. [github 3] (GwenDragon)
+     * The list of TLDs for schemeless matching has been updated. [github 3] (GwenDragon)
+ 
+     Bug Fixes
+     * Handle balanced [], {} and quotes in addition to (). [rt.cpan.org 85053] (Schwern)
+     * Don't mangle IPv6 URLs. [rt.cpan.org 85053] (Schwern)</comment>
+    <requestid>249363</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5a4b7e7afd13b7e4ea2d15d12b199f49</srcmd5>
+    <version>20160806</version>
+    <time>1470773723</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>417326</requestid>
+  </revision>
+</revisionlist>

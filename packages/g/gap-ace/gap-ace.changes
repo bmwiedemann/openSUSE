@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Sun Jan 29 13:10:58 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.6.2
+  * Build system update only
+
+-------------------------------------------------------------------
+Sun Oct  2 20:16:52 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.6.1
+  * Various minor improvements to the C code
+
+-------------------------------------------------------------------
+Mon Apr 25 08:18:18 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.4
+  * Updates to the build procedure only
+
+-------------------------------------------------------------------
+Wed Aug 29 21:00:13 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update build process for gap 4.9.x.
+
+-------------------------------------------------------------------
+Tue Sep 19 10:01:59 UTC 2017 - jengelh@inai.de
+
+- Correct License: field form HPND to MIT
+
+-------------------------------------------------------------------
+Sun Mar 27 11:41:40 UTC 2016 - jengelh@inai.de
+
+- Initial package (version 5.2) for build.opensuse.org

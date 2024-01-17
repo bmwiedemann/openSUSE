@@ -1,0 +1,12 @@
+<package name="python-python-gvm" project="openSUSE:Factory">
+  <title>Library to communicate with remote servers over GMP or OSP</title>
+  <description>The Greenbone Vulnerability Management Python API library python-gvm is a
+collection of APIs that help with remote controlling a Greenbone Security
+Manager (GSM) appliance and its underlying Greenbone Vulnerability Manager
+(GVM). The library essentially abstracts accessing the communication protocols
+Greenbone Management Protocol (GMP) and Open Scanner Protocol (OSP).
+
+</description>
+  <devel project="devel:languages:python" package="python-python-gvm"/>
+  <url>https://github.com/greenbone/python-gvm</url>
+</package>

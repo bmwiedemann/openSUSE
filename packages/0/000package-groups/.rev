@@ -1,0 +1,1856 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b0ebf1a4123fcd614371d922989b7bfb</srcmd5>
+    <version>unknown</version>
+    <time>1510746099</time>
+    <user>dimstar_suse</user>
+    <comment>initialize</comment>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b79ae136f3919f3d407c44f83e343b07</srcmd5>
+    <version>unknown</version>
+    <time>1510746693</time>
+    <user>dimstar_suse</user>
+    <comment>spec files are templates only;
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>68453f92418a16d927b6fb960a415f85</srcmd5>
+    <version>unknown</version>
+    <time>1510748895</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>6bcf63ad8575b8951d8c38c0570323ef</srcmd5>
+    <version>unknown</version>
+    <time>1510749043</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>d35222572ad76c4d35a0919fca6a5c2d</srcmd5>
+    <version>unknown</version>
+    <time>1510749381</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>99ba81e7e50d2c39eec61c31ad4b2232</srcmd5>
+    <version>unknown</version>
+    <time>1510749650</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>b87e9b2e5d5bbb7c55d682667611eb02</srcmd5>
+    <version>unknown</version>
+    <time>1510752575</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>012fc46db48e3f9c6b4ac9b0dcedcde1</srcmd5>
+    <version>unknown</version>
+    <time>1510755232</time>
+    <user>dimstar_suse</user>
+    <comment>The Kubic DVD group is identical already</comment>
+  </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>798ee77908468546894f2409821c7841</srcmd5>
+    <version>unknown</version>
+    <time>1521586582</time>
+    <user>dimstar_suse</user>
+    <comment>not yet used</comment>
+  </revision>
+  <revision rev="10" vrev="8">
+    <srcmd5>798ee77908468546894f2409821c7841</srcmd5>
+    <version>unknown</version>
+    <time>1542701794</time>
+    <user>dimstar_suse</user>
+    <comment>Restore the experiments around the new pkglistgen</comment>
+  </revision>
+  <revision rev="11" vrev="9">
+    <srcmd5>c9094e1e0fc13b4f0b2b379e3787d8e3</srcmd5>
+    <version>unknown</version>
+    <time>1542719725</time>
+    <user>dimstar_suse</user>
+    <comment>Only groups.yml should exist here</comment>
+  </revision>
+  <revision rev="12" vrev="10">
+    <srcmd5>a54ddda52b6c877b84b61f2180848e67</srcmd5>
+    <version>unknown</version>
+    <time>1542720094</time>
+    <user>dimstar_suse</user>
+    <comment>Align kubic names as a start</comment>
+  </revision>
+  <revision rev="13" vrev="11">
+    <srcmd5>90ef4e3ef3b4da17a6d9542c797f9d9e</srcmd5>
+    <version>unknown</version>
+    <time>1542720373</time>
+    <user>dimstar_suse</user>
+    <comment>Align kubic names as a start</comment>
+  </revision>
+  <revision rev="14" vrev="12">
+    <srcmd5>f449d83031aefea8ab0999f36cb49a05</srcmd5>
+    <version>unknown</version>
+    <time>1542723663</time>
+    <user>dimstar_suse</user>
+    <comment>Seems we DO need this content here - and have 000product generated outside of OBS</comment>
+  </revision>
+  <revision rev="15" vrev="13">
+    <srcmd5>911842a61791f0c422b7fc4befa62bb2</srcmd5>
+    <version>unknown</version>
+    <time>1542724120</time>
+    <user>dimstar_suse</user>
+    <comment>Align kubic names as a start</comment>
+  </revision>
+  <revision rev="16" vrev="14">
+    <srcmd5>c6cd330b045a09ca85594b0d9d656c46</srcmd5>
+    <version>unknown</version>
+    <time>1542724288</time>
+    <user>dimstar_suse</user>
+    <comment>Align kubic names as a start</comment>
+  </revision>
+  <revision rev="17" vrev="15">
+    <srcmd5>e7ab3c47500e1f720a62d79417759963</srcmd5>
+    <version>unknown</version>
+    <time>1542724540</time>
+    <user>dimstar_suse</user>
+    <comment>Align kubic names as a start</comment>
+  </revision>
+  <revision rev="18" vrev="16">
+    <srcmd5>f18f55e41889f0351915d074e67cdfa2</srcmd5>
+    <version>unknown</version>
+    <time>1542727813</time>
+    <user>dimstar_suse</user>
+    <comment>fixup</comment>
+  </revision>
+  <revision rev="19" vrev="17">
+    <srcmd5>e131fa362a1e13eb54e428dd6fea5bff</srcmd5>
+    <version>unknown</version>
+    <time>1542804007</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="20" vrev="18">
+    <srcmd5>a19cadf2926206d468a6c3d91376f91b</srcmd5>
+    <version>unknown</version>
+    <time>1543836879</time>
+    <user>dimstar_suse</user>
+    <comment>Kubic-ready</comment>
+  </revision>
+  <revision rev="21" vrev="19">
+    <srcmd5>6b1fececb4ebf35f61b4ef9373de83fc</srcmd5>
+    <version>unknown</version>
+    <time>1543869969</time>
+    <user>dimstar_suse</user>
+    <comment>Add include files and spec file templates</comment>
+  </revision>
+  <revision rev="22" vrev="20">
+    <srcmd5>e2452306e745c3df3b5901ef5f0c0b99</srcmd5>
+    <version>unknown</version>
+    <time>1543917504</time>
+    <user>dimstar_suse</user>
+    <comment>Start with the regular DVD as well</comment>
+  </revision>
+  <revision rev="23" vrev="21">
+    <srcmd5>9eba7d8e618391898ac6fae73790a307</srcmd5>
+    <version>unknown</version>
+    <time>1543918258</time>
+    <user>dimstar_suse</user>
+    <comment>Add nonoss product</comment>
+  </revision>
+  <revision rev="24" vrev="22">
+    <srcmd5>be4a5664bc2f6fb12847e0a450628397</srcmd5>
+    <version>unknown</version>
+    <time>1543927320</time>
+    <user>dimstar_suse</user>
+    <comment>Tumbleweed product: recommends need be enabled</comment>
+  </revision>
+  <revision rev="25" vrev="23">
+    <srcmd5>382f67df7ead86dcccd2e5628ea64b56</srcmd5>
+    <version>unknown</version>
+    <time>1543927720</time>
+    <user>dimstar_suse</user>
+    <comment>Recommends is done by pkglist</comment>
+  </revision>
+  <revision rev="26" vrev="24">
+    <srcmd5>33a33a218f8196f1aca94ed2b3fb9fa7</srcmd5>
+    <version>unknown</version>
+    <time>1543928221</time>
+    <user>dimstar_suse</user>
+    <comment>Drop texlive from the DVD</comment>
+  </revision>
+  <revision rev="27" vrev="25">
+    <srcmd5>5fbcbde2bb46f08a14f76d445bf8931b</srcmd5>
+    <version>unknown</version>
+    <time>1543928761</time>
+    <user>dimstar_suse</user>
+    <comment>Further close in to the old pkglist generator config</comment>
+  </revision>
+  <revision rev="28" vrev="26">
+    <srcmd5>51826e34cb8ea8053e44890e614ed0f8</srcmd5>
+    <version>unknown</version>
+    <time>1543929340</time>
+    <user>dimstar_suse</user>
+    <comment>No systemd-presets-branding-CAASp on the TW media</comment>
+  </revision>
+  <revision rev="29" vrev="27">
+    <srcmd5>fa3220ae3fc6bd450db58d94af2cf0f1</srcmd5>
+    <version>unknown</version>
+    <time>1544013035</time>
+    <user>dimstar_suse</user>
+    <comment>Kubic: enable use_recommend</comment>
+  </revision>
+  <revision rev="30" vrev="28">
+    <srcmd5>c9fdb957671ad81362e91541a8486fc0</srcmd5>
+    <version>unknown</version>
+    <time>1544014081</time>
+    <user>dimstar_suse</user>
+    <comment>Fix typo</comment>
+  </revision>
+  <revision rev="31" vrev="29">
+    <srcmd5>28a94a9bedf62047a4faceaed7d1f2df</srcmd5>
+    <version>unknown</version>
+    <time>1547547720</time>
+    <user>coolo</user>
+    <comment>Move the weakremovers to the spec file</comment>
+  </revision>
+  <revision rev="32" vrev="30">
+    <srcmd5>9a8fce8bc014ddf58116ebc4ad54346f</srcmd5>
+    <version>unknown</version>
+    <time>1547557900</time>
+    <user>coolo</user>
+    <comment>Take locks from package-lists group</comment>
+  </revision>
+  <revision rev="33" vrev="31">
+    <srcmd5>85885bac90a0a46048f10ff21d2e2efc</srcmd5>
+    <version>unknown</version>
+    <time>1547558621</time>
+    <user>coolo</user>
+    <comment>sync the name of the include files
+
+.include is for .product
+.inc is for .spec</comment>
+  </revision>
+  <revision rev="34" vrev="32">
+    <srcmd5>3356d63607053da6093f96dbd49471ce</srcmd5>
+    <version>unknown</version>
+    <time>1547560954</time>
+    <user>coolo</user>
+    <comment>More locks for dvd5</comment>
+  </revision>
+  <revision rev="35" vrev="33">
+    <srcmd5>c23a197a8619e790cf832f06e1884360</srcmd5>
+    <version>unknown</version>
+    <time>1547561286</time>
+    <user>coolo</user>
+    <comment>sync language list with the package-lists git</comment>
+  </revision>
+  <revision rev="36" vrev="34">
+    <srcmd5>ec7d78ef907a8edf16f40747dac6ad6b</srcmd5>
+    <version>unknown</version>
+    <time>1547575997</time>
+    <user>coolo</user>
+    <comment>remove no longer existant packages</comment>
+  </revision>
+  <revision rev="37" vrev="35">
+    <srcmd5>33ab4dd01ec43f31f3ed899f1aa9f304</srcmd5>
+    <version>unknown</version>
+    <time>1547577051</time>
+    <user>coolo</user>
+    <comment>lock more packages to be aligned</comment>
+  </revision>
+  <revision rev="38" vrev="36">
+    <srcmd5>33e1cc6bd7982a439603849f57f6e1a2</srcmd5>
+    <version>unknown</version>
+    <time>1547577297</time>
+    <user>coolo</user>
+    <comment>indent the XML a little more consistent</comment>
+  </revision>
+  <revision rev="39" vrev="37">
+    <srcmd5>d2c29ae2d51d7083cdcc13927e1e8e2a</srcmd5>
+    <version>unknown</version>
+    <time>1547617329</time>
+    <user>coolo</user>
+    <comment>Update weakremovers to 20190115 version</comment>
+  </revision>
+  <revision rev="40" vrev="38">
+    <srcmd5>cbd78bdf73df62833d9b018e7cd6af3e</srcmd5>
+    <version>unknown</version>
+    <time>1547618410</time>
+    <user>coolo</user>
+    <comment>Empty version in the .in files</comment>
+  </revision>
+  <revision rev="41" vrev="39">
+    <srcmd5>d5aa1c6106e6165f50220602d172fc56</srcmd5>
+    <version>unknown</version>
+    <time>1547620783</time>
+    <user>coolo</user>
+    <comment>Adopt copyright year</comment>
+  </revision>
+  <revision rev="42" vrev="40">
+    <srcmd5>3e8e0ef761942e07858f820a8ac4ce6f</srcmd5>
+    <version>unknown</version>
+    <time>1547622296</time>
+    <user>coolo</user>
+    <comment>No longer filter kubic release</comment>
+  </revision>
+  <revision rev="43" vrev="41">
+    <srcmd5>c56be5c6d1ce3f85a4fea84a3d3dd3a0</srcmd5>
+    <version>unknown</version>
+    <time>1547624964</time>
+    <user>coolo</user>
+    <comment>Align kubic and i686</comment>
+  </revision>
+  <revision rev="44" vrev="42">
+    <srcmd5>cb1055083bc29b4e369189285e8e6cf6</srcmd5>
+    <version>unknown</version>
+    <time>1547625805</time>
+    <user>coolo</user>
+    <comment>Don't include Factory in non-oss repo</comment>
+  </revision>
+  <revision rev="45" vrev="43">
+    <srcmd5>03e513e65b76814bfa2e5507fe397565</srcmd5>
+    <version>unknown</version>
+    <time>1547633627</time>
+    <user>coolo</user>
+    <comment>Filter out x86_64 specific packages</comment>
+  </revision>
+  <revision rev="46" vrev="44">
+    <srcmd5>9933be781e137d6a8db4792d6d5e96bb</srcmd5>
+    <version>unknown</version>
+    <time>1547634491</time>
+    <user>coolo</user>
+    <comment>lock more kernel flavors for kubic</comment>
+  </revision>
+  <revision rev="47" vrev="45">
+    <srcmd5>d8b282573cac225ff052645458f1578d</srcmd5>
+    <version>unknown</version>
+    <time>1547635610</time>
+    <user>coolo</user>
+    <comment>align to current product as of 20190115</comment>
+  </revision>
+  <revision rev="48" vrev="46">
+    <srcmd5>2ac91d330207e2ffb655944bd64fd5af</srcmd5>
+    <version>unknown</version>
+    <time>1547636506</time>
+    <user>coolo</user>
+    <comment>add packages specific to the i586 DVD</comment>
+  </revision>
+  <revision rev="49" vrev="47">
+    <srcmd5>403c8fd3c80ad10ee2852d2499f1abea</srcmd5>
+    <version>unknown</version>
+    <time>1547729218</time>
+    <user>coolo</user>
+    <comment>osc copypac from project:home:coolo:branches:openSUSE:Factory package:000package-groups revision:6</comment>
+  </revision>
+  <revision rev="50" vrev="48">
+    <srcmd5>2615fe6e20fb239e369d28370f1cb264</srcmd5>
+    <version>unknown</version>
+    <time>1547802553</time>
+    <user>dimstar_suse</user>
+    <comment>_constraints does more harm than good</comment>
+  </revision>
+  <revision rev="51" vrev="49">
+    <srcmd5>f2caa70ff4023c921268474227e56580</srcmd5>
+    <version>unknown</version>
+    <time>1547826939</time>
+    <user>dimstar_suse</user>
+    <comment>Add salt-master and salt-minion to the DVD, so we can test it in Staging</comment>
+  </revision>
+  <revision rev="52" vrev="50">
+    <srcmd5>71077ac79964568488f23db773682ad8</srcmd5>
+    <version>unknown</version>
+    <time>1548061741</time>
+    <user>dimstar_suse</user>
+    <comment>We need to add packages required on staging DVD</comment>
+    <requestid>667288</requestid>
+  </revision>
+  <revision rev="53" vrev="51">
+    <srcmd5>ad0f8e9f28ecebe2a5b6a4d7fa80640e</srcmd5>
+    <version>unknown</version>
+    <time>1548235094</time>
+    <user>dimstar_suse</user>
+    <comment>Use default repositories, inherited by OBS config</comment>
+  </revision>
+  <revision rev="54" vrev="52">
+    <srcmd5>ec6eae56ef291f773c0184de7921be43</srcmd5>
+    <version>unknown</version>
+    <time>1548235211</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>667636</requestid>
+  </revision>
+  <revision rev="55" vrev="53">
+    <srcmd5>b28ec41660d9ca2d7ee627ead961f5f7</srcmd5>
+    <version>unknown</version>
+    <time>1548341205</time>
+    <user>dimstar_suse</user>
+    <comment>reenable kubic for aarch64, which was just finished before
+it got removed in the last update.</comment>
+    <requestid>668161</requestid>
+  </revision>
+  <revision rev="56" vrev="54">
+    <srcmd5>1a676bfebeb2a2787ba876d17db7af02</srcmd5>
+    <version>unknown</version>
+    <time>1548848586</time>
+    <user>dimstar_suse</user>
+    <comment>Remove skelcd-control-{openSUSE,Kubic} from media meta package list - boo#1123534</comment>
+  </revision>
+  <revision rev="57" vrev="55">
+    <srcmd5>4350dc0bd63b02ddfd3f6ef023f93825</srcmd5>
+    <version>unknown</version>
+    <time>1549464367</time>
+    <user>coolo</user>
+    <comment>add autoyast2 and clean up the locks a little</comment>
+    <requestid>671880</requestid>
+  </revision>
+  <revision rev="58" vrev="56">
+    <srcmd5>a939c1f30b89fceb362051ccbecf8a3f</srcmd5>
+    <version>unknown</version>
+    <time>1550822041</time>
+    <user>maxlin_factory</user>
+    <comment>no longer have kernel-pae-base</comment>
+  </revision>
+  <revision rev="59" vrev="57">
+    <srcmd5>43d30c47e38bdb5de26d5d03ff152dce</srcmd5>
+    <version>unknown</version>
+    <time>1550824108</time>
+    <user>maxlin_factory</user>
+    <comment>no longer have kernel-debug-base</comment>
+  </revision>
+  <revision rev="60" vrev="58">
+    <srcmd5>ed6b1df876d5d475f6823cbe39570a8b</srcmd5>
+    <version>unknown</version>
+    <time>1551298344</time>
+    <user>coolo</user>
+    <comment>Drop patterns-caasp-container-runtime-config from the Kubic medium: this pattern does no longer exist</comment>
+    <requestid>679842</requestid>
+  </revision>
+  <revision rev="61" vrev="59">
+    <srcmd5>85563e82d7198239547e2799e739b0c4</srcmd5>
+    <version>unknown</version>
+    <time>1551456734</time>
+    <user>dimstar_suse</user>
+    <comment>Add an livecd-xfce flavor - he XFCE team becomes stronger, let's offer the right platform</comment>
+  </revision>
+  <revision rev="62" vrev="60">
+    <srcmd5>1568cd801846c53101681f7a76f746c1</srcmd5>
+    <version>unknown</version>
+    <time>1551457170</time>
+    <user>dimstar_suse</user>
+    <comment>Do not publish release-livecd-xfce in the FTP repo</comment>
+  </revision>
+  <revision rev="63" vrev="61">
+    <srcmd5>459a3c7d61bf7e967a18b11adfaf4d21</srcmd5>
+    <version>unknown</version>
+    <time>1554749528</time>
+    <user>dimstar_suse</user>
+    <comment>Groups.yml refreshed, all patterns defined, with correct names</comment>
+    <requestid>692231</requestid>
+  </revision>
+  <revision rev="64" vrev="62">
+    <srcmd5>ab256ca05dbbfebcc17cdce6b5aac868</srcmd5>
+    <version>unknown</version>
+    <time>1554805719</time>
+    <user>dimstar_suse</user>
+    <comment>Do not add microOS basesystem/-release on the TW DVD</comment>
+  </revision>
+  <revision rev="65" vrev="63">
+    <srcmd5>5fb56611c5ccd928b2e663f82ddff724</srcmd5>
+    <version>unknown</version>
+    <time>1554881685</time>
+    <user>dimstar_suse</user>
+    <comment>Move product case licenses to %_defaultlicensedir/product/base</comment>
+  </revision>
+  <revision rev="66" vrev="64">
+    <srcmd5>c46eec3fd5ba5b950effa9ffb74b4f7f</srcmd5>
+    <version>unknown</version>
+    <time>1554882000</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>692602</requestid>
+  </revision>
+  <revision rev="67" vrev="65">
+    <srcmd5>50867c281d08fe1e0a9ce8124d3d9aa9</srcmd5>
+    <version>unknown</version>
+    <time>1555321844</time>
+    <user>dimstar_suse</user>
+    <comment>Needs to be paired with 693964, 693966</comment>
+    <requestid>694016</requestid>
+  </revision>
+  <revision rev="68" vrev="66">
+    <srcmd5>67db49bab75bf070373e267735fbcc5a</srcmd5>
+    <version>unknown</version>
+    <time>1555830005</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>695181</requestid>
+  </revision>
+  <revision rev="69" vrev="67">
+    <srcmd5>9f7407cb3011445ee4ce0ada396d5cac</srcmd5>
+    <version>unknown</version>
+    <time>1556914972</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>699736</requestid>
+  </revision>
+  <revision rev="70" vrev="68">
+    <srcmd5>25668092caa67167199829ef772dd3d3</srcmd5>
+    <version>unknown</version>
+    <time>1557046406</time>
+    <user>dimstar_suse</user>
+    <comment>Fix openSUSE-MicroOS product definition</comment>
+  </revision>
+  <revision rev="71" vrev="69">
+    <srcmd5>8ec4ccc98994f17aafe55b19b07174ba</srcmd5>
+    <version>unknown</version>
+    <time>1557832432</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>702638</requestid>
+  </revision>
+  <revision rev="72" vrev="70">
+    <srcmd5>7e9c5c174f8ea77f9f2368f3eed4c135</srcmd5>
+    <version>unknown</version>
+    <time>1557994586</time>
+    <user>dimstar_suse</user>
+    <comment>Drop openSUSE-release-appliance from the DVD and the FTP Tree</comment>
+  </revision>
+  <revision rev="73" vrev="71">
+    <srcmd5>0c2af54aa993f0da099e0022e946349d</srcmd5>
+    <version>unknown</version>
+    <time>1558592744</time>
+    <user>dimstar_suse</user>
+    <comment>Save a couple MB - do not add patterns-desktop-imaging_opt to the DVD</comment>
+  </revision>
+  <revision rev="74" vrev="72">
+    <srcmd5>65c3078bc362d123a54bce56c6ddf446</srcmd5>
+    <version>unknown</version>
+    <time>1558594394</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="75" vrev="73">
+    <srcmd5>e321f45cefce719b9cef9c299392d1db</srcmd5>
+    <version>unknown</version>
+    <time>1558597356</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="76" vrev="74">
+    <srcmd5>bcb8af235668d3e50b71c8afe100b278</srcmd5>
+    <version>unknown</version>
+    <time>1561033662</time>
+    <user>dimstar_suse</user>
+    <comment>One verison of libLLVM must be sufficient</comment>
+  </revision>
+  <revision rev="77" vrev="75">
+    <srcmd5>806600f4edf95986be50b30eb7280256</srcmd5>
+    <version>unknown</version>
+    <time>1561882672</time>
+    <user>dimstar_suse</user>
+    <comment>Add patterns-containers-kubernetes_utilities to openSUSE Kubic DVD</comment>
+    <requestid>711829</requestid>
+  </revision>
+  <revision rev="78" vrev="76">
+    <srcmd5>3a5277ec615e3ce95e28df7a11e7bf6b</srcmd5>
+    <version>unknown</version>
+    <time>1564575872</time>
+    <user>dimstar_suse</user>
+    <comment>Adjust media content</comment>
+    <requestid>717089</requestid>
+  </revision>
+  <revision rev="79" vrev="77">
+    <srcmd5>41e269ec9d1b345a7b7752107cc9930d</srcmd5>
+    <version>unknown</version>
+    <time>1565775418</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>722667</requestid>
+  </revision>
+  <revision rev="80" vrev="78">
+    <srcmd5>db99fc66a0ad1289e85fc32e1039b9e1</srcmd5>
+    <version>unknown</version>
+    <time>1566392069</time>
+    <user>dimstar_suse</user>
+    <comment>Lock calibre from the DVD</comment>
+  </revision>
+  <revision rev="81" vrev="79">
+    <srcmd5>7ac7156c642468fb69be8b6ca00cb590</srcmd5>
+    <version>unknown</version>
+    <time>1566394194</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="82" vrev="80">
+    <srcmd5>14047c0972ea67479230253849b11c82</srcmd5>
+    <version>unknown</version>
+    <time>1566551085</time>
+    <user>dimstar_suse</user>
+    <comment>Add _constraints</comment>
+    <requestid>724792</requestid>
+  </revision>
+  <revision rev="83" vrev="81">
+    <srcmd5>909168c73532fbc660601da24bfe8631</srcmd5>
+    <version>unknown</version>
+    <time>1566635789</time>
+    <user>dimstar_suse</user>
+    <comment>No _constraints - typhoon1 has no 'disk' advertised (let's see next week if we can change that)</comment>
+  </revision>
+  <revision rev="84" vrev="82">
+    <srcmd5>c7f94305893f1c16e2781e674956125d</srcmd5>
+    <version>unknown</version>
+    <time>1568188498</time>
+    <user>dimstar_suse</user>
+    <comment>Add quota-nfs to the DVD (for openQA test)
+</comment>
+  </revision>
+  <revision rev="85" vrev="83">
+    <srcmd5>500b644b7dae5ba300686ff4ec9a810a</srcmd5>
+    <version>unknown</version>
+    <time>1568379094</time>
+    <user>lnussel_factory</user>
+    <comment>add grub2 to DVD again
+fix typo in quota-nfs
+remove obsolete _opt patterns</comment>
+    <requestid>730711</requestid>
+  </revision>
+  <revision rev="86" vrev="84">
+    <srcmd5>ae41cd257ba747cff449b28544e61315</srcmd5>
+    <version>unknown</version>
+    <time>1568721226</time>
+    <user>maxlin_factory</user>
+    <comment>make sure bootloader exist</comment>
+  </revision>
+  <revision rev="87" vrev="85">
+    <srcmd5>7959de3c419b3a72a51b3bb1f9d074d8</srcmd5>
+    <version>unknown</version>
+    <time>1568721487</time>
+    <user>maxlin_factory</user>
+    <comment>more explicity for shim</comment>
+  </revision>
+  <revision rev="88" vrev="86">
+    <srcmd5>abea63db244e29e8147298abd96c0f36</srcmd5>
+    <version>unknown</version>
+    <time>1568723633</time>
+    <user>maxlin_factory</user>
+    <comment>more explicity for grub2 branding</comment>
+  </revision>
+  <revision rev="89" vrev="87">
+    <srcmd5>c31a63aac0920a2130b636a8a655dac1</srcmd5>
+    <version>unknown</version>
+    <time>1570010142</time>
+    <user>dimstar_suse</user>
+    <comment>Lock kernel-debug - boo#1134727</comment>
+    <requestid>733635</requestid>
+  </revision>
+  <revision rev="90" vrev="88">
+    <srcmd5>853bc70afbcf738c08721134a38d314c</srcmd5>
+    <version>unknown</version>
+    <time>1570285149</time>
+    <user>dimstar_suse</user>
+    <comment>Provide openSUSE-MicroOS-release for %arm as well</comment>
+    <requestid>734489</requestid>
+  </revision>
+  <revision rev="91" vrev="89">
+    <srcmd5>efda722d5a93d092526a2bbfd6b47c8a</srcmd5>
+    <version>unknown</version>
+    <time>1571751484</time>
+    <user>dimstar_suse</user>
+    <comment>additional flavors</comment>
+    <requestid>737163</requestid>
+  </revision>
+  <revision rev="92" vrev="90">
+    <srcmd5>c9534b022b971d9e0b5cce4c38dcbd7b</srcmd5>
+    <version>unknown</version>
+    <time>1573122635</time>
+    <user>dimstar_suse</user>
+    <comment>make some choices clearer</comment>
+    <requestid>745352</requestid>
+  </revision>
+  <revision rev="93" vrev="91">
+    <srcmd5>9fad78f0b93541348f4bf8ec8291528c</srcmd5>
+    <version>unknown</version>
+    <time>1573122656</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="94" vrev="92">
+    <srcmd5>492c96dce14c80579f1bf09a2e3cd685</srcmd5>
+    <version>unknown</version>
+    <time>1574784552</time>
+    <user>dimstar_suse</user>
+    <comment>Java bootstrap packages that should not end up on user machine</comment>
+    <requestid>750991</requestid>
+  </revision>
+  <revision rev="95" vrev="93">
+    <srcmd5>8d5e15706972d3167bff0900d45a07a8</srcmd5>
+    <version>unknown</version>
+    <time>1575282726</time>
+    <user>dimstar_suse</user>
+    <comment>switch to generic openSUSE mediastyle</comment>
+    <requestid>751326</requestid>
+  </revision>
+  <revision rev="96" vrev="94">
+    <srcmd5>d42083c0e029e4a8e6c3ae002b049564</srcmd5>
+    <version>unknown</version>
+    <time>1575407782</time>
+    <user>dimstar_suse</user>
+    <comment>Replace createrepo with createrepo_c</comment>
+  </revision>
+  <revision rev="97" vrev="95">
+    <srcmd5>3faf58b2a85621f7d2af3e222662d1b6</srcmd5>
+    <version>unknown</version>
+    <time>1575542573</time>
+    <user>dimstar_suse</user>
+    <comment>Drop not interpreted obsoletes: product_flavor(%{product}) &lt; 20191202</comment>
+  </revision>
+  <revision rev="98" vrev="96">
+    <srcmd5>3395e14fdd2e63fe1b5668ef7aa69a90</srcmd5>
+    <version>unknown</version>
+    <time>1577194830</time>
+    <user>dimstar_suse</user>
+    <comment>Add libmozjs60 after switch to i686</comment>
+  </revision>
+  <revision rev="99" vrev="97">
+    <srcmd5>215d473add34b34a711c714a2e4ad7d3</srcmd5>
+    <version>unknown</version>
+    <time>1577267529</time>
+    <user>dimstar_suse</user>
+    <comment>mozjs60 back to i586</comment>
+  </revision>
+  <revision rev="100" vrev="98">
+    <srcmd5>7e181c90d2c2e296e0b6d50da3fe940e</srcmd5>
+    <version>unknown</version>
+    <time>1579447099</time>
+    <user>dimstar_suse</user>
+    <comment>drop lxde from the dvd</comment>
+  </revision>
+  <revision rev="101" vrev="99">
+    <srcmd5>8ef0e4734313480ae152601d43e67c19</srcmd5>
+    <version>unknown</version>
+    <time>1580251705</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="102" vrev="100">
+    <srcmd5>52f775317f2700148cf657723954c3d4</srcmd5>
+    <version>unknown</version>
+    <time>1580587935</time>
+    <user>dimstar_suse</user>
+    <comment>in</comment>
+  </revision>
+  <revision rev="103" vrev="101">
+    <srcmd5>407e37442dd5403b9d46983ba464c0b3</srcmd5>
+    <version>unknown</version>
+    <time>1581435791</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="104" vrev="102">
+    <srcmd5>24e02078a530e9ad724e8c7da3547b53</srcmd5>
+    <version>unknown</version>
+    <time>1581438232</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="105" vrev="103">
+    <srcmd5>c1e877c41b3d0d503fe51dc4d2f09db3</srcmd5>
+    <version>unknown</version>
+    <time>1581801900</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>774380</requestid>
+  </revision>
+  <revision rev="106" vrev="104">
+    <srcmd5>a3722d64b42f58c348dc5a98765d27c2</srcmd5>
+    <version>unknown</version>
+    <time>1582726407</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="107" vrev="105">
+    <srcmd5>0db98679533ea6cf2c0a7651afac6f3a</srcmd5>
+    <version>unknown</version>
+    <time>1583007533</time>
+    <user>dimstar_suse</user>
+    <comment>Prevent MicroOS Desktops from being added to Kubic media</comment>
+    <requestid>779084</requestid>
+  </revision>
+  <revision rev="108" vrev="106">
+    <srcmd5>b99113d3c9686800ec645bd484bddc6f</srcmd5>
+    <version>unknown</version>
+    <time>1585667567</time>
+    <user>dimstar_suse</user>
+    <comment>Add weakremover provides. Not tested yet, but has to be submitted for testing.</comment>
+    <requestid>789726</requestid>
+  </revision>
+  <revision rev="109" vrev="107">
+    <srcmd5>526e7755c3ee8d778e525a30a0ccdcd6</srcmd5>
+    <version>unknown</version>
+    <time>1585668726</time>
+    <user>dimstar_suse</user>
+    <comment>- Add s390x for MicroOS and containers patterns</comment>
+    <requestid>789127</requestid>
+  </revision>
+  <revision rev="110" vrev="108">
+    <srcmd5>f8afef2a85ee52fad17a39d626a1c5be</srcmd5>
+    <version>unknown</version>
+    <time>1587738802</time>
+    <user>dimstar_suse</user>
+    <comment>Drop various devel patterns from the DVD</comment>
+  </revision>
+  <revision rev="111" vrev="109">
+    <srcmd5>71d0981e07320373b8c4c8efd779872c</srcmd5>
+    <version>unknown</version>
+    <time>1587838145</time>
+    <user>dimstar_suse</user>
+    <comment>Add hint about correct build key
+
+Build key packages provide the generic &quot;build-key&quot; name which can be
+used in eg. patterns in a reusable way. The product has to hint what
+it wants then though.</comment>
+    <requestid>795732</requestid>
+  </revision>
+  <revision rev="112" vrev="110">
+    <srcmd5>66c288b22973b11a46a48cd3481de941</srcmd5>
+    <version>unknown</version>
+    <time>1588022959</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>797205</requestid>
+  </revision>
+  <revision rev="113" vrev="111">
+    <srcmd5>77d4d787f4fb28ec2328713243d1dfa7</srcmd5>
+    <version>unknown</version>
+    <time>1589403308</time>
+    <user>dimstar_suse</user>
+    <comment>based on sr#800354: Add ppc64le for microos patterns boo#1171146
+
+- Get rid of legacy upgrade code from &lt; 13.2
+- Don't require issue-generator, it's already pulled in by patterns
+- Turn Recommends of branding and logos into Supplements to just
+  hint the solver in case those packages are pulled in from
+  elsewhere (eg patterns).</comment>
+    <requestid>800366</requestid>
+  </revision>
+  <revision rev="114" vrev="112">
+    <srcmd5>46dc449040791d234f6d78215288fc05</srcmd5>
+    <version>unknown</version>
+    <time>1590779588</time>
+    <user>maxlin_factory</user>
+    <comment>- Add grub2-powerpc-ieee1275 for microos &amp; kubic
+  assuming will solve missing bootloader pattern
+  2nd correction for boo#1171146</comment>
+    <requestid>807751</requestid>
+  </revision>
+  <revision rev="115" vrev="113">
+    <srcmd5>376c1f73b30a0382840eb7853124c4c1</srcmd5>
+    <version>unknown</version>
+    <time>1591691231</time>
+    <user>dimstar_suse</user>
+    <comment>Add dup helper flag to MicroOS</comment>
+  </revision>
+  <revision rev="116" vrev="114">
+    <srcmd5>05a9b0002056eb932b09785924941445</srcmd5>
+    <version>unknown</version>
+    <time>1591879424</time>
+    <user>dimstar_suse</user>
+    <comment>Add explicitely some patterns for ppc64le to investigate why
+&quot;no providers can be installed&quot; for basesystem and bootloader</comment>
+    <requestid>813239</requestid>
+  </revision>
+  <revision rev="117" vrev="115">
+    <srcmd5>3dc9d2dfbae9763a597a9d81b3fef8bf</srcmd5>
+    <version>unknown</version>
+    <time>1592469357</time>
+    <user>dimstar_suse</user>
+    <comment>Have a bootable system for RPi3/4 - boo#1172574</comment>
+    <requestid>815261</requestid>
+  </revision>
+  <revision rev="118" vrev="116">
+    <srcmd5>62849a5d9e90f62635059654415c0531</srcmd5>
+    <version>unknown</version>
+    <time>1593730240</time>
+    <user>dimstar_suse</user>
+    <comment>add nvme</comment>
+  </revision>
+  <revision rev="119" vrev="117">
+    <srcmd5>e0a5ad9b807b828ad36d905863c3917e</srcmd5>
+    <version>unknown</version>
+    <time>1593845304</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="120" vrev="118">
+    <srcmd5>0e9f15a37f34d414479d18634288dc7f</srcmd5>
+    <version>unknown</version>
+    <time>1593985772</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="121" vrev="119">
+    <srcmd5>c6ff7e7563b566ea969bce0049a87ac2</srcmd5>
+    <version>unknown</version>
+    <time>1594009387</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="122" vrev="120">
+    <srcmd5>4b4066c2c91cc0bbee6213321397a06a</srcmd5>
+    <version>unknown</version>
+    <time>1594020292</time>
+    <user>dimstar_suse</user>
+    <comment>Save more space</comment>
+  </revision>
+  <revision rev="123" vrev="121">
+    <srcmd5>813b3964a599a3841302999a92ddb785</srcmd5>
+    <version>unknown</version>
+    <time>1594033532</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="124" vrev="122">
+    <srcmd5>8836b358aa1f5836823f3f4d887022e0</srcmd5>
+    <version>unknown</version>
+    <time>1594034513</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="125" vrev="123">
+    <srcmd5>a62be11d0199094371cdc56270ff3dcb</srcmd5>
+    <version>unknown</version>
+    <time>1594706129</time>
+    <user>dimstar_suse</user>
+    <comment>openSUSE-MicroOS -&gt; MicroOS
+
+So far the vendor &quot;openSUSE&quot; produced the product &quot;openSUSE-MicroOS&quot;. Should be
+vendor &quot;openSUSE&quot;, product &quot;MicroOS&quot; though.</comment>
+    <requestid>817866</requestid>
+  </revision>
+  <revision rev="126" vrev="124">
+    <srcmd5>ea7c4de9bbb61053d9b2e68b810a18b0</srcmd5>
+    <version>unknown</version>
+    <time>1594729349</time>
+    <user>dimstar_suse</user>
+    <comment>Revert SR#817866</comment>
+  </revision>
+  <revision rev="127" vrev="125">
+    <srcmd5>a62be11d0199094371cdc56270ff3dcb</srcmd5>
+    <version>unknown</version>
+    <time>1595098815</time>
+    <user>dimstar_suse</user>
+    <comment>openSUSE-MicroOS -&gt; MicroOS</comment>
+    <requestid>821492</requestid>
+  </revision>
+  <revision rev="128" vrev="126">
+    <srcmd5>77770b6275416840db3073c901e59062</srcmd5>
+    <version>unknown</version>
+    <time>1598264260</time>
+    <user>dimstar_suse</user>
+    <comment>Add skelcd* to the FTP tree so building live images against openSUSE:Tumbleweed is possible</comment>
+  </revision>
+  <revision rev="129" vrev="127">
+    <srcmd5>8770315d707d9cdedc3d4e3e60021baf</srcmd5>
+    <version>unknown</version>
+    <time>1598466490</time>
+    <user>dimstar_suse</user>
+    <comment>Drop qemu-extra from the DVD</comment>
+  </revision>
+  <revision rev="130" vrev="128">
+    <srcmd5>d08e99ef349e8f9bcf4bd69db876d638</srcmd5>
+    <version>unknown</version>
+    <time>1598466804</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="131" vrev="129">
+    <srcmd5>b98d56396493e2791a5c2183e5e5970d</srcmd5>
+    <version>unknown</version>
+    <time>1598473286</time>
+    <user>dimstar_suse</user>
+    <comment>Drop krita and kalzium from the dvd</comment>
+  </revision>
+  <revision rev="132" vrev="130">
+    <srcmd5>fe73ba0d2a48ca2bc8f20b5ba37cf729</srcmd5>
+    <version>unknown</version>
+    <time>1598972862</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="133" vrev="131">
+    <srcmd5>d7e241440540f2ef7efc3093b7c25278</srcmd5>
+    <version>unknown</version>
+    <time>1598973599</time>
+    <user>dimstar_suse</user>
+    <comment>Space...</comment>
+  </revision>
+  <revision rev="134" vrev="132">
+    <srcmd5>e5d3f709ab557c4352c13232bc670f30</srcmd5>
+    <version>unknown</version>
+    <time>1598975155</time>
+    <user>dimstar_suse</user>
+    <comment>Some more shrinking</comment>
+  </revision>
+  <revision rev="135" vrev="133">
+    <srcmd5>757a90d5a0e1af7a342580e71818657b</srcmd5>
+    <version>unknown</version>
+    <time>1598975322</time>
+    <user>dimstar_suse</user>
+    <comment>No java-14</comment>
+  </revision>
+  <revision rev="136" vrev="134">
+    <srcmd5>b92792375d39c4ca9aae82afe82fd4cb</srcmd5>
+    <version>unknown</version>
+    <time>1601044435</time>
+    <user>dimstar_suse</user>
+    <comment>Add DOCUMENTATION_URL to release files. It's used by e.g cockpit</comment>
+    <requestid>837394</requestid>
+  </revision>
+  <revision rev="137" vrev="135">
+    <srcmd5>55648cfee4dd052b09b152f9f595b125</srcmd5>
+    <version>unknown</version>
+    <time>1603030952</time>
+    <user>dimstar_suse</user>
+    <comment>Minor cleanup - yast2-trans-en_US no longer exists</comment>
+    <requestid>841301</requestid>
+  </revision>
+  <revision rev="138" vrev="136">
+    <srcmd5>b227ac420c30359f3307831c778a597b</srcmd5>
+    <version>unknown</version>
+    <time>1604306870</time>
+    <user>dimstar_suse</user>
+    <comment>mozjs78 is i686</comment>
+  </revision>
+  <revision rev="139" vrev="137">
+    <srcmd5>374b7cb3e69f06c9c0d1108f419a2954</srcmd5>
+    <version>unknown</version>
+    <time>1605290203</time>
+    <user>dimstar_suse</user>
+    <comment>Add the new pattern yast2_server to the DVD</comment>
+    <requestid>847066</requestid>
+  </revision>
+  <revision rev="140" vrev="138">
+    <srcmd5>126a4e9aa1c608b6ed7087891e71a213</srcmd5>
+    <version>unknown</version>
+    <time>1607958242</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="141" vrev="139">
+    <srcmd5>aba33b4386fb477ebcbeff4e1dd4a045</srcmd5>
+    <version>unknown</version>
+    <time>1610965639</time>
+    <user>dimstar_suse</user>
+    <comment>Add &quot;suse-release&quot; Provides for MicroOS-release (for rpm-repos-openSUSE to work with it)</comment>
+    <requestid>863062</requestid>
+  </revision>
+  <revision rev="142" vrev="140">
+    <srcmd5>c42439073958ef40f55396107b000a30</srcmd5>
+    <version>unknown</version>
+    <time>1611262441</time>
+    <user>dimstar_suse</user>
+    <comment>Require more packages by default</comment>
+    <requestid>863361</requestid>
+  </revision>
+  <revision rev="143" vrev="141">
+    <srcmd5>31e6b7b6287702e7c2c665ff762ced58</srcmd5>
+    <version>unknown</version>
+    <time>1611312999</time>
+    <user>dimstar_suse</user>
+    <comment>kde_imaging and kde_plasma cannot be required, as they are not (yet) valid on s390x</comment>
+  </revision>
+  <revision rev="144" vrev="142">
+    <srcmd5>1d093c1cc56aa4ee62766c9003564d00</srcmd5>
+    <version>unknown</version>
+    <time>1611385633</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="145" vrev="143">
+    <srcmd5>c71c0be26526594e70bdba59e7b52c31</srcmd5>
+    <version>unknown</version>
+    <time>1611648142</time>
+    <user>dimstar_suse</user>
+    <comment>MicroOS-release needs to be arch-limited</comment>
+  </revision>
+  <revision rev="146" vrev="144">
+    <srcmd5>6a2a498aaa809821e9e2829087b4cafe</srcmd5>
+    <version>unknown</version>
+    <time>1611654176</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="147" vrev="145">
+    <srcmd5>6c748076009919b3de35dd407c5657fb</srcmd5>
+    <version>unknown</version>
+    <time>1614689094</time>
+    <user>dimstar_suse</user>
+    <comment>Include mokutil on aarch64 which is now required: https://openqa.opensuse.org/tests/1651717#step/start_install/3</comment>
+    <requestid>876218</requestid>
+  </revision>
+  <revision rev="148" vrev="146">
+    <srcmd5>0a63c755051d617bc01bc8b0cb912efb</srcmd5>
+    <version>unknown</version>
+    <time>1614752547</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="149" vrev="147">
+    <srcmd5>08b02d153ff45ed0febbe2ad99075cb4</srcmd5>
+    <version>unknown</version>
+    <time>1616598658</time>
+    <user>dimstar_suse</user>
+    <comment>- Add new patterns for package managers to MicroOS group list
+- Add pattern for SELinux support</comment>
+    <requestid>876746</requestid>
+  </revision>
+  <revision rev="150" vrev="148">
+    <srcmd5>8ca5792971ccc3cbcdc82ed5bd8ef87a</srcmd5>
+    <version>unknown</version>
+    <time>1617722938</time>
+    <user>RBrownSUSE</user>
+    <comment>Fixes for armv7</comment>
+    <requestid>880129</requestid>
+  </revision>
+  <revision rev="151" vrev="149">
+    <srcmd5>bf6bafa5d3144b26b0908fe00e3bf88b</srcmd5>
+    <version>unknown</version>
+    <time>1620985341</time>
+    <user>dimstar_suse</user>
+    <comment>Drop gnome_ide: users of the IDE need -devel packages anyway, so they want the FTP tree enabled</comment>
+  </revision>
+  <revision rev="152" vrev="150">
+    <srcmd5>83bb684fb7b0498674a1ef50e4eb62ac</srcmd5>
+    <version>unknown</version>
+    <time>1625516551</time>
+    <user>dimstar_suse</user>
+    <comment>defined build.opensuse.org default repository name in default_obs_repository_name. The default_obs_download_url will get added automatically. You will need to use obs-service-product_converter 1.4.6 for this.</comment>
+    <requestid>903235</requestid>
+  </revision>
+  <revision rev="153" vrev="151">
+    <srcmd5>3cc6da45ec3c924706a43e8147652fcd</srcmd5>
+    <version>unknown</version>
+    <time>1625867804</time>
+    <user>dimstar_suse</user>
+    <comment>Add support for riscv64</comment>
+    <requestid>904555</requestid>
+  </revision>
+  <revision rev="154" vrev="152">
+    <srcmd5>0def0274c3cd241786eedae9399b0698</srcmd5>
+    <version>unknown</version>
+    <time>1626466365</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>906439</requestid>
+  </revision>
+  <revision rev="155" vrev="153">
+    <srcmd5>1ee0486b657e86ee10491fab9087d1f8</srcmd5>
+    <version>unknown</version>
+    <time>1629117016</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>912394</requestid>
+  </revision>
+  <revision rev="156" vrev="154">
+    <srcmd5>5904768a6ce2f78bdb2481557124f9ed</srcmd5>
+    <version>unknown</version>
+    <time>1629143904</time>
+    <user>RBrownSUSE</user>
+    <comment>Trying to fix broken dvd images</comment>
+  </revision>
+  <revision rev="157" vrev="155">
+    <srcmd5>219ef00d597707e3f8348cc3a6ff3522</srcmd5>
+    <version>unknown</version>
+    <time>1629190673</time>
+    <user>RBrownSUSE</user>
+    <comment>Fix DVD size</comment>
+    <requestid>912573</requestid>
+  </revision>
+  <revision rev="158" vrev="156">
+    <srcmd5>ee60b786d6e3e535a033d1e4cb43f191</srcmd5>
+    <version>unknown</version>
+    <time>1629447798</time>
+    <user>RBrownSUSE</user>
+    <comment>Shrink DVD by removing noto cjk fonts</comment>
+  </revision>
+  <revision rev="159" vrev="157">
+    <srcmd5>1fae03ab89b5ea1be65ef2be20407c26</srcmd5>
+    <version>unknown</version>
+    <time>1631516835</time>
+    <user>dimstar_suse</user>
+    <comment>Drop gnome_basis_opt from the DVD</comment>
+  </revision>
+  <revision rev="160" vrev="158">
+    <srcmd5>b4c1e43ee2b6c6b2528dd5d2ce4507da</srcmd5>
+    <version>unknown</version>
+    <time>1631520990</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="161" vrev="159">
+    <srcmd5>92caaf970979b49e7852f910e0c9dbfb</srcmd5>
+    <version>unknown</version>
+    <time>1631525533</time>
+    <user>dimstar_suse</user>
+    <comment>Drop wireshark from the DVD</comment>
+  </revision>
+  <revision rev="162" vrev="160">
+    <srcmd5>2f9942469436d2751e1048de8ae395b1</srcmd5>
+    <version>unknown</version>
+    <time>1631543068</time>
+    <user>dimstar_suse</user>
+    <comment>Switch icon names to reflect the distribution, to avoid icon themes from displaying the wrong logo</comment>
+    <requestid>917961</requestid>
+  </revision>
+  <revision rev="163" vrev="161">
+    <srcmd5>7872a0af1d9d136bf3425809d0bff0c9</srcmd5>
+    <version>unknown</version>
+    <time>1631607972</time>
+    <user>dimstar_suse</user>
+    <comment>Shrink DVD a bit - lock wireshark</comment>
+  </revision>
+  <revision rev="164" vrev="162">
+    <srcmd5>cb4087cd34bc3c2bfae87cb8b8634ca1</srcmd5>
+    <version>unknown</version>
+    <time>1633006670</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="165" vrev="163">
+    <srcmd5>3516b3ff4294db18cafaa8399cce1cef</srcmd5>
+    <version>unknown</version>
+    <time>1633355928</time>
+    <user>dimstar_suse</user>
+    <comment>Lock texlive-latex from the DVD</comment>
+  </revision>
+  <revision rev="166" vrev="164">
+    <srcmd5>2b18a31367e6d89520747b37099f1649</srcmd5>
+    <version>unknown</version>
+    <time>1633590110</time>
+    <user>dimstar_suse</user>
+    <comment>Cleanup; systemd-logger no longer exists</comment>
+  </revision>
+  <revision rev="167" vrev="165">
+    <srcmd5>e3ea5f3cd17352150f455c00ee4f9321</srcmd5>
+    <version>unknown</version>
+    <time>1634050455</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="168" vrev="166">
+    <srcmd5>c2b84c9d594b5733ebfea9fcd9e06dc4</srcmd5>
+    <version>unknown</version>
+    <time>1634286501</time>
+    <user>dimstar_suse</user>
+    <comment>Shrink DVD</comment>
+  </revision>
+  <revision rev="169" vrev="167">
+    <srcmd5>aa023967a9ecb71ec9efbd22012012ee</srcmd5>
+    <version>unknown</version>
+    <time>1637257238</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="170" vrev="168">
+    <srcmd5>32a7a6ba2d0a75073f229bf7178dd398</srcmd5>
+    <version>unknown</version>
+    <time>1637307027</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="171" vrev="169">
+    <srcmd5>23a621a1074232094ab8556e94ee6b07</srcmd5>
+    <version>unknown</version>
+    <time>1640246156</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="172" vrev="170">
+    <srcmd5>a1a8b5823642ec6aea95ba64abda3c85</srcmd5>
+    <version>unknown</version>
+    <time>1640253512</time>
+    <user>dimstar_suse</user>
+    <comment>No jupyter on the DVD - no space for such things</comment>
+  </revision>
+  <revision rev="173" vrev="171">
+    <srcmd5>511eec5a6f50137d9114e68bcf3db584</srcmd5>
+    <version>unknown</version>
+    <time>1640257915</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="174" vrev="172">
+    <srcmd5>b9b1e9bb6395d4150b459810733d58d5</srcmd5>
+    <version>unknown</version>
+    <time>1640262367</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="175" vrev="173">
+    <srcmd5>057cf715c0f703beaaf9f062a9a83c1f</srcmd5>
+    <version>unknown</version>
+    <time>1640262452</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="176" vrev="174">
+    <srcmd5>b0e0bd69be0fc0b587af3be8aa1cb6a2</srcmd5>
+    <version>unknown</version>
+    <time>1640764775</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="177" vrev="175">
+    <srcmd5>6491fe61455d7907c529d8ac8753e7fe</srcmd5>
+    <version>unknown</version>
+    <time>1642009683</time>
+    <user>dimstar_suse</user>
+    <comment>Drop gutenprint off the DVD; it's aging</comment>
+  </revision>
+  <revision rev="178" vrev="176">
+    <srcmd5>89f66274313b2a266b3ad2d30a0259fa</srcmd5>
+    <version>unknown</version>
+    <time>1643185125</time>
+    <user>dimstar_suse</user>
+    <comment>Try to shrink the DVD a little bit with less games</comment>
+  </revision>
+  <revision rev="179" vrev="177">
+    <srcmd5>f118a140fc4dbcb6d42eb78bf352f7c0</srcmd5>
+    <version>unknown</version>
+    <time>1643191321</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="180" vrev="178">
+    <srcmd5>e3525cf14bf15730b46999d910c78416</srcmd5>
+    <version>unknown</version>
+    <time>1643199968</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="181" vrev="179">
+    <srcmd5>8cb2f04c03e02229affee1a46984f47a</srcmd5>
+    <version>unknown</version>
+    <time>1643200467</time>
+    <user>dimstar_suse</user>
+    <comment>Drop unknwon capi4hylafax reference</comment>
+  </revision>
+  <revision rev="182" vrev="180">
+    <srcmd5>2dc25380d9a014ce69c737d075b964dd</srcmd5>
+    <version>unknown</version>
+    <time>1643285314</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="183" vrev="181">
+    <srcmd5>6bfeb84bdc3e95013848a67d05a8ae0f</srcmd5>
+    <version>unknown</version>
+    <time>1643469363</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="184" vrev="182">
+    <srcmd5>ae6b5e9ef40b90ac4d6273a517921147</srcmd5>
+    <version>unknown</version>
+    <time>1643991385</time>
+    <user>dimstar_suse</user>
+    <comment>Drop gnome suggested packages; the TW DVD is a one-time use mostly, the repo is mandatory anyway</comment>
+  </revision>
+  <revision rev="185" vrev="183">
+    <srcmd5>17c682d53edc31f8215b08eba6f511d5</srcmd5>
+    <version>unknown</version>
+    <time>1643992343</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="186" vrev="184">
+    <srcmd5>96ee99df42ada785ccb17f5cc5a7accb</srcmd5>
+    <version>unknown</version>
+    <time>1644047326</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="187" vrev="185">
+    <srcmd5>5a166f2f092e6022b2dc8c825c7dcf3c</srcmd5>
+    <version>unknown</version>
+    <time>1646487843</time>
+    <user>dimstar_suse</user>
+    <comment>Move the locks shared in a global group
+
+https://github.com/openSUSE/openSUSE-release-tools/issues/1843
+is not needed.
+</comment>
+    <requestid>959439</requestid>
+  </revision>
+  <revision rev="188" vrev="186">
+    <srcmd5>26579de9c82442a312371590a645e027</srcmd5>
+    <version>unknown</version>
+    <time>1649401224</time>
+    <user>dimstar_suse</user>
+    <comment>Add mozjs91 i686 into i586 tree</comment>
+  </revision>
+  <revision rev="189" vrev="187">
+    <srcmd5>b701bf17a63b892a5c56aa5bf4a1e67c</srcmd5>
+    <version>unknown</version>
+    <time>1649497249</time>
+    <user>dimstar_suse</user>
+    <comment>gcc12 is not yet needed</comment>
+  </revision>
+  <revision rev="190" vrev="188">
+    <srcmd5>0c9763c7473116ebe2baf9062ece4008</srcmd5>
+    <version>unknown</version>
+    <time>1649876658</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>969225</requestid>
+  </revision>
+  <revision rev="191" vrev="189">
+    <srcmd5>fecbbca65c5aa9b46fb615abbc3b6d24</srcmd5>
+    <version>unknown</version>
+    <time>1650048023</time>
+    <user>dimstar_suse</user>
+    <comment>shrink dvd</comment>
+  </revision>
+  <revision rev="192" vrev="190">
+    <srcmd5>24b56f6aac77367211465bfa7272efae</srcmd5>
+    <version>unknown</version>
+    <time>1650185855</time>
+    <user>dimstar_suse</user>
+    <comment>shrink dvd</comment>
+  </revision>
+  <revision rev="193" vrev="191">
+    <srcmd5>a226f333ca459f7a46de23d0ca7adff7</srcmd5>
+    <version>unknown</version>
+    <time>1650220191</time>
+    <user>dimstar_suse</user>
+    <comment>shrink dvd</comment>
+  </revision>
+  <revision rev="194" vrev="192">
+    <srcmd5>b5bf5f7bfe453a9185e85fe61704981b</srcmd5>
+    <version>unknown</version>
+    <time>1652355655</time>
+    <user>dimstar_suse</user>
+    <comment>Drop gcc11 from the DVD - we have gcc12 now</comment>
+  </revision>
+  <revision rev="195" vrev="193">
+    <srcmd5>690f7083c90a4ee07e63132ddd750782</srcmd5>
+    <version>unknown</version>
+    <time>1652363315</time>
+    <user>dimstar_suse</user>
+    <comment>No need to lock gcc11 - it should not be pulled in anyway</comment>
+  </revision>
+  <revision rev="196" vrev="194">
+    <srcmd5>7f56ecbb874a6d00cdf48a474140a627</srcmd5>
+    <version>unknown</version>
+    <time>1653583420</time>
+    <user>dimstar_suse</user>
+    <comment>Remove Kubic</comment>
+    <requestid>979179</requestid>
+  </revision>
+  <revision rev="197" vrev="195">
+    <srcmd5>a8aff3cc7fba8467a926057fe3d4f44d</srcmd5>
+    <version>unknown</version>
+    <time>1655326841</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="198" vrev="196">
+    <srcmd5>c3b573b097d831136963c743aaaeb98a</srcmd5>
+    <version>unknown</version>
+    <time>1656675873</time>
+    <user>dimstar_suse</user>
+    <comment>Enable soft deps for the MicroOS DVD to make -lang packages and some others available.</comment>
+    <requestid>985847</requestid>
+  </revision>
+  <revision rev="199" vrev="197">
+    <srcmd5>46e1daf7c67807801ab7c7e37c6c60df</srcmd5>
+    <version>unknown</version>
+    <time>1659527529</time>
+    <user>dimstar_suse</user>
+    <comment>Follow noto-sans -&gt; google-noto-sans font rename; still lock them</comment>
+  </revision>
+  <revision rev="200" vrev="198">
+    <srcmd5>817193f0c1fdb46dad91c6115f50e8f6</srcmd5>
+    <version>unknown</version>
+    <time>1660485323</time>
+    <user>dimstar_suse</user>
+    <comment>Drop virtualbox-guest-x11: no longer existing</comment>
+    <requestid>994743</requestid>
+  </revision>
+  <revision rev="201" vrev="199">
+    <srcmd5>7c0e4901cf04621f44aa926f2f8ae2b5</srcmd5>
+    <version>unknown</version>
+    <time>1660632455</time>
+    <user>dimstar_suse</user>
+    <comment>Thunderbird and nodejs-electron as i686 (boo#1202372)</comment>
+  </revision>
+  <revision rev="202" vrev="200">
+    <srcmd5>10967ffc2d989314f58c799e4ebf3d59</srcmd5>
+    <version>unknown</version>
+    <time>1660642525</time>
+    <user>dimstar_suse</user>
+    <comment>Fix typo</comment>
+  </revision>
+  <revision rev="203" vrev="201">
+    <srcmd5>8870dfc03a7bb939f1a3cb2230d055db</srcmd5>
+    <version>unknown</version>
+    <time>1663911061</time>
+    <user>dimstar_suse</user>
+    <comment>mozjs91 is gone, add 102 to i686 list</comment>
+  </revision>
+  <revision rev="204" vrev="202">
+    <srcmd5>c3961a613971c56009895dfe05976034</srcmd5>
+    <version>unknown</version>
+    <time>1664039877</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="205" vrev="203">
+    <srcmd5>b6fc015c72396f170760a8d01a5cdccd</srcmd5>
+    <version>unknown</version>
+    <time>1664531452</time>
+    <user>RBrownFactory</user>
+    <comment>Add distrobox to microos desktop group</comment>
+  </revision>
+  <revision rev="206" vrev="204">
+    <srcmd5>77e402c2bd69962b22f5840f44e35997</srcmd5>
+    <version>unknown</version>
+    <time>1664532369</time>
+    <user>RBrownFactory</user>
+    <comment>Oops, distrobox isn't ready for that yet</comment>
+  </revision>
+  <revision rev="207" vrev="205">
+    <srcmd5>035910cf5efe8f93fe95b891520a3ffe</srcmd5>
+    <version>unknown</version>
+    <time>1666604830</time>
+    <user>dimstar_suse</user>
+    <comment>Wicked should at least also be on the DVD - it's still a valid choice</comment>
+    <requestid>1030684</requestid>
+  </revision>
+  <revision rev="208" vrev="206">
+    <srcmd5>6c7acc6e6d8d5227d98fd3b47354ac79</srcmd5>
+    <version>unknown</version>
+    <time>1668609759</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1036039</requestid>
+  </revision>
+  <revision rev="209" vrev="207">
+    <srcmd5>fc6845923cc1f6076775ba361215e0d7</srcmd5>
+    <version>unknown</version>
+    <time>1668674500</time>
+    <user>dimstar_suse</user>
+    <comment>Drop kiwi-temlates-Minimal: too large</comment>
+  </revision>
+  <revision rev="210" vrev="208">
+    <srcmd5>8490d55fe7ed26da38ed9fccc5b313be</srcmd5>
+    <version>unknown</version>
+    <time>1668680836</time>
+    <user>dimstar_suse</user>
+    <comment>No docker/podman on the regular DVD; ENOSPACE</comment>
+  </revision>
+  <revision rev="211" vrev="209">
+    <srcmd5>6436d7b7ba1c4548ea77dde01fe8ea4f</srcmd5>
+    <version>unknown</version>
+    <time>1668684314</time>
+    <user>dimstar_suse</user>
+    <comment>Lock gnome-backgrounds and libLLVM14 from the DVD</comment>
+  </revision>
+  <revision rev="212" vrev="210">
+    <srcmd5>eaa23661ecdb1040310d8dcb6403e9a4</srcmd5>
+    <version>unknown</version>
+    <time>1668696536</time>
+    <user>dimstar_suse</user>
+    <comment>no docker on ppc64</comment>
+  </revision>
+  <revision rev="213" vrev="211">
+    <srcmd5>0e2d7452d2e1f942a06ea45bc0a1f3a4</srcmd5>
+    <version>unknown</version>
+    <time>1669816737</time>
+    <user>dimstar_suse</user>
+    <comment>Align openSUSe-release and MicroOS release
+
+Main motivation is to have the license files in MicroOS also in /usr/, not in /etc</comment>
+    <requestid>1038879</requestid>
+  </revision>
+  <revision rev="214" vrev="212">
+    <srcmd5>d0d41b6807a9f2a439890666dc8fb24b</srcmd5>
+    <version>unknown</version>
+    <time>1671016260</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="215" vrev="213">
+    <srcmd5>31a8e62dc38ee6f74f90333fff4ef9fd</srcmd5>
+    <version>unknown</version>
+    <time>1671174145</time>
+    <user>dimstar_suse</user>
+    <comment>Lock gcc13 - we are still at gcc12</comment>
+  </revision>
+  <revision rev="216" vrev="214">
+    <srcmd5>6519d72bfba9d38303e00149e5d228cf</srcmd5>
+    <version>unknown</version>
+    <time>1671645130</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="217" vrev="215">
+    <srcmd5>7e3dc52d222925b4370a05ab9b2e1fa9</srcmd5>
+    <version>unknown</version>
+    <time>1671724926</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="218" vrev="216">
+    <srcmd5>791db4e0c16b6994ef327b618daa5cac</srcmd5>
+    <version>unknown</version>
+    <time>1671790013</time>
+    <user>dimstar_suse</user>
+    <comment>Firefox on i586 backj in shape</comment>
+  </revision>
+  <revision rev="219" vrev="217">
+    <srcmd5>0f21abf39add7b4dcbf1d112bcb46ff9</srcmd5>
+    <version>unknown</version>
+    <time>1673854452</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="220" vrev="218">
+    <srcmd5>aec5924b6612497a0223db96ac1de47d</srcmd5>
+    <version>unknown</version>
+    <time>1674201292</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="221" vrev="219">
+    <srcmd5>7c7094a4c05dbcc59feba6e4c5b93df2</srcmd5>
+    <version>unknown</version>
+    <time>1674543258</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="222" vrev="220">
+    <srcmd5>ae734e40ae5affd4e4a742b77473ca8c</srcmd5>
+    <version>unknown</version>
+    <time>1675157305</time>
+    <user>dimstar_suse</user>
+    <comment>Drop more suggested stuff from the DVD</comment>
+  </revision>
+  <revision rev="223" vrev="221">
+    <srcmd5>8cf0fff5cd5ceb1aedc57c1a7fa52f53</srcmd5>
+    <version>unknown</version>
+    <time>1675175687</time>
+    <user>dimstar_suse</user>
+    <comment>Ensure amarok is on the DVD - needed for staging</comment>
+  </revision>
+  <revision rev="224" vrev="222">
+    <srcmd5>f0dcd1c8f134451e8557685824813292</srcmd5>
+    <version>unknown</version>
+    <time>1675265928</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1062275</requestid>
+  </revision>
+  <revision rev="225" vrev="223">
+    <srcmd5>8e20c8a17b518fcf1a67436f3cd136ac</srcmd5>
+    <version>unknown</version>
+    <time>1675690656</time>
+    <user>dimstar_suse</user>
+    <comment>Remove some more suggested tags; these are non-default installed things, and we need space</comment>
+  </revision>
+  <revision rev="226" vrev="224">
+    <srcmd5>be1c268433191eb8e8f83b6bc16579b8</srcmd5>
+    <version>unknown</version>
+    <time>1678125296</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1202372</comment>
+    <requestid>1069589</requestid>
+  </revision>
+  <revision rev="227" vrev="225">
+    <srcmd5>10af31b2eed2111a889ea1167ca42f42</srcmd5>
+    <version>unknown</version>
+    <time>1679917854</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="228" vrev="226">
+    <srcmd5>2a9415b7002cc5d42461dbff77dffcf5</srcmd5>
+    <version>unknown</version>
+    <time>1679918135</time>
+    <user>dimstar_suse</user>
+    <comment>Drop repo migration code</comment>
+  </revision>
+  <revision rev="229" vrev="227">
+    <srcmd5>f5ca0decc258f1bf2a84aa1bd18a4ebc</srcmd5>
+    <version>unknown</version>
+    <time>1679919538</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="230" vrev="228">
+    <srcmd5>52227f34436d9d9a7b2e3fa601ce9f84</srcmd5>
+    <version>unknown</version>
+    <time>1679988715</time>
+    <user>dimstar_suse</user>
+    <comment>Also no i586 on NonOss</comment>
+  </revision>
+  <revision rev="231" vrev="229">
+    <srcmd5>a8db7aa55c256df0de30602a1f0f4935</srcmd5>
+    <version>unknown</version>
+    <time>1680117191</time>
+    <user>dimstar_suse</user>
+    <comment>Less suggested things - hopefully saving 25MB</comment>
+  </revision>
+  <revision rev="232" vrev="230">
+    <srcmd5>3f5d698dafd98631c05dab82e712af79</srcmd5>
+    <version>unknown</version>
+    <time>1680125499</time>
+    <user>dimstar_suse</user>
+    <comment>Lock libLLVM15 from the DVD</comment>
+  </revision>
+  <revision rev="233" vrev="231">
+    <srcmd5>f33a884e592304390e234a4c8f3777b5</srcmd5>
+    <version>unknown</version>
+    <time>1680154957</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="234" vrev="232">
+    <srcmd5>d0f557417c328c8cda54124273ec4072</srcmd5>
+    <version>unknown</version>
+    <time>1680528498</time>
+    <user>dimstar_suse</user>
+    <comment>i686 migrations only happen on i586 arch distros now</comment>
+  </revision>
+  <revision rev="235" vrev="233">
+    <srcmd5>3ad9b6a2288cff0780c79cea8268f4dc</srcmd5>
+    <version>unknown</version>
+    <time>1680775260</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="236" vrev="234">
+    <srcmd5>e72ab5c1160caf2e26a5e2259df23080</srcmd5>
+    <version>unknown</version>
+    <time>1681825951</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1080097</requestid>
+  </revision>
+  <revision rev="237" vrev="235">
+    <srcmd5>c12e3e28338b8a3e92fcb8903c48726d</srcmd5>
+    <version>unknown</version>
+    <time>1684750225</time>
+    <user>dimstar_suse</user>
+    <comment>add register/target - boo#1211261</comment>
+  </revision>
+  <revision rev="238" vrev="236">
+    <srcmd5>26a4d81651dc7027216ac536790bb644</srcmd5>
+    <version>unknown</version>
+    <time>1688928048</time>
+    <user>dimstar_suse</user>
+    <comment>podman-cni-config is no more</comment>
+    <requestid>1097756</requestid>
+  </revision>
+  <revision rev="239" vrev="237">
+    <srcmd5>e9ad98fbbc433c055ce02f151760b7e9</srcmd5>
+    <version>unknown</version>
+    <time>1688974164</time>
+    <user>dimstar_suse</user>
+    <comment>no kernel-default-base on s390x</comment>
+  </revision>
+  <revision rev="240" vrev="238">
+    <srcmd5>b08b3a0a01035c90016f72369757b17f</srcmd5>
+    <version>unknown</version>
+    <time>1689858039</time>
+    <user>dimstar_suse</user>
+    <comment>Make sure we have suse-module-rpm-scriptlets on the disk - not the alternative</comment>
+  </revision>
+  <revision rev="241" vrev="239">
+    <srcmd5>9cb0cf66fe63cbcbadf363b82cbef1ff</srcmd5>
+    <version>unknown</version>
+    <time>1690779610</time>
+    <user>maxlin_factory</user>
+    <comment>product-buidler 1.4.14 new introduces DOWNLOAD_MIRROR_POLICY and was enabled by default, however it break ftp-tree build when it found 2 chromedriver in the same repo, set DOWNLOAD_MIRROR_POLICY to false for now until we address it as packaging issue or an BS issue</comment>
+  </revision>
+  <revision rev="242" vrev="240">
+    <srcmd5>35b30545871aee82180b30e4e56d3a14</srcmd5>
+    <version>unknown</version>
+    <time>1690912734</time>
+    <user>maxlin_factory</user>
+    <comment>set download_mirror_policy to false for NonFree ftp-tree because of THE-doc</comment>
+  </revision>
+  <revision rev="243" vrev="241">
+    <srcmd5>948841977a4432b114ad683408220695</srcmd5>
+    <version>unknown</version>
+    <time>1690987669</time>
+    <user>dimstar_suse</user>
+    <comment>Suggests openSUSE-repos-Leap on Leap
+
+* Consistencty with TW. This was mostly done to ensure
+  that Tumbleweed does not end up with openSUSE-repos-MicroOS</comment>
+    <requestid>1101963</requestid>
+  </revision>
+  <revision rev="244" vrev="242">
+    <srcmd5>e7009561193c5b7bd78ae5c58ea7cf7a</srcmd5>
+    <version>unknown</version>
+    <time>1691491264</time>
+    <user>dimstar_suse</user>
+    <comment>Re-enable mirror policy for x86_64</comment>
+  </revision>
+  <revision rev="245" vrev="243">
+    <srcmd5>e6bc2f6ae7b8a481256fbb1382f9739b</srcmd5>
+    <version>unknown</version>
+    <time>1695376244</time>
+    <user>dimstar_suse</user>
+    <comment>Add mozjs115 / i686 to the media for LegacyX86</comment>
+  </revision>
+  <revision rev="246" vrev="244">
+    <srcmd5>d8a84281c80755c5f2d5e44cb7acea74</srcmd5>
+    <version>unknown</version>
+    <time>1695664805</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1110586</requestid>
+  </revision>
+  <revision rev="247" vrev="245">
+    <srcmd5>32e396fad0a90a0b5e9aa1a37292f808</srcmd5>
+    <version>unknown</version>
+    <time>1695713077</time>
+    <user>dimstar_suse</user>
+    <comment>Add mozjs115 for i686</comment>
+  </revision>
+  <revision rev="248" vrev="246">
+    <srcmd5>1e84bfb754ee9e591411a2e6a0551008</srcmd5>
+    <version>unknown</version>
+    <time>1695971303</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="249" vrev="247">
+    <srcmd5>0503cbf3e0e613e3720c63726bc02393</srcmd5>
+    <version>unknown</version>
+    <time>1696917765</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="250" vrev="248">
+    <srcmd5>9ee23e52c6b2ea7b2551b85e67489cef</srcmd5>
+    <version>unknown</version>
+    <time>1696963934</time>
+    <user>anag+factory</user>
+    <comment>Allow sdbootutil-rpm-scriptlets. Let's play it safe</comment>
+    <requestid>1116725</requestid>
+  </revision>
+  <revision rev="251" vrev="249">
+    <srcmd5>b28f15d7f74c40e27011e83712ac810f</srcmd5>
+    <version>unknown</version>
+    <time>1699883267</time>
+    <user>dimstar_suse</user>
+    <comment>Block pgsql-llvmjit from the DVD</comment>
+  </revision>
+  <revision rev="252" vrev="250">
+    <srcmd5>2f96e7360137e8ccfdc65a22bda97390</srcmd5>
+    <version>unknown</version>
+    <time>1700135857</time>
+    <user>dimstar_suse</user>
+    <comment>Skip openafs for now - this was not on the DVD for quite some time until it was fixed</comment>
+  </revision>
+  <revision rev="253" vrev="251">
+    <srcmd5>f0af7b93d2dc236da46a32c4a879f4ba</srcmd5>
+    <version>unknown</version>
+    <time>1700210305</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="254" vrev="252">
+    <srcmd5>be9f1cd01f5fa390a44bb01f774eaf6c</srcmd5>
+    <version>unknown</version>
+    <time>1700213082</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="255" vrev="253">
+    <srcmd5>0ed82915a2b348c9a2472b3b7b7cd161</srcmd5>
+    <version>unknown</version>
+    <time>1700218081</time>
+    <user>dimstar_suse</user>
+    <comment>Create 32bit FTP tree for slowroll</comment>
+  </revision>
+  <revision rev="256" vrev="254">
+    <srcmd5>4c366f1b5d7ce417152482bd4c5187eb</srcmd5>
+    <version>unknown</version>
+    <time>1700218773</time>
+    <user>dimstar_suse</user>
+    <comment>Create 32bit FTP tree for slowroll</comment>
+  </revision>
+  <revision rev="257" vrev="255">
+    <srcmd5>64a02511a0851e8a5cb89744d51938a3</srcmd5>
+    <version>unknown</version>
+    <time>1702071077</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1129132</requestid>
+  </revision>
+  <revision rev="258" vrev="256">
+    <srcmd5>27e9fb524310bacb599f964ca63ef161</srcmd5>
+    <version>unknown</version>
+    <time>1702298707</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="259" vrev="257">
+    <srcmd5>63894727bc9648bb1d3f265d216fb007</srcmd5>
+    <version>unknown</version>
+    <time>1703024116</time>
+    <user>anag+factory</user>
+    <comment>Added Kalpa product for upcoming release</comment>
+    <requestid>1132912</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,119 @@
+#! /bin/sh
+# Copyright (c) 2012 SuSE Linux AG, Nuernberg, Germany.  All rights reserved.
+#
+# Author: Egmont Koblinger <egmont@suselinux.hu>
+#
+# This module maintains a symlink `words' pointing to either `american'
+# or `british' or `canadian'.
+
+# check if we are started as root
+# only one of UID and USER must be set correctly
+[ -n "$UID" ] || UID="$(id -ru)"
+if test "$UID" != 0 -a "$USER" != root; then
+    echo "You must be root to start $0."
+    exit 1
+fi
+
+test -f $ROOT/etc/sysconfig/language || { echo "No /etc/sysconfig/language found." && exit 1 ; }
+. $ROOT/etc/sysconfig/language
+
+test -f $ROOT/etc/sysconfig/words || { echo "No /etc/sysconfig/words found." && exit 1 ; }
+. $ROOT/etc/sysconfig/words
+
+# which dictionaries are installed?
+if [ -f $ROOT/usr/share/dict/american ]; then
+	INSTALLED_AMERICAN="yes"
+else
+	INSTALLED_AMERICAN="no"
+fi
+if [ -f $ROOT/usr/share/dict/british ]; then
+	INSTALLED_BRITISH="yes"
+else
+	INSTALLED_BRITISH="no"
+fi
+if [ -f $ROOT/usr/share/dict/canadian ]; then
+	INSTALLED_CANADIAN="yes"
+else
+	INSTALLED_CANADIAN="no"
+fi
+
+# where should the link point to?
+LINK_TO="none"
+if   [ "$INSTALLED_AMERICAN" = "yes" -a "$INSTALLED_BRITISH" = "no"  -a "$INSTALLED_CANADIAN" = "no"  ]; then
+	LINK_TO="american"
+elif [ "$INSTALLED_AMERICAN" = "no"  -a "$INSTALLED_BRITISH" = "yes" -a "$INSTALLED_CANADIAN" = "no"  ]; then
+	LINK_TO="british"
+elif [ "$INSTALLED_AMERICAN" = "no"  -a "$INSTALLED_BRITISH" = "no"  -a "$INSTALLED_CANADIAN" = "yes" ]; then
+	LINK_TO="canadian"
+elif [ "$INSTALLED_AMERICAN" = "yes" -a "$INSTALLED_BRITISH" = "yes" -a "$INSTALLED_CANADIAN" = "no"  ]; then
+	for dict in $ENGLISH_WORDS; do
+		if [ "$dict" = "system" ]; then
+			case "$RC_LANG" in
+			en_GB*)	dict="british" ;;
+			en*)	dict="american" ;;
+			*)	continue ;;
+			esac
+		fi
+		if [ -f $ROOT/usr/share/dict/$dict ]; then
+			LINK_TO="$dict"
+			break
+		fi
+	done
+elif [ "$INSTALLED_AMERICAN" = "yes" -a "$INSTALLED_BRITISH" = "no"  -a "$INSTALLED_CANADIAN" = "yes" ]; then
+	for dict in $ENGLISH_WORDS; do
+		if [ "$dict" = "system" ]; then
+			case "$RC_LANG" in
+			en_CA*) dict="canadian" ;;
+			en*)	dict="american" ;;
+			*)	continue ;;
+			esac
+		fi
+		if [ -f $ROOT/usr/share/dict/$dict ]; then
+			LINK_TO="$dict"
+			break
+		fi
+	done
+elif [ "$INSTALLED_AMERICAN" = "no"  -a "$INSTALLED_BRITISH" = "yes" -a "$INSTALLED_CANADIAN" = "yes" ]; then
+	for dict in $ENGLISH_WORDS; do
+		if [ "$dict" = "system" ]; then
+			case "$RC_LANG" in
+			en_CA*) dict="canadian" ;;
+			en_GB*)	dict="british" ;;
+			*)	continue ;;
+			esac
+		fi
+		if [ -f $ROOT/usr/share/dict/$dict ]; then
+			LINK_TO="$dict"
+			break
+		fi
+	done
+elif [ "$INSTALLED_AMERICAN" = "yes" -a "$INSTALLED_BRITISH" = "yes" -a "$INSTALLED_CANADIAN" = "yes" ]; then
+	for dict in $ENGLISH_WORDS; do
+		if [ "$dict" = "system" ]; then
+			case "$RC_LANG" in
+			en_CA*) dict="canadian" ;;
+			en_GB*)	dict="british" ;;
+			en*)	dict="american" ;;
+			*)	continue ;;
+			esac
+		fi
+		if [ -f $ROOT/usr/share/dict/$dict ]; then
+			LINK_TO="$dict"
+			break
+		fi
+	done
+fi
+
+if [ "$LINK_TO" = "none" ]; then
+# remove the links if necessary and if possible (modern `test' uses access(2))
+	test -L $ROOT/usr/share/dict/words   -a -w $ROOT/usr/share/dict/    && \
+		rm -f $ROOT/usr/share/dict/words
+else
+# create the symbolic links otherwise
+	test ! -e $ROOT/var/lib/dict/words   -o -L $ROOT/var/lib/dict/words && \
+		ln -sf $ROOT/usr/share/dict/$LINK_TO $ROOT/var/lib/dict/words
+	test ! -e $ROOT/usr/share/dict/words -a -w $ROOT/usr/share/dict/    && \
+		ln -sf $ROOT/var/lib/dict/words $ROOT/usr/share/dict/words
+fi
+
+exit 0

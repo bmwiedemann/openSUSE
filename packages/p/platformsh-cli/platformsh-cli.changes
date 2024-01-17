@@ -1,0 +1,2703 @@
+-------------------------------------------------------------------
+Sat Jun 26 20:16:36 UTC 2021 - jimmy@boombatower.com
+
+- Update to version 3.67.2:
+  * Release v3.67.2
+  * Fix: user:add command was silently doing nothing during non-interactive use
+  * Pass --fail to curl utility commands (#1049)
+  * Release v3.67.1
+  * Fix environment type not found when --type not specified in push command
+  * Release v3.67.0
+  * Support build-time environment-level variables (#1051)
+  * Support new /users/me API in auth:info command
+  * Release v3.66.4
+  * Fall back to old /me API if there is no proxy URL configured
+  * Fix user:update to avoid recalculating environment access changes while they are made
+  * Mention the type in the environment label
+  * Add a --type option to the push command
+  * Add --type option to the branch command
+  * Translate validation errors in the env:info command
+  * Allow the env type to be modified in the env:info command
+  * Add the type in the environment:list (env) command
+  * Direct the user to Console in the web command (#1062)
+  * Release v3.66.3
+  * Fix filename of arm64 Keychain credential helper
+  * Release v3.66.2
+  * Update docker-credential-helpers; add Keychain support for Mac M1 (#1060)
+  * Add a workaround for the default branch title in new projects (#1061)
+  * Do not require an env when the branch command is used without arguments
+  * Use the /users/me API if enabled
+  * Fix edge case bug (#1057)
+  * Release v3.66.1
+  * Bump paragonie/random_compat from 2.0.19 to 2.0.20 (#1050)
+  * Unhide the subscription:info command (#1052)
+  * Exclude lost+found directory to avoid permission error in mount:size command (#1056)
+  * Swap --access order in httpaccess example (fixes #1053)
+  * SSH diagnostics: avoid recommending ssh-cert:load if it is not enabled
+  * Set the default_branch to "main" by default for new projects (#1046)
+  * Add a link to help on the --type option for the activity:list command (#1048)
+  * Bump phpseclib/phpseclib from 2.0.29 to 2.0.31 in /vendor-bin/box (#1047)
+  * Document PLATFORMSH_CLI_DEFAULT_TIMEOUT in the README
+  * Release v3.66.0
+  * Bump drush/drush from 8.4.6 to 8.4.8 (#1045)
+  * Use http scheme for SOLR service tunnel URL (#1034)
+  * Add --default-branch option to the project:create command (#1042)
+  * Make the default timeout configurable through an env var
+
+-------------------------------------------------------------------
+Thu Mar 18 00:22:36 UTC 2021 - jimmy@boombatower.com
+
+- Update to version 3.65.4:
+  * Release v3.65.4
+  * Support indexed SSH URLs (for apps with multiple instances)
+  * Release v3.65.3
+  * Fix proxy settings in Api service (#1041)
+  * Make the OAuth2 client ID configurable by env var
+  * Improve worker not found error message when the app name is incorrect
+  * Fix --worker compatibility for various commands
+  * Only send the token to obtain the initial redirect
+  * Fix "Link not found: #manage-access" when checking environment roles
+  * Fix error "SSH service not available" with build --clone
+  * Also decode COMPOSER_AUTH
+  * installer: support using a GitHub token to download assets
+
+-------------------------------------------------------------------
+Wed Feb 17 03:42:25 UTC 2021 - jimmy@boombatower.com
+
+- Update to version 3.65.2:
+  * Release v3.65.2
+  * Add help in self:release about obtaining a token from the GitHub CLI
+  * Fix activity log in PHP 8 (#1036)
+  * Replace http->tcp and https->ssl in proxy URLs (#1037)
+  * Bump drush/drush from 8.4.5 to 8.4.6 (#1029)
+  * Release v3.65.1
+  * Add a default timeout to all requests
+  * Fix incomplete activity list example
+  * Support a relative update download path
+
+-------------------------------------------------------------------
+Tue Feb 02 01:40:35 UTC 2021 - jimmy@boombatower.com
+
+- Update to version 3.65.0:
+  * Release v3.65.0
+  * Rename the backup --unsafe option to --live (#1026)
+  * Add "plain" format option for table commands (#1021)
+  * Remove the restriction on deleting the main environment
+  * Remove us-2 from available region examples (#1025)
+  * Release v3.64.6
+  * integrations: Pass the user-supplied token for creating webhooks (#1023)
+  * Bump stecman/symfony-console-completion from 0.10.1 to 0.11.0
+  * Configure composer updates with Dependabot (#1022)
+  * Release v3.64.5
+  * Fix HTTP access username validation to match the API
+  * Reduce environment list indent from 3 to 2 spaces
+  * Remove patch version notes from manifest.json
+
+-------------------------------------------------------------------
+Tue Dec 22 22:30:22 UTC 2020 - jimmy@boombatower.com
+
+- Update to version 3.64.4:
+  * Release v3.64.4
+  * Add "offline" commands test to Travis
+  * Fix error about a non-existent service "input" for some commands (including 'list')
+  * Release v3.64.3
+  * Slight improvements to git/SSH setup
+  * Fix archive/extract test by removing property dependency of getTreeId()
+  * Avoid checking SSH identities when not logged in
+  * Use "main" in Git service test
+  * Fix local builds, unable to depend on the Ssh service
+  * Refactor Git service to include SSH options automatically
+  * Fix property formatter returning empty
+  * Fix loading backups choices in backup:restore command
+  * Clean up some unused code
+  * Fix drush alias command for Enterprise projects
+  * Unused import
+
+-------------------------------------------------------------------
+Wed Dec 16 18:11:03 UTC 2020 - jimmy@boombatower.com
+
+- Update to version 3.64.2:
+  * Release v3.64.2
+  * Add support for changing environments on the "script" integration
+  * Default to the primary route in the route:get interactive choices
+  * Release v3.64.1
+  * Fix box composer.json to install dependencies on on PHP 8
+  * Fix build to include a .php8 file in symfony/polyfill-mbstring
+
+-------------------------------------------------------------------
+Tue Dec 15 03:49:04 UTC 2020 - jimmy@boombatower.com
+
+- Update to version 3.64.0:
+  * Release v3.64.0
+  * Fix 500 error in backup:list (backups) command
+  * Add --unsafe option to the backup:create (backup) command
+  * Remove problematic progress output
+  * Add a new line after progress messages
+  * More loading messages (for slow connections)
+  * Show a loading message on environments and project lists
+  * Update slow integration tests from PHP 7.3 -> 7.4 on Travis
+  * Update Travis to Ubuntu Xenial
+  * Remove hardcoded instances of "master" for the default branch (#1003)
+  * Recommend an SSH certificate if not present after a publickey error
+  * Add mongodb support to the db:size command (#1001)
+  * Add activity choice
+  * Add activity:cancel command
+  * Add state and result filters to activity commands
+  * Disable Travis coverage to fix unit tests on PHP 7.3
+  * Update dependencies (inc. Symfony v3.4.42 => v3.4.47)
+  * SSH diagnostics: do not make a test connection >3 seconds after the failed one started
+  * Update README for travis-ci.com migration
+  * Check host key error in SSH diagnostics (#1004)
+  * Release v3.63.3
+  * Avoid sending prompt=select_account to authorization when not logged in
+  * Fix "Property not found: token" when trying to check integration hooks
+  * Enable auto login from curl commands
+  * Improve placement of session advice when requiring auto login
+  * Tweak README for default state of auto_load_ssh_cert
+  * Release v3.63.2
+  * Fix browser login after session expiry
+  * Add a timeout for browser login
+  * Revert "Add the --app (-A) option to the environment:url (url) command"
+  * Allow updating the default_branch in the project:info command
+  * Add the --app (-A) option to the environment:url (url) command
+  * Automatically rewrite installer.php config on build, to match config.yaml
+  * Release v3.63.1
+  * Fix script display in the integration:list command (#998)
+  * Fix "box" composer.lock for Composer 2 (#999)
+  * Change default release branch
+  * Add --insecure option to the installer
+  * Fix writable test on self:build --output option [skip changelog]
+  * Increase timeout when fetching activity logs (#991)
+  * Update README: Add note about a possible need for "php.exe" when running the install command
+  * Release v3.63.0
+  * Add --gateway-ports (-g) option to tunnel commands (#993)
+  * Stop using SSH home directory substitution (#995)
+  * Installer: auto-detect existing but disabled extensions (#996)
+  * Fix missing Git detection on Windows
+  * Modify ProcessFailedException to extend Symfony's, for easier try/catch
+  * Fix test namespaces for Composer 2 compatibility [skip changelog]
+  * Avoid running getUser() when api.auth is not enabled
+  * Bugfix 32bit limit (#989)
+  * Release v3.62.6
+  * Try "which" as well as "where" on Windows for command existence
+  * Typo in method name [skip changelog]
+  * Release v3.62.5
+  * Move test connection messages to debug verbosity
+  * Do not display "You probably need to add an SSH key" if the authentication succeeded
+  * Release v3.62.4
+  * Fix Windows arg escaping for SSH commands (#982)
+  * Clarify when a sensitive variable value cannot be read
+  * Fix error message for variable:get when there are no variables
+  * Avoid repeating IdentityFile SSH options
+  * Release v3.62.3
+  * Fix file quoting for SSH options (#981)
+  * Github Actions workflow to build platform.sh CLI phar executable (#977)
+  * Fix shell arguments for multi-instance mongo commands
+  * Strip mongo log messages when detecting collections in mongoexport command
+
+-------------------------------------------------------------------
+Sat Aug 29 02:16:38 UTC 2020 - jimmy@boombatower.com
+
+- Update to version 3.62.2:
+  * Release v3.62.2
+  * SSH diagnostics fixes
+  * Diagnose whether MFA is required for a failed SSH connection (#974)
+  * Release v3.62.1
+  * Trigger prompt=select_account after the "Log in anyway?" question, in browser login command
+  * Increase drush alias command timeout
+
+-------------------------------------------------------------------
+Tue Aug 18 22:37:26 UTC 2020 - jimmy@boombatower.com
+
+- Update to version 3.62.0:
+  * Release v3.62.0
+  * Apply feature flag to the --force-invite option
+  * Handle mongodb URIs in relationships (#975)
+  * Show the stderr of every shell command, if in debug mode (#972)
+  * Retry fetching the activity log stream (#973)
+  * Support force-sending an invitation (#976)
+
+-------------------------------------------------------------------
+Thu Aug 13 18:32:04 UTC 2020 - jimmy@boombatower.com
+
+- Update to version 3.61.0:
+  * Release v3.61.0
+  * Add proxy support to the installer (#953)
+  * Provide autocomplete choice of projects if there are many
+  * Use --globoff by default in curl commands
+  * Disable use of SSH agent unless explicitly enabled in the user config file
+  * Explicitly request the offline_access scope when logging in
+  * Add a comment to auto-generated temporary SSH keys (#970)
+  * Release v3.60.4
+  * Restore PLATFORMSH_CLI_ACCOUNTS_API environment variable option for backwards compatibility
+  * Release v3.60.3
+  * Fix locating projects that are not in the user's list
+  * Release v3.60.2
+  * Ignore project-level variable activities (#968)
+  * Detect the SSH version and show appropriate messages (#969)
+  * Refine --no-refresh help in the ssh-cert:info command
+  * Fix extra prompt for input in mongodump command
+  * Add hidden ssh-cert:info utility/debug command
+  * Revamp config to no longer use a service.accounts_url nor an api.accounts_api_url
+  * Fix Match syntax with multiple hosts
+  * Release v3.60.1
+  * Add the SSH certificate to the SSH agent, if possible (#963)
+  * Clean up the "domain already claimed" error in the domain:add command
+  * Put host condition back on "Match ... exec"
+  * Use ed25519 for autogenerated SSH keys
+  * Always create a new SSH key when generating a certificate
+  * README: add extensions needed by cli (#958)
+  * Release v3.60.0
+  * The root SSH config file should have a Host line too
+  * Add comments to the session-specific SSH config
+  * Support multiple domain wildcards in SSH config
+  * SSH config: end the Host block explicitly with "Host *" (#960)
+  * Autoload SSH certificates on login or SSH
+  * Show the ssh-cert:load command in the list
+  * Avoid unnecessary SSH messages in verbose mode
+  * Installer: allow iconv as an alternative to mbstring
+  * Fix detection of internal vs external Git domains for platform:get (get) command errors
+
+-------------------------------------------------------------------
+Tue Jul 21 19:13:36 UTC 2020 - jimmy@boombatower.com
+
+- Update to version 3.59.1:
+  * Release v3.59.1
+  * Fix error (undefined index) when selecting some projects
+  * Remove GH issue number from manifest.json
+  * Release v3.59.0
+  * Revert "Installer: remove unnecessary mbstring check"
+  * Clarify API token login vs environment variables in README
+  * Support new user invitations
+  * Clean up temporary file in self:build command
+  * Remove some unused variables/code
+  * Avoid hardcoding the token URL in the auth:api-token-login command
+  * Installer: Create a .zshrc file if it doesn't already exist, on ZSH (#956)
+  * Release v3.58.0
+  * Support prompting for re-authentication in the login command
+  * Add results per page (--count/-c option) to the self:stats command
+  * Fix method name in sorting regions
+  * Sort regions by domain independently of suffix
+  * Move SSH hostname to the session-specific configuration
+  * Decrease condescension level
+  * Sort regions
+  * Release v3.57.6
+  * Update dependencies (symfony 3.4.37 -> 3.4.42)
+  * Remove session:switch command suggestion when not relevant in the login command
+  * Login help clarifications
+
+-------------------------------------------------------------------
+Mon Jun 22 22:53:01 UTC 2020 - jimmy@boombatower.com
+
+- Update to version 3.57.5:
+  * Release v3.57.5
+  * Add logout --other option, to log out from other sessions (#947)
+  * Add redeploy warnings to the user:add and user:delete commands (#946)
+  * Add a couple more user:add examples
+  * Only prompt to add an SSH key if one isn't found locally
+  * Release v3.57.4
+  * Fix: exclude API token session IDs from the autocomplete list
+  * Release v3.57.3
+  * Fix: do not reuse session file storage when an API token is set
+  * Release v3.57.2
+  * Improve session info after logout
+  * Clean the whole session directory on logout
+  * Release v3.57.1
+  * Better ensure the legacy session SSH config file is removed
+  * Silence SSH certificate reload
+
+-------------------------------------------------------------------
+Tue Jun 09 18:55:18 UTC 2020 - jimmy@boombatower.com
+
+- Update to version 3.57.0:
+  * Release v3.57.0
+  * Remove whitelist/blacklist from variable names
+  * Add file-level comment for config.yaml
+  * Show session info in auth:info, logout, login, and welcome commands
+  * Recommend login after switching sessions; report filename of invalid ID
+  * Fix not logged in error after switching session
+  * Improve SSH key commands
+  * Improve session:switch documentation
+  * Improve comment in session.config file
+  * Clean up Api service - remove getCache(), add some property documentation
+  * Fix running parent command after login
+  * Display the session ID when useful
+  * Add session:switch command
+  * Fix 403 errors when a non-current project is specified
+  * Silence deleting session include files when it's automatic
+  * Only add the default SSH identities if necessary
+  * Automatically select an SSH key corresponding to the user account (#941)
+  * Refactor API token configuration to remove circular dependency
+  * Delete SSH configuration on logout independently from Certifier
+  * Include only one session's SSH certificate configuration
+  * Refactor Config service to allow new instances
+  * Select integration from a list in integration:update command (when interactive)
+  * Disable command auth:password-login, which no longer works
+  * Fix use of certifier URL configuration
+  * Release v3.56.6
+  * Search more activities to find the backup in backup:restore command (#938)
+  * Sort routes, and optionally display the URL, in the route:list (routes) command (#935)
+  * Skip python dependencies install on Travis
+  * Separate dependencies tests
+  * Find existing pip command automatically
+  * Clarify error when a repository is not found, for an external repository
+  * Move some SSH certificate code into the API client library
+  * Release v3.56.5
+  * Ensure include file for SSH configuration exists
+  * Support app config grouped in .platform/applications.yaml (#932)
+  * Read certificate principals, options, and extensions as arrays (#934)
+
+-------------------------------------------------------------------
+Tue May 26 19:33:57 UTC 2020 - jimmy@boombatower.com
+
+- Update to version 3.56.4:
+  * Release v3.56.4
+  * Include default identity files during wrapped SSH
+  * Clarify testing instructions on dev build (#933)
+  * Fix local build when pip3 exists, but not pip
+  * Read routes from the deployments API in route:list command (#929)
+  * Recommend all apps/services/workers commands from each other (#930)
+  * Use a wildcard include for SSH configuration to reduce need for user configuration updates
+  * Include default SSH identity files when adding SSH config
+  * Avoid listing empty To email address in integration:list
+  * Release v3.56.3
+  * Fix phar decoding errors during update
+  * Fix .ssh/config permissions issues
+  * Fix release notes for very old version updates [skip changelog]
+
+-------------------------------------------------------------------
+Thu May 21 19:53:49 UTC 2020 - jimmy@boombatower.com
+
+- Update to version 3.56.2:
+  * Release v3.56.2
+  * More ssh cert improvements
+  * Display MFA status in ssh-cert:load command
+  * Release v3.56.1
+  * Make certifier URL configurable
+  * Release v3.56.0
+  * Add an alias for environment deactivation. (#922)
+  * Support option for building draft pull requests in GitHub integration
+  * Introduce utility to manage code/config snippets
+  * Add automatic SSH certificate support
+  * Fix error in command listing, when the .platform.app.yaml is not found
+  * Extra space [skip changelog]
+
+-------------------------------------------------------------------
+Thu May 14 20:39:51 UTC 2020 - jimmy@boombatower.com
+
+- Update to version 3.55.0:
+  * Release v3.55.0
+  * Suppress "Link not found: #manage-access" exception in backup:create command (#926)
+  * Clarify deprecation message for the --type option on the integration:update command
+  * Fix integration:update command's options resolution
+  * Add activity scripts integration type (--type=script)
+
+-------------------------------------------------------------------
+Mon May 04 18:36:13 UTC 2020 - jimmy@boombatower.com
+
+- Update to version 3.54.2:
+  * Release v3.54.2
+  * Fix integration:get command suggestions (#924)
+  * Allow interactive choice in integration:delete (#925)
+  * Update OAuth 2.0 URLs to the new Auth service
+
+-------------------------------------------------------------------
+Tue Apr 28 18:41:16 UTC 2020 - jimmy@boombatower.com
+
+- Update to version 3.54.1:
+  * Release v3.54.1
+  * Revert "Accept the variable value from stdin in variable:create and variable:update commands"
+  * Cover set-remote in the project:create command too
+  * Allow for access denied to the old project in the project:set-remote command
+  * Integrations: replace foo/bar example with owner/repository (#921)
+  * Ensure all token data is available after reauthenticating, for completeness' sake
+
+-------------------------------------------------------------------
+Thu Apr 16 03:13:06 UTC 2020 - jimmy@boombatower.com
+
+- Update to version 3.54.0:
+  * Release v3.54.0
+  * Fix deleting httpaccess settings using a merge patch (#917)
+  * Update src/Command/Integration/IntegrationCommandBase.php
+  * Remove the unused --environment option for integration:activity commands
+  * Tweak help for browser login (#916)
+  * Automatically prompt for login when token refresh fails (#918)
+  * Remove default From address for health.email notifications
+
+-------------------------------------------------------------------
+Wed Apr 08 19:12:05 UTC 2020 - jimmy@boombatower.com
+
+- Update to version 3.53.1:
+  * Release v3.53.1
+  * Allow #admins and #viewers as recipients in the health.email integration (#914)
+  * Check for Gnome session before using credential helper on Linux
+  * Tidying minor inspection issues (unused imports etc)
+  * Fix bug in integration:delete command: "Call to a member function getGitUrl() on null"
+  * Fix obvious off-by-one error in README, and move command list down
+  * Release v3.53.0
+  * Clear up README: recommend the auth:api-token-login command, and remove password login suggestions
+  * Clear up interaction with the session ID
+  * Ensure logout when saving the new token
+  * Add application.writable_user_dir config
+  * Add API token login command
+  * Add integration:activity commands (#881)
+  * Supply SSH options to mount:upload and mount:download commands (#912)
+  * xdebug: change "key" to "idekey" (#911)
+  * Ignore keychain not found errors during erase()
+  * Prefer .zshrc rather than .zprofile for installation (#909)
+  * Add application.slug as a required configuration value, and use it as the credentials identifier
+  * Use Docker credential helpers to store secrets
+  * Show the command output for failed processes to help debugging
+
+-------------------------------------------------------------------
+Wed Feb 26 18:11:40 UTC 2020 - jimmy@boombatower.com
+
+- Update to version 3.52.3:
+  * Release v3.52.3
+  * Fix unnecessary use of $host->getCacheKey() [skip changelog]
+  * Display Git URL in project:create (create) command
+  * Accept the variable value from stdin in variable:create and variable:update commands (#905)
+  * Avoid overly verbose message in tunnel:single command
+  * Check relationships before asking confirm question in tunnel:open command
+  * Display tunnel details as a URL
+
+-------------------------------------------------------------------
+Mon Feb 10 18:15:14 UTC 2020 - jimmy@boombatower.com
+
+- Update to version 3.52.2:
+  * Release v3.52.2
+  * Ignore parse exceptions from xdebug command when loading command list (#901)
+  * Return OAuth2 errors to the terminal
+  * Handle OAuth2 errors (e.g. denied consent/scopes)
+
+-------------------------------------------------------------------
+Wed Jan 29 16:30:45 UTC 2020 - jimmy@boombatower.com
+
+- Update to version 3.52.1:
+  * Release v3.52.1
+  * Update dependencies (Symfony -> 3.4.37)
+  * Update client (oauth2 compatibility)
+  * Suggest SSH to the Git server to test the connection in 'get' command (#898)
+  * Pipe to command in db:size to avoid quoting issues on Windows (#899)
+
+-------------------------------------------------------------------
+Sat Jan 25 02:20:06 UTC 2020 - jimmy@boombatower.com
+
+- Update to version 3.52.0:
+  * Release v3.52.0
+  * Hide xdebug command for non-PHP projects
+  * xdebug command formatting tweaks
+  * feat(env): add e:xdebug command (#887)
+  * Avoid word-wrapping closing tag in error message API token help
+  * Improve argument quoting in db:size (refactoring RemoteHost a little)
+  * Windows: update README
+  * Windows: improve PATH install process
+  * Downplay unknown shell type message when setting up autocompletion
+  * Windows: use \ in the path of main user-facing directories
+  * Windows: create .bat executable for easier installation
+  * Windows-compatible quotes on dev build page
+  * Windows: fix local server for browser login
+  * Windows: fix opening URLs
+
+-------------------------------------------------------------------
+Fri Jan 17 20:44:18 UTC 2020 - jimmy@boombatower.com
+
+- Update to version 3.51.3:
+  * Release v3.51.3
+  * Release v3.51.2
+  * Implement PKCE for browser login
+  * Avoid unnecessary HTTP exception message
+  * Allow PLATFORMSH_CLI_HOME variable to override the home directory (#886)
+  * Remove recommendations for auth:password-login command
+  * Fix gitlab example (#894)
+  * Fix proxy setting when there is more than 1
+  * Allow PLATFORMSH_CLI_API_URL to override the base API URL
+
+-------------------------------------------------------------------
+Wed Jan 15 21:17:18 UTC 2020 - jimmy@boombatower.com
+
+- Update to version 3.51.1:
+  * Release v3.51.1
+  * Deprecate password login (#850)
+  * Improve "platform branch" message in checkout command, when there is only one branch
+  * Installer: force self:install output to stdout (#890)
+  * Fix auto login when a current project is selected
+  * Fix argument quoting in db:size on Windows (#889)
+  * Make --shared-key optional for the health.webhook integration
+  * Build the Phar file on gitlab
+  * Tweak deprecation method for the --branch option on the push command [skip changelog]
+  * Handle a 403 from the subscription endpoint in project:delete
+
+-------------------------------------------------------------------
+Fri Dec 27 20:30:03 UTC 2019 - jimmy@boombatower.com
+
+- Update to version 3.51.0:
+  * Release v3.51.0
+  * Cherry-pick from master: Templates have moved to platformsh-templates (#884)
+  * Add health.webhook integration type (#882)
+  * Fix: avoid listing duplicate activities and avoid an infinite loop
+  * Keep 'slow' build tests on PHP 7.3 because of Drush errors
+  * Update Box for PHP 7.4 support
+  * Activities will no longer have a "log" property
+  * Templates have moved to platformsh-templates (#884)
+  * Add PLATFORMSH_CLI_NO_INTERACTION variable (#878)
+  * Update the project git URL when adding/deleting an integration (#877)
+  * Test against PHP 7.4
+
+-------------------------------------------------------------------
+Fri Dec 13 21:22:59 UTC 2019 - jimmy@boombatower.com
+
+- Update to version 3.50.1:
+  * Release v3.50.1
+  * Fix ServiceNotFoundException in "get" command
+  * Release v3.50.0
+  * Revert "Remove drush-aliases SSH calls to find the absolute app root (#869)" (#876)
+  * Update dependencies
+  * Update API client to standardize project git URLs
+  * Unused variable [skip changelog]
+  * Some scp command tweaks/cleanup
+  * Comments/cleanup
+  * Provide project choice without behavior of detecting the current project
+  * Do not require Git to find a git root
+  * Suggest set-remote in get command with an existing repository
+  * Refactor project:get (get) command
+  * Added support for scp (#839)
+  * Add api:curl command to use the API directly
+  * Add --no-set-remote option
+  * Do not URL-encode the repository in Bitbucket API requests (#874)
+  * Added Docker setup (#841)
+  * Switch passthru to index in dev build
+  * Fix small bug in normalizeSha()
+  * Update dependencies
+  * Provide interactive choice in variable:get command
+  * Add "Enabled" (is_enabled) column in variable:list (var) command
+  * Refresh environments in welcome command
+  * Handle an existing mapped project
+  * Add --set-remote option to project:create (create) command
+  * Make machine_name available as a column in environment:list (env) command
+
+-------------------------------------------------------------------
+Fri Nov 08 23:07:57 UTC 2019 - jimmy@boombatower.com
+
+- Update to version 3.49.3:
+  * Release v3.49.3
+  * Warn about pushing to branches named "production" (#870)
+  * Add a @todo to follow up on #868 if/when possible
+  * Hide worker containers on enterprise (#868)
+  * Remove drush-aliases SSH calls to find the absolute app root (#869)
+  * Disallow . in Drush alias names (replace with -)
+  * Fix cases using the default argument incorrectly
+  * Fix choosing default option
+  * Allow --app option to correct select application
+
+-------------------------------------------------------------------
+Mon Oct 28 00:01:19 UTC 2019 - jimmy@boombatower.com
+
+- Update to version 3.49.2:
+  * Release v3.49.2
+  * Fix drush command quoting/escaping when a single quoted command is used (#861)
+  * Fix "multi" command only acting on the first project (repeatedly) (#862)
+  * Revert "Fix ssh argument escaping"
+  * Fix ssh argument escaping
+  * Recommend tunnel:single from tunnel:open if extensions are missing
+
+-------------------------------------------------------------------
+Tue Oct 15 14:36:08 UTC 2019 - jimmy@boombatower.com
+
+- Update to version 3.49.1:
+  * Release v3.49.1
+  * Update client library to include the client ID when revoking tokens
+  * Support legacy API tokens in the stream context
+  * Reset account info cache after adding or deleting an SSH key
+  * Get the access token using form URL-encoded data not JSON, in browser login command
+  * Allow overriding the OAuth 2.0 endpoint URLs
+  * Fix argument escaping in drush command
+
+-------------------------------------------------------------------
+Tue Oct 08 19:02:39 UTC 2019 - jimmy@boombatower.com
+
+- Update to version 3.49.0:
+  * Release v3.49.0
+  * Improve deprecation message for push --branch
+  * Allow hash to wrap in commit list
+  * Improve help for old, deprecated variable commands
+  * A little colour in "No mounts found"
+  * Make unit tests verbose
+  * Unnecessary variable in installer
+  * Refine description of --yes and --no
+  * Deprecate 3 options in commit:get command
+  * Unused variable
+  * Fix --schema help in db:sql command
+  * Event subscriber: convert from deprecated console.exception to newer console.error
+  * Avoid namespace conflict
+  * Use log stream in waitMultiple()
+  * Make activity success/failure messages consistent
+  * Fix URL formatting in tunnel:single command
+  * Fix activities being lost in waitMultiple()
+  * Fix swapped question text in push command
+  * Fix property not found error in decode command with an empty object
+  * Increase default stream context timeout
+  * Allow the mount:list and mount:size commands to run locally on the container (#857)
+  * Wait for remaining activities in the push command
+  * Display simple table (no messages) in integration:list if the format is machine readable
+
+-------------------------------------------------------------------
+Thu Sep 26 13:43:48 UTC 2019 - jimmy@boombatower.com
+
+- Update to version 3.48.2:
+  * Release v3.48.2
+  * Avoid unnecessary context message in activity:log
+  * Theoretical ActivityMonitor bugfix [skip changelog]
+  * Newline before activity log
+  * Remove extra messages (too verbose output) in backup commands
+  * Improve --activate in push command (#858)
+  * Fix combination of --activate and --branch in push command
+
+-------------------------------------------------------------------
+Wed Sep 25 16:34:21 UTC 2019 - jimmy@boombatower.com
+
+- Update to version 3.48.1:
+  * Release v3.48.1
+  * Fix default message for HttpException
+  * Fix push --activate for new environments
+  * Unused imports
+  * Fix flickering activity state
+  * Don't prompt to run the original command if it is empty
+  * Pass along the previous exception in the event subscriber
+  * Make `activity:get --property description` return HTML
+  * Assume activity state is 'in progress' while reading the log
+
+-------------------------------------------------------------------
+Sun Sep 22 21:09:49 UTC 2019 - jimmy@boombatower.com
+
+- Update to version 3.48.0:
+  * Release v3.48.0
+  * Update dependencies (Symfony -> 3.4.31)
+  * Implement streaming activity logs (#854)
+  * Update API client to reduce unnecessary calls in integration:list command
+  * Report real progress time in activity log (#851)
+  * Significantly reduce default cache lifetimes (#849)
+  * Clarify when mounts share the same disk (#848)
+  * Clean up db:size innodb try/catch
+  * bugfixing some PE customers (#846)
+  * No need to check backup access for inactive/dirty environments
+  * Rename snapshot -> backup
+- Replace @version-placeholder@ in config.yaml with package version
+
+-------------------------------------------------------------------
+Thu Aug 29 13:19:28 UTC 2019 - jimmy@boombatower.com
+
+- Update to version 3.47.0:
+  * Release v3.47.0
+  * Update API client to reduce environment API requests
+  * Remove now unnecessary DrushServiceMock
+  * Remove --pipe to -o alias
+  * Allow many commands to work 'locally' on the container
+  * Alias --pipe to -o and --primary to -1 (#844)
+  * Fix performance regression with many environments and Drush aliases (#843)
+  * Allow multiple command arguments in drush and ssh commands (#837)
+  * Installer hotfix: do not require curl (#838)
+  * Installer hotfix: do not require curl (#838)
+  * Use primary route URL from deployments API in Drush aliases (#835)
+  * Test on 7.4
+
+-------------------------------------------------------------------
+Fri Aug 16 21:35:00 UTC 2019 - jimmy@boombatower.com
+
+- Update to version 3.46.0:
+  * Release v3.46.0
+  * Add bitbucket_server integration support (#833)
+  * Test building and installing on Travis (#834)
+  * Tiny fix to account for other shell types before detecting ZSH
+  * self:install: use --shell-type when finding a config file
+  * Document new installer options
+  * Add --shell-type option to installer
+  * Add --manifest option to installer
+  * Provide installer on dev builds
+  * Add color to self:install command
+  * Installer output improvements
+  * Installer: require curl, openssl and pcre
+  * Add --charset option to the db:dump command (#832)
+  * Rsync cleanup [skip changelog]
+  * Fix findTargetParent() argument in push command
+  * Add --branch option to push command (#827)
+  * Rename "Capacity" to "% Used" in mount:size command (#828)
+  * Installer: remove unnecessary mbstring check
+  * Enable compression in project:curl command
+
+-------------------------------------------------------------------
+Fri Jul 26 20:44:09 UTC 2019 - jimmy@boombatower.com
+
+- Update to version 3.45.0:
+  * Release v3.45.0
+  * Update client to only enable gzip if the zlib extension is loaded
+  * Update client to enable gzipped API responses
+  * In mount:upload, convert OS X filename characters using --iconv
+  * Add --all option to mount:download
+  * Refactor MountCommandBase
+  * Do not fetch an empty commit hash (after parents notation)
+  * Installer: fix check for git on Windows (#824)
+
+-------------------------------------------------------------------
+Wed Jul 10 19:38:42 UTC 2019 - jimmy@boombatower.com
+
+- Update to version 3.44.0:
+  * Release v3.44.0
+  * Match user email addresess case-insensitively
+  * Substitute phar path at runtime without realpath [skip changelog]
+  * Use Route class for more structure and to fix upstream name
+  * Run phar directly [skip changelog]
+  * Test forcing display on or off
+  * Add examples
+  * Test effect of --primary and --browser options
+  * Group command tests under "commands" and fix namespaces
+  * url command: just print all URLs when there is no display/browser
+  * Always prefer primary route in "url" command
+  * Allow url command to read from local environment
+  * Prefer the primary route as the site URL
+  * Use embedded user information if available
+  * Allow app:config-get to read from PLATFORM_APPLICATION
+  * Fix "Failed to decode" in relationships command when there are no relationships
+  * Adapt welcome command for offline-on-container uses
+  * Do not require login for self:stats
+  * Improve app/worker choice message
+  * Update index.php with a source link
+  * Clearer error for no config file
+  * Dynamic app name in dev build web page
+
+-------------------------------------------------------------------
+Thu Jun 27 15:54:02 UTC 2019 - jimmy@boombatower.com
+
+- Update to version 3.43.2:
+  * Release v3.43.2
+  * Note --max is not recommended
+  * Installer: version constraints via --min and --max
+  * Allow plans not to have prices in create command
+  * Sync manifest.json with master branch
+  * Do not error for empty JSON object/array in decode command
+  * Output nothing instead of "null" for null properties
+
+-------------------------------------------------------------------
+Wed Jun 26 00:46:32 UTC 2019 - jimmy@boombatower.com
+
+- Update to version 3.43.1:
+  * Release v3.43.1
+  * Fix db:size miscalculation for older mysql databases
+
+-------------------------------------------------------------------
+Tue Jun 25 04:03:25 UTC 2019 - jimmy@boombatower.com
+
+- Update to version 3.43.0:
+  * Release v3.43.0
+  * Add decode command to README.md
+  * Rename variable:decode to decode
+  * Review fixes
+  * Add variable:decode command
+  * Support local variable in environment:relationships (relationships) command
+  * Property defaults
+  * Adapt route:list command
+  * Support reading routes from the local environment in route:get command
+  * Add --id and --primary options to route:get command
+  * Move test files so they don't interfere
+  * Add Platform.sh build files
+  * The --cleanup command can now ask the user if it should do a cleanup, and actually do it
+  * MariaDB 10.0 does not support my stuff :(, so adding extra check
+  * adding --cleanup option to check if InnoDB tables can be optimized
+  * Use bytes as the base to work on. Improve PGSQL correctness as well.
+  * rounding up forcing because php is weird
+  * rounding up is probably slightly better
+  * removing switch(true)
+  * Adding -B bytes option like mount:size
+  * Using the builting symfony formatMemory thing (even though it's worse)
+  * Made a mistake there
+  * Splitting up the code in functions, adding check that will estimate the Mysql disk size more closely
+
+-------------------------------------------------------------------
+Thu Jun 13 21:55:41 UTC 2019 - jimmy@boombatower.com
+
+- Update to version 3.42.2:
+  * Release v3.42.2
+  * Mark autocompletion as "skipped" rather than "failed" if stdout is not a tty
+  * Clarify try/finally pattern [skip changelog]
+  * Release v3.42.1
+  * Hotfix for: You have requested a non-existent service "input".
+  * Release v3.42.0
+  * ... fix item matching [skip changelog]
+  * Support updating manifest for latest item matching same major version [skip changelog]
+  * Make GIT_SSH argument quoting more standard
+  * Copy and source a regular file for autocompletion setup
+  * Accept wholly indented YAML files (#806)
+  * Rename LegacyEnv to BrokenEnv
+  * SSH: support legacy environments without a deployments API
+  * Add 4.1.0-dev to manifest.json
+  * Explain when no supported versions are found
+  * OOP for the installer
+  * Support installing versions with dev suffixes in installer
+  * Add beta stability flag
+  * Add source-operation:run command
+  * Warn in installer about missing pcntl and posix extensions (#803)
+  * Pass max_allowed_packet setting to mysqldump
+  * Display nothing for sensitive variable values in variable:list tsv/csv format
+  * Rename SshDestination to RemoteContainer; add getConfig()
+  * Require confirmation when adding a git source integration
+
+-------------------------------------------------------------------
+Thu May 30 19:41:54 UTC 2019 - jimmy@boombatower.com
+
+- Update to version 3.41.1:
+  * Release v3.41.1
+  * Remove redundant package
+  * Update client to incorporate guzzle/oauth2 bugfix
+
+-------------------------------------------------------------------
+Wed May 29 19:38:20 UTC 2019 - jimmy@boombatower.com
+
+- Update to version 3.41.0:
+  * Release v3.41.0
+  * Add --worker option to log command
+  * Support interactive worker selection in ssh command
+  * Support --worker option for mount commands
+  * Add environment commit SHA to the deployment cache key
+  * Allow a nonexistent --target in mount:download
+  * Update cweagans/composer-patches [skip changelog]
+  * getProject()'s cache should require the $host to match if one is specified (#799)
+  * Default config file should be .bash_profile on OS X (#798)
+  * Update autocompletion library (stecman/symfony-console-completion)
+
+-------------------------------------------------------------------
+Sun May 19 00:24:07 UTC 2019 - jimmy@boombatower.com
+
+- Update to version 3.40.16:
+  * Release v3.40.16
+  * Fix python builds
+  * Update client to use the new estimation API
+  * Enable mysqldump/pg_dump verbose mode when db:dump command is called with -vv or -vvv
+
+-------------------------------------------------------------------
+Thu May 09 13:00:24 UTC 2019 - jimmy@boombatower.com
+
+- Update to version 3.40.15:
+  * Release v3.40.15
+  * Update Symfony dependencies (3.4.26 -> 3.4.27)
+  * Make the --root argument static in Drush command (#795)
+  * Make plans list dynamic in 'create' command (#794)
+  * Unused import
+  * Remove commits API workaround
+  * Fix silent failure when a commit is not found
+
+-------------------------------------------------------------------
+Wed May 01 21:06:35 UTC 2019 - jimmy@boombatower.com
+
+- Update to version 3.40.14:
+  * Release v3.40.14
+  * Update dependencies
+  * Fix Git tree caching (for repo:ls command)
+  * Clarify method name [skip changelog]
+  * Handle "python2" dependencies (as well as "python" and "python3")
+
+-------------------------------------------------------------------
+Mon Apr 22 20:34:47 UTC 2019 - jimmy@boombatower.com
+
+- Update to version 3.40.13:
+  * Release v3.40.13
+  * Further access token refresh bugfix
+
+-------------------------------------------------------------------
+Tue Apr 16 13:59:21 UTC 2019 - jimmy@boombatower.com
+
+- Update to version 3.40.12:
+  * Release v3.40.12
+  * New animation
+  * Improve access token refresh
+  * Offer to "Log in anyway?" in browser login
+  * Fix local project not found exception when specifying another project
+  * Ensure "vendor" is rebuilt by default in self:build
+
+-------------------------------------------------------------------
+Fri Apr 05 14:45:58 UTC 2019 - jimmy@boombatower.com
+
+- Update to version 3.40.11:
+  * Release v3.40.11
+  * Release v3.40.10
+  * Drush aliases: actually use the new app root for non-local environments
+  * Release v3.40.9
+  * Drush aliases: SSH for the app root for all non-local environments
+  * self:release: check for changes since the last version
+  * Text/help improvements to the e:init command (and un-hide it)
+  * Fix silent failure with invalid project IDs in multi command
+  * Some self:release cleanup and DX
+  * Ensure cwd in getVersion()
+  * Always include compare link in release description
+  * Fix tests for Console domain
+  * Replace dev application version using Git
+
+-------------------------------------------------------------------
+Mon Apr 01 23:54:23 UTC 2019 - jimmy@boombatower.com
+
+- Update to version 3.40.8:
+  * Release v3.40.8
+  * Write version without "v" prefix to phar
+  * Ensure version is compared without "v" prefix for updates
+  * Release v3.40.7
+  * Remove composer bin scripts for now (for #791)
+  * Update Console domain
+  * Dependency updates
+
+-------------------------------------------------------------------
+Fri Mar 29 21:07:44 UTC 2019 - jimmy@boombatower.com
+
+- Update to version 3.40.6:
+  * Release v3.40.6
+  * Show a message if more snapshots/activities may be available (#790)
+  * Do create a tag for pre-releases (GitHub requires it)
+  * Add default version for self:build
+  * Enable Box compactors
+  * Use --no-scripts to install on Travis
+  * Do not create a tag for pre-releases
+  * Better command to find last version
+  * Remove unnecessary setHidden()
+  * Versioning/release improvements
+  * Upgrade humbug/box and include it via barmarni/composer-bin-plugin
+
+-------------------------------------------------------------------
+Tue Mar 12 13:52:08 UTC 2019 - jimmy@boombatower.com
+
+- Update to version 3.40.5:
+  * Release v3.40.5
+  * Disable pcre.jit in tunnel:open command to work around PHP bug #77260 (#786)
+  * Update security test script
+
+-------------------------------------------------------------------
+Tue Feb 26 13:46:19 UTC 2019 - jimmy@boombatower.com
+
+- Update to version 3.40.4:
+  * Release v3.40.4
+  * Block snapshot:restore with --target for legacy regions
+  * fix(mongo): database authentification
+  * Release v3.40.3
+  * Attempt to find the app root via SSH for Enterprise environments (#781)
+  * Fix "Service not found: " error in "db:" commands where the service is not known
+
+-------------------------------------------------------------------
+Mon Feb 18 21:02:52 UTC 2019 - jimmy@boombatower.com
+
+- Update to version 3.40.2:
+  * Release v3.40.2
+  * Fix default for single relationship when choosing a service
+  * Update dependencies (Symfony 3.4.19 -> 3.4.22)
+
+-------------------------------------------------------------------
+Mon Feb 18 01:40:18 UTC 2019 - jimmy@boombatower.com
+
+- Update to version 3.40.1:
+  * Release v3.40.1
+  * Fix --relationship option with trailing .0 when selecting from multiple endpoints
+  * Account for integrated Enterprise environments whose deployment schema information isn't accurate
+  * Ensure the service name is in the relationship array
+
+-------------------------------------------------------------------
+Fri Feb 15 18:10:44 UTC 2019 - jimmy@boombatower.com
+
+- Update to version 3.40.0:
+  * Release v3.40.0
+  * Use a different Drush alias root for site-local versions 8 or 9 (#777)
+  * Fix non-interactive choice default handling
+  * Fix non-interactive choice questions with no default should return null instead of erroring
+  * Make db:size schema agnostic but warn about inaccessible schemas
+  * Filter schemas by endpoint privileges
+  * Present a choice between schemas
+  * Include the service name and schema in the dump filename
+  * Add --schema option to db:dump and db:sql
+  * Always include a line break after choose()
+  * Fix checkout command when there is only one branch
+  * Fix Drush lock files not being used
+  * Add some 3-letter aliases
+  * Remove experimental "server" commands from README
+
+-------------------------------------------------------------------
+Fri Jan 18 16:06:31 UTC 2019 - jimmy@boombatower.com
+
+- Update to version 3.39.0:
+  * Release v3.39.0
+  * Add tunnel:single command: allow opening a tunnel without posix/pcntl (#768)
+  * Drush 9 compatibility: move alias auto-remove key under "options"
+  * Remove Drush 9-beta compatibility
+  * Fix: login does not sufficiently log out from old account (#770)
+  * Account for differing app roots in Drush aliases
+  * Unused function
+  * Release v3.38.1
+  * Fix incorrect "You cannot use both the <environment> argument and the --environment option" error in environment:activate command
+
+-------------------------------------------------------------------
+Wed Jan 09 18:04:55 UTC 2019 - jimmy@boombatower.com
+
+- Update to version 3.38.0:
+  * Release v3.38.0
+  * Fix addOption arguments in snapshot:restore
+  * Allow restoring snapshots to another environment (#735)
+  * Sort interactive project/environment choices alphabetically
+  * Update README.md [skip changelog]
+  * Deduplicate role option description [skip changelog]
+  * Separate user:add and user:update command help
+  * [environment:list] Define "created" and "updated" columns
+  * [environment:list] Fix "Name" column should always have been "Title"
+  * Also support environment titles of 0
+  * Fix: environments with an empty name (e.g. '0') not being recognized
+  * [certificate:list] Add --pipe-domains option
+  * [certificate:list] Add --exclude-domain option
+  * [certificate:list] Add certs alias
+  * Remove interactivity check from installer (#765)
+  * [certificate:list] Define `domains` column
+  * [certificate:list] Filter on --no-expired by default; add --ignore-expiry option for previous behavior
+  * Fix inline documentation in user:list command
+  * Run tests in PHP 7.3 (Travis) (#764)
+
+-------------------------------------------------------------------
+Fri Dec 28 23:29:16 UTC 2018 - jimmy@boombatower.com
+
+- Update to version 3.37.2:
+  * Release v3.37.2
+  * [worker:list] Display project and environment name/ID
+  * [snapshot:list] Display project and environment name/ID
+  * [route:list] Display project name/ID
+  * [domain:list] Display project name/ID
+  * [activity:list] use api() method [skip changelog]
+  * [user:list] Display project name/ID
+  * Alias "python3" dependencies type to use pip
+  * Define "path" column in mount:list command
+  * Fix table CSV test
+  * Revert csv/tsv output to use LF instead of CRLF line breaks
+  * [activity:list] Better explanation of the selected environment/project
+  * Parse project URLs from the beta unified-UI (#761)
+
+-------------------------------------------------------------------
+Thu Nov 29 13:53:32 UTC 2018 - jimmy@boombatower.com
+
+- Update to version 3.37.1:
+  * Release v3.37.1
+  * [mount:size] Fix capacity calculation (should show % of total space, instead of % of "available")
+
+-------------------------------------------------------------------
+Wed Nov 28 23:55:48 UTC 2018 - jimmy@boombatower.com
+
+- Update to version 3.37.0:
+  * Release v3.37.0
+  * Update dependencies (mostly Symfony v3.4.6 to v3.4.19)
+  * [auth:password-login] Fail if password input cannot be hidden
+  * Allow loading more than 10 snapshots via --limit (#758)
+  * [environment:branch] set the remote only for new branches (#760)
+  * Fix #755: Add Instruction how to install on windows
+  * Name "role" column in user:list command
+  * Only allow a single name for a table column (key or header)
+  * Name "disk" column in service:list command
+  * Add non-default "updated_at" column to domains:list command
+  * Add non-default "disk" and "size" columns to app:list command
+  * Add non-default "host" column to project:list command
+  * Add custom CSV formatter, to make csv/tsv table output cleaner
+  * Add --columns option for all tables
+  * Remove `sudo: false` as required by Travis-CI
+  * Avoid wrapping dates in commit:list
+  * Mark some more tests as slow, but do not allow them to fail
+  * Update list of allowed SSH key algorithms
+  * Avoid repeating session dir path
+  * Simplify logout command and remove confirmation step
+
+-------------------------------------------------------------------
+Mon Nov 12 21:48:13 UTC 2018 - jimmy@boombatower.com
+
+- Update to version 3.36.0:
+  * Release v3.36.0
+  * Fix dev version [skip changelog]
+  * Use heredoc for command help
+  * Deprecate the --type option in integration:update
+  * Consistent formatting for validation errors from other integration commands
+  * Add integration:validate command
+  * Fix further source of 'Not logged in' errors immediately after login
+  * Do not cache commit API metadata
+  * Fix alpha UI URLs for environments in web command
+  * Release v3.35.4
+  * Fix occasional LoginRequiredException at the end of login
+  * Fix logout check for other sessions
+  * Support forcing color off via PLATFORMSH_CLI_NO_COLOR=1 or NO_COLOR=1
+  * [self:release]: remove release confirmation step [skip changelog]
+
+-------------------------------------------------------------------
+Fri Oct 12 19:17:51 UTC 2018 - jimmy@boombatower.com
+
+- Update to version 3.35.3:
+  * Release v3.35.3
+  * Revoke this session's tokens pro-actively on logout
+  * multi: ignore blank lines in the project ID list
+
+-------------------------------------------------------------------
+Fri Oct 05 16:34:12 UTC 2018 - jimmy@boombatower.com
+
+- Update to version 3.35.2:
+  * Release v3.35.2
+  * Do not prompt for checkout in branch command if it won't be possible
+  * Small refactor of commit:list [skip changelog]
+  * Fix infinite loop in commit:list command (when trying to go back before a root commit)
+  * Get service name from config for Bitbucket hooks
+  * Friendlier commit:get examples
+
+-------------------------------------------------------------------
+Thu Sep 27 19:17:54 UTC 2018 - jimmy@boombatower.com
+
+- Update to version 3.35.1:
+  * Release v3.35.1
+  * Fix "p" alias in shell-config-bash.rc
+  * Another release note tweak
+  * Tweak release notes minimum version
+  * Release v3.35.0
+  * [variable:update]: Allow changing the value of a project-level sensitive variable
+  * Allow listing commits without specifying an environment
+  * Remove unnecessary $i
+  * Iterate through all parents in commit:list, and go back to author date
+  * Add explanations for "Operation not available" on environment actions (#750)
+  * Use "id" instead of "uuid" to refer to user IDs
+  * Add alias p=platform (#749)
+  * Add commit:list (commits) and commit:get commands for viewing commits
+  * Handle ~ revision spec in the --commit option
+  * Add --commit option to "repo" commands (#748)
+  * Additional help for mount:size
+  * Clean up --pipe output in user:get
+  * Rename UserRoleCommand -> UserGetCommand
+  * Box syntax simplification
+  * Add Bitbucket integration (#480)
+  * Show hidden service commands
+  * Tweak to prefix option display in variable:create
+  * List required extensions in composer.json (#746)
+  * Unused import
+  * Remove extra whitespace [skip changelog]
+  * Fix drush alias group name prepending bug
+  * Fix installer test script to use correct manifest
+
+-------------------------------------------------------------------
+Tue Sep 11 01:00:53 UTC 2018 - jimmy@boombatower.com
+
+- Update to version 3.34.3:
+  * Release v3.34.3
+  * self:release: confirm changelog before building Phar
+  * Update Guzzle for PHP 7.3 compatibility
+  * Use pipenv instead of awscli in build deps test (for Travis)
+  * Test the installer via Travis
+  * Fix undefined constant STDOUT in the installer
+  * Fix undefined constant STDOUT in the installer
+  * Update list of default regions, take #2 (#742)
+  * Update list of default regions. (#741)
+
+-------------------------------------------------------------------
+Thu Sep 06 12:45:02 UTC 2018 - jimmy@boombatower.com
+
+- Update to version 3.34.2:
+  * Release v3.34.2
+  * Always refresh resources when an operation is not available (#740)
+  * Fix --start option in activity:list
+  * Prefer .bash_profile over .bashrc on OS X
+  * Make the installer interactive if possible
+
+-------------------------------------------------------------------
+Sat Jul 21 03:47:07 UTC 2018 - jimmy@boombatower.com
+
+- Update to version 3.34.1:
+  * Release v3.34.1
+  * Fix --pipe option in the environment:ssh (ssh) command
+  * Wording tweak for sync --rebase
+
+-------------------------------------------------------------------
+Thu Jul 19 18:41:26 UTC 2018 - jimmy@boombatower.com
+
+- Update to version 3.34.0:
+  * Release v3.34.0
+  * Add --worker option to the SSH command (#736)
+  * Remove legacy API workaround in integration:update
+  * Add --depth option to project:get (get) command (#715)
+  * Add --rebase option to the environment:synchronize (sync) command. (#714)
+  * Add --prune-branches option for github and gitlab integrations (#723)
+  * Update user commands for upstream API fix (improves performance) (#718)
+  * Add service:list (services) command (#731)
+  * [db:dump] Add --no-owner to pg_dump command (#733)
+  * [self:install] Format source argument with ./ if it is a basename
+  * Fix --all option in list command
+  * [self:install]: prefer .bashrc over .bash_profile
+  * Installer: fix undefined constant when run through stdin to PHP
+  * Fix colorization in installer
+
+-------------------------------------------------------------------
+Wed Jun 27 21:00:13 UTC 2018 - jimmy@boombatower.com
+
+- Update to version 3.33.6:
+  * Release v3.33.6
+  * Installer improvements (#730)
+  * Make environment labels consistent (#729)
+  * Refactor mount:size command; add --refresh option
+  * Get current deployment from cache
+
+-------------------------------------------------------------------
+Fri Jun 22 20:53:00 UTC 2018 - jimmy@boombatower.com
+
+- Update to version 3.33.5:
+  * Release v3.33.5
+  * Support Integrated UI environmments in environment:logs (log) command (#728)
+  * Fix exception in mount:size commmmand on some regions
+
+-------------------------------------------------------------------
+Mon Jun 18 23:33:19 UTC 2018 - jimmy@boombatower.com
+
+- Update to version 3.33.4:
+  * Release v3.33.4
+  * Identifier: extract cluster name even from failed responses
+  * Fix the web root symlink for a top-level app in a multi-app project
+  * Remove hidden commands from autocomplete
+  * Browser login: print shell command when in very-verbose mode
+
+-------------------------------------------------------------------
+Wed Jun 06 23:12:03 UTC 2018 - jimmy@boombatower.com
+
+- Update to version 3.33.3:
+  * Release v3.33.3
+  * Complete installation without an existing shell config file (#725)
+  * Fix uninitialized string offset warning in YamlParser
+  * Change default db:dump filename to use the environment's machine name
+
+-------------------------------------------------------------------
+Tue May 22 22:16:11 UTC 2018 - jimmy@boombatower.com
+
+- Update to version 3.33.2:
+  * Release v3.33.2
+  * Fix command not found problem in crons
+  * Allow color in composer install
+  * Revert "Installer: use manifest direct from GitHub"
+  * Installer: use manifest direct from GitHub
+  * Slack channel can be an ID (#719)
+
+-------------------------------------------------------------------
+Thu May 17 12:46:38 UTC 2018 - jimmy@boombatower.com
+
+- Update to version 3.33.1:
+  * Release v3.33.1
+  * Work around regression caused by previous commit 6659d65
+
+-------------------------------------------------------------------
+Wed May 16 19:59:27 UTC 2018 - jimmy@boombatower.com
+
+- Update to version 3.33.0:
+  * Release v3.33.0
+  * Add --sensitive option for project-level variables (#716)
+  * Add mount:size command (#713)
+  * Add a README warning about debug mode [skip changelog]
+  * Clear environment/project caches after a 403 error
+  * Increase prominence of warning in db:size (#712)
+  * Ignore automatic updates if the Phar is not writable
+
+-------------------------------------------------------------------
+Mon May 14 21:53:01 UTC 2018 - jimmy@boombatower.com
+
+- Update to version 3.32.5:
+  * Release v3.32.5
+  * Installer: improvements to environment configuration snippet (#711)
+  * Avoid false positives when recommending .gitignore in Drupal vanilla sites
+  * Allow a timezone to be configured for the CLI in application.timezone
+  * Improve "No services found" message and ignore relationships without a scheme.
+
+-------------------------------------------------------------------
+Mon May 07 23:25:40 UTC 2018 - jimmy@boombatower.com
+
+- Update to version 3.32.4:
+  * Release v3.32.4
+  * Statically cache project users (speeds up commands like 'user:get')
+  * Fix descriptions for activity messages that contain /
+  * Raise default updates check interval to 7 days
+  * [project:set-remote] ignore the "current" project if it does not exist
+
+-------------------------------------------------------------------
+Thu Apr 19 12:59:13 UTC 2018 - jimmy@boombatower.com
+
+- Update to version 3.32.3:
+  * Release v3.32.3
+  * Correct fix for snapshot:restore and variable:delete bug 😳
+  * [self:release] fix release download URL [skip changelog]
+  * Release v3.32.2
+  * [self:release] Use temp dir for phar file [skip changelog]
+  * Fix invalid type bug that broke 2 commands: variable:delete and snapshot:restore
+  * [project:get] ... and check for all heads [skip changelog]
+  * [project:get] Fix check for repository existence (do not assume a default HEAD)
+  * Fix: allow more than one / in a GitLab project name (#708)
+  * [activity:log] show progress bar if possible
+  * [self:install] Detect ZSH more liberally when finding a config file
+
+-------------------------------------------------------------------
+Fri Apr 13 15:40:53 UTC 2018 - jimmy@boombatower.com
+
+- Update to version 3.32.1:
+  * Release v3.32.1
+  * Unused closure import [skip changelog]
+  * Fix shell arg escaping with remote commands for Windows (#707)
+  * Update PhpUnit to best version for PHP requirements
+  * Improve apps error message for inactive environents
+  * [self:release] allow customizing the download URL [skip changelog]
+  * [activity:get] calculate duration relative to now for incomplete activities
+
+-------------------------------------------------------------------
+Tue Apr 10 22:20:48 UTC 2018 - jimmy@boombatower.com
+
+- Update to version 3.32.0:
+  * Release v3.32.0
+  * Add MongoDB commands: mongo, mongoexport, mongodump, and mongorestore (#703)
+  * Word-wrap option descriptions to the terminal width
+  * [user:add] Add a wildcard for the environment ID
+  * Parse !include tags when loading a YAML file (#701)
+  * Try to refresh an environment before giving an "Operation not available" error
+  * Fix user:role `--pipe` option when getting an environment role
+  * TimezoneUtil: Suppress PHP's timezone warning
+
+-------------------------------------------------------------------
+Wed Apr 04 23:08:02 UTC 2018 - jimmy@boombatower.com
+
+- Update to version 3.31.6:
+  * Release v3.31.6
+  * [self:release] Validate version number against the last one [skip changelog]
+  * Use PhpExecutableFinder to execute 'php' commands
+  * Apply same "reset client" fix to auth:password-login
+  * [auth:browser-login] Reset API client after login
+  * [auth:browser-login] Log in again if an API request fails with 400 or 401
+
+-------------------------------------------------------------------
+Sat Mar 31 00:59:13 UTC 2018 - jimmy@boombatower.com
+
+- Update to version 3.31.5:
+  * Release v3.31.5
+  * [bot] add --party and --parrot options
+  * Add application.date_format to README
+  * Add application.date_format config option
+  * Smarter environment cache
+
+-------------------------------------------------------------------
+Thu Mar 29 02:01:44 UTC 2018 - jimmy@boombatower.com
+
+- Update to version 3.31.4:
+  * Release v3.31.4
+  * [project:info] show 'git' and 'url' in the property list
+  * [environment:drush] Use deployment routes to find a site URL
+  * Allow accounts API URL to not terminate with / [skip changelog]
+  * Remove CHANGELOG.md: use /releases instead for change logs
+  * [self:release] use GitHub commits API to get the tag SHA [skip changelog]
+  * Test 'drush' command for Drush functionality before using
+
+-------------------------------------------------------------------
+Tue Mar 27 02:39:37 UTC 2018 - jimmy@boombatower.com
+
+- Update to version 3.31.3:
+  * Release v3.31.3
+  * Document experimental_commands key [skip changelog]
+  * Allow all_experiments to come first [skip changelog]
+  * Add mechanism to define commands as experimental [skip changelog]
+  * [self:release] Improve changelog generation [skip changelog]
+  * Symfony dependencies update
+  * [self:install] Only include shell-config if it exists; update config snippet automatically
+  * [activity:get] Do not require an environment if an ID is provided
+  * Adapt wrapWithDecoration for literal tags
+  * Release v3.31.2
+  * Update API client [skip changelog]
+  * Improve variable creation
+  * Decode HTML entities in activity descriptions
+  * Release v3.31.1
+  * Fix decoration when single element wraps onto multiple lines
+
+-------------------------------------------------------------------
+Tue Mar 20 22:34:15 UTC 2018 - jimmy@boombatower.com
+
+- Update to version 3.31.0:
+  * Release v3.31.0
+  * Fix bug: boolean false fields omitted when creating integrations
+  * Re-implement line wrapping to account for trimming
+  * [multi] Accept URLs as project identifiers
+  * Formatted text improvements
+  * Fix wrapping of indented cells
+  * Wrap cell contents while preserving decoration
+  * Display username in already-logged-in message
+  * [build] Run post_deploy hooks if --run-deploy-hooks option is used
+  * Add project:clear-build-cache command
+  * Less wordy
+  * Fix requiring environment when level not specified
+  * Add short variable level option, e.g. '-l p'
+  * Recommend other variable commands
+  * Removing duplicate message
+  * Fix prefixing
+  * Add <name> argument to variable:create
+  * Clean up and pass on wait options
+  * Handle variables at both levels
+  * Update README command list
+  * Mark some variable commands as deprecated
+  * Add --enabled option for variable:create and variable:update
+  * Display variables on create or update
+  * Add --property option to variable:get
+  * Add variable:list command
+  * Modify variable:get so it works with project or environment level variables
+  * Add variable:update command
+  * Add variable:create command
+  * Update API client: avoid loading individual activiites when description property is missing
+  * Fix wrapping of text decoration in adaptive table
+  * Un-hide some commands
+  * [auth:browser-login] Expand port range; add detailed port error message; simplify port validation
+  * [subscription:info] Update command description
+  * [list] Add --all option to show hidden commands
+  * Trim whitespace from API error messages
+  * Limit the amount of projects that can trigger a project choice
+  * Release v3.30.1
+  * [environment:push] Fix inverse --no-wait/--wait logic
+  * Allow overriding the last version and release branch in self:release [skip changelog]
+  * Always use the deployment API for the app list
+  * [self:release] Update changelog automatically if release-changelog is out of date [skip changelog]
+  * [environment:push] Fix inverse --no-wait/--wait logic
+  * Allow overriding the last version and release branch in self:release [skip changelog]
+  * Always interact where possible to ask for the project / environment (#690)
+  * Always use the deployment API for the app list
+  * [self:release] Update changelog automatically if release-changelog is out of date [skip changelog]
+
+-------------------------------------------------------------------
+Fri Mar 02 01:34:38 UTC 2018 - jimmy@boombatower.com
+
+- Update to version 3.30.0:
+  * Release v3.30.0
+  * [self:release] Support editing the changelog [skip changelog]
+  * Format activity descriptions
+  * Print questions even when non-interactive
+  * Add --wait option and shouldWait() cron/hook detection
+  * Update redeploy warning
+  * Add redeploy command
+  * [self:install] Ensure directory exists when creating shell-config.rc
+  * Ensure GitLab/GitHub hooks have the right events (#687)
+  * [activity:get] do not require an environment with --all and a partial ID
+  * [login] Mention --force option
+  * Fix release SHA-256 hash
+
+-------------------------------------------------------------------
+Tue Feb 20 20:08:46 UTC 2018 - jimmy@boombatower.com
+
+- Update to version 3.29.2:
+  * Release v3.29.2
+  * Move release logic out of self:build
+  * Update dependencies
+  * [self:stats] Add --page option [skip changelog]
+
+-------------------------------------------------------------------
+Mon Feb 19 17:19:37 UTC 2018 - jimmy@boombatower.com
+
+- Update to version 3.29.1:
+  * Release v3.29.1
+  * Add self:release command
+  * Fix array to string conversion in project identifier
+  * [auth:browser-login] Always show help message
+  * [activity:get] [activity:log] Match partial activity IDs
+  * New line tweak [skip changelog]
+  * Add self:stats command
+  * [project:create] Get the list of regions dynamically
+  * [activity:log] Do not require ANSI check for polling/logging
+  * Merge metadata back from master [skip changelog]
+
+-------------------------------------------------------------------
+Mon Feb 12 21:57:54 UTC 2018 - jimmy@boombatower.com
+
+- Update to version 3.29.0:
+  * Release v3.29.0
+  * [db:dump] Remove --no-autocommit and simplify mysqldump args (#683)
+  * New lines in user:role to match user:add [skip changelog]
+  * Refactoring of user:add [skip changelog]
+  * Use getUsers() instead of getUser() in user:add [skip changelog]
+  * [user:add] [user:update] expand interactive help text
+  * Add `user:get` command (aliased to and deprecating `user:role`)
+  * [user:add] Improve `user:add` command to allow setting roles on all environments
+  * Expand redeploy warning to recommend "vset"
+  * Back to -dev
+  * [activity:get] Check for empty started_at when calculating duration
+  * [service:redis-cli] Recommend "redis info" command
+  * Merge CHANGELOG and manifest.json updates from master
+
+-------------------------------------------------------------------
+Wed Jan 31 03:51:19 UTC 2018 - jimmy@boombatower.com
+
+- Update to version 3.28.0:
+  * Update manifest for rebuild of v3.28.0
+  * Release v3.28.0
+  * Update dependencies (mainly Symfony 3.4.2 -> 3.4.4)
+  * Add activity state in log
+  * Fix inverted requirement of -e/-a in activity:list and activity:log
+  * Add activity duration and simplify log output
+  * Add activity:get command
+  * Add --date-fmt option to `activity:list` and `snapshot:list`.
+  * Respect date.timezone and allow TZ env var
+  * Fix existing aliases being prefixed with "@" (#679)
+  * Avoid fatal if an InvalidConfigException is encountered during updateDrushAliases()
+  * Use -t instead of RequestTty, for OpenSSH <5.9
+
+-------------------------------------------------------------------
+Wed Jan 24 01:54:55 UTC 2018 - jimmy@boombatower.com
+
+- Update to version 3.27.2:
+  * Release v3.27.2
+  * [self:build] Ignore certain commits from changelog (with [skip changelog])
+  * Fix: 'Invalid refresh token' message interception shouldn't check the request for oauth2
+  * Update list output in README.md
+  * Fix link
+  * Expand API token info in README.md
+  * [project:create] add detailed help
+  * [project:create] be stricter about check interval
+  * Minor correction to 7d41dce97bd5fed4c1f4cda3ca84e1f6a13acb62
+  * [subscription:info] allow passing a subscription ID directly
+  * [project:create] show project ID if possible even after failure
+
+-------------------------------------------------------------------
+Tue Jan 23 05:15:25 UTC 2018 - jimmy@boombatower.com
+
+- Update to version 3.27.1:
+  * Release v3.27.1
+  * [project:create] increase check timeout and make it configurable
+  * self:build: check for boolean output from git command
+  * Note login_method in README.md
+  * Note login_method can be overriden
+
+-------------------------------------------------------------------
+Fri Jan 19 15:44:58 UTC 2018 - jimmy@boombatower.com
+
+- Update to version 3.27.0:
+  * Release v3.27.0
+  * Print changelog in self:build
+  * Allow override of application.login_method in user config
+  * Set --build-pull-requests-post-merge false by default (GitHub integrations)
+  * Respect --no-wait in environment:init, and clear environment cache
+  * Allow custom scheme in browser login
+  * Fix browser login boolean mistake..
+  * Explain failed deletion
+  * Delegate project:delete access to the API
+  * Link directly to latest release
+  * auth:browser-login: always display URL in case the default browser did not work
+  * Support colors via CLICOLOR_FORCE in final section of installer
+  * Use browser login by default (#672)
+  * Move disabled_commands under application in config.yaml
+  * Add help in auth:browser-login and auth:login explaining alternatives
+  * Better Windows description
+  * Update README.md
+  * Update to Symfony 3.4.2
+  * Browser login: markup improvements
+  * Update CHANGELOG.md for v3.26.1
+
+-------------------------------------------------------------------
+Fri Dec 29 01:36:38 UTC 2017 - jimmy@boombatower.com
+
+- Update to version 3.26.1:
+  * Release v3.26.1
+  * Update CHANGELOG.md
+  * Move chmod() to install section of installer
+  * Find latest version regardless of mode in self:build
+  * Restore Phar moving to installer
+  * Remove duplicate message in self:install
+  * Add auth:browser-login command (#669)
+  * Add snippet markers in shell config
+  * Remove old update notes
+  * Remove v2 from manifest.json
+  * Add usage help at the end of self:install
+  * Installer: just invoke self:install
+  * Refactor shell config into separate files
+  * Rename all_features to all_experiments
+  * Add all_features flag
+  * Update default D7 settings files
+  * Unused code
+  * Remove any direct use of remote_env_vars service
+  * Fix route:get options list
+  * Switch route:get to using deployments API (instead of SSH)
+  * Update CHANGELOG.md for v3.26.0
+  * Fix manifest update notes version constraints
+  * Remove extra quotes from git changelog
+  * Fix manifest update notes version constraints
+
+-------------------------------------------------------------------
+Thu Dec 21 13:35:07 UTC 2017 - jimmy@boombatower.com
+
+- Update to version 3.26.0:
+  * Release v3.26.0
+  * Remove extra quotes from git changelog
+  * Fix config normalization when there is an empty locations array
+  * Skip updates check if the Phar file is not writable
+  * Remove different coloration for local commands (there are so few listed)
+  * Recommend --no-wait if snapshot:create is run in a non-TTY
+  * Support remote envs in app:list
+  * Remove unused LocalApplication::getApplication()
+  * Suggest project:set-remote in RootNotFoundException
+  * Add app names from cached SSH URLs for autocompletion
+  * Refactor to dedupe getDocumentRoot() methods
+  * Update CHANGELOG.md for v3.25.1
+  * Generate changelog based on master
+  * Show worker commands
+  * Use PLATFORM_DOCUMENT_ROOT if available
+  * Cache the current deployment
+  * Add worker:list command
+  * Use deployments API for remote app information
+  * Auto-ensure webhooks on GitHub and GitLab integrations (#665)
+  * Be stricter about when to use $_ENV, when getting parent variables for PHP <7.1
+  * The default CWD for a Git repository should be null, not .
+
+-------------------------------------------------------------------
+Fri Dec 15 03:02:14 UTC 2017 - jimmy@boombatower.com
+
+- Update to version 3.25.1:
+  * Release v3.25.1
+  * Ensure we do not pass an invalid CWD to Symfony Process
+  * Identifier: Add short timeout on URL check
+  * Remove var_dump()s
+
+-------------------------------------------------------------------
+Wed Dec 13 21:17:52 UTC 2017 - jimmy@boombatower.com
+
+- Update to version 3.25.0:
+  * Rebuild v3.25.0
+  * Remove var_dump()s
+  * Release v3.25.0
+  * Fix keychain app ID, and put whole feature behind a use_keychain flag
+  * Add CHANGELOG.md
+  * Save session data in the keychain on OS X (#663)
+  * Clean up
+  * Accept projects not in the user's list in multi command
+  * Expose redis relationship/URL explicitly
+  * Extended interactive question text
+  * Omit non-required empty fields when adding an integration
+  * Add --no-expired and --only-expired options to certificate:list
+  * Ignore host in configured project not found message
+  * Implement is_enabled on environment variables
+  * Use getenv() in Config
+  * Comments on DrushAlias
+  * Unused import
+  * Better 'project not found' message
+  * Add redis command
+  * Always inherit from the entire environment in PHP 7.1+
+  * Add SSH_AGENT_PID to auto inherited environment variables
+  * Add release notes for v3.24.0
+
+-------------------------------------------------------------------
+Thu Dec 07 14:29:35 UTC 2017 - jimmy@boombatower.com
+
+- Update to version 3.24.1:
+  * Release v3.24.1
+  * Make --excluded-environments not required
+  * Release v3.24.0
+  * Update Symfony dependencies to 3.4.1
+  * More helpful repo:cat help
+  * Raw output works fine if the argument is in the right place
+  * Two bugs found by Scrutinizer
+  * Cache not-found blobs and trees again
+  * Cache git data per project (overwriting for new commit SHAs)
+  * Backwards compatibility for db:size
+  * self:build: write changelog if found
+  * Drush service clean-up
+  * Remove CWD workaround in Drush version check
+  * Avoid ensureInstalled() when checking for Drush version
+  * Fix Drush 9 alias not found check
+  * Fix Drush 9 alias filename
+  * Docblocks for Config
+  * Add manifest.json and auto-update from self:build command
+  * Comment services.yaml
+  * Write curl debug output to STDERR, not STDOUT (Guzzle's default)
+  * Cache trees
+  * Update client for path matching and clean up
+  * Remove project root requirement from db:size
+  * Fix printing binary file contents in repo:cat
+  * Better error messages for wrong file type
+  * Rename repo:read-file to repo:cat
+  * Cache much less
+  * Add repo:ls command
+  * Add repo:read-file command
+  * Disable timeout explicitly for tunnel processes
+  * Remove deprecated ProcessBuilder, preserving BC this time
+  * Still use ProcessBuilder
+  * Force Symfony Process >=3.4
+  * Update to Symfony 3.4
+  * Add -W alias to push --no-wait
+  * Allow default mount target/source with --yes
+  * Fix mounts options list
+
+-------------------------------------------------------------------
+Wed Nov 29 03:34:04 UTC 2017 - jimmy@boombatower.com
+
+- Update to version 3.23.0:
+  * Release v3.23.0
+  * mount commands: add --exclude and --include (#651)
+  * Allow projects to be identified from their public website URL (#649)
+  * Add excluded_environments option for webhooks (#652)
+  * Add GitLab integration support (#647)
+  * Improve mount commands output
+  * Support new mount style
+
+-------------------------------------------------------------------
+Fri Nov 17 02:10:19 UTC 2017 - jimmy@boombatower.com
+
+- Update to version 3.22.3:
+  * Release v3.22.3
+  * Add a timeout to the Drush aliases check (#646)
+  * Fix exit code from db:dump to respect errors (#645)
+  * Normalize user-defined aliases too
+
+-------------------------------------------------------------------
+Wed Nov 08 23:39:38 UTC 2017 - jimmy@boombatower.com
+
+- Update to version 3.22.2:
+  * Fix: Drush "root" argument must be absolute
+  * Fix "root" argument for wrong alias type
+
+-------------------------------------------------------------------
+Fri Nov 03 20:04:17 UTC 2017 - jimmy@boombatower.com
+
+- Update to version 3.22.0:
+  * Update Symfony dependencies from 3.3.9 to 3.3.10
+  * Clean up Git service instantiation and destructor
+  * Remove dead code from self:install
+  * Rebuild warning should be redeploy
+  * Avoid wrapping environment IDs when formatting is involved
+  * Support .drush/site-aliases directory
+  * Check whether Drush supports YAML alias files
+  * Support YAML Drush aliases
+  * Drush fixes for supporting version 9
+  * Nest YAML aliases one level deeper
+  * Remove problematic inline comments
+  * Remove unnecessary method override
+  * More cleanup
+  * Remove drush argument for alias types
+  * Use heredoc for file header
+  * Refactor subdir move slightly
+  * Fix tests and merge between PHP and YAML aliases
+  * Unused import
+  * Clean up move errors
+  * Refactor getAliases() and getExistingAliases()
+  * Refactor reading/setting alias group
+  * Delete old YAML file when renaming group
+  * Move aliases to new directory non-interactively
+  * Use $app->isSingle() more often
+  * Reduce failures in site-aliases migration
+  * Fix merge of existing aliases
+  * Remove support checks
+  * Cleanup
+  * Fail in local:drush-aliases if no Drupal apps are found
+  * Test getDrupalApps()
+  * Test that YAML aliases are created
+  * Automatically write to drush.yml
+  * Reduce hardcoding of .drush
+  * Cleanup
+  * Fix: new aliases should go in site-aliases subdir
+  * project:info command: description should be writable
+  * Use $app->getSourceDir() more often
+  * Improve alias files migration
+  * Avoid creating PHP alias files if not necessary
+  * Distinguish less between Drush versions as global/local installs can differ
+  * Simplify Drush version check
+  * Use *.alias.yml for YAML aliases that more or less work
+  * Remove a potentially confusing message
+  * Make getExistingAliases() responsible for group order
+  * Fix: YAML aliases should have host/user, not remote-host/remote-user
+  * Normalize aliases for differences between PHP and YAML
+  * Use getSshUrl() and getRouteUrls() when generating aliases
+  * Add $app->getLocalWebRoot()
+  * Cleanup
+  * Use home-relative document root for remote Drush aliases
+  * Prefer app-specific URLs in remote drush aliases
+  * Revert "Prefer app-specific URLs in remote drush aliases"
+  * Allow commands to be disabled through config
+  * Use Drush aliases only if the local:drush-aliases command is enabled
+  * Release v3.22.0
+
+-------------------------------------------------------------------
+Wed Oct 18 13:52:28 UTC 2017 - jimmy@boombatower.com
+
+- Update to version 3.21.0:
+  * Fix installer bug writing multiple times to config
+  * Fix installer bug writing multiple times to config
+  * Use full namespace name in list command
+  * add mount:list (lists) command
+  * add mount:pull (mpull) and mount:push (mpush) commands
+  * mount commands: use selected environment
+  * mount commands: various improvements
+  * Add a confirmation question and another interactive default for --target and --source
+  * Rename mount commands
+  * mount commands: restore --refresh option, add --delete option
+  * List mounts as a table
+  * Support logging in with a username (#636)
+  * Fix: service dependencies of Filesystem did not get output class, initialized too early
+  * Switch default output to ConsoleOutput
+  * Release v3.21.0
+
+-------------------------------------------------------------------
+Fri Oct 13 14:15:34 UTC 2017 - jimmy@boombatower.com
+
+- Update to version 3.20.5:
+  * Only show prune message once (follow up to #627)
+  * GitHub integration: add flag for pull_requests_clone_parent_data (#623)
+  * Add --no-clone-parent option to branch command (#630)
+  * Add default from address for health.email integration (#632)
+  * Fix infinite loop in Config::canWriteDir (#634)
+  * Move Config::canWriteToDir to Filesystem::canWrite and add tests
+  * Release v3.20.5
+
+-------------------------------------------------------------------
+Wed Sep 20 13:16:08 UTC 2017 - jimmy@boombatower.com
+
+- Update to version 3.20.4:
+  * Exclude node_modules when using Finder - performance improvement
+  * Add git prune help text when deleting a branch (#628)
+  * Allow nested apps where the first app is at the top level
+  * Update dependencies
+  * Downgrade doctrine/cache for <7.1 compatibility
+  * Warn when creating a .gz dump without --gzip
+  * ... restore missing $projectRoot
+  * ... remove unnecessary $project
+  * Add new regions, and allow arbitrary regions or plans
+  * Release v3.20.4
+
+-------------------------------------------------------------------
+Tue Sep 19 20:24:53 UTC 2017 - jimmy@boombatower.com
+
+- Update to version 3.20.3:
+  * Clarify that merge affects the target
+  * Halve automatic updates timeout
+  * Installer: write to shell config if file does not yet exist
+  * Installer: write to shell config if file does not yet exist
+  * Allow using built-in server with non-PHP apps
+  * Release v3.20.3
+
+-------------------------------------------------------------------
+Mon Sep 11 20:28:28 UTC 2017 - jimmy@boombatower.com
+
+- Update to version 3.20.2:
+  * Update self:install command for consistency with installer
+  * Remove Drush location hack for travis/phpunit
+  * Find Drush in the CLI root if it is there via require-dev
+  * Only include shell config if the shell is Bash or ZSH (#622)
+  * Only include shell config if the shell is Bash or ZSH (#622)
+  * Installer / self:install consistency
+  * Check config dir existence in writability check
+  * Release v3.20.2
+
+-------------------------------------------------------------------
+Mon Aug 28 20:20:01 UTC 2017 - jimmy@boombatower.com
+
+- Update to version 3.20.1:
+  * Easy install on Platform.sh environments
+  * No need to "source .environment"
+  * Write to tmp if config directory is not available
+  * Show ID of users (#618) (#619)
+  * Docs can no longer be searched by URL
+  * Use the local Drush if possible (#621)
+  * Release v3.20.1
+
+-------------------------------------------------------------------
+Mon Aug 14 21:33:03 UTC 2017 - jimmy@boombatower.com
+
+- Update to version 3.20.0:
+  * Switch to SHA-256 for file verification
+  * Installer: remove BC code
+  * Add pricing URL in create command
+  * Add build_pull_requests_post_merge for github integrations (#612)
+  * Clarify user:delete command (issue #615)
+  * Alias --no-wait to -W
+  * Add "health" integration types
+  * Add summary format for health integrations
+  * Match partial integration IDs
+  * Unused import
+  * Inspection tweaks
+  * Avoid re-initializing application/command in CompletionCommand
+  * Release v3.20.0
+
+-------------------------------------------------------------------
+Fri Aug 11 18:41:37 UTC 2017 - jimmy@boombatower.com
+
+- Update to version 3.19.1:
+  * Populate project, environment, and app from environment variables where possible (#610)
+  * Push command: do not activate by default in non-interactive mode
+  * Travis update: add 7.2, fix hhvm build
+  * Fix app choice for inactive environments
+  * Sort routes choice in route:get
+  * Add SHA-256 info in build command
+  * Release v3.19.1
+
+-------------------------------------------------------------------
+Thu Jul 27 02:20:19 UTC 2017 - jimmy@boombatower.com
+
+- Update to version 3.19.0:
+  * Fix description of --no-visible-runtime option
+  * Make default_domain writable from project:info
+  * Document saving tunnel info to the relationships variable
+  * Add -u option to push command (#609)
+  * Tiny text change (after commit 7866dd4)
+  * Release v3.19.0
+
+-------------------------------------------------------------------
+Thu Jul 06 19:51:47 UTC 2017 - jimmy@boombatower.com
+
+- Update to version 3.18.0:
+  * Promote "create" command
+  * Unused imports
+  * Make `create` command return project ID to stdout
+  * Allow subscription info to be updated (#607)
+  * Find SSH apps via the new pf:ssh: URLs in the API (#608)
+  * Add --all option to `ssh` command
+  * Fix BC for environments without pf:ssh: URLs
+  * Add/restore interactive choice of environments in `get` command
+  * ... only ask if >1 environment
+  * Fix: ssh --all needs new lines
+  * Leave "create" disabled by feature flag, until pricing estimation API improves
+  * Release v3.18.0
+
+-------------------------------------------------------------------
+Tue May 30 14:14:44 UTC 2017 - jimmy@boombatower.com
+
+- Update to version 3.17.0:
+  * Update console-form dependency
+  * Docs search now needs rawurlencode()
+  * Improve default Drush aliases on cloning (#603)
+  * Add environment:init command
+  * Release v3.17.0
+
+-------------------------------------------------------------------
+Fri May 19 23:07:40 UTC 2017 - jimmy@boombatower.com
+
+- Include development files in source list.
+- Update to version 3.16.2:
+  * Note how to run the CLI from source
+  * Note how to run the CLI from source
+  * Correct comment in ProjectGetCommand
+  * Fix: certificate:delete command missing --no-wait option
+  * Add --blobs to pg_dump
+  * Installer: ignore errors in source/dot command in shell config
+  * Better English in installer
+  * Release v3.16.2
+
+-------------------------------------------------------------------
+Mon May 15 21:07:38 UTC 2017 - jimmy@boombatower.com
+
+- Update to version 3.16.1:
+  * When creating a symlink, ensure both ends are real paths, if possible
+  * Use improved makePathRelative elsewhere
+  * Unused import
+  * Use improved makePathRelative() in get command
+  * ... typo
+  * Release v3.16.1
+
+-------------------------------------------------------------------
+Thu May 11 10:24:24 UTC 2017 - jengelh@inai.de
+
+- Kill dot off summary. Fix other nonsense in description.
+
+-------------------------------------------------------------------
+Wed May 10 21:13:51 UTC 2017 - jimmy@boombatower.com
+
+- Update to version 3.16.0:
+  * Remove old updates.last_checked default
+  * Remove application.phar config value
+  * Update self::install so it doesn't write to .profile
+  * Fix filename if a directory is passed to the db:dump --file option
+  * Stop timestamp being appended twice if --file is a directory
+  * Add --directory option to db:dump
+  * Use native search in docs command
+  * Simplify DocsCommand
+  * Note config.yaml snippet shows defaults
+  * Update API client
+  * Use starts_at paging to load more than 10 activities
+  * Update API client for activity descriptions
+  * Add project:curl command
+  * Add auth:token command
+  * Add -sS to project:curl
+  * Release v3.16.0
+
+-------------------------------------------------------------------
+Wed May 03 23:42:27 UTC 2017 - jimmy@boombatower.com
+
+- Update to version 3.15.4:
+  * Save update check time (to a place other than config)
+  * Note State could be used more often
+  * Simplify State->save()
+  * Release v3.15.4
+
+-------------------------------------------------------------------
+Mon May 01 23:05:14 UTC 2017 - jimmy@boombatower.com
+
+- Update to version 3.15.3:
+  * Fix wrong array keys in certificate:add
+  * Trigger patch in platformsh/client package to actually apply
+  * Document PLATFORMSH_CLI_TOKEN variable, with a warning
+  * Do not check for updates immediately after install
+  * Since we have the filename, the Phar can run directly
+  * No need to write to user config for updates check
+  * Release v3.15.3
+
+-------------------------------------------------------------------
+Mon May 01 16:30:03 UTC 2017 - jimmy@boombatower.com
+
+- Update to version 3.15.2:
+  * Explain that auto-provisioned certificates can't be deleted
+  * Show issuer in certificate:list
+  * Allow partial match on ID in certificate:delete
+  * Use RequestTty only for certain commands, when stdin is a tty
+  * Add --raw option to sql command
+  * SSH commands need to show errors
+  * Downgrade Process, avoiding apparent segfault
+  * Ensure running another command doesn't wipe necessary service data
+  * Release v3.15.2
+
+-------------------------------------------------------------------
+Wed Apr 26 16:39:33 UTC 2017 - jimmy@boombatower.com
+
+- Update to version 3.15.1:
+  * Add more contextual help in activity:list
+  * Avoid formatting activity result in CSV/TSV output
+  * Use pseudo-terminal for SSH
+  * Remove CommandBase->isTerminal() in favour of Output->isDecorated()
+  * Remove unnecessary 2>&1 from sql/drush over SSH commands
+  * Use RequestTty and remove LogLevel hack
+  * Update dependencies
+  * ... security-checker still doesn't work via PHP in Travis
+  * Rely on date_default_timezone_get() instead of UTC fallback
+  * Update comment
+  * Ssh issue with windows (#592)
+  * Add certificate commands (#583)
+  * Fix return value in certificate:add
+  * Release v3.15.0
+  * Fix certificate:delete confirm question
+  * Release v3.15.1
+
+-------------------------------------------------------------------
+Mon Apr 17 19:55:10 UTC 2017 - jimmy@boombatower.com
+
+- Update to version 3.14.5:
+  * Fix wrong QuestionHelper argument in "get" command
+  * Remove two other non-type-hinted uses of getService()
+  * Use ConsoleOutputInterface for stderr feature detection
+  * Ensure target is realpath in symlink()
+  * Release v3.14.5
+
+-------------------------------------------------------------------
+Sun Apr 16 00:01:19 UTC 2017 - jimmy@boombatower.com
+
+- Update to version 3.14.4:
+  * Further improved timeout in project:create (blocking)
+  * Move orphan logic up into buildEnvironmentTree
+  * List 10 activities by default
+  * More info with verbose output for a successful db:dump
+  * Issue #585: Don't add bashisms to .profile
+  * Make available plans/regions configurable
+  * Fix URL opening on OS X (#586)
+  * Release v3.14.4
+
+-------------------------------------------------------------------
+Wed Apr 05 00:03:58 UTC 2017 - jimmy@boombatower.com
+
+- Update to version 3.14.3:
+  * Fix: existing file preventing file mount symlink
+  * Run security check via curl in Travis for now
+  * Avoid setting the upstream on the wrong branch
+  * Further solidify setting an upstream for the right branch
+  * Show if a snapshot failed in snapshot:list
+  * Filter by successful snapshots in snapshot:restore
+  * Display result (success/failure) for all activities
+  * Improve timeout logic in project:create
+  * Examples property can be private
+  * Revert symfony/console to 3.2.4 to fix input validation
+  * Release v3.14.3
+
+-------------------------------------------------------------------
+Wed Mar 29 05:12:42 UTC 2017 - jimmy@boombatower.com
+
+- Update to version 3.14.2:
+  * Update dependencies
+  * Remove "toolstack" concept, use "flavor"
+  * Relative paths should not depend on files already existing
+  * Remove makePathRelative() method (use Symfony directly)
+  * Exception if query fails in db:size
+  * Expose error output properly in db:size queries
+  * Fix imports
+  * Simplify error control; stop displaying two exceptions on bad connection
+  * Release v3.14.1
+  * Downgrade Process component to fix env var bug
+  * Fail hard if the home directory is not found or valid
+  * Release v3.14.2
+
+-------------------------------------------------------------------
+Wed Mar 01 20:34:16 UTC 2017 - jimmy@boombatower.com
+
+- Update to version 3.14.0:
+  * Cache an empty relationships list
+  * Add route-get command to view a resolved route to an environment
+  * Rename route commands
+  * Clarify URL choice in `url` command
+  * Refactor code that reads remote environment variables
+  * Fix cache clearing for env vars
+  * Improve RemoteEnvVars documentation
+  * Remove odd relationships dependency on @output
+  * Fix integration option names
+  * Release v3.14.0
+
+-------------------------------------------------------------------
+Thu Feb 23 00:34:31 UTC 2017 - jimmy@boombatower.com
+
+- Update to version 3.13.0:
+  * Drupal settings: remind user to uncomment database config block
+  * Update dependencies
+  * Install build-time dependencies
+  * Allow numerals in region domain components
+  * Cleanup
+  * Add an option to install dependencies globally
+  * Remove yarn; fix npm install
+  * Remove global deps for now, and downgrade missing package manager to a warning
+  * Fix and test usage of PYTHONPATH
+  * Add commands to run the PHP built-in web server
+  * Update for CLI 3.x
+  * Server: support custom variables prefixes
+  * Locations (WIP)
+  * Remove blank lines from log in server:start
+  * Enable server commands via a feature flag
+  * Update for new DIC
+  * Implement static files rules and 'scripts' check
+  * Refactor dead process check
+  * Fix Drupal workaround
+  * Open URLs for server:start
+  * Fix APP_DIR setting
+  * Incorporate routes
+  * Use API client for project estimate
+  * Update to Symfony 3.2.4
+  * Release v3.13.0
+
+-------------------------------------------------------------------
+Wed Feb 08 16:50:01 UTC 2017 - jimmy@boombatower.com
+
+- Update to version 3.12.2:
+  * Return failure code in activate command if the activity fails
+  * Release v3.12.2
+
+-------------------------------------------------------------------
+Thu Feb 02 19:14:27 UTC 2017 - jimmy@boombatower.com
+
+- Update to version 3.12.1:
+  * Comment mentions old method
+  * More specific gitignore for Drupal vanilla
+  * Allow updates.check to be overridden by an env var
+  * Allow web command to be used with a non-existent environment
+  * Improve 'get' when the user does not have access to master (#569)
+  * Release v3.12.1
+
+-------------------------------------------------------------------
+Sat Jan 21 20:54:13 UTC 2017 - jimmy@boombatower.com
+
+- Update to version 3.12.0:
+  * db:dump: add --bzip2 option
+  * Tweaks
+  * ...ok, no need for bzip2
+  * Fix installer typo
+  * Avoid $user as var name
+  * Wrong comment
+  * Use --no-color with git branch
+  * Protect getVersion() methods
+  * phpcs fixes
+  * I believe there are missing double quotes there. (#561)
+  * I believe there are missing double quotes there. (#561) (cherry-pick)
+  * Add explicit platform.sh CLI name to SelfUpdater output  messages.
+  * Add project:set-remote command
+  * Update client
+  * Stop enforcing an "origin" remote
+  * Use the configurable application name
+  * Add project variable commands to README
+  * Installer: more precise shell config files preferences (#565)
+  * master version has moved
+  * Fix using integration:get command without an argument, when none exist
+  * Set upstream in 'branch' only if the correct branch is checked out
+  * Fix title in branch command
+  * Clarify checkout command when creating new branch
+  * Release v3.12.0
+
+-------------------------------------------------------------------
+Tue Jan 10 05:00:30 UTC 2017 - jimmy@boombatower.com
+
+- Update to version 3.11.0:
+  * Offer to autocomplete the project ID for the directory in `platform get`
+  * Use getEnvironment() in platform get, for consistency
+  * ... and use the real environment ID
+  * Add PropertyFormatter::displayData()
+  * Test on 7.1
+  * Refactor ProjectGetCommand
+  * Expand possible site domains
+  * Only show "Usage" after invalid input
+  * Sensible error in self:build if phar.readonly is enabled
+  * Document displayData() and tweak YAML formatting
+  * Remove uses of deprecated getTerminalDimensions()
+  * Allow extra regions to be used in create command
+  * Allow debug/SSL config to be used with getEstimate()
+  * Skip activate logic in push command if the target is master
+  * Add --gzip option to db:dump
+  * Account for hidden aliases in short command name
+  * Hide a couple of aliases
+  * Unify project option/argument syntax for project:delete and project:get
+  * Remove uses of deprecated Completion::makeGlobalHandler()
+  * Unused import
+  * Refactor SQL connection options
+  * Less repetition
+  * environment:delete: Don't offer to delete the branch if --no-wait is specified
+  * Fix pgsql arguments (--password doesn't allow a password value)
+  * db:dump: add more advanced options
+  * db:dump: warn if file is not excluded by Git
+  * Release v3.11.0
+
+-------------------------------------------------------------------
+Wed Dec 28 21:39:41 UTC 2016 - jimmy@boombatower.com
+
+- Update to version 3.10.2:
+  * Inject Git service for LocalProject
+  * Push command: allow specifying the target branch
+  * Disallow pushing an empty source
+  * Verify source with Git
+  * Show whether pushing to a new or existing env
+  * Shell: use stdErr properly and make environment obvious in verbose output
+  * Separate stdout/stderr in ProcessManager if possible
+  * Satisfy Scrutinizer
+  * Release v3.10.1
+  * Set environment after running git --version
+  * Pass on more options from push to activate command
+  * ActivityMonitor: hide progress bar if output is not decorated (#556)
+  * Ensure a fresh cache in getEnvironment() before determining nonexistence of an environment
+  * Fix default service for `output`
+  * Release v3.10.2
+
+-------------------------------------------------------------------
+Tue Dec 27 21:46:00 UTC 2016 - jimmy@boombatower.com
+
+- Update to version 3.10.0:
+  * Add push command
+  * Refactor custom SSH commands for Git and other uses
+  * Refactor Util and Helper classes into a DIC with services
+  * Attempt to ensure $_ENV and $_SERVER are populated
+  * Update project:variable commands for DI
+  * push command: fix extra space in Git args
+  * push command: don't throw an exception if the Git command fails
+  * push command: fix --force was not forwarded to git
+  * Convert UrlCommandBase to Url service
+  * push command: use git remote (helps for tracking)
+  * Update client
+  * Convert Api and cache factory to services
+  * Rename CliConfig to Config service
+  * Consistent interface for Table
+  * Fix Filesystem arguments
+  * Unnecessarily optional arguments
+  * Tidy output verbosity in CommandBase
+  * Convert LocalBuild to a service
+  * push command: Clear environments cache on success
+  * Avoid repeating an API request looking for a non-existent environment
+  * Remove getHomeDir from CommandBase
+  * Remove CommandBase->getSessionsDir()
+  * Clear relationships cache after pushing
+  * Private where possible (for now) in CommandBase
+  * Restore Drush->setHomeDir() to fix tests
+  * Fix Drush class for PHP <7
+  * Add docblocks to all service objects
+  * Fix URL openers
+  * Use configureIO instead of doRun
+  * Move ActivityUtil to ActivityMonitor service
+  * Unused vars
+  * Minor ActivityMonitor tidy
+  * Clear up stderr/stdout confusion in Shell and Toolstack classes
+  * Ignore SSH error after pushing
+  * Rename Util -> NestedArrayUtil
+  * Add test for NestedArrayUtil
+  * Improve activation/parenting in push command
+  * Clear environments cache after activation
+  * Refactor activate-after-push
+  * Fix static cache
+  * Allow changing interactivity in runOtherCommand
+  * Remove shebang hack for portability
+  * Avoid offering to parent master
+  * Remove uses of getProperty()
+  * Push command: add -f, remove --dry-run
+  * Show short name in examples
+  * Add examples of push command
+  * Release v3.10.0
+
+-------------------------------------------------------------------
+Wed Dec 14 20:31:07 UTC 2016 - jimmy@boombatower.com
+
+- Update to version v3.9.0:
+  * multi: separate stderr and stdout
+  * Make sql-dump not depend on a project root
+  * Add --no-dev to composer/symfony build flavors
+  * Revert "Add --no-dev to composer/symfony build flavors"
+  * Flag suspended projects in the list
+  * Warn about a suspended project in the welcome command.
+  * Show login command for LoginRequiredException
+  * Cache the list of log files
+  * Release v3.8.1
+  * Add a Project Variable Set command.
+  * Add a Project Variable Delete command.
+  * Add a Project Variable Get command.
+  * Register the new Project Variable commands.
+  * Exception if subscription not found
+  * More generic log command autocomplete
+  * Add unix shell as requirement (#545)
+  * Clear the cache after a long-running activity
+  * Ignore unreadable directories when searching for applications
+  * Allow choosing a database via a --relationship command line option
+  * Mention other build tools in README
+  * Revert unnecessary RelationshipsUtil changes
+  * Strip subdomains from project URLs
+  * Update composer.json.
+  * Release v3.9.0
+- Take advantage of versionrewrite-pattern param for tar_scm to remove v prefix
+  from tag to create a standard version that works better with tools.
+  https://github.com/M0ses/obs-service-tar_scm/pull/1
+
+-------------------------------------------------------------------
+Thu Nov 10 19:50:17 UTC 2016 - jimmy@boombatower.com
+
+- Update to version v3.8.0:
+  * Fix: environments url-encoded in parsed URL
+  * Fixed broken environment:sql command on PostgreSQL databases. (#530)
+  * Fix config for domain detection
+  * Allow locating projects by ID only
+  * Cache projects located by ID
+  * Allow 'url' as a special property in info commands
+  * Fix pldr/platform_local_drush in Bash
+  * Consistent Bash quoting
+  * Improve errors when no environment selected
+  * Unused $message variable
+  * Fix chooseDatabase() to not hardcode the relationship name
+  * Create CLI command for quick-read on SQL disk usage.
+  * Reduce the output to max space, used space and percent used.
+  * sqls: Use Table class
+  * No need to use BufferedOutput now
+  * Coding standards (PSR-2 / Symfony)
+  * Add help texts.
+  * Find service name via relationship name in app config
+  * Removed lines related to verbosity.
+  * Prevent division by zero if allocated disk size could not be determined.
+  * Prevent warnings when database service disk cannot be determined.
+  * Add db namespace for database commands (#535)
+  * Release v3.8.0
+
+-------------------------------------------------------------------
+Fri Nov 04 15:40:42 UTC 2016 - jimmy@boombatower.com
+
+- Update to version v3.7.1:
+  * ... more specific check for Drush env var
+  * Add a static cache for project config and remove indirection
+  * auth:info command: property argument, and allow uuid as property
+  * Ignore timeouts in project:create
+  * Coding standards in ProjectCreateCommand
+  * Ignore failure to download in delegated self-update
+  * ... follow-up to actually ignore download failure
+  * Permit a command to continue after updating (#529)
+  * Release v3.7.1
+
+-------------------------------------------------------------------
+Thu Oct 27 14:23:56 UTC 2016 - jimmy@boombatower.com
+
+- Update to version v3.7.0:
+  * Save a Git symbolic-ref command on most calls to getCurrentBranch()
+  * Add --run-deploy-hooks option to build command
+  * Harmonise build settings with build command options
+  * Fix relevant build options for the tree id
+  * Mini refactor
+  * Do not back up a symlinked build directory
+  * Test repeated Drupal build
+  * Allow Drush location to be overridden for tests
+  * Release v3.7.0
+
+-------------------------------------------------------------------
+Fri Oct 21 14:57:21 UTC 2016 - jimmy@boombatower.com
+
+- Update to version v3.6.0:
+  * Write to .git/info/exclude more often
+  * Default to NO for removing remote branch and add option to not delete
+  * make sure local branch is tracking upstream on environment:branch
+  * Setting the upstream after everything was created
+  * Keep default to Y
+  * Specify --inactive or --no-delete-branch, not both
+  * Allow deleting merged and inactive envs in one command (#521)
+  * Installer: avoid misleading error if $argv doesn't exist
+  * Add --my filter to project:list
+  * Cache the current user's account info
+  * Move proc_open() logic into ShellHelper
+  * Simpler output-if-verbose syntax
+  * Installer: better fix for empty $argv notice
+  * Show alias and executable name in command synopsis (i.e. "platform branch" instead of "environment:branch") (#526)
+  * Expose current account info via auth:info command (#525)
+  * Add a 'none' toolstack
+  * Release v3.6.0
+
+-------------------------------------------------------------------
+Fri Oct 07 15:52:04 UTC 2016 - jimmy@boombatower.com
+
+- Update to version v3.5.4:
+  * Additional fix for Drush and the profile directory
+  * Only backup the build directory if it is a real dir
+  * Release v3.5.4
+
+-------------------------------------------------------------------
+Fri Oct 07 04:26:31 UTC 2016 - jimmy@boombatower.com
+
+- Update to version v3.5.3:
+  * Fix (again) environment URL in `web` command
+  * Fix 'Remote branch  not found' regression in 'platform get' with no arguments
+  * Release v3.5.3
+
+-------------------------------------------------------------------
+Thu Oct 06 02:47:58 UTC 2016 - jimmy@boombatower.com
+
+- Update to version v3.5.2:
+  * Improve activities batch performance (#510)
+  * Allow "get" command with a project URL (update for machine name)
+  * Fix exception when SSH key is not found
+  * Simpler check in doRun()
+  * Ensure temporary directory does not exist before Drush make (#516)
+  * Use starts_at in activity batching
+  * Fix selectEnvironment() bug from 9049359cb2d18b57dc480578a8335e9b1dfa0144
+  * Correct UI URL in 'web' command for envs with special characters
+  * Release v3.5.1
+  * Allow special characters in branch command
+  * Improve formatting of API error details
+  * Fix environment:info bug when updating the parent
+  * Release v3.5.2
+
+-------------------------------------------------------------------
+Fri Sep 23 20:47:30 UTC 2016 - jimmy@boombatower.com
+
+- Update to version v3.5.0:
+  * Add --exclude option to environment:delete
+  * Remove dist/manifest.json
+  * Rename to installer.php
+  * Refactor environment:checkout a bit
+  * Add 'title' filter to project:list (#505)
+  * Add --no-backup option to build command (#504)
+  * Provide an option to clone to the build directory (#475)
+  * Refactor project title/id labels
+  * Account for left-indented cells in adaptive table
+  * .. only spaces for now
+  * Add experimental plan size overrides (#508)
+  * Recursively display orphaned environments (#507)
+  * Simplify listProperties()
+  * Update Symfony dependencies to 3.1.4
+  * Release v3.5.0
+
+-------------------------------------------------------------------
+Sat Sep 10 03:04:51 UTC 2016 - jimmy@boombatower.com
+
+- Add source entries for files used to maintain package.
+
+-------------------------------------------------------------------
+Fri Aug 26 19:23:12 UTC 2016 - jimmy@boombatower.com
+
+- Update to version v3.4.1+git20160826.adf340f:
+  * Update manifest for v3.4.0
+  * Work around Unicode problem in branchExists()
+  * Simplify branch name handling in checkout
+  * Use strict in_array() for ideological correctness
+  * Fix exporting a Drush alias for branch names containing '
+  * Release v3.4.1
+
+-------------------------------------------------------------------
+Wed Aug 24 20:22:56 UTC 2016 - jimmy@boombatower.com
+
+- Update to version v3.4.0+git20160824.3d4baf5:
+  * Copy install files into the repository
+  * Installer: require phar, and warn about ctype
+  * Add README.md to dist directory
+  * Add --date-fmt option to info commands
+  * Update Symfony and dev dependencies
+  * Validate roles case insensitively in user:add
+  * Select environments with unsanitized name first
+  * Allow selecting the environment by machine_name
+  * Add domain:update command
+  * Add domain:get comand
+  * Change default CSV/TSV and datetime formats
+  * Add an interactive domain name choice
+  * Simplify ssl.expires_on formatting
+  * Release v3.4.0
+
+-------------------------------------------------------------------
+Wed Aug 10 01:59:10 UTC 2016 - jimmy@boombatower.com
+
+- Update to version v3.3.6+git20160809.d262f3f:
+  * Avoid parseProjectId() on null
+  * Added an editorconfig file to keep IDEs properly behaved.
+  * Update dependencies. Should mitigate CVE-2016-5385 and allow PHP 7.1 support
+  * Add security-checker in Travis (#482)
+  * Use a direct proc_open() instead of passthru() (#484)
+  * Remove extra parsing to find SSH/Drush commands (#485)
+  * Release v3.3.5
+  * Follow-up fix: SSH and Drush commands silently dropping arguments
+  * Explicitly check the PHP version when running the CLI tool (#489)
+  * Ensure the project ID is written to config after 'get'
+  * Report progress during Git clone (#487)
+  * No need anymore for temporary vars in the executable file
+  * More reliably exclude .platform/local from Git
+  * Use a separate session ID for API tokens (#492)
+  * Release v3.3.6
+
+-------------------------------------------------------------------
+Fri Jul 08 21:24:09 UTC 2016 - jimmy@boombatower.com
+
+- Update to version v3.3.4+git20160708.06057ca:
+  * Account for environments without $_ENV when loading config
+  * Unused variable
+  * Provide configured executable name to help instead of PHP_SELF
+  * Ignore the blank lines from drush --version output
+  * Fix undefined function in integration:update (issue #465)
+  * Output simple table when there is no format option e.g. after integration:update
+  * Release v3.2.2
+  * Remove minimum Drush version check (#464)
+  * Tweak to integration code style for more flexibility
+  * Display fatal runtime errors by default.
+  * Hide clean command; unhide dir command
+  * Symlink all mounts, from the build to shared directories (#470)
+  * Use chmod to force deleting builds even when files are read-only (#469)
+  * Fix: --copy option caused dot files to be copied
+  * Add regression test for copyAll() expanding the blacklist via fnmatch()
+  * Create a settings.local.php for Drupal + Composer (#471)
+  * Yaml::parse() lies about its return value being an array
+  * Allow the API token to be set via a file specified in ~/.platformsh/config.yaml (#472)
+  * Release v3.3.0
+  * Prevent new lines messing up tokens
+  * Show roles on all environments in user:role
+  * Add autocompletion and other improvements for user:role
+  * Fix overriding a config array with a scalar value
+  * More user:role tidying
+  * More efficient unprotect()
+  * Docblock for Table class
+  * Fix apparent bug in getProjectRoot() with legacy project structures
+  * Remove vfsStream and clean up temp test dirs
+  * Document user config overrides in config.yaml
+  * Allow overwriting files with shared file mount symlinks
+  * Use --recursive option to git clone
+  * Revert "Use --recursive option to git clone" (only introduced in Git 1.6.5)
+  * Make the level more obvious in user:role
+  * Clean up LocalBuild settings
+  * Pass verbosity on to Composer
+  * Release v3.3.1
+  * Report more error detail for DELETE requests
+  * Suppress usage for welcome command errors
+  * Correct service name for project:get with empty repo
+  * Account for orphaned environments in environment:list
+  * Unused import
+  * Release v3.3.2
+  * Fix environments duplicated in list (caused by 3b2d61238347b2cc1c614af9ca10cec902908d0d)
+  * Release v3.3.3
+  * Update client to fix reporting all empty responses as failure (even 200)
+  * Assume Drush is installed if the command resolved (#478)
+  * Release v3.3.4
+
+-------------------------------------------------------------------
+Mon Jun 13 23:56:22 UTC 2016 - jimmy@boombatower.com
+
+- Update to version v3.2.1+git20160613.816de17:
+  * Ensure old build is removed properly
+  * Tidy weird foreach() in ProcessManager
+  * Improve environment:delete --merged
+  * Use 'git checkout --track' in checkout command
+  * GitHelper docs/test cleanup
+  * Add PHP version information to the User-Agent
+  * Release v3.1.2
+  * Update default Drupal settings (#458)
+  * Sort projects and environments (#459)
+  * Add 'platform multi' command
+  * Fix ArgvHelper issue when running with multi (for ssh/drush)
+  * Fix doRunCommand() signature
+  * Fix whether an environment is required in activity:list
+  * Various sortResources() fixes
+  * Allow sorting by a nested property
+  * Disable some command combinations via multi
+  * Git exclude info not added for empty projects
+  * Always refresh environments in the 'welcome' command
+  * Allow certain config to be overridden by the user
+  * Add project:create command
+  * Use static cache for project root when it is not found.
+  * Better naming and remove NULL for $keyExists
+  * ... just testing
+  * Only remove the previous build when the new one completes
+  * Allow the update check interval to be overridden
+  * Unhide multi; remove -c alias
+  * Release v3.2.0
+  * Fix 'multi' command in configurations without $_ENV superglobal
+  * So now $env is not needed.
+  * Release v3.2.1
+
+-------------------------------------------------------------------
+Wed Jun 01 21:35:08 UTC 2016 - jimmy@boombatower.com
+
+- Update to version v3.1.1+git20160530.705c22c:
+  + Fix drush issue (#185)
+  + Fix bug in getEnvironment() (#188)
+  + A further fix for getEnvironment().
+  + Use HOME system variable inside double quoted PATH export
+  + Call Drush with the full path to avoid a drush.bat issue on Windows.
+  + Fix tar paths for Windows.
+  + Fix infinite loop in getProjectRoot()
+  + Hot fix - vanilla builds broken by archive behaviour
+  + Follow SSH key generation with ssh-add.
+  + Fix exit codes for branch
+  + Hotfix: undefined variable $projectRoot
+  + Temporarily remove Phar installation instructions
+  + Show tunnel commands in the list; check support at 'runtime'
+  + Show integration:get in the command list
+  + Fix autocompletion errors
+  + Fix some Scrutinizer issues
+  + Remove some dead code
+
+-------------------------------------------------------------------
+Fri Mar 25 03:47:29 UTC 2016 - jimmy@boombatower.com
+
+- Update to 3.0.7.
+
+-------------------------------------------------------------------
+Thu Mar 24 05:53:55 UTC 2016 - jimmy@boombatower.com
+
+- Update to 3.0.4.
+
+-------------------------------------------------------------------
+Wed Mar 23 01:50:46 UTC 2016 - jimmy@boombatower.com
+
+- Update to 3.0.2.
+
+-------------------------------------------------------------------
+Tue Mar 22 00:17:40 UTC 2016 - jimmy@boombatower.com
+
+- Update to 3.0.0.
+
+-------------------------------------------------------------------
+Sun Mar 13 02:58:59 UTC 2016 - jimmy@boombatower.com
+
+- Update to 2.13.2.
+- Split vendor directory instead separate tarball to allow for
+  source verification.
+
+-------------------------------------------------------------------
+Wed Mar  9 03:22:03 UTC 2016 - jimmy@boombatower.com
+
+- Update to 2.13.1.
+- Update installation of rc file for upstream renaming.
+
+-------------------------------------------------------------------
+Mon Feb 29 19:14:12 UTC 2016 - jimmy@boombatower.com
+
+- Update to 2.13.0.
+
+-------------------------------------------------------------------
+Wed Feb 17 17:03:21 UTC 2016 - jimmy@boombatower.com
+
+- Update to 2.12.3.
+
+-------------------------------------------------------------------
+Fri Feb 12 18:51:07 UTC 2016 - jimmy@boombatower.com
+
+- Correct liscenses.txt spelling.
+- Simplify find command with -delete flag.
+
+-------------------------------------------------------------------
+Fri Feb 12 17:40:42 UTC 2016 - jimmy@boombatower.com
+
+- Update to 2.12.1.
+
+-------------------------------------------------------------------
+Thu Feb 11 23:49:56 UTC 2016 - jimmy@boombatower.com
+
+- Initial import of 2.12.0.
+

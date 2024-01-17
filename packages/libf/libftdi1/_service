@@ -1,0 +1,17 @@
+<services>
+  <service name="obs_scm" mode="localonly">
+    <param name="url">git://developer.intra2net.com/libftdi</param>
+    <param name="scm">git</param>
+    <param name="changesgenerate">enable</param>
+    <param name="filename">libftdi1</param>
+    <param name="revision">refs/heads/master</param>
+    <param name="versionformat">@PARENT_TAG@.@TAG_OFFSET@+git.%h</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+  </service>
+  <service name="set_version" mode="localonly"/>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+</services>

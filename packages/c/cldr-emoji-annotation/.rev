@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>efd127eef7e38e70ec9d5496c36da104</srcmd5>
+    <version>32.0.0_1</version>
+    <time>1513676997</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>542938</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3313129055b429c6cce9b3fc162b3b14</srcmd5>
+    <version>32.0.0_1</version>
+    <time>1584176051</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>783733</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>15526f8ae73bb8758c73286781d585a5</srcmd5>
+    <version>36.12.120191002_0</version>
+    <time>1584643571</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 36.12.120191002_0
+  * No changelog provided by upstream (forwarded request 785616 from alarrosa)</comment>
+    <requestid>785619</requestid>
+  </revision>
+</revisionlist>

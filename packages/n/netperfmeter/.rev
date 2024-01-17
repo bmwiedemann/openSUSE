@@ -1,0 +1,49 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4a63b65e7c1f0a05dc08afb4eee011dd</srcmd5>
+    <version>1.8.6</version>
+    <time>1593904830</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain netperfmeter in Factory</comment>
+    <requestid>818553</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f3c99161ee8f8113440ecf47c1ee2b86</srcmd5>
+    <version>1.8.7</version>
+    <time>1614792904</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>876395</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f808747e360bd56091085b3fbe98a6ef</srcmd5>
+    <version>1.9.0</version>
+    <time>1626887207</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.9.0
+  Use different payload data patterns for Active -&gt; Passive and Passive -&gt; Active directions.
+  Added note on SCTP usage with 192.168.122.1 interface.
+  Added test script for Wireshark dissector tests.
+  Enable 30s SCTP Heartbeats on control connection, to ensure PAT/NAT will keep the connection alive.
+  Updated Wireshark color filter example.
+  Bugfix: Make sure to deregister all flows belonging to a closed control connection.
+  Improved DCCP detection.
+  Commented out LK-SCTP bug work-around. It is hopefully not needed any more.
+  Bugfix: fixed possibilities for race conditions reported by Helgrind.
+  Bugfix: fixed UDP flow identification.
+  Improved vector output.
+  Bugfix: fixed improper deletion. Access to deallocated memory was possible.
+  Bugfix: make sure to clear address space (Valgrind reported access to uninitialised memory).
+  Bugfix: fixed handling of new flows on active side (variable was uninitialised).
+  Also write time stamps into scalars.</comment>
+    <requestid>907520</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4df3c59e1b9f584ca0ab2e776a362a74</srcmd5>
+    <version>1.9.4</version>
+    <time>1688399009</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1096354</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,30 @@
+---
+#description_paragraphs: 3
+#description: |-
+#  override description from CPAN
+summary: Object-oriented CGI interface compliant to CGI.pm
+#no_testing: broken upstream
+#sources:
+#  - source1
+#  - source2
+#patches:
+#  foo.patch: -p1
+#  bar.patch:
+preamble: |-
+ # after 1.115 came 1.12 - provide the zero padded version number to fix version checks
+ Provides:       perl(CGI::Simple) = %{version}0
+ Provides:       perl(CGI::Simple::Cookie) = %{version}0
+#post_prep: |-
+# hunspell=`pkg-config --libs hunspell | sed -e 's,-l,,; s,  *,,g'`
+# sed -i -e "s,hunspell-X,$hunspell," t/00-prereq.t Makefile.PL 
+#post_build: |-
+# rm unused.files
+#post_install: |-
+# sed on %{name}.files
+#license: SUSE-NonFree
+#skip_noarch: 1
+#custom_build: |-
+#./Build build flags=%{?_smp_mflags} --myflag
+#custom_test: |-
+#startserver && make test
+#ignore_requires: Bizarre::Module

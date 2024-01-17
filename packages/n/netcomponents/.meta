@@ -1,0 +1,16 @@
+<package name="netcomponents" project="openSUSE:Factory">
+  <title>Internet Protocol Suite Java Library</title>
+  <description>NetComponents is an Internet protocol suite Java library originally
+developed by ORO, Inc.	This version supports Finger, Whois, TFTP,
+Telnet, POP3, FTP, NNTP, SMTP, and some miscellaneous protocols like
+Time and Echo as well as BSD R command support.  The purpose of the
+library is to provide fundamental protocol access, not higher-level
+abstractions.  Therefore, some of the design violates object-oriented
+design principles.  Its philosophy is to make the global functionality
+of a protocal accesible (for example, TFTP send file and receive file)
+when possible, but also provide access to the fundamental protocols
+where applicable so that the programmer can construct custom
+implementations (for example, the TFTP packet classes and the TFTP
+packet send and receive methods are exposed).</description>
+  <devel project="Java:packages" package="netcomponents"/>
+</package>

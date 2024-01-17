@@ -1,0 +1,20 @@
+---
+ systemd/_daemon.c |    3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+--- a/systemd/_daemon.c
++++ b/systemd/_daemon.c
+@@ -121,11 +121,12 @@ static PyObject* notify(PyObject *self,
+                         return NULL;
+ 
+                 for (i = 0; i < len; i++) {
++                        long value;
+                         _cleanup_Py_DECREF_ PyObject *item = PySequence_GetItem(fds, i);
+                         if (!item)
+                                 return NULL;
+ 
+-                        long value = PyLong_AsLong(item);
++                        value = PyLong_AsLong(item);
+                         if (PyErr_Occurred())
+                                 return NULL;
+ 

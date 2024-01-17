@@ -1,0 +1,8 @@
+<package name="python-libversion" project="openSUSE:Factory">
+  <title>Python bindings for libversion</title>
+  <description>Python bindings for libversion
+
+</description>
+  <devel project="devel:languages:python" package="python-libversion"/>
+  <url>https://github.com/repology/py-libversion</url>
+</package>

@@ -1,0 +1,14 @@
+Index: libglvnd-1.3.2/tests/Makefile.am
+===================================================================
+--- libglvnd-1.3.2.orig/tests/Makefile.am
++++ libglvnd-1.3.2/tests/Makefile.am
+@@ -100,7 +100,8 @@ TESTS_GLX += testglxqueryversion.sh
+ 
+ if ENABLE_GLX
+ 
+-TESTS += $(TESTS_GLX)
++# need a running X server
++# TESTS += $(TESTS_GLX)
+ 
+ check_PROGRAMS += testglxcreatecontext
+ testglxcreatecontext_CFLAGS = $(CFLAGS_COMMON) $(X11_CFLAGS)

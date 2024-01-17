@@ -1,0 +1,5 @@
+<package name="gnome-music" project="openSUSE:Factory">
+  <title>GNOME Music</title>
+  <description>Music player and management application for GNOME.</description>
+  <devel project="GNOME:Factory" package="gnome-music"/>
+</package>

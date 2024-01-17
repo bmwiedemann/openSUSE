@@ -1,0 +1,258 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c43d6d2964adb64975fa00f9d0f5cdf1</srcmd5>
+    <version>40</version>
+    <time>1513677096</time>
+    <user>dimstar_suse</user>
+    <comment>depednency of mpv</comment>
+    <requestid>547724</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f560adf3514d08f761611283092ae936</srcmd5>
+    <version>43</version>
+    <time>1518187989</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 43:
+  * Mostly bugfixes and internal changes (see provided ChangeLog
+    for details)</comment>
+    <requestid>574529</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>5e106a05d01d0543cd7cbd8c5b38317d</srcmd5>
+    <version>43</version>
+    <time>1520415172</time>
+    <user>dimstar_suse</user>
+    <comment>- Obsolete libvapoursynth to cleanup old packages during upgrade (forwarded request 578805 from olh)</comment>
+    <requestid>578806</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>4df46c890866e2531108c449e0223eb5</srcmd5>
+    <version>43</version>
+    <time>1525023454</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>601693</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>22f066780eadc0c3ac3dd203ec6439e5</srcmd5>
+    <version>45</version>
+    <time>1546946965</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 45 (boo#1120873):
+  * avfs now uses utf8 filename support when available in avs+
+  * avfs now prints the used mount point
+  * removed accept_lowecase setting from the python bindings
+  * fixed frame duration calculation in clipinfo (dubhater)
+  * fixed bug that prevented adding vertical margins in subtext
+    (dubhater)
+  * documentation updates
+- Changes for version 44:
+  * fixed crop with compatbgr32 format where top and bottom crop
+    would be switched
+  * fixed crash in scdetect with one frame clips, now it simply
+    returns an error since the operation is pointless
+  * fixed potential multithreading issues in vsscript (stuxcrystal)
+  * the resizer will now properly apply a shift even if no actual
+    resizing/format conversion is being done
+  * added experimental large page support and changed cache logic
+    (sekrit-twc)
+  * minor documentation updates
+- Drop no longer needed patch:
+  * vapoursynth-upstream-fix-for-aarch64.patch</comment>
+    <requestid>663355</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7ffddaa0dafea2f6b71a8131abf60c3b</srcmd5>
+    <version>46</version>
+    <time>1562056761</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>712894</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7cf6e5bd8686b70440aec4243ae0eb8d</srcmd5>
+    <version>47</version>
+    <time>1567000997</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721049</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f77a229e33bfd7afb3ea69a6bca99cc2</srcmd5>
+    <version>48</version>
+    <time>1576928007</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 48:
+  * it's now possible to select which optimized code path is used
+    for internal filters (sekrit-twc)
+  * avx2 optimization in many filters, previously the internal
+    ones were mostly sse2 (sekrit-twc)
+  * expr filter can now better optimize expressions (sekrit-twc)
+  * the 7zip executable is now bundled with vsrepo
+  * the portable version now includes the documentation as well
+  * the portable version now includes all the plugins bundled with
+    the normal installer again
+  * fixed deadlock when setMessageHandler is called a second time
+  * added an option to add vspipe, avfs and vsrepo to path in the
+    installer
+  * added registry entries for the path to vspipe and vsrepo
+  * imwri is now included in the installer
+  * the overwrite argument in imwri now also disables the
+    requirement for output filesnames to contain a number
+  * fixed corrupt output from imwri when requesting alpha output
+    but the read image doesn't have an alpha channel
+- Changes for 47.2:
+  * fixed broken merge intrinsics 
+- Changes for 47.1:
+  * fixed linux and non-x86 builds</comment>
+    <requestid>758506</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>7e81a33037bd430069224ae95f90dc27</srcmd5>
+    <version>48</version>
+    <time>1577972669</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>760398</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>f1160dd4cccb4fd334cb0dcc93b688aa</srcmd5>
+    <version>48</version>
+    <time>1583833768</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>783172</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>2a87ae38ec9db53da135b08751636e20</srcmd5>
+    <version>49</version>
+    <time>1587839500</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>797094</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6961f51c515b08383b1f13adfc916b4f</srcmd5>
+    <version>50</version>
+    <time>1589491661</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>805591</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>fba8f89962423fb4babda0485cd7ea79</srcmd5>
+    <version>51</version>
+    <time>1597221303</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>825770</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c5bb99e432efbc573e7b75e50493baf4</srcmd5>
+    <version>52</version>
+    <time>1598341181</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>829017</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>090740bda874e849a32ada8112360081</srcmd5>
+    <version>53</version>
+    <time>1619729184</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 53:
+  * Bugfix release</comment>
+    <requestid>889195</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>be0652444d778e20ec9f1cc2a80e5aaf</srcmd5>
+    <version>53</version>
+    <time>1626208660</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build with gcc11:
+  Add vapoursynth-include.patch
+  See:
+  * https://github.com/vapoursynth/vapoursynth/issues/686
+  * https://github.com/vapoursynth/vapoursynth/issues/688
+  * and commits b5ed913f, a4c4eba7</comment>
+    <requestid>906103</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>e24bdd5f7b8e098f719701768fe3fe4e</srcmd5>
+    <version>54</version>
+    <time>1629269747</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 54:
+  * Floating point mask clips are now a consistent thing
+- Remove vapoursynth-include.patch: upstreamed</comment>
+    <requestid>912352</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>4fd3421f97d34d81e6974b84c32b0ecb</srcmd5>
+    <version>62</version>
+    <time>1680455908</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1076723</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>1904748226d956a5e7ca867c6e47d9c6</srcmd5>
+    <version>63</version>
+    <time>1687550016</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1094844</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>8c7cc390051ce1e542e6d5039ed97eb8</srcmd5>
+    <version>63</version>
+    <time>1695664943</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1113183</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>0c3bdf4b3651ca468836aa74d5f75aa9</srcmd5>
+    <version>64</version>
+    <time>1695853571</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 64:
+  * fixed compilation on osx where the default standard library
+    doesn't have a full implementation of std::from_chars
+  * fixed SAR adjustment in resizer when source cropping is used
+  * added -- as an alternate to . to indicate no output in vspipe
+    since shells have a tendency to expand .
+  * added json output of video frame properties to vspipe
+  * fixed clearMap function, previously it would forget to properly
+    clear the error state in maps which could cause
+  * crashes in frameeval and other filters
+  * 32 bit binaries are no longer provided for windows
+  * updated zimg to fix issues on zen4 cpus
+  * added support for cython 3.x</comment>
+    <requestid>1113880</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>426e87a51b7cce6dee7ad059c75ce15a</srcmd5>
+    <version>64</version>
+    <time>1697231751</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1117690</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>26aa96ef89e5cdff7ee94a017b204bd1</srcmd5>
+    <version>65</version>
+    <time>1698780327</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1121327</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>3b7a29712c575cfe64301cd099993eb3</srcmd5>
+    <version>65</version>
+    <time>1701727285</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1130662</requestid>
+  </revision>
+</revisionlist>

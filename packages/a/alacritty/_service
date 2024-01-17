@@ -1,0 +1,42 @@
+<!-- vim: set syntax=xml: -->
+
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/alacritty/alacritty.git</param>
+    <param name="revision">refs/tags/v0.13.1</param>
+    <param name="match-tag">v*</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
+    <param name="changesgenerate">enable</param>
+    <param name="exclude">.builds</param>
+    <param name="exclude">.github</param>
+    <param name="exclude">.agignore</param>
+    <param name="exclude">.editorconfig</param>
+    <param name="exclude">.gitattributes</param>
+    <param name="exclude">Makefile</param>
+    <param name="exclude">rustfmt.toml</param>
+    <param name="exclude">alacritty/src/macos</param>
+    <param name="exclude">alacritty_terminal/src/tty/windows</param>
+    <param name="exclude">extra/windows</param>
+    <param name="exclude">extra/osx</param>
+    <!--
+     smell: logo is required for build
+    <param name="exclude">extra/logo</param>
+    -->
+    <param name="exclude">alacritty_terminal/tests</param>
+  </service>
+  <service name="tar" mode="manual"/>
+  <service name="recompress" mode="manual">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="manual"/>
+  <service name="cargo_vendor" mode="manual">
+     <param name="src">alacritty*.tar.*</param>
+     <param name="compression">xz</param>
+     <param name="update">true</param>
+  </service>
+  <service name="cargo_audit" mode="manual"/>
+</services>

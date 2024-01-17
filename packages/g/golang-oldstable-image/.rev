@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8451873a74c9b64ffa2b9c91cab09155</srcmd5>
+    <version>unknown</version>
+    <time>1688563889</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1096934</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8c58ee79c9a2d98e4eb8800afa017aa6</srcmd5>
+    <version>unknown</version>
+    <time>1689786706</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1099510</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>3454f321368f89717c5297ce070b2a8f</srcmd5>
+    <version>unknown</version>
+    <time>1691502918</time>
+    <user>dimstar_suse</user>
+    <comment>- Add go-doc and go-race subpackages for developer convenience</comment>
+    <requestid>1102821</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>ebb4b86f44da8181ae4eeb534efbf536</srcmd5>
+    <version>unknown</version>
+    <time>1692795424</time>
+    <user>anag+factory</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1105165</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>36b25d1c85004eae788c00cff55fab95</srcmd5>
+    <version>unknown</version>
+    <time>1694460083</time>
+    <user>anag+factory</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1109877</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>f5acf31871c2a799d586ff601b45de3b</srcmd5>
+    <version>unknown</version>
+    <time>1696269870</time>
+    <user>anag+factory</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1114175</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>d840d7702fdc9dbf95734d52726d0150</srcmd5>
+    <version>unknown</version>
+    <time>1704281483</time>
+    <user>dimstar_suse</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1136336</requestid>
+  </revision>
+</revisionlist>

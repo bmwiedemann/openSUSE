@@ -1,0 +1,551 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6a3d21a6bb8dd533216d6b2c0b1f3b23</srcmd5>
+    <version>5.0.0</version>
+    <time>1475242305</time>
+    <user>dimstar_suse</user>
+    <comment>KDevelop 5.0.0</comment>
+    <requestid>429468</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>55591cf05b3ba2b80ff68578d7f634ec</srcmd5>
+    <version>5.0.1</version>
+    <time>1475750732</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing find_lang macros for additional translations
+
+- Add KArchive to BuildRequires and bump Frameworks versions
+  (they were lower than in kdevplatform, and that did not make
+   any sense)
+
+- New upstream release 5.0.1
+  * Do not display the &quot;project is already open in a different
+    session&quot; dialog on starting up a session under some 
+    circumstances. 
+  * Mouseover highlight now uses the &quot;Search highlight&quot; color from
+    the configuration dialog, instead of a hard-coded bright 
+    yellow.
+  * Fix working directory of Custom Makefile plugin
+  * Fix a possible crash on triggering an assistant popup action
+  * Fix a freeze under some circumstances when the welcome page is
+    displayed.</comment>
+    <requestid>433230</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>db77ca7430b678e8b3185f6d8c5d3778</srcmd5>
+    <version>5.0.2</version>
+    <time>1479383022</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>440598</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4ca171f93376a77858e074495fac6833</srcmd5>
+    <version>5.0.3</version>
+    <time>1481390848</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>443239</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>923811533cb37995b31477c3fc7e05df</srcmd5>
+    <version>5.0.4</version>
+    <time>1489345320</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>477269</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>10a54de40a5f7bb07e04f7f9a6e70b2e</srcmd5>
+    <version>5.1.0</version>
+    <time>1490965693</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 5.1.0
+- Add okteta-devel BuildRequires to re-enable the okteta plugin (forwarded request 482311 from wolfi323)</comment>
+    <requestid>482359</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>44e273b279d559e66a03b54b1805874c</srcmd5>
+    <version>5.1.1</version>
+    <time>1496392380</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>498701</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>b018a032c9dc83ac6675b1559ea99a24</srcmd5>
+    <version>5.1.1</version>
+    <time>1497274402</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>502514</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>794f4974c7a0c1fc6c81313aa56024d6</srcmd5>
+    <version>5.1.2</version>
+    <time>1505334536</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>519557</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a22df490613b0de9d505a7cec3fa1cf4</srcmd5>
+    <version>5.2.3</version>
+    <time>1527934090</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>612536</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>321a5500a6d128979f72d84de30cb7a6</srcmd5>
+    <version>5.2.4</version>
+    <time>1534940462</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>630784</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>a73eae8b54db5216c8e16ace7154fc52</srcmd5>
+    <version>5.2.4</version>
+    <time>1535963737</time>
+    <user>dimstar_suse</user>
+    <comment>- Add requirements for kdevplatform-devel which are not detected
+  automatically.
+- Add kdevplatform-reduce-dependencies.diff to prevent adding
+  unneeded requirements to the kdevplatform-devel package.
+- Run spec-cleaner
+</comment>
+    <requestid>632513</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>068041e41d2131b0c6d664fc628d1cbe</srcmd5>
+    <version>5.2.4</version>
+    <time>1540320066</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>643806</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>40253f60a8a47543d878ae474d67d65e</srcmd5>
+    <version>5.3.0</version>
+    <time>1543224215</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>649974</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>71655175a1a5748c0691d900274d695e</srcmd5>
+    <version>5.3.0</version>
+    <time>1543999585</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>654345</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>435ef7b0fd3a4d2f53603e44fab058f8</srcmd5>
+    <version>5.3.0</version>
+    <time>1545223873</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>659267</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>eaff4a549b01a469591cd13d54a5a4b1</srcmd5>
+    <version>5.3.1</version>
+    <time>1547540139</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>660853</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>12eaa46293e911fe5002e4413e2955c2</srcmd5>
+    <version>5.3.2</version>
+    <time>1552207169</time>
+    <user>coolo</user>
+    <comment>- New upstream release 5.3.2
+  * Don't call clear() on a shared pointer we don't own
+    (kde#403644)
+  * Workaround the bug found by ASan, which can be seen on FreeBSD
+    CI
+  * Kdev-clazy: use canonical paths
+  * Prevent the Extra Arguments ComboBox to Stretch Too Much
+  * CMake plugin: don't hardcode a default install prefix
+  * Appimage: skip unneeded cp of cmake, removed later again
+  * Clang plugin: Handle CUDA files better
+  * Clang: detect Clang builtin dirs at runtime on Unix
+  * Actually cleanup the duchain from the background thread
+    (kde#388743)
+  * Appimage: add okteta libs, as used by the debugger memory view
+  * Grepview: Fix potential crash in &quot;Find in Files&quot; (kde#402617)
+  * Add All Top-Level Targets to the Menu
+  * Show &quot;Move into Source&quot; action in code menu
+  * QuickOpen: Trim whitespace from input
+  * Update kdevelop app icon to latest breeze-icons version
+  * Appimage: have only kdevelop appdata in the appimage
+  * Fix first run of appimage creation: get install_colorschemes.py
+    via $SRC
+  * Fix crash in documentation view (kde#402026)
+  * CMake: skip server entries without empty build system
+    information
+  * 2 missing KTextEditorPluginIntegration::MainWindow slots
+  * Polish Purpose integration in the PatchReview plugin
+  * Hex editor plugin: prepare for incompatible API change of
+    libraries from upcoming Okteta 0.26.0
+- Require clangX instead of clang on Leap 15 and TW, the exact
+  version should not matter anymore
+</comment>
+    <requestid>682726</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>1230432bdb8d1cbe02c55797c2532ec6</srcmd5>
+    <version>5.3.2</version>
+    <time>1563456016</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>715694</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>17465a06be607125f0d294fb256266d1</srcmd5>
+    <version>5.3.3</version>
+    <time>1564155307</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718896</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>ebc3754ff9d31a7bd509e0a0ad65d56c</srcmd5>
+    <version>5.4.0</version>
+    <time>1565267029</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721605</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>85bedb3935b6e510d89754e4aac319e5</srcmd5>
+    <version>5.4.1</version>
+    <time>1565695669</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.4.1</comment>
+    <requestid>723020</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>68dc3a8da06f4d8ae911a1056a4dd8e8</srcmd5>
+    <version>5.4.2</version>
+    <time>1567679697</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>728064</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>38d5ad7397eae7c758e82119730d199d</srcmd5>
+    <version>5.4.3</version>
+    <time>1571838655</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>741848</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>0385e4eb6ddad453ec7f42f7e1ad683a</srcmd5>
+    <version>5.4.4</version>
+    <time>1573045581</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>745435</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>134218ce4088c455d6860eacce9bb9dd</srcmd5>
+    <version>5.4.5</version>
+    <time>1575373392</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>753117</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>2d235a4c66fd36dbd732efbe1ebd4184</srcmd5>
+    <version>5.4.5</version>
+    <time>1577137506</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>758829</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>01a24a185c8b8775891f37e008a2082f</srcmd5>
+    <version>5.4.6</version>
+    <time>1578437761</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>761632</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>65d14cb3a2774999c4dfc8d0a7b2cfc2</srcmd5>
+    <version>5.5.0</version>
+    <time>1580842328</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>769476</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>cc4d1c5f76a0be8188c43d7907987ba3</srcmd5>
+    <version>5.5.0</version>
+    <time>1582899683</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>780131</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>f606c772921cc18f15a9bea6d69a4094</srcmd5>
+    <version>5.5.1</version>
+    <time>1588855781</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>800539</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>f7c7416848ecf8263173acd1d4cc9213</srcmd5>
+    <version>5.5.2</version>
+    <time>1591209216</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>810924</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>e5e91c0565e72dc25e6b9bc41902c5f5</srcmd5>
+    <version>5.6.0</version>
+    <time>1599667512</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>833185</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>ee80f4223a2a263dbf3268a5963bcc0f</srcmd5>
+    <version>5.6.1</version>
+    <time>1607876982</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>855309</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>e6c416c6d8ad7175cf9275491204bab7</srcmd5>
+    <version>5.6.2</version>
+    <time>1613511586</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>872725</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>b8028b1e23c3f535b1fbde41efeab622</srcmd5>
+    <version>5.6.2</version>
+    <time>1630012509</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable build for archs missing qtwebengine.</comment>
+    <requestid>914345</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>cba998e99d3370ec08932498fef8797b</srcmd5>
+    <version>21.12.0</version>
+    <time>1639424578</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Gear 21.12.0</comment>
+    <requestid>937929</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>c41d714ff417b2836363c54a24f602b8</srcmd5>
+    <version>21.12.1</version>
+    <time>1641932291</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Gear 21.12.1</comment>
+    <requestid>944311</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>965a5007cbb21171b76b1da2d76cf5cc</srcmd5>
+    <version>21.12.2</version>
+    <time>1644007675</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Gear 21.12.2</comment>
+    <requestid>951021</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>714bc8346c289a824126a14cebaf6a86</srcmd5>
+    <version>21.12.3</version>
+    <time>1646421350</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Gear 21.12.3</comment>
+    <requestid>958835</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>8d149973a33414b7446c609917a8f1cc</srcmd5>
+    <version>22.04.0</version>
+    <time>1650735949</time>
+    <user>dimstar_suse</user>
+    <comment>KDE release gear 22.04.0</comment>
+    <requestid>971456</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>c4c89f4522759ad78037d938a453fe31</srcmd5>
+    <version>22.04.1</version>
+    <time>1652561735</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Gear 22.04.1</comment>
+    <requestid>976768</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>95fad520eb6fd8e6653610896c358e37</srcmd5>
+    <version>22.04.2</version>
+    <time>1655048382</time>
+    <user>dimstar_suse</user>
+    <comment>22.04.2</comment>
+    <requestid>981811</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>3279c95011838e18f00b49e79856e059</srcmd5>
+    <version>22.04.3</version>
+    <time>1657378894</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Gear 22.04.3</comment>
+    <requestid>987580</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>a9125bedb9e6a658f5b99072090323ad</srcmd5>
+    <version>22.08.0</version>
+    <time>1660924468</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 22.08.0 (forwarded request 997667 from cgiboudeaux)</comment>
+    <requestid>997818</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>777e5a298009097ce69223b39b466b3d</srcmd5>
+    <version>22.08.1</version>
+    <time>1662740772</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Gear 22.08.1</comment>
+    <requestid>1002009</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>a59b36feae606950fa64d3c8d64b07cd</srcmd5>
+    <version>22.08.2</version>
+    <time>1665844547</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Gear 22.08.2</comment>
+    <requestid>1010724</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>279e436fc84964bb7f33d3de93893078</srcmd5>
+    <version>22.08.3</version>
+    <time>1667579750</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 22.08.3 (forwarded request 1032791 from cgiboudeaux)</comment>
+    <requestid>1033262</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>f68224af6af698bfee54ddccf79c1180</srcmd5>
+    <version>22.12.0</version>
+    <time>1670601525</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 22.12.0 (forwarded request 1041224 from krop)</comment>
+    <requestid>1041470</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>60296173b8717ec57c87d45b22b5b166</srcmd5>
+    <version>22.12.1</version>
+    <time>1673108295</time>
+    <user>dimstar_suse</user>
+    <comment>KDE release gear 22.12.1 (forwarded request 1046548 from krop)</comment>
+    <requestid>1056503</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>c1d256e900ddbb95f60de80c5f45a6da</srcmd5>
+    <version>22.12.2</version>
+    <time>1675516437</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 22.12.2 (forwarded request 1062341 from krop)</comment>
+    <requestid>1062775</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>5a0ed3dc4c4c913c1e5f8c73cea23e8e</srcmd5>
+    <version>22.12.3</version>
+    <time>1677878805</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 22.12.3 (forwarded request 1068358 from krop)</comment>
+    <requestid>1068802</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>9f1687c92c1753e11895fb18b5f5fa88</srcmd5>
+    <version>23.04.0</version>
+    <time>1682282762</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 23.04 (forwarded request 1079740 from krop)</comment>
+    <requestid>1080590</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>beff48a241a06ef203464c7359283a00</srcmd5>
+    <version>23.04.1</version>
+    <time>1683916516</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 23.04.1</comment>
+    <requestid>1086308</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>6761d7b31ba3c7273e92abcd754f4f1b</srcmd5>
+    <version>23.04.2</version>
+    <time>1686335904</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 23.04.2 (forwarded request 1091225 from krop)</comment>
+    <requestid>1091536</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>f7bb2c315164b724e9534b2f79cc69a4</srcmd5>
+    <version>23.04.3</version>
+    <time>1688737711</time>
+    <user>favogt_factory</user>
+    <comment>KDE release gear 23.04.3 (forwarded request 1097054 from krop)</comment>
+    <requestid>1097247</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>25f58fa622c6c0711382ce93b9f20987</srcmd5>
+    <version>23.08.0</version>
+    <time>1693482262</time>
+    <user>anag+factory</user>
+    <comment>KDE Release Gear 23.08.0 (forwarded request 1105409 from krop)</comment>
+    <requestid>1105679</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>e5a94dc2375b55321a8b16e3ed4cf0b5</srcmd5>
+    <version>23.08.1</version>
+    <time>1694808194</time>
+    <user>anag+factory</user>
+    <comment>KDE release gear 23.08.1 (forwarded request 1110807 from krop)</comment>
+    <requestid>1111159</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>a3c443fd195ed68bb185d9f7530d0cce</srcmd5>
+    <version>23.08.2</version>
+    <time>1697146966</time>
+    <user>anag+factory</user>
+    <comment>KDE release gear 23.08.2 (forwarded request 1116778 from krop)</comment>
+    <requestid>1117282</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>19beb1d0dc5d49ee8438d77aaf1b2efc</srcmd5>
+    <version>23.08.3</version>
+    <time>1699615897</time>
+    <user>anag+factory</user>
+    <comment>KDE Release Gear 23.08.3 (forwarded request 1124079 from krop)</comment>
+    <requestid>1124544</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>03f56c7cfc0b6de90690e0a086afbd5b</srcmd5>
+    <version>23.08.4</version>
+    <time>1702158722</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release gear 23.08.4 (forwarded request 1131017 from krop)</comment>
+    <requestid>1131837</requestid>
+  </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>e99cb4044d8900bba959e14a2b9095df</srcmd5>
+    <version>23.08.4</version>
+    <time>1702845071</time>
+    <user>anag+factory</user>
+    <comment>Require extra-cmake-modules at build time</comment>
+    <requestid>1133511</requestid>
+  </revision>
+</revisionlist>

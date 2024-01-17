@@ -1,0 +1,121 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>27adfcae56dfb45aaa1091de6b919143</srcmd5>
+    <version>0.4.99.1</version>
+    <time>1577972523</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>760326</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c546f8d71045f57e884307aa427d6409</srcmd5>
+    <version>0.4.99.1</version>
+    <time>1578234150</time>
+    <user>dimstar_suse</user>
+    <comment>- Change appdata install path. (forwarded request 760924 from hillwood)</comment>
+    <requestid>760925</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>7f993cf1cbbca884d61ce34e09256afe</srcmd5>
+    <version>0.4.99.1</version>
+    <time>1591101671</time>
+    <user>dimstar_suse</user>
+    <comment>- Rename osdlyrics-appdata.xml to osdlyrics.appdata.xml (forwarded request 810637 from hillwood)</comment>
+    <requestid>810638</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c9b6e859378dd1b09fd45070d7b52e03</srcmd5>
+    <version>0.4.99.2</version>
+    <time>1591991173</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.5RC2
+  * Fix python logging (forwarded request 814184 from hillwood)</comment>
+    <requestid>814187</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7a9a439842dfbb48dc9d74dc2f2be38f</srcmd5>
+    <version>0.5.5</version>
+    <time>1635272032</time>
+    <user>dimstar_suse</user>
+    <comment>* Fix D-Bus race-condition
+  * Enhance metadata parsing
+  * Update romanian translation (forwarded request 927447 from hillwood)</comment>
+    <requestid>927448</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>335fd1c5fe6ca8627c4fbd597e8c179e</srcmd5>
+    <version>0.5.7</version>
+    <time>1637618673</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>933131</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e6c4d922abd25ffe6d1d69ee6d97c8e3</srcmd5>
+    <version>0.5.10</version>
+    <time>1645561088</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>956604</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>be3753c175553c54107e8777ec6e24e9</srcmd5>
+    <version>0.5.12</version>
+    <time>1663275602</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 0.5.12
+  * Fix the close button focus behavior
+  * Fix the behavior of the &quot;OSD/visible&quot; config
+  * Fix the behavior of hiding the OSD when playter is stopped
+  * Fix position update when seeking
+  * fix show/hide glitch
+  * save/restore window position
+  * fix content-reproducibility (forwarded request 1003852 from hillwood)</comment>
+    <requestid>1003855</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>6367ee81daaea4e61a07f39effaeede6</srcmd5>
+    <version>0.5.12</version>
+    <time>1666089939</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1029653</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e3919e4f4129d1212db4d5d1d9ff62a5</srcmd5>
+    <version>0.5.13</version>
+    <time>1676562953</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1065986</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>240f3b835a7b4347c986ac38e80836a3</srcmd5>
+    <version>0.5.14</version>
+    <time>1689710900</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 0.5.14
+  * Fix Chinese encodings
+  * Fix proxy-password config
+  * Fix sources in the default search (forwarded request 1099194 from hillwood)</comment>
+    <requestid>1099197</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>59c647ae382d466199fc8fd5c087067e</srcmd5>
+    <version>0.5.15</version>
+    <time>1704281233</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 0.5.15
+  * Remove 99% of Python2 support
+  * Remove dependency on future (forwarded request 1135875 from hillwood)</comment>
+    <requestid>1135876</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>dacbf7beec46ee9d7425f84b822b7bb3</srcmd5>
+    <version>0.5.15</version>
+    <time>1705099601</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1138330</requestid>
+  </revision>
+</revisionlist>

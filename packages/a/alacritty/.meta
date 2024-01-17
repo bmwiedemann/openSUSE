@@ -1,0 +1,7 @@
+<package name="alacritty" project="openSUSE:Factory">
+  <title>A cross-platform, GPU-accelerated terminal emulator</title>
+  <description>Alacritty is a cross platform terminal emulator written in Rust. It uses the GPU for rendering, which enables optimizations that were not seen in previous terminal emulators.
+
+Linux and MacOS are supported, and a Windows release is planned.</description>
+  <devel project="X11:terminals" package="alacritty"/>
+</package>

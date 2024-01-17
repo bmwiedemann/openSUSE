@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Mon Mar 16 12:14:10 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 36.12.120191002_0
+  * No changelog provided by upstream
+
+-------------------------------------------------------------------
+Wed Mar 11 08:48:10 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Replace BuildRequires: gnome-common with the actual required package:
+  libtool, automake/conf and pkg-config
+
+-------------------------------------------------------------------
+Sun Nov 19 13:39:32 UTC 2017 - hillwood@opensuse.org
+
+- Ininial package. 

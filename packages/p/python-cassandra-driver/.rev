@@ -1,0 +1,275 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d3818f3d46fd85ba0aa03ba0cabda6aa</srcmd5>
+    <version>3.14.0</version>
+    <time>1527605338</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>611084</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>648d005e475a4a67c39e8806dc0d531a</srcmd5>
+    <version>3.14.0</version>
+    <time>1529402302</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>616482</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>96510e076fcf542818f109e585837c89</srcmd5>
+    <version>3.15.0</version>
+    <time>1535963770</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>632662</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>70bf78eb5c3efdf92b304f7e3d9e6e6d</srcmd5>
+    <version>3.15.0</version>
+    <time>1537787587</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gevent to test dependencies
+- Add scales to dependencies
+- Add twisted to dependencies
+- Enable tests
+</comment>
+    <requestid>637039</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>872a2934e1cc3e46f4bc94de429f7efd</srcmd5>
+    <version>3.15.1</version>
+    <time>1541079965</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.15.1:
+  * No updatream changelog
+- Switch to github tarball as the pypi one lacks tests now</comment>
+    <requestid>645880</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c6bac258175322fe508ab1b9c1abc89f</srcmd5>
+    <version>3.16.0</version>
+    <time>1543828350</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>653425</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>fc57a6a7531397d474fee0c30d647097</srcmd5>
+    <version>3.17.0</version>
+    <time>1551687762</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>680790</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3ecd68c4823be7e96066a5daa2a54d7b</srcmd5>
+    <version>3.17.1</version>
+    <time>1557142101</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>700973</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5ff89473cd06941d9a8c6592fb747a62</srcmd5>
+    <version>3.18.0</version>
+    <time>1560862612</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>708936</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1761bf5f0b41f863d090f44f1d62a5b0</srcmd5>
+    <version>3.19.0</version>
+    <time>1567423558</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727459</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e8baa9f0d8746ed7780bcbfe93da5dc0</srcmd5>
+    <version>3.20.2</version>
+    <time>1574859219</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>750237</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>60a3358adb79949735d694270fd7b01d</srcmd5>
+    <version>3.22.0</version>
+    <time>1585602421</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>789805</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>a9c1b49785bf0fa4340657c4185c21f1</srcmd5>
+    <version>3.22.0</version>
+    <time>1586248328</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix 32bit build by skipping the tests overflowing there</comment>
+    <requestid>791923</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>8b69930c7e6d298e70b6ebabfd6aef84</srcmd5>
+    <version>3.23.0</version>
+    <time>1586368538</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.23.0:
+  * Transient Replication Support (PYTHON-1207)
+  * Support system.peers_v2 and port discovery for C* 4.0 (PYTHON-700)
+  * Asyncore logging exception on shutdown (PYTHON-1228)</comment>
+    <requestid>791950</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>1d0a49c25dc6dd81d2a407b07879c955</srcmd5>
+    <version>3.23.0</version>
+    <time>1587581927</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build without python2</comment>
+    <requestid>796254</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>106dbc55b550f62b39e28e1a422d4f84</srcmd5>
+    <version>3.23.0</version>
+    <time>1591862890</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>813213</requestid>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>5854494d5ebad8270013c61b878e0973</srcmd5>
+    <version>3.23.0</version>
+    <time>1615213130</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch off failing tests test_nts_token_performance and
+  test_connection_initialization
+  (https://datastax-oss.atlassian.net/browse/PYTHON-1273, bsc#1182585).
+</comment>
+    <requestid>877566</requestid>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>dbc54ef3d35f41804cffd55889ee70c1</srcmd5>
+    <version>3.23.0</version>
+    <time>1642455252</time>
+    <user>dimstar_suse</user>
+    <comment>- remove blist dependency</comment>
+    <requestid>946925</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>8ff18d60b5f314c0ff6cf566030b3bcc</srcmd5>
+    <version>3.25.0</version>
+    <time>1652801085</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 3.25.0
+  3.25.0
+  ======
+  Features
+  --------
+  * Ensure the driver can connect when invalid peer hosts are in system.peers (PYTHON-1260)
+  * Implement protocol v5 checksumming (PYTHON-1258)
+  * Fix the default cqlengine connection mechanism to work with Astra (PYTHON-1265)
+  Bug Fixes
+  ---------
+  * Asyncore race condition cause logging exception on shutdown (PYTHON-1266)
+  * Update list of reserved keywords (PYTHON-1269)
+  Others
+  ------
+  * Drop Python 3.4 support (PYTHON-1220)
+  * Update security documentation and examples to use PROTOCOL_TLS (PYTHON-1264)
+  3.24.0
+  ======
+  Features
+  --------
+  * Make geomet an optional dependency at runtime (PYTHON-1237)
+  * Add use_default_tempdir cloud config options (PYTHON-1245)
+  * Tcp flow control for libevreactor (PYTHON-1248)
+  Bug Fixes
+  ---------
+  * Unable to connect to a cloud cluster using Ubuntu 20.04 (PYTHON-1238)
+  * PlainTextAuthProvider fails with unicode chars and Python3 (PYTHON-1241)
+  * [GRAPH] Graph execution profiles consistency level are not set to LOCAL_QUORUM with a cloud cluster (PYTHON-1240)
+  * [GRAPH] Can't write data in a Boolean field using the Fluent API (PYTHON-1239)
+  * [GRAPH] Fix elementMap() result deserialization (PYTHON-1233)
+  Others
+  ------
+  * Bump geomet dependency version to 0.2 (PYTHON-1243)
+  * Bump gremlinpython dependency version to 3.4.6 (PYTHON-1212)
+  * Improve fluent graph documentation for core graphs (PYTHON-1244)
+  - added patches
+    fix https://datastax-oss.atlassian.net/browse/PYTHON-1299
+    + python-cassandra-driver-no-mock.patch
+</comment>
+    <requestid>977740</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>050e36f576ac8c75b458a84c032a0485</srcmd5>
+    <version>3.25.0</version>
+    <time>1652993513</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>978123</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>c0f2f498d356bb49599a69034a92b231</srcmd5>
+    <version>3.26.0</version>
+    <time>1679520669</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.26.0
+  Features
+  --------
+  * Add support for execution profiles in execute_concurrent (PR 1122)
+  Bug Fixes
+  ---------
+  * Handle empty non-final result pages (PR 1110)
+  * Do not re-use stream IDs for in-flight requests (PR 1114)
+  * Asyncore race condition cause logging exception on shutdown (PYTHON-1266)
+  Others
+  ------
+  * Fix deprecation warning in query tracing (PR 1103)
+  * Remove mutable default values from some tests (PR 1116)
+  * Remove dependency on unittest2 (PYTHON-1289)
+  * Fix deprecation warnings for asyncio.coroutine annotation in asyncioreactor (PYTTHON-1290)
+  * Fix typos in source files (PR 1126)
+  * HostFilterPolicyInitTest fix for Python 3.11 (PR 1131)
+  * Fix for DontPrepareOnIgnoredHostsTest (PYTHON-1287)
+  * tests.integration.simulacron.test_connection failures (PYTHON-1304)
+  * tests.integration.standard.test_single_interface.py appears to be failing for C* 4.0 (PYTHON-1329)
+  * Authentication tests appear to be failing fraudulently (PYTHON-1328)
+  * PreparedStatementTests.test_fail_if_different_query_id_on_reprepare() failing unexpectedly (PTYHON-1327)
+  * Refactor deprecated unittest aliases for Python 3.11 compatibility (PR 1112)
+  Deprecations
+  ------------
+  * This release removes support for Python 2.7.x as well as Python 3.5.x and 3.6.x
+</comment>
+    <requestid>1073727</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>4cdd6d1c8f659dd23f50839f538b1b2e</srcmd5>
+    <version>3.26.0</version>
+    <time>1686172044</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1091144</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>4221e09266d281d5783d600503da89de</srcmd5>
+    <version>3.28.0</version>
+    <time>1687796141</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.28.0:
+  * Add support for vector type (PYTHON-1352)
+  * Cryptography module is now an optional dependency
+  * Store IV along with encrypted text when using column-level
+    encryption (PYTHON-1350)
+  * Create session-specific protocol handlers to contain session-
+    specific CLE policies (PYTHON-1356)
+  * Use Cython for smoke builds (PYTHON-1343)
+  * Don't fail when inserting UDTs with prepared queries with
+    some missing fields (PR 1151)
+  * Convert print statement to function in docs (PR 1157)
+  * Update comment for retry policy (DOC-3278)
+  * Added error handling blog reference (DOC-2813)
+  * Add support for client-side encryption (PYTHON-1341)</comment>
+    <requestid>1095234</requestid>
+  </revision>
+</revisionlist>

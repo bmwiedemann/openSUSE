@@ -1,0 +1,14 @@
+<package name="signify" project="openSUSE:Factory">
+  <title>OpenBSD tool to signs and verify signatures on files. Portable version.</title>
+  <description>
+Signify - Sign and Verify.
+
+OpenBSD tool to signs and verify signatures on files.
+
+This is a portable version which uses libbsd (version 0.8 or newer is required).
+
+See http://www.tedunangst.com/flak/post/signify for more information.
+  </description>
+  <devel project="utilities" package="signify"/>
+  <url>https://github.com/aperezdc/signify</url>
+</package>

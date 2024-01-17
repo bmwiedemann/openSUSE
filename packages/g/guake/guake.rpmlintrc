@@ -1,0 +1,9 @@
+# libumtempter0 is dlopen-ed by a python script; cannot be auto-detected by rpm build
+addFilter("E: explicit-lib-dependency")
+
+# Outdated requirements.txt file does not list the following required python modules
+addFilter("W: python-leftover-require python3-cairo")
+addFilter("W: python-leftover-require python3-dbus-python")
+addFilter("W: python-leftover-require python3-gobject-Gdk")
+addFilter("W: python-leftover-require python3-pyaml")
+addFilter("W: python-missing-require importlib-metadata")

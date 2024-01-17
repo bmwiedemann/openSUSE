@@ -1,0 +1,68 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cf9b630a39967eb098f48bace8e74350</srcmd5>
+    <version>1.0.0</version>
+    <time>1525121935</time>
+    <user>dimstar_suse</user>
+    <comment>misc accidental remove</comment>
+    <requestid>602561</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>faf717df1e59c6a77e22049cb189bb92</srcmd5>
+    <version>1.0.0</version>
+    <time>1545648199</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659644</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>73367cfab1dd7d0fa10d9e8dc03226aa</srcmd5>
+    <version>1.0.1</version>
+    <time>1584531943</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.1:
+  - Add Python 3 support. (#22)
+- Enable tests</comment>
+    <requestid>786095</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>83e033ae2a507857223f83c73b401cc4</srcmd5>
+    <version>1.1.0</version>
+    <time>1609619492</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.0:
+  * Allow to skip hashing request and response bodies with
+    `always_hash_content`.</comment>
+    <requestid>859839</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>a560fa8280d37f1f4701aedc2a0d65d9</srcmd5>
+    <version>1.1.0</version>
+    <time>1622759635</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>897197</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>282e1999538d5fab1c20f00d2b5ca076</srcmd5>
+    <version>1.1.1</version>
+    <time>1623012030</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.1:
+  * Handle cases where Content-Type is defined as bytes rather than
+   string. (#25)
+  * Allow for app mohawk sender parameter configuration.</comment>
+    <requestid>897756</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>459834b85ce6b7b34c34302e73f09325</srcmd5>
+    <version>1.2.1</version>
+    <time>1683559514</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.1: Add support for ext external data string
+  (gh#mozilla-services/requests-hawk#34)
+- Fix rpmlint warnings.
+</comment>
+    <requestid>1085519</requestid>
+  </revision>
+</revisionlist>

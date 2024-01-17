@@ -1,0 +1,10 @@
+<package name="docbook-tdg" project="openSUSE:Factory">
+  <title>DocBook: The Definitive Guide</title>
+  <description>This book is designed to be the clear, concise, normative reference to
+the DocBook DTD. This book is the official documentation for the
+DocBook DTD.  For printed copies, visit http://docbook.org/tdg/en/.
+
+&quot;Fairly crude PDF versions&quot; (Norman Walsh) of Part I, Part II, and Part
+III are included in this package.</description>
+  <devel project="Publishing" package="docbook-tdg"/>
+</package>

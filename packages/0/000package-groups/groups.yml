@@ -1,0 +1,400 @@
+# 'OUTPUT' is not a group, this defines the entry point for the solver.
+# there is an entry for every group file that needs to be written out.
+# the name of it needs to exist as package group as well and the solver
+# will take the instructions in this group and the included ones
+# (that's why sle_minimal is included to get minimal instructions)
+# and solve the packages in it (one by one next to 'silents' and 'locks')
+# and then at the end remove packages in the 'excludes'.
+# excludes are not package groups but solved module groups
+OUTPUT:
+  - dvd:
+      recommends: true
+      includes:
+        - common_locks
+  - opensuse_microos:
+      recommends: true
+      require_all: true
+      includes:
+        - common_locks
+        - opensuse_microos
+        - opensuse_microos_desktop
+  - opensuse_aeon:
+      recommends: true
+      require_all: true
+      includes:
+        - common_locks
+        - opensuse_aeon
+  - opensuse_kalpa:
+      recommends: true
+      require_all: true
+      includes:
+        - common_locks
+        - opensuse_kalpa
+
+common_locks:
+  - dummy-release: [locked]
+  - kernel-default: [required]
+  - kernel-vanilla-base: [locked]
+  - kernel-kvmsmall-base: [locked]
+  - kernel-vanilla: [locked]
+  - kernel-kvmsmall: [locked]
+  - kernel-debug: [locked]
+  - libLLVM13: [locked]
+  - libLLVM14: [locked]
+  - libLLVM15: [locked]
+  - libLLVM16: [locked]
+  - clang17: [locked]
+  - gnome-backgrounds: [locked]
+  - gcc12: [locked]
+  - postgresql16-llvmjit: [locked]
+
+dvd:
+  # We add the kernel-firmware-* packages
+  - kernel-firmware: [locked]
+  - kernel-firmware-nvidia-gsp-G06: [locked]
+  - MicroOS-release: [locked]
+  - patterns-microos-basesystem: [locked]
+  - openSUSE-Tumbleweed-Kubic-release: [locked]
+  - openSUSE-release-appliance: [locked]
+  - openSUSE-release
+  - openSUSE-release-dvd
+  # make sure bootloader exist due to patterns change
+  - grub2
+  - grub2-systemd-sleep-plugin
+  - grub2-snapper-plugin
+  - grub2-branding-openSUSE
+  - grub2-x86_64-efi: [x86_64]
+  - grub2-i386-pc: [x86_64,i586]
+  - grub2-arm64-efi: [aarch64]
+  - grub2-arm-efi: [armv7l]
+  - grub2-riscv64-efi: [riscv64]
+  - shim: [x86_64,aarch64]
+  - suse-module-tools-scriptlets: [required]
+  - patterns-gnome-gnome: [required]
+  - patterns-gnome-gnome_basis: [required]
+  - patterns-gnome-gnome_imaging: [required]
+  - patterns-gnome-gnome_internet: [required]
+  - patterns-gnome-gnome_multimedia: [required]
+  - patterns-gnome-gnome_office: [required]
+  - patterns-gnome-gnome_utilities: [required]
+  - patterns-gnome-gnome_yast: [required]
+  - patterns-desktop-imaging: [required]
+  - patterns-kde-kde: [required]
+  - patterns-kde-kde_edutainment: [required]
+  - patterns-kde-kde_games: [required]
+  - patterns-kde-kde_ide: [required]
+  - patterns-kde-kde_imaging
+  - patterns-kde-kde_internet: [required]
+  - patterns-kde-kde_multimedia: [required]
+  - patterns-kde-kde_office: [required]
+  - patterns-kde-kde_plasma: [suggested]
+  - patterns-kde-kde_utilities: [required]
+  - patterns-kde-kde_yast: [required]
+  - patterns-base-apparmor: [required]
+  - patterns-base-base: [required]
+  - patterns-base-console: [required]
+  - patterns-server-dhcp_dns_server: [required,suggested]
+  - patterns-server-directory_server: [required]
+  - patterns-base-enhanced_base: [required,suggested]
+  - patterns-server-file_server: [required,suggested]
+  - patterns-fonts-fonts: [required]
+  - patterns-server-lamp_server: [required,suggested]
+  - patterns-server-mail_server: [required,suggested]
+  - patterns-desktop-multimedia: [required]
+  - patterns-office-office: [required,suggested]
+  - patterns-server-printing: [required,suggested]
+  - patterns-media-rest_cd_core: [required]
+  - patterns-base-sw_management: [required,suggested]
+  - patterns-gnome-sw_management_gnome: [required]
+  - patterns-base-basic_desktop: [required,suggested]
+  - patterns-base-selinux: [required,suggested]
+  - patterns-base-transactional_base: [required,suggested]
+  - patterns-base-x11: [required,suggested]
+  - patterns-xfce-xfce: [suggested]
+  - patterns-xfce-xfce_basis: [suggested]
+  - patterns-xfce-xfce_laptop: [suggested]
+  - patterns-xfce-xfce_office: [suggested]
+  - patterns-yast-yast2_basis: [required,suggested]
+  - patterns-yast-yast2_install_wf: [required,suggested]
+  - patterns-yast-yast2_server: [required,suggested]
+  # gedit is tested as part of staging
+  - gedit
+  # for now xen_server
+  - patterns-server-kvm_server
+  - patterns-server-kvm_tools
+  - patterns-base-minimal_base: [required,suggested]
+  - patterns-yast-x11_yast: [required,suggested]
+  - patterns-server-xen_server: [x86_64]
+  # bnc#431280 (Japanese fonts)
+  - clicfs
+  - createrepo_c
+  # kdump+tools
+  - kdump
+  # all kernel flavors we want to have
+  - kernel-default
+  - kexec-tools
+  - quota-nfs
+  - wicked
+
+  - patterns-media-rest_dvd: [required]
+  # all loggers
+  - rsyslog
+  - syslog-service
+  - dia: [locked]
+  - gnuchess: [locked]
+  - gnumeric: [locked]
+  - marble: [locked]
+  - seamonkey: [locked]
+  - ruby3.1-rubygem-grpc: [locked]
+  - systemd-presets-branding-CAASP: [locked]
+  - texlive: [locked]
+  - gnuchess: [locked]
+  - breeze5-wallpapers: [locked]
+  - myspell-german-old: [locked]
+  - apache2-worker: [locked]
+  - gnu-free-fonts: [locked]
+  - armagetron: [locked]
+  - frozen-bubble: [locked]
+  - digikam: [locked]
+  - digikam-doc: [locked]
+  - gimp-help: [locked]
+  - gimp-help-it: [locked]
+  - gimp-help-pl: [locked]
+  - gimp-help-sv: [locked]
+  - gimp-help-fr: [locked]
+  - gimp-help-da: [locked]
+  - gimp-help-de: [locked]
+  - gimp-help-es: [locked]
+  - gimp-help-ja: [locked]
+  - gimp-help-zh: [locked]
+  - gimp-help-el: [locked]
+  - gimp-help-en_GB: [locked]
+  - gimp-help-pt_BR: [locked]
+  - gimp-help-ru: [locked]
+  - gimp-lang: [locked]
+  - libqt4-devel-doc-data: [locked]
+  - gnucash-docs: [locked]
+  - kernel-debug: [locked]
+  ## highly outdated at the moment
+  - MozillaFirefox-translations-other: [locked]
+  - MozillaThunderbird-translations-other: [locked]
+  - lyx: [locked]
+  - gnumeric: [locked]
+  - gnome-devel-docs: [locked]
+  - timidity: [locked]
+  - scribus: [locked]
+  - dynamic-wallpapers-11x: [locked]
+  - python-doc-pdf: [locked]
+  - wine-gecko: [locked]
+  - qemu-extra: [locked]
+  - ktuberling: [locked]
+  - kalzium: [locked]
+  - krita: [locked]
+
+  # trying to get a working DVD: [locked]
+  - mono-devel: [locked]
+  - nodejs14-devel: [locked]
+  - libqt5-qtdoc: [locked]
+  - kde-l10n-fr-doc: [locked]
+  - kde-l10n-pt_BR-doc: [locked]
+  - kde-l10n-pl-doc: [locked]
+  - kde-l10n-ru-doc: [locked]
+  - libqt5-creator: [locked]
+  - seamonkey: [locked]
+  - blender: [locked]
+  - calibre: [locked]
+  - libLLVM7: [locked]
+  - libgnomecanvas-2-0: [locked]
+  - claws-mail: [locked]
+
+  ## attemt to shrink the DVD - 20151115 by dimstar: [locked]
+  - valgrind-devel: [locked]
+  - wireshark: [locked]
+
+  ## shrink a bit more - 20211004 by dimstar: [locked]
+  - texlive-latex-doc: [locked]
+
+  ## at GNOME 41 times, nothing requires webkit 5.0 ABI yet. Block this off the DVD
+  - libjavascriptcoregtk-5_0-0: [locked]
+
+  ## Further shrinkg the DVD - 20160330 by dimstar: [locked]
+  - ImageMagick-doc: [locked]
+  - python-doc: [locked]
+  - python3-doc: [locked]
+
+  ## This appeared newly - and makes the DVD explode again - 20160531 - dimstar: [locked]
+  - mathjax: [locked]
+
+  - ocaml-compiler-libs: [locked]
+
+  ## Hunt for space
+  - libqt4-devel: [locked]
+
+  ## More space needed - 2017-02-02
+  - ant: [locked]
+  - java-1_8_0-openjdk-devel: [locked]
+  - java-15-openjdk-headless: [locked]
+  - java-14-openjdk-headless: [locked]
+
+  ## wow, we run out of space... drop 40MB of cjk fonts:
+  - google-noto-sans-cjk-fonts: [locked]
+  ## still run out of space, as kr was dropped, try jp also
+  - google-noto-sans-jp-fonts: [locked]
+
+  ## Amarok is needed in the staging tests, but -lang is too large - dimstar - 20180419
+  - amarok
+  - amarok-lang: [locked]
+
+  ## and more space needed - dimstar - 20220112
+  - gutenprint: [locked]
+
+  - libqt5-qtdeclarative-devel: [locked]
+
+  # lock to align with package-lists solution
+  - appmenu-qt: [locked]
+  - aspell-ispell: [locked]
+  - clang7-checker: [locked]
+  - fluid-soundfont-gm: [locked]
+  - fluid-soundfont-gs: [locked]
+  - gcin-branding-upstream: [locked]
+  - gimp-help: [locked]
+  - install-initrd-openSUSE: [locked]
+  - install-initrd-Kubic: [locked]
+  - install-initrd-MicroOS: [locked]
+  - laptop-mode-tools: [locked]
+  - libreoffice-branding-upstream: [locked]
+  - poppler-data: [locked]
+  - pulseaudio-module-gconf: [locked]
+  - tomcat: [locked]
+
+  - virtualbox: [locked]
+  - virtualbox-host-kmp-default: [locked]
+
+  - desktop-data-openSUSE-extra: [i586]
+ 
+  # DVD exploded in size - klettres grew from 17MB to 36 - dimstar, 20190821
+  - klettres: [locked]
+
+  # DVD exploded, shrinking based on fabians suggestions - rbrown, 20210816
+  - pfstools: [locked]
+  - python310-QtPy: [locked]
+  - python310-numba: [locked]
+
+  # DVD over size by > 40MB (kernel change to zstd); need space - dleuenberger, 20211119
+  - MozillaThunderbird: [locked]
+
+  # Only rzby 3 stufg
+  - libruby2_7-2_7: [locked]
+
+  # We newly hav ethree python libs on the DVD; quick fix is blocking them, longer we want to find out why
+  # dleuenberger, 20211223
+  - libpython3_6m1_0: [locked]
+  - libpython3_9-1_0: [locked]
+  - jupyter-jupyter_core-filesystem: [locked]
+  - python310-tornado5: [locked]
+  - patterns-base-documentation: [locked]
+
+  # DVD a little too big remove fonts (starting with renamed noto cjk fonts) - rbrown, 20210819
+  - google-noto-sans-sc-bold-fonts: [locked]
+  - google-noto-sans-sc-fonts: [locked]
+  - google-noto-sans-sc-regular-fonts: [locked]
+  - google-noto-sans-tc-bold-fonts: [locked]
+  - google-noto-sans-tc-fonts: [locked]
+  - google-noto-sans-tc-regular-fonts: [locked]
+
+  # DVD still too large - blocking the Ruby-On-Rails stack (did not find why it's even added) - dimstar, 20231117
+  - ruby3.2-rubygem-activesupport-7.0: [locked]
+  - ruby3.2-rubygem-grpc: [locked]
+
+  # additional packages not picked
+  - atftp
+  - bcm20702a1-firmware
+  - bcm43xx-firmware
+  - elilo: [x86_64]
+  - erofs-utils
+  - expect
+  - f2fs-tools
+  - fuse3
+  - icewm-config-upstream
+  - icewm-lite
+  - lifecycle-data-openSUSE
+  - mokutil: [x86_64,aarch64]
+  - pcsc-acr38
+  - pcsc-asedriveiiie-usb
+  - pcsc-asekey
+  - pcsc-cyberjack
+  - pcsc-gempc
+  - pcsc-towitoko
+  - postgresql
+  - postgresql-contrib
+  - postgresql-server
+  - qemu-guest-agent
+  - rng-tools
+  - rt2860
+  - salt-master
+  - salt-minion
+  - sendmail
+  - spacenavd
+  - spu-tools
+  - system-user-upsd
+  - technisat-usb2-firmware
+  - virtualbox-guest-tools: [x86_64]
+  - xen-tools-domU
+  - bind
+  - Mesa-demo-x
+  - inkscape
+  - autoyast2
+  # impitool can be handy when machines are configured using autoyast
+  - ipmitool
+
+  # Have a bootable system for RPi3/4 - boo#1172574
+  - raspberrypi-firmware: [aarch64]  # bsc 1130015
+  - raspberrypi-firmware-config: [aarch64]  # bsc 1130015
+  - raspberrypi-firmware-dt: [aarch64]  # bsc 1130015
+  - u-boot-rpiarm64: [aarch64]  # bsc 1130015, jsc SLE-7276 / bsc 1164080
+  - u-boot-rpiarm64-doc: [aarch64]  # jsc SLE-7276 / bsc 1164080
+
+opensuse_microos:
+  - openSUSE-release: [locked]
+  - openSUSE-MicroOS-release: [locked] # FIXME: remove after dropped
+  - patterns-base-basesystem: [locked]
+  - MicroOS-release: [aarch64,ppc64le,s390x,x86_64]
+  - patterns-microos-base: [aarch64,ppc64le,s390x,x86_64]
+  - patterns-microos-base-microdnf: [aarch64,ppc64le,s390x,x86_64]
+  - patterns-microos-base-packagekit: [aarch64,ppc64le,s390x,x86_64]
+  - patterns-microos-base-zypper: [aarch64,ppc64le,s390x,x86_64]
+  - patterns-microos-defaults: [aarch64,ppc64le,s390x,x86_64]
+  - patterns-microos-hardware: [aarch64,ppc64le,s390x,x86_64]
+  - patterns-microos-apparmor: [aarch64,ppc64le,s390x,x86_64]
+  - patterns-microos-selinux: [aarch64,ppc64le,s390x,x86_64]
+  - patterns-microos-sssd_ldap: [aarch64,ppc64le,s390x,x86_64]
+  - patterns-microos-ima_evm: [aarch64,ppc64le,s390x,x86_64]
+  - patterns-microos-cloud: [aarch64,ppc64le,s390x,x86_64]
+  - patterns-microos-onlyDVD: [aarch64,ppc64le,s390x,x86_64]
+  - patterns-microos-alt_onlyDVD: [aarch64,ppc64le,s390x,x86_64]
+  - patterns-containers-container_runtime: [aarch64,ppc64le,s390x,x86_64]
+  - kernel-default-base: [aarch64,ppc64le,x86_64]
+  - patterns-base-bootloader: [ppc64le]
+  # Have a bootable system for RPi3/4 - boo#1172574
+  - raspberrypi-firmware: [aarch64]  # bsc 1130015
+  - raspberrypi-firmware-config: [aarch64]  # bsc 1130015
+  - raspberrypi-firmware-dt: [aarch64]  # bsc 1130015
+  - u-boot-rpiarm64: [aarch64]  # bsc 1130015, jsc SLE-7276 / bsc 1164080
+  - u-boot-rpiarm64-doc: [aarch64]  # jsc SLE-7276 / bsc 1164080
+  - kdump: [aarch64,ppc64le,s390x,x86_64] # needed by yast when the option to enable it is selected
+  - docker: [aarch64,ppc64le,s390x,x86_64]  # container_host tests
+  - suse-module-tools-scriptlets
+
+opensuse_microos_desktop:
+  - patterns-microos-desktop-kde: [aarch64,ppc64le,x86_64]
+  - patterns-microos-desktop-gnome: [aarch64,ppc64le,x86_64]
+
+opensuse_aeon:
+  - Aeon-release: [x86_64]
+  - patterns-aeon-base: [x86_64]
+  - suse-module-tools-scriptlets
+
+opensuse_kalpa:
+  - Kalpa-release: [x86_64]
+  - patterns-kalpa-base: [x86_64]
+  - suse-module-tools-scriptlets

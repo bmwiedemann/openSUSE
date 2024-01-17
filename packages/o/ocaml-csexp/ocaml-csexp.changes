@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Fri May  5 05:05:05 UTC 2023 - ohering@suse.de
+
+- Update to version 1.5.2
+  fix: serialized length
+
+-------------------------------------------------------------------
+Sat Apr  9 12:34:56 UTC 2022 - ohering@suse.de
+
+- Remove usage of ocaml-dune-bootstrap, following changes in ocaml-dune
+
+-------------------------------------------------------------------
+Mon Apr  4 04:04:04 UTC 2022 - ohering@suse.de
+
+- Build with ocaml-dune-bootstrap
+
+-------------------------------------------------------------------
+Fri Apr  9 09:09:09 UTC 2021 - ohering@suse.de
+
+- Initial version 1.5.1
+

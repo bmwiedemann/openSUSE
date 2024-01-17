@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Wed Mar 16 17:41:18 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Avoid ISO C warnings by setting -Wno-pedantic
+
+-------------------------------------------------------------------
+Mon Aug 10 09:00:49 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Update to git 20200228
+  * Fix GTK+3.24 compilation errors
+
+-------------------------------------------------------------------
+Wed Sep 26 06:35:51 UTC 2018 - avvissu@yandex.by
+
+- Initial package
+

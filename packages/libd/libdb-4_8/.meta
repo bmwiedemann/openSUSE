@@ -1,0 +1,8 @@
+<package name="libdb-4_8" project="openSUSE:Factory">
+  <title>Berkeley DB Database Library Version 4.8</title>
+  <description>The Berkeley DB Database is a programmatic toolkit that provides
+database support for applications.
+
+This package contains the necessary runtime libraries.</description>
+  <devel project="devel:libraries:c_c++" package="libdb-4_8"/>
+</package>
