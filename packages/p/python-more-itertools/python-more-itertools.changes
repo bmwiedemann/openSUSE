@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Jan 16 15:34:58 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 10.2.0:
+  * `iter_suppress` (thanks to jaraco, pochmann, and rhettinger)
+  * `filter_map` (thanks to struktured)
+  * `classify_unique` (thanks to haukex)
+  * `totient` (from the itertools docs)
+  * `reshape` (from the itertools docs)
+  * Changes to existing functions
+  * `factor`, `iter_index`, `sieve`, and `unique_justseen` were
+    updated to match the itertools docs
+  * `first` was was optimized (thanks to pochmann)
+  * `takewhile_inclusive` was was refactored (thanks to eltoder)
+  * `combination_with_replacement_index` was was optimized
+    (thanks to elliotwutingfeng and rhettinger)
+  * `nth_permutation`, `nth_combination_with_replacement`,
+    `combination_index`, and `combination_with_replacement_index`
+    were optimized (thanks to rhettinger)
+  * `batched` now accepts a `strict` argument (adapted from
+    itertools docs)
+  * `time_limited` was improved for Windows (thanks to haukex)
+
+-------------------------------------------------------------------
 Mon Nov 27 09:13:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 10.1.0:

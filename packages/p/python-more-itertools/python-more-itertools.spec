@@ -1,7 +1,7 @@
 #
 # spec file for package python-more-itertools
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-more-itertools
-Version:        10.1.0
+Version:        10.2.0
 Release:        0
 Summary:        More routines for operating on iterables, beyond itertools
 License:        MIT
