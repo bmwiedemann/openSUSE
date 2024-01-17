@@ -1,0 +1,87 @@
+-------------------------------------------------------------------
+Sun Jan  7 20:10:29 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.2:
+  * Added GitHub Actions integration.  Tests and
+    coverage are run in the cloud after every checkin.
+    Thanks to [Dan Pope](https://github.com/lordmauve)
+    for gently walking me through this!
+  * Fixed metadata in the `pyproject.toml` file.
+  * Dropped support for Python 3.5.  (I assumed I already
+    had, but it was still listed as being supported
+    in the project metadata.)
+  * Added badges for testing, coverage,
+    and supported Python versions.
+  * API change: the `Parser` attribute `breadcrumbs` has been
+    renamed to `stack`.  It was previously undocumented anyway,
+    though as of 0.9.1 it's now documented.  The previous name
+    `breadcrumbs` has been kept as an alias for now, but will
+    be removed before 1.0.
+  * Added the `line_number` and `source` attributes to the
+    `Parser` object, for the convenience of pragma handlers.
+  * Refactored `parser_include` slightly.  No change to
+    functionality or behavior, just a small code cleanup pass.
+  * Added a "lines per second" output metric to the
+    benchmark program.
+  * From this point forward, Perky only supports reading and
+    writing files in
+    [UTF-8](https://en.wikipedia.org/wiki/UTF-8).
+    If you need to work with a different encoding, you'll have
+    to handle loading it form and saving it to disk yourself.
+    You'll have to use `loads` and `dumps` to handle converting
+    between Perky string format and native Python objects.
+  * Optimized Perky some more.  It's roughly 11% faster than 0.8.1.
+  - You can now pass an `encoding` keyword argument
+    into `pragma_include`.  This is now the only way
+    to specify the encoding used to decode files
+    loaded from disk by `pragma_include`.
+  - Removed the (undocumented) `encoding` attribute
+    of Perky's `Parser` object.
+  - Removed the `encoding` parameter for `loads`.
+  - The `encoding` parameter for `load` is now only
+    used by `load` itself when loading the top-level
+    Perky file.
+  * Perky now explicitly performs its `isinstance` checks using
+    `collections.abc.MutableMapping` and `collections.abc.MutableSequence`
+    instead of `dict` and `list`.  This permits you to use
+    your own mapping and sequence objects that *don't* inherit from
+    `dict` and `list`.
+  * Renamed `PerkyFormatError` to `FormatError`.  The old name is
+    supported for now, but please transition to the new name.
+    The old name will be removed before 1.0.
+  * The "transformation" submodule is now deprecated and unsupported.
+    Please either stop using it or fork and maintain it yourself.
+    This includes `map`, `transform`, `Required`,
+    `nullable`, and `const`.
+  * Perky now has a proper unit test suite, which it passes with 100%
+    coverage--except for the unsupported `transform` submodule.
+  * While working towards 100% coverage, also cleaned up the code
+    a little in spots.
+    - Retooled `LineTokenizer`:
+      - Changed its name from `LineParser` is now `LineTokenizer`.
+        It never parsed anything, it just tokenized.
+      - Made its API a little more uniform: now, the
+        only function that will raise `StopIteration` is `__next__`.
+      - The other functions that used to maybe raise `StopIteration`
+        now return a tuple of `None` values when the iterator is empty.
+        This means you can safely write `for a, b, c in line_tokenizer:`.
+      - `bool(lt)` is now accurate; if it returns `True`,
+        you can call `next(lt)` or `lt.next_line()` or `lt.tokens()`
+        and be certain you'll get a value back.
+    - Replaced `RuntimeError` exceptions with more appropriate
+      exceptions (`ValueError`, `TypeError`).
+
+-------------------------------------------------------------------
+Mon Jul 18 19:28:02 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Makes tests more verbose.
+
+-------------------------------------------------------------------
+Mon Apr 25 20:01:02 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- specfile cleanup, added tests
+
+-------------------------------------------------------------------
+Fri Apr 22 21:05:33 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- first version of package perky at version 0.5.5

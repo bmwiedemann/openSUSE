@@ -1,0 +1,136 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5eb42f8b9fce8a4f40773a364c139f17</srcmd5>
+    <version>1.3.0</version>
+    <time>1527583112</time>
+    <user>dimstar_suse</user>
+    <comment>New package, usable as builddep for gst-plugins-bad and ffmpeg4.</comment>
+    <requestid>611058</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b05cc0f79eeaf7cdc2e89f9a9655e44c</srcmd5>
+    <version>1.3.0</version>
+    <time>1530567023</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>619821</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>61cfcc7d5cedc612143811b95d36815f</srcmd5>
+    <version>1.3.1</version>
+    <time>1531813149</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>622441</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>7b0770294e9d5063a5597926453001c0</srcmd5>
+    <version>1.3.1</version>
+    <time>1533887107</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628218</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>ae1e471ef1baaeea7f1c9bc1c3ca91d2</srcmd5>
+    <version>1.3.1</version>
+    <time>1541666473</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>645196</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>0bd59c9474f59091bfc82cfdb1695b37</srcmd5>
+    <version>1.3.1</version>
+    <time>1543223757</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>648934</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1a40f7cd065ce96b5ca84709aba0a67e</srcmd5>
+    <version>1.3.3</version>
+    <time>1566664741</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>724739</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3b75833bec020a061549788f09ff0232</srcmd5>
+    <version>1.3.4</version>
+    <time>1567580599</time>
+    <user>dimstar_suse</user>
+    <comment>Update and sec patch</comment>
+    <requestid>727274</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>372798af7154b4b051f98c47d094f691</srcmd5>
+    <version>1.3.4</version>
+    <time>1576513577</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop pkgconfig(zlib) BuildRequires: this is only needed on
+  win32/mingw (and even there it rather seems like working around a
+  bug in some other package, as there is no explicit call to zlib
+  functions).
+
+  * Added CVE-2019-15784.patch
+- Update to version 1.3.4:</comment>
+    <requestid>756849</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1d1d06bf3630256d415ea91c3239a592</srcmd5>
+    <version>1.4.2</version>
+    <time>1605289945</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841239</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>5f9aaf2921abc56f9030c8a8906f116c</srcmd5>
+    <version>1.4.2</version>
+    <time>1613511325</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>870841</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>decdc787f7ced0bb921dffe5b5e209fa</srcmd5>
+    <version>1.4.3</version>
+    <time>1621113327</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>892385</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8b9968fc612d38cc4b78d4f70b0fcfbe</srcmd5>
+    <version>1.4.4</version>
+    <time>1648739895</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>965321</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>8e1f6f6a537c1cddb14bce0d6a08aec0</srcmd5>
+    <version>1.5.1</version>
+    <time>1673359170</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1057090</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ac04aa665b4ea98cc66a88181ce6d627</srcmd5>
+    <version>1.5.2</version>
+    <time>1691076442</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1101977</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>993c43e1784877417662130adbd9a5c6</srcmd5>
+    <version>1.5.3</version>
+    <time>1696451438</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1114955</requestid>
+  </revision>
+</revisionlist>

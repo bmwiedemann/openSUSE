@@ -1,0 +1,105 @@
+-------------------------------------------------------------------
+Sat Jan  6 17:12:01 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.0:
+  * Support for Python 3.12
+  * Switched __eq__ and __ne__ operator to use equals rather than
+    compareTo for comparable objects to avoid exception when
+    comparing object of different types.
+  * Fixed segmentation fault when comparing Java Comparable to
+    primitives.
+  * Java exceptions that occur in inequality comparisons now map
+    to Python TypeError.
+  * Fixed crash when calling subscript on JArray.
+  * Fixed direct byte buffers not reporting nbytes correctly when
+    cast to memoryview.
+  * Expand the defintion for Functional interface to include
+    classes without FunctionInterface annotation.
+  * Add additional matching level for derived types to resolve
+    ambiguities when a derived type is used in place of base
+    class when determining the method overload.  This will
+    resolve some previous ambiguities between methods.
+
+-------------------------------------------------------------------
+Mon Jun 12 11:00:29 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Do not hardcode java-15-openjdk, since this can be built with
+  any Java >= 9
+- Added patch:
+  * JPype1-java8compat.patch
+    + Build packages that are fully backward compatible to Java 8
+
+-------------------------------------------------------------------
+Tue Mar  7 00:25:49 UTC 2023 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v1.4.1
+  * Fixed issue with startJVM changing locale settings
+  * Changes to support Python 3.11
+  * Fix truncation of strings on null when using convert strings
+  * Replaced distutil with packaging
+
+-------------------------------------------------------------------
+Thu Aug 18 13:28:45 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- ExcludeArch armv7 and i586 due to significant test failures
+
+-------------------------------------------------------------------
+Tue Aug 16 21:45:24 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 1.4.0
+  Support for all different buffer type conversions.
+  * Improved buffer transfers to numpy as guaranteed to match Java types. 
+    However, exact dtype for conversions is os/numpy version dependent.
+  * Support for byte order channels on buffer transfers.
+  * Byte size for buffers now fixed to Java definitions.
+  * When directly accessing Java arrays using memory view, Python requires a cast
+    from buffers. Required because Python does not support memory view alterations
+    on non-native sizes.
+  Fix crash when comparing JChar.
+    * Order handling for numerical operations with JChar fixed.
+  * Improved matching for Java functors based on parameter count.
+  * Dropped support for Python 3.5 and 3.6
+  * dbapi2 handles drivers that don't support autocommit.
+  * Fixed issue when Java classes with dunder methods such as __del__ caused 
+    conflicts in Python type system. Java method which match dunder patterns are longer
+    translated to Python.
+  * Fix issue with numpy arrays with no dimensions resulting in crash.
+  * Support for user defined conversions for java.lang.Class and array types.
+  * Fixed issue with ssize_t on Windows for Python 3.10. 
+
+-------------------------------------------------------------------
+Mon Feb 21 12:18:03 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v1.3.0
+  * Fixes for memory issues found when upgrading to Python 3.10 beta.
+  * Add additional diagnositics for importing of non-public class.
+  * Fixed issue with classes with unsatified dependencies leading to
+    a crash on windows.
+  * Fixed a bug with arrays created using the short cut.
+- from v1.2.1
+  * Missing stub files added.
+  * Python 3.9 issues are resolved on Windows.
+  * JPype scans jar files and rebuilding missing directories to
+    allow imports from stripped and obfuscated jar files.
+- from v1.2.0
+  * Added builds for Python 3.9.
+  * Fixed bug when importing from multi-release jars.
+  * addClassPath can add jar files after the JVM is started.
+    The default loader for JPype class is
+    ``org.jpype.classloader.DynamicClassLoader``.
+  * Build support of z/OS added.
+  * Bug causing ambiguity between primitives and variadic arguments
+    in method resolution was corrected.
+  * Boolean was inadvertently left out of method resolution.
+    ``boolean`` now properly matched with boxed types.
+  * Support for PyInstaller was added.
+
+-------------------------------------------------------------------
+Tue Apr 27 09:47:52 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- skip python36 because of numpy
+
+-------------------------------------------------------------------
+Sat Nov 14 05:05:32 AM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v1.1.2

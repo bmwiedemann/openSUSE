@@ -1,0 +1,55 @@
+-------------------------------------------------------------------
+Mon Jan 15 07:16:57 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Upgrade libzpc to version 1.2.0 (jsc#PED-3335)
+  * Support for get/set intermediate iv for CBC and XTS
+  * Support for internal iv for GCM
+  * Exploit KBLOB2PROTK3 ioctl for clear AES and EC keys
+  * Fix AES EP11 version 6 key support for generate and import_clear
+
+-------------------------------------------------------------------
+Wed Sep 20 06:46:33 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Version 1.1.1 (jsc#PED-5214)
+  * Exploit PKEY_KBLOB2PROTK2 for AES EP11 version 6 keys
+
+-------------------------------------------------------------------
+Wed Feb  8 16:19:14 UTC 2023 - Mark Post <mpost@suse.com>
+
+- Upgrade to version 1.1.0 (jsc#PED-582)
+  * Implements an ECC-KEY API : `zpc/ecc_key.h`.
+  * Implements an ECDSA-CTX API : `zpc/ecdsa_ctx.h`.
+
+-------------------------------------------------------------------
+Tue Sep 13 17:46:49 UTC 2022 - Mark Post <mpost@suse.com>
+
+- Upgrade to version 1.0.1 (jsc#PED-582)
+  * Updated spec file for rpm build
+- Removed obsolete libzpc-sles15p4-mark-stack-nonexec.patch
+- Updated spec file to use %{name} and %{version} variables in
+  more places.
+
+-------------------------------------------------------------------
+Wed Apr 27 06:56:08 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- use source url
+
+-------------------------------------------------------------------
+Tue Nov  2 14:42:14 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- libzpc-sles15p4-mark-stack-nonexec.patch: note the asssembler as
+  non execstack
+- libzpc-rpmlintrc removed
+
+-------------------------------------------------------------------
+Mon Nov  1 15:46:47 UTC 2021 - Mark Post <mpost@suse.com>
+
+- Cleaned up the wording in the description. Updated the
+  summaries to actually reflect the contents of the packages.
+- Changed the %setup macro to use $autosetup instead.
+- Added a BuildRequires for texlive-bibtex-bin
+
+-------------------------------------------------------------------
+Tue Oct 19 21:49:30 UTC 2021 - Mark Post <mpost@suse.com>
+
+- Initial version 1.0.0 (jsc#SLE-18746)

@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>404772b8917b9bb38f482dd9797cfd24</srcmd5>
+    <version>2.1.12</version>
+    <time>1589315570</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>802799</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d7146ad4c35bdaeb97060f5ec55da612</srcmd5>
+    <version>2.2.1</version>
+    <time>1665185091</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1008648</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7f87969dff4efcc66949dc7fd2323bf8</srcmd5>
+    <version>2.2.2</version>
+    <time>1704562866</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.2.2:
+  * fix with libvips nodeprecated
+  * update README notes for py3.8+ on win
+  * fix VipsObect.print_all()
+  * add split, join, annotate animation examples
+  * work around broken ffi bool type
+  * flag classes are now integer-valued so you can OR them
+  * update docs for 8.15
+
+  update for libvips 8.13 [jcupitt]</comment>
+    <requestid>1137113</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,6 @@
+<package name="python-pyvips" project="openSUSE:Factory">
+  <title>python-pyvips</title>
+  <description>Python bindings for the VIPS library.
+</description>
+  <devel project="devel:languages:python" package="python-pyvips"/>
+</package>

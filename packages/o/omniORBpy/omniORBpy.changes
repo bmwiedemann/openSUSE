@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Sun Dec 31 19:12:25 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to 4.3.1:
+  This is mainly a bugfix release, with minor new features.
+  * Support for building with Python 3.12 and later.
+  * Miscellaneous bug fixes. See update.log for details.
+
+-------------------------------------------------------------------
+Mon Feb 14 15:56:35 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 4.3.0:
+  * A new omniORB-specific HTTP / HTTPS transport, with a number of
+    capabilities:
+    + Full encapsulation of GIOP messages in HTTP.
+    + Support for web proxies, transparent web proxies, reverse proxies.
+    + For cases where security is important but an end-to-end HTTPS
+      connection cannot be assured, support for in-message encryption.
+  * New Connection Info callback to receive information about
+    connection establishment and errors.
+  * New omniORB.currentCallInfo() function to return information
+    about the current server-side call.
+  * Support for vast CORBA messages on 64 bit platforms.
+  * Support for PyPy in omniidl and omniORBpy.
+
+-------------------------------------------------------------------
+Thu Jun 11 23:56:45 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Initial package version of the omniORB python bindings.

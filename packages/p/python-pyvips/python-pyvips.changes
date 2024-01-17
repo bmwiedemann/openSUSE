@@ -1,0 +1,36 @@
+-------------------------------------------------------------------
+Fri Jan  5 17:10:09 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.2:
+  * fix with libvips nodeprecated
+  * update README notes for py3.8+ on win
+  * fix VipsObect.print_all()
+  * add split, join, annotate animation examples
+  * work around broken ffi bool type
+  * flag classes are now integer-valued so you can OR them
+  * update docs for 8.15
+
+-------------------------------------------------------------------
+Fri Oct  7 03:38:10 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to Version 2.2.1 (released 12 Jun 2022)
+  add seek and end handlers for TargetCustom [jcupitt]
+  add block_untrusted_set, operation_block_set [jcupitt]
+  update for libvips 8.13 [jcupitt]
+
+-------------------------------------------------------------------
+Thu May  7 17:52:59 UTC 2020 - aloisio@gmx.com
+
+- Update to version 2.1.12
+  * update enums.py [tony612]
+  * add gen-enums.py [jcupitt]
+  * improve custom source/target types [jcupitt]
+  * revise types for set_blob to fix exception with old libvips [jcupitt]
+  * fix 32-bit support [dqxpb]
+  * remove pytest-runner from pipy deps [lgbaldoni]
+  * add watermark with image example [jcupitt]
+
+-------------------------------------------------------------------
+Mon May  4 13:35:24 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Initial package (v2.1.11)

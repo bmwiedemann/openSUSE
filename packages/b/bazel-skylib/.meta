@@ -1,0 +1,6 @@
+<package name="bazel-skylib" project="openSUSE:Factory">
+  <title>bazel-skylib</title>
+  <description>Set of functions for writing Bazel build rules with Skylark</description>
+  <devel project="devel:tools:building" package="bazel-skylib"/>
+  <url>https://github.com/bazelbuild/bazel-skylib</url>
+</package>

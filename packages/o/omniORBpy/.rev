@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2c44c30c343cb6b0c45cdb2e2208001f</srcmd5>
+    <version>4.2.4</version>
+    <time>1595864241</time>
+    <user>dimstar_suse</user>
+    <comment>Dependency for Salome-smesh / FreeCAD</comment>
+    <requestid>822773</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6007fcc19fa4599e38dee92553b2199c</srcmd5>
+    <version>4.3.0</version>
+    <time>1645221772</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>955742</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>71a79c4e5b1a262e43523337620dbb3c</srcmd5>
+    <version>4.3.1</version>
+    <time>1704281315</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1136005</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,63 @@
+Only in JPype1-1.4.1: JPype1-java8compat.patch
+--- JPype1-1.4.1/native/build.xml	2020-07-17 00:34:07.000000000 +0200
++++ JPype1-1.4.1/native/build.xml	2023-06-12 11:24:36.344297754 +0200
+@@ -1,7 +1,7 @@
+ <project default="all" name="JPype - Native">
+ 
+ 	<!-- JAVA_VERSION must match the oldest supported Java version -->
+-	<property name="JAVA_VERSION" value="1.8" />
++	<property name="JAVA_VERSION" value="8" />
+ 
+ 	<!-- src can't be "java" as it breaks nose tests -->
+ 	<property name="src" location="java"/>
+@@ -16,6 +16,7 @@
+ 		<javac destdir="${build}/classes"
+ 			source="${JAVA_VERSION}"
+ 			target="${JAVA_VERSION}"
++			release="${JAVA_VERSION}"
+ 			excludes="**/JPypeClassLoader.java"
+ 			>
+ 			<src path="${src}"/>
+@@ -23,6 +24,7 @@
+ 		<javac destdir="${build}/lib"
+ 			source="${JAVA_VERSION}"
+ 			target="${JAVA_VERSION}"
++			release="${JAVA_VERSION}"
+ 			includes="**/JPypeClassLoader.java"
+ 			>
+ 			<src path="${src}"/>
+--- JPype1-1.4.1/test/build.xml	2020-07-17 00:34:07.000000000 +0200
++++ JPype1-1.4.1/test/build.xml	2023-06-12 12:47:52.223097870 +0200
+@@ -20,8 +20,6 @@
+ 
+ 	<target name="compile-9" if="build-9">
+ 		<javac destdir="${build}"
+-			source="${version}"
+-			target="${version}"
+ 			>
+ 			<compilerarg value="--add-exports"/>
+ 			<compilerarg value="java.base/jdk.internal.reflect=ALL-UNNAMED"/>
+@@ -34,8 +32,9 @@
+ 
+ 	<target name="compile-8" if="build-8">
+ 		<javac destdir="${build}"
+-			source="${version}"
+-			target="${version}"
++			source="8"
++			target="8"
++			release="8"
+ 			>
+ 			<src>
+ 				<pathelement location="${src}/java8"/>
+@@ -47,8 +46,9 @@
+ 	<target name="compile-main">
+ 		<mkdir dir="${build}"/>
+ 		<javac destdir="${build}"
+-			source="${version}"
+-			target="${version}"
++			source="8"
++			target="8"
++			release="8"
+ 			debug="true"
+ 			debuglevel="lines,vars,source"
+ 			>

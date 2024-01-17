@@ -1,0 +1,8 @@
+<package name="srt" project="openSUSE:Factory">
+  <title>Secure Reliable Transport (SRT)</title>
+  <description>SRT is an open source video transport protocol and technology stack that optimizes streaming performance across unpredictable networks with secure streams and easy firewall traversal, bringing the best quality live video over the worst networks.
+
+</description>
+  <devel project="multimedia:libs" package="srt"/>
+  <url>https://www.srtalliance.org/</url>
+</package>

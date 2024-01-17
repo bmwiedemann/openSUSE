@@ -1,0 +1,6 @@
+<servicedata>
+   <service name="tar_scm">
+      <param name="url">https://github.com/ioquake/ioq3.git</param>
+      <param name="changesrevision">5ede35d8ddf22a99afa7f487deebf52d4f986cde</param>
+   </service>
+</servicedata>

@@ -1,0 +1,8 @@
+<package name="ioquake3" project="openSUSE:Factory">
+  <title>ioquake3</title>
+  <description>Quake III first person shooter. This package only includes the binary
+files, you still need the data files from the original Quake III CD or
+the Demo.</description>
+  <devel project="games" package="ioquake3"/>
+  <url>http://ioquake3.org</url>
+</package>

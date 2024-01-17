@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Thu Aug 13 07:37:31 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.0.4
+  * Corrected the memory usage claims to take into account
+    allocator overhead.
+  * Cleared some compiler warnings.
+
+-------------------------------------------------------------------
+Sun Jan 13 09:53:06 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove extreme wording.
+
+-------------------------------------------------------------------
+Tue Nov 17 19:13:41 UTC 2015 - mpluskal@suse.com
+
+- Update to 2.0.3
+  * Fix compilation on modern compilers and operating systems
+- Update project and download url
+- Cleanup spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Mon Nov  5 19:57:27 UTC 2012 - fisiu@opensuse.org
+
+- moved files do devel package
+
+-------------------------------------------------------------------
+Thu May 24 15:24:36 CEST 2012 - kukuk@suse.de
+
+- Initial version
+
