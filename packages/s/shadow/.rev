@@ -964,4 +964,14 @@
   This was introduced for bsc#1144060.</comment>
     <requestid>1137739</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>45f99913f2a794e57cd95c2bbc9705c7</srcmd5>
+    <version>4.14.3</version>
+    <time>1705526049</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.14.3:
+  * libshadow:
+    + Avoid null pointer dereference (#904)</comment>
+    <requestid>1139074</requestid>
+  </revision>
 </revisionlist>
