@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan 16 15:37:15 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1705419426.44c52651:
+  * Fix "duplicate key value violates unique constraint" on needle updates
+  * Ensure the database timezone is always UTC executing tests
+  * Allow filtering by comment text on the test results overview page
+  * Allow searching by comment text on "All tests" page
+  * Move test for `match`-parameter on "All tests" page into subtest
+
+-------------------------------------------------------------------
 Fri Jan 12 21:01:37 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1705059022.6814720:
