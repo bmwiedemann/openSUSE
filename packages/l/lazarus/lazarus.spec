@@ -16,7 +16,8 @@
 #
 
 
-%define sover   1
+%define qt5_sover   1
+%define qt6_sover   6
 Name:           lazarus
 Version:        3.0
 Release:        0
@@ -50,10 +51,14 @@ Requires(postun):shared-mime-info
 BuildRequires:  desktop-file-utils
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libqt5-qtbase-common-devel >= 5.6.0
+BuildRequires:  qt6-base-common-devel >= 6.2.0
 BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5PrintSupport)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
+BuildRequires:  pkgconfig(Qt6Network)
+BuildRequires:  pkgconfig(Qt6PrintSupport)
+BuildRequires:  pkgconfig(Qt6Widgets)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gtk+-2.0)
 Requires:       %{name}-ide = %{version}
@@ -146,7 +151,7 @@ using the GTK2 widgetset.
 %package lcl-gtk3
 Summary:        Lazarus Component Library - GTK2 widgetset support
 Requires:       %{name}-lcl = %{version}-%{release}
-Requires:       gtk3-devel
+Requires:       gtk3-devel >= 3.24.24
 
 %description lcl-gtk3
 Lazarus is a cross-platform IDE and component library for Free Pascal.
@@ -163,22 +168,50 @@ Lazarus is a cross-platform IDE and component library for Free Pascal.
 This package contains LCL components for developing applications
 using the Qt5 widgetset.
 
-%package     -n libQt5Pas%{sover}
+%package     -n libQt5Pas%{qt5_sover}
 Summary:        Free Pascal interface to Qt5
 License:        LGPL-3.0-only
 Group:          System/Libraries
 
-%description -n libQt5Pas%{sover}
+%description -n libQt5Pas%{qt5_sover}
 Qt5 bindings for Pascal from Lazarus.
 
 %package     -n libQt5Pas-devel
 Summary:        Free Pascal interface to Qt5
 License:        LGPL-3.0-only
 Group:          Development/Libraries/Other
-Requires:       libQt5Pas%{sover} = %{version}
+Requires:       libQt5Pas%{qt5_sover} = %{version}
 
 %description -n libQt5Pas-devel
 The qt5pas-devel package contains libraries and header files for
+developing applications that use qt5pas.
+
+%package lcl-qt6
+Summary:        Lazarus Component Library - Qt6 widgetset support
+Requires:       %{name}-lcl = %{version}
+Requires:       libQt6Pas-devel = %{version}
+
+%description lcl-qt6
+Lazarus is a cross-platform IDE and component library for Free Pascal.
+This package contains LCL components for developing applications
+using the Qt6 widgetset.
+
+%package     -n libQt6Pas%{qt6_sover}
+Summary:        Free Pascal interface to Qt6
+License:        LGPL-3.0-only
+Group:          System/Libraries
+
+%description -n libQt6Pas%{qt6_sover}
+Qt5 bindings for Pascal from Lazarus.
+
+%package     -n libQt6Pas-devel
+Summary:        Free Pascal interface to Qt6
+License:        LGPL-3.0-only
+Group:          Development/Libraries/Other
+Requires:       libQt6Pas%{qt6_sover} = %{version}
+
+%description -n libQt6Pas-devel
+The qt6pas-devel package contains libraries and header files for
 developing applications that use qt5pas.
 
 # Instruct fpmake to build in parallel
@@ -252,7 +285,7 @@ make -C components/lazdebuggergdbmi %{fpmakeopt} OPT='%{fpcopt}' LCL_PLATFORM=no
 make -C components/lazcontrols/design %{fpmakeopt} OPT='%{fpcopt}' LCL_PLATFORM=nogui
 
 # Compile the LCL base + extra components for GUI widgetsets
-for WIDGETSET in gtk2 gtk3 qt5; do
+for WIDGETSET in gtk2 gtk3 qt5 qt6; do
 	make lcl basecomponents bigidecomponents %{fpmakeopt} OPT='%{fpcopt}' LCL_PLATFORM="${WIDGETSET}"
 done
 
@@ -262,6 +295,12 @@ make bigide %{fpmakeopt} OPT='%{fpcopt}' LCL_PLATFORM=gtk2
 # build libQt5Pas
 pushd lcl/interfaces/qt5/cbindings
   %qmake5
+  %make_build
+popd
+
+# build libQt6Pas
+pushd lcl/interfaces/qt6/cbindings
+  %qmake6
   %make_build
 popd
 
@@ -286,6 +325,10 @@ pushd lcl/interfaces/qt5/cbindings
   %make_install INSTALL_ROOT=%{buildroot}
 popd
 
+pushd lcl/interfaces/qt6/cbindings
+  %make_install INSTALL_ROOT=%{buildroot}
+popd
+
 # Since we provide Qt5Pas as a standalone package, remove the .so files bundled in Lazarus dir
 # and replace them with symlinks to the standalone .so.
 for FILEPATH in %{buildroot}%{_libdir}/%{name}/lcl/interfaces/qt5/cbindings/libQt5Pas.so* ; do
@@ -295,12 +338,15 @@ done
 
 # Remove hidden files to fix rpmlint warning "hidden-file-or-dir"
 rm -f %{buildroot}%{_libdir}/%{name}/lcl/interfaces/qt5/cbindings/.qmake.stash
+rm -f %{buildroot}%{_libdir}/%{name}/lcl/interfaces/qt6/cbindings/.qmake.stash
 
 # Remove duplicate files
-%fdupes -s %{buildroot}
+%fdupes %{buildroot}%{_libdir}/%{name}
 
-%post -n libQt5Pas%{sover} -p /sbin/ldconfig
-%postun -n libQt5Pas%{sover} -p /sbin/ldconfig
+%post -n libQt5Pas%{qt5_sover} -p /sbin/ldconfig
+%postun -n libQt5Pas%{qt5_sover} -p /sbin/ldconfig
+%post -n libQt6Pas%{qt6_sover} -p /sbin/ldconfig
+%postun -n libQt6Pas%{qt6_sover} -p /sbin/ldconfig
 
 %files
 # No files, but we want to build the "lazarus" metapackage
@@ -391,10 +437,10 @@ rm -f %{buildroot}%{_libdir}/%{name}/lcl/interfaces/qt5/cbindings/.qmake.stash
 %lcl_extra_files -n gtk2 %exclude
 %lcl_base_files  -n gtk3 %exclude
 %lcl_extra_files -n gtk3 %exclude
-%lcl_base_files  -n qt %exclude
-%lcl_extra_files -n qt %exclude
 %lcl_base_files  -n qt5 %exclude
 %lcl_extra_files -n qt5 %exclude
+%lcl_base_files  -n qt6 %exclude
+%lcl_extra_files -n qt6 %exclude
 
 %files lcl-nogui
 %lcl_base_files -n nogui
@@ -411,12 +457,24 @@ rm -f %{buildroot}%{_libdir}/%{name}/lcl/interfaces/qt5/cbindings/.qmake.stash
 %lcl_base_files -n qt5
 %lcl_extra_files -n qt5
 
-%files -n libQt5Pas%{sover}
+%files lcl-qt6
+%lcl_base_files -n qt6
+%lcl_extra_files -n qt6
+
+%files -n libQt5Pas%{qt5_sover}
 %license lcl/interfaces/qt5/cbindings/COPYING.TXT
 %doc lcl/interfaces/qt5/cbindings/README.TXT
-%{_libdir}/libQt5Pas.so.%{sover}*
+%{_libdir}/libQt5Pas.so.%{qt5_sover}*
 
 %files -n libQt5Pas-devel
 %{_libdir}/libQt5Pas.so
+
+%files -n libQt6Pas%{qt6_sover}
+%license lcl/interfaces/qt6/cbindings/COPYING.TXT
+%doc lcl/interfaces/qt6/cbindings/README.TXT
+%{_libdir}/libQt6Pas.so.%{qt6_sover}*
+
+%files -n libQt6Pas-devel
+%{_libdir}/libQt6Pas.so
 
 %changelog
