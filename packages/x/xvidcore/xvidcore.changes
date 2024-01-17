@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Wed Dec  6 21:30:12 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add baselibs.conf, build 32bit lib support.
+
+-------------------------------------------------------------------
+Mon Nov 27 16:53:18 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim filler wording from description.
+- Replace old %__-type macros
+
+-------------------------------------------------------------------
+Wed Nov 22 09:45:35 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add a libxvidcore-devel Provides in the devel sub-package, name
+  previously used in third party repos.
+
+-------------------------------------------------------------------
+Thu Nov 16 11:31:11 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Initial packaging for openSUSE.

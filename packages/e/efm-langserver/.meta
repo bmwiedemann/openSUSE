@@ -1,0 +1,5 @@
+<package name="efm-langserver" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="editors" package="efm-langserver"/>
+</package>
