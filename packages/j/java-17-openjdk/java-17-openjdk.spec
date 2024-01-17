@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,8 +33,8 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      17
 %global interimver      0
-%global updatever       9
-%global buildver        9
+%global updatever       10
+%global buildver        7
 %global openjdk_repo    jdk17u
 %global openjdk_tag     jdk-%{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}+%{buildver}
 %global openjdk_dir     %{openjdk_repo}-jdk-%{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}-%{buildver}
@@ -491,6 +491,7 @@ bash ../configure \
 %if %{is_release}
     --with-version-pre="" \
 %endif
+    --with-version-build="%{buildver}" \
     --with-version-opt="suse-%{release}-%{_arch}" \
 %if %{with zero}
     --with-jvm-variants=zero \
