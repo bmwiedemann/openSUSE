@@ -455,4 +455,20 @@
     <comment>KDE Release Gear 23.08.3 (forwarded request 1124079 from krop)</comment>
     <requestid>1124486</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>8f28a7f2c887aa92423f009cb3db58cf</srcmd5>
+    <version>23.08.4</version>
+    <time>1702158691</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release gear 23.08.4 (forwarded request 1131017 from krop)</comment>
+    <requestid>1131779</requestid>
+  </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>97f55308d83417b73006ab46db46d337</srcmd5>
+    <version>23.08.4</version>
+    <time>1702845066</time>
+    <user>anag+factory</user>
+    <comment>Require extra-cmake-modules at build time</comment>
+    <requestid>1133503</requestid>
+  </revision>
 </revisionlist>
