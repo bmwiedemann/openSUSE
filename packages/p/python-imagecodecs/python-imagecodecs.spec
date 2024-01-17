@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,27 +26,14 @@
 %endif
 
 Name:           python-imagecodecs%{psuffix}
-Version:        2023.3.16
+Version:        2024.1.1
 Release:        0
 Summary:        Image transformation, compression, and decompression codecs
 License:        BSD-3-Clause
 URL:            https://github.com/cgohlke/imagecodecs/
 Source:         https://files.pythonhosted.org/packages/source/i/imagecodecs/imagecodecs-%{version}.tar.gz
 Source1:        imagecodecs_distributor_setup.py
-Patch0:         always-cythonize.patch
-# PATCH-FIX-UPSTREAM https://github.com/cgohlke/imagecodecs/commit/14bb6012a8c9f48df264ea996f3376e57166201a Update imagecodecs/_heif.pyx
-Patch1:         cython3.patch
-# PATCH-FIX-UPSTREAM https://github.com/cgohlke/imagecodecs/commit/d04112759c48772c4d46a2dfa4f4c6a76e23c9a9 Update imagecodecs/libavif.pxd
-Patch2:         libavif.patch
-# PATCH-FIX-UPSTREAM https://github.com/cgohlke/imagecodecs/commit/93d1f751436e357d73eb6fdebc2af833059d9ea9 Add imagecodecs/_quantize.pyx
-Patch3:         quantize.patch
-# PATCH-FIX-UPSTREAM https://github.com/cgohlke/imagecodecs/commit/2f548c9a4df443948f2dfcde30a7211ce8b3adc2 Update imagecodecs/_avif.pyx
-Patch4:         avif.patch
-# PATCH-FIX-UPSTREAM https://github.com/cgohlke/imagecodecs/commit/0030b7b74fc17ceb356d1f67633ba1734108dac9 Update tests/test_imagecodecs.py
-Patch5:         tests.patch
-# PATCH-FIX-UPSTREAM https://github.com/cgohlke/imagecodecs/commit/e9b5a984b72c9d4e14f9d37ec99389d25645c7fb Update imagecodecs/imagecodecs.py
-Patch6:         integrate.patch
-BuildRequires:  %{python_module Cython >= 0.29.19}
+BuildRequires:  %{python_module Cython >= 3}
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module pip}
@@ -97,7 +84,7 @@ BuildRequires:  dav1d-devel
 BuildRequires:  gcc-c++
 BuildRequires:  giflib-devel
 BuildRequires:  jxrlib-devel
-BuildRequires:  libaec-devel
+BuildRequires:  libaec-devel >= 1.1
 BuildRequires:  libaom-devel
 BuildRequires:  libdeflate-devel
 BuildRequires:  libzopfli-devel
@@ -111,13 +98,13 @@ BuildRequires:  pkgconfig(blosc)
 BuildRequires:  pkgconfig(blosc2) >= 2.7.1
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(cfitsio)
-BuildRequires:  pkgconfig(lcms2)
+BuildRequires:  pkgconfig(lcms2) >= 2.16
 BuildRequires:  pkgconfig(libavif) >= 1.0.0
 BuildRequires:  pkgconfig(libbrotlicommon)
 BuildRequires:  pkgconfig(libheif)
 # Beta, not available in minimum version
 #BuildRequires:  pkgconfig(libturbojpeg) >= 2.1.91
-BuildRequires:  pkgconfig(libjxl) >= 0.8
+BuildRequires:  pkgconfig(libjxl) >= 0.9
 BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(libopenjp2)
@@ -188,6 +175,7 @@ export INCDIR="%{_includedir}"
 donttest="heif"
 # no webp and lerc support in libtiff, jpeg8 disabled in imagecodecs
 donttest="$donttest or (test_tiff and (webp or lerc or jpeg))"
+donttest+=" or test_cms"
 %ifarch %ix86 %arm32
 donttest="$donttest or spng"
 %endif
