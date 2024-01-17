@@ -1,0 +1,54 @@
+From 855c0e402b03516f4b6e87271dc5e64a4cb78dc1 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Wed, 8 Jul 2020 20:55:06 +0200
+Subject: [PATCH 2/2] Remove tools from CMake exported targets
+
+Exporting tools is only useful for binaries required in the build
+process of dependent project, like code generators.
+
+The exported targets would force their installation when using CMake for
+the build process, otherwise CMake bails out on find_package(Qhull),
+noting some required component is not available.
+---
+ CMakeLists.txt | 20 +++++++++++---------
+ 1 file changed, 11 insertions(+), 9 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 62690d5..11534af 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -652,20 +652,22 @@ add_test(NAME user_eg3
+ # Define install
+ # ---------------------------------------
+ 
+-set(qhull_TARGETS_INSTALL ${qhull_TARGETS_APPLICATIONS})
++install(TARGETS ${qhull_TARGETS_APPLICATIONS} EXPORT
++        RUNTIME DESTINATION ${BIN_INSTALL_DIR})
++
+ if (BUILD_SHARED_LIBS)
+-    list(APPEND qhull_TARGETS_INSTALL ${qhull_TARGETS_SHARED})
++    install(TARGETS ${qhull_TARGETS_SHARED} EXPORT QhullTargets
++            LIBRARY DESTINATION ${LIB_INSTALL_DIR}
++            ARCHIVE DESTINATION ${LIB_INSTALL_DIR}
++            INCLUDES DESTINATION include)
+ endif()
+ if (BUILD_STATIC_LIBS)
+-    list(APPEND qhull_TARGETS_INSTALL ${qhull_TARGETS_STATIC})
++    install(TARGETS ${qhull_TARGETS_STATIC} EXPORT QhullTargets
++            LIBRARY DESTINATION ${LIB_INSTALL_DIR}
++            ARCHIVE DESTINATION ${LIB_INSTALL_DIR}
++            INCLUDES DESTINATION include)
+ endif()
+ 
+-install(TARGETS ${qhull_TARGETS_INSTALL} EXPORT QhullTargets
+-        RUNTIME DESTINATION ${BIN_INSTALL_DIR}
+-        LIBRARY DESTINATION ${LIB_INSTALL_DIR}
+-        ARCHIVE DESTINATION ${LIB_INSTALL_DIR}
+-        INCLUDES DESTINATION include)
+-
+ include(CMakePackageConfigHelpers)
+ 
+ write_basic_package_version_file(
+-- 
+2.27.0
+

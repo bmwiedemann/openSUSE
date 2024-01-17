@@ -1,0 +1,9 @@
+<package name="pleaser" project="openSUSE:Factory">
+  <title>Please, sudo like program with regex support written in rust</title>
+  <description>Please, a sudo clone with regex support
+
+The aim is to allow admins to delegate accurate least privilege access with ease. There are times when what is intended to be executed can be expressed easily with a regex to expose only what is needed and nothing more.
+
+The idea is to help you admin your box without giving users full root, just because that is easier. Most admins have experience of regex in one form or another, so lets configure access that way.</description>
+  <devel project="Base:System" package="pleaser"/>
+</package>

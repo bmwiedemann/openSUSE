@@ -1,0 +1,61 @@
+-------------------------------------------------------------------
+Wed Dec 20 19:13:59 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update unicode-collation to version 0.1.3.6.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/unicode-collation-0.1.3.6/src/CHANGELOG.md
+
+-------------------------------------------------------------------
+Thu Aug 31 16:46:13 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update unicode-collation to version 0.1.3.5.
+  ## 0.1.3.5
+
+    + Allow text 2.1.
+
+-------------------------------------------------------------------
+Thu Mar 30 17:08:46 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Thu Mar 16 16:33:56 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update unicode-collation to version 0.1.3.4.
+  ## 0.1.3.4
+
+    + Allow base 4.18.
+
+-------------------------------------------------------------------
+Mon Oct  3 02:43:53 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update unicode-collation to version 0.1.3.3.
+  ## 0.1.3.3
+
+    + Allow base 4.17.  Closes #12.
+
+-------------------------------------------------------------------
+Thu May 19 16:16:45 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update unicode-collation to version 0.1.3.2.
+  ## 0.1.3.2
+
+    * Allow text 2.0.
+
+-------------------------------------------------------------------
+Mon Nov 15 06:57:49 UTC 2021 - psimons@suse.com
+
+- Update unicode-collation to version 0.1.3.1.
+  ## 0.1.3.1
+
+    * Allow base 4.16 (so the library can compile with ghc 9.2).
+
+    * Micro-optimization in normalize; update benchmarks.
+
+-------------------------------------------------------------------
+Thu May 13 08:26:06 UTC 2021 - psimons@suse.com
+
+- Add unicode-collation at version 0.1.3.
+

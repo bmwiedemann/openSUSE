@@ -1,0 +1,240 @@
+-------------------------------------------------------------------
+Sat Nov 11 14:27:58 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 0.7.9:
+  Fix: Preserve symlink when writing 'stations.xml'
+
+-------------------------------------------------------------------
+Wed Nov  8 13:37:55 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 0.7.8:
+  * Replace GtkVolumeControl with a custom volume control widget
+  * Add a keyboard shortcut 'm' for mute
+
+-------------------------------------------------------------------
+Wed Oct 11 06:55:36 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 0.7.7:
+  * Add X-Purism-FormFactor option to .desktop file.
+  * Update default station list.
+  * Updated translations: Finnish, Polish, Portuguese (Brazil).
+
+-------------------------------------------------------------------
+Wed Sep 20 07:04:41 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop no longer needed pkgconfig(amtk-5) BuildRequires. It was
+  removed upstream in 0.7.0 release.
+
+-------------------------------------------------------------------
+Sun Jan 22 16:17:19 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 0.7.6:
+ * Fix newline in playback status label.
+ * Updated translations: Chinese (Traditional), Finnish, Spanish.
+
+-------------------------------------------------------------------
+Sun Oct 16 17:09:53 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 0.7.5:
+  * Update default stations list, add SomaFM stations. !85
+  * Add a "Remove all Stations" to the right-click context menu. #152
+
+  Translations
+  * New translations: Chinese (Traditional).
+  * Updated translations: Catalan, Croatian, Dutch, French, Slovak, Spanish, Turkish.
+
+-------------------------------------------------------------------
+Sun Sep 25 16:44:58 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 0.7.4:
+
+  * Don't assume that the .git directory exists, that is not the case for
+    distros that build from a tarball. #146
+
+  * For some streams, GStreamer doesn't send any buffering messages, and those
+    streams never started to play. This is now fixed. #145
+
+  Translations
+  * New translations: Finnish.
+  * Updated translations: French, Norwegian, Polish, Portuguese, Portuguese
+    (Brazil).
+
+-------------------------------------------------------------------
+Sun Nov 28 04:41:32 UTC 2021 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 0.7.2:
+  * Crash when playing station from touchscreen devices. #138
+  * New translations: Danish.
+  * Add name of the station playing to MPRIS2 metadata, for real.
+  * Window decoration broken for themes. #140
+  * Relicense from "GPLv3 or later" to "GPLv3 only".
+  * Add a second view for stations details, replaces the main
+    tooltip. #133
+  * Show the stream type (HLS, DASH or HTTP(+Icy)) in the
+    stations view.
+  * Display name of the station playing in MPRIS2 "artist" field.
+  * Remove the "Autoset Window Height" setting from Preferences
+    and the  corresponding "window-autoset-height" from the Settings.
+    Note that the  height is still automatically set in status icon
+    mode though.
+  * Sample rate and channels mode are not always set. #132
+  * Updated translations: Catalan, Croatian, Dutch, Indonesian,
+    Portuguese,  Portuguese (Brazil), Spanish, Telugu, Turkish.
+  * Code-refactoring to make room for a GtkStack in the main
+    window.
+  * Isolate most of the code related to status icon, to prepare
+    for GTK4.
+  * Re-format the codebase with clang-format.
+  * Drop dependency ``libamtk``. #135
+  * Bump requirements: ``gstreamer >= 1.14``.
+  * Allow users to add security exception in case of invalid
+    certificate. #128
+  * Add CSS class name ``goodvibes-main-window`` to the main
+    window. #130
+  * Updated translations: Croatian, Dutch, Norwegian, Turkish.
+  * Bump requirements: ``gtk >= 3.16``.
+  * Updated translations: Italian, Marathi, Russian.
+  * New translations: Marathi, Portuguese, Turkish.
+  * Updated translations: French, English (US), Italian,
+    Norwegian,  Portuguese (PT), Russian.
+  * Drop the migration code that was introduced in 0.4.1 to
+    handle the new  application id and the new path for the station
+    list. #89
+  * Drop libcaphe, aka. Goodvibes internal implementation to
+    inhibit the system  from suspending/sleeping, and use
+    ``gtk_application_{un,}inhibit()``  instead. #117 #126
+  * Use ``g_clear_handle_id()`` everywhere. #82
+  * Bump requirements: ``glib >= 2.56``, ``meson >= 0.49``.
+  * New translations: Catalan, Croatian, Italian, Portuguese
+    (Brazil), Telugu.
+  * ...
+
+-------------------------------------------------------------------
+Fri Aug 21 20:08:32 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.5.3:
+ * Add min/max bitrate to station information. #118
+ * Add channel mode (mono, stereo) to station information. #119
+ * Add sample rate (kHz) to station information. #124
+ * Check for memory leaks with Valgrind. #12
+ * Update default station list.
+ * MPRIS status values 'CanGo{Next,Previous}' are never updated. #121
+ * Sample rate and channels mode are not always set. #125
+ * New translations: Indonesian.
+ * Updated translations: Dutch, French, German.
+
+-------------------------------------------------------------------
+Wed Apr  8 20:35:31 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 0.5.2:
+  * Make the titlebar dynamic. #112
+  * Make the tooltip dynamic. #113
+  * HLS streams fail to play. #111
+  * Override the default CSS to create a yellow-ish "Goodvibes
+    theme" (rather than just living with the blue-ish defaults from
+    Read the Docs).
+  * New translations: Polish, Slovak.
+  * Updated translations: Czech, Dutch, Norwegian
+
+-------------------------------------------------------------------
+Mon Feb 17 23:02:29 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 0.5.1:
+  * Unable to play the AAC radio SomaFM (flatpak). #107
+  * Withdraw notifications when the application quits. #108
+  * Drop App Menu and Menu Bar, switch to a Primary Menu button.
+  * Add a window to document the Keyboard Shortcuts.
+  * Allow to select the behavior of the Close button
+  * Don't minimize the window on ``<Esc>``
+  * Allow to choose the theme variant in status icon mode.
+  * Make saving the window size and position more robust.
+  * Fix the position of the Preferences window (center on parent
+    or mouse).
+  * Fix the URL for the online help.
+  * Add dependency ``libamtk``.
+
+-------------------------------------------------------------------
+Thu Sep 26 23:03:31 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 0.4.3:
+  * Right-click on an empty space of the station list doesn't
+    popup the menu. #98
+  * No icon in status icon mode. #100
+  * Add a minimal test suite for the station list, rework the
+    code and fix some obscure bugs at the same time. #99
+  * CI images updated (debian: buster > sid, fedora: 28 > 30).
+  * New translations: English (United States), Portuguese
+    (Portugal).
+  * Updated translations: French, German, Spanish.
+  * ``mutest`` is needed to run the test suite.
+
+-------------------------------------------------------------------
+Sat Nov 10 18:24:51 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 0.4.2:
+  * Segfault on application shutdown
+  * Ready for Flatpak!
+  * Change application id to 'io.gitlab.Goodvibes'.
+  * Rename icon files according to the app id (flatpak 
+    requirement).
+  * Stations are now saved in $XDG_DATA_HOME (was 
+    $XDG_CONFIG_HOME).
+  * Use GResource to handle glade files. #54
+  * Support lowercase keys in pls playlists. #88
+  * Add meson post-install script.
+  * New translations: Spanish.
+  * Project moved to GitLab, good-bye GitHub.
+  * Build system switched to Meson, good-bye Autotools. #53
+  * Add an appstream file (ie. appdata). #47
+  * Desktop file: exec now accepts url (thx Elías Alejandro Año 
+    Mendoza).
+  * Updated translations: Dutch, German.
+- Switch to meson
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Wed May  9 00:16:35 UTC 2018 - avvissu@yandex.by
+
+- Update to 0.3.7:
+  * Update default station list
+  * Fix notification crash on Cinnamon. #79
+  * Updated translations: Czech, French, German, Norwegian
+
+-------------------------------------------------------------------
+Sun Apr  1 00:42:47 UTC 2018 - avvissu@yandex.by
+
+- Update to 0.3.6:
+ * Add support for dark theme. #59
+ * Fix <Play/Pause> multimedia key. #83
+ * Updated translations: Dutch, French, Norwegian.
+
+-------------------------------------------------------------------
+Sun Mar 11 05:31:17 UTC 2018 - avvissu@yandex.by
+
+- Update to 0.3.5:
+  * i18n: update goodvibes.pot and po files 
+
+-------------------------------------------------------------------
+Mon Jan 29 18:45:14 UTC 2018 - avvissu@yandex.by
+
+- Update to 0.3.4:
+  * New icon set at last ! Thanks to Hector Lahminewski and his 
+    endless patience - the icons have been waiting for almost a year :/
+  * There's now a script to launch Goodvibes from the source tree - 
+    talking to developers here, users don't care.
+  * Updated translations: Dutch, French.
+
+-------------------------------------------------------------------
+Sun Jan  7 20:33:34 UTC 2018 - avvissu@yandex.by
+
+- Update to 0.3.3:
+ * Fix XML escaping of station properties before saving.
+ * Add support for the NumberOfEvents key in pls playlist.
+ * New translations: German, Norwegian Bokmal, Russian.
+ * Add translators to the About dialog.
+
+-------------------------------------------------------------------
+Sat Nov 25 17:34:27 UTC 2017 - avvissu@yandex.by
+
+- Initial package
+

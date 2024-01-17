@@ -1,0 +1,13 @@
+Index: please/src/lib.rs
+===================================================================
+--- please.orig/src/lib.rs
++++ please/src/lib.rs
+@@ -1565,7 +1565,7 @@ pub fn log_action(service: &str, result:
+         facility: Facility::LOG_USER,
+         hostname: None,
+         process: service.into(),
+-        pid: process::id() as i32,
++        pid: process::id(),
+     };
+ 
+     let cwd = match env::current_dir() {

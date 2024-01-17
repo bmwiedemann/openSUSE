@@ -1,0 +1,5 @@
+<package name="libKF5NetworkManagerQt" project="openSUSE:Factory">
+  <title>libKF5NetworkManagerQt</title>
+  <description></description>
+  <devel project="KDE:Frameworks5" package="libKF5NetworkManagerQt"/>
+</package>

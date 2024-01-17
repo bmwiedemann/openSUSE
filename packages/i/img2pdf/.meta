@@ -1,0 +1,14 @@
+<package name="img2pdf" project="openSUSE:Factory">
+  <title>Python module for converting images to PDF via direct JPEG inclusion</title>
+  <description>This module losslessly converts raster images to PDF. The file size
+will not unnecessarily increase. It can, for example, be used to
+create a PDF document from a number of scans that are only available
+in JPEG format. Existing solutions would either re-encode the input
+JPEG files (leading to quality loss) or store them in the Deflate
+format which results in the PDF becoming unnecessarily large in terms
+of file size.
+
+</description>
+  <devel project="graphics" package="img2pdf"/>
+  <url>https://gitlab.mister-muffin.de/josch/img2pdf</url>
+</package>

@@ -1,0 +1,34 @@
+Source: osc
+Priority: optional
+Maintainer: Adrian Schroeter <adrian@suse.de>
+Build-Depends:
+    debhelper (>= 10),
+    dh-python,
+    python3-all (>=3.6),
+    python3-argparse-manpage,
+    python3-cryptography,
+    python3-setuptools,
+    python3-urllib3
+Standards-Version: 3.7.1
+Section: devel
+
+Package: osc
+Section: devel
+Architecture: any
+Depends:
+    ${shlibs:Depends},
+    ${misc:Depends},
+    ${python3:Depends},
+    python3-cryptography,
+    python3-urllib3,
+    build | obs-build
+Recommends:
+    bash-completion,
+    python3-progressbar,
+    python3-rpm,
+    python3-keyring,
+    python3-keyring-keyutils,
+    sudo,
+    xdg-utils
+Description: Command-line client for the Open Build Service
+ OpenSUSE Commander is a command-line client for the Open Build Service.
