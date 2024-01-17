@@ -769,4 +769,16 @@ Search-provider is now it's own subpackage (forwarded request 180587 from dimsta
     <comment>New stable release (forwarded request 1113535 from iznogood)</comment>
     <requestid>1113645</requestid>
   </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>80b1be9b679e52a8eb72a665964be7fd</srcmd5>
+    <version>45.1</version>
+    <time>1705526175</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 45.1:
+  + Fix error to console when opening Preferences.
+  + Fix undo.
+  + Fix search when empty.
+- Convert to source service for easier updating. (forwarded request 1139296 from dimstar)</comment>
+    <requestid>1139370</requestid>
+  </revision>
 </revisionlist>
