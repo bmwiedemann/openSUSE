@@ -1,0 +1,68 @@
+diff --git a/country.py b/country.py
+index ff5eceb4da725156b204060e9d1b9f26b89aa1c5..1e8e76671099672eb5baffd84dd6d1694f547de6 100644
+--- a/country.py
++++ b/country.py
+@@ -98,6 +98,7 @@ class Subdivision(DeactivableMixin, ModelSQL, ModelView):
+     code = fields.Char('Code', required=True, select=True,
+         help="The ISO code of the subdivision.")
+     type = fields.Selection([
++        (None, ""),
+         ('administration', 'Administration'),
+         ('administrative area', 'Administrative area'),
+         ('administrative atoll', 'Administrative atoll'),
+@@ -202,7 +202,7 @@ class Subdivision(DeactivableMixin, ModelSQL, ModelView):
+         ('unitary authority (england)', 'Unitary authority (england)'),
+         ('unitary authority (wales)', 'Unitary authority (wales)'),
+         ('zone', 'zone'),
+-        ], 'Type', required=True)
++        ], "Type")
+     parent = fields.Many2One('country.subdivision', 'Parent',
+         domain=[
+             ('country', '=', Eval('country', -1)),
+@@ -224,10 +225,15 @@ class Subdivision(DeactivableMixin, ModelSQL, ModelView):
+ 
+         super().__register__(module_name)
+ 
++        table_h = cls.__table_handler__(module_name)
++
+         # Migration from 5.2: remove country data
+         cursor.execute(*data.delete(where=(data.module == 'country')
+                 & (data.model == cls.__name__)))
+ 
++        # Migration from 6.2: remove type required
++        table_h.not_null_action('type', action='remove')
++
+     @classmethod
+     def search_rec_name(cls, name, clause):
+         if clause[1].startswith('!') or clause[1].startswith('not '):
+diff --git a/scripts/import_countries.py b/scripts/import_countries.py
+index 626e1ceee8c38496b83127d119709db6208a3bf6..85c5906581c2138ac720ab52927b3c054523543a 100755
+--- a/scripts/import_countries.py
++++ b/scripts/import_countries.py
+@@ -99,6 +99,8 @@ def update_subdivisions(countries, subdivisions):
+     print("Update subdivisions", file=sys.stderr)
+     Subdivision = Model.get('country.subdivision')
+ 
++    types = dict(Subdivision._fields['type']['selection'])
++    unknown_types = set()
+     records = []
+     for subdivision in _progress(pycountry.subdivisions):
+         code = subdivision.code
+@@ -108,7 +110,16 @@ def update_subdivisions(countries, subdivisions):
+         else:
+             record = Subdivision(code=code, country=countries[country_code])
+         record.name = _remove_forbidden_chars(subdivision.name)
+-        record.type = subdivision.type.lower()
++        type_ = subdivision.type.lower()
++        if type_ in types:
++            record.type = subdivision.type.lower()
++        else:
++            record.type = None
++            if type_ not in unknown_types:
++                print(
++                    "Unknown subdivision type: %s" % subdivision.type,
++                    file=sys.stderr)
++                unknown_types.add(type_)
+         records.append(record)
+ 
+     Subdivision.save(records)

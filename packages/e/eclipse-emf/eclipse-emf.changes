@@ -1,0 +1,36 @@
+-------------------------------------------------------------------
+Tue Mar 29 14:01:18 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Force building with Java 11, since tycho is not knowing about any
+  Java >= 15
+
+-------------------------------------------------------------------
+Fri Jul  3 09:43:22 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 2.22.0
+  * No changelog was made available.
+- Removed patches:
+  * remove-nebula-dep.patch
+  * remove-network-tests.patch
+  * remove-timezone-test.patch
+  * remove-unnecessary-imports.patch
+- Added patches:
+  * 0001-Remove-dependency-on-nebula.patch
+  * 0002-Remove-test-that-requires-talking-to-the-internet.patch
+
+-------------------------------------------------------------------
+Thu Apr  9 09:11:07 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Build against jgit, since jgit-bootstrap does not exist
+
+-------------------------------------------------------------------
+Mon Mar 16 13:55:11 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Change the way the bootstrap/non-bootstrap packages are built in
+  order to have a working eclipse as a final product (bsc#1166426)
+
+-------------------------------------------------------------------
+Mon Nov 11 12:12:22 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of eclipse-emf 2.15.0~gitd1e5fdd as _multibuild
+  package in order to allow bootstrapping

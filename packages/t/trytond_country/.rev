@@ -1,0 +1,115 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bbfa336fe228d466dc4c02d24d3314fa</srcmd5>
+    <version>3.8.0</version>
+    <time>1474622974</time>
+    <user>dimstar_suse</user>
+    <comment>Part of GNU Health</comment>
+    <requestid>421077</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e20278d413cd4b815fbd7a30c84c6f1a</srcmd5>
+    <version>4.2.0</version>
+    <time>1499291759</time>
+    <user>dimstar_suse</user>
+    <comment>Release 3.2 of GNU Health</comment>
+    <requestid>505312</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b31738cc265188e388b3abd1902923d7</srcmd5>
+    <version>4.6.0</version>
+    <time>1548064160</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 4.6.0 
+</comment>
+    <requestid>664367</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e04135917e0681be3aa200c0780450fd</srcmd5>
+    <version>5.0.1</version>
+    <time>1575463894</time>
+    <user>dimstar_suse</user>
+    <comment>version bump (forwarded request 750817 from DocB)</comment>
+    <requestid>752398</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>518f0ce807b58286d0a369e91c6821ee</srcmd5>
+    <version>5.0.2</version>
+    <time>1586112885</time>
+    <user>dimstar_suse</user>
+    <comment>bufix release</comment>
+    <requestid>791420</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>7307daa1b8e7674d02eaa3605c2b7bda</srcmd5>
+    <version>5.0.2</version>
+    <time>1612182474</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>868171</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>90c6e387f9060ef6096b81ff17e9be46</srcmd5>
+    <version>5.0.2</version>
+    <time>1614684785</time>
+    <user>RBrownSUSE</user>
+    <comment> (forwarded request 875663 from AndreasStieger)</comment>
+    <requestid>875728</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6bf194be62d9d19d018d381ed7a7f40a</srcmd5>
+    <version>5.0.3</version>
+    <time>1624136676</time>
+    <user>dimstar_suse</user>
+    <comment>bugfix release</comment>
+    <requestid>900902</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>501b861ef2a648c97016a090a894b05e</srcmd5>
+    <version>6.0.2</version>
+    <time>1646671681</time>
+    <user>dimstar_suse</user>
+    <comment>version bump (forwarded request 959956 from DocB)</comment>
+    <requestid>959975</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>ea494f5c861c7089c8a06b8055e59ef1</srcmd5>
+    <version>6.0.2</version>
+    <time>1646848051</time>
+    <user>dimstar_suse</user>
+    <comment>fix for new pycountry in TW</comment>
+    <requestid>960368</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>17e281e5edcaa0e2795e44ff7abce268</srcmd5>
+    <version>6.0.2</version>
+    <time>1647367501</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>961898</requestid>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>7f58116b245c839d32205fcb6cd94a8e</srcmd5>
+    <version>6.0.2</version>
+    <time>1647618158</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>962683</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>1313676be0f4eddba876b3cc4249a865</srcmd5>
+    <version>6.0.3</version>
+    <time>1666689626</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1031061</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>20b71fd44ad5698b74eced7f9fca65f5</srcmd5>
+    <version>6.0.3</version>
+    <time>1697748608</time>
+    <user>anag+factory</user>
+    <comment>Remove %python3_install prefix and root options, that's included in the macro by default. (forwarded request 1118924 from dgarcia)</comment>
+    <requestid>1118958</requestid>
+  </revision>
+</revisionlist>

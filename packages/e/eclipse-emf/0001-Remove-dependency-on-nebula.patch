@@ -1,0 +1,26 @@
+From 079a94e149165b30af36d13cfc8f37b5f854881f Mon Sep 17 00:00:00 2001
+From: Mat Booth <mat.booth@redhat.com>
+Date: Fri, 20 Mar 2020 13:53:25 +0000
+Subject: [PATCH 1/2] Remove dependency on nebula
+
+---
+ plugins/org.eclipse.emf.edit.ui/META-INF/MANIFEST.MF | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/org.eclipse.emf/plugins/org.eclipse.emf.edit.ui/META-INF/MANIFEST.MF b/org.eclipse.emf/plugins/org.eclipse.emf.edit.ui/META-INF/MANIFEST.MF
+index d3d62b9..d288949 100644
+--- a/org.eclipse.emf/plugins/org.eclipse.emf.edit.ui/META-INF/MANIFEST.MF
++++ b/org.eclipse.emf/plugins/org.eclipse.emf.edit.ui/META-INF/MANIFEST.MF
+@@ -22,8 +22,7 @@ Require-Bundle: org.eclipse.core.runtime;bundle-version="[3.6.0,4.0.0)",
+  org.eclipse.emf.common.ui;bundle-version="[2.18.0,3.0.0)";visibility:=reexport,
+  org.eclipse.core.resources;bundle-version="[3.6.0,4.0.0)";resolution:=optional,
+  org.eclipse.ui.ide;bundle-version="[3.6.0,4.0.0)";resolution:=optional,
+- org.eclipse.jface.text;bundle-version="[3.6.0,4.0.0)";resolution:=optional,
+- org.eclipse.nebula.widgets.cdatetime;bundle-version="[1.0.0,2.0.0)";resolution:=optional;x-installation:=greedy
++ org.eclipse.jface.text;bundle-version="[3.6.0,4.0.0)";resolution:=optional
+ Eclipse-LazyStart: true
+ Bundle-ActivationPolicy: lazy
+ Automatic-Module-Name: org.eclipse.emf.edit.ui
+-- 
+2.21.1
+

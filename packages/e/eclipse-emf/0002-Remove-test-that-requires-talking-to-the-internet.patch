@@ -1,0 +1,28 @@
+From 25b039d588bc77b8f70d74ddacb6b7ad570c95e6 Mon Sep 17 00:00:00 2001
+From: Mat Booth <mat.booth@redhat.com>
+Date: Fri, 20 Mar 2020 13:53:59 +0000
+Subject: [PATCH 2/2] Remove test that requires talking to the internet
+
+---
+ .../org/eclipse/emf/test/core/ecore/URIConverterTest.java    | 5 -----
+ 1 file changed, 5 deletions(-)
+
+diff --git a/org.eclipse.emf/tests/org.eclipse.emf.test.core/src/org/eclipse/emf/test/core/ecore/URIConverterTest.java b/org.eclipse.emf/tests/org.eclipse.emf.test.core/src/org/eclipse/emf/test/core/ecore/URIConverterTest.java
+index 400dfda..500bd93 100644
+--- a/org.eclipse.emf/tests/org.eclipse.emf.test.core/src/org/eclipse/emf/test/core/ecore/URIConverterTest.java
++++ b/org.eclipse.emf/tests/org.eclipse.emf.test.core/src/org/eclipse/emf/test/core/ecore/URIConverterTest.java
+@@ -77,11 +77,6 @@ public class URIConverterTest
+     assertEquals(contentsFromUncompressedFile, contents);
+     new File(URI.createURI(uri.authority().replaceAll("!", "")).toFileString()).delete();
+ 
+-    // Reads the data.zip file from our git repository using https
+-    //
+-    uri = URI.createURI("archive:https://git.eclipse.org/c/emf/org.eclipse.emf.git/plain/tests/org.eclipse.emf.test.core/data/data.zip!/%66ile.txt");
+-    contents = readFile(uriConverter.createInputStream(uri));
+-    assertEquals(contentsFromUncompressedFile, contents);
+   }
+ 
+   protected String readFile(InputStream inputStream) throws IOException
+-- 
+2.21.1
+

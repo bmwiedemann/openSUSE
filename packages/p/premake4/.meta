@@ -1,0 +1,14 @@
+<package name="premake4" project="openSUSE:Factory">
+  <title>Powerfully simple build configuration</title>
+  <description>Premake is a build configuration tool. Describe your C, C++, or C# software project using a simple, easy to read syntax and let Premake generate the project files for:
+
+    * Microsoft Visual Studio 2002, 2003, 2005, and 2008, including the Express editions
+    * GNU Make, including Cygwin and MinGW
+    * Apple Xcode
+    * Code::Blocks
+    * CodeLite
+    * IC#Code SharpDevelop
+    * MonoDevelop</description>
+  <devel project="devel:tools:building" package="premake4"/>
+  <url>http://industriousone.com/premake</url>
+</package>
