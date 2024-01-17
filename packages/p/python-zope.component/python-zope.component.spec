@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2013 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -42,15 +42,17 @@ Requires:       python-zope.hookable >= 4.2.0
 Requires:       python-zope.interface >= 5.3.0a1
 #test requirements
 %if %{with test}
+BuildRequires:  %{python_module zope.component = %{version}}
+BuildRequires:  %{python_module zope.configuration}
+BuildRequires:  %{python_module zope.testing}
+BuildRequires:  %{python_module zope.testrunner}
+%if 0%{?suse_version} >= 1600
+# run complete testsuite on Tumbleweed
 BuildRequires:  %{python_module persistent}
-BuildRequires:  %{python_module zope.deferredimport}
-BuildRequires:  %{python_module zope.hookable}
-BuildRequires:  %{python_module zope.interface}
 BuildRequires:  %{python_module zope.location}
 BuildRequires:  %{python_module zope.proxy}
 BuildRequires:  %{python_module zope.security}
-BuildRequires:  %{python_module zope.testing}
-BuildRequires:  %{python_module zope.testrunner}
+%endif
 %endif
 %python_subpackages
 
