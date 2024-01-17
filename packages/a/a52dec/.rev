@@ -1,0 +1,41 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9e77ec4e22cdabcd4fe38e10aa594663</srcmd5>
+    <version>0.7.5+svn613</version>
+    <time>1492516270</time>
+    <user>dimstar_suse</user>
+    <comment>AC3 patents should be expired. (3rd attempt)</comment>
+    <requestid>481943</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c6c5ae6051438753b0b216862ac3c1f0</srcmd5>
+    <version>0.7.5+svn613</version>
+    <time>1500275019</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>510543</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>481a11b7948ad949f0955eea1730302f</srcmd5>
+    <version>0.7.5+svn613</version>
+    <time>1551385575</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>677654</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ce7943c792bdd18ec9b409d7a09d7487</srcmd5>
+    <version>0.8.0</version>
+    <time>1691232829</time>
+    <user>dimstar_suse</user>
+    <comment>- Minor spec cleaning, use ldconfig_scriptlets macro, be more
+  explicit in listing of files (use less globs).
+
+- Update to release 0.8.0
+  * Build system modernization
+- Drop altivec.patch (inapplicable)
+
+- Remove obsolete Groups tag (fate#326485)</comment>
+    <requestid>1102195</requestid>
+  </revision>
+</revisionlist>

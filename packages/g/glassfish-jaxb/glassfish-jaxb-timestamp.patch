@@ -1,0 +1,18 @@
+--- jaxb-v2-2.3.1/jaxb-ri/xjc/src/main/java/com/sun/tools/xjc/Options.java	2018-09-12 21:10:18.000000000 +0200
++++ jaxb-v2-2.3.1/jaxb-ri/xjc/src/main/java/com/sun/tools/xjc/Options.java	2023-09-14 18:49:37.395369658 +0200
+@@ -983,10 +983,13 @@
+                 + "' "
+                 + Messages.format(Messages.TIME_FORMAT);
+         SimpleDateFormat dateFormat = new SimpleDateFormat(format, Locale.ENGLISH);
+-
++        Date now = new Date();
++        if (System.getenv("SOURCE_DATE_EPOCH") != null) {
++            now = new Date(1000 * Long.parseLong(System.getenv("SOURCE_DATE_EPOCH")));
++        }
+         return Messages.format(
+             Messages.FILE_PROLOG_COMMENT,
+-            dateFormat.format(new Date()));
++            dateFormat.format(now));
+     }
+ 
+     /**

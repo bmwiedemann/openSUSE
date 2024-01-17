@@ -1,0 +1,3 @@
+# rpmlint get update-alternatives generic names wrong consistently
+addFilter(".* alternative-link-missing.*")
+addFilter(".* alternative-generic-name-missing .*\$\{lib\}.*")

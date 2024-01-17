@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8b717c0ed91b8c359ad26fecd4d6cc5e</srcmd5>
+    <version>2.3.1</version>
+    <time>1584643993</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>786470</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4d4da96ff7314fc91d97fe37b21d79b2</srcmd5>
+    <version>2.3.1</version>
+    <time>1648159067</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with maven-antrun-plugin 3.x</comment>
+    <requestid>964407</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>57ae3a2991833ab9b43fb65d953a57f3</srcmd5>
+    <version>2.3.1</version>
+    <time>1661257781</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>998643</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>246d4d327879d5a4caf8c163c3ef0c5e</srcmd5>
+    <version>2.3.1</version>
+    <time>1662148592</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1000818</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>f5354cf463c5918d73ff87304298e96f</srcmd5>
+    <version>2.3.1</version>
+    <time>1694630647</time>
+    <user>anag+factory</user>
+    <comment>reproducibility improvements</comment>
+    <requestid>1110691</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>2c8b5bd3322d0ce32dbc89c08472e5c4</srcmd5>
+    <version>2.3.1</version>
+    <time>1694808307</time>
+    <user>anag+factory</user>
+    <comment>reproducible</comment>
+    <requestid>1111418</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>470ab69c3cdbe6b632f437d43f1dba41</srcmd5>
+    <version>2.3.1</version>
+    <time>1698333255</time>
+    <user>anag+factory</user>
+    <comment>source/target 8 == build with jdk 21</comment>
+    <requestid>1120411</requestid>
+  </revision>
+</revisionlist>

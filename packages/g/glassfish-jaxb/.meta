@@ -1,0 +1,8 @@
+<package name="glassfish-jaxb" project="openSUSE:Factory">
+  <title>JAXB Reference Implementation</title>
+  <description>GlassFish JAXB Reference Implementation.
+
+</description>
+  <devel project="Java:packages" package="glassfish-jaxb"/>
+  <url>http://jaxb.java.net</url>
+</package>

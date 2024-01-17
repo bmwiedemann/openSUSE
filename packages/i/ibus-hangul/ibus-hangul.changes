@@ -1,0 +1,172 @@
+-------------------------------------------------------------------
+Thu Jul 20 12:07:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.5:
+  * Use synchronous key event processing if possible (since ibus
+    1.5.28) (#114 )
+  * Update SVG icons
+
+-------------------------------------------------------------------
+Mon Mar  1 14:26:05 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- add Requires: ibus(boo#1174103)
+
+-------------------------------------------------------------------
+Thu Jan 21 03:04:06 UTC 2021 - Wang Jun <jgwang@suse.com>
+
+- Update to version 1.5.4
+  * Fix issue #93
+  * Merge Pull Request #99, #96
+
+-------------------------------------------------------------------
+Fri Oct 05 12:15:28 UTC 2020 - Cliff Zhao <qzhao@suse.com>
+
+- Update ibus-hangul.spec: change the copyright to use "SUSE LLC" 
+  according to the copyright attribution rules in the SUSE Open 
+  Source Policy.
+  
+-------------------------------------------------------------------
+Tue Sep 29 14:38:12 CEST 2020 - tiwai@suse.de
+
+- Replace buildreq gettext-runtime with gettext, which is preferred
+  for OBS
+
+-------------------------------------------------------------------
+Fri Sep 25 06:10:14 UTC 2020 - Cliff Zhao <qzhao@suse.com>
+
+- Update ibus-hangul.spec: Add build requirement for gettext-runtime,
+  to fix build failure in the integration of SLE-15:SP3.
+
+-------------------------------------------------------------------
+Mon Apr 20 08:24:56 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.5.3
+  * Fix critical bug #90
+  * Fix issue #89
+
+-------------------------------------------------------------------
+Wed Apr 15 06:18:12 UTC 2020 - Cliff Zhao <qzhao@suse.com>
+
+- Update ibus-hangul.spec: Drop the is_opensuse macro to eliminate 
+  the difference between SLE-15 and openSUSE Leap.
+
+-------------------------------------------------------------------
+Sat Jan 11 04:05:18 UTC 2020 - Fuminobu Takeyama <ftake@geeko.jp>
+
+- Add explanation about recommending Noto Sans KR
+
+-------------------------------------------------------------------
+Sun Dec  8 16:56:48 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Make sure at least one font with coverage for korean is installed,
+  and can be rendered by Cairo >= 1.44. Fixes boo#1158326.
+
+-------------------------------------------------------------------
+Sun Feb 24 04:27:24 UTC 2019 - i@marguerite.su
+
+- update to version 1.5.2~git20181223.10c4795:
+  * Add test code for UString
+  * Implement preedit mode option
+  * Implement IBusEngine::set_capabilities method
+  * Listen to 'use-event-forwarding' option change event
+  * Fix event processing priority for hanja conversion
+  * Fix interger overflow on h_ibus_text_get_substring()
+  * Add AppStream metainfo
+  * setup: Add window "destroy" event handling
+  * Add Escape to off-keys default value
+- changes in 1.5.1
+  * correct more spacings
+  * correct capitalization of setup labels
+  * check if ibus and ibus config is running
+  * fix wrong space order problem
+  * add disable-latin-mode option
+  * setup: set GLib app name explicitly
+  * setup: fix PyGI warnings
+  * reparent IBusHangulEngine from IBusEngineSimple to handle Compose key
+  * migrate IBusConfig to GSettings
+  * add use-event-forwarding option
+  * setup: Don't use GtkDialog
+  * intialized local variable as NULL
+  * update initial_input_mode on GSettings "changed"
+- use python3
+- add python3-gobject as Requires (boo#1124568)
+
+-------------------------------------------------------------------
+Thu Oct 23 10:02:14 UTC 2014 - i@marguerite.su
+
+- update version 1.5.0
+  * Add latin input mode. so you can input latin characters without
+    changing input method engine.
+  * Allow hangul mode to be toggled
+  * Python3 compatibility
+
+-------------------------------------------------------------------
+Sat Jan 26 23:26:17 CST 2013 - hillwood@linuxfans.org
+
+- update to 1.4.2
+  * Use Gobject Introspection
+  * GNOME Control Center integration
+  * Miscellaneous bug fixes
+
+-------------------------------------------------------------------
+Mon Oct  1 20:00:30 UTC 2012 - schwab@linux-m68k.org
+
+- Use %{_lib} for the installation path
+
+-------------------------------------------------------------------
+Wed Jul 18 21:44:01 UTC 2012 - dvaleev@suse.com
+
+- Fix the installation path of setup program for ppc as well 
+
+-------------------------------------------------------------------
+Sun Jun 10 16:31:51 UTC+8 2012 - hillwood@linuxfans.org
+
+- update to 1.4.1
+ * Handle exceptions properly in ibus-setup-hangul
+   https://github.com/choehwanjin/ibus-hangul/pull/5
+ * Update icon files
+ * Support ibus icon symbol feature
+
+-------------------------------------------------------------------
+Thu Mar 20 23:46:11 UTC+8 2012 - hillwood@linuxfans.org
+
+- update to 1.4.0
+   * Require ibus 1.4
+   * Add desktop menu for ibus-setup-hangul
+   * Add an option for automatic reordering
+   * Add an option for a word preedit text
+   * Update MS IME compatible symbol table
+   * Use surrounding text feature on converting to hanja
+
+-------------------------------------------------------------------
+Thu Dec  1 16:51:01 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Wed Oct 12 11:49:43 CEST 2011 - tiwai@suse.de
+
+- Fix build with ibus-1.4, the patch taken from Fedora (bnc#723591)
+- Fix the installation path of setup program
+
+-------------------------------------------------------------------
+Fri Jul 22 16:58:15 CEST 2011 - tiwai@suse.de
+
+- Add locale-specific provides tag (bnc#707712)
+
+-------------------------------------------------------------------
+Tue Jun 14 03:21:34 UTC 2011 - swyear@gmail.com
+
+- Update to 1.3.1;
+  including fixes for new ibus-1.3.x 
+
+-------------------------------------------------------------------
+Wed Mar 24 14:19:43 CET 2010 - tiwai@suse.de
+
+- fix file list
+
+-------------------------------------------------------------------
+Thu Jan 28 10:42:21 UTC 2010 - mxwu@novell.com
+
+- Initial import 
+

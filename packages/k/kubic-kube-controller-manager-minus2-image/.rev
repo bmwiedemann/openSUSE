@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6f86697d5f7fc4068d1cd936c9a573dc</srcmd5>
+    <version>1.0.0</version>
+    <time>1691502930</time>
+    <user>dimstar_suse</user>
+    <comment>new kiwi source for kubic-kube-controller-manager-minus2-image
+(container image for `kube-controller-manager-minus2` package)</comment>
+    <requestid>1102855</requestid>
+  </revision>
+</revisionlist>

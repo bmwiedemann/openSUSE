@@ -1,0 +1,5 @@
+<package name="snallygaster" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="security" package="snallygaster"/>
+</package>

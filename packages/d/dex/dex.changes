@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Mon Aug 31 13:22:44 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.9.0:
+  - Pass environment to sub processes
+  - Add -s switch to specify the search paths (thanks to  Johannes Löthberg)
+  - Add support for KDE's proprietary Service type (#7 and #28, thanks to
+  Sébastien Luttringer and Konfekt)
+  - Mark clean target PHONY
+  - Switch to RST for the README and manpaeg
+  - Ignore backslash in comments (#8, thanks to nanouck)
+  - Ignore missing name for Type=Service entries (#28, thanks to Konfekt)
+  - add force to clean target (#25, thanks to  Johannes Löthberg)
+  - Turn utf-8 string into Unicode string literal (#23, thanks to  Johannes
+  - Fix error converting man page
+  - Print nice error message when target directory doesn't exist (#31, thanks to
+
+-------------------------------------------------------------------
+Tue Dec 27 15:05:20 UTC 2016 - sor.alexei@meowr.ru
+
+- Initial package.

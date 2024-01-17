@@ -1,0 +1,5 @@
+<package name="dex" project="openSUSE:Factory">
+  <title>DesktopEntry Execution</title>
+  <description>A simple utility to handle XDG autostart entries.</description>
+  <devel project="X11:Utilities" package="dex"/>
+</package>

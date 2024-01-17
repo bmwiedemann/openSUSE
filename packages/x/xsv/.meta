@@ -1,0 +1,9 @@
+<package name="xsv" project="openSUSE:Factory">
+  <title>A fast CSV toolkit written in Rust</title>
+  <description>xsv is a command line program for indexing, slicing, analyzing,
+splitting and joining CSV files.
+
+</description>
+  <devel project="utilities" package="xsv"/>
+  <url>https://github.com/BurntSushi/xsv/</url>
+</package>

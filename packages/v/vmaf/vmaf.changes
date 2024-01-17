@@ -1,0 +1,114 @@
+-------------------------------------------------------------------
+Thu Dec  7 20:42:15 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.0
+  * Removal of deprecated API compute_vmaf().
+  * First release to include vmaf_cuda_* APIs.
+  * Speedups and bug fixes.
+
+-------------------------------------------------------------------
+Thu Mar 16 21:06:47 UTC 2023 - Jakob Lorenz <onlyjak0b@mailbox.org>
+
+- Fix "no such built-in model" due to missing build dependency
+
+-------------------------------------------------------------------
+Wed Nov  9 10:26:11 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop recommends on vmaf-data, the package is gone since vmaf 2.x.
+  Build model data into the library, since `make install` does not
+  do anything by default. [boo#1189023]
+
+-------------------------------------------------------------------
+Mon Apr 11 19:21:40 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.3.1
+  * CAMBI extensions: full reference, PQ eotf, up to 16 bit-depth
+    support, max_log_contrast parameter.
+  * CAMBI: option to output heatmaps.
+
+-------------------------------------------------------------------
+Sat Oct 16 21:44:07 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.3.0
+  * Added Contrast Aware Multiscale Banding Index.
+  * Added pixel format VMAF_PIX_FMT_YUV400P.
+
+-------------------------------------------------------------------
+Tue Sep 21 19:19:48 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.2.1
+  * Fix a race condition in vmaf_thread_pool_wait().
+  * Avoid chroma resampling for 420mpeg2 y4m input.
+
+-------------------------------------------------------------------
+Fri Jul  2 19:00:31 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.2.0
+  * Fixed a CIEDE-2000 precision issue, where cross-platform
+    mismatches were seen.
+  * Added function vmaf_feature_dictionary_free().
+
+-------------------------------------------------------------------
+Mon Mar  8 11:22:01 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.1:
+  * Fixes a SSIM/MS-SSIM precision bug where a lossless comparison did not
+    always result in a perfect 1.0 score. (#796).
+  * Adds feature extractor options to clip the dB scores for both PSNR/SSIM.
+    --aom_ctc v1.0 has been updated to use these clipping options according to
+    the AOM CTC. (#802). 
+- disable LTO build (fails at least since 2.1.0)
+
+-------------------------------------------------------------------
+Thu Jan  7 15:37:35 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.1.0
+  * New features:
+    - Per-model feature overloading via new API 
+      vmaf_model_feature_overload().
+    - Multiple unique configurations of the same feature extractor
+      may be registered run at the same time.
+    - --aom_ctc v1.0 preset, encompassing all metrics specified by
+      the AOM CTC.
+- Changes from 2.0.0
+  * New features:
+    - Add PSNR-HVS and CIEDE2000 metrics.
+    - ci/actions: upload linux/macos artifacts (#738)
+    - libvmaf/feature: deprecate daala_ssim (#735)
+    - libvmaf: remove support for pkl models
+    - libvmaf/psnr: rewrite using integer types, 2x speedup
+    - vmaf: if no model is specified, enable v0.6.1 by default (#730)
+    - libvmaf/x86: add AVX2/AVX-512 optimizations for adm, vif and
+      motion
+    - ci/actions: add xxd to build dependencies for Windows
+    - libvmaf: add support for built-in models
+    - libvmaf/integer_vif: use symmetrical mirroring on edges
+    - Fix log2 by replacing log2f_approx with log2f
+    - libvmaf_rc: provide a backwards compatible compute_vmaf(),
+      link vmafossexec with libvmaf
+    - libvmaf: add framework support for json models
+    - libvmaf/libsvm: update libsvm to version 324
+    - libvmaf/motion: add motion_force_zero to motion fex
+    - return sha1 if Asset string is longer than 255
+    - Add CID/iCID Matlab source code
+    - build: unbreak x86 builds (Fixes: #374)
+    - Add 12bit and 16bit support for python YUV reader; add tests.
+    - Add PypsnrFeatureExtractor
+    - Add processes to FeatureAssembler. (#662)
+  * Fixed bugs:
+    - fix motion flush for single frame input
+    - Fixing the perf_metric for a single entry list input
+- Drop 0001-build-unbreak-x86-builds.patch, because now in upstream.
+- Remove data subpackage because models now build in.
+
+-------------------------------------------------------------------
+Mon Oct 19 12:06:33 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Add missing BuildRequires: pkg-config. This is still needed
+  for rpm to pick up .pc and generate pkgconfig() symbols.
+
+-------------------------------------------------------------------
+Sat Oct 17 16:20:43 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Initial package (version 1.5.3) for build.opensuse.org
+- Add 0001-build-unbreak-x86-builds.patch
