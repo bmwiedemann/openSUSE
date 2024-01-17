@@ -1,0 +1,166 @@
+diff -rupN PackageKit-1.2.1/data/meson.build PackageKit-1.2.1-systemd-timers/data/meson.build
+--- PackageKit-1.2.1/data/meson.build	2020-09-07 05:14:48.836002600 -0400
++++ PackageKit-1.2.1-systemd-timers/data/meson.build	2020-09-07 10:26:55.514657134 -0400
+@@ -6,6 +6,7 @@ install_data(
+ dbus_config_data = configuration_data()
+ dbus_config_data.set('PACKAGEKIT_USER', get_option('packagekit_user'))
+ dbus_config_data.set('libexecdir', join_paths(get_option('prefix'), get_option('libexecdir')))
++dbus_config_data.set('datadir', join_paths(get_option('prefix'), get_option('datadir')))
+ 
+ dbus_sys_dir = get_option('dbus_sys')
+ if dbus_sys_dir == ''
+@@ -43,6 +44,24 @@ if get_option('systemd')
+     install_dir: systemd_system_unit_dir,
+   )
+ 
++  configure_file(
++    input: 'packagekit-background.service.in',
++    output: 'packagekit-background.service',
++    configuration: dbus_config_data,
++    install: true,
++    install_dir: systemd_system_unit_dir,
++  )
++
++  install_data(
++    'packagekit-background.timer',
++    install_dir: systemd_system_unit_dir,
++  )
++
++  install_data(
++    'packagekit-background.sh',
++    install_dir: join_paths(get_option('datadir'), 'PackageKit'),
++  )
++
+   if get_option('offline_update')
+     configure_file(
+       input: 'packagekit-offline-update.service.in',
+diff -rupN PackageKit-1.2.1/data/packagekit-background.service.in PackageKit-1.2.1-systemd-timers/data/packagekit-background.service.in
+--- PackageKit-1.2.1/data/packagekit-background.service.in	1969-12-31 19:00:00.000000000 -0500
++++ PackageKit-1.2.1-systemd-timers/data/packagekit-background.service.in	2020-09-07 10:27:07.897771008 -0400
+@@ -0,0 +1,5 @@
++[Unit]
++Description=Script to update the system with PackageKit
++
++[Service]
++ExecStart=@datadir@/PackageKit/packagekit-background.sh
+diff -rupN PackageKit-1.2.1/data/packagekit-background.sh PackageKit-1.2.1-systemd-timers/data/packagekit-background.sh
+--- PackageKit-1.2.1/data/packagekit-background.sh	1969-12-31 19:00:00.000000000 -0500
++++ PackageKit-1.2.1-systemd-timers/data/packagekit-background.sh	2020-09-07 10:17:37.609526652 -0400
+@@ -0,0 +1,102 @@
++#!/bin/bash
++# Copyright (C) 2008 Richard Hughes <richard@hughsie.com>
++#
++# Some material taken from yum-cron, Copyright 2007 Alec Habig <ahabig@umn.edu>
++#
++# Licensed under the GNU General Public License Version 2
++# This program is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 2 of the License, or
++# (at your option) any later version.
++
++## Type:    yesno
++## Default: no
++#
++# Run the cron job.
++#
++ENABLED=no
++
++## Type:    yesno
++## Default: no
++#
++# Check if updates are available, instead of installing.
++#
++CHECK_ONLY=no
++
++## Type:    yesno
++## Default: no
++#
++# Trigger updates, so they will be installed on reboot.
++#
++UPDATE_OFFLINE=no
++
++## Type:    string
++## Default: ""
++#
++# If MAILTO is set, the mail command is used to deliver PackageKit output.
++# By default MAILTO is unset, so crond mails the output by itself.
++#
++MAILTO=""
++
++## Type:    string
++## Default: ""
++#
++# You may set SYSTEM_NAME if you want your PackageKit emails tagged differently.
++# Default is output of hostname command.
++#
++SYSTEM_NAME=""
++
++## Type:    integer
++## Default: 3600
++#
++# Update checks will sleep random time before contacting the servers to
++# avoid hammering them with thousands of request at the same time - this
++# is the maximum sleep time (in seconds) for the random wait period.
++#
++SLEEP_MAX=3600
++
++# are we disabled?
++if [ "$ENABLED" = "no" ]; then
++	exit 0
++fi
++
++# set default for SYSTEM_NAME
++[ -z "$SYSTEM_NAME" ] && SYSTEM_NAME=$(hostname)
++
++PKTMP=$(mktemp /var/run/packagekit-cron.XXXXXX)
++PKCON_OPTIONS="--background --noninteractive --plain"
++if [ "$UPDATE_OFFLINE" = "yes" ]; then
++	ONLY_DOWNLOAD="--only-download"
++else
++	ONLY_DOWNLOAD=""
++fi
++
++# wait a random amount of time to avoid hammering the servers
++[ -z "$SLEEP_MAX" ] && SLEEP_MAX=$RANDOM
++sleep $(( $RANDOM % $SLEEP_MAX + 1 ))
++
++# do action
++if [ "$CHECK_ONLY" = "yes" ]; then
++	pkcon $PKCON_OPTIONS get-updates &> $PKTMP
++	PKCON_RETVAL=$?
++else
++	pkcon $PKCON_OPTIONS $ONLY_DOWNLOAD update &> $PKTMP
++	PKCON_RETVAL=$?
++	if [ $PKCON_RETVAL -eq 0 -a "$UPDATE_OFFLINE" = "yes" ]; then
++		pkcon $PKCON_OPTIONS offline-trigger &> $PKTMP
++	fi
++fi
++
++# this is when seomthing useful was done
++if [ $PKCON_RETVAL -ne 5 ]; then
++	# send email
++	if [ -n "$MAILTO" ]; then
++		mail -Ssendwait -s "System updates available: $SYSTEM_NAME" $MAILTO < $PKTMP
++	else
++		# default behavior is to use cron's internal mailing of output from cron-script
++		cat $PKTMP
++	fi
++fi
++
++rm -f $PKTMP
++
+diff -rupN PackageKit-1.2.1/data/packagekit-background.timer PackageKit-1.2.1-systemd-timers/data/packagekit-background.timer
+--- PackageKit-1.2.1/data/packagekit-background.timer	1969-12-31 19:00:00.000000000 -0500
++++ PackageKit-1.2.1-systemd-timers/data/packagekit-background.timer	2020-09-07 10:17:37.609526652 -0400
+@@ -0,0 +1,11 @@
++[Unit]
++Description=Systemd timer to update the system daily with PackageKit
++
++[Timer]
++OnCalendar=daily
++AccuracySec=12h
++Persistent=true
++Unit=packagekit-background.service
++
++[Install]
++WantedBy=timers.target

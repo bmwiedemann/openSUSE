@@ -1,0 +1,12 @@
+Index: PackageKit-1.2.8/src/meson.build
+===================================================================
+--- PackageKit-1.2.8.orig/src/meson.build
++++ PackageKit-1.2.8/src/meson.build
+@@ -51,6 +51,7 @@ packagekit_direct_exec = executable(
+   ],
+   install: true,
+   install_dir: get_option('libexecdir'),
++  export_dynamic: true,
+   c_args: [
+     '-DG_LOG_DOMAIN="PackageKit"',
+     '-DLIBDIR="@0@"'.format(join_paths(get_option('prefix'), get_option('libdir'))),
