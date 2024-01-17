@@ -2,7 +2,7 @@
 # spec file
 #
 # Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2015 Dr. Axel Braun
+# Copyright (c) 2015-2024 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%{?sle15_python_module_pythons}
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define modname simpleeval
 Name:           python-%{modname}
