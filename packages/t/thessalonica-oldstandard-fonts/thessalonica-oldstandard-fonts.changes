@@ -1,0 +1,43 @@
+-------------------------------------------------------------------
+Wed Jul  4 12:39:06 CEST 2012 - pgajdos@suse.cz
+
+- amend spec file to reflect new font packaging scheme
+  (see openFATE#313536);
+
+-------------------------------------------------------------------
+Thu May 17 09:10:31 UTC 2012 - pgajdos@suse.com
+
+- call spec-cleaner
+
+-------------------------------------------------------------------
+Thu Jan 12 13:39:47 UTC 2012 - lazy.kent@opensuse.org
+
+- Package renamed from oldstandard-fonts according to Fonts
+  Packaging Policy.
+
+-------------------------------------------------------------------
+Thu Nov 24 17:34:47 UTC 2011 - lazy.kent@opensuse.org
+
+- Only otf package provides locale (we don't need both).
+- Spec clean up.
+
+-------------------------------------------------------------------
+Wed Aug 10 23:56:22 UTC 2011 - lazy.kent@opensuse.org
+
+- Fixed provided locales
+
+-------------------------------------------------------------------
+Thu Jul  7 02:32:55 UTC 2011 - lazy.kent@opensuse.org
+
+- Provides locale el, ru
+
+-------------------------------------------------------------------
+Tue Jun 14 21:10:08 UTC 2011 - lazy.kent@opensuse.org
+
+- Build requires xorg-x11-devel to provide font(:lang=*)
+
+-------------------------------------------------------------------
+Tue Jun  7 21:13:29 UTC 2011 - lazy.kent@opensuse.org
+
+- Initial package created - 2.2
+

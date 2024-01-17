@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Mon Jul 28 12:00:15 UTC 2014 - tampakrap@opensuse.org
+
+- Replace custom %perldir with already defined %perl_vendorlib
+
+-------------------------------------------------------------------
+Sun Jul 13 08:54:47 UTC 2014 - tampakrap@opensuse.org
+
+- Initial commit
+

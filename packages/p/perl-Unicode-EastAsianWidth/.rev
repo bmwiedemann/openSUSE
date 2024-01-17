@@ -1,0 +1,13 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>31a4d614c6a322fc5497568d85c4068a</srcmd5>
+    <version>12.0</version>
+    <time>1603031773</time>
+    <user>dimstar_suse</user>
+    <comment>Needed for texi2html
+
+https://build.opensuse.org/request/show/842325
+</comment>
+    <requestid>842326</requestid>
+  </revision>
+</revisionlist>

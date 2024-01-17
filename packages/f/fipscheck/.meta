@@ -1,0 +1,10 @@
+<package name="fipscheck" project="openSUSE:Factory">
+  <title>A library for integrity verification of FIPS validated modules</title>
+  <description>
+FIPSCheck is a library for integrity verification of FIPS validated
+modules. The package also provides helper binaries for creation and
+verification of the HMAC-SHA256 checksum files.
+ </description>
+  <devel project="security" package="fipscheck"/>
+  <url>http://fedorahosted.org/fipscheck/</url>
+</package>

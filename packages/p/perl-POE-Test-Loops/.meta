@@ -1,0 +1,13 @@
+<package name="perl-POE-Test-Loops" project="openSUSE:Factory">
+  <title>Reusable tests for POE::Loop authors</title>
+  <description>
+    POE::Test::Loops contains one function, generate(), which will generate all
+    the loop tests for one or more POE::Loop subclasses.
+
+    The &quot;SYNOPSIS&quot; example is a version of poe-gen-tests, which is a
+    stand-alone utility to generate the actual tests. poe-gen-tests also
+    documents the POE::Test::Loops system in more detail.
+  </description>
+  <devel project="devel:languages:perl" package="perl-POE-Test-Loops"/>
+  <url>http://search.cpan.org/perldoc?POE::Test::Loops</url>
+</package>

@@ -1,0 +1,11 @@
+--- commons-logging-1.2-src/build.xml	2014-07-05 20:11:36.000000000 +0200
++++ commons-logging-1.2-src/build.xml	2021-03-24 10:17:33.609764305 +0100
+@@ -613,7 +613,7 @@
+   </target>
+ 
+ 
+-  <target name="all" depends="clean,compile,test"
++  <target name="all" depends="clean,compile"
+    description="Clean and compile all components"/>
+ 
+ 

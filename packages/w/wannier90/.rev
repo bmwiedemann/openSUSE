@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2850c884c31e7857fecb3cf3d647800b</srcmd5>
+    <version>3.1.0</version>
+    <time>1660235542</time>
+    <user>dimstar_suse</user>
+    <comment>New package:  A library for generating maximally-localized Wannier functions, will be needed for future quantum-espresso updates</comment>
+    <requestid>994407</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a9d32e741a52577ea531997451c2cbdf</srcmd5>
+    <version>3.1.0</version>
+    <time>1671635211</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1044000</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>588b7b037d0022fd316edc7ee8b1fff7</srcmd5>
+    <version>3.1.0</version>
+    <time>1698700304</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1121281</requestid>
+  </revision>
+</revisionlist>

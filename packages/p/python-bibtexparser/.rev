@@ -1,0 +1,89 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>30f4fa2c7771c67dc40254981bf5656a</srcmd5>
+    <version>1.1.0</version>
+    <time>1558516251</time>
+    <user>dimstar_suse</user>
+    <comment>Bibtex parser for python</comment>
+    <requestid>700460</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0a50bfef1e3b869b7093f00ff3a9d291</srcmd5>
+    <version>1.1.0</version>
+    <time>1586973415</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch from using nosetest runner to pytest</comment>
+    <requestid>794185</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>901c9a176fc9eb6a0eecc24f6221ebf8</srcmd5>
+    <version>1.1.0</version>
+    <time>1591101590</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>810602</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>9582037a27798ec885aea0fcb91096c8</srcmd5>
+    <version>1.1.0</version>
+    <time>1593547140</time>
+    <user>dimstar_suse</user>
+    <comment>- Added explanation in SPEC file</comment>
+    <requestid>817852</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>8b105a019aba124de4ae8bd1bb2577ea</srcmd5>
+    <version>1.1.0</version>
+    <time>1597659014</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unnecessary BR on devel.
+- Don't build python2 on Tumbleweed.</comment>
+    <requestid>827275</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>62a648191aaed3d31f570ac82013ded5</srcmd5>
+    <version>1.1.0</version>
+    <time>1607965760</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>855664</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f46aa12f30fe7c4af3e461f3f4b76c49</srcmd5>
+    <version>1.2.0</version>
+    <time>1642959524</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.0:
+  * drop python2 support</comment>
+    <requestid>948244</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ad76102f057e92be0e73692edd506c3e</srcmd5>
+    <version>1.4.0</version>
+    <time>1693570781</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.4.0:
+  * Using common strings in string interpolation is now the default.
+  * Add option to adjust alignment of text of multi-line values.
+  * Raise warning if parser is used multiple times, which leads to a
+    merged library.
+  * Allow preservation of existing order of entry fields in writer
+  * Support for python 3.10
+  * Removing unused dependencies
+  * Allow capital AND when splitting author list
+  * Fix problem in `homogenize_latex_encoding` when authors are lists
+  * Long description in setup.py
+- Switch to pyproject macros.
+- Drop patch python-bibtexparser-remove-unittest2.patch, dependency
+  dropped.</comment>
+    <requestid>1108356</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8e22b4479908ad73be6f430ba1103925</srcmd5>
+    <version>1.4.1</version>
+    <time>1697146910</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1117164</requestid>
+  </revision>
+</revisionlist>

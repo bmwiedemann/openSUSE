@@ -1,0 +1,5 @@
+<package name="wg-info" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="network:vpn:wireguard" package="wg-info"/>
+</package>

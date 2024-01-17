@@ -1,0 +1,4 @@
+addFilter("executable-sourced-script .*/sbin/conf.d/SuSEconfig.postfix")
+addFilter("sourced-script-with-shebang .*/sbin/conf.d/SuSEconfig.postfix")
+addFilter("devel-file-in-non-devel-package .*/usr/lib/libpostfix*.so")
+addFilter("devel-file-in-non-devel-package .*/usr/lib64/libpostfix*.so")

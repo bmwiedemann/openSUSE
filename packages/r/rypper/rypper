@@ -1,0 +1,321 @@
+#!/usr/bin/perl
+
+=head1 NAME
+
+rypper - extension for managing multiple repositories via zypper
+
+=head1 SYNOPSIS
+
+  # See complete usage documentation
+  rypper --help
+
+  # list all disabled repos
+  rypper -d
+
+  # list all enabled repos with autorefresh off
+  rypper -e -R
+
+  # list all repos which have anything to do with KDE
+  rypper -x kde
+
+  # list priority and URIs for all repos whose alias contains 'home:'
+  rypper -a home: l -pu
+
+  # enable autorefresh on all OpenSUSE Build Service repos
+  rypper -u download.opensuse.org -R mr -r
+
+  # remove all repos on external USB HDD mounted on /media/disk
+  rypper -u /media/disk rr
+
+=head1 DESCRIPTION
+
+rypper is a wrapper around zypper for performing repository
+operations in batch.  It allows selection of which
+repositories to operate on via a number of different
+repository selection specifiers.
+
+The zypper commands which can be wrapped are:
+
+  removerepo, rr          Remove specified repository.
+  modifyrepo, mr          Modify specified repository.
+  refresh, ref            Refresh all repositories.
+  clean                   Clean local caches.
+
+Additionally, the zypper pseudo-command 'l' can be used to
+list matching repos.  There are a number of options
+controlling the output format; run C<rypper --help> for
+details.
+
+If no zypper command is provided, it defaults to the 'l'
+pseudo-command, trying to intelligently choose which fields to
+display, e.g. omitting any which were included in the repo
+selection parameters.
+
+=head1 SEE ALSO
+
+L<zypper>
+
+=head1 LICENSE
+
+Copyright (C) 2009 Adam Spiers
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License at L<http://www.gnu.org/licenses/> for
+more details.
+
+=head1 AUTHOR
+
+Adam Spiers <rypper@adamspiers.org>
+
+=cut
+
+use strict;
+use warnings;
+
+use Getopt::Long;
+
+our $VERSION = '0.23';
+
+(my $ME = $0) =~ s,.*/,,;
+
+my @ALLOWED_ZYPPER_CMDS = qw(removerepo rr modifyrepo mr refresh ref clean);
+my @ZYPPER_L_AUTO_COLS = qw(id alias name enabled refresh);
+my @DEFAULT_ZYPPER_L_OPTS =
+  $ENV{DEFAULT_ZYPPER_L_OPTS} ?
+    split /\s+/, $ENV{DEFAULT_ZYPPER_L_OPTS}
+  : ('-iaeu');
+
+my $DEFAULT_L_DELIMITER = '  ';
+
+sub usage {
+  warn @_, "\n" if @_;
+
+  (my $ME = $0) =~ s,.*/,,;
+
+  die <<EOUSAGE;
+$ME: run a zypper command on selected repositories.
+Usage: $ME [<specifiers...>] [<zypper-cmd> [<zypper-args> ...]]
+
+The specifiers determine which repositories the zypper command applies to:
+   -d, --disabled          disabled repos
+   -e, --enabled           enabled repos
+   -r, --refresh           repos with autorefresh enabled
+   -R, --no-refresh        repos with autorefresh disabled
+   -a, --alias=REGEXP      repos whose alias matches REGEXP
+   -n, --name=REGEXP       repos whose name matches REGEXP
+   -p, --priority=PRIORITY repos whose priority equals PRIORITY
+   -u, --uri=REGEXP        repos whose URI matches REGEXP
+   -s, --service=REGEXP    repos whose service matches REGEXP
+   -t, --type=REGEXP       repos whose type matches REGEXP
+   -x, --match=REGEXP      repos where REGEXP appears in *any* attribute
+   -T, --test              dry run: display commands which would be run
+Multiple specifiers are ANDed together.  REGEXPs are case-insensitive.
+
+Additionally, the zypper pseudo-command 'l' can be used with
+the following options to list matching repos:
+   -a, --alias          Include a column for repo aliases
+   -e, --enabled        Include a column for repo enablement
+   -n, --name           Include a column for repo names
+   -p, --priority       Include a column for repo priorities
+   -r, --refresh        Include a column for repo auto-refresh
+   -s, --service        Include a column for repo services
+   -t, --type           Include a column for repo types
+   -u, --uri            Include a column for repo URIs
+   -d, --delimiter=STR  Change output field delimiter (default '$DEFAULT_L_DELIMITER')
+   -N, --no-header      Omit column header
+In the absence of options, it defaults to '@DEFAULT_ZYPPER_L_OPTS'
+(this can be overridden by the \$DEFAULT_ZYPPER_L_OPTS environment variable).
+
+If no zypper command is provided, it defaults to the 'l'
+command, trying to intelligently choose which fields to
+display by omitting any which were included in the repo
+selection parameters.
+
+Other options:
+  -h, --help             Show this help
+  -V, --version          Show $ME version
+EOUSAGE
+}
+
+Getopt::Long::Configure(qw{no_bundling no_ignore_case require_order});
+
+my %opts = ( verbosity => 1 );
+
+usage() if @ARGV == 0;
+GetOptions(
+  \%opts,
+  'disabled|d',
+  'enabled|e',
+  'refresh|r',
+  'no-refresh|R',
+  'alias|a=s',
+  'name|n=s',
+  'priority|p=s',
+  'service|s=s',
+  'type|t=s',
+  'uri|u=s',
+  'match|x=s',
+  #'verbosity|verbose|v:+',
+  'test|T',
+  'help|h',
+  'version|V',
+) or usage();
+usage() if $opts{help};
+
+if ($opts{version}) {
+  print "$ME version $VERSION\n";
+  exit 0;
+}
+
+sub get_repo_ids {
+  my (@ids, %repos);
+  my @FIELDS = qw(id alias name enabled gpg refresh priority type uri service);
+  # Thanks to Michal Marek for pointing out that on openSUSE 11.1 at
+  # least, zypper's output can sometimes start with a strange escape
+  # sequence when localised.  We work-around by setting LC_MESSAGES=C.
+  open(ZYPPER, "LC_MESSAGES=C zypper lr -d|")
+    or die "Couldn't open(zypper lr -d|): $!\n";
+  while (<ZYPPER>) {
+    chomp;
+    next if /^#/ || /^[-+]{40}/;
+    s/^\s+//;
+    my @values = split /\s+\|\s+/, $_;
+    my %repo = map { $FIELDS[$_] => ($values[$_] || '') } 0 .. $#FIELDS;
+    if (repo_matches(%repo)) {
+      push @ids, \%repo;
+    }
+  }
+  close(ZYPPER)
+    or die "close(zypper lr -d|) failed: $!\n";
+  return sort { $a->{id} <=> $b->{id} } @ids;
+}
+
+sub repo_matches {
+  my %repo = @_;
+
+  # Filter out non-matches
+  return 0 if $opts{enabled}      and $repo{enabled} ne 'Yes';
+  return 0 if $opts{disabled}     and $repo{enabled} ne 'No';
+  return 0 if $opts{refresh}      and $repo{refresh} ne 'Yes';
+  return 0 if $opts{'no-refresh'} and $repo{refresh} ne 'No';
+  return 0 if $opts{alias}        and $repo{alias}   !~ /$opts{alias}/i;
+  return 0 if $opts{name}         and $repo{name}    !~ /$opts{name}/i;
+  return 0 if $opts{priority}     and $repo{priority} ne $opts{priority};
+  return 0 if $opts{service}      and $repo{service} !~ /$opts{service}/i;
+  return 0 if $opts{type}         and $repo{type}    !~ /$opts{type}/i;
+  return 0 if $opts{uri}          and $repo{uri}     !~ /$opts{uri}/i;
+
+  if ($opts{match}) {
+    my $combo = join '|', map $repo{$_}, qw(alias name type uri service);
+    return 0 unless $combo =~ /$opts{match}/i;
+  }
+
+  return 1;
+}
+
+my @repos = get_repo_ids();
+
+if (@ARGV == 0) {
+  my @l_opts = $opts{match} ? () : get_zypper_l_auto_cols();
+
+  @ARGV = ('l', @l_opts);
+}
+
+if ($ARGV[0] eq 'l') {
+  shift @ARGV;
+  if (@ARGV == 0) {
+    @ARGV = @DEFAULT_ZYPPER_L_OPTS;
+  }
+  list_repos();
+}
+else {
+  my %ALLOWED_ZYPPER_CMDS = map { $_ => 1 } @ALLOWED_ZYPPER_CMDS;
+  if (! $ALLOWED_ZYPPER_CMDS{$ARGV[0]}) {
+    die "$ARGV[0] is not a valid zypper repository command.\nRun $ME --help for help.\n";
+  }
+  foreach my $repo (@repos) {
+    my $id = $repo->{id};
+    my @cmd = ('zypper', @ARGV, $id);
+    if ($opts{test}) {
+      print "@cmd\n";
+    }
+    else {
+      system @cmd;
+    }
+  }
+}
+
+sub list_repos {
+  my (%l_opts, @cols);
+  Getopt::Long::Configure(qw{bundling no_ignore_case});
+  GetOptions(
+    \%l_opts,
+    'delimiter|d=s',
+    'no-header|N',
+    'alias|a',
+    'enabled|e',
+    'id|i',
+    'name|n',
+    'priority|p',
+    'refresh|r',
+    'service|s',
+    'type|t',
+    'uri|u',
+  ) or usage();
+  usage() if @ARGV;
+  my %widths;
+  for my $col (qw{id alias name enabled refresh type priority uri service}) {
+    if ($l_opts{$col}) {
+      push @cols, $col;
+      my $max_width = 0;
+      my @values = ($col, map($_->{$col}, @repos));
+      foreach my $width (map length, @values) {
+        $max_width = $width if $width > $max_width;
+      }
+      $widths{$col} = $max_width;
+    }
+  }
+  my $delimiter = $l_opts{delimiter} || $DEFAULT_L_DELIMITER;
+  my $format = join($delimiter,
+                    map { get_col_format($_, $widths{$_}) } @cols);
+
+  unless ($l_opts{'no-header'}) {
+    my $header = sprintf $format, @cols;
+    my $divider = '-' x length($header);
+    $header =~ s/\s+$//;
+    print "$header\n$divider\n";
+  }
+  foreach my $repo (@repos) {
+    my $line = sprintf $format, map { $repo->{$_} } @cols;
+    $line =~ s/\s+$//;
+    print $line, "\n";
+  }
+}
+
+sub get_col_format {
+  my ($name, $max_width) = @_;
+  my $type = 's';
+  my $align = '-';
+  if ($name eq 'id') {
+    #$type = 'd';
+    $align = '';
+  }
+  return "%$align$max_width$type";
+}
+
+sub get_zypper_l_auto_cols {
+  my %auto_opts = map { $_ => 1 } @ZYPPER_L_AUTO_COLS;
+  foreach my $opt (@ZYPPER_L_AUTO_COLS) {
+    delete $auto_opts{$opt} if $opts{$opt};
+  }
+  delete $auto_opts{refresh} if $opts{'no-refresh'};
+  delete $auto_opts{name} if $auto_opts{alias};
+  return map "--$_", keys %auto_opts;
+}

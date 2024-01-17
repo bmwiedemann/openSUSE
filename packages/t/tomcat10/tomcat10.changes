@@ -1,0 +1,1430 @@
+-------------------------------------------------------------------
+Tue Jan 16 09:05:32 UTC 2024 - Michele Bussolotto <michele.bussolotto@suse.com>
+
+- Fix server.xml permission (bsc#1217768, bsc#1217402)
+- remove serverxmltool and use xsltproc
+
+-------------------------------------------------------------------
+Mon Nov 27 13:14:21 UTC 2023 - Ricardo Mestre <ricardo.mestre@suse.com>
+
+- replace prep setup and patches macro with autosetup
+
+-------------------------------------------------------------------
+Tue Nov 14 15:03:27 UTC 2023 - Michele Bussolotto <michele.bussolotto@suse.com>
+
+- Initial packaging of Tomcat 10.1.14
+
+-------------------------------------------------------------------
+Fri Oct 13 11:12:07 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Update to Tomcat 9.0.82
+  * Catalina
+    + Add: 65770: Provide a lifecycle listener that will
+      automatically reload TLS configurations a set time before the
+      certificate is due to expire. This is intended to be used with
+      third-party tools that regularly renew TLS certificates.
+    + Fix: Fix handling of an error reading a context descriptor on
+      deployment.
+    + Fix: Fix rewrite rule qsd (query string discard) being ignored
+      if qsa was also use, while it should instead take precedence.
+    + Fix: 67472: Send fewer CORS-related headers when CORS is not
+      actually being engaged.
+    + Add: Improve handling of failures within recycle() methods.
+  * Coyote
+    + Fix: 67670: Fix regression with HTTP compression after code
+      refactoring.
+    + Fix: 67198: Ensure that the AJP connector attribute
+      tomcatAuthorization takes precedence over the
+      tomcatAuthentication attribute when processing an auth_type
+      attribute received from a proxy server.
+    + Fix: 67235: Fix a NullPointerException when an AsyncListener
+      handles an error with a dispatch rather than a complete.
+    + Fix: When an error occurs during asynchronous processing,
+      ensure that the error handling process is only triggered once
+      per asynchronous cycle.
+    + Fix: Fix logic issue trying to match no argument method in
+      IntropectionUtil.
+    + Fix: Improve thread safety around readNotify and writeNotify
+      in the NIO2 endpoint.
+    + Fix: Avoid rare thread safety issue accessing message digest
+      map.
+    + Fix: Improve statistics collection for upgraded connections
+      under load.
+    + Fix: Align validation of HTTP trailer fields with standard
+      fields.
+    + Fix: Improvements to HTTP/2 overhead protection (bsc#1216182,
+      CVE-2023-44487)
+  * jdbc-pool
+    + Fix: 67664: Correct a regression in the clean-up of
+      unnecessary use of fully qualified class names in 9.0.81
+      that broke the jdbc-pool.
+  * Jasper
+    + Fix: 67080: Improve performance of EL expressions in JSPs that
+      use implicit objects
+
+-------------------------------------------------------------------
+Thu Sep 21 16:41:56 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Update to Tomcat 9.0.80
+  * Catalina
+    + Add RateLimitFilter which can be used to mitigate DoS and
+      Brute Force attacks
+    + Move the management of the utility executor from the
+      init()/destroy() methods of components to the start()/stop()
+      methods.
+    + Add org.apache.catalina.core.StandardVirtualThreadExecutor,
+      a virtual thread based executor that may be used with one or
+      more Connectors to process requests received by those
+      Connectors using virtual threads. This Executor requires a
+      minimum Java version of Java 21.
+    + 66513: Add a per session Semaphore to the PersistentValve that
+      ensures that, within a single Tomcat instance, there is no
+      more than one concurrent request per session. Also expand the
+      debug logging to include whether a request bypasses the Valve
+      and the reason if a request fails to obtain the per session
+      Semaphore.
+    + 66609: Ensure that the default servlet correctly escapes file
+      names in directory listings when using XML output.
+    + 66618: Add a numeric last modified field to the XML directory
+      listings produced by the default servlet to enable sorting in
+      the XSLT.
+    + 66621: Attempts to lock a collection with WebDAV may
+      incorrectly fail if a child collection has an expired lock.
+    + 66622: Deprecate the xssProtectionEnabled setting from the
+      HttpHeaderSecurityFilter and change the default value to false
+      as support for the associated HTTP header has been removed
+      from all major browsers.
+    + 59232: Add org.apache.catalina.core.ContextNamingInfoListener,
+      a listener which creates context naming information
+      environment entries.
+    + 66665: Add
+      org.apache.catalina.core.PropertiesRoleMappingListener, a
+      listener which populates the context's role mapping from a
+      properties file.
+    + Fix an edge case where intra-web application symlinks would be
+      followed if the web applications were deliberately crafted to
+      allow it even when allowLinking was set to false.
+    + Add utility config file resource lookup on Context to allow
+      looking up resources from the webapp (prefixed with webapp:)
+      and make the resource lookup API more visible.
+    + Fix potential database connection leaks in
+      DataSourceUserDatabase identified by Coverity Scan.
+    + Make parsing of ExtendedAccessLogValve patterns more robust.
+    + Fix failure trying to persist configuration for an internal
+      credential handler.
+    + 66680: When serializing a session during the session
+      presistence process, do not log a warning that null Principals
+      are not serializable.
+    + Catch NamingException in JNDIRealm#getPrincipal. It is used in
+      Java up to 17 to signal closed connections.
+    + 66822: Use the same naming format in log messages for
+      Connector instances as the associated ProtocolHandler instance.
+    + The parts count should also lower the actual maxParameterCount
+      used for parsing parameters if parts are parsed first.
+    + If an application or library sets both a non-500 error code
+      and the javax.servlet.error.exception request attribute, use
+      the provided error code during error page processing rather
+      than assuming an error code of 500.
+    + Update code comments and Tomcat output to use MiB for
+      1024 * 1024 bytes and KiB for 1024 bytes rather than
+      MB and kB.
+    + Avoid protocol relative redirects in FORM authentication
+      (CVE-2023-41080, bsc#1214666).
+  * Coyote
+    + Update the HTTP/2 implementation to use the prioritization
+      scheme defined in RFC 9218 rather than the one defined in
+      RFC 7540.
+    + 66602: not sending WINDOW_UPDATE when dataLength is ZERO on
+      call SwallowedDataFramePayload.
+    + 66627: Restore the documented behaviour of
+      MessageBytes.getType() that it returns the type of the
+      original content rather than reflecting the most recent
+      conversion.
+    + 66635: Correct certificate logging on start-up so it
+      differentiates between keystore based keys/certificates and
+      PEM file based keys/certificates and logs the relevant
+      information for each.
+    + Refactor blocking reads and writes for the NIO connector to
+      remove code paths that could allow a notification from the
+      Poller to be missed resuting in a timeout rather than the
+      expected read or write.
+    + Refactor waiting for an HTTP/2 stream or connection window
+      update to handle spurious wake-ups during the wait.
+    + Correct a regression introduced in 9.0.78 and use the correct
+      constant when constructing the default value for the
+      certificateKeystoreFile attribute of an
+      SSLHostConfigCertificate instance.
+    + Refactor HTTP/2 implementation to reduce pinning when using
+      virtual threads.
+    + Pass through ciphers referring to an OpenSSL profile, such as
+      PROFILE=SYSTEM instead of producing an error trying to parse
+      it.
+    + 66841: Ensure that AsyncListener.onError() is called after an
+      error during asynchronous processing with HTTP/2.
+    + 66842: When using asynchronous I/O (the default for NIO and
+      NIO2), include DATA frames when calculating the HTTP/2
+      overhead count to ensure that connections are not prematurely
+      terminated.
+    + Correct a race condition that could cause spurious RST
+      messages to be sent after the response had been written to an
+      HTTP/2 stream.
+  * WebSocket
+    + 66548: Expand the validation of the value of the
+      Sec-Websocket-Key header in the HTTP upgrade request that
+      initiates a WebSocket connection. The value is not decoded but
+      it is checked for the correct length and that only valid
+      characters from the base64 alphabet are used.
+    + Improve handling of error conditions for the WebSocket server,
+      particularly during Tomcat shutdown.
+    + Correct a regression in the fix for 66574 that meant the
+      WebSocket session could return false for onOpen() before the
+      onClose() event had been completed.
+    + 66681: Fix a NullPointerException when flushing batched
+      messages with compression enabled using permessage-deflate.
+  * Web applications
+    + Documentation. Expand the security guidance to cover the
+      embedded use case and add notes on the uses made of the
+      java.io.tmpdir system property.
+    + 66662: Documentation. Fix a typo in the name of the algorithms
+      attribute in the configuration section for the Digest
+      authentication value.
+    + Documentation. Update documentation to use MiB for
+      1024 * 1024 bytes and KiB for 1024 bytes rather than
+      MB and kB.
+  * jdbc-pool
+    + Fix the releaseIdleCounter does not increment when testAllIdle
+      releases them.
+    + Fix the ConnectionState state will be inconsistent with actual
+      state on the connection when an exception occurs while
+      writing.
+  * Other
+    + Update to Commons Daemon 1.3.4.
+    + Improvements to French translations.
+    + Update Checkstyle to 10.12.0.
+    + Update the packaged version of the Apache Tomcat Native
+      Library to 1.2.37 to pick up the Windows binaries built with
+      with OpenSSL 1.1.1u.
+    + Include the Windows specific binary distributions in the files
+      uploaded to Maven Central.
+    + Improvements to French translations.
+    + Improvements to Japanese translations.
+    + Update UnboundID to 6.0.9.
+    + Update Checkstyle to 10.12.1.
+    + Update BND to 6.4.1.
+    + Update JSign to 5.0.
+    + Correct properties for JSign dependency.
+    + Align documentation for maxParameterCount to match hard-coded
+      defaults.
+    + Update NSIS to 3.0.9.
+    + Update Checkstyle to 10.12.2.
+    + Improvements to French translations.
+    + Improvements to Japanese translations.
+    + 66829: Fix quoting so users can use the _RUNJAVA environment
+      variable as intended on Windows when the path to the Java
+      executable contains spaces.
+    + Update Tomcat Native to 1.2.38 to pick up Windows binaries
+      built with OpenSSL 1.1.1v.
+    + Improvements to Chinese translations.
+    + Improvements to French translations.
+    + Improvements to Japanese translations
+- Removed patch:
+  * tomcat-9.0.75-CVE-2023-41080.patch
+    + integrated in this version
+
+-------------------------------------------------------------------
+Thu Sep 21 13:19:54 UTC 2023 - Michele Bussolotto <michele.bussolotto@suse.com>
+
+- Fixed CVEs:
+  * CVE-2023-41080: Avoid protocol relative redirects in FORM authentication. (bsc#1214666)
+- Added patches:
+  * tomcat-9.0.75-CVE-2023-41080.patch
+
+-------------------------------------------------------------------
+Mon Sep 18 06:03:34 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * tomcat-9.0-osgi-build.patch
+    + make it more robust to change in number of artifacts in bnd
+    + do not enumerate jars, just take all jars from the aqute-bnd
+      directory into the classpath
+
+-------------------------------------------------------------------
+Tue Sep 12 11:30:29 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Require(pre) shadow because groupadd is needed early
+
+-------------------------------------------------------------------
+Tue May 23 04:25:45 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Update to Tomcat 9.0.75.
+  * See changelog at
+    https://tomcat.apache.org/tomcat-9.0-doc/changelog.html#Tomcat_9.0.75_(markt)
+  * Fixes:
+    + bsc#1211608, CVE-2023-28709
+    + bsc#1208513, CVE-2023-24998 (previous incomplete fix)
+- Remove patches:
+  * tomcat-9.0-CVE-2021-30640.patch
+  * tomcat-9.0-CVE-2021-33037.patch
+  * tomcat-9.0-CVE-2021-41079.patch
+  * tomcat-9.0-CVE-2022-23181.patch
+  * tomcat-9.0-NPE-JNDIRealm.patch
+  * tomcat-9.0-hardening_getResources.patch
+  * tomcat-9.0.43-CVE-2021-43980.patch
+  * tomcat-9.0.43-CVE-2022-42252.patch
+  * tomcat-9.0.43-CVE-2022-45143.patch
+  * tomcat-9.0.43-CVE-2023-24998.patch
+  * tomcat-9.0.43-CVE-2023-28708.patch
+    + integrated in this version
+  * tomcat-9.0.43-java8compat.patch
+    + problem with Java 8 compatibility solved in this version
+- Modified patch:
+  * tomcat-9.0.31-secretRequired-default.patch
+    -> tomcat-9.0.75-secretRequired-default.patch
+    + rediffed to changed context
+  * tomcat-9.0-javadoc.patch
+    + drop integrated hunks
+  * tomcat-9.0-osgi-build.patch
+    + fix to work with current version
+- Added patch:
+  * tomcat-9.0-jdt.patch
+    + fix build against our ecj
+
+-------------------------------------------------------------------
+Fri Apr  7 07:56:31 UTC 2023 - Michele Bussolotto <michele.bussolotto@suse.com>
+
+- Fixed CVEs:
+  * CVE-2022-45143: JsonErrorReportValve: add escape for type, message or description (bsc#1206840)
+- Added patches:
+  * tomcat-9.0.43-CVE-2022-45143.patch
+
+-------------------------------------------------------------------
+Thu Mar 23 08:06:31 UTC 2023 - Michele Bussolotto <michele.bussolotto@suse.com>
+
+- Fixed CVEs:
+  * CVE-2023-28708: tomcat: not including the secure attribute
+    causes information disclosure (bsc#1209622)
+- Added patches:
+  * tomcat-9.0.43-CVE-2023-28708.patch
+
+-------------------------------------------------------------------
+Tue Feb 28 11:14:24 UTC 2023 - Michele Bussolotto <michele.bussolotto@suse.com>
+
+- Fixed CVEs:
+  * CVE-2023-24998: tomcat,tomcat6: FileUpload DoS with excessive parts (bsc#1208513)
+- Added patches:
+  * tomcat-9.0.43-CVE-2023-24998.patch
+
+-------------------------------------------------------------------
+Fri Dec 23 08:20:55 UTC 2022 - Michele Bussolotto <michele.bussolotto@suse.com>
+
+- set logrotate for localhost.log, manager.log, host-manager.log and localhost_access_log.txt
+- use logrotate for catalina.out
+  * update tomcat-serverxml-tool and spec to configure server.xml
+- Added patch:
+  * tomcat-9.0-logrotate_everything.patch
+  * tomcat-serverxml-tool.tar.gz
+- Removed:
+  * tomcat-serverxml-tool-1.0.tar.gz
+
+-------------------------------------------------------------------
+Tue Nov 29 14:46:26 UTC 2022 - Michele Bussolotto <michele.bussolotto@suse.com>
+
+- Use catalina.out for logging (bsc#1205647)
+- Added patches:
+  * tomcat-9.0-fix_catalina.patch
+
+-------------------------------------------------------------------
+Mon Nov 21 07:42:34 UTC 2022 - Michele Bussolotto <michele.bussolotto@suse.com>
+
+- Fixed CVEs:
+  * CVE-2022-42252: reject invalid content-length requests. (bsc#1204918)
+- Added patches:
+  * tomcat-9.0.43-CVE-2022-42252.patch
+
+-------------------------------------------------------------------
+Thu Oct 20 15:58:40 UTC 2022 - Michele Bussolotto <michele.bussolotto@suse.com>
+
+- Fixed CVEs:
+  * CVE-2021-43980: Improve the recycling of Processor objects to make it more robust. (bsc#1203868)
+- Added patches:
+  * tomcat-9.0.43-CVE-2021-43980.patch
+
+-------------------------------------------------------------------
+Wed Jul 13 13:41:43 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Do not hardcode /usr/libexec but use %%_libexecdir during the
+  build
+  * Fixes for platforms, where /usr/libexec and %%_libexecdir are
+    different
+
+-------------------------------------------------------------------
+Thu Jul  7 15:35:34 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Fix bsc#1201081 by building with release=8 all files that can be
+  built this way. The one file remaining, build it with source=8 and
+  target=8
+- Modified patch:
+  * tomcat-9.0.43-java8compat.patch
+    + Do not cast ByteBuffer to Buffer to call the Java 8 compatible
+      methods. Build with release=8 instead
+
+-------------------------------------------------------------------
+Thu Apr  7 08:48:46 UTC 2022 - Michele Bussolotto <michele.bussolotto@suse.com>
+
+- Security hardening. Deprecate getResources() and always return null. (bsc#1198136)
+- Added patch: tomcat-9.0-hardening_getResources.patch
+
+-------------------------------------------------------------------
+Wed Feb 23 11:57:30 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Remove dependency on log4j/reload4j completely (bsc#1196137)
+
+-------------------------------------------------------------------
+Tue Feb 22 19:00:25 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Do not build against the log4j12 packages, use the new reload4j
+
+-------------------------------------------------------------------
+Fri Jan 28 14:01:40 UTC 2022 - Michele Bussolotto <michele.bussolotto@suse.com>
+
+- Fixed CVEs:
+  * CVE-2022-23181: Make calculation of session storage location more robust (bsc#1195255)
+- Added patches:
+  * tomcat-9.0-CVE-2022-23181.patch
+
+-------------------------------------------------------------------
+Mon Jan 10 16:16:16 UTC 2022 - olaf@aepfle.de
+
+- remove instance units from post scripts, they can not be reloaded
+
+-------------------------------------------------------------------
+Fri Dec 10 11:20:54 UTC 2021 - Michele Bussolotto <michele.bussolotto@suse.com>
+
+- Fix NPE in JNDIRealm, when userRoleAttribute is not set (bsc#1193569)
+- Added patch:
+  * tomcat-9.0-NPE-JNDIRealm.patch
+
+-------------------------------------------------------------------
+Wed Nov 10 06:51:24 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * tomcat-9.0-osgi-build.patch
+    + account for biz.aQute.bnd.ant artifact in aqute-bnd >= 5.2.0
+
+-------------------------------------------------------------------
+Fri Oct 29 11:15:32 UTC 2021 - Michele Bussolotto <michele.bussolotto@suse.com>
+
+- Fixed CVEs:
+  * CVE-2021-30640: Escape parameters in JNDI Realm queries (bsc#1188279)
+  * CVE-2021-33037: Process T-E header from both HTTP 1.0 and HTTP 1.1. clients (bsc#1188278)
+- Added patches:
+  * tomcat-9.0-CVE-2021-30640.patch
+  * tomcat-9.0-CVE-2021-33037.patch
+
+-------------------------------------------------------------------
+Thu Oct 28 08:33:07 UTC 2021 - Michele Bussolotto <michele.bussolotto@suse.com>
+
+- Fixed CVEs:
+  * CVE-2021-41079: Validate incoming TLS packet (bsc#1190558)
+- Added patches:
+  * tomcat-9.0-CVE-2021-41079.patch
+
+-------------------------------------------------------------------
+Mon Oct 18 21:42:48 UTC 2021 - Marcel Witte <wittemar@googlemail.com>
+
+- Update to Tomcat 9.0.43. See changelog at
+  https://tomcat.apache.org/tomcat-9.0-doc/changelog.html#Tomcat_9.0.43_(markt)
+- Removed Patches because fixed upstream now:
+  * tomcat-9.0-CVE-2021-25122.patch
+  * tomcat-9.0-CVE-2021-25329.patch
+- Rebased patch:
+  tomcat-9.0.39-java8compat.patch -> tomcat-9.0.43-java8compat.patch
+
+-------------------------------------------------------------------
+Mon Oct 18 18:26:39 UTC 2021 - Marcel Witte <wittemar@googlemail.com>
+
+- Update to Tomcat 9.0.41. See changelog at
+  https://tomcat.apache.org/tomcat-9.0-doc/changelog.html#Tomcat_9.0.41_(markt)
+
+-------------------------------------------------------------------
+Mon Oct 18 13:05:17 UTC 2021 - Marcel Witte <wittemar@googlemail.com>
+
+- Update to Tomcat 9.0.40. See changelog at
+  https://tomcat.apache.org/tomcat-9.0-doc/changelog.html#Tomcat_9.0.40_(markt)
+- Removed Patches because fixed upstream now:
+  * tomcat-9.0-CVE-2020-17527.patch
+  * tomcat-9.0-CVE-2021-24122.patch
+
+-------------------------------------------------------------------
+Mon Mar 22 13:11:34 UTC 2021 - Abid Mehmood <amehmood@suse.com>
+
+- Fixed CVEs:
+  * CVE-2021-25122: Apache Tomcat h2c request mix-up (bsc#1182912)
+  * CVE-2021-25329: Complete fix for CVE-2020-9484 (bsc#1182909)
+- Added patches:
+  * tomcat-9.0-CVE-2021-25122.patch 
+  * tomcat-9.0-CVE-2021-25329.patch  
+
+-------------------------------------------------------------------
+Wed Mar 17 16:16:52 UTC 2021 - Abid Mehmood <amehmood@suse.com>
+
+- Log if file access is blocked due to symlinks: CVE-2021-24122 (bsc#1180947) 
+- Added patch:
+  * tomcat-9.0-CVE-2021-24122.patch
+
+-------------------------------------------------------------------
+Mon Mar 15 21:42:07 UTC 2021 - Marcel Witte <wittemar@googlemail.com>
+
+- Update to Tomcat 9.0.39. See changelog at
+  https://tomcat.apache.org/tomcat-9.0-doc/changelog.html#Tomcat_9.0.39_(markt)
+- Rebased patches:
+  * tomcat-9.0.38-java8compat.patch -> tomcat-9.0.39-java8compat.patch
+
+-------------------------------------------------------------------
+Mon Mar 15 14:57:39 UTC 2021 - Marcel Witte <wittemar@googlemail.com>
+
+- Update to Tomcat 9.0.38. See changelog at
+  https://tomcat.apache.org/tomcat-9.0-doc/changelog.html#Tomcat_9.0.38_(markt)
+- Rebased patches:
+  * tomcat-9.0.37-java8compat.patch -> tomcat-9.0.38-java8compat.patch
+- Removed tomcat-9.0-CVE-2020-13943.patch because that fix is upstream now
+
+-------------------------------------------------------------------
+Mon Feb 22 08:56:03 UTC 2021 - Marcel Witte <wittemar@googlemail.com>
+
+- Update to Tomcat 9.0.37. See changelog at
+  https://tomcat.apache.org/tomcat-9.0-doc/changelog.html#Tomcat_9.0.37_(markt)
+- Fixed CVEs:
+  * CVE-2020-13934 (bsc#1174121)
+  * CVE-2020-13935 (bsc#1174117)
+- Rebased patches:
+  * tomcat-9.0-osgi-build.patch
+  * tomcat-9.0.31-java8compat.patch -> tomcat-9.0.37-java8compat.patch
+
+-------------------------------------------------------------------
+Wed Dec 16 12:17:22 UTC 2020 - Abid Mehmood <amehmood@suse.com>
+
+- Fix HTTP/2 request header mix-up: CVE-2020-17527 (bsc#1179602)
+- Added patch:
+  * tomcat-9.0-CVE-2020-17527.patch  
+
+-------------------------------------------------------------------
+Tue Nov  3 10:08:03 UTC 2020 - Matei Albu <malbu@suse.com>
+
+- Add source url for tomcat-serverxml-tool
+- Fix typo in tomcat-webapps %postun that caused /examples
+  context to remain in server.xml when package was removed
+- Remove tomcat-9.0.init and /usr/lib/tmpfiles.d/tomcat.conf from
+  package. They're not used anymore becuse of systemd (bsc#1178396)
+
+-------------------------------------------------------------------
+Fri Oct 30 17:05:52 UTC 2020 - Matei Albu <malbu@suse.com>
+
+- Fix tomcat-servlet-4_0-api package alternatives to use
+  /usr/share/java/servlet.jar instead of /usr/share/java/tomcat-servlet.jar.
+  Keep /usr/share/java/tomcat-servlet.jar symlink for compatibility. 
+  (bsc#1092163) 
+- Change default file ownership in tomcat-webapps from 
+  tomcat:tomcat to root:tomcat
+
+-------------------------------------------------------------------
+Tue Oct 13 11:23:32 UTC 2020 - Matei Albu <malbu@suse.com>
+
+- Fix CVE-2020-13943 (bsc#1177582)
+- Added patch: 
+  * tomcat-9.0-CVE-2020-13943.patch
+- Change /usr/lib/tomcat to /usr/libexec/tomcat in startup
+  scripts (bsc#1177601)
+
+-------------------------------------------------------------------
+Tue Oct 13 10:47:39 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Replace old specfile constructs. Remove support for SUSE 11.x.
+- Drop %systemd_requires, which is considered a no-op.
+- Trim redundant license mention from description.
+- Make documentation noarch.
+- Do not suppress errors from useradd.
+
+-------------------------------------------------------------------
+Wed Aug 26 06:04:58 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Avoid hardcoding /usr/lib as libexecdir
+
+-------------------------------------------------------------------
+Wed Jul 29 20:48:14 UTC 2020 - Matei Albu <malbu@suse.com>
+
+- Don't give write permissions for the tomcat group on files and
+  directories where it's not needed (bsc#1172562)
+- Change tomcat.pid location from /var/run to /run (bsc#1173103)
+- Use the /sbin/nologin shell when creating the tomcat user
+- Use %tmpfiles_create macro in %post instead of calling
+  systemd-tmpfiles directly
+
+-------------------------------------------------------------------
+Fri Jun 26 08:03:01 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Update to Tomcat 9.0.36. See changelog at
+  https://tomcat.apache.org/tomcat-9.0-doc/changelog.html#Tomcat_9.0.36_(markt)
+- Fixed CVEs:
+  CVE-2020-11996 (bsc#1173389)
+
+-------------------------------------------------------------------
+Tue May 26 14:58:13 UTC 2020 - Matei Albu <malbu@suse.com>
+
+- Update to Tomcat 9.0.35. See changelog at
+  https://tomcat.apache.org/tomcat-9.0-doc/changelog.html#Tomcat_9.0.35_(markt)
+- Fixed CVEs:
+  - CVE-2020-9484 (bsc#1171928)
+- Rebased patches:
+  * tomcat-9.0-javadoc.patch
+  * tomcat-9.0-osgi-build.patch
+  * tomcat-9.0.31-java8compat.patch
+  
+-------------------------------------------------------------------
+Fri Apr 10 15:43:59 UTC 2020 - Javier Llorente <javier@opensuse.org>
+
+- Update to Tomcat 9.0.34. See changelog at
+  https://tomcat.apache.org/tomcat-9.0-doc/changelog.html#Tomcat_9.0.34_(markt)
+- Notable changes:
+  * Add support for default values when using ${...} property 
+    replacement in configuration files. Based on a pull request 
+    provided by Bernd Bohmann.
+  * When configuring an HTTP Connector, warn if the encoding 
+    specified for URIEncoding is not a superset of US-ASCII as 
+    required by RFC 7230.
+  * Replace the system property 
+    org.apache.tomcat.util.buf.UDecoder.ALLOW_ENCODED_SLASH with 
+    the Connector attribute encodedSolidusHandling that adds an 
+    additional option to pass the %2f sequence through to the 
+    application without decoding it in addition to rejecting such 
+    sequences and decoding such sequences.
+
+-------------------------------------------------------------------
+Mon Mar 30 11:13:09 UTC 2020 - Matei Albu <malbu@suse.com>
+
+- Update to Tomcat 9.0.33. See changelog at
+  http://tomcat.apache.org/tomcat-9.0-doc/changelog.html#Tomcat_9.0.33_(markt)
+- Notable fix: corrected a regression in the improvements to HTTP 
+  header parsing (bsc#1167438)
+- Rebased patches:
+  * tomcat-9.0-javadoc.patch
+  * tomcat-9.0-osgi-build.patch
+  * tomcat-9.0.31-java8compat.patch
+
+-------------------------------------------------------------------
+Fri Feb 28 10:15:08 UTC 2020 - Matei Albu <malbu@suse.com>
+
+- Change default value of AJP connector secretRequired to false
+- Added patch:
+  * tomcat-9.0.31-secretRequired-default.patch
+
+-------------------------------------------------------------------
+Tue Feb 25 13:24:14 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Update to Tomcat 9.0.31. See changelog at
+  http://tomcat.apache.org/tomcat-9.0-doc/changelog.html#Tomcat_9.0.30_(markt)
+- Fixed CVEs:
+  * CVE-2019-17569 (bsc#1164825)
+  * CVE-2020-1935 (bsc#1164860)
+  * CVE-2020-1938 (bsc#1164692)
+- Modified patch
+  * tomcat-9.0.30-java8compat.patch
+    -> tomcat-9.0.31-java8compat.patch
+    + Adapt to changed context
+
+-------------------------------------------------------------------
+Wed Jan 29 16:49:29 UTC 2020 - Matei Albu <malbu@suse.com>
+
+- Modified patch:
+  * tomcat-9.0.30-java8compat.patch
+    + add missing casts (bsc#1162081)
+
+-------------------------------------------------------------------
+Mon Jan 20 13:36:39 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Change back the build to build with any Java >= 1.8
+- Added patch:
+  * tomcat-9.0.30-java8compat.patch
+    + Cast java.nio.ByteBuffer and java.nio.CharBuffer to
+      java.nio.Buffer in order to avoid calling Java 9+ APIs
+      (functions with co-variant return types)
+- Renamed patch:
+  * tomcat-9.0-disable-osgi-build.patch
+    -> tomcat-9.0-osgi-build.patch
+    + Do not disable, but fix OSGi build since we have now
+      aqute-bnd
+
+-------------------------------------------------------------------
+Fri Jan 17 14:26:15 UTC 2020 - Matei Albu <malbu@suse.com>
+
+- Change build to always use Java 1.8 (bsc#1161025). 
+
+-------------------------------------------------------------------
+Fri Dec 27 10:22:58 UTC 2019 - Matei Albu <malbu@suse.com>
+
+- Update to Tomcat 9.0.30. See changelog at
+  http://tomcat.apache.org/tomcat-9.0-doc/changelog.html#Tomcat_9.0.30_(markt)
+- Fixed CVEs:
+  - CVE-2019-0221 (bsc#1136085)
+  - CVE-2019-10072 (bsc#1139924)
+  - CVE-2019-12418 (bsc#1159723)
+  - CVE-2019-17563 (bsc#1159729)
+- Removed patch:
+  * tomcat-9.0-JDTCompiler-java.patch
+    + It was not applied
+
+-------------------------------------------------------------------
+Mon Nov 18 09:13:10 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Update to Tomcat 9.0.27. See changelog at
+  http://tomcat.apache.org/tomcat-9.0-doc/changelog.html#Tomcat_9.0.27_(markt)
+- Uset aqute-bnd to generate OSGi manifest, since we have that
+  package now in openSUSE:Factory
+- Removed patch:
+  * tomcat-9.0-disable-osgi-build.patch
+    + not needed
+
+-------------------------------------------------------------------
+Fri Nov 15 23:25:47 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Add maven pom files for tomcat-jni and tomcat-jaspic-api
+
+-------------------------------------------------------------------
+Fri Oct  4 13:32:51 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Distribute the pom file also for tomcat-util-scan artifact
+
+-------------------------------------------------------------------
+Tue Oct  1 12:29:16 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Build against compatibility log4j12 package
+
+-------------------------------------------------------------------
+Wed Sep 25 12:18:29 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Adapt to the new ecj directory layout
+
+-------------------------------------------------------------------
+Wed Jun 12 14:50:12 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
+  shortcut the build queues by allowing usage of systemd-mini
+
+-------------------------------------------------------------------
+Mon May 20 20:40:08 UTC 2019 - Matei <malbu@suse.com>
+
+- Update to Tomcat 9.0.20. See changelog at
+  http://tomcat.apache.org/tomcat-9.0-doc/changelog.html#Tomcat_9.0.20_(markt)
+- increase maximum number of threads and open files for tomcat (bsc#1111966)
+
+-------------------------------------------------------------------
+Mon Apr 22 17:01:17 UTC 2019 - malbu@suse.com
+
+- Update to Tomcat 9.0.19. See changelog at
+  http://tomcat.apache.org/tomcat-9.0-doc/changelog.html#Tomcat_9.0.19_(markt)
+  Notable packaging changes:
+  - File /usr/share/java/tomcat/catalina-jmx-remote.jar was removed.
+    The classes contained in this jar were merged into 
+    /usr/share/java/tomcat/catalina.jar.
+- Fixed CVEs:
+  - CVE-2019-0199 (bsc#1131055)
+- Rebased patch:
+  - tomcat-9.0-JDTCompiler-java.patch
+  - tomcat-9.0-javadoc.patch
+
+-------------------------------------------------------------------
+Mon Apr 15 13:53:30 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Build classpath directly with the geronimo jars instead of with
+  symlinks to them
+
+-------------------------------------------------------------------
+Tue Feb 19 17:22:16 UTC 2019 - malbu@suse.com
+
+- Don't overwrite changes made to server.xml contexts when updating
+  bundled webapps.
+
+-------------------------------------------------------------------
+Mon Feb 18 15:55:12 UTC 2019 - malbu@suse.com
+
+- Set javac target to 1.8 when building docs samples and serverxmltool
+
+-------------------------------------------------------------------
+Tue Feb  5 09:50:35 UTC 2019 - malbu@suse.com
+
+- Move webapps bundled with Tomcat to /usr/share/tomcat/tomcat-webapps
+  (bsc#1092341). Affected packages:
+  - tomcat-webapps
+  - tomcat-admin-webapps
+  - tomcat-docs-webapp
+- Remove %doc directive from tomcat-docs-webapps files section so that
+  zypper installs files even if rpm.install.excludedocs is set to yes.
+
+-------------------------------------------------------------------
+Mon Feb  4 15:35:43 UTC 2019 - malbu@suse.com
+
+- Require Java 1.8 or later (bsc#1123407) 
+
+-------------------------------------------------------------------
+Sat Jan 26 08:07:36 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Clean up OSGi manifest injection
+- Put embed maven metadata into embed subpackage
+- Use the .mfiles* lists generated by %%add_maven_depmap macro
+
+-------------------------------------------------------------------
+Wed Jan 16 17:05:36 UTC 2019 - malbu@suse.com
+
+- Fix tomcat-tool-wrapper classpath error (bsc#1120745) 
+
+-------------------------------------------------------------------
+Fri Jan 11 15:46:43 UTC 2019 - malbu@suse.com
+
+- Fix tomcat-digest classpath error (bsc#1120745) 
+
+-------------------------------------------------------------------
+Sat Dec 29 10:08:17 UTC 2018 - ecsos@opensuse.org
+
+- Update to Tomcat 9.0.14. See changelog at
+  http://tomcat.apache.org/tomcat-9.0-doc/changelog.html#Tomcat_9.0.14_(markt)
+
+-------------------------------------------------------------------
+Wed Dec  5 08:05:30 UTC 2018 - Fridrich Strba <fstrba@suse.com>
+
+- Add pom files for tomcat-jdbc and tomcat-dbcp
+- Add org.eclipse.jetty.orbit* aliases to correspondant artifacts
+
+-------------------------------------------------------------------
+Fri Nov 09 07:16:23 UTC 2018 - sean@suspend.net
+
+- Update to Tomcat 9.0.13. See changelog at
+  http://tomcat.apache.org/tomcat-9.0-doc/changelog.html#Tomcat_9.0.13_(markt)
+
+-------------------------------------------------------------------
+Thu Oct 18 08:12:41 UTC 2018 - malbu@suse.com
+
+- Update to Tomcat 9.0.12. See changelog at 
+  http://tomcat.apache.org/tomcat-9.0-doc/changelog.html#Tomcat_9.0.12_(markt)
+- Fixed CVEs:
+  - CVE-2018-11784 (bsc#1110850)
+- Rebased patches:
+  - tomcat-9.0-disable-osgi-build.patch
+  - tomcat-9.0-javadoc.patch
+  - tomcat-9.0-sle.catalina.policy.patch
+  - tomcat-9.0-tomcat-users-webapp.patch
+
+-------------------------------------------------------------------
+Tue Sep 11 10:34:02 UTC 2018 - ecsos@opensuse.org
+
+- Declare following files to config(noreplace) to prevent override
+  access rights:
+  - host-manager/META-INF/context.xml
+  - manager/META-INF/context.xml
+
+-------------------------------------------------------------------
+Sun Aug 26 22:01:07 UTC 2018 - malbu@suse.com
+
+- Empty tomcat-9.0.sysconfig to avoid overwriting of customer's 
+  configuration during update (bsc#1067720)
+
+-------------------------------------------------------------------
+Tue Aug 16 14:13:23 UTC 2018 - malbu@suse.com
+
+- Update to Tomcat 9.0.10. See changelog at 
+  http://tomcat.apache.org/tomcat-9.0-doc/changelog.html#Tomcat_9.0.10_(markt)
+- Fixed CVEs:
+  - CVE-2018-1336 (bsc#1102400)
+  - CVE-2018-8014 (bsc#1093697)
+  - CVE-2018-8034 (bsc#1102379)
+  - CVE-2018-8037 (bsc#1102410)
+- Rebased patch tomcat-9.0-JDTCompiler-java.patch
+- Added patch tomcat-9.0-disable-osgi-build.patch to disable adding 
+  OSGi metadata to JAR files
+
+-------------------------------------------------------------------
+Wed Feb 16 16:38:14 UTC 2018 - malbu@suse.de
+
+- Update to Tomcat 9.0.5. See changelog at
+  http://tomcat.apache.org/tomcat-9.0-doc/changelog.html#Tomcat_9.0.5_(markt)
+
+-------------------------------------------------------------------
+Wed Jan 17 09:34:14 UTC 2018 - fstrba@suse.com
+
+- Modified patch:
+  * tomcat-9.0-javadoc.patch
+    + Don't append to javadoc --add-modules since we are building
+      with source=8
+    + Avoid accessing Internet URLs from build environment
+
+-------------------------------------------------------------------
+Fri Dec  1 21:46:18 UTC 2017 - malbu@suse.com
+
+- Update to Tomcat 9.0.2:
+  * Major update for tomcat8 from tomcat9
+  * For full changelog please read upstream changes at:
+    + http://tomcat.apache.org/tomcat-9.0-doc/changelog.html
+  * Rename all tomcat-8.0-* files to tomcat-9.0-*
+- Changed patches:
+  * Deleted: tomcat-8.0-bootstrap-MANIFEST.MF.patch
+  * Deleted: tomcat-8.0-sle.catalina.policy.patch
+  * Deleted: tomcat-8.0-tomcat-users-webapp.patch
+  * Deleted: tomcat-8.0.33-JDTCompiler-java.patch
+  * Deleted: tomcat-8.0.44-javadoc.patch
+  * Deleted: tomcat-8.0.9-property-build.windows.patch
+  * Added: tomcat-9.0-JDTCompiler-java.patch
+  * Added: tomcat-9.0-bootstrap-MANIFEST.MF.patch
+  * Added: tomcat-9.0-javadoc.patch
+  * Added: tomcat-9.0-sle.catalina.policy.patch
+  * Added: tomcat-9.0-tomcat-users-webapp.patch
+- Renamed subpackage tomcat-3_1-api to tomcat-4_0-api
+  to reflect the new Servlet API version.
+- Commented out JAVA_HOME in /etc/tomcat/tomcat.conf
+- Added "tomcat-" prefix to lib symlinks under
+  /usr/share/java to avoid file conflicts with servletapi5
+  and geronimo-specs
+- Fixed wrong %ghost file paths for alternatives symlinks
+
+-------------------------------------------------------------------
+Thu Nov 23 13:50:29 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Mon Oct 23 09:42:48 UTC 2017 - malbu@suse.com
+
+- Build with JDK 8 to fix runtime errors when running with JDK 7
+  and 8
+- Fix tomcat-digest classpath error (bsc#977410)
+- Fix packaged /etc/alternatives symlinks for api libs that caused
+  rpm -V to report link mismatch (bsc#1019016)
+
+-------------------------------------------------------------------
+Mon Oct 23 06:07:05 UTC 2017 - ecsos@opensuse.org
+
+- update to 8.0.47
+  http://tomcat.apache.org/tomcat-8.0-doc/changelog.html
+  * Fixed CVE:
+    - CVE-2017-12617
+- rebase tomcat-8.0-sle.catalina.policy.patch
+
+-------------------------------------------------------------------
+Tue Sep 19 09:07:39 UTC 2017 - fstrba@suse.com
+
+- Added patch:
+  * tomcat-8.0.44-javadoc.patch
+    - generate documentation with the same source level as class
+      files
+    - fixes build with jdk9
+
+-------------------------------------------------------------------
+Fri Jun  9 05:44:53 UTC 2017 - ecsos@opensuse.org
+
+- Version update to 8.0.44:
+  http://tomcat.apache.org/tomcat-8.0-doc/changelog.html
+  * Fixed CVE:
+    - CVE-2017-5664 (bsc#1042910)
+
+-------------------------------------------------------------------
+Fri May 19 09:22:56 UTC 2017 - dziolkowski@suse.com
+
+- New build dependency: javapackages-local
+
+-------------------------------------------------------------------
+Tue May  9 13:36:47 UTC 2017 - malbu@suse.com
+
+- Version update to 8.0.43:
+  * Another bugfix release, for full details see:
+    http://tomcat.apache.org/tomcat-8.0-doc/changelog.html
+  * Fixed CVEs:
+    - CVE-2017-5647 (bnc#1033448)
+    - CVE-2017-5648 (bnc#1033447)
+    - CVE-2016-8745
+- Renamed and rebased patches:
+  * tomcat-7.0-sle.catalina.policy.patch -> tomcat-8.0-sle.catalina.policy.patch
+- Enable optional setenv.sh script. See section
+  "(3.4) Using the "setenv" script (optional, recommended)" in
+  http://tomcat.apache.org/tomcat-8.0-doc/RUNNING.txt
+  (bnc#1002662)
+- Fix file conflicts when upgrading from SLES 12 to SLES 12 SP1 (bnc#1023412).
+  Added explicit obsoletes for tomcat-el-2_2-api, tomcat-jsp-2_2-api,
+  tomcat-servlet-3_0-api
+
+-------------------------------------------------------------------
+Wed Dec 21 21:49:10 UTC 2016 - astieger@suse.com
+
+- update to 8.0.39: (boo#1003911)
+  * Improve handling of I/O errors with async processing
+  * Fail earlier on invalid HTTP request
+- includes changes from  8.0.38:
+  * Refactoring the non-container thread Async complete()/dispatch()
+    handling to remove the possibility of deadlock
+  * Improved UTF-8 handling for the RewriteValve
+- includes changes from 8.0.37:
+  * Treat paths used to obtain a request dispatcher as encoded
+    (configurable)
+  * Various jdbc-pool fixes
+- drop tomcat-8.0.36-jar-scanner-loop.patch, upstream
+
+-------------------------------------------------------------------
+Thu Sep 29 12:26:30 UTC 2016 - tchvatal@suse.com
+
+- Switch to commons-dbcp2 fate#321029
+
+-------------------------------------------------------------------
+Fri Sep  2 13:20:00 UTC 2016 - malbu@suse.com
+
+- Backport fix for inifinite loop in the jar scanner for 8.0.36. (bnc#993862)
+  Added: tomcat-8.0.36-jar-scanner-loop.patch
+
+-------------------------------------------------------------------
+Wed Jul  6 12:20:03 UTC 2016 - malbu@suse.com
+
+- Version update to 8.0.36:
+  * Another bugfix release for the 8.0 series. Full details:
+    http://tomcat.apache.org/tomcat-8.0-doc/changelog.html#Tomcat_8.0.36_(markt)
+- CVE fixed by the version update:
+  - CVE-2016-3092 (bnc#986359)
+- Fixed a deployment error in the examples webapp by changing the context.xml format to the new one
+  introduced by Tomcat 8. See http://tomcat.apache.org/migration-8.html#Web_application_resources
+
+-------------------------------------------------------------------
+Mon May  2 16:05:26 UTC 2016 - dmacvicar@suse.de
+
+- fix maven fragments paths to build in multiple distribution
+  versions
+
+-------------------------------------------------------------------
+Thu Apr 21 21:22:56 UTC 2016 - jcnengel@gmail.com
+
+- Version update to 8.0.33:
+  * Another bugfix release for 8.0 series, full details:
+    http://tomcat.apache.org/tomcat-8.0-doc/changelog.html#Tomcat_8.0.33_(markt)
+- Rebase tomcat-8.0-tomcat-users-webapp.patch
+- Rebase tomcat-7.0.53-JDTCompiler-java.patch
+  to tomcat-8.0.33-JDTCompiler-java.patch
+
+-------------------------------------------------------------------
+Thu Apr  7 13:01:07 UTC 2016 - tchvatal@suse.com
+
+- Fix fixme for the prereq preamble value
+- It seems systemd prints error on adding the @ services to macros
+  so do not do that
+
+-------------------------------------------------------------------
+Thu Mar 31 08:18:39 UTC 2016 - dmacvicar@suse.de
+
+- package was partly merged with the scripts used in the
+  Fedora distribution
+- support running multiple tomcat instances on the same server
+  (fate#317783)
+- add catalina-jmx-remote.jar (fate#318403)
+- remove sysvinit support: systemd is required
+
+-------------------------------------------------------------------
+Mon Feb 29 12:45:46 UTC 2016 - dmacvicar@suse.de
+
+- update changes file for CVE information
+- Fixed CVEs:
+  - CVE-2015-5346 (bnc#967814) in 8.0.32
+  - CVE-2015-5351 (bnc#967812) in 8.0.32
+  - CVE-2016-0706 (bnc#967815) in 8.0.32
+  - CVE-2016-0714 (bnc#967964) in 8.0.32
+  - CVE-2016-0763 (bnc#967966) in 8.0.32
+  - CVE-2015-5345 (bnc#967965) in 8.0.30
+  - CVE-2015-5174 (bnc#967967) in 8.0.27
+
+-------------------------------------------------------------------
+Wed Feb 17 18:12:57 UTC 2016 - tchvatal@suse.com
+
+- Version update to 8.0.32:
+  * Another bugfix release for 8.0 series, full details:
+    http://tomcat.apache.org/tomcat-8.0-doc/changelog.html#Tomcat_8.0.32_(markt)
+- Rebase patch:
+  * tomcat-8.0.9-property-build.windows.patch
+
+-------------------------------------------------------------------
+Tue Nov 10 09:20:40 UTC 2015 - dmacvicar@suse.de
+
+- update to Tomcat 8.0.28
+  * Multiple fixes, read upstream changelog at:
+  https://tomcat.apache.org/tomcat-8.0-doc/changelog.html#Tomcat_8.0.28_(markt)
+
+-------------------------------------------------------------------
+Mon Jun  1 09:08:36 UTC 2015 - tchvatal@suse.com
+
+- Some whitespace cleanups
+
+-------------------------------------------------------------------
+Mon Jun  1 09:07:45 UTC 2015 - tchvatal@suse.com
+
+- Remove pointless conflicts on provide/obsolete symbols
+
+-------------------------------------------------------------------
+Mon Jun  1 08:54:33 UTC 2015 - tchvatal@suse.com
+
+- Version bump to 8.0.23 fate#318913:
+  * Multiple testfixes all around, read upstream changelog at:
+  http://tomcat.apache.org/tomcat-8.0-doc/changelog.html#Tomcat_8.0.23_(markt)
+
+-------------------------------------------------------------------
+Tue Mar 24 08:06:33 UTC 2015 - tchvatal@suse.com
+
+- Fix previous commit. Fix one rpmlint warning
+
+-------------------------------------------------------------------
+Wed Mar 18 10:22:27 UTC 2015 - tchvatal@suse.com
+
+- Drop gpg verification from spec, it is done by obs
+
+-------------------------------------------------------------------
+Wed Mar 18 10:16:07 UTC 2015 - tchvatal@suse.com
+
+- Fix build with new jpackage-tools
+
+-------------------------------------------------------------------
+Tue Feb 10 10:12:38 UTC 2015 - wittemar@googlemail.com
+
+- update to Tomcat 8.0.18:
+  * Major update for tomcat8 from tomcat7
+  * For full changelog please read upstream changes at:
+    + http://tomcat.apache.org/tomcat-8.0-doc/changelog.html
+  * Rename all tomcat-7.0-* files to tomcat-8.0-*
+  * Update keyring file
+- Update windows patch to apply again:
+  * Deleted: tomcat-7.0.52-property-build.windows.patch
+  * Added: tomcat-8.0.9-property-build.windows.patch
+  * Added:tomcat-8.0-tomcat-users-webapp.patch
+  * Deleted: tomcat-7.0-tomcat-users-webapp.patch
+  * Added: tomcat-8.0-bootstrap-MANIFEST.MF.patch
+  * Deleted: tomcat-7.0-bootstrap-MANIFEST.MF.patch
+
+-------------------------------------------------------------------
+Tue Feb  3 14:05:08 UTC 2015 - bmaryniuk@suse.com
+
+- Version 1.1.30 or higher is required for APR listener (bnc#914725)
+
+-------------------------------------------------------------------
+Wed Sep 17 11:28:46 UTC 2014 - bmaryniuk@suse.com
+
+- SLE12 has different path for the "rm" command than older versions.
+  To avoid possible clashes, the entire coreutils must be provided.
+  (bnc#894292)
+
+-------------------------------------------------------------------
+Tue Sep 16 16:09:59 UTC 2014 - bmaryniuk@suse.com
+
+- Fixed Security Manager policies, which makes unable properly
+  run webapps by default. (bnc#891264)
+  Added: tomcat-7.0-sle.catalina.policy.patch
+
+-------------------------------------------------------------------
+Tue Sep 16 14:13:20 UTC 2014 - bmaryniuk@suse.com
+
+- Missing security manager policy file prevents Tomcat to start
+  with systemd. (bnc#890995)
+
+-------------------------------------------------------------------
+Mon Sep 15 13:02:02 UTC 2014 - dmacvicar@suse.de
+
+- Tomcat 7.0.55 requires ecj 4.4.0
+
+-------------------------------------------------------------------
+Mon Sep  8 09:01:13 UTC 2014 - dmacvicar@suse.de
+
+- include the tomcat websocket implementation (tomcat7-websocket)
+
+-------------------------------------------------------------------
+Mon Sep  8 08:23:28 UTC 2014 - dmacvicar@suse.de
+
+- Update to 7.0.55
+  * Update to the Eclipse JDT Compiler 4.4
+  * Better error handling when the error occurs after the response
+    has been committed
+  * Various improvements to the Mapper including fixing some
+    concurrency bugs
+  * See http://tomcat.apache.org/tomcat-7.0-doc/changelog.html
+
+-------------------------------------------------------------------
+Mon Sep  8 07:44:28 UTC 2014 - dmacvicar@suse.de
+
+- build tomcat-embed as a subpackage
+
+-------------------------------------------------------------------
+Wed Sep  3 14:43:12 UTC 2014 - tchvatal@suse.com
+
+- Drop two unused defines
+
+-------------------------------------------------------------------
+Wed Sep  3 10:47:16 UTC 2014 - dmacvicar@suse.de
+
+- touch the alternatives files to avoid build errors
+  in older versions
+
+-------------------------------------------------------------------
+Tue Jul 29 11:25:14 UTC 2014 - tchvatal@suse.com
+
+- Do not define default defattr as it is pointless.
+
+-------------------------------------------------------------------
+Fri Jul 25 09:24:12 UTC 2014 - tchvatal@suse.com
+
+- One file here was not supposed to be ghost.
+
+-------------------------------------------------------------------
+Sat Jul 19 09:35:11 UTC 2014 - tchvatal@suse.com
+
+- Fix once more the alternatives.
+
+-------------------------------------------------------------------
+Fri Jul 11 14:16:47 UTC 2014 - tchvatal@suse.com
+
+- Add path to rm command.
+
+-------------------------------------------------------------------
+Fri Jul 11 09:18:07 UTC 2014 - tchvatal@suse.com
+
+- Silence loads of warnings by rpmlintrc
+
+-------------------------------------------------------------------
+Thu Jul 10 14:57:29 UTC 2014 - tchvatal@suse.com
+
+- Cleanup with spec-cleaner and format few things a bit.
+
+-------------------------------------------------------------------
+Thu Jul 10 14:47:30 UTC 2014 - tchvatal@suse.com
+
+- Remove few deps not really needed for sle11.
+
+-------------------------------------------------------------------
+Thu Jul 10 14:42:03 UTC 2014 - tchvatal@suse.com
+
+- Drop unused files obs.bl and local.lb
+- Drop unused collections-tomcat-build.xml
+
+-------------------------------------------------------------------
+Sat May 24 09:58:55 UTC 2014 - tchvatal@suse.com
+
+- Version bump to 7.0.54:
+  * bugfix update
+  * See http://tomcat.apache.org/tomcat-7.0-doc/changelog.html
+
+-------------------------------------------------------------------
+Thu May 15 14:59:25 UTC 2014 - darin@darins.net
+
+- Update to 7.0.53
+  * bugfix release
+  * Update the Eclipse JDT compiler to enable full Java 8 support in JSPs.
+  * See http://tomcat.apache.org/tomcat-7.0-doc/changelog.html
+- Patch for Bug 56373
+  * See https://issues.apache.org/bugzilla/show_bug.cgi?id=56373
+  * tomcat-7.0.53-JDTCompiler-java.patch
+- Rename tomcat-7.0.2-property-build.windows.patch to
+  tomcat-7.0.52-property-build.windows.patch
+
+-------------------------------------------------------------------
+Thu May 15 14:41:40 UTC 2014 - darin@darins.net
+
+- remove saxon build requirement for sles
+- disable bytecode check for sles
+
+-------------------------------------------------------------------
+Mon Apr 14 17:59:07 UTC 2014 - darin@darins.net
+
+- remove unknown option from fillup_only macro
+- wrap systemd %pre[un]/%post[un] in conditional
+- specify required ant version
+
+-------------------------------------------------------------------
+Tue Apr  8 17:27:09 UTC 2014 - wittemar@googlemail.com
+
+- Update to 7.0.52
+  * bugfix release
+  * Fix CVE-2014-0050, a DoS vulnerability related to multi-part processing
+- Update to 7.0.50
+  * bugfix release
+
+-------------------------------------------------------------------
+Thu Dec 12 10:14:47 UTC 2013 - mvyskocil@suse.com
+
+- Add missing commons-pool-tomcat5 symlink (bnc#847505c#13)
+
+-------------------------------------------------------------------
+Mon Nov  4 14:12:40 UTC 2013 - mvyskocil@suse.com
+
+- Update to 7.0.47
+  * bugfix release
+  * backport of JSR-356 Java WebSocket 1.0
+  * package tomcat now requires java7 at lease
+- Updated tomcat.keyring to reflect the fact new release is signed by
+  Violeta Georgieva / D63011C7
+  see http://osdir.com/ml/dev-tomcat.apache.org/2013-10/msg00849.html
+- Add tomcat-dbcp.jar (bnc#847505) back into tomcat lib dir
+- Install tomcat-coyote.jar as well
+- Remove pointless scriplets
+
+-------------------------------------------------------------------
+Mon Sep  9 11:06:25 UTC 2013 - tchvatal@suse.com
+
+- Move from jpackage-utils to javapackage-tools
+
+-------------------------------------------------------------------
+Thu Sep  5 13:59:28 UTC 2013 - mvyskocil@suse.com
+
+- drop a dependency on unecessary -tomcat5 packages
+- use commons-dbcp.jar for build
+- add missing commons-pool.jar to libdir
+
+-------------------------------------------------------------------
+Fri Aug  9 09:18:44 UTC 2013 - mvyskocil@suse.com
+
+- add _constraints to not schedule build on some build machines
+  workaround for bnc#832762
+
+-------------------------------------------------------------------
+Tue Aug  6 20:24:06 UTC 2013 - robert.munteanu@gmail.com
+
+- Add missing 'su root tomcat' line to logrotate. See also
+  https://bugzilla.redhat.com/show_bug.cgi?id=790334
+
+-------------------------------------------------------------------
+Fri Jul 26 13:06:35 UTC 2013 - mvyskocil@suse.com
+
+- call chown --no-dereference in init script
+  (bnc#822177#c7/prevents CVE-2013-1976)
+
+-------------------------------------------------------------------
+Tue Jul 23 14:33:47 UTC 2013 - mvyskocil@suse.com
+
+- update to 7.0.42 (bugfix release)
+  see http://tomcat.apache.org/tomcat-7.0-doc/changelog.html
+- fix file list to be compatible for new rpm
+
+-------------------------------------------------------------------
+Thu Apr 18 12:23:13 UTC 2013 - mvyskocil@suse.com
+
+- update to 7.0.39 (bugfix release)
+- install only systemd unit files on openSUSE 12.1+
+  * and call proper code when init script still exists
+- add a proper scripplets for -jsvc subpackage
+- don't use catalina.out, systemd redirects stderr/stdout to syslog
+- don't use and recommends logrotate
+- package /etc/ant.d properly, mark only catalina-ant as a config file
+
+-------------------------------------------------------------------
+Sat Feb 16 07:29:52 UTC 2013 - m407@mail.ru
+
+- Fix tomcat init scripts generating malformed classpath
+  (http://youtrack.jetbrains.com/issue/JT-18545)
+  bnc#804992
+
+-------------------------------------------------------------------
+Mon Jan 21 13:54:18 UTC 2013 - mvyskocil@suse.com
+
+- update to 7.0.35 (bugfix release)
+  require ecj >= 4.2.1, like upstream do
+- make gpg-offline work distros after 12.2
+
+-------------------------------------------------------------------
+Thu Dec 27 17:14:55 UTC 2012 - archie@dellroad.org
+
+- Ensure tomcat stdout/stderr output ends up in catalina.out
+
+-------------------------------------------------------------------
+Thu Dec 20 22:45:19 UTC 2012 - archie@dellroad.org
+
+- Recommend libtcnative-1-0 >= 1.1.24
+- /etc/init.d/tomcate init script fixes:
+  * Include /usr/bin and /usr/sbin in the PATH
+  * Fix logic for cleaning the work directories
+  * Fix typo (log_success_msg lsb function name)
+  * Fix typo (reload message)
+- Require log4j
+
+-------------------------------------------------------------------
+Tue Dec 18 09:34:29 UTC 2012 - mvyskocil@suse.com
+
+- Require gpg-offline on 12.2+
+
+-------------------------------------------------------------------
+Thu Nov 29 19:17:03 CET 2012 - sbrabec@suse.cz
+
+- Verify GPG signature.
+
+-------------------------------------------------------------------
+Mon Nov 26 13:01:44 UTC 2012 - mvyskocil@suse.com
+
+- update to 7.0.33 (bugfix release)
+
+-------------------------------------------------------------------
+Tue Sep 11 08:24:53 UTC 2012 - mvyskocil@suse.cz
+
+- update to 7.0.30 (bugfix release)
+  * SSI and CGI disabled by default
+- fix bnc#779538: change the working dir to $CATALINA_BASE
+- document the CATALINA_BASE and CATALINA_HOME in tomcat.conf better
+- fix rpmlintrc file
+
+-------------------------------------------------------------------
+Thu Jul 19 08:48:31 UTC 2012 - mvyskocil@suse.cz
+
+- fix bnc#771802 - systemd support is broken
+  * change type froking to simple as it does not make a sense run java in a
+    background to emulate that
+  * remove the need of nested wrappers, so /usr/sbin/tomcat-sysd now relies on
+    systemd features like User/EnvironmentFile
+  * workaround the 143 exit code in Stop phase - return 0 in this case
+  * merge the jsvc into tomcat-sysd code, the -jsvc-sysd is a symlink
+  * properly use jsvc with pid file to start and stop
+
+-------------------------------------------------------------------
+Wed Jun 13 12:37:49 UTC 2012 - mvyskocil@suse.cz
+
+- update to 7.0.26 (bugfix release)
+- rename package to tomcat in order to emphasise a fact, there is only one
+  major release of tomcat maintained in distribution
+- add manifest files and systemd support (thanks Fedora)
+- create tomcat-jsvc package
+
+-------------------------------------------------------------------
+Thu Feb 23 13:59:10 UTC 2012 - mvyskocil@suse.cz
+
+- update to 7.0.26 (bugfix release)
+- fix bnc#747771 - don't use /var/lock/subsys
+  sync tomcat7 init with tomcat6
+
+-------------------------------------------------------------------
+Sun Feb 19 23:02:42 UTC 2012 - wittemar@googlemail.com
+
+- update to 7.0.25 (bugfix release)
+
+-------------------------------------------------------------------
+Tue Nov  1 12:36:57 UTC 2011 - mvyskocil@suse.cz
+
+- update to 7.0.22 (bugfix release)
+- wrote changes and prepare for inclusion to openSUSE distribution
+- fix bnc#726307
+  /etc/tomcat7 is writtable for tomcat group
+
+-------------------------------------------------------------------
+Mon Sep 19 10:21:29 UTC 2011 - wittemar@googlemail.com
+
+ - update to version 7.0.21
+
+-------------------------------------------------------------------
+Thu Jul 21 10:21:29 UTC 2011 - mvyskocil@suse.cz
+
+ - update to version 7.0.16 (bugfix update)
+
+-------------------------------------------------------------------
+Wed Mar 30 16:29:28 UTC 2011 - jrenner@suse.de
+
+ - add rpmlintrc, digest, init and wrapper scripts and config file
+ - build require geronimo apis and wsdl4j
+ - disable webservices in javadoc target
+
+-------------------------------------------------------------------
+Tue Jan 18 12:22:55 UTC 2011 - mvyskocil@suse.cz
+
+ - initial packaging of tomcat7 7.0.6
+

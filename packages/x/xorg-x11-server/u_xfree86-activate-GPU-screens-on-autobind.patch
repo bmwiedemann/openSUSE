@@ -1,0 +1,267 @@
+From 358448649d39b6cf4de49c0f65ce2b5f4c702c65 Mon Sep 17 00:00:00 2001
+From: Dave Airlie <airlied@redhat.com>
+Date: Sun, 2 Jan 2022 01:27:31 +0200
+Subject: [PATCH xserver] xfree86: activate GPU screens on autobind
+
+Part of the original patch by Dave Airlie has landed
+078277e4d92f05a90c4715d61b89b9d9d38d68ea, this contains the remainder of
+what was in SUSE before Xorg 21.1.
+
+Signed-off-by: Dave Airlie <airlied@gmail.com>
+---
+ dix/main.c                   |   4 +
+ hw/xfree86/common/xf86Init.c | 185 +++++++++++++++++++++++++++++++++++
+ include/dix.h                |   2 +
+ 3 files changed, 191 insertions(+)
+
+diff --git a/dix/main.c b/dix/main.c
+index bfc8addbe..c7b8ed49e 100644
+--- a/dix/main.c
++++ b/dix/main.c
+@@ -121,6 +121,8 @@ extern void Dispatch(void);
+ 
+ CallbackListPtr RootWindowFinalizeCallback = NULL;
+ 
++CallbackListPtr RootWindowInitialized = NULL;
++
+ int
+ dix_main(int argc, char *argv[], char *envp[])
+ {
+@@ -242,6 +244,8 @@ dix_main(int argc, char *argv[], char *envp[])
+         for (i = 0; i < screenInfo.numScreens; i++)
+             InitRootWindow(screenInfo.screens[i]->root);
+ 
++        CallCallbacks(&RootWindowInitialized, NULL);
++
+         InitCoreDevices();
+         InitInput(argc, argv);
+         InitAndStartDevices();
+diff --git a/hw/xfree86/common/xf86Init.c b/hw/xfree86/common/xf86Init.c
+index 380288ca4..9839cb19c 100644
+--- a/hw/xfree86/common/xf86Init.c
++++ b/hw/xfree86/common/xf86Init.c
+@@ -204,6 +204,9 @@ xf86HasTTYs(void)
+ #endif
+ }
+ 
++static void
++xf86AutoConfigProviderOutputs(CallbackListPtr *pcbl, void *data, void *call_data);
++
+ static void
+ xf86AutoConfigOutputDevices(void)
+ {
+@@ -217,6 +220,8 @@ xf86AutoConfigOutputDevices(void)
+         RRProviderAutoConfigGpuScreen(xf86ScrnToScreen(xf86GPUScreens[i]),
+                                       xf86ScrnToScreen(xf86Screens[scrnum]));
+     }
++
++    AddCallback(&RootWindowInitialized, xf86AutoConfigProviderOutputs, NULL);
+ }
+ 
+ static void
+@@ -258,6 +263,189 @@ AddVTAtoms(CallbackListPtr *pcbl, void *data, void *screen)
+                    "Failed to register VT properties\n");
+ }
+ 
++
++/*
++ * This function activates all outputs of all GPU screens associated with the
++ * given master screen and sets them to their preferred resolution next to
++ * each other left-to-right.
++ */
++static void
++xf86AutoConfigureProviderOutputsForMaster(ScreenPtr pMasterScreen)
++{
++    ScreenPtr pScreen;
++    rrScrPrivPtr pMasterScrPriv, pScrPriv;
++    RROutputPtr pOutput;
++    RRCrtcPtr pCrtc;
++    RRCrtcPtr *pUsedCrtcs;
++    int usedCrtcsCount;
++    int screenWidth, screenHeight, screenWidthMM, screenHeightMM;
++    int i, j, k, l;
++
++    struct OutputConfig {
++        RROutputPtr pOutput;
++        RRCrtcPtr pCrtc;
++
++        int x;
++        int y;
++    } *outputConfigs;
++    int outputConfigsCount = 0, outputConfigsUsed = 0;
++
++    if (!dixPrivateKeyRegistered(rrPrivKey))
++        return;
++
++    pMasterScrPriv = rrGetScrPriv(pMasterScreen);
++    if (!pMasterScrPriv)
++        return;
++
++    // Count the potential maximum of outputs that we will try to auto configure
++    for (i = 0; i < xf86NumGPUScreens; i++) {
++        pScreen = xf86GPUScreens[i]->pScreen;
++        if (pScreen->current_primary != pMasterScreen || !pScreen->is_output_secondary)
++            continue;
++
++        pScrPriv = rrGetScrPriv(pScreen);
++        if (!pScrPriv)
++            continue;
++
++        outputConfigsCount += pScrPriv->numOutputs;
++    }
++
++    if (outputConfigsCount == 0)
++        return;
++
++    outputConfigs = calloc(outputConfigsCount, sizeof(*outputConfigs));
++
++    screenWidth = 0;
++    screenHeight = 0;
++
++    // Consider the master's own outputs/crtcs that were already configured
++    for (i = 0; i < pMasterScrPriv->numCrtcs; i++) {
++        if (!pMasterScrPriv->crtcs[i]->mode)
++            continue;
++
++        screenWidth = max(screenWidth, pMasterScrPriv->crtcs[i]->x + pMasterScrPriv->crtcs[i]->mode->mode.width);
++        screenHeight = max(screenHeight, pMasterScrPriv->crtcs[i]->y + pMasterScrPriv->crtcs[i]->mode->mode.height);
++    }
++
++    // Now add as many outputs from slave GPUs as we can next to it
++    for (i = 0; i < xf86NumGPUScreens; i++) {
++        pScreen = xf86GPUScreens[i]->pScreen;
++        if (pScreen->current_primary != pMasterScreen || !pScreen->is_output_secondary)
++            continue;
++
++        pScrPriv = rrGetScrPriv(pScreen);
++        if (!pScrPriv)
++            continue;
++
++        pUsedCrtcs = calloc(pScrPriv->numCrtcs, sizeof(*pUsedCrtcs));
++        if (!pUsedCrtcs)
++            continue;
++
++        usedCrtcsCount = 0;
++
++        for (j = 0; j < pScrPriv->numOutputs; j++) {
++            pOutput = pScrPriv->outputs[j];
++
++            if (pOutput->connection != RR_Connected ||
++                pOutput->nonDesktop ||
++                pOutput->numModes == 0 ||
++                pOutput->numCrtcs == 0)
++                continue;
++
++            if (screenWidth + pOutput->modes[0]->mode.width > pMasterScrPriv->maxWidth ||
++                screenHeight + pOutput->modes[0]->mode.height > pMasterScrPriv->maxHeight)
++            {
++                // It can't fit into the maximal size, skip
++                continue;
++            }
++
++            for (k = 0; k < pOutput->numCrtcs; k++) {
++                pCrtc = pOutput->crtcs[k];
++                for (l = 0; l < usedCrtcsCount; l++) {
++                    if (pCrtc == pUsedCrtcs[l]) {
++                        pCrtc = NULL;
++                        break;
++                    }
++                }
++                if (pCrtc) {
++                    break;
++                }
++            }
++
++            if (!pCrtc) {
++                // No more free CRTCs to setup this output, skip
++                continue;
++            }
++
++            pUsedCrtcs[usedCrtcsCount] = pCrtc;
++            usedCrtcsCount++;
++
++            assert(outputConfigsUsed < outputConfigsCount);
++            outputConfigs[outputConfigsUsed].pOutput = pOutput;
++            outputConfigs[outputConfigsUsed].pCrtc = pCrtc;
++            outputConfigs[outputConfigsUsed].x = screenWidth;
++            outputConfigs[outputConfigsUsed].y = 0;
++            outputConfigsUsed++;
++
++            screenWidth += pOutput->modes[0]->mode.width;
++            screenHeight += pOutput->modes[0]->mode.height;
++        }
++
++        free(pUsedCrtcs);
++    }
++
++    if (outputConfigsUsed == 0)
++      goto out;
++
++    if (screenWidth < pMasterScrPriv->minWidth)
++        screenWidth = pMasterScrPriv->minWidth;
++    if (screenHeight < pMasterScrPriv->minHeight)
++        screenHeight = pMasterScrPriv->minHeight;
++
++    if (pMasterScrPriv->mmWidth > 0 &&
++        pMasterScrPriv->mmHeight > 0 &&
++        pMasterScrPriv->width > 0 &&
++        pMasterScrPriv->height > 0)
++    {
++      // If the master screen already has some DPI, keep it
++      screenWidthMM = pMasterScrPriv->mmWidth * screenWidth / pMasterScreen->width;
++      screenHeightMM = pMasterScrPriv->mmHeight * screenHeight / pMasterScreen->height;
++    } else {
++      assert(outputConfigsUsed > 0);
++      // Otherwise use DPI of the first output
++      screenWidthMM = outputConfigs[0].pOutput->mmWidth * screenWidth / outputConfigs[0].pOutput->modes[0]->mode.width;
++      screenHeightMM = outputConfigs[0].pOutput->mmHeight * screenHeight / outputConfigs[0].pOutput->modes[0]->mode.height;
++    }
++
++    if (!RRScreenSizeSet(pMasterScreen, screenWidth, screenHeight, screenWidthMM, screenHeightMM))
++        goto out;
++
++    for (i = 0; i < outputConfigsUsed; i++) {
++        RRCrtcSet(
++            outputConfigs[i].pCrtc,
++            outputConfigs[i].pOutput->modes[0],
++            outputConfigs[i].x,
++            outputConfigs[i].y,
++            RR_Rotate_0,
++            1,
++            &outputConfigs[i].pOutput
++        );
++    }
++
++out:
++    free(outputConfigs);
++}
++
++static void
++xf86AutoConfigProviderOutputs(CallbackListPtr *pcbl, void *data, void *call_data)
++{
++    int i;
++
++    for (i = 0; i < xf86NumScreens; i++) {
++        xf86AutoConfigureProviderOutputsForMaster(xf86Screens[i]->pScreen);
++    }
++}
++
+ static Bool
+ xf86ScreenInit(ScreenPtr pScreen, int argc, char **argv)
+ {
+diff --git a/include/dix.h b/include/dix.h
+index 0dcd09b65..ecc73d1d9 100644
+--- a/include/dix.h
++++ b/include/dix.h
+@@ -620,6 +620,8 @@ typedef struct {
+ 
+ extern _X_EXPORT CallbackListPtr RootWindowFinalizeCallback;
+ 
++extern _X_EXPORT CallbackListPtr RootWindowInitialized;
++
+ extern int
+ XItoCoreType(int xi_type);
+ extern Bool
+-- 
+2.25.1
+

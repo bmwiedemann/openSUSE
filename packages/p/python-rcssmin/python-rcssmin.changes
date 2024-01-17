@@ -1,0 +1,52 @@
+-------------------------------------------------------------------
+Fri Dec  8 16:25:02 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.2:
+  * Add support for Python 3.12
+  * Update project boilerplate
+
+-------------------------------------------------------------------
+Wed Jun 21 05:51:14 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Use sle15_python_module_pythons
+
+-------------------------------------------------------------------
+Fri Oct  7 03:48:11 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 1.1.1
+ *) Add support for Python 3.11
+ *) Update project boilerplate
+
+-------------------------------------------------------------------
+Thu Jul 14 19:06:28 UTC 2022 - Jacob Michalskie <hel@lcp.world>
+
+- Update to version 1.1.0
+  + quoted data urls which are not base64 encoded keep their spaces now (#8)
+  + Add x86_64, i686 and aarch64 wheels
+  + Update python support: 2.7, 3.6+
+  + Both python 2 and 3 now accept bytes and text as input. All other types now
+    raise a TypeError. Before they possibly have been converted to a string,
+    depending on the python version and the implementation. Python 3 also
+    accepts bytearray input.
+  + Support for PyPy and Jython is no longer tested. Patches are accepted,
+    though.
+  + The python version will only accept the C implementation if the versions
+    match exactly. This should prevent using older installed C versions.
+    Fixes #11. This issue is now more relevant since #7 is fixed.
+  + Minor adaptions for GCC 8
+  + Docs are no longer installed locally.
+  + Rework the setup and project management system. Add some real tests. Get rid
+    of epydoc in favor of sphinx. Adapt to latest sphinx version.
+
+-------------------------------------------------------------------
+Wed Nov 15 17:50:39 UTC 2017 - buschmann23@opensuse.org
+
+- spec file
+  + convert to single spec file
+  + move docs into separate package
+
+-------------------------------------------------------------------
+Tue Jul  5 09:08:11 UTC 2016 - aplanas@suse.com
+
+- Add initial version of rCSSmin 1.0.6
+

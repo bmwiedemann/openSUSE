@@ -1,0 +1,32 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dd000e8dad19f8636796ce945f353dd8</srcmd5>
+    <version>0+git.20230612</version>
+    <time>1687900665</time>
+    <user>dimstar_suse</user>
+    <comment>new package, might be used when building chrony</comment>
+    <requestid>1095561</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6b9bab6387a639c053ba6036ccedacae</srcmd5>
+    <version>0+git.20230905</version>
+    <time>1694545424</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0+git.20230905:
+  * fix compatibility with old make
+  * save message in select() if fd is not polled
+  * don't read /usr/include/sys/time.h directly</comment>
+    <requestid>1110463</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e92aa8b3c5c310c63df5571c5c312390</srcmd5>
+    <version>0+git.20231005</version>
+    <time>1702936622</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0+git.20231005:
+  * fuzz: provide refclock offsets
+  * add client option for link speed
+  * add PTP one-step E2E transparent clock</comment>
+    <requestid>1133879</requestid>
+  </revision>
+</revisionlist>

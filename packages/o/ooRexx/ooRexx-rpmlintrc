@@ -1,0 +1,19 @@
+# cannot take out the current date from the .so for historical reasons, 
+# as one of the fields returned by the command 'PARSE VERSION' is the 
+# interpreter's build date.
+#
+# see: http://publibz.boulder.ibm.com/cgi-bin/bookmgr_OS390/BOOKS/IKJ3A320/3.14?SHELF=IKJOSE20&DT=20000113164209 for reference.
+addFilter("file-contains-current-date.*/librexx.so.*")
+
+# These are NOT devel files, but extensions from the main interpreter.
+# REXX applications can load extensions via the SysLoadFuncs function. Most REXX applications can deal with the normal .so.<version>
+# scheme fine, but some older applications (especially older C-compiled extensions) try to load the .so by name.
+addFilter("devel-file-in-non-devel-package.*librxsock.so")
+addFilter("devel-file-in-non-devel-package.*libhostemu.so")
+addFilter("devel-file-in-non-devel-package.*librexx.so")
+addFilter("devel-file-in-non-devel-package.*librxmath.so")
+addFilter("devel-file-in-non-devel-package.*librexxapi.so")
+addFilter("devel-file-in-non-devel-package.*librexxutil.so")
+addFilter("devel-file-in-non-devel-package.*librxregexp.so")
+addFilter("devel-file-in-non-devel-package.*librxunixsys.so")
+

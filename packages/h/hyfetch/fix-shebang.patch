@@ -1,0 +1,25 @@
+--- a/hyfetch/scripts/neowofetch
++++ b/hyfetch/scripts/neowofetch
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/bin/bash
+ # vim: noai:ts=4:sw=4:expandtab
+ # shellcheck source=/dev/null
+ # shellcheck disable=2009 disable=2153 disable=2154 disable=2243 disable=2244 disable=2317
+
+--- a/hyfetch/scripts/install-autocomplete.sh
++++ a/hyfetch/scripts/install-autocomplete.sh
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/bin/bash
+ 
+ # Usage: ./install-autocomplete.sh [Uninstall]
+ if [[ "$1" == "uninstall" ]]; then
+
+--- a/hyfetch/main.py
++++ b/hyfetch/main.py
+@@ -1,4 +1,3 @@
+-#!/usr/bin/env python3
+ from __future__ import annotations
+ 
+ import argparse

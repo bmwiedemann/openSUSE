@@ -1,0 +1,39 @@
+diff --git a/js/ui/status/network.js b/js/ui/status/network.js
+index e3b9a5d..3296e1d 100644
+--- a/js/ui/status/network.js
++++ b/js/ui/status/network.js
+@@ -940,6 +940,11 @@ const WirelessNetwork = GObject.registerClass({
+                 this._getDeviceDBusPath(), ap.get_path());
+         } else {
+             conn = new NM.SimpleConnection();
++            if (this._IsPrivateConnections()) {
++                let connectionSetting = new NM.SettingConnection();
++                connectionSetting.add_permission('user', GLib.get_user_name(), null);
++                conn.add_setting(connectionSetting);
++            }
+             this._device.client.add_and_activate_connection_async(
+                 conn, this._device, ap.get_path(), null, null);
+         }
+@@ -949,6 +954,22 @@ const WirelessNetwork = GObject.registerClass({
+         this.emit('destroy');
+     }
+ 
++    _IsPrivateConnections() {
++        let privateConnections = true;
++        let authority = Polkit.Authority.get_sync(null);
++        let credential = new Gio.Credentials();
++        let subject = new Polkit.UnixProcess({ pid: credential.get_unix_pid(), uid: credential.get_unix_user() });
++        let authResult = authority.check_authorization_sync(subject,
++                                                            'org.freedesktop.NetworkManager.settings.modify.system',
++                                                            null /* details */,
++                                                            Polkit.CheckAuthorizationFlags.NONE,
++                                                            null /* cancellable */);
++        if (authResult)
++            privateConnections = !authResult.get_is_authorized();
++
++        return privateConnections;
++    }
++
+     _getDeviceDBusPath() {
+         // nm_object_get_path() is shadowed by nm_device_get_path()
+         return NM.Object.prototype.get_path.call(this._device);

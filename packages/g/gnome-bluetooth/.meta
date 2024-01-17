@@ -1,0 +1,6 @@
+<package name="gnome-bluetooth" project="openSUSE:Factory">
+  <title>GNOME Bluetooth graphical utilities</title>
+  <description>The gnome-bluetooth package contains graphical utilities to setup,
+monitor and use Bluetooth devices.</description>
+  <devel project="GNOME:Factory" package="gnome-bluetooth"/>
+</package>

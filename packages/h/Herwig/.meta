@@ -1,0 +1,12 @@
+<package name="Herwig" project="openSUSE:Factory">
+  <title>Multi purpose event generator for high energy physics</title>
+  <description>Herwig is a multi-purpose particle physics event generator. It is built based on the experience gained with both the HERWIG 6 and Herwig++ 2 event generators. Continuing the Herwig++ 2 development, Herwig 7.0 (Herwig++ 3.0) replaces any prior HERWIG or Herwig++ versions.
+
+Herwig provides significantly improved and extended physics capabilities when compared to both its predecessors, HERWIG 6 and Herwig++ 2, while keeping the key model motivations such as coherent parton showers (including angular-ordered and dipole-based evolution), the cluster hadronization model, an eikonal multiple-interaction model, highly flexible BSM capabilities and improved perturbative input using next-to-leading order QCD.
+
+Herwig is based on ThePEG.
+
+</description>
+  <devel project="science" package="Herwig"/>
+  <url>http://herwig.hepforge.org/</url>
+</package>

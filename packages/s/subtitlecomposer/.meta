@@ -1,0 +1,10 @@
+<package name="subtitlecomposer" project="openSUSE:Factory">
+  <title>A text-based subtitle editor</title>
+  <description>A text-based subtitles editor that supports basic operations as well as more
+advanced ones, aiming to become an improved version of Subtitle Workshop for
+every platform supported by KDE.
+
+</description>
+  <devel project="KDE:Extra" package="subtitlecomposer"/>
+  <url>http://subcomposer.sourceforge.net/</url>
+</package>

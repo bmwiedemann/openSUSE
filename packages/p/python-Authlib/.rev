@@ -1,0 +1,124 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>86bcc074f2d697bf4cf219032d7a79eb</srcmd5>
+    <version>0.14.3</version>
+    <time>1597221005</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>825437</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>60d4360df502aafc2325434c517b04c1</srcmd5>
+    <version>0.15.3</version>
+    <time>1628675227</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>911202</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ea5d6ef112ac578043cae04376a046d0</srcmd5>
+    <version>0.15.4</version>
+    <time>1629101493</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>911999</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>93e417682833e44b515839b7c2826754</srcmd5>
+    <version>0.15.5</version>
+    <time>1637701841</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>933278</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f686d1bc227cacf5dcc57c51125323d5</srcmd5>
+    <version>1.0.1</version>
+    <time>1650548614</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>971767</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>52424bc73c8dd9c3c65656763463fab7</srcmd5>
+    <version>1.0.1</version>
+    <time>1652188327</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix tests.
+</comment>
+    <requestid>975956</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>8b014e728bbea4e29dff0d90a2c8ad88</srcmd5>
+    <version>1.0.1</version>
+    <time>1659612233</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unneeded BuildRequires on mock. 
+- Remove duplicated BuildRequires on pytest.</comment>
+    <requestid>992686</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e2f85b6365cecb1c5254173e20887cba</srcmd5>
+    <version>1.1.0</version>
+    <time>1665591958</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010157</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>efc82c3c81fdf0fac7570d34682ce2a2</srcmd5>
+    <version>1.2.0</version>
+    <time>1670954179</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1042592</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>5674a0438bd26eb78706cb5c3b4151a0</srcmd5>
+    <version>1.2.0</version>
+    <time>1686576372</time>
+    <user>dimstar_suse</user>
+    <comment>- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1092368</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>53b7371d9f4d06f796ee0f458e1899f7</srcmd5>
+    <version>1.2.1</version>
+    <time>1687796139</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.1:
+  * Apply headers in ``ClientSecretJWT.sign`` method
+  * Allow falsy but non-None grant uri params
+  * Fixed ``authorize_redirect`` for Starlette v0.26.0
+  * Removed ``has_client_secret`` method and documentation
+  * Removed ``request_invalid`` and ``token_revoked`` remaining
+    occurences and documentation.
+  * Fixed RFC7591 ``grant_types`` and ``response_types`` default
+    values</comment>
+    <requestid>1095232</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>9924a0d8bd152c09c05b5782033e7ee4</srcmd5>
+    <version>1.3.0</version>
+    <time>1704829785</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.3.0:
+  * Restore AuthorizationServer.create_authorization_response
+    behavior, via :PR:`558`
+  * Include leeway in validate_iat() for JWT, via :PR:`565`
+  * Fix encode_client_secret_basic, via :PR:`594`
+  * Use single key in JWK if JWS does not specify kid, via
+    :PR:`596`
+  * Fix error when RFC9068 JWS has no scope field, via :PR:`598`
+  * Get werkzeug version using importlib, via :PR:`591`
+  * New features:
+  * RFC9068 implementation, via :PR:`586`, by @azmeuk.
+  * Breaking changes:
+  * End support for python 3.7
+
+- Update to version 1.2.0
+  * Fix Starlette OAuth client for cache store, via PR#478.
+- Remove unneeded BuildRequires on mock.</comment>
+    <requestid>1137639</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,22 @@
+From 16732dde3530d6537ec9d65ba92264797bb088c8 Mon Sep 17 00:00:00 2001
+From: David Smith <smithdc@gmail.com>
+Date: Sun, 9 Jul 2023 17:23:03 +0100
+Subject: [PATCH] Fixed help_text_escape test.
+
+In https://github.com/django/django/commit/b7c5feb35a31799de6e582ad6a5a91a9de74e0f9#diff-9c7f11b08ffd20c001d1ef4404efa2d00c745e7a0bf0f011d3a856cffaa97f63 a default maxlength was added for email fields.
+---
+ tests/results/help_text_escape.html | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/results/help_text_escape.html b/tests/results/help_text_escape.html
+index 94f4c6c..7f4e7a0 100644
+--- a/tests/results/help_text_escape.html
++++ b/tests/results/help_text_escape.html
+@@ -1,5 +1,5 @@
+ <div class="mb-3" id="div_id_email"><label class="form-label requiredField" for="id_email">email<span
+             class="asteriskField">*</span></label><input class="form-control inputtext textInput textinput"
+-        id="id_email" name="email" required type="text"><div class="form-text" id="hint_id_email">Insert
++        id="id_email" name="email" required type="text" maxlength="320"><div class="form-text" id="hint_id_email">Insert
+         your <b>email</b></div>
+ </div>
+\ No newline at end of file

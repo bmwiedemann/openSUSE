@@ -1,0 +1,5 @@
+<package name="xfce4-session" project="openSUSE:Factory">
+  <title>Xfce Session manager</title>
+  <description>xfce4-session is the session manager for the Xfce desktop environment.</description>
+  <devel project="X11:xfce" package="xfce4-session"/>
+</package>

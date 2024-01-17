@@ -1,0 +1,11 @@
+--- a/build-morfologik-lt.sh
++++ b/build-morfologik-lt.sh
+@@ -5,7 +5,7 @@ cd morfologik-lt
+ 
+ #LanguageTool jar
+ #jarfile=~/github/languagetool/languagetool-tools/target/languagetool-tools-3.5-SNAPSHOT-jar-with-dependencies.jar
+-jarfile=~/target-lt/languagetool.jar
++jarfile=${LT_TOOLS_CLASSPATH}
+ 
+ target_dir=../resultats/java-lt/src/main/resources/org/languagetool/resource/ca
+ 

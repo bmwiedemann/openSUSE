@@ -1,0 +1,353 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6118007b9f21294e4ed4087184b373ca</srcmd5>
+    <version>4.4.1+git.20160717</version>
+    <time>1473798150</time>
+    <user>dimstar_suse</user>
+    <comment>updated and cleaned up request. Originally requested by mimi_vx (Ondřej Súkup).</comment>
+    <requestid>412245</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ccbd8b779a72b39301d1d308bac939a7</srcmd5>
+    <version>4.4.1+git.20160914</version>
+    <time>1474116045</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>428215</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>53b82ed92c9dc1d4cf5b299334df853a</srcmd5>
+    <version>4.4.1+git.20161007</version>
+    <time>1476351054</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.4.1+git.20161007:</comment>
+    <requestid>434202</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>066b7b88f904b8b8563932ce3afeab17</srcmd5>
+    <version>4.4.1+git.20161018</version>
+    <time>1477481420</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>437385</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>dbffb0a975e2752776bed24a55620215</srcmd5>
+    <version>4.5.0+git.20161129</version>
+    <time>1481272738</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>444634</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>49a6cbef5f8116f70041b3fd27fe3422</srcmd5>
+    <version>4.5.0+git.20170126</version>
+    <time>1485862888</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.5.0+git.20170126:</comment>
+    <requestid>452956</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>17339199ae3235ccbb1001b6a97d59bf</srcmd5>
+    <version>4.5.0+git.20170126</version>
+    <time>1489345239</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>476921</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>71b5985d810f2e1ba1b613abecc2d3aa</srcmd5>
+    <version>4.5.0+git.20170313</version>
+    <time>1490133074</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>481464</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d2b01d6fa6d97e1218c362cef6849f79</srcmd5>
+    <version>4.5.0+git.20170523</version>
+    <time>1501840675</time>
+    <user>maxlin_factory</user>
+    <comment>- Update cmake parameters
+
+- Update to version 4.5.0+git.20170523:
+  * update readme
+  * ignore Z3-str source
+  * failing test case: SMT2 parse string constants
+  * create and register string theory plugin the parser gets a little bit further now! rejects input with &quot;unexpected character&quot;
+  * fix string constant representation in parser spec1 loopback OK
+  * pretty-printing of string constants in AST spec2 looks good now
+  * load str decl plugin; recognize String sorted constants
+  * register Concat function now reaches str_decl_plugin::mk_func_decl()
+  * at least for now, Concat is no longer associative this means that we'll always have (Concat a b) instead of variadic forms
+  * add Length function to theory of strings
+  * AND MUCH MORE...</comment>
+    <requestid>504285</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1e8651bc854ac1fc9813b47a48d66114</srcmd5>
+    <version>4.5.0+git.20171009</version>
+    <time>1508434351</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>534438</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>43cfcd277349677ca0487123ea00b601</srcmd5>
+    <version>4.5.0+git.20171213</version>
+    <time>1513941662</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>559146</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d1efb28d43fc8c142c8e527edcd3c677</srcmd5>
+    <version>4.6.0+git.20180112</version>
+    <time>1521904568</time>
+    <user>dimstar_suse</user>
+    <comment>This should make the python packaging compliant; and build from SLE12SP3 up TW; fails on 12SP2, which I did not yet look furhter into (it already fails in the devel prj there too) (forwarded request 590423 from dimstar)</comment>
+    <requestid>590550</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>322a02d1d461c9b87121f84084027668</srcmd5>
+    <version>4.6.0+git.20180112</version>
+    <time>1527582752</time>
+    <user>dimstar_suse</user>
+    <comment>- Use python3 exclusively
+- Do not call contrib/cmake/bootstrap.py - it is obsolete
+</comment>
+    <requestid>610614</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>8eca6002fc52b60771f1e77d25cf3959</srcmd5>
+    <version>4.7.1+git.20180614</version>
+    <time>1529402589</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>617099</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ed1850d0926eb84c6f0e4c5eb603d96a</srcmd5>
+    <version>4.8.3+git.20181121</version>
+    <time>1543953244</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>652428</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>7e699888308c38b417b61050808d5701</srcmd5>
+    <version>4.8.4+git.20190224</version>
+    <time>1560970918</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>706047</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>0bf640b3c34a0fc23c7054c2cd91c201</srcmd5>
+    <version>4.8.4+git.20190224</version>
+    <time>1569393125</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>732845</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>d0026eb315e16ca6990a447223a926aa</srcmd5>
+    <version>4.8.6+git.20191009</version>
+    <time>1571402178</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>739089</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a75e63221eecb0fbbe118da622cce5e9</srcmd5>
+    <version>4.8.7+git.20200129</version>
+    <time>1581087166</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>770524</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>0369a1abed561a2ae1fa81e53c98fb10</srcmd5>
+    <version>4.8.7+git.20200407</version>
+    <time>1586368627</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>792407</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>7b3970220a90d4dea4fd35d8b16e94cb</srcmd5>
+    <version>4.8.8</version>
+    <time>1591101721</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>810759</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>3e7d7827ebb2160cab7aab776da79f0e</srcmd5>
+    <version>4.8.8</version>
+    <time>1594894712</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>821247</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>3628a6caed5c19fc301a4d8188be7400</srcmd5>
+    <version>4.8.8</version>
+    <time>1595098963</time>
+    <user>dimstar_suse</user>
+    <comment>- Backport pkg-config support from upstream
+  * add 5a42a000e938a295feb1a7070dd74b192796db4e.patch</comment>
+    <requestid>821644</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>5a0736008b18f1643886d3692bef1065</srcmd5>
+    <version>4.8.9</version>
+    <time>1600347722</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>835112</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>da70d35c0c5f2ebb9914c6af41296831</srcmd5>
+    <version>4.8.10</version>
+    <time>1612108345</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.8.10:
+  - rewritten arithmetic solver replacing legacy arithmetic solver and on by default (forwarded request 867815 from dirkmueller)</comment>
+    <requestid>868100</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>402c737aee51ac18033afdddb4289cd0</srcmd5>
+    <version>4.8.11</version>
+    <time>1623443446</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>899409</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>3a4f50d4e2517b4e1c00d4d3f41122ef</srcmd5>
+    <version>4.8.12</version>
+    <time>1634587180</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925964</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>92534da463b2e6255447fa7df7c6267f</srcmd5>
+    <version>4.8.13</version>
+    <time>1638203312</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>934483</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>1538ecffd83fd6e0b7aaa9d2aae11e38</srcmd5>
+    <version>4.8.14</version>
+    <time>1643062193</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>948353</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>14729fad62eff88b9ef0ed124204faa4</srcmd5>
+    <version>4.8.14</version>
+    <time>1647367484</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>961806</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>da3cafc4662fd9a8a49a23c72f533c8c</srcmd5>
+    <version>4.8.15</version>
+    <time>1650355133</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>970659</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>4b8d29be88c3f5d4a3b4f97d3663c781</srcmd5>
+    <version>4.8.17</version>
+    <time>1652114635</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>975667</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>bd6a27657c0b84806cf8a766c6436912</srcmd5>
+    <version>4.10.2</version>
+    <time>1659612234</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>992706</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>278a67d66de2246986a784f399de159a</srcmd5>
+    <version>4.11.0</version>
+    <time>1661758983</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>999781</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>72c8128f376f7dc9cc7deebc8065cffd</srcmd5>
+    <version>4.11.2</version>
+    <time>1663074583</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.11.2:
+  * add error handling to fromString method in JavaScript
+  * fix regression in default parameters for CDCL, thanks to Nuno Lopes
+  * fix model evaluation bugs for as-array nested under functions (data-type constructors)
+  * add rewrite simplifications for datatypes with a single constructor
+  * add &quot;Global Guidance&quot; capability to SPACER, thanks to Arie Gurfinkel and Hari Gorvind.
+  * change proof logging format for the new core to use SMTLIB commands.
+    The format was so far an extension of DRAT used by SAT solvers, but not well compatible
+    with SMT format that is extensible. The resulting format is a mild extension of SMTLIB with
+    three extra commands assume, learn, del. They track input clauses, generated clauses and deleted clauses.
+    They are optionally augmented by proof hints. Two proof hints are used in the current version: &quot;rup&quot; and &quot;farkas&quot;.
+    &quot;rup&quot; is used whent the generated clause can be justified by reverse unit propagation. &quot;farkas&quot; is used when
+    the clause can be justified by a combination of Farkas cutting planes. There is a built-in proof checker for the
+    format. Quantifier instantiations are also tracked as proof hints.
+    Other proof hints are to be added as the feature set is tested and developed. The fallback, buit-in,
+    self-checker uses z3 to check that the generated clause is a consequence. Note that this is generally
+    insufficient as generated clauses are in principle required to only be satisfiability preserving.
+    Proof checking and tranformation operations is overall open ended.
+  The log for the first commit introducing this change contains further information on the format.
+  * fix to re-entrancy bug in user propagator (thanks to Clemens Eisenhofer).
+  * handle _toExpr for quantified formulas in JS bindings (forwarded request 1003043 from dirkmueller)</comment>
+    <requestid>1003077</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>8e4715062b905dc249bd272fefa74b59</srcmd5>
+    <version>4.12.0</version>
+    <time>1674043968</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1059321</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>6ee27d159d012e02a4dcebc9f9fd8728</srcmd5>
+    <version>4.12.1</version>
+    <time>1674495110</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1060326</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>0f15f6cb011e9794bb196bd7d5af3214</srcmd5>
+    <version>4.12.2</version>
+    <time>1686927244</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.12.2
+  * remove MSF (Microsoft Solver Foundation) plugin.
+  * updated propagate-ineqs tactic and implementing it as a simplifier,
+    bound_simplifier.
+  * add API function Z3_mk_real_int64 to take two int64 as arguments. The
+    Z3_mk_real function takes integers.
+  * Add _simplifiers_ as optional incremental pre-processing to solvers.
+  * Optimize added to JS API.
+  * SMTLIB2 proposal for bit-vector overflow predicates added.
+  * bug fixes.
+- add 0001-Fix-building-with-gcc-13-6723.patch</comment>
+    <requestid>1093226</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,333 @@
+-------------------------------------------------------------------
+Sun Nov 26 16:23:50 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.9.0
+  * Maintenance and upkeep improvements
+
+-------------------------------------------------------------------
+Sun Jun 11 19:57:08 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.8.0
+  * Bump min version support #287 (@blink1073)
+
+-------------------------------------------------------------------
+Mon May  1 17:50:53 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.7.4
+  * include stream output in CellExecutionError #282 (@minrk)
+  * avoid duplicate 'Exception: message' in CellExecutionError #283
+    (@minrk)
+  * Send KeyboardInterrupt a little later in
+    test_run_all_notebooks[Interrupt.ipynb-opts6] #285 (@kxxt)
+
+-------------------------------------------------------------------
+Sun Apr 23 17:56:28 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.7.3
+  * Add coalesce_streams #279 (@davidbrochart)
+
+-------------------------------------------------------------------
+Sun Jan  8 09:32:12 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.7.2
+  * Allow space after In #264 (@davidbrochart)
+  * Fix jupyter_core pinning #263 (@davidbrochart)
+  * Update README, add Python 3.11 #260 (@davidbrochart)
+- Release 0.7.1
+  * Remove nest-asyncio #259 (@davidbrochart)
+- Use PEP517 hatchling build
+
+-------------------------------------------------------------------
+Sun Oct  9 17:10:22 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.7.0:
+  * Maintenance and upkeep improvements
+    + Cleanup CI #254 (@blink1073)
+    + Handle client 8 support #253 (@blink1073)
+
+-------------------------------------------------------------------
+Fri Sep  9 16:47:56 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.6.8:
+  * Merged PRs
+    + Fix tests compatibility with IPython 8.5.0 #251 (@frenzymadness)
+
+-------------------------------------------------------------------
+Sun Aug 28 20:59:32 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.6.7
+  * Fix tests for ipywidgets 8 #246 (@frenzymadness)
+
+-------------------------------------------------------------------
+Sat Jul  9 13:26:33 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.6.6:
+  * Merged PRs
+    + Start new client if needed in blocking setup_kernel #241
+      (@davidbrochart)
+
+- changes from version 0.6.5:
+  * Merged PRs
+    + Start new client if needed #239 (@davidbrochart)
+
+-------------------------------------------------------------------
+Sun Jun  5 16:49:53 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Fix test requirements
+
+-------------------------------------------------------------------
+Sat Jun  4 23:14:53 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update requirements
+
+- update to version 0.6.4:
+  * Merged PRs
+    + Make sure kernel is cleaned up in case an error occurred while
+      starting kernel client #234 (@CiprianAnton)
+    + Suppress most warnings in tests #232 (@davidbrochart)
+
+- changes from version 0.6.3:
+  * Bugs fixed
+    + Clean up docs and typings #230 (@blink1073)
+  * Documentation improvements
+    + Clean up docs and typings #230 (@blink1073)
+
+- changes from version 0.6.2:
+  * Merged PRs
+    + Fix documentation generation #228 (@davidbrochart)
+
+- changes from version 0.6.1:
+  * Merged PRs
+    + [pre-commit.ci] pre-commit autoupdate #225 (@pre-commit-ci)
+    + Add error_on_interrupt trait #224 (@davidbrochart)
+    + Fix typo #223 (@davidbrochart)
+    + Add on_cell_executed hook #222 (@davidbrochart)
+
+- changes from version 0.6.0:
+  * Maintenance and upkeep improvements
+    + Fix typings and update mypy settings #220 (@blink1073)
+    + Add missing dep on testpath #219 (@blink1073)
+    + Add more pre-commit hooks and update flake8 #218 (@blink1073)
+  * Documentation improvements
+    + Clean up docs handling #216 (@blink1073)
+
+-------------------------------------------------------------------
+Sat Mar 12 04:52:28 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.5.13:
+  * Drop ipython_genutils #209 (@davidbrochart)
+
+-------------------------------------------------------------------
+Wed Mar  9 16:47:55 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+* specfile:
+  * update version requirement for traitlets
+
+- update to version 0.5.12:
+  * Merged PRs
+    + Require traitlets>=5.0.0 #204 (@davidbrochart)
+    + Extend the ignored part of IPython outputs #202 (@frenzymadness)
+
+-------------------------------------------------------------------
+Mon Feb 28 10:17:42 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Skip more failing tests due to new Exception message format 
+
+-------------------------------------------------------------------
+Thu Feb 17 16:33:39 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.5.11:
+  * Merged PRs
+    + Pin ipython<8 in tests #198 (@davidbrochart)
+    + Clear execution metadata, prefer msg header date when recording
+      times #195 (@kevin-bates)
+    + Client hooks #188 (@devintang3)
+
+-------------------------------------------------------------------
+Mon Jan 17 19:50:25 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Skip a flaky test gh#jupyter/nbclient#189
+
+-------------------------------------------------------------------
+Sat Jan 15 19:17:53 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.5.10
+  * Fix ipywidgets version in tests #192 (@martinRenou)
+  * Compatibility with IPython 8 where tracebacks are different
+    #190 (@frenzymadness)
+  * Drop tox #187 (@davidbrochart)
+  * Drop python3.6, test python3.10 #184 (@davidbrochart)
+  * Fix typos #182 (@kianmeng)
+- Cleanup now unused specfile code for Python 3.6 distributions
+
+-------------------------------------------------------------------
+Sat Jan  8 20:19:58 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Do not build on SLE/Leap <= 15.3
+
+-------------------------------------------------------------------
+Sun Nov 21 17:25:17 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Deselect all 4 flaky parallel_notebooks tests
+
+-------------------------------------------------------------------
+Fri Nov 19 09:52:05 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 0.5.9
+  * Remove jupyter-run, keep jupyter-execute #180 (@davidbrochart)
+- Switch to libalternatives
+
+-------------------------------------------------------------------
+Sun Nov 14 13:28:35 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 0.5.8
+  * Prepare for use with Jupyter Releaser #175 (@davidbrochart)
+  * Move IPYKERNEL_CELL_NAME from tox to pytest #172
+    (@frenzymadness)
+  * Added CLI to README #170 (@palewire)
+  * Add "jupyter execute" command-line interface #165 (@palewire)
+  * Fix: updating buffers overwrote previous buffers #169
+    (@maartenbreddels)
+  * Fix tests for ipykernel without debugpy #166 (@frenzymadness)
+  * gitignore Pipfile #164 (@palewire)
+  * Fixed CONTRIBUTING.md link #163 (@palewire)
+  * Fix typo #162 (@The-Compiler)
+  * Move format & lint to pre-commit #161 (@chrisjsewell)
+  * Add skip-execution cell tag functionality #151 (@chrisjsewell)
+- Not enabling new jupyter-run entrypoint due to conflict with
+  jupyter_client
+
+-------------------------------------------------------------------
+Wed Sep 22 19:04:07 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Fix async_parallel_notebooks deselection expression
+
+-------------------------------------------------------------------
+Sun Sep 19 11:10:00 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add IPYKERNEL_CELL_NAME env var for test sanitization
+- Only require async_generator for Python < 3.7
+
+-------------------------------------------------------------------
+Wed Sep 15 05:46:38 UTC 2021 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.5.4:
+  * Replace km.cleanup with km.cleanup_resources #152 (@davidbrochart)
+  * Use async generator backport only on old python #154 (@mkoeppe)
+  * Support parsing of IPython dev version #150 (@cphyc)
+  * Set IPYKERNEL_CELL_NAME = <IPY-INPUT> #147 (@davidbrochart)
+  * Print useful error message on exception #142 (@certik)
+
+-------------------------------------------------------------------
+Thu Apr  8 22:30:04 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Actually break the cycle: test flavor needs a psuffix
+
+-------------------------------------------------------------------
+Wed Mar 31 16:03:17 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- test in multibuild flavor in order to break runtime and build
+  dependency cycle with nbconvert.
+
+-------------------------------------------------------------------
+Wed Mar  3 19:24:34 UTC 2021 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.5.3:
+  * Fix ipykernel's stop_on_error value to take into account
+    raises-exception tag and force_raise_errors #137
+
+-------------------------------------------------------------------
+Sun Feb 14 18:08:05 UTC 2021 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 0.5.2:
+  * Set minimum python version supported to 3.6.1 to avoid 3.6.0
+    issues
+  * CellExecutionError is now unpickleable
+  * Added testing for python 3.9
+  * Changed travis tests to github actions
+  * Documentation referencing an old model instead of NotebookClient
+    was fixed
+  * allow_error_names option was added for a more specific scope of
+    allow_errors to be applied
+
+-------------------------------------------------------------------
+Thu Nov 26 17:49:54 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.5.1:
+  * Update kernel client class JIT if it's the synchronous version
+  * Several documentation fixes / improvements
+
+-------------------------------------------------------------------
+Sat Sep  5 16:24:04 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update required version
+
+- update to version 0.5.0:
+  * Move language_info retrieval before cell execution #102
+  * HistoryManager setting for ipython kernels no longer applies twice
+    (fix for 5.0 trailets release)
+  * Improved error handling around language_info missing
+    (async_)start_new_kernel_client is now split into (async_)start_new_kernel and (async_)start_new_kernel_client
+
+-------------------------------------------------------------------
+Tue Jul 14 15:32:36 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.4.1:
+  * Python type hinting added to most interfaces! #83
+  * Several documentation fixes and improvements were made #86
+  * An asynchronous heart beat check was added to correctly raise a
+    DeadKernelError when kernels die unexpectantly #90
+
+-------------------------------------------------------------------
+Tue Jun 30 13:37:24 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.4.0
+  * Use KernelManager's graceful shutdown rather than KILLing kernels
+  * Mimic an Output widget at the frontend so that the Output widget behaves correctly
+  * Nested asyncio is automatic, and works with Tornado
+  * async_execute now has a reset_kc argument to control if the client is reset upon execution request
+
+-------------------------------------------------------------------
+Tue Jun  9 08:49:18 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.3.1:
+  * The (async_)start_new_kernel_client method now supports starting a new client when its kernel manager (self.km) is a MultiKernelManager. The method now returns the kernel id in addition to the kernel client. If the kernel manager was a KernelManager, the returned kernel id is None. #51
+  * Added reset_kc option to reset_execution_trackers, so that the kernel client can be reset and a new one created in calls to (async_)execute #44
+  * Check that a kernel manager exists before cleaning up the kernel #61
+  * Force client class to be async when kernel manager is MultiKernelManager #55
+  * Replace pip install with conda install in Binder #54
+
+-------------------------------------------------------------------
+Sun Apr 26 19:33:24 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * only build for python 3, add skip_python2
+  * updated requirement versions, add async_generator
+  * be more specific in %files section
+
+- update to version 0.2.0:
+  * Major Changes
+    + Async support is now available on the client. Methods that
+      support async have an async_ prefix and can be awaited #10 #35
+      #37 #38
+    + Dropped support for Python 3.5 due to async compatability issues
+      #34
+    + Notebook documents now include the new kernel timing fields #32
+  * Fixes
+    + Memory and process leaks from nbclient should now be fixed #34
+    + Notebook execution exceptions now include error information in
+      addition to the message #41
+  * Docs
+    + Added binder examples / tests #7
+    + Added changelog to docs #22
+    + Doc typo fixes #27 #30
+
+-------------------------------------------------------------------
+Mon Feb 24 15:45:01 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- initial version

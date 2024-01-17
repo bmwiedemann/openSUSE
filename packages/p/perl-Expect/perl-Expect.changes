@@ -1,0 +1,143 @@
+-------------------------------------------------------------------
+Fri May 19 05:37:20 UTC 2017 - coolo@suse.com
+
+- updated to 1.35
+   see /usr/share/doc/packages/perl-Expect/Changes
+
+-------------------------------------------------------------------
+Tue Apr 14 17:44:21 UTC 2015 - coolo@suse.com
+
+- updated to 1.32
+   see /usr/share/doc/packages/perl-Expect/Changes
+
+-------------------------------------------------------------------
+Wed Dec  1 13:32:17 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:29:53 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Tue Feb  5 17:03:37 CET 2008 - mc@suse.de
+
+- update to version 1.21
+  * fix testcase
+
+-------------------------------------------------------------------
+Wed Jun 13 12:40:15 CEST 2007 - mc@suse.de
+
+- remove execute permissions from tutorial files 
+
+-------------------------------------------------------------------
+Tue Sep 19 15:47:35 CEST 2006 - mc@suse.de
+
+- Version 1.20
+  * fixed non-localized usage of $_
+  * added new example ssh.pl
+  * added early return to send and send_slow if filehandle was closed
+  * fixed bug in expect() param handling (exact pattern "0" was ignored)
+  * fixed bug in _make_readable()
+
+-------------------------------------------------------------------
+Fri Jul 14 12:13:21 CEST 2006 - mc@suse.de
+
+- Version 1.18
+  - added param check for expect()
+  - added another pipe to synchronize spawning. Closing the slave in 
+    the parent can lead to a hang if the child already wrote 
+    something into it... 
+  - some bugfixes
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:40 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Sep 29 01:24:08 CEST 2005 - dmueller@suse.de
+
+- add norootforbuild 
+
+-------------------------------------------------------------------
+Fri Aug 22 14:44:02 CEST 2003 - mjancar@suse.cz
+
+- require the perl version we build with
+
+-------------------------------------------------------------------
+Fri Jul 18 17:51:29 CEST 2003 - mc@suse.de
+
+- add vendorarch changes 
+- add make test
+
+-------------------------------------------------------------------
+Mon May 19 11:33:34 CEST 2003 - mc@suse.de
+
+- removed unpackaged Files from RPM_BUILD_ROOT 
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Tue Jul  2 17:40:06 MEST 2002 - mls@suse.de
+
+- remove race in .packlist generation
+
+-------------------------------------------------------------------
+Fri Apr  5 14:46:28 CEST 2002 - mc@suse.de
+
+- switch to version 1.15
+- changed tests to check out pty behaviour (max. string length) 
+- added autoflush(1) to log_file
+- split 'new' and 'spawn' to be able to set slave pty params via stty
+  before actually spawning the program
+- added print_log_file(), send() now no longer prints to log file or
+  stdout.
+- spawn() now uses IO::Pty spawn, thus exec errors are reported and
+  ssh should work too!
+- timeout handlers now also can exp_continue
+- added 'raw_pty' option, also setting master to raw if isatty()
+- use 'set_raw' instead of stty("raw"); IO::Stty now optional
+- updated docs & FAQs; explained how terminal sizes and SIGWINCH
+  should be propagated
+- bug fixes
+
+-------------------------------------------------------------------
+Wed Nov  7 15:39:07 CET 2001 - mc@suse.de
+
+- switch to version 1.12
+- exp_Max_Accum didn't work for interact.
+- removed soft_close() from DESTROY.  Being overly nice to a doomed process
+  doesn't pay off.  Old behaviour is available via
+  $Expect::Do_Soft_Close = 1;
+- cleanup of log and exp_internal output
+- added various aliases for functions starting with 'exp_'
+- moved FAQ and intro into the main pod as I got the impression
+  that many users didn't bother to read all the documentation
+  or didn't know that it was there.
+- added a hook for log_file: can be set to a code ref.
+
+-------------------------------------------------------------------
+Sun Aug 12 14:48:42 CEST 2001 - kukuk@suse.de
+
+- Fix path to perl interpreter
+
+-------------------------------------------------------------------
+Thu Jun 21 16:51:28 CEST 2001 - mc@suse.de
+
+- fixed the specfile. Used more RPM macros 
+
+-------------------------------------------------------------------
+Wed Feb 21 17:59:50 CET 2001 - mc@suse.de
+
+- first package, v1.11 
+

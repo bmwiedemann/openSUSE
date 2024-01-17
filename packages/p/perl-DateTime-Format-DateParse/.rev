@@ -1,0 +1,116 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>46c17d136ba1fcde1a3c144204c7c1a3</srcmd5>
+    <version>0.05</version>
+    <time>1271373537</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-DateTime-Format-DateParse based on submit request 37703 from user computersalat
+</comment>
+    <requestid>37703</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>46c17d136ba1fcde1a3c144204c7c1a3</srcmd5>
+    <version>0.05</version>
+    <time>1278667377</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>46c17d136ba1fcde1a3c144204c7c1a3</srcmd5>
+    <version>0.05</version>
+    <time>1278678609</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>919ba995b2acaba789634e04bd111f4b</srcmd5>
+    <version>0.05</version>
+    <time>1292243067</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55707 from user coolo
+</comment>
+    <requestid>55707</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>b7c5ee3afdad73d1eddf62c9ef1022cb</srcmd5>
+    <version>0.05</version>
+    <time>1292243071</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55707
+</comment>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>47cb01981f671ae0222ddc280134d97e</srcmd5>
+    <version>0.05</version>
+    <time>1296694205</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 59803 from user vitezslav_cizek
+</comment>
+    <requestid>59803</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>f008d60d1b457b2d1054a0211bbd029d</srcmd5>
+    <version>0.05</version>
+    <time>1296694219</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 59803
+</comment>
+  </revision>
+  <revision rev="8" vrev="10">
+    <srcmd5>f008d60d1b457b2d1054a0211bbd029d</srcmd5>
+    <version>0.05</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="9" vrev="12">
+    <srcmd5>f008d60d1b457b2d1054a0211bbd029d</srcmd5>
+    <version>0.05</version>
+    <time>1319182258</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="10" vrev="13">
+    <srcmd5>8ba7a2a0dbdb0d7a1812afce6d730734</srcmd5>
+    <version>0.05</version>
+    <time>1321875509</time>
+    <user>coolo</user>
+    <comment>- use original tar.gz</comment>
+    <requestid>92047</requestid>
+  </revision>
+  <revision rev="11" vrev="14">
+    <srcmd5>4e5b63e4e693619dae419687c949896f</srcmd5>
+    <version>0.05</version>
+    <time>1324374892</time>
+    <user>coolo</user>
+    <comment>- fix license to be in spdx.org format (forwarded request 96585 from coolo)</comment>
+    <requestid>96612</requestid>
+  </revision>
+  <revision rev="12" vrev="16">
+    <srcmd5>4e5b63e4e693619dae419687c949896f</srcmd5>
+    <version>0.05</version>
+    <time>1340183827</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="13" vrev="18">
+    <srcmd5>4e5b63e4e693619dae419687c949896f</srcmd5>
+    <version>0.05</version>
+    <time>1359109643</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="20">
+    <srcmd5>4e5b63e4e693619dae419687c949896f</srcmd5>
+    <version>0.05</version>
+    <time>1379663634</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="22">
+    <srcmd5>4e5b63e4e693619dae419687c949896f</srcmd5>
+    <version>0.05</version>
+    <time>1409302249</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

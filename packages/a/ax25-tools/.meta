@@ -1,0 +1,11 @@
+<package name="ax25-tools" project="openSUSE:Factory">
+  <title>AX.25 tools</title>
+  <description>These are the support utilities required to make use of the internal
+AX.25, NET/ROM and Rose support in the linux kernel. The ax25tools are
+mostly configuration utilities, applications can be found in the
+package ax25apps.
+
+</description>
+  <devel project="hardware:sdr" package="ax25-tools"/>
+  <url>http://www.linux-ax25.org</url>
+</package>

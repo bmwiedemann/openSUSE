@@ -1,0 +1,127 @@
+#!/usr/bin/perl
+
+$version = "1.0";
+$timeout = 5;
+@pkgs    = ( "xorg-x11-server", "xorg-x11-driver-video", "xorg-x11-driver-input",
+             "libpixman-1-0", "libpciaccess0" );
+$xtracmds= "/etc/X11/xorg-backtrace-cmds";
+
+
+$pid=$ARGV[0];
+if ($pid == 0) {
+    print "Usage: $0 <pid>\n";
+    exit 1;
+}
+
+
+if (! -e "/usr/bin/gdb") {
+    print "Install gdb to get reasonable backtraces\n";
+    exit 2;
+}
+
+$SIG{ALRM} = sub { die "timeout starting gdb" };
+alarm $timeout;
+
+open STDERR, ">&STDOUT";
+
+use FileHandle;
+use IPC::Open2;
+$gdb = open2 (*R, *W, "/usr/bin/gdb -n -p $pid");
+
+$SIG{ALRM} = sub { kill QUIT, $gdb; sleep 1; kill KILL, $gdb; die "timeout using gdb" };
+alarm $timeout;
+
+
+print "\n==================== GDB Backtrace ============\n\n";
+print "Done by $0 V$version\n\n";
+
+$needpkgs=0;
+for $p (@pkgs) {
+    next if system ("rpm", "-q", "--quiet", "$p-debuginfo") == 0 &&
+	    system ("rpm", "-q", "--quiet", "$p-debugsource") == 0;
+    print "Install following debug packages to improve backtrace:\n" unless $needpkgs;
+    $needpkgs++;
+    print "\t$p-debug*\n";
+}
+print "\n" if $needpkgs;
+
+print W "set prompt\necho \\n===info\\n\n";
+#print W "info files\necho ===files\\n\n";
+print W "thread apply all bt full\necho ===btend\\n\n";
+
+$_=<R>;			# GNU gdb version
+print;
+
+while (<R>) {
+    last if /^===info/;
+    print if /^This GDB was configured as/;
+}
+
+#print "\n==================== Files ====================\n\n";
+#while (<R>) {
+#    last if /^===files/;
+#    print;
+#}
+
+
+print "\n==================== Backtrace ================\n";
+$fno = "";
+$fls = 0;
+$o   = "";
+$use = 0;
+while (<R>) {
+    last if /^===btend/;
+    if (/^#(\d+)\s/) {
+	$fno = $1;
+	$o .= "\n";
+	$o .= "===l".($fno-1)."\n" if $use;
+	$o .= "\n";
+        $fls = $fno+1 if /\bxorg_backtrace \(/ || /\bOsSigHandler \(/;
+	$use = 1;
+    }
+    $line{$fno} = $1 if $line{$fno} == 0 && /:(\d+)\s*$/;
+    $o .= $_;
+    $use = 0 if /^No symbol table info available/;
+}
+$o .="\n===l$fno";
+
+for $i ($fls..$fno) {
+    print W "frame $i\necho ===fs$i\\n\nlist\necho ===fe$i\\n\n";
+    while (<R>) {
+	last if /^===fs$i\b/;
+    }
+    $r = "";
+    while (<R>) {
+	last if /^===fe$i\b/;
+	$r .= $_;
+    }
+    if ($line{$i} > 0) {
+	$r =~ s/^$line{$i}\b/$line{$i} */m;
+    }
+    $o =~ s/^===l$i$/$r/m;
+}
+
+if ($fls > 0) {
+    for $i (0..$fls-1) {
+	$o =~ s/^(#$i\s.*?)\n.*?\n#/$1\n\n#/ms;
+    }
+}
+$o =~ s/^===l.*$//mg;
+
+print "$o";
+
+if (-e $xtracmds) {
+    print W "source -v $xtracmds\necho ===cmds\\n\n";
+    print "\n==================== Extra Commands ===========\n\n";
+    while (<R>) {
+	last if /^===cmds/;
+	print unless /^\+echo ===cmds/;
+    }
+}
+
+print "\n==================== Backtrace End ============\n\n";
+close R;
+close W;
+
+exit 0;
+

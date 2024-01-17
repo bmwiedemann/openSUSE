@@ -1,0 +1,5 @@
+<package name="libadlmidi" project="openSUSE:Factory">
+  <title>libadlmidi</title>
+  <description></description>
+  <devel project="multimedia:apps" package="libadlmidi"/>
+</package>

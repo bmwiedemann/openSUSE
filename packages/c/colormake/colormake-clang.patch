@@ -1,0 +1,26 @@
+From 3d0acce12db9e16e7a8ab1c81e30112cf52b9a0d Mon Sep 17 00:00:00 2001
+From: Christopher Loessl <cloessl@x-berg.de>
+Date: Sat, 4 May 2013 16:28:27 +0200
+Subject: [PATCH] Adding match for clang
+
+clang++ is matched as well
+---
+ colormake.pl | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/colormake.pl b/colormake.pl
+index 857b272..30ebfe3 100755
+--- a/colormake.pl
++++ b/colormake.pl
+@@ -88,7 +88,7 @@
+ 	{
+ 		$in = 'make';
+ 	}
+-	elsif ($thisline =~ s/^(\s*(libtool:\s*)?((compile|link):\s*)?(([[:ascii:]]+-)?g?(cc|\+\+)|(g|c)\+\+).*)$/$col_gcc$1$col_norm/)
++	elsif ($thisline =~ s/^(\s*(libtool:\s*)?((compile|link):\s*)?(([[:ascii:]]+-)?g?(cc|\+\+)|(g|c)\+\+|clang).*)$/$col_gcc$1$col_norm/)
+ 	{
+ 		$in = 'gcc';
+ 	}
+-- 
+1.9.3
+

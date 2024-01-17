@@ -1,0 +1,52 @@
+-------------------------------------------------------------------
+Thu May 05 07:53:47 UTC 2022 - matthias.gerstner@suse.com
+
+- Update to version v0.91:
+  * autotools: only add increased warning flags if --enable-dev is set
+  * configure.ac: update to current autotools versions
+  * Mutex.cxx: fix invalid stack access in DEBUG_MUTEX case
+  * test base: use unpredictable temporary directory for testing
+  * test base: try from a list of X11 programs for testing, otherwise fail
+  * global: python scripts: adjust coding style to Python PIP
+  * ILogger: fix warn() wrapper to return actual m_warn, no m_err
+
+-------------------------------------------------------------------
+Mon Apr 12 08:53:43 UTC 2021 - matthias.gerstner@suse.com
+
+- Update to version v0.90:
+  * feature: add desktops directory containing symlinks to respective windows
+  * feature: support wm/desktop_names node which returns the list of known desktop names
+
+-------------------------------------------------------------------
+Wed Mar  3 12:56:25 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- version bump to minor release 0.86:
+  - fixes for clang and gcc-10 compilation.
+
+-------------------------------------------------------------------
+Tue Mar 31 07:45:07 UTC 2020 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- version bump to minor release 0.84:
+  * fixes a possible crash of Xwmfs when programs like ibus are running
+    that maintain hidden windows that quickly add/remove X properties. See
+    GitHub issue #2 [1].
+- removed cxx-one-definition.patch: is now contained in upstream tarball
+
+-------------------------------------------------------------------
+Thu Jul 11 07:54:55 UTC 2019 - mgerstner <matthias.gerstner@suse.com>
+
+- cxx-one-definition.patch: temporary patch to fix compiler warning before we
+  get a fixed version from upstream.
+
+-------------------------------------------------------------------
+Mon May 27 10:23:59 UTC 2019 - mgerstner <matthias.gerstner@suse.com>
+
+- update to minor version 0.83:
+    - compatibility with gcc-9 (fixed warning -Wdeprecated-copy)
+- update to minor version 0.82:
+    - Fixes issues with make check in automated builds.
+
+-------------------------------------------------------------------
+Fri Oct 13 12:56:35 UTC 2017 - matthias.gerstner@suse.com
+
+- initial package version

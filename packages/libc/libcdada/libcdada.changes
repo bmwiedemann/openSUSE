@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Thu May  5 06:17:56 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 0.4.0
+  * Add cdada_map_insert_replace()
+  * Improved public API documentation
+  * build: add --without-tests --without-examples build options
+  * Fix E_EMPTY return codes set/map/list/stack/queue
+  * Fix make check when valgrind is not installed
+
+-------------------------------------------------------------------
+Mon Aug 30 16:11:38 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Ensure neutrality of description.
+
+-------------------------------------------------------------------
+Sun Mar 14 16:25:24 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 0.3.4

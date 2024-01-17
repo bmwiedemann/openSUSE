@@ -1,0 +1,5 @@
+<package name="jnr-constants" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="jnr-constants"/>
+</package>

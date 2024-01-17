@@ -1,0 +1,37 @@
+-------------------------------------------------------------------
+Thu May 19 07:38:31 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Added patches:
+  * 0001-Do-not-use-commons-cli-deprecated-classes.patch
+    + the GnuParser and OptionBuilder classes are deprecated
+      in commons-cli since version 1.3
+    + port to the recommended DefaultParser and Option.builder(...)
+  * 0002-No-unchecked-operations.patch
+    + replace raw java.util.List with typed java.util.List<E>
+      interface
+
+-------------------------------------------------------------------
+Sun Mar 20 17:53:17 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with java source and target levels 8
+
+-------------------------------------------------------------------
+Tue Jan 18 06:06:27 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Fetch sources using source service
+
+-------------------------------------------------------------------
+Tue May 11 15:01:31 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Do not compile/run tests against the legacy guava20 package
+
+-------------------------------------------------------------------
+Sun Mar  3 18:20:04 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Describe package, not project.
+
+-------------------------------------------------------------------
+Sat Mar  2 13:25:08 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial package of plexus-cli 1.6
+- Generate and customize the ant build file

@@ -1,0 +1,49 @@
+-------------------------------------------------------------------
+Wed Apr 26 15:53:32 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Fetch sources using source_service and don't distribute legally
+  spurious files (bsc#1210877)
+
+-------------------------------------------------------------------
+Mon May 16 11:00:15 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade the latest upstream release 2.4.0
+  * Integrates jansi-native libraries
+  * Does not depend on jansi-native and hawtjni-runtime
+- Make the jansi package archful since it installs a native
+  library and jni jar
+- Added patch:
+  * jansi-jni.patch
+    + Give a possibility to load the native libjansi.so from
+      system
+
+-------------------------------------------------------------------
+Wed Mar 23 23:34:23 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with java source and target levels 8
+
+-------------------------------------------------------------------
+Thu Jun 27 07:34:53 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Remove the reference to jansi-project parent from jansi pom
+- Resolve manually jansi-native-version variable so that ivy
+  understands it
+
+-------------------------------------------------------------------
+Tue Apr  9 15:44:56 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Remove reference to the parent pom since we are not building
+  using Maven.
+- Make tests conditional and switched off by default
+
+-------------------------------------------------------------------
+Thu Feb  7 10:39:14 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Fix double-shipping of documentation
+- Avoid name repetition in summary (potential rpmlint warning
+
+-------------------------------------------------------------------
+Mon Feb  4 12:33:24 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial package of jansi 1.17.1
+- Add build.xml file for building with ant

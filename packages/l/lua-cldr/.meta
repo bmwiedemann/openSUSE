@@ -1,0 +1,9 @@
+<package name="lua-cldr" project="openSUSE:Factory">
+  <title>Unicode CLDR data and Lua interface</title>
+  <description>Unicode CLDR (Common Locale Data Repository) data and Lua interface.
+The Unicode CLDR provides key building blocks for software to support
+the world's languages, with the largest and most extensive standard
+repository of locale data available.</description>
+  <devel project="devel:languages:lua" package="lua-cldr"/>
+  <url>https://github.com/alerque/cldr-lua</url>
+</package>

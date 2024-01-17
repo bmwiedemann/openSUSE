@@ -1,0 +1,14 @@
+<package name="enblend-enfuse" project="openSUSE:Factory">
+  <title>Tool for Composing Images</title>
+  <description>Enblend is a tool for compositing images using a Burt &amp; Adelson
+multiresolution spline. This technique tries to make the seams between
+the input images invisible. The basic idea is that image features
+should be blended across a transition zone, proportional in size to the
+spatial frequency of the features. For example, objects like trees and
+window panes have rapid changes in color. By blending these features in
+a narrow zone, you cannot see the seam because the eye already expects
+to see color changes at the edge of these features. Clouds and sky are
+the opposite. These features must be blended across a wide transition
+zone because any sudden change in color is immediately noticeable.</description>
+  <devel project="graphics" package="enblend-enfuse"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="python-fakeredis" project="openSUSE:Factory">
+  <title></title>
+  <description>Fake implementation of redis API for testing purposes</description>
+  <devel project="devel:languages:python" package="python-fakeredis"/>
+</package>

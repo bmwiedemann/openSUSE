@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>680b04d34403ff75f5e1c5b0ae1cfec9</srcmd5>
+    <version>10.1.14</version>
+    <time>1700250566</time>
+    <user>anag+factory</user>
+    <comment>Initial packaging of Tomcat 10.1.14</comment>
+    <requestid>1127149</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2ea6a10df5ac3101492af4a6761e7bbb</srcmd5>
+    <version>10.1.14</version>
+    <time>1701121472</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1129167</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c213ab3533e2a30d784d9eeb94f87df8</srcmd5>
+    <version>10.1.14</version>
+    <time>1705437532</time>
+    <user>anag+factory</user>
+    <comment>- Fix server.xml permission (bsc#1217768, bsc#1217402)
+- remove serverxmltool and use xsltproc</comment>
+    <requestid>1139112</requestid>
+  </revision>
+</revisionlist>

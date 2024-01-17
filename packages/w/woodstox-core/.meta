@@ -1,0 +1,5 @@
+<package name="woodstox-core" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="woodstox-core"/>
+</package>

@@ -1,0 +1,434 @@
+From cdee7ec34fb56a84ae4dc6ccb21d5f07c2392df1 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fridrich=20=C5=A0trba?= <fridrich.strba@bluewin.ch>
+Date: Wed, 12 Oct 2022 10:54:38 +0200
+Subject: [PATCH 1/3] replace bundled base64coder with java.util.Base64
+
+---
+ .../constructor/SafeConstructor.java          |   4 +-
+ .../external/biz/base64Coder/Base64Coder.java | 281 ------------------
+ .../representer/SafeRepresenter.java          |  10 +-
+ .../base64Coder/Base64CoderTest.java          |  16 +-
+ 4 files changed, 14 insertions(+), 297 deletions(-)
+ delete mode 100644 src/main/java/org/yaml/snakeyaml/external/biz/base64Coder/Base64Coder.java
+
+diff --git a/src/main/java/org/yaml/snakeyaml/constructor/SafeConstructor.java b/src/main/java/org/yaml/snakeyaml/constructor/SafeConstructor.java
+index e124489e..9ec73ccd 100644
+--- a/src/main/java/org/yaml/snakeyaml/constructor/SafeConstructor.java
++++ b/src/main/java/org/yaml/snakeyaml/constructor/SafeConstructor.java
+@@ -15,6 +15,7 @@ package org.yaml.snakeyaml.constructor;
+ 
+ import java.math.BigInteger;
+ import java.util.ArrayList;
++import java.util.Base64;
+ import java.util.Calendar;
+ import java.util.HashMap;
+ import java.util.Iterator;
+@@ -28,7 +29,6 @@ import java.util.regex.Matcher;
+ import java.util.regex.Pattern;
+ import org.yaml.snakeyaml.LoaderOptions;
+ import org.yaml.snakeyaml.error.YAMLException;
+-import org.yaml.snakeyaml.external.biz.base64Coder.Base64Coder;
+ import org.yaml.snakeyaml.nodes.MappingNode;
+ import org.yaml.snakeyaml.nodes.Node;
+ import org.yaml.snakeyaml.nodes.NodeId;
+@@ -389,7 +389,7 @@ public class SafeConstructor extends BaseConstructor {
+     public Object construct(Node node) {
+       // Ignore white spaces for base64 encoded scalar
+       String noWhiteSpaces = constructScalar((ScalarNode) node).replaceAll("\\s", "");
+-      byte[] decoded = Base64Coder.decode(noWhiteSpaces.toCharArray());
++      byte[] decoded = Base64.getDecoder().decode(noWhiteSpaces);
+       return decoded;
+     }
+   }
+diff --git a/src/main/java/org/yaml/snakeyaml/external/biz/base64Coder/Base64Coder.java b/src/main/java/org/yaml/snakeyaml/external/biz/base64Coder/Base64Coder.java
+deleted file mode 100644
+index db43b474..00000000
+--- a/src/main/java/org/yaml/snakeyaml/external/biz/base64Coder/Base64Coder.java
++++ /dev/null
+@@ -1,281 +0,0 @@
+-// Copyright 2003-2010 Christian d'Heureuse, Inventec Informatik AG, Zurich, Switzerland
+-// www.source-code.biz, www.inventec.ch/chdh
+-//
+-// This module is multi-licensed and may be used under the terms
+-// of any of the following licenses:
+-//
+-// EPL, Eclipse Public License, V1.0 or later, http://www.eclipse.org/legal
+-// LGPL, GNU Lesser General Public License, V2.1 or later, http://www.gnu.org/licenses/lgpl.html
+-// GPL, GNU General Public License, V2 or later, http://www.gnu.org/licenses/gpl.html
+-// AL, Apache License, V2.0 or later, http://www.apache.org/licenses
+-// BSD, BSD License, http://www.opensource.org/licenses/bsd-license.php
+-//
+-// Please contact the author if you need another license.
+-// This module is provided "as is", without warranties of any kind.
+-
+-package org.yaml.snakeyaml.external.biz.base64Coder;
+-
+-/**
+- * A Base64 encoder/decoder.
+- *
+- * <p>
+- * This class is used to encode and decode data in Base64 format as described in RFC 1521.
+- *
+- * <p>
+- * Project home page: <a href="http://www.source-code.biz/base64coder/java/">www.
+- * source-code.biz/base64coder/java</a><br>
+- * Author: Christian d'Heureuse, Inventec Informatik AG, Zurich, Switzerland<br>
+- * Multi-licensed: EPL / LGPL / GPL / AL / BSD.
+- */
+-public class Base64Coder {
+-
+-  // The line separator string of the operating system.
+-  private static final String systemLineSeparator = System.getProperty("line.separator");
+-
+-  // Mapping table from 6-bit nibbles to Base64 characters.
+-  private static final char[] map1 = new char[64];
+-
+-  static {
+-    int i = 0;
+-    for (char c = 'A'; c <= 'Z'; c++) {
+-      map1[i++] = c;
+-    }
+-    for (char c = 'a'; c <= 'z'; c++) {
+-      map1[i++] = c;
+-    }
+-    for (char c = '0'; c <= '9'; c++) {
+-      map1[i++] = c;
+-    }
+-    map1[i++] = '+';
+-    map1[i++] = '/';
+-  }
+-
+-  // Mapping table from Base64 characters to 6-bit nibbles.
+-  private static final byte[] map2 = new byte[128];
+-
+-  static {
+-    for (int i = 0; i < map2.length; i++) {
+-      map2[i] = -1;
+-    }
+-    for (int i = 0; i < 64; i++) {
+-      map2[map1[i]] = (byte) i;
+-    }
+-  }
+-
+-  /**
+-   * Encodes a string into Base64 format. No blanks or line breaks are inserted.
+-   *
+-   * @param s A String to be encoded.
+-   * @return A String containing the Base64 encoded data.
+-   */
+-  public static String encodeString(String s) {
+-    return new String(encode(s.getBytes()));
+-  }
+-
+-  /**
+-   * Encodes a byte array into Base 64 format and breaks the output into lines of 76 characters.
+-   * This method is compatible with <code>sun.misc.BASE64Encoder.encodeBuffer(byte[])</code>.
+-   *
+-   * @param in An array containing the data bytes to be encoded.
+-   * @return A String containing the Base64 encoded data, broken into lines.
+-   */
+-  public static String encodeLines(byte[] in) {
+-    return encodeLines(in, 0, in.length, 76, systemLineSeparator);
+-  }
+-
+-  /**
+-   * Encodes a byte array into Base 64 format and breaks the output into lines.
+-   *
+-   * @param in An array containing the data bytes to be encoded.
+-   * @param iOff Offset of the first byte in <code>in</code> to be processed.
+-   * @param iLen Number of bytes to be processed in <code>in</code>, starting at <code>iOff</code>.
+-   * @param lineLen Line length for the output data. Should be a multiple of 4.
+-   * @param lineSeparator The line separator to be used to separate the output lines.
+-   * @return A String containing the Base64 encoded data, broken into lines.
+-   */
+-  public static String encodeLines(byte[] in, int iOff, int iLen, int lineLen,
+-      String lineSeparator) {
+-    int blockLen = (lineLen * 3) / 4;
+-    if (blockLen <= 0) {
+-      throw new IllegalArgumentException();
+-    }
+-    int lines = (iLen + blockLen - 1) / blockLen;
+-    int bufLen = ((iLen + 2) / 3) * 4 + lines * lineSeparator.length();
+-    StringBuilder buf = new StringBuilder(bufLen);
+-    int ip = 0;
+-    while (ip < iLen) {
+-      int l = Math.min(iLen - ip, blockLen);
+-      buf.append(encode(in, iOff + ip, l));
+-      buf.append(lineSeparator);
+-      ip += l;
+-    }
+-    return buf.toString();
+-  }
+-
+-  /**
+-   * Encodes a byte array into Base64 format. No blanks or line breaks are inserted in the output.
+-   *
+-   * @param in An array containing the data bytes to be encoded.
+-   * @return A character array containing the Base64 encoded data.
+-   */
+-  public static char[] encode(byte[] in) {
+-    return encode(in, 0, in.length);
+-  }
+-
+-  /**
+-   * Encodes a byte array into Base64 format. No blanks or line breaks are inserted in the output.
+-   *
+-   * @param in An array containing the data bytes to be encoded.
+-   * @param iLen Number of bytes to process in <code>in</code>.
+-   * @return A character array containing the Base64 encoded data.
+-   */
+-  public static char[] encode(byte[] in, int iLen) {
+-    return encode(in, 0, iLen);
+-  }
+-
+-  /**
+-   * Encodes a byte array into Base64 format. No blanks or line breaks are inserted in the output.
+-   *
+-   * @param in An array containing the data bytes to be encoded.
+-   * @param iOff Offset of the first byte in <code>in</code> to be processed.
+-   * @param iLen Number of bytes to process in <code>in</code>, starting at <code>iOff</code>.
+-   * @return A character array containing the Base64 encoded data.
+-   */
+-  public static char[] encode(byte[] in, int iOff, int iLen) {
+-    int oDataLen = (iLen * 4 + 2) / 3; // output length without padding
+-    int oLen = ((iLen + 2) / 3) * 4; // output length including padding
+-    char[] out = new char[oLen];
+-    int ip = iOff;
+-    int iEnd = iOff + iLen;
+-    int op = 0;
+-    while (ip < iEnd) {
+-      int i0 = in[ip++] & 0xff;
+-      int i1 = ip < iEnd ? in[ip++] & 0xff : 0;
+-      int i2 = ip < iEnd ? in[ip++] & 0xff : 0;
+-      int o0 = i0 >>> 2;
+-      int o1 = ((i0 & 3) << 4) | (i1 >>> 4);
+-      int o2 = ((i1 & 0xf) << 2) | (i2 >>> 6);
+-      int o3 = i2 & 0x3F;
+-      out[op++] = map1[o0];
+-      out[op++] = map1[o1];
+-      out[op] = op < oDataLen ? map1[o2] : '=';
+-      op++;
+-      out[op] = op < oDataLen ? map1[o3] : '=';
+-      op++;
+-    }
+-    return out;
+-  }
+-
+-  /**
+-   * Decodes a string from Base64 format. No blanks or line breaks are allowed within the Base64
+-   * encoded input data.
+-   *
+-   * @param s A Base64 String to be decoded.
+-   * @return A String containing the decoded data.
+-   * @throws IllegalArgumentException If the input is not valid Base64 encoded data.
+-   */
+-  public static String decodeString(String s) {
+-    return new String(decode(s));
+-  }
+-
+-  /**
+-   * Decodes a byte array from Base64 format and ignores line separators, tabs and blanks. CR, LF,
+-   * Tab and Space characters are ignored in the input data. This method is compatible with
+-   * <code>sun.misc.BASE64Decoder.decodeBuffer(String)</code>.
+-   *
+-   * @param s A Base64 String to be decoded.
+-   * @return An array containing the decoded data bytes.
+-   * @throws IllegalArgumentException If the input is not valid Base64 encoded data.
+-   */
+-  public static byte[] decodeLines(String s) {
+-    char[] buf = new char[s.length()];
+-    int p = 0;
+-    for (int ip = 0; ip < s.length(); ip++) {
+-      char c = s.charAt(ip);
+-      if (c != ' ' && c != '\r' && c != '\n' && c != '\t') {
+-        buf[p++] = c;
+-      }
+-    }
+-    return decode(buf, 0, p);
+-  }
+-
+-  /**
+-   * Decodes a byte array from Base64 format. No blanks or line breaks are allowed within the Base64
+-   * encoded input data.
+-   *
+-   * @param s A Base64 String to be decoded.
+-   * @return An array containing the decoded data bytes.
+-   * @throws IllegalArgumentException If the input is not valid Base64 encoded data.
+-   */
+-  public static byte[] decode(String s) {
+-    return decode(s.toCharArray());
+-  }
+-
+-  /**
+-   * Decodes a byte array from Base64 format. No blanks or line breaks are allowed within the Base64
+-   * encoded input data.
+-   *
+-   * @param in A character array containing the Base64 encoded data.
+-   * @return An array containing the decoded data bytes.
+-   * @throws IllegalArgumentException If the input is not valid Base64 encoded data.
+-   */
+-  public static byte[] decode(char[] in) {
+-    return decode(in, 0, in.length);
+-  }
+-
+-  /**
+-   * Decodes a byte array from Base64 format. No blanks or line breaks are allowed within the Base64
+-   * encoded input data.
+-   *
+-   * @param in A character array containing the Base64 encoded data.
+-   * @param iOff Offset of the first character in <code>in</code> to be processed.
+-   * @param iLen Number of characters to process in <code>in</code>, starting at <code>iOff</code>.
+-   * @return An array containing the decoded data bytes.
+-   * @throws IllegalArgumentException If the input is not valid Base64 encoded data.
+-   */
+-  public static byte[] decode(char[] in, int iOff, int iLen) {
+-    if (iLen % 4 != 0) {
+-      throw new IllegalArgumentException(
+-          "Length of Base64 encoded input string is not a multiple of 4.");
+-    }
+-    while (iLen > 0 && in[iOff + iLen - 1] == '=') {
+-      iLen--;
+-    }
+-    int oLen = (iLen * 3) / 4;
+-    byte[] out = new byte[oLen];
+-    int ip = iOff;
+-    int iEnd = iOff + iLen;
+-    int op = 0;
+-    while (ip < iEnd) {
+-      int i0 = in[ip++];
+-      int i1 = in[ip++];
+-      int i2 = ip < iEnd ? in[ip++] : 'A';
+-      int i3 = ip < iEnd ? in[ip++] : 'A';
+-      if (i0 > 127 || i1 > 127 || i2 > 127 || i3 > 127) {
+-        throw new IllegalArgumentException("Illegal character in Base64 encoded data.");
+-      }
+-      int b0 = map2[i0];
+-      int b1 = map2[i1];
+-      int b2 = map2[i2];
+-      int b3 = map2[i3];
+-      if (b0 < 0 || b1 < 0 || b2 < 0 || b3 < 0) {
+-        throw new IllegalArgumentException("Illegal character in Base64 encoded data.");
+-      }
+-      int o0 = (b0 << 2) | (b1 >>> 4);
+-      int o1 = ((b1 & 0xf) << 4) | (b2 >>> 2);
+-      int o2 = ((b2 & 3) << 6) | b3;
+-      out[op++] = (byte) o0;
+-      if (op < oLen) {
+-        out[op++] = (byte) o1;
+-      }
+-      if (op < oLen) {
+-        out[op++] = (byte) o2;
+-      }
+-    }
+-    return out;
+-  }
+-
+-  // Dummy constructor.
+-  private Base64Coder() {}
+-
+-} // end class Base64Coder
+diff --git a/src/main/java/org/yaml/snakeyaml/representer/SafeRepresenter.java b/src/main/java/org/yaml/snakeyaml/representer/SafeRepresenter.java
+index f0951fb4..fdb5fb8c 100644
+--- a/src/main/java/org/yaml/snakeyaml/representer/SafeRepresenter.java
++++ b/src/main/java/org/yaml/snakeyaml/representer/SafeRepresenter.java
+@@ -17,6 +17,7 @@ import java.math.BigInteger;
+ import java.nio.charset.StandardCharsets;
+ import java.util.ArrayList;
+ import java.util.Arrays;
++import java.util.Base64;
+ import java.util.Calendar;
+ import java.util.Date;
+ import java.util.HashMap;
+@@ -30,7 +31,6 @@ import java.util.UUID;
+ import java.util.regex.Pattern;
+ import org.yaml.snakeyaml.DumperOptions;
+ import org.yaml.snakeyaml.error.YAMLException;
+-import org.yaml.snakeyaml.external.biz.base64Coder.Base64Coder;
+ import org.yaml.snakeyaml.nodes.Node;
+ import org.yaml.snakeyaml.nodes.Tag;
+ import org.yaml.snakeyaml.reader.StreamReader;
+@@ -124,7 +124,6 @@ class SafeRepresenter extends BaseRepresenter {
+       if (nonPrintableStyle == DumperOptions.NonPrintableStyle.BINARY
+           && !StreamReader.isPrintable(value)) {
+         tag = Tag.BINARY;
+-        char[] binary;
+         final byte[] bytes = value.getBytes(StandardCharsets.UTF_8);
+         // sometimes above will just silently fail - it will return incomplete data
+         // it happens when String has invalid code points
+@@ -133,8 +132,7 @@ class SafeRepresenter extends BaseRepresenter {
+         if (!checkValue.equals(value)) {
+           throw new YAMLException("invalid string value has occurred");
+         }
+-        binary = Base64Coder.encode(bytes);
+-        value = String.valueOf(binary);
++        value = Base64.getEncoder().encodeToString(bytes);
+         style = DumperOptions.ScalarStyle.LITERAL;
+       }
+       // if no other scalar style is explicitly set, use literal style for
+@@ -455,8 +453,8 @@ class SafeRepresenter extends BaseRepresenter {
+   protected class RepresentByteArray implements Represent {
+ 
+     public Node representData(Object data) {
+-      char[] binary = Base64Coder.encode((byte[]) data);
+-      return representScalar(Tag.BINARY, String.valueOf(binary), DumperOptions.ScalarStyle.LITERAL);
++      String binary = Base64.getEncoder().encodeToString((byte[]) data);
++      return representScalar(Tag.BINARY, binary, DumperOptions.ScalarStyle.LITERAL);
+     }
+   }
+ 
+diff --git a/src/test/java/biz/source_code/base64Coder/Base64CoderTest.java b/src/test/java/biz/source_code/base64Coder/Base64CoderTest.java
+index 295eb729..dbe814bf 100644
+--- a/src/test/java/biz/source_code/base64Coder/Base64CoderTest.java
++++ b/src/test/java/biz/source_code/base64Coder/Base64CoderTest.java
+@@ -13,10 +13,10 @@
+  */
+ package biz.source_code.base64Coder;
+ 
++import java.util.Base64;
+ import java.io.UnsupportedEncodingException;
+ import java.nio.charset.StandardCharsets;
+ import junit.framework.TestCase;
+-import org.yaml.snakeyaml.external.biz.base64Coder.Base64Coder;
+ 
+ public class Base64CoderTest extends TestCase {
+ 
+@@ -30,10 +30,10 @@ public class Base64CoderTest extends TestCase {
+ 
+   public void testFailure1() throws UnsupportedEncodingException {
+     try {
+-      Base64Coder.decode("YQ=".toCharArray());
++      Base64.getDecoder().decode("YQ=".getBytes(StandardCharsets.UTF_8));
+       fail();
+     } catch (Exception e) {
+-      assertEquals("Length of Base64 encoded input string is not a multiple of 4.", e.getMessage());
++      assertEquals("Input byte array has wrong 4-byte ending unit", e.getMessage());
+     }
+   }
+ 
+@@ -51,18 +51,18 @@ public class Base64CoderTest extends TestCase {
+ 
+   private void checkInvalid(String encoded) {
+     try {
+-      Base64Coder.decode(encoded.toCharArray());
++      Base64.getDecoder().decode(encoded.getBytes(StandardCharsets.UTF_8));
+       fail("Illegal chanracter.");
+     } catch (Exception e) {
+-      assertEquals("Illegal character in Base64 encoded data.", e.getMessage());
++      assertTrue(e.getMessage().startsWith("Illegal base64 character"));
+     }
+   }
+ 
+   private void check(String text, String encoded) throws UnsupportedEncodingException {
+-    char[] s1 = Base64Coder.encode(text.getBytes(StandardCharsets.UTF_8));
+-    String t1 = new String(s1);
++    byte[] s1 = Base64.getEncoder().encode(text.getBytes(StandardCharsets.UTF_8));
++    String t1 = new String(s1, StandardCharsets.UTF_8);
+     assertEquals(encoded, t1);
+-    byte[] s2 = Base64Coder.decode(encoded.toCharArray());
++    byte[] s2 = Base64.getDecoder().decode(encoded.getBytes(StandardCharsets.UTF_8));
+     String t2 = new String(s2, StandardCharsets.UTF_8);
+     assertEquals(text, t2);
+   }
+-- 
+2.37.3
+

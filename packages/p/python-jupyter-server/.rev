@@ -1,0 +1,647 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4344cb9fa432aa535d8498993f33c6c5</srcmd5>
+    <version>0.0.4</version>
+    <time>1558516208</time>
+    <user>dimstar_suse</user>
+    <comment>The Jupyter Server</comment>
+    <requestid>700254</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f146a72232b28f614dbf091e1d7e74ec</srcmd5>
+    <version>0.0.4</version>
+    <time>1558939094</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>705255</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>266e83e1410faa8fbf4f460a692e2d3d</srcmd5>
+    <version>0.0.5</version>
+    <time>1560459943</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709567</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5994ff409ad5b3671a107052b9256d66</srcmd5>
+    <version>0.1.0</version>
+    <time>1564576068</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719627</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>07900e46cd521dcf94427f491e4476a8</srcmd5>
+    <version>0.1.1</version>
+    <time>1565695222</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>722241</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>5f4a2ab174ac608cf2ffff1cfd237874</srcmd5>
+    <version>0.1.1</version>
+    <time>1575039443</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>748398</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9ae3ac8dbb353fc7ab7d098d2f977220</srcmd5>
+    <version>0.2.1</version>
+    <time>1582035499</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>774938</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>884ec5e9045aa02ade48974af2567158</srcmd5>
+    <version>0.2.1</version>
+    <time>1587659869</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop py2 deps from the spec</comment>
+    <requestid>796493</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>e40b095bf26ccab3f92813ad56a6370f</srcmd5>
+    <version>0.2.1</version>
+    <time>1591742960</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not restrict us to pytest4 as the tests work with pytest5 too</comment>
+    <requestid>812787</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>647fa8004194f4e5edc2558ff24f881d</srcmd5>
+    <version>1.2.3</version>
+    <time>1612989004</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>868941</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f49022fee4d560467b6b9d0e3a23e6fe</srcmd5>
+    <version>1.3.0</version>
+    <time>1613427621</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>872453</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d5de32430171b36c582d54b5b714e190</srcmd5>
+    <version>1.4.1</version>
+    <time>1614792836</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 1.4.1:
+  - Update README.md #425
+  - Solve UnboundLocalError in launch_browser() #421
+  - Add file_to_run to server extension docs #420
+  - Remove outdated reference to _jupyter_server_extension_paths
+    in docs #419
+  - Add Tests to Distribution #416
+  - Enable extensions to control the file_to_run #415
+  - add missing template for view.html #414
+  - Remove obsoleted asyncio-patch fixture #412
+  - Emit deprecation warning on old name #411
+  - Correct logging message position #410
+  - Update 1.3.0 Changelog to include broken 1.2.3 PRs #408
+  - [Gateway] Track only this server's kernels #407
+  - Update manager.py: more descriptive warnings when extensions
+    fail to load #396
+</comment>
+    <requestid>876041</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b11f0b92c27b51eb52b95d4dc2fde08d</srcmd5>
+    <version>1.6.1</version>
+    <time>1618610529</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>885982</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>24fa374191b08031a7cc37b2b4dffd67</srcmd5>
+    <version>1.9.0</version>
+    <time>1626644702</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>902993</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>909e47b21d400a940d6af5088a2a1881</srcmd5>
+    <version>1.10.2</version>
+    <time>1629706075</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>912675</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>fbf0c53c999672f4a82aa317b4c21417</srcmd5>
+    <version>1.11.1</version>
+    <time>1634587173</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925909</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>d68dcd6c3108094a436924ee98d5aeda</srcmd5>
+    <version>1.11.1</version>
+    <time>1635366079</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>927772</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>2ce38ed567fceb0fd78338828b4168ac</srcmd5>
+    <version>1.11.1</version>
+    <time>1635539651</time>
+    <user>dimstar_suse</user>
+    <comment>- revert the usage of libalternatives due to
+  gh#openSUSE/libalternatives#11</comment>
+    <requestid>928027</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>4000c0b787357b7f162b8504be87603f</srcmd5>
+    <version>1.11.2</version>
+    <time>1637108029</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.11.2
+  * Fix \s deprecation warning #600 (@Zsailer)
+  * Remove requests-unixsocket dependency #599 (@kevin-bates)
+  * bugfix: dir_exists is never awaited #597 (@stdll00)
+  * Fix missing await when call 'async_replace_file' #595
+    (@Wh1isper)
+  * add a pytest fixture for capturing logging stream #588
+    (@Zsailer)
+  * Maintenance and upkeep improvements
+  * Avoid dependency on NBConvert versions for REST API test #601
+    (@Zsailer)
+- Re-enable libalternatives
+</comment>
+    <requestid>931611</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>57f70a72ee0174e76f8db83497a7160e</srcmd5>
+    <version>1.13.1</version>
+    <time>1641321458</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>943591</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>662c073d412f7d9f51492bd9cca9f065</srcmd5>
+    <version>1.13.3</version>
+    <time>1642548903</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.13.3
+  * More updates to unit tests for pending kernels work #662
+    (@Zsailer)
+  * bump traitlets dependency #663 (@Zsailer)
+- Update to 1.13.2
+  * Don't block the event loop when exporting with nbconvert #655
+    (@davidbrochart)
+  * Add more awaits for pending kernel in unit tests #654
+    (@Zsailer)
+  * Print IPv6 url as hostname or enclosed in brackets #652 (@op3)
+  * Run pre_save_hook before model check #643 (@davidbrochart)
+  * handle KeyError when get session #641 (@ccw630)
+  * Clean up deprecations #650 (@blink1073)
+  * Update branch references #646 (@blink1073)
+  * pyproject.toml: clarify build system version #634
+    (@adamjstewart) (forwarded request 946718 from bnavigator)</comment>
+    <requestid>946720</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>68ea29fb3c869b0ee5c6dbcfa784ba76</srcmd5>
+    <version>1.13.4</version>
+    <time>1643666216</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>949904</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>418cb1503b76156d78e58787b10987c6</srcmd5>
+    <version>1.15.6</version>
+    <time>1648488270</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>964366</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>bc7d53faff058302d6a70219c5b946ae</srcmd5>
+    <version>1.17.1</version>
+    <time>1655396428</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.17.1
+  * Address security advisory GHSA-q874-g24w-4q9g
+- boo#1200548, CVE-2022-29241</comment>
+    <requestid>982746</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>0fb95738a645abe94ae3dd83068291b5</srcmd5>
+    <version>1.18.1</version>
+    <time>1658857457</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>990956</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>5d58fca6968c9214f3094f96913a0966</srcmd5>
+    <version>1.18.1</version>
+    <time>1659816486</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing pytest-timeout in -test package</comment>
+    <requestid>993388</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>4b62d34328c6d0f1ff503b795309b137</srcmd5>
+    <version>1.21.0</version>
+    <time>1666786917</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.21.0
+  * Handle client 8 pending kernels #1014 (@blink1073)
+- Release 1.19.1
+  * Wrap the concurrent futures in an asyncio future #1000
+    (@blink1073)
+- Release 1.19.0
+  * New features added
+    + Backport Inject session identifier into environment variable
+      #920 (@vidartf)
+  * Enhancements made
+    + Backport #981: Make it easier to pass custom env variables to
+      kernel #994 (@divyansshhh)
+    + Retry certain errors between server and gateway #944
+      (@kevin-bates)
+  * Bugs fixed
+    + Backport PR #965: Correct content-type headers #966
+      (@epignot)
+    + avoid creating asyncio.Lock at import time #935 (@minrk)
+    + Fix c.GatewayClient.url snippet syntax #917 (@rickwierenga)
+    + Add back support for kernel launch timeout pad #910
+      (@CiprianAnton)
+  * Maintenance and upkeep improvements
+    + Test with client 8 updates #992 (@blink1073)
+    + Backport PR #922: Improve logging of bare exceptions etc.
+      #926 (@thetorpedodog)
+    + Fix handling of dev version #913 (@blink1073)
+    + Fix owasp link #908 (@blink1073)</comment>
+    <requestid>1031311</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>15a6f414cb0d25b5881f415cf7add862</srcmd5>
+    <version>2.0.6</version>
+    <time>1672754694</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.6
+  * Iterate through set of apps in extension_manager.any_activity
+    method #1157 (@mahendrapaipuri)
+  * Handle flake8-errmsg #1155 (@blink1073)
+  * Add spelling and docstring enforcement #1147 (@blink1073)
+- Update to 2.0.5
+  * Remove end kwarg after migration from print to info #1151
+    (@krassowski)
+  * Import ensure-sync directly from dependence. #1149 (@Carreau)
+  * Update deprecation warning #1148 (@Carreau)
+- Release 2.0.4
+  * Fix handling of extension last activity #1145 (@blink1073)
+- Release 2.0.3
+  * Restore default writing of browser open redirect file, add
+    opt-in to skip #1144 (@bollwyvl)
+- Release 2.0.2
+  * Raise errors on individual problematic extensions when listing
+    extension #1139 (@Zsailer)
+  * Find an available port before starting event loop #1136
+    (@blink1073)
+  * only write browser files if we’re launching the browser #1133
+    (@hhuuggoo)
+  * Logging message used to list sessions fails with template error
+    #1132 (@vindex10)
+  * Include base_url at start of kernelspec resources path #1124
+    (@bloomsa)
+- Release 2.0.1
+  * [Gateway] Remove redundant list kernels request during session
+    poll #1112 (@kevin-bates)
+  * Maintenance and upkeep improvements
+  * Fix jupyter_core pinning #1122 (@ophie200)
+- Major Release 2.0.0
+  ## Enhancements made
+  * Introduce ServerKernelManager class #1101 (@kevin-bates)
+  * New configurable/overridable kernel ZMQ+Websocket connection
+    API #1047 (@Zsailer)
+  * Pass kernel environment to cwd_for_path method #1046
+    (@divyansshhh)
+  * Better Handling of Asyncio #1035 (@blink1073)
+  * Add authorization to AuthenticatedFileHandler #1021
+    (@jiajunjie)
+  * [Gateway] Add support for gateway token renewal #985
+    (@kevin-bates)
+  * Make it easier to pass custom env variables to kernel #981
+    (@divyansshhh)
+  * Accept and manage cookies when requesting gateways #969 (@wjsi)
+  * Emit events from the Contents Service #954 (@Zsailer)
+  * Retry certain errors between server and gateway #944
+    (@kevin-bates)
+  * Allow new file types #895 (@davidbrochart)
+  * Make it easier for extensions to customize the ServerApp #879
+    (@minrk)
+  * Adds anonymous users #863 (@hbcarlos)
+  * switch to jupyter_events #862 (@Zsailer)
+  * consolidate auth config on IdentityProvider #825 (@minrk)
+  ## Bugs fixed
+  * Fix kernel WebSocket protocol #1110 (@davidbrochart)
+  * Defer webbrowser import #1095 (@blink1073)
+  * Use handle_outgoing_message for ZMQ replies #1089 (@Zsailer)
+  * Call ports_changed on the multi-kernel-manager instead of the
+    kernel manager #1088 (@Zsailer)
+  * Add more websocket connection tests and fix bugs #1085
+    (@blink1073)
+  * Tornado WebSocketHandler fixup #1083 (@davidbrochart)
+  * persist userid cookie when auth is disabled #1076 (@minrk)
+  * Fix rename_file and delete_file to handle hidden files properly
+    #1073 (@yacchin1205)
+  * Add more coverage #1069 (@blink1073)
+  * Increase nbconvert and checkpoints coverage #1066 (@blink1073)
+  * Fix min version check again #1049 (@blink1073)
+  * Fallback new file type to file for contents put #1013 (@a3626a)
+  * Fix some typos in release instructions #1003 (@kevin-bates)
+  * Wrap the concurrent futures in an asyncio future #1001
+    (@blink1073)
+  * [Gateway] Fix and deprecate env whitelist handling #979
+    (@kevin-bates)
+  * fix issues with jupyter_events 0.5.0 #972 (@Zsailer)
+  * Correct content-type headers #965 (@epignot)
+  * Don’t validate certs for when stopping server #959 (@Zsailer)
+  * Parse list value for terminado_settings #949 (@krassowski)
+  * Fix bug in api/contents requests for an allowed copy #939
+    (@kiersten-stokes)
+  * Fix error that prevents posting to api/contents endpoint with
+    no body #937 (@kiersten-stokes)
+  * avoid creating asyncio.Lock at import time #935 (@minrk)
+  * Fix get_kernel_path for AsyncFileManagers. #929
+    (@thetorpedodog)
+  * Fix c.GatewayClient.url snippet syntax #917 (@rickwierenga)
+  * Add back support for kernel launch timeout pad #910
+    (@CiprianAnton)
+  * Notify ChannelQueue that the response router thread is
+    finishing #896 (@CiprianAnton)
+  * Make ChannelQueue.get_msg true async #892 (@CiprianAnton)
+  * Check for serverapp for reraise flag #887 (@vidartf)
+  ## Maintenance and upkeep improvements
+  * Make tests less sensitive to default kernel name #1118
+    (@blink1073)
+  * Tweak codecov settings #1113 (@blink1073)
+  * Bump minimatch from 3.0.4 to 3.1.2 #1109 (@dependabot)
+  * Add skip-if-exists config #1108 (@blink1073)
+  * Use pytest-jupyter #1099 (@blink1073)
+  * Clean up release instructions and coverage handling #1098
+    (@blink1073)
+  * Import ensure_async from jupyter_core #1093 (@davidbrochart)
+  * Add more tests #1092 (@blink1073)
+  * Fix coverage upload #1091 (@blink1073)
+  * Add base handler tests #1090 (@blink1073)
+  * Add more websocket connection tests and fix bugs #1085
+    (@blink1073)
+  * Use base setup dependency type #1084 (@blink1073)
+  * Add more serverapp tests #1079 (@blink1073)
+  * Add more gateway tests #1078 (@blink1073)
+  * More cleanup #1077 (@blink1073)
+  * Fix hatch scripts and windows workflow run #1074 (@blink1073)
+  * use recommended github-workflows checker #1071 (@blink1073)
+  * Add more coverage #1069 (@blink1073)
+  * More coverage #1067 (@blink1073)
+  * Increase nbconvert and checkpoints coverage #1066 (@blink1073)
+  * Test downstream jupyter_server_terminals #1065 (@blink1073)
+  * Test notebook prerelease #1064 (@blink1073)
+  * MAINT: remove python 3.4 branch #1061 (@Carreau)
+  * Bump actions/checkout from 2 to 3 #1056 (@dependabot)
+  * Bump actions/setup-python from 2 to 4 #1055 (@dependabot)
+  * Bump pre-commit/action from 2.0.0 to 3.0.0 #1054 (@dependabot)
+  * Add dependabot file #1053 (@blink1073)
+  * Use global env for min version check #1048 (@blink1073)
+  * Clean up handling of synchronous managers #1044 (@blink1073)
+  * Clean up config files #1031 (@blink1073)
+  * Make node optional #1030 (@blink1073)
+  * Use admin github token for releaser #1025 (@blink1073)
+  * CI Cleanup #1023 (@blink1073)
+  * Use mdformat instead of prettier #1022 (@blink1073)
+  * Add pyproject validation #1020 (@blink1073)
+  * Remove hardcoded client install in CI #1019 (@blink1073)
+  * Handle client 8 pending kernels #1014 (@blink1073)
+  * Use releaser v2 tag #1010 (@blink1073)
+  * Use hatch environments to simplify test, coverage, and docs
+    build #1007 (@blink1073)
+  * Update to version2 releaser #1006 (@blink1073)
+  * Do not use dev version yet #999 (@blink1073)
+  * Add workflows for simplified publish #993 (@blink1073)
+  * Remove hardcoded client install #991 (@blink1073)
+  * Test with client 8 updates #988 (@blink1073)
+  * Switch to using hatchling version command #984 (@blink1073)
+  * Run downstream tests in parallel #973 (@blink1073)
+  * Update pytest_plugin with fixtures to test auth in core and
+    extensions #956 (@akshaychitneni)
+  * Fix docs build #952 (@blink1073)
+  * Fix flake8 v5 compat #941 (@blink1073)
+  * Improve logging of bare exceptions and other cleanups. #922
+    (@thetorpedodog)
+  * Use more explicit version template for pyproject #919
+    (@blink1073)
+  * Fix handling of dev version #913 (@blink1073)
+  * Fix owasp link #908 (@blink1073)
+  * default to system node version in precommit #906 (@dlqqq)
+  * Test python 3.11 on ubuntu #839 (@blink1073)
+  ## Documentation improvements
+  * Remove left over from notebook #1117 (@fcollonval)
+  * Fix wording #1037 (@fcollonval)
+  * Fix GitHub actions badge link #1011 (@blink1073)
+  * Pin docutils to fix docs build #1004 (@blink1073)
+  * Update server extension disable instructions #998 (@3coins)
+  * Update index.rst #970 (@razrotenberg)
+  * Fix typo in IdentityProvider documentation #915 (@danielyahn)
+  * docs: document the logging_config trait #844 (@oliver-sanders)
+  ## Deprecated features
+  * [Gateway] Fix and deprecate env whitelist handling #979
+    (@kevin-bates)
+</comment>
+    <requestid>1046204</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>a100246aad65ce854036d468875f823c</srcmd5>
+    <version>2.1.0</version>
+    <time>1673888348</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1.0
+  * Fix preferred_dir for sync contents manager #1173 (@vidartf)
+  * Update typing and warning handling #1174 (@blink1073)
+- Release 2.0.7
+  * Log how long each extension module takes to import #1171
+    (@yuvipanda)
+  * Set JPY_SESSION_NAME to full notebook path. #1100 (@Carreau)
+  * Reapply preferred_dir fix, now with better backwards
+    compatability #1162 (@vidartf)
+  * Update example to use hatch #1169 (@blink1073)
+  * Clean up docs build and typing #1168 (@blink1073)
+  * Fix check release by ignoring duplicate file name in wheel
+    #1163 (@blink1073)
+  * Fix broken link in warning message #1158 (@consideRatio)</comment>
+    <requestid>1058569</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>2b682bbef72dba577850a69283f6415b</srcmd5>
+    <version>2.2.1</version>
+    <time>1675689322</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.1
+  * remove upper bound on anyio #1192 (@minrk)
+- Release 2.2.0
+  ## Enhancements made
+  * Only load enabled extension packages #1180 (@minrk)
+  * Pass in a logger to get_metadata #1176 (@yuvipanda)
+  ## Bugs fixed
+  * Don't assume that resources entries are relative #1182 (@ojarjur)
+  ## Maintenance and upkeep improvements
+  * Updates for client 8 #1188 (@blink1073)
+  * Use repr in logging for exception. #1185 (@Carreau)
+</comment>
+    <requestid>1063312</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>dabd81afb34d4d2f85884998524e8996</srcmd5>
+    <version>2.5.0</version>
+    <time>1679667632</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.5.0
+  * Enable KernelSpecResourceHandler to be async #1236 (@Zsailer)
+  * Added error propagation to gateway_request function #1233
+    (@broden-wanner)
+- Release 2.4.0
+  * Skip dir size check if not enumerable #1227 (@vidartf)
+  * Optimize hidden checks #1226 (@vidartf)
+  * Enable users to copy both files and directories #1190
+    (@kenyaachon)
+  * Fix port selection #1229 (@blink1073)
+  * Fix priority of deprecated NotebookApp.notebook_dir behind
+    ServerApp.root_dir #1223 (@minrk)
+  * Ensure content-type properly reflects gateway kernelspec
+    resources #1219 (@kevin-bates)
+- Release 2.3.0
+  * Support IPV6 in _find_http_port() #1207 (@schnell18)
+  * Redact tokens, etc. in url parameters from request logs #1212
+    (@minrk)
+  * Fix get_loader returning None when
+    load_jupyter_server_extension is not found (#1193)
+</comment>
+    <requestid>1073773</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>0b3ac560b6b6abcfa2124147dc6094ae</srcmd5>
+    <version>2.6.0</version>
+    <time>1686665336</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092416</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>14d083f3fd67435241f709825564e020</srcmd5>
+    <version>2.7.2</version>
+    <time>1693383645</time>
+    <user>anag+factory</user>
+    <comment>- Update fixes:
+  * CVE-2023-39968 boo#1214730
+  * CVE-2023-40170 boo#1214731
+- Update to 2.7.2
+  * accessing API version should not count as activity #1315
+    (@minrk)
+  * Make kernel_id as a conditional optional field #1300
+    (@allstrive)
+  * Reference current_user to detect auth #1294 (@bhperry)
+  * send2trash now supports deleting from different filesystem
+    type(#1290) #1291 (@wqj97)
+- Release 2.7.0
+  * Add missing events to gateway client #1288 (@allstrive)
+</comment>
+    <requestid>1107864</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>87ffd67171db5c56b77cb032c1682e42</srcmd5>
+    <version>2.7.3</version>
+    <time>1695664998</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.7.3
+  * Support external kernels #1305 (@davidbrochart)
+</comment>
+    <requestid>1113302</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>0c1f40e29aaac228e5096b349970d689</srcmd5>
+    <version>2.11.0</version>
+    <time>1701121381</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.11.0
+  * Support get file(notebook) md5 #1363 (@Wh1isper)
+- Release 2.10.1
+  * ContentsHandler return 404 rather than raise exc #1357
+    (@bloomsa)
+- Release 2.10.0
+  * Update kernel env to reflect changes in session #1354
+    (@blink1073)
+- Release 2.9.0
+  * Ability to configure cull_idle_timeout with kernelSpec #1342
+    (@akshaychitneni)
+  * Run Gateway token renewers even if the auth token is empty.
+    #1340 (@ojarjur)
+- Release 2.8.0
+  * Added Logs for get_os_path closes issue #1336
+    (@jayeshsingh9767)
+  * Avoid showing &quot;No answer for 5s&quot; when shutdown is slow #1320
+    (@minrk)
+</comment>
+    <requestid>1128961</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>89fe8660a9943a5576166b2595b9ee69</srcmd5>
+    <version>2.11.2</version>
+    <time>1701792252</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.11.2: Fix GHSA-h56g-gq9v-vc8r, CVE-2023-49080,
+  boo#1217809
+  * Unhandled errors in API requests include traceback information,
+    which can include path information. There is no known mechanism
+    by which to trigger these errors without authentication, so the
+    paths revealed are not considered particularly sensitive, given
+    that the requesting user has arbitrary execution permissions
+    already in the same environment.
+  * jupyter-server no longer includes traceback information in JSON
+    error responses. For compatibility, the traceback field is
+    present, but always empty.
+- Release 2.11.1
+  * avoid unhandled error on some invalid paths #1369 (@minrk)
+  * Change md5 to hash and hash_algorithm, fix incompatibility
+    #1367 (@Wh1isper)</comment>
+    <requestid>1130946</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>24e4999d13284f6e36518666c3c1e163</srcmd5>
+    <version>2.12.1</version>
+    <time>1703527534</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.12.1
+  * log extension import time at debug level unless it's actually
+    slow #1375 (@minrk)
+  * Add support for async Authorizers #1374 #1373 (@Zsailer)</comment>
+    <requestid>1134929</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>e5fbad8ede4eebd0e1d4c93e4ceceefc</srcmd5>
+    <version>2.12.4</version>
+    <time>1705353580</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.12.4
+  * Fix log arguments for gateway client error #1385 (@minrk)
+- Release 2.12.3
+  * Import User unconditionally #1384 (@yuvipanda)
+- Release 2.12.2
+  * Fix a typo in error message #1381 (@krassowski)
+  * Force legacy ws subprotocol when using gateway #1311 (@epignot)</comment>
+    <requestid>1138728</requestid>
+  </revision>
+</revisionlist>

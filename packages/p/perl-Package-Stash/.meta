@@ -1,0 +1,22 @@
+<package name="perl-Package-Stash" project="openSUSE:Factory">
+  <title>routines for manipulating stashes</title>
+  <description>Manipulating stashes (Perl's symbol tables) is occasionally necessary, but
+incredibly messy, and easy to get wrong. This module hides all of that
+behind a simple API.
+
+NOTE: Most methods in this class require a variable specification that
+includes a sigil. If this sigil is absent, it is assumed to represent the
+IO slot.
+
+Due to limitations in the typeglob API available to perl code, and to
+typeglob manipulation in perl being quite slow, this module provides two
+implementations - one in pure perl, and one using XS. The XS implementation
+is to be preferred for most usages; the pure perl one is provided for cases
+where XS modules are not a possibility. The current implementation in use
+can be set by setting '$ENV{PACKAGE_STASH_IMPLEMENTATION}' or
+'$Package::Stash::IMPLEMENTATION' before loading Package::Stash (with the
+environment variable taking precedence), otherwise, it will use the XS
+implementation if possible, falling back to the pure perl one.</description>
+  <devel project="devel:languages:perl" package="perl-Package-Stash"/>
+  <url>http://search.cpan.org/dist/Package-Stash/</url>
+</package>

@@ -1,0 +1,15 @@
+Index: xemacs-21.5.29/lisp/files.el
+===================================================================
+--- xemacs-21.5.29.orig/lisp/files.el
++++ xemacs-21.5.29/lisp/files.el
+@@ -166,7 +166,9 @@ This variable is relevant only if `backu
+ Checks for files in the directory returned by `temp-directory' or specified
+ by `small-temporary-file-directory'."
+   (let ((temporary-file-directory (temp-directory)))
+-    (not (or (let ((comp (compare-strings temporary-file-directory 0 nil
++    (not (or (null name)
++	     (string-match "^/tmp/" name)
++	     (let ((comp (compare-strings temporary-file-directory 0 nil
+ 					  name 0 nil)))
+ 	       ;; Directory is under temporary-file-directory.
+ 	       (and (not (eq comp t))

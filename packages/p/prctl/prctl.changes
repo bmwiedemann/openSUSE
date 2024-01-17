@@ -1,0 +1,52 @@
+-------------------------------------------------------------------
+Sun Aug  2 17:24:37 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Remove old source (prctl-1.5.tar.gz)
+
+-------------------------------------------------------------------
+Tue Apr 29 08:55:16 UTC 2014 - pgajdos@suse.com
+
+- updated to 1.6:
+    * Improved messages and suppressed unnecessary error messages
+    * Added support for PR_MCE_KILL
+
+-------------------------------------------------------------------
+Mon Apr 15 09:26:57 UTC 2013 - idonmez@suse.com
+
+- Cleanup spec file
+- Add Source URL, see https://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Mon Mar 21 16:50:15 UTC 2011 - coolo@novell.com
+
+- licenses package is about to die
+
+-------------------------------------------------------------------
+Fri Nov 19 09:17:32 UTC 2010 - mvyskocil@suse.cz
+
+- Update to 1.5 (bugfix release)
+  * Better error message in case kernel does not support prctl operations.
+- refresh SUSE patches
+- add Changelog and COPYING to docdir
+
+-------------------------------------------------------------------
+Wed Jan 25 21:40:37 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sun Apr 18 20:15:43 CEST 2004 - schwab@suse.de
+
+- Pacify autobuild.
+
+-------------------------------------------------------------------
+Sun Jan 11 13:25:57 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Sat Dec 29 22:49:34 CET 2001 - schwab@suse.de
+
+- Initial version 1.3.
+

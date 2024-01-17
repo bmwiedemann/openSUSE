@@ -1,0 +1,72 @@
+diff -ru xemacs-21.5.20.orig/lib-src/movemail.c xemacs-21.5.20/lib-src/movemail.c
+--- xemacs-21.5.20.orig/lib-src/movemail.c	2005-02-14 04:40:45.000000000 +0100
++++ xemacs-21.5.20/lib-src/movemail.c	2005-05-12 12:44:12.000000000 +0200
+@@ -135,7 +135,7 @@
+ #undef write
+ #undef close
+ 
+-static void fatal (char *, char*);
++static void fatal (char *, char *, char *);
+ static void error (char *, char *, char *);
+ static void usage(int);
+ static void pfatal_with_name (char *);
+@@ -309,7 +309,7 @@
+ #endif
+ 
+   if (*outname == 0)
+-    fatal ("Destination file name is empty", 0);
++    fatal ("Destination file name is empty", 0, 0);
+ 
+   VERBOSE(("checking access to output file\n"));
+   /* Check access to output file.  */
+@@ -551,7 +551,7 @@
+     return LOCKING;
+ #endif
+   else
+-    fatal("invalid lock method: %s", method_name);
++    fatal("invalid lock method: %s", method_name, 0);
+   return 0; /* unreached */
+ }
+ 
+@@ -647,10 +647,10 @@
+ /* Print error message and exit.  */
+ 
+ static void
+-fatal (char *s1, char *s2)
++fatal (char *s1, char *s2, char *s3)
+ {
+   maybe_unlock_dot();
+-  error (s1, s2, NULL);
++  error (s1, s2, s3);
+   exit (1);
+ }
+ 
+@@ -667,16 +667,15 @@
+ static void
+ pfatal_with_name (char *name)
+ {
+-  char *s = concat ("", strerror (errno), " for %s");
+-  fatal (s, name);
++  fatal ("%s for %s", strerror (errno), name);
+ }
+ 
+ static void
+ pfatal_and_delete (char *name)
+ {
+-  char *s = concat ("", strerror (errno), " for %s");
++  char *s = strerror (errno);
+   unlink (name);
+-  fatal (s, name);
++  fatal ("%s for %s", s, name);
+ }
+ 
+ /* Return a newly-allocated string whose contents concatenate those of s1, s2, s3.  */
+@@ -702,7 +701,7 @@
+ {
+   long *result = (long *) malloc (size);
+   if (!result)
+-    fatal ("virtual memory exhausted", 0);
++    fatal ("virtual memory exhausted", 0, 0);
+   return result;
+ }
+ 

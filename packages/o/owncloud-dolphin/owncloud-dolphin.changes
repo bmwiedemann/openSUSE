@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Wed Jan  3 13:53:22 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Don't self-obsolete
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Wed Jan  3 11:18:12 UTC 2024 - Klaas Freitag <opensuse@freisturz.de>
+
+- More feedback from review. Fixed license in spec file. 
+
+-------------------------------------------------------------------
+Tue Jan  2 20:16:06 UTC 2024 - Klaas Freitag <opensuse@freisturz.de>
+
+- Remove build requires for qt6, does not make sense
+- Add obsoletes and provides for the old dolphin package 
+
+-------------------------------------------------------------------
+Tue Jan  2 10:19:44 UTC 2024 - Klaas Freitag <opensuse@freisturz.de>
+
+- First separate package of the dolphin shell integrations for the 
+  ownCloud desktop syncing client. It provides overlay icons and 
+  an action menu.
+
+  Since it changes much less frequent than the client it got moved
+  to its own tarball. 

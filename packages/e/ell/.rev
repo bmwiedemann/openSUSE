@@ -1,0 +1,322 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6692092f4fcbbfde2d41dc904d3381f9</srcmd5>
+    <version>0~1304</version>
+    <time>1485382773</time>
+    <user>dimstar_suse</user>
+    <comment>now with COPYING</comment>
+    <requestid>439943</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2047828c015c2d0944833680a8be8d50</srcmd5>
+    <version>0.5</version>
+    <time>1528492451</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>614218</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>884bfa9b8a24cd05a07f5d125865c0a0</srcmd5>
+    <version>0.15</version>
+    <time>1542579858</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 0.15</comment>
+    <requestid>650022</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bab10526434b6ea14e71084c8cc41e91</srcmd5>
+    <version>0.16</version>
+    <time>1545866637</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 0.16</comment>
+    <requestid>657941</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>534f20366075ca272a46b1c1d74a5f67</srcmd5>
+    <version>0.16</version>
+    <time>1549629916</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>670897</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d09ea3932ef45c5cdaf1239631f4a528</srcmd5>
+    <version>0.17</version>
+    <time>1552901664</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 0.17</comment>
+    <requestid>685289</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>aeabc01e85c8b0ee22e87c47d57ff704</srcmd5>
+    <version>0.18</version>
+    <time>1554715465</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.18:</comment>
+    <requestid>692011</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>abd8de99e705ea29e2e4a7a0716b0ceb</srcmd5>
+    <version>0.20</version>
+    <time>1559727438</time>
+    <user>dimstar_suse</user>
+    <comment>Update to upstream v 0.20 (forwarded request 706148 from xha)</comment>
+    <requestid>706904</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>676038019b3554a44d289bd958ac5a6e</srcmd5>
+    <version>0.21</version>
+    <time>1565694827</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 0.21</comment>
+    <requestid>722321</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9e115ab0fed63845f6d935c3398eee51</srcmd5>
+    <version>0.23</version>
+    <time>1570448208</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>733822</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b7a9186c4e9c7be8f472db8bb175c749</srcmd5>
+    <version>0.26</version>
+    <time>1573044508</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>744588</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>88fb908d892d0d7c43d06a2d902f56c4</srcmd5>
+    <version>0.27</version>
+    <time>1578322923</time>
+    <user>dimstar_suse</user>
+    <comment>- ver 0.27:</comment>
+    <requestid>760500</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d6e426dce9986582a2a2c632bc02c045</srcmd5>
+    <version>0.32</version>
+    <time>1592397944</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 0.32</comment>
+    <requestid>814762</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f4cde82b32548aeee1d91b4dd23a13e7</srcmd5>
+    <version>0.33</version>
+    <time>1600878960</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>834037</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>2ce620281fe6bbbc40c5f69e9da5d63e</srcmd5>
+    <version>0.35</version>
+    <time>1609147778</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 0.35</comment>
+    <requestid>858385</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f5e4c199b993edc8a6c0f4af6edc143a</srcmd5>
+    <version>0.36</version>
+    <time>1610736240</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>862124</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>bf5e9ba61263e63067c2268e1d0c611f</srcmd5>
+    <version>0.38</version>
+    <time>1614000193</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>873395</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>46ad547e87669bdebec119fccf3b4ce4</srcmd5>
+    <version>0.39</version>
+    <time>1617912781</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>883230</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>664da269316dcd9d6a8df3326b0a0f78</srcmd5>
+    <version>0.40</version>
+    <time>1621113324</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.40:</comment>
+    <requestid>892311</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>422d49c059f450c084073bfce5ee5ba9</srcmd5>
+    <version>0.41</version>
+    <time>1624626031</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 0.41</comment>
+    <requestid>901223</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>e955b1c2cda47e03767cf74f94733521</srcmd5>
+    <version>0.42</version>
+    <time>1629795239</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 0.42</comment>
+    <requestid>913215</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>8b991efc580f66e2695e444554baa75a</srcmd5>
+    <version>0.43</version>
+    <time>1631221639</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>917264</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>ad3f29a7989040ed4f03871330995789</srcmd5>
+    <version>0.44</version>
+    <time>1632522915</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>920159</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>d63bb2a408af34602142e73aa2de93cc</srcmd5>
+    <version>0.45</version>
+    <time>1636218936</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>929610</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>d7b4e70c35ecf1985f2909a5ff4f5dbb</srcmd5>
+    <version>0.46</version>
+    <time>1637794458</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>933119</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>960df7438d9c3e4e2dbabe0ebf4d1373</srcmd5>
+    <version>0.48</version>
+    <time>1643321774</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>948509</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>612c98617bd5316f0bd9b6f48a87e7bd</srcmd5>
+    <version>0.49</version>
+    <time>1645891303</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>957524</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>07a90a45113f6d7f82076e9cc92a197b</srcmd5>
+    <version>0.50</version>
+    <time>1651180022</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 0.50</comment>
+    <requestid>972811</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>0ce35291d73aba03636a8bbfa393073d</srcmd5>
+    <version>0.51</version>
+    <time>1657617126</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.51:
+  * Fix issue with handling bad prefixes per RFC4862
+  * Fix issue with handling DHCP retransmission timers
+  * Add support for DHCP override and static IP API</comment>
+    <requestid>988299</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>3d716471a0f4649505ddd8b223e842fc</srcmd5>
+    <version>0.52</version>
+    <time>1658395977</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>989855</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>b036c039b241f67c3ece13f35e6a9233</srcmd5>
+    <version>0.53</version>
+    <time>1663155875</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1003272</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>c911b7a9fd547e8f8e91c664d13c5dab</srcmd5>
+    <version>0.54</version>
+    <time>1670162289</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.54:
+  * Add support for DHCPv6 SLAAC address creation.
+  * Add support for control of optimistic DAD feature.
+  * Add support for checking validity dates of certificates.
+  * Add support for RFC 5746 Secure Renegotiation. (forwarded request 1039813 from dirkmueller)</comment>
+    <requestid>1039822</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>c2782a54f100be3df3cd2ad380cb393d</srcmd5>
+    <version>0.55</version>
+    <time>1671977669</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.55:</comment>
+    <requestid>1045122</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>2c624620c693b2f327cd1e255be536c1</srcmd5>
+    <version>0.56</version>
+    <time>1674737808</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.56:
+  * Add support for TLS session resume interfaces. (forwarded request 1060725 from polslinux)</comment>
+    <requestid>1060787</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>9af217e91db10433c18d28290ce704bb</srcmd5>
+    <version>0.57</version>
+    <time>1687272008</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093755</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>c1e0fab762fcdfae73252df1140a7c3e</srcmd5>
+    <version>0.58</version>
+    <time>1693383530</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1107949</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>b4a808567bd41a05d40ff2713809bfe7</srcmd5>
+    <version>0.59</version>
+    <time>1698952857</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 0.59</comment>
+    <requestid>1121607</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>7df4e14e411123d6cf3bf9ab26a82795</srcmd5>
+    <version>0.60</version>
+    <time>1700675658</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1127948</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>ba2e065bd8ddb40e361d10a638c4cef6</srcmd5>
+    <version>0.61</version>
+    <time>1703800489</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 0.61</comment>
+    <requestid>1135284</requestid>
+  </revision>
+</revisionlist>

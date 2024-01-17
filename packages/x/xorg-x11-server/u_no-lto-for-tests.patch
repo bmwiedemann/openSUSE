@@ -1,0 +1,10 @@
+--- xserver-1.20.10/test/Makefile.am.orig	2021-03-02 23:46:49.137916000 +0100
++++ xserver-1.20.10/test/Makefile.am	2021-03-02 23:47:48.691663000 +0100
+@@ -105,6 +105,7 @@ tests_LDFLAGS = \
+ 	-Wl,-wrap,XISetEventMask \
+ 	-Wl,-wrap,AddResource \
+ 	-Wl,-wrap,GrabButton \
++	-fno-lto \
+ 	$()
+ endif XORG
+ 

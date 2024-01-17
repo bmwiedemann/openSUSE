@@ -1,0 +1,297 @@
+-------------------------------------------------------------------
+Mon Dec 18 09:28:02 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.20.1:
+  * Fix `XREAD` bug #256
+  * Testing for python 3.12
+
+-------------------------------------------------------------------
+Mon Dec  4 21:41:12 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.20.0:
+  * Implement `BITFIELD` command #247
+  * Implement `COMMAND`, `COMMAND INFO`, `COMMAND COUNT` #248
+
+-------------------------------------------------------------------
+Thu Oct 19 10:04:58 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Remove unnecessary BR on python-lupa
+
+-------------------------------------------------------------------
+Tue Sep 26 13:23:51 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.19.0:
+  * Implement Bloom filters commands #239
+  * Fix error on blocking XREADGROUP #237
+
+-------------------------------------------------------------------
+Mon Sep 11 20:38:28 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.18.1:
+  * Fix stream type issue #233
+
+-------------------------------------------------------------------
+Mon Sep  4 15:53:28 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.18.0:
+  * Implement `PUBSUB NUMPAT` #195, `SSUBSCRIBE` #199, `SPUBLISH`
+    #198, `SUNSUBSCRIBE` #200, `PUBSUB SHARDCHANNELS` #196, `PUBSUB
+    SHARDNUMSUB` #197
+  * Fix All aio.FakeRedis instances share the same server #218
+
+-------------------------------------------------------------------
+Tue Jul 18 14:41:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.17.0:
+  * Implement `LPOS` #207, `LMPOP` #184, and `BLMPOP` #183
+  * Implement `ZMPOP` #191, `BZMPOP` #186
+  * Fix incorrect error msg for group not found #210
+  * fix: use same server_key within pipeline when issued watch
+    issue with ZRANGE and ZRANGESTORE with BYLEX #214
+  * Implemented support for `JSON.MSET` #174, `JSON.MERGE` #181
+  * Add support for version for async FakeRedis #205
+  * Updated how to test django_rq #204
+
+-------------------------------------------------------------------
+Sat Jul  1 20:33:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.15.0:
+  * Implemented support for various stream groups commands:
+  * `XGROUP CREATE` #161, `XGROUP DESTROY` #164, `XGROUP SETID`
+    #165, `XGROUP DELCONSUMER` #162,
+  * `XGROUP CREATECONSUMER` #163, `XINFO GROUPS` #168, `XINFO
+    CONSUMERS` #168, `XINFO STREAM` #169, `XREADGROUP` #171,
+  * `XACK` #157, `XPENDING` #170, `XCLAIM` #159, `XAUTOCLAIM`
+  * Implemented sorted set commands:
+  * `ZRANDMEMBER` #192, `ZDIFF` #187, `ZINTER` #189, `ZUNION`
+    #194, `ZDIFFSTORE` #188,
+  * `ZINTERCARD` #190, `ZRANGESTORE` #193
+  * Implemented list commands:
+  * `BLMOVE` #182,
+  * Improved documentation.
+  * Fix documentation link
+  * Fix requirement for packaging.Version #177
+  * Implement `HRANDFIELD` #156
+  * Implement `JSON.MSET`
+  * Improve streams code
+
+-------------------------------------------------------------------
+Mon May 29 13:33:12 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.13.0:
+  * Fixed xadd timestamp (fixes #151) (#152)
+  * Implement XDEL #153
+  * Improve test code
+  * Fix reported security issue
+  * Add support for `Connection.read_response` arguments used in
+    redis-py 4.5.5 and 5.0.0
+  * Adding state for scan commands (#99)
+  * Improved documentation (added async sample, etc.)
+
+-------------------------------------------------------------------
+Mon May  8 18:09:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.12.0:
+  * Implement `XREAD` #147
+  * Unique FakeServer when no connection params are provided
+  * Minor fixes supporting multiple connections
+  * Update documentation
+  * connection parameters awareness:
+  * Creating multiple clients with the same connection parameters
+    will result in the same server data structure.
+  * Fix creating fakeredis.aioredis using url with user/password
+
+-------------------------------------------------------------------
+Mon May  8 07:09:16 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- add sle15_python_module_pythons
+
+-------------------------------------------------------------------
+Wed Apr 19 07:46:41 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.10.3:
+  * Support for redis-py 5.0.0b1
+  * Include tests in sdist (#133)
+  * Fix import used in GenericCommandsMixin.randomkey (#135)
+  * Fix async_timeout usage on py3.11 (#132)
+  * Enable testing django-cache using FakeConnection.
+  * All geo commands implemented
+  * Fix bug for xrange
+  * Fix bug for xrevrange
+  * Implement XTRIM
+  * Add support for MAXLEN, MAXID, LIMIT arguments for XADD command
+  * Add support for ZRANGE arguments for ZRANGE command #127
+  * Relax python version requirement #128
+  * Support for redis-py 4.5.0 #125
+
+-------------------------------------------------------------------
+Fri Feb 10 10:40:09 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.7.1:
+  * Fix import error for NoneType (#120)
+  * Implement
+      - JSON.ARRINDEX
+      - JSON.OBJLEN
+      - JSON.OBJKEYS
+      - JSON.ARRPOP
+      - JSON.ARRTRIM
+      - JSON.NUMINCRBY
+      - JSON.NUMMULTBY
+      - XADD
+      - XLEN
+      - XRANGE
+      - XREVRANGE
+  * Implement `JSON.TYPE`, `JSON.ARRLEN` and `JSON.ARRAPPEND`
+  * Fix encoding of None (#118)
+
+-------------------------------------------------------------------
+Mon Jan 23 09:19:15 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to v2.5.0:
+  * Implement support for BITPOS (bitmap command) (#112)
+  * Fix json mget when dict is returned (#114)
+  * fix: properly export (#116)
+  * Extract param handling (#113)
+
+-------------------------------------------------------------------
+Fri Jan  6 11:11:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to v2.4.0:
+  * Implement LCS (#111), BITOP (#110)
+  * Fix bug checking type in scan_iter (#109)
+  * Implement GETEX (#102)
+  * Implement support for JSON.STRAPPEND (json command) (#98)
+  * Implement JSON.STRLEN, JSON.TOGGLE and fix bugs with JSON.DEL (#96)
+  * Implement PUBSUB CHANNELS, PUBSUB NUMSUB
+  * Implement JSON.CLEAR (#87)
+  * Support for redis-py v4.4.0
+  * Implement json.mget (#85)
+  * Initial json module support - JSON.GET, JSON.SET and JSON.DEL (#80)
+  * fix: add nowait for asyncio disconnect (#76)
+  * Refactor how commands are registered (#79)
+  * Refactor tests from redispy4_plus (#77)
+  * Remove support for aioredis separate from redis-py (redis-py versions
+    4.1.2 and below). (#65)
+  * Add support for redis-py v4.4rc4 (#73)
+  * Add mypy support  (#74)
+  * Implement support for zmscore by @the-wondersmith in #67
+  * What's Changed
+  * implement GETDEL and SINTERCARD support by @cunla in #57
+  * Test get float-type behavior by @cunla in #59
+  * Implement BZPOPMIN/BZPOPMAX support by @cunla in #60
+- drop fakeredis-pr54-fix-ensure_str.patch (upstream)
+
+-------------------------------------------------------------------
+Sun Oct  9 19:22:51 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.9.3
+  * Removed python-six dependency
+  * zadd support for GT/LT by @cunla in #49
+  * Remove six dependency by @cunla in #51
+  * Add host to conn_pool_args by @cunla in #51
+- Drop python-fakeredis-no-six.patch which was incomplete
+  * all commits, including the missing ones in release now
+- Add fakeredis-pr54-fix-ensure_str.patch
+
+-------------------------------------------------------------------
+Tue Sep 27 10:49:56 UTC 2022 - pgajdos@suse.com
+
+- use upstream
+  https://github.com/cunla/fakeredis-py/pull/51/
+- modified patches
+  % python-fakeredis-no-six.patch (refreshed)
+
+-------------------------------------------------------------------
+Fri Sep 23 13:27:54 UTC 2022 - pgajdos@suse.com
+
+- version update to 1.9.1
+  * Zrange byscore by @cunla in #44
+  * Expire options by @cunla in #46
+  * Enable redis7 support by @cunla in #42
+- added patches
+  fix https://github.com/cunla/fakeredis-py/issues/50
+  + python-fakeredis-no-six.patch
+
+-------------------------------------------------------------------
+Sat Jun 11 11:17:33 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.8.1
+  * fix: allow redis 4.3.* by @terencehonles in #30
+- Release 1.8
+  * Fix handling url with username and password by @cunla in #27
+  * Refactor tests by @cunla in #28
+- Release 1.7.6
+  * add IMOVE operation by @BGroever in #11
+  * Add SMISMEMBER command by @OlegZv in #20
+  * fix: work with redis.asyncio by @zhongkechen in #10
+  * Migrate to poetry by @cunla in #12
+  * Create annotation for redis4+ tests by @cunla in #14
+  * Make aioredis and lupa optional dependencies by @cunla in #16
+  * Remove aioredis requirement if redis-py 4.2+ by @ikornaselur in
+    #19
+
+-------------------------------------------------------------------
+Sun Jan 23 20:36:18 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.0
+  * Change a number of corner-case behaviours to match Redis 6.2.6.
+  * Fix DeprecationWarning for sampling from a set
+  * Improved support for constructor arguments
+  * Support redis-py 4
+  * Add support for GET option to SET
+  * PERSIST and EXPIRE should invalidate watches
+
+-------------------------------------------------------------------
+Sun Oct 17 13:22:19 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.6.1
+  * #305 Some packaging modernisation
+  * #306 Fix FakeRedisMixin.from_url for unix sockets
+  * #308 Remove use of async_generator from tests
+- Release 1.6.0
+  * #304 Support aioredis 2
+  * #302 Switch CI from Travis CI to Github Actions
+
+-------------------------------------------------------------------
+Tue Jun 29 10:49:15 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 1.5.2
+ * support python 3.9
+ * support aioredis
+
+-------------------------------------------------------------------
+Fri Mar 20 12:31:00 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Disable py2 as upstream actually disabled python2 support competely
+  * The syntax simply is not compatible
+
+-------------------------------------------------------------------
+Thu Mar 19 22:43:55 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to 1.3.0:
+  * No upstream changelog
+- python2 tests are dysfunctional, test with python3 only
+
+-------------------------------------------------------------------
+Fri Sep 13 07:55:04 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.0.5:
+  * No upstream changelog
+
+-------------------------------------------------------------------
+Wed Aug 21 14:33:39 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.0.4:
+  * various bugfixes all around
+
+-------------------------------------------------------------------
+Sun Mar 31 08:58:42 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v1.0.3
+  * Support for redis 3.2
+  (no effective changes in v1.0.2)
+
+-------------------------------------------------------------------
+Sat Feb 16 16:32:39 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v1.0.1

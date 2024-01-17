@@ -1,0 +1,13 @@
+Index: kbuild-0.1.9998svn3110/kBuild/env.sh
+===================================================================
+--- kbuild-0.1.9998svn3110.orig/kBuild/env.sh
++++ kbuild-0.1.9998svn3110/kBuild/env.sh
+@@ -356,7 +356,7 @@ if test -z "$KBUILD_HOST_ARCH"; then
+         hppa64|parisc64)
+             KBUILD_HOST_ARCH='hppa64'
+             ;;
+-        ia64)
++        ia64|armv7l)
+             KBUILD_HOST_ARCH='ia64'
+             ;;
+         ppc32|ppc|powerpc)

@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Mon Jan  8 18:28:20 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- 0.54.0:
+  * Support reporting file permission changes
+  * Support for Salesforce Apex, improve Clojure and Haskell
+  * bug fixes
+
+-------------------------------------------------------------------
+Sun Nov 26 19:11:26 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- 0.53.1:
+  * Parsing: Add support for SCSS,  Improve Kotlin support, and
+    detect snap files (Jest snapshots) as JavaScript files
+  * Fix an issue where adding or removing blank lines would be
+    ignored by the textual diffing logic.
+  * Directory diffing now respects .gitignore files.
+  * New --sort-paths option for sorting files by path
+  * New --strip-cr for improved diffing in mixed environment
+  * The option --skip-unchanged now has a corresponding environment
+    option DFT_SKIP_UNCHANGED
+
+-------------------------------------------------------------------
+Sun Oct 29 07:57:11 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- spec tweaks for submission
+
+-------------------------------------------------------------------
+Mon Oct  9 09:19:54 UTC 2023 - munix9@googlemail.com
+
+- update to version 0.52.0
+

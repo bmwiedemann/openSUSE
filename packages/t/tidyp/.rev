@@ -1,0 +1,78 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>30f5c6dd2c7b920ae88ecf17c8de28e9</srcmd5>
+    <version>1.04</version>
+    <time>1303198077</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 67505 from user babelworx
+</comment>
+    <requestid>67505</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>7ee5e1cb948c9eaf86b907848f304215</srcmd5>
+    <version>1.04</version>
+    <time>1303198098</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 67505
+</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>7ee5e1cb948c9eaf86b907848f304215</srcmd5>
+    <version>1.04</version>
+    <time>1319182519</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>82d66caef9768bec9a7de39520605a02</srcmd5>
+    <version>1.04</version>
+    <time>1321627684</time>
+    <user>coolo</user>
+    <comment>- remove _service</comment>
+    <requestid>91926</requestid>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>82d66caef9768bec9a7de39520605a02</srcmd5>
+    <version>1.04</version>
+    <time>1340184274</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>1b47ea49762ea111fe1ca9dbae4322cb</srcmd5>
+    <version>1.04</version>
+    <time>1340619113</time>
+    <user>coolo</user>
+    <comment>license update: W3C
+SPDX format (http://www.spdx.org/licenses) (forwarded request 125537 from babelworx)</comment>
+    <requestid>125549</requestid>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>1b47ea49762ea111fe1ca9dbae4322cb</srcmd5>
+    <version>1.04</version>
+    <time>1359110490</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="13">
+    <srcmd5>1b47ea49762ea111fe1ca9dbae4322cb</srcmd5>
+    <version>1.04</version>
+    <time>1379664820</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="15">
+    <srcmd5>1b47ea49762ea111fe1ca9dbae4322cb</srcmd5>
+    <version>1.04</version>
+    <time>1409303497</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="16">
+    <srcmd5>788978dd6583ec2f2b97cbf9d0f32e35</srcmd5>
+    <version>1.04</version>
+    <time>1413048357</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>254725</requestid>
+  </revision>
+</revisionlist>

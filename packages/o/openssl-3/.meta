@@ -1,0 +1,11 @@
+<package name="openssl-3" project="openSUSE:Factory">
+  <title>Secure Sockets and Transport Layer Security</title>
+  <description>OpenSSL is a software library to be used in applications that need to
+secure communications over computer networks against eavesdropping or
+need to ascertain the identity of the party at the other end.
+OpenSSL contains an implementation of the SSL and TLS protocols.
+
+</description>
+  <devel project="security:tls" package="openssl-3"/>
+  <url>https://www.openssl.org/</url>
+</package>

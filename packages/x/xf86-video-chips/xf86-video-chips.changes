@@ -1,0 +1,101 @@
+-------------------------------------------------------------------
+Sun Feb 17 18:10:05 UTC 2019 - sndirsch@suse.com
+
+- update to release 1.4.0
+  * This is a bug fix release of Chips & Technologies DDX for X.Org
+    X Server. There was an X Server crash bug with the Version 1.3
+    and older code when the code was converted for a newer vgaHW
+    ABI. This affects devices older than the HiQVideo generation.
+    This release fixes this particular issue. Please note that the
+    code may not compile against X Server 1.20 since it no longer
+    supports 24-bit color.
+
+-------------------------------------------------------------------
+Sat Jan  5 12:54:23 UTC 2019 - sndirsch@suse.com
+
+- update to release 1.3.0
+  * This is a maintenance release of Chips & Technologies DDX for
+    X.Org X Server.  No testing has been done due to the lack of
+    equipment availability.
+
+-------------------------------------------------------------------
+Thu Jan 19 13:51:16 UTC 2017 - sndirsch@suse.com
+
+- update to release 1.2.7
+  * Adapt Block/WakeupHandler signature for ABI 23
+- supersedes U_Adapt-Block-WakeupHandler-signature-for-ABI-23.patch
+
+-------------------------------------------------------------------
+Tue Nov 29 16:07:54 UTC 2016 - sndirsch@suse.com
+
+- U_Adapt-Block-WakeupHandler-signature-for-ABI-23.patch 
+  * Adapt Block/WakeupHandler signature for ABI 23
+
+-------------------------------------------------------------------
+Thu Oct  1 13:08:05 UTC 2015 - sndirsch@suse.com
+
+- update to release 1.2.6
+  * Remove mibstore.h
+  * ddc: Use own thunk function instead of vgaHWddc1SetSpeedWeak
+  * Update for xserver 1.17
+  * Add iopl.h to source lists in util/Makefile.am so it gets packaged
+  * Require ANSI C89 pre-processor, drop pre-C89 token pasting support
+- supersedes patches U_Update-for-xserver-1.17.patch, U_mibstore.patch
+
+-------------------------------------------------------------------
+Fri Feb  6 11:20:55 UTC 2015 - sndirsch@suse.com
+
+- U_Update-for-xserver-1.17.patch
+  * fixes build against xorg-server 1.17 
+
+-------------------------------------------------------------------
+Wed Aug  7 15:03:07 CEST 2013 - ro@suse.de
+
+- add ExcludeArch for s390 and s390x 
+
+-------------------------------------------------------------------
+Wed Mar 20 14:15:31 UTC 2013 - sndirsch@suse.com
+
+- introduce hardware supplements conditional on xorg-x11-server
+  package (bnc#810333) 
+
+-------------------------------------------------------------------
+Tue Mar 19 09:59:28 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Add mibstore.patch, fixes build with xorg-server 1.14
+
+-------------------------------------------------------------------
+Wed Sep 12 16:29:38 UTC 2012 - sndirsch@suse.com
+
+- update to release 1.2.5_bde6593
+  * Fall back to shadowfb if XAA is unavailable
+  * Fix for new vgaHW ABI
+  * gut the overlay 8/16 support from driver.
+  * add compat API header
+  * use new scrn/screen conversion APIs.
+  * move to new compat API.
+  * drop usage of deprecated xf86PciInfo.h
+  * build without XAA support at all.
+  * fix make dist.
+  * Use malloc/calloc/realloc/free directly
+  * configure.ac: Remove AM_PROG_CC_C_O
+  * util: Consolidate common macros
+  * Fix implicit declaration of iopl
+  * Build fix for ABI Version 12
+  * PciTag is unused when using libpciaccess 
+  * Add iopl.h to source lists in util/Makefile.am so it gets
+    packaged
+
+-------------------------------------------------------------------
+Fri Apr 20 07:37:05 UTC 2012 - vuntz@opensuse.org
+
+- Use %x11_abi_videodrv_req instead of static ABI Requires.
+- Add xf86-video-chips-git-fixes.patch: several fixes from git for
+  compatibility xith Xorg ABI 1.12 and build warnings.
+
+-------------------------------------------------------------------
+Wed Apr 18 15:51:24 UTC 2012 - vuntz@opensuse.org
+
+- Split xf86-video-chips from xorg-x11-driver-video.
+  Initial version: 1.2.4.
+

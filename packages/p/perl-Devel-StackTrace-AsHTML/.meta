@@ -1,0 +1,9 @@
+<package name="perl-Devel-StackTrace-AsHTML" project="openSUSE:Factory">
+  <title>Displays stack trace in HTML</title>
+  <description>Devel::StackTrace::AsHTML adds 'as_html' method to the Devel::StackTrace
+manpage which displays the stack trace in beautiful HTML, with code snippet
+context and function parameters. If you call it on an instance of the
+Devel::StackTrace::WithLexicals manpage, you even get to see the lexical
+variables of each stack frame.</description>
+  <devel project="devel:languages:perl" package="perl-Devel-StackTrace-AsHTML"/>
+</package>

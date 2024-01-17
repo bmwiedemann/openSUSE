@@ -1,0 +1,129 @@
+-------------------------------------------------------------------
+Fri Dec 29 10:40:33 UTC 2023 - Adam Majer <adam.majer@suse.de> - 304
+
+- Update to 304:
+  * Performance and stability improvements
+  * Change "Add disk" default behavior
+  * Add SSH keys to VM creation dialog
+  * Performance and stability improvements
+
+-------------------------------------------------------------------
+Fri Sep  8 13:32:04 UTC 2023 - Adam Majer <adam.majer@suse.de> - 298
+
+- Update to 298:
+  * bug and stability improvements
+  * Don't use localhost as default source for PXE installation
+- deps.patch: upstreamed, removed
+
+-------------------------------------------------------------------
+Mon Aug 21 11:57:18 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- Update to 296:
+  * Update to PatternFly 5
+- deps.patch: fix esbuild dependency
+
+-------------------------------------------------------------------
+Thu Aug  3 13:07:06 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- Update to 295
+  * Performance and stability improvements
+  * Bug fixes and translation updates
+- 1088.patch: upstreamed and removed
+
+-------------------------------------------------------------------
+Fri Jun 16 12:07:39 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- Update to 293
+  * Add manifest condition for the Python bridge
+  * Vsock device support
+  * Apply watchdog changes on next boot if hotplug fails
+  * Option to use RAW volume during VM creation
+  * Redesign VM’s CPU configuration
+  * Indicate need for shutdown
+  * Delete storage file upon disk detachment
+  * Show an alert when virtualization is disabled in BIOS/EFI
+  * Create VM based on cloud image and start it later
+  * Option to forcefully revert a snapshot
+  * Support dark theme
+  * Translation updates
+  * Stability and performance updates
+
+- 1088.patch: WIP for PF5 changes in cockpit
+- hide-docs.patch, load-css-overrides.patch: refreshed
+- suse-vv-install.patch: upstreamed, removed
+
+-------------------------------------------------------------------
+Fri Sep 23 10:30:20 UTC 2022 - Jacek Tomasiak <jtomasiak@suse.com>
+
+- Require qemu-block-curl for installing over https (bsc#1199672) 
+
+-------------------------------------------------------------------
+Wed Aug 10 10:19:26 UTC 2022 - Jacek Tomasiak <jtomasiak@suse.com>
+
+- Require qemu USB drivers needed by virt-install (bsc#1202166)
+
+-------------------------------------------------------------------
+Fri Jun 17 10:31:05 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- load-css-overrides.patch: css overrides for better theming support
+
+-------------------------------------------------------------------
+Mon Jun 13 08:42:23 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- Update to 271.2:
+  * Fix test/reference setup in release tarball for tests
+
+-------------------------------------------------------------------
+Fri Jun 10 13:21:43 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- Update to 271.1:
+  https://github.com/cockpit-project/cockpit-machines/releases/tag/270.1
+
+-------------------------------------------------------------------
+Thu May 19 18:10:51 UTC 2022 - Jacek Tomasiak <jtomasiak@suse.com>
+
+- Add suse-vv-install.patch to display SUSE hint for virt-viewer
+  installation (bsc#1199673)
+
+-------------------------------------------------------------------
+Thu Mar 17 13:42:11 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- Update to 264:
+  https://github.com/cockpit-project/cockpit-machines/releases/tag/264
+
+-------------------------------------------------------------------
+Mon Mar 14 22:37:04 UTC 2022 - Jacek Tomasiak <jtomasiak@suse.com>
+
+- Hide links pointing to RHEL docs, hide-docs.patch (bsc#1197003) 
+
+-------------------------------------------------------------------
+Thu Mar 10 15:41:35 UTC 2022 - Jacek Tomasiak <jtomasiak@suse.com>
+
+- Require virt-install and qemu display drivers needed to start
+  new VMs (bsc#1196971)
+
+-------------------------------------------------------------------
+Mon Jan 31 09:50:20 UTC 2022 - Jacek Tomasiak <jtomasiak@suse.com>
+
+- Remove translate-toolkit which is not available in SLE 
+
+-------------------------------------------------------------------
+Fri Jan 28 10:53:18 UTC 2022 - Jacek Tomasiak <jtomasiak@suse.com>
+
+- Re-add source-offset to _service. 
+
+-------------------------------------------------------------------
+Fri Aug 13 11:23:02 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- new version 249.1
+  https://github.com/cockpit-project/cockpit-machines/releases/tag/249
+
+-------------------------------------------------------------------
+Sun Jun 27 15:30:19 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Add source-offest to _service to fix build error in Leap 15.3.
+
+-------------------------------------------------------------------
+Mon May  3 07:48:14 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- initial package

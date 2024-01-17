@@ -1,0 +1,158 @@
+Index: exmh
+===================================================================
+--- exmh.orig
++++ exmh
+@@ -1,4 +1,4 @@
+-#!wish -f
++#!/usr/bin/wish -f
+ #
+ # TK interface to the MH Mail utility
+ # Brent Welch <welch@acm.org>
+@@ -17,6 +17,34 @@
+ 
+ # The following lines are patched by exmh.install
+ #CONFIGURATION
++set wish /usr/bin/wish
++set exmh(version) {version 2.8.0 04/21/2012}
++set exmh(name) exmh
++set exmh(maintainer) welch@acm.org
++set mh_path /usr/bin
++set exmh(slocal) /usr/lib/nmh/slocal
++set mime(dir) /usr/bin
++set mailcap_default /etc/mailcap
++set mimetypes_default /etc/mime.types
++set exmh(expect) /usr/bin/expect
++set exmh(expectk) /usr/bin/expect
++set faces(dir) /var/lib/faces
++set faces(set,user) {local users usenix misc}
++set faces(set,unknown) {domains unknown}
++set faces(set,news) news
++set faces(defaultDomain) eng.sun.com
++set faces(suffix) {xpm gif xbm}
++set pgp(pgp,path) /usr/bin
++set pgp(pgp5,path) /usr/bin
++set pgp(gpg,path) /usr/bin
++set pgp(pgp6,path) /usr/bin
++set glimpse(path) /usr/bin
++set sound(cmd) /usr/bin/play
++set exmh(library) /usr/share/tcl/exmh-2.8.0
++set install(dir,bin) /usr/bin
++set install(dir,man) /usr/man/mann
++set install(dir,lib) /usr/share/tcl/exmh-2.8.0
++
+ #END CONFIGURATION
+ 
+ package require Tk
+Index: exmh-async
+===================================================================
+--- exmh-async.orig
++++ exmh-async
+@@ -1,4 +1,4 @@
+-#!wish -f
++#!/usr/bin/wish -f
+ #
+ # async editor frontend for exmh
+ # Arg1: invoking interpreter's name (from [winfo name .])
+Index: exmh-bg
+===================================================================
+--- exmh-bg.orig
++++ exmh-bg
+@@ -1,4 +1,4 @@
+-#!wish -f
++#!/usr/bin/wish -f
+ #
+ # Background processing script for exmh.
+ # This does stuff and then sends messages to the background module
+@@ -17,6 +17,34 @@
+ # any specification.
+ 
+ #CONFIGURATION
++set wish /usr/bin/wish
++set exmh(version) {version 2.8.0 04/21/2012}
++set exmh(name) exmh
++set exmh(maintainer) welch@acm.org
++set mh_path /usr/bin
++set exmh(slocal) /usr/lib/nmh/slocal
++set mime(dir) /usr/bin
++set mailcap_default /etc/mailcap
++set mimetypes_default /etc/mime.types
++set exmh(expect) /usr/bin/expect
++set exmh(expectk) /usr/bin/expect
++set faces(dir) /var/lib/faces
++set faces(set,user) {local users usenix misc}
++set faces(set,unknown) {domains unknown}
++set faces(set,news) news
++set faces(defaultDomain) eng.sun.com
++set faces(suffix) {xpm gif xbm}
++set pgp(pgp,path) /usr/bin
++set pgp(pgp5,path) /usr/bin
++set pgp(gpg,path) /usr/bin
++set pgp(pgp6,path) /usr/bin
++set glimpse(path) /usr/bin
++set sound(cmd) /usr/bin/play
++set exmh(library) /usr/share/tcl/exmh-2.8.0
++set install(dir,bin) /usr/bin
++set install(dir,man) /usr/man/mann
++set install(dir,lib) /usr/share/tcl/exmh-2.8.0
++
+ #END CONFIGURATION
+ 
+ package require Tk
+Index: exmh-strip
+===================================================================
+--- exmh-strip.orig
++++ exmh-strip
+@@ -1,5 +1,4 @@
+-#!wish
+-#(Note - you should also be able to use tclsh with this.)
++#!/usr/bin/tclsh
+ #
+ # Utility to strip out attachments from MIME messages.
+ # They are replaced with references to the external files.
+@@ -50,6 +49,34 @@ if {0} {
+ # any specification.
+ 
+ #CONFIGURATION
++set wish /usr/bin/wish
++set exmh(version) {version 2.8.0 04/21/2012}
++set exmh(name) exmh
++set exmh(maintainer) welch@acm.org
++set mh_path /usr/bin
++set exmh(slocal) /usr/lib/nmh/slocal
++set mime(dir) /usr/bin
++set mailcap_default /etc/mailcap
++set mimetypes_default /etc/mime.types
++set exmh(expect) /usr/bin/expect
++set exmh(expectk) /usr/bin/expect
++set faces(dir) /var/lib/faces
++set faces(set,user) {local users usenix misc}
++set faces(set,unknown) {domains unknown}
++set faces(set,news) news
++set faces(defaultDomain) eng.sun.com
++set faces(suffix) {xpm gif xbm}
++set pgp(pgp,path) /usr/bin
++set pgp(pgp5,path) /usr/bin
++set pgp(gpg,path) /usr/bin
++set pgp(pgp6,path) /usr/bin
++set glimpse(path) /usr/bin
++set sound(cmd) /usr/bin/play
++set exmh(library) /usr/share/tcl/exmh-2.8.0
++set install(dir,bin) /usr/bin
++set install(dir,man) /usr/man/mann
++set install(dir,lib) /usr/share/tcl/exmh-2.8.0
++
+ #END CONFIGURATION
+ 
+ if {[catch {wm withdraw .}]} {
+Index: ftp.expect
+===================================================================
+--- ftp.expect.orig
++++ ftp.expect
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ # \
+-exec expect -f
++exec /usr/bin/expect -f
+ 
+ set site [lindex $argv 0]
+ set dir [lindex $argv 1]

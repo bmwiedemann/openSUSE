@@ -1,0 +1,5 @@
+<package name="libreoffice-share-linker" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="LibreOffice:Factory" package="libreoffice-share-linker"/>
+</package>

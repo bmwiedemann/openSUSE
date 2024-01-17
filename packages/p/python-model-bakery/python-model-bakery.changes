@@ -1,0 +1,131 @@
+-------------------------------------------------------------------
+Thu Nov  9 11:49:11 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Fix require and buildrequire versions.
+
+-------------------------------------------------------------------
+Tue Nov  7 20:02:28 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.17.0:
+  * Add support to `auto_now` and `auto_now_add` fields.
+  * Remove unnecessary casting to string methods
+    `random_gen.gen_slug` and `random_gen.gen_string`
+  * Improved performance of `Baker.get_fields()`
+  * Add Python 3.12 support
+  * Revert erroneous optimisation of related logic (fix #439)
+  * forward "_create_files" flag to child generators for
+    relational fields
+  * Small improvements to `recipe.py::_mapping`
+  * Improvements to `baker.py::bulk_create`
+  * Drop `baker.py::is_iterator`
+  * Drop Python 3.7 support (reached end of life)
+  * Add support for global seeding to baker random generation
+  * Fix utils.seq with start=0
+  * Add psycopg3 support for Django 4.2
+  * Enforce Python 3.7 as a minimum version in project metadata
+  * dropped support for `FloatRangeField` as it was removed in
+    Django 3.1
+  * Django 4.2 support
+
+-------------------------------------------------------------------
+Wed Jan 25 23:51:55 UTC 2023 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v1.9.0
+  * Fixed a bug with seq being passed a tz-aware start value
+  * Create m2m when using _bulk_create=True
+- from v1.8.0
+  * Improve Baker.get_fields() to subtract lists instead of extra set cast
+- from v1.7.1
+  * Remove warning for future Django deprecation
+- from v1.7.0
+  * Fixed a bug with overwritten _save_kwargs and other custom arguments
+- from v1.6.0
+  * Python 3.11 support
+  * Django 4.1 support
+  * Added documentation for callables, iterables, sequences
+  * Drop Python 3.6 support
+  * Drop Django 2.2 support
+- from v1.5.0
+  * Add py.typed export per PEP 561
+  * Extend type hints in model_bakery.recipe module, make Recipe class generic
+  * Explicitly add _fill_optional parameters to baker.make
+    and baker.prepare to aid IDE autocomplete function
+  * Fixed errors with reverse M2M relationships
+  * Fixed errors with reverse M2O relationships
+  * Improve exception message for unknown field types
+  * Fixed random generation of ContentType values when there is no database access
+- from v1.4.0
+  * Added postgis version to test settings
+  * Add support for Python 3.10
+  * Support for Django 4.0
+  * Validate increment_by parameter of seq helper when value is an instance of datetime
+  * Fix a simple typo in bulk_create disclaimer in docs
+  * Allow relation _id fields to use sequences
+  * Fix bulk_create not working with multi-database setup
+  * Conditionally support NullBooleanField, it's under deprecation
+    and will be removed in Django 4.0
+  * Fix Django max version pin in requirements file
+  * Improve type hinting to return the correct type depending on _quantity usage
+  * Drop official Django 3.1 support. Django 2.2 is still supported,
+    and 3.1 will likely keep working, but it’s not tested
+- from v1.3.3
+  * _bulk_create flag is not populating related objects as well
+  * Add support for iterators on GFK fields when using _quantity param
+  * Add support for iterators on many-to-many fields
+  * Fix typos in Recipes documentation page
+  * Add typing for baker.make and baker.prepare
+- from v1.3.2
+  * Fixed a bug (introduced in 1.2.1) that was breaking imports
+    of recipes from non-installed-app modules
+  * Dependencies updates
+- from v1.3.1
+  * Fix requirements.txt to cover Django 3.2 (everything from 2.2 till 4.0)
+- from v1.3.0
+  * Add Django 3.2 LTS support
+  * Add new _bulk_create parameter to make for using
+    Django manager bulk_create with _quantity
+  * Add the functionality to import Django models using the
+    app_name.ModelName convention in import_from_str
+  * Add the functionality to import recipes using app_name.recipe_name
+  * Add new one_to_one parameter to foreign_key to allow usage of
+    _quantity for recipes based on models with OneToOne fields
+  * [docs] Improved documentation on Recipe's import string
+  * Fixed a bug (introduced in 1.2.1) that was breaking creation of
+    model instances with related model fields
+  * Type hinting fixed for Recipe "_model" parameter
+  * Dependencies updates from dependabot
+  * Removed model_bakery.timezone.now fallback (use django.utils.timezone.now instead)
+  * Removed model_bakery.timezone.smart_datetime function
+    (directly use model_bakery.timezone.tz_aware instead)
+  * Removed Remove all signs of Django 1.11 (as we dropped it in 1.2.1)
+  * Drop unsupported Django 3.0 from CI
+
+-------------------------------------------------------------------
+Fri Nov 27 06:23:38 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Add changelog and docs
+- Enable Leap builds by disabling Python 2
+- Update to v1.2.1
+  * Add ability to pass `str` values to `foreign_key` for recipes
+    from other modules
+  * Add new parameter `_using` to support multi database applications
+  * Fixed _model parameter annotations
+  * Fixed bug when field has callable `default`
+  * Drop Python 3.5 support as it is retired
+  * Remove support for Django<2.2
+- from v1.2.0
+  * Support to Django 3.1 `JSONField`
+  * Added type annotations
+  * Support for Python 3.9
+  * Support for `prefix` in `seq` values
+  * Adjust imports for Django 3.1 compatibility
+
+-------------------------------------------------------------------
+Fri Sep  4 10:50:09 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v1.1.1
+
+-------------------------------------------------------------------
+Tue May  5 06:50:51 PM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v1.1.0

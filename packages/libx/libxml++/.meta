@@ -1,0 +1,6 @@
+<package name="libxml++" project="openSUSE:Factory">
+  <title>C++ Interface for XML Files</title>
+  <description>libXML++ provides a C++ interface for XML files. It presently uses
+libxml2 to access the XML files.</description>
+  <devel project="GNOME:Factory" package="libxml++"/>
+</package>

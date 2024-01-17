@@ -1,0 +1,3 @@
+  # for logging with omudpspoof (rsyslog-module-udpspoof)
+  capability net_raw,
+  network inet raw,

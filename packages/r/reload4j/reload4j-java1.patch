@@ -1,0 +1,13 @@
+diff --git a/src/main/java/org/apache/log4j/MDC.java b/src/main/java/org/apache/log4j/MDC.java
+index 5805772..fdcfeed 100755
+--- a/src/main/java/org/apache/log4j/MDC.java
++++ b/src/main/java/org/apache/log4j/MDC.java
+@@ -45,7 +45,7 @@ public class MDC {
+ 
+     static final int HT_SIZE = 7;
+ 
+-    // boolean java1;
++    boolean java1;
+ 
+     Object tlm;
+ 

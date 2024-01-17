@@ -1,0 +1,7 @@
+<package name="obs-service-docker_label_helper" project="openSUSE:Factory">
+  <title>Service to duplicate labels with a custom prefix</title>
+  <description>This service can be used during buildtime to implement the
+PREFIXEDLABEL instruction useful for building containers.</description>
+  <devel project="openSUSE:Tools" package="obs-service-docker_label_helper"/>
+  <url>https://build.opensuse.org</url>
+</package>

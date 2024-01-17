@@ -1,0 +1,18 @@
+Index: src/event-Xt.c
+===================================================================
+--- src/event-Xt.c.orig
++++ src/event-Xt.c
+@@ -1224,8 +1224,11 @@ x_event_to_emacs_event (XEvent *x_event,
+ 
+ 	    if (modifiers & XEMACS_MOD_SHIFT)
+ 	      {
+-		int Mode_switch_p = *state & xd->ModeMask;
+-		KeySym bot = XLookupKeysym (ev, Mode_switch_p ? 2 : 0);
++		KeySym bot;
++		XKeyEvent tmpev = *ev;
++
++		tmpev.state = *state & (xd->ModeMask | ~0xff);
++		XLookupString(&tmpev, NULL, 0, &bot, NULL);
+		if (x_keysym && bot && x_keysym != bot)
+		  modifiers &= ~XEMACS_MOD_SHIFT;
+	      }

@@ -1,0 +1,8 @@
+<package name="difftastic" project="openSUSE:Factory">
+  <title></title>
+  <description>
+https://difftastic.wilfred.me.uk/
+  </description>
+  <devel project="utilities" package="difftastic"/>
+  <url>https://github.com/Wilfred/difftastic</url>
+</package>

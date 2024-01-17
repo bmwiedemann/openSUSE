@@ -1,0 +1,82 @@
+---
+ Makefile.in |   41 +++++++++++++++++++++--------------------
+ 1 file changed, 21 insertions(+), 20 deletions(-)
+
+Index: prctl-1.5/Makefile.in
+===================================================================
+--- prctl-1.5.orig/Makefile.in	2006-05-18 17:51:16.000000000 +0200
++++ prctl-1.5/Makefile.in	2010-11-19 10:14:09.785941511 +0100
+@@ -30,26 +30,27 @@
+ LIBS = @LIBS@
+ CFLAGS = @CFLAGS@
+ # If you want debug on by default, use: CFLAGS="-g" ./configure
+-LDFLAGS = $(CFLAGS)
++LDFLAGS = @LDFLAGS@
+ 
+ prefix = @prefix@
+-exec_prefix = $(prefix)
++exec_prefix = @exec_prefix@
+ 
+-bindir = $(exec_prefix)/bin
++bindir = @bindir@
+ scriptdir = $(bindir)
+ # scriptdir is the directory in which shell scripts should be installed
+-#datadir = $(prefix)/lib
+-#libdir = $(prefix)/lib
+-#infodir = $(prefix)/info
++datadir = @datadir@
++libdir = @libdir@
++infodir = @infodir@
+ 
+ # Extension (not including `.') for the installed manual page filenames.
+ manext = 1
+ # Where to install the manual pages.
+-mandir = $(prefix)/share/man/man$(manext)
++mandir = @mandir@
++man1dir = $(mandir)/man$(manext)
+ # Use manlinks=so to use the .so method instead of hard links
+ manlinks = ln
+ 
+-alldirs = $(bindir) $(scriptdir) $(datadir) $(libdir) $(infodir) $(mandir)
++alldirs = $(bindir) $(scriptdir) $(datadir) $(libdir) $(infodir) $(man1dir)
+ 
+ #### End of system configuration section. ####
+ 
+@@ -74,25 +75,25 @@
+ install: installdirs installbin installman
+ 
+ installdirs:
+-	-if test ! -d $(prefix)/share; then \
+-	   mkdir -p $(prefix)/share; fi
+-	-if test ! -d $(prefix)/share/man; then \
+-	   mkdir -p $(prefix)/share/man; fi
+-	-for dir in $(alldirs) ; do \
+-	   if test ! -d $${dir}; then \
+-	      mkdir -p $${dir}; fi; \
++	-if test ! -d "$(DESTDIR)/$(mandir)"; then \
++	   mkdir -p "$(DESTDIR)/$(mandir)"; fi
++	-if test ! -d "$(DESTDIR)/$(datadir)"; then \
++	   mkdir -p "$(DESTDIR)/$(datadir)"; fi
++	-for dir in $(alldirs); do \
++	   if test ! -d $(DESTDIR)/$${dir}; then \
++	      mkdir -p $(DESTDIR)/$${dir}; fi; \
+ 	done
+ 
+ installbin: all
+-	$(INSTALL_PROGRAM) prctl $(bindir)/prctl
++	$(INSTALL_PROGRAM) prctl $(DESTDIR)/$(bindir)/prctl
+ 	
+ installman: prctl.1
+-	rm -f $(mandir)/prctl.$(manext)
+-	$(INSTALL_DATA) prctl.1 $(mandir)/prctl.$(manext)
++	rm -f $(DESTDIR)/$(man1dir)/prctl.$(manext)
++	$(INSTALL_DATA) prctl.1 $(DESTDIR)/$(man1dir)/prctl.$(manext)
+ 
+ uninstall:
+-	rm -f $(bindir)/prctl
+-	rm -f $(mandir)/prctl.$(manext)
++	rm -f $(DESTDIR)/$(bindir)/prctl
++	rm -f $(DESTDIR)/$(man1dir)/prctl.$(manext)
+ 
+ Makefile: Makefile.in ./config.status
+ 	./config.status

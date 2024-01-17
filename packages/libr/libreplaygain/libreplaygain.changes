@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Sun Jul  7 00:41:38 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Make descriptions more meaningful.
+
+-------------------------------------------------------------------
+Thu Jul  4 10:42:03 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- More spec file cleanup:
+  * Use SPDX identifier to License
+  * Use https:// for Source and Url
+  * Remove BuildRoot
+
+-------------------------------------------------------------------
+Fri Jun 21 19:40:34 UTC 2019 - mgorse@suse.com
+
+- Add libreplaygain-math.patch: link with -lm.
+- Use cmake macros.
+- Move source modifications from %prep to %build. Makes 'quilt
+  setup' more robust.
+- Remove some unneeded comments from %install.
+- Remove %defattr.. No longer needed.
+
+-------------------------------------------------------------------
+Sun Mar 10 23:04:14 UTC 2013 - asterios.dramis@gmail.com
+
+- Correct version number to r475.
+
+-------------------------------------------------------------------
+Sun Mar 10 18:13:10 UTC 2013 - asterios.dramis@gmail.com
+
+- Initial rpm release (version 20110810_r475).

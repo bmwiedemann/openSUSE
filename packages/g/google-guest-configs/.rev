@@ -1,0 +1,192 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cfd2120c7dda8b148a585127da4dd457</srcmd5>
+    <version>20200626.00</version>
+    <time>1597667959</time>
+    <user>dimstar_suse</user>
+    <comment>- New package replaces parts of google-compute-engine source package</comment>
+    <requestid>822648</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>50056ffcf7be68f79e7b940e1b924ceb</srcmd5>
+    <version>20200731.00</version>
+    <time>1598725963</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>829587</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7ad038453b8dd9c2055acdc8ce399f11</srcmd5>
+    <version>20210317.00</version>
+    <time>1617279474</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>882393</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bd3b8f856288e82c5b233aaa60bcc950</srcmd5>
+    <version>20210702.00</version>
+    <time>1626788356</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20210702.00
+  * use grep for hostname check (#23)
+- from version 20210629.00
+  * address set_hostname vuln (#22)
+- from version 20210324.00
+  * dracut.conf wants spaces around values (#19) (forwarded request 907120 from glaubitz)</comment>
+    <requestid>907123</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>aa72b11a7c3f88545587ca8ddc147af7</srcmd5>
+    <version>20210702.00</version>
+    <time>1630617631</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>916053</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6e205f899b285ad9768970f9f5fe539a</srcmd5>
+    <version>20210916.00</version>
+    <time>1634943106</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20210916.00
+  * Revert &quot;dont set IP in etc/hosts; remove rsyslog (#26)&quot; (#28)
+- from version 20210831.00
+  * restore rsyslog (#27)
+- from version 20210830.00
+  * Fix NVMe partition names (#25)
+- from version 20210824.00
+  * dont set IP in etc/hosts; remove rsyslog (#26)
+  * update OWNERS (forwarded request 926984 from glaubitz)</comment>
+    <requestid>927010</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a49ec3a45624588abfbde583e76ffae0</srcmd5>
+    <version>20211116.00</version>
+    <time>1637372363</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>932542</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>d01d6b82affba8db8631c0dc767dac9c</srcmd5>
+    <version>20211116.00</version>
+    <time>1638918013</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>936357</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>bcee09370e9f812358fb7003b33af647</srcmd5>
+    <version>20211116.00</version>
+    <time>1639515742</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>940559</requestid>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>2d9e59ea937ae4c6523d40254a48f71e</srcmd5>
+    <version>20211116.00</version>
+    <time>1639781676</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing pkg-config dependency to BuildRequires for SLE-12 (forwarded request 941233 from glaubitz)</comment>
+    <requestid>941234</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>28a0d5074623d71732379fb86e3efb62</srcmd5>
+    <version>20220211.00</version>
+    <time>1644965843</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>954678</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>ab374b90012f9d181d556a2f3dc63572</srcmd5>
+    <version>20220211.00</version>
+    <time>1665504211</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1009790</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f18f2f5c9b78773c7b99f0edd1828d48</srcmd5>
+    <version>20230217.01</version>
+    <time>1677502501</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20230217.01
+  * Support multiple local SSD controllers (#39)
+- from version 20230217.00
+  * Update OWNERS (#45)
+- from version 20230215.00
+  * DHCP hostname: don't reset hostname if
+    the hostname hasn't changed (#44)
+- from version 20230202.00
+  * Update OWNERS file (#43)
+- from version 20230123.00
+  * Fix a repository URL in packaging specs (#41) (forwarded request 1067942 from glaubitz)</comment>
+    <requestid>1067973</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>af473802adadca718c20c4cd5dc1da31</srcmd5>
+    <version>20230526.00</version>
+    <time>1686335856</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20230526.00
+  * dracut: Add a new dracut module for gcp udev rules (#53)
+- from version 20230522.00
+  * src/lib/udev: only create symlinks for GCP devices (#52)
+- from version 20230515.00
+  * Replace `xxd` to `cut` for google_nvme_id (#49)
+- from version 20230328.00
+  * Set hostname: consider fully qualified static hostname (#46) (forwarded request 1091420 from glaubitz)</comment>
+    <requestid>1091423</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>7eaa380a6a7045db45e1837e399b5051</srcmd5>
+    <version>20230626.00</version>
+    <time>1687900672</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20230626.00 (bsc#1212418, bsc#1212759)
+  * Revert &quot;Replace `xxd` to `cut` for google_nvme_id (#49)&quot; (#54) (forwarded request 1095598 from glaubitz)</comment>
+    <requestid>1095625</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>3b3c08875207960752efa4961cb9de0b</srcmd5>
+    <version>20230808.00</version>
+    <time>1692188245</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20230808.00
+  * 64-gce-disk-removal.rules: delete (#51)
+- from version 20230801.00
+  * Replace xxd with dd for google_nvme_id (#56)
+- from version 20230729.00
+  * Setup irq binding for a3 8g vm (#57)
+- from version 20230724.00
+  * Debian packaging: add xxd dependency (#55) (forwarded request 1104055 from glaubitz)</comment>
+    <requestid>1104058</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>f6fe496517e749c3a20bcbeda5a73e24</srcmd5>
+    <version>20230808.00</version>
+    <time>1693235631</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1105852</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>2aed9596de31342e8d9ebf8fea9f66dc</srcmd5>
+    <version>20230929.00</version>
+    <time>1697836710</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1119156</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>9de517dc3c2194f85c26b166f36dd6bd</srcmd5>
+    <version>20231214.00</version>
+    <time>1704919893</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1137799</requestid>
+  </revision>
+</revisionlist>

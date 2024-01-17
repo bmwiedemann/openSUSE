@@ -1,0 +1,37 @@
+-------------------------------------------------------------------
+Wed Jan 10 17:24:04 UTC 2024 - Michal Suchanek <msuchanek@suse.com>
+
+- Build for python 3.11 on Leap
+
+-------------------------------------------------------------------
+Thu Sep 29 16:33:34 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update version 0.3.3
+  * Downgrade pytest
+  * Update dependencies and switch to poetry.core.masonry.api.
+  * Remove python 3.6 support (EOL)
+  * Remove py3.10 from CI
+  * Downgrade virtualenv in build workflow
+  * Add GitHub build workflow
+  * Merge branch 'master' of https://github.com/iscc/mobi
+- Update version 0.3.2 with updated dependencies.
+  * Merge pull request #7 from dm9pZCAq/master
+  * mobiml2xhtml.py: fix python2 code
+- Update Version 0.3.1 fixes #3
+  * Update dependencies.
+  * Merge pull request #2 from rpdelaney/homepage_url
+  * Fix homepage in pyproject.toml
+  * Add support for file-like inputs
+  * Add support for mobi7 only and print replica (pdf)
+  * replace most print calls with logging, bump version
+  * minimal working epub extraction with test
+  * wrap command line interface as `mobiunpack`
+  * add kindleunpack sources and update readme
+  * add license
+  * add poetry boilerplate
+  * add gitignore
+
+-------------------------------------------------------------------
+Wed Jul 28 22:09:43 UTC 2021 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Initial package version

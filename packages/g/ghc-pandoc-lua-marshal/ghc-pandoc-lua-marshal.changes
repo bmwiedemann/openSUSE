@@ -1,0 +1,106 @@
+-------------------------------------------------------------------
+Thu Mar 30 17:07:48 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Wed Mar 15 20:49:41 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update pandoc-lua-marshal to version 0.2.2.
+  ## 0.2.2
+
+  Released 2023-03-15.
+
+  -   Add `__tostring` metamethods to *Blocks* and *Inlines*.
+
+-------------------------------------------------------------------
+Mon Mar 13 12:18:58 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update pandoc-lua-marshal to version 0.2.1.1.
+  ## 0.2.1.1
+
+  Released 2023-03-13.
+
+  -   The version constraints for hslua packages have been relaxed;
+      other changes in hslua 2.3.\* do not affect this package.
+
+-------------------------------------------------------------------
+Sat Feb 11 16:10:47 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update pandoc-lua-marshal to version 0.2.1.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/pandoc-lua-marshal-0.2.1/src/CHANGELOG.md
+
+-------------------------------------------------------------------
+Wed Jan 18 17:01:10 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update pandoc-lua-marshal to version 0.2.0.
+  ## 0.2.0
+
+  Release pending.
+
+  -   Depend on pandoc-types 1.23: the `Null` Block constructor has
+      been removed, and a `Figure` constructor has been added.
+
+  -   Support for Lua 5.3 has been dropped; the package now requires
+      hslua 2.2 or later.
+
+  -   The implementation for `List` has been moved to the separate
+      `hslua-list` module. This module no longer contains C code.
+
+-------------------------------------------------------------------
+Sat Jul 16 13:29:37 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update pandoc-lua-marshal to version 0.1.7.
+  ## 0.1.7
+
+  Released 2022-07-16.
+
+  -   Allow Blocks to be passed as Caption value. The resulting
+      caption has the Blocks as its long version and no short
+      version.
+
+  -   Add `clone` method to Pandoc elements.
+
+-------------------------------------------------------------------
+Fri Jun 10 10:13:58 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update pandoc-lua-marshal to version 0.1.6.1.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/pandoc-lua-marshal-0.1.6.1/src/CHANGELOG.md
+
+-------------------------------------------------------------------
+Sat Feb 19 14:49:24 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update pandoc-lua-marshal to version 0.1.5.1.
+  ## 0.1.5.1
+
+  Release pending.
+
+  -   Relax upper bound for lua and hslua.
+
+-------------------------------------------------------------------
+Thu Feb 17 14:43:00 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update pandoc-lua-marshal to version 0.1.5.
+  ## 0.1.5
+
+  Released 2022-02-17.
+
+  -   Allow any type of callable object as argument to List
+      functions `filter`, `map`, and `find_if`. These previously
+      required the argument to be of type `function`, which was too
+      restrictive.
+
+  -   Inline: the type of Image captions is now `Inlines` instead
+      of `List`.
+
+-------------------------------------------------------------------
+Fri Feb  4 12:31:25 UTC 2022 - psimons@suse.com
+
+- Add pandoc-lua-marshal at version 0.1.4.
+

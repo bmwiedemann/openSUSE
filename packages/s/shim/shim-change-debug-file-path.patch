@@ -1,0 +1,54 @@
+From ac7e88b1f2219ec2b09c9596e6f7d5911e5f6ffd Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Thu, 4 Jan 2018 12:28:37 +0800
+Subject: [PATCH] Use our own debug path
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ Make.defaults | 2 +-
+ fallback.c    | 2 +-
+ shim.c        | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/Make.defaults b/Make.defaults
+index bef3cb51..d88367e3 100644
+--- a/Make.defaults
++++ b/Make.defaults
+@@ -167,7 +167,7 @@ BOOTEFINAME	?= BOOT$(ARCH_SUFFIX_UPPER).EFI
+ BOOTCSVNAME	?= BOOT$(ARCH_SUFFIX_UPPER).CSV
+ 
+ DEFINES		+= -DEFI_ARCH='L"$(ARCH_SUFFIX)"' \
+-		   -DDEBUGDIR='L"/usr/lib/debug/usr/share/shim/$(ARCH_SUFFIX)-$(VERSION)$(DASHRELEASE)/"'
++		   -DDEBUGDIR=L\"/usr/lib/debug/usr/share/efi/"$(ARCH)/"\"
+ 
+ ifneq ($(origin VENDOR_DB_FILE), undefined)
+ DEFINES		+= -DVENDOR_DB_FILE=\"$(VENDOR_DB_FILE)\"
+diff --git a/fallback.c b/fallback.c
+index 44b2d464..8e0de901 100644
+--- a/fallback.c
++++ b/fallback.c
+@@ -1058,7 +1058,7 @@ debug_hook(void)
+ 
+ 	x = 1;
+ 	console_print(L"add-symbol-file "DEBUGDIR
+-		      L"fallback.efi.debug %p -s .data %p\n",
++		      L"fallback.debug %p -s .data %p\n",
+ 		      &_etext, &_edata);
+ }
+ 
+diff --git a/shim.c b/shim.c
+index 1d539855..f8d2ba5f 100644
+--- a/shim.c
++++ b/shim.c
+@@ -1818,7 +1818,7 @@ debug_hook(void)
+ 	FreePool(data);
+ 
+ 	console_print(L"add-symbol-file "DEBUGDIR
+-		      L"shim.efi.debug 0x%08x -s .data 0x%08x\n",
++		      L"shim.debug 0x%08x -s .data 0x%08x\n",
+ 		      &_text, &_data);
+ 
+ 	console_print(L"Pausing for debugger attachment.\n");
+-- 
+2.29.2
+

@@ -1,0 +1,5 @@
+<package name="bpftool" project="openSUSE:Factory">
+  <title>bpftool</title>
+  <description>Tool for inspection and manipulation of BPF programs and maps</description>
+  <devel project="Base:System" package="bpftool"/>
+</package>

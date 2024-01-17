@@ -1,0 +1,5 @@
+<package name="polkit-qt5-1" project="openSUSE:Factory">
+  <title>polkit-qt5-1</title>
+  <description></description>
+  <devel project="KDE:Frameworks5" package="polkit-qt5-1"/>
+</package>

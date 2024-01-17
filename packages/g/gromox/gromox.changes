@@ -1,0 +1,497 @@
+-------------------------------------------------------------------
+Mon Jan  8 14:05:14 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.21
+  * Support for outgoing message submission via postdrop
+  * gromox-snapshot: Support snapshots on XFS
+  * zcore: log REMOTE_ADDR on authentication failure for fail2ban
+  * exmdb: add ICS request dumper
+  * lib: guard against an integer overflow when inserting last
+    element in range_set
+  * imap: do not flag zero-length usernames/passwords as a syntax
+    error
+
+-------------------------------------------------------------------
+Fri Dec 15 10:00:02 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.20
+  * oxdisco: allow autodiscover for room/equipment stores
+  * oxcical: allday events are now emitted (pursuant to the
+    ``oxcical_allday_ymd`` config directive) as "floating time"
+    per the OXCICAL spec recommendations
+  * oxcical: resolve integer underflow that botched weekorder
+    computation in weekly-recurring events
+  * oxcical: resolve out-of-bounds access during generation of
+    iCal RDATE lines * ews: avoid a heap-use-after-free during
+    freebusy retrieval
+  * zcore: zs_getuserfreebusy had failed to resolve usernames and
+    display freebusy status in the scheduling matrix view
+  * ldap_adaptor: resolve data race with double-free when
+    per-organization LDAP settings were used
+
+-------------------------------------------------------------------
+Mon Dec  4 14:12:37 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.19
+  * `gromox-mbop emptyfld` now recognizes a `-t` option to limit
+    deletion to messages of certain age.
+  * `gromox-mbop emptyfld` now recognizes a `--nuke-folders` option
+  * gromox-eml2mt now recognizes a `--mbox` option to support
+    RFC4155 Unix mboxes
+  * exmdb: search pacing is now time-based, which should give more
+    predictable interactivity during background searches
+  * emsmdb: do not treat the absence of the
+    PR_LAST_MODIFICATION_TIME message property during ICS downloads
+    as an error any longer
+  * exmdb: send "object created" notifications as search folders
+    re-populate
+  * oxcmail: ignore zero-length From fields, which should help
+    sending from Windows Mail
+  * Thunderbird/IMAP now picks up deletion events done by other
+    clients
+
+-------------------------------------------------------------------
+Mon Nov 27 13:36:14 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.18
+  * exmdb: synthesized PR_RTF_COMPRESSED properties (in relation to
+    the "dbg_synthesize_content" config directive) had an
+    incomplete header
+  * oxcmail: repair inadvertent propid/proptag swap causing TNEF
+    export to fail
+  * mbop/purge-softdelete: make pathspec `SENT/2022` actually work
+  * imap: messages delete events from OL/g-web now make it to IMAP
+    clients
+  * midb: propagate folder change events; IMAP clients now
+    recognize when a message was deleted in g-web/Outlook
+  * http: RFC 7617 support for the Basic authentication header line
+  * nsp: allow connections from Windows with UTF-8 locale
+  * midb: removal of seqid renumbering, which speeds up
+    IMAP SELECT/LIST/FETCH commands.
+  * authmgr: PAM is now offered as an authentication backend
+
+-------------------------------------------------------------------
+Sat Nov 11 11:56:22 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.17
+  * Enhancements:
+  * http: Windows SSO support via HTTP Negotiate authentication
+  * daemons: support for alternate login names
+    (this allows for assigning shorter usernames for grommunio-web)
+  * exmdb: augment create_folder and movecopy_folder RPCs with a
+    32-bit error code, which allows g-web to better detect folders
+    with duplicate names
+  * ews: implement Subscribe, Unsubscribe, GetEvents, GetUserPhoto
+  * mbop: add subcommand `clear-rwz` to clear out RuleOrganizer
+    FAI messages
+- Delete 0001-build-resolve-i586-compile-error.patch (merged)
+
+-------------------------------------------------------------------
+Sun Oct 29 18:44:37 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.16
+  * Enhancements:
+  * Define the "suspended" user state for grommunio-admin-api.
+    (think of it as a "non-receiving shared mailbox").
+  * emsmdb, zcore: the ``emsmdb_max_cxh_per_user``,
+    ``emsmdb_max_obh_per_session`` and
+    ``zcore_max_obh_per_session`` config directives can now be
+    set to 0 for unlimited.
+  * Fixes:
+  * oxvcard: export to .vcf now positions the VERSION property in
+    accordance with the vCard 4.0 specification.
+  * oxcmail: cease gratuitous RTF conversion of calendar items.
+
+-------------------------------------------------------------------
+Wed Oct 18 13:01:38 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.15
+  * imap: do not emit continuation request on LITERAL+ (now also
+    for large literals >64K)
+  * exmdb: explicitly rollback SQLite transactions when the commit
+    operation failed
+  * delivery: support for plus-addresses/recipient delimiters,
+    e.g. <user+extension@example.com>
+  * mbop: new subcommand ``recalc-size`` to recalculate store size
+
+-------------------------------------------------------------------
+Wed Oct  4 10:37:50 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.14
+  * alias_resolve: support for nested mlist expansion
+  * alias_resolve: support for Global Contact Objects
+  * delivery: SIGHUP triggers a reload of (more) plugins now
+  * gromox-mbop: add emptyfld options -a, -M
+  * oxdisco, oab: avoid emitting extraneous NUL byte at end of
+    XML document
+  * imap: do not emit continuation request on LITERAL+
+
+-------------------------------------------------------------------
+Sat Sep 23 20:54:29 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.13
+  * emsmdb: eliminiate duplicate message appearing when copying
+    to a private non-default / shared store
+  * EWS: support the {Create,Delete,Move,Copy,Update,Empty}Folder
+    operation(s)
+  * EWS: support the {Copy,Move}Item operation(s)
+
+-------------------------------------------------------------------
+Mon Sep  4 16:42:50 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.12
+  * ews: support CreateItem, DeleteItem, SendItem requests
+  * oxm2mt: support multi-valued properties
+  * kdb2mt: do not abort when --src-mbox is used
+  * exmdb_provider: opening the detail view of Personal Addressbook
+    entries now works in Outlook, as does selecting them as message
+    recipients
+  * zcore: fix a flaw in permissions dialog that caused the
+    delegates to be able to see the private items of the delegator
+
+-------------------------------------------------------------------
+Mon Aug 21 13:40:35 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.11
+  * exmdb: attachment storage with hash-based filenames
+  * exmdb_local: persistent (on-disk) last-autoreply time tracking
+  * imap: allow large literals with APPEND
+  * imap: add RFC 7888 support
+  * oxdisco: allow AutoDiscover information retrieval from
+    secondary mailboxes even if the scndstore_hints table does not
+    have an entry.
+  * emsmdb: "Mark all as read" in OL (Online mode) now works
+
+-------------------------------------------------------------------
+Thu Jun 15 15:24:02 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.10
+  * DNSBL filtering mechanism, cf. man dnsbl_filter
+  * Address book name resolution now evaluates alias addresses
+  * pff2mt: speedup operation by 70%+
+  * emsmdb: strike limits (raise to infinity) for session
+    handles, user handles and notify handles, and raise limit for
+    ems_max_pending_sesnotif to 1K
+  * emsmdb: new configuration directives ems_max_active_notifh,
+    ems_max_active_sessions, ems_max_active_users,
+    ems_max_pending_sesnotif
+  * mbop: new subcommands clear-photo, clear-profile,
+    purge-softdelete, purge-datafiles
+
+-------------------------------------------------------------------
+Wed May 10 09:07:18 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.9
+  * emsmdb: support forwarding meeting requests from organizers
+    that are not local to the installation
+  * imap: broadcast changes to mailbox from EXPUNGE commands
+  * oxcical: add TZID for allday events
+  * imap: add and populate a per-context seqid list
+  * midb: unbreak search matching based on dates and sizes
+  * emsmdb: avoid hitting an assertion when sort-reloading a
+    table of a deleted folder
+- Delete 0001-dbop_mysql-remove-extraneous-DEFAULT-keyword-in-clas.patch
+
+-------------------------------------------------------------------
+Sat Apr 15 10:07:22 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.8
+  * exmdb_provider: repair a 4-byte cutoff when reading PR_BODY,
+    PR_TRANSPORT_MESSAGE_HEADERS if they are compressed on disk
+  * nsp: fix janky addressbook navigation when the GAL has hidden
+    entries
+  * The "Hide from addresbook" functionality has gained another
+    bit, so that name resolution ("Check names" button in
+    OL/g-web) is no longer tied to visibility in the GAL.
+  * Support for non-default stores in the IMAP and POP3 protocols;
+    use "actualusername!sharedmbox" as the username for login.
+- Add 0001-dbop_mysql-remove-extraneous-DEFAULT-keyword-in-clas.patch
+
+-------------------------------------------------------------------
+Fri Mar 24 01:13:00 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.7
+  * exmdb_provider: default to mbox_contention_reject=0
+  * zcore: make mapi_message_imtoinet operate on message instances,
+    not messages
+  * oxcmail: do not fail exporting DSNs with unresolvable addresses
+  * oxcical: do not fail exporting calendar objects with
+    unresolvable addresses
+- Delete 0001-build-resolve-compile-error-with-gcc-13.patch,
+  0001-snapshot-safer-parsing-of-snapshot.cfg.patch (merged)
+
+-------------------------------------------------------------------
+Mon Mar 20 21:24:52 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-build-resolve-compile-error-with-gcc-13.patch
+
+-------------------------------------------------------------------
+Mon Mar 13 09:13:31 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-snapshot-safer-parsing-of-snapshot.cfg.patch
+  [boo#1209051]
+- Updated directory permissions
+
+-------------------------------------------------------------------
+Thu Mar  9 23:44:07 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.6
+  * exmdb_provider: filter duplicate propids when they occur in
+    the mailbox, resolving a failure to export (broken)
+    recipients to MSG, and resolving _one_ instance of OL sync
+    error 80070057.
+  * oxvcard: PidLidBusinessCardDisplayDefinition named property
+    was not assigned the right namespace (PSETID_ADDRESS)
+  * oxcmail: do not abort export routine if SMIME message is
+    lacking an SMIME body (just treat it as empty instead)
+  * oxcical: do not abort export routine if IPM.*.Resp.* has no
+    attendee
+  * exmdb_local: perform online lookup of named properties,
+    resolving vcarduid being erroneously assigned propid 0
+
+-------------------------------------------------------------------
+Sun Mar  5 23:23:42 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.5
+  * authmgr: Alternate username support
+  * Repair a null deref during HTML-to-text conversion
+  * Synchronization of embedded messages now works
+  * Saving a draft in grommunio-web would erroneously strip the
+    subject prefix
+  * EWS: Detailed FreeBusy requests did not return detailed info
+
+-------------------------------------------------------------------
+Sun Feb 26 18:24:47 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.4
+  * mbop: emptyfld/delmsg support folder names now
+  * dscli: added an --eas option
+  * oxdisco: support autodiscover.json requests
+
+-------------------------------------------------------------------
+Fri Feb  3 16:16:14 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.3
+  * pff2mt: support non-Unicode PFF files
+  * ldap_adaptor: read ldap_start_tls, ldap_mail_attr from
+    orgparam table
+  * Support Emojis in HTML-to-RTF conversion code
+  * exmdb_provider: implement message store softdelete count
+    properties
+  * dbop_sqlite: guard schema upgrades with transaction
+  * Do not fail entire HTML-to-RTF conversion or calls like
+    getpropvals(PR_RTF_COMPRESSED) when encountering garbage
+    bytes
+  * exmdb_provider: have folder message count properties respect
+    softdelete
+  * zcore: mapi_copyto had inverted meaning of MAPI_NOREPLACE
+
+-------------------------------------------------------------------
+Mon Jan 16 19:14:43 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.2
+  * exmdb_provider: repair SQL logic errors showing up when a
+    folder's contents are requested in Conversation mode
+  * exmdb_provider: only delete links, not messages, from search
+    folders
+  * tools: add --integrity option for mkprivate, mkpublic, mkmidb
+
+-------------------------------------------------------------------
+Thu Jan 12 11:39:59 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.1
+  * exmdb_provider: support for private store message and folder
+    softdelete (and thus the Recover Deleted Items feature in OL)
+  * mapi_lib: parse "Received" headers into
+    PR_MESSAGE_DELIVERY_TIME for the sake of EML imports
+  * emsmdb: work around OL crash with Recover Deleted Items dialog
+  * emsmdb: rework interpretation of PR_SENT_REPRESENTING on
+    IPM.Schedule objects (relates to the organizer of a meeting
+    when such meeting is forwarded)
+
+-------------------------------------------------------------------
+Sun Dec 18 12:25:44 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.37
+  * exmdb_provider: on-disk content file compression, controllable
+    using the exmdb_file_compression config directive (affects only
+    new files)
+  * exmdb_provider: support evaluation of inbox rules that have
+    RES_CONTENT restrictions with PT_BINARY properties
+  * kdb2mt: full user resolution and PR_*_ADDRTYPE resolution with
+    new option set --mbox-name/--user-map
+  * zcore: Addressed "exmdb_client: reached maximum
+    connections ..." warnings.
+  * Selecting addresses from the "From" dropdown in OL's
+    compose mail dialog works now.
+
+-------------------------------------------------------------------
+Fri Nov 25 13:50:57 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.35
+  * kdb2mt: add option for mapping ACL identities using a text file
+  * tools: add kdb-uidextract and kdb-uidextract-limited scripts to
+    facilitate ACL conversion
+  * Per-organization LDAP server support
+  * User accounts can now be hidden from the GAL and other
+    address lists
+  * The gromox-dscli command-line utility now performs DNS SRV
+    lookups.
+  * exmdb_provider: mlists that were granted the StoreOwner
+    permission bit through an ACL now propagate it to the
+    individuals in the mlist.
+  * emsmdb: On outgoing mails, the Return-Receipt-To (Read
+    Receipt Request) header was malformed. On the incoming side,
+    this would then be translated back to invalid@invalid.
+
+-------------------------------------------------------------------
+Tue Aug 30 12:02:07 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.31
+  * kdb2mt: add a size column to the disambiguation table
+  * exmdb_provider: added the "exmdb_search_yield" and
+    "exmdb_search_nice" config directives
+  * exmdb_provider: add a vacuum RPC (and expose via
+    gromox-mbop(8gx))
+  * emsmdb: implement cached mode cross-store move support
+
+-------------------------------------------------------------------
+Mon Jul 25 16:45:33 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.28
+  * freebusy: do not publicize private recurrence exceptions
+  * Delayed Sending had left messages in Outbox
+  * emsmdb: the contact folder list erroneously rejected sort
+    requests that grouped and sorted by the same column
+
+-------------------------------------------------------------------
+Sun Jun 12 21:49:52 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.25
+  * exmdb_provider: repair PR_MEMBER_NAME transition (ACL table
+    contents)
+  * zcore: fix randomly occurring set_permission failures
+  * autodiscover: resolve & in displaynames being misrepresented
+  * autodiscover: force-remove single quotes from ini values
+  * imap: improved the tokenization for unusual values found in
+    the From/To/Reply-To etc. headers
+  * imap: stop emitting excess parenthesis pairs for RFC822 field
+    values during FETCH
+  * imap: stop offering the STARTTLS capability keyword when the
+    STARTTLS command can, at the same time, not be issued anyway
+  * imap: IMAP commands emitted to the log (under imap_cmd_debug)
+    were truncated sometimes
+  * midb: resolve potential crash when the IMAP SEARCH command
+    is used
+
+-------------------------------------------------------------------
+Wed Jun  1 19:42:23 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.24
+  * exmdb_provider: lifted the folder limit from 10k to 28 billion
+  * oxcmail: cease excessive base64 encoding.
+  * Messages are now preferably encoded as quoted-printable
+    during conversion to Internet Mail format. This might help
+    with spam classification.
+
+-------------------------------------------------------------------
+Thu May 12 15:27:23 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.22
+  * service_loader: resolve crash when first module is unloadable
+  * eml2mt, exm2eml: rectify wrong serivce plugin search path
+  * eml2mt: add iCalendar and vCard file import
+  * kdb2mt: skip IPM.MessageManager FAI messages (cause Outlook
+    to sometimes refuse opening a folder)
+  * The /usr/libexec/gromox/autodiscover command has been renamed
+    to just gromox-dscli.
+
+-------------------------------------------------------------------
+Sat Apr 30 12:26:55 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.20
+  * Resolve a use-after-free in gromox-eml2mt
+  * oxcmail: conversion of Reply-To MAPI field to Internet Mail
+    had only used the last ONEOFF-type recipient, now it uses all
+    ONEOFF recipients.
+  * oxcmail: set IPM.Note.SMIME.MultipartSigned only for incoming
+    S/MIME mails, not for OpenPGP mails.
+  * autodiscover: Change the way autodiscover.ini is parsed. This
+    allows a few more non-alphanumeric characters in the MariaDB
+    password. ';' is still unusable.
+  * exmdb_provider: Evaluate restrictions against absent values
+    differently; this makes messages without a sensitivity tag
+    and which are located in a non-default store visible in
+    Outlook again.
+
+-------------------------------------------------------------------
+Sat Apr 16 14:31:39 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.19
+  * kdb2mt: added the --with-acl option for partial conversion of ACLs
+  * pff2mt: added the --only-obj option to extract a specific object
+  * mt2exm: added the -B option for the placement of unanchored messages
+  * eml2mt: new utility to import mails from files
+  * exmdb_provider: new config directive "exmdb_schema_upgrades"
+  * midb: new config directive "midb_schema_upgrades"
+  * mkprivate, mkpublic and mkmidb now recognize the -U option to
+    upgrade SQLite database schemas
+  * mbop: new utility
+  * rebuild: added progress indicator
+  * zcore: new config directive "zcore_max_obh_per_session"
+  * emsmdb: new config directives "emsmdb_max_obh_per_session",
+    "emsmdb_max_cxh_per_user" to allow higher resource use when a
+    lot of stores are used by an Outlook profile (warning
+    W-1580).
+
+-------------------------------------------------------------------
+Fri Feb 11 15:59:05 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.16
+  * zcore: allow setting Out Of Office status of other mailboxes
+  * zcore: enhance mapi_getmsgstoretable to show all stores with
+    access permissions
+  * kdb2mt, pff2mt: add --with-hidden/--without-hidden
+
+-------------------------------------------------------------------
+Tue Jan 18 18:01:59 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.13
+  * mt2exm: perform named property translation on folder
+    properties, message recipient properties and attachment
+    properties.
+  * pff2mt: support reading multi-value variable-length property
+    types, and obscure single-value types.
+  * kdb2mt: analyze Receive Folder Table and map inbox to inbox
+    when ``-s`` is used.
+  * pam_gromox: Additional service mode checks. One can now use
+    e.g. auth required pam_gromox.so service=chat in
+    /etc/pam.d/xyz to test for the CHAT privilege bit.
+
+-------------------------------------------------------------------
+Tue Dec  7 18:00:46 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.10
+  * exmdb_provider: cease adding a broken recipient when deleting
+    last recipient
+  * exmdb_provider: synthesize mandatory recipient properties
+    essential for MSMAPI (the source of incomplete recipients is
+    from imported KGWC databases)
+  * emsmdb: work around Outlook not displaying any body in Cached
+    Mode when there is no HTML body
+  * mapi_lib: avoid making underscores in subjects when there are
+    umlauts
+
+-------------------------------------------------------------------
+Fri Oct  8 19:36:00 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.4
+  * The event(8gx) and timer(8gx) daemons now run unprivileged.
+  * gromox-pff2mt now skips over unrecognizable MAPI properties
+    rather than exiting.
+  * gromox-mt2exm now supports storing to public mailboxes.
+
+-------------------------------------------------------------------
+Wed Sep  1 10:03:05 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Initial entry for build.opensuse.org (gromox-1.1.43.566b624e)

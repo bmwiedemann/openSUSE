@@ -1,0 +1,106 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>382535f57ed043827175312242bd88dc</srcmd5>
+    <version>0.8.2</version>
+    <time>1649093198</time>
+    <user>dimstar_suse</user>
+    <comment>new package docker-buildx: Docker CLI plugin for extended build capabilities with BuildKit</comment>
+    <requestid>966751</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8ef94a2ba7849b2d2a4b54ea54cd9bbf</srcmd5>
+    <version>0.9.1</version>
+    <time>1662639782</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1001749</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>41858058b44992b0d5140afd9c681747</srcmd5>
+    <version>0.10.0</version>
+    <time>1673359197</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1057204</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1619da76363acf5246b78c1e262b1bd3</srcmd5>
+    <version>0.10.1</version>
+    <time>1674810997</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1061473</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c2fb4afc12bae5015bbd9b7510b5d990</srcmd5>
+    <version>0.10.2</version>
+    <time>1675265943</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1062287</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>050ede7f02428a21750b606f65aef65a</srcmd5>
+    <version>0.10.3</version>
+    <time>1676648739</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1066345</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9a95537502567771c5bca1815a77ad46</srcmd5>
+    <version>0.10.4</version>
+    <time>1678204192</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1069821</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>14627bd0647c719a2fae7eee155f2e06</srcmd5>
+    <version>0.10.5</version>
+    <time>1684846485</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1088548</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>cab73183e9cce3a7cfa460f0155b716e</srcmd5>
+    <version>0.11.0</version>
+    <time>1686752979</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092972</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>9016ff8e4911cd0886ce9b58c874b39b</srcmd5>
+    <version>0.11.0</version>
+    <time>1687122464</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093418</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ac48caad5536b673522975d82f905744</srcmd5>
+    <version>0.11.1</version>
+    <time>1688660961</time>
+    <user>favogt_factory</user>
+    <comment></comment>
+    <requestid>1097053</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b584fd5798067df2d4b185cdf5950fcc</srcmd5>
+    <version>0.11.2</version>
+    <time>1689710956</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1099331</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d3ced5ebcc2597eba9cd6e582bdcf46e</srcmd5>
+    <version>0.12.0</version>
+    <time>1700250521</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1127236</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,62 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>abd4b23640dd32addc991a2f30588732</srcmd5>
+    <version>2.0.0</version>
+    <time>1551024667</time>
+    <user>coolo</user>
+    <comment>This is a parser and a printer for the opam file syntax.
+
+This is a dependency of opam 2.</comment>
+    <requestid>670883</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>623b013e8c81ba66fcd938cb7e203c2f</srcmd5>
+    <version>2.0.0</version>
+    <time>1551276479</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>679507</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>d3677bf29dd72334230c74b03334c6a6</srcmd5>
+    <version>2.0.0</version>
+    <time>1573473668</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>747292</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>28d8eb4a59e2f07b5fbcb99091e78d9f</srcmd5>
+    <version>2.1.3</version>
+    <time>1632939519</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>921285</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e4acb85419189bca073143f766ad5d23</srcmd5>
+    <version>2.1.4</version>
+    <time>1649793054</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.4
+  see included CHANGES for details</comment>
+    <requestid>969470</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>10e22aa7da4680190495b41b005b9640</srcmd5>
+    <version>2.1.5</version>
+    <time>1672927260</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.5
+  see included CHANGES for details</comment>
+    <requestid>1056084</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>aa332b78c52a9c4e07085c4c607129f4</srcmd5>
+    <version>2.1.6</version>
+    <time>1684846426</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1086706</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,51 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>19d2a2ea3e8dac723aa41d4f77fb85df</srcmd5>
+    <version>1.7.1</version>
+    <time>1571653937</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>741423</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1628a7f6eff6f336705ea9713fe8b968</srcmd5>
+    <version>1.7.1</version>
+    <time>1585667838</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>790107</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a4b0a507731c8ae7f921a104fdebe7ec</srcmd5>
+    <version>2.2.1</version>
+    <time>1586248195</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>791671</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>e7d388416029f288c1bf2e1fd9ea6c65</srcmd5>
+    <version>2.2.1</version>
+    <time>1615213142</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>877572</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>a61ee99a428a0b2ea12fef2cd4eaa785</srcmd5>
+    <version>2.2.1</version>
+    <time>1632431045</time>
+    <user>dimstar_suse</user>
+    <comment>- Mark example scripts as non-executable
+</comment>
+    <requestid>921119</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>de047bd78567f14c2014562459aae2cf</srcmd5>
+    <version>2.2.1</version>
+    <time>1646421425</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>959364</requestid>
+  </revision>
+</revisionlist>

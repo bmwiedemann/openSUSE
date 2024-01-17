@@ -1,0 +1,56 @@
+From b88174709f82407624ac058473a71a8b37ed9a10 Mon Sep 17 00:00:00 2001
+From: Michael Vetter <jubalh@iodoru.org>
+Date: Mon, 28 Aug 2023 07:55:29 +0200
+Subject: [PATCH] Don't crash when using `/plugins install` disconnected
+
+When we are not connected and run `/plugins install` we crash because we
+get the account struct to check for the (xmpp) tls setting.
+To apply that to the http (etc) connection to download the plugin from a
+server.
+
+This got introduced in 3a86b8c29 to fix #1624.
+
+There are several ways to handle this (some described in 1880) in this
+patch I took the route that it will use secure connection when we are
+nto connected and will only check the tls.trust account setting if we
+are connected.
+
+Fix https://github.com/profanity-im/profanity/issues/1880
+---
+ src/tools/http_download.c | 5 ++++-
+ src/tools/http_upload.c   | 5 ++++-
+ 2 files changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/src/tools/http_download.c b/src/tools/http_download.c
+index 6be74bedc..b58e9290b 100644
+--- a/src/tools/http_download.c
++++ b/src/tools/http_download.c
+@@ -134,7 +134,10 @@ http_file_get(void* userdata)
+     gchar* cert_path = prefs_get_string(PREF_TLS_CERTPATH);
+     gchar* cafile = cafile_get_name();
+     ProfAccount* account = accounts_get_account(session_get_account_name());
+-    gboolean insecure = account->tls_policy && strcmp(account->tls_policy, "trust") == 0;
++    gboolean insecure = FALSE;
++    if (account) {
++        insecure = account->tls_policy && strcmp(account->tls_policy, "trust") == 0;
++    }
+     account_free(account);
+     pthread_mutex_unlock(&lock);
+ 
+diff --git a/src/tools/http_upload.c b/src/tools/http_upload.c
+index 8be560092..3b3945f3e 100644
+--- a/src/tools/http_upload.c
++++ b/src/tools/http_upload.c
+@@ -186,8 +186,11 @@ http_file_put(void* userdata)
+ 
+     auto_gchar gchar* cert_path = prefs_get_string(PREF_TLS_CERTPATH);
+     gchar* cafile = cafile_get_name();
++    gboolean insecure = FALSE;
+     ProfAccount* account = accounts_get_account(session_get_account_name());
+-    gboolean insecure = account->tls_policy && strcmp(account->tls_policy, "trust") == 0;
++    if (account) {
++        insecure = account->tls_policy && strcmp(account->tls_policy, "trust") == 0;
++    }
+     account_free(account);
+     pthread_mutex_unlock(&lock);
+ 

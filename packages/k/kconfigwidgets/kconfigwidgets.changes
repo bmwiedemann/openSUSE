@@ -1,0 +1,1378 @@
+-------------------------------------------------------------------
+Sat Jan 13 11:21:24 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.114.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.114.0
+- No code change since 5.113.0
+
+-------------------------------------------------------------------
+Tue Dec  5 11:17:26 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.113.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.113.0
+- Changes since 5.112.0:
+  * KRecentFileActions: Fix use after free (kde#476312)
+
+-------------------------------------------------------------------
+Mon Nov  6 09:13:46 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.112.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.112.0
+- No code change since 5.111.0
+
+-------------------------------------------------------------------
+Mon Oct  9 20:20:47 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.111.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.111.0
+- No code change since 5.110.0
+
+-------------------------------------------------------------------
+Wed Sep  6 12:23:54 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.110.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.110.0
+- No code change since 5.109.0
+
+-------------------------------------------------------------------
+Tue Aug  8 17:42:47 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.109.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.109.0
+- Changes since 5.108.0:
+  * Add explicit moc includes to sources for moc-covered headers
+
+-------------------------------------------------------------------
+Mon Jul  3 07:01:40 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.108.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.108.0
+- Changes since 5.107.0:
+  * Remove qt6 CI builds
+
+-------------------------------------------------------------------
+Mon Jun  5 07:43:53 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.107.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.107.0
+- Changes since 5.106.0:
+  * KColorSchemeMenu: Remove accelerator markers from scheme name
+  * Give KColorSchemeMenu namespace a short description
+  * Fixup: Pass scheme name - not path - to KColorSchemeManager::indexForScheme
+  * Split menu creating functionality out of KColorSchemeManager
+
+-------------------------------------------------------------------
+Sat May  6 14:01:29 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.106.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.106.0
+- No code change since 5.105.0
+
+-------------------------------------------------------------------
+Sat Apr  1 17:00:37 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.105.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.105.0
+- Changes since 5.104.0:
+  * KColorSchemeManager: don't override color scheme set by platform theme (kde#447029)
+  * CommandBar: Fix lastUsedActions not restored
+  * KCModule: Add porting aid for KF6 changes
+
+-------------------------------------------------------------------
+Mon Mar  6 09:07:41 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.104.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.104.0
+- Changes since 5.103.0:
+  * KConfigDialogManager: Fix logs formatting
+
+-------------------------------------------------------------------
+Wed Feb  8 09:12:44 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.103.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.103.0
+- Changes since 5.102.0:
+  * Port away from deprecated KCoreConfigSkeleton::ItemEnum::Choice2 typedef
+  * [kcodecaction] Deprecate QTextCodec and mib-based API (kde#463421)
+  * [kcodecaction] Add name-based trigger signal
+  * kcommandbar: Fix positioning when no mainwindow parent
+  * kcommandbar: Fix no central widget crashes app (kde#463251)
+
+-------------------------------------------------------------------
+Thu Jan 12 08:18:38 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.102.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.102.0
+- Changes since 5.101.0:
+  * .kde-ci.yml: enable static CI builds
+  * [kcommandbar] Save last used items in state config
+  * [kcodecaction] Deprecate KEncodingProper-based API
+- Drop patch, now upstream:
+  * 0001-Copy-kf5_entry.desktop-to-their-respective-locale.patch
+
+-------------------------------------------------------------------
+Sun Dec 11 11:39:11 UTC 2022 - Christophe Marin <christophe@krop.fr>
+
+- Add patch to add missing kf5_entry.desktop files (kde#413123):
+  * 0001-Copy-kf5_entry.desktop-to-their-respective-locale.patch
+
+-------------------------------------------------------------------
+Tue Dec  6 20:10:28 UTC 2022 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.101.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.101.0
+- Changes since 5.100.0:
+  * KHamburgerMenu: Reset when menu bar contents change
+  * [KRecentFilesAction] Fix broken recent files list (kde#461448)
+
+-------------------------------------------------------------------
+Tue Nov  8 08:34:57 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.100.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.100.0
+- Changes since 5.99.0:
+  * avoid stating files during restore of recent files (kde#460868)
+  * Ensure icon is always set for recent files actions
+  * Add file icons to open recent menu
+  * Replace custom color preference code with KColorSchemeWatcher
+  * Intialize default decoration colors
+  * [KCommandBar] Fix shortcut background
+  * Add Qt6 windows CI support
+  * Adapt native event filter code to Qt 6
+
+-------------------------------------------------------------------
+Sat Oct  1 15:55:34 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.99.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.99.0
+- Changes since 5.98.0:
+  * Remove unused includes
+  * Show headers in qtc6
+  * add KHamburgerMenu::insertIntoMenuBefore() method
+
+-------------------------------------------------------------------
+Tue Sep  6 07:16:48 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.98.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.98.0
+- Changes since 5.97.0:
+  * Deduplicate color loading code
+  * refresh git-blame-ignore-revs for latest clang-format run
+  * automatic clang-format run (clang 14)
+  * Fix build after cmakedefine01-related changes
+  * Add FreeBSD Qt6 CI support
+  * [KCommandBar] Add action to clear command history
+
+-------------------------------------------------------------------
+Sun Aug  7 22:27:15 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.97.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.97.0
+- Changes since 5.96.0:
+  * [KCommandBar] Improve position and size
+  * follow symlinks during search for help
+  * Avoid tracking dangling KConfigDialogManager
+
+-------------------------------------------------------------------
+Sun Jul  3 11:55:50 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.96.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.96.0
+- Changes since 5.95.0:
+  * Add edit-clear-list icon to the Clear List action
+  * Bump deprecation KF version in ecm_set_disabled_deprecation_versions
+
+-------------------------------------------------------------------
+Fri Jun 10 14:12:20 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.95.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.95.0
+- Changes since 5.94.0:
+  * Change "Actual Size" Action's text to "Zoom to Actual Size"
+  * KRecentFilesAction: remove the corresponding element in m_recentActions when calling removeAction(action)
+  * KRecentFilesAction: refactor some code related to removing an action
+  * KRecentFilesAction: do not reuse removed actions and adding an URL that is already in the menu
+  * Allow specifying a Qt::ConnectionType in KStandardAction::create
+
+-------------------------------------------------------------------
+Tue May 10 08:17:49 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.94.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.94.0
+- Changes since 5.93.0:
+  * KCommandBar: remove installed event filter in destructor (kde#452527)
+  * [kcolorschememanager] Rework and improve auto theme switching (kde#452091)
+  * [kcolorschememanager] Pass explicit role to data()
+  * [kcolorschememanager] Use bespoke role names instead of generic Qt ones
+  * [kcolorschememanager] Rename method call that was missed before
+  * [kcolorschememanager] Rename method for clarity
+  * [kcolorschememanager] Don't save colors on application start
+  * fix: KRecentFilesAction saveEntries and loadEntries use the correct group when no group is passed
+  * Move kstatefulbrush implementation to its own file
+  * More conventional memory managment for KStatefulBrushPrivate
+  * Add windows CI
+  * Fix copy and paste mistake
+  * Fix finding data for KLanguageNameTest on Windows
+  * Add move constructor and assignment operator for KColorScheme
+  * Default copy constructor, assignment operator and destructor
+  * Make it clear that KStandardAction::name gives you ascii
+
+-------------------------------------------------------------------
+Sun Apr  3 10:47:04 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.93.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.93.0
+- Changes since 5.92.0:
+  * Merge KColorSchemePrivate::init and constructor
+  * Unify both KColorSchemePrivate constructors
+  * Add a test for reading colorscheme data
+  * Default to light mode, where AppsUseLightTheme isn't set
+    (notably Windows 8.1)
+  * Require unittests to pass for CI jobs to pass
+  * Move KStatefulBrush to its own dedicated header
+  * KColorScheme::contrast(F) match code to documentation
+  * Deprecate KColorScheme::contrast
+  * Fix automatic color scheme on Windows
+  * khamburgermenu: Ensure menu is polished before creating window
+  * autotests: skip test for changing standard shortcuts on Windows
+  * Fix blame ignore list
+  * [kcolorschememanager] Initialize selected scheme from config
+  * Add Android to supported platforms in the repo metadata.
+
+-------------------------------------------------------------------
+Mon Mar  7 09:26:46 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.92.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.92.0
+- Changes since 5.91.0:
+  * Add Qt6 Android CI
+  * Remove broken Python bindings generation
+  * KHamburgerMenu: Avoid null receiver warning upon showing menubar
+  * Port away from deprecated KAuth includes
+  * Add @since 5.92 in KColorScheme::operator== API docs
+  * Add a KColorScheme::operator==
+  * Make the BUILD_DESIGNERPLUGIN option dependent on not cross-compiling
+  * Add explicit CMake option HAVE_KAUTH
+  * KHambugerMenu: Fix crash on windows when showing the window menubar
+    from the KHamburgerMenu (kde#449806)
+
+-------------------------------------------------------------------
+Sun Feb  6 10:16:51 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.91.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.91.0
+- Changes since 5.90.0:
+  * KLanguageButton: Don't insert duplicates
+  * KLanguageButton: Adapt to new .desktop filenames
+  * Change shortcuts of standard actions if standard shortcut changes (kde#426656)
+  * Use BUILD* deprecation wrapper for virtual method (kde#448680)
+  * Improve naming a little bit
+  * Simplify + use reserve
+  * Remove unnecessary QBrush->QColor conversions
+  * Fix iconWidth calculation
+  * Utilize ECMDeprecationSettings to manage deprecate Qt/KF API
+  * Simplify KHamburgerMenu menu items
+  * Add CI qt6 support
+  * Only require KAuth on Linux/FreeBSD
+  * Don't use KAuth on Windows
+- Drop 0001-Use-BUILD-deprecation-wrapper-for-virtual-method.patch
+  Merged upstream
+
+-------------------------------------------------------------------
+Thu Jan 20 19:47:36 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix deprecation-induced ABI mismatch (kde#448680):
+  * 0001-Use-BUILD-deprecation-wrapper-for-virtual-method.patch
+
+-------------------------------------------------------------------
+Mon Jan  3 12:47:20 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.90.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.90.0
+- Changes since 5.89.0:
+  * Fix conditions used in cmake.in config file
+  * [kcolorschememodel] Read .colors files from assets on Android
+  * Sync default colors from Breeze Light color scheme
+  * kcommandbar: Don't warn if action is separator
+  * WIP: Change the build system to enable building with Qt 6
+  * [kcmodule] Deprecate aboutData and componentData
+  * [KCommandBar] Fix resetting m_hasActionsWithIcons
+
+-------------------------------------------------------------------
+Sat Dec  4 22:56:25 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.89.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.89.0
+- Changes since 5.88.0:
+  * Port away from deprecated I18N_NOOP
+  * Add color scheme saving and loading
+  * [KCommandBar] Add placeholder text for empty view
+  * Fix hamburger menu opening as a window on Wayland (kde#442375)
+  * [KCommandBar] Fix rendering of chord shortcuts
+  * [KCommandBar] Dynamic column widths + shortcuts alignment
+
+-------------------------------------------------------------------
+Sun Nov  7 09:13:12 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Strip 'Source' URL for faster submissions
+
+-------------------------------------------------------------------
+Sun Nov  7 09:07:53 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.88.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.88.0
+- Too many changes since 5.87.0, only listing bugfixes:
+  * [KCommandBar] Additionally sort commands by name (kde#443731)
+  * [KCommandBar] Don't display an indent for an icon if no item has an icon (kde#443382)
+  * [KCommandBar] Skip actions with empty text (kde#443732)
+  * Read proper color setting on Windows (kde#443300)
+  * [KCommandBar] Show information about a command in a tooltip (kde#438735)
+
+-------------------------------------------------------------------
+Sun Oct  3 20:33:37 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.87.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.87.0
+- Changes since 5.86.0:
+  * Add Gitlab CI configuration
+  * Do not emit deprecation warnings for overload which gets chosen by compiler
+
+-------------------------------------------------------------------
+Wed Sep 15 08:24:00 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Drop the unneeded baselibs.conf.
+
+-------------------------------------------------------------------
+Mon Sep  6 06:21:57 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.86.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.86.0
+- Changes since 5.85.0:
+  * Add support for static builds
+  * We depend against c++-17 so we can use qOverload directly
+  * Hide KHamburgerMenu in QMenus when a native menu bar is used (kde#439997)
+  * clarify quickhelp apidocs
+
+-------------------------------------------------------------------
+Fri Aug  6 12:11:47 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.85.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.85.0
+- Changes since 5.84.0:
+  * [KCModule] Deprecate ctor that takes KAboutData
+  * Make sure commandbar has unique actions
+  * add icons for all zoom standard actions
+  * KCommandBar update
+  * Show fuzzy matches in command bar
+  * enable auto-switching color scheme for Windows apps when Default color scheme is active
+  * Fix crash when calling KHamburgerMenu::setMenuBar(nullptr)
+
+-------------------------------------------------------------------
+Sun Jul  4 07:45:14 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.84.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.84.0
+- Changes since 5.83.0:
+  * Expose model of KColorSchemeManager
+  * Mark a couple redundant functions deprecated
+  * Update API docs with respect to KXMLGuiFactor::showConfigureShortcutsDilaog()
+  * Deprecate KStatefulBrush::brush(const QWidget*)
+  * Fix tiny black rectangles with rounded corners
+  * ElideRight instead of left
+  * Fix filtering in KCommandBar
+  * KRecentFilesAction: document that local file URLs in the temp dir are ignored (kde#423302)
+
+-------------------------------------------------------------------
+Sat Jun  5 11:58:35 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.83.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.83.0
+- Changes since 5.82.0:
+  * Deprecate KTipDatabase and KTipDialog
+  * [KHamburgerMenu] Ignore native menus
+  * Bump required CMake version to 3.16
+  * Add KCommandBar - a hud-style dialog for quickly executing QActions
+  * Call ki18n_install() unconditionally
+  * Add missing includes
+
+-------------------------------------------------------------------
+Sat May  1 16:40:40 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.82.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.82.0
+- Changes since 5.81.0:
+  * Use new version-controlled enumerator deprecation warning macros
+  * Fix mem leak found by asan
+  * Rename khamburgermenuhelpers.h to khamburgermenuhelpers_p.h
+  * Mark internal classes \internal
+  * Un-overload KConfigDialogManager::settingsChanged() signals
+  * Use QGuiApplication::isRightToLeft() instead of QApplication::isRightToLeft()
+  * Remove unused include
+
+-------------------------------------------------------------------
+Mon Apr  5 07:12:13 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.81.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.81.0
+- Changes since 5.80.0:
+  * Introduce KHamburgermenu
+
+-------------------------------------------------------------------
+Sun Mar  7 09:26:39 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.80.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.80.0
+- Changes since 5.79.0:
+  * Add missing forward declaration
+  * Add missing include
+  * Run clang-format
+  * Add trailing comma to enums
+  * Add clang-format configuration
+  * fix maxItems == 0, really ensure no items are remembered (kde#421391)
+
+-------------------------------------------------------------------
+Mon Feb  8 08:46:06 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.79.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.79.0
+- Changes since 5.78.0:
+  * Include QStringList instead of QtContainerFwd
+  * Improve includes
+
+-------------------------------------------------------------------
+Wed Jan  6 10:47:25 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.78.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.78.0
+- Changes since 5.77.0:
+  * KCodecAction: add non-overload signals codecTriggered & encodingProberTriggered
+  * Don't include QtTestWidgets as it includes all QtCore includes
+
+-------------------------------------------------------------------
+Sat Dec  5 18:56:20 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.77.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.77.0
+- Changes since 5.76.0:
+  * Remove redundant setLayout() call
+
+-------------------------------------------------------------------
+Sat Nov  7 21:34:25 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.76.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.76.0
+- Changes since 5.75.0:
+  * If include is define in .h remove it if it's defined in .cpp too (scripted)
+  * Change http: to https:
+
+-------------------------------------------------------------------
+Mon Oct  5 08:32:59 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.75.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.75.0
+- Changes since 5.74.0:
+  * Fix isDefault that cause the KCModule to not properly update its default state
+  * initialize variable in header
+  * [kcolorscheme]: Add isColorSetSupported to check if a colour scheme has a given color set
+  * [kcolorscheme] Properly read custom Inactive colors for the backgrounds
+
+-------------------------------------------------------------------
+Sun Sep  6 12:48:51 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.74.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.74.0
+- Too many changes to list here.
+
+-------------------------------------------------------------------
+Sun Aug  2 07:13:10 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.73.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.73.0
+- Changes since 5.72.0:
+  * KCModule: Indicate when a setting has been changed from the default value
+  * Use KF-standardized Qt logging categories
+  * Use camelcase include. (scripted)
+  * When resetting to system default do not use the standard palette of the style
+
+-------------------------------------------------------------------
+Sun Jul  5 07:55:10 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.72.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.72.0
+- Changes since 5.71.0:
+  * Make "Switch Application Language..." text more consistent
+
+-------------------------------------------------------------------
+Sun Jun  7 08:06:25 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.71.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.71.0
+- Changes since 5.70.0:
+  * [KColorScheme] Remove duplicated code
+  * Make Header backwards compatible with titlebar colors
+  * Make Header colors fallback to Window colors first
+  * Introduce the Header color set
+  * Fix build with EXCLUDE_DEPRECATED_BEFORE_AND_AT=CURRENT
+
+-------------------------------------------------------------------
+Sun May  3 09:39:47 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.70.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.70.0
+- Changes since 5.69.0:
+  * Fix the exclusive group box case for default indicators
+  * KCModule: Indicate when a setting has been changed from the default or previous value
+
+-------------------------------------------------------------------
+Sun Apr  5 19:45:24 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.69.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.69.0
+- No code change since 5.68.0
+
+-------------------------------------------------------------------
+Sun Mar  8 09:17:39 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.68.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.68.0.php
+- Changes since 5.67.0:
+  * Use ecm_qt_install_logging_categories over manual categories file
+  * Change "Redisplay" to "Refresh"
+  * Remove old code that is not used anymore
+
+-------------------------------------------------------------------
+Sun Feb  2 18:06:47 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %make_jobs with %cmake_build.
+
+-------------------------------------------------------------------
+Sun Feb  2 14:32:34 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.67.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.67.0.php
+- Changes since 5.66.0:
+  * KStandardAction: add method for SwitchApplicationLanguage action creation
+  * Don't assume the manager and menu have the same lifetime
+  * [KColorSchemeManager] Don't list duplicates
+  * [KColorschemeManager] Add option to reenable following global theme
+  * Fix KCMModule::setButtons documentation, if Apply is activated we
+    also want to show a Reset button
+  * Port QRegExp to QRegularExpression
+
+-------------------------------------------------------------------
+Sun Jan  5 09:02:02 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.66.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.66.0.php
+- Changes since 5.65.0:
+  * Update the obsolete projects.kde.org URL
+  * Rename "Configure Shortcuts" to "Configure Keyboard Shortcuts" (kde#39488)
+
+-------------------------------------------------------------------
+Sun Dec  8 11:18:24 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.65.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.65.0.php
+- Changes since 5.64.0:
+  * [KColorScheme] Make order of decoration colors match DecorationRole enum
+  * [KColorScheme] Fix mistake in NShadeRoles comment
+  * [KColorScheme/KStatefulBrush] Switch hardcoded numbers for enum items
+  * [KColorScheme] Add items to ColorSet and Role enums for the total number of items
+  * Remove unused include
+  * KConfigWidgets: port away from KF5 deprecated API
+  * Register KKeySequenceWidget to KConfigDialogManager
+  * Adjust KCModule to also channel information about defaults
+
+-------------------------------------------------------------------
+Sun Nov  3 15:46:52 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.64.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.64.0.php
+- Changes since 5.63.0:
+  * Use ECMGenerateExportHeader to manage deprecated API better
+  * Avoid overloading KCModule::changed
+
+-------------------------------------------------------------------
+Sun Oct  6 13:26:22 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.63.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.63.0.php
+- Changes since 5.62.0:
+  * Make KColorScheme compatible with QVariant
+  * [KConfigWidgets] port away from deprecated API in Qt 5.14
+
+-------------------------------------------------------------------
+Sat Sep  7 20:36:34 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.62.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.62.0.php
+- Changes since 5.61.0:
+  * Use isEmpty here too
+  * Add option to build Qt Designer plugin (BUILD_DESIGNERPLUGIN, default ON)
+  * [KColorSchemeManager] Optimize preview generation
+  * Fix includes
+- Replace foo-devel with cmake(KF5Foo) in build requirements
+
+-------------------------------------------------------------------
+Wed Aug  7 17:51:13 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.61.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.61.0.php
+- Changes since 5.60.0:
+  * Remove explicit use of ECM_KDE_MODULE_DIR, is part of ECM_MODULE_PATH 
+  * Remove unused includes
+
+-------------------------------------------------------------------
+Fri Jul 19 11:39:16 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Don't lower minimum Qt version anymore, it requires 5.11 now
+
+-------------------------------------------------------------------
+Sun Jul 14 06:41:37 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.60.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.60.0.php
+- Changes since 5.59.0:
+  * Install in new logging directory when we use kf5 5.59.0
+
+-------------------------------------------------------------------
+Sun Jun 09 07:35:11 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.59.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.59.0.php
+- Changes since 5.58.0:
+  * Use locale currency for donate icon
+
+-------------------------------------------------------------------
+Wed May 15 18:16:15 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.58.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.58.0.php
+- No code changes since 5.57.0
+
+-------------------------------------------------------------------
+Sun Apr 14 20:21:42 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.57.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.57.0.php
+- Changes since 5.56.0:
+  * Use QLatin1Char
+  * [kconfigwidgets] make it compile without foreach
+
+-------------------------------------------------------------------
+Sun Mar 10 20:15:35 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.56.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.56.0.php
+- Changes since 5.55.0:
+  * Remove deprecated method
+  * Skip benchmark if no scheme files can be found
+  * Add a note for KF6 to use the core version of KF5::Auth
+  * Cache the default KColorScheme configuration
+
+-------------------------------------------------------------------
+Fri Feb 15 09:25:42 UTC 2019 - alarrosa@suse.com
+
+- Downgrade the Qt version requirement to build with 5.9
+
+-------------------------------------------------------------------
+Sun Feb 10 22:03:02 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.55.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.55.0.php
+- Changes since 5.54.0:
+  * Build without KAuth and D-Bus on Android
+  * fix environment setup of klanguagename test
+  * Add KLanguageName
+
+-------------------------------------------------------------------
+Mon Jan 14 06:08:44 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.54.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.54.0.php
+- Changes since 5.53.0:
+  * Fix minor typos
+
+-------------------------------------------------------------------
+Sun Dec 09 19:43:43 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.53.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.53.0.php
+- Changes since 5.52.0:
+  * Use isEmpty()
+  * Use new syntax
+  * Mark private member pointer to pimpl interface instance const
+  * Use normalized slot signature
+  * Use member-function-pointer-based signal/slot connections
+
+-------------------------------------------------------------------
+Sun Nov 11 19:48:03 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.52.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.52.0.php
+- Changes since 5.51.0:
+  * Allow KHelpCenter to open the right pages of KDE help when KHelpClient is invoked with an anchor
+  * Include own header first
+  * Have include guard match header file name
+  * Use more explicit constructors with internal classes
+  * Use normalized signature with Q_ARG
+  * More const ref arguments in internal API
+  * Use emit foo(), not emit(foo());
+
+-------------------------------------------------------------------
+Tue Oct 16 08:01:56 UTC 2018 - Luca Beltrame <lbeltrame@kde.org>
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Mon Oct 15 11:51:47 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.51.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.51.0.php
+- Changes since 5.50.0:
+  * Remove misleading use of KDE_INSTALL_PYTHONBINDINGSDIR
+  * API dox: 0 -> nullptr
+
+-------------------------------------------------------------------
+Thu Sep 13 21:58:44 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.50.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.50.0.php
+- Changes since 5.49.0:
+  * None
+
+-------------------------------------------------------------------
+Sun Aug 19 09:18:53 UTC 2018 - christophe@krop.fr
+
+- Update to 5.49.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.49.0.php
+- Changes since 5.48.0:
+  * Honor BUILD_TESTING
+
+-------------------------------------------------------------------
+Mon Jul 16 04:37:36 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.48.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.48.0.php
+- Changes since 5.47.0:
+  * None
+
+-------------------------------------------------------------------
+Tue Jun 12 21:26:03 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.47.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.47.0.php
+- Changes since 5.46.0:
+  * Fix the "Default" color scheme to match Breeze again
+
+-------------------------------------------------------------------
+Sun May 13 21:03:00 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.46.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.46.0.php
+- Changes since 5.45.0:
+  * Use override
+  * Warning--
+
+-------------------------------------------------------------------
+Sat Apr 14 13:19:03 CEST 2018 - lbeltrame@kde.org
+
+- Update to 5.45.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.45.0.php
+- Changes since 5.44.0:
+  * Remove not necessary QtCore and co
+
+-------------------------------------------------------------------
+Mon Mar 12 23:29:40 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.44.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.44.0.php
+- Changes since 5.43.0:
+  * Improve KLanguageButton::insertLanguage when no name is passed
+  * Add icons for KStandardActions Deselect and Replace
+
+-------------------------------------------------------------------
+Mon Feb 12 23:42:07 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.43.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.43.0.php
+- Changes since 5.42.0:
+  * None
+
+-------------------------------------------------------------------
+Tue Jan 16 22:50:15 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.42.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.42.0.php
+- Changes since 5.41.0:
+  * Remove obsolete reviewboardrc file
+  * Port to new connect api
+  * Add some QStringLiteral/QLatin1Char, reduce scope, port to new connect api
+
+-------------------------------------------------------------------
+Sun Dec 17 09:43:47 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.41.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.41.0.php
+- Changes since 5.40.0:
+  * Convert qWarning to qCWarning
+  * Port to qCDebug
+  * Update default colors to match new colors in D7424
+
+-------------------------------------------------------------------
+Mon Nov 13 07:01:13 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.40.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.40.0.php
+- Changes since 5.39.0:
+  * Fix icon of KStandardAction::MoveToTrash
+
+-------------------------------------------------------------------
+Mon Oct 23 06:41:38 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.39.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.39.0.php
+- Changes since 5.38.0:
+  * Deprecate KStandardAction::PasteText and KPasteTextAction
+
+-------------------------------------------------------------------
+Tue Sep 12 07:11:16 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.38.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.38.0.php
+- Changes since 5.37.0:
+  * Deprecate KStandardAction::Help
+  * Deprecate KStandardAction::SaveOptions
+  * Improve KStandardAction apidox.
+  * Do not leak symbols of pimpl classes, protect with Q_DECL_HIDDEN
+  * Fix labels of DeleteFile/RenameFile actions (kde#382450)
+  * Fix doxygen comments
+  * Use "document-close" as icon for KStandardAction::close
+  * API dox: fix wrong usage of @see
+
+-------------------------------------------------------------------
+Sat Aug 12 09:23:20 UTC 2017 - christophe@krop.fr
+
+- Update to 5.37.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.37.0.php
+- Changes since 5.36.0 :
+  * Use more nullptr
+
+-------------------------------------------------------------------
+Wed Jul 12 07:13:59 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.36.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.36.0.php
+- Changes since 5.35.0:
+  * Remove duplicated KCONFIGWIDGETS_EXPORT from source file, already in header
+  * API dox: add missing @since to showStatusbar(..., Func, ...)
+  * API dox: fix wrong semicolon resulting in broken dox
+  * API dox: add missing KSA::showMenubar(const QObject*, Func slot, QObject*)
+  * API dox: Fix typo which broke KStandardAction dox (adding e.g. Q_ASSERT)
+  * API dox: add missing @endlink for @link
+  * [FEATURE] Option to build & install QCH file with the public API dox
+
+-------------------------------------------------------------------
+Sun Jun 11 09:27:42 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.35.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.35.0.php
+- Changes since 5.34.0:
+  * API dox: add some minimal docs to more namespace
+  * API dox: note CamelCase includes by @class tag with more classes
+
+-------------------------------------------------------------------
+Mon May 15 13:53:12 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.34.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.34.0.php
+- Changes since 5.33.0:
+  * Set the icon for the Donate action
+  * Relax constraints for processing QGroupBoxes
+- Use %find_lang --with-man --all-name
+
+-------------------------------------------------------------------
+Sat Apr 15 10:11:46 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.33.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.33.0.php
+- Changes since 5.32.0:
+  * Upgrade ECM and KF5 version requirements for 5.33.0 release.
+  * Upgrade KF5 version to 5.33.0.
+
+-------------------------------------------------------------------
+Sun Mar 19 14:50:18 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.32.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.32.0.php
+- Changes since 5.31.0:
+  * Commit translations from l10n-kf5
+  * Upgrade ECM and KF5 version requirements for 5.32.0 release.
+  * KColorScheme: default to application scheme if set by KColorSchemeManager
+  * KConfigDialogManager: get change signal from metaObject or special property
+  * Upgrade KF5 version to 5.32.0.
+  * Fix KCModule::setAuthAction error checking
+
+-------------------------------------------------------------------
+Thu Feb  9 09:25:21 UTC 2017 - hrvoje.senjan@gmail.com
+
+- Update to 5.31.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.31.0.php
+
+-------------------------------------------------------------------
+Sun Jan  8 23:38:52 UTC 2017 - hrvoje.senjan@gmail.com
+
+- Update to 5.30.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.30.0.php
+
+-------------------------------------------------------------------
+Sun Dec  4 01:56:54 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.29.0
+  * Ensure menu actions get the intended MenuRole
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.29.0.php
+
+-------------------------------------------------------------------
+Sat Nov  5 20:23:50 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.28.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.28.0.php
+
+-------------------------------------------------------------------
+Sun Oct  2 12:51:23 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.27.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.27.0.php
+
+-------------------------------------------------------------------
+Tue Sep  6 20:47:42 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.26.0
+  * Add Donate standard action
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.26.0.php
+
+-------------------------------------------------------------------
+Sun Aug  7 21:51:08 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.25.0
+  * Qt >= 5.5 is now required
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.25.0.php
+
+-------------------------------------------------------------------
+Wed Jul  6 15:02:29 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.24.0
+  * KStandardAction::showStatusbar: Return the intended action
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.24.0.php
+
+-------------------------------------------------------------------
+Mon Jun  6 21:24:00 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.23.0
+  * Allow using new style connect syntax with KStandardAction::create()
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.23.0.php
+
+-------------------------------------------------------------------
+Sat May  7 18:30:27 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.22.0 (boo#980066)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.22.0.php
+
+-------------------------------------------------------------------
+Mon Apr  4 14:19:20 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.21.0 (boo#974793)
+  * Upgrade Qt version requirement to 5.4.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.21.0.php
+
+-------------------------------------------------------------------
+Sun Mar  6 09:55:28 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.20.0 (boo#970856)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.20.0.php
+
+-------------------------------------------------------------------
+Sat Feb  6 17:59:53 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.19.0 (boo#967668)
+  * Add a "Complementary" color scheme to kcolorscheme
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.19.0.php
+
+-------------------------------------------------------------------
+Sat Jan  2 17:42:14 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.18.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.18.0.php
+
+-------------------------------------------------------------------
+Thu Dec 10 23:03:41 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.17.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.17.0.php
+
+-------------------------------------------------------------------
+Sun Nov  8 16:58:25 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.16.0 (boo#955067)
+  * Make KConfigWidgets self contained, bundle the one global file
+    in a resource
+  * Make doctools optional
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.16.0.php
+
+-------------------------------------------------------------------
+Mon Oct  5 17:37:05 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.15.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.15.0.php
+
+-------------------------------------------------------------------
+Tue Sep  8 17:12:48 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.14.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.14.0.php
+
+-------------------------------------------------------------------
+Tue Aug  4 19:20:17 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.13.0
+  * The Qt version requirement has been bumped from 5.2 to 5.3
+  * Debug output has been ported to categorized output, for less
+    noise by default
+  * Docbook documentation has been reviewed and updated
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.13.0.php
+
+-------------------------------------------------------------------
+Sun Jul  5 18:44:51 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.12.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.12.0.php
+
+-------------------------------------------------------------------
+Sun Jun  7 19:07:15 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.11.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.11.0.php
+
+-------------------------------------------------------------------
+Sun May  3 19:45:01 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.10.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.10.0.php
+
+-------------------------------------------------------------------
+Sat Apr  4 14:40:39 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.9.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.9.0.php
+- Drop kguiaddons-devel and ki18n-devel Requires from devel subpackage
+
+-------------------------------------------------------------------
+Sat Mar  7 16:58:41 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.8.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.8.0.php
+
+-------------------------------------------------------------------
+Sun Feb  8 18:15:12 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.0
+  * KRecentFilesAction: fixed menu entry order (so it matches
+    the kdelibs4 order)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.7.0.php
+
+-------------------------------------------------------------------
+Sat Jan  3 18:03:13 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.6.0.php
+
+-------------------------------------------------------------------
+Sat Dec  6 12:53:35 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.5.0.php
+
+-------------------------------------------------------------------
+Sun Nov  2 17:46:59 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.0
+  * Fix URL in KHelpClient::invokeHelp
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.4.0.php
+
+-------------------------------------------------------------------
+Sat Oct  4 17:59:28 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.0
+  * Now provides the kf5_entry.desktop files it needs for KLanguageButton
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.3.0.php
+- Added conflicts with kdelibs4support < 5.3.0, some parts of the
+  package moved to kconfigwidgets
+
+-------------------------------------------------------------------
+Tue Sep  9 09:49:20 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.2.0
+  * KConfigWidgets: fix missing default shortcuts for standard
+    actions, leading to many runtime warnings
+  * KConfigWidgets: better support for QGroupBox in KConfigDialogManager
+  * For more details please see:
+    http://kde.org/announcements/kde-frameworks-5.2.php
+
+-------------------------------------------------------------------
+Sat Aug  2 10:20:04 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.1.0
+  * For more details please see:
+    http://www.kde.org/announcements/kde-frameworks-5.1.php
+
+-------------------------------------------------------------------
+Fri Jul 11 09:48:38 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Define kf5_version within package
+
+-------------------------------------------------------------------
+Tue Jul  1 21:35:45 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.0.0
+  * Final release of KDE Frameworks 5
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/kde-frameworks-5.0.php
+
+-------------------------------------------------------------------
+Sun Jun  1 18:02:15 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.100.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta3.php
+- Add baselibs.conf
+
+-------------------------------------------------------------------
+Sun May  4 01:41:02 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.99.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta2.php
+
+-------------------------------------------------------------------
+Sat Mar 29 19:47:25 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.98.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta1.php
+
+-------------------------------------------------------------------
+Tue Mar  4 16:38:25 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.97.0:
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-alpha2.php
+
+-------------------------------------------------------------------
+Sat Feb  8 02:17:36 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Init kconfigwidgets package
+

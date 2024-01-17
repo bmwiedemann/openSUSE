@@ -1,0 +1,826 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e3cacb74a53213dc0888da7d787f87f1</srcmd5>
+    <version>3.6.0</version>
+    <time>1502559221</time>
+    <user>maxlin_factory</user>
+    <comment>This supersedes req#512842 and includes an updated source tarball
+with latest ustream release. The big change in this request is
+the same as #512842:
+
+This is the first half of renaming libvirt-python package to
+python-libvirt-python. At the same time, it changes the spec
+file to use singlespec. Req#512843 sent to delete libvirt-python.</comment>
+    <requestid>514269</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>bc92018c641bba284abd4b79dfa93e0e</srcmd5>
+    <version>3.6.0</version>
+    <time>1505335110</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>525884</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cf97ebc2585e49c6f0d5d16076828d2f</srcmd5>
+    <version>3.7.0</version>
+    <time>1505920013</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 3.7.0.
+
+- Update to 3.7.0
+  - Add all new APIs and constants in libvirt 3.7.0</comment>
+    <requestid>526419</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>ae679f9f58ec7dd31b76ec7f88cf9056</srcmd5>
+    <version>3.7.0</version>
+    <time>1507065491</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530565</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6763ed0213a45a62e655382c0afcdd4a</srcmd5>
+    <version>3.8.0</version>
+    <time>1507755694</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 3.8.0.
+
+- Update to 3.8.0
+  - Add all new APIs and constants in libvirt 3.8.0</comment>
+    <requestid>532217</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4a4265c11f21fcb2456e9d7763dc6e9d</srcmd5>
+    <version>3.9.0</version>
+    <time>1510506130</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 3.9.0.
+
+- Update to 3.9.0
+  - Add all new APIs and constants in libvirt 3.9.0</comment>
+    <requestid>539357</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>fb9070c15a62b658e8f41e5637b4f8c4</srcmd5>
+    <version>3.9.0</version>
+    <time>1512734203</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>546498</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4543dd7bbfb1e02e8b310843ad6ce830</srcmd5>
+    <version>3.10.0</version>
+    <time>1513677492</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>557942</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>06f4949cdf0aa7859e13d13aeabdec40</srcmd5>
+    <version>4.0.0</version>
+    <time>1516970408</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 4.0.0.
+
+- Update to 4.0.0
+  - Add all new APIs and constants in libvirt 4.0.0
+  - BuildRequire matching libvirt version</comment>
+    <requestid>569726</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>144901fdbbc722056b3d5f8e944bb486</srcmd5>
+    <version>4.1.0</version>
+    <time>1520588619</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>583110</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8cff025ef4e074207a4c8811b6ea10da</srcmd5>
+    <version>4.3.0</version>
+    <time>1525779424</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>603337</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8ec6e7a8177cd18266cec7f00528a49e</srcmd5>
+    <version>4.4.0</version>
+    <time>1530866609</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>620923</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>badc9004df77638f2cbb6e6b2dbcb50f</srcmd5>
+    <version>4.5.0</version>
+    <time>1532774735</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>625842</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>0e1585d35bf9046072efc88889305795</srcmd5>
+    <version>4.6.0</version>
+    <time>1535123506</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>631165</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>18e7e336b22bfdffe97dd14549596332</srcmd5>
+    <version>4.7.0</version>
+    <time>1538502366</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>638864</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>3e0b15069508fc798cab0b88f13a5a1f</srcmd5>
+    <version>4.8.0</version>
+    <time>1539342639</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>641144</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>012ecb4bb10c9450e9587a428c7ad4f5</srcmd5>
+    <version>4.9.0</version>
+    <time>1541666907</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 4.9.0.
+
+- Update to 4.9.0
+  - Add all new APIs and constants in libvirt 4.9.0
+  - FATE#326371</comment>
+    <requestid>646471</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>5c19b6538078ca402f20b5d8eb49594d</srcmd5>
+    <version>4.10.0</version>
+    <time>1544539626</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 4.10.0.
+
+- Update to 4.10.0
+  - Add all new APIs and constants in libvirt 4.10.0
+  - FATE#320928, FATE#325817, FATE#326380, FATE#326698</comment>
+    <requestid>653735</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>797058d39d06d5eedae014f7527b34d9</srcmd5>
+    <version>5.0.0</version>
+    <time>1549361908</time>
+    <user>coolo</user>
+    <comment>Updated python bindings for libvirt 5.0.0.
+
+- Update to 5.0.0
+  - Add all new APIs and constants in libvirt 5.0.0
+  - FATE#320928, FATE#325817, FATE#326380, FATE#326698</comment>
+    <requestid>667893</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>ab87249f76f8a01feeb1d54e8f02aaef</srcmd5>
+    <version>5.1.0</version>
+    <time>1552380416</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 5.1.0.
+
+- Update to 5.1.0
+  - Add all new APIs and constants in libvirt 5.1.0
+  - jsc#SLE-3887, jsc#SLE-4480, jsc#SLE-4577</comment>
+    <requestid>681984</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>bf944c96df1d8cda5785e07c59d99b84</srcmd5>
+    <version>5.2.0</version>
+    <time>1555329552</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 5.2.0.
+
+- Update to 5.2.0
+  - Add all new APIs and constants in libvirt 5.2.0</comment>
+    <requestid>693776</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>b683c4fa3ffe8b24252c9625c72ca99a</srcmd5>
+    <version>5.3.0</version>
+    <time>1557472297</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 5.3.0.
+
+- Update to 5.3.0
+  - Add all new APIs and constants in libvirt 5.3.0</comment>
+    <requestid>701651</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>ab5dde949155837c73396891c31a91ea</srcmd5>
+    <version>5.4.0</version>
+    <time>1559902726</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 5.4.0.
+
+- Update to 5.4.0
+  - Add all new APIs and constants in libvirt 5.4.0</comment>
+    <requestid>707678</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>291a89a732deb567c321b345d08ba925</srcmd5>
+    <version>5.5.0</version>
+    <time>1564575158</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 5.5.0.
+
+- Update to 5.5.0
+  - Add all new APIs and constants in libvirt 5.5.0</comment>
+    <requestid>718356</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>8d2ebef03ae4037f80608bc998bc927c</srcmd5>
+    <version>5.6.0</version>
+    <time>1565962081</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 5.6.0.
+
+- Update to 5.6.0
+  - Add all new APIs and constants in libvirt 5.6.0</comment>
+    <requestid>722939</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>a20864b9e769ea6f9348f87c6fcda3a8</srcmd5>
+    <version>5.7.0</version>
+    <time>1568190169</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 5.7.0.
+
+- Update to 5.7.0
+  - Add all new APIs and constants in libvirt 5.7.0</comment>
+    <requestid>728577</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>3309139ea9d82edaf9438b6f3db14032</srcmd5>
+    <version>5.8.0</version>
+    <time>1571751502</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 5.8.0.
+
+- Update to 5.8.0
+  - Add all new APIs and constants in libvirt 5.8.0</comment>
+    <requestid>737237</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>b5c1f5734cf37091d3497dade2210f60</srcmd5>
+    <version>5.9.0</version>
+    <time>1573473502</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 5.9.0.
+
+- Update to 5.9.0
+  - Add all new APIs and constants in libvirt 5.9.0</comment>
+    <requestid>746042</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>adf114ec2ceed147a2852e54661e088b</srcmd5>
+    <version>5.10.0</version>
+    <time>1575728157</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 5.10.0.
+
+- Update to 5.10.0
+  - Add all new APIs and constants in libvirt 5.10.0</comment>
+    <requestid>753077</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>8489ed58d826d9ef48cabd9912c76931</srcmd5>
+    <version>6.0.0</version>
+    <time>1579792071</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 6.0.0.
+
+- Update to 6.0.0
+  - Add all new APIs and constants in libvirt 6.0.0
+  - Revert commit b22e4f24 to retain python2 support a bit longer
+    on SUSE
+    revert-b22e4f24.patch</comment>
+    <requestid>765097</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>d09e1a1d4d195fa08194b835f524c796</srcmd5>
+    <version>6.1.0</version>
+    <time>1584050329</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.1.0
+  - Add all new APIs and constants in libvirt 6.1.0
+
+- Stop building for python2
+  Dropped patches: revert-b22e4f24.patch</comment>
+    <requestid>783429</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>17146306f35691c444540e1ef2bcdf19</srcmd5>
+    <version>6.2.0</version>
+    <time>1586555566</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 6.2.0.
+
+- Update to 6.2.0
+  - Add all new APIs and constants in libvirt 6.2.0</comment>
+    <requestid>792828</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>8e9adfa85022c5e01dcc67d6cfc9c5f1</srcmd5>
+    <version>6.3.0</version>
+    <time>1589046633</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 6.3.0.
+
+- Update to 6.3.0
+  - Add all new APIs and constants in libvirt 6.3.0</comment>
+    <requestid>801287</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>b7cefb38e338f910b5b57e649ffa61c4</srcmd5>
+    <version>6.4.0</version>
+    <time>1591380170</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 6.4.0.
+
+- Update to 6.4.0
+  - Add all new APIs and constants in libvirt 6.4.0</comment>
+    <requestid>810964</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>0d0c706b3c92e504e430d488fffd421c</srcmd5>
+    <version>6.5.0</version>
+    <time>1594623842</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 6.5.0.
+
+- Update to 6.5.0
+  - Add all new APIs and constants in libvirt 6.5.0</comment>
+    <requestid>819048</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>f9ecf7aaabc6138ad4d0788c94f41b7e</srcmd5>
+    <version>6.6.0</version>
+    <time>1597306425</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 6.6.0.
+
+- Update to 6.6.0
+  - Add all new APIs and constants in libvirt 6.6.0</comment>
+    <requestid>824563</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>ef1d50d188b0b574754daeb89e52431e</srcmd5>
+    <version>6.7.0</version>
+    <time>1599420907</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 6.7.0.
+
+- Update to 6.7.0
+  - Add all new APIs and constants in libvirt 6.7.0
+  - jsc#SLE-14253, jsc#SLE-15159</comment>
+    <requestid>831546</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>616888eeddadaf58921ca3d671b0f445</srcmd5>
+    <version>6.8.0</version>
+    <time>1602155174</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 6.8.0.
+
+- Update to 6.8.0
+  - Add all new APIs and constants in libvirt 6.8.0
+  - jsc#SLE-12684, jsc#SLE-15861</comment>
+    <requestid>839022</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>55935e10874ce866245bed6159f15a8f</srcmd5>
+    <version>6.8.0</version>
+    <time>1602762261</time>
+    <user>dimstar_suse</user>
+    <comment>- fix constructor param name for virDomain{Checkpoint,Snapshot}
+  61341150-fix-constructor-param-name.patch
+  boo#1177559</comment>
+    <requestid>841348</requestid>
+  </revision>
+  <revision rev="40" vrev="3">
+    <srcmd5>ca9021a9f79dd1ab8f347c5071849c9d</srcmd5>
+    <version>6.8.0</version>
+    <time>1604054742</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844156</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>bad92b3b5da10a9bd9fc5942a14dea91</srcmd5>
+    <version>6.9.0</version>
+    <time>1604609584</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 6.9.0. Supersedes req#845544 to
+fix a jira reference in the changelog.
+
+- Update to 6.9.0
+  - Add all new APIs and constants in libvirt 6.9.0
+  - jsc#SLE-13688, jsc#SLE-16754
+  - Dropped patches:
+    61341150-fix-constructor-param-name.patch
+- Add new file _service for tar_scm source service
+- Remove signature file and python-libvirt-python.keyring</comment>
+    <requestid>845550</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>4337874b6a84cbb346321c6d3bfbe429</srcmd5>
+    <version>6.10.0</version>
+    <time>1607196950</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 6.10.0.
+
+- Update to 6.10.0
+  - Add all new APIs and constants in libvirt 6.10.0
+  - jsc#SLE-13688</comment>
+    <requestid>852458</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>ecf791086f78b36a4bbd79eea6f18b69</srcmd5>
+    <version>7.0.0</version>
+    <time>1611348550</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 7.0.0.
+
+- Update to 7.0.0
+  - Add all new APIs and constants in libvirt 7.0.0
+  - jsc#SLE-15860</comment>
+    <requestid>864472</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>785bef97cacec3fe50f6c38fdad7a8a2</srcmd5>
+    <version>7.1.0</version>
+    <time>1614948208</time>
+    <user>RBrownSUSE</user>
+    <comment>Updated python bindings for libvirt 7.1.0.</comment>
+    <requestid>876097</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>464463a4d6f41afcb88b12fa57f95998</srcmd5>
+    <version>7.2.0</version>
+    <time>1617908508</time>
+    <user>RBrownSUSE</user>
+    <comment>Updated python bindings for libvirt 7.2.0.
+
+- Update to 7.2.0
+  - Add all new APIs and constants in libvirt 7.2.0</comment>
+    <requestid>882669</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>64e755f59c840886656891734e318866</srcmd5>
+    <version>7.4.0</version>
+    <time>1622928670</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 7.4.0.
+
+- Update to 7.4.0
+  - Add all new APIs and constants in libvirt 7.4.0
+
+- Update to 7.3.0
+  - Add all new APIs and constants in libvirt 7.3.0</comment>
+    <requestid>896747</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>607b1dc60f3454edbe372575b2ea5b42</srcmd5>
+    <version>7.5.0</version>
+    <time>1625429433</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 7.5.0.
+
+- Update to 7.5.0
+  - Add all new APIs and constants in libvirt 7.5.0</comment>
+    <requestid>903568</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>3a336cbf38bccfcdf5f8084a9e9adce3</srcmd5>
+    <version>7.6.0</version>
+    <time>1628189278</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 7.6.0.
+
+- Update to 7.6.0
+  - Add all new APIs and constants in libvirt 7.6.0
+  - jsc#SLE-18354</comment>
+    <requestid>910190</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>74f315b4ce0bca90233c586ca0a6a285</srcmd5>
+    <version>7.7.0</version>
+    <time>1630787519</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 7.7.0.
+
+- Update to 7.7.0
+  - Add all new APIs and constants in libvirt 7.7.0
+  - jsc#SLE-18446</comment>
+    <requestid>915521</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>cc29e17d9ef1f3b24a4c4aae119791ad</srcmd5>
+    <version>7.8.0</version>
+    <time>1633959036</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 7.8.0.
+
+- Update to 7.8.0
+  - Add all new APIs and constants in libvirt 7.8.0
+  - jsc#SLE-18260</comment>
+    <requestid>922673</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>02c0b3dadbe87322924c9de06c12a018</srcmd5>
+    <version>7.9.0</version>
+    <time>1636218907</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 7.9.0.
+
+- Update to 7.9.0
+  - Add all new APIs and constants in libvirt 7.9.0
+  - jsc#SLE-19264</comment>
+    <requestid>929472</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>891d31352dd37493ff9675dee707eedc</srcmd5>
+    <version>7.10.0</version>
+    <time>1638831543</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 7.10.0.
+
+- Update to 7.10.0
+  - Add all new APIs and constants in libvirt 7.10.0
+  - jsc#SLE-18260, jsc#SLE-19264</comment>
+    <requestid>935260</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>9f4492cea7b51e85c41df862daadac5a</srcmd5>
+    <version>8.0.0</version>
+    <time>1642724703</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 8.0.0.
+
+- Update to 8.0.0
+  - Add all new APIs and constants in libvirt 8.0.0
+  - jsc#SLE-11435, jsc#SLE-18354</comment>
+    <requestid>947280</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>59fd3cbd9b9e62922f7cb16282b5416a</srcmd5>
+    <version>8.1.0</version>
+    <time>1646487836</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 8.1.0.
+
+- Update to 8.1.0
+  - Add all new APIs and constants in libvirt 8.1.0</comment>
+    <requestid>959276</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>b1eea235d9cfe7c87040348afb36d05f</srcmd5>
+    <version>8.2.0</version>
+    <time>1649181471</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 8.2.0.
+
+- Update to 8.2.0
+  - Add all new APIs and constants in libvirt 8.2.0</comment>
+    <requestid>966488</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>6326194e7c80276e22776081f99ec5bc</srcmd5>
+    <version>8.3.0</version>
+    <time>1652389050</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 8.3.0.
+
+- Update to 8.3.0
+  - Add all new APIs and constants in libvirt 8.3.0</comment>
+    <requestid>975933</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>c0ceb577bee96f5ab68eb497ae2c6c0e</srcmd5>
+    <version>8.4.0</version>
+    <time>1654258532</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 8.4.0.
+
+- Update to 8.4.0
+  - Add all new APIs and constants in libvirt 8.4.0</comment>
+    <requestid>980404</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>69f32cc6d0200917a7ea69c550370924</srcmd5>
+    <version>8.5.0</version>
+    <time>1657191397</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 8.5.0.
+
+- Update to 8.5.0
+  - Add all new APIs and constants in libvirt 8.5.0</comment>
+    <requestid>987262</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>3e6c997109797fcd901df7fd993337e0</srcmd5>
+    <version>8.6.0</version>
+    <time>1659612170</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 8.6.0.
+
+- Update to 8.6.0
+  - Add all new APIs and constants in libvirt 8.6.0</comment>
+    <requestid>992408</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>07d246402cd46e98c46c8570ba815048</srcmd5>
+    <version>8.7.0</version>
+    <time>1662239910</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 8.7.0.
+
+- Update to 8.7.0
+  - Add all new APIs and constants in libvirt 8.7.0
+  - jsc#PED-620, jsc#PED-1540</comment>
+    <requestid>1000756</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>9bd86b2ddf5bab661883110c1af8cf5e</srcmd5>
+    <version>8.8.0</version>
+    <time>1665420261</time>
+    <user>favogt_factory</user>
+    <comment>Updated python bindings for libvirt 8.8.0.
+
+- Update to 8.8.0
+  - Add all new APIs and constants in libvirt 8.8.0
+  - jsc#PED-620, jsc#PED-1540</comment>
+    <requestid>1008289</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>0593e819deba7393143552e0cb8e20ff</srcmd5>
+    <version>8.9.0</version>
+    <time>1667579492</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 8.9.0.
+
+- Update to 8.9.0
+  - Add all new APIs and constants in libvirt 8.9.0
+  - jsc#PED-620, jsc#PED-1540</comment>
+    <requestid>1032949</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>8df82dd7296c1f4af64a5960ba0c5c99</srcmd5>
+    <version>8.10.0</version>
+    <time>1670430845</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 8.10.0
+
+- Update to 8.10.0
+  - Add all new APIs and constants in libvirt 8.10.0
+  - jsc#PED-1472</comment>
+    <requestid>1040372</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>1e9256d7c8bfff24e5fb125b99fab83e</srcmd5>
+    <version>9.0.0</version>
+    <time>1674664943</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 9.0.0
+
+- Update to 9.0.0
+  - Add all new APIs and constants in libvirt 9.0.0
+  - jsc#PED-620</comment>
+    <requestid>1060521</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>67d438aee2edd9c629169560fc9f3ab7</srcmd5>
+    <version>9.1.0</version>
+    <time>1678283533</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 9.1.0
+
+- Update to 9.1.0
+  - Add all new APIs and constants in libvirt 9.1.0</comment>
+    <requestid>1069759</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>ffd2802858df8e343ba9eec8adcf873a</srcmd5>
+    <version>9.2.0</version>
+    <time>1680789335</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 9.2.0
+
+- Update to 9.2.0
+  - Add all new APIs and constants in libvirt 9.2.0</comment>
+    <requestid>1077095</requestid>
+  </revision>
+  <revision rev="67" vrev="2">
+    <srcmd5>9fe90ff5e170c13dd674bbc539bbf2f0</srcmd5>
+    <version>9.2.0</version>
+    <time>1682691784</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1083309</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>a7d31468e6c875b618ae6a4db594ef5d</srcmd5>
+    <version>9.3.0</version>
+    <time>1683111370</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 9.3.0.
+
+- Update to 9.3.0
+  - Add all new APIs and constants in libvirt 9.3.0</comment>
+    <requestid>1084111</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>bef678a179299b0e4502c0d117b8bc61</srcmd5>
+    <version>9.4.0</version>
+    <time>1685889693</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 9.4.0.
+
+- Update to 9.4.0
+  - Add all new APIs and constants in libvirt 9.4.0</comment>
+    <requestid>1090562</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>f472944775cf6da12353e56fff29694e</srcmd5>
+    <version>9.5.0</version>
+    <time>1689455698</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 9.5.0.
+
+- Update to 9.5.0
+  - Add all new APIs and constants in libvirt 9.5.0</comment>
+    <requestid>1098575</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>eef8f9a3cea84dad4724e2ce651c164c</srcmd5>
+    <version>9.6.0</version>
+    <time>1691332164</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 9.6.0
+
+- Update to 9.6.0
+  - Add all new APIs and constants in libvirt 9.6.0
+  - jsc#PED-3725</comment>
+    <requestid>1102419</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>0f920ba3c70521ab7db54fa6930d1a32</srcmd5>
+    <version>9.7.0</version>
+    <time>1694344192</time>
+    <user>anag+factory</user>
+    <comment>Updated python bindings for libvirt 9.7.0.
+
+- Update to 9.7.0
+  - Add all new APIs and constants in libvirt 9.7.0
+  - jsc#PED-3279</comment>
+    <requestid>1109744</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>1fc8d301fed93511c11ad1f44c24ca7b</srcmd5>
+    <version>9.8.0</version>
+    <time>1696451427</time>
+    <user>anag+factory</user>
+    <comment>Updated python bindings for libvirt 9.8.0
+
+- Update to 9.8.0
+  - Add all new APIs and constants in libvirt 9.8.0
+  - jsc#PED-3279</comment>
+    <requestid>1114876</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>ca8b1f07a853210e2c1ff49a75ad20e4</srcmd5>
+    <version>9.9.0</version>
+    <time>1699046371</time>
+    <user>anag+factory</user>
+    <comment>Updated python bindings for libvirt 9.9.0.
+
+- Update to 9.9.0
+  - Add all new APIs and constants in libvirt 9.9.0
+  - jsc#PED-3279, jsc#PED-4931, jsc#PED-5432</comment>
+    <requestid>1122959</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>c028a2040bf99074e6b8bc82600c991f</srcmd5>
+    <version>9.10.0</version>
+    <time>1702158590</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 9.10.0
+
+- Update to 9.10.0
+  - Add all new APIs and constants in libvirt 9.10.0
+  - jsc#PED-3226, jsc#PED-3279, jsc#PED-4931, jsc#PED-5432,
+    jsc#PED-6851</comment>
+    <requestid>1132177</requestid>
+  </revision>
+</revisionlist>

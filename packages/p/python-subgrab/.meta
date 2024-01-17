@@ -1,0 +1,8 @@
+<package name="python-subgrab" project="openSUSE:Factory">
+  <title>Script to download subtitles for media files</title>
+  <description>A script that allows to download subtitles for TV-Series, Anime and Movies from
+subscene and other sites.
+
+</description>
+  <devel project="devel:languages:python" package="python-subgrab"/>
+</package>

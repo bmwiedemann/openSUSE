@@ -1,0 +1,5 @@
+<package name="AppCSXCAD" project="openSUSE:Factory">
+  <title></title>
+  <description>Minimal GUI Application using the QCSXCAD library.</description>
+  <devel project="science" package="AppCSXCAD"/>
+</package>

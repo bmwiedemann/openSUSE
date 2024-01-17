@@ -1,0 +1,8 @@
+<package name="kamoso" project="openSUSE:Factory">
+  <title>Kamoso</title>
+  <description>Kamoso is an application you can use to take pictures and videos with your webcam.
+
+It also lets you to push the media to some web 2.0 services such as Facebook and Youtube.
+</description>
+  <devel project="KDE:Applications" package="kamoso"/>
+</package>

@@ -1,0 +1,28 @@
+Source: gromox
+Priority: optional
+Section: mail
+Maintainer: Gromox <null@gromox.com>
+Standards-Version: 4.5.0
+Build-Depends: debhelper-compat (= 12)
+
+Package: gromox
+Architecture: any
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends},
+ php-cli, php-fpm, php-mysql, php-simplexml, php-soap,
+ system-user-grommunio, system-user-gromox, w3m,
+ libhx32 (>= 4.12)
+Provides: php-mapi-gromox
+Description: Groupware server (backend) with RPCH, IMAP and Z-MAPI support
+ .
+ Gromox is the central groupware server component of grommunio. It is
+ capable of serving as a replacement for Microsoft Exchange and
+ compatibles. Connectivity options include Outlook Anywhere
+ (RPC-over-HTTP), IMAP/POP3, an SMTP-speaking LDA, and a PHP module
+ with a Z-MAPI function subset.
+ .
+ Gromox relies on other components to provide a sensibly complete
+ mail system, such as Postfix as a mail transfer agent, and
+ grommunio-admin for user management. A web interface is available with
+ grommunio-web. The grommunio distribution ships these essentials and has a
+ ready-to-run installation of Gromox.

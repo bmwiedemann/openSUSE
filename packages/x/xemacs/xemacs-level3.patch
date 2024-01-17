@@ -1,0 +1,76 @@
+Index: xemacs-21.5.29/src/event-Xt.c
+===================================================================
+--- xemacs-21.5.29.orig/src/event-Xt.c
++++ xemacs-21.5.29/src/event-Xt.c
+@@ -515,8 +515,17 @@ x_key_is_modifier_p (KeyCode keycode, st
+   syms = &xd->x_keysym_map [(keycode - xd->x_keysym_map_min_code) *
+ 			   xd->x_keysym_map_keysyms_per_code];
+   for (i = 0; i < xd->x_keysym_map_keysyms_per_code; i++)
+-    if (IsModifierKey (syms [i]) ||
+-	syms [i] == XK_Mode_switch) /* why doesn't IsModifierKey count this? */
++    if (IsModifierKey(syms[i])
++#ifdef XK_Mode_switch
++	 ||  syms[i] == XK_Mode_switch /* why doesn't IsModifierKey count this? */
++#endif
++#ifdef XK_Num_Lock
++	 ||  syms[i] == XK_Num_Lock
++#endif
++#if defined XK_ISO_Lock && defined XK_ISO_Last_Group_Lock
++	 || (syms[i] >= XK_ISO_Lock && syms[i] <= XK_ISO_Last_Group_Lock)
++#endif
++      )
+       return 1;
+   return 0;
+ }
+@@ -872,8 +881,17 @@ x_to_emacs_keysym (XKeyPressedEvent *eve
+       char dummy[256];
+       XLookupString (event, dummy, 200, &keysym, 0);
+       *x_keysym_out = keysym;
+-      return (IsModifierKey (keysym) || keysym == XK_Mode_switch )
+-	? Qnil : x_keysym_to_emacs_keysym (keysym, simple_p);
++      return (IsModifierKey (keysym)
++#ifdef XK_Mode_switch
++	|| keysym == XK_Mode_switch
++#endif
++#ifdef XK_Num_Lock
++	|| keysym == XK_Num_Lock
++#endif
++#if defined XK_ISO_Lock && defined XK_ISO_Last_Group_Lock
++	|| (keysym >= XK_ISO_Lock && keysym <= XK_ISO_Last_Group_Lock)
++#endif
++	) ? Qnil : x_keysym_to_emacs_keysym (keysym, simple_p);
+     }
+ #endif /* ! XIM_MOTIF */
+ 
+@@ -932,8 +950,17 @@ x_to_emacs_keysym (XKeyPressedEvent *eve
+     case XLookupKeySym:
+     case XLookupBoth:
+       *x_keysym_out = keysym;
+-      return (IsModifierKey (keysym) || keysym == XK_Mode_switch )
+-	? Qnil : x_keysym_to_emacs_keysym (keysym, simple_p);
++      return (IsModifierKey (keysym)
++#ifdef XK_Mode_switch
++	|| keysym == XK_Mode_switch
++#endif
++#ifdef XK_Num_Lock
++	|| keysym == XK_Num_Lock
++#endif
++#if defined XK_ISO_Lock && defined XK_ISO_Last_Group_Lock
++	|| (keysym >= XK_ISO_Lock && keysym <= XK_ISO_Last_Group_Lock)
++#endif
++	) ? Qnil : x_keysym_to_emacs_keysym (keysym, simple_p);
+ 
+     case XLookupChars:
+       {
+Index: xemacs-21.5.29/src/xintrinsic.h
+===================================================================
+--- xemacs-21.5.29.orig/src/xintrinsic.h
++++ xemacs-21.5.29/src/xintrinsic.h
+@@ -22,6 +22,7 @@ Boston, MA 02111-1307, USA.  */
+ #ifndef INCLUDED_xintrinsic_h_
+ #define INCLUDED_xintrinsic_h_
+ 
++#include <X11/keysym.h>
+ #include <X11/Intrinsic.h>
+ 
+ #endif /* INCLUDED_xintrinsic_h_ */

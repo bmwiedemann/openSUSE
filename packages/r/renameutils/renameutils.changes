@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Mon Mar 22 23:20:44 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add Conflicts against imv, since it provides the same binary name as one
+  of ours.
+
+-------------------------------------------------------------------
+Mon Mar 22 00:16:18 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Initial release of 0.12.0
+ 

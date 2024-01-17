@@ -1,0 +1,37 @@
+-------------------------------------------------------------------
+Sun Jan  7 18:02:13 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to 1.6.1:
+  Changelog for Talos 1.6.1 is here:
+  https://github.com/siderolabs/talos/releases/tag/v1.6.1
+  Apparently no changes regarding the CLI
+
+-------------------------------------------------------------------
+Fri Dec 15 11:52:32 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.6.0:
+  Changelog for Talos 1.6.0 is here:
+  https://github.com/siderolabs/talos/releases/tag/v1.6.0
+  Changes for the CLI:
+  * The command 'images' deprecated in Talos 1.5 was removed,
+    please use 'talosctl images default' instead.
+
+-------------------------------------------------------------------
+Thu Nov 09 14:49:20 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.5.5:
+  * release(v1.5.5): prepare release
+  * fix: don't validate machine.install if installed
+  * fix: when writing to META in the installer/imager, use fixed
+    name
+  * fix: fix error output of cli action tracker
+  * feat: update etcd to 3.5.10
+  * chore: bump go-api-signature dependency to v0.3.1
+  * fix: make Talos work on Rockpi 4c boards again
+  * feat: update Go 1.20.11, Linux 6.1.61, Kubernetes 1.28.3
+  * fix: update gRPC library to 1.57.2
+
+-------------------------------------------------------------------
+Mon Jul 17 07:23:27 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package talosctl

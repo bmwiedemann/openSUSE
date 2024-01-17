@@ -1,0 +1,226 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ff174bb0d77688068206f3958a149525</srcmd5>
+    <version>17.0.0.0~35</version>
+    <time>1629917866</time>
+    <user>dimstar_suse</user>
+    <comment>OpenJDK 17 Release candidate</comment>
+    <requestid>913673</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>98d13ce7397811ad0481209f28f2bdc8</srcmd5>
+    <version>17.0.0.0</version>
+    <time>1631646890</time>
+    <user>dimstar_suse</user>
+    <comment>jdk-17+35 is the official OpenJDK 17</comment>
+    <requestid>918965</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>5849c99cd1397f0b6933c29bc80c8673</srcmd5>
+    <version>17.0.0.0</version>
+    <time>1631913957</time>
+    <user>dimstar_suse</user>
+    <comment>revert NSS changes + other way to support FIPS mode</comment>
+    <requestid>919651</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>a8bfd38851caa36082486cd71d8db4c9</srcmd5>
+    <version>17.0.0.0</version>
+    <time>1632173605</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with glibc 2.34</comment>
+    <requestid>920320</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1555618c0c922c49b57ce1e062d3cc13</srcmd5>
+    <version>17.0.1.0</version>
+    <time>1634943076</time>
+    <user>dimstar_suse</user>
+    <comment>October 2021 CPU</comment>
+    <requestid>926869</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>20bc429ad7248524e9059f2180683e4a</srcmd5>
+    <version>17.0.1.0</version>
+    <time>1636388663</time>
+    <user>dimstar_suse</user>
+    <comment>Rediff patches + fix in FIPS mode</comment>
+    <requestid>929873</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a5f2851b026fcace7e572e7600766c08</srcmd5>
+    <version>17.0.2.0</version>
+    <time>1644007762</time>
+    <user>dimstar_suse</user>
+    <comment>January 2022 CPU</comment>
+    <requestid>951534</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>a850a3d31fea24ba55f65a713c61cd27</srcmd5>
+    <version>17.0.2.0</version>
+    <time>1647806127</time>
+    <user>dimstar_suse</user>
+    <comment>try to disable the doclint for real</comment>
+    <requestid>963173</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>b53197ec3b921743fe1f3db1b08db787</srcmd5>
+    <version>17.0.2.0</version>
+    <time>1647974382</time>
+    <user>dimstar_suse</user>
+    <comment>Fix an exception in javadoc generation</comment>
+    <requestid>963792</requestid>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>bef03e44c81fdfeb8592e8cf394ed85b</srcmd5>
+    <version>17.0.2.0</version>
+    <time>1648241710</time>
+    <user>dimstar_suse</user>
+    <comment>Make this one to be stronger alternative then java-11-openjdk on Factory</comment>
+    <requestid>964938</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>aa914e7c8f3d9357473d18f617944d7f</srcmd5>
+    <version>17.0.3.0</version>
+    <time>1650666290</time>
+    <user>dimstar_suse</user>
+    <comment>April 2022 CPU</comment>
+    <requestid>971165</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>82e15d3fe4350b884dc0cf81edc9be8e</srcmd5>
+    <version>17.0.4.0</version>
+    <time>1658857384</time>
+    <user>RBrownFactory</user>
+    <comment>July 2022 CPU</comment>
+    <requestid>990579</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>a2f22b2b21db4f425a9fdbd89d8cfc62</srcmd5>
+    <version>17.0.4.0</version>
+    <time>1663515114</time>
+    <user>dimstar_suse</user>
+    <comment>boo#1203476</comment>
+    <requestid>1004356</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>3aedd17f98d6374c937dda13490dec43</srcmd5>
+    <version>17.0.5.0</version>
+    <time>1666440748</time>
+    <user>dimstar_suse</user>
+    <comment>October 2022 CPU</comment>
+    <requestid>1030387</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>a0e5dd99a5b94dd6548e333367e59fac</srcmd5>
+    <version>17.0.5.0</version>
+    <time>1667499184</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032778</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>1d3f20916840f5a5c8520685cdd1aa2d</srcmd5>
+    <version>17.0.5.0</version>
+    <time>1670588203</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1205916</comment>
+    <requestid>1041636</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>c9dfa0a40d17c89e044f486fd0ee5ec2</srcmd5>
+    <version>17.0.6.0</version>
+    <time>1675956087</time>
+    <user>dimstar_suse</user>
+    <comment>January 2023 CPU fixes</comment>
+    <requestid>1063568</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>52741c6c6c1d3390817a63b6985a0bb2</srcmd5>
+    <version>17.0.6.0</version>
+    <time>1676401676</time>
+    <user>dimstar_suse</user>
+    <comment>Follow-up fixes</comment>
+    <requestid>1065429</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>3e404863d7aa840480278d70ddd3e03a</srcmd5>
+    <version>17.0.6.0</version>
+    <time>1676911513</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1205916</comment>
+    <requestid>1066517</requestid>
+  </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>918440b2af9971a58cb49b846a560326</srcmd5>
+    <version>17.0.6.0</version>
+    <time>1677683644</time>
+    <user>dimstar_suse</user>
+    <comment>Mess-up with bug number</comment>
+    <requestid>1068366</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>59ad1e75e2d8d0703bd60caa52dd2d96</srcmd5>
+    <version>17.0.7.0</version>
+    <time>1682618379</time>
+    <user>dimstar_suse</user>
+    <comment>April 2023 CPU</comment>
+    <requestid>1083018</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>12472e68c6140d58232a9dad662bc10d</srcmd5>
+    <version>17.0.7.0</version>
+    <time>1683916345</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1210392 and bsc#1211259</comment>
+    <requestid>1086543</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>8ffacceac8f6c70966ed13110f031a35</srcmd5>
+    <version>17.0.7.0</version>
+    <time>1685124890</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1211679</comment>
+    <requestid>1088910</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>c712bd3329709779a8b6ddf875e8a7bd</srcmd5>
+    <version>17.0.8.0</version>
+    <time>1690370509</time>
+    <user>anag+factory</user>
+    <comment>July 2023 CPU</comment>
+    <requestid>1100540</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>8b12d925a6345975b6c84abb2be0042a</srcmd5>
+    <version>17.0.8.0</version>
+    <time>1691845568</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1103533</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>caddb2e9f9f344f5e75a9b279c985b6a</srcmd5>
+    <version>17.0.8.1</version>
+    <time>1693235475</time>
+    <user>anag+factory</user>
+    <comment>Emergency regresion fix after July 2023 CPU</comment>
+    <requestid>1105440</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>0138263352cd9747b472819759c182d0</srcmd5>
+    <version>17.0.8.1</version>
+    <time>1695664852</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1112714</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>1ea18550b0c4fd56d41553b81b749249</srcmd5>
+    <version>17.0.9.0</version>
+    <time>1698001285</time>
+    <user>anag+factory</user>
+    <comment>October 2023 CPU</comment>
+    <requestid>1119127</requestid>
+  </revision>
+</revisionlist>

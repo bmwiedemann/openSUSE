@@ -1,0 +1,47 @@
+Index: ibdm/ibdm/LinkCover.cpp
+===================================================================
+--- ibdm/ibdm/LinkCover.cpp.orig	2010-02-24 11:09:24.000000000 +0100
++++ ibdm/ibdm/LinkCover.cpp	2012-09-11 14:15:24.543496998 +0200
+@@ -270,7 +270,7 @@ cleanupFdbForwardPortLidTables(
+     short int *outPortUsed = (*I).second;
+     free(outPortUsed);
+   }
+-
++  return (0);
+ }
+ 
+ // Linear program does not interest me now...
+@@ -543,6 +543,7 @@ cleanUpNodeMarkings(map_pnode_p_sint &sw
+       outPortUsed[pIdx] = 0;
+     }
+   }
++  return (0);
+ }
+ 
+ //////////////////////////////////////////////////////////////////////////////
+Index: ibdm/ibdm/TopoMatch.cpp
+===================================================================
+--- ibdm/ibdm/TopoMatch.cpp.orig	2010-11-02 00:03:44.000000000 +0100
++++ ibdm/ibdm/TopoMatch.cpp	2012-09-11 14:16:48.679485155 +0200
+@@ -676,6 +676,8 @@ TopoMatchSpecNodesByAdjacentNode(IBFabri
+     for( list < IBNode *>::iterator nI = unMatchedWithAdjacentMatched.begin();
+             nI != unMatchedWithAdjacentMatched.end(); nI++)
+         numMatched += TopoMatchNodeByAdjacentMatched(*nI);
++
++    return numMatched;
+ }
+ 
+ 
+Index: ibdm/ibdm/CredLoops.cpp
+===================================================================
+--- ibdm/ibdm/CredLoops.cpp.orig	2010-11-02 00:03:44.000000000 +0100
++++ ibdm/ibdm/CredLoops.cpp	2012-09-11 14:15:24.544496974 +0200
+@@ -484,7 +484,7 @@ CrdLoopPrepare(IBFabric *p_fabric)
+ }
+ 
+ // Cleanup the data model
+-int
++void
+ CrdLoopCleanup(IBFabric *p_fabric)
+ {
+     unsigned int lidStep = 1 << p_fabric->lmc;

@@ -1,0 +1,248 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>79c5f2d2cd3b20aeca8713c55c8eb89b</srcmd5>
+    <version>4.5.25</version>
+    <time>1632849389</time>
+    <user>dimstar_suse</user>
+    <comment>removed baselib.conf</comment>
+    <requestid>921869</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>cefd29fa15995f38175567f492592081</srcmd5>
+    <version>5.0.36</version>
+    <time>1635801661</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.0.36:
+  * Use UTF8 instead of locale in chat message modifiers`
+  * Fix bad chat room when creating a call
+  * Crash on ec-calibration : Use tone sent callback only on MS_DTMF_GEN_EVENT
+  * Added missing conference APIs
+  * Play ring tone only if tone indications are enabled
+  * Fix tonemanager on infinite rings and wrong ring type
+  * fix crash of kickOffConnectivity
+  * Add option to deactivate potentially weak digest authentication schemes
+  * Fix issue when receiving an INVITE with ICE and rtcp-mux
+  * Fix call repair in case of multi account
+  * Fix regression with ICE not setting candidates correctly for completed check-lists
+  * Improve reliability of account creation by increasing account creation timeout to 30s
+  * Change contact address if call in IncomingReceived state is added to conference
+  * fix crash when session refresh after BYE received
+  * Repair streaming from file feature of AudioStream/VideoStream
+  * Fixed error logs showing CoreManager's core being const
+  * Logging facility optimization
+  * Fix bug with ChatRoomParams::isGroup() erroneously returning true for some basic chatrooms
+  * Count unread chat messages in all Chat Rooms with a weak address testing
+  * avoid to downgrade chat message participant state and add unitest
+  * Stop audio stream when setting new device
+    This fix allow changing device on Desktop while ringback
+  * Audio : Allow setting NULL device (case of no cards available)
+  * Fixed call to content.isFileEncrypted() on a FileTransferContent
+  * Fixed mic gain
+- Update to 5.0.0:
+  * Support of Capability Negociation framework - RFC5939
+    limited to media encryption choice (None, SRTP, DTLS-SRTP, ZRTP)
+  * New API to manage SIP accounts: LinphoneAccount and LinphoneAccountParams
+    replacing LinphoneProxyConfig which is now deprecated.
+    LinphoneProxyConfig remains fully usable for backward compatibility with previous version.
+  * New implementation of LinphoneAccountCreator relying on http REST API.
+  * Added LDAP contact provider API integrated with LinphoneMagicSearch
+  * Added asynchronous API to the LinphoneMagicSearch API (for contact searching).
+  * Fixed erroneous ICE ufrag and passwd parameters sent in reINVITE while ICE
+    was refused previously.
+  * Fixed swift and C# wrappers corner-case usage issues.
+- Build and use Belledonne's version of libldap
+- delete build-liblinphone4-with-mediastreamer5.patch
+- add linphone-build-jsoncpp.patch
+- add BuildRequires:  jsoncpp-devel
+</comment>
+    <requestid>928579</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>aff3e8633fd1da4c46ab69a5343a3778</srcmd5>
+    <version>5.0.49</version>
+    <time>1637108013</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>931480</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>99ed9e68859c745fecc1d18a812f61ca</srcmd5>
+    <version>5.0.53</version>
+    <time>1638131413</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>934342</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>534a9e52c54a7a217e1e51bba39932b8</srcmd5>
+    <version>5.0.67</version>
+    <time>1643838067</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.0.67:
+  * Fix linphone_core_enable_mic() not working for a local conference
+  * Fix stream direction in remote params
+  * fix start srtp dtls immediately
+  * Fix non-working tunnel for incoming calls made without ICE
+  * Keep ringing audio focus for incoming early media call as soundcard will use RING modei
+  * Avoid notify ringing of in IncomingEarlyMedia state in order to not send 180 after 183
+  * Write down call decline reasons into test
+  * Added config setting to disable audio focus requests
+  * Fix issue when soundcard may not be used after early media when handling multiple calls
+  * Do not connect audio to conference during early media
+  * fix crash get address when participants list is empty
+  * enable mic by default
+- fix license tag
+</comment>
+    <requestid>950590</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f6fd8b64c222dca1d00bec113b7b2bff</srcmd5>
+    <version>5.0.70</version>
+    <time>1646848035</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>960238</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>c08f033768740dc8592db112b738dd9c</srcmd5>
+    <version>5.0.70</version>
+    <time>1650657307</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>972189</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>fea31c1d3de5606d224e06524d36d59d</srcmd5>
+    <version>5.0.70</version>
+    <time>1651180087</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>973559</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c0a0072abdb0dd77c8967489b8571dfa</srcmd5>
+    <version>5.1.24</version>
+    <time>1652561828</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>977249</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b8f7c7e534b1a42a70fad8e76cf40f6e</srcmd5>
+    <version>5.1.42</version>
+    <time>1655396405</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>982690</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5325570e1ff9101413ac166bb764d8e4</srcmd5>
+    <version>5.1.48</version>
+    <time>1658510480</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>990605</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b16aba810a669472c8ccba30a761776c</srcmd5>
+    <version>5.1.58</version>
+    <time>1668782669</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1036601</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>049179da61989057fc1b4a9fd00dd760</srcmd5>
+    <version>5.2.10</version>
+    <time>1673973299</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.2.10:
+  * Video conferencing feature with &quot;mosaic&quot; and &quot;active speaker + thumbnails&quot; layouts
+  * Added conferencing scheduling API
+  * Support for post-quantum robust encryption for ZRTP calls
+  * Rtp bundle can be enabled per LinphoneAccount
+  * New APIs on Friend object to be able to set more info
+  * QRCode image generation
+  * Licence becomes AGPLv3
+</comment>
+    <requestid>1058089</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>15e36b841e47bc2bc9ad365b30308ab2</srcmd5>
+    <version>5.2.10</version>
+    <time>1675792175</time>
+    <user>dimstar_suse</user>
+    <comment>-Disable QRCode image generation for tumbleweed
+  * liblinphone is not currently compatible with zxing-cpp 2.0.0
+</comment>
+    <requestid>1063537</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>0a4d980337db1be566e91222e654dc47</srcmd5>
+    <version>5.2.50</version>
+    <time>1685212663</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1089251</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>1732cd6cc5c438079f7152d2bbc9a238</srcmd5>
+    <version>5.2.75</version>
+    <time>1691414959</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1102633</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>478ca92cd1f6efed9d0d6ce96b505e11</srcmd5>
+    <version>5.2.98</version>
+    <time>1693235823</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.2.98 (no changelog)
+- Drop the manual, since it's very outdated and has been replaced with 
+  an online Wiki.
+</comment>
+    <requestid>1106252</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>a61f64148537fa4c5cb28cdcc9bced7a</srcmd5>
+    <version>5.2.98</version>
+    <time>1694019447</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1109049</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>f1b5175ff81a58adaa72273fb5c8f292</srcmd5>
+    <version>5.2.98</version>
+    <time>1697390899</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1117877</requestid>
+  </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>fba7a69345d735df4a5cc32c98d7d0b3</srcmd5>
+    <version>5.2.98</version>
+    <time>1698438553</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1120808</requestid>
+  </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>f1584a0063fd426aeb9a8565cdf8365b</srcmd5>
+    <version>5.2.98</version>
+    <time>1699183157</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1123314</requestid>
+  </revision>
+  <revision rev="22" vrev="6">
+    <srcmd5>449ef26d6411adc5e8e2b7da92ef1518</srcmd5>
+    <version>5.2.98</version>
+    <time>1703281309</time>
+    <user>anag+factory</user>
+    <comment>- Add missing deps on TW.
+</comment>
+    <requestid>1134592</requestid>
+  </revision>
+</revisionlist>

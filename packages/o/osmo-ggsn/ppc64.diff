@@ -1,0 +1,17 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2023-05-18 16:11:05.927027347 +0200
+Upstream: not submitted, too much work
+
+diff --git a/utils/gtp_echo_responder.c b/utils/gtp_echo_responder.c
+index 390fa25..3c383c2 100644
+--- a/utils/gtp_echo_responder.c
++++ b/utils/gtp_echo_responder.c
+@@ -80,7 +80,7 @@ struct gtp2_hdr {
+ #if __BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__
+ 	uint32_t reserved2:8, seq:24;
+ #else
+-	uint8_t seq:24, reserved2:1;
++	uint32_t seq:24, reserved2:8;
+ #endif
+ } __attribute__((packed));
+ 

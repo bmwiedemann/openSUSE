@@ -1,0 +1,48 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>82ff25714e708cf8421bdbfda235c759</srcmd5>
+    <version>0.17</version>
+    <time>1510960814</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.17
+- Converted to single-spec
+- Fixed source URL
+- Initial package (0.16) 
+</comment>
+    <requestid>541271</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>bb2682d787904b135d5f348b01172820</srcmd5>
+    <version>0.17</version>
+    <time>1545648296</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659703</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>1966c45effabdf0903adac8390765c77</srcmd5>
+    <version>0.17</version>
+    <time>1571210160</time>
+    <user>dimstar_suse</user>
+    <comment>Replace %fdupes -s with plain %fdupes; hardlinks are better.</comment>
+    <requestid>738402</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>5f33376b74e514bd12b58aca89e186b5</srcmd5>
+    <version>0.17</version>
+    <time>1589993070</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>807159</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9d0ba8d9594535ba2fe3e6e48161c111</srcmd5>
+    <version>1.0.4</version>
+    <time>1591863148</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.4:
+  * No changelog.
+- URL changed to a tarball.</comment>
+    <requestid>813362</requestid>
+  </revision>
+</revisionlist>

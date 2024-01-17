@@ -1,0 +1,174 @@
+<revisionlist>
+  <revision rev="1" vrev="352">
+    <srcmd5>9bfce43c6f20402a88e93af6d59fd9c9</srcmd5>
+    <version>1.4</version>
+    <time>1168902367</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="443">
+    <srcmd5>43adf1473bc7f3055aaaa1e22e1f882d</srcmd5>
+    <version>1.4</version>
+    <time>1209201950</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="474">
+    <srcmd5>43adf1473bc7f3055aaaa1e22e1f882d</srcmd5>
+    <version>1.4</version>
+    <time>1209201950</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="475">
+    <srcmd5>4795738b38be48ce3868ce08dc5759f7</srcmd5>
+    <version>1.4</version>
+    <time>1223907415</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="476">
+    <srcmd5>6190c8306ddd298d151d5616bc52c1ac</srcmd5>
+    <version>1.4</version>
+    <time>1251297486</time>
+    <user>autobuild</user>
+    <comment>Copy from filesystems/bonnie based on submit request 18751 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="6" vrev="477">
+    <srcmd5>ba53fc54d2d4b092d00462dd2cb13f94</srcmd5>
+    <version>1.4</version>
+    <time>1251749925</time>
+    <user>autobuild</user>
+    <comment>Copy from filesystems/bonnie based on submit request 19290 from user coolo
+</comment>
+  </revision>
+  <revision rev="7" vrev="479">
+    <srcmd5>ba53fc54d2d4b092d00462dd2cb13f94</srcmd5>
+    <version>1.4</version>
+    <time>1251749925</time>
+    <user>autobuild</user>
+    <comment>Copy from filesystems/bonnie based on submit request 19290 from user coolo
+</comment>
+  </revision>
+  <revision rev="8" vrev="480">
+    <srcmd5>c2abd6ac9806a181ac65c141440fa594</srcmd5>
+    <version>1.4</version>
+    <time>1268923099</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="482">
+    <srcmd5>c2abd6ac9806a181ac65c141440fa594</srcmd5>
+    <version>1.4</version>
+    <time>1278667338</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="483">
+    <srcmd5>c2abd6ac9806a181ac65c141440fa594</srcmd5>
+    <version>1.4</version>
+    <time>1278678565</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="486">
+    <srcmd5>c2abd6ac9806a181ac65c141440fa594</srcmd5>
+    <version>1.4</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="487">
+    <srcmd5>39c047154da6a5a2243b434f27655dbb</srcmd5>
+    <version>1.4</version>
+    <time>1316616836</time>
+    <user>saschpe</user>
+    <comment>- disable ctcs for &gt; 11.4, not available
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build</comment>
+    <requestid>84021</requestid>
+  </revision>
+  <revision rev="13" vrev="489">
+    <srcmd5>39c047154da6a5a2243b434f27655dbb</srcmd5>
+    <version>1.4</version>
+    <time>1319181791</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="490">
+    <srcmd5>e227104deed8e5872a472822bee4441f</srcmd5>
+    <version>1.4</version>
+    <time>1323190870</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="15" vrev="476">
+    <srcmd5>5a668c9ce52124f39238b409d73edb5f</srcmd5>
+    <version>1.5</version>
+    <time>1331324506</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>108544</requestid>
+  </revision>
+  <revision rev="16" vrev="478">
+    <srcmd5>5a668c9ce52124f39238b409d73edb5f</srcmd5>
+    <version>1.5</version>
+    <time>1340183209</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="480">
+    <srcmd5>5a668c9ce52124f39238b409d73edb5f</srcmd5>
+    <version>1.5</version>
+    <time>1359108710</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="482">
+    <srcmd5>5a668c9ce52124f39238b409d73edb5f</srcmd5>
+    <version>1.5</version>
+    <time>1379662047</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="484">
+    <srcmd5>5a668c9ce52124f39238b409d73edb5f</srcmd5>
+    <version>1.5</version>
+    <time>1409300574</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="485">
+    <srcmd5>1755381933020bfc9f2d9f0a98819f94</srcmd5>
+    <version>1.5</version>
+    <time>1429346347</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>297165</requestid>
+  </revision>
+  <revision rev="21" vrev="486">
+    <srcmd5>564a29aefe172961515d2ff5a70c4beb</srcmd5>
+    <version>1.5</version>
+    <time>1467541663</time>
+    <user>dimstar_suse</user>
+    <comment>- Use url for source
+- Tiny spec file cleanups</comment>
+    <requestid>405686</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>24543d58653dad756d27171ff3542e3c</srcmd5>
+    <version>1.6</version>
+    <time>1573045520</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not use download url anymore
+
+- Remove obsolete Groups tag (fate#326485)
+
+- bonnie-fix-o_direct.diff: Don't use O_DIRECT for character input,
+  as newer kernels don't allow this.
+
+- Update to bonnie-1.6:
+  * Use 16 threads by default
+  * Smaller 4k reads (seeking)
+  * Larger blocks in intelligent read/write
+  * Smaller I/O size for char in/out
+  * More digits for formatting.</comment>
+    <requestid>745342</requestid>
+  </revision>
+</revisionlist>

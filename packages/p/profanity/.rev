@@ -1,0 +1,619 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1c8bacd9714b91630cefa6ff50221945</srcmd5>
+    <version>0.4.6</version>
+    <time>1436734371</time>
+    <user>coolo</user>
+    <comment>profanity is a ncurses based xmpp client, inspired by irssi. i will maintain it.</comment>
+    <requestid>315480</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>113929a6560b0c1f9ceadabc3ab18058</srcmd5>
+    <version>0.4.7</version>
+    <time>1443897017</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>335423</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>08687966c21808fc44282afacc71394b</srcmd5>
+    <version>0.4.7</version>
+    <time>1466326146</time>
+    <user>dimstar_suse</user>
+    <comment>- Split profanity in two packages:
+  standard - the default with all features enabled
+  mini - disabling notifications thus not needing X (forwarded request 401927 from jubalh)</comment>
+    <requestid>401928</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9ac7b92ced0131f366dc9711860f43d2</srcmd5>
+    <version>0.5.0</version>
+    <time>1474116037</time>
+    <user>dimstar_suse</user>
+    <comment>- Run spec-cleaner and use macros so it builds on all archs
+
+- Add profanity-rpmlintrc
+
+- Update to version 0.5.0:
+  * Plugins API supporting C and Python plugins
+  * SSL certificate verification (requires libmesode) (/tls)
+  * HTTP file upload (xep-0363) (/sendfile)
+  * Blocking command (xep-0191) (/blocked)
+  * Allow auto extended away (/autoaway)
+  * Include last acitvity in initial presence (xep-0256) (/lastactivity)
+  * Last Activity (xep-0012) (/lastactivity)
+  * Ability to run command scripts (/script)
+  * Account startscript property to execute a command script on connect (/account)
+  * Export roster to CSV file (/export)
+  * Support for GTK tray icons (/tray)
+  * User specified text triggers for chat room notifications (/notify)
+  * Per chat room notification options (/notify)
+  * Many new roster panel display options (/roster)
+  * Time format preferences per window type (/time)
+  * Edit, prepend and append to room subject (/subject)
+  * Autoping timeout preference (/autoping)
+  * Window navigation by window title (/win)
+  * Window closing by window title (/close)
+  * Account theme setting (/account)
+  * Allow sending XMPP stanzas in xmlconsole window (/xmlconsole)
+  * Configure level of room message notifications in console window (/console)
+  * Check ~/.config/profanity/inputrc for readline settings
+  * Custom readline functions for navigation key bindings
+  * Autocomplete command arguments when no characters entered</comment>
+    <requestid>428100</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>7df81cc4ae3c0de48b397b54eebbac25</srcmd5>
+    <version>0.5.0</version>
+    <time>1474623660</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixing gh/boothj5/profanity/#860:
+  profanity uses parts of the new API of libstrophe. But since 
+  the so name wasn't bumped this doesn't get autodetected.
+  Adding the requires manually: Requires: libstrophe0 &gt;= 0.9.0
+
+- Add better information to description
+- Enable tray icon in profanity-standard</comment>
+    <requestid>429436</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>dd767558e6ee570943314b57d23cfe7d</srcmd5>
+    <version>0.5.0</version>
+    <time>1480018908</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>439004</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d3f4dcfa1138781f556f38955af83d8b</srcmd5>
+    <version>0.5.1</version>
+    <time>1486717492</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.1:
+  * Add prof.get_room_nick plugins api function
+  * Add main.help.header theme option
+  * Look for system TLS certificate path by default (/tls certpath)
+  * Use service discovery to set account muc property
+  * Allow clearing account muc and resource properties
+  * Allow plugins to complete file paths with prof.filepath_completer_add function
+  * Add encryption settings functions to plugins api
+  * Allow plugins to block message sending on pre message send hooks
+  * Bug fixes: https://github.com/boothj5/profanity/milestone/15?closed=1</comment>
+    <requestid>455762</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>57f2bfa291b189c0712be9ca62162b0b</srcmd5>
+    <version>0.5.1</version>
+    <time>1500275507</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>510269</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>50a47d608ec37cbc9a94a97ee7fc21ba</srcmd5>
+    <version>0.5.1</version>
+    <time>1521499088</time>
+    <user>dimstar_suse</user>
+    <comment>- Compile profanity-mini with --disable-icons:
+  Since we first do the standard build we need to disable the
+  icons in the later build to really get rid of the GTK dependency</comment>
+    <requestid>587942</requestid>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>a4ffddac19bc5ce5e97e4cd6c982344f</srcmd5>
+    <version>0.5.1</version>
+    <time>1521716671</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>589209</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8815515a6ab128d653714149a724ac2e</srcmd5>
+    <version>0.6.0~rc1</version>
+    <time>1550220889</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>668083</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>54bba7ab7fe78df6e6248bda30debac5</srcmd5>
+    <version>0.6.0</version>
+    <time>1550574117</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 0.6.0:
+  * No changes since RC1</comment>
+    <requestid>677132</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f40d3e2b62d08545fd848a8e4404a821</srcmd5>
+    <version>0.7.0</version>
+    <time>1564576629</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.0:
+  * Fix plugin unload return code if just one plugin fails (#995)
+  * Fix several typos
+  * Fix some display indentation issues (#1073)
+  * Fail plugin unload if the plugin doesnt exist
+  * Improve encrypted message stub header by mentioning the encryption method
+  * Fix GPG encryption (#997)
+  * Redraw sceen after entry of PGP key (#906)
+  * Fix support for case-sensitive account names (#725)
+  * Fix /me display when highlighting user in MUCs (#950)
+  * Fix `make dist` (0f0659a)
+  * Fix use after free bug (#1044)
+  * Fix segfault on connect with default account (#1046)
+  * Implement OMEMO support (#1039, #658, #1070)
+  * Add random string at the end of the default resource (#1053)
+  * Fix handling of messages without ID in MUC (#1061)
+  * Add library versioning to libprofanity (#973)
+  * Add more customization: occupants indent (/occupants) (#690, #1072)
+  * Add more customization: occupants header char (/occupants) (#690, #1074)
+  * Add more customization: occupants wrap (/occupants) (#690, 125ca2f)
+  * Add more customization: occupants char (/occupants) (#690, #1084)
+  * Fix formatting for privileges on (a666f0d)
+  * Fix usage of statusbar number in theme (#1078)
+  * Fix Debian 32bit tests (#1091)
+  * Fix unit tests (#1092)
+  * Fix infinite loop on connection loss (#1103)
+  * Don't clear saved account data in session_disconnect (#1106)
+  * Cancel autoping timer on disconnect or connection loss (#1105)
+  * Fix SIGABRT on connection loss (#1083)
+  * Only print room history for new messages upon reconnect (#704, #1110)</comment>
+    <requestid>720021</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>5a22222a36d17a8a83a659c0acd87d0c</srcmd5>
+    <version>0.7.0</version>
+    <time>1564994105</time>
+    <user>dimstar_suse</user>
+    <comment>- Build both mini and standard with OMEMO enabled</comment>
+    <requestid>720052</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>f9395ee37fd604b6dbb78301b26fd81e</srcmd5>
+    <version>0.7.1</version>
+    <time>1569393298</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.1:
+  * Fix copyright/info displayed email
+  * Fix typos in OMEMO logs
+  * Fix crash when jid has no not part (#1153, #1193)</comment>
+    <requestid>732851</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>418c39d39edec1e2adc6e8e6f25a9267</srcmd5>
+    <version>0.8.0</version>
+    <time>1580842351</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.0:
+  * OMEMO fingerprint autocompletion now considers only the contact in question (@paulfariello) (#1068)
+  * Save and display oldest timestamp from delay tags (#1254)
+  * Change theme handling (#1077)
+  * /theme load themename not loads only the colours of a theme. So the users preferences don't get overwritten
+  * /theme full-load themename loads the whole theme including preferences (like omemo.char)
+  * Add gruvbox theme (@Misaflo) (#1259)
+  * XEP-0092: Include OS name in /software answer.
+  * See /os on|off
+  * Add option to notify about version request via XEP-0092 and XEP-0232 via adv.notify.discoversion
+  * setting in configuration file.
+  * Add option to display MUC name or JID in titlebar: /titlebar use [name|jid].
+  * Add /roster room use command to decide whether to display the MUC name or JID in the roster:
+    /roster room use name to use the name of the MUC in the roster list.
+    /roster room use jid to use the jid of the MUC in the roster list.
+  * Fix decryption failure for messages sent from Converse.js (@paulfariello) (#1253)
+  * Fix crash when OMEMO key is misconfigured (@paulfariello) (#1239)
+  * Use OMEMO for offline MUC members (@paulfariello) (#1242)
+  * Fix OMEMO 1on1 chats with psi+ (@svensp) (#1247)
+  * Save occupants and roster chars (#1244)
+  * Add support for downloading user avatars via XEP-0084 (#1240)
+  * See /avatar
+  * Add last read position marker trackbar (#1238)
+  * Dont print error message if a valid setting function is called (#1237)
+  * When printing configuration we often use the same command as setting but without any argument.
+  * So far ths displayed &quot;Invalid usage&quot;.
+  * Add support for XEP-0392 consistent color generation for nicks (@aaptel and @jubalh) (#1191)
+  * See /color, /occupants color, /roster color
+  * Call ncurses resize function before move function (#1235)
+  * Fix error when joining IRC via biboumi (#1230)</comment>
+    <requestid>769505</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ce25b91b23f06777f0b4a3cab84b8410</srcmd5>
+    <version>0.8.1</version>
+    <time>1581277708</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.1:
+  * Fix ending ncurses colors in rosterwin
+  * Fix segfault when consistent nick colors where never in config (#1236)
+  * Improve /clear behaviour to also clear the buffer. So a redraw doesn't bring
+  * the content back.
+  * Use unique IDs in stanzas when requesting avatars</comment>
+    <requestid>772212</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>5d77cc07afce7137436c82f33e956345</srcmd5>
+    <version>0.9.0</version>
+    <time>1591743156</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.0:
+  * Support for XEP-0308: Last Message Correction (#805)
+    See `/correction` and `/correct`.
+  * Code cleanup of UI and Message functions
+  * Always send delivery receipts if they are enabled (#1268)
+  * By default don't allow sending unencrypted files in an encrypted chat session (#1270) (@moppman and @jubalh)
+    See `/omemo|otr|pgp sendfile`.
+  * Add CI for OpenBSD via sr.ht (@wstrm)
+  * OMEMO: switch to 12 byte IV for sending (#1272)
+  * Allow UTF-8 symbols as OMEMO/OTR/PGP indicator char (#1264)
+  * Make color of the trackbar configurable
+    Use `main.trackbar` in themes.
+  * Allow setting custom log file
+    `profanity -f TEST` will log to `~/.local/share/profanity/logs/TEST.log`.
+  *  Send proper OS names for OpenBSD and NetBSD if `/os` is enabled
+  * Fix plenty memory leaks (@pasis and @jubalh)
+  * XEP-0084: Add option to open avatars directly (#1281)
+    `/avatar odin@valhalla.org` became `/avatar get odin@valhalla.org`
+    New is:
+    `/executable avatar feh`
+    `/avatar open odin@valhalla.org`
+    xdg-open is used by default. So it will take your default application.
+  * Enable popular features by default.
+    For a nicer out of the box experience we enable:
+    - allow message correction
+    - sending receipts
+    - enabling carbons
+    - type/chat states
+  * Add slashguard feature to prevent sending commands with typos
+    Should protect against `q/uit` or ` /quit`.</comment>
+    <requestid>812969</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>09e219d363344b67347c46de167705f8</srcmd5>
+    <version>0.9.1</version>
+    <time>1591879935</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.1:
+  * Make legacy auth optional (#1360) (@pasis)</comment>
+    <requestid>813415</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>fb10b77a1f1481d8fc88978dde5779d1</srcmd5>
+    <version>0.9.2</version>
+    <time>1592152451</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.2:
+  * Dont manipulate pointer from getenv (#1357)
+  * Fix reading/writing linked files (#1362)
+  * Use gnu99 C standard (#1357)</comment>
+    <requestid>814317</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>206c1a26d5071c41eabb2f390008c019</srcmd5>
+    <version>0.9.4</version>
+    <time>1593006497</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.4:
+  * Fix NULL terminated list (#1367)
+  * Add missing string.h (#1372)
+  * Fix gcc warnings for cygwin (#1373)
+
+- Update to 0.9.3:
+  * Fix expansion in eval_password (#1364)</comment>
+    <requestid>816823</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>c38894a322a67834c27053b2dc9ee08c</srcmd5>
+    <version>0.9.5</version>
+    <time>1593629043</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.5:
+  * Fix segfault in /theme properties due to uninitialized
+    titlebar.scrollable (#1380)</comment>
+    <requestid>818152</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>5bcfe21c00a581e821fe602b1514a872</srcmd5>
+    <version>0.10.0</version>
+    <time>1610304248</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.10.0:
+  * Code cleanup
+  * Several memory leaks fixed (b45384, #805, #1416, #1427)
+  * Handle headline stanza (#1366)
+  * By default log only WARN not INFO (#1353)
+  * Fix OMEMO: check for current item (#1384)
+  * Fix request OMEMO device id (#1332)
+  * Add experimental OX (XEP-0373, XEP-0374) support (#1331)
+  * Add clang format file for uniform coding style (#1396)
+  * Add contributing guidelines (#1397)
+  * Dont highlight console once all messages have been read (#1399)
+  * New setting: Only highlight in console upon MUC mention (#1371)
+    `/console muc mention`
+  * Remove `/tiny` command (#1370)
+  * Fix `/lastactivity` behaviour (#1411)
+  * Fix `/correct` quotation marks usage (#1404)
+  * Parse Stable Stanza IDs (XEP-0359) (#1207) (#660)
+  * Only insert new messages in database (c9b154) (#660)
+  * Support both gtk2 and gtk3 (05d19c)
+  * Update gruvbox theme (#1421)
+  * Add NetBSD support (#1424)
+  * Fix uninitialized field in bookmarks (#1432)
+  * Don't link functional tests against tcl (da513a)
+  * Fix date format for MAM requests (15f45f)
+  * Print error stanzas (#1435)
+  * Add man pages for each profanity command (#1444)
+  * Fix chatlogs for outgoing carbons (#1439)
+  * Add OMEMO media sharing support (#1375)
+    See `/help sendfile` `/help executable`
+  * Expand trackbar to whole line (#1448)</comment>
+    <requestid>861865</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>568cae6c5901fe121bd58ee071b993cd</srcmd5>
+    <version>0.10.0</version>
+    <time>1610977160</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix Factory build:
+  * Create correct symlinks
+  * Use update-alternatives correctly
+  * Use clearer style
+
+- boo#1180739: Fix typo in themes:
+  * Add profanity-0.10.0-theme-typo.patch</comment>
+    <requestid>864029</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>cd06d0cf74fb8732b09fa19d452c8409</srcmd5>
+    <version>0.11.0</version>
+    <time>1626299933</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.11.0:
+- Fix 'headache' and 'whiteness' themes (#1471)
+  * Fix help text for `/logging` (#1470)
+  * Fix theme loading with -t parameter when a disconnect happens (#1472)
+  * Add `/mam` command (MAM is still experimental) (#660)
+  * Improve MAM support: load multiple pages with RSM (#660)
+  * Fix titlebar MUC name display when no name is set (#1481)
+  * Improved window title output (#1493)
+  * Show offline members in occupants panel (#1495)
+    `/occupants default show|hide [jid|offline]`
+    `/occupants show|hide [jid|offline]`
+  * Support handling `file://` prefix in patchs (#1498)
+  * Update HTTP Upload XEP-0363 to 1.0.0 (#1499, #1500)
+  * New `/changepassword` command to change users password (XEP-0077) (#1501)
+  * Add ability to request 'voice' in MUCs (XEP-0045) (#1211, #1504)
+    `/affiliation request`
+  * Add ability to approve MUC voice requests (XEP-0045) (#1507, #1508)
+  * Improve `/bookmark` help (#1511)
+  * Add ability to register a nickname with a MUC (XEP-0045) (#1510, #1210)
+    `/affiliation register`
+  * Fix segfault on `/sendfile` using OMEMO on Raspberry Pi (#1512)
+  * Use shorter IDs (#1520)
+  * Add abbility to launch external editor to write (multiline) messages (#1485, #1546)
+    `/editor`
+  * Introdcue OMEMO trustmode (#1506)
+    `/omemo trustmode manual|firstusage|blind`
+  * Fix random string generation (8e588d6)
+  * Separate settings to configure printing of typing information in console and titlebar (#1516, #1532)
+    `/intype on|of` -&gt; `/intype titlebar|console on|off`
+  * Use direct messages instead of MUC-PMs for non-anonymous MUCs (#1534)</comment>
+    <requestid>906302</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>c2d28ec4d4d3eae93558e55620f3be20</srcmd5>
+    <version>0.11.1</version>
+    <time>1632939537</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.11.1:
+  * Fix typo in shade color theme (#1579)
+  * Fix memory leaks (#1583) (#1584) (#1585)
+  * Fix buffer overread (#1586)
+  * Don't handle /me in the middle of a message with mentions (#1586)
+  * Explicitly check for curl version (#1581)
+  * Fix OMEMO devicelist access model by reconfiguring it (#1538) (#1591)
+  * Cosmetic cleanup (#1593)
+  * Change attentionflag shortcut from alt-f to alt+v (#1580)
+  * Update man page and /help information
+  * Enable whole word only notifications by default (#1578)
+
+  * Fix 'headache' and 'whiteness' themes (#1471)</comment>
+    <requestid>922050</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>ab9c1908d9829931a158ff9eda13f56d</srcmd5>
+    <version>0.12.0</version>
+    <time>1648665385</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12.0:
+  * Fix format string for ncurses 6.3 (#1597)
+  * Remove /python sourcepath command (#1598)
+  * Add option to install plugins from global plugin installation directory (#945)
+  * Fix wrong timestamp display in MUC history (#1423)
+  * Add in-band account registration (XEP-0077) (#1574)
+  * New theme: snikket (#1604)
+  * Allow more UI indicator signs to be UTF-8 characters (#1607)
+  * Add /correct-editor command (#1596)
+  * Fix message encryption for sender devices (#1609)
+  * Deprecate libmesode. We require libstrophe &gt;= 0.11.0 (#1608)
+  * Fix OMEMO /sendfile on non-glibc systems (#1478)
+  * Cleanup plugins code (#1616)
+  * Make readline check more portable (#1617)
+  * Fix carbons criteria (#1614, #1618)
+  * Add support for User Mood (XEP 0107) (#1605)
+  * Use wildcard for man pages in Makefile.am (#1622)
+  * Fix inserting messages to chat logs if archive_id is empty (#1589, #1625)
+  * Implement RFC 6120 see-other-host during login (#1628, #1631, #1632, #1633, #1637)
+  * Guard against invalid input in presence stanza (#1630)
+  * Do not check for OMEMO device id for JIDs banned of a MUC (#1594)
+  * Minor cleanups (#1635, #1653)
+  * Cleanup build files (#1641, #1642, #1657, #1659)
+  * Improve documentation for new developers (#1640)
+  * Set libstrophe log verbosity to fix jump on unconditional value (e55f6d)
+  * Add DOAP file (XEP-0453) (bd8c32)
+  * Add /subject editor command
+  * Improve OX user experience (#1644)
+  * Add hotkey for sending readline text to editor (#1645, #1648)
+  * Fix breaking autocompletion with nicknames containing '/' (#1474)</comment>
+    <requestid>966029</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>537b46309a5b36c2fe07de793c3c1eb9</srcmd5>
+    <version>0.12.1</version>
+    <time>1649093230</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to to 0.12.1:
+  * Fix resetting colors when loading invalid theme (#1681)
+  * Use correct color for nick of others in history (#1675)
+  * Fix a segfault when uploading or downloading files (f11ad16)
+  * Fix logging of text chatlogs (#1672, #1673)
+  * Simplification of tab completion code (#1664)
+  * Add Alt/Ctrl-arrows combinations for GNU Screen (#1667)
+  * Make all existing input functions bindable from config (#1669)
+  * Cleanup (#1665, #1670)
+  * Improve man pages (#1666, #1668)
+  * Fix race condition on resize (#1671)</comment>
+    <requestid>966863</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>4a20c4a6dc42e5af8e5e0ec149284343</srcmd5>
+    <version>0.12.1</version>
+    <time>1659382404</time>
+    <user>RBrownFactory</user>
+    <comment>- Fix building with icons:
+  --enable-icons switch was renamed to --enable-icons-and-clipboard</comment>
+    <requestid>992036</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>c1452299a6f83c4e9d85ab89d9c2bae5</srcmd5>
+    <version>0.13.0</version>
+    <time>1663074611</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.13.0:
+  * Print OMEMO verification QR code (#1320, #1568, #1718, #1720)
+    /omemo qrcode
+  * Add option to configure stamp (#1663)
+  * Allow bold for default colors (#1674)
+  * Add irssi theme (#1680)
+  * Include useful aliases in profrc example (#1683)
+  * Improve man pages (#1688, #1703)
+  * Show return symbol for embedded newlines in multiline messages (#1690)
+  * Fix xscreensaver detection (#1696)
+  * Add support for offline MUC notifications (#1697)
+    /notify room offline on|off
+  * Fix SIGABRT when using wrong argument order for receiving ox key (#1689, #1699)
+  * Use 3 digits for rotated log files (#1701)
+  * Fix autocomplete for /ox discover. (#1702)
+  * Fix segfault on /ox discover (#1713, #1715)
+  * Fix OX rpad generation (#1703)
+  * Don't forget encryption status for OX and PGP. (#733, #1694, #1722)
+  * Several OX improvements (#1703, #1705)
+  * Fix room name not updating. (#1710, #1711)
+  * Update capabilities of muc on available presence (#1347, #1712)
+  * Add /avatar set command to publish avatar (#1687, #1714)
+  * Respect silent nick change in mucs (#757, #1716)
+  * Fix duplicate messages in chat with oneself. (#1595, #1717)
+  * Improve cmd argument parser (#497, #1721)
+  * Make display of user mood optional (#1725)
+  * Switch log level while running (#1726)
+  * Split chatlog and log functions in separate files (#1727)
+  * Split pgp and ox into separate files (#1728)
+  * Various cleanups (#1729)</comment>
+    <requestid>1003287</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>94bfeae57b2319c3881a274b3553d027</srcmd5>
+    <version>0.13.1</version>
+    <time>1665668695</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.13.1:
+  * Fix configure parameter detection (#1752, #1753)
+  * Improve plugins management (#1755)
+  * Fix build with plugins enabled for Python &gt;= 3.11 (#1756)
+  * Add gruvbox_transparent theme optimized for enabled
+    transparency (#1763)
+  * Fix detection of first start used for welcome screen (#1767)
+  * Improve opening of URLs by spawning external program
+    asynchronously (#1759, #1760)</comment>
+    <requestid>1010279</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>e8a788ae5db67effb96e6ca9a9599db5</srcmd5>
+    <version>0.14.0</version>
+    <time>1691076491</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.14.0:
+  * Introduce new `/privacy` command (#1836, #1870)
+  *`/os` -&gt; `/privacy os`
+  *`/privacy logging`
+  * Fix crash when using NetBSD curses implementation (#1769)
+  * Fix OMEMO autodetection in autotools (#1865)
+  * Add ability to completely turn logs off (#1857)
+  * Extend /pgp command to make key exchange procedure easier (#1850)
+  *Used by PSI and Pidgin as well.
+  * Add ability to download and install plugins directly (#1842)
+  *`/plugins install`
+  * Improvements for /executable and /avatar code (#1845)
+  * Add ability to disable avatar publishing (#1843)
+  * Fix /plugins update (#1840)
+  * Improve logging (#1835)
+  * Add feature that can warn you when another client logs in (#1827)
+  *`/account set &lt;account&gt; session_alarm &lt;max_sessions&gt;`
+  * Don't add the same command twice to history (#1829)
+  * Improve manpage to inform users about encryption (#1823)
+  * Fix possible crash in PGP/OX (#1823)
+  * Add nickname support for /roster remove (#1826)
+  * Fix JID display in titlebar (#1816)
+  * Allow setting client identification (#1815)
+  *`/account set &lt;account&gt; clientid`
+  * Add /statusbar tabmode actlist (#1813)
+  * Fix color name in batman theme (#1810)
+  * Fix empty window after reconnect (#1556)
+  * Support passing flags to editor (#1801)
+  * OTR and PGP fixes (#1802)
+  * Adapt to g_string_free glib 2.75.3 change (#1799)</comment>
+    <requestid>1102110</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>6a3f6c817b43a27f4fdfa2400926b11b</srcmd5>
+    <version>0.14.0</version>
+    <time>1693235735</time>
+    <user>anag+factory</user>
+    <comment>- Add three bugfix patches:
+  * Correctly display OX carbons:
+    profanity-0.14.0-ox-carbons.patch
+  * Fix typos:
+    profanity-0.14.0-typos.patch
+  * Stop spamming log when X is not running:
+    profanity-0.14.0-xscreensaver.patch</comment>
+    <requestid>1106132</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>ada040c975b2e573987bc26e7d9884dc</srcmd5>
+    <version>0.14.0</version>
+    <time>1694808319</time>
+    <user>anag+factory</user>
+    <comment>- Add profanity-0.14.0-plugins-install.patch:
+  Fix crash upon /plugins install while disconnected</comment>
+    <requestid>1111435</requestid>
+  </revision>
+</revisionlist>

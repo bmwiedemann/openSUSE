@@ -1,0 +1,107 @@
+--- jdk17/src/java.base/share/classes/sun/nio/ch/Net.java	2023-04-19 08:11:27.942170484 +0200
++++ jdk17/src/java.base/share/classes/sun/nio/ch/Net.java	2023-04-26 14:03:06.115523856 +0200
+@@ -109,8 +108,8 @@
+     /**
+      * Tells whether both IPV6_XXX and IP_XXX socket options should be set on
+      * IPv6 sockets. On some kernels, both IPV6_XXX and IP_XXX socket options
+-     * need to be set so that the settings are effective for IPv4 multicast
+-     * datagrams sent using the socket.
++     * need to be set so that the settings are effective for IPv4 connections
++     * and datagrams.
+      */
+     static boolean shouldSetBothIPv4AndIPv6Options() {
+         return shouldSetBothIPv4AndIPv6Options0();
+@@ -455,6 +454,23 @@
+         setIntOption0(fd, mayNeedConversion, key.level(), key.name(), arg, isIPv6);
+     }
+ 
++    /**
++     * Sets a IPPROTO_IPV6/IPPROTO level socket. Some platforms require both
++     * IPPROTO_IPV6 and IPPROTO socket options to be set when the socket is IPv6.
++     * In that case, the IPPROTO socket option is set on a best effort basis.
++     */
++    static <T> void setIpSocketOption(FileDescriptor fd, ProtocolFamily family,
++                                      SocketOption<T> opt, T value)
++        throws IOException
++    {
++        setSocketOption(fd, family, opt, value);
++        if (family == StandardProtocolFamily.INET6 && shouldSetBothIPv4AndIPv6Options()) {
++            try {
++                setSocketOption(fd, StandardProtocolFamily.INET, opt, value);
++            } catch (IOException ignore) { }
++        }
++    }
++
+     static Object getSocketOption(FileDescriptor fd, SocketOption<?> name)
+         throws IOException
+     {
+@@ -489,7 +505,7 @@
+         }
+     }
+ 
+-    public static boolean isFastTcpLoopbackRequested() {
++    private static boolean isFastTcpLoopbackRequested() {
+         String loopbackProp = GetPropertyAction
+                 .privilegedGetProperty("jdk.net.useFastTcpLoopback", "false");
+         return loopbackProp.isEmpty() ? true : Boolean.parseBoolean(loopbackProp);
+--- jdk17/src/java.base/share/classes/sun/nio/ch/NioSocketImpl.java	2023-04-19 08:11:27.942170484 +0200
++++ jdk17/src/java.base/share/classes/sun/nio/ch/NioSocketImpl.java	2023-04-26 14:03:06.115523856 +0200
+@@ -959,8 +959,8 @@
+         synchronized (stateLock) {
+             ensureOpen();
+             if (opt == StandardSocketOptions.IP_TOS) {
+-                // maps to IP_TOS or IPV6_TCLASS
+-                Net.setSocketOption(fd, family(), opt, value);
++                // maps to IPV6_TCLASS and/or IP_TOS
++                Net.setIpSocketOption(fd, family(), opt, value);
+             } else if (opt == StandardSocketOptions.SO_REUSEADDR) {
+                 boolean b = (boolean) value;
+                 if (Net.useExclusiveBind()) {
+@@ -1034,7 +1034,7 @@
+                 }
+                 case IP_TOS: {
+                     int i = intValue(value, "IP_TOS");
+-                    Net.setSocketOption(fd, family(), StandardSocketOptions.IP_TOS, i);
++                    Net.setIpSocketOption(fd, family(), StandardSocketOptions.IP_TOS, i);
+                     break;
+                 }
+                 case TCP_NODELAY: {
+--- jdk17/src/java.base/share/classes/sun/nio/ch/SocketChannelImpl.java	2023-04-19 08:11:27.942170484 +0200
++++ jdk17/src/java.base/share/classes/sun/nio/ch/SocketChannelImpl.java	2023-04-26 14:03:06.115523856 +0200
+@@ -265,8 +265,8 @@
+ 
+             if (isNetSocket()) {
+                 if (name == StandardSocketOptions.IP_TOS) {
+-                    // special handling for IP_TOS
+-                    Net.setSocketOption(fd, family, name, value);
++                    // maps to IPV6_TCLASS and/or IP_TOS
++                    Net.setIpSocketOption(fd, family, name, value);
+                     return this;
+                 }
+                 if (name == StandardSocketOptions.SO_REUSEADDR && Net.useExclusiveBind()) {
+--- jdk17/src/java.base/unix/native/libnio/ch/Net.c	2023-04-19 08:11:27.974170704 +0200
++++ jdk17/src/java.base/unix/native/libnio/ch/Net.c	2023-04-26 14:03:06.115523856 +0200
+@@ -159,10 +159,10 @@
+ Java_sun_nio_ch_Net_shouldSetBothIPv4AndIPv6Options0(JNIEnv* env, jclass cl)
+ {
+ #if defined(__linux__)
+-    /* Set both IPv4 and IPv6 socket options when setting multicast options */
++    /* Set both IPv4 and IPv6 socket options when setting IPPROTO_IPV6 options */
+     return JNI_TRUE;
+ #else
+-    /* Do not set both IPv4 and IPv6 socket options when setting multicast options */
++    /* Do not set both IPv4 and IPv6 socket options when setting IPPROTO_IPV6 options */
+     return JNI_FALSE;
+ #endif
+ }
+--- jdk17/src/java.base/windows/native/libnio/ch/Net.c	2023-04-19 08:11:27.978170731 +0200
++++ jdk17/src/java.base/windows/native/libnio/ch/Net.c	2023-04-26 14:03:06.115523856 +0200
+@@ -126,7 +126,7 @@
+ JNIEXPORT jboolean JNICALL
+ Java_sun_nio_ch_Net_shouldSetBothIPv4AndIPv6Options0(JNIEnv* env, jclass cl)
+ {
+-    /* Set both IPv4 and IPv6 socket options when setting multicast options */
++    /* Set both IPv4 and IPv6 socket options when setting IPPROTO_IPV6 options */
+     return JNI_TRUE;
+ }
+ 

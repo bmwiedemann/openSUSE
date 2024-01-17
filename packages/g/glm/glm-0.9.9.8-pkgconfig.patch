@@ -1,0 +1,26 @@
+Index: glm-0.9.9.8/CMakeLists.txt
+===================================================================
+--- glm-0.9.9.8.orig/CMakeLists.txt
++++ glm-0.9.9.8/CMakeLists.txt
+@@ -17,6 +17,9 @@ if(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_
+ 	write_basic_package_version_file("glmConfigVersion.cmake" COMPATIBILITY AnyNewerVersion)
+ 	install(FILES ${CMAKE_CURRENT_BINARY_DIR}/glmConfigVersion.cmake DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/glm)
+ 
++	configure_file(glm.pc.in glm.pc @ONLY)
++	install(FILES ${CMAKE_CURRENT_BINARY_DIR}/glm.pc DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
++
+ 	include(CTest)
+ 	if(BUILD_TESTING)
+ 		add_subdirectory(test)
+Index: glm-0.9.9.8/glm.pc.in
+===================================================================
+--- /dev/null
++++ glm-0.9.9.8/glm.pc.in
+@@ -0,0 +1,7 @@
++prefix=@CMAKE_INSTALL_PREFIX@
++includedir=${prefix}/include
++
++Name: GLM
++Description: OpenGL Mathematics
++Version: @GLM_VERSION@
++Cflags: -I${includedir}

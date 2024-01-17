@@ -1,0 +1,23 @@
+                        Testform für AUCTEX
+                        ===================
+
+2005/09/22: Version 11.83
+Maintainer: werner
+
+Vorraussetzungen:
+=================
+
+GNU-Emacs muß installiert sein und
+in ~/.emacs bzw. ~/.gnu-emacs sollte auctex auch eingebunden
+sein (siehe /etc/skel/.gnu-emacs und /etc/skel/.emacs).
+
+Starten:
+========
+
+    emacs <file>.tex
+
+Ergebinsse:
+===========
+
+Konfortabler LaTeX-Mode für den Emacs. Wird unter
+/usr/share/doc/packages/auctex/ in diversen DVI-Files beschrieben.

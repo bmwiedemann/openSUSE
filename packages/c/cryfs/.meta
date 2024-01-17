@@ -1,0 +1,5 @@
+<package name="cryfs" project="openSUSE:Factory">
+  <title>Keep your data safe in the cloud</title>
+  <description>CryFS encrypts your files, so you can safely store them anywhere. It works well together with cloud services like ownCloud, Dropbox and others.</description>
+  <devel project="security:privacy" package="cryfs"/>
+</package>

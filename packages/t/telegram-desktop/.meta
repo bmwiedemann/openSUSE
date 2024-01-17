@@ -1,0 +1,7 @@
+<package name="telegram-desktop" project="openSUSE:Factory">
+  <title>Telegram Desktop</title>
+  <description>
+    A new era of messaging.
+  </description>
+  <devel project="server:messaging" package="telegram-desktop"/>
+</package>

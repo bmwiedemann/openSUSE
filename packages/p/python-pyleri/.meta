@@ -1,0 +1,8 @@
+<package name="python-pyleri" project="openSUSE:Factory">
+  <title>Python Left-Right Parser</title>
+  <description>Python Left-Right Parser.
+
+</description>
+  <devel project="devel:languages:python" package="python-pyleri"/>
+  <url>https://github.com/transceptor-technology/pyleri</url>
+</package>

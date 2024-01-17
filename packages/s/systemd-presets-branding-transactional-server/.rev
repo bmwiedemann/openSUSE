@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7fa9086d6f6420201a96bd0e296e42dc</srcmd5>
+    <version>15.0</version>
+    <time>1523875515</time>
+    <user>dimstar_suse</user>
+    <comment>- Initial version [boo#1088893]
+</comment>
+    <requestid>595670</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8cfdfa407419c4c9cfa3654480952cdd</srcmd5>
+    <version>15.0</version>
+    <time>1533887410</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628260</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>fdb659584e3fa00d60ba5463f2f98388</srcmd5>
+    <version>15.0</version>
+    <time>1541511518</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>646379</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>da4f87d24a3aa52b0695d36ad9c51c00</srcmd5>
+    <version>15.0</version>
+    <time>1560862430</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709937</requestid>
+  </revision>
+</revisionlist>

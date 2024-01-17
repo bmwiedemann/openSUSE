@@ -1,0 +1,12 @@
+--- CMakeLists.txt.orig	2019-12-18 22:09:53.361797675 -0700
++++ CMakeLists.txt	2019-12-18 22:18:37.305514614 -0700
+@@ -79,9 +79,6 @@ if(BUILD_ENGINE_JS)
+     set(target_library_install_dir "lib" CACHE PATH "install dest for libs")
+ endif()
+ 
+-if("${CMAKE_SIZEOF_VOID_P}" EQUAL "4" AND UNIX AND NOT APPLE)
+-    set(BUILD_ENGINE_C ON CACHE STRING "PAS2C force-enabled due to a freepascal 32 bit alignment bug" FORCE)
+-endif()
+ 
+ #system paths for finding required fonts (see share/hedgewars/Data/fonts)
+ #subdirectories will NOT be searched.

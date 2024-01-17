@@ -1,0 +1,19 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/fusesource/jansi.git</param>
+		<param name="revision">jansi-2.4.0</param>
+		<param name="match-tag">jansi-*</param>
+		<param name="versionformat">@PARENT_TAG@</param>
+		<param name="versionrewrite-pattern">jansi-(.*)</param>
+        <param name="exclude">src/main/native/inc_mac</param>
+        <param name="exclude">src/main/native/inc_win</param>
+        <param name="exclude">src/main/native/inc_linux/*</param>
+        <param name="exclude">src/main/resources/org/fusesource/jansi/internal</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>

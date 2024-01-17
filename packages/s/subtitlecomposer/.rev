@@ -1,0 +1,130 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>472a71e759fd129615885d645f42472e</srcmd5>
+    <version>0.6.4</version>
+    <time>1499291866</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>500497</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>bad3d5926c346b4139927fef3fa6ce51</srcmd5>
+    <version>0.6.5</version>
+    <time>1510666098</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>539891</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>db3116f3a7922894212463d000c90276</srcmd5>
+    <version>0.6.6</version>
+    <time>1518514340</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>575952</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>9c3c7eeaf1b232144581bb16cb53ccf8</srcmd5>
+    <version>0.6.6</version>
+    <time>1529402285</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>616448</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7703a8f219afd4b750858edde10ad3c8</srcmd5>
+    <version>0.7.0</version>
+    <time>1561882944</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>712547</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>b3cc13536dbdce35d2601302f0834e8e</srcmd5>
+    <version>0.7.0</version>
+    <time>1583949340</time>
+    <user>dimstar_suse</user>
+    <comment>- Add a local qthelper.cpp copy. mpv &gt;= 0.33 doesn't provide this
+  header anymore and suggest keeping a local copy until using a
+  better wrapper.
+- Add 0001-Use-a-local-qthelper.cpp-copy.patch</comment>
+    <requestid>783883</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>d8597b9066ceb6cfe068c09498552686</srcmd5>
+    <version>0.7.0</version>
+    <time>1585342644</time>
+    <user>dimstar_suse</user>
+    <comment>- Move URL to the new upstream location at invent.kde.org
+- Remove the dependency on python-base (python2) by removing the
+  python examples (so we don't install any python scripts anymore).
+  The python scripts can't be used anyway since we build
+  kross-interpreters without python support.
+</comment>
+    <requestid>788726</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7117e9751f1855e4844fb3ff7c2202eb</srcmd5>
+    <version>0.7.1</version>
+    <time>1633644347</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>923559</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>2fd587fc0749b2e24b55dda76c7a8674</srcmd5>
+    <version>0.7.1</version>
+    <time>1634417250</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925678</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>d66a86209ce783c44c5c969f16968d4a</srcmd5>
+    <version>0.7.1</version>
+    <time>1636149517</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>929552</requestid>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>7f9168e6fc776531e5cdc629be16bbda</srcmd5>
+    <version>0.7.1</version>
+    <time>1657712740</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 4f4f560e40ba0b760cf688eb024be3cc734ca347.patch: Fix build
+  with ffmpeg 5, patch from upstream git.
+</comment>
+    <requestid>988947</requestid>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>8d6fcbf01ccc12fc4644e887f3054ac7</srcmd5>
+    <version>0.7.1</version>
+    <time>1681825962</time>
+    <user>dimstar_suse</user>
+    <comment>- Add d8f9797d9c0d45fa9f4402f79c539544b74d2cc7.patch: Fix video
+  player with newer version of ffmpeg</comment>
+    <requestid>1080108</requestid>
+  </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>2516d8e04d264201589d3ee68091894a</srcmd5>
+    <version>0.7.1</version>
+    <time>1683630554</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch:
+  * 0001-Use-non-deprecated-ffmpeg-api.patch
+- Rename 4f4f560e40ba0b760cf688eb024be3cc734ca347.patch to
+  0001-Fix-compilation-with-ffmpeg5-63.patch
+- Rename d8f9797d9c0d45fa9f4402f79c539544b74d2cc7.patch to
+  0001-VideoPlayer-Fix-usage-of-deprecated-removed-AVCodec-.patch</comment>
+    <requestid>1085657</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5f617456604b791055e2ec616f8adf07</srcmd5>
+    <version>0.8.0</version>
+    <time>1699301705</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1123671</requestid>
+  </revision>
+</revisionlist>

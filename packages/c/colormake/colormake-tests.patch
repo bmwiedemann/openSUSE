@@ -1,0 +1,112 @@
+From 9a1b13478dd4f3e0e2b350f257f998c6b6e4d89a Mon Sep 17 00:00:00 2001
+From: "John S. Peterson" <john.s.peterson@live.com>
+Date: Wed, 17 Jul 2013 01:27:17 +0200
+Subject: [PATCH] Adding test files
+
+because
+
+* it makes it easier to test the program
+---
+ test/Makefile.am  | 10 ++++++++++
+ test/autogen.sh   |  9 +++++++++
+ test/configure.ac | 11 +++++++++++
+ test/src/test.cpp | 12 ++++++++++++
+ test/test.mk      | 14 ++++++++++++++
+ 5 files changed, 56 insertions(+)
+ create mode 100644 test/Makefile.am
+ create mode 100644 test/autogen.sh
+ create mode 100644 test/configure.ac
+ create mode 100644 test/src/test.cpp
+ create mode 100644 test/test.mk
+
+diff --git a/test/Makefile.am b/test/Makefile.am
+new file mode 100644
+index 0000000..3a059d0
+--- /dev/null
++++ b/test/Makefile.am
+@@ -0,0 +1,10 @@
++# color test
++# License GNU GPL 3
++
++AUTOMAKE_OPTIONS = subdir-objects
++ACLOCAL_AMFLAGS = ${ACLOCAL_FLAGS}
++
++bin_PROGRAMS = test
++test_SOURCES = src/test.cpp
++
++dist_noinst_SCRIPTS = autogen.sh
+diff --git a/test/autogen.sh b/test/autogen.sh
+new file mode 100644
+index 0000000..a7fb8b9
+--- /dev/null
++++ b/test/autogen.sh
+@@ -0,0 +1,9 @@
++#!/bin/sh -e
++
++# color test
++# License GNU GPL 3
++
++test -n "$srcdir" || srcdir=`dirname "$0"`
++test -n "$srcdir" || srcdir=.
++autoreconf --force --install --verbose "$srcdir"
++test -n "$NOCONFIGURE" || "$srcdir/configure" "$@"
+diff --git a/test/configure.ac b/test/configure.ac
+new file mode 100644
+index 0000000..d2b347c
+--- /dev/null
++++ b/test/configure.ac
+@@ -0,0 +1,11 @@
++# color test
++# License GNU GPL 3
++
++AC_INIT([test], [0,1])
++AC_PREREQ([2.59])
++AM_INIT_AUTOMAKE([1.10 no-define foreign])
++AC_CONFIG_HEADERS([config.h])
++AC_PROG_CXX
++CXXFLAGS="$CXXFLAGS -Wall"
++AC_CONFIG_FILES([Makefile])
++AC_OUTPUT
+diff --git a/test/src/test.cpp b/test/src/test.cpp
+new file mode 100644
+index 0000000..449d3ff
+--- /dev/null
++++ b/test/src/test.cpp
+@@ -0,0 +1,12 @@
++// colormake test
++// License GNU GPL 3
++
++int main() {
++	// create warning
++	int warning;
++
++	// create error
++	error
++
++	return 0;
++}
+\ No newline at end of file
+diff --git a/test/test.mk b/test/test.mk
+new file mode 100644
+index 0000000..1f487d3
+--- /dev/null
++++ b/test/test.mk
+@@ -0,0 +1,14 @@
++# colormake test
++# License GNU GPL 3
++
++CXXFLAGS=-Wall
++
++all: src/test.o
++	${CXX} ${CXXFLAGS} -o test test.o 
++
++%.o: %.cpp
++	$(CXX) $(CXXFLAGS) -c $< -o $@
++
++clean:
++	rm -f *.o 2 > /dev/null
++	rm -f test test.exe 2 > /dev/null
+\ No newline at end of file
+-- 
+1.9.3
+

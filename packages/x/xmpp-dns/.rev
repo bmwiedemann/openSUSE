@@ -1,0 +1,106 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cd0926cce24ad39109083957f93b4443</srcmd5>
+    <version>0.3.0</version>
+    <time>1659721853</time>
+    <user>dimstar_suse</user>
+    <comment>xmpp-dns</comment>
+    <requestid>993092</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c86de49c514aa22bd85bebb8db81af36</srcmd5>
+    <version>0.3.1</version>
+    <time>1661162522</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.1:
+  * Print error details if SRV lookup fails.
+  * Print error details if IP lookup fails.
+  * Respect CNAME records.
+  * Detect CNAME loops (max. 5 CNAMEs) (via xmppsrv &gt;= 0.2.4)</comment>
+    <requestid>998585</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b0311be24435730932484965ad555084</srcmd5>
+    <version>0.3.2</version>
+    <time>1665185149</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 0.3.2:
+  * Fix detection of XMPP support when using direct TLS and ALPN.</comment>
+    <requestid>1008680</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bdcdbf7c33d6b7ca72703ec396275793</srcmd5>
+    <version>0.3.3</version>
+    <time>1666178253</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.3:
+  * Fix wrong timeout parsing on some systems.</comment>
+    <requestid>1029735</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>90996d781ef5a1c9a9948c6cd6e37a57</srcmd5>
+    <version>0.3.4</version>
+    <time>1666978322</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.4:
+  * Fix namespace for xmpps-client stream opening (jabber:client
+    instead of jabber:server).
+  * Add from attribute for server-to-server connection test.</comment>
+    <requestid>1031969</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0997f2193bceb63bdbc5ed7961bcb1fb</srcmd5>
+    <version>0.3.6</version>
+    <time>1680018653</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.6:
+  * Remove println() added for debugging.
+
+- Update to 0.3.5:
+  * Don't use CNAME of xmpp server domain for SRV lookups
+    (via xmppsrv UNRELEASED).</comment>
+    <requestid>1074883</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>081a2f55dbb820f57c01e644935acdf2</srcmd5>
+    <version>0.3.7</version>
+    <time>1692294281</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.3.7:
+  * Show reason for denied s2s due to policy-violation.
+  * Apply timeout to TLS handshake as well instead of only for the
+    tcp connection.</comment>
+    <requestid>1104315</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>faf75e071858c9581f0047a2fd3d6f26</srcmd5>
+    <version>0.3.8</version>
+    <time>1692795514</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.3.8:
+  * Don't look up IPs and don't try to connect if the SRV records
+    target is &quot;.&quot;.</comment>
+    <requestid>1105337</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>21b9ccd113b796ede36a2255a8a2686a</srcmd5>
+    <version>0.3.9</version>
+    <time>1699910331</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.3.9:
+  * Also apply timeout when server doesn't reply to StartTLS
+    initialisation.</comment>
+    <requestid>1125121</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3954861994f255dcdd8970460c2c97b2</srcmd5>
+    <version>0.3.10</version>
+    <time>1703800839</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.3.10:
+  * Fix stream initialization bug with StartTLS
+  * Further improve StartTLS stream initialization.
+  * Improve error messages when server closes connection.</comment>
+    <requestid>1135149</requestid>
+  </revision>
+</revisionlist>

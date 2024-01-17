@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Fri Sep 27 12:49:05 UTC 2019 - Tina Mueller <tina.mueller@suse.com>
+
+- Add custom CC0 license to cpanspec.yml
+
+-------------------------------------------------------------------
+Tue Sep  3 11:18:33 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 12.0
+   see /usr/share/doc/packages/perl-Unicode-EastAsianWidth/Changes
+
+  [Changes for 12.0 - 2018-11-24]
+  
+  * Update to Unicode v12.0.0.
+  
+  [Changes for 1.40 - 2018-11-24]
+  
+  * Fix installation compatibility with Perl 5.26+.
+  * Update to Unicode v11.0.0.
+
+-------------------------------------------------------------------
+Fri Oct 17 10:54:15 UTC 2014 - ncutler@suse.com
+
+- check license (CC0-1.0 should be OK) 
+- take maintainership
+

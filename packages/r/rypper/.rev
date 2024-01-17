@@ -1,0 +1,46 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>db30e3edea34cad1557058d5213bd773</srcmd5>
+    <version>0.22</version>
+    <time>1379002327</time>
+    <user>scarabeus_factory</user>
+    <comment>I would like to maintain this utility in Factory, with
+system:packagemanager as the develproject.  I am about
+to send an RFC to the opensuse-factory mailing list
+with the details.</comment>
+    <requestid>198644</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>db30e3edea34cad1557058d5213bd773</srcmd5>
+    <version>0.22</version>
+    <time>1379664599</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8c264ebd775ead7909a130ce8434c31f</srcmd5>
+    <version>0.23</version>
+    <time>1383035717</time>
+    <user>coolo</user>
+    <comment>- Update to 0.23
+  - remove trailing whitespace from each line
+- Add download_files source service
+- Add missing COPYING source</comment>
+    <requestid>204976</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>8c264ebd775ead7909a130ce8434c31f</srcmd5>
+    <version>0.23</version>
+    <time>1409303304</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>af116ddbdea32bd97c5f0a925aedbe50</srcmd5>
+    <version>0.24</version>
+    <time>1492073122</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>487464</requestid>
+  </revision>
+</revisionlist>

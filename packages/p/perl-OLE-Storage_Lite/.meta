@@ -1,0 +1,9 @@
+<package name="perl-OLE-Storage_Lite" project="openSUSE:Factory">
+  <title>Simple Class for OLE document interface.</title>
+  <description>OLE::Storage_Lite allows you to read and write an OLE structured file.
+
+OLE::Storage_Lite::PPS is a class representing PPS.
+OLE::Storage_Lite::PPS::Root, OLE::Storage_Lite::PPS::File and
+OLE::Storage_Lite::PPS::Dir are subclasses of OLE::Storage_Lite::PPS.</description>
+  <devel project="devel:languages:perl" package="perl-OLE-Storage_Lite"/>
+</package>

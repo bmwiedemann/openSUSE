@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Wed Aug 30 10:44:39 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update hscolour to version 1.25.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
+Thu Mar 30 17:09:19 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Tue Aug 18 10:46:53 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Tue Jun 23 09:31:49 UTC 2020 - psimons@suse.com
+
+- Add hscolour at version 1.24.4.
+

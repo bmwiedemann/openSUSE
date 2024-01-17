@@ -1,0 +1,8 @@
+<package name="rubygem-googleapis-common-protos-types" project="openSUSE:Factory">
+  <title>Common protocol buffer types used in Google APIs</title>
+  <description>Common protocol buffer types used by Google APIs.
+
+</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-googleapis-common-protos-types"/>
+  <url>https://github.com/googleapis/common-protos-ruby</url>
+</package>

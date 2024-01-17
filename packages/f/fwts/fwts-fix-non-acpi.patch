@@ -1,0 +1,25 @@
+Index: fwts-21.01.00/src/acpica/source/tools/acpiexec/aecommon.h
+===================================================================
+--- fwts-21.01.00.orig/src/acpica/source/tools/acpiexec/aecommon.h
++++ fwts-21.01.00/src/acpica/source/tools/acpiexec/aecommon.h
+@@ -201,11 +201,18 @@ typedef struct init_file_entry
+ 
+ } INIT_FILE_ENTRY;
+ 
++#if defined(__x86_64__) || defined(__x86_64) || defined(__i386__) || defined(__i386) || defined(__aarch64__) || defined(__riscv)
++extern BOOLEAN              AcpiGbl_IgnoreErrors;
++extern UINT8                AcpiGbl_RegionFillValue;
++#else
++#define VOID_FUNC(name) void name(void);
++extern VOID_FUNC(AcpiGbl_IgnoreErrors)
++extern VOID_FUNC(AcpiGbl_RegionFillValue)
++#endif
++
+ extern BOOLEAN              AcpiGbl_UseLocalFaultHandler;
+ extern BOOLEAN              AcpiGbl_VerboseHandlers;
+-extern BOOLEAN              AcpiGbl_IgnoreErrors;
+ extern BOOLEAN              AcpiGbl_AbortLoopOnTimeout;
+-extern UINT8                AcpiGbl_RegionFillValue;
+ extern INIT_FILE_ENTRY      *AcpiGbl_InitEntries;
+ extern UINT32               AcpiGbl_InitFileLineCount;
+ extern UINT8                AcpiGbl_UseHwReducedFadt;

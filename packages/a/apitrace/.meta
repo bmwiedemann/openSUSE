@@ -1,0 +1,13 @@
+<package name="apitrace" project="openSUSE:Factory">
+  <title>Tools for tracing OpenGL</title>
+  <description>apitrace consists of a set of tools to:
+- trace OpenGL, OpenGL ES, Direct3D, and DirectDraw APIs calls to a file;
+- replay the recorded calls from a file, on any machine and, for OpenGL and OpenGL ES, on any operating system;
+- inspect state at any call while replaying;
+- view framebuffers and textures;
+- view call data;
+- edit trace files;
+- profile performance of traces;</description>
+  <devel project="X11:Utilities" package="apitrace"/>
+  <url>https://apitrace.github.io/</url>
+</package>

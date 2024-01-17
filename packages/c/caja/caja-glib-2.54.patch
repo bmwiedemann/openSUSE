@@ -1,0 +1,144 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -3,7 +3,7 @@ AC_PREREQ(2.54)
+ dnl ===========================================================================
+ 
+ m4_define(gdk-pixbuf_minver,           2.36.5)
+-m4_define(glib_minver,                 2.58.1)
++m4_define(glib_minver,                 2.54.0)
+ m4_define(gio_minver,                  2.50.0)
+ m4_define(mate_desktop_minver,         1.17.3)
+ m4_define(pango_minver,                1.1.2)
+--- a/eel/eel-string.c
++++ b/eel/eel-string.c
+@@ -754,6 +754,110 @@ eel_strdup_printf_with_custom (EelPrintf
+     return res;
+ }
+ 
++#if !GLIB_CHECK_VERSION (2, 58, 0)
++/*********** refcounted strings ****************/
++
++G_LOCK_DEFINE_STATIC (interned_ref_strings);
++static GHashTable *interned_ref_strings;
++
++char *
++g_ref_string_new (const char *str)
++{
++    gpointer allocated;
++    char *res;
++    volatile gint *count;
++    gsize len;
++
++    g_return_val_if_fail (str != NULL, NULL);
++
++    len = strlen (str);
++    allocated = g_malloc (sizeof (gint) + sizeof (char) * len + 1);
++    count = (volatile gint *) allocated;
++    *count = 1;
++    res = allocated + sizeof (gint);
++    memcpy (res, str, len + 1);
++    return res;
++}
++
++static gboolean
++interned_str_equal (gconstpointer v1,
++                    gconstpointer v2)
++{
++    const char *str1 = v1;
++    const char *str2 = v2;
++
++    if (v1 == v2)
++        return TRUE;
++    return strcmp (str1, str2) == 0;
++}
++
++char *
++g_ref_string_new_intern (const char *str)
++{
++    char *res;
++
++    g_return_val_if_fail (str != NULL, NULL);
++
++    G_LOCK (interned_ref_strings);
++
++    if (G_UNLIKELY (interned_ref_strings == NULL))
++        interned_ref_strings = g_hash_table_new (g_str_hash, interned_str_equal);
++
++    res = g_hash_table_lookup (interned_ref_strings, str);
++    if (res != NULL)
++    {
++        volatile gint *count;
++
++        count = (volatile gint *) (res - sizeof (gint));
++        g_atomic_int_inc (count);
++        G_UNLOCK (interned_ref_strings);
++        return res;
++    }
++
++    res = g_ref_string_new (str);
++    g_hash_table_add (interned_ref_strings, res);
++    G_UNLOCK (interned_ref_strings);
++    return res;
++}
++
++char *
++g_ref_string_acquire (char *str)
++{
++    volatile gint *count;
++
++    g_return_val_if_fail (str != NULL, NULL);
++
++    count = (volatile gint *) (str - sizeof (gint));
++    g_atomic_int_inc (count);
++    return str;
++}
++
++void
++g_ref_string_release (char *str)
++{
++    volatile gint *count;
++
++    g_return_if_fail (str != NULL);
++
++    count = (volatile gint *) (str - sizeof (gint));
++
++    if (!g_atomic_int_dec_and_test (count))
++        return;
++
++    G_LOCK (interned_ref_strings);
++    if (G_LIKELY (interned_ref_strings != NULL))
++    {
++        g_hash_table_remove (interned_ref_strings, str);
++
++        if (g_hash_table_size (interned_ref_strings) == 0)
++            g_clear_pointer (&interned_ref_strings, g_hash_table_destroy);
++    }
++    G_UNLOCK (interned_ref_strings);
++
++    g_free ((gpointer) count);
++}
++#endif
++
+ #if !defined (EEL_OMIT_SELF_CHECK)
+ 
+ static void
+--- a/eel/eel-string.h
++++ b/eel/eel-string.h
+@@ -79,6 +79,17 @@ char *   eel_str_replace_substring
+         const char    *substring,
+         const char    *replacement);
+ 
++#if !GLIB_CHECK_VERSION (2, 58, 0)
++typedef char GRefString;
++
++char *g_ref_string_new        (const char *str);
++char *g_ref_string_new_intern (const char *str);
++
++char *g_ref_string_acquire    (char       *str);
++void  g_ref_string_release    (char       *str);
++#endif
++
++
+ typedef struct
+ {
+     char character;

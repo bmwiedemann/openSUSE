@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>955575b57d7107fb1b4d2e18ae0e3142</srcmd5>
+    <version>1.5.4</version>
+    <time>1698700276</time>
+    <user>anag+factory</user>
+    <comment>new package talosctl: CLI to interact with the Talos Linux immutable Kubernetes distribution</comment>
+    <requestid>1121170</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8428a221a20d51899ecec29bad9165d0</srcmd5>
+    <version>1.5.5</version>
+    <time>1699562179</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1124733</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4f50dfce6fd2e33c9a8464fee019434f</srcmd5>
+    <version>1.6.0</version>
+    <time>1702673410</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1133417</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5c6b611cd2362ddec01ea39b71d23cd2</srcmd5>
+    <version>1.6.1</version>
+    <time>1704660133</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1137399</requestid>
+  </revision>
+</revisionlist>

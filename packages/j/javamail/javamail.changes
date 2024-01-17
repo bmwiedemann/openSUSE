@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Fri Apr 29 12:22:31 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Add alias to com.sun.mail:jakarta.mail needed by ant-javamail
+
+-------------------------------------------------------------------
+Sat Apr  9 14:24:08 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Remove all parents, since this package is not built with maven
+- Assure that every dependency has a version, or at least "any"
+  * fixes use with gradle
+
+-------------------------------------------------------------------
+Wed Mar 30 10:19:25 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build against the standalone JavaEE modules unconditionally
+
+-------------------------------------------------------------------
+Fri Mar 18 19:20:43 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with source/target levels 8
+
+-------------------------------------------------------------------
+Thu Mar 17 03:07:12 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Add glassfish-activation-api dependency for relevant distribution
+  versions to make buildable with JDK that does not contain the
+  JavaEE modules
+
+-------------------------------------------------------------------
+Mon Apr  8 11:14:08 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Do not depend on the jvnet-parent pom since we are not building
+  with maven
+
+-------------------------------------------------------------------
+Tue Jan 22 09:24:23 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial package of javamail 1.5.2
+- Install as maven artifacts

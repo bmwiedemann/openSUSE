@@ -1,0 +1,13 @@
+<package name="macrofusion" project="openSUSE:Factory">
+  <title>GUI to combine photos to get deeper DOF or HDR</title>
+  <description>MacroFusion is a neat little GUI for great tool Enfuse
+(command line) It makes easy fusion few photos to one with great
+DOF (Deep of Field) or DR (Dynamic Range)
+It can be useful for every macro lovers or landscapers
+
+MacroFusion is a fork of EnfuseGui of Chez Gholyo Rebranding is
+due to conflict with another EnfuseGui (for MacOS)
+
+</description>
+  <devel project="graphics" package="macrofusion"/>
+</package>

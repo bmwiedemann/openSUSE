@@ -1,0 +1,24 @@
+#!/bin/bash
+
+nm()
+{
+    NM=$( /usr/bin/mailq 2> /dev/null | tail -1 | /usr/bin/gawk '{ print $5 }' )
+    if [ "$NM" ]
+    then
+        return 0
+    else
+        return 1
+    fi
+}
+
+test -e /var/run/check_mail_queue.pid && exit;
+echo $$ > /var/run/check_mail_queue.pid
+while( nm )
+do
+    /etc/init.d/postfix status || /etc/init.d/postfix start
+    sleep 10
+    /usr/sbin/postfix flush
+done
+/etc/init.d/postfix status && /etc/init.d/postfix stop
+rm /var/run/check_mail_queue.pid
+

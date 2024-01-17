@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Tue Dec  5 16:53:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons
+
+-------------------------------------------------------------------
+Sun Nov 26 15:24:27 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.2.0
+  * Maintenance and upkeep improvements
+
+-------------------------------------------------------------------
+Sat Aug  5 17:11:20 UTC 2023 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * lowered traitlets dependency to >=4
+
+- update to version 0.1.4:
+  * Improvements
+    + Loosen dependency on traitlet so it is available in python 3.6
+      #16 (@vincent-grosbois)
+
+-------------------------------------------------------------------
+Tue Apr  4 14:56:38 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.1.3
+  * feat: provide a default implementation #13 (@maartenbreddels)
+
+-------------------------------------------------------------------
+Sun Dec 25 17:48:15 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Initial specfile for v0.1.2
+- Required by updated ipykernel

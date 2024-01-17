@@ -1,0 +1,61 @@
+-------------------------------------------------------------------
+Sat May 11 20:49:51 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.8.1
+  * No functional changes - Bugfix release only
+
+-------------------------------------------------------------------
+Wed Jan  9 14:46:06 UTC 2019 - mardnh@gmx.de
+
+- Move test tools (perseustest and perseustest_dyn) to a dedicated
+  subpackage (perseus-sdr-tools)
+
+-------------------------------------------------------------------
+Mon Apr  9 20:41:32 UTC 2018 - mardnh@gmx.de
+
+- Update to version 0.8.0
+  * serial number processing cleaned; preserie units documented.
+  * bug fixed in serial number check.
+  * Bug fixed in C++ brackets.
+  * simple test program not installed.
+  * Only perseus-sdr.h is distributed now; simple.c test application
+    now is built and distributed.
+  * Code cleaned in order to distribute one only header file and
+    make types opaque.
+  * Doxygen config file and some remarks added.
+  * Very simple example program added.
+  * Examples programs moved to separate directory for increased
+    clarity.
+  * Fixes to make the library work in multiple devices context.
+  * Initialize perseus_list and close device(s) at exit time if
+    descriptor is not null.
+- Remove not longer needed patches (included upstream):
+  * 0001-Command-channel-via-FIFO.patch
+  * 0002-Fixes-to-make-the-library-work-in-multiple-devices-c.patch
+  * 0002-More-FIFO-commands-implemented.patch
+  * 0003-Bug-fixed-in-Makefile.am-scripts-were-uselessly-inst.patch                                                
+  * 0003-Initialize-perseus_list-and-close-device-s-at-exit-t.patch                                               
+  * 0004-Changed-for-floating-point-output-in-1.0-.-1.0-range.patch    
+
+-------------------------------------------------------------------
+Tue Feb 20 19:09:34 UTC 2018 - mardnh@gmx.de
+
+- Add patches:
+  * 0002-Fixes-to-make-the-library-work-in-multiple-devices-c.patch                                      
+  * 0003-Initialize-perseus_list-and-close-device-s-at-exit-t.patch 
+
+-------------------------------------------------------------------
+Tue Jul  4 18:57:09 UTC 2017 - mardnh@gmx.de
+
+- pwdutils are required for the -udev subpackage
+
+-------------------------------------------------------------------
+Wed Jun 21 21:37:36 UTC 2017 - mpluskal@suse.com
+
+- Update dependencies
+- Disable cpu bound optimizations
+
+-------------------------------------------------------------------
+Wed Jun 21 20:14:41 UTC 2017 - mardnh@gmx.de
+
+- initial package, version 0.7.5

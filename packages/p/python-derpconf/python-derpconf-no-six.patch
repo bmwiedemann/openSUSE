@@ -1,0 +1,77 @@
+Index: derpconf-0.8.4/derpconf/config.py
+===================================================================
+--- derpconf-0.8.4.orig/derpconf/config.py
++++ derpconf-0.8.4/derpconf/config.py
+@@ -15,7 +15,6 @@ from collections import defaultdict
+ from os.path import join, exists, abspath, dirname, isdir
+ import importlib
+ 
+-import six
+ from textwrap import fill
+ 
+ 
+@@ -97,7 +96,7 @@ class Config(object):
+             spec = importlib._bootstrap.ModuleSpec(name, None)
+             module = importlib.util.module_from_spec(spec)
+ 
+-            six.exec_(code, module.__dict__)
++            exec(code, module.__dict__)
+ 
+             conf.config_file = path
+ 
+@@ -122,7 +121,7 @@ class Config(object):
+             spec = importlib._bootstrap.ModuleSpec(name, None)
+             module = importlib.util.module_from_spec(spec)
+ 
+-            six.exec_(code, module.__dict__)
++            exec(code, module.__dict__)
+ 
+             conf = cls(defaults=[])
+ 
+@@ -312,7 +311,7 @@ def format_tuple(value, tabs=0):
+ 
+ 
+ def format_value(value):
+-    if isinstance(value, six.string_types):
++    if isinstance(value, str):
+         return "'%s'" % value
+ 
+     if isinstance(value, (tuple, list, set)):
+Index: derpconf-0.8.4/requirements.txt
+===================================================================
+--- derpconf-0.8.4.orig/requirements.txt
++++ derpconf-0.8.4/requirements.txt
+@@ -3,4 +3,3 @@ pyVows
+ coverage
+ colorama
+ tox
+-six
+Index: derpconf-0.8.4/setup.py
+===================================================================
+--- derpconf-0.8.4.orig/setup.py
++++ derpconf-0.8.4/setup.py
+@@ -18,7 +18,6 @@ tests_require = [
+     'coverage',
+     'colorama',
+     'tox',
+-    'six',
+ ]
+ 
+ 
+@@ -50,7 +49,6 @@ def run_setup(extension_modules=[]):
+         packages=['derpconf'],
+         package_dir={"derpconf": "derpconf"},
+         install_requires=[
+-            'six',
+         ],
+ 
+         extras_require={
+Index: derpconf-0.8.4/tox.ini
+===================================================================
+--- derpconf-0.8.4.orig/tox.ini
++++ derpconf-0.8.4/tox.ini
+@@ -13,4 +13,3 @@ deps =
+     pyVows
+     coverage
+     colorama
+-    six

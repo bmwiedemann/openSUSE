@@ -1,0 +1,299 @@
+-------------------------------------------------------------------
+Sun Dec 10 11:11:19 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.96.1
+  * Fix demo recording as client-only after connection to server
+  * Fix potential buffer overflow in COM_Parse(), e.g. with maps
+    with oversized 'wad' fields.
+  * Minor code cleanups.
+
+-------------------------------------------------------------------
+Thu Sep 21 13:19:56 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 0.96.0
+  * Adjustments to joystick defaults and behaviour
+  * Add missing support for -ip command line option on unix / macOS.
+  * Backport angled sprites code from FTEQW (spriteframetype: 2, must have 8 frames per group.)
+  * Bump the progs execution runaway loop limit to 16M.
+  * Add signon buffer fragmentation to fix SZ_GetSpace errors on certain maps when using protocol 999.
+  * Increased MAX_DATAGRAM to 64000 to overcome packet overflows.
+  * Bump the MAXALIASFRAMES limit to 1024.
+  * Fix arrays to have proper sizes in gl mesh code, reflecting MAXALIASTRIS and MAXALIASVERTS correctly. (fixes SIGSEGV in mj4m4/mj4m5.)
+  * Increased default value of gl_farclip to 65536.
+  * Increase chase cam target trace distance to allow for chasecam to function in large open maps (useful e.g. for the func_vehicle mod.)
+  * Raised default maximum number of particles to 16384 (can be set up to 32768 with -particles on the command line.)
+  * Fix on-screen keyboard showing up suddenly on Steam Deck when starting a map.
+  * Fix viewmodel interpolation with >10Hz animations.
+  * Fix a memory leak when exiting game in SDL2 builds.
+  * Fix a possible crash when handling clipboard data on macOS.
+  * Fix a potential crash after loading of saved game.
+  * Fix possible out-of-bound reads when handling progs type sizes.
+  * Fix Dutch angle VP_PARALLEL_UPRIGHT sprites.
+  * Fix an issue with lights blending by using 10 bit color depth for lightmaps. (For GLSL mode only.) Disable with "-nopackedpixels", if necessary.
+  * No relative motions when the window is not focused.
+  * Status bar and intermission screen tweaks.
+  * Properly display monster counts > 3 digits.
+  * Fix console animation with scr_conspeed <= 0.
+  * Fix mouselook not working upon game quickload during a demo play.
+  * Fix console when server is run noninteractively with stdin redirected from /dev/null.
+  * Minor code cleanups. Updated third party code, e.g. SDL, music codecs, etc.
+
+-------------------------------------------------------------------
+Sat Nov  5 13:29:38 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.95.1
+  * Allow mixing lit and unlit textures in the same map.
+  * Water texture mipmapping support - fixes glistening effect on
+    distant water.
+  * Fix screen flashes in some maps with AMD's new drivers.
+  * Defend against zero-sized textures, e.g. __TB_empty
+    in qbj_grue.bsp
+  * Fix possible file pointer leak in game load code.
+  * Minor code cleanups.
+
+-------------------------------------------------------------------
+Thu Sep 15 19:19:21 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.95.0
+  * Add support for lit water.
+  * Add model scale support -- requires protocol 999.
+  * Add sv_cheats cvar for 2021 rerelease.
+  * Clear the startdemo list on game change.
+  * Try light trace from entity origin first.
+
+-------------------------------------------------------------------
+Mon Jul 25 14:56:09 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.94.7
+  * Fix console history buffer wrapping.
+  * Fix wrong external texture use after vid_restart.
+  * Update lodepng from mainstream git.
+  * Miscellaneous source code cleanups.
+
+-------------------------------------------------------------------
+Mon Jul  4 09:17:52 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.94.6
+  * Server protocol size check fixes for sounds and particles.
+  * An invalid memory access fix in the jpg screenshot writer.
+  * Minor build fix for C++ compilers.
+  * Other small improvements elsewhere in the code.
+
+-------------------------------------------------------------------
+Wed Jun 15 18:55:59 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.94.5
+  * Compatibility with new SDL2 versioning scheme.
+  * Revised min/max/clamp macros' usage.
+  * Fixed a potential undefined behavior in R_DrawAliasModel.
+  * Fixed parsing of the time argument of svc_fog server message.
+  * Other small improvements elsewhere in the code.
+
+-------------------------------------------------------------------
+Sat May 14 16:34:40 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.94.4
+  * Fixed getting stuck with loading plaque upon attempting to
+    load a bad save from the menu
+  * Fixed SZ_GetSpace server crashes, e.g. in ad_magna or
+    ad_mountain.
+  * Fixed intermission camera angles during demo playback.
+  * Don't reset onground flag on every new server message..
+  * Re-enabled title demos by default (turn off with
+    cl_startdemos 0).
+  * Don't autoplay next demo after a timedemo.
+  * Fixed bad parsing of cdtrack in hipdemo1 from Scourge of
+    Armagon.
+  * Fixed serverinfo off-by-one nummodels/numsounds for
+    protocol 15.
+  * Support for Quake 2021 update 3.
+  * Implemented quad/pentagram dlights for Quake 2021 rerelease.
+  * Implemented 2021 rerelease localsound builtin &
+    svc_localsound (56).
+  * Several other improvements to Quake 2021 rerelease support.
+  * Several other small fixes and improvements all over the code.
+  * Updated third party code (SDL, lodepng, miniz, some of the
+    codecs, etc.).
+
+-------------------------------------------------------------------
+Mon Dec  6 21:37:11 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.94.3
+  * Handle sky textures with non-standard sizes and warn about
+    them (e.g.  ad_tears).
+  * Allow loading textures not aligned to 16 pixels and warn about
+    them (eg.  the horde2 map of Dimension of the Machine from
+    2021 rerelease update/2.)
+
+-------------------------------------------------------------------
+Sat Oct 16 11:16:53 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.94.2
+  * Support for playing the latest update.
+  * Fix pitch black models in lit areas in DOTM.
+  * Fix black candles in the DOTM start map.
+  * Look for QuakeEX.kpf under userdir, too.
+
+-------------------------------------------------------------------
+Tue Sep  7 07:09:02 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.94.1
+  * Fix lightmap issues after vkQuake surface mark/cull
+    optimizations merge.
+
+-------------------------------------------------------------------
+Fri Sep  3 22:13:39 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.94.0
+  *  Initial support for playing the 'Quake 2021 re-release'
+     content.
+  *  Fix rendering bug when cl_bobcycle was set to zero.
+  *  Fixed buffer overflow with large char skybox names.
+  *  Fixed a missing MAXALIASFRAMES bounds check.
+  *  OpenGL: workaround Intel UHD 600 driver bug.
+  *  OpenGL: merged surface mark & cull optimizations from vkQuake.
+  *  Compensate viewmodel distortion at fov > 90.
+  *  Raised MAX_GLTEXTURES limit from 2048 to 4096 for now.
+  *  Changed 'model has a skin taller than 480' error into a
+     warning.
+  *  Reject lit files if they're the wrong size (eg hipnotic/
+     start.bsp vs id1/start.lit or just a bsp that no longer has
+     any coloured lits, etc)
+  *  External ent files are now versioned using 4 digit crc of the
+     original map's ents, like e1m1@c49d.ent, which is much safer.
+     The old method (e.g. e1m1.ent) still works but isn't
+     recommended.
+  *  Support for external vis files.
+  *  Save: remove CR/LFs from level name to avoids broken saves,
+     e.g.  with autumn_sp map.
+  *  Music: improvements to mp3 tag detection / skipping.
+  *  Music: umx loader fix for malformed / crafted files.
+  *  New console command music_jump: Jump to given order in music,
+     like Unreal's music change - only for module (tracker) music.
+  *  Updated third-party libraries (music codecs, SDL, etc.) Other
+     minor fixes, tidy-ups and protability tweaks.
+
+-------------------------------------------------------------------
+Sat Feb 20 10:11:15 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Specfile cleanup
+
+-------------------------------------------------------------------
+Thu Nov 14 18:49:29 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.93.2
+  * Lightmaps are now dynamically allocated (from QSS), and
+    BLOCK_WIDTH/HEIGHT raised from 128 to 256.
+  * Fixed several uncheked limits that would crash the Slayer's
+    Testaments mod
+  * Raised MAXALIASTRIS from 2048 to 4096, so that the Slayer's
+    Testaments mod works.
+  * Fixed 'pants' and 'shirt' types so that those textures load
+    correctly on platforms where char is unsigned by default
+  • Update the third-party libraries. Other fixes/cleanups.
+
+-------------------------------------------------------------------
+Sun Aug  5 18:18:40 UTC 2018 - mardnh@gmx.de
+
+- Update to version 0.93.1
+  *  Fixed a fog regression which was introduced in 0.93.0.
+  *  Fixed a crash (buffer overflow) with invalid vis data.
+  *  Fixed buttons crushing players in 64-bit builds.
+  *  Change controller movement to use cubic easing by default; added
+    "joy_exponent_move" cvar.
+  *  config.cfg is no longer written in case of a Sys_Error.
+  *  Fixed Opus encoded cd tracks not being recognized as ripped tracks.
+  *  Update the third-party libraries. Other fixes/cleanups.
+
+- Update to version 0.93.0
+  *  Raise default "joy_deadzone_trigger" cvar to 0.2.
+  *  Raise console buffer size to 1MB.
+  *  Raise MAX_STATIC_ENTITIES from 512 to 4096.
+  *  Raise MAX_STACK_DEPTH from 32 to 64.
+  *  Raise command buffer size from 8K to 256K to support large configs.
+  *  Remove MAX_EFRAGS and MAX_MAP_LEAFS limits.
+  *  Remove "Loadgame buffer overflow" limit, which could happen when
+     loading DP or QSS saves.
+  *  Adjust "exceeds standard limit of" debug warnings to include the
+     actual QS limit.
+  *  Change "game" command to now exec quake.rc.
+  *  Change "games" / "mods" commands to list all subdirectories.
+  *  Restore vid_refreshrate from fitzquake-0.85 for SDL2 builds.
+  *  Alpha-masked model support. (MF_HOLEY: 0x4000).
+  *  Invalid skin index now draws skin 0 (WinQuake behaviour) instead of
+     blue checkerboard.
+  *  Change default screenshot format to png. The 'screenshot' command
+     now supports optional format (tga, png or jpg) and quality (1-100)
+     arguments.
+  *  Revert "always run" changes from 0.85.9 and move the QuakeSpasm
+     customizations to a new "cl_alwaysrun" cvar: Set to 1 in order to
+     scale forward/side/up speed by "cl_movespeedkey" (usually 2), and
+     to make "speedkey" act as "slowkey".
+  *  Change "always run" menu option to offer three choices:
+   - off        (cl_alwaysrun 0, cl_forwardspeed 200, cl_backspeed 200)
+   - vanilla    (cl_alwaysrun 0, cl_forwardspeed 400, cl_backspeed 400)
+   - quakespasm (cl_alwaysrun 1, cl_forwardspeed 200, cl_backspeed 200)
+  *  New "r_scale" cvar. Set to 2, 3, or 4 to render the view at 1/2,
+     1/3, or 1/4 resolution.
+  *  New "r_viewmodel_quake" cvar. Set to 1 for WinQuake gun position
+     (from MarkV).
+  *  New "find" / "apropos" command, searches for commands/cvar names
+     for the given substring (from Spike).
+  *  New "randmap" command for loading a random map.
+  *  New "gl_cshiftpercent_contents", "gl_cshiftpercent_damage",
+     "gl_cshiftpercent_bonus", "gl_cshiftpercent_powerup" cvars for
+     tuning the strength of specic view blends.
+  *  GL2 renderer: use a GLSL shader for world faces. Fixes reports of
+     integrated+discrete GPU laptops having inconsistent fog rendering.
+  *  Fix macOS startup delay (avoid calling gethostbyname() for ".local"
+     hostnames).
+  *  Fix memory corruption in PF_lightstyle with out of bounds
+     lightstyles.
+  *  Fix crash in BoundPoly with polygons extending beyond +/-9999.
+  *  Fix QS window to stay on the current monitor when changing video
+     modes (SDL2 only).
+  *  Fix possible freeze in SV_TouchLinks regardless of what QC does in
+     the touch function.
+  *  Fix for maps with empty strings for vector keys (e.g. "origin");
+     don't read uninitialized memory.
+  *  Support for Open Watcom compiler.
+  *  Update the third-party libraries.
+
+-------------------------------------------------------------------
+Tue Jun 27 23:19:40 UTC 2017 - luke.nukem.jones@gmail.com
+
+- Fix broken appdata xml
+
+-------------------------------------------------------------------
+Fri Feb 24 13:16:11 UTC 2017 - rpm@fthiessen.de
+
+- Update to 0.92.1
+  * Fixed large menu scale factors (was broken in 0.92.0)
+  * Fixed PAUSE key (was broken in 0.92.0)
+- Fixed build on Leap 42.1 (appdata directory)
+
+-------------------------------------------------------------------
+Fri Feb 10 02:18:55 UTC 2017 - luke.nukem.jones@gmail.com
+
+- Add appdata.xml
+
+-------------------------------------------------------------------
+Sat Jul 30 22:22:49 UTC 2016 - jengelh@inai.de
+
+- Update License and description field
+
+-------------------------------------------------------------------
+Tue Jul 19 09:34:12 UTC 2016 - rpm@fthiessen.de
+
+- Fixed file-contains-date-and-time rpmlint error.
+
+-------------------------------------------------------------------
+Mon Jul 18 20:46:43 UTC 2016 - luke.nukem.jones@gmail.com
+
+- Update to v0.92.0 
+
+-------------------------------------------------------------------
+Fri Jul 15 19:45:26 UTC 2016 - luke.nukem.jones@gmail.com
+
+- Prepare packaging for inclusion in Factory 
+

@@ -1,0 +1,133 @@
+-------------------------------------------------------------------
+Tue Oct 31 17:51:46 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.9
+  Changes:
+  * add --as-idn and punycode to IDN conversion
+  * add --curl to only count as valid URLs supported by libcurl
+  Bugfixes:
+  * accept * as a trim name to trim a literal asterisk name
+  * format null as \u0000 for --json
+  * run --trim query before --append query
+- Drop patch
+  * trurl-disable-broken-tests.patch (fixed by upstream)
+
+-------------------------------------------------------------------
+Fri Sep 22 06:43:33 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Add patch:
+  * trurl-disable-broken-tests.patch
+
+-------------------------------------------------------------------
+Sat Jun 17 12:01:48 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.8
+  Changes:
+  * add --urlencode
+  Bugfixes:
+  * --json/--get: .[].parts and {component} should be urldecoded
+    not encoded
+  * tests: use empty file instead of /dev/null
+  * typos in manpage
+  * Makefile: Allow CFLAGS to be appendable
+  * Makefile: be explicit in C standard to use
+
+-------------------------------------------------------------------
+Tue Jun 13 13:17:57 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 0.7
+  * Changes:
+    --default-port to ask for the default to be used if not present
+    --keep-port to ask for the port number to be there even if default
+    --no-guess-scheme option to disable scheme guessing
+    --punycode to ask for the punycode version in output
+
+  * Bugfixes:
+    --help returns 0 instead of 1
+    --json: print empty arrays
+    --redirect: don't silently ignore failed redirections.
+    refuse setting same component in --set as --iterate
+    restructure the JSON output object
+    send -h output to stdout, not stderr
+
+-------------------------------------------------------------------
+Wed Apr 26 18:24:50 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.6
+  * offer {puny:host} and {puny:url} for --get
+  * provide built-with libcurl version info for --version
+  * support for skipping tests
+  * test.py replaced test.pl
+  * test.py supports --with-valgrind
+  * tests.json: extended and updated
+  * URL-QUIRKS: specify if they are build-time or run-time
+    requirements
+
+-------------------------------------------------------------------
+Mon Apr 17 18:08:18 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.5
+  Changes since previous release
+  * --get supports variables in [brackets] as well
+  * --get {query-all:key} outputs all values for 'key' in the
+    query
+  * switched to test.py for tests
+  * --iterate is a new option.
+  Bugfixes since previous release
+  * handle %00 sequences in {query:key} output
+  * support reading URL from a file without a newline
+  * fixed a json memory-leak
+
+-------------------------------------------------------------------
+Mon Apr 10 14:13:12 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.4
+  Changes
+  * --get supports showing {query:key}
+  * --json outputs query pairs under "params"
+  * -a is an --append shortcut
+  * add --query-separator
+  * add --sort-query
+  Bugfixes
+  * components names are lower case and case sensitive
+  * fixed the json output of UTF-8 sequences
+  * flush stdout after handling every URL
+  * mixing --json with --get is an error
+  * more test cases
+  * show error messsage when component setting fails
+  * support "--" end-of-options argument
+  * support for building with older libcurl versions
+
+-------------------------------------------------------------------
+Thu Apr  6 13:41:01 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.3
+  Changes
+  * the set port is the same as the scheme-default, don't show
+  * many more tests
+  * https://curl.se/trurl is now the project's website
+  * added --accept-space
+  * added --trim
+  Bugfixes
+  * setting port to a blank now clears it
+  * improved the man page
+  * fix --append query when no previous query exists
+  * output JSON as an array
+  * provide the -h list in pure alphabetical order
+  * use 0644 for the man page install
+  * use Test::More inside of test.pl
+  * nicer JSON tests and test output
+- Drop patch:
+  * trurl-manpage-fix-spurious-executable-perm-manpage.patch
+- Run testsuite
+
+-------------------------------------------------------------------
+Mon Apr  3 20:36:08 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Add patch
+  * trurl-manpage-fix-spurious-executable-perm-manpage.patch
+
+-------------------------------------------------------------------
+Mon Apr  3 20:29:56 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 0.2

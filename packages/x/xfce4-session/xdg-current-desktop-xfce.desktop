@@ -1,0 +1,13 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=0.9.4
+Type=Application
+Name=xdg-current-desktop-xfce
+Comment=
+Exec=sh -c "dbus-update-activation-environment --systemd XDG_CURRENT_DESKTOP=$XDG_CURRENT_DESKTOP && systemctl --user restart xdg-desktop-portal"
+OnlyShowIn=XFCE;
+RunHook=0
+StartupNotify=false
+Terminal=false
+Hidden=false
+

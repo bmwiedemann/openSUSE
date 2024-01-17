@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0342bd6e64ea2606fa236ec701b99f2b</srcmd5>
+    <version>1.2.19</version>
+    <time>1645629958</time>
+    <user>dimstar_suse</user>
+    <comment>A new package as a drop-in replacement of log4j12</comment>
+    <requestid>956845</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2beaa5d5ce33a86080b5eb7d9e1ea787</srcmd5>
+    <version>1.2.19</version>
+    <time>1645723112</time>
+    <user>dimstar_suse</user>
+    <comment>Fine-tune Obsoletes/Provides</comment>
+    <requestid>957132</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>d80d733f1e9531f97c76cdea8180a0e8</srcmd5>
+    <version>1.2.19</version>
+    <time>1648479555</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source/target levels 8</comment>
+    <requestid>963029</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e87d32d544d20125aa47213c2495a66f</srcmd5>
+    <version>1.2.20</version>
+    <time>1649876655</time>
+    <user>dimstar_suse</user>
+    <comment>1.2.20</comment>
+    <requestid>969222</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>aa4b1488aeb20e9cc81812c44a127a47</srcmd5>
+    <version>1.2.25</version>
+    <time>1697748427</time>
+    <user>anag+factory</user>
+    <comment>1.2.25</comment>
+    <requestid>1118377</requestid>
+  </revision>
+</revisionlist>

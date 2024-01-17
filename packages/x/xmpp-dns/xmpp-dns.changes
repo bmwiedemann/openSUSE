@@ -1,0 +1,76 @@
+-------------------------------------------------------------------
+Tue Dec 26 08:10:24 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.3.10:
+  * Fix stream initialization bug with StartTLS
+  * Further improve StartTLS stream initialization.
+  * Improve error messages when server closes connection.
+
+-------------------------------------------------------------------
+Fri Nov 10 19:29:21 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.3.9:
+  * Also apply timeout when server doesn't reply to StartTLS
+    initialisation.
+
+-------------------------------------------------------------------
+Wed Aug 23 03:41:00 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.3.8:
+  * Don't look up IPs and don't try to connect if the SRV records
+    target is ".".
+
+-------------------------------------------------------------------
+Thu Aug 17 07:25:34 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.3.7:
+  * Show reason for denied s2s due to policy-violation.
+  * Apply timeout to TLS handshake as well instead of only for the
+    tcp connection.
+
+-------------------------------------------------------------------
+Tue Mar 28 06:50:51 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.3.6:
+  * Remove println() added for debugging.
+
+-------------------------------------------------------------------
+Tue Mar 28 06:50:12 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.3.5:
+  * Don't use CNAME of xmpp server domain for SRV lookups
+    (via xmppsrv UNRELEASED).
+
+-------------------------------------------------------------------
+Fri Oct 28 13:35:31 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.3.4:
+  * Fix namespace for xmpps-client stream opening (jabber:client
+    instead of jabber:server).
+  * Add from attribute for server-to-server connection test.
+
+-------------------------------------------------------------------
+Tue Oct 18 12:04:13 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.3.3:
+  * Fix wrong timeout parsing on some systems.
+
+-------------------------------------------------------------------
+Fri Oct  7 07:29:00 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.3.2:
+  * Fix detection of XMPP support when using direct TLS and ALPN.
+
+-------------------------------------------------------------------
+Mon Aug 22 08:39:21 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.3.1:
+  * Print error details if SRV lookup fails.
+  * Print error details if IP lookup fails.
+  * Respect CNAME records.
+  * Detect CNAME loops (max. 5 CNAMEs) (via xmppsrv >= 0.2.4)
+
+-------------------------------------------------------------------
+Thu Aug  4 10:38:24 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Initial package of xmpp-dns 0.3.0 for openSUSE

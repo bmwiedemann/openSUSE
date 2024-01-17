@@ -1,0 +1,5 @@
+<package name="capstone" project="openSUSE:Factory">
+  <title>capstone</title>
+  <description>capstone from epel for edb</description>
+  <devel project="devel:tools" package="capstone"/>
+</package>

@@ -1,0 +1,40 @@
+From d2616244b3193080f07b75a425666495d53b29bc Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Thu, 17 Sep 2020 18:49:55 +0200
+Subject: [PATCH] Fix build failure with GCC10
+
+---
+ src/options.c   | 3 ---
+ src/recognize.c | 2 +-
+ 2 files changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/src/options.c b/src/options.c
+index 174ccd0..7132a5b 100644
+--- a/src/options.c
++++ b/src/options.c
+@@ -26,9 +26,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ #include <stdlib.h>
+ #include <string.h>
+ 
+-/* preprocess.c */
+-int ignore_stroke_dir, ignore_stroke_num;
+-
+ /* cellwidget.c */
+ extern int cell_width, cell_height, cell_cols_pref, cell_rows_pref,
+            train_on_input, right_to_left, keyboard_enabled, xinput_enabled;
+diff --git a/src/recognize.c b/src/recognize.c
+index 26cd083..4af7994 100644
+--- a/src/recognize.c
++++ b/src/recognize.c
+@@ -29,7 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ #include "recognize.h"
+ 
+ /* preprocess.c */
+-int prep_examined;
++extern int prep_examined;
+ 
+ void engine_prep(void);
+ 
+-- 
+2.28.0
+

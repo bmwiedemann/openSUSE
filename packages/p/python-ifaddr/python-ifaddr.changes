@@ -1,0 +1,52 @@
+-------------------------------------------------------------------
+Tue Jun 20 17:41:57 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Sun Jan  8 10:30:44 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- SPEC clean up
+
+-------------------------------------------------------------------
+Tue Jul 19 12:01:31 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.2.0:
+  * Added an option to include IP-less adapters, thanks to memory
+  * Fixed a bug where an interface's name was `bytes`, not `str`, on Windows
+  * Added an implementation of `netifaces.interfaces()` (available through
+    `ifaddr.netifaces.interfaces()`)
+  * Added type hints
+  * Dropped Python 3.6 support
+
+-------------------------------------------------------------------
+Sun Jun 14 09:23:55 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.1.7:
+  * Fixed Python 3 compatibility in the examples, thanks to Tristan Stenner and Josef Schlehofer
+   * Exposed network interface indexes in Adapter.index, thanks to Dmitry Tantsur
+  * Added the license file to distributions on PyPI, thanks to Tomáš Chvátal
+  * Fixed Illumos/Solaris compatibility based on a patch proposed by Jorge Schrauwen
+  * Set up universal wheels, ifaddr will have both source and wheel distributions on PyPI from now on
+
+-------------------------------------------------------------------
+Mon Apr 20 11:47:26 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build without python2
+
+-------------------------------------------------------------------
+Tue Mar 12 16:34:30 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.1.6:
+  * Restrict ipaddress dependency to Python < 3.3
+  * Fixes installation of ipaddress module
+
+-------------------------------------------------------------------
+Fri Nov  9 09:36:58 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase.
+
+-------------------------------------------------------------------
+Fri Nov  2 20:09:04 UTC 2018 - alarrosa@suse.com
+
+- Initial release of python-ifaddr 0.1.4

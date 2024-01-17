@@ -1,0 +1,50 @@
+-------------------------------------------------------------------
+Fri Apr  7 07:47:48 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update entropy to version 0.4.1.10 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Thu Mar 30 17:06:43 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Tue Aug 23 14:54:28 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update entropy to version 0.4.1.10.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
+Mon Aug 15 13:30:36 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update entropy to version 0.4.1.7 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Wed Nov  3 15:52:45 UTC 2021 - psimons@suse.com
+
+- Update entropy to version 0.4.1.7.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
+Tue Jun  8 10:48:16 UTC 2021 - psimons@suse.com
+
+- Update entropy to version 0.4.1.6 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Tue Aug 18 10:44:46 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Tue Jun  9 09:26:16 UTC 2020 - psimons@suse.com
+
+- Add entropy at version 0.4.1.6.
+

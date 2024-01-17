@@ -1,0 +1,79 @@
+-------------------------------------------------------------------
+Wed Jul  4 12:39:06 CEST 2012 - pgajdos@suse.cz
+
+- amend spec file to reflect new font packaging scheme
+  (see openFATE#313536);
+
+-------------------------------------------------------------------
+Thu May 17 09:10:33 UTC 2012 - pgajdos@suse.com
+
+- call spec-cleaner
+
+-------------------------------------------------------------------
+Wed May  9 09:51:58 UTC 2012 - pgajdos@suse.com
+
+- renamed fonts-thryomanes -> thryomanes-fonts
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Apply packaging guidelines (remove redundant/obsolete
+  tags/sections from specfile, etc.)
+
+-------------------------------------------------------------------
+Thu Apr  8 18:10:00 CEST 2010 - tiwai@suse.de
+
+- removed unnecessary buildrequires for too old distros
+
+-------------------------------------------------------------------
+Thu Mar 29 19:15:35 CEST 2007 - dmueller@suse.de
+
+- add unzip to BuildRequires
+
+-------------------------------------------------------------------
+Tue Aug 08 12:59:03 CEST 2006 - mfabian@suse.de
+
+- move fonts to /usr/share/fonts because of the move to Xorg X11R7.
+
+-------------------------------------------------------------------
+Tue Jun 20 10:02:26 CEST 2006 - mfabian@suse.de
+
+- update to 1.2.
+
+-------------------------------------------------------------------
+Wed Mar 01 14:46:24 CET 2006 - mfabian@suse.de
+
+- add "Provides: locale(bg;el;ru)".
+
+-------------------------------------------------------------------
+Wed Jan 25 21:46:22 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Dec 03 19:02:41 CET 2004 - mfabian@suse.dec
+
+- use new macro "%run_suseconfig_fonts".
+
+-------------------------------------------------------------------
+Mon Sep 13 17:20:46 CEST 2004 - mfabian@suse.de
+
+- Bugzilla #45156: add "Provides: scalable-font-el,
+  scalable-font-ru, scalable-font-bg".
+
+-------------------------------------------------------------------
+Thu Mar 18 09:41:06 CET 2004 - mfabian@suse.de
+
+- use %suseconfig_fonts_prereq
+- run SuSEconfig.fonts and SuSEconfig.pango in %post and %postun
+
+-------------------------------------------------------------------
+Mon Feb 23 11:52:25 CET 2004 - hmacht@suse.de
+
+- building as non-root
+
+-------------------------------------------------------------------
+Wed Jun 18 16:01:37 CEST 2003 - sndirsch@suse.de
+
+- created package
+

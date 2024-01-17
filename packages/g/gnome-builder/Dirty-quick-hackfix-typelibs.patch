@@ -1,0 +1,13 @@
+Index: gnome-builder-43.0/src/plugins/meson-templates/resources/src/main-gtk4.py
+===================================================================
+--- gnome-builder-43.0.orig/src/plugins/meson-templates/resources/src/main-gtk4.py
++++ gnome-builder-43.0/src/plugins/meson-templates/resources/src/main-gtk4.py
+@@ -8,7 +8,7 @@ gi.require_version('Gtk', '4.0')
+ gi.require_version('Adw', '1')
+ {{end}}
+ 
+-from gi.repository import Gtk, Gio{{if is_adwaita}}, Adw{{end}}
++from gi.repository import Gtk, Gio, Adw
+ 
+ from .window import {{PreFix}}Window
+ 

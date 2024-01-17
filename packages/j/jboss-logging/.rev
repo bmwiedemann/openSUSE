@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b2855007588352f13442c9c80329af39</srcmd5>
+    <version>3.3.0</version>
+    <time>1574104084</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>748714</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c7adb5262aabc58ddd276bc6375b4bda</srcmd5>
+    <version>3.4.1</version>
+    <time>1587581204</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>794039</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>56dddb41b78d6627b14284250afc1cb7</srcmd5>
+    <version>3.4.1</version>
+    <time>1645639616</time>
+    <user>dimstar_suse</user>
+    <comment>Build against reload4j</comment>
+    <requestid>957074</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>ed5b5bfe333524c79a7ef5f3e3ebc6ee</srcmd5>
+    <version>3.4.1</version>
+    <time>1649544121</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1197642</comment>
+    <requestid>967931</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>4637c7f8d98c214e322ea599f0af51b2</srcmd5>
+    <version>3.4.1</version>
+    <time>1694344237</time>
+    <user>anag+factory</user>
+    <comment>Reproducible builds improvement</comment>
+    <requestid>1109965</requestid>
+  </revision>
+</revisionlist>

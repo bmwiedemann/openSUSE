@@ -1,0 +1,11 @@
+--- tkinfo.orig	Wed Apr 11 11:23:38 2001
++++ tkinfo	Wed Apr 11 11:24:02 2001
+@@ -1,7 +1,4 @@
+-#!/bin/sh
+-# This is a Tcl/Tk script to be interpreted by wish (Tk4.0 or better): \
+-exec wish "$0" "$@"
+-
++#!/usr/bin/wish
+ 
+ ##########################################################################
+ # Version of TkInfo:

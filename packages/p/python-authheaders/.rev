@@ -1,0 +1,109 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>98f866b6bbd7432bd177e08aa2fdc81a</srcmd5>
+    <version>0.12.0</version>
+    <time>1575463925</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>752899</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>482a20dbac1b2aececdad677cd0053c8</srcmd5>
+    <version>0.12.0</version>
+    <time>1579557271</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>765757</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>f09456b8e021d12b46348291b6fe22ba</srcmd5>
+    <version>0.12.0</version>
+    <time>1579867938</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>766680</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a0391b71f31e1427dfcd9910a4abcea4</srcmd5>
+    <version>0.13.0</version>
+    <time>1586869799</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.13.0:
+  * Switch from the deprecated publicsuffix package to publicsuffix2</comment>
+    <requestid>793393</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a6abf253f2c0278c30707e205d2f1878</srcmd5>
+    <version>0.14.1</version>
+    <time>1642455240</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.14.1:
+  - Bump version to fix pypi artifacts, no code changes
+  - Use email.utils to parse the From header addresses (Thanks to Adam Clark
+    for noting this issue and providing the fix) Fixes Github #5
+  - Correct minimum authres version requirment in setup.py
+  - Catch more errors.  Add DKIM temperror.  (Thanks to 'niftylettuce') Fixes
+    Github #18
+  - Skip DMARC records with no 'p' tag and don't raise an error (also thanks
+    to 'niftylettuce')  Fixes Github #14
+  - Fix issues with upper case characters in domain (Thanks to Mark Sapiro for
+    root causing the issue and providing a fix for the domain name regex)
+    Fixes Github #13
+  - Include ARC result comment is A-R header field when ARC fails.  Fixes
+    Github #12
+  - Handle the case where no valid From is found.  Fixes Github #15</comment>
+    <requestid>946674</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>4275ae3d612a56428d208b5f60a1226a</srcmd5>
+    <version>0.14.1</version>
+    <time>1686665457</time>
+    <user>dimstar_suse</user>
+    <comment>- tag sle15 build for new python</comment>
+    <requestid>1092851</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>befd7ff5b35a7577af0f6fdeaa31b46d</srcmd5>
+    <version>0.15.3</version>
+    <time>1698952984</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1122674</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>fc9204bfb504214ce26a7f41ac98874c</srcmd5>
+    <version>0.15.3</version>
+    <time>1704753989</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1137568</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d78352269bc60b8c579f1ec5c536f8b8</srcmd5>
+    <version>0.16.0</version>
+    <time>1705353455</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.16.0
+  * Switch from pkg_resources resource_filename to
+    importlib_resources
+  * Add initial doctests for dmarc_lookup.py
+  * Correctly strip trailing backslash in parsed DMARC record
+    components
+  * Handle DMARC records containing empty quoted values (#26)
+  * Add dmarc_lookup.DMARCException and raise it for missing
+    tag/values (#27)
+  * Catch DMARCException error and return DMARC permerror
+    result (#27)
+  * Set DMARC result to permerror if From domain cannot be
+    extracted (#25)
+  * Use dns.resolver.resolve instead of dns.resolver.query
+    due to deprecation
+  * Update PSL from upstream
+  * Add new option for authenticate_message, dmarcbis to
+    enable DMARC policy
+  * discovery and alignment per draft-ietf-dmarc-dmarcbis
+    (default is False)
+- Removed authheaders-importlib-resources.patch</comment>
+    <requestid>1138689</requestid>
+  </revision>
+</revisionlist>

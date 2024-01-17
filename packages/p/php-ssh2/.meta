@@ -1,0 +1,5 @@
+<package name="php-ssh2" project="openSUSE:Factory">
+  <title>PHP bindings for the libssh2 library</title>
+  <description>This package provides PHP bindings for the libssh2 library</description>
+  <devel project="server:php:extensions" package="php-ssh2"/>
+</package>

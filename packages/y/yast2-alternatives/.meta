@@ -1,0 +1,5 @@
+<package name="yast2-alternatives" project="openSUSE:Factory">
+  <title>YaST2 - Alternatives</title>
+  <description></description>
+  <devel project="YaST:Head" package="yast2-alternatives"/>
+</package>

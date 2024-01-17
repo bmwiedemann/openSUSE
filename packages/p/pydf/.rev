@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5910218f35e6c3f3b2d186bc29effaf1</srcmd5>
+    <version>12</version>
+    <time>1446647599</time>
+    <user>dimstar_suse</user>
+    <comment>Usefull package, is in i.e debian</comment>
+    <requestid>341766</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>42a07dd97a692b64904d0f8998bd70d4</srcmd5>
+    <version>12</version>
+    <time>1459002280</time>
+    <user>dimstar_suse</user>
+    <comment>- Use python3 by default</comment>
+    <requestid>376221</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>cee64c86a2234cb21552f6ad5b73a2f5</srcmd5>
+    <version>12</version>
+    <time>1514842247</time>
+    <user>dimstar_suse</user>
+    <comment>- Use correct rpm group</comment>
+    <requestid>560870</requestid>
+  </revision>
+</revisionlist>

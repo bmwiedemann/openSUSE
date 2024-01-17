@@ -1,0 +1,451 @@
+-------------------------------------------------------------------
+Sun Jun 11 15:06:25 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.9.4
+  * Sisotool: Fix Matplotlib deprecation of axis share handling by
+    @bnavigator in #834
+  * Fix Interconnect name clobbering by @henklaak in #857
+  * Solve #862 and #864: bode_plot phase wrapping incorrect for
+    multiple systems by @henklaak in #863
+  * Fix root_locus() handling of ax parameter by @henklaak in #871
+  * Small fixes based on Caltech CDS 112 course by @murrayrm in
+    #849
+  * Feature print zpk by @henklaak in #869
+  * Feature enable doctest by @henklaak in #868
+  * Optimization-based and moving horizon estimation by @murrayrm
+    in #877
+  * new examples for Simulink-like interconnection of digital and
+    nonlinear systems by @sawyerbfuller in #882
+  * fix blank bode plot in rootlocus_pid_designer by @sawyerbfuller
+    in #883
+  * bandwidth feature by @SCLiao47 in #889
+  * update nyquist_plot for DT transfer functions with poles at 0
+    and 1 by @sawyerbfuller in #885
+  * Add missing labels when returning TimeResponseData by
+    @joaoantoniocardoso in #892
+  * fix damp command natural frequency printout for discrete poles
+    on real axis by @sawyerbfuller in #894
+  * Add H2 and Hinf synthesis examples by @jrforbes in #895
+  * warn if prewarp-frequency is not used by @sawyerbfuller in #900
+  * make _convert_to_statespace properly pass signal and system
+    names by @sawyerbfuller in #884
+  * Change name of converted LinearIOSystems by @murrayrm in #903
+  * add/cleanup documentation on simulation functions by @murrayrm
+    in #905
+  * fix up some warning messages due to converted systems by
+    @murrayrm in #907
+  * fix bdschur (see issue #911) by @murrayrm in #912
+
+-------------------------------------------------------------------
+Thu Jan 26 09:40:27 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Avoid i586 segfaults with Qt5/Matplotlib:
+  * Remove i586 malloc workarounds for memory allocation
+  * Don't test balanced model reduction on 32-bit
+
+-------------------------------------------------------------------
+Sat Dec 31 19:48:37 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.9.3.post2
+  * Improvements in optimal and flatsys modules, updated passivity
+    module, gain scheduling support, bug fixes
+  * Handle t_eval for static systems in input_output_response by
+    @murrayrm in #743
+  * add GitHub URL for PyPi by @andriyor in #708
+  * Remove Deprecated API calls to Pytest, SciPy <1.3, Python 2 by
+    @bnavigator in #745
+  * Add passivity module, ispassive function, and passivity_test.
+    Introduces optional dependency cvxopt. by @Mark-Yeatman in #739
+  * Slycot source uses setuptools_scm now by @bnavigator in #751
+  * Passivity indices and support for discrete time systems. by
+    @Mark-Yeatman in #750
+  * Switch CI to mambaforge and conda-forge channel by @bnavigator
+    in #757
+  * Fix timebase bug in InterconnectedSystem (issue #754) by
+    @murrayrm in #755
+  * fix issue with slycot balred change in state by @bnavigator in
+    #762
+  * Build system and test suite update by @bnavigator in #759
+  * fix control.matlab.lsim bug for discrete time system by
+    @murrayrm in #765
+  * Add B-splines and solve_flat_ocp to flatsys by @murrayrm in
+    #763
+  * CI: switch slycot and cvxopt installation order by @murrayrm in
+    #769
+  * Fixed a couple of typos in documentation by @fredrhen in #775
+  * Allow new matplotlib 3.6 error message in kwargs tests by
+    @bnavigator in #777
+  * Move sys._update_params(params) before TimeResponseData return
+    when nstate == 0 by @hyumo in #774
+  * Update MANIFEST.in by @bnavigator in #779
+  * Improve compatibility of state space representation using LaTeX
+    by @gonmolina in #780
+  * Fix interconnect type conversion bug for StateSpace systems by
+    @murrayrm in #788
+  * fix _isstatic() to use nstates==0 by @murrayrm in #790
+  * fix error when an IOSystem is combined with a TransferFunction
+    system by @sawyerbfuller in #793
+  * check for and fix mutable keyword defaults by @murrayrm in #794
+  * Fixes for bugs found by pylint by @roryyorke in #795
+  * Support Python 3.11 and drop Python 3.7 by @bnavigator in #796
+  * Fix find_eqpt when y0 is None by @adswid in #798
+  * Preserve signal names upon conversion to discrete-time by
+    @sawyerbfuller in #797
+  * Update benchmarks to help with optimal control tuning by
+    @murrayrm in #800
+  * Update optimal.rst by @htadashi in #802
+  * Add collocation method for optimal control problems by
+    @murrayrm in #799
+  * Update README.rst by @sawyerbfuller in #810
+  * Update docstring for impulse for discrete sys by @sawyerbfuller
+    in #812
+  * Enable scalar division of state-space objects by @roryyorke in
+    #811
+  * fix gain handling in rlocus and sisotool by @sawyerbfuller in
+    #809
+  * Removed epsilon perturbation value in solve_passivity_LMI. Fix
+    associated unit test. by @Mark-Yeatman in #814
+  * docstring improvements by @sawyerbfuller in #804
+  * add zpk() function by @murrayrm in #816
+  * Fix readthedocs to use pip-based install by @murrayrm in #817
+  * Relax comparison of floats in tests by @bnavigator in #818
+  * Add test matrix against operating environments by @murrayrm in
+    #821
+  * Update find_eqpts to handle discrete time systems by @murrayrm
+    in #824
+  * Small fixes and tweaks by @murrayrm in #826
+  * update docs to use use numpydoc + linkcode by @murrayrm in #828
+  * Add gain scheduling to create_statefbk_iosystem() by @murrayrm
+    in #827
+  * continuous time system support for create_estimator_iosystem by
+    @murrayrm in #829
+  * Small docstring fixes for release by @murrayrm in #832 
+- Drop control-pr777-mpl36.patch, upstreamed
+
+-------------------------------------------------------------------
+Fri Dec 23 20:09:25 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Add control-pr777-mpl36.patch
+  gh#python-control/python-control#777
+
+-------------------------------------------------------------------
+Sun May 29 10:07:56 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.9.2
+  * Improvements in I/O systems, stochastic systems,
+    optimization-based control, Nyquist plots
+  * Round to nearest integer decade for default omega vector by
+    @bnavigator in #688
+  * Fix in documentation of ss2tf by @miroslavfikar in #695
+  * Interpret str-type args to interconnect as non-sequence by
+    @roryyorke in #698
+  * Fixes to various optimization-based control functions by
+    @murrayrm in #709
+  * I/O system enhancements by @murrayrm in #710
+  * Optimal control enhancements by @murrayrm in #712
+  * Keyword argument checking by @murrayrm in #713
+  * Stochastic systems additions by @murrayrm in #714
+  * Updated system class functionality by @murrayrm in #721
+  * Bug fix and improvements to Nyquist plots by @murrayrm in #722
+  * Add linform to compute linear system L-infinity norm by
+    @roryyorke in #729
+  * Improvements to Nichols chart plotting by @roryyorke in #723
+  * Add envs to gitignore by @s35t in #731
+  * Fix README.rst for twine by @murrayrm in #738
+- Drop 688.patch fixed upstream
+
+-------------------------------------------------------------------
+Sat Feb 12 18:42:24 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- skip segfaulting test on i586
+
+-------------------------------------------------------------------
+Thu Feb 10 10:27:34 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Backport patch to fix build on aarch64:
+  * 688.patch
+
+-------------------------------------------------------------------
+Fri Dec 31 19:31:35 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Require Python >= 3.7: Disable Leap backport build. It keeps
+  failing due to unresolvable PyVirtualDisplay. We officially do
+  not support Python 3.6 in upstream anymore.
+
+-------------------------------------------------------------------
+Fri Dec 31 18:27:11 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 0.9.1 
+  * Version 0.9.1 is a minor release that includes new
+    functionality for discrete time systems (dlqr, dlqe, drss),
+    flat systems (optimization and constraints), a new time
+    response data class, and many individual improvements and bug
+    fixes.
+  **New features:**
+  * Add optimization to flat systems trajectory generation (#569 by
+    murrayrm)
+  * Return a discrete time system with drss() (#589 by bnavigator)
+  * A first implementation of the singular value plot (#593 by
+    forgi86)
+  * Include InfValue into settling min/max calculation for
+    step_info (#600 by bnavigator)
+  * New time response data class (#649 by murrayrm)
+  * Check for unused subsystem signals in InterconnectedSystem
+    (#652 by roryyorke)
+  * New PID design function built on sisotool (#662 by
+    sawyerbfuller)
+  * Modify discrete-time contour for Nyquist plots to indent around
+    poles (#668 by sawyerbfuller)
+  * Additional I/O system type conversions (#672 by murrayrm)
+  * Remove Python 2.7 support and leverage @ operator (#679 by
+    bnavigator)
+  * Discrete time LQR and LQE (#670 by sawyerbfuller, murrayrm)
+  **Improvements, bug fixes:**
+  * Change step_info undershoot percentage calculation (#590 by
+    juanodecc)
+  * IPython LaTeX output only generated for small systems (#607 by
+    roryyorke)
+  * Fix warnings generated by sisotool (#608 by roryyorke)
+  * Discrete time LaTeX repr of StateSpace systems (#609 by
+    bnavigator)
+  * Updated rlocus.py to remove warning by sisotool() with
+    rlocus_grid=True (#616 by nirjhar-das)
+  * Refine automatic contour determination in Nyquist plot (#620 by
+    bnavigator)
+  * Fix damp method for discrete time systems with a negative
+    real-valued pole (#647 by vincentchoqueuse)
+  * Plot Nyquist frequency correctly in Bode plot in Hz (#651 by
+    murrayrm)
+  * Return frequency response for 0 and 1-state systems directly
+    (#663 by bnavigator)
+  * Fixed prewarp not working in c2d and sample_system, margin
+    docstring improvements (#669 by sawyerbfuller)
+  * Improved lqe calling functionality (#673 by murrayrm)
+  * Vectorize FRD feedback function (#680 by bnavigator)
+  * BUG: extrapolation in ufun throwing errors (#682 by
+    miroslavfikar)
+  * Allow use of SciPy for LQR, LQE (#683 by murrayrm)
+  * Improve forced_response and its documentation (#588 by
+    bnavigator)
+  * Add documentation about use of axis('equal') in pzmap, rlocus
+    (#685 by murrayrm)
+  **Additional changes:**
+  * Replace Travis badge with GHA workflows, add PyPI and conda
+    badges (#584 by bnavigator)
+  * Don't install toplevel benchmarks package (#585 by bnavigator)
+  * LTI squeeze: ndarray.ndim == 0 is also a scalar (#595 by
+    bnavigator)
+  * xfail testmarkovResults until #588 is merged (#601 by
+    bnavigator)
+  * Remove from readme.rst that you need a fortran compiler (#602
+    by sawyerbfuller)
+  * Remove statement that slycot only on linux (#603 by
+    sawyerbfuller)
+  * Allow float precision in result assertions (#615 by bnavigator)
+  * Improved unit test coverage for root_locus: dtime and sisotool
+    (#617 by bnavigator)
+  * Add DefaultDict for deprecation handling (#619 by bnavigator)
+  * Documentation updates (#633 by murrayrm)
+  * Various docstring edits + fixed plot legends on cruise control
+    example (#643 by billtubbs)
+  * Ease test tolerance on timeseries (#659 by bnavigator)
+  * Use conda-forge for numpy (CI fix) (#667 by bnavigator)
+  * Fix doc escape (#674 by bnavigator)
+  * Remove duplicate Slycot error handling, require Slycot >=0.4
+    (#678 by bnavigator)
+
+-------------------------------------------------------------------
+Sun Mar 21 10:13:42 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 0.9.0
+  * Version 0.9.0 of the Python Control Toolbox
+    (python-control) contains a number of enhanced features
+    and changes to functions. Some of these changes may
+    require modifications to existing user code and, in
+    addition, some default settings have changed that may
+    affect the appearance of plots or operation of certain
+    functions.
+  * Significant new additions including improvements in the
+    I/O systems modules that allow automatic interconnection
+    of signals having the same name (via the interconnect
+    function), generation and plotting of describing functions
+    for closed loop systems with static nonlinearities, and a
+    new optimal control module that allows basic computation
+    of optimal controls (including model predictive
+    controllers). Some of the changes that may break use code
+    include the deprecation of the NumPy matrix type (2D NumPy
+    arrays are used instead), changes in the return value for
+    Nyquist plots (now returns number of encirclements rather
+    than the frequency response), switching the default
+    timebase of systems to be 0 rather than None (no
+    timebase), and changes in the processing of return values
+    for time and frequency responses (to make them more
+    consistent). In many cases, the earlier behavior can be
+    restored by calling use_legacy_defaults('0.8.4').
+  New Features:
+  * Optimal control module, including rudimentary MPC
+    control (#549 by murrayrm)
+  * Describing functions plots (#521 by murrayrm)
+  * MIMO impulse and step response (#514 by murrayrm)
+  * I/O system improvements:
+  * linearize() retains signal names plus new interconnect()
+    function (#497 by murrayrm)
+  * Add summing junction + implicit signal interconnection (#517
+    by murrayrm)
+  * Implementation of initial_phase, wrap_phase keywords for
+    bode_plot (#494 by murrayrm)
+  * Added IPython LaTeX representation method for StateSpace
+    objects (#450 by roryyorke)
+  * New dynamics() and output() methods in StateSpace (#566 by
+    sawyerbfuller)
+  * FRD systems can now be created from a discrete time LTI system
+    (#568 by bnavigator)
+  * Cost and constraints are now allowed for
+    flatsys.point_to_point() (#569 by murrayrm)
+
+------------------------------------------------------------------
+Thu Jan 21 23:09:04 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Skip python36 because of scipy 1.6.0
+
+-------------------------------------------------------------------
+Mon Dec 28 20:31:00 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to version 0.8.4 
+  * Improved default time vector for time response 
+    functions (bnavigator, sawyerbfuller)
+  * New use_legacy_defaults function to allow compatibility 
+    with previous versions (sawyerbfuller)
+  * Allow creation of non-proper transfer functions 
+    (bnavigator, rlegnain) 
+  * Added ability to set arrow head length and width option 
+    in nyquist_plot (geekonloose)
+  * Added ability to 'prewarp' the conversion of continuous to 
+    discrete-time systems (sawyerbfuller)
+  * Added rlocus capability for discrete-time systems 
+    (sawyerbfuller)
+  * Updated pzmap grid to be compatible with matplotlib updates 
+    (bnavigator)
+  * Implement loadable string representation (repr) for tf, ss, 
+    and frd (repagh)
+  * Fixed margin computation for discrete time systems 
+    (bnavigator)
+  * Fixed indexing bug in bdalg.connect (sawyerbfuller)
+  * Fixed InterconnectedSystem naming bugs, improved 
+    conventions (samlaf)
+  * Fixed LinearIOSystem output bug in output function 
+    (francescoseccamonte)
+  * Fixed bug in forced_response that overrode squeeze 
+    parameter (bnavigator)
+  * Use rad/sec for Bode plot in MATLAB bode (was erroneously 
+    defaulting to Hertz) (paulvicioso)
+  * Removed deprecated scipy calls and updated to latest numpy 
+    (bnavigator)
+  * Multiple documentation updates (bnavigator, laurensvalk)
+  * New and improved examples for sisotool, pvtol (repagh, samlaf)
+  * The rlocus function no longer automatically creates a new
+    figure
+  * Updated unit tests + switch to pytest (bnavigator, 
+    sawyerbfuller)
+  * Return type for eigenvalues in lqe changed to 1D array 
+    (matches lqr)
+  * Small fixes + documentation updates to markov
+- Remove forbidden arch macros in noarch package
+- Drop patches merged upstream
+  * pr365-copy-PR-320-for-robust_array_test.patch
+  * pr366-ease-precision-tolerance.patch
+  * pr380-fix-pytest-discovery.patch
+  * pr430-numpy119delete.patch
+
+-------------------------------------------------------------------
+Sun Oct 11 18:39:38 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Skip a test family on Leap because of segfaults in numpy 
+
+-------------------------------------------------------------------
+Thu Jul 23 09:56:18 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- moved Pillow requirement to matplotlib package 
+
+-------------------------------------------------------------------
+Mon Jul 20 17:48:34 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- explicitely require Pillow for tests because of matplotlib
+
+-------------------------------------------------------------------
+Thu Jul  9 18:56:06 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- add pr430-numpy119delete.patch to fix test failures with new numpy 
+
+-------------------------------------------------------------------
+Tue Jun 30 12:21:40 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- remove ppc workaround 
+- remove _service file
+
+-------------------------------------------------------------------
+Fri Jun 26 15:29:50 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- move to pytest, ignore deprecation warnings for scipy functions
+  and matrix type during tests gh#python-control/python-control#423 
+- fix invalid test discovery by pr380-fix-pytest-discovery.patch
+  gh#python-control/python-control#380
+- skip mixsyn test on PowerPC boo#1172555 
+
+-------------------------------------------------------------------
+Sat Jan 18 01:18:39 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- update to version 0.8.3
+- remove patches that were merged upstream:
+    python-control-fixtestaugw.patch
+    python-control-pr317.patch
+    python-control-pr345.patch
+- pr365-copy-PR-320-for-robust_array_test.patch
+  upstream PR#365 the former fixtestaugw patch for the new
+  duplicated array test  
+- pr366-ease-precision-tolerance.patch
+  upstream PR#366 to pass the checks on more architectures
+- remove Python 2 package
+- run all tests in xvfb env and prealloc differently for i586
+  architecture
+  
+-------------------------------------------------------------------
+Wed Nov 27 18:13:20 UTC 2019 - Benjamin Greiner <code@bnavigator.de>
+
+- python-control-pr345.patch: PR#345 to fix fails on some
+  architectures because of machine precision
+
+-------------------------------------------------------------------
+Mon Nov  4 13:25:48 UTC 2019 - Benjamin Greiner <code@bnavigator.de>
+
+- fix segfault: run only those tests that require xvfb with xvfb-run
+- fix i586 build fail: add upstream PR#317 to replace float128
+
+-------------------------------------------------------------------
+Thu Jun 27 13:12:31 UTC 2019 - Benjamin Greiner <code@bnavigator.de>
+
+- remove python-devel from BuildRequires 
+
+-------------------------------------------------------------------
+Tue Jun 25 15:41:59 UTC 2019 - Benjamin Greiner <code@bnavigator.de>
+
+- add slycot to BuildRequires for tests 
+
+-------------------------------------------------------------------
+Wed Jun 19 12:48:24 UTC 2019 - Benjamin Greiner <code@bnavigator.de>
+
+- switch to xvfb-run 
+
+-------------------------------------------------------------------
+Wed Jun 19 11:05:31 UTC 2019 - Benjamin Greiner <code@bnavigator.de>
+
+make v0.8.2 spec test suite compliant
+- specify Qt5Agg as Matplotlib backend
+- add X11 to build system so that Qt5 tests pass
+- reorganize spec file
+
+-------------------------------------------------------------------
+Mon May 13 19:16:19 UTC 2019 - Benjamin Greiner <code@bnavigator.de>
+
+update to version 0.8.2
+- 

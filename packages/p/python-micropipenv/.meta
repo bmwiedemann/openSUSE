@@ -1,0 +1,6 @@
+<package name="python-micropipenv" project="openSUSE:Factory">
+  <title>Convert various requirements-type files to use with pip-tools</title>
+  <description></description>
+  <devel project="devel:languages:python" package="python-micropipenv"/>
+  <url>https://github.com/micropython/micropython/</url>
+</package>

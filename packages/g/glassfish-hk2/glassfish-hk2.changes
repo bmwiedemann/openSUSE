@@ -1,0 +1,55 @@
+-------------------------------------------------------------------
+Mon Oct 30 15:45:09 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Do not force Java 11 to build on i586
+
+-------------------------------------------------------------------
+Mon Sep 25 09:35:58 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Remove dependency on maven2
+
+-------------------------------------------------------------------
+Tue Sep 12 15:38:18 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * reproducible-now.patch
+    + use SOURCE_DATE_EPOCH also for timestamp in generated files
+
+-------------------------------------------------------------------
+Sat Sep  9 13:33:00 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
+
+-------------------------------------------------------------------
+Tue Sep  5 18:03:44 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Do not depend on com.sun:tools since nobody provides it any more
+
+-------------------------------------------------------------------
+Thu Oct 13 11:21:47 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Force building with java 11 on ix86 in order to avoid random
+  build failures
+
+-------------------------------------------------------------------
+Thu Mar 26 07:50:52 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 2.5.0
+- Removed patch:
+  * glassfish-hk2-2.3.0-hk2-utils-osgi_bundle.patch
+    + fixes included in 0001-OSGi-metadata-fixes.patch
+- Added patches:
+  * 0001-OSGi-metadata-fixes.patch
+    + unbundles tiger-types from hk2-utils
+    + fixes invalid whitespace in hk2-core
+  * 0002-Fixed-tests.patch
+- Modified patch:
+  * hk2-jdk11.patch
+    + fixes com.sun.enterprise.module.Module vs java.lang.Module
+      ambiguity
+    + rediff to changed context
+
+-------------------------------------------------------------------
+Fri Mar  6 11:41:36 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of glassfish-hk2 2.4.0

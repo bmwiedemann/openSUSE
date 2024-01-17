@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Upgrade
+GenericName=Upgrade
+Comment=Upgrade an already installed system from online repositories
+Icon=yast-upgrade
+Categories=System;X-SuSE-YaST;
+Exec=xdg-su -c "/usr/sbin/start-install.sh upgrade"
+StartupNotify=true

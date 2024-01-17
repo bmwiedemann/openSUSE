@@ -1,0 +1,104 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>50e542121fae4ac7314e7d82c0ae42ff</srcmd5>
+    <version>1.1</version>
+    <time>1606828961</time>
+    <user>dimstar_suse</user>
+    <comment>One of the commonly used money/currency field apps, including re-usable components django-hordak, django-google-adwords , django-invoicing (all in my OBS repo) and commercial grade complete software like ralph (in OBS) &amp;  InvenTree (client in OBS), and used for djangoproject.com and pycon websites.
+1k github *, most stars for any django money related app</comment>
+    <requestid>851837</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>20dd56d37b1f7aa6fe2f0a7c66789da9</srcmd5>
+    <version>1.3.1</version>
+    <time>1621269934</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>893761</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e8fe1696d49ceed48b2b47109a640cd9</srcmd5>
+    <version>2.1.1</version>
+    <time>1652389255</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>976603</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>1a8613223fd43932f2a855b2f6798a30</srcmd5>
+    <version>2.1.1</version>
+    <time>1653503710</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>979156</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>0e402096c1b788e7d129ceacab81c9dc</srcmd5>
+    <version>2.1.1</version>
+    <time>1654457321</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated pr_638.patch according to the latest development upstream.
+</comment>
+    <requestid>980905</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>17f7e790a963995ad416ba6755847b48</srcmd5>
+    <version>2.1.1</version>
+    <time>1654595113</time>
+    <user>dimstar_suse</user>
+    <comment>- Refreshed patch pr_638.patch to the merged version.
+</comment>
+    <requestid>981048</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1a40ac16f69fddd7b772ae2084ba815d</srcmd5>
+    <version>3.0</version>
+    <time>1678814184</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0:
+  - Changed
+    - Update py-moneyed to 2.0.
+    - Remove the deprecated Money.decimal_places_display property
+      and argument.
+    - Remove the deprecated CURRENCY_DECIMAL_PLACES_DISPLAY
+      setting.
+    - Null constraint on an implicit CurrencyField is now
+      declared from null=... argument to MoneyField.
+  - Fixed
+    - Improve the internal check for whether a currency is
+      provided
+    - Fix test suite for django main branch
+    - MoneyField raises TypeError when default contains a valid
+      amount but no currence, i.e. Money(123, None).
+    - MoneyField supports default of type bytes
+  - Added
+    - Add support for Django 4.0 and 4.1.
+    - Add support for Python 3.10.
+  - Removed
+    - Drop support for Django 3.1.
+    - Drop support for Python 3.6.
+- Remove upstreamed patches:
+  - merged_pr_657.patch
+  -  pr_638.patch
+</comment>
+    <requestid>1071154</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>14625613660bee580fedd2cad287dab6</srcmd5>
+    <version>3.4.1</version>
+    <time>1703800874</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.4.1:
+  * The default setting for ``CURRENCY_CHOICES`` excluded the
+    currency choice defined by ``DEFAULT_CURRENCY``.
+  * Don't register Django Money serializers by default, instead
+    the user should actively register a serializer in the
+    ``settings.py``
+  * Fix detection of necessary migrations. Note that this means
+    that previously undetected migrations will be detected as of
+    this version
+
+  * New setting CURRENCY_DECIMAL_PLACES_DISPLAY configures decimal</comment>
+    <requestid>1135252</requestid>
+  </revision>
+</revisionlist>

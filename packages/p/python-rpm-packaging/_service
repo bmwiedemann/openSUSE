@@ -1,0 +1,13 @@
+<services>
+  <service name="tar_scm" mode="manual">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/rpm-software-management/python-rpm-packaging.git</param>
+    <param name="versionformat">%cd+%h</param>
+    <param name="revision">a18ca48959c95aefa725317084dd2d3e242e4f71</param>
+  </service>
+  <service name="recompress" mode="manual">
+    <param name="compression">xz</param>
+    <param name="file">*.tar</param>
+  </service>
+  <service name="set_version" mode="manual"/>
+</services>

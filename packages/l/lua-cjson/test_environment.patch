@@ -1,0 +1,60 @@
+---
+ Makefile    |    4 ++--
+ runtests.sh |    2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+--- a/runtests.sh
++++ b/runtests.sh
+@@ -1,4 +1,5 @@
+ #!/bin/sh
++set -x
+ 
+ PLATFORM="`uname -s`"
+ [ "$1" ] && VERSION="$1" || VERSION="2.1.0"
+@@ -56,15 +57,15 @@ do_tests
+ make clean
+ rm -rf tests/cjson{,.so}
+ 
+-echo "===== Testing Cmake build ====="
+-mkdir build
+-cd build
+-cmake ..
+-make
+-cd ..
+-cp -r lua/cjson build/cjson.so tests
+-do_tests
+-rm -rf build tests/cjson{,.so}
++# echo "===== Testing Cmake build ====="
++# mkdir build
++# cd build
++# cmake "$CMAKE_FLAGS" ..
++# make
++# cd ..
++# cp -r lua/cjson build/cjson.so tests
++# do_tests
++# rm -rf build tests/cjson{,.so}
+ 
+ if [ "$PLATFORM" = "Linux" ]
+ then
+--- a/Makefile
++++ b/Makefile
+@@ -13,14 +13,14 @@
+ ##### Build defaults #####
+ LUA_VERSION =       5.1
+ TARGET =            cjson.so
+-PREFIX =            /usr/local
++PREFIX ?=           /usr/local
+ #CFLAGS =            -g -Wall -pedantic -fno-inline
+-CFLAGS =            -O3 -Wall -pedantic -DNDEBUG
++CFLAGS ?=           -O3 -Wall -pedantic -DNDEBUG
+ CJSON_CFLAGS =      -fpic
+ CJSON_LDFLAGS =     -shared
+-LUA_INCLUDE_DIR =   $(PREFIX)/include
+-LUA_CMODULE_DIR =   $(PREFIX)/lib/lua/$(LUA_VERSION)
+-LUA_MODULE_DIR =    $(PREFIX)/share/lua/$(LUA_VERSION)
++LUA_INCLUDE_DIR ?=  $(PREFIX)/include
++LUA_CMODULE_DIR ?=  $(PREFIX)/lib/lua/$(LUA_VERSION)
++LUA_MODULE_DIR ?=   $(PREFIX)/share/lua/$(LUA_VERSION)
+ LUA_BIN_DIR =       $(PREFIX)/bin
+ 
+ ##### Platform overrides #####

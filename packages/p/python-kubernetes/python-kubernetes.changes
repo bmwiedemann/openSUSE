@@ -1,0 +1,580 @@
+-------------------------------------------------------------------
+Wed Nov  1 13:56:47 UTC 2023 - Alexandre Almeida <me@aoalmeida.com>
+
+- Remove upper version bound for urllib3 
+
+-------------------------------------------------------------------
+Mon Oct  2 16:35:20 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Fix requires for urllib3 
+
+-------------------------------------------------------------------
+Wed Sep 20 08:45:39 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- version update to 28.1.0
+  * too many changes, please refer to the CHANGELOG.md in documentation OR at
+  https://github.com/kubernetes-client/python/blob/release-28.0/CHANGELOG.md
+- cleanup: alpha-sorted the `BuildRequires` and `Requires` fields
+- added following, per requirements.txt at https://github.com/kubernetes-client/python/blob/v28.1.0/requirements.txt: 
+  *`BuildRequires:  %{python_module oauthlib >= 3.2.2}`
+  *`Requires: python-oauthlib >= 3.2.2` 
+
+-------------------------------------------------------------------
+Wed Jul 19 06:15:59 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- version update to 27.2.0
+  * too many changes, please refer to the CHANGELOG.md in documentation OR at
+  https://github.com/kubernetes-client/python/blob/v27.2.0/CHANGELOG.md
+
+-------------------------------------------------------------------
+Tue May 16 10:22:32 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- changes to fix unresolvable/failing package build for SLE-15-SP4, https://build.suse.de/request/show/297283 :
+  * added: `BuildRequires:  %{python_module Sphinx >= 1.3.1}`
+  * reverted below changes from `Wed May 3 09:53:22 UTC 2023`
+    ** reverted: `%python_build` ->  `%pyproject_wheel`  and `%python_install` -> `%pyproject_install`
+    ** reverted:  `BuildRequires:  %{python_module pip}`
+    ** reverted:  `BuildRequires:  %{python_module wheel}`
+
+-------------------------------------------------------------------
+Fri May  5 07:16:45 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- included missing changelog entries from "Tue Oct  8 15:24:14 UTC 2019 - Can Bayburt <cbbayburt@suse.com>"
+  to even the diversion with the existing `SUSE:SLE-15-SP4:Update` package
+- removed patch: base64-padding-fix.patch
+  * changes introduced by patch are included in upstream
+
+-------------------------------------------------------------------
+Wed May  3 09:55:30 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- added: `%{python_sitelib}/kubernetes` and `%{python_sitelib}/kubernetes-%{version}*-info` under %files
+
+-------------------------------------------------------------------
+Wed May  3 09:53:22 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- replaced `%python_build` ->  `%pyproject_wheel`  and `%python_install` -> `%pyproject_install` 
+  * added:  BuildRequires:  %{python_module pip}
+  * added:  BuildRequires:  %{python_module wheel}
+
+-------------------------------------------------------------------
+Tue May  2 07:23:22 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- removed following conditional python_module macro definition, as it is present in recent versions of "python-rpm-macros"
+  * "%{?!python_module:%define python_module() python-%{**} python3-%{**}}" 
+
+-------------------------------------------------------------------
+Fri Apr 28 09:44:00 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- removed python-kubernetes-no-mock.patch, patch changes incorporated upstream 
+
+-------------------------------------------------------------------
+Fri Apr 28 09:27:30 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- version update to 26.1.0
+  * too many changes, please refer to the CHANGELOG.md in documentation OR at
+  https://github.com/kubernetes-client/python/blob/v26.1.0/CHANGELOG.md
+
+-------------------------------------------------------------------
+Thu Sep 29 14:26:36 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to v24.2.0
+  Uncategorized
+  The dynamic client now support the _request_timeout parameter to configure connection and request timeouts. (#1732, @philipp-sontag-by)
+
+- Update to v24.1.0b1
+  Uncategorized
+  The dynamic client now support the _request_timeout parameter to configure connection and request timeouts. (#1732, @philipp-sontag-by)
+
+- Update to v24.1.0a1
+  API Change
+  Add 2 new options for kube-proxy running in winkernel mode. --forward-healthcheck-vip, if specified as true, health check traffic whose
+  destination is service VIP will be forwarded to kube-proxy's healthcheck service. --root-hnsendpoint-name specifies the name of the hns endpoint
+  for the root network namespace. This option enables the pass-through load balancers like Google's GCLB to correctly health check the backend services.
+  Without this change, the health check packets is dropped, and Windows node will be considered to be unhealthy by those load balancers.
+  (kubernetes/kubernetes#99287, @anfernee)
+  Added CEL runtime cost calculation into CustomerResource validation. CustomerResource validation will fail if runtime cost exceeds the budget.
+  (kubernetes/kubernetes#108482, @cici37)
+  Added a new metric webhook_fail_open_count to monitor webhooks that fail to open. (kubernetes/kubernetes#107171, @ltagliamonte-dd)
+  Adds a new Status subresource in Network Policy objects (kubernetes/kubernetes#107963, @rikatz)
+  Adds support for InterfaceNamePrefix and BridgeInterface as arguments to --detect-local-mode option and also introduces a new optional
+  --pod-interface-name-prefix and --pod-bridge-interface flags to kube-proxy. (kubernetes/kubernetes#95400, @tssurya)
+  CEL CRD validation expressions may now reference existing object state using the identifier oldSelf. (kubernetes/kubernetes#108073, @benluddy)
+  CRD deep copies should no longer contain shallow copies of JSONSchemaProps.XValidations. (kubernetes/kubernetes#107956, @benluddy)
+  CRD writes will generate validation errors if a CEL validation rule references the identifier oldSelf on a part of the schema that does not
+  support it. (kubernetes/kubernetes#108013, @benluddy)
+  CSIStorageCapacity.storage.k8s.io: The v1beta1 version of this API is deprecated in favor of v1, and will be removed in v1.27. If a CSI driver
+  supports storage capacity tracking, then it must get deployed with a release of external-provisioner that supports the v1 API. (kubernetes/kubernetes#108445, @pohly)
+  Custom resource requests with fieldValidation=Strict consistently require apiVersion and kind, matching non-strict requests (kubernetes/kubernetes#109019, @liggitt)
+  Feature of DefaultPodTopologySpread is graduated to GA (kubernetes/kubernetes#108278, @kerthcet)
+  Feature of NonPreemptingPriority is graduated to GA (kubernetes/kubernetes#107432, @denkensk)
+  Feature of PodOverhead is graduated to GA (kubernetes/kubernetes#108441, @pacoxu)
+  Fixed OpenAPI serialization of the x-kubernetes-validations field (kubernetes/kubernetes#107970, @liggitt)
+  Fixed failed flushing logs in defer function when kubelet cmd exit 1. (kubernetes/kubernetes#104774, @kerthcet)
+  Fixes a regression in v1beta1 PodDisruptionBudget handling of strategic merge patch-type API requests for the selector field. Prior to 1.21,
+  these requests would merge matchLabels content and replace matchExpressions content. In 1.21, patch requests touching the selector field started
+  replacing the entire selector. This is consistent with server-side apply and the v1 PodDisruptionBudget behavior, but should not have been changed
+  for v1beta1. (kubernetes/kubernetes#108138, @liggitt)
+  Improve kubectl's user help commands readability (kubernetes/kubernetes#104736, @lauchokyip)
+  Indexed Jobs graduated to stable. (kubernetes/kubernetes#107395, @alculquicondor)
+  Introduce a v1alpha1 networking API for ClusterCIDRConfig (kubernetes/kubernetes#108290, @sarveshr7)
+  Introduction of a new "sync_proxy_rules_no_local_endpoints_total" proxy metric. This metric represents the number of services with no internal
+  endpoints. The "traffic_policy" label will contain both "internal" or "external". (kubernetes/kubernetes#108930, @MaxRenaud)
+  JobReadyPods graduates to Beta and it's enabled by default. (kubernetes/kubernetes#107476, @alculquicondor)
+  Kube-apiserver: --audit-log-version and --audit-webhook-version now only support the default value of audit.k8s.io/v1.
+  The v1alpha1 and v1beta1 audit log versions, deprecated since 1.13, have been removed. (kubernetes/kubernetes#108092, @carlory)
+  Kube-apiserver: the metadata.selfLink field can no longer be populated by kube-apiserver; it was deprecated in 1.16 and has not been populated by default
+  since 1.20+. (kubernetes/kubernetes#107527, @wojtek-t)
+  Kubelet external Credential Provider feature is moved to Beta. Credential Provider Plugin and Credential Provider Config API's updated from v1alpha1
+  to v1beta1 with no API changes. (kubernetes/kubernetes#108847, @adisky)
+  Make STS available replicas optional again. (kubernetes/kubernetes#109241, @ravisantoshgudimetla)
+  MaxUnavailable for StatefulSets, allows faster RollingUpdate by taking down more than 1 pod at a time. The number of pods you want to take down
+  during a RollingUpdate is configurable using maxUnavailable parameter. (kubernetes/kubernetes#82162, @krmayankk)
+  Non-graceful node shutdown handling is enabled for stateful workload failovers (kubernetes/kubernetes#108486, @sonasingh46)
+  Omit enum declarations from the static openapi file captured at https://git.k8s.io/kubernetes/api/openapi-spec. This file is used to generate API clients,
+  and use of enums in those generated clients (rather than strings) can break forward compatibility with additional future values in those fields.
+  See https://issue.k8s.io/109177 for details. (kubernetes/kubernetes#109178, @liggitt)
+  OpenAPI V3 is turned on by default (kubernetes/kubernetes#109031, @Jefftree)
+  Pod affinity namespace selector and cross-namespace quota graduated to GA. The feature gate PodAffinityNamespaceSelector is locked and will be
+  removed in 1.26. (kubernetes/kubernetes#108136, @ahg-g)
+  Promote IdentifyPodOS feature to beta. (kubernetes/kubernetes#107859, @ravisantoshgudimetla)
+  Remove a v1alpha1 networking API for ClusterCIDRConfig (kubernetes/kubernetes#109436, @JamesLaverack)
+  Renamed metrics evictions_number to evictions_total and mark it as stable. The original evictions_number metrics name is marked as "Deprecated"
+  and has been removed in kubernetes 1.23 . (kubernetes/kubernetes#106366, @cyclinder)
+  Skip x-kubernetes-validations rules if having fundamental error against the OpenAPIv3 schema. (kubernetes/kubernetes#108859, @cici37)
+  Support for gRPC probes is now in beta. GRPCContainerProbe feature gate is enabled by default. (kubernetes/kubernetes#108522, @SergeyKanzhelev)
+  Suspend job to GA. The feature gate SuspendJob is locked and will be removed in 1.26. (kubernetes/kubernetes#108129, @ahg-g)
+  The AnyVolumeDataSource feature is now beta, and the feature gate is enabled by default. In order to provide user feedback on PVCs with data sources,
+  deployers must install the VolumePopulators CRD and the data-source-validator controller. (kubernetes/kubernetes#108736, @bswartz)
+  The CertificateSigningRequest spec.expirationSeconds API field has graduated to GA. The CSRDuration feature gate for the field is now unconditionally
+  enabled and will be removed in 1.26. (kubernetes/kubernetes#108782, @cfryanr)
+  The ServerSideFieldValidation feature has graduated to beta and is now enabled by default. Kubectl 1.24 and newer will use server-side validation
+  instead of client-side validation when writing to API servers with the feature enabled. (kubernetes/kubernetes#108889, @kevindelgado)
+  The ServiceLBNodePortControl feature has graduated to GA. The feature gate will be removed in 1.26. (kubernetes/kubernetes#107027, @uablrek)
+  The deprecated kube-controller-manager flag '--deployment-controller-sync-period' has been removed, it is not used by the deployment controller.
+  (kubernetes/kubernetes#107178, @SataQiu)
+  The feature DynamicKubeletConfig has been removed from the kubelet. (kubernetes/kubernetes#106932, @SergeyKanzhelev)
+  The infrastructure for contextual logging is complete (feature gate implemented, JSON backend ready). (kubernetes/kubernetes#108995, @pohly)
+  This adds an optional timeZone field as part of the CronJob spec to support running cron jobs in a specific time zone. (kubernetes/kubernetes#108032, @deejross)
+  Updated the default API priority-and-fairness config to avoid endpoint/configmaps operations from controller-manager to all match leader-election
+  priority level. (kubernetes/kubernetes#106725, @wojtek-t)
+  topologySpreadConstraints includes minDomains field to limit the minimum number of topology domains. (kubernetes/kubernetes#107674, @sanposhiho)
+  Introduce a v1alpha1 networking API for ClusterCIDRConfig (kubernetes/kubernetes#108290, @sarveshr7) [SIG API Machinery, Apps, Auth, CLI,
+  Cloud Provider, Instrumentation, Network and Testing]
+  Introduction of a new "sync_proxy_rules_no_local_endpoints_total" proxy metric. This metric represents the number of services with no internal endpoints.
+  The "traffic_policy" label will contain both "internal" or "external". (kubernetes/kubernetes#108930, @MaxRenaud) [SIG API Machinery, Apps, Architecture,
+  Auth, Autoscaling, CLI, Cloud Provider, Instrumentation, Network, Node, Release, Scheduling, Storage, Testing and Windows]
+  Make STS available replicas optional again, (kubernetes/kubernetes#109241, @ravisantoshgudimetla) [SIG API Machinery and Apps]
+  Omit enum declarations from the static openapi file captured at https://git.k8s.io/kubernetes/api/openapi-spec. This file is used to generate API clients,
+  and use of enums in those generated clients (rather than strings) can break forward compatibility with additional future values in those fields.
+  See https://issue.k8s.io/109177 for details. (kubernetes/kubernetes#109178, @liggitt) [SIG API Machinery and Auth]
+  Remove a v1alpha1 networking API for ClusterCIDRConfig (kubernetes/kubernetes#109436, @JamesLaverack) [SIG API Machinery, Apps, Auth, CLI, Network and Testing]
+  The deprecated kube-controller-manager flag '--deployment-controller-sync-period' has been removed, it is not used by the deployment controller.
+  (kubernetes/kubernetes#107178, @SataQiu) [SIG API Machinery and Apps]
+  Adds a new Status subresource in Network Policy objects (kubernetes/kubernetes#107963, @rikatz) [SIG API Machinery, Apps, Network and Testing]
+  Adds support for "InterfaceNamePrefix" and "BridgeInterface" as arguments to --detect-local-mode option and also introduces a new optional
+  --pod-interface-name-prefix and --pod-bridge-interface flags to kube-proxy. (kubernetes/kubernetes#95400, @tssurya) [SIG API Machinery and Network]
+  CEL CRD validation expressions may now reference existing object state using the identifier oldSelf. (kubernetes/kubernetes#108073, @benluddy)
+  [SIG API Machinery and Testing]
+  CSIStorageCapacity.storage.k8s.io: The v1beta1 version of this API is deprecated in favor of v1, and will be removed in v1.27. If a CSI driver supports
+  storage capacity tracking, then it must get deployed with a release of external-provisioner that supports the v1 API. (kubernetes/kubernetes#108445, @pohly)
+  [SIG API Machinery, Architecture, Auth, Scheduling, Storage and Testing]
+  Custom resource requests with fieldValidation=Strict consistently require apiVersion and kind, matching non-strict requests
+  (kubernetes/kubernetes#109019, @liggitt) [SIG API Machinery]
+  Improve kubectl's user help commands readability (kubernetes/kubernetes#104736, @lauchokyip) [SIG API Machinery, Apps, Architecture, Auth,
+  Autoscaling, CLI, Cloud Provider, Cluster Lifecycle, Contributor Experience, Instrumentation, Network, Node, Release, Scalability, Scheduling,
+  Security, Storage, Testing and Windows]
+  Indexed Jobs graduates to stable (kubernetes/kubernetes#107395, @alculquicondor) [SIG Apps, Architecture and Testing]
+  Introduce a v1alpha1 networking API for ClusterCIDRConfig (kubernetes/kubernetes#108290, @sarveshr7) [SIG API Machinery, Apps, Auth, CLI, Cloud Provider,
+  Instrumentation, Network and Testing]
+  JobReadyPods graduates to Beta and it's enabled by default. (kubernetes/kubernetes#107476, @alculquicondor) [SIG API Machinery, Apps and Testing]
+  Kubelet external Credential Provider feature is moved to Beta. Credential Provider Plugin and Credential Provider Config API's updated from v1alpha1
+  to v1beta1 with no API changes. (kubernetes/kubernetes#108847, @adisky) [SIG API Machinery and Node]
+  MaxUnavailable for StatefulSets, allows faster RollingUpdate by taking down more than 1 pod at a time. The number of pods you want to take down
+  during a RollingUpdate is configurable using maxUnavailable parameter. (kubernetes/kubernetes#82162, @krmayankk) [SIG API Machinery and Apps]
+  Non graceful node shutdown handling. (kubernetes/kubernetes#108486, @sonasingh46) [SIG Apps, Node and Storage]
+  OpenAPI V3 is turned on by default (kubernetes/kubernetes#109031, @Jefftree) [SIG API Machinery, Apps, Architecture, Auth, Autoscaling, CLI,
+  Cloud Provider, Cluster Lifecycle, Instrumentation, Network, Node, Scheduling, Storage and Testing]
+  Promote IdentifyPodOS feature to beta. (kubernetes/kubernetes#107859, @ravisantoshgudimetla) [SIG API Machinery, Apps, Node, Testing and Windows]
+  Skip x-kubernetes-validations rules if having fundamental error against OpenAPIv3 schema. (kubernetes/kubernetes#108859, @cici37) [SIG API Machinery and Testing]
+  Support for gRPC probes is now in beta. GRPCContainerProbe feature gate is enabled by default. (kubernetes/kubernetes#108522, @SergeyKanzhelev)
+  [SIG API Machinery, Apps, Node and Testing]
+  The AnyVolumeDataSource feature is now beta, and the feature gate is enabled by default. In order to provide user feedback on PVCs with data sources,
+  deployers must install the VolumePopulators CRD and the data-source-validator controller. (kubernetes/kubernetes#108736, @bswartz) [SIG Apps, Storage and Testing]
+  The ServerSideFieldValidation feature has graduated to beta and is now enabled by default. Kubectl 1.24 and newer will use server-side
+  validation instead of client-side validation when writing to API servers with the feature enabled. (kubernetes/kubernetes#108889, @kevindelgado)
+  [SIG API Machinery, Architecture, CLI and Testing]
+  The infrastructure for contextual logging is complete (feature gate implemented, JSON backend ready). (kubernetes/kubernetes#108995, @pohly)
+  [SIG API Machinery, Architecture, Auth, CLI, Cloud Provider, Cluster Lifecycle, Instrumentation, Network, Node, Scheduling and Testing]
+  This adds an optional timeZone field as part of the CronJob spec to support running cron jobs in a specific time zone.
+  (kubernetes/kubernetes#108032, @deejross) [SIG API Machinery and Apps]
+  Add 2 new options for kube-proxy running in winkernel mode. --forward-healthcheck-vip, if specified as true, health check traffic whose destination
+  is service VIP will be forwarded to kube-proxy's healthcheck service. --root-hnsendpoint-name specifies the name of the hns endpoint for the root
+  network namespace. This option enables the pass-through load balancers like Google's GCLB to correctly health check the backend services.
+  Without this change, the health check packets is dropped, and Windows node will be considered to be unhealthy by those load balancers.
+  (kubernetes/kubernetes#99287, @anfernee) [SIG API Machinery, Cloud Provider, Network, Testing and Windows]
+  Added CEL runtime cost calculation into CustomerResource validation. CustomerResource validation will fail if runtime cost exceeds the budget.
+  (kubernetes/kubernetes#108482, @cici37) [SIG API Machinery]
+  CRD writes will generate validation errors if a CEL validation rule references the identifier "oldSelf" on a part of the schema that does not support it.
+  (kubernetes/kubernetes#108013, @benluddy) [SIG API Machinery]
+  Feature of DefaultPodTopologySpread is graduated to GA (kubernetes/kubernetes#108278, @kerthcet) [SIG Scheduling]
+  Feature of PodOverhead is graduated to GA (kubernetes/kubernetes#108441, @pacoxu) [SIG API Machinery, Apps, Node and Scheduling]
+  Fixes a regression in v1beta1 PodDisruptionBudget handling of "strategic merge patch"-type API requests for the selector field. Prior to 1.21,
+  these requests would merge matchLabels content and replace matchExpressions content. In 1.21, patch requests touching the selector field started
+  replacing the entire selector. This is consistent with server-side apply and the v1 PodDisruptionBudget behavior, but should not have been changed for v1beta1.
+  (kubernetes/kubernetes#108138, @liggitt) [SIG Apps, Auth and Testing]
+  Kube-apiserver: --audit-log-version and --audit-webhook-version now only support the default value of audit.k8s.io/v1. The v1alpha1 and v1beta1
+  audit log versions, deprecated since 1.13, have been removed. (kubernetes/kubernetes#108092, @carlory) [SIG API Machinery, Auth and Testing]
+  Pod-affinity namespace selector and cross-namespace quota graduated to GA. The feature gate PodAffinityNamespaceSelector is locked and will be removed in 1.26.
+  (kubernetes/kubernetes#108136, @ahg-g) [SIG API Machinery, Apps, Scheduling and Testing]
+  Suspend job to GA. The feature gate SuspendJob is locked and will be removed in 1.26. (kubernetes/kubernetes#108129, @ahg-g) [SIG Apps and Testing]
+  The CertificateSigningRequest spec.expirationSeconds API field has graduated to GA. The CSRDuration feature gate for the field is now unconditionally
+  enabled and will be removed in 1.26. (kubernetes/kubernetes#108782, @cfryanr) [SIG API Machinery, Apps, Auth, Instrumentation and Testing]
+  TopologySpreadConstraints includes minDomains field to limit the minimum number of topology domains. (kubernetes/kubernetes#107674,
+  @sanposhiho) [SIG API Machinery, Apps and Scheduling]
+  CRD deep copies should no longer contain shallow copies of JSONSchemaProps.XValidations. (kubernetes/kubernetes#107956, @benluddy) [SIG API Machinery]
+  Feature of NonPreemptingPriority is graduated to GA (kubernetes/kubernetes#107432, @denkensk) [SIG Apps, Scheduling and Testing]
+  Fix OpenAPI serialization of the x-kubernetes-validations field (kubernetes/kubernetes#107970, @liggitt) [SIG API Machinery]
+  Kube-apiserver: the metadata.selfLink field can no longer be populated by kube-apiserver; it was deprecated in 1.16 and has not been populated by
+  default in 1.20+. (kubernetes/kubernetes#107527, @wojtek-t) [SIG API Machinery, Apps, Auth, Autoscaling, CLI, Cloud Provider, Network, Scheduling,
+  Storage and Testing]
+  Add a new metric webhook_fail_open_count to monitor webhooks that fail open (kubernetes/kubernetes#107171, @ltagliamonte-dd) [SIG API Machinery and Instrumentation]
+  Fix failed flushing logs in defer function when kubelet cmd exit 1. (kubernetes/kubernetes#104774, @kerthcet) [SIG Node and Scheduling]
+  Rename metrics evictions_number to evictions_total and mark it as stable. The original evictions_number metrics name is marked as "Deprecated"
+  and will be removed in kubernetes 1.23 (kubernetes/kubernetes#106366, @cyclinder) [SIG API Machinery, Apps, Architecture, Auth, CLI,
+  Cloud Provider, Cluster Lifecycle, Instrumentation, Network, Node, Release, Scalability, Scheduling, Storage, Testing and Windows]
+  The ServiceLBNodePortControl feature graduates to GA. The feature gate will be removed in 1.26. (kubernetes/kubernetes#107027, @uablrek) [SIG Network and Testing]
+  The feature DynamicKubeletConfig is removed from the kubelet. (kubernetes/kubernetes#106932, @SergeyKanzhelev) [SIG Apps, Auth, Instrumentation, Node and Testing]
+  Update default API priority-and-fairness config to avoid endpoint/configmaps operations from controller-manager to all match leader-election
+  priority level. (kubernetes/kubernetes#106725, @wojtek-t) [SIG API Machinery] 
+
+-------------------------------------------------------------------
+Sun Jun 19 17:41:17 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 23.6.0:
+  * Omits alpha-level enums from the static openapi file captured in api/openapi-spec
+  * Fixes a regression in v1beta1 PodDisruptionBudget handling of "strategic
+    merge patch"-type API requests for the `selector` field. Prior to 1.21,
+    these requests would merge `matchLabels` content and replace
+    `matchExpressions` content. In 1.21, patch requests touching the `selector`
+    field started replacing the entire selector. This is consistent with
+    server-side apply and the v1 PodDisruptionBudget behavior, but should not
+    have been changed for v1beta1.
+
+-------------------------------------------------------------------
+Tue May  3 06:28:36 UTC 2022 - pgajdos@suse.com
+
+- version update to 23.3.0
+  too many changes, see CHANGELOG.md in documentation or at
+  https://github.com/kubernetes-client/python/blob/master/CHANGELOG.md
+- Add python-kubernetes-no-mock.patch to allow building and use
+  without external mock package dependency.
+
+-------------------------------------------------------------------
+Sun Dec 20 10:06:34 UTC 2020 - Dirk Müller <dmueller@suse.com>
+
+- update to 12.0.1:
+ * Kubernetes API version 1.16.15
+  - Resolve regression in metadata.managedFields handling in update/patch requests submitted by older API clients ([#91748](https://github.com/kubernetes/k
+  ubernetes/pull/91748), [@apelisse](https://github.com/apelisse)) [SIG API Machinery and Testing]
+  - Fix bug where sending a status update completely wipes managedFields for some types. ([#90033](https://github.com/kubernetes/kubernetes/pull/90033), [@
+  apelisse](https://github.com/apelisse)) [SIG API Machinery and Testing]
+  - The `MutatingWebhookConfiguration` and `ValidatingWebhookConfiguration` APIs have been promoted to `admissionregistration.k8s.io/v1`:
+    - `failurePolicy` default changed from `Ignore` to `Fail` for v1
+    - `matchPolicy` default changed from `Exact` to `Equivalent` for v1
+    - `timeout` default changed from `30s` to `10s` for v1
+    - `sideEffects` default value is removed, and the field made required, and only `None` and `NoneOnDryRun` are permitted for v1
+    - `admissionReviewVersions` default value is removed and the field made required for v1 (supported versions for AdmissionReview are `v1` and `v1beta1`)
+    - The `name` field for specified webhooks must be unique for `MutatingWebhookConfiguration` and `ValidatingWebhookConfiguration` objects created via `a
+  dmissionregistration.k8s.io/v1`
+  - The `AdmissionReview` API sent to and received from admission webhooks has been promoted to `admission.k8s.io/v1`. Webhooks can specify a preference fo
+  r receiving `v1` AdmissionReview objects with `admissionReviewVersions: ["v1","v1beta1"]`, and must respond with an API object in the same `apiVersion` t
+  hey are sent. When webhooks use `admission.k8s.io/v1`, the following additional validation is performed on their responses:
+    - `response.patch` and `response.patchType` are not permitted from validating admission webhooks
+    - `apiVersion: "admission.k8s.io/v1"` is required
+    - `kind: "AdmissionReview"` is required
+    - `response.uid: "<value of request.uid>"` is required
+    - `response.patchType: "JSONPatch"` is required (if `response.patch` is set) ([#80231](https://github.com/kubernetes/kubernetes/pull/80231), [@liggitt]
+  (https://github.com/liggitt))
+  - The `CustomResourceDefinition` API type is promoted to `apiextensions.k8s.io/v1` with the following changes:
+    - Use of the new `default` feature in validation schemas is limited to v1
+    - `spec.scope` is no longer defaulted to `Namespaced` and must be explicitly specified
+    - `spec.version` is removed in v1; use `spec.versions` instead
+    - `spec.validation` is removed in v1; use `spec.versions[*].schema` instead
+    - `spec.subresources` is removed in v1; use `spec.versions[*].subresources` instead
+    - `spec.additionalPrinterColumns` is removed in v1; use `spec.versions[*].additionalPrinterColumns` instead
+    - `spec.conversion.webhookClientConfig` is moved to `spec.conversion.webhook.clientConfig` in v1
+    - `spec.conversion.conversionReviewVersions` is moved to `spec.conversion.webhook.conversionReviewVersions` in v1
+    - `spec.versions[*].schema.openAPIV3Schema` is now required when creating v1 CustomResourceDefinitions
+    - `spec.preserveUnknownFields: true` is disallowed when creating v1 CustomResourceDefinitions; it must be specified within schema definitions as `x-kubernetes-preserve-unknown-fields: true`
+    - In `additionalPrinterColumns` items, the `JSONPath` field was renamed to `jsonPath` in v1 (fixes https://github.com/kubernetes/kubernetes/issues/66531)
+      The `apiextensions.k8s.io/v1beta1` version of `CustomResourceDefinition` is deprecated and will no longer be served in v1.19. ([#79604](https://github.com/kubernetes/kubernetes/pull/79604), [@liggitt](https://github.com/liggitt))
+  - The `ConversionReview` API sent to and received from custom resource CustomResourceDefinition conversion webhooks has been promoted to `apiextensions.k8s.io/v1`. CustomResourceDefinition conversion webhooks can now indicate they support receiving and responding with `ConversionReview` API objects in the `apiextensions.k8s.io/v1` version by including `v1` in the `conversionReviewVersions` list in their CustomResourceDefinition. Conversion webhooks must respond with a ConversionReview object in the same apiVersion they receive. `apiextensions.k8s.io/v1` `ConversionReview` responses must specify a `response.uid` that matches the `request.uid` of the object they were sent. ([#81476](https://github.com/kubernetes/kubernetes/pull/81476), [@liggitt](https://github.com/liggitt))
+  - Add scheduling support for RuntimeClasses. RuntimeClasses can now specify nodeSelector constraints & tolerations, which are merged into the PodSpec for pods using that RuntimeClass. ([#80825](https://github.com/kubernetes/kubernetes/pull/80825), [@tallclair](https://github.com/tallclair))
+  - Kubelet should now more reliably report the same primary node IP even if the set of node IPs reported by the CloudProvider changes. ([#79391](https://github.com/kubernetes/kubernetes/pull/79391), [@danwinship](https://github.com/danwinship))
+  - Omit nil or empty field when calculating container hash value to avoid hash changed. For a new field with a non-nil default value in the container spec, the hash would still get changed. ([#57741](https://github.com/kubernetes/kubernetes/pull/57741), [@dixudx](https://github.com/dixudx))
+  - Property `conditions` in `apiextensions.v1beta1.CustomResourceDefinitionStatus` and `apiextensions.v1.CustomResourceDefinitionStatus` is now optional instead of required. ([#64996](https://github.com/kubernetes/kubernetes/pull/64996), [@roycaihw](https://github.com/roycaihw))
+  - When the status of a CustomResourceDefinition condition changes, its corresponding `lastTransitionTime` is now updated. ([#69655](https://github.com/kubernetes/kubernetes/pull/69655), [@CaoShuFeng](https://github.com/CaoShuFeng))
+- many more changes, see included changelog
+
+-------------------------------------------------------------------
+Thu Apr 16 07:18:05 UTC 2020 - pgajdos@suse.com
+
+- version update to 11.0.0
+  Kubernetes API Version: 1.15.10
+  **API Change:**
+  - Deleting CustomObjects doesn't require passing in the body anymore [kubernetes-client/gen#142](https://github.com/kubernetes-client/gen/pull/142)
+  **New Feature:**
+  - Add ability to the client to be used as Context Manager [kubernetes-client/python#1073](https://github.com/kubernetes-client/python/pull/1073)
+  - Enable the use of dynamic client [kubernetes-client/python#1035](https://github.com/kubernetes-client/python/pull/1035)
+  - Add option to refresh gcp token when config is cmd-path [kubernetes-client/python-base#175](https://github.com/kubernetes-client/python-base/pull/175)
+  **Bug Fix:**
+  - Add kubernetes.dynamic to setup.py pkg list [kubernetes-client/python#1096](https://github.com/kubernetes-client/python/pull/1096)
+  - Fixed issue in `__del__` method of the `ApiClient` that caused an indefinite hang during garbage collection. [kubernetes-client/python#1073](https://github.com/kubernetes-client/python/pull/1073)
+  - Fix custom object API example [kubernetes-client/python#1049](https://github.com/kubernetes-client/python/pull/1049)
+  - Fix deprecation warning in E2E tests [kubernetes-client/python#1036](https://github.com/kubernetes-client/python/pull/1036)
+  - Use `==/!=` to compare str, bytes, and int literals [kubernetes-client/python#1007](https://github.com/kubernetes-client/python/pull/1007)
+  - Fix apiserver_id 'get' method [kubernetes-client/python-base#184](https://github.com/kubernetes-client/python-base/pull/184)
+  - Fix persist_config flag and function calls [kubernetes-client/python-base#169](https://github.com/kubernetes-client/python-base/pull/169)
+  - Fix memory inneficiencies in the WebSocket client [kubernetes-client/python-base#178](https://github.com/kubernetes-client/python-base/pull/178)
+  - Fix functionality to watch logs when log line is not a JSON-serialized object [kubernetes-client/python-base#171](https://github.com/kubernetes-client/python-base/pull/171)
+  - Detect binary payloads and send the correct opcode [kubernetes-client/python-base#152](https://github.com/kubernetes-client/python-base/pull/152)
+  **Deprecation Notice**
+  v11.0.0 of the client follows the Kubernetes [deprecation policy](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/release/versioning.md#supported-releases-and-component-skew) and will
+  be deprecated as and when Kubernetes version v1.15 gets deprecated.
+  **API Change:**
+  - Introduce `ExtensionsV1beta1RuntimeClassStrategyOptions` and `PolicyV1beta1RuntimeClassStrategyOptions`. Add RuntimeClass restrictions & defaulting to PodSecurityPolicy [kubernetes/kubernetes#73795](https://github.com/kubernetes/kubernetes/pull/73795)
+  - Introduce `V1WindowsSecurityContextOptions`. Add Windows specific options in Pod Security Context and Container Security Context [kubernetes/kubernetes#77147](https://github.com/kubernetes/kubernetes/pull/77147)
+  - Split `V1beta1Webhook` into `V1beta1MutatingWebhook` and `V1beta1ValidatingWebhook` [kubernetes/kubernetes#78491](https://github.com/kubernetes/kubernetes/pull/78491)
+  - Introduce parameter `allow_watch_bookmarks` in list options for requesting watch bookmarks from apiserver. The implementation in apiserver is hidden behind feature gate `WatchBookmark` (currently in Alpha stage) [kubernetes/kubernetes#74074](https://github.com/kubernetes/kubernetes/pull/74074)
+  - Add `V1DeleteOptions` parameters (`dry_run`, `grace_period_seconds`, `orphan_dependents`, `propagation_policy`) to delete collection APIs [kubernetes/kubernetes#77843](https://github.com/kubernetes/kubernetes/pull/77843)
+  - Add ListMeta.RemainingItemCount. When responding a LIST request, if the server has more data available, and if the request does not contain label selectors or field selectors, the server sets the ListOptions.RemainingItemCount to the number of remaining objects [kubernetes/kubernetes#75993](https://github.com/kubernetes/kubernetes/pull/75993)
+  - Add `controller_expand_secret_ref` in `V1SecretReference` to store CSI volume expansion secrets [kubernetes/kubernetes#77516](https://github.com/kubernetes/kubernetes/pull/77516)
+  - Introduce `preemption_policy` field to V1PriorityClass [kubernetes/kubernetes#74614](https://github.com/kubernetes/kubernetes/pull/74614)
+  - Add `port` configuration to service reference in Admission webhook configuration, AuditSink webhook configuration, CRD Conversion webhook configuration and kube-aggregator [kubernetes/kubernetes#74855](https://github.com/kubernetes/kubernetes/pull/74855)
+  - Introduce `inline_volume_spec` to `V1PersistentVolumeSpec` [kubernetes/kubernetes#77703](https://github.com/kubernetes/kubernetes/pull/77703)
+  - Add fields `x_kubernetes_embedded_resource`, `x_kubernetes_int_or_string`, `x_kubernetes_preserve_unknown_fields` to V1beta1JSONSchemaProps [kubernetes/kubernetes#77207](https://github.com/kubernetes/kubernetes/pull/77207)
+  
+  **Bug Fix:**
+  - Update `_load_azure_token` to handle str and int [kubernetes-client/python-base#141](https://github.com/kubernetes-client/python-base/pull/141)
+  - Correct regex to properly parse rfc3339 microseconds [kubernetes-client/python-base#150](https://github.com/kubernetes-client/python-base/pull/150)
+
+-------------------------------------------------------------------
+Mon Mar 16 10:37:51 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build without python2
+
+-------------------------------------------------------------------
+Thu Jan  2 12:52:07 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update dependencies to match up what is in requirements.txt
+
+-------------------------------------------------------------------
+Tue Oct  8 15:24:14 UTC 2019 - Can Bayburt <cbbayburt@suse.com>
+
+- python-ipaddress is only required for building on Python2
+  (on Python3 is part of the standard library)
+- Backport fix for base64 padding in kubeconfig (bsc#1151481)
+  https://github.com/kubernetes-client/python-base/issues/65
+- Added:
+  * base64-padding-fix.patch
+
+-------------------------------------------------------------------
+Tue Aug 13 06:35:14 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
+
+- update to 10.0.1:
+  * Fix content type regression in custom object patch API
+  * Bump urllib3 version to pick up security fix for CVE-2019-11324
+
+-------------------------------------------------------------------
+Wed Jul 24 08:11:05 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 10.0.0:
+  * Fix base64 padding for kube config kubernetes-client/python-base#79
+  * Fix websocket client decoding binary message. Replace non-utf8 data instead of failing kubernetes-client/python-base#104
+  * Add email scope to GCP provided credential refresh kubernetes-client/python-base#110
+  * Fix broken urllib3 dependencies kubernetes-client/python#816
+  * Add method to dynamically set namespace in yaml utility kubernetes-client/python#782
+  * Add json-patch to custom object patch method kubernetes-client/gen#119
+
+-------------------------------------------------------------------
+Fri Jun  7 12:08:37 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Drop unused dep on Sphinx
+
+-------------------------------------------------------------------
+Wed May 15 18:34:08 UTC 2019 - svasudevan@suse.com
+
+- Update to 9.0.0
+  * Add fieldSelector parameter to list/watch methods in custom objects spec kubernetes-client
+
+-------------------------------------------------------------------
+Fri Mar  1 11:56:43 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Add missing %doc and %license
+- Remove unnecessary code style build dependencies
+
+-------------------------------------------------------------------
+Thu Feb  7 19:15:25 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 8.0.1
+  + Bug Fix:
+    - Refresh GCP auth tokens on API retrieval
+    - Fix kubeconfig loading failure when server uri contains trailing slash
+  + Security Fix:
+    - Bump urllib3 version to pick up security fix for CVE-2018-20060
+- Update to version 8.0.0
+  + New Feature:
+    - Add utility to create API resource from yaml file
+- Update to version 8.0.0b1
+  + Bug Fix:
+    - Update ExecProvider to use safe\_get() to tolerate kube-config file that sets
+  `args: null` and `env: null`
+    - Properly deserialize API server's response when posting a deployment rollback
+  + API Change:
+    - dry-run: CREATE/UPDATE/PATCH methods now support dryRun parameter
+- Update to version 8.0.0a1
+  + New Feature:
+    - Add exec-plugins support in kubeconfig
+  + Bug Fix:
+    - Fix reading kubeconfig data with bytes in Python 3
+  + API Change:
+    - Upon receiving a LIST request with expired continue token, the apiserver now returns a continue token together with the 410 "the from parameter is too old " error. If the client does not care about getting a list from a consistent snapshot, the client can use this token to continue listing from the next key, but the returned chunk will be from the latest snapshot
+    - Introduces autoscaling/v2beta2 and custom\_metrics/v1beta2, which implement metric selectors for Object and Pods metrics, as well as allowing AverageValue targets on Objects, similar to External metrics
+    - Create "coordination.k8s.io" api group with "Lease" api in it
+    - Added support to restore a volume from a volume snapshot data source: adds TypedLocalObjectReference in the core API and adds DataSource in PersistentVolumeClaimSpec
+    - ProcMount added to SecurityContext and AllowedProcMounts added to
+      PodSecurityPolicy to allow paths in the container's /proc to not be masked
+    - Support both directory and block device for local volume plugin FileSystem
+      VolumeMode
+    - SCTP is now supported as additional protocol (alpha) alongside TCP and UDP in
+      Pod, Service, Endpoint, and NetworkPolicy
+    - RuntimeClass is a new API resource for defining different classes of runtimes
+      that may be used to run containers in the cluster. Pods can select a
+      RunitmeClass to use via the RuntimeClassName field. This feature is in alpha,
+      and the RuntimeClass feature gate must be enabled in order to use it
+    - The PodShareProcessNamespace feature to configure PID namespace sharing within
+      a pod has been promoted to beta
+    - To address the possibility dry-run requests overwhelming admission webhooks that rely on side effects and a reconciliation mechanism, a new field is being added to admissionregistration.k8s.io/v1beta1.ValidatingWebhookConfiguration and admissionregistration.k8s.io/v1beta1.MutatingWebhookConfiguration so that webhooks can explicitly register as having dry-run support. If a dry-run request is made on a resource that triggers a non dry-run supporting webhook, the request will be completely rejected, with "400: Bad Request". Additionally, a new field is being added to the admission.k8s.io/v1beta1.AdmissionReview API object, exposing to webhooks whether or not the request being reviewed is a dry-run
+    - Add custom object status and scale api
+    - dry-run: DELETE operations now support dryRun parameter
+    - Default extensions/v1beta1 Deployment's ProgressDeadlineSeconds to MaxInt32
+- Update to version 7.0.0
+  + New Features:
+    - Add support for refreshing Azure tokens
+- Update to version 7.0.0b1
+  + New Features:
+    - Add Azure support to authentication loading
+- Update to version 7.0.0a1
+  + Breaking Change:
+    - **ACTION REQUIRED** Rename the currently being-used `async` parameter to `async_req` to support Python 3.7 because it's a reserved keyword in Python 3.7
+  + Bug Fix:
+    - Watch now properly deserializes custom resource objects and updates resource version
+    - `idp-certificate-authority-data` in kubeconfig is now optional instead of required for OIDC token refresh
+  + API Change:
+    - ApiextensionsV1beta1Api: Add PATCH and GET to custom_resource_definition_status
+    - ApiregistrationV1Api and ApiregistrationV1beta1Api: Add PATCH and GET to api_service_status
+    - CertificatesV1beta1Api: Add PATCH and GET to certificate_signing_request_status
+    - SchedulingV1beta1Api: Promote priority_class to beta
+    - PodSecurityPolicy now supports restricting hostPath volume mounts to be readOnly and under specific path prefixes
+    - The Sysctls experimental feature has been promoted to beta (enabled by default via the `Sysctls` feature flag). PodSecurityPolicy and Pod objects now have fields for specifying and controlling sysctls. Alpha sysctl annotations will be ignored by 1.11+ kubelets. All alpha sysctl annotations in existing deployments must be converted to API fields to be effective.
+    - Add CRD Versioning with NOP converter
+    - Volume topology aware dynamic provisioning
+    - Fixed incorrect OpenAPI schema for CustomResourceDefinition objects with a validation schema
+- Update to version 6.0.0
+    - Config loader now supports OIDC auth
+    - Bug fix: fix expiry time checking in API token refresh
+- Update to version 6.0.0b1
+    - Update to Kubernetes 1.10 cluster
+    - Config loader now raises exception on duplicated name in kubeconfig
+  + API change:
+    - CustomObjectsApi: Add PATCH to CustomObjectsApi
+    - Promoting the apiregistration.k8s.io (aggregation) to GA (ApiregistrationV1Api)
+    - CoreV1Api: remove /proxy legacy API (deprecated since kubernetes v1.2). Use the /proxy subresources on objects that support HTTP proxying
+    - The `PodSecurityPolicy` API has been moved to the `policy/v1beta1` API group. The `PodSecurityPolicy` API in the `extensions/v1beta1` API group is deprecated and will be removed in a future release. Authorizations for using pod security policy resources should change to reference the `policy` API group after upgrading to 1.11
+    - StorageV1beta1Api: Introduce new `VolumeAttachment` API Object
+    - V1FlexPersistentVolumeSource: PersistentVolume flexVolume sources can now reference secrets in a namespace other than the PersistentVolumeClaim's namespace
+    - ACTION REQUIRED: VolumeScheduling and LocalPersistentVolume features are beta and enabled by default.  The PersistentVolume NodeAffinity alpha annotation is deprecated and will be removed in a future release
+    - Allows HorizontalPodAutoscaler to use global metrics not associated with any Kubernetes object (for example metrics from a hoster service running outside of Kubernetes cluster)
+    - v1.Pod now has a field to configure whether a single process namespace should be shared between all containers in a pod. This feature is in alpha preview.
+    - delete_namespaced_service() now takes an required body (delete option) parameter. Refactor service storage to remove registry wrapper
+  + Documentation update:
+    - Never let cluster-scoped resources skip webhooks
+    - Clarify that ListOptions.Timeout is not conditional on inactivity
+    - Indicate endpoint subsets are an optional field
+
+-------------------------------------------------------------------
+Thu Feb  7 18:36:43 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- update to 8.0.1:
+    too many changes to record here, see
+    https://github.com/kubernetes-client/python/blob/master/CHANGELOG.md
+    for complete list.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:49:52 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Tue Mar 27 08:23:23 UTC 2018 - tbechtold@suse.com
+
+- update to 5.0.0:
+  - Update to Kubernetes 1.9 cluster
+  - Label selector for pods is now required and must match the pod template's
+    labels for v1beta2 StatefulSetSpec, ReplicaSetSpec, DaemonSetSpec and
+    DeploymentSpec kubernetes/kubernetes#55357
+  - The dynamic admission webhook is split into two kinds, mutating and
+    validating. The kinds have changed completely and old code must be ported to
+    admissionregistration.k8s.io/v1beta1 - MutatingWebhookConfiguration and
+    ValidatingWebhookConfiguration kubernetes/kubernetes#55282
+  - DaemonSet, Deployment, ReplicaSet, and StatefulSet have been promoted to GA
+    and are available in the apps/v1 group version kubernetes/kubernetes#53679
+  - Introduce new storage.k8s.io/v1alpha1 VolumeAttachment object
+    kubernetes/kubernetes#54463
+  - Introduce core/v1 RBDPersistentVolumeSource kubernetes/kubernetes#54302
+  - StatefulSet status now has support for conditions
+    kubernetes/kubernetes#55268
+  - DaemonSet status now has support for conditions kubernetes/kubernetes#55272
+
+-------------------------------------------------------------------
+Tue Feb 13 09:40:12 UTC 2018 - tbechtold@suse.com
+
+- update to 4.0.0:
+  - api change V1PersistentVolumeSpec to V1ScaleIOPersistentVolumeSource #397.
+  - Make sure PyPI source distribution is complete with all files from the
+    root directory
+  - Update to Kubernetes 1.8 cluster
+  - IntOrString is now object thus it can be int or string. #18 #359
+  - Adding stream package to support calls like exec. The old way of calling
+    them is deprecated. See README.md#why-execattach-calls-doesnt-work.
+  - config.http_proxy_url is deprecated. use configuration.proxy instead.
+  - Configuration is not a singleton object anymore. Please use
+    Configuraion.set_default to change default configuration.
+  - Configuration class does not support `ws_streaming_protocol` anymore. In
+    ApiClient.set_default_header set `sec-websocket-protocol` to the preferred
+    websocket protocol.
+  - Fix Operation names for subresources kubernetes/kubernetes#49357
+  - Add proper GCP config loader and refresher kubernetes-client/python-base#22
+  - Add ws_streaming_protocol and use v4 by default
+    kubernetes-client/python-base#20
+  - Respect the KUBECONFIG environment variable if set
+    kubernetes-client/python-base#19
+  - Allow setting maxsize for PoolManager kubernetes-client/python-base#18
+  - Restricting the websocket-client to <=0.40 #299
+  - Update client to kubernetes 1.7
+  - Support ThirdPartyResources (TPR) and CustomResourceDefinitions (CRD).
+    Note that TPR is deprecated in kubernetes #251 #201
+  - Better dependency management #136
+  - Add support for python3.6 #244
+- Adjust Requires and BuildRequires
+- Fix Source url
+
+-------------------------------------------------------------------
+Thu Aug 17 14:00:41 UTC 2017 - dmueller@suse.com
+
+- small buildrequires cleanup
+
+-------------------------------------------------------------------
+Wed Jun 28 12:54:16 UTC 2017 - mc@suse.com
+
+- initial release 2.0.0

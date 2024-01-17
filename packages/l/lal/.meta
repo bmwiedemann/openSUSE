@@ -1,0 +1,8 @@
+<package name="lal" project="openSUSE:Factory">
+  <title>A collection of various gravitational wave data analysis routines</title>
+  <description>The LSC Algorithm Library Suite (LALSuite) is comprised of various gravitational wave data analysis routines written in C following the ISO/IEC 9899:1999 standard.
+
+</description>
+  <devel project="science" package="lal"/>
+  <url>https://wiki.ligo.org/Computing/DASWG/LALSuite</url>
+</package>

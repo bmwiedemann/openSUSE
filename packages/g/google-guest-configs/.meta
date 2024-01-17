@@ -1,0 +1,5 @@
+<package name="google-guest-configs" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Cloud:Tools" package="google-guest-configs"/>
+</package>

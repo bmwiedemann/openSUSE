@@ -1,0 +1,37 @@
+From: Philipp Thomas <pth@suse.de>
+Date: 2013-08-28 13:53:22+02:00
+Subject: Adapt for tk 8.6
+
+Expand the test to0 also find TK 8.6
+
+---
+ ibdiag/config/tk.m4 |    6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+Index: ibdiag/config/tk.m4
+===================================================================
+--- ibdiag/config/tk.m4.orig	2010-10-07 10:11:24.000000000 +0200
++++ ibdiag/config/tk.m4	2013-08-28 13:52:28.710071238 +0200
+@@ -18,11 +18,11 @@ dnl if we were not given a path - try fi
+ if test "x$with_tk_lib" = "xnone"; then
+    dirs="/usr /usr/local /usr/local/ibgd /usr/local/ibg2 /usr/local/ibed /usr/local/ofed"
+    for d in $dirs; do
+-     if test -e $d/lib/libtk8.4.so -o -e $d/lib/libtk8.5.so; then
++     if test -e $d/lib/libtk8.4.so -o -e $d/lib/libtk8.5.so -o -e $d/lib/libtk8.6.so; then
+         with_tk_lib=$d/lib
+         AC_MSG_NOTICE(TK: found in:$with_tk_lib)
+      fi
+-     if test -e $d/lib64/libtk8.4.so -o -e $d/lib64/libtk8.5.so; then
++     if test -e $d/lib64/libtk8.4.so -o -e $d/lib64/libtk8.5.so -o -e $d/lib64/libtk8.6.so; then
+         with_tk_lib=$d/lib64
+         AC_MSG_NOTICE(TK: found in:$with_tk_lib)
+      fi
+@@ -30,7 +30,7 @@ if test "x$with_tk_lib" = "xnone"; then
+ fi
+ 
+ if test "x$with_tk_lib" = "xnone"; then
+-	AC_MSG_ERROR(TK: failed to find tk8.4 or tk8.5 lib. Please use --with-tk-lib)
++	AC_MSG_ERROR(TK: failed to find tk8.4, tk8.5 or tk8.6 lib. Please use --with-tk-lib)
+ fi
+ 
+ AC_SUBST(with_tk_lib)

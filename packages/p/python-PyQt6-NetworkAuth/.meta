@@ -1,0 +1,7 @@
+<package name="python-PyQt6-NetworkAuth" project="openSUSE:Factory">
+  <title>Python bindings for the Qt5 3D framework</title>
+  <description>PyQt3D is a set of Python bindings for the Qt 3D framework.
+
+</description>
+  <devel project="KDE:Qt:PyQt" package="python-PyQt6-NetworkAuth"/>
+</package>

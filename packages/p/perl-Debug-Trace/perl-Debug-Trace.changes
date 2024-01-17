@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Mon Nov 25 07:36:44 UTC 2013 - coolo@suse.com
+
+- updated to 0.05
+  - Update tests for Carp >= 1.32
+- new cpanspec template
+
+-------------------------------------------------------------------
+Wed Dec  1 13:31:58 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Fri Sep 17 15:17:20 UTC 2010 - chris@computersalat.de
+
+- recreated by cpanspec 1.78
+- noarch pkg
+
+-------------------------------------------------------------------
+Mon Mar 22 15:33:04 UTC 2010 - coolo@novell.com
+
+- initial package created by cpanspec 1.78
+

@@ -1,0 +1,148 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e9c18cc802a994043a3b77af2fe51967</srcmd5>
+    <version>2.7.2</version>
+    <time>1168902720</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="96">
+    <srcmd5>1e9afd9d797a7536acf22670b295dc52</srcmd5>
+    <version>2.7.2</version>
+    <time>1205339386</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="97">
+    <srcmd5>081a5d3e33edc290051d9a97008f7e4c</srcmd5>
+    <version>2.7.2</version>
+    <time>1206544174</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="139">
+    <srcmd5>081a5d3e33edc290051d9a97008f7e4c</srcmd5>
+    <version>2.7.2</version>
+    <time>1206544174</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="140">
+    <srcmd5>0a5001bad7eeb5292b05d774e6da3cba</srcmd5>
+    <version>2.7.2</version>
+    <time>1245338324</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="142">
+    <srcmd5>0a5001bad7eeb5292b05d774e6da3cba</srcmd5>
+    <version>2.7.2</version>
+    <time>1245338324</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="143">
+    <srcmd5>6c6f344ed26b6078608a2bb243164f3f</srcmd5>
+    <version>2.7.2</version>
+    <time>1268923502</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="145">
+    <srcmd5>6c6f344ed26b6078608a2bb243164f3f</srcmd5>
+    <version>2.7.2</version>
+    <time>1278667344</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="146">
+    <srcmd5>6c6f344ed26b6078608a2bb243164f3f</srcmd5>
+    <version>2.7.2</version>
+    <time>1278678574</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="149">
+    <srcmd5>6c6f344ed26b6078608a2bb243164f3f</srcmd5>
+    <version>2.7.2</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="150">
+    <srcmd5>0ca2adb0d9a40a1eb2db4930fc6a9849</srcmd5>
+    <version>2.7.2</version>
+    <time>1305899585</time>
+    <user>saschpe</user>
+    <comment>Rename lassign to avoid a name chlash with Tcl 8.5 (bnc#684968)</comment>
+    <requestid>70798</requestid>
+  </revision>
+  <revision rev="12" vrev="151">
+    <srcmd5>c99e5c9323e0cb4d39322fcd11cd0e7c</srcmd5>
+    <version>2.7.2</version>
+    <time>1305899601</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 70798
+</comment>
+  </revision>
+  <revision rev="13" vrev="152">
+    <srcmd5>e299d2b2a3332bd78f557b58f4b292ed</srcmd5>
+    <version>2.7.2</version>
+    <time>1316681028</time>
+    <user>saschpe</user>
+    <comment>- Remove redundant/obsolete tags/sections from specfile
+  (cf. packaging guidelines) (forwarded request 83469 from jengelh)</comment>
+    <requestid>84289</requestid>
+  </revision>
+  <revision rev="14" vrev="154">
+    <srcmd5>e299d2b2a3332bd78f557b58f4b292ed</srcmd5>
+    <version>2.7.2</version>
+    <time>1319181872</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="155">
+    <srcmd5>e60a0d71bc64e9fd9801d89e408ece11</srcmd5>
+    <version>2.7.2</version>
+    <time>1323191330</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="16" vrev="157">
+    <srcmd5>e60a0d71bc64e9fd9801d89e408ece11</srcmd5>
+    <version>2.7.2</version>
+    <time>1340183315</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="159">
+    <srcmd5>e60a0d71bc64e9fd9801d89e408ece11</srcmd5>
+    <version>2.7.2</version>
+    <time>1359108862</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="161">
+    <srcmd5>e60a0d71bc64e9fd9801d89e408ece11</srcmd5>
+    <version>2.7.2</version>
+    <time>1379662318</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="163">
+    <srcmd5>e60a0d71bc64e9fd9801d89e408ece11</srcmd5>
+    <version>2.7.2</version>
+    <time>1409300850</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>d3e7fd65739ef65b37ec5ddacabf8930</srcmd5>
+    <version>2.8.0</version>
+    <time>1421753550</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>281490</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>c79c7146af88a9ea1858ddc44ab7a011</srcmd5>
+    <version>2.8.0</version>
+    <time>1466814152</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the version information in exmh-2.7-conf.patch and rename it
+  to exmh-conf.patch (bsc#967510).</comment>
+    <requestid>404001</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,12 @@
+diff -Pdpru mimetic-0.9.8.orig/mimetic/os/mmfile.cxx mimetic-0.9.8/mimetic/os/mmfile.cxx
+--- mimetic-0.9.8.orig/mimetic/os/mmfile.cxx	2014-06-17 12:12:00.000000000 +0400
++++ mimetic-0.9.8/mimetic/os/mmfile.cxx	2021-05-29 15:54:16.102377999 +0300
+@@ -57,7 +57,7 @@ bool MMFile::open(int mode)
+ bool MMFile::map()
+ {
+     m_beg = (char*) mmap(0, m_st.st_size, PROT_READ, MAP_SHARED,m_fd,0);
+-    if(m_beg > 0)
++    if(m_beg != MAP_FAILED)
+     {
+         m_end = m_beg + m_st.st_size;
+         #if HAVE_MADVISE

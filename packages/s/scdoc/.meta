@@ -1,0 +1,6 @@
+<package name="scdoc" project="openSUSE:Factory">
+  <title>scdoc</title>
+  <description>scdoc is a simple man page generator written for POSIX systems written in C99.</description>
+  <devel project="devel:tools" package="scdoc"/>
+  <url>https://git.sr.ht/~sircmpwn/scdoc</url>
+</package>

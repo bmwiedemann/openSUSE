@@ -1,0 +1,39 @@
+-------------------------------------------------------------------
+Sun Jan  1 03:17:04 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.009
+   see /usr/share/doc/packages/perl-Role-Identifiable/Changes
+
+  0.009     2022-12-31 16:48:48-05:00 America/New_York
+          - tweak some packaging information (author, etc)
+
+-------------------------------------------------------------------
+Mon Jun 13 03:15:03 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.008
+   see /usr/share/doc/packages/perl-Role-Identifiable/Changes
+
+  0.008     2022-06-12 15:25:28-04:00 America/New_York
+          - tweak some packaging information (author, etc)
+          - add Role::Identifiable just to make life simpler
+            ( https://github.com/rjbs/Role-Identifiable/issues/3 )
+
+-------------------------------------------------------------------
+Sat May  2 09:45:00 UTC 2015 - coolo@suse.com
+
+- updated to 0.007
+   see /usr/share/doc/packages/perl-Role-Identifiable/Changes
+
+  0.007     2013-10-15 22:18:31 America/New_York
+            update bugtracker and repo metadata
+  
+  0.006     2013-08-30 15:41:27 America/New_York
+            [NOT QUITE BACKWARD COMPATIBLE]
+            idents now have to be non-empty and can't start or end with spaces
+
+-------------------------------------------------------------------
+Tue Apr  5 11:35:48 UTC 2011 - coolo@novell.com
+
+- initial package 0.005
+    * created by cpanspec 1.78.03
+

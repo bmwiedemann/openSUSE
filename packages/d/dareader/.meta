@@ -1,0 +1,5 @@
+<package name="dareader" project="openSUSE:Factory">
+  <title></title>
+  <description>Read image/video from socket file</description>
+  <devel project="X11:Deepin" package="dareader"/>
+</package>

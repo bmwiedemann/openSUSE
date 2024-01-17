@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d14081160d16610b5e3177a786e798de</srcmd5>
+    <version>1.12.0</version>
+    <time>1680636350</time>
+    <user>dimstar_suse</user>
+    <comment>required by python-tifffile 2023.3.15</comment>
+    <requestid>1076983</requestid>
+  </revision>
+</revisionlist>

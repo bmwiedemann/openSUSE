@@ -1,0 +1,95 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>eee7134eb9135488982eae7e8aa49010</srcmd5>
+    <version>1.11</version>
+    <time>1291128921</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 53927 from user coolo
+</comment>
+    <requestid>53927</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>99fc068766a1b60d9322183ea8aa54a0</srcmd5>
+    <version>1.11</version>
+    <time>1291128951</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 53927
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>e33c0247d54db8736cb2f4298fd5c6a2</srcmd5>
+    <version>1.11</version>
+    <time>1292243063</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 55710 from user coolo
+</comment>
+    <requestid>55710</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>0d3797538c8cd3e26f26db43462e3013</srcmd5>
+    <version>1.11</version>
+    <time>1292243071</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 55710
+</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>0d3797538c8cd3e26f26db43462e3013</srcmd5>
+    <version>1.11</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="6" vrev="10">
+    <srcmd5>0d3797538c8cd3e26f26db43462e3013</srcmd5>
+    <version>1.11</version>
+    <time>1319182260</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>d6bd23ae13f43ed4012199c4e2c14638</srcmd5>
+    <version>1.11</version>
+    <time>1323193227</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="8" vrev="13">
+    <srcmd5>d6bd23ae13f43ed4012199c4e2c14638</srcmd5>
+    <version>1.11</version>
+    <time>1340183829</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="9" vrev="15">
+    <srcmd5>d6bd23ae13f43ed4012199c4e2c14638</srcmd5>
+    <version>1.11</version>
+    <time>1359109646</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="17">
+    <srcmd5>d6bd23ae13f43ed4012199c4e2c14638</srcmd5>
+    <version>1.11</version>
+    <time>1379663641</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="19">
+    <srcmd5>d6bd23ae13f43ed4012199c4e2c14638</srcmd5>
+    <version>1.11</version>
+    <time>1409302256</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>57d44ba275d9f653f4b96d0da33134e2</srcmd5>
+    <version>1.12</version>
+    <time>1429346411</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.12
+   see /usr/share/doc/packages/perl-Devel-Cycle/Changes
+  1.12 Fri Nov 14 08:56:23 EST 2014
+       - Moved to GitHub at https://github.com/lstein/Devel-Cycle</comment>
+    <requestid>297357</requestid>
+  </revision>
+</revisionlist>

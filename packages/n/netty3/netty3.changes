@@ -1,0 +1,79 @@
+-------------------------------------------------------------------
+Sat Sep  9 14:43:21 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
+
+-------------------------------------------------------------------
+Mon Jun 13 08:43:45 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Remove dependency on javax.activation, which is a transitive
+  dependency.
+- Build again against mvn(log4j:log4j), since reload4j - that
+  provides it - is in all relevant distributions.
+
+-------------------------------------------------------------------
+Mon May 23 11:05:57 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Use the standalone JavaEE modules unconditionally
+
+-------------------------------------------------------------------
+Sat Apr 30 16:07:02 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Remove the compat versions, since the io.netty:netty artifact
+  coordinates exist only in version 3.x
+
+-------------------------------------------------------------------
+Fri Apr  8 21:33:50 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build against the provider of mvn(log4j:log4j:1.2.16) instead of
+  mvn(log4j:log4j), in order to be able to build both on systems
+  with and without reload4j (bsc#1197787)
+
+-------------------------------------------------------------------
+Fri Apr  8 06:00:41 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- netty3-CVE-2021-43797.patch
+  * backport upstream fix for bsc#1193672, CVE-2021-43797
+
+-------------------------------------------------------------------
+Wed Mar 23 08:49:24 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with java source and target levels 8
+- Added patch:
+  * x509certificate.patch
+    + Reimplement the OpenJdkSelfSignedCertGenerator class so that
+      it does not use removed classes.
+    + This adds new bouncycastle dependency
+
+-------------------------------------------------------------------
+Tue Feb 22 18:26:17 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Do not build against the log4j12 packages
+
+-------------------------------------------------------------------
+Sun Apr  4 05:47:53 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Change dependency on netty-tcnative to tomcat-jni
+  * fixes build in factory
+
+-------------------------------------------------------------------
+Tue Mar 31 06:02:58 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Migrate away from the felix OSGi implementation to to the latest
+  org.osgi one
+
+-------------------------------------------------------------------
+Wed Nov 27 10:13:47 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build with jdk >= 9
+
+-------------------------------------------------------------------
+Sun Nov 24 14:31:58 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Force building with jdk < 9, since some apis are not found
+  otherwise
+
+-------------------------------------------------------------------
+Thu Nov 14 12:48:51 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of netty3 3.10.6 compatibility version

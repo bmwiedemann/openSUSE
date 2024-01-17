@@ -1,0 +1,37 @@
+<package name="apache-rpm-macros-control" project="openSUSE:Factory">
+  <title>The Apache Web Server Version 2.4</title>
+  <description>Apache 2, the successor to Apache 1.
+
+Apache is the most used Web server software worldwide.
+
+Some new features in Apache 2: - hybrid multiprocess, multithreaded
+   mode for improved scalability
+
+- multiprotocol support
+
+- stream filtering
+
+- IPv6 support
+
+- new module API
+
+New modules include: - mod_auth_db
+
+- mod_auth_digest
+
+- mod_charset_lite
+
+- mod_dav
+
+- mod_file_cache
+
+Mod_ssl is no longer a separate package, but is now included in the
+Apache distribution.
+
+See /usr/share/doc/packages/apache2/, http://httpd.apache.org/, and
+http://httpd.apache.org/docs-2.4/upgrading.html.
+
+</description>
+  <devel project="Apache" package="apache-rpm-macros-control"/>
+  <url>http://httpd.apache.org/</url>
+</package>

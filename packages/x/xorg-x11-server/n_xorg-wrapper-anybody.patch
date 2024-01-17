@@ -1,0 +1,11 @@
+--- xserver-1.20.9/hw/xfree86/xorg-wrapper.c.old	2020-09-30 12:25:12.757532000 +0200
++++ xserver-1.20.9/hw/xfree86/xorg-wrapper.c	2020-09-30 12:27:12.809554000 +0200
+@@ -254,7 +254,7 @@ int main(int argc, char *argv[])
+     int i, r, fd;
+     int kms_cards = 0;
+     int total_cards = 0;
+-    int allowed = CONSOLE_ONLY;
++    int allowed = ANYBODY;
+     int needs_root_rights = -1;
+     char *const empty_envp[1] = { NULL, };
+ 

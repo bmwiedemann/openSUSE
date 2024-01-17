@@ -1,0 +1,5 @@
+<package name="cockpit-machines" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="systemsmanagement:cockpit" package="cockpit-machines"/>
+</package>

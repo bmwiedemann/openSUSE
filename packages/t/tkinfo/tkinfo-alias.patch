@@ -1,0 +1,17 @@
+--- tkinfo
++++ tkinfo
+@@ -3727,6 +3727,14 @@
+ 	    }
+ 	}
+     }
++    foreach suf $tki(infoSuffix) {
++	foreach extrasuf {"" .gz .Z .z .bz2} {
++	    set filePath "$fileName-*$suf$extrasuf"
++	    if {[catch {glob $filePath} result] == 0} {
++		return [lindex [lsort $result] 0]
++	    }
++	}
++    }
+     return ""
+ }
+ 

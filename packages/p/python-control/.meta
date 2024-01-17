@@ -1,0 +1,6 @@
+<package name="python-control" project="openSUSE:Factory">
+  <title>Python Control Systems Library</title>
+  <description>The Python Control Systems Library is a Python module that implements basic operations for analysis and design of feedback control systems.</description>
+  <devel project="devel:languages:python:numeric" package="python-control"/>
+  <url>https://github.com/python-control/python-control</url>
+</package>

@@ -1,0 +1,101 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2559946d2cfc212bebc1eb459698c1ed</srcmd5>
+    <version>0.0.6</version>
+    <time>1485167664</time>
+    <user>dimstar_suse</user>
+    <comment>openSUSE:Factory:Staging:adi:86</comment>
+    <requestid>442396</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0a100ac33793603585910178803b2291</srcmd5>
+    <version>0.0.7</version>
+    <time>1485383836</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>452382</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4dccbe3be316abe073cf82aa97f4e5c6</srcmd5>
+    <version>0.0.8</version>
+    <time>1486465744</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>455115</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e4e5dcc250c09e64dde9b63f4a0e7a50</srcmd5>
+    <version>0.0.9</version>
+    <time>1487681496</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>459307</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>32bfb9f80ebcbea9f43a12feb4c39448</srcmd5>
+    <version>0.1.0</version>
+    <time>1519145671</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>577953</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2496653121f8ac7f828408f63ab90be2</srcmd5>
+    <version>0.2.0</version>
+    <time>1532774583</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>625589</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b002a3a1669f67c532ba00fc40f14c37</srcmd5>
+    <version>0.2.1</version>
+    <time>1534940483</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>630794</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a968d55692aec12a58677f035ab1d977</srcmd5>
+    <version>0.2.2</version>
+    <time>1558690350</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.2.2
+  0.2.2 2019-05-23T11:20:22Z
+    - Minor documentation fixes #32 (@sjn)
+    - fix around 30 memory leaks #31 (@kraih)</comment>
+    <requestid>704993</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6eadfff212c130b6d9623f2a96133975</srcmd5>
+    <version>0.2.3</version>
+    <time>1564137876</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718765</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>f8f083a086f88ac805f5b7c1f11431ce</srcmd5>
+    <version>0.2.3</version>
+    <time>1565695135</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>722192</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f00541975c0947400e83256d168b7c3d</srcmd5>
+    <version>0.2.4</version>
+    <time>1566463939</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>724821</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>cc8afc6b6f6d269f932d129bada3e46e</srcmd5>
+    <version>0.3.1</version>
+    <time>1566894267</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726078</requestid>
+  </revision>
+</revisionlist>

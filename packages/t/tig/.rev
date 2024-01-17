@@ -1,0 +1,486 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>48865607e0739e7883dfbfdb3a6998e7</srcmd5>
+    <version>0.6</version>
+    <time>1180061156</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3b556c98e0ae478b64531215574895ed</srcmd5>
+    <version>0.10</version>
+    <time>1205888607</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5b7c634040a8793e4451b1c6f3e56cfa</srcmd5>
+    <version>0.11</version>
+    <time>1207563813</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="36">
+    <srcmd5>5b7c634040a8793e4451b1c6f3e56cfa</srcmd5>
+    <version>0.11</version>
+    <time>1207563813</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8a1653b87b14075a02e8d085c80bd46a</srcmd5>
+    <version>0.12</version>
+    <time>1223313060</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f33eb11a2122027cdabedf0a08a3b066</srcmd5>
+    <version>0.12.1</version>
+    <time>1223547183</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>797bfc54449180996a1cf565c8704ca7</srcmd5>
+    <version>0.13</version>
+    <time>1232067292</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3e55e492b8a3dc5df2500f71d18b8b46</srcmd5>
+    <version>0.14.1</version>
+    <time>1235164865</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>3e55e492b8a3dc5df2500f71d18b8b46</srcmd5>
+    <version>0.14.1</version>
+    <time>1235164865</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>da7b08d7770dea5bd231ae6965013140</srcmd5>
+    <version>0.14.1</version>
+    <time>1257851685</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools:scm/tig based on submit request 23899 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a98e6f364feeb460e403d8032f25218e</srcmd5>
+    <version>0.15</version>
+    <time>1260972581</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools:scm/tig based on submit request 26447 from user bwalle
+</comment>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>5f21afbaddfeef15e1ec7553159f19ad</srcmd5>
+    <version>0.15</version>
+    <time>1268926337</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>cd95b13452b2a7935c6a4ca374146183</srcmd5>
+    <version>0.16</version>
+    <time>1276528435</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools:scm/tig based on submit request 41425 from user bwalle
+</comment>
+    <requestid>41425</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>cd95b13452b2a7935c6a4ca374146183</srcmd5>
+    <version>0.16</version>
+    <time>1278667392</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>cd95b13452b2a7935c6a4ca374146183</srcmd5>
+    <version>0.16</version>
+    <time>1278678622</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>cd95b13452b2a7935c6a4ca374146183</srcmd5>
+    <version>0.16</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>54d6e7a22a5b5115bfda53965f6cd4b7</srcmd5>
+    <version>0.17</version>
+    <time>1303386530</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 66946 from user dirkmueller
+</comment>
+    <requestid>66946</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>f823e74c70b4509149415189a7ec8b5f</srcmd5>
+    <version>0.17</version>
+    <time>1303386541</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 66946
+</comment>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>f823e74c70b4509149415189a7ec8b5f</srcmd5>
+    <version>0.17</version>
+    <time>1319182519</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>33ca932752fde4ad65d81508dc5aef6b</srcmd5>
+    <version>0.18</version>
+    <time>1329922528</time>
+    <user>coolo</user>
+    <comment>Factory beautification, please forward and supersede 105323  (forwarded request 105417 from saschpe)</comment>
+    <requestid>105677</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>b28353c2d83ac04b6b12b28442d1990f</srcmd5>
+    <version>1.0</version>
+    <time>1337667564</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>121598</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>b28353c2d83ac04b6b12b28442d1990f</srcmd5>
+    <version>1.0</version>
+    <time>1340184274</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>d1220ff045eee74e5c078f63bf9efc49</srcmd5>
+    <version>1.0</version>
+    <time>1345983754</time>
+    <user>namtrac</user>
+    <comment>- Link tig against ncursesw for correct display of non-ASCII
+  characters like German umlauts.</comment>
+    <requestid>131126</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>0307971a6bb7a54d27cbc4c819420b81</srcmd5>
+    <version>1.1</version>
+    <time>1350381837</time>
+    <user>coolo</user>
+    <comment>Updated to 1.1 (forwarded request 138037 from douglarek)</comment>
+    <requestid>138074</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>0307971a6bb7a54d27cbc4c819420b81</srcmd5>
+    <version>1.1</version>
+    <time>1359110490</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>012f76ed229188e2d1778427cf9ad4b5</srcmd5>
+    <version>1.2</version>
+    <time>1377248852</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>195946</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>012f76ed229188e2d1778427cf9ad4b5</srcmd5>
+    <version>1.2</version>
+    <time>1379664821</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>19b52a9d5e06e38ddf064a465dfadc1d</srcmd5>
+    <version>1.2.1</version>
+    <time>1379927382</time>
+    <user>coolo</user>
+    <comment>- Use pristine upstream tarball
+
+- change autogen.sh call to autoreconf
+
+- convert asciidoc files to man pages
+
+- update to 1.2.1
+  * Incompatibilities:
+    - Move manual and man pages to doc/ directory and rename AsciiDoc files
+      to have .asciidoc as the extension to make them render on GitHub.
+  * Improvements:
+    - Show blob sizes in the tree view either as bytes or using binary unit
+      prefixes. Example: `set show-file-size = units`. (GH #163)
+    - Reduce main view memory usage and startup time, especially when revision
+      graph rendering is disabled. (GH #160)
+  * Bug fixes:
+    - Fix submodule-related setup to check for non-zero return value from
+      setenv(). (GH #188)</comment>
+    <requestid>199572</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>e85cbaadccfcac4055ad8403e8266094</srcmd5>
+    <version>2.0.2</version>
+    <time>1402117955</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>236455</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>e85cbaadccfcac4055ad8403e8266094</srcmd5>
+    <version>2.0.2</version>
+    <time>1409303498</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>4dbfc8d508ab2dc19ab5af2d5c37022b</srcmd5>
+    <version>2.0.3</version>
+    <time>1410967520</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>249304</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>136a3a89a0943abb18776f8d1d3dfc8f</srcmd5>
+    <version>2.1</version>
+    <time>1426495331</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>290688</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>ec06cd4dbb75150ceebfc85b994ab2f1</srcmd5>
+    <version>2.1</version>
+    <time>1426680345</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>291026</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>1a3b7edbbd5415b3773765f3d7f6cd8f</srcmd5>
+    <version>2.1.1</version>
+    <time>1428790241</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>295302</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>c0b6bb47ca43eacc1453ceb645b69f51</srcmd5>
+    <version>2.2</version>
+    <time>1471249904</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>419155</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>4d74cfc2d6cc6b63cd85be9f33014473</srcmd5>
+    <version>2.2.1</version>
+    <time>1479502892</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>440701</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>65a621d6ce52aa39f1a95b406d851b95</srcmd5>
+    <version>2.2.1</version>
+    <time>1485250874</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>451921</requestid>
+  </revision>
+  <revision rev="38" vrev="3">
+    <srcmd5>552771de25e687ef350d0e2a1cac06b2</srcmd5>
+    <version>2.2.1</version>
+    <time>1489345534</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>478676</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>d5e15e5f5fc72194836e980f4a595ef8</srcmd5>
+    <version>2.2.2</version>
+    <time>1496327465</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>493220</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>18b9f9a86101f096c62dce480f5c6628</srcmd5>
+    <version>2.3.0</version>
+    <time>1507897022</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>533156</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>b7a2dcc9cb6875e9854c8829937b3418</srcmd5>
+    <version>2.3.2</version>
+    <time>1515876326</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>559567</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>732930b8bf8fb781b3c3da05d1920c2c</srcmd5>
+    <version>2.3.3</version>
+    <time>1519041693</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>577718</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>dcf1ff4f097c6efcb8bc41ab82de0ddd</srcmd5>
+    <version>2.4.0</version>
+    <time>1532774483</time>
+    <user>dimstar_suse</user>
+    <comment>tig 2.4.0</comment>
+    <requestid>624525</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>9ea99ef7a4b50fdace98f0d978d34faa</srcmd5>
+    <version>2.4.1</version>
+    <time>1533412471</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>627318</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>e6ea3f6d16c9175dfb78d19ec7752853</srcmd5>
+    <version>2.5.0</version>
+    <time>1574337529</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>749893</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>780ab250bc3f8acd3d8b75707e6a0dd6</srcmd5>
+    <version>2.5.1</version>
+    <time>1586775282</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>793528</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>345b74394a5d0f02e37eb6dfd88d183e</srcmd5>
+    <version>2.5.3</version>
+    <time>1617131056</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 2.5.3:
+  * Fix autoconf checking for readline. (#1072)
+  * Fix segfault when saving a view with no column.
+  * Reset view-&gt;parent when main view is promoted.
+  * Fix segfault when pressing Enter in a child main view.
+  * Restore lazy navigation.
+  * Format time_t values portably and fix other values too. (#1084, #1085)
+  * Fix loop when wrapping line with ISO-8859-1 character. (#1087, #1088)
+
+- tig 2.5.2:
+  * Incompatible change: Change directory from the next argument,
+    from now use tig -C /path/to/repo
+  * Can now jump from blame to commit
+  * Start blame of an uncommitted deleted line from HEAD so the
+    line's origin can be traced
+  * Allow maxwidth to be expressed in % of the view width
+  * Pass stash args through
+  * Restore fullscreen navigation
+  * Add some range so control chars ^^ and ^_ are also supported
+  * Disable ncurses extended key values so that esc-codes can be used
+  * Use id column for commit id only
+  * Improvements to scrolling and clicking
+  * Allow to generate a compilation database
+  * New command stage-update-part
+  * The line number before a diff was applied is exposed as 
+    %(lineno_old)
+  * Many bug fixes</comment>
+    <requestid>877575</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>c3f2c4d2ea2935c5715078bec501f590</srcmd5>
+    <version>2.5.4</version>
+    <time>1623268338</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>898266</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>1f0833303b0206278317e3c53565dde5</srcmd5>
+    <version>2.5.5</version>
+    <time>1642112492</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.5.5:
+  Improvements:
+  * Make word-diff a toggleable option. (#1119, #1125)
+  * Add Linux installation instructions. (#1121, #1126)
+  * Allow :back to work across separate blame views. (#1123, #1127)
+  * Add auto-refresh to log view. (#1128)
+  * Expose %(file_old), useful for deleted and renamed files. (#1132)
+  * Enable jumping back in main view. (#628, #1138)
+  * Add PCRE (Perl Compatible Regular Expressions) support. (#1137, #1143)
+  * Pass command line args through to diff-files in status view. (#1152, #1155)
+  * Remove quotes from TIG_LS_REMOTE to allow inline shell commands. (#1160,
+    #1161)
+  * Avoid pushing identical history state in main view.
+  * Replace useless strncpy to avoid compilation warning with GCC 8.
+  * Update utf8proc to v2.7.0.
+  * Update distclean rule to preserve tarball contents. (#1167, #1169)
+  * Add reference types stash and other. (#1160, #1172)
+  * Auto refresh view upon option change.
+  * Allow to toggle revision filtering. (#1173)
+  Bug fixes:
+  * Fix null dereferences on unset format strings. (#1136, #1159)
+  * Fix invalid read in log_read. (#1128)
+  * Restore support for tig log --graph. (#1128)
+  * Further fix to fullscreen navigation.
+  * Fix blame when opened from an initial diff view. (#1135)
+  * Fix stash view when using tig --all or tig revs. (#1146, #1147)
+  * Avoiding null pointer dereference. (#1096)
+  * Fix navigation between chunks after splitting chunk. (#1101, #1162)
+  * Fix status line when toggling general options. (#1163, #1164)
+  * Honor reference-format = hide:tag in diff view. (#1168, #1170)</comment>
+    <requestid>946156</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>bd2dd11fdcd3b212eaebb96e95f034e6</srcmd5>
+    <version>2.5.6</version>
+    <time>1657809246</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>989095</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>08f12906a18f57ab1a90029cfaf845f5</srcmd5>
+    <version>2.5.7</version>
+    <time>1661498027</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.5.7:
+  * Fix running tests as root. (#1224)
+  * Fix parsing of status.showUntrackedFiles. (#1219)
+  * Avoid incorrect history path when $XDG_DATA_HOME is valid. (#1215,
+    #1217)</comment>
+    <requestid>999333</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>5e2df178dabc6bd94aca569d5905497a</srcmd5>
+    <version>2.5.8</version>
+    <time>1675689336</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.5.8:
+  Improvements:
+  * Update utf8proc to v2.8.0, supporting Unicode 15.
+  * Support editing from the pager and the log (-p) views. (#1243[1])
+  * Adjust build for native Apple Silicon.
+  * Autoscroll the pager view while loading. (#1223[2])
+  * Automatically show next diff in the status view. (#413[3], #469[4])
+  * Replace Unknown author with Not Committed Yet.
+  * Allow use of regular expressions for coloring. (#1249[5])
+  * Add support for option word-diff-regex. (#1252[6])
+  * Include original blob name in temporary filename. (#1254[7])
+  Bug fixes:
+  * Use %(file_old) for old filename in the blame view. (#1226[8])
+  * Correctly report which version of libncurses was linked. (#1240[9], #1241[10])
+  * Fix stage view closing when holding the ] key. (#1245[11])
+  * Make tests work from a path with symlinks.
+  * Fix encoding of very long lines. (#1227[12])
+  * Fix diffstat color for tig log -p.
+  * Clean IO before closing a view or quitting.</comment>
+    <requestid>1063360</requestid>
+  </revision>
+</revisionlist>

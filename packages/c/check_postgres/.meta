@@ -1,0 +1,15 @@
+<package name="check_postgres" project="openSUSE:Factory">
+  <title>Postgres monitoring script</title>
+  <description>check_postgres.pl is a Perl script that runs many different tests against one
+or more Postgres databases. It uses the psql program to gather the information,
+and outputs the results in one of three formats: Nagios, MRTG, or simple.
+
+Author:
+-------
+    Greg Sabino Mullane &lt;greg@endpoint.com&gt;
+
+
+</description>
+  <devel project="server:monitoring" package="check_postgres"/>
+  <url>http://bucardo.org/wiki/Check_postgres</url>
+</package>

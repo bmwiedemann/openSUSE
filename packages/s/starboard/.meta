@@ -1,0 +1,6 @@
+<package name="starboard" project="openSUSE:Factory">
+  <title>starboard</title>
+  <description>Kubernetes-native security toolkit</description>
+  <devel project="devel:kubic" package="starboard"/>
+  <url>https://github.com/aquasecurity/starboard</url>
+</package>

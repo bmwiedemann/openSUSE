@@ -1,0 +1,60 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fc1568363053684a3bc62b106864e88d</srcmd5>
+    <version>1.5.2</version>
+    <time>1549140514</time>
+    <user>coolo</user>
+    <comment>fix license tag</comment>
+    <requestid>669823</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>737c1e7a4d05cc46c26d543299f69b7a</srcmd5>
+    <version>1.5.2</version>
+    <time>1555237232</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not depend on the jvnet-parent pom since we are not building
+  with maven
+</comment>
+    <requestid>693098</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>6bc25e6031eea4eadedac117d85398b4</srcmd5>
+    <version>1.5.2</version>
+    <time>1648479550</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source/target levels 8</comment>
+    <requestid>962939</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>332f641765ecb7a4de595e062d366991</srcmd5>
+    <version>1.5.2</version>
+    <time>1648916398</time>
+    <user>dimstar_suse</user>
+    <comment>Standalone JavaEE inconditionally</comment>
+    <requestid>965939</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>7f8ab316c9a583f43286f6a7b2eea9df</srcmd5>
+    <version>1.5.2</version>
+    <time>1649715228</time>
+    <user>dimstar_suse</user>
+    <comment>package was unusable with gradle</comment>
+    <requestid>968020</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>c9fd69c1f03aaf55d6b644ccf308a850</srcmd5>
+    <version>1.5.2</version>
+    <time>1651424018</time>
+    <user>dimstar_suse</user>
+    <comment>Add an alias to jakarta.mail</comment>
+    <requestid>973924</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>4153e8bf44b0ae79bd6cd82e3f96b51f</srcmd5>
+    <version>1.5.2</version>
+    <time>1653417219</time>
+    <user>dimstar_suse</user>
+    <comment>sync changes with sle</comment>
+    <requestid>978881</requestid>
+  </revision>
+</revisionlist>

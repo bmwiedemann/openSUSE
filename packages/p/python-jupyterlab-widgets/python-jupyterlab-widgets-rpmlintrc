@@ -1,0 +1,3 @@
+# Note: These are not really backup files, they are needed
+addFilter("backup-file-in-package .*/package.json.orig")
+addFilter("filelist-forbidden .*/package.json.orig")

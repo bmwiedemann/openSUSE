@@ -1,0 +1,5 @@
+<package name="budgie-desktop-view" project="openSUSE:Factory">
+  <title>Budgie Desktop View</title>
+  <description>Budgie Desktop View is the official Budgie desktop icons application / implementation.</description>
+  <devel project="X11:Solus" package="budgie-desktop-view"/>
+</package>

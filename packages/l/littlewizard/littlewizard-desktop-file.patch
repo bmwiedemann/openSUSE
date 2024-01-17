@@ -1,0 +1,35 @@
+Index: littlewizard-1.2.2/littlewizard.desktop.in
+===================================================================
+--- littlewizard-1.2.2.orig/littlewizard.desktop.in
++++ littlewizard-1.2.2/littlewizard.desktop.in
+@@ -4,6 +4,7 @@ Name[cs]=Malý kouzelník
+ Name[cy]=Dewin Bach
+ Name[el]=Μικρός Μάγος
+ Name[es]=El Pequeño Mago
++Name[fi]=Pikku Velho
+ Name[fr]=Petit Magicien
+ Name[nl]=Kleine Tovenaar
+ Name[pl]=Mały Czarodziej
+@@ -19,6 +20,7 @@ Comment[cs]=Vývojové prostředí pro d
+ Comment[cy]=Amgylchedd datblygu ar gyfer plant
+ Comment[el]=Περιβάλλον προγραμματισμού για παιδιά
+ Comment[es]=Ambiente de desarrollo para niños
++Comment[fi]=Kehitysympäristö lapsille
+ Comment[fr]=Environnement de dévéloppement pour enfants
+ Comment[nl]=Bouwpakket voor kinderen
+ Comment[pl]=Środowisko programistyczne dla dzieci
+@@ -26,11 +28,10 @@ Comment[pt_BR]=Ambiente de desenvolvimen
+ Comment[ru]=Среда программирования для детей
+ Comment[sk]=Vývojové prostredie pre deti
+ 
+-Exec=littlewizard
+-Icon=@PACKAGE_PIXMAPS_DIR@/littlewizard-icon.png
++Exec=littlewizard %f
++Icon=littlewizard-icon.xpm
+ Terminal=false
+-MultipleArgs=false
+ Type=Application
+-Categories=GTK;GNOME;Education;Teaching;
++Categories=GTK;GNOME;Education;ComputerScience;
+ Encoding=UTF-8
+ MimeType=application/x-littlewizard;

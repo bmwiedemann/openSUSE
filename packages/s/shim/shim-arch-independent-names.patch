@@ -1,0 +1,61 @@
+From 71ca8f761fb5434ef65895345d96ccf063da7d66 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Tue, 22 Aug 2017 12:43:36 +0800
+Subject: [PATCH] Make the names of EFI binaries arch-independent
+
+Since we only build the 64-bit binaries, we don't have the issue of the
+mixed architecture binaries in the same directory. Besides, we will use
+the same install script for x86_64 and AArch64. It's easier to maintain
+the script with the same names.
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ fallback.c | 2 +-
+ shim.c     | 2 +-
+ shim.h     | 4 ++--
+ 3 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/fallback.c b/fallback.c
+index fc81c5e4..44b2d464 100644
+--- a/fallback.c
++++ b/fallback.c
+@@ -1058,7 +1058,7 @@ debug_hook(void)
+ 
+ 	x = 1;
+ 	console_print(L"add-symbol-file "DEBUGDIR
+-		      L"fb" EFI_ARCH L".efi.debug %p -s .data %p\n",
++		      L"fallback.efi.debug %p -s .data %p\n",
+ 		      &_etext, &_edata);
+ }
+ 
+diff --git a/shim.c b/shim.c
+index 765c9254..6751a2bc 100644
+--- a/shim.c
++++ b/shim.c
+@@ -1811,7 +1811,7 @@ debug_hook(void)
+ 	FreePool(data);
+ 
+ 	console_print(L"add-symbol-file "DEBUGDIR
+-		      L"shim" EFI_ARCH L".efi.debug 0x%08x -s .data 0x%08x\n",
++		      L"shim.efi.debug 0x%08x -s .data 0x%08x\n",
+ 		      &_text, &_data);
+ 
+ 	console_print(L"Pausing for debugger attachment.\n");
+diff --git a/shim.h b/shim.h
+index 0a6c8cfa..b9c3c4d8 100644
+--- a/shim.h
++++ b/shim.h
+@@ -105,8 +105,8 @@
+ #define DEBUGSRC L"/usr/src/debug/shim-" VERSIONSTR "." EFI_ARCH
+ #endif
+ 
+-#define FALLBACK L"\\fb" EFI_ARCH L".efi"
+-#define MOK_MANAGER L"\\mm" EFI_ARCH L".efi"
++#define FALLBACK L"\\fallback.efi"
++#define MOK_MANAGER L"\\MokManager.efi"
+ 
+ #if defined(VENDOR_DB_FILE)
+ # define vendor_authorized vendor_db
+-- 
+2.29.2
+

@@ -1,0 +1,12 @@
+Index: aranym-1.1.0/src/natfeat/nfcdrom_linux.cpp
+===================================================================
+--- aranym-1.1.0.orig/src/natfeat/nfcdrom_linux.cpp
++++ aranym-1.1.0/src/natfeat/nfcdrom_linux.cpp
+@@ -29,6 +29,7 @@
+ #include "nfcdrom_linux.h"
+ 
+ #include <linux/cdrom.h>
++#include <cstddef>
+ #include <errno.h>
+ #include "toserror.h"
+ 

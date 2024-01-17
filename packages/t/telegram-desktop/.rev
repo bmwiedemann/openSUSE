@@ -1,0 +1,1153 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>64ab9c5f72c96ddaaacc2085ca278ef6</srcmd5>
+    <version>1.3.15</version>
+    <time>1537964613</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>638214</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>75401c84176026b89ebc3de258453383</srcmd5>
+    <version>1.4.2</version>
+    <time>1539589141</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>641349</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b836808ababf3f12ebbd6119476dbb0d</srcmd5>
+    <version>1.4.7</version>
+    <time>1542666703</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>649928</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c8bf4294fa2fc10e3f0e73b7cbf10e5f</srcmd5>
+    <version>1.5.2</version>
+    <time>1545996884</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>661300</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>b0adcf72863fbe53e726ff90c42de6b2</srcmd5>
+    <version>1.5.2</version>
+    <time>1547211951</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>664419</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>bb581e5ac3c84b44f5b907a481e1960e</srcmd5>
+    <version>1.5.4</version>
+    <time>1547540209</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>664878</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e9b377f53de0b21ac631000184139e9b</srcmd5>
+    <version>1.5.11</version>
+    <time>1549140631</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>670739</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9ff3d3be375c5a51db0561d36ec81ce9</srcmd5>
+    <version>1.5.15</version>
+    <time>1550221367</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>676056</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>76efae7655b4539e01367bfb56a88401</srcmd5>
+    <version>1.5.15</version>
+    <time>1551025195</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>678082</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>01987d4816384526e536cde151916a41</srcmd5>
+    <version>1.6.1</version>
+    <time>1553158405</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>687028</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6755000f336d5d8fa9b4cb68a1d5950e</srcmd5>
+    <version>1.6.2</version>
+    <time>1553611471</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.2
+  * Delete any message on both ends in any private chat, anytime.
+  * Control whether your forwarded messages link back to your account.
+  * Control who may see your profile picture.
+  * Enjoy the new streamlined group management screen.
+</comment>
+    <requestid>688182</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>02f01e15e84ab457a144b0fa3ea13e1b</srcmd5>
+    <version>1.6.4</version>
+    <time>1554712690</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>691901</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ffbbad1caa7b5b709c966bb27643b01e</srcmd5>
+    <version>1.6.5</version>
+    <time>1554977901</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>693031</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e00fd149e830c4089f1011a30d7a1181</srcmd5>
+    <version>1.6.7</version>
+    <time>1555237430</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.7
+  * Replace media when editing messages with media content.
+  * Jump quickly to the top of your chats list.
+  * Get emoji suggestions for the first word you type in a message.
+  * Help Telegram improve emoji suggestions in your language using
+    this interface https://translations.telegram.org/en/emoji
+- Update to 1.6.6
+  * Bug fixes and other minor improvements.
+</comment>
+    <requestid>693924</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>2b91db646e4344848aa9987c02b0c4a2</srcmd5>
+    <version>1.7.0</version>
+    <time>1557654237</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>702034</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>22c6f600604712e7a43cf6a773f8311e</srcmd5>
+    <version>1.7.7</version>
+    <time>1560971219</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709246</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>3b461c1d33f12e90238c9acfbb0ebe30</srcmd5>
+    <version>1.7.9</version>
+    <time>1561405981</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>711584</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>8e9bdf55fb59211109fa6d55043013a0</srcmd5>
+    <version>1.7.10</version>
+    <time>1561494123</time>
+    <user>dimstar_suse</user>
+    <comment>update to 1.7.10</comment>
+    <requestid>711809</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>bb77c13f921bac05374d89af1f869e18</srcmd5>
+    <version>1.8.1</version>
+    <time>1566242865</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.8.1</comment>
+    <requestid>722120</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>b5442e41f6a88a3b911ac1aa304e9b90</srcmd5>
+    <version>1.8.2</version>
+    <time>1566665182</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.8.2</comment>
+    <requestid>725644</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>46ba300a1f3332099c891d3328ae9787</srcmd5>
+    <version>1.8.4</version>
+    <time>1568025378</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>729251</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>492c437bbbacae3cefeb1c5f6457cf0a</srcmd5>
+    <version>1.8.8</version>
+    <time>1568379595</time>
+    <user>lnussel_factory</user>
+    <comment></comment>
+    <requestid>730197</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>401149f93cb0a8b0cc1d6abd4c6f63cb</srcmd5>
+    <version>1.8.9</version>
+    <time>1569851990</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>733874</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>e282fe4cbc11e3b25f1a53e4fd19edae</srcmd5>
+    <version>1.8.15</version>
+    <time>1574783526</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>746365</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>b63add45ada53bccab6a5b6f97df9567</srcmd5>
+    <version>1.9.3</version>
+    <time>1579346260</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to 1.9.3
+  * Videos in chats start playing automatically.
+  * Resume playback from where you left off when watching long 
+    videos and listening to long audio tracks.
+  * Control automatic playback for videos, GIFs and round video
+    messages in Settings &gt; Advanced &gt; Automatic media download.
+  * Enjoy system spell checker support on all modern systems.
+- Switch build system to Ninja
+- Rename default-gtk2.patch to 0000-gtk2-default.patch,
+  removed tdesktop.patch
+- Added patches:
+  * 0001-Dynamic-linking-system-libs.patch
+  * 0002-Dynamic-linking-system-qt.patch
+  * 0004-gtk3.patch
+  * 0005-Use-system-wide-fonts.patch
+  * 0006-Revert-Disable-DemiBold-fallback-for-Semibold.patch
+</comment>
+    <requestid>764924</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>5e4a2cf07157f828b5785ceefe3bce09</srcmd5>
+    <version>1.9.8</version>
+    <time>1579955114</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9.8
+  * Bug fixes and other minor improvements.
+- Update to 1.9.7
+  * Create three new kinds of polls.
+  * See who voted for what in polls with visible votes.
+  * Vote for several options in polls that allow multiple answers.
+  * Guess the correct answer in quiz-style polls.
+  * Explore various ways of combining the different poll options.
+  * Add polls from the '...' menu in any group or channel.
+  * Use bots like @quizbot to create quizzes with several questions
+    and media attachments.
+  * Schedule messages to be sent when your recipient comes online
+    (only works if you know their online status).
+- Clean up spec file
+- Update to 1.9.6
+  * Bug fixes and other minor improvements.
+- Removed 0005-Use-system-wide-fonts.patch and
+  0006-Revert-Disable-DemiBold-fallback-for-Semibold.patch,
+  option to use system fonts added upstream
+- Update to 1.9.4
+  * Bug fixes and other minor improvements.
+- Removed patches, option to use distribution libraries
+  added upstream:
+  * 0001-Dynamic-linking-system-libs.patch
+  * 0002-Dynamic-linking-system-qt.patch
+  * 0004-gtk3.patch
+- Added patches for dependencies not available from repos:
+  * 0001-use-bundled-range.patch
+  * 0002-use-bundled-rlottie.patch
+</comment>
+    <requestid>766998</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>a29988e8c98b5522d7088e0553f6ac06</srcmd5>
+    <version>1.9.9</version>
+    <time>1580420206</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>768530</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>06668c10be3a92802272434579eb6a9e</srcmd5>
+    <version>1.9.12</version>
+    <time>1581585208</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>773975</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>186784710246815e1c12f00fe580508d</srcmd5>
+    <version>1.9.13</version>
+    <time>1581694830</time>
+    <user>okurz-factory</user>
+    <comment></comment>
+    <requestid>774287</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>be4a02fd96f30012a0e1a63068ec2f55</srcmd5>
+    <version>1.9.14</version>
+    <time>1582299759</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>777871</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>2ffaad1b612d0aa79f0d1e2fc9902595</srcmd5>
+    <version>1.9.21</version>
+    <time>1584643724</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>785960</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>eeb17654537dba4ae1a7500fbee18cd9</srcmd5>
+    <version>2.0.1</version>
+    <time>1585761658</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>790636</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>f80fcfc15e11830ff2a96ecf081ae66d</srcmd5>
+    <version>2.1.0</version>
+    <time>1588186332</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>798826</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>9802309f146ff65d8a3f72477d5c0997</srcmd5>
+    <version>2.1.1</version>
+    <time>1588538800</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>799686</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>f4ac95a128b3f43ce27ccf41c13141ff</srcmd5>
+    <version>2.1.10</version>
+    <time>1591879862</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.1.10
+  * Improve memory usage.
+  * Add support for full group message history export.
+  * Allow export of a single chat message history in JSON format.
+- Update to 2.1.8 (beta)
+  * Add support for full group message history export.
+  * Allow export of a single chat message history in JSON format.
+- Rebased 0000-gtk2-default.patch
+- Update to 2.1.7
+  * Fix the Fcitx input method plugin.
+- Update to 2.1.5
+  * Disable the taskbar icon flash or the dock icon bounce in
+    Settings &gt; Notifications.
+  * View messages containing long monospace texts in wide bubbles.
+  * Bug fixes and other minor improvements.
+- rebased 0001-use-bundled-range.patch
+- Update to 2.1.4
+  * Improve bold font selection.
+- Update to 2.1.3
+  * Added support for new emoji.
+  * Channels to which you can't post will no longer be suggested
+    when forwarding.
+  * Improved font selection and bold font support for CJK and Farsi.
+  * Fix polls and quizes results viewing.
+  * Fix memory leak in web page previews with autoplayed videos.
+  * Fix running on OS X 10.10.
+  * Other minor bug fixes and improvements.
+- removed range-v3-master.zip, range is now bundled in the
+  upstream source
+- rebased 0001-use-bundled-range.patch
+</comment>
+    <requestid>812250</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>1f4af1008e5cd3bc93c50248cfd89ccf</srcmd5>
+    <version>2.1.11</version>
+    <time>1591990799</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1.11
+  * Fix launching on old Linux systems.
+</comment>
+    <requestid>813541</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>e13b6848f8ac13deb7e573964edbd812</srcmd5>
+    <version>2.1.12</version>
+    <time>1592580390</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>815948</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>217e90c687861fdede4cbb83bba92cef</srcmd5>
+    <version>2.1.13</version>
+    <time>1593090590</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>816981</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>322b83f241d07e5a06f982ae5394f3b0</srcmd5>
+    <version>2.1.13</version>
+    <time>1598726542</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>830133</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>590544f0095e94d7a458587f2ce45b2d</srcmd5>
+    <version>2.3.2</version>
+    <time>1601044092</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>830615</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>4d91a20c7257284f43a276d9cfae8331</srcmd5>
+    <version>2.3.2</version>
+    <time>1601652916</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>838804</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>945ed667615ac5651d2d85d1a6f6e27a</srcmd5>
+    <version>2.4.2</version>
+    <time>1601919524</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.2
+  * Allow block, report and delete all message from user from
+    &quot;user joined&quot; service message context menu.
+  * Fix admin badge display in groups.
+  * Fix loading and opening of comments in channels.
+- Update to 2.4.1
+  * Move by PageUp and PageDown in channel comments.
+  * Several layout bugfixes.
+  * Several crashfixes.
+- Update to 2.4.0
+  * Turn on &quot;Remain Anonymous&quot; in an admin's Permissions to
+    let them post on behalf of the group and become invisible
+    in the list of members.
+  * Comment on posts in channels that have a discussion group.
+  * Get notified about replies to your comments via the new
+    Replies chat (if you are not a member of the discussion group).
+- Remove check_if_xcb-screensaver_present.patch, obsolete
+- Update tg_owt and patches
+</comment>
+    <requestid>839233</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>7c74423b246dda77d8ac87b464715312</srcmd5>
+    <version>2.4.3</version>
+    <time>1602349492</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>840476</requestid>
+  </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>209a504f6ccb2783c069919a9213a370</srcmd5>
+    <version>2.4.3</version>
+    <time>1602857776</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841994</requestid>
+  </revision>
+  <revision rev="45" vrev="3">
+    <srcmd5>189042f1371cfebaf7c184908ed871da</srcmd5>
+    <version>2.4.3</version>
+    <time>1603031722</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>842176</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>a709a1725661159cccda3580f6d4f47c</srcmd5>
+    <version>2.4.4</version>
+    <time>1603875554</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844378</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>c671e9269b053087becc1c8ba9ebf551</srcmd5>
+    <version>2.4.5</version>
+    <time>1604306610</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.5
+  * Pin several messages in any chat, including one-on-one chats.
+  * Jump between pinned messages or open them all on a separate page
+    via the top bar.
+  * Send several music tracks as a playlist. 
+  * Send several files as an album in one chat bubble.
+  * Send a :slot_machine: emoji to any chat to see if you
+    hit the jackpot.
+  * Hide Telegram taskbar icon on Linux in Settings &amp;gt; Advanced.
+- Update tg_owt (forwarded request 845093 from tux93)</comment>
+    <requestid>845206</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>d826f6e6015294767d858db2b8037715</srcmd5>
+    <version>2.4.6</version>
+    <time>1604510755</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>845553</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>fcfceb6e7a7274824bde7205f25fb8f0</srcmd5>
+    <version>2.4.7</version>
+    <time>1604702704</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.7
+  * Fix playback display in albums of music files.
+  * Several crash fixes. (forwarded request 846325 from tux93)</comment>
+    <requestid>846362</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>2f4aa1b70eb36fa30b34861c0107c433</srcmd5>
+    <version>2.5.1</version>
+    <time>1608835154</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>858473</requestid>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>dc79d021c45f2f8230b57a90f3861cb1</srcmd5>
+    <version>2.5.1</version>
+    <time>1610051221</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>861417</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>2fdf38fa7a34539cf27b74ad4096f7d7</srcmd5>
+    <version>2.5.7</version>
+    <time>1611929019</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.5.7
+  * Delete not only messages, but also groups you created and
+    call history for all sides, without a trace.
+  * Adjust volume for individual participants of a voice chat.
+  * Report fake groups or channels impersonating famous people or
+    organizations by opening their Profile &gt; ... &gt; Report.
+- Updatet tg_owt
+  * adapt 0002-tg_owt-fix-name-confliction.patch
+- Rebase 0000-gtk2-default.patch
+- Add Recommends for google-opensans-fonts (forwarded request 867562 from tux93)</comment>
+    <requestid>867711</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>de20e53ff7fc2bdd8196b929f0de18db</srcmd5>
+    <version>2.5.8</version>
+    <time>1612182553</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.5.8
+  * Fix OpenAL device closing in calls and voice chats.
+  * Fix video chat rotation when calling from iOS.
+  * Fix scheduling messages without sound.
+  * Remove redundant Cancel button in ScheduleBox. (forwarded request 868143 from tux93)</comment>
+    <requestid>868309</requestid>
+  </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>da03aee378e17bb688809c5514aa168d</srcmd5>
+    <version>2.5.8</version>
+    <time>1616271984</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>880261</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>b3fd6e5a3c063327c9eec6d49205c058</srcmd5>
+    <version>2.7.1</version>
+    <time>1616598893</time>
+    <user>dimstar_suse</user>
+    <comment>- Expand the ExcludeArch.
+
+- Exclude i586, support was dropped upstream
+  (gh#telegramdesktop/tdesktop#10037)
+
+- Add telegram-desktop-cinttypes-header.patch: Include cinttypes
+  header to use uint32_t.
+- Add xkbcommon and wayland header dirs to CXXFLAGS to fix build
+  failures.
+- Require Qt &gt;= 5.15: Required since version 2.5.9
+  (gh#telegramdesktop/tdesktop#10398).
+- Pass -q to unzip to avoid echoing long file list while
+  unzipping.
+
+- Update to 2.7.1
+  * Fix editing 'Manage Voice Chats' rights for channel admins.
+  * Fix verification check display in voice chat participants list.
+  * Allow removing and blocking channels from voice chats.
+- Update tg_owt
+
+- Update to 2.7.0
+  * Start limitless Voice Chats in Groups and Channels.
+  * Host discussions that can be listened to by millions of people
+    simultaneously.
+  * Record voice chats to share or publish in Channels later.
+  * See that a chat is being recorded from the red dot next to
+    its title.
+  * See user bio texts right from the list of participants.
+  * Raise your hand to show admins you want to speak.
+  * Create separate Voice Chat Invite Links for listeners or speakers.</comment>
+    <requestid>880737</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>9fd2c3313e8ef44af081e0be448d5c3c</srcmd5>
+    <version>2.7.2</version>
+    <time>1619552077</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>888544</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>3ec7fe39e58612a43ca91264218fe914</srcmd5>
+    <version>2.7.3</version>
+    <time>1619653115</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.7.3
+  * Fix crash on some versions of Linux.
+  * Fix video not stopping when PiP window is closed.
+  * Fix messages marking as read if the Windows session is locked. (forwarded request 888813 from tux93)</comment>
+    <requestid>889044</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>0a92ba1ab885180ddfc4c6284ac71ead</srcmd5>
+    <version>2.7.4</version>
+    <time>1619729190</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.7.4
+  * Fix crash in viewing an invoice after a payment is made.
+  * Respect Focus Assist only for native notifications.
+  * Mark messages as read only in active window. (forwarded request 889128 from tux93)</comment>
+    <requestid>889232</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>87ea8a190babffd1f50d62a1b9596ab1</srcmd5>
+    <version>2.7.5</version>
+    <time>1622536712</time>
+    <user>dimstar_suse</user>
+    <comment>- Temporarily stick to GCC10 to work around build failures
+
+- Update to 2.7.5 (beta)
+  * Add &quot;Voice chats&quot; filter in &quot;Recent actions&quot; for channels.
+  * Write local drafts to disk on a background thread.
+  * Support autoupdate for Telegram in write-protected folders
+    on Linux.
+  * Fix crash in native notifications on Linux.
+  * Fix crash in file dialog on Linux.
+- Update tg_owt</comment>
+    <requestid>896097</requestid>
+  </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>4dfcaa5d837189ba5c81eccddadd049f</srcmd5>
+    <version>2.7.5</version>
+    <time>1622928712</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0003-prioritize-gtk2.patch and enable GTK integration.
+  Fixes boo#1149986 regression.</comment>
+    <requestid>897722</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>fc058c5ae3b6e5b36f408e0391610365</srcmd5>
+    <version>2.9.0</version>
+    <time>1628023712</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.9.0
+  * Enable auto-delete in your chats to remove messages.
+  * Quickly find all GIFs from a chat using the new GIF section.
+  * Reset your Two-Step Verification password even if you forgot.
+  * Enjoy a new app icon and default background.
+- Update tg_owt
+- Update 0001-use-bundled-ranged-exptected-gsl.patch
+  * Use bundled rlottie
+- Add 0004-use-dynamic-x-libraries.patch
+- Add 0005-add-wayland-include-path.patch (forwarded request 909652 from nuklly)</comment>
+    <requestid>909700</requestid>
+  </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>ba7ee85da919e49268a54a32dfac865f</srcmd5>
+    <version>2.9.0</version>
+    <time>1630525021</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>915301</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>9df9841f193b4b548ced1ce118c843d5</srcmd5>
+    <version>3.1.1</version>
+    <time>1633038221</time>
+    <user>dimstar_suse</user>
+    <comment>- Add explicit BuildRequires for webkit2gtk-4.0
+
+- Update to 3.1.1
+- Update tg_owt
+- Remove 0003-prioritize-gtk2.patch, the file it was applied to
+  was removed upstream
+- Enable GCC11 again</comment>
+    <requestid>922426</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>c480f3ffe2029706b7e7c549ca1de32b</srcmd5>
+    <version>3.1.9</version>
+    <time>1634141174</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.9
+  * Show small media previews in chats list.
+  * Show media album previews and caption text in chats list.
+  * Add &quot;Quick Reply&quot; and &quot;Mark as Read&quot; to native
+    Windows notifications. (forwarded request 924649 from tux93)</comment>
+    <requestid>924962</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>dbdcb322537acfc730f507b71c1fc5b9</srcmd5>
+    <version>3.1.11</version>
+    <time>1635956729</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.11
+  * Create special invite links that require admins to approve users
+    before they become members.
+  * Admins can view the applicants' profiles and bios by tapping the
+    Join Requests bar at the top of the chat.
+  * Add internal labels to your chat's Invite Links to keep them
+    organized.
+  * Run natively on Apple Silicon
+- Update tg_owt (forwarded request 928212 from tux93)</comment>
+    <requestid>928835</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>a48c74439d9514a0bc0dd4d21d453447</srcmd5>
+    <version>3.2.8</version>
+    <time>1638918001</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.2.8
+  * Fix crash in opening shared media with another user.
+  * Try out the new audio player with playlist shuffle and repeat.
+  * Give a custom name to your desktop session to distinguish it
+    in the sessions list.
+- Update tg_owt (forwarded request 936151 from nuklly)</comment>
+    <requestid>936242</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>9c37191952cfa771ac54deded8b8f9a9</srcmd5>
+    <version>3.3.0</version>
+    <time>1640108432</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.3.0
+</comment>
+    <requestid>941852</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>add013f81fabdb9491577b729162b490</srcmd5>
+    <version>3.4.2</version>
+    <time>1641203349</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.4.2
+  * Bug fixes and other minor improvements.
+
+- Update to 3.4.1
+  * Bug fixes and other minor improvements.
+
+- Update to 3.4.0
+  * Send reactions to messages.
+  * Group and Channel admins can enable reactions in their chat
+    via '...' * menu &gt; Manage &gt; Reactions.
+  * Select text when typing and choose 'Formatting &gt; Spoiler'
+    in the context menu to hide some or all of the contents of
+    a message.
+  * Click on the spoiler in chat to reveal its hidden text.
+  * Spoiler formatting hides text in chat, as well as in
+    the chat list and notifications.
+- Update tg_owt</comment>
+    <requestid>943407</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>284f68499988fa8dbb6bda849d30d7c5</srcmd5>
+    <version>3.4.3</version>
+    <time>1641555949</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.4.3
+  * Bug fixes and other minor improvements. (forwarded request 943803 from tux93)</comment>
+    <requestid>944477</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>5821d715372fa73f8f205fc8fcedb2ed</srcmd5>
+    <version>3.5.0</version>
+    <time>1644007766</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0003-add-qt5-widgets-include.patch
+  * Fix Qt5Widgets private header include issue.
+- Update to 3.5.0
+  * Use a new type of detailed stickers with smooth animations.
+  * Create new sets by sending .webm videos to @stickers.
+  * Bring your custom animated stickers from other apps.
+  * See smaller, compact animations when reacting to messages.
+  * See real-time animations in chat when a user reacts to your message.
+  * React with additional emoji expressing love, appreciation,
+    anger or surprise.
+  * Tap the new button in chats to jump to your messages that have
+    unseen reactions.
+  * Watch the animations for unseen reactions play when you
+    hit the button.
+  * The app will warn you before closing if you are uploading
+    photos or files to a chat.
+  * Enjoy better screencast quality in video chats.
+- Update tg_owt
+- Rebase patches
+</comment>
+    <requestid>951584</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>f1974d7ec3b226dbb2ea152f128c316d</srcmd5>
+    <version>3.5.2</version>
+    <time>1645054280</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>955489</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>33a8627a30e8ea97ef2ae7728041ba50</srcmd5>
+    <version>3.6.0</version>
+    <time>1647458419</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.6.0
+  * Active and recently finished downloads pop up in bar in the
+    bottom left corner, like they do in browsers.
+  * View recently downloaded files in Settings &gt; Advanced
+    &gt; Downloads.
+  * Get an alert before closing the app if you have
+    unfinished downloads.
+  * Share a direct t.me link to your phone number that instantly
+    opens a chat with you. Use the full number in
+    international format, like t.me/+123456789
+  * Manage Live Streams in your channels using external software
+    like OBS Studio or XSplit Broadcaster. Choose &quot;Stream With...&quot;
+    when staring a video chat or live stream - then copy your
+    Stream Key and paste it into your streaming software.
+- Update tg_owt (forwarded request 961483 from tux93)</comment>
+    <requestid>961971</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>5cb6fac027e30e84c2d41be7797e8161</srcmd5>
+    <version>3.6.1</version>
+    <time>1649610339</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>968088</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>7636d6d4aff3c6c5149ddc411b173cec</srcmd5>
+    <version>3.7.3</version>
+    <time>1651605549</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>974479</requestid>
+  </revision>
+  <revision rev="75" vrev="2">
+    <srcmd5>f1e388ca5571dc4e2eec86288ae2d56a</srcmd5>
+    <version>3.7.3</version>
+    <time>1652389112</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>976145</requestid>
+  </revision>
+  <revision rev="76" vrev="3">
+    <srcmd5>e7c914ac44675fb1fda53786af43be21</srcmd5>
+    <version>3.7.3</version>
+    <time>1654869468</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>982017</requestid>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>5b8e6da1193e45a2c8438dd5007ec1b2</srcmd5>
+    <version>4.0.0</version>
+    <time>1656145477</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>984930</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>6af332c8aaac0f89f8cb07fe3c8e3822</srcmd5>
+    <version>4.0.2</version>
+    <time>1656237570</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>985089</requestid>
+  </revision>
+  <revision rev="79" vrev="2">
+    <srcmd5>39c4b5d6f4e19d02ce2cef3f232e62f7</srcmd5>
+    <version>4.0.2</version>
+    <time>1656422548</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>985388</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>09aeecc68388b24fd5ab9ff0d9f8e59f</srcmd5>
+    <version>4.1.1</version>
+    <time>1664112885</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1005635</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>f43af9d44e362c51aa5987c3ae3cdd83</srcmd5>
+    <version>4.3.4</version>
+    <time>1670162294</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 4.3.4.
+  * Changed 0002-use-bundled-rnnoise-expected-gsl-ranges-webrtc.patch.
+  * Added BuildRequires: Qt6Qml, Qt6Quick, Qt6QuickWidgets,
+    Qt6WaylandCompositor, qt6-widgets-private-devel and protobuf.
+  * Changed BuildRequires: from glibmm-2.4 to glibmm-2.68.
+  * Fixed OpenGL regression in Qt and language detection (video call crash).
+  * Other bug fixes and minor improvements. (forwarded request 1038950 from 13ilya)</comment>
+    <requestid>1039827</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>28fe50d338a451ddbe3db3ea23ef34e8</srcmd5>
+    <version>4.4.1</version>
+    <time>1670514666</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.4.1</comment>
+    <requestid>1041353</requestid>
+  </revision>
+  <revision rev="83" vrev="2">
+    <srcmd5>b63673d0b8fabedebdce96c30d7b6a95</srcmd5>
+    <version>4.4.1</version>
+    <time>1673021136</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1056241</requestid>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>71176815d01181a18b5a4dd3946db7ad</srcmd5>
+    <version>4.6.5</version>
+    <time>1677498941</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1067851</requestid>
+  </revision>
+  <revision rev="85" vrev="2">
+    <srcmd5>513bd411fae09c8559e2910f7688f705</srcmd5>
+    <version>4.6.5</version>
+    <time>1677584964</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1068084</requestid>
+  </revision>
+  <revision rev="86" vrev="3">
+    <srcmd5>81fcb888ad1194aec8b18a7a58672983</srcmd5>
+    <version>4.6.5</version>
+    <time>1677683647</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1068243</requestid>
+  </revision>
+  <revision rev="87" vrev="4">
+    <srcmd5>f6b18387eb56cfccc3f79544c9e02010</srcmd5>
+    <version>4.6.5</version>
+    <time>1680018601</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1074776</requestid>
+  </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>9df5c3fcc7eac85bd1dbbbb038169d9b</srcmd5>
+    <version>4.7.1</version>
+    <time>1681480245</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1079425</requestid>
+  </revision>
+  <revision rev="89" vrev="2">
+    <srcmd5>a871a979c20eb067a96c97cbfca9bda9</srcmd5>
+    <version>4.7.1</version>
+    <time>1682618460</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace BuildRequire on xorg-x11-devel by pkgconfig(...) (forwarded request 1083067 from jengelh)</comment>
+    <requestid>1083072</requestid>
+  </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>4cd8af661b4b654816acf843dc66ddea</srcmd5>
+    <version>4.8.1</version>
+    <time>1683403793</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.8.1:
+  * Fix sending an album of ten scheduled messages.
+  * Convert folder back to non-shareable on last link deletion.
+  * Several fixes of focus control in discussions / channel
+    comments.
+  * Drop all formatting on paste in non-message input fields.
+  * Clear search field on archive opening.
+  * Show video upload / download progress over the spoiler.
+  * Better support for text-colored emoji in reactions.
+  * Close archive / topics group when clicking on currently active
+    folder.
+  * Allow replace media by paste in discussions / comments /
+    scheduled messages.
+  * Fix stuck Replace Media button after editing media in some
+    chats.
+  * Quick reply by double click only with the left mouse button.
+  * Fix applying the same custom chat background with different
+    dimming value.
+  * Fix &quot;who reacted&quot; list display for media album parts.
+  * Show full t.me/+ invite link prefix in Recent Actions.
+  * Don't try to suggest userpic photos to bots.
+  * Add &quot;Send when online&quot; to the send button context menu.
+  * Fix crash in empty topics message sending.
+- Update to 4.8.0
+  * Share folders that include dozens of chats with friends or
+    colleagues.
+  * Anyone you invite can add the folder and join all its chats in
+    one tap.
+  * You can create multiple invite links to give different people
+    access to different chats in the folder.
+  * Set a custom wallpaper for any 1-on-1 chat.
+  * Your chat partner can apply the same wallpaper - or choose
+    their own.
+</comment>
+    <requestid>1085240</requestid>
+  </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>e546093c5af39fd6bfae186936d14971</srcmd5>
+    <version>4.8.4</version>
+    <time>1689710858</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1099106</requestid>
+  </revision>
+  <revision rev="92" vrev="2">
+    <srcmd5>3287a3953a32440cf460bfd1948da4d7</srcmd5>
+    <version>4.8.4</version>
+    <time>1690278588</time>
+    <user>dimstar_suse</user>
+    <comment>- Relax _constraints for Arm targets
+- Disable neon on armv7 since the build of libyuv breaks with
+  neon on armv7 and some armv7 SoC does not include neon anyway (forwarded request 1099688 from Guillaume_G)</comment>
+    <requestid>1099694</requestid>
+  </revision>
+  <revision rev="93" vrev="3">
+    <srcmd5>763454a93c48a86d9e414e4eede07746</srcmd5>
+    <version>4.8.4</version>
+    <time>1692379758</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1104674</requestid>
+  </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>d06c5351b2d37f9b31df8926c9f8df9e</srcmd5>
+    <version>4.9.9</version>
+    <time>1695327715</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1112608</requestid>
+  </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>79df02d59c5061b3799ca2c21e0a6859</srcmd5>
+    <version>4.10.0</version>
+    <time>1695664945</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1113192</requestid>
+  </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>421b785421cb605fa38053082292400d</srcmd5>
+    <version>4.10.2</version>
+    <time>1696356932</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1114428</requestid>
+  </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>7041a0746bbc8b51c8af1add005ae0a0</srcmd5>
+    <version>4.10.3</version>
+    <time>1696760329</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1116203</requestid>
+  </revision>
+  <revision rev="98" vrev="2">
+    <srcmd5>9d26f600575242730b09c42cf694089f</srcmd5>
+    <version>4.10.3</version>
+    <time>1697061420</time>
+    <user>anag+factory</user>
+    <comment>- Drop freetype-devel BuildRequires: there is already
+  pkgconfig(freetype2) and it seems unlikely that both versions are
+  being used. (forwarded request 1117008 from dimstar)</comment>
+    <requestid>1117034</requestid>
+  </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>3aead30610584f80ead84cf4d87be1c6</srcmd5>
+    <version>4.11.1</version>
+    <time>1698604921</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1121001</requestid>
+  </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>d04139e7b294385173d662da9f0a43dd</srcmd5>
+    <version>4.11.5</version>
+    <time>1699388792</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1123737</requestid>
+  </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>c9448d41e55cdaa58e5b495cbaa3205b</srcmd5>
+    <version>4.11.6</version>
+    <time>1699910314</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1125043</requestid>
+  </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>f639d800a99362d05e88e297f59f449e</srcmd5>
+    <version>4.11.7</version>
+    <time>1700250662</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1127310</requestid>
+  </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>83b5df729ac67207e0ad60de16071e65</srcmd5>
+    <version>4.12.1</version>
+    <time>1701533618</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1130467</requestid>
+  </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>c032b098e457adbdece507c90ace798c</srcmd5>
+    <version>4.12.2</version>
+    <time>1701727370</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1130824</requestid>
+  </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>179ce9a0e143e5418953e43f78b04716</srcmd5>
+    <version>4.14.1</version>
+    <time>1704281426</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1136214</requestid>
+  </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>7279db8ee2978bf8b8f1ed3fd81f12ab</srcmd5>
+    <version>4.14.2</version>
+    <time>1704380287</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1136518</requestid>
+  </revision>
+</revisionlist>

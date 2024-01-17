@@ -1,0 +1,132 @@
+Index: giflib-5.2.1/gif2rgb.c
+===================================================================
+--- giflib-5.2.1.orig/gif2rgb.c
++++ giflib-5.2.1/gif2rgb.c
+@@ -43,7 +43,6 @@ static char
+ 	PROGRAM_NAME
+ 	VERSION_COOKIE
+ 	"	Gershon Elber,	"
+-	__DATE__ ",   " __TIME__ "\n"
+ 	"(C) Copyright 1989 Gershon Elber.\n";
+ static char
+     *CtrlStr =
+Index: giflib-5.2.1/gifbg.c
+===================================================================
+--- giflib-5.2.1.orig/gifbg.c
++++ giflib-5.2.1/gifbg.c
+@@ -46,7 +46,6 @@ static char
+ 	PROGRAM_NAME
+ 	VERSION_COOKIE
+ 	"	Gershon Elber,	"
+-	__DATE__ ",   " __TIME__ "\n"
+ 	"(C) Copyright 1989 Gershon Elber.\n";
+ static char
+     *CtrlStr =
+Index: giflib-5.2.1/gifbuild.c
+===================================================================
+--- giflib-5.2.1.orig/gifbuild.c
++++ giflib-5.2.1/gifbuild.c
+@@ -23,7 +23,6 @@ static char
+ 	PROGRAM_NAME
+ 	VERSION_COOKIE
+ 	"	Eric Raymond,	"
+-	__DATE__ ",   " __TIME__ "\n"
+ 	"(C) Copyright 1992 Eric Raymond.\n";
+ static char
+     *CtrlStr =
+Index: giflib-5.2.1/gifclrmp.c
+===================================================================
+--- giflib-5.2.1.orig/gifclrmp.c
++++ giflib-5.2.1/gifclrmp.c
+@@ -24,7 +24,6 @@ static char
+ 	PROGRAM_NAME
+ 	VERSION_COOKIE
+ 	"	Gershon Elber,	"
+-	__DATE__ ",   " __TIME__ "\n"
+ 	"(C) Copyright 1989 Gershon Elber.\n";
+ static char
+     *CtrlStr =
+Index: giflib-5.2.1/gifcolor.c
+===================================================================
+--- giflib-5.2.1.orig/gifcolor.c
++++ giflib-5.2.1/gifcolor.c
+@@ -25,7 +25,6 @@ static char
+ 	PROGRAM_NAME
+ 	VERSION_COOKIE
+ 	"	Gershon Elber,	"
+-	__DATE__ ",   " __TIME__ "\n"
+ 	"(C) Copyright 1989 Gershon Elber.\n";
+ static char
+     *CtrlStr = PROGRAM_NAME " v%- b%-Background!d h%-";
+Index: giflib-5.2.1/gifecho.c
+===================================================================
+--- giflib-5.2.1.orig/gifecho.c
++++ giflib-5.2.1/gifecho.c
+@@ -32,7 +32,6 @@ static char
+ 	PROGRAM_NAME
+ 	VERSION_COOKIE
+ 	"	Gershon Elber,	"
+-	__DATE__ ",   " __TIME__ "\n"
+ 	"(C) Copyright 1989 Gershon Elber.\n";
+ static char
+     *CtrlStr =
+Index: giflib-5.2.1/giffix.c
+===================================================================
+--- giflib-5.2.1.orig/giffix.c
++++ giflib-5.2.1/giffix.c
+@@ -22,7 +22,6 @@ static char
+ 	PROGRAM_NAME
+ 	VERSION_COOKIE
+ 	"	Gershon Elber,	"
+-	__DATE__ ",   " __TIME__ "\n"
+ 	"(C) Copyright 1989 Gershon Elber.\n";
+ static char
+     *CtrlStr =
+Index: giflib-5.2.1/gifhisto.c
+===================================================================
+--- giflib-5.2.1.orig/gifhisto.c
++++ giflib-5.2.1/gifhisto.c
+@@ -26,7 +26,6 @@ static char
+ 	PROGRAM_NAME
+ 	VERSION_COOKIE
+ 	"	Gershon Elber,	"
+-	__DATE__ ",   " __TIME__ "\n"
+ 	"(C) Copyright 1989 Gershon Elber.\n";
+ static char
+     *CtrlStr =
+Index: giflib-5.2.1/gifinto.c
+===================================================================
+--- giflib-5.2.1.orig/gifinto.c
++++ giflib-5.2.1/gifinto.c
+@@ -35,7 +35,6 @@ static char
+ 	PROGRAM_NAME
+ 	VERSION_COOKIE
+ 	"	Gershon Elber,	"
+-	__DATE__ ",   " __TIME__ "\n"
+ 	"(C) Copyright 1989 Gershon Elber.\n";
+ static char
+     *CtrlStr =
+Index: giflib-5.2.1/giftext.c
+===================================================================
+--- giflib-5.2.1.orig/giftext.c
++++ giflib-5.2.1/giftext.c
+@@ -28,7 +28,6 @@ static char
+ 	PROGRAM_NAME
+ 	VERSION_COOKIE
+ 	"	Gershon Elber,	"
+-	__DATE__ ",   " __TIME__ "\n"
+ 	"(C) Copyright 1989 Gershon Elber.\n";
+ static char
+     *CtrlStr =
+Index: giflib-5.2.1/gifwedge.c
+===================================================================
+--- giflib-5.2.1.orig/gifwedge.c
++++ giflib-5.2.1/gifwedge.c
+@@ -27,7 +27,6 @@ static char
+ 	PROGRAM_NAME
+ 	VERSION_COOKIE
+ 	"	Gershon Elber,	"
+-	__DATE__ ",   " __TIME__ "\n"
+ 	"(C) Copyright 1989 Gershon Elber.\n";
+ static char
+     *CtrlStr =

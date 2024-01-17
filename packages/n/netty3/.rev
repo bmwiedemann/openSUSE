@@ -1,0 +1,122 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>efc19d06da3fbfd037410583b38a68a9</srcmd5>
+    <version>3.10.6</version>
+    <time>1574104102</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>748717</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6c5ec20d655eb0fd9250f27164b9a156</srcmd5>
+    <version>3.10.6</version>
+    <time>1574783871</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with recent changes</comment>
+    <requestid>750554</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>f9452e11ba54c004874be0ae8939f8c9</srcmd5>
+    <version>3.10.6</version>
+    <time>1574945454</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk &gt;= 9</comment>
+    <requestid>751525</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>790cea0d0d3bd3f78b47b784e51645f1</srcmd5>
+    <version>3.10.6</version>
+    <time>1585761536</time>
+    <user>dimstar_suse</user>
+    <comment>migrate away from felix-osgi implementation</comment>
+    <requestid>790525</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>0e804e8c48308f23c1b45d51da79719a</srcmd5>
+    <version>3.10.6</version>
+    <time>1617723026</time>
+    <user>RBrownSUSE</user>
+    <comment>fix build in factory</comment>
+    <requestid>882852</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>812aa84333acb3b72656b36dcc4577af</srcmd5>
+    <version>3.10.6</version>
+    <time>1645639619</time>
+    <user>dimstar_suse</user>
+    <comment>Build against reload4j</comment>
+    <requestid>957079</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>d530f7b9552bfe39bdcf8d443ed3e3e9</srcmd5>
+    <version>3.10.6</version>
+    <time>1648063112</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source/target 8 + reimplement stuff using removed apis</comment>
+    <requestid>964188</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>32e1f10c810763e82708e8e14e54256b</srcmd5>
+    <version>3.10.6</version>
+    <time>1648665378</time>
+    <user>dimstar_suse</user>
+    <comment>Standalone JavaEE inconditionally</comment>
+    <requestid>965958</requestid>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>7d85cce5c37f087e9d457bb4525e756b</srcmd5>
+    <version>3.10.6</version>
+    <time>1649450732</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1193672, CVE-2021-43797</comment>
+    <requestid>967671</requestid>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>50a193ee0285f0998216d143714a7b76</srcmd5>
+    <version>3.10.6</version>
+    <time>1649544120</time>
+    <user>dimstar_suse</user>
+    <comment>Sync with sle15-sp2</comment>
+    <requestid>967930</requestid>
+  </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>223db3e3e1f83c06b9ea6c52e7905553</srcmd5>
+    <version>3.10.6</version>
+    <time>1652188301</time>
+    <user>dimstar_suse</user>
+    <comment>No need to have this a compat version</comment>
+    <requestid>975890</requestid>
+  </revision>
+  <revision rev="12" vrev="12">
+    <srcmd5>ece8a0255fd732da88e4dd215b4e7506</srcmd5>
+    <version>3.10.6</version>
+    <time>1653313933</time>
+    <user>dimstar_suse</user>
+    <comment>Use the standalone JavaEE modules inconditionally</comment>
+    <requestid>978696</requestid>
+  </revision>
+  <revision rev="13" vrev="13">
+    <srcmd5>b2a9503c6c4d5d1b1e4042ddb6400552</srcmd5>
+    <version>3.10.6</version>
+    <time>1653417223</time>
+    <user>dimstar_suse</user>
+    <comment>sync changes with sle</comment>
+    <requestid>978885</requestid>
+  </revision>
+  <revision rev="14" vrev="14">
+    <srcmd5>3914a9df2ef666c38a55775915d6c6bf</srcmd5>
+    <version>3.10.6</version>
+    <time>1655118189</time>
+    <user>dimstar_suse</user>
+    <comment>javax.activation is only a transitive dependency</comment>
+    <requestid>982388</requestid>
+  </revision>
+  <revision rev="15" vrev="15">
+    <srcmd5>4ca89562af523025e2f81d346018d8be</srcmd5>
+    <version>3.10.6</version>
+    <time>1694344256</time>
+    <user>anag+factory</user>
+    <comment>Reproducible builds improvement</comment>
+    <requestid>1109989</requestid>
+  </revision>
+</revisionlist>

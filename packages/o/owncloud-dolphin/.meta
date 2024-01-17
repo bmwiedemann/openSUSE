@@ -1,0 +1,5 @@
+<package name="owncloud-dolphin" project="openSUSE:Factory">
+  <title>Dolphin shell integration for the ownCloud desktop client</title>
+  <description>This package provides shell integration for the ownCloud desktop sync client for KDE dolphin.</description>
+  <devel project="KDE:Extra" package="owncloud-dolphin"/>
+</package>

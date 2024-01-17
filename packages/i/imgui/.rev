@@ -1,0 +1,79 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>30bf6c1374470fa066bf5cf2ad5e3626</srcmd5>
+    <version>1.81</version>
+    <time>1620158450</time>
+    <user>dimstar_suse</user>
+    <comment>Initial commit of 1.81 version to the Factory. 
+Dependency of several other projects</comment>
+    <requestid>888331</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6ec60d765eb87c8a2d66d6ee854679ff</srcmd5>
+    <version>1.84.2</version>
+    <time>1630182544</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>914685</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0f315c1a18226bb58fcf8cb1ea6740b3</srcmd5>
+    <version>1.89.1</version>
+    <time>1671023505</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1042881</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d069853a7967437d1e9882df86e643f7</srcmd5>
+    <version>1.89.2</version>
+    <time>1674324692</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1060062</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9e342efcf976067e0bf5123ccca913ff</srcmd5>
+    <version>1.89.5</version>
+    <time>1685632792</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1090196</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f56de045f982a6f4b85af77d25f92fe1</srcmd5>
+    <version>1.89.6</version>
+    <time>1687900687</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1095646</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a9da5c6062577f5448af4ce75a28c144</srcmd5>
+    <version>1.90</version>
+    <time>1701023861</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.90:
+  * BeginChild(): Upgraded 'bool border = false' parameter to
+    'ImGuiChildFlags flags = 0'.
+  * Added ImGuiChildFlags_Border value. As with our prior
+    &quot;bool-to-flags&quot; API updates, the ImGuiChildFlags_Border
+    value is guaranteed to be == true forever to ensure a
+    smoother transition, meaning all existing calls will still
+    work.
+  * BeginChildFrame()/EndChildFrame(): removed functions in
+    favor of using BeginChild() with the ImGuiChildFlags_FrameStyle
+    flag.
+  * IO: Removed io.MetricsActiveAllocations introduced in
+    1.63, was displayed in Metrics and unlikely to
+    be accessed by end-user. Value still visible in the UI and
+    easily to recompute from a delta.
+  * Commented out runtime support for hardcoded ~0 or
+    0x01..0x0F rounding flags values for
+    AddRect()/AddRectFilled()/PathRect()/AddImageRounded().
+
+  * too many changes to list here, see https://github.com/ocornut/imgui/releases/tag/v1.89.1
+ship any actual functionality. ImGui suppose to be used as sources</comment>
+    <requestid>1128802</requestid>
+  </revision>
+</revisionlist>

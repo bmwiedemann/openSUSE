@@ -1,0 +1,13 @@
+diff --git a/web_view_impl.cc b/web_view_impl.cc.new
+index f726627..c1d4d14 100644
+--- a/chrome/test/chromedriver/chrome/web_view_impl.cc
++++ b/chrome/test/chromedriver/chrome/web_view_impl.cc
+@@ -75,7 +75,7 @@ absl::optional<std::pair<std::string, int>> GetElementId(
+   if (element_id == nullptr) {
+     return absl::nullopt;
+   }
+-  static const size_t separator_length = std::strlen(kElementIdSeparator);
++  static const size_t separator_length = strlen(kElementIdSeparator);
+   const size_t separator_pos = element_id->rfind(
+       kElementIdSeparator, std::string::npos, separator_length);
+   if (separator_pos == std::string::npos) {

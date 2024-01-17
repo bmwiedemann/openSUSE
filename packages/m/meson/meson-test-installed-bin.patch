@@ -1,0 +1,38 @@
+Index: meson-1.0.1/run_tests.py
+===================================================================
+--- a/run_tests.py
++++ b/run_tests.py
+@@ -196,18 +196,10 @@ def get_meson_script() -> str:
+     Also used by run_unittests.py to determine what meson to run when not
+     running in-process (which is the default).
+     '''
+-    # Is there a meson.py next to the mesonbuild currently in use?
+-    mesonbuild_dir = Path(mesonmain.__file__).resolve().parent.parent
+-    meson_script = mesonbuild_dir / 'meson.py'
+-    if meson_script.is_file():
+-        return str(meson_script)
+-    # Then if mesonbuild is in PYTHONPATH, meson must be in PATH
+-    mlog.warning('Could not find meson.py next to the mesonbuild module. '
+-                 'Trying system meson...')
+     meson_cmd = shutil.which('meson')
+-    if meson_cmd:
++    if meson_cmd and os.path.isfile(meson_cmd):
+         return meson_cmd
+-    raise RuntimeError(f'Could not find {meson_script!r} or a meson in PATH')
++    raise RuntimeError(f'Could not find meson in PATH')
+ 
+ def get_backend_args_for_dir(backend: Backend, builddir: str) -> T.List[str]:
+     '''
+@@ -381,12 +373,6 @@ def main():
+     # Can't pass arguments to unit tests, so set the backend to use in the environment
+     env = os.environ.copy()
+     if not options.cross:
+-        cmd = mesonlib.python_command + ['run_meson_command_tests.py', '-v']
+-        if options.failfast:
+-            cmd += ['--failfast']
+-        returncode += subprocess_call(cmd, env=env)
+-        if options.failfast and returncode != 0:
+-            return returncode
+         if no_unittests:
+             print('Skipping all unit tests.')
+             print(flush=True)

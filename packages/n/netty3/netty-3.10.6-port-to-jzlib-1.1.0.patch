@@ -1,0 +1,73 @@
+diff -Nru netty-netty-3.10.6.Final/src/main/java/org/jboss/netty/handler/codec/compression/ZlibDecoder.java netty-netty-3.10.6.Final.jzlib/src/main/java/org/jboss/netty/handler/codec/compression/ZlibDecoder.java
+--- netty-netty-3.10.6.Final/src/main/java/org/jboss/netty/handler/codec/compression/ZlibDecoder.java	2016-06-29 14:41:47.000000000 +0200
++++ netty-netty-3.10.6.Final.jzlib/src/main/java/org/jboss/netty/handler/codec/compression/ZlibDecoder.java	2016-11-03 15:51:13.967846143 +0100
+@@ -77,7 +77,7 @@
+ 
+         synchronized (z) {
+             int resultCode;
+-            resultCode = z.inflateInit(JZlib.W_ZLIB);
++            resultCode = z.inflateInit();
+             if (resultCode != JZlib.Z_OK) {
+                 ZlibUtil.fail(z, "initialization failure", resultCode);
+             }
+diff -Nru netty-netty-3.10.6.Final/src/main/java/org/jboss/netty/handler/codec/compression/ZlibEncoder.java netty-netty-3.10.6.Final.jzlib/src/main/java/org/jboss/netty/handler/codec/compression/ZlibEncoder.java
+--- netty-netty-3.10.6.Final/src/main/java/org/jboss/netty/handler/codec/compression/ZlibEncoder.java	2016-06-29 14:41:47.000000000 +0200
++++ netty-netty-3.10.6.Final.jzlib/src/main/java/org/jboss/netty/handler/codec/compression/ZlibEncoder.java	2016-11-03 15:50:14.712839882 +0100
+@@ -147,8 +147,7 @@
+         wrapperOverhead = ZlibUtil.wrapperOverhead(wrapper);
+ 
+         synchronized (z) {
+-            int resultCode = z.deflateInit(compressionLevel, windowBits, memLevel,
+-                    ZlibUtil.convertWrapperType(wrapper));
++            int resultCode = z.deflateInit(compressionLevel, ZlibUtil.convertWrapperType(wrapper), memLevel);
+             if (resultCode != JZlib.Z_OK) {
+                 ZlibUtil.fail(z, "initialization failure", resultCode);
+             }
+@@ -235,8 +234,7 @@
+ 
+         synchronized (z) {
+             int resultCode;
+-            resultCode = z.deflateInit(compressionLevel, windowBits, memLevel,
+-                    JZlib.W_ZLIB); // Default: ZLIB format
++            resultCode = z.deflateInit(compressionLevel, windowBits, memLevel);
+             if (resultCode != JZlib.Z_OK) {
+                 ZlibUtil.fail(z, "initialization failure", resultCode);
+             } else {
+diff -Nru netty-netty-3.10.6.Final/src/main/java/org/jboss/netty/handler/codec/compression/ZlibUtil.java netty-netty-3.10.6.Final.jzlib/src/main/java/org/jboss/netty/handler/codec/compression/ZlibUtil.java
+--- netty-netty-3.10.6.Final/src/main/java/org/jboss/netty/handler/codec/compression/ZlibUtil.java	2016-06-29 14:41:47.000000000 +0200
++++ netty-netty-3.10.6.Final.jzlib/src/main/java/org/jboss/netty/handler/codec/compression/ZlibUtil.java	2016-11-03 15:48:56.294801795 +0100
+@@ -32,25 +32,26 @@
+                 (z.msg != null? ": " + z.msg : ""));
+     }
+ 
+-    static Enum<?> convertWrapperType(ZlibWrapper wrapper) {
+-        Enum<?> convertedWrapperType;
+-        switch (wrapper) {
++    static int convertWrapperType(ZlibWrapper wrapper, int windowBits) {
++      switch (wrapper) {
+         case NONE:
+-            convertedWrapperType = JZlib.W_NONE;
++            windowBits = -windowBits;
+             break;
+         case ZLIB:
+-            convertedWrapperType = JZlib.W_ZLIB;
+             break;
+         case GZIP:
+-            convertedWrapperType = JZlib.W_GZIP;
++            windowBits += 16;
+             break;
+         case ZLIB_OR_NONE:
+-            convertedWrapperType = JZlib.W_ZLIB_OR_NONE;
+             break;
+         default:
+             throw new Error();
+         }
+-        return convertedWrapperType;
++        return windowBits;
++    }
++
++    static int convertWrapperType(ZlibWrapper wrapper) {
++        return convertWrapperType(wrapper, 15);
+     }
+ 
+     static int wrapperOverhead(ZlibWrapper wrapper) {

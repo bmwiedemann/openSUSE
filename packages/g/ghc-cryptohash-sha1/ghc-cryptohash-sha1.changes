@@ -1,0 +1,59 @@
+-------------------------------------------------------------------
+Thu Sep 14 07:17:20 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update cryptohash-sha1 to version 0.11.101.0 revision 3.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Fri Apr  7 14:13:27 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update cryptohash-sha1 to version 0.11.101.0 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Thu Mar 30 17:06:25 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Mon Aug 15 18:23:45 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update cryptohash-sha1 to version 0.11.101.0 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Mon Nov 15 06:59:58 UTC 2021 - psimons@suse.com
+
+- Update cryptohash-sha1 to version 0.11.101.0.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/cryptohash-sha1-0.11.101.0/src/changelog.md
+
+-------------------------------------------------------------------
+Wed Jun 16 08:56:20 UTC 2021 - psimons@suse.com
+
+- Update cryptohash-sha1 to version 0.11.100.1 revision 6.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Mon Aug 31 09:34:38 UTC 2020 - psimons@suse.com
+
+- Update cryptohash-sha1 to version 0.11.100.1 revision 5.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Tue Aug 18 10:44:30 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Tue Jun  9 09:26:14 UTC 2020 - psimons@suse.com
+
+- Add cryptohash-sha1 at version 0.11.100.1.
+

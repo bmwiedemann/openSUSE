@@ -1,0 +1,16 @@
+<package name="apache-commons-logging" project="openSUSE:Factory">
+  <title>Apache Commons Logging Package</title>
+  <description>The commons-logging package provides a simple, component oriented
+interface (org.apache.commons.logging.Log) together with wrappers for
+logging systems. The user can choose at runtime which system they want
+to use. In addition, a small number of basic implementations are
+provided to allow users to use the package standalone. 
+commons-logging was heavily influenced by Avalon's Logkit and Log4J. The
+commons-logging abstraction is meant to minimixe the differences between
+the two, and to allow a developer to not tie himself to a particular
+logging implementation.
+
+</description>
+  <devel project="Java:packages" package="apache-commons-logging"/>
+  <url>http://commons.apache.org/logging/</url>
+</package>

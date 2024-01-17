@@ -1,0 +1,23 @@
+Index: CDDB_get-2.27/cddb.pl
+===================================================================
+--- CDDB_get-2.27.orig/cddb.pl
++++ CDDB_get-2.27/cddb.pl
+@@ -23,6 +23,7 @@
+ 
+ use Data::Dumper;
+ use Getopt::Std;
++use File::Temp qw/ tempfile tempdir /;
+ 
+ use strict;
+ 
+@@ -58,8 +59,8 @@ my %config;
+ my $diskid;
+ my $total;
+ my $toc;
+-my $savedir="/tmp/cddb";
+-my $xmcddir="/tmp/xmcd";
++my $savedir = tempdir( CLEANUP => 1 );
++my $xmcddir = tempdir( CLEANUP => 1 )."xmcd";
+ 
+ if($option{C}) {
+   # use CDDB_cache qw( get_cddb get_discids );

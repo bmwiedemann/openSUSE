@@ -1,0 +1,31 @@
+Index: src/tls/tls_client.c
+===================================================================
+--- src/tls/tls_client.c.orig
++++ src/tls/tls_client.c
+@@ -693,6 +693,11 @@ TLS_APPL_STATE *tls_client_init(const TL
+     SSL_CTX_set_security_level(client_ctx, 0);
+ #endif
+ 
++#ifdef SSL_MODE_RELEASE_BUFFERS
++    /* Keep memory usage as low as possible */
++    SSL_CTX_set_mode(client_ctx, SSL_MODE_RELEASE_BUFFERS);
++#endif
++
+     /*
+      * See the verify callback in tls_verify.c
+      */
+Index: src/tls/tls_server.c
+===================================================================
+--- src/tls/tls_server.c.orig
++++ src/tls/tls_server.c
+@@ -493,6 +493,10 @@ TLS_APPL_STATE *tls_server_init(const TL
+     SSL_CTX_set_security_level(sni_ctx, 0);
+ #endif
+ 
++#ifdef SSL_MODE_RELEASE_BUFFERS
++    /* Keep memory usage as low as possible */
++    SSL_CTX_set_mode(server_ctx, SSL_MODE_RELEASE_BUFFERS);
++#endif
+     /*
+      * See the verify callback in tls_verify.c
+      */

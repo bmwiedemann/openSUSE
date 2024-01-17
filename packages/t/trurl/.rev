@@ -1,0 +1,74 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>920425c22f6849506e4231329fb01a1f</srcmd5>
+    <version>0.2</version>
+    <time>1680636457</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain trurl in Factory</comment>
+    <requestid>1077241</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>15e7aa27cd1d4d58722f22e3ae0081b6</srcmd5>
+    <version>0.3</version>
+    <time>1680968361</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1077979</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8d69abafd2ece1dea868cb4e3a9fca8d</srcmd5>
+    <version>0.4</version>
+    <time>1681296689</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1078501</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f67bbf06e2f2010e6984f14a60203251</srcmd5>
+    <version>0.5</version>
+    <time>1682095694</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081952</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5a0e46c19ba9528dc34e3685d93a9b9e</srcmd5>
+    <version>0.6</version>
+    <time>1682618466</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1083110</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c4ed719a2303d45d8d6d3eb9d45f5f5e</srcmd5>
+    <version>0.7</version>
+    <time>1686752983</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092974</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>01956c697c7790d7b24043d2848c4093</srcmd5>
+    <version>0.8</version>
+    <time>1688147927</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1096031</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>3f882cebb64a1cd7cc8063112decab47</srcmd5>
+    <version>0.8</version>
+    <time>1697488397</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1117909</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b60ce77f913bdbe88041be58e47d3e10</srcmd5>
+    <version>0.9</version>
+    <time>1698873031</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1121574</requestid>
+  </revision>
+</revisionlist>

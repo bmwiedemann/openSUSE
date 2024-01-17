@@ -1,0 +1,7 @@
+<package name="unclutter" project="openSUSE:Factory">
+  <title>Remove the idle cursor image from the screen</title>
+  <description>Unclutterer removes the cursor image from the screen so that it does
+not obstruct the area you are looking at after it has not moved for a
+given period of time.</description>
+  <devel project="X11:Utilities" package="unclutter"/>
+</package>

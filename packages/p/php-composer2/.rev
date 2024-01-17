@@ -1,0 +1,300 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>216a5b3b41139d960d78d808e9682e64</srcmd5>
+    <version>2.1.8</version>
+    <time>1631739093</time>
+    <user>dimstar_suse</user>
+    <comment>This package should later on replace php-composer which has been deprecated</comment>
+    <requestid>919163</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>416a4d15d82bdb73cad362bdf46c16b7</srcmd5>
+    <version>2.1.8</version>
+    <time>1631913964</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>919724</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fde6c2b099170ff3c8959032a2641a8c</srcmd5>
+    <version>2.1.12</version>
+    <time>1636577221</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>930665</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1debfcb73241acc49aae184c9e7028a8</srcmd5>
+    <version>2.1.14</version>
+    <time>1639424701</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>940226</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c4a4905ce7dd7db3dc91b4c4c0e79ea4</srcmd5>
+    <version>2.2.3</version>
+    <time>1642112462</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>946091</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>3afac4447aa7c2979e058c7d5cc169a4</srcmd5>
+    <version>2.2.3</version>
+    <time>1644273500</time>
+    <user>dimstar_suse</user>
+    <comment>- PHP Composer 2 requires PHP 7.2.5 at least (forwarded request 952220 from weberho)</comment>
+    <requestid>952222</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c2a6517fc8f5ec9706bffe90796592ac</srcmd5>
+    <version>2.2.6</version>
+    <time>1645891335</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>957682</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>82cfc4aa90e4ae592bc7f02e8b90ac19</srcmd5>
+    <version>2.2.7</version>
+    <time>1646073819</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.7
+  * Fixed support for packages with no licenses in licenses
+    command output
+  * Fixed handling of allow-plugins: false which kept warning
+  * Fixed enum parsing in classmap generation when the enum keyword
+    is not lowercased
+  * Fixed author parsing in init command requiring an email whereas
+    the schema allows a name only
+  * Fixed issues in require command when requiring packages which
+    do not exist (but are provided by something else you require)
+  * Performance improvement in pool optimization step (forwarded request 957604 from susnux)</comment>
+    <requestid>957971</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>133c79ab1e91b126b233692ab4f12146</srcmd5>
+    <version>2.3.3</version>
+    <time>1649610342</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>968123</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a4044ea5e267c6f9928eec5d5ed58566</srcmd5>
+    <version>2.3.5</version>
+    <time>1651856385</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 2.3.5 for CVE-2022-24828 (forwarded request 975231 from susnux)</comment>
+    <requestid>975329</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>741fc0a01c62ade389ec05d75ea099f2</srcmd5>
+    <version>2.3.6</version>
+    <time>1654782100</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3.6
+  * Added Composer\PHPStan\ConfigReturnTypeExtension to improve return
+    types of Config::get() which you can also use in plugins CI (#10635)
+  * Fixed name validation regex in schema causing issues with JS IDEs
+    like VS Code (#10811)
+  * Fixed unnecessary HTTP request in BitbucketDriver (#10729)
+  * Fixed invalid credentials loop when setting up GitLab token (#10748)
+  * Fixed PHP 8.2 deprecations (#10766)
+  * Fixed lock file changes being output even when the lock file creation
+    is disabled
+  * Fixed race condition when multiple requests asking for auth on the
+    same hostname fired concurrently (#10763)
+  * Fixed quoting of commas on Windows (#10775)
+  * Fixed issue installing path repos with a disabled symlink function
+    (#10786)
+  * Fixed various type errors (#10753, #10739, #10751)</comment>
+    <requestid>981493</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3dbc7b2039ef4e8282df7b4851c95abb</srcmd5>
+    <version>2.3.7</version>
+    <time>1655582779</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>983561</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>6618208bed1abeb4a349d9ae6531babd</srcmd5>
+    <version>2.3.8</version>
+    <time>1656768881</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3.8
+  * Fixed support for cache-read-only where the filesystem is not writable (#10906)
+  * Fixed type error when using allow-plugins: true (#10909)
+  * Fixed @putenv scripts receiving arguments passed to the command (#10846)
+  * Fixed support for spaces in paths with binary proxies on Windows (#10836)
+  * Fixed type error in GitDownloader if branches cannot be listed (#10888)
+  * Fixed RootPackageInterface issue on PHP 5.3.3 (#10895)
+  * Fixed type errors (#10904, #10897)
+</comment>
+    <requestid>986327</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ee61a503fa112a1a83c17c09e7725915</srcmd5>
+    <version>2.3.10</version>
+    <time>1658857418</time>
+    <user>RBrownFactory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>990767</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>0998b08e0df6e962dfe41e4187fce62a</srcmd5>
+    <version>2.4.2</version>
+    <time>1664797562</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1007510</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>83fbd8193c136f993086612e9180606d</srcmd5>
+    <version>2.4.4</version>
+    <time>1667736354</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.4
+  * Added extra debug output when a zip extraction fails while on
+    GitHub Actions (#11148)
+  * Fixed cache write failures when the cache dir gets removed during
+    a composer run (#11076)
+  * Fixed 2.4.3 regression in loading Composer on SMB/network shares
+    (#11077)
+  * Fixed --dry-run flag missing from bump command (#11047)
+  * Fixed status command reporting differences when the source ref is
+    a tag (#11155)
+  * Fixed outdated command outputting legend on stdout instead of stderr
+  * Fixed URL sanitizer to handle new GitHub personal access tokens
+    format (#11137)
+- Update to version 2.4.3
+  * BC Break: The json format of audit command now has reportedAt as an
+    RFC3339 string instead of an object which was a mistake (#11120)
+  * Fixed json format of audit command which was missing affectedVersions
+    (#11120)
+  * Fixed plugin commands not being loaded during bash completions
+    (#11074)
+  * Fixed parsing of inline aliases within complex constraints with
+    || or , (#11086)
+  * Fixed min-php version check in autoload.php to avoid crashing sites
+    running on PHP 5.5 or below silently with a 200 (#11091)
+  * Fixed JsonFile reading files without checking if they are readable
+    first (#11077)
+  * Fixed require command with --dry-run failing when requiring a package
+    requiring stability flag extraction (#11112)
+</comment>
+    <requestid>1033851</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d156ff623a678a05bb653982ad752b4e</srcmd5>
+    <version>2.5.1</version>
+    <time>1672562353</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1045982</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>55fa0a372884a17a9aeadbbcc35d22da</srcmd5>
+    <version>2.5.2</version>
+    <time>1676149078</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1064394</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>42615eb72bbe6c47b347a72da876464d</srcmd5>
+    <version>2.5.4</version>
+    <time>1677166123</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1067188</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>dbaa5e47bfdcd731e14d018355f862a2</srcmd5>
+    <version>2.5.5</version>
+    <time>1680018723</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1075002</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>c5059e193f7f11369271925e49ab0fd1</srcmd5>
+    <version>2.5.8</version>
+    <time>1692795484</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.5.8
+  * Fixed regression in edge cases where root package gets added to a repository already during the install process (#11495)
+  * Fixed EventDispatcher on windows picking bat files when using &quot;@php binary&quot; (#11490)
+  * Fixed ICU CLDR version parsing failing the whole process when ICU cannot initialize the resource bundle (#11492)
+  * Fixed type declarations on ClassLoader (#11500)
+- Update to version 2.5.7
+  * Fixed regression preventing autoloading the dependencies of metapackages when running --no-dev (#11481)
+- Update to version 2.5.6
+  * BC Warning: Installers and InstallationManager::getInstallPath will now return null instead of an empty string for metapackages' paths. This may have adverse effects on plugin code using this expecting always a string but it is unlikely (#11455)
+  * Fixed metapackages showing their install path as the root package's path instead of empty (#11455)
+  * Fixed lock file verification on install to deal better with replace/provide (#11475)
+  * Fixed lock file having a more recent modification time than the vendor dir when require guesses the constraint after resolution (#11405)
+  * Fixed numeric default branches with a v prefix being treated as non-numeric ones and receiving an alias like e.g. dev-main would (e51d755a08)
+  * Fixed binary proxies not being transparent when included by another PHP process and returning a value (#11454)
+  * Fixed support for plugin classes being marked as readonly (#11404)
+  * Fixed getmypid being required as it is not always available (#11401)
+  * Fixed authentication issue when downloading several files from private Bitbucket in parallel (#11464) (forwarded request 1101051 from Ishwon)</comment>
+    <requestid>1105263</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>20c7e1e86ba257cc97ed0f30e119dcce</srcmd5>
+    <version>2.5.8</version>
+    <time>1695412183</time>
+    <user>anag+factory</user>
+    <comment>  * [bsc#1198494]</comment>
+    <requestid>1112968</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>b255abaa9b8cdb93814fba22b057666e</srcmd5>
+    <version>2.6.4</version>
+    <time>1696451490</time>
+    <user>anag+factory</user>
+    <comment>- version update to 2.6.4
+  * 2.6.4 2023-09-29 [bsc#1215859]
+    - Security: Fixed possible remote code execution vulnerability if composer.phar is publicly accessible,
+      executable as PHP, and register_argc_argv is enabled in php.ini (GHSA-jm6m-4632-36hf / CVE-2023-43655)
+    - Fixed json output of abandoned packages in audit command (#11647)
+    - Performance improvement in pool optimization step (#11638)
+    - Performance improvement in show -a &lt;packagename&gt; (#11659)
+  * 2.6.3 2023-09-15
+    - Added audit.abandoned config setting. Can be set to ignore, report (current default) or fail (future
+      default in 2.7) to make the audit command report abandoned packages as a security problem (#11639)
+    - Added a warning when duplicates files autoload rules are detected (#11109)
+    - Fixed unhandled promise rejection regression (#11620)
+    - Fixed loading of root aliases on path repo packages when doing partial updates (#11632)
+    - Fixed archive command not producing the correct output if the temp dir is a symlink (#11636)
+    - Fixed some replaced packages being incorrectly missing when unlocked in a partial update (#11629)
+  * 2.6.2 2023-09-03
+    - Reverted &quot;Fixed binary proxies causing scripts inspecting $_SERVER['SCRIPT_NAME'] to detect them,
+      they are now more transparent (#11562)&quot; which caused a regression (#11617)
+    - Fixed non-zero exit code on failed audits to only apply to install --audit runs and not implicit
+      audits with require, create-project or update commands (#11616)
+    - Fixed create-project infinite post-install loop in some circumstances (#11613)
+  * 2.6.1 2023-09-01
+    - Reverted &quot;Fixed executability of non-php binaries which are not marked executable (#11557)&quot; which
+      caused a regression (#11612)
+  * 2.6.0 2023-09-01
+    - Added audit.ignore config setting to ignore security advisories by id or CVE id (#11556, #11605)
+    - Added rm alias to the remove command (#11367)
+    - Added runtime platform check to verify the php-64bit requirement is met (#11334)
+    - Added platform package detection for lib-pq-libpq and lib-rdkafka-librdkafka (#11418)
+    - Added --dry-run to dump-autoload command to allow running --strict-psr checks without modifying (forwarded request 1114790 from pgajdos)</comment>
+    <requestid>1114950</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>741e627e4211ba541550be85c5b85797</srcmd5>
+    <version>2.6.5</version>
+    <time>1697147074</time>
+    <user>anag+factory</user>
+    <comment>Updates php-composer to version 2.6.5. (forwarded request 1117487 from Ishwon)</comment>
+    <requestid>1117489</requestid>
+  </revision>
+</revisionlist>

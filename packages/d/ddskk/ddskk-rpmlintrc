@@ -1,0 +1,2 @@
+addFilter(".*rpm-buildroot-usage.")
+addFilter(".*macro-in-comment.")

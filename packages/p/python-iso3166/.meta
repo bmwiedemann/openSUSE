@@ -1,0 +1,5 @@
+<package name="python-iso3166" project="openSUSE:Factory">
+  <title></title>
+  <description>Python ISO 3166-1 country definitions</description>
+  <devel project="devel:languages:python" package="python-iso3166"/>
+</package>

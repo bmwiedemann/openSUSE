@@ -1,0 +1,134 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7332b791d68405431f9834b5e843613d</srcmd5>
+    <version>0.10.1</version>
+    <time>1550668521</time>
+    <user>maxlin_factory</user>
+    <comment>- Initial spec for 0.10.1
+</comment>
+    <requestid>677632</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>627dc218b21324012b0f93968fb4bca6</srcmd5>
+    <version>0.10.1</version>
+    <time>1552207017</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>682595</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>53787be66405a4405353263ea96a1ddf</srcmd5>
+    <version>0.10.2</version>
+    <time>1558939152</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.10.2:
+  * Add type hints and expose them to users (@qnighy)(#172)
+  * load_dotenv and dotenv_values now accept an encoding parameter, defaults to None (@theskumar)(@earlbread)(#161)
+  * Fix str/unicode inconsistency in Python 2: values are always str now. (@bbc2)(#121)
+  * Fix Unicode error in Python 2, introduced in 0.10.0. (@bbc2)(#176)</comment>
+    <requestid>705389</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5b3d45931363da9ef44c091dec59a677</srcmd5>
+    <version>0.10.3</version>
+    <time>1563808814</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.10.3:
+  * Small cleanups</comment>
+    <requestid>717596</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>05ee4a9709a7202d9a57e597ad59564e</srcmd5>
+    <version>0.12.0</version>
+    <time>1584531959</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12.0:
+  * various fixes</comment>
+    <requestid>786117</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e33c61983abb48f46ba38b2c580559e7</srcmd5>
+    <version>0.13.0</version>
+    <time>1592398041</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>807938</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>863f42e180435221d737809d075f3d03</srcmd5>
+    <version>0.13.0</version>
+    <time>1593606419</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817955</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>afdac9dda80f8a8a624b002907c2f9e1</srcmd5>
+    <version>0.14.0</version>
+    <time>1596652199</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>824524</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d3939e6d9f7ecc2dd2a5c2a2f2b04834</srcmd5>
+    <version>0.15.0</version>
+    <time>1607801338</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>853582</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>3aa7fd25efed1d5338ea1eb3dfa78d4c</srcmd5>
+    <version>0.15.0</version>
+    <time>1645629942</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>956624</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b61648f3eb2bae5200acdc272788db7d</srcmd5>
+    <version>0.20.0</version>
+    <time>1649876648</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>969190</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>eddfd46d6cc9f2ee1580fd08fc44ab23</srcmd5>
+    <version>0.20.0</version>
+    <time>1682691738</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1083121</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>4a180ce8f384523d92df716c539899a2</srcmd5>
+    <version>1.0.0</version>
+    <time>1683630429</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.0:
+  * Drop support for python 3.7, add python 3.12-dev
+  * Handle situations where the cwd does not exist.
+  * Use Python 3.11 non-beta in CI
+  * Modernize variables code
+  * Modernize main.py and parser.py code
+  * Improve conciseness of cli.py and __init__.py
+  * Improve error message for `get` and `list` commands when env
+    file can't be opened
+  * Updated License to align with BSD OSI template
+  * Fix Out-of-scope error when &quot;dest&quot; variable is undefined
+  * Fix IPython test warning about deprecated `magic`
+  * Fix type hint for dotenv_path var, add StrPath alias
+  * CLI: add support for invocations via 'python -m'.
+  * `load_dotenv` function now returns `False`.
+  * CLI: add --format= option to list command.
+  * Drop Python 3.5 and 3.6 and upgrade GA
+  * Use `open` instead of `io.open`.
+  * Improve documentation for variables without a value
+  * Add `parse_it` to Related Projects
+  * Update README.md
+  * Improve documentation with direct use of MkDocs</comment>
+    <requestid>1085289</requestid>
+  </revision>
+</revisionlist>

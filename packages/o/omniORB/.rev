@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0a2cf7feee4d805644f7277714dfae20</srcmd5>
+    <version>4.2.4</version>
+    <time>1595864226</time>
+    <user>dimstar_suse</user>
+    <comment>Dependency for Salome-smesh / FreeCAD</comment>
+    <requestid>822772</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9fecf23de079ccda52a631dc2bc30670</srcmd5>
+    <version>4.2.4</version>
+    <time>1638388029</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>934866</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>feefbd9de7d6ae42088f48d6e7bfe220</srcmd5>
+    <version>4.3.0</version>
+    <time>1645221771</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>955741</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>24bf665d5610ddac6468dbe85de03df2</srcmd5>
+    <version>4.3.0</version>
+    <time>1658243956</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>989587</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8ed00eff4143178ac807c1e41ad902d5</srcmd5>
+    <version>4.3.1</version>
+    <time>1704281316</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1136006</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,6 @@
+<package name="bff" project="openSUSE:Factory">
+  <title>Slightly-optimizing Brainfuck interpreter</title>
+  <description>Slightly-optimizing (tm) Brainfuck interpreter</description>
+  <devel project="devel:languages:misc" package="bff"/>
+  <url>http://swapped.cc/bf</url>
+</package>

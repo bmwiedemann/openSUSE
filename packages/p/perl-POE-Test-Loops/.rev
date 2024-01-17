@@ -1,0 +1,97 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cb5fa970132ac21121e0174aad7e399d</srcmd5>
+    <version>1.350</version>
+    <time>1324831173</time>
+    <user>coolo</user>
+    <comment>new perl package</comment>
+    <requestid>97830</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d839644dc2881bfa98f96397b7a0681e</srcmd5>
+    <version>1.350</version>
+    <time>1325006120</time>
+    <user>coolo</user>
+    <comment>- avoid incorrect perl provides by rpm provides finder (forwarded request 98270 from dirkmueller)</comment>
+    <requestid>98282</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>d839644dc2881bfa98f96397b7a0681e</srcmd5>
+    <version>1.350</version>
+    <time>1340183898</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>d839644dc2881bfa98f96397b7a0681e</srcmd5>
+    <version>1.350</version>
+    <time>1359109771</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c7dba56f10d5ca97a7f56057debb50c2</srcmd5>
+    <version>1.351</version>
+    <time>1375728614</time>
+    <user>coolo</user>
+    <comment>- updated to 1.351
+     Make distribution self-tagging and version self-bumping. Thanks,
+     Dist::Zilla! 
+ 
+     Fix the tag identifying regexp in dist.ini. 
+ 
+     Extended options for POE::Wheel::Run - tests patch 
+ 
+     Added ::Run redirection test</comment>
+    <requestid>185954</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>c7dba56f10d5ca97a7f56057debb50c2</srcmd5>
+    <version>1.351</version>
+    <time>1379663804</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>043a878b1fcfb23d248e558801eb776c</srcmd5>
+    <version>1.353</version>
+    <time>1382361287</time>
+    <user>scarabeus_factory</user>
+    <comment>- updated to 1.353
+   Windows locks files and directories while they're open. It's not
+   possible to unlink() them in this state.
+ 
+   The file reset test tried to unlink() a test log to reset it. The
+   unlink() was silently failing, and the test program was waiting
+   indefinitely for the reset.
+ 
+   Added a SKIP section around those tests so they don't run on Windows.
+   Fixes welcome, because I'd really like Windows users to be able to
+   detect file resets.</comment>
+    <requestid>202353</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a5493926b6b7f53e291b4340cb251a9c</srcmd5>
+    <version>1.358</version>
+    <time>1406557253</time>
+    <user>coolo</user>
+    <comment>- updated to 1.358, see CHANGES for git log
+- removed strip-dummy-provides.diff as it was done upstream</comment>
+    <requestid>242673</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>a5493926b6b7f53e291b4340cb251a9c</srcmd5>
+    <version>1.358</version>
+    <time>1409302440</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0dd01e0e26a87dede0316287d247c3c3</srcmd5>
+    <version>1.360</version>
+    <time>1429108003</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296680</requestid>
+  </revision>
+</revisionlist>

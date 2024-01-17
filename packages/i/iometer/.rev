@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>643440dcd6931fe4dd213a689c7ed11a</srcmd5>
+    <version>1.1.0</version>
+    <time>1458333579</time>
+    <user>dimstar_suse</user>
+    <comment>New package, industrial standard for IO benchmarking</comment>
+    <requestid>366297</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5c8fbdb60ad7e5158038db06faf5d26b</srcmd5>
+    <version>1.1.0</version>
+    <time>1539342653</time>
+    <user>dimstar_suse</user>
+    <comment>- Modernise spec file</comment>
+    <requestid>641273</requestid>
+  </revision>
+</revisionlist>

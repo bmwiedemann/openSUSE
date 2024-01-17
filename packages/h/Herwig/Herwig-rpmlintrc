@@ -1,0 +1,2 @@
+# Disable the missing man warning
+addFilter("Herwig-devel.* no-manual-page-for-binary")

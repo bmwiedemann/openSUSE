@@ -1,0 +1,26 @@
+Index: chromium-120.0.6099.18/services/device/public/cpp/generic_sensor/sensor_reading.h
+===================================================================
+--- chromium-120.0.6099.18.orig/services/device/public/cpp/generic_sensor/sensor_reading.h
++++ chromium-120.0.6099.18/services/device/public/cpp/generic_sensor/sensor_reading.h
+@@ -9,6 +9,8 @@
+ #include <stdint.h>
+ 
+ #include <type_traits>
++#include <stdint.h>
++#include <cstddef>
+ 
+ namespace device {
+ 
+Index: chromium-120.0.6099.18/components/gwp_asan/client/lightweight_detector.h
+===================================================================
+--- chromium-120.0.6099.18.orig/components/gwp_asan/client/lightweight_detector.h
++++ chromium-120.0.6099.18/components/gwp_asan/client/lightweight_detector.h
+@@ -8,6 +8,8 @@
+ #include <atomic>
+ #include <memory>
+ 
++#include <atomic>
++
+ #include "base/gtest_prod_util.h"
+ #include "components/gwp_asan/client/export.h"
+ #include "components/gwp_asan/common/lightweight_detector_state.h"

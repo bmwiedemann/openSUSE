@@ -1,0 +1,8 @@
+<package name="onboard" project="openSUSE:Factory">
+  <title>Simple on-screen Keyboard</title>
+  <description>Onboard is an onscreen keyboard useful for tablet PC users and for mobility impaired users.
+
+</description>
+  <devel project="GNOME:Apps" package="onboard"/>
+  <url>https://launchpad.net/onboard</url>
+</package>

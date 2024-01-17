@@ -1,0 +1,15 @@
+<package name="xteddy" project="openSUSE:Factory">
+  <title>A cuddly teddy bear for your X Window desktop</title>
+  <description>Normally, xteddy just sits around doing nothing. After all, that's what
+teddy bears are for. Look at him, talk to him, place heavy windows on
+top of him, zap him around until he becomes dizzy, do what you like; he
+will always be your true (albeit virtual) friend.
+
+You can move xteddy with the mouse by pointing at him and dragging him
+around. When clicked upon, he will pop up on top of all other windows.
+If you type &quot;q&quot; on him, he will die (or, as I like to think of it, be
+tucked away in the file system until you need him next time).
+
+That's it. But he's cute.</description>
+  <devel project="X11:Utilities" package="xteddy"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="compiz-emerald" project="openSUSE:Factory">
+  <title>Themeable window decorator for Compiz</title>
+  <description>Emerald is a themeable window decorator for Compiz.</description>
+  <devel project="X11:Compiz" package="compiz-emerald"/>
+</package>

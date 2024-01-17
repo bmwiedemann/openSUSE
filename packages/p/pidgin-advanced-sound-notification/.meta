@@ -1,0 +1,5 @@
+<package name="pidgin-advanced-sound-notification" project="openSUSE:Factory">
+  <title>Pidgin Advanced Sound Notification</title>
+  <description>This plugin adds sounds for some sound notifications to pidgin (e.g. &quot;Incoming Filetransfer&quot; or &quot;Authentication requested&quot;).</description>
+  <devel project="network:pidgin" package="pidgin-advanced-sound-notification"/>
+</package>

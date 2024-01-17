@@ -1,0 +1,10 @@
+<package name="ganglia-web" project="openSUSE:Factory">
+  <title>Ganglia web frontend</title>
+  <description>This package provides a web frontend to display the XML tree published by
+ganglia, and to provide historical graphs of collected metrics. This website is
+written in the PHP5 language and uses the Dwoo templating engine.
+
+</description>
+  <devel project="network:cluster" package="ganglia-web"/>
+  <url>http://ganglia.info/</url>
+</package>

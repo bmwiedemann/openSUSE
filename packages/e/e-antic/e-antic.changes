@@ -1,0 +1,118 @@
+-------------------------------------------------------------------
+Thu Jan 11 06:58:57 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.0.2
+  * Fixed an exception being thrown when run under PyPy
+    (github.com/wlav/cppyy/issues/209)
+
+-------------------------------------------------------------------
+Tue Jan  9 23:46:26 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.0.1
+  * Fixed segfault when using non-intrusive pointers to renf_class
+    such as the ones returned by parent() from Python.
+
+-------------------------------------------------------------------
+Thu Dec 14 19:12:14 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.0.0
+  * Added support for FLINT 3
+- Drop flint3.diff (obsolete)
+
+-------------------------------------------------------------------
+Sun Oct 22 04:06:43 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Add flint3.diff to have the build succeed with flint-3.
+
+-------------------------------------------------------------------
+Tue Dec  6 00:45:14 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.3.0
+  * Added support for FLINT 2.8 and 2.9
+  * Added short and unsigned short operators to C++ interface.
+
+-------------------------------------------------------------------
+Tue Oct 25 17:29:21 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.3
+  * Library version bump was missing
+
+-------------------------------------------------------------------
+Tue Oct 25 10:31:18 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.2
+  * Fixed conda channels used for binder notebooks.
+  * Fixed deserialization of renf_class from old Python pickles.
+  * Fixed serialization with cereal 1.3.1+.
+
+-------------------------------------------------------------------
+Fri May 20 12:25:48 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.1
+  * Fixed serialization of renf_class with cereal>=1.3.2
+  * Fixed deserialization of objects serialized with e-antic
+    prior to 1.0.0
+
+-------------------------------------------------------------------
+Sun Apr 10 13:57:43 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.0
+  * Improved conversion from vectors of rational coefficients to
+    renf_elem_class by using a faster code path in FLINT.
+  * Improved conversion from SageMath number fields to pyeantic
+    RealEmbeddedNumberField. This adds a dependency of pyeantic
+    on gmpxxyy.
+
+-------------------------------------------------------------------
+Thu Feb 10 10:13:39 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.1.0
+  * Added support for Python 3.10; dropped explicit support for
+    Python 3.6.
+  * Header file e-antic.h is now called local.h. There is still a
+    header file e-antic.h that includes all of e-antic's C
+    interface, so in particular local.h.
+  * Header file renfxx_fwd.hpp is now called forward.hpp. The old
+    header file renfxx_fwd.hpp can still be used.
+  * Header file renfxx.h is now called e-antic.hpp. The old
+    header file renfxx.h can still be used.
+
+-------------------------------------------------------------------
+Sun Aug 15 11:20:10 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.0.3
+  * Fixed linking of C++ test programs.
+
+-------------------------------------------------------------------
+Fri Aug  6 15:03:28 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.0.2
+  * Fixed parsing of trivial number fields in pyeantic.
+  * Conversion from NumberField to RealEmbeddedNumberField when
+    the defining polynomial is not in x.
+
+-------------------------------------------------------------------
+Fri Jul  2 19:25:27 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Add Requires to e-antic-devel so that all headers can be used.
+
+-------------------------------------------------------------------
+Fri Jun 25 14:55:29 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.0.1
+  * Allow creation of RealEmbeddedNumberField from an intrusive
+    pointer in pyeantic.
+
+-------------------------------------------------------------------
+Fri Jun 18 16:39:28 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.0.0
+  * Added Python wrapper
+  * Added renf_elem_class::floordiv() to perform (a/b).floor()
+    more efficiently
+  * The C++ interface now requires C++14.
+
+-------------------------------------------------------------------
+Tue Sep 22 11:02:33 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Initial package (version 1.0.0~rc1) for build.opensuse.org

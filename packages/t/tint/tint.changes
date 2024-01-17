@@ -1,0 +1,43 @@
+-------------------------------------------------------------------
+Mon Apr 18 13:00:49 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.07
+  * Sanitize input after fgets()
+  * Fix deprecated function usage
+  * Make room for printing a 32 bit integer
+- Rebased tint-0.04-per-user-highscore.patch
+
+-------------------------------------------------------------------
+Thu Apr 22 15:51:13 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Resolve ambiguity about original closeness in description.
+
+-------------------------------------------------------------------
+Sat Apr 17 02:46:39 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.06
+  * Bump compat level to 13
+  * Add Rules-Requires-Root field
+  * Document global scores usage
+- Dropped upstream fixed tint-0.04-fix-buffer-overflow.patch
+
+-------------------------------------------------------------------
+Tue Aug 15 13:14:21 UTC 2017 - sebix+novell.com@sebix.at
+
+- spec-cleaned specfile
+
+-------------------------------------------------------------------
+Sun Mar 17 23:02:23 UTC 2013 - gber@opensuse.org
+
+- fix License
+
+-------------------------------------------------------------------
+Tue Aug 31 20:14:07 UTC 2010 - gber@opensuse.org
+
+- removed uneeded PreReq and added URL
+
+-------------------------------------------------------------------
+Wed Jul 21 11:54:35 UTC 2010 - guido+opensuse.org@berhoerster.name
+
+- initial packaging of tint
+

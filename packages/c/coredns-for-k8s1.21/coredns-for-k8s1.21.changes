@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Mon Apr 26 09:45:33 UTC 2021 - Richard Brown <rbrown@suse.com>
+
+- Correct version tag to new upstream format 
+
+-------------------------------------------------------------------
+Tue Apr 13 20:13:57 UTC 2021 - Richard Brown <rbrown@suse.com>
+
+- Correct coredns-for-k8s1.21-extras dependencies 
+
+-------------------------------------------------------------------
+Tue Apr 13 14:07:11 UTC 2021 - Richard Brown <rbrown@suse.com>
+
+- Initial Package 

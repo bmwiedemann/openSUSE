@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c5c6aa424e9f1a2a898b346c854060b0</srcmd5>
+    <version>1.4.10</version>
+    <time>1694344213</time>
+    <user>anag+factory</user>
+    <comment>New package see https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/R6FRXXWQUD4RTLG5IMUBUCAYKXAIJG4W/</comment>
+    <requestid>1109887</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0c37c5f5b848be426c4460a2bdef3865</srcmd5>
+    <version>1.4.11</version>
+    <time>1701727379</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.4.11
+  * Add ability to set backend args in config file
+  * Fix config file argument (Obsoletes fix-config-flag.patch)
+  * Add linux_small
+  * Fix color blocks for bash != 3 &amp; &lt; 5
+  * Use sed -r instead of -E when using GNU sed
+  * Add support for alacritty's new config format
+  * Check for newer xfce4-term config
+  * Add support for npm global packages
+</comment>
+    <requestid>1130852</requestid>
+  </revision>
+</revisionlist>

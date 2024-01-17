@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>383b2c6482f18a8a0ed3c81c4c990fd1</srcmd5>
+    <version>1.2.0</version>
+    <time>1551386538</time>
+    <user>coolo</user>
+    <comment>I want to maintain osmo-sip-connector in Factory</comment>
+    <requestid>678094</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a4bc98459cb659b76e2c2446439cc7a3</srcmd5>
+    <version>1.2.0</version>
+    <time>1578606599</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>761695</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>322094496ce1aafb35417bd2faa08074</srcmd5>
+    <version>1.4.0</version>
+    <time>1634331818</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925170</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>06371b56c0bb4a9d640368b7e151fa37</srcmd5>
+    <version>1.6.0</version>
+    <time>1637535118</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>932637</requestid>
+  </revision>
+</revisionlist>

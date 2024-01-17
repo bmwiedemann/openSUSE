@@ -1,0 +1,96 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>077fc7f85c2fc97c39a00e53732db832</srcmd5>
+    <version>0.1.3</version>
+    <time>1642273513</time>
+    <user>dimstar_suse</user>
+    <comment>Required for upgrade to IPython 8.0</comment>
+    <requestid>946626</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ffcbf00c416f97c6b1c4862dcc7471c8</srcmd5>
+    <version>0.2.0</version>
+    <time>1652801034</time>
+    <user>dimstar_suse</user>
+    <comment>For Staging:E
+
+- Update to 0.2.0:
+  - Fallback to basic Source.pieces when there is no Source.tree.
+  - Handle nodes inside f-strings missing location info from
+    asttokens
+- Add 29-Pygments-2-12.patch (gh#alexmojaki/stack_data#29) making
+  the package compabile with Pygments 2.12.
+</comment>
+    <requestid>977523</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>353935a240c7afa6cd7c53ad3dcd3601</srcmd5>
+    <version>0.2.0</version>
+    <time>1673359130</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip test_pygments_example test, because it is just too
+  unstable given the ever changing output from Pygments.
+</comment>
+    <requestid>1046660</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>e0d124813713fd406dd253c3bb4cc26f</srcmd5>
+    <version>0.2.0</version>
+    <time>1682193507</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081745</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d898cc382d53c6fffe28a327c18221f5</srcmd5>
+    <version>0.6.2</version>
+    <time>1683630374</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.6.2:
+  * python 3.11 support
+  * add tests
+- drop 29-Pygments-2-12.patch  (upstream)</comment>
+    <requestid>1084880</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>3581a8196759490828844fde128fbda4</srcmd5>
+    <version>0.6.2</version>
+    <time>1684490119</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-typeguard-4.patch:
+  * Support typeguard 4+.</comment>
+    <requestid>1087190</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>3c9471021b4952fa8822de742eace02d</srcmd5>
+    <version>0.6.2</version>
+    <time>1692045308</time>
+    <user>dimstar_suse</user>
+    <comment>- skip more tests for newer pygments version
+
+- restrict to older Cython</comment>
+    <requestid>1103867</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>c5b6d3aac78c9e384412e9b73ab67f4a</srcmd5>
+    <version>0.6.2</version>
+    <time>1693235480</time>
+    <user>anag+factory</user>
+    <comment>- Revert restrict to older Cython. Can not find any specification.
+</comment>
+    <requestid>1105466</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>010559a9dd2ec26f00446780df144cc5</srcmd5>
+    <version>0.6.3</version>
+    <time>1701206323</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.6.3:
+  * Python 3.12 support
+  * handle weird six import error
+- drop support-typeguard-4.patch (upstream)
+
+- restrict to older Cython</comment>
+    <requestid>1129197</requestid>
+  </revision>
+</revisionlist>

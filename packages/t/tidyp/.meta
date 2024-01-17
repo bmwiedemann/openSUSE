@@ -1,0 +1,11 @@
+<package name="tidyp" project="openSUSE:Factory">
+  <title>Utility to Clean Up and Pretty-print HTML, XHTML or XML Markup</title>
+  <description>Tidy is a commandline frontend to TidyLib which allows for cleaning up and
+pretty printing HTML, XHTML and XML markup in a variety of file encodings. For
+HTML variants, it can detect and report proprietary elements as well as many
+common coding errors, correct them and produce visually equivalent markup
+which is both compliant with W3C standards and works on most browsers.
+Furthermore, it can convert plain HTML to XHTML. For generic XML files, Tidy is
+limited to correcting basic well-formedness errors and pretty printing.</description>
+  <devel project="devel:languages:perl" package="tidyp"/>
+</package>

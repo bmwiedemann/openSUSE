@@ -1,0 +1,11 @@
+diff -Nur a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2022-07-26 13:29:00.000000000 +0800
++++ b/CMakeLists.txt	2022-10-11 21:02:14.150197704 +0800
+@@ -8,6 +8,7 @@
+     PUBLIC_HEADER include/dareader/reader.h)
+ configure_file(dareader.pc.in dareader.pc @ONLY)
+ target_include_directories(dareader PUBLIC include)
++target_link_libraries(dareader pthread)
+ install(TARGETS dareader 
+     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+     PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/dareader)

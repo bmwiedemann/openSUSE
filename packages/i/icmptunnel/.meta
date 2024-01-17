@@ -1,0 +1,8 @@
+<package name="icmptunnel" project="openSUSE:Factory">
+  <title>Tunnels IP traffic through ICMP</title>
+  <description>Transparently tunnel IP traffic through ICMP echo and reply packets.
+
+</description>
+  <devel project="network:utilities" package="icmptunnel"/>
+  <url>https://dhavalkapil.com/icmptunnel/</url>
+</package>

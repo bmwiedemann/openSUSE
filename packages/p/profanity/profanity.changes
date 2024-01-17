@@ -1,0 +1,754 @@
+-------------------------------------------------------------------
+Fri Sep 15 05:51:33 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Add profanity-0.14.0-plugins-install.patch:
+  Fix crash upon /plugins install while disconnected
+
+-------------------------------------------------------------------
+Sun Aug 27 09:49:01 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Add three bugfix patches:
+  * Correctly display OX carbons:
+    profanity-0.14.0-ox-carbons.patch
+  * Fix typos:
+    profanity-0.14.0-typos.patch
+  * Stop spamming log when X is not running:
+    profanity-0.14.0-xscreensaver.patch
+
+-------------------------------------------------------------------
+Thu Aug  3 06:23:08 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.14.0:
+  * Introduce new `/privacy` command (#1836, #1870)
+  *`/os` -> `/privacy os`
+  *`/privacy logging`
+  * Fix crash when using NetBSD curses implementation (#1769)
+  * Fix OMEMO autodetection in autotools (#1865)
+  * Add ability to completely turn logs off (#1857)
+  * Extend /pgp command to make key exchange procedure easier (#1850)
+  *Used by PSI and Pidgin as well.
+  * Add ability to download and install plugins directly (#1842)
+  *`/plugins install`
+  * Improvements for /executable and /avatar code (#1845)
+  * Add ability to disable avatar publishing (#1843)
+  * Fix /plugins update (#1840)
+  * Improve logging (#1835)
+  * Add feature that can warn you when another client logs in (#1827)
+  *`/account set <account> session_alarm <max_sessions>`
+  * Don't add the same command twice to history (#1829)
+  * Improve manpage to inform users about encryption (#1823)
+  * Fix possible crash in PGP/OX (#1823)
+  * Add nickname support for /roster remove (#1826)
+  * Fix JID display in titlebar (#1816)
+  * Allow setting client identification (#1815)
+  *`/account set <account> clientid`
+  * Add /statusbar tabmode actlist (#1813)
+  * Fix color name in batman theme (#1810)
+  * Fix empty window after reconnect (#1556)
+  * Support passing flags to editor (#1801)
+  * OTR and PGP fixes (#1802)
+  * Adapt to g_string_free glib 2.75.3 change (#1799)
+  * Improve OMEMO QR code (#1796)
+  * Improve OMEMO help (#1838)
+  * Fix duplicate download IDs (#1794)
+  * Add macro for possible NULL prints and use it on known sports (#1786)
+  * Prevent setting invalid combination of libstrophe flags
+  * Fix libstrophe timer-callback usage
+  * Fix memory leaks (#1780, #1814, #1837)
+  * Code cleanup (#1780, #1788, #1796, #1800, #1807, #1814, #1847, #1839, #1848, #1853, #1856, #1865, #1858)
+  * Add `now` option to `/reconnect` command (#1809)
+  * Add `/strophe` command to modify libstrophe-specific settings
+  * Fix xscreensaver detection (#1783)
+  * Make `/url save` autocomplete filenames after a url (#1783)
+  * Improve MAM support (#1724, #1791, #1868)
+  * Add vCard support (XEP-0054) (#1757)
+  * Fix autocompletion for lastactivity
+  * Improve /msg and /win autocompletion: autocomplete roster nickname and actual barejid
+  * UI improvements (#1800, #1773, #1821)
+
+-------------------------------------------------------------------
+Wed Oct 12 15:03:25 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.13.1:
+  * Fix configure parameter detection (#1752, #1753)
+  * Improve plugins management (#1755)
+  * Fix build with plugins enabled for Python >= 3.11 (#1756)
+  * Add gruvbox_transparent theme optimized for enabled
+    transparency (#1763)
+  * Fix detection of first start used for welcome screen (#1767)
+  * Improve opening of URLs by spawning external program
+    asynchronously (#1759, #1760)
+
+-------------------------------------------------------------------
+Tue Sep 13 10:06:00 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.13.0:
+  * Print OMEMO verification QR code (#1320, #1568, #1718, #1720)
+    /omemo qrcode
+  * Add option to configure stamp (#1663)
+  * Allow bold for default colors (#1674)
+  * Add irssi theme (#1680)
+  * Include useful aliases in profrc example (#1683)
+  * Improve man pages (#1688, #1703)
+  * Show return symbol for embedded newlines in multiline messages (#1690)
+  * Fix xscreensaver detection (#1696)
+  * Add support for offline MUC notifications (#1697)
+    /notify room offline on|off
+  * Fix SIGABRT when using wrong argument order for receiving ox key (#1689, #1699)
+  * Use 3 digits for rotated log files (#1701)
+  * Fix autocomplete for /ox discover. (#1702)
+  * Fix segfault on /ox discover (#1713, #1715)
+  * Fix OX rpad generation (#1703)
+  * Don't forget encryption status for OX and PGP. (#733, #1694, #1722)
+  * Several OX improvements (#1703, #1705)
+  * Fix room name not updating. (#1710, #1711)
+  * Update capabilities of muc on available presence (#1347, #1712)
+  * Add /avatar set command to publish avatar (#1687, #1714)
+  * Respect silent nick change in mucs (#757, #1716)
+  * Fix duplicate messages in chat with oneself. (#1595, #1717)
+  * Improve cmd argument parser (#497, #1721)
+  * Make display of user mood optional (#1725)
+  * Switch log level while running (#1726)
+  * Split chatlog and log functions in separate files (#1727)
+  * Split pgp and ox into separate files (#1728)
+  * Various cleanups (#1729)
+  * Don't scroll if not needed (#1730)
+  * Retrieve encryption type from db (#1731)
+  * Be more resilient when receiving empty messages (#1734)
+  * Display a welcome message upon first start of Profanity (#1735)
+  * Explain for new users how to connect/set up a new account
+  * Fix /autoaway command logic (#1736)
+  * Fix segfault when requesting an avatar (#1738, #1740)
+  * Integrate XEP-0198 Stream-Management (#698, #1745, #1746)
+  * Fix avatar opening executable (#1742, #1748)
+  * Let slashguard ignore quoted messages (#1732)
+  * Update DOAP
+  Behaviour changes:
+  * Use ISO8601 as date format in chat logs and log files (#1700)
+  * Increase default log file size to 10MB (#1701)
+  * Name rotated log files profanity.001.log instead of profnaity.log.001 (#1701)
+  * Log encrypted messages by default to chatlog (#1707)
+  * Dont show presence status changes by default (59b9b44)
+
+-------------------------------------------------------------------
+Mon Aug  1 13:25:13 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Fix building with icons:
+  --enable-icons switch was renamed to --enable-icons-and-clipboard
+
+-------------------------------------------------------------------
+Mon Apr  4 16:21:51 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to to 0.12.1:
+  * Fix resetting colors when loading invalid theme (#1681)
+  * Use correct color for nick of others in history (#1675)
+  * Fix a segfault when uploading or downloading files (f11ad16)
+  * Fix logging of text chatlogs (#1672, #1673)
+  * Simplification of tab completion code (#1664)
+  * Add Alt/Ctrl-arrows combinations for GNU Screen (#1667)
+  * Make all existing input functions bindable from config (#1669)
+  * Cleanup (#1665, #1670)
+  * Improve man pages (#1666, #1668)
+  * Fix race condition on resize (#1671)
+
+-------------------------------------------------------------------
+Wed Mar 30 12:41:51 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.12.0:
+  * Fix format string for ncurses 6.3 (#1597)
+  * Remove /python sourcepath command (#1598)
+  * Add option to install plugins from global plugin installation directory (#945)
+  * Fix wrong timestamp display in MUC history (#1423)
+  * Add in-band account registration (XEP-0077) (#1574)
+  * New theme: snikket (#1604)
+  * Allow more UI indicator signs to be UTF-8 characters (#1607)
+  * Add /correct-editor command (#1596)
+  * Fix message encryption for sender devices (#1609)
+  * Deprecate libmesode. We require libstrophe >= 0.11.0 (#1608)
+  * Fix OMEMO /sendfile on non-glibc systems (#1478)
+  * Cleanup plugins code (#1616)
+  * Make readline check more portable (#1617)
+  * Fix carbons criteria (#1614, #1618)
+  * Add support for User Mood (XEP 0107) (#1605)
+  * Use wildcard for man pages in Makefile.am (#1622)
+  * Fix inserting messages to chat logs if archive_id is empty (#1589, #1625)
+  * Implement RFC 6120 see-other-host during login (#1628, #1631, #1632, #1633, #1637)
+  * Guard against invalid input in presence stanza (#1630)
+  * Do not check for OMEMO device id for JIDs banned of a MUC (#1594)
+  * Minor cleanups (#1635, #1653)
+  * Cleanup build files (#1641, #1642, #1657, #1659)
+  * Improve documentation for new developers (#1640)
+  * Set libstrophe log verbosity to fix jump on unconditional value (e55f6d)
+  * Add DOAP file (XEP-0453) (bd8c32)
+  * Add /subject editor command
+  * Improve OX user experience (#1644)
+  * Add hotkey for sending readline text to editor (#1645, #1648)
+  * Fix breaking autocompletion with nicknames containing '/' (#1474)
+  * Add autocompletion for /cmd (#1650)
+  * Add easy quoting (#1651)
+  * When typing > you can now use TAB to cycle through the messages in the chat
+  * window to quote those messages easily.
+  * Make sendfile work with self signed certificates (#1624)
+  * Reset URL autocompletion after usage (#1654)
+  * Use EDITOR environment variable and only use vim if this is unset (#1658)
+  * Fix invalid mbrlen in input field (#1660)
+
+-------------------------------------------------------------------
+Tue Sep 28 18:03:56 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.11.1:
+  * Fix typo in shade color theme (#1579)
+  * Fix memory leaks (#1583) (#1584) (#1585)
+  * Fix buffer overread (#1586)
+  * Don't handle /me in the middle of a message with mentions (#1586)
+  * Explicitly check for curl version (#1581)
+  * Fix OMEMO devicelist access model by reconfiguring it (#1538) (#1591)
+  * Cosmetic cleanup (#1593)
+  * Change attentionflag shortcut from alt-f to alt+v (#1580)
+  * Update man page and /help information
+  * Enable whole word only notifications by default (#1578)
+
+-------------------------------------------------------------------
+Wed Jul 14 14:29:30 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.11.0:
+  * Fix 'headache' and 'whiteness' themes (#1471)
+  * Fix help text for `/logging` (#1470)
+  * Fix theme loading with -t parameter when a disconnect happens (#1472)
+  * Add `/mam` command (MAM is still experimental) (#660)
+  * Improve MAM support: load multiple pages with RSM (#660)
+  * Fix titlebar MUC name display when no name is set (#1481)
+  * Improved window title output (#1493)
+  * Show offline members in occupants panel (#1495)
+    `/occupants default show|hide [jid|offline]`
+    `/occupants show|hide [jid|offline]`
+  * Support handling `file://` prefix in patchs (#1498)
+  * Update HTTP Upload XEP-0363 to 1.0.0 (#1499, #1500)
+  * New `/changepassword` command to change users password (XEP-0077) (#1501)
+  * Add ability to request 'voice' in MUCs (XEP-0045) (#1211, #1504)
+    `/affiliation request`
+  * Add ability to approve MUC voice requests (XEP-0045) (#1507, #1508)
+  * Improve `/bookmark` help (#1511)
+  * Add ability to register a nickname with a MUC (XEP-0045) (#1510, #1210)
+    `/affiliation register`
+  * Fix segfault on `/sendfile` using OMEMO on Raspberry Pi (#1512)
+  * Use shorter IDs (#1520)
+  * Add abbility to launch external editor to write (multiline) messages (#1485, #1546)
+    `/editor`
+  * Introdcue OMEMO trustmode (#1506)
+    `/omemo trustmode manual|firstusage|blind`
+  * Fix random string generation (8e588d6)
+  * Separate settings to configure printing of typing information in console and titlebar (#1516, #1532)
+    `/intype on|of` -> `/intype titlebar|console on|off`
+  * Use direct messages instead of MUC-PMs for non-anonymous MUCs (#1534)
+  * Add ability to mark a window with an attention flag as a reminder to read it later (#1543)
+    ALT+F to toggle the flag
+    ALT+M to switch to marked windows
+    `/wins attention` to list windows with the attention flag set
+  * Don't log chat states as empty messages (#1550)
+  * Fix wrong message display when mention is triggered (#1557, #1231)
+  * Add command to show single bookmark details (#1558, #1559)
+  *`/bookmark list <jid>`
+  * Display a notice when someone tries to call (XEP-0353) (#1525, #1560)
+  * Fix logfile rotation (#1518, #1563)
+  * Disable notifications by default (#977, #1564)
+  * Add support for XEP-0157 server contact information discovery (#1524, #1567)
+    `/disco info` does now include server contact information
+  * Fix segfault in `/url open` with OMEMO encrypted files (#1478)
+  * Add XEP-0377 Spam Reporting (#1434, #1569)
+    `/blocked report abuse|spam <jid> <msg>`
+  * Remember status on reconnect (#1006, #1570)
+  * Option to accept chat messages only from known contacts (#955, #1571)
+    `/silence on|off`
+  * Improve OX (XEP-0373) handling (#1566)
+  * Extend Python API (#1528, #1529)
+  * Cleanups (#1513, #1554, #1561)
+  * OMEMO related fixes (#1496, #1515, #1539, #1540, #1548, #1549, #1530, #1553, #1565)
+  * For details see https://github.com/profanity-im/profanity/milestone/26
+- Remove profanity-0.10.0-theme-typo.patch: upstreamed
+
+-------------------------------------------------------------------
+Mon Jan 18 10:26:58 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Fix Factory build:
+  * Create correct symlinks
+  * Use update-alternatives correctly
+  * Use clearer style
+
+-------------------------------------------------------------------
+Mon Jan 18 09:36:57 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- boo#1180739: Fix typo in themes:
+  * Add profanity-0.10.0-theme-typo.patch
+
+-------------------------------------------------------------------
+Sat Jan  9 07:16:34 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.10.0:
+  * Code cleanup
+  * Several memory leaks fixed (b45384, #805, #1416, #1427)
+  * Handle headline stanza (#1366)
+  * By default log only WARN not INFO (#1353)
+  * Fix OMEMO: check for current item (#1384)
+  * Fix request OMEMO device id (#1332)
+  * Add experimental OX (XEP-0373, XEP-0374) support (#1331)
+  * Add clang format file for uniform coding style (#1396)
+  * Add contributing guidelines (#1397)
+  * Dont highlight console once all messages have been read (#1399)
+  * New setting: Only highlight in console upon MUC mention (#1371)
+    `/console muc mention`
+  * Remove `/tiny` command (#1370)
+  * Fix `/lastactivity` behaviour (#1411)
+  * Fix `/correct` quotation marks usage (#1404)
+  * Parse Stable Stanza IDs (XEP-0359) (#1207) (#660)
+  * Only insert new messages in database (c9b154) (#660)
+  * Support both gtk2 and gtk3 (05d19c)
+  * Update gruvbox theme (#1421)
+  * Add NetBSD support (#1424)
+  * Fix uninitialized field in bookmarks (#1432)
+  * Don't link functional tests against tcl (da513a)
+  * Fix date format for MAM requests (15f45f)
+  * Print error stanzas (#1435)
+  * Add man pages for each profanity command (#1444)
+  * Fix chatlogs for outgoing carbons (#1439)
+  * Add OMEMO media sharing support (#1375)
+    See `/help sendfile` `/help executable`
+  * Expand trackbar to whole line (#1448)
+  * Set default color for trackbar (#1453)
+  * Log incoming carbons (#1446)
+  * Use whole path as logfile when defined via -f (#1442)
+    `profanity -f ~/mylog`
+  * Fix color for outgoing messages when no receipts are enabled (#1441)
+  * Set input window size to max window size (#1458)
+  * For details see: https://github.com/profanity-im/profanity/milestone/20
+
+-------------------------------------------------------------------
+Wed Jul  1 16:56:46 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.5:
+  * Fix segfault in /theme properties due to uninitialized
+    titlebar.scrollable (#1380)
+
+-------------------------------------------------------------------
+Wed Jun 24 12:03:31 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.4:
+  * Fix NULL terminated list (#1367)
+  * Add missing string.h (#1372)
+  * Fix gcc warnings for cygwin (#1373)
+
+-------------------------------------------------------------------
+Fri Jun 19 18:36:16 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.3:
+  * Fix expansion in eval_password (#1364)
+
+-------------------------------------------------------------------
+Sat Jun 13 16:45:17 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.2:
+  * Dont manipulate pointer from getenv (#1357)
+  * Fix reading/writing linked files (#1362)
+  * Use gnu99 C standard (#1357)
+
+-------------------------------------------------------------------
+Thu Jun 11 08:13:42 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.1:
+  * Make legacy auth optional (#1360) (@pasis)
+
+-------------------------------------------------------------------
+Tue Jun  9 15:08:34 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.0:
+  * Support for XEP-0308: Last Message Correction (#805)
+    See `/correction` and `/correct`.
+  * Code cleanup of UI and Message functions
+  * Always send delivery receipts if they are enabled (#1268)
+  * By default don't allow sending unencrypted files in an encrypted chat session (#1270) (@moppman and @jubalh)
+    See `/omemo|otr|pgp sendfile`.
+  * Add CI for OpenBSD via sr.ht (@wstrm)
+  * OMEMO: switch to 12 byte IV for sending (#1272)
+  * Allow UTF-8 symbols as OMEMO/OTR/PGP indicator char (#1264)
+  * Make color of the trackbar configurable
+    Use `main.trackbar` in themes.
+  * Allow setting custom log file
+    `profanity -f TEST` will log to `~/.local/share/profanity/logs/TEST.log`.
+  *  Send proper OS names for OpenBSD and NetBSD if `/os` is enabled
+  * Fix plenty memory leaks (@pasis and @jubalh)
+  * XEP-0084: Add option to open avatars directly (#1281)
+    `/avatar odin@valhalla.org` became `/avatar get odin@valhalla.org`
+    New is:
+    `/executable avatar feh`
+    `/avatar open odin@valhalla.org`
+    xdg-open is used by default. So it will take your default application.
+  * Enable popular features by default.
+    For a nicer out of the box experience we enable:
+    - allow message correction
+    - sending receipts
+    - enabling carbons
+    - type/chat states
+  * Add slashguard feature to prevent sending commands with typos
+    Should protect against `q/uit` or ` /quit`.
+    See `/slashguard`.
+  * Optionally display both MUC name and MUC JID in titlebar (#1284)
+    `/titlebar use name|jid` -> `/titlebar show|hide name|jid`.
+  * Add option to define a theme at startup (#1286)
+    `/profanity -t bios`
+  * Add setting to not colorize own nick if XEP-0392 is enabled (#1288)
+    `/color own on|off`.
+  * Add new theme: jubalian
+  * Fix docker related CI tests (#1294)
+  * Fix OMEMO autocompletion (75a43f, df23c3)
+  * Modify our README
+  * Store logs in SQLite backend (#1282)
+  * Request OMEMO device list only for non anon MUCs (#1315) (@DebXWoody)
+  * Don't display MUC history in one uniform colour, instead colour messages like regular ones (#1261)
+  * Fix autocompletion for `/software` in regular chat windows (#1337)
+  * XEP-0092: Make it possible to ask servers for their version (#1338)
+  * Add possibility to easily open URLs (#1340, #1348)
+    `/executable urlopen firefox`
+    `/urlopen <tab>`
+  * Display hint when window is scrolled (#1289)
+    Theme via `titlebar.scrolled`
+  * Add option to hide windows with no new messages in statusbar (#1285)
+    `/statusbar show|hide read`
+  * Support bookmark names (#697)
+  * Preserve Gajims minimize flag in bookmarks (#1326)
+  * Don't show resource in titlebar in narrow windows if it is too long (#715)
+  * Improve autoping (#1333, #1315) (@DebXWoody)
+  * Fix titlebar status display when using PGP (#1327) (@DebXWoody)
+  * OMEMO: Only request "current" item (#1329) (@DebXWoody)
+  * Add feature to ignore the autojoin flag for bookmarks (#1115)
+    Helps users who want to autojoin MUCs with most clients but not with all.
+    `/bookmark ignore`
+  * Fix edge case where contacts get displayed as offline when they are online (3d7a31)
+  * Add option for legacy authentication (#1236) (@pasis)
+    `/connect <account> [auth default|legacy]`
+    `/account <account> set auth default|legacy`
+  * All issues: https://github.com/profanity-im/profanity/milestone/19
+
+-------------------------------------------------------------------
+Mon Jun  8 08:23:26 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Add -fcommon to fix build with gcc10 (boo#1160244)
+
+-------------------------------------------------------------------
+Fri Feb  7 21:05:29 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.8.1:
+  * Fix ending ncurses colors in rosterwin
+  * Fix segfault when consistent nick colors where never in config (#1236)
+  * Improve /clear behaviour to also clear the buffer. So a redraw doesn't bring
+  * the content back.
+  * Use unique IDs in stanzas when requesting avatars
+
+-------------------------------------------------------------------
+Mon Feb  3 10:27:00 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.8.0:
+  * OMEMO fingerprint autocompletion now considers only the contact in question (@paulfariello) (#1068)
+  * Save and display oldest timestamp from delay tags (#1254)
+  * Change theme handling (#1077)
+  * /theme load themename not loads only the colours of a theme. So the users preferences don't get overwritten
+  * /theme full-load themename loads the whole theme including preferences (like omemo.char)
+  * Add gruvbox theme (@Misaflo) (#1259)
+  * XEP-0092: Include OS name in /software answer.
+  * See /os on|off
+  * Add option to notify about version request via XEP-0092 and XEP-0232 via adv.notify.discoversion
+  * setting in configuration file.
+  * Add option to display MUC name or JID in titlebar: /titlebar use [name|jid].
+  * Add /roster room use command to decide whether to display the MUC name or JID in the roster:
+    /roster room use name to use the name of the MUC in the roster list.
+    /roster room use jid to use the jid of the MUC in the roster list.
+  * Fix decryption failure for messages sent from Converse.js (@paulfariello) (#1253)
+  * Fix crash when OMEMO key is misconfigured (@paulfariello) (#1239)
+  * Use OMEMO for offline MUC members (@paulfariello) (#1242)
+  * Fix OMEMO 1on1 chats with psi+ (@svensp) (#1247)
+  * Save occupants and roster chars (#1244)
+  * Add support for downloading user avatars via XEP-0084 (#1240)
+  * See /avatar
+  * Add last read position marker trackbar (#1238)
+  * Dont print error message if a valid setting function is called (#1237)
+  * When printing configuration we often use the same command as setting but without any argument.
+  * So far ths displayed "Invalid usage".
+  * Add support for XEP-0392 consistent color generation for nicks (@aaptel and @jubalh) (#1191)
+  * See /color, /occupants color, /roster color
+  * Call ncurses resize function before move function (#1235)
+  * Fix error when joining IRC via biboumi (#1230)
+  * Fix stanza_get_child_by_name_and_from() strcmp (#1227)
+  * Fix showing own messages twice in ejabberd mucs (#1223)
+  * Allow setting of status message (which actually never worked before) (b846c49)
+  * /status set online "This is my text"
+  * /status set away bye
+  * /status set away
+  * Add option to store current line in history (irssi down arrow) (#200)
+  * Standardize commands (#1116):
+    /tls show on|of -> /titlebar show|hide tls`
+    /encwarn on|off -> /titlebar show|hide encwarn
+    /titlebar show|hide resource additionally to /resource titlebar on
+    /titlebar show|hide presence additionally to /presence titlebar on
+    /invite <contact> -> `/invite send
+    /invites -> /invite list
+    /decline -> /invite decline
+    /online, /away, /dnd, /chat, /xa -> /status set online etc.
+    /status -> /status get
+    /chlog on -> /logging chat on (#1224)
+    /grlog on -> /logging group on (#1224)
+    /group -> /roster group (#1229)
+  * Check omemo stanza names when iterating nodes (@aszlig) (#1217)
+  * Add clipboard feature. See /paste (#1216)
+  * Log MUC PM messages (#1214)
+  * Improve forest theme
+  * Change default text colors to default instead of white (@mdosch) (#1213) (#535)
+  * Fix date display in chat history (#992)
+  * Log incoming MUC messages if origin-id sais they dont come from us (#1201)
+  * Support XEP-0359: Unique and Stable Stanza IDs (#1207)
+  * To help us identify which MUC messages were sent by us.
+  * Fix double _XOPEN_SOURCE definition (@pasis) (#1206)
+  * Highlight unread messages with a different color in /wins (#895)
+  * New theming option cmd.wins.unread
+  * Improve MUC 1:1 logging (#1184)
+  * Fix user messages double logged in MUC logs (#1201)
+  * Fix 26 causes for memory leaks
+  * Add /clear autocompletion and improve help (#855)
+  * Allow multiple instances to write to account config via /reload
+  * command that reloads the config file (#627)
+  * Log message carbons to log file (#1181)
+  * Include PYTHON_EXTRA_LIBS in libtool config (@mzagozen) (#1200)
+  * Document how to block users in MUCS (#618)
+  * Keyboard switch to select the next window with unread messages (#1114) (alt + a)
+  * Keyboard switches (for moving to 20 windows instead of 10 (#1114) (alt + 1234567890qwertyuio)
+  * Fix MUC history detection with older Prosody versions (#1190) See https://issues.prosody.im/1416
+  * statusbar.current is a new theming option for currently selected tab (@quite) (#1195)
+  * Code cleanup
+  * Make /info more user friendly (#1194)
+  * Add solarized theme (#1175, #1198, #1199) (@mdosch)
+  * Set nonblocking mode for stderr (@pasis) (#1192)
+  * Log alleged roster push (6cf06dc)
+  * Allow colorization of history messages (#1170)
+  * See main.text.history theming option
+  * Fix crash if source jid doesn't contain the node part (@pasis) (#1153)
+  * Add support for 256 colors (@aaptel and @jubalh) (#1177 and many commits)
+  * We use the Xterm color names. See https://jonasjacek.github.io/colors
+  * Don't render (all) delayed messages as MUC history (@weiss) (#1173)
+  * Add possibility to specify alternative config file (10ca3e)
+  * Use profanity -c ~/path/to/other/config
+  * Don't print subscribed message if contact is already in roster (#1166)
+  * Only save preferences when new /save command is issued (#1146)
+
+-------------------------------------------------------------------
+Tue Sep 24 07:15:29 UTC 2019 - mvetter@suse.com
+
+- Update to 0.7.1:
+  * Fix copyright/info displayed email
+  * Fix typos in OMEMO logs
+  * Fix crash when jid has no not part (#1153, #1193)
+
+-------------------------------------------------------------------
+Wed Jul 31 12:49:26 UTC 2019 - mvetter@suse.com
+
+- Build both mini and standard with OMEMO enabled
+
+-------------------------------------------------------------------
+Wed Jul 31 09:31:45 UTC 2019 - mvetter@suse.com
+
+- Update to 0.7.0:
+  * Fix plugin unload return code if just one plugin fails (#995)
+  * Fix several typos
+  * Fix some display indentation issues (#1073)
+  * Fail plugin unload if the plugin doesnt exist
+  * Improve encrypted message stub header by mentioning the encryption method
+  * Fix GPG encryption (#997)
+  * Redraw sceen after entry of PGP key (#906)
+  * Fix support for case-sensitive account names (#725)
+  * Fix /me display when highlighting user in MUCs (#950)
+  * Fix `make dist` (0f0659a)
+  * Fix use after free bug (#1044)
+  * Fix segfault on connect with default account (#1046)
+  * Implement OMEMO support (#1039, #658, #1070)
+  * Add random string at the end of the default resource (#1053)
+  * Fix handling of messages without ID in MUC (#1061)
+  * Add library versioning to libprofanity (#973)
+  * Add more customization: occupants indent (/occupants) (#690, #1072)
+  * Add more customization: occupants header char (/occupants) (#690, #1074)
+  * Add more customization: occupants wrap (/occupants) (#690, 125ca2f)
+  * Add more customization: occupants char (/occupants) (#690, #1084)
+  * Fix formatting for privileges on (a666f0d)
+  * Fix usage of statusbar number in theme (#1078)
+  * Fix Debian 32bit tests (#1091)
+  * Fix unit tests (#1092)
+  * Fix infinite loop on connection loss (#1103)
+  * Don't clear saved account data in session_disconnect (#1106)
+  * Cancel autoping timer on disconnect or connection loss (#1105)
+  * Fix SIGABRT on connection loss (#1083)
+  * Only print room history for new messages upon reconnect (#704, #1110)
+  * Check if valid account before setting autoconnect (#1112)
+  * Improve plugin load error message, in case built without support (cc697de)
+  * Iterate up to 100 logfiles (#519)
+  * Fix rejoining of MUCs upon reconnect (#1120)
+  * Add option to set all window related time formats (#632, #1120)
+  * Always check for directory changes with sendfile auto completion (#1154)
+  * Fix several memory leaks (#1130, + plenty commits)
+  * For details see https://github.com/profanity-im/profanity/milestone/17
+
+-------------------------------------------------------------------
+Mon Feb 18 13:25:56 UTC 2019 - mvetter@suse.com
+
+- Update to 0.6.0:
+  * No changes since RC1
+
+-------------------------------------------------------------------
+Wed Jan 23 12:45:31 UTC 2019 - mvetter@suse.com
+
+- Update to 0.6.0 RC1:
+  * Allow moving vertical window positions (/titlebar, /mainwin, /statusbar, /inputwin)
+  * Allow loading/unloading all plugins (/plugins)
+  * Allow installing plugins from directory (/plugins)
+  * Allow uninstallation of plugins (/plugins uninstall)
+  * Allow update of plugins (/plugins update)
+  * Theme option for status bar time (statusbar.time)
+  * Case/accent insensitive autocompletion
+  * Shift tab to select previous autocomplete suggestion
+  * Allow searching help (/help search_all|search_any)
+  * Support for Legacy SSL
+  * Allow caching of rooms (/rooms cache)
+  * Add autocompletion for servername when listing rooms (/rooms service)
+  * Allow showing/disabling tab number in statusbar (/statusbar show)
+  * Adjust configure for OpenBSD
+  * Use UUIDs instead of counter for messages
+  * Support basic ad-hoc commands(xep-0050) (/command)
+  * Add option to trust server's certificate (/connect, /account)
+  * Add possibility to close windows via prof_win_close inputrc hook
+  * Bug fixes: https://github.com/boothj5/profanity/milestone/16?closed=1
+
+-------------------------------------------------------------------
+Tue Mar 20 13:52:18 UTC 2018 - dheidler@suse.com
+
+- Enable C and Python plugin API
+
+-------------------------------------------------------------------
+Fri Mar 16 15:51:03 UTC 2018 - mvetter@suse.com
+
+- Compile profanity-mini with --disable-icons:
+  Since we first do the standard build we need to disable the
+  icons in the later build to really get rid of the GTK dependency
+
+-------------------------------------------------------------------
+Thu Jul 13 12:00:32 UTC 2017 - olaf@aepfle.de
+
+- Remove unused gnutls/openssl from buildrequires
+
+-------------------------------------------------------------------
+Thu Feb  9 13:10:41 UTC 2017 - mvetter@suse.com
+
+- Update to 0.5.1:
+  * Add prof.get_room_nick plugins api function
+  * Add main.help.header theme option
+  * Look for system TLS certificate path by default (/tls certpath)
+  * Use service discovery to set account muc property
+  * Allow clearing account muc and resource properties
+  * Allow plugins to complete file paths with prof.filepath_completer_add function
+  * Add encryption settings functions to plugins api
+  * Allow plugins to block message sending on pre message send hooks
+  * Bug fixes: https://github.com/boothj5/profanity/milestone/15?closed=1
+
+-------------------------------------------------------------------
+Sun Nov  6 18:53:02 UTC 2016 - jengelh@inai.de
+
+- Orthographic fixes.
+- Remove useless BuildRequire on shlib package.
+
+-------------------------------------------------------------------
+Wed Nov 02 10:52:58 UTC 2016 - dheidler@suse.de
+
+- Switch to libmesode insted of libstrophe
+  * This allows better SSL cert validation
+
+-------------------------------------------------------------------
+Thu Sep 22 08:37:58 UTC 2016 - mvetter@suse.com
+
+- Fixing gh/boothj5/profanity/#860:
+  profanity uses parts of the new API of libstrophe. But since 
+  the so name wasn't bumped this doesn't get autodetected.
+  Adding the requires manually: Requires: libstrophe0 >= 0.9.0
+
+-------------------------------------------------------------------
+Wed Sep 21 22:10:33 UTC 2016 - mvetter@suse.com
+
+- Add better information to description
+- Enable tray icon in profanity-standard
+
+-------------------------------------------------------------------
+Fri Sep 16 10:22:22 UTC 2016 - mvetter@suse.com
+
+- Run spec-cleaner and use macros so it builds on all archs
+
+-------------------------------------------------------------------
+Fri Sep 16 10:10:39 UTC 2016 - mvetter@suse.com
+
+- Add profanity-rpmlintrc
+
+-------------------------------------------------------------------
+Fri Sep 16 10:04:45 UTC 2016 - mvetter@suse.com
+
+- Update to version 0.5.0:
+  * Plugins API supporting C and Python plugins
+  * SSL certificate verification (requires libmesode) (/tls)
+  * HTTP file upload (xep-0363) (/sendfile)
+  * Blocking command (xep-0191) (/blocked)
+  * Allow auto extended away (/autoaway)
+  * Include last acitvity in initial presence (xep-0256) (/lastactivity)
+  * Last Activity (xep-0012) (/lastactivity)
+  * Ability to run command scripts (/script)
+  * Account startscript property to execute a command script on connect (/account)
+  * Export roster to CSV file (/export)
+  * Support for GTK tray icons (/tray)
+  * User specified text triggers for chat room notifications (/notify)
+  * Per chat room notification options (/notify)
+  * Many new roster panel display options (/roster)
+  * Time format preferences per window type (/time)
+  * Edit, prepend and append to room subject (/subject)
+  * Autoping timeout preference (/autoping)
+  * Window navigation by window title (/win)
+  * Window closing by window title (/close)
+  * Account theme setting (/account)
+  * Allow sending XMPP stanzas in xmlconsole window (/xmlconsole)
+  * Configure level of room message notifications in console window (/console)
+  * Check ~/.config/profanity/inputrc for readline settings
+  * Custom readline functions for navigation key bindings
+  * Autocomplete command arguments when no characters entered
+- BuildRequire at least version 0.9.0 of libstrophe
+- Have libprofanity.so and profapi.h in main package for now
+- Add icon files
+
+-------------------------------------------------------------------
+Tue Jun 14 11:24:48 UTC 2016 - mvetter@suse.com
+
+- Split profanity in two packages:
+  standard - the default with all features enabled
+  mini - disabling notifications thus not needing X
+
+-------------------------------------------------------------------
+Thu Oct  1 09:40:35 UTC 2015 - mvetter@suse.com
+
+- Build with PGP enabled
+- Upgrade to version 0.4.7:
+    * Build against libmesode if available
+    * Handle invalid SSL certificates (requires libmesode)
+    * Allow auto extended away
+    * Include last acitvity in initial presence (xep-0256)
+    * Last Activity (xep-0012)
+  libmesode is not yet packaged. So this version uses libstrophe still.
+
+-------------------------------------------------------------------
+Tue Jul  7 09:42:35 UTC 2015 - cfarrell@suse.com
+
+- license update: SUSE-GPL-3.0+-with-openssl-exception
+  There is an exception to permit linking with openssl
+
+-------------------------------------------------------------------
+Tue Jun 16 14:30:06 UTC 2015 - mvetter@suse.com
+
+- Initial commit
+

@@ -1,0 +1,279 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>556a1e41051a7085b01244da67f154ca</srcmd5>
+    <version>20181127</version>
+    <time>1545141364</time>
+    <user>dimstar_suse</user>
+    <comment>- Trim redundancies from description.
+- Update to version 20181127:
+  * Export of internal Abseil changes. -- 15d7bcf28220750db46930f4d8c090b54e3ae5fe by Jon Cohen &lt;cohenjon@google.com&gt;:
+  * Export of internal Abseil changes. -- 5278e56bd7d322ecf161eaf29fd7fa3941d7431b by Greg Falcon &lt;gfalcon@google.com&gt;:
+- Switch from CMake to Bazel
+- Update to version 20181116:
+  * Export of internal Abseil changes. -- da04b8cd21f6225d71397471474d34a77df0efd6 by Jon Cohen &lt;cohenjon@google.com&gt;:
+  * Export of internal Abseil changes. -- 5f1ab09522226336830d9ea6ef7276d37f536ac5 by Abseil Team &lt;absl-team@google.com&gt;:
+  * Export of internal Abseil changes. -- 07575526242a8e1275ac4223a3d2822795f46569 by CJ Johnson &lt;johnsoncj@google.com&gt;:
+  * Export of internal Abseil changes. -- 178e7a9a76fc8fcd6df6335b59139cbe644a16b9 by Jon Cohen &lt;cohenjon@google.com&gt;:
+  * Export of internal Abseil changes. -- ee19e203eca970ff88e8f25ce4e19c32e143b988 by Jon Cohen &lt;cohenjon@google.com&gt;:
+  * Export of internal Abseil changes. -- 4e224c85c3730398919fc5195cb1fc7a752e6e4f by Mark Barolak &lt;mbar@google.com&gt;:
+  * Export of internal Abseil changes. -- 9e8aa654630015ea8221703b0ea10dd1a47a848f by Abseil Team &lt;absl-team@google.com&gt;:
+  * Export of internal Abseil changes. -- ba4dd47492748bd630462eb68b7959037fc6a11a by Abseil Team &lt;absl-team@google.com&gt;:
+  * Fix compilation of generic byteswap routines
+  * Fix absl::container on VS2017 v15.8 (#192)
+</comment>
+    <requestid>657562</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>914c20f344b4c655c0393aa7ce722d20</srcmd5>
+    <version>20181127</version>
+    <time>1548064800</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>666961</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>5474f494a39aa4b9c67802ab961bc85c</srcmd5>
+    <version>20181127</version>
+    <time>1551455320</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>680164</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>1174f1eff023bbf33f30c8dd258e991d</srcmd5>
+    <version>20181127</version>
+    <time>1552206986</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>682548</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>e16bc5bb0979516747f83f6faf041447</srcmd5>
+    <version>20181127</version>
+    <time>1563994235</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718284</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e0ce8815e74917634cd75e17338e3536</srcmd5>
+    <version>20190605</version>
+    <time>1573503514</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>738575</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>3f147aee598e244a49b5d34636ec68c3</srcmd5>
+    <version>20190605</version>
+    <time>1574414858</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>750140</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>734ee77f147613ce4b08a00e46dccdd7</srcmd5>
+    <version>20190605</version>
+    <time>1574677550</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>750644</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fd9dbe3dc71d3e1bb2369e6248621c4e</srcmd5>
+    <version>20190808</version>
+    <time>1576927818</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>758140</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>c64305a42e82f1096f9aad39b5f6c616</srcmd5>
+    <version>20190808</version>
+    <time>1579032572</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>764267</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>ddea619d35df880f81fd2c20fbdf7759</srcmd5>
+    <version>20190808</version>
+    <time>1579273644</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove all packages except source. (forwarded request 765214 from mrostecki)</comment>
+    <requestid>765215</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e191f35faa561349f568a68e11119f1e</srcmd5>
+    <version>20200225.2</version>
+    <time>1596203496</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20200225.2
+  * This release fixes the list of dependencies of absl::Cord in the CMake build.
+  * bug fix for absl::Status::ErasePayload</comment>
+    <requestid>823021</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>13d0b109c55b810f371c848572232393</srcmd5>
+    <version>20200225.2</version>
+    <time>1601398789</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>834036</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>fbd317b6c526e049e6a41f63fdec32e5</srcmd5>
+    <version>20200225.2</version>
+    <time>1604306382</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844359</requestid>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>06f1ae655c88a2ccea4c64ee5034c3cd</srcmd5>
+    <version>20200225.2</version>
+    <time>1604926588</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>846408</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>8a820041dde2c9bb4c95ba900f20de41</srcmd5>
+    <version>20200923.2</version>
+    <time>1609866984</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>860444</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>e1a81faba8590f82335dfd1d0df87319</srcmd5>
+    <version>20210324.0</version>
+    <time>1618859182</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>886674</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>883ae5becb0e60f9c32d0ed621a48aa4</srcmd5>
+    <version>20210324.1</version>
+    <time>1619552108</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>888697</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>b77e6a003dd5ca55d309dd64985997d5</srcmd5>
+    <version>20210324.2</version>
+    <time>1625338236</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>903646</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>161c1e5b359ba6845641daf929f189ac</srcmd5>
+    <version>20211102.0</version>
+    <time>1641855197</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>945266</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>b1be05ee3f0bb5497e9e59dcd02d784a</srcmd5>
+    <version>20211102.0</version>
+    <time>1646767898</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>959994</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>13f70321bc9a0c9c2a782fbb02e642e6</srcmd5>
+    <version>20211102.0</version>
+    <time>1649181314</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>966833</requestid>
+  </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>36d4b6d83e328b040b7dd67c10ac383c</srcmd5>
+    <version>20211102.0</version>
+    <time>1656587888</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove obsolete 0%{suse_version} &lt; 1500 conditions
+
+- Add options-old.patch, options-cxx17.patch
+  * Ensure ABI stability regardless of compiler settings per instruction in the header.</comment>
+    <requestid>985793</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>b274648425133606adb6b787ec85011c</srcmd5>
+    <version>20220623.0</version>
+    <time>1657016825</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>986572</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>d4472c307a0301c70b7739d64abffc82</srcmd5>
+    <version>20220623.0</version>
+    <time>1657715509</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>988573</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>7d0c3bb9ef0b39b6181ec0866133def8</srcmd5>
+    <version>20220623.1</version>
+    <time>1664638903</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1006366</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>6aa77704630dc2b84f083f11220e1443</srcmd5>
+    <version>20230125.2</version>
+    <time>1682434448</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082518</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>0a712d5bcd812a6f4a0b9fb2a7a23b8e</srcmd5>
+    <version>20230125.3</version>
+    <time>1685294487</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1089208</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>615d3e3b759491337cc1bbc84c5cc478</srcmd5>
+    <version>20230125.3</version>
+    <time>1688147903</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1095946</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>699b9898e266e67b76d6f28421b72cad</srcmd5>
+    <version>20230125.3</version>
+    <time>1693383477</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1105866</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>777098645b8c561e6d60e47b8f62eacd</srcmd5>
+    <version>20230802.0</version>
+    <time>1694113936</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1109442</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>7af5197487b66a7f2985d0cdc8f24611</srcmd5>
+    <version>20230802.1</version>
+    <time>1697061223</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1116453</requestid>
+  </revision>
+</revisionlist>

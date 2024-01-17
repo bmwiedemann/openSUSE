@@ -1,0 +1,14 @@
+<package name="perl-LockFile-Simple" project="openSUSE:Factory">
+  <title>simple file locking scheme</title>
+  <description>This simple locking scheme is not based on any file locking system calls
+such as 'flock()' or 'lockf()' but rather relies on basic file system
+primitives and properties, such as the atomicity of the 'write()' system
+call. It is not meant to be exempt from all race conditions, especially
+over NFS. The algorithm used is described below in the *ALGORITHM* section.
+
+It is possible to customize the locking operations to attempt locking once
+every 5 seconds for 30 times, or delete stale locks (files that are deemed
+too ancient) before attempting the locking.</description>
+  <devel project="devel:languages:perl" package="perl-LockFile-Simple"/>
+  <url>http://search.cpan.org/perldoc?LockFile::Simple</url>
+</package>

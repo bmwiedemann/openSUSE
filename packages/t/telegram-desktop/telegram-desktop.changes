@@ -1,0 +1,2160 @@
+-------------------------------------------------------------------
+Wed Jan  3 08:16:27 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Updated to version 4.14.2
+  * Show original senders name in reply to forward information.
+  * Use original senders color / emoji pattern in forwards.
+  * Highlight active saved messages chat in list.
+  * Fix chats list scrolling on X11 (Linux).
+
+-------------------------------------------------------------------
+Tue Jan  2 12:25:48 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Updated to version 4.14.1
+  * Fix crash in "Author Hidden" chat in "Saved Messages".
+  * Improve jump-to-original button layout in "Saved Messages".
+  * Show my own chat as "My Notes" in "Saved Messages".
+  * In screen sharing source window select first screen by default.
+
+- Updated to version 4.14.0
+  * Improved saved messages.
+  * One-time voice messages.
+
+- Add new script tg_owt-packager.sh for updating tg_owt-master.zip
+- Update tg_owt-master.zip to commit afd9d5d31798d3eacf9ed6c30601e91d0f1e4d60
+
+-------------------------------------------------------------------
+Tue Dec 26 08:42:39 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Updated to version 4.13.1
+  * Fix crash in chat history right click.
+  * Fix user emoji status display in main menu, profile and settings.
+
+- Updated to version 4.13.0
+  * Support setting channel wallpaper.
+  * Support setting channel emoji status.
+  * Allow gifting premium to several recipients at once.
+
+-------------------------------------------------------------------
+Sun Dec  3 14:34:27 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Updated to version 4.12.2
+  * Fix choosing custom reactions in channels.
+  * Fix crash on launch using old hardware. (Windows)
+
+-------------------------------------------------------------------
+Fri Dec  1 13:33:19 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Updated to version 4.12.1
+  * Fix assertion violation with imported messages.
+
+- Updated to version 4.12.0
+  * Similar channels.
+  * Wallpapers for both sides.
+  * Voice-to-Text for rveryone.
+  * Story statistics for channels.
+  * Custom Reactions for channels.
+  * Automatic code highlighting in messages.
+
+- Updated to version 4.11.8
+  * Fix phrases on macOS by doing a clean rebuild.
+
+-------------------------------------------------------------------
+Tue Nov 14 07:56:18 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Updated to version 4.11.7
+  * Fix sending media files with quote replies.
+  * Fix quoted text highlighting in some cases.
+  * Fix loading statistics for some channels.
+  * Fix Ctrl+Shift+. shortcut on X11.
+  * Fix a crash in statistics.
+
+-------------------------------------------------------------------
+Fri Nov 10 10:19:16 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Updated to version 4.11.6
+  * Support multiple boosts and reassignment.
+  * Improve giveaway creation flow.
+  * Fix crash in topics creation.
+- Add new telegram-symbolic.svg to %%files list
+
+-------------------------------------------------------------------
+Tue Nov  7 07:03:40 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Updated to version 4.11.5
+  * Giveaway phrases and sticker fixes.
+  * Show quoted part in channel comments.
+  * Show replies with icons and multiline preview.
+  * Send correct replies in topics and channel comments.
+  * In monochrome Windows tray icon use dot instead of counter.
+
+-------------------------------------------------------------------
+Fri Nov  3 07:03:40 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Updated to version 4.11.3
+  * Fix adding a link to media captions in scheduled / comments.
+  * Fix crash in link preview options saving.
+  * Fix possible crash in statistics.
+
+-------------------------------------------------------------------
+Thu Nov  2 13:43:19 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Updated to version 4.11.2
+  * Highlight quoted parts in jump-to-message from replies.
+  * Ctrl+Click on message field reply bar to jump to message.
+  * Fix empty link preview displaying when generation failed.
+  * Fix external replies in topic groups.
+  * Allow enabling legacy tray icon on Windows.
+
+-------------------------------------------------------------------
+Sun Oct 29 09:29:50 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Updated to version 4.11.1
+  * Fix crash in emoji status select.
+  * Fix crash in language change.
+  * Suggest shrinking only photos in webpage previews.
+  * Fix opening video files in webpage previews in-app.
+  * Fix sending links and markup with customized webpage previews.
+  * Show "Saved Messages" as a first row when replying in another chat.
+  * Fix selecting words by double-click with webpage previews.
+  * Fix delayed webpage preview generation in preview options.
+  * Add "show-peer-id-below-about" experimental option.
+
+- Updated to version 4.11.0
+  * View full statistics in your channels and group chats.
+  * Choose which link preview in added to the message.
+  * Choose if link preview is above or below the text.
+  * Choose if link preview has large or small image.
+  * Quote parts of text in replies.
+  * Add quote formatting.
+  * Reply in another chat.
+  * Add nice looking code blocks with syntax highlighting.
+  * Copy full code block by click on its header.
+  * Send a highlighted code block using ```language syntax.
+  * Change your name color in Chat Settings.
+  * Customize quotes, link previews and replies to your messages.
+- Update tg_owt-master.zip to commit be153adaa363b2b13242466ad5b7b87f61301639
+- Build requires libboost_regex-devel
+
+-------------------------------------------------------------------
+Wed Oct 11 13:11:23 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop freetype-devel BuildRequires: there is already
+  pkgconfig(freetype2) and it seems unlikely that both versions are
+  being used.
+
+-------------------------------------------------------------------
+Tue Oct  3 13:02:03 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Updated to version 4.10.3
+  * Fix crash on external link opening. (Linux only)
+
+-------------------------------------------------------------------
+Sun Oct  1 16:29:29 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update tg_owt-master.zip to commit 592b14d13bf9103226e90a83571e24c49f6bfdcd
+
+-------------------------------------------------------------------
+Fri Sep 29 17:04:58 UTC 2023 - Dmitry Roshchin <dmitry_r@opensuse.org>
+
+- Updated to version 4.10.2
+  * Bug fixes and other minor improvements.
+
+-------------------------------------------------------------------
+Sat Sep 23 09:27:12 UTC 2023 - Dmitry Roshchin <dmitry_r@opensuse.org>
+
+- Updated to 4.10.0
+  * Stories for Channels.
+  * Reaction Stickers in Stories.
+- Drop 0005-qt6-fixes.patch
+- Drop 0006-sigc-track_obj.patch 
+
+-------------------------------------------------------------------
+Wed Sep 20 10:20:01 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Updated to 4.9.9.
+  * Add support for Emoji 15.
+  * Several crash fixes.
+
+-------------------------------------------------------------------
+Sun Sep 17 08:13:52 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Updated to 4.9.8.
+  * Fix t.me/botname?startapp=token deeplinks.
+  * Fix a possible crash in media viewer on Wayland.
+
+-------------------------------------------------------------------
+Thu Sep 14 13:56:41 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Require the same version of glib2 used to *build* the package
+
+-------------------------------------------------------------------
+Thu Sep 14 08:00:16 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Updated to 4.9.7.
+  * Fix direct bot web app links handling.
+  * Close main menu when opening a web app.
+  * Bump libwebp revision.
+
+- Updated to 4.9.6.
+  * Some bot web-app improvements.
+  * Bug fixes and other minor improvements.
+
+- Update 0002-use-bundled-rnnoise-expected-gsl-ranges-webrtc.patch
+
+-------------------------------------------------------------------
+Thu Sep 14 06:11:12 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Requires glib-2.0 >= 2.77
+- Requires glibmm-2.68 >= 2.77
+
+-------------------------------------------------------------------
+Wed Sep 13 15:33:25 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Updated to 4.9.5.
+  * Several new bot web-app features.
+  * Bug fixes and other minor improvements.
+- Update tg_owt-master.zip
+- Add 0006-sigc-track_obj.patch
+- Relax usage of openssl versions
+
+- Updated to 4.9.4.
+  * Default private chats / groups / channels notification settings.
+  * Forwarded / reply-to-a-story icon in chats list message preview.
+  * Bug fixes and other minor improvements.
+
+- Updated to 4.9.3.
+  * Fix audio output on macOS.
+
+- Updated to 4.9.2.
+  * Remove single recently used emoji or reset the list from context menu.
+  * Change all emoji skin colors from Emoji & People section.
+  * Connected Websites section in Settings > Advanced.
+  * Bug fixes and other minor improvements.
+
+- Updated to 4.9.1.
+  * Fix a crash in reply area ripple animation.
+  * Fix a crash on start in some Linux distributions.
+
+- Updated to 4.9.0.
+  * Gradual stories rollout.
+
+- Updated to 4.8.12.
+  * Fix crash by a full rebuild on macOS.
+
+- Updated to 4.8.11.
+  * Fix initial video playback speed.
+  * Use native window resize on Windows 11.
+  * Fix memory leak in Direct3D 11 media viewer on Windows.
+
+- Updated to 4.8.10.
+  * Send story sharing comments as separate messages.
+  * Fix stories explanation tooltip ordering.
+
+- Updated to 4.8.9.
+  * Bug fixes and other minor improvements.
+
+- Updated to 4.8.8.
+  * Several crash fixes and story viewer improvements.
+
+- Updated to 4.8.7.
+  * Several crash fixes and small stories improvements.
+
+- Updated to 4.8.6.
+  * Fix langpack keys by a full rebuild on macOS.
+
+- Updated to 4.8.5.
+  * Bug fixes and other minor improvements. And stories preview.
+
+-------------------------------------------------------------------
+Tue Aug 15 14:08:09 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Rectify build requirements for the upcoming openSUSE Leap 15.6
+
+-------------------------------------------------------------------
+Thu Jul 20 08:07:41 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Relax _constraints for Arm targets
+- Disable neon on armv7 since the build of libyuv breaks with
+  neon on armv7 and some armv7 SoC does not include neon anyway
+
+-------------------------------------------------------------------
+Mon Jul 17 13:14:40 UTC 2023 - Илья Индиго <ilya@ilya.cf>
+
+- Updated to 4.8.4.
+  * Added BuildRequires: libboost_program_options-devel, fmt,
+    gobject-introspection-1.0.
+  * Removed BuildRequires: libQt6Core5Compat6, libQt6QuickWidgets6,
+    libQt6WaylandCompositor6.
+  * Fixed calls using openssl 1.1.1.
+  * Fixed opening links on Linux.
+  * Fixed main window focus from notifications with disabled animations.
+
+-------------------------------------------------------------------
+Mon May  1 07:47:52 UTC 2023 - Andrey Gankov <gav@qsolution.ru>
+
+- Update to 4.8.1:
+  * Fix sending an album of ten scheduled messages.
+  * Convert folder back to non-shareable on last link deletion.
+  * Several fixes of focus control in discussions / channel
+    comments.
+  * Drop all formatting on paste in non-message input fields.
+  * Clear search field on archive opening.
+  * Show video upload / download progress over the spoiler.
+  * Better support for text-colored emoji in reactions.
+  * Close archive / topics group when clicking on currently active
+    folder.
+  * Allow replace media by paste in discussions / comments /
+    scheduled messages.
+  * Fix stuck Replace Media button after editing media in some
+    chats.
+  * Quick reply by double click only with the left mouse button.
+  * Fix applying the same custom chat background with different
+    dimming value.
+  * Fix "who reacted" list display for media album parts.
+  * Show full t.me/+ invite link prefix in Recent Actions.
+  * Don't try to suggest userpic photos to bots.
+  * Add "Send when online" to the send button context menu.
+  * Fix crash in empty topics message sending.
+- Update to 4.8.0
+  * Share folders that include dozens of chats with friends or
+    colleagues.
+  * Anyone you invite can add the folder and join all its chats in
+    one tap.
+  * You can create multiple invite links to give different people
+    access to different chats in the folder.
+  * Set a custom wallpaper for any 1-on-1 chat.
+  * Your chat partner can apply the same wallpaper - or choose
+    their own.
+
+-------------------------------------------------------------------
+Wed Apr 26 15:16:06 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Replace BuildRequire on xorg-x11-devel by pkgconfig(...)
+
+-------------------------------------------------------------------
+Fri Apr 14 07:13:24 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Commit 0d37d47eca896005eb0a645e0db461f4dafb317b breaks building
+  with glibmm < 2.76; use DESKTOP_APP_DISABLE_DBUS_INTEGRATION
+  on Leap 15.4 and 15.5 to work around it.
+
+-------------------------------------------------------------------
+Mon Apr 10 01:58:12 UTC 2023 - Xu Zhao <i@xuzhao.net>
+
+- Upgrade to 4.7.1:
+  * Fix calls on Linux
+- Upgrade from 4.6.5 to 4.7.0:
+  * You can disable all resource-intensive animations
+    and animated stickers and emoji.
+  * Fully flexible playback speed settings for videos,
+    voice and video messages.
+  * Fix several possible crashes.
+- Update tg_owt-master.zip
+
+-------------------------------------------------------------------
+Sat Mar 25 11:06:57 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- The new default compiler gcc13 on Tumbleweed is too new for
+  compiling tg_owt-master.zip; e.g. "uint8_t" is now defined in
+  <cstdint> which almost all source files don't include. Stick
+  with gcc12 on Tumbleweed for now and wait for an update of
+  tg_owt-master.zip
+
+-------------------------------------------------------------------
+Fri Mar 17 09:57:44 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- compiler_upgrade is also needed on Leap 15.5
+
+-------------------------------------------------------------------
+Tue Feb 28 07:18:52 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- appstream-util is too old on Leap 15.4 - don't call it at the end
+  of installation
+
+-------------------------------------------------------------------
+Mon Feb 27 11:37:21 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Refresh 0002-use-bundled-rnnoise-expected-gsl-ranges-webrtc.patch
+
+-------------------------------------------------------------------
+Sun Feb 26 05:54:51 UTC 2023 - Xu Zhao <i@xuzhao.net>
+
+- Update to 4.6.5:
+  * Fix payment card input field validation.
+- Update from version 4.4.1 to 4.6.4:
+  * Allow media viewer to exit fullscreen and become a normal window.
+  * Fix polls forwarding to private chats.
+  * Bug fixes and other minor improvements.
+- Update tg_owt-master.zip
+
+-------------------------------------------------------------------
+Tue Dec 20 23:13:22 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop pkgconfig(gtk+-2.0) BuildRequires: No longer needed, nor
+  used.
+
+-------------------------------------------------------------------
+Thu Dec  8 08:44:55 UTC 2022 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to 4.4.1:
+  * Bug fixes and other minor improvements.
+- Refresh 0005-qt6-fixes.patch
+
+-------------------------------------------------------------------
+Wed Dec  7 19:54:15 UTC 2022 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Refresh 0005-qt6-fixes.patch
+
+-------------------------------------------------------------------
+Wed Dec  7 08:00:59 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 4.4.0:
+  * You can set a Global Auto-Delete Timer for all new chats and
+    groups you create.
+  * New messages will be deleted after 1 day, week, month - or a
+    custom duration you choose.
+  * The new menu in Settings > Privacy & Security > Auto-Delete
+    Messages also lets you set up Auto-Delete for any of your
+    existing chats faster.
+  * Admins of groups with 100+ members can organize discussions
+    into separate topics.
+  * Topics now have a two-column layout that keeps recent chats
+    easily accessible as you browse topics.
+  * Previews of topic messages in the chat list work like a
+    button - click to jump to the last updated topic.
+  * Up to 5 topics can be pinned to the top of the list.
+  * Each topic now supports multiple pinned messages.
+  * The View as Messages mode now shows which topic
+    each message belongs to.
+  * Badge counters for topics you never opened will have
+    a lighter, less distracting color.
+  * A new General topic is now included by default, containing
+    service messages and the earlier message history from the group.
+  * Admins can rename the General topic.
+  * Large groups can enable Aggressive Filtering in
+    Manage Group > Administrators to remove more spam with
+    automated algorithms.
+  * Admins help improve filtering by reporting any false
+    positives in Recent Actions.
+
+-------------------------------------------------------------------
+Mon Dec  5 07:58:42 UTC 2022 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Add 0005-qt6-fixes.patch
+  * Fix the build on openSUSE 15.4
+
+-------------------------------------------------------------------
+Tue Nov 29 11:49:02 UTC 2022 - Илья Индиго <ilya@ilya.cf>
+
+- Updated to 4.3.4.
+  * Changed 0002-use-bundled-rnnoise-expected-gsl-ranges-webrtc.patch.
+  * Added BuildRequires: Qt6Qml, Qt6Quick, Qt6QuickWidgets,
+    Qt6WaylandCompositor, qt6-widgets-private-devel and protobuf.
+  * Changed BuildRequires: from glibmm-2.4 to glibmm-2.68.
+  * Fixed OpenGL regression in Qt and language detection (video call crash).
+  * Other bug fixes and minor improvements.
+
+-------------------------------------------------------------------
+Tue Sep 20 15:44:53 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Pass -DQT_VERSION_MAJOR=6 to cmake when building Qt6 flavor: make
+  build stable even if some Qt5 libs are benig found.
+
+-------------------------------------------------------------------
+Sun Aug 28 04:50:11 UTC 2022 - Xu Zhao <i@xuzhao.net>
+
+- Update to version 4.1.1
+  * Fix editing media captions with animated emoji.
+  * Fix viewing animated emoji sets used in a message.
+  * Fix premium sticker tooltip auto-show in channel comments.
+  * Fix main window position and size restoring after relaunch.
+  * Other bug fixes and minor improvements.
+
+-------------------------------------------------------------------
+Sun Jun 26 14:21:10 UTC 2022 - Xu Zhao <i@xuzhao.net>
+
+- Add 0002-use-bundled-rnnoise-expected-gsl-ranges-webrtc.patch
+  * Fix the build on openSUSE 15.4
+- Rename 0001-use-bundled-ranged-exptected-gsl.patch to
+  0001-use-bundled-webrtc.patch
+  * Use system provided ranged, gsl, and ranges library.
+
+-------------------------------------------------------------------
+Sat Jun 25 08:19:33 UTC 2022 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.0.2
+  * Fix window title on Windows 7. (again)
+  * Fix file chooser and global menu on macOS.
+  * Crash fix and OpenAL check for PipeWire fix on Linux.
+
+-------------------------------------------------------------------
+Fri Jun 24 17:38:01 UTC 2022 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.0.1
+  * Fix window title on Windows 7.
+  * Bug fixes and other minor improvements.
+
+-------------------------------------------------------------------
+Fri Jun 24 09:16:23 UTC 2022 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update tg_owt; this does not include pipewire anymore, therefore:
+  * Add BuildRequires: pkgconfig(libpipewire-0.3)
+- Remove patches no longer needed:
+  * 0002-tg_owt-fix-name-confliction.patch
+  * 0005-add-wayland-include-path.patch
+  * fix-unused-variable-error.patch
+- Add suport for Qt version 6
+
+- Update to version 4.0.0
+  * Premium: Send media and files each up to 4 GB in size.
+  * Premium: Download media and files at the fastest possible speed,
+    with no limits.
+  * Premium: Double most of the limits in the app.
+  * Premium: Get a new button next to any voice message to generate
+    a transcript of its audio.
+  * Premium: React with even more emoji, including :clown: and 😍.
+  * Premium: Send unique stickers with additional effects, updated
+    monthly.
+  * Premium: Set a default chat folder or enable tools to
+    auto-archive and hide new chats.
+  * Premium: Subscribers have a badge next to their name, showing
+    they help support Telegram.
+  * Premium: Show off your profile video that will be animated for
+    everyone in chats and the chat list.
+  * Premium: Sponsored Messages that are sometimes shown in public
+    channels will no longer appear.
+  * Enable join requests for your public groups – no invite links
+    required.
+  * Users who open the group will see an Apply to Join Group button.
+  * Once approved by an admin, users will be able to participate in
+    the chat.
+  * Bots that are integrated into the attachment menu can be programmed
+    to work in groups and channels.
+- Update to version 3.7.6
+  * Settings > Advanced > Experimental adds an option to open chats
+    in separate windows.
+  * Fix possible crash in video chat reconnection.
+  * Fix possible crash after account switch.
+- Update to version 3.7.5
+  * Improve cloud password management design.
+  * Fix a crash in shared media search.
+  * Fix audio recording on macOS.
+- Update to version 3.7.4
+  * More icons for chat folders.
+  * Improve some more sections design.
+  * Update the OpenAL library to 1.22.0.
+
+-------------------------------------------------------------------
+Fri Jun  3 08:08:46 UTC 2022 - marec <marec@detebe.org>
+
+- fix for leap 15.4
+
+-------------------------------------------------------------------
+Tue May 10 19:07:11 UTC 2022 - Илья Индиго <ilya@ilya.cf>
+
+- Fixed requirements for Qt6 (boo#1199323).
+
+-------------------------------------------------------------------
+Tue Apr 26 15:20:13 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 3.7.3
+  * Fix a crash in the pinned bar bot button refresh.
+- Update to version 3.7.2
+  * Fix mute period selector values.
+  * Fix a crash in repeated context menu item selection.
+  * Fix context menu item selection of systems without a compositor.
+- Update to version 3.7.1
+  * Hardware accelerated video decoding off by default.
+  * Fix several crashes.
+- Update to version 3.7.0
+  * NO SUPPORT FOR QT5 ON LINUX ANYMORE! USE QT6!
+  * Use any short music file or voice message as a notification sound.
+  * Right click audio files in chats to add them to your list of
+    sounds - or use 'Upload Sound' in the Notifications menu.
+  * Click on Mute notifications > Select sound in a chat's (...)
+    menu to change its notification sound.
+  * Set custom tones for notifications in Settings > Notifications > Play sound.
+  * Click on Mute notifications in a chat's (...) menu to manage
+    its notifications.
+  * Choose 'Mute for...' to turn off notifications for a
+    preset period, like 1 hour or 1 day.
+  * Quickly configure Auto-Delete settings from any chat info page.
+  * Click (...) to turn on Auto-Delete, then select a specific duration.
+  * Replies are now preserved when forwarding messages,
+    making forwarded conversations easier to read.
+  * Bots can now open detailed pages directly in the chat.
+  * Use these streamlined interfaces to buy real-world goods
+    and services without leaving the app.
+  * Open a bot's profile to add it to your group or channel.
+  * Instantly configure a bot's rights and permissions when adding it.
+  * Bots can send a new type of button that lets you add them to
+    your group or channel.
+- Added fix-unused-variable-error.patch
+
+-------------------------------------------------------------------
+Fri Apr  8 07:53:51 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 3.6.1
+  * Change volume for RTMP stream from the context menu.
+  * Set a profile photo from your camera.
+  * Improve RTMP stream full screen mode.
+  * Improve edit account section design.
+  * Fix switching personal account or channel in video chats.
+  * Fix pinning chats in folders with 100 chats.
+  * Fix YouTube timestamp links after 10 hours.
+- Update tg_owt
+
+-------------------------------------------------------------------
+Sun Mar 13 15:45:01 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 3.6.0
+  * Active and recently finished downloads pop up in bar in the
+    bottom left corner, like they do in browsers.
+  * View recently downloaded files in Settings > Advanced
+    > Downloads.
+  * Get an alert before closing the app if you have
+    unfinished downloads.
+  * Share a direct t.me link to your phone number that instantly
+    opens a chat with you. Use the full number in
+    international format, like t.me/+123456789
+  * Manage Live Streams in your channels using external software
+    like OBS Studio or XSplit Broadcaster. Choose "Stream With..."
+    when staring a video chat or live stream - then copy your
+    Stream Key and paste it into your streaming software.
+- Update tg_owt
+
+-------------------------------------------------------------------
+Wed Feb  9 04:49:28 UTC 2022 - Xu Zhao <i@xuzhao.net>
+
+- Update to 3.5.2
+  * Fix a freeze in audio playback on Linux.
+  * Fix a crash in screen sharing initialization on Linux.
+- Remove 0003-add-qt5-widgets-include.patch
+  * Bug fixed in upstream
+- Add 0003-revert-webrtc-cmake-target-file.patch
+  * Fix target "desktop-app::external_opus" not found error.
+
+-------------------------------------------------------------------
+Fri Feb  4 02:57:59 UTC 2022 - Xu Zhao <i@xuzhao.net>
+
+- Add 0003-add-qt5-widgets-include.patch
+  * Fix Qt5Widgets private header include issue.
+
+-------------------------------------------------------------------
+Thu Feb  3 03:40:16 UTC 2022 - Xu Zhao <i@xuzhao.net>
+
+- Update to 3.5.0
+  * Use a new type of detailed stickers with smooth animations.
+  * Create new sets by sending .webm videos to @stickers.
+  * Bring your custom animated stickers from other apps.
+  * See smaller, compact animations when reacting to messages.
+  * See real-time animations in chat when a user reacts to your message.
+  * React with additional emoji expressing love, appreciation,
+    anger or surprise.
+  * Tap the new button in chats to jump to your messages that have
+    unseen reactions.
+  * Watch the animations for unseen reactions play when you
+    hit the button.
+  * The app will warn you before closing if you are uploading
+    photos or files to a chat.
+  * Enjoy better screencast quality in video chats.
+- Update tg_owt
+- Rebase patches
+-------------------------------------------------------------------
+Tue Jan  4 15:45:39 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 3.4.3
+  * Bug fixes and other minor improvements.
+
+-------------------------------------------------------------------
+Fri Dec 31 21:13:25 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 3.4.2
+  * Bug fixes and other minor improvements.
+
+-------------------------------------------------------------------
+Fri Dec 31 13:54:13 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 3.4.1
+  * Bug fixes and other minor improvements.
+
+-------------------------------------------------------------------
+Thu Dec 30 20:16:51 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 3.4.0
+  * Send reactions to messages.
+  * Group and Channel admins can enable reactions in their chat
+    via '...' * menu > Manage > Reactions.
+  * Select text when typing and choose 'Formatting > Spoiler'
+    in the context menu to hide some or all of the contents of
+    a message.
+  * Click on the spoiler in chat to reveal its hidden text.
+  * Spoiler formatting hides text in chat, as well as in
+    the chat list and notifications.
+- Update tg_owt
+
+-------------------------------------------------------------------
+Sun Dec 12 16:42:17 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Add tg_owt-packager.py to Source list in spec
+
+-------------------------------------------------------------------
+Sat Dec 11 04:01:59 UTC 2021 - Xu Zhao <i@xuzhao.net>
+
+- Update to 3.3.0
+  * Content creators can restrict the ability to save media and
+    forward messages from their groups and channels.
+  * Clear messages in one-on-one chats from a specific day or
+    date range.
+  * Comment as one of your channels in public groups and channel
+    comments.
+- Add tg_owt-packager.py
+
+-------------------------------------------------------------------
+Tue Dec  7 05:28:18 UTC 2021 - Xu Zhao <i@xuzhao.net>
+
+- Update to 3.2.8
+  * Fix crash in opening shared media with another user.
+  * Try out the new audio player with playlist shuffle and repeat.
+  * Give a custom name to your desktop session to distinguish it
+    in the sessions list.
+- Update tg_owt
+
+-------------------------------------------------------------------
+Fri Oct 29 18:01:53 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 3.1.11
+  * Create special invite links that require admins to approve users
+    before they become members.
+  * Admins can view the applicants' profiles and bios by tapping the
+    Join Requests bar at the top of the chat.
+  * Add internal labels to your chat's Invite Links to keep them
+    organized.
+  * Run natively on Apple Silicon
+- Update tg_owt
+
+-------------------------------------------------------------------
+Mon Oct 11 10:54:46 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 3.1.9
+  * Show small media previews in chats list.
+  * Show media album previews and caption text in chats list.
+  * Add "Quick Reply" and "Mark as Read" to native
+    Windows notifications.
+
+-------------------------------------------------------------------
+Thu Sep 30 16:06:29 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Add explicit BuildRequires for webkit2gtk-4.0
+
+-------------------------------------------------------------------
+Tue Sep 28 12:33:30 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 3.1.1
+  * Choose one from dozens of new gorgeous animated backgrounds in
+    Chat Settings > Chat background.
+  * Tile chat background patterns horizontally.
+  * Broadcast video and share your screen to an unlimited number of
+    viewers.
+  * To begin, tap the Live Stream button in the title bar of a
+    community where you are an admin.
+  * Tap the "Forward Message" label above the input field to change
+    how messages will be sent.
+  * Hide or show the original sender's name.
+  * Remove or keep captions from media messages.
+  * See how many unread comments there are when opening a
+    channel's comments.
+  * Check who've seen your message in small groups from the
+    context menu.
+  * Enable recording with video in live streams and video chats.
+  * Add a "Close to Taskbar" option when tray icon is disabled.
+  * Add support for Emoji 13.1.
+  * Some animated emoji now have extra effects.
+  * Send fireworks tada, balloon, :like:, hankey or heart to any
+    private chat, then click on the animated emoji to launch the
+    effect.
+  * If your chat partner also has the chat open, you will both see
+    the effects.
+  * See the "Watching" status when your chat partner is enjoying
+    emoji effects with you.
+  * More interactive emoji coming soon.
+  * Right click one of your outgoing messages in small groups to see
+    who recently viewed it.
+  * To protect privacy, read receipts are only stored for 7 days
+    after the message was sent.
+  * Record video and audio from live broadcasts in your group
+    or channel.
+  * Admins can start recording from the '...' menu.
+  * Choose between recording in portrait or landscape orientation.
+  * Finished recordings are sent to the admin's Saved Messages and
+    can be easily shared.
+- Update tg_owt
+- Remove 0003-prioritize-gtk2.patch, the file it was applied to
+  was removed upstream
+- Enable GCC11 again
+
+-------------------------------------------------------------------
+Mon Aug 30 11:30:32 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable build on armv6/armv7 since the build has been fixed
+  upstream
+
+-------------------------------------------------------------------
+Mon Aug  2 03:04:38 UTC 2021 - Xu Zhao <i@xuzhao.net>
+
+- Update to 2.9.0
+  * Enable auto-delete in your chats to remove messages.
+  * Quickly find all GIFs from a chat using the new GIF section.
+  * Reset your Two-Step Verification password even if you forgot.
+  * Enjoy a new app icon and default background.
+- Update tg_owt
+- Update 0001-use-bundled-ranged-exptected-gsl.patch
+  * Use bundled rlottie
+- Add 0004-use-dynamic-x-libraries.patch
+- Add 0005-add-wayland-include-path.patch
+
+-------------------------------------------------------------------
+Sat Jun  5 03:02:08 UTC 2021 - Xu Zhao <i@xuzhao.net>
+
+- Add 0003-prioritize-gtk2.patch and enable GTK integration.
+  Fixes boo#1149986 regression.
+
+-------------------------------------------------------------------
+Fri May 28 10:41:04 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Temporarily stick to GCC10 to work around build failures
+
+-------------------------------------------------------------------
+Sun May  9 12:41:03 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.7.5 (beta)
+  * Add "Voice chats" filter in "Recent actions" for channels.
+  * Write local drafts to disk on a background thread.
+  * Support autoupdate for Telegram in write-protected folders
+    on Linux.
+  * Fix crash in native notifications on Linux.
+  * Fix crash in file dialog on Linux.
+- Update tg_owt
+
+-------------------------------------------------------------------
+Wed Apr 28 19:47:25 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.7.4
+  * Fix crash in viewing an invoice after a payment is made.
+  * Respect Focus Assist only for native notifications.
+  * Mark messages as read only in active window.
+
+-------------------------------------------------------------------
+Tue Apr 27 13:08:06 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.7.3
+  * Fix crash on some versions of Linux.
+  * Fix video not stopping when PiP window is closed.
+  * Fix messages marking as read if the Windows session is locked.
+
+-------------------------------------------------------------------
+Mon Apr 26 15:57:03 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.7.2
+  * Offer real goods and services for sale in any group, channel or bot
+    – Telegram doesn't charge a commission.
+  * Pay for goods securely using one of the 8 integrated payment providers
+    – Telegram doesn't collect your payment info.
+  * See how this works in our @teststore.
+  * Schedule voice chats to let participants know about them in advance.
+  * View a countdown to the voice chat and get notified when it starts.
+- Update tg_owt
+- Drop telegram-desktop-cinttypes-header.patch, fixed upstream
+
+-------------------------------------------------------------------
+Tue Mar 23 13:14:33 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Expand the ExcludeArch.
+
+-------------------------------------------------------------------
+Mon Mar 22 16:07:33 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Exclude i586, support was dropped upstream
+  (gh#telegramdesktop/tdesktop#10037)
+
+-------------------------------------------------------------------
+Mon Mar 22 12:50:48 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add telegram-desktop-cinttypes-header.patch: Include cinttypes
+  header to use uint32_t.
+- Add xkbcommon and wayland header dirs to CXXFLAGS to fix build
+  failures.
+- Require Qt >= 5.15: Required since version 2.5.9
+  (gh#telegramdesktop/tdesktop#10398).
+- Pass -q to unzip to avoid echoing long file list while
+  unzipping.
+
+-------------------------------------------------------------------
+Mon Mar 22 10:23:27 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.7.1
+  * Fix editing 'Manage Voice Chats' rights for channel admins.
+  * Fix verification check display in voice chat participants list.
+  * Allow removing and blocking channels from voice chats.
+- Update tg_owt
+
+-------------------------------------------------------------------
+Sat Mar 20 16:16:34 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.7.0
+  * Start limitless Voice Chats in Groups and Channels.
+  * Host discussions that can be listened to by millions of people
+    simultaneously.
+  * Record voice chats to share or publish in Channels later.
+  * See that a chat is being recorded from the red dot next to
+    its title.
+  * See user bio texts right from the list of participants.
+  * Raise your hand to show admins you want to speak.
+  * Create separate Voice Chat Invite Links for listeners or speakers.
+  * Change the title of your Voice Chat to give people an idea
+    of the current topic.
+  * Join Voice Chats as one of your Channels to hide your
+    personal account.
+
+-------------------------------------------------------------------
+Thu Mar 18 12:46:03 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Use higher dwz memory limits for the package.
+
+-------------------------------------------------------------------
+Sat Mar 13 19:10:27 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.6.2
+  * Fix text disappearing because of cloud drafts sync.
+
+-------------------------------------------------------------------
+Wed Feb 24 20:00:09 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.6.1
+  * Fix time formatting in links.
+  * Fix copy QR code in night mode.
+  * Fix invite link sharing without a comment.
+  * Fix crash in link editing on Linux.
+
+-------------------------------------------------------------------
+Wed Feb 23 22:42:33 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.6.0
+  * Set messages to auto-delete for everyone 24 hours or 7 days
+    after sending.
+  * Control auto-delete settings in any of your chats, as well as
+    in groups and channels where you are an admin.
+  * To enable auto-delete, right click on the chat in the
+    chat list > Clear History > Enable Auto-Delete.
+  * Create invite links that work for a limited time or a limited
+    number of uses.
+  * See which users joined using your, or your admins', invite links.
+  * Turn any invite link into a QR code users can scan with their
+    phone cameras.
+  * To manage invite links, click ... > Manage Group/Channel
+    > Invite Links.
+  * Convert groups that have reached 200,000 members into unlimited
+    Broadcast Groups.
+- Remove 0000-gtk2-default.patch, the code was removed upstream,
+  meaning GTK integration is again broken, see boo#1149986
+
+-------------------------------------------------------------------
+Wed Feb 17 19:52:07 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.5.9
+  * Add 'Invite via Link' button to Add Members box.
+  * Fix window size in Windows 10 Tablet Mode.
+  * Fix layout of round video messages in channels.
+- Update tg_owt
+
+-------------------------------------------------------------------
+Sun Jan 31 14:57:11 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.5.8
+  * Fix OpenAL device closing in calls and voice chats.
+  * Fix video chat rotation when calling from iOS.
+  * Fix scheduling messages without sound.
+  * Remove redundant Cancel button in ScheduleBox.
+
+-------------------------------------------------------------------
+Thu Jan 28 18:18:05 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.5.7
+  * Delete not only messages, but also groups you created and
+    call history for all sides, without a trace.
+  * Adjust volume for individual participants of a voice chat.
+  * Report fake groups or channels impersonating famous people or
+    organizations by opening their Profile > ... > Report.
+
+-------------------------------------------------------------------
+Mon Jan 25 11:06:07 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.5.6 (beta)
+  * Press Up arrow to edit your last sent comment.
+  * Add more information to date tooltips in Recent Actions and
+    channel comments.
+  * Bug andicrash fixes.
+- Update tg_owt
+- Rebase 0000-gtk2-default.patch
+
+-------------------------------------------------------------------
+Mon Jan 18 19:57:52 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.5.5 (beta)
+  * Fix recording of audio in voice chats.
+  * Fix media viewer zoom and crashing.
+- Update tg_owt
+- Add Recommends for google-opensans-fonts
+
+-------------------------------------------------------------------
+Fri Jan  8 00:01:00 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.5.4 (beta)
+  * Implement new audio module code for calls and voice chats.
+  * Allow retracting votes from polls in comments to channel posts.
+  * Show small voice chat button for empty voice chats.
+  * Fix media viewer updating when screen resolution is changed.
+- Update tg_owt
+  * adapt 0002-tg_owt-fix-name-confliction.patch
+
+-------------------------------------------------------------------
+Thu Jan 7 16:37:56 UTC 2021 - Andrés Barrantes Silman <andresbs@opensuse.org>
+
+- Adds a missing runtime dependency (libqt5-qtimageformats).
+
+-------------------------------------------------------------------
+Wed Dec 30 17:05:40 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.5.3 (beta)
+  * Allow using mouse buttons in Push-to-Talk shortcut.
+  * Fix blurred thumbnails in Shared Links section.
+
+-------------------------------------------------------------------
+Fri Dec 25 19:42:57 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.5.2 (beta)
+  * Fix possible crash in video calls.
+  * Fix possible crash in connecting to voice chats.
+
+-------------------------------------------------------------------
+Wed Dec 23 14:42:21 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.5.1
+  * Turn any of your group chats into a hop-on, hop-off conference call.
+  * Get up to several thousand participants in each voice chat.
+  * Control the number of speakers with flexible admin tools.
+  * Fix crash in voice calls.
+
+-------------------------------------------------------------------
+Sat Dec 19 20:22:56 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.4.15 (beta)
+  * Improve design of voice chats.
+  * Fix sending of voice messages as replies.
+  * Fix 'Open With' menu position in macOS.
+  * Fix freeze on secondary screen disconnect.
+- Update tg_owt
+
+-------------------------------------------------------------------
+Tue Dec 15 09:28:33 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.4.14 (beta)
+  * Create voice chats in legacy groups.
+  * Fix sticker pack opening.
+  * Fix group status display.
+  * Fix group members display.
+
+-------------------------------------------------------------------
+Wed Dec  9 11:21:21 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.4.13 (beta)
+  * Voice chats in groups.
+  * Fix voice messages sending.
+  * Fix crash in voice calls.
+- Update tg_owt
+
+-------------------------------------------------------------------
+Sun Nov 22 14:51:50 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.4.11 (beta)
+  * Upgrade Qt to version 5.15.1.
+  * Upgrade FFmpeg to version 4.2.
+  * Upgrade OpenAL to version 1.20.1.
+  * Fix crash in tray icon removing.
+  * Use inline bots and sticker by emoji suggestions in
+    channel comments.
+  * Lock voice message recording, listen to your voice message
+    before sending.
+  * Improve locked voice message recording.
+  * Fix main window closing to tray on Windows.
+  * Fix crash in bot command sending.
+  * Fix adding additional photos when sending an album to a group
+    with enabled slow mode.
+- Update tg_owt
+- Remove explicit Requires: for ffmpeg and openssl
+
+-------------------------------------------------------------------
+Thu Nov  5 16:53:45 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.4.7
+  * Fix playback display in albums of music files.
+  * Several crash fixes.
+
+-------------------------------------------------------------------
+Mon Nov  2 13:12:24 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.4.6
+  * Fix image compression option when sending files with drag-n-drop.
+  * Fix caption text selection in media albums.
+  * Fix drafts display in personal chats in the chats list.
+  * Bug fixes and other minor improvements.
+- Update tg_owt
+
+-------------------------------------------------------------------
+Fri Oct 30 19:08:36 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.4.5
+  * Pin several messages in any chat, including one-on-one chats.
+  * Jump between pinned messages or open them all on a separate page
+    via the top bar.
+  * Send several music tracks as a playlist. 
+  * Send several files as an album in one chat bubble.
+  * Send a :slot_machine: emoji to any chat to see if you
+    hit the jackpot.
+  * Hide Telegram taskbar icon on Linux in Settings > Advanced.
+- Update tg_owt
+
+-------------------------------------------------------------------
+Mon Oct 26 15:02:33 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.4.4
+  * Fix application quit on call end with main window hidden in tray.
+  * Update OpenAL library on Windows.
+  * Several crash fixes.
+- Stricter constraints for i586
+
+-------------------------------------------------------------------
+Fri Oct 16 15:03:56 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Lower constraints on Arm
+
+-------------------------------------------------------------------
+Thu Oct  15 15:09:53 UTC 2020 - Adrian Campos Garrido <adriancampos@teachelp.com>
+
+- Delete the limitation and build for all platforms including aarch64 
+
+-------------------------------------------------------------------
+Wed Oct  7 17:09:53 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.4.3
+  * Fix sending voice messages in scheduled messages section.
+  * Fix deleting profile / group / channel photos.
+  * Several crash fixes.
+
+-------------------------------------------------------------------
+Fri Oct  2 19:24:42 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.4.2
+  * Allow block, report and delete all message from user from
+    "user joined" service message context menu.
+  * Fix admin badge display in groups.
+  * Fix loading and opening of comments in channels.
+
+-------------------------------------------------------------------
+Fri Oct  2 09:30:38 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.4.1
+  * Move by PageUp and PageDown in channel comments.
+  * Several layout bugfixes.
+  * Several crashfixes.
+
+-------------------------------------------------------------------
+Thu Oct  1 08:42:42 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.4.0
+  * Turn on "Remain Anonymous" in an admin's Permissions to
+    let them post on behalf of the group and become invisible
+    in the list of members.
+  * Comment on posts in channels that have a discussion group.
+  * Get notified about replies to your comments via the new
+    Replies chat (if you are not a member of the discussion group).
+- Remove check_if_xcb-screensaver_present.patch, obsolete
+- Update tg_owt and patches
+
+-------------------------------------------------------------------
+Wed Sep 30 10:36:43 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Add check_if_xcb-screensaver_present.patch
+  * fixes boo#1176626: Telegram-desktop crashes on Xwayland
+
+-------------------------------------------------------------------
+Sun Aug 30 22:25:52 UTC 2020 - Xu Zhao <i@xuzhao.net>
+
+- Update to 2.3.2
+  * Revert custom window shadow on Linux.
+- Update in 2.3.1
+  * Fix Calls Settings for Video Calls.
+- Update in 2.3.0
+  * Video Calls (alpha version).
+- Updates in 2.2.0, 2.1.22, and 2.1.21
+  * Quickly switch between different Telegram accounts 
+    if you use multiple phone numbers.
+  * Share and store unlimited files of any type up to 2 GB each.
+  * Edit your scheduled messages.
+  * Use Auto-Night Mode to make Telegram night mode match system
+    Dark Mode settings
+  * Also added an option to switch to system window frame 
+    in Windows and Linux.
+  * Fix crash in web page preview display
+- Rebase 0000-gtk2-default.patch
+  * Prioritize qgtk2 platform plugin
+- Rename 0001-use-bundled-range.patch to 
+  0001-use-bundled-ranged-exptected-gsl.patch
+  * Use bundled ranged-v3, Microsoft GSL, and expected.
+- Add 0002-tg_owt-fix-name-confliction.patch
+  * Patch tg_owt library to fix header name conflict with openssl
+  * Include <stdint> header to define int types like uint32_t
+
+-------------------------------------------------------------------
+Thu Aug 20 09:06:04 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Use memoryperjob constraint instead of %limit_build macro.
+
+-------------------------------------------------------------------
+Wed Jun 24 08:38:24 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.1.13
+  * Fix photos loading.
+  * Fix Picture-in-Picture window movement on Wayland in Linux.
+
+-------------------------------------------------------------------
+Thu Jun 18 08:38:42 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.1.12
+  * Fix sticker and video results in inline bots.
+  * Fix clipboard issues in Linux.
+  * Fix several crashes.
+
+-------------------------------------------------------------------
+Mon Jun  8 13:12:59 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.1.11
+  * Fix launching on old Linux systems.
+
+-------------------------------------------------------------------
+Fri Jun  5 20:20:20 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- update to 2.1.10
+  * Improve memory usage.
+  * Add support for full group message history export.
+  * Allow export of a single chat message history in JSON format.
+
+-------------------------------------------------------------------
+Wed Jun  3 18:41:46 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.1.8 (beta)
+  * Add support for full group message history export.
+  * Allow export of a single chat message history in JSON format.
+- Rebased 0000-gtk2-default.patch
+
+-------------------------------------------------------------------
+Sun May 24 15:48:54 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.1.7
+  * Fix the Fcitx input method plugin.
+
+-------------------------------------------------------------------
+Wed May 13 19:04:30 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.1.5
+  * Disable the taskbar icon flash or the dock icon bounce in
+    Settings > Notifications.
+  * View messages containing long monospace texts in wide bubbles.
+  * Bug fixes and other minor improvements.
+- rebased 0001-use-bundled-range.patch
+
+-------------------------------------------------------------------
+Sat May  9 16:23:13 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.1.4
+  * Improve bold font selection.
+
+-------------------------------------------------------------------
+Fri May  8 18:38:40 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.1.3
+  * Added support for new emoji.
+  * Channels to which you can't post will no longer be suggested
+    when forwarding.
+  * Improved font selection and bold font support for CJK and Farsi.
+  * Fix polls and quizes results viewing.
+  * Fix memory leak in web page previews with autoplayed videos.
+  * Fix running on OS X 10.10.
+  * Other minor bug fixes and improvements.
+- removed range-v3-master.zip, range is now bundled in the
+  upstream source
+- rebased 0001-use-bundled-range.patch
+
+-------------------------------------------------------------------
+Sat May  2 01:03:59 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.1.1
+  * Improve quiz explanation tooltip layout.
+  * Fix possible crash in theme editor.
+  * Other minor bug fixes and improvements.
+- Remove 0002-fix-directory-open-via-portals.patch
+  * this release already contains the fix
+
+-------------------------------------------------------------------
+Sat Apr 25 14:59:16 UTC 2020 - Markus S <kamikazow@opensuse.org>
+
+- Update to 2.1.0
+  * Access a catalog of over 20,000 stickers made by professional
+    artists from the updated Sticker Panel by clicking the '+' icon.
+  * Use sticker search to find the stickers you're looking for
+    or scroll from the latest packs all the way to the classics.
+  * Add explanations that appear after users respond to a quiz question.
+  * See how much time you have left to answer a question from
+    @QuizBot with the new countdown animation.
+  * Send a single :dart: emoji to see if you hit the bullseye.
+- Disable libdee requirement after Python2 removal
+- Upstream recommends using xdg-desktop-portal, so we might do the same
+- Add 0002-fix-directory-open-via-portals.patch
+  * Upstream fix for a bug when opening directories via portals
+
+-------------------------------------------------------------------
+Tue Mar 31 11:43:35 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.0.1
+  * Switch between folders using Ctrl+1, ..., Ctrl+8.
+  * Fix crash when a pinned in folder chat was added to archive.
+  * Fix font issues in Linux version.
+
+-------------------------------------------------------------------
+Mon Mar 30 15:08:46 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.0.0
+  * Organize chats into Chat Folders if you have too many chats.
+  * Create custom folders with flexible settings, or use default
+    recommendations.
+  * Pin an unlimited number of chats in each folder.
+  * Switch between folders in the new side bar to easily access
+    all of your chats.
+  * Send :dice: to any chat to try your luck and get a random number
+    from the animated dice.
+  * Send :virus:, :face_with_thermometer:, :mask:,
+    :face_with_head_bandage:, :sneeze:, :sick:, :soap: or :ambulance:
+    to try out the new animated emoji.
+
+-------------------------------------------------------------------
+Tue Mar 17 10:44:28 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 1.9.21
+  * Mark new messages as read while scrolling down through them.
+  * Improved spellchecking on Windows 7 and Linux.
+  * Fix crash in shared links search.
+  * Fix blurred thumbnails in albums with video files.
+  * Fix a possible crash in animated stickers rendering.
+  * Bug fixes and other minor improvements.
+
+-------------------------------------------------------------------
+Tue Feb 18 19:50:09 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 1.9.14
+  * Bug fixes and other minor improvements.
+
+-------------------------------------------------------------------
+Wed Feb 12 21:18:03 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 1.9.13
+  * Bug fixes and other minor improvements.
+
+-------------------------------------------------------------------
+Tue Feb 11 20:30:02 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 1.9.12
+  * Switch to the Picture-in-Picture mode to watch your video in a
+    small window.
+  * Change video playback speed in the playback controls '...' menu.
+  * Rotate photos and videos in the media viewer using the rotate
+    button in the bottom right corner.
+
+-------------------------------------------------------------------
+Wed Jan 29 07:58:21 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 1.9.9
+  * Bug fixes and other minor improvements.
+- Removed 0002-use-bundled-rlottie.patch,
+  there's a cmake switch for this
+- Add cmake version requirement
+
+-------------------------------------------------------------------
+Fri Jan 24 17:48:01 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 1.9.8
+  * Bug fixes and other minor improvements.
+
+-------------------------------------------------------------------
+Thu Jan 23 16:51:20 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 1.9.7
+  * Create three new kinds of polls.
+  * See who voted for what in polls with visible votes.
+  * Vote for several options in polls that allow multiple answers.
+  * Guess the correct answer in quiz-style polls.
+  * Explore various ways of combining the different poll options.
+  * Add polls from the '...' menu in any group or channel.
+  * Use bots like @quizbot to create quizzes with several questions
+    and media attachments.
+  * Schedule messages to be sent when your recipient comes online
+    (only works if you know their online status).
+- Clean up spec file
+
+-------------------------------------------------------------------
+Wed Jan 22 10:24:14 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 1.9.6
+  * Bug fixes and other minor improvements.
+- Removed 0005-Use-system-wide-fonts.patch and
+  0006-Revert-Disable-DemiBold-fallback-for-Semibold.patch,
+  option to use system fonts added upstream
+
+-------------------------------------------------------------------
+Fri Jan 17 20:12:33 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 1.9.4
+  * Bug fixes and other minor improvements.
+- Removed patches, option to use distribution libraries
+  added upstream:
+  * 0001-Dynamic-linking-system-libs.patch
+  * 0002-Dynamic-linking-system-qt.patch
+  * 0004-gtk3.patch
+- Added patches for dependencies not available from repos:
+  * 0001-use-bundled-range.patch
+  * 0002-use-bundled-rlottie.patch
+
+-------------------------------------------------------------------
+Thu Jan 16 01:47:32 UTC 2020 - Xu Zhao <i@xuzhao.net>
+
+- Upgrade to 1.9.3
+  * Videos in chats start playing automatically.
+  * Resume playback from where you left off when watching long 
+    videos and listening to long audio tracks.
+  * Control automatic playback for videos, GIFs and round video
+    messages in Settings > Advanced > Automatic media download.
+  * Enjoy system spell checker support on all modern systems.
+- Switch build system to Ninja
+- Rename default-gtk2.patch to 0000-gtk2-default.patch,
+  removed tdesktop.patch
+- Added patches:
+  * 0001-Dynamic-linking-system-libs.patch
+  * 0002-Dynamic-linking-system-qt.patch
+  * 0004-gtk3.patch
+  * 0005-Use-system-wide-fonts.patch
+  * 0006-Revert-Disable-DemiBold-fallback-for-Semibold.patch
+
+-------------------------------------------------------------------
+Tue Nov  5 20:51:58 UTC 2019 - Xu Zhao <i@xuzhao.net>
+
+- Remove the TDESKTOP_DISABLE_GTK_INTEGRATION macro in patch.py
+  * Enable the native notification on all platforms.
+- Add default-gtk2.patch: Use GTK 2 theme by default to harmonize
+  the libqt5-prioritise-gtk2-platformtheme.patch (boo#1149986)
+  in libqt5-qtbase.
+
+-------------------------------------------------------------------
+Sat Nov  2 11:54:41 UTC 2019 - Xu Zhao <i@xuzhao.net>
+
+- Update to 1.8.15
+  * Bug fixes and other minor improvements.
+
+-------------------------------------------------------------------
+Sat Sep 28 11:04:43 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 1.8.9
+  * Bug fixes and other minor improvements.
+
+-------------------------------------------------------------------
+Tue Sep 10 16:01:53 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 1.8.8
+  * Create new themes based on your color and wallpaper choices.
+  * Share your themes with other users via links.
+  * Update your theme for all its users when you change something.
+
+-------------------------------------------------------------------
+Tue Sep 10 08:32:42 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 1.8.7 (beta)
+  * Bug fixes and other minor improvements.
+- Disable GTK integration again due to Cinnamon hard requiring
+  libqt5-qtstyleplugins-platformtheme-gtk2 (boo#1149130)
+
+-------------------------------------------------------------------
+Mon Sep  9 09:03:52 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 1.8.5 (beta)
+  * Create new themes based on your color and wallpaper choices.
+  * Share your themes with other users via links.
+  * Update your theme for all its users when you change something.
+
+-------------------------------------------------------------------
+Fri Sep  6 15:44:06 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 1.8.4
+  * Bug fixes and other minor improvements.
+- Updated rlottie
+
+-------------------------------------------------------------------
+Fri Sep  6 08:34:35 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 1.8.3
+  * Right click the 'Send' button and select 'Schedule Message'
+    to automatically send something at a specified time.
+  * Schedule reminders for yourself in the 'Saved Messages' chat.
+  * Get a notification when any of your scheduled messages are sent.
+  * Customize your app's appearance by choosing accent colors for
+    the 'Day', 'Night' and 'Tinted' themes.
+  * Choose who can find you on Telegram when they add your number
+    to their phone contacts.
+  * Send a single :grin:, :anguished:, :rage:, :poo:, :cry:
+    or :open_mouth: to check out what's new in the animated
+    emoji department.
+
+-------------------------------------------------------------------
+Wed Aug 21 09:05:49 UTC 2019 - mvetter@suse.com
+
+- bsc#1146555 - Drop jasper dependency from telegram-desktop:
+  Remove JPEG2000 support due to removal of libjasper
+
+-------------------------------------------------------------------
+Tue Aug 20 18:08:27 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 1.8.2
+  * Bug fixes and other minor improvements.
+- Enable GTK integration for native notifications, this only works
+  when libqt5-qtstyleplugins-platformtheme-gtk2 is absent
+  -> introducing Conflicts with that Package
+
+-------------------------------------------------------------------
+Sat Aug 10 04:11:18 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 1.8.1
+  * Bug fixes and other minor improvements.
+
+-------------------------------------------------------------------
+Fri Aug  9 17:23:11 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 1.8.0
+  * Right click the Send button to send any message without sound -
+    in case the recipient is sleeping.
+  * Enable Slow Mode in Group Permissions to control how frequently
+    members can post.
+  * Set custom titles for group admins - like 'Founder', 'CFO' or
+    'Spam Fighter'.
+  * Toggle looped playback for animated stickers in Chat Settings.
+  * Send a single :heart:, :like:, :unamused:, :flushed: or :party:
+    to add a mighty animated emoji to the chat.
+- Updated crl and rlottie
+
+-------------------------------------------------------------------
+Fri Jul 19 17:44:40 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 1.7.15
+  * Bug fixes and other minor improvements.
+- Allow GCC 9 after GCC#90949 was fixed
+- Updated rlottie
+
+-------------------------------------------------------------------
+Sun Jul  7 13:01:31 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 1.7.13
+  * Send ultra-lightweight high-quality animated stickers to
+    express emotion with motion.
+  * Receive animated stickers instantly on any connection at
+    just 20-30 KB per sticker.
+  * Enjoy smooth animations at 60 frames per second.
+  * Create new animated sets and upload them to @stickers for
+    everybody to use.
+  * Try out these sample stickers: t.me/addstickers/hotcherry
+  * Use strikethrough and underline formatting.
+- Removed rapidjson and qtlottie, added rlottie and lz4, updated crl
+- Disable LTO due to build failures
+
+-------------------------------------------------------------------
+Mon Jun 24 17:06:02 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 1.7.10
+  * Bug fixes and other minor improvements.
+- Updated libtgvoip and qtlottie
+
+-------------------------------------------------------------------
+Sun Jun 23 20:48:50 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 1.7.9
+  * You can now add any users to your contacts, even if their phone
+    numbers are not visible.
+  * Transfer ownership of group chats and channels by granting full
+    rights to another admin. Useful when switching jobs or if you
+    just want to retire as creator.
+  * Hide archived chats to the main menu.
+  * See who is online straight from the chat list.
+  * Use the MacBook Pro TouchBar to apply formatting to
+    selected text, insert emoji, and send stickers.
+- switch to ayatana-appindicator3-0.1
+
+-------------------------------------------------------------------
+Tue Jun 18 08:41:22 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 1.7.8
+  * Hide archived chats in the main menu.
+  * See who is online straight from the chat list.
+  * Apply formatting to selected text parts from the 
+    MacBook Pro TouchBar.
+
+-------------------------------------------------------------------
+Mon Jun 10 20:34:17 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 1.7.7
+  * Bug fixes and other minor improvements.
+
+-------------------------------------------------------------------
+Thu Jun  6 16:56:59 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 1.7.6
+  * Bug fixes and other minor improvements.
+- Updated qtlottie
+
+-------------------------------------------------------------------
+Wed Jun  5 22:31:45 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Keep using GCC8 on Tumbleweed until there is a resolution for
+  https://github.com/telegramdesktop/tdesktop/issues/5996
+
+-------------------------------------------------------------------
+Wed Jun  5 20:33:30 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 1.7.5
+  * Download video files while watching them using streaming.
+  * Set EOL for Windows XP / Vista and OS X 10.6 to 10.9
+    at September 1.
+  * Crash fix.
+- Remove gcc7-fix.patch because GCC7 will no longer work due to
+  qtlottie requiring "class-memaccess" option
+
+-------------------------------------------------------------------
+Wed Jun  5 20:07:00 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 1.7.3
+  * Bug fixes and other minor improvements.
+- New 3rd party: rapidjson
+
+-------------------------------------------------------------------
+Sat Jun  1 12:03:16 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 1.7.2
+  * Choose who can see your phone number with granular precision in
+    Privacy & Security settings.
+  * Add group chats to "Always/Never Share" exceptions for any
+    privacy setting. Permissions will update as users leave
+    and join the groups.
+  * Connect a discussion group to your channel, subscribers will
+    see a "Discuss" button.
+  * Integrate bots seamlessly with web services. 
+    For example, see t.me/DiscussThis/1
+  * Use TouchBar on MacBooks Pro to control music playback and
+    switch between pinned chats.
+- New 3rd party: qtlottie
+
+-------------------------------------------------------------------
+Thu May 30 09:46:29 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Updated bundled 3rd party sources to fix gcc9 build failures
+  * breakpad, linux-syscall-support, gyp, crl to current master
+  * libtgvoip to v2.4.4
+  * mapbox-variant to v1.1.6
+  * range-v3 to v0.5.0
+  * xxHash to v0.7.0
+- spec-cleaner: use pkconfig
+
+-------------------------------------------------------------------
+Thu May  9 17:32:58 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 1.7.0
+- Introducing Archived Chats:
+  * Archive any chat from the right-click menu.
+  * Chats with enabled notifications will pop out of the archive 
+    when a notification arrives.
+  * Muted chats will stay in the archive.
+  * Pin an unlimited number of chats in your archive.
+
+-------------------------------------------------------------------
+Sat Apr 13 16:13:52 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 1.6.7
+  * Replace media when editing messages with media content.
+  * Jump quickly to the top of your chats list.
+  * Get emoji suggestions for the first word you type in a message.
+  * Help Telegram improve emoji suggestions in your language using
+    this interface https://translations.telegram.org/en/emoji
+
+-------------------------------------------------------------------
+Thu Apr 11 10:35:21 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 1.6.6
+  * Bug fixes and other minor improvements.
+-------------------------------------------------------------------
+Sat Apr  6 13:34:44 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 1.6.5
+  * Bug fixes and other minor improvements.
+
+-------------------------------------------------------------------
+Fri Apr  5 18:05:19 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 1.6.4
+  * Replace media when editing messages with media content.
+  * Jump quickly to the top of your chats list.
+  * Get emoji suggestions for the first word you type in a message.
+  * Help Telegram improve emoji suggestions in your language using
+    this interface https://translations.telegram.org/en/emoji
+
+-------------------------------------------------------------------
+Sun Mar 24 19:19:13 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 1.6.2
+  * Delete any message on both ends in any private chat, anytime.
+  * Control whether your forwarded messages link back to your account.
+  * Control who may see your profile picture.
+  * Enjoy the new streamlined group management screen.
+
+-------------------------------------------------------------------
+Wed Mar 20 14:47:02 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 1.6.1
+  * Play video files and listen to received music without 
+    waiting for them to download.
+  * Press CTRL+0 (CMD+0 on macOS) to jump to your Saved Messages.
+  * Bug fixes and other minor improvements.
+- Apply gcc7-fix patch on Leap 15.0 only
+
+-------------------------------------------------------------------
+Thu Feb 21 18:47:14 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Do not apply gcc7-fix.patch on Tumbleweed
+
+-------------------------------------------------------------------
+Wed Feb 20 12:12:25 UTC 2019 - ramaxlo@gmail.com
+
+- Fix build failure for openSUSE Leap 15.0.
+
+-------------------------------------------------------------------
+Tue Feb 12 18:54:25 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 1.5.15
+  * Crash fix.
+
+-------------------------------------------------------------------
+Tue Feb 12 14:14:43 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 1.5.13
+  * Bug fixes and other minor improvements. 
+
+-------------------------------------------------------------------
+Sat Feb  9 19:50:36 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 1.5.12
+  * Apply blur effects to backgrounds.
+  * Use the backgrounds you set in Telegram Desktop in all other Telegram apps. 
+
+-------------------------------------------------------------------
+Fri Feb  1 19:14:30 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 1.5.11
+  * Bug fixes and other minor improvements.
+
+-------------------------------------------------------------------
+Fri Feb  1 11:37:52 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 1.5.10
+  * Bug fixes and other minor improvements.
+
+-------------------------------------------------------------------
+Fri Feb  1 09:10:45 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 1.5.9
+  * Bug fixes and other minor improvements.
+
+-------------------------------------------------------------------
+Tue Jan 22 10:45:02 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 1.5.8
+  * Global permissions for groups. Restrict all members in any 
+    group from posting certain types of content.
+  * Unified group settings. Make groups public, set admins with
+    granular permissions and toggle persistent history in just a
+    few clicks in any group.
+  * Choose the emoji set you would like to use in Chat Settings.
+  * Choose input and output devices for Telegram Calls in
+    Settings > Advanced > Call Settings.
+  * Support for automatically downloading files and music.
+
+-------------------------------------------------------------------
+Fri Jan 11 11:41:12 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 1.5.4
+  * Bug fixes and other minor improvements.
+  * Create polls in groups and channels - right from the chat menu.
+
+-------------------------------------------------------------------
+Thu Jan 10 14:55:58 UTC 2019 - Ramax Lo <ramaxlo@gmail.com>
+
+- Add TDESKTOP_DISABLE_OPENAL_EFFECTS to fix playback error:
+  Audio Playback Error: 40963, Invalid Value
+
+-------------------------------------------------------------------
+Sat Dec 22 01:33:03 UTC 2018 - Xu Zhao <i@xuzhao.net>
+
+- Update to 1.5.2
+  * Bug fixes and other minor improvements.
+  * Support for custom languages.
+  * Interface scaling for large screens.
+  * Video messages displayed in shared media.
+
+-------------------------------------------------------------------
+Sat Nov 17 17:22:35 UTC 2018 - Xu Zhao <i@xuzhao.net>
+
+- Update to 1.4.7
+  * Crash fix.
+  * Bug fixes and other minor improvements
+  * Listen to voice and video messages in 2X mode if you're in a hurry.
+  * Find video messages in the shared voice messages section.
+  * Add a comment when you share posts from channels.
+  * View all photos and videos in Twitter and Instagram link previews.
+  * Interface scaling for large screens, up to 300% (up to 150% for macOS retina screens).
+  * Updated emoji.
+- Add api_id and api_hash to build
+
+-------------------------------------------------------------------
+Thu Oct 11 21:52:45 UTC 2018 - Xu Zhao <i@xuzhao.net>
+
+- Update to 1.4.2
+  * Crash fix.
+  * Reduce crashes due to the out of memory exceptions.
+  * Load map previews through mtproto.
+  * Bug fixes and other minor improvements.
+  * Fully redesigned Settings section.
+  * New theme selector in Chat Settings.
+  * New local storage settings: Control how much disk space is used by the cache and for how long the cached files are stored.
+  * Improved local caching for images and GIF animations.
+  * New settings: Peer-to-Peer settings for calls, disable animations for low performance computers.
+  * Various other improvements.
+  
+-------------------------------------------------------------------
+Tue Sep 18 08:58:30 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Avoid repeating name in summary.
+
+-------------------------------------------------------------------
+Mon Sep  3 22:11:29 UTC 2018 - Xu Zhao <i@xuzhao.net>
+
+- Update to 1.3.15
+  * Improved local files cache.
+  * Move to use kservices5.
+
+-------------------------------------------------------------------
+Fri Jul 27 14:23:02 UTC 2018 - i@xuzhao.net
+
+- Update to 1.3.10
+  * Bug fixes adn other minor improvements.
+- Changes in 1.3.9
+  * Mark chats in the chat list as Read or Unread.
+  * Improved censorship circumvention.
+
+-------------------------------------------------------------------
+Sat Jun  2 02:47:05 UTC 2018 - duyizhaozj321@yahoo.com
+
+- Update to 1.3.0
+  * Improved censorship circumvention.
+  * Improved stability when working through proxy servers.
+  * Save several proxy servers to quickly switch between them in Settings.
+  * Use proxy for calls.
+  * Emoji and text replacement now happens immediately after typing (instead of after sending) and can 
+    be rolled back using Backspace or CTRL/CMD + Z. Replacement no longer happens when pasting text.
+- Changes in 1.2.25
+  * Apply markdown formatting (```, `, **, __) only when sending the message.
+  * Display connection quality bars in calls.
+  * Telegram Desktop can update itself through MTProto.
+  * Bug fixes and other minor improvements.
+
+-------------------------------------------------------------------
+Sun May 27 03:35:41 UTC 2018 - duyizhaozj321@yahoo.com
+
+- Update to 1.2.24
+  * Add links with custom text from context menu or by Ctrl/Cmd + K keyboard shortcut.
+
+-------------------------------------------------------------------
+Sat May 26 08:14:03 UTC 2018 - duyizhaozj321@yahoo.com
+
+- Update to 1.2.23
+  * Apply formatting from input field context menu.
+  * Apply formatting by hotkeys.
+  * Bug fixes and other minor improvements.
+
+-------------------------------------------------------------------
+Fri May 25 06:04:47 UTC 2018 - i@xuzhao.net
+
+- Update to 1.2.22
+  * Use markdown in media captions (bold, italic, tag and code).
+  * Use emoji replacement in media captions, group and channel titles and descriptions (:like: etc.)
+  * Markdown replacement now happens immediately after typing (instead of after sending) and can be rolled back using Backspace or Ctrl/Cmd + Z.
+    Replacement no longer happens when pasting text.
+
+-------------------------------------------------------------------
+Mon Apr 16 18:32:29 UTC 2018 - ilya@ilya.cf
+
+- Update to 1.2.17
+  * Bug fixes and other minor improvements.
+
+-------------------------------------------------------------------
+Wed Mar 28 22:52:16 UTC 2018 - ilya@ilya.cf
+
+- Update to 1.2.15
+  * Discover new stickers. Type one emoji to see suggestions from
+    popular sticker sets. Suggestions from your installed sticker
+    sets will come first.
+  * Search for Stickers. Click on the new search icon to access
+    your sticker sets or find new ones.
+  * Use fast reply button in group chats.
+  * Select a message you want to reply to by pressing Ctrl+Up and
+    Ctrl+Down.
+
+-------------------------------------------------------------------
+Tue Mar 20 21:31:30 UTC 2018 - ilya@ilya.cf
+
+- Refresh spec-file via spec-cleaner and manual optimizations.
+  * Add %license and %doc macros.
+  * Remove Leap/SLE support for version < 15.
+  * Increment to 4 GB of RAM for a more stable build.
+  * Change Description and Summary.
+
+-------------------------------------------------------------------
+Mon Feb 26 22:17:19 UTC 2018 - badshah400@gmail.com
+
+- Use -a instead of -b to \%setup to fix buing on openSUSE >=
+  1500; this behaviour changed with rpm 4.14.
+- Add BuildRequires: python2-base as python2 executable is needed
+  for gyp scripts. It was being automatically pulled in for
+  Factory, but not for Leap:15.0.
+
+-------------------------------------------------------------------
+Fri Jan 12 12:33:13 UTC 2018 - badshah400@gmail.com
+
+- Add Requires: libqt5-qtimageformats; required to show images of
+  any kind (emoji, stickers, etc.) in the interface since the
+  switch to system Qt5.
+
+-------------------------------------------------------------------
+Sun Dec 31 15:21:54 UTC 2017 - badshah400@gmail.com
+
+- Update to version 1.2.6:
+  * Grouped Photos: Group media into an album when sharing
+    multiple photos and videos. Choose the exact order of media
+    you send.
+  * Bug fixes and other minor improvements.
+- Add crl-master.zip from https://github.com/telegramdesktop/crl
+  and copy it to build dir appropriately; this is now required
+  for building.
+- Rebase tdesktop.patch.
+
+-------------------------------------------------------------------
+Mon Dec 18 12:46:05 UTC 2017 - badshah400@gmail.com
+
+- Update to version 1.2.1:
+  * Bug fixes and other minor improvements.
+
+-------------------------------------------------------------------
+Fri Dec 15 23:11:10 UTC 2017 - badshah400@gmail.com
+
+- update patch.py to remove dee-1.0 dependency, which is not in
+  use any more, and not available from factory, thus resolving
+  unresolvable status.
+
+-------------------------------------------------------------------
+Wed Dec 13 07:09:19 UTC 2017 - badshah400@gmail.com
+
+- Update minimal versions of gcc and cmake in BuildRequires in
+  keeping with upstream: gcc >= 7 (7.2) is now needed. Also update
+  the gcc command exported before building on openSUSE <= 1320 to
+  gcc-7.
+
+-------------------------------------------------------------------
+Mon Dec 11 07:53:25 UTC 2017 - badshah400@gmail.com
+
+- Update to version 1.2.0:
+  * Radically improved navigation. New side panel on the right
+    with quick access to shared media and group members.
+  * Saved Messages. Bookmark messages by forwarding them to "Saved
+    Messages". Access them from the Chats list or from the side
+    menu.
+  * Pinned Messages. If you are a channel admin, pin messages to
+    focus your subscribers' attention on important announcements.
+  * Easily recognize messages from group admins by the new 'admin'
+    badge.
+  * Also supported clearing history in supergroups and added a
+    host of minor improvements.
+- Disable parallel make for main app because the build job becomes
+  terribly slow, and eventually runs out of memory otherwise.
+
+-------------------------------------------------------------------
+Fri Sep  8 16:06:12 UTC 2017 - badshah400@gmail.com
+
+- Update to version 1.1.23:
+  * See the message author photo and name while searching specific
+    chat messages.
+  * Fix "Send To" menu action on Windows.
+- Rebase and rename patch-1.1.19.diff to patch-1.1.23.diff.
+- Add catch.hpp as source and copy to required dir; remove
+  includes referring to subdirs of catch as we are using the one
+  header version. 
+- Refresh all third-party sources to their current versions.
+- Add breakpad-ucontext_t-glibc2_26.patch: Replace
+  `struct ucontext` by `ucontext_t` to make breakpad compatible
+  with glib-2.26; merged upstream as commit e3035bc; only apply
+  for openSUSE > 1320.
+
+-------------------------------------------------------------------
+Wed Aug  2 05:23:10 UTC 2017 - badshah400@gmail.com
+
+- Update to version 1.1.19:
+  * Search by messages of specific group members.
+  * Bug fixes and other minor improvements.
+- Update name of patch-1.1.18.diff to patch-1.1.19.diff (no
+  rebase was needed).
+
+-------------------------------------------------------------------
+Thu Jul 27 23:27:20 UTC 2017 - badshah400@gmail.com
+
+- Update to version 1.1.18:
+  * Minor bug fixes.
+- Update name of patch-1.1.17.diff to patch-1.1.18.diff (no
+  rebase was needed).
+
+-------------------------------------------------------------------
+Wed Jul 26 23:28:58 UTC 2017 - badshah400@gmail.com
+
+- Update to version 1.1.17:
+  * Minor bug fixes.
+- Update to version 1.1.16:
+  * Autocompletion for emoji. Start typing :e to get suggestions.
+  * Fixed a bug with forwarding messages.
+- Update patch-1.1.15.diff to patch-1.1.17.diff (minor rebase).
+
+-------------------------------------------------------------------
+Mon Jul 24 07:55:14 UTC 2017 - badshah400@gmail.com
+
+- Update to version 1.1.15:
+  * Send bold and italic text in your messages.
+  * Get a share link for posts in public supergroups.
+  * Quickly share posts from channels and media messages from
+    bots.
+  * Search large supergroup members by name.
+  * Search channel members by name for admins.
+  * Use search in the service actions log.
+  * Ban supergroup members via the right click menu in the service
+    actions log. 
+- Update name of patch-1.1.10.diff to patch-1.1.15.diff (no
+  rebase was needed).
+
+-------------------------------------------------------------------
+Tue Jul 11 14:37:04 UTC 2017 - badshah400@gmail.com
+
+- Use post(un) scriptlets to update hicolor icon-theme cache, and
+  the desktop database; without these the desktop menu icon does
+  not get registered to the icon and picks up a default ugly icon,
+  until subsequent installation of other programs or manual
+  invocation of the commands corresponding to these scriptlets.
+
+-------------------------------------------------------------------
+Sat Jul  8 01:00:38 UTC 2017 - badshah400@gmail.com
+
+- Update to version 1.1.10:
+  * Add event log filter for channel or supergroup event log.
+  * Fix search by username in privacy exceptions editor.
+  * Fix adding admins in channels.
+
+-------------------------------------------------------------------
+Sun Jul  2 01:28:25 UTC 2017 - badshah400@gmail.com
+
+- Update to version 1.1.9:
+  * Supergroups can now have up to 10.000 members.
+  * Appoint supergroup admins with granular rights. Choose who can
+    add users, manage messages, block members, edit group info &
+    username, add new admins, etc.
+  * Restrict and ban supergroup members with granular precision.
+    Read-only bans, GIF & sticker bans, media bans, temporary bans
+    and restrictions.
+  * Check the new event log to see all service actions taken by
+    members and admins of a channel or supergroup in the last 48
+    hours.
+  * Toggle night mode in the main menu.
+- Rebase patch-%{version}.diff for updated version.
+- Enforce strict version dependence for BuildRequires on
+  libtelegram-qt5-devel-static = 5.6.2, since telegram does not
+  build with older versions any more. Pass -Dqt_version="5.6.2"
+  instead of -Dqt_version="5.6.0" when configuring for build with
+  gyp.
+
+-------------------------------------------------------------------
+Wed Jun 21 08:40:07 UTC 2017 - badshah400@gmail.com
+
+- For openSUSE Leap, use gcc6 from the Update repository (gcc6
+  from OSS is uninstallable).
+- Add a _constraints file to restrict building to hardware with at
+  2 GB of physical memory.
+
+-------------------------------------------------------------------
+Sun Jun  4 22:04:45 UTC 2017 - badshah400@gmail.com
+
+- Update to version 1.1.7.
+- Add libtgvoip.zip to sources, required to build Telegram
+- Rebase patch-1.0.29.diff for updated version; rename to
+  patch-%{version}.diff.
+- New BuildRequires: pkgconfig(libpulse), pkgconfig(alsa); needed
+  to build Telegram with audio/video support. 
+
+-------------------------------------------------------------------
+Sun Apr 30 22:26:02 UTC 2017 - badshah400@gmail.com
+
+- Update to version 1.0.29.
+- Use full URL for telegram-desktop source.
+- Require gcc-c++ >= 5.0, since support for -std=gnu++14 is now
+  required; on openSUSE versions <= 1320 using gcc5 or gcc6
+  nonetheless leads to build failures.
+- Update icon file name in keeping with upstream.
+- Rebase patch-1.0.24.diff for updated version; rename it to
+  patch-1.0.29.diff.
+
+-------------------------------------------------------------------
+Mon Jul 18 11:54:48 UTC 2016 - badshah400@gmail.com
+
+- Add %post scriptlets to update icon theme cache and desktop
+  database (BuildRequires: hicolor-icon-theme, Requires(post):
+  desktop-file-utils).
+- Use full URL for source.
+- Run through spec-cleaner to clean up spec file according to
+  openSUSE guidelines.
+
+-------------------------------------------------------------------
+Mon Jul  4 19:36:46 UTC 2016 - i@xuzhao.net
+
+- Upgrade to 0.9.56
+- Fixed photo viewer to handle screen resolution change correctly.
+- Fixed forwarding photos via drag-n-drop.
+- Various design improvements and other bug fixes.
+
+-------------------------------------------------------------------
+Mon May 16 17:40:37 UTC 2016 - i@xuzhao.net
+
+- 0.9.48 Initial Commit.

@@ -1,0 +1,14 @@
+--- hdparm-9.64/hdparm.c
++++ hdparm-9.64/hdparm.c
+@@ -24,11 +24,6 @@
+ #include <sys/mount.h>
+ #include <sys/mman.h>
+ #include <sys/user.h>
+-#include <linux/types.h>
+-#ifndef FSCONFIG_SET_FLAG
+-#include <linux/fs.h>
+-#endif
+-#include <linux/major.h>
+ #include <endian.h>
+ #include <asm/byteorder.h>
+ 

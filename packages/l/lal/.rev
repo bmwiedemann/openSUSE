@@ -1,0 +1,92 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>794eb3f1d0b6018e6d6a790e4291f594</srcmd5>
+    <version>7.0.0</version>
+    <time>1597755971</time>
+    <user>dimstar_suse</user>
+    <comment>The LSC Algorithm Library Suite (LALSuite) is comprised of various gravitational wave data analysis routines written in C.</comment>
+    <requestid>825822</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c4b413a8413e5c2623e58316677d1022</srcmd5>
+    <version>7.0.0</version>
+    <time>1604306486</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844988</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>763433094eaa5487c9b8ee0bb2eac756</srcmd5>
+    <version>7.1.1</version>
+    <time>1613427250</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>871644</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c118e68e5b0c6fb4acd264284990c995</srcmd5>
+    <version>7.1.2</version>
+    <time>1619031543</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>876067</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>c69142aed2bfc3e92e0fa7792cf0c195</srcmd5>
+    <version>7.1.2</version>
+    <time>1621113378</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>893299</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>95c11ee44790a9f7bdb6579092ea7897</srcmd5>
+    <version>7.1.2</version>
+    <time>1631391868</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix test flavour after renaming srcrpm in previous commit.
+- Fix srcrpm name for test flavor.
+</comment>
+    <requestid>918050</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>480ba98dabf5f54a6a1bf5d3080a3b86</srcmd5>
+    <version>7.1.5</version>
+    <time>1641680652</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>944892</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ef04b367814353d0aaec162e8ae5a223</srcmd5>
+    <version>7.2.0</version>
+    <time>1661346661</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>998853</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7599afbe787673628234cc99a605c296</srcmd5>
+    <version>7.2.4</version>
+    <time>1669484744</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1038291</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>a950c97b1f8ce62d29b1b3eb124d0fd8</srcmd5>
+    <version>7.2.4</version>
+    <time>1675516556</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1063156</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>78d6a2c56160e727101fd693b473d83d</srcmd5>
+    <version>7.3.1</version>
+    <time>1685124954</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1089214</requestid>
+  </revision>
+</revisionlist>

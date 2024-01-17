@@ -1,0 +1,28 @@
+From b88b085b67e48ec5baf1bc66a973beb31b737360 Mon Sep 17 00:00:00 2001
+From: Christian Goll <cgoll@suse.de>
+Date: Mon, 9 Dec 2019 11:52:48 +0100
+Subject: [PATCH 2/2] looking for systemwide user config
+
+---
+ eval_conf.php | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/eval_conf.php b/eval_conf.php
+index b39fb2e..5e3d884 100644
+--- a/eval_conf.php
++++ b/eval_conf.php
+@@ -12,6 +12,11 @@ require_once $base_dir . "/conf_default.php";
+ require_once 'lib/GangliaAcl.php';
+ require_once 'lib/GangliaAuth.php';
+ 
++# Include system-wide overrides if they exist.
++if( file_exists( "/etc/ganglia/conf.d/conf.php" ) ) {
++  include_once "/etc/ganglia/conf.d/conf.php";
++}
++
+ # Include user-defined overrides if they exist.
+ if( file_exists( $base_dir . "/conf.php" ) ) {
+   include_once $base_dir . "/conf.php";
+-- 
+2.16.4
+

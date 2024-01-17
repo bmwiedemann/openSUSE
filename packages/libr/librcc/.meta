@@ -1,0 +1,10 @@
+<package name="librcc" project="openSUSE:Factory">
+  <title>Russian Charset Conversion Library</title>
+  <description>Provides posibility to automaticaly convert considered encodings (a lot of
+languages is supported, not only russian one) to/from UTF-8. The library
+is part of rusxmms patch.
+
+</description>
+  <devel project="devel:libraries:c_c++" package="librcc"/>
+  <url>http://rusxmms.sourceforge.net</url>
+</package>

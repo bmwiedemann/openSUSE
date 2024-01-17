@@ -1,0 +1,3 @@
+%__mingw32_pkgconfig_provides	%{_rpmconfigdir}/mingw32-find-provides.sh
+%__mingw32_pkgconfig_requires	%{_rpmconfigdir}/mingw32-find-requires.sh %{?_mingw32_find_requires_exclude:--exclude "%_mingw32_find_requires_exclude"}
+%__mingw32_pkgconfig_path	^(%{_mingw32_datadir}|%{_mingw32_libdir})/pkgconfig/.*\.pc$

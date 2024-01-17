@@ -1,0 +1,12 @@
+<package name="feh" project="openSUSE:Factory">
+  <title>Image viewer using Imlib 2</title>
+  <description>feh is a versatile and fast image viewer using imlib2, the
+premier image file handling library. feh has many features,
+from simple single file viewing, to multiple file modes using
+a slideshow or multiple windows. feh supports the creation of
+montages as index prints with many user-configurable options.
+
+</description>
+  <devel project="X11:Utilities" package="feh"/>
+  <url>http://www.linuxbrit.co.uk</url>
+</package>

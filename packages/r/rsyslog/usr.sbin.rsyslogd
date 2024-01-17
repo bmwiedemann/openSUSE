@@ -1,0 +1,51 @@
+# ------------------------------------------------------------------
+#
+#    Copyright (C) 2014 Novell/SUSE
+#
+#    This program is free software; you can redistribute it and/or
+#    modify it under the terms of version 2 of the GNU General Public
+#    License published by the Free Software Foundation.
+#
+# ------------------------------------------------------------------
+
+#include <tunables/global>
+
+/usr/sbin/rsyslogd {
+  #include <abstractions/base>
+  #include <abstractions/consoles>
+  # general networking is allowed here
+  #include <abstractions/nameservice>
+
+  capability dac_override,
+  capability sys_nice,
+  capability sys_tty_config,
+  capability syslog,
+  deny capability block_suspend,
+
+  /dev/tty* w,
+  /dev/xconsole rw,
+
+  /etc/rsyslog.conf r,
+  /etc/rsyslog.d/ r,
+  /etc/rsyslog.d/* r,
+
+  /usr/lib{,32,64}/rsyslog/* mr,
+  /usr/sbin/rsyslogd mr,
+
+  /var/log/** rw,
+  /var/lib/*/dev/log w,
+
+  /proc/kmsg r,
+
+  /{var/,}run/rsyslog/* r,
+  /{var/,}run/rsyslogd.pid rwk,
+  /{var/,}run/systemd/journal/syslog w,
+
+  # include rules for rsyslog-module-* packages
+  #include "/usr/share/apparmor/extra-profiles/rsyslog.d"
+  
+  # for logging via TLS (rsyslog-module-gtls)
+  # keys/certificates need to be located under /etc/rsyslog.d or permissions need to be adjusted here
+  # rsyslog tries to write to the certificates for no reason, so deny this quietly
+  deny /etc/rsyslog.d/* w,
+}

@@ -1,0 +1,22 @@
+<package name="thessalonica-oldstandard-fonts" project="openSUSE:Factory">
+  <title>Old Standard Font Family</title>
+  <description>Old Standard was intended as a multilingual font family suitable for
+biblical, classical and medieval studies as well as for general-purpose
+typesetting in languages which use Greek or Cyrillic script. The font is
+currently available in three shapes: regular, italic and bold. Old
+Standard is still far from being finished, and yet it already covers
+a wide range of Latin, Greek and Cyrillic characters. It also supports
+early Cyrillic letters and signs (including those added in Unicode 5.1)
+and thus can be used for texts containing fragments in Old Slavonic and
+Church Slavonic languages.
+
+
+
+Authors:
+--------
+    Alexey Kryukov &lt;alexios@thessalonica.org.ru&gt;
+
+</description>
+  <devel project="M17N:fonts" package="thessalonica-oldstandard-fonts"/>
+  <url>http://thessalonica.org.ru/en/oldstandard.html</url>
+</package>

@@ -1,0 +1,1992 @@
+-------------------------------------------------------------------
+Thu Jan  4 16:37:38 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.3.1:
+  + Make the Requires.private line in generated .pkgconfig files
+    reproducible.
+  + Always use posix paths when retrieving link name.
+  + dependencies/llvm: strip default include dirs also for
+    config-tool version.
+
+-------------------------------------------------------------------
+Tue Dec 12 01:47:37 UTC 2023 - Yifan Jiang <yfjiang@suse.com>
+
+- Make BuildRequires libstdc++6-devel-gcc11 more precise, for
+  SLE 15 SP4 and SLE 15 SP5 only.
+
+-------------------------------------------------------------------
+Mon Dec 11 10:31:25 UTC 2023 - Yifan Jiang <yfjiang@suse.com>
+
+- Specify clang and llvm versions in SLE/Leap.
+
+-------------------------------------------------------------------
+Mon Dec 11 10:25:14 UTC 2023 - Yifan Jiang <yfjiang@suse.com>
+
+- Fix shebang replacement for ninja test cases. The curly brackets
+  are necessary for the macro expansion in the splitted lines
+  worked correctly.
+
+-------------------------------------------------------------------
+Mon Nov 27 14:29:20 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
+Tue Nov 14 15:18:10 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.3.0:
+  + Clarify of implicitly-included headers in C-like compiler
+    checks.
+  + Treat warnings as error in compiler checks.
+  + Compilers now have a has_define method.
+  + configure_file() now has a macro_name parameter.
+  + c_std and cpp_std options now accepts a list of values.
+  + More meaningful description of many generative tasks.
+  + Deprecate 'jar' as a build_target type.
+  + generator.process() gains 'env' keyword argument.
+  + Target names for executables now take into account suffixes.
+  + Executable gains vs_module_defs keyword.
+  + find_program() now supports the 'default_options' argument.
+  + Added follow_symlinks arg to install_data, install_header, and
+    install_subdir.
+  + Added 'fill' kwarg to int.to_string().
+  + Added 'json' output_format to configure_file().
+  + @GLOBAL_SOURCE_ROOT@ and @DIRNAME@ in machine files.
+  + clang-tidy-fix target.
+  + Meson compile command now accepts suffixes for TARGET.
+  + New environment variable MESON_PACKAGE_CACHE_DIR.
+  + Update options with meson setup <builddir> -Dopt=value.
+  + Clear persistent cache with meson setup --clearcache.
+  + pkg-config dependencies can now get a variable with multiple
+    replacements.
+  + Machine files: pkgconfig field deprecated and replaced by
+    pkg-config.
+  + Support targeting Python's limited C API.
+  + All compiler has_* methods support the required keyword.
+  + Deprecated rust_crate_type and replaced by rust_abi.
+  + Tests now abort on errors by default under sanitizers.
+  + <lang>_(shared|static)_args for both_library, library, and
+    build_target.
+  + -j shorthand for --num-processes.
+  + Unified message(), str.format() and f-string formatting.
+  + Subprojects excluded from scan-build reports.
+  + vs_module_defs keyword now supports indexes of custom_target.
+  + Automatic fallback to cmake and cargo subproject
+- BuildRequire clang-tools to run the test suite: new dependency.
+- Run test suite only on x86_64.
+
+-------------------------------------------------------------------
+Mon Oct 23 09:17:22 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.2.3:
+  + Allow share/cmake/ as cmake_prefix_path.
+  + find_tool: don't assume the pkgconfig variable is a valid
+    command.
+  + python dependency: ensure that setuptools doesn't inject
+    itself into distutils.
+  + Allow c++23 in gcc-11.
+  + Revert "rust: apply global, project, and environment C args to
+    bindgen".
+- Drop
+  0007-Revert-rust-apply-global-project-and-environment-C-a.patch:
+  fixed upstream.
+
+-------------------------------------------------------------------
+Wed Oct  4 07:30:44 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add
+  0007-Revert-rust-apply-global-project-and-environment-C-a.patch:
+  Revert upstream commit (gh#mesonbuild/meson#12326).
+
+-------------------------------------------------------------------
+Mon Oct  2 01:02:34 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 1.2.2:
+  + ninja backend: fix the automatic restat of outputs when
+    reconfiguring.
+  + Fix completely broken support for static: true with
+    dependency('cuda').
+  + Use cudart_static by default in dependency('cuda').
+  + gnome:
+    - Fix crash in gtkdoc and generate_gir in C++ projects.
+    - Fix glib tool lookup consistency.
+  + compilers: fix compiler detection when the "ccache" string is
+    in the path.
+  + Fix crash when installing a vala library and python sources.
+  + Fix bug with openssl when cmake is missing.
+  + msubprojects: Speedup subproject_dir extraction.
+  + Allow unit test to parse testcase blocks.
+  + Fix assertion raised with invalid option name.
+  + rust:
+    - properly rematerialize static dependencies as well as dynamic
+      ones.
+    - apply global, project, and environment C args to bindgen.
+  + get_llvm_tool_names: add llvm 17.
+  + openmp: add 5.1/5.2, fixes openmp with llvm v17.
+  + Fix bug where all java builds & tests fail to run SanityCheck
+    on JDK11.
+  + Add support for sw_64 CPU family.
+- Drop merged upstream patch: get_llvm_tool_names-llvm17.patch.
+
+-------------------------------------------------------------------
+Sat Sep 23 20:58:26 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Port back get_llvm_tool_names-llvm17.patch to accept LLVM 17.
+
+-------------------------------------------------------------------
+Tue Aug  8 14:35:16 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.2.1:
+  + Fix lint errors revealed by pycodestyle 2.11.
+  + modules/pkgconfig: Don't insert None into devenv list.
+  + interpreter: stop setting member out of initializer that isn't
+    even used.
+  + Error when an installed static library links to internal custom
+    target.
+  + packaging: fix regression that prevented pyinstaller from
+    getting custom deps.
+  + treewide: internally avoid deprecated machine file uses of
+    "pkgconfig".
+
+-------------------------------------------------------------------
+Mon Jul 17 00:10:47 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 1.2.0:
+  + This release bring many new features.
+  + Added Metrowerks C/C++ toolchains. Note that the implementation
+    is somewhat experimental yet.
+  + Added str.splitlines method that can be used to split a string
+    into an array of lines.
+  + declare_dependency has a new extra_files keyword, to add extra
+    files to a target.
+  + Added a new '--genvslite' option for use with 'meson setup
+    ...'.
+  + gnome.generate_gir() now accepts the env kwarg which lets you
+    set environment variables.
+  + More data in introspection files.
+  + Machine objects get kernel and subsystem properties.
+  + default_options and override_options may now be dictionaries.
+  + New override of find_program('meson').
+  + Python module can now compile bytecode.
+  + rust.bindgen allows passing extra arguments to rustc. This
+    may be necessary to pass extra cfgs or to change warning
+    levels.
+  + Support for defining crate names of Rust dependencies in Rust
+    targets.
+  + A machine file may be used to pass extra arguments to clang
+    in a bindgen call.
+  + Add a link_with keyword to rust.test(). This can already be
+    worked around by creating declare_dependency() objects to pass
+    to the dependencies keyword, but this cuts out the middle man.
+  + Rust now supports the b_ndebug option. Which controls the
+    debug_assertions cfg, which in turn controls debug_assert!()
+    macro.
+  + Wildcards in list of tests to run. The meson test command now
+    accepts wildcards in the list of test names.
+  + New for the generation of Visual Studio vcxproj projects.
+  + For more details about all those changes, please visit:
+    https://mesonbuild.com/Release-notes-for-1-2-0.html
+- Refresh patches with Quilt.
+
+-------------------------------------------------------------------
+Fri Jul 14 10:01:09 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Be leaner with the build deps:
+  + Do not buildrequire python-pip and -wheel: being part of ring0
+    we have to be extra careful.
+  + Use python_build/python_install instead of
+    pyproject_wheel/pyproject_install.
+
+-------------------------------------------------------------------
+Thu Jun 29 07:26:32 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Set pythons for Leap and Tumbleweed
+
+-------------------------------------------------------------------
+Tue Jun  6 18:22:01 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.1.1:
+  + Add c++23 to the list of C++ standards.
+  + Specify c++ 11 flag as code uses c++ 11 features.
+  + fix regression in precomputing CMAKE_SIZEOF_VOID_P.
+
+-------------------------------------------------------------------
+Fri Apr 14 10:32:29 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Only run tests for arches where there is a remote chance they
+  will succeed (ix86 and x86_64).
+
+-------------------------------------------------------------------
+Tue Apr 11 09:37:26 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.1.0:
+  + A new objects argument to declare_dependency() allow for adding
+    objects directly to executables that use an internal
+    dependency.
+  + Feature objects now have an "enable_auto_if" method, the
+    opposite of the existing "disable_auto_if" method.
+  + New FeatureOption.enable_if and FeatureOption.disable_if
+    features.
+  + The sudo meson install command will now drop privileges when
+    rebuilding targets to be "extra safe". This is done since
+    running Ninja as root isn't recommended since it updates a
+    state file.
+  + The meson install command now supports user-preferred root
+    elevation tools.
+  + A new "none" back-end that has no build rules but only install
+    rules, in order to avoid depending on Ninja in that case.
+  + Support for custom install scripts to run with the "--dry-run"
+    option.
+
+-------------------------------------------------------------------
+Sat Feb 25 16:14:07 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- meson 1.0.1:
+  + clang-cl (13) now accepts cpp_std=c++20
+  + a sizable collection of bug fixes
+
+-------------------------------------------------------------------
+Mon Jan 16 01:36:31 UTC 2023 - Yifan Jiang <yfjiang@suse.com>
+
+- Add BuildRequires libstdc++6-devel-gcc11 for SLE 15 SP4 and
+  version above, which is necessary to make clang-tiny unit test
+  run.
+
+-------------------------------------------------------------------
+Thu Jan  5 04:43:00 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 1.0.0:
+  + The compiler check functions "prefix" kwargs now accepts
+    arrays.
+  + Flags removed from cpp/objcpp warning level 1:
+    "-Wnon-virtual-dtor" is no longer implied by "meson setup
+    -Dwarning_level=1".
+  + There has been some developer environment improvements.
+  + Rename "java.generate_native_headers" to "java.native_headers".
+    The former is deprecated now.
+  + "rust.bindgen" now accepts a dependency argument.
+  + The Rust module is marked as stable now.
+  + "warning-level=everything" option: The new "everything" value
+    for the built-in "warning_level" enables roughly all applicable
+    compiler warnings. For Clang, this simply enables
+    "-Weverything". For GCC, Meson enables warnings approximately
+    equivalent to "-Weverything" from Clang.
+  + Plese see https://mesonbuild.com/Release-notes-for-1-0-0.html
+    for full release notes.
+- Remove shebang from mesonbuild/scripts/cmake_run_ctgt.py, this
+  file is not supposed to be directly callable.
+
+-------------------------------------------------------------------
+Wed Nov 23 09:03:45 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.64.1:
+  + Target python 3.10 as the mypy language version.
+  + hotdoc module: use less confusing names.
+  + Fix deprecation message, the function name is fs.copyfile().
+  + fix deprecated use of meson builddir/ in testsuite.
+  + tests: fix edge case where non-default python is used, by
+    skipping it.
+
+-------------------------------------------------------------------
+Mon Nov 21 12:51:47 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.64.0:
+  + Add optimization plain option.
+  + New languages: nasm and masm.
+  + Pager and colors for meson configure output.
+  + various install_* functions no longer handle the sticky bit.
+  +  fs.copyfile to replace configure_file(copy : true).
+  + Added update_mime_database to gnome.post_install().
+  + Added preserve_path arg to install_data.
+  + BSD support for the jni dependency.
+  + Credentials from ~/.netrc for https URLs.
+  + Basic support for oneAPI compilers on Linux and Windows.
+  + python.find_installation() now accepts pure argument.
+  + Generates rust-project.json when there are Rust targets.
+  + Incremental ThinLTO with b_thinlto_cache.
+  + Added include_core_only arg to wayland.scan_xml.
+  + Automatic fallback using WrapDB.
+
+-------------------------------------------------------------------
+Fri Oct  7 13:02:05 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.63.3:
+  * modules: Fix paths to (sub)project source/build directories
+  * i18n: Fix source root in Gettext targets for subprojects
+  * backends: limit maximum path of generated filenames
+  * Fix 2 typos in a single string which can be shown in error messages.
+  * fix obscure crash on unbound variable
+  * Warn if wrap file changes
+  * interpreter: add a special class to track the lifecycle of get_option
+
+-------------------------------------------------------------------
+Fri Sep 23 14:50:04 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add extend-test-timeout-on-qemu-builds.patch
+
+-------------------------------------------------------------------
+Wed Sep 14 12:50:06 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.63.2:
+  + make add_project_dependencies respect build version of include
+    dirs.
+  + minstall: do not trample install_mode by rpath fixer.
+  + fix linker regression for compilers that don't accept LDFLAGS
+    directly.
+  + tests/7 gnome: Fix incorrect unref of GResource.
+
+-------------------------------------------------------------------
+Mon Aug 22 14:16:48 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.63.1:
+  + add_project_dependencies() function.
+  + Coverage targets now respect tool config files.
+  + D compiler checks.
+  + Deprecate an option and replace it with a new one.
+  + Running Windows executables with Wine in meson devenv.
+  + Diff files for wraps.
+  + Added preserve_path arg to install_headers.
+  + Support for mold linker added.
+  + Added debug function.
+  + Compiler options can be set per subproject.
+  + Per-subproject languages.
+  + Installed pkgconfig files can now be relocatable.
+  + New prefer_static built-in option.
+  + Python extension modules now depend on the python library by
+    default.
+  + Python extension modules now build with hidden visibility.
+  + Added support for multiline fstrings.
+- Drop 0001-gnome-Use-doc-install_tag-for-gnome.yelp.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
+Wed Aug 10 10:52:48 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- mono-core is available on s390x now
+- make mono dependency an build-conditional
+
+-------------------------------------------------------------------
+Fri Jun 24 12:53:02 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.62.2:
+  + qt module: fix broken install_dir kwarg.
+  + qt module: fix missing sanity check for install_dir + install.
+  + dependencies: tighten type checking and fix cmake API
+    violation.
+  + cmake: Fix CMake LLVM dependency error.
+  + Limit parallelism to hopefully work on machines with 160 cores.
+  + Fix --allow-shlib-undefined for LLVM versions > 9.
+  + i18n: fix bug where disabling gettext() broke merge_file().
+  + Fix sandbox violation when using subproject as a symlink.
+
+-------------------------------------------------------------------
+Tue Apr 26 12:49:05 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Added 0001-gnome-Use-doc-install_tag-for-gnome.yelp.patch
+  * Upstream reported feature to add files created by `gnome.yelp`
+    to the `doc` install_tag, similar to `gnome.gtk_doc` this
+    allows installing created files using the `meson --tags doc`
+    syntax. Simplifies packaging of various packages, esp. gtk-doc.
+- Rebased meson-distutils.patch to also install required data files
+  (mesonbuild/dependencies/data/*.txt).
+- Drop conditionals for outdated openSUSE versions (older than Leap 15.x)
+
+-------------------------------------------------------------------
+Mon Apr 25 18:48:43 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 0.62.1
+  * Bash completion scripts sourced in meson devenv
+    If bash-completion scripts are being installed and the shell is bash,
+    they will be automatically sourced.
+  * Setup GDB auto-load for meson devenv
+    When GDB helper scripts are installed with a library name that
+    matches one being built, Meson adds the needed auto-load commands
+    into <builddir>/.gdbinit file.
+  * Print modified environment variables with meson devenv --dump
+  * New custom dependency for libdl, will now check for the
+    functionality of libdl.so
+  * pkgconfig.generate will now include variables for builtin
+    directories when referenced
+  * New keyword argument verbose for tests and benchmarks
+  * CMake support for versions <3.17.0 is deprecated
+  * Removal of the RPM module
+  * CMake server API support is removed
+  * The return value of find_program() can now check the exact
+    version of the found program
+  * XML files can now be translated easier by using itstool
+    via i18n.itstool_join().
+  * JNI system dependency now supports a modules keyword (jvm, awt)
+  * New unstable wayland module
+  * Meson has a new command env2mfile to convert
+    "environment variable based" cross and native compilation
+    environments to Meson machine files.
+  * This system will detect if the _FOR_BUILD environment
+    variables are enabled and then uses them as needed.
+  * Added optional '--allow-dirty' flag for the 'dist' command
+  * Meson now supports the TI MSP430 and ARM toolchains.
+  * Deprecated java.generate_native_header() in favor of the
+    new java.generate_native_headers()
+  * New option to choose python installation environment
+  * JDK System Dependency Renamed from jdk to jni
+  * New custom dependency for OpenSSL
+  * The default install path for dataonly pkgconfig files has
+    changed from ${libdir}/pkgconfig to ${datadir}/pkgconfig.
+  * JAR default install dir changed from libdir to datadir/java.
+- Rebased meson-test-installed-bin.patch
+- Drop upstream fixed 34daa53a.patch
+
+-------------------------------------------------------------------
+Mon Apr 25 07:08:30 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 34daa53a.patch: gnome module: properly fallback to
+  gtk-update-icon-cache.
+
+-------------------------------------------------------------------
+Sat Apr 23 11:35:57 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 0.61.4:
+  * Fixes for the ninja backend
+  * Fixes for the rust module
+  * Fixes for the gnome module: Fix incorrect lookup of nonexistent
+    dependencies
+
+-------------------------------------------------------------------
+Tue Mar 15 14:31:51 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.61.3:
+  * fixes for other platform
+  * test updates and developer visible fixes
+
+-------------------------------------------------------------------
+Tue Feb 15 10:57:22 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.61.2:
+  + No changelog provided.
+
+-------------------------------------------------------------------
+Sat Feb  5 13:45:20 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.61.1:
+  * add a man page backend to refman
+  * extract_objects() supports generated sources
+  * Python 3.6 support is deprecated
+  * Warning if check kwarg of run_command is missing
+  * meson rewrite can modify extra_files
+  * meson rewrite target <target> info output target's extra_files
+  * Support for CMake <3.15 is now deprecated for CMake subprojects
+  * Add support for sccache
+  * Add install_symlink function
+
+-------------------------------------------------------------------
+Tue Dec 28 08:46:21 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.60.3:
+  + gnome module: fix install_dir x3, by allowing false *_gir and
+    *_typelib.
+  + iconv dependency: try even harder to find working iconv.
+  + Fix performance regression in build file generation.
+  + add ft32 cpu family.
+  + restore the ability in the backend to silently find a program.
+  + pkgconfig: Fix linking to a custom target.
+- Drop 3074bb14a14c00aeb350bf592acf635a93b52d9a.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
+Tue Dec 14 18:03:11 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.60.2:
+  + Fix version requirement on Ninja feature
+  + Fix custom_target with install: true and no install_dir,
+    crashing
+  + Fix regression that broke string.format with list objects
+  + valac dependencies: use the canonical list of vala source names
+  + interpreter: disallow RunTarget in meson.add_install_script
+  + Only pass clang LTO arguments when they are needed
+  + Support ancient (<3.4.0) gcc versions
+  + Only exclude _bootlocale with Python >= 3.10
+  + cmake: Use find_library() on bare library names in cmake
+    dependencies
+  + dependencies/zlib: Allow for generic OS checks
+  + rust: clean up inputs and outputs to bindgen
+  + interpreter: extract_objects provides a valid source
+  + build|backend: Fix some type annotations
+  + backends/backends: recurse when looking for paths in bundled
+    shared libs
+  + shared_module: Add soname when used as a link target
+  + iconv dependency: include header when checking for libc builtin
+- Drop unused python3-setuptools BuildRequires.
+- Add 3074bb14a14c00aeb350bf592acf635a93b52d9a.patch: gnome module:
+  fix install_dir x3, by allowing false *_gir and *_typelib.
+
+-------------------------------------------------------------------
+Wed Nov  3 17:16:19 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.60.1:
+  + No upstream changes provided.
+- Changes from version 0.60.0:
+  + run_target can now be used as a dependency.
+  + The Python Modules dependency method no longer accepts
+    positional arguments.
+  + Override python installation paths.
+  + New subprojects packagefiles subcommand.
+  + Project options declared in meson_options.txt can now be marked
+    as deprecated.
+  + More efficient static linking of uninstalled libraries.
+  + Cython can now transpile to C++ as an intermediate language.
+  + Unknown options are now always fatal.
+  + Install DESTDIR relative to build directory.
+  + Improvements for the Rustc compiler.
+  + Waf support in external-project module.
+  + Dependencies with multiple names.
+- Add gmock BuildRequires and stop deleting gmock testfiles, run
+  the test suite for it.
+- Update Supplements to current standard.
+
+-------------------------------------------------------------------
+Sun Oct 31 17:03:47 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- meson 0.59.4:
+  * Fix crash when getting cuda options
+
+-------------------------------------------------------------------
+Mon Oct 25 08:32:35 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.59.3:
+  + No upstream changes provided.
+- Drop meson-rust-1.55.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Wed Sep 29 12:23:31 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add meson-rust-1.55.patch: Fix test suite run with rust 1.55.
+
+-------------------------------------------------------------------
+Wed Sep 29 06:27:10 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.59.2:
+  + No upstream changes provided.
+
+-------------------------------------------------------------------
+Thu Aug 19 15:56:22 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.59.1:
+  + No upstream changes provided.
+
+-------------------------------------------------------------------
+Fri Aug  6 23:18:53 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 0.59.0:
+  https://mesonbuild.com/Release-notes-for-0-59-0.html
+- refreshed meson-test-installed-bin.patch to apply cleanly again
+
+-------------------------------------------------------------------
+Fri Jul 30 12:41:22 UTC 2021 - Frederic Crozat <fcrozat@suse.com>
+
+- Relax BuildRequires on rpm, if rpm-config-SUSE is recent enough
+  (jsc#SLE-20017).
+
+-------------------------------------------------------------------
+Tue Jul 20 09:07:44 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.58.2:
+  + gnome: Always pass absolute -L paths to g-ir-scanner.
+
+-------------------------------------------------------------------
+Wed Jul 14 08:04:57 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.58.1:
+  + New meson.global_build_root() and meson.global_source_root()
+    methods.
+  + meson.add_dist_script() allowd in subprojects.
+  + Do not add custom target dir to header path if
+    implicit_include_directories is false.
+  + Multiple append() and prepend() in environment() object.
+  + clang-format include and ignore lists.
+  + Introducing format strings to the Meson language.
+  + Skip subprojects installation.
+- Rebase meson-distutils.patch (work done by StevenK).
+
+-------------------------------------------------------------------
+Mon Jul 12 13:42:46 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.57.2:
+  + Support for reading files at configuration time with the fs
+    module.
+  + Experimental support for C++ modules in Visual Studio.
+  + Qt6 module.
+  + Minimum required Python version updated to 3.6.
+  + New logging format for meson test.
+  + Support added for LLVM's thinLTO.
+- Drop 0200340a.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Fri May  7 07:18:34 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 0200340a.patch: gnome: Drop use of volatile in GLib type
+  functions (boo#1185720).
+
+-------------------------------------------------------------------
+Thu Feb  4 13:35:57 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Conflict with rpm-build < 4.15: meson uses internal macros
+  defined by RPM 4.15 and later.
+
+-------------------------------------------------------------------
+Sat Jan 16 13:05:47 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.56.2:
+  + This release fixes a Python 3.5 compat issue.
+
+-------------------------------------------------------------------
+Thu Jan  7 13:00:11 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop meson-suse-ify-macros.patch: No longer needed.
+
+-------------------------------------------------------------------
+Wed Jan  6 11:32:14 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.56.1:
+  + pkgconfig: Make external deps of static library public.
+  + interpreter: store correct files for project regeneration.
+  + environment: Properly pass linker to rustc.
+  + Add aarch64 assembly test.
+- Drop 7930.patch: fixed upstream.
+- Add new keyid C24E631BABB1FE70 to the keyring (counter signed by
+  the old key id): the old key was about to expire.
+
+-------------------------------------------------------------------
+Tue Nov 17 13:25:10 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Remove "test cases/common/122 llvm ir and assembly" for aarch64
+  as this test is not supported on aarch64 linux yet (boo1178772).
+
+-------------------------------------------------------------------
+Tue Nov  3 14:57:22 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 7930.patch: pkgconfig: Make external deps of static library
+  public.
+
+-------------------------------------------------------------------
+Fri Oct 30 09:20:33 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.56.0:
+  + meson test can now filter tests by subproject
+  + Native (build machine) compilers not always required by
+    project().
+  + New extra_files key in target introspection.
+  + meson.build_root() and meson.source_root() are deprecated.
+  + dep.as_link_whole().
+  + Added NVidia HPC SDK compilers.
+  + CMake subproject cross compilation support.
+  + Machine file keys are stored case sensitive.
+  + Consistency between declare_dependency() and
+    pkgconfig.generate() variables.
+  + Qt5 compile_translations now supports qresource preprocessing.
+  + Controlling subproject dependencies with
+    dependency(allow_fallback: ...).
+  + Improvements for the builtin curses dependency.
+  + HDF5 dependency improvements.
+  + Dependencies listed in test and benchmark introspection.
+  + Deprecate Dependency.get_pkgconfig_variable and
+    Dependency.get_configtool_variable.
+- Rebase meson-test-installed-bin.patch.
+
+-------------------------------------------------------------------
+Fri Sep 11 17:26:46 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.55.3:
+  + Revert "msvc: enable /std:c11 flag".
+- Changes from version 0.55.2:
+  + msvc: enable /std:c11 flag.
+  + environment: use ExternalProgram to find ninja.
+  + CMake module: fix cmake 3.10 compatibility in path generation.
+- Drop pr7648-fix-lchmod-check-for-glibc-2.32.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
+Sat Aug 29 19:08:13 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Add pr7648-fix-lchmod-check-for-glibc-2.32.patch:
+  fixes meson-test with glibc 2.32 (gh#mesonbuild/meson#7648)
+
+-------------------------------------------------------------------
+Mon Aug 17 09:45:41 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.55.1:
+  + find_library: Print type of library not found.
+  + interpreter: Don't force fallback when subproject failed to
+    configure.
+  + Various fixes around cmake integration.
+  + mdata: Generate mesondata.py from */data folders.
+  + mdata: remove setuptools and use mesondata instead.
+- Drop meson-pr7461-remove-setuptools-dependency.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
+Sun Jul 26 15:59:52 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Remove %_smp_build_ncpus in meson-suse-ify-macros.patch.
+- Drop broken meson-restore-python3.4.patch,
+  meson-suse-fix-llvm-3.8.patch, meson-fix-gcc48.patch.
+
+-------------------------------------------------------------------
+Wed Jul 22 17:51:19 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Add meson-pr7461-remove-setuptools-dependency.patch: Fixes forced
+  requirement on setuptools (gh#mesonbuild/meson#7461).
+
+-------------------------------------------------------------------
+Wed Jul 15 09:00:59 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Update to version 0.55.0
+  + rpath removal now more careful
+  + Added ability to specify targets in `meson compile`
+  + Added test protocol for gtest
+  + meson.add_*_script methods accept new types
+  + Native and cross files now support string and list concatenation
+  + Ability to configure CMake subprojects with meson.subproject_options
+  + find_program: Fixes when the program has been overridden by executable
+  + Response files enabled on Linux
+  + `unstable-kconfig` module renamed to `unstable-keyval`
+  + Config tool based dependencies no longer search PATH for cross compiling
+  + String concatenation in meson_options.txt
+  + Clang coverage support
+  + Implicit dependency fallback
+  + Added ability to specify backend arguments in `meson compile`
+- Removed meson-fix-gnome-test.patch: contained in upstream
+- Changed meson-suse-ify-macros.patch: to be compatible with new
+  version
+
+-------------------------------------------------------------------
+Fri Jun 26 16:51:35 UTC 2020 - Michael Gorse <mgorse@suse.com>
+
+- Add meson-fix-gnome-test.patch: fix GNOME test that sometimes
+  fails (bsc#1173025).
+
+-------------------------------------------------------------------
+Tue Jun 16 08:09:40 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.54.3:
+  + Various fixes around cmake integration.
+  + Various fixes around boost.
+
+-------------------------------------------------------------------
+Wed May 20 19:27:23 UTC 2020 - Michael Gorse <mgorse@suse.com>
+
+- Make tests arch-dependent. Needed to exclude mono tests on s390x
+  (bsc#1171934).
+
+-------------------------------------------------------------------
+Fri May 15 10:23:21 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.54.2:
+  + Various fixes around boost.
+  + More robust cmake version detection.
+  + Various GCC10 related fixes.
+- Drop meson-gcc10.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Thu May 14 07:32:14 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add meson-gcc10.patch: Fix test suite when using gcc 10.
+
+-------------------------------------------------------------------
+Wed May 13 16:58:09 UTC 2020 - Michael Gorse <mgorse@suse.com>
+
+- Remove is_opensuse conditional and enable mono tests on SLE
+  (jsc#SLE-11721).
+
+-------------------------------------------------------------------
+Mon Apr 27 10:11:58 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.54.1:
+  + compilers: Silence warning about gnu_inline with clang.
+  + cmake: Do not compile explicit header files.
+  + cmake: enhance support of cmake config file syntax.
+  +  boost: Fix library version (fixes gh#mesonbuild/meeson#6899).
+
+-------------------------------------------------------------------
+Mon Mar 30 11:18:38 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.54.0:
+  + Emscripten (emcc) now supports threads.
+  + Introduce dataonly for the pkgconfig module.
+  + Consistently report file locations relative to cwd.
+  + Native (build machine) compilers not always required.
+  + Add a system type dependency for zlib.
+  + New option --quiet to meson install.
+  + Property support emscripten's wasm-ld.
+  + Support for overiding the linker with ldc and gdc.
+  + Per subproject default_library and werror options.
+  + Ninja version requirement bumped to 1.7.
+  + Added -C argument to meson init command.
+  + CMake find_package COMPONENTS support.
+  + Added Microchip XC16 C compiler support.
+- Rebase meson-test-installed-bin.patch.
+- Drop meson-testsuite-boost.patch: fixed (and enhanced) upstream.
+- Drop meson-testsuite-boost2.patch: boost test suite globally
+  disabled for now.
+- Drop 6642.patch: Fixed in an alternative way.
+- Remove hacks to drop static llvm and boost tests: fixed upstream.
+
+-------------------------------------------------------------------
+Thu Feb 27 14:58:17 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.53.2:
+  + Various cmake related issues fixed.
+  + modules/python: Do not error out if positional args are passed.
+- Drop meson-6614.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Tue Feb 18 14:07:46 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Add 6642.patch - allow skip python2 unittests
+      meson-testsuite-boost2.patch skip libboost_python tests on TW
+
+-------------------------------------------------------------------
+Wed Feb 12 19:08:54 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add meson-6614.patch: cmake: Fix crash when no C++ compiler is
+  not installed (gh#mesonbuild/meson#6559).
+
+-------------------------------------------------------------------
+Tue Feb 11 08:50:47 UTC 2020 - Frederic Crozat <fcrozat@suse.com>
+
+- Add python2-PyYAML as BuildRequires for meson:test for SLE15.
+
+-------------------------------------------------------------------
+Fri Jan 24 13:16:24 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.53.1:
+  + Use python3 in some tests which were still using python.
+  + test_pkgconfig_gen_deps: set
+    PKG_CONFIG_SYSTEM_LIBRARY_PATH=/usr/lib. pkgconf automatically
+    prunes "system library paths" from its output.
+  + compilers: Derive CompilerArgs from collections instead of
+    typing.
+- Drop meson-pkgconf-libdir.patch: fixed upstream.
+- Rebase meson-testsuite-boost.patch.
+
+-------------------------------------------------------------------
+Wed Jan  8 11:48:50 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.53.0:
+  + A new module for filesystem operations.
+  + meson dist --include-subprojects.
+  + Added new Meson templates for Dlang, Rust, Objective-C
+  + Add a new summary() function
+  + Generic Overrider for Dynamic Linker selection
+  + fortran_std option
+  + python.dependency() embed kwarg
+  + Scalapack
+  + Search directories for find_program()
+  + Source tags targets
+  + Dictionary entry using string variable as key
+  + Improved CMake subprojects support
+  + compiler.get_linker_id()
+  + CUDA dependency
+  + Added global option to disable C++ RTTI
+  + Introspection API changes
+- Add meson-testsuite-boost.patch: Fix detection of boost_python
+  names. This is apparently inconsistent accross distros.
+- Add meson-pkgconf-libdir.patch: pkgconf does not honor /usr/lib
+  as 'system directory' on biarch systems.
+
+-------------------------------------------------------------------
+Sat Nov 30 12:25:34 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.52.1:
+  + linkers: Concatenate -L and the directory.
+  + Remove duplicated object files in static libraries.
+  + Revert "Add `-Wl,-rpath-link` for secondary dependencies".
+- Drop meson-testsuite.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Thu Oct 24 09:39:45 UTC 2019 - Frederic Crozat <fcrozat@suse.com>
+
+- Do not buildrequires rust-std, it is already required by rust.
+
+-------------------------------------------------------------------
+Mon Oct 21 11:26:06 UTC 2019 - Frederic Crozat <fcrozat@suse.com>
+
+- Do not buildrequires mono(csharp) or mono-core on SLE.
+
+-------------------------------------------------------------------
+Mon Oct  7 09:56:54 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.52.0:
+  + Gettext targets are ignored if gettext is not installed.
+  + Support taking environment values from a dictionary.
+  + Enhancements to the pkg_config_path argument.
+  + The meson test program now accepts an additional "--gdb-path"
+    argument to specify the GDB binary.
+  + Splitting of Compiler.get_function_attribute('visibility').
+  + Compiler and dynamic linker representation split.
+  + Enhancements to the source_set module.
+  + added --only test(s) option to run_project_tests.py.
+  + Experimental Webassembly support via Emscripten.
+  + Version check in find_program().
+  + Improved support for static libraries.
+  + Enhancements to the kconfig module.
+  + Enhancements to configure_file().
+  + Projects args can be set separately for build and host machines
+    (potentially breaking change).
+  + Dist is now a top level command.
+- Rebase meson-test-installed-bin.patch and meson-distutils.patch.
+- Drop gcc9-sanitizer.patch: no longer needed.
+- Add meson-testsuite.patch: linkers: Concatenate -L and the
+  directory.
+
+-------------------------------------------------------------------
+Tue Aug 27 11:08:21 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.51.2:
+  + gnome: Handle overriden g-ir-scanner.
+  + cmake: fix missing -lpthread (fixes #5821)
+  + Pass optimization flags to rustc properly. Closes: #5788.
+- Drop fix-missing-return-statements-that-are-seen-with-Wer.patch:
+  Fixed upstream.
+
+-------------------------------------------------------------------
+Tue Jul 16 14:11:28 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Add fix-missing-return-statements-that-are-seen-with-Wer.patch which
+  is an upstream version of: https://github.com/mesonbuild/meson/pull/5654
+
+-------------------------------------------------------------------
+Wed Jul 10 09:55:26 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.51.1:
+  + Increase logging for Rust CI failures.
+  + tests/llvm: Test both cmake and llvm-config methods.
+  + Improve error message when Python is not usable.
+  + gnome.py: correctly pick the compiler for gtk-doc builds.
+  + Switch to using Pyinstaller.
+
+-------------------------------------------------------------------
+Wed Jun 26 10:51:31 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to versoin 0.51.0:
+  + (C) Preprocessor flag handling.
+  + Sanity checking compilers with user flags.
+  + New sourceset module.
+  + n_debug=if-release and buildtype=plain means no asserts.
+  + target_type in build_targets accepts the value 'shared_module'.
+  + New modules kwarg for python.find_installation.
+  + Support for the Intel Compiler on Windows (ICL).
+  + Added basic support for the Xtensa CPU toolchain.
+  + Dependency objects now have a get_variable method.
+  + CMake prefix path overrides.
+  + Tests that should fail but did not are now errors.
+  + New target keyword argument: link_language.
+  + New module to parse kconfig output files.
+  + Add new meson subprojects foreach command.
+  + Added c17 and c18 as c_std values for recent GCC and Clang
+    Versions.
+  + gpgme dependency now supports gpgme-config.
+  + Can link against custom targets.
+  + Removed the deprecated --target-files API.
+  + Generators have a new depends keyword argument.
+  + Specifying options per mer machine.
+  + subproject.get_variable() now accepts a fallback argument.
+  + Add keyword static to find_library.
+  + Fortran include statements recursively parsed.
+  + CMake subprojects.
+  + Multipe cross files can be specified.
+- Rebase meson-suse-ify-macros.patch.
+- Add python3-setuptools unconditionally to BuildRequires for the
+  test suite.
+
+-------------------------------------------------------------------
+Thu May  2 11:06:47 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Add gcc9-sanitizer.patch in order to handle unresolved symbols with
+  -fsanitize=*. It's caused by sanitizer wrappers and our default --as-needed
+  that we use as SUSE in our linker build (boo#1127953).
+
+-------------------------------------------------------------------
+Wed Apr 17 11:51:11 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.50.1:
+  + d: Fix linker errors with shared libraries.
+  + Add support for VS2019 (gh#mesonbuild/meson#4640).
+  + Detect 'arm64' as aarch64 CPU family.
+  + Fix Rust global and local args (gh#mesonbuild/meson#5101).
+
+-------------------------------------------------------------------
+Mon Mar 11 12:30:24 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fixup meson-suse-ify-macros.patch post broken rebase.
+
+-------------------------------------------------------------------
+Sun Mar 10 18:57:41 UTC 2019 - klaatu <aloisio@gmx.com>
+
+- Update to version 0.50.0
+  New features:
+  * Added `cmake_module_path` and `cmake_args` to dependency
+    The CMake dependency backend can now make use of existing
+    `Find<name>.cmake` files by setting the `CMAKE_MODULE_PATH`
+    with the new `dependency()` property `cmake_module_path`.
+    The paths given to `cmake_module_path` should be relative
+    to the project source directory.
+    Furthermore the property `cmake_args` was added to give
+    CMake additional parameters.
+  * Added PGI compiler support
+    Nvidia / PGI C, C++ and Fortran
+    [no-cost](https://www.pgroup.com/products/community.htm)
+    compilers are now supported. They have been tested on Linux
+    so far.
+  * Fortran Coarray
+    Fortran 2008 / 2018 coarray support was added via
+    `dependency('coarray')`
+  * Libdir defaults to `lib` when cross compiling
+    Previously `libdir` defaulted to the value of the build
+    machine such as `lib/x86_64-linux-gnu`, which is almost
+    always incorrect when cross compiling. It now defaults to
+    plain `lib` when cross compiling. Native builds remain
+    unchanged and will point to the current system's library
+    dir.
+  * Native and Cross File Paths and Directories
+    A new `[paths]` section has been added to native and cross
+    files. This can be used to set paths such a prefix and
+    libdir in a persistent way.
+  * Add warning_level 0 option
+    Adds support for a warning level 0 which does not enable any
+    static analysis checks from the compiler
+  * A builtin target to run clang-format
+    If you have `clang-format` installed and there is a
+    `.clang-format` file in the root of your master project,
+    Meson will generate a run target called `clang-format` so you
+    can reformat all files with one command:
+    ```meson
+    ninja clang-format
+    ```
+  * Added a .path() method to object return by
+    python.find_installation()
+    `ExternalProgram` objects as well as the object returned by
+    the `python3` module provide this method, but the new python
+    module did not.
+  * Fix ninja console log from generators with multiple output
+    nodes
+    This resolves ticket #4760 where a generator w/ multiple
+    output nodes printed an empty string to the console
+  * `introspect --buildoptions` can now be used without
+    configured build directory
+    It is now possible to run `meson introspect --buildoptions
+    /path/to/meson.build` without a configured build directory.
+    Running `--buildoptions` without a build directory produces
+    the same output as running it with a freshly configured
+    build directory.
+    However, this behavior is not guaranteed if subprojects are
+    present. Due to internal limitations all subprojects are
+    processed even if they are never used in a real meson run.
+    Because of this options for the subprojects can differ.
+  * `include_directories` accepts a string
+    The `include_directories` keyword argument now accepts plain
+    strings rather than an include directory object. Meson will
+    transparently expand it so that a declaration like this:
+    ```meson
+    executable(..., include_directories: 'foo')
+    ```
+    Is equivalent to this:
+    ```meson
+    foo_inc = include_directories('foo')
+    executable(..., include_directories: inc)
+    ```
+  * Fortran submodule support
+    Initial support for Fortran ``submodule`` was added, where
+    the submodule is in the same or different file than the
+    parent ``module``.
+    The submodule hierarchy specified in the source Fortran code
+    `submodule` statements are used by Meson to resolve source
+    file dependencies.
+    For example:
+    ```fortran
+    submodule (ancestor:parent) child
+    ```
+  * Add subproject_dir to --projectinfo introspection output
+    This allows applications interfacing with Meson (such as
+    IDEs) to know about an overridden subproject directory.
+  * Find library with its headers
+    The `find_library()` method can now also verify if the
+    library's headers are found in a single call, using the
+    `has_header()` method internally.
+    ```meson
+    + Aborts if the 'z' library is found but not its header file
+      zlib = find_library('z', has_headers : 'zlib.h')
+    + Returns not-found if the 'z' library is found but not its
+      header file zlib = find_library('z', has_headers :
+      'zlib.h', required : false)
+    ```
+    Any keyword argument with the `header_` prefix passed to
+    `find_library()` will be passed to the `has_header()`
+    method with the prefix removed.
+    ```meson
+    libfoo = find_library('foo',
+      has_headers : ['foo.h', 'bar.h'],
+      header_prefix : '#include <baz.h>',
+      header_include_directories : include_directories('.'))
+    ```
+  * NetCDF
+    NetCDF support for C, C++ and Fortran is added via
+    pkg-config.
+  * added the Flang compiler
+    [Flang](https://github.com/flang-compiler/flang/releases)
+    Fortran compiler support was added.  As with other Fortran
+    compilers, flang is specified using `FC=flang meson ..` or
+    similar.
+  * New `not_found_message` for dependency
+    You can now specify a `not_found_message` that will be
+    printed if the specified dependency was not found. The point
+    is to convert constructs
+    that look like this:
+    ```meson
+    d = dependency('something', required: false)
+    if not d.found()
+      message('Will not be able to do something.')
+    endif
+    ```
+    Into this:
+    ```meson
+    d = dependency('something',
+      required: false,
+      not_found_message: 'Will not be able to do something.')
+    ```
+    Or constructs like this:
+    ```meson
+    d = dependency('something', required: false)
+    if not d.found()
+      error('Install something by doing XYZ.')
+    endif
+    ```
+    into this:
+    ```meson
+    d = dependency('something',
+      not_found_message: 'Install something by doing XYZ.')
+    ```
+    Which works, because the default value of `required` is
+    `true`.
+  * Cuda support
+    Compiling Cuda source code is now supported, though only
+    with the
+    Ninja backend. This has been tested only on Linux for now.
+    Because NVidia's Cuda compiler does not produce `.d`
+    dependency files, dependency tracking does not work.
+  * `run_command` accepts `env` kwarg
+    You can pass
+    [`environment`](Reference-manual.html#environment-object)
+    object to
+    [`run_command`](Reference-manual.html#run-command), just
+    like to `test`:
+    ```meson
+    env = environment()
+    env.set('FOO', 'bar')
+    run_command('command', 'arg1', 'arg2', env: env)
+    ```
+  * `extract_objects` accepts `File` arguments
+    The `extract_objects` function now supports File objects to
+    tell it what to extract. Previously, file paths could only
+    be passed as strings.
+  * Changed the JSON format of the introspection
+    All paths used in the meson introspection JSON format are
+    now absolute. This affects the `filename` key in the targets
+    introspection and the output of
+    `--buildsystem-files`.
+    Furthermore, the `filename` and `install_filename` keys in
+    the targets introspection are now lists of strings with
+    identical length.
+    The `--target-files` option is now deprecated, since the
+    same information can be acquired from the `--tragets`
+    introspection API.
+  * Meson file rewriter
+    This release adds the functionality to perform some basic
+    modification on the `meson.build` files from the command
+    line. The currently supported operations are:
+    + For build targets:
+      x Add/Remove source files
+      x Add/Remove targets
+      x- Modify a select set of kwargs
+      x Print some JSON information
+    + For dependencies:
+      x Modify a select set of kwargs
+    + For the project function:
+      x Modify a select set of kwargs
+      x Modify the default options list
+    For more information see the rewriter documentation.
+  * `introspect --scan-dependencies` can now be used to scan for
+    dependencies used in a project
+    It is now possible to run `meson introspect
+    --scan-dependencies
+    /path/to/meson.build` without a configured build directory
+    to scan for dependencies.
+    The output format is as follows:
+    ```json
+    [
+      {
+        "name": "The name of the dependency",
+        "required": true,
+        "conditional": false,
+        "has_fallback": false
+      }
+    ]
+    ```
+    The `required` keyword specifies whether the dependency is
+    marked as required in the `meson.build` (all dependencies are
+    required by default). The `conditional` key indicates whether
+    the `dependency()` function was called inside a conditional
+    block. In a real meson run these dependencies might not be
+    used, thus they _may_ not be required, even if the
+    `required` key is set. The `has_fallback` key just indicates
+    whether a fallback was directly set in the `dependency()`
+    function.
+  * `introspect --targets` can now be used without configured
+    build directory
+    It is now possible to run `meson introspect --targets
+    /path/to/meson.build` without a configured build directory.
+    The generated output is similar to running the introspection
+    with a build directory. However, there are some key
+    differences:
+    + The paths in `filename` now are _relative_ to the future
+      build directory
+    + The `install_filename` key is completely missing
+    + There is only one entry in `target_sources`:
+      x With the language set to `unknown`
+      x Empty lists for `compiler` and `parameters` and
+        `generated_sources`
+      x The `sources` list _should_ contain all sources of the
+        target
+    There is no guarantee that the sources list in
+    `target_sources` is correct.
+    There might be differences, due to internal limitations. It
+    is also not guaranteed that all targets will be listed in
+    the output. It might even be possible that targets are
+    listed, which won't exist when meson is run normally.
+    This can happen if a target is defined inside an if
+    statement.
+    Use this feature with care.
+  * Added option to introspect multiple parameters at once
+    Meson introspect can now print the results of multiple
+    introspection commands in a single call. The results are
+    then printed as a single JSON object.
+    The format for a single command was not changed to keep
+    backward compatibility.
+    Furthermore the option `-a,--all`, `-i,--indent` and
+    `-f,--force-object-output` were added to print all
+    introspection information in one go,
+    format the JSON output (the default is still compact JSON)
+    and force use the new output format, even if only one
+    introspection command was given.
+    A complete introspection dump is also stored in the
+    `meson-info` directory. This dump will be (re)generated each
+    time meson updates the configuration of the build directory.
+    Additionlly the format of `meson introspect target` was
+    changed:
+      + New: the `sources` key. It stores the source files of a
+        target and their compiler parameters.
+      + New: the `defined_in` key. It stores the meson file
+        where a target is defined
+      + New: the `subproject` key. It stores the name of the
+        subproject where a target is defined.
+      + Added new target types (`jar`, `shared module`).
+  * meson configure can now print the default options of an
+    unconfigured project
+    With this release, it is also possible to get a list of all
+    build options by invoking `meson configure` with the project
+    source directory or the path to the root `meson.build`. In
+    this case, meson will print the default values of all
+    options.
+  * HDF5
+    HDF5 support is added via pkg-config.
+  * Added the `meson-info.json` introspection file
+    Meson now generates a `meson-info.json` file in the
+    `meson-info` directory to provide introspection information
+    about the latest meson run. This file is updated when the
+    build configuration is changed and the build files are
+    (re)generated.
+
+- Refreshed meson-suse-ify-macros.patch
+
+-------------------------------------------------------------------
+Tue Feb 26 19:16:24 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.49.2
+  * qt: Only look for a framework on macOS if building for macOS
+  * deps: Don't reject cross usage of extra frameworks
+  * pkgconfig: Only warn about deprecation at a location once
+  * pkgconfig: Avoid deprecation warning when using new syntax
+  * Add all files from scripts to MSI package. Closes #4621.
+  * qt: Print the full path of the `qmake` binary found 
+
+-------------------------------------------------------------------
+Mon Jan 28 14:41:28 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.49.1:
+  + dependencies/ui: Don't require lrelease for qt.
+  + Better Python exe detector (gh#mesonbuild/meson#4614).
+- Drop meson-no-lrelease.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Thu Jan 17 11:57:17 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch to distutils build and properly create egg-info
+
+-------------------------------------------------------------------
+Wed Jan 16 11:20:15 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add meson-no-lrelease.patch: Don't require lrelease for qt.
+
+-------------------------------------------------------------------
+Wed Jan  9 14:00:46 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Remove succeeding supposed failing gtest test that checks
+  gtest version, openSUSE ships the .pc file with the actual
+  informations
+
+-------------------------------------------------------------------
+Wed Jan  9 13:24:56 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Make sure the tests stop on the failure and output the failing
+  test at the end for easier digging
+
+-------------------------------------------------------------------
+Wed Jan  9 12:47:37 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Make the setuptools conditional so I can quickly switch around
+  and verify things
+
+-------------------------------------------------------------------
+Wed Jan  9 09:19:05 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch the package to use _multibuild rather than multiple
+  spec files
+- Require python2-devel for the testsuite (bsc#1125736).
+
+-------------------------------------------------------------------
+Tue Jan  8 14:06:25 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Use distutils to build/run rather than setuptools to reduce
+  buildcycle
+- Add patch to be able to build and install using distutils instead
+  of full setuptools:
+  * meson-distutils.patch
+
+-------------------------------------------------------------------
+Tue Dec 11 06:02:55 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 0.49.0:
+  * See https://mesonbuild.com/Release-notes-for-0-49-0.html
+- Rebase meson-test-installed-bin.patch.
+- Rebase meson-suse-fix-llvm-3.8.patch,
+  meson-restore-python3.4.patch.
+- Add more testsuite dependencies: clang, java-headless,
+  mono(csharp), wxWidgets-any-devel.
+
+-------------------------------------------------------------------
+Mon Nov 12 23:52:33 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 0.48.2:
+  * See https://github.com/mesonbuild/meson/milestone/32?closed=1
+
+-------------------------------------------------------------------
+Thu Oct 18 12:52:39 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.48.1:
+  * See https://github.com/mesonbuild/meson/milestone/31?closed=1
+- Drop meson-Fix-handling-generated-desktop-files.patch: Fixed
+  upstream. 
+
+-------------------------------------------------------------------
+Fri Oct  5 22:21:26 UTC 2018 - bjorn.lie@gmail.com
+
+- Add meson-Fix-handling-generated-desktop-files.patch: Fix
+  handling generated .desktop files.
+
+-------------------------------------------------------------------
+Mon Oct  1 09:53:58 UTC 2018 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Require python3-setuptools.
+
+-------------------------------------------------------------------
+Fri Sep 28 15:39:17 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 0.48.0:
+  * See http://mesonbuild.com/Release-notes-for-0-48-0.html
+- Disable test_generate_gir_with_address_sanitizer with a regex,
+  for it fails with ulimits defined in OBS.
+- Test against Rust in meson-testsuite on Leap 15.0 or later.
+- Rebase meson-suse-ify-macros.patch,
+  meson-restore-python3.4.patch, meson-fix-gcc48.patch.
+
+-------------------------------------------------------------------
+Sat Aug 25 17:52:38 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 0.47.2:
+  * https://github.com/mesonbuild/meson/milestone/29?closed=1
+- Rebase meson-restore-python3.4.patch, meson-fix-gcc48.patch.
+
+-------------------------------------------------------------------
+Fri Aug  3 21:00:12 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 0.47.1 (bsc#1124324):
+  * See https://mesonbuild.com/Release-notes-for-0-47-0.html
+- Remove Don-t-raise-StopIteration-in-generators-no-longer-al.patch.
+- Add a new dependency for tests:
+  libqt5-qtbase-private-headers-devel.
+- Set MESON_EXE for tests.
+- Adjust meson-test-installed-bin.patch.
+- Rebase meson-restore-python3.4.patch, meson-fix-gcc48.patch.
+- No longer test with OpenMPI: starting with this release
+  "-Wl,--no-undefined -Wl,--as-needed" appears in the gfortran
+  arguments, causing an error similiar to lp#1727474.
+
+-------------------------------------------------------------------
+Sat Jul 28 21:08:48 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.46.1:
+  * See https://github.com/mesonbuild/meson/milestone/26?closed=1
+- Drop meson-keep-spaces-in-pc-files.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Fri Jul 13 06:00:48 UTC 2018 - jslaby@suse.com
+
+- Add Don-t-raise-StopIteration-in-generators-no-longer-al.patch
+
+-------------------------------------------------------------------
+Sun May 20 14:20:31 UTC 2018 - dimstar@opensuse.org
+
+- BuildRequire python3-base instead of python3: make building a bit
+  cheaper.
+
+-------------------------------------------------------------------
+Mon Apr 30 07:03:53 UTC 2018 - dimstar@opensuse.org
+
+- Add meson-keep-spaces-in-pc-files.patch: Keep spaces in generated
+  pkgconfig files (gh#mesonbuild/meson#3479).
+- Rebase meson-restore-python3.4.patch.
+
+-------------------------------------------------------------------
+Wed Apr 25 18:53:17 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 0.46.0:
+  * See http://mesonbuild.com/Release-notes-for-0-46-0.html
+- Rebase meson-test-installed-bin.patch,
+  meson-restore-python3.4.patch, meson-fix-gcc48.patch.
+
+-------------------------------------------------------------------
+Wed Mar 21 23:46:12 UTC 2018 - sor.alexei@meowr.ru
+
+- Only apply meson-suse-fix-llvm-3.8.patch,
+  meson-restore-python3.4.patch, meson-fix-gcc48.patch on Leap 42.x
+  or older.
+
+-------------------------------------------------------------------
+Wed Mar 21 10:20:37 UTC 2018 - sor.alexei@meowr.ru
+
+- Fix meson-fix-gcc48.patch.
+- Add meson-restore-python3.4.patch: Restore Python 3.4 support for
+  SLE 12 and openSUSE Leap 42.x.
+- Add meson-suse-fix-llvm-3.8.patch: Fix LLVM 3.8 tests for SLE 12
+  and openSUSE Leap 42.x..
+
+-------------------------------------------------------------------
+Mon Mar 12 22:04:53 UTC 2018 - dimstar@opensuse.org
+
+- Add libjpeg-devel BuildRequires to test testsuite.
+
+-------------------------------------------------------------------
+Mon Mar  5 17:00:19 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 0.45.0:
+  + Config-Tool based dependencies can be specified in a cross
+    file.
+  + Visual Studio C# compiler support.
+  + Removed two deprecated features:
+    - The standalone find_library function has been a no-op for a
+      long time. From now on it's an error.
+    - There used to be a keywordless version of run_target, which
+      is no longer valid.
+  + Experimental FPGA support.
+  + Generator outputs can preserve directory structure.
+  + Hexadecimal string literals.
+  + install_data()` defaults to `{datadir}/{projectname}`.
+  + install_subdir() supports strip_directory.
+  + Integer options.
+  + New method meson.project_license().
+  + Rust cross-compilation.
+  + Rust compiler-private library disambiguation.
+  + Project templates.
+  + Improve test setup selection.
+  + Yielding subproject option to superproject.
+- Rebase meson-suse-ify-macros.patch.
+
+-------------------------------------------------------------------
+Thu Feb 22 10:36:33 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 0.44.1:
+  + Support running out-of-tree tests against a meson in PATH.
+  + Don't add rpaths to system libraries.
+  + Fix meson location detection from other meson tools.
+  + Various boost, pkg-config and vala related fixes.
+- Testsuite changes: Remove mesonbuild directory and meson.py
+  again before running the test: ensure we test meson as it was
+  installed onto the system.
+
+-------------------------------------------------------------------
+Mon Feb  5 15:06:54 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 0.44.0:
+  + New features:
+    - Added warning function.
+    - Adds support for additional Qt5-Module keyword
+      moc_extra_arguments.
+    - Prefix-dependent defaults for sysconfdir, localstatedir and
+      sharedstatedir.
+    - An array type for user options.
+    - LLVM dependency supports both dynamic and static linking.
+    - Added if_found to subdir.
+    - get_unquoted() method for the configuration data object.
+    - Added disabler object.
+    - Config-Tool based dependencies gained a method to get
+      arbitrary options.
+    - Embedded Python in Windows MSI packages.
+- Rebase meson-suse-ify-macros.patch, meson-fix-gcc48.patch and
+  meson-test-installed-bin.patch.
+- Testsuite changes:
+  + Disable tests for static llvm: we don't ship the static libs.
+  + Add cmake(Qt5LinguistTools), libwmf-devel BuildRequires and
+    zlib-devel-static: new dependencies for various tests.
+
+-------------------------------------------------------------------
+Wed Nov 22 17:47:29 UTC 2017 - sor.alexei@meowr.ru
+
+- Require python3-xml: mesonbuild/modules/qt5.py imports the xml
+  module (boo#1068818).
+
+-------------------------------------------------------------------
+Mon Oct 23 12:30:03 UTC 2017 - dimstar@opensuse.org
+
+- Setup MPI runtime environment before running the test suite.
+- Remove tests for static boost libraries from
+  test\ cases/frameworks/1\ boost/meson.build.
+
+-------------------------------------------------------------------
+Thu Oct 19 15:00:49 UTC 2017 - badshah400@gmail.com
+
+- Update to version 0.43.0:
+  + Generator learned capture: Generators can now be configured to
+    capture the standard output.
+  + Can index CustomTarget objects: The CustomTarget object can
+    now be indexed like an array. The resulting object can be used
+    as a source file for other Targets, this will create a
+    dependency on the original CustomTarget, but will only insert
+    the generated file corresponding to the index value of the
+    CustomTarget's output keyword.
+  + The cross file can now be used for overriding the result of
+    find_program. Then issuing the command find_program('objdump')
+    will return the version specified in the cross file.
+  + Easier handling of supported compiler arguments.
+  + Better support for shared libraries in non-system paths: This
+    release adds feature parity to shared libraries that are
+    either in non-standard system paths or shipped as part of your
+    project. On systems that support rpath, Meson automatically
+    adds rpath entries to built targets using manually found
+    external libraries.
+  + The Wrap dependency system now supports Subversion (svn). This
+    support is rudimentary. The repository url has to point to a
+    specific (sub)directory containing the meson.build file
+    (typically trunk/). However, providing a revision is
+    supported.
+- Rebase meson-test-installed-bin.patch.
+- Run sed to strip the hashbang from a non-executable file; this
+  prevents an rpmlint warning.
+
+-------------------------------------------------------------------
+Wed Oct 11 15:43:16 UTC 2017 - sor.alexei@meowr.ru
+
+- Don't use obsolete boost-devel for openSUSE Leap 15.0 and newer
+  (boo#1062785).
+
+-------------------------------------------------------------------
+Mon Oct  2 14:53:40 CEST 2017 - jdelvare@suse.com
+
+- Update to version 0.42.1. This is a stable update with various
+  bug fixes.
+
+-------------------------------------------------------------------
+Fri Sep  8 12:22:38 UTC 2017 - sor.alexei@meowr.ru
+
+- Rebase meson-fix-gcc48.patch (boo#1057701).
+
+-------------------------------------------------------------------
+Tue Aug 15 11:00:02 UTC 2017 - dimstar@opensuse.org
+
+- Extend meson-test-installed-bin.patch: catch some more cases
+  where the test suite referenced meson.py from the source
+  directory.
+- Add vulkan-devel and libpcap-devel BuildRequires for the test
+  suite: new dependencies.
+
+-------------------------------------------------------------------
+Tue Aug 15 09:35:51 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.42.0:
+  + Distribution tarballs from Mercurial repositories. Creating
+    distribution tarballs can now be made out of projects based on
+    Mercurial. As before, this remains possible only with the Ninja
+    backend.
+  + Keyword argument verification. Meson will now check the keyword
+    arguments used when calling any function and print a warning if
+    any of the keyword arguments is not known. In the future this
+    will become a hard error.
+  + Add support for Genie to Vala compiler. The Vala compiler has
+    an alternative syntax, Genie, that uses the .gs file extension.
+    Meson now recognises and uses Genie files.
+  + Pkgconfig support for additional cflags. The Pkgconfig module
+    object can add arbitrary extra cflags to the Cflags value in
+    the .pc file, using the "extra_cflags" keyword.
+  + Base options accessible via get_option(). Base options are now
+    accessible via the get_option() function.
+  + Allow crate type configuration for Rust compiler. Rust targets
+    now take an optional rust_crate_type keyword, allowing you to
+    set the crate type of the resulting artifact. Valid crate types
+    are dylib or cdylib for shared libraries, and rlib or staticlib
+    for static libraries. For more, see Rust's linkage reference.
+  + Simultaneous use of Address- and Undefined Behavior Sanitizers.
+    Both the address- and undefined behavior sanitizers can now be
+    used simultaneously by passing -Db_sanitize=address,undefined
+    to Meson.
+  + Unstable SIMD module. A new experimental module to compile code
+    with many different SIMD instruction sets and selecting the
+    best one at runtime. This module is unstable, meaning it's API
+    is subject to change in later releases. It might also be
+    removed altogether.
+  + Import libraries for executables on Windows. The new keyword
+    implib to executable() allows generation of an import library
+    for the executable.
+  + Added build_rpath keyword argument. You can specify
+    build_rpath: '/foo/bar' in build targets and the given path
+    will get added to the target's rpath in the build tree. It is
+    removed during the install step.
+  + Meson will print a warning when the user tries to add an rpath
+    linker flag manually, e.g. via link_args to a target. This is
+    not recommended because having multiple rpath causes them to
+    stomp on each other. This warning will become a hard error in
+    some future release.
+  + Vulkan dependency module. Vulkan can now be used as native
+    dependency. The dependency module will detect the VULKAN_SDK
+    environment variable or otherwise try to receive the vulkan
+    library and header via pkgconfig or from the system.
+  + Limiting the maximum number of linker processes. With the Ninja
+    backend it is now possible to limit the maximum number of
+    concurrent linker processes. This is usually only needed for
+    projects that have many large link steps that cause the system
+    to run out of memory if they are run in parallel. This limit
+    can be set with the new backend_max_links option.
+  + Disable implicit include directories. By default Meson adds the
+    current source and build directories to the header search path.
+    On some rare occasions this is not desired. Setting the
+    implicit_include_directories keyword argument to false these
+    directories are not used.
+  + Support for MPI dependency. MPI is now supported as a
+    dependency. Because dependencies are language-specific, you
+    must specify the requested language with the language keyword,
+    i.e., dependency('mpi', language='c') will request the C MPI
+    headers and libraries. See the MPI dependency for more
+    information.
+  + Allow excluding files or directories from install_subdir. The
+    install_subdir command accepts the new exclude_files and
+    exclude_directories keyword arguments that allow specified
+    files or directories to be excluded from the installed
+    subdirectory.
+  + Make all Meson functionality invokable via the main executable.
+    Previously Meson had multiple executables such as
+    mesonintrospect and mesontest. They are now invokable via the
+    main Meson executable like this: meson configure <arguments> #
+    equivalent to mesonconf <options> meson test <arguments> #
+    equivalent to mesontest <arguments> The old commands are still
+    available but they are deprecated and will be removed in some
+    future release.
+  + Pcap dependency detector. Meson will automatically obtain
+    dependency information for pcap using the pcap-config tool. It
+    is used like any other dependency.
+  + GNOME module mkenums_simple() addition. Most libraries and
+    applications use the same standard templates for glib-mkenums.
+    There is now a new mkenums_simple() convenience  method that
+    passes those default templates to glib-mkenums and allows some
+    tweaks such as optional function decorators or leading
+    underscores.
+- Rebase meson-fix-gcc48.patch and meson-test-installed-bin.patch.
+
+-------------------------------------------------------------------
+Sat Jul 22 13:55:52 UTC 2017 - mailaender@opensuse.org
+
+- Update to version 0.41.2:
+  + Various gtkdoc fixes.
+  + Fix how rpath directories are handled.
+  + pkgconfig: avoid appending slash at Cflags.
+  + Fix a missing path issue causing Python traceback.
+  + Qt4 support.
+  + Skip handling non-available dependencies.
+  + vala: Only add --use-header for unity builds regression.
+  + Tag functions in asm properly.
+
+-------------------------------------------------------------------
+Tue Jun 27 14:19:46 UTC 2017 - rodrigo.z.lourenco@tecnico.ulisboa.pt
+
+- Add a vim subpackage to add Meson support to Vim.
+
+-------------------------------------------------------------------
+Fri Jun 23 21:47:40 UTC 2017 - dimstar@opensuse.org
+
+- Split testsuite into an own package, in order to keep the build
+  dep chain of meson minimal.
+- Drop meson-disable-untested-code.patch: no longer required.
+- Add meson-test-installed-bin.patch: use /usr/bin/meson instead of
+  meson.py from the source tarball. We want to test the meson
+  binary package we produced, not the sources directly.
+
+-------------------------------------------------------------------
+Fri Jun 23 19:27:31 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 0.41.1:
+  + wxwidgets: Fix usage of multiple dependency() calls.
+  + Make external library no-op when used with incompatible
+    target (gh#mesonbuild/meson#1941).
+  + Failing test for -D dedupping.
+  + Preserve standalone -D arguments always.
+  + Handle both pkg-config and pkgconf argument order
+    (gh#mesonbuild/meson#1934).
+
+-------------------------------------------------------------------
+Fri Jun 23 13:56:37 UTC 2017 - dimstar@opensuse.org
+
+- Update meson-suse-ify-macros.patch: export LANG for all macros.
+
+-------------------------------------------------------------------
+Mon Jun 19 12:35:49 UTC 2017 - rpm@fthiessen.de
+
+- Update to version 0.41.0:
+  * Native support for linking against LLVM using
+    the dependency function.
+  * Pkgconfig support for custom variables.
+  * A target for creating tarballs using 'ninja dist'.
+  * Support for passing arguments to Rust compiler.
+  * All known issues regarding reproducible builds are fixed.
+  * Extended template substitution in configure_file
+    for @BASENAME@ and @PLAINNAME@ .
+  * Support for capturing stdout of a command in configure_file.
+- Removed SDL2 test to reduce dependencies (smaller build footprint)
+- Dropped upstreamed patch meson-handle-skipped-tests.patch
+- Rebased meson-suse-ify-macros.patch and meson-fix-gcc48.patch
+
+-------------------------------------------------------------------
+Tue Jun  6 13:08:19 UTC 2017 - dimstar@opensuse.org
+
+- Make the build footprint smaller to enter ring1: This means we
+  skip a couple tests though. Removed BuildRequires: java-devel,
+  libqt5-qtbase-devel, mono-core, mono-devel, wxWidgets-devel,
+  pkgconfig(protobuf) and pkgconfig(gtk+-3.0).
+
+-------------------------------------------------------------------
+Wed May 17 20:26:25 UTC 2017 - dimstar@opensuse.org
+
+- Add meson-handle-skipped-tests.patch: Actually do skip tests that
+  are marked as MESON_SKIP_TEST (gh#mesonbuild/meson#1804).
+
+-------------------------------------------------------------------
+Mon May  8 07:53:20 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 0.40.1:
+  + Outputs of generators can be used in custom targets in the VS
+    backend.
+  + Visual Studio 2017 support.
+  + Automatic initialization of subprojects that are git
+    submodules.
+  + No download mode for wraps.
+  + Overriding options per target.
+  + Compiler object get define.
+  + Cygwin support.
+  + Multiple install directories.
+  + Can specify method of obtaining dependencies.
+  + Link whole contents of static libraries.
+  + Unity builds only for subprojects.
+  + Running mesonintrospect from scripts.
+
+-------------------------------------------------------------------
+Mon Mar 20 11:21:10 UTC 2017 - dimstar@opensuse.org
+
+- Add meson-disable-untested-code.patch: meson has code in the test
+  suite that assumes different behaviour between glib 2.51.5 (rc)
+  and 2.52.0 (final); this must be a wrong assumption to start with
+  and the test suite fails with 2.52.0. When this was added by
+  upstream 4 months before glib-2.52.0 was released, there must
+  have been no way at all to test this. We revert back to a state
+  like with the previous glib verison, where this test was simply
+  skipped (gh#mesonbuild/meson#1480).
+
+-------------------------------------------------------------------
+Thu Mar 16 11:04:13 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 0.39.1 (changes since 0.38.1):
+  * Allow specifying extra arguments for tests.
+  * Bug fixes and minor polishes.
+- Add meson-fix-gcc48.patch: fix GCC 4.8 handling for
+  openSUSE Leap 42.x.
+
+-------------------------------------------------------------------
+Sat Mar  4 14:50:28 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 0.38.1:
+  + New Uninstall target.
+  + Support for arbitrary test setups.
+  + Intel C/C++ compiler support.
+  + Get values from configuration data objects.
+  + Python 3 module support simplified.
+  + Default options to subprojects.
+  + Set targets to be built (or not) by default.
+  + Add option to mesonconf to wipe cached data.
+  + Can specify file permissions and owner when installing data.
+  + has_header() checks are now faster.
+  + Array indexing now supports fallback values.
+  + Silent mode for Mesontest.
+- Rebase meson-suse-ify-macros.patch.
+
+-------------------------------------------------------------------
+Tue Jan 10 16:14:32 UTC 2017 - dimstar@opensuse.org
+
+- Add meson-suse-ify-macros.patch: Make the meson macros also work
+  on openSUSE. We do not (yet?) have separate macros for CFLAGS,
+  CXXFLAGS, FFLAGS and LDFLAGS, but only carry optflags. This is no
+  issue, since openSUSE so far only added flags that work accross
+  compilers/languages. This might change in the future, making the
+  patch obsolete.
+
+-------------------------------------------------------------------
+Sun Jan  1 12:51:36 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 0.37.1:
+  * No changelog available.
+
+-------------------------------------------------------------------
+Sun Jan  1 11:38:34 UTC 2017 - jengelh@inai.de
+
+- Trim boasting words from descriptions. Add to description two
+  points from the feature list.
+
+-------------------------------------------------------------------
+Mon Dec 19 05:55:00 UTC 2016 - dev@antergos.com
+
+- Update to version 0.37.0:
+  * Mesontest: a new testing tool that allows you to run your
+    tests in many different ways.
+  * New shared_module function allows shared modules creation.
+  * GNOME module now detects required programs and prints useful
+    errors if any are missing.
+  * GNOME module uses depfile support available in GLib >= 2.52.0.
+  * i18n module has a new merge_file() function for creating
+    translated files.
+  * LLVM IR compilation is now supported.
+  * .wrap files for subprojects can now include a separate push
+    URL to allow developers to push changes directly from a
+    subproject git checkout.
+  * Multiple version restrictions while searching for pkg-config
+    dependencies is now supported.
+  * Support for localstatedir has been added.
+  * You can now pass arguments to install scripts added with
+    meson.add_install_script().
+  * Added new options sbindir and infodir that can be used for
+    installation.
+- Remove meson-0.36.0-fix-old-pkgconfig-test.patch.
+
+-------------------------------------------------------------------
+Sat Dec 10 20:38:23 UTC 2016 - sor.alexei@meowr.ru
+
+- Add meson-0.36.0-fix-old-pkgconfig-test.patch: tests/common/51:
+  Skip validate if pkg-config is too old (commit 2f804e9).
+
+-------------------------------------------------------------------
+Tue Nov 22 15:04:05 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 0.36.0:
+  + Add option to run under gdb.
+  + Always specify installed data with a File object
+    (gh#mesonbuild/meson#858).
+  + Made has_function survive optimization flags
+    (gh#mesonbuild/meson#1053).
+  + Can give many alternative names to find_program to simplify
+    searching.
+  + Can set compiler arguments in Java.
+- Export SUSE_ASNEEDED=0 when running the test suite: linking the
+  test libraries/binaries is not done optimally.
+
+-------------------------------------------------------------------
+Tue Oct 18 20:43:34 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 0.35.1:
+  * No changelog available.
+
+-------------------------------------------------------------------
+Fri Oct 14 20:46:56 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 0.35.0:
+  + No changelog available from upstream.
+- Changes from version 0.34.0:
+  + No changelog available from upstream.
+- Drop meson-633.patch and meson-typelib-install.patch : Fixed
+  upstream.
+
+-------------------------------------------------------------------
+Wed Aug 17 15:43:57 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 0.33.0:
+  + Correctly install .typelib files to libdir.
+  + Add option for as-needed link option.
+  + Print the CFLAGS/LDFLAGS/etc inherited from the environment.
+  + Only append compile flags to the link flags when appropriate.
+- Add meson-633.patch: Handle both DT_RPATH as well as DT_RUNPATH
+  when fixing rpath settings (gh#mesonbuild/meson#663).
+- Add meson-typelib-install.patch: Fix installation path for
+  gpobject introspection typelib files.
+
+-------------------------------------------------------------------
+Sat Jul 23 16:15:39 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 0.32.0:
+  * No changelog available.
+- Remove meson-gui package: GUI was removed upstream.
+
+-------------------------------------------------------------------
+Mon May  9 16:47:26 UTC 2016 - jengelh@inai.de
+
+- Avoid unnecessary bashism in %install script (run with /bin/sh)
+
+-------------------------------------------------------------------
+Sat May  7 07:12:54 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 0.31.0.
+
+-------------------------------------------------------------------
+Thu Feb 11 16:26:54 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to 0.29.0.
+
+-------------------------------------------------------------------
+Tue Dec 29 05:32:40 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 0.28.0.
+
+-------------------------------------------------------------------
+Fri Dec  4 10:29:26 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 0.27.0.
+
+-------------------------------------------------------------------
+Sun Sep 13 10:21:57 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 0.26.0.
+- Use signed tarball.
+
+-------------------------------------------------------------------
+Sun Jul 12 21:02:38 UTC 2015 - sor.alexei@meowr.ru
+
+- Initial package based on the work of Igor Gnatenko.

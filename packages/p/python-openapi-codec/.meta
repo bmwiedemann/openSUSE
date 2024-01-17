@@ -1,0 +1,5 @@
+<package name="python-openapi-codec" project="openSUSE:Factory">
+  <title></title>
+  <description>OpenAPI codec for Core API</description>
+  <devel project="devel:languages:python" package="python-openapi-codec"/>
+</package>

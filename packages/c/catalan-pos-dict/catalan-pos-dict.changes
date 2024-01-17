@@ -1,0 +1,8 @@
+-------------------------------------------------------------------
+Mon Mar 30 06:52:03 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of catalan-pos-dict 2.7, git checkout of today
+- Added patch:
+  * catalan-pos-dict-classpath.patch
+    + Allow specifying of build classpath on command-line and do
+      not hardcode it

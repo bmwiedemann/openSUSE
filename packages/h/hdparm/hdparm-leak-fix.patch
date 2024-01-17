@@ -1,0 +1,22 @@
+Index: hdparm-9.60/hdparm.c
+===================================================================
+--- hdparm-9.60.orig/hdparm.c
++++ hdparm-9.60/hdparm.c
+@@ -1199,7 +1199,7 @@ static int abort_if_not_full_device (int
+ 	struct stat st;
+ 	__u64 start_lba;
+ 	int i, err, shortened = 0;
+-	char *fdevname = strdup(devname);
++	char *fdevname = strdupa(devname);
+ 
+ 	if (0 == fstat(fd, &st) && S_ISCHR(st.st_mode))
+ 		return 0; /* skip geometry test for character (non-block) devices; eg. /dev/sg* */
+@@ -1212,7 +1212,7 @@ static int abort_if_not_full_device (int
+ 	}
+ 
+ 	if (!shortened)
+-		fdevname = strdup("the full disk");
++		fdevname = strdupa("the full disk");
+ 
+ 	if (start_lba == 0ULL)
+ 		return 0;

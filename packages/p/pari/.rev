@@ -1,0 +1,282 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>72c990cef130ee7251a9d06052be2b76</srcmd5>
+    <version>2.5.3</version>
+    <time>1354712499</time>
+    <user>namtrac</user>
+    <comment></comment>
+    <requestid>143832</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>72c990cef130ee7251a9d06052be2b76</srcmd5>
+    <version>2.5.3</version>
+    <time>1359109574</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>bdfb070afea2882f19ecec5d148d1e7d</srcmd5>
+    <version>2.5.3</version>
+    <time>1362731447</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>157809</requestid>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>bdfb070afea2882f19ecec5d148d1e7d</srcmd5>
+    <version>2.5.3</version>
+    <time>1379663504</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d50f1bbf386999b653cc12a8db3f8fe0</srcmd5>
+    <version>2.5.5</version>
+    <time>1391613911</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 2.5.5</comment>
+    <requestid>220914</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a2337e32c040a2afa8c44c66bba5f255</srcmd5>
+    <version>2.7.0</version>
+    <time>1398499786</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>231438</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5329b0a78bc125fc56164e1268ecc083</srcmd5>
+    <version>2.7.1</version>
+    <time>1407318156</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 2.7.1</comment>
+    <requestid>243734</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>5329b0a78bc125fc56164e1268ecc083</srcmd5>
+    <version>2.7.1</version>
+    <time>1409302113</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d4503c317f6f4ed1e2d765cbe2af5bb0</srcmd5>
+    <version>2.7.2</version>
+    <time>1413616161</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 2.7.2.</comment>
+    <requestid>257340</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f405c3e9f8f331e66f153838585d47db</srcmd5>
+    <version>2.7.3</version>
+    <time>1425031812</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.7.3</comment>
+    <requestid>287931</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>02235d34f8c9f69c9f4dd18efa0dfa0c</srcmd5>
+    <version>2.7.5</version>
+    <time>1459002205</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.7.5</comment>
+    <requestid>370890</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8302e380b71f5a1908aca0a3333a88ed</srcmd5>
+    <version>2.7.6</version>
+    <time>1470413782</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.7.6</comment>
+    <requestid>416215</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0cdd18a49eb8744821f68a87af0215bd</srcmd5>
+    <version>2.9.0</version>
+    <time>1481153512</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>444147</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4ccbc0f134e7286ff26afaa8480d8db7</srcmd5>
+    <version>2.9.1</version>
+    <time>1488931940</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.9.1</comment>
+    <requestid>459393</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>321123943ae33b4fdee68361eb1b785d</srcmd5>
+    <version>2.9.3</version>
+    <time>1505238851</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.9.3</comment>
+    <requestid>522775</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>e6c456967b7d775bb1527e1e7aefe671</srcmd5>
+    <version>2.11.0</version>
+    <time>1535705248</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.11.0</comment>
+    <requestid>632204</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>02f10517319e660119da8206ca989ebb</srcmd5>
+    <version>2.11.1</version>
+    <time>1544726908</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.11</comment>
+    <requestid>656949</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>db30f63e754fd295ca6817ad367f8a07</srcmd5>
+    <version>2.11.1</version>
+    <time>1553611521</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>688516</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>93273fee0fba5cb5e8d9cbb7341716df</srcmd5>
+    <version>2.11.2</version>
+    <time>1565775478</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.11.2</comment>
+    <requestid>723174</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>e7dd1e70818254f981b14cd59d2d9eff</srcmd5>
+    <version>2.11.2</version>
+    <time>1566665161</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable pthreads [boo#1142714]</comment>
+    <requestid>725590</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>052292aef170a02f28a0b4f4cea1701d</srcmd5>
+    <version>2.11.3</version>
+    <time>1583526489</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.11.3</comment>
+    <requestid>782011</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>bb7a8513da780121581070b03c1a5e2e</srcmd5>
+    <version>2.11.4</version>
+    <time>1591558733</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.11.4</comment>
+    <requestid>812132</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>57295adcc420bbf23d8f18b177e65ca9</srcmd5>
+    <version>2.13.1</version>
+    <time>1612901868</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>870617</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>c4480b38da2dd76aa0013d0595c9ddde</srcmd5>
+    <version>2.13.2</version>
+    <time>1635539661</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.13.2. Fixed</comment>
+    <requestid>928099</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>c3053160a01f3987408fa1a5c1a5a3b1</srcmd5>
+    <version>2.13.2</version>
+    <time>1635717351</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>928429</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>5e2ddc87d56204dc07c8542117aee4ec</srcmd5>
+    <version>2.13.3</version>
+    <time>1635877137</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.13.3. Fixed
+  [last column crossreferences current development release 2.14.0]
+  * zeta(-2 + O(x)) =&gt; division by 0                          [F25]
+  * (-1)^(-1/2) -&gt; I instead of -I                            [F56]
+  * GC error in ZX_Uspensky(, flag = 0)                       [F58]
+  * ellisomat(ell/nf not integral) -&gt; oo-loop or wrong result [F59]
+  * (f(~v)=v[1]=1);(g(v) = f(~v)); my(V=[0]);g(V);V -&gt; [1]
+    instead of [0] due to missing copy on write [#2304]       [F60]
+  * hypergeom([1/12,1/12],2/3,3) -&gt; wrong result              [F61]
+  * overflow in mulu_interval(,ULONG_MAX) [#2309]             [F62]
+  * ellE(1) -&gt; domain error [#2312]                           [F63]
+  * log1p(-1 + 10^-10) -&gt; oo time                             [F64]
+  * bernvec entries were wrong from B_{2*4064} on [#2311]     [F65]
+  * plotrecthraw for multi-curves                             [F66]
+  * RgXn_powu(,,1) wrong result [#2314]                       [F67]
+  * erfc incorrect on negative imaginary axis [#2315]         [F68]
+  * mfgalpoistype bug for dihedral types (when conductor at oo
+    is not stable under Galois) [#2293]                       [F69]
+  * [32bit] forfactored(n=223092868, 223092871, ) -&gt;
+    SEGV [#2318]                                              [F70]
+  * Fp_issquare(0, p) would return 0                          [F71] (forwarded request 928639 from urbic)</comment>
+    <requestid>928684</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>5f3f9fe51c76af318c873f9365f671ea</srcmd5>
+    <version>2.13.4</version>
+    <time>1649949967</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.13.4</comment>
+    <requestid>970168</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>508b7421749657ca938292fb891a251a</srcmd5>
+    <version>2.15.0</version>
+    <time>1667306594</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.15.0</comment>
+    <requestid>1032584</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>d7e1284b820a0fc3335b2b9adae4b280</srcmd5>
+    <version>2.15.1</version>
+    <time>1668877753</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.15.1</comment>
+    <requestid>1036697</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>f44f1f1726a74dc760ea8e78be406f24</srcmd5>
+    <version>2.15.2</version>
+    <time>1672927302</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.15.2:
+  Fixed
+    polredbest: rare error &quot;inconsistent concatenation&quot;
+    hypergeom([0,0],[1],2)
+    powers(t_INT, ...) was very slow
+    factor(prod(i=1,20,nextprime(2^i)), 131) would include 131
+    sumeulerrat(x^2/(1+x),2) -&gt; FPE
+    lambertw(10^1000) -&gt; overflow (forwarded request 1056144 from dirkmueller)</comment>
+    <requestid>1056174</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>01fb8184f8c2058e965325ba28857bcb</srcmd5>
+    <version>2.15.3</version>
+    <time>1681996490</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1080429</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>bc658da5db887ab00b111c14945aae3b</srcmd5>
+    <version>2.15.4</version>
+    <time>1689710067</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1098968</requestid>
+  </revision>
+</revisionlist>

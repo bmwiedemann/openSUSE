@@ -1,0 +1,20 @@
+--- tagsoup-1.2.1/build.xml	2011-07-08 02:17:59.000000000 +0200
++++ tagsoup-1.2.1/build.xml	2017-09-21 21:44:37.145479041 +0200
+@@ -79,7 +79,7 @@
+   <!-- compile java sources -->
+   <target name="compile" depends="init,prepare,build-parser"
+ 	  description="Compile java classes.">
+-    <javac source="1.4" target="1.4" srcdir="${src}/java" destdir="${build}" deprecation="on" verbose="off" debug="on">
++    <javac srcdir="${src}/java" destdir="${build}" deprecation="on" verbose="off" debug="on">
+       <src path="${src}/java"/>
+ 	  <src path="${tmp}/src"/>
+ 	</javac>
+@@ -149,7 +149,7 @@
+ 	  description="Generate javadoc documentation.">
+ 	<mkdir dir="${docs}/api"/>
+ 	<javadoc packagenames="org.*"
+-		sourcepath="${src}/java" destdir="${docs}/api"
++		sourcepath="${src}/java" classpath="${build}" destdir="${docs}/api"
+ 		use="true"
+ 		windowtitle="TagSoup ${tagsoup.version} API">
+       <doctitle><![CDATA[<h1>TagSoup Package Documentation</h1>]]></doctitle>

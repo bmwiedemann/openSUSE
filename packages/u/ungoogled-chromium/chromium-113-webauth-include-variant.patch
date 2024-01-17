@@ -1,0 +1,12 @@
+Index: chromium-114.0.5735.90/chrome/browser/webauthn/authenticator_request_dialog_model.h
+===================================================================
+--- chromium-114.0.5735.90.orig/chrome/browser/webauthn/authenticator_request_dialog_model.h
++++ chromium-114.0.5735.90/chrome/browser/webauthn/authenticator_request_dialog_model.h
+@@ -7,6 +7,7 @@
+ 
+ #include <memory>
+ #include <string>
++#include <variant>
+ #include <vector>
+ #include <variant>
+ 

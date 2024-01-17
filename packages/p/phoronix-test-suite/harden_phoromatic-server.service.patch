@@ -1,0 +1,24 @@
+Index: phoronix-test-suite/deploy/phoromatic-systemd/phoromatic-server.service
+===================================================================
+--- phoronix-test-suite.orig/deploy/phoromatic-systemd/phoromatic-server.service
++++ phoronix-test-suite/deploy/phoromatic-systemd/phoromatic-server.service
+@@ -4,6 +4,19 @@ After=syslog.target network.target
+ Documentation=man:phoronix-test-suite(1)
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++PrivateDevices=true
++ProtectHostname=true
++ProtectClock=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ TimeoutStartSec=300
+ ExecStart=/usr/bin/phoronix-test-suite start-phoromatic-server
+ Restart=on-failure

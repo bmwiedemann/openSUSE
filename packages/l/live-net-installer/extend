@@ -1,0 +1,5 @@
+#!/bin/bash
+# Called by YaST to query/install certain packages on request, like
+# cracklib-dict-full. We can't install packages though as YaST keeps
+# the lock alive
+rpm -q ${1%%.rpm} >/dev/null >&1

@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>56d4365e4a39a670031a136edfe0bb2a</srcmd5>
+    <version>20230630.55521ba</version>
+    <time>1688476930</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>1096562</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a7bb3add9a83b3465e6c3a2daae64227</srcmd5>
+    <version>20230725.997a813</version>
+    <time>1690370644</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20230725.997a813:
+  * Allow passing options through to git log</comment>
+    <requestid>1100628</requestid>
+  </revision>
+</revisionlist>

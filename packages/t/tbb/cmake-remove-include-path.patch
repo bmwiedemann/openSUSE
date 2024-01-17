@@ -1,0 +1,13 @@
+Index: oneTBB-2021.11.0/cmake/templates/TBBConfig.cmake.in
+===================================================================
+--- oneTBB-2021.11.0.orig/cmake/templates/TBBConfig.cmake.in
++++ oneTBB-2021.11.0/cmake/templates/TBBConfig.cmake.in
+@@ -80,8 +80,6 @@ foreach (_tbb_component ${TBB_FIND_COMPO
+             add_library(TBB::${_tbb_component} SHARED IMPORTED)
+ 
+             get_filename_component(_tbb_include_dir "${_tbb_root}/@TBB_INC_REL_PATH@" ABSOLUTE)
+-            set_target_properties(TBB::${_tbb_component} PROPERTIES
+-                                  INTERFACE_INCLUDE_DIRECTORIES "${_tbb_include_dir}"@TBB_COMPILE_DEFINITIONS@)
+             unset(_tbb_current_realpath)
+             unset(_tbb_include_dir)
+ 

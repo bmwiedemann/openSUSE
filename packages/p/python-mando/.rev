@@ -1,0 +1,69 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>79127cffe8ced8106225d20c226566b3</srcmd5>
+    <version>0.6.4</version>
+    <time>1509722680</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>538020</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>fe446fd99ab71ef71e8591ce487f3d61</srcmd5>
+    <version>0.6.4</version>
+    <time>1510045516</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>539364</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>5eb94734f13b4ab4b9ffbc8a66340c0f</srcmd5>
+    <version>0.6.4</version>
+    <time>1545647971</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659488</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>b1a5e073c76c8094d1373848aba3a87e</srcmd5>
+    <version>0.6.4</version>
+    <time>1546946881</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662869</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>63ce2edee9bad0e62568ba1ddbad7be5</srcmd5>
+    <version>0.7.0</version>
+    <time>1586112693</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>790514</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>85bfc5fce7bf4cd34b697e49792420d1</srcmd5>
+    <version>0.7.0</version>
+    <time>1639685957</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch python-310-support.patch:
+  * Support argparse changes introduced in Python 3.10.</comment>
+    <requestid>940133</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>115193e26871e58c663427850876e7ec</srcmd5>
+    <version>0.7.1</version>
+    <time>1645891314</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.1:
+  * - Add support for Python 3.10 (@s-t-e-v-e-n-k): #54
+- Drop patch python-310-support.patch, merged upstream.</comment>
+    <requestid>957243</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>2160fbe867c835f51fe321d83e35f5cd</srcmd5>
+    <version>0.7.1</version>
+    <time>1686753021</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093042</requestid>
+  </revision>
+</revisionlist>

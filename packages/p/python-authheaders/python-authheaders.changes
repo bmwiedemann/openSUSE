@@ -1,0 +1,89 @@
+-------------------------------------------------------------------
+Sat Jan 13 17:31:08 UTC 2024 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 0.16.0
+  * Switch from pkg_resources resource_filename to
+    importlib_resources
+  * Add initial doctests for dmarc_lookup.py
+  * Correctly strip trailing backslash in parsed DMARC record
+    components
+  * Handle DMARC records containing empty quoted values (#26)
+  * Add dmarc_lookup.DMARCException and raise it for missing
+    tag/values (#27)
+  * Catch DMARCException error and return DMARC permerror
+    result (#27)
+  * Set DMARC result to permerror if From domain cannot be
+    extracted (#25)
+  * Use dns.resolver.resolve instead of dns.resolver.query
+    due to deprecation
+  * Update PSL from upstream
+  * Add new option for authenticate_message, dmarcbis to
+    enable DMARC policy
+  * discovery and alignment per draft-ietf-dmarc-dmarcbis
+    (default is False)
+- Removed authheaders-importlib-resources.patch
+
+-------------------------------------------------------------------
+Mon Jan  8 08:47:41 UTC 2024 - Andreas Schneider <asn@cryptomilk.org>
+
+- Fix importing resources
+  * Added authheaders-importlib-resources.patch
+
+-------------------------------------------------------------------
+Thu Nov  2 09:03:06 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 0.15.3
+  * https://github.com/ValiMail/authentication-headers/blob/0.15.3/CHANGES
+    or the CHANGES file included in this package
+
+-------------------------------------------------------------------
+Tue Jun 13 11:35:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- tag sle15 build for new python
+
+-------------------------------------------------------------------
+Sat Jan 15 16:55:40 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.14.1:
+  - Bump version to fix pypi artifacts, no code changes
+  - Use email.utils to parse the From header addresses (Thanks to Adam Clark
+    for noting this issue and providing the fix) Fixes Github #5
+  - Correct minimum authres version requirment in setup.py
+  - Catch more errors.  Add DKIM temperror.  (Thanks to 'niftylettuce') Fixes
+    Github #18
+  - Skip DMARC records with no 'p' tag and don't raise an error (also thanks
+    to 'niftylettuce')  Fixes Github #14
+  - Fix issues with upper case characters in domain (Thanks to Mark Sapiro for
+    root causing the issue and providing a fix for the domain name regex)
+    Fixes Github #13
+  - Include ARC result comment is A-R header field when ARC fails.  Fixes
+    Github #12
+  - Handle the case where no valid From is found.  Fixes Github #15
+
+-------------------------------------------------------------------
+Sun Apr 12 08:49:13 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.13.0:
+  * Switch from the deprecated publicsuffix package to publicsuffix2
+
+-------------------------------------------------------------------
+Thu Jan 23 14:58:46 UTC 2020 - pgajdos@suse.com
+
+- do not require python-cffi for 15, it will be required by
+  python-PyNaCl
+
+-------------------------------------------------------------------
+Fri Jan 10 17:54:29 UTC 2020 - pgajdos@suse.com
+
+- fix build in SLE-15: set en_US.UTF-8 encoding
+
+-------------------------------------------------------------------
+Mon Dec  2 10:47:09 UTC 2019 - pgajdos@suse.com
+
+- call spec-cleaner
+
+-------------------------------------------------------------------
+Wed Sep 25 08:58:48 UTC 2019 - pgajdos@suse.com
+
+- initial version 0.12.0, required by python-mailman [SLE-7686]
+

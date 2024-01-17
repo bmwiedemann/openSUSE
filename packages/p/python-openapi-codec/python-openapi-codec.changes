@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Wed Nov  3 08:42:34 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pyunittest rpm macro
+
+-------------------------------------------------------------------
+Sun Jun  7 09:02:58 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Tidy spec
+- Add test suite
+
+-------------------------------------------------------------------
+Wed Feb  7 13:33:45 UTC 2018 - daniel.molkentin@suse.com
+
+- Initial checkin

@@ -1,0 +1,5 @@
+<package name="agenda" project="openSUSE:Factory">
+  <title>Agenda</title>
+  <description>A simple, slick, speedy, no-nonsense task manager.</description>
+  <devel project="X11:Pantheon:Apps" package="agenda"/>
+</package>

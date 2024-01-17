@@ -1,0 +1,5 @@
+<package name="python-model-bakery" project="openSUSE:Factory">
+  <title></title>
+  <description>Smart object creation facility for Django</description>
+  <devel project="devel:languages:python:django" package="python-model-bakery"/>
+</package>

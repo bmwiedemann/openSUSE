@@ -1,0 +1,96 @@
+--- xserver-1.20.9/hw/xfree86/xorg-wrapper.c	
++++ xserver-1.20.9/hw/xfree86/xorg-wrapper.c	2020-09-29 12:52:59.256970275 +0200
+@@ -191,6 +191,60 @@ 
+     return 0;
+ }
+ 
++static int check_vt_range(long int vt)
++{
++    if (vt >= 2 && vt <= 7 ) {
++        return 1;
++    }
++
++    return 0;
++}
++
++/* Xserver option whitelist filter (boo#1175867) */
++static int option_filter(int argc, char* argv[]){
++
++    for(int pos=1; pos<argc; pos++) {
++        const char *arg = argv[pos];
++
++        if (strlen(arg) == 3 && !strncmp(arg,"vt", 2) && check_vt_range(strtol(arg+2, NULL, 10)) == 1) {
++            /* vtX (vt2-vt7) */
++            continue;
++        } else if(!strcmp(arg,"-displayfd") ||
++                  !strcmp(arg,"-auth") ||
++                  !strcmp(arg,"-background") ||
++                  !strcmp(arg,"-verbose") ||
++                  !strcmp(arg,"-listen")) {
++            /* -displayfd x
++               -auth xxxx
++               -backgound none
++               -verbose 7 (7 or 3)
++               -listen tcp
++            */
++            if ((pos+1) < argc) {
++                pos++;
++            } else {
++                fprintf(stderr, "%s: Missing argument for Xserver option \"%s\". Aborting.\n",
++                        progname, arg);
++                return 0;
++            }
++        } else if (!strcmp(arg,"-noreset") ||
++                   !strcmp(arg,"-keeptty") ||
++                   !strcmp(arg,"-core")) {
++            /* -noreset
++               -keeptty
++               -core
++            */
++            continue;
++        } else {
++            fprintf(stderr, "%s: Xserver option \"%s\" invalid or not in whitelist. Aborting.\n",
++                    progname, arg);
++            return 0;
++        }
++    }
++
++    return 1;
++}
++
+ int main(int argc, char *argv[])
+ {
+ #ifdef WITH_LIBDRM
+@@ -250,11 +304,14 @@ 
+ 
+             close(fd);
+         }
++        /* If we've found cards, and all cards support kms, drop root rights */
++        if (total_cards && kms_cards == total_cards) {
++            needs_root_rights = 0;
++        }
+     }
+ #endif
+ 
+-    /* If we've found cards, and all cards support kms, drop root rights */
+-    if (needs_root_rights == 0 || (total_cards && kms_cards == total_cards)) {
++    if (needs_root_rights == 0) {
+         gid_t realgid = getgid();
+         uid_t realuid = getuid();
+         int ngroups = 0;
+@@ -326,6 +383,15 @@ 
+     }
+ 
+     argv[0] = buf;
++
++    if (needs_root_rights == 1 && getuid() != 0)
++    {
++        /* Xserver option whitelist filter (boo#1175867) */
++        if (option_filter(argc, argv) == 0) {
++            exit(1);
++        }
++    }
++
+     if (getuid() == geteuid())
+         (void) execv(argv[0], argv);
+     else

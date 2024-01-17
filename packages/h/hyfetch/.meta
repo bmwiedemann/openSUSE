@@ -1,0 +1,8 @@
+<package name="hyfetch" project="openSUSE:Factory">
+  <title>Customizable Linux System Information Script</title>
+  <description>HyFetch is a command line script to display information about your
+Linux system, such as amount of installed packages, OS and kernel
+version, active GTK theme, CPU info, and used/available memory.
+It is a fork of Neofetch, and adds pride flag coloration to the OS logo.</description>
+  <devel project="utilities" package="hyfetch"/>
+</package>

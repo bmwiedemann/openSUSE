@@ -1,0 +1,5 @@
+-------------------------------------------------------------------
+Tue Jul 18 08:57:24 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Initial packaging (v0.7), needed by django-crispy-forms v2
+- Upstream is slow in releases: upstream patches cf2.patch and help_test_escape.patch

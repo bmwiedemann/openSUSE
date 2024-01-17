@@ -1,0 +1,59 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3ced07d85fbceb436ad88443ffda82c8</srcmd5>
+    <version>1.0.0b1</version>
+    <time>1634853337</time>
+    <user>dimstar_suse</user>
+    <comment>- new package part of Azure SDK</comment>
+    <requestid>926763</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4576d646a56e0f17cc163ecb31357e0c</srcmd5>
+    <version>1.0.0b2</version>
+    <time>1649793041</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0b2
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 969391 from glaubitz)</comment>
+    <requestid>969399</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4fe4a67bb59568f237d342e4d1c82c0a</srcmd5>
+    <version>1.0.0.0</version>
+    <time>1650922549</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Override upstream version with 1.0.0.0 to ensure
+  proper upgrade from previous version 1.0.0b2 (forwarded request 972558 from glaubitz)</comment>
+    <requestid>972599</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0a557bd01a8e3a8f63fdffc6f73d529e</srcmd5>
+    <version>1.1.0</version>
+    <time>1652993514</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 977899 from glaubitz)</comment>
+    <requestid>978119</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5bc2765f98ee81f3c75bd1e45c4f0d46</srcmd5>
+    <version>1.2.0~b1</version>
+    <time>1673359206</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.2.0b1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Override upstream version with 1.2.0~b1
+- Update Requires from setup.py (forwarded request 1057603 from glaubitz)</comment>
+    <requestid>1057618</requestid>
+  </revision>
+</revisionlist>

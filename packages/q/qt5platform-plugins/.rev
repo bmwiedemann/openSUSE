@@ -1,0 +1,201 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a10ad7cab9d5c04987a26b80a488217d</srcmd5>
+    <version>5.0.21</version>
+    <time>1619447953</time>
+    <user>dimstar_suse</user>
+    <comment>Bring Deepin Desktop Environment to openSUSE</comment>
+    <requestid>886035</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ea78ad5106fe2dc19c3cd3c580a59760</srcmd5>
+    <version>5.0.23</version>
+    <time>1625675424</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 5.0.23
+  * Fix bugs
+  * Support Qt 5.15.2 (forwarded request 904311 from hillwood)</comment>
+    <requestid>904352</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8cb3755fe3b8ba0a52e1f0c47c825289</srcmd5>
+    <version>5.0.46</version>
+    <time>1648063149</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 5.0.42
+  * Set tooltip role and standalone role
+  * Wayland plugin merge from wayland_x86
+  * Fix bugs
+- Disable wayland plugin, workaround issue#2238
+  (https://github.com/linuxdeepin/developer-center/issues/2238)
+
+- Update version to 5.0.40
+  * Add wm class name
+  * 2d wallpaper memory shared
+  * refactor: Only enable dxcb in dde
+  * Fix bugs (forwarded request 964286 from hillwood)</comment>
+    <requestid>964287</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d1e28dc4b29e8f3a258adcd97a3af143</srcmd5>
+    <version>5.0.61</version>
+    <time>1650657247</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>971807</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a07a7ee67e7401a40980dc9607becd00</srcmd5>
+    <version>5.0.65</version>
+    <time>1656768879</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>986310</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>7d66e23d671595a3449986605ff5d399</srcmd5>
+    <version>5.0.65</version>
+    <time>1657114933</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>986974</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>46b7981b92b300adce2571eedc83ce08</srcmd5>
+    <version>5.0.68</version>
+    <time>1662063006</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 5.0.68
+  * Support Qt 5.15.5
+  * Fix bugs</comment>
+    <requestid>1000239</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>2c38f50f80088ac2df8ba908654abc9f</srcmd5>
+    <version>5.0.68</version>
+    <time>1664797585</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build on Qt 5.15.6 (forwarded request 1007543 from hillwood)</comment>
+    <requestid>1007544</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>18ed8cc49188248e95310f2c4c37ca91</srcmd5>
+    <version>5.0.69</version>
+    <time>1665420419</time>
+    <user>favogt_factory</user>
+    <comment>- Update version to 5.0.69
+  * End the start queue when startid is not used
+  * Fix a bug (forwarded request 1008942 from hillwood)</comment>
+    <requestid>1008943</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d68ef8428a6d41f08aaad2f00f69849d</srcmd5>
+    <version>5.0.70</version>
+    <time>1668359340</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 5.0.70
+  * Change license to LGPL-3.0+
+  * Fix bugs
+- Fix build on Qt 5.15.7 (forwarded request 1035457 from hillwood)</comment>
+    <requestid>1035458</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>6fa5810066a21bd23f06428e62a58050</srcmd5>
+    <version>5.0.70</version>
+    <time>1671889947</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build on Tumbleweed (forwarded request 1045161 from hillwood)</comment>
+    <requestid>1045162</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>f96718d77da70ec1a065aab764034b9b</srcmd5>
+    <version>5.0.70</version>
+    <time>1674058278</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build on Qt 5.15.8 (forwarded request 1059267 from hillwood)</comment>
+    <requestid>1059270</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>b9810e31247bf3ed417014a07039526d</srcmd5>
+    <version>5.0.70</version>
+    <time>1679933795</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1074566</requestid>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>4fb4102c19450128ee627f46fb3ffe72</srcmd5>
+    <version>5.0.70</version>
+    <time>1681150623</time>
+    <user>dimstar_suse</user>
+    <comment>fix build (forwarded request 1078240 from mlin7442)</comment>
+    <requestid>1078241</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>5cc655c68b2c85d2a57b681228230327</srcmd5>
+    <version>5.6.9</version>
+    <time>1682618481</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 5.6.9
+  * load dxcb if XDG_CURRENT_DESKTOP set to DDE
+  * Fix bugs
+- Add support-Qt-5_15_8.patch and support-Qt-5_15_9.patch
+
+- Update version to 5.6.5
+  * Add support for 5.15.7
+  * Support multi split screen
+  * Allow specify include path of qtxcb private headers
+- Disable wayland support (forwarded request 1083159 from hillwood)</comment>
+    <requestid>1083160</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>b3684342d476b06a9739abc6ddd75e46</srcmd5>
+    <version>5.6.12</version>
+    <time>1685632795</time>
+    <user>dimstar_suse</user>
+    <comment>- Refresh support-Qt-5_15_9.patch, fix crash bug (forwarded request 1090214 from hillwood)</comment>
+    <requestid>1090219</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>4ca1441d0d347178f8d6d6cd2ba04629</srcmd5>
+    <version>5.6.12</version>
+    <time>1688148000</time>
+    <user>dimstar_suse</user>
+    <comment>- Add support-Qt-5_15_10.patch, support Qt 5.15.10 
+
+- Enable wayland (forwarded request 1096136 from hillwood)</comment>
+    <requestid>1096137</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>603e9553d7fffa669198886857dac1b6</srcmd5>
+    <version>5.6.12</version>
+    <time>1698873012</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1121527</requestid>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>27a78798cc69367f8e8429a8bbc2748e</srcmd5>
+    <version>5.6.12</version>
+    <time>1700421350</time>
+    <user>anag+factory</user>
+    <comment>- Refrash support-Qt-5_15_11.patch, fix a crash issue. (forwarded request 1127418 from hillwood)</comment>
+    <requestid>1127419</requestid>
+  </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>7c64a5adff40573eed300a46112f392d</srcmd5>
+    <version>5.6.12</version>
+    <time>1702233613</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1132301</requestid>
+  </revision>
+  <revision rev="21" vrev="6">
+    <srcmd5>fcd7da6b3d1aa3ffbeec0b0f9daff605</srcmd5>
+    <version>5.6.12</version>
+    <time>1704660011</time>
+    <user>dimstar_suse</user>
+    <comment>- Add support-Qt-5_15_12.patch (forwarded request 1137336 from hillwood)</comment>
+    <requestid>1137337</requestid>
+  </revision>
+</revisionlist>

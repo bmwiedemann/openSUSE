@@ -1,0 +1,14 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/softcatala/catalan-dict-tools</param>
+		<param name="revision">6dc35535bf196b464116a6eed1c37059cb131dde</param>
+		<param name="version">2.7+git6dc3553</param>
+		<param name="filename">catalan-pos-dict</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>

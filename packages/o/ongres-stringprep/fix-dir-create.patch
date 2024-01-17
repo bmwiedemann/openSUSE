@@ -1,0 +1,15 @@
+Index: stringprep-1.1/codegenerator/src/main/java/com/ongres/stringprep/codegenerator/GeneratorCode.java
+===================================================================
+--- stringprep-1.1.orig/codegenerator/src/main/java/com/ongres/stringprep/codegenerator/GeneratorCode.java
++++ stringprep-1.1/codegenerator/src/main/java/com/ongres/stringprep/codegenerator/GeneratorCode.java
+@@ -62,8 +62,8 @@ public class GeneratorCode {
+     ctx.put("parser", parser);
+     String path = args[0] + "/com/ongres/stringprep/StringPrep.java";
+     File file = new File(path);
+-    if (!file.getParentFile().mkdirs()) {
+-      throw new IOException("The directory couldn't be created");
++    if (!file.getParentFile().exists() && !file.getParentFile().mkdirs()) {
++      throw new IOException("The directory couldn't be created:" + file.getParentFile());
+     }
+     Writer writer = new OutputStreamWriter(new FileOutputStream(file),StandardCharsets.UTF_8);
+     template.merge(ctx, writer);

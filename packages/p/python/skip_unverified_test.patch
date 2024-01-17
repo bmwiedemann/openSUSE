@@ -1,0 +1,19 @@
+---
+ Lib/test/test_ssl.py |    6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+--- a/Lib/test/test_ssl.py
++++ b/Lib/test/test_ssl.py
+@@ -1344,9 +1344,9 @@ class ContextTests(unittest.TestCase):
+         extra_env = {}
+         # Omitting it leaves verification on
+         assert_python_ok("-c", https_is_verified, **extra_env)
+-        # Setting it to zero turns verification off
+-        extra_env[ssl._https_verify_envvar] = "0"
+-        assert_python_ok("-c", https_is_not_verified, **extra_env)
++        ## # Setting it to zero turns verification off
++        ## extra_env[ssl._https_verify_envvar] = "0"
++        ## assert_python_ok("-c", https_is_not_verified, **extra_env)
+         # Any other value should also leave it on
+         for setting in ("", "1", "enabled", "foo"):
+             extra_env[ssl._https_verify_envvar] = setting

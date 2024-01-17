@@ -1,0 +1,99 @@
+-------------------------------------------------------------------
+Wed Dec 27 09:41:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.4.1:
+  * The default setting for ``CURRENCY_CHOICES`` excluded the
+    currency choice defined by ``DEFAULT_CURRENCY``.
+  * Don't register Django Money serializers by default, instead
+    the user should actively register a serializer in the
+    ``settings.py``
+  * Fix detection of necessary migrations. Note that this means
+    that previously undetected migrations will be detected as of
+    this version
+
+-------------------------------------------------------------------
+Mon Mar 13 13:31:38 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.0:
+  - Changed
+    - Update py-moneyed to 2.0.
+    - Remove the deprecated Money.decimal_places_display property
+      and argument.
+    - Remove the deprecated CURRENCY_DECIMAL_PLACES_DISPLAY
+      setting.
+    - Null constraint on an implicit CurrencyField is now
+      declared from null=... argument to MoneyField.
+  - Fixed
+    - Improve the internal check for whether a currency is
+      provided
+    - Fix test suite for django main branch
+    - MoneyField raises TypeError when default contains a valid
+      amount but no currence, i.e. Money(123, None).
+    - MoneyField supports default of type bytes
+  - Added
+    - Add support for Django 4.0 and 4.1.
+    - Add support for Python 3.10.
+  - Removed
+    - Drop support for Django 3.1.
+    - Drop support for Python 3.6.
+- Remove upstreamed patches:
+  - merged_pr_657.patch
+  -  pr_638.patch
+
+-------------------------------------------------------------------
+Mon Jun  6 21:41:48 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Refreshed patch pr_638.patch to the merged version.
+
+-------------------------------------------------------------------
+Sun Jun  5 16:32:55 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Updated pr_638.patch according to the latest development upstream.
+
+-------------------------------------------------------------------
+Wed May 25 07:28:34 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Do not require pytest-pythonpath for build
+
+-------------------------------------------------------------------
+Thu May 12 11:45:54 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v2.1.1
+  * Make Django REST Framework integration always raise lower-level
+    errors as ValidationError.
+  * False positives in Migration changes, improvements to
+    MoneyField.deconstruct.
+- from v2.1
+  * Add support for Django 3.2.
+  * Drop support for Django 1.11, 2.1 and 3.0.
+  * Drop support for Python 3.5.
+- from v2.0.3
+  * Inconsistent Money._copy_attributes behaviour when non-Money
+    instances are involved.
+- from v2.0.2
+  * Inconsistent Money._copy_attributes behaviour.
+- from v2.0.1
+  * Invalid deprecation warning behavior.
+- from v2.0
+  * New setting CURRENCY_CODE_MAX_LENGTH configures default
+    max_length for MoneyField and exchange app models.
+  * Update py-moneyed to >=1.2,<2. It uses babel to format Money,
+    which formats it differently than py-moneyed<1.
+  * Money.decimal_places_display to be removed in django-money 3.0.
+  * CURRENCY_DECIMAL_PLACES_DISPLAY to be removed in django-money 3.0.
+- Add patches for py-moneyed v2 support
+  * merged_pr_657.patch
+  * pr_638.patch
+
+-------------------------------------------------------------------
+Mon May 17 13:47:51 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.3.1
+  * Django 3.1 support
+  * New setting CURRENCY_DECIMAL_PLACES_DISPLAY configures decimal
+    places to display for each configured currency.
+
+-------------------------------------------------------------------
+Tue Mar 31 04:58:29 AM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v1.0

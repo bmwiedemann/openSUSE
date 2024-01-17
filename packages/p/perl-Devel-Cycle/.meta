@@ -1,0 +1,8 @@
+<package name="perl-Devel-Cycle" project="openSUSE:Factory">
+  <title>Find memory cycles in objects</title>
+  <description>This is a simple developer's tool for finding circular references in
+objects and other types of references. Because of Perl's reference-count
+based memory management, circular references will cause memory leaks.</description>
+  <devel project="devel:languages:perl" package="perl-Devel-Cycle"/>
+  <url>http://search.cpan.org/dist/Devel-Cycle/</url>
+</package>

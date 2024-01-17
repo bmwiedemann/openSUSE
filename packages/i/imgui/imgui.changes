@@ -1,0 +1,247 @@
+-------------------------------------------------------------------
+Sat Nov 25 20:24:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.90:
+  * BeginChild(): Upgraded 'bool border = false' parameter to
+    'ImGuiChildFlags flags = 0'.
+  * Added ImGuiChildFlags_Border value. As with our prior
+    "bool-to-flags" API updates, the ImGuiChildFlags_Border
+    value is guaranteed to be == true forever to ensure a
+    smoother transition, meaning all existing calls will still
+    work.
+  * BeginChildFrame()/EndChildFrame(): removed functions in
+    favor of using BeginChild() with the ImGuiChildFlags_FrameStyle
+    flag.
+  * IO: Removed io.MetricsActiveAllocations introduced in
+    1.63, was displayed in Metrics and unlikely to
+    be accessed by end-user. Value still visible in the UI and
+    easily to recompute from a delta.
+  * Commented out runtime support for hardcoded ~0 or
+    0x01..0x0F rounding flags values for
+    AddRect()/AddRectFilled()/PathRect()/AddImageRounded().
+
+-------------------------------------------------------------------
+Tue Jun 27 14:57:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.89.6:
+  * Decorated log and release notes:
+    https://github.com/ocornut/imgui/releases/tag/v1.89.6
+  * Breaking changes:
+  * Clipper: Commented out obsolete redirection constructor which
+    was marked obsolete in 1.79:
+    'ImGuiListClipper(int items_count, float items_height)'
+    --> Use 'ImGuiListClipper() + clipper.Begin()'.
+  * Backends: SDL_Renderer: Renamed
+    'imgui_impl_sdlrenderer.h/cpp' to
+    'imgui_impl_sdlrenderer2.h/cpp',
+    in order to accomodate for upcoming SDL3 and change in its
+    SDL_Renderer API.
+  * Backends: GLUT: Removed call to ImGui::NewFrame() from
+    ImGui_ImplGLUT_NewFrame().
+    It needs to be called from the main app loop, like with
+    every other backends.
+
+-------------------------------------------------------------------
+Mon May 29 01:41:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.89.5:
+  * InputText: Reworked prev/next-word behavior to more closely
+    match Visual Studio text editor. Include '.' as a delimiter
+    and alter varying subtle behavior with how
+    blanks and separators are treated when skipping words.
+  * InputText: Fixed a tricky edge case, ensuring value is always
+    written back on the frame where IsItemDeactivated() returns
+    true, in order to allow usage without user retaining
+    underlying data. While we don't really want to
+    encourage user not retaining underlying data, in the absence
+    of a "late commit" behavior/flag we understand it may
+    be desirable to take advantage of this trick.
+  * Drag, Sliders: Fixed parsing of text input when '+' or '#'
+    format flags are used in the format string.
+  * Nav: Made Ctrl+Tab/Ctrl+Shift+Tab windowing register
+    ownership to held modifier so it doesn't interfere with other
+    code when remapping those actions.
+  * Nav: Made PageUp/PageDown/Home/End navigation also scroll
+    parent windows when necessary to make the target location
+    fully visible (same as e.g. arrow keys).
+  * ColorEdit: Fixed shading of S/V triangle in Hue Wheel mode.
+  * TabBar: Tab-bars with ImGuiTabBarFlags_FittingPolicyScroll
+    can be scrolled with horizontal mouse-wheel (or Shift + WheelY).
+  * Rendering: Using adaptive tessellation for RadioButton,
+    ColorEdit preview circles, Windows Close and Collapse Buttons.
+  * ButtonBehavior: Fixed an edge case where changing widget
+    type/behavior while active and using same id could lead to
+    an assert.
+  * Misc: Fixed ImVec2 operator[] violating aliasing rules
+    causing issue with Intel C++ compiler. (#6272) [@BayesBug]
+  * IO: Input queue trickling adjustment for touch screens.
+  * Fixed tapping on BeginTabItem() on a touch-screen.
+  * Fixed tapping on CollapsingHeader() with a close button
+    on a touch-screen.
+  * Fixed tapping on TreeNode() using
+    ImGuiTreeNodeFlags_AllowItemOverlap on a touch-screen.
+  * Fixed tapping on Selectable() using
+    ImGuiSelectableFlags_AllowItemOverlap on a touch-screen.
+  * Fixed tapping on TableHeader() on a touch-screen.
+  * IO: Added io.AddMouseSourceEvent() and ImGuiMouseSource enum.
+  * IO: Fixed support for calling io.AddXXXX functions from
+    inactive context (wrongly advertised as supported in 1.89.4).
+  * Backends: OpenGL3: Fixed GL loader crash when GL_VERSION
+    returns NULL.
+  * Backends: OpenGL3: Properly restoring "no shader program
+    bound" if it was the case prior to running the rendering
+    function.
+  * Backends: Win32: Added support for io.AddMouseSourceEvent()
+    to discriminate Mouse/TouchScreen/Pen.
+  * Backends: SDL2/SDL3: Added support for
+    io.AddMouseSourceEvent() to discriminate Mouse/TouchScreen.
+  * This is relying on SDL passing SDL_TOUCH_MOUSEID in the
+    event's 'which' field.
+  * Backends: SDL2/SDL3: Avoid calling
+    SDL_StartTextInput()/SDL_StopTextInput() as they actually
+    block text input input and don't only pertain to IME.
+  * Backends: GLFW: Added support on Win32 only for
+    io.AddMouseSourceEvent() to discriminate Mouse/TouchScreen/Pen.
+  * Backends: GLFW: Fixed key modifiers handling on secondary
+    viewports.
+  * Backends: Android: Added support for io.AddMouseSourceEvent()
+    to discriminate Mouse/TouchScreen/Pen.
+  * Backends: OSX: Added support for io.AddMouseSourceEvent() to
+    discriminate Mouse/Pen.
+  * Backends: WebGPU: Align buffers. Use WGSL shaders instead of
+    SPIR-V. Add gamma uniform.
+  * Backends: WebGPU: Reorganized to store data in
+    io.BackendRendererUserData like other backends.
+
+-------------------------------------------------------------------
+Thu Apr 13 19:42:09 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.89.4:
+  * Nav: Tab key goes through every items (when keyboard navigation
+    is active).
+  * Nav: Enter key works to activate most items (when keyboard
+    navigation is active).
+  * Added return value to BeginTooltip().
+  * Examples: Activated keyboard and gamepad navigation by default
+    in all examples.
+  * Various other fixes related to: Nav, Tables, Drag and Drop,
+    InputText.
+  * Various improvements to Win32, SDL2, SDL3, GLFW backends.
+  * Added a Debug Tools to facilitate testing user-code testing
+    Begin/BeginChild return value.
+  * All changes see https://github.com/ocornut/imgui/releases/tag/v1.89.4
+
+-------------------------------------------------------------------
+Thu Apr 13 19:41:03 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.89.3:
+  * Backends+Examples: SDL2: renamed all unnumbered references to
+    "sdl" to "sdl2".
+  * This is in prevision for the future release of SDL3 and its
+    associated backend.
+  * All changes see https://github.com/ocornut/imgui/releases/tag/v1.89.3
+
+-------------------------------------------------------------------
+Fri Jan  6 08:51:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to v1.89.2:
+  * Tables, Nav, Scrolling: fixed scrolling functions and focus tracking
+    with frozen rows and frozen columns. Windows now have a better
+    understanding of outer/inner decoration sizes, which should later lead
+    us toward more flexible uses of menu/status bars. (#5143, #3692)
+  * Tables, Nav: frozen columns are not part of menu layer and can be
+    crossed over. (#5143, #3692)
+  * Tables, Columns: fixed cases where empty columns may lead to empty
+    ImDrawCmd. (#4857, #5937)
+  * Tables: fixed matching width of synchronized tables (multiple tables
+    with same id) when only some instances have a vertical scrollbar and not
+    all. (#5920)
+  * Fixed cases where CTRL+Tab or Modal can occasionally lead to the
+    creation of ImDrawCmd with zero triangles, which would makes the render
+    loop of some backends assert (e.g. Metal with debugging, Allegro).
+    (#4857, #5937)
+  * Inputs, IO: reworked ImGuiMod_Shortcut to redirect to Ctrl/Super at
+    runtime instead of compile-time, being consistent with our support for
+    io.ConfigMacOSXBehaviors and making it easier for bindings generators to
+    process that value. (#5923, #456)
+  * Inputs, Scrolling: better selection of scrolling window when hovering
+    nested windows and when backend/OS is emitting dual-axis wheeling inputs
+    (typically touch pads on macOS). We now select a primary axis based on
+    recent events, and select a target window based on it. We expect this
+    behavior to be further improved/tweaked. (#3795, #4559) [@ocornut,
+    @folays]
+  * InputText: fixed cursor navigation when pressing Up Arrow on the last
+    character of a multi-line buffer which doesn't end with a carriage
+    return. (#6000)
+  * Text: fixed layouting of wrapped-text block when the last source line is
+    above the clipping region. Regression added in 1.89. (#5720, #5919)
+  * Misc: added GetItemID() in public API. It is not often expected that you
+    would use this, but it is useful for Shortcut() and upcoming owner-aware
+    input functions which wants to be implemented with public API.
+  * Fonts: imgui_freetype: fixed a packing issue which in some occurrences
+    would prevent large amount of glyphs from being packed correctly.
+    (#5788, #5829)
+  * Fonts: added a void* UserData field in ImFontAtlas, as a convenience for
+    use by applications using multiple font atlases.
+  * Demo: simplified "Inputs" section, moved contents to Metrics->Inputs.
+  * Debug Tools: Metrics: added "Inputs" section, moved from Demo for
+    consistency.
+  * Misc: fixed parameters to IMGUI_DEBUG_LOG() not being dead-stripped when
+    building with IMGUI_DISABLE_DEBUG_TOOLS is used. (#5901) [@Teselka]
+  * Misc: fixed compile-time detection of SSE features on MSVC 32-bits
+    builds. (#5943) [@TheMostDiligent]
+  * Examples: DirectX10, DirectX11: try WARP software driver if hardware
+    driver is not available. (#5924, #5562)
+  * Backends: GLFW: Fixed mods state on Linux when using Alt-GR text input
+    (e.g. German keyboard layout), which could lead to broken text input.
+    Revert a 2022/01/17 change were we resumed using mods provided by GLFW,
+    turns out they are faulty in this specific situation. (#6034)
+  * Backends: Allegro5: restoring using al_draw_indexed_prim() when Allegro
+    version is >= 5.2.5. (#5937) [@Espyo]
+  * Backends: Vulkan: Fixed sampler passed to ImGui_ImplVulkan_AddTexture()
+    not being honored as we were using an immutable sampler. (#5502, #6001,
+    #914) [@martin-ejdestig, @rytisss]
+
+-------------------------------------------------------------------
+Tue Dec  6 20:58:07 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.89.1:
+  * too many changes to list here, see https://github.com/ocornut/imgui/releases/tag/v1.89.1
+
+-------------------------------------------------------------------
+Mon Aug 23 13:52:58 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to 1.84.2
+  Bugfix release:
+  * Disabled: Fixed nested BeginDisabled()/EndDisabled() calls.
+  * Backends: OpenGL3: OpenGL: Fixed ES 3.0 shader ("#version 300
+    es") to use normal precision floats. Avoid wobbly rendering at
+    HD resolutions.
+
+-------------------------------------------------------------------
+Sat Aug 21 21:26:07 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to 1.84.1
+  https://github.com/ocornut/imgui/releases/tag/v1.84
+
+-------------------------------------------------------------------
+Tue Apr 20 11:18:02 UTC 2021 - Anton Smorodskyi <asmorodskyi@suse.com>
+
+- drop logic building imgui.so because this library is dummy and not
+ship any actual functionality. ImGui suppose to be used as sources
+
+-------------------------------------------------------------------
+Sat Feb 20 15:07:04 UTC 2021 - Matthias Mailänder <mailaender@opensuse.org>
+
+- update to 1.81
+
+-------------------------------------------------------------------
+Sat Dec  5 15:36:53 UTC 2020 - Matthias Mailänder <mailaender@opensuse.org>
+
+- update to 1.79
+
+-------------------------------------------------------------------
+Thu Mar 16 14:00:52 UTC 2017 - dmacvicar@suse.de
+
+- initial package for 1.49
+

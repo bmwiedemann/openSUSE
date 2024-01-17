@@ -1,0 +1,4 @@
+addFilter('incoherent-init-script-name.*gdomap')
+addFilter('executable-sourced-script.*/etc/profile.d/GNUstep-start.sh')
+addFilter('sourced-script-with-shebang.*/etc/profile.d/GNUstep-start.sh')
+addFilter('macro-in-comment')

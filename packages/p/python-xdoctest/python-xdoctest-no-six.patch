@@ -1,0 +1,1262 @@
+Index: xdoctest-1.1.1/.github/workflows/tests.yml
+===================================================================
+--- xdoctest-1.1.1.orig/.github/workflows/tests.yml
++++ xdoctest-1.1.1/.github/workflows/tests.yml
+@@ -119,7 +119,7 @@ jobs:
+       shell: bash
+       run: |-
+         python -m pip install pip -U
+-        python -m pip install setuptools>=0.8 build
++        python -m pip install setuptools>=0.8 wheel build
+         python -m build --wheel --outdir wheelhouse
+     - name: Show built files
+       shell: bash
+@@ -138,132 +138,139 @@ jobs:
+       matrix:
+         include:
+         - python-version: '3.6'
+-          os: ubuntu-20.04
+           install-extras: tests-strict,runtime-strict
++          os: ubuntu-20.04
+           arch: auto
+         - python-version: '3.6'
+-          os: macOS-latest
+           install-extras: tests-strict,runtime-strict
++          os: macOS-latest
+           arch: auto
+         - python-version: '3.6'
+-          os: windows-latest
+           install-extras: tests-strict,runtime-strict
++          os: windows-latest
+           arch: auto
+         - python-version: '3.11'
+-          os: ubuntu-latest
+           install-extras: tests-strict,runtime-strict,optional-strict
++          os: ubuntu-latest
+           arch: auto
+         - python-version: '3.11'
+-          os: macOS-latest
+           install-extras: tests-strict,runtime-strict,optional-strict
++          os: macOS-latest
+           arch: auto
+         - python-version: '3.11'
+-          os: windows-latest
+           install-extras: tests-strict,runtime-strict,optional-strict
++          os: windows-latest
+           arch: auto
+         - python-version: '3.11'
+-          os: macOS-latest
+           install-extras: tests
++          os: windows-latest
+           arch: auto
+         - python-version: '3.11'
+-          os: windows-latest
+           install-extras: tests
++          os: windows-latest
+           arch: auto
+         - python-version: '3.6'
+-          os: ubuntu-20.04
+           install-extras: tests,optional
++          os: windows-latest
+           arch: auto
+         - python-version: '3.7'
+-          os: ubuntu-latest
+           install-extras: tests,optional
++          os: windows-latest
+           arch: auto
+         - python-version: '3.8'
+-          os: ubuntu-latest
+           install-extras: tests,optional
++          os: windows-latest
+           arch: auto
+         - python-version: '3.9'
+-          os: ubuntu-latest
+           install-extras: tests,optional
++          os: windows-latest
+           arch: auto
+         - python-version: '3.10'
+-          os: ubuntu-latest
+           install-extras: tests,optional
++          os: windows-latest
+           arch: auto
+         - python-version: '3.11'
+-          os: ubuntu-latest
+           install-extras: tests,optional
++          os: windows-latest
++          arch: auto
++        - python-version: pypy-3.7
++          install-extras: tests,optional
++          os: windows-latest
+           arch: auto
+         - python-version: '3.6'
+-          os: macOS-latest
+           install-extras: tests,optional
++          os: windows-latest
+           arch: auto
+         - python-version: '3.7'
+-          os: macOS-latest
+           install-extras: tests,optional
++          os: windows-latest
+           arch: auto
+         - python-version: '3.8'
+-          os: macOS-latest
+           install-extras: tests,optional
++          os: windows-latest
+           arch: auto
+         - python-version: '3.9'
+-          os: macOS-latest
+           install-extras: tests,optional
++          os: windows-latest
+           arch: auto
+         - python-version: '3.10'
+-          os: macOS-latest
+           install-extras: tests,optional
++          os: windows-latest
+           arch: auto
+         - python-version: '3.11'
+-          os: macOS-latest
+           install-extras: tests,optional
++          os: windows-latest
+           arch: auto
+-        - python-version: '3.6'
++        - python-version: pypy-3.7
++          install-extras: tests,optional
+           os: windows-latest
++          arch: auto
++        - python-version: '3.6'
+           install-extras: tests,optional
++          os: windows-latest
+           arch: auto
+         - python-version: '3.7'
+-          os: windows-latest
+           install-extras: tests,optional
++          os: windows-latest
+           arch: auto
+         - python-version: '3.8'
+-          os: windows-latest
+           install-extras: tests,optional
++          os: windows-latest
+           arch: auto
+         - python-version: '3.9'
+-          os: windows-latest
+           install-extras: tests,optional
++          os: windows-latest
+           arch: auto
+         - python-version: '3.10'
+-          os: windows-latest
+           install-extras: tests,optional
++          os: windows-latest
+           arch: auto
+         - python-version: '3.11'
+-          os: windows-latest
+           install-extras: tests,optional
++          os: windows-latest
+           arch: auto
+         - python-version: pypy-3.7
+-          os: ubuntu-latest
+           install-extras: tests,optional
++          os: windows-latest
+           arch: auto
+         - python-version: pypy-3.7
+-          os: macOS-latest
+           install-extras: tests,optional
++          os: windows-latest
+           arch: auto
+         - python-version: pypy-3.7
++          install-extras: tests,optional
+           os: windows-latest
++          arch: auto
++        - python-version: pypy-3.7
+           install-extras: tests,optional
++          os: windows-latest
+           arch: auto
+     steps:
+     - name: Checkout source
+       uses: actions/checkout@v3
+     - name: Enable MSVC 64bit
+       uses: ilammy/msvc-dev-cmd@v1
+-      if: matrix.os == 'windows-latest' # && ${{ contains(matrix.cibw_skip, '*-win32') }}
+-    #- name: Enable MSVC 32bit
+-    #  uses: ilammy/msvc-dev-cmd@v1
+-    #  if: matrix.os == 'windows-latest' && ${{ contains(matrix.cibw_skip, '*-win_amd64') }}
+-    #  with:
+-    #    arch: x86
++      if: matrix.os == 'windows-latest'
+     - name: Set up QEMU
+       uses: docker/setup-qemu-action@v2
+       if: runner.os == 'Linux' && matrix.arch != 'auto'
+@@ -274,43 +281,47 @@ jobs:
+       with:
+         python-version: ${{ matrix.python-version }}
+     - uses: actions/download-artifact@v3
+-      name: Download wheels and sdist
++      name: Download wheels
+       with:
+         name: wheels
+         path: wheelhouse
+-    - name: Test wheel with ${{ matrix.install-extras }}
++    - name: Install wheel ${{ matrix.install-extras }}
+       shell: bash
+       env:
+         INSTALL_EXTRAS: ${{ matrix.install-extras }}
+-        CI_PYTHON_VERSION: py${{ matrix.python-version }}
+       run: |-
+         echo "Finding the path to the wheel"
+-        ls -al wheelhouse
++        ls wheelhouse || echo "wheelhouse does not exist"
+         echo "Installing helpers"
++        pip install pip setuptools>=0.8 setuptools_scm wheel build -U
+         pip install tomli pkginfo
+-        MOD_NAME=xdoctest
+-        echo "MOD_NAME=$MOD_NAME"
+-        WHEEL_FPATH=$(python -c "import pathlib; print(str(sorted(pathlib.Path('wheelhouse').glob('$MOD_NAME*.whl'))[-1]).replace(chr(92), chr(47)))")
+-        echo "WHEEL_FPATH=$WHEEL_FPATH"
+-        MOD_VERSION=$(python -c "from pkginfo import Wheel; print(Wheel('$WHEEL_FPATH').version)")
+-        echo "MOD_VERSION=$MOD_VERSION"
+-        echo "Install the wheel (ensureing we are using the version we just built)"
+-        # NOTE: THE VERSION MUST BE NEWER THAN AN EXISTING PYPI VERSION OR THIS MAY FAIL
+-        pip install --prefer-binary "$MOD_NAME[$INSTALL_EXTRAS]==$MOD_VERSION" -f wheelhouse
+-        echo "Install finished. Creating a sandbox directory to test it"
+-        WORKSPACE_DNAME="testdir_${CI_PYTHON_VERSION}_${GITHUB_RUN_ID}_${RUNNER_OS}"
++        export WHEEL_FPATH=$(python -c "import pathlib; print(str(sorted(pathlib.Path('wheelhouse').glob('xdoctest*.whl'))[-1]).replace(chr(92), chr(47)))")
++        export MOD_VERSION=$(python -c "from pkginfo import Wheel; print(Wheel('$WHEEL_FPATH').version)")
++        pip install --prefer-binary "xdoctest[$INSTALL_EXTRAS]==$MOD_VERSION" -f wheelhouse
++        echo "Install finished."
++    - name: Test wheel ${{ matrix.install-extras }}
++      shell: bash
++      env:
++        CI_PYTHON_VERSION: py${{ matrix.python-version }}
++      run: |-
++        echo "Creating test sandbox directory"
++        export WORKSPACE_DNAME="testdir_${CI_PYTHON_VERSION}_${GITHUB_RUN_ID}_${RUNNER_OS}"
+         echo "WORKSPACE_DNAME=$WORKSPACE_DNAME"
+         mkdir -p $WORKSPACE_DNAME
+         echo "cd-ing into the workspace"
+         cd $WORKSPACE_DNAME
+         pwd
+-        ls -al
+-        pip freeze
++        ls -altr
+         # Get the path to the installed package and run the tests
+-        MOD_DPATH=$(python -c "import xdoctest, os; print(os.path.dirname(xdoctest.__file__))")
+-        echo "MOD_DPATH = $MOD_DPATH"
+-        echo "running the pytest command inside the workspace"
+-        python -m pytest -p pytester -p no:doctest --xdoctest --cov-config ../pyproject.toml --cov-report term --cov="$MOD_NAME" "$MOD_DPATH" ../tests
++        export MOD_DPATH=$(python -c "import xdoctest, os; print(os.path.dirname(xdoctest.__file__))")
++        echo "
++        ---
++        MOD_DPATH = $MOD_DPATH
++        ---
++        running the pytest command inside the workspace
++        ---
++        "
++        python -m pytest -p pytester -p no:doctest --xdoctest --cov-config ../pyproject.toml --cov-report term --cov="xdoctest" "$MOD_DPATH" ../tests
+         echo "pytest command finished, moving the coverage file to the repo root"
+         ls -al
+         # Move coverage file to a new name
+@@ -323,19 +334,20 @@ jobs:
+       run: |-
+         echo '############ PWD'
+         pwd
++        cp .wheelhouse/.coverage* . || true
+         ls -al
+         python -m pip install coverage[toml]
+         echo '############ combine'
+-        coverage combine .
++        coverage combine . || true
+         echo '############ XML'
+-        coverage xml -o ./tests/coverage.xml
+-        echo '############ FIND'
+-        find . -name .coverage.*
+-        find . -name coverage.xml
++        coverage xml -o ./coverage.xml || true
++        echo '### The cwd should now have a coverage.xml'
++        ls -altr
++        pwd
+     - uses: codecov/codecov-action@v3
+       name: Codecov Upload
+       with:
+-        file: ./tests/coverage.xml
++        file: ./coverage.xml
+   test_deploy:
+     name: Uploading Test to PyPi
+     runs-on: ubuntu-latest
+@@ -443,4 +455,4 @@ jobs:
+ #        --secret=EROTEMIC_TWINE_USERNAME=$EROTEMIC_TWINE_USERNAME \
+ #        --secret=EROTEMIC_CI_SECRET=$EROTEMIC_CI_SECRET \
+ #        --secret=EROTEMIC_TEST_TWINE_USERNAME=$EROTEMIC_TEST_TWINE_USERNAME \
+-#        --secret=EROTEMIC_TEST_TWINE_PASSWORD=$EROTEMIC_TEST_TWINE_PASSWORD
++#        --secret=EROTEMIC_TEST_TWINE_PASSWORD=$EROTEMIC_TEST_TWINE_PASSWORD
+\ No newline at end of file
+Index: xdoctest-1.1.1/dev/demo_errors.py
+===================================================================
+--- xdoctest-1.1.1.orig/dev/demo_errors.py
++++ xdoctest-1.1.1/dev/demo_errors.py
+@@ -1,11 +1,9 @@
+ #!/usr/bin/env python
+-# -*- coding: utf-8 -*-
+ """
+ This file contains doctests with errors. Executing xdoctest on this file will
+ demo how xdoctest reoprts errors. (It can also be used / was created for
+ debuging)
+ """
+-from __future__ import absolute_import, division, print_function, unicode_literals
+ 
+ 
+ def demo1():
+Index: xdoctest-1.1.1/dev/demo_usage_with_logger.py
+===================================================================
+--- xdoctest-1.1.1.orig/dev/demo_usage_with_logger.py
++++ xdoctest-1.1.1/dev/demo_usage_with_logger.py
+@@ -1,4 +1,3 @@
+-# -*- coding: utf-8 -*-
+ """
+ demo_usage_with_logger.py
+ 
+Index: xdoctest-1.1.1/dev/port_ubelt_utils.py
+===================================================================
+--- xdoctest-1.1.1.orig/dev/port_ubelt_utils.py
++++ xdoctest-1.1.1/dev/port_ubelt_utils.py
+@@ -42,12 +42,10 @@ def _autogen_xdoctest_utils():
+ 
+     prefix = ub.codeblock(
+         '''
+-        # -*- coding: utf-8 -*-
+         """
+         This file was autogenerated based on code in ubelt via
+         dev/port_ubelt_utils.py in the xdoctest repo
+         """
+-        from __future__ import print_function, division, absolute_import, unicode_literals
+         ''')
+ 
+     # Remove doctest references to ubelt
+Index: xdoctest-1.1.1/docs/requirements.txt
+===================================================================
+--- xdoctest-1.1.1.orig/docs/requirements.txt
++++ xdoctest-1.1.1/docs/requirements.txt
+@@ -3,7 +3,6 @@ sphinx-autobuild
+ sphinx_rtd_theme 
+ sphinxcontrib-napoleon
+ sphinx-autoapi
+-six
+ Pygments
+ ubelt
+ sphinx-reredirects
+Index: xdoctest-1.1.1/docs/source/conf.py
+===================================================================
+--- xdoctest-1.1.1.orig/docs/source/conf.py
++++ xdoctest-1.1.1/docs/source/conf.py
+@@ -1,4 +1,3 @@
+-# -*- coding: utf-8 -*-
+ """
+ Notes:
+     http://docs.readthedocs.io/en/latest/getting_started.html
+Index: xdoctest-1.1.1/pyproject.toml
+===================================================================
+--- xdoctest-1.1.1.orig/pyproject.toml
++++ xdoctest-1.1.1/pyproject.toml
+@@ -77,7 +77,7 @@ exclude_lines = [
+      "^ *raise",
+      "^ *pass *$",
+      "if _debug:",
+-     "if __name__ == .__main__.:", ".*if six.PY2:",
++     "if __name__ == .__main__.:",
+ ]
+ omit = [
+     "*/setup.py",
+Index: xdoctest-1.1.1/requirements/problematic.txt
+===================================================================
+--- xdoctest-1.1.1.orig/requirements/problematic.txt
++++ /dev/null
+@@ -1,5 +0,0 @@
+-# Causing python3.4 issues on win32
+-colorama >= 0.4.1;platform_system=="Windows"
+-# colorama >= 0.4.1;python_version>"3.4"
+-# colorama <= 0.4.1;python_version<="3.4"
+-Pygments >= 2.2.0
+Index: xdoctest-1.1.1/requirements/runtime.txt
+===================================================================
+--- xdoctest-1.1.1.orig/requirements/runtime.txt
++++ xdoctest-1.1.1/requirements/runtime.txt
+@@ -1 +0,0 @@
+-six >= 1.11.0
+Index: xdoctest-1.1.1/requirements/tests.txt
+===================================================================
+--- xdoctest-1.1.1.orig/requirements/tests.txt
++++ xdoctest-1.1.1/requirements/tests.txt
+@@ -9,6 +9,4 @@ pytest >= 4.6.0            ; python_vers
+ 
+ pytest-cov >= 3.0.0           ;                               python_version >= '3.6.0'   # Python 3.6+
+ 
+-codecov >= 2.0.15
+-
+ typing >= 3.7.4;python_version <= '3.4' 
+Index: xdoctest-1.1.1/setup.py
+===================================================================
+--- xdoctest-1.1.1.orig/setup.py
++++ xdoctest-1.1.1/setup.py
+@@ -199,24 +199,24 @@ VERSION = parse_version(INIT_PATH)
+ if __name__ == "__main__":
+     setupkw = {}
+ 
+-    setupkw["install_requires"] = parse_requirements("requirements/runtime.txt")
+-    setupkw["extras_require"] = {
+-        "all": parse_requirements("requirements.txt"),
+-        "tests": parse_requirements("requirements/tests.txt"),
+-        "optional": parse_requirements("requirements/optional.txt"),
+-        "all-strict": parse_requirements("requirements.txt", versions="strict"),
+-        "runtime-strict": parse_requirements(
+-            "requirements/runtime.txt", versions="strict"
+-        ),
+-        "tests-strict": parse_requirements("requirements/tests.txt", versions="strict"),
+-        "optional-strict": parse_requirements(
+-            "requirements/optional.txt", versions="strict"
+-        ),
+-        'tests-binary': parse_requirements('requirements/tests-binary.txt'),
+-        'tests-binary-strict': parse_requirements('requirements/tests-binary.txt', versions='strict'),
+-        'colors': parse_requirements('requirements/colors.txt'),
+-        'jupyter': parse_requirements('requirements/jupyter.txt'),
+-    }
++    # setupkw["install_requires"] = parse_requirements("requirements/runtime.txt")
++    # setupkw["extras_require"] = {
++    #     "all": parse_requirements("requirements.txt"),
++    #     "tests": parse_requirements("requirements/tests.txt"),
++    #     "optional": parse_requirements("requirements/optional.txt"),
++    #     "all-strict": parse_requirements("requirements.txt", versions="strict"),
++    #     "runtime-strict": parse_requirements(
++    #         "requirements/runtime.txt", versions="strict"
++    #     ),
++    #     "tests-strict": parse_requirements("requirements/tests.txt", versions="strict"),
++    #     "optional-strict": parse_requirements(
++    #         "requirements/optional.txt", versions="strict"
++    #     ),
++    #     'tests-binary': parse_requirements('requirements/tests-binary.txt'),
++    #     'tests-binary-strict': parse_requirements('requirements/tests-binary.txt', versions='strict'),
++    #     'colors': parse_requirements('requirements/colors.txt'),
++    #     'jupyter': parse_requirements('requirements/jupyter.txt'),
++    # }
+ 
+     setupkw["name"] = NAME
+     setupkw["version"] = VERSION
+Index: xdoctest-1.1.1/src/xdoctest/__init__.py
+===================================================================
+--- xdoctest-1.1.1.orig/src/xdoctest/__init__.py
++++ xdoctest-1.1.1/src/xdoctest/__init__.py
+@@ -1,4 +1,3 @@
+-# -*- coding: utf-8 -*-
+ # :github_url: https://github.com/Erotemic/xdoctest
+ '''
+ 
+@@ -314,7 +313,7 @@ __autogen__ = '''
+ mkinit xdoctest --nomods
+ '''
+ 
+-__version__ = '1.1.1'
++__version__ = '1.1.2'
+ 
+ 
+ # Expose only select submodules
+Index: xdoctest-1.1.1/src/xdoctest/__main__.py
+===================================================================
+--- xdoctest-1.1.1.orig/src/xdoctest/__main__.py
++++ xdoctest-1.1.1/src/xdoctest/__main__.py
+@@ -1,11 +1,9 @@
+ #!/usr/bin/env python
+-# -*- coding: utf-8 -*-
+ """
+ Provides a simple script for running module doctests.
+ 
+ This should work even if the target module is unaware of xdoctest.
+ """
+-from __future__ import absolute_import, division, print_function, unicode_literals
+ import sys
+ 
+ 
+@@ -141,7 +139,7 @@ def main(argv=None):
+                 except KeyError:
+                     pass
+         if exists('pytest.ini'):
+-            from six.moves import configparser
++            import configparser
+             parser = configparser.ConfigParser()
+             parser.read('pytest.ini')
+             try:
+Index: xdoctest-1.1.1/src/xdoctest/checker.py
+===================================================================
+--- xdoctest-1.1.1.orig/src/xdoctest/checker.py
++++ xdoctest-1.1.1/src/xdoctest/checker.py
+@@ -1,4 +1,3 @@
+-# -*- coding: utf-8 -*-
+ """
+ Checks for got-vs-want statements
+ 
+@@ -31,7 +30,6 @@ representation of expression-based "got-
+ 
+ 
+ """
+-from __future__ import print_function, division, absolute_import, unicode_literals
+ import re
+ import difflib
+ from xdoctest import utils
+Index: xdoctest-1.1.1/src/xdoctest/constants.py
+===================================================================
+--- xdoctest-1.1.1.orig/src/xdoctest/constants.py
++++ xdoctest-1.1.1/src/xdoctest/constants.py
+@@ -1,8 +1,6 @@
+-# -*- coding: utf-8 -*-
+ """
+ Defines sentinel values for internal xdoctest usage
+ """
+-from __future__ import print_function, division, absolute_import, unicode_literals
+ 
+ 
+ # Create the most singleton object ever to avoid reload issues
+Index: xdoctest-1.1.1/src/xdoctest/core.py
+===================================================================
+--- xdoctest-1.1.1.orig/src/xdoctest/core.py
++++ xdoctest-1.1.1/src/xdoctest/core.py
+@@ -1,4 +1,3 @@
+-# -*- coding: utf-8 -*-
+ """
+ Core methods used by xdoctest runner and plugin code to statically extract
+ doctests from a module or package.
+@@ -30,11 +29,9 @@ The following is a glossary of terms and
+ * TODO - complete this list (Make an issue or PR if there is any term you don't
+     immediately understand!).
+ """
+-from __future__ import absolute_import, division, print_function, unicode_literals
+ import sys
+ import textwrap
+ import warnings
+-import six
+ import itertools as it
+ import types
+ from os.path import exists
+@@ -180,7 +177,7 @@ def parse_freeform_docstr_examples(docst
+ 
+     def _start_ignoring(prev):
+         return (special_skip_patterns_ and
+-                isinstance(prev, six.string_types) and
++                isinstance(prev, str) and
+                 prev.strip().lower().endswith(special_skip_patterns_))
+ 
+     # parse into doctest and plaintext parts
+@@ -194,7 +191,7 @@ def parse_freeform_docstr_examples(docst
+     ignoring = False
+ 
+     for part in all_parts:
+-        if isinstance(part, six.string_types):
++        if isinstance(part, str):
+             # Part is a plaintext
+             if asone:
+                 # Lump all doctest parts into one example
+@@ -440,9 +437,6 @@ def _rectify_to_modpath(modpath_or_name)
+         raise TypeError('Expected a static module but got a dynamic one')
+     modpath = util_import.modname_to_modpath(modpath_or_name)
+     if modpath is None:
+-        if six.PY2:
+-            if modpath_or_name.endswith('.pyc'):
+-                modpath_or_name = modpath_or_name[:-1]
+         if exists(modpath_or_name):
+             modpath = modpath_or_name
+         else:
+@@ -497,7 +491,7 @@ def package_calldefs(pkg_identifier, exc
+             pkgpath, with_pkg=True, with_libs=True))
+ 
+     for module_identifier in identifiers:
+-        if isinstance(module_identifier, six.string_types):
++        if isinstance(module_identifier, str):
+             modpath = module_identifier
+             modname = util_import.modpath_to_modname(modpath)
+             if any(fnmatch(modname, pat) for pat in exclude):
+Index: xdoctest-1.1.1/src/xdoctest/directive.py
+===================================================================
+--- xdoctest-1.1.1.orig/src/xdoctest/directive.py
++++ xdoctest-1.1.1/src/xdoctest/directive.py
+@@ -75,6 +75,8 @@ TODO
+ 
+ - [ ] Customize directive.
+ 
++- [ ] Add SKIPIF directive
++
+ Customized Requirements Design:
+ 
+     * Allow user to specify a customized requirement on the CLI or environ.
+Index: xdoctest-1.1.1/src/xdoctest/docstr/docscrape_google.py
+===================================================================
+--- xdoctest-1.1.1.orig/src/xdoctest/docstr/docscrape_google.py
++++ xdoctest-1.1.1/src/xdoctest/docstr/docscrape_google.py
+@@ -1,4 +1,3 @@
+-# -*- coding: utf-8 -*-
+ """
+ Handles parsing of information out of google style docstrings
+ 
+@@ -21,11 +20,9 @@ References:
+     .. [GoogleStyleDocs1] https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html#example-google
+     .. [GoogleStyleDocs2] http://www.sphinx-doc.org/en/stable/ext/example_google.html#example-google
+ """
+-from __future__ import absolute_import, division, print_function, unicode_literals
+ import re
+ import textwrap
+ import collections
+-import six
+ from xdoctest import exceptions
+ from xdoctest.utils.util_str import ensure_unicode
+ 
+@@ -120,7 +117,7 @@ def split_google_docblocks(docstr):
+         >>> print('offset = {!r}'.format(offset))
+         >>> assert offset == 1
+     """
+-    if not isinstance(docstr, six.string_types):
++    if not isinstance(docstr, str):
+         raise TypeError('Input docstr must be a string. Got {} instead'.format(
+             type(docstr)))
+ 
+Index: xdoctest-1.1.1/src/xdoctest/doctest_example.py
+===================================================================
+--- xdoctest-1.1.1.orig/src/xdoctest/doctest_example.py
++++ xdoctest-1.1.1/src/xdoctest/doctest_example.py
+@@ -1,12 +1,9 @@
+-# -*- coding: utf-8 -*-
+ """
+ This module defines the main class that holds a DocTest example
+ """
+-from __future__ import absolute_import, division, print_function, unicode_literals
+ import __future__
+ from collections import OrderedDict
+ import traceback
+-import six
+ import warnings
+ import math
+ import sys
+@@ -539,7 +536,7 @@ class DocTest(object):
+                         lineno=self.lineno, fpath=self.fpath)
+             self._parts = parser.DoctestParser().parse(self.docsrc, info)
+             self._parts = [p for p in self._parts
+-                           if not isinstance(p, six.string_types)]
++                           if not isinstance(p, str)]
+         # Ensure part numbers are given
+         for partno, part in enumerate(self._parts):
+             part.partno = partno
+@@ -1291,7 +1288,7 @@ class DocTest(object):
+     def _print_captured(self):
+         out_text = ''.join([v for v in self.logged_stdout.values() if v])
+         if out_text is not None:
+-            assert isinstance(out_text, six.text_type), 'do not use ascii'
++            assert isinstance(out_text, str), 'do not use bytes'
+         try:
+             print(out_text)
+         except UnicodeEncodeError:
+Index: xdoctest-1.1.1/src/xdoctest/doctest_part.py
+===================================================================
+--- xdoctest-1.1.1.orig/src/xdoctest/doctest_part.py
++++ xdoctest-1.1.1/src/xdoctest/doctest_part.py
+@@ -1,11 +1,9 @@
+-# -*- coding: utf-8 -*-
+ """
+ Simple storage container used to store a single executable part of a doctest
+ example. Multiple parts are typically stored in a
+ :class:`xdoctest.doctest_example.Doctest`, which manages execution of each
+ part.
+ """
+-from __future__ import print_function, division, absolute_import, unicode_literals
+ import math
+ from xdoctest import utils
+ from xdoctest import checker
+Index: xdoctest-1.1.1/src/xdoctest/dynamic_analysis.py
+===================================================================
+--- xdoctest-1.1.1.orig/src/xdoctest/dynamic_analysis.py
++++ xdoctest-1.1.1/src/xdoctest/dynamic_analysis.py
+@@ -1,12 +1,9 @@
+-# -*- coding: utf-8 -*-
+ """
+ Utilities for dynamically inspecting code
+ """
+-from __future__ import absolute_import, division, print_function, unicode_literals
+ import inspect
+ import os
+ import types
+-import six
+ 
+ 
+ def parse_dynamic_calldefs(modpath_or_module):
+@@ -180,27 +177,21 @@ def iter_module_doctestables(module):
+         property,
+     )
+ 
+-    if six.PY2:
+-        valid_class_types = (types.ClassType,  types.TypeType,)
+-    else:
+-        valid_class_types = six.class_types
+-
+     def _recurse(item, module):
+         return is_defined_by_module(item, module)
+ 
+-    #modpath = static.modpath_to_modname(module.__file__)
+     for key, val in module.__dict__.items():
+         if isinstance(val, valid_func_types):
+             if not _recurse(val, module):
+                 continue
+             yield key, val
+-        elif isinstance(val, valid_class_types):
++        elif isinstance(val, type):
+             if not _recurse(val, module):
+                 continue
+             # Yield the class itself
+             yield key, val
+             # Yield methods of the class
+-            for subkey, subval in six.iteritems(val.__dict__):
++            for subkey, subval in val.__dict__.items():
+                 # Unbound methods are still typed as functions
+                 if isinstance(subval, valid_func_types):
+                     if not _recurse(subval, module):
+@@ -217,13 +208,6 @@ def iter_module_doctestables(module):
+                     yield key + '.' + subkey, item
+ 
+ 
+-def _func_globals(func):
+-    if six.PY2:
+-        return getattr(func, 'func_globals')
+-    else:
+-        return getattr(func, '__globals__')
+-
+-
+ def is_defined_by_module(item, module):
+     """
+     Check if item is directly defined by a module.
+@@ -242,9 +226,9 @@ def is_defined_by_module(item, module):
+         >>> item = dynamic_analysis.is_defined_by_module
+         >>> module = dynamic_analysis
+         >>> assert is_defined_by_module(item, module)
+-        >>> item = dynamic_analysis.six
++        >>> item = dynamic_analysis.inspect
+         >>> assert not is_defined_by_module(item, module)
+-        >>> item = dynamic_analysis.six.print_
++        >>> item = dynamic_analysis.inspect.ismodule
+         >>> assert not is_defined_by_module(item, module)
+         >>> assert not is_defined_by_module(print, module)
+         >>> # xdoctest: +REQUIRES(CPython)
+@@ -261,7 +245,7 @@ def is_defined_by_module(item, module):
+     target_modname = module.__name__
+ 
+     # invalid_types = (int, float, list, tuple, set)
+-    # if isinstance(item, invalid_types) or isinstance(item, six.string_type):
++    # if isinstance(item, invalid_types) or isinstance(item, str):
+     #     raise TypeError('can only test definitions for classes and functions')
+ 
+     flag = False
+@@ -300,7 +284,7 @@ def is_defined_by_module(item, module):
+                 flag = True
+         if not flag:
+             try:
+-                item_modname = _func_globals(item)['__name__']
++                item_modname = item.__globals__['__name__']
+                 if item_modname == target_modname:
+                     flag = True
+             except  AttributeError:
+Index: xdoctest-1.1.1/src/xdoctest/parser.py
+===================================================================
+--- xdoctest-1.1.1.orig/src/xdoctest/parser.py
++++ xdoctest-1.1.1/src/xdoctest/parser.py
+@@ -1,4 +1,3 @@
+-# -*- coding: utf-8 -*-
+ """
+ The XDoctest Parser
+ -------------------
+@@ -34,8 +33,6 @@ While I do believe this AST-based code i
+ RE-based builtin doctest parser, I acknowledge that I'm not an AST expert and
+ there is room for improvement here.
+ """
+-from __future__ import print_function, division, absolute_import, unicode_literals
+-import six
+ import ast
+ import sys
+ import re
+@@ -53,7 +50,6 @@ INDENT_RE = re.compile(r'^([ ]*)(?=\S)',
+ 
+ # This issue was resolved in 3.8
+ NEED_16806_WORKAROUND = sys.version_info[0:2] < (3, 8)
+-PY2 = (sys.version_info.major == 2)
+ 
+ 
+ class DoctestParser(object):
+@@ -154,7 +150,7 @@ class DoctestParser(object):
+         if sys.version_info.major == 2:  # nocover
+             string = utils.ensure_unicode(string)
+ 
+-        if not isinstance(string, six.string_types):
++        if not isinstance(string, str):
+             raise TypeError('Expected string but got {!r}'.format(string))
+ 
+         string = string.expandtabs()
+@@ -605,15 +601,10 @@ class DoctestParser(object):
+             mode_hint = 'exec'
+         else:
+             # Is the last statement evaluate-able?
+-            if PY2:  # nocover
+-                # Python 2 overhead
+-                if isinstance(statement_nodes[-1], (ast.Expr, ast.Print)):
+-                    mode_hint = 'eval'
+-            else:
+-                if isinstance(statement_nodes[-1], ast.Expr):
+-                    # This should just be an Expr in python3
+-                    # (todo: ensure this is true)
+-                    mode_hint = 'eval'
++            if isinstance(statement_nodes[-1], ast.Expr):
++                # This should just be an Expr in python3
++                # (todo: ensure this is true)
++                mode_hint = 'eval'
+ 
+         # WORKON_BACKWARDS_COMPAT_CONTINUE_EVAL:
+         # Force doctests parts to evaluate in backwards compatible "single"
+@@ -633,14 +624,9 @@ class DoctestParser(object):
+                 return next(iterable)
+             # We cannot eval a statement with a semicolon in it
+             # Single should work.
+-            if PY2:
+-                if any(t[0] == tokenize.OP and t[1] == ';'
+-                       for t in tokenize.generate_tokens(_readline)):
+-                    mode_hint = 'single'
+-            else:
+-                if any(t.type == tokenize.OP and t.string == ';'
+-                       for t in tokenize.generate_tokens(_readline)):
+-                    mode_hint = 'single'
++            if any(t.type == tokenize.OP and t.string == ';'
++                   for t in tokenize.generate_tokens(_readline)):
++                mode_hint = 'single'
+ 
+         return ps1_linenos, mode_hint
+ 
+Index: xdoctest-1.1.1/src/xdoctest/plugin.py
+===================================================================
+--- xdoctest-1.1.1.orig/src/xdoctest/plugin.py
++++ xdoctest-1.1.1/src/xdoctest/plugin.py
+@@ -1,4 +1,3 @@
+-# -*- coding: utf-8 -*-
+ """
+ The Pytest XDoctest Plugin
+ --------------------------
+@@ -15,7 +14,6 @@ this code is heavilly based on ``pytest/
+ https://github.com/pytest-dev/pytest
+ 
+ """
+-from __future__ import absolute_import, division, print_function
+ import pytest
+ from _pytest._code import code
+ from _pytest import fixtures
+Index: xdoctest-1.1.1/src/xdoctest/runner.py
+===================================================================
+--- xdoctest-1.1.1.orig/src/xdoctest/runner.py
++++ xdoctest-1.1.1/src/xdoctest/runner.py
+@@ -1,4 +1,3 @@
+-# -*- coding: utf-8 -*-
+ """
+ The Native XDoctest Runner
+ --------------------------
+@@ -48,7 +47,6 @@ run the doctests as such:
+     python -m xdoctest.runner list
+ 
+ """
+-from __future__ import absolute_import, division, print_function, unicode_literals
+ from xdoctest import dynamic_analysis
+ from xdoctest import core
+ from xdoctest import doctest_example
+@@ -405,7 +403,7 @@ def _convert_to_test_module(enabled_exam
+     dump_config = {
+         'remove_import_star': True,
+     }
+-    from xdoctest import static_analysis as static
++    # from xdoctest import static_analysis as static
+ 
+     module_lines = []
+     for example in enabled_examples:
+Index: xdoctest-1.1.1/src/xdoctest/static_analysis.py
+===================================================================
+--- xdoctest-1.1.1.orig/src/xdoctest/static_analysis.py
++++ xdoctest-1.1.1/src/xdoctest/static_analysis.py
+@@ -1,8 +1,6 @@
+-# -*- coding: utf-8 -*-
+ """
+ The core logic that allows for xdoctest to parse source statically
+ """
+-from __future__ import absolute_import, division, print_function, unicode_literals
+ import sys
+ from os.path import exists
+ from os.path import isfile
+@@ -11,7 +9,6 @@ from os.path import splitext
+ import os
+ import ast
+ import re
+-import six
+ import tokenize
+ from collections import deque, OrderedDict
+ from xdoctest import utils
+@@ -671,9 +668,6 @@ def parse_static_calldefs(source=None, f
+         >>> calldefs = parse_static_calldefs(fpath=fpath)
+         >>> assert 'parse_static_calldefs' in calldefs
+     """
+-    if six.PY2:
+-        fpath = fpath.replace('.pyc', '.py')
+-
+     if source is None:  # pragma: no branch
+         try:
+             with open(fpath, 'rb') as file_:
+@@ -725,12 +719,8 @@ def _parse_static_node_value(node):
+         values = map(_parse_static_node_value, node.values)
+         value = OrderedDict(zip(keys, values))
+         # value = dict(zip(keys, values))
+-    elif six.PY3 and isinstance(node, (ast.NameConstant)):
++    elif isinstance(node, (ast.NameConstant)):
+         value = node.value
+-    elif (six.PY2 and isinstance(node, ast.Name) and
+-          node.id in ['None', 'True', 'False']):
+-        # disregard pathological python2 corner cases
+-        value = {'None': None, 'True': True, 'False': False}[node.id]
+     else:
+         print(node.__dict__)
+         raise TypeError('Cannot parse a static value from non-static node '
+@@ -997,7 +987,7 @@ def extract_comments(source):
+         >>> comments = list(extract_comments(source.splitlines()))
+         >>> assert comments == ['# comment 1', '# comment 2']
+     """
+-    if isinstance(source, six.string_types):
++    if isinstance(source, str):
+         lines = source.splitlines()
+     else:
+         lines = source
+@@ -1055,7 +1045,7 @@ def _strip_hashtag_comments_and_newlines
+         >>> assert non_comments.count(chr(10)) == 10
+         >>> assert non_comments.count('#') == 1
+     """
+-    if isinstance(source, six.string_types):
++    if isinstance(source, str):
+         import io
+         f = io.StringIO(source)
+         readline = f.readline
+@@ -1109,17 +1099,7 @@ def six_axt_parse(source_block, filename
+     Returns:
+         ast.Module | types.CodeType
+     """
+-    # Note Python2.7 does not accept unicode variable names so this
+-    # will fail (in 2.7) if source contains a unicode varname.
+-    if compatible and six.PY2:
+-        # In Python2.7 fix __future__ issues
+-        import __future__
+-        flags = ast.PyCF_ONLY_AST
+-        flags |= __future__.print_function.compiler_flag
+-        # flags |= __future__.print_function.unicode_literals
+-        pt = compile(source_block, filename=filename, mode='exec', flags=flags)
+-    else:
+-        pt = ast.parse(source_block, filename=filename)
++    pt = ast.parse(source_block, filename=filename)
+     return pt
+ 
+ 
+Index: xdoctest-1.1.1/src/xdoctest/utils/util_import.py
+===================================================================
+--- xdoctest-1.1.1.orig/src/xdoctest/utils/util_import.py
++++ xdoctest-1.1.1/src/xdoctest/utils/util_import.py
+@@ -1,8 +1,6 @@
+-# -*- coding: utf-8 -*-
+ """
+ This file was autogenerated based on code in ubelt
+ """
+-from __future__ import print_function, division, absolute_import, unicode_literals
+ from os.path import abspath
+ from os.path import exists
+ from os.path import expanduser
+Index: xdoctest-1.1.1/src/xdoctest/utils/util_misc.py
+===================================================================
+--- xdoctest-1.1.1.orig/src/xdoctest/utils/util_misc.py
++++ xdoctest-1.1.1/src/xdoctest/utils/util_misc.py
+@@ -1,8 +1,6 @@
+-# -*- coding: utf-8 -*-
+ """
+ Utilities that are mainly used in self-testing
+ """
+-from __future__ import print_function, division, absolute_import, unicode_literals
+ from os.path import join
+ import random
+ from .util_path import TempDir
+Index: xdoctest-1.1.1/src/xdoctest/utils/util_path.py
+===================================================================
+--- xdoctest-1.1.1.orig/src/xdoctest/utils/util_path.py
++++ xdoctest-1.1.1/src/xdoctest/utils/util_path.py
+@@ -1,8 +1,6 @@
+-# -*- coding: utf-8 -*-
+ """
+ Utilities related to filesystem paths
+ """
+-from __future__ import print_function, division, absolute_import, unicode_literals
+ import os
+ from os.path import exists
+ from os.path import join
+Index: xdoctest-1.1.1/src/xdoctest/utils/util_str.py
+===================================================================
+--- xdoctest-1.1.1.orig/src/xdoctest/utils/util_str.py
++++ xdoctest-1.1.1/src/xdoctest/utils/util_str.py
+@@ -1,9 +1,6 @@
+-# -*- coding: utf-8 -*-
+ """
+ Utilities related to string manipulations
+ """
+-from __future__ import print_function, division, absolute_import, unicode_literals
+-import six
+ import math
+ import textwrap
+ import warnings
+@@ -144,9 +141,9 @@ def ensure_unicode(text):
+         >>> import codecs
+         >>> assert (codecs.BOM_UTF8 + 'text»¿'.encode('utf8')).decode('utf8')
+     """
+-    if isinstance(text, six.text_type):
++    if isinstance(text, str):
+         return text
+-    elif isinstance(text, six.binary_type):
++    elif isinstance(text, bytes):
+         return text.decode('utf8')
+     else:  # nocover
+         raise ValueError('unknown input type {!r}'.format(text))
+@@ -263,7 +260,7 @@ def add_line_numbers(source, start=1, n_
+         2 b
+         3 c
+     """
+-    was_string = isinstance(source, six.string_types)
++    was_string = isinstance(source, str)
+     part_lines = source.splitlines() if was_string else source
+ 
+     if n_digits is None:
+Index: xdoctest-1.1.1/src/xdoctest/utils/util_stream.py
+===================================================================
+--- xdoctest-1.1.1.orig/src/xdoctest/utils/util_stream.py
++++ xdoctest-1.1.1/src/xdoctest/utils/util_stream.py
+@@ -1,4 +1,3 @@
+-# -*- coding: utf-8 -*-
+ """
+ Functions for capturing and redirecting IO streams.
+ 
+@@ -9,9 +8,7 @@ The :class:`TeeStringIO` does the same t
+ how the former is implemented.
+ 
+ """
+-from __future__ import print_function, division, absolute_import, unicode_literals
+ import sys
+-import six
+ import io
+ 
+ 
+@@ -85,9 +82,6 @@ class TeeStringIO(io.StringIO):
+         """
+         if self.redirect is not None:
+             self.redirect.write(msg)
+-        if six.PY2:
+-            from xdoctest.utils.util_str import ensure_unicode
+-            msg = ensure_unicode(msg)
+         return super(TeeStringIO, self).write(msg)
+ 
+     def flush(self):  # nocover
+@@ -122,7 +116,7 @@ class CaptureStdout(CaptureStream):
+         ...     text = 'capture the heart ♥'
+         ...     print(text)
+         >>> print('dont capture look of disapproval ಠ_ಠ')
+-        >>> assert isinstance(self.text, six.text_type)
++        >>> assert isinstance(self.text, str)
+         >>> assert self.text == text + '\n', 'failed capture text'
+ 
+     Example:
+Index: xdoctest-1.1.1/tests/pybind11_test/setup.py
+===================================================================
+--- xdoctest-1.1.1.orig/tests/pybind11_test/setup.py
++++ xdoctest-1.1.1/tests/pybind11_test/setup.py
+@@ -1,5 +1,4 @@
+ #!/usr/bin/env python
+-# -*- coding: utf-8 -*-
+ """
+ pip install --target="$(pwd)" .
+ """
+Index: xdoctest-1.1.1/tests/test_core.py
+===================================================================
+--- xdoctest-1.1.1.orig/tests/test_core.py
++++ xdoctest-1.1.1/tests/test_core.py
+@@ -1,5 +1,3 @@
+-# -*- coding: utf-8 -*-
+-from __future__ import print_function, division, absolute_import, unicode_literals
+ from os.path import join
+ import xdoctest
+ from xdoctest import core
+Index: xdoctest-1.1.1/tests/test_directive.py
+===================================================================
+--- xdoctest-1.1.1.orig/tests/test_directive.py
++++ xdoctest-1.1.1/tests/test_directive.py
+@@ -1,5 +1,3 @@
+-# -*- coding: utf-8 -*-
+-from __future__ import print_function, division, absolute_import, unicode_literals
+ from xdoctest import doctest_example
+ from xdoctest import utils
+ 
+Index: xdoctest-1.1.1/tests/test_doctest_example.py
+===================================================================
+--- xdoctest-1.1.1.orig/tests/test_doctest_example.py
++++ xdoctest-1.1.1/tests/test_doctest_example.py
+@@ -1,5 +1,3 @@
+-# -*- coding: utf-8 -*-
+-from __future__ import print_function, division, absolute_import, unicode_literals
+ from xdoctest import doctest_example
+ from xdoctest import utils
+ from xdoctest import constants
+Index: xdoctest-1.1.1/tests/test_dynamic.py
+===================================================================
+--- xdoctest-1.1.1.orig/tests/test_dynamic.py
++++ xdoctest-1.1.1/tests/test_dynamic.py
+@@ -183,15 +183,14 @@ def test_defined_by_module():
+         print('Checking {} is defined by {}'.format(item, module.__name__))
+         assert flag, '{} should be defined by {}'.format(item, module)
+ 
+-    import six
+-    # Six brings in items from other modules
++    import inspect
+ 
+     items = [
+-        six.moves.zip,
+-        six.moves.range,
+-        six.moves.StringIO,
++        inspect.re,
++        inspect.re.sub,
++        inspect.re.enum,
+     ]
+-    module = six
++    module = inspect
+ 
+     for item in items:
+         flag = dynamic.is_defined_by_module(item, module)
+Index: xdoctest-1.1.1/tests/test_errors.py
+===================================================================
+--- xdoctest-1.1.1.orig/tests/test_errors.py
++++ xdoctest-1.1.1/tests/test_errors.py
+@@ -1,7 +1,4 @@
+-# -*- coding: utf-8 -*-
+-from __future__ import print_function, division, absolute_import, unicode_literals
+ from os.path import join
+-import six
+ import warnings
+ import pytest
+ from xdoctest import runner
+@@ -158,19 +155,15 @@ def test_runner_syntax_error():
+     print(utils.indent(cap.text))
+     print(']]]]]]]] # CAPTURED')
+ 
+-    if six.PY2:
+-        captext = utils.ensure_unicode(cap.text)
+-    else:
+-        captext = cap.text
+-
+-    if True or not six.PY2:  # Why does this have issues on the dashboards?
+-        assert '1 run-time warnings' in captext
+-        assert '2 parse-time warnings' in captext
+-
+-        # Assert summary line
+-        assert '3 warnings' in captext
+-        assert '2 failed' in captext
+-        assert '1 passed' in captext
++    captext = cap.text
++
++    assert '1 run-time warnings' in captext
++    assert '2 parse-time warnings' in captext
++
++    # Assert summary line
++    assert '3 warnings' in captext
++    assert '2 failed' in captext
++    assert '1 passed' in captext
+ 
+ 
+ def test_parse_doctset_error():
+Index: xdoctest-1.1.1/tests/test_parser.py
+===================================================================
+--- xdoctest-1.1.1.orig/tests/test_parser.py
++++ xdoctest-1.1.1/tests/test_parser.py
+@@ -1,5 +1,3 @@
+-# -*- coding: utf-8 -*-
+-from __future__ import print_function, division, absolute_import, unicode_literals
+ import pytest
+ from xdoctest import parser
+ from xdoctest import utils
+@@ -723,10 +721,6 @@ def test_gh_issue_25_parsing_failure():
+ 
+ 
+ def test_parser_with_type_annot():
+-    import six
+-    if six.PY2:
+-        pytest.skip('no type annot in py2')
+-
+     string = utils.codeblock(
+         '''
+         >>> def foo(x: str) -> None:
+Index: xdoctest-1.1.1/tests/test_plugin.py
+===================================================================
+--- xdoctest-1.1.1.orig/tests/test_plugin.py
++++ xdoctest-1.1.1/tests/test_plugin.py
+@@ -1,10 +1,8 @@
+-# encoding: utf-8
+ """
+ Adapted from the original `pytest/tests/test_doctest.py` module at:
+     https://github.com/pytest-dev/pytest
+     https://github.com/pytest-dev/pytest/blob/main/tests/test_doctest.py
+ """
+-from __future__ import print_function, division, absolute_import, unicode_literals
+ import sys
+ import _pytest._code
+ from xdoctest.plugin import XDoctestItem, XDoctestModule, XDoctestTextfile
+@@ -42,7 +40,6 @@ def explicit_testdir():
+ 
+     Ignore:
+         python -c codeblock "
+-        from __future__ import absolute_import, division, print_function
+         import subprocess, grp
+         import imp, inspect, textwrap, pprint, json, tempfile, string, lzma, bz2, shutil
+         import glob, time, struct, bisect, pdb, platform, atexit, shlex,
+@@ -763,8 +760,6 @@ class TestXDoctest(object):
+ 
+         """
+         p = testdir.makepyfile(test_unicode_doctest_module="""
+-            # -*- encoding: utf-8 -*-
+-            from __future__ import unicode_literals
+ 
+             def fix_bad_unicode(text):
+                 '''
+Index: xdoctest-1.1.1/tests/test_preimport.py
+===================================================================
+--- xdoctest-1.1.1.orig/tests/test_preimport.py
++++ xdoctest-1.1.1/tests/test_preimport.py
+@@ -1,4 +1,3 @@
+-# -*- coding: utf-8 -*-
+ from os.path import join
+ from xdoctest import utils
+ 
+Index: xdoctest-1.1.1/tests/test_runner.py
+===================================================================
+--- xdoctest-1.1.1.orig/tests/test_runner.py
++++ xdoctest-1.1.1/tests/test_runner.py
+@@ -1,4 +1,3 @@
+-# -*- coding: utf-8 -*-
+ from os.path import join
+ from xdoctest import utils
+ 
+Index: xdoctest-1.1.1/tests/test_static.py
+===================================================================
+--- xdoctest-1.1.1.orig/tests/test_static.py
++++ xdoctest-1.1.1/tests/test_static.py
+@@ -1,5 +1,3 @@
+-# -*- coding: utf-8 -*-
+-from __future__ import print_function, division, absolute_import, unicode_literals
+ from xdoctest import static_analysis as static
+ from xdoctest import utils
+ 
+Index: xdoctest-1.1.1/tests/test_traceback.py
+===================================================================
+--- xdoctest-1.1.1.orig/tests/test_traceback.py
++++ xdoctest-1.1.1/tests/test_traceback.py
+@@ -1,4 +1,3 @@
+-# -*- coding: utf-8 -*-
+ """
+ Need to enhance the tracebacks to spit out something more useful
+ """

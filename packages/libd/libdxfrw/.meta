@@ -1,0 +1,9 @@
+<package name="libdxfrw" project="openSUSE:Factory">
+  <title>Library to read and write DXF files</title>
+  <description>
+libdxfrw is a free C++ library to read and write DXF files in both formats,
+ascii and binary form.
+</description>
+  <devel project="graphics" package="libdxfrw"/>
+  <url>http://sourceforge.net/p/libdxfrw/home/Home/</url>
+</package>

@@ -1,0 +1,88 @@
+-------------------------------------------------------------------
+Tue Apr 14 20:02:27 UTC 2015 - coolo@suse.com
+
+- updated to 1.360
+   see /usr/share/doc/packages/perl-POE-Test-Loops/CHANGES
+
+-------------------------------------------------------------------
+Mon Jul 28 06:16:23 UTC 2014 - coolo@suse.com
+
+- updated to 1.358, see CHANGES for git log
+- removed strip-dummy-provides.diff as it was done upstream
+
+-------------------------------------------------------------------
+Fri Oct  4 19:50:32 UTC 2013 - coolo@suse.com
+
+- updated to 1.353
+   Windows locks files and directories while they're open. It's not
+   possible to unlink() them in this state.
+ 
+   The file reset test tried to unlink() a test log to reset it. The
+   unlink() was silently failing, and the test program was waiting
+   indefinitely for the reset.
+ 
+   Added a SKIP section around those tests so they don't run on Windows.
+   Fixes welcome, because I'd really like Windows users to be able to
+   detect file resets.
+
+-------------------------------------------------------------------
+Mon Aug  5 14:03:59 UTC 2013 - coolo@suse.com
+
+- updated to 1.351
+     Make distribution self-tagging and version self-bumping. Thanks,
+     Dist::Zilla! 
+ 
+     Fix the tag identifying regexp in dist.ini. 
+ 
+     Extended options for POE::Wheel::Run - tests patch 
+ 
+     Added ::Run redirection test 
+
+-------------------------------------------------------------------
+Tue Dec 27 11:08:43 CET 2011 - dmueller@suse.de
+
+- avoid incorrect perl provides by rpm provides finder
+
+-------------------------------------------------------------------
+Thu Dec 22 09:16:33 UTC 2011 - coolo@suse.com
+
+- updated to 1.350, see CHANGES
+
+-------------------------------------------------------------------
+Tue Jun 14 09:54:07 UTC 2011 - coolo@suse.com
+
+- updated to 1.312, see CHANGES
+
+-------------------------------------------------------------------
+Sun Feb  6 18:18:34 UTC 2011 - lars@linux-schulserver.de
+
+- update to 1.040:
+  + Fix alarms tests to match POE's documentation
+  + Eliminate Socket6 use from the tests
+  + fix non-numeric comparison when using dev release
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:40 UTC 2010 - coolo@suse.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Sat Apr 10 00:03:04 UTC 2010 - lars@linux-schulserver.de
+
+- update to 1.035
+  + Updated the skip_tests() examples, and explain what's going 
+    on in each
+  + Fix the followtail test to use File::Temp
+  + many Cygwin test fixes
+  + smaller fixes in some test scripts
+
+-------------------------------------------------------------------
+Fri Jan  1 18:36:35 UTC 2010 - lars@linux-schulserver.de
+
+- update to 1.031
+
+-------------------------------------------------------------------
+Sun Aug 30 16:13:48 CEST 2009 - lars@linux-schulserver.de
+
+- initial package version 1.021
+

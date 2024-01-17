@@ -1,0 +1,19 @@
+<package name="toml11" project="openSUSE:Factory">
+  <title>TOML for Modern C++</title>
+  <description>toml11 is a C++11 (or later) header-only toml parser/encoder depending only on C++ standard library.
+ 
+  * It is compatible to the latest version of TOML v1.0.0.
+  * It is one of the most TOML standard compliant libraries, tested with the
+    language agnostic test suite for TOML parsers by BurntSushi.
+  * It shows highly informative error messages.
+  * It has configurable container. You can use any random-access containers
+    and key-value maps as backend containers.
+  * It optionally preserves comments without any overhead.
+  * It has configurable serializer that supports comments, inline tables,
+    literal strings and multiline strings.
+  * It supports user-defined type conversion from/into toml values.
+  * It correctly handles UTF-8 sequences, with or without BOM, both on posix
+    and Windows.</description>
+  <devel project="devel:libraries:c_c++" package="toml11"/>
+  <url>https://github.com/ToruNiina/toml11</url>
+</package>

@@ -1,0 +1,5 @@
+<package name="libtraceevent" project="openSUSE:Factory">
+  <title>libtraceevent</title>
+  <description>libtraceevent</description>
+  <devel project="devel:libraries:c_c++" package="libtraceevent"/>
+</package>

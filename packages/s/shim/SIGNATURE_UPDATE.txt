@@ -1,0 +1,25 @@
+==== openSUSE ====
+For openSUSE, the devel project of shim is devel:openSUSE:Factory. ALWAYS
+use the latest Leap to build shim-opensuse.efi for UEFI CA. Tumbleweed
+shares the same binary with Leap, so do the older Leap releases.
+
+The steps to udpate signature-opensuse.asc:
+1) Branch devel:openSUSE:Factory/shim.
+2) Add the latest Leap, e.g. 42.2, to the build target.
+3) Build shim-opensuse.efi against the latest Leap.
+4) Strip the signature from shim-opensuse.efi with strip_signature.sh.
+5) Send shim-opensuse.efi to UEFI CA to request a new signature.
+6) Extract the signature from the signed shim.efi with extract_signature.sh
+7) Update signature-opensuse.asc.
+
+==== SLES ===
+Since there is no devel project for shim in SLES, just build shim-sles.efi with
+the latest SLES and then send it to UEFI CA for a new signature.
+
+The steps to update signature-sles.asc:
+1) Branch shim from the latest SLES and apply the update/fix.
+2) Build shim-sles.efi against the latest SLES.
+3) Strip the signature from shim-sles.efi with strip_signature.sh.
+4) Send shim-sles.efi to UEFI CA to request a new signature.
+5) Extract the signature from the signed shim.efi with extract_signature.sh
+6) Update signature-sles.asc.

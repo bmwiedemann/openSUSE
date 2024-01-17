@@ -1,0 +1,16 @@
+Index: gnome-shell-45.0/js/gdm/authPrompt.js
+===================================================================
+--- gnome-shell-45.0.orig/js/gdm/authPrompt.js
++++ gnome-shell-45.0/js/gdm/authPrompt.js
+@@ -627,8 +627,10 @@ export const AuthPrompt = GObject.regist
+         this._updateEntry(true);
+         this.stopSpinning();
+ 
+-        if (oldStatus === AuthPromptStatus.VERIFICATION_FAILED)
++        if (oldStatus == AuthPromptStatus.VERIFICATION_FAILED) {
++            this._userVerifier.cancel();
+             this.emit('failed');
++        }
+         else if (oldStatus === AuthPromptStatus.VERIFICATION_CANCELLED)
+             this.emit('cancelled');
+ 

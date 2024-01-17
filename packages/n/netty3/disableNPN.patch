@@ -1,0 +1,38 @@
+diff -rupN netty-3.9.3.Final/src/main/java/org/jboss/netty/handler/ssl/JdkSslClientContext.java netty-3.9.3.Final-mod/src/main/java/org/jboss/netty/handler/ssl/JdkSslClientContext.java
+--- netty-3.9.3.Final/src/main/java/org/jboss/netty/handler/ssl/JdkSslClientContext.java	2014-08-06 20:56:29.000000000 +0200
++++ netty-3.9.3.Final-mod/src/main/java/org/jboss/netty/handler/ssl/JdkSslClientContext.java	2015-01-30 08:23:00.394802892 +0100
+@@ -108,9 +108,6 @@ public final class JdkSslClientContext e
+         super(bufPool, ciphers);
+ 
+         if (nextProtocols != null && nextProtocols.iterator().hasNext()) {
+-            if (!JettyNpnSslEngine.isAvailable()) {
+-                throw new SSLException("NPN/ALPN unsupported: " + nextProtocols);
+-            }
+ 
+             List<String> nextProtoList = new ArrayList<String>();
+             for (String p: nextProtocols) {
+diff -rupN netty-3.9.3.Final/src/main/java/org/jboss/netty/handler/ssl/JdkSslContext.java netty-3.9.3.Final-mod/src/main/java/org/jboss/netty/handler/ssl/JdkSslContext.java
+--- netty-3.9.3.Final/src/main/java/org/jboss/netty/handler/ssl/JdkSslContext.java	2014-08-06 20:56:29.000000000 +0200
++++ netty-3.9.3.Final-mod/src/main/java/org/jboss/netty/handler/ssl/JdkSslContext.java	2015-01-30 08:23:09.590641116 +0100
+@@ -165,7 +165,7 @@ public abstract class JdkSslContext exte
+         if (nextProtocols().isEmpty()) {
+             return engine;
+         } else {
+-            return new JettyNpnSslEngine(engine, nextProtocols(), isServer());
++            return null;
+         }
+     }
+ 
+diff -rupN netty-3.9.3.Final/src/main/java/org/jboss/netty/handler/ssl/JdkSslServerContext.java netty-3.9.3.Final-mod/src/main/java/org/jboss/netty/handler/ssl/JdkSslServerContext.java
+--- netty-3.9.3.Final/src/main/java/org/jboss/netty/handler/ssl/JdkSslServerContext.java	2014-08-06 20:56:29.000000000 +0200
++++ netty-3.9.3.Final-mod/src/main/java/org/jboss/netty/handler/ssl/JdkSslServerContext.java	2015-01-30 08:23:19.097473868 +0100
+@@ -114,9 +114,6 @@ public final class JdkSslServerContext e
+         }
+ 
+         if (nextProtocols != null && nextProtocols.iterator().hasNext()) {
+-            if (!JettyNpnSslEngine.isAvailable()) {
+-                throw new SSLException("NPN/ALPN unsupported: " + nextProtocols);
+-            }
+ 
+             List<String> list = new ArrayList<String>();
+             for (String p: nextProtocols) {

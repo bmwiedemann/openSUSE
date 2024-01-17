@@ -1,0 +1,22 @@
+is in upstream hg via
+changeset:   1509:a98e00eed893
+user:        Bernhard M. Wiedemann <bwiedemann suse.de>
+date:        Sun Aug 13 09:39:59 2017 +0200
+summary:     Facilitate reproducible builds
+
+Index: enblend-enfuse-4.2/src/DefaultSig.pm
+===================================================================
+--- enblend-enfuse-4.2.orig/src/DefaultSig.pm
++++ enblend-enfuse-4.2/src/DefaultSig.pm
+@@ -109,9 +109,10 @@ sub monthnames {my $self = shift;  retur
+ sub update_date_and_time {
+     my $self = shift;
+ 
++    my $now = $ENV{SOURCE_DATE_EPOCH} || time;
+     my ($second, $minute, $hour,
+         $day_of_month, $month, $year,
+-        $day_of_week) = $self->is_using_gmt() ? gmtime : localtime;
++        $day_of_week) = $self->is_using_gmt() ? gmtime($now) : localtime($now);
+ 
+     $self->{DATE} = $self->format_date($day_of_month, $month, $year + 1900, $day_of_week,
+                                        $self->weekdays->[$day_of_week],

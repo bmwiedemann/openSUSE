@@ -1,0 +1,43 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d58ae553bb0c0f13a7057604d95b8bbf</srcmd5>
+    <version>1.6</version>
+    <time>1553263129</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>681126</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>96dc7202d1061104b7ab24be9b452ca6</srcmd5>
+    <version>1.6</version>
+    <time>1620840741</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not compile/run tests against the legacy guava20 package
+</comment>
+    <requestid>892424</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>09ba90411b06b5d21cbafec705f17cdd</srcmd5>
+    <version>1.6</version>
+    <time>1642548906</time>
+    <user>dimstar_suse</user>
+    <comment>Use source service</comment>
+    <requestid>947105</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>4b1ec06bcf07f5d925ae2c02e59f592d</srcmd5>
+    <version>1.6</version>
+    <time>1647806182</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source/target levels 8</comment>
+    <requestid>963310</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>adbe606f8f3208af57be7084a3c8bdbd</srcmd5>
+    <version>1.6</version>
+    <time>1653061840</time>
+    <user>dimstar_suse</user>
+    <comment>Do not use deprecated APIs</comment>
+    <requestid>978179</requestid>
+  </revision>
+</revisionlist>

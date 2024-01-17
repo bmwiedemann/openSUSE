@@ -1,0 +1,6 @@
+<package name="urlscan" project="openSUSE:Factory">
+  <title>An other URL extractor/viewer</title>
+  <description>The urlscan utility displays URLs found in an email message with the respective context. Selecting an URL uses the Python webbrowser module to determine which browser to open. It also supports quoted-printable and base64 encoding.</description>
+  <devel project="utilities" package="urlscan"/>
+  <url>https://github.com/firecat53/urlscan</url>
+</package>

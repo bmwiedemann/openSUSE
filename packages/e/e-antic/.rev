@@ -1,0 +1,106 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6d62a7a8d0f6bfe50eb070ccf2207067</srcmd5>
+    <version>1.0.1</version>
+    <time>1624813159</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>902565</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ec07503c138143bad29eaf935f4c6d1c</srcmd5>
+    <version>1.0.1</version>
+    <time>1625338249</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Requires to e-antic-devel so that all headers can be used.</comment>
+    <requestid>903781</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1104e69787dbe9725a5cc4141c4abf1f</srcmd5>
+    <version>1.0.2</version>
+    <time>1628282709</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.0.2</comment>
+    <requestid>910520</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6d11161e02b4890f6dca9895eeebfb85</srcmd5>
+    <version>1.0.3</version>
+    <time>1629706065</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.0.3</comment>
+    <requestid>912261</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4d5a584780b886fbeda2d049d8a06eed</srcmd5>
+    <version>1.1.0</version>
+    <time>1644617408</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.1.0</comment>
+    <requestid>953706</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3cc8d22e056f778d0c2cd9adb7a1ee43</srcmd5>
+    <version>1.2.0</version>
+    <time>1649713724</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.2.0</comment>
+    <requestid>968257</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2b2aa1a56f3bbec592b08111d2f33f4b</srcmd5>
+    <version>1.2.1</version>
+    <time>1653061872</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.2.1</comment>
+    <requestid>978278</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4b1b62addc823659a05aa658c3698903</srcmd5>
+    <version>1.2.2</version>
+    <time>1666699159</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.2.2</comment>
+    <requestid>1031123</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>179bdad4c593f720e433e06bc001e086</srcmd5>
+    <version>1.3.0</version>
+    <time>1670333041</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.3.0</comment>
+    <requestid>1040474</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>1ff4ba190383d7e0bc09ba2921427d83</srcmd5>
+    <version>1.3.0</version>
+    <time>1698097226</time>
+    <user>anag+factory</user>
+    <comment>- Add flint3.diff to have the build succeed with flint-3.</comment>
+    <requestid>1119392</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c78026633cf7b57c4841c542f0f3744f</srcmd5>
+    <version>2.0.0</version>
+    <time>1703527539</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 2.0.0</comment>
+    <requestid>1134931</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>84352c94bc47cb228c49c2372eee83b0</srcmd5>
+    <version>2.0.1</version>
+    <time>1704919949</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 2.0.1</comment>
+    <requestid>1137849</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>35c77bfa28e48efd1dfa81424bf824fe</srcmd5>
+    <version>2.0.2</version>
+    <time>1705003511</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 2.0.2</comment>
+    <requestid>1138053</requestid>
+  </revision>
+</revisionlist>

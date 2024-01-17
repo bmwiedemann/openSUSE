@@ -1,0 +1,151 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fc6d5168ae6f584dcc30dba8a9eeb822</srcmd5>
+    <version>243.1</version>
+    <time>1620767012</time>
+    <user>dimstar_suse</user>
+    <comment>new package, upstreak split it off cockpit </comment>
+    <requestid>890248</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>eeebd5d595dfc31d2076187143529502</srcmd5>
+    <version>243.1</version>
+    <time>1624999413</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>903045</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>ad96b5a4584ba9a2d208268c078d5b6b</srcmd5>
+    <version>243.1</version>
+    <time>1629706066</time>
+    <user>dimstar_suse</user>
+    <comment>trick source_validator (forwarded request 912372 from lnussel)</comment>
+    <requestid>912373</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>526d7e05ccc2d00f68bc850012b3dbc2</srcmd5>
+    <version>243.1</version>
+    <time>1644007765</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>951561</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>7812067b370889ae85689facfa84f373</srcmd5>
+    <version>243.1</version>
+    <time>1648159112</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>964664</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>4bdb1b9cdd31d42d9b2698984d7e3964</srcmd5>
+    <version>243.1</version>
+    <time>1653594317</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>979392</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>fbf250868a89203edf50ccd063422526</srcmd5>
+    <version>270.2</version>
+    <time>1655593376</time>
+    <user>dimstar_suse</user>
+    <comment>- load-css-overrides.patch: css overrides for better theming support
+
+- Update to 271.2:
+  * Fix test/reference setup in release tarball for tests
+
+- Update to 271.1:
+  https://github.com/cockpit-project/cockpit-machines/releases/tag/270.1
+
+- Update to 264:
+  https://github.com/cockpit-project/cockpit-machines/releases/tag/264</comment>
+    <requestid>983413</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>3f7601734fa29c86bd37944df6faea85</srcmd5>
+    <version>270.2</version>
+    <time>1660235514</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>994351</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>bbadd657f51bf4ccc3d6fcd0232ae2c0</srcmd5>
+    <version>270.2</version>
+    <time>1664380281</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1006518</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>961b1d6c59751f9d4234d7ff6be22e66</srcmd5>
+    <version>292</version>
+    <time>1687207818</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 293
+  * Add manifest condition for the Python bridge
+  * Vsock device support
+  * Apply watchdog changes on next boot if hotplug fails
+  * Option to use RAW volume during VM creation
+  * Redesign VM’s CPU configuration
+  * Indicate need for shutdown
+  * Delete storage file upon disk detachment
+  * Show an alert when virtualization is disabled in BIOS/EFI
+  * Create VM based on cloud image and start it later
+  * Option to forcefully revert a snapshot
+  * Support dark theme
+  * Translation updates
+  * Stability and performance updates
+- 1088.patch: WIP for PF5 changes in cockpit
+- hide-docs.patch, load-css-overrides.patch: refreshed
+- suse-vv-install.patch: upstreamed, removed</comment>
+    <requestid>1093493</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a2622013cd22ac3b9dcc549dc9208fae</srcmd5>
+    <version>295</version>
+    <time>1691076651</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 295
+  * Performance and stability improvements
+  * Bug fixes and translation updates
+- 1088.patch: upstreamed and removed</comment>
+    <requestid>1102176</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>59986308d56dbddb3ab9a32814cda276</srcmd5>
+    <version>296</version>
+    <time>1692687385</time>
+    <user>anag+factory</user>
+    <comment>- Update to 296:
+  * Update to PatternFly 5
+- deps.patch: fix esbuild dependency</comment>
+    <requestid>1105065</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>445b512b060432042b08e9cee280146d</srcmd5>
+    <version>298</version>
+    <time>1694200573</time>
+    <user>anag+factory</user>
+    <comment>- Update to 298:
+  * bug and stability improvements
+  * Don't use localhost as default source for PXE installation
+- deps.patch: upstreamed, removed</comment>
+    <requestid>1109730</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>6abf97f9ab520319ac952520149e21ed</srcmd5>
+    <version>304</version>
+    <time>1704387551</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 304:
+  * Performance and stability improvements
+  * Change &quot;Add disk&quot; default behavior
+  * Add SSH keys to VM creation dialog
+  * Performance and stability improvements</comment>
+    <requestid>1135663</requestid>
+  </revision>
+</revisionlist>

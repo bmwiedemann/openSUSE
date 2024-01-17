@@ -1,0 +1,202 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>71551b3e25d4fe620bd3877bcbc7bb92</srcmd5>
+    <version>1.31</version>
+    <time>1662063041</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1000268</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ed87797049e1949f08175d4100c017c1</srcmd5>
+    <version>1.35</version>
+    <time>1669630015</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.35</comment>
+    <requestid>1038501</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4e614799529782a49d65082f7d71df6e</srcmd5>
+    <version>1.37</version>
+    <time>1671380559</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.37</comment>
+    <requestid>1043617</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8503db6efc058bca142a62d52ecc862f</srcmd5>
+    <version>2.1</version>
+    <time>1673801893</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.1</comment>
+    <requestid>1058439</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ef6846993106bca8517541169df448b9</srcmd5>
+    <version>2.2</version>
+    <time>1674585786</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1060512</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9b116dda7bf246116f03ceffa0471477</srcmd5>
+    <version>2.3</version>
+    <time>1676149031</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1064314</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2ef5db3814f83e8645b45d581a790c45</srcmd5>
+    <version>2.4</version>
+    <time>1677502503</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.4</comment>
+    <requestid>1067982</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a054d703627dfafb521b006c82a4ac1e</srcmd5>
+    <version>2.5</version>
+    <time>1678204225</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.5</comment>
+    <requestid>1069734</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>501658e37b7272a0407eec6921941d6c</srcmd5>
+    <version>2.6</version>
+    <time>1678814174</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.6</comment>
+    <requestid>1071127</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>1a1e6fd2a19c9fd848c28d1f50be4146</srcmd5>
+    <version>2.6</version>
+    <time>1679417018</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-build-resolve-compile-error-with-gcc-13.patch</comment>
+    <requestid>1073383</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b0ab77b69dff16ee2f5f7c6cd8a3e381</srcmd5>
+    <version>2.7</version>
+    <time>1680290139</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1075718</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>934d24d35d87bd122616f7478475045f</srcmd5>
+    <version>2.8</version>
+    <time>1681746109</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.8</comment>
+    <requestid>1079912</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>88efffc262655bc39b85d1024f0d69f2</srcmd5>
+    <version>2.9</version>
+    <time>1683728407</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.9</comment>
+    <requestid>1086048</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b1b89be0c686a2016f9c1ce6ab90b8ed</srcmd5>
+    <version>2.10</version>
+    <time>1687469235</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1094704</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>21a55f3bab99aee8ea8a0c97d624b3fc</srcmd5>
+    <version>2.11</version>
+    <time>1692795530</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 2.11</comment>
+    <requestid>1105462</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>41cc2bedfbc178177ddc953dd77d0322</srcmd5>
+    <version>2.12</version>
+    <time>1694019390</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 2.12</comment>
+    <requestid>1108945</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>dcc5ada5fdd09db4e91c20edc7764071</srcmd5>
+    <version>2.13</version>
+    <time>1695664964</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 2.13</comment>
+    <requestid>1113238</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>50f7af48b2f26b19bb5cdc0a0a3e8b4d</srcmd5>
+    <version>2.14</version>
+    <time>1697061391</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1116969</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>9e3a9141327e85ae9f632be1f2e01307</srcmd5>
+    <version>2.15</version>
+    <time>1697836700</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 2.15</comment>
+    <requestid>1119113</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>ecf8ca8b6db3a9fa92e2a9e872bc5327</srcmd5>
+    <version>2.16</version>
+    <time>1698700242</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 2.16</comment>
+    <requestid>1121049</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>69c90cc69cd1751c5ea248ade17b59f4</srcmd5>
+    <version>2.16</version>
+    <time>1699301660</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1123505</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>30b7b00db2c2e1b50f64e3b78ec9649e</srcmd5>
+    <version>2.17</version>
+    <time>1699910473</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 2.17</comment>
+    <requestid>1125239</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>c551c2eb63bb62a303cb4d7400b0c31e</srcmd5>
+    <version>2.19</version>
+    <time>1701727374</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 2.19</comment>
+    <requestid>1130831</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>3e197b0a09ac58abcff6ae5f5967f0dc</srcmd5>
+    <version>2.20</version>
+    <time>1702936557</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 2.20</comment>
+    <requestid>1133781</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>9f0cd32f974b3e527661400f25e28132</srcmd5>
+    <version>2.21</version>
+    <time>1705099577</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 2.21</comment>
+    <requestid>1138296</requestid>
+  </revision>
+</revisionlist>
